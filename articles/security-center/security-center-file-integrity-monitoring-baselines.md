@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/29/2019
 ms.author: memildin
-ms.openlocfilehash: 116f295365084e7570ed9afc493d9179ea2dfb5a
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 0e7ef558ec75622b804aef96781b549f1a833e21
+ms.sourcegitcommit: 3f8017692169bd75483eefa96c225d45cd497f06
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71202141"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73518864"
 ---
 # <a name="compare-baselines-using-file-integrity-monitoring-fim"></a>Alaptervek összehasonlítása a fájl sértetlenségének figyelésével (FIM)
 
@@ -36,7 +36,7 @@ Valójában számos szabályozási megfelelőségi szabvány, például a PCI-DS
 
 A FIM beállításjegyzék-struktúra alapértelmezései kényelmes módot biztosítanak a rekurzív változások figyelésére a közös biztonsági területeken belül.  Előfordulhat például, hogy egy támadó úgy konfigurálhat egy parancsfájlt, hogy LOCAL_SYSTEM környezetben fusson egy végrehajtás indításkor vagy leállításkor történő konfigurálásával.  Az ilyen típusú változások figyeléséhez engedélyezze a beépített ellenőrzést.  
 
-![Beállításjegyzék](./media/security-center-file-integrity-monitoring-baselines/baselines-registry.png)
+![Registry](./media/security-center-file-integrity-monitoring-baselines/baselines-registry.png)
 
 >[!NOTE]
 > A rekurzív ellenőrzések csak az ajánlott biztonsági struktúrákra vonatkoznak, és nem az egyéni beállításjegyzékbeli elérési utakra.  
@@ -48,19 +48,19 @@ A FIM alapkonfigurációk az operációs rendszer és a támogató alkalmazás i
 
 |Házirend neve                 | Beállításjegyzék-beállítás|
 |---------------------------------------|-------------|
-|Tartományvezérlő: A számítógépfiók jelszavának módosításainak elutasítása| MACHINE\System\CurrentControlSet\Services \Netlogon\Parameters\RefusePasswordChange|
-|Tartományi tag: Biztonságos csatorna adatai digitális titkosítása vagy aláírása (mindig)|MACHINE\System\CurrentControlSet\Services \Netlogon\Parameters\RequireSignOrSeal|
-|Tartományi tag: Biztonságos csatorna adatai digitális titkosítása (ha lehetséges)|MACHINE\System\CurrentControlSet\Services \Netlogon\Parameters\SealSecureChannel|
-|Tartományi tag: Biztonságos csatornák digitális aláírása (ha lehetséges)|MACHINE\System\CurrentControlSet\Services \Netlogon\Parameters\SignSecureChannel|
-|Tartományi tag: A számítógépfiók jelszavának módosításainak letiltása|MACHINE\System\CurrentControlSet\Services  \Netlogon\Parameters\DisablePasswordChange|
-|Tartományi tag: Számítógépfiók maximális jelszavának kora|MACHINE\System\CurrentControlSet\Services \Netlogon\Parameters\MaximumPasswordAge|
-|Tartományi tag: Erős (Windows 2000 vagy újabb) munkamenetkulcs megkövetelése|MACHINE\System\CurrentControlSet\Services \Netlogon\Parameters\RequireStrongKey|
-|Hálózati biztonság: NTLM korlátozása:  NTLM-hitelesítés ebben a tartományban|MACHINE\System\CurrentControlSet\Services \Netlogon\Parameters\RestrictNTLMInDomain|
-|Hálózati biztonság: NTLM korlátozása: Kiszolgálói kivételek hozzáadása ebben a tartományban|MACHINE\System\CurrentControlSet\Services \Netlogon\Parameters\DCAllowedNTLMServers|
-|Hálózati biztonság: NTLM korlátozása: NTLM-hitelesítés naplózása ebben a tartományban|MACHINE\System\CurrentControlSet\Services \Netlogon\Parameters\AuditNTLMInDomain|
+|Tartományvezérlő: a számítógépfiók jelszavának módosításainak elutasítása| MACHINE\System\CurrentControlSet\Services \Netlogon\Parameters\RefusePasswordChange|
+|Tartományi tag: a biztonságos csatorna adatai digitális titkosítása vagy aláírása (mindig)|MACHINE\System\CurrentControlSet\Services \Netlogon\Parameters\RequireSignOrSeal|
+|Tartományi tag: a biztonságos csatorna adatai digitális titkosítása (ha lehetséges)|MACHINE\System\CurrentControlSet\Services \Netlogon\Parameters\SealSecureChannel|
+|Tartományi tag: biztonságos csatornák digitális aláírása (ha lehetséges)|MACHINE\System\CurrentControlSet\Services \Netlogon\Parameters\SignSecureChannel|
+|Tartományi tag: a számítógépfiók jelszavának módosításainak letiltása|MACHINE\System\CurrentControlSet\Services \Netlogon\Parameters\DisablePasswordChange|
+|Tartományi tag: a számítógépfiók jelszavának maximális kora|MACHINE\System\CurrentControlSet\Services \Netlogon\Parameters\MaximumPasswordAge|
+|Tartományi tag: erős (Windows 2000 vagy újabb) munkamenetkulcs szükséges|MACHINE\System\CurrentControlSet\Services \Netlogon\Parameters\RequireStrongKey|
+|Hálózati biztonság: az NTLM korlátozása: NTLM-hitelesítés ebben a tartományban|MACHINE\System\CurrentControlSet\Services \Netlogon\Parameters\RestrictNTLMInDomain|
+|Hálózati biztonság: az NTLM korlátozása: kiszolgálói kivételek hozzáadása ebben a tartományban|MACHINE\System\CurrentControlSet\Services \Netlogon\Parameters\DCAllowedNTLMServers|
+|Hálózati biztonság: az NTLM korlátozása: az NTLM-hitelesítés naplózása ebben a tartományban|MACHINE\System\CurrentControlSet\Services \Netlogon\Parameters\AuditNTLMInDomain|
 
 > [!NOTE]
-> Ha többet szeretne megtudni a különböző operációsrendszer-verziók által támogatott beállításjegyzék-beállításokról, tekintse meg a [csoportházirend beállítások hivatkozását tartalmazó táblázatot](https://www.microsoft.com/en-us/download/confirmation.aspx?id=25250).
+> Ha többet szeretne megtudni a különböző operációsrendszer-verziók által támogatott beállításjegyzék-beállításokról, tekintse meg a [csoportházirend beállítások hivatkozását tartalmazó táblázatot](https://www.microsoft.com/download/confirmation.aspx?id=25250).
 
 *A FIM konfigurálása a beállításjegyzék alapkonfigurációinak figyeléséhez:*
 
@@ -75,7 +75,7 @@ A FIM alapkonfigurációk az operációs rendszer és a támogató alkalmazás i
 
 ## <a name="tracking-changes-to-windows-files"></a>Windows-fájlok változásainak követése
 
-1. A **Windows-fájl hozzáadása Change Tracking** ablakban az **elérési út megadása** szövegmezőbe írja be azt a mappát, amely tartalmazza a nyomon követni kívánt fájlokat. Az alábbi ábrán látható példában a **contoso** -webalkalmazás a D:\ található. meghajtó a **ContosWebApp** -mappa struktúráján belül.  
+1. A **Windows-fájl hozzáadása Change Tracking** ablakban az **elérési út megadása** szövegmezőbe írja be azt a mappát, amely tartalmazza a nyomon követni kívánt fájlokat. Az alábbi ábrán látható példában a **contoso-webalkalmazás** a D:\ található. meghajtó a **ContosWebApp** -mappa struktúráján belül.  
 1. Hozzon létre egy egyéni Windows-bejegyzést úgy, hogy megadja a beállítási osztály nevét, engedélyezi a rekurziót, és megadta a legfelső mappát helyettesítő karakter (*) utótaggal.
 
     ![FIM engedélyezése fájlon](./media/security-center-file-integrity-monitoring-baselines/baselines-add-file.png)

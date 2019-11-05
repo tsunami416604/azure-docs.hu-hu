@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/29/2019
 ms.author: daperlov
-ms.openlocfilehash: 6e5e293e9759f091b6537d5efab9884e0a20fabc
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 24a1a5d132990db2aa10b7860774eecafb4b4edb
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68725448"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "73520480"
 ---
 # <a name="create-a-tumbling-window-trigger-dependency"></a>Függőség létrehozása átfedésmentes ablak eseményindítójához
 
@@ -76,11 +76,11 @@ A függőséggel rendelkező kieséses ablakos trigger a következő tulajdonsá
 
 Az alábbi táblázat tartalmazza az ablak függőségének definiálásához szükséges attribútumok listáját.
 
-| **Tulajdonság neve** | **Leírás**  | **Típus** | **Kötelező** |
+| **Tulajdonság neve** | **Leírás**  | **Típus** | **Szükséges** |
 |---|---|---|---|
 | type  | Ebben a legördülő ablakban minden meglévő ablak-eseményindító megjelenik. Válassza ki a függőség bekapcsolásához szükséges triggert.  | TumblingWindowTriggerDependencyReference vagy SelfDependencyTumblingWindowTriggerReference | Igen |
-| offset | A függőségi trigger eltolása. Adja meg az időtartomány formátumú értéket, és a negatív és a pozitív eltolás is engedélyezett. Ez a tulajdonság akkor kötelező, ha az trigger saját magától függ, és minden más esetben nem kötelező. Az önfüggőségnek mindig negatív eltolásnak kell lennie. Ha nincs megadva érték, az ablak ugyanaz, mint maga az trigger. | Timespan<br/>(óó: PP: SS) | Önálló függőség: Igen<br/>Egyéb: Nem |
-| size | A függőséget jelző ablak mérete Adjon meg egy pozitív TimeSpan értéket. Ez a tulajdonság nem kötelező. | Timespan<br/>(óó: PP: SS) | Nem  |
+| eltolás | A függőségi trigger eltolása. Adja meg az időtartomány formátumú értéket, és a negatív és a pozitív eltolás is engedélyezett. Ez a tulajdonság akkor kötelező, ha az trigger saját magától függ, és minden más esetben nem kötelező. Az önfüggőségnek mindig negatív eltolásnak kell lennie. Ha nincs megadva érték, az ablak ugyanaz, mint maga az trigger. | Időtartomány<br/>(óó: PP: SS) | Önálló függőség: igen<br/>Egyéb: nem |
+| Méret | A függőséget jelző ablak mérete Adjon meg egy pozitív TimeSpan értéket. Ez a tulajdonság nem kötelező. | Időtartomány<br/>(óó: PP: SS) | Nem  |
 
 > [!NOTE]
 > A kihelyezett ablakos eseményindítók legfeljebb két másik eseményindítótól függnek.
@@ -131,7 +131,7 @@ Alább láthatók a forgatókönyvek és az ablak függőségi tulajdonságainak
 
 ### <a name="dependency-size"></a>Függőség mérete
 
-![Példa] a méretre (media/tumbling-window-trigger-dependency/tumbling-window-dependency03.png "Példa") a méretre
+![Példa a méretre](media/tumbling-window-trigger-dependency/tumbling-window-dependency03.png "Példa a méretre")
 
 ### <a name="self-dependency"></a>Önálló függőség
 
@@ -151,15 +151,17 @@ A feladatokhoz tartozó kimeneti adatfolyamok hiánya nélküli napi feladatok:
 
 ## <a name="monitor-dependencies"></a>Függőségek figyelése
 
-A függőségi láncot és a megfelelő Windows-t a trigger futtatásának figyelése lapról követheti nyomon. Navigáljon a **figyelés > triggerek futtatásához**.
+A függőségi láncot és a megfelelő Windows-t a trigger futtatásának figyelése lapról követheti nyomon. Navigáljon a **figyelés > triggerek futtatásához**. A műveletek oszlopban újra futtathatja a triggert, vagy megtekintheti annak függőségeit.
 
-![Trigger] -futtatások figyelése (media/tumbling-window-trigger-dependency/tumbling-window-dependency07.png "Trigger") -futtatások figyelése
+![Trigger-futtatások figyelése](media/tumbling-window-trigger-dependency/tumbling-window-dependency07.png "Eseményindító-futtatások monitorozása")
 
-A művelet ikonra kattintva megtekintheti a kiválasztott ablak összes függő triggerének futtatását.
+Ha a "trigger függőségeinek megtekintése" gombra kattint, megtekintheti a függőségek állapotát. Ha a függőségi eseményindítók egyike meghibásodik, a függő eseményindító futtatásához sikeresen újra kell futtatnia azt. A kiugró ablakos trigger az időtúllépés előtt hét napig megvárja a függőségeket.
 
 ![Függőségek figyelése](media/tumbling-window-trigger-dependency/tumbling-window-dependency08.png "Függőségek figyelése")
 
-A fenti példában egy napi trigger egy, ablak nélkül definiált óránkénti triggertől és 3 óra eltolástól függ. Ennek eredményeképpen az trigger a függőség 24 sikeres futtatása után fut le.
+Az trigger függőségi ütemtervének megjelenítéséhez kattintson a Gantt-nézetre.
+
+![Függőségek figyelése](media/tumbling-window-trigger-dependency/tumbling-window-dependency09.png "Függőségek figyelése")
 
 ## <a name="next-steps"></a>További lépések
 

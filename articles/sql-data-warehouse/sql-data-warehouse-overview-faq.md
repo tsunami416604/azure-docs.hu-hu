@@ -1,119 +1,135 @@
 ---
-title: Az Azure SQL Data Warehouse – gyakori kérdések |} A Microsoft Docs
-description: Ez a cikk felsorolja az Azure SQL Data Warehouse – gyakori kérdések az ügyfelek és -fejlesztőket ki
+title: Azure szinapszis Analytics (korábban SQL DW) – gyakori kérdések | Microsoft Docs
+description: Ez a cikk az Azure szinapszis Analytics (korábban SQL DW) ügyfelektől és fejlesztőktől származó gyakori kérdéseit sorolja fel.
 services: sql-data-warehouse
 author: mlee3gsd
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: design
-ms.date: 04/17/2018
+ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: 4679a3bb1935e9f3e2bc90c9bc9ef1247b7ecb30
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
-ms.translationtype: MT
+ms.openlocfilehash: 4db84ed69979713d613679e94d50cdb73475e2be
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66515876"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73520856"
 ---
-# <a name="sql-data-warehouse-frequently-asked-questions"></a>SQL Data Warehouse gyakori kérdések
+# <a name="azure-synapse-analytics-formerly-sql-dw-frequently-asked-questions"></a>Azure szinapszis Analytics (korábban SQL DW) – gyakori kérdések
 
 ## <a name="general"></a>Általános kérdések
 
-K. Mi az SQL DW kínál a biztonsági adatok?
+K. Mi az Azure szinapszis?
 
-A. SQL dw-ben például a TDE-adatok védelme és a naplózás több megoldásokat kínál. További információkért lásd: [Biztonság].
+A. Az Azure szinapszis egy korlátlan elemzési szolgáltatás, amely egyesíti az adattárházat és a Big adatelemzést. Lehetővé teszi, hogy a saját feltételei szerint, kiszolgáló nélküli, igény szerinti vagy kiépített erőforrásokkal lekérdezze az adatait. Az Azure szinapszis az azonnali BI-és gépi tanulási igényekhez kapcsolódóan egységes felhasználói élményt nyújt az adatgyűjtéshez, előkészítéséhez, kezeléséhez és kiszolgálásához. További információ: [Mi az az Azure szinapszis Analytics](sql-data-warehouse-overview-what-is.md).
 
-K. Hol találhatok ki, hogy milyen jogi vagy üzleti szabványok SQL DW megfelelő?
+K. Mi történt a Azure SQL Data Warehouse?
 
-A. Látogasson el a [A Microsoft megfelelőségi] különböző megfelelőségi ajánlattal, például az SOC és ISO termék oldalán. Először válasszon megfelelőségi kilobájtban, majd bontsa ki az Azure a Microsoft releváns cloud services szakasz a jobb oldalon az oldal, hogy mely szolgáltatások az Azure-szolgáltatások rendszer megfelelő.
+A. Az Azure szinapszis Azure SQL Data Warehouse (SQL DW) lett kifejlesztve. Az iparág vezető adattárháza a teljesítmény és a képességek teljesen új szintjére került. Továbbra is futtathatja meglévő adattárház-számítási feladatait az éles környezetben az Azure szinapszis szolgáltatással, és automatikusan kihasználhatja az előzetes verzióban elérhető új funkciók előnyeit. További információ: [Mi az az Azure szinapszis Analytics](sql-data-warehouse-overview-what-is.md).
 
-K. A Power bi képes csatlakozni?
+K. Mi az SQL Analytics?
 
-A. Igen! Bár a Power bi támogatja a közvetlen lekérdezés az SQL dw-vel, nem célja a felhasználók vagy a valós idejű adatok nagy számú. Üzemi használatra, a Power bi javasoljuk, a Power bi épülő Azure Analysis Services vagy az Analysis Service IaaS használatával. 
+A. Az SQL Analytics az Azure szinapszis szolgáltatással általánosan elérhető nagyvállalati adattárház-funkciókra utal. További információ: [Mi az az Azure szinapszis Analytics](sql-data-warehouse-overview-what-is.md).
 
-K. Mik az SQL Data Warehouse kapacitás korlátai?
+K. Hogyan az Azure szinapszis megkezdése?
 
-A. Tekintse meg az aktuális [kapacitáskorlátait] lapot. 
+A. További információért forduljon az [ingyenes Azure-fiókhoz](https://azure.microsoft.com/free/sql-data-warehouse/) , vagy [vegye fel a kapcsolatot az értékesítéssel](https://info.microsoft.com/ww-landing-azure-sql-data-warehouse-contactme.html). 
 
-K. Miért érdemes a méretezési csoport/szüneteltethet és folytathat tart sokáig?
+K. Mit kínál az Azure szinapszis az adatbiztonsághoz?
 
-A. Számos tényező befolyásolhatja a számítási műveletek időpontját. Egy közös használatieset-tranzakciós visszaállítása hosszú ideig futó műveletek van. Egy méretezési csoport vagy a szüneteltetési művelet elindításakor blokkolja az összes bejövő munkamenetek és lekérdezések vannak ürítve. Annak érdekében, hogy a rendszer stabil állapotban hagyásához tranzakciók kell őket állítani egy művelet megkezdése előtt. A nagyobb számának és nagyobb a napló méretét a tranzakciók, minél hosszabb a művelet lesz elakadt stabil állapotba állítja vissza a rendszer.
+A. Az Azure szinapszis számos megoldást kínál az adatok védelmére, például a TDE és a naplózásra. További információ: [Biztonság].
 
-## <a name="user-support"></a>Felhasználó támogatása
+K. Honnan tudhatom meg, hogy az Azure szinapszis milyen jogi vagy üzleti szabványoknak felel meg?
 
-K. Van valamilyen funkcióra vonatkozó kérést, ahol küldje el azt?
+A. Tekintse meg a [Microsoft-megfelelőség] oldalát, ahol különböző megfelelőségi ajánlatokat talál, például a SoC és az ISO terméket. Először válassza a megfelelőségi cím lehetőséget, majd az oldal jobb oldalán az Azure elemet a Microsoft hatókörű Cloud Services szakaszában, ahol megtekintheti, hogy az Azure szinapszis-kompatibilis szolgáltatások milyen szolgáltatásokat biztosítanak.
 
-A. Ha valamilyen funkcióra vonatkozó kérést, küldje el a az [UserVoice-on] lap
+K. Csatlakozhatok Power BIhoz?
 
-K. Hogyan tehetem x?
+A. Igen! Habár Power BI támogatja az Azure szinapszis közvetlen lekérdezését, nem nagy számú felhasználó vagy valós idejű adatmennyiség számára készült. A Power BI éles felhasználásához a Power BI használatát javasoljuk Azure Analysis Services vagy Analysis Service-IaaS. 
 
-A. Az SQL Data Warehouse fejlesztésébe segítségért a kérdéseit teheti fel az [Stack Overflow] lapot. 
+K. Mik az SQL Analytics kapacitásának korlátai?
 
-K. Hogyan küldhetek be támogatási jegy?
+A. Tekintse meg a jelenlegi [Kapacitási korlátok] lapot. 
 
-A. [Támogatási jegy megjelenítése] Azure-portálon keresztül lehet benyújtani.
+K. Miért van a méretezési/szüneteltetési vagy folytatási művelet?
 
-## <a name="sql-languagefeature-support"></a>Az SQL nyelv/funkciók támogatása 
+A. Számos tényező befolyásolhatja a számítási felügyeleti műveletek idejét. A hosszú ideig futó műveletek esetében gyakori eset a tranzakciós visszaállítás. Ha egy méretezési vagy szüneteltetési műveletet kezdeményeznek, az összes bejövő munkamenet le lesz tiltva, és a rendszer leállítja a lekérdezéseket. Ahhoz, hogy a rendszer stabil állapotban maradjon, a tranzakciókat vissza kell állítani a művelet megkezdése előtt. Minél nagyobb a szám, és nagyobb a tranzakciók naplózási mérete, annál hosszabb a művelet, mert a rendszer stabil állapotba állítja vissza a műveletet.
 
-K. Milyen adattípusokat támogatja az SQL Data Warehouse?
+## <a name="user-support"></a>Felhasználói támogatás
 
-A. Tekintse meg az SQL Data Warehouse [adattípusok].
+K. Van egy szolgáltatási kérésem, hová tudom elküldeni?
 
-K. Milyen tábla funkciókat támogatja?
+A. Ha van szolgáltatási kérése, küldje el a [UserVoice-on] oldalon
 
-A. Az SQL Data Warehouse számos funkciót támogatja, míg az egyes nem támogatottak, és vannak dokumentálva [A tábla nem támogatott funkciók].
+K. Hogyan tehetek x-t?
+
+A. Ha segítségre van szüksége az Azure szinapszis használatával való fejlesztéshez, kérdéseket tehet fel [stack overflow] oldalunkon. 
+
+K. Hogyan támogatási jegyet küldeni?
+
+A. A [Támogatási jegyek] Azure Portalon keresztül lehet benyújtani.
+
+## <a name="sql-languagefeature-support"></a>SQL nyelv/funkció támogatása 
+
+K. Milyen adattípusok támogatottak?
+
+A. Lásd [az adattípusokat].
+
+K. Milyen funkciókat támogat?
+
+A. Számos funkció támogatott, azok, amelyek nem támogatottak, és nincsenek dokumentálva a nem támogatott [Nem támogatott táblázat-funkciók].
 
 ## <a name="tooling-and-administration"></a>Eszközök és felügyelet
 
-K. Támogatott adatbázis-projekt a Visual Studióban.
+K. Támogatja az adatbázis-projekteket a Visual Studióban.
 
-A. Jelenleg nem támogatott adatbázis-projekt a Visual Studióban az SQL Data warehouse-hoz. Ha szeretné leadott szavazattal lekérni ezt a szolgáltatást, látogasson el a User Voice [Adatbázis-funkcióigénylés projektek].
+A. Jelenleg nem támogatjuk az adatbázis-projekteket a Visual Studióban. Ha szavazást szeretne kapni a funkció beszerzéséhez, látogasson el a felhasználói hang [Adatbázis-projektekhez tartozó szolgáltatás kérése].
 
-K. Támogatja az SQL Data Warehouse a REST API-kat?
+K. Támogatja az SQL Analytics a REST API-kat?
 
-A. Igen. A lehető legtöbb REST-funkció, amely használható az SQL Database az SQL Data Warehouse is érhető el. Belül dokumentációs oldalát érintő REST API-t információkat vagy [MSDN].
+A. Igen. Az SQL Database használatával használható legtöbb REST-funkció az SQL Analytics szolgáltatásban is elérhető. A REST dokumentációs oldalain vagy az [MSDN]-en találhat API-információkat.
 
 
 ## <a name="loading"></a>Betöltés
 
-K. Milyen ügyfél illesztőprogramokat támogatja?
+K. Milyen ügyfél-illesztőprogramokat támogat?
 
-A. Illesztőprogram-támogatás a DW találhatók a [Kapcsolati sztringek] lap
+A. A DW illesztőprogram-támogatása a [Kapcsolati sztringek] oldalon található.
 
-K: Milyen fájlformátumok az SQL Data Warehouse a PolyBase által támogatott?
+K: milyen fájlformátumokat támogat a Base?
 
-V: Orc, RC, Parquet és egybesimított karakterrel elválasztott szöveg
+A: ork, RC, Parquet és laposan tagolt szöveg
 
-K: Milyen I kapcsolódhat a PolyBase az SQL DW? 
+K: milyen adatforrásokhoz csatlakozhatok a Base használatával? 
 
-V: [Azure Data Lake Store] és [Azure Storage Blobs]
+A: [Azure Data Lake Store] és [Azure Storage-Blobok]
 
-K: Számítási legördülő lista akkor lehetséges, ha az Azure Storage Blobsba vagy ADLS csatlakozik? 
+K: az Azure Storage-Blobokhoz vagy-ADLS való csatlakozáskor lehetséges a számítási pushdown? 
 
-V: Az SQL DW PolyBase nem, csak a tároló-összetevők végez műveleteket. 
+A: nem, a csak a Storage-összetevőkkel kommunikáló 
 
-K: Csatlakozhatok HDI?
+K: csatlakozhatok a HDI szolgáltatáshoz?
 
-V: HDI ADLS vagy WASB használhat a HDFS-összetevővel. Ha pedig a HDFS-réteget, majd betöltheti az adatokat az SQL DW-be. Azonban nem hozható létre legördülő lista számítási a HDI-példányhoz. 
+A: a HDI a ADLS vagy a WASB is használhatja a HDFS rétegként. Ha a HDFS rétege van, akkor az adatait az SQL DW-be töltheti be. Azonban nem hozhatja pushdown számítást a HDI-példányra. 
 
 ## <a name="next-steps"></a>További lépések
-Teljes az SQL Data Warehouse további információkért lásd: a [Áttekintés] lapot.
+Az Azure szinapszis egészére vonatkozó további információkért tekintse meg az [Áttekintés] oldalt.
 
 
 <!-- Article references -->
 [UserVoice-on]: https://feedback.azure.com/forums/307516-sql-data-warehouse
 [Kapcsolati sztringek]: ./sql-data-warehouse-connection-strings.md
 [Stack Overflow]: https://stackoverflow.com/questions/tagged/azure-sqldw
-[Támogatási jegy megjelenítése]: ./sql-data-warehouse-get-started-create-support-ticket.md
+[Támogatási jegyek]: ./sql-data-warehouse-get-started-create-support-ticket.md
 [Biztonság]: ./sql-data-warehouse-overview-manage-security.md
-[A Microsoft megfelelőségi]: https://www.microsoft.com/en-us/trustcenter/compliance/complianceofferings
-[kapacitáskorlátait]: ./sql-data-warehouse-service-capacity-limits.md
-[adattípusok]: ./sql-data-warehouse-tables-data-types.md
-[A tábla nem támogatott funkciók]: ./sql-data-warehouse-tables-overview.md#unsupported-table-features
+[Microsoft-megfelelőség]: https://www.microsoft.com/en-us/trustcenter/compliance/complianceofferings
+[Kapacitási korlátok]: ./sql-data-warehouse-service-capacity-limits.md
+[az adattípusokat]: ./sql-data-warehouse-tables-data-types.md
+[Nem támogatott táblázat-funkciók]: ./sql-data-warehouse-tables-overview.md#unsupported-table-features
 [Azure Data Lake Store]: ./sql-data-warehouse-load-from-azure-data-lake-store.md
-[Azure Storage Blobs]: ./sql-data-warehouse-load-from-azure-blob-storage-with-polybase.md
-[Adatbázis-funkcióigénylés projektek]: https://feedback.azure.com/forums/307516-sql-data-warehouse/suggestions/13313247-database-project-from-visual-studio-to-support-azu
+[Azure Storage-Blobok]: ./sql-data-warehouse-load-from-azure-blob-storage-with-polybase.md
+[Adatbázis-projektekhez tartozó szolgáltatás kérése]: https://feedback.azure.com/forums/307516-sql-data-warehouse/suggestions/13313247-database-project-from-visual-studio-to-support-azu
 [MSDN]: https://msdn.microsoft.com/library/azure/mt163685.aspx
 [Áttekintés]: ./sql-data-warehouse-overview-faq.md

@@ -1,23 +1,23 @@
 ---
 title: 'Lineáris regresszió: modul-hivatkozás'
-titleSuffix: Azure Machine Learning service
-description: Megtudhatja, hogyan használhatja a lineáris regressziós modult Azure Machine Learning szolgáltatásban egy lineáris regressziós modell létrehozásához egy folyamaton belül.
+titleSuffix: Azure Machine Learning
+description: Megtudhatja, hogyan hozhat létre egy lineáris regressziós modellt a Azure Machine Learning lineáris regressziós modullal a folyamatokban való használatra.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
-ms.date: 05/02/2019
-ms.openlocfilehash: 9c1dc34743d3fe65d50559d1b75aab1a0530d24c
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.date: 10/22/2019
+ms.openlocfilehash: 688bf923c07d9417b002b7cab6e3c0a0c8d20dae
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72693696"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73497745"
 ---
 # <a name="linear-regression-module"></a>Lineáris regressziós modul
-Ez a cikk a Azure Machine Learning szolgáltatás vizuális felületének (előzetes verzió) modulját ismerteti.
+Ez a cikk a Azure Machine Learning Designer (előzetes verzió) modulját ismerteti.
 
 Ezzel a modullal lineáris regressziós modellt hozhat létre a folyamatokban való használatra.  Lineáris regressziós kísérlet egy lineáris kapcsolat létrehozására egy vagy több független változó és egy numerikus eredmény, vagy egy függő változó között. 
 
@@ -63,7 +63,7 @@ Ez a modul két módszert támogat a regressziós modellek beépítéséhez, kü
 
 ## <a name="bkmk_OrdinaryLeastSquares"></a>Regressziós modell létrehozása a legkisebb négyzetek használatával
 
-1. Adja hozzá a **lineáris regressziós modell** modult a folyamathoz az illesztőfelületen.
+1. Adja hozzá a **lineáris regressziós modell** modult a folyamathoz a tervezőben.
 
     Ez a modul a **Machine learning** kategóriában található. Bontsa ki a **modell inicializálása**, majd a **regresszió**csomópontot, majd húzza a **lineáris regressziós modell** modult a folyamatba.
 
@@ -97,7 +97,7 @@ A betanítás befejezése után:
 
 ## <a name="bkmk_GradientDescent"></a>Regressziós modell létrehozása online átmenetes leereszkedés használatával
 
-1. Adja hozzá a **lineáris regressziós modell** modult a folyamathoz az illesztőfelületen.
+1. Adja hozzá a **lineáris regressziós modell** modult a folyamathoz a tervezőben.
 
     Ez a modul a **Machine learning** kategóriában található. Bontsa ki a **modell inicializálása**, majd a **regresszió**csomópontot, és húzza a **lineáris regressziós modell** modult a folyamatba.
 
@@ -141,6 +141,6 @@ A betanítás befejezése után:
 + Az előrejelzések létrehozásához csatlakoztassuk a betanított modellt a [pontszám modell](./score-model.md) modulhoz, az új bemeneti adatokkal együtt.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Tekintse [meg Azure Machine learning szolgáltatás számára elérhető modulok készletét](module-reference.md) . 
+Tekintse [meg a Azure Machine learning elérhető modulok készletét](module-reference.md) . 

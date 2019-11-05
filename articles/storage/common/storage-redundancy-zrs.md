@@ -9,12 +9,12 @@ ms.date: 06/28/2019
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: a343601ec126549926cfd4035d901862c0a585a8
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.openlocfilehash: e075091461949639fc36ffb9feab69ac5399ae61
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2019
-ms.locfileid: "71673097"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73491974"
 ---
 # <a name="zone-redundant-storage-zrs-for-building-highly-available-azure-storage-applications"></a>Zone-redundáns tárolás (ZRS) a magasan elérhető Azure Storage-alkalmazások létrehozásához
 
@@ -33,7 +33,7 @@ Az általános célú v2-fiókok esetében a ZRS általánosan elérhető a köv
 - Észak-Európa
 - Közép-Franciaország
 - Kelet-Japán
-- Az Egyesült Királyság déli régiója
+- Egyesült Királyság déli régiója
 - USA középső régiója
 - USA keleti régiója
 - USA 2. keleti régiója
@@ -42,6 +42,7 @@ Az általános célú v2-fiókok esetében a ZRS általánosan elérhető a köv
 A FileStorage-fiókok esetében a ZRS általánosan elérhető a következő régiókban:
 
 - Nyugat-Európa
+- USA keleti régiója
 
 A Microsoft továbbra is engedélyezi a ZRS további Azure-régiókban. Az új régiókkal kapcsolatos információkért olvassa el rendszeresen az [Azure szolgáltatás frissítéseinek](https://azure.microsoft.com/updates/) oldalát.
 
@@ -56,7 +57,7 @@ Az adatok továbbra is elérhetők olvasási és írási műveletekhez, még akk
 
 Ha egy zóna nem érhető el, az Azure hálózati frissítéseket végez, például a DNS-átállítást. Ezek a frissítések hatással lehetnek az alkalmazásra, ha a frissítések befejeződése előtt hozzáfér az adataihoz.
 
-Előfordulhat, hogy a ZRS nem nyújt védelmet olyan regionális katasztrófák ellen, ahol a rendszer több zónát tartósan érint. Ehelyett a ZRS rugalmasságot biztosít az adatai számára, ha átmenetileg elérhetetlenné válik. A regionális katasztrófák elleni védelem érdekében a Microsoft a Geo-redundáns tárolást (GRS) javasolja. A GRS kapcsolatos további információkért lásd [: Geo-redundáns tárolás (GRS): Régiók közötti replikáció az Azure Storage](storage-redundancy-grs.md)-ban.
+Előfordulhat, hogy a ZRS nem nyújt védelmet olyan regionális katasztrófák ellen, ahol a rendszer több zónát tartósan érint. Ehelyett a ZRS rugalmasságot biztosít az adatai számára, ha átmenetileg elérhetetlenné válik. A regionális katasztrófák elleni védelem érdekében a Microsoft a Geo-redundáns tárolást (GRS) javasolja. A GRS kapcsolatos további információkért lásd [: Geo-redundáns tárolás (GRS): régiók közötti replikáció az Azure Storage-](storage-redundancy-grs.md)hoz.
 
 ## <a name="converting-to-zrs-replication"></a>Átalakítás ZRS replikálásra
 
@@ -90,7 +91,7 @@ Tartsa szem előtt az alábbi korlátozásokat az élő áttelepítéssel kapcso
 - A fióknak adatait kell tartalmaznia.
 - Az adatátvitelt csak ugyanazon a régión belül végezheti el. Ha olyan ZRS-fiókba kívánja áttelepíteni az adatait, amely eltér a forrásoldali fióktól, akkor manuális áttelepítést kell végeznie.
 - Csak a standard szintű Storage-fiókok támogatják az élő áttelepítést. A Premium Storage-fiókokat manuálisan kell áttelepíteni.
-- A ZRS-ről LRS, GRS vagy RA-GRS-re való élő áttelepítés nem támogatott. Az új vagy meglévő Storage-fiókba manuálisan kell áthelyeznie az adatátvitelt.
+- A ZRS-ről LRS, GRS vagy RA-GRS-re való élő áttelepítés nem támogatott. Manuálisan kell áthelyeznie az adatokat egy új vagy meglévő tárfiókra.
 - A felügyelt lemezek csak a LRS számára érhetők el, és nem telepíthetők át a ZRS. A standard SSD-Managed Disks pillanatképeit és lemezképeit standard HDD tárolóban tárolhatja, és [választhat a LRS és a ZRS lehetőségek](https://azure.microsoft.com/pricing/details/managed-disks/)közül. A rendelkezésre állási csoportokkal való integrációról az [Azure Managed Disks bemutatása](https://docs.microsoft.com/azure/virtual-machines/windows/managed-disks-overview#integration-with-availability-sets)című témakörben olvashat.
 - Az archív adatokkal rendelkező LRS-vagy GRS-fiókok nem telepíthetők át a ZRS.
 
@@ -99,11 +100,11 @@ Az [Azure-támogatási portálon](https://ms.portal.azure.com/#blade/Microsoft_A
 2. A fiókadatok alapján végezze el az **alapvető** tudnivalókat. A **szolgáltatás** szakaszban válassza a **Storage-fiókok kezelése** elemet, majd a ZRS konvertálni kívánt erőforrást. 
 3. Kattintson a **Tovább** gombra. 
 4. A **probléma** szakasz a következő értékeket határozza meg: 
-    - **Súlyosság**: Hagyja meg az alapértelmezett értéket.
-    - **Probléma típusa**: Válassza **Az adatáttelepítés**lehetőséget.
-    - **Kategória**: Válassza **az áttelepítés a ZRS**lehetőséget.
-    - **Cím**: Írjon be egy leíró címet, például: ZRS- **fiók áttelepítése**.
-    - **Részletek**: Írja be a **részletek** mezőbe a további részleteket, például a következőt: szeretnék áttérni a ZRS a (z) [LRS, GRS] webhelyről a \_ @ no__t-2 régióban. 
+    - **Súlyosság**: hagyja meg az alapértelmezett értéket.
+    - **Probléma típusa**: válassza **Az adatáttelepítés**lehetőséget.
+    - **Kategória**: válassza **az áttelepítés a ZRS**lehetőséget.
+    - **Title**: adjon meg egy leíró címet, például **ZRS fiók áttelepítése**.
+    - **Részletek**: írja be a **részletek mezőbe a** további részleteket, például a (z) \_\_ régióban lévő [LRS, GRS] webhelyről szeretné áttelepíteni a ZRS. 
 5. Kattintson a **Tovább** gombra.
 6. A kapcsolattartási **adatok** panelen ellenőrizze, hogy helyesek-e a kapcsolattartási adatok.
 7. Kattintson a **Létrehozás** gombra.
@@ -136,7 +137,7 @@ Mielőtt elküld egy élő áttelepítésre vonatkozó kérelmet a ZRS, győződ
 
 Ha olyan ZRS-fiókba kívánja áttelepíteni az adatait, amely eltér a forrás fiók régiójától, akkor manuális áttelepítést kell végeznie.
 
-## <a name="zrs-classic-a-legacy-option-for-block-blobs-redundancy"></a>Klasszikus ZRS: Egy örökölt lehetőség a Blobok redundancia érdekében
+## <a name="zrs-classic-a-legacy-option-for-block-blobs-redundancy"></a>Klasszikus ZRS: egy örökölt lehetőség a Blobok redundancia érdekében
 > [!NOTE]
 > A Microsoft a ZRS klasszikus fiókjait a 2021. március 31-én fogja érvényteleníteni és áttelepíteni. További részletek a klasszikus ügyfelek ZRS az elavultság előtt. 
 >
@@ -146,7 +147,7 @@ A klasszikus ZRS aszinkron módon replikálja az adatközpontokat egy-két régi
 
 A klasszikus ZRS csak az általános célú v1-(GPv1-) Storage-fiókokban lévő **blokkos Blobok** esetén érhető el. További információ a tárfiókokról: [Az Azure-tárfiókok áttekintése](storage-account-overview.md).
 
-A ZRS-fiók adatainak manuális áttelepítéséhez egy LRS, a klasszikus, a GRS vagy az RA-GRS fiókból a következő eszközök egyikét használja: AzCopy, Azure Storage Explorer, Azure PowerShell vagy Azure CLI. Saját áttelepítési megoldást is létrehozhat az Azure Storage ügyféloldali kódtárainak egyikével.
+Ha manuálisan szeretné áttelepíteni a ZRS-fiók adatait egy LRS, a klasszikus, a GRS vagy az RA-GRS fiókba, akkor a következő eszközök egyikét használja: AzCopy, Azure Storage Explorer, Azure PowerShell vagy Azure CLI. Saját áttelepítési megoldást is létrehozhat az Azure Storage ügyféloldali kódtárainak egyikével.
 
 A ZRS klasszikus fiók (ok) ZRS is frissítheti a portálon, vagy Azure PowerShell vagy Azure CLI-t használhat azokban a régiókban, ahol a ZRS elérhető. A Azure Portal ZRS való frissítéséhez navigáljon a fiók **konfiguráció** szakaszára, és válassza a **frissítés**lehetőséget:
 
@@ -164,5 +165,5 @@ az storage account update -g <resource_group> -n <storage_account> --set kind=St
 
 ## <a name="see-also"></a>Lásd még
 - [Azure Storage replication (Azure Storage replikáció)](storage-redundancy.md)
-- [Helyileg redundáns tárolás (LRS): Alacsony költséghatékonyságú adatredundancia az Azure Storage szolgáltatásban](storage-redundancy-lrs.md)
-- [Geo-redundáns tárolás (GRS): Régiók közötti replikáció az Azure Storage-ban](storage-redundancy-grs.md)
+- [Helyileg redundáns tárolás (LRS): alacsony költséghatékonyságú adatredundancia az Azure Storage szolgáltatáshoz](storage-redundancy-lrs.md)
+- [Geo-redundáns tárolás (GRS): régiók közötti replikáció az Azure Storage-hoz](storage-redundancy-grs.md)

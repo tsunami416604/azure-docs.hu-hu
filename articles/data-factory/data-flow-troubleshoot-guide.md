@@ -7,12 +7,12 @@ ms.service: data-factory
 ms.topic: troubleshooting
 ms.date: 10/08/2019
 ms.author: makromer
-ms.openlocfilehash: 5cf4773ac781ae51a60ef7d987c3dc324c125d95
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 53c38af2208be6bb7cdb794ad0403456613f2df6
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72387726"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73486184"
 ---
 # <a name="troubleshoot-azure-data-factory-data-flows"></a>Azure Data Factory adatfolyamatok hibáinak megoldása
 
@@ -68,17 +68,25 @@ Ez a cikk a Azure Data Factory adatforgalmának gyakori hibaelhárítási módsz
 
 - **Megoldás**: módosítsa a létrehozni kívánt tábla nevét
 
+### <a name="error-message-df-sys-01-commicrosoftsqlserverjdbcsqlserverexception-string-or-binary-data-would-be-truncated"></a>Hibaüzenet: DF-SYS-01: com. microsoft. SQLServer. JDBC. SQLServerException: string vagy Binary (bináris) adatértékek csonkítva. 
+
+- **Tünetek**: Ha egy SQL-fogadóba ír be egy adatforgalmat, az adatfolyam a lehetséges csonkolt hiba miatt meghiúsul a folyamaton.
+
+- **OK**: az adatfolyamban lévő egyik mező az SQL-adatbázis egy oszlopára nem elég nagy az érték tárolásához, így az SQL-illesztőprogram ezt a hibát okozhatja.
+
+- **Megoldás**: csökkentheti a karakterlánc-oszlopok adatainak hosszát egy származtatott oszlopban lévő ```left()``` használatával, vagy a ["hiba sor" mintát.](how-to-data-flow-error-rows.md)
+
 ## <a name="general-troubleshooting-guidance"></a>Általános hibaelhárítási útmutató
 
 1. Keresse meg az adatkészlet kapcsolatainak állapotát. Minden forrás-és fogadó-átalakításban keresse fel a társított szolgáltatást minden Ön által használt adatkészlet esetében, és tesztelje a kapcsolatokat.
 2. Győződjön meg róla, hogy a fájl és a tábla kapcsolatainak állapota az adatfolyam-tervezőben található. Kapcsolja be a hibakeresést, és kattintson az adatelőnézetre a forrás-átalakításokban, és győződjön meg arról, hogy képes hozzáférni az adataihoz.
 3. Ha minden jól látható az adatok előnézetében, ugorjon a folyamat-tervezőbe, és helyezze át az adatfolyamatot egy folyamat tevékenységbe. Egy végpontok közötti teszt folyamatának hibakeresése.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További hibaelhárítási segítségért próbálja ki ezeket az erőforrásokat:
 
-*  [Data Factory blog](https://azure.microsoft.com/blog/tag/azure-data-factory/)
+*  [Data Factory-blog](https://azure.microsoft.com/blog/tag/azure-data-factory/)
 *  [Data Factory szolgáltatásra vonatkozó kérelmek](https://feedback.azure.com/forums/270578-data-factory)
 *  [Azure-videók](https://azure.microsoft.com/resources/videos/index/?sort=newest&services=data-factory)
 *  [MSDN-fórum](https://social.msdn.microsoft.com/Forums/home?sort=relevancedesc&brandIgnore=True&searchTerm=data+factory)

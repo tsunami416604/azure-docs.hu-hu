@@ -1,6 +1,6 @@
 ---
-title: Forgatókönyvek meghatározhatja és megtervezheti az analytics-folyamat - csoportos adatelemzési folyamat |} Az Azure Machine Learning
-description: Forgatókönyvek azonosítása és a bővített analitika adatfeldolgozása kulcs kérdéssor figyelembe vételével.
+title: Forgatókönyvek azonosítása és az elemzési folyamat megtervezése – csoportos adatelemzési folyamat | Azure Machine Learning
+description: Azonosíthatja a forgatókönyveket, és megtervezheti a fejlett elemzési adatok feldolgozását a legfontosabb kérdések sorozatának megfontolásával.
 services: machine-learning
 author: marktab
 manager: cgronlun
@@ -11,156 +11,154 @@ ms.topic: article
 ms.date: 11/13/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: d8eed4f2425cdbfec7d3addad11ddaba57e5370e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 46d0e8aa1fa934f778e950f0187a853ba46772d1
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64704487"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73495042"
 ---
 # <a name="how-to-identify-scenarios-and-plan-for-advanced-analytics-data-processing"></a>Forgatókönyvek azonosítása és a bővített analitika adatfeldolgozása
 
-Milyen erőforrásokra szüksége, hogy létrehoz egy környezetet, amely hajthat végre advanced analytics feldolgozási egy adatkészleten? Ez a cikk, amely segítségével azonosítható, a forgatókönyv feladatok és erőforrások a megfelelő kérdéseket tehet fel és sorozatát javasol.
+Milyen erőforrásokra van szükség ahhoz, hogy olyan környezetet hozzon létre, amely speciális analitikai feldolgozást végez egy adatkészleten? Ez a cikk számos kérdést javasol, amely segítséget nyújt a forgatókönyvhöz kapcsolódó feladatok és erőforrások azonosításában.
 
-A prediktív elemzési magas szintű lépéseinek sorrendjét kapcsolatos további információkért lásd: [Mi az a csoportos adatelemzési folyamat (TDSP)](overview.md). Minden lépés az adott forgatókönyvnek megfelelő feladatokat adott erőforrásokat igényel.
+A prediktív elemzések magas szintű lépéseinek sorrendjéről a [Mi a csoportos adatelemzési folyamat (TDSP)](overview.md)című témakörben tájékozódhat. Az egyes lépésekhez konkrét erőforrásokra van szükség az adott forgatókönyvhöz kapcsolódó feladatokhoz.
 
-Válaszoljon a legfontosabb kérdésekre a szituáció azonosítása, a következő területeken:
+A forgatókönyvek azonosításához a következő területeken kell válaszolnia a legfontosabb kérdésekre:
 
 * adatlogisztika
-* adatjellemzők
+* adatok jellemzői
 * adatkészlet minősége
 * előnyben részesített eszközök és nyelvek
 
-[!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
+## <a name="logistic-questions-data-locations-and-movement"></a>Logisztikai kérdések: az adathelyszínek és a mozgás
 
-## <a name="logistic-questions-data-locations-and-movement"></a>Logisztikai kérdések: adatok helyek és -mozgatás
+A logisztikai kérdések a következő elemeket fedik le:
 
-A logisztikai kérdéseket a következőkre terjed ki:
+* adatforrás helye
+* cél cél az Azure-ban
+* az adatáthelyezésre vonatkozó követelmények, beleértve az ütemtervet, az összeget és az érintett erőforrásokat
 
-* Adatforrás helye
-* célhely az Azure-ban
-* az adatok, többek között az ütemezést, az összeg és az erőforrások áthelyezése követelményei
+Előfordulhat, hogy az elemzési folyamat során többször kell áthelyeznie az adatátvitelt. Gyakori forgatókönyv, hogy a helyi adattárolást egy Azure-beli tárolóba helyezi át, majd Machine Learning Studioba.
 
-Szükség lehet az elemzés során többször az adatok áthelyezéséhez. Gyakran előfordul, hogy helyi adatok áthelyezése a storage valamilyen rendszerbe, az Azure-ban és Machine Learning studióba.
+### <a name="what-is-your-data-source"></a>Mi az adatforrás?
 
-### <a name="what-is-your-data-source"></a>Mi az az adatforrás?
+Helyi vagy Felhőbeli adatai vannak? A lehetséges helyszínek a következők:
 
-Az adatait, helyi vagy a felhőben? Lehetséges helyek a következők:
+* nyilvánosan elérhető HTTP-címek
+* helyi vagy hálózati fájl helye
+* egy SQL Server adatbázis
+* Azure Storage-tároló
 
-* a nyilvánosan elérhető HTTP-címe
-* egy helyi vagy hálózati helye
-* SQL Server-adatbázis
-* egy Azure storage-tároló
+### <a name="what-is-the-azure-destination"></a>Mi az Azure-cél?
 
-### <a name="what-is-the-azure-destination"></a>Mi az az Azure-beli cél?
-
-Ha nem az adatok kell feldolgozása vagy modellezési? 
+Hol kell az adatai feldolgozásához vagy modellezéséhez? 
 
 * Azure Blob Storage
-* SQL Azure-adatbázisok
+* Adatbázisok SQL Azure
 * Azure virtuális gépen futó SQL Server
-* HDInsight (Hadoop az Azure-ban) vagy a Hive-táblák
+* HDInsight (Hadoop az Azure-ban) vagy kaptár táblák
 * Azure Machine Learning
-* Csatlakoztatható az Azure virtuális merevlemezek
+* Azure-beli virtuális merevlemezek csatlakoztathatók
 
-### <a name="how-are-you-going-to-move-the-data"></a>Hogyan lesz a helyezi át az adatokat?
+### <a name="how-are-you-going-to-move-the-data"></a>Hogyan fogja áthelyezni az adatátvitelt?
 
-Az eljárások és erőforrások betöltését, vagy az adatok betöltése az számos különböző tárolási és feldolgozási környezetek lásd:
+Az olyan eljárások és erőforrások esetében, amelyek különböző tárolási és feldolgozási környezetekben töltik be vagy töltenek be adatot, tekintse meg a következőt:
 
-* [Adatok betöltése a tárolási környezetekbe elemzés céljából](ingest-data.md)
-* [A betanítási adatok importálása az Azure Machine Learning studióba különböző adatforrásokból](../studio/import-data.md)
+* [Adatgyűjtés tárolási környezetekben elemzés céljából](ingest-data.md)
+* [Betanítási adatok importálása Azure Machine Learning Studioba (klasszikus) különböző adatforrásokból](../studio/import-data.md)
 
-### <a name="does-the-data-need-to-be-moved-on-a-regular-schedule-or-modified-during-migration"></a>Az adatok áthelyezését rendszeres ütemezés szerint vagy módosítani a migrálás során nem kell?
+### <a name="does-the-data-need-to-be-moved-on-a-regular-schedule-or-modified-during-migration"></a>Át kell-e helyezni az adatátvitelt rendszeres időközönként, vagy módosítani kell az áttelepítés során?
 
-Fontolja meg az Azure Data Factory (ADF) használatát, ha folyamatosan áttelepíteni kívánt adatokat. Az ADF hasznos lehet:
+Vegye fontolóra Azure Data Factory (ADF) használatát, ha folyamatosan át kell telepíteni az adatátvitelt. Az ADF hasznos lehet a következőhöz:
 
-* egy hibrid forgatókönyvben, amely magában foglalja, mind a helyszíni és felhőbeli erőforrások
-* egy olyan forgatókönyvet, ahol az adatok tranzakció, módosítani vagy üzleti logikát az áttelepítendő képviselőinkkel módosította
+* hibrid forgatókönyv, amely a helyszíni és a Felhőbeli erőforrásokat egyaránt magában foglalja
+* olyan forgatókönyv, amelyben az üzleti logika az áttelepítés során az adatfeldolgozást, módosítást vagy módosítást végez
 
-További információkért lásd: [adatok áthelyezése a helyszíni SQL Serverről az SQL Azure, az Azure Data Factoryvel](move-sql-azure-adf.md).
+További információkért lásd: [adatok áthelyezése helyszíni SQL serverről SQL Azurera Azure Data Factory használatával](move-sql-azure-adf.md).
 
-### <a name="how-much-of-the-data-is-to-be-moved-to-azure"></a>Mekkora az adatokat, hogy az Azure-bA áthelyezni?
+### <a name="how-much-of-the-data-is-to-be-moved-to-azure"></a>Mennyibe kell helyezni az adatmennyiséget az Azure-ba?
 
-Rendkívül nagyméretű adatkészletek esetében előfordulhat, hogy bizonyos környezetekben tárolási kapacitásának túllépésére. Egy vonatkozó példáért tanulmányozza a méretbeli korlátokat a Machine Learning Studio a következő szakaszban. Ezekben az esetekben az elemzés során az adatok mintát használhat. Bemutatja, hogyan való egy adatkészletbe különböző Azure-alapú környezetekben a részletekért lásd: [mintát vesz az a csoportos adatelemzési folyamat](sample-data.md).
+A rendkívül nagy adatkészletek esetében előfordulhat, hogy bizonyos környezetek kapacitása meghaladja a tárolókapacitást. Példaként tekintse meg a következő szakaszban a Machine Learning Studio (klasszikus) méretének korlátozásait. Ilyen esetekben az elemzés során használhat egy mintát az adataihoz. Az adathalmazok különböző Azure-környezetekben történő lebontásával kapcsolatos részletekért lásd: [mintaadatok a csoportos adatelemzési folyamat során](sample-data.md).
 
-## <a name="data-characteristics-questions-type-format-and-size"></a>Jellemzők kérdésekre: típusa, formátum és mérete
+## <a name="data-characteristics-questions-type-format-and-size"></a>Az adatok jellemzőit érintő kérdések: típus, formátum és méret
 
-Ezek a kérdések kulcsfontosságúak a tárhely tervezésével és környezetek feldolgozása. Ezek segítséget, válassza ki a megfelelő forgatókönyv esetében az adatok típusát és a korlátozások ismertetése.
+Ezek a kérdések kulcsfontosságúak a tárolási és feldolgozási környezetek megtervezéséhez. Segítséget nyújtanak az adattípushoz tartozó megfelelő forgatókönyv kiválasztásában és az összes korlátozás megismerésében.
 
-### <a name="what-are-the-data-types"></a>Mik azok az adattípusokat?
+### <a name="what-are-the-data-types"></a>Mik az adattípusok?
 
 * Numerikus
 * Kategorikus
 * Sztringek
-* binary
+* Bináris
 
-### <a name="how-is-your-data-formatted"></a>Hogyan van formázva az adatok?
+### <a name="how-is-your-data-formatted"></a>Hogyan történik az adatai formázása?
 
-* Vesszővel tagolt (CSV) vagy tabulátorral tagolt (TSV) egybesimított fájlok
-* Tömörített és tömörítetlen
-* Azure-blobok
-* Hadoop Hive-táblák
-* Az SQL Server-táblák
+* Vesszővel tagolt (CSV) vagy tabulátorral tagolt (TSV) egyszerű fájlok
+* Tömörítve vagy tömörítetlen
+* Azure-Blobok
+* Hadoop-struktúra táblái
+* Táblák SQL Server
 
-### <a name="how-large-is-your-data"></a>Mekkora az adatait?
+### <a name="how-large-is-your-data"></a>Milyen nagy az adatai?
 
-* Kisméretű: 2 GB-nál kisebb
-* Közepes: Nagyobb, mint 2 GB és 10 GB-nál kisebb
-* Nagy méretű: 10 GB-nál nagyobb
+* Kicsi: kevesebb, mint 2 GB
+* Közepes: 2 GB-nál nagyobb és 10 GB-nál kevesebb
+* Nagyméretű: 10 GB-nál nagyobb
 
-Vegyük például az Azure Machine Learning Studio-környezetben:
+Használja például a Azure Machine Learning Studio (klasszikus) környezetet:
 
-* Az adatformátumok és az Azure Machine Learning Studio által támogatott típusok listáját lásd: [adatformátumok és a támogatott adattípusokat](../studio/import-data.md#supported-data-formats-and-data-types) szakaszban.
-* Információk az egyéb Azure-szolgáltatásokat használja az elemzés során vonatkozó korlátozások: [Azure-előfizetés és a szolgáltatások korlátozásai, kvótái és megkötései](../../azure-subscription-service-limits.md).
+* A Azure Machine Learning Studio által támogatott adatformátumok és típusok listáját az [adatformátumok és az adattípusok támogatottak](../studio/import-data.md#supported-data-formats-and-data-types) című szakaszban találja.
+* Az elemzési folyamatban használt egyéb Azure-szolgáltatások korlátaival kapcsolatos információkért lásd: Azure- [előfizetések és-szolgáltatások korlátai, kvótái és megkötései](../../azure-subscription-service-limits.md).
 
-## <a name="data-quality-questions-exploration-and-pre-processing"></a>Minőségi kérdésekre: adatáttekintési és előzetes feldolgozása
+## <a name="data-quality-questions-exploration-and-pre-processing"></a>Adatminőségi kérdések: feltárás és előzetes feldolgozás
 
-### <a name="what-do-you-know-about-your-data"></a>Mit tud az adataival kapcsolatban?
+### <a name="what-do-you-know-about-your-data"></a>Mit tud az adatairól?
 
-Megismerheti az adatokkal kapcsolatos alapvető jellemzői:
+Ismerje meg az adatok alapvető jellemzőit:
 
-* Mi mintáit, és a trendek, kiváló
-* Milyen kiugró értékek rendelkezik
-* Hány értékek hiányoznak.
+* Milyen mintákat vagy trendeket mutat
+* A kiugró elemek
+* Hány érték hiányzik
 
-Ebben a lépésben fontos segítséget:
+Ez a lépés azért fontos, hogy segítsen:
 
-* Határozza meg, mennyi előfeldolgozásához van szükség.
-* Állítson össze, amelyek a leginkább megfelelő szolgáltatásokat és elemzési típusú feltételezéseket
-* További adatok gyűjtési terveket dolgoznak ki
+* Annak meghatározása, hogy mennyi előzetes feldolgozásra van szükség
+* A legmegfelelőbb funkciókat vagy elemzési típusokat sugalló hipotézisek meghatározása
+* Tervek készítése további adatgyűjtés céljából
 
-Adatok vizsgálatra hasznos technikái a következők leíró statisztika számítási és vizualizációs látható. Bemutatja, hogyan fedezheti fel egy adatkészletbe különböző Azure-alapú környezetekben a részletekért lásd: [a csoportos adatelemzési folyamat az adatok megismerése](explore-data.md).
+Az adatok vizsgálatának hasznos módszerei közé tartozik a leíró statisztikai számítás és a vizualizációs ábrázolás. Az adatkészletek különböző Azure-környezetekben történő feltárásával kapcsolatos további információkért lásd: [adatok feltárása a csoportos adatelemzési folyamatban](explore-data.md).
 
-### <a name="does-the-data-require-preprocessing-or-cleaning"></a>Igényelnek-e az adatok előfeldolgozása vagy tisztítás?
+### <a name="does-the-data-require-preprocessing-or-cleaning"></a>Szükséges az adatfeldolgozás vagy a tisztítás?
 
-Szüksége lehet az adatok előfeldolgozása és a gépi tanulás az adatkészlet is hatékonyan használata előtt. Nyers adatok legtöbbször zajos és nem megbízható. Előfordulhat, hogy azt hiányzó értékeket. Az ilyen adatok használata a modellezési félrevezető eredményeket hozhat létre. Ismertetését lásd: [feladatok készíti elő az adatok bővített gépi tanulás](prepare-data.md).
+Előfordulhat, hogy az adatkészletnek a gépi tanuláshoz való hatékony használata előtt elő kell állítania és el kell végeznie az adatfeldolgozást. A nyers adatfeldolgozás gyakran zajos és megbízhatatlan. Lehet, hogy hiányzik az érték. Ha ilyen adatokat használ a modellezéshez, félrevezető eredményeket hozhat létre. Leírásért tekintse meg a [speciális gépi tanulásra vonatkozó adatok előkészítésének feladatait](prepare-data.md).
 
-## <a name="tools-and-languages-questions"></a>Eszközök és nyelvek kérdések
+## <a name="tools-and-languages-questions"></a>Eszközök és nyelvek kérdései
 
-Számos módon, fejlesztői környezetek és eszközök számára. Vegye figyelembe az igények és beállítások.
+A nyelvekhez, a fejlesztési környezetekhez és az eszközökhöz számos lehetőség áll rendelkezésre. Vegye figyelembe az igényeket és a preferenciákat.
 
-### <a name="what-languages-do-you-prefer-to-use-for-analysis"></a>Milyen nyelveket szeretné használni az elemzésre?
+### <a name="what-languages-do-you-prefer-to-use-for-analysis"></a>Milyen nyelveket szeretne használni az elemzéshez?
 
 * R
 * Python
 * SQL
 
-### <a name="what-tools-should-you-use-for-data-analysis"></a>Milyen eszközöket használja az adatok elemzésére?
+### <a name="what-tools-should-you-use-for-data-analysis"></a>Milyen eszközöket érdemes használni az adatelemzéshez?
 
-* [A Microsoft Azure Powershell](/powershell/azure/overview) -parancsfájl nyelvének az Azure-erőforrások felügyeletére szolgáló parancsfájl nyelvének
-* [Az Azure Machine Learning Studióban](../studio/what-is-ml-studio.md)
-* [A Revolution Analytics](https://www.microsoft.com/sql-server/machinelearningserver)
-* [Az RStudio](https://www.rstudio.com)
+* [Microsoft Azure PowerShell](/powershell/azure/overview) – az Azure-erőforrások parancsfájl-nyelven való felügyeletéhez használt parancsfájl nyelve
+* [Azure Machine Learning Studio](../studio/what-is-ml-studio.md)
+* [Revolution Analytics](https://www.microsoft.com/sql-server/machinelearningserver)
+* [RStudio](https://www.rstudio.com)
 * [Python Tools for Visual Studio](https://aka.ms/ptvsdocs)
 * [Anaconda](https://www.continuum.io/why-anaconda)
-* [Jupyter-notebookok](https://jupyter.org/)
+* [Jupyter notebookok](https://jupyter.org/)
 * [Microsoft Power BI](https://powerbi.microsoft.com)
 
-## <a name="identify-your-advanced-analytics-scenario"></a>A fejlett analitikai szituáció azonosítása
+## <a name="identify-your-advanced-analytics-scenario"></a>A fejlett elemzési forgatókönyv azonosítása
 
-Miután rendelkezik kérdéseire az előző szakaszban, készen áll határozza meg, melyik ajánlott módszer az esetet. A mintaként használható jelen forgatókönyvek leírt [az Azure Machine Learning speciális elemzési forgatókönyvek](plan-sample-scenarios.md).
+Miután megválaszolta az előző szakaszban leírtakat, készen áll annak meghatározására, hogy melyik forgatókönyv felel meg legjobban az esetnek. A példákat a [Azure Machine learning speciális elemzési forgatókönyvei](plan-sample-scenarios.md)ismertetik.
 
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Mi az a csoportos adatelemzési folyamat (TDSP)?](overview.md)
+> [Mi a csoportos adatelemzési folyamat (TDSP)?](overview.md)

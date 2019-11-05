@@ -1,160 +1,157 @@
 ---
-title: Kötegelt előrejelzések futtatása nagy mennyiségű adatfolyamatokkal
+title: Batch-következtetés futtatása nagy mennyiségű adattal
 titleSuffix: Azure Machine Learning
-description: Megtudhatja, hogyan teheti aszinkron módon a Batch-előrejelzéseket nagy mennyiségű adattal a Azure Machine Learning használatával.
+description: Megtudhatja, hogyan lehet aszinkron módon kikövetkeztetni a nagy mennyiségű adattal a Azure Machine Learning-ben a Batch-következtetések használatával. A Batch-következtetések párhuzamos feldolgozási képességeket biztosítanak a dobozból, és optimalizálja a nagy adatátviteli, a tűz-és a-elfelejthető következtetéseket a Big-adatok használati eseteiben.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
-ms.reviewer: jmartens, garye
-ms.author: jordane
-author: jpe316
-ms.date: 07/12/2019
-ms.openlocfilehash: 910974eac6a67c9c9fe68c502f2876ef68bb94eb
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.topic: tutorial
+ms.reviewer: trbye, jmartens, larryfr
+ms.author: tracych
+author: tracych
+ms.date: 11/04/2019
+ms.custom: Ignite2019
+ms.openlocfilehash: 4390fab3d59706bf692de46d17923dad4f9a8f21
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72028520"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73489612"
 ---
-# <a name="run-batch-predictions-on-large-data-sets-with-azure-machine-learning-pipelines"></a>A Batch-előrejelzések futtatása Azure Machine Learning folyamatokkal rendelkező nagyméretű adatkészleteken
+# <a name="run-batch-inference-on-large-amounts-of-data-by-using-azure-machine-learning"></a>Batch-következtetés futtatása nagy mennyiségű adattal a Azure Machine Learning használatával
+[!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-Ebből a cikkből megtudhatja, hogyan hajthat végre nagy mennyiségű adattal kapcsolatos előrejelzéseket aszinkron módon a ML-folyamatok Azure Machine Learning használatával.
+Ebben a útmutatóban megtudhatja, hogyan érheti el a nagy mennyiségű, aszinkron módon és párhuzamosan a Azure Machine Learning használatával. Az itt ismertetett batch-következtetési funkció nyilvános előzetes verzióban érhető el. Nagy teljesítményű és nagy átviteli sebességű módszer az adatok előállítására és feldolgozására. Aszinkron funkciókat biztosít a dobozból.
 
-A Batch-előrejelzés (vagy a kötegelt pontozás) költséghatékony következtetést biztosít, és az aszinkron alkalmazások esetében páratlan átviteli sebességgel rendelkezik. Batch-előrejelzési folyamatok üzemi környezetben elérhető adatokat több terabájtnyi következtetésekhez végrehajtásához méretezheti. A Batch-előrejelzés nagy adatgyűjtési sebességre, valamint a nagy adatgyűjtemények felébresztésére és előrejelzésére van optimalizálva.
+A Batch-következtetések révén egyszerűvé válik, hogy az offline adatmennyiséget a nagy mennyiségű, terabájtos üzemi adatokra épülő fürtökön is kibővítse, ami jobb termelékenységet és optimalizált költségeket eredményez.
 
->[!TIP]
-> Ha a rendszer kis késleltetésű feldolgozást igényel (egyetlen dokumentum feldolgozásához vagy a dokumentumok kis halmazának gyors létrehozásához), a kötegelt előrejelzés helyett [valós idejű pontozást](how-to-consume-web-service.md) használjon.
+Ebben az útmutatóban a következő feladatokat ismerheti meg:
 
-A következő lépésekben létre fog hozni egy [Machine learning-folyamatot](concept-ml-pipelines.md) egy előre képzett számítógépes jövőkép-modell (a[kezdetektől a v3](https://arxiv.org/abs/1512.00567)) regisztrálásához. Ezután az előre betanított modell használatával kötegelt pontozást hajthat végre az Azure Blob Storage-fiókban elérhető rendszerképeken. Ezek a lemezképek használt pontozási címke nélküli a lemezképeket a [épít](http://image-net.org/) adatkészlet.
+> * Hozzon létre egy távoli számítási erőforrást.
+> * Egyéni következtetési parancsfájlt írhat.
+> * Hozzon létre egy [gépi tanulási folyamatot](concept-ml-pipelines.md) , amely a [MNIST](https://publicdataset.azurewebsites.net/dataDetail/mnist/) adatkészlet alapján regisztrálja az előre betanított képbesorolási modellt. 
+> * A modell használatával futtathat batch-következtetéseket az Azure Blob Storage-fiókjában elérhető mintaképeken. 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy ingyenes fiókot. Próbálja ki a [Azure Machine learning ingyenes vagy fizetős verzióját](https://aka.ms/AMLFree).
+* Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy ingyenes fiókot. Próbálja ki a [Azure Machine learning ingyenes vagy fizetős verzióját](https://aka.ms/AMLFree).
 
-- Állítsa be a fejlesztési környezetet az Azure Machine Learning SDK telepítése. További információkért lásd: [a fejlesztési környezet konfigurálása az Azure Machine Learning](how-to-configure-environment.md).
+* Az interaktív gyors útmutatóhoz végezze el a [telepítési oktatóanyagot](tutorial-1st-experiment-sdk-setup.md) , ha még nem rendelkezik Azure Machine learning munkaterülettel vagy notebook virtuális géppel. 
 
-- Hozzon létre egy Azure Machine Learning-munkaterületet, amely tárolja az folyamat-erőforrások. A következő kódot használhatja, vagy további beállításokért lásd: [munkaterület konfigurációs fájl létrehozása](how-to-configure-environment.md#workspace).
+* A saját környezetének és függőségeinek kezeléséhez tekintse meg a saját környezet konfigurálásának [útmutatója](how-to-configure-environment.md) című témakört. Futtassa `pip install azureml-sdk[notebooks] azureml-pipeline-core azureml-contrib-pipeline-steps` a környezetben a szükséges függőségek letöltéséhez.
 
-  ```python
-  from azureml.core import Workspace
-  ws = Workspace.create(name = '<workspace-name>',
-                        subscription_id = '<subscription-id>',
-                        resource_group = '<resource-group>',
-                        location = '<workspace_region>',
-                        exist_ok = True
-                        )
-  ```
+## <a name="set-up-machine-learning-resources"></a>Gépi tanulási erőforrások beállítása
 
-## <a name="set-up-machine-learning-resources"></a>Állítsa be a machine learning-erőforrások
+A következő műveletek a Batch-következtetési folyamat futtatásához szükséges erőforrásokat határozzák meg:
 
-A következő lépésekkel állíthatja be a folyamat futtatásához szükséges erőforrásokat:
+- Hozzon létre egy adattárolót, amely olyan blob-tárolóra mutat, amely tartalmaz képeket a következtetésekhez.
+- Állítsa be az adathivatkozásokat bemenetként és kimenetként a Batch következtetési folyamat lépéséhez.
+- Állítson be egy számítási fürtöt a Batch következtetési lépés futtatásához.
 
-- Elérni az adattárhoz, amely már rendelkezik a modell imagenet, bemeneti címke és képek pontszámot rendelni az (ez már be van állítva az Ön számára).
-- Egy adattár beállítása a kimenetek tárolásához.
-- Konfigurálja a @ no__t-0 @ no__t-1objects, hogy az előző adattárolók adatpontjára mutasson.
-- Állítsa be a számítási gépek vagy fürtök, ahol a folyamat lépései futni fog.
+### <a name="create-a-datastore-with-sample-images"></a>Adattár létrehozása minta-lemezképekkel
 
-### <a name="access-the-datastores"></a>Hozzáférés az adattárolók
+Szerezze be a MNIST kiértékelését a nyilvános blob-tárolóból `sampledata` egy `pipelinedata`nevű fiókban. Hozzon létre egy `mnist_datastore`nevű adattárt, amely erre a tárolóra mutat. A következő hívásban, hogy `register_azure_blob_container`, a `overwrite` jelzőt úgy állítsa be, hogy `True` felülírja a korábban ezzel a névvel létrehozott adattárat. 
 
-Első lépésként elérni az adattárhoz, amely rendelkezik a modell, a címkék és a képek.
-
-Használjon egy *SampleData*nevű nyilvános BLOB-tárolót a *pipelinedata* -fiókban, amely a ImageNet kiértékelési csoport képeit tárolja. Az adattár neve a nyilvános tárolókban *images_datastore*. Az adattároló regisztrálja a munkaterülethez:
+Ezt a lépést módosíthatja úgy, hogy a blob-tárolóra mutasson úgy, hogy megadja a saját értékeit `datastore_name`, `container_name`és `account_name`.
 
 ```python
 from azureml.core import Datastore
+from azureml.core import Workspace
 
-account_name = "pipelinedata"
-datastore_name = "images_datastore"
-container_name = "sampledata"
+# Load workspace authorization details from config.json
+ws = Workspace.from_config()
 
-batchscore_blob = Datastore.register_azure_blob_container(ws,
-                                                          datastore_name=datastore_name,
-                                                          container_name=container_name,
-                                                          account_name=account_name,
-                                                          overwrite=True)
+mnist_blob = Datastore.register_azure_blob_container(ws, 
+                      datastore_name="mnist_datastore", 
+                      container_name="sampledata", 
+                      account_name="pipelinedata",
+                      overwrite=True)
 ```
 
-Ezután állítsa be, hogy az alapértelmezett adattárt használja a kimenetekhez.
+Ezután adja meg a munkaterület alapértelmezett adattárát kimeneti adattárként. Ezt fogja használni a következtetési kimenethez.
 
-Amikor létrehoz egy munkaterületet, [Azure Files](https://docs.microsoft.com/azure/storage/files/storage-files-introduction) and [blob Storage](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-introduction) are alapértelmezés szerint csatolva van a munkaterülethez. Azure Files a munkaterület alapértelmezett adattára, de a blob Storage-t is használhatja adattárként. További információ: [Azure Storage-beállítások](https://docs.microsoft.com/azure/storage/common/storage-decide-blobs-files-disks).
+A munkaterület létrehozásakor [Azure Files](https://docs.microsoft.com/azure/storage/files/storage-files-introduction) és a [blob Storage](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-introduction) alapértelmezés szerint a munkaterülethez van csatolva. Azure Files a munkaterület alapértelmezett adattára, de a blob Storage-t is használhatja adattárként. További információ: [Azure Storage-beállítások](https://docs.microsoft.com/azure/storage/common/storage-decide-blobs-files-disks).
 
 ```python
 def_data_store = ws.get_default_datastore()
 ```
 
-### <a name="configure-data-references"></a>Adatok hivatkozások konfigurálása
+### <a name="configure-data-inputs-and-outputs"></a>Adatbemenetek és kimenetek konfigurálása
 
-Most már hivatkozhat az adatokat a folyamatban, bemeneteként a folyamat lépéseit.
+Most be kell állítania az adatbemeneteket és kimeneteket, beleértve a következőket:
 
-Egy adatforrás egy adott folyamat képviseli egy [DataReference](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference) objektum. A @ no__t-0 @ no__t-1object olyan adatokra mutat, amelyek a-ben vagy egy adattárból érhetők el. A bemeneti képekhez használt könyvtárhoz `DataReference` @ no__t-1objects kell lennie, az előre betanított modellt tároló könyvtár, a címkék könyvtára és a kimeneti könyvtár.
+- A bemeneti képeket tartalmazó könyvtár.
+- Az a könyvtár, ahol az előre betanított modellt tárolják.
+- A címkéket tartalmazó könyvtár.
+- A kimenet könyvtára.
+
+a `Dataset` egy olyan osztály, amely a Azure Machine Learningban lévő adatelemzést, átalakítást és felügyeletet végzi. Ennek az osztálynak két típusa van: `TabularDataset` és `FileDataset`. Ebben a példában a `FileDataset` fogja használni bemenetként a Batch következtetési folyamatának lépéséhez. 
+
+> [!NOTE] 
+> a Batch-következtetések `FileDataset` támogatása jelenleg az Azure Blob Storage-ra korlátozódik. 
+
+Az egyéni következtetési parancsfájlban más adatkészletekre is hivatkozhat. Használhatja például a parancsfájlban lévő feliratok elérését a képek címkézéséhez `Dataset.register` és `Dataset.get_by_name`használatával.
+
+További információ a Azure Machine Learning adatkészletekről: [adatkészletek létrehozása és elérése (előzetes verzió)](https://docs.microsoft.com/azure/machine-learning/service/how-to-create-register-datasets).
+
+a köztes adatátviteli folyamat lépései között `PipelineData` objektumok használhatók. Ebben a példában a következtetést a kimenetek megjelenítéséhez használja.
 
 ```python
-from azureml.data.data_reference import DataReference
+from azureml.core.dataset import Dataset
 
-input_images = DataReference(datastore=batchscore_blob,
-                             data_reference_name="input_images",
-                             path_on_datastore="batchscoring/images",
-                             mode="download")
+mnist_ds_name = 'mnist_sample_data'
 
-model_dir = DataReference(datastore=batchscore_blob,
-                          data_reference_name="input_model",
-                          path_on_datastore="batchscoring/models",
-                          mode="download")
+path_on_datastore = mnist_blob.path('mnist/')
+input_mnist_ds = Dataset.File.from_files(path=path_on_datastore, validate=False)
+registered_mnist_ds = input_mnist_ds.register(ws, mnist_ds_name, create_new_version=True)
+named_mnist_ds = registered_mnist_ds.as_named_input(mnist_ds_name)
 
-label_dir = DataReference(datastore=batchscore_blob,
-                          data_reference_name="input_labels",
-                          path_on_datastore="batchscoring/labels",
-                          mode="download")
-
-output_dir = PipelineData(name="scores",
-                          datastore=def_data_store,
-                          output_path_on_compute="batchscoring/results")
+output_dir = PipelineData(name="inferences", 
+                          datastore=def_data_store, 
+                          output_path_on_compute="mnist/results")
 ```
 
-### <a name="set-up-compute-target"></a>Állítsa be a számítási célnak
+### <a name="set-up-a-compute-target"></a>Számítási cél beállítása
 
-Azure Machine Learning a *számítási* (vagy *számítási cél*) a gépi tanulási folyamat számítási lépéseit végrehajtó gépekre vagy fürtökre vonatkozik. Létrehozhat például egy Azure Machine Learning-számítást a [AmlCompute](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute%28class%29?view=azure-ml-py) osztály használatával.
+Azure Machine Learning a *számítási* (vagy *számítási cél*) a gépi tanulási folyamat számítási lépéseit végrehajtó gépekre vagy fürtökre vonatkozik. Futtassa a következő kódot egy CPU-alapú [AmlCompute](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute.amlcompute?view=azure-ml-py) -cél létrehozásához.
 
 ```python
-from azureml.core.compute import AmlCompute
-from azureml.core.compute import ComputeTarget
+from azureml.core.compute import AmlCompute, ComputeTarget
+from azureml.core.compute_target import ComputeTargetException
 
-compute_name = "gpucluster"
-compute_min_nodes = 0
-compute_max_nodes = 4
-vm_size = "STANDARD_NC6"
+# choose a name for your cluster
+compute_name = os.environ.get("AML_COMPUTE_CLUSTER_NAME", "cpu-cluster")
+compute_min_nodes = os.environ.get("AML_COMPUTE_CLUSTER_MIN_NODES", 0)
+compute_max_nodes = os.environ.get("AML_COMPUTE_CLUSTER_MAX_NODES", 4)
+
+# This example uses CPU VM. For using GPU VM, set SKU to STANDARD_NC6
+vm_size = os.environ.get("AML_COMPUTE_CLUSTER_SKU", "STANDARD_D2_V2")
+
 
 if compute_name in ws.compute_targets:
     compute_target = ws.compute_targets[compute_name]
     if compute_target and type(compute_target) is AmlCompute:
-        print('Found compute target. just use it. ' + compute_name)
+        print('found compute target. just use it. ' + compute_name)
 else:
-    print('Creating a new compute target...')
-    provisioning_config = AmlCompute.provisioning_configuration(
-        vm_size=vm_size,  # NC6 is GPU-enabled
-        vm_priority='lowpriority',  # optional
-        min_nodes=compute_min_nodes,
-        max_nodes=compute_max_nodes)
+    print('creating a new compute target...')
+    provisioning_config = AmlCompute.provisioning_configuration(vm_size = vm_size,
+                                                                min_nodes = compute_min_nodes, 
+                                                                max_nodes = compute_max_nodes)
 
     # create the cluster
-    compute_target = ComputeTarget.create(ws,
-                                          compute_name,
-                                          provisioning_config)
-
-    compute_target.wait_for_completion(
-        show_output=True,
-        min_node_count=None,
-        timeout_in_minutes=20)
+    compute_target = ComputeTarget.create(ws, compute_name, provisioning_config)
+    
+    # can poll for a minimum number of nodes and for a specific timeout. 
+    # if no min node count is provided it will use the scale settings for the cluster
+    compute_target.wait_for_completion(show_output=True, min_node_count=None, timeout_in_minutes=20)
+    
+     # For a more detailed view of current AmlCompute status, use get_status()
+    print(compute_target.get_status().serialize())
 ```
 
 ## <a name="prepare-the-model"></a>A modell előkészítése
 
-A pretrained modell használata előtt kell a modell letöltése és a munkaterülethez való regisztrálásához.
-
-### <a name="download-the-pretrained-model"></a>Töltse le a pretrained modell
-
-Töltse le a imagenet számítógépes látástechnológiai modellel (InceptionV3) származó <http://download.tensorflow.org/models/inception_v3_2016_08_28.tar.gz>. Ezután bontsa ki a `models` almappába.
+[Töltse le az előre betanított rendszerkép besorolási modelljét](https://pipelinedata.blob.core.windows.net/mnist-model/mnist-tf.tar.gz), majd bontsa ki a `models` könyvtárba.
 
 ```python
 import os
@@ -165,197 +162,194 @@ model_dir = 'models'
 if not os.path.isdir(model_dir):
     os.mkdir(model_dir)
 
-url = "http://download.tensorflow.org/models/inception_v3_2016_08_28.tar.gz"
+url="https://pipelinedata.blob.core.windows.net/mnist-model/mnist-tf.tar.gz"
 response = urllib.request.urlretrieve(url, "model.tar.gz")
 tar = tarfile.open("model.tar.gz", "r:gz")
 tar.extractall(model_dir)
 ```
 
-### <a name="register-the-model"></a>Regisztrálja a modellt
-
-A modell regisztrálása:
+Ezután regisztrálja a modellt a munkaterületén, hogy elérhető legyen a távoli számítási erőforrás számára.
 
 ```python
-import shutil
 from azureml.core.model import Model
 
-# register downloaded model
-model = Model.register(
-    model_path="models/inception_v3.ckpt",
-    model_name="inception",  # This is the name of the registered model
-    tags={'pretrained': "inception"},
-    description="Imagenet trained tensorflow inception",
-    workspace=ws)
+# Register the downloaded model 
+model = Model.register(model_path="models/",
+                       model_name="mnist",
+                       tags={'pretrained': "mnist"},
+                       description="Mnist trained tensorflow model",
+                       workspace=ws)
 ```
 
-## <a name="write-your-scoring-script"></a>A pontozó szkript írása
+## <a name="write-your-inference-script"></a>Következtetési parancsfájl írása
 
 >[!Warning]
->A következő kód csak egy minta, amely a [minta notebook](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines/pipeline-batch-scoring/pipeline-batch-scoring.ipynb)által használt [batch_score.](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines/pipeline-batch-scoring/batch_scoring.py) másolási fájlban található. A forgatókönyvhöz létre kell hoznia egy saját pontozási szkriptet.
+>A következő kód csak egy minta, amelyet a [mintaként használt jegyzetfüzet](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines/pipeline-batch-scoring/notebooks/contrib/batch_inferencing/file-dataset-image-inference-mnist.ipynb) használ. Saját parancsfájlt kell létrehoznia a forgatókönyvhöz.
 
-A `batch_score.py` parancsfájl bemeneti képeket készít a *dataset_path*, a *model_dir* -ben előre betanított modellekben, és *Results-Label. txt* kimenetet küld a *output_dir*.
+A parancsfájlnak két függvényt *kell tartalmaznia* :
+- `init()`: használja ezt a funkciót bármilyen költséges vagy közös felkészüléshez a későbbi következtetésekhez. Használhatja például a modell betöltését egy globális objektumba.
+-  `run(mini_batch)`: a függvény minden egyes `mini_batch` példánynál futni fog.
+    -  `mini_batch`: a Batch-következtetés meghívja a Run metódust, és egy listát vagy pandák DataFrame ad át a metódus argumentumaként. A min_batch minden bejegyzése-egy filepath, ha a bemenet egy FileDataset, egy Panda DataFrame, ha a bemenet egy TabularDataset.
+    -  `response`: a Run () metódusnak egy Panda DataFrame vagy egy tömböt kell visszaadnia. A append_row output_action a visszaadott elemeket a rendszer a közös kimeneti fájlba fűzi. A summary_only esetében a rendszer figyelmen kívül hagyja az elemek tartalmát. Az összes kimeneti művelet esetében minden visszaadott kimeneti elem a bemeneti mini-batch bemeneti elemének egy sikeres következtetését jelzi. A felhasználónak meg kell győződnie arról, hogy elegendő adat szerepel a következtetési eredményben, hogy leképezje a bemenetet. A következtetés kimenete kimeneti fájlban lesz megírva, és nem garantált, hogy sorrendben legyenek, a felhasználónak a kimenetben lévő egyes kulcsokat kell használnia a bemenethez való leképezéshez.
 
 ```python
-# Snippets from a sample scoring script
-# Refer to the accompanying batch-scoring Notebook
-# https://github.com/Azure/MachineLearningNotebooks/blob/master/pipeline/pipeline-batch-scoring.ipynb
-# for the implementation script
+# Snippets from a sample script.
+# Refer to the accompanying digit_identification.py
+# (https://github.com/Azure/MachineLearningNotebooks/blob/master/pipeline/digit_identification.py)
+# for the implementation script.
 
-# Get labels
-def get_class_label_dict(label_file):
-  label = []
-  proto_as_ascii_lines = tf.gfile.GFile(label_file).readlines()
-  for l in proto_as_ascii_lines:
-    label.append(l.rstrip())
-  return label
+import os
+import numpy as np
+import tensorflow as tf
+from PIL import Image
+from azureml.core import Model
 
-class DataIterator:
-  # Definition of the DataIterator here
 
-def main(_):
-    # Refer to batch-scoring Notebook for implementation.
-    label_file_name = os.path.join(args.label_dir, "labels.txt")
-    label_dict = get_class_label_dict(label_file_name)
-    classes_num = len(label_dict)
-    test_feeder = DataIterator(data_dir=args.dataset_path)
-    total_size = len(test_feeder.labels)
+def init():
+    global g_tf_sess
 
-    # get model from model registry
-    model_path = Model.get_model_path(args.model_name)
-    with tf.Session() as sess:
-        test_images = test_feeder.input_pipeline(batch_size=args.batch_size)
-        with slim.arg_scope(inception_v3.inception_v3_arg_scope()):
-            input_images = tf.placeholder(tf.float32, [args.batch_size, image_size, image_size, num_channel])
-            logits, _ = inception_v3.inception_v3(input_images,
-                                                        num_classes=classes_num,
-                                                        is_training=False)
-            probabilities = tf.argmax(logits, 1)
+    # Pull down the model from the workspace
+    model_path = Model.get_model_path("mnist")
 
-        sess.run(tf.global_variables_initializer())
-        sess.run(tf.local_variables_initializer())
-        coord = tf.train.Coordinator()
-        threads = tf.train.start_queue_runners(sess=sess, coord=coord)
-        saver = tf.train.Saver()
-        saver.restore(sess, model_path)
-        out_filename = os.path.join(args.output_dir, "result-labels.txt")
+    # Construct a graph to execute
+    tf.reset_default_graph()
+    saver = tf.train.import_meta_graph(os.path.join(model_path, 'mnist-tf.model.meta'))
+    g_tf_sess = tf.Session()
+    saver.restore(g_tf_sess, os.path.join(model_path, 'mnist-tf.model'))
 
-        # copy the file to artifacts
-        shutil.copy(out_filename, "./outputs/")
+
+def run(mini_batch):
+    print(f'run method start: {__file__}, run({mini_batch})')
+    resultList = []
+    in_tensor = g_tf_sess.graph.get_tensor_by_name("network/X:0")
+    output = g_tf_sess.graph.get_tensor_by_name("network/output/MatMul:0")
+
+    for image in mini_batch:
+        # Prepare each image
+        data = Image.open(image)
+        np_im = np.array(data).reshape((1, 784))
+        # Perform inference
+        inference_result = output.eval(feed_dict={in_tensor: np_im}, session=g_tf_sess)
+        # Find the best probability, and add it to the result list
+        best_result = np.argmax(inference_result)
+        resultList.append("{}: {}".format(os.path.basename(image), best_result))
+
+    return resultList
 ```
 
-## <a name="build-and-run-the-batch-scoring-pipeline"></a>Hozza létre és futtassa a kötegelt pontozási folyamat
+## <a name="build-and-run-the-batch-inference-pipeline"></a>A Batch-következtetési folyamat létrehozása és futtatása
+
+Most már mindent megtalál, amire szüksége lehet a folyamat létrehozásához.
 
 ### <a name="prepare-the-run-environment"></a>A futtatási környezet előkészítése
 
-Adja meg a parancsfájlt a conda-függőségeket. Erre az objektumra később szüksége lesz, amikor létrehozza a folyamat lépését.
+Először adja meg a parancsfájl függőségeit. Ezt az objektumot később kell használni, amikor létrehozza a folyamat lépését.
 
 ```python
-from azureml.core.runconfig import DEFAULT_GPU_IMAGE
-from azureml.core.runconfig import RunConfiguration
+from azureml.core import Environment
 from azureml.core.conda_dependencies import CondaDependencies
+from azureml.core.runconfig import DEFAULT_GPU_IMAGE
 
-cd = CondaDependencies.create(
-    pip_packages=["tensorflow-gpu==1.10.0", "azureml-defaults"])
+batch_conda_deps = CondaDependencies.create(pip_packages=["tensorflow==1.13.1", "pillow"])
 
-# Runconfig
-amlcompute_run_config = RunConfiguration(conda_dependencies=cd)
-amlcompute_run_config.environment.docker.enabled = True
-amlcompute_run_config.environment.docker.gpu_support = True
-amlcompute_run_config.environment.docker.base_image = DEFAULT_GPU_IMAGE
-amlcompute_run_config.environment.spark.precache_packages = False
+batch_env = Environment(name="batch_environment")
+batch_env.python.conda_dependencies = batch_conda_deps
+batch_env.docker.enabled = True
+batch_env.docker.base_image = DEFAULT_CPU_IMAGE
+batch_env.spark.precache_packages = False
 ```
 
-### <a name="specify-the-parameter-for-your-pipeline"></a>Adja meg a paramétert a folyamat
+### <a name="specify-the-parameters-for-your-batch-inference-pipeline-step"></a>Adja meg a Batch-következtetési folyamat lépésének paramétereit
 
-Hozzon létre egy folyamat paramétert egy alapértelmezett értékkel rendelkező [PipelineParameter](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.pipelineparameter?view=azure-ml-py) object használatával.
+a `ParallelRunConfig` az újonnan bevezetett batch következtetések `ParallelRunStep` példányának fő konfigurációja a Azure Machine Learning folyamaton belül. Ezzel a paranccsal becsomagolhatja a parancsfájlt, és konfigurálhatja a szükséges paramétereket, beleértve a következők mindegyikét:
+- `entry_script`: egy felhasználói parancsfájl helyi fájl elérési útjaként, amely több csomóponton párhuzamosan fog futni. Ha `source_directly` létezik, használjon relatív elérési utat. Ellenkező esetben használja a gépen elérhető bármely elérési utat.
+- `mini_batch_size`: a mini-batch egyetlen `run()` hívásnak átadott mérete. (Nem kötelező; az alapértelmezett érték `1`.)
+    - `FileDataset`esetén a `1`minimális értékkel rendelkező fájlok száma. Több fájlt is egyesítheti egyetlen mini-kötegbe.
+    - `TabularDataset`esetében ez az adatmennyiség. Az értékek például a következők: `1024`, `1024KB`, `10MB`és `1GB`. Az ajánlott érték `1MB`. Vegye figyelembe, hogy a `TabularDataset` mini-batch soha nem fogja meghaladni a fájlok határait. Ha például. csv fájlokkal rendelkezik, amelyek különböző méretűek, a legkisebb fájl 100 KB, a legnagyobb pedig 10 MB. Ha `mini_batch_size = 1MB`, akkor az 1 MB-nál kisebb méretű fájlok egyetlen mini batch-ként lesznek kezelve. Az 1 MB-nál nagyobb méretű fájlok több mini-kötegre lesznek felosztva.
+- `error_threshold`: a feldolgozás során figyelmen kívül hagyott `FileDataset` esetén a `TabularDataset` és a fájlok meghibásodása miatti hibák száma. Ha a teljes bemenethez tartozó hibák száma meghaladja ezt az értéket, a rendszer leállítja a feladatot. A hiba küszöbértéke a teljes bemenetre vonatkozik, nem az `run()` metódusnak eljuttatott egyes mini-kötegekhez. A tartomány `[-1, int.max]`. A `-1` rész azt jelzi, hogy a rendszer figyelmen kívül hagyja az összes hibát a feldolgozás során.
+- `output_action`: a következő értékek egyike azt jelzi, hogyan lesz rendszerezve a kimenet:
+    - `summary_only`: a felhasználói parancsfájl a kimenetet fogja tárolni. `ParallelRunStep` a kimenetet csak a hiba küszöbértékének kiszámításakor fogja használni.
+    - `append_row`: minden bemeneti fájl esetében a kimeneti mappában csak egy fájl lesz létrehozva, hogy az összes kimenetet sor szerint elválasztva fűzze hozzá. A fájl neve parallel_run_step. txt lesz.
+- `source_directory`: a számítási célra végrehajtandó összes fájlt tartalmazó mappák elérési útja (nem kötelező).
+- `compute_target`: csak `AmlCompute` támogatott.
+- `node_count`: a felhasználói parancsfájl futtatásához használandó számítási csomópontok száma.
+- `process_count_per_node`: a folyamatok száma egy csomóponton.
+- `environment`: a Python-környezet definíciója. Konfigurálhatja egy meglévő Python-környezet használatára, vagy létrehozhat egy ideiglenes környezetet a kísérlethez. A definíció a szükséges alkalmazás-függőségek (opcionális) beállítására is felelős.
+- `logging_level`: részletes naplózás. A részletességgel bővülő értékek a következők: `WARNING`, `INFO`és `DEBUG`. Az alapértelmezett érték `INFO` (nem kötelező).
+- `run_invocation_timeout`: a `run()` metódus meghívásának időtúllépése másodpercben. Az alapértelmezett érték `60`.
 
 ```python
-from azureml.pipeline.core.graph import PipelineParameter
-batch_size_param = PipelineParameter(
-    name="param_batch_size",
-    default_value=20)
-```
+from azureml.contrib.pipeline.steps import ParallelRunConfig
 
-### <a name="create-the-pipeline-step"></a>A folyamat lépés létrehozása
-
-Hozza létre a folyamat lépéseit a parancsfájl, a környezeti konfiguráció és a paraméterek használatával. Adja meg a számítási célnak, akkor már csatlakoztatva a munkaterülethez parancsfájlja céljaként. Használat [PythonScriptStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.python_script_step.pythonscriptstep?view=azure-ml-py) hozhat létre a folyamatot. lépés.
-
-```python
-from azureml.pipeline.steps import PythonScriptStep
-inception_model_name = "inception_v3.ckpt"
-
-batch_score_step = PythonScriptStep(
-    name="batch_scoring",
-    script_name="batch_score.py",
-    arguments=["--dataset_path", input_images,
-               "--model_name", "inception",
-               "--label_dir", label_dir,
-               "--output_dir", output_dir,
-               "--batch_size", batch_size_param],
+parallel_run_config = ParallelRunConfig(
+    source_directory=scripts_folder,
+    entry_script="digit_identification.py",
+    mini_batch_size="5",
+    error_threshold=10,
+    output_action="append_row",
+    environment=batch_env,
     compute_target=compute_target,
-    inputs=[input_images, label_dir],
-    outputs=[output_dir],
-    runconfig=amlcompute_run_config,
-    source_directory=scripts_folder
+    node_count=4)
+```
+
+### <a name="create-the-pipeline-step"></a>A folyamat lépésének létrehozása
+
+Hozza létre a folyamat lépéseit a parancsfájl, a környezeti konfiguráció és a paraméterek használatával. Adja meg a munkaterülethez már csatolt számítási célt a parancsfájl végrehajtásának céljaként. A `ParallelRunStep` használatával hozza létre a Batch következtetési folyamatának lépését, amely a következő paramétereket veszi figyelembe:
+- `name`: a lépés neve a következő elnevezési korlátozásokkal: Unique, 3-32 karakter és regex ^\[a-z\]([-a-Z0-9] * [a-Z0-9])? $.
+- `models`: nulla vagy több modell neve már regisztrálva van a Azure Machine Learning modell beállításjegyzékében.
+- `parallel_run_config`: A korábban meghatározott `ParallelRunConfig` objektum.
+- `inputs`: egy vagy több egybeírt Azure Machine Learning adathalmaz.
+- `output`: a kimeneti könyvtárnak megfelelő `PipelineData` objektum.
+- `arguments`: a felhasználói parancsfájlnak átadott argumentumok listája (nem kötelező).
+- `allow_reuse`: azt határozza meg, hogy a lépés felhasználja-e a korábbi eredményeket, ha ugyanazokkal a beállításokkal/bemenetekkel futnak. Ha ez a paraméter `False`, akkor a folyamat végrehajtása során mindig létrejön egy új Futtatás a művelethez. (Nem kötelező; az alapértelmezett érték `True`.)
+
+```python
+from azureml.contrib.pipeline.steps import ParallelRunStep
+
+parallelrun_step = ParallelRunStep(
+    name="batch-mnist",
+    models=[model],
+    parallel_run_config=parallel_run_config,
+    inputs=[named_mnist_ds],
+    output=output_dir,
+    arguments=[],
+    allow_reuse=True
+)
 ```
 
 ### <a name="run-the-pipeline"></a>A folyamat futtatása
 
-Most futtassa a folyamatot, és vizsgálja meg az előállított kimenetet. A kimenetnek az egyes bemeneti képekhez tartozó pontszáma van.
+Most futtassa a folyamatot. Először hozzon létre egy `Pipeline` objektumot a munkaterület-hivatkozás és a létrehozott folyamat lépés használatával. A `steps` paraméter a lépések tömbje. Ebben az esetben a Batch pontozásnak csak egy lépése van. Több lépésből álló folyamatok létrehozásához helyezze a lépéseket sorrendben ebben a tömbben.
+
+Ezután a `Experiment.submit()` függvénnyel küldje el a folyamatot végrehajtásra.
 
 ```python
-import pandas as pd
 from azureml.pipeline.core import Pipeline
+from azureml.core.experiment import Experiment
 
-# Run the pipeline
-pipeline = Pipeline(workspace=ws, steps=[batch_score_step])
-pipeline_run = Experiment(ws, 'batch_scoring').submit(
-    pipeline, pipeline_params={"param_batch_size": 20})
+pipeline = Pipeline(workspace=ws, steps=[parallelrun_step])
+pipeline_run = Experiment(ws, 'digit_identification').submit(pipeline)
+```
 
-# Wait for the run to finish (this might take several minutes)
+## <a name="monitor-the-batch-inference-job"></a>A Batch-következtetési feladatok figyelése
+
+A Batch-következtetési feladatok végrehajtása hosszú időt is igénybe vehet. Ez a példa egy Jupyter Widget használatával figyeli a folyamat előrehaladását. A feladatok előrehaladását a használatával is kezelheti:
+
+* Azure Machine Learning Studio. 
+* Konzol kimenete a [`PipelineRun`](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.run.pipelinerun?view=azure-ml-py) objektumból.
+
+```python
+from azureml.widgets import RunDetails
+RunDetails(pipeline_run).show()
+
 pipeline_run.wait_for_completion(show_output=True)
-
-# Download and review the output
-step_run = list(pipeline_run.get_children())[0]
-step_run.download_file("./outputs/result-labels.txt")
-
-df = pd.read_csv("result-labels.txt", delimiter=":", header=None)
-df.columns = ["Filename", "Prediction"]
-df.head()
-```
-
-## <a name="publish-the-pipeline"></a>A folyamat közzététele
-
-Miután meggyőződött a Futtatás eredményéről, tegye közzé a folyamatot, hogy később különböző bemeneti értékekkel futtasson. Egy folyamat közzétételekor egy REST-végpontot kap. Ez a végpont fogadja a folyamat meghívását a [PipelineParameter](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.pipelineparameter?view=azure-ml-py)használatával már beépített paraméterek készletével.
-
-```python
-published_pipeline = pipeline_run.publish_pipeline(
-    name="Inception_v3_scoring",
-    description="Batch scoring using Inception v3 model",
-    version="1.0")
-```
-
-## <a name="rerun-the-pipeline-by-using-the-rest-endpoint"></a>A folyamat újrafuttatása a REST-végpont használatával
-
-A folyamat újrafuttatásához szüksége lesz egy Azure Active Directory hitelesítési fejléc-tokenre, amelyet a [AzureCliAuthentication osztályban](https://docs.microsoft.com/python/api/azureml-core/azureml.core.authentication.azurecliauthentication?view=azure-ml-py)ismertet.
-
-```python
-from azureml.pipeline.core.run import PipelineRun
-from azureml.pipeline.core import PublishedPipeline
-
-rest_endpoint = published_pipeline.endpoint
-# specify batch size when running the pipeline
-response = requests.post(rest_endpoint,
-                         headers=aad_token,
-                         json={"ExperimentName": "batch_scoring",
-                               "ParameterAssignments": {"param_batch_size": 50}})
-
-# Monitor the run
-published_pipeline_run = PipelineRun(ws.experiments["batch_scoring"], run_id)
-
-RunDetails(published_pipeline_run).show()
 ```
 
 ## <a name="next-steps"></a>További lépések
 
-A teljes körű működés megjelenítéséhez próbálja ki a Batch pontozási jegyzetfüzetet a [githubban](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines), vagy lépjen az [Azure architektúra központba](/azure/architecture/reference-architectures/ai/batch-scoring-python) , és tekintse meg a minta megoldás architektúráját.
+Ha szeretné látni, hogy ez a folyamat teljes körűen működjön, próbálja ki a [Batch következtetéseit tartalmazó jegyzetfüzetet](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines/). 
+
+[A folyamatok](how-to-debug-pipelines.md)hibakereséséhez és hibaelhárításához tekintse meg a útmutató útmutatását.
+
+[!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-for-examples.md)]
+

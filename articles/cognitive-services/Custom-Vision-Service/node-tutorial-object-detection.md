@@ -1,5 +1,5 @@
 ---
-title: 'Gyors útmutató: Objektum-észlelési projekt létrehozása a Node. js-hez készült Custom Vision SDK-val'
+title: 'Gyors útmutató: objektum-észlelési projekt létrehozása a Node. js-hez készült Custom Vision SDK-val'
 titleSuffix: Azure Cognitive Services
 description: Létrehozhat egy projektet, címkéket adhat hozzá, képeket tölthet fel, betaníthatja a projektet, és felderítheti az objektumokat a Node. js SDK használatával.
 services: cognitive-services
@@ -10,14 +10,14 @@ ms.subservice: custom-vision
 ms.topic: quickstart
 ms.date: 08/08/2019
 ms.author: areddish
-ms.openlocfilehash: 6e3bf7b4fb60d81ff8883c2592de3739572bf2fa
-ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
+ms.openlocfilehash: b922073df468ca2d92e319e4e59cae098734c13c
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69997797"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "73518986"
 ---
-# <a name="quickstart-create-an-object-detection-project-with-the-custom-vision-nodejs-sdk"></a>Gyors útmutató: Objektum-észlelési projekt létrehozása a Custom Vision Node. js SDK-val
+# <a name="quickstart-create-an-object-detection-project-with-the-custom-vision-nodejs-sdk"></a>Gyors útmutató: objektum-észlelési projekt létrehozása a Custom Vision Node. js SDK-val
 
 Ez a cikk a Custom Vision SDK és a Node. js használatával való ismerkedéshez nyújt segítséget az objektum-észlelési modell létrehozásához. A létrehozást követően címkézett régiókat adhat hozzá, képeket tölthet fel, betaníthatja a projektet, beolvashatja a projekt közzétett előrejelzési végpontjának URL-címét, és a végpont használatával programozott módon tesztelheti a lemezképeket. Ez a példa sablonként használható a saját Node. js-alkalmazás létrehozásához.
 
@@ -25,6 +25,7 @@ Ez a cikk a Custom Vision SDK és a Node. js használatával való ismerkedéshe
 
 - A [Node. js 8](https://www.nodejs.org/en/download/) vagy újabb verziója telepítve van.
 - a [NPM](https://www.npmjs.com/) telepítve van.
+- [!INCLUDE [create-resources](includes/create-resources.md)]
 
 [!INCLUDE [get-keys](includes/get-keys.md)]
 
@@ -61,7 +62,7 @@ const predictionKey = "<your prediction key>";
 const predictionResourceId = "<your prediction resource id>";
 const sampleDataRoot = "<path to image files>";
 
-const endPoint = "https://southcentralus.api.cognitive.microsoft.com"
+const endPoint = "https://<my-resource-name>.cognitiveservices.azure.com/"
 
 const publishIterationName = "detectModel";
 

@@ -1,7 +1,7 @@
 ---
-title: 'MLOps: ML-modellek kezelése, üzembe helyezése & monitorozása'
+title: 'MLOps: ML-modellek kezelése, üzembe helyezése, & monitorozása'
 titleSuffix: Azure Machine Learning
-description: 'Ismerje meg, hogyan használhatók a Azure Machine Learning a MLOps: a modellek üzembe helyezése, kezelése és monitorozása a folyamatos fejlesztés érdekében. A helyi gépen, vagy egyéb forrásokból az az Azure Machine Learning betanított modellek is telepítheti.'
+description: 'Ismerje meg, hogyan használhatók a Azure Machine Learning a MLOps: a modellek üzembe helyezése, kezelése és monitorozása a folyamatos fejlesztés érdekében. A Azure Machine Learning, a helyi gépen vagy más forrásokból betanított modelleket is üzembe helyezhet.'
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,16 +9,16 @@ ms.topic: conceptual
 ms.reviewer: jmartens
 author: jpe316
 ms.author: jordane
-ms.date: 06/24/2019
+ms.date: 10/25/2019
 ms.custom: seodec18
-ms.openlocfilehash: 98a3102d47504b40a6b62eb329b508468947ca79
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: 8741a9a362a10dfdb0150c9dc0dfddeed54594a7
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71035467"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73497434"
 ---
-# <a name="mlops-manage-deploy-and-monitor-models-with-azure-machine-learning"></a>MLOps: Modellek kezelése, üzembe helyezése és monitorozása Azure Machine Learning
+# <a name="mlops-manage-deploy-and-monitor-models-with-azure-machine-learning"></a>MLOps: modellek kezelése, üzembe helyezése és figyelése Azure Machine Learning
 
 Ebből a cikkből megtudhatja, hogyan használhatja a Azure Machine Learning a modellek életciklusának kezeléséhez. A Azure Machine Learning egy Machine Learning Operations (MLOps) megközelítést használ, amely javítja a gépi tanulási megoldások minőségét és egységességét. 
 
@@ -47,7 +47,7 @@ A modell regisztrációja lehetővé teszi, hogy a saját munkaterületén táro
 > [!TIP]
 > A regisztrált modell a modellt alkotó egy vagy több fájl logikai tárolója. Ha például több fájlban tárolt modell van, akkor egyetlen modellként regisztrálhatja őket a Azure Machine Learning munkaterületen. A regisztráció után letöltheti vagy telepítheti a regisztrált modellt, és megkapja az összes regisztrált fájlt.
  
-A regisztrált modelleket név és verzió alapján azonosítjuk. Minden alkalommal, amikor egy modell regisztrálni a neve megegyezik egy meglévő, a beállításjegyzék növeli a verziót. Használható kereséskor a modellek regisztrálása során is megadható további metaadat-címkéket. A Azure Machine Learning a Python 3.5.2-es vagy újabb verziójával tölthető modelleket támogat.
+A regisztrált modelleket név és verzió alapján azonosítjuk. Minden alkalommal, amikor ugyanazzal a névvel regisztrál egy modellt, a beállításjegyzék megnöveli a verziót. A regisztráció során további metaadat-címkéket is megadhat, amelyek a modellek keresésekor használhatók. A Azure Machine Learning a Python 3.5.2-es vagy újabb verziójával tölthető modelleket támogat.
 
 > [!TIP]
 > A Azure Machine Learningon kívül betanított modelleket is regisztrálhat.
@@ -88,9 +88,9 @@ Ezek az eszközök egy Docker-rendszerképbe vannak csomagolva, és webszolgált
 
 Igény szerint a következő paramétereket használhatja az üzemelő példány további finomhangolásához:
 
-* GPU engedélyezése: A GPU-támogatás engedélyezésére szolgál a Docker-rendszerképben. A rendszerképet olyan Microsoft Azure-szolgáltatásokhoz kell használni, mint például a Azure Container Instances, az Azure Kubernetes Service, a Azure Machine Learning számítás vagy az Azure Virtual Machines.
+* GPU-támogatás engedélyezése a Docker-rendszerképben a GPU-támogatás engedélyezéséhez. A rendszerképet olyan Microsoft Azure-szolgáltatásokhoz kell használni, mint például a Azure Container Instances, az Azure Kubernetes Service, a Azure Machine Learning számítás vagy az Azure Virtual Machines.
 * További Docker-fájl lépései: A Docker-rendszerkép létrehozásakor futtatandó további Docker-lépéseket tartalmazó fájl.
-* Alaprendszerkép: Az alaprendszerképként használandó egyéni rendszerkép. Ha nem használ egyéni rendszerképet, az alapképet a Azure Machine Learning biztosítja.
+* Alaprendszerkép: az alaprendszerképként használandó egyéni rendszerkép. Ha nem használ egyéni rendszerképet, az alapképet a Azure Machine Learning biztosítja.
 
 Megadhatja a cél telepítési platform konfigurációját is. Például a virtuálisgép-család típusa, a rendelkezésre álló memória és a magok száma az Azure Kubernetes szolgáltatásban való üzembe helyezéskor.
 
@@ -115,7 +115,7 @@ A modell webszolgáltatásként való üzembe helyezéséhez a következő eleme
 
 További információ: [modellek üzembe helyezése](how-to-deploy-and-where.md).
 
-#### <a name="iot-edge-devices"></a>IoT Edge-eszközök
+#### <a name="iot-edge-devices"></a>Eszközök IoT Edge
 
 A modelleket IoT eszközökkel **Azure IoT Edge modulokon**keresztül is használhatja. IoT Edge modulok üzembe helyezése egy hardvereszközön történik, amely lehetővé teszi a következtetések kiértékelését vagy a modellek pontozását az eszközön.
 
@@ -157,7 +157,7 @@ További információ az Azure-folyamatok Azure Machine Learning használatával
 
 ## <a name="next-steps"></a>További lépések
 
-További információ a [modellek Azure Machine learning használatával történő üzembe helyezéséről](how-to-deploy-and-where.md) . Az üzembe helyezés példáját lásd [: oktatóanyag: Lemezkép besorolási modell üzembe helyezése](tutorial-deploy-models-with-aml.md)Azure Container Instancesban.
+További információ a [modellek Azure Machine learning használatával történő üzembe helyezéséről](how-to-deploy-and-where.md) . A központi telepítésre példát a következő témakörben talál [: oktatóanyag: lemezkép-besorolási modell üzembe helyezése Azure Container instances-ben](tutorial-deploy-models-with-aml.md).
 
 Ismerje meg, hogyan hozhat létre [folyamatos integrációt és üzembe helyezést a ml-modellek Azure-folyamatokkal való](/azure/devops/pipelines/targets/azure-machine-learning)használatával. 
 

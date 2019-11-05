@@ -9,15 +9,16 @@ ms.service: machine-learning
 ms.subservice: core
 ms.reviewer: trbye
 ms.topic: conceptual
-ms.date: 06/20/2019
-ms.openlocfilehash: 3cec6ee9368b1d9d1f2c9a627108aaf41c6da3c3
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
-ms.translationtype: MT
+ms.date: 11/04/2019
+ms.openlocfilehash: d9a879e92f78275f2366ccfc008068afbe208e5a
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72819848"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73497386"
 ---
 # <a name="auto-train-a-time-series-forecast-model"></a>Idősorozat-előrejelzési modell automatikus betanítása
+[!INCLUDE [aml-applies-to-basic-enterprise-sku](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 Ebből a cikkből megtudhatja, hogyan végezheti el az idősorozat-előrejelzési regressziós modell betanítását a Azure Machine Learning automatikus gépi tanulásával. Az előrejelzési modell konfigurálása hasonló ahhoz, hogy szabványos regressziós modellt állítson be automatizált gépi tanulással, de bizonyos konfigurációs beállítások és előfeldolgozási lépések léteznek az idősorozat-információkkal való munkavégzéshez. Az alábbi példák a következőket mutatják be:
 
@@ -50,7 +51,7 @@ A Deep learning-modellek három belső capbailities rendelkeznek:
 1. Több bemenetet és kimenetet támogatnak
 1. Képesek automatikusan kinyerni a hosszú sorokra kiterjedő bemeneti adatok mintáit
 
-A nagyobb adatmennyiségek, a Deep learning-modellek, például a Microsofts ForecasTCN növelhetik az eredményül kapott modell pontszámait. 
+A nagyobb adatmennyiségek, a Deep learning-modellek, például a Microsofts ForecastTCN növelhetik az eredményül kapott modell pontszámait. 
 
 A natív idősorozat-tanulók az automatizált ML részeként is elérhetők. A próféta a legjobb idősorozattal működik, amely erős szezonális hatásokat és több időszakot is tartalmaz. A próféta pontos & gyors, robusztus kiugró, hiányzó adatokat és drámai változásokat tartalmaz az idősorozatban. 
 
@@ -63,7 +64,7 @@ A AutoRegressive integrált mozgóátlag (ARIMA) egy népszerű statisztikai mó
 
 ## <a name="preparing-data"></a>Az adatelőkészítés
 
-Az előrejelzési regressziós feladattípusok és a regressziós feladattípusok közötti legfontosabb különbség az automatizált Machine Learningen belül, beleértve az adatok egy érvényes idősorozatot jelölő funkcióját. A rendszeres idősorozatok jól definiált és konzisztens gyakorisággal rendelkeznek, és minden mintavételi ponton egy értékkel rendelkeznek, amely folyamatos időtartományban van. Vegye figyelembe a következő pillanatképet `sample.csv` fájlról:.
+Az előrejelzési regressziós feladattípusok és a regressziós feladattípusok közötti legfontosabb különbség az automatizált Machine Learningen belül, beleértve az adatok egy érvényes idősorozatot jelölő funkcióját. A rendszeres idősorozatok jól definiált és konzisztens gyakorisággal rendelkeznek, és minden mintavételi ponton egy értékkel rendelkeznek, amely folyamatos időtartományban van. Vegye figyelembe egy fájl következő pillanatképét `sample.csv`.
 
     day_datetime,store,sales_quantity,week_of_year
     9/3/2018,A,2000,36
@@ -110,15 +111,16 @@ Az előrejelzési feladatokhoz az automatizált gépi tanulás az idősorozat-ad
 * Időalapú szolgáltatások létrehozása a szezonális minták tanulásának segítésére
 * Kategorikus változók kódolása numerikus mennyiségre
 
-A `AutoMLConfig` objektum határozza meg az automatizált gépi tanulási feladatokhoz szükséges beállításokat és adatmennyiséget. A regressziós problémákhoz hasonlóan szabványos betanítási paramétereket is definiálhat, például a feladattípust, az ismétlések számát, a betanítási adatok számát és az eltérő érvényességi értéket. Az előrejelzési feladatokhoz további paramétereket kell megadni, amelyek hatással vannak a kísérletre. Az alábbi táblázat az egyes paramétereket és azok használatát ismerteti.
+A `AutoMLConfig` objektum az automatizált gépi tanulási feladatokhoz szükséges beállításokat és adatmennyiséget határozza meg. A regressziós problémákhoz hasonlóan szabványos betanítási paramétereket is definiálhat, például a feladattípust, az ismétlések számát, a betanítási adatok számát és az eltérő érvényességi értéket. Az előrejelzési feladatokhoz további paramétereket kell megadni, amelyek hatással vannak a kísérletre. Az alábbi táblázat az egyes paramétereket és azok használatát ismerteti.
 
-| Param | Leírás | Szükséges |
+| Param | Leírás | Kötelező |
 |-------|-------|-------|
 |`time_column_name`|A dátum-és idősorozatok létrehozásához használt bemeneti adatok datetime oszlopának megadására szolgál.|✓|
 |`grain_column_names`|Az egyes adatsorozat-csoportokat meghatározó nevek a bemeneti adatokban. Ha a gabona nincs meghatározva, a rendszer az adathalmazt egy idősorozatra feltételezi.||
 |`max_horizon`|Meghatározza a maximálisan kívánatos előrejelzési horizontot a Time-sorozat gyakoriságának egységében. Az egységek a betanítási adatokat tartalmazó időintervallumon alapulnak, például havonta, heti rendszerességgel, amelyet az előrejelzésnek meg kell jósolnia.|✓|
 |`target_lags`|A megcélzott értékeket az adatok gyakorisága alapján késleltető sorok száma. Ez listaként vagy egyetlen egész számként jelenik meg. A késést akkor kell használni, ha a független változók és a függő változó közötti kapcsolat alapértelmezés szerint nem felel meg egymásnak. Ha például egy termék iránti keresletre próbál előrejelzést kérni, a havi igény bármelyik hónapra az adott árucikkek előző 3 hónapjának árával függ. Ebben a példában előfordulhat, hogy 3 hónap elteltével negatívan szeretné megtekinteni a célt (keresletet), hogy a modell a megfelelő kapcsolaton legyen betanítva.||
 |`target_rolling_window_size`|*n* korábbi időszakok, amelyeket az előre jelzett értékek előállítására használhat, < = betanítási készlet mérete. Ha nincs megadva, az *n* a teljes betanítási készlet mérete. Akkor válassza ezt a paramétert, ha csak bizonyos mennyiségű előzményt szeretne figyelembe venni a modell betanításakor.||
+|`enable_dnn`|Előrejelzési DNN engedélyezése.||
 
 További információt a [dokumentációban](https://docs.microsoft.com/python/api/azureml-train-automl/azureml.train.automl.automlconfig?view=azure-ml-py) talál.
 
@@ -150,7 +152,8 @@ import logging
 
 automl_config = AutoMLConfig(task='forecasting',
                              primary_metric='normalized_root_mean_squared_error',
-                             iterations=10,
+                             experiment_timeout_minutes=15,
+                             enable_early_stopping=True,
                              training_data=train_data,
                              label_column_name=label,
                              n_cross_validations=5,
@@ -170,6 +173,17 @@ Tekintse meg az [energia igényét bemutató notebookot](https://github.com/Azur
 * gördülő-eredetű kereszt-ellenőrzés
 * konfigurálható késések
 * a gördülő ablak összesített funkciói
+
+### <a name="configure-a-dnn-enable-forecasting-experiment"></a>DNN-előrejelzési kísérlet engedélyezése
+
+> [!NOTE]
+> Az automatikus Machine Learning DNN támogatása előzetes verzióban érhető el.
+
+Az előrejelzési DNN kihasználása érdekében `enable_dnn` a AutoMLConfig paramétert True értékre kell állítani a. 
+
+A DNN használatához javasoljuk, hogy használjon olyan pénzmosás-számítási fürtöt, amely GPU SKU-ket és legalább 2 csomópontot használ számítási célként. További információkért tekintse meg a [pénzmosás-számítás dokumentációját](https://docs.microsoft.com/en-us/azure/machine-learning/service/how-to-set-up-training-targets#amlcompute) . A GPU-ket tartalmazó virtuálisgép-méretekkel kapcsolatos további információkért lásd a GPU-ra [optimalizált virtuális gépek méretét](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/sizes-gpu) .
+
+Ahhoz, hogy elegendő idő legyen a DNN képzés befejezésére, javasoljuk, hogy a kísérlet időtúllépését legalább néhány óráig állítsa be.
 
 ### <a name="view-feature-engineering-summary"></a>Szolgáltatások mérnöki összefoglalásának megtekintése
 
@@ -194,7 +208,7 @@ predict_labels = fitted_model.predict(test_data)
 actual_labels = test_labels.flatten()
 ```
 
-Azt is megteheti, hogy `predict()` helyett a `forecast()` függvényt használja, amely lehetővé teszi a specifikációk megkezdését. Az alábbi példában a `y_pred` az összes értéket lecseréli a `NaN`. Ebben az esetben az előrejelzési forrás a betanítási adatgyűjtési időszak végén lesz, mivel általában `predict()` használata esetén. Ha azonban csak a `y_pred` második felét cserélte le `NaN`, akkor a függvény a numerikus értékeket az első fél változatlanul hagyja, de a második felében előre megbecsüli a `NaN` értékeket. A függvény az előre jelzett értékeket és az igazított funkciókat is visszaadja.
+Azt is megteheti, hogy `predict()`helyett a `forecast()` függvényt használja, amely lehetővé teszi a specifikációk megkezdését. Az alábbi példában a `y_pred` az összes értéket lecseréli a `NaN`. Ebben az esetben az előrejelzési forrás a betanítási adatgyűjtési időszak végén fog megjelenni, mivel ez általában a `predict()`használatakor lenne. Ha azonban csak a `y_pred` második felét cserélte le `NaN`, akkor a függvény a numerikus értékeket az első fél változatlanul hagyja, de a második felében előre megbecsüli a `NaN` értékeket. A függvény az előre jelzett értékeket és az igazított funkciókat is visszaadja.
 
 A `forecast()` függvény `forecast_destination` paraméterét is használhatja az értékek előrejelzésére a megadott dátumig.
 
@@ -226,7 +240,7 @@ Ismételje meg a szükséges lépéseket a jövőbeli adatok dataframe való bet
 > [!NOTE]
 > Nem lehet előre jelezni a `max_horizon`nál nagyobb időszakok számának értékét. A modellt újra be kell tanítani, hogy az aktuális horizonton túli jövőbeli értékek előrejelzése nagyobb horizonton történjen.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Kövesse az [oktatóanyagot](tutorial-auto-train-models.md) , amelyből megtudhatja, hogyan hozhat létre kísérleteket automatizált gépi tanulással.
 * Tekintse meg a [Azure Machine learning SDK for Python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) dokumentációját.

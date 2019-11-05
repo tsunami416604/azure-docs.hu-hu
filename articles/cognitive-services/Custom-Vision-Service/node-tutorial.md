@@ -1,5 +1,5 @@
 ---
-title: 'Gyors útmutató: Rendszerkép-besorolási projekt létrehozása a Node. js-hez készült Custom Vision SDK-val'
+title: 'Gyors útmutató: rendszerkép-besorolási projekt létrehozása a Node. js-hez készült Custom Vision SDK-val'
 titleSuffix: Azure Cognitive Services
 description: Létrehozhat egy projektet, címkéket adhat hozzá, képeket tölthet fel, betaníthatja a projektet, és elvégezheti az előrejelzést a Node. js SDK használatával.
 services: cognitive-services
@@ -10,14 +10,14 @@ ms.subservice: custom-vision
 ms.topic: quickstart
 ms.date: 08/08/2019
 ms.author: areddish
-ms.openlocfilehash: edb9e50cceed95d8ca77567e7c1228704b5f177d
-ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
+ms.openlocfilehash: 1a7780c78e8771ae0eae19d7c8b9da6fbedd220c
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69982364"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "73519390"
 ---
-# <a name="quickstart-create-an-image-classification-project-with-the-custom-vision-nodejs-sdk"></a>Gyors útmutató: Rendszerkép-besorolási projekt létrehozása a Custom Vision Node. js SDK-val
+# <a name="quickstart-create-an-image-classification-project-with-the-custom-vision-nodejs-sdk"></a>Rövid útmutató: rendszerkép-besorolási projekt létrehozása a Custom Vision Node. js SDK-val
 
 Ez a cikk az Custom Vision SDK és a Node. js használatával való ismerkedéshez nyújt segítséget a képbesorolási modell létrehozásához. A létrehozást követően címkéket adhat hozzá, képeket tölthet fel, betaníthatja a projektet, beolvashatja a projekt közzétett előrejelzési végpontjának URL-címét, és a végpont használatával programozott módon tesztelheti a lemezképeket. Ez a példa sablonként használható a saját Node. js-alkalmazás létrehozásához. Ha az osztályozási modell létrehozásának és használatának folyamatán kód használata _nélkül_ szeretne végighaladni, tekintse meg a [böngészőalapú módszer útmutatóját](getting-started-build-a-classifier.md).
 
@@ -25,6 +25,7 @@ Ez a cikk az Custom Vision SDK és a Node. js használatával való ismerkedésh
 
 - A [Node. js 8](https://www.nodejs.org/en/download/) vagy újabb verziója telepítve van.
 - a [NPM](https://www.npmjs.com/) telepítve van.
+- [!INCLUDE [create-resources](includes/create-resources.md)]
 
 ## <a name="install-the-custom-vision-sdk"></a>A Custom Vision SDK telepítése
 
@@ -60,7 +61,7 @@ const predictionKey = "<your prediction key>";
 const predictionResourceId = "<your prediction resource id>";
 const sampleDataRoot = "<path to image files>";
 
-const endPoint = "https://southcentralus.api.cognitive.microsoft.com"
+const endPoint = "https://<my-resource-name>.cognitiveservices.azure.com/"
 
 const publishIterationName = "classifyModel";
 

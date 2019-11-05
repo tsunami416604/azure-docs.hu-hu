@@ -12,12 +12,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 06/25/2019
-ms.openlocfilehash: 5cc033787e1045926ff4fece6826e41f430d48fd
-ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
+ms.openlocfilehash: 69ff1a5681fbb0b434d7114b069610ed34d9e843
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70744467"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73492205"
 ---
 # <a name="overview-of-business-continuity-with-azure-sql-database"></a>Az Azure SQL Database üzletmenet-folytonossági funkcióinak áttekintése
 
@@ -53,7 +53,7 @@ A SQL Database számos üzletmenet-folytonossági funkciót is biztosít, amelye
 
 ## <a name="recover-a-database-within-the-same-azure-region"></a>Adatbázis helyreállítása ugyanazon az Azure-régión belül
 
-Az adatbázis automatikus biztonsági mentései segítségével visszaállíthat egy adatbázist egy korábbi időpontra. Így helyreállíthatja az emberi hibák által okozott adatsérüléseket. Az időpontok közötti visszaállítás lehetővé teszi, hogy egy olyan új adatbázist hozzon létre ugyanabban a kiszolgálón, amely az adatállapotot jelöli a sérült esemény előtt. A legtöbb adatbázis esetében a visszaállítási műveletek kevesebb, mint 12 órát vesznek igénybe. Egy nagyon nagy vagy nagyon aktív adatbázis helyreállítása hosszabb időt is igénybe vehet. A helyreállítási időre vonatkozó további információkért lásd: [adatbázis-helyreállítás ideje](sql-database-recovery-using-backups.md#recovery-time). 
+Az adatbázis automatikus biztonsági mentései segítségével visszaállíthat egy adatbázist egy korábbi időpontra. Így helyreállíthatja az emberi hibák által okozott adatsérüléseket. Az időponthoz tartozó visszaállítás lehetővé teszi, hogy egy új adatbázist hozzon létre ugyanabban a kiszolgálón, amely az adatállapotot jelöli a sérült esemény előtt. A legtöbb adatbázis esetében a visszaállítási műveletek kevesebb, mint 12 órát vesznek igénybe. Egy nagyon nagy vagy nagyon aktív adatbázis helyreállítása hosszabb időt is igénybe vehet. A helyreállítási időre vonatkozó további információkért lásd: [adatbázis-helyreállítás ideje](sql-database-recovery-using-backups.md#recovery-time). 
 
 Ha az időponthoz kötött visszaállításhoz (PITR) tartozó maximálisan támogatott biztonsági mentési megőrzési időtartam nem elegendő az alkalmazáshoz, kiterjesztheti azt egy hosszú távú adatmegőrzési (LTR) házirend konfigurálásával az adatbázis (ok) hoz. További információ: a [biztonsági másolatok hosszú távú megőrzése](sql-database-long-term-retention.md).
 

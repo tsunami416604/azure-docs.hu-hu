@@ -1,6 +1,6 @@
 ---
 title: Modul hibáinak elhárítása
-titleSuffix: Azure Machine Learning service
+titleSuffix: Azure Machine Learning
 description: A modul kivételei a Azure Machine Learning Studio hibakódok használatával – problémamegoldás
 services: machine-learning
 ms.service: machine-learning
@@ -8,25 +8,25 @@ ms.subservice: core
 ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
-ms.date: 05/02/2019
-ms.openlocfilehash: a1a6817c08223b360c08804e0595f12f2947ea5f
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.date: 10/22/2019
+ms.openlocfilehash: b07b1fc14ac7ac72a30f75a098b4aab35f2de713
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72693074"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73497725"
 ---
 # <a name="exceptions-and-error-codes-for-algorithm--module-reference"></a>Kivételek és hibakódok az algoritmushoz & modul hivatkozása
 
-Ismerje meg a hibaüzeneteket és a kivételeket, amelyek a Azure Machine Learning Studio moduljaival találkozhatnak. 
+Ismerkedjen meg a Azure Machine Learning Designer (előzetes verzió) moduljaival felmerülhető hibaüzenetekkel és kivételi kódokkal. 
 
-A probléma megoldásához keresse meg a cikkben szereplő hibát, és olvassa el a gyakori okokat. A Studióban a következő két módon kérhető le egy hibaüzenet teljes szövege:  
+A probléma megoldásához keresse meg a cikkben szereplő hibát, és olvassa el a gyakori okokat. A tervezőben kétféleképpen lehet beolvasni egy hibaüzenet teljes szövegét:  
  
 - Kattintson a hivatkozásra, **tekintse meg a kimeneti naplót**, a jobb oldali ablaktáblán, és görgessen a lap aljára. A részletes hibaüzenet az ablak utolsó két sorában jelenik meg.  
   
 - Válassza ki a hibát tartalmazó modult, majd kattintson a piros X elemre. Csak a vonatkozó hibaüzenet jelenik meg.  
   
-Ha a hibaüzenet szövege nem hasznos, küldjön nekünk információkat a kontextusról és a kívánt kiegészítésekről vagy változásokról. Küldhet visszajelzést a témakörben, vagy látogasson el a [Azure Machine learning Studio fórumára](https://aka.ms/aml-forum-studio) , és tegye fel a kérdést.  
+Ha a hibaüzenet szövege nem hasznos, küldje el nekünk a kontextusról és a kívánt kiegészítésekről vagy változásokról a visszajelzések elküldésével kapcsolatos információkat.
 
 
 ## <a name="error-0001"></a>0,001-es hiba  
@@ -163,9 +163,9 @@ Ha a hibaüzenet szövege nem hasznos, küldjön nekünk információkat a konte
 ## <a name="error-0009"></a>0009 hiba  
  Kivétel történik, ha az Azure Storage-fiók neve vagy a tároló neve helytelenül van megadva.  
   
-Ez a hiba akkor fordul elő Azure Machine Learning Studio, ha megad egy Azure Storage-fiók paramétereit, de a név vagy a jelszó nem oldható fel. A jelszóval vagy a fiók nevével kapcsolatos hibák több okból is megtörténhetnek:
+Ez a hiba akkor fordul elő Azure Machine Learning Designerben, ha megad egy Azure Storage-fiók paramétereit, de a név vagy a jelszó nem oldható fel. A jelszóval vagy a fiók nevével kapcsolatos hibák több okból is megtörténhetnek:
  
- + A fiók típusa nem megfelelő. Néhány új fióktípus nem támogatott a Machine Learning Studiohoz való használathoz. További részletek: [adatok importálása](import-data.md) .
+ + A fiók típusa nem megfelelő. Néhány új fióktípus nem támogatott a Machine Learning Designerben való használathoz. További részletek: [adatok importálása](import-data.md) .
  + A helytelen fióknevet adta meg
  + A fiók már nem létezik
  + A Storage-fiók jelszava helytelen vagy megváltozott
@@ -287,7 +287,7 @@ A csoportosításhoz vagy kategorizáláshoz használni kívánt oszlopok eseté
 |Kivételek üzenetei|  
 |------------------------|  
 |Az oszlop egyedi értékeinek száma nagyobb, mint az engedélyezett.|  
-|A (z) "{0}" oszlopban szereplő egyedi értékek száma meghaladja a {1} rekordokat.|  
+|A (z) "{0}" oszlopban szereplő egyedi értékek száma meghaladja a {1}rekordokat.|  
   
 
 ## <a name="error-0015"></a>0015 hiba  
@@ -339,9 +339,9 @@ A csoportosításhoz vagy kategorizáláshoz használni kívánt oszlopok eseté
 |Kivételek üzenetei|  
 |------------------------|  
 |Az aktuális típusú oszlop nem dolgozható fel. A modul nem támogatja a típust.|  
-|@No__t_0 típusú oszlop nem dolgozható fel. A modul nem támogatja a típust.|  
-|@No__t_1 típusú "{1}" oszlop nem dolgozható fel. A modul nem támogatja a típust.|  
-|@No__t_1 típusú "{1}" oszlop nem dolgozható fel. A modul nem támogatja a típust. Paraméter neve: {2}|  
+|{0}típusú oszlop nem dolgozható fel. A modul nem támogatja a típust.|  
+|{0}típusú "{1}" oszlop nem dolgozható fel. A modul nem támogatja a típust.|  
+|{0}típusú "{1}" oszlop nem dolgozható fel. A modul nem támogatja a típust. Paraméter neve: {2}|  
   
 
 ## <a name="error-0018"></a>0018 hiba  
@@ -455,7 +455,7 @@ A csoportosításhoz vagy kategorizáláshoz használni kívánt oszlopok eseté
 |------------------------|  
 |A bemeneti adatkészlet nem támogatott célként megadott oszlopot tartalmaz.|  
 |A bemeneti adatkészlet nem támogatja a (z) "{0}" célként megadott oszlopot.|  
-|A bemeneti adatkészlet nem támogatja a (z) "{0}" oszlopot a (z) {1} típusú tanulók számára.|  
+|A bemeneti adatkészlet nem támogatja a (z) "{0}" oszlopot a (z) {1}típusú tanulók számára.|  
  
 
 ## <a name="error-0024"></a>0024 hiba  
@@ -660,7 +660,7 @@ For general information about how the Matchbox recommendation algorithm works, a
 |Kivételek üzenetei|  
 |------------------------|  
 |Egy felhasználó vagy elem duplikált funkció-definíciója.|  
-|A {0} duplikált funkciójának definíciója.|  
+|A {0}duplikált funkciójának definíciója.|  
   
 
 ## <a name="error-0037"></a>0037-es hiba  
@@ -764,9 +764,9 @@ Ez a hiba akkor fordulhat elő, ha olyan oszlopot próbál használni, amely leb
 |Kivételek üzenetei|  
 |------------------------|  
 |Nem engedélyezett a konverzió.|  
-|A {0} típusú oszlop nem alakítható át {1} típusú oszlopba.|  
-|A (z) {0} típusú "{2}" oszlop nem konvertálható {1} típusú oszlopba.|  
-|A (z) {0} típusú "{2}" oszlop nem konvertálható {1} típusú "{3}" oszlopba.|  
+|A {0} típusú oszlop nem alakítható át {1}típusú oszlopba.|  
+|A (z) {0} típusú "{2}" oszlop nem konvertálható {1}típusú oszlopba.|  
+|A (z) {0} típusú "{2}" oszlop nem konvertálható {1}típusú "{3}" oszlopba.|  
   
 
 ## <a name="error-0043"></a>0043-es hiba  
@@ -779,7 +779,7 @@ Ez a hiba akkor fordulhat elő, ha olyan oszlopot próbál használni, amely leb
 |Kivételek üzenetei|  
 |------------------------|  
 |Nem található elérhető explicit metódus.|  
-|@No__t_3 típusú "{0} \\" \\ oszlophoz tartozó értékek nem hasonlíthatók össze. Nem található elérhető explicit metódus.|  
+|{1}típusú "{0}\\" \\oszlophoz tartozó értékek nem hasonlíthatók össze. Nem található elérhető explicit metódus.|  
 
 
 ## <a name="error-0044"></a>0044-es hiba  
@@ -806,7 +806,7 @@ Ez a hiba akkor fordulhat elő, ha olyan oszlopot próbál használni, amely leb
 |Kivételek üzenetei|  
 |------------------------|  
 |Vegyes elem típusú oszlop nem hozható létre.|  
-|Nem hozható létre "{0}" AZONOSÍTÓJÚ oszlop a következő vegyes típusú elemeknél: \ n\tType [{1}, {0}] {2} \n\tType [{3}, {0}] {4}.|  
+|Nem hozható létre "{0}" AZONOSÍTÓJÚ oszlop a következő vegyes típusú elemeknél: \ n\tType [{1}, {0}] {2}\n\tType [{3}, {0}] {4}.|  
   
 
 ## <a name="error-0046"></a>0046-es hiba  
@@ -1063,7 +1063,7 @@ Ez a hiba akkor fordulhat elő, ha olyan oszlopot próbál használni, amely leb
   
 **Resolution:**
 
-1. In Azure Machine Learning Studio, right-click the module that has the error, and select **View Log**.
+1. In Azure Machine Learning designer, right-click the module that has the error, and select **View Log**.
 2. Examine the standard error log of the module, which contains the stack trace.
     + Lines beginning with [ModuleOutput] indicate output from R.
     + Messages from R marked as **warnings** typically do not cause the pipeline to fail.
@@ -1192,7 +1192,7 @@ A Machine learninghez készült kaptár-lekérdezésekkel kapcsolatos segítség
   
  Ha a modul kivétele szerint egy SQL által generált üzenet jelenik meg, akkor a jelentett hiba alapján végezze el a műveletet. Előfordulhat például, hogy a hibaüzenetek időnként konkrét útmutatást tartalmaznak a valószínű hibára vonatkozóan:
 + *Nincs ilyen oszlop vagy hiányzó adatbázis*, ami azt jelzi, hogy helytelen az oszlopnév beírása. Ha biztos benne, hogy az oszlop neve helyes, az oszlop azonosítójának bejelöléséhez használjon szögletes zárójeleket vagy idézőjeleket.
-+ *SQL logikai hiba a \<SQL kulcsszó közelében \>* , ami azt jelzi, hogy szintaktikai hiba történt a megadott kulcsszó előtt
++ *SQL-logikai hiba a \<SQL-kulcsszó közelében\>* , ami azt jelzi, hogy szintaktikai hiba lehet a megadott kulcsszó előtt.
 
   
 |Kivételek üzenetei|  
@@ -1504,7 +1504,7 @@ Az eseményhez tartozó hibakezelés a Azure Machine Learning egy korábbi verzi
   
  `<Language name="R" sourceFile="CustomAddRows.R" entryPoint="CustomAddRows" />`  
   
-**Megoldás:** Ellenőrizze, hogy az egyéni modul XML-definíciós fájljának **Language** elemének Name tulajdonsága `R` értékre van-e állítva. Mentse a fájlt, frissítse az egyéni modul ZIP-csomagját, és próbálkozzon újra az egyéni modul hozzáadásával.  
+**Megoldás:** Ellenőrizze, hogy az egyéni modul XML-definíciós fájljának **Language** elemének Name tulajdonsága `R`értékre van-e állítva. Mentse a fájlt, frissítse az egyéni modul ZIP-csomagját, és próbálkozzon újra az egyéni modul hozzáadásával.  
   
 |Kivételek üzenetei|  
 |------------------------|  
@@ -1653,7 +1653,7 @@ Az eseményhez tartozó hibakezelés a Azure Machine Learning egy korábbi verzi
 |Kivételek üzenetei|  
 |------------------------|  
 |A tulajdonság definíciója érvénytelen.|  
-|A (z) {0} tulajdonság definíciója érvénytelen.|  
+|A (z){0}tulajdonság definíciója érvénytelen.|  
   
 
 ## <a name="error-0112"></a>0112-es hiba  
@@ -1979,10 +1979,10 @@ Megoldás:
 |------------------------|  
 |Nem engedélyezett a konverzió.|  
 |A konvertálás nem lehetséges: {0}.|  
-|A következő nem konvertálható: {0} sor {1}.|  
+|A következő nem konvertálható: {0}sor {1}.|  
 |A (z) {0} típusú oszlop nem konvertálható {1} sor {2}.|  
 |A (z) {0} típusú "{2}" oszlop nem alakítható át {1} sor {3}.|  
-|A (z) {0} típusú "{2}" oszlop nem alakítható át a (z) {4} {1} típusú "{3}" oszlopba.| 
+|A (z) {0} típusú "{2}" oszlop nem alakítható át a (z) {4}{1} típusú "{3}" oszlopba.| 
 
 ## <a name="error-0140"></a>0140-es hiba  
  Kivétel történik, ha az átadott oszlop beállított argumentuma nem tartalmaz más oszlopokat, kivéve a Label oszlopot.  
@@ -2041,12 +2041,12 @@ Megoldás:
   
  Ez a hiba Azure Machine Learning akkor fordul elő, ha egy GitHub-forrásfájlt érvénytelen URL-formátummal ad meg.  
   
-**Megoldás:** Győződjön meg arról, hogy a GitHub-tárház URL-címe érvényes, és a \blob\ vagy \tree \\ végződik.  
+**Megoldás:** Győződjön meg arról, hogy a GitHub-tárház URL-címe érvényes, és a \blob\ vagy \tree\\végződik.  
   
 |Kivételek üzenetei|  
 |------------------------|  
 |A GitHub URL-címe nem elemezhető.|  
-|A GitHub URL-címe nem elemezhető (a "\blob \\" vagy a "\tree \\" a tárház neve után): {0}|  
+|A GitHub URL-címe nem elemezhető (a "\blob\\" vagy a "\tree\\" a tárház neve után): {0}|  
 
 ## <a name="error-0145"></a>0145-es hiba  
  Valamilyen okból nem lehet létrehozni a replikációs könyvtárat.  

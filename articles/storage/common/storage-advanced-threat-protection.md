@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/16/2019
 ms.author: tamram
 ms.reviewer: cbrooks
-ms.openlocfilehash: c19b64441d7afbe7544a4401314078b807a8c939
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.openlocfilehash: b9413807cda096adf1056c07e026373ea19359b9
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2019
-ms.locfileid: "71673259"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73495965"
 ---
 # <a name="advanced-threat-protection-for-azure-storage"></a>Komplex veszélyforrások elleni védelem az Azure Storage-ban
 
@@ -30,7 +30,7 @@ Az Azure Storage komplex veszélyforrások elleni védelme a fenyegetések észl
 
 Alapértelmezés szerint engedélyezve van a komplex veszélyforrások elleni védelem a Storage-fiókhoz. A komplex veszélyforrások elleni védelem a következő szakaszokban ismertetett módon állítható be.
 
-### <a name="use-the-azure-portal"></a>Az Azure Portal használata
+### <a name="portaltabazure-portal"></a>[Portál](#tab/azure-portal)
 
 1. Indítsa el a [Azure Portal](https://portal.azure.com/).
 1. Navigáljon az Azure Storage-fiókjához. A **Beállítások**területen válassza a **fokozott biztonság**lehetőséget.
@@ -40,7 +40,7 @@ Alapértelmezés szerint engedélyezve van a komplex veszélyforrások elleni v�
 
     ![Az Azure Storage komplex veszélyforrások elleni védelem bekapcsolása](./media/storage-advanced-threat-protection/storage-advanced-threat-protection-turn-on.png)
 
-### <a name="using-azure-security-center"></a>Az Azure Security Center használatával
+### <a name="azure-security-centertabazure-security-center"></a>[Azure Security Center](#tab/azure-security-center)
 
 Amikor előfizet a Azure Security Center Standard csomagra, a komplex veszélyforrások elleni védelem automatikusan be lesz állítva az összes Storage-fiókra. A következő módon engedélyezheti vagy letilthatja az összetett veszélyforrások elleni védelmet a Storage-fiókjaihoz egy adott előfizetésben:
 
@@ -50,23 +50,23 @@ Amikor előfizet a Azure Security Center Standard csomagra, a komplex veszélyfo
 
     ![Előfizetés kiválasztása](./media/storage-advanced-threat-protection/storage-advanced-threat-protection-subscription.png)
 
-1. Kattintsona díjszabási csomag elemre.
-1. Az **árképzési rétegek kiválasztása erőforrástípus szerint** szakaszban, a Storage- **fiókok** sorban kattintson az **engedélyezve** vagy aLetiltva lehetőségre.
+1. Kattintson a **díjszabási**csomag elemre.
+1. Az **árképzési rétegek kiválasztása erőforrástípus szerint** szakaszban, a Storage- **fiókok** sorban kattintson az **engedélyezve** vagy a **Letiltva**lehetőségre.
 
     ![ATP engedélyezése Security Center](./media/storage-advanced-threat-protection/storage-advanced-threat-protection-pricing2.png)
 1. Kattintson a **Save** (Mentés) gombra.
 
-### <a name="using-azure-resource-manager-templates"></a>Azure Resource Manager-sablonok használata
+### <a name="templatetabtemplate"></a>[Sablon](#tab/template)
 
 Egy Azure Resource Manager sablon használatával üzembe helyezhet egy Azure Storage-fiókot, amelyen engedélyezve van az összetett veszélyforrások védelme. További információ: Storage- [fiók komplex veszélyforrások elleni védelemmel](https://azure.microsoft.com/resources/templates/201-storage-advanced-threat-protection-create/).
 
-### <a name="using-an-azure-policy"></a>Azure Policy használata
+### <a name="azure-policytabazure-policy"></a>[Azure Policy](#tab/azure-policy)
 
 Egy Azure Policy használatával engedélyezheti a komplex veszélyforrások elleni védelmet egy adott előfizetés vagy erőforráscsoport alatt lévő Storage-fiókok között.
 
 1. Indítsa el az Azure **Policy-fogalommeghatározások** lapot.
 
-1. Keresse meg a komplex **veszélyforrások elleni védelem telepítése a Storage** -fiókokra vonatkozó házirendet.
+1. Keresse meg a komplex **veszélyforrások elleni védelem telepítése a Storage-fiókokra** vonatkozó házirendet.
 
      ![Keresési szabályzat](./media/storage-advanced-threat-protection/storage-atp-policy-definitions.png)
 
@@ -78,20 +78,22 @@ Egy Azure Policy használatával engedélyezheti a komplex veszélyforrások ell
 
     ![Házirend-definíciók lap](./media/storage-advanced-threat-protection/storage-atp-policy1.png)
 
-### <a name="using-the-rest-api"></a>A REST API használata
+### <a name="rest-apitabrest-api"></a>[REST API](#tab/rest-api)
 
 A REST API-parancsok használatával létrehozhat, frissíthet vagy beszerezhet egy adott Storage-fiók komplex veszélyforrások elleni védelem beállítását.
 
 * [Komplex veszélyforrások elleni védelem – létrehozás](https://docs.microsoft.com/rest/api/securitycenter/advancedthreatprotection/create)
 * [Komplex veszélyforrások elleni védelem – Get](https://docs.microsoft.com/rest/api/securitycenter/advancedthreatprotection/get)
 
-### <a name="using-azure-powershell"></a>Az Azure PowerShell használata
+### <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
 Használja a következő PowerShell-parancsmagokat:
 
 * [Komplex veszélyforrások elleni védelem engedélyezése](https://docs.microsoft.com/powershell/module/az.security/enable-azsecurityadvancedthreatprotection)
 * [Komplex veszélyforrások elleni védelem](https://docs.microsoft.com/powershell/module/az.security/get-azsecurityadvancedthreatprotection)
 * [A komplex veszélyforrások elleni védelem letiltása](https://docs.microsoft.com/powershell/module/az.security/disable-azsecurityadvancedthreatprotection)
+
+---
 
 ## <a name="explore-security-anomalies"></a>Biztonsági rendellenességek megismerése
 

@@ -1,5 +1,5 @@
 ---
-title: Kiszolgáló nélküli Azure SQL Database (előzetes verzió) | Microsoft Docs
+title: Kiszolgáló nélküli Azure SQL Database | Microsoft Docs
 description: Ez a cikk az új kiszolgáló nélküli számítási szintet ismerteti, és összehasonlítja a meglévő kiépített számítási szintjével.
 services: sql-database
 ms.service: sql-database
@@ -10,17 +10,17 @@ ms.topic: conceptual
 author: moslake
 ms.author: moslake
 ms.reviewer: sstein, carlrab
-ms.date: 09/06/2019
-ms.openlocfilehash: 3b2cc5c0b5deab084c6fdae9435ea3a90b2dd8a6
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.date: 11/04/2019
+ms.openlocfilehash: e8629baa3487795349844229b26d80321c1316ee
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72173403"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73496254"
 ---
-# <a name="azure-sql-database-serverless-preview"></a>Kiszolgáló nélküli Azure SQL Database (előzetes verzió)
+# <a name="azure-sql-database-serverless"></a>Kiszolgáló nélküli Azure SQL Database
 
-Azure SQL Database kiszolgáló nélküli (előzetes verzió) az önálló adatbázisok számítási szintje, amely automatikusan méretezi a számítási feladatok igényét és számláit a másodpercenként felhasznált számítások mennyiségétől függően. A kiszolgáló nélküli számítási rétegek automatikusan szüneteltetik az adatbázisokat az inaktív időszakok során, amikor csak a tárterületet számlázzák, és automatikusan folytatják az adatbázisokat, amikor a tevékenység visszatér.
+A kiszolgáló nélküli Azure SQL Database az önálló adatbázisok számítási szintje, amely automatikusan méretezi a számítási feladatok igényét és számláit a másodpercenként felhasznált számítási kapacitás mennyisége alapján. A kiszolgáló nélküli számítási rétegek automatikusan szüneteltetik az adatbázisokat az inaktív időszakok során, amikor csak a tárterületet számlázzák, és automatikusan folytatják az adatbázisokat, amikor a tevékenység visszatér.
 
 ## <a name="serverless-compute-tier"></a>Kiszolgáló nélküli számítási szint
 
@@ -33,7 +33,7 @@ Az önálló adatbázisok kiszolgáló nélküli számítási rétegét egy szá
 - A **minimális virtuális mag** és a **maximális virtuális mag** olyan konfigurálható paraméterek, amelyek meghatározzák az adatbázis számára elérhető számítási kapacitás tartományát. A memória és az i/o-korlátok arányosak a megadott virtuális mag-tartománnyal.  
 - Az automatikus **szüneteltetési késleltetés** egy konfigurálható paraméter, amely meghatározza azt az időtartamot, ameddig az adatbázisnak inaktívnak kell lennie, mielőtt a rendszer automatikusan szünetelteti az időt. A rendszer automatikusan folytatja az adatbázist, ha a következő bejelentkezés vagy más tevékenység történik.  Másik lehetőségként az autoszüneteltetés is letiltható.
 
-### <a name="cost"></a>Költség
+### <a name="cost"></a>Költségek
 
 - A kiszolgáló nélküli adatbázisok díja a számítási és a tárolási díjak összegzése.
 - Ha a számítási használat a minimális és a maximális korlát között van, a számítási díj a felhasznált virtuális mag és memória alapján történik.
@@ -127,7 +127,7 @@ Az autofolytatás a következő esetekben aktiválódik, ha az alábbi feltétel
 |Szolgáltatás|Trigger újraindítása|
 |---|---|
 |Hitelesítés és engedélyezés|Bejelentkezés|
-|Fenyegetésészlelés|A veszélyforrások észlelési beállításainak engedélyezése/letiltása az adatbázis vagy a kiszolgáló szintjén.<br>A veszélyforrások észlelési beállításainak módosítása az adatbázis vagy a kiszolgáló szintjén.|
+|Fenyegetések észlelése|A veszélyforrások észlelési beállításainak engedélyezése/letiltása az adatbázis vagy a kiszolgáló szintjén.<br>A veszélyforrások észlelési beállításainak módosítása az adatbázis vagy a kiszolgáló szintjén.|
 |Adatfelderítés és besorolás|Érzékenységi Címkék hozzáadása, módosítása, törlése vagy megtekintése|
 |Naplózás|Naplózási rekordok megtekintése.<br>Naplózási házirend frissítése vagy megtekintése.|
 |Adatmaszkolás|Az adatmaszkolási szabályok hozzáadása, módosítása, törlése vagy megtekintése|
@@ -155,23 +155,23 @@ Ha egy új adatbázist hoz létre, vagy egy meglévő adatbázist kiszolgáló n
 
 1. Adja meg a szolgáltatási cél nevét. A szolgáltatási cél a szolgáltatási szintet, a hardverek létrehozását és a maximális virtuális mag írja elő. A következő táblázat a szolgáltatási cél beállításait mutatja be:
 
-   |Szolgáltatási cél neve|Szolgáltatáscsomag|Hardver létrehozása|Maximális virtuális mag|
+   |Szolgáltatási cél neve|Szolgáltatásszint|Hardver létrehozása|Maximális virtuális mag|
    |---|---|---|---|
-   |GP_S_Gen5_1|Általános rendeltetés|Gen5|1|
-   |GP_S_Gen5_2|Általános rendeltetés|Gen5|2|
-   |GP_S_Gen5_4|Általános rendeltetés|Gen5|4|
-   |GP_S_Gen5_6|Általános rendeltetés|Gen5|6|
-   |GP_S_Gen5_8|Általános rendeltetés|Gen5|8|
-   |GP_S_Gen5_10|Általános rendeltetés|Gen5|10|
-   |GP_S_Gen5_12|Általános rendeltetés|Gen5|12|
-   |GP_S_Gen5_14|Általános rendeltetés|Gen5|14|
-   |GP_S_Gen5_16|Általános rendeltetés|Gen5|16|
+   |GP_S_Gen5_1|Általános célú|Gen5|1|
+   |GP_S_Gen5_2|Általános célú|Gen5|2|
+   |GP_S_Gen5_4|Általános célú|Gen5|4|
+   |GP_S_Gen5_6|Általános célú|Gen5|6|
+   |GP_S_Gen5_8|Általános célú|Gen5|8|
+   |GP_S_Gen5_10|Általános célú|Gen5|10|
+   |GP_S_Gen5_12|Általános célú|Gen5|12|
+   |GP_S_Gen5_14|Általános célú|Gen5|14|
+   |GP_S_Gen5_16|Általános célú|Gen5|16|
 
 2. Szükség esetén megadhatja a minimális virtuális mag és az automatikus szüneteltetés késleltetését is, ha módosítani szeretné az alapértelmezett értékeket. A következő táblázat a paraméterek elérhető értékeit tartalmazza.
 
    |Paraméter|Értékek megválasztása|Alapértelmezett érték|
    |---|---|---|---|
-   |Minimális virtuális mag|A maximális virtuális mag függ – lásd az [erőforrás-korlátokat](sql-database-vCore-resource-limits-single-databases.md#general-purpose-service-tier-for-serverless-compute).|0,5 virtuális mag|
+   |Minimális virtuális mag|A maximális virtuális mag függ – lásd az [erőforrás-korlátokat](sql-database-vcore-resource-limits-single-databases.md#general-purpose---serverless-compute---gen5).|0,5 virtuális mag|
    |Automatikus szüneteltetés késleltetése|Minimum: 60 perc (1 óra)<br>Maximum: 10080 perc (7 nap)<br>Növekmények: 60 perc<br>Automatikus szüneteltetés letiltása:-1|60 perc|
 
 > [!NOTE]
@@ -179,7 +179,7 @@ Ha egy új adatbázist hoz létre, vagy egy meglévő adatbázist kiszolgáló n
 
 ### <a name="create-new-database-in-serverless-compute-tier"></a>Új adatbázis létrehozása kiszolgáló nélküli számítási szinten 
 
-#### <a name="use-azure-portal"></a>Az Azure-portál használata
+#### <a name="use-azure-portal"></a>Az Azure Portal használata
 
 Lásd [: gyors útmutató: önálló adatbázis létrehozása Azure SQL Database a Azure Portal használatával](sql-database-single-database-get-started.md).
 
@@ -243,7 +243,7 @@ A minimális virtuális mag módosítását a PowerShell [set-AzSqlDatabase](htt
 
 Az automatikus szüneteltetés késleltetésének módosítása a PowerShell [set-AzSqlDatabase](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabase) parancsával történik a `AutoPauseDelayInMinutes` argumentum használatával.
 
-## <a name="monitoring"></a>Monitoring
+## <a name="monitoring"></a>Figyelés
 
 ### <a name="resources-used-and-billed"></a>Felhasznált erőforrások és számlázás
 
@@ -257,11 +257,11 @@ Az alkalmazáscsomag egy adatbázis külső erőforrás-kezelési határa, függ
 
 A felhasználói erőforráskészlet egy adatbázis belső erőforrás-kezelési határa, függetlenül attól, hogy az adatbázis kiszolgáló nélküli vagy kiépített számítási szinten van-e. A felhasználói erőforráskészlet hatóköre CPU és IO a DDL-lekérdezések által generált felhasználói számítási feladatokhoz, például LÉTREHOZÁSi és MÓDOSÍTÁSi, valamint DML-lekérdezések, például SELECT, INSERT, UPDATE és DELETE. Ezek a lekérdezések általában a kihasználtság legjelentősebb hányadát jelentik az alkalmazáscsomag keretében.
 
-### <a name="metrics"></a>Metrikák
+### <a name="metrics"></a>Mérőszámok
 
 A kiszolgáló nélküli adatbázisok alkalmazáscsomag és felhasználói készlete erőforrás-használatának figyelésére szolgáló mérőszámok az alábbi táblázatban láthatók:
 
-|Jogi személy|Metrika|Leírás|egység|
+|Entitás|Metrika|Leírás|Egység|
 |---|---|---|---|
 |Alkalmazáscsomag|app_cpu_percent|Az alkalmazás által az alkalmazáshoz engedélyezett maximális virtuális mag képest használt virtuális mag százalékos aránya.|Százalék|
 |Alkalmazáscsomag|app_cpu_billed|A jelentési időszak során az alkalmazás számára számlázott számítási mennyiség. Az ebben az időszakban fizetett összeg a metrika terméke és a virtuális mag egység ára. <br><br>A metrika értékeit a rendszer a felhasznált CPU és a másodpercenként felhasznált memória maximális számának időbeli összesítésével határozza meg. Ha a felhasznált mennyiség kevesebb, mint a minimum virtuális mag és a minimális memória által beállított minimális mennyiség, akkor a kiosztott minimális összegért kell fizetnie. Ha a CPU-t számlázási célokra szeretné összehasonlítani a memóriával, a memória a virtuális mag-egységekbe van normalizálva azáltal, hogy a memória mennyiségét GB-ban, virtuális mag 3 GB-onként átméretezni.|Virtuális mag másodpercben|
@@ -288,7 +288,7 @@ Get-AzSqlDatabase `
 
 ## <a name="resource-limits"></a>Erőforráskorlátok
 
-Az erőforrás-korlátokat lásd: [kiszolgáló nélküli számítási szintek](sql-database-vCore-resource-limits-single-databases.md#general-purpose-service-tier-for-serverless-compute).
+Az erőforrás-korlátokat lásd: [kiszolgáló nélküli számítási szintek](sql-database-vCore-resource-limits-single-databases.md#general-purpose---serverless-compute---gen5).
 
 ## <a name="billing"></a>Számlázás
 
@@ -328,7 +328,7 @@ Tegyük fel, hogy a számítási egység ára $0.000073/virtuális mag/Second.  
 
 A kiszolgáló nélküli számítási csomag világszerte elérhető, kivéve a következő régiókat: Kelet-Kína, Észak-Kína, Közép-Németország, Németország, Északkelet, Egyesült Királyság északi régiója, Egyesült Királyság 2., az USA nyugati középső régiója és a US Gov Central (Iowa).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Első lépésként tekintse meg a rövid útmutató [: önálló adatbázis létrehozása Azure SQL Database a Azure Portal használatával](sql-database-single-database-get-started.md)című témakört.
-- Az erőforrások korlátaival kapcsolatban lásd: [kiszolgáló nélküli számítási keret erőforrás-korlátai](sql-database-vCore-resource-limits-single-databases.md#general-purpose-service-tier-for-serverless-compute).
+- Az erőforrások korlátaival kapcsolatban lásd: [kiszolgáló nélküli számítási keret erőforrás-korlátai](sql-database-vCore-resource-limits-single-databases.md#general-purpose---serverless-compute---gen5).

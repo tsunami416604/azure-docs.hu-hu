@@ -1,259 +1,259 @@
 ---
-title: Exportálja, vagy a munkaterület adatainak törlése
+title: Munkaterület-adatexportálás vagy-törlés
 titleSuffix: Azure Machine Learning
-description: Ismerje meg, hogyan exportálhatja vagy törölheti a munkaterületet a Azure Portal, a CLI, az SDK és a hitelesített REST API-k használatával.
+description: Ismerje meg, hogyan exportálhatja vagy törölheti a munkaterületet a Azure Machine Learning Studio, CLI, SDK és hitelesített REST API-k használatával.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.reviewer: jmartens
-author: ph-com
-ms.author: pahusban
+author: lobrien
+ms.author: laobri
 ms.date: 05/02/2019
 ms.custom: seodec18
-ms.openlocfilehash: 18e2ab18dac214e73eaf6ad7dfcb9dbbab0b5cf5
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: d653d1cd719ac59bf6c98bee588c41858052bc61
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71002844"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73489854"
 ---
-# <a name="export-or-delete-your-machine-learning-service-workspace-data"></a>Exportálja, vagy a Machine Learning szolgáltatás munkaterület adatainak törlése 
+# <a name="export-or-delete-your-machine-learning-service-workspace-data"></a>Machine Learning szolgáltatás-munkaterület adatainak exportálása vagy törlése 
+[!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-Az Azure Machine Learning exportál, vagy törölje a munkaterület adatainak hitelesített REST API-val. Ez a cikk bemutatja, hogyan.
+Azure Machine Learning a munkaterület adatait exportálhatja vagy törölheti a hitelesített REST API használatával. Ebből a cikkből megtudhatja, hogyan.
 
 [!INCLUDE [GDPR-related guidance](../../../includes/gdpr-dsr-and-stp-note.md)]
 
 [!INCLUDE [GDPR-related guidance](../../../includes/gdpr-intro-sentence.md)]
 
-## <a name="control-your-workspace-data"></a>Munkaterület adatfelügyelet
-A Azure Machine Learning által tárolt termékbeli adatok a Azure Portal, a CLI, az SDK és a hitelesített REST API-k használatával exportálhatók és törlésre használhatók. Az adatvédelem az Azure Portalon keresztül elérhető telemetriai adatokat. 
+## <a name="control-your-workspace-data"></a>A munkaterület adatainak szabályozása
+A Azure Machine Learning által tárolt termékbeli adatok a Azure Machine Learning Studio, a CLI, az SDK és a hitelesített REST API-k használatával exportálhatók és törlésre használhatók. A telemetria-adatok az Azure adatvédelmi portálján érhetők el. 
 
 Azure Machine Learning a személyes adatok a futtatási előzmények dokumentumaiban lévő felhasználói adatokból és a szolgáltatással kapcsolatos egyes felhasználói interakciók telemetria állnak.
 
-## <a name="delete-workspace-data-with-the-rest-api"></a>A REST API-val a munkaterület adatainak törlése 
+## <a name="delete-workspace-data-with-the-rest-api"></a>Munkaterület-adatbázis törlése a REST API 
 
-Annak érdekében, hogy az adatok törléséhez a következő API-hívások a HTTP DELETE művelet is végezhető. Ezeket felhatalmazott kellene egy `Authorization: Bearer <arm-token>` a kérelemben szereplő tartományfejléc ahol `<arm-token>` van az AAD-hozzáférési tokent a `https://management.core.windows.net/` végpont.  
+Az adattörléshez a következő API-hívások hajthatók végre a HTTP-TÖRLÉSi művelettel. Ezek a kérelemben `Authorization: Bearer <arm-token>` fejléctel rendelkeznek, ahol a `<arm-token>` az `https://management.core.windows.net/` végpont HRE hozzáférési jogkivonata.  
 
-Ismerje meg, hogyan ez token beszerzése és az Azure-végpontok hívása, lásd: [Azure REST API-dokumentáció](https://docs.microsoft.com/rest/api/azure/).  
+A jogkivonat beszerzéséről és az Azure-végpontok meghívásáról az [azure REST API dokumentációjában](https://docs.microsoft.com/rest/api/azure/)talál további információt.  
 
-A következő példákban cserélje le a szöveget {} a példány nevekkel, amelyek meghatározzák a társított erőforrás.
+Az alábbi példákban cserélje le a {} szövegét a társított erőforrást meghatározó példányok neveire.
 
-### <a name="delete-an-entire-workspace"></a>Egy teljes munkaterület törlése
+### <a name="delete-an-entire-workspace"></a>Teljes munkaterület törlése
 
-Ez a hívás használatával egy teljes munkaterület törlése.  
+Ez a hívás egy teljes munkaterület törlésére használható.  
 > [!WARNING]
-> Összes adat törlődik, és a munkaterület többé nem lesz használható.
+> Minden információ törölve lesz, és a munkaterület többé nem lesz használható.
 
     https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}?api-version=2018-03-01-preview
 
-### <a name="delete-models"></a>Modell törlése
+### <a name="delete-models"></a>Modellek törlése
 
-Ez a hívás segítségével modelleket és a hozzájuk tartozó azonosítóik listáját:
+Ezzel a hívással lekérheti a modellek listáját és azonosítóit:
 
     https://{location}.modelmanagement.azureml.net/api/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspace}/models?api-version=2018-03-01-preview
 
-Egyéni modellek törölhetők:
+Az egyes modellek a használatával törölhetők:
 
     https://{location}.modelmanagement.azureml.net/api/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspace}/models/{id}?api-version=2018-03-01-preview
 
 ### <a name="delete-assets"></a>Eszközök törlése
 
-Ez a hívás használja az eszközök és a hozzájuk tartozó azonosítóik listáját:
+Ezzel a hívással lekérheti az eszközök és azonosítóik listáját:
 
     https://{location}.modelmanagement.azureml.net/api/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspace}/assets?api-version=2018-03-01-preview
 
-Egyes eszközök törölhetők:
+Az egyes eszközök a használatával törölhetők:
 
     https://{location}.modelmanagement.azureml.net/api/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspace}/assets/{id}?api-version=2018-03-01-preview
 
-### <a name="delete-images"></a>A képek törlése
+### <a name="delete-images"></a>Lemezképek törlése
 
-Ez a hívás segítségével képeket és a hozzájuk tartozó azonosítóik listáját:
+Használja ezt a hívást a rendszerképek és azonosítók listájának lekéréséhez:
 
     https://{location}.modelmanagement.azureml.net/api/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspace}/images?api-version=2018-03-01-preview
 
-Az egyéni lemezképek törlése:
+Az egyes lemezképek a használatával törölhetők:
 
     https://{location}.modelmanagement.azureml.net/api/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspace}/images/{id}?api-version=2018-03-01-preview
 
 ### <a name="delete-services"></a>Szolgáltatások törlése
 
-Ez a hívás használatával services és a hozzájuk tartozó azonosítóik listáját:
+Ezzel a hívással lekérheti a szolgáltatások listáját és azonosítóit:
 
     https://{location}.modelmanagement.azureml.net/api/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspace}/services?api-version=2018-03-01-preview
 
-Az egyes szolgáltatások is törölve:
+Az egyes szolgáltatások a használatával törölhetők:
 
     https://{location}.modelmanagement.azureml.net/api/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspace}/services/{id}?api-version=2018-03-01-preview
 
-## <a name="export-service-data-with-the-rest-api"></a>A REST API-val szolgáltatás az adatok exportálása
+## <a name="export-service-data-with-the-rest-api"></a>A szolgáltatásban tárolt adatértékek exportálása a REST API
 
-Annak érdekében, hogy az adatok exportálása a következő API-hívások a HTTP GET művelet végrehajtásával lehessen elvégezni. Ezek jogosult létesíteni egy `Authorization: Bearer <arm-token>` a kérelemben szereplő tartományfejléc ahol `<arm-token>` van az AAD-jogkivonat a végpont `https://management.core.windows.net/`  
+Az adatexportáláshoz a következő API-hívások hajthatók végre a HTTP GET művelettel. Ezek a kérelemben `Authorization: Bearer <arm-token>` fejléctel rendelkeznek, ahol `<arm-token>` a végpont HRE hozzáférési jogkivonata `https://management.core.windows.net/`  
 
-Ismerje meg, hogyan ez token beszerzése és az Azure-végpontok hívása, lásd: [Azure REST API-dokumentáció](https://docs.microsoft.com/rest/api/azure/).   
+A jogkivonat beszerzéséről és az Azure-végpontok meghívásáról az [azure REST API dokumentációjában](https://docs.microsoft.com/rest/api/azure/)talál további információt.   
 
-A következő példákban cserélje le a szöveget {} a példány nevekkel, amelyek meghatározzák a társított erőforrás.
+Az alábbi példákban cserélje le a {} szövegét a társított erőforrást meghatározó példányok neveire.
 
-### <a name="export-workspace-information"></a>Munkaterületek adatainak exportálása
+### <a name="export-workspace-information"></a>Munkaterület adatainak exportálása
 
-Ez a hívás használatával minden munkaterületek listájának lekérése:
+Ezzel a hívással lekérheti az összes munkaterület listáját:
 
     https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces?api-version=2018-03-01-preview
 
-Által egy adott munkaterület információ szerezhető be:
+Az egyes munkaterületekkel kapcsolatos információk az alábbiakkal szerezhetők be:
 
     https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}?api-version=2018-03-01-preview
 
-### <a name="export-compute-information"></a>Számítási adatainak exportálása
+### <a name="export-compute-information"></a>Számítási adatok exportálása
 
-Az összes számítási munkaterülethez csatlakoztatott tárolók lekérheti:
+A munkaterülethez csatolt számítási célok a következővel szerezhetők be:
 
     https://management.azure.com/subscriptions/{subscriptionId}/resourceGroup/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/computes?api-version=2018-03-01-preview
 
-Egyetlen számítási célt információ kérhetők le:
+Az egyetlen számítási célhoz tartozó információk az alábbiak szerint szerezhetők be:
 
     https://management.azure.com/subscriptions/{subscriptionId}/resourceGroup/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/computes/{computeName}?api-version=2018-03-01-preview
 
-### <a name="export-run-history-data"></a>Exportálás futtatási előzményadatokat
-Ez a hívás használatával minden kísérletek és az adataik listájának lekérése:
+### <a name="export-run-history-data"></a>Futtatási előzményekre vonatkozó adatexportálás
+Használja ezt a hívást az összes kísérlet és a hozzájuk tartozó információk listájának lekéréséhez:
 
     https://{location}.experiments.azureml.net/history/v1.0/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/experiments 
 
-Egy adott kísérletet az összes futó szerezhető be:
+Egy adott kísérlet összes futtatása a következővel szerezhető be:
 
     https://{location}.experiments.azureml.net/history/v1.0/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/experiments/{experimentName}/runs 
 
-Futtatási előzmények, elemek lekérheti:
+A futtatási előzmények elemek a következőkkel szerezhetők be:
 
     https://{location}.experiments.azureml.net/history/v1.0/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/experiments/{experimentName}/runs/{runId} 
 
-A kísérlet összes futtatási metrikák szerezhető be:
+A kísérletekhez tartozó összes futtatási metrikát a következővel lehet beszerezni:
 
     https://{location}.experiments.azureml.net/history/v1.0/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/experiments/{experimentName}/metrics 
 
-Egyszeri futtatás metrika szerezhető be:
+Egyetlen futtatási metrikát a:
 
     https://{location}.experiments.azureml.net/history/v1.0/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/experiments/{experimentName}/metrics/{metricId}
     
 ### <a name="export-artifacts"></a>Összetevők exportálása
 
-Ez a hívás használatával összetevők és az elérési utak listájának lekérése:
+Használja ezt a hívást az összetevők és az elérési utak listájának lekéréséhez:
 
     https://{location}.experiments.azureml.net/artifact/v1.0/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/artifacts/origins/ExperimentRun/containers/{runId}
     
 ### <a name="export-notifications"></a>Értesítések exportálása
 
-Ez a hívás használatával tárolt feladatok listájának lekérése:     
+Használja ezt a hívást a tárolt feladatok listájának lekéréséhez:     
 
     https://{location}.experiments.azureml.net/notification/v1.0/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/tasks
 
-Egyetlen feladat értesítéseire való regisztrációt szerezhető be:
+Egyetlen feladatra vonatkozó értesítések a következővel szerezhetők be:
 
     https://{location}.experiments.azureml.net/notification/v1.0/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}tasks/{taskId}
 
 ### <a name="export-data-stores"></a>Adattárak exportálása
 
-Ez a hívás használatával adattárak listáját:
+Használja ezt a hívást az adattárak listájának lekéréséhez:
 
     https://{location}.experiments.azureml.net/datastore/v1.0/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/datastores
 
-Egyes adattárak szerezhető be:
+Az egyes adattárakat a alábbiak érhetik el:
 
     https://{location}.experiments.azureml.net/datastore/v1.0/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/datastores/{name}
 
-### <a name="export-models"></a>Modell exportálása
+### <a name="export-models"></a>Modellek exportálása
 
-Ez a hívás segítségével modelleket és a hozzájuk tartozó azonosítóik listáját:
+Ezzel a hívással lekérheti a modellek listáját és azonosítóit:
 
     https://{location}.modelmanagement.azureml.net/api/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspace}/models?api-version=2018-03-01-preview
 
-Egyéni modellek szerezhető be:
+Az egyes modelleket az alábbiak alapján szerezheti be:
 
     https://{location}.modelmanagement.azureml.net/api/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspace}/models/{id}?api-version=2018-03-01-preview
 
 ### <a name="export-assets"></a>Eszközök exportálása
 
-Ez a hívás használja az eszközök és a hozzájuk tartozó azonosítóik listáját:
+Ezzel a hívással lekérheti az eszközök és azonosítóik listáját:
 
     https://{location}.modelmanagement.azureml.net/api/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspace}/assets?api-version=2018-03-01-preview
 
-Egyes eszközök által szerezhető be:
+Az egyes eszközök az alábbiak szerint szerezhetők be:
 
     https://{location}.modelmanagement.azureml.net/api/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspace}/assets/{id}?api-version=2018-03-01-preview
 
-### <a name="export-images"></a>Képek exportálása
+### <a name="export-images"></a>Lemezképek exportálása
 
-Ez a hívás segítségével képeket és a hozzájuk tartozó azonosítóik listáját:
+Használja ezt a hívást a rendszerképek és azonosítók listájának lekéréséhez:
 
     https://{location}.modelmanagement.azureml.net/api/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspace}/images?api-version=2018-03-01-preview
 
-Egyéni rendszerképek szerezhető be:
+Az egyes rendszerképeket az alábbiak szerint lehet beszerezni:
 
     https://{location}.modelmanagement.azureml.net/api/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspace}/images/{id}?api-version=2018-03-01-preview
 
-### <a name="export-services"></a>Exportálás szolgáltatása
+### <a name="export-services"></a>Szolgáltatások exportálása
 
-Ez a hívás használatával services és a hozzájuk tartozó azonosítóik listáját:
+Ezzel a hívással lekérheti a szolgáltatások listáját és azonosítóit:
 
     https://{location}.modelmanagement.azureml.net/api/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspace}/services?api-version=2018-03-01-preview
 
-Egyes szolgáltatások szerezhető be:
+Az egyes szolgáltatásokhoz a következőket lehet beszerezni:
 
     https://{location}.modelmanagement.azureml.net/api/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspace}/services/{id}?api-version=2018-03-01-preview
 
-### <a name="export-pipeline-experiments"></a>Folyamat kísérletek exportálása
+### <a name="export-pipeline-experiments"></a>Folyamat-kísérletek exportálása
 
-Az egyes kísérletek szerezhető be:
+Az egyes kísérletek a alábbiak szerint szerezhetők be:
 
     https://{location}.aether.ms/api/v1.0/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/Experiments/{experimentId}
 
-### <a name="export-pipeline-graphs"></a>Folyamat Gráfok exportálása
+### <a name="export-pipeline-graphs"></a>Folyamat-diagramok exportálása
 
-Az egyes diagramok szerezhető be:
+Az egyes diagramok a segítségével szerezhetők be:
 
     https://{location}.aether.ms/api/v1.0/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/Graphs/{graphId}
 
-### <a name="export-pipeline-modules"></a>Folyamat modulok exportálása
+### <a name="export-pipeline-modules"></a>Folyamat moduljainak exportálása
 
-Modulok által szerezhető be:
+A modulok a használatával szerezhetők be:
 
     https://{location}.aether.ms/api/v1.0/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/Modules/{id}
 
 ### <a name="export-pipeline-templates"></a>Folyamat-sablonok exportálása
 
-Sablonok szerezhető be:
+A sablonok a következőket tudják beszerezni:
 
     https://{location}.aether.ms/api/v1.0/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/Templates/{templateId}
 
-### <a name="export-pipeline-data-sources"></a>Folyamat adatforrások exportálása
+### <a name="export-pipeline-data-sources"></a>Folyamat-adatforrások exportálása
 
-Adatforrások szerezhető be:
+Az adatforrások az alábbiak szerint szerezhetők be:
 
     https://{location}.aether.ms/api/v1.0/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/DataSources/{id}
 
-## <a name="delete-visual-interface-assets"></a>Visual Interface-eszközök törlése
+## <a name="delete-assets-in-the-designer"></a>Eszközök törlése a tervezőben
 
-A kísérletet létrehozó vizualizációs felületen törölje az egyes eszközöket:
+A tervezőben, ahol létrehozta a kísérletet, töröljön egyedi eszközöket:
 
-1. A bal oldalon válassza ki a törölni kívánt eszköz típusát.
+1. Ugrás a tervezőbe
 
     ![Eszközök törlése](media/how-to-export-delete-data.md/delete-experiment.png)
 
-1. A listából válassza ki a törölni kívánt eszközöket.
+1. A listából válassza ki a törölni kívánt folyamathoz tartozó egyéni piszkozatot.
 
 1. A lap alján válassza a **Törlés**lehetőséget.
 
-## <a name="export-visual-interface-data"></a>Visual Interface-adatexportálás
+## <a name="unregister-data-in-the-designer"></a>A tervezőben tárolt adatregisztráció törlése
 
-A kísérletet létrehozó vizualizáció felületén exportálja a hozzáadott adatait:
+A tervezőben, amelyben létrehozta a kísérletet, exportálja a hozzáadott adatait:
 
-1. A bal **oldalon válassza az adatelemet**.
+1. A bal oldalon válassza az **adatkészletek**lehetőséget.
 
-1. A felső részen válassza a **saját adatkészletek** vagy **minták** lehetőséget az exportálni kívánt adat megkereséséhez.
 
-    ![Az adatletöltés](media/how-to-export-delete-data.md/download-data.png)
 
-1. A listából válassza ki az exportálandó egyes adatkészleteket.
+    ![Az adatletöltés](media/how-to-export-delete-data.md/unregister-dataset.png)
 
-1. A lap alján válassza a **Letöltés**lehetőséget.
+1. A listából válassza ki az egyes adatkészleteket, majd kattintson a regisztráció törlése elemre.
+

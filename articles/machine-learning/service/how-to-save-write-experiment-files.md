@@ -11,15 +11,16 @@ ms.service: machine-learning
 ms.subservice: core
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 05/28/2019
-ms.openlocfilehash: 77f816400709262fab8cb9bd351bdcde73377e09
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.date: 11/04/2019
+ms.openlocfilehash: 41b2602e57d295cfd7e475f4b3aa5657bd4e24d7
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71034287"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73489594"
 ---
 # <a name="where-to-save-and-write-files-for-azure-machine-learning-experiments"></a>Fájlok mentése és írása Azure Machine Learning kísérletekhez
+[!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 Ebből a cikkből megtudhatja, hová mentse a bemeneti fájlokat, és hová írja a kísérletek kimeneti fájljait, hogy megakadályozza a tárolási korlátokkal kapcsolatos hibákat és a kísérlet késését.
 
@@ -53,9 +54,9 @@ A hiba megoldásához tárolja a kísérlet fájljait egy adattárban. Ha nem tu
 Kísérlet&nbsp;leírása|Tárolási korlát megoldás
 ---|---
 Kevesebb mint 2000 fájl & nem használhat adattárt| A pillanatképek maximális méretének felülbírálása <br> `azureml._restclient.snapshots_client.SNAPSHOT_MAX_SIZE_BYTES = 'insert_desired_size'`<br> Ez a fájlok számától és méretétől függően több percet is igénybe vehet.
-Adott parancsfájl-könyvtárat kell használnia| Hozzon `.amlignore` ki egy fájlt, és zárja ki azokat a kísérlet-pillanatképből származó fájlokat, amelyek nem részei a forráskódnak. Adja hozzá a fájlneveket a `.amlignore` fájlhoz, és helyezze azt a betanítási parancsfájlt tartalmazó könyvtárba. A `.amlignore` fájl ugyanazt a [szintaxist és mintázatot](https://git-scm.com/docs/gitignore) használja `.gitignore` , mint egy fájl.
+Adott parancsfájl-könyvtárat kell használnia| `.amlignore`-fájlból zárja ki azokat a fájlokat, amelyek nem részei a forráskódnak. Adja hozzá a fájlneveket a `.amlignore` fájlhoz, és helyezze azt a betanítási parancsfájlt tartalmazó könyvtárba. A `.amlignore` fájl ugyanazt a [szintaxist és mintázatot](https://git-scm.com/docs/gitignore) használja `.gitignore` fájlként.
 Folyamat|Egy másik alkönyvtár használata az egyes lépésekhez
-Jupyter-notebookok| Hozzon `.amlignore` létre egy fájlt, vagy helyezze át a jegyzetfüzetet egy új, üres, alkönyvtárba, és futtassa újra a kódot.
+Jupyter-notebookok| Hozzon létre egy `.amlignore` fájlt, vagy helyezze át a jegyzetfüzetet egy új, üres, alkönyvtárba, és futtassa újra a kódot.
 
 ## <a name="where-to-write-files"></a>Hová kell írni a fájlokat
 
@@ -66,11 +67,11 @@ A módosítások írásakor ajánlott fájlokat írni egy Azure Machine Learning
 Ha nincs szüksége adattárra, írja a fájlokat a `./outputs` és/vagy `./logs` mappába.
 
 >[!Important]
-> Két mappa, *kimenet* és *napló*, a Azure Machine learning speciális kezelést kap. Ha a betanítás során fájlokat`./outputs` és`./logs` mappákat ír, a fájlok automatikusan feltöltve lesznek a futtatási előzményekbe, hogy a Futtatás befejezése után hozzáférjenek hozzájuk.
+> Két mappa, *kimenet* és *napló*, a Azure Machine learning speciális kezelést kap. Ha a betanítás során fájlokat ír`./outputs` és`./logs` mappákba, a fájlok automatikusan feltöltve lesznek a futtatási előzményekbe, hogy a Futtatás befejezése után hozzáférhessenek hozzájuk.
 
-* **A kimenetek, például állapotüzenetek vagy pontozási eredmények esetén** fájlokat írhat a `./outputs` mappába, így azok a futtatási előzményekben szereplő összetevőkként megmaradnak. Legyen szem előtt tartva a mappába írt fájlok számát és méretét, mivel a tartalom a futtatási előzményekbe való feltöltésekor késést eredményezhet. Ha a késés aggodalomra ad okot, ajánlott a fájlok adattárba való írása.
+* **A kimenetek, például állapotüzenetek vagy pontozási eredmények esetén** fájlokat írhat a `./outputs` mappába, így azok a futtatási előzményekben szereplő összetevőkként maradnak meg. Legyen szem előtt tartva a mappába írt fájlok számát és méretét, mivel a tartalom a futtatási előzményekbe való feltöltésekor késést eredményezhet. Ha a késés aggodalomra ad okot, ajánlott a fájlok adattárba való írása.
 
-* **Ha az írott fájlt naplófájlként szeretné menteni a futtatási előzményekben,** írja a fájlokat a `./logs` mappába. A naplók valós időben lesznek feltöltve, így ez a módszer alkalmas az élő frissítések távoli futtatásból való továbbítására.
+* **Ha az írott fájlt naplófájlként szeretné menteni a futtatási előzményekben,** írja a fájlokat `./logs` mappába. A naplók valós időben lesznek feltöltve, így ez a módszer alkalmas az élő frissítések távoli futtatásból való továbbítására.
 
 ## <a name="next-steps"></a>További lépések
 

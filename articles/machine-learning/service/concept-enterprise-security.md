@@ -9,13 +9,13 @@ ms.topic: conceptual
 ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
-ms.date: 08/07/2019
-ms.openlocfilehash: 309cef6ec058d8192bc7a6341b49a59c0000a305
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.date: 11/04/2019
+ms.openlocfilehash: e834c55ec35195ff627176603c7611abbf6adf1c
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71035564"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73497501"
 ---
 # <a name="enterprise-security-for-azure-machine-learning"></a>Vállalati biztonsági Azure Machine Learning
 
@@ -31,7 +31,7 @@ A többtényezős hitelesítés akkor támogatott, ha a Azure Active Directory (
 1. Az ügyfél az Azure Resource Manager és az összes Azure Machine Learning számára megadja a tokent.
 1. A Machine Learning szolgáltatás Machine Learning szolgáltatási jogkivonatot biztosít a felhasználó számítási céljához (például Machine Learning Compute). Ezt a tokent a felhasználói számítási cél használja a Machine Learning szolgáltatás visszahívására a Futtatás befejezése után. A hatókör csak a munkaterületre korlátozódik.
 
-[![Hitelesítés Azure Machine Learning](./media/enterprise-readiness/authentication.png)](./media/enterprise-readiness/authentication-expanded.png)
+[![hitelesítés Azure Machine Learning](./media/enterprise-readiness/authentication.png)](./media/enterprise-readiness/authentication-expanded.png)
 
 ### <a name="authentication-for-web-service-deployment"></a>Hitelesítés a webszolgáltatások üzembe helyezéséhez
 
@@ -39,8 +39,8 @@ Azure Machine Learning a következő két hitelesítési módszert támogatja a 
 
 |Hitelesítési módszer|Azure Container Instances|AKS|
 |---|---|---|
-|Kulcs|Alapértelmezés szerint letiltva| Alapértelmezés szerint engedélyezve|
-|Jogkivonat| Nem állnak rendelkezésre adatok| Alapértelmezés szerint letiltva |
+|Jelmagyarázat|Alapértelmezés szerint letiltva| Alapértelmezés szerint engedélyezve|
+|Jogkivonat| Nem érhető el| Alapértelmezés szerint letiltva |
 
 #### <a name="authentication-with-keys"></a>Hitelesítés kulcsokkal
 
@@ -49,9 +49,9 @@ Ha engedélyezi a kulcsos hitelesítést a központi telepítéshez, automatikus
 * A hitelesítés alapértelmezés szerint engedélyezve van az Azure Kubernetes szolgáltatásban (ak) való üzembe helyezéskor.
 * A hitelesítés alapértelmezés szerint le van tiltva a Azure Container Instances telepítésekor.
 
-A kulcsos hitelesítés engedélyezéséhez használja `auth_enabled` a paramétert a központi telepítés létrehozásakor vagy frissítésekor.
+A kulcsos hitelesítés engedélyezéséhez használja a `auth_enabled` paramétert egy központi telepítés létrehozásakor vagy frissítésekor.
 
-Ha a kulcsos hitelesítés engedélyezve van, a metódussal kérheti le az `get_keys` elsődleges és a másodlagos hitelesítési kulcsot:
+Ha a kulcsos hitelesítés engedélyezve van, a `get_keys` metódussal kérhet le elsődleges és másodlagos hitelesítési kulcsot:
 
 ```python
 primary, secondary = service.get_keys()
@@ -59,7 +59,7 @@ print(primary)
 ```
 
 > [!IMPORTANT]
-> Ha a kulcs újragenerálása van szüksége, használja a [ `service.regen_key` ](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py).
+> Ha újra kell létrehoznia egy kulcsot, használja a [`service.regen_key`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py).
 
 #### <a name="authentication-with-tokens"></a>Hitelesítés jogkivonatokkal
 
@@ -68,9 +68,9 @@ Ha engedélyezi a jogkivonat-hitelesítést egy webszolgáltatáshoz, a felhaszn
 * Alapértelmezés szerint a jogkivonat-hitelesítés le van tiltva az Azure Kubernetes Service-ben való üzembe helyezéskor.
 * A jogkivonat-hitelesítés nem támogatott, ha Azure Container Instances telepíti.
 
-A jogkivonat-hitelesítés vezérléséhez használja `token_auth_enabled` a paramétert a központi telepítés létrehozásakor vagy frissítésekor.
+A jogkivonat-hitelesítés vezérléséhez használja a `token_auth_enabled` paramétert egy központi telepítés létrehozásakor vagy frissítésekor.
 
-Ha engedélyezve van a jogkivonat-hitelesítés, a `get_token` metódus használatával kérhet le egy JSON web token (JWT) és a jogkivonat lejárati idejét:
+Ha engedélyezve van a jogkivonat-hitelesítés, használhatja a `get_token` metódust egy JSON Web Token (JWT) és a jogkivonat lejárati idejének lekéréséhez:
 
 ```python
 token, refresh_by = service.get_token()
@@ -78,7 +78,7 @@ print(token)
 ```
 
 > [!IMPORTANT]
-> A jogkivonat `refresh_by` időpontját követően új jogkivonatot kell kérnie.
+> Új jogkivonatot kell kérnie a jogkivonat `refresh_by` idő után.
 >
 > Javasoljuk, hogy az Azure Kubernetes Service-fürttel azonos régióban hozza létre Azure Machine Learning munkaterületét. 
 >
@@ -86,9 +86,9 @@ print(token)
 >
 > Továbbá minél nagyobb a távolság a fürt régiója és a munkaterület régiója között, annál hosszabb ideig tart a token beolvasása.
 
-## <a name="authorization"></a>Authorization
+## <a name="authorization"></a>Engedélyezés
 
-Több munkaterületet is létrehozhat, és minden munkaterülethez több személy közösen használhat. Munkaterületek megosztásakor a hozzáférését a következő szerepköröknek a felhasználókhoz való hozzárendelésével szabályozhatja:
+Több munkaterületet is létrehozhat, és az egyes munkaterületek több személy számára is megoszthatók. Munkaterületek megosztásakor a hozzáférését a következő szerepköröknek a felhasználókhoz való hozzárendelésével szabályozhatja:
 
 * Tulajdonos
 * Közreműködő
@@ -100,13 +100,14 @@ A következő táblázat a főbb Azure Machine Learning-műveleteit és az azoka
 | ---- |:----:|:----:|:----:|
 | Munkaterület létrehozása | ✓ | ✓ | |
 | Munkaterület megosztása | ✓ | |  |
+| Munkaterület frissítése nagyvállalati verzióra | ✓ | |
 | Számítási cél létrehozása | ✓ | ✓ | |
 | Számítási cél csatolása | ✓ | ✓ | |
 | Adattárak csatolása | ✓ | ✓ | |
 | Kísérlet futtatása | ✓ | ✓ | |
 | Futtatások/mérőszámok megtekintése | ✓ | ✓ | ✓ |
 | Modell regisztrálása | ✓ | ✓ | |
-| Lemezkép létrehozása | ✓ | ✓ | |
+| Rendszerkép létrehozása | ✓ | ✓ | |
 | Webszolgáltatás üzembe helyezése | ✓ | ✓ | |
 | Modellek/lemezképek megtekintése | ✓ | ✓ | ✓ |
 | Webszolgáltatás hívása | ✓ | ✓ | ✓ |
@@ -121,18 +122,18 @@ Minden munkaterülethez tartozik egy társított, rendszerhez rendelt felügyelt
 
 A felügyelt identitásokkal kapcsolatos további információkért lásd: [felügyelt identitások az Azure-erőforrásokhoz](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview).
 
-| Resource | Engedélyek |
+| Erőforrás | Engedélyek |
 | ----- | ----- |
 | Munkaterület | Közreműködő |
-| Tárfiók | Storage-blobadatok közreműködője |
-| Kulcstartó | Hozzáférés az összes kulcshoz, titokhoz, tanúsítványhoz |
+| Tárfiók | Storage blob adatközreműködői |
+| Key Vault | Hozzáférés az összes kulcshoz, titokhoz, tanúsítványhoz |
 | Azure Container Registry | Közreműködő |
 | A munkaterületet tartalmazó erőforráscsoport | Közreműködő |
 | A kulcstárolót tartalmazó erőforráscsoport (ha eltér a munkaterületet tartalmazótól) | Közreműködő |
 
 Nem javasoljuk, hogy a rendszergazdák visszavonják a felügyelt identitás hozzáférését az előző táblázatban említett erőforrásokhoz. A hozzáférést a kulcsok újraszinkronizálása művelettel állíthatja vissza.
 
-A Azure Machine learning egy további alkalmazást hoz létre (a név `aml-` a `Microsoft-AzureML-Support-App-`következővel kezdődik: vagy), és közreműködői szintű hozzáféréssel rendelkezik az előfizetésben az egyes munkaterület-régiókban. Ha például egy, az USA keleti régiójában és egy másik, észak-európai munkaterületen lévő munkaterülettel rendelkezik ugyanabban az előfizetésben, két ilyen alkalmazást fog látni. Ezek az alkalmazások lehetővé teszik Azure Machine Learning számára a számítási erőforrások kezelését.
+A Azure Machine Learning egy további alkalmazást hoz létre (a név `aml-` vagy `Microsoft-AzureML-Support-App-`), és közreműködői szintű hozzáféréssel rendelkezik az előfizetésben az egyes munkaterület-régiókban. Ha például egy, az USA keleti régiójában és egy másik, észak-európai munkaterületen lévő munkaterülettel rendelkezik ugyanabban az előfizetésben, két ilyen alkalmazást fog látni. Ezek az alkalmazások lehetővé teszik Azure Machine Learning számára a számítási erőforrások kezelését.
 
 ## <a name="network-security"></a>Hálózati biztonság
 
@@ -193,7 +194,7 @@ Minden munkaterülethez tartozik egy társított, rendszerhez rendelt felügyelt
 
 Azure Monitor metrikák használatával megtekintheti és figyelheti a Azure Machine Learning munkaterület metrikáit. A [Azure Portal](https://portal.azure.com)válassza ki a munkaterületet, majd válassza a **metrikák**elemet:
 
-[![A munkaterület mérőszámait ábrázoló képernyőkép](./media/enterprise-readiness/workspace-metrics.png)](./media/enterprise-readiness/workspace-metrics-expanded.png)
+[![képernyőkép a munkaterület mérőszámait mutatja](./media/enterprise-readiness/workspace-metrics.png)](./media/enterprise-readiness/workspace-metrics-expanded.png)
 
 A metrikák a futtatások, a központi telepítések és a regisztrációk információit tartalmazzák.
 
@@ -205,7 +206,7 @@ A munkaterületek tevékenység naplóját megtekintve megtekintheti a munkater�
 
 Ez a képernyőkép a munkaterület tevékenység naplóját jeleníti meg:
 
-[![Munkaterület tevékenységi naplóját ábrázoló képernyőfelvétel](./media/enterprise-readiness/workspace-activity-log.png)](./media/enterprise-readiness/workspace-activity-log-expanded.png)
+[a munkaterület tevékenységi naplóját ábrázoló ![képernyőkép](./media/enterprise-readiness/workspace-activity-log.png)](./media/enterprise-readiness/workspace-activity-log-expanded.png)
 
 A pontozási kérelmek részleteit a Application Insights tárolja. A munkaterületek létrehozásakor Application Insights jön létre az előfizetésben. A naplózott adatok olyan mezőket tartalmaznak, mint például a HTTPMethod, a UserAgent, a ComputeType, a RequestUrl, a StatusCode, a Kérelemazonosító és az időtartam.
 
@@ -233,7 +234,7 @@ A Munkaterületek létrehozása során további erőforrások jönnek létre a f
 
 A felhasználó a munkaterülethez (például az Azure Kubernetes szolgáltatáshoz vagy virtuális gépekhez) kapcsolódó egyéb számítási célokat is kiépítheti, ha szükséges.
 
-[![Munkaterület-munkafolyamat létrehozása](./media/enterprise-readiness/create-workspace.png)](./media/enterprise-readiness/create-workspace-expanded.png)
+[munkaterület-munkafolyamatok létrehozása ![](./media/enterprise-readiness/create-workspace.png)](./media/enterprise-readiness/create-workspace-expanded.png)
 
 ### <a name="save-source-code-training-scripts"></a>Forráskód mentése (betanítási parancsfájlok)
 
@@ -241,7 +242,7 @@ Az alábbi ábrán a kód pillanatkép-munkafolyamata látható.
 
 Az Azure Machine Learning munkaterülethez tartozó könyvtárak (kísérletek) a forráskódot tartalmazzák (betanítási parancsfájlok). Ezeket a szkripteket a helyi gépen és a felhőben (az előfizetéséhez tartozó Azure Blob Storage-ban) tárolja a rendszer. A kód pillanatképei a korábbi naplózás végrehajtásához vagy ellenőrzéséhez használatosak.
 
-[![Kód pillanatkép-munkafolyamata](./media/enterprise-readiness/code-snapshot.png)](./media/enterprise-readiness/code-snapshot-expanded.png)
+[![kód pillanatképének munkafolyamata](./media/enterprise-readiness/code-snapshot.png)](./media/enterprise-readiness/code-snapshot-expanded.png)
 
 ### <a name="training"></a>Képzés
 
@@ -268,7 +269,7 @@ Mivel Machine Learning Compute felügyelt számítási cél (azaz a Microsoft fe
 
 Az alábbi folyamatábrán ez a lépés akkor következik be, amikor a betanítási cél a futtatási metrikákat a Cosmos DB-adatbázisban lévő tárterületről Azure Machine Learningra írja vissza. Az ügyfelek hívhatják Azure Machine Learning. Machine Learning a Cosmos DB-adatbázisból lekéri a metrikákat, majd visszaküldi azokat az ügyfélnek.
 
-[![Betanítási munkafolyamat](./media/enterprise-readiness/training-and-metrics.png)](./media/enterprise-readiness/training-and-metrics-expanded.png)
+[![betanítási munkafolyamat](./media/enterprise-readiness/training-and-metrics.png)](./media/enterprise-readiness/training-and-metrics-expanded.png)
 
 ### <a name="creating-web-services"></a>Webszolgáltatások létrehozása
 
@@ -283,13 +284,13 @@ A részletek a következők:
 * A pontozási kérés részleteit Application Insights tárolja a rendszer, amely a felhasználó előfizetésében található.
 * A telemetria a Microsoft/Azure-előfizetésre is leküldve.
 
-[![Következtetési munkafolyamat](./media/enterprise-readiness/inferencing.png)](./media/enterprise-readiness/inferencing-expanded.png)
+[![következtetési munkafolyamat](./media/enterprise-readiness/inferencing.png)](./media/enterprise-readiness/inferencing-expanded.png)
 
 ## <a name="next-steps"></a>További lépések
 
-* [Biztonságos SSL-lel az Azure Machine Learning-webszolgáltatások](how-to-secure-web-service.md)
+* [Biztonságos Azure Machine Learning webszolgáltatások SSL használatával](how-to-secure-web-service.md)
 * [Webszolgáltatásként üzembe helyezett Machine Learning-modell felhasználása](how-to-consume-web-service.md)
-* [Hogyan futtathat batch-előrejelzés](how-to-run-batch-predictions.md)
+* [A Batch-előrejelzések futtatása](how-to-run-batch-predictions.md)
 * [A Azure Machine Learning modellek monitorozása a Application Insights](how-to-enable-app-insights.md)
 * [Adatok gyűjtése a termelési modellekhez](how-to-enable-data-collection.md)
 * [Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)

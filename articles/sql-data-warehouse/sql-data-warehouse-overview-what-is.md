@@ -1,53 +1,71 @@
 ---
-title: Mi az Azure SQL Data Warehouse? | Microsoft Docs
-description: Nagyvállalati szintű elosztott adatbázis, amely petabájtnyi mennyiségű relációs és nem relációs adatokat tud feldolgozni. Az iparág első felhőalapú adattárház lehetővé teszi az növelhető, csökkenthető és felfüggeszthető másodpercek alatt.
+title: Mi az Azure szinapszis Analytics (korábban SQL DW)? | Microsoft Docs
+description: Az Azure szinapszis Analytics (korábbi nevén SQL DW) egy korlátlan elemzési szolgáltatás, amely a nagyvállalati adattárházat és a Big adatelemzéseket is egyesíti.
 services: sql-data-warehouse
 author: mlee3gsd
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: overview
 ms.subservice: design
-ms.date: 05/30/2019
+ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-mscustom: sqlfreshmay19
-ms.openlocfilehash: a9126e9023091dd8c3df71f2aa2558a01227a8be
-ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
+ms.openlocfilehash: d10ea99e2dc8513a9cfebec782535f9e3185a3b9
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/31/2019
-ms.locfileid: "66428027"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73496304"
 ---
-# <a name="what-is-azure-sql-data-warehouse"></a>Mi az Azure SQL Data Warehouse?
+# <a name="what-is-azure-synapse-analytics-formerly-sql-dw"></a>Mi az Azure szinapszis Analytics (korábban SQL DW)?
 
-Az SQL Data Warehouse egy felhőalapú vállalati adatok adattárház (EDW), amely a nagymértékben párhuzamos feldolgozási (MPP) segítségével gyorsan összetett lekérdezések futtatása több petabájtnyi adat. Az SQL Data Warehouse a big data-megoldások egyik fő összetevőjeként használható. Big Data típusú adatok importálása az SQL Data Warehouse-bA az egyszerű [PolyBase](/sql/relational-databases/polybase/polybase-guide?view=sql-server-2017&viewFallbackFrom=azure-sqldw-latest) T-SQL-lekérdezéseket, és majd használja a power MPP nyújtotta lehetőségeket kiaknázva nagy teljesítményű elemzési futtatásához. Az adatok integrálásával és elemzésével az adattárház válik azzá az egyetlen egységes forrássá, ahonnan a vállalat a valós adatokat és kielemzett eredményeket lekérheti.  
+Az Azure szinapszis egy korlátlan elemzési szolgáltatás, amely egyesíti a vállalati adattárházat és a Big adatelemzést. Lehetővé teszi, hogy a használati feltételek alapján, akár kiszolgáló nélküli igény szerinti vagy kiépített erőforrásokkal is lekérdezze az adatait. Az Azure szinapszis az azonnali BI-és gépi tanulási igényekhez kapcsolódóan egységes felhasználói élményt nyújt az adatfeldolgozáshoz,-előkészítéshez,-kezeléshez és-kiszolgáláshoz
 
-## <a name="key-component-of-big-data-solution"></a>A big data-megoldások fő összetevője
+Az Azure szinapszis négy összetevőből áll:
+- SQL Analytics: teljes T-SQL-alapú elemzés – általánosan elérhető
+    - SQL-készlet (fizetés/DWU kiépítve) 
+    - Igény szerinti SQL-szolgáltatás (fizetés/TB feldolgozott) – (előzetes verzió)
+- Spark: mélyen integrált Apache Spark (előzetes verzió) 
+- Adatintegráció: hibrid Adatintegráció (előzetes verzió)
+- Studio: egyesített felhasználói élmény.  (Előzetes verzió)
 
-Az SQL Data Warehouse a felhőben futó teljes körű big data-megoldások egyik fő összetevője.
+> [!NOTE]
+> Az Azure szinapszis előzetes verzió funkcióinak eléréséhez kérjen hozzáférést [itt](https://aka.ms/synapsepreview). A Microsoft az összes kérelem osztályozását és a lehető leghamarabb válaszol.
+
+## <a name="sql-analytics-and-sql-pool-in-azure-synapse"></a>SQL Analytics és SQL-készlet az Azure Szinapszisban
+
+Az SQL Analytics az Azure szinapszis szolgáltatással általánosan elérhető nagyvállalati adattárház-funkciókra utal. 
+
+Az SQL-készlet az SQL Analytics használatakor kiépített analitikus erőforrások gyűjteményét jelöli. Az SQL-készlet méretét az adattárház-egységek (DWU-EK) határozzák meg.
+
+Importálja big data egyszerű, [alapszintű](/sql/relational-databases/polybase/polybase-guide?view=sql-server-2017&viewFallbackFrom=azure-sqldw-latest) T-SQL-lekérdezésekkel, majd használja az MPP erejét a nagy teljesítményű elemzések futtatásához. Az integráció és az elemzés során az SQL Analytics az igazság egyetlen verzióját fogja kiszolgálni, amellyel a vállalat gyorsabban és megbízhatóbban elemezheti az eredményeket.  
+
+## <a name="key-component-of-a-big-data-solution"></a>Egy big data-megoldás fő összetevője
+
+Az adattárházak a felhőalapú, végpontok közötti big data megoldások egyik kulcsfontosságú összetevője.
 
 ![Adattárház-megoldás](media/sql-data-warehouse-overview-what-is/data-warehouse-solution.png) 
 
-A felhőalapú adatkezelő megoldásokban az adatok számos forrásból kerülnek a big data-tárakba. A big data-tárakba behúzott adatokat Hadoop-, Spark- és gépi tanulási algoritmusok készítik elő és dolgozzák be az intelligenciába. Amikor az adatok készek az összetett elemzésekre, az SQL Data Warehouse a PolyBase használatával kérdezi le a big data-tárakat. A PolyBase standard T-SQL-lekérdezések használatával húzza be az adatokat az SQL Data Warehouse-ba.
+A felhőalapú adatkezelő megoldásokban az adatok számos forrásból kerülnek a big data-tárakba. A big data-tárakba behúzott adatokat Hadoop-, Spark- és gépi tanulási algoritmusok készítik elő és dolgozzák be az intelligenciába. Ha az adatok készen állnak az összetett elemzésre, az SQL Analytics a következőt használja a big data-tárolók lekérdezéséhez: albase. A Base standard T-SQL-lekérdezéseket használ az adatok SQL Analytics-táblákba való bevonásához.
  
-Az SQL Data Warehouse az adatokat oszlopos szerkezetű relációs adattáblákban tárolja. Ez a formátum jelentős mértékben csökkenti a tárolási költségeket és javítja a lekérdezési teljesítményt. Miután az adatokat eltárolta az SQL Data Warehouse-ban, nagy léptékű elemzéseket végezhet. A hagyományos adatbázisrendszerekhez képest az elemzési lekérdezések percek helyett másodpercek, napok helyett órák alatt végeznek. 
+Az SQL Analytics oszlopos tárolással rendelkező, kapcsolódó táblákban tárolja az adatkészleteket. Ez a formátum jelentős mértékben csökkenti a tárolási költségeket és javítja a lekérdezési teljesítményt. Az adattárolást követően nagy léptékű elemzéseket futtathat. A hagyományos adatbázisrendszerekhez képest az elemzési lekérdezések percek helyett másodpercek, napok helyett órák alatt végeznek. 
 
 Az elemzések eredményei globális jelentéskészítési adatbázisokba vagy alkalmazásokba küldhetőek. Az üzleti elemzők így az ezekből nyerhető betekintések révén tájékozott üzleti döntéseket hozhatnak.
 
 ## <a name="next-steps"></a>További lépések
 
-- Ismerkedés a [Azure SQL Data Warehouse architektúrája](/azure/sql-data-warehouse/massively-parallel-processing-mpp-architecture)
-- Gyorsan [SQL Data Warehouse létrehozása][create a SQL Data Warehouse]
-- [Mintaadatokat tölthet be][load sample data].
-- Ismerkedés a [videók](/azure/sql-data-warehouse/sql-data-warehouse-videos)
+- Az [Azure szinapszis architektúrájának](/azure/sql-data-warehouse/massively-parallel-processing-mpp-architecture) megismerése
+- [SQL-készlet gyors létrehozása](create-data-warehouse-portal.md)
+- [Mintaadatok betöltése][load sample data].
+- [Videók](/azure/sql-data-warehouse/sql-data-warehouse-videos) megismerése
 
-Vagy tekintsen meg néhányat a többi SQL Data Warehouse-erőforrás közül.  
-* Keresés [blogok]
-* Küldje el a [Funkciókérések]
-* Keresés [Az ügyféltanácsadói csapat blogjai]
+Vagy tekintse meg a többi Azure szinapszis-erőforrást.  
+* Keresési [Blogok]
+* [Funkciókérések] elküldése
+* [Az ügyféltanácsadói csapat blogjai] keresése
 * [Támogatási jegy létrehozása]
-* Keresés [MSDN-fórum]
-* Keresés [Stack Overflow-fórum]
+* [MSDN-fórum] keresése
+* [Stack Overflow-fórum] keresése
 
 
 <!--Image references-->
@@ -56,9 +74,9 @@ Vagy tekintsen meg néhányat a többi SQL Data Warehouse-erőforrás közül.
 <!--Article references-->
 [Támogatási jegy létrehozása]: ./sql-data-warehouse-get-started-create-support-ticket.md
 [load sample data]: ./sql-data-warehouse-load-sample-databases.md
-[create a SQL Data Warehouse]: ./sql-data-warehouse-get-started-provision.md
+[create a data warehouse]: ./sql-data-warehouse-get-started-provision.md
 [Migration documentation]: ./sql-data-warehouse-overview-migrate.md
-[SQL Data Warehouse solution partners]: ./sql-data-warehouse-partner-business-intelligence.md
+[Azure Synapse Analytics solution partners]: ./sql-data-warehouse-partner-business-intelligence.md
 [Integrated tools overview]: ./sql-data-warehouse-overview-integrate.md
 [Backup and restore overview]: ./sql-data-warehouse-restore-database-overview.md
 [Azure glossary]: ../azure-glossary-cloud-terminology.md
@@ -73,6 +91,6 @@ Vagy tekintsen meg néhányat a többi SQL Data Warehouse-erőforrás közül.
 [Stack Overflow-fórum]: https://stackoverflow.com/questions/tagged/azure-sqldw
 [Twitter]: https://twitter.com/hashtag/SQLDW
 [Videos]: https://azure.microsoft.com/documentation/videos/index/?services=sql-data-warehouse
-[SLA for SQL Data Warehouse]: https://azure.microsoft.com/support/legal/sla/sql-data-warehouse/v1_0/
+[SLA for Azure Synapse Analytics]: https://azure.microsoft.com/support/legal/sla/sql-data-warehouse/v1_0/
 [Volume Licensing]: https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=37
 [Service Level Agreements]: https://azure.microsoft.com/support/legal/sla/

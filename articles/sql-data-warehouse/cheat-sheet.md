@@ -1,24 +1,25 @@
 ---
-title: Hasznos tanácsok az Azure SQL Data Warehouse-hoz | Microsoft Docs
-description: Itt hivatkozásokat és ajánlott eljárásokat találhat az Azure SQL Data Warehouse-megoldások gyors összeállításához.
+title: Cheat Sheet for Azure szinapszis Analytics (korábban SQL DW) | Microsoft Docs
+description: Az Azure szinapszis Analytics (korábban SQL DW) megoldások gyors létrehozásához kapcsolódó hivatkozásokat és ajánlott eljárásokat talál.
 services: sql-data-warehouse
 author: mlee3gsd
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: overview
 ms.subservice: design
-ms.date: 08/23/2019
+ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: 1bbb0148e6f4be2afc777960afcda9c727328206
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: be5e8952ddfc6cb831b87f880bc281d6ceb2ba3d
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70195061"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73492268"
 ---
-# <a name="cheat-sheet-for-azure-sql-data-warehouse"></a>Hasznos tanácsok az Azure SQL Data Warehouse-hoz
-Ez a témakör az Azure SQL Data Warehouse-megoldások összeállításával kapcsolatos hasznos tippeket és ajánlott eljárásokat tartalmaz. Mielőtt belekezdene, részletesen ismerje meg az egyes lépéseket az [Azure SQL Data Warehouse-munkaterhelési mintákat és kizárási mintákat](https://blogs.msdn.microsoft.com/sqlcat/20../../azure-sql-data-warehouse-workload-patterns-and-anti-patterns) ismertető témakör elolvasásával, amely leírja, mi az az SQL Data Warehouse.
+# <a name="cheat-sheet-for-azure-synapse-analytics-formerly-sql-dw"></a>Cheat Sheet for Azure szinapszis Analytics (korábban SQL DW)
+
+Ez a Cheat-táblázat hasznos tippeket és ajánlott eljárásokat nyújt az Azure szinapszis-megoldások létrehozásához. 
 
 A következő ábra egy adattárház tervezésének folyamatát mutatja be:
 
@@ -33,9 +34,9 @@ Ha előre tudja, milyen elsődleges műveleteket és lekérdezéseket futtat maj
 
 A művelettípusok előzetes ismerete segít optimalizálni a táblák kialakítását.
 
-## <a name="data-migration"></a>Adatmigrálás
+## <a name="data-migration"></a>Adatok migrálása
 
-Először töltse be az adatait [Azure Data Lake Storage](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-store) vagy Azure Blob Storage-ba. Ezután a PolyBase segítségével töltse be az adatokat az SQL Data Warehouse-ba egy előkészítési táblában. Használja a következő konfigurációt:
+Először töltse be az adatait [Azure Data Lake Storageba](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-store) vagy az Azure Blob Storageba. Ezt követően használja a következőt, hogy betöltse az adatait az átmeneti táblákba. Használja a következő konfigurációt:
 
 | Tervezés | Ajánlás |
 |:--- |:--- |
@@ -98,28 +99,28 @@ További információk a [partíciókról].
 
 Ha növekményesen fogja betölteni az adatokat, először győződjön meg arról, hogy nagyobb méretű erőforrásosztályokat foglalt le az adatok betöltéséhez.  Ez különösen fontos a fürtözött oszlopcentrikus indexekkel rendelkező táblákba való betöltéskor.  További részletekért tekintse meg az [erőforrás-osztályok](https://docs.microsoft.com/azure/sql-data-warehouse/resource-classes-for-workload-management) című részt.  
 
-A PolyBase és az ADF V2 használatát javasoljuk az ELT folyamatok SQL Data Warehouse-ban való automatizálásához.
+Javasoljuk, hogy a ELT-folyamatok adattárházba való automatizálásához használja a következőt: Base és ADF v2.
 
 A korábbi adatain belüli nagy mennyiségű frissítéshez érdemes lehet egy [CTAS](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-develop-ctas) használni, hogy az INSERT, Update és DELETE helyett táblázatba írja a megőrizni kívánt adatmennyiséget.
 
 ## <a name="maintain-statistics"></a>Statisztikák karbantartása
- Az automatikus statisztikák általános elérhetővé válásáig az SQL Data Warehouse a statisztikák manuális karbantartását igényli. Fontos a statisztikák frissítése, mivel az adatokban *jelentős* változások történhetnek. Ez segít optimalizálni a lekérdezésterveket. Ha úgy gondolja, hogy túl sokáig tart az összes statisztika karbantartása, körültekintőbben válassza ki, mely oszlopok rendelkezzenek statisztikákkal. 
+ Amíg az automatikus statisztika általánosan elérhetővé válik, a statisztikák manuális karbantartására van szükség. Fontos a statisztikák frissítése, mivel az adatokban *jelentős* változások történhetnek. Ez segít optimalizálni a lekérdezésterveket. Ha úgy gondolja, hogy túl sokáig tart az összes statisztika karbantartása, körültekintőbben válassza ki, mely oszlopok rendelkezzenek statisztikákkal. 
 
 A frissítések gyakoriságát is megadhatja. Előfordulhat például, hogy csak a dátumoszlopokat szeretné frissíteni, amelyekbe napi rendszerességgel kerülnek új értékek. A legnagyobb előnnyel az jár, ha a csatlakozások részét képező, a WHERE záradékban használt és a GROUP BY elemben megtalálható oszlopok statisztikáit készíti el.
 
 További információk a [statisztikákról].
 
 ## <a name="resource-class"></a>Erőforrásosztály
-Az SQL Data Warehouse erőforráscsoportokat használ arra, hogy memóriát foglaljon le a lekérdezésekhez. Ha a lekérdezés vagy a betöltés sebességének növelése érdekében több memóriára van szüksége, magasabb erőforrásosztályokat kell lefoglalnia. A nagyobb erőforrásosztályok használata azonban hatással van a párhuzamos működésre. Ezt érdemes figyelembe venni, mielőtt az összes felhasználót nagyméretű erőforrásosztályba helyezné át.
+Az erőforráscsoportok használatával memóriát foglalhat le a lekérdezésekhez. Ha a lekérdezés vagy a betöltés sebességének növelése érdekében több memóriára van szüksége, magasabb erőforrásosztályokat kell lefoglalnia. A nagyobb erőforrásosztályok használata azonban hatással van a párhuzamos működésre. Ezt érdemes figyelembe venni, mielőtt az összes felhasználót nagyméretű erőforrásosztályba helyezné át.
 
 Ha úgy látja, hogy a lekérdezések túl sokáig tartanak, ellenőrizze, hogy a felhasználók nem nagyméretű erőforrásosztályokban futnak-e. A nagyméretű erőforrás osztályok számos egyidejű helyet foglalnak le, ezért más lekérdezések várólistára helyezését okozhatják.
 
-Végezetül az SQL Data Warehouse Gen2 verziójának használatával minden erőforrásosztály 2,5-szer több memóriát kap, mint a Gen1-el.
+Végül az [SQL-készlet](sql-data-warehouse-overview-what-is.md#sql-analytics-and-sql-pool-in-azure-synapse)Gen2 használatával minden erőforráscsoport 2,5-szor több memóriát kap, mint a Gen1.
 
 További információk az [erőforrásosztályokról és a párhuzamos működésről].
 
 ## <a name="lower-your-cost"></a>Csökkentheti költségeit
-Az SQL Data Warehouse egyik legfőbb jellemzője, hogy képes a [számítási erőforrások felügyeletére](sql-data-warehouse-manage-compute-overview.md). Amikor nem használja az adattárházat, szüneteltetheti, ami leállítja a számítási erőforrások számlázását. Az erőforrásokat a teljesítményigényeinek megfelelően skálázhatja. A szüneteltetést az [Azure Portalon](pause-and-resume-compute-portal.md) vagy a [PowerShell-lel](pause-and-resume-compute-powershell.md) végezheti el. A skálázáshoz használhatja az [Azure Portalt](quickstart-scale-compute-portal.md), a [PowerShellt](quickstart-scale-compute-powershell.md), a [T-SQL-t](quickstart-scale-compute-tsql.md) vagy egy [REST API-t](sql-data-warehouse-manage-compute-rest-api.md#scale-compute).
+Az Azure szinapszis egyik fő funkciója a [számítási erőforrások kezelése](sql-data-warehouse-manage-compute-overview.md). Ha nem használja, szüneteltetheti az SQL-készletet, ami leállítja a számítási erőforrások számlázását. Az erőforrásokat a teljesítményigényeinek megfelelően skálázhatja. A szüneteltetést az [Azure Portalon](pause-and-resume-compute-portal.md) vagy a [PowerShell-lel](pause-and-resume-compute-powershell.md) végezheti el. A skálázáshoz használhatja az [Azure Portalt](quickstart-scale-compute-portal.md), a [PowerShellt](quickstart-scale-compute-powershell.md), a [T-SQL-t](quickstart-scale-compute-tsql.md) vagy egy [REST API-t](sql-data-warehouse-manage-compute-rest-api.md#scale-compute).
 
 Az Azure Functions használatával mostantól bármikor használhatja az automatikus skálázást:
 
@@ -131,9 +132,9 @@ Az Azure Functions használatával mostantól bármikor használhatja az automat
 
 Küllős architektúra esetén az SQL Database és az Azure Analysis Services használatát javasoljuk. Ez a megoldás a munkaterhelések elkülönítését biztosítja a különböző felhasználói csoportok között, és az SQL Database és az Azure Analysis Services speciális biztonsági funkcióinak használatát teszi lehetővé. Emellett ezzel a módszerrel korlátlan párhuzamos működést biztosíthat a felhasználók számára.
 
-További információk az [SQL Data Warehouse előnyeit kihasználó tipikus architektúrákról](https://blogs.msdn.microsoft.com/sqlcat/20../../common-isv-application-patterns-using-azure-sql-data-warehouse/).
+Ismerje meg az [Azure szinapszis előnyeit kihasználó tipikus architektúrákat](https://blogs.msdn.microsoft.com/sqlcat/20../../common-isv-application-patterns-using-azure-sql-data-warehouse/).
 
-Egyetlen kattintással helyezhet üzembe küllőket az SQL-adatbázisokban az SQL Data Warehouse-ból:
+Az SQL-készletből az SQL-adatbázisból a küllőket egyetlen kattintással telepítheti:
 
 <a href="https://ms.portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FMicrosoft%2Fsql-data-warehouse-samples%2Fmaster%2Farm-templates%2FsqlDwSpokeDbTemplate%2Fazuredeploy.json" target="_blank">
 <img src="https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.png"/>

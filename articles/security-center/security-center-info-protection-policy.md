@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/29/2019
 ms.author: memildin
-ms.openlocfilehash: edd415c330656d4cecc42a39d27598a88a1a8d2c
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
-ms.translationtype: MT
+ms.openlocfilehash: f9b161bbb692c1336083640250b93f9d87f1e0d9
+ms.sourcegitcommit: 3f8017692169bd75483eefa96c225d45cd497f06
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71202090"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73520801"
 ---
 # <a name="customize-the-sql-information-protection-policy-in-azure-security-center-preview"></a>Az SQL Information Protection-szabályzat testreszabása Azure Security Centerban (előzetes verzió)
  
@@ -31,9 +31,9 @@ Az adatvédelem egy speciális biztonsági funkció, amely az Azure-adaterőforr
  
 Az [sql Information Protection](../sql-database/sql-database-data-discovery-and-classification.md) implementálja ezt a paradigmát az SQL-adattárak számára, jelenleg a Azure SQL Database támogatja. Az SQL Information Protection automatikusan felkeresi és osztályozza a potenciálisan bizalmas adatokat, címkéző mechanizmust biztosít a bizalmas adatoknak a besorolási attribútumokkal való tartós címkézéséhez, és részletes irányítópultot jelenít meg a az adatbázis besorolási állapota. Emellett kiszámítja az SQL-lekérdezések eredmény-beállítását is, így a bizalmas adatokat kinyerő lekérdezések explicit módon naplózhatók, és az adatok védetté is menthetők. Az SQL Information Protectionről további részleteket a [Azure SQL Database adatfelderítés és besorolás](../sql-database/sql-database-data-discovery-and-classification.md)című témakörben talál.
  
-A besorolási mechanizmus két elsődleges összeállításon alapul, amelyek a besorolási besorolást – **címkéket** és adattípusokat alkotnak.
+A besorolási mechanizmus két elsődleges összeállításon alapul, amelyek a besorolási besorolást – **címkéket** és **adattípusokat**alkotnak.
 - **Labels (címkék** ) – a fő besorolási attribútumok, amelyek az oszlopban tárolt adatmennyiség érzékenységi szintjének meghatározására szolgálnak. 
-- Adattípusok – további részletességi adatokat biztosít az oszlopban tárolt adatok típusához.
+- **Adattípusok** – további részletességi adatokat biztosít az oszlopban tárolt adatok típusához.
  
 A Information Protection a címkék és az adattípusok beépített készletét tartalmazza, amelyeket alapértelmezés szerint használ a rendszer. Ezek testreszabásához testreszabhatja Azure Security Center adatvédelmi szabályzatát.
  
@@ -44,7 +44,7 @@ Az Azure-bérlőhöz tartozó Information Protection-házirend testreszabásáho
 
    ![Information Protection-házirend konfigurálása](./media/security-center-info-protection-policy/security-policy.png) 
  
-2. Az **SQL Information Protection** lapon megtekintheti a címkék aktuális készletét. Ezek a fő besorolási attribútumok, amelyek az adatérzékenység szintjének kategorizálására szolgálnak. Itt konfigurálhatja a bérlő **Information Protection** -címkéit és adattípusait. 
+2. Az **SQL Information Protection** lapon megtekintheti a címkék aktuális készletét. Ezek a fő besorolási attribútumok, amelyek az adatérzékenység szintjének kategorizálására szolgálnak. Itt konfigurálhatja a bérlő **Information Protection-címkéit** és **adattípusait** . 
  
 ### <a name="customizing-labels"></a>Címkék testreszabása
  
@@ -54,7 +54,7 @@ Az Azure-bérlőhöz tartozó Information Protection-házirend testreszabásáho
  
    ![Érzékenységi címke konfigurálása](./media/security-center-info-protection-policy/config-sensitivity-label.png)
  
-4. A feliratok növekvő érzékenységi sorrendben vannak felsorolva. A feliratok közötti rangsor módosításához húzza a címkéket úgy, hogy átrendezi őket a táblázatba, vagy használja a feljebb és lejjebb gombokat a sorrend megváltoztatásához. 
+4. A feliratok növekvő érzékenységi sorrendben vannak felsorolva. A feliratok közötti rangsor módosításához húzza a címkéket úgy, hogy átrendezi őket a táblázatba, vagy használja a **feljebb és lejjebb gombokat a sorrend** megváltoztatásához. 
  
     ![Information Protection-házirend konfigurálása](./media/security-center-info-protection-policy/move-up.png)
  
@@ -68,8 +68,8 @@ Az Azure-bérlőhöz tartozó Information Protection-házirend testreszabásáho
  
     ![Information Protection-házirend konfigurálása](./media/security-center-info-protection-policy/info-types.png)
  
-3. A beépített adattípusokat további keresési minta karakterláncok hozzáadásával, a meglévő sztringek letiltásával vagy a Leírás módosításával is konfigurálhatja. A beépített adattípusok nem törölhetők, és nem szerkeszthetők a nevük. 
-4. Az **adattípusok** növekvő felderítési rangsorolási sorrendben vannak felsorolva, ami azt jelenti, hogy a listában magasabb típusok először is megpróbálják egyeztetni az adatokat. Az adattípusok rangsorolásának módosításához húzza a típusokat a táblázat jobb oldali helyére, vagy használja a feljebb és lejjebb gombokat a sorrend módosításához. 
+3. A beépített **adattípusokat** további keresési minta karakterláncok hozzáadásával, a meglévő sztringek letiltásával vagy a Leírás módosításával is konfigurálhatja. A beépített **adattípusok** nem törölhetők, és nem szerkeszthetők a nevük. 
+4. Az **adattípusok** növekvő felderítési rangsorolási sorrendben vannak felsorolva, ami azt jelenti, hogy a listában magasabb típusok először is megpróbálják egyeztetni az adatokat. Az adattípusok rangsorolásának módosításához húzza a típusokat a táblázat jobb oldali helyére, vagy használja a **feljebb és lejjebb gombokat a sorrend** módosításához. 
 5. Ha elkészült, kattintson **az OK gombra** .
 6. Az adattípusok kezelésének befejezése után ügyeljen arra, hogy a megfelelő címkéket társítsa a megfelelő címkékhez, ehhez kattintson a **Konfigurálás** egy adott címkére lehetőségre, és adja hozzá vagy törölje az adattípusokat.
 7. Ügyeljen rá, hogy a fő **címkék** panelen a **Mentés** gombra kattintva alkalmazza az összes módosítást.
@@ -83,8 +83,5 @@ Ebben a cikkben megtanulta, hogyan határozhat meg egy SQL Information Protectio
 
 A Azure Security Center biztonsági házirendjeivel és adatvédelmével kapcsolatos további információkért tekintse meg a következő cikkeket:
  
-- [Biztonsági házirendek áttekintése](security-center-policies-overview.md): A biztonsági szabályzatok áttekintése Security Center
-- [Biztonsági szabályzatok beállítása a Azure Security Centerban](tutorial-security-policy.md): Ismerje meg, hogyan konfigurálhatja az Azure-előfizetések és-erőforráscsoportok biztonsági szabályzatait
-- [Azure Security Center adatbiztonság](security-center-data-security.md): Ismerje meg, hogyan kezeli és védi a Security Center az információkat
-
-
+- [Biztonsági szabályzatok beállítása Azure Security Centerban](tutorial-security-policy.md): Ismerje meg, hogyan konfigurálhatja az Azure-előfizetések és-erőforráscsoportok biztonsági szabályzatait
+- [Azure Security Center adatbiztonság](security-center-data-security.md): megtudhatja, hogyan kezeli és védi az adatSecurity Center

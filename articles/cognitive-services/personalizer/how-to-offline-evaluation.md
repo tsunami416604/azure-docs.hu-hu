@@ -8,20 +8,20 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: conceptual
-ms.date: 09/10/2019
+ms.date: 10/23/2019
 ms.author: diberry
-ms.openlocfilehash: bd57880b11f56b13b4225652071593d29dcc6280
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: 9d7336fb933ee5e9781d15214fa3e59446aa5b6a
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72515228"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73490719"
 ---
 # <a name="analyze-your-learning-loop-with-an-offline-evaluation"></a>A tanulási hurok elemzése offline kiértékeléssel
 
 Ismerje meg, hogyan végezheti el az offline kiértékelést, és megismerheti az eredményeket.
 
-Az offline értékelések segítségével mérhetővé válik, hogy az alkalmazás alapértelmezett viselkedéséhez képest mennyire hatékony a személyre szabott funkció, hogy milyen funkciók járulnak hozzá leginkább a személyre szabáshoz, és automatikusan Fedezze fel az új gépi tanulási beállításokat.
+Az offline értékelések segítségével mérhetővé válik, hogy az alkalmazás alapértelmezett viselkedéséhez képest mennyire hatékony a személyre szabott funkció, hogy milyen funkciók járulnak hozzá leginkább a személyre szabáshoz, és automatikusan Fedezze fel az új gépi tanulási értékeket.
 
 További információért olvassa el a [kapcsolat nélküli értékeléseket](concepts-offline-evaluation.md) ismertető témakört.
 
@@ -35,18 +35,18 @@ További információért olvassa el a [kapcsolat nélküli értékeléseket](co
 
 1. A [Azure Portal](https://azure.microsoft.com/free/)keresse meg a személyre szabott erőforrást.
 1. A Azure Portal lépjen az **értékelések** szakaszra, és válassza az **Értékelés létrehozása**elemet.
-    ![In a Azure Portal, nyissa meg a * * értékelések * * szakaszt, és válassza a * * Értékelés létrehozása * * elemet. ](./media/offline-evaluation/create-new-offline-evaluation.png)
-1. Válassza ki a következő beállításokat:
+    ![a Azure Portalban nyissa meg a * * értékelések * * szakaszt, és válassza a * * Értékelés létrehozása * * elemet.](./media/offline-evaluation/create-new-offline-evaluation.png)
+1. Konfigurálja a következő értékeket:
 
     * Értékelés neve
-    * Kezdési és befejezési dátum – ezek a múltbeli dátumok, amelyek meghatározzák a kiértékelésben használandó adattartományt. Ezeknek az adatoknak szerepelniük kell a naplókban az [adatmegőrzési](how-to-settings.md) beállításban megadott módon.
+    * Kezdési és befejezési dátum – ezek a múltbeli dátumok, amelyek meghatározzák a kiértékelésben használandó adattartományt. Ezeknek az adatoknak szerepelniük kell a naplókban az [adatmegőrzési](how-to-settings.md) értékben megadott módon.
     * Az optimalizálási felderítés beállítása **Igen**
 
     ![Offline kiértékelési beállítások kiválasztása](./media/offline-evaluation/create-an-evaluation-form.png)
 
 1. A kiértékelés elindításához kattintson **az OK gombra**. 
 
-## <a name="results"></a>Eredmények
+## <a name="results"></a>Results (Eredmények)
 
 Az értékelések hosszú időt vehetnek igénybe a feldolgozandó adatmennyiségtől, az összehasonlítani kívánt tanulási szabályzatok számától és a kért optimalizálástól függően.
 
@@ -64,6 +64,6 @@ A tanulási szabályzatok összehasonlítása a következőket foglalja magában
 
 A műveletek és a környezet [funkcióinak](concepts-features.md) hatékonysága.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Ismerje meg, [hogyan működnek az offline értékelések](concepts-offline-evaluation.md).

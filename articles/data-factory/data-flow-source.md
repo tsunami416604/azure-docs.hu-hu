@@ -6,16 +6,14 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 09/06/2019
-ms.openlocfilehash: c7d18ab6e9018511915e9b77ea02ac60b1277c12
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: fb11b785cecbd021c0b894754e31d226edfe72f2
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72596494"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73519306"
 ---
 # <a name="source-transformation-for-mapping-data-flow"></a>Forrás-átalakítás a leképezési adatfolyamhoz 
-
-
 
 A forrás-átalakítás konfigurálja az adatforrást az adatfolyamhoz. Az adatfolyamatok tervezésekor az első lépés mindig a forrás-átalakítás konfigurálását fogja beállítani. Forrás hozzáadásához kattintson a **forrás hozzáadása** mezőre az adatfolyam-vászonban.
 
@@ -27,11 +25,12 @@ Minden forrás-átalakítás pontosan egy Data Factory adatkészlethez van társ
 
 Az adatforgalom leképezése egy kinyerési, betöltési, átalakítási (ELT) módszert követ, és az Azure-ban mind az *előkészítési* adatkészletekkel működik. A forrás-átalakítás jelenleg a következő adatkészleteket használhatja:
     
-* Azure Blob Storage
-* Azure Data Lake Storage Gen1
-* Azure Data Lake Storage Gen2
+* Azure Blob Storage (JSON, Avro, szöveg, parketta)
+* Azure Data Lake Storage Gen1 (JSON, Avro, szöveg, parketta)
+* Azure Data Lake Storage Gen2 (JSON, Avro, szöveg, parketta)
 * Azure SQL Data Warehouse
 * Azure SQL Database
+* Azure CosmosDB
 
 Azure Data Factory több mint 80 natív összekötőhöz férhet hozzá. Az adatfolyamatban lévő más forrásokból származó adatok belefoglalásához használja a másolási tevékenységet az adatok betöltéséhez az egyik támogatott átmeneti területre.
 
@@ -75,13 +74,13 @@ Helyettesítő karakteres példák:
 * a ```*``` a karakterek tetszőleges halmazát jelöli.
 * a ```**``` a rekurzív könyvtár beágyazását jelöli
 * ```?``` egy karaktert cserél le
-* ```[]``` a zárójelben szereplő további karakterek egyikének felel meg
+* ```[]``` a zárójelben szereplő több karakternek felel meg.
 
 * ```/data/sales/**/*.csv``` lekéri az összes CSV-fájlt a/Data/Sales alatt
 * ```/data/sales/20??/**``` beolvassa az összes fájlt a 20. században
-* ```/data/sales/2004/*/12/[XY]1?.csv``` beolvassa az összes CSV-fájlt a 2004-as verzióban, amely egy kétjegyű számú X vagy Y előtaggal kezdődik.
+* ```/data/sales/2004/*/12/[XY]1?.csv``` lekérdezi az összes CSV-fájlt a 2004-as verzióban, a két számjegyből álló X vagy Y előtaggal kezdődően.
 
-**Partíció gyökerének elérési útja:** Ha a forrásfájl particionált mappája ```key=value``` formátumú (például év = 2019), akkor a partíciós mappa fájának legfelső szintjét hozzárendelheti az adatáramlási adatfolyamban található oszlop neveként.
+**Partíció gyökerének elérési útja:** Ha a forrásban particionált mappák vannak ```key=value``` formátumban (például Year = 2019), akkor a partíciós mappa legfelső szintjét hozzárendelheti az adatfolyami adatfolyamban lévő oszlop neveként.
 
 Először állítson be egy helyettesítő karaktert, amely tartalmazza az összes olyan elérési utat, amely a particionált mappák és az elolvasni kívánt levél fájlok.
 
@@ -128,9 +127,9 @@ Minden Forrástípus megadható kifejezésként a [leképezési adatfolyam átal
 
 Ha a forrás SQL Database vagy SQL Data Warehouse, a **forrás beállításai** lapon további SQL-specifikus beállítások érhetők el. 
 
-**Bemenet:** Válassza ki, hogy a forrást egy táblán (```Select * from <table-name>``` értékkel egyenértékű), vagy egy egyéni SQL-lekérdezést szeretne megadni.
+**Bemenet:** Válassza ki, hogy a forrást egy táblán (```Select * from <table-name>```), vagy egy egyéni SQL-lekérdezést szeretne megadni.
 
-**Lekérdezés**: Ha a beviteli mezőben a lekérdezés lehetőséget választotta, adjon meg egy SQL-lekérdezést a forráshoz. Ez a beállítás felülbírálja az adatkészletben kiválasztott összes táblát. Az **Order by** záradékok itt nem támogatottak, de a teljes select from utasítással is megadható. A felhasználó által definiált Table functions is használható. a **select * from udfGetData ()** egy olyan UDF az SQL-ben, amely egy táblázatot ad vissza. Ez a lekérdezés létrehoz egy forrástábla, amelyet az adatfolyamatában használhat.
+**Lekérdezés**: Ha a beviteli mezőben a lekérdezés lehetőséget választotta, adjon meg egy SQL-lekérdezést a forráshoz. Ez a beállítás felülbírálja az adatkészletben kiválasztott összes táblát. Az **Order by** záradékok itt nem támogatottak, de a teljes select from utasítással is megadható. A felhasználó által definiált Table functions is használható. a **select * from udfGetData ()** egy olyan UDF az SQL-ben, amely egy táblázatot ad vissza. Ez a lekérdezés létrehoz egy forrástábla, amelyet az adatfolyamatában használhat. A lekérdezések használata nagyszerű lehetőséget nyújt a sorok tesztelésre vagy keresésekre való csökkentésére is. Például: ```Select * from MyTable where customerId > 1000 and customerId < 2000```
 
 **Köteg mérete**: adjon meg egy batch-méretet, amely nagy mennyiségű adatokat olvas be.
 
@@ -153,6 +152,19 @@ Ha a szövegfájl nem rendelkezik meghatározott sémával, válassza az **adatt
 
 Módosíthatja az oszlop adattípusait egy lefelé irányuló adatfolyamból származtatott oszlop transzformációjában. Az oszlopnevek módosításához válasszon transzformációt.
 
+### <a name="import-schema"></a>Séma importálása
+
+Az összetett adatstruktúrákat támogató adatkészletek, például a Avro és a CosmosDB nem igénylik a séma-definíciókat az adatkészletben. Ezért a "séma importálása" gombra kattintva megtekintheti az ilyen típusú források kivetítés lapját.
+
+## <a name="cosmosdb-specific-settings"></a>CosmosDB-specifikus beállítások
+
+A CosmosDB használatakor a következő szempontokat érdemes figyelembe venni:
+
+* Rendszeroszlopok belefoglalása: Ha bejelöli ezt a lehetőséget, ```id```, ```_ts```és más rendszeroszlopok is szerepelni fognak a CosmosDB-ból származó adatfolyam-metaadatokban. Gyűjtemények frissítésekor fontos, hogy a meglévő sor azonosítóját is megragadja.
+* Oldalméret: a lekérdezés eredményének egy oldalára vonatkozó dokumentumok száma. Az alapértelmezett érték az "-1", amely a szolgáltatás dinamikus oldalát használja akár 1000-ig.
+* Átviteli sebesség: állítsa be a nem kötelező értéket a CosmosDB-gyűjteményre alkalmazni kívánt RUs számára az olvasási művelet során az adott adatfolyam minden egyes végrehajtásához. Minimális értéke 400.
+* Előnyben részesített régiók: kiválaszthatja a folyamat előnyben részesített olvasási régióit.
+
 ## <a name="optimize-the-source-transformation"></a>A forrás átalakítás optimalizálása
 
 A forrás-átalakítás **optimalizálása** lapján megjelenhet a **forrás** partíció típusa. Ez a beállítás csak akkor érhető el, ha a forrás Azure SQL Database. Ennek az az oka, hogy Data Factory párhuzamosan próbálkozik a csatlakozással, hogy nagy lekérdezéseket futtasson a SQL Database-forráson.
@@ -171,6 +183,6 @@ Dönthet úgy is, hogy egy lekérdezés alapján particionálja a kapcsolatokat.
 
 További információ a leképezési adatfolyamon belüli optimalizálásról: [optimalizálás lap](concepts-data-flow-overview.md#optimize).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Egy [származtatott oszlop átalakításának](data-flow-derived-column.md) és egy [kiválasztott átalakítás](data-flow-select.md)létrehozásának megkezdése.

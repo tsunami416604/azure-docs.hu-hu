@@ -7,18 +7,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: conceptual
-ms.date: 09/13/2019
+ms.date: 10/23/2019
 ms.author: diberry
-ms.openlocfilehash: 7c163dacae24749dbe309bca33bac016a3be7aa5
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 902bf84ebf090cf9f0f886ad1e774ff7bdfeca93
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71002895"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73490742"
 ---
 # <a name="how-personalizer-works"></a>A Personalizer működése
 
-A személyre szabott gépi tanulás segítségével megismerheti, hogy milyen műveleteket kell használni a kontextusban. Minden tanulási hurokhoz olyan modell tartozik, amely kizárólag az Ön által a **Range** és a jutalmazási hívások útján eljuttatott adatgyűjtésre van kitanítva. Minden tanulási hurok teljesen független egymástól. Hozzon létre egy tanulási ciklust a személyre szabni kívánt alkalmazás egyes részeihez vagy működéséhez.
+A személyre szabott gépi tanulás segítségével megismerheti, hogy milyen műveleteket kell használni a kontextusban. Minden tanulási hurokhoz olyan modell tartozik, amely kizárólag az Ön által a **Range** és a **jutalmazási** hívások útján eljuttatott adatgyűjtésre van kitanítva. Minden tanulási hurok teljesen független egymástól. Hozzon létre egy tanulási ciklust a személyre szabni kívánt alkalmazás egyes részeihez vagy működéséhez.
 
 Minden hurok esetében **hívja meg a Rank API-t** az aktuális környezet alapján, a következővel:
 
@@ -27,19 +27,19 @@ Minden hurok esetében **hívja meg a Rank API-t** az aktuális környezet alapj
 
 A **Rank** API úgy dönt, hogy az alábbiakat használja:
 
-* _Kiaknázás_: Az aktuális modell, amely a legalkalmasabb műveletet határozza meg a múltbeli információk alapján.
-* _Ismerkedés_: Válasszon másik műveletet a felső művelet helyett.
+* _Kihasználva_: a jelenlegi modell alapján döntheti el, hogy a lehető leghatékonyabban kell-e a múltban.
+* _Megismerés_: válasszon másik műveletet a felső művelet helyett.
 
 A **jutalmazási** API:
 
 * Összegyűjti az adatokat a modell betanításához az egyes rangsorolási hívások funkcióinak és jutalmazási pontjainak rögzítésével.
-* Ezeket az adattípusokat használja a modell frissítéséhez a _tanulási szabályzatban_megadott beállítások alapján.
+* Ezeket az adattípusokat használja a modell frissítéséhez a _tanulási szabályzatban_megadott konfiguráció alapján.
 
 ## <a name="architecture"></a>Architektúra
 
 Az alábbi képen a rang és a jutalmazási hívások meghívásának építészeti folyamata látható:
 
-![helyettesítő szöveg](./media/how-personalizer-works/personalization-how-it-works.png "személyre szabás működése")
+![helyettesítő szöveg](./media/how-personalizer-works/personalization-how-it-works.png "A személyre szabás működése")
 
 1. A megszemélyesítő egy belső AI-modellt használ a művelet rangsorának meghatározásához.
 1. A szolgáltatás eldönti, hogy kihasználja-e az aktuális modellt, vagy új választási lehetőségeket keres a modellhez.  
@@ -51,15 +51,15 @@ Az alábbi képen a rang és a jutalmazási hívások meghívásának építész
 
 ## <a name="research-behind-personalizer"></a>Személyre szabott kutatás
 
-A személyre szabott tudomány és kutatás területén a megerősítő [tanulás](concepts-reinforcement-learning.md) , többek között a dokumentumok, a kutatási tevékenységek, valamint a kutatás folyamatban van a Microsoft Research szolgáltatásban.
+A személyre szabott tudomány és kutatás területén a [megerősítő tanulás](concepts-reinforcement-learning.md) , többek között a dokumentumok, a kutatási tevékenységek, valamint a kutatás folyamatban van a Microsoft Research szolgáltatásban.
 
 ## <a name="terminology"></a>Terminológia
 
-* **Tanulási hurok**: Létrehozhat egy tanulási hurkot az alkalmazás minden olyan részéhez, amely kihasználhatja a személyre szabást. Ha több felhasználói felülettel rendelkezik, hozzon létre egy hurkot mindegyikhez. 
+* **Tanulási hurok**: létrehozhat egy tanulási hurkot az alkalmazás minden olyan részéhez, amely kihasználhatja a személyre szabást. Ha több felhasználói felülettel rendelkezik, hozzon létre egy hurkot mindegyikhez. 
 
-* **Műveletek**: A műveletek olyan tartalmi elemek, például termékek vagy promóciók, amelyek közül választhat. A személyre szabási művelettel kiválaszthatja, hogy a legjobb művelet jelenjenmeg a felhasználók számára, a RANGSOROLÁSi API-n keresztül. Minden művelethez a Rank kéréssel elküldött funkciók tartozhatnak.
+* **Műveletek**: a műveletek közül választhat a tartalmi elemek, például termékek vagy promóciók. A személyre szabási művelettel kiválaszthatja, hogy a legjobb művelet jelenjen meg a felhasználók számára, a rangsorolási _API-n_keresztül. Minden művelethez a Rank kéréssel elküldött funkciók tartozhatnak.
 
-* **Környezet**: A pontosabb rangsor megadásához adja meg a környezettel kapcsolatos információkat, például:
+* **Kontextus**: pontosabb rangsor biztosításához adja meg a környezetével kapcsolatos információkat, például:
     * A felhasználó.
     * Az eszköz, amelyen be vannak kapcsolva. 
     * Az aktuális idő.
@@ -68,19 +68,19 @@ A személyre szabott tudomány és kutatás területén a megerősítő [tanulá
 
     Előfordulhat, hogy az adott alkalmazás eltérő környezeti információval rendelkezik. 
 
-* **[Funkciók](concepts-features.md)** : Egy tartalmi elemmel vagy felhasználói környezettel kapcsolatos információk egysége.
+* **[Szolgáltatások](concepts-features.md)** : egy tartalmi elemre vagy egy felhasználói környezetre vonatkozó információk egysége.
 
-* **Jutalom**: Egy mérőszám arra vonatkozóan, hogy a felhasználó hogyan válaszolt a Range API által visszaadott műveletre 0 és 1 közötti pontszámként. A 0 – 1 értéket az üzleti logikája állítja be, attól függően, hogy a választás miként segítette a személyre szabás üzleti céljainak megvalósítását. 
+* **Jutalom**: azt méri, hogy a felhasználó hogyan válaszolt a Rank API által visszaadott műveletre 0 és 1 közötti pontszámként. A 0 – 1 értéket az üzleti logikája állítja be, attól függően, hogy a választás miként segítette a személyre szabás üzleti céljainak megvalósítását. 
 
-* **Feltárás**: A személyre szabott szolgáltatás vizsgálja, hogy mikor, a legjobb művelet helyett egy másik műveletet választ a felhasználó számára. A személyre szabott szolgáltatás elkerüli a sodródás, a stagnálás és a folyamatos felhasználói viselkedésre való alkalmazkodást. 
+* **Feltárás**: a személyre szabott szolgáltatás azt vizsgálja, hogy mikor, a legjobb művelet helyett egy másik műveletet választ a felhasználó számára. A személyre szabott szolgáltatás elkerüli a sodródás, a stagnálás és a folyamatos felhasználói viselkedésre való alkalmazkodást. 
 
-* **Kísérlet időtartama**: Az az időtartam, ameddig a személyre szabott szolgáltatás megvárja a jutalmat, és ettől kezdve a rangsorban történt hívás az adott eseménynél.
+* **Kísérlet időtartama**: azt az időtartamot, ameddig a személyre szabott szolgáltatás megvárja a jutalmat, ettől kezdve az adott eseményhez tartozó rangsor meghívásának pillanatától számítva.
 
-* **Inaktív események**: Az inaktív esemény az a hely, ahol rangot hívott, de nem biztos benne, hogy a felhasználó az ügyfélalkalmazás döntései miatt soha nem fogja látni az eredményt. Az inaktív események lehetővé teszik a személyre szabási eredmények létrehozását és tárolását, majd később eldönteni, hogy a gépi tanulási modell hatására a későbbiekben elveti őket.
+* **Inaktív események**: inaktív esemény az a hely, ahol rangot hívott, de nem biztos benne, hogy a felhasználó az ügyfélalkalmazás döntései miatt soha nem fogja látni az eredményt. Az inaktív események lehetővé teszik a személyre szabási eredmények létrehozását és tárolását, majd később eldönteni, hogy a gépi tanulási modell hatására a későbbiekben elveti őket.
 
-* **Modell**: A személyre szabott modell rögzíti a felhasználói viselkedéssel kapcsolatos összes információt, betanítási adatok beszerzését a rangsorba és a jutalmazási hívásokba küldött argumentumok kombinációjával, valamint a tanulási szabályzat által meghatározott tanítási viselkedéssel. 
+* **Modell**: a személyre szabott modell rögzíti a felhasználói viselkedéssel kapcsolatos összes információt, betanítási adatok beszerzését a rangsorba és a jutalmazási hívásokba küldött argumentumok kombinációjával, valamint a tanulási szabályzat által meghatározott tanítási viselkedéssel. 
 
-* **Képzési szabályzat**: Egy modell minden eseményen való személyre szabása a gépi tanulási algoritmusok működését befolyásoló meta-paraméterek alapján történik. Az új személyre szabott hurkok alapértelmezett tanulási szabályzattal kezdődnek, ami mérsékelt teljesítményt eredményezhet. Az [értékelések](concepts-offline-evaluation.md)futtatásakor a személyre szabott új képzési szabályzatokat hozhat létre, amelyek kifejezetten a hurok használati eseteire optimalizáltak. A személyre szabás a kiértékelés során generált minden egyes hurokhoz optimalizált házirendekkel jelentősen jobban teljesít.
+* **Képzési szabályzat**: a személyre szabott modelleket minden eseményre kiterjedően olyan meta-paraméterek határozzák meg, amelyek befolyásolják a gépi tanulási algoritmusok működését. Az új személyre szabott hurkok alapértelmezett tanulási szabályzattal kezdődnek, ami mérsékelt teljesítményt eredményezhet. Az [értékelések](concepts-offline-evaluation.md)futtatásakor a személyre szabott új képzési szabályzatokat hozhat létre, amelyek kifejezetten a hurok használati eseteire optimalizáltak. A személyre szabás a kiértékelés során generált minden egyes hurokhoz optimalizált házirendekkel jelentősen jobban teljesít.
 
 ## <a name="example-use-cases-for-personalizer"></a>Példa a személyre szabott használati esetek használatára
 
@@ -125,7 +125,7 @@ Az ajánlási motor segítségével több elemre szűrheti a nagyméretű katal�
 
 A személyre szabott ajánlási motorokat használhatja:
 
-* A javaslati [megoldás](https://github.com/Microsoft/Recommenders/)beállítása. 
+* A [javaslati megoldás](https://github.com/Microsoft/Recommenders/)beállítása. 
 * Egy oldal megjelenítésekor hívja meg a javaslat modelljét a javaslatok rövid listájának beszerzéséhez.
 * Hívja meg a személyre szabást, hogy rangsorolja az ajánlási megoldás kimenetét.
 * Küldjön visszajelzést a felhasználói műveletről a jutalmazási API-hívással.
@@ -158,5 +158,5 @@ Az [Offline értékelések](how-to-offline-evaluation.md) végrehajtásával ren
 
 ## <a name="next-steps"></a>További lépések
 
-Megtudhatja [, hol](where-can-you-use-personalizer.md)használhatja a személyre szabást.
+Megtudhatja [, hol használhatja a személyre szabást](where-can-you-use-personalizer.md).
 [Offline értékelések](how-to-offline-evaluation.md) végrehajtása

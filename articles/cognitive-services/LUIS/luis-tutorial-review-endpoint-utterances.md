@@ -1,5 +1,5 @@
 ---
-title: 'Oktatóanyag: A végpont hosszúságú kimondott szöveg-LUIS áttekintése'
+title: 'Oktatóanyag: a végpont hosszúságú kimondott szöveg áttekintése – LUIS'
 titleSuffix: Azure Cognitive Services
 description: Fejlesztheti az alkalmazás előrejelzéseit a LUIS által nem ismert LUIS HTTP-végponton keresztül kapott kimondott szövegek ellenőrzésével vagy javításával. Bizonyos kimondott szövegek esetében a szándékot, míg más kimondott szövegek esetében az entitást kell ellenőrizni.
 services: cognitive-services
@@ -9,16 +9,16 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 09/05/2019
+ms.date: 10/14/2019
 ms.author: diberry
-ms.openlocfilehash: f81066ed21702dfe94ad7897adc3b82ed5a49f4d
-ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
+ms.openlocfilehash: 04f30818e3c871d74d94bfd92bd3f73e4e6637a0
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70387522"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73499417"
 ---
-# <a name="tutorial-fix-unsure-predictions-by-reviewing-endpoint-utterances"></a>Oktatóanyag: A nem biztos előrejelzések kijavítása a végpontok hosszúságú kimondott szöveg áttekintésével
+# <a name="tutorial-fix-unsure-predictions-by-reviewing-endpoint-utterances"></a>Oktatóanyag: a nem biztos előrejelzések kijavítása a végpontok hosszúságú kimondott szöveg áttekintésével
 Ebben az oktatóanyagban az alkalmazás előrejelzéseit fejlesztheti a LUIS által nem ismert LUIS HTTP-végponton keresztül kapott kimondott szövegek ellenőrzésével vagy javításával. Bizonyos kimondott szövegek esetében a szándékot, míg más kimondott szövegek esetében az entitást kell ellenőrizni. A végponti kimondott szövegek áttekintésének az ütemezett LUIS-karbantartás szerves részét kell képeznie. 
 
 Az áttekintési folyamat egy másik módja annak, hogy a LUIS megismerje az alkalmazás tartományát. A LUIS kiválasztotta az áttekintési listában megjelenő kimondott szövegeket. Ez a lista a következő tulajdonságokkal rendelkezik:
@@ -28,6 +28,8 @@ Az áttekintési folyamat egy másik módja annak, hogy a LUIS megismerje az alk
 * Rendszeresen át kell tekinteni. 
 
 A végponti kimondott szövegek áttekintésével ellenőrizheti vagy kijavíthatja a kimondott szöveg előrejelzett szándékát. Emellett megcímkézheti azokat az egyéni entitásokat, amelyek nem lettek előrejelezve vagy helytelenül lettek előrejelezve. 
+
+[!INCLUDE [Waiting for LUIS portal refresh](./includes/wait-v3-upgrade.md)]
 
 **Ebben az oktatóanyagban az alábbiakkal fog megismerkedni:**
 
@@ -68,14 +70,14 @@ Ehhez a következő lépések szükségesek:
 
 1. Válassza a **Review endpoint utterances** (Végponti kimondott szövegek áttekintése) elemet a bal oldali navigációs menüben. A lista az **ApplyForJob** szándék szerint van szűrve. 
 
-    [![A bal oldali navigációs sávon a végpontok hosszúságú kimondott szöveg áttekintése gomb képernyőképe](./media/luis-tutorial-review-endpoint-utterances/review-endpoint-utterances-with-entity-view.png)](./media/luis-tutorial-review-endpoint-utterances/review-endpoint-utterances-with-entity-view.png#lightbox)
+    [a bal oldali navigációs sávon az Endpoint hosszúságú kimondott szöveg (végpontok áttekintése) gombjának ![képernyőképe](./media/luis-tutorial-review-endpoint-utterances/review-endpoint-utterances-with-entity-view.png)](./media/luis-tutorial-review-endpoint-utterances/review-endpoint-utterances-with-entity-view.png#lightbox)
 
 1. Váltson az **Entities view** (Entitások nézet) nézetre a címkézett entitások megtekintéséhez. 
     
-    [![Képernyőkép a végpontok hosszúságú kimondott szöveg az entitások nézet váltógomb kiemelésével](./media/luis-tutorial-review-endpoint-utterances/review-endpoint-utterances-with-token-view.png)](./media/luis-tutorial-review-endpoint-utterances/review-endpoint-utterances-with-token-view.png#lightbox)
+    [![képernyőkép a végpontok hosszúságú kimondott szöveg az entitások nézet váltógomb kiemelésével](./media/luis-tutorial-review-endpoint-utterances/review-endpoint-utterances-with-token-view.png)](./media/luis-tutorial-review-endpoint-utterances/review-endpoint-utterances-with-token-view.png#lightbox)
 
 
-    Ez a Kimondás `I'm looking for a job with Natural Language Processing`nem megfelelő szándékú. 
+    Ez a Kimondás, `I'm looking for a job with Natural Language Processing`, nem a megfelelő szándékú. 
 
     A Kimondás oka, hogy a **ApplyForJob** szándéka 21 hosszúságú kimondott szöveg, a **GetJobInformation**7 hosszúságú kimondott szöveg képest. A további hosszúságú kimondott szöveg szándéka nagyobb előrejelzéssel fog rendelkezni. Fontos, hogy a hosszúságú kimondott szöveg mennyisége és minősége kiegyensúlyozott legyen.
 
@@ -85,7 +87,7 @@ Ehhez a következő lépések szükségesek:
     |:--|:--|:--|
     |`I'm looking for a job with Natural Language Processing`|GetJobInfo|Állás – „Természetes nyelvi feldolgozás”|
 
-    Ha egy `natural language processing` keyPhrase entitást szeretne módosítani egy feladatelemre, válassza ki a kifejezést, majd válassza a **feladatok** elemet a listából. Ha csak a keyPhrase egy részét szeretné kijelölni egy másik entitáshoz, el kell távolítania a keyPhrase entitásként, egy másik entitás címkével, majd újra kell alkalmaznia az keyPhrase entitást az alkalmazásra. 
+    Ha módosítani szeretné egy keyPhrase entitás `natural language processing`ét egy feladatelemre, válassza ki a kifejezést, majd válassza a **feladattípus** elemet a listából. Ha csak a keyPhrase egy részét szeretné kijelölni egy másik entitáshoz, el kell távolítania a keyPhrase entitásként, egy másik entitás címkével, majd újra kell alkalmaznia az keyPhrase entitást az alkalmazásra. 
 
     A Kimondás hozzáadásával áthelyezi a kilépést a **felülvizsgálati végpont hosszúságú kimondott szöveg** a **GetJobInformation** szándékba. A végponti kimondott szöveg mostantól ennek a szándéknak a példaként szolgáló kimondott szövege. 
 

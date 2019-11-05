@@ -9,24 +9,24 @@ ms.date: 07/08/2019
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: b1287f9c7e946c7b4d035b2ad6301947ffad3cea
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.sourcegitcommit: 3f8017692169bd75483eefa96c225d45cd497f06
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67717122"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73523077"
 ---
-# <a name="azure-premium-storage-design-for-high-performance"></a>Az Azure premium storage: nagy teljesítményű rendszer tervezése
+# <a name="azure-premium-storage-design-for-high-performance"></a>Azure Premium Storage: nagy teljesítményű kialakítás
 
-Ez a cikk az Azure Premium Storage nagy teljesítményű alkalmazások létrehozásához nyújt útmutatást. Ez a dokumentum az alkalmazása által használt technológiák alkalmazandó ajánlott eljárások teljesítményének kombinálva szereplő utasítások is használhatja. Az irányelvek mutatja be, ebben a dokumentumban példaként a Premium Storage futó SQL Server rendelkezik használtuk.
+Ez a cikk útmutatást nyújt a nagy teljesítményű alkalmazások létrehozásához az Azure Premium Storage használatával. A jelen dokumentumban ismertetett útmutatást az alkalmazás által használt technológiákra vonatkozó legjobb teljesítményű gyakorlattal kombinálva is használhatja. Az irányelvek szemléltetése érdekében a jelen dokumentumban SQL Server a Premium Storage-on való futtatását használták példaként.
 
-Azt a ebben a cikkben a tárolási réteg teljesítmény-forgatókönyveket érintenek, miközben kell optimalizálni az alkalmazásrétegre. Például ha a SharePoint-farmok Azure Premium Storage üzemelteti, használhatja az SQL Server példákat, ez a cikk a optimalizálhatja az adatbázis-kiszolgáló. Ezenkívül optimalizálhatja a SharePoint-Farm webkiszolgáló és a legtöbb teljesítmény alkalmazáskiszolgáló.
+A cikkben található tárolási réteg teljesítmény-forgatókönyvei esetében optimalizálni kell az alkalmazás rétegét. Ha például egy SharePoint-farmot futtat az Azure Premium Storageon, a cikk SQL Server példáit követve optimalizálhatja az adatbázis-kiszolgálót. Emellett optimalizálja a SharePoint-farm webkiszolgálóját és az alkalmazáskiszolgáló a legtöbb teljesítmény eléréséhez.
 
-Ez a cikk segít a válasz a következő gyakori kérdésekre az Azure Premium Storage, az alkalmazás teljesítményének optimalizálása
+Ez a cikk segítséget nyújt az alkalmazások teljesítményének az Azure Premium Storage-on való optimalizálásával kapcsolatos gyakori kérdések megválaszolásához.
 
-* Hogyan lehet az alkalmazás teljesítményének méréséhez?  
-* Miért nem lát várt nagy teljesítményű?  
-* Milyen tényezők befolyásolják az alkalmazás teljesítményét a Premium Storage?  
-* Hogyan hajtsa végre ezeket a tényezők befolyásolják a Premium Storage az alkalmazás teljesítményét?  
-* Hogyan, optimalizálhatja az IOPS, sávszélesség és késés?  
+* Az alkalmazás teljesítményének mérése  
+* Miért nem látja a várt nagy teljesítményt?  
+* Milyen tényezők befolyásolják az alkalmazás teljesítményét Premium Storage?  
+* Hogyan befolyásolják ezek a tényezők az alkalmazás teljesítményét Premium Storage?  
+* Hogyan lehet optimalizálni a IOPS, a sávszélességet és a késést?  
 
-Adtunk ezeket az irányelveket kifejezetten a Premium Storage számára, mert a prémium szintű Storage futó számítási feladatok magas teljesítmény-és nagybetűket. Példák adtunk meg, ahol szükséges. Is alkalmazhat az egyes ezeket az irányelveket, Standard szintű Storage-lemezekkel IaaS virtuális gépeken futó alkalmazások.
+Ezeket az irányelveket kifejezetten a Premium Storagehoz, mert a Premium Storage futó munkaterhelések nagy teljesítményű. Szükség esetén példákat is biztosítottunk. Ezen irányelvek némelyikét a standard szintű IaaS virtuális gépeken futó alkalmazásokra is alkalmazhatja.

@@ -10,14 +10,14 @@ ms.subservice: custom-vision
 ms.topic: quickstart
 ms.date: 07/12/2019
 ms.author: anroth
-ms.openlocfilehash: 40f30ddece9881f565f45f4ef6c9d0e2ad85fe95
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 0ca849e75f01573bbb356105b281f03d267836e6
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68561135"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "73520464"
 ---
-# <a name="quickstart-how-to-build-an-object-detector-with-custom-vision"></a>Gyors útmutató: Objektum-detektor létrehozása Custom Vision
+# <a name="quickstart-how-to-build-an-object-detector-with-custom-vision"></a>Gyors útmutató: objektum-detektor létrehozása Custom Vision használatával
 
 Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre egy Object detektort a Custom Vision webhelyén. A detektor modell létrehozása után használhatja a Custom Vision szolgáltatást az objektumok észleléséhez.
 
@@ -29,7 +29,7 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 ## <a name="create-custom-vision-resources-in-the-azure-portal"></a>Custom Vision erőforrások létrehozása a Azure Portal
 
-A Custom Vision Service használatához létre kell hoznia Custom Vision képzési és előrejelzési erőforrásokat a Azure Portalban. A [létrehozás Custom Vision](https://portal.azure.com/?microsoft_azure_marketplace_ItemHideKey=microsoft_azure_cognitiveservices_customvision#create/Microsoft.CognitiveServicesCustomVision) oldalon adja meg a párbeszédablakot, és hozzon létre egy képzési és előrejelzési erőforrást is. 
+[!INCLUDE [create-resources](includes/create-resources.md)]
 
 ## <a name="create-a-new-project"></a>Új projekt létrehozása
 
@@ -45,7 +45,7 @@ A böngészőben nyissa meg a [Custom Vision weblapot](https://customvision.ai) 
 1. Adja meg a projekt nevét és leírását. Ezután válasszon ki egy erőforráscsoportot. Ha a bejelentkezett fiók egy Azure-fiókhoz van társítva, az erőforráscsoport legördülő lista megjeleníti az összes olyan Azure-erőforráscsoportot, amely Custom Vision Service erőforrást tartalmaz. 
 
    > [!NOTE]
-   > Ha nincs elérhető erőforráscsoport, győződjön meg róla, hogy a [customvision.ai](https://customvision.ai) -ba jelentkezett be ugyanazzal a fiókkal, mint amikor a Azure Portalba [](https://portal.azure.com/)való bejelentkezéshez használt. Győződjön meg arról is, hogy a Custom Vision-portálon ugyanazt a "könyvtárat" választotta, mint a Azure Portal, ahol a Custom Vision erőforrásai találhatók. Mindkét helyen kiválaszthatja a könyvtárat a képernyő jobb felső sarkában található legördülő menü fiók menüjéből. 
+   > Ha nincs elérhető erőforráscsoport, győződjön meg róla, hogy a [customvision.ai](https://customvision.ai) -ba jelentkezett be ugyanazzal a fiókkal, mint amikor a [Azure Portalba](https://portal.azure.com/)való bejelentkezéshez használt. Győződjön meg arról is, hogy a Custom Vision-portálon ugyanazt a "könyvtárat" választotta, mint a Azure Portal, ahol a Custom Vision erőforrásai találhatók. Mindkét helyen kiválaszthatja a könyvtárat a képernyő jobb felső sarkában található legördülő menü fiók menüjéből. 
 
 1. Válassza az __objektum felismerése__ a __projektek típusai__alatt lehetőséget.
 
@@ -71,7 +71,7 @@ Ebben a szakaszban fel kell töltenie és manuálisan kell címkézni a képeket
 
     ![A képek hozzáadása vezérlő megjelenik a bal felső sarokban, és az alsó középen lévő gomb.](./media/get-started-build-detector/add-images.png)
 
-1. A feltöltött képeket a felhasználói felület címkézetlen  szakaszában tekintheti meg. A következő lépés az, hogy manuálisan címkézze azokat az objektumokat, amelyeket el szeretne sajátítani a detektorban. Kattintson az első képre a címkézési párbeszédpanel megnyitásához. 
+1. A feltöltött képeket a felhasználói felület **címkézetlen** szakaszában tekintheti meg. A következő lépés az, hogy manuálisan címkézze azokat az objektumokat, amelyeket el szeretne sajátítani a detektorban. Kattintson az első képre a címkézési párbeszédpanel megnyitásához. 
 
     ![Feltöltött képek a címkézett szakaszban](./media/get-started-build-detector/images-untagged.png)
 
@@ -106,7 +106,7 @@ A betanítás befejezése után a modell teljesítménye kiszámítva és megjel
 
 ## <a name="manage-training-iterations"></a>Tanítási ismétlések kezelése
 
-Minden alkalommal, amikor betanítja a detektort,  létrehoz egy új iterációt a saját frissített teljesítmény-metrikákkal. Az összes iterációt megtekintheti a **teljesítmény** lap bal oldali ablaktábláján. A bal oldali panelen a **delete (Törlés** ) gomb is látható, amellyel törölhető egy iteráció, ha elavult. Ha töröl egy iterációt, akkor minden olyan rendszerképet töröl, amely egyedileg hozzá van rendelve.
+Minden alkalommal, amikor betanítja a detektort, létrehoz egy új _iterációt_ a saját frissített teljesítmény-metrikákkal. Az összes iterációt megtekintheti a **teljesítmény** lap bal oldali ablaktábláján. A bal oldali panelen a **delete (Törlés** ) gomb is látható, amellyel törölhető egy iteráció, ha elavult. Ha töröl egy iterációt, akkor minden olyan rendszerképet töröl, amely egyedileg hozzá van rendelve.
 
 ## <a name="next-steps"></a>További lépések
 

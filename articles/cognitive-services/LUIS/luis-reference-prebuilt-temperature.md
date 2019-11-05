@@ -1,7 +1,7 @@
 ---
 title: Hőmérséklet-előkészített entitás – LUIS
 titleSuffix: Azure Cognitive Services
-description: Ez a cikk tartalmazza a hőmérséklet előre összeállított entitások információ a Language Understanding (LUIS).
+description: Ez a cikk Language Understanding (LUIS) hőmérséklettel előre felépített entitási információit tartalmazza.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -9,123 +9,92 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 09/27/2019
+ms.date: 10/14/2019
 ms.author: diberry
-ms.openlocfilehash: 0c16a60b0ddcde733cfbc7b9c90e07b697526015
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: f2ea08694419caaaf54e4fed45c7c1589be2473d
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71677389"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73499517"
 ---
 # <a name="temperature-prebuilt-entity-for-a-luis-app"></a>A hőmérséklet előre elkészített entitása egy LUIS-alkalmazáshoz
-Hőmérséklet kibontja a hőmérséklet-típusok különböző. Az entitás már be van tanítva, mert nem kell az alkalmazás hőmérséklet tartalmazó példa beszédmódok hozzáadása. Hőmérséklet-entitás támogatott [számos országban](luis-reference-prebuilt-entities.md). 
+A hőmérséklet különböző hőmérséklet-típusokat gyűjt. Mivel ez az entitás már be van tanítva, nem kell hozzáadnia az alkalmazáshoz hőmérsékletet tartalmazó hosszúságú kimondott szöveg. A hőmérsékleti entitások [számos kultúrában](luis-reference-prebuilt-entities.md)támogatottak. 
 
-## <a name="types-of-temperature"></a>Hőmérséklet-típusok
+## <a name="types-of-temperature"></a>Hőmérsékleti típusok
 A hőmérséklet a [felismerők – Text GitHub-](https://github.com/Microsoft/Recognizers-Text/blob/master/Patterns/English/English-NumbersWithUnit.yaml#L819) adattárból kezelhető
 
-## <a name="resolution-for-prebuilt-temperature-entity"></a>Előre összeállított hőmérséklet entitás feloldása
+## <a name="resolution-for-prebuilt-temperature-entity"></a>Előre elkészített hőmérsékleti entitás feloldása
 
-#### <a name="v2-prediction-endpoint-responsetabv2"></a>[V2 előrejelzési végpont válasza](#tab/V2)
+A lekérdezés a következő entitás-objektumokat adja vissza:
 
-Az alábbi példa bemutatja a feloldása a **builtin.temperature** entitás.
+`set the temperature to 30 degrees`
 
-```json
-{
-  "query": "set the temperature to 30 degrees",
-  "topScoringIntent": {
-    "intent": "None",
-    "score": 0.85310787
-  },
-  "intents": [
-    {
-      "intent": "None",
-      "score": 0.85310787
-    }
-  ],
-  "entities": [
-    {
-      "entity": "30 degrees",
-      "type": "builtin.temperature",
-      "startIndex": 23,
-      "endIndex": 32,
-      "resolution": {
-        "unit": "Degree",
-        "value": "30"
-      }
-    }
-  ]
-}
-```
 
-#### <a name="v3-prediction-endpoint-responsetabv3"></a>[V3 előrejelzési végpont válasza](#tab/V3)
+#### <a name="v3-responsetabv3"></a>[V3 válasz](#tab/V3)
 
-A következő JSON a `verbose` paramétert állítja be a `false` értékre:
+A következő JSON a `verbose` paraméterrel van beállítva `false`:
 
 ```json
-{
-    "query": "set the temperature to 30 degrees",
-    "prediction": {
-        "normalizedQuery": "set the temperature to 30 degrees",
-        "topIntent": "None",
-        "intents": {
-            "None": {
-                "score": 0.656305432
-            }
-        },
-        "entities": {
-            "temperature": [
-                {
-                    "number": 30,
-                    "unit": "Degree"
-                }
-            ]
+"entities": {
+    "temperature": [
+        {
+            "number": 30,
+            "units": "Degree"
         }
-    }
+    ]
 }
 ```
-
-A következő JSON a `verbose` paramétert állítja be a `true` értékre:
+#### <a name="v3-verbose-responsetabv3-verbose"></a>[V3 részletes válasz](#tab/V3-verbose)
+A következő JSON a `verbose` paraméterrel van beállítva `true`:
 
 ```json
-{
-    "query": "set the temperature to 30 degrees",
-    "prediction": {
-        "normalizedQuery": "set the temperature to 30 degrees",
-        "topIntent": "None",
-        "intents": {
-            "None": {
-                "score": 0.656305432
-            }
-        },
-        "entities": {
-            "temperature": [
-                {
-                    "number": 30,
-                    "unit": "Degree"
-                }
-            ],
-            "$instance": {
-                "temperature": [
-                    {
-                        "type": "builtin.temperature",
-                        "text": "30 degrees",
-                        "startIndex": 23,
-                        "length": 10,
-                        "modelTypeId": 2,
-                        "modelType": "Prebuilt Entity Extractor"
-                    }
+"entities": {
+    "temperature": [
+        {
+            "number": 30,
+            "units": "Degree"
+        }
+    ],
+    "$instance": {
+        "temperature": [
+            {
+                "type": "builtin.temperature",
+                "text": "30 degrees",
+                "startIndex": 23,
+                "length": 10,
+                "modelTypeId": 2,
+                "modelType": "Prebuilt Entity Extractor",
+                "recognitionSources": [
+                    "model"
                 ]
             }
-        }
+        ]
     }
 }
 ```
+#### <a name="v2-responsetabv2"></a>[V2 válasz](#tab/V2)
 
+Az alábbi példa a **beépített. hőmérséklet** entitás feloldását mutatja be.
+
+```json
+"entities": [
+    {
+        "entity": "30 degrees",
+        "type": "builtin.temperature",
+        "startIndex": 23,
+        "endIndex": 32,
+        "resolution": {
+        "unit": "Degree",
+        "value": "30"
+        }
+    }
+]
+```
 * * * 
 
 ## <a name="next-steps"></a>További lépések
 
 További információ a [v3 előrejelzési végpontról](luis-migration-api-v3.md).
 
-További információ a [százalékos](luis-reference-prebuilt-percentage.md), [szám](luis-reference-prebuilt-number.md), és [kora](luis-reference-prebuilt-age.md) entitásokat. 
+Ismerje meg a [százalékos](luis-reference-prebuilt-percentage.md), a [szám](luis-reference-prebuilt-number.md)-és az [életkor](luis-reference-prebuilt-age.md) entitásokat. 

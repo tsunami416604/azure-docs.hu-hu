@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein
 ms.date: 12/04/2018
-ms.openlocfilehash: 9e398fd7d370d30fac87035b27a218834b4fab22
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: ef1f420e4c4dbd38ad703eb0573fae36af078edb
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70899725"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73496237"
 ---
 # <a name="business-critical-tier---azure-sql-database"></a>Üzletileg kritikus réteg – Azure SQL Database
 
@@ -49,7 +49,7 @@ Emellett üzletileg kritikus-fürt beépített [olvasási Felskálázási](sql-d
 A legfontosabb ok, amiért érdemes kiválasztania üzletileg kritikus szolgáltatási szintet általános célú szintje helyett:
 -   Alacsony IO-késési követelmények – a tárolási réteg gyors válaszát igénylő munkaterhelés (átlagosan 1-2 ezredmásodperc) üzletileg kritikus szintet kell használnia. 
 -   Gyakori kommunikáció az alkalmazás és az adatbázis között. Olyan alkalmazás, amely nem tudja kihasználni az alkalmazás-rétegbeli gyorsítótárazást, vagy [igénylést](sql-database-use-batching-to-improve-performance.md) végez, és sok olyan SQL-lekérdezést kell elküldenie, amelyet gyorsan fel kell dolgozni, üzletileg kritikus szinten jó jelöltek.
--   Nagy számú frissítés – az INSERT, a Update és a DELETE művelet módosítja a memóriában (piszkos oldal) található adatlapokat, amelyeket a művelettel rendelkező `CHECKPOINT` adatfájlba kell menteni. A lehetséges adatbázismotor-folyamatok összeomlása vagy az adatbázis nagy mennyiségű piszkos oldallal rendelkező feladatátvétele általános célú szinten növelheti a helyreállítási időt. Üzletileg kritikus réteg használata, ha olyan számítási feladattal rendelkezik, amely sok memóriában végzett módosítást okoz. 
+-   Nagy számú frissítés – az INSERT, a Update és a DELETE művelet módosítja a memóriában (piszkos oldal) található adatlapokat, amelyeket `CHECKPOINT` művelettel rendelkező adatfájlba kell menteni. A lehetséges adatbázismotor-folyamatok összeomlása vagy az adatbázis nagy mennyiségű piszkos oldallal rendelkező feladatátvétele általános célú szinten növelheti a helyreállítási időt. Üzletileg kritikus réteg használata, ha olyan számítási feladattal rendelkezik, amely sok memóriában végzett módosítást okoz. 
 -   Az adatmódosítást követően hosszú ideig futó tranzakciók. A hosszú ideig megnyitott tranzakciók megakadályozzák a naplófájlok méretének és a [virtuális naplófájlok (VLF)](https://docs.microsoft.com/sql/relational-databases/sql-server-transaction-log-architecture-and-management-guide#physical_arch)számának növelését. A feladatátvétel után a VLF nagy száma lelassíthatja az adatbázis helyreállítását.
 -   Munkaterhelések jelentési és elemzési lekérdezésekkel, amelyek átirányíthatók a díjmentes másodlagos írásvédett replikára.
 - Nagyobb rugalmasság és gyorsabb helyreállítás a hibáktól. Rendszerhiba esetén az elsődleges példányon lévő adatbázis le lesz tiltva, és az egyik másodlagos replika azonnal új írható-olvasható elsődleges adatbázis lesz, amely készen áll a lekérdezések feldolgozására. Az adatbázismotor nem kell elemezni és megismételni a tranzakciókat a naplófájlból, és be kell töltenie a memória pufferében lévő összes adatmennyiséget.
@@ -59,7 +59,7 @@ A legfontosabb ok, amiért érdemes kiválasztania üzletileg kritikus szolgált
 
 ## <a name="next-steps"></a>További lépések
 
-- Az erőforrás jellemzői (magok, IO, memória) üzletileg kritikus réteg [felügyelt példányban](sql-database-managed-instance-resource-limits.md#service-tier-characteristics), önálló adatbázis [virtuális mag](sql-database-vcore-resource-limits-single-databases.md#business-critical-service-tier-for-provisioned-compute) -modellben vagy [DTU-modellben](sql-database-dtu-resource-limits-single-databases.md#premium-service-tier), vagy rugalmas készlet a [virtuális mag-modellben](sql-database-vcore-resource-limits-elastic-pools.md#business-critical-service-tier-storage-sizes-and-compute-sizes) és a [DTU-modellben](sql-database-dtu-resource-limits-elastic-pools.md#premium-elastic-pool-limits).
+- Az erőforrás jellemzői (magok, IO, memória) üzletileg kritikus réteg [felügyelt példányban](sql-database-managed-instance-resource-limits.md#service-tier-characteristics), önálló adatbázis [virtuális mag](sql-database-vcore-resource-limits-single-databases.md#business-critical---provisioned-compute---gen4) -modellben vagy [DTU-modellben](sql-database-dtu-resource-limits-single-databases.md#premium-service-tier), vagy rugalmas készlet a [virtuális mag-modellben](sql-database-vcore-resource-limits-elastic-pools.md#business-critical---provisioned-compute---gen4) és a [DTU-modellben](sql-database-dtu-resource-limits-elastic-pools.md#premium-elastic-pool-limits).
 - Ismerkedjen meg [általános célú](sql-database-service-tier-general-purpose.md) -és [nagy kapacitású](sql-database-service-tier-hyperscale.md) -szintekkel.
 - A [Service Fabric](../service-fabric/service-fabric-overview.md)megismerése.
 - A magas rendelkezésre állással és a vész-helyreállítással kapcsolatos további lehetőségekért lásd az [üzletmenet folytonosságát](sql-database-business-continuity.md)ismertető témakört.

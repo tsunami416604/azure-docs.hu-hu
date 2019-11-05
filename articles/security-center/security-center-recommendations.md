@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/29/2019
 ms.author: memildin
-ms.openlocfilehash: 32b7f1d699c0d620d70614c441a8c18520c1b2d5
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 6a01ddbc733ce52c02e9abef2569adbfbd19c6a8
+ms.sourcegitcommit: 3f8017692169bd75483eefa96c225d45cd497f06
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71201061"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73520737"
 ---
 # <a name="security-recommendations-in-azure-security-center"></a>Biztonsági javaslatok az Azure Security Centerben 
 Ez a témakör azt ismerteti, hogyan lehet megtekinteni és értelmezni a Azure Security Centerban található javaslatokat az Azure-erőforrások védelmének elősegítése érdekében.
@@ -36,7 +36,7 @@ Az esetleges biztonsági rések azonosítása érdekében rendszeresen Security 
 Az egyes javaslatok a következőket biztosítják:
 
 - A javaslat rövid leírása.
-- A javaslat végrehajtásához szükséges szervizelési lépések. <!-- In some cases, one-click remediation is available. -->
+- A javaslat végrehajtásához szükséges szervizelési lépések. <!-- In some cases, Quick Fix remediation is available. -->
 - Mely erőforrásokra van szükség a javasolt művelet végrehajtásához.
 - A **biztonságos pontszám hatása**, ami azt az összeget befolyásolja, amelyet a biztonságos pontszám felvesz, ha végrehajtja ezt a javaslatot.
 
@@ -52,13 +52,13 @@ Security Center elemzi az erőforrások biztonsági állapotát, hogy azonosíts
 
     Lehetőség van a javaslatok szűrésére. A javaslatok szűréséhez válassza a **szűrés** lehetőséget a **javaslatok** panelen. Megnyílik a **szűrő** panel, és kiválasztja a megtekinteni kívánt súlyossági és állapot-értékeket.
 
-   * **JAVASLATOK**: A javaslat.
-   * A **BIZTONSÁGOS PONTSZÁM HATÁSA**: A Security Center által generált pontszám a biztonsági javaslatokkal, valamint a speciális algoritmusok alkalmazásával határozható meg, hogy az egyes javaslatok mennyire fontosak. További információ: [biztonságos pontszámok kiszámítása](security-center-secure-score.md#secure-score-calculation).
-   * **ERŐFORRÁS**: Felsorolja azokat az erőforrásokat, amelyekre ez a javaslat vonatkozik.
-   * **ÁLLAPOTJELZŐ SÁVOK**:  Az adott javaslat súlyosságát írja le:
-       * **Magas (piros)** : A biztonsági rés egy értelmes erőforrással (például egy alkalmazással, egy virtuális géppel vagy egy hálózati biztonsági csoporttal) van, és figyelmet igényel.
-       * **Közepes (narancssárga)** : Egy biztonsági rés létezik, és nem kritikus fontosságú vagy további lépések szükségesek az eltávolításához vagy egy folyamat befejezéséhez.
-       * **Alacsony (kék)** : Létezik egy olyan biztonsági rés, amelynek meg kell oldania, de nem igényel azonnali beavatkozást. (Alapértelmezés szerint az alacsony javaslatok nem jelennek meg, de ha szeretné megtekinteni, az alacsony javaslatokat is szűrheti.) 
+   * **Javaslatok**: a javaslat.
+   * A **biztonságos pontszám hatása**: Security Center által generált pontszám a biztonsági javaslatok alapján, valamint speciális algoritmusok alkalmazása annak meghatározására, hogy az egyes javaslatok mennyire fontosak. További információ: [biztonságos pontszámok kiszámítása](security-center-secure-score.md#secure-score-calculation).
+   * **Erőforrás**: felsorolja azokat az erőforrásokat, amelyekre ez a javaslat vonatkozik.
+   * **Állapotsorok**: az adott javaslat súlyosságát ismerteti:
+       * **Magas (piros)** : a biztonsági rés egy értelmes erőforrással (például egy alkalmazással, egy virtuális géppel vagy egy hálózati biztonsági csoporttal) van, és figyelmet igényel.
+       * **Közepes (narancssárga)** : biztonsági rés létezik, és nem kritikus fontosságú vagy további lépések szükségesek az eltávolításához vagy egy folyamat befejezéséhez.
+       * **Alacsony (kék)** : olyan biztonsági rés létezik, amely nem igényel azonnali beavatkozást. (Alapértelmezés szerint az alacsony javaslatok nem jelennek meg, de ha szeretné megtekinteni, az alacsony javaslatokat is szűrheti.) 
        * **Kifogástalan (zöld)** :
        * **Nem érhető el (szürke)** :
 

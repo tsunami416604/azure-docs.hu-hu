@@ -1,5 +1,5 @@
 ---
-title: Helyszíni Apache Hadoop-fürtök áttelepítése az Azure HDInsight-ba – az adatáttelepítés
+title: 'Adatáttelepítés: helyszíni Apache Hadoop az Azure HDInsight'
 description: A helyszíni Hadoop-fürtök Azure HDInsight való áttelepítésére vonatkozó ajánlott eljárások ismertetése.
 author: hrasheed-msft
 ms.reviewer: ashishth
@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/08/2019
 ms.author: hrasheed
-ms.openlocfilehash: 567edca422237c71f0d69c862a17fbc0d2a72795
-ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
+ms.openlocfilehash: 30f7ae2eeb928e3f8dc71baed20d9c9b2129d1f9
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70735914"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73494984"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---data-migration-best-practices"></a>Helyszíni Apache Hadoop-fürtök áttelepítése az Azure HDInsight – az adatáttelepítés ajánlott eljárásai
 
@@ -25,7 +25,7 @@ Két fő lehetőség áll rendelkezésre a helyszíni adatok Azure-környezetbe 
 
 1.  Adatok átvitele hálózaton keresztül TLS használatával
     1. Interneten keresztül – az adatok az Azure Storage-ba normál internetkapcsolaton keresztül, többek között a következők egyikével vihetők át: Azure Storage Explorer, AzCopy, Azure PowerShell és Azure CLI.  További információkért lásd: [adatok áthelyezése az Azure Storage szolgáltatásba és onnan](../../storage/common/storage-moving-data.md) .
-    2. Az Express Route-ExpressRoute egy Azure-szolgáltatás, amellyel privát kapcsolatokat hozhat létre a Microsoft-adatközpontok és a helyszíni vagy egy közös elhelyezési létesítményben lévő infrastruktúra között. Az ExpressRoute-kapcsolatok nem a nyilvános interneten keresztül, és magasabb szintű biztonságra, megbízhatóságra és a kisebb a késésük, mint a szokásos internetkapcsolatoknál megbízhatóbbak kínálnak az interneten keresztül. További információ: [ExpressRoute-kör létrehozása és módosítása](../../expressroute/expressroute-howto-circuit-portal-resource-manager.md).
+    2. Az Express Route-ExpressRoute egy Azure-szolgáltatás, amellyel privát kapcsolatokat hozhat létre a Microsoft-adatközpontok és a helyszíni vagy egy közös elhelyezési létesítményben lévő infrastruktúra között. A ExpressRoute-kapcsolatok nem a nyilvános interneten haladnak át, és nagyobb biztonságot, megbízhatóságot és sebességet biztosítanak, mint a szokásos kapcsolatok az interneten. További információ: [ExpressRoute-kör létrehozása és módosítása](../../expressroute/expressroute-howto-circuit-portal-resource-manager.md).
     1. Data Box online adatátvitel – a Data Box Edge és a Data Box Gateway olyan online adatátviteli termékek, amelyek hálózati tároló átjáróként működnek a hely és az Azure közötti adatkezelés érdekében. A Data Box Edge egy helyszíni hálózati eszköz, amely az adatokat az Azure és a helyszín között helyezi át, és az adatok feldolgozásához mesterséges intelligenciát használó peremhálózati számítási megoldást használ. A Data Box Gateway egy tárolóátjáró képességgel rendelkező virtuális berendezés. További információ: [Azure Data Box dokumentáció – online átvitel](https://docs.microsoft.com/azure/databox-online/).
 1.  Adatszállítás kapcsolat nélküli üzemmódban
     1. Data Box offline adatátvitel – a Data Box, a Data Box Disk és az Data Box Heavy eszközök segítségével nagy mennyiségű adatok vihetők át az Azure-ba, ha a hálózat nem választható. Ezeket az offline adatátviteli eszközöket az Ön cége és az Azure-adatközpontok között szállítjuk. Az eszközök AES-titkosítást használnak, amelyek a szállítás közben védik az adatait, a feltöltés után pedig alapos megtisztítási folyamaton esnek át, amelynek során minden adata törölve lesz az eszközről. További információ a Data Box offline átvitelű eszközökről: [Azure Data Box dokumentáció – offline átvitel](https://docs.microsoft.com/azure/databox/). A Hadoop-fürtök áttelepítésével kapcsolatos további információkért tekintse [meg a helyszíni HDFS-tárolóból az Azure Storage-ba való migrálás Azure Data Box használatát](../../storage/blobs/data-lake-storage-migrate-on-premises-hdfs-cluster.md)ismertető témakört.
@@ -58,7 +58,7 @@ A DistCp egy Apache-projekt, amely egy MapReduce térképi feladatot használ az
 A DistCp megkísérli létrehozni a leképezési feladatokat, hogy mindegyik példány nagyjából azonos számú bájtot hozzon létre. Alapértelmezés szerint a DistCp-feladatok 20 leképezést használnak. Ha több leképezést használ a Distcp (a "m" paraméterrel a parancssorban), az adatátviteli folyamat során növeli a párhuzamosságot, és csökkenti az adatátvitel hosszát. Azonban két megfontolandó szempontot kell figyelembe vennie a leképezések számának növelésével kapcsolatban:
 
 1. A DistCp legalacsonyabb részletessége egyetlen fájl. Több, a forrásfájlok számánál nagyobb számú Mapper meghatározása nem segít, és a rendelkezésre álló fürterőforrás-erőforrások pazarlását fogja tartalmazni.
-1. Vegye figyelembe a rendelkezésre álló szál memóriáját a fürtön a leképezések számának megállapításához. Minden leképezési feladat egy szál-tárolóként indul el. Feltételezve, hogy a fürtön nem futnak más nagy terhelésű feladatok, a leképezések számát a következő képlet határozza meg: m = (a feldolgozó csomópontok \* száma az egyes munkavégző csomópontok számára)/a fonalak tárolójának mérete. Ha azonban más alkalmazások is használják a memóriát, a DistCp feladatokhoz csak a FONALak memóriájának egy részét használják.
+1. Vegye figyelembe a rendelkezésre álló szál memóriáját a fürtön a leképezések számának megállapításához. Minden leképezési feladat egy szál-tárolóként indul el. Feltételezve, hogy a fürtön nem futnak más nagy terhelésű feladatok, a leképezések száma a következő képlettel határozható meg: m = (a munkavégző csomópontok száma \* az egyes munkavégző csomópontok esetében a szálak memóriája)/a fonal tároló mérete. Ha azonban más alkalmazások is használják a memóriát, a DistCp feladatokhoz csak a FONALak memóriájának egy részét használják.
 
 ### <a name="use-more-than-one-distcp-job"></a>Egynél több DistCp-feladatot használjon
 
@@ -70,7 +70,7 @@ Ha kis számú nagyméretű fájl van, akkor érdemes megfontolnia, hogy 256 MB 
 
 ### <a name="use-the-strategy-command-line-parameter"></a>A "stratégia" parancssori paraméter használata
 
-Érdemes lehet `strategy = dynamic` paramétert használni a parancssorban. `strategy` A`uniform size`paraméter alapértelmezett értéke:, ebben az esetben az egyes leképezések nagyjából azonos számú bájtot másolnak. Ha ez a paraméter a értékre `dynamic`módosul, a listaelem több "darab-fájlra" oszlik. Az adathalmazok száma – a fájlok száma a térképek számának többszöröse. Minden Térkép feladathoz hozzá van rendelve egy adathalmaz-fájl. Az adathalmaz összes elérési útjának feldolgozását követően a rendszer törli az aktuális adatrészletet, és új adatrészletet szerez be. A folyamat addig folytatódik, amíg nem állnak rendelkezésre több adathalmaz. Ez a "dinamikus" megközelítés lehetővé teszi a gyorsabb Térkép-feladatok használatát, hogy több útvonalat használjanak, mint a lassabbak, így a DistCp-feladat teljes felgyorsítása.
+Érdemes lehet `strategy = dynamic` paramétert használni a parancssorban. A `strategy` paraméter alapértelmezett értéke `uniform size`, amely esetben az egyes leképezések nagyjából azonos számú bájtot másolnak. Ha ez a paraméter `dynamic`re változik, a listaelem több "darab-fájlra" oszlik. Az adathalmazok száma – a fájlok száma a térképek számának többszöröse. Minden Térkép feladathoz hozzá van rendelve egy adathalmaz-fájl. Az adathalmaz összes elérési útjának feldolgozását követően a rendszer törli az aktuális adatrészletet, és új adatrészletet szerez be. A folyamat addig folytatódik, amíg nem állnak rendelkezésre több adathalmaz. Ez a "dinamikus" megközelítés lehetővé teszi a gyorsabb Térkép-feladatok használatát, hogy több útvonalat használjanak, mint a lassabbak, így a DistCp-feladat teljes felgyorsítása.
 
 ### <a name="increase-the-number-of-threads"></a>A szálak számának növelésével
 
@@ -78,7 +78,7 @@ Ellenőrizze, hogy a `-numListstatusThreads` paraméter növelése növeli-e a t
 
 ### <a name="use-the-output-committer-algorithm"></a>A kimeneti committer algoritmus használata
 
-Ellenőrizze, hogy a paraméter `-Dmapreduce.fileoutputcommitter.algorithm.version=2` átadása növeli-e a DistCp teljesítményét. Ez a kimeneti committer algoritmus optimalizációt tartalmaz a kimeneti fájlok célhelyre írásához. A következő parancs egy példát mutat be a különböző paraméterek használatára:
+Ellenőrizze, hogy a paraméter átadása `-Dmapreduce.fileoutputcommitter.algorithm.version=2` javítja-e a DistCp teljesítményét. Ez a kimeneti committer algoritmus optimalizációt tartalmaz a kimeneti fájlok célhelyre írásához. A következő parancs egy példát mutat be a különböző paraméterek használatára:
 
 ```bash
 hadoop distcp -Dmapreduce.fileoutputcommitter.algorithm.version=2 -numListstatusThreads 30 -m 100 -strategy dynamic hdfs://nn1:8020/foo/bar wasb://<container_name>@<storage_account_name>.blob.core.windows.net/foo/

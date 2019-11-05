@@ -8,27 +8,30 @@ ms.author: v-lilei
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 11/04/2019
-ms.openlocfilehash: 7852eda849dfb05343829875ba5a66fa47970e7e
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
-ms.translationtype: MT
+ms.openlocfilehash: 03f28cb40708b7ec77a0a342b5ec1b6faeaa8e3b
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72790064"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73485147"
 ---
 # <a name="connect-a-knowledge-store-with-power-bi"></a>Tudástár összekötése Power BI
 
 > [!Note]
-> A Knowledge Store előzetes verzióban érhető el, és nem használható éles környezetben. Az [Azure Cognitive Search REST API 2019-05-06-es verziójának előzetes verziója](search-api-preview.md) biztosítja ezt a funkciót. Jelenleg nincs .NET SDK-támogatás.
+> A Knowledge Store előzetes verzióban érhető el, és nem használható éles környezetben. A portál és a [Search REST API 2019-05-06-es verziójának előzetes verziója](search-api-preview.md) biztosítja ezt a funkciót. Jelenleg nincs .NET SDK-támogatás.
 >
-Ebből a cikkből megtudhatja, hogyan csatlakozhat és vizsgálhat meg egy tudásbázist a Power BI Desktop alkalmazás Power Query használatával. Az útmutatóban használt Knowledge Store-minta létrehozásával kapcsolatban tekintse meg a [Knowledge Store létrehozása a Azure Portalban](knowledge-store-create-portal.md)című témakört.
+
+Ebből a cikkből megtudhatja, hogyan csatlakozhat a Knowledge Store-hoz, és hogyan deríthető fel a Power Query használatával a Power BI Desktop alkalmazásban. A sablonokkal gyorsabban elsajátíthatja az első lépéseket, vagy létrehozhat egy teljesen új irányítópultot.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-+ A jelen útmutatóban használt mintaűrlapok létrehozásához kövesse az [Azure Portal Tudásbázis létrehozása](knowledge-store-create-portal.md) című témakör lépéseit. Szüksége lesz a Knowledge Store létrehozásához használt Azure Storage-fiók nevére, valamint a Azure Portal elérési kulcsára.
-
 + [Power BI Desktop telepítése](https://powerbi.microsoft.com/downloads/)
 
-## <a name="connect-with-power-bi"></a>Kapcsolódás Power BI-jal
++ Szüksége lesz egy Knowledge Store-ra, amely az Azure Table Storage-ba mutat. Szüksége lesz a Knowledge Store létrehozásához használt Azure Storage-fiók nevére, valamint a Azure Portal elérési kulcsára is.
+
+Ha egy minta Knowledge Store-t szeretne használni, kövesse az utasításokat [egy Tudásbázis létrehozásához](knowledge-store-create-portal.md).
+
+## <a name="create-a-custom-report"></a>Egyéni jelentés létrehozása
 
 1. Indítsa el Power BI Desktop és kattintson **az adatlekérdezés**gombra.
 
@@ -100,7 +103,7 @@ A bal oldali navigációs panelen a **minden erőforrás** vagy **erőforráscso
 
 Ha ingyenes szolgáltatást használ, ne feledje, hogy Ön legfeljebb három indexet, indexelő és adatforrást használhat. A portálon törölheti az egyes elemeket, hogy a korlát alatt maradjon.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az alábbi cikkből megtudhatja, hogyan derítheti fel ezt a Knowledge áruházat a Storage Explorer használatával.
 

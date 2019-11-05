@@ -1,27 +1,27 @@
 ---
-title: Mi az Azure-beli adatmegosztás előzetes verziója?
-description: Az Azure-beli adatmegosztás előzetes verziójának használatával egyszerűen és biztonságosan oszthatja meg az adatait több ügyféllel és partnerrel.
+title: Mi az az Azure Data Share?
+description: Ismerje meg, hogyan oszthat meg egyszerűen és biztonságosan több ügyfelet és partnert az Azure-adatmegosztás használatával.
 author: joannapea
 ms.author: joanpo
 ms.service: data-share
 ms.topic: overview
 ms.date: 07/10/2019
-ms.openlocfilehash: 6ba6e9df7b3fd2992891f4b085581c51fe900744
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: 43972bc8e64e0bf88aae00126735d3e0c8751254
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72169070"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73499375"
 ---
-# <a name="what-is-azure-data-share-preview"></a>Mi az az Azure Data Share előzetes verzió?
+# <a name="what-is-azure-data-share"></a>Mi az az Azure Data Share?
 
 Napjaink világában az adatgyűjtés kulcsfontosságú stratégiai eszköznek tekinthető, amelyet számos szervezetnek egyszerűen és biztonságosan kell megosztania ügyfeleivel és partnereivel. Manapság számos módon teheti ezt meg, többek között FTP-n, e-mailben, API-kon keresztül, hogy csak néhányat említsünk. A szervezetek könnyen elveszítik a nyomon követését, hogy kik osztják meg az adatvédelmet a segítségével. Az adatmegosztás FTP-n keresztül vagy a saját API-infrastruktúrájának kiépítésével gyakran költséges a kiépítése és felügyelete. A megosztások ezen módszereinek nagy léptékű használata esetén a felügyelet terhelése is fennáll. 
 
 Számos szervezetnek a megosztott adatmennyiségért kell felvennie a fiókot. Az elszámoltathatóság mellett számos szervezet egyszerűen vezérelheti, kezelheti és figyelheti az összes adatmegosztást. A mai világban, ahol az adatgyűjtés várhatóan exponenciálisan növekszik, a szervezeteknek egy egyszerű módszert kell megosztaniuk big data. Az ügyfeleknek a legfrissebb adatokra van szükségük annak biztosításához, hogy képesek legyenek időben betekinteni a bepillantást.
 
-Az Azure-beli adatmegosztás előzetes verziója lehetővé teszi, hogy a szervezetek egyszerűen és biztonságosan osszák meg az adatmegosztást több ügyféllel és partnerrel. Néhány kattintással kiépítheti az új adatmegosztási fiókot, adatkészleteket adhat hozzá, és meghívja ügyfeleit és partnereit az adatmegosztásra. Az adatszolgáltatók mindig szabályozzák a megosztott adatmennyiséget. Az Azure-beli adatmegosztás révén egyszerűen kezelheti és figyelheti az adatmegosztást, amikor és kivel. 
+Az Azure-beli adatmegosztás lehetővé teszi, hogy a szervezetek egyszerűen és biztonságosan osszák meg az adatmegosztást több ügyféllel és partnerrel. Néhány kattintással kiépítheti az új adatmegosztási fiókot, adatkészleteket adhat hozzá, és meghívja ügyfeleit és partnereit az adatmegosztásra. Az adatszolgáltatók mindig szabályozzák a megosztott adatmennyiséget. Az Azure-beli adatmegosztás révén egyszerűen kezelheti és figyelheti az adatmegosztást, amikor és kivel. 
 
-Az adatszolgáltatók az adatmegosztásra vonatkozó használati feltételek megadásával szabályozhatják az adatkezelés módját. Az adatfogyasztónak el kell fogadnia ezeket a feltételeket, mielőtt az adatfogadásra képes lenne. Az adatszolgáltatók meghatározhatják, hogy az adatkezelők milyen gyakorisággal kapják meg a frissítéseket. Az adatszolgáltató bármikor visszavonhatja az új frissítések elérését. 
+Az adatszolgáltatók az adatmegosztásra vonatkozó használati feltételek megadásával szabályozhatják az adatkezelés módját. Az adatfelhasználónak el kell fogadnia ezeket a feltételeket ahhoz, hogy adatokat fogadhasson. Az adatszolgáltatók meghatározhatják, hogy az adatfelhasználók milyen gyakorisággal kapjanak frissítéseket. Az új frissítésekhez való hozzáférést az adatszolgáltató bármikor visszavonhatja. 
 
 Az Azure-adatmegosztás segít az elemzések fejlesztésében azáltal, hogy megkönnyíti a harmadik féltől származó adatok egyesítését az elemzési és AI-forgatókönyvekhez. Az Azure-adatmegosztás használatával könnyedén felkészítheti, feldolgozhatja és elemezheti az Azure-beli adatmegosztással megosztott adatkezelési eszközöket. 
 
@@ -37,19 +37,23 @@ Az Azure-adatmegosztás egy másik használati esete egy adatkonzorcium létreho
 
 ## <a name="how-it-works"></a>Működési elv
 
-Az Azure-beli adatmegosztás egy pillanatkép-alapú megosztási megközelítést használ, ahol az adatok az adatszolgáltató Azure-előfizetéséről és az adatfogyasztó Azure-előfizetésében található földekről származnak. Adatszolgáltatóként egy adatmegosztást kell kiépíteni, és meg kell hívnia a címzetteket az adatmegosztásra. Az adatfogyasztók e-mailben kapják meg az adatmegosztásra vonatkozó meghívót. Ha egy adatfogyasztó elfogadja a meghívót, elindíthatják a megosztott adatok teljes pillanatképét. Ezek az adathozzáférések az adatfogyasztók Storage-fiókba érkeznek. Az adatfogyasztók rendszeres, növekményes frissítéseket kaphatnak a velük megosztott adatmegosztáshoz, így mindig a legújabb verzióval rendelkeznek. 
+Az Azure-beli adatmegosztás jelenleg pillanatkép-alapú megosztást és helyben történő megosztást (korlátozott előzetes verzióban) kínál. 
+
+A pillanatkép-alapú megosztásban az adatok átkerülnek az adatszolgáltató Azure-előfizetésére, és az adatfogyasztó Azure-előfizetésében landolnak. Adatszolgáltatóként egy adatmegosztást kell kiépíteni, és meg kell hívnia a címzetteket az adatmegosztásra. Az adatfogyasztók e-mailben kapják meg az adatmegosztásra vonatkozó meghívót. Miután egy adatfogyasztó elfogadja a meghívót, elindíthatják a velük megosztott adatok teljes pillanatképét. Ezek az adathozzáférések az adatfogyasztók Storage-fiókba érkeznek. Az adatfogyasztók rendszeres, növekményes frissítéseket kaphatnak a velük megosztott adatmegosztáshoz, így mindig a legújabb verzióval rendelkeznek. 
 
 Az adatszolgáltatók az adatfogyasztók növekményes frissítését is lehetővé tehetik a velük megosztott adatokhoz egy pillanatkép-ütemterv alapján. A pillanatkép-ütemtervek óránkénti vagy napi rendszerességgel is elérhetők. Amikor az adatfogyasztó elfogadja és konfigurálja az adatmegosztást, előfizethet egy pillanatkép-ütemtervre. Ez olyan esetekben hasznos, amikor a megosztott adatok rendszeresen frissülnek, és az adatok fogyasztójának a legfrissebb adatokra van szüksége. 
 
 ![adatmegosztási folyamat](media/data-share-flow.png)
 
-Amikor az adatfogyasztó elfogad egy adatmegosztást, a kiválasztott Storage-fiókban is megkaphatja az adatmennyiséget. Ha például az adatszolgáltató az Azure Blob Storage használatával oszt meg adatmegosztást, az adatfogyasztó ezeket az adatAzure Data Lake Storet is megkapja. 
+Amikor az adatfogyasztó elfogad egy adatmegosztást, a rendszer az adott adattárban fogadhatja az adott adattárolóban tárolt adatmennyiséget. Ha például az adatszolgáltató az Azure Blob Storage használatával oszt meg adatmegosztást, az adatfogyasztó ezeket az adatAzure Data Lake Storet is megkapja. Hasonlóképpen, ha az adatszolgáltató megoszt egy Azure SQL Data Warehouse adatait, az adatfogyasztó kiválaszthatja, hogy szeretné-e fogadni az adatait egy Azure Data Lake Storeba, egy Azure SQL Database vagy egy Azure SQL Data Warehouseba. SQL-alapú forrásokból való megosztás esetén az adatok fogyasztója azt is kiválaszthatja, hogy az adatok a parketta vagy a CSV szolgáltatásban érkeznek-e. 
+
+A helyi megosztás jelenleg korlátozott előzetes verzióban érhető el az Azure Adatkezelő. Az adatszolgáltatók képesek megosztani az adatátvitelt, ha az adatáthelyezés nem szimbolikus hivatkozáson keresztül történik. Regisztráljon a helyszíni megosztás korlátozott előzetes verziójára az Azure Adatkezelő [itt](https://aka.ms/azuredatasharepreviewsignup). 
 
 ## <a name="key-capabilities"></a>Főbb képességek
 
 Az Azure-adatmegosztás lehetővé teszi az adatszolgáltatók számára a következőket:
 
-* Adatok megosztása az Azure Storage-ból és Azure Data Lake Store a szervezeten kívüli ügyfelekkel és partnerekkel
+* Adatok megosztása a szervezeten kívüli ügyfelekkel és partnerekkel [támogatott adattárak](supported-data-stores.md) listájából
 
 * Nyomon követheti, hogy ki osztotta meg az adatait a
 
@@ -69,27 +73,27 @@ Az Azure-adatmegosztás lehetővé teszi az adatfogyasztók számára a követke
 
 * Előfizetés egy adatmegosztásra, hogy megkapja az adatok legújabb másolatát a növekményes Pillanatképek másolásával
 
-* Az Önnel megosztott adathozzáférés elfogadása Azure Blob Storage vagy Azure Data Lake Gen2-fiókkal
+* Fogadja el az Önnel megosztott adatmegosztást egy [támogatott adattárba](supported-data-stores.md).
 
 A fent felsorolt legfontosabb képességek az Azure-ban vagy a REST API-kon keresztül támogatottak. További információ az Azure-beli adatmegosztás REST API-kkal való használatáról: dokumentáció. 
 
 ## <a name="security"></a>Biztonság
 
-Az Azure-adatmegosztás kihasználja az Azure által az inaktív és az átvitel alatt álló adatok védelméhez használt mögöttes biztonsági adatokat. Az adatok titkosítva vannak, ahol a mögöttes tárolási mechanizmus támogatja. Az adatátvitelt is titkosítja a rendszer. Az adatmegosztások metaadatait a rendszer a REST és az átvitel során is titkosítja. 
+Az Azure-adatmegosztás kihasználja az Azure által az inaktív és az átvitel alatt álló adatok védelméhez használt mögöttes biztonsági adatokat. Az adatok titkosítva vannak, ahol a mögöttes adattár támogatja. Az adatátvitelt is titkosítja a rendszer. Az adatmegosztások metaadatait a rendszer a REST és az átvitel során is titkosítja. 
 
 A hozzáférés-vezérlés beállítható az Azure-beli adatmegosztási erőforrás szintjén, így biztosítva, hogy azok elérhetők legyenek a jogosultak számára. 
 
-Az Azure-adatmegosztás felügyelt identitásokat használ az Azure-erőforrások (korábbi nevén rendszercsomagok) számára a Azure Active Directory automatikus Identitáskezelés kezeléséhez. Az Azure-erőforrások felügyelt identitásait a rendszer az adatmegosztáshoz használt Storage-fiókok elérésére használja ki. Az adatszolgáltató és az adatfogyasztó között nincs hitelesítő adatok cseréje. További információkért tekintse meg az [Azure-erőforrások felügyelt identitások oldalát](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/services-support-managed-identities). 
+Az Azure-adatmegosztás felügyelt identitásokat használ az Azure-erőforrások (korábbi nevén rendszercsomagok) számára a Azure Active Directory automatikus Identitáskezelés kezeléséhez. Az Azure-erőforrások felügyelt identitásai kihasználva az adatmegosztáshoz használt adattárakhoz való hozzáféréshez. Az adatszolgáltató és az adatfogyasztó között nincs hitelesítő adatok cseréje. További információkért tekintse meg az [Azure-erőforrások felügyelt identitások oldalát](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/services-support-managed-identities). 
 
 
 ## <a name="supported-regions"></a>Támogatott régiók
 
-Az Azure-beli adatmegosztást használó Azure-régiók [listáját az Azure](https://azure.microsoft.com/global-infrastructure/services/) -beli adatmegosztást ismertető oldalon tekintheti meg és keresheti meg. 
+Az Azure-beli adatmegosztást használó Azure-régiók [listáját az Azure](https://azure.microsoft.com/global-infrastructure/services/?products=data-share/) -beli adatmegosztást ismertető oldalon tekintheti meg és keresheti meg. 
 
-Az Azure-beli adatmegosztások nem tárolnak semmilyen adattárat. Az adatokat a rendszer az alapul szolgáló Storage-fiókokban tárolja. Ha például egy adatelőállító az USA nyugati régiójában található Azure Data Lake Store-fiókban tárolja az adattárat, akkor az adattárolási hely. Ha a Nyugat-Európában található Azure Storage-fiókkal osztanak meg adatmegosztást, a rendszer közvetlenül a Nyugat-Európában található Azure Storage-fiókba továbbítja az adatátvitelt. 
+Az Azure-beli adatmegosztások nem tárolnak semmilyen adattárat. Az adatokat a rendszer az alapul szolgáló adattár tárolja. Ha például egy adatelőállító az USA nyugati régiójában található Azure Data Lake Store-fiókban tárolja az adattárat, akkor az adattárolási hely. Ha a Nyugat-Európában található Azure Storage-fiókkal osztanak meg adatmegosztást, a rendszer közvetlenül a Nyugat-Európában található Azure Storage-fiókba továbbítja az adatátvitelt. 
 
 Az Azure-beli adatmegosztási szolgáltatásnak nem kell elérhetőnek lennie a régióban a szolgáltatás kihasználása érdekében. Ha például egy olyan régióban található Azure Storage-fiókban tárolt adatai vannak, amelyben az Azure-adatmegosztás még nem érhető el, akkor továbbra is használhatja a szolgáltatást az adatmegosztáshoz. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az adatmegosztás megkezdésének megismeréséhez folytassa az [adatgyűjtés megosztása](share-your-data.md) című oktatóanyagot.

@@ -5,18 +5,18 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 12/14/2018
+ms.date: 11/04/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 36b3fcfa90b5b1de9c9d3262da1f3e519cc99c19
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 57e8905fd9722d5b8a8b0ab76dbcea5b91c6d30a
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67178942"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73495830"
 ---
 ### <a name="is-custom-ipsecike-policy-supported-on-all-azure-vpn-gateway-skus"></a>Minden Azure VPN-átjáróhoz tartozó termékváltozat támogatja az egyéni IPsec/IKE-házirendet?
-Az egyéni IPsec/IKE-házirendet az Azure **VpnGw1, VpnGw2, VpnGw3, Standard** és a **Nagy teljesítményű** VPN-átjárók támogatják. Az **alapszintű** SKU **nem** támogatott.
+Az Egyéni IPsec/IKE-házirendet **az alapszintű SKU kivételével az összes Azure**-beli SKU támogatja.
 
 ### <a name="how-many-policies-can-i-specify-on-a-connection"></a>Hány házirendeket adhatok meg egy kapcsolathoz?
 Egy adott kapcsolathoz csak ***egy*** házirendet adhat meg.
@@ -103,5 +103,5 @@ Igen. A virtuális hálózatok közötti alagút két kapcsolati erőforrásból
 ### <a name="does-custom-ipsecike-policy-work-on-expressroute-connection"></a>Működik az egyéni IPsec/IKE-házirend az ExpressRoute-kapcsolatokkal?
 Nem. Az IPsec/IKE-házirend csak az S2S VPN- és a virtuális hálózatok közötti kapcsolatokkal, az Azure VPN-átjárókon keresztül működik.
 
-### <a name="where-can-i-find-more-configuration-information-for-ipsec"></a>Hol találhatok további konfigurációs információk az IPsec esetében?
-Lásd: [konfigurálása az IPsec/IKE-szabályzat S2S- és VNet – VNet kapcsolatokhoz](../articles/vpn-gateway/vpn-gateway-ipsecikepolicy-rm-powershell.md)
+### <a name="where-can-i-find-more-configuration-information-for-ipsec"></a>Hol találhatok további konfigurációs adatokat az IPsec szolgáltatáshoz?
+Lásd: [IPSec/IKE-szabályzat konfigurálása S2S vagy VNet – VNet kapcsolatok számára](../articles/vpn-gateway/vpn-gateway-ipsecikepolicy-rm-powershell.md)

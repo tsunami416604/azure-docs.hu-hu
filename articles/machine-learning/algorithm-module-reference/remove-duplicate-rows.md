@@ -1,24 +1,24 @@
 ---
 title: 'Ismétlődő sorok eltávolítása: modulok leírása'
-titleSuffix: Azure Machine Learning service
-description: Megtudhatja, hogyan távolíthatja el a lehetséges duplikált adatokat az adatkészletből a Azure Machine Learning szolgáltatás ismétlődő sorok eltávolítása moduljának használatával.
+titleSuffix: Azure Machine Learning
+description: Megtudhatja, hogyan távolíthatja el a lehetséges duplikált adatokat az adatkészletből a Azure Machine Learning duplikált sorok eltávolítása moduljának használatával.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
-ms.date: 05/02/2019
-ms.openlocfilehash: 8b3f73c56d85eecd50633085eca0e632abaa6b4c
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.date: 10/22/2019
+ms.openlocfilehash: a0faba895c5717d061bacee2ce724c20464f8150
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72693664"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73497687"
 ---
 # <a name="remove-duplicate-rows-module"></a>Ismétlődő sorok moduljának eltávolítása
 
-Ez a cikk a Azure Machine Learning szolgáltatás vizuális felületének (előzetes verzió) modulját ismerteti.
+Ez a cikk a Azure Machine Learning Designer (előzetes verzió) modulját ismerteti.
 
 Ezzel a modullal távolíthatja el a lehetséges duplikált adatokat egy adatkészletből.
 
@@ -76,6 +76,6 @@ Amikor futtatja a modult, létrehoz egy jelölt adatkészletet, és olyan sorok 
 > [!TIP]
 > Ha az eredmények nehezen érthetőek, vagy ha ki szeretne zárni egyes oszlopokat a megfontolásból, eltávolíthatja az oszlopokat az [adatkészlet kiválasztása](./select-columns-in-dataset.md) modulban.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Tekintse [meg Azure Machine learning szolgáltatás számára elérhető modulok készletét](module-reference.md) . 
+Tekintse [meg a Azure Machine learning elérhető modulok készletét](module-reference.md) . 

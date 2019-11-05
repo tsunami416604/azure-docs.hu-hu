@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 08e9656e3b899cbb6d4de733696175e8f31b0e66
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 559d8cb25624c1d8bebb2969fbeeb80bdcc020e6
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72792015"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73479741"
 ---
 #   <a name="entity-recognition-cognitive-skill"></a>Entitás-felismerés – kognitív képesség
 
@@ -39,16 +39,15 @@ A paraméterek megkülönböztetik a kis-és nagybetűket, és mindegyik nem kö
 |--------------------|-------------|
 | kategóriák    | A kinyerni kívánt kategóriák tömbje.  Lehetséges kategóriájú típusok: `"Person"`, `"Location"`, `"Organization"`, `"Quantity"`, `"Datetime"`, `"URL"`, `"Email"`. Ha nincs megadva kategória, a rendszer az összes típust adja vissza.|
 |defaultLanguageCode |  A bemeneti szöveg nyelvi kódja A következő nyelvek támogatottak: `de, en, es, fr, it`|
-|minimumPrecision | Nem használt. Későbbi használatra fenntartva. |
-|includeTypelessEntities | Ha a értéke TRUE (igaz), ha a szöveg jól ismert entitást tartalmaz, de az egyik támogatott kategóriába nem kategorizálható, a rendszer a `"entities"` összetett kimeneti mező részeként adja vissza. 
-Ezek olyan entitások, amelyek jól ismertek, de nem tartoznak a jelenleg támogatott "kategóriák" részébe. A "Windows 10" például jól ismert entitás (termék), de a "termékek" nem szerepelnek a jelenleg támogatott kategóriákban. Az alapértelmezett érték `false` |
+|minimumPrecision | 0 és 1 közötti érték. Ha a megbízhatósági pontszám (a `namedEntities` kimenetében) alacsonyabb ennél az értéknél, az entitás nem lesz visszaadva. Az alapértelmezett érték a 0. |
+|includeTypelessEntities | Állítsa `true` értékre, ha fel szeretné ismerni azokat a jól ismert entitásokat, amelyek nem felelnek meg az aktuális kategóriáknak. Az elismert entitások a `entities` összetett kimenet mezőben lesznek visszaadva. Például a "Windows 10" egy jól ismert entitás (a termék), de mivel a "Products" nem támogatott kategória, ez az entitás szerepel az entitások kimenet mezőjében. Az alapértelmezett érték `false` |
 
 
 ## <a name="skill-inputs"></a>Szaktudás bemenetei
 
 | Bemeneti név      | Leírás                   |
 |---------------|-------------------------------|
-| languageCode  | Választható. Az alapértelmezett érték a `"en"`.  |
+| languageCode  | Választható. Az alapértelmezett szint a `"en"`.  |
 | szöveg          | Az elemezni kívánt szöveg.          |
 
 ## <a name="skill-outputs"></a>Szaktudás kimenetei
@@ -65,7 +64,7 @@ Ezek olyan entitások, amelyek jól ismertek, de nem tartoznak a jelenleg támog
 | Dátum  | Karakterláncok tömbje, amelyben minden karakterlánc egy DateTime értéket jelöl (ahogy a szövegben jelenik meg). |
 | URLs | Karakterláncok tömbje, amelyben minden sztring URL-címet jelöl |
 | e-mailek | Karakterláncok tömbje, amelyben minden karakterlánc egy e-mailt jelöl |
-| namedEntities | Összetett típusok tömbje, amely a következő mezőket tartalmazza: <ul><li>category</li> <li>érték (a tényleges entitás neve)</li><li>eltolás (az a hely, ahol a szöveg található)</li><li>megbízhatóság (jelenleg nem használatos. A-1 értékre lesz állítva</li></ul> |
+| namedEntities | Összetett típusok tömbje, amely a következő mezőket tartalmazza: <ul><li>category</li> <li>érték (a tényleges entitás neve)</li><li>eltolás (az a hely, ahol a szöveg található)</li><li>megbízhatóság (a magasabb érték azt jelenti, hogy inkább valódi entitásnak kell lennie)</li></ul> |
 | szervezetek | Összetett típusok tömbje, amely részletes információkat tartalmaz a szövegből kinyert entitásokról a következő mezőkkel <ul><li> név (a tényleges entitás neve. Ez a "normalizált" formát jelenti.</li><li> wikipediaId</li><li>wikipediaLanguage</li><li>wikipediaUrl (az entitáshoz tartozó wikipedia oldalára mutató hivatkozás)</li><li>bingId</li><li>típus (az elismert entitás kategóriája)</li><li>altípus (csak bizonyos kategóriák esetében érhető el, ez az entitás típusának részletesebb megjelenítését teszi lehetővé)</li><li> egyezések (egy összetett gyűjtemény, amely tartalmazza)<ul><li>szöveg (az entitás nyers szövege)</li><li>eltolás (a hely hol található)</li><li>Hossz (a nyers entitás hosszának hossza)</li></ul></li></ul> |
 
 ##  <a name="sample-definition"></a>Minta definíciója
@@ -76,6 +75,7 @@ Ezek olyan entitások, amelyek jól ismertek, de nem tartoznak a jelenleg támog
     "categories": [ "Person", "Email"],
     "defaultLanguageCode": "en",
     "includeTypelessEntities": true,
+    "minimumPrecision": 0.5,
     "inputs": [
       {
         "name": "text",
@@ -131,7 +131,7 @@ Ezek olyan entitások, amelyek jól ismertek, de nem tartoznak a jelenleg támog
             "category":"Person",
             "value": "John Smith",
             "offset": 35,
-            "confidence": -1
+            "confidence": 0.98
           }
         ],
         "entities":  
@@ -191,7 +191,7 @@ Ezek olyan entitások, amelyek jól ismertek, de nem tartoznak a jelenleg támog
 ## <a name="error-cases"></a>Hibák esetei
 Ha a dokumentumhoz tartozó nyelvi kód nem támogatott, a rendszer hibát ad vissza, és egyetlen entitás sincs kibontva.
 
-## <a name="see-also"></a>Lásd még:
+## <a name="see-also"></a>Lásd még
 
 + [Beépített szaktudás](cognitive-search-predefined-skills.md)
 + [Készségkészlet definiálása](cognitive-search-defining-skillset.md)

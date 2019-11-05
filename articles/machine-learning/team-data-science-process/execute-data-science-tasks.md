@@ -1,6 +1,6 @@
 ---
-title: Adatelemzési műveletek – csoportos adatelemzési folyamat végrehajtása
-description: Hogyan értenie az adatokhoz is végre lehet hajtani egy adatelemzési projektjéhez trackable, szabályozott verziót, és remek.
+title: Adatelemzési feladatok végrehajtása – csoportos adatelemzési folyamat
+description: Egy adatelemző projekt nyomon követhető, vezérelt és együttműködő módon végezhető el az adatelemzési projektek végrehajtásában.
 author: marktab
 manager: cgronlun
 editor: cgronlun
@@ -10,106 +10,106 @@ ms.topic: article
 ms.date: 11/28/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: eb792034e49b0f8f663eb9ee968ea6fac1372373
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: e74277af8bf0912c418bc169209180195ceb8d8f
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70278611"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73492379"
 ---
-# <a name="execute-data-science-tasks-exploration-modeling-and-deployment"></a>Adatelemzési műveletek végrehajtása: feltárás, modellezés és üzembe helyezés
+# <a name="execute-data-science-tasks-exploration-modeling-and-deployment"></a>Adatelemzési feladatok végrehajtása: feltárás, modellezés és üzembe helyezés
 
-Jellemzően milyen adattudományos feladatokat tartalmazza az adatfeltárás, modellezés és üzembe helyezés. Ez a cikk bemutatja, hogyan használhatja a **interaktív Adatkutatási, elemzési és jelentéskészítési (IDEAR)** és **automatikus modellezési és jelentéskészítési (AMAR)** segédprogramok számos gyakori adatelemzési feladatok végrehajtásához például az interaktív adatkutatási, adatelemzés, jelentés és modell létrehozásához. Azt is ismerteti lehetőségei a különböző eszközökre és az adatok platformok, például a következő ad éles környezetben üzembe helyezéséhez:
+A tipikus adatelemzési feladatok közé tartozik az adatok feltárása, modellezése és üzembe helyezése. Ez a cikk bemutatja, hogyan használható az **interaktív adatelemzési, elemzési és jelentéskészítési (ideaer-)** és **automatizált modellezési és jelentéskészítési (a)** segédprogramok számos olyan általános adatelemzési feladat végrehajtásához, mint például az interaktív adatok feltárása, adatok elemzés, jelentéskészítés és modell létrehozása. Emellett számos eszközkészlet és adatplatform használatával ismerteti a modellek éles környezetbe történő üzembe helyezésének lehetőségeit, például az alábbiakat:
 
 - [Azure Machine Learning](../index.yml)
-- [SQL-Server ML szolgáltatásokkal](https://docs.microsoft.com/sql/advanced-analytics/r/r-services)
+- [SQL-Server ML-szolgáltatásokkal](https://docs.microsoft.com/sql/advanced-analytics/r/r-services)
 - [Microsoft Machine Learning Server](https://docs.microsoft.com/machine-learning-server/what-is-machine-learning-server)
 
 
-## 1. <a name='DataQualityReportUtility-1'></a> Feltárása 
+## 1. <a name='DataQualityReportUtility-1'></a> feltárás 
 
-Adatszakértő hajthat végre feltárására és a egy számos különböző módon reporting: Python (a példában a matplotlib) kódtárak és az elérhető csomagok használatával vagy az r nyelv (ggplot vagy például rácsos). Az adatszakértők ilyen programkódot, bizonyos forgatókönyvek esetén az adatok feltárása az igényei szerint testre szabhatja. Strukturált adatok kezelésére vonatkozó igényeinek különböznek, például szöveg vagy képek strukturálatlan adatok számára. 
+Az adattudós különböző módokon végezheti el a feltárást és jelentéskészítést: a Pythonhoz elérhető kódtárak és csomagok (például matplotlib) vagy az R (ggplot vagy Lattice) használatával. Az adatszakértők számára az ilyen kódok testreszabhatók, hogy illeszkedjenek az adatfeltárás igényeihez bizonyos forgatókönyvek esetében. A strukturált adat kezelésére vonatkozó igények különböznek a strukturálatlan adatmennyiségek, például a szöveg vagy a képek esetében. 
 
-Például az Azure Machine Learning szolgáltatás is kínálnak [fejlett adat-előkészítés](../service/how-to-transform-data.md) adatok konvertálását és feltárásában, beleértve a szolgáltatás létrehozása. A felhasználónak meg kell határoznia az eszközöket, könyvtárakat és csomagok, amelyek a legjobb suite a saját igényeinek megfelelő. 
+Az olyan termékek, mint a Azure Machine Learning [speciális adatelőkészítést](../service/how-to-transform-data.md) biztosítanak az adathuzavona és-feltáráshoz, beleértve a szolgáltatások létrehozását is. A felhasználónak meg kell határoznia az igényeiknek legmegfelelőbb eszközöket, kódtárakat és csomagokat. 
 
-Ebben a fázisban a végén a termék egy olyan adatok feltárása jelentés. A jelentés modellezési használható az adatok viszonylag átfogó képet és értékeléseket, hogy az adatok megfelelő a modellezési lépésben kell biztosítania. A csoportos adatelemzési folyamat (TDSP) parancssori segédeszközöket a félig automatikus feltárása a következő szakaszban tárgyalt modellezés, és jelentéskészítés nyújt szabványos adatfeltárás és modellezés a jelentések. 
+A fázis végén elkészített termék egy adatfeltárási jelentés. A jelentésnek átfogó képet kell adnia a modellezéshez használt adatmennyiségről és annak felméréséről, hogy az adott információ alkalmas-e a modellezési lépés folytatására. A csoportos adatelemzési, modellezési és jelentéskészítési szakaszban a következő szakaszokban ismertetett TDSP-segédprogramok szabványosított adatfelderítési és-modellezési jelentéseket is biztosítanak. 
 
-### <a name="interactive-data-exploration-analysis-and-reporting-using-the-idear-utility"></a>Interaktív adatfeltárás, elemzés és jelentéskészítés a IDEAR segédprogrammal
+### <a name="interactive-data-exploration-analysis-and-reporting-using-the-idear-utility"></a>Interaktív adatelemzési, elemzési és jelentéskészítési funkció a IDEAer segédprogram használatával
 
-Ez a markdown-alapú R vagy Python-Jegyzetfüzet-alapú segédprogram kiértékeléséhez, és Fedezze fel az adatkészletek rugalmas és interaktív eszközt biztosít. Felhasználók gyorsan adatkészletből a minimális kódolási jelentések készítése. Felhasználók végleges jelentés, amely ügyfelek felé, és megfontoltabb döntéseket hozhat a melyik változókat az ezt követő modellezési lépésben használt eszköz interaktív feltárása eredményez exportálhatja is gombokkal.
+Az R Markdown-alapú vagy Python notebook-alapú segédprogram rugalmas és interaktív eszközt biztosít az adathalmazok kiértékeléséhez és megismeréséhez. A felhasználók gyorsan hozhatnak létre jelentéseket az adatkészletből a minimális kódolással. A felhasználók a gombokra kattintva exportálhatók a kutatási eredmények az interaktív eszközben egy végleges jelentésbe, amely az ügyfeleknek továbbítható, vagy a következő modellezési lépésben felhasználható változók létrehozásához használható.
 
-Jelenleg az eszköz csak a működik a memóriában adatkeretek. Adja meg a paramétereket, az adatkészlet vizsgálhatók, szükség van egy YAML-fájlt. További információkért lásd: [TDSP Data Science segédprogramok IDEAR](https://github.com/Azure/Azure-TDSP-Utilities/tree/master/DataScienceUtilities/DataReport-Utils).
-
-
-## 2. <a name='ModelingUtility-2'></a> Modellezés
-
-Nincsenek számos Eszközkészletek és csomagok különböző nyelveken képzési modellek esetén. Az adatszakértők kell nyugodtan használhatja, amelyen azokat mindaddig, amíg a teljesítménnyel kapcsolatos megfontolások pontosság és késéssel kapcsolatos fontos üzleti teljesülnek ügyfélszolgáltatást, azok használatieset-forgatókönyveit és a termelési forgatókönyvekhez.
-
-Ez a szakasz bemutatja, hogyan egy R-alapú TDSP segédprogram használata a félig automatikus modellezéshez. Ez AMAR segédprogram segítségével hozzon létre base sor modellek gyors, valamint modellezheti a paramétereket kell beállítani, hogy jobban végrehajtása meg.
-A következő modell felügyeleti szakasz mutatja be, a rendszer regisztrálja, és több modell kezelésére.
+Jelenleg az eszköz csak a memóriában lévő adatkereteken működik. YAML-fájlra van szükség a felderíteni kívánt adatok paramétereinek megadásához. További információ: [ideaer in TDSP Adattudományi segédprogramok](https://github.com/Azure/Azure-TDSP-Utilities/tree/master/DataScienceUtilities/DataReport-Utils).
 
 
-### <a name="model-training-modeling-and-reporting-using-the-amar-utility"></a>Tanítási modell: modellezéséhez és jelentéskészítés a AMAR segédprogrammal
+## 2. <a name='ModelingUtility-2'></a> modellezés
 
-A [automatikus modellezési és jelentéskészítési (AMAR) segédprogram](https://github.com/Azure/Azure-TDSP-Utilities/tree/master/DataScienceUtilities/Modeling) modell létrehozásához a hyper-paraméter kezdik és hasonlítsa össze ezeket a modell pontosságát a testre szabható, félig automatikus eszközt biztosít. 
+A különböző nyelveken számos eszközkészletet és csomagot kell betanítani a modellekhez. Az adatszakértőknek minden eddiginél szívesebben kell használniuk, ha a pontossággal és késéssel kapcsolatos teljesítménnyel kapcsolatos megfontolások teljesülnek a releváns üzleti használati esetekben és a termelési forgatókönyvekben.
 
-A modell-létrehozási segédprogram egy R Markdown-fájl, amely a különböző részlegei keresztül könnyen navigációs tartalomjegyzék önálló HTML-kimenet létrehozására is futtathatók. Három algoritmusok tevékenységében kell futtatásakor a Markdown-fájlban (knit): a csomag rendeződik regressziót a glmnet véletlenszerű erdő a randomForest csomagot használ, és az xgboost csomaggal fák kiemelési). Ezek az algoritmusok mindegyike hoz létre a betanított modell. Ezek a modellek pontossága majd össze, és a szolgáltatás relatív fontosságát grafikon jelentik. Jelenleg két segédprogramok: egyet az egy bináris osztályozási feladatot és egy regressziós feladat. Az elsődleges különbségeiket módon paramétereit, és pontossága metrikák tanulási feladatok vannak megadva. 
+A következő szakasz bemutatja, hogyan használható az R-alapú TDSP segédprogram a félig automatizált modellezéshez. Ez az elválasztó az alapszintű modellek gyors létrehozásához, valamint a jobb teljesítményt biztosító modell kialakításához szükséges paraméterekhez használható.
+A következő modellek kezelése szakasz azt mutatja be, hogyan lehet a rendszer a több modell regisztrálására és kezelésére.
 
-Adjon meg egy YAML-fájlt használatos:
 
-- a bevitt adatok (egy R-adatfájl vagy egy SQL-forrás) 
-- az adatok milyen része képzési kell használni, mely részét teszteléshez
-- milyen algoritmusokat futtatása 
-- a kiválasztott modell optimalizálás paraméterek:
-    - kereszt-ellenőrzés 
-    - rendszerindítása
-    - a kereszt-ellenőrzési modellrész
-- a hyper-paraméter esetében minden egyes algoritmus állítja be. 
+### <a name="model-training-modeling-and-reporting-using-the-amar-utility"></a>Modell betanítása: modellezés és jelentéskészítés az a kihasználó eszközzel
 
-Algoritmusok, optimalizálás modellrészt, a hyper-paraméterek száma, és a hyper-paraméterkészlettel Szögtartomány keresztül történő számát is módosíthatja a modellek gyors futtatása a Yaml fájlban. Ha például futtathatók CV modellrész, kevesebb paraméterkészlettel alacsonyabb számú. Ha indokolt, is futtathatók átfogóbban egy magasabb CV modellrészt vagy több paraméterkészlettel.
+Az [automatizált modellezési és jelentéskészítési (](https://github.com/Azure/Azure-TDSP-Utilities/tree/master/DataScienceUtilities/Modeling) a "a") segédprogram egy testreszabható, félig automatizált eszközt biztosít a modell létrehozásához a Hyper-paraméter-megtakarítással és a modellek pontosságának összehasonlításához. 
 
-További információkért lásd: [automatikus modellezési és segédprogram Reporting TDSP Data Science segédprogramok](https://github.com/Azure/Azure-TDSP-Utilities/tree/master/DataScienceUtilities/Modeling).
+A modell-létrehozási segédprogram egy olyan R Markdown-fájl, amely képes önálló HTML-kimenetet készíteni a tartalomjegyzékből a különböző részeken található egyszerű navigáláshoz. A rendszer három algoritmust hajt végre a Markdown-fájl futtatásakor (kötött): a glmnet-csomag, a véletlenszerű erdő és a randomForest-csomag használatával végzett, valamint a fák xgboost-csomag használatával történő növelésével a szabályos regressziót. Ezen algoritmusok mindegyike egy betanított modellt hoz létre. Az ilyen modellek pontossága összehasonlítható, és a rendszer a relatív funkciók fontosságát ábrázolja. Jelenleg két segédprogram létezik: az egyik a bináris besorolási feladathoz, a másik pedig egy regressziós feladathoz. A köztük lévő elsődleges különbségek a paraméterek és a pontosság mérőszámai, amelyek az ilyen tanulási feladatokhoz vannak megadva. 
+
+A YAML-fájlok a következő megadására használhatók:
+
+- az adatbevitel (egy SQL-forrás vagy egy R-adat fájl) 
+- az adatgyűjtési és a tesztelési célú elemek milyen részét használják a képzéshez
+- a futtatandó algoritmusok 
+- a modell optimalizálásának vezérlési paramétereinek kiválasztása:
+    - több ellenőrzés 
+    - bootstrapping
+    - kereszt-ellenőrzési munkák
+- az egyes algoritmusokhoz tartozó Hyper-paraméter-készletek. 
+
+A YAML fájlban az algoritmusok száma, az optimalizáláshoz szükséges behajtott érték, a Hyper-Parameters és a Hyper-Parameters készletek száma is módosítható a modell gyors futtatásához. Előfordulhat például, hogy alacsonyabb számú KtgE betöltéssel, kisebb számú paraméterrel lehet futtatni. Ha ez indokolt, akkor az is előfordulhat, hogy átfogóbban, nagyobb számú CV-bevezetéssel vagy több paraméter-készlettel is futhatnak.
+
+További információ: [automatizált modellezési és jelentéskészítési segédprogram a TDSP Adattudományi segédprogramokban](https://github.com/Azure/Azure-TDSP-Utilities/tree/master/DataScienceUtilities/Modeling).
 
 ### <a name="model-management"></a>Modellkezelés
-Több modell készített, miután általában szüksége lesz egy rendszer a regisztrálás és a modellek kezelése. Általában szkriptek vagy az API-k és a háttérrendszer adatbázis vagy versioning kombinációját kell. Néhány lehetőség, amely a felügyeleti feladatokhoz érdemes lehet a következők:
+Több modell létrehozása után általában a modellek regisztrálásához és kezeléséhez szükséges rendszernek kell lennie. Általában parancsfájlok vagy API-k, valamint háttér-adatbázis vagy verziószámozási rendszer kombinációja szükséges. A következő felügyeleti feladatokhoz néhány lehetőség közül választhat:
 
-1. [Az Azure Machine Learning - modell felügyeleti szolgáltatás](../index.yml)
-2. [Az MIT ModelDB](https://mitdbg.github.io/modeldb/) 
-3. [SQL-kiszolgáló egy modell felügyeleti rendszer](https://blogs.technet.microsoft.com/dataplatforminsider/2016/10/17/sql-server-as-a-machine-learning-model-management-system/)
+1. [Azure Machine Learning – modell-kezelési szolgáltatás](../index.yml)
+2. [ModelDB az MIT](https://mitdbg.github.io/modeldb/) 
+3. [SQL-kiszolgáló modell-felügyeleti rendszerként](https://blogs.technet.microsoft.com/dataplatforminsider/2016/10/17/sql-server-as-a-machine-learning-model-management-system/)
 4. [Microsoft Machine Learning Server](https://docs.microsoft.com/sql/advanced-analytics/r/r-server-standalone)
 
-## 3. <a name='Deployment-3'></a>központi telepítés
+## 3. <a name='Deployment-3'></a> üzembe helyezés
 
-Éles környezet lehetővé teszi, hogy egy aktív szerepet játszanak egy üzleti modell. A telepített modell előrejelzéses használható üzleti döntéseket hozhasson.
+Az éles környezetbe állítás lehetővé teszi, hogy egy modell aktív szerepet játsszon a vállalaton belül. Az üzembe helyezett modellből származó előrejelzések üzleti döntések meghozatalára is használhatók.
 
-### <a name="production-platforms"></a>Éles rendszerek
-Nincsenek különböző módszerek és platformok modellek éles üzembe helyezhető. Az alábbiakban néhány lehetőséget:
+### <a name="production-platforms"></a>Üzemi platformok
+A modellek éles környezetben való üzembe helyezéséhez különböző megközelítések és platformok tartoznak. Íme néhány lehetőség:
 
 
-- [Modell-üzembehelyezés az Azure Machine Learning szolgáltatás](../service/how-to-deploy-and-where.md)
-- [Egy modellt az SQL-kiszolgáló telepítése](https://docs.microsoft.com/sql/advanced-analytics/tutorials/sqldev-py6-operationalize-the-model)
+- [Modell üzembe helyezése Azure Machine Learning](../service/how-to-deploy-and-where.md)
+- [Modell üzembe helyezése az SQL-Serverben](https://docs.microsoft.com/sql/advanced-analytics/tutorials/sqldev-py6-operationalize-the-model)
 - [Microsoft Machine Learning Server](https://docs.microsoft.com/sql/advanced-analytics/r/r-server-standalone)
 
 > [!NOTE]
-> Telepítés előtt egy rendelkezik elég alacsony-e az éles környezetben használt modell pontozása késését biztosítja.
+> Az üzembe helyezés előtt az egyiknek biztosítania kell, hogy a modell pontozásának késése elég alacsony legyen az éles környezetben való használathoz.
 >
 >
 
-További példák érhetők el, amelyek bemutatják, a folyamat összes lépését forgatókönyvek **meghatározott forgatókönyvek**. Felsorolt, és a miniatűr leírásokat tartalmazó társított a [példa forgatókönyvek](walkthroughs.md) cikk. Ezek bemutatják, hogyan kombinálhatja a felhőbeli, helyszíni eszközöket és szolgáltatásokat, munkafolyamat vagy folyamat, intelligens alkalmazások létrehozására.
+További példákat talál az útmutatókban, amelyek a folyamat összes lépését mutatják be **adott forgatókönyvek**esetén. Ezek a példákban láthatók és a miniatűr leírásokkal vannak összekapcsolva a [példában szereplő forgatókönyvek](walkthroughs.md) című cikkben. Bemutatják, hogyan kombinálhatók a felhő, a helyszíni eszközök és a szolgáltatások egy munkafolyamatban vagy folyamatban egy intelligens alkalmazás létrehozásához.
 
 > [!NOTE]
-> Az Azure Machine Learning Studio használatával olyan központi telepítésre, [egy Azure Machine Learning webszolgáltatás üzembe helyezése](../studio/publish-a-machine-learning-web-service.md).
+> A Azure Machine Learning Studio használatával történő üzembe helyezéssel kapcsolatban lásd: [Azure Machine learning webszolgáltatás üzembe helyezése](../studio/publish-a-machine-learning-web-service.md).
 >
 >
 
-### <a name="ab-testing"></a>A / B tesztelés
-Ha több modell éles környezetben, végrehajtásához hasznos lehet [A / B tesztelés](https://en.wikipedia.org/wiki/A/B_testing) a modellek teljesítményének összehasonlítását. 
+### <a name="ab-testing"></a>A/B tesztelés
+Ha több modell van éles környezetben, hasznos lehet a [/B teszt](https://en.wikipedia.org/wiki/A/B_testing) végrehajtása a modellek teljesítményének összehasonlításához. 
 
  
 ## <a name="next-steps"></a>További lépések
 
-[Adatelemzési projektek előrehaladását úgy követheti nyomon](track-progress.md) bemutatja, hogyan értenie az adatokhoz is előrehaladását úgy követheti nyomon az adatelemzési projektjéhez.
+Az adatelemzési [projektek előrehaladásának követésével](track-progress.md) megtudhatja, hogy az adattudós hogyan követheti nyomon az adatelemzési projekt állapotát.
 
-[Művelet és a CI/CD modell](ci-cd-flask.md) bemutatja, hogyan végezhető a CI/CD a fejlett modellek.
+A [Model művelet és a CI/CD](ci-cd-flask.md) azt mutatja be, hogyan hajtható végre a CI/CD a kifejlesztett modellekkel.
 
 

@@ -1,6 +1,6 @@
 ---
-title: A gépek és az alkalmazások az Azure Security Center védelme |} A Microsoft Docs
-description: Ez a dokumentum a Security Center javaslatait, segítő tárgyalja a virtuális gépek és számítógépek és a webalkalmazások és App Service Environment-környezetek védelmét.
+title: A gépek és alkalmazások védelme Azure Security Centerban | Microsoft Docs
+description: Ez a dokumentum olyan Security Center javaslatokat tartalmaz, amelyek segítenek a virtuális gépek és számítógépek, valamint a webalkalmazások és a App Service környezetek védelmében.
 services: security-center
 documentationcenter: na
 author: memildin
@@ -13,27 +13,27 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/20/2019
 ms.author: memildin
-ms.openlocfilehash: a3bce8d6312dd09a7f10f8d5d2eaebd4e312d95d
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 2317d0206e3fc4a342606d17c172ac42cbe82870
+ms.sourcegitcommit: 3f8017692169bd75483eefa96c225d45cd497f06
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71200785"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73520678"
 ---
-# <a name="protecting-your-machines-and-applications-in-azure-security-center"></a>A gépek és az alkalmazások az Azure Security Center védelme
-Azure Security Center elemzi az Azure-erőforrások, a nem Azure-kiszolgálók és a virtuális gépek biztonsági állapotát. Ha a Security Center azonosítja a potenciális biztonsági réseket, javaslatok, amelyek végigvezetik a szükséges vezérlők konfigurálásának folyamatán hoz létre. Javaslatok alkalmazása az Azure-erőforrástípus: virtuális gépek (VM) és a számítógépek, alkalmazások, hálózati, SQL, és az identitás- és hozzáférés.
+# <a name="protecting-your-machines-and-applications-in-azure-security-center"></a>A gépek és alkalmazások védelme Azure Security Center
+Azure Security Center elemzi az Azure-erőforrások, a nem Azure-kiszolgálók és a virtuális gépek biztonsági állapotát. Ha a Security Center felismeri a lehetséges biztonsági réseket, javaslatokat hoz létre, amelyek végigvezetik a szükséges vezérlők konfigurálásának folyamatán. A javaslatok az Azure-erőforrásokra vonatkoznak: Virtual Machines (VM) és Computers, Applications, Networking, SQL, és Identity and Access.
 
-Ez a cikk foglalkozik, javaslatok, amelyek a alkalmazni a gépek és alkalmazások.
+Ez a cikk a gépekre és alkalmazásokra vonatkozó ajánlásokat tárgyalja.
 
 ## <a name="monitoring-security-health"></a>A biztonsági állapot figyelése
-Az erőforrások biztonsági állapotát a figyelemmel kísérheti a **Security Center – áttekintés** irányítópultot. A **erőforrások** szakaszban azonosított problémák számát és a biztonsági állapot egyes erőforrástípusok biztosít.
+A **Security Center – áttekintés** irányítópulton nyomon követheti az erőforrások biztonsági állapotát. Az **erőforrások** szakasz tartalmazza az azonosított problémák számát és az egyes erőforrástípusok biztonsági állapotát.
 
-Megtekintheti az összes hibáit kiválasztásával **javaslatok**. Javaslatok alkalmazásával kapcsolatos további információkért lásd: [biztonsági javaslatok alkalmazása az Azure Security Center](security-center-recommendations.md).
+Az összes probléma listáját megtekintheti a **javaslatok**lehetőség kiválasztásával. A javaslatok alkalmazásával kapcsolatos további információkért lásd: [biztonsági javaslatok megvalósítása Azure Security Centerban](security-center-recommendations.md).
 
-Szolgáltatási javaslatok teljes listáját a számítási műveletek és az alkalmazás létrehozásáról: [javaslatok](security-center-virtual-machine-protection.md#compute-and-app-recommendations).
+A számítási és az App Services-javaslatok teljes listáját a [javaslatok](security-center-virtual-machine-protection.md#compute-and-app-recs)című részben tekintheti meg.
 
-A folytatáshoz válasszon ki **számítás és alkalmazások** alatt **erőforrások** vagy a Security Center főmenüjébe.
-![Security Center irányítópultja](./media/security-center-virtual-machine-recommendations/overview.png)
+A folytatáshoz válassza a **számítási & alkalmazások** az **erőforrások** vagy a Security Center főmenü lehetőséget.
+![Security Center irányítópult](./media/security-center-virtual-machine-recommendations/overview.png)
 
 ## <a name="monitor-compute-and-app-services"></a>A számítási és az App Services figyelése
 A **számítási & alkalmazások**területen a következő lapok találhatók:
@@ -42,7 +42,7 @@ A **számítási & alkalmazások**területen a következő lapok találhatók:
 - **Virtuális gépek és számítógépek**: a virtuális gépek és számítógépek listája, valamint mindegyikre az aktuális biztonsági állapota.
 - **Felhőszolgáltatások**: a Security Center által figyelt összes webes és feldolgozói szerepkör listája.
 - **App Services**: az App Service-környezetek és az egyes alkalmazások aktuális biztonsági állapotának listája.
-- **Tárolók (előzetes verzió)** : a IaaS Linux rendszerű gépeken tárolt tárolók listája, valamint a Docker-konfigurációk biztonsági értékelése.
+- **Tárolók**: a tárolók listája és a konfigurációjuk biztonsági értékelése.
 - **Számítási erőforrások (előzetes verzió)** : a számítási erőforrások, például a Service Fabric-fürtök és az Event hubok javaslatainak listája.
 
 A folytatáshoz válassza a **számítási & alkalmazások** az **erőforrás biztonsági higiéniája**alatt lehetőséget.
@@ -51,63 +51,63 @@ A folytatáshoz válassza a **számítási & alkalmazások** az **erőforrás bi
 
 Minden egyes lap esetében több szakaszt hozhat létre, és az egyes szakaszokban elérhető lehetőségek kiválasztásával további részleteket tudhat meg az adott probléma megoldásához szükséges lépésekről.
 
-### Nem monitorozott virtuális gépek és számítógépek <a name="unmonitored-vms-and-computers"></a>
-A virtuális gép vagy a számítógép nem figyelt a Security Center által, ha a gép nem fut a Microsoft Monitoring Agent bővítményt. Előfordulhat, hogy egy gépen már telepítve van egy helyi ügynök, például a OMS Direct ügynök vagy a System Center Operations Manager ügynök. Ilyen ügynökökkel rendelkező gépek eszközként van azonosítva nem figyelt, mert ezek az ügynökök teljes mértékben nem támogatottak a Security Centerben. A Security Center összes funkciójának legteljesebb kihasználása érdekében szükség van a Microsoft Monitoring Agent bővítményre.
+### Nem figyelt virtuális gépek és számítógépek<a name="unmonitored-vms-and-computers"></a>
+Security Center ha a gép nem a Microsoft monitoring Agent bővítményt futtatja, a rendszer nem figyeli a virtuális gépet vagy számítógépet. Előfordulhat, hogy egy gépen már telepítve van egy helyi ügynök, például a OMS Direct ügynök vagy a System Center Operations Manager ügynök. Az ezekkel az ügynökökkel rendelkező gépeket a rendszer nem figyeli, mivel ezek az ügynökök nem teljes mértékben támogatottak Security Centerban. A Security Center összes funkciójának legteljesebb kihasználása érdekében szükség van a Microsoft Monitoring Agent bővítményre.
 
-A bővítményt a nem monitorozott virtuális gép vagy a számítógépen a már telepített helyi ügynök mellett is telepítheti. A két ügynök konfigurációja legyen megegyező, és ugyanahhoz a munkaterülethez csatlakoztassa őket. Ez lehetővé teszi, hogy a Security Center interakcióba léphessen a Microsoft Monitoring Agent bővítménnyel, és adatokat gyűjtsön. [A virtuálisgép-bővítmény engedélyezésével](../azure-monitor/learn/quick-collect-azurevm.md) foglalkozó témakörben találja a Microsoft Monitoring Agent bővítmény telepítésével kapcsolatos utasításokat.
+A bővítményt a már telepített helyi ügynökön kívül is telepítheti a nem figyelt virtuális gépre vagy a számítógépre. A két ügynök konfigurációja legyen megegyező, és ugyanahhoz a munkaterülethez csatlakoztassa őket. Ez lehetővé teszi, hogy a Security Center interakcióba léphessen a Microsoft Monitoring Agent bővítménnyel, és adatokat gyűjtsön. [A virtuálisgép-bővítmény engedélyezésével](../azure-monitor/learn/quick-collect-azurevm.md) foglalkozó témakörben találja a Microsoft Monitoring Agent bővítmény telepítésével kapcsolatos utasításokat.
 
 [A Monitoring Agent állapotproblémái](security-center-troubleshooting-guide.md#mon-agent) szakaszban többet is megtudhat arról, hogy a Security Center miért nem tudja sikeresen monitorozni az automatikus üzembe helyezésre inicializált virtuális gépeket és számítógépeket.
 
-### <a name="recommendations"></a>Javaslatok
-Ebben a szakaszban rendelkezik minden virtuális gép és számítógép, webes és feldolgozói szerepkörök, az Azure App Service Web Apps és az Azure App Service-környezet, amely a Security Center figyeli vonatkozó javaslatok szerepelnek. Az első oszlop a javaslatokat sorolja fel. A második oszlop az adott javaslat által érintett erőforrások teljes számát jeleníti meg. A harmadik oszlop a probléma súlyosságát mutatja.
+### <a name="recommendations"></a>Ajánlatok
+Ez a szakasz ajánlásokat tartalmaz az egyes virtuális gépekre és számítógépekre, a webes és feldolgozói szerepkörökre, a Azure App Service Web Appsra és a Security Center figyelők Azure App Service Environment. Az első oszlop a javaslatokat sorolja fel. A második oszlop az adott javaslat által érintett erőforrások teljes számát jeleníti meg. A harmadik oszlop a probléma súlyosságát mutatja.
 
-Minden egyes javaslatokra műveleteket hajthat végre kijelölése után. Ha például a **hiányzó rendszerfrissítések**lehetőséget választja, akkor a virtuális gépek és a hiányzó javításokat tartalmazó számítógépek száma, valamint a hiányzó frissítés súlyossága jelenik meg.
+Mindegyik javaslat olyan műveleteket tartalmaz, amelyeket a kiválasztása után elvégezhet. Ha például a **hiányzó rendszerfrissítések**lehetőséget választja, akkor a virtuális gépek és a hiányzó javításokat tartalmazó számítógépek száma, valamint a hiányzó frissítés súlyossága jelenik meg.
 
-**Rendszerfrissítések alkalmazása** rendelkezik grafikus formátumban, a Windows, és egy Linux-kritikus frissítések összegzése. A második részben az alábbi információkat tartalmazó táblázat található:
+A **rendszerfrissítések alkalmazásával** összefoglalja a kritikus frissítéseket egy gráf formátumban, egy a Windowshoz, egy pedig a Linux rendszerhez. A második részben az alábbi információkat tartalmazó táblázat található:
 
-- **NÉV**: A hiányzó frissítés neve.
-- **Virtuális gépek & számítógépek**: A frissítésből hiányzó virtuális gépek és számítógépek száma összesen.
-- **FRISSÍTÉS SÚLYOSSÁGA**: Az adott javaslat súlyosságát írja le:
+- **NÉV** – A hiányzó frissítés neve.
+- **Nem. Virtuális gépek & számítógépek**: azon virtuális gépek és számítógépek teljes száma, amelyek esetében ez a frissítés hiányzik.
+- **Frissítés súlyossága**: az adott javaslat súlyosságát írja le:
 
-    - **Kritikus**: A biztonsági rés egy értelmes erőforrással (alkalmazás, virtuális gép vagy hálózati biztonsági csoport) van, és figyelmet igényel.
-    - **Fontos**: A folyamat elvégzéséhez vagy a biztonsági rések megszüntetéséhez nem kritikus vagy további lépések szükségesek.
-    - **Mérsékelt**: A biztonsági rést meg kell oldani, de nincs szükség azonnali beavatkozásra. (Az alacsony súlyosságú javaslatok alapértelmezés szerint nem láthatók, de a szűrővel bekapcsolhatja megjelenítésüket.)
+    - **Kritikus**: a biztonsági rés egy értelmes erőforrással (alkalmazás, virtuális gép vagy hálózati biztonsági csoport) van, és figyelmet igényel.
+    - **Fontos**: nem kritikus vagy további lépések szükségesek egy folyamat végrehajtásához vagy egy biztonsági rés megszüntetéséhez.
+    - **Mérsékelt**: A biztonsági rést orvosolni kell, de nincs szükség azonnali beavatkozásra. (Az alacsony súlyosságú javaslatok alapértelmezés szerint nem láthatók, de a szűrővel bekapcsolhatja megjelenítésüket.)
 
 
-- **ÁLLAPOT**: A javaslat jelenlegi állapota:
+- **STATE** (Állapot): a javaslat aktuális állapota:
 
-    - **Megnyitás**: A javaslat még nem lett megcímezve.
-    - **Folyamatban**: A javaslatot jelenleg az adott erőforrásokra alkalmazza a rendszer, és nincs szükség beavatkozásra.
-    - **Megoldott**: Az ajánlás már befejeződött. (A probléma megoldása után a bejegyzés halványan jelenik meg.)
+    - **Open** (Nyitott): a javaslattal egyelőre még nem foglalkoztak.
+    - **In Progress** (Folyamatban): folyamatban van a javaslat alkalmazása az érintett erőforrásokra, további lépésekre nincs szükség.
+    - **Resolved** (Megoldott): a javaslat alkalmazása megtörtént. (A probléma megoldása után a bejegyzés halványan jelenik meg.)
 
 A javaslat részleteinek megtekintéséhez kattintson a hiányzó frissítés nevére a listában.
 
 
 > [!NOTE]
-> Itt a biztonsági javaslatok láthatók, ugyanazok, mint a a **javaslatok** csempére. A javaslatok megoldásával kapcsolatos további információkért lásd: [biztonsági javaslatok megvalósítása Azure Security Centerban](security-center-recommendations.md).
+> A biztonsági javaslatok itt ugyanazok, mint a **javaslatok** csempén. A javaslatok megoldásával kapcsolatos további információkért lásd: [biztonsági javaslatok megvalósítása Azure Security Centerban](security-center-recommendations.md).
 >
 >
 
 ### <a name="vms-and-computers"></a>Virtuális gépek és számítógépek
-A virtuális gépek és számítógépek szakasz áttekintheti az összes virtuális gép és számítógép ajánlások. Minden oszlop egy javaslatcsoportot képvisel.
+A virtuális gépek és számítógépek szakasz áttekintést nyújt az összes virtuálisgép-és számítógép-javaslatról. Minden oszlop egy javaslatcsoportot képvisel.
 
 ![Javaslatok virtuális gépekhez és számítógépekhez](./media/security-center-virtual-machine-recommendations/vm-computers.png)
 
-A listában szereplő ikon négy típusa van:
+A listában négyféle ikon látható:
 
 ![Nem Azure-beli számítógép](./media/security-center-virtual-machine-recommendations/security-center-monitoring-icon1.png) Nem Azure-alapú számítógép.
 
-![Az Azure Resource Manager-alapú](./media/security-center-virtual-machine-recommendations/security-center-monitoring-icon2.png) Az Azure Resource Manager-alapú.
+![Azure Resource Manager virtuális gép](./media/security-center-virtual-machine-recommendations/security-center-monitoring-icon2.png) Azure Resource Manager virtuális gép.
 
-![Az Azure klasszikus virtuális gép](./media/security-center-virtual-machine-recommendations/security-center-monitoring-icon3.png) Az Azure klasszikus virtuális gép.
+![Klasszikus Azure-beli virtuális gép](./media/security-center-virtual-machine-recommendations/security-center-monitoring-icon3.png) Klasszikus Azure-beli virtuális gép.
 
 
-![Virtuális gépek azonosítani a munkaterületről](./media/security-center-virtual-machine-recommendations/security-center-monitoring-icon4.png) Azok a virtuális gépek, amelyek csak a megtekintett előfizetés részét képező munkaterület alapján azonosít a rendszer. Ebbe beletartoznak az előfizetésben szereplő munkaterületre vonatkozó más előfizetések virtuális gépei, valamint Operations Manager közvetlen ügynökkel telepített virtuális gépek és nem rendelkeznek erőforrás-AZONOSÍTÓval.
+![A munkaterületről azonosított virtuális gépek](./media/security-center-virtual-machine-recommendations/security-center-monitoring-icon4.png) Azok a virtuális gépek, amelyek csak a megtekintett előfizetés részét képező munkaterület alapján azonosít a rendszer. Ebbe beletartoznak az előfizetésben szereplő munkaterületre vonatkozó más előfizetések virtuális gépei, valamint Operations Manager közvetlen ügynökkel telepített virtuális gépek és nem rendelkeznek erőforrás-AZONOSÍTÓval.
 
-Az egyes javaslatok alatt megjelenő ikonok segít gyorsan azonosítani a virtuális gép és számítógép hagyni a figyelmet, és a javaslat típusát. A szűrőket használhatja **Erőforrás típusa** és **Súlyosság**szerint is a listában való kereséshez.
+Az egyes javaslatok alatt megjelenő ikon segíti a virtuális gép és a beavatkozást igénylő számítógép gyors azonosítását, valamint a javaslat típusát. A szűrőket használhatja **Erőforrás típusa** és **Súlyosság**szerint is a listában való kereséshez.
 
 Az egyes virtuális gépek biztonsági javaslatainak részletezéséhez kattintson a virtuális gépre.
-Itt láthatja a biztonsági adatok a virtuális gép vagy a számítógépen. Alul a javasolt művelet és az egyes problémák súlyossága látható.
+Itt láthatja a virtuális gép vagy a számítógép biztonsági részleteit. Alul a javasolt művelet és az egyes problémák súlyossága látható.
 ![Felhőszolgáltatások](./media/security-center-virtual-machine-recommendations/recommendation-list.png)
 
 ### <a name="cloud-services"></a>Felhőszolgáltatások
@@ -115,7 +115,7 @@ A Cloud Services esetében egy javaslat jön létre, ha az operációs rendszer 
 
 ![Felhőszolgáltatások](./media/security-center-virtual-machine-recommendations/security-center-monitoring-fig1-new006-2017.png)
 
-Egy forgatókönyv, amelyben egy javaslat (amely nem áll fenn az előző példában) meg kell kövesse a lépéseket az egyes javaslatokra kattintva frissítheti az operációs rendszer verzióját. Ha egy frissítés elérhetővé válik, a rendszer riasztást jelenít meg (a probléma súlyosságától függően vörös vagy narancssárga riasztást). Ha ezt a riasztást kijelöli a Webrole1 webes (a Windows Servert az IIS-ben automatikusan üzembe helyezett webalkalmazással futtatja) vagy a WorkerRole1 (a Windows Servert az IIS-ben automatikusan telepített webalkalmazással futtatja), akkor a javaslat további részleteket tartalmaz.
+Olyan forgatókönyv esetén, ahol javaslata van (amely nem az előző példában látható), az ajánlásban szereplő lépéseket kell követnie az operációs rendszer verziójának frissítéséhez. Ha egy frissítés elérhetővé válik, a rendszer riasztást jelenít meg (a probléma súlyosságától függően vörös vagy narancssárga riasztást). Ha ezt a riasztást kijelöli a Webrole1 webes (a Windows Servert az IIS-ben automatikusan üzembe helyezett webalkalmazással futtatja) vagy a WorkerRole1 (a Windows Servert az IIS-ben automatikusan telepített webalkalmazással futtatja), akkor a javaslat további részleteket tartalmaz.
 
 Ha előírásszerűbb magyarázatot kíván megtekinteni erről a javaslatról, a **DESCRIPTION** (LEÍRÁS) oszlopban kattintson az **Update OS version** (Operációs rendszer verziójának frissítése) elemre.
 
@@ -126,40 +126,40 @@ Ha előírásszerűbb magyarázatot kíván megtekinteni erről a javaslatról, 
 ### <a name="app-services"></a>App Services
 A App Service információk megtekintéséhez engedélyeznie kell a App Service az előfizetésében. A szolgáltatás engedélyezésével kapcsolatos útmutatásért lásd: [App Service Azure Security Centerekkel való védelemmel](security-center-app-services.md).
 [!NOTE]
-> Monitoring App Service-ben van, és csak a Standard szintű Security Centerben elérhető előzetes verzióban érhető el.
+> A figyelési App Service előzetes verzióban érhető el, és csak a Security Center Standard szintjére használható.
 
 
-A **App services**, az App service Environment-környezetek listáját látja, és a Security Center kockázatértékelés alapján állapotösszegzése elvégzett.
+Az **app Services**alatt megtalálhatja az App Service-környezetek listáját, valamint az állapot összegzését az értékelés Security Center elvégzése alapján.
 
 ![App Services](./media/security-center-virtual-machine-recommendations/app-services.png)
 
-A listában szereplő ikon három típusa van:
+A listában háromféle ikon látható:
 
-![App services-környezetben](./media/security-center-virtual-machine-recommendations/ase.png) App services környezet.
+![App Services-környezet](./media/security-center-virtual-machine-recommendations/ase.png) App Services-környezet.
 
-![Webalkalmazás](./media/security-center-virtual-machine-recommendations/web-app.png) Webes alkalmazás.
+![Webalkalmazás](./media/security-center-virtual-machine-recommendations/web-app.png) Webalkalmazás.
 
-![Függvény-alkalmazás](./media/security-center-virtual-machine-recommendations/function-app.png) Függvény-alkalmazás.
+![Function alkalmazás](./media/security-center-virtual-machine-recommendations/function-app.png) Function alkalmazás.
 
-1. Válassza ki a webalkalmazást. Összegzési nézetet megnyílik a három lappal:
+1. Válasszon ki egy webalkalmazást. Megnyílik egy összefoglaló nézet három lapból:
 
-   - **Javaslatok**: nem sikerült, a Security Center által végzett alapján.
-   - **Sikeres értékelések**: megfelelt a Security Center által végzett listája.
-   - **Értékelések nem érhetők el**: értékelések, amelyek nem futhat, mert hiba történt, vagy az ajánlás listája nem releváns, az adott App Service
+   - **Javaslatok**: a sikertelen Security Center által végrehajtott értékelések alapján.
+   - **Átadott értékelések**: az átadott Security Center által elvégzett értékelések listája.
+   - Nem **elérhető értékelések**: azon értékelések listája, amelyeket egy hiba miatt nem sikerült futtatni, vagy ha a javaslat nem vonatkozik az adott app Service-re
 
-   A **javaslatok** minden javaslat súlyosságát és a kiválasztott webes alkalmazás a javaslatok listája.
+   A **javaslatok** területen a kiválasztott webalkalmazásra és az egyes javaslatok súlyosságára vonatkozó javaslatok szerepelnek.
 
    ![Javaslatok App Services](./media/security-center-virtual-machine-recommendations/app-services-rec.png)
 
 2. Válasszon egy javaslatot a javaslat leírásának megtekintéséhez, valamint a nem megfelelő állapotú erőforrások, az egészséges erőforrások és a nem ellenőrzött erőforrások listájához.
 
-   - Az **átadott értékelések** oszlopban az átadott értékelések listája szerepel.  Ezek az értékelések súlyosságát, mindig zöld.
+   - Az **átadott értékelések** oszlopban az átadott értékelések listája szerepel.  Az értékelések súlyossága mindig zöld.
 
-   - Válassza ki a átadott értékelés listájából az értékelés leírását, a nem megfelelő állapotú és kifogástalan állapotú erőforrások listájának és a nem vizsgált erőforrások listáját. Nem megfelelő állapotú erőforrások lapja, de a lista mindig üres lesz, mivel az értékelés átadott.
+   - Válasszon ki egy átadott értékelést a listából az értékelés leírásához, a nem megfelelő állapotú és kifogástalan erőforrások listáját, valamint a nem ellenőrzött erőforrások listáját. A nem megfelelő állapotú erőforrásokhoz tartozó lap szerepel, de ez a lista mindig üres, mert az értékelés sikeres volt.
 
      ![Szervizelés App Service](./media/security-center-virtual-machine-recommendations/app-service-remediation.png)
 
-## <a name="virtual-machine-scale-sets"></a>virtuálisgép-méretezési csoportok
+## <a name="virtual-machine-scale-sets"></a>Virtuálisgép-méretezési csoportok
 Security Center automatikusan felfedi, hogy vannak-e méretezési készletek, és javasolja, hogy telepítse a Microsoft monitoring agentet ezekre a méretezési csoportokra. 
 
 A Microsoft monitoring Agent telepítése: 
@@ -170,7 +170,7 @@ A Microsoft monitoring Agent telepítése:
    ![Az MMS telepítése](./media/security-center-virtual-machine-recommendations/install-mms.png)
 
 Új méretezési csoportok beállítása a Microsoft monitoring Agent Automatikus telepítéséhez:
-1. Nyissa meg Azure Policy éskattintson a definíciók elemre.
+1. Nyissa meg Azure Policy és kattintson a **definíciók**elemre.
 2. Keresse meg a házirendet a **Windows rendszerű virtuálisgép-méretezési csoportok log Analytics ügynökének üzembe helyezéséhez** , és kattintson rá.
 3. Kattintson a **Hozzárendelés** gombra.
 4. Állítsa be a **hatókör** és **log Analytics munkaterületet** , és kattintson a **hozzárendelés**elemre.
@@ -178,55 +178,55 @@ A Microsoft monitoring Agent telepítése:
 Ha az összes meglévő méretezési csoportot be szeretné állítani a Microsoft monitoring Agent telepítésére, akkor a Azure Policyban lépjen a **szervizelés** elemre, és alkalmazza a meglévő házirendet a meglévő méretezési csoportokra.
 
 
-## <a name="compute-and-app-recommendations"></a>Számítási és az alkalmazás vonatkozó javaslatok
+## Számítási és alkalmazási javaslatok<a name="compute-and-app-recs"></a>
 |Erőforrás típusa|Biztonsági pontszám|Ajánlás|Leírás|
 |----|----|----|----|
-|App Service-ben|20|Webes alkalmazás csak elérhetőnek kell lennie HTTPS-kapcsolaton keresztül|Csak HTTPS-kapcsolaton keresztül korlátozza a webes alkalmazások elérésére.|
-|App Service-ben|20|Alkalmazás függvény csak elérhetőnek kell lennie HTTPS-kapcsolaton keresztül|Csak HTTPS-kapcsolaton keresztül korlátozza a Függvényalkalmazások elérésére.|
-|App Service-ben|5|A App Services diagnosztikai naplóit engedélyezni kell|Naplók engedélyezése és legfeljebb egy évig megőrizheti azokat. Ez lehetővé teszi, hogy a tevékenység nyomot hagyjanak maguk után a támadások hatékonyabb kivizsgálásához hozza létre újra, amikor egy biztonsági incidens következik be, vagy a hálózat biztonsága sérül. |
-|App Service-ben|10|Távoli hibakeresést ki kell kapcsolni a webalkalmazáshoz|Kapcsolja ki a hibakeresési webes alkalmazásokhoz, ha már nincs rá szüksége. Távoli hibakeresés használatához meg kell nyitni a Függvényalkalmazás bejövő portokat.|
-|App Service-ben|10|Távoli hibakeresést ki kell kapcsolni a Függvényalkalmazást|Ha már nincs szüksége rá a függvényalkalmazás hibakeresés kikapcsolását. Távoli hibakeresés használatához meg kell nyitni a Függvényalkalmazás bejövő portokat.|
-|App Service-ben|10|Ne engedélyezze az összes ("*") erőforrások hozzáférhetnek az alkalmazáshoz| Ne engedélyezze a WEBSITE_LOAD_CERTIFICATES paraméter beállítása "". A paraméter beállítása "azt jelenti, hogy minden tanúsítvány töltődnek be a webes alkalmazások személyes tanúsítványtárolójába. A minimális jogosultság elvével való visszaéléshez ez is vezethet, mert nem valószínű, hogy a hely összes tanúsítvány futásidőben hozzá kell férnie.|
-|App Service-ben|20|A CORS nem teszi lehetővé minden erőforrás eléréséhez a webes alkalmazások|Együttműködhet a webalkalmazás csak a szükséges tartományok engedélyezése. Közötti eredetű erőforrások megosztása (CORS) kell nem teszi lehetővé minden tartománynak a webalkalmazáshoz való hozzáférés.|
-|App Service-ben|20|A CORS nem teszi lehetővé a Függvényalkalmazás eléréséhez minden erőforrás| Lehetővé teszi a funkció alkalmazását interakcióba csak a szükséges tartományok. Közötti eredetű erőforrások megosztása (CORS) kell nem teszi lehetővé minden tartománynak a függvény-alkalmazás elérésére.|
-|Számítási erőforrások (kötegelt)|1|A metrika riasztási szabályait a Batch-fiókokon kell konfigurálni|Metrikaalapú riasztási szabályok konfigurálása a Batch-fiók és a készlet törlése kész események és a készlet törlése Start események típusú metrikák engedélyezése|
-|Számítási erőforrások (a service fabric)|10|Service Fabric-fürtök esetében csak Azure Active Directoryt kell használnia az ügyfél-hitelesítéshez|Hajtsa végre a Service Fabric ügyfél-hitelesítés csak az Azure Active Directory segítségével.|
-|Számítási erőforrások (automation-fiók)|5|Az Automation-fiók változóit titkosítani kell|Automation-fiók változó adategységek titkosítást bizalmas adatok tárolásakor.|
-|Számítási erőforrások (Keresés)|5|Diagnosztikai naplók engedélyezésének naplózása a keresési szolgáltatásokhoz|Naplók engedélyezése és legfeljebb egy évig megőrizheti azokat. Ez lehetővé teszi, hogy a tevékenység nyomot hagyjanak maguk után a támadások hatékonyabb kivizsgálásához hozza létre újra, amikor egy biztonsági incidens következik be, vagy a hálózat biztonsága sérül. |
-|Számítási erőforrások (a service bus)|5|A Service Bus diagnosztikai naplóit engedélyezni kell|Naplók engedélyezése és legfeljebb egy évig megőrizheti azokat. Ez lehetővé teszi, hogy a tevékenység nyomot hagyjanak maguk után a támadások hatékonyabb kivizsgálásához hozza létre újra, amikor egy biztonsági incidens következik be, vagy a hálózat biztonsága sérül. |
-|Számítási erőforrások (stream analytics)|5|A Azure Stream Analytics diagnosztikai naplóit engedélyezni kell|Naplók engedélyezése és legfeljebb egy évig megőrizheti azokat. Ez lehetővé teszi, hogy a tevékenység nyomot hagyjanak maguk után a támadások hatékonyabb kivizsgálásához hozza létre újra, amikor egy biztonsági incidens következik be, vagy a hálózat biztonsága sérül. |
-|Számítási erőforrások (kötegelt)|5|A Batch-fiókok a diagnosztikai naplók engedélyezése|Naplók engedélyezése és legfeljebb egy évig megőrizheti azokat. Ez lehetővé teszi, hogy a tevékenység nyomot hagyjanak maguk után a támadások hatékonyabb kivizsgálásához hozza létre újra, amikor egy biztonsági incidens következik be, vagy a hálózat biztonsága sérül. |
-|Számítási erőforrások (eseményközpontból)|5|Az Event hub diagnosztikai naplóit engedélyezni kell|Naplók engedélyezése és legfeljebb egy évig megőrizheti azokat. Ez lehetővé teszi, hogy a tevékenység nyomot hagyjanak maguk után a támadások hatékonyabb kivizsgálásához hozza létre újra, amikor egy biztonsági incidens következik be, vagy a hálózat biztonsága sérül. |
-|Számítási erőforrások (a logic apps)|5|A Logic Apps-diagnosztikai naplók engedélyezése|Naplók engedélyezése és legfeljebb egy évig megőrizheti azokat. Ez lehetővé teszi, hogy a tevékenység nyomot hagyjanak maguk után a támadások hatékonyabb kivizsgálásához hozza létre újra, amikor egy biztonsági incidens következik be, vagy a hálózat biztonsága sérül. |
-|Számítási erőforrások (a service fabric)|15|A Service Fabric EncryptAndSign a ClusterProtectionLevel tulajdonsága|Service Fabric egy elsődleges fürttanúsítvány csomópontok közötti kommunikációt három szintje (nincs, bejelentkezési és EncryptAndSign) védelmet biztosít.  Biztosíthatja, hogy a csomópontok közötti üzenetek titkosítva és digitálisan aláírt védelmi szintjének beállítása. |
-|Számítási erőforrások (a service bus)|1|A Service Bus-névtér RootManageSharedAccessKey kivételével minden engedélyezési szabályok törlése |Service Bus-ügyfél ne használjon egy névtér szintű hozzáférési szabályzatot, amely valamennyi üzenetsorok és témakörök a névtérben hozzáférést biztosít. A legalacsonyabb jogosultsági szintű biztonsági modellel való összehangoláshoz hozzáférési házirendeket kell létrehoznia az entitások szintjén a várólistákhoz és a témakörökhöz, hogy csak az adott entitáshoz lehessen hozzáférést biztosítani.|
-|Számítási erőforrások (eseményközpontból)|1|A RootManageSharedAccessKey kivételével az összes engedélyezési szabályt el kell távolítani az Event hub-névtérből|Event Hub-ügyfelek ne használjon egy névtér szintű hozzáférési szabályzatot, amely valamennyi üzenetsorok és témakörök a névtérben hozzáférést biztosít. A legalacsonyabb jogosultsági szintű biztonsági modellel való összehangoláshoz hozzáférési házirendeket kell létrehoznia az entitások szintjén a várólistákhoz és a témakörökhöz, hogy csak az adott entitáshoz lehessen hozzáférést biztosítani.|
-|Számítási erőforrások (eseményközpontból)|5|Az Event hub-entitás engedélyezési szabályait definiálni kell|Azoknak az engedélyezési szabályok alacsonyabb szintű hozzáférést biztosítani az Event Hubs entitáson naplózása.|
-|Machine|50|Figyelési ügynök telepítése a gépeken|A Monitoring agent engedélyezni az adatgyűjtést, a frissítések vizsgálata, alapkonfiguráció-keresés és az endpoint protection az összes olyan számítógépen telepíti.|
-|Gép|50|Az Automatikus kiépítés és az előfizetésekre vonatkozó adatok gyűjtésének engedélyezése |Automatikus üzembe helyezés és a gépek előfizetéseiben engedélyezni az adatgyűjtést, a frissítések vizsgálata, alapkonfiguráció-keresés és az endpoint protection az összes olyan számítógépen, hozzáadva az előfizetésekhez az adatgyűjtés engedélyezése.|
-|Gép|40|A gépek figyelőügynök-állapotproblémáinak megoldása|A védelemhez a Security Center teljes monitorozási ügynök problémák megoldásához a gépeken a hibaelhárítási útmutató utasításait követve| 
-|Gép|40|A gépek Endpoint Protection-állapotproblémáinak megoldása|A Security Center teljes védelem, figyelési ügynök problémák megoldásához a gépeken a hibaelhárítási útmutató utasításait követve.|
-|Gép|40|Hiányzó ellenőrzési adatok hibaelhárítása a gépeken|Hárítsa el a virtuális gépek és számítógépek hiányzó vizsgálati adatok. Hiányzó vizsgálati adatok, például hiányzó biztonsági értékelések a gépek eredményezi a frissítés vizsgálata, a baseline vizsgálata, és a hiányzó endpoint protection megoldás vizsgálata.|
-|Gép|40|A számítógépekre telepíteni kell a rendszerfrissítéseket|Hiányzó rendszerbiztonsági és kritikus frissítések, a Windows és Linux rendszerű virtuális gépek és számítógépek biztonságossá tétele
-|Machine|15|Webalkalmazási tűzfal hozzáadása| Telepítse a webalkalmazási tűzfal (WAF) megoldás a webalkalmazások biztonságossá tételéhez. |
-|Machine|40|Frissítse az operációs rendszer verzióját felhőszolgáltatási szerepköreihez|Frissítse az operációs rendszer verzióját felhőszolgáltatási szerepköreihez az operációsrendszer-család elérhető legújabb verziójára.|
-|Gép|35|A gépek biztonsági beállításainak sebezhetőségeit szervizelni kell|A biztonsági rések támadások elleni védelem érdekében a gépeken biztonsági beállításokkal.|
-|Gép|35|A biztonsági rések biztonsági konfigurációban telepíti a tárolókat|Biztonsági rések eltávolítása a telepített Dockerrel rendelkező gépek biztonsági konfigurációjából a támadások elleni védekezés céljából.|
-|Gép|25|Adaptív alkalmazásvezérlés engedélyezése|Engedélyezze az alkalmazás vezérlő a vezérlőelem, mely alkalmazások futhatnak az Azure-ban található virtuális gépek. Ez segít felvértezni virtuális gépeit a kártevők ellen. A Security Center gépi tanulási az egyes virtuális gépeken futó alkalmazások elemzése, és segít a alkalmazni, lehetővé teszi a szabályok alkalmazásában. Ez a funkció egyszerűsíti konfigurálásának folyamatán, és fenntartja az alkalmazás lehetővé teszi a szabályokat.|
-|Gép|20|Endpoint Protection-megoldás telepítése a gépeken|Végpontvédelmi megoldás telepítse a virtuális gépekhez, a fenyegetések és biztonsági rések elleni védelem érdekében.|
-|Gép|20|Indítsa újra a gépeket a rendszerfrissítések alkalmazásához|Indítsa újra a gépeket a rendszerfrissítések alkalmazásához és a számítógépek biztonsági rések elleni védelméhez.|
-|Machine|15|A lemezes titkosítást a virtuális gépeken kell alkalmazni|Az Azure Disk Encryption mindkét használatával a Windows és Linux rendszerű virtuális gépek virtuálisgép-lemezek titkosítása. Az Azure Disk Encryption (ADE) használja, az iparági szabványos BitLocker funkcióját Windows és Linux operációsrendszer- és lemeztitkosítás védheti és az adatok biztonságos, és a szervezeti biztonsági és megfelelőségi igazodjunk biztosít DM-Crypt funkcióját az ügyfeleknek az Azure key vault kötelezettségvállalás. Ha a megfelelőségi és biztonsági követelményt megköveteli, hogy a teljes körű a titkosítási kulcsokat, beleértve a rövid élettartamú (helyileg csatlakoztatott ideiglenes) lemez, használja az Azure disk encryption titkosítás használata adatok titkosításához. Azt is megteheti alapértelmezés szerint felügyelt lemezek vannak titkosítása az Azure Storage Service Encryption az Azure-ban a Microsoft által felügyelt kulcsok esetén a titkosítási kulcsok használatával alapértelmezés szerint. Ha ez megfelel a megfelelőségi és biztonsági követelmények, használhatja az alapértelmezett felügyelt lemeztitkosítás az igényeknek.|
-|Machine|30|Biztonsági rések felmérését lehetővé tevő megoldás telepítése a virtuális gépeken|Biztonsági rések felmérését lehetővé tevő megoldás telepítése a virtuális gépeken|
-|Gép|15|Webalkalmazási tűzfal hozzáadása| Telepítse a webalkalmazási tűzfal (WAF) megoldás a webalkalmazások biztonságossá tételéhez. |
-|Gép|30|A biztonsági réseket a sebezhetőség-felmérési megoldásnak kell szervizelni|Amelynek a sebezhetőség-felmérési 3. fél megoldás üzembe helyezett virtuális gépek folyamatosan értékelni alatt álló alkalmazás és az operációs rendszer biztonsági rések ellen. Minden alkalommal, amikor kivédeni találhatók, ezek érhetők el további információ az ajánlás része.|
-|Machine|30|Biztonsági rések felmérését lehetővé tevő megoldás telepítése a virtuális gépeken|Biztonsági rések felmérését lehetővé tevő megoldás telepítése a virtuális gépeken|
-|Machine|1|A virtuális gépeket át kell telepíteni az új AzureRM-erőforrásokra|A virtuális gépek Azure Resource Manager használatával olyan biztonsági fejlesztéseket biztosíthat, mint például a következők: erősebb hozzáférés-vezérlés (RBAC), jobb auditálás, erőforrás-kezelő alapú üzembe helyezés és irányítás, felügyelt identitásokhoz való hozzáférés, a Key Vault for Secrets elérése Az Azure AD-alapú hitelesítés és a címkék és erőforráscsoportok támogatása a biztonsági felügyelet megkönnyítésére. |
-|Machine|30|A biztonsági réseket a sebezhetőség-felmérési megoldásnak kell szervizelni|Amelynek a sebezhetőség-felmérési 3. fél megoldás üzembe helyezett virtuális gépek folyamatosan értékelni alatt álló alkalmazás és az operációs rendszer biztonsági rések ellen. Minden alkalommal, amikor kivédeni találhatók, ezek érhetők el további információ az ajánlás része.|
-|Virtuális gép méretkészlete |4|A Virtual Machine Scale Sets diagnosztikai naplóit engedélyezni kell|Engedélyezheti a naplókat, és akár egy évig is megtarthatja őket. Ez lehetővé teszi, hogy vizsgálati célokra újra létrehozza a tevékenységek nyomvonalait. Ez akkor hasznos, ha biztonsági incidens következik be, vagy a hálózat biztonsága sérül.|
-|Virtuális gép méretkészlete|35|A virtuális gépek méretezési csoportjainak biztonsági beállításaiban található biztonsági réseket szervizelni kell|Javítsa a biztonsági beállításokat a virtuálisgép-méretezési csoportokban a támadások elleni védelem érdekében. |
-|Virtuális gép méretkészlete|5|Az Endpoint Protection állapotával kapcsolatos hibák elhárítása virtuálisgép-méretezési csoportokban|Javítsa ki az Endpoint Protection-állapottal kapcsolatos hibákat a virtuálisgép-méretezési csoportokban a fenyegetések és a biztonsági rések elleni védelem érdekében. |
-|Virtuális gép méretkészlete|10|Az Endpoint Protection szolgáltatást virtuális gépekre kell telepíteni|Telepítsen egy Endpoint Protection-megoldást a virtuálisgép-méretezési csoportokra a fenyegetések és a biztonsági rések elleni védelem érdekében. |
-|Virtuális gép méretkészlete|40|A virtuálisgép-méretezési csoportokra vonatkozó rendszerfrissítéseket telepíteni kell|Telepítse a hiányzó rendszerbiztonsági és kritikus frissítéseket a Windows és a Linux rendszerű virtuálisgép-méretezési csoportok biztonságossá tételéhez. |
+|App Service|20|A webalkalmazás csak HTTPS protokollon keresztül érhető el|A webalkalmazások hozzáférésének korlátozása csak HTTPS protokollon keresztül.|
+|App Service|20|függvényalkalmazás csak HTTPS-kapcsolaton keresztül érhető el|Csak HTTPS-kapcsolaton keresztül korlátozza a függvények elérését.|
+|App Service|5|A App Services diagnosztikai naplóit engedélyezni kell|Engedélyezheti a naplókat, és akár egy évig megtarthatja őket. Ez lehetővé teszi, hogy a tevékenységi nyomvonalak újbóli létrehozása a biztonsági incidens bekövetkeztekor vagy a hálózat biztonsága esetén vizsgálat céljára történjen. |
+|App Service|10|A távoli hibakeresést ki kell kapcsolni a webalkalmazáshoz|Ha már nincs szüksége rá, kapcsolja ki a webes alkalmazások hibakeresését. A távoli hibakereséshez a bejövő portokat függvényalkalmazás kell megnyitni.|
+|App Service|10|A távoli hibakeresést ki kell kapcsolni a Function alkalmazáshoz|Ha már nincs szüksége a használatra, kapcsolja ki a hibakeresést függvényalkalmazás. A távoli hibakereséshez a bejövő portokat függvényalkalmazás kell megnyitni.|
+|App Service|10|Ne engedélyezze az összes (*) erőforrást az alkalmazás eléréséhez| A WEBSITE_LOAD_CERTIFICATES paraméter nem engedélyezhető "" értékre. A paraméter "" értékre állítása azt jelenti, hogy az összes tanúsítvány betöltődik a webalkalmazások személyes tanúsítványtárolóba. Ez a legalacsonyabb jogosultsági szinttel való visszaéléshez vezethet, mivel nem valószínű, hogy a helynek a futtatókörnyezet összes tanúsítványához hozzá kell férnie.|
+|App Service|20|A CORS nem teszi lehetővé minden erőforrás számára a webalkalmazások elérését|Csak a szükséges tartományokat engedélyezze a webalkalmazással való kommunikációhoz. A több eredetű erőforrás-megosztás (CORS) nem teszi lehetővé az összes tartomány számára a webalkalmazás elérését.|
+|App Service|20|A CORS nem teszi lehetővé minden erőforrás számára a függvényalkalmazás elérését| Csak a szükséges tartományokat engedélyezze a Function alkalmazással való kommunikációhoz. A több eredetű erőforrás-megosztás (CORS) nem teszi lehetővé az összes tartomány számára a Function alkalmazás elérését.|
+|Számítási erőforrások (batch)|1|A metrika riasztási szabályait a Batch-fiókokon kell konfigurálni|Metrika riasztási szabályainak konfigurálása a Batch-fiókon, valamint a metrikák készletének törlése a teljes események és a készlet törlése indítási események|
+|Számítási erőforrások (Service Fabric)|10|Service Fabric-fürtök esetében csak Azure Active Directoryt kell használnia az ügyfél-hitelesítéshez|Az ügyfél-hitelesítés csak a Service Fabric Azure Active Directoryon keresztül hajtható végre.|
+|Számítási erőforrások (Automation-fiók)|5|Az Automation-fiók változóit titkosítani kell|Az Automation-fiókok változó eszközei titkosításának engedélyezése bizalmas adatok tárolására.|
+|Számítási erőforrások (keresés)|5|Diagnosztikai naplók engedélyezésének naplózása a keresési szolgáltatásokhoz|Engedélyezheti a naplókat, és akár egy évig megtarthatja őket. Ez lehetővé teszi, hogy a tevékenységi nyomvonalak újbóli létrehozása a biztonsági incidens bekövetkeztekor vagy a hálózat biztonsága esetén vizsgálat céljára történjen. |
+|Számítási erőforrások (Service Bus)|5|A Service Bus diagnosztikai naplóit engedélyezni kell|Engedélyezheti a naplókat, és akár egy évig megtarthatja őket. Ez lehetővé teszi, hogy a tevékenységi nyomvonalak újbóli létrehozása a biztonsági incidens bekövetkeztekor vagy a hálózat biztonsága esetén vizsgálat céljára történjen. |
+|Számítási erőforrások (stream Analytics)|5|A Azure Stream Analytics diagnosztikai naplóit engedélyezni kell|Engedélyezheti a naplókat, és akár egy évig megtarthatja őket. Ez lehetővé teszi, hogy a tevékenységi nyomvonalak újbóli létrehozása a biztonsági incidens bekövetkeztekor vagy a hálózat biztonsága esetén vizsgálat céljára történjen. |
+|Számítási erőforrások (batch)|5|Diagnosztikai naplók engedélyezése a Batch-fiókokban|Engedélyezheti a naplókat, és akár egy évig megtarthatja őket. Ez lehetővé teszi, hogy a tevékenységi nyomvonalak újbóli létrehozása a biztonsági incidens bekövetkeztekor vagy a hálózat biztonsága esetén vizsgálat céljára történjen. |
+|Számítási erőforrások (Event hub)|5|Az Event hub diagnosztikai naplóit engedélyezni kell|Engedélyezheti a naplókat, és akár egy évig megtarthatja őket. Ez lehetővé teszi, hogy a tevékenységi nyomvonalak újbóli létrehozása a biztonsági incidens bekövetkeztekor vagy a hálózat biztonsága esetén vizsgálat céljára történjen. |
+|Számítási erőforrások (logikai alkalmazások)|5|Diagnosztikai naplók engedélyezése Logic Apps|Engedélyezheti a naplókat, és akár egy évig megtarthatja őket. Ez lehetővé teszi, hogy a tevékenységi nyomvonalak újbóli létrehozása a biztonsági incidens bekövetkeztekor vagy a hálózat biztonsága esetén vizsgálat céljára történjen. |
+|Számítási erőforrások (Service Fabric)|15|Állítsa a ClusterProtectionLevel tulajdonságot EncryptAndSign értékre Service Fabric|A Service Fabric három védelmi szintet biztosít (nincs, aláírás és EncryptAndSign) a csomópontok közötti kommunikációhoz az elsődleges fürt tanúsítványának használatával.  Állítsa be a védelmi szintet annak biztosítására, hogy minden csomópont-csomópont típusú üzenet titkosítva legyen, és digitálisan alá legyen írva. |
+|Számítási erőforrások (Service Bus)|1|Az összes engedélyezési szabály eltávolítása Service Bus névtérből származó RootManageSharedAccessKey kivételével |Service Bus-ügyfelek nem használhatnak névtér szintű hozzáférési szabályzatot, amely hozzáférést biztosít a névtérben lévő összes várólistához és témakörhöz. A legalacsonyabb jogosultsági szintű biztonsági modellel való összehangoláshoz hozzáférési házirendeket kell létrehoznia az entitások szintjén a várólistákhoz és a témakörökhöz, hogy csak az adott entitáshoz lehessen hozzáférést biztosítani.|
+|Számítási erőforrások (Event hub)|1|A RootManageSharedAccessKey kivételével az összes engedélyezési szabályt el kell távolítani az Event hub-névtérből|Az Event hub-ügyfelek nem használhatnak olyan névtér szintű hozzáférési szabályzatot, amely hozzáférést biztosít a névtérben lévő összes várólistához és témakörhöz. A legalacsonyabb jogosultsági szintű biztonsági modellel való összehangoláshoz hozzáférési házirendeket kell létrehoznia az entitások szintjén a várólistákhoz és a témakörökhöz, hogy csak az adott entitáshoz lehessen hozzáférést biztosítani.|
+|Számítási erőforrások (Event hub)|5|Az Event hub-entitás engedélyezési szabályait definiálni kell|Az Event hub-entitás engedélyezési szabályainak naplózása a legkevésbé privilegizált hozzáférés biztosításához.|
+|Gép|50|Figyelési ügynök telepítése a gépeken|Telepítse a figyelési ügynököt az adatgyűjtés engedélyezéséhez, a frissítések vizsgálatához, az alapkonfiguráció vizsgálatához és az Endpoint Protection szolgáltatáshoz az egyes gépeken.|
+|Gép|50|Automatikus kiépítés és adatgyűjtés engedélyezése az előfizetésekhez |Az előfizetésekben lévő gépek automatikus kiépítési és adatgyűjtési szolgáltatásának engedélyezése az adatgyűjtésre, a frissítések vizsgálatára, az alapkonfiguráció vizsgálatára és az Endpoint Protection szolgáltatásra az előfizetésekhez hozzáadott összes gépen.|
+|Gép|40|A figyelési ügynök állapotával kapcsolatos problémák megoldása a gépeken|A teljes Security Center védelem érdekében a hibaelhárítási útmutató utasításait követve oldja meg a figyelési ügynökkel kapcsolatos problémákat a számítógépeken.| 
+|Gép|40|Az Endpoint Protection állapotával kapcsolatos problémák megoldása a gépeken|A teljes Security Center védelem érdekében a hibaelhárítási útmutató utasításait követve oldja meg a figyelési ügynökkel kapcsolatos problémákat a számítógépeken.|
+|Gép|40|A számítógépek hiányzó vizsgálati adataival kapcsolatos hibák megoldása|A virtuális gépeken és számítógépeken a hiányzó vizsgálati adatvizsgálatok hibáinak megoldása. A számítógépeken a vizsgálati eredmények hiányzó biztonsági vizsgálatokat eredményeznek, például a frissítések vizsgálatát, az alapkonfiguráció vizsgálatát és az Endpoint Protection-megoldások hiányzó vizsgálatát.|
+|Gép|40|A számítógépekre telepíteni kell a rendszerfrissítéseket|A Windows és a Linux rendszerű virtuális gépek és számítógépek biztonságossá tételéhez telepítse a hiányzó rendszerbiztonsági és kritikus frissítéseket
+|Gép|15|Webalkalmazási tűzfal hozzáadása| Helyezzen üzembe egy webalkalmazási tűzfal (WAF) megoldást a webalkalmazások védelmére. |
+|Gép|40|A Cloud Service-szerepkörök operációsrendszer-verziójának frissítése|Frissítse a Cloud Service szerepköreihez tartozó operációs rendszer (OS) verzióját az operációsrendszer-család számára elérhető legújabb verzióra.|
+|Gép|35|A gépek biztonsági beállításainak sebezhetőségeit szervizelni kell|Javítsa ki a számítógépeken a biztonsági beállítások sebezhetőségeit a támadások elleni védelem érdekében.|
+|Gép|35|Biztonsági rések szervizelése a tárolók biztonsági beállításaiban|Javítsa ki a biztonsági beállításokat a Docker által telepített számítógépeken a támadások elleni védelem érdekében.|
+|Gép|25|Adaptív alkalmazások vezérlőinek engedélyezése|Az alkalmazások vezérlésének engedélyezésével szabályozhatja, hogy mely alkalmazások futhatnak az Azure-ban található virtuális gépeken. Ez segít megerősíteni a virtuális gépeket a kártevők ellen. Security Center a gépi tanulás segítségével elemzi az egyes virtuális gépeken futó alkalmazásokat, és segít az engedélyezési szabályok alkalmazásában az intelligenciával. Ez a funkció leegyszerűsíti az alkalmazások engedélyezési szabályainak konfigurálását és karbantartását.|
+|Gép|20|Endpoint Protection-megoldás telepítése a számítógépekre|Telepítsen egy Endpoint Protection-megoldást a virtuális gépekre a fenyegetések és a biztonsági rések elleni védelem érdekében.|
+|Gép|20|A rendszerfrissítések alkalmazásához indítsa újra a gépeket|Indítsa újra a gépeket a rendszerfrissítések alkalmazásához, és a számítógép védelmét a biztonsági rések alapján.|
+|Gép|15|A lemezes titkosítást a virtuális gépeken kell alkalmazni|A Windows-és Linux-alapú virtuális gépekhez Azure Disk Encryption egyaránt titkosíthatja a virtuális gépek lemezeit. Azure Disk Encryption (ADE) kihasználja a Windows iparági szabvány BitLocker szolgáltatását és a Linux DM-Crypt szolgáltatását, hogy az operációs rendszer és az adatlemez-titkosítás biztosítson az adatai védelméhez és védelméhez, valamint a szervezeti biztonság és megfelelőség biztosításához az ügyfél Azure Key vaultban vállalt kötelezettségek. Ha a megfelelőségi és biztonsági követelmény megköveteli, hogy a titkosítási kulcsok használatával a végpontok között titkosítsa az adatait, beleértve az időszakos (helyileg csatolt ideiglenes) lemez titkosítását, használja az Azure Disk encryptiont. Másik lehetőségként alapértelmezés szerint a Managed Disks titkosítva maradnak az Azure Storage Service Encryption használatával, ahol a titkosítási kulcsok a Microsoft által felügyelt kulcsok az Azure-ban. Ha ez megfelel a megfelelőségi és biztonsági követelményeknek, kihasználhatja az alapértelmezett felügyelt lemezes titkosítást, hogy megfeleljen az igényeinek.|
+|Gép|30|Sebezhetőség-felmérési megoldás telepítése a virtuális gépeken|Sebezhetőség-felmérési megoldás telepítése a virtuális gépeken|
+|Gép|15|Webalkalmazási tűzfal hozzáadása| Helyezzen üzembe egy webalkalmazási tűzfal (WAF) megoldást a webalkalmazások védelmére. |
+|Gép|30|A biztonsági réseket a sebezhetőség-felmérési megoldásnak kell szervizelni|Azok a virtuális gépek, amelyeken a sebezhetőségi felmérés harmadik féltől származó megoldást helyeznek üzembe, folyamatosan értékelik az alkalmazások és az operációs rendszer biztonsági réseit. Ha ilyen biztonsági réseket talál, ezek a javaslat részeként további információkhoz is elérhetők.|
+|Gép|30|Sebezhetőség-felmérési megoldás telepítése a virtuális gépeken|Sebezhetőség-felmérési megoldás telepítése a virtuális gépeken|
+|Gép|1|A virtuális gépeket át kell telepíteni az új AzureRM-erőforrásokra|A virtuális gépek Azure Resource Manager használatával olyan biztonsági fejlesztéseket biztosíthat, mint például a következők: erősebb hozzáférés-vezérlés (RBAC), jobb auditálás, erőforrás-kezelő alapú üzembe helyezés és irányítás, felügyelt identitásokhoz való hozzáférés, a Key Vault for Secrets elérése Az Azure AD-alapú hitelesítés és a címkék és erőforráscsoportok támogatása a biztonsági felügyelet megkönnyítésére. |
+|Gép|30|A biztonsági réseket a sebezhetőség-felmérési megoldásnak kell szervizelni|Azok a virtuális gépek, amelyeken a sebezhetőségi felmérés harmadik féltől származó megoldást helyeznek üzembe, folyamatosan értékelik az alkalmazások és az operációs rendszer biztonsági réseit. Ha ilyen biztonsági réseket talál, ezek a javaslat részeként további információkhoz is elérhetők.|
+|Virtuálisgép-méretezési csoport |4|A Virtual Machine Scale Sets diagnosztikai naplóit engedélyezni kell|Engedélyezheti a naplókat, és akár egy évig is megtarthatja őket. Ez lehetővé teszi, hogy vizsgálati célokra újra létrehozza a tevékenységek nyomvonalait. Ez akkor hasznos, ha biztonsági incidens következik be, vagy a hálózat biztonsága sérül.|
+|Virtuálisgép-méretezési csoport|35|A virtuális gépek méretezési csoportjainak biztonsági beállításaiban található biztonsági réseket szervizelni kell|Javítsa a biztonsági beállításokat a virtuálisgép-méretezési csoportokban a támadások elleni védelem érdekében. |
+|Virtuálisgép-méretezési csoport|5|Az Endpoint Protection állapotával kapcsolatos hibák elhárítása virtuálisgép-méretezési csoportokban|Javítsa ki az Endpoint Protection-állapottal kapcsolatos hibákat a virtuálisgép-méretezési csoportokban a fenyegetések és a biztonsági rések elleni védelem érdekében. |
+|Virtuálisgép-méretezési csoport|10|Az Endpoint Protection szolgáltatást virtuális gépekre kell telepíteni|Telepítsen egy Endpoint Protection-megoldást a virtuálisgép-méretezési csoportokra a fenyegetések és a biztonsági rések elleni védelem érdekében. |
+|Virtuálisgép-méretezési csoport|40|A virtuálisgép-méretezési csoportokra vonatkozó rendszerfrissítéseket telepíteni kell|Telepítse a hiányzó rendszerbiztonsági és kritikus frissítéseket a Windows és a Linux rendszerű virtuálisgép-méretezési csoportok biztonságossá tételéhez. |
  
 
 
@@ -234,13 +234,13 @@ Ha az összes meglévő méretezési csoportot be szeretné állítani a Microso
 
 
 ## <a name="next-steps"></a>További lépések
-Javaslatok, amelyek vonatkoznak a többi Azure-erőforrásokkal kapcsolatos további információkért tekintse meg a következőket:
+Ha többet szeretne megtudni a más Azure-erőforrásokra vonatkozó javaslatokról, tekintse meg a következőket:
 
 
 * [A gépek és alkalmazások védelme az Azure Security Centerben](security-center-virtual-machine-protection.md)
-* [Identitás és hozzáférés az Azure Security Center figyelése](security-center-identity-access.md)
+* [Identitás és hozzáférés figyelése az Azure Security Centerben](security-center-identity-access.md)
 * [Hálózat védelme az Azure Security Centerben](security-center-network-recommendations.md)
-* [Az Azure SQL-szolgáltatás az Azure Security Center védelme](security-center-sql-service-recommendations.md)
+* [Az Azure SQL-szolgáltatás védelme Azure Security Center](security-center-sql-service-recommendations.md)
 
 A Security Centerrel kapcsolatos további információkért olvassa el a következőket:
 

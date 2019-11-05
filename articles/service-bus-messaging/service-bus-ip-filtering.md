@@ -1,6 +1,6 @@
 ---
-title: Az Azure Service Bus tűzfalszabályok |} A Microsoft Docs
-description: Hogyan használható a tűzfalszabályok az Azure Service Bus adott IP-címekről érkező kapcsolatok engedélyezéséhez.
+title: Azure Service Bus tűzfalszabályok | Microsoft Docs
+description: A tűzfalszabályok használata az adott IP-címekről Azure Service Bus való csatlakozás engedélyezéséhez.
 services: service-bus
 documentationcenter: ''
 author: axisc
@@ -11,68 +11,67 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/23/2019
 ms.author: aschhab
-ms.openlocfilehash: 540435e3e018ae77477030ae8b9f727d71782121
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 45415af479c9581ee04b97af4fb5297d09c5769d
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64704589"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73496336"
 ---
-# <a name="use-firewall-rules"></a>Tűzfalszabályok
+# <a name="use-firewall-rules"></a>Tűzfalszabályok használata
 
-Forgatókönyvek, amelyben az Azure Service Bus csak érhető el az egyes jól ismert helyről a tűzfalszabályok engedélyezése, hogy a forgalom származik az adott IPv4-címek elfogadására vonatkozó szabályok konfigurálása. Például ezek a címek lehet a vállalati hálózati Címfordítás az átjáró.
+Olyan helyzetekben, amikor a Azure Service Bus csak bizonyos jól ismert helyekről érhető el, a tűzfalszabályok lehetővé teszik az adott IPv4-címekből származó forgalom fogadására vonatkozó szabályok konfigurálását. Ezek a címek lehetnek például a vállalati NAT-átjárók.
 
 ## <a name="when-to-use"></a>A következő esetekben használja
 
-Ha a telepítő a Service Bus úgy, hogy kell csak a megadott IP-címek egy forgalom fogadásához, valamint minden más elutasítja, akkor használhat egy *tűzfal* blokkolása a Service Bus-végpontokat más IP-címekről. A Service Bus használata esetén például [Azure Express Route] [ express-route] a helyszíni infrastruktúra magánkapcsolatokat hozhat létre. 
+Ha úgy szeretné beállítani Service Bus, hogy csak a megadott IP-címtartományból érkező forgalmat kapja, és minden mást visszautasítson, akkor a *tűzfal* használatával blokkolhatja Service Bus végpontokat más IP-címekről. Például Service Bust használ az [Azure Express Route][express-route] használatával a helyszíni infrastruktúrához való magánhálózati kapcsolatok létrehozásához. 
 
-## <a name="how-filter-rules-are-applied"></a>Szűrési szabályok alkalmazása
+## <a name="how-filter-rules-are-applied"></a>A szűrési szabályok alkalmazása
 
-Az IP-szűrési szabályok érvényesek a Service Bus-névterek szintjén. Ezért a szabályok érvényesek lesznek az összes kapcsolat bármely támogatott protokollt használó ügyfelektől.
+Az IP-szűrési szabályok a Service Bus névtér szintjén lesznek alkalmazva. Ezért a szabályok az ügyfelek összes kapcsolatára érvényesek bármely támogatott protokoll használatával.
 
-Minden olyan IP-címről, amely nem egyezik meg az engedélyezett IP-szabály a Service Bus a névtérben van elutasítottuk, mert a csatlakozási kísérlet nem engedélyezett. A válasz nem említi az IP-szabályt.
+Olyan IP-címről érkező csatlakozási kísérletek, amely nem felel meg a Service Bus névtérben lévő engedélyezett IP-szabálynak, a rendszer nem engedélyezettként fogadja el. A válasz nem említi az IP-szabályt.
 
 ## <a name="default-setting"></a>Alapértelmezett beállítás
 
-Alapértelmezés szerint a **IP-szűrő** rács a portálon, a Service Bus az üres. Ez az alapértelmezett beállítás, az azt jelenti, hogy a névtér fogad kapcsolatokat IP-címeket. Ez az alapértelmezett beállítás megegyezik egy szabályt, amely elfogadja a 0.0.0.0/0 IP-címtartományt.
+Alapértelmezés szerint a Service Bus-portálon található **IP-szűrő** rács üres. Ez az alapértelmezett beállítás azt jelenti, hogy a névtér elfogad minden IP-címet. Ez az alapértelmezett beállítás egyenértékű egy olyan szabállyal, amely elfogadja a 0.0.0.0/0 IP-címtartományt.
 
-## <a name="ip-filter-rule-evaluation"></a>IP-szűrési szabály értékelése
+## <a name="ip-filter-rule-evaluation"></a>IP-szűrési szabály kiértékelése
 
-IP-szűrési szabályok a rendszer sorrendben alkalmazza, és az első szabály, amely az IP-cím megegyezik a elfogadása vagy elutasítása műveletet határozza meg.
+Az IP-szűrési szabályok a sorrendben lesznek alkalmazva, és az IP-címnek megfelelő első szabály határozza meg az elfogadás vagy az elutasítás műveletet.
 
 >[!WARNING]
-> Tűzfalszabályok végrehajtási tudja megakadályozni más Azure-szolgáltatások Service Bus szolgáltatással való interakcióhoz.
+> A tűzfalszabályok bevezetésével megakadályozhatja, hogy más Azure-szolgáltatások a Service Bus használatával kommunikálnak.
 >
-> Megbízható Microsoft-szolgáltatások nem támogatottak. Ha IP-szűrés (tűzfalszabályok) vannak megvalósítva, és fog hamarosan közzétesszük.
+> A megbízható Microsoft-szolgáltatások használata nem támogatott, ha az IP-szűrés (tűzfalszabályok) be van vezetve, és hamarosan elérhetővé válik.
 >
-> Gyakori Azure forgatókönyvek nem működnek az IP-szűrés (vegye figyelembe, hogy a lista **nem** teljes körű) –
+> Általános Azure-forgatókönyvek, amelyek nem működnek az IP-szűréssel (vegye figyelembe, hogy a lista **nem** teljes) –
 > - Azure Monitor
 > - Azure Stream Analytics
-> - Az Azure Event Grid-integráció
-> - Azure IoT Hub Routes
+> - Integráció a Azure Event Grid
+> - Azure IoT Hub útvonalak
 > - Azure IoT Device Explorer
-> - Azure Data Explorer
 >
-> Az alábbi Microsoft szolgáltatásokra van szükség a virtuális hálózaton
+> Az alábbi Microsoft-szolgáltatások szükségesek virtuális hálózaton
 > - Azure App Service
 > - Azure Functions
 
-### <a name="creating-a-virtual-network-and-firewall-rule-with-azure-resource-manager-templates"></a>Az Azure Resource Manager-sablonokkal a virtuális hálózati és tűzfalbeállításokat szabály létrehozása
+### <a name="creating-a-virtual-network-and-firewall-rule-with-azure-resource-manager-templates"></a>Virtuális hálózati és tűzfalszabály létrehozása Azure Resource Manager-sablonokkal
 
 > [!IMPORTANT]
-> Tűzfalak és virtuális hálózatok csak a támogatott a **prémium** a Service Bus szintjét.
+> A tűzfalak és a virtuális hálózatok csak a **prémium** szintű Service Bus támogatottak.
 
-A következő Resource Manager-sablon lehetővé teszi, hogy egy virtuális hálózati szabályt ad hozzá egy meglévő Service Bus-névteret.
+A következő Resource Manager-sablon lehetővé teszi egy virtuális hálózati szabály hozzáadását egy meglévő Service Bus névtérhez.
 
 Sablon paraméterei:
 
-- **ipMask** egyetlen IPv4-cím vagy IP-címeket a CIDR-jelölésrendszerben egy kódblokkot. Például a CIDR jelölésrendszerben 70.37.104.0/24 jelöli 256 IPv4-címek 70.37.104.0 a 70.37.104.255, az a tartomány jelentős előtag bitek számát jelző 24.
+- a **ipMask** egy IPv4-cím vagy IP-cím CIDR-jelölésű blokkja. A CIDR 70.37.104.0/24 jelölése például 256 a 70.37.104.0 és a 70.37.104.255 közötti IPv4-címeket jelöli, és 24 a tartomány jelentős előtagjának számát jelzi.
 
 > [!NOTE]
-> Nincsenek Megtagadás szabályok lehetséges, amíg az Azure Resource Manager-sablon rendelkezik-e beállítva alapértelmezett művelet **"Engedélyezés"** amely nem korlátozza a kapcsolatokat.
-> Amikor a virtuális hálózathoz vagy a tűzfalak szabályokat, hogy módosítania kell a ***"defaultAction"***
+> Habár a megtagadási szabályok nem lehetségesek, a Azure Resource Manager sablon az **"engedélyezés"** értékre van állítva, amely nem korlátozza a kapcsolatokat.
+> Virtual Network vagy tűzfalakra vonatkozó szabályok végrehajtásakor módosítania kell a ***"defaultAction"***
 > 
-> from
+> a
 > ```json
 > "defaultAction": "Allow"
 > ```
@@ -143,13 +142,13 @@ Sablon paraméterei:
   }
 ```
 
-A sablon üzembe helyezéséhez kövesse az utasításokat [Azure Resource Manager][lnk-deploy].
+A sablon üzembe helyezéséhez kövesse az [Azure Resource Manager][lnk-deploy]utasításait.
 
 ## <a name="next-steps"></a>További lépések
 
-Omezující vlastnost hozzáférés a Service Bus az Azure virtuális hálózatokhoz lásd a következő hivatkozást:
+Az Azure-beli virtuális hálózatokhoz való Service Bus hozzáférésének korlátozásához tekintse meg a következő hivatkozást:
 
-- [Service Bus számára, virtuális hálózati Szolgáltatásvégpontok][lnk-vnet]
+- [Service Bus Virtual Network szolgáltatási végpontok][lnk-vnet]
 
 <!-- Links -->
 

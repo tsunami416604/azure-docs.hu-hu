@@ -1,7 +1,7 @@
 ---
 title: 'R-szkript végrehajtása: modul-hivatkozás'
-titleSuffix: Azure Machine Learning service
-description: Megtudhatja, hogyan használható az r-parancsfájl végrehajtása a Azure Machine Learning szolgáltatásban az R-kód futtatásához.
+titleSuffix: Azure Machine Learning
+description: Megtudhatja, hogyan használhatja az r-parancsfájl végrehajtása Azure Machine Learning az R-kód futtatásához.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,25 +9,25 @@ ms.topic: reference
 author: xiaoharper
 ms.author: peterlu
 ms.date: 06/01/2019
-ms.openlocfilehash: 01d4e3a06b8c6a95374b9ee246864167e6d2ac85
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: f9aae1302f0d83c27d5d8f01745ddecbaeea9467
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72693772"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73497887"
 ---
 # <a name="execute-r-script"></a>R-szkript végrehajtása
 
-Ez a cikk azt ismerteti, hogyan használható az r- **parancsfájl végrehajtása** a Visual Interface-folyamat r-kódjának futtatásához.
+Ez a cikk azt ismerteti, hogyan használható az r- **parancsfájl végrehajtása** az r-kód futtatásához a Azure Machine learning Designer (előzetes verzió) folyamatában.
 
 Az R használatával olyan feladatokat hajthat végre, amelyeket jelenleg nem támogat a meglévő modulok, például a következők: 
 - Egyéni adatátalakítások létrehozása
 - Saját mérőszámok használata az előrejelzések kiértékeléséhez
-- Modellek létrehozása a Visual Interface önálló moduljaiként nem implementált algoritmusok használatával
+- Modellek létrehozása a tervezőben nem önálló modulként megvalósított algoritmusok használatával
 
 ## <a name="r-version-support"></a>R-verziók támogatása
 
-A Azure Machine Learning szolgáltatás vizuális felülete az R-k CRAN (átfogó R Archive Network) eloszlását használja. A jelenleg használt verzió a CRAN 3.5.1-es verziója.
+A Azure Machine Learning Designer a CRAN (átfogó R Archive Network) R-eloszlását használja. A jelenleg használt verzió a CRAN 3.5.1-es verziója.
 
 ## <a name="supported-r-packages"></a>Támogatott R-csomagok
 
@@ -73,7 +73,7 @@ Az **R-szkript végrehajtása** modul olyan mintakód-kódot tartalmaz, amelyet 
 
 ![R-modul](media/module/execute-r-script.png)
 
-A Visual Interface-ben tárolt adatkészletek automatikusan egy R-adatkeretre lesznek konvertálva, ha ezzel a modullal vannak betöltve.
+A tervezőben tárolt adatkészletek automatikusan egy R-adatkeretre lesznek konvertálva, ha ezzel a modullal vannak feltöltve.
 
 1.  Adja hozzá az **R-szkript végrehajtása** modult a folyamathoz.
 
@@ -111,23 +111,23 @@ azureml_main <- function(dataframe1, dataframe2){
 }
 ```
 
- * A szkriptnek tartalmaznia kell egy `azureml_main` nevű függvényt, amely a modul belépési pontja.
+ * A szkriptnek tartalmaznia kell egy `azureml_main`nevű függvényt, amely a modul belépési pontja.
 
  * A belépési pont függvény legfeljebb két bemeneti argumentumot tartalmazhat: `Param<dataframe1>` és `Param<dataframe2>`
  
    > [!NOTE]
-    > Az **R-szkript végrehajtása** modulnak átadott adatok `dataframe1` és `dataframe2`, amely eltér a Azure Machine learning Studiotől (Studio-hivatkozás `dataset1`, `dataset2`). Győződjön meg arról, hogy a bemeneti adatok megfelelően vannak referneced a szkriptben.  
+    > Az **R-szkript végrehajtása** modulnak átadott adatok `dataframe1` és `dataframe2`ra hivatkoznak, amely eltér a Azure Machine learning designertől (a tervezői hivatkozás `dataset1`, `dataset2`). Győződjön meg arról, hogy a bemeneti adatok megfelelően vannak referneced a szkriptben.  
  
     > [!NOTE]
-    >  Előfordulhat, hogy a meglévő R-kódnak kisebb módosításokra van szüksége a Visual Interface-folyamatokban való futtatáshoz. Például a CSV formátumban megadott bemeneti adatokat explicit módon át kell alakítani egy adatkészletbe, mielőtt használni lehetne a kódban. Az R nyelvben használt adatok és oszlopok különböző módokon különböznek a vizualizációs felületen használt adatok és oszlopok típusaitól.
+    >  Előfordulhat, hogy a meglévő R-kódnak kisebb módosításokra van szüksége a tervezői folyamatokban való futtatáshoz. Például a CSV formátumban megadott bemeneti adatokat explicit módon át kell alakítani egy adatkészletbe, mielőtt használni lehetne a kódban. Az R nyelvben használt adatok és oszlopok különböző módokon különböznek a tervezőben használt adatok és oszlopok típusaitól.
 
 1.  **Véletlenszerű mag**: adjon meg egy értéket, amelyet az R-környezetben kell használni véletlenszerű mag értékként. Ez a paraméter egyenértékű az R-kódban lévő `set.seed(value)` meghívásával.  
 
 1. A folyamat futtatása.  
 
-## <a name="results"></a>Eredmények
+## <a name="results"></a>Results (Eredmények)
 
-Az **r-szkriptek végrehajtása** modulok több kimenetet is visszaadhatnak, de r-adatkeretként kell megadni őket. Az adatkereteket a rendszer automatikusan átalakítja a Visual Interface-adatkészletekbe más modulok kompatibilitása érdekében.
+Az **r-szkriptek végrehajtása** modulok több kimenetet is visszaadhatnak, de r-adatkeretként kell megadni őket. Az adatkereteket a rendszer automatikusan átalakítja a tervezőben lévő adatkészletekbe a más modulokkal való kompatibilitás érdekében.
 
 Az R standard üzeneteit és hibáit a rendszer visszaadja a modul naplójába.
 
@@ -235,7 +235,7 @@ Az r-objektumokat a belső szerializálási mechanizmus használatával lehet á
     }
     ```
 
-    Az egész típusra történő explicit konverzió történik, mivel a szerializálási függvény az R `Raw` formátumban jeleníti meg az adatokat, amelyet a vizualizációs felület nem támogat.
+    Az egész típusra történő explicit konverzió történik, mivel a szerializálási függvény az R `Raw` formátumban jeleníti meg az adatokat, amelyet a tervező nem támogat.
 
 1. Vegyen fel egy második példányt az **R szkript végrehajtása** modulhoz, és kapcsolja az előző modul kimeneti portjához.
 
@@ -400,6 +400,6 @@ A használható előre telepített R-csomagok aktuális listája:
 | zeallot      | 0.1.0      | 
 | állatkert          | 1.8 – 6      | 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Tekintse [meg Azure Machine learning szolgáltatás számára elérhető modulok készletét](module-reference.md) . 
+Tekintse [meg a Azure Machine learning elérhető modulok készletét](module-reference.md) . 

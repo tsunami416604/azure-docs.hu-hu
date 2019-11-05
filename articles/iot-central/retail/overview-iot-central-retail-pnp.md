@@ -7,16 +7,14 @@ ms.date: 10/22/2019
 ms.topic: overview
 ms.service: iot-central
 services: iot-central
-ms.custom:
-- iot-p0-scenario
-ms.openlocfilehash: b0200be389e6f0d59690f041695da368de6828ba
-ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
+ms.openlocfilehash: d91784201b3e8745459dada3790ec0eebaef9caf
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73027394"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73495154"
 ---
-# <a name="building-retail-solutions-with-azure-iot-central"></a>Kiskereskedelmi megoldások fejlesztése az Azure IoT Central
+# <a name="building-retail-solutions-with-azure-iot-central"></a>Kiskereskedelmi megoldások létrehozása az Azure IoT Centrallal
 
 [!INCLUDE [iot-central-pnp-original](../../../includes/iot-central-pnp-original-note.md)]
 
@@ -145,7 +143,7 @@ Vegye figyelembe, hogy a fenti irányítópult egy példa, és teljes mértékbe
 Ismerkedjen meg a teljes [körű oktatóanyaggal](./tutorial-iot-central-smart-inventory-management-pnp.md) , amely végigvezeti az intelligens leltár-felügyeleti sablonok egyikének megoldásán.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 A kereskedelmi megoldások létrehozásának megkezdéséhez:
 * Ismerkedjen meg a teljes [körű oktatóanyaggal](./tutorial-in-store-analytics-create-app-pnp.md) , amely végigvezeti egy olyan megoldás létrehozásán, amely az egyik áruházbeli elemzési alkalmazás-sablon kihasználását mutatja be.
 * Ismerje meg, hogyan telepítheti a [csatlakoztatott logisztikai megoldás sablonját](./tutorial-iot-central-connected-logistics-pnp.md)

@@ -9,214 +9,118 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 07/24/2019
+ms.date: 10/25/2019
 ms.author: diberry
-ms.openlocfilehash: 9919b6d07e874bd306bdba9da2cd3357bedc48f0
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 9dc26e50e1c0f43e816e422f0fee91a246ea04a9
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68564007"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73487606"
 ---
-# <a name="entity-types-and-their-purposes-in-luis"></a>Az entitások típusai és céljai a LUIS-ben
+# <a name="entities-and-their-purpose-in-luis"></a>Entitások és céljuk a LUIS-ben
 
-Az entitások kinyerik az adatok kinyerését. Az entitások típusai kiszámítható kitermelést biztosítanak. Az entitások két típusa létezik: a gépi megtanult és a nem gépi megtanult. Fontos tudni, hogy milyen típusú entitással dolgozik a hosszúságú kimondott szöveg-ben. 
+Az entitások elsődleges célja, hogy az ügyfélalkalmazások kiszámítható módon kinyerje az adatmennyiséget. Egy _opcionális_, másodlagos cél az, hogy növelje a leírókkal való szándék előrejelzését. 
 
-## <a name="entity-compared-to-intent"></a>Beszédszándék képest entitás
+Két típusú entitás létezik: 
 
-Az entitás egy szót vagy kifejezést az utterance (kifejezés), amelyeket szeretne kinyert belül jelöli. Az utterance (kifejezés) is tartalmazhat számos entitás vagy nincs minden. Előfordulhat, hogy az ügyfélalkalmazás az entitást a feladat elvégzéséhez vagy a felhasználóhoz való bevezetéséhez szükséges számos választási útmutatóként használja. 
+* gépi megtanult – környezetből
+* nem gépi megtanult – a szöveg pontos egyezése
 
-Egy entitás:
+Mindig kezdjen egy géppel megtanult entitással, mert ez az kinyerési lehetőségek széles skáláját biztosítja.
 
-* Egy osztályt jelöl, beleértve a hasonló objektumok (helyek, dolgok, személyek, események vagy fogalmak) gyűjteményét. 
-* A szándékra vonatkozó információkat ismerteti
+## <a name="entity-compared-to-intent"></a>Entitás a szándékhoz képest
 
+Az entitás a kibontani kívánt kifejezésen belüli adatkoncepciót jelöli. 
 
-Például egy News Search alkalmazás tartalmazhat például a "témakör", "forrás", "kulcsszó" és "közzétételi dátuma", amelyek hírkeresés a fontos adatokat. Az utazási foglalási alkalmazásokban a "location", a "date", a "Airline", az "utazási osztály" és a "jegyek" a repülési foglalás legfontosabb adatai (a "Book Flight" kifejezésre vonatkozik).
+Vegye figyelembe a következő 3 hosszúságú kimondott szöveg:
 
-Ezzel a célja a teljes utterance (kifejezés) előrejelzését jelöli. 
+|Kimondott szöveg|Kinyert adathalmaz|Magyarázat|
+|--|--|--|
+|`Help`|-|Nincs kibontva.|
+|`Send Bob a present`|Bob, jelen|Bob határozottan fontos a feladat elvégzéséhez. A jelen lehet elég információ, vagy előfordulhat, hogy a robotnak tisztáznia kell, hogy mi a jelen egy követő kérdésben.|
+|`Send Bob a box of chocolates.`|A felhasználó kérésének elvégzéséhez fontos a két fontos adat, a Bob és a csokoládés Box.|
 
-## <a name="entities-help-with-data-extraction-only"></a>Az entitások csak az adatkivonatolást segítik
+A Kimondás számos entitást tartalmazhat, vagy egyetlen sem. Az ügyfélalkalmazás feladatának elvégzéséhez szükség _lehet_ az entitásra. 
 
-Az entitásokat csak az entitások kinyerése céljából címkézheti vagy jelölheti meg, de nem segít a szándék-előrejelzésben.
+Összehasonlítva a Kimondás céljának előrejelzése _szükséges_ , és a teljes teljességet jelenti. A LUIS használatához példa hosszúságú kimondott szöveg van szükség. Ha a Kimondás elsődleges szándéka nem fontos az ügyfélalkalmazás számára, adja hozzá az összes hosszúságú kimondott szöveg a none szándékhoz. 
 
-## <a name="entities-represent-data"></a>Entitások adatokat képviselik.
+Ha úgy találja, hogy az alkalmazás életciklusának későbbi részében megtalálhatja a hosszúságú kimondott szöveg, egyszerűen megteheti. Ez lehet a hosszúságú kimondott szöveg rendszerezése a szerzői műveletek során, vagy az is lehet, hogy az ügyfél-alkalmazásban az előre jelzett szándékot használja. 
 
-Entitások az utterance (kifejezés) lekérni kívánt adatok. Ez lehet a nevét, a dátum, a termék neve vagy a szó bármilyen csoport. 
+Nincs szükség az ügyfélalkalmazás előre jelzett szándékának használatára, de a rendszer az előrejelzési végpont válaszának részeként visszaadja.
+
+## <a name="entities-represent-data"></a>Az entitások az adathalmazokat jelölik
+
+Az entitások olyan adatok, amelyekről le szeretné kérni a kiértékelést. Ez lehet a név, a dátum, a terméknév vagy a szavak bármely csoportja. 
 
 |Kimondott szöveg|Entitás|Adatok|
 |--|--|--|
-|A New York-i 3 jegyek megvásárlása|Előre összeállított száma<br>Location.Destination|3<br>New York|
-|London, New York-i jegyet vásárolni március 5|Location.Origin<br>Location.Destination<br>Előre összeállított datetimeV2|New York<br>London<br>2018. március 5.|
+|3 jegy vásárlása a New Yorkba|Előre elkészített szám<br>Hely. cél|3<br>New York|
+|Jegyet vásárolhat a New York-i és Londonba március 5-én|Hely. forrás<br>Hely. cél<br>Előre elkészített datetimeV2|New York<br>London<br>2018. március 5.|
 
-## <a name="entities-are-optional-but-highly-recommended"></a>Entitások nem kötelező, de a erősen ajánlott
+## <a name="entities-are-optional-but-highly-recommended"></a>Az entitások nem kötelező, de kifejezetten ajánlott
 
-Leképezések szükség, míg az entitások nem kötelező. Nem kell entitásokat létrehoznia az alkalmazás minden fogalmához, de csak azok számára, akiknek szükségük van az ügyfélalkalmazás beavatkozására. 
+A szándékok megadásakor az entitások megadása nem kötelező. Nem kell entitásokat létrehoznia az alkalmazás minden fogalmához, de csak azok számára, akiknek szükségük van az ügyfélalkalmazás beavatkozására. 
 
-Ha a kimondott szöveg nem rendelkezik a robot folytatásához szükséges részleteket, nem kell adja hozzá őket. Az alkalmazás kiforrottá, később is hozzáadhatja. 
+Ha a hosszúságú kimondott szöveg nem rendelkezik a robot folytatásához szükséges adatokkal, nem kell őket felvennie. Az alkalmazás futása során később is hozzáadhatók. 
 
 Ha nem tudja, hogyan használja fel az adatokat, adjon hozzá néhány gyakori előre elkészített entitást, például a [datetimeV2](luis-reference-prebuilt-datetimev2.md), a [sorszámot](luis-reference-prebuilt-ordinal.md), az [e-mailt](luis-reference-prebuilt-email.md)és a [telefonszámot](luis-reference-prebuilt-phonenumber.md).
 
-## <a name="label-for-word-meaning"></a>Azaz a word-címkét
+## <a name="design-entities-for-decomposition"></a>Entitások megtervezése a dekompozícióhoz
 
-Ha a választott word vagy a word megállapodás azonos, de nem ugyanazt jelenti, nem címkét, az entitáshoz. 
+Megkezdheti az entitás kialakítását egy géppel megtanult entitással. Ez lehetővé teszi, hogy az entitások az idő múlásával egyszerűen megtervezzék a növekedést és a változásokat. Az entitások kialakításának befejezéséhez adja hozzá az **alösszetevőket** (gyermek entitásokat) a **korlátozásokkal** és a **leírókkal** . 
 
-A következő utterances, a word `fair` egy homográfokat van. Akkor helyesírása megegyezik, de eltérő jelentéssel rendelkezik:
+A kiépítésének megtervezése lehetővé teszi a LUIS számára, hogy a nagymértékű entitás-feloldást adja vissza az ügyfélalkalmazás számára. Ez lehetővé teszi, hogy az ügyfél-alkalmazás az üzleti szabályokra koncentráljon, és az adatfelbontást a LUIS-re bízza.
 
-|Kimondott szöveg|
-|--|
-|Milyen típusú megye vásárokon Seattle környékén lévő történik az Ez évi riói nyári?|
-|Az a jelenlegi besorolása a Seattle felülvizsgálatra valós?|
+### <a name="machine-learned-entities-are-primary-data-collections"></a>A géppel megtanult entitások elsődleges adatgyűjtemények
 
-Ha egy esemény entitás összes esemény az adatok keresésére, a word címke `fair` az első utterance (kifejezés), de nem a második.
+A géppel megtanult entitások a legfelső szintű adategységek. Az alösszetevők a géppel megtanult entitások alárendelt entitásai. 
 
-## <a name="entities-are-shared-across-intents"></a>Entitások leképezések vannak osztva.
+A **megkötések** pontos szöveges egyeztetési entitások, amelyek szabályokat alkalmaznak az adatok azonosítására és kinyerésére. A **leírók** olyan szolgáltatások, amelyek az előrejelzéshez tartozó szavak vagy kifejezések relevanciájának növelésére vonatkoznak.
 
-Entitások közötti leképezések vannak megosztva. Minden olyan egyetlen célja nem tartoznak. A szándékok és entitások szemantikailag társíthatók, de nem kizárólagos kapcsolat.
+<a name="composite-entity"></a>
+<a name="list-entity"></a>
+<a name="patternany-entity"></a>
+<a name="prebuilt-entity"></a>
+<a name="regular-expression-entity"></a>
+<a name="simple-entity"></a>
 
-A "Párizs", a "Book to Paris" kifejezésre való lemondás után a "Paris" egy olyan entitás, amely a helyükre hivatkozik. A felhasználó teljességében említett entitások felismerésével a LUIS segít az ügyfélalkalmazás számára kiválasztani azokat a műveleteket, amelyek a felhasználó kérelmének teljesítéséhez szükségesek.
+## <a name="types-of-entities"></a>Entitások típusai
 
-## <a name="mark-entities-in-none-intent"></a>Entitások megjelölése nincs szándékban
+Válassza ki az entitást az Adatkivonatok és a kinyerés utáni megjelenítésük alapján.
 
-Az összes szándéknak, beleértve a **none** szándékot is, a jelölt entitásokkal kell rendelkeznie, ha lehetséges. Ez segít a LUIS-további információ az entitások amelyeknél megcímkézzen és szavakat Mik az entitások körül. 
+|Entitás típusa|Cél|
+|--|--|
+|[**Gépi megtanult**](#composite-entity)|Entitások szülőjének csoportosítása, az entitás típusától függetlenül. A géppel megtanult entitások a teljes kontextusban tanulnak. Így az elhelyezés variációja jelentős hosszúságú kimondott szöveg jelent. |
+|[**Listáját**](#list-entity)|A **pontos szöveges egyezéssel**kinyert elemek és szinonimáik listája.|
+|[**Minta. any**](#patternany-entity)|Az entitás, amelyben nehéz meghatározni az entitás végét. |
+|[**Prebuilt**](#prebuilt-entity)|Már betanítva bizonyos típusú adatok, például URL-cím vagy e-mailek kinyerésére. Ezen előre összeépített entitások némelyike a nyílt forráskódú [felismerők – Text](https://github.com/Microsoft/Recognizers-Text) projektben van meghatározva. Ha az adott kulturális környezet vagy entitás jelenleg nem támogatott, akkor hozzájárul a projekthez.|
+|[**Reguláris kifejezés**](#regular-expression-entity)|Reguláris kifejezést használ a **pontos szöveges egyeztetéshez**.|
 
-## <a name="entity-status-for-predictions"></a>Entitás állapota ismeretekkel
+### <a name="entity-role-defines-context"></a>Az entitás szerepköre definiálja a kontextust
 
-A LUIS-portálon megtudhatja, hogy ha egy ilyen kifejezésben szereplő entitás különbözik a megjelölt entitástól, vagy túl van-e egy másik entitáshoz, ezért nem egyértelmű. Ezt a példában szereplő vörös aláhúzás jelzi. 
+Az entitások szerepköre a megnevezett alias, amely a teljes tartományon belüli kontextuson alapul. Egy példa egy olyan járat foglalásának kimondása, amelynek két helye van, a forrás és a cél.
 
-További információ: entitások [állapotának előrejelzése](luis-how-to-add-example-utterances.md#entity-status-predictions). 
+`Book a flight from Seattle to Cairo`
 
-## <a name="types-of-entities"></a>Entitástípus
+`location` entitás két példáját ki kell vonni. Az ügyfél-alkalmazásnak ismernie kell a hely típusát, hogy el lehessen végezni a jegyek megvásárlását. A `location` entitásnak két `origin` és `destination` szerepkörrel kell rendelkeznie, és mindkettőt meg kell adni a példában szereplő hosszúságú kimondott szöveg. 
 
-A LUIS számos típusú entitást kínál. Válassza ki az entitást az Adatkivonatok és a kinyerés utáni megjelenítésük alapján.
+Ha a LUIS megkeresi a `location`, de nem tudja meghatározni a szerepkört, a hely entitás továbbra is visszaadja. Az ügyfélalkalmazás nyomon kell követnie egy kérdést, hogy meghatározza, hogy a felhasználó milyen típusú helyet igényel. 
 
-Az entitások gépi tanulással is kivonhatók, ami lehetővé teszi a LUIS számára, hogy folytassa a tanulást arról, hogy az entitás hogyan jelenik meg a leválasztásban. Az entitások gépi tanulás nélkül is kiállíthatók, a pontos szöveggel vagy reguláris kifejezéssel. A mintákban lévő entitások vegyes implementációval kivonhatók. 
+A rendszer több entitást is használhat, és szerepkörök használata nélkül is kinyerhető. Ha a mondat kontextusa az entitás értékét jelöli, akkor egy szerepkört kell használni.
 
-Az entitás kibontása után az entitás adatai egyetlen adategységként vagy más entitásokkal kombinálhatók az ügyfél által használható információk egységének megalkotása céljából.
+Ha a Kimondás tartalmazza a helyszínek listáját, `I want to travel to Seattle, Cairo, and London.`, ez egy lista, ahol az egyes elemek nem rendelkeznek további jelentéssel. 
 
-|Gépi megtanult|Jelölheti|Oktatóanyag|Példa<br>Válasz|Entitástípus|Cél|
-|--|--|--|--|--|--|
-|✔|✔|[✔](luis-tutorial-composite-entity.md)|[✔](luis-concept-data-extraction.md#composite-entity-data)|[**Összetett**](#composite-entity)|Entitások csoportosítása, az entitás típusától függetlenül.|
-|||[✔](luis-quickstart-intent-and-list-entity.md)|[✔](luis-concept-data-extraction.md#list-entity-data)|[**Listáját**](#list-entity)|A pontos szöveges egyezéssel kinyert elemek és szinonimáik listája.|
-|Vegyes||[✔](luis-tutorial-pattern.md)|[✔](luis-concept-data-extraction.md#patternany-entity-data)|[**Minta. any**](#patternany-entity)|Az entitás, amelyben nehéz meghatározni az entitás végét.|
-|||[✔](luis-tutorial-prebuilt-intents-entities.md)|[✔](luis-concept-data-extraction.md#prebuilt-entity-data)|[**Prebuilt**](#prebuilt-entity)|Már be van tanítva különféle típusú adatok kinyerésére.|
-|||[✔](luis-quickstart-intents-regex-entity.md)|[✔](luis-concept-data-extraction.md#regular-expression-entity-data)|[**Reguláris kifejezés**](#regular-expression-entity)|Reguláris kifejezést használ a szöveg egyeztetéséhez.|
-|✔|✔|[✔](luis-quickstart-primary-and-secondary-data.md)|[✔](luis-concept-data-extraction.md#simple-entity-data)|[**Egyszerű**](#simple-entity)|Egyetlen fogalmat tartalmaz a Word vagy a kifejezésben.|
+## <a name="if-you-need-more-than-the-maximum-number-of-entities"></a>Ha az entitások maximális számánál többre van szüksége 
 
-Csak a géppel megtanult entitásokat kell megjelölni a példában szereplő hosszúságú kimondott szöveg. A gép által megtanult entitások a legjobban [](luis-concept-test.md#endpoint-testing) működnek, ha végponti lekérdezésekkel és a [végpontok hosszúságú kimondott szöveg áttekintésével](luis-how-to-review-endoint-utt.md)vannak tesztelve. 
+Ha a korlátnál nagyobbra van szüksége, forduljon az ügyfélszolgálathoz. Ehhez gyűjtsön részletes információkat a rendszeréről, lépjen a [Luis](luis-reference-regions.md#luis-website) webhelyére, és válassza a **támogatás**lehetőséget. Ha az Azure-előfizetése támogatási szolgáltatásokat tartalmaz, forduljon az [Azure technikai támogatási](https://azure.microsoft.com/support/options/)szolgálatához. 
 
-Minta. minden entitást meg kell adni a [minta](luis-how-to-model-intent-pattern.md) sablon példákban, nem pedig a leképezési felhasználói példákban. 
+## <a name="entity-prediction-status"></a>Entitás-előrejelzés állapota
 
-A vegyes entitások az entitások észlelési módszereinek kombinációját használják.
-
-## <a name="machine-learned-entities-use-context"></a>Gépi megtanult entitások használata kontextus
-
-A géppel megtanult entitások a teljes kontextusban tanulnak. Így az elhelyezés variációja jelentős hosszúságú kimondott szöveg jelent. 
-
-## <a name="non-machine-learned-entities-dont-use-context"></a>A nem gépi megtanult entitások nem használnak kontextust
-
-A következő nem gépi megtanult entitások nem vesznek figyelembe teljes kontextust a megfelelő entitások esetén: 
-
-* [Előre összeállított entitások](#prebuilt-entity)
-* [Regex entitások](#regular-expression-entity)
-* [Entitások listája](#list-entity) 
-
-Ezek az entitások nem igénylik a modell címkézését vagy betanítását. Miután hozzáadta vagy konfigurálta az entitást, a rendszer kinyeri az entitásokat. A kompromisszum az, hogy ezek az entitások nem egyeznek meg, ha a kontextust figyelembe vették, a egyezés nem lett volna elérhető. 
-
-Ez az új modellekben gyakran előforduló entitások listázásával történik. Létrehozhatja és tesztelheti a modelljét egy lista entitással, de amikor közzéteszi a modellt, és fogad lekérdezéseket a végponttól, a modell a kontextus hiánya miatt nem egyezik. 
-
-Ha a szavakat vagy kifejezéseket szeretné egyeztetni, és a kontextust figyelembe venni, két lehetőség közül választhat. Az első egy egyszerű entitás használata egy kifejezési listával párosítva. A kifejezések listája nem lesz felhasználva a megfeleltetéshez, hanem a viszonylag hasonló szavak (felcserélhető lista) jelzésére is használható. Ha pontos egyezést kell adni a kifejezések listájának változatai helyett, használja az alább ismertetett szerepkörrel rendelkező lista entitást.
-
-### <a name="context-with-non-machine-learned-entities"></a>Nem gépi megtanult entitások kontextusa
-
-Ha azt szeretné, hogy a nem gépi megtanult entitások esetében a részletek kontextusát is figyelembe kell [](luis-concept-roles.md)vennie, használja a szerepköröket.
-
-Ha olyan nem gépi megtanult entitást használ, mint például az [előre](#prebuilt-entity)összeállított entitások, a [regex](#regular-expression-entity) entitások vagy a [lista](#list-entity) entitások, amelyek megfelelnek a kívánt példánynak, érdemes lehet két szerepkörrel rendelkező entitást létrehozni. Az egyik szerepkör rögzíti, hogy mit keres, és egy szerepkör rögzíti, hogy mit keres. A két verziót is meg kell adni, például hosszúságú kimondott szöveg.  
-
-## <a name="composite-entity"></a>Összetett entitást
-
-Az [összetett entitások](reference-entity-composite.md) más entitásokból állnak, mint például az előre összeépített entitások, az egyszerű, a reguláris kifejezések és a listázási entitások. A különálló entitások teljes entitás űrlap. 
-
-## <a name="list-entity"></a>Listaentitás
-
-Az [entitások listája](reference-entity-list.md) a kapcsolódó szavak rögzített, lezárt készletét jelöli a szinonimákkal együtt. A LUIS nem deríti fel a további értékek a lista entitásokat. Használja a **javasoljuk** funkció, amellyel új szavak javaslatokat tekintse meg az aktuális lista alapján. Ha egynél több lista entitás ugyanazzal az értékkel, a végpont lekérdezés minden entitás adja vissza. 
-
-## <a name="patternany-entity"></a>Pattern.any entitás
-
-[Minta.](reference-entity-pattern-any.md) a változó hosszúságú helyőrző csak a minta sablonjának megjelölésére szolgál, amely jelzi, hogy az entitás hol kezdődik és végződik.  
-
-## <a name="prebuilt-entity"></a>Előre összeállított entitások
-
-Az előre elkészített entitások olyan beépített típusok, amelyek közös fogalmakat, például e-maileket, URL-címeket és telefonszámokat képviselnek. Előre összeállított entitások neve vannak fenntartva. A rendszer az alkalmazáshoz hozzáadott [összes előre elkészített entitást](luis-prebuilt-entities.md) visszaadja a végpont-előrejelzési lekérdezésben, ha azok a teljes kifejezésben találhatók. 
-
-Az entitás jól illeszkedik, ha:
-
-* Az adatai közös használati esetnek felelnek meg, amelyet az előre elkészített entitások támogatnak a nyelvi kulturális környezethez. 
-
-Az előre elkészített entitások bármikor hozzáadhatók és eltávolíthatók.
-
-![Előre összeállított entitások száma](./media/luis-concept-entities/number-entity.png)
-
-[Oktatóanyag](luis-tutorial-prebuilt-intents-entities.md)<br>
-[Példa JSON-válasz entitásra](luis-concept-data-extraction.md#prebuilt-entity-data)
-
-Ezen előre összeépített entitások némelyike a nyílt forráskódú [felismerők – Text](https://github.com/Microsoft/Recognizers-Text) projektben van meghatározva. A megadott kulturális környezet vagy a szervezet jelenleg nem támogatott, ha járulnak hozzá a projekthez. 
-
-### <a name="troubleshooting-prebuilt-entities"></a>Előre összeépített entitások hibaelhárítása
-
-Ha a LUIS-portálon egy előre összeállított entitás nem az egyéni entitás helyett van címkézve, néhány lehetőség közül választhat, hogy miként lehet ezt elhárítani.
-
-Az alkalmazáshoz hozzáadott előre elkészített entitásokat a rendszer _mindig_ visszaadja, még akkor is, ha a teljes érték kinyeri az egyéni entitásokat ugyanahhoz a szöveghez. 
-
-#### <a name="change-tagged-entity-in-example-utterance"></a>Címkézett entitás módosítása – példa: Kimondás
-
-Ha az előre elkészített entitás ugyanaz a szöveg vagy jogkivonatok, mint az egyéni entitás, válassza ki a példa szövegét, és módosítsa a címkézett szöveget. 
-
-Ha az előre elkészített entitás több szöveggel vagy jogkivonattal van megjelölve, mint az egyéni entitás, több lehetőség közül választhat:
-
-* [Példa](#remove-example-utterance-to-fix-tagging) -Kimondás módszerének eltávolítása
-* Az [előre összeépített entitás](#remove-prebuilt-entity-to-fix-tagging) metódusának eltávolítása
-
-#### <a name="remove-example-utterance-to-fix-tagging"></a>Példa a címkézés kijavítására 
-
-Első lépésként távolítsa el a példa kiválasztását. 
-
-1. Törölje a példa megnyilatkozása.
-1. Az alkalmazás újratanítása. 
-1. Adja hozzá a vissza csak azt a szót vagy kifejezést, amely az entitás, amely előre elkészített entitásként van megjelölve, teljes példaként. A szó vagy kifejezés továbbra is az előre elkészített entitás jelölése lesz. 
-1. Válassza ki az entitást a példában a Kimondás **oldalon,** és váltson át az egyéni entitásra, és ismételje meg a betanítást. Ennek meg kell akadályoznia, hogy a LUIS pontosan megjelölje ezt a szöveget az előre összeépített entitásként az adott szöveget használó hosszúságú kimondott szöveg. 
-1. Adja hozzá a teljes eredeti példát a szándékhoz. Az egyéni entitást továbbra is az előre elkészített entitás helyett kell megjelölni. Ha az egyéni entitás nincs megjelölve, további példákat kell hozzáadnia a szöveghez a hosszúságú kimondott szöveg-ben.
-
-#### <a name="remove-prebuilt-entity-to-fix-tagging"></a>Előre elkészített entitás eltávolítása a címkézés javításához
-
-1. Távolítsa el az előre elkészített entitást az alkalmazásból. 
-1. A **cél** lapon jelölje meg az egyéni entitást a példa Kimondás oldalon.
-1. Tanítsa be az alkalmazást.
-1. Adja hozzá az előre elkészített entitást az alkalmazáshoz, és tanítsa be az alkalmazást. Ez a javítás feltételezi, hogy az előre elkészített entitás nem része egy összetett entitásnak.
-
-## <a name="regular-expression-entity"></a>Reguláriskifejezés-entitás 
-
-A [reguláris kifejezés entitás](reference-entity-regular-expression.md) kinyeri az entitást az Ön által megadott reguláris kifejezési minta alapján.
-
-## <a name="simple-entity"></a>Egyszerű entitás
-
-A [egyszerű entitás](reference-entity-simple.md) egy gép megtanult érték. Lehet, hogy egy szót vagy kifejezést.
-## <a name="entity-limits"></a>Entitás korlátok
-
-Felülvizsgálat [korlátok](luis-boundaries.md#model-boundaries) megértéséhez, hogy hány különböző típusú entitás is hozzáadhat egy modellt.
-
-## <a name="if-you-need-more-than-the-maximum-number-of-entities"></a>Ha több, mint az entitások maximális száma 
-
-Előfordulhat, hogy az entitás-szerepkörökkel együtt összetett entitásokat kell használnia.
-
-Összetett entitások egész részét jelölik. Ha például egy összetett PlaneTicketOrder nevű előfordulhat, hogy entitásnak gyermekentitások légitársaság, cél, DepartureCity, DepartureDate és PlaneTicketClass.
-
-A LUIS olyan típusú entitást is biztosít, amely nem a gép által megismert, de lehetővé teszi, hogy a LUIS-alkalmazás meghatározza az értékek rögzített listáját. Lásd: [LUIS határok](luis-boundaries.md) tekintse át a listában entitástípus korlátait mutató hivatkozás. 
-
-Ha ezeket az entitásokat tekinti át, és továbbra is nagyobbnak kell lennie a korlátnál, forduljon az ügyfélszolgálathoz. Ehhez gyűjtsön a rendszer részletes adatait, lépjen a [LUIS](luis-reference-regions.md#luis-website) webhelyet, és válassza ki **támogatási**. Ha az Azure-előfizetés tartalmazza a támogatási szolgálathoz, lépjen kapcsolatba [technikai Azure-támogatás](https://azure.microsoft.com/support/options/). 
+A LUIS-portál azt mutatja be, hogy az entitás egy példa szerinti Kimondás esetén a kiválasztott entitástól eltérő egyed-előrejelzéssel rendelkezik. Ez a különböző pontszám az aktuálisan betanított modellen alapul. 
 
 ## <a name="next-steps"></a>További lépések
 
-Ismerje meg a helyes kapcsolatos alapvető fogalmakat [beszédmódok](luis-concept-utterance.md). 
+Ismerje meg a jó [hosszúságú kimondott szöveg](luis-concept-utterance.md)kapcsolatos fogalmakat. 
 
-Lásd: [entitások hozzáadása](luis-how-to-add-entities.md) további információ entitások hozzáadása a LUIS-alkalmazás.
+Az entitások LUIS-alkalmazáshoz való hozzáadásával kapcsolatos további tudnivalókért tekintse meg az [entitások hozzáadása](luis-how-to-add-entities.md) című témakört.

@@ -1,24 +1,24 @@
 ---
 title: 'Metaadatok szerkesztése: modulok leírása'
-titleSuffix: Azure Machine Learning service
-description: Megtudhatja, hogyan használhatja a metaadatok szerkesztése modult a Azure Machine Learning szolgáltatásban az adatkészlet oszlopaihoz társított metaadatok módosításához.
+titleSuffix: Azure Machine Learning
+description: Megtudhatja, hogyan használhatja a Azure Machine Learning metaadatok szerkesztése modulját az adatkészlet oszlopaihoz társított metaadatok módosításához.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
-ms.date: 05/02/2019
-ms.openlocfilehash: b6e28577fefe4892d719e211e16edafed1504e87
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.date: 10/22/2019
+ms.openlocfilehash: 2c8224edbe95c8185e390c2ce48cbb4263f97586
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72693826"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73497952"
 ---
 # <a name="edit-metadata-module"></a>Metaadat-modul szerkesztése
 
-Ez a cikk a Azure Machine Learning szolgáltatás vizuális felületének (előzetes verzió) modulját ismerteti.
+Ez a cikk a Azure Machine Learning Designer (előzetes verzió) részét képező modult ismerteti.
 
 Az adatkészletek oszlopaihoz társított metaadatok módosításához használja az adatok szerkesztése modult. Az adatkészlet értéke és adattípusa a metaadatok szerkesztése modul használata után módosul.
 
@@ -96,6 +96,6 @@ A metaadatok tipikus változásai a következők lehetnek:
   
 1. A folyamat futtatása.  
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Tekintse meg a Azure Machine Learning szolgáltatás [számára elérhető modulok készletét](module-reference.md) .
+Tekintse [meg a Azure Machine learning elérhető modulok készletét](module-reference.md) .

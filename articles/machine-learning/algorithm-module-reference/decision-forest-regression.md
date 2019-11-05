@@ -1,28 +1,28 @@
 ---
 title: 'Döntési erdő regressziója: modul leírása'
-titleSuffix: Azure Machine Learning service
-description: Megtudhatja, hogyan használható a döntési erdő regressziós modulja Azure Machine Learning szolgáltatásban egy regressziós modell létrehozásához a döntési fák együttese alapján.
+titleSuffix: Azure Machine Learning
+description: Megtudhatja, hogyan használható a döntési erdő regressziós modulja Azure Machine Learning egy regressziós modell létrehozásához a döntési fák együttese alapján.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
-ms.date: 05/02/2019
-ms.openlocfilehash: 7b89d08f4621ecde77a60510b05d96decff0cfde
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.date: 10/22/2019
+ms.openlocfilehash: d930a6d856c6608e7792ce8ef3204b39aba0028a
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72693169"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73497975"
 ---
 # <a name="decision-forest-regression-module"></a>Döntési erdő regressziós modulja
 
-Ez a cikk a Azure Machine Learning szolgáltatás vizuális felületének (előzetes verzió) modulját ismerteti.
+Ez a cikk a Azure Machine Learning Designer (előzetes verzió) modulját ismerteti.
 
 Ezzel a modullal egy regressziós modellt hozhat létre a döntési fák együttese alapján.
 
-A modell konfigurálása után a modellt a címkével ellátott adatkészlet és a [vonat modell](./train-model.md) modul használatával kell betanítania.  Ezt követően a betanított modell segítségével előrejelzéseket készíthet. 
+A modell konfigurálása után a modellt a címkével ellátott adatkészlet és a [vonat modell](./train-model.md) modul használatával kell betanítania. Ezt követően a betanított modell segítségével előrejelzéseket készíthet. 
 
 ## <a name="how-it-works"></a>Működési elv
 
@@ -42,11 +42,11 @@ Az algoritmus elméleti keretrendszerével és annak megvalósításával kapcso
 
 ## <a name="how-to-configure-decision-forest-regression-model"></a>Döntési erdő regressziós modelljének konfigurálása
 
-1. Adja hozzá a **döntési erdő regressziós** modulját a folyamathoz. A modult a **Machine learning**, a **modell inicializálása**és a **regresszió**alatt található felületen érheti el.
+1. Adja hozzá a **döntési erdő regressziós** modulját a folyamathoz. A modult a tervezőben a **Machine learning**, a **modell inicializálása**és a **regresszió**lehetőség alatt találja.
 
 2. Nyissa meg a modul tulajdonságait, és az **újramintavételezési módszernél**válassza ki az egyes fák létrehozásához használt módszert.  A **csomagok** és a **replikálás**lehetőség közül választhat.
 
-    - **Poggyász**: a poggyászt rendszerindítási *összesítésnek*is nevezik. A regressziós döntési erdőben található fák mindegyike egy Gauss-eloszlást ad vissza előrejelzés útján. Az Összesítés egy olyan Gauss megkeresése, amelynek első két pillanata megegyezik az egyes fák által visszaadott összes Gauss összevonásával.
+    - **Poggyász**: a poggyászt rendszerindítási *összesítésnek*is nevezik. A regressziós döntési erdőben található fák mindegyike egy Gauss-eloszlást ad vissza előrejelzés útján. Az Összesítés egy olyan Gauss megkeresése, amelynek első két pillanata megegyezik az egyes fák által visszaadott összes eloszlás kombinálásával a Gauss-eloszlások keverékének pillanataival.
 
          További információ: a rendszerindítási [összesítések](https://wikipedia.org/wiki/Bootstrap_aggregating)Wikipedia-bejegyzése.
 
@@ -84,7 +84,7 @@ Az algoritmus elméleti keretrendszerével és annak megvalósításával kapcso
 
 10. A folyamat futtatása.
 
-### <a name="results"></a>Eredmények
+### <a name="results"></a>Results (Eredmények)
 
 A betanítás befejezése után:
 
@@ -94,6 +94,6 @@ A betanítás befejezése után:
 
 + A betanított modell pillanatképének mentéséhez kattintson a jobb gombbal az oktatási modul kimenetére, és válassza a **Mentés betanítva modellként**lehetőséget. A modell ezen példánya nem frissül a folyamat egymást követő futtatásakor. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Tekintse [meg Azure Machine learning szolgáltatás számára elérhető modulok készletét](module-reference.md) . 
+Tekintse [meg a Azure Machine learning elérhető modulok készletét](module-reference.md) . 

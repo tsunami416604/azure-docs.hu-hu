@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, carlrab
 ms.date: 07/16/2019
-ms.openlocfilehash: 7ae3eb74b0d0c3f0bd6124362608e14555179697
-ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
+ms.openlocfilehash: 7e341cf8a4ff2a18e44e36d73ad5dbc642582802
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71710153"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73496285"
 ---
 # <a name="sql-database-managed-instance-frequently-asked-questions-faq"></a>SQL Database felügyelt példányok gyakran ismételt kérdései (GYIK)
 
@@ -54,11 +54,11 @@ A felügyelt példánynak olyan névvel kell rendelkeznie, amely a *Database.Win
 
 ## <a name="how-can-i-move-database-from-managed-instance-back-to-sql-server-or-azure-sql-database"></a>Hogyan helyezhetek át adatbázist a felügyelt példányról SQL Server vagy Azure SQL Databasere?
 
-Exportálhatja az [adatbázist a BACPAC-be](sql-database-export.md) , majd [importálhatja a BACPAC-fájlt]( sql-database-import.md). Ez az ajánlott módszer, ha az adatbázis 100 GB-nál kisebb.
+[Exportálhatja az adatbázist a BACPAC-be](sql-database-export.md) , majd [importálhatja a BACPAC-fájlt]( sql-database-import.md). Ez az ajánlott módszer, ha az adatbázis 100 GB-nál kisebb.
 
 A tranzakciós replikáció akkor használható, ha az adatbázis minden táblája rendelkezik elsődleges kulccsal.
 
-A `COPY_ONLY` felügyelt példányból származó natív biztonsági másolatok nem állíthatók vissza SQL Serverre, mert a felügyelt példány magasabb verziójú adatbázis-verzióval rendelkezik, mint SQL Server.
+A felügyelt példányból származó natív `COPY_ONLY` biztonsági másolatok nem állíthatók vissza SQL Server, mert a felügyelt példány magasabb verziójú adatbázis-verzióval rendelkezik, mint SQL Server.
 
 ## <a name="how-can-i-migrate-my-instance-database-to-a-single-azure-sql-database"></a>Hogyan telepíthetem át a példány-adatbázist egyetlen Azure SQL Databasere?
 
@@ -123,7 +123,7 @@ A hálózati kockázatok enyhítése érdekében javasoljuk, hogy az ügyfelek b
 - Csak Azure Active Directory (HRE) hitelesítést használjon.
 - Hozzáférési példány alacsony jogosultsági szintű DBA-fiókkal.
 - Állítsa be a JiT Jumpbox-hozzáférést a sysadmin fiókhoz.
-- Kapcsolja be az [SQL](https://docs.microsoft.com/sql/relational-databases/security/auditing/sql-server-audit-database-engine)-naplózást, és integrálja azt a riasztási mechanizmusokkal.
+- Kapcsolja be az [SQL-naplózást](https://docs.microsoft.com/sql/relational-databases/security/auditing/sql-server-audit-database-engine), és integrálja azt a riasztási mechanizmusokkal.
 - Kapcsolja be a [fenyegetések észlelését](https://docs.microsoft.com/azure/sql-database/sql-database-threat-detection) a [speciális adatbiztonsági (ADS)](https://docs.microsoft.com/azure/sql-database/sql-database-advanced-data-security) csomagból.
 
 
@@ -134,8 +134,8 @@ Felügyelt példányok esettanulmányai:
 - [Komatsu](https://customers.microsoft.com/story/komatsu-australia-manufacturing-azure)
 - [KMD](https://customers.microsoft.com/en-ca/story/kmd-professional-services-azure-sql-database)
 - [PowerDETAILS](https://customers.microsoft.com/story/powerdetails-partner-professional-services-azure-sql-database-managed-instance)
-- [Allscripts](https://customers.microsoft.com/story/allscripts-partner-professional-services-azure)  
-Ha jobban meg szeretné ismerni a Azure SQL Database felügyelt példány üzembe helyezéséhez kapcsolódó előnyöket, költségeket és kockázatokat, a Forrester tanulmánya is a következő: [A mi teljes gazdasági hatása](https://azure.microsoft.com/resources/forrester-tei-sql-database-managed-instance).
+- [Allscripts](https://customers.microsoft.com/story/allscripts-partner-professional-services-azure)   
+Ha jobban meg szeretné ismerni a Azure SQL Database felügyelt példány üzembe helyezéséhez kapcsolódó előnyöket, költségeket és kockázatokat, akkor a Forrester tanulmánya is a következő: [Mi a teljes gazdasági hatás](https://azure.microsoft.com/resources/forrester-tei-sql-database-managed-instance).
 
 
 ## <a name="can-i-do-dns-refresh"></a>Használhatok DNS-frissítést? 
@@ -164,7 +164,7 @@ Nem, ez a platform jelenlegi korlátozása. Felügyelt példány létrehozása u
 
 Az időzóna-konfiguráció akkor állítható be, ha a felügyelt példányok első alkalommal lettek kiépítve. A meglévő felügyelt példány időzónájának módosítása nem támogatott. Részletekért lásd: [időzóna korlátozásai](sql-database-managed-instance-timezone.md#limitations).
 
-A megkerülő megoldások közé tartozik egy új felügyelt példány létrehozása a megfelelő időzónával, majd manuális biztonsági mentés és visszaállítás, vagy a javasolt műveletek végrehajtása egy példányos időpontra [történő visszaállítással](https://blogs.msdn.microsoft.com/sqlserverstorageengine/2018/06/07/cross-instance-point-in-time-restore-in-azure-sql-database-managed-instance/).
+A megkerülő megoldások közé tartozik egy új felügyelt példány létrehozása a megfelelő időzónával, majd manuális biztonsági mentés és visszaállítás, vagy a javasolt műveletek végrehajtása egy [példányos időpontra történő visszaállítással](https://blogs.msdn.microsoft.com/sqlserverstorageengine/2018/06/07/cross-instance-point-in-time-restore-in-azure-sql-database-managed-instance/).
 
 
 ## <a name="how-do-i-resolve-performance-issues-with-my-managed-instance"></a>A felügyelt példánnyal kapcsolatos teljesítményproblémák elhárítása Hogyan
@@ -179,7 +179,7 @@ Az adatok betöltése gyakran lassabb a felügyelt példányon, mint SQL Server 
 Igen, nem kell visszafejtenie az adatbázist, hogy vissza tudja állítani a felügyelt példányra. Meg kell adnia egy olyan tanúsítványt/kulcsot, amelyet titkosítási kulcsként használt a forrásrendszer a felügyelt példánya számára, hogy el tudja olvasni az adatait a titkosított biztonságimásolat-fájlból. Két lehetséges módszer:
 
 - *Tanúsítvány feltöltése – oltalmazó a felügyelt példányra*. Ezt csak a PowerShell használatával lehet elvégezni. A [minta parancsfájl](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-migrate-tde-certificate) a teljes folyamatot ismerteti.
-- *Töltse fel az aszimmetrikus kulcs-védőt, hogy Azure Key Vault (AKV) és pont felügyelt példánya*legyen. Ez a megközelítés hasonlít a saját kulcsú (BYOK) TDE használati esetére, amely a AKV-integrációt is használja a titkosítási kulcs tárolásához. Ha nem szeretné a kulcsot titkosítási kulcsként használni, és csak azt szeretné, hogy a kulcs elérhető legyen a felügyelt példányok számára a titkosított adatbázis (ok) visszaállításához, kövesse az [BYOK-TDE beállításához](https://docs.microsoft.com/azure/sql-database/transparent-data-encryption-azure-sql#manage-transparent-data-encryption-in-the-azure-portal)szükséges utasításokat, és ne jelölje be a *kijelölt kulcs kiválasztásának engedélyezése jelölőnégyzetet. az alapértelmezett TDE-védő*.
+- *Töltse fel az aszimmetrikus kulcs-védőt, hogy Azure Key Vault (AKV) és pont felügyelt példánya*legyen. Ez a megközelítés hasonlít a saját kulcsú (BYOK) TDE használati esetére, amely a AKV-integrációt is használja a titkosítási kulcs tárolásához. Ha nem szeretné a kulcsot titkosítási kulcsként használni, és csak azt szeretné, hogy a kulcs elérhető legyen a felügyelt példányok számára a titkosított adatbázis (ok) visszaállításához, kövesse az [BYOK-TDE beállításához](https://docs.microsoft.com/azure/sql-database/transparent-data-encryption-azure-sql#manage-transparent-data-encryption)szükséges utasításokat, és ne jelölje be a *kijelölt kulcs kiválasztásának engedélyezése jelölőnégyzetet. az alapértelmezett TDE-védő*.
 
 Miután a titkosítási védő elérhetővé vált a felügyelt példány számára, folytathatja a szabványos adatbázis-visszaállítási eljárást.
 

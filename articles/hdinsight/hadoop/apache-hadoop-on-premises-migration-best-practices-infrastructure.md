@@ -1,5 +1,5 @@
 ---
-title: Helyszíni Apache Hadoop-fürtök migrálása az Azure HDInsight-infrastruktúrába
+title: 'Infrastruktúra: helyszíni Apache Hadoop az Azure HDInsight'
 description: Ismerje meg a helyszíni Hadoop-fürtök Azure HDInsight való áttelepítésére vonatkozó ajánlott eljárásokat.
 author: hrasheed-msft
 ms.reviewer: jasonh
@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: hrasheed
-ms.openlocfilehash: e35917a7eb7b2e38fcc2689f6fe838ec6529428a
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: adc0e5f5eef41dcb1f826ffbf0cfe91a937fac01
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71087451"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73499222"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---infrastructure-best-practices"></a>Helyszíni Apache Hadoop-fürtök migrálása az Azure HDInsight-infrastruktúrára – ajánlott eljárások
 
@@ -47,7 +47,7 @@ A helyszíni fürtökben elérhető, de nem a HDInsight-fürtök részét képez
 |Légáramlás|IaaS vagy HDInsight Edge-csomópont
 |Alluxio|IaaS  
 |Arcadia|IaaS 
-|Atlas|Nincs (csak HDP)
+|Atlaszi|Nincs (csak HDP)
 |Datameer|HDInsight Edge-csomópont
 |Datastax (Cassandra)|IaaS (alternatív CosmosDB az Azure-on)
 |DataTorrent|IaaS 
@@ -63,7 +63,7 @@ A helyszíni fürtökben elérhető, de nem a HDInsight-fürtök részét képez
 |R|PaaS 
 |SAS|IaaS 
 |Vertica|IaaS (alternatív SQLDW az Azure-on)
-|A tableau|IaaS 
+|Tableau|IaaS 
 |Vízvonal|HDInsight Edge-csomópont
 |StreamSets|HDInsight Edge 
 |Palantír|IaaS 
@@ -87,7 +87,7 @@ A HDInsight előre megírt parancsfájlokat biztosít a következő összetevők
 - A Solr telepítése
 - A Giraph telepítése
 - Struktúra-kódtárak előzetes betöltése
-- A Mono telepítése vagy frissítése
+- Mono telepítése vagy frissítése
 
 > [!Note]  
 > A HDInsight nem biztosít közvetlen támogatást a parancsfájl-műveletek használatával telepített egyéni Hadoop összetevőkhöz vagy összetevőkhöz.
@@ -102,7 +102,7 @@ További információkért tekintse át a következő cikkeket:
 
 ## <a name="customize-hdinsight-configs-using-bootstrap"></a>HDInsight-konfigurációk testreszabása a bootstrap használatával
 
-A konfigurációs fájlokban lévő konfigurációk módosításai `core-site.xml`, például a, `hive-site.xml` és `oozie-env.xml` a bootstrap használatával hozhatók létre. A következő szkript egy példa a PowerShell az [Module](https://docs.microsoft.com/powershell/azure/new-azureps-module-az) parancsmag [New-AzHDInsightClusterConfig](https://docs.microsoft.com/powershell/module/az.hdinsight/new-azhdinsightcluster)használatával:
+A konfigurációs fájlokban lévő konfigurációk, például a `core-site.xml`, a `hive-site.xml` és a `oozie-env.xml` konfigurációjában a bootstrap használatával lehet elvégezni a módosításokat. A következő szkript egy példa a PowerShell az [Module](https://docs.microsoft.com/powershell/azure/new-azureps-module-az) parancsmag [New-AzHDInsightClusterConfig](https://docs.microsoft.com/powershell/module/az.hdinsight/new-azhdinsightcluster)használatával:
 
 ```powershell
 # hive-site.xml configuration
@@ -168,7 +168,7 @@ A HDInsight új vagy meglévő Azure-Virtual Networkhoz is hozzáadhatók. Ha a 
 További információkért tekintse át a következő cikkeket:
 
 - [Azure Virtual-Networks – áttekintés](../../virtual-network/virtual-networks-overview.md)
-- [Azure virtuális hálózat használatával Azure HDInsight kiterjesztése](../hdinsight-plan-virtual-network-deployment.md)
+- [Azure HDInsight kiterjesztése Azure virtuális hálózat használatával](../hdinsight-plan-virtual-network-deployment.md)
 
 ## <a name="securely-connect-to-azure-services-with-azure-virtual-network-service-endpoints"></a>Biztonságos kapcsolódás az Azure-szolgáltatásokhoz az Azure Virtual Network Service-végpontokkal
 

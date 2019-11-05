@@ -1,34 +1,34 @@
 ---
-title: 'Gyors útmutató: Apache Spark-fürt létrehozása az Azure HDInsight az Azure CLI-vel'
-description: Ez a rövid útmutató bemutatja, hogyan Apache Spark-fürt létrehozása az Azure HDInsight az Azure CLI használatával.
+title: 'Rövid útmutató: Apache Spark-fürtök az Azure CLI-vel – Azure HDInsight'
+description: Ez a rövid útmutató bemutatja, hogyan hozhat létre Apache Spark-fürtöt az Azure HDInsight az Azure CLI használatával.
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: quickstart
 ms.date: 06/12/2019
 ms.author: hrasheed
-ms.openlocfilehash: 72bdab9d7fb5c3019d97ffc4c92257c49ec2b8e5
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 71b5e9f0ece79633673b183ca7288852f42ca3c0
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67066251"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73494710"
 ---
-# <a name="quickstart-create-apache-spark-cluster-in-azure-hdinsight-using-azure-cli"></a>Gyors útmutató: Az Apache Spark-fürt létrehozása az Azure HDInsight, Azure CLI használatával
+# <a name="quickstart-create-apache-spark-cluster-in-azure-hdinsight-using-azure-cli"></a>Rövid útmutató: Apache Spark-fürt létrehozása az Azure HDInsight az Azure CLI használatával
 
-Ebben a rövid útmutatóban megismerheti, Apache Spark-fürt létrehozása az Azure HDInsight, Azure CLI használatával. Az Apache Spark a memóriában végzett feldolgozás segítségével teszi lehetővé a gyors adatelemzést és fürtszámítást. A [az Azure parancssori felület (CLI)](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) van a Microsoft többplatformos parancssori felülete Azure-erőforrások kezeléséhez.
+Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre Apache Spark-fürtöt az Azure HDInsight az Azure CLI használatával. Az Apache Spark a memóriában végzett feldolgozás segítségével teszi lehetővé a gyors adatelemzést és fürtszámítást. Az [Azure parancssori felülete (CLI)](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) a Microsoft többplatformos parancssori felülete az Azure-erőforrások kezeléséhez.
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Azure CLI. Ha még nem telepítette az Azure CLI-vel, tekintse meg [az Azure CLI telepítése](https://docs.microsoft.com/cli/azure/install-azure-cli) lépéseit.
+Azure CLI-vel. Ha még nem telepítette az Azure CLI-t, olvassa el a következő témakört: [Az Azure CLI telepítése](https://docs.microsoft.com/cli/azure/install-azure-cli) .
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-## <a name="create-an-apache-spark-cluster"></a>Az Apache Spark-fürt létrehozása
+## <a name="create-an-apache-spark-cluster"></a>Apache Spark-fürt létrehozása
 
-1. Jelentkezzen be az Azure-előfizetéshez. Ha azt tervezi, hogy az Azure Cloud Shell használatához, majd egyszerűen válassza **kipróbálás** a kódblokk jobb felső sarkában. Más esetben adja meg az alábbi parancsot:
+1. Jelentkezzen be az Azure-előfizetésbe. Ha azt tervezi, hogy Azure Cloud Shell használni, egyszerűen válassza ki a **kipróbálom** lehetőséget a kód blokk jobb felső sarkában. Máskülönben adja meg az alábbi parancsot:
 
     ```azurecli-interactive
     az login
@@ -37,7 +37,7 @@ Azure CLI. Ha még nem telepítette az Azure CLI-vel, tekintse meg [az Azure CLI
     # az account set --subscription "SUBSCRIPTIONID"
     ```
 
-2. Állítsa be a környezeti változókat. Ebben a rövid útmutatóban változó használatát Bash alapul. Más környezetek enyhe változata lesz szükség. Cserélje le RESOURCEGROUPNAME, a hely, a CLUSTERNAME, a STORAGEACCOUNTNAME és a JELSZÓT az alábbi kódrészlet a kívánt értékeket. Ezután írja be a környezeti változók beállítása CLI-parancsokat.
+2. Környezeti változók beállítása Az ebben a rövid útmutatóban szereplő változók használata bash-alapú. Más környezetek esetében kisebb eltérésekre lesz szükség. Cserélje le a RESOURCEGROUPNAME, a LOCATION, a CLUSTERNAME, a STORAGEACCOUNTNAME és a PASSWORD értéket az alábbi kódrészletbe a kívánt értékekkel. Ezután írja be a CLI-parancsokat a környezeti változók beállításához.
 
     ```azurecli-interactive
     export resourceGroupName=RESOURCEGROUPNAME
@@ -54,7 +54,7 @@ Azure CLI. Ha még nem telepítette az Azure CLI-vel, tekintse meg [az Azure CLI
     export componentVersion=Spark=2.3
     ```
 
-3. Az erőforráscsoport létrehozásához írja be az alábbi parancsot:
+3. Hozza létre az erőforráscsoportot az alábbi parancs beírásával:
 
     ```azurecli-interactive
     az group create \
@@ -62,7 +62,7 @@ Azure CLI. Ha még nem telepítette az Azure CLI-vel, tekintse meg [az Azure CLI
         --name $resourceGroupName
     ```
 
-4. Hozzon létre egy Azure storage-fiókot az alábbi parancs beírásával:
+4. Hozzon létre egy Azure Storage-fiókot az alábbi parancs beírásával:
 
     ```azurecli-interactive
     az storage account create \
@@ -74,7 +74,7 @@ Azure CLI. Ha még nem telepítette az Azure CLI-vel, tekintse meg [az Azure CLI
         --sku Standard_LRS
     ```
 
-5. Bontsa ki az elsődleges kulcsot az Azure storage-fiókból, és tárolja egy változóban az alábbi parancs beírásával:
+5. Bontsa ki az elsődleges kulcsot az Azure Storage-fiókból, és tárolja egy változóban az alábbi parancs beírásával:
 
     ```azurecli-interactive
     export AZURE_STORAGE_KEY=$(az storage account keys list \
@@ -83,7 +83,7 @@ Azure CLI. Ha még nem telepítette az Azure CLI-vel, tekintse meg [az Azure CLI
         --query [0].value -o tsv)
     ```
 
-6. Az alábbi parancs megadásával hozzon létre egy Azure storage-tároló:
+6. Hozzon létre egy Azure Storage-tárolót az alábbi parancs beírásával:
 
     ```azurecli-interactive
     az storage container create \
@@ -92,7 +92,7 @@ Azure CLI. Ha még nem telepítette az Azure CLI-vel, tekintse meg [az Azure CLI
         --account-name $AZURE_STORAGE_ACCOUNT
     ```
 
-7. Az Apache Spark-fürt létrehozása a következő parancs beírásával:
+7. Hozza létre a Apache Spark-fürtöt a következő parancs beírásával:
 
     ```azurecli-interactive
     az hdinsight create \
@@ -114,9 +114,9 @@ Azure CLI. Ha még nem telepítette az Azure CLI-vel, tekintse meg [az Azure CLI
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Miután végzett a gyors üzembe helyezéssel, érdemes törölni a fürtöt. A HDInsight az Azure Storage szolgáltatásban tárolja az adatokat, így biztonságosan törölhet olyan fürtöket, amelyek nincsenek használatban. Ráadásul a HDInsight-fürtök akkor is díjkötelesek, amikor éppen nincsenek használatban. Mivel a fürt költsége a sokszorosa a tároló költségeinek, gazdaságossági szempontból is ésszerű törölni a használaton kívüli fürtöket.
+A gyors üzembe helyezés befejezése után érdemes lehet törölni a fürtöt. A HDInsight az Azure Storage szolgáltatásban tárolja az adatokat, így biztonságosan törölhet olyan fürtöket, amelyek nincsenek használatban. Ráadásul a HDInsight-fürtök akkor is díjkötelesek, amikor éppen nincsenek használatban. Mivel a fürt költsége a sokszorosa a tároló költségeinek, gazdaságossági szempontból is ésszerű törölni a használaton kívüli fürtöket.
 
-Adja meg az összes vagy néhány erőforrások eltávolítására a következő parancsokat:
+Az erőforrások eltávolításához adja meg az alábbi parancsok mindegyikét vagy egy részét:
 
 ```azurecli-interactive
 # Remove cluster
@@ -141,7 +141,7 @@ az group delete \
 
 ## <a name="next-steps"></a>További lépések
 
-Ebből a gyors útmutatóból megtudhatta, hogyan az Apache Spark-fürt létrehozása az Azure HDInsight, Azure CLI használatával.  Folytassa a következő oktatóanyaggal, amelyben megtudhatja, hogyan használhatja a HDInsight Spark-fürtöt interaktív lekérdezések mintaadatokon való futtatására.
+Ebben a rövid útmutatóban megtanulta, hogyan hozhat létre Apache Spark-fürtöt az Azure HDInsight az Azure CLI használatával.  Folytassa a következő oktatóanyaggal, amelyben megtudhatja, hogyan használhatja a HDInsight Spark-fürtöt interaktív lekérdezések mintaadatokon való futtatására.
 
 > [!div class="nextstepaction"]
-> [Az Apache Spark interaktív lekérdezések futtatása](./apache-spark-load-data-run-query.md)
+> [Interaktív lekérdezések futtatása Apache Sparkon](./apache-spark-load-data-run-query.md)

@@ -1,7 +1,7 @@
 ---
 title: 'K – fürtözés: modulok leírása'
-titleSuffix: Azure Machine Learning service
-description: Megtudhatja, hogyan használhatja a Azure Machine Learning Service-ben a fürtözési modelleket a "K-Mean" fürtszolgáltatási modul használatával.
+titleSuffix: Azure Machine Learning
+description: Megtudhatja, hogyan használhatja a Azure Machine Learning a fürtözési modelleket a fürtözési modellek betanításához.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,16 +9,16 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/06/2019
-ms.openlocfilehash: bb39a57f565a542e5106b7ba14e58bc39041f53d
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: 4634519f55582a3184472d28acfd98fa849be86a
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72693114"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73497760"
 ---
 # <a name="module-k-means-clustering"></a>Modul: K – fürtözést jelenti
 
-Ez a cikk azt ismerteti, hogyan használható a *k-Azure Machine learning Studio fürtszolgáltatási* modul a nem betanított k-means fürtözési modell létrehozásához. 
+Ez a cikk azt ismerteti, hogyan használható a Azure Machine Learning Designer (előzetes verzió) *"k-Mean" fürtszolgáltatási* modulja egy nem betanított K – fürtözési modell létrehozásához. 
  
 A K-means az egyik legegyszerűbb és legismertebb, nem *felügyelt* tanulási algoritmus. Az algoritmus számos gépi tanulási feladathoz használható, például: 
 
@@ -107,7 +107,7 @@ Amikor feldolgozza a betanítási adatmennyiséget, a K-means algoritmus a véle
   
     -   Ha úgy állítja be az **oktatói módot** , hogy **egyetlen paramétert**adjon meg, vegyen fel egy címkézett adatkészletet, és adja ki a modellt a [vonat-fürtszolgáltatási modell](train-clustering-model.md) modullal.  
   
-### <a name="results"></a>Eredmények
+### <a name="results"></a>Results (Eredmények)
 
 Miután befejezte a modell konfigurálását és betanítását, rendelkezik egy olyan modellel, amelynek használatával pontszámokat lehet előállítani. A modell tanítása több módon is elvégezhető, és az eredmények több módon is megtekinthetők és használhatók: 
 

@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 09/13/2019
 ms.author: rajanaki
-ms.openlocfilehash: 972223815810917684f35c4e99f04e1ab5b882c8
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 68881d57f251d2f26996b2a837780106326ec1d3
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72952120"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73492279"
 ---
 # <a name="upcoming-deprecation-of-dr-between-customer-owned-sites-using-hyper-v-and-between-sites-managed-by-scvmm-to-azure"></a>A Hyper-V és a SCVMM által az Azure-ba felügyelt helyek között a DR.
 
@@ -32,13 +32,13 @@ Ez a cikk ismerteti a közelgő elavult tervet, a kapcsolódó következményeke
 
 - Ha a forgatókönyvek elavultak, a következő szempontok lesznek, kivéve, ha az ügyfél a javasolt lépéseket követi.
 
-    - DR. a SCVMM által felügyelt Hyper-V virtuális gépek között az ügyfél által birtokolt helyek között: a replikálások továbbra is működni fognak, mivel a Hyper-V replika mögöttes funkciója továbbra is működni fog, de az ügyfelek nem tudják megtekinteni, kezelni vagy elvégezni a ny DR-vel kapcsolatos műveleteit a Azure Portal Azure-beli helyreállítási felületén keresztül. 
-    - A SCVMM által az Azure-ba felügyelt Hyper-V virtuális gépek DR. a meglévő replikálások megszakadnak, és az ügyfelek nem tekinthetik meg, kezelhetik és nem hajthatják végre a ny DR kapcsolódó műveleteit a Azure Site Recoveryon keresztül
+    - DR. a SCVMM által felügyelt Hyper-V virtuális gépek között az ügyfél által birtokolt helyek között: a replikálások továbbra is működni fognak, mivel a Hyper-V replika mögöttes funkciója továbbra is működni fog, de az ügyfelek nem tekinthetik meg, kezelhetik és nem hajtanak végre semmilyen DR kapcsolódó műveletet. a Azure Portal Azure-beli helyreállítási felületén keresztül. 
+    - A SCVMM által az Azure-ba felügyelt Hyper-V virtuális gépek DR. a meglévő replikálások megszakadnak, és az ügyfelek nem tekinthetik meg, kezelhetik és nem hajthatják végre a DR kapcsolódó műveleteit a Azure Site Recoveryon keresztül.
 
 
 ## <a name="recommended-actions-to-be-taken"></a>Végrehajtandó javasolt műveletek
 
-Az alábbi alternatív lehetőségekkel biztosíthatja, hogy az ügyfél ne befolyásolja a DR-stratégiáját, ha a forgatókönyv elavult. 
+Az alábbi lehetőségek közül az ügyfélnek biztosítania kell, hogy a DR-stratégiájuk ne legyen hatással a forgatókönyv elavulttá váltása után. 
 
 - A [Hyper-V-gazdagépeken található virtuális gépekhez tartozó Dr célként megkezdheti az Azure használatát](hyper-v-azure-tutorial.md).
 
@@ -48,6 +48,6 @@ Az alábbi alternatív lehetőségekkel biztosíthatja, hogy az ügyfél ne befo
 - Válassza a helyek közötti replikálás folytatását, de használja a mögöttes [Hyper-V replika megoldást](https://docs.microsoft.com/windows-server/virtualization/hyper-v/manage/set-up-hyper-v-replica), de nem fogja tudni kezelni a Dr-konfigurációkat a Azure Portal Azure site Recovery használatával. 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Tervezze meg az elavult alkalmazást, és válasszon egy alternatív lehetőséget, amely az infrastruktúra és a vállalat számára legmegfelelőbb. Ha bármilyen kérdése van, kérjük, lépjen kapcsolatba Microsoft ügyfélszolgálata
 

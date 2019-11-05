@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: conceptual
-ms.date: 08/13/2019
+ms.date: 10/14/2019
 ms.author: diberry
-ms.openlocfilehash: 2147ca2565d5977e3e47d5182627483aa3d8d1b2
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 9a7599cd71c087201b54c594954a6fff377b3e45
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72756104"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73490766"
 ---
 # <a name="features-are-information-about-actions-and-context"></a>A funkciók a műveletekkel és környezettel kapcsolatos információk
 
@@ -56,12 +56,12 @@ A személyre szabás a névterekben rendezett funkciókat veszi igénybe. Ön ha
 Az alábbi példák az alkalmazások által használt szolgáltatások névtereit mutatják be:
 
 * User_Profile_from_CRM
-* Idő
+* Time
 * Mobile_Device_Info
 * http_user_agent
 * VideoResolution
 * UserDeviceInfo
-* Weather
+* Időjárás
 * Product_Recommendation_Ratings
 * current_time
 * NewsArticle_TextAnalytics
@@ -69,7 +69,10 @@ Az alábbi példák az alkalmazások által használt szolgáltatások névterei
 A szolgáltatás névtereit a saját konvenciói szerint nevezheti el, feltéve, hogy érvényes JSON-kulcsok vannak. A névterek a funkciók különálló készletekre való rendszerezésére, valamint a hasonló névvel rendelkező funkciók egyértelműsítse szolgálnak. A névtereket "előtagként" tekintheti meg, amelyet a rendszer a szolgáltatás neveként ad hozzá. A névterek nem ágyazhatók egymásba.
 
 
-A következő JSON-, `user`-, `state`-és `device` a szolgáltatás névtereit. Nyilvános előzetes Megjegyzés: jelenleg az UTF-8-alapú és más betűvel ellátott szolgáltatásbeli névterek nevének használatát javasoljuk. Például `user`, `state`és `device` a `u`, `s`és `d`. A jelenleg azonos első karakterrel rendelkező névterek ütközést okozhatnak a gépi tanuláshoz használt indexekben.
+A következő JSON-, `user`-, `state`-és `device` a szolgáltatás névtereit. 
+
+> [!Note]
+> Jelenleg erősen ajánlott az UTF-8-alapú és más betűvel ellátott szolgáltatásbeli névterek neveinek használata. Például `user`, `state`és `device` a `u`, `s`és `d`. A jelenleg azonos első karakterrel rendelkező névterek ütközést okozhatnak a gépi tanuláshoz használt indexekben.
 
 A JSON-objektumok tartalmazhatnak beágyazott JSON-objektumokat és egyszerű tulajdonságokat/értékeket is. Egy tömb csak akkor szerepelhet, ha a tömb elemei számokból állnak. 
 
@@ -175,7 +178,7 @@ A Rank API-nak küldött műveletek attól függnek, hogy mit próbál személyr
 
 Néhány példa:
 
-|Rendeltetés|Műveletek|
+|Cél|Műveletek|
 |--|--|
 |Személyre szabhatja, hogy mely cikkek legyenek kiemelve a hírek webhelyén.|Minden művelet egy lehetséges újságcikk.|
 |Optimalizálja az ad-elhelyezést egy webhelyen.|Minden művelet elrendezést vagy szabályokat tartalmaz a hirdetések elrendezésének létrehozásához (például felül, a jobb oldalon, a kis képeken és a nagyméretű képeken).|
@@ -316,6 +319,6 @@ A JSON-objektumok tartalmazhatnak beágyazott JSON-objektumokat és egyszerű tu
 }
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [Megerősítő tanulás](concepts-reinforcement-learning.md) 

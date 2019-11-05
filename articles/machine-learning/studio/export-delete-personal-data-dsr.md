@@ -1,7 +1,7 @@
 ---
 title: Adatok exportálása és törlése
-titleSuffix: Azure Machine Learning Studio
-description: Terméken belüli, az Azure Machine Learning Studio által tárolt adatok exportálása és törlése az Azure Portalon keresztül és hitelesített REST API-kon keresztül érhető el. Telemetriai adatokat az Azure adatvédelmi portálon keresztül érhető el. Ez a cikk bemutatja, hogyan.
+titleSuffix: Azure Machine Learning Studio (classic)
+description: A Azure Machine Learning Studio (klasszikus) által tárolt termékbeli adatok a Azure Portalon és a hitelesített REST API-kon keresztül is exportálhatók és törlésre használhatók. A telemetria-adatok az Azure adatvédelmi portálján érhetők el. Ez a cikk bemutatja, hogyan.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
@@ -10,68 +10,68 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 05/25/2018
-ms.openlocfilehash: 827714fea9618724ef058e1f76dc099f692482bc
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a0cc200f69be2362806886aae79ece52c833a43a
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60750106"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73492962"
 ---
-# <a name="export-and-delete-in-product-user-data-from-azure-machine-learning-studio"></a>Exportálás és terméken belüli felhasználói adatok törlése az Azure Machine Learning Studióban
+# <a name="export-and-delete-in-product-user-data-from-azure-machine-learning-studio-classic"></a>Terméken belüli felhasználói adatok exportálása és törlése Azure Machine Learning Studio (klasszikus)
 
-Törölheti vagy a terméken belüli adatok exportálása az Azure Portalon, a Studio felületén, a PowerShell, az Azure Machine Learning Studio által tárolt és a hitelesített REST API-k. Ez a cikk bemutatja, hogyan. 
+A Azure Portal, a Studio (klasszikus) felület, a PowerShell és a hitelesített REST API-k használatával törölheti vagy exportálhatja Azure Machine Learning Studio (klasszikus) tárolt termékeit. Ebből a cikkből megtudhatja, hogyan. 
 
-Az adatvédelem az Azure Portalon keresztül elérhető telemetriai adatokat. 
+A telemetria-adatok az Azure adatvédelmi portálján érhetők el. 
 
 [!INCLUDE [GDPR-related guidance](../../../includes/gdpr-dsr-and-stp-note.md)]
 
 [!INCLUDE [GDPR-related guidance](../../../includes/gdpr-intro-sentence.md)]
 
-## <a name="what-kinds-of-user-data-does-studio-collect"></a>Milyen típusú felhasználói adatok gyűjt Studio?
+## <a name="what-kinds-of-user-data-does-studio-classic-collect"></a>Milyen típusú felhasználói adatokat gyűjt a Studio (klasszikus)?
 
-Ezt a szolgáltatást, a felhasználói adatok áll munkaterületek és telemetriai rekordjait felhasználói interakció a szolgáltatás elérésére jogosult felhasználók adatait.
+A szolgáltatás esetében a felhasználói adatok a munkaterületek elérésére jogosult felhasználók információit és a szolgáltatással való felhasználói interakciók telemetria.
 
-Kétféle felhasználói adatokat a Machine Learning Studio van:
-- **Személyes fiók adatok:** Fiók azonosítói és e-mail-címek az adott fiókhoz tartozó.
-- **Vásárlói adatok:** Elemezheti a feltöltött adatokat.
+A Machine Learning Studio (klasszikus) kétféle felhasználói adattal rendelkezik:
+- **Személyes fiókadatok:** A fiókhoz társított fiók-azonosítók és e-mail-címek.
+- **Ügyféladatok:** Az elemzéshez feltöltött adatértékek.
 
-## <a name="studio-account-types-and-how-data-is-stored"></a>Studio fióktípus esetében és az adatok tárolási módját
+## <a name="studio-classic-account-types-and-how-data-is-stored"></a>A Studio (klasszikus) fióktípus és az adattárolási módok
 
-Nincsenek három típusú fiókok a Machine Learning Studióban. Fiók típusa határozza meg, az adatok tárolási módját, és hogyan törölheti, vagy exportálja azt.
+A Machine Learning Studio (klasszikus) háromféle fiókkal rendelkezik. Az Ön által megadott fiók típusa határozza meg az adattárolás módját, valamint azt, hogy miként lehet törölni vagy exportálni.
 
-- A **Vendég munkaterület** egy ingyenes, névtelen fiók. Jelentkezzen hitelesítő adatok, például e-mail-cím vagy jelszó megadása nélkül.
-    -  Adatok törölve van, a Vendég munkaterület lejárata után.
-    - Vendégfelhasználók exportálhatja a felhasználói felület, a REST API-k vagy a PowerShell csomag keresztül a vásárlói adatokat.
-- A **ingyenes munkaterületet** egy ingyenes fiók bejelentkezik a Microsoft-fiók hitelesítő adatai – egy e-mail címet és jelszót.
-    - Exportálhatja, és törölje a személyes és a vásárlói adatokat, amelyek adattulajdonosi jogokra (vonatkozó DSR) kérelmek vonatkoznak.
-    - A felhasználói felület, a REST API-k vagy a PowerShell csomag ügyféladat exportálhatja.
-    - Ingyenes munkaterületek nem használja az Azure AD-fiókokat, telemetriai adatok exportálhatók a adatvédelmi portál használatával.
-    - Ha törli a munkaterületet, minden személyes vásárlói adatokat törli.
-- A **standard munkaterületen** egy díjköteles fiók bejelentkezési hitelesítő adatok eléréséhez.
-    - Exportálhatja, és törölje a személyes és a vásárlói adatokat, amelyekre kapcsolatos DSR-kérelmekre.
-    - Az adatvédelem az Azure Portalon keresztül férhet hozzá adataihoz
-    - Exportálhatja a személyes és a vásárlói adatokat a felhasználói felület, a REST API-k vagy a PowerShell-csomag
-    - Törölheti az adatokat az Azure Portalon.
+- A **vendég munkaterület** egy ingyenes, Névtelen fiók. A regisztrációhoz hitelesítő adatok, például e-mail cím vagy jelszó megadása nélkül regisztrálhat.
+    -  Az adattisztítás a vendég munkaterület lejárta után törlődik.
+    - A vendég felhasználó a felhasználói felület, a REST API-k vagy a PowerShell-csomag segítségével exportálhatja az ügyféladatokat.
+- Az **ingyenes munkaterület** ingyenes fiók, amellyel bejelentkezhet Microsoft-fiók hitelesítő adataival – e-mail-cím és jelszó.
+    - A személyes és az ügyféladatokat is exportálhatja és törölheti, amelyekre az adattulajdonosi jogosultsági (DSR) kérelmek vonatkoznak.
+    - Az ügyféladatokat a felhasználói felület, a REST API-k vagy a PowerShell-csomag használatával exportálhatja.
+    - Az Azure AD-fiókokat nem használó ingyenes munkaterületek esetében az telemetria az adatvédelmi portálon lehet exportálni.
+    - Ha törli a munkaterületet, az összes személyes ügyfél-adatelemet törli.
+- A **standard munkaterület** a bejelentkezési hitelesítő adatokkal való hozzáféréshez használt fizetős fiók.
+    - A személyes és az ügyféladatokat is exportálhatja és törölheti, amelyekre a DSR-kérelmek vonatkoznak.
+    - Az adatok az Azure Privacy Portalon keresztül érhetők el
+    - Személyes és ügyféladatokat a felhasználói felületen, a REST API-kon vagy a PowerShell-csomagon keresztül is exportálhatunk
+    - Az adatait törölheti a Azure Portalban.
 
-## <a name="delete"></a>A Studio munkaterület adatainak törlése 
+## <a name="delete"></a>Munkaterület-adattárolás törlése a Studióban (klasszikus) 
 
-### <a name="delete-individual-assets"></a>Egyes eszközök törlése
+### <a name="delete-individual-assets"></a>Egyedi eszközök törlése
 
-Felhasználók eszközöket egy adott munkaterület törléséhez válassza ki azokat, és válassza a Törlés gombra.
+A felhasználók törölhetik a munkaterületen lévő eszközöket, ha kijelölik őket, majd a Törlés gombra kattintanak.
 
-![A Machine Learning Studióban eszközök törlése](./media/export-delete-personal-data-dsr/delete-studio-asset.png)
+![Eszközök törlése Machine Learning Studio (klasszikus)](./media/export-delete-personal-data-dsr/delete-studio-asset.png)
 
-### <a name="delete-an-entire-workspace"></a>Egy teljes munkaterület törlése
+### <a name="delete-an-entire-workspace"></a>Teljes munkaterület törlése
 
-Felhasználók is törölheti a teljes munkaterület:
-- Fizetős munkaterület: Törölje az Azure Portalon keresztül.
-- Ingyenes munkaterületet: A Törlés gomb a **beállítások** ablaktáblán.
+A felhasználók a teljes munkaterületet is törölhetik:
+- Fizetős munkaterület: törölje a Azure Portalon keresztül.
+- Szabad munkaterület: használja a Delete (Törlés) gombot a **Beállítások** ablaktáblán.
 
-![A Machine Learning Studio ingyenes munkaterület törlése](./media/export-delete-personal-data-dsr/delete-studio-data-workspace.png)
+![Ingyenes munkaterület törlése Machine Learning Studio (klasszikus)](./media/export-delete-personal-data-dsr/delete-studio-data-workspace.png)
  
-## <a name="export-studio-data-with-powershell"></a>Studio-adatok exportálása a PowerShell-lel
-Minden információt az Azure Machine Learning Studio-parancsokkal egy hordozható formátumba exportálhat a PowerShell használatával. További információ: a [PowerShell-modul az Azure Machine Learning Studio](powershell-module.md) cikk.
+## <a name="export-studio-classic-data-with-powershell"></a>Studio-(klasszikus) adatexportálás a PowerShell-lel
+A PowerShell használatával az összes adatot egy hordozható formátumba exportálhatja a Azure Machine Learning Studio klasszikus verziójából a parancsokkal. További információ: [Azure Machine learning Studio (klasszikus) PowerShell-modulja](powershell-module.md) .
 
 ## <a name="next-steps"></a>További lépések
 
-Webszolgáltatások és számlázási kötelezettségvállalási csomag dokumentációjáért lásd: [Azure Machine Learning Studio REST API-referencia](https://docs.microsoft.com/rest/api/machinelearning/). 
+A webszolgáltatásokra és a kötelezettségvállalási terv számlázására vonatkozó dokumentációért lásd: [Azure Machine learning Studio (klasszikus) REST API-hivatkozás](https://docs.microsoft.com/rest/api/machinelearning/). 

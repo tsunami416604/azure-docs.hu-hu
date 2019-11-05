@@ -1,7 +1,7 @@
 ---
 title: Extact-szöveg egyeztetése entitások – LUIS
 titleSuffix: Azure Cognitive Services
-description: Ismerje meg, hogy egy lista entitás segítségével egy szót vagy kifejezést a LUIS-címke változatok hozzáadása.
+description: Megtudhatja, hogyan adhat hozzá egy list entitást egy szó vagy kifejezés LUIS Label-változatának elősegítéséhez.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -10,101 +10,103 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 09/05/2019
 ms.author: diberry
-ms.openlocfilehash: a722ce39a679fa13e1fe849c46b44f786ea5ee42
-ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
+ms.openlocfilehash: f3c99856eaffc454754618a1eac34630b985a77e
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70390272"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73499479"
 ---
-# <a name="use-a-list-entity-to-increase-entity-detection"></a>Egy lista entitás használatával növelheti az entitás észlelése 
-Ez a cikk a [lista entitások](luis-concept-entity-types.md) használatát mutatja be az entitások észlelésének növeléséhez. Lista entitások nem kell címkével ellátott, mivel ezek a feltételek pontosan egyeznie kell.  
+# <a name="use-a-list-entity-to-increase-entity-detection"></a>Entitások észlelésének megnövelésére szolgáló lista entitás használata 
+Ez a cikk a [lista entitások](luis-concept-entity-types.md) használatát mutatja be az entitások észlelésének növeléséhez. Az entitások listázása nem szükséges, mivel azok pontosan egyeznek a feltételekkel.  
+
+[!INCLUDE [Waiting for LUIS portal refresh](./includes/wait-v3-upgrade.md)]
 
 Ebben a cikkben az alábbiakkal ismerkedhet meg:
 
 > [!div class="checklist"]
 > * Lista entitás létrehozása 
-> * Normalizált értékeket és a szinonimák hozzáadása
-> * Továbbfejlesztett entitás azonosító ellenőrzése
+> * Normalizált értékek és szinonimák hozzáadása
+> * Továbbfejlesztett entitás-azonosító ellenőrzése
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 > [!div class="checklist"]
-> * Legújabb [Node.js](https://nodejs.org)
-> * [A LUIS alkalmazás HomeAutomation](luis-get-started-create-app.md). Ha nem rendelkezik a kezdőlap Automation létrehozott alkalmazást, hozzon létre egy új alkalmazást, és adja hozzá az előre összeállított tartományt **HomeAutomation**. Tanítsa be és tegye közzé az alkalmazást. 
-> * [AuthoringKey](luis-concept-keys.md#authoring-key), [EndpointKey](luis-concept-keys.md#endpoint-key) (ha sokszor lekérdezése), alkalmazás-azonosító, verzió:, és [régió](luis-reference-regions.md) a LUIS alkalmazás.
+> * Legújabb [Node. js](https://nodejs.org)
+> * [HOMEAUTOMATION Luis-alkalmazás](luis-get-started-create-app.md). Ha nincs létrehozva a Home Automation alkalmazás, hozzon létre egy új alkalmazást, és adja hozzá az előre elkészített tartományi **HomeAutomation**. Tanítsa be és tegye közzé az alkalmazást. 
+> * [AuthoringKey](luis-concept-keys.md#authoring-key), [EndpointKey](luis-concept-keys.md#endpoint-key) (ha többször kérdezi le), az alkalmazás azonosítóját, a Version ID-t és a [régiót](luis-reference-regions.md) a Luis-alkalmazáshoz.
 
 > [!Tip]
-> Ha Ön még nem rendelkezik előfizetéssel, regisztrálhat egy [ingyenes fiókot](https://azure.microsoft.com/free/).
+> Ha még nem rendelkezik előfizetéssel, regisztrálhat egy [ingyenes fiókot](https://azure.microsoft.com/free/).
 
 A cikkben szereplő összes kód az [Azure-Samples GitHub-tárházban](https://github.com/Azure-Samples/cognitive-services-language-understanding/tree/master/documentation-samples/tutorial-list-entity)érhető el. 
 
-## <a name="use-homeautomation-app"></a>HomeAutomation alkalmazás használata
-Meghatározhatja az eszközök, például lámpa, szórakoztató rendszerek és a környezet azt szabályozza, például fűtés és hűtéssel HomeAutomation alkalmazás lehetőséget biztosít. Ezek a rendszerek rendelkeznie több különböző gyártó neveket, beceneveinek, Betűszavak és szleng kifejezéseket is tartalmazhat. 
+## <a name="use-homeautomation-app"></a>HomeAutomation-alkalmazás használata
+A HomeAutomation-alkalmazás lehetővé teszi az eszközök, például a fények, a szórakoztató rendszerek és a környezeti vezérlők, például a fűtés és a hűtés szabályozását. Ezek a rendszerek több különböző névvel rendelkeznek, amelyek magukban foglalhatják a gyártó nevét, a beceneveket, a betűszókat és a szlenget. 
 
-Egy másik kulturális környezetek és a demográfiai sok nevet tartalmaz, a rendszer az okosórák. Egy thermostat hűtéssel és a egy ház vagy épület fűtésrendszerek is szabályozhatja.
+Egy olyan rendszer, amely számos névvel rendelkezik a különböző kultúrákban és a demográfiai kapcsolatban, a termosztát. A Termosztátok alkalmasak a hűtési és a fűtő rendszerek szabályozására egy adott házban vagy épületben.
 
-Ideális esetben kell feloldhatónak lennie a következő utterances az előre összeállított entitások **HomeAutomation.Device**:
+Ideális esetben a következő hosszúságú kimondott szöveg kell feloldania az előre elkészített entitás **HomeAutomation. eszközén**:
 
-|#|Utterance (kifejezés)|azonosított entitás|pontszám|
+|#|utterance|azonosított entitás|pontszám|
 |--|--|--|--|
-|1|Kapcsolja be az ac|HomeAutomation.Device – "ac"|0.8748562|
-|2|Kapcsolja be a megadott hőtérképrészlet|HomeAutomation.Device – "heat"|0.784990132|
-|3|Győződjön meg arról, hogy annál alacsonyabb|||
+|1|az AC bekapcsolása|HomeAutomation. Device-"AC"|0,8748562|
+|2|a hő kikapcsolása|HomeAutomation. Device – "Heat"|0,784990132|
+|3|legyen hidegebb|||
 
-Az első két utterances képezze le a különböző eszközökhöz. A harmadik utterance (kifejezés), "Győződjön meg arról, hogy annál alacsonyabb", egy eszköz nem leképezése, de ehelyett kér az eredményt. A LUIS nem ismert, hogy "annál, alacsonyabb" kifejezés azt jelenti, hogy az okosórák a kért eszköz. Ideális esetben a LUIS kell feloldhatónak lennie az összes alábbi utterances ugyanarra az eszközre. 
+Az első két hosszúságú kimondott szöveg a különböző eszközökre mutat. A harmadik Kimondás, a "hidegebb", nem egy eszközre van leképezve, hanem egy eredményt kér. LUIS nem tudja, hogy a "hidegebb" kifejezés azt jelenti, hogy a termosztát a kért eszköz. Ideális esetben a LUIS-nek fel kell oldania az összes ilyen hosszúságú kimondott szöveg ugyanarra az eszközre. 
 
-## <a name="use-a-list-entity"></a>Egy lista entitás használja
-A HomeAutomation.Device entitás kiválóan alkalmazható az eszközök vagy a nevek néhány változata kevés. Irodaépület konferenciatermére vagy campus az eszköz nevét a HomeAutomation.Device entitás hasznosságát túli növekszik. 
+## <a name="use-a-list-entity"></a>Lista entitás használata
+A HomeAutomation. Device entitás ideális kis számú eszközhöz vagy a nevek néhány változatához. Az irodaház vagy az Egyetem esetében az eszközök nevei a HomeAutomation. Device entitás hasznosságán túl növekednek. 
 
-A **entitás listában** azért megfelelő választás az ebben a forgatókönyvben egy épületben vagy campus eszköz feltételkészlet olyan ismert készlete, akkor is, ha egy hatalmas beállítása. Egy lista entitás használatával LUIS is lehetséges értéket kapják meg a készletet az okosórák, és csak az egyetlen eszköz "thermostat" lefelé oldható meg. 
+A **List entitás** jó választás ehhez a forgatókönyvhöz, mert egy épületben vagy Egyetemen található eszköz használati feltételei egy ismert készlet, még akkor is, ha ez egy hatalmas készlet. A List entitás használatával a LUIS bármely lehetséges értéket megkaphat a készletben a termosztáthoz, és csak az egyetlen eszköz "termosztát"-ra oldható fel. 
 
 Ez a cikk a termosztáttal rendelkező entitások listáját fogja létrehozni. Ebben a cikkben a termosztát alternatív nevei a következők: 
 
-|alternatív neveket, az okosórák|
+|alternatív nevek a termosztáthoz|
 |--|
 | AC |
-| / c|
-| a-c|
-|melegítőkráter|
-|gyakori elérésű|
-|hotter|
-|ritka elérésű|
-|annál alacsonyabb|
+| a/c|
+| a – c|
+|Bojler|
+|gyakori|
+|melegebb|
+|Hideg|
+|hidegebb|
 
-Ha a LUIS határozza meg egy új lehetőség gyakran kell majd egy [kifejezéslista](luis-concept-feature.md#how-to-use-phrase-lists) van még jobb válasz.
+Ha LUIS új alternatívát kell meghatároznia, akkor a [kifejezések listája](luis-concept-feature.md#how-to-use-phrase-lists) jobb válasz.
 
 ## <a name="create-a-list-entity"></a>Lista entitás létrehozása
-Hozzon létre egy Node.js-fájlt, és másolja az alábbi kódot a fájlba. Módosítsa a authoringKey, appId, versionId és régióját.
+Hozzon létre egy Node. js-fájlt, és másolja a következő kódot. Módosítsa a authoringKey, a appId, a versionId és a régió értékét.
 
    [!code-javascript[Create DevicesList List Entity](~/samples-luis/documentation-samples/tutorial-list-entity/add-entity-list.js "Create DevicesList List Entity")]
 
-A következő paranccsal telepítse az NPM függőségeit, és futtassa a kódot a lista entitás létrehozása:
+A következő parancs használatával telepítse a NPM-függőségeket, és futtassa a kódot a lista entitás létrehozásához:
 
 ```console
 npm install && node add-entity-list.js
 ```
 
-A Futtatás kimenete a lista entitás azonosítója:
+A Run kimenete a lista entitás azonosítója:
 
 ```console
 026e92b3-4834-484f-8608-6114a83b03a6
 ```
 
-## <a name="train-the-model"></a>A modell betanítása
-A LUIS betanításához ahhoz, hogy az új lista befolyásolhatja a lekérdezés eredményeit. Képzési az képzés, majd állapotának ellenőrzése, ha a betanítási történik egy kétlépéses folyamat. Számos modellt az alkalmazás taníthat be néhány percet is igénybe vehet. A következő kód betanítja az alkalmazást, majd megvárja, amíg a képzés létrejött. A kód várakozási és újrapróbálkozási stratégiát használ, a 429-es elkerülése érdekében "túl sok kérelem" hiba történt. 
+## <a name="train-the-model"></a>A modell tanítása
+A LUIS betanítása ahhoz, hogy az új lista hatással legyen a lekérdezés eredményeire. A képzés a betanítás kétrészes folyamata, majd az állapot ellenőrzése, ha a képzés elkészült. Számos modellel rendelkező alkalmazás eltarthat néhány percet a betanításhoz. A következő kód bevezeti az alkalmazást, majd megvárja a képzés sikerességét. A kód egy várakozási és újrapróbálkozási stratégiát használ, hogy elkerülje az 429 "túl sok kérés" hibát. 
 
-Hozzon létre egy Node.js-fájlt, és másolja az alábbi kódot a fájlba. Módosítsa a authoringKey, appId, versionId és régióját.
+Hozzon létre egy Node. js-fájlt, és másolja a következő kódot. Módosítsa a authoringKey, a appId, a versionId és a régió értékét.
 
    [!code-javascript[Train LUIS](~/samples-luis/documentation-samples/tutorial-list-entity/train.js "Train LUIS")]
 
-Az alábbi parancs segítségével futtassa a kódot az alkalmazás betanítása:
+A következő paranccsal futtathatja a kódot az alkalmazás betanításához:
 
 ```console
 node train.js
 ```
 
-A Futtatás kimenete a képzés a LUIS-modell minden egyes ismétléskor állapotát. A következő végrehajtási képzési csak egy ellenőrzés szükséges:
+A Run kimenete a LUIS modellek betanításának minden egyes ismétlésének állapota. A következő végrehajtáshoz csak egy vizsgálat szükséges a képzéshez:
 
 ```console
 1 trained = true
@@ -123,19 +125,19 @@ A Futtatás kimenete a képzés a LUIS-modell minden egyes ismétléskor állapo
 
 ```
 ## <a name="publish-the-model"></a>A modell közzététele
-A lista entitás érhető el a végpontot, tegye közzé.
+Tegye közzé, hogy a lista entitás elérhető legyen a végpontról.
 
-Hozzon létre egy Node.js-fájlt, és másolja az alábbi kódot a fájlba. Módosítsa a endpointKey, appId és régióját. A authoringKey is használhatja, ha nem tervezi, hogy ez a fájl túl a kvótahatár hívja.
+Hozzon létre egy Node. js-fájlt, és másolja a következő kódot. Módosítsa a endpointKey, a appId és a régió értékét. A authoringKey akkor használhatja, ha nem tervezi a fájl meghívását a kvóta korlátján túl.
 
    [!code-javascript[Publish LUIS](~/samples-luis/documentation-samples/tutorial-list-entity/publish.js "Publish LUIS")]
 
-Az alábbi parancs segítségével futtassa a kódot az alkalmazás lekérdezéséhez:
+A következő paranccsal futtathatja a kódot az alkalmazás lekérdezéséhez:
 
 ```console
 node publish.js
 ```
 
-A következő kimenet tartalmazza a lekérdezéseket a végpont URL-címe. Valódi JSON-eredményeket a valódi appID tartalmazhat. 
+A következő kimenet tartalmazza az összes lekérdezés végpontjának URL-címét. A valós JSON-eredmények közé tartozik a valódi appID. 
 
 ```json
 { 
@@ -150,19 +152,19 @@ A következő kimenet tartalmazza a lekérdezéseket a végpont URL-címe. Való
 ```
 
 ## <a name="query-the-app"></a>Az alkalmazás lekérdezése 
-A lekérdezés a végpontot, hogy igazolja, hogy a lista entitás segít megállapítani az eszköz típusától, a LUIS az alkalmazásból.
+Az alkalmazás lekérdezése a végpontról annak bizonyítására, hogy a List entitás segíti a LUIS az eszköz típusának meghatározását.
 
-Hozzon létre egy Node.js-fájlt, és másolja az alábbi kódot a fájlba. Módosítsa a endpointKey, appId és régióját. A authoringKey is használhatja, ha nem tervezi, hogy ez a fájl túl a kvótahatár hívja.
+Hozzon létre egy Node. js-fájlt, és másolja a következő kódot. Módosítsa a endpointKey, a appId és a régió értékét. A authoringKey akkor használhatja, ha nem tervezi a fájl meghívását a kvóta korlátján túl.
 
    [!code-javascript[Query LUIS](~/samples-luis/documentation-samples/tutorial-list-entity/query.js "Query LUIS")]
 
-A következő paranccsal futtassa a kódot, és az alkalmazás lekérdezést:
+Futtassa a következő parancsot a kód futtatásához és az alkalmazás lekérdezéséhez:
 
 ```console
 node train.js
 ```
 
-A lekérdezés eredményeinek kimenete. Mivel a kód hozzáadja a **részletes** a lekérdezési karakterlánchoz, a kimeneti név-érték pár tartalmazza az összes leképezések és azok pontszámok:
+A kimenet a lekérdezés eredményei. Mivel a kód a **részletes** név/érték párokat adta hozzá a lekérdezési karakterlánchoz, a kimenet tartalmazza az összes leképezést és azok pontszámait:
 
 ```json
 {
@@ -208,16 +210,16 @@ A lekérdezés eredményeinek kimenete. Mivel a kód hozzáadja a **részletes**
 }
 ```
 
-Az adott eszköz a **Thermostat** , amelynél az "kapcsolja be a megadott hőtérképrészlet" eredmény-orientált lekérdezéséhez. Mivel az eredeti HomeAutomation.Device entitás továbbra is az alkalmazásban, megtekintheti az eredményeket is. 
+A **termosztát** adott eszközét a "hő kikapcsolására" vonatkozó eredményorientált lekérdezéssel azonosítjuk. Mivel az eredeti HomeAutomation. Device entitás még mindig az alkalmazásban van, az eredményeit is megtekintheti. 
 
-Próbálja ki, hogy azok is vissza egy okosórák, hogy más két megcímkézzen. 
+Próbálja ki a másik két hosszúságú kimondott szöveg, és ellenőrizze, hogy a rendszer termosztátként is visszaadja-e őket. 
 
-|#|Utterance (kifejezés)|entitás|type|érték|
+|#|utterance|Entitás|type|érték|
 |--|--|--|--|--|
-|1|Kapcsolja be az ac| AC | DevicesList | Thermostat|
-|2|Kapcsolja be a megadott hőtérképrészlet|heat| DevicesList |Thermostat|
-|3|Győződjön meg arról, hogy annál alacsonyabb|annál alacsonyabb|DevicesList|Thermostat|
+|1|az AC bekapcsolása| AC | DevicesList | Okostelefonok|
+|2|a hő kikapcsolása|intenzitástérkép| DevicesList |Okostelefonok|
+|3|legyen hidegebb|hidegebb|DevicesList|Okostelefonok|
 
 ## <a name="next-steps"></a>További lépések
 
-Bontsa ki az eszköz helyek termek, emeleteken vagy épületek egy másik lista entitás hozhat létre. 
+Létrehozhat egy másik lista entitást az eszközök helyeinek kibontásához a szobákhoz, a padlóhoz vagy az épületekhez. 

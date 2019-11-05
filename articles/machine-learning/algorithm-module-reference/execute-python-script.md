@@ -1,26 +1,26 @@
 ---
 title: 'Python-szkript végrehajtása: modul-hivatkozás'
-titleSuffix: Azure Machine Learning service
-description: Megtudhatja, hogyan futtathatja a Python-kód futtatásához a Azure Machine Learning-szolgáltatásban a Python-parancsfájl végrehajtása modult.
+titleSuffix: Azure Machine Learning
+description: Megtudhatja, hogyan használhatja a Python-kód futtatásához a Azure Machine Learning Python-szkriptek modulját.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
-ms.date: 05/02/2019
-ms.openlocfilehash: ac68239c12fb284dd3cb5179b5719f3d36acbd34
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.date: 10/22/2019
+ms.openlocfilehash: 1ba10bf682d900a45f345f2ebe2707ba1275e94e
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72693796"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73497872"
 ---
 # <a name="execute-python-script-module"></a>Python parancsfájl-modul végrehajtása
 
-Ez a cikk a Azure Machine Learning szolgáltatás vizuális felületének (előzetes verzió) modulját ismerteti.
+Ez a cikk a Azure Machine Learning Designer (előzetes verzió) modulját ismerteti.
 
-Ez a modul a Python-kód futtatására használható. A Python architektúrával és tervezési alapelveivel kapcsolatos további információkért tekintse meg [a következő cikket.](https://docs.microsoft.com/azure/machine-learning/machine-learning-execute-python-scripts)
+Ez a modul a Python-kód futtatására használható. A Python architektúrával és tervezési alapelveivel kapcsolatos további információkért tekintse meg [a következő cikket](https://docs.microsoft.com/azure/machine-learning/machine-learning-execute-python-scripts).
 
 A Python használatával olyan feladatokat hajthat végre, amelyeket jelenleg nem támogat a meglévő modulok, például a következők:
 
@@ -81,7 +81,7 @@ A **Python-szkript végrehajtása** modul olyan minta Python-kódot tartalmaz, a
 
 1. Adja hozzá a **Python-szkript végrehajtása** modult a folyamathoz.
 
-2. Vegyen fel és kapcsolódjon a **DataSet1 elemet** a bemenethez használni kívánt felületről származó adatkészletekhez. Hivatkozzon erre az adatkészletre a Python-szkriptben **DataFrame1**néven.
+2. Adja hozzá a (z) elemet a **DataSet1 elemet** bármely olyan adatkészlethez, amelyet a bemenethez szeretne használni. Hivatkozzon erre az adatkészletre a Python-szkriptben **DataFrame1**néven.
 
     Az adatkészletek használata nem kötelező, ha a Python használatával szeretne adatokat előállítani, vagy Python-kód használatával importálja az adatokat közvetlenül a modulba.
 
@@ -97,21 +97,21 @@ A **Python-szkript végrehajtása** modul olyan minta Python-kódot tartalmaz, a
 
 5. A **Python-szkript** szövegmezőbe írja be vagy illessze be az érvényes Python-szkriptet.
 
-    A **Python-szkript** szövegmezője előre ki van töltve a megjegyzésekben található utasításokkal, és az adathozzáféréshez és a kimenethez tartozó mintakód. **Szerkesztenie vagy cserélnie kell ezt a kódot.** Ügyeljen arra, hogy kövesse a behúzással és a burkolattal kapcsolatos Python-konvenciókat.
+    A **Python-szkript** szövegmezője előre ki van töltve a megjegyzésekben található utasításokkal, és az adathozzáféréshez és a kimenethez tartozó mintakód. Szerkesztenie vagy cserélnie kell ezt a kódot. Ügyeljen arra, hogy kövesse a behúzással és a burkolattal kapcsolatos Python-konvenciókat.
 
     + A szkriptnek tartalmaznia kell egy `azureml_main` nevű függvényt, amely a modul belépési pontja.
     + A belépési pont függvény legfeljebb két bemeneti argumentumot tartalmazhat: `Param<dataframe1>` és `Param<dataframe2>`
-    + A harmadik bemeneti porthoz csatlakoztatott tömörített fájlok kibontása és tárolása a könyvtárban történik, `.\Script Bundle`, amely a Python-`sys.path` is hozzá van adva. 
+    + A harmadik bemeneti porthoz csatlakoztatott tömörített fájlok kibontása és tárolása a könyvtárban történik, `.\Script Bundle`, amely a Python-`sys.path`is hozzá van adva. 
 
-    Ezért ha a zip-fájl `mymodule.py` tartalmaz, importálja azt `import mymodule` használatával.
+    Ezért ha a zip-fájl `mymodule.py`tartalmaz, importálja azt `import mymodule`használatával.
 
-    + Két adatkészletet lehet visszaadni az illesztőfelületnek, amelynek egy `pandas.DataFrame` típusú sorozatot kell tartalmaznia. A Python-kódban más kimeneteket is létrehozhat, amelyeket közvetlenül az Azure Storage-ba írhat.
+    + Két adatkészlet adható vissza a tervezőnek, amelynek egy `pandas.DataFrame`típusú sorozatot kell tartalmaznia. A Python-kódban más kimeneteket is létrehozhat, amelyeket közvetlenül az Azure Storage-ba írhat.
 
 6. Futtassa a folyamatot, vagy válassza ki a modult, és kattintson a **kijelölt futtatása** lehetőségre, hogy csak a Python-szkriptet futtassa.
 
     Az összes adattal és kóddal betöltődik egy virtuális gépre, és a megadott Python-környezet használatával fut.
 
-## <a name="results"></a>Eredmények
+## <a name="results"></a>Results (Eredmények)
 
 A beágyazott Python-kód által végrehajtott számítások eredményét pandákként kell megadni. A DataFrame, amelyet a rendszer automatikusan a Azure Machine Learning adatkészlet formátumára konvertál, így az eredményeket a folyamat más moduljaival is használhatja.
 
@@ -122,6 +122,6 @@ A modul két adatkészletet ad vissza:
 + A **2. eredmény adatkészlete**, amelyet a második visszaadott Panda Dataframe a Python-parancsfájlban definiált
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Tekintse [meg Azure Machine learning szolgáltatás számára elérhető modulok készletét](module-reference.md) . 
+Tekintse [meg a Azure Machine learning elérhető modulok készletét](module-reference.md) . 

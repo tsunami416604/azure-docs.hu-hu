@@ -1,5 +1,5 @@
 ---
-title: 'Oktatóanyag: Minta. bármely entitás – LUIS'
+title: 'Oktatóanyag: minta. bármely entitás – LUIS'
 titleSuffix: Azure Cognitive Services
 description: A pattern.any entitás használata az adatok kimondott szövegekből való kinyeréséhez olyankor, amikor a kimondott szövegek helyesen formázottak, és az adatok vége könnyen összekeverhető a kimondott szöveg fennmaradó szavaival.
 services: cognitive-services
@@ -9,18 +9,20 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 09/05/2019
+ms.date: 10/14/2019
 ms.author: diberry
-ms.openlocfilehash: 57a7deee3112737dc457646d040d5d3e02e63d46
-ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
+ms.openlocfilehash: 43ad6558b685d3959562be720f7494b3d2a7334e
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70390285"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73499421"
 ---
-# <a name="tutorial-extract-free-form-data-with-patternany-entity"></a>Oktatóanyag: Szabad formátumú adatok kinyerése mintázattal. bármely entitás
+# <a name="tutorial-extract-free-form-data-with-patternany-entity"></a>Oktatóanyag: szabad formátumú adatok kinyerése mintázattal. bármely entitás
 
 Ebben az oktatóanyagban a pattern.any entitást használja az adatok kimondott szövegekből való kinyeréséhez olyankor, amikor a kimondott szövegek helyesen formázottak, és az adatok vége könnyen összekeverhető a kimondott szöveg fennmaradó szavaival. 
+
+[!INCLUDE [Waiting for LUIS portal refresh](./includes/wait-v3-upgrade.md)]
 
 **Ebben az oktatóanyagban az alábbiakkal fog megismerkedni:**
 
@@ -58,7 +60,7 @@ A könnyebb űrlapnévvel rendelkező kimondott szöveg a következőképpen né
 
 A változó hosszúságú szöveg olyan szavakat tartalmaz, amelyek megnehezítik a LUIS szolgáltatás számára az entitás végének meghatározását. A Pattern.any entitás mintában való használata lehetővé teszi az űrlapnév elejének és végének megadását, így a LUIS helyesen nyeri ki az űrlapnevet.
 
-|Példa kimondott szöveg sablonja|
+|Példa kimondott sablonszövegre|
 |--|
 |Hol található a {FormName}[?]|
 |Ki a szerzője ennek: {FormName}[?]|
@@ -98,7 +100,7 @@ A Pattern.any entitás változó hosszúságú entitások kinyerését végzi. C
 
     Az entitás nem címkézhető példa hosszúságú kimondott szöveg, mert egy minta. any csak egy mintában érvényes. 
 
-    Ha a kivont adatokat olyan más entitásokba szeretné belefoglalni, mint a szám vagy a datetimeV2, létre kell hoznia egy összetett entitást, amely a Pattern.any entitást, valamint a számot és a datetimeV2-t is tartalmazza.
+    Ha a kivont adatokat olyan más entitásokba szeretné belefoglalni, mint a number vagy a datetimeV2, létre kell hoznia egy összetett entitást, amely a Pattern.any entitást, valamint a number és a datetimeV2 entitást is tartalmazza.
 
 ## <a name="add-a-pattern-that-uses-the-patternany"></a>A Pattern.any entitást használó minta hozzáadása
 
@@ -121,7 +123,7 @@ A Pattern.any entitás változó hosszúságú entitások kinyerését végzi. C
 
 [!INCLUDE [LUIS How to Train steps](../../../includes/cognitive-services-luis-tutorial-how-to-train.md)]
 
-## <a name="test-the-new-pattern-for-free-form-data-extraction"></a>Tesztelje az új mintát a szabad formátumú adatok kinyerésére
+## <a name="test-the-new-pattern-for-free-form-data-extraction"></a>Az új minta tesztelése a szabad formátumú adatok kinyeréséhez
 1. A tesztelési panel megnyitásához válassza a felső sávon a **Test** lehetőséget. 
 
 1. Adja meg a következő kimondott szöveget: 

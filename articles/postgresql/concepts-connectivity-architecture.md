@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 05/23/2019
-ms.openlocfilehash: 92844f0fe3a851802836015a1340983eb4633ed2
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: 5288c3025e523e767082f4ab7cfbb08805a74eaf
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69900550"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73500093"
 ---
 # <a name="connectivity-architecture-in-azure-database-for-postgresql"></a>Kapcsolati architektúra a Azure Database for PostgreSQLban
 Ez a cikk ismerteti a Azure Database for PostgreSQL kapcsolati architektúrát, valamint azt, hogy a forgalom hogyan legyen átirányítva a Azure Database for PostgreSQL adatbázis-példányára az Azure-on belüli és kívüli ügyfelektől.
@@ -35,9 +35,9 @@ A következő táblázat felsorolja az Azure Database for PostgreSQL átjáró e
 | Kelet-Kanada | 40.86.226.166 | |
 | USA középső régiója | 23.99.160.139 | 13.67.215.62 |
 | Kelet-Kína 1 | 139.219.130.35 | |
-| Kelet-Kína 2 | 40.73.82.1 | |
+| Kína 2. keleti régiója | 40.73.82.1 | |
 | Észak-Kína 1 | 139.219.15.17 | |
-| Észak-Kína 2 | 40.73.50.0 | |
+| Kína 2. északi régiója | 40.73.50.0 | |
 | Kelet-Ázsia | 191.234.2.139 | 52.175.33.150 |
 | USA keleti régiója 1 | 191.238.6.43 | 40.121.158.30 |
 | USA 2. keleti régiója | 191.239.224.107 | 40.79.84.180 * |
@@ -54,17 +54,20 @@ A következő táblázat felsorolja az Azure Database for PostgreSQL átjáró e
 | Észak-Európa | 191.235.193.75 | 40.113.93.91 |
 | USA déli középső régiója | 23.98.162.75 | 13.66.62.124 |
 | Délkelet-Ázsia | 23.100.117.95 | 104.43.15.0 |
-| Az Egyesült Királyság déli régiója | 51.140.184.11 | |
+| Dél-Afrika északi régiója | 102.133.152.0 | |
+| Dél-Afrika nyugati régiója | 102.133.24.0 | |
+| Egyesült Arab Emírségek északi régiója | 65.52.248.0 | |
+| Egyesült Királyság déli régiója | 51.140.184.11 | |
 | Az Egyesült Királyság nyugati régiója | 51.141.8.11| |
 | Nyugat-Európa | 191.237.232.75 | 40.68.37.158 |
 | USA nyugati régiója 1 | 23.99.34.75 | 104.42.238.205 |
-| USA nyugati régiója, 2. | 13.66.226.202 | |
+| USA 2. nyugati régiója | 13.66.226.202 | |
 ||||
 
 > [!NOTE]
-> Az`52.167.104.0` *USA 2. keleti* régiója a harmadlagos IP-címmel is rendelkezik.
+> Az *USA 2. keleti* régiójában a `52.167.104.0`harmadlagos IP-címe is szerepel.
 
 ## <a name="next-steps"></a>További lépések
 
-* [Hozzon létre és kezelheti az Azure-adatbázis PostgreSQL-tűzfalszabályok az Azure portál használatával](./howto-manage-firewall-using-portal.md)
-* [Hozzon létre és kezelheti az Azure-adatbázis PostgreSQL-tűzfalszabályok Azure parancssori felület használatával](./howto-manage-firewall-using-cli.md)
+* [Azure Database for PostgreSQL tűzfalszabályok létrehozása és kezelése a Azure Portal használatával](./howto-manage-firewall-using-portal.md)
+* [Azure Database for PostgreSQL tűzfalszabályok létrehozása és kezelése az Azure CLI-vel](./howto-manage-firewall-using-cli.md)

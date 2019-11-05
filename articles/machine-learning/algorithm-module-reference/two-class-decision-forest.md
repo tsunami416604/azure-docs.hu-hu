@@ -1,24 +1,24 @@
 ---
 title: 'Kétosztályos döntési erdő: modul-hivatkozás'
-titleSuffix: Azure Machine Learning service
-description: Ismerje meg, hogyan használható a kétosztályos döntési erdő modul a Azure Machine Learning szolgáltatásban egy gépi tanulási modell létrehozásához a döntési erdők algoritmusa alapján.
+titleSuffix: Azure Machine Learning
+description: Megtudhatja, hogyan használható a kétosztályos döntési erdő modul a Azure Machine Learning egy gépi tanulási modell létrehozásához a döntési erdők algoritmusa alapján.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
-ms.date: 05/02/2019
-ms.openlocfilehash: 243f1774069f048d0e8a1ce11e3ac42e4e73f58b
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.date: 10/22/2019
+ms.openlocfilehash: ebe9a0368f2111fa6787b7fa4f4432d7ad4106c3
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72693626"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73485959"
 ---
 # <a name="two-class-decision-forest-module"></a>Kétosztályos döntési erdő modul
 
-Ez a cikk a Azure Machine Learning szolgáltatás vizuális felületének (előzetes verzió) modulját ismerteti.
+Ez a cikk a Azure Machine Learning Designer (előzetes verzió) modulját ismerteti.
 
 Ezzel a modullal gépi tanulási modellt hozhat létre a döntési erdők algoritmusa alapján.  
 
@@ -89,7 +89,7 @@ További információ: [döntési erdők](https://go.microsoft.com/fwlink/?LinkI
     -   Ha az **oktatói módot** **egyetlen paraméterként**állítja be, használja a [Train Model](./train-model.md) modult.  
   
     
-## <a name="results"></a>Eredmények
+## <a name="results"></a>Results (Eredmények)
 
 A betanítás befejezése után:
 
@@ -101,7 +101,6 @@ A betanítás befejezése után:
 
 + A modell pontozáshoz való használatához adja hozzá a **pontszám modell** modult egy folyamathoz.
 
+## <a name="next-steps"></a>További lépések
 
-## <a name="next-steps"></a>Következő lépések
-
-Tekintse [meg Azure Machine learning szolgáltatás számára elérhető modulok készletét](module-reference.md) . 
+Tekintse [meg a Azure Machine learning elérhető modulok készletét](module-reference.md) . 

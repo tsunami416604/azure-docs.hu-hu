@@ -1,24 +1,24 @@
 ---
 title: 'Partíció és minta: modul-hivatkozás'
-titleSuffix: Azure Machine Learning service
-description: Megtudhatja, hogyan használhatja a Azure Machine Learning szolgáltatásban található partíciós és minta modult mintavételezésre egy adatkészleten, vagy partíciókat hozhat létre az adatkészletből.
+titleSuffix: Azure Machine Learning
+description: Megtudhatja, hogyan használhatja a Azure Machine Learning a partíció és a minta modult az adatkészletek mintavételezésének végrehajtásához, vagy az adatkészlet partícióinak létrehozásához.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
-ms.date: 05/02/2019
-ms.openlocfilehash: fcbf9fae3306c43613ef0b67a79c9c0b53f6b923
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.date: 10/22/2019
+ms.openlocfilehash: 659dcae0bee0fe1015ba6225797c31bad438013f
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72693757"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73497717"
 ---
 # <a name="partition-and-sample-module"></a>Partíció és minta modul
 
-Ez a cikk a Azure Machine Learning szolgáltatás vizuális felületének (előzetes verzió) modulját ismerteti.
+Ez a cikk a Azure Machine Learning Designer (előzetes verzió) modulját ismerteti.
 
 Ezzel a modullal mintavételezést végezhet egy adatkészleten, vagy partíciókat hozhat létre az adatkészletből.
 
@@ -44,8 +44,8 @@ A mintavétel fontos eszköz a gépi tanulásban, mivel lehetővé teszi az adat
 
 Ez a modul több módszer használatát teszi lehetővé az adatpartíciók és a mintavételezések felosztásához. Először válassza ki a metódust, majd adja meg a metódus által igényelt további beállításokat.
 
-- Fej
-- Mintavétel
+- Head
+- Mintavételezés
 - Hozzárendelés a kidobásokhoz
 - Kidobás
 
@@ -122,7 +122,7 @@ Akkor használja ezt a beállítást, ha az adatkészletet az adat részhalmazá
 
     - **Partíció testreszabott arányokkal**: ezzel a beállítással megadhatja az egyes partíciók méretét vesszővel tagolt listaként.
 
-        Ha például három partíciót szeretne létrehozni, az első partíciót, amely az adatok 50%-át tartalmazza, valamint az adatok 25%-át tartalmazó fennmaradó két partíciót, akkor kattintson a **vesszővel elválasztott arányok listájára** , és írja be a következő számokat: @no_ _t_1
+        Ha például három partíciót szeretne létrehozni, az első partíciót, amely az adatok 50%-át tartalmazza, valamint az adatok 25%-át tartalmazó fennmaradó két partíciót, akkor kattintson a **vesszővel elválasztott arányok listájára** , és írja be a következő számokat: @no_ _t_1_`.5, .25, .25`
 
         Az összes partíciós méret összegének pontosan 1 értékkel kell rendelkeznie.
 
@@ -156,7 +156,7 @@ Ezt a beállítást akkor használja a rendszer, ha több partícióra osztott e
 
     Tegyük fel például, hogy a korábban particionált pácienseket négy, a kor használatával összehajtogatjuk. Az egyes összecsukás esetén a **partíció és a minta** modul négy példányát kell használnia, és mindegyikben az alább látható módon egy másikat kell kiválasztania. Nem helyes, hogy közvetlenül a hozzárendelést használja a kimenet **kidobásához** .  
 
-    [![Partition és minta](./media/partition-and-sample/partition-and-sample.png)](./media/partition-and-sample/partition-and-sample-lg.png#lightbox)
+    [![partíció és minta](./media/partition-and-sample/partition-and-sample.png)](./media/partition-and-sample/partition-and-sample-lg.png#lightbox)
 
 5. A folyamat futtatása.
 
@@ -165,6 +165,6 @@ Ezt a beállítást akkor használja a rendszer, ha több partícióra osztott e
 > [!NOTE]
 >  A fold megjelöléseit nem lehet közvetlenül megtekinteni; csak a metaadatokban jelennek meg.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Tekintse [meg Azure Machine learning szolgáltatás számára elérhető modulok készletét](module-reference.md) . 
+Tekintse [meg a Azure Machine learning elérhető modulok készletét](module-reference.md) . 

@@ -6,12 +6,12 @@ ms.author: dacoulte
 ms.date: 10/21/2019
 ms.topic: overview
 ms.service: resource-graph
-ms.openlocfilehash: 45853e3c8986cec58f27d785af31f174aff21b2e
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: c113719d304aa4ed9c13df1fe0264d22aacb5002
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72755886"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73499141"
 ---
 # <a name="overview-of-the-azure-resource-graph-service"></a>Az Azure Resource Graph szolgáltatás áttekintése
 
@@ -25,8 +25,8 @@ Az Azure Resource Graph egy Azure-beli szolgáltatás, amely az Azure Erőforrá
 Ez a dokumentáció mindegyik funkciót részletesen tárgyalja.
 
 > [!NOTE]
-> Az Azure Resource Graph a Azure Portal keresési sávjára, az új "minden erőforrás" felületre, valamint a Azure Policy [változási előzményeire](../policy/how-to/determine-non-compliance.md#change-history-preview) 
->  a_Visual diff_-re vonatkozóan. Ez úgy lett kialakítva, hogy segítse az ügyfeleknek a nagyméretű környezetek kezelését.
+> Az Azure Resource Graph a Azure Portal keresési sávjára, az új "minden erőforrás" felületre, valamint a Azure Policy [változási előzményeire](../policy/how-to/determine-non-compliance.md#change-history-preview)
+> a _Visual diff_-re vonatkozóan. Ez úgy lett kialakítva, hogy segítse az ügyfeleknek a nagyméretű környezetek kezelését.
 
 [!INCLUDE [service-provider-management-toolkit](../../../includes/azure-lighthouse-supported-service.md)]
 
@@ -90,9 +90,11 @@ Az erőforrás-gráf támogatja az Azure CLI, a Azure PowerShell, a .NET-hez ké
 - [Azure CLI](first-query-azurecli.md#add-the-resource-graph-extension)
 - [Azure PowerShell](first-query-powershell.md#add-the-resource-graph-module)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
+- Futtassa az első lekérdezést [Azure Portalban](first-query-portal.md).
 - Futtassa az első lekérdezést az [Azure CLI](first-query-azurecli.md)-vel.
 - Futtassa az első lekérdezést a [Azure PowerShell](first-query-powershell.md).
+- További információ a [lekérdezési nyelvről](./concepts/query-language.md).
 - Kezdje a kezdő [lekérdezésekkel](./samples/starter.md).
 - Fokozza a [speciális lekérdezések](./samples/advanced.md)megismerését.

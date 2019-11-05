@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 04/30/2019
 ms.author: daveba
 ms.openlocfilehash: 5e430b16bbdebf97c1499d997fe2c30771270987
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.sourcegitcommit: 3f8017692169bd75483eefa96c225d45cd497f06
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67204410"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73523006"
 ---
-Ezzel a funkcióval egy Azure AD Premium P2-licenc szükséges. A követelmények teljesítéséhez a megfelelő licenccel megkereséséhez lásd: [az ingyenes, alapszintű és prémium kiadások általánosan elérhető szolgáltatásainak összehasonlítása](https://azure.microsoft.com/pricing/details/active-directory/).
+A szolgáltatás használatához prémium szintű Azure AD P2 licenc szükséges. A követelmények megfelelő licencének megkereséséhez tekintse meg [az ingyenes, alapszintű és Prémium kiadások általánosan elérhető funkcióinak összehasonlítását](https://azure.microsoft.com/pricing/details/active-directory/)ismertető témakört.

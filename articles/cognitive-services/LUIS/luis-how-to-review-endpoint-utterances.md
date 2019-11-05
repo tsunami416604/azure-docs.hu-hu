@@ -9,88 +9,89 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 09/05/2019
+ms.date: 10/25/2019
 ms.author: diberry
-ms.openlocfilehash: c617e4aa62ce2ff468545bef0b2ebe2c4d0e4f03
-ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
+ms.openlocfilehash: d5652857f2f35e392d3f512001044fd06bc0a0c9
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70382356"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73499073"
 ---
 # <a name="how-to-review-endpoint-utterances-in-luis-portal-for-active-learning"></a>Az Endpoint hosszúságú kimondott szöveg áttekintése a LUIS portálon az aktív tanuláshoz
 
 Az [aktív tanulás](luis-concept-review-endpoint-utterances.md) rögzíti a végponti lekérdezéseket, és kiválasztja a felhasználó végpontjának hosszúságú kimondott szöveg, hogy az nem biztos benne. Ezeket a hosszúságú kimondott szöveg áttekintve kiválaszthatja a szándékot, és megjelölheti az entitásokat ezen olvasási-globális hosszúságú kimondott szöveg. Fogadja el ezeket a módosításokat a hosszúságú kimondott szöveg, majd végezze el a betanítást és a közzétételt. A LUIS ezután pontosabban azonosítja a hosszúságú kimondott szöveg.
 
+[!INCLUDE [Waiting for LUIS portal refresh](./includes/wait-v3-upgrade.md)]
 
 ## <a name="enable-active-learning"></a>Aktív tanulás engedélyezése
 
-Az aktív tanulás engedélyezéséhez jelentkezzen be a felhasználói lekérdezésekre. Ezt úgy érheti el, ha a [végpont-lekérdezést](luis-get-started-create-app.md#query-the-v2-api-prediction-endpoint) a `log=true` querystring paraméterrel és értékkel állítja be.
+Az aktív tanulás engedélyezéséhez jelentkezzen be a felhasználói lekérdezésekre. Ezt úgy végezheti el, hogy a [végponti lekérdezést](luis-get-started-create-app.md#query-the-v2-api-prediction-endpoint) a `log=true` querystring paraméterrel és értékkel állítja be.
 
 ## <a name="disable-active-learning"></a>Aktív tanulás letiltása
 
-Az aktív tanulás letiltásához ne naplózza a felhasználói lekérdezéseket. Ezt úgy érheti el, ha a [végpont-lekérdezést](luis-get-started-create-app.md#query-the-v2-api-prediction-endpoint) a `log=false` querystring paraméterrel és értékkel állítja be.
+Az aktív tanulás letiltásához ne naplózza a felhasználói lekérdezéseket. Ezt úgy végezheti el, hogy a [végponti lekérdezést](luis-get-started-create-app.md#query-the-v2-api-prediction-endpoint) a `log=false` querystring paraméterrel és értékkel állítja be.
 
-## <a name="filter-utterances"></a>Szűrő kimondott szöveg
+## <a name="filter-utterances"></a>Hosszúságú kimondott szöveg szűrése
 
-1. Nyissa meg az alkalmazás (például TravelAgent) válassza a neve a **saját alkalmazások** lapon, majd válassza a **hozhat létre** a lap tetején található.
+1. Nyissa meg az alkalmazást (például TravelAgent) a saját **alkalmazások** lapján lévő név kiválasztásával, majd válassza a **Létrehozás** lehetőséget a felső sávon.
 
-1. Alatt a **megnövelheti az alkalmazások teljesítményét**válassza **tekintse át a végpont utterances**.
+1. Az **alkalmazások teljesítményének javítása**területen válassza az **Endpoint hosszúságú kimondott szöveg áttekintése**elemet.
 
-1. A a **tekintse át a végpont utterances** lapon jelölje be a a **szűrőlista leképezés vagy entitás** szövegmező. A legördülő lista tartalmaz minden leképezések alapján **LEKÉPEZÉSEK** és az összes entitása **entitások**.
+1. A **végponti hosszúságú kimondott szöveg áttekintése** lapon válassza a **szűrés lista alapján a szándék vagy az entitás** szövegmezőt. Ez a legördülő lista az **összes leképezést tartalmazza, és** az **entitások**területen található összes entitást.
 
-    ![Kimondott szöveg szűrése](./media/label-suggested-utterances/filter.png)
+    ![Hosszúságú kimondott szöveg szűrő](./media/label-suggested-utterances/filter.png)
 
-1. A legördülő listában válassza ki a kategóriát (szándékok és entitások), és tekintse át a kimondott szöveg.
+1. Válasszon ki egy kategóriát (szándékokat vagy entitásokat) a legördülő listából, és tekintse át a hosszúságú kimondott szöveg.
 
-    ![Leképezési kimondott szöveg](./media/label-suggested-utterances/intent-utterances.png)
+    ![Szándék hosszúságú kimondott szöveg](./media/label-suggested-utterances/intent-utterances.png)
 
-## <a name="label-entities"></a>Címke entitások
-A LUIS kék színnel entitásnévnek entitás jogkivonatok (szavak) helyettesíti. Ha az utterance (kifejezés) entitások rendelkezik címkézetlen, lássa el az utterance (kifejezés). 
+## <a name="label-entities"></a>Címke entitásai
+LUIS helyettesíti az entitás-jogkivonatokat (szavakat) a kék színnel jelölt entitások nevével. Ha egy Kimondás címke nélküli entitásokat tartalmaz, akkor a címkét a rendszer megjelöli. 
 
-1. Jelölje be az utterance (kifejezés) a szavak. 
+1. Válassza ki a szót (ka) t a teljes szövegben. 
 
-1. Entitás kiválasztása a listából.
+1. Válasszon ki egy entitást a listából.
 
-    ![Címke entitás](./media/label-suggested-utterances/label-entity.png)
+    ![Címke entitása](./media/label-suggested-utterances/label-entity.png)
 
-## <a name="align-single-utterance"></a>Egyetlen utterance (kifejezés) igazítása
+## <a name="align-single-utterance"></a>Egyetlen Kimondás igazítása
 
-Minden kimondásakor rendelkezik egy javasolt szándékot, megjelenik a **szándékot igazítva** oszlop. 
+Minden Kimondás egy javasolt szándéktal rendelkezik, amely a **igazított leképezés** oszlopban jelenik meg. 
 
-1. Ha elfogadja, hogy javaslatot, jelölje be a pipa jelre.
+1. Ha elfogadja ezt a javaslatot, jelölje be a jelölőnégyzetet.
 
-    ![Tartsa igazított leképezés](./media/label-suggested-utterances/align-intent-check.png)
+    ![Igazított leképezés megőrzése](./media/label-suggested-utterances/align-intent-check.png)
 
-1. Ha Ön nem ért a javaslatot, válassza ki a megfelelő leképezést a igazított szándék legördülő listából, majd jelölje ki a jobbra igazított célja a pipa jelre a. 
+1. Ha nem fogadja el a javaslatot, válassza ki a megfelelő szándékot az illesztett szándék legördülő listából, majd jelölje be az igazított szándék jobb oldalán lévő pipa négyzetet. 
 
-    ![Leképezés igazítása](./media/label-suggested-utterances/align-intent.png)
+    ![Szándék igazítása](./media/label-suggested-utterances/align-intent.png)
 
-1. Miután kiválasztotta a pipa jelre, a rendszer eltávolítja az utterance (kifejezés) a listából. 
+1. Miután kiválasztotta a pipát, a rendszer eltávolítja a kiválasztást a listából. 
 
-## <a name="align-several-utterances"></a>Több kimondott szöveg igazítása
+## <a name="align-several-utterances"></a>Több hosszúságú kimondott szöveg igazítása
 
-Több utterances igazításához megcímkézzen balra a jelölőnégyzetet, majd válassza ki a a **kiválasztott Hozzáadás** gombra. 
+Ha több hosszúságú kimondott szöveg szeretne igazítani, jelölje be a hosszúságú kimondott szöveg bal oldalán található jelölőnégyzetet, majd kattintson a **kijelöltek hozzáadása** gombra. 
 
-![Több igazítása](./media/label-suggested-utterances/add-selected.png)
+![Több igazítás](./media/label-suggested-utterances/add-selected.png)
 
-## <a name="verify-aligned-intent"></a>Ellenőrizze a igazított leképezés
+## <a name="verify-aligned-intent"></a>Igazított leképezés ellenőrzése
 
-Ellenőrizheti az utterance (kifejezés) a megfelelő készítésében lett igazítva a **leképezések** lapon válassza ki a leképezés nevét, és tekintse át a kimondott szöveg. Az utterance (kifejezés) **tekintse át a végpont utterances** szerepel a listán.
+Ellenőrizheti, hogy a kiírás a megfelelő szándékkal van-e igazítva, ehhez nyissa **meg a szándékok lapot,** válassza ki a leképezés nevét, és tekintse át a hosszúságú kimondott szöveg. A **felülvizsgálati végpont hosszúságú kimondott szöveg** való Kimondás a listában található.
 
-## <a name="delete-utterance"></a>Törölje az utterance (kifejezés)
+## <a name="delete-utterance"></a>Teljes törlés
 
-Minden kimondásakor a felülvizsgálati listából lehet törölni. A törölt, nem jelenik a lista újra. Ez igaz, akkor is, ha a felhasználó megadja az azonos utterance (kifejezés) a végpontról. 
+Minden Kimondás törölhető a felülvizsgálati listáról. A törlés után nem jelenik meg többé a listában. Ez akkor is igaz, ha a felhasználó ugyanazt a Kimondás alatt áll, mint a végpont. 
 
-Ha bizonytalan, ha az utterance (kifejezés) törölni kell, vagy helyezze át a nincs szándék, vagy hozzon létre egy új szándékot, például az "egyéb" és az utterance (kifejezés) át, hogy a leképezés. 
+Ha nem biztos abban, hogy törölni kell a kilépést, vagy helyezze át a none (nincs) célra, vagy hozzon létre egy új szándékot, például "vegyes" értéket, és helyezze át a teljes értéket az adott szándékra. 
 
-## <a name="delete-several-utterances"></a>Több kimondott szöveg törlése
+## <a name="delete-several-utterances"></a>Több hosszúságú kimondott szöveg törlése
 
-Több kimondott szöveg törléséhez jelöljön be minden elemet, és válassza a jobb oldalán a szemetes a **kiválasztott Hozzáadás** gombra.
+Több hosszúságú kimondott szöveg törléséhez jelölje ki az egyes elemeket, és válassza ki a kívánt elemet a Kuka raktárhelyen a **kijelölt hozzáadása** gomb jobb oldalán.
 
 ![Több törlése](./media/label-suggested-utterances/delete-several.png)
 
 
 ## <a name="next-steps"></a>További lépések
 
-Hogyan javítja a teljesítményt, akkor javasolt utterances címke után teszteléséhez elérheti a tesztelési konzol kiválasztásával **tesztelése** a az ablak tetején. Tesztelheti az alkalmazást a tesztelési konzollal kapcsolatos utasításokért lásd: [Train és tesztelje alkalmazását](luis-interactive-test.md).
+Annak ellenőrzéséhez, hogy a teljesítmény hogyan javul a javasolt hosszúságú kimondott szöveg címkézése után, a felső panelen **tesztelheti** a teszt konzolt. Az alkalmazás tesztelési konzollal történő tesztelésével kapcsolatos útmutatásért lásd: [az alkalmazás betanítása és tesztelése](luis-interactive-test.md).

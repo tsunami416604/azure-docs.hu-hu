@@ -1,5 +1,5 @@
 ---
-title: Azure-támogatás a 2. generációs virtuális gépekhez (előzetes verzió) | Microsoft Docs
+title: Azure-támogatás a 2. generációs virtuális gépekhez | Microsoft Docs
 description: A 2. generációs virtuális gépek Azure-támogatásának áttekintése
 services: virtual-machines-windows
 documentationcenter: ''
@@ -11,31 +11,26 @@ ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.topic: article
-ms.date: 10/29/2019
+ms.date: 11/04/2019
 ms.author: lahugh
-ms.openlocfilehash: c85e02b01e11b94d9e23e669bf2f6fcde7f2c1de
-ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
+ms.openlocfilehash: 63cf3301a08ce4073998c5d281f155a6b3eefe4d
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73064019"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73491931"
 ---
-# <a name="support-for-generation-2-vms-preview-on-azure"></a>2\. generációs virtuális gépek (előzetes verzió) támogatása az Azure-ban
+# <a name="support-for-generation-2-vms-on-azure"></a>2\. generációs virtuális gépek támogatása az Azure-ban
 
-> [!IMPORTANT]
-> A 2. generációs virtuális gépekhez tartozó Azure-támogatás jelenleg előzetes verzióban érhető el.
-> Ez az előzetes verzió szolgáltatási szintű szerződés nélkül érhető el, és éles számítási feladatokhoz nem ajánlott. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik.
-> További információ: a [Microsoft Azure előzetes verziójának kiegészítő használati feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+A 2. generációs virtuális gépek (VM-EK) támogatása már elérhető az Azure-ban. A virtuális gép generációját a létrehozása után nem módosíthatja, ezért a létrehozás előtt tekintse át az ezen a lapon található szempontokat.
 
-A 2. generációs virtuális gépek (VM-EK) támogatása már előzetes verzióban érhető el az Azure-ban. A virtuális gép generációját a létrehozása után nem módosíthatja, ezért a létrehozás előtt tekintse át az ezen a lapon található szempontokat. 
-
-A 2. generációs virtuális gépek támogatják az 1. generációs virtuális gépek által nem támogatott főbb funkciókat. A szolgáltatások közé tartozik a megnövekedett memória, az Intel Software Guard Extensions (Intel SGX ENKLÁVÉHOZ) és a virtualizált állandó memória (vPMEM). A 2. generációs virtuális gépek olyan szolgáltatásokat is tartalmazhatnak, amelyek még nem támogatottak az Azure-ban. További információ: [szolgáltatások és képességek](#features-and-capabilities) szakasz.
+A 2. generációs virtuális gépek támogatják az 1. generációs virtuális gépek által nem támogatott főbb funkciókat. A szolgáltatások közé tartozik a megnövekedett memória, az Intel Software Guard Extensions (Intel SGX ENKLÁVÉHOZ) és a virtualizált állandó memória (vPMEM). A 2. generációs virtuális gépek a helyszínen futnak, az Azure-ban még nem támogatott funkciók vannak. További információ: [szolgáltatások és képességek](#features-and-capabilities) szakasz.
 
 A 2. generációs virtuális gépek az új UEFI-alapú rendszerindítási architektúrát használják az 1. generációs virtuális gépek által használt BIOS-alapú architektúra helyett. Az 1. generációs virtuális gépekhez képest a 2. generációs virtuális gépeknél a rendszerindítási és a telepítési idő is javult. A 2. generációs virtuális gépek, valamint az 1. és a 2. generáció közötti különbségek némelyikének áttekintését lásd: [1. vagy 2. generációs virtuális gépek létrehozása a Hyper-V-ben?](https://docs.microsoft.com/windows-server/virtualization/hyper-v/plan/should-i-create-a-generation-1-or-2-virtual-machine-in-hyper-v).
 
 ## <a name="generation-2-vm-sizes"></a>2\. generációs VM-méretek
 
-Az 1. generációs virtuális gépeket minden virtuálisgép-méret támogatja az Azure-ban. Az Azure mostantól 2. generációs támogatást nyújt a következő kiválasztott virtuálisgép-sorozatokhoz:
+Az 1. generációs virtuális gépeket minden virtuálisgép-méret támogatja az Azure-ban. Az Azure immár 2. generációs támogatást nyújt a következő kiválasztott virtuálisgép-sorozatokhoz:
 
 * [B sorozat](https://docs.microsoft.com/azure/virtual-machines/windows/b-series-burstable)
 * [DC sorozat](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-general#dc-series)
@@ -66,7 +61,6 @@ A 2. generációs virtuális gépek a következő Piactéri rendszerképeket tá
 * SUSE Linux Enterprise Server 12 SP4
 * Ubuntu Server 16.04 +
 
-
 ## <a name="on-premises-vs-azure-generation-2-vms"></a>Helyszíni és Azure 2. generációs virtuális gépek
 
 Az Azure jelenleg nem támogatja a 2. generációs virtuális gépekhez a helyszíni Hyper-V által támogatott funkciókat.
@@ -87,11 +81,11 @@ Az Azure jelenleg nem támogatja a 2. generációs virtuális gépekhez a helysz
 |---------|--------------|--------------|
 | Rendszerindítás             | PCAT                      | UEFI                               |
 | Lemezvezérlő-vezérlők | IDE                       | SCSI                               |
-| Virtuálisgép-méretek         | Minden VM-méret | Csak a Premium Storage-t támogató virtuális gépek |
+| A virtuális gépek mérete         | Minden VM-méret | Csak a Premium Storage-t támogató virtuális gépek |
 
 ### <a name="generation-1-vs-generation-2-capabilities"></a>1\. generációs, 2. generációs képességek
 
-| Szolgáltatás | 1\. generáció | 2\. generáció |
+| Képesség | 1\. generáció | 2\. generáció |
 |------------|--------------|--------------|
 | OPERÁCIÓSRENDSZER-lemez > 2 TB                    | x                | :heavy_check_mark: |
 | Egyéni lemez/lemezkép/swap operációs rendszer         | :heavy_check_mark: | :heavy_check_mark: |
@@ -126,7 +120,7 @@ Ha a Windows Server SKU-t ajánlatként választja, a **speciális** lapon lehet
 
 A PowerShell használatával is létrehozhatja a virtuális gépet úgy, hogy közvetlenül az 1. generációs vagy 2. generációs SKU-ra hivatkozik.
 
-Például a következő PowerShell-parancsmaggal kérheti le a `WindowsServer` ajánlatban található SKU-ket.
+Például a következő PowerShell-parancsmaggal kérheti le a `WindowsServer` ajánlatban szereplő SKU-ket.
 
 ```powershell
 Get-AzVMImageSku -Location westus2 -PublisherName MicrosoftWindowsServer -Offer WindowsServer
@@ -145,7 +139,7 @@ A támogatott Piactéri rendszerképek aktuális listáját a [szolgáltatások 
 
 A 2. generációs virtuális gépeket ugyanúgy hozhatja létre felügyelt lemezképből vagy felügyelt lemezről, mint az 1. generációs virtuális gépeket.
 
-### <a name="virtual-machine-scale-sets"></a>Virtual Machine Scale Sets
+### <a name="virtual-machine-scale-sets"></a>Virtuálisgép-méretezési csoportok
 
 A 2. generációs virtuális gépeket virtuálisgép-méretezési csoportok használatával is létrehozhatja. Az Azure CLI-ben a 2. generációs virtuális gépek létrehozásához használja az Azure-méretezési csoportokat.
 
@@ -197,7 +191,7 @@ A 2. generációs virtuális gépeket virtuálisgép-méretezési csoportok hasz
 * **Áttelepíthetek egy virtuális gépet az 1. generációról a 2. generációra?**  
     Nem, a létrehozás után nem módosítható a virtuális gép generációja. Ha váltania kell a virtuálisgép-generációk között, hozzon létre egy másik generációs új virtuális gépet.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Ismerkedjen meg a [2. generációs virtuális gépekkel a Hyper-V-ben](https://docs.microsoft.com/windows-server/virtualization/hyper-v/plan/should-i-create-a-generation-1-or-2-virtual-machine-in-hyper-v).
 

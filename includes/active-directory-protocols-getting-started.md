@@ -13,25 +13,32 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 05/22/2019
 ms.author: priyamo
-ms.openlocfilehash: b6dd4cd55755ae2c92afd327ad72ffe6966b9a07
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 7772b3ee5d0e27c09e83f7d118eb9f67f17e0d07
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67179292"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73522994"
 ---
 ## <a name="register-your-application-with-your-ad-tenant"></a>Alkalmazás regisztrálása az AD-bérlőben
-Először regisztrálnia kell az alkalmazás az Azure Active Directory (Azure AD-) bérlőben. Ekkor kapni fog egy alkalmazásazonosítót az alkalmazáshoz, amely immár képes jogkivonatokat fogadni.
+Először regisztrálja az alkalmazást a Azure Active Directory (Azure AD) Bérlővel. Ekkor kapni fog egy alkalmazásazonosítót az alkalmazáshoz, amely immár képes jogkivonatokat fogadni.
 
-* Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-* Válassza ki az Azure AD-bérlő a fiókra a lapon, majd kattintson a jobb felső sarkában kattintson a **címtár váltása** navigációs és válassza ki a megfelelő bérlő. 
-  * Ezt a lépést kihagyhatja, ha fiókjában csak egy Azure AD-bérlővel rendelkezik, vagy ha már kiválasztotta a megfelelő Azure AD-bérlőt.
-* A bal oldali navigációs ablakban kattintson az **Azure Active Directory** elemre.
-* Kattintson a **Alkalmazásregisztrációk** , majd kattintson a **új regisztrációs**.
-* Kövesse az utasításokat az új alkalmazás létrehozásához. Akkor nem számít, hogy a webalkalmazás vagy egy nyilvános (mobil és asztali) ügyfélalkalmazás ebben az oktatóanyagban, de ha konkrét példákat a webalkalmazásokra vagy nyilvános ügyfélalkalmazások, tekintse meg a [útmutatóink](../articles/active-directory/develop/v1-overview.md).
-  * A **név** az alkalmazás neve, amely a végfelhasználók számára ad leírást az alkalmazásról.
-  * A **támogatott fióktípusok**válassza **fiókok minden olyan szervezeti directory és személyes Microsoft-fiókok**.
-  * Adja meg a **átirányítási URI**. Webalkalmazások esetén ez az alap URL-címe az alkalmazás felhasználók hol jelentkezhetnek be.  Például: `http://localhost:12345`. Az Azure AD (mobil és asztali) nyilvános ügyfél használja jogkivonatválaszok visszaadására azt. Adjon meg egy adott értéket az alkalmazáshoz.  Például: `http://MyFirstAADApp`.
-    <!--TODO: add once App ID URI is configurable: The **App ID URI** is a unique identifier for your application. The convention is to use `https://<tenant-domain>/<app-name>`, e.g. `https://contoso.onmicrosoft.com/my-first-aad-app`-->  
-* Regisztráció befejezése után az Azure AD rendeli az alkalmazást egy egyedi ügyfél-azonosítót (az **Alkalmazásazonosító**). Ez az érték szükséges a következő szakaszokban, ezért másolja ki az alkalmazás oldaláról.
-* Keresse meg az alkalmazás az Azure Portalon, kattintson a **alkalmazásregisztrációk**, és kattintson a **minden alkalmazás megtekintése**.
+1. Bejelentkezés az [Azure Portalra](https://portal.azure.com).
+   
+1. Válassza ki az Azure AD-bérlőt a lap jobb felső sarkában lévő fiók kiválasztásával, majd kattintson a **Váltás a címtár** -navigációra lehetőségre, majd válassza ki a megfelelő bérlőt. 
+   - Hagyja ki ezt a lépést, ha csak egy Azure AD-bérlője van a fiókjában, vagy ha már kiválasztotta a megfelelő Azure AD-bérlőt.
+   
+1. A Azure Portal keresse meg és válassza a **Azure Active Directory**lehetőséget.
+   
+1. A **Azure Active Directory** bal oldali menüben válassza az **alkalmazás-regisztrációk**lehetőséget, majd válassza az **új regisztráció**lehetőséget.
+   
+1. Kövesse az utasításokat az új alkalmazás létrehozásához. Nem számít, hogy ez egy webalkalmazás vagy egy nyilvános ügyfél (mobil & asztali) alkalmazás ebben az oktatóanyagban, de ha konkrét példákat szeretne a webalkalmazások vagy a nyilvános ügyfélalkalmazások számára [, tekintse](../articles/active-directory/develop/v1-overview.md)meg a gyors útmutatókat.
+   
+   - A **név** az alkalmazás neve, amely a végfelhasználók számára ad leírást az alkalmazásról.
+   - A **támogatott fiókok típusai**területen válassza a **fiókok lehetőséget bármely szervezeti címtárban és személyes Microsoft-fiókban**.
+   - Adja meg az **átirányítási URI**-t. Webalkalmazások esetében ez az alkalmazás alap URL-címe, ahol a felhasználók bejelentkezhetnek.  Például: `http://localhost:12345`. A nyilvános ügyfél (Mobile & Desktop) esetében az Azure AD a jogkivonat-válaszok visszaküldésére használja. Adja meg az alkalmazáshoz tartozó értéket.  Például: `http://MyFirstAADApp`.
+   <!--TODO: add once App ID URI is configurable: The **App ID URI** is a unique identifier for your application. The convention is to use `https://<tenant-domain>/<app-name>`, e.g. `https://contoso.onmicrosoft.com/my-first-aad-app`-->  
+   
+1. A regisztráció befejezését követően az Azure AD egyedi ügyfél-azonosítót (az **alkalmazás azonosítóját**) rendeli hozzá az alkalmazáshoz. Ezt az értéket a következő részekben kell megadnia, ezért másolja azt az alkalmazás oldaláról.
+   
+1. Ha szeretné megkeresni az alkalmazást a Azure Portalban, válassza a **Alkalmazásregisztrációk**lehetőséget, majd válassza az **összes alkalmazás megtekintése**lehetőséget.

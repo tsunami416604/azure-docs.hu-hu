@@ -8,19 +8,20 @@ ms.topic: include
 author: sgilley
 ms.author: sgilley
 ms.date: 05/06/2019
-ms.openlocfilehash: 695153438ba33d9803f7f938aa15b6552d28da40
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: 18e855a5f87e700481b69c39c4fe03a69437895e
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72692805"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73490083"
 ---
-1. Ha még nem rendelkezik ilyennel, [hozzon létre egy Azure Machine learning szolgáltatás-munkaterületet](../articles/machine-learning/service/how-to-manage-workspace.md) .
+1. Ha még nem rendelkezik ilyennel, [hozzon létre egy Azure Machine learning munkaterületet](../articles/machine-learning/service/how-to-manage-workspace.md) .
 
-1. Nyissa meg a munkaterületet a [Azure Portalban](https://portal.azure.com/).  Ha nem tudja, hogyan keresse meg a munkaterületét a portálon, tekintse meg a [munkaterület megkeresése](../articles/machine-learning/service/how-to-manage-workspace.md#view)című témakört.  
+1. Jelentkezzen be a [ml.Azure.com](https://ml.azure.com) -be, és válassza ki a munkaterületet, amellyel dolgozni szeretne.
 
-1. A munkaterületen válassza a **vizuális felület**lehetőséget.  
- 
-    ![Vizuális felület indítása](./media/aml-ui-prereq/launch-ui.png)
+1. Válassza a **tervező**lehetőséget.
 
-    A vizuális felületet a munkaterület kezdőlapján [(előzetes verzió)](https://ml.azure.com)is elérheti.
+    ![A tervező elindítása](./media/aml-ui-prereq/launch-designer.png)
+
+
+

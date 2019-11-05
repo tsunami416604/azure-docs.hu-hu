@@ -2,23 +2,24 @@
 title: Automatizált ML-kísérletek létrehozása
 titleSuffix: Azure Machine Learning
 description: Az automatizált gépi tanulás felvesz egy algoritmust az Ön számára, és létrehoz egy modellt, amely készen áll a telepítésre. Ismerje meg azokat a beállításokat, amelyek segítségével konfigurálhatja az automatizált gépi tanulási kísérleteket.
-author: nacharya1
-ms.author: nilesha
+author: cartacioS
+ms.author: sacartac
 ms.reviewer: sgilley
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.date: 07/10/2019
+ms.date: 11/04/2019
 ms.custom: seodec18
-ms.openlocfilehash: 181f11bd5cfda479c25b5bce20649b8f382968fe
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
-ms.translationtype: MT
+ms.openlocfilehash: 4d050385bb76817c8aeada1bef4c4697a1f58d09
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72935377"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73497278"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>Automatizált ML-kísérletek konfigurálása a Pythonban
+[!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 Ebből az útmutatóból megtudhatja, hogyan határozhatja meg az automatizált gépi tanulási kísérletek különböző konfigurációs beállításait a [Azure Machine learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)-val. Az automatizált gépi tanulás egy algoritmust és hiperparaméterek beállítása hoz létre, és létrehoz egy modellt, amely készen áll a telepítésre. Számos lehetőség közül választhat, amelyek segítségével konfigurálhatja az automatizált gépi tanulási kísérleteket.
 
@@ -34,7 +35,7 @@ Az automatizált gépi tanulásban elérhető konfigurációs beállítások:
 * Modell metrikáinak megismerése
 * Modell regisztrálása és üzembe helyezése
 
-Ha nem szeretne programkódot felvenni, akkor [az Azure Portal-ban is létrehozhatja a gépi tanulási kísérleteit](how-to-create-portal-experiments.md).
+Ha nem szeretne programkódot felvenni, akkor [Azure Machine learning Studióban is létrehozhatja az automatizált gépi tanulási kísérleteket](how-to-create-portal-experiments.md).
 
 ## <a name="select-your-experiment-type"></a>Válassza ki a kísérlet típusát
 
@@ -72,7 +73,7 @@ automl_config = AutoMLConfig(task = "classification")
 
 ## <a name="data-source-and-format"></a>Adatforrás és formátum
 
-Az automatizált gépi tanulás támogatja a helyi asztalon vagy a felhőben, például az Azure Blob Storageban található adategységeket. Az információk egy **Panda DataFrame** vagy egy **Azure Machine learning TabularDataset**is beolvashatók.  [További információ a datatsets](https://github.com/MicrosoftDocs/azure-docs-pr/pull/how-to-create-register-datasets.md).
+Az automatizált gépi tanulás támogatja a helyi asztalon vagy a felhőben, például az Azure Blob Storageban található adategységeket. Az információk egy **Panda DataFrame** vagy egy **Azure Machine learning TabularDataset**is beolvashatók.  [További tudnivalók az adatkészletekről](https://github.com/MicrosoftDocs/azure-docs-pr/pull/how-to-create-register-datasets.md).
 
 A betanítási adatgyűjtésre vonatkozó követelmények:
 - Az adatokat táblázatos formában kell megadni.
@@ -102,7 +103,7 @@ Az alábbi példák bemutatják, hogyan tárolhatja az ilyen formátumú adattá
 
 ## <a name="fetch-data-for-running-experiment-on-remote-compute"></a>Adatok lekérése a kísérlet futtatásához távoli számításkor
 
-Távoli végrehajtás esetén a betanítási adatoknak elérhetőnek kell lenniük a távoli számításból. Az SDK [-ban `Datasets`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py) osztály a következőket teszi elérhetővé:
+Távoli végrehajtás esetén a betanítási adatoknak elérhetőnek kell lenniük a távoli számításból. Az SDK-ban [`Datasets`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py) osztály a következő funkciókat teszi elérhetővé:
 
 * adatok egyszerű átvitele statikus fájlokból vagy URL-forrásokból a munkaterületre
 * az adatok elérhetővé tétele a Felhőbeli számítási erőforrásokon futó parancsfájlok betanításához
@@ -111,7 +112,7 @@ A következő témakörben talál példát arra, [Hogyan](how-to-train-with-data
 
 ## <a name="train-and-validation-data"></a>Betanítási és érvényesítési adatkészletek
 
-A `AutoMLConfig` konstruktorban közvetlenül megadhatja a különböző vonat-és ellenőrzési készleteket.
+A `AutoMLConfig` konstruktorban közvetlenül is megadhatja a különböző vonat-és ellenőrzési készleteket.
 
 ### <a name="k-folds-cross-validation"></a>K-összecsukható kereszt-ellenőrzés
 
@@ -141,30 +142,28 @@ Tekintse meg a [GitHub-webhelyet](https://github.com/Azure/MachineLearningNotebo
 
 ## <a name="configure-your-experiment-settings"></a>A kísérlet beállításainak konfigurálása
 
-Számos lehetőség közül választhat, amelyekkel konfigurálhatja az automatizált gépi tanulási kísérletet. Ezek a paraméterek egy `AutoMLConfig` objektum létrehozásával állíthatók be. A paraméterek teljes listájáért tekintse meg a [AutoMLConfig osztályt](https://docs.microsoft.com/python/api/azureml-train-automl/azureml.train.automl.automlconfig?view=azure-ml-py) .
+Számos lehetőség közül választhat, amelyekkel konfigurálhatja az automatizált gépi tanulási kísérletet. Ezeket a paramétereket egy `AutoMLConfig` objektum létrehozásával állítja be a rendszer. A paraméterek teljes listájáért tekintse meg a [AutoMLConfig osztályt](https://docs.microsoft.com/python/api/azureml-train-automl/azureml.train.automl.automlconfig?view=azure-ml-py) .
 
 Néhány példa:
 
-1.  A besorolási kísérlet a AUC súlyozott elsődleges metrikaként, legfeljebb 12 000 másodperces időtartammal, a kísérlet végén pedig az 50-es ismétlések és a 2 kereszt-ellenőrzési hajtogatás után fejeződik be.
+1.  A besorolási kísérlet az elsődleges metrika és a kísérlet időkorlátja alapján AUC súlyozottan 30 percre van beállítva, a két kereszt-ellenőrzési hajtogatás pedig 2.
 
     ```python
     automl_classifier=AutoMLConfig(
         task='classification',
         primary_metric='AUC_weighted',
-        max_time_sec=12000,
-        iterations=50,
+        experiment_timeout_minutes=30,
         blacklist_models='XGBoostClassifier',
         training_data=train_data,
         label_column_name=label,
         n_cross_validations=2)
     ```
-2.  Az alábbi példa egy olyan regressziós kísérletre van beállítva, amely 100 iteráció után fejeződik be, és minden egyes iteráció a 600 másodpercre van állítva 5 ellenőrzéssel.
+2.  Az alábbi példa egy olyan regressziós kísérletre van beállítva, amely 60 perc után véget ért, 5 érvényesítési kereszttel.
 
     ```python
     automl_regressor = AutoMLConfig(
         task='regression',
-        max_time_sec=600,
-        iterations=100,
+        experiment_timeout_minutes=60,
         whitelist_models='kNN regressor'
         primary_metric='r2_score',
         training_data=train_data,
@@ -172,7 +171,7 @@ Néhány példa:
         n_cross_validations=5)
     ```
 
-A három különböző `task` paraméter értéke (a harmadik feladattípus `forecasting`, és ugyanazt az algoritmus-készletet használja, mint `regression` feladat) az alkalmazandó modellek listájának meghatározása. A `whitelist` vagy a `blacklist` paraméterekkel további módosításokat adhat meg az elérhető modellekhez, vagy kizárhatja azokat. A támogatott modellek listája a [SupportedModels osztályban](https://docs.microsoft.com/en-us/python/api/azureml-train-automl/azureml.train.automl.constants.supportedmodels?view=azure-ml-py)található.
+A három különböző `task` paraméter értéke (a harmadik feladattípus `forecasting`, és ugyanazt az algoritmus-készletet használja `regression` feladatokhoz) határozza meg az alkalmazandó modellek listáját. A `whitelist` vagy `blacklist` paraméterekkel további módosításokat is módosíthat az elérhető modellekkel a belefoglaláshoz vagy kizáráshoz. A támogatott modellek listája a [SupportedModels osztályban](https://docs.microsoft.com/python/api/azureml-train-automl/azureml.train.automl.constants.supportedmodels?view=azure-ml-py)található.
 
 ### <a name="primary-metric"></a>Elsődleges metrika
 Az elsődleges metrika határozza meg, hogy milyen mérőszámot kell használni az optimalizáláshoz a modell betanításakor. A kiválasztható mérőszámokat a kiválasztott feladattípus határozza meg, az alábbi táblázat pedig az egyes feladattípusok érvényes elsődleges metrikáit tartalmazza.
@@ -191,7 +190,7 @@ Ismerje meg ezeket a definíciókat a [gépi tanulási eredmények megismerésé
 
 Minden automatizált gépi tanulási kísérlet során az adatok [automatikusan méretezhetők és normalizálva](concept-automated-ml.md#preprocess) vannak, hogy a különböző léptékű funkciókra *érzékeny algoritmusok* segítségével segítsenek.  Ugyanakkor további előfeldolgozási/featurization is engedélyezheti, például hiányzó értékeket imputálási, kódolást és átalakításokat. [További információ arról, hogy milyen featurization tartalmaz](how-to-create-portal-experiments.md#preprocess).
 
-A featurization engedélyezéséhez `"preprocess": True` értéket kell megadnia a [`AutoMLConfig` osztályhoz](https://docs.microsoft.com/python/api/azureml-train-automl/azureml.train.automl.automlconfig?view=azure-ml-py).
+A featurization engedélyezéséhez a [`AutoMLConfig` osztályhoz](https://docs.microsoft.com/python/api/azureml-train-automl/azureml.train.automl.automlconfig?view=azure-ml-py)`"preprocess": True`t kell megadni.
 
 > [!NOTE]
 > Az automatizált gépi tanulás előfeldolgozásának lépései (a funkciók normalizálása, a hiányzó adatkezelés, a szöveg konvertálása a numerikus formátumba stb.) az alapul szolgáló modell részévé válnak. A modell előrejelzésekhez való használatakor a betanítás során alkalmazott azonos előfeldolgozási lépéseket a rendszer automatikusan alkalmazza a bemeneti adatokra.
@@ -225,7 +224,7 @@ time_series_settings = {
 automl_config = AutoMLConfig(task = 'forecasting',
                              debug_log='automl_oj_sales_errors.log',
                              primary_metric='normalized_root_mean_squared_error',
-                             iterations=10,
+                             experiment_timeout_minutes=20,
                              training_data=train_data,
                              label_column_name=label,
                              n_cross_validations=5,
@@ -238,9 +237,9 @@ automl_config = AutoMLConfig(task = 'forecasting',
 
 Az Ensemble-modellek alapértelmezés szerint engedélyezve vannak, és az automatikus gépi tanulás futtatásakor a végső futtatási ismétlésként jelennek meg. A jelenleg támogatott Ensemble-módszerek a szavazás és a halmozás. A szavazás a súlyozott átlagokat használó, Soft-szavazóként van megvalósítva, és a halmozási implementáció két rétegbeli implementációt használ, ahol az első réteg ugyanazokkal a modellekkel rendelkezik, mint a szavazói együttes, és a második réteg modellje a következő optimális kombinációját használja: az első réteg modelljei. Ha ONNX-modelleket használ, **vagy** ha a modell-magyarázat engedélyezve van, a halmozás le lesz tiltva, és csak a szavazást fogja használni.
 
-Több alapértelmezett argumentum is megadható `kwargs` értékként egy `AutoMLConfig` objektumban, hogy megváltoztassa az alapértelmezett stack Ensemble viselkedését.
+Több alapértelmezett argumentum is megadható `kwargs`ként egy `AutoMLConfig` objektumban, hogy megváltoztassa az alapértelmezett stack Ensemble viselkedését.
 
-* `stack_meta_learner_type`: a meta-Learner egy modell, amely az egyes különböző-modellek kimenetére van kiképezve. Az alapértelmezett meta-tanulók `LogisticRegression` a besorolási feladatokhoz (vagy `LogisticRegressionCV`, ha a kereszt-ellenőrzés engedélyezve van), és `ElasticNet` a regresszió/előrejelzési feladatokhoz (vagy `ElasticNetCV` ha a kereszt-ellenőrzés engedélyezve van). Ez a paraméter a következő karakterláncok egyike lehet: `LogisticRegression`, `LogisticRegressionCV`, `LightGBMClassifier`, `ElasticNet`, `ElasticNetCV`, `LightGBMRegressor` vagy `LinearRegression`.
+* `stack_meta_learner_type`: a meta-Learner egy modell, amely az egyes különböző-modellek kimenetére van kiképezve. Az alapértelmezett meta-tanulók `LogisticRegression` a besorolási feladatokhoz (vagy `LogisticRegressionCV`, ha a kereszt-ellenőrzés engedélyezve van), és `ElasticNet` a regresszió/előrejelzési feladatokhoz (vagy `ElasticNetCV` ha a kereszt-ellenőrzés engedélyezve van). Ez a paraméter a következő karakterláncok egyike lehet: `LogisticRegression`, `LogisticRegressionCV`, `LightGBMClassifier`, `ElasticNet`, `ElasticNetCV`, `LightGBMRegressor`vagy `LinearRegression`.
 * `stack_meta_learner_train_percentage`: a betanítási készlet (a betanítási típus kiválasztásakor) a meta-tanuló betanítása számára fenntartott arányát határozza meg. Az alapértelmezett érték `0.2`.
 * `stack_meta_learner_kwargs`: nem kötelező paramétereket adni a meta-learning inicializáló. Ezek a paraméterek és paraméterek típusú tükrözések a megfelelő modell konstruktorával, és a modell konstruktorának továbbítva lesznek.
 
@@ -262,7 +261,7 @@ ensemble_settings = {
 automl_classifier = AutoMLConfig(
         task='classification',
         primary_metric='AUC_weighted',
-        iterations=20,
+        experiment_timeout_minutes=30,
         training_data=train_data,
         label_column_name=label,
         n_cross_validations=5,
@@ -276,7 +275,7 @@ Az Ensemble-képzés alapértelmezés szerint engedélyezve van, de a `enable_vo
 automl_classifier = AutoMLConfig(
         task='classification',
         primary_metric='AUC_weighted',
-        iterations=20,
+        experiment_timeout_minutes=30,
         training_data=data_train,
         label_column_name=label,
         n_cross_validations=5,
@@ -287,7 +286,7 @@ automl_classifier = AutoMLConfig(
 
 ## <a name="run-experiment"></a>Kísérlet futtatása
 
-Az automatikus ML-ben létrehoz egy `Experiment` objektumot, amely egy nevesített objektum egy `Workspace`-ben, amely kísérleteket futtat.
+Az automatikus ML-ben létrehozhat egy `Experiment` objektumot, amely egy megnevezett objektum a kísérletek futtatásához használt `Workspace`.
 
 ```python
 from azureml.core.experiment import Experiment
@@ -301,7 +300,7 @@ project_folder = './sample_projects/automl-classification'
 experiment = Experiment(ws, experiment_name)
 ```
 
-Elküldheti a kísérletet egy modell futtatásához és létrehozásához. Adja át a `AutoMLConfig` értéket a `submit` metódusnak a modell létrehozásához.
+Elküldheti a kísérletet egy modell futtatásához és létrehozásához. Adja át a `AutoMLConfig`t a `submit` metódusnak a modell létrehozásához.
 
 ```python
 run = experiment.submit(automl_config, show_output=True)
@@ -314,7 +313,6 @@ run = experiment.submit(automl_config, show_output=True)
 ### <a name="exit-criteria"></a>Kilépési feltételek
 A kísérlet befejezéséhez több lehetőség is megadható.
 1. Nincs feltétel: Ha nem ad meg kilépési paramétereket, a kísérlet addig folytatódik, amíg az elsődleges metrika nem végez további előrehaladást.
-1. Ismétlések száma: megadhatja a kísérlet futtatásához szükséges iterációk számát. Az egyes iterációk időkorlátját percek alatt megadhatja `iteration_timeout_minutes`.
 1. Kilépés hosszú idő után: `experiment_timeout_minutes` használata a beállításokban megadhatja, hogy a rendszer hány perc elteltével folytassa a kísérlet futtatását.
 1. Kilépés egy pontszám elérésekor: a `experiment_exit_score` használatával a rendszer elvégzi a kísérletet, miután elérte az elsődleges metrikai pontszám értékét.
 
@@ -338,7 +336,7 @@ best_run, fitted_model = automl_run.get_output()
 
 ### <a name="automated-feature-engineering"></a>Automatizált funkciók tervezése
 
-Tekintse meg az előfeldolgozás és az [automatizált funkcióinak](concept-automated-ml.md#preprocess) listáját, amely akkor történik meg, amikor az előfeldolgozás = True.
+Tekintse meg az előfeldolgozás és az [automatizált funkciók](concept-automated-ml.md#preprocess) listáját, amely akkor történik meg, amikor a feauturization = Auto.
 
 Megfontolandó példa:
 + 4 bemeneti funkció létezik: A (numerikus), B (numerikus), C (numerikus), D (DateTime)
@@ -398,7 +396,7 @@ A beszerelt modell első lépéseként használja ezt a 2 API-t, hogy jobban meg
     'Tranformations': ['DateTime','DateTime','DateTime','DateTime','DateTime','DateTime','DateTime','DateTime','DateTime','DateTime','DateTime']}]
   ```
 
-   Helyszín:
+   Az elemek magyarázata:
 
    |Kimenet|Meghatározás|
    |----|--------|
@@ -407,6 +405,32 @@ A beszerelt modell első lépéseként használja ezt a 2 API-t, hogy jobban meg
    |Csökkent|Jelzi, hogy a bemeneti szolgáltatás el lett-e dobva vagy használatban van-e.|
    |EngineeringFeatureCount|Az automatizált funkciók mérnöki átalakításán keresztül generált szolgáltatások száma.|
    |Átalakítások|A bemenő funkciókra alkalmazott átalakítások listája a mérnöki funkciók létrehozásához.|
+   
+### <a name="customize-feature-engineering"></a>A funkciók mérnöki testreszabása
+A szolgáltatások mérnöki testreszabásához válassza a `"feauturization":FeaturizationConfig`lehetőséget.
+
+A támogatott Testreszabás az alábbiakat tartalmazza:
+
+|Testreszabás|Meghatározás|
+|--|--|
+|Oszlop céljának frissítése|Felülbírálja a szolgáltatás típusát a megadott oszlophoz.|
+|A transzformátor paraméterének frissítése |A megadott átalakító paramétereinek frissítése. Jelenleg támogatja az imputált és a HashOneHotEncoder.|
+|Oszlopok eldobása |Az eldobni kívánt oszlopok featurized.|
+|Transzformátorok letiltása| A featurization-folyamathoz használandó transzformátorok letiltása.|
+
+Hozza létre a FeaturizationConfig objektumot az API-hívások használatával:
+```python
+featurization_config = FeaturizationConfig()
+featurization_config.blocked_transformers = ['LabelEncoder']
+featurization_config.drop_columns = ['aspiration', 'stroke']
+featurization_config.add_column_purpose('engine-size', 'Numeric')
+featurization_config.add_column_purpose('body-style', 'CategoricalHash')
+#default strategy mean, add transformer param for for 3 columns
+featurization_config.add_transformer_params('Imputer', ['engine-size'], {"strategy": "median"})
+featurization_config.add_transformer_params('Imputer', ['city-mpg'], {"strategy": "median"})
+featurization_config.add_transformer_params('Imputer', ['bore'], {"strategy": "most_frequent"})
+featurization_config.add_transformer_params('HashOneHotEncoder', [], {"number_of_bits": 3})
+```
 
 ### <a name="scalingnormalization-and-algorithm-with-hyperparameter-values"></a>Skálázás/normalizálás és algoritmus hiperparaméter-értékekkel:
 
@@ -467,80 +491,15 @@ LogisticRegression
 
 <a name="explain"></a>
 
-## <a name="explain-the-model-interpretability"></a>A modell (értelmező) ismertetése
+## <a name="model-interpretability"></a>Modell értelmezhetősége
 
-Az automatizált gépi tanulás lehetővé teszi a funkciók fontosságának megértését.  A betanítási folyamat során a modell globális funkcióinak fontosságát érheti el.  Besorolási forgatókönyvek esetén az osztály szintű funkciók fontossága is megadható.  Meg kell adnia egy érvényesítési adatkészletet (validation_data) a funkció fontosságának beszerzéséhez.
+A modell értelmezése lehetővé teszi, hogy megtudja, miért hoztak létre a modellek előrejelzéseit, és a mögöttes funkciók fontossági értékeit. Az SDK különböző csomagokat tartalmaz, amelyek lehetővé teszik a modell-értelmező funkciók használatát a betanítási és a következtetési időben, a helyi és a központilag telepített modellekhez.
 
-A szolgáltatások fontosságának kétféleképpen hozhatók elérhetővé.
+Tekintse meg az [útmutató](how-to-machine-learning-interpretability-automl.md) a kódokhoz című témakört, amely bemutatja, hogyan engedélyezheti a tolmácsolási funkciókat kifejezetten az automatizált gépi tanulási kísérleteken belül.
 
-*   A kísérlet befejezése után bármely iterációhoz használhatja `explain_model` metódust.
+Általános információk arról, hogy a modell magyarázatait és funkcióinak fontosságát az SDK más területein is engedélyezheti az automatikus gépi tanuláson kívül: a [koncepcióról](how-to-machine-learning-interpretability.md) szóló cikk értelmezése.
 
-    ```python
-    from azureml.train.automl.automlexplainer import explain_model
-
-    shap_values, expected_values, overall_summary, overall_imp, per_class_summary, per_class_imp = \
-        explain_model(fitted_model, train_data, test_data)
-
-    #Overall feature importance
-    print(overall_imp)
-    print(overall_summary)
-
-    #Class-level feature importance
-    print(per_class_imp)
-    print(per_class_summary)
-    ```
-
-*   Ha meg szeretné tekinteni az összes iteráció funkciójának fontosságát, állítsa `model_explainability` jelzőt `True`re a AutoMLConfig-ben.
-
-    ```python
-    automl_config = AutoMLConfig(task='classification',
-                                 debug_log='automl_errors.log',
-                                 primary_metric='AUC_weighted',
-                                 max_time_sec=12000,
-                                 iterations=10,
-                                 verbosity=logging.INFO,
-                                 training_data=train_data,
-                                 label_column_name=y_train,
-                                 validation_data=test_data,
-                                 model_explainability=True,
-                                 path=project_folder)
-    ```
-
-    Ha elkészült, használhatja a retrieve_model_explanation metódust a funkciók fontosságának lekéréséhez egy adott iteráció esetén.
-
-    ```python
-    from azureml.train.automl.automlexplainer import retrieve_model_explanation
-
-    shap_values, expected_values, overall_summary, overall_imp, per_class_summary, per_class_imp = \
-        retrieve_model_explanation(best_run)
-
-    #Overall feature importance
-    print(overall_imp)
-    print(overall_summary)
-
-    #Class-level feature importance
-    print(per_class_imp)
-    print(per_class_summary)
-    ```
-
-Az URL-cím megjelenítése a funkció fontosságának megtekintéséhez a Run objektum használatával:
-
-```
-automl_run.get_portal_url()
-```
-
-A funkció fontossági diagramját a Azure Portal vagy a munkaterület kezdőlapján [(előzetes verzió)](https://ml.azure.com)jelenítheti meg a munkaterületen. A diagram akkor is megjelenik, ha a `RunDetails` [Jupyter widgetet](https://docs.microsoft.com/python/api/azureml-widgets/azureml.widgets?view=azure-ml-py) használja egy jegyzetfüzetben. Ha többet szeretne megtudni a diagramokról, tekintse át az [automatizált gépi tanulás eredményeit](how-to-understand-automated-ml.md)ismertető témakört.
-
-```Python
-from azureml.widgets import RunDetails
-RunDetails(automl_run).show()
-```
-
-![funkció fontossági diagramja](./media/how-to-configure-auto-train/feature-importance.png)
-
-További információk arról, hogy a modell magyarázatait és funkcióit hogyan lehet engedélyezni az SDK más területein az automatikus gépi tanuláson kívül, lásd az értelmezési cikk [fogalmát](machine-learning-interpretability-explainability.md) .
-
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ a [modellek telepítéséről és helyéről](how-to-deploy-and-where.md).
 

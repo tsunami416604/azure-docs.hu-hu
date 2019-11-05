@@ -1,5 +1,5 @@
 ---
-title: Egyéni Maven-csomagok használata a Jupyter a Sparkban az Azure HDInsight
+title: Egyéni Maven-csomagok használata a Jupyter a Sparkban – Azure HDInsight
 description: Részletes útmutató a HDInsight Spark-fürtökkel elérhető Jupyter-jegyzetfüzetek egyéni Maven-csomagok használatához való konfigurálásához.
 author: hrasheed-msft
 ms.author: hrasheed
@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/09/2018
-ms.openlocfilehash: cd88c85c927c635269d814c20b15f574212e1a6d
-ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
+ms.openlocfilehash: 0cdd962e5d027b5576a0556ca5decb976af45ff1
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71337693"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73494542"
 ---
 # <a name="use-external-packages-with-jupyter-notebooks-in-apache-spark-clusters-on-hdinsight"></a>Külső csomagok használata Jupyter notebookokkal Apache Spark-fürtökben a HDInsight-ben
 
@@ -46,27 +46,27 @@ A következőkkel kell rendelkeznie:
 
 1. Hozzon létre új notebookot. Kattintson az **új**, majd a **Spark**elemre.
    
-    ![Új Spark Jupyter-jegyzetfüzet]létrehozása(./media/apache-spark-jupyter-notebook-use-external-packages/hdinsight-spark-create-notebook.png "új Jupyter-jegyzetfüzet létrehozása")
+    ![Új Spark Jupyter-jegyzetfüzet létrehozása](./media/apache-spark-jupyter-notebook-use-external-packages/hdinsight-spark-create-notebook.png "Új Jupyter notebook létrehozása")
 
 1. Az új notebook létrejött, és Untitled.pynb néven nyílt meg. A felső részen kattintson a notebook nevére, és adjon meg egy könnyen megjegyezhető nevet.
    
-    ![Adjon nevet a notebooknak](./media/apache-spark-jupyter-notebook-use-external-packages/hdinsight-spark-name-notebook.png "Adjon nevet a notebooknak")
+    ![Adja meg a jegyzetfüzet nevét](./media/apache-spark-jupyter-notebook-use-external-packages/hdinsight-spark-name-notebook.png "A notebook elnevezése")
 
-1. A `%%configure` Magic használatával konfigurálja a jegyzetfüzetet külső csomag használatára. Külső csomagokat használó jegyzetfüzetekben ügyeljen arra, hogy a `%%configure` bűvös értéket hívja meg az első kód cellájában. Ez biztosítja, hogy a kernel a csomag használatára legyen konfigurálva a munkamenet elindítása előtt.
+1. A `%%configure` Magic használatával konfigurálja a jegyzetfüzetet külső csomag használatára. Külső csomagokat használó jegyzetfüzetekben ügyeljen arra, hogy az első kód cellájában meghívja a `%%configure` magict. Ez biztosítja, hogy a kernel a csomag használatára legyen konfigurálva a munkamenet elindítása előtt.
 
     >[!IMPORTANT]  
-    >Ha elfelejti a rendszermag konfigurálását az első cellában, használja a `%%configure` értéket a `-f` paraméterrel, de a rendszer újraindítja a munkamenetet, és az összes folyamat el fog veszni.
+    >Ha elfelejti a rendszermag konfigurálását az első cellában, használhatja a `%%configure`t a `-f` paraméterrel, de a rendszer újraindítja a munkamenetet, és minden folyamat elvész.
 
     | HDInsight verziója | Parancs |
     |-------------------|---------|
     |HDInsight 3,3 és HDInsight 3,4 | `%%configure` <br>`{ "packages":["com.databricks:spark-csv_2.10:1.4.0"] }`|
     | HDInsight 3,5 és HDInsight 3,6 | `%%configure`<br>`{ "conf": {"spark.jars.packages": "com.databricks:spark-csv_2.10:1.4.0" }}`|
 
-1. A fenti kódrészlet a Maven Central adattárában lévő külső csomaghoz tartozó Maven-koordinátákat várja. Ebben a kódrészletben a `com.databricks:spark-csv_2.10:1.4.0` a **Spark-CSV** csomag Maven-koordinátája. A csomagok koordinátáit a következőképpen hozhatja létre.
+1. A fenti kódrészlet a Maven Central adattárában lévő külső csomaghoz tartozó Maven-koordinátákat várja. Ebben a kódrészletben `com.databricks:spark-csv_2.10:1.4.0` a **Spark-CSV** csomag Maven-koordinátája. A csomagok koordinátáit a következőképpen hozhatja létre.
    
     a. Keresse meg a csomagot a Maven-tárházban. Ebben a cikkben a [Spark-CSV-](https://search.maven.org/#artifactdetails%7Ccom.databricks%7Cspark-csv_2.10%7C1.4.0%7Cjar)t használjuk.
    
-    b. A tárházból Gyűjtse össze a **GroupID**, a **ArtifactId**és a **verzió**értékeit. Győződjön meg arról, hogy az összegyűjtött értékek megfelelnek a fürtnek. Ebben az esetben a Scala 2,10 és a Spark 1.4.0 csomagot használjuk, de előfordulhat, hogy a fürt megfelelő Scala-vagy Spark-verziójának különböző verzióit kell kiválasztania. A Scala-verziót a fürtön található `scala.util.Properties.versionString` futtatásával a Spark Jupyter kernelen vagy a Spark beküldéskor. A Spark-verziót a fürtön a `sc.version` Jupyter jegyzetfüzetek futtatásával találhatja meg.
+    b. A tárházból Gyűjtse össze a **GroupID**, a **ArtifactId**és a **verzió**értékeit. Győződjön meg arról, hogy az összegyűjtött értékek megfelelnek a fürtnek. Ebben az esetben a Scala 2,10 és a Spark 1.4.0 csomagot használjuk, de előfordulhat, hogy a fürt megfelelő Scala-vagy Spark-verziójának különböző verzióit kell kiválasztania. A Scala-verziót a fürtön a Spark Jupyter kernelen vagy a Spark beküldéskor `scala.util.Properties.versionString` futtatásával tekintheti meg. A Spark-verziót a fürtön a Jupyter-jegyzetfüzetek `sc.version` futtatásával tekintheti meg.
    
     ![Külső csomagok használata Jupyter notebooktal](./media/apache-spark-jupyter-notebook-use-external-packages/use-external-packages-with-jupyter.png "Külső csomagok használata Jupyter notebooktal")
    
@@ -74,7 +74,7 @@ A következőkkel kell rendelkeznie:
    
         com.databricks:spark-csv_2.10:1.4.0
 
-1. Futtassa a kód celláját a `%%configure` Magic értékkel. Ezzel konfigurálja a mögöttes Livy-munkamenetet a megadott csomag használatára. A jegyzetfüzet következő celláiban már használhatja a csomagot az alább látható módon.
+1. Futtassa a kód cellát a `%%configure` Magic. Ezzel konfigurálja a mögöttes Livy-munkamenetet a megadott csomag használatára. A jegyzetfüzet következő celláiban már használhatja a csomagot az alább látható módon.
    
         val df = sqlContext.read.format("com.databricks.spark.csv").
         option("header", "true").
@@ -96,13 +96,13 @@ A következőkkel kell rendelkeznie:
 
 ## <a name="seealso"></a>Lásd még:
 
-* [Áttekintés Apache Spark az Azure HDInsight](apache-spark-overview.md)
+* [Overview: Apache Spark on Azure HDInsight (Áttekintés: Apache Spark on Azure HDInsight)](apache-spark-overview.md)
 
-### <a name="scenarios"></a>Forgatókönyvek
+### <a name="scenarios"></a>Alkalmazási helyzetek
 
-* [Apache Spark BI-val: Interaktív adatelemzés végrehajtása a Spark on HDInsight és a BI Tools használatával](apache-spark-use-bi-tools.md)
-* [Apache Spark a Machine Learningkal: A Spark in HDInsight használata az építési hőmérséklet elemzésére a HVAC-adatok használatával](apache-spark-ipython-notebook-machine-learning.md)
-* [Apache Spark a Machine Learningkal: Az élelmiszer-vizsgálati eredmények előrejelzése a Spark in HDInsight használatával](apache-spark-machine-learning-mllib-ipython.md)
+* [Apache Spark BI: interaktív adatelemzés végrehajtása a Spark on HDInsight és a BI Tools használatával](apache-spark-use-bi-tools.md)
+* [Apache Spark a Machine Learning használatával: a Spark in HDInsight használata az építési hőmérséklet elemzésére a HVAC-adatok használatával](apache-spark-ipython-notebook-machine-learning.md)
+* [Apache Spark a Machine Learning használatával: az élelmiszer-ellenőrzési eredmények előrejelzéséhez használja a Spark in HDInsight](apache-spark-machine-learning-mllib-ipython.md)
 * [Webhely-naplózási elemzés Apache Spark használatával a HDInsight-ben](apache-spark-custom-library-website-log-analysis.md)
 
 ### <a name="create-and-run-applications"></a>Alkalmazások létrehozása és futtatása

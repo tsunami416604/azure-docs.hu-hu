@@ -1,7 +1,7 @@
 ---
 title: Kickstart a kísérletek példákból
-titleSuffix: Azure Machine Learning Studio
-description: Ismerje meg, hogyan használhatja a machine learning-példakísérleteket új kísérletek létrehozására az Azure AI-katalógusban, és az Azure Machine Learning Studióban.
+titleSuffix: Azure Machine Learning Studio (classic)
+description: Megtudhatja, hogyan használhatók például a Machine learning-kísérletek új kísérletek létrehozására Azure AI Gallery és Azure Machine Learning Studio (klasszikus) használatával.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
@@ -10,20 +10,20 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18, previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 01/05/2018
-ms.openlocfilehash: f88323069ed23f4a038ffa4a030b1c4d4541ec42
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 547cd7c97ddf7aa08ef94f6aeea82e16119c7135
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61460391"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73496784"
 ---
-# <a name="create-azure-machine-learning-studio-experiments-from-working-examples-in-azure-ai-gallery"></a>Az Azure Machine Learning Studio-kísérletek létrehozása munkapéldákból az Azure AI-katalógusban
+# <a name="create-azure-machine-learning-studio-classic-experiments-from-working-examples-in-azure-ai-gallery"></a>Hozzon létre Azure Machine Learning Studio (klasszikus) kísérleteket a munkaAzure AI Galleryban működő példákból
 
 Ebből a cikkből megtudhatja, hogy teljesen új Machine Learning-kísérletek létrehozása helyett hogyan kezdhet hozzá a munkához az [Azure AI-katalógus](https://gallery.azure.ai/) példakísérleteivel. A példák segítségével felépítheti saját Machine Learning-megoldását.
 
-A katalógus a Microsoft Azure Machine Learning Studio-csapat, valamint a Machine Learning-Közösség által megosztott példák szerint példakísérletek rendelkezik. Továbbá kérdéseket tehet fel, illetve megjegyzéseket is fűzhet a kísérletekhez.
+A katalógus például a Microsoft Azure Machine Learning Studio (klasszikus) csapat által végzett kísérleteket, valamint a Machine Learning Közösség által megosztott példákat is tartalmaz. Továbbá kérdéseket tehet fel, illetve megjegyzéseket is fűzhet a kísérletekhez.
 
-A katalógus használatának megismeréséhez tekintse meg az [Adatelemzés kezdőknek](data-science-for-beginners-the-5-questions-data-science-answers.md) sorozat következő 3 perces videóját: [Copy other people's work to do data science](data-science-for-beginners-copy-other-peoples-work-to-do-data-science.md) (Mások munkájának felhasználása adatelemzéshez).
+A katalógus használatának megismeréséhez tekintse meg az [Adatelemzés kezdőknek](data-science-for-beginners-copy-other-peoples-work-to-do-data-science.md) sorozat következő 3 perces videóját: [Copy other people's work to do data science](data-science-for-beginners-the-5-questions-data-science-answers.md) (Mások munkájának felhasználása adatelemzéshez).
 
 
 
@@ -39,7 +39,7 @@ Az összes kísérlet tallózásához:
 1. Kattintson az **Összes tallózása** fülre az oldal tetején.
 2. A bal oldalon, a **Categories** (Kategóriák) szakasz **Refine by** (Pontosítás) területén válassza a **Experiment** (Kísérlet) fület a Katalógusban található összes kísérlet megtekintéséhez.
 3. A követelményeknek megfelelő kísérletek keresése különféle módokon történhet:
-   * **Válasszon ki szűrőket a bal oldalon.** Ha például tallózással kísérleteket használó a PCA alapú anomáliaészlelő: A **kategóriák** kattintson **kísérlet**. Ezután az **Algorithms Used** (Használt algoritmusok) területen kattintson a **Show All** (Összes megjelenítése) elemre, és a párbeszédpanelen válassza a **PCA-Based Anomaly Detection** (PCA-alapú anomáliaészlelés) lehetőséget. Lehetséges, hogy le kell görgetnie, hogy ez láthatóvá váljon.<br></br>
+   * **Válasszon ki szűrőket a bal oldalon.** Például a PCA-alapú anomáliaészlelő algoritmusokat használó kísérletek böngészéséhez a **Categories** (Kategóriák) területen kattintson az **Experiment** (Kísérlet) elemre. Ezután az **Algorithms Used** (Használt algoritmusok) területen kattintson a **Show All** (Összes megjelenítése) elemre, és a párbeszédpanelen válassza a **PCA-Based Anomaly Detection** (PCA-alapú anomáliaészlelés) lehetőséget. Lehetséges, hogy le kell görgetnie, hogy ez láthatóvá váljon.<br></br>
      ![Szűrők kiválasztása](./media/sample-experiments/choose-an-algorithm.png)
    * **Használja a keresőmezőt.** Ha például a Microsoft által közzétett, kétosztályos támogató vektorgép-algoritmust használó, számjegyfelismeréssel kapcsolatos kísérleteket szeretne keresni, a keresőmezőbe írja be a „digit recognition” (számjegyfelismerés) kifejezést. Ezt követően válassza ki az **Experiment** (Kísérlet), a **Microsoft content only** (Kizárólag Microsoft tartalom) és a **Two-Class Support Vector Machine** (Kétosztályos támogató vektorgép) szűrőt:<br></br>
      ![A keresőmező használata](./media/sample-experiments/search-for-experiments.png)
@@ -48,18 +48,13 @@ Az összes kísérlet tallózásához:
 
     ![Példakísérlet](./media/sample-experiments/example-experiment.png)
 
-    > [!NOTE]
-    > Amikor először nyit meg egy kísérletet a Machine Learning Studióban, ingyen kipróbálhatja, vagy Azure-előfizetést vásárolhat. [Információk a Machine Learning Studio ingyenes próbaverziójáról és fizetős szolgáltatásáról](https://azure.microsoft.com/pricing/details/machine-learning/)
-    >
-    >
-
 ## <a name="create-a-new-experiment-using-an-example-as-a-template"></a>Új kísérlet létrehozása példa sablonként való használatával
-A katalógusban található egyik példát sablonként használva új kísérletet hozhat létre a Machine Learning Studióban.
+Létrehozhat egy új kísérletet a Machine Learning Studio klasszikus verziójában is, például sablonként egy katalógus használatával.
 
 1. Jelentkezzen be a [Studióba](https://studio.azureml.net) a Microsoft-fiók hitelesítő adatait használva, és kattintson az **Új** fülre egy kísérlet létrehozásához.
 2. Tallózzon a példák között, és kattintson rá az egyikre.
 
-A mintakísérletet példaként használva új kísérlet jön létre a Machine Learning munkaterületén.
+Új kísérlet jön létre a Machine Learning Studio (klasszikus) munkaterületen, a példaként szolgáló kísérlettel sablonként.
 
 ## <a name="next-steps"></a>További lépések
 * [Adatok importálása különböző forrásokból](import-data.md)

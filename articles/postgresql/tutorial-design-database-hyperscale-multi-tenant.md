@@ -1,6 +1,6 @@
 ---
-title: Több-bérlős adatbázis tervezése Azure Database for PostgreSQL – nagy kapacitású (Citus) (előzetes verzió) oktatóanyaggal
-description: Ez az oktatóanyag bemutatja, hogyan hozhat létre, tölthet fel és foglalhat le elosztott táblákat Azure Database for PostgreSQL nagy kapacitású (Citus) (előzetes verzió).
+title: Több-bérlős adatbázis tervezése Azure Database for PostgreSQL – nagy kapacitású (Citus) oktatóanyaggal
+description: Ez az oktatóanyag bemutatja, hogyan hozhat létre, tölthet fel és foglalhat le elosztott táblákat Azure Database for PostgreSQL nagy kapacitású (Citus).
 author: jonels-msft
 ms.author: jonels
 ms.service: postgresql
@@ -9,16 +9,16 @@ ms.custom: mvc
 ms.devlang: azurecli
 ms.topic: tutorial
 ms.date: 05/14/2019
-ms.openlocfilehash: ba20a048faecc9e37a2bfbe750de0fbeba88d538
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: 130c3e9f5abb24ffcc4e0c4ad6b96af5fca62090
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "70163981"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73496532"
 ---
-# <a name="tutorial-design-a-multi-tenant-database-by-using-azure-database-for-postgresql--hyperscale-citus-preview"></a>Oktatóanyag: több-bérlős adatbázis tervezése Azure Database for PostgreSQL – nagy kapacitású (Citus) (előzetes verzió) használatával
+# <a name="tutorial-design-a-multi-tenant-database-by-using-azure-database-for-postgresql--hyperscale-citus"></a>Oktatóanyag: több-bérlős adatbázis tervezése Azure Database for PostgreSQL – nagy kapacitású (Citus) használatával
 
-Ebben az oktatóanyagban a Azure Database for PostgreSQL-nagy kapacitású (Citus) (előzetes verzió) használatával megismerheti a következőket:
+Ebben az oktatóanyagban a Azure Database for PostgreSQL-nagy kapacitású (Citus) használatával megismerheti a következőket:
 
 > [!div class="checklist"]
 > * Rugalmas skálázási (Citus) kiszolgálócsoport létrehozása
@@ -35,7 +35,7 @@ Ebben az oktatóanyagban a Azure Database for PostgreSQL-nagy kapacitású (Citu
 
 ## <a name="use-psql-utility-to-create-a-schema"></a>Séma létrehozása a psql segédprogram használatával
 
-Miután kapcsolódott a Azure Database for PostgreSQL-nagy kapacitású (Citus) (előzetes verzió) a psql használatával, elvégezheti néhány alapvető feladatot. Ez az oktatóanyag végigvezeti egy olyan webalkalmazás létrehozásának lépésein, amely lehetővé teszi a hirdetők számára a kampányok nyomon követését.
+Miután csatlakozott a Azure Database for PostgreSQL-nagy kapacitású (Citus) a psql használatával, elvégezheti néhány alapvető feladatot. Ez az oktatóanyag végigvezeti egy olyan webalkalmazás létrehozásának lépésein, amely lehetővé teszi a hirdetők számára a kampányok nyomon követését.
 
 Több vállalat is használhatja az alkalmazást, ezért hozzunk létre egy táblázatot, amely a vállalatokat és egy másikat tart fenn a kampányok számára. Futtassa a következő parancsokat a psql-konzolon:
 
@@ -130,7 +130,7 @@ A több-bérlős alkalmazások csak bérlők számára kényszerítik az egyedis
 
 A nagy kapacitású központi telepítése a különböző csomópontokon lévő táblázat sorait egy felhasználó által kijelölt oszlop értéke alapján tárolja. Ez a "terjesztési oszlop" jelzi, hogy melyik bérlő tulajdonosa a soroknak.
 
-Állítsa be, hogy a terjesztési oszlop legyen a vállalat \_id, a bérlő azonosítója. A psql-ben futtassa a következő függvényeket:
+Állítsa be, hogy a terjesztési oszlop legyen a vállalat\_azonosítója, a bérlő azonosítója. A psql-ben futtassa a következő függvényeket:
 
 ```sql
 SELECT create_distributed_table('companies',   'id');
@@ -211,7 +211,7 @@ Töltse be például az adathalmazt. Ne felejtse el futtatni ezt a parancsot a p
 \copy geo_ips from 'geo_ips.csv' with csv
 ```
 
-A Clicks táblázat és a Geo \_ips közötti csatlakozás minden csomóponton hatékony.
+A Clicks táblázat a Geo\_IP-címekkel való csatlakoztatása minden csomóponton hatékony.
 Itt találja az ad-ra rákattintott mindenki helyét
 290. Próbálja meg futtatni a lekérdezést a psql-ben.
 
@@ -227,7 +227,7 @@ SELECT c.id, clicked_at, latlon
 
 Előfordulhat, hogy minden bérlőnek a mások számára nem szükséges speciális adatokat kell tárolnia. Azonban minden bérlő közös infrastruktúrát oszt meg azonos adatbázis-sémával. Hol lehet a további adatvesztés?
 
-Az egyik trükk az, hogy egy nyílt végű típusú oszlopot, például a PostgreSQL JSONB használja.  A séma tartalmaz egy `user_data` nevű `clicks` JSONB mezőt.
+Az egyik trükk az, hogy egy nyílt végű típusú oszlopot, például a PostgreSQL JSONB használja.  A séma tartalmaz egy `user_data`nevű `clicks` JSONB mezőt.
 Egy vállalat (mondjuk az öt vállalat) az oszlopot használva nyomon követheti, hogy a felhasználó mobil eszközön van-e.
 
 A következő lekérdezésből megtudhatja, hogy ki és Mikor szeretne többet: mobil vagy hagyományos látogató.
@@ -269,7 +269,7 @@ SELECT id
 
 Az előző lépésekben Azure-erőforrásokat hozott létre egy kiszolgálócsoport számára. Ha nem várható, hogy a jövőben szüksége lesz ezekre az erőforrásokra, törölje a kiszolgálót. A kiszolgálócsoport *Áttekintés* lapján kattintson a *Törlés* gombra. Amikor a rendszer rákérdez egy előugró oldalra, erősítse meg a kiszolgálócsoport nevét, és kattintson a végleges *Törlés* gombra.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebből az oktatóanyagból megtudhatta, hogyan építhet ki egy nagy kapacitású-(Citus-) kiszolgáló csoportot. Csatlakoztatta azt a psql-hoz, létrehozott egy sémát és egy elosztott adatkészletet. Megtanulta, hogy a bérlők között és között is lekérdezze az adatlekérdezést, valamint a séma személyre szabását a bérlőn belül.
 

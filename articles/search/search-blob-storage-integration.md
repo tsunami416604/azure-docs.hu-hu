@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 10/09/2019
-ms.openlocfilehash: 6bd96df1a2ed4ff7cde637a646ab514e89340b38
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.date: 11/04/2019
+ms.openlocfilehash: af7d04bd74ada296b9f0e0f7c149c2a781cec579
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72792485"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73496493"
 ---
 # <a name="add-full-text-search-to-azure-blob-data-using-azure-cognitive-search"></a>Teljes szöveges keresés hozzáadása az Azure Blob-adataihoz az Azure Cognitive Search
 
@@ -68,7 +68,7 @@ Az indexelés kimenete egy keresési index, amely az interaktív feltáráshoz h
 
 A több állandó megoldás a lekérdezési bemenetek összegyűjtése és a válasz megjelenítése keresési eredményekként egy ügyfélalkalmazás számára. Az alábbi C# oktatóanyag azt ismerteti, hogyan lehet keresési alkalmazást [létrehozni: hozza létre első alkalmazását az Azure Cognitive Searchban](tutorial-csharp-create-first-app.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 + [Blobok feltöltése, letöltése és listázása a Azure Portal (Azure Blob Storage)](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal)
-+ [BLOB-indexelő beállítása (Azure Search)](search-howto-indexing-azure-blob-storage.md) 
++ [BLOB-indexelő beállítása (Azure Cognitive Search)](search-howto-indexing-azure-blob-storage.md) 

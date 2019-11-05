@@ -1,5 +1,5 @@
 ---
-title: Helyszíni Apache Hadoop migrálása az Azure HDInsight – motiváció és előnyök
+title: 'Előnyök: helyszíni Apache Hadoop migrálása az Azure HDInsight'
 description: Megismerheti a helyszíni Hadoop-fürtök Azure-HDInsight való áttelepítésének motivációját és előnyeit.
 author: hrasheed-msft
 ms.reviewer: ashishth
@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/25/2018
 ms.author: hrasheed
-ms.openlocfilehash: a65b775a516bfccac2dee5ce00bc7d6495df256d
-ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
+ms.openlocfilehash: 7f67b85b66748ae98cbb520bf4ebc11a2eef9efb
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71718361"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73494944"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---motivation-and-benefits"></a>Helyszíni Apache Hadoop-fürtök migrálása az Azure HDInsight – motiváció és előnyök
 
@@ -51,15 +51,15 @@ Az Azure HDInsight a Hadoop-összetevők Felhőbeli eloszlása. Az Azure HDInsig
 
 - **Termelékenység** – különböző eszközöket használhat a Hadoop és a sparkhoz az előnyben részesített fejlesztési környezetben.
 
-- **Bővíthetőség egyéni eszközökkel vagy harmadik féltől származó alkalmazásokkal** – a HDInsight-fürtök bővíthetők a telepített összetevőkkel, és a többi Big Data-megoldással is integrálhatók az Azure-ból származó [egykattintásos](https://azure.microsoft.com/services/hdinsight/partner-ecosystem/) deployments használatával. Piaci hely.
+- **Bővíthetőség egyéni eszközökkel vagy harmadik féltől származó alkalmazásokkal** – a HDInsight-fürtök kiterjeszthetők a telepített összetevőkkel, és a többi Big Data-megoldással is integrálhatók az Azure-ba történő [egykattintásos](https://azure.microsoft.com/services/hdinsight/partner-ecosystem/) üzemelő példányok használatával. Piaci hely.
 
-- **Egyszerű felügyelet, felügyelet és figyelés** – az Azure HDInsight integrálható [Azure Monitor naplókkal](../hdinsight-hadoop-oms-log-analytics-tutorial.md)@no__t – a 2gombot egyetlen felületet biztosítanak, amellyel az összes fürtöt nyomon követheti.
+- **Egyszerű felügyelet, felügyelet és figyelés** – az Azure HDInsight integrálható [Azure monitor-naplókkal](../hdinsight-hadoop-oms-log-analytics-tutorial.md) , egyetlen felületet biztosítva, amellyel az összes fürtöt nyomon követheti.
 
 - **Integráció más Azure-szolgáltatásokkal** – a HDInsight könnyen integrálható más népszerű Azure-szolgáltatásokkal, például a következőkkel:
 
     - Azure Data Factory (ADF)
     - Azure Blob Storage
-    - Azure Data Lake Storage Gen2
+    - 2\. generációs Azure Data Lake Storage
     - Azure Cosmos DB
     - Azure SQL Database
     - Azure Analysis Services
@@ -89,10 +89,10 @@ Ez a szakasz olyan sablon-kérdőíveket biztosít, amelyek segítenek a követk
 
 | **Kérdés** | **Példa** | **Válasz** |
 |---|---|---|
-|**Témakör**: **Környezet**|||
-|Fürt terjesztési verziója|HDP 2.6.5, CDH 5.7|
+|**Témakör**: **környezet**|||
+|Fürt terjesztési verziója|HDP 2.6.5, CDH 5,7|
 |Big adatkörnyezet-összetevők|HDFS, fonal, kaptár, LLAP, Impala, kudu, HBase, Spark, MapReduce, Kafka, Zookeeper, Solr, Sqoop, Oozie, Ranger, atlasz, Falcon, Zeppelin, R|
-|Fürtök típusai|Hadoop, Spark, Confluent Kafka, Storm, Solr|
+|Fürtök típusai|Hadoop, Spark, Fluent Kafka, Storm, Solr|
 |Fürtök száma|4|
 |Fő csomópontok száma|2|
 |Munkavégző csomópontok száma|100|
@@ -106,7 +106,7 @@ Ez a szakasz olyan sablon-kérdőíveket biztosít, amelyek segítenek a követk
 |Vész-helyreállítás/biztonsági mentés|Biztonsági mentési fürt?|  
 |Fürttől függő rendszerek|SQL Server, Teradata, Power BI, MongoDB|
 |Harmadik féltől származó integrációk|Tabló, GridGain, Qubole, Informatica, splunk|
-|**Témakör**: **Biztonsági**|||
+|**Témakör**: **Biztonság**|||
 |Szegélyhálózati biztonság|Tűzfalak|
 |Fürt hitelesítésének & engedélyezése|Active Directory, Ambari, Cloudera Manager, nincs hitelesítés|
 |HDFS Access Control|  Manuális, SSH-felhasználók|
@@ -121,7 +121,7 @@ Ez a szakasz olyan sablon-kérdőíveket biztosít, amelyek segítenek a követk
 
 |**Kérdés**|**Példa**|**Válasz**|
 |---|---|---|
-|**Témakör**: **Számítási feladatok és gyakoriság**|||
+|**Témakör**: számítási **feladatok és gyakoriság**|||
 |MapReduce-feladatok|10 feladat – naponta kétszer||
 |Struktúra-feladatok|100 feladat--óránként||
 |Spark batch-feladatok|50 feladat – 15 percenként||
@@ -129,67 +129,67 @@ Ez a szakasz olyan sablon-kérdőíveket biztosít, amelyek segítenek a követk
 |Strukturált adatfolyam-feladatok|5 feladat – percenként||
 |ML Model betanítási feladatok|2 feladat – hetente egyszer||
 |Programozási nyelvek|Python, Scala, Java||
-|Parancsprogram-kezelés|Shell, Python||
-|**Témakör**: **Adatok**|||
+|Parancsfájlkészítés|Shell, Python||
+|**Témakör**: **az adatkezelés**|||
 |Adatforrások|Lapos fájlok, JSON, Kafka, RDBMS||
 |Adatkoordinálás|Oozie-munkafolyamatok, légáram||
 |Memóriabeli keresések|Apache Ignite, Redis||
 |Adatelérési helyek|HDFS, RDBMS, Kafka, MPP ||
-|**Témakör**: **Meta-adatértékek**|||
+|**Témakör**: **meta-adatkezelés**|||
 |Struktúra-adatbázis típusa|MySQL, postgres||
 |Struktúra metaadattárak száma|2||
 |Struktúra-táblák száma|100||
 |A Ranger-szabályzatok száma|20||
 |Oozie-munkafolyamatok száma|100||
-|**Témakör**: **Méretezés**|||
+|**Témakör**: **skála**|||
 |Adatmennyiség, beleértve a replikálást|100 TB||
 |Napi betöltési mennyiség|50 GB||
 |Adatmennyiség növekedési aránya|évi 10%||
 |Fürtcsomópontok növekedési aránya|évente 5%
-|**Témakör**: **Fürt kihasználtsága**|||
+|**Témakör**: **fürt kihasználtsága**|||
 |Átlagos CPU-használat (%)|60%||
 |Felhasznált memória átlagos százaléka (%)|75%||
-|Használt lemezterület|75%||
+|Felhasznált lemezterület|75%||
 |Átlagos hálózati használat%-ban|25%
-|**Témakör**: **Személyzet**|||
+|**Témakör**: **munkatársak**|||
 |Rendszergazdák száma|2||
 |Fejlesztők száma|10||
 |Végfelhasználók száma|100||
-|Képességek|Hadoop, Spark||
+|Ismereteit|Hadoop, Spark||
 |Az áttelepítési erőfeszítésekhez rendelkezésre álló erőforrások száma|2||
-|**Témakör**: **Korlátozások**|||
+|**Témakör**: **korlátozások**|||
 |Aktuális korlátozások|A késés magas||
 |Aktuális kihívások|Egyidejűségi probléma||
 
 ### <a name="azure-requirements-questionnaire"></a>Azure-követelmények – kérdőív
 
-|**Témakör**: **Infrastruktúra** |||
+|**Témakör**: **infrastruktúra** |||
 |---|---|---|
 |**Kérdés**|**Példa**|**Válasz**|
 | Előnyben részesített régió|USA keleti régiója||
 |VNet előnyben részesített?|Igen||
 |HA/DR szükséges?|Igen||
 |Integráció más felhőalapú szolgáltatásokkal?|ADF, CosmosDB||
-|**Témakör**:   **Adatáthelyezés**  |||
+|**Témakör**: **adatáthelyezés**  |||
 |Kezdeti betöltési beállítás|DistCp, adatmező, ADF, WANDisco||
 |Adatátviteli különbözet|DistCp, AzCopy||
 |Folyamatos növekményes adatátvitel|DistCp, Sqoop||
-|**Témakör**:   **& Riasztás figyelése** |||
+|**Témakör**: **& riasztás figyelése** |||
 |Az Azure Monitoring & a riasztások és a harmadik féltől származó figyelés integrálása|Az Azure Monitoring & riasztások használata||
-|**Témakör**:   **Biztonsági beállítások** |||
+|**Témakör**: **biztonsági beállítások** |||
 |Magán-és védett adatfolyamatok?|Igen||
 |Tartományhoz csatlakoztatott fürt (ESP)?|     Igen||
 |Helyszíni AD-szinkronizáló a felhőbe?|     Igen||
 |A szinkronizálni kívánt AD-felhasználók száma?|          100||
 |Szeretné szinkronizálni a jelszavakat a felhőbe?|    Igen||
 |Csak Felhőbeli felhasználók?|                 Igen||
-|MFA needed?|                       Nem|| 
+|MFA szükséges?|                       Nem|| 
 |Az adatengedélyezési követelmények?|  Igen||
 |Szerepköralapú Access Control?|        Igen||
 |Naplózás szükséges?|                  Igen||
 |Inaktív adatok titkosítása?|          Igen||
 |Adattitkosítás az átvitel során?|       Igen||
-|**Témakör**:   **Újraarchitektúra beállításai** |||
+|**Témakör**: **újraarchitektúra beállításai** |||
 |Egyetlen fürt és adott fürtök típusai|Adott fürtök típusai||
 |A tárolók és a távoli tárolók is találhatók?|Távoli tárterület||
 |Kisebb a fürt mérete, mert az adattárolás távolról történik?|Kisebb fürt mérete||

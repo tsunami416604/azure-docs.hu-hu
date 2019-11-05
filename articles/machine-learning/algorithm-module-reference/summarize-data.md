@@ -1,5 +1,5 @@
 ---
-title: Az adatösszesítés
+title: Adatok összegzése
 titleSuffix: Azure Machine Learning service
 description: Megtudhatja, hogyan használhatja a Azure Machine Learning szolgáltatásban található összegző adatok modult az adatkészlet oszlopaihoz tartozó alapszintű leíró statisztikai jelentés létrehozásához.
 services: machine-learning
@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 09/09/2019
-ms.openlocfilehash: 54d7235ef56a94c9c0e7b780c53cbd9791bf4f53
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: 503eb533b83cbeedcc16b73a9c1dbe821a4d4d94
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72694713"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73492578"
 ---
-# <a name="summarize-data"></a>Az adatösszesítés
+# <a name="summarize-data"></a>Adatok összegzése
 
-Ez a cikk a Azure Machine Learning Visual Interface modulját ismerteti.
+Ez a cikk a Azure Machine Learning Designer (előzetes verzió) modulját ismerteti.
 
 Az összesítő adat modul használatával olyan szabványos statisztikai mértékeket hozhat létre, amelyek leírják a bemeneti tábla minden oszlopát.
 
@@ -32,7 +32,7 @@ A modul kiszámítja az egyes oszlopok fontos pontszámait, és a bemenetként m
 
 ## <a name="how-to-configure-summarize-data"></a>Az adatösszesítés konfigurálása  
 
-1. Adja hozzá az **összesítő** adatmodult a folyamathoz. Ezt a modult a Visual Interface **statisztikai függvények** kategóriájában találja.
+1. Adja hozzá az **összesítő** adatmodult a folyamathoz. Ez a modul a Designer **statisztikai függvények** kategóriájában található meg.
 
 1. Kapcsolja be azt az adatkészletet, amelyhez jelentést szeretne készíteni.
 
@@ -42,7 +42,7 @@ A modul kiszámítja az egyes oszlopok fontos pontszámait, és a bemenetként m
 
 1. Futtassa a folyamatot, vagy kattintson a jobb gombbal a modulra, és válassza a **kijelölt futtatása**lehetőséget.
 
-## <a name="results"></a>Eredmények
+## <a name="results"></a>Results (Eredmények)
 
 A modul jelentései a következő statisztikákat is tartalmazhatják. 
 
@@ -71,6 +71,6 @@ A modul jelentései a következő statisztikákat is tartalmazhatják.
 |**P95**|95% percentilis|
 |**P 99,5**|99,5% percentilis |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Tekintse [meg Azure Machine learning szolgáltatás számára elérhető modulok készletét](module-reference.md) .  

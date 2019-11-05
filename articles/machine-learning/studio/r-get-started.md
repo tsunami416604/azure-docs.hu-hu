@@ -1,7 +1,7 @@
 ---
-title: R – első lépések
-titleSuffix: Azure Machine Learning Studio
-description: Az R programozási oktatóanyag segítségével első lépések az R nyelv használata az Azure Machine Learning Studio-előrejelzési megoldás létrehozásához.
+title: Első lépések az R-vel
+titleSuffix: Azure Machine Learning Studio (classic)
+description: Ezzel az R programozási oktatóanyaggal megkezdheti az R nyelv és a Azure Machine Learning Studio (klasszikus) használatának megkezdését az előrejelzési megoldás létrehozásához.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
@@ -10,99 +10,99 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/01/2019
-ms.openlocfilehash: 5c4fa2260b00043e016748010528926b1b9d74a3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1d3bc64291f58c5dd77531141c31490451cc8ea2
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64726531"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73496831"
 ---
-# <a name="getting-started-with-the-r-programming-language-in-azure-machine-learning-studio"></a>– Első lépések az R programozási nyelv, az Azure Machine Learning Studióban
+# <a name="getting-started-with-the-r-programming-language-in-azure-machine-learning-studio-classic"></a>Első lépések az R programozási nyelv Azure Machine Learning Studio (klasszikus)
 
 <!-- Stephen F Elston, Ph.D. -->
 
 ## <a name="introduction"></a>Bevezetés
 
-Ez az oktatóanyag segítséget nyújt a indítsa el az Azure Machine Learning Studio kiterjesztése az R programozási nyelv használatával. Ez az oktatóanyag az R programozási hozhat létre, tesztelheti és Studión belül R-kód végrehajtása. Végzett munka, az oktatóanyagokat, létrehozhat egy teljes előrejelzési megoldás a Studióban az R nyelv használatával.  
+Ez az oktatóanyag segítséget nyújt a Azure Machine Learning Studio (klasszikus) kiterjesztésének megkezdéséhez az R programozási nyelv használatával. Kövesse ezt az R programozási oktatóanyagot az R-kód létrehozásához, teszteléséhez és végrehajtásához a studión belül (klasszikus). Az oktatóanyagban végzett munka során egy teljes előrejelző megoldást fog létrehozni az R nyelv használatával a Studio klasszikus verziójában.  
 
-A Microsoft Azure Machine Learning Studio számos hatékony gépi tanulási és adatmanipulációs modulokat tartalmaz. A hatékony R nyelvvel, a nyelv franca Analytics leírása. Boldogan elemzési és adatkezelési a Studióban is kiterjeszthető az R. Ebben együttes használata biztosít a méretezhetőség és a könnyű telepíthetőségét a Studio rugalmasságával és részletes elemzést R.
+A Azure Machine Learning Studio klasszikus verziója számos hatékony gépi tanulási és adatkezelési modult tartalmaz. A nagy teljesítményű R nyelv leírása a lingua franca of Analytics. Szerencsére a Studio klasszikus verziójában az elemzés és az adatkezelés is bővíthető az R használatával. Ez a kombináció a Studio klasszikus verziójának méretezhetőségét és egyszerű üzembe helyezését teszi lehetővé az R rugalmasságával és mélyreható elemzésével.
 
 ### <a name="forecasting-and-the-dataset"></a>Előrejelzés és az adatkészlet
 
-Előrejelzés a széles körben alkalmazott és igen hasznos elemzési módszer. Közös értékesítési szezonális elemek optimális leltári állományt, jelezni makrogazdasági változók meghatározása előrejelzésére közé eső használ. Előrejelzés általában time series modellel történik.
+Az előrejelzés egy széles körben alkalmazott és nagyon hasznos analitikai módszer. A gyakori felhasználási tartomány a szezonális elemek előrejelzése, az optimális leltározási szintek meghatározása a makrogazdasági változók előrejelzéséhez. Az előrejelzés általában idősorozat-modellekkel történik.
 
-Idősorozat-adatok az adatokhoz, amelyben az értékeket egy idő index rendelkezik. Az idő index is lehetnek, például minden hónap vagy percenként, vagy nem. Egy idősorozat-modell idősorozat-adatok alapján. Az R programozási nyelv tartalmaz egy idősorozat-adatok széles körű elemzés és rugalmas keretében.
+Az idősorozat-adatok olyan adatok, amelyekben az értékek egy időindextel rendelkeznek. Az időindex lehet rendszeres, például havonta vagy percenként, vagy szabálytalan. Az idősorozat-modell az idősorozat-adatsorokon alapul. Az R programozási nyelv rugalmas keretrendszert és átfogó elemzést tartalmaz az idősorozat-adatokat illetően.
 
-Az útmutató azt fogja California tejtermelésre használata és díjszabási adatokat. Ezeket az adatokat több tejelő termékek és tejzsír, a teljesítményteszt hagyományos az ár havi információkat biztosít.
+Ebben az útmutatóban a kaliforniai tejtermékek termelési és díjszabási információit fogjuk dolgozni. Ezek az adatok a különböző tejtermékek előállításával, valamint a tejzsír árának összehasonlításával kapcsolatos havi információkat tartalmazzák.
 
-Ebben a cikkben R-szkriptek, együtt használt adatokat letölthető [MachineLearningSamples-jegyzetfüzetek/studio-samples](https://github.com/Azure-Samples/MachineLearningSamples-Notebooks/tree/master/studio-samples). A fájlban lévő adatok `cadairydata.csv` volt a University of Wisconsin címen elérhető információk az eredetileg synthesized [ https://dairymarkets.com ](https://dairymarkets.com).
+A cikkben használt adatok, valamint az R-parancsfájlok is letölthetők a [MachineLearningSamples-Notebooks/Studio-Samples](https://github.com/Azure-Samples/MachineLearningSamples-Notebooks/tree/master/studio-samples)-ből. A (z) `cadairydata.csv` fájlban lévő adatokat eredetileg a Wisconsini Egyetemen elérhető, [https://dairymarkets.com](https://dairymarkets.com)címen található információk alapján állították elő.
 
 ### <a name="organization"></a>Szervezet
 
-Számos lépést azt fogja halad, megtudhatja hogyan hozhat létre, tesztelheti és elemzési és adatkezelési R-kód végrehajtása az Azure Machine Learning Studio-környezetben.  
+A Azure Machine Learning Studio-környezet klasszikus verziójában megtudhatja, hogyan hozhat létre, tesztelheti és hajthat végre elemzési és adatmanipulációs R-kódokat a következő lépések végrehajtásával:  
 
-* Először az Azure Machine Learning Studio-környezet az R nyelv használatával kapcsolatos alapfogalmakat fog tárgyaljuk.
-* Ezután azt halad megvizsgálja az üzemeltetés minőségének különböző szempontjait i/o-adatok, R-kód és a grafikai az Azure Machine Learning Studio-környezetben.
-* Azt fogja majd hozhatnak létre az első rész az előrejelzési megoldás adattisztítást és adatátalakítást kódjának létrehozásával.
-* Az előkészített adatok végezzük el a korrelációk között számos, a változókat az adathalmaz elemzése.
-* Végül létre fogunk hozni egy szezonális time series előrejelzési modell tejtermelésre.
+* Először is megismerheti az R nyelv használatának alapjait Azure Machine Learning Studio környezet klasszikus verziójában.
+* Ezt követően megbeszéljük, hogy az I/O-t, az R-kódot és a grafikát a Azure Machine Learning Studio környezet klasszikus verziójának különböző szempontjaival tárgyaljuk.
+* Az előrejelzési megoldás első részét az adattisztítás és-átalakítás kódjának létrehozásával fogjuk létrehozni.
+* Az adatok előkészítésekor a rendszer elvégzi az adatkészlet számos változója közötti korrelációk elemzését.
+* Végezetül létrehozunk egy szezonális idősorozat-előrejelzési modellt a tejtermékek termeléséhez.
 
-## <a id="mlstudio"></a>Az R nyelvhez a Machine Learning Studio használatához
+## <a id="mlstudio"></a>Az R nyelvvel való interakció Machine Learning Studio (klasszikus)
 
-Ez a szakasz végigvezeti néhány alapjait az R programozási nyelv, a Machine Learning Studio-környezet használata. Az R nyelv hozhat létre testreszabott analytics és data adatkezelési modulok az Azure Machine Learning Studio környezetből hatékony eszközt biztosít.
+Ez a szakasz végigvezeti az R programozási nyelv Machine Learning Studio (klasszikus) környezetben való interakciójának alapjain. Az R nyelv hatékony eszközt biztosít a testreszabott elemzési és adatkezelési modulok létrehozásához a Azure Machine Learning Studio környezet klasszikus változatán belül.
 
-Az RStudio fejlesztéséhez, teszteléséhez és kis léptékű R-kód hibaelhárítása a fogom használni. Ez a kód ezután Kivágás és beillesztés, egy [R-szkript végrehajtása] [ execute-r-script] modul a Machine Learning Studióban futtatható.  
+A RStudio használatával kis méretben fejlesztem, tesztelni és hibakeresést végezhetek az R-kódban. Ezt a kódot a rendszer kivágja és beilleszti egy [Execute R script][execute-r-script] modulba, amely készen áll a Machine learning Studio klasszikus verziójában való futtatásra.  
 
 ### <a name="the-execute-r-script-module"></a>Az R-szkript végrehajtása modul
 
-Machine Learning studióban R-parancsfájlok futtathatók a [R-szkript végrehajtása] [ execute-r-script] modul. Példa a [R-szkript végrehajtása] [ execute-r-script] modul a Machine Learning Studióban az 1. ábrán látható.
+A Machine Learning Studio klasszikus verziójában az R-szkriptek az [r szkript végrehajtása][execute-r-script] modulon belül futnak. Az 1. ábrán látható példa a Machine Learning Studio klasszikus verziójának [végrehajtási R szkript][execute-r-script] moduljának végrehajtására.
 
- ![Az R programozási nyelv: Az R-szkript végrehajtása modul kiválasztva a Machine Learning Studióban](./media/r-quickstart/fig1.png)
+ ![R programozási nyelv: a Machine Learning Studioben kiválasztott R-szkript végrehajtása modul (klasszikus)](./media/r-quickstart/fig1.png)
 
-*1. ábra A Machine Learning Studio környezet az R-szkript végrehajtása modul kiválasztva megjelenítése.*
+*1. ábra. Az Machine Learning Studio (klasszikus) környezet, amely az R-szkript végrehajtásának kiválasztására szolgáló modult jeleníti meg.*
 
-1\. ábra hivatkozó, nézzük meg a legfontosabb elemei a Machine Learning Studio-környezetben való munkához némelyike a [R-szkript végrehajtása] [ execute-r-script] modul.
+Az 1. ábrára hivatkozva vizsgáljuk meg az Machine Learning Studio (klasszikus) környezet néhány kulcsfontosságú részét az [R-parancsfájl végrehajtása][execute-r-script] modul használatához.
 
-* A modul a kísérletben a középső ablaktáblán jelennek meg.
-* A jobb oldali panel felső részén egy ablakban megtekintheti és szerkesztheti az R-szkriptek tartalmazza.  
-* Jobb oldali panel alsó részén látható néhány tulajdonságát a [R-szkript végrehajtása][execute-r-script]. A hiba és kimeneti naplók ezen a panelen megfelelő kritikus pontok elkerülése érdekében kiválasztásával tekintheti meg.
+* A kísérlet moduljai a középső ablaktáblán jelennek meg.
+* A jobb oldali ablaktábla felső részén található az R-parancsfájlok megtekintésére és szerkesztésére szolgáló ablak.  
+* A jobb oldali ablaktábla alsó részén az [R-szkript végrehajtásának][execute-r-script]néhány tulajdonsága látható. A hibát és a kimeneti naplókat a panel megfelelő pontjainak kiválasztásával tekintheti meg.
 
-Hogy természetesen lesznek, megvizsgálni a [R-szkript végrehajtása] [ execute-r-script] Ez a cikk további részében részletesebben.
+A cikk további részében természetesen az [R szkript végrehajtásának][execute-r-script] részletes ismertetését fogjuk megbeszélni.
 
-Az összetett R funkciók használatakor javasolt, hogy szerkeszti, tesztelése és hibakeresése az RStudio. Csakúgy, mint bármely szoftverfejlesztői növekményes kiterjesztheti a kódot, és kis egyszerű vizsgálati eseteknél tesztelni. Majd kivágja és beilleszti a függvények a R szkriptablakba, a [R-szkript végrehajtása] [ execute-r-script] modul. Ez a megközelítés lehetővé teszi az RStudio integrált fejlesztőkörnyezet (IDE) és az Azure Machine Learning Studio hatékonyságát is kihasználhatja.  
+Összetett R-függvények használata esetén azt javasoljuk, hogy szerkessze, tesztelje és végezzen hibakeresést a RStudio-ben. Csakúgy, mint bármely szoftverfejlesztés esetében, fokozatosan kiterjesztheti a kódot, és tesztelheti kis, egyszerű tesztelési esetekben. Ezután vágja ki és illessze be a függvényeket az R-szkript [végrehajtása][execute-r-script] modul r-szkript ablakába. Ez a módszer lehetővé teszi a RStudio integrált fejlesztési környezet (IDE) és a Azure Machine Learning Studio klasszikus verziójának a kiaknázását.  
 
-#### <a name="execute-r-code"></a>Hajtsa végre az R-kód
+#### <a name="execute-r-code"></a>R-kód végrehajtása
 
-Az összes R-kód a [R-szkript végrehajtása] [ execute-r-script] modul végrehajtja a kiválasztásával a kísérlet futtatásakor a **futtassa** gomb. Végrehajtás befejezése után egy pipa jelenik meg a [R-szkript végrehajtása] [ execute-r-script] ikonra.
+Az [r-szkript végrehajtása][execute-r-script] modulban az r-kód a **Futtatás** gomb kiválasztásával fog futni a kísérlet futtatásakor. A végrehajtás befejezését követően egy pipa jelenik meg az R- [szkript végrehajtása][execute-r-script] ikonon.
 
-#### <a name="defensive-r-coding-for-azure-machine-learning"></a>Az Azure Machine Learning védelmi vonalként R programozási
+#### <a name="defensive-r-coding-for-azure-machine-learning"></a>A Azure Machine Learning védelmi R-kódolása
 
-Tegyük fel, a webszolgáltatás az R-kód az Azure Machine Learning Studio használatával fejleszt, mindenképp tervez módját a kód foglalkozni fog egy nem várt adatok bemeneti és a kivételeket. Érthetőség kedvéért I nem szereplő átszállítást megakadályozzák az ellenőrzési vagy kivételkezelés látható hitelesítésikód-példák a legtöbb nagy részét. Azonban, a Folytatás e kap funkciók számos példát R a kivételkezelő funkció használatával.  
+Ha R-kódot fejleszt a-hez, tegyük fel, hogy a webszolgáltatások a Azure Machine Learning Studio klasszikus verzióját használják, érdemes megtervezni, hogy a kód hogyan fog működni a nem várt adatbevitelsel és kivételekkel kapcsolatban. Az egyértelműség érdekében a kód legtöbb példájában nem szerepelt az ellenőrzés vagy a kivétel kezelésének módja. A folytatáshoz azonban több példát is biztosítunk a függvények számára az R kivétel-kezelési képességének használatával.  
 
-A teljes R kivételkezelés kezelésére van szüksége, ha javasolni tudom olvassa el az alább felsorolt Wickham könyve a alkalmazni szakaszait [további információk](#appendixb).
+Ha az R-kivételek kezelésének átfogóbb kezelésére van szüksége, akkor azt javasoljuk, hogy olvassa el a könyv megfelelő részeit az alább felsorolt Wickham [további olvasnivalóban](#appendixb).
 
-#### <a name="debug-and-test-r-in-machine-learning-studio"></a>Hibakeresés és R tesztelése a Machine Learning Studióban
+#### <a name="debug-and-test-r-in-machine-learning-studio-classic"></a>Hibakeresés és tesztelés az R-ben Machine Learning Studio (klasszikus)
 
-Kifejezni, javasolni tudom a teszteléshez, és a hibakereséshez az R-kód az RStudio kis léptékű. Előfordulhatnak azonban olyan esetekben, ahol lesz nyomon követheti az R-kód jelentkező a [R-szkript végrehajtása] [ execute-r-script] magát. Ezenkívül mindig érdemes ellenőrizni az eredményeket a Machine Learning Studióban.
+Az ismételt próbálkozáshoz azt javasoljuk, hogy az R-kódot kis méretekben tesztelje és hibakeresése a RStudio-ben. Vannak azonban olyan esetek, amikor le kell követnie az R-kód problémáit az [r-szkript végrehajtása][execute-r-script] során. Emellett érdemes megnézni az eredményeket a Machine Learning Studio klasszikus verziójában.
 
-Az R-kód és az Azure Machine Learning Studio platformon a végrehajtás kimenetének elsősorban kimenetét található. További információkat error.log lesz látható.  
+Az R-kód végrehajtásának és a Azure Machine Learning Studio platform klasszikus verziójának kimenete elsősorban a kimenet. log naplófájlban található. Néhány további információ jelenik meg a error. log naplófájlban.  
 
-Ha hiba történik a Machine Learning Studióban az R-kód futtatása során, az első lépések error.log meg kell lennie. Ez a fájl tartalmazhat hasznos hibaüzenetek segítségével megismerheti, és javítsa ki a hibát. Error.log megtekintéséhez jelölje ki **hiba napló megtekintése** a a **tulajdonságait tartalmazó ablaktáblán** számára a [R-szkript végrehajtása] [ execute-r-script] a hibát tartalmazó.
+Ha hiba történik az R-kód futtatásakor Machine Learning Studio klasszikus verziójában, akkor az első lépés a következő: error. log. Ez a fájl hasznos hibaüzeneteket tartalmazhat, amelyek segítenek megérteni és elhárítani a hibát. A hiba. log naplófájl megtekintéséhez a hibát tartalmazó [végrehajtási R-parancsfájl][execute-r-script] **Tulajdonságok paneljén** válassza a **hibanapló megtekintése** lehetőséget.
 
-Például futtattam a következő R-kód egy nem definiált változó y a egy [R-szkript végrehajtása] [ execute-r-script] modul:
+Például a következő R-kódot futtattam egy nem definiált változó y értékkel egy [Execute R script][execute-r-script] modulban:
 
 ```R
 x <- 1.0
 z <- x + y
 ```
 
-Ez a kód nem tud végrehajtani, hibát eredményez. Kiválasztásával **hiba napló megtekintése** a a **tulajdonságait tartalmazó ablaktáblán** hoz létre a megjelenítés, a 2. ábrán látható.
+Ez a kód nem hajtható végre, ami egy hiba feltétele. Ha a **Tulajdonságok panelen** a **hibanapló megtekintése** elemre kattint, a a 2. ábrán látható megjelenítést eredményezi.
 
-  ![Chybová zpráva merül fel](./media/r-quickstart/fig2.png)
+  ![Hibaüzenet – felugró ablak](./media/r-quickstart/fig2.png)
 
-*2. ábra Chybová zpráva előugró.*
+*2. ábra. Hibaüzenet: előugró ablak.*
 
-Úgy tűnik, ellenőriznünk kell a kimenetét, az R hibaüzenet jelenik meg. Válassza ki a [R-szkript végrehajtása] [ execute-r-script] , majd a **kimenetét megtekintése** az elemet a **tulajdonságait tartalmazó ablaktáblán** jobbra. Megnyílik egy új böngészőablakot, és a következők láthatók.
+Úgy tűnik, hogy az R-hibaüzenet megjelenítéséhez meg kell keresnie a kimenet. log naplófájlt. Válassza az [R-szkript végrehajtása][execute-r-script] lehetőséget, majd a **Tulajdonságok ablaktáblán** kattintson a **kimenet megtekintése. log** elemre a jobb oldalon. Megnyílik egy új böngészőablak, és megjelenik a következő.
 
     [Critical]     Error: Error 0063: The following error occurred during evaluation of R script:
     ---------- Start of error message from R ----------
@@ -112,111 +112,111 @@ Ez a kód nem tud végrehajtani, hibát eredményez. Kiválasztásával **hiba n
     object 'y' not found
     ----------- End of error message from R -----------
 
-Ez a hibaüzenet meglepetések tartalmaz, és egyértelműen azonosítja a probléma.
+Ez a hibaüzenet nem tartalmaz meglepetéseket, és egyértelműen azonosítja a problémát.
 
-Vizsgálja meg az érték minden R-objektum, kinyomtathatja ezeket az értékeket a kimenetét fájlt. Objektum értékek vizsgálata a szabályok a következők ugyanaz, mint az interaktív R-munkamenet. Például ha sorba írja be a változó nevét, az objektum értéke nyomtat a kimenetét fájlt.  
+Az R-ben található bármely objektum értékének vizsgálatához ezeket az értékeket a kimeneti. log fájlba is kinyomtathatja. Az objektumok értékeinek vizsgálatára szolgáló szabályok lényegében megegyeznek az interaktív R-munkamenetekben. Ha például egy sorba írja be a változó nevét, az objektum értéke a kimenet. log fájlba lesz kinyomtatva.  
 
-#### <a name="packages-in-machine-learning-studio"></a>A Machine Learning Studio-csomagok
+#### <a name="packages-in-machine-learning-studio-classic"></a>Csomagok Machine Learning Studio (klasszikus)
 
-Studio több mint 350 előre telepített R nyelvi csomagokat tartalmaz. A következő kódot használhatja a [R-szkript végrehajtása] [ execute-r-script] modul lekérni az előre telepített csomagok listáját.
+A Studio több mint 350 előre telepített R nyelvi csomagot tartalmaz. Az előtelepített csomagok listájának beolvasásához használja a következő kódot az [R-parancsfájl végrehajtása][execute-r-script] modulban.
 
 ```R
 data.set <- data.frame(installed.packages())
 maml.mapOutputPort("data.set")
 ```
 
-Ha ez a kód utolsó sora jelenleg nem ismeri, akkor Olvasson tovább. Ez a cikk további részében található nagymértékben ismertetik a Studio-környezet az r nyelv használatát.
+Ha jelenleg nem érti a kód utolsó sorát, olvassa el a következőt:. A cikk további részében részletesen tárgyaljuk az R használatát a Studio (klasszikus) környezetben.
 
-### <a name="introduction-to-rstudio"></a>Az RStudio bemutatása
+### <a name="introduction-to-rstudio"></a>A RStudio bemutatása
 
-Az RStudio egy széles körben használt IDE az r segítségével Az RStudio szerkesztését, teszteléséhez és a hibakeresés néhány ebben az útmutatóban használt R-kód fogja használni. Után az R-kód tesztelt, és készen áll a is egyszerűen kimásolni, majd illessze be a RStudio szerkesztőből egy Machine Learning studióba [R-szkript végrehajtása] [ execute-r-script] modul.  
+A RStudio egy széles körben használt IDE az R-hez. RStudio használok a jelen útmutatóban használt R-kód némelyikének szerkesztéséhez, teszteléséhez és hibakereséséhez. Miután megtörtént az R-kód tesztelése és elkészítése, egyszerűen kivágással és beillesztéssel a RStudio-szerkesztőből egy Machine Learning Studio (klasszikus) [r script][execute-r-script] modulba.  
 
-Ha nem rendelkezik az R programozási nyelv, telepítve van a asztali gépén, javasolni tudom, tegye meg most. Ingyenes, nyílt forráskódú R nyelvvel érhető el, a átfogó R Archive Network (CRAN), [ https://www.r-project.org/ ](https://www.r-project.org/). Nincsenek elérhető Windows, Mac OS és a Linux-/ UNIX letöltéseket. Válasszon egy közeli tükrözött, és kövesse a letöltési utasításokat. Emellett a CRAN rengeteg hasznos elemzési és adatkezelési csomagokat tartalmazza.
+Ha nincs telepítve az R programozási nyelv az asztali gépen, azt javasoljuk, hogy tegye meg most. A nyílt forráskódú R nyelv ingyenes letöltése a [https://www.r-project.org/](https://www.r-project.org/)címen elérhető átfogó r Archive Network (Cran) címen érhető el. Letölthetők a Windows, Mac OS és a Linux/UNIX rendszerhez készült letöltések. Válasszon egy közeli tükrözést, és kövesse a letöltési utasításokat. Emellett a CRAN számos hasznos elemzési és adatmanipulációs csomagot tartalmaz.
 
-Ha most ismerkedik az RStudio, töltse le és telepítse az asztali verziót. Az RStudio letölti a Windows, Mac OS és a Linux-/ UNIX címen található http://www.rstudio.com/products/RStudio/. Kövesse az utasításokat az RStudio telepítése asztali gépén.  
+Ha még nem ismeri a RStudio, töltse le és telepítse az asztali verziót. A RStudio a Windows, Mac OS és Linux/UNIX rendszerű letöltéseit http://www.rstudio.com/products/RStudio/címen találja. Kövesse a RStudio telepítéséhez szükséges utasításokat az asztali gépen.  
 
-Elérhető legyen a RStudio oktatóanyag bemutatását [az RStudio IDE használatával](https://support.rstudio.com/hc/sections/200107586-Using-RStudio).
+A RStudio oktatóanyagának bemutatása [a RSTUDIO ide használatával](https://support.rstudio.com/hc/sections/200107586-Using-RStudio)érhető el.
 
-További információkat az RStudio használatával megadom [dokumentációt az RStudio útmutató](#appendixa) alatt.  
+További információkra van szükségem a RStudio használatáról az [útmutatóban az alábbi RStudio dokumentációban](#appendixa) .  
 
-## <a id="scriptmodule"></a>Az R-szkript végrehajtása modul adataikkal adatok lekérése
+## <a id="scriptmodule"></a>Az R-szkript végrehajtása modulba beolvasott és kívüli adatlekérdezés
 
-Ebben a szakaszban ismertetjük be és ki, hogyan juthat adatokat a [R-szkript végrehajtása] [ execute-r-script] modul. Ellenőrizzük pályázatát, olvassa el a be- és kijelentkezés a különböző adattípusoknak kezelése a [R-szkript végrehajtása] [ execute-r-script] modul.
+Ebből a szakaszból megtudhatja, hogyan szerezhet be és ki az [R-szkriptek végrehajtására][execute-r-script] szolgáló modult. Áttekintjük, hogyan kezelheti a különböző adattípusokat az R- [szkript végrehajtása][execute-r-script] modulból, illetve onnan.
 
-Ebben a szakaszban a teljes kódja megtalálható [MachineLearningSamples-jegyzetfüzetek/studio-samples](https://github.com/Azure-Samples/MachineLearningSamples-Notebooks/tree/master/studio-samples).
+A szakasz teljes kódja a [MachineLearningSamples-notebook/Studio-Samples](https://github.com/Azure-Samples/MachineLearningSamples-Notebooks/tree/master/studio-samples).
 
-### <a name="load-and-check-data-in-machine-learning-studio"></a>Betölteni, és ellenőrizze az adatokat a Machine Learning Studióban
+### <a name="load-and-check-data-in-machine-learning-studio-classic"></a>Machine Learning Studio (klasszikus) betöltési és ellenőrzési szolgáltatás
 
 #### <a id="loading"></a>Az adatkészlet betöltése
 
-Fog betöltjük a **csdairydata.csv** fájlt az Azure Machine Learning studióba.
+Először töltse be a **csdairydata. csv** fájlt a Azure Machine learning Studio klasszikus verziójába.
 
-1. Indítsa el az Azure Machine Learning Studio környezetet.
-1. Válassza ki **+ új** a képernyőn, és válassza a bal alsó **adatkészlet**.
-1. Válassza ki **helyi fájlból**, majd **Tallózás** válassza ki a fájlt.
-1. Győződjön meg arról, hogy a kiválasztott **fejléccel (.csv) általános CSV-fájl** a az adatkészlet típusa.
-1. Kattintson a pipára.
-1. Az adatkészlet feltöltése után kell megjelennie az új adatkészlet kiválasztásával a **adatkészletek** fülre.  
+1. Indítsa el Azure Machine Learning Studio környezetének klasszikus verzióját.
+1. Válassza a képernyő bal alsó sarkában található **+ új** lehetőséget, majd válassza az **adatkészlet**lehetőséget.
+1. Válasszon a **helyi fájlból**, majd **tallózással** válassza ki a fájlt.
+1. Győződjön meg arról, hogy az adatkészlet típusaként az **általános CSV-fájlt (. csv)** jelölte meg.
+1. Jelölje be a pipa.
+1. Az adatkészlet feltöltése után az új adatkészletet az **adatkészletek** lap kiválasztásával tekintheti meg.  
 
 #### <a name="create-an-experiment"></a>Kísérlet létrehozása
 
-Most, hogy bizonyos adatokat a Machine Learning Studióban, kell hozni egy kísérletet az elemzés végrehajtásához.  
+Most, hogy a Machine Learning Studio klasszikus verziójában vannak adatai, létre kell hozni egy kísérletet az elemzés elvégzéséhez.  
 
-1. Válassza ki **+ új** a alacsonyabb bal oldalon, majd válassza a **kísérlet**, majd **üres kísérlet**.
-1. Nevezze el a kísérletben kiválasztásával, és módosítja, a **a létrehozott kísérlet...**  címe a lap tetején. Például megváltoztathatja, hogy **hitelesítésszolgáltató tejtermék elemzési**.
-1. Az oldal bal oldalán a kísérletet, bontsa ki a **mentett adatkészletek**, majd **saját adatkészletek**. Megtekintheti a **cadairydata.csv** korábban feltöltött.
-1. Húzza át a **csdairydata.csv adatkészlet** alakzatot a kísérletet.
-1. Az a **keresési elemek kísérletezhet** felső részén a bal oldali panelen írja be a mezőbe [R-szkript végrehajtása][execute-r-script]. A modul jelennek meg a keresési lista jelenik meg.
-1. Húzza át a [R-szkript végrehajtása] [ execute-r-script] alakzatot a raklapos modul.  
-1. Csatlakozzon a kimenetét a **csdairydata.csv adatkészlet** a bal oldali bemeneti (**Dataset1**), a [R-szkript végrehajtása][execute-r-script].
-1. **Ne felejtse el, válassza a "Mentés"!**  
+1. Válassza az **+ új** lehetőséget a bal alsó sarokban, majd válassza a **kísérlet**, majd az **üres kísérlet**lehetőséget.
+1. A kísérletet a lap tetején, a **... címmel létrehozott kísérlet** kiválasztásával és módosításával nevezheti el. Például módosítsa a **hitelesítésszolgáltatói tejtermékek elemzését**.
+1. A kísérlet lap bal oldalán bontsa ki a **mentett adatkészletek**, majd **az adatkészletek**elemet. Ekkor meg kell jelennie a korábban feltöltött **cadairydata. csv** fájlnak.
+1. Húzza át a **csdairydata. csv adatkészletet** a kísérletbe.
+1. A bal oldali ablaktábla felső részén található **kísérletezési elemek keresése** mezőben írja be az [R-parancsfájl végrehajtása][execute-r-script]parancsot. Ekkor megjelenik a modul a keresési listán.
+1. Húzza az [R szkript végrehajtása][execute-r-script] modult a raklapra.  
+1. A **csdairydata. csv adatkészlet** kimenetének összekötése az [R szkript][execute-r-script]bal szélső bemenetével (**DataSet1 elemet**).
+1. **Ne felejtse el kiválasztani a mentést!**  
 
-Ezen a ponton a kísérlet várható megjelenése a 3. ábra.
+Ekkor a kísérletnek a 3. ábrához hasonlóan kell kinéznie.
 
-![A hitelesítésszolgáltató tejtermék Analysis adatkészlet és R-szkript végrehajtása modul kísérletezhet](./media/r-quickstart/fig3.png)
+![A CA Dairy Analysis-kísérlet az adatkészlet és az R-parancsfájl végrehajtása modullal](./media/r-quickstart/fig3.png)
 
-*3. ábra A hitelesítésszolgáltató tejtermék Analysis adatkészlet és R-szkript végrehajtása modul kísérletezhet.*
+*3. ábra. A CA Dairy Analysis kísérlet az adatkészlettel és az R-parancsfájl végrehajtása modullal.*
 
-#### <a name="check-on-the-data"></a>Az adatok ellenőrzése
+#### <a name="check-on-the-data"></a>Az adatkeresés
 
-Nézzük meg, az adatok betöltése a kísérletbe sikerült rendelkezik. A kísérletben, válassza ki a kimenete a **cadairydata.csv adatkészlet** válassza **megjelenítése**. 4\. ábra hasonló üzenet jelenik meg.  
+Tekintsük át a kísérletbe betöltött adatgyűjtést. A kísérletben válassza ki a **cadairydata. csv adatkészlet** kimenetét, és válassza a **Megjelenítés**lehetőséget. A 4. ábrához hasonlóan kell megjelennie.  
 
-![A cadairydata.csv adatkészlet összefoglalása](./media/r-quickstart/fig4.png)
+![A cadairydata. csv adatkészlet összefoglalása](./media/r-quickstart/fig4.png)
 
-*4. ábra A cadairydata.csv adatkészlet összefoglalása.*
+*4. ábra. A cadairydata. csv adatkészlet összefoglalása.*
 
-Ebben a nézetben látható sok hasznos adat. Láthatjuk, hogy az adatkészlet több első sorát. Ha kiválasztjuk az oszlopot, a a statisztikák szakasz bemutatja az oszlop további információt. Például a szolgáltatástípus sor megmutatja milyen adattípusokat, az oszlop az Azure Machine Learning Studio rendelve. Ilyen gyorsan át, akkor jó megerősítést ellenőrzi azt ehhez súlyos munka megkezdése előtt.
+Ebben a nézetben sok hasznos információ látható. Az adatkészlet első néhány sorát láthatjuk. Ha kiválasztunk egy oszlopot, a statisztikai szakasz további információkat jelenít meg az oszlopról. A szolgáltatás típusa sorban például megtekintheti, hogy milyen adattípusok vannak hozzárendelve az oszlophoz Azure Machine Learning Studio klasszikus verziója. Egy gyors kinézete, hogy ez egy jó józanság, mielőtt elkezdjük a komoly munkát.
 
 ### <a name="first-r-script"></a>Első R-szkript
 
-Hozzunk létre egy egyszerű első R-szkriptet az Azure Machine Learning Studióban kísérletezhet. Létrehozott és tesztelni a következő szkriptet az RStudio.  
+Hozzunk létre egy egyszerű, első R-szkriptet, amely a Azure Machine Learning Studio klasszikus verziójában kísérletezik. Létrehoztam és teszteltem a következő szkriptet a RStudio-ben.  
 
 ```R
 ## Only one of the following two lines should be used
-## If running in Machine Learning Studio, use the first line with maml.mapInputPort()
+## If running in Machine Learning Studio (classic), use the first line with maml.mapInputPort()
 ## If in RStudio, use the second line with read.csv()
 cadairydata <- maml.mapInputPort(1)
 # cadairydata  <- read.csv("cadairydata.csv", header = TRUE, stringsAsFactors = FALSE)
 str(cadairydata)
 pairs(~ Cotagecheese.Prod + Icecream.Prod + Milk.Prod + N.CA.Fat.Price, data = cadairydata)
 ## The following line should be executed only when running in
-## Azure Machine Learning Studio
+## Azure Machine Learning Studio (classic)
 maml.mapOutputPort('cadairydata')
 ```
 
-Most át kell adnom a szkript az Azure Machine Learning Studióban. Sikerült egyszerűen Kivágás és beillesztés. Azonban ebben az esetben fogja átvinni saját R-szkript használatával egy zip-fájlt.
+Most át kell vinni ezt a szkriptet a Azure Machine Learning Studio klasszikus verziójára. Egyszerűen kivágással és beillesztéssel. Ebben az esetben azonban az R-szkriptet egy zip-fájlon keresztül viszem át.
 
-### <a name="data-input-to-the-execute-r-script-module"></a>Az R-szkript végrehajtása modul bemeneti adatokhoz
+### <a name="data-input-to-the-execute-r-script-module"></a>Adatok bevitele az R-parancsfájl végrehajtása modulba
 
-Nézzük meg, a bemeneti adatok, a [R-szkript végrehajtása] [ execute-r-script] modul. Ebben a példában a kaliforniai tejelő adatok beolvasása a [R-szkript végrehajtása] [ execute-r-script] modul.  
+Tekintse át az [R szkript végrehajtása][execute-r-script] modul bemeneteit. Ebben a példában beolvasjuk a kaliforniai tejtermékek szolgáltatásait az [R szkript végrehajtása][execute-r-script] modulba.  
 
-Nincsenek három lehetséges bemenetek a [R-szkript végrehajtása] [ execute-r-script] modul. Használhat bármilyen egyikét vagy mindegyikét ezeket a bemeneteket az alkalmazástól függően. Emellett akkor is tökéletesen ésszerű nincs bemenet minden szükséges R-szkriptek használata.  
+Az [R-szkript végrehajtása][execute-r-script] modulnak három lehetséges bemenete van. Az alkalmazástól függően a bemenetek bármelyikét vagy mindegyikét használhatja. Emellett tökéletesen ésszerű olyan R-szkriptet használni, amely nem tesz elérhetővé semmilyen bemenetet.  
 
-Vizsgáljuk meg ezeket a bemeneteket, balról jobbra történik minden egyes. Minden egyes bemenet neveinek megtekintéséhez helyezi a kurzort a bemeneti keresztül, és az elemleírásban olvasása.  
+Nézzük meg ezeket a bemeneteket, balról jobbra haladva. Az egyes bemenetek nevét megtekintheti, ha az egérmutatót a bemenet fölé helyezi, és beolvassa az elemleírást.  
 
 #### <a name="script-bundle"></a>Parancsfájl-csomag
 
-A parancsfájl csomagot adjon meg lehetővé teszi, hogy adja át a tartalmát egy zip-fájlba történő [R-szkript végrehajtása] [ execute-r-script] modul. A zip-fájl tartalmát olvassa be az R-kód a következő parancsok egyikét használhatja.
+A parancsfájl-csomag bemenete lehetővé teszi egy zip-fájl tartalmának átadását az [R-parancsfájl végrehajtása][execute-r-script] modulba. Az alábbi parancsok egyikével beolvashatja a zip-fájl tartalmát az R-kódjába.
 
 ```R
 source("src/yourfile.R") # Reads a zipped R script
@@ -224,52 +224,52 @@ load("src/yourData.rdata") # Reads a zipped R data file
 ```
 
 > [!NOTE]
-> Az Azure Machine Learning Studio fájlokat a zip-fájl kezeli, mintha azok az src / könyvtár, ezért a fájlneveket, a könyvtárnév a előtagot kell. Ha például a zip-fájl tartalmazza a fájlok `yourfile.R` és `yourData.rdata` a zip-fájl gyökerében szeretné megoldani ezeket az adatokat `src/yourfile.R` és `src/yourData.rdata` használatakor `source` és `load`.
+> A Azure Machine Learning Studio klasszikus verziója a zip-fájlokban lévő fájlokat úgy kezeli, mintha a src/könyvtárban vannak, ezért a fájlneveket előtaggal kell elvégeznie. Ha például a zip a zip-fájl gyökerében `yourfile.R` és `yourData.rdata` fájlokat tartalmazza, akkor `source` és `load`használatakor ezeket `src/yourfile.R`ként és `src/yourData.rdata`ként fogja kezelni.
 
-Már beszéltünk betöltése adatkészleteket az [az adatkészlet betöltése](#loading). Miután létrehozott és tesztelni az R-szkriptet az előző szakaszban látható, tegye a következőket:
+Már beszéltünk az adathalmaz [betöltési](#loading)adatkészletének betöltéséről. Miután létrehozta és tesztelte az előző szakaszban bemutatott R-szkriptet, tegye a következőket:
 
-1. Az R-parancsfájl mentése egy. R-fájlt. Hívhatom meg a saját parancsfájl "simpleplot. R". Íme a tartalmak.
+1. Mentse az R-szkriptet a-ba. R-fájl. Meghívom a "simpleplot" szkriptet. R ". Itt látható a tartalom.
 
    ```R
    ## Only one of the following two lines should be used
-   ## If running in Machine Learning Studio, use the first line with maml.mapInputPort()
+   ## If running in Machine Learning Studio (classic), use the first line with maml.mapInputPort()
    ## If in RStudio, use the second line with read.csv()
    cadairydata <- maml.mapInputPort(1)
    # cadairydata  <- read.csv("cadairydata.csv", header = TRUE, stringsAsFactors = FALSE)
    str(cadairydata)
    pairs(~ Cotagecheese.Prod + Icecream.Prod + Milk.Prod + N.CA.Fat.Price, data = cadairydata)
    ## The following line should be executed only when running in
-   ## Azure Machine Learning Studio
+   ## Azure Machine Learning Studio (classic)
    maml.mapOutputPort('cadairydata')
    ```
 
-1. Hozzon létre egy zip-fájlt, és másolja a szkriptet a zip-fájlban. A Windows, kattintson a jobb gombbal a fájlt és válassza ki **küldése**, majd **tömörített mappa**. Ezzel létrehoz egy új zip-fájl, amely tartalmazza a "simpleplot. R"fájl.
+1. Hozzon létre egy zip-fájlt, és másolja a szkriptet ebbe a zip-fájlba. Windows rendszeren kattintson a jobb gombbal a fájlra, és válassza a **Küldés**, majd a **tömörített mappa**lehetőséget. Ezzel létrehoz egy új zip-fájlt, amely a következőt tartalmazza: "simpleplot. R "fájl.
 
-1. Adja hozzá a fájlt, hogy a **adatkészletek** a Machine Learning Studióban, mint típusát megadó **zip**. Meg kell jelennie a zip-fájlt az adatkészletekben.
+1. Adja hozzá a fájlt a Machine Learning Studio klasszikus verziójában található **adatkészletekhez** , és adja meg a típust **zip**-ként. Ekkor megjelenik a zip-fájl az adatkészletekben.
 
-1. A zip-fájlt a áthúzása **adatkészletek** alakzatot a **gépi tanulás stúdió vászonalapú**.
+1. Húzza a zip-fájlt az **adatkészletek** rajzsablonról a **ml Studio (klasszikus) vászonra**.
 
-1. Csatlakozzon a kimenetét a **zip-adatok** ikonra a **parancsfájl csomag** a bemeneti a [R-szkript végrehajtása] [ execute-r-script] modul.
+1. A **zip-adatok** ikon kimenetének összekötése az [R-parancsfájl végrehajtása][execute-r-script] modul **parancsfájl-kötegbeli** bemenetével.
 
-1. Írja be a `source()` függvényt a code ablakának be a zip-fájl neve a [R-szkript végrehajtása] [ execute-r-script] modul. Abban az esetben a beírt `source("src/simpleplot.R")`.  
+1. Írja be a `source()` függvényt a zip-fájl nevével az R- [szkript végrehajtása][execute-r-script] modul kódjának ablakába. Az én esetemben begépeltem `source("src/simpleplot.R")`.  
 
-1. Győződjön meg arról, hogy ki **mentése**.
+1. Győződjön meg róla, hogy a **Mentés**gombra kattint.
 
-Ha befejeződött, ezeket a lépéseket a [R-szkript végrehajtása] [ execute-r-script] modul végrehajtja az R-szkriptet a zip-fájlban a kísérlet futtatásakor. Ezen a ponton a kísérlet várható megjelenése 5. ábra.
+A lépések befejezését követően az [r szkript végrehajtása][execute-r-script] modul végrehajtja az r-szkriptet a zip-fájlban a kísérlet futtatásakor. Ekkor a kísérletnek az 5. ábrához hasonlóan kell kinéznie.
 
-![Kísérletezzen a tömörített R-szkript használatával](./media/r-quickstart/fig6.png)
+![Kísérletezés a tömörített R-szkript használatával](./media/r-quickstart/fig6.png)
 
-*5. ábra A kísérlet tömörített R-parancsfájl használatával.*
+*5. ábra. Próbálja ki a tömörített R-szkriptet.*
 
-#### <a name="dataset1"></a>Dataset1
+#### <a name="dataset1"></a>DataSet1 elemet
 
-Az R-kód egy téglalap alakú táblát a Dataset1 bemeneti használatával adhat át. Az egyszerű szkript a `maml.mapInputPort(1)` függvény beolvassa az adatokat a porthoz 1. Ezeket az adatokat ezután hozzá van rendelve egy adathalmaz változó neve, a kódban. Az egyszerű szkript a kód első sorában a hozzárendelés hajt végre.
+A Dataset1 elemet bemenet használatával átadhat egy téglalap alakú adattábla adatait az R-kódra. Az egyszerű szkriptben a `maml.mapInputPort(1)` függvény beolvassa az 1. port adatait. Ezt követően a rendszer a kódban egy dataframe-változóhoz rendeli hozzá ezeket az adattípusokat. Az egyszerű szkriptben a kód első sora hajtja végre a hozzárendelést.
 
 ```R
 cadairydata <- maml.mapInputPort(1)
 ```
 
-Hajtsa végre a kísérlethez válassza a **futtatása** gombra. A végrehajtás befejezése után válassza a [R-szkript végrehajtása] [ execute-r-script] modult, majd válassza ki **kimeneti napló megtekintése** a Tulajdonságok panelen. Egy új lapon kell megjelennie a böngészőben a kimenetét fájl tartalmának megjelenítése. Görgessen le, amikor megjelenik a következőhöz hasonló.
+A kísérlet végrehajtásához kattintson a **Futtatás** gombra. A végrehajtás befejeződése után válassza az R- [parancsfájl végrehajtása][execute-r-script] modult, majd a Tulajdonságok ablaktáblán válassza a **kimeneti napló megtekintése** lehetőséget. Egy új oldalnak kell megjelennie a böngészőben, amely a kimeneti. log fájl tartalmát mutatja. Ha lefelé görget, a következőhöz hasonlónak kell megjelennie.
 
     [ModuleOutput] InputDataStructure
     [ModuleOutput]
@@ -280,7 +280,7 @@ Hajtsa végre a kísérlethez válassza a **futtatása** gombra. A végrehajtás
     [ModuleOutput]  "ColumnTypes":System.Int32,3,System.Double,5,System.String,1
     [ModuleOutput] }
 
-Brazíliáénál, az oldal a részletesebb információkat az oszlopot, így fog kinézni a következőhöz hasonló.
+A lap részletesebben részletezi az oszlopokat, ami a következőhöz hasonlóan fog kinézni.
 
     [ModuleOutput] [1] "Loading variable port1..."
     [ModuleOutput]
@@ -304,81 +304,81 @@ Brazíliáénál, az oldal a részletesebb információkat az oszlopot, így fog
     [ModuleOutput]
     [ModuleOutput]  $ N.CA.Fat.Price   : num  0.98 0.892 0.892 0.897 0.897 ...
 
-Ezekkel az eredményekkel megfelelően működik, 228 észrevételek és 9 oszlop az adathalmaz a leginkább vannak. Láthatjuk, hogy az oszlopok neveit, az R-adattípus és az egyes oszlopok mintát.
+Ezek az eredmények többnyire a vártnak megfelelően működnek, és a dataframe a 228-es és 9 oszlopot is megtekintheti. Láthatjuk az oszlopok nevét, az R-adattípust és az egyes oszlopok mintáit.
 
 > [!NOTE]
-> A nyomtatott ugyanazzal a hibaüzenettel kényelmesen érhető el az R-eszköz kimenetéből származó a [R-szkript végrehajtása] [ execute-r-script] modul. A kimeneteinek ismertetik a [R-szkript végrehajtása] [ execute-r-script] modul a következő szakaszban.  
+> Ugyanez a nyomtatott kimenet kényelmesen elérhető az [r-szkript végrehajtása][execute-r-script] modul r Device kimenetében. A következő szakaszban megbeszéljük az [R szkript végrehajtása][execute-r-script] modul kimeneteit.  
 
 #### <a name="dataset2"></a>Dataset2
 
-A Dataset2 bemeneti működése megegyezik-e Dataset1. A bemeneti, az R-kód egy második téglalap alakú táblát adhat át. A függvény `maml.mapInputPort(2)`, 2 argumentummal, amellyel át ezeket az adatokat.  
+A Dataset2-bemenet viselkedése megegyezik a Dataset1 elemet. Ennek a bemenetnek a használatával egy második téglalap alakú táblázatot adhat át az R-kódjába. Az adat átadására a 2. argumentummal `maml.mapInputPort(2)`függvény szolgál.  
 
-### <a name="execute-r-script-outputs"></a>Hajtsa végre az R-szkript kimenetek
+### <a name="execute-r-script-outputs"></a>R-szkriptek kimenetének végrehajtása
 
-#### <a name="output-a-dataframe"></a>Kimeneti dataframe
+#### <a name="output-a-dataframe"></a>Dataframe kimenete
 
-Készíthető egy R-adathalmaz tartalmának a eredmény Dataset1 porton keresztül téglalap alakú táblázatként használatával a `maml.mapOutputPort()` függvény. Az egyszerű R-szkript ez hajtja végre a következő sort.
+Az R-dataframe tartalmát téglalap alakú táblázatként is kiválaszthatja az eredményül kapott Dataset1 elemet-porton keresztül az `maml.mapOutputPort()` függvény használatával. Az egyszerű R-szkriptben ezt a következő sor hajtja végre.
 
 ```
 maml.mapOutputPort('cadairydata')
 ```
 
-Miután a kísérletet, válassza ki a Dataset1 eredmény kimeneti portra, és válassza ki **Visualize**. 6\. ábra hasonló üzenet jelenik meg.
+A kísérlet futtatása után válassza ki az eredmény Dataset1 elemet kimeneti portot, majd válassza a **Megjelenítés**lehetőséget. A 6. ábrához hasonlóan kell megjelennie.
 
-![A kimenet a kaliforniai tejelő adatok a Vizualizáció](./media/r-quickstart/fig7.png)
+![A California Dairy-adatokat megjelenítő kimenet megjelenítése](./media/r-quickstart/fig7.png)
 
-*6. ábra A kimenet a kaliforniai tejelő adatok a Vizualizáció.*
+*6. ábra. A kaliforniai tejtermékek kimenetének vizualizációja.*
 
-Ez a kimenet a bemeneti azonos keres, pontosan a várt módon.  
+Ez a kimenet megegyezik a bemenettel, pontosan a várt módon.  
 
-### <a name="r-device-output"></a>Az R az eszközkimenetre
+### <a name="r-device-output"></a>R-eszköz kimenete
 
-Az eszköz kimenete a [R-szkript végrehajtása] [ execute-r-script] modul kimeneti üzenetek és a grafikai tartalmaz. Mindkét standard kimeneti és a standard hiba üzeneteit R R eszköz kimeneti portját érkeznek.  
+Az [R-szkript végrehajtása][execute-r-script] modul kimenete üzenetekkel és grafikus kimenettel rendelkezik. Az R szabványos kimeneti és standard hibaüzeneteket küld az R-eszköz kimeneti portjára.  
 
-Az R-eszköz kimenet megtekintéséhez jelölje ki azt a portot, majd a **Visualize**. Láthatjuk, hogy a standard kimeneti és a standard hiba a 7. ábra az R-szkriptet.
+Az R-eszköz kimenetének megtekintéséhez válassza ki a portot, majd a **megjelenítéshez**. Az R-szkript standard kimenete és standard hibája a 7. ábrán látható.
 
-![Standard kimenet és az R-eszköz portról standard hiba](./media/r-quickstart/fig8.png)
+![Standard kimenet és standard hiba az R-eszköz portján](./media/r-quickstart/fig8.png)
 
-*7. ábra Standard kimenet és az R-eszköz portról standard hiba.*
+*7. ábra. Standard kimenet és standard hiba az R-eszköz portján.*
 
-Görgetés lefelé, hogy az R-szkriptet a 8. ábrán a grafikus kimenetének megtekintése.  
+Görgessen lefelé a 8. ábrán látható R-szkriptek grafikus kimenete.  
 
-![Az R-eszköz port grafikus kimenete](./media/r-quickstart/fig9.png)
+![Az R-eszköz portjának grafikus kimenete](./media/r-quickstart/fig9.png)
 
-*8. ábra Az R-eszköz port kimenete grafikus.*  
+*8. ábra. Az R-eszköz portjának grafikus kimenete.*  
 
-## <a id="filtering"></a>Adatok szűrése és átalakítása
+## <a id="filtering"></a>Adatszűrés és-átalakítás
 
-Ebben a szakaszban fogunk végrehajtani, néhány alapvető adatok szűrése és átalakítási műveletek a kaliforniai tejelő adatokon. Ez a szakasz végén kell adatokat egy analitikus modell létrehozásához megfelelő formátumú.  
+Ebben a szakaszban néhány alapszintű adatszűrési és-átalakítási műveletet fogunk végrehajtani a kaliforniai tejtermékek adatain. Ennek a szakasznak a végére az analitikai modell létrehozásához megfelelő formátumú adatformátummal fogunk rendelkezni.  
 
-Pontosabban, ebben a szakaszban végezzük el számos gyakori adatok tisztítása és átalakítása feladatok: írja be a szűrést dataframes, hozzáadás, új számított oszlopok, az átalakítási és az értéke átalakításokat. Ez a háttér segítenek a való életből vett problémákat észlelt számos változata létezik foglalkozik.
+Pontosabban, ebben a szakaszban számos általános adattisztítási és átalakítási feladatot végzünk: átalakítás, dataframes szűrés, új számított oszlopok hozzáadása és érték-átalakítások. Ez a háttér segíthet a valós problémákkal kapcsolatos számos változat kezelésében.
 
-Ez a szakasz a teljes R-kód megtalálható [MachineLearningSamples-jegyzetfüzetek/studio-samples](https://github.com/Azure-Samples/MachineLearningSamples-Notebooks/tree/master/studio-samples).
+A szakasz teljes R-kódja a [MachineLearningSamples-Notebooks/Studio-Samples](https://github.com/Azure-Samples/MachineLearningSamples-Notebooks/tree/master/studio-samples)-ben érhető el.
 
-### <a name="type-transformations"></a>Írja be az átalakítások
+### <a name="type-transformations"></a>Átalakítások típusa
 
-Most, hogy azt a kaliforniai tejelő adatok olvashatja be az R-kód a [R-szkript végrehajtása] [ execute-r-script] modul kell ügyeljen arra, hogy az oszlopok adatait a kívánt típusát és formátumát.  
+Most, hogy beolvasjuk a California Dairy-beli adattárat az r-kódban az [r-szkript végrehajtása][execute-r-script] modulban, biztosítaniuk kell, hogy az oszlopokban lévő információk a kívánt típussal és formátummal legyenek elküldve.  
 
-Az "R" dinamikusan gépelt nyelv, ami azt jelenti, hogy az adattípusok vannak kényszerítése egy másikba, szükség szerint. Az atomi adattípusok R a numerikus, logikai és karakter közé tartozik. A szolgáltatás típus compactly a kategorikus adatok tárolására szolgál. Az adattípusok sokkal több adatot található szereplő hivatkozások [további információk](#appendixb) alatt.
+Az R egy dinamikusan beírt nyelv, ami azt jelenti, hogy az adattípusokat az egyikről a másikra kell kényszeríteni. Az R-beli atomi adattípusok a következők: numerikus, logikai és karakter. A faktor típusa a kategorikus adattárolási művelet tömörítésére szolgál. Az adattípusokról az alábbi [További olvasnivalók](#appendixb) hivatkozásaiban talál további információt.
 
-Be külső forrásból származó R tabulált elolvasásáról, mindig érdemes ellenőrizni az eredményül kapott típusok az oszlopok. Érdemes lehet egy oszlop típusa karakter, de a legtöbb esetben ez fog megjelenni tényezőként vagy fordítva. Más esetekben egy oszlopot úgy gondolja, hogy legyen numerikus által jelölt karakteres adatot, például: "1,23" helyett, lebegőpontos 1,23 pont számát.  
+Ha a táblázatos adatokat egy külső forrásból olvassa be az R-be, mindig érdemes megtekinteni az eredményül kapott típusokat az oszlopokban. Előfordulhat, hogy egy karakter típusú oszlopra van szükség, de a legtöbb esetben ez faktorként jelenik meg, vagy fordítva. Más esetekben egy olyan oszlopot, amelyet úgy gondol, hogy numerikus értéket képvisel, például "1,23", nem pedig 1,23, lebegőpontos számként.  
 
-Szerencsére a könnyebbé vált a átalakítani egy típust a másikra, mindaddig, amíg leképezés nem lehetséges. Például nem lehet "Nevada" átalakítása numerikus érték, de átválthat egy tényező (kategorikus változó). Másik példaként egy numerikus 1 átalakítása "1" karaktert vagy tényezőt.  
+Szerencsére az egyik típust könnyen át lehet alakítani egy másikra, amíg a leképezés lehetséges. Például nem alakíthatja át a "Nevada" értéket numerikus értékké, de a faktor (kategorikus változó) értékre is konvertálhatja. Egy másik példaként átalakíthatja a numerikus 1-től az "1" karaktert vagy egy faktort.  
 
-Ezek az átalakítások bármelyikét szintaxisa a következő egyszerű: `as.datatype()`. Ezek írja be a konverziós függvények a következők:
+A konverziók szintaxisa egyszerű: `as.datatype()`. Ilyen típusú átalakítási függvények a következők:
 
 * `as.numeric()`
 * `as.character()`
 * `as.logical()`
 * `as.factor()`
 
-Az adattípusok, az oszlopok, hogy adjon meg az előző szakaszban megnézzük: az összes oszlop van, kivéve az oszlop, "Hónap", típus karakter, ami feliratú numerikus típusú. Nézzük konvertálja az a tényező, és a teszteredmények.  
+Az előző szakaszban megadott oszlopok adattípusai megvizsgálva: az összes oszlop numerikus típusú, a "Month" feliratú oszlop kivételével, amely karakter típusú. Alakítsa át ezt egy tényezőre, és tesztelje az eredményeket.  
 
-Tudom, hogy törölték a teszteredményekből mátrix létrehozott, és hozzá egy sort egy tényező a "Hónap" oszlop átalakítása vonal. Kísérletemben van fogja csak kivágása és az R-kódokat illessze be a code-ablak a [R-szkript végrehajtása] [ execute-r-script] modul. Is sikerült frissíteni a zip-fájlt, és töltse fel az Azure Machine Learning Studióban, de ez több lépést tart.  
+Törölte azt a sort, amely létrehozta a scatterplot mátrixot, és hozzáadta a "Month" oszlopot egy tényezőhöz. A saját kísérletben most kivágtam és beillesztem az R-kódot az [r-szkript végrehajtása][execute-r-script] modul kódjának ablakába. Frissíthetjük a zip-fájlt, és feltölthetik a Azure Machine Learning Studio klasszikus verziójára, de ez több lépést is igénybe vehet.  
 
 ```R
 ## Only one of the following two lines should be used
-## If running in Machine Learning Studio, use the first line with maml.mapInputPort()
+## If running in Machine Learning Studio (classic), use the first line with maml.mapInputPort()
 ## If in RStudio, use the second line with read.csv()
 cadairydata <- maml.mapInputPort(1)
 # cadairydata  <- read.csv("cadairydata.csv", header = TRUE, stringsAsFactors = FALSE)
@@ -386,11 +386,11 @@ cadairydata <- maml.mapInputPort(1)
 cadairydata$Month <- as.factor(cadairydata$Month)
 str(cadairydata) # Check the result
 ## The following line should be executed only when running in
-## Azure Machine Learning Studio
+## Azure Machine Learning Studio (classic)
 maml.mapOutputPort('cadairydata')
 ```
 
-Nézzük hajtsa végre ezt a kódot, és tekintse meg a kimeneti naplót a R-parancsfájl. 9\. ábra jelenik meg a vonatkozó adatokat a naplófájlból.
+Hajtsa végre ezt a kódot, és tekintse meg az R-szkript kimeneti naplóját. A naplóból származó releváns adatok a 9. ábrán láthatók.
 
     [ModuleOutput] [1] "Loading variable port1..."
     [ModuleOutput] 
@@ -418,18 +418,18 @@ Nézzük hajtsa végre ezt a kódot, és tekintse meg a kimeneti naplót a R-par
     [ModuleOutput] 
     [ModuleOutput] [1] "Saving the following item(s):  .maml.oport1"
 
-*9. ábra. Az adathalmaz tényező változóhoz összefoglalása.*
+*9. ábra. A dataframe összefoglalása a faktor változóval.*
 
-A típus hónapban most a következő: "**14 szintek használatával tényező**". Ez a probléma, mivel csak 12 hónappal az évben. Is ellenőrizheti, hogy a típus a **Visualize** az eredmény adatkészlet port van "**Kategorikus**".
+A hónap típusának most a "**Factor w/14 szint" értéket**kell mondania. Ez egy probléma, mivel az év során csak 12 hónap van. Azt is megtekintheti, hogy az eredmény adatkészlet-port **megjelenítésének** típusa "**kategorikus**".
 
-A probléma, hogy a "Hónap" oszlop nem rendszeresen lett kódolt. Bizonyos esetekben egy hónapban április nevezik, és más, Diagramhalmazban rövidítéseket tartalmaz. Azt is megoldhatja a problémát úgy 3 karaktert a karakterlánc-csonkolás. A sor kód most az alábbihoz hasonló:
+A probléma az, hogy a "Month" oszlop nem lett szisztematikusan kódolva. Bizonyos esetekben a hónapot áprilisban, másokban pedig Apr-ként rövidítjük. Ezt a problémát úgy oldhatja meg, hogy a sztringet 3 karakterre vágja. A kód most a következőhöz hasonlóan néz ki:
 
 ```R
 ## Ensure the coding is consistent and convert column to a factor
 cadairydata$Month <- as.factor(substr(cadairydata$Month, 1, 3))
 ```
 
-Futtassa újra a kísérletet, és megtekintheti a kimeneti naplót. A várt eredmény 10. ábrán látható.  
+Futtassa újra a kísérletet, és tekintse meg a kimeneti naplót. A várt eredmények a 10. ábrán láthatók.  
 
     [ModuleOutput] [1] "Loading variable port1..."
     [ModuleOutput] 
@@ -457,27 +457,27 @@ Futtassa újra a kísérletet, és megtekintheti a kimeneti naplót. A várt ere
     [ModuleOutput] 
     [ModuleOutput] [1] "Saving the following item(s):  .maml.oport1"
 
-*10. ábra. Az adathalmaz tényező szintek megfelelő számú összefoglalása.*
+*10. ábra. A dataframe megfelelő számú tényezőjének összefoglalása.*
 
-A szolgáltatás a változó most már rendelkezik a kívánt 12 szinteket.
+A faktor változó most már a kívánt 12 szinttel rendelkezik.
 
-### <a name="basic-data-frame-filtering"></a>Alapvető adatok keret szűrése
+### <a name="basic-data-frame-filtering"></a>Alapszintű adatkeret-szűrés
 
-R dataframes hatékony szűrési képességek támogatásához. Adatkészletek lehet részlegesen beágyazott logikai szűrők a sorok vagy oszlopok használatával. Sok esetben összetett szűrési feltételeket lesz szükség. A hivatkozások [további információk](#appendixb) alábbi tartalmaznak a széles körű példákat szűrésének adatkerettípusokat jelölhet.  
+Az R dataframes támogatja a hatékony szűrési képességeket. Az adatkészletek kiállíthatók a logikai szűrők használatával sorokon vagy oszlopokon. Sok esetben az összetett szűrési feltételekre lesz szükség. Az alábbi [további olvasnivalóban](#appendixb) található hivatkozások részletes példákat tartalmaznak a szűrés dataframes.  
 
-Van egy bittel szűrése az adatkészlet azt érdemes megtenni. Ha megtekinti a cadairydata dataframe oszlopok, látni fogja a két felesleges oszlopok. Az első oszlop csak egy sor száma, amely nem hasznos tárolja. A második oszlop Year.Month, redundáns információt tartalmaz. A Microsoft egyszerűen ezeket az oszlopokat a következő R-kód használatával zárhat ki.
+Az adathalmazon egy kis szűrésre van szükségünk. Ha megtekinti a cadairydata dataframe lévő oszlopokat, két felesleges oszlop jelenik meg. Az első oszlop csak sorszámmal rendelkezik, ami nem nagyon hasznos. A második oszlop, év. hónap, redundáns adatokat tartalmaz. Ezeket az oszlopokat egyszerűen kizárhatja a következő R-kód használatával.
 
 > [!NOTE]
-> Mostantól ebben a szakaszban csak bemutatom majd, a kód a hozzáadott a [R-szkript végrehajtása] [ execute-r-script] modul. Az új sorok veszek fel **előtt** a `str()` függvény. Ez a funkció az Azure Machine Learning Studióban az eredményeket használni.
+> Mostantól ebben a szakaszban az [R-szkriptek végrehajtása][execute-r-script] modulban felvenni kívánt további kódokat is megmutatom. Új sort adok hozzá az `str()` függvény **előtt** . Ezt a funkciót használom a Azure Machine Learning Studio klasszikus verziójának eredményeinek ellenőrzéséhez.
 
-A saját R-kód adhatok hozzá a következő sort a [R-szkript végrehajtása] [ execute-r-script] modul.
+Az [r-szkript végrehajtása][execute-r-script] modulban adja hozzá a következő sort az r-kódhoz.
 
 ```R
 # Remove two columns we do not need
 cadairydata <- cadairydata[, c(-1, -2)]
 ```
 
-Futtassa a következő kódot a kísérlet során, és ellenőrizze az eredményt a kimeneti naplóból. Ezekkel az eredményekkel 11. ábrán látható.
+Futtassa ezt a kódot a kísérletben, és vizsgálja meg az eredményt a kimeneti naplóból. Ezek az eredmények a 11. ábrán láthatók.
 
     [ModuleOutput] [1] "Loading variable port1..."
     [ModuleOutput] 
@@ -501,15 +501,15 @@ Futtassa a következő kódot a kísérlet során, és ellenőrizze az eredmény
     [ModuleOutput] 
     [ModuleOutput] [1] "Saving the following item(s):  .maml.oport1"
 
-*11. ábra. A két oszlop eltávolítva az adathalmaz összefoglalása.*
+*11. ábra. Az dataframe összefoglalása két oszloppal eltávolítva.*
 
-Jó hírünk van! A várt eredményt kapunk.
+Jó hír! Megkapjuk a várt eredményeket.
 
-### <a name="add-a-new-column"></a>Egy olyan új oszlop hozzáadása
+### <a name="add-a-new-column"></a>Új oszlop hozzáadása
 
-Time series modellek létrehozásának eljárásait lesz kényelmes, az idősorozat elindítása óta a hónapok nevét tartalmazó oszlop. Egy olyan új oszlop "Month.Count" hozunk létre.
+Az idősorozat-modellek létrehozásához kényelmes, hogy egy olyan oszlop legyen, amely az idősorozat kezdete óta eltelt időt tartalmazza. Létre fogunk hozni egy új "month. Count" oszlopot.
 
-A kód hozunk létre az első egyszerű függvény rendszerezésének elősegítése érdekében `num.month()`. Ez az adathalmaz egy új oszlop létrehozása a függvény ezután kerülnek érvényre. Az új kódot a következőképpen történik.
+A kód rendszerezése érdekében hozzuk létre az első egyszerű függvényt, `num.month()`. Ezután ezt a függvényt fogjuk alkalmazni egy új oszlop létrehozásához a dataframe. Az új kód a következő.
 
 ```R
 ## Create a new column with the month count
@@ -527,7 +527,7 @@ num.month <- function(Year, Month) {
 cadairydata$Month.Count <- num.month(cadairydata$Year, cadairydata$Month.Number)
 ```
 
-Most futtassa a frissített kísérletet, és az eredmények megtekintéséhez használja a kimeneti naplót. Ezekkel az eredményekkel 12. ábra láthatók.
+Most futtassa a frissített kísérletet, és a kimeneti napló használatával tekintse meg az eredményeket. Ezek az eredmények a 12. ábrán láthatók.
 
     [ModuleOutput] [1] "Loading variable port1..."
     [ModuleOutput] 
@@ -553,19 +553,19 @@ Most futtassa a frissített kísérletet, és az eredmények megtekintéséhez h
     [ModuleOutput] 
     [ModuleOutput] [1] "Saving the following item(s):  .maml.oport1"
 
-*12. ábra. Az adathalmaz további oszlopok összefoglalása.*
+*12. ábra. A dataframe összegzése a további oszloppal.*
 
-Úgy tűnik, minden jól működik. A várt értékek az új oszlopot az adathalmaz a rendelkezünk.
+Úgy tűnik, minden működik. Az új oszlop a várt értékekkel rendelkezik a dataframe.
 
-### <a name="value-transformations"></a>Érték átalakítások
+### <a name="value-transformations"></a>Értékek átalakítása
 
-Ebben a szakaszban végezzük el néhány egyszerű átalakítások néhány az adatkerettípust oszlop értékeit. Az R nyelv gyakorlatilag tetszőleges érték átalakítások támogatja. A hivatkozások [további információk](#appendixb) alábbi tartalmaznak a széles körű példákat.
+Ebben a szakaszban néhány egyszerű átalakítást végzünk a dataframe egyes oszlopaiban lévő értékekre. Az R nyelv szinte tetszőleges értékű átalakításokat támogat. Az [alább olvasható hivatkozások részletes](#appendixb) példákat tartalmaznak.
 
-Ha megtekinti a dataframe összegzéseinek értékei alábbihoz páratlan itt. További az ice cream tej, mint a kaliforniai állítja elő? Nem, természetesen ez nincs értelme, mert távozik, emiatt előfordulhat, hogy nem egyes velünk a kapcsolatot az ice cream lovers. Az egységek eltérnek. A szolgáltatás díja az USA-egységekben font, tej van egység: 1 millió amerikai font, ice cream 1000-es egységekben gallon NEKÜNK, pedig túró 1000 USA font-egységekben. Ha az ice cream tömege fogyasztási készül 6.5-ös font, azt könnyen megteheti a szorzás konvertálása ezeket az értékeket, így azok minden 1000 font egyenlő egységekben.
+Ha megtekinti a dataframe összefoglalóinak értékeit, itt valami furcsaat kell látnia. Több fagylaltot, mint a Kaliforniában előállított tej? Nem, természetesen nem, mivel ez nincs értelme, szomorú, hogy ez a tény lehet az amerikai jégkrém szerelmeseinek. Az egységek eltérőek. Az ár az USA-beli font egységében van, a tej 1 millió USA-beli egységben van, az Ice Cream pedig 1 000 US gallon egységben van, a túró pedig 1 000 USD. Feltételezve, hogy az Ice Cream körülbelül 6,5 kilót mérlegel, a szorzást egyszerűen elvégezheti az értékek konvertálásával, így azok mind a 1 000 font egységben egyenlő egységben vannak.
 
-Az előrejelzési modell egy tényezőt modellt használjuk a trendek és a szezonális ezeket az adatokat. Log átalakítás lehetővé teszi számunkra, hogy ez a folyamat egyszerűsítése lineáris modellt. Ugyanezt a funkciót, ahol a Szorzó van alkalmazva a napló átalakítási műveletet alkalmazhatja azt.
+Az előrejelzési modellhez multiplikatív modellt használunk az adattrendek és a szezonális beállítások megváltoztatásához. A log-átalakítás lehetővé teszi, hogy lineáris modellt használjon, ezzel egyszerűbbé téve ezt a folyamatot. A log-transzformációt ugyanabban a függvényben lehet alkalmazni, ahol a szorzót alkalmazták.
 
-Az alábbi kódot egy új függvény vonatkozó `log.transform()`, és alkalmazza azt a numerikus értékeket tartalmazó sorokat. Az R `Map()` függvény szolgál a alkalmazni a `log.transform()` függvényt, hogy a kijelölt oszlopokat a dataframe-típust. `Map()` hasonló `apply()` , de lehetővé teszi, hogy a függvény argumentumainak egynél több listáját. Vegye figyelembe, hogy szorzók listáját választékát kínálja, a második argumentum a `log.transform()` függvény. A `na.omit()` függvény győződjön meg arról, hogy nem rendelkeznek hiányzik vagy nem definiált értéket az adathalmaz a tisztítás egy kis használja.
+A következő kódban Definiálok egy új függvényt, `log.transform()`, majd azt a numerikus értékeket tartalmazó sorokra alkalmazza. Az R `Map()` függvény a `log.transform()` függvény alkalmazására szolgál a dataframe kijelölt oszlopaira. `Map()` hasonló a `apply()`hoz, de a függvényhez több argumentumot is engedélyez. Vegye figyelembe, hogy a multiplikátorok listája az `log.transform()` függvény második argumentumát adja meg. A `na.omit()` függvényt a rendszer egy kis karbantartási művelettel biztosítja, hogy a dataframe ne legyenek hiányzó vagy nem definiált értékek.
 
 ```R
 log.transform <- function(invec, multiplier = 1) {
@@ -600,18 +600,18 @@ cadairydata[, 4:7] <- Map(log.transform, cadairydata[, 4:7], multipliers)
 cadairydata <- na.omit(cadairydata)  
 ```
 
-Van még egy bit képzésén a `log.transform()` függvény. Ez a kód a legtöbb ellenőrzi az argumentumokkal potenciális problémákat vagy kivételeket, továbbra is a számítások során felmerülő többé vesződnie a sérült. Ez a kód csak néhány sornyi csinálni számításokat.
+A `log.transform()` függvényben meglehetősen sok történik. A kód nagy része az argumentumokkal kapcsolatos lehetséges problémákat ellenőrzi, vagy a kivételekkel foglalkozik, amelyek a számítások során továbbra is felmerülhetnek. A kód csak néhány sora valójában a számításokat.
 
-Defenzív programozás célja, hogy egy adott függvény, amely megakadályozza a folyamatos feldolgozása sikertelen. Lehet, hogy igen kellemetlen, a felhasználók számára egy egy hosszú ideig futó elemzési hirtelen hiba. Ezen helyzet elkerülése érdekében korlátozza, amely kárt alsóbb feldolgozási alapértelmezett visszatérési értékek kell választani. Egy üzenet is, hogy probléma merült fel felhasználókat jön létre.
+A védekező programozás célja, hogy megakadályozza egy olyan függvény meghibásodását, amely megakadályozza a feldolgozás folytatását. A hosszú futású elemzések hirtelen meghibásodása meglehetősen idegesítő lehet a felhasználók számára. A probléma elkerülése érdekében az alapértelmezett visszatérési értékeket úgy kell megválasztani, hogy az a sérülést az alsóbb rétegbeli feldolgozásra korlátozza. Egy üzenet figyelmezteti a felhasználókat, hogy valamilyen hiba történt.
 
-Ha nem használta az R defenzív programozás, ez a kód előfordulhat, hogy kezdünk, egy kicsit. E lépésről lépésre a fő lépést:
+Ha nem használja az R-ben az R-programozást, akkor ez a kód egy kicsit nyomasztónak tűnhet. Végigvezeti a főbb lépéseken:
 
-1. Négy üzenet vektor van meghatározva. Ezek az üzenetek néhány lehetséges hibák és kivételek, amelyek ezzel a kóddal kapcsolatos információkat folytatott kommunikációra szolgálnak.
-2. Visszatérés minden esetben az NA értéket. Nincsenek számos egyéb lehetőségeket, amelyeket kevesebb mellékhatással. E eredményezhetnek nullák vektor, vagy az eredeti bemeneti vektort, például.
-3. A függvény ellenőrzéseket futtatja az argumentumokon. Minden esetben, ha hibát észlel, egy alapértelmezett értéket adja vissza és a által előállított üzenet a `warning()` függvény. Használok `warning()` helyett `stop()` , ez utóbbi leállíthatja végrehajtási, pontosan mit próbálok elkerülése érdekében. Vegye figyelembe, hogy e írt ezt a kódot egy eljárási tetszetős, ahogy ebben az esetben egy összetett és homályos tűnt működési megközelítés.
-4. A napló számítások burkolja `tryCatch()` , hogy a kivételek nem okoz egy hirtelen halt a feldolgozásra. Nélkül `tryCatch()` váltotta ki R függvények eredménye stopjelzést, ezt végzi a legtöbb hibát.
+1. Négy üzenet vektora van definiálva. Ezek az üzenetek a kóddal megjelenő lehetséges hibákkal és kivételekkel kapcsolatos információk közlésére szolgálnak.
+2. Minden esetben a NA értéket visszaállítom. Számos más lehetőség is van, amelyek kevesebb mellékhatással rendelkezhetnek. Nullák vektort vagy az eredeti bemeneti vektort lehet visszaadni, például:.
+3. Az ellenőrzések a függvény argumentumai szerint futnak. Ha a rendszer hibát észlel, a rendszer minden esetben visszaadja az alapértelmezett értéket, és a `warning()` függvény egy üzenetet hoz létre. `stop()` helyett `warning()` használok, mivel az utóbbi leállítja a végrehajtást, pontosan azt, amit megpróbálok elkerülni. Vegye figyelembe, hogy ezt a kódot egy eljárási stílusban írtam, ahogy ebben az esetben a funkcionális megközelítés bonyolultnak és homályosnak tűnt.
+4. A rendszer becsomagolja a naplózási számításokat `tryCatch()`, így a kivételek nem okozzák hirtelen a feldolgozást. Az R functions által generált legtöbb hiba `tryCatch()` nélkül egy leállítási jelet eredményez, amely éppen ezt teszi.
 
-Hajtsa végre az R-kód is futtathatja a kísérletet, és rendelkezik a nyomtatásra egy pillantást a kimenetét fájlban. Most már megjelenik az átalakított értékeket a négy oszlopot a naplóban, ahogyan a 13. ábra.
+Hajtsa végre ezt az R-kódot a kísérletben, és tekintse meg a kimeneti. log fájl nyomtatott kimenetét. Ekkor láthatja a naplóban szereplő négy oszlop átalakított értékeit, ahogy az a 13. ábrán látható.
 
     [ModuleOutput] [1] "Loading variable port1..."
     [ModuleOutput] 
@@ -637,33 +637,33 @@ Hajtsa végre az R-kód is futtathatja a kísérletet, és rendelkezik a nyomtat
     [ModuleOutput] 
     [ModuleOutput] [1] "Saving the following item(s):  .maml.oport1"
 
-*13. ábra. Az adathalmaz átalakított értékek összegzése.*
+*13. ábra. Az átalakított értékek összefoglalása a dataframe.*
 
-Láthatjuk, hogy az értékek átalakítása rendelkezik. Most tejtermelés jelentősen meghaladja a minden más tejtermék éles környezetben, hogy mi most láthatjuk logaritmus skála visszahívása.
+Láthatjuk, hogy az értékek át lettek alakítva. A tejtermelés mostantól nagy mértékben meghaladja az összes többi tejtermék-termelést, és emlékeztet arra, hogy most már a naplózási léptéket vizsgáljuk.
 
-Ezen a ponton az adatok törlődnek, és bizonyos modellezési készen állunk. Adatkészlet eredmény kimenete összegzése a Vizualizáció megnézzük a [R-szkript végrehajtása] [ execute-r-script] modult, látni fogja a "Hónap" oszlop "Kategorikus" 12 egyedi értékekkel, újra épp úgy, hogy.
+Ezen a ponton a rendszer megtisztítja az adatainkat, és készen áll a modellezésre. Az [Execute R script][execute-r-script] modul eredmény-adatkészlet kimenetének vizualizációs összegzését megtekintve a "hónap" oszlop "kategorikus", 12 egyedi értékekkel, és csak a kívánt módon jelenik meg.
 
-## <a id="timeseries"></a>Time series objektumok és korrelációs elemzés
+## <a id="timeseries"></a>Idősorozat-objektumok és korrelációs elemzés
 
-Ebben a szakaszban azt fogja vizsgálata R idő néhány alapvető sorozat objektumok és elemzése a kapcsolatos néhány közötti összefüggéseket. Az a célunk, hogy a több késedelmes jelentések páros megfelelési adatait tartalmazó dataframe kimeneti.
+Ebben a szakaszban néhány alapszintű R idősorozat-objektumot fogunk feltárni, és elemezni fogjuk az egyes változók közötti összefüggéseket. Célunk, hogy kiadja a páros korrelációs adatait tartalmazó dataframe több késéssel.
 
-Ez a szakasz a teljes R-kód megtalálható [MachineLearningSamples-jegyzetfüzetek/studio-samples](https://github.com/Azure-Samples/MachineLearningSamples-Notebooks/tree/master/studio-samples).
+Ennek a szakasznak a teljes R-kódja a [MachineLearningSamples-notebook/Studio-Samples](https://github.com/Azure-Samples/MachineLearningSamples-Notebooks/tree/master/studio-samples).
 
-### <a name="time-series-objects-in-r"></a>Time series objektumok az R
+### <a name="time-series-objects-in-r"></a>Idősorozat-objektumok az R-ben
 
-Mint már említettük, az idő az adatsorokat időpontig indexelt adatok értékeket. R time series objektumok létrehozása és kezelése az idő index szolgálnak. Nincsenek a time series objektumok használata számos előnnyel jár. Time series objektumok ingyenes, számos részleteit az idő index sorozatértékek, az objektum ágyazott kezelése. Emellett time series objektumok lehetővé teszik a számos time series metódusok használata a küldik az ábrázolást, nyomtatás, modellezés, stb.
+Ahogy már említettük, az idősorozat az adatértékek egy sorozata, az idő szerint indexelve. Az R idősorozat-objektumok az időindex létrehozásához és kezeléséhez használatosak. Az idősorozat-objektumok használatának számos előnye van. Az idősorozat-objektumok ingyenesen használhatók az objektumban beágyazott idősorozat-indexek kezelésének számos adatával. Emellett az idősorozat-objektumok lehetővé teszik a több idősorozat-módszer használatát a nyomtatáshoz, nyomtatáshoz, modellezéshez stb.
 
-A POSIXct time series osztály gyakran használják, és viszonylag egyszerű. A time series mértékek idő kezdete és az alapidőpont, 1970. január 1. osztály. Ebben a példában használjuk a POSIXct time series objektumokat. Más széles körben használt R time series objektum osztályok állatkert és xts, bővíthető idősorozat tartalmazza.
+A POSIXct Time Series osztály általában használatban van, és viszonylag egyszerű. Ez az idősorozat-osztály az év elejétől, a 1970. január 1-jén méri az időt. Ebben a példában a POSIXct idősorozat-objektumokat fogjuk használni. Más, széles körben használt R idősorozat-objektumosztály például az Állatkert és a XTS, az Extensible Time Series.
 
-### <a name="time-series-object-example"></a>Time series objektum példa
+### <a name="time-series-object-example"></a>Példa idősorozat-objektumra
 
-Első lépések a fenti példában. Húzza át egy **új** [R-szkript végrehajtása] [ execute-r-script] modult is futtathatja a kísérletet. Csatlakozás az eredmény Dataset1 kimeneti portjára, a meglévő [R-szkript végrehajtása] [ execute-r-script] a Dataset1 modul bemeneti portjával az új [R-szkript végrehajtása] [ execute-r-script] modul.
+Ismerkedjen meg a példával. Húzzon egy **új** [végrehajtási R szkript][execute-r-script] modult a kísérletbe. Kapcsolódjon a meglévő [r-szkriptek][execute-r-script] eredményének DataSet1 elemet kimeneti portjához az új [végrehajtási r szkript][execute-r-script] modul DataSet1 elemet bemeneti portjához.
 
-Ahogyan az első példa a, hogy a példában keresztül, bizonyos pontokon bemutatom majd csak a növekményes további kódsort az egyes lépéseknél R-kód.  
+Ahogy az első példákban is tettem, ahogy haladunk a példán, bizonyos pontokon csak az R-kód növekményes további sorai jelennek meg az egyes lépésekben.  
 
-#### <a name="reading-the-dataframe"></a>Az adathalmaz olvasása
+#### <a name="reading-the-dataframe"></a>A dataframe olvasása
 
-Első lépésként hozzunk dataframe olvassa el, és győződjön meg arról, hogy a várt eredményt. A következő kódot a feladat kell tennie.
+Első lépésként olvassa el a dataframe, és győződjön meg arról, hogy megkapjuk a várt eredményeket. A következő kódnak kell elvégeznie a feladatot.
 
 ```R
 # Comment the following if using RStudio
@@ -671,7 +671,7 @@ cadairydata <- maml.mapInputPort(1)
 str(cadairydata) # Check the results
 ```
 
-Most futtassa a kísérletet. A napló az új R-szkript végrehajtása alakzat 14. ábra hasonlóan kell kinéznie.
+Most futtassa a kísérletet. Az új végrehajtási R parancsfájl-alakzat naplójának a 14. ábrához hasonlóan kell kinéznie.
 
     [ModuleOutput] [1] "Loading variable port1..."
     [ModuleOutput] 
@@ -693,13 +693,13 @@ Most futtassa a kísérletet. A napló az új R-szkript végrehajtása alakzat 1
     [ModuleOutput] 
     [ModuleOutput]  $ Month.Count      : num  0 1 2 3 4 5 6 7 8 9 ...
 
-*14. ábra. Az R-szkript végrehajtása modul az adathalmaz összefoglalása.*
+*14. ábra. A dataframe összegzése az R-parancsfájl végrehajtása modulban.*
 
-Ezek az adatok nem a várt típusok és a formátuma. Vegye figyelembe, hogy a "Hónap" oszlop típusa tényező, és a várt számú szintek.
+Ezek az adattípusok a várt típusú és formátumúak. Vegye figyelembe, hogy a "Month" oszlop típusú tényező, és a várt számú szintet tartalmaz.
 
-#### <a name="creating-a-time-series-object"></a>Egy time series-objektum létrehozása
+#### <a name="creating-a-time-series-object"></a>Idősorozat-objektum létrehozása
 
-A dataframe egy time series objektumot hozzá kell. Cserélje le az aktuális kód a következő, POSIXct osztály egy új oszlopot ad hozzá.
+Hozzá kell adnia egy idősorozat-objektumot a dataframe. Cserélje le az aktuális kódot a következőre, amely hozzáadja a POSIXct osztály új oszlopát.
 
 ```R
 # Comment the following if using RStudio
@@ -712,7 +712,7 @@ cadairydata$Time <- as.POSIXct(strptime(paste(as.character(cadairydata$Year), "-
 str(cadairydata) # Check the results
 ```
 
-Most tekintse meg a naplót. 15\. ábra hasonlónak kell lennie.
+Most keresse meg a naplót. Úgy kell kinéznie, mint a 15. ábrán.
 
     [ModuleOutput] [1] "Loading variable port1..."
     [ModuleOutput] 
@@ -736,31 +736,31 @@ Most tekintse meg a naplót. 15\. ábra hasonlónak kell lennie.
     [ModuleOutput] 
     [ModuleOutput]  $ Time             : POSIXct, format: "1995-01-01" "1995-02-01" ...
 
-*15. ábra. Az adathalmaz-time series objektum összefoglalása.*
+*15. ábra. Egy idősorozat-objektummal rendelkező dataframe összefoglalása.*
 
-Láthatjuk, hogy a, amely az új oszlop van sőt osztály POSIXct összegzés.
+Az összegzésből láthatjuk, hogy az új oszlop valójában a POSIXct osztály.
 
-### <a name="exploring-and-transforming-the-data"></a>Felfedezése és az adatok átalakítása
+### <a name="exploring-and-transforming-the-data"></a>Az adatelemzés és-átalakítás
 
-Vizsgáljuk meg néhányat a változókat, ez az adatkészlet. Teszteredményekből mátrix egy jó módja egy gyors pillantást előállításához. E vagyok cseréje a `str()` függvényt a következő sort az előző R-kód.
+Vizsgáljuk meg az adatkészlet egyes változóit. A scatterplot mátrix jó módszer a gyors megjelenítéshez. A következő sorral cserélem a `str()` függvényt az előző R-kódban.
 
 ```R
 pairs(~ Cotagecheese.Prod + Icecream.Prod + Milk.Prod + N.CA.Fat.Price, data = cadairydata, main = "Pairwise Scatterplots of dairy time series")
 ```
 
-Futtassa ezt a kódot, és lássuk, mi történik. A diagram R eszköz kikötő előállított 16. ábra hasonlóan kell kinéznie.
+Futtassa ezt a kódot, és nézze meg, mi történik. Az R-eszköz portján létrehozott ábrának a 16. ábrához hasonlóan kell kinéznie.
 
-![Kijelölt változók Teszteredményekből mátrix](./media/r-quickstart/fig17.png)
+![A kiválasztott változók scatterplot mátrixa](./media/r-quickstart/fig17.png)
 
-*16. ábra. Kijelölt változók Teszteredményekből össze.*
+*16. ábra. A kiválasztott változók scatterplot mátrixa.*
 
-Van néhány odd-looking struktúra a kapcsolatok között ezeket a változókat. Talán ez akkor merül fel az adatok a trendek pedig az a tény, hogy azt nem rendelkezik szabványosított a változókat.
+A változók közötti kapcsolatokban valamilyen furcsa megjelenésű struktúra szerepel. Lehet, hogy ez az adatok trendjeiből és abból ered, hogy nem szabványosítta a változókat.
 
-### <a name="correlation-analysis"></a>Korrelációs elemzése
+### <a name="correlation-analysis"></a>Korrelációs elemzés
 
-Korrelációs elemzést kell megszüntetéséhez trend és egységesítheti a változókat. Egyszerűen használhatja, hogy az R `scale()` függvény, amely azonos adatközpontban üzemelő és méretezi a változók is. Ez a funkció is előfordulhat, hogy gyorsabban futnak. Azonban szeretnék mutatni, az r egy olyan védelmi vonalként programozási példa
+A korrelációs elemzés végrehajtásához a változókat is el kell végezni. Egyszerűen használhatja az R `scale()` függvényt, amely a központok és a skála változókat is használja. Előfordulhat, hogy ez a függvény jóval gyorsabban fut. Szeretném azonban megmutatni, hogyan lehet védekező programot használni az R-ben.
 
-A `ts.detrend()` alábbi függvényt is ezeket a műveleteket hajt végre. A következő két sornyi kóddal megszüntetéséhez trend az adatokat, és majd szabványosíthatja az értékeket.
+Az alább látható `ts.detrend()` függvény mindkét műveletet végrehajtja. A következő két sornyi kód lenyomja az adatokat, majd egységesíti az értékeket.
 
 ```R
 ts.detrend <- function(ts, Time, min.length = 3){
@@ -807,23 +807,23 @@ df.detrend <- data.frame(lapply(cadairydata[, 4:7], ts.detrend, cadairydata$Time
 pairs(~ Cotagecheese.Prod + Icecream.Prod + Milk.Prod + N.CA.Fat.Price, data = df.detrend, main = "Pairwise Scatterplots of detrended standardized time series")
 ```
 
-Van még egy bit képzésén a `ts.detrend()` függvény. Ez a kód a legtöbb ellenőrzi az argumentumokkal potenciális problémákat vagy kivételeket, továbbra is a számítások során felmerülő többé vesződnie a sérült. Ez a kód csak néhány sornyi csinálni számításokat.
+A `ts.detrend()` függvényben meglehetősen sok történik. A kód nagy része az argumentumokkal kapcsolatos lehetséges problémákat ellenőrzi, vagy a kivételekkel foglalkozik, amelyek a számítások során továbbra is felmerülhetnek. A kód csak néhány sora valójában a számításokat.
 
-Már beszéltünk rendelkezik az értéket az átalakítások defenzív programozás egy példát. Mindkét számítási blokkok burkolja `tryCatch()`. Bizonyos hibák logikus adja vissza az eredeti bemeneti vektort, és a többi nullák vektor visszatérés.  
+Már beszéltünk egy példát a védekező programozásra az érték-átalakításokban. Mindkét számítási blokk `tryCatch()`be van csomagolva. Bizonyos hibák esetén érdemes visszaadni az eredeti bemeneti vektort, más esetekben pedig nulla típusú vektort ad vissza.  
 
-Vegye figyelembe, hogy megszünteti trendelemzés használt lineáris regressziós modell futtatása egy time series regressziós. A előjelző változó egy time series objektumot.  
+Vegye figyelembe, hogy a megszüntetéshez használt lineáris regresszió egy idősorozat-regresszió. A prediktív változó egy idősorozat-objektum.  
 
-Egyszer `ts.detrend()` van definiálva az adathalmaz iránt változókhoz alkalmazunk. Azt kell alakíthatók át az eredményül kapott bejegyzéslista által létrehozott `lapply()` adatok dataframe használatával való `as.data.frame()`. Védelmi vonalként aspektusait miatt `ts.detrend()`, a változók egy folyamat sikertelen nem akadályozza meg a többi helyes feldolgozását.  
+Ha `ts.detrend()` van meghatározva, azt a dataframe érdeklődési változóit alkalmazzuk. A `lapply()` által létrehozott listát a `as.data.frame()`használatával kell kikényszeríteni a dataframe adataival. A `ts.detrend()`védelmi szempontjai miatt a változók egyikének feldolgozása nem fogja megakadályozni a többi felhasználó helyes feldolgozását.  
 
-A végső kódsort páros teszteredményekből hoz létre. Után futtatja az R-kód, a teszteredményekből eredményei láthatók 17. ábra.
+A kód utolsó sora létrehoz egy páros-scatterplot. Az R-kód futtatása után a scatterplot eredményei a 17. ábrán láthatók.
 
-![Páros teszteredményekből megszüntetéséhez trendszerű és egységesített idősorok](./media/r-quickstart/fig18.png)
+![A páros scatterplot és a szabványosított idősorozatok](./media/r-quickstart/fig18.png)
 
-*17. ábra. Páros teszteredményekből megszüntetéséhez trendszerű és a szabványos sorozat harmadik része.*
+*17. ábra. A páros a scatterplot és a szabványosított idősorozatot is felszámítja.*
 
-Ezekkel az eredményekkel, 16. ábra szereplő termékektől össze lehessen hasonlítani. Az a tendencia eltávolítva és a változókat, szabványosított láthatjuk, sokkal kevesebb felépítését, ezek a változók kapcsolatai a.
+Ezeket az eredményeket a 16. ábrán látható módon hasonlíthatja össze. Ha a trend el lett távolítva, és a változók szabványosítva vannak, sokkal kevesebb struktúrát látunk a változók közötti kapcsolatokban.
 
-A kód az R FTB objektumként összefüggéseket számítási a következőképpen történik.
+A korrelációk R CCF-objektumként való számításához szükséges kód a következő.
 
 ```R
 ## A function to compute pairwise correlations from a
@@ -841,7 +841,7 @@ cadairycorrelations <- lapply(corpairs, pair.cor, df.detrend)
 cadairycorrelations
 ```
 
-A napló látható 18. ábra ezt a kódot futtató eredményez.
+A kód futtatása a 18. ábrán látható naplót eredményezi.
 
     [ModuleOutput] Loading objects:
     [ModuleOutput]   port1
@@ -895,14 +895,14 @@ A napló látható 18. ábra ezt a kódot futtató eredményez.
     [ModuleOutput]     -1      0      1 
     [ModuleOutput] -0.002 -0.074 -0.124 
 
-*18. ábra. FTB listája az páros korrelációs elemzés objektumokat.*
+*18. ábra. A páros korrelációs analízisből származó CCF-objektumok listája.*
 
-Nincs minden lag korrelációs értékét. Ezek az értékek korrelációs sem elég nagy legyen jelentős lehet. A Microsoft ezért kötnek, hogy azt az egyes változók modell egymástól függetlenül is.
+Az egyes késések korrelációs értéke. A korrelációs értékek egyike sem elég nagy ahhoz, hogy jelentős legyen. Ezért azt is megállapítjuk, hogy az egyes változókat egymástól függetlenül modellezjük.
 
-### <a name="output-a-dataframe"></a>Kimeneti dataframe
-R FTB objektumok listáját, hogy rendelkezik számított a páros összefüggéseket. Ez megjelenít probléma egy kis eredmény adathalmaz kimeneti portját valóban megköveteli egy adathalmaz. További FTB objektum maga listáját, és szeretnénk, hogy csak az értékeket a lista első elemében, a különböző késedelmes jelentések az összefüggéseket.
+### <a name="output-a-dataframe"></a>Dataframe kimenete
+A páros korrelációkat az R CCF-objektumok listájának megfelelően számítottuk ki. Ez egy kis problémát jelent, mivel az eredményül kapott adatkészlet kimeneti portja valóban dataframe igényel. A CCF objektum maga a lista, és csak a lista első elemében található értékeket szeretnénk használni, a különböző késések összefüggéseit.
 
-A következő kódot a késés értékek kibontása FTB objektumok, amelyek maguk is listák listájából.
+A következő kód kibontja a késési értékeket a CCF-objektumok listájából, amelyek magukban foglalják a listákat.
 
 ```R
 df.correlations <- data.frame(do.call(rbind, lapply(cadairycorrelations, '[[', 1)))
@@ -923,45 +923,45 @@ outframe
 
 
 ## WARNING!
-## The following line works only in Azure Machine Learning Studio
+## The following line works only in Azure Machine Learning Studio (classic)
 ## When running in RStudio, this code will result in an error
 #maml.mapOutputPort('outframe')
 ```
 
-A kód első sorára bonyolult egy kicsit, és néhány magyarázata is segítenek megérteni azt. Belülről kifelé működik az alábbiakkal:
+A kód első sora egy kicsit trükkös, és néhány magyarázat segíthet megérteni. A belső használatból a következő műveleteket végezheti el:
 
-1. A " **[[** "argumentummal üzemeltető"**1**" összefüggéseket, a késedelmes jelentések vektor kiválasztja az első elem FTB objektum listáját.
-2. A `do.call()` függvény vonatkozik a `rbind()` keresztül a lista elemeinek függvény által visszaadott `lapply()`.
-3. A `data.frame()` függvény típusú értékké konvertál, az eredmény által előállított `do.call()` dataframe való.
+1. Az "**1**" argumentummal rendelkező " **[[** " operátor kiválasztja a nem a CCF-objektumok listájának első elemében lévő késések vektorát.
+2. A `do.call()` függvény alkalmazza a `rbind()` függvényt a lista elemein `lapply()`alapján.
+3. A `data.frame()` függvény kényszeríti a `do.call()` által előállított eredményt egy dataframe.
 
-Vegye figyelembe, hogy a sor neveket az adathalmaz oszlopában. Így megtartja ezt a sort neveket, amikor azok kimenete a [R-szkript végrehajtása][execute-r-script].
+Vegye figyelembe, hogy a sorok nevei a dataframe egyik oszlopában vannak. Ezzel megőrzi a sorok nevét, amikor a [végrehajtás R-szkriptből][execute-r-script]származnak.
 
-A kimenetet a 19. ábra jelenik meg a kódot futtató hoz létre. Ha e **Visualize** a kimenetet a az adatkészlet eredmény port. A sor nevek szerepelnek az első oszlop helyesen.
+A kód futtatásakor a rendszer a 19. ábrán látható kimenetet **jeleníti** meg, amikor a kimenetet megjeleníti az eredmény adatkészlet portján. A sorok neve az első oszlopban szerepel, a kívánt módon.
 
-![A korrelációs elemzési eredmények kimenete](./media/r-quickstart/fig20.png)
+![A korrelációs elemzés eredményeinek kimenete](./media/r-quickstart/fig20.png)
 
-*19. ábra. Kimenete a korrelációs elemzési eredményeket.*
+*19. ábra. A korrelációs elemzés eredményeinek kimenete.*
 
-## <a id="seasonalforecasting"></a>Time series példa: szezonális előrejelzés
+## <a id="seasonalforecasting"></a>Idősorozat-példa: szezonális előrejelzés
 
-Az adatok már az elemzési alkalmas űrlapot, és hogy eldöntöttük, nincs jelentős talál összefüggéseket között a változókat. Nézzük lépés, és a egy idősor-előrejelzési modell létrehozása. Ez a modell használatával azt fogja előrejelzési California tejtermelés 2013 12 hónapig.
+Az adataink jelenleg elemzésre alkalmas formában vannak, és azt állapították meg, hogy a változók között nincsenek jelentős korrelációk. Térjünk át, és hozzon létre egy idősorozat-előrejelzési modellt. Ennek a modellnek a használatával a kaliforniai tejtermékek előállítását fogjuk megbecsülni a 12 hónapig 2013.
 
-Az előrejelzési modell két összetevőből, egy trend összetevőt és időszakos lesz. A teljes előrejelzés, amely a két összetevőt. A modell típusa tényezőt modell néven ismert. Ez esetben az additív modell. A változók a lényeges, ami lehetővé teszi az elemzés tractable azt már telepített egy napló átalakítás.
+Az előrejelzési modell két összetevővel, egy trend-összetevővel és egy szezonális összetevővel fog rendelkezni. A teljes előrejelzés a két összetevő terméke. Az ilyen típusú modellt multiplikatív-modellnek nevezzük. Az alternatíva egy adalékanyag-modell. A rendszer már alkalmazta a naplózási átalakítást az érdeklődésre számot tartó változóra, ami elvégezheti ezt az elemzést.
 
-Ez a szakasz a teljes R-kód megtalálható [MachineLearningSamples-jegyzetfüzetek/studio-samples](https://github.com/Azure-Samples/MachineLearningSamples-Notebooks/tree/master/studio-samples).
+Ennek a szakasznak a teljes R-kódja a [MachineLearningSamples-notebook/Studio-Samples](https://github.com/Azure-Samples/MachineLearningSamples-Notebooks/tree/master/studio-samples).
 
-### <a name="creating-the-dataframe-for-analysis"></a>Az adathalmaz elemzéshez létrehozása
+### <a name="creating-the-dataframe-for-analysis"></a>A dataframe létrehozása az elemzéshez
 
-Első lépésként adjon hozzá egy **új** [R-szkript végrehajtása] [ execute-r-script] modult a kísérletvászonra. Csatlakozás a **eredmény adatkészlet** kimenete a meglévő [R-szkript végrehajtása] [ execute-r-script] modult a **Dataset1** az új modul bemeneti. Az eredmény hasonlóan kell kinéznie 20. ábra.
+Első lépésként vegyen fel egy **új** [végrehajtási R script][execute-r-script] modult a kísérletbe. Kapcsolja össze a meglévő [R-szkriptek][execute-r-script] **eredményét** az új modul **DataSet1 elemet** bemenetével. Az eredménynek a 20. ábrához hasonlóan kell kinéznie.
 
-![A kísérlet hozzáadott új R-szkript végrehajtása modullal](./media/r-quickstart/fig21.png)
+![A kísérlet az új végrehajtási R-szkripttel modullal bővült](./media/r-quickstart/fig21.png)
 
-*20. ábra. A kísérlet hozzáadott új R-szkript végrehajtása modullal.*
+*20. ábra. A kísérlet az új végrehajtási R script modullal lett hozzáadva.*
 
-A korrelációs elemzésével az imént fejeződött be, hozzá kell adnunk a-sorozat objektum POSIXct idő oszlop. A következő kódot fog ehhez csupán.
+Csakúgy, mint a korrelációs elemzések esetében, hozzá kell adnia egy oszlopot egy POSIXct idősorozat-objektummal. A következő kód csak ezt fogja elvégezni.
 
 ```R
-# If running in Machine Learning Studio, uncomment the first line with maml.mapInputPort()
+# If running in Machine Learning Studio (classic), uncomment the first line with maml.mapInputPort()
 cadairydata <- maml.mapInputPort(1)
 
 ## Create a new column as a POSIXct object
@@ -971,7 +971,7 @@ cadairydata$Time <- as.POSIXct(strptime(paste(as.character(cadairydata$Year), "-
 str(cadairydata)
 ```
 
-Futtassa ezt a kódot, és tekintse meg a naplót. Az eredmény 21. ábra hasonlóan kell kinéznie.
+Futtassa ezt a kódot, és tekintse meg a naplót. Az eredménynek a 21. ábrához hasonlóan kell kinéznie.
 
     [ModuleOutput] [1] "Loading variable port1..."
     [ModuleOutput] 
@@ -995,13 +995,13 @@ Futtassa ezt a kódot, és tekintse meg a naplót. Az eredmény 21. ábra hasonl
     [ModuleOutput] 
     [ModuleOutput]  $ Time             : POSIXct, format: "1995-01-01" "1995-02-01" ...
 
-*21. ábra. Az adathalmaz összegzését.*
+*21. ábra. A dataframe összegzése.*
 
-Ez az eredmény igyekszünk készen áll az elemzéshez.
+Ezzel az eredménnyel készen állunk az elemzés megkezdésére.
 
-### <a name="create-a-training-dataset"></a>Betanítási adatkészletet létrehozása
+### <a name="create-a-training-dataset"></a>Képzési adatkészlet létrehozása
 
-Mivel az adathalmaz össze kell betanítási adatkészletet létrehozása. Ezeket az adatokat tartalmazza az összes az év 2013, az utolsó 12, kivéve a megfigyelések Ez az a tesztelési adatkészletnél. A következő kód részhalmazának az adathalmaz, és létrehozza a grafikon a termelési és az ár tejelő változók. Tudom a négy termelési grafikon létrehozása és változók díjszabása. Egy névtelen függvény segítségével határozza meg, néhány úgy bővíti az ábrázolást, és majd megismételheti a másik két argumentumok listájának `Map()`. Ha gondol, amely egy ciklus kellene rendelkeznie működtek itt, az Ön megfelelő. De mivel az R egy funkcionális nyelv mutatom meg, a funkcionális megközelítést.
+A kiépített dataframe létre kell hozni egy betanítási adatkészletet. Ez az adat tartalmazza az összes észrevételt, kivéve a 2013-as év utolsó 12 számát, amely a tesztelési adatkészlet. A következő kód kijelöli a dataframe, és létrehozza a tejtermékek termelési és árképzési változóit. Ezután létrehozunk a négy termelési és árképzési változóból álló ábrákat. A Névtelen függvények segítségével megadhatók a mintaterületek kibővítései, majd megismételhető a másik két argumentum listáján `Map()`. Ha úgy gondolja, hogy a for loop a következőhöz lett kidolgozva, akkor helyes. Mivel azonban az R funkcionális nyelv, egy funkcionális megközelítést mutatunk be.
 
 ```R
 cadairytrain <- cadairydata[1:216, ]
@@ -1014,32 +1014,32 @@ Ylabs  <- list("Log CA Cotage Cheese Production, 1000s lb",
 Map(function(y, Ylabs){plot(cadairytrain$Time, y, xlab = "Time", ylab = Ylabs, type = "l")}, cadairytrain[, 4:7], Ylabs)
 ```
 
-A time series jeleníti meg az R-eszköz kimenetében megjelennek a 22. ábra sorozata a kódot futtató eredményez. Vegye figyelembe, hogy időtengelye egységet a dátumok, a már jól néz kis előnye, hogy az adatsorozat ábrázolásához metódus idő.
+A kód futtatása a Time Series-sorozatot ábrázolja a 22. ábrán látható R-eszköz kimenetéről. Vegye figyelembe, hogy az időtengely a dátumok egységében van, és a Time Series ábrázolási módszerének egy kellemes előnye.
 
-![A time series grafikon California tejelő éles és az ár adatok első](./media/r-quickstart/unnamed-chunk-161.png)
+![A kaliforniai tejtermékek termelésével és árával kapcsolatos első idősorozat-mintaterületek](./media/r-quickstart/unnamed-chunk-161.png)
 
-![Time series grafikon California tejelő éles és az ár adatok száma másodpercenként](./media/r-quickstart/unnamed-chunk-162.png)
+![Az idősorozatok második ábrái a kaliforniai tejtermék-termelés és az árak mennyiségéről](./media/r-quickstart/unnamed-chunk-162.png)
 
-![A time series grafikon California tejelő éles és az ár adatok külső](./media/r-quickstart/unnamed-chunk-163.png)
+![Az idősorozat harmadik része a kaliforniai tejtermék-termelés és az árak](./media/r-quickstart/unnamed-chunk-163.png)
 
-![A time series grafikon California tejelő éles és az ár adatok negyedik](./media/r-quickstart/unnamed-chunk-164.png)
+![Az idősorozat negyedik időpontja a kaliforniai tejtermék-termelés és az árak](./media/r-quickstart/unnamed-chunk-164.png)
 
-*22. ábra. Time series grafikon California tejtermelésre és ár-adatok.*
+*22. ábra. Az idősorozat a kaliforniai tejtermékek termelési és díjszabási szolgáltatásait ábrázolja.*
 
-### <a name="a-trend-model"></a>A trend modell
+### <a name="a-trend-model"></a>Egy trend Model
 
-Miután létrehozta a egy time series objektumot, és hogy megtekintette az adatokat, először a kaliforniai tej éles adatok trend modell összeállításához. Mi a time series regressziós módszerrel történő teheti meg. Azt azonban nincs bejelölve, a diagram, amely a rendszer több mint egy görbét kell és pontos modellezésére a betanítási adatok megfigyelt trendje intercept.
+Egy idősorozat-objektumot hozott létre, és megtekintette az adatokat, kezdjük egy trend-modellt létrehozni a kaliforniai tejtermék-termelési adatokat illetően. Ezt egy idősorozat-regresszióval teheti meg. Azonban a mintaterületből nem egyértelmű, hogy a betanítási adatokban a megfigyelt trendet pontosan modellezni fogjuk.
 
-Adja meg a kis léptékű az adatok, e lesz a modell az RStudio trend és majd kivágja és beilleszti az eredményül kapott modell Azure Machine Learning studióba. Az RStudio biztosít egy interaktív környezetet az ilyen típusú interaktív elemzés céljából.
+Az adat kis mérete miatt építem a RStudio trend modelljét, majd kivágja és beilleszti az eredményül kapott modellt a Azure Machine Learning Studio klasszikus verziójába. A RStudio interaktív környezetet biztosít az ilyen típusú interaktív elemzésekhez.
 
-Első kísérlet alkalmával, mint a powers legfeljebb 3 polinom regresszió fogja meg. Nincs túlterhelt igyekeznek az ilyen típusú modellek valós veszélyt. Emiatt tanácsos magas rendelés feltételeit elkerülése érdekében. A `I()` függvény gátolja a tartalmának értelmezése (értelmezi a tartalma ","), és lehetővé teszi, hogy egy regressziós egyenlőségi szó szerint értelmezett függvény írhat.
+Első kísérletként egy polinom-regressziót próbálok meg 3-ig terjedő hatáskörökkel. Az ilyen típusú modellek valós veszélyt jelentenek. Ezért érdemes elkerülni a nagy rendelési feltételeket. A `I()` függvény gátolja a tartalom értelmezését (a "as is" tartalmát értelmezi), és lehetővé teszi, hogy egy regressziós egyenletben egy szó szerint értelmezett függvényt írjon.
 
 ```R
 milk.lm <- lm(Milk.Prod ~ Time + I(Month.Count^2) + I(Month.Count^3), data = cadairytrain)
 summary(milk.lm)
 ```
 
-Ez létrehozza a következő.
+Ez a következőt hozza létre.
 
     ##
     ## Call:
@@ -1063,14 +1063,14 @@ Ez létrehozza a következő.
     ## Multiple R-squared:  0.941,    Adjusted R-squared:  0.94
     ## F-statistic: 1.12e+03 on 3 and 212 DF,  p-value: <2e-16
 
-A P értékeket (`Pr(>|t|)`) Ez a kimenet, láthatjuk, hogy a squared kifejezés nem mindig jelentős. Használom a `update()` függvény squared kifejezés elvetését módosíthatja ezt a modellt.
+Ebben a kimenetben a P értékek (`Pr(>|t|)`) alapján láthatjuk, hogy a négyzetes kifejezés nem lehet jelentős. Az `update()` függvény használatával módosítom ezt a modellt a négyzetes kifejezés eldobásával.
 
 ```R
 milk.lm <- update(milk.lm, . ~ . - I(Month.Count^2))
 summary(milk.lm)
 ```
 
-Ez létrehozza a következő.
+Ez a következőt hozza létre.
 
     ##
     ## Call:
@@ -1092,9 +1092,9 @@ Ez létrehozza a következő.
     ## Multiple R-squared:  0.941,  Adjusted R-squared:  0.94
     ## F-statistic: 1.69e+03 on 2 and 213 DF,  p-value: <2e-16
 
-Ez tűnik jobb. A feltételek mindegyike jelentős. (2E) – 16 értéke azonban az alapértelmezett érték, és nem kell túl komolyan venni.  
+Ez jobban néz ki. Az összes feltétel jelentős. A 2e-16 érték azonban alapértelmezett érték, és nem lehet túl komolyan venni.  
 
-Megerősítést tesztként tekintsük California tejtermelésre adatok idő sorozat rajzot a trend görbéjű látható. A következő kódot az Azure Machine Learning studióban hozzáadott [R-szkript végrehajtása] [ execute-r-script] (nem az RStudio) modell a modell létrehozásához, és győződjön meg arról, egy diagram. 23\. ábra jelenik meg az eredményt.
+A "józan ész" teszt során tegyük fel, hogy a kaliforniai tejtermék-termelési adatokat tartalmazó idősorozat ábrázolja a látható trend görbét. Felvettem a következő kódot a klasszikus Azure Machine Learning Studio az [R script][execute-r-script] Model (nem RStudio) futtatásával a modell létrehozásához és egy mintaterület készítéséhez. Az eredmény a 23. ábrán látható.
 
 ```R
 milk.lm <- lm(Milk.Prod ~ Time + I(Month.Count^3), data = cadairytrain)
@@ -1103,24 +1103,24 @@ plot(cadairytrain$Time, cadairytrain$Milk.Prod, xlab = "Time", ylab = "Log CA Mi
 lines(cadairytrain$Time, predict(milk.lm, cadairytrain), lty = 2, col = 2)
 ```
 
-![Kaliforniai tej termelési adatok látható trendek modellel](./media/r-quickstart/unnamed-chunk-18.png)
+![Kaliforniai tejtermékek termelési adatokat a trend Model látható](./media/r-quickstart/unnamed-chunk-18.png)
 
-*23. ábra. Kaliforniai tej éles adatok trend modellel is látható.*
+*23. ábra. Kalifornia tejtermék-termelési adatokat a trend Model látható.*
 
-Úgy tűnik, a trend modell viszonylag jól illik az adatokhoz. További nem tűnik, hogy túlzott méretezés bizonyíték lehet, mint például a modell görbén wiggles páratlan.  
+Úgy tűnik, hogy a trend Model meglehetősen jól illeszkedik az adatokat. Továbbá úgy tűnik, hogy a modell görbén túl sok a terhelés, például a páratlan kígyózik.  
 
 ### <a name="seasonal-model"></a>Szezonális modell
 
-Az aktuális trend-modell kell leküldéses és az időszakos hatások közé tartozik. Az év hónapját használjuk a lineáris modell helyőrző változóként capture havonta készülő hatása. Vegye figyelembe, hogy tényező változók modellbe vezeti be, amikor az intercept nem kell számolni. Ha ezt nem teszi meg, a képlet túlterhelt van megadva, és R fog dobja el a kívánt kiemelten, de tartsa intercept kifejezés.
+A trend Model esetében be kell jelentkeznie, és tartalmaznia kell az idényjellegű hatásokat. Az év hónapját a lineáris modellben lévő dummy változóként fogjuk használni, hogy rögzítse a hónapról hónapra érvényes hatást. Vegye figyelembe, hogy amikor egy modellbe bevezeti a faktor változóit, az elfogás nem számítható ki. Ha ezt nem teszi meg, a képlet túl van megadva, és az R levonja az egyik kívánt tényezőt, de megtartja az elfogási kifejezést.
 
-Mivel van egy megfelelő trend modell használhatjuk a `update()` függvényt, hogy az új feltételeket ad hozzá a létező modellt. A -1, a frissítés képletben intercept kifejezés csökken. Folytatás az RStudio egyelőre:
+Mivel megfelelő trend-modellel rendelkezünk, az `update()` függvény használatával adhatjuk hozzá az új feltételeket a meglévő modellhez. A frissítési képletben az-1 az elfogási kifejezést eldobja. Folytatás a RStudio a pillanatra:
 
 ```R
 milk.lm2 <- update(milk.lm, . ~ . + Month - 1)
 summary(milk.lm2)
 ```
 
-Ez létrehozza a következő.
+Ez a következőt hozza létre.
 
     ##
     ## Call:
@@ -1154,9 +1154,9 @@ Ez létrehozza a következő.
     ## Multiple R-squared:     1,    Adjusted R-squared:     1
     ## F-statistic: 1.42e+06 on 14 and 202 DF,  p-value: <2e-16
 
-Láthatjuk, hogy a modell már nem egy intercept szól, és rendelkezik a 12 hónap jelentős tényezők. Ez a pontosan, mi szerettünk megtekintéséhez.
+Láthatjuk, hogy a modell már nem rendelkezik elfogási kifejezéssel, és 12 jelentős hónapra vonatkozó tényezővel rendelkezik. Pontosan ezt láttuk.
 
-Tekintsük meg egy másik time series rajz California tejtermelésre adatok arról, hogy működik-e a szezonális modell. A következő kódot az Azure Machine Learning studióban hozzáadott [R-szkript végrehajtása] [ execute-r-script] a modell létrehozásához, és győződjön meg arról, egy diagram.
+Tegyük fel, hogy a kaliforniai tejtermékek termelési információinak egy másik idősorozata látható, hogy milyen jól működik a szezonális modell. Felvettem a következő kódot a klasszikus verzióban, Azure Machine Learning Studio az [R-szkriptet][execute-r-script] a modell létrehozásához és egy mintaterület készítéséhez.
 
 ```R
 milk.lm2 <- lm(Milk.Prod ~ Time + I(Month.Count^3) + Month - 1, data = cadairytrain)
@@ -1165,15 +1165,15 @@ plot(cadairytrain$Time, cadairytrain$Milk.Prod, xlab = "Time", ylab = "Log CA Mi
 lines(cadairytrain$Time, predict(milk.lm2, cadairytrain), lty = 2, col = 2)
 ```
 
-Ez a kód futtatása az Azure Machine Learning Studióban az ábrázolást. ábra 24 bemutatott hoz létre.
+A kód Azure Machine Learning Studio klasszikus verziójában való futtatása a 24. ábrán látható ábrát állítja elő.
 
-![Kaliforniai tejtermelés többek között a szezonális hatások modellel](./media/r-quickstart/unnamed-chunk-20.png)
+![Kaliforniai tejtermékek gyártása a modellel, beleértve az idényjellegű hatásokat](./media/r-quickstart/unnamed-chunk-20.png)
 
-*24. ábra. Kaliforniai tejtermelés többek között a szezonális hatások modellel.*
+*24. ábra. Kalifornia tejtermékek gyártása modellekkel, beleértve az idényjellegű hatásokat.*
 
-A laphoz igazítás 24. ábra megjelenített adatok inkább ösztönzése. A trendek és a szezonális hatás (havi változat) is ésszerű jelenik meg
+A 24. ábrán látható adathoz való igazodás inkább biztató. A trend és a szezonális effektus (havi változat) is ésszerűnek tűnik.
 
-A modell egy másik ellenőrzést, mint nézzük meg, például a következő. A következő kódot az előrejelzett értékeket a két modell kiszámítja a például a szezonális modell kiszámítja és majd jeleníti meg ezeket a betanítási adatok például.
+A modell egy másik beadásával nézzük meg a maradványokat. A következő kód kiszámítja a két modell előre jelzett értékeit, kiszámítja az idényjellegű modell maradékait, majd kirajzolja ezeket a fennmaradó értékeket a betanítási adatokhoz.
 
 ```R
 ## Compute predictions from our models
@@ -1185,42 +1185,42 @@ residuals <- cadairydata$Milk.Prod - predict2
 plot(cadairytrain$Time, residuals[1:216], xlab = "Time", ylab ="Residuals of Seasonal Model")
 ```
 
-A fennmaradó ábrázoláson 25. ábra jelenik meg.
+A fennmaradó mintaterület a 25. ábrán látható.
 
-![Például az időszakos modell a betanítási adatok](./media/r-quickstart/unnamed-chunk-21.png)
+![A betanítási adatmennyiségre vonatkozó szezonális modell maradványai](./media/r-quickstart/unnamed-chunk-21.png)
 
-*25. ábra. Például az időszakos modell a betanítási adatok.*
+*25. ábra. A betanítási adattípushoz tartozó szezonális modell maradványai.*
 
-Ezek a maradványok ésszerű meg. Nem adott struktúra, kivéve a 2008-2009 recesszió, amely a modell nem veszi figyelembe a hatása van különösen jól.
+Ezek a maradványok ésszerűnek tűnnek. Az 2008-2009-es recesszió hatásának hiányában nincs különleges struktúra, amely a modellünk esetében nem számít különösen jól.
 
-A diagram látható 25. ábra bármely időfüggő minták észlelésére a például a hasznos. Az explicit módszert is, amely a használt például számítástechnika és a például a a rajzolási sorrendben helyezi. Ha, másrészt I kellett ábrázolt `milk.lm$residuals`, a diagram nem lett volna a sorrendben.
+A 25. ábrán látható ábra hasznos lehet a maradékokban lévő időfüggő minták észlelésére. A számítási és a megmaradt maradványok kirajzolásának explicit megközelítése, amelyet a maradékok időbeli sorrendbe helyeznek a parcellán. Ha viszont a `milk.lm$residuals`ábrázolta volna, a mintaterület nem lett volna időbeli sorrend.
 
-Is `plot.lm()` diagnosztikai grafikon sorozatát előállításához.
+A `plot.lm()` használatával diagnosztikai mintaterületek sorozatát is létrehozhatja.
 
 ```R
 ## Show the diagnostic plots for the model
 plot(milk.lm2, ask = FALSE)
 ```
 
-Ez a kód egy sorozatát 26. ábra látható diagnosztikai grafikon eredményez.
+Ez a kód a 26. ábrán látható diagnosztikai mintaterületek sorozatát eredményezi.
 
-![Első napján szezonális modell diagnosztikai grafikon](./media/r-quickstart/unnamed-chunk-221.png)
+![A szezonális modellhez tartozó diagnosztikai mintaterületek első része](./media/r-quickstart/unnamed-chunk-221.png)
 
-![Az időszakos modell diagnosztikai grafikon száma másodpercenként](./media/r-quickstart/unnamed-chunk-222.png)
+![A szezonális modellhez tartozó diagnosztikai mintaterületek másodpercenkénti száma](./media/r-quickstart/unnamed-chunk-222.png)
 
-![Külső, az évszaknak megfelelő modell diagnosztikai grafikon](./media/r-quickstart/unnamed-chunk-223.png)
+![A szezonális modellhez tartozó diagnosztikai mintaterületek harmadik része](./media/r-quickstart/unnamed-chunk-223.png)
 
-![A diagnosztikai grafikon szezonális modell negyedik](./media/r-quickstart/unnamed-chunk-224.png)
+![A szezonális modellhez tartozó diagnosztikai mintaterületek negyedik része](./media/r-quickstart/unnamed-chunk-224.png)
 
-*26. ábra. Diagnosztikai szezonális modell jeleníti meg.*
+*26. ábra. Diagnosztikai telkek az idényjellegű modellhez.*
 
-Van néhány magas befolyásos pontok ezen grafikon, de a nagyszerű aggodalomra semmi nem szerepelt. További láthatjuk, a normál Q-Q diagram, hogy a például általában elosztott, fontos feltételezésből lineáris modellek közel-e.
+Ezekben a mintaterületeken néhány nagy befolyású pont van azonosítva, de semmi sem okoz gondot. Emellett láthatjuk a normál Q-Q ábrán, hogy a maradványok általában kiterjesztve, a lineáris modellek esetében pedig fontos feltételezések.
 
-### <a name="forecasting-and-model-evaluation"></a>Előrejelzési és a modell értékelése
+### <a name="forecasting-and-model-evaluation"></a>Előrejelzés és modell kiértékelése
 
-Nincs csak egy dolog példánkban végrehajtásához. Igazolnia kell, a számítási előrejelzéseket és a hiba mérhetők a tényleges adatok. Az előrejelzés lesz a 2013 12 hónapig. Azt is számítási hiba, amely nem része a betanítási adatkészletet a tényleges adatok az adott előrejelzési intézkedésként. Ezenkívül a betanítási adatok Tesztadatok 12 hónapig 18 éves teljesítményét is összehasonlítva.  
+A példához csak még egy dolgot kell végrehajtani. Az előrejelzéseket ki kell számítani, és a tényleges adatok alapján kell mérni a hibát. Az előrejelzések a 2013-es 12 hónapig érvényesek. Ezt az előrejelzést a betanítási adatkészletbe nem tartozó tényleges adatokra is kiszámíthatja. Emellett a 18 éves betanítási adatmennyiséget is összehasonlíthatja a 12 hónapig tartó tesztelési adattal.  
 
-A time series modellek teljesítményének mérésére mérőszámokat szolgálnak. Ebben az esetben a négyzetes (RMS) hiba használunk. A következő függvény kiszámítja a két sorozat közötti RMS hiba.  
+Az idősorozat-modellek teljesítményének méréséhez számos metrika használatos. Ebben az esetben a root Mean Square (RMS) hibát fogjuk használni. A következő függvény két adatsorozat között kiszámítja az RMS-hibát.  
 
 ```R
 RMS.error <- function(series1, series2, is.log = TRUE, min.length = 2){
@@ -1268,9 +1268,9 @@ predict2  <- predict(milk.lm2, cadairydata)
 }
 ```
 
-A a `log.transform()` függvény "Értéket az átalakítások" szakaszában beszéltünk hiba ellenőrzése és a kivétel visszaszerzési kód ebben a függvényben igen sok van. Az alkalmazott alapelvek megegyeznek. A munkát a burkolt be két helyen `tryCatch()`. Először a time series exponentiated, mivel, a naplók az értékek dolgozunk. A második a tényleges RMS hiba számított.  
+Ahogy az "érték-átalakítások" szakaszban ismertetett `log.transform()` függvényhez hasonlóan, a függvény számos hiba-ellenőrzési és kivétel-helyreállítási kódot tartalmaz. Az alkalmazott elvek ugyanazok. A munka két helyen történik, `tryCatch()`ba csomagolva. Először is exponentiated az idősorozat, mert az értékek naplóival dolgozunk. Másodszor, a tényleges RMS-hiba számítása.  
 
-Nézzük felszerelt függvény méréséhez az RMS-hiba, hozhat létre és az RMS hibákat tartalmazó dataframe kimeneti. Önálló trend modell feltételeket és a teljes modell szezonális tényezőket is. A következő kódot kell kialakítani, hogy a két lineáris modell használatával hajtja végre a feladatot.
+Az RMS-hiba mérésére szolgáló függvénnyel kell létrehozni és kiadni az RMS-hibákat tartalmazó dataframe. A trend modelhez és a teljes modellhez szezonális tényezőket tartalmazó feltételek is beletartoznak. A következő kód végzi el a feladatot a létrehozott két lineáris modell használatával.
 
 ```R
 ## Compute the RMS error in a dataframe
@@ -1288,51 +1288,51 @@ rowNames = c("Trend Model", "Seasonal Model"),
 RMS.df
 
 ## The following line should be executed only when running in
-## Azure Machine Learning Studio
+## Azure Machine Learning Studio (classic)
 maml.mapOutputPort('RMS.df')
 ```
 
-A kimenetben látható, az eredmény adathalmaz kimeneti portját 27. ábra ezt a kódot futtató eredményez.
+A kód futtatásával az eredmény-adatkészlet kimeneti portjának 27. ábráján látható kimenet jön létre.
 
-![Az RMS-hibák modellek összehasonlítása](./media/r-quickstart/fig26.png)
+![Az RMS-hibák összehasonlítása a modellekhez](./media/r-quickstart/fig26.png)
 
-*27. ábra. A modellek RMS által jelzett hibákat összehasonlítása.*
+*27. ábra. Az RMS-hibák összehasonlítása a modellekhez.*
 
-Az ezekkel az eredményekkel láthatjuk, hogy a szezonális tényezők ad hozzá a modell csökkenti az RMS hiba jelentősen. Az RMS-hiba a betanítási adatok nem meglepő túl jelző bit kevesebb, mint az előrejelzéshez.
+Ezekből az eredményekből láthatjuk, hogy a modellhez tartozó szezonális tényezők hozzáadása jelentősen csökkenti az RMS-hibát. Nem meglepő, hogy a betanítási adatmennyiséghez tartozó RMS-hiba egy kicsit kisebb az előrejelzésnél.
 
-## <a id="appendixa"></a>Útmutató az RStudio dokumentációja
+## <a id="appendixa"></a>Útmutató a RStudio dokumentációhoz
 
-Az RStudio meglehetősen megfelelően legyen dokumentálva. Íme néhány hasznos hivatkozás, a fő részből áll az RStudio dokumentáció révén elsajátíthatja a.
+A RStudio elég jól dokumentálva. Íme néhány hivatkozás a RStudio dokumentációjának főbb részeire, hogy megismerkedjen az első lépésekkel.
 
-* **Hozzon létre projekteket** -rendszerezésére és az R-kód kezelése projektek az RStudio segítségével is. Lásd: [használatával projektek](https://support.rstudio.com/hc/articles/200526207-Using-Projects) részleteiről. Javasolt, hogy kövesse az alábbi utasításokat, és hozzon létre egy projektet a R-kód példák ebben a cikkben.  
-* **Szerkesztés és az R-kód végrehajtása** -RStudio R-kód végrehajtása és a Szerkesztés integrált környezetet biztosít. Lásd: [szerkesztési és a végrehajtó kód](https://support.rstudio.com/hc/articles/200484448-Editing-and-Executing-Code) részleteiről.
-* **Hibakeresés** -RStudio hatékony hibakeresési képességeket is tartalmaz. Lásd: [RStudio hibakereséséről](https://support.rstudio.com/hc/articles/200713843-Debugging-with-RStudio) további információt szeretne ezekről a funkciókról. Töréspont hibaelhárítási funkciók kapcsolatos információkért lásd: [töréspontot hibaelhárítási](https://support.rstudio.com/hc/articles/200534337-Breakpoint-Troubleshooting).
+* **Projektek létrehozása** – a RStudio használatával rendszerezheti és kezelheti az R-kódját projektjeiben. További részletekért lásd: [projektek használata](https://support.rstudio.com/hc/articles/200526207-Using-Projects) . Azt javasoljuk, hogy kövesse ezeket az utasításokat, és hozzon létre egy projektet az R Code-példákhoz ebben a cikkben.  
+* Az **r Code-RStudio szerkesztése és végrehajtása** integrált környezetet biztosít az r-kód szerkesztéséhez és végrehajtásához. Részletekért lásd: [kód szerkesztése és végrehajtása](https://support.rstudio.com/hc/articles/200484448-Editing-and-Executing-Code) .
+* **Hibakeresés** – a RStudio hatékony hibakeresési képességeket tartalmaz. A funkciókkal kapcsolatos további információkért tekintse meg a [RStudio hibakeresését](https://support.rstudio.com/hc/articles/200713843-Debugging-with-RStudio) ismertető témakört. A Töréspont hibaelhárítási funkcióiról a [töréspont hibaelhárítása](https://support.rstudio.com/hc/articles/200534337-Breakpoint-Troubleshooting)című témakörben talál további információt.
 
-## <a id="appendixb"></a>További információ
+## <a id="appendixb"></a>További olvasnivalók
 
-Az R programozási oktatóanyag kell az R nyelv használata az Azure Machine Learning Studio alapjait ismerteti. Ha nem ismeri a R, a CRAN két tudnivalókra érhetők el:
+Ez az R programozási oktatóanyag ismerteti az alapismereteket, amelyekkel az R nyelvet kell használnia a Azure Machine Learning Studio klasszikus verziójával. Ha nem ismeri az R-t, két bevezetést kell elérhetővé tennie a CRANban:
 
-* [R kezdőknek](https://cran.r-project.org/doc/contrib/Paradis-rdebuts_en.pdf) Emmanuel Paradis által van egy nagyszerű hely az induláshoz.  
-* [R bemutató](https://cran.r-project.org/doc/manuals/R-intro.html) l. n Venables et. al. egy kicsit részletesebben hiányzóra változik.
+* A [kezdőknek](https://cran.r-project.org/doc/contrib/Paradis-rdebuts_en.pdf) az Emmanuel Paradis jó kiindulópontja az R.  
+* [Az R bevezetője](https://cran.r-project.org/doc/manuals/R-intro.html) a W. N használatával. Venables et. Al. egy kicsit mélyebbre kerül.
 
-Nincsenek számos könyvek R, amelyek segíthetnek a kezdéshez. Íme néhány hasznos találhatók:
+Az R-ben számos könyv található, amely segítséget nyújt az első lépésekhez. Itt talál néhány hasznosat:
 
-* A **Art az R programozási: A bemutató a statisztikai szoftver terv** Norman Matloff szerint van az r programozási kiváló bemutatása  
-* **R Cookbook** Paul Teetor által probléma és a megoldás r segítségével módszert biztosít a  
-* **A művelet R** Robert Kabacoff által van egy másik hasznos bevezető címjegyzék-alkalmazásával. A kiegészítő [gyors R webhely](https://www.statmethods.net/) egy hasznos forrás.
-* **R Inferno** szerint Patrick Burns a meglepően szorult könyvet, hogy kezelje a számos bonyolult és nehezen észlelt is, ha az r programozási témakörök A könyv érhető el ingyenesen [az R Inferno](https://www.burns-stat.com/documents/books/the-r-inferno/).
-* Ha azt szeretné, hogy az R haladó témakörök részletes bemutatása, rendelkezik egy pillantást a könyv **speciális R** Hadley Wickham szerint. Ingyenesen érhető el az online változata annak a könyv [ http://adv-r.had.co.nz/ ](http://adv-r.had.co.nz/).
+* Az **r-programozás művészete: a Norman Matloff által a statisztikai szoftverek tervezésének bemutatója** kiváló bevezetést mutat az r-ben való programozáshoz.  
+* A Paul Teetor **r szakácskönyve** problémát és megoldást kínál az r használatára.  
+* Az **R in Action** by Robert Kabacoff egy másik hasznos bevezető könyv. A Companion [gyors R-webhely](https://www.statmethods.net/) hasznos erőforrás.
+* Az **r Inferno** Patrick Burns egy meglepően vicces könyv, amely számos olyan trükkös és bonyolult témakört tartalmaz, amelyek az R-ben való programozás során fordulhatnak elő. A könyv ingyenesen elérhető az [R infernonél](https://www.burns-stat.com/documents/books/the-r-inferno/).
+* Ha szeretné, hogy az R-vel kapcsolatos speciális témakörök részletesen megtekintsenek, tekintse meg a **speciális r** -t a Hadley Wickham. A könyv online verziója ingyenesen elérhető a következő címen: [http://adv-r.had.co.nz/](http://adv-r.had.co.nz/).
 
-R-time series csomagok katalógusában található [CRAN feladat megtekintése: Time Series elemzési](https://cran.r-project.org/web/views/TimeSeries.html). Adatsorozat objektum csomagok meghatározott időre szóló információ hivatkozzon az adott csomag dokumentációjában.
+Az R idősorozat-csomagok katalógusa a Cran- [feladat nézetében található: idősorozat-elemzés](https://cran.r-project.org/web/views/TimeSeries.html). Az adott idősorozat-objektum csomagjaival kapcsolatos információkért tekintse meg az adott csomag dokumentációját.
 
-A könyv **bevezető Time Series** Paul Cowpertwait és Andrew Metcalfe r bevezetést nyújt az idősoros elemzés az R használatával. Számos további elméleti szövegek R példákat biztosítanak.
+A könyv **bevezető idősorozata** , az r Paul Cowpertwait és Andrew Metcalfe, bevezetést nyújt az r használatának idősorozat-elemzéséhez. Számos további elméleti szöveg R-példákat tartalmaz.
 
-Íme néhány nagyszerű internetes erőforrások:
+Íme néhány nagyszerű internetes erőforrás:
 
-* DataCamp R a böngészőjében az videó leckékben és kódolási gyakorlatok kényelmes azzal foglalkozunk. Nincsenek interaktív oktatóanyagok a legújabb R technikák és csomagokat. Igénybe az ingyenes [R interaktív oktatóanyag](https://www.datacamp.com/courses/introduction-to-r).
-* [Ismerje meg, az R programozási, a végleges útmutató](https://www.programiz.com/r-programming) Programiz a.
-* Gyors [R oktatóanyag](https://www.cyclismo.org/tutorial/R/) által Tibor fekete Clarkson egyetemen.
-* Nincsenek 60 R erőforrások webhelyen felsorolt [felső R nyelv erőforrásokat az adatok képességek javításához](https://www.computerworld.com/article/2497464/business-intelligence-60-r-resources-to-improve-your-data-skills.html).
+* A DataCamp megtanítja az R-t a böngésző kényelmében a videók és a kódolási gyakorlatok révén. A legújabb R-technikák és csomagok interaktív oktatóanyagokkal rendelkeznek. Használja ki az ingyenes [interaktív R-oktatóanyagot](https://www.datacamp.com/courses/introduction-to-r).
+* [Ismerkedjen meg az R programozással, a végleges útmutatóval](https://www.programiz.com/r-programming) a Programiz.
+* Egy gyors [R-oktatóanyag](https://www.cyclismo.org/tutorial/R/) : Kelly Black, Clark University.
+* Több mint 60 R erőforrás szerepel a [legnépszerűbb r nyelvi erőforrásokban az adatkezelési képességek javítása érdekében](https://www.computerworld.com/article/2497464/business-intelligence-60-r-resources-to-improve-your-data-skills.html).
 
 <!-- Module References -->
 [execute-r-script]: /azure/machine-learning/studio-module-reference/execute-r-script

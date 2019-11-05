@@ -8,12 +8,12 @@ ms.date: 06/13/2019
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: b9f9fe78db2d8bcf50a076fdfc3eba7b1f347201
-ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
+ms.openlocfilehash: 6d8f67cf94e143cd67a525fa2cc675650fb59e65
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72965394"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73494020"
 ---
 # <a name="tutorial-configure-an-iot-edge-device"></a>Oktatóanyag: IoT Edge-eszköz konfigurálása
 
@@ -73,11 +73,11 @@ Ebben a szakaszban létrehozjuk az önaláírt tanúsítványokat egy Docker-ren
 
 ## <a name="upload-certificates-to-azure-key-vault"></a>Tanúsítványok feltöltése a Azure Key Vaultba
 
-Ha biztonságosan szeretné tárolni a tanúsítványokat, és több eszközről is elérhetővé kívánja tenni őket, feltöltjük a tanúsítványokat a Azure Key Vaultba. Ahogy az a fenti listából is látható, két típusú tanúsítványfájl létezik: PFX és PEM. A PFX-t Key Vault, Key Vaultre feltöltött tanúsítványként kezeljük. A PEM-fájlok egyszerű szövegként jelennek meg, és Key Vault titokként kezeljük őket. A [Azure Notebooks](tutorial-machine-learning-edge-04-train-model.md#run-azure-notebooks)futtatásával létrehozott Azure Machine learning szolgáltatás munkaterülethez társított Key Vault fogjuk használni.
+Ha biztonságosan szeretné tárolni a tanúsítványokat, és több eszközről is elérhetővé kívánja tenni őket, feltöltjük a tanúsítványokat a Azure Key Vaultba. Ahogy az a fenti listából is látható, két típusú tanúsítványfájl létezik: PFX és PEM. A PFX-t Key Vault, Key Vaultre feltöltött tanúsítványként kezeljük. A PEM-fájlok egyszerű szövegként jelennek meg, és Key Vault titokként kezeljük őket. A [Azure Notebooks](tutorial-machine-learning-edge-04-train-model.md#run-azure-notebooks)futtatásával létrehozott Azure Machine learning munkaterülethez társított Key Vault fogjuk használni.
 
-1. A [Azure Portal](https://portal.azure.com)navigáljon a Azure Machine learning szolgáltatás munkaterületére.
+1. A [Azure Portal](https://portal.azure.com)navigáljon a Azure Machine learning munkaterülethez.
 
-2. A Azure Machine Learning szolgáltatás munkaterület áttekintés lapján keresse meg a **Key Vault**nevét.
+2. A Azure Machine Learning munkaterület áttekintés lapján keresse meg a **Key Vault**nevét.
 
     ![Key Vault-név másolása](media/tutorial-machine-learning-edge-05-configure-edge-device/find-key-vault-name.png)
 
@@ -294,7 +294,7 @@ A következő lépésben frissíteni fogjuk a tanúsítványokat és a gazdagép
     journalctl -u iotedge --no-pager --no-full
     ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Épp most fejezte be az Azure-beli virtuális gépek Azure IoT Edge transzparens átjáróként való konfigurálását. Először a Azure Key Vaultba feltöltött tesztelési tanúsítványok létrehozásával kezdtük el. Ezután egy parancsfájl-és Resource Manager-sablonnal telepítettük a virtuális gépet az "Ubuntu Server 16,04 LTS + Azure IoT Edge Runtime" rendszerképpel az Azure piactéren. A szkript az Azure CLI telepítésének további lépéseit vette igénybe (az[Azure CLI telepítése az apt](https://docs.microsoft.com/cli/azure/install-azure-cli-apt)használatával). Az SSH-n keresztül csatlakoztatott virtuális gépekkel, az Azure-ba való bejelentkezéssel, a Key Vault tanúsítványok letöltésével, valamint az IoT Edge Runtime konfigurációjának számos frissítését a config. YAML fájl frissítésével végezheti el. További információ a IoT Edge átjáróként való használatáról: [IoT Edge eszköz átjáróként](iot-edge-as-gateway.md)való használata. Az IoT Edge eszköz transzparens átjáróként való konfigurálásával kapcsolatos további információkért lásd: [IoT Edge-eszköz konfigurálása transzparens átjáróként való](how-to-create-transparent-gateway.md)működéshez.
 

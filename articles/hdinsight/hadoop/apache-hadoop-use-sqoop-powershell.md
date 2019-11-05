@@ -1,6 +1,6 @@
 ---
-title: Az Apache Sqoop-feladatok futtatása a PowerShell és az Azure HDInsight használatával
-description: Megtudhatja, hogyan használhatja az Azure Powershellt egy munkaállomásról futtatása az Apache Sqoop-importálás és exportálása az Apache Hadoop-fürt és a egy Azure SQL database között.
+title: Apache Sqoop-feladatok futtatása a PowerShell és az Azure HDInsight használatával
+description: Megtudhatja, hogyan használhatja a Azure PowerShell egy munkaállomásról az Apache Sqoop importálására és exportálására egy Apache Hadoop-fürt és egy Azure SQL-adatbázis között.
 ms.reviewer: jasonh
 author: hrasheed-msft
 ms.service: hdinsight
@@ -8,29 +8,31 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/11/2019
 ms.author: hrasheed
-ms.openlocfilehash: f178d07666eda3552c18f581a926305e76ecb697
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 6cb3e91bed4f16cf1e30c535b5ed667fc690dd53
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67450134"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73499274"
 ---
-# <a name="run-apache-sqoop-jobs-by-using-azure-powershell-for-apache-hadoop-in-hdinsight"></a>Az Apache Sqoop-feladatok futtatása HDInsight az Apache Hadoophoz készült Azure PowerShell használatával
+# <a name="run-apache-sqoop-jobs-by-using-azure-powershell-for-apache-hadoop-in-hdinsight"></a>Apache Sqoop-feladatok futtatása a HDInsight Apache Hadoop Azure PowerShell használatával
 [!INCLUDE [sqoop-selector](../../../includes/hdinsight-selector-use-sqoop.md)]
 
-Útmutató egy HDInsight-fürt és a egy Azure SQL database vagy SQL Server-adatbázis közötti adatok importálása és exportálása az Azure HDInsight az Apache sqoop használatával feladatok futtatása az Azure PowerShell használatával. Ebben a példában adatokat exportál `/tutorials/usesqoop/data/sample.log` az alapértelmezett tárfiókot, és importálja, hogy a tábla nevű `log4jlogs` SQL Server-adatbázisban. Ez a cikk a fenntartása [használata Apache sqoop használatával a HDInsight Hadoop-keretrendszerrel](./hdinsight-use-sqoop.md).
+Megtudhatja, hogyan használhatja a Azure PowerShellt az Apache Sqoop-feladatok Azure HDInsight való futtatásához egy HDInsight-fürt és egy Azure SQL Database-adatbázis vagy egy SQL Server-adatbázis közötti adatok importálásához és exportálásához. Ez a példa a `/tutorials/usesqoop/data/sample.log` származó adatok exportálását az alapértelmezett Storage-fiókból, majd egy SQL Server adatbázis `log4jlogs` nevű táblába importálja. Ez a cikk az [Apache Sqoop és a Hadoop HDInsight-ben való használatának](./hdinsight-use-sqoop.md)folytatása.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ez a cikk elkezdéséhez a következőkkel kell rendelkeznie:
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-* Egy munkaállomás Azure PowerShell-lel [AZ modul](https://docs.microsoft.com/powershell/azure/overview) telepítve.
+A cikk elkezdése előtt a következő elemeket kell megadnia:
 
-* Megvalósításának [tesztkörnyezet beállítása](./hdinsight-use-sqoop.md#create-cluster-and-sql-database) a [használata Apache sqoop használatával a HDInsight Hadoop-keretrendszerrel](./hdinsight-use-sqoop.md).
+* Egy munkaállomás, amelyen Azure PowerShell [az modul](https://docs.microsoft.com/powershell/azure/overview) telepítve van.
+
+* A [tesztkörnyezet üzembe](./hdinsight-use-sqoop.md#create-cluster-and-sql-database) állításának befejezése az [Apache Sqoop és a Hadoop használatával a HDInsight-ben](./hdinsight-use-sqoop.md).
 
 
-## <a name="run-apache-sqoop-by-using-powershell"></a>Az Apache sqoop használatával futtassa a PowerShell használatával
-A következő PowerShell-parancsfájl előzetesen feldolgozza a forrásfájl és majd exportálja azt egy Azure SQL database tábla `log4jlogs`. Cserélje le `CLUSTERNAME`, `CLUSTERPASSWORD`, és `SQLPASSWORD` azokra az értékekre, az előfeltételként szükséges használták.
+## <a name="run-apache-sqoop-by-using-powershell"></a>Apache Sqoop futtatása a PowerShell használatával
+A következő PowerShell-parancsfájl előre feldolgozza a forrásfájlt, majd exportálja egy Azure SQL Database-be az `log4jlogs`táblázatba. Cserélje le a `CLUSTERNAME`, `CLUSTERPASSWORD`és `SQLPASSWORD` értéket az előfeltételként használt értékekre.
 
 ```powershell 
 <#------ BEGIN USER INPUT ------#>
@@ -170,16 +172,16 @@ Get-AzHDInsightJobOutput `
 ```
 
 ## <a name="limitations"></a>Korlátozások
-Linux-alapú HDInsight mutat be a következő korlátozások vonatkoznak:
+A Linux-alapú HDInsight a következő korlátozásokat mutatja be:
 
-* Tömeges exportálását: Amellyel a Microsoft SQL Server vagy az Azure SQL Database-adatok exportálása a Sqoop-összekötő jelenleg nem támogatja a tömeges beszúrás.
+* Tömeges exportálás: a Sqoop-összekötő, amely az adatexportálás Microsoft SQL Server vagy Azure SQL Database jelenleg nem támogatja a tömeges beszúrásokat.
 
-* Kötegelés: Használatával a `-batch` mikor váltson végrehajt a beszúrások, a sqoop használatával hajt végre több beszúrás helyett a beszúrási műveletek kötegelése. 
+* Kötegelt feldolgozás: a beszúrási műveletek végrehajtásakor a `-batch` kapcsoló használatával a Sqoop több beszúrást hajt végre az INSERT művelet végrehajtása helyett. 
 
 ## <a name="next-steps"></a>További lépések
-Most már megtanulhatta, hogyan használható a sqoop használatával. További tudnivalókért lásd:
+Most megtanulta, hogyan használhatja a Sqoop-t. További tudnivalókért lásd:
 
-* [Az Apache Oozie használata a HDInsight](../hdinsight-use-oozie-linux-mac.md): Az Oozie-munkafolyamatokkal Sqoop műveletet használja.
-* [Adatok feltöltése a HDInsight](../hdinsight-upload-data.md): Keresse meg a HDInsight vagy Azure Blob storage-ba történő feltöltéséhez más módszerekkel.
+* Az [Apache Oozie és a HDInsight használata](../hdinsight-use-oozie-linux-mac.md): Sqoop művelet használata Oozie-munkafolyamatokban.
+* [Adatok feltöltése a HDInsight-be](../hdinsight-upload-data.md): további módszereket talál az adatok HDInsight vagy Azure Blob Storage-ba való feltöltéséhez.
 
 [sqoop-user-guide-1.4.4]: https://sqoop.apache.org/docs/1.4.4/SqoopUserGuide.html

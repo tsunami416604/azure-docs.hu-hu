@@ -1,7 +1,7 @@
 ---
 title: Webszolgáltatások kezelése
-titleSuffix: Azure Machine Learning Studio
-description: A Machine Learning új és klasszikus Web services a Microsoft Azure Machine Learning Web Services portál használata kezelheti. A klasszikus webszolgáltatások és új Web services különböző mögöttes technológiák alapján, mivel mindegyikhez rendelkezik némileg eltérő felügyeleti képességeket.
+titleSuffix: Azure Machine Learning Studio (classic)
+description: Machine Learning új és klasszikus webszolgáltatásokat a Microsoft Azure Machine Learning webszolgáltatások portál használatával kezelheti. Mivel a klasszikus webszolgáltatások és az új webszolgáltatások különböző alapul szolgáló technológiákon alapulnak, némileg eltérő felügyeleti képességei vannak.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
@@ -10,147 +10,147 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: previous-ms.author=yahajiza, previous-author=YasinMSFT
 ms.date: 02/28/2017
-ms.openlocfilehash: 711cb674cb00a880eadda11b03da87631df90b0d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f0d31ce46ce185ad5bbcd736d9f45e62d7436d24
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60861735"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73489238"
 ---
-# <a name="manage-a-web-service-using-the-azure-machine-learning-studio-web-services-portal"></a>Az Azure Machine Learning Studio webszolgáltatás-portál használatával webszolgáltatás kezelése
-A Machine Learning új és a klasszikus webszolgáltatások a Microsoft Azure Machine Learning Web Services portál használata kezelheti. A klasszikus webszolgáltatások és új Web services különböző mögöttes technológiák alapján, mivel mindegyikhez rendelkezik némileg eltérő felügyeleti képességeket.
+# <a name="manage-a-web-service-using-the-azure-machine-learning-studio-classic-web-services-portal"></a>Webszolgáltatás kezelése a Azure Machine Learning Studio (klasszikus) webszolgáltatások portál használatával
+A Microsoft Azure Machine Learning webszolgáltatások portál használatával kezelheti Machine Learning új és klasszikus webszolgáltatásait. Mivel a klasszikus webszolgáltatások és az új webszolgáltatások különböző alapul szolgáló technológiákon alapulnak, némileg eltérő felügyeleti képességei vannak.
 
-A Machine Learning webszolgáltatások portál a következőket teheti:
+A Machine Learning Web Services portálon a következőket teheti:
 
-* A web service használatának figyelése
-* Konfigurálja a leírás, a kulcsok frissítése webes szolgáltatás (csak új), a storage key (csak új), lehetővé naplózás, frissítéséhez és engedélyezése, vagy tiltsa le a mintaadatokat.
+* A webszolgáltatás használatának figyelése.
+* Konfigurálja a leírást, frissítse a webszolgáltatás kulcsait (csak új), frissítse a Storage-fiók kulcsát (csak új), engedélyezze a naplózást, és engedélyezze vagy tiltsa le a mintaadatok közül.
 * Törölje a webszolgáltatást.
-* Hozzon létre, delete vagy update számlázási csomagok (csak új).
-* Adja hozzá, és törölje a végpontot (csak Klasszikus modell)
+* Számlázási csomagok létrehozása, törlése vagy frissítése (csak új).
+* Végpontok hozzáadása és törlése (csak klasszikus)
 
 >[!NOTE]
->A klasszikus webszolgáltatások is kezelheti [Machine Learning Studio](https://studio.azureml.net) a a **webszolgáltatások** fülre.
+>A **webszolgáltatások** lapon a klasszikus webszolgáltatásokat [Machine learning Studio (klasszikus)](https://studio.azureml.net) is kezelheti.
 
-## <a name="permissions-to-manage-new-resources-manager-based-web-services"></a>Új erőforrás-kezelő kezeléséhez engedélyekkel-alapú webszolgáltatások
+## <a name="permissions-to-manage-new-resources-manager-based-web-services"></a>Engedélyek az új erőforrás-kezelő-alapú webszolgáltatások kezeléséhez
 
-Új webszolgáltatások az Azure-erőforrások üzemelnek. Ennek megfelelően kell rendelkeznie a megfelelő engedélyekkel ahhoz, hogy új webes szolgáltatások telepítésére és kezelésére.  Telepítenie és felügyelnie az új webszolgáltatások, hozzá kell rendelni egy közreműködőjének vagy rendszergazdájának szerepkört az előfizetésre, amelyre a web service telepítve van. A machine learning-munkaterület egy másik felhasználó meghívása akkor, ha kell rendelnie őket az előfizetés közreműködőjének vagy rendszergazdájának szerepkörhöz üzembe helyezése vagy webszolgáltatások kezelése előtt. 
+Az új webszolgáltatások üzembe helyezése Azure-erőforrásként történik. Ennek megfelelően az új webszolgáltatások üzembe helyezéséhez és kezeléséhez megfelelő engedélyekkel kell rendelkeznie.  Új webszolgáltatások üzembe helyezéséhez vagy kezeléséhez hozzá kell rendelni egy közreműködői vagy rendszergazdai szerepkört azon az előfizetésen, amelyhez a webszolgáltatás telepítve van. Ha egy másik felhasználót is meghív egy Machine learning-munkaterületre, akkor a webszolgáltatások üzembe helyezése vagy kezelése előtt hozzá kell rendelnie őket egy közreműködői vagy rendszergazdai szerepkörhöz az előfizetésben. 
 
-Ha a felhasználó nem rendelkezik a megfelelő engedélyekkel ahhoz, hogy az Azure Machine Learning Web Services portálon erőforrások eléréséhez, a következő hibaüzenetet kapja, egy webszolgáltatás üzembe helyezése közben:
+Ha a felhasználó nem rendelkezik a megfelelő engedélyekkel az erőforrások eléréséhez a Azure Machine Learning webszolgáltatások portálon, akkor a következő hibaüzenetet kapja a webszolgáltatás üzembe helyezésekor:
 
-*A webes szolgáltatás telepítése nem sikerült. Ez a fiók nem rendelkezik megfelelő hozzáférési jogosultsággal az Azure-előfizetést, amely tartalmazza a munkaterületen. Annak érdekében, hogy a webszolgáltatás üzembe helyezése az Azure-ba, ugyanazzal a fiókkal kell hívni a munkaterületet, és hozzáférést kell biztosítani az Azure-előfizetést, amely tartalmazza a munkaterületen.*
+*A webszolgáltatás telepítése nem sikerült. Ez a fiók nem rendelkezik megfelelő hozzáféréssel a munkaterületet tartalmazó Azure-előfizetéshez. Ha webszolgáltatást szeretne üzembe helyezni az Azure-ban, ugyanazt a fiókot kell meghívnia a munkaterületre, és hozzáférést kell adni a munkaterületet tartalmazó Azure-előfizetéshez.*
 
-Munkaterület létrehozásával kapcsolatos további információkért lásd: [létrehozása és megosztása egy Azure Machine Learning Studio-munkaterület](create-workspace.md).
+A munkaterület létrehozásával kapcsolatos további információkért lásd: [Azure Machine learning Studio (klasszikus) munkaterület létrehozása és megosztása](create-workspace.md).
 
-Hozzáférési engedélyek beállítása a további információkért lásd: [rbac-RÓL és az Azure portal-hozzáférés kezelése](../../role-based-access-control/role-assignments-portal.md).
+A hozzáférési engedélyek beállításával kapcsolatos további információkért lásd: [a hozzáférés kezelése a RBAC és a Azure Portal használatával](../../role-based-access-control/role-assignments-portal.md).
 
 
 ## <a name="manage-new-web-services"></a>Új webszolgáltatások kezelése
-Az új webszolgáltatások kezelése:
+Az új webszolgáltatások kezeléséhez:
 
-1. Jelentkezzen be a [a Microsoft Azure Machine Learning webszolgáltatások](https://services.azureml.net/quickstart) az Microsoft Azure portal-fiók – használja az Azure-előfizetéssel társított fiókot.
-2. Kattintson a menü **webszolgáltatások**.
+1. Jelentkezzen be a [Microsoft Azure Machine learning webszolgáltatások](https://services.azureml.net/quickstart) portálra a Microsoft Azure-fiók használatával – használja az Azure-előfizetéshez társított fiókot.
+2. A menüben kattintson a **Web Services**elemre.
 
-Ez az előfizetés üzembe helyezett webszolgáltatások listáját jeleníti meg. 
+Megjelenik az előfizetéshez tartozó telepített webszolgáltatások listája. 
 
-Webszolgáltatás kezelése, kattintson a Web Services. A Web Services-oldaláról a következőket teheti:
+Webszolgáltatás kezeléséhez kattintson a webszolgáltatások lehetőségre. A webszolgáltatások lapon a következőket teheti:
 
-* Kattintson a web service lehet kezelni.
-* Kattintson a számlázási csomag a webszolgáltatás frissíteni.
+* Kattintson a webszolgáltatásra a kezeléséhez.
+* Kattintson a webszolgáltatáshoz tartozó számlázási tervre a frissítéshez.
 * Webszolgáltatás törlése.
-* Másolja egy webszolgáltatás, és helyezze üzembe azt egy másik régióban.
+* Webszolgáltatások másolása és üzembe helyezése egy másik régióban.
 
-Ha rákattint egy webszolgáltatás, a szolgáltatás rövid weboldal nyílik meg. A web service a rövid útmutató lapon a két menüpontok, amelyek lehetővé teszik, hogy a webszolgáltatás kezelése:
+Amikor egy webszolgáltatásra kattint, megnyílik a webszolgáltatás gyors üzembe helyezési lapja. A webszolgáltatás rövid útmutatója két olyan menüpontot tartalmaz, amelyek lehetővé teszik a webszolgáltatások kezelését:
 
-* **IRÁNYÍTÓPULT** – lehetővé teszi a webes szolgáltatás használati adatok megtekintéséhez.
-* **KONFIGURÁLÁS** – lehetővé teszi, hogy a leíró szöveg hozzáadása a kulcsot a Web service társított storage-fiók frissítése és engedélyezi vagy letiltja a mintaadatok.
+* **Irányítópult** – lehetővé teszi a webszolgáltatás használatának megtekintését.
+* **Konfigurálás** – lehetővé teszi a leíró szöveg hozzáadását, a webszolgáltatáshoz társított Storage-fiók kulcsának frissítését, valamint a mintaadatok engedélyezését és letiltását.
 
-### <a name="monitoring-how-the-web-service-is-being-used"></a>A web service használatának figyelése
-Kattintson a **IRÁNYÍTÓPULT** fülre.
+### <a name="monitoring-how-the-web-service-is-being-used"></a>A webszolgáltatás használatának figyelése
+Kattintson az **irányítópult** fülre.
 
-Az irányítópulton megtekintheti a webes szolgáltatás teljes használatának egy időszakon belül. Az időszak megtekintéséhez a jobb felső sarokban a használati diagramot a időszak legördülő menüből kiválaszthatja. Az irányítópult a következő információkat jelenít meg:
+Az irányítópulton megtekintheti a webszolgáltatás általános használatát egy adott időszakban. A használati diagramok jobb felső sarkában található időszak legördülő menüből kiválaszthatja a megtekinteni kívánt időszakot. Az irányítópult az alábbi információkat jeleníti meg:
 
-* **Kérelmek időalapú** kérések száma lépés grafikonon jeleníti meg a kijelölt időszakra. Ha használat kiugrások azonosítása segíthet.
-* **Kérés-válasz kérelmek** a szolgáltatás megkapta a kijelölt időszak és ezek közül hány sikertelen kérés-válasz hívások teljes számát jeleníti meg.
-* **Átlagos kérelem-válasz számítási idő** átlagát a fogadott kérések végrehajtásához szükséges időt jeleníti meg.
-* **Batch-kérelmek** a szolgáltatás megkapta a kijelölt időszak és ezek közül hány sikertelen kérések összesített számát jeleníti meg.
-* **Átlagos késés feladat** átlagát a fogadott kérések végrehajtásához szükséges időt jeleníti meg.
-* **Hibák** bekövetkezett hibák összesített számát jeleníti meg a webszolgáltatás-hívások.
-* **Költségek Services** jeleníti meg a szolgáltatáshoz társított a számlázási csomag díjai.
+* Az **idő múlásával** a kérések száma a kiválasztott időszakra vonatkozó kérelmek számának gráfját jeleníti meg. Segít azonosítani, hogy észlelt-e tüskéket a használat során.
+* A **kérelem-válasz kérelmek** megjelenítik a szolgáltatás által a kiválasztott időszakban fogadott kérelmek és válaszok számát, valamint azt, hogy hány sikertelen volt.
+* A **kérések átlagos száma – a válasz számítási ideje** a fogadott kérelmek végrehajtásához szükséges idő átlagát jeleníti meg.
+* A **Batch-kérelmek** azon kötegelt kérelmek teljes számát jelenítik meg, amelyeket a szolgáltatás a kiválasztott időszakban fogadott el, és hány sikertelen volt.
+* A **feladatok átlagos késése** a fogadott kérelmek végrehajtásához szükséges idő átlagát jeleníti meg.
+* A **hibák** a webszolgáltatásra irányuló hívásokban történt hibák összesített számát jelenítik meg.
+* A **szolgáltatások költségei** a szolgáltatáshoz társított számlázási csomag díjait jelenítik meg.
 
-### <a name="configuring-the-web-service"></a>A webszolgáltatás konfigurálása
-Kattintson a **KONFIGURÁLÁSA** menüpont.
+### <a name="configuring-the-web-service"></a>Webszolgáltatás konfigurálása
+Kattintson a **configure (Konfigurálás** ) menüpontra.
 
-Az alábbi tulajdonságok frissíthetők:
+A következő tulajdonságokat frissítheti:
 
-* **Leírás** lehetővé teszi, hogy adja meg a webszolgáltatás leírását.
-* **Cím** lehetővé teszi, hogy adjon meg egy címet a webszolgáltatás
-* **Kulcsok** lehetővé teszi, hogy az elsődleges és másodlagos API-kulcsainak rotálása.
-* **Tárfiók kulcsa** lehetővé teszi, hogy a kulcsot a Web service módosítások társított storage-fiók frissítéséhez. 
-* **Engedélyezze a mintaadatok** lehetővé teszi, hogy adja meg a mintaadatokat, amellyel tesztelheti a kérés-válasz szolgáltatás. Ha a webszolgáltatás a Machine Learning Studióban létrehozott, a mintaadatok átveszi a rendszer az adatokat a használt a modell betanításához. Ha a szolgáltatás programozott módon létrehozott, az adatok a példaadatokat a JSON-csomag részeként megadott származik.
+* A **Leírás** lehetővé teszi a webszolgáltatás leírásának megadását.
+* A **cím** lehetővé teszi a webszolgáltatás címének megadását
+* A **kulcsok** lehetővé teszik az elsődleges és a másodlagos API-kulcsok elforgatását.
+* A **Storage-fiók kulcsa** lehetővé teszi a webszolgáltatás változásaihoz társított Storage-fiók kulcsának frissítését. 
+* A **mintaadatok engedélyezése** lehetővé teszi a kérelem-válasz szolgáltatás teszteléséhez használható mintaadatok megadását. Ha a webszolgáltatást Machine Learning Studioban (klasszikus) hozta létre, a mintaadatok a modell betanításához használt adatokból származnak. Ha programozott módon hozta létre a szolgáltatást, az adatok a JSON-csomag részeként megadott adatokból származnak.
 
-### <a name="managing-billing-plans"></a>Számlázási tervek kezelése
-Kattintson a **csomagok** menüpont a webes szolgáltatások rövid oldaláról. A csomag társított webszolgáltatás kezelése a csomagot is kattinthat.
+### <a name="managing-billing-plans"></a>Számlázási csomagok kezelése
+Kattintson a **csomagok** menüpontra a webszolgáltatások gyors lapja lapon. Az adott webszolgáltatáshoz társított tervet a terv kezelésére is használhatja.
 
-* **Új** lehetővé teszi, hogy hozzon létre egy új csomagot.
-* **Csomag hozzáadása/eltávolítása példány** lehetővé teszi, hogy "horizontális felskálázása" kapacitás egy meglévő csomagot.
-* **Frissítés/alacsonyabb szintű** lehetővé teszi, hogy "vertikális felskálázás" kapacitás egy meglévő csomagot.
-* **Törlés** lehetővé teszi, hogy a csomag törlése.
+* Az **új** csomag lehetővé teszi, hogy új csomagot hozzon létre.
+* A **csomag hozzáadása/eltávolítása** lehetővé teszi egy meglévő csomag kiskálázását a kapacitás hozzáadásához.
+* A **verziófrissítés/lefokozás** lehetővé teszi, hogy egy meglévő csomagot "vertikális felskálázással" bővítse a kapacitást.
+* A **delete** lehetővé teszi egy csomag törlését.
 
-Kattintson egy tervet a megfelelő irányítópult megtekintéséhez. Az irányítópult biztosít pillanatkép vagy a csomag használati egy kiválasztott időszakban. Válassza ki az adott időszakban megtekintéséhez, kattintson a **időszak** az irányítópult jobb felső részén a legördülő listából. 
+Kattintson egy tervre az irányítópult megtekintéséhez. Az irányítópult egy adott időszakon belül pillanatfelvételt készít vagy megtervezi a használatot. A megtekinteni kívánt időtartam kiválasztásához kattintson az irányítópult jobb felső sarkában **található legördülő** menüre. 
 
-A terv irányítópultján a következő információkat biztosítja:
+A terv irányítópultja a következő információkat tartalmazza:
 
-* **Terv leírása** a költségek és a kapacitás a tervhez társított információit jeleníti meg.
-* **Használati megtervezése** tranzakciók és a számítási óra, amely rendelkezik a csomag lett terhelve számát jeleníti meg.
-* **A Web Services** webszolgáltatásokat, amelyekhez ezt a tervet használja számát jeleníti meg.
-* **Az első webes szolgáltatás által hívások** jelenít meg arról, hogy a terv vannak terhelve hívások négy webszolgáltatások.
-* **Az első webes szolgáltatások által a számítási óra** a négy webszolgáltatások által használt számítási erőforrások díjkötelesek, szemben a terv jeleníti meg.
+* A **terv leírása** a csomaggal kapcsolatos költségekkel és kapacitással kapcsolatos információkat jeleníti meg.
+* A **használati terv** megjeleníti a terv alapján felszámított tranzakciók és számítási órák számát.
+* A **webszolgáltatások** a csomagot használó webszolgáltatások számát jelenítik meg.
+* A **leggyakoribb webszolgáltatás-hívások** megjelenítik az első négy olyan webszolgáltatást, amelyek a terv alapján felszámított hívásokat tesznek elérhetővé.
+* A **Top Web Services by számítási óra** megjeleníti az első négy olyan webszolgáltatást, amely a csomaggal felszámított számítási erőforrásokat használja.
 
-## <a name="manage-classic-web-services"></a>A klasszikus webszolgáltatások kezelése
+## <a name="manage-classic-web-services"></a>Klasszikus webszolgáltatások kezelése
 > [!NOTE]
-> Ebben a szakaszban a klasszikus webszolgáltatások esetében az Azure Machine Learning webszolgáltatások portálján kezelése történik. A Machine Learning Studio és az Azure Portalon a klasszikus webszolgáltatások kezelésével kapcsolatban további információkért lásd: [egy Azure Machine Learning Studio-munkaterület kezelése](manage-workspace.md).
+> Az ebben a szakaszban ismertetett eljárások a klasszikus webszolgáltatások Azure Machine Learning webszolgáltatások portálon történő kezeléséhez szükségesek. A klasszikus webszolgáltatások a Machine Learning Studio (klasszikus) és a Azure Portal használatával történő kezelésével kapcsolatos információkért lásd: [Azure Machine learning Studio (klasszikus) munkaterületek kezelése](manage-workspace.md).
 > 
 > 
 
-A klasszikus webszolgáltatások kezelése:
+A klasszikus webszolgáltatások kezeléséhez:
 
-1. Jelentkezzen be a [a Microsoft Azure Machine Learning webszolgáltatások](https://services.azureml.net/quickstart) az Microsoft Azure portal-fiók – használja az Azure-előfizetéssel társított fiókot.
-2. Kattintson a menü **klasszikus webszolgáltatások**.
+1. Jelentkezzen be a [Microsoft Azure Machine learning webszolgáltatások](https://services.azureml.net/quickstart) portálra a Microsoft Azure-fiók használatával – használja az Azure-előfizetéshez társított fiókot.
+2. A menüben kattintson a **klasszikus webes szolgáltatások**elemre.
 
-Klasszikus webszolgáltatás kezeléséhez kattintson **klasszikus webszolgáltatások**. A klasszikus webszolgáltatások oldaláról a következőket teheti:
+A klasszikus webszolgáltatás kezeléséhez kattintson a **klasszikus webszolgáltatások**lehetőségre. A klasszikus webszolgáltatások oldalon a következőket teheti:
 
-* Kattintson a web service kapcsolódó végpontok megtekintéséhez.
+* Kattintson a webszolgáltatásra a társított végpontok megtekintéséhez.
 * Webszolgáltatás törlése.
 
-Ha Ön kezeli a klasszikus webszolgáltatások, kezelheti a végpontok mindegyike külön-külön. Amikor egy webszolgáltatás, a webszolgáltatások lapon kattint, megnyílik a szolgáltatáshoz tartozó végpontok listáját. 
+Klasszikus webszolgáltatások kezelésekor a végpontok külön kezelhetők. Ha a webszolgáltatások oldalon rákattint egy webszolgáltatásra, megnyílik a szolgáltatáshoz társított végpontok listája. 
 
-A klasszikus webszolgáltatás végpont lapon hozzáadhat és a szolgáltatás a végpontok törlése. Végpontok hozzáadásával kapcsolatos további információkért lásd: [végpontok létrehozása](create-endpoint.md).
+A klasszikus webszolgáltatás-végpont lapon hozzáadhat és törölhet végpontokat a szolgáltatásban. A végpontok hozzáadásával kapcsolatos további információkért lásd: [végpontok létrehozása](create-endpoint.md).
 
-Kattintson a végpontok a web service gyors útmutató lap megnyitásához. A rövid útmutató lapon kétféle menü, amelyek lehetővé teszik, hogy a webszolgáltatás kezelése:
+Kattintson az egyik végpontra a webszolgáltatás rövid útmutató lapjának megnyitásához. A rövid útmutató lapon két lehetőség közül választhat, amelyek lehetővé teszik a webszolgáltatás kezelését:
 
-* **IRÁNYÍTÓPULT** – lehetővé teszi a webes szolgáltatás használati adatok megtekintéséhez.
-* **KONFIGURÁLÁS** – lehetővé teszi, hogy adja hozzá a leíró szöveg hibanaplózás kapcsolhatja be és ki, a kulcsot a Web service társított storage-fiók frissítéséhez és engedélyezését és letiltását mintaadatok.
+* **Irányítópult** – lehetővé teszi a webszolgáltatás használatának megtekintését.
+* **Konfigurálás** – lehetővé teszi a leíró szöveg hozzáadását, a hibák naplózásának bekapcsolását és kikapcsolását, a webszolgáltatáshoz társított Storage-fiók kulcsának frissítését, valamint a mintaadatok engedélyezését és letiltását.
 
-### <a name="monitoring-how-the-web-service-is-being-used"></a>A web service használatának figyelése
-Kattintson a **IRÁNYÍTÓPULT** fülre.
+### <a name="monitoring-how-the-web-service-is-being-used"></a>A webszolgáltatás használatának figyelése
+Kattintson az **irányítópult** fülre.
 
-Az irányítópulton megtekintheti a webes szolgáltatás teljes használatának egy időszakon belül. Az időszak megtekintéséhez a jobb felső sarokban a használati diagramot a időszak legördülő menüből kiválaszthatja. Az irányítópult a következő információkat jelenít meg:
+Az irányítópulton megtekintheti a webszolgáltatás általános használatát egy adott időszakban. A használati diagramok jobb felső sarkában található időszak legördülő menüből kiválaszthatja a megtekinteni kívánt időszakot. Az irányítópult az alábbi információkat jeleníti meg:
 
-* **Kérelmek időalapú** kérések száma lépés grafikonon jeleníti meg a kijelölt időszakra. Ha használat kiugrások azonosítása segíthet.
-* **Kérés-válasz kérelmek** a szolgáltatás megkapta a kijelölt időszak és ezek közül hány sikertelen kérés-válasz hívások teljes számát jeleníti meg.
-* **Átlagos kérelem-válasz számítási idő** átlagát a fogadott kérések végrehajtásához szükséges időt jeleníti meg.
-* **Batch-kérelmek** a szolgáltatás megkapta a kijelölt időszak és ezek közül hány sikertelen kérések összesített számát jeleníti meg.
-* **Átlagos késés feladat** átlagát a fogadott kérések végrehajtásához szükséges időt jeleníti meg.
-* **Hibák** bekövetkezett hibák összesített számát jeleníti meg a webszolgáltatás-hívások.
-* **Költségek Services** jeleníti meg a szolgáltatáshoz társított a számlázási csomag díjai.
+* Az **idő múlásával** a kérések száma a kiválasztott időszakra vonatkozó kérelmek számának gráfját jeleníti meg. Segít azonosítani, hogy észlelt-e tüskéket a használat során.
+* A **kérelem-válasz kérelmek** megjelenítik a szolgáltatás által a kiválasztott időszakban fogadott kérelmek és válaszok számát, valamint azt, hogy hány sikertelen volt.
+* A **kérések átlagos száma – a válasz számítási ideje** a fogadott kérelmek végrehajtásához szükséges idő átlagát jeleníti meg.
+* A **Batch-kérelmek** azon kötegelt kérelmek teljes számát jelenítik meg, amelyeket a szolgáltatás a kiválasztott időszakban fogadott el, és hány sikertelen volt.
+* A **feladatok átlagos késése** a fogadott kérelmek végrehajtásához szükséges idő átlagát jeleníti meg.
+* A **hibák** a webszolgáltatásra irányuló hívásokban történt hibák összesített számát jelenítik meg.
+* A **szolgáltatások költségei** a szolgáltatáshoz társított számlázási csomag díjait jelenítik meg.
 
-### <a name="configuring-the-web-service"></a>A webszolgáltatás konfigurálása
-Kattintson a **KONFIGURÁLÁSA** menüpont.
+### <a name="configuring-the-web-service"></a>Webszolgáltatás konfigurálása
+Kattintson a **configure (Konfigurálás** ) menüpontra.
 
-Az alábbi tulajdonságok frissíthetők:
+A következő tulajdonságokat frissítheti:
 
-* **Leírás** lehetővé teszi, hogy adja meg a webszolgáltatás leírását. Leírás megadása nem kötelező kitölteni.
-* **Naplózás** lehetővé teszi, hogy engedélyezi vagy letiltja a naplózást a végpont a hiba. A naplózás további információkért lásd: Enable [Machine Learning webszolgáltatások naplózása](web-services-logging.md).
-* **Engedélyezze a mintaadatok** lehetővé teszi, hogy adja meg a mintaadatokat, amellyel tesztelheti a kérés-válasz szolgáltatás. Ha a webszolgáltatás a Machine Learning Studióban létrehozott, a mintaadatok átveszi a rendszer az adatokat a használt a modell betanításához. Ha a szolgáltatás programozott módon létrehozott, az adatok a példaadatokat a JSON-csomag részeként megadott származik.
+* A **Leírás** lehetővé teszi a webszolgáltatás leírásának megadását. A leírás mező kitöltése kötelező.
+* A **naplózással** engedélyezheti vagy letilthatja a hibák naplózását a végponton. További információ a naplózásról: [Machine learning webszolgáltatások naplózásának](web-services-logging.md)engedélyezése.
+* A **mintaadatok engedélyezése** lehetővé teszi a kérelem-válasz szolgáltatás teszteléséhez használható mintaadatok megadását. Ha a webszolgáltatást Machine Learning Studioban (klasszikus) hozta létre, a mintaadatok a modell betanításához használt adatokból származnak. Ha programozott módon hozta létre a szolgáltatást, az adatok a JSON-csomag részeként megadott adatokból származnak.
 
 

@@ -8,12 +8,12 @@ ms.date: 06/13/2019
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 5fa13f209d6f4df0ebd531f803e75cdb657abf5c
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 731abdde2160c16123ed648b5e552e9e62378438
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73163125"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73494007"
 ---
 # <a name="tutorial-create-and-deploy-custom-iot-edge-modules"></a>Oktatóanyag: egyéni IoT Edge-modulok létrehozása és üzembe helyezése
 
@@ -172,7 +172,7 @@ Ezután hozzáadjuk az útválasztó modult a megoldáshoz. Az útválasztó mod
 4. Ha a rendszer kéri a Docker-rendszerkép tárházát, használja a Machine learning-munkaterületen a beállításjegyzéket (a beállításjegyzéket a *telepítési. template. JSON* fájl registryCredentials csomópontjában találja meg). Ez az érték a beállításjegyzék teljesen minősített címe, például **\<a beállításjegyzék\>. azurecr.IO/turbofanrouter**.
 
     > [!NOTE]
-    > Ebben a cikkben a Azure Machine Learning szolgáltatás munkaterülete által létrehozott Azure Container Registry használjuk, amelyet az osztályozó betanításához és üzembe helyezéséhez használtunk. Ez csupán kényelmi megoldás. Létrehoztunk egy új tároló-beállításjegyzéket, és ott közzétettük a modulokat.
+    > Ebben a cikkben a Azure Machine Learning munkaterület által létrehozott Azure Container Registry használjuk, amelyet az osztályozó betanításához és üzembe helyezéséhez használtunk. Ez csupán kényelmi megoldás. Létrehoztunk egy új tároló-beállításjegyzéket, és ott közzétettük a modulokat.
 
 5. Nyisson meg egy új terminál-ablakot a Visual Studio Code-ban ( > **terminál** **megtekintése** ), és másolja a fájlokat a modulok könyvtárából.
 
@@ -752,7 +752,7 @@ Most, hogy elvégezte a konfigurációs módosításokat, készen állunk a rend
 
 A létrehozás sikeres befejezését követően a Azure Portal segítségével áttekintheti a közzétett modulokat.
 
-1. A Azure Portal navigáljon a Azure Machine Learning szolgáltatás munkaterületére, és kattintson a **beállításjegyzékre**mutató hivatkozásra.
+1. A Azure Portal navigáljon a Azure Machine Learning munkaterületre, és kattintson a **beállításjegyzékre**mutató hivatkozásra.
 
     ![A Machine learning szolgáltatás munkaterületén navigáljon a beállításjegyzékbe](media/tutorial-machine-learning-edge-06-custom-modules/follow-registry-link.png)
 
@@ -821,7 +821,7 @@ Ha bejelentkezik a IoT Edge eszközbe, a modulok állapotával kapcsolatban jó 
    sudo docker exec -it avroFileWriter bash
    ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a cikkben egy IoT Edge megoldást hoztunk létre a Visual Studio Code-ban három modullal, egy osztályozó, egy útválasztóval és egy file Writer/Uploader fájllal. Az útvonalakat úgy állítottuk be, hogy a modulok kommunikáljanak egymással a peremhálózati eszközön, módosította a peremhálózati eszköz konfigurációját, és frissítette a Dockerfiles, hogy telepítse a függőségeket, és hozzáadja a kötési csatlakoztatásokat a modulok tárolóhoz. A következő lépésben frissítettük a IoT Hub konfigurációját, hogy az üzeneteket a típus és a fájlfeltöltés kezelésére használjuk. Minden esetben a modulokat a IoT Edge eszközre telepítettük, és gondoskodtak arról, hogy a modulok megfelelően futnak.
 

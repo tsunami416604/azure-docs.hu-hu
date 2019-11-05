@@ -1,24 +1,24 @@
 ---
 title: 'Adatdarabolás: modul-hivatkozás'
-titleSuffix: Azure Machine Learning service
-description: Megtudhatja, hogyan oszthat meg egy adatkészletet két különálló készletre a Azure Machine Learning szolgáltatásban az adatfelosztási modul használatával.
+titleSuffix: Azure Machine Learning
+description: Megtudhatja, hogyan oszthat meg egy adatkészletet két különálló készletre a Azure Machine Learning az adatfelosztási modul használatával.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
-ms.date: 05/02/2019
-ms.openlocfilehash: 3fa6b61b1b1761756339d6a7f05c74eb4a968777
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.date: 10/22/2019
+ms.openlocfilehash: 0f6ba3c608c90d8634309a1843dc803b98be3d6d
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72692653"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73492644"
 ---
 # <a name="split-data-module"></a>Adategység felosztása
 
-Ez a cikk a Azure Machine Learning szolgáltatás vizuális felületének (előzetes verzió) modulját ismerteti.
+Ez a cikk a Azure Machine Learning Designer (előzetes verzió) modulját ismerteti.
 
 Ezzel a modullal két különálló készletre oszthat egy adatkészletet.
 
@@ -30,7 +30,7 @@ Ez a modul különösen akkor hasznos, ha a képzési és tesztelési csoportokb
 > A felosztási mód kiválasztása előtt olvassa el az összes lehetőséget, hogy meghatározza a szükséges felosztás típusát.
 > Ha megváltoztatja a felosztási módot, az összes többi beállítás alaphelyzetbe állítható.
 
-1. Adja hozzá az **Adatfelosztási** modult a folyamathoz az illesztőfelületen. Ez a modul az **adatátalakítás**alatt, a **minta és a felosztás** kategóriában található.
+1. Adja hozzá a **feldarabolt** adatmodult a folyamathoz a tervezőben. Ez a modul az **adatátalakítás**alatt, a **minta és a felosztás** kategóriában található.
 
 2. **Felosztási mód**: válasszon az alábbi módok közül, attól függően, hogy milyen típusú adattípussal rendelkezik, és hogyan szeretné osztani. Az egyes felosztási módok különböző beállításokkal rendelkeznek. Részletes útmutatást és példákat a következő témakörökben talál. 
 
@@ -45,7 +45,8 @@ Ez a modul különösen akkor hasznos, ha a képzési és tesztelési csoportokb
     - **Relatív kifejezés felosztása**: akkor használja ezt a beállítást, ha egy feltételt egy Number oszlopra kíván alkalmazni. A szám lehet dátum/idő mező, az Age vagy a dollár összegét tartalmazó oszlop, vagy akár egy százalék is. Előfordulhat például, hogy az adatkészletet az elemek díjszabása alapján szeretné felosztani, a személyeket korcsoport szerint csoportosítani, vagy az adatokat egy naptári dátum alapján elkülönítve.
 
 ### <a name="split-rows"></a>Sorok felosztása
-1.  Adja hozzá az [Adatfelosztási](./split-data.md) modult a folyamathoz a csatolón, és kapcsolódjon a felosztani kívánt adatkészlethez.
+
+1.  Adja hozzá a [feldarabolt](./split-data.md) adatmodult a folyamathoz a tervezőben, és kapcsolódjon a felosztani kívánt adatkészlethez.
   
 2.  A **felosztási mód**beállításnál válassza a **sorok felosztása**lehetőséget. 
 
@@ -101,7 +102,7 @@ Ez a modul különösen akkor hasznos, ha a képzési és tesztelési csoportokb
 
     - A következő operátorok támogatottak: `<`, `>`, `<=`, `>=`, `==`, `!=`
 
-    - @No__t_0 és `)` használatával nem csoportosíthatjuk a műveleteket.
+    - `(` és `)`használatával nem csoportosíthatjuk a műveleteket.
 
  - Karakterlánc-oszlop: 
     - A következő operátorok támogatottak: `==`, `!=`
@@ -112,6 +113,6 @@ Ez a modul különösen akkor hasznos, ha a képzési és tesztelési csoportokb
 
     A kifejezés két sorból osztja el az adatkészletet: a feltételnek megfelelő értékeket tartalmazó sorok és az összes többi sor.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Tekintse [meg Azure Machine learning szolgáltatás számára elérhető modulok készletét](module-reference.md) . 
+Tekintse [meg a Azure Machine learning elérhető modulok készletét](module-reference.md) . 

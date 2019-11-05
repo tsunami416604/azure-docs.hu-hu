@@ -1,7 +1,7 @@
 ---
 title: Az Azure automatizált ML-felületének használata & üzembe helyezési modelljeinek betanításához
 titleSuffix: Azure Machine Learning
-description: Automatikus gépi tanulási kísérletek létrehozása, kezelése és üzembe helyezése Azure Machine Learning munkaterület kezdőlapján (előzetes verzió).
+description: Gépi tanulási kísérletek létrehozása, kezelése és üzembe helyezése Azure Machine Learning Studióban.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,17 +10,18 @@ ms.author: nibaccam
 author: tsikiksr
 manager: cgronlun
 ms.reviewer: nibaccam
-ms.date: 09/09/2019
-ms.openlocfilehash: 2de24d36d78ebf5edf6ef65471e85b53d954486e
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
-ms.translationtype: MT
+ms.date: 11/04/2019
+ms.openlocfilehash: 05bae18d35eafc47eddc7c1450eb06af5bbe5562
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72900749"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73497250"
 ---
-# <a name="create-explore-and-deploy-automated-machine-learning-experiments-with-azure-machine-learnings-workspace-landing-page-preview"></a>Automatikus gépi tanulási kísérletek létrehozása, feltárása és üzembe helyezése Azure Machine Learning munkaterületének kezdőlapján (előzetes verzió)
+# <a name="create-explore-and-deploy-automated-machine-learning-experiments-with-azure-machine-learning-studio"></a>Gépi tanulási kísérletek létrehozása, megismerése és üzembe helyezése Azure Machine Learning Studióval
+[!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-enterprise-sku.md)]
 
- Ebből a cikkből megtudhatja, hogyan hozhat létre, vizsgálhat és helyezhet üzembe automatizált gépi tanulási kísérleteket a Azure Machine Learning munkaterület-kezdőlapján anélkül, hogy egyetlen sor kódot kellene létrehoznia. Az automatizált gépi tanulás automatizálja az adott adataihoz használandó legjobb algoritmus kiválasztásának folyamatát, így gyorsan létrehozhat egy gépi tanulási modellt. [További információ az automatizált gépi tanulásról](concept-automated-ml.md).
+ Ebből a cikkből megtudhatja, hogyan hozhat létre, vizsgálhat és helyezhet üzembe automatizált gépi tanulási kísérleteket Azure Machine Learning Studióban, egyetlen sor kód nélkül. Az automatizált gépi tanulás automatizálja az adott adataihoz használandó legjobb algoritmus kiválasztásának folyamatát, így gyorsan létrehozhat egy gépi tanulási modellt. [További információ az automatizált gépi tanulásról](concept-automated-ml.md).
 
  Ha több kód alapú felhasználói élményt szeretne, a Pythonban az [Azure Machine learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)-val is [konfigurálhatja az automatizált gépi tanulási kísérleteket](how-to-configure-auto-train.md) .
 
@@ -28,55 +29,38 @@ ms.locfileid: "72900749"
 
 * Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy ingyenes fiókot. Próbálja ki a [Azure Machine learning ingyenes vagy fizetős verzióját](https://aka.ms/AMLFree) még ma.
 
-* Egy Azure Machine Learning-munkaterület. Lásd: [Azure Machine learning munkaterület létrehozása](how-to-manage-workspace.md).
+* Egy **nagyvállalati kiadású**Azure Machine learning-munkaterület. Lásd: [Azure Machine learning munkaterület létrehozása](how-to-manage-workspace.md).  Ha egy meglévő munkaterületet nagyvállalati kiadásra szeretne frissíteni, tekintse meg [a frissítés az Enterprise Edition](how-to-manage-workspace.md#upgrade)rendszerre című
 
 ## <a name="get-started"></a>Az első lépések
 
-1. Jelentkezzen be [a munkaterület](https://ml.azure.com/workspaceportal/)kezdőlapján. 
+1. Jelentkezzen be [Azure Machine learning studióba](https://ml.azure.com). 
 
 1. Válassza ki az előfizetést és a munkaterületet. 
 
 1. Navigáljon a bal oldali panelre. A **Szerző** szakaszban válassza az **automatikus ml** lehetőséget.
 
-[![Azure Portal navigációs ablak](media/how-to-create-portal-experiments/nav-pane.png)](media/how-to-create-portal-experiments/nav-pane-expanded.png)
+[![Azure Machine Learning Studio navigációs panelje](media/how-to-create-portal-experiments/nav-pane.png)](media/how-to-create-portal-experiments/nav-pane-expanded.png)
 
- Ha első alkalommal végez kísérleteket, megjelenik a **Bevezetés** képernyő. 
+ Ha első alkalommal végez kísérleteket, egy üres lista jelenik meg, amely a dokumentációra mutató hivatkozásokat tartalmaz. 
 
-Ellenkező esetben az **automatikus gépi tanulási** irányítópultot láthatja az összes automatizált gépi tanulási kísérlet áttekintésével, beleértve azokat is, amelyeket az SDK-val hoztak létre. Itt szűrheti és megtekintheti a futtatások dátum, kísérlet neve és futás állapota alapján.
+Ellenkező esetben megjelenik a legújabb gépi tanulási kísérletek listája, beleértve azokat is, amelyeket az SDK-val hoztak létre. 
 
 ## <a name="create-and-run-experiment"></a>Kísérlet létrehozása és futtatása
 
-1. Válassza a **kísérlet létrehozása** és az űrlap feltöltése lehetőséget.
+1. Válassza a **+ kísérlet létrehozása** lehetőséget, és töltse fel az űrlapot.
 
-1. Adjon meg egy egyedi kísérlet nevét.
-
-1. Válassza ki az adatprofilkészítési és-betanítási feladatokhoz tartozó számítási feladatot. A meglévő számítások listája elérhető a legördülő menüben. Új számítás létrehozásához kövesse a 4. lépés utasításait.
-
-1. Válassza az **új számítás létrehozása** lehetőséget a számítási környezet konfigurálásához a kísérlethez.
-
-    Mező|Leírás
-    ---|---
-    Számítási név| Adjon meg egy egyedi nevet, amely azonosítja a számítási környezetet.
-    Virtuális gép mérete| Válassza ki a virtuális gép méretét a számítási feladatokhoz.
-    Csomópontok minimális/maximális száma (speciális beállításokban)| A profilhoz legalább 1 csomópontot kell megadnia. Adja meg a számítási csomópontok maximális számát. Az alapértelmezett érték 6 csomópont a pénzmosás-számításokhoz.
-    
-    Kattintson a **Létrehozás** gombra. Egy új számítás létrehozása néhány percet is igénybe vehet.
-
-    >[!NOTE]
-    > A számítási név azt jelzi, hogy a kiválasztott számítási/létrehozási *profil engedélyezve*van-e. (További részletekért lásd az [adatok profilkészítési](#profile) szakaszát).
-
-1. Válasszon ki egy adatkészletet a tárolóból, vagy hozzon létre egyet egy fájlnak a helyi számítógépről a tárolóba való feltöltésével. A nyilvános előzetes verzió csak a helyi fájlok feltöltését és az Azure Blob Storage-fiókokat támogatja.
+1. Válasszon ki egy adatkészletet a tárolóból, vagy hozzon létre egy új adatkészletet. Az adatkészletek helyi fájlokból, webes URL-címekből, adattárolóból vagy Azure Open-adatkészletből hozhatók létre. 
 
     >[!Important]
     > A betanítási adatgyűjtésre vonatkozó követelmények:
     >* Az adatokat táblázatos formában kell megadni.
     >* A megjósolni kívánt értéknek (célként megadott oszlopnak) jelen kell lennie az adatsorokban.
 
-    1. Ha új adatkészletet szeretne létrehozni a helyi számítási fájlban lévő fájlból, válassza a **Tallózás** lehetőséget, majd válassza ki a fájlt. 
+    1. Ha új adatkészletet szeretne létrehozni a helyi számítógépen található fájlból, válassza a **Tallózás** lehetőséget, majd válassza ki a fájlt. 
 
     1. Adjon egyedi nevet az adatkészletnek, és adjon meg egy opcionális leírást. 
 
-    1. A **tovább** gombra kattintva feltöltheti a munkaterülettel automatikusan létrehozott alapértelmezett tárolóba, vagy kiválaszthat egy, a kísérlethez használni kívánt tárolót. 
+    1. Kattintson a **tovább**gombra, hogy feltöltse a munkaterülettel automatikusan létrehozott alapértelmezett tárolóba, vagy válasszon egy, a kísérlethez használni kívánt tárolót. 
 
     1. A pontosság érdekében tekintse át a **beállításokat és az előnézet** űrlapot. Az űrlap intelligensen van feltöltve a fájl típusa alapján. 
 
@@ -94,25 +78,51 @@ Ellenkező esetben az **automatikus gépi tanulási** irányítópultot láthatj
             
         Válassza a **tovább lehetőséget.**
 
-1. Válassza ki a betanítási feladatok típusát: besorolás, regresszió vagy előrejelzés.
+    1. A **részletek megerősítése** űrlap az **alapszintű információ** és **beállítások és az előnézet** űrlapon korábban feltöltött információk összegzése. Lehetősége van arra is, hogy az adatkészletet egy profilkészítést engedélyező számítási feladaton keresztül profilba lehessen venni. További információ az [adatprofilkészítésről](#profile).
 
-1. Válassza ki a cél oszlopot; Ez az az oszlop, amelynek a előrejelzéseit el szeretné végezni.
+        Kattintson a **Tovább** gombra.
+1. Válassza ki az újonnan létrehozott adatkészletet, amint megjelenik. Emellett megtekintheti az adatkészlet és a minta statisztikáinak előnézetét is. 
 
-1. Előrejelzés:
-    1. Válassza ki az Time oszlopot: ez az oszlop a használni kívánt időértékeket tartalmazza.
+1. A **Run (Futtatás** ) űrlapon adja meg a kísérlet egyedi nevét.
 
-    1. Előrejelzési horizont kiválasztása: azt jelzi, hogy a modell hány időegységet (perc/óra/nap/hét/hónap/év) fog tudni a jövőben előre jelezni. Minél több modellre van szükség a jövőbeli előrejelzéshez, annál kevésbé pontos lesz. [További információ az előrejelzési és előrejelzési horizontról](how-to-auto-train-forecast.md).
+1. Válasszon ki egy cél oszlopot; Ez az az oszlop, amelynek a előrejelzéseit el szeretné végezni.
 
-1. Választható Speciális beállítások: további beállítások, amelyekkel hatékonyabban vezérelheti a betanítási feladatot. Ellenkező esetben a rendszer az alapértelmezett értékeket a kísérletezés és az adatértékek alapján alkalmazza. 
+1. Válassza ki az adatprofilkészítési és-betanítási feladatokhoz tartozó számítási feladatot. A meglévő számítások listája elérhető a legördülő menüben. Új számítás létrehozásához kövesse a 7. lépésben szereplő utasításokat.
 
-    Speciális beállítások|Leírás
+1. Válassza az **új számítás létrehozása** lehetőséget a számítási környezet konfigurálásához a kísérlethez.
+
+    Mező|Leírás
+    ---|---
+    Számítási név| Adjon meg egy egyedi nevet, amely azonosítja a számítási környezetet.
+    Virtuális gép mérete| Válassza ki a virtuális gép méretét a számítási feladatokhoz.
+    Csomópontok minimális/maximális száma (speciális beállításokban)| A profilhoz legalább 1 csomópontot kell megadnia. Adja meg a számítási csomópontok maximális számát. Az alapértelmezett érték 6 csomópont a pénzmosás-számításokhoz.
+    
+    Kattintson a **Létrehozás** gombra. Egy új számítás létrehozása néhány percet is igénybe vehet.
+
+    >[!NOTE]
+    > A számítási név azt jelzi, hogy a kiválasztott számítási/létrehozási *profil engedélyezve*van-e. (További részletekért lásd az [adatok profilkészítési](#profile) szakaszát).
+
+    Kattintson a **Tovább** gombra.
+
+1. A feladattípus **és beállítások** űrlapon válassza ki a feladattípust: besorolás, regresszió vagy előrejelzés. 
+
+    1. A besoroláshoz is engedélyezheti a mély tanulást, amelyet a Text featurizations is használhat.
+
+    1. Előrejelzés:
+        1. Válassza ki az Time oszlopot: ez az oszlop a használni kívánt időértékeket tartalmazza.
+
+        1. Előrejelzési horizont kiválasztása: azt jelzi, hogy a modell hány időegységet (perc/óra/nap/hét/hónap/év) fog tudni a jövőben előre jelezni. Minél több modellre van szükség a jövőbeli előrejelzéshez, annál kevésbé pontos lesz. [További információ az előrejelzési és előrejelzési horizontról](how-to-auto-train-forecast.md).
+
+1. Választható Hozzáadási konfigurációk: további beállítások, amelyekkel hatékonyabban vezérelheti a betanítási feladatot. Ellenkező esetben a rendszer az alapértelmezett értékeket a kísérletezés és az adatértékek alapján alkalmazza. 
+
+    További konfigurációk|Leírás
     ------|------
     Elsődleges metrika| A modell pontozásához használt fő metrika. [További információ a modell metrikáinak használatáról](how-to-configure-auto-train.md#explore-model-metrics).
-    Kilépési feltételek| Ha bármelyik feltétel teljesül, a betanítási feladatok leállnak. <br> *Betanítási feladatok időpontja (perc)* : meddig lehet futtatni a betanítási feladatot.  <br> *Ismétlések maximális száma*: a betanítási feladatokban a folyamatok maximális száma (iteráció). A feladattípus nem fog futni a megadott számú iterációnál. <br> *Metrika pontszámának küszöbértéke*: minimális metrikai pontszám minden folyamathoz. Ez biztosítja, hogy ha egy meghatározott cél mérőszámot szeretne elérni, a szükségesnél több időt sem kell megadnia a betanítási feladatra.
-    Előfeldolgozás| Ezzel a beállítással engedélyezheti vagy letilthatja az automatikus gépi tanulás által végzett előfeldolgozást. Az előfeldolgozás magában foglalja az automatikus adattisztítást, előkészítést és átalakítást szintetikus funkciók létrehozásához. [További információ az előfeldolgozásról](#preprocess).
-    Ellenőrzés| Válassza ki a betanítási feladatokban használni kívánt több ellenőrzési lehetőséget. [További információ a Cross Validation](how-to-configure-auto-train.md)szolgáltatásról.
-    Párhuzamosság| Válassza ki a multi-core számítások használatakor használni kívánt multi-core korlátozásokat.
+    Automatikus featurization| Ezzel a beállítással engedélyezheti vagy letilthatja az automatikus gépi tanulás által végzett előfeldolgozást. Az előfeldolgozás magában foglalja az automatikus adattisztítást, előkészítést és átalakítást szintetikus funkciók létrehozásához. [További információ az előfeldolgozásról](#preprocess).
     Letiltott algoritmus| Válassza ki azokat az algoritmusokat, amelyeket ki szeretne zárni a betanítási feladatokból.
+    Kilépési feltétel| Ha bármelyik feltétel teljesül, a betanítási feladatok leállnak. <br> *Képzési idő (óra)* : meddig kell futtatni a betanítási feladatot. <br> *Metrika pontszámának küszöbértéke*: minimális metrikai pontszám minden folyamathoz. Ez biztosítja, hogy ha egy meghatározott cél mérőszámot szeretne elérni, a szükségesnél több időt sem kell megadnia a betanítási feladatra.
+    Ellenőrzés| Válassza ki a betanítási feladatokban használni kívánt több ellenőrzési lehetőséget. [További információ a Cross Validation](how-to-configure-auto-train.md)szolgáltatásról.
+    Egyidejűség| *Maximális párhuzamos ismétlések*: a betanítási feladatokban a folyamatok maximális száma (iteráció). A feladattípus nem fog futni a megadott számú iterációnál. <br> *Magok maximális száma iterációban*: válassza ki a multi-core számítások használatakor használni kívánt multi-core korlátozásokat.
 
 <a name="profile"></a>
 
@@ -128,9 +138,9 @@ Statisztika|Leírás
 Szolgáltatás| Az összesíteni kívánt oszlop neve.
 Profil| Beágyazott vizualizáció a következtetett típus alapján. Például a karakterláncok, a logikai értékek és a dátumok értékének számít, míg a tizedesjegyek (numerikus értékek) közelítő hisztogramtal rendelkeznek. Ez lehetővé teszi az adateloszlás gyors megismerését.
 Típus eloszlása| Az oszlopokban lévő típusok soron belüli értékeinek száma. A nullák a saját típusúak, így ez a vizualizáció hasznos lehet a páratlan vagy hiányzó értékek észleléséhez.
-Type (Típus)|Az oszlop késleltetett típusa. A lehetséges értékek a következők: karakterláncok, logikai értékek, dátumok és tizedesjegyek.
+Típus|Az oszlop késleltetett típusa. A lehetséges értékek a következők: karakterláncok, logikai értékek, dátumok és tizedesjegyek.
 Min| Az oszlop minimális értéke. Az üres bejegyzések olyan szolgáltatások esetében jelennek meg, amelyeknek a típusa nem rendelkezik a bennük rejlő sorrendtel (például logikai értékekkel).
-Maximum| Az oszlop maximális értéke. 
+Max| Az oszlop maximális értéke. 
 Mennyiség| Az oszlop hiányzó és nem hiányzó bejegyzéseinek száma.
 Hiányzó darabszám| A hiányzó oszlop bejegyzéseinek száma. Az üres karakterláncok és hibák értékekként vannak kezelve, így nem járulnak hozzá a "nem hiányzó darabszám" értékhez.
 Quantiles| Az egyes quantile megközelített értékek biztosítják az adatok terjesztésének érzékét.
@@ -160,19 +170,22 @@ A kísérletek konfigurálásakor engedélyezheti a speciális beállítást `Pr
 
 ## <a name="run-experiment-and-view-results"></a>Kísérlet futtatása és eredmények megtekintése
 
-A kísérlet futtatásához kattintson a **Start** gombra. A kísérlet előkészítési folyamata néhány percet vesz igénybe.
+A kísérlet futtatásához kattintson a **Start** gombra. A kísérlet előkészítési folyamata akár 10 percet is igénybe vehet. A betanítási feladatok további 2-3 percet is igénybe vehetnek az egyes folyamatok futtatásának befejezéséhez.
 
 ### <a name="view-experiment-details"></a>Kísérlet részleteinek megtekintése
 
-A kísérlet előkészítési fázisának elvégzése után megjelenik a Futtatás részletei képernyő, és megkezdődik a feltöltés. Ez a képernyő teljes listát biztosít a létrehozott modellekről. Alapértelmezés szerint a kiválasztott metrika alapján a legmagasabb pontszám a lista tetején található. Mivel a betanítási feladatok további modelleket próbálnak ki, a rendszer hozzáadja őket az iterációs listához és a diagramhoz. Az iterációs diagram használatával gyorsan összehasonlíthatja az eddig létrehozott modellek metrikáit.
+>[!NOTE]
+> A Futtatás állapotának megtekintéséhez válassza a rendszeres **frissítés** lehetőséget. 
 
-A betanítási feladatok eltarthat egy ideig, amíg az egyes folyamatok futni tudnak.
+Megnyílik a **Futtatás részletei** képernyő a **részletek** lapon. Ezen a képernyőn látható a kísérlet futtatásának összegzése, beleértve a **futtatási állapotot**is. 
+
+A **models (modellek** ) lapon a metrika pontszám alapján rendezett modellek listája látható. Alapértelmezés szerint a kiválasztott metrika alapján a legmagasabb pontszám a lista tetején található. Mivel a betanítási feladatok további modelleket próbálnak ki, azok hozzáadódnak a listához. Ezzel a lépéssel gyorsan összehasonlíthatja az eddig létrehozott modellek metrikáit.
 
 [![Futtatás részletei irányítópult](media/how-to-create-portal-experiments/run-details.png)](media/how-to-create-portal-experiments/run-details-expanded.png#lightbox)
 
 ### <a name="view-training-run-details"></a>Képzések futtatási részleteinek megtekintése
 
-A kimeneti modellek részletezésével megtekintheti a képzések futtatásának részleteit, például a teljesítménymutatókat és a terjesztési diagramokat. [További információ a diagramokról](how-to-understand-automated-ml.md).
+Az összes befejezett modell részletezésével megtekintheti a képzések futtatásának részleteit, például a **modell részletei** lapon vagy a **vizualizációk** lapon lévő teljesítmény diagramokon található mérőszámok futtatása című témakört. További információ a [diagramokról](how-to-understand-automated-ml.md).
 
 [![iteráció részletei](media/how-to-create-portal-experiments/iteration-details.png)](media/how-to-create-portal-experiments/iteration-details-expanded.png)
 
@@ -184,30 +197,26 @@ Az automatikus ML a kód írása nélkül segíti a modell üzembe helyezését:
 
 1. Van néhány lehetőség a telepítéshez. 
 
-    + 1\. lehetőség: a legjobb modell üzembe helyezéséhez (az Ön által meghatározott metrikai feltételek alapján) válassza a legjobb modell telepítése lehetőséget a Futtatás részletei lapról.
+    + 1\. lehetőség: a legjobb modell üzembe helyezéséhez (az Ön által meghatározott metrikai feltételek alapján) válassza a legjobb modell telepítése lehetőséget a Részletek lapon.
 
-    + 2\. lehetőség: egy adott modell iterációjának üzembe helyezése ebből a kísérletből, a modell részletezése a Futtatás részleteit megjelenítő lap megnyitásához, majd válassza a modell üzembe helyezése lehetőséget.
+    + 2\. lehetőség: egy adott modell iterációjának üzembe helyezése ebből a kísérletből, részletezés a modellben a modell részletei lap megnyitásához, majd válassza a modell üzembe helyezése lehetőséget.
 
 1. Töltse ki a **modell üzembe helyezése** ablaktáblát.
 
-    Mező| Value (Díj)
+    Mező| Érték
     ----|----
     Központi telepítés neve| Adja meg a központi telepítés egyedi nevét.
     Központi telepítés leírása| Adja meg a leírását, hogy jobban azonosítható legyen a központi telepítés.
-    Pontozási parancsfájl| Saját pontozási fájl automatikusan generált vagy feltölthető. [További információ a pontozási parancsfájlról](how-to-deploy-and-where.md#script)
+    Pontozási parancsfájl| Saját pontozási fájl automatikusan generált vagy feltölthető. [További információ a pontozási szkriptről](how-to-deploy-and-where.md#script).
     Környezeti parancsfájl| Saját környezeti fájl automatikusan generált vagy feltölthető.
     >[!Important]
     > A fájlneveknek 32 karakternél rövidebbnek kell lenniük, és betűkkel kell kezdődnie és végződnie. Kötőjeleket, aláhúzásokat, pontokat és alfanumerikus elemeket tartalmazhat. Szóközök használata nem engedélyezett.
 
 1. Válassza az **Üzembe helyezés** lehetőséget. Az üzembe helyezés körülbelül 20 percet vesz igénybe.
 
-    A telepítés sikeres befejeződése után a következő üzenet jelenik meg.
-
-    ![A telepítés befejeződött](media/tutorial-1st-experiment-automated-ml/deploy-complete-status.png) 
-
 Most már rendelkezik egy olyan operatív webszolgáltatással, amely előrejelzéseket készít! Az előrejelzések teszteléséhez a szolgáltatást a [Power bi beépített Azure Machine learning-támogatásával](how-to-consume-web-service.md#consume-the-service-from-power-bi)lehet lekérdezni.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Próbálja ki a végpontok közötti [oktatóanyagot, amellyel létrehozhatja az első AUTOMATIZÁLT ml-kísérletet Azure Machine learning](tutorial-first-experiment-automated-ml.md)használatával. 
 * [További információ az automatikus gépi tanulásról és a](concept-automated-ml.md) Azure Machine Learningról.
