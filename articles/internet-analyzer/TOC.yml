@@ -9,7 +9,7 @@
     - name: Internet Analyzer-teszt létrehozása a portál használatával
       href: internet-analyzer-create-test-portal.md
     - name: Internet Analyzer-teszt létrehozása a parancssori felület használatával
-      herf: internet-analyzer-cli.md
+      href: internet-analyzer-cli.md
 - name: Útmutatók
   items:
     - name: Ügyfél beágyazása

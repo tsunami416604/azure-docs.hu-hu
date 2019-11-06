@@ -43,6 +43,8 @@
       items:
         - name: Árképzési szintek
           href: concepts-pricing-tiers.md
+        - name: Előre fizetés fenntartott kapacitásért
+          href: concept-reserved-pricing.md
         - name: Korlátok
           href: concepts-limits.md
     - name: Adathozzáférés és -biztonság

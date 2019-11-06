@@ -69,14 +69,6 @@
           href: application-gateway-ssl-policy-overview.md
         - name: A Key Vault használata
           href: key-vault-certs.md
-    - name: WAF
-      items:
-        - name: Web application firewall (Webalkalmazási tűzfal)
-          href: waf-overview.md
-        - name: WAF-konfiguráció
-          href: application-gateway-waf-configuration.md
-        - name: Egyéni szabályok
-          href: custom-waf-rules-overview.md
     - name: AKS bejövő forgalma
       href: ingress-controller-overview.md
     - name: Állapotfigyelés
@@ -245,8 +237,6 @@
           href: how-to-troubleshoot-application-gateway-session-affinity-issues.md
         - name: Hibás átjáróval kapcsolatos hibák (502)
           href: application-gateway-troubleshooting-502.md
-        - name: Webalkalmazási tűzfal (WAF)
-          href: web-application-firewall-troubleshoot.md
         - name: AKS bejövő forgalma
           href: ingress-controller-troubleshoot.md
         - name: Resource Health

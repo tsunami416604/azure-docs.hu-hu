@@ -42,7 +42,7 @@
     - name: Alkalmazás létrehozása
       items:
         - name: Felhasználói szándékok meghatározása
-          href: luis-quickstart-intents-only.md
+          href: tutorial-intents-only.md
         - name: A gyakori felhasználói adatok azonosítása előre összeállított modellekkel
           href: luis-tutorial-prebuilt-intents-entities.md
         - name: Hangulat lekérése a felhasználó által kimondott szövegekből
@@ -116,6 +116,7 @@
           displayName: roles
         - name: Szolgáltatások
           href: luis-concept-feature.md
+          displayName: 'descriptor, phrase list'
     - name: Előrejelzési pontszám
       href: luis-concept-prediction-score.md
     - name: Ajánlott eljárások

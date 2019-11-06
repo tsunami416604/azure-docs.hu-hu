@@ -49,8 +49,6 @@
           href: howto-connect-windowsiotcore.md
         - name: SensorTile.box eszköz előkészítése és csatlakoztatása
           href: howto-connect-sensortile.md
-        - name: RuuviTag eszköz előkészítése és csatlakoztatása
-          href: howto-connect-ruuvi-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
         - name: Eszközkapcsolatok monitorozása parancssor használatával
           href: howto-use-iotc-explorer.md
     - name: Eszközök kezelése
