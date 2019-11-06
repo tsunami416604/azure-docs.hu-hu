@@ -469,9 +469,6 @@
           href: change-feed-functions.md
     - name: Globálisan elosztott elemzés és mesterséges intelligencia
       items:
-        - name: Bevezetés
-          displayName: 'Apache Spark, spark'
-          href: spark-api-introduction.md
         - name: Elemzési használati esetek
           href: analytics-usecases.md
         - name: Elemzések – megoldásarchitektúrák
