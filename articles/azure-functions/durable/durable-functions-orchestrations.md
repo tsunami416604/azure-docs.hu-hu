@@ -9,12 +9,12 @@ ms.service: azure-functions
 ms.topic: overview
 ms.date: 09/08/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 82c4a27ac2491e668c1d99e2a14b870e82ec5665
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: 4e11070f4e766f83b0e7ead7757c675de3fef33f
+ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70935858"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73614778"
 ---
 # <a name="durable-orchestrations"></a>Tartós összeszerelések
 
@@ -34,8 +34,8 @@ Egy előkészítés minden *példánya* rendelkezik egy példány-azonosítóval
 Az alábbi szabályok a példányok azonosítóit tárgyalják:
 
 * A példány-azonosítónak 1 és 256 karakter közöttinek kell lennie.
-* A példány-azonosítók nem `@`kezdődhetnek együtt.
-* A példány-azonosítók `/`nem `\`tartalmazhatnak `#`, `?` , vagy karaktereket.
+* A példány-azonosítók nem kezdődhetnek `@`vel.
+* A példány-azonosítók nem tartalmazhatnak `/`, `\`, `#`vagy `?` karaktert.
 * A példány-azonosítók nem tartalmazhatnak vezérlő karaktereket.
 
 > [!NOTE]
@@ -47,7 +47,7 @@ Egy előkészítési példány azonosítója egy kötelező paraméter a legtöb
 
 Az Orchestrator függvények az [esemény-beszerzések](https://docs.microsoft.com/azure/architecture/patterns/event-sourcing) kialakítási mintája alapján megbízhatóan karbantartják végrehajtási állapotukat. A folyamat aktuális állapotának közvetlen tárolása helyett az állandó feladathoz tartozó keretrendszer egy csak Hozzáfűzéses tárolót használ a függvények összehangolása által végrehajtott műveletek teljes sorozatának rögzítéséhez. A csak Hozzáfűzéses tároló számos előnnyel jár, mint a teljes futtatókörnyezet állapotának "kiírása". Az előnyök többek között a teljesítmény, a méretezhetőség és a rugalmasság. A tranzakciós és a teljes naplózási nyomvonalak és előzmények végleges konzisztenciáját is biztosítjuk. A naplózási nyomvonalak támogatják a megbízható kompenzáló műveleteket.
 
-A Durable Functions az események beszerzését transzparens módon használja. A színfalak mögött a `await` (C#) vagy `yield` a (JavaScript) operátor egy Orchestrator függvényben a Orchestrator-szál vezérlését eredményezi a tartós feladatokhoz. A diszpécser ezután véglegesít minden olyan új műveletet, amelyet a Orchestrator függvény ütemez (például egy vagy több alárendelt függvény hívása vagy tartós időzítő ütemezése) a tárolóba. Az átlátszó véglegesítő művelet hozzáfűzi a rendszerelőkészítési példány végrehajtási előzményeihez. Az előzmények tárolása egy tárolási táblában történik. A commit művelet ezután üzeneteket hoz létre egy várólistához a tényleges munka időzítése érdekében. Ezen a ponton a Orchestrator függvény eltávolítható a memóriából.
+A Durable Functions az események beszerzését transzparens módon használja. A színfalak mögött a Orchestrator függvényC#`await` () vagy `yield` (JavaScript) kezelője visszaadja a Orchestrator szál vezérlését az állandó feladatra szolgáló keretrendszer-kiosztónak. A diszpécser ezután véglegesít minden olyan új műveletet, amelyet a Orchestrator függvény ütemez (például egy vagy több alárendelt függvény hívása vagy tartós időzítő ütemezése) a tárolóba. Az átlátszó véglegesítő művelet hozzáfűzi a rendszerelőkészítési példány végrehajtási előzményeihez. Az előzmények tárolása egy tárolási táblában történik. A commit művelet ezután üzeneteket hoz létre egy várólistához a tényleges munka időzítése érdekében. Ezen a ponton a Orchestrator függvény eltávolítható a memóriából.
 
 Ha egy összehangoló függvény több munkát tesz elérhetővé (például válaszüzenet érkezik vagy tartós időzítő lejár), a Orchestrator felébred, és újból végrehajtja a teljes függvényt az elejétől a helyi állapot újraépítéséhez. Ha a kód megpróbál meghívni egy függvényt (vagy bármilyen más aszinkron munkát hajt végre), akkor az állandó feladat-keretrendszer az aktuális előkészítés végrehajtási előzményeit kérdezi le. Ha úgy találja, hogy a [tevékenységi függvény](durable-functions-types-features-overview.md#activity-functions) már végre lett hajtva, és eredményként eredményezte, akkor az a függvény eredményét játssza le, és a Orchestrator-kód továbbra is futni fog. A visszajátszás addig folytatódik, amíg a függvény kódja be nem fejeződik, vagy amíg be nem ütemezi az új aszinkron munkát.
 
@@ -64,7 +64,7 @@ A tartós feladatok keretrendszerének esemény-beszerzés viselkedése szorosan
 ```csharp
 [FunctionName("E1_HelloSequence")]
 public static async Task<List<string>> Run(
-    [OrchestrationTrigger] DurableOrchestrationContext context)
+    [OrchestrationTrigger] IDurableOrchestrationContext context)
 {
     var outputs = new List<string>();
 
@@ -93,7 +93,7 @@ module.exports = df.orchestrator(function*(context) {
 });
 ```
 
-Az állandó `await` feladatC#-keretrendszer `yield` minden () vagy (JavaScript) utasításban lefordítja a függvény végrehajtási állapotát egy tartós tárolási háttérbe (általában az Azure Table Storage-ba). Ezt az állapotot nevezzük a megszervezési *előzményeknek*.
+Minden `await` (C#) vagy `yield` (JavaScript) utasításban a tartós feladat-keretrendszer a függvény végrehajtási állapotát egy tartós tárolási háttérbe (jellemzően az Azure Table Storage-ba) helyezi át. Ezt az állapotot nevezzük a megszervezési *előzményeknek*.
 
 ### <a name="history-table"></a>Előzmények táblázat
 
@@ -101,7 +101,7 @@ Az állandó `await` feladatC#-keretrendszer `yield` minden () vagy (JavaScript)
 
 1. Elmenti a végrehajtási előzményeket az Azure Storage-táblákba.
 2. A Orchestrator által meghívott függvények Enqueues üzenetei.
-3. A Orchestrator &mdash; Enqueues üzenetei, például tartós időzítő üzenetek.
+3. Magához a Orchestrator Enqueues üzenetei &mdash; például tartós időzítő üzenetek.
 
 Az ellenőrzőpont befejezését követően a Orchestrator függvény szabadon eltávolítható a memóriából, amíg még nem működik.
 
@@ -110,48 +110,48 @@ Az ellenőrzőpont befejezését követően a Orchestrator függvény szabadon e
 
 Befejezésekor a korábban bemutatott függvény előzményei a következő táblázathoz hasonlóan jelennek meg az Azure Table Storage (illusztrációs célokra rövidítve):
 
-| PartitionKey (InstanceId)                     | EventType             | Timestamp               | Input (Bemenet) | Name (Név)             | Eredmény                                                    | State |
+| PartitionKey (InstanceId)                     | EventType             | Időbélyeg               | Input (Bemenet) | Name (Név)             | Eredmény                                                    | Állapot |
 |----------------------------------|-----------------------|----------|--------------------------|-------|------------------|-----------------------------------------------------------|
-| eaee885b | OrchestratorStarted   | 2017-05-05T18:45:32.362Z |       |                  |                                                           |                     |
-| eaee885b | ExecutionStarted      | 2017-05-05T18:45:28.852Z | null  | E1_HelloSequence |                                                           |                     |
-| eaee885b | TaskScheduled         | 2017-05-05T18:45:32.670Z |       | E1_SayHello      |                                                           |                     |
-| eaee885b | OrchestratorCompleted | 2017-05-05T18:45:32.670Z |       |                  |                                                           |                     |
-| eaee885b | OrchestratorStarted   | 2017-05-05T18:45:34.232Z |       |                  |                                                           |                     |
-| eaee885b | TaskCompleted         | 2017-05-05T18:45:34.201Z |       |                  | "" "Hello Tokyo!" "                                        |                     |
-| eaee885b | TaskScheduled         | 2017-05-05T18:45:34.435Z |       | E1_SayHello      |                                                           |                     |
-| eaee885b | OrchestratorCompleted | 2017-05-05T18:45:34.435Z |       |                  |                                                           |                     |
-| eaee885b | OrchestratorStarted   | 2017-05-05T18:45:34.857Z |       |                  |                                                           |                     |
-| eaee885b | TaskCompleted         | 2017-05-05T18:45:34.763Z |       |                  | "" "Helló Seattle!" "                                      |                     |
-| eaee885b | TaskScheduled         | 2017-05-05T18:45:34.857Z |       | E1_SayHello      |                                                           |                     |
-| eaee885b | OrchestratorCompleted | 2017-05-05T18:45:34.857Z |       |                  |                                                           |                     |
-| eaee885b | OrchestratorStarted   | 2017-05-05T18:45:35.032Z |       |                  |                                                           |                     |
-| eaee885b | TaskCompleted         | 2017-05-05T18:45:34.919Z |       |                  | "" "Helló Londonban!" "                                       |                     |
-| eaee885b | ExecutionCompleted    | 2017-05-05T18:45:35.044Z |       |                  | "[" "Hello Tokyo!" "," "Helló Seattle!" "," "Hello London!" "]" | Befejeződött           |
-| eaee885b | OrchestratorCompleted | 2017-05-05T18:45:35.044Z |       |                  |                                                           |                     |
+| eaee885b | OrchestratorStarted   | 2017-05-05T18:45:32.362 Z |       |                  |                                                           |                     |
+| eaee885b | ExecutionStarted      | 2017-05-05T18:45:28.852 Z | NULL  | E1_HelloSequence |                                                           |                     |
+| eaee885b | TaskScheduled         | 2017-05-05T18:45:32.670 Z |       | E1_SayHello      |                                                           |                     |
+| eaee885b | OrchestratorCompleted | 2017-05-05T18:45:32.670 Z |       |                  |                                                           |                     |
+| eaee885b | OrchestratorStarted   | 2017-05-05T18:45:34.232 Z |       |                  |                                                           |                     |
+| eaee885b | TaskCompleted         | 2017-05-05T18:45:34.201 Z |       |                  | "" "Hello Tokyo!" "                                        |                     |
+| eaee885b | TaskScheduled         | 2017-05-05T18:45:34.435 Z |       | E1_SayHello      |                                                           |                     |
+| eaee885b | OrchestratorCompleted | 2017-05-05T18:45:34.435 Z |       |                  |                                                           |                     |
+| eaee885b | OrchestratorStarted   | 2017-05-05T18:45:34.857 Z |       |                  |                                                           |                     |
+| eaee885b | TaskCompleted         | 2017-05-05T18:45:34.763 Z |       |                  | "" "Helló Seattle!" "                                      |                     |
+| eaee885b | TaskScheduled         | 2017-05-05T18:45:34.857 Z |       | E1_SayHello      |                                                           |                     |
+| eaee885b | OrchestratorCompleted | 2017-05-05T18:45:34.857 Z |       |                  |                                                           |                     |
+| eaee885b | OrchestratorStarted   | 2017-05-05T18:45:35.032 Z |       |                  |                                                           |                     |
+| eaee885b | TaskCompleted         | 2017-05-05T18:45:34.919 Z |       |                  | "" "Helló Londonban!" "                                       |                     |
+| eaee885b | ExecutionCompleted    | 2017-05-05T18:45:35.044 Z |       |                  | "[" "Hello Tokyo!" "," "Helló Seattle!" "," "Hello London!" "]" | Befejezve           |
+| eaee885b | OrchestratorCompleted | 2017-05-05T18:45:35.044 Z |       |                  |                                                           |                     |
 
 Néhány megjegyzés az oszlop értékeihez:
 
-* **PartitionKey**: A koordinálás példányának AZONOSÍTÓját tartalmazza.
-* **EventType**: Az esemény típusát jelöli. A következő típusok egyike lehet:
-  * **OrchestrationStarted**: A Orchestrator függvény újraindul egy várakozási időszakból, vagy első alkalommal fut. Az `Timestamp` oszlop a [CurrentUtcDateTime](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_CurrentUtcDateTime) API determinisztikus értékének feltöltésére szolgál.
-  * **ExecutionStarted**: A Orchestrator függvény első alkalommal indította el a végrehajtást. Ez az esemény az `Input` oszlop függvény bemenetét is tartalmazza.
-  * **TaskScheduled**: Egy tevékenység-függvény ütemezése megtörtént. A tevékenység-függvény neve az `Name` oszlopban van rögzítve.
-  * **TaskCompleted**: Egy tevékenység-függvény befejeződött. A függvény `Result` eredménye az oszlopban található.
-  * **TimerCreated**: Egy tartós időzítő lett létrehozva. Az `FireAt` oszlop azt az ütemezett UTC-időt tartalmazza, amelyen az időzítő lejár.
-  * **TimerFired**: Tartós időzítő.
-  * **EventRaised**: A rendszer egy külső eseményt kapott a rendszerelőkészítési példánynak. Az `Name` oszlop rögzíti az esemény nevét, és az `Input` oszlop rögzíti az esemény hasznos adatait.
-  * **OrchestratorCompleted**: A Orchestrator függvény vár.
-  * **ContinueAsNew**: A Orchestrator függvény befejeződött, és új állapottal indult újra. Az `Result` oszlop tartalmazza azt az értéket, amelyet a rendszer az újraindított példány bemenetként használ.
-  * **ExecutionCompleted**: A Orchestrator függvény befejeződött (vagy sikertelen). A függvény kimeneteit vagy a hiba részleteit az `Result` oszlopban tárolja a rendszer.
-* **Időbélyeg**: Az előzmények eseményének UTC-időbélyege
-* **Név**: A meghívott függvény neve.
-* **Bemenet**: A függvény JSON formátumú bemenete.
-* **Eredmény**: A függvény kimenete; Ez a visszatérési értéke.
+* **PartitionKey**: a folyamat PÉLDÁNYának azonosítóját tartalmazza.
+* **EventType**: az esemény típusát jelöli. A következő típusok egyike lehet:
+  * **OrchestrationStarted**: a Orchestrator függvény a várttól kezdve folytatódik, vagy első alkalommal fut. A `Timestamp` oszlop a `CurrentUtcDateTime` (.NET) és a `currentUtcDateTime` (JavaScript) API-k determinisztikus értékének feltöltésére szolgál.
+  * **ExecutionStarted**: a Orchestrator függvény első alkalommal indult el. Ez az esemény a `Input` oszlopban található függvény bemenetét is tartalmazza.
+  * **TaskScheduled**: a tevékenységi függvény ütemezése megtörtént. A Activity függvény neve a `Name` oszlopban van rögzítve.
+  * **TaskCompleted**: egy tevékenység-függvény befejeződött. A függvény eredménye a `Result` oszlopban található.
+  * **TimerCreated**: egy tartós időzítő lett létrehozva. Az `FireAt` oszlop tartalmazza azt az ütemezett UTC-időpontot, amelyen az időzítő lejár.
+  * **TimerFired**: tartós időzítő.
+  * **EventRaised**: a rendszer egy külső eseményt kapott a rendszerelőkészítési példánynak. A `Name` oszlop rögzíti az esemény nevét, és a `Input` oszlop rögzíti az esemény hasznos adatait.
+  * **OrchestratorCompleted**: a Orchestrator függvény várt.
+  * **ContinueAsNew**: a Orchestrator függvény befejeződött, és új állapottal indult újra. A `Result` oszlopban szerepel az a érték, amely az újraindított példányban bemenetként szerepel.
+  * **ExecutionCompleted**: a Orchestrator függvény befejeződött (vagy sikertelen). A függvény kimeneteit vagy a hiba részleteit a `Result` oszlopban tárolja a rendszer.
+* **Időbélyeg**: az előzmények ESEMÉNYének UTC-időbélyege.
+* **Name (név**): a meghívott függvény neve.
+* **Bemenet**: a függvény JSON formátumú bemenete.
+* **Eredmény**: a függvény kimenete; Ez a visszatérési értéke.
 
 > [!WARNING]
 > Habár hibakeresési eszközként hasznos, ne tegyen függőséget ezen a táblán. Előfordulhat, hogy a Durable Functions bővítmény fejlődése megváltozhat.
 
-Minden alkalommal, amikor a függvény egy `await` (C#) vagy `yield` (JavaScript) állapotból tér vissza, a tartós feladat-keretrendszer újra lefuttatja a Orchestrator függvényt. Minden újrafuttatáskor megtekinti a végrehajtás előzményeit, és megállapítja, hogy az aktuális aszinkron művelet megtörtént-e.  Ha a művelet lezajlott, a keretrendszer azonnal visszajátssza a művelet kimenetét, és továbblép a következőre `await` (C#) vagy `yield` (JavaScript). Ez a folyamat addig folytatódik, amíg a teljes előzmények újra nem lettek játszva. Az aktuális előzmények újbóli lejátszása után a helyi változók vissza lesznek állítva a korábbi értékekre.
+Minden alkalommal, amikor a függvény egy `await` (C#) vagy `yield` (JavaScript), a tartós feladat-keretrendszer újra lefuttatja a Orchestrator függvényt. Minden újrafuttatáskor megtekinti a végrehajtás előzményeit, és megállapítja, hogy az aktuális aszinkron művelet megtörtént-e.  Ha a művelet lezajlott, a keretrendszer azonnal visszajátssza a művelet kimenetét, és a következő `await` (C#) vagy `yield` (JavaScript) értékre lép. Ez a folyamat addig folytatódik, amíg a teljes előzmények újra nem lettek játszva. Az aktuális előzmények újbóli lejátszása után a helyi változók vissza lesznek állítva a korábbi értékekre.
 
 ## <a name="features-and-patterns"></a>Funkciók és minták
 
@@ -165,7 +165,7 @@ További információért és példákért tekintse meg az [alfolyamatok](durabl
 
 ### <a name="durable-timers"></a>Tartós időzítők
 
-A munkafolyamatok *tartós időzítőket* ütemezhetnek a késések megvalósításához, illetve az aszinkron műveletek időtúllépési kezelésére vonatkozóan. Használjon tartós időzítőket a és `Thread.Sleep` `Task.Delay` a (C#) vagy `setTimeout()` `setInterval()` a (JavaScript) helyett a Orchestrator függvényekben.
+A munkafolyamatok *tartós időzítőket* ütemezhetnek a késések megvalósításához, illetve az aszinkron műveletek időtúllépési kezelésére vonatkozóan. `Thread.Sleep` és `Task.Delay` (C#) vagy `setTimeout()` és `setInterval()` (JavaScript) helyett használjon tartós időzítőket a Orchestrator függvényekben.
 
 További információért és példákért tekintse meg a [tartós időzítők](durable-functions-timers.md) című cikket.
 
@@ -177,20 +177,20 @@ További információkat és példákat a [külső események](durable-functions
 
 ### <a name="error-handling"></a>Hibakezelés
 
-A Orchestrator függvények használhatják a programozási nyelv hibakezelés funkcióit. A meglévő mintázatok, például `try` / `catch` a hangfelismerési kódban támogatottak.
+A Orchestrator függvények használhatják a programozási nyelv hibakezelés funkcióit. A (z) `try`/`catch`ek meglévő mintái támogatottak a hangszerelési kódban.
 
 A Orchestrator függvények újrapróbálkozási házirendeket is hozzáadhatnak a meghívott tevékenységekhez vagy Orchestrator függvényekhez. Ha egy tevékenység vagy egy alorchestratoron függvény kivételt jelez, a megadott újrapróbálkozási szabályzat automatikusan késleltetheti a műveletet, és a megadott számú alkalommal újra próbálkozhat a végrehajtással.
 
 > [!NOTE]
-> Ha egy Orchestrator-függvény nem kezelt kivételt ad meg, a koordináló példány egy `Failed` állapotban fejeződik be. Nem lehet újrapróbálkozni egy összehangoló példányban, ha az sikertelen volt.
+> Ha egy Orchestrator-függvény nem kezelt kivételt ad meg, a koordináló példány `Failed` állapotban fejeződik be. Nem lehet újrapróbálkozni egy összehangoló példányban, ha az sikertelen volt.
 
 További információt és példákat [a hibakezelés című cikkben talál](durable-functions-error-handling.md) .
 
-### <a name="critical-sections"></a>Kritikus csoportok
+### <a name="critical-sections-durable-functions-2x"></a>Kritikus csoportok (Durable Functions 2. x)
 
-Az előkészítési példányok egyszálas, ezért nem kell aggódnia a versenyhelyzet feltételein *belül* . A versenyhelyzet azonban akkor is lehetséges, ha az előkészítési folyamat külső rendszerekkel kommunikál. Ha a külső rendszerekkel való interakció során csökkenteni szeretné a versenyhelyzet feltételeit, a Orchestrator függvények *kritikus szakaszt* határoznak meg a `LockAsync` .net-beli metódusok használatával.
+Az előkészítési példányok egyszálas, ezért nem kell aggódnia a versenyhelyzet feltételein *belül* . A versenyhelyzet azonban akkor is lehetséges, ha az előkészítési folyamat külső rendszerekkel kommunikál. Ha a külső rendszerekkel való interakció során csökkenteni szeretné a versenyhelyzet feltételeit, a Orchestrator functions a .NET `LockAsync` metódusának használatával határozhat meg *kritikus szakaszt* .
 
-Az alábbi mintakód egy Orchestrator függvényt mutat be, amely egy kritikus szakaszt határoz meg. A `LockAsync` módszer használatával a kritikus szakasz lép életbe. Ehhez a metódushoz egy vagy több, egy [tartós entitásra](durable-functions-entities.md)mutató hivatkozást kell átadni, amely tartósan kezeli a zárolási állapotot. Ennek a folyamatnak csak egyetlen példánya tudja végrehajtani a kódot a kritikus szakaszban.
+Az alábbi mintakód egy Orchestrator függvényt mutat be, amely egy kritikus szakaszt határoz meg. A `LockAsync` metódus használatával belép a kritikus szakaszba. Ehhez a metódushoz egy vagy több, egy [tartós entitásra](durable-functions-entities.md)mutató hivatkozást kell átadni, amely tartósan kezeli a zárolási állapotot. Ennek a folyamatnak csak egyetlen példánya tudja végrehajtani a kódot a kritikus szakaszban.
 
 ```csharp
 [FunctionName("Synchronize")]
@@ -205,18 +205,18 @@ public static async Task Synchronize(
 }
 ```
 
-A `LockAsync` felvásárolja a tartós zárolás (oka) t, `IDisposable` és visszaadja a kritikus szakaszt a használatból. Ez `IDisposable` az eredmény együtt használható egy `using` blokkal a kritikus szakasz szintaktikai ábrázolásának beolvasásához. Ha egy Orchestrator függvény kritikus szakaszt ad meg, csak egy példány hajthatja végre ezt a kódot. Minden más, a kritikus szakaszt beírni próbáló példány le lesz tiltva, amíg az előző példány nem kilép a kritikus szakaszból.
+A `LockAsync` beolvassa a tartós zárolás (oka) t, és egy olyan `IDisposable` ad vissza, amely a kritikus szakaszt az eldobáskor véget ér. Ez a `IDisposable` eredmény `using` blokkmal együtt használható a kritikus szakasz szintaktikai ábrázolásának beolvasásához. Ha egy Orchestrator függvény kritikus szakaszt ad meg, csak egy példány hajthatja végre ezt a kódot. Minden más, a kritikus szakaszt beírni próbáló példány le lesz tiltva, amíg az előző példány nem kilép a kritikus szakaszból.
 
 A kritikus szakasz funkció a tartós entitások változásainak koordinálására is használható. A kritikus szakaszokkal kapcsolatos további információkért tekintse meg a [tartós entitások "entitások egyeztetése"](durable-functions-entities.md#entity-coordination) című témakört.
 
 > [!NOTE]
 > A kritikus fejezetek Durable Functions 2,0-es és újabb verziókban érhetők el. Jelenleg csak a .NET-eszközök implementálják ezt a funkciót.
 
-### <a name="calling-http-endpoints"></a>HTTP-végpontok hívása
+### <a name="calling-http-endpoints-durable-functions-2x"></a>HTTP-végpontok hívása (Durable Functions 2. x)
 
 A Orchestrator függvények nem engedélyezettek az I/O-műveletek esetében, ahogy azt a [Orchestrator-függvény kódjainak megkötései](durable-functions-code-constraints.md)című témakör írja le. Ennek a korlátozásnak a leggyakoribb megkerülő megoldás, ha olyan kódokat szeretne becsomagolni, amelyeknek az I/O-műveletekre van szükségük A külső rendszerekkel kommunikáló Összehangolók gyakran használják a tevékenységi funkciókat a HTTP-hívások elvégzéséhez, és az eredménynek az előkészítéshez való visszaküldését.
 
-Az általános minta leegyszerűsítése érdekében a Orchestrator functions `CallHttpAsync` a .net-ben lévő metódust használhatja a http API-k közvetlen meghívásához. Az alapszintű kérelmek/válaszok `CallHttpAsync` támogatása mellett a támogatja a gyakori aszinkron http 202 lekérdezési minták automatikus kezelését, valamint a [felügyelt identitások](../../active-directory/managed-identities-azure-resources/overview.md)használatával támogatja a külső szolgáltatásokkal való hitelesítést is.
+Az általános minta leegyszerűsítése érdekében a Orchestrator függvények a .NET `CallHttpAsync` metódusát használhatják a HTTP API-k közvetlen meghívásához. Az alapszintű kérelmek/válaszok támogatása mellett `CallHttpAsync` támogatja a gyakori aszinkron HTTP 202 lekérdezési minták automatikus kezelését, valamint a [felügyelt identitások](../../active-directory/managed-identities-azure-resources/overview.md)használatával támogatja a külső szolgáltatásokkal való hitelesítést is.
 
 ```csharp
 [FunctionName("CheckSiteAvailable")]
@@ -236,10 +236,22 @@ public static async Task CheckSiteAvailable(
 }
 ```
 
+```javascript
+const df = require("durable-functions");
+
+module.exports = df.orchestrator(function*(context) {
+    const url = context.df.getInput();
+    var res = yield context.df.callHttp("GET", url);
+    if (res.statusCode >= 400) {
+        // handling of error codes goes here
+    }
+});
+```
+
 További információt és részletes példákat a [http-szolgáltatások](durable-functions-http-features.md) című cikkben talál.
 
 > [!NOTE]
-> A HTTP-végpontok közvetlenül a Orchestrator függvényekből való meghívása Durable Functions 2,0-es vagy újabb verzióban érhető el. Jelenleg csak a .NET-eszközök implementálják ezt a funkciót.
+> A HTTP-végpontok közvetlenül a Orchestrator függvényekből való meghívása Durable Functions 2,0-es vagy újabb verzióban érhető el.
 
 ### <a name="passing-multiple-parameters"></a>Több paraméter átadása
 
@@ -250,7 +262,7 @@ A következő minta a [ValueTuples](https://docs.microsoft.com/dotnet/csharp/tup
 ```csharp
 [FunctionName("GetCourseRecommendations")]
 public static async Task<object> RunOrchestrator(
-    [OrchestrationTrigger] DurableOrchestrationContext context)
+    [OrchestrationTrigger] IDurableOrchestrationContext context)
 {
     string major = "ComputerScience";
     int universityYear = context.GetInput<int>();
@@ -262,7 +274,7 @@ public static async Task<object> RunOrchestrator(
 }
 
 [FunctionName("CourseRecommendations")]
-public static async Task<object> Mapper([ActivityTrigger] DurableActivityContext inputs)
+public static async Task<object> Mapper([ActivityTrigger] IDurableActivityContext inputs)
 {
     // parse input for student's major and year in university
     (string Major, int UniversityYear) studentInfo = inputs.GetInput<(string, int)>();

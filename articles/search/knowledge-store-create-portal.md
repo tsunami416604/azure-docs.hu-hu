@@ -8,12 +8,12 @@ ms.author: v-lilei
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 11/04/2019
-ms.openlocfilehash: 16dd63e22182dedb4af97c2ef6238e6628778467
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 689b5aa0cd8a5fb310925b2c52baeec6860af0d5
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73485173"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73607083"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-knowledge-store-in-the-azure-portal"></a>Gyors útmutató: Azure Cognitive Search Knowledge Store létrehozása a Azure Portal
 
@@ -87,7 +87,7 @@ A varázsló lépésében egy készségkészlet hoz létre a kognitív képessé
 1. Bontsa ki a **csatolás Cognitive Services**elemet. Alapértelmezés szerint az **ingyenes (korlátozott alkoholtartalom-növelés)** beállítás van kiválasztva. Ezt az erőforrást használhatja, mert a HotelReviews-Free. csv fájlban lévő rekordok száma 19, és ez az ingyenes erőforrás naponta legfeljebb 20 tranzakciót tesz lehetővé.
 1. Bontsa ki a **kognitív képességek hozzáadása**elemet.
 1. A **készségkészlet neve**mezőbe írja be a következőt: `hotel-reviews-ss`.
-1. A **forrásadatok mezőben**válassza a **reviews_text*elemet.
+1. A **forrásadatok mezőben**válassza a **reviews_text**lehetőséget.
 1. A **dúsítás részletességi szintjének**kiválasztásához válassza a **lapok (5000 karakteres tömbök) elemet.**
 1. Válassza ki ezeket a kognitív képességeket:
     + **Kulcsszavak kinyerése**
