@@ -1,5 +1,5 @@
 ---
-title: Azure Security Center rövid útmutató – Windows rendszerű számítógépek felvétele a Security Centerbe | Microsoft Docs
+title: Windows rendszerű számítógépek előkészítése Azure Security Center
 description: Ez a rövid útmutató bemutatja, hogyan telepítheti a Microsoft Monitoring Agent szolgáltatást egy Windows rendszerű számítógépre.
 services: security-center
 documentationcenter: na
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/3/2018
 ms.author: memildin
-ms.openlocfilehash: 46fffc40b315109c348247ac09f02f9bb8dbb3b7
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 417d8379d019a9ef0da41638cba4a1f9cb7b8bc2
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71202795"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73686503"
 ---
-# <a name="quickstart-onboard-windows-computers-to-azure-security-center"></a>Gyors útmutató: Windows rendszerű számítógépek előkészítése Azure Security Center
+# <a name="quickstart-onboard-windows-computers-to-azure-security-center"></a>Rövid útmutató: Windows rendszerű számítógépek felvétele az Azure Security Centerbe
 Az Azure-előfizetései felvétele után a Microsoft Monitoring Agent kiépítésével engedélyezheti a Security Centert az Azure-on kívül, például a helyszínen vagy más felhőkben futó erőforrások számára.
 
 Ez a rövid útmutató bemutatja, hogyan telepítheti a Microsoft Monitoring Agent szolgáltatást egy Windows rendszerű számítógépre.
@@ -64,7 +64,7 @@ Most telepíteni kell a letöltött fájlt a célszámítógépre.
 4. A **Célmappa** lapon fogadja el az alapértelmezett telepítési mappát, vagy adjon meg egy másikat, majd kattintson a **Tovább** gombra.
 5. **Az ügynök telepítésének beállításai** lapon csatlakoztassa az ügynököt az Azure Log Analyticshez, majd kattintson a **Tovább** gombra.
 6. Az **Azure Log Analytics** lapon illessze be az előző folyamat során a Jegyzettömbbe másolt **Munkaterület-azonosítót** és a **Munkaterületkulcsot (Elsődleges kulcs)** .
-7. Ha a gépnek egy Azure Government-felhőbeli Log Analytics-munkaterületnek kell jelentenie, válassza az **Azure US Government** lehetőséget az **Azure Cloud** legördülő listából.  Ha a számítógépnek egy proxykiszolgálón keresztül kell kommunikálnia a Log Analytics szolgáltatással, kattintson a **Speciális** gombra, majd adja meg a proxykiszolgáló URL-címét és portszámát.
+7. Ha a gépnek egy Azure Government-felhőbeli Log Analytics-munkaterületnek kell jelentenie, válassza az **Azure US Government** lehetőséget az **Azure Cloud** legördülő listából. Ha a számítógépnek egy proxykiszolgálón keresztül kell kommunikálnia a Log Analytics szolgáltatással, kattintson a **Speciális** gombra, majd adja meg a proxykiszolgáló URL-címét és portszámát.
 8. A szükséges konfigurációs beállítások megadása után kattintson a **Tovább** gombra.
 
    ![Az ügynök telepítése][5]

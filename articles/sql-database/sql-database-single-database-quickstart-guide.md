@@ -1,5 +1,5 @@
 ---
-title: Rövid útmutató – önálló adatbázisok Azure SQL Databaseban | Microsoft Docs
+title: Rövid útmutató – önálló adatbázisok Azure SQL Database
 description: Megtudhatja, hogyan kezdheti meg gyorsan az önálló adatbázisok Azure SQL Database
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: carlr
 ms.date: 07/29/2019
-ms.openlocfilehash: 45b0b2bc7a2ef5c3cb6ca801668f7b5be7c8ac73
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 279d0a2016bc3323632651db256c43121d388412
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68639996"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73687153"
 ---
 # <a name="getting-started-with-single-databases-in-azure-sql-database"></a>Első lépések az önálló adatbázisok Azure SQL Database
 
@@ -28,7 +28,7 @@ Ebben a szakaszban az elérhető cikkek áttekintését láthatja, amelyek segí
 
 - [Hozzon létre egyetlen adatbázist a Azure Portal használatával](sql-database-single-database-get-started.md).
 - Az adatbázis létrehozása után meg kell [védenie az adatbázist a tűzfalszabályok konfigurálásával](sql-database-server-level-firewall-rule.md).
-- Ha van olyan meglévő adatbázisa SQL Server, amelyet át szeretne telepíteni az Azure-ba, telepítenie kell a [Data Migration Assistant (DMA)](https://www.microsoft.com/download/details.aspx?id=53595) szolgáltatást, amely elemzi az adatbázisokat a SQL Serveron, és olyan problémát talál, amely blokkolhatja az önálló adatbázis-telepítésre való áttelepítést. beállítás. Ha nem talál problémát, exportálhatja az adatbázist `.bacpac` fájlként, és importálhatja [a Azure Portal vagy a SqlPackage használatával](sql-database-import.md).
+- Ha van olyan meglévő adatbázisa SQL Server, amelyet át szeretne telepíteni az Azure-ba, telepítenie kell a [Data Migration Assistant (DMA)](https://www.microsoft.com/download/details.aspx?id=53595) szolgáltatást, amely elemzi az adatbázisokat a SQL Serveron, és olyan problémát talál, amely blokkolhatja az önálló adatbázis-telepítésre való áttelepítést. beállítás. Ha nem talál problémát, exportálhatja `.bacpac` fájlként az adatbázist, és [importálhatja azt a Azure Portal vagy a SqlPackage használatával](sql-database-import.md).
 
 ## <a name="automating-management-operations"></a>Felügyeleti műveletek automatizálása
 
@@ -41,7 +41,7 @@ Az adatbázis létrehozásához, konfigurálásához és méretezéséhez haszn�
 
 ## <a name="migrating-to-a-single-database-with-minimal-downtime"></a>Migrálás egyetlen adatbázisba minimális állásidővel
 
-Ezekkel a gyors útmutatókkal gyorsan létrehozhatja vagy importálhatja az adatbázist az Azure `.bacpac` -ba egy fájl használatával. `.bacpac` A és `.dacpac` a fájlok azonban úgy lettek kialakítva, hogy az adatbázisok gyorsan áthelyezhetők legyenek az SQL Server különböző verzióiba, valamint a Azure SQL Databaseon belüli központi telepítési lehetőségek, vagy a folyamatos integráció megvalósításához a DevOps Ez a módszer azonban nem az üzemi adatbázisok minimális állásidővel való áttelepítésére lett tervezve, mert nem kell új adatmennyiséget hozzáadnia, várnia kell a forrásadatbázis exportálására egy `.bacpac` fájlba, majd várnia kell, amíg az importálás befejeződik. Azure SQL Database a befejezéshez. Az összes várakozási idő az alkalmazás leállását eredményezi, különösen a nagyméretű adatbázisok esetében. Az éles adatbázis áthelyezéséhez jobb módszerre van szüksége az áttelepítéshez, amely minimális állásidőt garantál. Ehhez használja a adatáttelepítési [szolgáltatást (DMS)](https://docs.microsoft.com/azure/dms/tutorial-sql-server-to-azure-sql?toc=/azure/sql-database/toc.json) az adatbázis minimális állásidővel való áttelepítéséhez. A DMS ezt úgy hajtja végre, hogy a forrásadatbázis módosításait fokozatosan visszaküldi a visszaállítani kívánt önálló adatbázisra. Így gyorsan válthat az alkalmazás forrásról a cél adatbázisára a minimális állásidővel.
+Ezekkel a gyors útmutatókkal gyorsan létrehozhatja vagy importálhatja az adatbázist az Azure-ba egy `.bacpac` fájl használatával. A `.bacpac`-és `.dacpac`-fájlok azonban úgy lettek kialakítva, hogy az adatbázisokat gyorsan át lehessen helyezni a SQL Server és a központi telepítési lehetőségek különböző verzióiban, vagy a folyamatos integrációt a DevOps-folyamaton Azure SQL Database belül. Ez a módszer azonban nem az üzemi adatbázisok minimális állásidővel való áttelepítésére lett tervezve, mert nem kell új adatmennyiséget hozzáadnia, várnia kell a forrásadatbázis exportálását egy `.bacpac` fájlba a befejezéshez, majd várnia kell az importálást az Azure SQL-be Az adatbázis befejezését. Az összes várakozási idő az alkalmazás leállását eredményezi, különösen a nagyméretű adatbázisok esetében. Az éles adatbázis áthelyezéséhez jobb módszerre van szüksége az áttelepítéshez, amely minimális állásidőt garantál. Ehhez használja a [adatáttelepítési szolgáltatást (DMS)](https://docs.microsoft.com/azure/dms/tutorial-sql-server-to-azure-sql?toc=/azure/sql-database/toc.json) az adatbázis minimális állásidővel való áttelepítéséhez. A DMS ezt úgy hajtja végre, hogy a forrásadatbázis módosításait fokozatosan visszaküldi a visszaállítani kívánt önálló adatbázisra. Így gyorsan válthat az alkalmazás forrásról a cél adatbázisára a minimális állásidővel.
 
 ## <a name="hands-on-learning-modules"></a>Gyakorlati tanulási modulok
 
@@ -54,7 +54,7 @@ Az alábbi Microsoft Learn-modulok segítenek a Azure SQL Databaseról való ing
 ## <a name="next-steps"></a>További lépések
 
 - Tekintse meg a [Azure SQL Database támogatott szolgáltatásainak magas szintű listáját](sql-database-features.md).
-- Ismerje meg, hogyan teheti [biztonságosabbá](sql-database-security-tutorial.md)az adatbázisát.
+- Ismerje meg, hogyan teheti [biztonságosabbá az adatbázisát](sql-database-security-tutorial.md).
 - További speciális útmutató: [egyetlen adatbázis használata Azure SQL Databaseban](sql-database-howto-single-database.md).
 - További példák a [PowerShell](sql-database-powershell-samples.md) és az [Azure CLI](sql-database-cli-samples.md)-ben írt parancsfájlokra.
 - További információ az adatbázisok konfigurálásához használható [felügyeleti API](sql-database-single-databases-manage.md) -ról.

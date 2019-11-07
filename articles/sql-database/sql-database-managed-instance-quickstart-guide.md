@@ -1,5 +1,5 @@
 ---
-title: Gyors útmutató – Azure SQL Database felügyelt példány | Microsoft Docs
+title: Gyors útmutató – Azure SQL Database felügyelt példány
 description: Megtudhatja, hogyan kezdheti meg gyorsan a Azure SQL Database felügyelt példányát
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, carlr
 ms.date: 07/11/2019
-ms.openlocfilehash: 65b6b503d107b36813d1716348ce5f11fa840cc0
-ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
+ms.openlocfilehash: ef15f164b707d5f762191547326c120663a78350
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71937214"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73687940"
 ---
 # <a name="getting-started-with-azure-sql-database-managed-instance"></a>Azure SQL Database felügyelt példány első lépései
 
@@ -24,7 +24,7 @@ A [felügyelt példány](sql-database-managed-instance-index.yml) központi tele
 
 ## <a name="quickstart-overview"></a>A gyors üzembe helyezés áttekintése
 
-A következő rövid útmutatók segítségével gyorsan létrehozhat egy felügyelt példányt, konfigurálhat egy virtuális gépet, vagy megadhatja az ügyfélalkalmazás VPN-kapcsolatát, és egy `.bak` fájllal állíthatja vissza az adatbázist az új felügyelt példányra.
+A következő rövid útmutatók segítségével gyorsan létrehozhat egy felügyelt példányt, konfigurálhat egy virtuális gépet, vagy megadhatja az ügyfélalkalmazás VPN-kapcsolatát, és visszaállíthatja az adatbázist az új felügyelt példányra egy `.bak` fájl használatával.
 
 ### <a name="configure-environment"></a>A környezet konfigurálása
 
@@ -66,7 +66,7 @@ A rövid útmutatókban található cikkek segítségével gyorsan beállíthatj
 
 Ahhoz azonban, hogy a termelési adatbázist vagy akár fejlesztési, illetve tesztelési adatbázisokat is át szeretne telepíteni az egyes teljesítménytesztekhez, érdemes megfontolnia néhány további módszer használatát, például a következőket:
 - Teljesítményteszt – mérje fel az alapkonfigurációt a forrás SQL Server példányán, és hasonlítsa össze azokat a célként kezelt példány teljesítményével, ahol áttelepítette az adatbázist. További információ a [teljesítmény-összehasonlítással kapcsolatos ajánlott eljárásokról](https://techcommunity.microsoft.com/t5/Azure-SQL-Database/The-best-practices-for-performance-comparison-between-Azure-SQL/ba-p/683210).
-- Online áttelepítés – a jelen cikkben ismertetett natív `RESTORE` értékkel meg kell várnia az adatbázisok visszaállítását (és az Azure Blob Storage-ba való másolását, ha ott még nem tárolja őket). Ez az alkalmazás bizonyos állásidőt okoz, különösen nagyobb adatbázisok esetén. Az éles adatbázis áthelyezéséhez használja az [adatáttelepítési szolgáltatást (DMS)](https://docs.microsoft.com/azure/dms/tutorial-sql-server-to-managed-instance?toc=/azure/sql-database/toc.json) az adatbázis minimális állásidővel való áttelepítéséhez. A DMS ezt úgy hajtja végre, hogy a forrásadatbázis módosításait fokozatosan visszaküldi a felügyelt példány-adatbázisba. Így gyorsan válthat az alkalmazás forrásról a cél adatbázisára a minimális állásidővel.
+- Online áttelepítés – a jelen cikkben ismertetett natív `RESTORE` meg kell várnia az adatbázisok visszaállítását (és az Azure Blob Storage-ba való másolását, ha ott még nem tárolja őket). Ez az alkalmazás bizonyos állásidőt okoz, különösen nagyobb adatbázisok esetén. Az éles adatbázis áthelyezéséhez használja az [adatáttelepítési szolgáltatást (DMS)](https://docs.microsoft.com/azure/dms/tutorial-sql-server-to-managed-instance?toc=/azure/sql-database/toc.json) az adatbázis minimális állásidővel való áttelepítéséhez. A DMS ezt úgy hajtja végre, hogy a forrásadatbázis módosításait fokozatosan visszaküldi a felügyelt példány-adatbázisba. Így gyorsan válthat az alkalmazás forrásról a cél adatbázisára a minimális állásidővel.
 
 További információ az [ajánlott áttelepítési folyamatról](sql-database-managed-instance-migrate.md).
 

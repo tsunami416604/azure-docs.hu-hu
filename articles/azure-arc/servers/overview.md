@@ -10,12 +10,12 @@ keywords: Azure Automation, DSC, PowerShell, a kívánt állapot konfigurálása
 ms.date: 11/04/2019
 ms.custom: mvc
 ms.topic: overview
-ms.openlocfilehash: 0178f27c39c065399208e7fc5afe7352ba4f8e30
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: HT
+ms.openlocfilehash: 57dbfa0c2063c2059955294ccc1337bb76b72614
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73502001"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73606089"
 ---
 # <a name="what-is-azure-arc-for-servers"></a>Mi az Azure arc a kiszolgálókhoz
 
@@ -34,7 +34,7 @@ A gépek **csatlakoztatva** vagy **leválasztva** állapotba kerülnek, attól f
 
 A nyilvános előzetes verzióban a következőket támogatjuk:
 
-- Windows Server 2012 R2 és újabb verziók
+- Windows Server 2012 R2 és újabb
 - Ubuntu 16,04 és 18,04
 
 A nyilvános előzetes kiadás kiértékelésre szolgál, és nem használható a kritikus termelési erőforrások kezeléséhez.
@@ -83,7 +83,7 @@ Tekintse meg a [proxykiszolgáló](quickstart-onboard-powershell.md#proxy-server
 
 ## <a name="register-the-required-resource-providers"></a>A szükséges erőforrás-szolgáltatók regisztrálása
 
-Miután jóváhagyta a "szolgáltatás jelzője" regisztrációját, regisztrálnia kell a szükséges erőforrás-szolgáltatókat.
+Ahhoz, hogy használni lehessen az Azure arc-kiszolgálókat, regisztrálnia kell a szükséges erőforrás-szolgáltatókat.
 
 * **Microsoft. HybridCompute**
 * **Microsoft. GuestConfiguration**
