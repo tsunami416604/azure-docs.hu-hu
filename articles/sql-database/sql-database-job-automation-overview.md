@@ -1,5 +1,5 @@
 ---
-title: Azure SQL-feladatok automatizálása | Microsoft Docs
+title: Azure SQL-feladatok automatizálása
 description: A feladatütemezés használata Transact-SQL (T-SQL) parancsfájlok futtatásához egy vagy több Azure SQL Database-adatbázison keresztül
 services: sql-database
 ms.service: sql-database
@@ -10,12 +10,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: carlr
 ms.date: 01/25/2019
-ms.openlocfilehash: 432580017cec548b7ecd7cf766aa8f5cdb2253cc
-ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
+ms.openlocfilehash: bbef299271618dc672daea17249f29866e75c430
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70113590"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73689675"
 ---
 # <a name="automate-management-tasks-using-database-jobs"></a>Felügyeleti feladatok automatizálása adatbázis-feladatok használatával
 
@@ -33,7 +33,7 @@ A feladatok automatizálását több esetben is használhatja:
   - Az indexek újraépítésével javíthatja a lekérdezési teljesítményt. Úgy konfigurálhatja a feladatokat, hogy a rendszer egy adott adatbázis-gyűjteményen rendszeres időközönként hajtsa őket végre, például csúcsidőn kívül.
   - A lekérdezési adatokat az adatbázis-készletekből folyamatosan egy központi táblába gyűjtheti. A teljesítménylekérdezések folyamatosan végrehajthatók, illetve konfigurálhatók úgy, hogy további végrehajtandó feladatokat indítsanak el.
 - Adatokat gyűjthet jelentéskészítéshez
-  - Összesítheti az Azure SQL Database-adatbázisok egy gyűjteményéből származó adatokat egy céltáblában.
+  - Összesítheti az Azure SQL-adatbázisok egy gyűjteményéből származó adatokat egy céltáblában.
   - Olyan hosszabban futó adatfeldolgozási lekérdezéseket hajthat végre nagy adatbáziskészleteken, amilyen például az ügyfél-telemetria gyűjtése. A rendszer az eredményeket egyetlen céltáblában gyűjti össze a további elemzéshez.
 - Adatáthelyezés
   - Olyan feladatokat hozhat létre, amelyek replikálják az adatbázisaiban végrehajtott módosításokat más adatbázisokra, vagy a távoli adatbázisokban végrehajtott frissítéseket gyűjtik, és módosításokat alkalmaznak az adatbázisban.
@@ -50,7 +50,7 @@ A következő feladatütemezés-technológiák érhetők el Azure SQL Databaseba
 
 |  |Rugalmas feladatok  |SQL-ügynök |
 |---------|---------|---------|
-|Scope     |  Tetszőleges számú Azure SQL-adatbázis és/vagy Data Warehouse egy Azure-felhőben, amely feladatügynökként működik. A célok lehetnek különböző SQL Database-kiszolgálókon, előfizetéseken és/vagy régiókban. <br><br>A célcsoportok állhatnak egyedi adatbázisokból vagy adattárházakból, illetve egy kiszolgáló, készlet vagy szegmenstérkép összes adatbázisából (a feladat futásidejében dinamikusan számba véve). | Minden olyan adatbázis, amely ugyanabban a SQL Server-példányban található, mint az SQL-ügynök. |
+|Hatókör     |  Tetszőleges számú Azure SQL-adatbázis és/vagy Data Warehouse egy Azure-felhőben, amely feladatügynökként működik. A célok lehetnek különböző SQL Database-kiszolgálókon, előfizetéseken és/vagy régiókban. <br><br>A célcsoportok állhatnak egyedi adatbázisokból vagy adattárházakból, illetve egy kiszolgáló, készlet vagy szegmenstérkép összes adatbázisából (a feladat futásidejében dinamikusan számba véve). | Minden olyan adatbázis, amely ugyanabban a SQL Server-példányban található, mint az SQL-ügynök. |
 |Támogatott API-k és eszközök     |  Portál, PowerShell, T-SQL, Azure Resource Manager      |   T-SQL, SQL Server Management Studio (SSMS)     |
 
 ## <a name="sql-agent-jobs"></a>SQL-ügynök feladatai
@@ -59,7 +59,7 @@ Az SQL-ügynök feladatai a T-SQL-parancsfájlok megadott sorozata az adatbázis
 A feladatok futhatnak egy helyi kiszolgálón vagy több távoli kiszolgálón is. Az SQL Agent-feladatok egy belső adatbázismotor-összetevő, amely a felügyelt példányok szolgáltatáson belül fut.
 Az SQL Agent feladatainak számos alapvető fogalma van:
 
-- A feladatok végrehajtásához szükséges lépések egy vagy több lépésből állnak. Minden feladat lépésnél megadhatja az újrapróbálkozási stratégiát, valamint azt a műveletet, amely a feladat lépéseinek sikeres vagy sikertelen végrehajtása esetén fordulhat elő.
+- A feladatok **végrehajtásához** szükséges lépések egy vagy több lépésből állnak. Minden feladat lépésnél megadhatja az újrapróbálkozási stratégiát, valamint azt a műveletet, amely a feladat lépéseinek sikeres vagy sikertelen végrehajtása esetén fordulhat elő.
 - Az **ütemezett** feladatok határozzák meg, hogy mikor kell végrehajtani a feladatot.
 - Az **értesítések** segítségével meghatározhatja azokat a szabályokat, amelyek segítségével a rendszer e-mailben értesíti a kezelőket a feladatok befejezését követően.
 
@@ -96,7 +96,7 @@ Az ütemtervek a következő feltételeket határozzák meg a feladatok futásá
 
 Az SQL Agent-feladatok lehetővé teszik, hogy értesítéseket kapjon a feladat sikeres befejeződése vagy meghibásodása esetén. Értesítéseket e-mailben kaphat.
 
-Először be kell állítania az e-mail értesítések küldéséhez használt e-mail-fiókot, majd hozzá kell rendelnie a fiókot az nevű `AzureManagedInstance_dbmail_profile`e-mail-profilhoz, ahogy az az alábbi példában is látható:
+Először be kell állítania az e-mail-fiókot, amelyet a rendszer az e-mail-értesítések küldésére és a fiók a `AzureManagedInstance_dbmail_profile`nevű e-mail-profilhoz való hozzárendelésére fog használni, ahogy az az alábbi példában is látható:
 
 ```sql
 -- Create a Database Mail account
@@ -157,7 +157,7 @@ EXEC msdb.dbo.sp_update_job @job_name=N'Load data using SSIS',
 ### <a name="sql-agent-job-limitations"></a>SQL Agent-feladatok korlátozásai
 
 A felügyelt példányok nem támogatják a SQL Serverban elérhető SQL Agent-funkciók némelyikét:
-- Az SQL-ügynök beállításai csak olvashatók. A `sp_set_agent_properties` felügyelt példány nem támogatja az eljárást.
+- Az SQL-ügynök beállításai csak olvashatók. A felügyelt példányok nem támogatják a `sp_set_agent_properties` eljárást.
 - Az SQL Agent engedélyezése/letiltása jelenleg nem támogatott a felügyelt példányokban. Az SQL-ügynök mindig fut.
 - Az értesítések részben támogatottak
   - A személyhívó nem támogatott.
@@ -183,7 +183,7 @@ Az alábbi képen egy feladatügynök látható, amely különböző típusú c�
 |Összetevő  | Leírás (további részletek a táblázat alatt találhatók) |
 |---------|---------|
 |[**Rugalmas feladat ügynöke**](#elastic-job-agent) |  Az az Azure-erőforrás, amelyet a feladatok futtatására és kezelésére hoz létre.   |
-|[**Feladat-adatbázis**](#job-database)    |    A feladatügynök által a feladatadatok, a feladatdefiníciók és egyebek tárolására használt Azure SQL Database.      |
+|[**Feladat-adatbázis**](#job-database)    |    A feladatügynök által a feladatadatok, a feladatdefiníciók és egyebek tárolására használt Azure SQL-adatbázis.      |
 |[**Célcsoport**](#target-group)      |  Azon kiszolgálók, készletek, adatbázisok és szegmenstérképek, amelyeken egy feladatot kíván futtatni.       |
 |[**Feladat**](#job)  |  A feladatok olyan Munkaegységek, amelyek egy vagy több tevékenységi [lépésből](#job-step)állnak. A feladatlépések meghatározzák a futtatandó T-SQL-szkriptet, valamint a szkript végrehajtásához szükséges egyéb részleteket.  |
 
@@ -200,9 +200,9 @@ A rugalmasfeladat-ügynök használata ingyenes. A feladatok adatbázisa minden 
 
 A *feladat-adatbázis* feladatok meghatározására, valamint a feladat-végrehajtások állapotának és előzményeinek nyomon követésére szolgál. A *feladat-adatbázis* az ügynök metaadatait, naplóit, eredményeit, feladatait, valamint számos hasznos tárolt eljárást és egyéb, a T-SQL-T használó feladatok létrehozására, futtatására és kezelésére szolgáló adatbázis-objektumot is tartalmaz.
 
-A jelenlegi előzetes verzióban egy meglévő (S0 vagy magasabb szintű) Azure SQL Database szükséges a rugalmasfeladat-ügynök létrehozásához.
+A jelenlegi előzetes verzióban egy meglévő (S0 vagy magasabb szintű) Azure SQL-adatbázis szükséges a rugalmasfeladat-ügynök létrehozásához.
 
-A *feladat-adatbázisnak* nem kell feltétlenül újnak lennie, azonban fontos, hogy üres legyen, és S0 vagy magasabb szolgáltatásszinten működjön. A *feladat-adatbázis* javasolt szolgáltatásszintje S1 vagy magasabb, ez azonban függ a feladat(ok) teljesítményigényétől, a feladatlépések számától, valamint feladatok futtatásának számától és gyakoriságától. Például egy S0 szintű adatbázis elegendő lehet egy óránként mindössze néhány feladatot futtató feladatügynök számára, percenként futtatott feladatok esetén azonban előfordulhat, hogy ez a teljesítmény nem elegendő, és érdemes magasabb szolgáltatásszintet választani.
+A *feladat-adatbázisnak* nem kell feltétlenül újnak lennie, azonban fontos, hogy üres legyen, és S0 vagy magasabb szolgáltatási szinten működjön. A *feladat-adatbázis* javasolt szolgáltatási szintje S1 vagy magasabb, ez azonban függ a feladat(ok) teljesítményigényétől, a feladatlépések számától, valamint feladatok futtatásának számától és gyakoriságától. Például egy S0 szintű adatbázis elegendő lehet egy óránként mindössze néhány feladatot futtató feladatügynök számára, percenként futtatott feladatok esetén azonban előfordulhat, hogy ez a teljesítmény nem elegendő, és érdemes magasabb szolgáltatási szintet választani.
 
 
 ##### <a name="job-database-permissions"></a>Feladat-adatbázis engedélyei

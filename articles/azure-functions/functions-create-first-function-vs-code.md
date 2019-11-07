@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 06/25/2019
 ms.author: glenga
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 52f682f7c7f06056be122b33d27592a55a01be94
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.openlocfilehash: fbde3c939a23e4023c0403c27433717a11762b08
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70744068"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73622059"
 ---
 # <a name="create-your-first-function-using-visual-studio-code"></a>Az első függvény létrehozása a Visual Studio Code használatával
 
@@ -26,7 +26,7 @@ Ebben a cikkben megtudhatja, hogy a [Azure Functions-bővítmény a Visual Studi
 
 ![Azure-függvénykód Visual Studio-projektben](./media/functions-create-first-function-vs-code/functions-vscode-intro.png)
 
-A bővítmény jelenleg a C#JavaScript, a Java és a Python függvényeket támogatja. A cikkben ismertetett lépések és az azt követő cikk csak a JavaScriptet C# és a függvényeket támogatja. Ha szeretné megtudni, hogyan hozhat létre és tehet közzé Python-függvényeket a Visual Studio Code használatával, tekintse meg a következőt: a [Python telepítése Azure functions](https://code.visualstudio.com/docs/python/tutorial-azure-functions). Ha szeretné megtudni, hogyan hozhat létre és tehet közzé PowerShell-funkciókat a Visual Studio Code használatával, tekintse meg [az első PowerShell-függvény létrehozása az Azure-ban](functions-create-first-function-powershell.md)című témakört. 
+A bővítmény jelenleg a C#JavaScript, a Java és a Python függvényeket támogatja. A cikkben ismertetett lépések és az azt követő cikk csak a JavaScriptet C# és a függvényeket támogatja. Ha szeretné megtudni, hogyan hozhat létre és tehet közzé Python-függvényeket a Visual Studio Code használatával, tekintse meg a következőt: [kiszolgáló nélküli Azure functions létrehozása és telepítése a Pythonban a Visual Studio Code](/azure/python/tutorial-vs-code-serverless-python-01)segítségével. Ha szeretné megtudni, hogyan hozhat létre és tehet közzé PowerShell-funkciókat a Visual Studio Code használatával, tekintse meg [az első PowerShell-függvény létrehozása az Azure-ban](functions-create-first-function-powershell.md)című témakört. 
 
 A bővítmény jelenleg előzetes verzióként érhető el. További tudnivalókért tekintse meg az [Azure Functions-bővítmény a Visual Studio Code-hoz] bővítmény oldalát.
 
@@ -43,9 +43,9 @@ A gyorsútmutató elvégzéséhez:
     | Nyelv | Követelmény |
     | -------- | --------- |
     | **C#** | [C#kiterjesztés](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp)  |
-    | **JavaScript** | [Node.js](https://nodejs.org/)<sup>*</sup> | 
+    | **JavaScript** | [Node. js](https://nodejs.org/) -<sup>*</sup> | 
  
-    <sup>*</sup>Aktív LTS-és karbantartási LTS-verziók (8.11.1 és 10.14.1 ajánlott).
+    <sup>*</sup> Aktív LTS-és karbantartási LTS-verziók (8.11.1 és 10.14.1 ajánlott).
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -63,7 +63,7 @@ Miután ellenőrizte, hogy a függvény megfelelően fut a helyi számítógépe
 
 ## <a name="run-the-function-in-azure"></a>A függvény futtatása az Azure-ban
 
-1. Másolja a vágólapra a HTTP-eseményindító URL-címét az **Output** (Kimenet) panelről. Ez az URL-cím tartalmazza a függvény kulcsát, amelyet `code` a rendszer a lekérdezési paraméternek továbbít. Ahogyan korábban, most is az URL-cím végéhez adja hozzá a `?name=<yourname>` lekérdezési sztringet, és hajtsa végre a kérelmet.
+1. Másolja a vágólapra a HTTP-eseményindító URL-címét az **Output** (Kimenet) panelről. Ez az URL-cím tartalmazza a `code` lekérdezési paraméternek átadott funkcióbillentyű. Ahogyan korábban, most is az URL-cím végéhez adja hozzá a `?name=<yourname>` lekérdezési sztringet, és hajtsa végre a kérelmet.
 
     A HTTP-eseményindítót használó függvényt meghívó URL-címnek az alábbi formátumban kell lennie:
 

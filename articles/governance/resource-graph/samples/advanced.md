@@ -6,12 +6,12 @@ ms.author: dacoulte
 ms.date: 10/21/2019
 ms.topic: quickstart
 ms.service: resource-graph
-ms.openlocfilehash: 9701aa5d924e82d26ad373f8c94d0391a4dc6ba2
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: 6310e13508c1c789c410f1954a2ac0dbf480a2b8
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72800156"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73622518"
 ---
 # <a name="advanced-resource-graph-queries"></a>Speciális Resource Graph-lekérdezések
 
@@ -62,7 +62,7 @@ az graph query -q "Resources | distinct type, apiVersion | where isnotnull(apiVe
 Search-AzGraph -Query "Resources | distinct type, apiVersion | where isnotnull(apiVersion) | order by type asc"
 ```
 
-# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
+# <a name="portaltabazure-portal"></a>[Portál](#tab/azure-portal)
 
 ![Resource Graph Explorer ikon](../media/resource-graph-small.png) Próbálja ki ezt a lekérdezést az Azure Resource Graph Explorerben:
 
@@ -94,7 +94,7 @@ az graph query -q "Resources | where type=~ 'microsoft.compute/virtualmachinesca
 Search-AzGraph -Query "Resources | where type=~ 'microsoft.compute/virtualmachinescalesets' | where name contains 'contoso' | project subscriptionId, name, location, resourceGroup, Capacity = toint(sku.capacity), Tier = sku.name | order by Capacity desc"
 ```
 
-# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
+# <a name="portaltabazure-portal"></a>[Portál](#tab/azure-portal)
 
 ![Resource Graph Explorer ikon](../media/resource-graph-small.png) Próbálja ki ezt a lekérdezést az Azure Resource Graph Explorerben:
 
@@ -104,7 +104,7 @@ Search-AzGraph -Query "Resources | where type=~ 'microsoft.compute/virtualmachin
 
 ## <a name="a-nameremove-column-remove-columns-from-results"></a>oszlopok eltávolítása az eredményekből <a name="remove-column" />
 
-A következő lekérdezés a `summarize` használatával számítja fel az erőforrásokat az előfizetés alapján, `join` értékkel kombinálva a _ResourceContainers_ tábla előfizetés részleteivel, majd `project-away` értékkel az oszlopok eltávolításához.
+Az alábbi lekérdezés `summarize` használatával számítja fel az erőforrásokat az előfizetés alapján, `join`, hogy kombinálja az előfizetés részleteit a _ResourceContainers_ táblából, majd `project-away`, hogy eltávolítsa az egyes oszlopokat.
 
 ```kusto
 Resources
@@ -125,7 +125,7 @@ az graph query -q "Resources | summarize resourceCount=count() by subscriptionId
 Search-AzGraph -Query "Resources | summarize resourceCount=count() by subscriptionId | join (ResourceContainers | where type=='microsoft.resources/subscriptions' | project SubName=name, subscriptionId) on subscriptionId| project-away subscriptionId, subscriptionId1"
 ```
 
-# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
+# <a name="portaltabazure-portal"></a>[Portál](#tab/azure-portal)
 
 ![Resource Graph Explorer ikon](../media/resource-graph-small.png) Próbálja ki ezt a lekérdezést az Azure Resource Graph Explorerben:
 
@@ -155,7 +155,7 @@ az graph query -q "Resources | project tags | summarize buildschema(tags)"
 Search-AzGraph -Query "Resources | project tags | summarize buildschema(tags)"
 ```
 
-# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
+# <a name="portaltabazure-portal"></a>[Portál](#tab/azure-portal)
 
 ![Resource Graph Explorer ikon](../media/resource-graph-small.png) Próbálja ki ezt a lekérdezést az Azure Resource Graph Explorerben:
 
@@ -198,7 +198,7 @@ az graph query -q "Resources | where type =~ 'microsoft.compute/virtualmachines'
 Search-AzGraph -Query "Resources | where type =~ 'microsoft.compute/virtualmachines' and name matches regex @'^Contoso(.*)[0-9]+$' | project name | order by name asc"
 ```
 
-# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
+# <a name="portaltabazure-portal"></a>[Portál](#tab/azure-portal)
 
 ![Resource Graph Explorer ikon](../media/resource-graph-small.png) Próbálja ki ezt a lekérdezést az Azure Resource Graph Explorerben:
 
@@ -208,7 +208,7 @@ Search-AzGraph -Query "Resources | where type =~ 'microsoft.compute/virtualmachi
 
 ## <a name="a-namemvexpand-cosmosdb-list-cosmos-db-with-specific-write-locations"></a><a name="mvexpand-cosmosdb" />lista adott írási hellyel Cosmos DB
 
-A következő lekérdezés Cosmos DB erőforrásokra korlátozódik, a `mv-expand` érték kibontásával bővíti a **Properties. writeLocations**, majd a Project-specifikus mezőket, és az eredményeket tovább szűkíti a **Properties. writeLocations. locationName** értékekre. "az USA keleti régiója" vagy az "USA nyugati régiója" egyeztetése.
+A következő lekérdezés korlátozza az erőforrások Cosmos DBét, a `mv-expand` használatával bővíti a **Properties. writeLocations**, majd a Project-specifikus mezőket, és a **Properties. writeLocations. locationName** értékek mellett korlátozza az eredményeket. "az USA keleti régiója" vagy az "USA nyugati régiója" egyeztetése.
 
 ```kusto
 Resources
@@ -232,7 +232,7 @@ az graph query -q "Resources | where type =~ 'microsoft.documentdb/databaseaccou
 Search-AzGraph -Query "Resources | where type =~ 'microsoft.documentdb/databaseaccounts' | project id, name, writeLocations = (properties.writeLocations) | mv-expand writeLocations | project id, name, writeLocation = tostring(writeLocations.locationName) | where writeLocation in ('East US', 'West US') | summarize by id, name"
 ```
 
-# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
+# <a name="portaltabazure-portal"></a>[Portál](#tab/azure-portal)
 
 ![Resource Graph Explorer ikon](../media/resource-graph-small.png) Próbálja ki ezt a lekérdezést az Azure Resource Graph Explorerben:
 
@@ -242,7 +242,7 @@ Search-AzGraph -Query "Resources | where type =~ 'microsoft.documentdb/databasea
 
 ## <a name="a-namejoin-key-vault-with-subscription-name"></a><a name="join" />Key Vault előfizetés neve
 
-Az alábbi lekérdezés a `join` komplex használatát mutatja be. A lekérdezés korlátozza az összekapcsolt táblát az előfizetések erőforrásaira, és a `project` értékkel csak az eredeti mező _subscriptionId_ , a _név_ mezőt pedig átnevezi a _alnévre_. A mező átnevezése elkerüli a `join` _name1_ , mivel a mező már létezik az _erőforrásokban_. Az eredeti tábla a `where` értékkel van szűrve, és a következő `project` mindkét táblából tartalmaz oszlopokat. A lekérdezés eredménye egyetlen kulcstároló-megjelenítési típus, a kulcstartó neve és az előfizetés neve.
+Az alábbi lekérdezés a `join`összetett használatát mutatja be. A lekérdezés korlátozza az összekapcsolt táblát az előfizetések erőforrásaira, és a `project`, hogy csak az eredeti mezőt _subscriptionId_ , a _név_ mezőt pedig nevezze át a _alnévre_. A mező átnevezése elkerüli, hogy `join` hozzáadja a _name1_ , mert a mező már létezik az _erőforrásokban_. Az eredeti tábla `where` van szűrve, és az alábbi `project` mindkét táblából származó oszlopokat tartalmaz. A lekérdezés eredménye egyetlen kulcstároló-megjelenítési típus, a kulcstartó neve és az előfizetés neve.
 
 ```kusto
 Resources
@@ -264,7 +264,7 @@ az graph query -q "Resources | join (ResourceContainers | where type=='microsoft
 Search-AzGraph -Query "Resources | join (ResourceContainers | where type=='microsoft.resources/subscriptions' | project SubName=name, subscriptionId) on subscriptionId | where type == 'microsoft.keyvault/vaults' | project type, name, SubName| limit 1"
 ```
 
-# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
+# <a name="portaltabazure-portal"></a>[Portál](#tab/azure-portal)
 
 ![Resource Graph Explorer ikon](../media/resource-graph-small.png) Próbálja ki ezt a lekérdezést az Azure Resource Graph Explorerben:
 
@@ -300,7 +300,7 @@ az graph query -q "Resources | where type =~ 'microsoft.sql/servers/databases' |
 Search-AzGraph -Query "Resources | where type =~ 'microsoft.sql/servers/databases' | project databaseId = id, databaseName = name, elasticPoolId = tolower(tostring(properties.elasticPoolId)) | join kind=leftouter ( Resources | where type =~ 'microsoft.sql/servers/elasticpools' | project elasticPoolId = tolower(id), elasticPoolName = name, elasticPoolState = properties.state) on elasticPoolId | project-away elasticPoolId1"
 ```
 
-# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
+# <a name="portaltabazure-portal"></a>[Portál](#tab/azure-portal)
 
 ![Resource Graph Explorer ikon](../media/resource-graph-small.png) Próbálja ki ezt a lekérdezést az Azure Resource Graph Explorerben:
 
@@ -310,7 +310,7 @@ Search-AzGraph -Query "Resources | where type =~ 'microsoft.sql/servers/database
 
 ## <a name="a-namejoin-vmpip-list-virtual-machines-with-their-network-interface-and-public-ip"></a>a hálózati adapterrel és a nyilvános IP-címmel rendelkező virtuális gépek listázása <a name="join-vmpip" />
 
-A lekérdezés két **leftouter** `join` parancsot használ a virtuális gépek, a hozzájuk kapcsolódó hálózati adapterek és az ezekhez a hálózati adapterekhez kapcsolódó nyilvános IP-címek egyesítéséhez.
+Ez a lekérdezés két **leftouter** `join` parancsot használ a virtuális gépek, a hozzájuk kapcsolódó hálózati adapterek és az ezekhez a hálózati adapterekhez kapcsolódó nyilvános IP-címek egyesítéséhez.
 
 ```kusto
 Resources
@@ -340,7 +340,7 @@ on publicIpId
 # <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 ```azurecli-interactive
-azure graph query -q "Resources | where type =~ 'microsoft.compute/virtualmachines' | extend nics=array_length(properties.networkProfile.networkInterfaces) | mvexpand nic=properties.networkProfile.networkInterfaces | where nics == 1 or nic.properties.primary =~ 'true' or isempty(nic) | project vmId = id, vmName = name, vmSize=tostring(properties.hardwareProfile.vmSize), nicId = tostring(nic.id) | join kind=leftouter ( Resources | where type =~ 'microsoft.network/networkinterfaces' | extend ipConfigsCount=array_length(properties.ipConfigurations) | mvexpand ipconfig=properties.ipConfigurations | where ipConfigsCount == 1 or ipconfig.properties.primary =~ 'true' | project nicId = id, publicIpId = tostring(ipconfig.properties.publicIPAddress.id)) on nicId | project-away nicId1 | summarize by vmId, vmName, vmSize, nicId, publicIpId | join kind=leftouter ( Resources | where type =~ 'microsoft.network/publicipaddresses' | project publicIpId = id, publicIpAddress = properties.ipAddress) on publicIpId | project-away publicIpId1"
+az graph query -q "Resources | where type =~ 'microsoft.compute/virtualmachines' | extend nics=array_length(properties.networkProfile.networkInterfaces) | mvexpand nic=properties.networkProfile.networkInterfaces | where nics == 1 or nic.properties.primary =~ 'true' or isempty(nic) | project vmId = id, vmName = name, vmSize=tostring(properties.hardwareProfile.vmSize), nicId = tostring(nic.id) | join kind=leftouter ( Resources | where type =~ 'microsoft.network/networkinterfaces' | extend ipConfigsCount=array_length(properties.ipConfigurations) | mvexpand ipconfig=properties.ipConfigurations | where ipConfigsCount == 1 or ipconfig.properties.primary =~ 'true' | project nicId = id, publicIpId = tostring(ipconfig.properties.publicIPAddress.id)) on nicId | project-away nicId1 | summarize by vmId, vmName, vmSize, nicId, publicIpId | join kind=leftouter ( Resources | where type =~ 'microsoft.network/publicipaddresses' | project publicIpId = id, publicIpAddress = properties.ipAddress) on publicIpId | project-away publicIpId1"
 ```
 
 # <a name="azure-powershelltabazure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
@@ -349,7 +349,7 @@ azure graph query -q "Resources | where type =~ 'microsoft.compute/virtualmachin
 Search-AzGraph -Query "Resources | where type =~ 'microsoft.compute/virtualmachines' | extend nics=array_length(properties.networkProfile.networkInterfaces) | mvexpand nic=properties.networkProfile.networkInterfaces | where nics == 1 or nic.properties.primary =~ 'true' or isempty(nic) | project vmId = id, vmName = name, vmSize=tostring(properties.hardwareProfile.vmSize), nicId = tostring(nic.id) | join kind=leftouter ( Resources | where type =~ 'microsoft.network/networkinterfaces' | extend ipConfigsCount=array_length(properties.ipConfigurations) | mvexpand ipconfig=properties.ipConfigurations | where ipConfigsCount == 1 or ipconfig.properties.primary =~ 'true' | project nicId = id, publicIpId = tostring(ipconfig.properties.publicIPAddress.id)) on nicId | project-away nicId1 | summarize by vmId, vmName, vmSize, nicId, publicIpId | join kind=leftouter ( Resources | where type =~ 'microsoft.network/publicipaddresses' | project publicIpId = id, publicIpAddress = properties.ipAddress) on publicIpId | project-away publicIpId1"
 ```
 
-# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
+# <a name="portaltabazure-portal"></a>[Portál](#tab/azure-portal)
 
 ![Resource Graph Explorer ikon](../media/resource-graph-small.png) Próbálja ki ezt a lekérdezést az Azure Resource Graph Explorerben:
 
@@ -385,7 +385,7 @@ az graph query -q "Resources | where type =~ 'microsoft.storage/storageaccounts'
 Search-AzGraph -Query "Resources | where type =~ 'microsoft.storage/storageaccounts' | join kind=inner ( ResourceContainers | where type =~ 'microsoft.resources/subscriptions/resourcegroups' | where tags['key1'] == 'value1' | project subscriptionId, resourceGroup) on subscriptionId, resourceGroup | project-away subscriptionId1, resourceGroup1"
 ```
 
-# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
+# <a name="portaltabazure-portal"></a>[Portál](#tab/azure-portal)
 
 ![Resource Graph Explorer ikon](../media/resource-graph-small.png) Próbálja ki ezt a lekérdezést az Azure Resource Graph Explorerben:
 
@@ -395,7 +395,7 @@ Search-AzGraph -Query "Resources | where type =~ 'microsoft.storage/storageaccou
 
 ## <a name="a-nameunionresults-combine-results-from-two-queries-into-a-single-result"></a><a name="unionresults" />két lekérdezés eredményét egyetlen eredményre egyesítheti
 
-A következő lekérdezés `union` értéket használ a _ResourceContainers_ tábla eredményeinek lekéréséhez, és hozzáadja őket az _erőforrások_ tábla eredményeihez.
+A következő lekérdezés `union` használ a _ResourceContainers_ tábla eredményeinek lekéréséhez, és hozzáadja őket az _erőforrások_ tábla eredményeihez.
 
 ```kusto
 ResourceContainers
@@ -415,7 +415,7 @@ az graph query -q "ResourceContainers | where type=='microsoft.resources/subscri
 Search-AzGraph -Query "ResourceContainers | where type=='microsoft.resources/subscriptions/resourcegroups' | project name, type  | limit 5 | union  (Resources | project name, type | limit 5)"
 ```
 
-# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
+# <a name="portaltabazure-portal"></a>[Portál](#tab/azure-portal)
 
 ![Resource Graph Explorer ikon](../media/resource-graph-small.png) Próbálja ki ezt a lekérdezést az Azure Resource Graph Explorerben:
 
@@ -439,8 +439,8 @@ Search-AzGraph -Query "limit 1" -Include DisplayNames
 > Ha a lekérdezés nem a **Project** használatával adja meg a visszaadott tulajdonságokat, a **hosszúnak** és a **tenantDisplayName** automatikusan belekerül az eredmények közé.
 > Ha a lekérdezés a **projectet**használja, a _DisplayName_ mezők mindegyikének explicit módon szerepelnie kell a **projektben** , vagy nem lesznek visszaadva az eredmények között még akkor sem, ha a **include** paramétert használja.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-- Az [Alapszintű lekérdezések](starter.md) példáinak megtekintése
-- További információk a [lekérdezés nyelvéről](../concepts/query-language.md)
-- Információ az [erőforrások felfedezéséről](../concepts/explore-resources.md)
+- Tekintse meg az [alapszintű lekérdezések](starter.md)mintáit.
+- További információ a [lekérdezési nyelvről](../concepts/query-language.md).
+- További információ az [erőforrások feltárásáról](../concepts/explore-resources.md).

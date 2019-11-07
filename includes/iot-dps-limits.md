@@ -4,31 +4,31 @@ ms.service: billing
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: jroth
-ms.openlocfilehash: e427a7b80b28f1cc70a02890152f9f2247a8bcd2
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: 4bd890adcaa4982c52366faed0f2975729290360
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "68360280"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73612081"
 ---
 A következő táblázat felsorolja az Azure IoT Hub Device Provisioning Service-erőforrásokra vonatkozó korlátozásokat.
 
-| Resource | Korlát |
+| Erőforrás | Korlát |
 | --- | --- |
 | Azure-előfizetések maximális eszköz-kiépítési szolgáltatásai | 10 |
 | Regisztrációk maximális száma | 1,000,000 |
 | Regisztrációk maximális száma | 1,000,000 |
 | Beléptetési csoportok maximális száma | 100 |
 | Hitelesítésszolgáltatók maximális száma | 25 |
-| Csatolt IoT-hubok maximális száma | 10 |
+| Csatolt IoT-hubok maximális száma | 50 |
 | Üzenet maximális mérete | 96 KB|
 
 
 > [!NOTE]
-> Az előfizetésben lévő példányok számának növeléséhez [](https://azure.microsoft.com/support/options/)forduljon Microsoft ügyfélszolgálatahoz.
+> Az előfizetésben lévő példányok számának növeléséhez forduljon [Microsoft ügyfélszolgálatahoz](https://azure.microsoft.com/support/options/).
 
 > [!NOTE]
-> A kiépítési szolgáltatásban beléptetések és regisztrációk számának növeléséhez forduljon Microsoft ügyfélszolgálatahoz [](https://azure.microsoft.com/support/options/).
+> A kiépítési szolgáltatásban beléptetések és regisztrációk számának növeléséhez forduljon [Microsoft ügyfélszolgálatahoz](https://azure.microsoft.com/support/options/).
 
 Az eszköz kiépítési szolgáltatása a következő kvóták túllépése esetén szabályozza a kérelmeket.
 

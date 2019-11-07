@@ -1,5 +1,5 @@
 ---
-title: 'Gyors útmutató: Számítási feladatok besorolásának létrehozása – T-SQL | Microsoft Docs'
+title: 'Gyors útmutató: számítási feladatok besorolása – T-SQL '
 description: A T-SQL használatával hozzon létre egy nagy fontosságú számítási feladatokat.
 services: sql-data-warehouse
 author: ronortloff
@@ -10,14 +10,14 @@ ms.subservice: workload-management
 ms.date: 05/01/2019
 ms.author: rortloff
 ms.reviewer: jrasnick
-ms.openlocfilehash: ea2e0a3bb55d16c0b413b114fca9da7f95f5c053
-ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
+ms.openlocfilehash: 1375605b6dab385b53af9212023767003e686e60
+ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69574863"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73646289"
 ---
-# <a name="quickstart-create-a-workload-classifier-using-t-sql"></a>Gyors útmutató: Számítási feladatok besorolásának létrehozása T-SQL használatával
+# <a name="quickstart-create-a-workload-classifier-using-t-sql"></a>Gyors útmutató: számítási feladatok besorolásának létrehozása T-SQL használatával
 
 Ebben a rövid útmutatóban gyorsan létre fog hozni egy számítási feladatokat, amely nagy fontossággal bír a szervezet VEZÉRIGAZGATÓJA számára. Ez a számítási feladatok besorolása lehetővé teszi, hogy az adatkezelési lekérdezések elsőbbséget élvezzenek más lekérdezésekkel szemben, amelyek kisebb jelentőséggel bírnak a várólistá
 
@@ -34,11 +34,11 @@ Ez a rövid útmutató feltételezi, hogy már rendelkezik egy SQL Data Warehous
 
 ## <a name="sign-in-to-the-azure-portal"></a>Jelentkezzen be az Azure Portalra
 
-Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
+Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
 
 ## <a name="create-login-for-theceo"></a>TheCEO-beli bejelentkezés létrehozása
 
-Hozzon létre egy SQL Server hitelesítési bejelentkezést az adatbázisban az `master` "TheCEO" létrehozási [Bejelentkezés](/sql/t-sql/statements/create-login-transact-sql) használatával.
+Hozzon létre egy SQL Server hitelesítési bejelentkezési azonosítót a `master` adatbázisban az "TheCEO" [létrehozási bejelentkezés](/sql/t-sql/statements/create-login-transact-sql) használatával.
 
 ```sql
 IF NOT EXISTS (SELECT * FROM sys.sql_logins WHERE name = 'TheCEO')

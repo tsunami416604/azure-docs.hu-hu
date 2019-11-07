@@ -6,12 +6,12 @@ ms.author: dacoulte
 ms.date: 10/21/2019
 ms.topic: overview
 ms.service: resource-graph
-ms.openlocfilehash: c113719d304aa4ed9c13df1fe0264d22aacb5002
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 41663ec04e194bcc4380f46f1e5cc5a6867e53fc
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73499141"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73622535"
 ---
 # <a name="overview-of-the-azure-resource-graph-service"></a>Az Azure Resource Graph szolgáltatás áttekintése
 
@@ -92,7 +92,7 @@ Az erőforrás-gráf támogatja az Azure CLI, a Azure PowerShell, a .NET-hez ké
 
 ## <a name="next-steps"></a>További lépések
 
-- Futtassa az első lekérdezést [Azure Portalban](first-query-portal.md).
+- Futtassa az első lekérdezést a [Azure Portal](first-query-portal.md)használatával.
 - Futtassa az első lekérdezést az [Azure CLI](first-query-azurecli.md)-vel.
 - Futtassa az első lekérdezést a [Azure PowerShell](first-query-powershell.md).
 - További információ a [lekérdezési nyelvről](./concepts/query-language.md).

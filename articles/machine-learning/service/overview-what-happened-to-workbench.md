@@ -1,7 +1,7 @@
 ---
-title: Mi történt Machine Learning Workbench-vel?
+title: Mi történt a Workbenchcsel?
 titleSuffix: Azure Machine Learning
-description: Ismerje meg, mi történt a Machine Learning Workbench alkalmazással, mi változott a Azure Machine Learningban, és mi a támogatási ütemterv.
+description: Ismerje meg, hogy mi lehetséges a Workbench alkalmazása nélkül, és mi a támogatási ütemterv.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,14 +9,14 @@ ms.topic: overview
 ms.reviewer: jmartens
 author: j-martens
 ms.author: jmartens
-ms.date: 05/14/2019
+ms.date: 11/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: 3c98da50d0c50a7fdb94f579444f3c09c1096d18
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 835024f7c8d77d67a2f6321df658c2f5c2007e62
+ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73476415"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73647104"
 ---
 # <a name="what-happened-to-azure-machine-learning-workbench"></a>Mi történt az Azure Machine Learning Workbench alkalmazással?
 
@@ -64,17 +64,11 @@ A portál munkaterület-irányítópultja csak a Microsoft Edge, a Chrome és a 
 
 Az új parancssori felület és az SDK használatával megkezdheti a modellek betanítását és a futtatási előzmények nyomon követését. Megtudhatja, hogyan használható az [oktatóanyag: modellek betanítása Azure Machine learning](tutorial-train-models-with-aml.md)használatával.
 
-## <a name="can-i-still-prep-data"></a>Továbbra is előkészíthetem az adatokat?
-
-A meglévő adatelőkészítési fájlok nem a legújabb kiadásba kerülnek, mert már nem rendelkezünk Machine Learning Workbench szolgáltatással. Azonban továbbra is előkészítheti a modellezéshez szükséges bármilyen méretű adatkészletet.
-
-Ha bármilyen méretű adatkészletet használ, a [Azure Machine learning adatelőkészítési csomag](https://aka.ms/data-prep-sdk) használatával gyorsan elő tudja készíteni az adatait a modellezés előtt a Python-kód írásával.
-
 ## <a name="will-projects-persist"></a>Megmaradnak a projektek?
 
 Nem fog elveszni sem kód, sem munka. A régebbi verzióban, a projektek helyi könyvtárral rendelkező felhőbeli entitások. A legújabb verzióban helyi konfigurációs fájllal csatolja a helyi címtárakat a Azure Machine Learning munkaterülethez. Tekintse meg a [legújabb architektúra diagramját](concept-azure-machine-learning-architecture.md).
 
-A projekt tartalmának nagy része már a helyi gépen van. Ezért csak létre kell hoznia egy konfigurációs fájlt a könyvtárban, és hivatkoznia kell a kódban a munkaterülethez való kapcsolódásra. Ha továbbra is szeretné használni a fájlokat és parancsfájlokat tartalmazó helyi könyvtárat, adja meg a könyvtár nevét a ["Experiment. submit"](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment.experiment?view=azure-ml-py) Python-parancsban, vagy használja a `az ml project attach` CLI-parancsot.  Példa:
+A projekt tartalmának nagy része már a helyi gépen van. Ezért csak létre kell hoznia egy konfigurációs fájlt a könyvtárban, és hivatkoznia kell a kódban a munkaterülethez való kapcsolódásra. Ha továbbra is szeretné használni a fájlokat és parancsfájlokat tartalmazó helyi könyvtárat, adja meg a könyvtár nevét a ["Experiment. submit"](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment.experiment?view=azure-ml-py) Python-parancsban, vagy használja a `az ml project attach` CLI-parancsot.  Például:
 ```python
 run = exp.submit(source_directory=script_folder,
                  script='train.py', run_config=run_config_system_managed)
@@ -97,22 +91,6 @@ A legújabb verzióban a modellek webszolgáltatásként lesznek telepítve Azur
 További információt a következő cikkekben talál:
 + [A modellek üzembe helyezésének helye és módja](how-to-deploy-and-where.md)
 + [Oktatóanyag: modellek üzembe helyezése Azure Machine Learning](tutorial-deploy-models-with-aml.md)
-
-## <a name="what-about-the-old-sdk-and-cli"></a>Mi a helyzet a régi SDK-val és a parancssori felülettel?
-
-Lásd az előző [idővonalat](#timeline). Javasoljuk, hogy kezdje el létrehozni az új kísérleteket és modelleket a legújabb SDK-val vagy parancssori felülettel.
-
-Ha az új Python SDK-t használja a legújabb kiadásban, a Azure Machine Learning bármely Python-környezetben dolgozhat. Ismerje meg, hogyan telepítheti a legújabb <a href="https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py" target="_blank">SDK-t</a>. A frissített [Azure Machine learning CLI-bővítmény](reference-azure-machine-learning-cli.md) a `az ml` parancsainak gazdag készletével is használható a szolgáltatással való interakcióhoz bármely parancssori környezetben, beleértve a Azure Cloud shellt is.
-
-## <a name="what-about-visual-studio-code-tools-for-ai"></a>Mi a helyzet Visual Studio Code Tools for AI?
-
-Ebben a legújabb kiadásban a bővítmény átnevezve lett a Visual Studio Code Azure Machine Learningra, és a rendszer kibővítette és továbbfejlesztette az előző új funkciókkal való együttműködéshez.
-
-[![Azure Machine Learning a Visual Studio Code-hoz](./media/overview-what-happened-to-workbench/vscode.png)](./media/overview-what-happened-to-workbench/vscode-big.png#lightbox)
-
-## <a name="what-about-domain-packages"></a>Mi a helyzet a tartománycsomagokkal?
-
-A számítógép-és a szöveges Analitika tartományi csomagjai nem használhatók a Azure Machine Learning legújabb verziójára. A legújabb Azure Machine Learning Python <a href="https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py" target="_blank">SDK</a>-val azonban továbbra is létrehozhat és betaníthat számítógépes jövőképet, szöveges és előrejelzési modelleket.
 
 ## <a name="next-steps"></a>További lépések
 

@@ -1,207 +1,219 @@
 ---
-title: A biztonsági naplózás engedélyezése az Azure AD Domain Services |} A Microsoft Docs
-description: A biztonsági naplózás engedélyezése az Azure AD tartományi szolgáltatásokhoz
+title: A Azure AD Domain Services biztonsági naplózásának engedélyezése | Microsoft Docs
+description: Megtudhatja, hogyan engedélyezheti a biztonsági naplózást az elemzési és riasztási események naplózásának központosításához Azure AD Domain Services
 services: active-directory-ds
-documentationcenter: ''
 author: iainfoulds
 manager: daveba
-editor: curtand
 ms.assetid: 662362c3-1a5e-4e94-ae09-8e4254443697
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/28/2019
+ms.date: 10/31/2019
 ms.author: iainfou
-ms.openlocfilehash: 3105296b3c670d3d44789c93878fa1fc6076973b
-ms.sourcegitcommit: d2785f020e134c3680ca1c8500aa2c0211aa1e24
+ms.openlocfilehash: 6ff996129cc140c9154edb8fb60840cd48017a5e
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/04/2019
-ms.locfileid: "67566494"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73569812"
 ---
-# <a name="enable-security-audits-for-azure-ad-domain-services-preview"></a>A biztonsági naplózás engedélyezése az Azure AD Domain Services (előzetes verzió)
-Az Azure AD tartományi szolgáltatás a biztonsági naplózás segítségével az ügyfelek az Azure AD tartományi stream biztonsági naplózási eseményeket a célzott erőforrásokhoz portált használja. Ezek az események fogadására erőforrások közé tartoznak a az Azure Storage, Azure Log Analytics-munkaterületek vagy Azure-Eseményközpontba. Kis türelmet kérünk, miután engedélyezte a biztonsági naplózási eseményeket, az Azure AD tartományi szolgáltatások a naplózott események a kiválasztott kategória küld a célzott erőforráson. Biztonsági naplózási eseményeket ügyfeleink archív naplózott események az Azure storage-bA. Ezenkívül az ügyfelek biztonsági információkat és esemény (SIEM) felügyeleti szoftver (vagy ezzel egyenértékű) az event hubs segítségével eseménysorozatot események, vagy saját elemzési és az Azure Log Analytics használatával az Azure Portalról. 
+# <a name="enable-security-audits-for-azure-active-directory-domain-services-preview"></a>Azure Active Directory Domain Services biztonsági naplózásának engedélyezése (előzetes verzió)
+
+A Azure Active Directory Domain Services (Azure AD DS) biztonsági naplózás lehetővé teszi az Azure stream biztonsági eseményeinek megadását a célként megadott erőforrásokhoz. Ezek az erőforrások például az Azure Storage, az Azure Log Analytics-munkaterületek vagy az Azure Event hub. A biztonsági naplózási események engedélyezése után az Azure AD DS a kijelölt kategóriába tartozó összes naplózott eseményt elküldi a célként megadott erőforrásnak. Az eseményeket az Azure Storage-ba és a streambe való beküldéssel is archiválhatja az Azure Event Hubs használatával, vagy saját elemzéssel és az Azure Log Analytics-munkaterületek használatával az Azure Portal.
 
 > [!IMPORTANT]
-> Az Azure AD tartományi szolgáltatások a biztonsági naplózás csak az Azure Resource Manager-alapú példányok az Azure AD tartományi szolgáltatásokhoz érhető el.
->
->
+> Az Azure AD DS biztonsági naplózás csak Azure Resource Manager-alapú példányok esetén érhető el. Az áttelepítéssel kapcsolatos információkért lásd: [Az Azure AD DS áttelepítése a klasszikus virtuális hálózati modellből a Resource Managerbe][migrate-azure-adds].
 
-## <a name="auditing-event-categories"></a>Naplózási esemény kategóriája
-Az Azure AD tartományi szolgáltatások biztonsági naplózási igazítja a hagyományos naplózás, amely az Active Directory Domain Services tartományvezérlőt. Újbóli felhasználása a meglévő naplózási minták biztosítja, hogy ugyanazt a logikát alkalmazni kell, ha az események elemzését. Az Azure AD tartományi szolgáltatások biztonsági naplózási tartalmaz a következő esemény kategóriák.
+## <a name="audit-event-categories"></a>Naplózási események kategóriái
+
+Az Azure AD DS biztonsági naplózása a hagyományos AD DS tartományvezérlők hagyományos auditálásával igazodik. Hibrid környezetekben újra felhasználhatja a meglévő naplózási mintákat, így az események elemzésekor ugyanezt a logikát is használhatja. A hibakereséshez vagy az elemzéshez szükséges forgatókönyvtől függően a különböző naplózási események kategóriáit kell megcélozni.
+
+A következő naplózási események kategóriák érhetők el:
 
 | Naplózási kategória neve | Leírás |
 |:---|:---|
-| Bejelentkezési fiók|Kísérletek hitelesítéséhez fiókadatai tartományvezérlőn és a egy helyi biztonsági fiókkezelő (SAM) naplózza.</p>Bejelentkezési és kijelentkezési házirend-beállítások és események nyomon követése megpróbál hozzáférni egy adott számítógépen. Beállítások és ebbe a kategóriába tartozó eseményeket koncentrálhat, a fiók adatbázis szolgálja ki. Ez a kategória a következő alkategóriákkal:<ul><li>[Hitelesítő adatok érvényesítésének naplózása](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-credential-validation)</li><li>[Kerberos hitelesítési szolgáltatás naplózása](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-kerberos-authentication-service)</li><li>[A Kerberos szolgáltatás Jegyműveleteinek naplózása](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-kerberos-service-ticket-operations)</li><li>[Egyéb bejelentkezési/kijelentkezési események naplózása](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-other-logonlogoff-events)</li></ul>|
-| Fiókkezelés|Naplózás a felhasználói és számítógépes fiókok és csoportok módosításait. Ez a kategória a következő alkategóriákkal:<ul><li>[Alkalmazáscsoport felügyeletének naplózása](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-application-group-management)</li><li>[Számítógépes fiókok felügyeletének naplózása](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-computer-account-management)</li><li>[Terjesztési csoportok felügyeletének naplózása](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-distribution-group-management)</li><li>[Egyéb fiókok felügyeletének naplózása](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-other-account-management-events)</li><li>[Biztonsági csoportok felügyeletének naplózása](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-security-group-management)</li><li>[Felhasználói fiókok felügyeletének naplózása](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-user-account-management)</li></ul>|
-| A részletes nyomon követése|Naplózza a tevékenységeket, az egyes alkalmazások és a felhasználók ezen a számítógépen, és a egy számítógép használatának megértéséhez. Ez a kategória a következő alkategóriákkal:<ul><li>[DPAPI-tevékenység naplózása](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-dpapi-activity)</li><li>[PNP-tevékenység naplózása](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-pnp-activity)</li><li>[Folyamat-létrehozás naplózása](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-process-creation)</li><li>[Folyamatmegszakítás naplózása](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-process-termination)</li><li>[RPC események naplózása](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-rpc-events)</li></ul>|
-| Címtárszolgáltatások hozzáférés|Naplózás próbál meg hozzáférni, és módosíthatja az objektumokat az Active Directory Domain Servicesben (AD DS). A naplózási eseményeket naplózza csak tartományvezérlőkön. Ez a kategória a következő alkategóriákkal:<ul><li>[Részletes replikáció naplózása](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-detailed-directory-service-replication)</li><li>[Címtárszolgáltatás-hozzáférés naplózása](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-directory-service-access)</li><li>[Módosításainak naplózása](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-directory-service-changes)</li><li>[Replikáció naplózása](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-directory-service-replication)</li></ul>|
-| Bejelentkezés – kijelentkezés|Jelentkezzen be egy számítógépre interaktív módon vagy a hálózaton keresztül való próbálkozások eseményeket. Ezek az események hasznosak lehetnek a felhasználói tevékenység nyomon követése, és azonosítja a potenciális támadások, a hálózati erőforrásokat. Ez a kategória a következő alkategóriákkal:<ul><li>[Fiókzárolás naplózása](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-account-lockout)</li><li>[Felhasználói és Eszközjogcímek naplózása](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-user-device-claims)</li><li>[IPsec kiterjesztett mód naplózása](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-ipsec-extended-mode)</li><li>[Naplózási csoporttagság](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-group-membership)</li><li>[IPsec fő mód naplózása](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-ipsec-main-mode)</li><li>[IPsec gyors mód naplózása](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-ipsec-quick-mode)</li><li>[Kijelentkezés naplózása](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-logoff)</li><li>[Bejelentkezés naplózása](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-logon)</li><li>[Naplózási hálózati házirend-kiszolgáló](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-network-policy-server)</li><li>[Egyéb bejelentkezési/kijelentkezési események naplózása](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-other-logonlogoff-events)</li><li>[Különleges bejelentkezés naplózása](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-special-logon)</li></ul>|
-|Objektum-hozzáférés| Eseményeket megpróbál hozzáférni az adott objektumokat vagy a hálózaton vagy a számítógép objektumtípusokat. Ez a kategória a következő alkategóriákkal:<ul><li>[Létrehozott alkalmazás naplózása](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-application-generated)</li><li>[Tanúsítványszolgáltatások naplózása](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-certification-services)</li><li>[Részletes fájlmegosztás naplózása](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-detailed-file-share)</li><li>[Fájlmegosztás naplózása](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-file-share)</li><li>[Fájlrendszer naplózása](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-file-system)</li><li>[Szűrőplatform-kapcsolat naplózása](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-filtering-platform-connection)</li><li>[Szűrőplatform Csomagvesztéseinek naplózása](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-filtering-platform-packet-drop)</li><li>[Leírókezelés naplózása](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-handle-manipulation)</li><li>[Kernel-objektum naplózása](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-kernel-object)</li><li>[Egyéb objektum-hozzáférési események naplózása](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-other-object-access-events)</li><li>[Beállításjegyzék naplózása](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-registry)</li><li>[Cserélhető tároló naplózása](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-removable-storage)</li><li>[SAM naplózása](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-sam)</li><li>[Központi hozzáférési házirend tesztelésének naplózása](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-central-access-policy-staging)</li></ul>|
-|Szabályzat módosítása|Fontos biztonsági házirendek egy helyi vagy hálózati naplók változik. Házirendek általában állítja be a rendszergazdák számára biztonságos hálózati erőforrásokhoz. Figyelés megváltozik, vagy ezek a szabályzatok módosítására tett kísérletek, lehet, hogy fontos szempont a biztonsági felügyeleti hálózat. Ez a kategória a következő alkategóriákkal:<ul><li>[Naplózási házirend-módosítások naplózása](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-audit-policy-change)</li><li>[Hitelesítési házirend-módosítások naplózása](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-authentication-policy-change)</li><li>[Engedélyezési házirend változásának naplózása](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-authorization-policy-change)</li><li>[Szűrőplatform házirend-módosításainak naplózása](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-filtering-platform-policy-change)</li><li>[MPSSVC szabályszintű házirend-módosítások naplózása](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-mpssvc-rule-level-policy-change)</li><li>[Egyéb házirend-módosítások naplózása](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-other-policy-change-events)</li></ul>|
-|Használati jog| Egy vagy több rendszer bizonyos engedélyeket használatát naplózza. Ez a kategória a következő alkategóriákkal:<ul><li>[Nem érzékeny jogosultságok használatának naplózása](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-non-sensitive-privilege-use)</li><li>[Érzékeny jogosultságok használatának naplózása](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-sensitive-privilege-use)</li><li>[Egyéb Jogosultsághasználati események naplózása](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-other-privilege-use-events)</li></ul>|
-|Rendszer| Naplózás rendszerszintű módosításai nem szerepel a többi között, és hogy a számítógép potenciális biztonsági következményekkel. Ez a kategória a következő alkategóriákkal:<ul><li>[IPsec-illesztőprogram naplózása](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-ipsec-driver)</li><li>[Egyéb Rendszeresemények naplózása](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-other-system-events)</li><li>[Biztonsági Állapotmódosítások naplózása](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-security-state-change)</li><li>[Biztonsági Rendszerbővítmény naplózása](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-security-system-extension)</li><li>[Rendszer-integritás naplózása](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-system-integrity)</li></ul>|
+| Fiók bejelentkezése|A naplózási kísérletekkel egy tartományvezérlőn vagy egy helyi biztonsági fiókkezelő (SAM) fiók adatai hitelesíthetők.</p>A bejelentkezési és kijelentkezési szabályzat beállításai és eseményei nyomon követik az adott számítógép elérésére tett kísérleteket. Az ebben a kategóriában található beállítások és események a használt fiók-adatbázisra összpontosítanak. Ez a kategória a következő alkategóriákat tartalmazza:<ul><li>[Hitelesítő adatok ellenőrzése](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-credential-validation)</li><li>[Kerberos hitelesítési szolgáltatás naplózása](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-kerberos-authentication-service)</li><li>[Kerberos szolgáltatási jegy műveleteinek naplózása](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-kerberos-service-ticket-operations)</li><li>[Egyéb bejelentkezési/kijelentkezési események naplózása](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-other-logonlogoff-events)</li></ul>|
+| Fiókkezelés|A felhasználói és számítógépfiókok és csoportok változásainak naplózása. Ez a kategória a következő alkategóriákat tartalmazza:<ul><li>[Alkalmazás-csoport kezelésének naplózása](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-application-group-management)</li><li>[Számítógép-fiókok felügyeletének naplózása](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-computer-account-management)</li><li>[Terjesztési csoport felügyeletének naplózása](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-distribution-group-management)</li><li>[Más fiókok felügyeletének naplózása](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-other-account-management-events)</li><li>[Biztonsági csoport felügyeletének naplózása](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-security-group-management)</li><li>[Felhasználói fiókok felügyeletének naplózása](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-user-account-management)</li></ul>|
+| Részletek követése|A számítógépen lévő egyes alkalmazások és felhasználók tevékenységeinek naplózása, valamint a számítógép használatának megismerése. Ez a kategória a következő alkategóriákat tartalmazza:<ul><li>[DPAPI-tevékenység naplózása](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-dpapi-activity)</li><li>[PNP-tevékenység naplózása](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-pnp-activity)</li><li>[Naplózási folyamat létrehozása](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-process-creation)</li><li>[Naplózási folyamat leállítása](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-process-termination)</li><li>[RPC-események naplózása](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-rpc-events)</li></ul>|
+| Directory Services-hozzáférés|A naplózás megkísérli az objektumok elérését és módosítását Active Directory tartományi szolgáltatások (AD DS). Ezeket a naplózási eseményeket csak tartományvezérlőkön naplózza a rendszer. Ez a kategória a következő alkategóriákat tartalmazza:<ul><li>[Részletes címtárszolgáltatás-replikáció naplózása](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-detailed-directory-service-replication)</li><li>[Címtárszolgáltatás-hozzáférés naplózása](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-directory-service-access)</li><li>[Címtárszolgáltatás változásainak naplózása](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-directory-service-changes)</li><li>[Címtárszolgáltatás replikálásának naplózása](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-directory-service-replication)</li></ul>|
+| Bejelentkezés – kijelentkezés|A naplózás megkísérli a számítógépre való bejelentkezést interaktívan vagy hálózaton keresztül. Ezek az események hasznosak lehetnek a felhasználói tevékenységek nyomon követéséhez és a hálózati erőforrásokkal kapcsolatos lehetséges támadások azonosításához. Ez a kategória a következő alkategóriákat tartalmazza:<ul><li>[Fiók zárolásának naplózása](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-account-lockout)</li><li>[Felhasználók/eszközök jogcímeinek naplózása](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-user-device-claims)</li><li>[IPsec kiterjesztett üzemmód naplózása](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-ipsec-extended-mode)</li><li>[Csoporttagság naplózása](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-group-membership)</li><li>[Az IPsec fő üzemmódjának naplózása](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-ipsec-main-mode)</li><li>[Az IPsec gyors üzemmódjának naplózása](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-ipsec-quick-mode)</li><li>[Naplózás kijelentkezése](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-logoff)</li><li>[Bejelentkezés naplózása](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-logon)</li><li>[Hálózati házirend-kiszolgáló naplózása](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-network-policy-server)</li><li>[Egyéb bejelentkezési/kijelentkezési események naplózása](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-other-logonlogoff-events)</li><li>[Speciális Bejelentkezés naplózása](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-special-logon)</li></ul>|
+|Objektum-hozzáférés| A naplózás egy hálózaton vagy számítógépen lévő adott objektumokhoz vagy típusú objektumokhoz próbál hozzáférni. Ez a kategória a következő alkategóriákat tartalmazza:<ul><li>[A naplózási alkalmazás létrehozva](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-application-generated)</li><li>[Tanúsítási szolgáltatások naplózása](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-certification-services)</li><li>[Részletes fájlmegosztás naplózása](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-detailed-file-share)</li><li>[Fájlmegosztás naplózása](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-file-share)</li><li>[Fájlrendszer naplózása](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-file-system)</li><li>[Szűrési platform kapcsolatainak naplózása](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-filtering-platform-connection)</li><li>[A szűrési platform csomagok eldobásának naplózása](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-filtering-platform-packet-drop)</li><li>[Naplózási fogantyú kezelése](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-handle-manipulation)</li><li>[Kernel-objektum naplózása](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-kernel-object)</li><li>[Más objektum-hozzáférési események naplózása](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-other-object-access-events)</li><li>[Naplózási beállításjegyzék](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-registry)</li><li>[Cserélhető tároló naplózása](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-removable-storage)</li><li>[SAM naplózása](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-sam)</li><li>[Központi hozzáférési házirend előkészítésének naplózása](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-central-access-policy-staging)</li></ul>|
+|Szabályzat módosítása|Egy helyi rendszer vagy hálózat fontos biztonsági házirendjeinek módosításait naplózza. A rendszergazdák általában a hálózati erőforrások biztonságossá tételéhez használják a házirendeket. A változások figyelése vagy a házirendek módosítására tett kísérletek fontos szempontot képeznek a hálózat biztonságának kezelésében. Ez a kategória a következő alkategóriákat tartalmazza:<ul><li>[Naplózási házirend módosítása](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-audit-policy-change)</li><li>[Hitelesítési házirend változásának naplózása](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-authentication-policy-change)</li><li>[Az engedélyezési házirend változásának naplózása](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-authorization-policy-change)</li><li>[Szűrési platform házirend-változásának naplózása](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-filtering-platform-policy-change)</li><li>[MPSSVC-szabályzat módosítása](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-mpssvc-rule-level-policy-change)</li><li>[Egyéb házirend-módosítás naplózása](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-other-policy-change-events)</li></ul>|
+|Jogosultságok használata| Bizonyos engedélyek használatát naplózza egy vagy több rendszeren. Ez a kategória a következő alkategóriákat tartalmazza:<ul><li>[Nem bizalmas jogosultságok használatának naplózása](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-non-sensitive-privilege-use)</li><li>[Bizalmas jogosultságok használatának naplózása](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-sensitive-privilege-use)</li><li>[Egyéb jogosultság-használati események naplózása](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-other-privilege-use-events)</li></ul>|
+|Rendszer| Naplózza a rendszerszintű módosításokat egy olyan számítógépre, amely nem szerepel más kategóriákban, és amelyeknek lehetséges biztonsági következményei vannak. Ez a kategória a következő alkategóriákat tartalmazza:<ul><li>[IPsec-illesztőprogram naplózása](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-ipsec-driver)</li><li>[Egyéb Rendszeresemények naplózása](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-other-system-events)</li><li>[Biztonsági állapot változásának naplózása](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-security-state-change)</li><li>[Biztonsági rendszerkiterjesztés naplózása](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-security-system-extension)</li><li>[Rendszerintegritás naplózása](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-system-integrity)</li></ul>|
 
-## <a name="event-ids-per-category"></a>Kategória szerinti eseményazonosítók
- Az Azure AD tartományi szolgáltatások biztonsági naplózási rögzíti az alábbi eseményazonosítók, ha az adott műveletet aktivál egy naplózható esemény.
+## <a name="event-ids-per-category"></a>Események azonosítói kategóriánként
 
-| Esemény kategória neve | Eseményazonosítók |
+ Az Azure AD DS biztonsági naplózása a következő eseményazonosítókat rögzíti, amikor az adott művelet naplózható eseményt indít el:
+
+| Esemény kategóriájának neve | Eseményazonosító |
 |:---|:---|
-|Fiók bejelentkezési biztonság|4767, 4774, 4775, 4776, 4777|
-|Fiók felügyeleti biztonsági|4720, 4722, 4723, 4724, 4725, 4726, 4727, 4728, 4729, 4730, 4731, 4732, 4733, 4734, 4735, 4737, 4738, 4740, 4741, 4742, 4743, 4754, 4755, 4756, 4757, 4758, 4764, 4765, 4766, 4780, 4781, 4782, 4793, 4798, 4799, 5376, 5377|
-|Részletes követési biztonsági|None|
-|Tartományi szolgáltatások elérése biztonsági|5136, 5137, 5138, 5139, 5141|
-|Bejelentkezés – kijelentkezés biztonsági|4624, 4625, 4634, 4647, 4648, 4672, 4675, 4964|
-|Objektum-hozzáférés-biztonságot|None|
-|Szabályzat módosítása biztonsági|4670, 4703, 4704, 4705, 4706, 4707, 4713, 4715, 4716, 4717, 4718, 4719, 4739, 4864, 4865, 4866, 4867, 4904, 4906, 4911, 4912|
-|Jogosultság-biztonság használata|4985|
+|Fiók bejelentkezési biztonsága|4767, 4774, 4775, 4776, 4777|
+|Fiókkezelés biztonsága|4720, 4722, 4723, 4724, 4725, 4726, 4727, 4728, 4729, 4730, 4731, 4732, 4733, 4734, 4735, 4737, 4738, 4740, 4741, 4742, 4743, 4754, 4755, 4756, 4757, 4758, 4764, 4765, 4766, 4780, 4781 és 4782|
+|Részletek követése biztonság|None|
+|DS-hozzáférés biztonsága|5136, 5137, 5138, 5139, 5141|
+|Bejelentkezés – biztonság|4624, 4625, 4634, 4647, 4648, 4672, 4675, 4964|
+|Objektum-hozzáférés biztonsága|None|
+|Házirend-módosítási biztonság|4670, 4703, 4704, 4705, 4706, 4707, 4713, 4715, 4716, 4717, 4718, 4719, 4739, 4864, 4865, 4866, 4867, 4904, 4906, 4911, 4912|
+|Biztonsági jogosultságok használata|4985|
 |Rendszerbiztonság|4612, 4621|
 
-## <a name="enable-security-audit-events"></a>Biztonsági naplózási eseményeket engedélyezése
-Az alábbi útmutató segítségével sikeresen fizessen elő az Azure AD tartományi szolgáltatások biztonsági naplózási eseményeket.
+## <a name="security-audit-destinations"></a>Biztonsági naplózási célhelyek
+
+Az Azure-beli Storage, az Azure Event Hubs vagy az Azure Log Analytics-munkaterületek tetszőleges kombinációját használhatja az Azure AD DS biztonsági naplózáshoz célként megadott erőforrásként. Használhatja az Azure Storage-t a biztonsági naplózási események archiválásához, de egy Azure Log Analytics-munkaterületet az információk rövid távú elemzéséhez és jelentéséhez.
+
+Az alábbi táblázat az egyes forrásokhoz tartozó erőforrás-típusokra vonatkozó forgatókönyveket ismerteti.
 
 > [!IMPORTANT]
-> Az Azure AD tartományi szolgáltatások biztonsági eseményeket, amelyek nem visszamenőleges. Már nem események lekérése az elmúlt vagy események az elmúlt visszajátszani. A szolgáltatás csak küldhet eseményeket, amelyek az engedélyezése után.
->
+> A Azure AD Domain Services biztonsági naplózás engedélyezése előtt létre kell hoznia a cél erőforrást. Ezeket az erőforrásokat a Azure Portal, Azure PowerShell vagy az Azure CLI használatával hozhatja létre.
 
-### <a name="choose-the-target-resource"></a>A célként megadott erőforrás kiválasztása
-Használhatja az Azure Storage, Azure Event Hubs vagy Azure Log Analytics-munkaterületek tetszőleges kombinációját a célként megadott erőforrás számára a biztonsági naplózás. Vegye figyelembe az alábbi táblázatban a használati esetekhez a legjobb erőforrás.
-
-> [!IMPORTANT]
-> Azure AD tartományi szolgáltatások a biztonsági naplózás engedélyezése előtt a célként megadott erőforrás létrehozásához szükséges.
->
-
-| Célerőforrás | Forgatókönyv |
+| Cél erőforrás | Forgatókönyv |
 |:---|:---|
-|Azure Storage|Fontolja meg a cél az elsődleges szükség esetén a archiválási célokból tárolni a biztonsági naplózási eseményeket. Más tárolók is használható archiválási célokból; azonban az ezen célok archiválás elsődleges szükség képességeinél több képességet biztosít. Azure Storage-fiók létrehozásához kövesse az [hozzon létre egy tárfiókot.](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account?tabs=azure-portal#create-a-storage-account-1)|
-|Azure Event Hubs|Fontolja meg a cél az elsődleges szükség esetén a biztonsági naplózási eseményeket megosztása további szoftvereket, például az adatok elemzési vagy biztonsági információk & esemény (SIEM) felügyeleti szoftvert. Egy eseményközpont létrehozásához kövesse az [a rövid útmutató: Létrehoz egy eseményközpontot, az Azure portal használatával.](https://docs.microsoft.com/azure/event-hubs/event-hubs-create)|
-|Azure Log Analytics Workspace|Fontolja meg a cél elemzéséhez, és tekintse át az Azure Portalról biztonságos eseményeket közvetlenül az elsődleges szükség esetén.  Log Analytics-munkaterület létrehozásához hajtsa végre az [Log Analytics-munkaterület létrehozása az Azure Portalon.](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace)|
+|Azure Storage| Ezt a célt akkor kell használni, ha elsődlegesen a biztonsági naplózási események archiválási célból történő tárolására van szükség. Más célok archiválási célokra is használhatók, azonban ezek a célok az archiválás elsődleges igényén felüli képességeket biztosítanak. Az Azure AD DS biztonsági naplózási események engedélyezése előtt [hozzon létre egy Azure Storage-fiókot](../storage/common/storage-quickstart-create-account.md?tabs=azure-portal#create-a-storage-account-1).|
+|Azure Event Hubs| Ezt a célt akkor érdemes használni, ha az elsődlegesen a biztonsági naplózási események megosztására van szükség további szoftverekkel, például az adatelemzési szoftverekkel vagy a biztonsági információkkal & az Event Management (SIEM) szoftverrel. Az Azure AD DS biztonsági naplózási események engedélyezése előtt [hozzon létre egy Event hub-t a Azure Portal használatával](https://docs.microsoft.com/azure/event-hubs/event-hubs-create)|
+|Azure Log Analytics munkaterület| Ezt a célt akkor érdemes használni, ha az elsődleges szükséglet a Azure Portal közvetlen biztonságos naplózásának elemzése és ellenőrzése. Az Azure AD DS biztonsági naplózási események engedélyezése előtt [hozzon létre egy log Analytics munkaterületet a Azure Portal.](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace)|
 
-## <a name="using-the-azure-portal-to-enable-security-audit-events"></a>Biztonsági naplózási eseményeket engedélyezése az Azure portal használatával 
-1. Jelentkezzen be az Azure Portalra a https://portal.azure.com webhelyen.  Az Azure Portalon kattintson az összes szolgáltatás. Az erőforrások listájába írja be a **tartomány**. Ahogy elkezd gépelni, a lista a beírtak alapján szűri a lehetőségeket. Kattintson a **az Azure AD Domain Services**.
-2. Kattintson az Azure AD Domain Services-példány a listából.
-3. Kattintson a **diagnosztikai beállítások (előzetes verzió)** műveleteket a bal oldali listájában.</p>
-![diagnosztikai beállítás művelet](./media/security-audit-events/diagnostic-settings-action.png)
-4. Diagnosztikai konfiguráció neve (**aadds naplózás** példaként).</p>
-![Diagnosztikai beállítások lap](./media/security-audit-events/diagnostic-settings-page.png)
-5. Jelölje be a megfelelő mellett szeretné használni, a biztonsági naplózási eseményeket a célzott erőforrásokhoz.
-    > [!NOTE]
-    > Célerőforrások ezen a lapon nem hozható létre.
-    >
-    
-    **az Azure storage:**</p>
-    Válassza ki **archiválás tárfiókba**. Kattintson a **Konfigurálás** elemre. Válassza ki a **előfizetés** és a **tárfiók** archiválnia a biztonsági naplózási eseményeket szeretné. Kattintson az **OK** gombra.</p>
-    
-    ![diagnosztikai tárfiók-beállítások](./media/security-audit-events/diag-settings-storage.png)
-    
-    **Az Azure event hubs:**</p>
-    Válassza ki **egy eseményközpontba Stream**. Kattintson a **Konfigurálás** elemre. Az a **válassza eseményközpontba oldal**, jelölje be a **előfizetés** az eseményközpont létrehozásához használt. Ezután válassza ki a **eseményközpont-névtér**, **eseményközpont neve**, és **eseményközpont szabályzatának neve**. Kattintson az **OK** gombra.</p>
-    ![diagnosztikai event hub beállításai](./media/security-audit-events/diag-settings-eventhub.png)
-    
-    **Az Azure Log Analytics-munkaterületek:**</p>
-    Válassza ki **Küldés a Log Analyticsnek**. Válassza ki a **előfizetés** és **Log Analytics-munkaterület** fogja tárolni a biztonsági naplózási eseményeket.</p>
-    ![diagnosztikai munkaterület beállításai](./media/security-audit-events/diag-settings-log-analytics.png)
+## <a name="enable-security-audit-events-using-the-azure-portal"></a>Biztonsági naplózási események engedélyezése a Azure Portal használatával
 
-6. Válassza ki a kívánt része az adott célerőforrás naplókategóriák. Storage-fiókok használata esetén konfigurálhatja a megtartási házirendeket.
+Az Azure AD DS biztonsági naplózási események az Azure Portal használatával történő engedélyezéséhez hajtsa végre a következő lépéseket.
 
-    > [!NOTE]
-    > Választhat másik naplókategóriák egyetlen konfigurációval belül az egyes megcélzott erőforrások. Ez lehetővé teszi, hogy válassza ki, amely naplózza, hogy meg szeretné tartani a Log Analytics, és amely naplózza a kategóriák archiválása a kívánt kategóriákat.
-    >
+> [!IMPORTANT]
+> Az Azure AD DS biztonsági naplózása nem visszamenőleges. Nem lehet lekérdezni az eseményeket a múltból, illetve a múltbeli eseményeket is visszajátszani. Az Azure AD DS csak az engedélyezése után lehet eseményeket küldeni.
 
-7. Kattintson a **mentése** a módosítások véglegesítéséhez. A célerőforrások fog kapni az Azure AD Domain Services biztonsági naplózási eseményeket, mentse a konfigurációt követően rövid időn belül.
+1. Jelentkezzen be az Azure Portalra a https://portal.azure.com webhelyen.
+1. A Azure Portal tetején keresse meg és válassza a **Azure ad Domain Services**lehetőséget. Válassza ki a felügyelt tartományt, például *contoso.com*.
+1. Az Azure AD DS ablakban válassza a **diagnosztikai beállítások (előzetes verzió)** lehetőséget a bal oldali oldalon.
+1. Alapértelmezés szerint egyetlen diagnosztika sincs konfigurálva. Első lépésként válassza a **diagnosztikai beállítás hozzáadása**elemet.
 
-## <a name="using-azure-powershell-to-enable-security-audit-events"></a>Azure PowerShell-lel való engedélyezése biztonsági naplózási eseményeket
- 
-### <a name="prerequisites"></a>Előfeltételek
+    ![Diagnosztikai beállítás hozzáadása a Azure AD Domain Serviceshoz](./media/security-audit-events/add-diagnostic-settings.png)
 
-Kövesse a cikkben szereplő utasításokat [az Azure PowerShell-modul telepítése és csatlakozás az Azure-előfizetéshez](https://docs.microsoft.com/powershell/azure/install-az-ps?toc=%2fazure%2factive-directory-domain-services%2ftoc.json).
+1. Adja meg a diagnosztikai konfiguráció nevét, például *aadds-audit*.
 
-### <a name="enable-security-audits"></a>A biztonsági naplózás engedélyezése
+    Jelölje be a kívánt biztonsági naplózási célhely jelölőnégyzetét. Választhat egy Azure Storage-fiókból, egy Azure Event hub-ból vagy egy Log Analytics-munkaterületből is. Ezeknek a cél erőforrásoknak már léteznie kell az Azure-előfizetésében. A célként megadott erőforrások nem hozhatók létre ebben a varázslóban.
 
-1. Az Azure Resource Manager a megfelelő bérlő és előfizetés használatával hitelesíti a **Connect-AzAccount** Azure PowerShell-parancsmagot.
-2. Hozzon létre a célként megadott erőforrás esetében a biztonsági naplózási eseményeket.</p>
-    **az Azure storage:**</p>
-    Hajtsa végre a [hozzon létre egy tárfiókot](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account?tabs=azure-powershell) a tárfiók létrehozásához.</p>
-    **Az Azure event hubs:**</p>
-    Hajtsa végre a [a rövid útmutató: Létrehoz egy eseményközpontot, az Azure PowerShell-lel](https://docs.microsoft.com/azure/event-hubs/event-hubs-quickstart-powershell) az eseményközpont létrehozásához. Előfordulhat, hogy is kell használnia a [New-AzEventHubAuthorizationRule](https://docs.microsoft.com/powershell/module/az.eventhub/new-azeventhubauthorizationrule?view=azps-2.3.2) Azure PowerShell-parancsmag használatával létrehozhat egy engedélyezési szabályt, hogy az Active Directory AD tartományi szolgáltatások engedélyek az event hubs **névtér**. Az engedélyezési szabályt tartalmaznia kell a **kezelés**, **figyelésére**, és **küldése** rights.
-    > [!IMPORTANT]
-    > Győződjön meg arról, az eseményközpont-névtér és az event hubs nem állítsa be az engedélyezési szabályt.
-       
-    </p>
-    
-    **Az Azure Log Analytics-munkaterületek:**</p>
-    Hajtsa végre a [Log Analytics-munkaterület létrehozása az Azure PowerShell-lel](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace-posh) hozhat létre a munkaterületet.
-3. Az Azure AD Domain Services-példány beolvasása az erőforrás-azonosítója. Egy megnyitott, hitelesített Windows PowerShell-konzolt írja be a következő parancsot. Használja a **$aadds. Erőforrás-azonosító** változó az Azure AD tartományi szolgáltatások erőforrás-azonosítóhoz a jövőbeli parancsmagok paraméterként.
-    ```powershell
+    ![A szükséges cél és naplózási események típusának engedélyezése a rögzítéshez](./media/security-audit-events/diagnostic-settings-page.png)
+
+    * **Azure Storage tárterület**
+        * Válassza az **archiválás egy Storage-fiókba**lehetőséget, majd válassza a **Konfigurálás**lehetőséget.
+        * Válassza ki az **előfizetést** és azt a **Storage-fiókot** , amelyet a biztonsági naplózási események archiválásához használni kíván.
+        * Ha elkészült, kattintson **az OK gombra**.
+    * **Azure Event hubok**
+        * Válassza a stream elemet az **Event hubhoz**, majd válassza a **Konfigurálás**lehetőséget.
+        * Válassza ki az **előfizetést** és az **Event hub-névteret**. Ha szükséges, válassza ki az **Event hub nevét** , majd az **Event hub-szabályzat nevét**.
+        * Ha elkészült, kattintson **az OK gombra**.
+    * **Azure log analitikai munkaterületek**
+        * Válassza a **küldés log Analytics**lehetőséget, majd válassza ki azt az **előfizetést** és **log Analytics munkaterületet** , amelyet a biztonsági naplózási események tárolására kíván használni.
+
+1. Válassza ki az adott cél erőforráshoz szerepeltetni kívánt naplózási kategóriákat. Ha a naplózási eseményeket egy Azure Storage-fiókba küldi, beállíthat egy adatmegőrzési szabályt is, amely meghatározza, hogy hány nap elteltével kell megőrizni az adatok mennyiségét. A *0* alapértelmezett értéke minden adat megtartása, és az események nem forognak egy adott időszak után.
+
+    Egyetlen konfiguráción belül különböző naplózási kategóriákat választhat az egyes megcélzó erőforrásokhoz. Ezzel a képességgel kiválaszthatja, hogy mely naplókhoz kívánja megőrizni a Log Analytics és az archiválni kívánt kategóriákat (például:).
+
+1. Ha elkészült, kattintson a **Mentés** gombra a módosítások elvégzéséhez. A cél erőforrásai hamarosan megkezdik az Azure AD DS biztonsági naplózási események fogadását a konfiguráció mentése után.
+
+## <a name="enable-security-audit-events-using-azure-powershell"></a>Biztonsági naplózási események engedélyezése Azure PowerShell használatával
+
+Az Azure AD DS biztonsági naplózási események Azure PowerShell használatával történő engedélyezéséhez hajtsa végre az alábbi lépéseket. Ha szükséges, először [telepítse a Azure PowerShell modult, és kapcsolódjon az Azure-előfizetéséhez](/powershell/azure/install-az-ps).
+
+> [!IMPORTANT]
+> Az Azure AD DS biztonsági naplózása nem visszamenőleges. Nem lehet lekérdezni az eseményeket a múltból, illetve a múltbeli eseményeket is visszajátszani. Az Azure AD DS csak az engedélyezése után lehet eseményeket küldeni.
+
+1. Hitelesítse az Azure-előfizetését a [AzAccount](/powershell/module/Az.Accounts/Connect-AzAccount) parancsmag használatával. Ha a rendszer kéri, adja meg a fiókja hitelesítő adatait.
+
+    ```azurepowershell
+    Connect-AzAccount
+    ```
+
+1. Hozza létre a cél erőforrást a biztonsági naplózási eseményekhez.
+
+    * **Azure Storage** - - [Storage-fiók létrehozása Azure PowerShell használatával](../storage/common/storage-quickstart-create-account.md?tabs=azure-powershell)
+    * Az **Azure Event hub** - - [Azure PowerShell használatával hozhat létre egy Event hub](../event-hubs/event-hubs-quickstart-powershell.md)-t. Előfordulhat, hogy a [New-AzEventHubAuthorizationRule](/powershell/module/az.eventhub/new-azeventhubauthorizationrule) parancsmagot kell használnia olyan engedélyezési szabály létrehozásához, amely Azure AD DS engedélyeket biztosít az Event hub- *névtérhez*. Az engedélyezési szabálynak tartalmaznia kell a **kezelés**, a **figyelés**és a **Küldés** jogosultságokat.
+
+        > [!IMPORTANT]
+        > Győződjön meg arról, hogy az Event hub-névtérben az engedélyezési szabályt állítja be, nem pedig magára az Event hub-ra.
+
+    * Az **Azure log Analytics-munkaterületek** - [létrehoz egy log Analytics munkaterületet Azure PowerShell](../azure-monitor/learn/quick-create-workspace-posh.md).
+
+1. Szerezze be az Azure AD DS felügyelt tartomány erőforrás-AZONOSÍTÓját a [Get-AzResource](/powershell/module/Az.Resources/Get-AzResource) parancsmag használatával. Hozzon létre egy $aadds nevű változót *. ResourceId* az érték megtartásához:
+
+    ```azurepowershell
     $aadds = Get-AzResource -name aaddsDomainName
-    ``` 
-4. Használja a **Set-AzDiagnosticSetting** parancsmagot, hogy a célként megadott erőforrás használható az Azure AD Domain Services biztonsági naplózási eseményeket az Azure diagnosztikai beállítások konfigurálása. Az alábbi, a változó $aadds példák. Erőforrás-azonosító jelöli az erőforrás-azonosító az Azure AD Domain Services-példány (lásd a 3. lépés).</p>
-    **az Azure storage:**
-    ```powershell
-    Set-AzDiagnosticSetting `
-    -ResourceId $aadds.ResourceId` 
-    -StorageAccountId storageAccountId `
-    -Enabled $true
     ```
-    Cserélje le *storageAccountId* a tárolási fiók azonosítóját írja.</p>
-    
-    **Az Azure event hubs:**
-    ```powershell
-    Set-AzDiagnosticSetting -ResourceId $aadds.ResourceId ` 
-    -EventHubName eventHubName `
-    -EventHubAuthorizationRuleId eventHubRuleId `
-    -Enabled $true
-    ```
-    Cserélje le *eventHubName* az eseményközpont nevével. Cserélje le *eventHubRuleId* az engedélyezési szabály azonosítójú korábban hozott létre.</p>
-    
-    **Az Azure Log Analytics-munkaterületek:**
-    ```powershell
-    Set-AzureRmDiagnosticSetting -ResourceId $aadds.ResourceId ` 
-    -WorkspaceID workspaceId `
-    -Enabled $true
-    ```
-    Cserélje le *munkaterület azonosítója* azonosítójú, korábban létrehozott Log Analytics-munkaterületen. 
 
-## <a name="view-security-audit-events-using-azure-monitor"></a>Biztonsági naplózási események megtekintése az Azure Monitor használatával
-Log Analytics munkaterületek lehetővé teszi megtekintése és elemzése az Azure Monitor és a Kusto-lekérdezési nyelv segítségével biztonsági naplózási eseményeket. A lekérdezési nyelv a csak olvasható használja az energiaellátási analitikai lehetőségek egy könnyen olvasható szintaxissal büszkélkedhet lett tervezve.
-Íme néhány forrás, Kusto-lekérdezés nyelv – első lépések segítségével.
+1. Konfigurálja az Azure diagnosztikai beállításait a [set-AzDiagnosticSetting](/powershell/module/Az.Monitor/Set-AzDiagnosticSetting) parancsmag használatával a Azure ad Domain Services biztonsági naplózási események céljának erőforrásának használatához. A következő példákban a változó *$aadds. A ResourceId* az előző lépésben használatos.
+
+    * **Azure Storage** – cserélje le a *storageAccountId* a Storage-fiók nevére:
+
+        ```powershell
+        Set-AzDiagnosticSetting `
+            -ResourceId $aadds.ResourceId `
+            -StorageAccountId storageAccountId `
+            -Enabled $true
+        ```
+
+    * **Azure Event hubok** – cserélje le az *eventHubName* -t az Event hub nevére és a *eventHubRuleId* az engedélyezési szabály azonosítójával:
+
+        ```powershell
+        Set-AzDiagnosticSetting -ResourceId $aadds.ResourceId `
+            -EventHubName eventHubName `
+            -EventHubAuthorizationRuleId eventHubRuleId `
+            -Enabled $true
+        ```
+
+    * **Azure log Analytics-munkaterületek** – cserélje le a *munkaterület azonosítója* -t a log Analytics munkaterület azonosítójával:
+
+        ```powershell
+        Set-AzureRmDiagnosticSetting -ResourceId $aadds.ResourceId `
+            -WorkspaceID workspaceId `
+            -Enabled $true
+        ```
+
+## <a name="query-and-view-security-audit-events-using-azure-monitor"></a>Biztonsági naplózási események lekérdezése és megtekintése Azure Monitor használatával
+
+A log analitikai munkaterületek lehetővé teszik a biztonsági naplózási események megtekintését és elemzését Azure Monitor és a Kusto lekérdezési nyelv használatával. Ezt a lekérdezési nyelvet csak olvasható használatra tervezték, amely egy könnyen olvasható szintaxissal büszkélkedhet a Power analitikai funkciókkal. További információ a Kusto-lekérdezési nyelvek használatáról:
+
 * [Az Azure Monitor dokumentációja](https://docs.microsoft.com/azure/azure-monitor/)
-* [Ismerkedés a Log Analytics az Azure monitorban](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal)
-* [Az Azure Monitor log-lekérdezések használatának első lépései](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-queries)
-* [Az adatok Log Analytics irányítópultok létrehozása és megosztása](https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-logs-dashboards)
+* [Ismerkedés a Log Analyticsával Azure Monitor](../azure-monitor/log-query/get-started-portal.md)
+* [Ismerkedés a Azure Monitor-naplózási lekérdezésekkel](../azure-monitor/log-query/get-started-queries.md)
+* [Irányítópultok létrehozása és megosztása Log Analytics-adatkészletből](../azure-monitor/learn/tutorial-logs-dashboards.md)
 
-## <a name="sample-queries"></a>Mintalekérdezések
+Az alábbi példák segítségével megkezdheti az Azure AD DS biztonsági naplózási eseményeinek elemzését.
 
-### <a name="sample-query-1"></a>Mintalekérdezés 1
-Az összes a fiók zárolása események az elmúlt hét nap.
+### <a name="sample-query-1"></a>1\. minta lekérdezés
+
+Az összes fiókzárolási esemény megtekintése az elmúlt hét napban:
+
 ```Kusto
 AADDomainServicesAccountManagement
 | where TimeGenerated >= ago(7d)
 | where OperationName has "4740"
 ```
 
-### <a name="sample-query-2"></a>Mintalekérdezés 2
-A fiók zárolása közé eső összes (4740) 2019. június 26. 9-kor 2019. július 1. éjfél és, rendezett növekvő dátum és idő alapján.
+### <a name="sample-query-2"></a>2\. minta lekérdezés
+
+Tekintse meg az összes fiókzárolási eseményt (*4740*) a 2019. június 26. között, 9 órakor és 2019 éjfél, a dátum és idő szerint növekvő sorrendbe rendezve:
+
 ```Kusto
 AADDomainServicesAccountManagement
-| where TimeGenerated >= datetime(2019-06-26 09:00) and TimeGenerated <= datetime(2019-07-01) 
+| where TimeGenerated >= datetime(2019-06-26 09:00) and TimeGenerated <= datetime(2019-07-01)
 | where OperationName has "4740"
 | sort by TimeGenerated asc
 ```
 
-### <a name="sample-query-3"></a>Mintalekérdezés 3
-Fiók naplózási események hét napja (most) nevű felhasználói fiók.
+### <a name="sample-query-3"></a>3\. minta lekérdezés
+
+A fiók bejelentkezési eseményeinek megtekintése hét nappal ezelőtt (mostantól) a felhasználó nevű fiókhoz:
+
 ```Kusto
 AADDomainServicesAccountLogon
 | where TimeGenerated >= ago(7d)
 | where "user" == tolower(extract("Logon Account:\t(.+[0-9A-Za-z])",1,tostring(ResultDescription)))
 ```
 
-### <a name="sample-query-4"></a>Mintalekérdezés 4
-A fiókbejelentkezési események hét napja, most már a fiókjához tartozó nevű felhasználót, hogy megpróbált bejelentkezni helytelen jelszóval (0xC0000006a).
+### <a name="sample-query-4"></a>4\. minta lekérdezés
+
+Megtekintheti a fiók bejelentkezési eseményeit hét nappal ezelőtt a felhasználó számára, amely rossz jelszó (*0xC0000006a*) használatával próbált bejelentkezni:
+
 ```Kusto
 AADDomainServicesAccountLogon
 | where TimeGenerated >= ago(7d)
@@ -209,8 +221,10 @@ AADDomainServicesAccountLogon
 | where "0xc000006a" == tolower(extract("Error Code:\t(.+[0-9A-Za-z])",1,tostring(ResultDescription)))
 ```
 
-### <a name="sample-query-5"></a>Mintalekérdezés 5
-Bejelentkezési események hét napja, most már a fiókjához tartozó nevű felhasználót, hogy megpróbált bejelentkezni, amíg a fiók (0xC0000234) lett zárolva.
+### <a name="sample-query-5"></a>5\. minta lekérdezés
+
+A fiók bejelentkezési eseményeinek megtekintése a fiók kizárása után a felhasználó számára, aki megpróbált bejelentkezni, miközben a fiókot kizárták (*0xC0000234*):
+
 ```Kusto
 AADDomainServicesAccountLogon
 | where TimeGenerated >= ago(7d)
@@ -218,8 +232,10 @@ AADDomainServicesAccountLogon
 | where "0xc0000234" == tolower(extract("Error Code:\t(.+[0-9A-Za-z])",1,tostring(ResultDescription)))
 ```
 
-### <a name="sample-query-6"></a>Mintalekérdezés 6
-Bejelentkezési események száma a hét napja, most már az összes jelentkezzen be, amely az összes felhasználó zárolva történt kísérlet.
+### <a name="sample-query-6"></a>Minta lekérdezés 6
+
+Tekintse meg a fiók bejelentkezési eseményeinek számát hét nappal ezelőtt az összes kizárt felhasználónál történt bejelentkezési kísérlet után:
+
 ```Kusto
 AADDomainServicesAccountLogon
 | where TimeGenerated >= ago(7d)
@@ -227,23 +243,14 @@ AADDomainServicesAccountLogon
 | summarize count()
 ```
 
-## <a name="related-content"></a>Kapcsolódó tartalom
-* [Áttekintés](https://docs.microsoft.com/azure/kusto/query/) a Kusto-lekérdezési nyelv.
-* [Kusto-oktatóanyag](https://docs.microsoft.com/azure/kusto/query/tutorial) és ismerje meg, a lekérdezés alapjaival.
-* [Példa a lekérdezésekre](https://docs.microsoft.com/azure/kusto/query/samples) , amelyek révén megismerheti, hogy új módokon meg az adatokat.
-* Kusto [ajánlott eljárások](https://docs.microsoft.com/azure/kusto/query/best-practices) – optimalizálni a lekérdezéseket, a sikeres.
+## <a name="next-steps"></a>További lépések
 
+A Kusto kapcsolatos konkrét információk a következő cikkekben találhatók:
 
+* A Kusto lekérdezési nyelvének [áttekintése](/azure/kusto/query/) .
+* [Kusto-oktatóanyag](/azure/kusto/query/tutorial) a lekérdezési alapismeretek megismeréséhez.
+* [Példa a lekérdezésekre](/azure/kusto/query/samples) , amelyek segítenek az új módszerek megismerésében.
+* Kusto [ajánlott eljárásokat](/azure/kusto/query/best-practices) a lekérdezések sikeres optimalizálása érdekében.
 
-
-
-
-
-
-
-
-
-
-
-
- 
+<!-- LINKS - Internal -->
+[migrate-azure-adds]: migrate-from-classic-vnet.md

@@ -1,5 +1,5 @@
 ---
-title: Ruby használata Azure SQL-adatbázis lekérdezéséhez | Microsoft Docs
+title: A Ruby használata a Azure SQL Database lekérdezéséhez
 description: Ez a témakör bemutatja, hogyan használhatja a Rubyt egy Azure SQL-adatbázishoz csatlakozó program létrehozásához, és hogyan hajthat végre lekérdezést Transact-SQL-utasításokkal.
 services: sql-database
 ms.service: sql-database
@@ -11,14 +11,14 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/25/2019
-ms.openlocfilehash: 5b47ddc2d865108e03b3c649536bfaa700e4a59d
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: ecfdfa8930858eb02e993688a3ea1a78d2d7fe5f
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68569122"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73690910"
 ---
-# <a name="quickstart-use-ruby-to-query-an-azure-sql-database"></a>Gyors útmutató: Ruby használata Azure SQL-adatbázis lekérdezéséhez
+# <a name="quickstart-use-ruby-to-query-an-azure-sql-database"></a>Rövid útmutató: Ruby használata Azure SQL-adatbázis lekérdezéséhez
 
 Ez a rövid útmutató bemutatja, hogyan használható a [Ruby](https://www.ruby-lang.org) egy Azure SQL Database-adatbázishoz való kapcsolódáshoz és az adatlekérdezéshez Transact-SQL-utasításokkal.
 
@@ -30,7 +30,7 @@ A rövid útmutató elvégzéséhez a következő előfeltételek szükségesek:
 
   || Önálló adatbázis | Felügyelt példány |
   |:--- |:--- |:---|
-  | Hozzon létre| [Portál](sql-database-single-database-get-started.md) | [Portál](sql-database-managed-instance-get-started.md) |
+  | Létrehozás| [Portál](sql-database-single-database-get-started.md) | [Portál](sql-database-managed-instance-get-started.md) |
   || [Parancssori felület](scripts/sql-database-create-and-configure-database-cli.md) | [Parancssori felület](https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44) |
   || [PowerShell](scripts/sql-database-create-and-configure-database-powershell.md) | [PowerShell](scripts/sql-database-create-configure-managed-instance-powershell.md) |
   | Konfigurálás | [Kiszolgálói szintű IP-tűzfalszabály](sql-database-server-level-firewall-rule.md)| [Kapcsolódás virtuális gépről](sql-database-managed-instance-configure-vm.md)|
@@ -44,17 +44,17 @@ A rövid útmutató elvégzéséhez a következő előfeltételek szükségesek:
   
 - A Ruby és az operációs rendszerhez kapcsolódó szoftverek:
   
-  - **MacOS**: A Homebrew, a rbenv és a Ruby-Build, a Ruby, a FreeTDS és a TinyTDS telepítése. Tekintse meg a 1,2, 1,3, 1,4, 1,5 és 2,1 lépéseket a [Ruby-alkalmazások létrehozása a macOS SQL Server használatával](https://www.microsoft.com/sql-server/developer-get-started/ruby/mac/)című témakörben.
+  - **MacOS**: a Homebrew, a rbenv és a Ruby-Build, a Ruby, a FreeTDS és a TinyTDS telepítése. Tekintse meg a 1,2, 1,3, 1,4, 1,5 és 2,1 lépéseket a [Ruby-alkalmazások létrehozása a macOS SQL Server használatával](https://www.microsoft.com/sql-server/developer-get-started/ruby/mac/)című témakörben.
   
-  - **Ubuntu**: Telepítse az előfeltételeket a Ruby, a rbenv és a Ruby-Build, a Ruby, a FreeTDS és a TinyTDS telepítéséhez. Tekintse meg a 1,2, 1,3, 1,4, 1,5 és 2,1 lépéseket a [Ruby-alkalmazások létrehozása SQL Server használatával Ubuntu rendszeren](https://www.microsoft.com/sql-server/developer-get-started/ruby/ubuntu/).
+  - **Ubuntu**: a Ruby, a rbenv és a Ruby-Build, a Ruby, a FreeTDS és a TinyTDS telepítésének előfeltételei. Tekintse meg a 1,2, 1,3, 1,4, 1,5 és 2,1 lépéseket a [Ruby-alkalmazások létrehozása SQL Server használatával Ubuntu rendszeren](https://www.microsoft.com/sql-server/developer-get-started/ruby/ubuntu/).
   
-  - **Windows**: Telepítse a Ruby, a Ruby fejlesztői készlet és a TinyTDS. Lásd: [fejlesztői környezet konfigurálása Ruby](/sql/connect/ruby/step-1-configure-development-environment-for-ruby-development)-fejlesztéshez.
+  - **Windows**: telepítse a Ruby, a Ruby fejlesztői készlet és a TinyTDS. Lásd: [fejlesztői környezet konfigurálása Ruby-fejlesztéshez](/sql/connect/ruby/step-1-configure-development-environment-for-ruby-development).
 
 ## <a name="get-sql-server-connection-information"></a>SQL Server-kapcsolatok adatainak beolvasása
 
 Az Azure SQL Database-adatbázishoz való kapcsolódáshoz szükséges kapcsolati adatok beolvasása. A közelgő eljárásokhoz szüksége lesz a teljes kiszolgálónévre vagy az állomásnévre, az adatbázis nevére és a bejelentkezési adatokra.
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
+1. Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
 
 2. Navigáljon az **SQL-adatbázisok** vagy az **SQL-felügyelt példányok** lapra.
 
@@ -64,7 +64,7 @@ Az Azure SQL Database-adatbázishoz való kapcsolódáshoz szükséges kapcsolat
 
 1. Egy szöveg-vagy Kódszerkesztő-szerkesztőben hozzon létre egy *sqltest. RB*nevű új fájlt.
    
-1. Adja hozzá a következő kódot. Helyettesítse be az `<server>`Azure SQL `<username>`- `<database>`adatbázis értékeit a,, `<password>`és rendszerhez.
+1. Adja hozzá a következő kódot. Helyettesítse be az Azure SQL-adatbázis értékeit `<server>`, `<database>`, `<username>`és `<password>`.
    
    >[!IMPORTANT]
    >Az ebben a példában szereplő kód a minta AdventureWorksLT-adatait használja, amelyeket az adatbázis létrehozásakor választhat forrásként. Ha az adatbázis különböző adatokkal rendelkezik, a SELECT lekérdezésben használja a saját adatbázisában lévő táblákat. 
@@ -100,7 +100,7 @@ Az Azure SQL Database-adatbázishoz való kapcsolódáshoz szükséges kapcsolat
 1. Győződjön meg arról, hogy az adatbázisból az első 20 kategória/termék sorait adja vissza. 
 
 ## <a name="next-steps"></a>További lépések
-- [Tervezze meg első Azure SQL](sql-database-design-first-database.md)-adatbázisát.
-- [A TinyTDS GitHub](https://github.com/rails-sqlserver/tiny_tds)-tárháza.
+- [Tervezze meg első Azure SQL-adatbázisát](sql-database-design-first-database.md).
+- [A TinyTDS GitHub-tárháza](https://github.com/rails-sqlserver/tiny_tds).
 - [Jelentheti a problémákat, vagy kérdéseket tehet fel a TinyTDS kapcsolatban](https://github.com/rails-sqlserver/tiny_tds/issues).
 - [Ruby-illesztőprogram a SQL Serverhoz](https://docs.microsoft.com/sql/connect/ruby/ruby-driver-for-sql-server/).

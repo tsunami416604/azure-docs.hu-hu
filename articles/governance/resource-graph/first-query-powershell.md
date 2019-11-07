@@ -6,12 +6,12 @@ ms.author: dacoulte
 ms.date: 10/18/2019
 ms.topic: quickstart
 ms.service: resource-graph
-ms.openlocfilehash: a7d65d975d43a63a38863721273debab46115045
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 9e41ca2e7c6d789b3d18fa98c4845118fa6538ef
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72389712"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73622554"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-azure-powershell"></a>Rövid útmutató: az első Resource Graph-lekérdezés futtatása a Azure PowerShell használatával
 
@@ -77,7 +77,7 @@ Miután az Azure PowerShell modul hozzá lett adva a választott környezethez, 
    > [!NOTE]
    > Csakúgy, mint az első lekérdezésnél, e lekérdezés többszöri futtatása esetén is valószínűleg minden kéréssel eltérő erőforráslistát fog kapni. Fontos a lekérdezési parancsok sorrendje. Ebben a példában az `order by` a `limit` után következik. Így először korlátozza a lekérdezés eredményeit, majd rendezi őket.
 
-1. Először frissítse a lekérdezést, hogy a **Name** tulajdonság szerint legyen rendezve (`order by`), majd korlátozza (`limit`) az első öt találatra:
+1. Először frissítse a lekérdezést, hogy a `order by`Name **tulajdonság szerint legyen rendezve (** ), majd korlátozza (`limit`) az első öt találatra:
 
    ```azurepowershell-interactive
    # Run Azure Resource Graph query with `order by` first, then with `limit`
@@ -87,7 +87,7 @@ Miután az Azure PowerShell modul hozzá lett adva a választott környezethez, 
 Miután a végső lekérdezés többször is futott, és feltéve, hogy a környezetben semmi sem változik, a visszaadott találatok konzisztensek és a vártnak megfelelőek lesznek – a **Name** tulajdonság szerint lesznek rendezve, és csak az első öt eredmény jelenik meg.
 
 > [!NOTE]
-> Ha a lekérdezés nem ad vissza olyan előfizetésből származó eredményeket, amelyhez már van hozzáférése, akkor vegye figyelembe, hogy a `Search-AzGraph` parancsmag alapértelmezett környezetében az előfizetések alapértelmezés szerint szerepelnek. Az alapértelmezett környezet részét képező előfizetési azonosítók listájának megtekintéséhez futtassa ezt a `(Get-AzContext).Account.ExtendedProperties.Subscriptions` értéket, ha az összes olyan előfizetést meg szeretné keresni, amelyet hozzá tud férni, a `Search-AzGraph` parancsmag PSDefaultParameterValues az `$PSDefaultParameterValues=@{"Search-AzGraph:Subscription"= $(Get-AzSubscription).ID}` futtatásával.
+> Ha a lekérdezés nem ad vissza olyan előfizetésből származó eredményeket, amelyhez már van hozzáférése, vegye figyelembe, hogy `Search-AzGraph` parancsmag alapértelmezett környezetében az előfizetések alapértelmezés szerint szerepelnek. Ha szeretné megtekinteni az alapértelmezett környezet részét képező előfizetési azonosítók listáját, futtassa ezt a `(Get-AzContext).Account.ExtendedProperties.Subscriptions`, ha az összes olyan előfizetést keresni kívánja, amelyhez hozzáféréssel rendelkezik, az `Search-AzGraph` parancsmag PSDefaultParameterValues a futtatásával állíthatja be `$PSDefaultParameterValues=@{"Search-AzGraph:Subscription"= $(Get-AzSubscription).ID}`
    
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
@@ -104,11 +104,12 @@ Uninstall-Module -Name 'Az.ResourceGraph'
 > [!NOTE]
 > Ezzel nem törli a korábban letöltött modulfájlt. Csak eltávolítja azt a futó PowerShell-munkamenetből.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-- További információ a [lekérdezés nyelvéről](./concepts/query-language.md)
-- Információ az [erőforrások felfedezéséről](./concepts/explore-resources.md)
-- Az első lekérdezés futtatása az [Azure CLI-vel](first-query-azurecli.md)
-- Az [Alapszintű lekérdezések](./samples/starter.md) példáinak megtekintése
-- Tekintse meg a [Speciális lekérdezések](./samples/advanced.md) példáit
-- Visszajelzés küldése a [UserVoice-ról](https://feedback.azure.com/forums/915958-azure-governance)
+- További információ a [lekérdezési nyelvről](./concepts/query-language.md).
+- További információ az [erőforrások feltárásáról](./concepts/explore-resources.md).
+- Futtassa az első lekérdezést a [Azure Portal](first-query-portal.md)használatával.
+- Futtassa az első lekérdezést az [Azure CLI](first-query-azurecli.md)-vel.
+- Tekintse meg az [alapszintű lekérdezések](./samples/starter.md)mintáit.
+- Lásd a [speciális lekérdezések](./samples/advanced.md)mintáit.
+- Visszajelzés küldése a [UserVoice](https://feedback.azure.com/forums/915958-azure-governance).

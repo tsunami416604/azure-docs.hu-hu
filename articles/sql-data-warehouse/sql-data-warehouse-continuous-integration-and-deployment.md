@@ -1,5 +1,5 @@
 ---
-title: Folyamatos integráció és üzembe helyezés | Microsoft Docs
+title: Folyamatos integráció és üzembe helyezés
 description: A nagyvállalati szintű adatbázis-DevOps az Azure-folyamatok használatával történő folyamatos integráció és üzembe helyezés beépített támogatásával SQL Data Warehouse.
 services: sql-data-warehouse
 author: kevinvngo
@@ -10,12 +10,12 @@ ms.subservice: integration
 ms.date: 08/28/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 7afb616fffaf01b1efa4f5d5a4af9dddd9683781
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: fd03072f4e69fac43874e822ebb06063436ef72c
+ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "70143148"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73646135"
 ---
 # <a name="continuous-integration-and-deployment-for-azure-sql-data-warehouse"></a>A Azure SQL Data Warehouse folyamatos integrációja és üzembe helyezése
 
@@ -63,7 +63,7 @@ Ezen a ponton olyan egyszerű környezettel rendelkezik, ahol a forrás-felügye
 
    A folyamat futtatása és ellenőrzése. Helyben végezheti a módosításokat, és ellenőrizheti a verziókövetés módosításait, amelyeknek automatikus buildet és üzembe helyezést kell létrehozniuk.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Ismerkedjen meg [Azure SQL Data Warehouse architektúrával](/azure/sql-data-warehouse/massively-parallel-processing-mpp-architecture)
 - [SQL Data Warehouse gyors létrehozása][create a SQL Data Warehouse]
