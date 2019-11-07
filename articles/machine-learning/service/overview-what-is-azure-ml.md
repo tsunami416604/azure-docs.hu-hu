@@ -8,12 +8,12 @@ ms.topic: overview
 author: j-martens
 ms.author: jmartens
 ms.date: 11/04/2019
-ms.openlocfilehash: f0f9a2e59e0e231c956e9f1c36bb6a54bcbaca24
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 9399353cb676ef4525e81229cf3920fd9d7e3aaf
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73476313"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73684926"
 ---
 # <a name="what-is-azure-machine-learning"></a>Mi az Azure Machine Learning?
 
@@ -73,7 +73,7 @@ A kód nélküli vagy alacsony kódú képzés és üzembe helyezés esetén pr�
 
   További információt [a Azure Machine learning Designer áttekintő cikkében](concept-designer.md)talál. 
 
-  ![Azure Machine Learning Designer – példa](/media/concept-ml-pipelines/visual-design-surface.gif)
+  ![Azure Machine Learning Designer – példa](media/concept-ml-pipelines/designer-drag-and-drop.gif)
 
 + **Automatikus gépi tanulás felhasználói felülete**
 

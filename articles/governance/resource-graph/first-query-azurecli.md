@@ -6,12 +6,12 @@ ms.author: dacoulte
 ms.date: 10/18/2019
 ms.topic: quickstart
 ms.service: resource-graph
-ms.openlocfilehash: b50a21f9c1a4bae7ced8afd9a49c33cc936983ac
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 0136b101de870ce669e89e67679719e233343330
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72389732"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73622585"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-azure-cli"></a>Rövid útmutató: az első Resource Graph-lekérdezés futtatása az Azure CLI használatával
 
@@ -70,7 +70,7 @@ Miután az Azure CLI-bővítmény hozzá lett adva a választott környezethez, 
    > [!NOTE]
    > Csakúgy, mint az első lekérdezésnél, e lekérdezés többszöri futtatása esetén is valószínűleg minden kéréssel eltérő erőforráslistát fog kapni. Fontos a lekérdezési parancsok sorrendje. Ebben a példában az `order by` a `limit` után következik. Így először korlátozza a lekérdezés eredményeit, majd rendezi őket.
 
-1. Először frissítse a lekérdezést, hogy a **Name** tulajdonság szerint legyen rendezve (`order by`), majd korlátozza (`limit`) az első öt találatra:
+1. Először frissítse a lekérdezést, hogy a `order by`Name **tulajdonság szerint legyen rendezve (** ), majd korlátozza (`limit`) az első öt találatra:
 
    ```azurecli-interactive
    # Run Azure Resource Graph query with `order by` first, then with `limit`
@@ -88,11 +88,12 @@ Ha el szeretné távolítani a Resource Graph bővítményt az Azure CLI környe
 az extension remove -n resource-graph
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-- További információ a [lekérdezés nyelvéről](./concepts/query-language.md)
-- Információ az [erőforrások felfedezéséről](./concepts/explore-resources.md)
-- Az első lekérdezés futtatása az [Azure PowerShell-lel](first-query-powershell.md)
-- Az [Alapszintű lekérdezések](./samples/starter.md) példáinak megtekintése
-- Tekintse meg a [Speciális lekérdezések](./samples/advanced.md) példáit
-- Visszajelzés küldése a [UserVoice-ról](https://feedback.azure.com/forums/915958-azure-governance)
+- További információ a [lekérdezési nyelvről](./concepts/query-language.md).
+- További információ az [erőforrások feltárásáról](./concepts/explore-resources.md).
+- Futtassa az első lekérdezést a [Azure Portal](first-query-portal.md)használatával.
+- Futtassa az első lekérdezést a [Azure PowerShell](first-query-powershell.md).
+- Tekintse meg az [alapszintű lekérdezések](./samples/starter.md)mintáit.
+- Lásd a [speciális lekérdezések](./samples/advanced.md)mintáit.
+- Visszajelzés küldése a [UserVoice](https://feedback.azure.com/forums/915958-azure-governance).

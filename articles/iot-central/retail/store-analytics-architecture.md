@@ -6,14 +6,15 @@ ms.author: avneets
 ms.date: 10/13/2019
 ms.topic: overview
 ms.service: iot-central
+ms.subservice: iot-central-retail
 services: iot-central
 manager: eliotgra
-ms.openlocfilehash: 1cf4b29274bbd62aa8c78fc2907a20165280ce08
-ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
+ms.openlocfilehash: 728c5dcbf94e030e860a222add6498824c66930d
+ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73026325"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73615395"
 ---
 # <a name="in-store-analytics-architecture"></a>Áruházbeli elemzési architektúra
 
@@ -52,6 +53,6 @@ A megoldáson belüli Azure IoT Central alkalmazás úgy konfigurálható, hogy 
 ## <a name="business-application"></a>Üzleti alkalmazás
 A IoT-ben a kiskereskedelmi környezetben üzembe helyezett különböző üzleti alkalmazások is kihasználhatók. A Retail Store Manager vagy a személyzet tagjai ezeket az alkalmazásokat felhasználhatják az üzleti eredmények megjelenítéséhez, és valós időben végezhetnek értelmes műveleteket. Ha szeretné megtudni, hogyan hozhat létre valós idejű Power BI irányítópultot a kereskedelmi csapatának, kövesse az [oktatóanyagot](./tutorial-in-store-analytics-create-app-pnp.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * Ismerkedjen meg az [áruházbeli elemzési pénztár](https://aka.ms/checkouttemplate) és [az áruházbeli elemzési feltételek figyelése](https://aka.ms/conditiontemplate) alkalmazás-sablonokkal. 
 * Tekintse meg a teljes [körű oktatóanyagot](https://aka.ms/storeanalytics-tutorial) , amely bemutatja, hogyan hozhat létre olyan megoldást, amely az egyik áruházbeli elemzési alkalmazás-sablont használja.

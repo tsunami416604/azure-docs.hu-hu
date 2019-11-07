@@ -10,14 +10,14 @@ ms.topic: overview
 ms.date: 08/07/2019
 ms.author: cgillum
 ms.reviewer: azfuncdf
-ms.openlocfilehash: a917a823d47d6a072cf5a3ee5d636b432913df9a
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: 0b85d6fbe8e66b94bad372ccb29e5489dd81587b
+ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71299443"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73614788"
 ---
-# <a name="what-are-durable-functions"></a>Mi a Durable Functions?
+# <a name="what-are-durable-functions"></a>Mik azok a tartós függvények?
 
 A *Durable Functions* [Azure functions](../functions-overview.md) , amely lehetővé teszi állapot-nyilvántartó függvények írását kiszolgáló nélküli számítási környezetben. A bővítmény lehetővé teszi az állapot-nyilvántartó munkafolyamatok definiálását a [*Orchestrator függvények*](durable-functions-orchestrations.md) és az állapot-nyilvántartó entitások írásával az Azure functions programozási modellel az [*Entity functions*](durable-functions-entities.md) használatával. A háttérben a bővítmény kezeli az állapotot, az ellenőrzőpontokat és az újraindításokat, így Ön az üzleti logikára koncentrálhat.
 
@@ -44,7 +44,7 @@ Durable Functions elsődleges használati esete az összetett, állapot-nyilván
 * [Emberi interakció](#human)
 * [Aggregátor](#aggregator)
 
-### <a name="chaining"></a>Minta #1: Függvényláncolás
+### <a name="chaining"></a>Minta #1: függvény láncolása
 
 A függvény láncolása mintában a függvények sorrendje egy adott sorrendben fut le. Ebben a mintában egy függvény kimenetét egy másik függvény bemenetére alkalmazza a rendszer.
 
@@ -57,7 +57,7 @@ Az Durable Functions használatával a függvény láncolása minta tömören va
 ```csharp
 [FunctionName("Chaining")]
 public static async Task<object> Run(
-    [OrchestrationTrigger] DurableOrchestrationContext context)
+    [OrchestrationTrigger] IDurableOrchestrationContext context)
 {
     try
     {
@@ -73,7 +73,7 @@ public static async Task<object> Run(
 }
 ```
 
-#### <a name="javascript-functions-2x-only"></a>JavaScript (csak 2. x függvény)
+#### <a name="javascript-functions-20-only"></a>JavaScript (csak functions 2,0)
 
 ```javascript
 const df = require("durable-functions");
@@ -86,14 +86,14 @@ module.exports = df.orchestrator(function*(context) {
 });
 ```
 
-Ebben a példában a függvény alkalmazásban `F2`az `F3`értékek `F1`, `F4` a, és a más függvények nevei szerepelnek. A vezérlési folyamat normál, kötelező kódolási szerkezetek használatával valósítható meg. A kód felülről lefelé fut. A kód a meglévő nyelvi vezérlési folyamatokat, például a feltételes és a hurkokat is magában foglalja. A `try` blokkokban a `catch` /hibákkezeléséreszolgáló logikaisfelvehető/. `finally`
+Ebben a példában a `F1`, `F2`, `F3`és `F4` értékek a Function alkalmazás más funkcióinak nevei. A vezérlési folyamat normál, kötelező kódolási szerkezetek használatával valósítható meg. A kód felülről lefelé fut. A kód a meglévő nyelvi vezérlési folyamatokat, például a feltételes és a hurkokat is magában foglalja. A `try`/`catch`/`finally` blokkokban a hibák kezelésére szolgáló logika is felhasználható.
 
-A `context` (z) [DurableOrchestrationContext] \(.net\) és az `context.df` Object (JavaScript) paraméterrel más függvényeket hívhat meg név, pass paraméterek és Return Function kimenet használatával. Minden alkalommal, amikor a `await` kódC#meghívja `yield` () vagy (JavaScript), a Durable functions Framework ellenőrzőpontja az aktuális függvény példányának előrehaladását. Ha a folyamat vagy a virtuális gép a végrehajtás során újra újraindul, a függvény példánya az előző `await` vagy `yield` a hívásból folytatódik. További információkért lásd a következő, minta #2: Ventilátor ki-és bevezetését.
+`context` a (z) [IDurableOrchestrationContext] \(.NET\) és a `context.df` objektum (JavaScript) használatával más függvényeket hívhat meg név, pass paraméterek és visszatérési függvény kimenete alapján. Minden alkalommal, amikor a kód meghívja a `await` (C#) vagy a `yield` (JavaScript), az Durable functions keretrendszer ellenőrzőpontja az aktuális függvény példányának állapotát. Ha a folyamat vagy a virtuális gép a végrehajtás során újra újraindul, a függvény példánya az előző `await` vagy `yield` hívást követően folytatódik. További információkért tekintse meg a következő, minta #2: fan out/Fan in című szakaszt.
 
 > [!NOTE]
-> A `context` JavaScriptben lévő objektum a teljes [függvény környezetét](../functions-reference-node.md#context-object)jelenti, nem csak a [DurableOrchestrationContext] paramétert.
+> A JavaScriptben lévő `context` objektum a teljes [függvény környezetét](../functions-reference-node.md#context-object)jelenti, nem csak a [IDurableOrchestrationContext] paramétert.
 
-### <a name="fan-in-out"></a>Minta #2: Ventilátor
+### <a name="fan-in-out"></a>Minta #2: ventilátor kivezetése/ventilátor
 
 A fan out/Fan in mintában több függvényt hajt végre párhuzamosan, majd várjon, amíg az összes függvény befejeződik. Gyakran előfordul, hogy egyes összesítési műveletek a függvények által visszaadott eredményeken is megtörténik.
 
@@ -108,7 +108,7 @@ A Durable Functions bővítmény ezt a mintát viszonylag egyszerű kóddal keze
 ```csharp
 [FunctionName("FanOutFanIn")]
 public static async Task Run(
-    [OrchestrationTrigger] DurableOrchestrationContext context)
+    [OrchestrationTrigger] IDurableOrchestrationContext context)
 {
     var parallelTasks = new List<Task<int>>();
 
@@ -128,7 +128,7 @@ public static async Task Run(
 }
 ```
 
-#### <a name="javascript-functions-2x-only"></a>JavaScript (csak 2. x függvény)
+#### <a name="javascript-functions-20-only"></a>JavaScript (csak functions 2,0)
 
 ```javascript
 const df = require("durable-functions");
@@ -150,14 +150,14 @@ module.exports = df.orchestrator(function*(context) {
 });
 ```
 
-A rendszer a `F2` függvény több példányára terjeszti a kivezetési munkát. A rendszer a feladatok dinamikus listájának használatával követi nyomon a munkát. A rendszer `Task.WhenAll` meghívja a `context.df.Task.all` .NET API-t vagy a JavaScript API-t, hogy megvárja az összes meghívott függvény befejeződését. Ezután a rendszer `F2` összesíti a függvény kimeneteit a dinamikus feladatlistából, és átadja a `F3` függvénynek.
+A kivezetési műveletet a `F2` függvény több példánya is terjeszti. A rendszer a feladatok dinamikus listájának használatával követi nyomon a munkát. Meghívja a .NET `Task.WhenAll` API-t vagy a JavaScript `context.df.Task.all` API-t, hogy megvárja az összes meghívott függvény befejeződését. Ezt követően a `F2` függvény kimeneteit a rendszer összesíti a dinamikus feladatlistából, és átadja a `F3` függvénynek.
 
-Az automatikus `await` ellenőrzőpontok, amelyek a vagy `yield` a hívásakor `Task.WhenAll` történnek, vagy `context.df.Task.all` biztosítják, hogy egy lehetséges Midway-összeomlás vagy-újraindítás nem igényli a már befejezett feladatok újraindítását.
+A `await` vagy `yield` hívásakor megjelenő automatikus ellenőrzőpont-ellenőrzés `Task.WhenAll` vagy `context.df.Task.all` biztosítja, hogy egy lehetséges Midway-összeomlás vagy-újraindítás nem igényli a már befejezett feladatok újraindítását.
 
 > [!NOTE]
 > Ritka körülmények között előfordulhat, hogy az ablak összeomlása egy tevékenységi függvény befejeződése után következik be, de a befejezését a rendszer a előkészítési előzményekbe menti. Ha ez történik, a tevékenység függvény a folyamat helyreállítása után újraindul.
 
-### <a name="async-http"></a>Minta #3: Aszinkron HTTP API-k
+### <a name="async-http"></a>Minta #3: aszinkron HTTP API-k
 
 Az aszinkron HTTP API-minta a hosszan futó műveletek állapotának a külső ügyfelekkel való koordinálásával kapcsolatos problémát orvosolja. Ennek a mintának a megvalósításának általános módja, ha egy HTTP-végpont aktiválja a hosszan futó műveletet. Ezt követően irányítsa át az ügyfelet egy olyan állapot-végpontra, amelyet az ügyfél lekérdez, hogy megtudja, mikor fejeződött be a művelet.
 
@@ -196,15 +196,15 @@ A Durable Functions bővítmény elérhetővé teszi a hosszú ideig futó munka
 
 További információkért lásd a http- [szolgáltatások](durable-functions-http-features.md) című cikket, amely ismerteti, hogyan teheti elérhetővé az aszinkron, hosszan futó FOLYAMATokat http-n keresztül a Durable functions bővítménnyel.
 
-### <a name="monitoring"></a>Minta #4: Figyelés
+### <a name="monitoring"></a>Minta #4: figyelő
 
-A figyelő minta egy rugalmas, ismétlődő folyamatra hivatkozik egy munkafolyamatban. Egy példa egy lekérdezésre, amíg az adott feltételek teljesülnek. Egy alapszintű forgatókönyv [](../functions-bindings-timer.md) , például egy rendszeres karbantartási feladat, az intervallum statikus, a példányok élettartamának kezelése pedig összetett lesz. A Durable Functions használatával rugalmas ismétlődési időközöket hozhat létre, kezelheti a feladatok élettartamát, és több figyelő folyamat is létrehozható egyetlen előkészítéssel.
+A figyelő minta egy rugalmas, ismétlődő folyamatra hivatkozik egy munkafolyamatban. Egy példa egy lekérdezésre, amíg az adott feltételek teljesülnek. Egy alapszintű forgatókönyv, például [egy rendszeres karbantartási](../functions-bindings-timer.md) feladat, az intervallum statikus, a példányok élettartamának kezelése pedig összetett lesz. A Durable Functions használatával rugalmas ismétlődési időközöket hozhat létre, kezelheti a feladatok élettartamát, és több figyelő folyamat is létrehozható egyetlen előkészítéssel.
 
 A figyelő minta példája a korábbi aszinkron HTTP API-forgatókönyv fordítottja. Ahelyett, hogy egy külső ügyfél végpontját kitéve egy hosszan futó művelet figyelésére, a hosszan futó figyelő külső végpontot használ, majd megvárja az állapot változását.
 
 ![A figyelő mintájának ábrája](./media/durable-functions-concepts/monitor.png)
 
-Néhány sornyi kódban a Durable Functions használatával több, tetszőleges végpontokat figyelő figyelőt hozhat létre. A figyelők a feltételek teljesülése esetén a végrehajtás végén, vagy a [DurableOrchestrationClient](durable-functions-instance-management.md) megszakítják a figyelőket. Egy adott feltétel alapján módosíthatja a `wait` figyelő intervallumát (például exponenciális leállítási.) 
+Néhány sornyi kódban a Durable Functions használatával több, tetszőleges végpontokat figyelő figyelőt hozhat létre. A figyelők a feltételek teljesülése esetén is letölthetik a végrehajtást, vagy a `IDurableOrchestrationClient` megszakíthatja a figyelőket. Egy adott feltétel alapján módosíthatja a figyelő `wait` intervallumát (például exponenciális leállítási.) 
 
 A következő kód egy alapszintű figyelőt valósít meg:
 
@@ -213,7 +213,7 @@ A következő kód egy alapszintű figyelőt valósít meg:
 ```csharp
 [FunctionName("MonitorJobStatus")]
 public static async Task Run(
-    [OrchestrationTrigger] DurableOrchestrationContext context)
+    [OrchestrationTrigger] IDurableOrchestrationContext context)
 {
     int jobId = context.GetInput<int>();
     int pollingInterval = GetPollingInterval();
@@ -238,7 +238,7 @@ public static async Task Run(
 }
 ```
 
-#### <a name="javascript-functions-2x-only"></a>JavaScript (csak 2. x függvény)
+#### <a name="javascript-functions-20-only"></a>JavaScript (csak functions 2,0)
 
 ```javascript
 const df = require("durable-functions");
@@ -266,9 +266,9 @@ module.exports = df.orchestrator(function*(context) {
 });
 ```
 
-A kérés fogadásakor a rendszer létrehoz egy új előkészítési példányt az adott AZONOSÍTÓJÚ feladatokhoz. A példány lekérdezi az állapotot, amíg a feltétel teljesül, és a hurok ki van zárva. A tartós időzítő vezérli a lekérdezési időközt. Ezt követően több munka is elvégezhető, vagy az előkészítés véget ért. Ha a `context.CurrentUtcDateTime` (.net) vagy `context.df.currentUtcDateTime` (JavaScript) érték meghaladja `expiryTime` a értéket, a figyelő véget ér.
+A kérés fogadásakor a rendszer létrehoz egy új előkészítési példányt az adott AZONOSÍTÓJÚ feladatokhoz. A példány lekérdezi az állapotot, amíg a feltétel teljesül, és a hurok ki van zárva. A tartós időzítő vezérli a lekérdezési időközt. Ezt követően több munka is elvégezhető, vagy az előkészítés véget ért. Ha a `context.CurrentUtcDateTime` (.NET) vagy `context.df.currentUtcDateTime` (JavaScript) meghaladja a `expiryTime` értéket, a figyelő véget ér.
 
-### <a name="human"></a>Minta #5: Emberi beavatkozás
+### <a name="human"></a>Minta #5: emberi interakció
 
 Számos automatizált folyamat tartalmaz valamilyen emberi interakciót. Az emberek automatikus folyamatba való bevonása trükkös, mert az emberek nem a lehető legszélesebb körben elérhetők és a Cloud Services-ként reagálnak Az automatikus folyamat az időtúllépések és a kompenzációs logika használatával lehetővé teheti az ilyen interakciókat.
 
@@ -285,7 +285,7 @@ Ezek a példák jóváhagyási folyamatot hoznak létre az emberi interakciós m
 ```csharp
 [FunctionName("ApprovalWorkflow")]
 public static async Task Run(
-    [OrchestrationTrigger] DurableOrchestrationContext context)
+    [OrchestrationTrigger] IDurableOrchestrationContext context)
 {
     await context.CallActivityAsync("RequestApproval", null);
     using (var timeoutCts = new CancellationTokenSource())
@@ -307,7 +307,7 @@ public static async Task Run(
 }
 ```
 
-#### <a name="javascript-functions-2x-only"></a>JavaScript (csak 2. x függvény)
+#### <a name="javascript-functions-20-only"></a>JavaScript (csak functions 2,0)
 
 ```javascript
 const df = require("durable-functions");
@@ -329,15 +329,15 @@ module.exports = df.orchestrator(function*(context) {
 });
 ```
 
-Tartós időzítő, hívás `context.CreateTimer` (.net) vagy `context.df.createTimer` (JavaScript) létrehozásához. Az értesítést a `context.WaitForExternalEvent` (.net) vagy `context.df.waitForExternalEvent` a (JavaScript) fogadja. Ezt követően a `context.df.Task.any` `Task.WhenAny` (.net) vagy (JavaScript) metódust kell eldöntenie, hogy megtörténjen-e a kiterjesztés (időtúllépés történik), vagy dolgozza fel a jóváhagyást (a jóváhagyás az időkorlát előtt érkezik).
+A tartós időzítő létrehozásához hívja meg `context.CreateTimer` (.NET) vagy `context.df.createTimer` (JavaScript). Az értesítést `context.WaitForExternalEvent` (.NET) vagy `context.df.waitForExternalEvent` (JavaScript) fogadja. Ezt követően a rendszer meghívja a `Task.WhenAny` (.NET) vagy a `context.df.Task.any` (JavaScript)-t, hogy eldöntse, megtörténjen-e a kiterjesztés (időtúllépés történik), vagy dolgozza fel a jóváhagyást (a jóváhagyás az időkorlát előtt érkezik).
 
-Egy külső ügyfél a [beépített http API](durable-functions-http-api.md#raise-event) -kkal vagy a [DurableOrchestrationClient. RaiseEventAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_RaiseEventAsync_System_String_System_String_System_Object_) API-val egy másik függvény használatával kézbesítheti az esemény-értesítést a várakozó Orchestrator függvénynek:
+Egy külső ügyfél a [beépített http API](durable-functions-http-api.md#raise-event) -k vagy a `RaiseEventAsync` (.net) vagy a `raiseEvent` (JavaScript) metódus használatával kézbesítheti az esemény-értesítéseket egy várakozó Orchestrator-függvénynek a másik függvényből:
 
 ```csharp
 [FunctionName("RaiseEventToOrchestration")]
 public static async Task Run(
     [HttpTrigger] string instanceId,
-    [OrchestrationClient] DurableOrchestrationClient client)
+    [DurableClient] IDurableOrchestrationClient client)
 {
     bool isApproved = true;
     await client.RaiseEventAsync(instanceId, "ApprovalEvent", isApproved);
@@ -358,7 +358,7 @@ module.exports = async function (context) {
 curl -d "true" http://localhost:7071/runtime/webhooks/durabletask/instances/{instanceId}/raiseEvent/ApprovalEvent -H "Content-Type: application/json"
 ```
 
-### <a name="aggregator"></a>Minta #6: Összesítő (előzetes verzió)
+### <a name="aggregator"></a>Minta #6: gyűjtő
 
 A hatodik minta az események adatainak egy adott, címezhető *entitásba*való összesítésére szolgál. Ebben a mintában az összesíteni kívánt adatok több forrásból származhatnak, a kötegekben is elhelyezhetők, vagy hosszú időn keresztül elszórtan lehetnek. Előfordulhat, hogy a gyűjtőnek műveleteket kell végeznie az események érkezésekor, és előfordulhat, hogy a külső ügyfeleknek le kell kérdezni az összesített adatokat.
 
@@ -366,33 +366,50 @@ A hatodik minta az események adatainak egy adott, címezhető *entitásba*való
 
 A minta a normál, állapot nélküli függvények használatával történő megvalósítására tett kísérlet során az, hogy a Egyidejűség-vezérlés óriási kihívás lesz. Nem csupán annyit kell aggódnia, hogy ugyanazokat az információkat egyszerre több szálra módosítja, azonban azt is meg kell aggódnia, hogy a gyűjtő egyszerre csak egyetlen virtuális gépen fut.
 
-Egy [tartós entitás függvény](durable-functions-preview.md#entity-functions)használatával egyetlen függvényként egyszerűen megvalósíthatja ezt a mintát.
+[Tartós entitások](durable-functions-entities.md) használatával egyszerűen implementálhatja ezt a mintát egyetlen függvényként.
 
 ```csharp
 [FunctionName("Counter")]
 public static void Counter([EntityTrigger] IDurableEntityContext ctx)
 {
     int currentValue = ctx.GetState<int>();
-
     switch (ctx.OperationName.ToLowerInvariant())
     {
         case "add":
             int amount = ctx.GetInput<int>();
-            currentValue += amount;
+            ctx.SetState(currentValue + amount);
             break;
         case "reset":
-            currentValue = 0;
+            ctx.SetState(0);
             break;
         case "get":
             ctx.Return(currentValue);
             break;
     }
-
-    ctx.SetState(currentValue);
 }
 ```
 
-A tartós entitások .NET-osztályként is modellezésre használhatók. Ez a modell akkor lehet hasznos, ha a műveletek listája rögzített, és nagy lesz. A következő példa az `Counter` entitás egyenértékű implementációját használja .net-osztályok és-metódusok használatával.
+```javascript
+const df = require("durable-functions");
+
+module.exports = df.entity(function(context) {
+    const currentValue = context.df.getState(() => 0);
+    switch (context.df.operationName) {
+        case "add":
+            const amount = context.df.getInput();
+            context.df.setState(currentValue + amount);
+            break;
+        case "reset":
+            context.df.setState(0);
+            break;
+        case "get":
+            context.df.return(currentValue);
+            break;
+    }
+});
+```
+
+A tartós entitások osztályként is modellezése a .NET-ben. Ez a modell akkor lehet hasznos, ha a műveletek listája rögzített, és nagy lesz. A következő példa a `Counter` entitás egyenértékű implementációját használja .NET-osztályok és-metódusok használatával.
 
 ```csharp
 public class Counter
@@ -418,7 +435,7 @@ Az ügyfelek az entitás- [ügyfél kötésének](durable-functions-bindings.md#
 [FunctionName("EventHubTriggerCSharp")]
 public static async Task Run(
     [EventHubTrigger("device-sensor-events")] EventData eventData,
-    [OrchestrationClient] IDurableOrchestrationClient entityClient)
+    [DurableClient] IDurableOrchestrationClient entityClient)
 {
     var metricType = (string)eventData.Properties["metric"];
     var delta = BitConverter.ToInt32(eventData.Body, eventData.Body.Offset);
@@ -429,10 +446,21 @@ public static async Task Run(
 }
 ```
 
-A dinamikusan generált proxyk is elérhetők az entitások típus-biztonságos módon történő jelzéséhez. Továbbá a jelzésen felül az ügyfelek az entitások függvényének állapotáról is lekérhetik a [típus-biztonságos metódusok](durable-functions-bindings.md#entity-client-usage) használatával.
-
 > [!NOTE]
-> Az Entity functions jelenleg csak a .NET-ben érhető el a [Durable Functions 2,0 előzetes](durable-functions-preview.md)verziójának részeként.
+> A dinamikusan generált proxyk a .NET-keretrendszerben is elérhetők, ha az entitások típus-biztonságos módon vannak jelezve. Továbbá a jelzésen felül az ügyfelek az entitások függvényének állapotáról is lekérhetik a [típus-biztonságos metódusok](durable-functions-bindings.md#entity-client-usage) használatával.
+
+
+```javascript
+const df = require("durable-functions");
+
+module.exports = async function (context) {
+    const client = df.getClient(context);
+    const entityId = new df.EntityId("Counter", "myCounter");
+    await context.df.signalEntity(entityId, "add", 1);
+};
+```
+
+Az Entity functions [Durable Functions 2,0](durable-functions-versions.md) -es és újabb verziókban érhető el.
 
 ## <a name="the-technology"></a>A technológia
 
@@ -444,7 +472,7 @@ Ahhoz, hogy megbízható és hosszan futó végrehajtási garanciákat lehessen 
 
 ## <a name="billing"></a>Számlázás
 
-Durable Functions számlázása ugyanaz, mint Azure Functions. További információkért lásd: [Azure Functions árképzése](https://azure.microsoft.com/pricing/details/functions/). A Azure Functions használati [tervben](../functions-scale.md#consumption-plan)szereplő Orchestrator-függvények végrehajtásakor bizonyos számlázási viselkedések ismerete szükséges. További információ ezekről a viselkedésekről: [Durable functions számlázási](durable-functions-billing.md) cikk.
+Durable Functions számlázása ugyanaz, mint Azure Functions. További információ: [Azure functions díjszabása](https://azure.microsoft.com/pricing/details/functions/). A Azure Functions használati [tervben](../functions-scale.md#consumption-plan)szereplő Orchestrator-függvények végrehajtásakor bizonyos számlázási viselkedések ismerete szükséges. További információ ezekről a viselkedésekről: [Durable functions számlázási](durable-functions-billing.md) cikk.
 
 ## <a name="jump-right-in"></a>Ugrás közvetlenül a
 
@@ -455,7 +483,7 @@ A következő, a nyelvfüggő gyors útmutatók egyikének elvégzésével megke
 
 Mindkét rövid útmutatóban helyileg létrehozhatja és tesztelheti a "Hello World" tartós funkciót. Ezután közzéteheti a függvénykódot az Azure-ban. Az Ön által létrehozott függvény összehangolja és láncokba rendezi a más függvények hívásait.
 
-## <a name="learn-more"></a>Tudnivalók a modellalapú alkalmazások létrehozásáról
+## <a name="learn-more"></a>Részletek
 
 Az alábbi videó a Durable Functions előnyeit mutatja be:
 

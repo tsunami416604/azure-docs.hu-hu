@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/17/2019
 ms.author: allensu
-ms.openlocfilehash: 62af688c6090b61f2596ab376cb479c270b87759
-ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
+ms.openlocfilehash: 78e085aae97114e6848b736c40b16c755256d0cd
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72274112"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73571120"
 ---
 # <a name="load-balancer-health-probes"></a>A Load Balancer állapotmintái
 
@@ -48,6 +48,9 @@ Az állapot-mintavételi konfiguráció a következő elemekből áll:
 - A mintavétel protokollja
 - A mintavétel portja
 - Http-alapú http-(S-) mintavételek használatakor használandó HTTP-elérési út
+
+> [!NOTE]
+> Azure PowerShell, Azure CLI, sablonok vagy API használata esetén a mintavételi definíció nem kötelező, vagy nincs bejelölve. A mintavétel-ellenőrzési tesztek csak az Azure Portal használata esetén hajthatók végre.
 
 ## <a name="understanding-application-signal-detection-of-the-signal-and-reaction-of-the-platform"></a>Az alkalmazási jel ismertetése, a jel észlelése és a platform reakciója
 
@@ -237,7 +240,7 @@ Ha több csatoló is van a virtuális gépen, akkor biztosítania kell, hogy vá
 
 Ne engedélyezze a [TCP-időbélyeget](https://tools.ietf.org/html/rfc1323).  A TCP-időbélyegek engedélyezése a virtuális gép vendég operációs rendszerének TCP-verem által eldobott TCP-csomagok meghibásodása esetén az állapot-ellenőrzéseket okozhatja, ami Load Balancer megjelöli a megfelelő végpontot.  A TCP-időbélyegek alapértelmezés szerint engedélyezve vannak a biztonsági megerősített virtuális gépek rendszerképein, és le kell tiltani őket.
 
-## <a name="monitoring"></a>Monitoring
+## <a name="monitoring"></a>Figyelés
 
 Mind a nyilvános, mind a belső [standard Load Balancer](load-balancer-standard-overview.md) a végpontok és a háttérbeli végpontok állapotának tesztelési állapota többdimenziós metrikák Azure monitoron keresztül. Ezeket a metrikákat más Azure-szolgáltatások vagy-partneri alkalmazások is felhasználhatják. 
 
@@ -248,7 +251,7 @@ Az alapszintű nyilvános Load Balancer a háttér-készletek alapján összesí
 - A HTTPS-mintavételek nem támogatják az ügyféltanúsítvány-alapú kölcsönös hitelesítést.
 - Ha a TCP-időbélyegek engedélyezve vannak, a assumehHealth-mintavétel sikertelen lesz.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - További tudnivalók a [Standard Load Balancerről](load-balancer-standard-overview.md)
 - [Ismerkedés a nyilvános Load Balancer létrehozásával a Resource Managerben a PowerShell használatával](load-balancer-get-started-internet-arm-ps.md)

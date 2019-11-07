@@ -6,12 +6,12 @@ ms.author: dacoulte
 ms.date: 10/21/2019
 ms.topic: quickstart
 ms.service: resource-graph
-ms.openlocfilehash: c2a8c60502aeb75173371d40475b5d2875417791
-ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
+ms.openlocfilehash: 7eef353f45d0387a45fbf8180bc49cae7975dfa9
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72808642"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73622505"
 ---
 # <a name="starter-resource-graph-queries"></a>Alapszintű Resource Graph-lekérdezések
 
@@ -62,7 +62,7 @@ az graph query -q "Resources | summarize count()"
 Search-AzGraph -Query "Resources | summarize count()"
 ```
 
-# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
+# <a name="portaltabazure-portal"></a>[Portál](#tab/azure-portal)
 
 ![Resource Graph Explorer ikon](../media/resource-graph-small.png) Próbálja ki ezt a lekérdezést az Azure Resource Graph Explorerben:
 
@@ -72,7 +72,7 @@ Search-AzGraph -Query "Resources | summarize count()"
 
 ## <a name="a-namecount-keyvaults-count-key-vault-resources"></a>a Key Vault-erőforrások <a name="count-keyvaults" />száma
 
-A lekérdezés `count` értéket használ a visszaadott rekordok számának megszámlálásához `summarize` helyett. Csak a Key vaultok szerepelnek a darabszámban.
+Ez a lekérdezés `count` használ a `summarize` helyett a visszaadott rekordok számának megszámlálásához. Csak a Key vaultok szerepelnek a darabszámban.
 
 ```kusto
 Resources
@@ -92,7 +92,7 @@ az graph query -q "Resources | where type =~ 'microsoft.keyvault/vaults' | count
 Search-AzGraph -Query "Resources | where type =~ 'microsoft.keyvault/vaults' | count"
 ```
 
-# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
+# <a name="portaltabazure-portal"></a>[Portál](#tab/azure-portal)
 
 ![Resource Graph Explorer ikon](../media/resource-graph-small.png) Próbálja ki ezt a lekérdezést az Azure Resource Graph Explorerben:
 
@@ -122,7 +122,7 @@ az graph query -q "Resources | project name, type, location | order by name asc"
 Search-AzGraph -Query "Resources | project name, type, location | order by name asc"
 ```
 
-# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
+# <a name="portaltabazure-portal"></a>[Portál](#tab/azure-portal)
 
 ![Resource Graph Explorer ikon](../media/resource-graph-small.png) Próbálja ki ezt a lekérdezést az Azure Resource Graph Explorerben:
 
@@ -153,7 +153,7 @@ az graph query -q "Resources | project name, location, type| where type =~ 'Micr
 Search-AzGraph -Query "Resources | project name, location, type| where type =~ 'Microsoft.Compute/virtualMachines' | order by name desc"
 ```
 
-# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
+# <a name="portaltabazure-portal"></a>[Portál](#tab/azure-portal)
 
 ![Resource Graph Explorer ikon](../media/resource-graph-small.png) Próbálja ki ezt a lekérdezést az Azure Resource Graph Explorerben:
 
@@ -184,7 +184,7 @@ az graph query -q "Resources | where type =~ 'Microsoft.Compute/virtualMachines'
 Search-AzGraph -Query "Resources | where type =~ 'Microsoft.Compute/virtualMachines' | project name, properties.storageProfile.osDisk.osType | top 5 by name desc"
 ```
 
-# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
+# <a name="portaltabazure-portal"></a>[Portál](#tab/azure-portal)
 
 ![Resource Graph Explorer ikon](../media/resource-graph-small.png) Próbálja ki ezt a lekérdezést az Azure Resource Graph Explorerben:
 
@@ -215,7 +215,7 @@ az graph query -q "Resources | where type =~ 'Microsoft.Compute/virtualMachines'
 Search-AzGraph -Query "Resources | where type =~ 'Microsoft.Compute/virtualMachines' | summarize count() by tostring(properties.storageProfile.osDisk.osType)"
 ```
 
-# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
+# <a name="portaltabazure-portal"></a>[Portál](#tab/azure-portal)
 
 ![Resource Graph Explorer ikon](../media/resource-graph-small.png) Próbálja ki ezt a lekérdezést az Azure Resource Graph Explorerben:
 
@@ -223,7 +223,7 @@ Search-AzGraph -Query "Resources | where type =~ 'Microsoft.Compute/virtualMachi
 
 ---
 
-Egy másik módszer ugyanazon lekérdezés írásához, ha bővít (`extend`) egy tulajdonságot, és ad neki egy ideiglenes nevet a lekérdezésben való használathoz, ebben az esetben ez az **os**. Ekkor a `summarize` és a `count()` az **os**-t használja az előző példában látható módon.
+Egy másik módszer ugyanazon lekérdezés írásához, ha bővít (`extend`) egy tulajdonságot, és ad neki egy ideiglenes nevet a lekérdezésben való használathoz, ebben az esetben ez az **os**. Ekkor a **és a** az `summarize`os`count()`-t használja az előző példában látható módon.
 
 ```kusto
 Resources
@@ -244,7 +244,7 @@ az graph query -q "Resources | where type =~ 'Microsoft.Compute/virtualMachines'
 Search-AzGraph -Query "Resources | where type =~ 'Microsoft.Compute/virtualMachines' | extend os = properties.storageProfile.osDisk.osType | summarize count() by tostring(os)"
 ```
 
-# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
+# <a name="portaltabazure-portal"></a>[Portál](#tab/azure-portal)
 
 ![Resource Graph Explorer ikon](../media/resource-graph-small.png) Próbálja ki ezt a lekérdezést az Azure Resource Graph Explorerben:
 
@@ -276,7 +276,7 @@ az graph query -q "Resources | where type contains 'storage' | distinct type"
 Search-AzGraph -Query "Resources | where type contains 'storage' | distinct type"
 ```
 
-# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
+# <a name="portaltabazure-portal"></a>[Portál](#tab/azure-portal)
 
 ![Resource Graph Explorer ikon](../media/resource-graph-small.png) Próbálja ki ezt a lekérdezést az Azure Resource Graph Explorerben:
 
@@ -310,7 +310,7 @@ az graph query -q "Resources | where type contains 'publicIPAddresses' and isnot
 Search-AzGraph -Query "Resources | where type contains 'publicIPAddresses' and isnotempty(properties.ipAddress) | project properties.ipAddress | limit 100"
 ```
 
-# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
+# <a name="portaltabazure-portal"></a>[Portál](#tab/azure-portal)
 
 ![Resource Graph Explorer ikon](../media/resource-graph-small.png) Próbálja ki ezt a lekérdezést az Azure Resource Graph Explorerben:
 
@@ -340,7 +340,7 @@ az graph query -q "Resources | where type contains 'publicIPAddresses' and isnot
 Search-AzGraph -Query "Resources | where type contains 'publicIPAddresses' and isnotempty(properties.ipAddress) | summarize count () by subscriptionId"
 ```
 
-# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
+# <a name="portaltabazure-portal"></a>[Portál](#tab/azure-portal)
 
 ![Resource Graph Explorer ikon](../media/resource-graph-small.png) Próbálja ki ezt a lekérdezést az Azure Resource Graph Explorerben:
 
@@ -370,7 +370,7 @@ az graph query -q "Resources | where tags.environment=~'internal' | project name
 Search-AzGraph -Query "Resources | where tags.environment=~'internal' | project name"
 ```
 
-# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
+# <a name="portaltabazure-portal"></a>[Portál](#tab/azure-portal)
 
 ![Resource Graph Explorer ikon](../media/resource-graph-small.png) Próbálja ki ezt a lekérdezést az Azure Resource Graph Explorerben:
 
@@ -398,7 +398,7 @@ az graph query -q "Resources | where tags.environment=~'internal' | project name
 Search-AzGraph -Query "Resources | where tags.environment=~'internal' | project name, tags"
 ```
 
-# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
+# <a name="portaltabazure-portal"></a>[Portál](#tab/azure-portal)
 
 ![Resource Graph Explorer ikon](../media/resource-graph-small.png) Próbálja ki ezt a lekérdezést az Azure Resource Graph Explorerben:
 
@@ -428,7 +428,7 @@ az graph query -q "Resources | where type =~ 'Microsoft.Storage/storageAccounts'
 Search-AzGraph -Query "Resources | where type =~ 'Microsoft.Storage/storageAccounts' | where tags['tag with a space']=='Custom value'"
 ```
 
-# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
+# <a name="portaltabazure-portal"></a>[Portál](#tab/azure-portal)
 
 ![Resource Graph Explorer ikon](../media/resource-graph-small.png) Próbálja ki ezt a lekérdezést az Azure Resource Graph Explorerben:
 
@@ -462,7 +462,7 @@ az graph query -q "Resources | where type =~ 'Microsoft.Compute/virtualMachines'
 Search-AzGraph -Query "Resources | where type =~ 'Microsoft.Compute/virtualMachines' | limit 1 | project aliases" | ConvertTo-Json
 ```
 
-# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
+# <a name="portaltabazure-portal"></a>[Portál](#tab/azure-portal)
 
 ![Resource Graph Explorer ikon](../media/resource-graph-small.png) Próbálja ki ezt a lekérdezést az Azure Resource Graph Explorerben:
 
@@ -493,7 +493,7 @@ az graph query -q "Resources | where type=~'Microsoft.Compute/virtualMachines' |
 Search-AzGraph -Query "Resources | where type=~'Microsoft.Compute/virtualMachines' | extend alias = aliases['Microsoft.Compute/virtualMachines/storageProfile.osDisk.managedDisk.storageAccountType'] | distinct tostring(alias)"
 ```
 
-# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
+# <a name="portaltabazure-portal"></a>[Portál](#tab/azure-portal)
 
 ![Resource Graph Explorer ikon](../media/resource-graph-small.png) Próbálja ki ezt a lekérdezést az Azure Resource Graph Explorerben:
 
@@ -524,7 +524,7 @@ az graph query -q "Resources | where type =~ 'microsoft.network/networksecurityg
 Search-AzGraph -Query "Resources | where type =~ 'microsoft.network/networksecuritygroups' and isnull(properties.networkInterfaces) and isnull(properties.subnets) | project name, resourceGroup | sort by name asc"
 ```
 
-# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
+# <a name="portaltabazure-portal"></a>[Portál](#tab/azure-portal)
 
 ![Resource Graph Explorer ikon](../media/resource-graph-small.png) Próbálja ki ezt a lekérdezést az Azure Resource Graph Explorerben:
 
@@ -532,8 +532,8 @@ Search-AzGraph -Query "Resources | where type =~ 'microsoft.network/networksecur
 
 ---
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-- További információk a [lekérdezés nyelvéről](../concepts/query-language.md)
-- Információ az [erőforrások felfedezéséről](../concepts/explore-resources.md)
-- Tekintse meg a [Speciális lekérdezések](advanced.md) példáit
+- További információ a [lekérdezési nyelvről](../concepts/query-language.md).
+- További információ az [erőforrások feltárásáról](../concepts/explore-resources.md).
+- Lásd a [speciális lekérdezések](advanced.md)mintáit.

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3ee1d282506b537ed29592ca9008c88a53220d7d
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 8a2d22c4a7a8b95f5a200518a3c46fc33f55c66a
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72554833"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73569863"
 ---
 # <a name="how-to-require-two-step-verification-for-a-user"></a>Egy felhasználó kétlépéses ellenőrzésének megkövetelése
 
@@ -41,7 +41,7 @@ Azure AD Identity Protection által engedélyezett – ez a módszer a Azure AD 
 
 Az Azure Multi-Factor Authentication felhasználói fiókjai a következő három különböző állapottal rendelkeznek:
 
-| Állapot | Leírás | Érintett nem böngészőbeli alkalmazások | Érintett böngészőalapú alkalmazások | A modern hitelesítés érintett |
+| status | Leírás | Érintett nem böngészőbeli alkalmazások | Érintett böngészőalapú alkalmazások | A modern hitelesítés érintett |
 |:---:|:---:|:---:|:--:|:--:|
 | Letiltva |Az Azure MFA-ban nem regisztrált új felhasználó alapértelmezett állapota. |Nem |Nem |Nem |
 | Engedélyezve |A felhasználó regisztrálva lett az Azure MFA-ban, de nincs regisztrálva. A következő bejelentkezés alkalmával a rendszer felszólítja a regisztrálásra. |Nem.  Továbbra is működnek, amíg a regisztrációs folyamat be nem fejeződik. | Igen. A munkamenet lejárata után az Azure MFA-regisztrációra van szükség.| Igen. A hozzáférési jogkivonat lejárta után az Azure MFA-regisztrációra van szükség. |
@@ -56,20 +56,20 @@ Az összes felhasználó *le van tiltva*. Amikor felhasználókat regisztrál az
 A következő lépésekkel érheti el az oldalt, amelyen megtekintheti és kezelheti a felhasználói állapotokat:
 
 1. Jelentkezzen be az [Azure Portal](https://portal.azure.com) felületére rendszergazdaként.
-2. Lépjen **Azure Active Directory**  > **felhasználók és csoportok**  > **minden felhasználó**lehetőséget.
+2. Lépjen **Azure Active Directory** > **felhasználók és csoportok** > **minden felhasználó**lehetőséget.
 3. Válassza a **multi-Factor Authentication**lehetőséget.
-   ![Select Multi-Factor Authentication ](./media/howto-mfa-userstates/selectmfa.png)
+   ![válassza ki a Multi-Factor Authentication](./media/howto-mfa-userstates/selectmfa.png)
 4. Megnyílik egy új oldal, amely megjeleníti a felhasználói állapotokat.
-   ![multi faktoros hitelesítés felhasználói állapota – képernyőfelvétel ](./media/howto-mfa-userstates/userstate1.png)
+   ![multi-Factor Authentication felhasználói állapot – képernyőfelvétel](./media/howto-mfa-userstates/userstate1.png)
 
 ### <a name="change-the-status-for-a-user"></a>Felhasználó állapotának módosítása
 
 1. Az előző lépésekkel érheti el az Azure Multi-Factor Authentication- **felhasználók** lapot.
 2. Keresse meg azt a felhasználót, aki számára engedélyezni szeretné az Azure MFA-t. Előfordulhat, hogy felül kell változtatnia a nézetet.
-   ![Select a felhasználót, hogy a felhasználók lapon megváltoztassa az állapotot ](./media/howto-mfa-userstates/enable1.png)
+   ![válassza ki a felhasználót az állapot módosításához a felhasználók lapon](./media/howto-mfa-userstates/enable1.png)
 3. Jelölje be a neve melletti jelölőnégyzetet.
 4. A jobb oldalon a **gyors lépések**területen válassza az **Engedélyezés** vagy a **Letiltás**lehetőséget.
-   ![Enable kiválasztott felhasználót a gyors lépések menüben az Engedélyezés gombra kattintva ](./media/howto-mfa-userstates/user1.png)
+   ![a gyors lépések menüben kattintson az engedélyezés elemre a kijelölt felhasználó engedélyezése](./media/howto-mfa-userstates/user1.png)
 
    > [!TIP]
    > Az *engedélyezett* felhasználók automatikusan *érvénybe* lettek állítva, amikor regisztrálják magukat az Azure MFA-ban. Ne módosítsa manuálisan a felhasználói állapotot *kényszerített*értékre.
@@ -174,7 +174,10 @@ function Set-MfaState {
 Get-MsolUser -All | Set-MfaState -State Disabled
 ```
 
-## <a name="next-steps"></a>Következő lépések
+> [!NOTE]
+> Nemrég módosítottuk a viselkedést és a PowerShell-szkriptet a fentieknek megfelelően. Korábban a parancsfájl mentve az MFA-metódusokból, letiltotta az MFA-t, és visszaállította a metódusokat. Ez már nem szükséges ahhoz, hogy a Letiltás alapértelmezett viselkedése ne törölje a metódusokat.
+
+## <a name="next-steps"></a>További lépések
 
 * Miért volt a felhasználó, vagy a rendszer nem kéri az MFA elvégzésére? Tekintse [meg az Azure ad-beli bejelentkezések jelentését az Azure-multi-Factor Authentication dokumentum jelentéseiben](howto-mfa-reporting.md#azure-ad-sign-ins-report).
 * További beállítások, például a megbízható IP-címek, az egyéni hangüzenetek és a csalási riasztások konfigurálásához tekintse meg az [Azure multi-Factor Authentication beállításainak konfigurálása](howto-mfa-mfasettings.md) című cikket.
