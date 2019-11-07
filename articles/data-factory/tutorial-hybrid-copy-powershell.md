@@ -1,5 +1,5 @@
 ---
-title: Adatok másolása az SQL Server-adatbázisból Blob Storage-tárolóba az Azure Data Factory használatával | Microsoft Docs
+title: Adatok másolása SQL Serverból blob Storage-ba Azure Data Factory használatával
 description: Megismerheti az adatok a helyszíni adattárolókból az Azure-beli felhőbe, az Azure Data Factory saját üzemeltetésű Integration Runtime átjáróval történő másolásának folyamatát.
 services: data-factory
 documentationcenter: ''
@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: abnarain
-ms.openlocfilehash: 1d779c44faabc30ddfa624e7b2d8e5d5de8b6cc7
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: d2f59e7e8e86100a2a667634c0e99e6c1d5976da
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71091835"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73683502"
 ---
 # <a name="tutorial-copy-data-from-an-on-premises-sql-server-database-to-azure-blob-storage"></a>Oktatóanyag: Adatok másolása helyszíni SQL Server-adatbázisból Azure Blob Storage-tárolóba
 Ebben az oktatóanyagban az Azure PowerShell használatával egy Data Factory-folyamatot hozunk létre az adatok egy helyszíni SQL Server-adatbázisból egy Azure Blob-tárolóba történő másolására. Létrehozhat és alkalmazhat egy saját üzemeltetésű integrációs modult, amely adatokat helyez át a helyszíni és a felhőalapú adattárolók között. 
@@ -132,7 +132,7 @@ Ha még nincs a gépén, telepítse az Azure PowerShell legújabb verzióját. R
     Select-AzSubscription -SubscriptionId "<SubscriptionId>"    
     ```
 
-## <a name="create-a-data-factory"></a>data factory létrehozása
+## <a name="create-a-data-factory"></a>Data factory létrehozása
 
 1. Adjon meg egy olyan változót, amelyet később a PowerShell-parancsokban az erőforráscsoport neveként fog használni. Másolja az alábbi parancsszöveget a PowerShellbe, adja meg az [Azure-erőforráscsoport](../azure-resource-manager/resource-group-overview.md) nevét (idézőjelek között, például így: `"adfrg"`), majd futtassa a parancsot. 
    
@@ -176,7 +176,7 @@ Ha még nincs a gépén, telepítse az Azure PowerShell legújabb verzióját. R
 >    The specified data factory name 'ADFv2TutorialDataFactory' is already in use. Data factory names must be globally unique.
 >    ```
 > * Az adat-előállító példányok létrehozásához annak a felhasználói fióknak, amellyel belép az Azure-ba, a *közreműködő* vagy *tulajdonos* szerepkör tagjának, vagy az Azure-előfizetés *rendszergazdájának* kell lennie.
-> * Azon Azure-régiók listájáért, amelyekben Data Factory jelenleg elérhető, válassza ki a következő oldalon megtekinteni kívánt régiókat, majd bontsa ki az **elemzés** elemet a **Data Factory**megkereséséhez: [Régiónként elérhető termékek](https://azure.microsoft.com/global-infrastructure/services/). Az adat-előállítók által használt adattárak (Azure Storage, Azure SQL Database stb.) és számítási erőforrások (Azure HDInsight stb.) más régiókban is lehetnek.
+> * Azon Azure-régiók megtekintéséhez, amelyekben jelenleg elérhető a Data Factory, a következő lapon válassza ki az Önt érdeklő régiókat, majd bontsa ki az **Elemzés** részt, és keresse meg a **Data Factory**: [Elérhető termékek régiók szerint](https://azure.microsoft.com/global-infrastructure/services/) szakaszt. Az adat-előállítók által használt adattárak (Azure Storage, Azure SQL Database stb.) és számítási erőforrások (Azure HDInsight stb.) más régiókban is lehetnek.
 > 
 > 
 
@@ -184,7 +184,7 @@ Ha még nincs a gépén, telepítse az Azure PowerShell legújabb verzióját. R
 
 Ebben a szakaszban egy saját üzemeltetésű Integration Runtime átjárót hozhat létre, és társíthatja azt az SQL Server-adatbázist futtató helyszíni géppel. A saját üzemeltetésű Integration Runtime az a komponens, amely adatokat másol a gépen futó SQL Server-adatbázisból az Azure Blob Storage-ba. 
 
-1. Hozzon létre egy változót az integrációs modul nevéhez. Adjon meg egy egyedi nevet, és jegyezze fel. Az oktatóanyag későbbi részében használni fogja. 
+1. Hozzon létre egy változót az integrációs modul nevéhez. Adjon meg egy egyedi nevet, és jegyezze fel. Az oktatóanyagban későbbi részében használni fogja. 
 
     ```powershell
    $integrationRuntimeName = "ADFTutorialIR"
@@ -299,7 +299,7 @@ Ebben a szakaszban egy saját üzemeltetésű Integration Runtime átjárót hoz
     g. Adja meg a felhasználónévhez tartozó jelszót.
 
     h. Annak ellenőrzéséhez, hogy az Integration Runtime kapcsolódik-e az SQL Serverhez, kattintson a **Teszt** gombra.  
-    ![Sikeres csatlakozás](media/tutorial-hybrid-copy-powershell/config-manager-diagnostics-tab.png) 
+    a ![kapcsolódás sikeres volt](media/tutorial-hybrid-copy-powershell/config-manager-diagnostics-tab.png) 
   
     Sikeres csatlakozás esetén egy zöld pipa jelenik meg. Sikertelen csatlakozás esetén a hibához kapcsolódó hibaüzenet jelenik meg. Javítsa ki a hibákat, és ellenőrizze, hogy az Integration Runtime kapcsolódik-e az SQL Server-példányhoz.
 

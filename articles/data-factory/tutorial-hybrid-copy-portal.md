@@ -1,5 +1,5 @@
 ---
-title: Adatok másolása az SQL Server-adatbázisból Blob Storage-tárolóba az Azure Data Factory használatával | Microsoft Docs
+title: Adatok másolása SQL Serverból blob Storage-ba Azure Data Factory használatával
 description: Megismerheti az adatok a helyszíni adattárolókból a felhőbe, az Azure Data Factory saját üzemeltetésű integrációs moduljával történő másolásának folyamatát.
 services: data-factory
 documentationcenter: ''
@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.date: 01/11/2018
 ms.author: abnarain
-ms.openlocfilehash: c86f5f053c285b099b7c3575c890b108f2de8742
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 09768e3b9bd1c2e6c9d4a5dbe95bb270b07266c0
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70140672"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73683533"
 ---
 # <a name="copy-data-from-an-on-premises-sql-server-database-to-azure-blob-storage"></a>Adatok másolása helyszíni SQL Server-adatbázisból Azure Blob Storage-tárolóba
 Ebben az oktatóanyagban az Azure Data Factory felhasználói felületének (UI) használatával egy adat-előállító folyamatot hoz létre az adatok egy helyszíni SQL Server-adatbázisból egy Azure Blob-tárolóba történő másolására. Létrehozhat és alkalmazhat egy saját üzemeltetésű integrációs modult, amely adatokat helyez át a helyszíni és a felhőalapú adattárolók között.
@@ -103,11 +103,11 @@ Ebben a szakaszban egy **adftutorial** nevű blobtárolót hoz létre a Blob Sto
 
 1. Ne zárja be az **adftutorial** **tároló** ablakát. A segítségével ellenőrizheti az oktatóanyag eredményét. A Data Factory automatikusan létrehozza a kimeneti mappát a tárolóban, így nem kell újat létrehoznia.
 
-## <a name="create-a-data-factory"></a>data factory létrehozása
+## <a name="create-a-data-factory"></a>Data factory létrehozása
 Ebben a lépésben létrehoz egy adat-előállítót, és elindítja a Data Factory felhasználói felületét, hogy létrehozzon egy folyamatot az adat-előállítóban. 
 
 1. Nyissa meg a **Microsoft Edge** vagy a **Google Chrome** böngészőt. A Data Factory felhasználói felületének használata jelenleg csak a Microsoft Edge-ben és a Google Chrome-ban támogatott.
-1. A bal oldali menüben válassza az **erőforrás** > létrehozása**elemzési** > **Data Factory**:
+1. A bal oldali menüben válassza az **erőforrás létrehozása** > **Analytics** > **Data Factory**:
    
    ![Data Factory kiválasztása az „Új” ablaktáblán](./media/doc-common-process/new-azure-data-factory-menu.png)
 
@@ -159,7 +159,7 @@ Ebben a lépésben létrehoz egy adat-előállítót, és elindítja a Data Fact
 
 1. A név mezőben adja meg a **TutorialIntegrationRuntime**. Ezután kattintson a **Tovább** gombra.
 
-1. A beállítások lapon **kattintson ide a számítógép expressz telepítésének**elindításához. Ez a művelet telepíti az integrációs modult a gépre, és regisztrálja azt a Data Factory. Használhatja a manuális telepítési lehetőséget is. Ehhez töltse le a telepítőfájlt, futtassa, majd a kulccsal regisztrálja az integrációs modult. 
+1. A beállítások lapon **kattintson ide a számítógép expressz telepítésének elindításához**. Ez a művelet telepíti az integrációs modult a gépre, és regisztrálja azt a Data Factory. Használhatja a manuális telepítési lehetőséget is. Ehhez töltse le a telepítőfájlt, futtassa, majd a kulccsal regisztrálja az integrációs modult. 
 
 1. Az **Integrációs modul (Saját üzemeltetésű) – Expressz telepítés** ablakban válassza a **Bezárás** elemet. 
 
@@ -211,7 +211,7 @@ Ebben a lépésben létrehoz egy adat-előállítót, és elindítja a Data Fact
     c. A **fájl** résznél válassza a **dinamikus tartalom hozzáadása**lehetőséget.
     ![dinamikus kifejezés a fájl nevének feloldásához](./media/tutorial-hybrid-copy-portal/file-name.png)
 
-    d. Adja `@CONCAT(pipeline().RunId, '.txt')`hozzá, majd válassza a **Befejezés**lehetőséget. Ez a művelet átnevezi a fájlt a PipelineRunID. txt fájlba. 
+    d. Adja hozzá `@CONCAT(pipeline().RunId, '.txt')`, majd válassza a **Befejezés**lehetőséget. Ez a művelet átnevezi a fájlt a PipelineRunID. txt fájlba. 
 
 1. Lépjen a megnyitott folyamatot tartalmazó lapra, vagy válassza ki a folyamatot a fanézetben. Ellenőrizze, hogy a **Fogadó-adatkészlet** mezőben az **AzureBlobDataset** érték van-e kiválasztva.
 
@@ -227,7 +227,7 @@ Válassza az **trigger hozzáadása** elemet a folyamat eszköztárán, majd vá
 
 ## <a name="monitor-the-pipeline-run"></a>A folyamat futásának monitorozása
 
-1. Lépjen a **Monitorozás** lapra. Az előző lépésben manuálisan aktivált folyamatot fogja látni. 
+1. Lépjen a **figyelés** lapra. Megjelenik az előző lépésben manuálisan aktivált folyamat. 
 
     ![Folyamatfuttatások monitorozása](./media/tutorial-hybrid-copy-portal/pipeline-runs.png)
 1. A folyamat futásához társított tevékenységfuttatások megtekintéséhez kattintson a **Műveletek** oszlopban található **Tevékenységfuttatások megtekintése** hivatkozásra. Csak a tevékenység fut, mert csak egy tevékenység van a folyamatban. A másolási művelet részleteinek megtekintéséhez válassza a **Műveletek** oszlop **Részletek** hivatkozását (szemüveg ikon). Ha vissza szeretne térni a folyamat futtatási nézetéhez, válassza a felső **folyamat futtatása** lehetőséget.

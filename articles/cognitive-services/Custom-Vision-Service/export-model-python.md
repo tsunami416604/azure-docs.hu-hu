@@ -1,7 +1,7 @@
 ---
 title: 'Oktatóanyag: TensorFlow-modell Python nyelven – Custom Vision Service'
 titleSuffix: Azure Cognitive Services
-description: TensorFlow-modell futtatása Python nyelven.
+description: TensorFlow-modell futtatása Python nyelven. Ez a cikk csak a Custom Vision szolgáltatás képbesorolási projektjeiből exportált modellekre vonatkozik.
 services: cognitive-services
 author: areddish
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: tutorial
 ms.date: 07/03/2019
 ms.author: areddish
-ms.openlocfilehash: 43fbf7b13c75b9bdbaa810905ed9a25e8faa664f
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 00d3b1dce9bacc01c8319c678ab27a3d4cc8da88
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72898360"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73718424"
 ---
 # <a name="tutorial-run-tensorflow-model-in-python"></a>Oktatóanyag: TensorFlow-modell futtatása Python nyelven
 
@@ -28,8 +28,8 @@ Miután [exportálta a TensorFlow-modellt](https://docs.microsoft.com/azure/cogn
 
 Az oktatóanyag használatához a következőkre lesz szüksége:
 
-- Vagy Python 2.7 + vagy Python 3.5+ telepítése.
-- Pip telepítése.
+- Telepítse a Python 2.7 vagy újabb, illetve a Python 3.5 vagy újabb verzióját.
+- Telepítse a pipet.
 
 Ezután telepítenie kell a következő csomagokat:
 
@@ -208,7 +208,7 @@ A képtenzor modellen történő átfuttatásának eredményeit ezután ismét m
         label_index += 1
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Következő lépésként megtudhatja, hogyan csomagolhatja be a modellt egy mobil alkalmazásba:
 * [Az exportált TensorFlow-modell használata Android-alkalmazásban](https://github.com/Azure-Samples/cognitive-services-android-customvision-sample)

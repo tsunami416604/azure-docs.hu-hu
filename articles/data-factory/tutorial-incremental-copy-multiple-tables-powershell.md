@@ -1,5 +1,5 @@
 ---
-title: Több tábla növekményes másolása az Azure Data Factory használatával | Microsoft Docs
+title: 'Több tábla növekményes másolása Azure Data Factory használatával '
 description: Az oktatóanyag során egy Azure Data Factory-folyamatot hoz létre, amely egy helyszíni SQL Server több táblájának módosított adatait másolja növekményesen egy Azure SQL-adatbázisba.
 services: data-factory
 documentationcenter: ''
@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: yexu
-ms.openlocfilehash: b7de8b164fcd818fba1f999ea7b67f11de646ccd
-ms.sourcegitcommit: 6eecb9a71f8d69851bc962e2751971fccf29557f
+ms.openlocfilehash: b841acf45c20320fada895f20dfc4065837d5add
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72533218"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73683404"
 ---
 # <a name="incrementally-load-data-from-multiple-tables-in-sql-server-to-an-azure-sql-database"></a>Adatok növekményes betöltése az SQL Server több táblájából egy Azure SQL-adatbázisba
 Az oktatóanyag során egy Azure-beli adat-előállítót hoz létre egy olyan folyamattal, amely változásadatokat tölt be egy helyszíni SQL Server több táblájából egy Azure SQL-adatbázisba.    
@@ -360,7 +360,7 @@ Ebben a lépésben a helyszíni SQL Server-adatbázist társítja az adat-előá
     ```
 
 ### <a name="create-the-sql-database-linked-service"></a>Az SQL-adatbázis társított szolgáltatásának létrehozása
-1. Hozzon létre egy **AzureSQLDatabaseLinkedService. JSON** nevű JSON-fájlt a C:\ADFTutorials\IncCopyMultiTableTutorial mappában az alábbi tartalommal. (Ha még nem létezik, hozza létre az ADF mappát.) A fájl mentése előtt cserélje le a &lt;servername &gt;, &lt;database név &gt;, &lt;user név &gt; és &lt;password &gt; a SQL Server-adatbázis nevére, az adatbázis nevére, a felhasználónevére és a jelszavára. 
+1. Hozzon létre egy **AzureSQLDatabaseLinkedService. JSON** nevű JSON-fájlt a C:\ADFTutorials\IncCopyMultiTableTutorial mappában az alábbi tartalommal. (Ha még nem létezik, hozza létre az ADF mappát.) Cserélje le a &lt;servername&gt;, &lt;adatbázisnév&gt;, &lt;Felhasználónév&gt;, és &lt;jelszó&gt; a SQL Server-adatbázis neve, az adatbázis neve, a Felhasználónév és a jelszót a fájl mentése előtt. 
 
     ```json
     {  
@@ -803,7 +803,7 @@ A folyamat táblanevek listáját használja paraméterként. A **foreach tevék
 1. Az **adatfeldolgozó** lapon válassza a **Szerző & figyelő** lehetőséget Azure Data Factory elindításához egy külön lapon.
 
 1. Az **első lépések** oldalon válassza a **figyelő** lehetőséget a bal oldalon. 
-![Pipeline fut ](media/doc-common-process/get-started-page-monitor-button.png)    
+![folyamat fut](media/doc-common-process/get-started-page-monitor-button.png)    
 
 1. Itt megtekintheti az összes folyamatfuttatást és azok állapotát. A következő példában a folyamatfuttatás állapota **Sikeres**. A **Paraméterek** oszlopban található hivatkozásra kattintva megtekintheti a folyamatnak átadott paramétereket. Hiba esetén egy hivatkozás jelenik meg a **Hiba** oszlopban.
 
@@ -954,7 +954,7 @@ project_table   2017-10-01 00:00:00.000
 
 Megfigyelhető, hogy mindkét tábla küszöbértékei frissültek.
      
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Az oktatóanyagban az alábbi lépéseket hajtotta végre: 
 
 > [!div class="checklist"]

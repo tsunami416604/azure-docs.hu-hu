@@ -1,37 +1,42 @@
 ---
-title: Kapcsolódás a Power BIsal rendelkező Knowledge Store-hoz
+title: Kapcsolódás a Knowledge Store-hoz (előzetes verzió) Power BI
 titleSuffix: Azure Cognitive Search
-description: Az Azure Cognitive Search Knowledge Store összekapcsolásával elemzést és feltárást Power BI.
+description: Egy Azure Cognitive Search Knowledge Store (előzetes verzió) összekötése az elemzéshez és a feltáráshoz Power BI.
 author: lisaleib
 manager: nitinme
 ms.author: v-lilei
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 11/04/2019
-ms.openlocfilehash: 03f28cb40708b7ec77a0a342b5ec1b6faeaa8e3b
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: HT
+ms.openlocfilehash: 7b12f0f14003389d36e2df5bcffe7828c135cf2b
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73485147"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73715488"
 ---
 # <a name="connect-a-knowledge-store-with-power-bi"></a>Tudástár összekötése Power BI
 
-> [!Note]
-> A Knowledge Store előzetes verzióban érhető el, és nem használható éles környezetben. A portál és a [Search REST API 2019-05-06-es verziójának előzetes verziója](search-api-preview.md) biztosítja ezt a funkciót. Jelenleg nincs .NET SDK-támogatás.
->
+> [!IMPORTANT] 
+> A Knowledge Store jelenleg nyilvános előzetes verzióban érhető el. Az előzetes verziójú funkciók szolgáltatói szerződés nélkül érhetők el, és éles számítási feladatokhoz nem ajánlott. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). A [REST API 2019-05-06-es verziójának előzetes verziója](search-api-preview.md) előzetes funkciókat biztosít. Jelenleg korlátozott a portál támogatása, és nincs .NET SDK-támogatás.
 
 Ebből a cikkből megtudhatja, hogyan csatlakozhat a Knowledge Store-hoz, és hogyan deríthető fel a Power Query használatával a Power BI Desktop alkalmazásban. A sablonokkal gyorsabban elsajátíthatja az első lépéseket, vagy létrehozhat egy teljesen új irányítópultot.
 
-## <a name="prerequisites"></a>Előfeltételek
++ Kövesse a [Tudásbázis létrehozása a Azure Portalban](knowledge-store-create-portal.md) című témakör lépéseit, vagy [hozzon létre egy Azure Cognitive Search Knowledge Store](knowledge-store-create-rest.md) -t a REST használatával, és hozza létre az ebben az útmutatóban használt, a minta tudásbázist. Szüksége lesz a Knowledge Store létrehozásához használt Azure Storage-fiók nevére, valamint a Azure Portal elérési kulcsára.
 
 + [Power BI Desktop telepítése](https://powerbi.microsoft.com/downloads/)
 
-+ Szüksége lesz egy Knowledge Store-ra, amely az Azure Table Storage-ba mutat. Szüksége lesz a Knowledge Store létrehozásához használt Azure Storage-fiók nevére, valamint a Azure Portal elérési kulcsára is.
+## <a name="sample-power-bi-template---azure-portal-only"></a>Példa Power BI sablonra – csak Azure Portal
 
-Ha egy minta Knowledge Store-t szeretne használni, kövesse az utasításokat [egy Tudásbázis létrehozásához](knowledge-store-create-portal.md).
+Ha [a Azure Portal használatával hozta létre a Knowledge Store](knowledge-store-create-portal.md)-t, az [Azure Cognitive Search Power bi sablon minta](https://github.com/Azure-Samples/cognitive-search-templates) használatával megtekintheti és kísérletezhet Power bi vizualizációkkal. Ez a sablon az **adatimportálás** varázsló lépésein keresztül is letölthető.
 
-## <a name="create-a-custom-report"></a>Egyéni jelentés létrehozása
+A minta sablon automatikusan végrehajtja a jelen cikk további részében ismertetett telepítési lépéseket. Ha azonban a REST API használatával hozza létre a tudásbázist, ugorja át a sablont, és használja a cikk további részeit a Knowledge Store Power BIhoz való összekapcsolásához. Kezdje a [kapcsolatot a Power BIval](#connect-with-power-bi).
+
+A minta sablon több vizualizációt tartalmaz, például a WordCloud és a Network Navigator alkalmazást. A sablon egyes vizualizációi, például a helyszínek és az entitás – gráf megjelenítője nem jeleníti meg a [Tudásbázis létrehozása a Azure Portal a Knowledge Store](knowledge-store-create-portal.md)-ban létrehozott minta-tároló adatait. Ennek az az oka, hogy a rendszer csak az **adatimportálás** VARÁZSLÓBAN elérhető AI-dúsítások egy részhalmazát használta.
+
+![Példa Azure Cognitive Search Power BI-sablonra](media/knowledge-store-connect-power-bi/powerbi-sample-template-portal-only.png "Minta Power BI sablon")
+
+## <a name="connect-with-power-bi"></a>Kapcsolódás Power BI-jal
 
 1. Indítsa el Power BI Desktop és kattintson **az adatlekérdezés**gombra.
 

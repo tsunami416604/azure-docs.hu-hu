@@ -7,14 +7,17 @@ ms.service: azure-migrate
 ms.topic: tutorial
 ms.date: 10/23/2019
 ms.author: raynew
-ms.openlocfilehash: 86d61dbd75363f68ee4651bfb36f940810909c00
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 856f7f7735435579ac14918ee8026f27b222773e
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73501847"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73715512"
 ---
 # <a name="assess-servers-using-imported-data"></a>Kiszolgálók felmérése importált adatszolgáltatásokkal
+
+> [!NOTE]
+> Ha még nem látja ezt a funkciót a Azure Migrate-portálon, kattintson a lefagy elemre. A következő héten vagy így fog megjelenni.
 
 Ez a cikk bemutatja, hogyan értékelheti a helyszíni kiszolgálókat a [Azure Migrate: kiszolgáló-értékeléssel](migrate-services-overview.md#azure-migrate-server-assessment-tool), a kiszolgálói metaadatok CSV használatával történő importálásával. Ezzel az értékelési módszersel nem kell beállítania a Azure Migrate berendezést az értékelés létrehozásához. Ez a következő esetekben hasznos: 
 
@@ -231,7 +234,7 @@ Az értékelést a következőképpen futtathatja:
 1. Tekintse át az értékelések létrehozásával kapcsolatos [ajánlott eljárásokat](best-practices-assessment.md) .
 2. A **kiszolgálók** lap **Azure Migrate: kiszolgáló értékelése** csempén kattintson az **értékelés**elemre.
 
-    ![Értékelés](./media/tutorial-assess-physical/assess.png)
+    ![Kiértékelés](./media/tutorial-assess-physical/assess.png)
 
 2. A **kiszolgálók értékelése**lapon adja meg az értékelés nevét.
 3. A **felderítési forrás**területen válassza a **Azure Migrate importálással hozzáadott gépek** lehetőséget.
@@ -295,7 +298,7 @@ Ez a nézet az Azure-ban futó virtuális gépek becsült számítási és táro
 
 ## <a name="supported-operating-system-names"></a>Támogatott operációs rendszerek nevei
 
-Name (Név) | Name (Név)
+Név | Név
 --- | ---
 **A – H** | 
 Apple Mac OS X 10 | 3\. Asianux<br/>4\. Asianux<br/>5\. Asianux

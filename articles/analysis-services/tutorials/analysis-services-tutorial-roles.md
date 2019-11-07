@@ -1,18 +1,18 @@
 ---
-title: Oktatóanyag – Azure Analysis Services rendszergazdai és felhasználói szerepkörök konfigurálása | Microsoft Docs
-description: Megtudhatja, hogyan konfigurálhatja Azure Analysis Services-szerepköröket.
+title: Oktatóanyag – Azure Analysis Services szerepkörök konfigurálása | Microsoft Docs
+description: Megtudhatja, hogyan konfigurálhat Azure Analysis Services rendszergazdai és felhasználói szerepköröket a Azure Portal vagy a SQL Server Management Studio használatával.
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: tutorial
-ms.date: 01/09/2019
+ms.date: 10/30/2019
 ms.author: owend
 ms.reviewer: owend
-ms.openlocfilehash: b70d1502985a1ffc0ebdf6fcb487cda3992d1c19
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 3abcfe61f365c3c96dfb6b8eb2ca6cc9e5d3797e
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72294436"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73572377"
 ---
 # <a name="tutorial-configure-server-administrator-and-user-roles"></a>Oktatóanyag: Kiszolgáló-rendszergazdai és felhasználói szerepkörök konfigurálása
 
@@ -139,7 +139,7 @@ Ebben a feladatban a [Create](https://docs.microsoft.com/bi-reference/tmsl/creat
 Ha többé nincs rájuk szüksége, törölje a felhasználói és csoportfiókokat és szerepköröket. A felhasználói fiókok eltávolításához használja a **Szerepkör tulajdonságai** > **Tagság** lehetőséget. Kattintson a jobb gombbal egy szerepkörre, majd kattintson a **Törlés** lehetőségre.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ebben az oktatóanyagban megtanult csatlakozni Azure AS-kiszolgálójához, megismerkedett az adventureworks minta-modelladatbázissal és annak tulajdonságaival az SSMS-ben. Elsajátította az SSMS és a TMSL-szkriptek használatát felhasználók vagy csoportok meglévő vagy új szerepkörökhöz adására. Most, hogy konfigurálta a kiszolgáló és a minta-modelladatbázis felhasználói engedélyeit, Önnel együtt mások is csatlakozhatnak ahhoz olyan ügyfélalkalmazások használatával, mint a Power BI. További tudnivalók a következő oktatóanyagban. 
 
 > [!div class="nextstepaction"]

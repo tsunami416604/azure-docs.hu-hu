@@ -1,5 +1,5 @@
 ---
-title: PowerShell-példa BACPAC-fájl importálására Azure SQL-adatbázisba | Microsoft Docs
+title: PowerShell-példa BACPAC-fájl importálása az Azure SQL Database-be
 description: Azure PowerShell-példaszkript – BACPAC-fájl importálása SQL-adatbázisba
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 05/24/2019
-ms.openlocfilehash: 3c90cd19c5da3d98e894105e21b5e20cf6376c21
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 1cd7b94ac2717bbfa06d093d13fc201514cdc575
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68569959"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73691692"
 ---
 # <a name="use-powershell-to-import-a-bacpac-file-into-an-azure-sql-database"></a>BACPAC-fájl importálása egy Azure SQL-adatbázisba a PowerShell használatával
 
@@ -47,9 +47,9 @@ A szkript a következő parancsokat használja. A táblázatban lévő összes p
 | Parancs | Megjegyzések |
 |---|---|
 | [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | Létrehoz egy erőforráscsoportot, amely az összes erőforrást tárolja. |
-| [New-AzSqlServer](/powershell/module/az.sql/new-azsqlserver) | Létrehoz egy SQL Database kiszolgálót, amely önálló adatbázist és rugalmas készleteket üzemeltet. |
-| [New-AzSqlServerFirewallRule](/powershell/module/az.sql/new-azsqlserverfirewallrule) | Létrehoz egy SQL Database kiszolgáló tűzfalszabály-szabályt, amely lehetővé teszi a hozzáférést a SQL Database-kiszolgálón lévő összes önálló adatbázishoz és készletezett adatbázishoz a megadott IP-címtartomány alapján. |
-| [New-AzSqlDatabaseImport](/powershell/module/az.sql/new-azsqldatabaseimport) | Importál egy BACPAC-fájlt, és létrehoz egy új adatbázist a kiszolgálón. |
+| [Új – AzSqlServer](/powershell/module/az.sql/new-azsqlserver) | Létrehoz egy SQL Database kiszolgálót, amely önálló adatbázist és rugalmas készleteket üzemeltet. |
+| [Új – AzSqlServerFirewallRule](/powershell/module/az.sql/new-azsqlserverfirewallrule) | Létrehoz egy SQL Database kiszolgáló tűzfalszabály-szabályt, amely lehetővé teszi a hozzáférést a SQL Database-kiszolgálón lévő összes önálló adatbázishoz és készletezett adatbázishoz a megadott IP-címtartomány alapján. |
+| [Új – AzSqlDatabaseImport](/powershell/module/az.sql/new-azsqldatabaseimport) | Importál egy BACPAC-fájlt, és létrehoz egy új adatbázist a kiszolgálón. |
 | [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | Töröl egy erőforráscsoportot az összes beágyazott erőforrással együtt. |
 
 ## <a name="next-steps"></a>További lépések

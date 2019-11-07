@@ -1,21 +1,24 @@
 ---
-title: Dokumentum-extrakciós kognitív keresési képesség
+title: Dokumentum-extrakciós kognitív keresési képesség (előzetes verzió)
 titleSuffix: Azure Cognitive Search
-description: A tartalom kibontása egy fájlból a dúsítási folyamaton belül.
+description: A tartalom kibontása egy fájlból a dúsítási folyamaton belül. Ez a képesség jelenleg nyilvános előzetes verzióban érhető el.
 manager: nitinme
 author: careyjmac
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: chalton
-ms.openlocfilehash: 8656896fe1a113ab143c43b4d1973e4196c5f087
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: e4274f1cb2eacaf78ab83bfb9d637d044d2290bd
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73512196"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73720124"
 ---
 # <a name="document-extraction-cognitive-skill"></a>Dokumentum-extrakciós kognitív képesség
+
+> [!IMPORTANT] 
+> Ez a képesség jelenleg nyilvános előzetes verzióban érhető el. Az előzetes verziójú funkciók szolgáltatói szerződés nélkül érhetők el, és éles számítási feladatokhoz nem ajánlott. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). A [REST API 2019-05-06-es verziójának előzetes verziója](search-api-preview.md) előzetes funkciókat biztosít. Jelenleg nincs portál vagy .NET SDK-támogatás.
 
 A **dokumentum-kivonási** képesség Kinyeri a tartalmat egy fájlból a dúsítási folyamaton belül. Ez lehetővé teszi, hogy kihasználja az olyan dokumentum-kivonási lépést, amely általában a készségkészlet végrehajtása előtt történik, amelyet más szakismeretek is létrehozhatnak.
 
@@ -63,7 +66,7 @@ A fájl hivatkozási objektuma háromféleképpen hozható létre:
 
  - A `allowSkillsetToReadFileData` paraméter beállítása az indexelő definíciójában a "true" értékre.  Ezzel létrehoz egy elérési utat `/document/file_data`, amely a blob-adatforrásból letöltött eredeti adatfájlt jelképező objektum. Ez a paraméter csak a blob Storage-ban lévő adatértékekre vonatkozik.
 
- - Az indexelő definíciójában a `imageAction` paramétert a `none`tól eltérő értékre kell beállítani.  Ez egy tömböt hoz létre a lemezképek `/document/normalized_images`, amelyek a szükséges egyezményt követve adja meg ezt a képességet, ha külön (például `/document/normalized_images/*`) adtak át.
+ - Az indexelő definíciójában a `imageAction` paramétert a `none`tól eltérő értékre kell beállítani.  Ez létrehoz egy olyan rendszerképekből álló tömböt, amely a szükséges konvenciót követi, ha a rendszer külön (például `/document/normalized_images/*`) adta át ezt a képességet.
 
  - Az egyéni képességek egy JSON-objektumot adnak vissza, amely pontosan a fentiek szerint van meghatározva.  A `$type` paramétert pontosan `file` értékre kell beállítani, és a `data` paraméternek a fájl tartalmának alap 64 kódolású bájtos tömb adatának kell lennie.
 
@@ -142,7 +145,7 @@ A fájl hivatkozási objektuma háromféleképpen hozható létre:
 }
 ```
 
-## <a name="see-also"></a>Lásd még
+## <a name="see-also"></a>Lásd még:
 
 + [Beépített szaktudás](cognitive-search-predefined-skills.md)
 + [Készségkészlet definiálása](cognitive-search-defining-skillset.md)

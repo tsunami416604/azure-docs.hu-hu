@@ -1,20 +1,20 @@
 ---
-title: Jegyzetfüzet létrehozása Azure Cosmos DB az adat elemzéséhez és megjelenítéséhez
-description: Megtudhatja, hogyan importálhat adatokat Azure Cosmos DBba, elemezheti az adatokat, és jelenítheti meg a kimenetet a beépített Jupyter notebookok használatával.
+title: 'Oktatóanyag: jegyzetfüzet létrehozása Azure Cosmos DBban az adat elemzéséhez és megjelenítéséhez'
+description: 'Oktatóanyag: Ismerje meg, hogyan importálhat adatokat Azure Cosmos DBba, elemezheti az adatokat, és jelenítheti meg a kimenetet a beépített Jupyter notebookok használatával.'
 author: deborahc
 ms.topic: tutorial
 ms.service: cosmos-db
-ms.date: 09/25/2019
+ms.date: 11/05/2019
 ms.author: dech
 ms.reviewer: sngun
-ms.openlocfilehash: 679887ca6e9ad7713480899d1b40fddf9923c4c0
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 45dd4e8dcfd74cdb5d96b935e239b9f4b5094a7c
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72931505"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73720929"
 ---
-# <a name="create-a-notebook-in-azure-cosmos-db-to-analyze-and-visualize-the-data"></a>Jegyzetfüzet létrehozása Azure Cosmos DB az adat elemzéséhez és megjelenítéséhez
+# <a name="tutorial-create-a-notebook-in-azure-cosmos-db-to-analyze-and-visualize-the-data"></a>Oktatóanyag: jegyzetfüzet létrehozása Azure Cosmos DBban az adat elemzéséhez és megjelenítéséhez
 
 Ez a cikk azt ismerteti, hogyan használhatók a beépített Jupyter jegyzetfüzetek a mintaként szolgáló kiskereskedelmi adatAzure Cosmos DBek importálásához. Láthatja, hogyan használható az SQL és a Azure Cosmos DB Magic parancsok a lekérdezések futtatásához, az adatelemzéshez és az eredmények megjelenítéséhez.
 
@@ -121,7 +121,7 @@ Mielőtt lekérdezéseket futtasson az adatok elemzéséhez, olvassa el az adato
 {Query text}
 ```
 
-További információért lásd a [beépített notebook-parancsokat és-szolgáltatásokat Azure Cosmos db](use-notebook-features-and-commands.md) cikkben. A lekérdezés `SELECT c.Action, c.Price as ItemRevenue, c.Country, c.Item FROM c`fog futni. Az eredmények a df_cosmos nevű Panda DataFrame lesznek mentve. Illessze be a következő parancsot egy új jegyzetfüzet-cellába, és futtassa azt:
+További információért lásd a [beépített notebook-parancsokat és-szolgáltatásokat Azure Cosmos db](use-notebook-features-and-commands.md) cikkben. Futtatja a lekérdezést – `SELECT c.Action, c.Price as ItemRevenue, c.Country, c.Item FROM c`. Az eredmények a df_cosmos nevű Panda DataFrame lesznek mentve. Illessze be a következő parancsot egy új jegyzetfüzet-cellába, és futtassa azt:
 
 ```python
 %%sql --database RetailDemo --container WebsiteData --output df_cosmos
@@ -288,6 +288,6 @@ Ebben a szakaszban néhány lekérdezést fog futtatni a beolvasott adatforrásr
 
    ![Vásárlási konverziós arány megjelenítése](./media/create-notebook-visualize-data/visualize-purchase-conversion-rate.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * További információ a notebook-parancsokról: a [beépített notebook-parancsok és-szolgáltatások használata Azure Cosmos db](use-notebook-features-and-commands.md) cikkben.

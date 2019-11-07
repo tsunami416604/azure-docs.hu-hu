@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: cf48426f14eb1ea5004b23da594194fa9828a112
-ms.sourcegitcommit: 9858ab651a520c26f0ed18215e650efbf1fc5de9
+ms.openlocfilehash: 8945ccef1dd44570f4f59c7c91c2fe05b222c5bb
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2019
-ms.locfileid: "72303454"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73576932"
 ---
 # <a name="search-nearby-points-of-interest-using-azure-maps"></a>Közeli hasznos helyek keresése az Azure Maps használatával
 
@@ -129,9 +129,9 @@ A térképkezelési API egy kényelmes ügyféloldali kódtár, amely segítség
     });
     ```
 
-   Ez a szakasz inicializálja az Azure Maps-fiók kulcsához tartozó térképkezelési API-t. a `atlas` az API-t és a kapcsolódó vizuális összetevőket tartalmazó névtér. a `atlas.Map` biztosítja a vezérlőt a vizualizációs és interaktív webes térképekhez.
+   Ez a szakasz inicializálja az Azure Maps-fiók kulcsához tartozó térképkezelési API-t. `atlas` az API-t és a kapcsolódó vizuális összetevőket tartalmazó névtér. `atlas.Map` biztosítja a vezérlőt a vizualizációs és interaktív webes térképekhez.
 
-4. Mentse a fájl módosításait, és nyissa meg a HTML-oldalt egy böngészőben. Ez a legalapvetőbb Térkép, amelyet a `atlas.Map` hívásával hívhat meg a fiók kulcsa alapján.
+4. Mentse a fájl módosításait, és nyissa meg a HTML-oldalt egy böngészőben. Ez az alapszintű Térkép, amelyet a `atlas.Map` hívásával hívhat meg a fiók kulcsa alapján.
 
    ![A térkép megtekintése](./media/tutorial-search-location/basic-map.png)
 
@@ -161,7 +161,7 @@ A térképkezelési API egy kényelmes ügyféloldali kódtár, amely segítség
     });
     ```
 
-   Ebben a kódrészletben a `ready` eseményt adja hozzá a térképhez, amely a Térkép erőforrásainak betöltését és a Térkép elérhetőségét eredményezi. A Map `ready` eseménykezelőben létrejön egy adatforrás, amely az eredmény-adatforrást tárolja. Létrejön egy szimbólumréteg, amelyet a rendszer az adatforráshoz csatol. Ez a réteg határozza meg az adatforrásban található eredményadatok megjelenítését. Esetünkben ez egy sötétkék, kerek gombostű ikon, amely az eredmény koordinátái fölött jelenik meg, és amelyet más ikonok átfedhetnek. A rendszer hozzáadja az eredmény réteget a Térkép rétegeihez.
+   Ez a kódrészlet egy `ready` eseményt ad hozzá a térképhez, amely a Térkép erőforrásainak betöltését és a Térkép elérhetőségét eredményezi. A Map `ready` eseménykezelőben létrejön egy adatforrás, amely az eredmény-adatforrást tárolja. Létrejön egy szimbólumréteg, amelyet a rendszer az adatforráshoz csatol. Ez a réteg határozza meg az adatforrásban található eredményadatok megjelenítését. Esetünkben ez egy sötétkék, kerek gombostű ikon, amely az eredmény koordinátái fölött jelenik meg, és amelyet más ikonok átfedhetnek. A rendszer hozzáadja az eredmény réteget a Térkép rétegeihez.
 
 <a id="usesearch"></a>
 
@@ -171,7 +171,7 @@ Ez a szakasz bemutatja, hogyan használhatja a Maps [Search API](https://docs.mi
 
 ### <a name="service-module"></a>Szolgáltatásmodul
 
-1. A Map `ready` eseménykezelőben hozza létre a keresési szolgáltatás URL-címét a következő JavaScript-kód hozzáadásával.
+1. A Map `ready`-eseménykezelőben hozza létre a keresési szolgáltatás URL-címét a következő JavaScript-kód hozzáadásával.
 
     ```JavaScript
    // Use SubscriptionKeyCredential with a subscription key
@@ -184,9 +184,9 @@ Ez a szakasz bemutatja, hogyan használhatja a Maps [Search API](https://docs.mi
    var searchURL = new atlas.service.SearchURL(pipeline); 
    ```
 
-   A `SubscriptionKeyCredential` létrehoz egy `SubscriptionKeyCredentialPolicy` értéket a HTTP-kérések hitelesítéséhez az előfizetési kulccsal Azure Maps. A `atlas.service.MapsURL.newPipeline()` a `SubscriptionKeyCredential` szabályzatot veszi alapul, és létrehoz egy [folyamat](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.pipeline?view=azure-maps-typescript-latest) -példányt. A `searchURL` a [keresési](https://docs.microsoft.com/rest/api/maps/search) műveletek Azure Maps URL-címet jelöli.
+   A `SubscriptionKeyCredential` létrehoz egy `SubscriptionKeyCredentialPolicy` a HTTP-kérések hitelesítéséhez az előfizetési kulccsal Azure Maps. A `atlas.service.MapsURL.newPipeline()` a `SubscriptionKeyCredential` szabályzatot veszi fel, és létrehoz egy [folyamat](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.pipeline?view=azure-maps-typescript-latest) -példányt. A `searchURL` Azure Maps [keresési](https://docs.microsoft.com/rest/api/maps/search) műveletekhez tartozó URL-címet jelöli.
 
-2. Ezután adja hozzá a következő szkriptblokkot a keresőlekérdezés felépítéséhez. A kódrészlet a Search Service alapszintű Fuzzy Search Service (Intelligens keresés) keresési API-ját használja. A Fuzzy Search Service a legtöbb nem teljes egyezésű bemeneti adat, például címek, helyek vagy hasznos helyek (POI) kezelésére is képes. Ez a kód a megadott szélességi és hosszúsági fok megadott sugarában keresi a közeli benzin-állomásokat. Ezután a válaszból kinyert egy GeoJSON-gyűjteményt, amely a `geojson.getFeatures()` metódussal lett kibontva, és hozzáadva az adatforráshoz, amely automatikusan a térképen megjelenített adatoknak a szimbólum rétegen keresztüli elérését eredményezi. A szkript utolsó része a térkép kameranézetét állítja be az eredmények határolókeretével, a térkép [setCamera](/javascript/api/azure-maps-control/atlas.map#setcamera-cameraoptions---cameraboundsoptions---animationoptions-) tulajdonságával.
+2. Ezután adja hozzá a következő szkriptblokkot a keresőlekérdezés felépítéséhez. A kódrészlet a Search Service alapszintű Fuzzy Search Service (Intelligens keresés) keresési API-ját használja. A Fuzzy Search Service a legtöbb nem teljes egyezésű bemeneti adat, például címek, helyek vagy hasznos helyek (POI) kezelésére is képes. Ez a kód a megadott szélességi és hosszúsági fok megadott sugarában keresi a közeli benzin-állomásokat. Ezután a válaszból kinyert egy GeoJSON-gyűjteményt, amely a `geojson.getFeatures()` metódussal lett kibontva, és hozzáadva az adatforráshoz, amely automatikusan az ábrán megjelenített adatokkal jeleníti meg a térképet. A szkript utolsó része a térkép kameranézetét állítja be az eredmények határolókeretével, a térkép [setCamera](/javascript/api/azure-maps-control/atlas.map#setcamera-cameraoptions---cameraboundsoptions---animationoptions-) tulajdonságával.
 
     ```JavaScript
     var query =  'gasoline-station';
@@ -229,7 +229,7 @@ Ezen a ponton a MapSearch lap meg tudja jeleníteni az intelligens keresési lek
 
 A létrehozott térkép ezen a ponton még csak a keresési eredmények hosszúsági/szélességi adatait vizsgálja. Ha azonban megtekinti a Maps Search szolgáltatás által visszaadott nyers JSON-fájlt, látni fogja, hogy az további információkat tartalmaz az egyes benzinkutakról, például a nevüket és a címüket. Ezeket az adatokat interaktív felugró ablakokkal beépítheti a térképbe.
 
-1. Adja hozzá a következő sornyi kódot a Map `ready` eseménykezelőhöz, miután a kód lekérdezte a fuzzy keresési szolgáltatást. Ez létrehozza a felugró ablak egy példányát, és hozzáad egy rámutatási eseményt a szimbólumréteghez.
+1. Adja hozzá a következő sornyi kódot a térképen `ready` eseménykezelőt, miután a kód lekérdezte a fuzzy keresési szolgáltatást. Ez létrehozza a felugró ablak egy példányát, és hozzáad egy rámutatási eseményt a szimbólumréteghez.
 
     ```JavaScript
    //Create a popup but leave it closed so we can update it and display it later.
@@ -239,9 +239,9 @@ A létrehozott térkép ezen a ponton még csak a keresési eredmények hosszús
     map.events.add('mouseover', resultLayer, showPopup);
     ```
 
-    Az API `*atlas.Popup` egy információs ablakot biztosít a térképen szükséges pozícióban. 
+    Az API `*atlas.Popup` egy információs ablakot biztosít a térképen a szükséges pozícióval. 
 
-2. Adja hozzá a következő kódot a `GetMap` függvényen belül, hogy megjelenjen az egérmutató az előugró ablakban.
+2. Adja hozzá a következő kódot a `GetMap` függvényben, hogy megjelenjen az egérmutatót az előugró ablakon belül.
 
     ```JavaScript
     function showPopup(e) {
@@ -251,13 +251,16 @@ A létrehozott térkép ezen a ponton még csak a keresési eredmények hosszús
         var position = e.shapes[0].getCoordinates();
 
         //Create HTML from properties of the selected result.
-        var html = ['<div style="padding:5px"><div><b>', p.poi.name,
-            '</b></div><div>', p.address.freeformAddress,
-            '</div><div>', position[1], ', ', position[0], '</div></div>'];
+        var html = `
+          <div style="padding:5px">
+            <div><b>${p.poi.name}</b></div>
+            <div>${p.address.freeformAddress}</div>
+            <div>${position[1]}, ${position[0]}</div>
+          </div>`;
 
         //Update the content and position of the popup.
         popup.setPopupOptions({
-            content: html.join(''),
+            content: html,
             position: position
         });
 
@@ -270,7 +273,7 @@ A létrehozott térkép ezen a ponton még csak a keresési eredmények hosszús
 
     ![Azure Térkép vezérlőelem és Search Service](./media/tutorial-search-location/popup-map.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 

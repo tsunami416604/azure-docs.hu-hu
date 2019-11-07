@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.reviewer: jmprieur, saeeda, sureshja, hirsin
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b3d87ab57a5cf3bcd768a28f7867dac37371570b
-ms.sourcegitcommit: fa5ce8924930f56bcac17f6c2a359c1a5b9660c9
+ms.openlocfilehash: 1ab2180c54f07ff5009e2c57d8522f2eb0b81aad
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73200360"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73718371"
 ---
 # <a name="authentication-basics"></a>Hitelesítési alapok
 
@@ -37,7 +37,7 @@ Az **Engedélyezés** a hitelesített fél engedélyének megadására irányul�
 
 Ahelyett, hogy olyan alkalmazásokat hozna létre, amelyek mindegyike megtartja a saját felhasználónevét és jelszavát, ami magas adminisztrációs terhet jelent, ha több alkalmazásban kell felhasználókat felvennie vagy eltávolítania, az alkalmazások delegálni tudják a felelősséget egy központi identitás-szolgáltatónak.
 
-Azure Active Directory (Azure AD) egy központosított azonosítási szolgáltató a felhőben. A hitelesítés és az engedélyezés delegálása olyan forgatókönyveket tesz lehetővé, mint például a feltételes hozzáférési szabályzatok, amelyek megkövetelik, hogy a felhasználó egy adott helyen legyen, a többtényezős hitelesítés használata, valamint a felhasználó egyszeri bejelentkezésének engedélyezése, majd automatikusan Jelentkezzen be az összes olyan webalkalmazásba, amelyek ugyanazt a központi könyvtárat használják. Ez a funkció egyszeri bejelentkezésre (SSO) hivatkozik.
+Azure Active Directory (Azure AD) egy központi identitás-szolgáltató a felhőben. A hitelesítés és az engedélyezés delegálása olyan forgatókönyveket tesz lehetővé, mint például a feltételes hozzáférési szabályzatok, amelyek megkövetelik, hogy a felhasználó egy adott helyen legyen, a többtényezős hitelesítés használata, valamint a felhasználó egyszeri bejelentkezésének engedélyezése, majd automatikusan Jelentkezzen be az összes olyan webalkalmazásba, amelyek ugyanazt a központi könyvtárat használják. Ez a funkció egyszeri bejelentkezésre (SSO) hivatkozik.
 
 A központosított identitás-szolgáltató még ennél is fontosabb olyan alkalmazások esetében, amelyeken a világon található felhasználók nem feltétlenül jelentkeznek be a vállalati hálózatról. Az Azure AD hitelesíti a felhasználókat, és hozzáférési jogkivonatokat biztosít. A hozzáférési jogkivonat egy engedélyezési kiszolgáló által kiállított biztonsági jogkivonat. A felhasználóval és az alkalmazással kapcsolatos információkat tartalmaz, amelyekhez a jogkivonat készült, amely a webes API-k és más védett erőforrások elérésére használható.
 
@@ -53,7 +53,7 @@ Az Azure AD Azure Active Directory B2C is biztosít, hogy a szervezetek a felhas
 
 ### <a name="security-tokens"></a>Biztonsági jogkivonatok
 
-A biztonsági tokenek a felhasználókkal és az alkalmazásokkal kapcsolatos információkat tartalmaznak. Az Azure AD JSon-alapú jogkivonatokat (JWTs) használ, amelyek jogcímeket tartalmaznak. A jogcím az egyik entitásról egy másikra vonatkozó kijelentéseket biztosít. Az alkalmazások különféle feladatokhoz használhatják a jogcímeket, például:
+A biztonsági tokenek a felhasználókkal és az alkalmazásokkal kapcsolatos információkat tartalmaznak. Az Azure AD JSON-alapú jogkivonatokat (JWTs) használ, amelyek jogcímeket tartalmaznak. A jogcím az egyik entitásról egy másikra vonatkozó kijelentéseket biztosít. Az alkalmazások különféle feladatokhoz használhatják a jogcímeket, például:
 
 * A jogkivonat ellenőrzése
 * A tulajdonos címtár-bérlőjának azonosítása
@@ -74,7 +74,7 @@ Ez az alkalmazás, amelyhez a jogkivonat létrejött, a felhasználó által bej
 
 A tokenek csak korlátozott időtartamra érvényesek. Az STS általában egy pár tokent biztosít: egy hozzáférési jogkivonatot, amely hozzáfér az alkalmazáshoz vagy a védett erőforráshoz, valamint egy frissítési tokent, amely a hozzáférési jogkivonat frissítésére szolgál, amikor a hozzáférési jogkivonat lezárult. 
 
-A hozzáférési jogkivonatok átadása egy webes API-nak a `Authenticate` fejléc tulajdonosi jogkivonatának. Egy alkalmazás frissítési tokent biztosíthat az STS számára, és ha az alkalmazáshoz való hozzáférés nem lett visszavonva, egy új hozzáférési tokent és egy új frissítési jogkivonatot fog kapni. Így történik a vállalatot elhagyó személy forgatókönyvének kezelése. Ha az STS megkapja a frissítési jogkivonatot, nem ad ki másik érvényes hozzáférési jogkivonatot, ha a felhasználó már nem rendelkezik jogosultsággal.
+Hozzáférési jogkivonatok átadása egy webes API-nak a `Authenticate` fejléc tulajdonosi jogkivonata. Egy alkalmazás frissítési tokent biztosíthat az STS számára, és ha az alkalmazáshoz való hozzáférés nem lett visszavonva, egy új hozzáférési tokent és egy új frissítési jogkivonatot fog kapni. Így történik a vállalatot elhagyó személy forgatókönyvének kezelése. Ha az STS megkapja a frissítési jogkivonatot, nem ad ki másik érvényes hozzáférési jogkivonatot, ha a felhasználó már nem rendelkezik jogosultsággal.
 
 ## <a name="application-model"></a>Alkalmazásmodell
 
@@ -83,7 +83,7 @@ Az alkalmazások maguk is bejelentkezhetnek a felhasználókba, vagy delegálhat
 Ahhoz, hogy egy identitás-szolgáltató tudja, hogy egy felhasználó hozzáfér egy adott alkalmazáshoz, a felhasználónak és az alkalmazásnak is regisztrálva kell lennie az identitás-szolgáltatónál. Ha az Azure AD-vel regisztrálja az alkalmazást, olyan identitás-konfigurációt biztosít az alkalmazáshoz, amely lehetővé teszi, hogy integrálható legyen az Azure AD-vel. Az alkalmazás regisztrálása a következőket is lehetővé teszi:
 
 - szabja testre az alkalmazás arculatát a bejelentkezési párbeszédablakban. Ez azért fontos, mert ez az első olyan felhasználói élmény, amelyet a felhasználó az alkalmazással fog rendelkezni.
-- Döntse el, hogy csak akkor szeretné-e bejelentkezni a felhasználók számára, ha azok a szervezethez tartoznak. Ez egyetlen bérlői alkalmazás. Vagy bármely munkahelyi vagy iskolai fiókkal való bejelentkezés engedélyezése a felhasználók számára. Ez egy több-bérlős alkalmazás. A személyes Microsoft-fiókokat vagy közösségi fiókot is engedélyezheti a kapcsolódó, a Google és a szolgáltatásban.
+- Döntse el, hogy csak akkor szeretné-e bejelentkezni a felhasználók számára, ha azok a szervezethez tartoznak. Ez egyetlen bérlői alkalmazás. Vagy bármely munkahelyi vagy iskolai fiókkal való bejelentkezés engedélyezése a felhasználók számára. Ez egy több-bérlős alkalmazás. A személyes Microsoft-fiókokat, illetve a LinkedIn, a Google és egyéb közösségi fiókokat is lehetővé teheti.
 - hatókör-engedélyek kérése. Kérheti például a "user. Read" hatókört, amely engedélyt ad a bejelentkezett felhasználó profiljának olvasásához.
 - adja meg a webes API-hoz való hozzáférést meghatározó hatóköröket. Általában, amikor egy alkalmazás szeretne hozzáférni az API-hoz, engedélyt kell kérnie az Ön által meghatározott hatókörökre.
 - Ossza meg az Azure ad-val egy titkos kulcsot, amely igazolja az alkalmazás identitását az Azure AD-nek.  Ez abban az esetben fontos, ha az alkalmazás bizalmas ügyfélalkalmazás. A bizalmas ügyfélalkalmazások olyan alkalmazások, amelyek biztonságosan tárolhatják a hitelesítő adatokat. A hitelesítő adatok tárolásához megbízható háttér-kiszolgálót igényelnek.
@@ -98,8 +98,9 @@ A Microsoft Identity platform:
 * A futtatáskor a hitelesítés támogatásához szükséges összes adattal rendelkezik.
 * Az összes adat megtartásával döntheti el, hogy az alkalmazás milyen erőforrásokhoz férhet hozzá, és milyen esetekben kell teljesítenie az adott kérést.
 * Infrastruktúrát biztosít az alkalmazások kiépítésének megvalósításához az alkalmazás fejlesztői bérlője és bármely más Azure AD-bérlő között.
+* Kezeli a felhasználói hozzájárulásukat a jogkivonat-kérelmek ideje alatt, és megkönnyíti a bérlők közötti alkalmazások dinamikus kiépítés
 
-Kezeli a felhasználói hozzájárulást a jogkivonat-kérelmek ideje alatt, és megkönnyíti az alkalmazások a bérlők közötti hozzájárulással történő dinamikus kihelyezését, ha egy erőforrás-tulajdonos engedélyez egy ügyfélalkalmazás számára a védett erőforrások elérésére vonatkozó engedélyeket az erőforrás tulajdonosának nevében. A Microsoft Identity platform:
+A jóváhagyás az a folyamat, amelynek során az erőforrás-tulajdonos engedélyt ad egy ügyfélalkalmazás számára a védett erőforrások eléréséhez, az adott engedélyek alatt az erőforrás tulajdonosának nevében. A Microsoft Identity platform:
 
 * Lehetővé teszi, hogy a felhasználó vagy a rendszergazda dinamikusan megadhassa vagy megtagadhassa a hozzájárulást, hogy az alkalmazás a nevében elérhesse az erőforrásokat.
 * Lehetővé teszi, hogy a rendszergazda alapvetően meghatározhassa, hogy az alkalmazások mely tevékenységei engedélyezettek, mely felhasználók mely alkalmazásokat használhatják, és hogy a címtárerőforrások hogyan érhetők el.
@@ -142,7 +143,7 @@ A következő adatsor összefoglalja ezt az interakciót:
 
 A webalkalmazás-fejlesztők jelezhetik, hogy az összes vagy csak bizonyos lapok hitelesítést igényelnek-e. Az ASP.NET/ASP.NET Core-ban például ezt a `[Authorize]` attribútumnak a vezérlő műveleteihez való hozzáadásával teheti meg. 
 
-Ez az attribútum azt eredményezi, hogy a ASP.NET a felhasználó identitását tartalmazó munkamenet-cookie jelenlétét vizsgálja. Ha a cookie nincs jelen, a ASP.NET átirányítja a hitelesítést a megadott identitás-szolgáltatóhoz. Ha az identitás szolgáltatója Azure AD, a webalkalmazás átirányítja a hitelesítést a https://login.microsoftonline.com értékre, amely a bejelentkezési párbeszédpanelt jeleníti meg.
+Ez az attribútum azt eredményezi, hogy a ASP.NET a felhasználó identitását tartalmazó munkamenet-cookie jelenlétét vizsgálja. Ha a cookie nincs jelen, a ASP.NET átirányítja a hitelesítést a megadott identitás-szolgáltatóhoz. Ha az Identitáskezelő az Azure AD, a webalkalmazás átirányítja a hitelesítést https://login.microsoftonline.comre, amely megjeleníti a bejelentkezési párbeszédpanelt.
 
 ### <a name="how-a-web-app-delegates-sign-in-to-azure-ad-and-obtains-a-token"></a>Hogyan delegál egy webalkalmazás az Azure AD-ba való bejelentkezést, és jogkivonatot szerez be
 
@@ -166,7 +167,7 @@ Mivel az Azure AD ugyanazt az identitás-cookie-t menti a böngészőben, mint a
 
 Alapértelmezés szerint a MSAL a rendszerböngészőt használja, kivéve a .NET-keretrendszer asztali alkalmazásaiban, ahol egy beágyazott vezérlőt használnak az integráltabb felhasználói élmény biztosításához.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A gyakori feltételek megismeréséhez tekintse meg a [Microsoft Identity platform fejlesztői szószedetét](developer-glossary.md) .
 A Microsoft Identity platform által támogatott felhasználók hitelesítésével kapcsolatos egyéb forgatókönyvekről további információt a [hitelesítési folyamatok és az alkalmazások forgatókönyvei](authentication-flows-app-scenarios.md) című témakörben talál.

@@ -1,22 +1,19 @@
 ---
-title: 'Oktatóanyag: Elosztott nyomkövetés használata az Azure Spring Cloud használatával | Microsoft Docs'
+title: 'Oktatóanyag: elosztott nyomkövetés használata az Azure Spring Cloud használatával | Microsoft Docs'
 description: Ismerje meg, hogyan használhatja a Spring Cloud elosztott nyomkövetését az Azure Application Insights
-services: spring-cloud
-author: v-vasuke
-manager: gwallace
-editor: ''
+author: jpconnock
 ms.service: spring-cloud
-ms.topic: quickstart
+ms.topic: tutorial
 ms.date: 10/06/2019
-ms.author: v-vasuke
-ms.openlocfilehash: 95aae47bddffd102c5d6d6dac67f22e6777cc3e7
-ms.sourcegitcommit: d773b5743cb54b8cbcfa5c5e4d21d5b45a58b081
+ms.author: jeconnoc
+ms.openlocfilehash: a9d2100103cdd5858d0d58cf6ef77a6ccac3745f
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72038936"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73607550"
 ---
-# <a name="tutorial-using-distributed-tracing-with-azure-spring-cloud"></a>Oktatóanyag: Elosztott nyomkövetés használata az Azure Spring Cloud használatával
+# <a name="tutorial-using-distributed-tracing-with-azure-spring-cloud"></a>Oktatóanyag: elosztott nyomkövetés használata az Azure Spring Cloud használatával
 
 A Spring Cloud elosztott nyomkövetési eszközei lehetővé teszik az összetett problémák egyszerű hibakeresését és figyelését. Az Azure Spring Cloud integrálja a [Spring Cloud Sleuth](https://spring.io/projects/spring-cloud-sleuth) az Azure [Application Insightsával](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview) , hogy hatékony, elosztott nyomkövetési képességet biztosítson a Azure Portal.
 

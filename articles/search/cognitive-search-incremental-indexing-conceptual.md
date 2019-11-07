@@ -1,25 +1,24 @@
 ---
 title: Bevezetés a növekményes indexelésbe (előzetes verzió)
 titleSuffix: Azure Cognitive Search
-description: Állítsa be az AI-bővítési folyamatot úgy, hogy az adatait az esetleges konzisztencia érdekében a szaktudás, szakértelmével, indexelő vagy adatforrások frissítéseinek kezeléséhez irányítsa.
+description: Állítsa be az AI-bővítési folyamatot úgy, hogy az adatait az esetleges konzisztencia érdekében a szaktudás, szakértelmével, indexelő vagy adatforrások frissítéseinek kezeléséhez irányítsa. Ez a szolgáltatás jelenleg nyilvános előzetes verzióban érhető el
 manager: nitinme
 author: Vkurpad
 ms.author: vikurpad
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: ea3bcfc25040f09b6871d85412ac64061ec2f9e8
-ms.sourcegitcommit: 3f8017692169bd75483eefa96c225d45cd497f06
+ms.openlocfilehash: 94ce056185ff6a804521bf583ac4f6ffaa513fb0
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73549115"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73715422"
 ---
 # <a name="what-is-incremental-indexing-in-azure-cognitive-search"></a>Mi az Azure Cognitive Search növekményes indexelése?
 
-> [!Note]
-> A növekményes indexelés előzetes verzióban érhető el, és nem éles használatra készült. A [REST API 2019-05-06-es verziójának előzetes verziója](search-api-preview.md) biztosítja ezt a funkciót. Jelenleg nem érhető el portál vagy .NET SDK-támogatás.
->
+> [!IMPORTANT] 
+> A növekményes indexelés jelenleg nyilvános előzetes verzióban érhető el. Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). A [REST API 2019-05-06-es verziójának előzetes verziója](search-api-preview.md) biztosítja ezt a funkciót. Jelenleg nem érhető el portál vagy .NET SDK-támogatás.
 
 A növekményes indexelés az Azure Cognitive Search új funkciója, amely lehetővé teszi a gyorsítótárazást és az állapotot egy kognitív készségkészlet, amely a gazdagított tartalomhoz tartozó, az egyes lépések feldolgozására és újrafeldolgozására ad lehetőséget. Ez nem csak a pénzügyi beruházásokat tartja fenn, hanem hatékonyabb rendszerre is. Ha a rendszer gyorsítótárazza a struktúrákat és a tartalmakat, az indexelő meghatározhatja, hogy mely készségek módosultak és fussanak, és csak azokat, amelyeket módosítottak, valamint az alsóbb rétegbeli függő képességeket is. 
 

@@ -1,5 +1,5 @@
 ---
-title: Több tábla növekményes másolása az Azure Data Factory használatával | Microsoft Docs
+title: 'Több tábla növekményes másolása Azure Data Factory használatával '
 description: Az oktatóanyag során egy Azure Data Factory-folyamatot hoz létre, amely egy helyszíni SQL Server több táblájának módosított adatait másolja növekményesen egy Azure SQL-adatbázisba.
 services: data-factory
 documentationcenter: ''
@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.date: 01/20/2018
 ms.author: yexu
-ms.openlocfilehash: a93b9249bde19c9ac902adbb7fc2b5469942f366
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 3129a0629c4de69e6e3d65f2f74da97e8d39a467
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72595722"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73683414"
 ---
 # <a name="incrementally-load-data-from-multiple-tables-in-sql-server-to-an-azure-sql-database"></a>Adatok növekményes betöltése az SQL Server több táblájából egy Azure SQL-adatbázisba
 Az oktatóanyag során egy Azure-beli adat-előállítót hoz létre egy olyan folyamattal, amely változásadatokat tölt be egy helyszíni SQL Server több táblájából egy Azure SQL-adatbázisba.    
@@ -113,7 +113,7 @@ Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány
 
 1. A **Kiszolgálókezelőben** kattintson a jobb gombbal az adatbázisra, és válassza az **Új lekérdezés** elemet.
 
-1. Futtassa a következő SQL-parancsot az Azure SQL Database-ben a `customer_table` és `project_table` nevű táblázatok létrehozásához:  
+1. Futtassa a következő SQL-parancsot az Azure SQL Database-ben a `customer_table` és `project_table`nevű táblázatok létrehozásához:  
     
     ```sql
     create table customer_table
@@ -230,7 +230,7 @@ END
 ## <a name="create-a-data-factory"></a>Data factory létrehozása
 
 1. Indítsa el a **Microsoft Edge** vagy a **Google Chrome** böngészőt. A Data Factory felhasználói felületének használata jelenleg csak a Microsoft Edge-ben és a Google Chrome-ban támogatott.
-2. A bal oldali menüben válassza az **erőforrás létrehozása** > **Analitika** > **Data Factory**: 
+2. A bal oldali menüben válassza az **erőforrás létrehozása** > **Analytics** > **Data Factory**: 
    
    ![Data Factory kiválasztása az „Új” ablaktáblán](./media/doc-common-process/new-azure-data-factory-menu.png)
 
@@ -248,7 +248,7 @@ END
     Az erőforráscsoportokkal kapcsolatos információkért tekintse meg a [Using resource groups to manage your Azure resources](../azure-resource-manager/resource-group-overview.md) (Erőforráscsoportok használata az Azure-erőforrások kezeléséhez) című cikket.  
 6. A **Verzió** résznél válassza a **V2** értéket.
 7. Válassza ki a Data Factory **helyét**. A legördülő listán csak a támogatott helyek jelennek meg. Az adat-előállítók által használt adattárak (Azure Storage, Azure SQL Database stb.) és számítási erőforrások (HDInsight stb.) más régiókban is lehetnek.
-8. Kattintson a  **Create** (Létrehozás) gombra.      
+8. Kattintson a **Létrehozás** elemre.      
 9. A létrehozás befejezése után a **Data Factory** lap a képen látható módon jelenik meg.
    
    ![Data factory kezdőlap](./media/doc-common-process/data-factory-home-page.png)
@@ -351,7 +351,7 @@ Ebben a lépésben olyan adatkészleteket hoz létre, amelyek az adatforrást, a
     
 1. A **dinamikus tartalom hozzáadása** ablakban válassza a **SinkTableName** elemet a **Parameters (paraméterek** ) szakaszban. 
  
-1. A **Befejezés**gombra kattintva megtekintheti a következőt: "@dataset (). SinkTableName "a tábla neve.
+1. A **Befejezés**gombra kattintva megtekintheti a következőt: "@dataset(). SinkTableName "a tábla neve.
 
    ![Fogadó adatkészlet – kapcsolat](./media/tutorial-incremental-copy-multiple-tables-portal/sink-dataset-connection-completion.png)
 
@@ -395,7 +395,7 @@ A folyamat táblanevek listáját használja paraméterként. A ForEach tevéken
 
 1. A **tevékenységek** eszközkészletében bontsa ki az **Ismétlés és feltételek** elemet, és húzza a **ForEach** tevékenységet a folyamat tervezőfelületére. A **Properties** (Tulajdonságok) ablak **General** (Általános) lapján az **IterateSQLTables** értéket adja meg. 
 
-1. Váltson a **Beállítások** lapra, majd az **Elemek** értékeként adja meg a következőt: `@pipeline().parameters.tableList`. A ForEach tevékenység végighalad egy táblalistán, és végrehajtja a növekményes másolási műveletet. 
+1. Váltson a **Beállítások** lapra, majd az `@pipeline().parameters.tableList`Elemek**értékeként adja meg a következőt:** . A ForEach tevékenység végighalad egy táblalistán, és végrehajtja a növekményes másolási műveletet. 
 
     ![ForEach tevékenység – beállítások](./media/tutorial-incremental-copy-multiple-tables-portal/foreach-settings.png)
 
@@ -447,9 +447,9 @@ A folyamat táblanevek listáját használja paraméterként. A ForEach tevéken
         
 1. Hajtsa végre a következő lépéseket:
 
-    1. Az **adatkészlet tulajdonságai** **SinkTableName** paraméternél adja meg a `@{item().TABLE_NAME}` értéket.
+    1. Az **adatkészlet tulajdonságai** **SinkTableName** paraméternél adja meg a `@{item().TABLE_NAME}`értéket.
     1. A **tárolt eljárás neve** tulajdonságnál adja meg a következőt: `@{item().StoredProcedureNameForMergeOperation}`.
-    1. A **Table Type** tulajdonságnál adja meg a `@{item().TableType}` értéket.
+    1. A **Table Type** tulajdonságnál adja meg a `@{item().TableType}`értéket.
     1. A **Table Type paraméter neve**mezőbe írja be a következőt: `@{item().TABLE_NAME}`.
 
     ![Másolási tevékenység – paraméterek](./media/tutorial-incremental-copy-multiple-tables-portal/copy-activity-parameters.png)
@@ -466,9 +466,9 @@ A folyamat táblanevek listáját használja paraméterként. A ForEach tevéken
     1. Válassza az **Importálási paraméter** lehetőséget. 
     1. Adja meg a következő értékeket a paraméterekhez: 
 
-        | Név | Type (Típus) | Value (Díj) | 
+        | Név | Típus | Érték | 
         | ---- | ---- | ----- |
-        | LastModifiedtime | Dátum és idő | `@{activity('LookupNewWaterMarkActivity').output.firstRow.NewWatermarkvalue}` |
+        | LastModifiedtime | DateTime | `@{activity('LookupNewWaterMarkActivity').output.firstRow.NewWatermarkvalue}` |
         | TableName | Sztring | `@{activity('LookupOldWaterMarkActivity').output.firstRow.TableName}` |
     
         ![Tárolt eljárási tevékenység – tárolt eljárás beállításai](./media/tutorial-incremental-copy-multiple-tables-portal/sproc-activity-sproc-settings.png)
@@ -666,7 +666,7 @@ project_table   2017-10-01 00:00:00.000
 
 Megfigyelhető, hogy mindkét tábla küszöbértékei frissültek.
      
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Az oktatóanyagban az alábbi lépéseket hajtotta végre: 
 
 > [!div class="checklist"]

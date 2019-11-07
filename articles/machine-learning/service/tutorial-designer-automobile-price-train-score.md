@@ -9,12 +9,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 11/04/2019
-ms.openlocfilehash: 8aafc1caf44e6a937fc53801f2fa34157dc9eab5
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 3df1a0430983b52d8a791acabbd03efe19055697
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73501588"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73721776"
 ---
 # <a name="tutorial-predict-automobile-price-with-the-designer-preview"></a>Oktatóanyag: az autó árának előrejelzése a tervezővel (előzetes verzió)
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-enterprise-sku.md)]
@@ -59,11 +59,11 @@ Ha **vállalati kiadással**rendelkező Azure Machine learning munkaterülettel 
 
 1. Válassza **a könnyen használható előre elkészített modulok**elemet.
 
-1. Válassza ki az alapértelmezett **"folyamat – létrehozva..."** nevű folyamatot a vászon tetején, és nevezze át valami értelmesre. Például: **"autó árának előrejelzése"** . A névnek nem kell egyedinek lennie.
+1. Válassza ki az alapértelmezett folyamat nevét: **"folyamat – létrehozva..."** a vászon tetején, és nevezze át valami értelmesre. Például: **"autó árának előrejelzése"** . A névnek nem kell egyedinek lennie.
 
 ## <a name="import-data"></a>Adatok importálása
 
-A tervezőben több minta adatkészletet is megadhat a kipróbáláshoz. Ebben az oktatóanyagban használja a minta adatkészletet **(nyers)** . 
+A tervezőben több minta adatkészletet is megadhat a kipróbáláshoz. Ebben az oktatóanyagban használja az **Automobile Price (nyers) adatkészletet**. 
 
 1. Az adatkészletek és modulok palettájának bal oldalán található. Válassza az **adatkészletek** lehetőséget, majd tekintse meg a **minták** szakaszt az elérhető minta-adatkészletek megtekintéséhez.
 
@@ -89,17 +89,17 @@ Megjelenítheti az adatokat, hogy megértse a használni kívánt adatkészletet
 
 ## <a name="prepare-data"></a>Adatok előkészítése
 
-Az adatkészletek általában némi előfeldolgozást igényelnek az elemzés előtt. Előfordulhat, hogy néhány hiányzó értéket észlelt az adatkészlet megjelenítésekor. Ahhoz, hogy a modell elemezni tudja az adatokat, el kell távolítani a hiányzó értékeket. A sok hiányzó értékkel rendelkező oszlopokat el kell távolítania, és el kell távolítania a hiányzó értékeket tartalmazó sorokat.
+Az adatkészletek általában némi előfeldolgozást igényelnek az elemzés előtt. Előfordulhat, hogy néhány hiányzó értéket észlelt az adatkészlet vizsgálata során. Ezeket a hiányzó értékeket meg kell tisztítani, hogy a modell képes legyen az adatok megfelelő elemzésére.
 
 ### <a name="remove-a-column"></a>Oszlop eltávolítása
 
 A modellek betanításakor meg kell tennie valamit a hiányzó információkkal kapcsolatban. Ebben az adatkészletben a **normalizált veszteségek** oszlop sok értéket tartalmaz, ezért a modellből kizárja ezt az oszlopot.
 
-1. Válassza ki, hogy mely adatoszlopok működjenek együtt a szolgáltatásban. Írja be a **Kiválasztás elemet** a paletta tetején található keresőmezőbe, és keresse meg az **Oszlopok kiválasztása az adatkészlet** modulban.
+1. A paletta tetején található keresőmezőbe írja be a **Kiválasztás elemet** , hogy megtalálja a **Select Columns elemet az adatkészlet** modulban.
 
 1. Kattintson és húzza az **Oszlopok kiválasztása az adatkészlet** modulban a vászonra. Dobja el a modult az adatkészlet modul alatt.
 
-1. A korábban hozzáadott adatkészlet összekapcsolásához kattintson a és a húzás elemre az **adatkészlet kijelölése oszlopban** . Húzza a mutatót az adatkészlet kimeneti portjáról, amely a vászonon található adatkészlet alján lévő kis kör, az **adatkészletben lévő oszlopok kiválasztása**bemeneti portjára, amely a modul tetején lévő kis kör.
+1. Kapcsolja össze az **Automobile Price (nyers)** adatkészletet az **adatkészlet kijelölése oszlopával**. Húzza a mutatót az adatkészlet kimeneti portjáról, amely a vászonon található adatkészlet alján lévő kis kör, az **adatkészletben lévő oszlopok kiválasztása**bemeneti portjára, amely a modul tetején lévő kis kör.
 
     > [!TIP]
     > Az adatáramlás a folyamaton keresztül jön létre, amikor egy modul kimeneti portját egy másik bemeneti porthoz kapcsolja.
@@ -125,7 +125,7 @@ A modellek betanításakor meg kell tennie valamit a hiányzó információkkal 
 
 1. Válassza az **Oszlopok kiválasztása az adatkészlet** modulban lehetőséget. 
 
-1. A **Tulajdonságok**területen válassza a **Paraméterek** > **Megjegyzés** elemet, és írja be a "normalizált veszteségek kizárása" kifejezést.
+1. A **Tulajdonságok** ablaktáblán válassza a **Paraméterek** > **Megjegyzés** elemet, és írja be a "normalizált veszteségek kizárása" kifejezést.
 
 ### <a name="clean-missing-data"></a>Hiányzó adatértékek törlése
 
@@ -134,13 +134,13 @@ A **normalizált veszteségek** oszlop eltávolítása után az adatkészlet tov
 > [!TIP]
 > A bemeneti adatokból hiányzó értékek tisztítása előfeltétel a legtöbb modul a Designerben való használatához.
 
-1. A **tiszta hiányzó** adatmodul megtalálásához a **keresőmezőbe írja be a** törlés kifejezést.
+1. A **tiszta hiányzó** adatmodul megtalálásához a keresőmezőbe írja be a **tisztítás** kifejezést.
 
 1. Húzza a **tiszta hiányzó** adatmodult a folyamat vászonra, és kapcsolja össze az **adathalmaz-modul Select oszlopaival** . 
 
 1. A Tulajdonságok panelen válassza a **teljes sor eltávolítása** a **tisztítási mód**alatt lehetőséget.
 
-1. A Tulajdonságok ablaktáblában írja be a "hiányzó érték sorok eltávolítása" kifejezést. a **Megjegyzés** mezőbe.  
+1. A Tulajdonságok ablaktábla **Megjegyzés** mezőjébe írja be a "hiányzó érték sorok eltávolítása" kifejezést.  
 
     A folyamatnak ekkor a következőhöz hasonlóan kell kinéznie:
     
@@ -148,43 +148,43 @@ A **normalizált veszteségek** oszlop eltávolítása után az adatkészlet tov
 
 ## <a name="train-a-machine-learning-model"></a>Gépi tanulási modell betanítása
 
-Most, hogy az adatfeldolgozás előre feldolgozva van, prediktív modellt hozhat létre. Az adatait a modell betanításához fogja használni. Ezt követően tesztelje a modellt, hogy megtudja, milyen mértékben képes előre jelezni az árakat.
+Most, hogy feldolgozta az adatfeldolgozást, elvégezheti a prediktív modell betanítását.
 
 ### <a name="select-an-algorithm"></a>Algoritmus kiválasztása
 
 A **besorolás** és a **regresszió** két algoritmus, amelynek segítségével felügyelt gépi tanítás valósítható meg. A **besorolás** egy adott kategóriájú (például vörös, kék vagy zöld) kategóriából származó választ jósol meg. A **regresszió** egy szám megbecslésére szolgál.
 
-Mivel előre jelezni szeretné az árat, ami egy szám, regressziós algoritmust is használhat. Ebben a példában egy lineáris regressziós modellt fog használni.
+Mivel előre jelezni szeretné az árat, amely egy szám, regressziós algoritmust használhat. Ebben a példában egy lineáris regressziós modellt fog használni.
 
 ### <a name="split-the-data"></a>Az adatfelosztás
 
-Az adatokat mind a modell betanításához, mind a teszteléshez használhatja két különálló adatkészletbe.
+Ossza meg az adatait két külön adatkészletbe a modell betanításához és teszteléséhez.
 
-1. Az **Adatfelosztási** modul megkereséséhez írja be a **feldarabolt** adatelemet a keresőmezőbe, és kapcsolódjon a **tiszta hiányzó** adatmodul bal oldali portjához.
+1. Adja meg a **feldarabolt** adatelemet a keresőmezőbe, hogy megkeresse az **adatfelosztási** modult, és a **tiszta hiányzó** adatmodul bal oldali portjához kapcsolódjon.
 
 1. Válassza ki az **Adatfelosztási** modult.
 
 1. A Tulajdonságok ablaktáblában állítsa az **első kimeneti adatkészletben lévő sorok töredékét** 0,7-re.
 
-    Ez az adatmennyiség 70 százalékát osztja ki a modell betanításához, és 30%-ot tart vissza a teszteléshez.
+    Ez az adatmennyiség 70 százalékát osztja ki a modell betanításához és 30 százalékát a teszteléshez.
 
-1. A Tulajdonságok panelen írja be az "adathalmaz felosztása a betanítási készletbe (0.7) és a test set (0.3)" értéket. a **Megjegyzés** mezőbe.
+1. A Properties (Tulajdonságok) **Megjegyzés** mezőben adja meg az adatkészlet felosztása a betanítási készletbe (0,7) és a test set (0,3) értéket.
 
-### <a name="train-the-model"></a>A modell tanítása
+### <a name="train-the-model"></a>A modell betanítása
 
-A modell betanításához adjon meg egy olyan adathalmazt, amely tartalmazza az árat. A modell megkeresi az adatforrásokat, és összefüggéseket keres az autó funkciói és az ára között.
+A modell betanításához adjon meg egy olyan adathalmazt, amely tartalmazza az árat. A modell megkeresi az adatforrásokat, és összefüggéseket keres az autó funkciói és a modell kiépítése között.
 
 1. A tanulási algoritmus kiválasztásához törölje a modul-paletta keresési mezőjét.
 
 1. **Machine learning algoritmusok**kibontása.
     
-    Itt számos modulkategória közül választhat, amelyek segítségével inicializálható a gépi tanulási algoritmus.
+    Ez több, a tanulási algoritmusok inicializálásához használható modul-kategóriát jelenít meg.
 
-1. Ehhez a folyamathoz válassza a **regresszió** > a **lineáris regresszió** lehetőséget, majd húzza a folyamat vászonra.
+1. Válassza a **regresszió** > a **lineáris regresszió** lehetőséget, majd húzza a folyamat vászonra.
 
 1. Keresse meg és húzza a **Train Model** modult a folyamat vászonra. 
 
-1. Kapcsolja össze a lineáris regressziós modul kimenetét a Train Model modul bal oldali bemenetével.
+1. Kapcsolja össze a **lineáris regressziós** modul kimenetét a **Train Model** modul bal oldali bemenetével.
 
 1. Kapcsolja össze az **adatok felosztása** modul betanítási adat kimenetét (bal oldali port) a **Train Model** modul jobb oldali bemenetével.
 
@@ -194,7 +194,9 @@ A modell betanításához adjon meg egy olyan adathalmazt, amely tartalmazza az 
 
 1. A Tulajdonságok ablaktáblán válassza az **oszlop szerkesztése** lehetőséget.
 
-1. A **címke oszlop** párbeszédpanelen bontsa ki a legördülő menüt, és válassza az **oszlopnevek**lehetőséget. A szövegmezőbe írja be az **Ár**értéket. Az ár az az érték, amelyet a modell előre meg fog jósolni.
+1. A **címke oszlop** párbeszédpanelen bontsa ki a legördülő menüt, és válassza az **oszlopnevek**lehetőséget. 
+
+1. A szövegmezőbe írja be az **Ár**értéket. Az ár az az érték, amelyet a modell előre meg fog jósolni.
 
     A folyamatnak így kell kinéznie:
 
@@ -202,13 +204,13 @@ A modell betanításához adjon meg egy olyan adathalmazt, amely tartalmazza az 
 
 ## <a name="evaluate-a-machine-learning-model"></a>Gépi tanulási modell kiértékelése
 
-Most, hogy az adatok 70 százalékával lett kitanítva a modellre, használhatja az adatok további 30 százalékát, hogy megtudja, milyen jól működik a modellje.
+Az adatok 70 százalékát használó modell képzése után a másik 30%-ot kihasználva láthatja, hogy a modell milyen jól működik.
 
-1. Írja **be a pontszám Model** kifejezést a keresőmezőbe a **pontszám modell** modul megkereséséhez, majd húzza a modult a folyamat vászonra. 
+1. Adja **meg a pontszám modell elemet** a keresőmezőbe a **pontszám modell** modul megkereséséhez, majd húzza a modult a folyamat vászonra. 
 
 1. A **Train Model** modul kimenetének összekötése a **score Model**bal oldali bemeneti portjával. Az **adatforráshoz** tartozó adat kimenetének (jobb oldali portjának) összekötése a **score Model**megfelelő bemeneti portjára.
 
-1. A **kiértékelési modell** megkereséséhez **írja be a kiértékelés kifejezést** a keresőmezőbe, és húzza a modult a folyamat vászonra. 
+1. Írja **be a kiértékelés kifejezést** a keresőmezőbe a **kiértékelési modell** megkereséséhez, majd húzza a modult a folyamat vászonra. 
 
 1. A **pontszám modell** modul kimenetének összekötése a **modell kiértékelésének**bal oldali bemenetével. 
 
@@ -224,15 +226,17 @@ Most, hogy az adatok 70 százalékával lett kitanítva a modellre, használhatj
 
 A Futtatás után megtekintheti a folyamat futtatásának eredményét. 
 
-1. Tekintse meg a **pontszám modell** modul kimenetét a **pontszám modell** modul kiválasztásával.
+1. A **pontszám modell** modul kiválasztásával megtekintheti a kimenetét.
 
-1. A **Tulajdonságok** ablaktáblán válassza a **kimenetek** > **Megjelenítés**elemet. A modul megjeleníti az előre jelzett árat, valamint a tesztadatokból ismert tényleges értéket.
+1. A **Tulajdonságok** ablaktáblán válassza a **kimenetek** > **Megjelenítés**elemet.
+
+    Itt láthatja az előrejelzett árakat és a tényleges árakat a tesztelési adatokból.
 
     ![Képernyőkép a kimeneti vizualizációról, kiemelve a "mutatós címke" oszlopot](./media/ui-tutorial-automobile-price-train-score/score-result.png)
 
-1. Tekintse meg a **modell kiértékelése** modul kimenetét a **pontszám modell** modul kiválasztásával.
+1. Válassza ki a **modell kiértékelése** modult a kimenet megtekintéséhez.
 
-1. A **Tulajdonságok** ablaktáblán válassza ki a **kimenet** > **Megjelenítés**elemet, majd válassza a **Megjelenítés**lehetőséget.
+1. A **Tulajdonságok** ablaktáblán válassza a **kimenet** > **Megjelenítés**elemet.
 
 A modellhez a következő statisztikák láthatók:
 
@@ -242,7 +246,7 @@ A modellhez a következő statisztikák láthatók:
 * **Relative Squared Error** (relatív négyzetes eltérés): a négyzetes eltérések átlaga a tényleges értékek és az összes tényleges érték átlaga közötti különbség négyzetes értékéhez viszonyítva.
 * **Meghatározási együttható**: az R négyzetes értékként is ismert, ez egy statisztikai metrika, amely azt jelzi, hogy a modell milyen jól illeszkedik az adatokhoz.
 
-Az összes hibastatisztikára igaz, hogy minél kisebb az érték, annál jobb a modell. A kisebb értékek azt jelzik, hogy az előrejelzés közelebb van a tényleges értékekhez. A meghatározási együttható esetében minél közelebb van az értéke egy (1,0), annál jobb az előrejelzések.
+Az összes hibastatisztikára igaz, hogy minél kisebb az érték, annál jobb a modell. A kisebb érték azt jelzi, hogy a jóslatok közelebb vannak a tényleges értékekhez. A meghatározási együttható esetében minél közelebb van az értéke egy (1,0), annál jobb az előrejelzések.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
@@ -250,12 +254,12 @@ Az összes hibastatisztikára igaz, hogy minél kisebb az érték, annál jobb a
 
 ## <a name="next-steps"></a>További lépések
 
-Az oktatóanyag első részében a következő lépéseket végezte el:
+Az oktatóanyag első részében a következő feladatokat végezte el:
 
-* Folyamat létrehozva
-* Az adatfeldolgozás előkészítése
-* A modell képzése
-* A modell pontozása és kiértékelése
+* Folyamat létrehozása
+* Az adatok előkészítése
+* A modell betanítása
+* A modell pontszáma és kiértékelése
 
 A második részből megtudhatja, hogyan helyezheti üzembe a modellt valós idejű végpontként.
 

@@ -7,12 +7,12 @@ ms.service: multiple
 ms.topic: article
 ms.date: 07/01/2019
 ms.author: raynew
-ms.openlocfilehash: 90111325677e1bdd12a03081ad7513a34f68fd40
-ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
+ms.openlocfilehash: b71048412f5715fd1b8ef3edf742716916672bd5
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73044136"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73718751"
 ---
 # <a name="business-continuity-and-disaster-recovery-bcdr-azure-paired-regions"></a>Üzletmenet-folytonosság és vész-helyreállítási (BCDR): Azure párosított régiók
 
@@ -29,7 +29,7 @@ Minden egyes Azure-régió párosítva van egy másik régióval, amely ugyanabb
 | földrajz | Párosított régiók |  |
 |:--- |:--- |:--- |
 | Ázsia |Kelet-Ázsia |Délkelet-Ázsia |
-| Ausztrália |Ausztrália keleti régiója |Délkelet-Ausztrália |
+| Ausztrália |Kelet-Ausztrália |Délkelet-Ausztrália |
 | Ausztrália |Ausztrália középső régiója |Ausztrália 2. középső régiója |
 | Brazília |Dél-Brazília |USA déli középső régiója |
 | Kanada |Közép-Kanada |Kelet-Kanada |
@@ -41,18 +41,18 @@ Minden egyes Azure-régió párosítva van egy másik régióval, amely ugyanabb
 | India |Közép-India |Dél-India |
 | India |Nyugat-India |Dél-India |
 | Japán |Kelet-Japán |Nyugat-Japán |
-| Dél-Korea |Korea középső régiója |Dél-Korea |
+| Korea |Korea középső régiója |Korea déli régiója |
 | Észak-Amerika |USA keleti régiója |USA nyugati régiója |
 | Észak-Amerika |USA 2. keleti régiója |USA középső régiója |
 | Észak-Amerika |USA északi középső régiója |USA déli középső régiója |
-| Észak-Amerika |USA 2. nyugati régiója |USA nyugati középső régiója 
+| Észak-Amerika |USA nyugati régiója, 2. |USA nyugati középső régiója 
 | Dél-Afrika | Dél-Afrika északi régiója | Dél-Afrika nyugati régiója
-| Egyesült Királyság |Egyesült Királyság nyugati régiója |Egyesült Királyság déli régiója |
+| Egyesült Királyság |Az Egyesült Királyság nyugati régiója |Egyesült Királyság déli régiója |
 | Egyesült Arab Emírségek | Egyesült Arab Emírségek északi régiója | Egyesült Arab Emírségek középső régiója
-| Egyesült Államok védelmi Minisztériuma |US DoD – keleti régió |US DoD – középső régió |
-| Az USA kormányzata |US Gov Arizona |US Gov Texas |
-| Az USA kormányzata |US Gov Iowa |US Gov Virginia |
-| Az USA kormányzata |US Gov Virginia |US Gov Texas |
+| Egyesült Államok védelmi Minisztériuma |US DoD – Kelet |US DoD – Középső régió |
+| Az USA kormányzata |USA-beli államigazgatás – Arizona |USA-beli államigazgatás – Texas |
+| Az USA kormányzata |US Gov Iowa |USA-beli államigazgatás – Virginia |
+| Az USA kormányzata |USA-beli államigazgatás – Virginia |USA-beli államigazgatás – Texas |
 
 1\. táblázat – az Azure regionális párok leképezése
 
@@ -75,7 +75,7 @@ Az alábbi 2. ábra egy feltételezett alkalmazást mutat be, amely a regionáli
 ## <a name="cross-region-activities"></a>Régiók közötti tevékenységek
 A 2. ábrán említettek szerint.
 
-![IaaS](./media/best-practices-availability-paired-regions/1Green.png) **Azure-beli számítás (IaaS)** – további számítási erőforrásokat kell kiépíteni, hogy az erőforrások egy másik régióban is elérhetők legyenek a katasztrófák során. További információ: az [Azure rugalmasságával kapcsolatos technikai útmutató](resiliency/resiliency-technical-guidance.md).
+![IaaS](./media/best-practices-availability-paired-regions/1Green.png) **Azure-beli számítás (IaaS)** – további számítási erőforrásokat kell kiépíteni, hogy az erőforrások egy másik régióban is elérhetők legyenek a katasztrófák során. További információ: az [Azure rugalmasságával kapcsolatos technikai útmutató](https://github.com/uglide/azure-content/blob/master/articles/resiliency/resiliency-technical-guidance.md).
 
 ![Storage](./media/best-practices-availability-paired-regions/2Green.png) az **Azure Storage** -ban – ha felügyelt lemezeket használ, ismerkedjen meg a [régiók közötti biztonsági mentésekkel](https://docs.microsoft.com/azure/architecture/resiliency/recovery-loss-azure-region#virtual-machines) a Azure Backup, és [replikálja a virtuális gépeket](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-enable-replication) az egyik régióból a másikba Azure site Recovery használatával. Ha Storage-fiókokat használ, a Geo-redundáns tárolás (GRS) alapértelmezés szerint be van állítva egy Azure Storage-fiók létrehozásakor. A GRS az adatai automatikusan replikálódnak az elsődleges régión belül, és háromszor a párosított régióban. További információ: [Azure Storage redundancia-beállítások](storage/common/storage-redundancy.md).
 

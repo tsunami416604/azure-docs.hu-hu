@@ -1,5 +1,5 @@
 ---
-title: PowerShell-példa – feladatátvételi csoport – Azure SQL Database felügyelt példány | Microsoft Docs
+title: PowerShell-példa – feladatátvételi csoport – Azure SQL Database felügyelt példány
 description: Azure PowerShell például egy Azure SQL Database felügyelt példány létrehozásához, egy feladatátvételi csoporthoz való hozzáadásához és a feladatátvételi teszthez.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: carlrab
 ms.date: 07/16/2019
-ms.openlocfilehash: f753dbce66c8db9c4098e716725f0a63fc68d4f7
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: e50877f6f3194885b139683fe865144384716b48
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72956291"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73691761"
 ---
 # <a name="use-powershell-to-add-an-azure-sql-database-managed-instance-to-a-failover-group"></a>Azure SQL Database felügyelt példány hozzáadása feladatátvételi csoporthoz a PowerShell használatával 
 
@@ -71,7 +71,7 @@ A szkript a következő parancsokat használja. A táblázatban lévő összes p
 | [Kapcsoló – AzSqlDatabaseInstanceFailoverGroup](/powershell/module/az.sql/switch-azsqldatabaseinstancefailovergroup) | Végrehajtja a felügyelt példányok feladatátvételi csoportjának feladatátvételét. | 
 | [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | Eltávolít egy erőforráscsoportot. | 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az Azure PowerShellről további tudnivalókért tekintse meg az [Azure PowerShell dokumentációt](/powershell/azure/overview).
 

@@ -13,12 +13,12 @@ ms.date: 10/25/2019
 ms.author: cephalin
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: 683ea55bdc9eb878f7bcbe832d5364d50a6b23e2
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: HT
+ms.openlocfilehash: 12b8d6dff571c074d1f1422f75e33a8b12761bd9
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/04/2019
-ms.locfileid: "73501182"
+ms.locfileid: "73572153"
 ---
 # <a name="add-an-ssl-certificate-in-azure-app-service"></a>SSL-tanúsítvány hozzáadása Azure App Service
 
@@ -65,6 +65,7 @@ Egy SSL-kötésben lévő egyéni tartomány biztonságossá tételéhez a tanú
 
 Az ingyenes App Service felügyelt tanúsítvány egy kulcsrakész megoldás az egyéni DNS-név biztonságossá tételéhez App Serviceban. Ez egy teljesen működőképes SSL-tanúsítvány, amelyet a App Service felügyel, és automatikusan megújul. Az ingyenes tanúsítvány a következő korlátozásokkal jár:
 
+- A nem támogatja a helyettesítő tanúsítványokat.
 - A nem támogatja a meztelen tartományokat.
 - Nem exportálható.
 
@@ -113,7 +114,7 @@ A következő táblázat segítséget nyújt a tanúsítvány konfigurálásába
 
 | Beállítás | Leírás |
 |-|-|
-| Name (Név) | A App Service tanúsítvány rövid neve. |
+| Név | A App Service tanúsítvány rövid neve. |
 | Naked domain Host neve | Itt adhatja meg a legfelső szintű tartományt. A kiállított tanúsítvány a legfelső szintű tartományt és a `www` altartományt *is* védi. A kiállított tanúsítványban a köznapi név mező tartalmazza a gyökértartomány tartományát, a tulajdonos alternatív neve mező pedig a `www` tartományt tartalmazza. Csak az altartományok biztonságossá tételéhez adja meg az altartomány teljes tartománynevét (például `mysubdomain.contoso.com`).|
 | Előfizetés | Az adatközpont, ahol a webalkalmazást üzemeltetik. |
 | Erőforráscsoport | A tanúsítványt tartalmazó erőforráscsoport. Használhat új erőforráscsoportot, vagy kiválaszthatja ugyanazt az erőforráscsoportot, mint a App Service alkalmazás, például:. |
@@ -134,9 +135,9 @@ A **Key Vault állapota** lapon kattintson a Key Vault adattár elemre egy új t
 
 | Beállítás | Leírás |
 |-|-|
-| Name (Név) | Egy egyedi név, amely alfanumerikus karaktereket és kötőjeleket tartalmaz. |
+| Név | Egy egyedi név, amely alfanumerikus karaktereket és kötőjeleket tartalmaz. |
 | Erőforráscsoport | Javaslatként válassza ki ugyanazt az erőforráscsoportot, mint a App Service-tanúsítványt. |
-| Földrajzi egység | Válassza ki ugyanazt a helyet, mint a App Service alkalmazás. |
+| Hely | Válassza ki ugyanazt a helyet, mint a App Service alkalmazás. |
 | Tarifacsomag | További információ: [Azure Key Vault díjszabása](https://azure.microsoft.com/pricing/details/key-vault/). |
 | Hozzáférési szabályzatok| Meghatározza az alkalmazásokat és az engedélyezett hozzáférést a tároló erőforrásaihoz. Később is konfigurálhatja, ha a lépéseket követve [számos alkalmazás hozzáférést biztosít a kulcstartóhoz](../key-vault/key-vault-group-permissions-for-apps.md). |
 | Virtual Network hozzáférés | A tár bizonyos Azure-beli virtuális hálózatokhoz való hozzáférésének korlátozása. Később is konfigurálhatja, a [Azure Key Vault tűzfalak és virtuális hálózatok konfigurálása](../key-vault/key-vault-network-security.md) című témakör lépéseit követve. |
@@ -281,7 +282,7 @@ Kattintson a **Feltöltés** gombra.
 
 ![Nyilvános tanúsítvány feltöltése App Service](./media/configure-ssl-certificate/upload-public-cert.png)
 
-A tanúsítvány feltöltése után másolja a tanúsítvány ujjlenyomatát, és tekintse meg [a tanúsítvány elérhetővé tételét](configure-ssl-certificate-in-code.md#load-the-certificate).
+A tanúsítvány feltöltése után másolja a tanúsítvány ujjlenyomatát, és tekintse meg [a tanúsítvány elérhetővé tételét](configure-ssl-certificate-in-code.md#make-the-certificate-accessible).
 
 ## <a name="manage-app-service-certificates"></a>App Service tanúsítványok kezelése
 
@@ -359,7 +360,7 @@ Most törölheti a App Service tanúsítványt. A bal oldali navigációs sávon
 
 ## <a name="automate-with-scripts"></a>Automatizálás szkriptekkel
 
-### <a name="azure-cli"></a>Azure parancssori felület (CLI)
+### <a name="azure-cli"></a>Azure CLI
 
 [!code-azurecli[main](../../cli_scripts/app-service/configure-ssl-certificate/configure-ssl-certificate.sh?highlight=3-5 "Bind a custom SSL certificate to a web app")] 
 

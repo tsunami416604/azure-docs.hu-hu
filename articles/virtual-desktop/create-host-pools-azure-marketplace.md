@@ -1,5 +1,5 @@
 ---
-title: Windows rendszerű virtuális asztali címkészlet létrehozása az Azure piactér használatával – Azure
+title: Windows rendszerű virtuális asztali alkalmazáskészlet Azure Marketplace – Azure
 description: Windows rendszerű virtuális asztali címkészlet létrehozása az Azure Marketplace használatával.
 services: virtual-desktop
 author: Heidilohr
@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: tutorial
 ms.date: 08/30/2019
 ms.author: helohr
-ms.openlocfilehash: 76cb2e0378cc7a005232304174c1de887adfe387
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: HT
+ms.openlocfilehash: e5be2490ebf756c030e6a53b226f91c49c7bccaf
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73482225"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73605587"
 ---
 # <a name="tutorial-create-a-host-pool-by-using-the-azure-marketplace"></a>Oktatóanyag: állomáslista létrehozása az Azure Marketplace használatával
 
@@ -34,7 +34,7 @@ Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
 
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 
-Bejelentkezés az [Azure Portalra](https://portal.azure.com).
+Jelentkezzen be az [Azure portálra](https://portal.azure.com).
 
 ## <a name="run-the-azure-marketplace-offering-to-provision-a-new-host-pool"></a>Az Azure Marketplace-ajánlat futtatása új címkészlet kiépítéséhez
 
@@ -73,7 +73,9 @@ A **virtuális gépek konfigurálása** panelen:
 A **virtuális gép beállításai** panelen:
 
 >[!NOTE]
-> Ha a virtuális gépeket egy Azure Active Directory Domain Services (Azure AD DS) környezethez csatlakoztatja, győződjön meg arról, hogy a tartományhoz való csatlakozás felhasználója a [HRE DC-rendszergazdák csoport](../active-directory-domain-services/tutorial-create-instance-advanced.md#configure-an-administrative-group)tagja is.
+> Ha a virtuális gépeket egy Azure Active Directory Domain Services (Azure AD DS) környezethez csatlakoztatja, győződjön meg arról, hogy a tartományhoz való csatlakozás felhasználója az [HRE DC-rendszergazdák csoport](../active-directory-domain-services/tutorial-create-instance-advanced.md#configure-an-administrative-group)tagja.
+>
+> A fióknak az Azure AD DS felügyelt tartományhoz vagy az Azure AD-bérlőhöz tartozó, az Azure AD-bérlőhöz társított külső könyvtárak fiókjainak is szerepelnie kell, hogy a tartományhoz való csatlakozás során nem tud megfelelően hitelesíteni. 
 
 1. A **képforráshoz**válassza ki a forrást, és adja meg a megfelelő információkat a megkereséséhez és tárolásához. Ha úgy dönt, hogy nem használja a felügyelt lemezeket, válassza ki azt a Storage-fiókot, amely a. vhd-fájlt tartalmazza.
 2. Adja meg annak a tartományi fióknak a felhasználónevét és jelszavát, amely a virtuális gépeket a Active Directory tartományhoz fogja csatlakoztatni. Ugyanezt a felhasználónevet és jelszót a rendszer helyi fiókként hozza létre a virtuális gépeken. Ezeket a helyi fiókokat később is visszaállíthatja.

@@ -7,16 +7,19 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: raynew
-ms.openlocfilehash: 56e49ab60733c9c0a813ca6e46712bcd8052a2ef
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 902e89305aa24e8cbb6d2dd84d6a61c710d11637
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73518150"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73715373"
 ---
 # <a name="support-matrix-for-physical-server-assessment-and-migration"></a>Támogatási mátrix a fizikai kiszolgálók értékeléséhez és áttelepítéséhez
 
 A [Azure Migrate szolgáltatással](migrate-overview.md) a gépeket kivizsgálhatja és áttelepítheti a Microsoft Azure felhőbe. Ez a cikk a helyszíni fizikai kiszolgálók értékelésére és áttelepítésére vonatkozó támogatási beállításokat és korlátozásokat foglalja össze.
+
+> [!NOTE]
+> Ha olyan funkciókat talál itt, amelyek még nem láthatók a Azure Migrate-portálon, kattintson a lefagy elemre. A következő héten vagy így fognak megjelenni.
 
 
 ## <a name="physical-server-scenarios"></a>Fizikai kiszolgálói forgatókönyvek
@@ -48,7 +51,7 @@ A táblázat összefoglalja a fizikai kiszolgálók támogatott forgatókönyvei
   Franciaország | Közép-Franciaország
   India | Közép-India vagy Dél-India
   Japán |  Kelet-japán vagy Nyugat-Japán
-  Dél-Korea | Korea középső régiója vagy Dél-Korea
+  Korea | Korea középső régiója vagy Dél-Korea
   Egyesült Királyság | Egyesült Királyság déli régiója vagy Egyesült Királyság nyugati régiója
   Egyesült Államok | USA középső régiója vagy USA 2. nyugati régiója
 

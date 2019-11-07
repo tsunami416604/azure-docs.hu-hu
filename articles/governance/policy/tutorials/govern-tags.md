@@ -6,16 +6,16 @@ ms.author: dacoulte
 ms.date: 11/04/2019
 ms.topic: tutorial
 ms.service: azure-policy
-ms.openlocfilehash: 79219b9405f76e7044a4d403b37ba2f1545dfbea
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 780dbf02fbdb0a607f29c710da9a6320a8626f7b
+ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73501889"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73643756"
 ---
 # <a name="tutorial-manage-tag-governance-with-azure-policy"></a>Oktatóanyag: a címke szabályozásának kezelése a Azure Policy
 
-A [címkék](../../../azure-resource-manager/resource-group-using-tags.md) kulcsfontosságú részét képezik az Azure-erőforrások taxonómiai rendszerezésének. A [címkézési felügyelettel kapcsolatos ajánlott eljárások](/azure/architecture/cloud-adoption/ready/considerations/name-and-tag#metadata-tags)követése során a címkék az üzleti szabályzatok alkalmazásának alapjául szolgálnak Azure Policy vagy [követési költségekkel Cost Managementával](../../../cost-management/cost-mgt-best-practices.md#organize-and-tag-your-resources).
+A [címkék](../../../azure-resource-manager/resource-group-using-tags.md) kulcsfontosságú részét képezik az Azure-erőforrások taxonómiai rendszerezésének. A [címkézési felügyelettel kapcsolatos ajánlott eljárások](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging#naming-and-tagging-resources)követése során a címkék az üzleti szabályzatok alkalmazásának alapjául szolgálnak Azure Policy vagy [követési költségekkel Cost Managementával](../../../cost-management/cost-mgt-best-practices.md#organize-and-tag-your-resources).
 Függetlenül attól, hogy hogyan vagy miért használja a címkéket, fontos, hogy gyorsan hozzá lehessen adni, módosítani és eltávolítani ezeket a címkéket az Azure-erőforrásokon.
 
 Azure Policy [módosításának](../concepts/effects.md#modify) hatása úgy van kialakítva, hogy segítse a címkék irányítását, függetlenül attól, hogy az erőforrás-szabályozás milyen szakaszában van. A **módosítás** a következőkhöz nyújt segítséget:

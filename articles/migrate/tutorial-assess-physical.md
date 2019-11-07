@@ -7,14 +7,18 @@ ms.service: azure-migrate
 ms.topic: tutorial
 ms.date: 10/23/2019
 ms.author: raynew
-ms.openlocfilehash: 1165021ba602b85f47ff53dc14a2992f43be25bf
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 7574e80101784961448ff3c3b5a49d9e2c2f9807
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73521337"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73720231"
 ---
 # <a name="assess-physical-servers-with-azure-migrate-server-assessment"></a>Fizikai kiszolgálók értékelése a Azure Migratekel: kiszolgáló értékelése
+
+> [!NOTE]
+> Ha még nem látja ezt a funkciót a Azure Migrate-portálon, kattintson a lefagy elemre. A következő héten vagy így fog megjelenni.
+ 
 
 Ez a cikk bemutatja, hogyan értékelheti a helyszíni fizikai kiszolgálókat a Azure Migrate: Server Assessment Tool használatával.
 
@@ -204,7 +208,7 @@ Az értékelést a következőképpen futtathatja:
 1. Tekintse át az értékelések létrehozásával kapcsolatos [ajánlott eljárásokat](best-practices-assessment.md) .
 2. A **kiszolgálók** lap **Azure Migrate: kiszolgáló értékelése** csempén kattintson az **értékelés**elemre.
 
-    ![Értékelés](./media/tutorial-assess-physical/assess.png)
+    ![Kiértékelés](./media/tutorial-assess-physical/assess.png)
 
 2. A **kiszolgálók értékelése**lapon adja meg az értékelés nevét.
 3. Kattintson az **Összes megtekintése** elemre az értékelési tulajdonságok áttekintéséhez.

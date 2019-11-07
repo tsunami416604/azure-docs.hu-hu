@@ -1,5 +1,5 @@
 ---
-title: PowerShell-példa – feladatátvételi csoport – Azure SQL Database rugalmas készlet | Microsoft Docs
+title: PowerShell-példa – feladatátvevő csoport – Azure SQL Database rugalmas készlet
 description: Azure PowerShell például egy Azure SQL Database rugalmas készlet létrehozásához, egy feladatátvételi csoporthoz való hozzáadásához és a feladatátvételi teszthez.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: carlrab
 ms.date: 07/16/2019
-ms.openlocfilehash: 098752397bbd51bb271230dfa9d95683ad9141dd
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: a8c9b7dbddba59408808e1c33de045ad0b7ffd7a
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72956284"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73691787"
 ---
 # <a name="use-powershell-to-add-an-azure-sql-database-elastic-pool-to-a-failover-group"></a>Azure SQL Database rugalmas készlet hozzáadása feladatátvételi csoporthoz a PowerShell használatával 
 
@@ -59,7 +59,7 @@ A szkript a következő parancsokat használja. A táblázatban lévő összes p
 | [Kapcsoló – AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/switch-azsqldatabasefailovergroup)| Azure SQL Database feladatátvételi csoport feladatátvételét hajtja végre. |
 | [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | Erőforráscsoport eltávolítása | 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az Azure PowerShellről további tudnivalókért tekintse meg az [Azure PowerShell dokumentációt](/powershell/azure/overview).
 

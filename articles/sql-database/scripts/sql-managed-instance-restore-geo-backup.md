@@ -1,5 +1,5 @@
 ---
-title: PowerShell-példa a Geo-Backup visszaállítására – Azure SQL Database | Microsoft Docs
+title: PowerShell-példa a Geo-Backup visszaállítására – Azure SQL Database
 description: Azure PowerShell példa parancsfájlt egy Azure SQL felügyelt példány-adatbázis visszaállítására egy geo-redundáns biztonsági mentésből.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein
 ms.date: 07/03/2019
-ms.openlocfilehash: b6ad93d3b711726edd6891e5f6da2c8eef99d531
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 9de8819e82db12cb5625a449e4ea5bf2f028a44d
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68569716"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73691421"
 ---
 # <a name="use-powershell-to-restore-a-managed-instance-database-to-another-geo-region"></a>Felügyelt példány-adatbázis visszaállítása másik földrajzi régióra a PowerShell használatával
 
@@ -75,7 +75,7 @@ A szkript a következő parancsokat használja. A táblázatban lévő összes p
 |---|---|
 | [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/New-AzResourceGroup) | Létrehoz egy erőforráscsoportot, amely az összes erőforrást tárolja. |
 | [Get-AzSqlInstanceDatabaseGeoBackup](/powershell/module/az.sql/Get-AzSqlInstanceDatabaseGeoBackup) | A felügyelt példány adatbázisának geo-redundáns biztonsági mentését hozza létre. |
-| [Restore-AzSqlInstanceDatabase](/powershell/module/az.sql/Restore-AzSqlInstanceDatabase) | Létrehoz egy adatbázist a felügyelt példányon a Geo biztonsági mentésből. |
+| [Visszaállítás – AzSqlInstanceDatabase](/powershell/module/az.sql/Restore-AzSqlInstanceDatabase) | Létrehoz egy adatbázist a felügyelt példányon a Geo biztonsági mentésből. |
 | [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | Töröl egy erőforráscsoportot az összes beágyazott erőforrással együtt. |
 
 ## <a name="next-steps"></a>További lépések

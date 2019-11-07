@@ -1,64 +1,59 @@
 ---
-title: A Azure Site Recovery szolgáltatáshoz konfigurált Recovery Services-tároló törlése
+title: Azure Site Recovery-tároló törlése
 description: Megtudhatja, hogyan törölhet Azure Site Recoveryhoz konfigurált Recovery Services-tárolót
 author: rajani-janaki-ram
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 11/27/2018
+ms.date: 11/05/2019
 ms.author: rajanaki
-ms.openlocfilehash: a13dee2010688b02fd86fb05900826470a7d7a08
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: fb1e22b0ca1da00bf2665d863b40f19fa1621771
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67876044"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73721298"
 ---
 # <a name="delete-a-site-recovery-services-vault"></a>Site Recovery Services-tároló törlése
 
-A függőségek megakadályozhatják Azure Site Recovery tároló törlését. Az Site Recovery forgatókönyvtől függően változhatnak a szükséges műveletek. A Azure Backupban használt tár törléséhez lásd: [Backup-tároló törlése az Azure-ban](../backup/backup-azure-delete-vault.md).
+Ez a cikk a Site Recovery Recovery Services-tárolójának törlését ismerteti. A Azure Backupban használt tár törléséhez lásd: [Backup-tároló törlése az Azure-ban](../backup/backup-azure-delete-vault.md).
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="delete-a-site-recovery-vault"></a>Site Recovery-tároló törlése 
-A tár törléséhez kövesse az ajánlott lépéseket a forgatókönyvhöz.
-### <a name="azure-vms-to-azure"></a>Azure-beli virtuális gépek az Azure-ba
 
-1. Az összes védett virtuális gép törléséhez kövesse a [VMware-védelem letiltása](site-recovery-manage-registration-and-protection.md#disable-protection-for-a-azure-vm-azure-to-azure)című témakör lépéseit.
-2. Törölje a tárolót.
+## <a name="before-you-start"></a>Előkészületek
 
-### <a name="vmware-vms-to-azure"></a>VMware virtuális gépek az Azure-ba
-
-1. Az összes védett virtuális gép törléséhez kövesse a [VMware-védelem letiltása](site-recovery-manage-registration-and-protection.md#disable-protection-for-a-vmware-vm-or-physical-server-vmware-to-azure)című témakör lépéseit.
-
-2. Törölje az összes replikációs házirendet a [replikációs házirend törlése](vmware-azure-set-up-replication.md#disassociate-or-delete-a-replication-policy)című témakör lépéseit követve.
-
-3. Törölje a vCenter mutató hivatkozásokat a vCenter- [kiszolgáló törlése](vmware-azure-manage-vcenter.md#delete-a-vcenter-server)című rész lépéseit követve.
-
-4. A konfigurációs kiszolgáló leszerelésének lépéseit követve törölje a konfigurációs kiszolgálót. [](vmware-azure-manage-configuration-server.md#delete-or-unregister-a-configuration-server)
-
-5. Törölje a tárolót.
+A tároló törlése előtt el kell távolítania a regisztrált kiszolgálókat és a tárolóban lévő elemeket. Az eltávolítandó replikálási forgatókönyvek a telepítéshez szükséges replikációtól függenek. 
 
 
-### <a name="hyper-v-vms-with-vmm-to-azure"></a>Hyper-V virtuális gépek (VMM-mel) az Azure-ba
-1. Az összes védett virtuális gép törléséhez kövesse a[Hyper-V virtuális gép védelmének letiltása (VMM)](site-recovery-manage-registration-and-protection.md#disable-protection-for-a-hyper-v-virtual-machine-replicating-to-azure-using-the-system-center-vmm-to-azure-scenario)című témakör lépéseit.
+## <a name="delete-a-vault-azure-vm-to-azure"></a>Tár törlése – Azure-beli virtuális gép az Azure-ba
 
-2. Az összes replikációs szabályzat törlésének megszüntetése & a tár-> **site Recovery infrastruktúra** -> **a System Center VMM** -> **replikációs házirendjeihez** való tallózással
+1. Az összes védett virtuális gép törléséhez kövesse az [alábbi utasításokat](site-recovery-manage-registration-and-protection.md#disable-protection-for-a-azure-vm-azure-to-azure) .
+2. Ezután törölje a tárolót.
 
-3.  Törölje a VMM-kiszolgálókra mutató hivatkozásokat a [csatlakoztatott VMM-kiszolgáló regisztrációjának](site-recovery-manage-registration-and-protection.md##unregister-a-vmm-server)törlése című rész lépéseit követve.
+## <a name="delete-a-vault-vmware-vm-to-azure"></a>Tár – VMware virtuális gép törlése az Azure-ba
 
-4.  Törölje a tárolót.
+1. Az összes védett virtuális gép törléséhez kövesse az [alábbi utasításokat](site-recovery-manage-registration-and-protection.md#disable-protection-for-a-vmware-vm-or-physical-server-vmware-to-azure) .
+2. Az összes replikációs házirend törléséhez kövesse az [alábbi lépéseket](vmware-azure-set-up-replication.md#disassociate-or-delete-a-replication-policy) .
+3. Törölje a vCenter mutató hivatkozásokat az [alábbi lépésekkel](vmware-azure-manage-vcenter.md#delete-a-vcenter-server).
+4. A konfigurációs kiszolgáló leszereléséhez kövesse [az alábbi utasításokat](vmware-azure-manage-configuration-server.md#delete-or-unregister-a-configuration-server) .
+5. Ezután törölje a tárolót.
 
-### <a name="hyper-v-vms-without-virtual-machine-manager-to-azure"></a>Hyper-V virtuális gépek (Virtual Machine Manager nélkül) az Azure-ba
-1. Törölje az összes védett virtuális [gépet a Hyper-v rendszerű virtuális gép védelmének letiltása (Hyper-v – Azure)](site-recovery-manage-registration-and-protection.md#disable-protection-for-a-hyper-v-virtual-machine-hyper-v-to-azure)című témakör lépéseit követve.
 
-2. Az összes replikációs szabályzat törlésének megszüntetése & a tár-> **site Recovery infrastruktúra** > **a Hyper-V-helyek** -> **replikációs házirendjeihez** tallózással
+## <a name="delete-a-vault-hyper-v-vm-with-vmm-to-azure"></a>Tár-Hyper-V virtuális gép (VMM) törlése az Azure-ba
 
-3. Törölje a Hyper-V kiszolgálókra mutató hivatkozásokat a [Hyper-v-gazdagép regisztrációjának megszüntetése](site-recovery-manage-registration-and-protection.md#unregister-a-hyper-v-host-in-a-hyper-v-site)című témakörben leírtak szerint.
+1. A System Center VMM által felügyelt Hyper-V virtuális gépek törléséhez kövesse az [alábbi lépéseket](site-recovery-manage-registration-and-protection.md#disable-protection-for-a-hyper-v-virtual-machine-replicating-to-azure-using-the-system-center-vmm-to-azure-scenario) .
+2. Szüntesse meg az összes replikációs házirend hozzárendelését és törlését. Ezt a tárolóban > **site Recovery infrastruktúra** > **a System Center VMM** > **replikációs házirendek**esetében.
+3. A csatlakoztatott VMM-kiszolgálók regisztrációjának megszüntetéséhez kövesse [az alábbi lépéseket](site-recovery-manage-registration-and-protection.md##unregister-a-vmm-server) .
+4. Ezután törölje a tárolót.
 
+## <a name="delete-a-vault-hyper-v-vm-to-azure"></a>Tároló-Hyper-V virtuális gép törlése az Azure-ba
+
+1. Az összes védett virtuális gép törléséhez kövesse az [alábbi lépéseket](site-recovery-manage-registration-and-protection.md#disable-protection-for-a-hyper-v-virtual-machine-hyper-v-to-azure) .
+2. Szüntesse meg az összes replikációs házirend hozzárendelését és törlését. Ezt a tárolóban > **site Recovery infrastruktúra** - > **a Hyper-V-helyekhez** > **replikációs házirendeket**.
+3. A Hyper-V-gazdagépek regisztrációjának megszüntetéséhez kövesse az [alábbi utasításokat](site-recovery-manage-registration-and-protection.md#unregister-a-hyper-v-host-in-a-hyper-v-site) .
 4. Törölje a Hyper-V-helyet.
-
-5. Törölje a tárolót.
+5. Ezután törölje a tárolót.
 
 
 ## <a name="use-powershell-to-force-delete-the-vault"></a>A tároló törlésének kényszerítése a PowerShell használatával 

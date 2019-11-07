@@ -6,14 +6,17 @@ ms.service: azure-migrate
 ms.topic: article
 ms.date: 10/23/2019
 ms.author: hamusa
-ms.openlocfilehash: d646187627d74810a846d7126562e2e796c5c9f7
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: e9f9e812d5463f0a503b100780f9b988e43f748d
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73512807"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73720268"
 ---
 # <a name="set-up-agentless-dependency-visualization-for-assessment"></a>Az ügynök nélküli függőségi vizualizáció beállítása az értékeléshez
+
+> [!NOTE]
+> Ha még nem látja ezt a funkciót a Azure Migrate-portálon, kattintson a lefagy elemre. A következő héten vagy így fog megjelenni.
 
 Ez a cikk azt ismerteti, hogyan állítható be az ügynök nélküli függőségi leképezés a Azure Migrateban: kiszolgáló értékelése. Ez a funkció jelenleg előzetes verzióban érhető el a Azure Migrate készülék használatával felderített VMware-gépekhez. 
 

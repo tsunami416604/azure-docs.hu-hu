@@ -1,6 +1,6 @@
 ---
-title: Események fogadása Apache Storm használatával – Azure Event Hubs | Microsoft Docs
-description: Ez a cikk tájékoztatást nyújt arról, hogyan fogadhat eseményeket az Azure Event Hubs Apache Storm használatával.
+title: 'Gyors útmutató: események fogadása Apache Storm használatával – Azure Event Hubs'
+description: 'Gyors útmutató: ebben a cikkben arról olvashat, hogyan fogadhat eseményeket az Azure Event Hubs a Apache Storm használatával.'
 services: event-hubs
 documentationcenter: ''
 author: ShubhaVijayasarathy
@@ -11,18 +11,18 @@ ms.service: event-hubs
 ms.workload: na
 ms.tgt_pltfrm: java
 ms.devlang: multiple
-ms.topic: article
+ms.topic: quickstart
 ms.custom: seodec18
-ms.date: 12/06/2018
+ms.date: 11/05/2019
 ms.author: shvija
-ms.openlocfilehash: eaa461dd0c4ef6bd9ed0ae4379a710ee100929d2
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: 90293da07d3a7ef1c32e5f82d35198d4ffa536b1
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72800197"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73717604"
 ---
-# <a name="receive-events-from-event-hubs-using-apache-storm"></a>Események fogadása Event Hubs használatával Apache Storm
+# <a name="quickstart-receive-events-from-event-hubs-using-apache-storm"></a>Gyors útmutató: események fogadása Event Hubs használatával Apache Storm
 
 A [Apache Storm](https://storm.incubator.apache.org) egy elosztott, valós idejű számítási rendszer, amely leegyszerűsíti a nem kötött adatstreamek megbízható feldolgozását. Ez a szakasz azt mutatja be, hogyan használható az Azure Event Hubs Storm kiöntő az események Event Hubsból való fogadásához. A Apache Storm használatával több, különböző csomópontokban üzemeltetett folyamat között oszthat meg eseményeket. A Storm Event Hubs-integrációja leegyszerűsíti az események felhasználását azáltal, hogy a Storm Zookeeper-telepítésével, az állandó ellenőrzőpontok és a párhuzamos fogadások kezelésével Event Hubs.
 
@@ -242,7 +242,7 @@ Ez az oktatóanyag egy [HDInsight Storm][HDInsight Storm] -telepítést használ
 
     Ez az osztály létrehoz egy új Event Hubs kiöntőt, amely a konfigurációs fájlban található tulajdonságok használatával hozza létre. Fontos megjegyezni, hogy ez a példa annyi kiöntő feladatot hoz létre az Event hub partícióinak számaként, hogy az adott Event hub által engedélyezett maximális párhuzamosságot használja.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Az alábbi webhelyeken további információt talál az Event Hubsról:
 
 * [Event Hubs – áttekintés][Event Hubs overview]

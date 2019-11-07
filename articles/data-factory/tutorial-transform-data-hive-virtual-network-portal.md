@@ -1,5 +1,5 @@
 ---
-title: Azure virtuális hálózaton lévő adatok átalakítása a Hive segítségével | Microsoft Docs
+title: 'Adatátalakítás a kaptár használatával az Azure-ban Virtual Network '
 description: Ez az oktatóanyag részletes útmutatást nyújt az adatok Hive-tevékenységgel történő átalakításához az Azure Data Factoryben.
 services: data-factory
 documentationcenter: ''
@@ -11,12 +11,12 @@ ms.date: 01/04/2018
 author: nabhishek
 ms.author: abnarain
 manager: craigg
-ms.openlocfilehash: b6e57500da0ca863f0c5810f625d6a4b0c56d1bf
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: 73a43bdb859d39bd0cb8e3d4a3ed3f114fb2c156
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68277476"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73683426"
 ---
 # <a name="transform-data-in-azure-virtual-network-using-hive-activity-in-azure-data-factory"></a>Azure virtuális hálózaton lévő adatok átalakítása Hive-tevékenység segítségével az Azure Data Factoryben
 Ebben az oktatóanyagban az Azure Portal segítségével hoz létre egy Data Factory-folyamatot, amely egy Azure virtuális hálózaton (VNet) lévő HDInsight-fürtön futó Hive-tevékenységgel alakítja át az adatokat. Az oktatóanyagban az alábbi lépéseket fogja végrehajtani:
@@ -40,7 +40,7 @@ Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány
 - **Egy Azure virtuális hálózat.** Ha nem rendelkezik Azure virtuális hálózattal, hozzon létre egyet [ezeket az utasításokat](../virtual-network/quick-create-portal.md) követve. Ebben a példában a HDInsight egy Azure virtuális hálózaton található. Itt látható az Azure virtuális hálózat egy példa konfigurációja. 
 
     ![Virtuális hálózat létrehozása](media/tutorial-transform-data-using-hive-in-vnet-portal/create-virtual-network.png)
-- **HDInsight-fürt.** Hozzon létre egy HDInsight-fürtöt, és csatlakoztathatja azt a következő Ez a cikk az előző lépésben létrehozta a virtuális hálózatot: [Az Azure Virtual Network használata Azure HDInsight kiterjesztése](../hdinsight/hdinsight-extend-hadoop-virtual-network.md). Itt látható a virtuális hálózaton található HDInsight egy példa konfigurációja. 
+- **HDInsight-fürt.** Hozzon létre egy HDInsight-fürtöt, és csatolja az előző lépésben létrehozott virtuális hálózathoz az [Azure HDInsight Azure virtuális hálózat segítségével történő bővítésével](../hdinsight/hdinsight-extend-hadoop-virtual-network.md) kapcsolatos cikk utasításait követve. Itt látható a virtuális hálózaton található HDInsight egy példa konfigurációja. 
 
     ![HDInsight virtuális hálózaton](media/tutorial-transform-data-using-hive-in-vnet-portal/hdinsight-virtual-network-settings.png)
 - **Azure PowerShell**. Kövesse [az Azure PowerShell telepítését és konfigurálását](/powershell/azure/install-Az-ps) ismertető cikkben szereplő utasításokat.
@@ -71,7 +71,7 @@ Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány
 ## <a name="create-a-data-factory"></a>Data factory létrehozása
 
 1. Indítsa el a **Microsoft Edge** vagy a **Google Chrome** böngészőt. A Data Factory felhasználói felületének használata jelenleg csak a Microsoft Edge-ben és a Google Chrome-ban támogatott.
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).    
+1. Jelentkezzen be az [Azure portálra](https://portal.azure.com/).    
 2. Kattintson az **Új** elemre, majd az **Adatok + analitika**, végül a **Data Factory** elemre. 
    
    ![New (Új)->DataFactory](./media/tutorial-transform-data-using-hive-in-vnet-portal/new-data-factory-menu.png)
@@ -92,14 +92,14 @@ Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány
 4. A **Verzió** résznél válassza a **V2** értéket.
 5. Válassza ki a Data Factory **helyét**. A listában csak az adat-előállítók létrehozását támogató helyek jelennek meg.
 6. Válassza a **Rögzítés az irányítópulton** lehetőséget.     
-7. Kattintson a **Create** (Létrehozás) gombra.
-8. Az irányítópulton a következő állapotleírás látható: **Data factory üzembe helyezése**. 
+7. Kattintson a **Létrehozás** elemre.
+8. Az irányítópulton megjelenő csempén a következő állapotleírás látható: **Adat-előállító üzembe helyezése**. 
 
      ![adat-előállító üzembe helyezése csempe](media/tutorial-transform-data-using-hive-in-vnet-portal/deploying-data-factory.png)
 9. A létrehozás befejezése után a **Data Factory** lap a képen látható módon jelenik meg.
    
     ![Data factory kezdőlap](./media/tutorial-transform-data-using-hive-in-vnet-portal/data-factory-home-page.png)
-10. A Data Factory felhasználói felületének (UI) külön lapon történő elindításához kattintson a **Létrehozás és monitorozás** csempére.
+10. A Data Factory felhasználói felületének (UI) külön lapon történő elindításához kattintson az **Author & Monitor** (Létrehozás és monitorozás) csempére.
 11. Az **első lépéseket bemutató** lapon váltson a **Szerkesztés** lapra a bal oldali panelen, ahogy az az alábbi képen látható: 
 
     ![Szerkesztés lap](./media/tutorial-transform-data-using-hive-in-vnet-portal/get-started-page.png)
@@ -162,7 +162,7 @@ Ebben a részben két társított szolgáltatást hoz létre és helyez üzembe:
    ![Select Azure Blob Storage](./media/tutorial-transform-data-using-hive-in-vnet-portal/select-azure-storage.png)
 3. Az **Új társított szolgáltatás** ablakban végezze el az alábbi lépéseket:
 
-    1. A **Name** (Név) mezőbe írja az **AzureStorageLinkedService** nevet.
+    1. A **Név** mezőbe írja az **AzureStorageLinkedService** nevet.
     2. Válassza a **MySelfHostedIR** elemet a **Connect via integration runtime** (Csatlakozás integrációs modulon keresztül) lehetőségnél.
     3. A **Storage-fiók neve** elemnél válassza ki saját Azure Storage-fiókját. 
     4. Ha tesztelni szeretné a tárfiókkal létrejövő kapcsolatot, kattintson a **Test connection** (Kapcsolat tesztelése) lehetőségre.
@@ -178,7 +178,7 @@ Ebben a részben két társított szolgáltatást hoz létre és helyez üzembe:
 2. A **Compute** (Számítás) lapon válassza az **Azure HDInsight** lehetőséget, majd kattintson a **Continue** (Folytatás) gombra.
 
     ![Az Azure HDInsight kiválasztása](./media/tutorial-transform-data-using-hive-in-vnet-portal/select-hdinsight.png)
-3. A **New Linked Service** (Új társított szolgáltatás) ablakban végezze el az alábbi lépéseket:
+3. Az **Új társított szolgáltatás** ablakban végezze el az alábbi lépéseket:
 
     1. A **Name** (Név) mezőben adja meg a következőt: **AzureHDInsightLinkedService**.
     2. Válassza a **Bring your own HDInsight** (Saját HDInsight használata) lehetőséget. 

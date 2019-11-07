@@ -1,5 +1,5 @@
 ---
-title: 'Oktatóanyag: az első, Azure SQL Database a SSMS-t használó, összehasonlítható adatbázis megtervezése | Microsoft Docs'
+title: 'Oktatóanyag: az első, Azure SQL Database a SSMS-t használó, összehasonlítható adatbázis megtervezése '
 description: Megtudhatja, hogyan tervezheti meg első, Azure SQL Database egy adatbázisában található, SQL Server Management Studio használatával.
 services: sql-database
 ms.service: sql-database
@@ -9,12 +9,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: v-masebo
 ms.date: 07/29/2019
-ms.openlocfilehash: 18e7e75b259475b9e360dc3441ed83ccb577e557
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 1ea8bcd353311d0e6f666a0086f8f2f3b24b55d2
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73492010"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73690741"
 ---
 # <a name="tutorial-design-a-relational-database-in-a-single-database-within-azure-sql-database-using-ssms"></a>Oktatóanyag: a SSMS-t használó, Azure SQL Databaseban található, egyetlen adatbázisban lévő viszonyítási adatbázis tervezése
 
@@ -44,7 +44,7 @@ Az oktatóanyag elvégzéséhez győződjön meg arról, hogy telepítette a kö
 
 ## <a name="sign-in-to-the-azure-portal"></a>Jelentkezzen be az Azure Portalra
 
-Bejelentkezés az [Azure Portalra](https://portal.azure.com/).
+Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
 
 ## <a name="create-a-blank-single-database"></a>Üres önálló adatbázis létrehozása
 

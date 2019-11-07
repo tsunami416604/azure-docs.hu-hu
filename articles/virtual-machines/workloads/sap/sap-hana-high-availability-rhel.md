@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 03/15/2019
 ms.author: sedusch
-ms.openlocfilehash: f51870fb8f6ed71aab2558099c2361bf6e340493
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 62bb00c05359682503d2e99ef282f2523871147d
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70078514"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73721543"
 ---
 # <a name="high-availability-of-sap-hana-on-azure-vms-on-red-hat-enterprise-linux"></a>SAP HANA magas rendelkezésre állása Azure-beli virtuális gépeken Red Hat Enterprise Linux
 
@@ -84,10 +84,10 @@ A magas rendelkezésre állás eléréséhez SAP HANA két virtuális gépre van
 
 ![SAP HANA magas rendelkezésre állás áttekintése](./media/sap-hana-high-availability-rhel/ha-hana.png)
 
-SAP HANA System Replication setup uses a dedicated virtual hostname and virtual IP addresses. Az Azure-ban a virtuális IP-címek használatához terheléselosztó szükséges. A terheléselosztó konfigurációját a következő lista tartalmazza:
+SAP HANA a rendszerreplikáció beállítása dedikált virtuális állomásnevet és virtuális IP-címeket használ. Az Azure-ban a virtuális IP-címek használatához terheléselosztó szükséges. A terheléselosztó konfigurációját a következő lista tartalmazza:
 
 * Előtér-konfiguráció: IP-10.0.0.13 a hn1-db-hez
-* Háttérbeli konfiguráció: A HANA rendszer-replikáció részét képező összes virtuális gép elsődleges hálózati adapteréhez csatlakozik
+* Háttérbeli konfiguráció: a HANA rendszer-replikáció részét képező összes virtuális gép elsődleges hálózati adapteréhez csatlakozik
 * Mintavételi port: 62503-es port
 * Terheléselosztási szabályok: 30313 TCP, 30315 TCP, 30317 TCP, 30340 TCP, 30341 TCP, 30342 TCP
 
@@ -100,15 +100,15 @@ Az Azure piactér tartalmaz egy rendszerképet, amely az új virtuális gépek �
 Az összes szükséges erőforrás üzembe helyezéséhez a GitHubon található egyik rövid útmutató-sablon is használható. A sablon üzembe helyezi a virtuális gépeket, a terheléselosztóot, a rendelkezésre állási készletet stb.
 A sablon üzembe helyezéséhez kövesse az alábbi lépéseket:
 
-1. Nyissa meg a Azure Portal [adatbázis][template-multisid-db] -sablonját.
+1. Nyissa meg a Azure Portal [adatbázis-sablonját][template-multisid-db] .
 1. Adja meg a következő paramétereket:
-    * **SAP**-rendszerazonosító: Adja meg a telepíteni kívánt SAP-System AZONOSÍTÓját. A rendszer az azonosítót használja az üzembe helyezett erőforrások előtagjaként.
-    * **Operációs rendszer típusa**: Válassza ki a Linux-disztribúciók egyikét. Ebben a példában válassza a **RHEL 7**elemet.
-    * **Adatbázis típusa**: Válassza a **HANA**elemet.
-    * **SAP**-rendszerméret: Adja meg az új rendszer által megadható SAP-t. Ha nem biztos benne, hogy hány SAP-rendszer szükséges, kérdezze meg az SAP-technológiai partnerét vagy rendszerintegrátorát.
-    * A **rendszerek rendelkezésre állása**: Válassza a **Ha**lehetőséget.
-    * **Rendszergazdai Felhasználónév, rendszergazdai jelszó vagy SSH-kulcs**: Létrejön egy új felhasználó, amely a gépre való bejelentkezéshez használható.
-    * **ALHÁLÓZAT azonosítója**: Ha a virtuális gépet egy olyan meglévő VNet szeretné telepíteni, amelyben a virtuális gépet definiáló alhálózat van, akkor nevezze el az adott alhálózat AZONOSÍTÓját. Az azonosító általában úgy néz ki, mint az **\</Subscriptions/\<előfizetés-azonosítója >/resourceGroups/\<erőforráscsoport neve >/Providers/Microsoft.Network/virtualNetworks/virtuális hálózat neve >/Subnets/\<alhálózat neve >** . Ha új virtuális hálózatot szeretne létrehozni, hagyja üresen.
+    * **SAP-rendszerazonosító**: adja meg a TELEPÍTENI kívánt SAP-System azonosítót. A rendszer az azonosítót használja az üzembe helyezett erőforrások előtagjaként.
+    * **Operációs rendszer típusa**: válasszon egyet a Linux-disztribúciók közül. Ebben a példában válassza a **RHEL 7**elemet.
+    * **Adatbázis típusa**: válassza a **HANA**elemet.
+    * **SAP-rendszer mérete**: Itt adhatja meg, hogy az új rendszer milyen típusú SAP-t fog biztosítani. Ha nem biztos benne, hogy hány SAP-rendszer szükséges, kérdezze meg az SAP-technológiai partnerét vagy rendszerintegrátorát.
+    * **Rendszerszintű rendelkezésre állás**: válassza a **Ha**lehetőséget.
+    * **Rendszergazdai Felhasználónév, rendszergazdai jelszó vagy SSH-kulcs**: új felhasználó jön létre, amely a gépre való bejelentkezéshez használható.
+    * **Alhálózati azonosító**: Ha a virtuális gépet egy olyan meglévő VNet szeretné telepíteni, amelyben egy alhálózat van megadva, a virtuális gépet hozzá kell rendelni, nevezze el az adott alhálózat azonosítóját. Az azonosító általában úgy néz ki, mint a **/subscriptions/\<előfizetés-azonosító >/resourceGroups/\<erőforráscsoport neve >/providers/Microsoft.Network/virtualNetworks/\<virtuális hálózat neve >/subnets/\<alhálózat neve >** . Ha új virtuális hálózatot szeretne létrehozni, hagyja üresen.
 
 ### <a name="manual-deployment"></a>Manuális üzembe helyezés
 
@@ -116,71 +116,110 @@ A sablon üzembe helyezéséhez kövesse az alábbi lépéseket:
 1. Hozzon létre egy virtuális hálózatot.
 1. Hozzon létre egy rendelkezésre állási készletet.  
    Állítsa be a maximális frissítési tartományt.
-1. Hozzon létre egy Load balancert (belső).
+1. Hozzon létre egy Load balancert (belső). A [standard Load Balancer](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-overview)használatát javasoljuk.
    * Válassza ki a 2. lépésben létrehozott virtuális hálózatot.
 1. Hozzon létre egy 1. virtuális gépet.  
-   A SAP HANAhoz legalább Red Hat Enterprise Linux 7,4-et használjon. Ez a példa a Red Hat Enterprise Linux 7,4 for SAP HANA- <https://portal.azure.com/#create/RedHat.RedHatEnterpriseLinux75forSAP-ARM> lemezképfájlt használja a 3. lépésben létrehozott rendelkezésre állási csoport kiválasztásával.
+   A SAP HANAhoz legalább Red Hat Enterprise Linux 7,4-et használjon. Ez a példa a Red Hat Enterprise Linux 7,4 for SAP HANA-lemezképfájlt használja <https://portal.azure.com/#create/RedHat.RedHatEnterpriseLinux75forSAP-ARM> válassza ki a 3. lépésben létrehozott rendelkezésre állási készletet.
 1. A 2. virtuális gép létrehozása  
-   A SAP HANAhoz legalább Red Hat Enterprise Linux 7,4-et használjon. Ez a példa a Red Hat Enterprise Linux 7,4 for SAP HANA- <https://portal.azure.com/#create/RedHat.RedHatEnterpriseLinux75forSAP-ARM> lemezképfájlt használja a 3. lépésben létrehozott rendelkezésre állási csoport kiválasztásával.
+   A SAP HANAhoz legalább Red Hat Enterprise Linux 7,4-et használjon. Ez a példa a Red Hat Enterprise Linux 7,4 for SAP HANA-lemezképfájlt használja <https://portal.azure.com/#create/RedHat.RedHatEnterpriseLinux75forSAP-ARM> válassza ki a 3. lépésben létrehozott rendelkezésre állási készletet.
 1. Adatlemezek hozzáadása.
-1. Konfigurálja a Load balancert. Először hozzon létre egy előtér-IP-címkészletet:
+1. Ha standard Load balancert használ, kövesse az alábbi konfigurációs lépéseket:
+   1. Először hozzon létre egy előtér-IP-címkészletet:
 
-   1. Nyissa meg a terheléselosztó felületet, válassza a előtér **IP-készlet**lehetőséget, majd kattintson a **Hozzáadás**gombra.
-   1. Adja meg az új előtér-IP-készlet nevét (például **Hana-frontend**).
-   1. Állítsa a hozzárendelést **statikus** értékre, és adja meg az IP-címet (például **10.0.0.13**).
-   1. Kattintson az **OK** gombra.
-   1. Az új előtér-IP-készlet létrehozása után jegyezze fel a készlet IP-címét.
+      1. Nyissa meg a terheléselosztó felületet, válassza a előtér **IP-készlet**lehetőséget, majd kattintson a **Hozzáadás**gombra.
+      1. Adja meg az új előtér-IP-készlet nevét (például **Hana-frontend**).
+      1. Állítsa a **hozzárendelést** **statikus** értékre, és adja meg az IP-címet (például **10.0.0.13**).
+      1. Kattintson az **OK** gombra.
+      1. Az új előtér-IP-készlet létrehozása után jegyezze fel a készlet IP-címét.
 
-1. Következő lépésként hozzon létre egy háttér-készletet:
+   1. Következő lépésként hozzon létre egy háttér-készletet:
 
-   1. Nyissa meg a Load balancert, válassza a **háttérbeli készletek**lehetőséget, majd válassza a **Hozzáadás**lehetőséget.
-   1. Adja meg az új háttér-készlet nevét (például **Hana-backend**).
-   1. Válassza **a virtuális gép hozzáadása**lehetőséget.
-   1. Válassza ki a 3. lépésben létrehozott rendelkezésre állási készletet.
-   1. Válassza ki a SAP HANA-fürthöz tartozó virtuális gépeket.
-   1. Kattintson az **OK** gombra.
+      1. Nyissa meg a Load balancert, válassza a **háttérbeli készletek**lehetőséget, majd válassza a **Hozzáadás**lehetőséget.
+      1. Adja meg az új háttér-készlet nevét (például **Hana-backend**).
+      1. Válassza **a virtuális gép hozzáadása**lehetőséget.
+      1. Válassza a * * virtuális gép * * elemet.
+      1. Válassza ki a SAP HANA-fürthöz tartozó virtuális gépeket és azok IP-címeit.
+      1. Válassza a **Hozzáadás** lehetőséget.
 
-1. Következő lépésként hozzon létre egy állapot-mintavételt:
+   1. Következő lépésként hozzon létre egy állapot-mintavételt:
 
-   1. Nyissa meg a terheléselosztó-t, válassza az **állapot**-tesztek elemet, majd kattintson a **Hozzáadás**gombra.
-   1. Adja meg az új állapot-mintavétel nevét (például **Hana-HP**).
-   1. Válassza a **TCP** lehetőséget a protokoll és a625-es port. Tartsa meg az **intervallum** értékét 5-re, a nem kifogástalan **állapot küszöbértékének** értéke pedig 2.
-   1. Kattintson az **OK** gombra.
+      1. Nyissa meg a terheléselosztó-t, válassza az **állapot**-tesztek elemet, majd kattintson a **Hozzáadás**gombra.
+      1. Adja meg az új állapot-mintavétel nevét (például **Hana-HP**).
+      1. Válassza a **TCP** lehetőséget a protokoll és a**625-** es port. Tartsa meg az **intervallum** értékét 5-re, a nem kifogástalan **állapot küszöbértékének** értéke pedig 2.
+      1. Kattintson az **OK** gombra.
 
-1. SAP HANA 1,0 esetében hozza létre a terheléselosztási szabályokat:
+   1. Ezután hozza létre a terheléselosztási szabályokat:
+   
+      1. Nyissa meg a terheléselosztó-t, válassza a terheléselosztási **szabályok**lehetőséget, majd válassza a **Hozzáadás**lehetőséget.
+      1. Adja meg az új terheléselosztó-szabály nevét (például **Hana-LB**).
+      1. Válassza ki az előtér-IP-címet, a háttér-készletet és a korábban létrehozott állapot-mintavételt (például **Hana-frontend**, **Hana-backend** és **Hana-HP**).
+      1. Válassza a **hektár portok**lehetőséget.
+      1. Növelje az **üresjárati időkorlátot** 30 percre.
+      1. Ügyeljen arra, hogy a **lebegő IP-címet engedélyezze**.
+      1. Kattintson az **OK** gombra.
 
-   1. Nyissa meg a terheléselosztó-t, válassza a terheléselosztási **szabályok**lehetőséget, majd válassza a **Hozzáadás**lehetőséget.
-   1. Adja meg az új terheléselosztó-szabály nevét (például Hana-LB-3**03**15).
-   1. Válassza ki az előtér-IP-címet, a háttér-készletet és a korábban létrehozott állapot-mintavételt (például **Hana-frontend**).
-   1. Tartsa a **protokollt** **TCP**-értékre, és írja be a 3**03**15 portot.
-   1. Növelje az **üresjárati** időkorlátot 30 percre.
-   1. Ügyeljen arra, hogy a **lebegő IP-címet engedélyezze**.
-   1. Kattintson az **OK** gombra.
-   1. Ismételje meg ezeket a lépéseket a 3**03**17-ös porton.
+   > [!Note]
+   > Ha a nyilvános IP-címek nélküli virtuális gépek a belső (nincs nyilvános IP-cím) standard Azure Load Balancer háttér-készletbe kerülnek, nem lesz kimenő internetkapcsolat, kivéve, ha további konfigurálást végeznek a nyilvános végpontok útválasztásának engedélyezéséhez. A kimenő kapcsolatok elérésével kapcsolatos részletekért lásd: [nyilvános végpontú kapcsolat Virtual Machines az Azure standard Load Balancer használata az SAP magas rendelkezésre állási helyzetekben](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-standard-load-balancer-outbound-connections).  
 
-1. SAP HANA 2,0 esetében hozza létre a rendszeradatbázis terheléselosztási szabályait:
+1. Ha a forgatókönyv az alapszintű Load Balancer használatát is megköveteli, kövesse az alábbi konfigurációs lépéseket:
+   1. Konfigurálja a Load balancert. Először hozzon létre egy előtér-IP-címkészletet:
 
-   1. Nyissa meg a terheléselosztó-t, válassza a terheléselosztási **szabályok**lehetőséget, majd válassza a **Hozzáadás**lehetőséget.
-   1. Adja meg az új terheléselosztó-szabály nevét (például Hana-LB-3**03**13).
-   1. Válassza ki az előtér-IP-címet, a háttér-készletet és a korábban létrehozott állapot-mintavételt (például **Hana-frontend**).
-   1. Tartsa a **protokollt** **TCP**-értékre, és írja be a 3**03**13 portot.
-   1. Növelje az **üresjárati** időkorlátot 30 percre.
-   1. Ügyeljen arra, hogy a **lebegő IP-címet engedélyezze**.
-   1. Kattintson az **OK** gombra.
-   1. Ismételje meg ezeket a lépéseket a 3.**03**. porton.
+      1. Nyissa meg a terheléselosztó felületet, válassza a előtér **IP-készlet**lehetőséget, majd kattintson a **Hozzáadás**gombra.
+      1. Adja meg az új előtér-IP-készlet nevét (például **Hana-frontend**).
+      1. Állítsa a **hozzárendelést** **statikus** értékre, és adja meg az IP-címet (például **10.0.0.13**).
+      1. Kattintson az **OK** gombra.
+      1. Az új előtér-IP-készlet létrehozása után jegyezze fel a készlet IP-címét.
 
-1. SAP HANA 2,0 esetében először hozza létre a bérlői adatbázishoz tartozó terheléselosztási szabályokat:
+   1. Következő lépésként hozzon létre egy háttér-készletet:
 
-   1. Nyissa meg a terheléselosztó-t, válassza a terheléselosztási **szabályok**lehetőséget, majd válassza a **Hozzáadás**lehetőséget.
-   1. Adja meg az új terheléselosztó-szabály nevét (például Hana-LB-3**03**40).
-   1. Válassza ki a korábban létrehozott előtérbeli IP-címet, a háttér-készletet és az állapot-mintavételt (például **Hana-frontend**).
-   1. Tartsa a **protokollt** **TCP**-re, és írja be a 3**03**40 portot.
-   1. Növelje az **üresjárati** időkorlátot 30 percre.
-   1. Ügyeljen arra, hogy a **lebegő IP-címet engedélyezze**.
-   1. Kattintson az **OK** gombra.
-   1. Ismételje meg ezeket a lépéseket a 3**03**41 és 3**03**42-es porton.
+      1. Nyissa meg a Load balancert, válassza a **háttérbeli készletek**lehetőséget, majd válassza a **Hozzáadás**lehetőséget.
+      1. Adja meg az új háttér-készlet nevét (például **Hana-backend**).
+      1. Válassza **a virtuális gép hozzáadása**lehetőséget.
+      1. Válassza ki a 3. lépésben létrehozott rendelkezésre állási készletet.
+      1. Válassza ki a SAP HANA-fürthöz tartozó virtuális gépeket.
+      1. Kattintson az **OK** gombra.
 
-A SAP HANA szükséges portokkal kapcsolatos további információkért olvassa el a bérlői [adatbázisok kapcsolatai](https://help.sap.com/viewer/78209c1d3a9b41cd8624338e42a12bf6/latest/en-US/7a9343c9f2a2436faa3cfdb5ca00c052.html) című részt a [SAP HANA bérlői adatbázisok](https://help.sap.com/viewer/78209c1d3a9b41cd8624338e42a12bf6) útmutatójában vagy az 2388694-es [SAP][2388694]-megjegyzésben.
+   1. Következő lépésként hozzon létre egy állapot-mintavételt:
+
+      1. Nyissa meg a terheléselosztó-t, válassza az **állapot**-tesztek elemet, majd kattintson a **Hozzáadás**gombra.
+      1. Adja meg az új állapot-mintavétel nevét (például **Hana-HP**).
+      1. Válassza a **TCP** lehetőséget a protokoll és a**625-** es port. Tartsa meg az **intervallum** értékét 5-re, a nem kifogástalan **állapot küszöbértékének** értéke pedig 2.
+      1. Kattintson az **OK** gombra.
+
+   1. SAP HANA 1,0 esetében hozza létre a terheléselosztási szabályokat:
+
+      1. Nyissa meg a terheléselosztó-t, válassza a terheléselosztási **szabályok**lehetőséget, majd válassza a **Hozzáadás**lehetőséget.
+      1. Adja meg az új terheléselosztó-szabály nevét (például Hana-LB-3**03**15).
+      1. Válassza ki az előtér-IP-címet, a háttér-készletet és a korábban létrehozott állapot-mintavételt (például **Hana-frontend**).
+      1. Tartsa a **protokollt** **TCP**-értékre, és írja be a 3**03**15 portot.
+      1. Növelje az **üresjárati időkorlátot** 30 percre.
+      1. Ügyeljen arra, hogy a **lebegő IP-címet engedélyezze**.
+      1. Kattintson az **OK** gombra.
+      1. Ismételje meg ezeket a lépéseket a 3**03**17-ös porton.
+
+   1. SAP HANA 2,0 esetében hozza létre a rendszeradatbázis terheléselosztási szabályait:
+
+      1. Nyissa meg a terheléselosztó-t, válassza a terheléselosztási **szabályok**lehetőséget, majd válassza a **Hozzáadás**lehetőséget.
+      1. Adja meg az új terheléselosztó-szabály nevét (például Hana-LB-3**03**13).
+      1. Válassza ki az előtér-IP-címet, a háttér-készletet és a korábban létrehozott állapot-mintavételt (például **Hana-frontend**).
+      1. Tartsa a **protokollt** **TCP**-értékre, és írja be a 3**03**13 portot.
+      1. Növelje az **üresjárati időkorlátot** 30 percre.
+      1. Ügyeljen arra, hogy a **lebegő IP-címet engedélyezze**.
+      1. Kattintson az **OK** gombra.
+      1. Ismételje meg ezeket a lépéseket a 3.**03**. porton.
+
+   1. SAP HANA 2,0 esetében először hozza létre a bérlői adatbázishoz tartozó terheléselosztási szabályokat:
+
+      1. Nyissa meg a terheléselosztó-t, válassza a terheléselosztási **szabályok**lehetőséget, majd válassza a **Hozzáadás**lehetőséget.
+      1. Adja meg az új terheléselosztó-szabály nevét (például Hana-LB-3**03**40).
+      1. Válassza ki a korábban létrehozott előtérbeli IP-címet, a háttér-készletet és az állapot-mintavételt (például **Hana-frontend**).
+      1. Tartsa a **protokollt** **TCP**-re, és írja be a 3**03**40 portot.
+      1. Növelje az **üresjárati időkorlátot** 30 percre.
+      1. Ügyeljen arra, hogy a **lebegő IP-címet engedélyezze**.
+      1. Kattintson az **OK** gombra.
+      1. Ismételje meg ezeket a lépéseket a 3**03**41 és 3**03**42-es porton.
+
+A SAP HANA szükséges portokkal kapcsolatos további információkért olvassa el a [bérlői adatbázisok kapcsolatai](https://help.sap.com/viewer/78209c1d3a9b41cd8624338e42a12bf6/latest/en-US/7a9343c9f2a2436faa3cfdb5ca00c052.html) című részt a [SAP HANA bérlői adatbázisok](https://help.sap.com/viewer/78209c1d3a9b41cd8624338e42a12bf6) útmutatójában vagy az 2388694-es [SAP-megjegyzésben][2388694].
 
 > [!IMPORTANT]
 > Ne engedélyezze a TCP-időbélyegeket a Azure Load Balancer mögött elhelyezett Azure-beli virtuális gépeken. A TCP-időbélyegek engedélyezése az állapot-mintavételek meghibásodását eredményezi. Állítsa a **net. IPv4. TCP** paramétert **0-ra**_timestamps. Részletekért lásd: [Load Balancer Health](https://docs.microsoft.com/azure/load-balancer/load-balancer-custom-probe-overview)-tesztek.
@@ -190,11 +229,11 @@ A SAP HANA szükséges portokkal kapcsolatos további információkért olvassa 
 
 Az ebben a szakaszban szereplő lépések az alábbi előtagokat használják:
 
-* **[A]** : A lépés az összes csomópontra vonatkozik.
-* **[1]** : A lépés csak az 1. csomópontra vonatkozik.
-* **[2]** : A lépés csak a pacemaker-fürt 2-es csomópontjára vonatkozik.
+* **[A]** : a lépés az összes csomópontra vonatkozik.
+* **[1]** : a lépés csak az 1. csomópontra vonatkozik.
+* **[2]** : a lépés csak a pacemaker-fürt 2-es csomópontjára vonatkozik.
 
-1. **[A]** a lemez elrendezésének beállítása: **Logikai kötet kezelője (LVM)** .
+1. **[A]** a lemez elrendezésének beállítása: **logikai kötet kezelője (LVM)** .
 
    Azt javasoljuk, hogy az LVM-t használja az adatfájlok és naplófájlok tárolására használt kötetekhez. Az alábbi példa azt feltételezi, hogy a virtuális gépekhez négy adatlemez van csatlakoztatva, amelyek két kötet létrehozásához használatosak.
 
@@ -224,7 +263,7 @@ Az ebben a szakaszban szereplő lépések az alábbi előtagokat használják:
    sudo vgcreate vg_hana_shared_<b>HN1</b> /dev/disk/azure/scsi1/lun3
    </code></pre>
 
-   Hozza létre a logikai köteteket. A `lvcreate` `-i` kapcsoló használata nélkül jön létre lineáris kötet. Javasoljuk, hogy hozzon létre egy csíkozott kötetet a jobb I/O-teljesítmény érdekében `-i` , ahol az argumentumnak a mögöttes fizikai kötet számának kell lennie. Ebben a dokumentumban két fizikai kötet van használatban az adatkötethez, így a `-i` switch argumentum értéke **2**. A rendszer egy fizikai kötetet használ a naplózási kötethez `-i` , így nincs kifejezetten használatban kapcsoló. Használja a `-i` kapcsolót, és állítsa be a mögöttes fizikai kötet számára, ha több fizikai kötetet használ minden adathoz, naplóhoz vagy megosztott kötethez.
+   Hozza létre a logikai köteteket. A rendszer akkor hozza létre a lineáris kötetet, ha a `-i` kapcsoló nélkül használja `lvcreate`. Javasoljuk, hogy hozzon létre egy csíkozott kötetet a jobb I/O-teljesítmény érdekében, ahol a `-i` argumentumnak a mögöttes fizikai kötet számának kell lennie. Ebben a dokumentumban két fizikai kötet van használatban az adatkötethez, így a `-i` kapcsoló argumentum értéke **2**. A rendszer egy fizikai kötetet használ a naplózási kötethez, így nincs `-i` kapcsoló explicit módon felhasználva. Használja a `-i` kapcsolót, és állítsa be a mögöttes fizikai kötet számára, ha több fizikai kötetet használ minden adathoz, naplóhoz vagy megosztott kötethez.
 
    <pre><code>sudo lvcreate <b>-i 2</b> -l 100%FREE -n hana_data vg_hana_data_<b>HN1</b>
    sudo lvcreate -l 100%FREE -n hana_log vg_hana_log_<b>HN1</b>
@@ -248,7 +287,7 @@ Az ebben a szakaszban szereplő lépések az alábbi előtagokat használják:
    <pre><code>sudo vi /etc/fstab
    </code></pre>
 
-   Szúrja be a következő sort `/etc/fstab` a fájlba:
+   Szúrja be a következő sort a `/etc/fstab` fájlba:
 
    <pre><code>/dev/disk/by-uuid/<b>&lt;UUID of /dev/mapper/vg_hana_data_<b>HN1</b>-hana_data&gt;</b> /hana/data/<b>HN1</b> xfs  defaults,nofail  0  2
    /dev/disk/by-uuid/<b>&lt;UUID of /dev/mapper/vg_hana_log_<b>HN1</b>-hana_log&gt;</b> /hana/log/<b>HN1</b> xfs  defaults,nofail  0  2
@@ -260,7 +299,7 @@ Az ebben a szakaszban szereplő lépések az alábbi előtagokat használják:
    <pre><code>sudo mount -a
    </code></pre>
 
-1. **[A]** a lemez elrendezésének beállítása: **Egyszerű lemezek**.
+1. **[A]** a lemez elrendezésének beállítása: **egyszerű lemezek**.
 
    A bemutató rendszerek esetében a HANA-adatait és a naplófájlokat egy lemezen helyezheti el. Hozzon létre egy partíciót a/dev/disk/Azure/scsi1/lun0, és formázza azt a XFS:
 
@@ -299,38 +338,38 @@ Az ebben a szakaszban szereplő lépések az alábbi előtagokat használják:
 
 1. **[A]** RHEL a HANA-konfigurációhoz
 
-   Konfigurálja a RHEL a [2292690] -es és <https://access.redhat.com/solutions/2447641> [2455582] -es SAP-megjegyzésben leírtak szerint.
+   Konfigurálja a RHEL a [2292690] -es és [2455582] -es SAP-Megjegyzés és <https://access.redhat.com/solutions/2447641>szerint.
 
 1. **[A]** telepítse a SAP HANA
 
-   SAP HANA rendszerreplikáció telepítéséhez kövesse a következőt <https://access.redhat.com/articles/3004101>:.
+   SAP HANA rendszerreplikáció telepítéséhez kövesse az <https://access.redhat.com/articles/3004101>.
 
    * Futtassa a **hdblcm** programot a HANA DVD-ről. Adja meg a következő értékeket a parancssorban:
-   * Telepítés kiválasztása: Adja meg az **1**értéket.
-   * További összetevők kiválasztása a telepítéshez: Adja meg az **1**értéket.
-   * Adja meg a telepítési útvonalat [/Hana/Shared]: Válassza az ENTER gombot.
-   * Adja meg a helyi gazdagép nevét [..]: Válassza az ENTER gombot.
-   * További gazdagépeket szeretne hozzáadni a rendszeren? (i/n) [n]: Válassza az ENTER gombot.
-   * Adja meg SAP HANA rendszerazonosítóját: Adja meg a HANA biztonsági azonosítóját, például: **HN1**.
-   * Adja meg a példány számát [00]: Adja meg a HANA-példány számát. Adja meg a **03** értéket, ha az Azure-sablont használta, vagy követte a jelen cikk manuális üzembe helyezés szakaszát.
-   * Adatbázis mód kiválasztása/index megadása [1]: Válassza az ENTER gombot.
-   * Válasszon rendszerhasználatot/adja meg a (z) [4] indexet: Válassza ki a rendszerhasználat értékét.
-   * Adja meg az adatkötetek helyét [/hana/data/HN1]: Válassza az ENTER gombot.
-   * Adja meg a naplózási kötetek helyét [/hana/log/HN1]: Válassza az ENTER gombot.
-   * Korlátozza a memória maximális kiosztását? [n]: Válassza az ENTER gombot.
+   * A telepítés kiválasztása: adja meg az **1**értéket.
+   * További összetevők kiválasztása a telepítéshez: **1**. Adjon meg egy értéket.
+   * Adja meg a telepítési útvonalat [/Hana/Shared]: válassza az ENTER gombot.
+   * Adja meg a helyi gazdagép nevét [..]: válassza az ENTER gombot.
+   * További gazdagépeket szeretne hozzáadni a rendszeren? (i/n) [n]: válassza az ENTER gombot.
+   * Adja meg SAP HANA rendszer AZONOSÍTÓját: adja meg a HANA biztonsági azonosítóját, például: **HN1**.
+   * Adja meg a példány számát [00]: adja meg a HANA-példány számát. Adja meg a **03** értéket, ha az Azure-sablont használta, vagy követte a jelen cikk manuális üzembe helyezés szakaszát.
+   * Válassza az adatbázis mód/index megadása [1] lehetőséget: válassza az ENTER gombot.
+   * Válasszon rendszerhasználatot/adja meg a (z) [4] indexet: válassza ki a rendszerhasználati értéket.
+   * Adja meg az adatkötetek helyét [/hana/data/HN1]: válassza az ENTER gombot.
+   * Adja meg a naplózási kötetek helyét [/hana/log/HN1]: válassza az ENTER gombot.
+   * Korlátozza a memória maximális kiosztását? [n]: válassza az ENTER gombot.
    * Adja meg a (z) "..." gazdagép nevét. [...]: Válassza az ENTER gombot.
-   * Enter SAP Host Agent User (sapadm) Password: Adja meg a gazdagép-ügynök felhasználói jelszavát.
-   * Az SAP Host Agent felhasználói (sapadm) jelszavának megerősítése: A megerősítéshez írja be a gazdagép-ügynök felhasználói jelszavát.
-   * Adja meg a rendszergazda (hdbadm) jelszavát: Írja be a rendszergazda jelszavát.
-   * Rendszergazda (hdbadm) jelszavának megerősítése: A megerősítéshez írja be újra a rendszergazda jelszavát.
-   * Adja meg a rendszergazda kezdőlapját [/usr/sap/HN1/home]: Válassza az ENTER gombot.
-   * Adja meg a rendszergazda bejelentkezési rendszerhéját [/bin/sh]: Válassza az ENTER gombot.
-   * Adja meg a rendszergazda felhasználói AZONOSÍTÓját [1001]: Válassza az ENTER gombot.
-   * Adja meg a felhasználói csoport AZONOSÍTÓját (sapsys) [79]: Válassza az ENTER gombot.
-   * Adja meg az adatbázis-felhasználó (rendszer) jelszavát: Adja meg az adatbázis felhasználói jelszavát.
-   * Adatbázis-felhasználó (rendszer) jelszavának megerősítése: A megerősítéshez adja meg újra az adatbázis felhasználói jelszavát.
-   * Újraindítja a rendszert a gép újraindítása után? [n]: Válassza az ENTER gombot.
-   * Folytatja? (i/n): Az összefoglalás ellenőrzése. A folytatáshoz adja meg az **y** értéket.
+   * Adja meg az SAP Host Agent User (sapadm) jelszót: adja meg a gazdagép-ügynök felhasználói jelszavát.
+   * Az SAP Host Agent User (sapadm) jelszavának megerősítése: a megerősítéshez írja be a gazdagép-ügynök felhasználói jelszavát.
+   * Adja meg a rendszergazda (hdbadm) jelszavát: adja meg a rendszergazdai jelszót.
+   * Rendszergazda (hdbadm) jelszavának megerősítése: a megerősítéshez írja be újra a rendszergazda jelszavát.
+   * Adja meg a rendszergazda kezdőkönyvtár [/usr/sap/HN1/home]: válassza az ENTER gombot.
+   * Adja meg a rendszergazda bejelentkezési rendszerhéját [/bin/sh]: válassza az ENTER gombot.
+   * Adja meg a rendszergazda felhasználói AZONOSÍTÓját [1001]: válassza az ENTER gombot.
+   * Adja meg a felhasználói csoport AZONOSÍTÓját (sapsys) [79]: válassza az ENTER billentyűt.
+   * Adja meg az adatbázis-felhasználó (rendszer) jelszavát: adja meg az adatbázis felhasználói jelszavát.
+   * Adatbázis-felhasználó (rendszer) jelszavának megerősítése: írja be újra az adatbázis felhasználói jelszavát a megerősítéshez.
+   * Újraindítja a rendszert a gép újraindítása után? [n]: válassza az ENTER gombot.
+   * Folytatja? (i/n): az összefoglalás ellenőrzése. A folytatáshoz adja meg az **y** értéket.
 
 1. **[A]** frissítse az SAP-gazdagép ügynököt.
 
@@ -351,9 +390,9 @@ Az ebben a szakaszban szereplő lépések az alábbi előtagokat használják:
 
 Az ebben a szakaszban szereplő lépések az alábbi előtagokat használják:
 
-* **[A]** : A lépés az összes csomópontra vonatkozik.
-* **[1]** : A lépés csak az 1. csomópontra vonatkozik.
-* **[2]** : A lépés csak a pacemaker-fürt 2-es csomópontjára vonatkozik.
+* **[A]** : a lépés az összes csomópontra vonatkozik.
+* **[1]** : a lépés csak az 1. csomópontra vonatkozik.
+* **[2]** : a lépés csak a pacemaker-fürt 2-es csomópontjára vonatkozik.
 
 1. **[A]** tűzfal konfigurálása
 
@@ -381,7 +420,7 @@ Az ebben a szakaszban szereplő lépések az alábbi előtagokat használják:
 
    Ha SAP HANA 2,0-as vagy MDC-t használ, hozzon létre egy bérlői adatbázist az SAP NetWeaver rendszer számára. Cserélje le az **NW1** -t az SAP-rendszere SID-azonosítójával.
 
-   Végrehajtás < hanasid\>adm-ként a következő paranccsal:
+   Végrehajtás < hanasid\>adm a következő paranccsal:
 
    <pre><code>hdbsql -u SYSTEM -p "<b>passwd</b>" -i <b>03</b> -d SYSTEMDB 'CREATE DATABASE <b>NW1</b> SYSTEM USER PASSWORD "<b>passwd</b>"'
    </code></pre>
@@ -442,9 +481,9 @@ Az ebben a szakaszban szereplő lépések az alábbi előtagokat használják:
 
 Az ebben a szakaszban szereplő lépések az alábbi előtagokat használják:
 
-* **[A]** : A lépés az összes csomópontra vonatkozik.
-* **[1]** : A lépés csak az 1. csomópontra vonatkozik.
-* **[2]** : A lépés csak a pacemaker-fürt 2-es csomópontjára vonatkozik.
+* **[A]** : a lépés az összes csomópontra vonatkozik.
+* **[1]** : a lépés csak az 1. csomópontra vonatkozik.
+* **[2]** : a lépés csak a pacemaker-fürt 2-es csomópontjára vonatkozik.
 
 1. **[A]** tűzfal konfigurálása
 
@@ -487,7 +526,7 @@ Az ebben a szakaszban szereplő lépések az alábbi előtagokat használják:
 
 1. **[1]** konfigurálja a rendszer replikálását az első csomóponton.
 
-   Hozza létre az elsődleges helyet < hanasid\>adm-ként:
+   Hozza létre az elsődleges helyet < hanasid\>adm:
 
    <pre><code>su - <b>hdb</b>adm
    hdbnsutil -sr_enable –-name=<b>SITE1</b>
@@ -588,7 +627,7 @@ A SAP HANA fő csomópontját a következő parancs végrehajtásával telepíth
 <pre><code>[root@hn1-db-0 ~]# pcs resource move SAPHana_HN1_03-master
 </code></pre>
 
-Ha be van `AUTOMATED_REGISTER="false"`állítva, a parancsnak át kell telepítenie a SAP HANA fő csomópontot és a hn1-db-1 virtuális IP-címet tartalmazó csoportot.
+Ha `AUTOMATED_REGISTER="false"`állítja be, a parancsnak át kell telepítenie a SAP HANA fő csomópontot és a hn1-db-1 virtuális IP-címet tartalmazó csoportot.
 
 Az áttelepítés befejezése után a "sudo PC-k állapota" kimenet a következőképpen néz ki:
 
@@ -646,7 +685,7 @@ Resource Group: g_ip_HN1_03
 </code></pre>
 
 Az Azure vívó-ügynök beállításának teszteléséhez tiltsa le a hálózati adaptert azon a csomóponton, ahol a SAP HANA fut főkiszolgálóként.
-A hálózati hibák szimulálása érdekében lásd: [Red Hat tudásbázis 79523.](https://access.redhat.com/solutions/79523) számú cikke. Ebben a példában a net_breaker szkriptet használjuk a hálózat összes hozzáférésének letiltására.
+A hálózati hibák szimulálása érdekében lásd: [Red Hat tudásbázis 79523. számú cikke](https://access.redhat.com/solutions/79523) . Ebben a példában a net_breaker szkriptet használjuk a hálózat összes hozzáférésének letiltására.
 
 <pre><code>[root@hn1-db-1 ~]# sh ./net_breaker.sh BreakCommCmd 10.0.0.6
 </code></pre>
@@ -657,7 +696,7 @@ Ha a `stonith-action` beállítást kikapcsolva értékre állítja, a virtuáli
 > [!NOTE]
 > Akár 15 percet is igénybe vehet, amíg a virtuális gépek újra online állapotba kerülnek.
 
-A virtuális gép újraindítása után a SAP HANA erőforrás nem indul el másodlagosként, ha be van állítva `AUTOMATED_REGISTER="false"`. Ebben az esetben konfigurálja a HANA-példányt másodlagosként a következő parancs végrehajtásával:
+A virtuális gép újraindítását követően a SAP HANA erőforrás nem indul el másodlagosként, ha beállítja `AUTOMATED_REGISTER="false"`. Ebben az esetben konfigurálja a HANA-példányt másodlagosként a következő parancs végrehajtásával:
 
 <pre><code>su - <b>hn1</b>adm
 
@@ -701,7 +740,7 @@ A manuális feladatátvételt a hn1-db-0 csomóponton található fürt leállí
 <pre><code>[root@hn1-db-0 ~]# pcs cluster stop
 </code></pre>
 
-A feladatátvételt követően újra elindíthatja a fürtöt. Ha be van `AUTOMATED_REGISTER="false"`állítva, a hn1-db-0 csomópont SAP HANA erőforrása nem indul el másodlagosként. Ebben az esetben konfigurálja a HANA-példányt másodlagosként a következő parancs végrehajtásával:
+A feladatátvételt követően újra elindíthatja a fürtöt. Ha a `AUTOMATED_REGISTER="false"`értéket állítja be, akkor a hn1-db-0 csomópont SAP HANA erőforrása nem indul el másodlagosként. Ebben az esetben konfigurálja a HANA-példányt másodlagosként a következő parancs végrehajtásával:
 
 <pre><code>[root@hn1-db-0 ~]# pcs cluster start
 [root@hn1-db-0 ~]# su - hn1adm

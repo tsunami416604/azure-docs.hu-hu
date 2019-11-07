@@ -9,12 +9,12 @@ ms.service: azure-databricks
 ms.custom: mvc
 ms.topic: tutorial
 ms.date: 07/29/2019
-ms.openlocfilehash: 9070c19c668529fac5edea5b4d233361043de16d
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: HT
+ms.openlocfilehash: 12e6d292779d497d907bb68eece3fc2338f072fd
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73469546"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73602064"
 ---
 # <a name="tutorial-sentiment-analysis-on-streaming-data-using-azure-databricks"></a>Oktatóanyag: Streamelési adatok hangulatelemzése az Azure Databricks használatával
 
@@ -57,7 +57,7 @@ Ezeket az előfeltételeket az [Azure Event Hubs-névtér és eseményközpont l
 
 ## <a name="sign-in-to-the-azure-portal"></a>Jelentkezzen be az Azure Portalra
 
-Bejelentkezés az [Azure Portalra](https://portal.azure.com/?WT.mc_id=sparkeventhubs-docs-alehall).
+Jelentkezzen be az [Azure portálra](https://portal.azure.com/?WT.mc_id=sparkeventhubs-docs-alehall).
 
 ## <a name="create-an-azure-databricks-workspace"></a>Azure Databricks-munkaterület létrehozása
 
@@ -160,7 +160,7 @@ Ez az oktatóanyag bemutatja, hogyan küldhet tweeteket az Event Hubsnak a Twitt
 
 Ebben az oktatóanyagban az [Azure Cognitive Services Text Analytics API-kat](../cognitive-services/text-analytics/overview.md) használja az érzelmek elemzésére a közel valós idejű tweetek adatfolyamán. Az API-k használata előtt létre kell hoznia egy Azure Cognitive Services-fiókot az Azure-ban, és be kell szereznie egy hozzáférési kulcsot a Text Analytics API-k használatához.
 
-1. Bejelentkezés az [Azure Portalra](https://portal.azure.com/?WT.mc_id=sparkeventhubs-docs-alehall).
+1. Jelentkezzen be az [Azure portálra](https://portal.azure.com/?WT.mc_id=sparkeventhubs-docs-alehall).
 
 2. Válassza a **+ Erőforrás létrehozása** lehetőséget.
 
@@ -640,4 +640,5 @@ Ez az oktatóanyag bemutatta, hogyan használhatja az Azure Databricks szolgált
 Folytassa a következő oktatóanyaggal, amelyből megtudhatja, hogyan hajthat végre gépi tanulási feladatokat az Azure Databricks használatával.
 
 > [!div class="nextstepaction"]
->[Machine Learning a Azure Databricks használatával](https://docs.azuredatabricks.net/applications/machine-learning/index.html)
+>[Machine Learning a Azure Databricks használatával](/azure/databricks/applications/machine-learning/mllib/decision-trees)
+

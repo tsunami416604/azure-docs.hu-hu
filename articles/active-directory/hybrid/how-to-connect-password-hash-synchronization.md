@@ -15,12 +15,12 @@ ms.author: billmath
 search.appverid:
 - MET150
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fcc704e7027903a1ede14c787a64c35d6b5fd9c0
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: 1d8caafe312c123a9d572e9a5f4c5cf64a05f7ea
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72373466"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73721045"
 ---
 # <a name="implement-password-hash-synchronization-with-azure-ad-connect-sync"></a>Jelszó-kivonatolási szinkronizálás implementálása Azure AD Connect szinkronizálással
 Ez a cikk azokat az információkat tartalmazza, amelyekkel szinkronizálhatja a felhasználói jelszavakat egy helyszíni Active Directory-példányról egy felhőalapú Azure Active Directory-(Azure AD-) példányra.
@@ -32,7 +32,7 @@ A jelszó szinkronizálásához Azure AD Connect Sync kivonja a jelszó kivonat�
 
 A jelszó-kivonat szinkronizációs folyamatának tényleges adatfolyama hasonló a felhasználói adatok szinkronizálásához. A jelszavak azonban gyakrabban vannak szinkronizálva, mint a szabványos címtár-szinkronizálási ablak más attribútumok esetében. A jelszó-kivonat szinkronizációs folyamata 2 percenként fut. A folyamat gyakorisága nem módosítható. Amikor szinkronizál egy jelszót, felülírja a meglévő Felhőbeli jelszót.
 
-Amikor első alkalommal engedélyezi a jelszó-kivonatolási szinkronizálási funkciót, az végrehajtja az összes hatókörrel rendelkező felhasználó jelszavának kezdeti szinkronizálását. Explicit módon nem határozhatja meg a szinkronizálni kívánt felhasználói jelszavak részhalmazát.
+Amikor első alkalommal engedélyezi a jelszó-kivonatolási szinkronizálási funkciót, az végrehajtja az összes hatókörrel rendelkező felhasználó jelszavának kezdeti szinkronizálását. Explicit módon nem határozhatja meg a szinkronizálni kívánt felhasználói jelszavak részhalmazát. Ha azonban több összekötő is van, akkor letilthatja a jelszó-kivonatok szinkronizálását egyes összekötők esetében, de a [set-ADSyncAADPasswordSyncConfiguration](https://docs.microsoft.com/en-us/azure/active-directory-domain-services/active-directory-ds-getting-started-password-sync-synced-tenant) parancsmag használatával nem.
 
 Amikor módosít egy helyszíni jelszót, a frissített jelszó szinkronizálva lesz, a leggyakrabban percek alatt.
 A jelszó-kivonat szinkronizációs funkciója automatikusan újrapróbálkozik a sikertelen szinkronizálási kísérletekkel. Ha egy jelszó szinkronizálására tett kísérlet során hiba lép fel, a rendszer hibát naplóz az eseménynaplóban.
@@ -102,15 +102,15 @@ A EnforceCloudPasswordPolicyForPasswordSyncedUsers funkció engedélyezéséhez 
 
 `Set-MsolDirSyncFeature -Feature EnforceCloudPasswordPolicyForPasswordSyncedUsers  $true`
 
-Ha engedélyezve van, az Azure AD nem minden szinkronizált felhasználónál törli a `DisablePasswordExpiration` értéket a PasswordPolicies attribútumból. Ehelyett az érték `None` lesz az egyes felhasználók következő jelszavas szinkronizálásakor, amikor legközelebb megváltoztatják a jelszavukat a helyszíni AD-ben.  
+Ha engedélyezve van, az Azure AD nem az egyes szinkronizált felhasználókra lép, hogy eltávolítsa a `DisablePasswordExpiration` értéket a PasswordPolicies attribútumból. Ehelyett az érték `None` a következő jelszó-szinkronizálás során az egyes felhasználóknál, amikor legközelebb megváltoztatják a jelszavukat a helyszíni AD-ben.  
 
-Javasoljuk, hogy engedélyezze a EnforceCloudPasswordPolicyForPasswordSyncedUsers a jelszó-kivonat szinkronizálásának engedélyezése előtt, hogy a jelszó-kivonatok kezdeti szinkronizálása ne adja hozzá a `DisablePasswordExpiration` értéket a felhasználók PasswordPolicies attribútumához.
+Javasoljuk, hogy engedélyezze a EnforceCloudPasswordPolicyForPasswordSyncedUsers a jelszó-kivonat szinkronizálásának engedélyezése előtt, hogy a jelszó-kivonatok kezdeti szinkronizálása ne adja hozzá a `DisablePasswordExpiration` értéket a felhasználók számára a PasswordPolicies attribútumhoz.
 
 Az alapértelmezett Azure AD-jelszóházirend megköveteli, hogy a felhasználók 90 naponta megváltoztassák a jelszavukat. Ha az AD-szabályzat 90 nap is, a két házirendnek egyeznie kell. Ha azonban az AD-házirend nem 90 nap, a set-MsolPasswordPolicy PowerShell-paranccsal módosíthatja az Azure AD-jelszó szabályzatát.
 
 Az Azure AD egy regisztrált tartományon belüli külön jelszó-elévülési szabályzatot támogat.
 
-Kikötés: ha vannak olyan szinkronizált fiókok, amelyeknek az Azure AD-ben nem lejáró jelszavakkal kell rendelkezniük, explicit módon hozzá kell adnia a `DisablePasswordExpiration` értéket az Azure AD felhasználói objektumának PasswordPolicies attribútumához.  Ezt a következő parancs futtatásával teheti meg.
+Figyelmeztetés: ha vannak olyan szinkronizált fiókok, amelyeknek az Azure AD-ben nem lejáró jelszavakkal kell rendelkezniük, explicit módon hozzá kell adnia a `DisablePasswordExpiration` értéket az Azure AD felhasználói objektumának PasswordPolicies attribútumához.  Ezt a következő parancs futtatásával teheti meg.
 
 `Set-AzureADUser -ObjectID <User Object ID> -PasswordPolicies "DisablePasswordExpiration"`
 
@@ -123,7 +123,7 @@ Kikötés: ha vannak olyan szinkronizált fiókok, amelyeknek az Azure AD-ben ne
   
 Az ideiglenes jelszó funkció segítségével biztosítható, hogy a hitelesítő adatok tulajdonjogának átruházása az első használatnál legyen elvégezve, hogy minimálisra csökkentse azt az időtartamot, ameddig több személy ismeri a hitelesítő adatokat.
 
-Az Azure AD-ben a szinkronizált felhasználók ideiglenes jelszavainak támogatásához engedélyezheti a *ForcePasswordResetOnLogonFeature* szolgáltatást, ha az alábbi parancsot futtatja a Azure ad Connect-kiszolgálón, és a <AAD Connector Name> helyére az adott összekötő nevét adja meg. saját környezet:
+Az Azure AD-ben a szinkronizált felhasználók ideiglenes jelszavainak támogatásához engedélyezheti a *ForcePasswordResetOnLogonFeature* szolgáltatást, ha az alábbi parancsot futtatja a Azure ad Connect-kiszolgálón, és lecseréli a <AAD Connector Name>t az adott összekötő nevére saját környezet:
 
 `Set-ADSyncAADCompanyFeature -ConnectorName "<AAD Connector name>" -ForcePasswordResetOnLogonFeature $true`
 
@@ -228,7 +228,7 @@ A biztonsággal és az FIPS-vel kapcsolatos további információkért lásd: az
 ## <a name="troubleshoot-password-hash-synchronization"></a>Jelszó-kivonatolási szinkronizálás hibáinak megoldása
 Ha problémái vannak a jelszó kivonatának szinkronizálásával kapcsolatban, olvassa el a [jelszó-kivonat szinkronizálásának hibaelhárítása](tshoot-connect-password-hash-synchronization.md)című témakört
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [Azure AD Connect Sync: szinkronizálási beállítások testreszabása](how-to-connect-sync-whatis.md)
 * [Helyszíni identitások integrálása az Azure Active Directoryval](whatis-hybrid-identity.md)
 * [Lépésenkénti üzembe helyezési terv az ADFS-ből a jelszó-kivonatolási szinkronizálásba való áttelepítéshez](https://aka.ms/authenticationDeploymentPlan)

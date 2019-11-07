@@ -1,7 +1,7 @@
 ---
 title: Támogatott adatforrások – QnA Maker
 titleSuffix: Azure Cognitive Services
-description: QnA Maker automatikusan Kinyeri a kérdés-válasz párokat a félig strukturált tartalomból, például a GYIK, a kézikönyvek, az irányelvek, a támogatási dokumentumok és a weblapokon, PDF-fájlokban vagy MS Word Doc-fájlokban tárolt szabályzatok alapján. A tartalmak strukturált QnA is hozzáadhatók a tudásbázishoz.
+description: QnA Maker automatikusan kivonja a kérdés-válasz párokat weblapként, PDF-fájlként vagy MS Word Doc-fájlként, vagy strukturált QnA.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 09/25/2019
 ms.author: diberry
-ms.openlocfilehash: 39746032fd012de8e0868c3bc7f810cd8e780b68
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: a1fcc1bec5db3ad64dc045cf5e1a449fce808132
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73176372"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73721210"
 ---
 # <a name="data-sources-for-qna-maker-content"></a>Adatforrások QnA Maker tartalomhoz
 
@@ -190,7 +190,7 @@ Ha közvetlenül a Tudásbázisban adja hozzá vagy szerkeszti a tartalmat, a **
 
 Az alábbiakban a QnA Maker használható Markdown-formátumok listája látható: 
 
-|Rendeltetés|Formátum|Példa Markdown|Renderelés<br>a csevegési robotban megjelenő módon|
+|Cél|Formátum|Példa Markdown|Renderelés<br>a csevegési robotban megjelenő módon|
 |--|--|--|--|
 Egy új sor két mondat között.|`\n\n`|`How can I create a bot with \n\n QnA Maker?`|![új sor formázása két mondat között](../media/qnamaker-concepts-datasources/format-newline.png)|
 |A H1-től a H6-ig terjedő fejlécek száma `#` jelzi, hogy melyik fejlécet jelöli. 1 `#` a H1.|`\n# text \n## text \n### text \n####text \n#####text` |`## Creating a bot \n ...text.... \n### Important news\n ...text... \n### Related Information\n ....text...`<br><br>`\n# my h1 \n## my h2\n### my h3 \n#### my h4 \n##### my h5`|![formátum Markdown-fejlécekkel](../media/qnamaker-concepts-datasources/format-headers.png)<br>![formátum Markdown fejlécekkel H1 – H5](../media/qnamaker-concepts-datasources/format-h1-h5.png)|
@@ -234,7 +234,7 @@ A Markdown ellenőrzéséhez használja a **[CommonMark](https://commonmark.org/
 
 Az adatverzió-vezérlést a **Beállítások** lap [Importálás/exportálás funkciójával](development-lifecycle-knowledge-base.md#version-control-of-a-knowledge-base) biztosítjuk. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [QnA Maker szolgáltatás beállítása](../How-To/set-up-qnamaker-service-azure.md)

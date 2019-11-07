@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.reviewer: jmartens
 author: lobrien
 ms.author: laobri
-ms.date: 05/02/2019
+ms.date: 11/04/2019
 ms.custom: seodec18
-ms.openlocfilehash: d653d1cd719ac59bf6c98bee588c41858052bc61
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 34ff3f9704b9c84a7daddcfd14fb9cd3e990f794
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73489854"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73716513"
 ---
 # <a name="export-or-delete-your-machine-learning-service-workspace-data"></a>Machine Learning szolgáltatás-munkaterület adatainak exportálása vagy törlése 
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -243,17 +243,16 @@ A tervezőben, ahol létrehozta a kísérletet, töröljön egyedi eszközöket:
 
 1. A listából válassza ki a törölni kívánt folyamathoz tartozó egyéni piszkozatot.
 
-1. A lap alján válassza a **Törlés**lehetőséget.
+1. Válassza a **Törlés** elemet.
 
-## <a name="unregister-data-in-the-designer"></a>A tervezőben tárolt adatregisztráció törlése
+### <a name="delete-datasets-in-the-designer"></a>Adatkészletek törlése a tervezőben
+
+A tervezőben lévő adatkészletek törléséhez használja a Azure Portal vagy Storage Explorer a csatlakoztatott Storage-fiókok eléréséhez, és ott törölje az adatkészleteket. Az adatkészletek tervezőben való regisztrációjának törlése csak a tárolóban lévő hivatkozási pontot távolítja el. 
+
+## <a name="export-data-in-the-designer"></a>Adatexportálás a tervezőben
 
 A tervezőben, amelyben létrehozta a kísérletet, exportálja a hozzáadott adatait:
 
 1. A bal oldalon válassza az **adatkészletek**lehetőséget.
 
-
-
     ![Az adatletöltés](media/how-to-export-delete-data.md/unregister-dataset.png)
-
-1. A listából válassza ki az egyes adatkészleteket, majd kattintson a regisztráció törlése elemre.
-

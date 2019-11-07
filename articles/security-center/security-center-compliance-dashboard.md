@@ -1,5 +1,5 @@
 ---
-title: A szabályozás megfelelőségének javítása a Azure Security Center használatával | Microsoft Docs
+title: Szabályozási megfelelőségi ellenőrzések – Azure Security Center
 description: 'Oktatóanyag: Ismerje meg, hogyan javíthatja a szabályozás megfelelőségét Azure Security Center használatával.'
 services: security-center
 documentationcenter: na
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: 2961474e84930cf548a1ef23b19fcd1be443b151
-ms.sourcegitcommit: 3f8017692169bd75483eefa96c225d45cd497f06
+ms.openlocfilehash: c448697339948b30d73e88c183211e7a1154fe77
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73520929"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73686442"
 ---
 # <a name="tutorial-improve-your-regulatory-compliance"></a>Oktatóanyag: a szabályozás megfelelőségének javítása
 ---

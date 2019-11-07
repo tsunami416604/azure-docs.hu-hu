@@ -1,5 +1,5 @@
 ---
-title: Tábla növekményes másolása az Azure Data Factory használatával | Microsoft Docs
+title: 'Táblázat növekményes másolása Azure Data Factory használatával '
 description: Az oktatóanyag során egy Azure Data Factory-folyamatot hoz majd létre, amely adatokat másol be növekményesen egy Azure SQL-adatbázisból egy Azure Blob Storage-tárolóba.
 services: data-factory
 documentationcenter: ''
@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.date: 01/11/2018
 ms.author: yexu
-ms.openlocfilehash: 3626e68c8cedfdd2d22f47cd92d6e7c4b8b5d180
-ms.sourcegitcommit: b8578b14c8629c4e4dea4c2e90164e42393e8064
+ms.openlocfilehash: a446574f0a6b2b18959f1a3c3e9a02a0a97e9f6b
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70806387"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73683381"
 ---
 # <a name="incrementally-load-data-from-an-azure-sql-database-to-azure-blob-storage"></a>Adatok növekményes betöltése egy Azure SQL-adatbázisból egy Azure Blob Storage-tárolóba
 Az oktatóanyag során egy Azure adat-előállítót hoz majd létre egy olyan folyamattal, amely módosított adatokat tölt be egy Azure SQL-adatbázisban lévő táblából egy Azure Blob Storage-tárolóba. 
@@ -146,10 +146,10 @@ WHERE [TableName] = @TableName
 END
 ```
 
-## <a name="create-a-data-factory"></a>data factory létrehozása
+## <a name="create-a-data-factory"></a>Data factory létrehozása
 
 1. Indítsa el a **Microsoft Edge** vagy a **Google Chrome** böngészőt. A Data Factory felhasználói felületének használata jelenleg csak a Microsoft Edge-ben és a Google Chrome-ban támogatott.
-2. A bal oldali menüben válassza az **erőforrás** > létrehozása**elemzési** > **Data Factory**: 
+2. A bal oldali menüben válassza az **erőforrás létrehozása** > **Analytics** > **Data Factory**: 
    
    ![Data Factory kiválasztása az „Új” ablaktáblán](./media/doc-common-process/new-azure-data-factory-menu.png)
 
@@ -167,7 +167,7 @@ END
         Az erőforráscsoportokkal kapcsolatos információkért tekintse meg a [Using resource groups to manage your Azure resources](../azure-resource-manager/resource-group-overview.md) (Erőforráscsoportok használata az Azure-erőforrások kezeléséhez) című cikket.  
 6. A **Verzió** résznél válassza a **V2** értéket.
 7. Válassza ki a Data Factory **helyét**. A legördülő listán csak a támogatott helyek jelennek meg. Az adat-előállítók által használt adattárak (Azure Storage, Azure SQL Database stb.) és számítási erőforrások (HDInsight stb.) más régiókban is lehetnek.
-8. Kattintson a **Create** (Létrehozás) gombra.      
+8. Kattintson a **Létrehozás** elemre.      
 9. A létrehozás befejezése után a **Data Factory** lap a képen látható módon jelenik meg.
    
    ![Data factory kezdőlap](./media/doc-common-process/data-factory-home-page.png)
@@ -195,9 +195,9 @@ Az oktatóanyag során egy olyan folyamatot fogunk létrehozni, amelyben két ke
     1. A **Név** mezőbe írja az **AzureSqlDatabaseLinkedService** nevet. 
     2. A **kiszolgáló nevénél** válassza ki az Azure SQL Servert.
     3. Válassza ki az **adatbázis nevét** a legördülő listából. 
-    4. Adja meg a **felhasználóneve** & **jelszavát**. 
+    4. Adja meg **felhasználónevét** & **jelszavát**. 
     5. Az Azure SQL-adatbázis kapcsolatának teszteléséhez kattintson a **Kapcsolat tesztelése** elemre.
-    6. Kattintson a **Befejezés**gombra.
+    6. Kattintson a **Befejezés** gombra.
     7. Ellenőrizze, hogy a **AzureSqlDatabaseLinkedService** van-e kiválasztva a **társított szolgáltatáshoz**.
        
         ![Új társított szolgáltatás ablak](./media/tutorial-incremental-copy-portal/azure-sql-linked-service-settings.png)
@@ -255,7 +255,7 @@ Az oktatóanyag során egy olyan folyamatot fogunk létrehozni, amelyben két ke
 27. A **készlet tulajdonságai** ablakban ellenőrizze, hogy a **AzureStorageLinkedService** van-e kiválasztva a **társított szolgáltatáshoz**. Ezután kattintson a **Befejezés** gombra.
 28. Nyissa meg a SinkDataset **Kapcsolódás** lapját, és hajtsa végre a következő lépéseket:
     1. A **fájl elérési útja** mezőbe írja be a következőt: **adftutorial/incrementalcopy**. Az **adftutorial** a blobtároló, az **incrementalcopy** pedig a mappa neve. Ez a kódtöredék azt feltételezi, hogy a Blob Storage-ban rendelkezik egy adftutorial nevű blobtárolóval. Ha még nem létezik, hozza létre a tárolót, vagy állítsa be egy meglévő tároló nevét. Az Azure Data Factory automatikusan létrehozza az **incrementalcopy** kimeneti mappát, ha az még nem létezik. A **fájl elérési útjánál** a **Tallózás** gombot is használhatja a blobtárolóban található mappák megkereséséhez.
-    2. A **fájl elérési útja** mező **fájljának** részeként válassza a **dinamikus tartalom hozzáadása [ALT + P]** lehetőséget, majd `@CONCAT('Incremental-', pipeline().RunId, '.txt')`adja meg a megnyitott ablakot. Ezután kattintson a **Befejezés** gombra. A fájl neve dinamikusan jön létre a kifejezés használatával. A folyamat minden futtatásához tartozik egy egyedi azonosító. A másolási tevékenység a futtatási azonosítót használja a fájlnév létrehozásához. 
+    2. A **fájl elérési útja** mező **fájljának** részeként válassza a **dinamikus tartalom hozzáadása [ALT + P]** lehetőséget, majd a megnyitott ablakban adja meg `@CONCAT('Incremental-', pipeline().RunId, '.txt')`. Ezután kattintson a **Befejezés** gombra. A fájl neve dinamikusan jön létre a kifejezés használatával. A folyamat minden futtatásához tartozik egy egyedi azonosító. A másolási tevékenység a futtatási azonosítót használja a fájlnév létrehozásához. 
 
 28. A **folyamatszerkesztőt** úgy érheti el, ha a fenti folyamat fülre vagy a bal oldali fanézetben a folyamat nevére kattint. 
 29. A **tevékenységek** eszközkészletében bontsa ki az **Általános** elemet, és húzza a **tárolt eljárási** tevékenységet a **tevékenységek** eszközkészletéből a folyamat tervezőfelületére. **Kapcsolja** a **másolási** tevékenység zöld (sikeres) kimenetét a **tárolt eljárási** tevékenységhez. 
@@ -269,7 +269,7 @@ Az oktatóanyag során egy olyan folyamatot fogunk létrehozni, amelyben két ke
     1. A **tárolt eljárás neve**mezőben válassza a **usp_write_watermark**lehetőséget. 
     2. A tárolt eljárás paraméterértékeinek megadásához kattintson a **Paraméter importálása** gombra, és adja meg az alábbi értékeket a paraméterekhez: 
 
-        | Name (Név) | Típus | Value | 
+        | Név | Típus | Érték | 
         | ---- | ---- | ----- | 
         | LastModifiedtime | DateTime | @{activity('LookupNewWaterMarkActivity').output.firstRow.NewWatermarkvalue} |
         | TableName | Sztring | @{activity('LookupOldWaterMarkActivity').output.firstRow.TableName} |
@@ -345,7 +345,7 @@ PersonID | Name | LastModifytime
 
 
 ## <a name="trigger-another-pipeline-run"></a>Még egy folyamatfuttatás aktiválása
-1. Váltson a **Szerkesztés** lapra. Kattintson a folyamatra a fanézetben, ha a tervezőben nem nyílik meg. 
+1. Váltson a **Szerkesztés** lapra. kattintson a folyamatra a fanézetben, ha az nincs megnyitva a tervezőben. 
 
 2. Kattintson az **trigger hozzáadása** elemre az eszköztáron, majd az **aktiválás most**elemre. 
 

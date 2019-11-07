@@ -3,6 +3,7 @@ title: Adatexportálás és az elemzések megjelenítése az Azure IoT Centralba
 description: Ebből az oktatóanyagból megtudhatja, hogyan exportálhat adatok IoT Centralból, és hogyan jelenítheti meg az elemzéseket egy Power BI irányítópulton.
 services: iot-central
 ms.service: iot-central
+ms.subservice: iot-central-retail
 ms.topic: tutorial
 ms.custom:
 - iot-storeAnalytics-checkout
@@ -10,12 +11,12 @@ ms.custom:
 ms.author: dobett
 author: dominicbetts
 ms.date: 10/22/2019
-ms.openlocfilehash: 913a87df47121c18fcd4f83aa8d5a24b4041ce19
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 0cf1c6e926b2406d960762a9d597b28a17f6c316
+ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73495128"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73615288"
 ---
 # <a name="tutorial-export-data-from-azure-iot-central-and-visualize-insights-in-power-bi"></a>Oktatóanyag: adatok exportálása az Azure IoT Central és az elemzések megjelenítése Power BI
 
@@ -41,7 +42,7 @@ Az oktatóanyag elvégzéséhez a következőkre lesz szüksége:
 
 Az Event hub és a Logic app létrehozása előtt létre kell hoznia egy erőforráscsoportot a kezeléséhez. Az erőforráscsoport ugyanazon a helyen kell lennie, mint az **áruházbeli elemzési-pénztár** IoT Central alkalmazás. Erőforráscsoport létrehozása:
 
-1. Bejelentkezés az [Azure Portalra](https://portal.azure.com).
+1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
 1. A bal oldali navigációs sávon válassza az **erőforráscsoportok**lehetőséget. Ezután válassza a **Hozzáadás** lehetőséget.
 1. Az **előfizetés**mezőben válassza ki a IoT Central alkalmazás létrehozásához használt Azure-előfizetés nevét.
 1. Az **erőforráscsoport** neve mezőbe írja be a következőt: _Retail-Store-Analysis_*.
@@ -475,9 +476,9 @@ Vegyen fel négy kártya csempét, hogy megjelenjen a várólista hossza és a t
 | ------- | ------- | ------- | ------- | ------- |
 | Adatkészlet | Foglaltság érzékelője | Foglaltság érzékelője | Foglaltság érzékelője | Foglaltság érzékelője |
 | Vizualizáció típusa | Fürtözött oszlopdiagram | Fürtözött oszlopdiagram | Mérőműszer | Mérőműszer |
-| Tengely    | Időbélyeg | Időbélyeg | – | – |
+| Tengely    | Időbélyeg | Időbélyeg | N/A | N/A |
 | Érték | 1\. tartózkodási idő | 2\. tartózkodási idő | Várólista hossza 1 | Várólista hossza 2 |
-| Időablak | 60 perc | 60 perc |  – | – |
+| Időablak | 60 perc | 60 perc |  N/A | N/A |
 | Cím | Tartózkodási idő | Tartózkodási idő | Várólista hossza | Várólista hossza |
 | Alcím | 1\. pénztár | 2\. pénztár | 1\. pénztár | 2\. pénztár |
 
@@ -499,7 +500,7 @@ Az Event hub és a Logic alkalmazást törölheti a Azure Portal a **Retail-Stor
 
 Power BI adatkészleteket és irányítópultokat a munkaterület Power BI beállítások lapján lévő munkaterület törlésével törölheti.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ez a három oktatóanyag olyan teljes körű megoldást mutat be, amely a **Store Analytics-checkout** IoT Central alkalmazás sablonját használja. Csatlakoztatta az eszközöket az alkalmazáshoz, a IoT Central használta az eszközök figyelésére, és Power BI, hogy irányítópultot hozzon létre az eszköz telemetria való betekintés céljából. A következő lépés egy másik IoT Central alkalmazás-sablon egyikének megismerése:
 

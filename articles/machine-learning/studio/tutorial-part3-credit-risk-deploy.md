@@ -1,6 +1,6 @@
 ---
 title: '3\. Oktatóanyag: hitelkockázat-modell üzembe helyezése'
-titleSuffix: Azure Machine Learning Studio (classic)
+titleSuffix: ML Studio (classic) Azure
 description: Részletes oktatóanyag, amely bemutatja, hogyan hozhat létre a hitelkockázat értékelésére szolgáló prediktív elemzési megoldást a Azure Machine Learning Studio klasszikus verziójában. Ez az oktatóanyag egy háromrészes oktatóanyag-sorozat harmadik része. Bemutatja, hogyan helyezhet üzembe egy modellt webszolgáltatásként.
 keywords: hitelkockázat, prediktív elemzési megoldás, kockázatértékelés, üzembe helyezés, webszolgáltatás
 author: sdgilley
@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: tutorial
 ms.date: 02/11/2019
-ms.openlocfilehash: 34b0e783b3655aba52cc3d40957b63dd3b0e03b9
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 0f4ee6cfebcb5edb38b1cc7a11b070dab5d2098c
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73492524"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73619014"
 ---
 # <a name="tutorial-3-deploy-credit-risk-model---azure-machine-learning-studio-classic"></a>3\. Oktatóanyag: kredit kockázati modell üzembe helyezése – Azure Machine Learning Studio (klasszikus)
 

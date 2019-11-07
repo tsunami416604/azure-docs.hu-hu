@@ -1,6 +1,6 @@
 ---
-title: Iratkozzon fel a prémium szintű kiadásokban – Azure Active Directory |} A Microsoft Docs
-description: Regisztráljon az Azure Active Directory Premium kiadások kapcsolatos utasításokat.
+title: Regisztráljon a prémium szintű kiadásokra – Azure Active Directory | Microsoft Docs
+description: Útmutató prémium szintű Azure Active Directory kiadások regisztrálásához.
 services: active-directory
 author: msaburnley
 manager: daveba
@@ -13,15 +13,15 @@ ms.author: ajburnle
 ms.reviewer: piotrci
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 016fbc8808c11f861dd4388ea5fb062c840187ea
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 1a1f4addf9bb1fff34d99867fb3730a9197c9c05
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68561982"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73721227"
 ---
-# <a name="sign-up-for-azure-active-directory-premium-editions"></a>Regisztráljon az Azure Active Directory Premium-kiadások
-Vásárol, és a prémium szintű Azure Active Directory (Azure AD) kiadások társítása az Azure-előfizetés. Ha új Azure-előfizetés létrehozására van szüksége, aktiválnia kell a licenccsomagját és az Azure AD-szolgáltatás hozzáférését is.
+# <a name="sign-up-for-azure-active-directory-premium-editions"></a>Prémium szintű Azure Active Directory-kiadások – Regisztráció
+Azure-előfizetésével vásárolhat és rendelhet Azure Active Directory (Azure AD) prémium szintű kiadásokat. Ha új Azure-előfizetés létrehozására van szüksége, aktiválnia kell a licenccsomagját és az Azure AD-szolgáltatás hozzáférését is.
 
 > [!NOTE]
 >Az Azure AD Prémium és Alapszintű kiadása az Azure Active Directory világszerte elérhető példányával érhetők el a kínai ügyfelek számára. Az Azure AD Prémium és Alapszintű kiadása jelenleg nem támogatott Kínában a 21Vianet által működtetett Azure-szolgáltatásban. További információért lépjen velünk kapcsolatba az [Azure Active Directory fórumon](https://feedback.azure.com/forums/169401-azure-active-directory/) keresztül.
@@ -37,7 +37,7 @@ Az Active Directory Premium 1 vagy Premium 2-re történő regisztráció előtt
 Amikor az Azure-előfizetését korábban megvásárolt és aktivált Azure AD-licencekkel használja a regisztrációhoz, akkor az ugyanabban a könyvtárban levő licencek automatikusan aktiválódnak. Ha nem ez a helyzet, akkor még aktiválnia kell a licenccsomagot és az Azure AD-hozzáférését. A licenccsomag aktiválással kapcsolatos további információkért lásd: [Új licenccsomag aktiválása](#activate-your-new-license-plan). Az Azure AD-hozzáférés aktiválásával kapcsolatos további információkért lásd: [Azure AD-hozzáférés aktiválása](#activate-your-azure-ad-access). 
 
 ## <a name="sign-up-using-your-existing-azure-or-office-365-subscription"></a>Regisztráció meglévő Azure vagy Office 365-előfizetéssel
-Azure- vagy Office 365-előfizetőként az interneten vásárolhatja meg a Prémium szintű Azure Active Directory-kiadásokat. A részletes lépésekért lásd: [A Prémium szintű Active Directory megvásárlása – meglévő ügyfelek](https://channel9.msdn.com/Series/Azure-Active-Directory-Videos-Demos/How-to-Purchase-Azure-Active-Directory-Premium-Existing-Customer) vagy [A Prémium szintű Active Directory megvásárlása – új ügyfelek](https://channel9.msdn.com/Series/Azure-Active-Directory-Videos-Demos/How-to-Purchase-Azure-Active-Directory-Premium-New-Customers).
+Azure- vagy Office 365-előfizetőként az interneten vásárolhatja meg a Prémium szintű Azure Active Directory-kiadásokat. A részletes lépésekért lásd: [prémium szintű Azure Active Directory vásárlása – új ügyfelek](https://channel9.msdn.com/Series/Azure-Active-Directory-Videos-Demos/How-to-Purchase-Azure-Active-Directory-Premium-New-Customers).
 
 ## <a name="sign-up-using-your-enterprise-mobility--security-licensing-plan"></a>Regisztráció Enterprise Mobility + Security licenccsomaggal
 Enterprise Mobility + Security egy csomag, amely prémium szintű Azure ADból, Azure Information Protectionből és Microsoft Intuneból áll. Ha már van EMS-licence, az Azure AD használatát a következő licenclehetőségek egyikével kezdheti meg:

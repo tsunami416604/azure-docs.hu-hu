@@ -1,7 +1,7 @@
 ---
 title: Modell tesztelése és újratanítása – Custom Vision Service
 titleSuffix: Azure Cognitive Services
-description: Megtudhatja, hogyan tesztelheti a rendszerképet, és hogyan használhatja azt a modell újratanításához.
+description: Ez a cikk bemutatja, hogyan tesztelheti a rendszerképet, és hogyan végezheti el a modell átképzését a Custom Vision szolgáltatásban.
 services: cognitive-services
 author: anrothMSFT
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 03/21/2019
 ms.author: anroth
-ms.openlocfilehash: 3f78f0b992581a44b030387f1bd0e37664df4cfd
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: c6ed8869f6d33609381a42fd22d728e9e5542802
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68560907"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73721203"
 ---
 # <a name="test-and-retrain-a-model-with-custom-vision-service"></a>Modell tesztelése és újratanítása Custom Vision Service
 
@@ -31,7 +31,7 @@ A modell betanítása után gyorsan tesztelheti egy helyileg tárolt képpel vag
 
     ![A rendszerkép elküldése oldal képe](./media/test-your-model/submit-image.png)
 
-A kiválasztott rendszerkép a lap közepén jelenik meg. Ezután az eredmények egy táblázat formájában jelennek meg a képen, két oszloppal, címkével **és** megbízhatósággal. Az eredmények megtekintése után lezárhatja a **gyors tesztelés** ablakát.
+A kiválasztott rendszerkép a lap közepén jelenik meg. Ezután az eredmények egy táblázat formájában jelennek meg a képen, két oszloppal **, címkével és** **megbízhatósággal**. Az eredmények megtekintése után lezárhatja a **gyors tesztelés** ablakát.
 
 Most hozzáadhatja ezt a tesztoldalt a modellhez, majd Újrataníthatja a modellt.
 
@@ -51,7 +51,7 @@ A korábban betanításra elküldött rendszerkép használatához kövesse az a
     > [!TIP]
     > A rendszerképek rangsorolva vannak, így azok a képek, amelyek az osztályozó legnagyobb nyereségét tudják elérni, felül vannak rendezve. Egy másik rendezés kiválasztásához használja a __Rendezés__ szakaszt.
 
-    Ha képet szeretne adni a betanítási adatokhoz, válassza ki a képet, válassza ki a címkét, majd válassza a __Mentés és bezárás__lehetőséget. A rendszer eltávolítja a lemezképet az __előrejelzések__ közül, és hozzáadja őket a betanítási lemezképekhez. A betanítási __képek__ lapon tekintheti meg.
+    Ha képet szeretne adni a betanítási adatokhoz, válassza ki a képet, válassza ki a címkét, majd válassza a __Mentés és bezárás__lehetőséget. A rendszer eltávolítja a lemezképet az __előrejelzések__ közül, és hozzáadja őket a betanítási lemezképekhez. A __betanítási képek__ lapon tekintheti meg.
 
     ![A címkézési lap képe](./media/test-your-model/tag-image.png)
 

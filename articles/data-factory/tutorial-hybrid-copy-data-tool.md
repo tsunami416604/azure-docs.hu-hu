@@ -1,5 +1,5 @@
 ---
-title: Helyszíni adatok másolása az Azure Adatok másolása eszközével | Microsoft Docs
+title: Helyszíni adatai másolása az Azure Adatok másolása eszköz használatával
 description: Létrehozhat egy Azure-beli adat-előállítót, majd az Adatok másolása eszközzel másolhat adatokat egy helyszíni SQL Server-adatbázisból az Azure Blob Storage-tárolóba.
 services: data-factory
 documentationcenter: ''
@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.date: 04/09/2018
 ms.author: abnarain
-ms.openlocfilehash: cbefc274e4ebb65f61769a7931dbed305acffe2f
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 3b9c9371d947b0193f93b8084fbaaf66e3253997
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69617544"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73683550"
 ---
 # <a name="copy-data-from-an-on-premises-sql-server-database-to-azure-blob-storage-by-using-the-copy-data-tool"></a>Adatok másolása az Adatok másolása eszközzel helyszíni SQL Server-adatbázisból Azure Blob Storage-tárolóba
 > [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory-szolgáltatás verzióját:"]
@@ -105,9 +105,9 @@ Ebben a szakaszban egy **adftutorial** nevű blobtárolót hoz létre a Blob Sto
 1. Ne zárja be az **adftutorial** **tároló** ablakát. Ezzel ellenőrizheti az oktatóanyag végén található kimenetet. A Data Factory automatikusan létrehozza a kimeneti mappát a tárolóban, így nem kell újat létrehoznia.
 
 
-## <a name="create-a-data-factory"></a>data factory létrehozása
+## <a name="create-a-data-factory"></a>Data factory létrehozása
 
-1. A bal oldali menüben válassza az **+ erőforrás** > létrehozása**elemzési** > **Data Factory**elemet. 
+1. A bal oldali menüben válassza az **+ erőforrás létrehozása** > **Analytics** > **Data Factory**lehetőséget. 
   
    ![Új adat-előállító létrehozása](./media/doc-common-process/new-azure-data-factory-menu.png)
 
@@ -140,7 +140,7 @@ Ebben a szakaszban egy **adftutorial** nevű blobtárolót hoz létre a Blob Sto
    ![Első lépések lap](./media/doc-common-process/get-started-page.png)
 
 1. Az Adatok másolása eszköz **Tulajdonságok** lapján a **Feladat neve** alatt írja be a következőt: **CopyFromOnPremSqlToAzureBlobPipeline**. Ezután kattintson a **Tovább** gombra. Az Adatok másolása eszköz létrehoz egy folyamatot a mezőben megadott néven. 
-  ![Feladat neve](./media/tutorial-hybrid-copy-data-tool/properties-page.png)
+  ![feladat neve](./media/tutorial-hybrid-copy-data-tool/properties-page.png)
 
 1. A **Forrásadattár** oldalon kattintson az **Új kapcsolat létrehozása** lehetőségre. 
 

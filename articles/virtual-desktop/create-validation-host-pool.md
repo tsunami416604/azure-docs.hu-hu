@@ -1,5 +1,5 @@
 ---
-title: Windows rendszerű virtuális asztali címkészlet létrehozása a szolgáltatás frissítéseinek ellenőrzéséhez – Azure
+title: Windows rendszerű virtuális asztali munkamenetgazda szolgáltatás frissítései – Azure
 description: Ellenőrzési címkészlet létrehozása a szolgáltatások frissítéseinek figyeléséhez, mielőtt az éles környezetbe helyezné a frissítéseket.
 services: virtual-desktop
 author: Heidilohr
@@ -7,14 +7,14 @@ ms.service: virtual-desktop
 ms.topic: tutorial
 ms.date: 08/29/2019
 ms.author: helohr
-ms.openlocfilehash: c294bb41afae1257add0c96a9f77adad3f871849
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: fd8be170f0f4388ee711881dde16923b9547f21f
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71676675"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73606922"
 ---
-# <a name="tutorial-create-a-host-pool-to-validate-service-updates"></a>Oktatóanyag: Gazdagépcsoport létrehozása a szolgáltatásfrissítések érvényesítéséhez
+# <a name="tutorial-create-a-host-pool-to-validate-service-updates"></a>Oktatóanyag: gazdagép-készlet létrehozása a szolgáltatás frissítéseinek ellenőrzéséhez
 
 A gazdagép-készletek egy vagy több azonos virtuális gép gyűjteményei a Windows rendszerű virtuális asztali bérlői környezetekben. Mielőtt üzembe helyezi a gazdagép-készleteket az éles környezetben, javasoljuk, hogy hozzon létre egy érvényesítési gazdagépet. A rendszer először alkalmazza a frissítéseket az érvényesítési gazdagépekre, így a szolgáltatás frissítéseinek figyelésével megfigyelheti őket az éles környezetbe. Érvényesítési címkészlet nélkül előfordulhat, hogy nem deríti fel azokat a módosításokat, amelyek hibákat vezetnek be, ami az éles környezetben lévő felhasználók számára állásidőt eredményezhet.
 
@@ -34,7 +34,7 @@ Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
 ## <a name="create-your-host-pool"></a>A gazda készlet létrehozása
 
 A következő cikkek utasításait követve hozhat létre egy gazdagépet:
-- [Oktatóanyag: Alkalmazáskészlet létrehozása az Azure Marketplace @ no__t-0
+- [Oktatóanyag: állomáslista létrehozása az Azure Marketplace-szel](create-host-pools-azure-marketplace.md)
 - [Gazdagép létrehozása Azure Resource Manager sablonnal](create-host-pools-arm-template.md)
 - [Gazdagép létrehozása a PowerShell-lel](create-host-pools-powershell.md)
 

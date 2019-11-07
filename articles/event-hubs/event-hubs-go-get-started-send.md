@@ -1,26 +1,26 @@
 ---
-title: Go - az Azure Event Hubs használatával események küldéséhez és fogadásához |} A Microsoft Docs
-description: Ez a cikk egy útmutató egy Go-alkalmazást, amely az Azure Event Hubsból küldi az eseményeket létrehozásához.
+title: 'Gyors útmutató: események küldése és fogadása a go-Azure Event Hubs'
+description: 'Gyors útmutató: Ez a cikk bemutatja, hogyan hozhat létre olyan go-alkalmazást, amely eseményeket küld az Azure Event Hubsból.'
 services: event-hubs
 author: ShubhaVijayasarathy
 manager: kamalb
 ms.service: event-hubs
 ms.workload: core
-ms.topic: article
+ms.topic: quickstart
 ms.custom: seodec18
-ms.date: 04/15/2019
+ms.date: 11/05/2019
 ms.author: shvija
-ms.openlocfilehash: 823ebc985c77785f8b48d12d5919dbbd1b2b1459
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e5f52d0ddbf9a66d974732d6d98ca8a5b09cc2d0
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60821694"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73720588"
 ---
-# <a name="send-events-to-or-receive-events-from-event-hubs-using-go"></a>Események küldése vagy események fogadása az Event Hubs Go használatával
+# <a name="quickstart-send-events-to-or-receive-events-from-event-hubs-using-go"></a>Rövid útmutató: események küldése vagy fogadása Event Hubsról a go használatával
 Az Azure Event Hubs egy Big Data streamplatform és eseményfeldolgozó szolgáltatás, amely másodpercenként több millió esemény fogadására és feldolgozására képes. Az Event Hubs képes az elosztott szoftverek és eszközök által generált események, adatok vagy telemetria feldolgozására és tárolására. Az eseményközpontokba elküldött adatok bármilyen valós idejű elemzési szolgáltató vagy kötegelési/tárolóadapter segítségével átalakíthatók és tárolhatók. Az Event Hubs részletes áttekintéséért lásd az [Event Hubs áttekintését](event-hubs-about.md) és az [Event Hubs-szolgáltatásokat](event-hubs-features.md) ismertető cikket.
 
-Ez az oktatóanyag leírja, hogyan írhat a Go-alkalmazásokba, eseményeket küldeni, vagy események fogadása az eseményközpontba. 
+Ez az oktatóanyag azt ismerteti, hogyan írhat go-alkalmazásokat események küldésére vagy események fogadására az Event hub-ból. 
 
 > [!NOTE]
 > A rövid útmutatót mintaként letöltheti a [GitHubról](https://github.com/Azure-Samples/azure-sdk-for-go-samples/tree/master/eventhubs). Cserélje le az `EventHubConnectionString` és `EventHubName` sztringeket a saját eseményközpontja értékeire, majd futtassa a mintát. Vagy létrehozhatja saját megoldását is az oktatóanyag lépései alapján.
@@ -29,16 +29,16 @@ Ez az oktatóanyag leírja, hogyan írhat a Go-alkalmazásokba, eseményeket kü
 
 Az oktatóanyag teljesítéséhez a következő előfeltételekre lesz szüksége:
 
-- Nyissa meg telepített helyileg. Hajtsa végre a [ezek az utasítások](https://golang.org/doc/install) szükség esetén.
+- A go telepítése helyileg. Ha szükséges, kövesse [ezeket az utasításokat](https://golang.org/doc/install) .
 - Aktív Azure-fiók. Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot][] a virtuális gép létrehozásának megkezdése előtt.
-- **Event Hubs-névtér és eseményközpont létrehozása**. Használja a [az Azure portal](https://portal.azure.com) hozzon létre egy Event Hubs típusú névteret, és szerezze be az alkalmazása és az eseményközpont közötti kommunikációhoz szükséges felügyeleti hitelesítő adatokat. A névtér és eseményközpont létrehozásához hajtsa végre az eljárást a [Ez a cikk](event-hubs-create.md).
+- **Hozzon létre egy Event Hubs névteret és egy Event hubot**. A [Azure Portal](https://portal.azure.com) használatával hozzon létre Event Hubs típusú névteret, és szerezze be azokat a felügyeleti hitelesítő adatokat, amelyekre az alkalmazásnak szüksége van az Event hub-vel való kommunikációhoz. A névtér és az Event hub létrehozásához kövesse az [ebben a cikkben](event-hubs-create.md)ismertetett eljárást.
 
 ## <a name="send-events"></a>Események küldése
-Ez a szakasz bemutatja, hogyan hozhat létre egy Go-alkalmazást eseményeket küld egy eseményközpontnak. 
+Ebből a szakaszból megtudhatja, hogyan hozhat létre olyan go-alkalmazást, amely eseményeket küld az Event hub-nak. 
 
-### <a name="install-go-package"></a>Telepítse a Go-csomag
+### <a name="install-go-package"></a>Go-csomag telepítése
 
-A Go-csomag beolvasása az Event hubs `go get` vagy `dep`. Példa:
+Szerezze be a go-csomagot a Event Hubshoz `go get` vagy `dep`. Például:
 
 ```bash
 go get -u github.com/Azure/azure-event-hubs-go
@@ -50,9 +50,9 @@ dep ensure -add github.com/Azure/azure-event-hubs-go
 dep ensure -add github.com/Azure/azure-amqp-common-go
 ```
 
-### <a name="import-packages-in-your-code-file"></a>A kódfájl csomagok importálása
+### <a name="import-packages-in-your-code-file"></a>Csomagok importálása a kódban
 
-A Go-csomagok importálásához használja a következő mintakód:
+A go-csomagok importálásához használja az alábbi kódrészletet:
 
 ```go
 import (
@@ -63,7 +63,7 @@ import (
 
 ### <a name="create-service-principal"></a>Egyszerű szolgáltatás létrehozása
 
-Hozzon létre egy új egyszerű szolgáltatást a következő témakör utasításait követve [Azure-beli szolgáltatásnév létrehozása az Azure CLI 2.0](/cli/azure/create-an-azure-service-principal-azure-cli). A megadott hitelesítő adatok mentéséhez a környezetben a következő nevekkel. Keresse meg a változók nevében a Góhoz készült Azure SDK és az Event Hubs-csomagokat is fürtjének:
+Hozzon létre egy új egyszerű szolgáltatásnevet az Azure- [szolgáltatás létrehozása az Azure CLI 2,0-vel](/cli/azure/create-an-azure-service-principal-azure-cli)című témakör utasításait követve. Mentse a megadott hitelesítő adatokat a környezetében a következő nevekkel. A Go nyelvhez készült Azure SDK és a Event Hubs csomagok is előre konfigurálva vannak, hogy megkeressék ezeket a változók neveit:
 
 ```bash
 export AZURE_CLIENT_ID=
@@ -72,7 +72,7 @@ export AZURE_TENANT_ID=
 export AZURE_SUBSCRIPTION_ID= 
 ```
 
-Most hozzon létre egy hitelesítési szolgáltatót az Event Hubs-ügyfél, amely ezeket a hitelesítő adatokat használja:
+Most hozzon létre egy engedélyezési szolgáltatót az Event Hubs-ügyfél számára, amely ezeket a hitelesítő adatokat használja:
 
 ```go
 tokenProvider, err := aad.NewJWTProvider(aad.JWTProviderWithEnvironmentVars())
@@ -81,9 +81,9 @@ if err != nil {
 }
 ```
 
-### <a name="create-event-hubs-client"></a>Az Event Hubs-ügyfél létrehozása
+### <a name="create-event-hubs-client"></a>Event Hubs-ügyfél létrehozása
 
-Az alábbi kód létrehoz egy Event Hubs-ügyfél:
+A következő kód egy Event Hubs ügyfelet hoz létre:
 
 ```go
 hub, err := eventhubs.NewHub("namespaceName", "hubName", tokenProvider)
@@ -96,7 +96,7 @@ if err != nil {
 
 ### <a name="write-code-to-send-messages"></a>Kód írása az üzenetek küldéséhez
 
-Az alábbi kódrészletben használja (1) a terminálból interaktív módon üzenetküldés, illetve (2) a programon belül üzenetek küldése:
+Az alábbi kódrészletben a (1) használatával interaktív üzeneteket küldhet egy terminálról, vagy (2) a programon belüli üzenetek küldéséhez:
 
 ```go
 // 1. send messages at the terminal
@@ -115,7 +115,7 @@ hub.Send(ctx, eventhubs.NewEventFromString("hello Azure!"))
 
 ### <a name="extras"></a>Kiegészítő funkciók
 
-Az eseményközpont lépjen be a partíciók azonosítóit:
+Az Event hub-beli partíciók azonosítóinak beolvasása:
 
 ```go
 info, err := hub.GetRuntimeInformation(ctx)
@@ -125,21 +125,21 @@ if err != nil {
 log.Printf("got partition IDs: %s\n", info.PartitionIDs)
 ```
 
-Események küldése az event hubs, az alkalmazás futtatásához. 
+Futtassa az alkalmazást az események az Event hub-ba való küldéséhez. 
 
 Gratulálunk! Üzeneteket küldött egy eseményközpontba.
 
 ## <a name="receive-events"></a>Események fogadása
 
-### <a name="create-a-storage-account-and-container"></a>Hozzon létre egy tárfiókot és tárolót
+### <a name="create-a-storage-account-and-container"></a>Storage-fiók és-tároló létrehozása
 
-Például a partíciók és az ellenőrzőpontok a bérletek állapot az adatfolyam között vannak megosztva fogadók egy Azure Storage-tároló használatával. Egy tárfiókot és tárolót hozhat létre a Go SDK-val, de is létrehozhat egyet a következő témakör utasításait követve [tudnivalók az Azure storage-fiókok](../storage/common/storage-create-storage-account.md).
+Az esemény-adatfolyamban lévő partíciók és ellenőrzőpontok bérletei az Azure Storage-tárolók használatával vannak megosztva a fogadók között. Hozzon létre egy Storage-fiókot és egy tárolót a go SDK-val, de az [Azure Storage-fiókok ismertetése](../storage/common/storage-create-storage-account.md)című témakör útmutatását követve létrehozhat egyet is.
 
-Tároló-összetevők létrehozása a Go SDK-minták érhetők el a [Go-tárház minták](https://github.com/Azure-Samples/azure-sdk-for-go-samples/tree/master/storage) és a megfelelő ebben az oktatóanyagban a minta.
+A go SDK-val tároló összetevők létrehozására szolgáló minták a [Go Samples](https://github.com/Azure-Samples/azure-sdk-for-go-samples/tree/master/storage) adattárában és az oktatóanyagnak megfelelő mintában érhetők el.
 
-### <a name="go-packages"></a>Nyissa meg a csomagok
+### <a name="go-packages"></a>Csomagok keresése
 
-Az üzenetek fogadásához beszerzése a Go-csomagokat az Event hubs `go get` vagy `dep`:
+Az üzenetek fogadásához szerezze be a go-csomagokat a Event Hubshoz `go get` vagy `dep`használatával:
 
 ```bash
 go get -u github.com/Azure/azure-event-hubs-go/...
@@ -153,9 +153,9 @@ dep ensure -add github.com/Azure/azure-amqp-common-go
 dep ensure -add github.com/Azure/go-autorest
 ```
 
-### <a name="import-packages-in-your-code-file"></a>A kódfájl csomagok importálása
+### <a name="import-packages-in-your-code-file"></a>Csomagok importálása a kódban
 
-A Go-csomagok importálásához használja a következő mintakód:
+A go-csomagok importálásához használja az alábbi kódrészletet:
 
 ```go
 import (
@@ -169,7 +169,7 @@ import (
 
 ### <a name="create-service-principal"></a>Egyszerű szolgáltatás létrehozása
 
-Hozzon létre egy új egyszerű szolgáltatást a következő témakör utasításait követve [Azure-beli szolgáltatásnév létrehozása az Azure CLI 2.0](/cli/azure/create-an-azure-service-principal-azure-cli). A megadott hitelesítő adatok mentéséhez a környezetben a következő nevekkel: Mindkét Azure SDK a Go és az Event Hubs-csomag fürtjének keresse meg a változók nevében.
+Hozzon létre egy új egyszerű szolgáltatásnevet az Azure- [szolgáltatás létrehozása az Azure CLI 2,0-vel](/cli/azure/create-an-azure-service-principal-azure-cli)című témakör utasításait követve. Mentse a megadott hitelesítő adatokat a környezetben a következő nevekkel: mindkét Go nyelvhez készült Azure SDK és Event Hubs csomag előre konfigurálva van, hogy megkeresse ezeket a változók nevét.
 
 ```bash
 export AZURE_CLIENT_ID=
@@ -178,7 +178,7 @@ export AZURE_TENANT_ID=
 export AZURE_SUBSCRIPTION_ID= 
 ```
 
-Ezután hozzon létre egy hitelesítési szolgáltatót az Event Hubs-ügyfél, amely ezeket a hitelesítő adatokat használja:
+Ezután hozzon létre egy engedélyezési szolgáltatót az Event Hubs-ügyfél számára, amely ezeket a hitelesítő adatokat használja:
 
 ```go
 tokenProvider, err := aad.NewJWTProvider(aad.JWTProviderWithEnvironmentVars())
@@ -187,9 +187,9 @@ if err != nil {
 }
 ```
 
-### <a name="get-metadata-struct"></a>Metaadatok struct beolvasása
+### <a name="get-metadata-struct"></a>Metaadatok struktúrájának beolvasása
 
-Exportálva az Azure-környezet az Azure Go SDK-val kapcsolatos metaadatok lekérése. Újabb műveletek megfelelő végpontok kereséséhez használja az ebben a struktúrában le.
+Az Azure go SDK használatával az Azure-környezettel kapcsolatos metaadatokat szerezhet be. A későbbi műveletek ezt a struktúrát használják a helyes végpontok megkereséséhez.
 
 ```go
 azureEnv, err := azure.EnvironmentFromName("AzurePublicCloud")
@@ -198,9 +198,9 @@ if err != nil {
 }
 ```
 
-### <a name="create-credential-helper"></a>Hitelesítő adatok segítő létrehozása 
+### <a name="create-credential-helper"></a>Hitelesítő adatok létrehozása segítő 
 
-Hozzon létre egy hitelesítő adat segítő, amely az előző Azure Active Directory (AAD) hitelesítő adatokat használ a tároló közös hozzáférésű Jogosultságkód (SAS) hitelesítő adatok létrehozása. Az utolsó paraméter megadja a konstruktor számára ugyanazon környezeti változók használatára, mert a korábban használt:
+Hozzon létre egy hitelesítőadat-segítőt, amely az előző Azure Active Directory (HRE) hitelesítő adatokat használja a megosztott hozzáférési aláírás (SAS) hitelesítő adatainak létrehozásához a tároláshoz. Az utolsó paraméter azt jelzi, hogy ez a konstruktor ugyanazt a környezeti változót használja, mint a korábban használt:
 
 ```go
 cred, err := storageLeaser.NewAADSASCredential(
@@ -214,11 +214,11 @@ if err != nil {
 }
 ```
 
-### <a name="create-a-check-pointer-and-a-leaser"></a>Hozzon létre egy ellenőrzést mutató és a egy leaser 
+### <a name="create-a-check-pointer-and-a-leaser"></a>Egy ellenőrzési mutató és egy bérbeadó létrehozása 
 
-Hozzon létre egy **leaser**partíció egy adott fogadó bérlési felelős, és a egy **mutató ellenőrizze**, felelősek az ellenőrzőpontokat az üzenet-adatfolyamok, hogy elkezdheti a többi fogadó számára a megfelelő eltolás olvasásakor.
+Hozzon létre egy olyan **címbérletet**, amely egy partíció egy adott fogadónak való bérletéhez felelős, és egy **ellenőrző mutató**, amely az üzenet-adatfolyamhoz tartozó ellenőrzőpontok írásához felelős, hogy más fogadók a megfelelő eltolástól kezdhetik az olvasást.
 
-Jelenleg egyetlen **StorageLeaserCheckpointer** áll rendelkezésre, amely használja ugyanazt a Storage tárolót bérleteket és az ellenőrzőpontok kezelése. A tárolási fiók és a tároló nevét, valamint a **StorageLeaserCheckpointer** van szüksége a hitelesítő adatokat az előző lépést, és megfelelően elérni a tárolót az Azure-környezet struct jön létre.
+Jelenleg egyetlen **StorageLeaserCheckpointer** érhető el, amely ugyanazt a tárolót használja a bérletek és ellenőrzőpontok kezeléséhez. A Storage-fiók és a tárolók nevein kívül a **StorageLeaserCheckpointer** szüksége van az előző lépésben létrehozott hitelesítő adatokra és az Azure Environment struct-ra, hogy megfelelően hozzáférhessen a tárolóhoz.
 
 ```go
 leaserCheckpointer, err := storageLeaser.NewStorageLeaserCheckpointer(
@@ -231,9 +231,9 @@ if err != nil {
 }
 ```
 
-### <a name="construct-event-processor-host"></a>Event Processor Host létrehozása
+### <a name="construct-event-processor-host"></a>Az Event Processor Host kiépítése
 
-Most már a következőképpen hozhat létre az EventProcessorHost szükséges darabok. Azonos **StorageLeaserCheckpointer** leaser és ellenőrzés mutató, az előzőekben leírtaknak használja:
+Most már rendelkezik a EventProcessorHost létrehozásához szükséges darabokkal, az alábbiak szerint. Ugyanazt a **StorageLeaserCheckpointer** használja, mint a lízing és a pipa mutató, a korábban leírtaknak megfelelően:
 
 ```go
 ctx := context.Background()
@@ -252,7 +252,7 @@ defer p.Close(context.Background())
 
 ### <a name="create-handler"></a>Kezelő létrehozása 
 
-Most hozzon létre egy kezelő, és az Event Processor Host való regisztrálásához. A gazdagép indításakor vonatkozik ez, és bármely egyéb megadott kezelők bejövő üzenetek:
+Most hozzon létre egy kezelőt, és regisztrálja az Event Processor Host szolgáltatással. A gazdagép indításakor a rendszer ezt és a többi megadott kezelőt is alkalmazza a bejövő üzenetekre:
 
 ```go
 handler := func(ctx context.Context, event *eventhubs.Event) error {
@@ -269,9 +269,9 @@ if err != nil {
 
 ### <a name="write-code-to-receive-messages"></a>Kód írása az üzenetek fogadásához
 
-Mindent, el lehet indítani az Event Processor Host- `Start(context)` véglegesen fut, vagy azzal biztosítható, hogy `StartNonBlocking(context)` futtatásához csak is üzenetek érhetők el.
+Minden beállítással elindíthatja az Event Processor Hostt a `Start(context)` használatával, hogy folyamatosan fusson, vagy a `StartNonBlocking(context)`, hogy csak az üzenetek elérhetők legyenek.
 
-Ebben az oktatóanyagban elindítja és futtatja az alábbiak szerint: Tekintse meg a GitHub-mintát egy példa a `StartNonBlocking`:
+Ez az oktatóanyag az alábbiak szerint kezdődik és fut: Tekintse meg a GitHub-mintát `StartNonBlocking`használatával:
 
 ```go
 ctx := context.Background()
@@ -285,7 +285,7 @@ if err != nil {
 Olvassa el a következő cikkeket:
 
 - [EventProcessorHost](event-hubs-event-processor-host.md)
-- [Funkciók és az Azure Event Hubs terminológiája](event-hubs-features.md)
+- [Az Azure Event Hubs funkciói és terminológiája](event-hubs-features.md)
 - [Event Hubs – gyakori kérdések](event-hubs-faq.md)
 
 

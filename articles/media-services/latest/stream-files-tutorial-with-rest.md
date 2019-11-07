@@ -10,14 +10,14 @@ ms.service: media-services
 ms.workload: ''
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 10/21/2019
+ms.date: 11/05/2019
 ms.author: juliako
-ms.openlocfilehash: 3f065f77c6843b135554e61f5887655114571b08
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 128513c3af5ce6c0853b63d86959e4c3c35de93c
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72750249"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73685115"
 ---
 # <a name="tutorial-encode-a-remote-file-based-on-url-and-stream-the-video---rest"></a>Oktatóanyag: távoli fájl kódolása URL-cím alapján és stream a videó – REST
 
@@ -215,7 +215,7 @@ Használhatja a beépített EncoderNamedPreset beállítást vagy az egyéni el�
 
 A [feladat](https://docs.microsoft.com/rest/api/media/jobs) a tényleges kérés a Media Services számára, hogy alkalmazza az adott **átalakítást** egy meghatározott bemeneti video- vagy audiotartalomra. A **feladat** meghatároz bizonyos adatokat, például a bemeneti videó és a kimenet helyét.
 
-Ebben a példában a feladathoz tartozó bevitel egy HTTPS-URL-cím ("https: \//nimbuscdn-nimbuspm.streaming.mediaservices.windows.net/2b533311-b215-4409-80af-529c3e853622/") alapján történik.
+Ebben a példában a feladathoz tartozó bevitel egy HTTPS-URL-cím ("https:\//nimbuscdn-nimbuspm.streaming.mediaservices.windows.net/2b533311-b215-4409-80af-529c3e853622/") alapján történik.
 
 1. A Poster alkalmazás bal oldali ablakában válassza a "Encoding and Analysis" (kódolás és elemzés) lehetőséget.
 2. Ezután válassza a „Create or Update Job” (Feladat létrehozása vagy frissítése) lehetőséget.
@@ -248,7 +248,7 @@ Ebben a példában a feladathoz tartozó bevitel egy HTTPS-URL-cím ("https: \//
         }
         ```
 
-A feladat végrehajtása némi időt vesz igénybe, és fontos, hogy értesüljön arról, ha ez megtörtént. A feladat előrehaladásának megtekintéséhez az Event Grid használatát javasoljuk. Ez egy magas rendelkezésre állású, egyenletes teljesítményű, dinamikusan skálázható szolgáltatás. Az Event Grid használatával az alkalmazásai szinte minden Azure-szolgáltatástól és egyéni forrástól származó eseményt figyelni tudnak és reagálhatnak azokra. Az egyszerű, HTTP-alapú reaktív eseménykezelés intelligens szűréssel és az események útválasztásával segít hatékony megoldások kiépítésében.  További információkért tekintse meg az [események egyéni webes végponthoz való átirányítását](job-state-events-cli-how-to.md) ismertető cikket.
+A feladat végrehajtása némi időt vesz igénybe, és fontos, hogy értesüljön arról, ha ez megtörtént. A feladat előrehaladásának megtekintéséhez az Event Grid használatát javasoljuk. Ez egy magas rendelkezésre állású, egyenletes teljesítményű, dinamikusan skálázható szolgáltatás. Az Event Grid segítségével az alkalmazások figyelhetik gyakorlatilag az összes Azure-szolgáltatásból és az egyéni forrásokból származó eseményeket, és reagálhatnak azokra. Az egyszerű, HTTP-alapú reaktív eseménykezelés segít hatékony megoldásokat kialakítani az események intelligens szűrése és átirányítása révén.  További információkért tekintse meg az [események egyéni webes végponthoz való átirányítását](job-state-events-cli-how-to.md) ismertető cikket.
 
 A **feladat** a következő állapotokon halad végig: **Ütemezve**, **Várólistán**, **Feldolgozás alatt**, **Befejeződött** (a végső állapot). Ha a feladat hibát észlelt, a **Hiba** állapot jelenik meg. Ha a feladat megszakítás alatt áll, a **Megszakítás**, a megszakítás befejeződése után pedig a **Megszakítva** állapot jelenik meg.
 
@@ -258,34 +258,36 @@ Lásd: [hibakódok](https://docs.microsoft.com/rest/api/media/jobs/get#joberrorc
 
 ### <a name="create-a-streaming-locator"></a>Streamelési lokátor létrehozása
 
-A kódolási feladatok befejezése után a következő lépés az, hogy a videó a kimeneti **eszközön** elérhető legyen az ügyfelek számára a lejátszáshoz. Ezt két lépésben hajthatja végre: először hozzon létre egy [adatfolyam-keresőt](https://docs.microsoft.com/rest/api/media/streaminglocators), és Másodszor hozza létre az ügyfelek által használható Streaming URL-címeket. 
+A kódolási feladatok befejezése után a következő lépés az, hogy a videó a kimeneti **eszközön** elérhető legyen az ügyfelek számára a lejátszáshoz. Ezt két lépésben teheti meg: először hozzon létre egy [StreamingLocatort](https://docs.microsoft.com/rest/api/media/streaminglocators), majd a streamelési URL-címeket, amelyeket az ügyfelek használhatnak. 
 
-Az **adatfolyam-kereső** létrehozásának folyamatát közzétételnek nevezzük. Alapértelmezés szerint az **adatfolyam-kereső** azonnal érvényes az API-hívások létrehozása után, és addig tart, amíg meg nem történik a törlés, hacsak nem konfigurálja a nem kötelező kezdési és befejezési időpontokat. 
+Az adatfolyam-kereső létrehozásának folyamatát közzétételnek nevezzük. Alapértelmezés szerint az adatfolyam-kereső azonnal érvényes az API-hívások létrehozása után, és addig tart, amíg meg nem történik a törlés, hacsak nem konfigurálja a nem kötelező kezdési és befejezési időpontokat. 
 
-[Adatfolyam-kereső](https://docs.microsoft.com/rest/api/media/streaminglocators)létrehozásakor meg kell adnia a kívánt **StreamingPolicyName**. Ebben a példában a folyamatos átvitelű (vagy nem titkosított) tartalmakat fogja használni, ezért a rendszer az előre definiált "Predefined_ClearStreamingOnly" adatátviteli szabályzatot használja.
+A [StreamingLocator](https://docs.microsoft.com/rest/api/media/streaminglocators) létrehozása során meg kell adnia a kívánt **StreamingPolicyName** elemet. Ebben a példában a folyamatos átvitelű (vagy nem titkosított) tartalmakat fogja használni, ezért a rendszer az előre definiált "Predefined_ClearStreamingOnly" adatátviteli szabályzatot használja.
 
 > [!IMPORTANT]
 > Egyéni [StreamingPolicy](https://docs.microsoft.com/rest/api/media/streamingpolicies) használata esetén érdemes korlátozott számú szabályzatot létrehoznia a Media Service-fiókhoz, és újra felhasználni őket a StreamingLocator használatakor, amikor ugyanolyan titkosítási beállításokra és protokollokra van szükség. 
 
-A Media Service-fiókhoz tartozik egy kvóta a **folyamatos átviteli szabályzat** bejegyzéseinek számára. Ne hozzon létre új **folyamatos átviteli szabályzatot** minden egyes **adatfolyam-keresőhöz**.
+A Media Service-fiókhoz tartozik egy kvóta a **folyamatos átviteli szabályzat** bejegyzéseinek számára. Ne hozzon létre új **folyamatos átviteli szabályzatot** minden egyes adatfolyam-keresőhöz.
 
-1. A Poster alkalmazás bal oldali ablakában válassza a "streaming policies" lehetőséget.
-2. Ezután válassza a „Create a Streaming Locator” (Streamelési lokátor létrehozása) lehetőséget.
+1. A Poster alkalmazás bal oldali ablakában válassza a "folyamatos átviteli házirendek és lokátorok" lehetőséget.
+2. Ezután válassza az "adatfolyam-kereső létrehozása (Clear)" lehetőséget.
 3. Kattintson a **Küldés** gombra.
 
     * A rendszer a következő **PUT** műveletet küldi el.
 
         ```
-        https://management.azure.com/subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.Media/mediaServices/:accountName/streamingPolicies/:streamingPolicyName?api-version={{api-version}}
+        https://management.azure.com/subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.Media/mediaServices/:accountName/streamingLocators/:streamingLocatorName?api-version={{api-version}}
         ```
     * A művelet törzse a következő:
 
         ```json
         {
-            "properties":{
-            "assetName": "{{assetName}}",
-            "streamingPolicyName": "{{streamingPolicyName}}"
-            }
+          "properties": {
+            "streamingPolicyName": "Predefined_ClearStreamingOnly",
+            "assetName": "testAsset1",
+            "contentKeys": [],
+            "filters": []
+         }
         }
         ```
 
@@ -394,7 +396,7 @@ az group delete --name amsResourceGroup
 
 Tekintse meg a [Azure Media Services közösségi](media-services-community.md) cikket, amely különböző módokon jelenítheti meg a kérdéseket, visszajelzéseket küldhet, és frissítéseket kaphat a Media Servicesról.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Most, hogy már tudja, hogyan tölthet fel, kódolhat és streamelhet videókat, tekintse meg a következő cikket: 
 

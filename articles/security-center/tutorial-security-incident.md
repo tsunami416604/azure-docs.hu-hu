@@ -1,5 +1,5 @@
 ---
-title: Azure Security Center oktatóanyag – Reagálás a biztonsági incidensekre | Microsoft Docs
+title: Incidens-válasz oktatóanyaga-Azure Security Center
 description: Azure Security Center oktatóanyag – Reagálás a biztonsági incidensekre
 services: security-center
 documentationcenter: na
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/30/2018
 ms.author: memildin
-ms.openlocfilehash: 11c2543de2b5456d253e7e905065eea14810877a
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: cd3f99fe82c9a8e5e760aa3be3bed1ad5d9bd5e9
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71200603"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73663642"
 ---
-# <a name="tutorial-respond-to-security-incidents"></a>Oktatóanyag: Válaszadás a biztonsági incidensekre
+# <a name="tutorial-respond-to-security-incidents"></a>Oktatóanyag: Reagálás a biztonsági incidensekre
 A Security Center fejlett elemzési eszközök és fenyegetésfelderítés segítségével folyamatosan elemzi a hibrid felhőbeli számítási feladatokat, hogy figyelmeztesse az esetleges rosszindulatú tevékenységekre. Ráadásul a Security Centerbe más biztonsági termékekből és szolgáltatásokból is integrálhat riasztásokat, és egyéni riasztásokat is létrehozhat a saját mutatói és intelligens forrásai alapján. Amikor valami kivált egy riasztást, gyors reagálásra van szükség a problémák kivizsgálásához és elhárításához. Az oktatóanyag során a következőket fogja elsajátítani:
 
 > [!div class="checklist"]
@@ -66,7 +66,7 @@ A Security Center segítségével minden biztonsági riasztást egy egyesített 
 
 1. A Security Center főmenüjének **ÉSZLELÉS** területén válassza a **Biztonsági riasztások** elemet:
 
-   ![Biztonsági riasztások](./media/tutorial-security-incident/tutorial-security-incident-fig1.png)  
+   ![Biztonsági riasztások](./media/tutorial-security-incident/tutorial-security-incident-fig1.png)
 
 2. A riasztások listájában kattintson egy biztonsági incidensre (egy riasztásgyűjteményre) az esemény részleteinek megjelenítéséhez. Megnyílik **A rendszer biztonsági incidenst észlelt** ablak.
 

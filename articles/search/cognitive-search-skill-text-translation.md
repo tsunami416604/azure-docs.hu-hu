@@ -1,21 +1,24 @@
 ---
-title: Szöveg fordítása – kognitív képességek
+title: Szöveg-fordítási kognitív képesség (előzetes verzió)
 titleSuffix: Azure Cognitive Search
-description: Kiértékeli a szöveget, és minden egyes rekord esetében visszaadja a megadott nyelvre lefordított szöveget az Azure Cognitive Search AI-dúsítási folyamatában.
+description: Kiértékeli a szöveget, és minden egyes rekord esetében visszaadja a megadott nyelvre lefordított szöveget az Azure Cognitive Search AI-dúsítási folyamatában. Ez a képesség jelenleg nyilvános előzetes verzióban érhető el.
 manager: nitinme
 author: careyjmac
 ms.author: chalton
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: c2405fe67b39e016e64efb1b36cc551a00a338fc
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 7c42c9033fac057c12426726a96ae6079f3080da
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72791856"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73715414"
 ---
 #   <a name="text-translation-cognitive-skill"></a>Szöveg fordítása – kognitív képességek
+
+> [!IMPORTANT] 
+> Ez a képesség jelenleg nyilvános előzetes verzióban érhető el. Az előzetes verziójú funkciók szolgáltatói szerződés nélkül érhetők el, és éles számítási feladatokhoz nem ajánlott. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). A [REST API 2019-05-06-es verziójának előzetes verziója](search-api-preview.md) előzetes funkciókat biztosít. Jelenleg korlátozott a portál támogatása, és nincs .NET SDK-támogatás.
 
 A **szöveges fordítási** készség kiértékeli a szöveget, és minden egyes rekord esetében a megadott nyelvre lefordított szöveget adja vissza. Ez a képesség a Cognitive Services elérhető [Translator Text API v 3.0](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate) -s verzióját használja.
 

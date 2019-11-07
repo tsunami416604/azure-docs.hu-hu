@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 10/18/2019
+ms.date: 10/31/2019
 ms.author: spelluru
-ms.openlocfilehash: 842392ab425628a1c82a39e25a65066064747211
-ms.sourcegitcommit: 9a4296c56beca63430fcc8f92e453b2ab068cc62
+ms.openlocfilehash: 315ebfa1460f9d9bc041925cec2451f63ac5be16
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/20/2019
-ms.locfileid: "72675766"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73580233"
 ---
 # <a name="tutorial-track-usage-of-a-lab-in-azure-lab-service"></a>Oktatóanyag: Tesztkörnyezet használatának nyomon követése az Azure Lab Services szolgáltatásban
 Az oktatóanyag bemutatja, hogyan követheti nyomon a tesztkörnyezet létrehozója/tulajdonosa a tesztkörnyezet használatát.
@@ -41,6 +41,8 @@ Az oktatóanyag során a következő lépéseket hajtja végre:
 
     ![Regisztrált felhasználók](../media/tutorial-track-usage/registered-users.png)
 
+    A tesztkörnyezet felhasználói hozzáadásával és kezelésével kapcsolatos további információkért lásd: [labor-felhasználók hozzáadása és kezelése](how-to-configure-student-usage.md).
+
 ## <a name="view-the-usage-of-vms-in-the-lab"></a>A tesztkörnyezetben lévő virtuális gépek használati adatainak megtekintése 
 
 1. Válassza a **Virtuális gépek** lehetőséget a bal oldali menüben. 
@@ -49,12 +51,11 @@ Az oktatóanyag során a következő lépéseket hajtja végre:
     ![Virtuálisgép-használat](../media/tutorial-track-usage/vm-usage.png)
 
 ## <a name="manage-student-vms"></a>Diákok virtuális gépeinek felügyelete 
-Ezen az oldalon elindíthatja, leállíthatja vagy alaphelyzetbe állíthatja a tanulói virtuális gépeket az eszköztár **állapot** oszlopában vagy gombjain található legördülő lista használatával. 
+Ezen az oldalon az **állapot** oszlopban vagy az eszköztáron található vezérlők használatával indíthatja el, állíthatja le vagy állíthatja alaphelyzetbe a tanulói virtuális gépeket.
 
 ![Virtuális gép vezérlői](../media/tutorial-track-usage/vm-controls.png)
 
-Az Eszköztárgombok segítségével elindíthatja, leállíthatja vagy törölheti a virtuális gépet. 
+A virtuálisgép-készlet tesztkörnyezetben való kezelésével kapcsolatos további információkért lásd: [virtuális gép készletének beállítása és kezelése](how-to-set-virtual-machine-passwords.md).
 
-
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 A tanterem Labs szolgáltatással kapcsolatos további tudnivalókért tekintse meg a cikkek [útmutatói](how-to-manage-lab-accounts.md)című cikket.

@@ -1,6 +1,6 @@
 ---
-title: A PHP-vel Service Bus témák használata | Microsoft Docs
-description: Ismerje meg, hogyan használhatja a PHP-vel Service Bus témákat az Azure-ban.
+title: 'Gyors útmutató: Service Bus témák használata a PHP-vel'
+description: 'Gyors útmutató: Ismerje meg, hogyan használhatja Service Bus témákat a PHP-vel az Azure-ban.'
 services: service-bus-messaging
 documentationcenter: php
 author: axisc
@@ -11,17 +11,17 @@ ms.service: service-bus-messaging
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: PHP
-ms.topic: article
-ms.date: 04/15/2019
+ms.topic: quickstart
+ms.date: 11/05/2019
 ms.author: aschhab
-ms.openlocfilehash: eba2c0aeb37f2bc2283e7afb108bb4578981120e
-ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
+ms.openlocfilehash: b55d3c93f9926b7446dadf069b37a878caa81e15
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71147218"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73721648"
 ---
-# <a name="how-to-use-service-bus-topics-and-subscriptions-with-php"></a>A PHP-vel Service Bus témakörök és előfizetések használata
+# <a name="quickstart-how-to-use-service-bus-topics-and-subscriptions-with-php"></a>Gyors útmutató: Service Bus témakörök és előfizetések használata PHP-vel
 
 [!INCLUDE [service-bus-selector-topics](../../includes/service-bus-selector-topics.md)]
 
@@ -35,7 +35,7 @@ Ez a cikk bemutatja, hogyan használhatja Service Bus témaköröket és előfiz
 
 ## <a name="prerequisites"></a>Előfeltételek
 1. Azure-előfizetés. Az oktatóanyag elvégzéséhez egy Azure-fiókra lesz szüksége. Aktiválhatja [Visual Studio-vagy MSDN-előfizetői előnyeit](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A85619ABF) , vagy regisztrálhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF).
-2. Kövesse a rövid útmutató [lépéseit: Az Azure Portal segítségével hozzon létre egy Service Bus témakört és előfizetéseket a témakörhöz](service-bus-quickstart-topics-subscriptions-portal.md) , és hozzon létre egy Service Bus **névteret** , és szerezze be a **kapcsolódási karakterláncot**.
+2. Kövesse a rövid útmutató lépéseit [: a Azure Portal használatával hozzon létre egy Service Bus témakört és előfizetéseket a témakörhöz](service-bus-quickstart-topics-subscriptions-portal.md) , és hozzon létre egy Service Bus **névteret** , és szerezze be a **kapcsolódási karakterláncot**.
 
     > [!NOTE]
     > Ebben a rövid útmutatóban egy **témakört** és egy **előfizetést** hoz létre a témakörhöz a **php** használatával. 
@@ -87,7 +87,7 @@ require_once 'vendor/autoload.php';
 use WindowsAzure\Common\ServicesBuilder;
 ```
 
-Az alábbi példákban az `require_once` utasítás mindig látható, de csak a végrehajtáshoz szükséges osztályok vannak hivatkozva.
+A következő példákban a `require_once` utasítás mindig látható, de csak a végrehajtáshoz szükséges osztályok vannak hivatkozva.
 
 ## <a name="set-up-a-service-bus-connection"></a>Service Bus-kapcsolatok beállítása
 Service Bus-ügyfél létrehozásához a következő formátumban kell érvényes kapcsolódási karakterláncot tartalmaznia:
@@ -96,9 +96,9 @@ Service Bus-ügyfél létrehozásához a következő formátumban kell érvénye
 Endpoint=[yourEndpoint];SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=[Primary Key]
 ```
 
-Ahol `Endpoint` általában a formátuma `https://[yourNamespace].servicebus.windows.net`.
+Ahol a `Endpoint` általában a formátum `https://[yourNamespace].servicebus.windows.net`.
 
-Bármely Azure-szolgáltatásbeli ügyfél létrehozásához a `ServicesBuilder` osztályt kell használnia. A következőket teheti:
+Bármely Azure-szolgáltatás ügyfelének létrehozásához a `ServicesBuilder` osztályt kell használnia. A következőket teheti:
 
 * Adja át közvetlenül a kapcsolódási karakterláncot.
 * A **CloudConfigurationManager (CCM)** segítségével több külső forrást is megvizsgálhat a kapcsolódási karakterlánchoz:
@@ -118,9 +118,9 @@ $serviceBusRestProxy = ServicesBuilder::getInstance()->createServiceBusService($
 ```
 
 ## <a name="create-a-topic"></a>Üzenettémakör létrehozása
-Service Bus témakörökhöz a `ServiceBusRestProxy` osztályon keresztül végezhet felügyeleti műveleteket. Egy `ServiceBusRestProxy` objektum a `ServicesBuilder::createServiceBusService` gyári metódussal lett létrehozva egy megfelelő kapcsolati karakterlánccal, amely magában foglalja a jogkivonat-engedélyeket a kezeléséhez.
+A `ServiceBusRestProxy` osztályon keresztül Service Bus témakörökre vonatkozó felügyeleti műveleteket is végrehajthat. A `ServiceBusRestProxy` objektum a `ServicesBuilder::createServiceBusService` Factory metódussal jön létre egy megfelelő kapcsolati karakterlánccal, amely beágyazza a jogkivonat engedélyeit a kezeléséhez.
 
-Az alábbi példa bemutatja, `ServiceBusRestProxy` hogyan hozhat létre és hívhat `ServiceBusRestProxy->createTopic` `mytopic` meg egy `MySBNamespace` névtéren belüli témakört:
+Az alábbi példa bemutatja, hogyan hozható létre egy `ServiceBusRestProxy`, és hogyan hívható meg `ServiceBusRestProxy->createTopic` egy `mytopic` nevű témakör létrehozásához `MySBNamespace`-névtéren belül:
 
 ```php
 require_once 'vendor/autoload.php';
@@ -148,15 +148,15 @@ catch(ServiceException $e){
 ```
 
 > [!NOTE]
-> Az `listTopics` objektumok`ServiceBusRestProxy` metódusával ellenőrizhető, hogy már létezik-e egy adott nevű témakör a szolgáltatási névtérben.
+> `ServiceBusRestProxy` objektumok `listTopics` metódusával ellenőrizze, hogy már létezik-e egy adott nevű témakör a szolgáltatási névtérben.
 > 
 > 
 
 ## <a name="create-a-subscription"></a>Előfizetés létrehozása
-Témakör-előfizetések is létrejönnek a `ServiceBusRestProxy->createSubscription` metódussal. Az előfizetések el vannak nevezve, és rendelkezhetnek olyan szűrőkkel, amelyek korlátozzák az előfizetés virtuális üzenetsorának átadott üzenetek készletét.
+A témakör-előfizetések a `ServiceBusRestProxy->createSubscription` metódussal is létrejönnek. Az előfizetések el vannak nevezve, és rendelkezhetnek olyan szűrőkkel, amelyek korlátozzák az előfizetés virtuális üzenetsorának átadott üzenetek készletét.
 
 ### <a name="create-a-subscription-with-the-default-matchall-filter"></a>Előfizetés létrehozása az alapértelmezett (MatchAll) szűrővel
-Ha nincs megadva szűrő az új előfizetés létrehozásakor, a rendszer a **MatchAll** szűrőt (alapértelmezett) használja. A **MatchAll** szűrő használatakor a témakörben közzétett összes üzenet az előfizetés virtuális várólistáján lesz elhelyezve. A következő példa létrehoz egy nevű `mysubscription` előfizetést, és az alapértelmezett **MatchAll** szűrőt használja.
+Ha nincs megadva szűrő az új előfizetés létrehozásakor, a rendszer a **MatchAll** szűrőt (alapértelmezett) használja. A **MatchAll** szűrő használatakor a témakörben közzétett összes üzenet az előfizetés virtuális várólistáján lesz elhelyezve. A következő példa létrehoz egy `mysubscription` nevű előfizetést, és az alapértelmezett **MatchAll** -szűrőt használja.
 
 ```php
 require_once 'vendor/autoload.php';
@@ -191,7 +191,7 @@ Beállíthat szűrőket, amelyek lehetővé teszik annak meghatározását, hogy
 > 
 > 
 
-Az alábbi példa egy nevű `HighMessages` előfizetést hoz létre egy **SqlFilter** , amely csak a 3- `MessageNumber` nál nagyobb egyéni tulajdonságú üzeneteket jelöli ki. Az üzenetek küldésével kapcsolatos további információkért lásd: [üzenetek küldése egy témakörbe](#send-messages-to-a-topic) .
+Az alábbi példa egy `HighMessages` nevű előfizetést hoz létre egy olyan **SqlFilter** , amely csak olyan üzeneteket választ ki, amelyek esetében a 3 értéknél nagyobb egyéni `MessageNumber` tulajdonság szerepel. Az üzenetek küldésével kapcsolatos további információkért lásd: [üzenetek küldése egy témakörbe](#send-messages-to-a-topic) .
 
 ```php
 $subscriptionInfo = new SubscriptionInfo("HighMessages");
@@ -206,7 +206,7 @@ $ruleResult = $serviceBusRestProxy->createRule("mytopic", "HighMessages", $ruleI
 
 A kódnak további névteret kell használnia: `WindowsAzure\ServiceBus\Models\SubscriptionInfo`.
 
-Hasonlóképpen, a következő példa létrehoz egy nevű `LowMessages` `SqlFilter` előfizetést, amely csak olyan `MessageNumber` üzeneteket jelöl ki, amelyek tulajdonsága kisebb vagy egyenlő, mint 3.
+Hasonlóképpen, a következő példa létrehoz egy `LowMessages` nevű előfizetést egy `SqlFilter`, amely csak olyan üzeneteket választ ki, amelyek `MessageNumber` tulajdonsága kisebb vagy egyenlő, mint 3.
 
 ```php
 $subscriptionInfo = new SubscriptionInfo("LowMessages");
@@ -219,10 +219,10 @@ $ruleInfo->withSqlFilter("MessageNumber <= 3");
 $ruleResult = $serviceBusRestProxy->createRule("mytopic", "LowMessages", $ruleInfo);
 ```
 
-Most, amikor elküld egy üzenetet `mytopic` a témakörnek, a rendszer mindig kézbesíti az `mysubscription` előfizetésre előfizetett fogadóknak, és szelektíven kézbesíti azokat a fogadóknak, akik `LowMessages` előfizetettek a `HighMessages` és előfizetések számára (attól függően, hogy milyen az üzenet tartalma után).
+Most, amikor elküld egy üzenetet a `mytopic` témakörnek, a rendszer mindig kézbesíti a `mysubscription` előfizetésre előfizetett fogadóknak, és szelektíven kézbesíti azokat a fogadóknak, akik előfizetettek az `HighMessages`re és `LowMessages` előfizetésekre (az üzenet tartalmától függően).
 
 ## <a name="send-messages-to-a-topic"></a>Üzenetek küldése egy üzenettémakörbe
-Ha üzenetet szeretne küldeni egy Service Bus témakörnek, az alkalmazás meghívja `ServiceBusRestProxy->sendTopicMessage` a metódust. A következő kód bemutatja, hogyan küldhet üzenetet a `mytopic` korábban a `MySBNamespace` szolgáltatási névtéren belül létrehozott témakörbe.
+Ha üzenetet szeretne küldeni egy Service Bus témakörnek, az alkalmazás meghívja a `ServiceBusRestProxy->sendTopicMessage` metódust. A következő kód bemutatja, hogyan küldhet üzenetet a korábban a `MySBNamespace` szolgáltatás névterében létrehozott `mytopic` témakörnek.
 
 ```php
 require_once 'vendor/autoload.php';
@@ -252,7 +252,7 @@ catch(ServiceException $e){
 }
 ```
 
-A Service Bus-üzenettémakörbe küldött üzenetek a [BrokeredMessage][BrokeredMessage] osztály példányai. A [BrokeredMessage][BrokeredMessage] objektumok szabványos tulajdonságokkal és metódusokkal, valamint az egyedi alkalmazásspecifikus tulajdonságok tárolására használható tulajdonságokkal rendelkeznek. Az alábbi példa bemutatja, hogyan küldhet öt tesztüzenet a `mytopic` korábban létrehozott témakörbe. A `setProperty` metódus használatával egyéni tulajdonságot (`MessageNumber`) adhat hozzá az egyes üzenetekhez. A `MessageNumber` tulajdonság értéke minden üzenetnél változó lehet (ezt az értéket használhatja az [előfizetés létrehozása](#create-a-subscription) szakaszban látható módon megállapítani, hogy mely előfizetések kapják meg):
+A Service Bus-üzenettémakörbe küldött üzenetek a [BrokeredMessage][BrokeredMessage] osztály példányai. A [BrokeredMessage][BrokeredMessage] objektumok szabványos tulajdonságokkal és metódusokkal, valamint az egyedi alkalmazásspecifikus tulajdonságok tárolására használható tulajdonságokkal rendelkeznek. Az alábbi példa bemutatja, hogyan küldhet öt tesztüzenet a korábban létrehozott `mytopic` témakörbe. A `setProperty` metódussal adhat hozzá egyéni tulajdonságot (`MessageNumber`) az egyes üzenetekhez. A `MessageNumber` tulajdonság értéke minden üzenetnél eltérő lehet (ezt az értéket használhatja az [előfizetés létrehozása](#create-a-subscription) szakaszban látható módon megállapítani, hogy mely előfizetések kapják meg):
 
 ```php
 for($i = 0; $i < 5; $i++){
@@ -271,11 +271,11 @@ for($i = 0; $i < 5; $i++){
 A Service Bus-üzenettémakörök a [Standard csomagban](service-bus-premium-messaging.md) legfeljebb 256 KB, a [Prémium csomagban](service-bus-premium-messaging.md) legfeljebb 1 MB méretű üzeneteket támogatnak. A szabványos és az egyéni alkalmazástulajdonságokat tartalmazó fejléc mérete legfeljebb 64 KB lehet. A témakörökben tárolt üzenetek száma korlátlan, a témakörök által tárolt üzenetek teljes mérete azonban korlátozva van. A témakör méretének felső korlátja 5 GB. További információ a kvótákkal kapcsolatban: [Service Bus kvóták][Service Bus quotas].
 
 ## <a name="receive-messages-from-a-subscription"></a>Üzenetek fogadása egy előfizetésből
-Az előfizetésből érkező üzenetek fogadásának legjobb módja egy `ServiceBusRestProxy->receiveSubscriptionMessage` metódus használata. Az üzenetek két különböző módban is fogadhatók: [ *ReceiveAndDelete* és *PeekLock*](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.receivemode). A **PeekLock** az alapértelmezett érték.
+Az előfizetésből érkező üzenetek fogadásának legjobb módja egy `ServiceBusRestProxy->receiveSubscriptionMessage` módszer használata. Az üzenetek két különböző módban is fogadhatók: [ *ReceiveAndDelete* és *PeekLock*](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.receivemode). A **PeekLock** az alapértelmezett érték.
 
 A [ReceiveAndDelete](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.receivemode) mód használatakor a fogadás egy egylépéses művelet – vagyis amikor a Service Bus egy olvasási kérést kap egy előfizetésben lévő üzenetre vonatkozóan, feldolgozottként jelöli meg az üzenetet, és visszaadja az alkalmazásnak. A [ReceiveAndDelete](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.receivemode) * mód a legegyszerűbb modell, és a legjobban olyan helyzetekben működik, amikor egy alkalmazás meghibásodás esetén nem dolgozza fel az üzenetet. Ennek megértéséhez képzeljen el egy forgatókönyvet, amelyben a fogyasztó kiad egy fogadási kérést, majd összeomlik a feldolgozása előtt. Mivel Service Bus az üzenetet felhasználva jelölte meg, akkor az alkalmazás újraindításakor és az üzenetek újbóli használatának megkezdése után a rendszer kihagyta az összeomlás előtt felhasznált üzenetet.
 
-Az alapértelmezett [PeekLock](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.receivemode) módban egy üzenet fogadása kétlépcsős művelet lesz, amely lehetővé teszi az olyan alkalmazások támogatását, amelyek nem tudják elviselni a hiányzó üzeneteket. Amikor a Service Bus fogad egy kérést, megkeresi és zárolja a következő feldolgozandó üzenetet, hogy más fogyasztók ne tudják fogadni, majd visszaadja az alkalmazásnak. Miután az alkalmazás befejezte az üzenet feldolgozását (vagy megbízhatóan tárolja azt a későbbi feldolgozáshoz), befejezi a fogadási folyamat második szakaszát a kapott üzenet `ServiceBusRestProxy->deleteMessage`átadásával. Ha Service Bus látja a `deleteMessage` hívást, az üzenetet a rendszer felhasználja, és eltávolítja a várólistából.
+Az alapértelmezett [PeekLock](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.receivemode) módban egy üzenet fogadása kétlépcsős művelet lesz, amely lehetővé teszi az olyan alkalmazások támogatását, amelyek nem tudják elviselni a hiányzó üzeneteket. Amikor a Service Bus fogad egy kérést, megkeresi és zárolja a következő feldolgozandó üzenetet, hogy más fogyasztók ne tudják fogadni, majd visszaadja az alkalmazásnak. Miután az alkalmazás befejezte az üzenet feldolgozását (vagy megbízhatóan tárolja azt a későbbi feldolgozáshoz), befejezi a fogadási folyamat második szakaszát a kapott üzenet `ServiceBusRestProxy->deleteMessage`ba való átadásával. Ha Service Bus látja a `deleteMessage` hívást, a rendszer felhasználja az üzenetet, és eltávolítja azt a várólistából.
 
 Az alábbi példa bemutatja, hogyan fogadhat és dolgozhat fel egy üzenetet a [PeekLock](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.receivemode) mód használatával (az alapértelmezett mód). 
 
@@ -319,16 +319,16 @@ catch(ServiceException $e){
 ```
 
 ## <a name="how-to-handle-application-crashes-and-unreadable-messages"></a>Útmutató: az alkalmazások összeomlásának és nem olvasható üzeneteinek kezelése
-A Service Bus olyan funkciókat biztosít, amelyekkel zökkenőmentesen helyreállíthatja az alkalmazás hibáit vagy az üzenetek feldolgozásának nehézségeit. Ha egy fogadó alkalmazás valamilyen okból nem tudja feldolgozni az üzenetet, akkor a `unlockMessage` metódust meghívhatja a kapott üzeneten (a `deleteMessage` metódus helyett). Ennek hatására Service Bus az üzenet zárolásának feloldására, és elérhetővé tételére, hogy ugyanazt az alkalmazást vagy egy másik alkalmazást használó alkalmazás is megkapja.
+A Service Bus olyan funkciókat biztosít, amelyekkel zökkenőmentesen helyreállíthatja az alkalmazás hibáit vagy az üzenetek feldolgozásának nehézségeit. Ha egy fogadó alkalmazás valamilyen okból nem tudja feldolgozni az üzenetet, akkor az a kapott üzenet `unlockMessage` metódusát hívja meg (az `deleteMessage` metódus helyett). Ennek hatására Service Bus az üzenet zárolásának feloldására, és elérhetővé tételére, hogy ugyanazt az alkalmazást vagy egy másik alkalmazást használó alkalmazás is megkapja.
 
 A várólistán lévő üzenethez is van egy időkorlát társítva, és ha az alkalmazás nem tudja feldolgozni az üzenetet a zárolási időkorlát lejárta előtt (például ha az alkalmazás összeomlik), akkor a Service Bus automatikusan feloldja az üzenet zárolását, és végrehajtja azt ismét elérhető.
 
-Abban az esetben, ha az alkalmazás az üzenet feldolgozása után összeomlik, de `deleteMessage` a kérelem kiadása előtt, akkor a rendszer az üzenetet az újraindításkor visszaküldi az alkalmazásnak. Ezt a fajta feldolgozást gyakran *legalább egyszer* kell meghívni a feldolgozásra; Ez azt eredményezi, hogy minden üzenet legalább egyszer fel van dolgozva, de bizonyos helyzetekben előfordulhat, hogy az üzenet újbóli kézbesítésre kerül. Ha a forgatókönyv nem tudja elviselni az ismétlődő feldolgozást, akkor az alkalmazások fejlesztőinek további logikát kell hozzáadniuk az alkalmazásokhoz, hogy kezelni tudják az üzenetek ismétlődő kézbesítését. Ez gyakran az üzenet `getMessageId` metódusának használatával érhető el, amely állandó marad a kézbesítési kísérletek során.
+Abban az esetben, ha az alkalmazás az üzenet feldolgozása után összeomlik, de az `deleteMessage`-kérelem kiadása előtt, akkor az üzenet újból megjelenik az alkalmazásban az újraindításkor. Ezt a fajta feldolgozást gyakran *legalább egyszer* kell meghívni a feldolgozásra; Ez azt eredményezi, hogy minden üzenet legalább egyszer fel van dolgozva, de bizonyos helyzetekben előfordulhat, hogy az üzenet újbóli kézbesítésre kerül. Ha a forgatókönyv nem tudja elviselni az ismétlődő feldolgozást, akkor az alkalmazások fejlesztőinek további logikát kell hozzáadniuk az alkalmazásokhoz, hogy kezelni tudják az üzenetek ismétlődő kézbesítését. Ez gyakran az üzenet `getMessageId` metódusával érhető el, amely állandó marad a kézbesítési kísérletek között.
 
 ## <a name="delete-topics-and-subscriptions"></a>Témakörök és előfizetések törlése
-Témakör vagy előfizetés törléséhez használja a `ServiceBusRestProxy->deleteTopic` vagy a `ServiceBusRestProxy->deleteSubscripton` metódust. Egy témakör törlése az adott témakörre regisztrált összes előfizetést is törli.
+Egy témakör vagy előfizetés törléséhez használja a `ServiceBusRestProxy->deleteTopic` vagy a `ServiceBusRestProxy->deleteSubscripton` metódusokat. Egy témakör törlése az adott témakörre regisztrált összes előfizetést is törli.
 
-Az alábbi példa bemutatja, hogyan törölhet egy nevű `mytopic` témakört és a regisztrált előfizetéseit.
+Az alábbi példa bemutatja, hogyan törölhet egy `mytopic` nevű témakört és a regisztrált előfizetéseit.
 
 ```php
 require_once 'vendor/autoload.php';
@@ -354,7 +354,7 @@ catch(ServiceException $e){
 }
 ```
 
-A `deleteSubscription` metódus használatával egymástól függetlenül törölheti az előfizetéseket:
+Az `deleteSubscription` metódus használatával az előfizetéseket egymástól függetlenül törölheti:
 
 ```php
 $serviceBusRestProxy->deleteSubscription("mytopic", "mysubscription");

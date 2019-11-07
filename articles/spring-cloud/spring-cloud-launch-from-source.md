@@ -6,12 +6,12 @@ ms.service: spring-cloud
 ms.topic: quickstart
 ms.date: 10/30/2019
 ms.author: jeconnoc
-ms.openlocfilehash: 524fa18dfd4c47e699ba6b9d5d7a98bbbaaf5c72
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
-ms.translationtype: HT
+ms.openlocfilehash: 7ca80966ccab83991246f0ed7ea35cf2c9524b1d
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73646768"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73721284"
 ---
 # <a name="launch-your-spring-cloud-application-from-source-code"></a>A Spring Cloud-alkalmazás elindítása forráskódból
 
@@ -31,7 +31,7 @@ Ez a rövid útmutató a következőket ismerteti:
 ## <a name="prerequisites"></a>Előfeltételek
 
 >[!Note]
-> Az Azure Spring Cloud jelenleg nyilvános előzetes verzióként érhető el. A nyilvános előzetes ajánlatok lehetővé teszik, hogy az ügyfelek a hivatalos kiadásuk előtt új funkciókkal kísérletezzenek.  A nyilvános előzetes verzió funkcióit és szolgáltatásait nem éles használatra szánták.  Az előzetes verziókra vonatkozó támogatással kapcsolatos további információkért írjon be egy [support Request](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request).
+> Az Azure Spring Cloud jelenleg nyilvános előzetes verzióként érhető el. A nyilvános előzetes ajánlatok lehetővé teszik, hogy az ügyfelek a hivatalos kiadásuk előtt új funkciókkal kísérletezzenek.  A nyilvános előzetes verzió funkcióit és szolgáltatásait nem éles használatra szánták.  Az előzetes verziókra vonatkozó támogatással kapcsolatos további információkért tekintse meg a [gyakori kérdéseket](https://azure.microsoft.com/support/faq/) , vagy a [support Request](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request) .
 
 Mielőtt elkezdené, győződjön meg arról, hogy az Azure-előfizetése rendelkezik a szükséges függőségekkel:
 

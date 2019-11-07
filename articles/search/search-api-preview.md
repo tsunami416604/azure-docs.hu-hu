@@ -8,12 +8,12 @@ ms.author: brjohnst
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: dff6473fd01fc2d41c5bb100eefd583afe4175b0
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: HT
+ms.openlocfilehash: 24e16942410c72640628bd4120d05a85e68de993
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73496476"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73720026"
 ---
 # <a name="azure-cognitive-search-service-rest-api-version-2019-05-06-preview"></a>Azure Cognitive Search Service REST API – Version 2019-05-06 – előzetes verzió
 
@@ -25,20 +25,27 @@ Ez a cikk a Search Service REST API `api-version=2019-05-06-Preview` verzióját
 
 ## <a name="new-in-2019-05-06-preview"></a>Új a 2019-05-06-ben – előzetes verzió
 
-[* * A növekményes indexelés](cognitive-search-incremental-indexing-conceptual.md) új mód az indexeléshez, amely az állapotot és a gyorsítótárazást is hozzáadja, így a meglévő kimenet újra felhasználható, ha az adatokat, indexelő és készségkészlet-definíciók változatlanok. Ez a funkció kizárólag kognitív készségkészlet keresztüli dúsításra vonatkozik.
++ A [növekményes indexelés](cognitive-search-incremental-indexing-conceptual.md) új mód az indexeléshez, amely az állapotot és a gyorsítótárazást egy készségkészlet, így lehetővé teszi a meglévő kimenet újbóli felhasználását, ha a forrásadatok, az indexelő és a készségkészlet-definíciók változatlanok. Ez a funkció csak a kognitív készségkészlet meghatározott dúsításokra vonatkozik.
 
-A [**Knowledge Store**](knowledge-store-concept-intro.md) a mesterséges intelligencia-alapú alkoholtartalom-növelési folyamat új célja. Az indexen kívül az Azure Storage-ban az indexelés során létrehozott, feltöltött adatstruktúrák is megmaradhatnak. A Készségkészlet elemein keresztül vezérelheti az adatai fizikai szerkezetét, beleértve az adattárolás módját, az adatokat a Table Storage-ban vagy a blob Storage-ban, valamint azt, hogy több nézet van-e tárolva.
++ [Cosmos db indexelő](search-howto-index-cosmosdb.md) támogatja a MongoDB API-t, a Gremlin API-t és a Cassandra API.
 
-Az [**ügyfél által felügyelt titkosítási kulcsok**](search-security-manage-encryption-keys.md) a szolgáltatás-oldali titkosításhoz is új előzetes verziójú funkció. A Microsoft által felügyelt beépített titkosítás mellett további titkosítási réteget is alkalmazhat, amelyben Ön a kulcsok egyetlen tulajdonosa...
++ [Azure Data Lake Storage Gen2 indexelő](search-howto-index-azure-data-lake-storage.md) képes a tartalom és a metaadatok indexelésére Data Lake Storage Gen2.
 
-## <a name="other-preview-features"></a>Egyéb előzetes verziójú funkciók
++ A [dokumentumok kinyerése (előzetes verzió)](cognitive-search-skill-document-extraction.md) az indexelés során használt kognitív képesség, amely lehetővé teszi egy fájl tartalmának kicsomagolását egy készségkészlet belülről. Korábban a készségkészlet végrehajtása előtt csak a csinos dokumentum történt. Ennek a képességnek a hozzáadásával ezt a műveletet a készségkészlet végrehajtásán belül is végrehajthatja.
+
++ A [szöveg fordítása (előzetes verzió)](cognitive-search-skill-text-translation.md) a szöveget kiértékelő indexelés során használt kognitív képesség, amely minden egyes rekord esetében a megadott nyelvre fordított szöveget adja vissza.
+
++ A [Knowledge Store](knowledge-store-concept-intro.md) a mesterséges intelligencia-alapú alkoholtartalom-növelési folyamat új célja. A fizikai adatstruktúra létezik az Azure Blob Storage-ban és az Azure Table Storage-ban, és akkor jön létre és töltődik fel, amikor olyan indexelő futtat, amely egy kapcsolódó kognitív készségkészlet rendelkezik. A rendszer egy készségkészlet-definíción belül megadta a Tudásbázis definícióját. A Tudásbázis definícióján belül az adatai fizikai szerkezetét az adatformátumot meghatározó *kivetítési* elemekkel szabályozhatja, hogy az adatokat a Table Storage vagy a blob Storage tárolja-e, és hogy van-e több nézet.
+
++ Az [ügyfél által felügyelt titkosítási kulcsok](search-security-manage-encryption-keys.md) a szolgáltatás-oldali titkosításhoz is új előzetes verziójú funkció. A Microsoft által felügyelt beépített titkosítás mellett további titkosítási réteget is alkalmazhat, amelyben Ön a kulcsok egyetlen tulajdonosa...
+
+## <a name="earlier-preview-features"></a>Korábbi előzetes funkciók
 
 A korábbi előzetes verziókban bejelentett funkciók még nyilvános előzetes verzióban érhetők el. Ha egy korábbi előzetes verziójú API-verzióval rendelkező API-t hív meg, továbbra is használhatja ezt a verziót, vagy átválthat `2019-05-06-Preview`re a várt viselkedés módosítása nélkül.
 
 + a [moreLikeThis lekérdezési paraméter](search-more-like-this.md) megkeresi az adott dokumentumhoz kapcsolódó dokumentumokat. Ez a funkció korábbi előzetes verziókban található. 
-* A [CSV-blob indexelése](search-howto-index-csv-blobs.md) soronként egy dokumentumot hoz létre, a szöveges Blobok egy dokumentuma helyett.
-* A [Cosmos db indexelő MongoDB API-támogatása előzetes verzióban](search-howto-index-cosmosdb.md) érhető el.
 
++ A [CSV-blob indexelése](search-howto-index-csv-blobs.md) soronként egy dokumentumot hoz létre, a szöveges Blobok egy dokumentuma helyett.
 
 ## <a name="how-to-call-a-preview-api"></a>Előzetes verziójú API meghívása
 

@@ -1,26 +1,24 @@
 ---
 title: Inaktív titkosítás az ügyfél által felügyelt kulcsokkal Azure Key Vaultban (előzetes verzió)
 titleSuffix: Azure Cognitive Search
-description: A kiszolgálóoldali titkosítást az indexek és az Azure Cognitive Search szinonimák használatával kiegészítheti a Azure Key Vaultban létrehozott és felügyelt kulcsokkal.
+description: A kiszolgálóoldali titkosítást az indexek és az Azure Cognitive Search szinonimák használatával kiegészítheti a Azure Key Vaultban létrehozott és felügyelt kulcsokkal. Ez a szolgáltatás jelenleg nyilvános előzetes verzióban érhető el.
 manager: nitinme
 author: NatiNimni
 ms.author: natinimn
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 05/02/2019
-ms.openlocfilehash: 94c9d94edb9a9ca3f6117bd43ab9cefe1dad52a3
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 1521abfa327c69648b38f02d1d6313baa369f304
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72794357"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73721755"
 ---
 # <a name="content-encryption-of-azure-cognitive-search-using-customer-managed-keys-in-azure-key-vault"></a>Az Azure Cognitive Search tartalmának titkosítása az ügyfél által felügyelt kulcsokkal Azure Key Vault
 
-> [!Note]
-> Az ügyfél által felügyelt kulcsokkal történő titkosítás előzetes verzióban érhető el, és nem éles használatra készült. A [REST API 2019-05-06-es verziójának előzetes verziója](search-api-preview.md) biztosítja ezt a funkciót. Használhatja a .NET SDK 8,0-es verziójának előzetes verzióját is.
->
-> Ez a funkció ingyenes szolgáltatásokhoz nem érhető el. Az 2019-01-01-on vagy azt követően létrehozott számlázható keresési szolgáltatást kell használnia. Jelenleg nincs portál-támogatás.
+> [!IMPORTANT] 
+> A REST-alapú titkosítás támogatása jelenleg nyilvános előzetes verzióban érhető el. Az előzetes verziójú funkciók szolgáltatói szerződés nélkül érhetők el, és éles számítási feladatokhoz nem ajánlott. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). A [REST API 2019-05-06-es verziójának előzetes verziója](search-api-preview.md) és a [.net SDK 8,0-es verziója – előzetes verzió](search-dotnet-sdk-migration-version-9.md) biztosítja ezt a funkciót. Jelenleg nincs portál-támogatás.
 
 Alapértelmezés szerint az Azure Cognitive Search a [szolgáltatás által felügyelt kulcsokkal](https://docs.microsoft.com/azure/security/fundamentals/encryption-atrest#data-encryption-models)titkosítja a felhasználói tartalmakat. Az alapértelmezett titkosítás további titkosítási réteggel kiegészíthető a Azure Key Vaultban létrehozott és felügyelt kulcsok használatával. Ez a cikk végigvezeti a lépéseken.
 
@@ -233,7 +231,7 @@ HRE-alkalmazás létrehozása a portálon:
 > Egy HRE-alkalmazás vagy annak hitelesítési kulcsának módosításakor az adott alkalmazást használó Azure Cognitive Search indexet vagy szinonimát tartalmazó térképet először frissíteni kell az új alkalmazás-ID\key használatára az előző alkalmazás vagy annak engedélyezése **előtt** . kulcs, és a Key Vault hozzáférésének visszavonása előtt.
 > Ha ezt nem teszi meg, az index vagy a szinonimák leképezése használhatatlan lesz, mivel a kulcs elérésének elvesztése után nem tudja visszafejteni a tartalmat.   
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ha nem ismeri az Azure biztonsági architektúráját, tekintse át az [Azure biztonsági dokumentációját](https://docs.microsoft.com/azure/security/), és különösen a következő cikket:
 

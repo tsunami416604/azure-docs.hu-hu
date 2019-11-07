@@ -1,20 +1,20 @@
 ---
-title: Azure Cosmos DB globális terjesztési oktatóanyag az SQL API-hoz
-description: Ismerje meg, hogyan állíthatja be az Azure Cosmos DB globális terjesztését az SQL API használatával.
+title: 'Oktatóanyag: Azure Cosmos DB globális terjesztési oktatóanyag az SQL API-hoz'
+description: 'Oktatóanyag: Ismerje meg, hogyan állíthatja be Azure Cosmos DB globális terjesztést az SQL API használatával.'
 author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: tutorial
-ms.date: 07/15/2019
+ms.date: 11/05/2019
 ms.reviewer: sngun
-ms.openlocfilehash: b6b8be29afc25a3862a440e46d41e8c911189c04
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: b76fee17b64d50831d5bceca9d8512e7b7498d73
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72756829"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73720766"
 ---
-# <a name="set-up-azure-cosmos-db-global-distribution-using-the-sql-api"></a>Az Azure Cosmos DB globális terjesztésének beállítása az SQL API használatával
+# <a name="tutorial-set-up-azure-cosmos-db-global-distribution-using-the-sql-api"></a>Oktatóanyag: Azure Cosmos DB globális terjesztés beállítása az SQL API használatával
 
 Ebben a cikkben bemutatjuk, hogyan állíthatja be az Azure Cosmos DB globális terjesztését az Azure Portallal, és hogyan csatlakozhat az SQL API használatával.
 
@@ -184,7 +184,7 @@ Ha az írási régió az ügyfél kezdeti felderítési fázisa után módosul, 
 
 Ezzel el is végezte az oktatóanyagot. Ha meg szeretné ismerni, hogyan kezelheti a globálisan replikált fiók konzisztenciáját, olvassa el a [Konzisztenciaszintek az Azure Cosmos DB-ben](consistency-levels.md) című cikket. További információ a globális adatbázis-replikáció működéséről az Azure Cosmos DB szolgáltatásban: [Globális adatterjesztés az Azure Cosmos DB-vel](distribute-data-globally.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban a következőket hajtotta végre:
 

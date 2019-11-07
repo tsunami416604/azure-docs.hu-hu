@@ -1,7 +1,7 @@
 ---
 title: ARCUL ütötte
 titleSuffix: Azure Machine Learning service
-description: Megtudhatja, hogyan használhatja a ARCUL ütötte modult a Azure Machine Learning szolgáltatásban az adathalmazban előforduló kis előfordulási példák számának növelésére a túlmintavételezés használatával.
+description: Megtudhatja, hogyan használhatja a ARCUL ütötte modult a Azure Machine Learning szolgáltatásban az adatkészletekben előforduló kis előfordulású példák számának növelésére a túlmintavételezés használatával.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,34 +9,34 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/16/2019
-ms.openlocfilehash: 072268af52ebf7d3bede564d8c949eec9fc9f625
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: d78e3d0d30cc44f2f30b1a856297f2c31d8f8469
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73516187"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73717014"
 ---
 # <a name="smote"></a>ARCUL ütötte
 
-Ez a cikk azt ismerteti, hogyan használható a **arcul ütötte** modul a Azure Machine learning Designerben (előzetes verzió) a gépi tanuláshoz használt adatkészletben lévő, az általa képviselt esetek számának növelésére. A ARCUL ütötte jobb módszer a ritka esetek számának növelésére, mint a meglévő esetek egyszerű duplikálása.  
+Ez a cikk azt ismerteti, hogyan használható a ARCUL ütötte modul a Azure Machine Learning Designerben (előzetes verzió) a gépi tanuláshoz használt adatkészletben lévő, az általa képviselt esetek számának növelésére. A ARCUL ütötte jobb módszer a ritka esetek számának növelésére, mint a meglévő esetek egyszerű duplikálása.  
 
- A ARCUL ütötte modult egy *kiegyensúlyozatlan*adatkészlethez kell kötni. Számos oka lehet annak, hogy az adathalmazok kiegyensúlyozva lehetnek: a megcélzott kategória lehet ritka a populációban, vagy ha az adatok gyűjtése nehéz lehet. A ARCUL ütötte-et általában akkor használja, ha az elemezni kívánt *osztályt* a rendszer jelöli. 
+A ARCUL ütötte modult egy *kiegyensúlyozatlan*adatkészlet számára kapcsolja össze. Számos oka lehet annak, hogy egy adatkészlet kiegyensúlyozatlan. Előfordulhat például, hogy a megcélzott kategória ritkán fordul elő a populációban, vagy az adatok összegyűjtése nehéz lehet. Az elemezni kívánt *osztályt* általában a arcul ütötte használatával lehet használni. 
   
- A modul egy adatkészletet ad vissza, amely tartalmazza az eredeti mintákat, valamint egy további szintetikus kisebbségi mintát, a megadott százaléktól függően.  
+A modul az eredeti mintákat tartalmazó adatkészletet ad vissza. A megadott százalékértéktől függően számos szintetikus kisebbségi mintát is ad vissza.  
   
-### <a name="more-about-smote"></a>További információ a ARCUL ütötte
+## <a name="more-about-smote"></a>További információ a ARCUL ütötte
 
-A **arcul ütötte** a *szintetikus kisebbségek Túlmintavételezésének technikáját*jelenti. Ez egy statisztikai módszer az adatkészletben lévő esetek számának kiegyensúlyozott módon történő növelésére.  A modul úgy működik, hogy új példányokat hoz létre a meglévő, bemenetként megadott kisebbségi esetekből. A ARCUL ütötte ezen implementációja **nem** módosítja a többségi esetek számát.
+A szintetikus kisebbségi túlmintavételezési módszer (ARCUL ütötte) egy statisztikai módszer, amellyel az adatkészletben lévő esetek száma kiegyensúlyozott módon növelhető. A modul úgy működik, hogy új példányokat hoz létre a meglévő, bemenetként megadott kisebbségi esetekből. A ARCUL ütötte ezen implementációja *nem* módosítja a többségi esetek számát.
 
-Az új példányok nem csupán másolatok a meglévő kisebbségi esetekről; Ehelyett az algoritmus mintákat vesz az egyes célcsoportok és a hozzájuk *tartozó szomszédok számára,* és olyan új példákat hoz létre, amelyek a cél eset funkcióit ötvözik a szomszédaival. Ez a megközelítés növeli az egyes osztályok által elérhető funkciókat, és általánosabban teszi a mintákat.
+Az új példányok nem csak a meglévő kisebbségi esetek másolatai. Ehelyett az algoritmus mintákat vesz az egyes célcsoportok és a hozzájuk *tartozó szomszédok számára.* Az algoritmus ezután olyan új példákat hoz létre, amelyek a cél eset funkcióit kombinálják a szomszédai szolgáltatásaival. Ez a megközelítés növeli az egyes osztályok által elérhető funkciókat, és általánosabban teszi a mintákat.
   
-A ARCUL ütötte a teljes adatkészletet bemenetként veszi fel, de csak a kisebbségi esetek százalékos arányát növeli. Tegyük fel például, hogy egy kiegyensúlyozatlan adatkészlettel rendelkezik, ahol az esetek mindössze 1%-ában az A célként megadott érték (a kisebbségi osztály) és az esetek 99%-a "B" értékkel rendelkezik. Ha a kisebbségi esetek százalékos arányát az előző százalékban kétszer szeretné megnövelni, a modul tulajdonságainál a 200 értéket kell megadnia **arcul ütötte százalékban** .  
+A ARCUL ütötte a teljes adatkészletet bemenetként veszi fel, de csak a kisebbségi esetek százalékos arányát növeli. Tegyük fel például, hogy van egy kiegyensúlyozatlan adatkészlet, ahol az esetek mindössze 1 százaléka az a célként megadott érték (a kisebbségi osztály), az esetek 99 százalékában pedig a B érték szerepel. Ha a kisebbségi esetek százalékos arányát az előző százalékban kétszer szeretné megnövelni, a modul tulajdonságainál a **200** értéket kell megadnia **arcul ütötte százalékban** .  
   
 ## <a name="examples"></a>Példák  
 
-Azt javasoljuk, hogy a **arcul ütötte** -t kis adatkészlettel próbálja meg használni a működésének megtekintéséhez. Az alábbi példa a Azure Machine Learning Designerben elérhető véradási adatkészletet használja.
+Azt javasoljuk, hogy a ARCUL ütötte-t kis adatkészlettel próbálja meg használni a működésének megtekintéséhez. Az alábbi példa a Azure Machine Learning Designerben elérhető véradási adatkészletet használja.
   
-Ha felveszi az adatkészletet egy folyamatba, és az adatkészlet kimenetén található **Megjelenítés** elemre kattint, láthatja, hogy az adatkészletben szereplő 748-es sorok vagy esetek száma 570 eset (76%) 0. osztály és 178 eset (24%) 1. osztály. Bár ez nem borzasztóan kiegyensúlyozatlan, az 1. osztály a vért adományozó személyeket jelöli, így ezek a sorok tartalmazzák a modellezni kívánt *szolgáltatás területét* .
+Ha hozzáadja az adatkészletet egy folyamathoz, és kiválasztja az adatkészlet kimenetének **megjelenítését** , láthatja, hogy az adatkészletben szereplő 748-es sorok vagy esetek közül a 570-esetek (76 százalék) 0, a 178-as (24 százalék) pedig 1. osztály. Bár ez az eredmény nem okoz rettenetesen kiegyensúlyozatlan, az 1. osztály a vért adományozó személyeket jelöli, így ezek a sorok tartalmazzák a modellezni kívánt *szolgáltatás területét* .
  
 Az esetek számának növeléséhez a következő módon állíthatja be a **arcul ütötte százalékos**értékét a 100 többszörösével:
 
@@ -44,58 +44,60 @@ Az esetek számának növeléséhez a következő módon állíthatja be a **arc
 |-|-------------|-------------|-----------|  
 |Eredeti adatkészlet<br /><br /> (a **arcul ütötte-értékkel** egyenértékű = **0**)|570<br /><br /> 76%|178<br /><br /> 24|748|  
 |**Arcul ütötte százalék** = **100**|570<br /><br /> 62%|356<br /><br /> 38%|926|  
-|**Arcul ütötte százalék** = **200**|570<br /><br /> 52%|534<br /><br /> 48%|1104|  
-|**Arcul ütötte százalék** = **300**|570<br /><br /> 44%|712<br /><br /> 56%|1282|  
+|**Arcul ütötte százalék** = **200**|570<br /><br /> 52%|534<br /><br /> 48%|1 104|  
+|**Arcul ütötte százalék** = **300**|570<br /><br /> 44%|712<br /><br /> 56%|1 282|  
   
 > [!WARNING]
->  Az ARCUL ütötte-t használó esetek számának növelése nem garantált, hogy pontosabb modelleket hozzon létre. Próbálja ki a folyamatot különböző százalékokkal, különböző szolgáltatáskészletekkel és a legközelebbi szomszédok különböző számával, hogy megtekintse, hogyan befolyásolja a modell az esetek hozzáadását.  
+> Az esetek számának növelése a ARCUL ütötte használatával nem garantált, hogy pontosabb modelleket hozzon létre. Próbálja ki a csővezetékeket különböző százalékokkal, különböző szolgáltatásokkal, valamint a legközelebbi szomszédok különböző számával, hogy megtekintse, hogyan befolyásolja a modell az esetek hozzáadását.  
   
 ## <a name="how-to-configure-smote"></a>A ARCUL ütötte konfigurálása
   
-1.  Adja hozzá a ARCUL ütötte modult a folyamathoz. A modult az Adatátalakítási modulok területen találja a manipuláció kategóriában.
+1.  Adja hozzá a ARCUL ütötte modult a folyamathoz. A modult az **Adatátalakítási modulok**területen találja a **manipuláció** kategóriában.
 
-2. Kapcsolódjon a fokozni kívánt adatkészlethez. Ha meg szeretné adni az új esetek létrehozásához szükséges lemezterületet, vagy csak bizonyos oszlopokat használ, vagy ha kizárja néhányat, a **arcul ütötte**használata előtt a használni kívánt oszlopok elkülönítéséhez használja az [adatkészletben szereplő oszlopok kiválasztása lehetőséget](select-columns-in-dataset.md) .
+2. A fokozni kívánt adatkészlet csatlakoztatása. Ha meg szeretné adni az új esetek létrehozásához szükséges területet, vagy csak bizonyos oszlopokat használ, vagy ha nem szeretne kihagyni néhányat, használja az [Oszlopok kiválasztása az adatkészlet](select-columns-in-dataset.md) modulban lehetőséget. Ezután el tudja különíteni a használni kívánt oszlopokat a ARCUL ütötte használata előtt.
   
-    Ellenkező esetben a **arcul ütötte** használatával létrehozott új esetek az **összes** bemenetként megadott oszlopon alapulnak. A szolgáltatás oszlopainak legalább egy oszlopa numerikus.
+    Ellenkező esetben a ARCUL ütötte-on keresztül létrehozott új esetek az *összes* bemenetként megadott oszlopon alapulnak. A szolgáltatás oszlopainak legalább egy oszlopa numerikus.
   
-3.  Győződjön meg arról, hogy a címkét vagy a cél osztályt tartalmazó oszlop van kiválasztva.  A **arcul ütötte** csak bináris címkéket fogad.
+3.  Győződjön meg arról, hogy a címkét vagy a cél osztályt tartalmazó oszlop van kiválasztva. A ARCUL ütötte csak bináris címkéket fogad el.
   
-4.  A **arcul ütötte** modul automatikusan azonosítja a kisebbségi osztályt a Label (címke) oszlopban, majd beolvassa a kisebbségi osztály összes példáját. Az összes oszlopnak nem lehet NaN.
+4.  A ARCUL ütötte modul automatikusan azonosítja a kisebbségi osztályt a Label (címke) oszlopban, majd beolvassa a kisebbségi osztály összes példáját. Az összes oszlopnak nem lehet NaN-értéke.
   
-5.  A **arcul ütötte százalékos értéke** beállításban adjon meg egy egész számot, amely a kimeneti adatkészletben a kisebbségi esetek céljának százalékos arányát jelzi. Példa:  
+5.  A **arcul ütötte százalékos értéke** beállításban adjon meg egy egész számot, amely a kimeneti adatkészletben a kisebbségi esetek céljának százalékos arányát jelzi. Például:  
   
-    - **0** (%) értéket kell beírnia. A ARCUL ütötte modul pontosan ugyanazt az adatkészletet adja vissza, amelyet bemenetként adott meg, és nem ad hozzá új kisebbségi eseteket. Ebben az adatkészletben az osztály aránya nem módosult.  
+    - Adja meg a **0**értéket. A ARCUL ütötte modul pontosan ugyanazt az adatkészletet adja vissza, amelyet bemenetként adott meg. Nem hoz létre új kisebbségi eseteket. Ebben az adatkészletben az osztály aránya nem módosult.  
   
-    -   **100** (%) értéket kell beírnia. A ARCUL ütötte-modul új, kisebb előfordulási eseteket hoz létre, és az eredeti adatkészletben azonos számú kisebbségi esetet ad hozzá. Mivel a ARCUL ütötte nem növekszik a többségi esetek száma, az egyes osztályokba tartozó esetek aránya már megváltozott.  
+    - Adja meg a **100**értéket. A ARCUL ütötte modul új, kismértékű eseteket hoz létre. Az eredeti adatkészletben lévő azonos számú kisebbségi esetet adja hozzá. Mivel a ARCUL ütötte nem növekszik a többségi esetek száma, az egyes osztályokba tartozó esetek aránya megváltozott.  
   
-    -   **200** (%) értéket kell beírnia. A modul megduplázza a kisebbségi esetek százalékos arányát az eredeti adatkészlethez képest. Ez azt eredményezi, hogy az előzőekben leírtak szerint kétszer annyi kisebbségi ügyet **tartalmaz** .  Az adatkészlet mérete inkább úgy növekszik, hogy a többségi esetek száma azonos maradjon, és a kisebbségi esetek száma megnő, amíg meg nem felel a kívánt százalékos értéknek.  
+    - Adja meg a **200**értéket. A modul megduplázza a kisebbségi esetek százalékos arányát az eredeti adatkészlethez képest. Ez azt eredményezi, hogy az előzőekben leírtak szerint kétszer annyi kisebbségi ügyet *tartalmaz* . Az adatkészlet mérete inkább úgy növekszik, hogy a többségi esetek száma ugyanaz marad. A kisebbségi esetek száma megnő, amíg meg nem felel a kívánt százalékos értéknek.  
   
     > [!NOTE]
     > A ARCUL ütötte százalékban csak a 100 többszörösét használja.
 
-6.  A **legközelebbi szomszédok** lehetőség használatával határozza meg a arcul ütötte algoritmus által az új esetek kiépítésekor használt szolgáltatás területének méretét. A *legközelebbi szomszéd* egy adatsora (egy eset), amely hasonló a megcélzott esetekhez. A két eset közötti távolságot a rendszer az összes funkció súlyozott vektorának kombinálásával méri.  
+6.  A **legközelebbi szomszédok** lehetőség használatával határozza meg, hogy a arcul ütötte algoritmus milyen méretben használja az új esetek kiépítésekor. A legközelebbi szomszéd egy olyan adathalmaz, amely hasonlít a cél esetére. A két eset közötti távolságot a rendszer az összes funkció súlyozott vektorának kombinálásával méri.  
   
-     + A legközelebbi szomszédok számának növelésével több esetben is kap funkciókat.
-     + A legközelebbi szomszédok számának alacsony értékre állításával olyan szolgáltatásokat használhat, amelyek az eredeti mintában jobban hasonlítanak.  
+    + A legközelebbi szomszédok számának növelésével több esetben is kap funkciókat.
+    + A legközelebbi szomszédok számának alacsony értékre állításával olyan szolgáltatásokat használhat, amelyek az eredeti mintában jobban hasonlítanak.  
   
-7. Adjon meg egy értéket a **véletlenszerű mag** szövegmezőben, ha ugyanazt az eredményt szeretné biztosítani ugyanazon folyamat ugyanazon adatcsatornán keresztül futtatva. Ellenkező esetben a modul egy véletlenszerű magot generál a Processzor órajelének értéke alapján a folyamat telepítésekor, ami némileg eltérő eredményeket eredményezhet a futtatások során.
+7. Adjon meg egy értéket a **véletlenszerű mag** mezőben, ha ugyanazt az eredményt szeretné biztosítani ugyanazon folyamat ugyanazon adatcsatornán keresztül futtatva. Ellenkező esetben a modul egy véletlenszerű magot generál a Processzor órajelének értéke alapján a folyamat telepítésekor. A véletlenszerű magok generálása némileg eltérő eredményeket eredményezhet a futtatások során.
 
 8. A folyamat futtatása.  
   
-     A modul kimenete egy adatkészlet, amely az eredeti sorokat, valamint néhány, a kisebbségi esetekkel felvett sort tartalmaz.  
+   A modul kimenete egy adatkészlet, amely tartalmazza az eredeti sorokat, valamint több, a kisebbségi esetekkel felvett sort.  
 
 ## <a name="technical-notes"></a>Technikai megjegyzések
 
-+ A **arcul ütötte** modult használó modellek közzétételekor távolítsa el a **arcul ütötte** a prediktív folyamatból, mielőtt webszolgáltatásként közzéteszi.  Ennek az az oka, hogy a ARCUL ütötte célja a modell fejlesztése a képzés során, és nem a pontozási célra készült.  Hibaüzenet jelenhet meg, ha egy közzétett prediktív folyamat tartalmazza a ARCUL ütötte modult.
++ Ha a **arcul ütötte** modult használó modellt tesz közzé, távolítsa el a **arcul ütötte** a prediktív folyamatból, mielőtt webszolgáltatásként tenné közzé. Ennek az az oka, hogy a ARCUL ütötte célja a modell fejlesztése a képzés során, nem pedig pontozással. Hibaüzenet jelenhet meg, ha egy közzétett prediktív folyamat tartalmazza a ARCUL ütötte modult.
 
-+ A ARCUL ütötte alkalmazása előtt gyakran jobb eredményeket érhet el, ha hiányzó érték tisztítását vagy más átalakításokat alkalmaz az adatjavításhoz. 
++ A ARCUL ütötte alkalmazása előtt gyakran jobb eredményeket érhet el, ha törli a hiányzó értékeket vagy más átalakításokat alkalmaz az adatok javítására. 
 
-+ Egyes kutatók megvizsgálták, hogy a ARCUL ütötte hatékony-e a nagy dimenziós vagy ritkán használt adatokat illetően, például a szöveges besorolásban vagy a genomikai adatkészletekben. Ez a dokumentum jól összefoglalja a ARCUL ütötte alkalmazásának hatásait és elméleti érvényességét: [Blagus és LUSA: arcul ütötte for nagy dimenziós osztály – kiegyensúlyozatlan adatmennyiség](https://bmcbioinformatics.biomedcentral.com/articles/10.1186/1471-2105-14-106)
++ Egyes kutatók megvizsgálták, hogy a ARCUL ütötte hatékony-e a nagy dimenziós vagy ritka adatokat, például a szöveges besorolásban vagy a genomikai adatkészletekben használt adatokat. Ez a tanulmány jól összefoglalja a ARCUL ütötte alkalmazásának hatásait és elméleti érvényességét: [Blagus és LUSA: arcul ütötte a nagy dimenziós osztály által kiegyensúlyozatlan adatmennyiségek esetében](https://bmcbioinformatics.biomedcentral.com/articles/10.1186/1471-2105-14-106).
 
-    Ha a ARCUL ütötte nem érvényes az adatkészletben, akkor érdemes lehet más megközelítéseket is figyelembe venni a kisebbségi esetek túlmintavételezéséhez vagy a többségi esetek mintavételezéséhez, valamint a tanulók által közvetlenül a fürtözést segítő együttes módszerek létrehozásához. poggyász vagy adaptív növelés.
++ Ha a ARCUL ütötte nem érvényes az adatkészletben, az esetlegesen megfontolandó egyéb megközelítések a következők:
+  + A kisebbségi esetek túlmintavételezését vagy a többségi esetek mintavételezését végző metódusok.
+  + Olyan Ensemble-technikák, amelyek a tanulót közvetlenül a fürtözés, a csomagok és az adaptív növelés használatával segítik elő.
 
 
 ## <a name="next-steps"></a>További lépések
 
-Tekintse [meg Azure Machine learning szolgáltatás számára elérhető modulok készletét](module-reference.md) . 
+Tekintse meg a Azure Machine Learning szolgáltatás [számára elérhető modulok készletét](module-reference.md) . 
 

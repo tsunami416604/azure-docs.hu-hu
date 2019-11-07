@@ -3,17 +3,17 @@ title: Az eszközökre vonatkozó fogalmak az Azure-eszközök kiépítés teré
 description: Az eszközök kiépítési szolgáltatásával és IoT Hubával kapcsolatos eszköz-kiépítési fogalmakat ismerteti.
 author: nberdy
 ms.author: nberdy
-ms.date: 04/04/2019
+ms.date: 11/06/2019
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: briz
-ms.openlocfilehash: dc4ffc4965d6a3c05693c7566a2c51538584f372
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 0e3557588281cd392a7a8a1c2654f10e8387dd83
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72897579"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73720532"
 ---
 # <a name="iot-hub-device-provisioning-service-device-concepts"></a>Az eszközök IoT Hub Device Provisioning Service kapcsolatos fogalmak
 
@@ -51,7 +51,7 @@ A regisztrációs azonosító az eszköz kiépítési szolgáltatásban való eg
 
 ## <a name="device-id"></a>Eszközazonosító
 
-Az eszköz azonosítója a IoT Hubban megjelenő azonosító. Előfordulhat, hogy a kívánt eszköz azonosítója be van állítva a beléptetési bejegyzésben, de nem kötelező megadni. Ha nincs megadva a kívánt eszköz azonosítója a beléptetési listán, a rendszer a regisztrációs azonosítót használja az eszköz AZONOSÍTÓJAként az eszköz regisztrálása során. További információ a [IoT hub eszköz-azonosítókkal](../iot-hub/iot-hub-devguide-identity-registry.md)kapcsolatban.
+Az eszköz azonosítója a IoT Hubban megjelenő azonosító. Előfordulhat, hogy a kívánt eszköz azonosítója be van állítva a beléptetési bejegyzésben, de nem kötelező megadni. A kívánt eszköz AZONOSÍTÓjának beállítása csak az egyéni regisztrációk esetében támogatott. Ha nincs megadva a kívánt eszköz azonosítója a beléptetési listán, a rendszer a regisztrációs azonosítót használja az eszköz AZONOSÍTÓJAként az eszköz regisztrálása során. További információ a [IoT hub eszköz-azonosítókkal](../iot-hub/iot-hub-devguide-identity-registry.md)kapcsolatban.
 
 ## <a name="id-scope"></a>AZONOSÍTÓ hatóköre
 

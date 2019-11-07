@@ -1,25 +1,24 @@
 ---
 title: Kivetítések használata a Knowledge Store-ban (előzetes verzió)
 titleSuffix: Azure Cognitive Search
-description: A teljes szöveges kereséstől eltérő helyzetekben mentse és alakítsa ki a dúsított adatait a mesterséges intelligencia-dúsítási folyamatból.
+description: A teljes szöveges kereséstől eltérő helyzetekben mentse és alakítsa ki a dúsított adatait a mesterséges intelligencia-bővítési folyamatból. A Knowledge Store jelenleg nyilvános előzetes verzióban érhető el.
 manager: nitinme
 author: vkurpad
 ms.author: vikurpad
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 8e6c285e8917c4224e2007c565d5ac5447b20853
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: bb6af4be232810c1f5d135e459238e2e4f2cd5d8
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72790001"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73720043"
 ---
 # <a name="working-with-projections-in-a-knowledge-store-in-azure-cognitive-search"></a>Kivetítések használata az Azure-beli Knowledge Store-ban Cognitive Search
 
-> [!Note]
-> A Knowledge áruház előzetes verzióban érhető el, és nem éles használatra készült. A [REST API 2019-05-06-es verziójának előzetes verziója](search-api-preview.md) biztosítja ezt a funkciót. Jelenleg nincs .NET SDK-támogatás.
->
+> [!IMPORTANT] 
+> A Knowledge Store jelenleg nyilvános előzetes verzióban érhető el. Az előzetes verziójú funkciók szolgáltatói szerződés nélkül érhetők el, és éles számítási feladatokhoz nem ajánlott. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). A [REST API 2019-05-06-es verziójának előzetes verziója](search-api-preview.md) előzetes funkciókat biztosít. Jelenleg korlátozott a portál támogatása, és nincs .NET SDK-támogatás.
 
 Az Azure Cognitive Search lehetővé teszi a tartalom-bővítést a beépített kognitív képességek és egyéni képességek révén az indexelés részeként. A bővítések struktúrát adhatnak a dokumentumokhoz, és hatékonyabbá tehetik a keresést. Sok esetben a dúsított dokumentumok a kereséstől eltérő forgatókönyvek esetén hasznosak, például a Knowledge Mining esetében.
 
@@ -213,7 +212,7 @@ Ha a dúsított adatok adatelemzési folyamatokban való használatát szeretné
 
 Végül, ha a Knowledge Store-ból kell exportálnia az adatait, Azure Data Factory rendelkezik összekötővel az adatok exportálásához és az Ön által választott adatbázisban való tárolásához. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A következő lépésként hozza létre az első Knowledge Store-t mintaadatok és utasítások használatával.
 

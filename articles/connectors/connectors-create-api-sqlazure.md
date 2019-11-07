@@ -10,13 +10,13 @@ ms.reviewer: klam; LADocs
 manager: carmonm
 ms.topic: conceptual
 tags: connectors
-ms.date: 10/14/2019
-ms.openlocfilehash: 880ae4b661d247889815fc5b9ad08a759fe0aa5b
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.date: 11/06/2019
+ms.openlocfilehash: ed30ba305ec990256625052cb92f1b7524c826e2
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73161618"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73720959"
 ---
 # <a name="automate-workflows-for-sql-server-or-azure-sql-database-by-using-azure-logic-apps"></a>SQL Server vagy Azure SQL Database munkafolyamatainak automatizálása Azure Logic Apps használatával
 
@@ -45,6 +45,9 @@ Ha most ismerkedik a Logic apps szolgáltatással, tekintse át a [Mi az Azure L
     `Server=tcp:{your-server-name}.database.windows.net,1433;Initial Catalog={your-database-name};Persist Security Info=False;User ID={your-user-name};Password={your-password};MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;`
 
 * Ahhoz, hogy a logikai alkalmazásokat a helyszíni rendszerekhez, például a SQL Serverhoz lehessen kapcsolni, [be kell állítania egy helyszíni adatátjárót](../logic-apps/logic-apps-gateway-install.md). Így kiválaszthatja az átjárót a logikai alkalmazáshoz tartozó SQL-kapcsolatok létrehozásakor.
+
+  > [!IMPORTANT]
+  > Ha a Windows-hitelesítést ezzel az összekötővel szeretné használni, a helyszíni adatátjárót kell használnia. Ez az összekötő nem támogatja a Windows-hitelesítést egy [integrációs szolgáltatási környezetben (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)lévő logikai alkalmazáshoz.
 
 * Az a logikai alkalmazás, amelyben hozzá kell férnie az SQL-adatbázishoz. A logikai alkalmazás SQL-triggerrel való elindításához [üres logikai alkalmazásra](../logic-apps/quickstart-create-first-logic-app-workflow.md)van szükség.
 
@@ -134,6 +137,6 @@ Időnként úgy kell dolgoznia az eredményhalmazt, hogy az összekötő ne adja
 
 Az összekötő eseményindítókkal, műveletekkel és korlátozásokkal kapcsolatos technikai információkért tekintse [meg az összekötő hivatkozási oldalát](https://docs.microsoft.com/connectors/sql/).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * További tudnivalók [a Azure Logic apps-összekötők](../connectors/apis-list.md) használatáról

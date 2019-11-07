@@ -1,19 +1,17 @@
 ---
 title: A konfigurációs kiszolgáló beállítása az Azure Spring Cloud-ban | Microsoft Docs
 description: Ebből az oktatóanyagból megtudhatja, hogyan állíthat be egy Spring Cloud config-kiszolgálót az Azure Spring Cloud-hoz a Azure Portal
-services: spring-cloud
 ms.service: spring-cloud
 ms.topic: tutorial
-ms.reviewer: jeconnoc
-ms.author: v-vasuke
-author: v-vasuke
+ms.author: jeconnoc
+author: jpconnock
 ms.date: 10/18/2019
-ms.openlocfilehash: 3a091c22f49ec31029a1808c10e675a4d0960fb4
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 6cf7b4a52ba3a7dbda5fa3fa558c4b68d09f4eb2
+ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73177922"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73646726"
 ---
 # <a name="tutorial-set-up-a-spring-cloud-config-server-for-your-service"></a>Oktatóanyag: rugós Felhőbeli konfigurációs kiszolgáló beállítása a szolgáltatáshoz
 
@@ -49,12 +47,12 @@ Emellett néhány konfigurálható tulajdonság csak bizonyos típusok esetében
 
 Nyilvános tárház használata esetén a konfigurálható tulajdonságok korlátozottabbak lesznek.
 
-A nyilvános `Git` adattár beállításához használt összes konfigurálható tulajdonság alább látható.
+A nyilvános `Git` tárház beállításához használt összes konfigurálható tulajdonság alább látható.
 
 > [!NOTE]
 > Ha kötőjelet ("-") használ a szavak elkülönítésére, az egyetlen olyan elnevezési konvenció, amely jelenleg támogatott. Használhatja például a `default-label`, de nem `defaultLabel`.
 
-| Tulajdonság        | Szükséges | Szolgáltatás                                                      |
+| Tulajdonság        | Kötelező | Szolgáltatás                                                      |
 | :-------------- | -------- | ------------------------------------------------------------ |
 | `uri`           | `yes`    | A konfigurációs kiszolgálói háttérként használt `Git` adattár `uri` a `http://`, `https://`, `git@`vagy `ssh://`használatával kell elindítani. |
 | `default-label` | `no`     | Az `Git` adattár alapértelmezett címkéje legyen az adattár `branch name`, `tag name`vagy `commit-id`. |
@@ -69,13 +67,13 @@ Az alábbi lista a privát `Git` adattár beállításához használt összes ko
 > [!NOTE]
 > Ha kötőjelet ("-") használ a szavak elkülönítésére, az egyetlen olyan elnevezési konvenció, amely jelenleg támogatott. Használhatja például a `default-label`, de nem `defaultLabel`.
 
-| Tulajdonság                   | Szükséges | Szolgáltatás                                                      |
+| Tulajdonság                   | Kötelező | Szolgáltatás                                                      |
 | :------------------------- | -------- | ------------------------------------------------------------ |
 | `uri`                      | `yes`    | A konfigurációs kiszolgálói háttérként használt `Git` adattár `uri` a `http://`, `https://`, `git@`vagy `ssh://`használatával kell elindítani. |
 | `default-label`            | `no`     | Az `Git` adattár alapértelmezett címkéje legyen az adattár `branch name`, `tag name`vagy `commit-id`. |
 | `search-paths`             | `no`     | A `Git` tárház alkönyvtáraiban való kereséshez használt karakterláncok tömbje. |
 | `private-key`              | `no`     | A `Ssh` titkos kulcsa a `Git` adattár eléréséhez, amely akkor __szükséges__ , ha a `uri` a `git@` vagy a `ssh://`használatával kezdődik. |
-| `host-key`                 | `no`     | A git-tárház kiszolgálójának gazdagép kulcsa nem tartalmazhatja a `host-key-algorithm`által lefedett algoritmus-előtagot. |
+| `host-key`                 | `no`     | A git-tárház kiszolgálójának gazdagép kulcsa nem tartalmazhatja a `host-key-algorithm` által jelzett algoritmus-előtagot. |
 | `host-key-algorithm`       | `no`     | A gazda kulcs algoritmusának `ssh-dss`, `ssh-rsa`, `ecdsa-sha2-nistp256`, `ecdsa-sha2-nistp384`vagy `ecdsa-sha2-nistp521`nak kell lennie. Csak akkor szükséges, ha `host-key` létezik. |
 | `strict-host-key-checking` | `no`     | Azt jelzi, hogy a konfigurációs kiszolgáló a magánhálózati `host-key`kihasználása esetén nem fog-e elindulni. `true` (alapértelmezett érték) vagy `false`kell lennie. |
 
@@ -88,7 +86,7 @@ Az alapszintű hitelesítéssel rendelkező privát git-tárház beállításáh
 > [!NOTE]
 > Ha kötőjelet ("-") használ a szavak elkülönítésére, az egyetlen olyan elnevezési konvenció, amely jelenleg támogatott. Használja például a `default-label` nem `defaultLabel`.
 
-| Tulajdonság        | Szükséges | Szolgáltatás                                                      |
+| Tulajdonság        | Kötelező | Szolgáltatás                                                      |
 | :-------------- | -------- | ------------------------------------------------------------ |
 | `uri`           | `yes`    | A konfigurációs kiszolgálói háttérként használt `Git` adattár `uri` a `http://`, `https://`, `git@`vagy `ssh://`használatával kell elindítani. |
 | `default-label` | `no`     | Az `Git` adattár alapértelmezett címkéje legyen az adattár `branch name`, `tag name`vagy `commit-id`. |
@@ -106,18 +104,18 @@ Az alábbi listában a git-adattárak beállításához használt összes konfig
 > [!NOTE]
 > Ha kötőjelet ("-") használ a szavak elkülönítésére, az egyetlen olyan elnevezési konvenció, amely jelenleg támogatott. Használja például a `default-label` nem `defaultLabel`.
 
-| Tulajdonság                           | Szükséges         | Szolgáltatás                                                      |
+| Tulajdonság                           | Kötelező         | Szolgáltatás                                                      |
 | :--------------------------------- | ---------------- | ------------------------------------------------------------ |
 | `repos`                            | `no`             | Egy olyan Térkép, amely egy adott nevű `Git` adattár beállításait tartalmazza. |
 | `repos."uri"`                      | `yes` on `repos` | A konfigurációs kiszolgálói háttérként használt `Git` adattár `uri` a `http://`, `https://`, `git@`vagy `ssh://`használatával kell elindítani. |
-| `repos."name"`                     | `yes` on `repos` | Egy `Git` adattár azonosítására szolgáló név, amely csak akkor __szükséges__ , ha `repos` létezik. Például a fenti, `team-A`, `team-B`. |
+| `repos."name"`                     | `yes` on `repos` | Egy `Git` adattár azonosítására szolgáló név, amely csak akkor __szükséges__ , ha `repos` létezik. A fentiek közül például `team-A`, `team-B`. |
 | `repos."pattern"`                  | `no`             | Az alkalmazás nevének megfeleltetéséhez használt karakterláncok tömbje. Minden mintához használja a `{application}/{profile}` formátumot helyettesítő karakterekkel. |
 | `repos."default-label"`            | `no`             | Az `Git` adattár alapértelmezett címkéje legyen az adattár `branch name`, `tag name`vagy `commit-id`. |
 | `repos."search-paths`"             | `no`             | A `Git` tárház alkönyvtáraiban való kereséshez használt karakterláncok tömbje. |
 | `repos."username"`                 | `no`             | Az `Git` adattár-kiszolgáló eléréséhez használt `username`, __Ha az__ `Git` adattár-kiszolgáló támogatja a `Http Basic Authentication`. |
 | `repos."password"`                 | `no`             | Az `Git` adattár-kiszolgáló eléréséhez használt jelszó, amely akkor __szükséges__ , ha az `Git` adattár-kiszolgáló támogatja a `Http Basic Authentication`. |
 | `repos."private-key"`              | `no`             | A `Ssh` titkos kulcsa `Git` adattár eléréséhez, amely akkor __szükséges__ , ha a `uri` a `git@` vagy a `ssh://`tel kezdődik. |
-| `repos."host-key"`                 | `no`             | A git-tárház kiszolgálójának gazdagép kulcsa nem tartalmazhatja a `host-key-algorithm`által lefedett algoritmus-előtagot. |
+| `repos."host-key"`                 | `no`             | A git-tárház kiszolgálójának gazdagép kulcsa nem tartalmazhatja a `host-key-algorithm` által jelzett algoritmus-előtagot. |
 | `repos."host-key-algorithm"`       | `no`             | A gazda kulcs algoritmusának `ssh-dss`, `ssh-rsa`, `ecdsa-sha2-nistp256`, `ecdsa-sha2-nistp384`vagy `ecdsa-sha2-nistp521`nak kell lennie. Csak akkor __szükséges__ , ha `host-key` létezik. |
 | `repos."strict-host-key-checking"` | `no`             | Azt jelzi, hogy a konfigurációs kiszolgáló a magánhálózati `host-key`kihasználása esetén nem fog-e elindulni. `true` (alapértelmezett érték) vagy `false`kell lennie. |
 
@@ -125,7 +123,7 @@ Az alábbi listában a git-adattárak beállításához használt összes konfig
 
 Most, hogy a konfigurációs fájlokat mentette egy adattárba, hozzá kell csatlakoznia az Azure Spring Cloud-hoz.
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
+1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
 
 1. Navigáljon az Azure Spring Cloud **Áttekintés** oldalára.
 
@@ -137,7 +135,7 @@ Most, hogy a konfigurációs fájlokat mentette egy adattárba, hozzá kell csat
 
 #### <a name="default-repository"></a>Alapértelmezett adattár
 
-* Nyilvános tárház: az **alapértelmezett adattár** szakaszban illessze be az adattár URI-ját az **URI** szakaszba, és győződjön meg arról, hogy a **hitelesítési** beállítás **nyilvános**. Ezután kattintson az **alkalmaz** gombra. 
+* Nyilvános tárház: az **alapértelmezett adattár** szakaszban illessze be az adattár URI-ját az **URI** szakaszban.  Állítsa a **címkét** `config`ra. Győződjön meg arról, hogy a **hitelesítési** beállítás **nyilvános**, majd válassza az **alkalmaz** a befejezésre lehetőséget. 
 
 * Privát tárház: az Azure Spring Cloud támogatja az alapszintű jelszó/jogkivonat-alapú hitelesítést és az SSH-t.
 
@@ -186,7 +184,7 @@ A konfigurációs fájl mentése után megjelenik az alkalmazás- **konfiguráci
 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban megtanulta, hogyan engedélyezheti és konfigurálhatja a konfigurációs kiszolgálót. Ha többet szeretne megtudni az alkalmazások kezeléséről, folytassa az alkalmazás manuális méretezését ismertető oktatóanyaggal.
 

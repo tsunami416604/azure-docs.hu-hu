@@ -1,6 +1,6 @@
 ---
-title: Rögzített adatok olvasása a Python-alkalmazásból – Azure Event Hubs | Microsoft Docs
-description: Az Azure Python SDK-t használó parancsfájlok a Event Hubs rögzítési funkciójának bemutatására.
+title: 'Gyors útmutató: rögzített adatok olvasása a Python-alkalmazásból – Azure Event Hubs'
+description: 'Gyors útmutató: az Azure Python SDK-t használó parancsfájlok, amelyek bemutatják a Event Hubs rögzítési funkcióját.'
 services: event-hubs
 documentationcenter: ''
 author: ShubhaVijayasarathy
@@ -11,18 +11,18 @@ ms.service: event-hubs
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: quickstart
 ms.custom: seodec18
-ms.date: 10/10/2019
+ms.date: 11/05/2019
 ms.author: shvija
-ms.openlocfilehash: 354964e1b66b55dcccd9b5674f011f8c5a38a1c5
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: ade4aa79b2de005bfecd7a5882f06cb491ea4e6d
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72428951"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73717845"
 ---
-# <a name="event-hubs-capture-walkthrough-python"></a>Event Hubs rögzítési útmutató: Python
+# <a name="quickstart-event-hubs-capture-walkthrough-python"></a>Gyors útmutató: Event Hubs Capture bemutatója: Python
 
 A capture az Azure Event Hubs egyik funkciója. A capture használatával automatikusan továbbíthatja az adatátviteli adatait az Event hub-ban egy tetszőleges Azure Blob Storage-fiókba. Ez a funkció megkönnyíti a kötegelt feldolgozást a valós idejű adatfolyam-továbbítási adatátvitelhez. Ez a cikk azt ismerteti, hogyan használható a Event Hubs Capture a Python használatával. További információ a Event Hubs rögzítéséről: [események rögzítése az Azure Event Hubs használatával][Overview of Event Hubs Capture].
 
@@ -38,7 +38,7 @@ Ebben az útmutatóban a következőket végezheti el:
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Python 3,4 vagy újabb verzió, `pip` telepítéssel és frissítéssel.
+- Python 3,4 vagy újabb, `pip` telepítve és frissítve.
   
 - Azure-előfizetés. Ha még nincs előfizetése, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/), mielőtt hozzákezd.
   
@@ -78,7 +78,7 @@ Ez a szkript 200 eseményt küld az Event hub-nak. Az események a JSON-ban elju
 
 1. Nyissa meg kedvenc Python-szerkesztőjét, például a [Visual Studio Code][Visual Studio Code]-ot.
 2. Hozzon létre egy új, *Sender.py*nevű fájlt. 
-3. Illessze be a következő kódot a *Sender.py*. Helyettesítse be a saját értékeit a Event Hubs \<namespace >, \<AccessKeyName >, @no__t 2primary kulcs értékét > és \<eventhub >.
+3. Illessze be a következő kódot a *Sender.py*. Helyettesítse be saját értékeit a Event Hubs \<névtér >, \<AccessKeyName >, \<elsődleges kulcs értéke > és \<eventhub >.
    
    ```python
    import uuid
@@ -106,7 +106,7 @@ Ez a szkript 200 eseményt küld az Event hub-nak. Az események a JSON-ban elju
 Ez a szkript beolvassa a rögzített fájlokat, és létrehoz egy fájlt az egyes eszközökhöz, hogy csak az adott eszközre írja az adatokat.
 
 1. A Python-szerkesztőben hozzon létre egy új, *capturereader.py*nevű fájlt. 
-2. Illessze be a következő kódot a *capturereader.py*. Helyettesítse be a \<storageaccount >, a \<storage fiók elérési kulcs > és \<storagecontainer > mentett értékeit.
+2. Illessze be a következő kódot a *capturereader.py*. Helyettesítse be a mentett értékeket a \<storageaccount >, \<a Storage-fiók elérési kulcsát >, és \<storagecontainer >.
    
    ```python
    import os
@@ -162,7 +162,7 @@ Ez a szkript beolvassa a rögzített fájlokat, és létrehoz egy fájlt az egye
    pip install avro-python3
    ```
    
-   Ha `azure-storage` vagy `azure` korábbi verziója van telepítve, lehetséges, hogy a `--upgrade` kapcsolót kell használnia.
+   Ha `azure-storage` vagy `azure`korábbi verzióját használja, lehetséges, hogy a `--upgrade` kapcsolót kell használnia.
    
    Előfordulhat, hogy az alábbi parancsot is futtatnia kell. A parancs futtatása nem szükséges a legtöbb rendszeren. 
    
@@ -186,7 +186,7 @@ Ez a szkript beolvassa a rögzített fájlokat, és létrehoz egy fájlt az egye
 
    A rögzítési processzor letölti az összes nem üres blobot a Storage-fiók tárolójából, és az eredményeket *. csv* -fájlként írja a helyi könyvtárba. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A Event Hubsról további információt a következő témakörben talál: 
 

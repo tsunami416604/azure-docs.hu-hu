@@ -1,21 +1,19 @@
 ---
-title: 'Oktatóanyag: Alkalmazások méretezése az Azure Spring Cloud-ban | Microsoft Docs'
+title: 'Oktatóanyag: alkalmazások méretezése az Azure Spring Cloud-ban | Microsoft Docs'
 description: Ebből az oktatóanyagból megtudhatja, hogyan méretezheti az alkalmazásokat az Azure Spring Cloud-on Azure Portal
-services: spring-cloud
 ms.service: spring-cloud
 ms.topic: tutorial
-ms.reviewer: jeconnoc
-ms.author: v-vasuke
-author: v-vasuke
+ms.author: jeconnoc
+author: jpconnock
 ms.date: 10/06/2019
-ms.openlocfilehash: bca88cac45e1ba8117eb4e10141e32d621434b86
-ms.sourcegitcommit: d773b5743cb54b8cbcfa5c5e4d21d5b45a58b081
+ms.openlocfilehash: 31b2322bdf7b7c03ae8974d57ee1b44c2f6137b9
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72038908"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73607515"
 ---
-# <a name="tutorial-scale-an-application-in-azure-spring-cloud"></a>Oktatóanyag: Alkalmazások méretezése az Azure Spring Cloud-ban
+# <a name="tutorial-scale-an-application-in-azure-spring-cloud"></a>Oktatóanyag: alkalmazások méretezése az Azure Spring Cloud-ban
 
 Ez az oktatóanyag bemutatja, hogyan méretezheti a Service-alkalmazásokat a Azure Portal Azure Spring Cloud irányítópultján. A virtuális processzorok (vCPU) számának és a memória mennyiségének módosításával felfelé és lefelé méretezheti az alkalmazást. Az alkalmazás-példányok számának módosításával a-ben és a-ben méretezheti az alkalmazást. Ha elkészült, megtudhatja, hogyan végezheti el a gyors manuális módosításokat a szolgáltatásban lévő alkalmazásokhoz. A skálázás másodpercek alatt lép érvénybe, és nincs szükség kód módosítására vagy újratelepítésre.
 
@@ -29,7 +27,7 @@ Az oktatóanyag elvégzéséhez a következőkre lesz szüksége:
 
 ## <a name="navigate-to-the-scale-page-in-the-azure-portal"></a>Navigáljon a méretezés lapra a Azure Portal
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
+1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
 
 1. Navigáljon az Azure Spring Cloud **Áttekintés** oldalára.
 
@@ -43,15 +41,15 @@ Az oktatóanyag elvégzéséhez a következőkre lesz szüksége:
 
 Módosíthatja a skálázási attribútumokat. Tartsa szem előtt az alábbi megjegyzéseket.
 
-* **Processzorok**: Az engedélyezett processzorok maximális száma 4/alkalmazás példány. Az alkalmazáshoz tartozó processzorok teljes száma az itt megadott érték, amely az alkalmazás példányainak számát szorozza meg.
+* **Processzorok**: a processzorok maximálisan megengedett száma 4 az alkalmazás példányai esetében. Az alkalmazáshoz tartozó processzorok teljes száma az itt megadott érték, amely az alkalmazás példányainak számát szorozza meg.
 
-* **Memória/GB**: Az engedélyezett memória maximális mérete 8 GB/Application példány.  Az alkalmazáshoz tartozó memória teljes mennyisége az itt megadott érték lesz, szorozva az alkalmazás példányainak számával.
+* **Memória/GB**: az alkalmazás-példányok maximálisan megengedett mérete 8 GB.  Az alkalmazáshoz tartozó memória teljes mennyisége az itt megadott érték lesz, szorozva az alkalmazás példányainak számával.
 
-* **Példányok száma**: A standard szinten akár 20 példányt is felhasználhat. Ez az érték megváltoztatja a Service-alkalmazás különböző futó példányainak számát.
+* **Példányszám**: akár 20 példányra is kibővítheti a standard szintet. Ez az érték megváltoztatja a Service-alkalmazás különböző futó példányainak számát.
 
 Ügyeljen rá, hogy a méretezési beállítások alkalmazásához kattintson a **Mentés** gombra.
 
-Néhány másodperc elteltével a végrehajtott módosítások az **Áttekintés** lapon jelennek meg, és további részleteket az **alkalmazás példányai** lapon talál. A skálázáshoz nincs szükség kód módosítására vagy újratelepítésre.
+Néhány másodperc elteltével a végrehajtott módosítások az **Áttekintés** lapon jelennek meg, az **alkalmazás példányai** lapon pedig további részletek érhetők el. a skálázás nem igényli a kód módosítását vagy az újratelepítést.
 
 ## <a name="next-steps"></a>További lépések
 

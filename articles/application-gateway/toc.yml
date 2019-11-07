@@ -17,8 +17,6 @@
       href: quick-create-cli.md
 - name: Oktatóanyagok
   items:
-    - name: Webalkalmazási tűzfal engedélyezése
-      href: application-gateway-web-application-firewall-portal.md
     - name: Védelem az SSL-lel
       href: create-ssl-portal.md
     - name: Több webhely üzemeltetése
@@ -127,12 +125,6 @@
           items:
             - name: Az SSL-szabályzatok konfigurálása
               href: application-gateway-configure-ssl-policy-powershell.md
-    - name: Webalkalmazási tűzfal konfigurálása
-      items:
-        - name: Azure PowerShell
-          href: tutorial-restrict-web-traffic-powershell.md
-        - name: Azure CLI
-          href: tutorial-restrict-web-traffic-cli.md
     - name: AKS bejövő forgalma
       items:
         - name: Beállítás meglévő Application Gatewayjel

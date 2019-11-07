@@ -1,22 +1,19 @@
 ---
 title: Azure cache kötése az Azure Spring Cloud-alkalmazáshoz való Redis | Microsoft Docs
 description: Ismerje meg, hogyan köthető az Azure cache a Redis Azure Spring Cloud-alkalmazásához
-services: spring-cloud
-author: v-vasuke
-manager: gwallace
-editor: ''
+author: jpconnock
 ms.service: spring-cloud
-ms.topic: quickstart
-ms.date: 10/06/2019
-ms.author: v-vasuke
-ms.openlocfilehash: d8fa31207baecc80674fb11b492927800676b8a2
-ms.sourcegitcommit: d773b5743cb54b8cbcfa5c5e4d21d5b45a58b081
+ms.topic: tutorial
+ms.date: 10/31/2019
+ms.author: jeconnoc
+ms.openlocfilehash: a901e4194909df85f53799d5937515e42ea87a69
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72038943"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73607574"
 ---
-# <a name="tutorial-bind-azure-services-to-your-azure-spring-cloud-application-azure-cache-for-redis"></a>Oktatóanyag: Azure-szolgáltatások kötése az Azure Spring Cloud-alkalmazásban: Azure Cache for Redis
+# <a name="tutorial-bind-azure-services-to-your-azure-spring-cloud-application-azure-cache-for-redis"></a>Oktatóanyag: Azure-szolgáltatások kötése Azure Spring Cloud-alkalmazáshoz: Azure cache for Redis
 
 Az Azure Spring Cloud lehetővé teszi, hogy az Azure-szolgáltatásokat automatikusan, a Spring boot-alkalmazás manuális konfigurálása helyett az alkalmazásokhoz kösse. Ez a cikk bemutatja, hogyan köthető az alkalmazás az Azure cache-hez a Redis.
 
@@ -26,14 +23,7 @@ Az Azure Spring Cloud lehetővé teszi, hogy az Azure-szolgáltatásokat automat
 * Azure cache a Redis Service-példányhoz
 * Azure Spring Cloud-bővítmény az Azure CLI-hez
 
-Ha szükséges, telepítse az Azure CLI-hez készült Azure Spring Cloud-bővítményt az alábbi paranccsal:
-
-```azurecli
-az extension add -y --source https://azureclitemp.blob.core.windows.net/spring-cloud/spring_cloud-0.1.0-py2.py3-none-any.whl
-```
-
->[!TIP]
-> Az Azure Cloud Shell egy olyan ingyenes interaktív kezelőfelület, amelyet a jelen cikkben található lépések futtatására használhat.  A közös Azure-eszközök előre telepítve vannak, beleértve a git, a JDK, a Maven és az Azure CLI legújabb verzióit. Ha bejelentkezett az Azure-előfizetésbe, indítsa el a [Azure Cloud shellt](https://shell.azure.com) a shell.Azure.com webhelyről.  A Azure Cloud Shellről a [dokumentáció beolvasásával](../cloud-shell/overview.md) tájékozódhat bővebben
+Ha nem rendelkezik telepített Azure Spring Cloud-példánnyal, kövesse az ebben a rövid útmutatóban ismertetett lépéseket az első Spring [Cloud-alkalmazás](spring-cloud-quickstart-launch-app-portal.md) üzembe helyezéséhez.
 
 ## <a name="bind-azure-cache-for-redis"></a>Az Azure cache kötése a Redis-hez
 
@@ -49,7 +39,7 @@ az extension add -y --source https://azureclitemp.blob.core.windows.net/spring-c
 
 1. Frissítse az aktuális telepítést `az spring-cloud app update` használatával, vagy hozzon létre egy új központi telepítést a `az spring-cloud app deployment create` használatával.
 
-1. Lépjen a Azure Portal Azure Spring Cloud Service oldalára. Keresse meg az **alkalmazás irányítópultját** , és válassza ki azt az alkalmazást, amely a Redis készült Azure cache-hez kötődik.  Ez ugyanaz az alkalmazás, amelyet az előző lépésben frissített vagy telepített. Ezután válassza a `Service binding` elemet, és válassza a `Create service binding` gombot. Töltse ki az űrlapot, és ügyeljen arra, hogy a **kötés típusát** `Azure Cache for Redis`, a Redis-kiszolgáló és az elsődleges kulcs beállítást válassza. 
+1. Lépjen a Azure Portal Azure Spring Cloud Service oldalára. Keresse meg az **alkalmazás irányítópultját** , és válassza ki azt az alkalmazást, amely a Redis készült Azure cache-hez kötődik.  Ez ugyanaz az alkalmazás, amelyet az előző lépésben frissített vagy telepített. Ezután válassza a `Service binding` elemet, és válassza a `Create service binding` gombot. Töltse ki az űrlapot, és győződjön meg arról, hogy a **kötési típus** `Azure Cache for Redis`, a Redis-kiszolgáló és az elsődleges kulcs lehetőség van kiválasztva. 
 
 1. Indítsa újra az alkalmazást, és ez a kötés most működik.
 

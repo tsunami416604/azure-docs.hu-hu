@@ -1,5 +1,5 @@
 ---
-title: Az Azure CLI Példaszkript – egy SignalR-szolgáltatás létrehozása egy App Service-szel
+title: Azure CLI parancsfájl-minta – a Signaler szolgáltatás létrehozása App Service
 description: Azure CLI-példaszkript – SignalR szolgáltatási erőforrás létrehozása App Service-szel
 author: sffamily
 ms.service: signalr
@@ -8,12 +8,12 @@ ms.topic: sample
 ms.date: 04/20/2018
 ms.author: zhshang
 ms.custom: mvc
-ms.openlocfilehash: d0f0747aa393475265be4aeb9ca05000fbd5b97b
-ms.sourcegitcommit: d2785f020e134c3680ca1c8500aa2c0211aa1e24
+ms.openlocfilehash: 09855c45f0a621ef1f51ba7c87443c40b02e00bd
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/04/2019
-ms.locfileid: "67565750"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73578853"
 ---
 # <a name="create-a-signalr-service-with-an-app-service"></a>SignalR szolgáltatási erőforrás létrehozása App Service-szel
 
@@ -30,10 +30,45 @@ Ha a parancssori felület helyi telepítése és használata mellett dönt, a t�
 Ez a szkript az Azure CLI *signalr* bővítményét használja. A példaszkript használata előtt a következő parancsot végrehajtva telepítse a *signalr* bővítményt az Azure CLI-hez:
 
 ```azurecli-interactive
-az extension add -n signalr
-```
+#!/bin/bash
 
-[!code-azurecli-interactive[main](../../../cli_scripts/azure-signalr/create-signalr-with-app-service/create-signalr-with-app-service.sh "Create a new Azure SignalR Service and Web App")]
+# Generate a unique suffix for the service name
+let randomNum=$RANDOM*$RANDOM
+
+# Generate unique names for the SignalR service, resource group, 
+# app service, and app service plan
+SignalRName=SignalRTestSvc$randomNum
+#resource name must be lowercase
+mySignalRSvcName=${SignalRName,,}
+myResourceGroupName=$SignalRName"Group"
+myWebAppName=SignalRTestWebApp$randomNum
+myAppSvcPlanName=$myAppSvcName"Plan"
+
+# Create resource group 
+az group create --name $myResourceGroupName --location eastus
+
+# Create the Azure SignalR Service resource
+az signalr create \
+  --name $mySignalRSvcName \
+  --resource-group $myResourceGroupName \
+  --sku Standard_S1 \
+  --unit-count 1 \
+  --service-mode Default
+
+# Create an App Service plan.
+az appservice plan create --name $myAppSvcPlanName --resource-group $myResourceGroupName --sku FREE
+
+# Create the Web App
+az webapp create --name $myWebAppName --resource-group $myResourceGroupName --plan $myAppSvcPlanName  
+
+# Get the SignalR primary connection string
+primaryConnectionString=$(az signalr key list --name $mySignalRSvcName \
+  --resource-group $myResourceGroupName --query primaryConnectionString -o tsv)
+
+#Add an app setting to the web app for the SignalR connection
+az webapp config appsettings set --name $myWebAppName --resource-group $myResourceGroupName \
+  --settings "AzureSignalRConnectionString=$primaryConnectionString"
+```
 
 Jegyezze fel az új erőforráscsoporthoz létrehozott tényleges nevet. Ez a kimenetben látható. Ezt az erőforráscsoport-nevet fogja használni, amikor törölni szeretné a csoport összes erőforrását.
 

@@ -1,22 +1,22 @@
 ---
-title: Egyéni események küldése az webes végpont – Event Grid, Azure Portalon
-description: Azure Event Grid és az Azure portal használatával közzététele egy egyéni témakör és feliratkozás témakör eseményeire. Az események a webalkalmazás kezeli.
+title: 'Gyors útmutató: egyéni események küldése webes végpontra – Event Grid, Azure Portal'
+description: 'Gyors útmutató: Azure Event Grid és Azure Portal használata egyéni témakör közzétételéhez és az adott témakör eseményeire való előfizetéshez. Az eseményeket egy webalkalmazás kezeli.'
 services: event-grid
 keywords: ''
 author: spelluru
 ms.author: spelluru
-ms.date: 03/27/2019
+ms.date: 11/05/2019
 ms.topic: quickstart
 ms.service: event-grid
 ms.custom: seodec18
-ms.openlocfilehash: afb53ed013af6cd1db2f6ff3d25c350aa2b4f1e8
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: 398e63ec9a8b9e1b16d8ffcee538351fc6572de9
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69638562"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73720794"
 ---
-# <a name="quickstart-route-custom-events-to-web-endpoint-with-the-azure-portal-and-event-grid"></a>Gyors útmutató: Egyéni események átirányítása webes végpontra a Azure Portal és Event Grid
+# <a name="quickstart-route-custom-events-to-web-endpoint-with-the-azure-portal-and-event-grid"></a>Gyors útmutató: egyéni események továbbítása webes végponthoz a Azure Portal és Event Grid
 
 Az Azure Event Grid egy felhőalapú eseménykezelési szolgáltatás. Ebben a cikkben létrehozunk egy egyéni témakört az Azure Portallal, feliratkozunk az egyéni témakörre, majd kiváltjuk az eseményt az eredmény megtekintéséhez. Általában olyan végpontoknak szoktunk eseményeket küldeni, amelyek eseményadatokat dolgoznak fel és műveleteket hajtanak végre. A cikk egyszerűsítése érdekében azonban az eseményeket egy olyan webalkalmazásnak küldjük el, amely az üzenetek gyűjtésével és megjelenítésével foglalkozik.
 
@@ -42,7 +42,7 @@ Az Event Grid-témakörök egy felhasználó által meghatározott végpontot bi
 
     ![Event Grid témakör hozzáadása gomb](./media/custom-event-quickstart-portal/add-event-grid-topic-button.png)
 4. A **témakör létrehozása** lapon kövesse az alábbi lépéseket:
-    1. Adjon egyedi **nevet** az egyéni témakörnek. A témakör nevének egyedinek kell lennie, mert a nevet egy DNS-bejegyzés képviseli. Ne a képen látható nevet használja. Ehelyett hozzon létre a saját nevét – kell 3 – 50 karakter hosszúságú lehet, és tartalmaznia csak a-z, A-Z, 0-9, értékek és a "-".
+    1. Adjon egyedi **nevet** az egyéni témakörnek. A témakör nevének egyedinek kell lennie, mert a nevet egy DNS-bejegyzés képviseli. Ne a képen látható nevet használja. Ehelyett hozzon létre egy saját nevet – 3-50 karakter közé kell esnie, és csak a-z, A-Z, 0-9 és a "-" értékeket kell tartalmaznia.
     2. Jelölje ki az Azure-**előfizetést**.
     3. Válasszon ki egy meglévő erőforráscsoportot, vagy válassza az **új létrehozása**lehetőséget, és adja meg az **erőforráscsoport** **nevét** .
     4. Válassza ki az Event Grid-témakör **helyét** .
@@ -80,7 +80,7 @@ Az Event Grid-témakörre való feliratkozással lehet tudatni az Event Griddel,
    ![Esemény-előfizetés hozzáadása](./media/custom-event-quickstart-portal/new-event-subscription.png)
 2. Az **esemény-előfizetés létrehozása** lapon kövesse az alábbi lépéseket:
     1. Adja meg az esemény-előfizetés **nevét** .
-    3. Válassza ki a **végpont típusához**tartozó webhookot. 
+    3. Válassza ki a **végpont típusához**tartozó **webhookot** . 
     4. Válassza **a végpont kiválasztása**lehetőséget. 
 
        ![Esemény-előfizetés értékeinek megadása](./media/custom-event-quickstart-portal/provide-subscription-values.png)
@@ -104,12 +104,12 @@ Az első példa az Azure CLI-t használja. Ez lekéri az egyéni témakör URL-c
 1. A Azure Portal válassza a **Cloud Shell**lehetőséget. Válassza a **bash** elemet a Cloud Shell ablak bal felső sarkában. 
 
     ![Cloud Shell – bash](./media/custom-event-quickstart-portal/cloud-shell-bash.png)
-1. A következő parancs futtatásával lekérheti a **végpontot** a témakörhöz: A parancs másolása és beillesztése után frissítse a **témakör nevét** és az **erőforráscsoport nevét** a parancs futtatása előtt. 
+1. A következő parancs futtatásával lekérheti a **végpontot** a témakörhöz: a parancs másolása és beillesztése után frissítse a **témakör nevét** és az **erőforráscsoport nevét** a parancs futtatása előtt. 
 
     ```azurecli
     endpoint=$(az eventgrid topic show --name <topic name> -g <resource group name> --query "endpoint" --output tsv)
     ```
-2. Futtassa a következő parancsot az egyéni témakörhöz tartozó **kulcs** lekéréséhez: A parancs másolása és beillesztése után frissítse a **témakör nevét** és az **erőforráscsoport** nevét a parancs futtatása előtt. 
+2. Futtassa a következő parancsot az egyéni témakörhöz tartozó **kulcs** lekéréséhez: a parancs másolása és beillesztése után frissítse a **témakör nevét** és az **erőforráscsoport** nevét a parancs futtatása előtt. 
 
     ```azurecli
     key=$(az eventgrid topic key list --name <topic name> -g <resource group name> --query "key1" --output tsv)
@@ -128,7 +128,7 @@ Az első példa az Azure CLI-t használja. Ez lekéri az egyéni témakör URL-c
 ### <a name="azure-powershell"></a>Azure PowerShell
 A második példa a PowerShell használatával végez hasonló lépéseket.
 
-1. A Azure Portal válassza a **Cloud Shell** lehetőséget (Alternatív megoldásként https://shell.azure.com/) lépjen a következőre:. Válassza a **PowerShell** elemet a Cloud Shell ablak bal felső sarkában. Tekintse meg a minta **Cloud Shell** ablak rendszerképet az Azure CLI szakaszban.
+1. A Azure Portal válassza a **Cloud Shell** lehetőséget (a https://shell.azure.com/)lehetőségre. Válassza a **PowerShell** elemet a Cloud Shell ablak bal felső sarkában. Tekintse meg a minta **Cloud Shell** ablak rendszerképet az Azure CLI szakaszban.
 2. Állítsa be a következő változókat. Az egyes parancsok másolását és beillesztését követően frissítse a **témakör nevét** és az **erőforráscsoport nevét** a parancs futtatása előtt:
 
     ```powershell

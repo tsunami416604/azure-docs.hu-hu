@@ -9,24 +9,24 @@ manager: cgronlund
 ms.custom: include file
 ms.topic: include
 ms.date: 10/04/2019
-ms.openlocfilehash: 8b333dbd043ea0a0fe6fb1042e255e7e9c07ade5
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: c1f4b3d60c0b8af96d851ce54c2aac57c76335a7
+ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73493425"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73633678"
 ---
 1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com/) az Azure-előfizetéséhez tartozó hitelesítő adatok használatával. 
 
 1. A Azure Portal bal felső sarkában válassza az **+ erőforrás létrehozása**lehetőséget.
 
-      ![Új erőforrás létrehozása](media/aml-create-in-portal/portal-create-resource.png)
+      ![Új erőforrás létrehozása](media/aml-create-in-portal/create-workspace.gif)
 
-1. A keresősáv használatával megkeresheti **Machine learning szolgáltatás munkaterületét**.
+1. A keresősáv használatával megkeresheti **Machine learning**.
 
-1. Válassza **Machine learning szolgáltatás munkaterületet**.
+1. Válassza a **Machine learning**lehetőséget.
 
-1. A **Machine learning szolgáltatás munkaterülete** ablaktáblán kattintson a **Létrehozás** elemre a kezdéshez.
+1. A **Machine learning** ablaktáblán kattintson a **Létrehozás** elemre a kezdéshez.
 
 1. Adja meg az alábbi adatokat az új munkaterület konfigurálásához:
 
@@ -35,7 +35,7 @@ ms.locfileid: "73493425"
    Munkaterület neve |Adjon meg egy egyedi nevet, amely azonosítja a munkaterületet. Ebben a példában a **docs-ws-** t használjuk. A névnek egyedinek kell lennie az erőforráscsoport között. Használjon könnyen felhívható nevet, és a mások által létrehozott munkaterületek megkülönböztetését.  
    Előfizetés |Válassza ki a használni kívánt Azure-előfizetést.
    Erőforráscsoport | Használjon egy meglévő erőforráscsoportot az előfizetésben, vagy adjon meg egy nevet egy új erőforráscsoport létrehozásához. Egy erőforráscsoport kapcsolódó erőforrásokat tárol egy Azure-megoldáshoz. Ebben a példában a **docs-pénzmosást**használjuk. 
-   Földrajzi egység | Válassza ki a felhasználókhoz legközelebb eső helyet, valamint az adatforrásokat a munkaterület létrehozásához.
+   Hely | Válassza ki a felhasználókhoz legközelebb eső helyet, valamint az adatforrásokat a munkaterület létrehozásához.
    Munkaterület kiadása | Válassza a **vállalat**lehetőséget.  Ez az oktatóanyag az Enterprise Edition használatát igényli.  Az Enterprise Edition előzetes verzióban érhető el, és jelenleg nem vesz fel további költségeket.  
 
 1. Miután befejezte a munkaterület konfigurálását, válassza a **Létrehozás**lehetőséget. 

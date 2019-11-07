@@ -1,6 +1,6 @@
 ---
-title: Azure Service Bus Queues használata Javával
-description: Ismerje meg, hogyan használhatók a Service Bus-üzenetsorok az Azure-ban. A Java nyelven írt példák.
+title: 'Gyors útmutató: Azure Service Bus Queues használata Javával'
+description: 'Gyors útmutató: Service Bus-várólisták használata az Azure-ban. A Java nyelven írt példák.'
 services: service-bus-messaging
 documentationcenter: java
 author: axisc
@@ -11,18 +11,19 @@ ms.service: service-bus-messaging
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: Java
-ms.topic: article
-ms.date: 04/10/2019
+ms.topic: quickstart
+ms.date: 11/05/2019
 ms.author: aschhab
 ms.custom: seo-java-july2019, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: 19cfd2c5dd4229e4687fcb1a3286509c9b768d7a
-ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
+ms.openlocfilehash: bb51f30a69294cd78d0664a5bdae70c969da1972
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71155510"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73721709"
 ---
-# <a name="use-azure-service-bus-queues-with-java-to-send-and-receive-messages"></a>Üzenetek küldése és fogadása Azure Service Bus-várólistákkal Java használatával
+# <a name="quickstart-use-azure-service-bus-queues-with-java-to-send-and-receive-messages"></a>Gyors útmutató: Azure Service Bus-várólisták használata a Javával üzenetek küldéséhez és fogadásához
+
 [!INCLUDE [service-bus-selector-queues](../../includes/service-bus-selector-queues.md)]
 Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre Java-alkalmazásokat egy Azure Service Bus üzenetsor üzeneteinek üzenetküldéséhez és fogadásához. 
 
@@ -44,7 +45,7 @@ A minta létrehozása előtt győződjön meg arról, hogy telepítette a [Javá
 
 ![A Java-hoz készült Microsoft Azure-kódtárak hozzáadása az Eclipse-projekthez](./media/service-bus-java-how-to-use-queues/eclipse-azure-libraries-java.png)
 
-Adja hozzá a `import` következő utasításokat a Java-fájl elejéhez:
+Adja hozzá a következő `import` utasításokat a Java-fájl elejéhez:
 
 ```java
 // Include the following imports to use Service Bus APIs
@@ -125,7 +126,7 @@ Mivel Service Bus az üzenetet felhasználva jelölte meg, akkor az alkalmazás 
 
 **PeekLock** módban a fogadás kétlépéses művelet lesz, ami lehetővé teszi olyan alkalmazások támogatását, amelyek nem tudják elviselni a hiányzó üzeneteket. Amikor a Service Bus fogad egy kérést, megkeresi és zárolja a következő feldolgozandó üzenetet, hogy más fogyasztók ne tudják fogadni, majd visszaadja az alkalmazásnak. Miután az alkalmazás befejezte az üzenet feldolgozását (vagy megbízhatóként tárolja azt a későbbi feldolgozáshoz), befejezi a fogadási folyamat második szakaszát a **delete** utasítás meghívásával a kapott üzeneten. Ha Service Bus látja a **törlési** hívást, a rendszer felhasználja az üzenetet, és eltávolítja azt a várólistából.
 
-Az alábbi példa bemutatja, hogyan fogadhatók és dolgozhatók fel az üzenetek a **PeekLock** mód használatával (nem az alapértelmezett mód). Az alábbi példa egy végtelen hurkot tartalmaz, és az üzeneteket a következő módon `TestQueue`dolgozza fel:
+Az alábbi példa bemutatja, hogyan fogadhatók és dolgozhatók fel az üzenetek a **PeekLock** mód használatával (nem az alapértelmezett mód). Az alábbi példa egy végtelen hurkot tartalmaz, és a `TestQueue`ba érkező üzeneteket dolgozza fel:
 
 ```java
     public void run() throws Exception {
@@ -187,7 +188,7 @@ Abban az esetben, ha az alkalmazás az üzenet feldolgozását követően össze
 > [!NOTE]
 > [Service Bus Explorerrel](https://github.com/paolosalvatori/ServiceBusExplorer/)kezelheti Service Bus erőforrásait. A Service Bus Explorer lehetővé teszi a felhasználók számára, hogy egy Service Bus névtérhez kapcsolódjanak, és egyszerű módon felügyelhetik az üzenetkezelési entitásokat. Az eszköz olyan speciális funkciókat biztosít, mint az importálási/exportálási funkció, illetve a témakör, a várólisták, az előfizetések, a Relay-szolgáltatások, az értesítési központok és az események hubok. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Most, hogy megismerte Service Bus várólisták alapjait, további információt a [várólisták, témakörök és előfizetések][Queues, topics, and subscriptions] című témakörben talál.
 
 További információ: [Java fejlesztői központ](https://azure.microsoft.com/develop/java/).

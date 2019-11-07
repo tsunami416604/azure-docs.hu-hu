@@ -1,5 +1,5 @@
 ---
-title: Egyetlen vagy készletezett adatbázis biztonságossá tétele a Azure SQL Databaseban | Microsoft Docs
+title: Egyetlen vagy készletezett adatbázis védelme Azure SQL Database
 description: Egy oktatóanyag, amely bemutatja, hogyan biztosítható a Azure SQL Databaseban található egyetlen vagy készletezett adatbázis biztonságossá tételére szolgáló technikák és szolgáltatások.
 services: sql-database
 ms.service: sql-database
@@ -10,14 +10,14 @@ ms.author: vanto
 ms.reviewer: carlrab
 ms.date: 09/03/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: ba648a2bf563b775c39f11ab8d5c4069c4bf740f
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: 44fd49c391f4c6cddf24e3fddd7fa85a0d5ea4f2
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70231184"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73687420"
 ---
-# <a name="tutorial-secure-a-single-or-pooled-database"></a>Oktatóanyag: Egyetlen vagy készletezett adatbázis védelme
+# <a name="tutorial-secure-a-single-or-pooled-database"></a>Oktatóanyag: egyetlen vagy készletezett adatbázis biztonságossá tétele
 
 Ezen oktatóanyag segítségével megtanulhatja a következőket:
 
@@ -60,7 +60,7 @@ Az oktatóanyagban szereplő összes lépéshez jelentkezzen be [Azure Portal](h
 
 Az SQL-adatbázisokat tűzfalak védik az Azure-ban. Alapértelmezés szerint a rendszer visszautasítja a kiszolgáló és az adatbázis összes kapcsolatát. További információ: [Azure SQL Database kiszolgálói szintű és adatbázis-szintű tűzfalszabályok](sql-database-firewall-configure.md).
 
-Állítsa be az Azure-szolgáltatásokhoz **való hozzáférés engedélyezése** beállítást a legbiztonságosabb konfigurációhoz. Ezután hozzon létre egy [fenntartott IP-címet (klasszikus központi telepítést)](../virtual-network/virtual-networks-reserved-public-ip.md) ahhoz az erőforráshoz, amelyhez csatlakoznia kell, például egy Azure-beli virtuális gépet vagy egy felhőalapú szolgáltatást, és csak az IP-cím elérését engedélyezze a tűzfalon keresztül. Ha a [Resource Manager](/azure/virtual-network/virtual-network-ip-addresses-overview-arm) -alapú üzemi modellt használja, az egyes erőforrásokhoz dedikált nyilvános IP-címet kell megadni.
+Állítsa **be az** **Azure-szolgáltatásokhoz való hozzáférés engedélyezése** beállítást a legbiztonságosabb konfigurációhoz. Ezután hozzon létre egy [fenntartott IP-címet (klasszikus központi telepítést)](../virtual-network/virtual-networks-reserved-public-ip.md) ahhoz az erőforráshoz, amelyhez csatlakoznia kell, például egy Azure-beli virtuális gépet vagy egy felhőalapú szolgáltatást, és csak az IP-cím elérését engedélyezze a tűzfalon keresztül. Ha a [Resource Manager](/azure/virtual-network/virtual-network-ip-addresses-overview-arm) -alapú üzemi modellt használja, az egyes erőforrásokhoz dedikált nyilvános IP-címet kell megadni.
 
 > [!NOTE]
 > Az SQL Database az 1433-as porton kommunikál. Ha vállalati hálózaton belülről próbál csatlakozni, lehetséges, hogy a hálózati tűzfal nem engedélyezi a kimenő forgalmat az 1433-as porton keresztül. Ha igen, nem tud csatlakozni a Azure SQL Database-kiszolgálóhoz, ha a rendszergazda megnyitja a 1433-es portot.
@@ -193,7 +193,7 @@ Azure Active Directory hitelesítéshez az adatbázis-felhasználók létrehozá
 > A *SQL Server közreműködő* szerepkör például nem biztosít hozzáférést az adatbázishoz vagy az adattárházhoz való kapcsolódáshoz. Ezt az engedélyt T-SQL-utasítások használatával kell megadni az adatbázisban.
 
 > [!IMPORTANT]
-> A T-SQL `:` `&` `CREATE LOGIN` és`CREATE USER` a utasításokban nem támogatottak a speciális karakterek, például a kettőspont vagy az jel.
+> A (z) T-SQL `CREATE LOGIN` és `CREATE USER` utasításokban nem támogatottak a speciális karakterek, például a kettőspont `:` vagy a jel `&`.
 
 Azure AD-hitelesítéssel rendelkező felhasználó hozzáadása:
 
@@ -201,14 +201,14 @@ Azure AD-hitelesítéssel rendelkező felhasználó hozzáadása:
 
 1. **Object Explorer**kattintson a jobb gombbal az adatbázisra, és válassza az **Új lekérdezés**elemet.
 
-1. A lekérdezési ablakban írja be a következő parancsot, és `<Azure_AD_principal_name>` módosítsa az Azure ad-felhasználó egyszerű nevére vagy az Azure ad-csoport megjelenítendő nevére:
+1. A lekérdezési ablakban írja be a következő parancsot, és módosítsa `<Azure_AD_principal_name>` az Azure AD-felhasználó egyszerű nevével vagy az Azure AD-csoport megjelenítendő nevével:
 
    ```sql
    CREATE USER <Azure_AD_principal_name> FROM EXTERNAL PROVIDER;
    ```
 
 > [!NOTE]
-> Az Azure ad-felhasználók a csoportok típusával `E (EXTERNAL_USER)` és típusával `X (EXTERNAL_GROUPS)` vannak megjelölve az adatbázis-metaadatokban. További információ: [sys. database_principals](/sql/relational-databases/system-catalog-views/sys-database-principals-transact-sql).
+> Az Azure AD-felhasználók a `E (EXTERNAL_USER)` típussal rendelkező adatbázis-metaadatokban vannak megjelölve, és a csoportokhoz `X (EXTERNAL_GROUPS)` típusúak. További információ: [sys. database_principals](/sql/relational-databases/system-catalog-views/sys-database-principals-transact-sql).
 
 ### <a name="secure-connection-strings"></a>Biztonságos kapcsolatok karakterláncai
 
@@ -250,11 +250,11 @@ A speciális adatbiztonság engedélyezése:
 
    1. A funkció engedélyezéséhez válassza a be lehetőséget **a** **speciális adatbiztonság** területen. Válasszon egy Storage-fiókot a sebezhetőségi felmérés eredményeinek mentéséhez. Ezután válassza a **Save** (Mentés) lehetőséget.
 
-      ![Navigációs ablak](./media/sql-database-security-tutorial/threat-settings.png)
+      ![Navigációs ablaktábla](./media/sql-database-security-tutorial/threat-settings.png)
 
       Az e-maileket is konfigurálhatja a biztonsági riasztások, a tárolási adatok és a veszélyforrások észlelési típusai fogadására.
 
-1. Térjen vissza az adatbázis **SQL-adatbázisok** lapjára, és válassza a **Biztonság** szakaszban a speciális Adatbiztonság lehetőséget. Itt számos, az adatbázishoz elérhető biztonsági mutatót talál.
+1. Térjen vissza az adatbázis **SQL-adatbázisok** lapjára, és válassza a **Biztonság** szakaszban a **speciális adatbiztonság** lehetőséget. Itt számos, az adatbázishoz elérhető biztonsági mutatót talál.
 
     ![Fenyegetés állapota](./media/sql-database-security-tutorial/threat-status.png)
 
@@ -311,7 +311,7 @@ Az adatmaszkolás engedélyezése:
 
 1. A **Biztonság** szakaszban válassza a **dinamikus adatmaszkolás**lehetőséget.
 
-1. A **dinamikus** adatmaszkolási beállítások területen válassza a **maszk hozzáadása** lehetőséget a maszkolási szabály hozzáadásához. Az Azure automatikusan feltölti az elérhető adatbázis-sémákat, táblákat és oszlopokat, amelyek közül választhat.
+1. A **dinamikus adatmaszkolási** beállítások területen válassza a **maszk hozzáadása** lehetőséget a maszkolási szabály hozzáadásához. Az Azure automatikusan feltölti az elérhető adatbázis-sémákat, táblákat és oszlopokat, amelyek közül választhat.
 
     ![Maszk beállításai](./media/sql-database-security-tutorial/mask-settings.png)
 
@@ -329,12 +329,12 @@ A titkosítás engedélyezése vagy ellenőrzése:
 
 1. A **Biztonság** szakaszban válassza az **transzparens adattitkosítás**lehetőséget.
 
-1. Ha szükséges, állítsa be az adattitkosítást **a**következőre:. Kattintson a **Mentés** gombra.
+1. Ha szükséges, állítsa be az **adattitkosítást** **a**következőre:. Kattintson a **Mentés** gombra.
 
     ![Transzparens adattitkosítás](./media/sql-database-security-tutorial/encryption-settings.png)
 
 > [!NOTE]
-> A titkosítási állapot megtekintéséhez kapcsolódjon az adatbázishoz az [SSMS](./sql-database-connect-query-ssms.md) használatával, és `encryption_state` kérdezze le a [sys. DM _database_encryption_keys](/sql/relational-databases/system-dynamic-management-views/sys-dm-database-encryption-keys-transact-sql) nézet oszlopát. A állapot `3` azt jelzi, hogy az adatbázis titkosítva van.
+> A titkosítási állapot megtekintéséhez kapcsolódjon az adatbázishoz az [SSMS](./sql-database-connect-query-ssms.md) használatával, és kérdezze le a [sys. dm _database_encryption_keys](/sql/relational-databases/system-dynamic-management-views/sys-dm-database-encryption-keys-transact-sql) nézet `encryption_state` oszlopát. `3` állapota azt jelzi, hogy az adatbázis titkosítva van.
 
 ## <a name="next-steps"></a>További lépések
 

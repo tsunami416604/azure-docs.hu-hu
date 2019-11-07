@@ -1,5 +1,5 @@
 ---
-title: Azure Security Center oktatóanyag – Erőforrások védelme az Azure Security Centerrel | Microsoft Docs
+title: Hozzáférés & Application Controls oktatóanyaghoz – Azure Security Center
 description: Ebből az oktatóanyagból megtudhatja, hogyan konfigurálhat egy igény szerinti virtuálisgép-hozzáférési szabályzatot és egy alkalmazás-ellenőrzési házirendet.
 services: security-center
 documentationcenter: na
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/03/2018
 ms.author: memildin
-ms.openlocfilehash: 8cb07f3447e50528a94811f33a2142086f698586
-ms.sourcegitcommit: 9f330c3393a283faedaf9aa75b9fcfc06118b124
+ms.openlocfilehash: 4b40b7c6f755eb2107a09b1b881ea33fa2187f29
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/07/2019
-ms.locfileid: "71996335"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73686331"
 ---
-# <a name="tutorial-protect-your-resources-with-azure-security-center"></a>Oktatóanyag: Az erőforrások védelemmel való ellátása Azure Security Center
+# <a name="tutorial-protect-your-resources-with-azure-security-center"></a>Oktatóanyag: Erőforrások védelme az Azure Security Centerrel
 A Security Center korlátozza a fenyegetéseknek való kitettségét azzal, hogy hozzáférés- és alkalmazásvezérlőket használ a kártékony tevékenységek blokkolására. Az igény szerinti (JIT) virtuálisgép-hozzáférés csökkenti a támadásoknak való kitettséget azáltal, hogy lehetővé teszi a virtuális gépek állandó hozzáférésének megtagadását. Az állandó hozzáférés helyett szabályozott és naplózott hozzáférést biztosít a virtuális gépekhez – csak akkor, ha szükség van rá. Az adaptív alkalmazásvezérlők segítenek felvértezni a virtuális gépeket a kártevők ellen azáltal, hogy szabályozzák, mely alkalmazások futhatnak rajtuk. A Security Center gépi tanulási módszerekkel elemzi a virtuális gépen futó folyamatokat, és az így szerzett információk alapján segít az engedélyezési szabályok alkalmazásában.
 
 Ezen oktatóanyag segítségével megtanulhatja a következőket:
@@ -29,8 +29,6 @@ Ezen oktatóanyag segítségével megtanulhatja a következőket:
 > [!div class="checklist"]
 > * Igény szerinti virtuálisgép-hozzáférési szabályzat konfigurálása
 > * Alkalmazásvezérlési szabályzat konfigurálása
-
-Ha nem rendelkezik Azure-előfizetéssel, a kezdés előtt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="prerequisites"></a>Előfeltételek
 Az oktatóanyagban ismertetett funkciók végrehajtásához a Security Center Standard tarifacsomagjával kell rendelkeznie. Security Center Standard díjmentesen is kipróbálható. További részletekért tekintse át az [árképzést ismertető oldalt](https://azure.microsoft.com/pricing/details/security-center/). [Az Azure-előfizetés a Security Center Standard verziójába való felvételével](security-center-get-started.md) foglalkozó rövid útmutató végigvezeti azokon a lépéseken, amelyekkel frissíthet a Standard verzióra.
@@ -74,13 +72,13 @@ Az adaptív alkalmazásvezérlők segítségével meghatározhatja a konfigurál
 
 1. Térjen vissza a Security Center főmenüjébe. Az **ADVANCED CLOUD DEFENSE** (SPECIÁLIS FELHŐVÉDELEM) területen válassza ki az **Adaptive application controls** (Adaptív alkalmazásvezérlők) elemet.
 
-   ![Adaptív alkalmazásvezérlés][3]
+   ![Adaptív alkalmazásvezérlők][3]
 
    A **Resource groups** (Erőforráscsoportok) szakaszban három lap található:
 
-   - **Konfigurálva**: Az alkalmazás-vezérléssel konfigurált virtuális gépeket tartalmazó erőforráscsoport-csoportok listája.
-   - **Ajánlott**: Azon erőforráscsoportok listája, amelyekhez javasolt az alkalmazás-vezérlés.
-   - **Nincs javaslat**: A virtuális gépeket tartalmazó erőforráscsoportok listája alkalmazás-ellenőrzési javaslatok nélkül. például olyanokat, amelyeken az alkalmazások folyamatosan változnak, és még nem értek el egy stabil állapotot.
+   - **Configured** (Konfigurált): Azon erőforráscsoportok listája, amelyeken már konfigurálva van az alkalmazásvezérlés.
+   - **Recommended** (Ajánlott): Azon erőforráscsoportok listája, amelyek esetében javasolt az alkalmazásvezérlés használata.
+   - **No recommendation** (Nincs javaslat): Azon erőforráscsoportok listája, amelyek olyan virtuális gépeket tartalmaznak, amelyekhez nem tartoznak alkalmazásvezérlési javaslatok. például olyanokat, amelyeken az alkalmazások folyamatosan változnak, és még nem értek el egy stabil állapotot.
 
 2. Válassza ki a **Recommended** (Ajánlott) lapot azon erőforráscsoportok listájáért, amelyeken javasolt bevezetni az alkalmazásvezérlést.
 
@@ -88,15 +86,15 @@ Az adaptív alkalmazásvezérlők segítségével meghatározhatja a konfigurál
 
 3. Jelölje ki az egyik erőforráscsoportot a **Create application control rules** (Alkalmazásvezérlési szabályok létrehozása) lehetőség megnyitásához. A **Select VMs** (Virtuális gépek kiválasztása) felületen tekintse át a javasolt virtuális gépek listáját, és törölje a jelölést azok mellől, amelyeket nem szeretne bevonni az alkalmazásvezérlés hatókörébe. **Az engedélyezési szabályokhoz tartozó folyamatok kiválasztása** felületen tekintse át a javasolt alkalmazások listáját, és törölje a jelölést azok mellől, amelyeket nem szeretne alkalmazni. A lista a következőket tartalmazza:
 
-   - **NÉV**: Az alkalmazás teljes elérési útja
-   - **FOLYAMATOK**: Hány alkalmazás található az összes útvonalon belül
-   - **GYAKORI**: Az "igen" érték azt jelzi, hogy ezeket a folyamatokat az erőforráscsoport legtöbb virtuális gépe hajtja végre
-   - **KIHASZNÁLHATÓ**: A figyelmeztető ikon azt jelzi, hogy az alkalmazásokat egy támadó használhatja-e az alkalmazás engedélyezési listájának megkerülésére. Érdemes áttekinteni ezeket az alkalmazásokat az engedélyezésük előtt.
+   - **NAME** (Név): Az alkalmazás teljes elérési útja.
+   - **PROCESSES** (Folyamatok): Az egyes elérési utakon található alkalmazások száma.
+   - **COMMON** (Gyakori): Az „Igen” érték azt jelzi, hogy az adott folyamat az erőforráscsoport virtuális gépeinek többségén futtatva volt.
+   - **EXPLOITABLE** (Kihasználható): Egy figyelmeztető ikon jelzi, ha az alkalmazás használatával az esetleges támadók megkerülhetik az alkalmazásengedélyezési rendszert. Érdemes áttekinteni ezeket az alkalmazásokat az engedélyezésük előtt.
 
 4. Ha végzett a kiválasztással, válassza a **Create** (Létrehozás) lehetőséget.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
-A gyűjtemény részét képező többi rövid útmutató és oktatóanyag erre a rövid útmutatóra épül. Ha azt tervezi, hogy az ezt követő rövid útmutatókkal és oktatóanyagokkal dolgozik tovább, továbbra is a Standard szintet futtassa, és hagyja engedélyezve az automatikus kiépítést. Ha nem folytatja a munkát, vagy vissza szeretne térni az Ingyenes szintre:
+A gyűjtemény részét képező többi rövid útmutató és oktatóanyag erre a rövid útmutatóra épül. Ha azt tervezi, hogy az ezt követő rövid útmutatókkal és oktatóanyagokkal dolgozik tovább, folytassa a standard szint futtatását és az automatikus kiépítés engedélyezését. Ha nem folytatja a munkát, vagy vissza szeretne térni az Ingyenes szintre:
 
 1. Térjen vissza a Security Center főmenüjébe, és válassza a **Biztonsági szabályzat** elemet.
 2. Válassza ki az előfizetést vagy a szabályzatot, amelyet vissza szeretne állítani Ingyenes állapotba. Megnyílik a **Biztonsági szabályzat** képernyő.

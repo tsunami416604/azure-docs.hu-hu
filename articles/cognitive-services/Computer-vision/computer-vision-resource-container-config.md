@@ -1,7 +1,7 @@
 ---
 title: Tárolók konfigurálása – Computer Vision
 titleSuffix: Azure Cognitive Services
-description: Szövegfelismerés tárolók különböző beállításainak konfigurálása Computer Visionban.
+description: Ez a cikk bemutatja, hogyan konfigurálhatja a Computer Vision szövegfelismerés tárolók kötelező és választható beállításait.
 services: cognitive-services
 author: IEvangelist
 manager: nitinme
@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: dapine
 ms.custom: seodec18
-ms.openlocfilehash: 1df8199abbbc195db873ab3da515cb1dd5fe9761
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: ddbee3695c2a7ef7cb63c48cccacbd2d53a8c1a9
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73484094"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73718993"
 ---
 # <a name="configure-computer-vision-docker-containers"></a>Computer Vision Docker-tárolók konfigurálása
 
@@ -51,7 +51,7 @@ Ez a beállítás a következő helyen érhető el:
 
 Ne felejtse el hozzáadni a `vision/v1.0` útválasztást a végpont URI-hoz az alábbi táblázatban látható módon. 
 
-|Kötelező| Name (Név) | Data type | Leírás |
+|Kötelező| Név | Data type | Leírás |
 |--|------|-----------|-------------|
 |Igen| `Billing` | Sztring | Számlázási végpont URI-ja<br><br>Példa:<br>`Billing=https://westcentralus.api.cognitive.microsoft.com/vision/v1.0` |
 
@@ -79,7 +79,7 @@ A Computer Vision tárolók nem használnak bemeneti vagy kimeneti csatlakoztat�
 
 A gazdagép csatlakoztatási helyének pontos szintaxisa a gazda operációs rendszertől függően változhat. Emellett előfordulhat, hogy a [gazdaszámítógép](computer-vision-how-to-install-containers.md#the-host-computer)csatlakoztatási helye nem érhető el, mert a Docker-szolgáltatásfiók és a gazdagép csatlakoztatási helye engedélyekkel kapcsolatos engedélyek ütköznek. 
 
-|Optional| Name (Név) | Data type | Leírás |
+|Optional| Név | Data type | Leírás |
 |-------|------|-----------|-------------|
 |Nem engedélyezett| `Input` | Sztring | Computer Vision tárolók nem használják ezt.|
 |Optional| `Output` | Sztring | A kimeneti csatlakoztatás célja. Az alapértelmezett érték `/output`. Ez a naplók helye. Ez magában foglalja a tároló naplóit. <br><br>Példa:<br>`--mount type=bind,src=c:\output,target=/output`|

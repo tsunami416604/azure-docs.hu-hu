@@ -9,12 +9,12 @@ ms.custom: mvc
 ms.service: iot-pnp
 services: iot-pnp
 manager: philmea
-ms.openlocfilehash: 524bc3b2650ad7b435cba6b6b9d4084ffa5cf96c
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: e4dd5215812f0fd1a43afe0923601417bc8e6916
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70932677"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73569642"
 ---
 # <a name="build-an-iot-plug-and-play-preview-device-thats-ready-for-certification"></a>IoT Plug and Play előnézeti eszköz létrehozása, amely készen áll a minősítésre
 
@@ -35,7 +35,7 @@ Az oktatóanyag elvégzéséhez a következőkre lesz szüksége:
 - [Visual Studio Code](https://code.visualstudio.com/download)
 - [Azure IoT-eszközök a vs Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) Extension Packhez
 
-A rövid útmutatóban létrehozott [IoT Plug and Play eszközre is szüksége lesz: Eszköz-képesség modell használatával hozhat létre eszközöket](quickstart-create-pnp-device.md).
+Szüksége lesz a IoT Plug and Play eszközre is, amelyet a rövid útmutatóban hoz létre [: eszköz-képesség modell használata eszköz létrehozásához](quickstart-create-pnp-device.md).
 
 ## <a name="store-a-capability-model-and-interfaces"></a>Képesség-modell és felületek tárolása
 
@@ -58,9 +58,9 @@ A minősítési folyamat átadásához be kell vonnia és végre kell hajtania a
 ```
 
 > [!NOTE]
-> Ha befejezte a [gyors üzembe helyezést: Eszköz-képesség modell használatával létrehozhat egy eszközt](quickstart-create-pnp-device.md), már belefoglalta az **eszköz adatai** felületet a modellben.
+> Ha elvégezte a gyors üzembe helyezést: eszköz- [képesség modell használata eszköz létrehozásához](quickstart-create-pnp-device.md), a modellben már szerepel az **eszköz információi** felülete.
 
-Az **eszköz adatai** felületének az eszköz modelljébe való felvételéhez adja hozzá az interfész azonosítóját `implements` a képesség modell tulajdonságához:
+Az **eszköz adatai** felületének az eszköz modelljébe való felvételéhez adja hozzá az interfész azonosítóját a képesség modell `implements` tulajdonságához:
 
 ```json
 {
@@ -111,26 +111,17 @@ Az eszköz hitelesítéséhez engedélyeznie kell az üzembe [helyezést az Azur
 
 1. Válassza az **ANSI C** nyelvet.
 
-1. A projekt típusaként válassza a **CMAK-projekt** lehetőséget.
-
 1. Válasszon a következőn **keresztül: DPS (Device kiépítési szolgáltatás) szimmetrikus kulcs** , mint a kapcsolatok módszere.
+
+1. Az eszköz operációs rendszertől függően válassza a **Windows** rendszeren vagy a CMAK-projekten a **Linuxon** a projekt sablonja lehetőséget.
 
 1. A VS Code egy új ablakot nyit meg a generált kódlap-fájlokkal.
 
-1. `main.c`Nyissa meg a t, töltse ki a **dpsIdScope**, a **sasKey**és az előkészített **regisztrációban** . Ezt az információt a minősítési portálról kérheti le. További információ: [a IoT Plug and Play eszköz csatlakoztatása és tesztelése](tutorial-certification-test.md#connect-and-discover-interfaces).
+1. A kód felépítése után adja meg a DPS hitelesítő adatait (DPS-**azonosító hatóköre**, **DPS szimmetrikus kulcs**, **eszköz azonosítója**) az alkalmazás paramétereinek megfelelően. A hitelesítő adatoknak a minősítési portálról való lekéréséhez tekintse [meg a IoT Plug and Play eszköz csatlakoztatása és tesztelése](tutorial-certification-test.md#connect-and-discover-interfaces)című témakört.
 
-    ```c
-    // TODO: Specify DPS scope ID if you intend on using DPS / IoT Central.
-    static const char *dpsIdScope = "[DPS Id Scope]";
-    
-    // TODO: Specify symmetric keys if you intend on using DPS / IoT Central and symmetric key based auth.
-    static const char *sasKey = "[DPS symmetric key]";
-    
-    // TODO: specify your device registration ID
-    static const char *registrationId = "[device registration Id]";
+    ```cmd/sh
+    .\your_pnp_app.exe [DPS ID Scope] [DPS symmetric key] [device ID]
     ```
-
-1. Mentse a fájlt.
 
 ### <a name="implement-standard-interfaces"></a>Standard felületek implementálása
 

@@ -1,5 +1,5 @@
 ---
-title: Létrehoz egy eseményközpontot, PowerShell – Azure Event Hubs használatával |} A Microsoft Docs
+title: 'Rövid útmutató: Event hub létrehozása a PowerShell használatával – Azure Event Hubs'
 description: Ez a rövid útmutató azt mutatja be, hogyan hozhat létre egy eseményközpontot az Azure PowerShell-lel, majd hogyan küldhet és fogadhat eseményeket a .NET Standard SDK használatával.
 services: event-hubs
 author: ShubhaVijayasarathy
@@ -9,16 +9,16 @@ ms.service: event-hubs
 ms.devlang: na
 ms.topic: quickstart
 ms.custom: seodec18
-ms.date: 12/06/2018
+ms.date: 11/05/2019
 ms.author: shvija
-ms.openlocfilehash: b3847f798fde8702d6d95450c68fbfbca4c97f9d
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.openlocfilehash: 2a88fe340037c31a71cb34181682095f31400c36
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65604470"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73720609"
 ---
-# <a name="quickstart-create-an-event-hub-using-azure-powershell"></a>Gyors útmutató: Létrehoz egy eseményközpontot, az Azure PowerShell-lel
+# <a name="quickstart-create-an-event-hub-using-azure-powershell"></a>Rövid útmutató: Eseményközpont létrehozása a PowerShell-lel
 
 Az Azure Event Hubs egy Big Data streamplatform és eseményfeldolgozó szolgáltatás, amely másodpercenként több millió esemény fogadására és feldolgozására képes. Az Event Hubs képes az elosztott szoftverek és eszközök által generált események, adatok vagy telemetria feldolgozására és tárolására. Az eseményközpontokba elküldött adatok bármilyen valós idejű elemzési szolgáltató vagy kötegelési/tárolóadapter segítségével átalakíthatók és tárolhatók. Az Event Hubs részletes áttekintéséért lásd az [Event Hubs áttekintését](event-hubs-about.md) és az [Event Hubs-szolgáltatásokat](event-hubs-features.md) ismertető cikket.
 
@@ -59,7 +59,7 @@ New-AzEventHubNamespace -ResourceGroupName myResourceGroup -NamespaceName namesp
 ## <a name="create-an-event-hub"></a>Eseményközpont létrehozása
 
 Most, hogy rendelkezik Event Hubs-névtérrel, hozzon létre egy eseményközpontot abban a névtérben:  
-Az időszak engedélyezett `MessageRetentionInDays` 1 és 7 nap közötti.
+A `MessageRetentionInDays` engedélyezett időtartama 1 és 7 nap között van.
 
 ```azurepowershell-interactive
 New-AzEventHub -ResourceGroupName myResourceGroup -NamespaceName namespace_name -EventHubName eventhub_name -MessageRetentionInDays 3
@@ -69,7 +69,7 @@ Gratulálunk! Az Azure PowerShell segítségével létrehozott egy Event Hubs-n�
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben a cikkben egy Event Hubs-névteret hozott létre, és mintaalkalmazások használatával eseményeket küldött az eseményközpontba, illetve fogadott onnan. Események küldése (vagy) események fogadása az event hubs részletes utasításokért lásd: a **események küldéséhez és fogadásához** oktatóanyagok: 
+Ebben a cikkben egy Event Hubs-névteret hozott létre, és mintaalkalmazások használatával eseményeket küldött az eseményközpontba, illetve fogadott onnan. Az események küldése az Event hub-tól (vagy) események fogadására vonatkozó részletes utasításokért lásd a **küldési és fogadási események** oktatóanyagokat: 
 
 - [.NET Core](event-hubs-dotnet-standard-getstarted-send.md)
 - [.NET-keretrendszer](event-hubs-dotnet-framework-getstarted-send.md)
@@ -77,8 +77,8 @@ Ebben a cikkben egy Event Hubs-névteret hozott létre, és mintaalkalmazások h
 - [Python](event-hubs-python-get-started-send.md)
 - [Node.js](event-hubs-node-get-started-send.md)
 - [Go](event-hubs-go-get-started-send.md)
-- [C (csak küldése)](event-hubs-c-getstarted-send.md)
-- [Az Apache Storm (csak reecive)](event-hubs-storm-getstarted-receive.md)
+- [C (csak küldés)](event-hubs-c-getstarted-send.md)
+- [Apache Storm (csak reecive)](event-hubs-storm-getstarted-receive.md)
 
 
 [hozzon létre egy ingyenes fiókot]: https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio

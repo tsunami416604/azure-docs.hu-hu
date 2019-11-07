@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 10/09/2019
 ms.author: victorh
-ms.openlocfilehash: 7b9cbd4e84f60b42e8eb6cb250a9b25f398fd4a0
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 9e1fe0e5bae462715a8cb2950cca100f0f409325
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73176450"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73718728"
 ---
 # <a name="back-end-health-and-diagnostic-logs-for-application-gateway"></a>Application Gateway háttérbeli állapot-és diagnosztikai naplói
 
@@ -61,7 +61,7 @@ Get-AzApplicationGatewayBackendHealth -Name ApplicationGateway1 -ResourceGroupNa
 az network application-gateway show-backend-health --resource-group AdatumAppGatewayRG --name AdatumAppGateway
 ```
 
-### <a name="results"></a>Eredmények
+### <a name="results"></a>Results (Eredmények)
 
 A következő kódrészlet a válasz példáját mutatja:
 
@@ -112,11 +112,11 @@ A naplók tárolásához három lehetőség közül választhat:
 
 A tevékenységnaplózás automatikusan engedélyezve van minden Resource Manager-erőforráshoz. Az ezen naplókon keresztül elérhető adatok gyűjtésének megkezdéséhez engedélyeznie kell a hozzáférés és a teljesítmény naplózását. A naplózás engedélyezéséhez kövesse az alábbi lépéseket:
 
-1. Jegyezze fel azon Storage-fiók erőforrás-azonosítóját, ahol a naplóadatokat tárolja. Ez az érték a következő:/Subscriptions/\<subscriptionId \>/resourceGroups/\<resource csoport neve \>/providers/Microsoft.Storage/storageAccounts/\<storage fióknév \>. Az előfizetés bármilyen tárfiókját használhatja. Ezeket az információkat az Azure Portalon találhatja meg.
+1. Jegyezze fel azon Storage-fiók erőforrás-azonosítóját, ahol a naplóadatokat tárolja. Ez az érték a következő:/Subscriptions/\<subscriptionId\>/resourceGroups/\<erőforráscsoport neve\>/providers/Microsoft.Storage/storageAccounts/\<Storage-fiók neve\>. Az előfizetés bármilyen tárfiókját használhatja. Ezeket az információkat az Azure Portalon találhatja meg.
 
     ![Portál: a Storage-fiók erőforrás-azonosítója](./media/application-gateway-diagnostics/diagnostics1.png)
 
-2. Jegyezze fel az Application Gateway azon erőforrás-AZONOSÍTÓját, amelyhez a naplózás engedélyezve van. Ez az érték a következő:/Subscriptions/\<subscriptionId \>/resourceGroups/\<resource csoport neve \>/providers/Microsoft.Network/applicationGateways/\<application átjáró neve \>. Ezeket az információkat a portálon találhatja meg.
+2. Jegyezze fel az Application Gateway azon erőforrás-AZONOSÍTÓját, amelyhez a naplózás engedélyezve van. Ez az érték a következő:/Subscriptions/\<subscriptionId\>/resourceGroups/\<erőforráscsoport neve\>/providers/Microsoft.Network/applicationGateways/\<Application Gateway Name\>. Ezeket az információkat a portálon találhatja meg.
 
     ![Portál: az Application Gateway erőforrás-azonosítója](./media/application-gateway-diagnostics/diagnostics2.png)
 
@@ -157,7 +157,7 @@ Az Azure alapértelmezés szerint a tevékenység naplóját hozza létre. A nap
 
 A hozzáférési napló csak akkor jön létre, ha minden Application Gateway példányon engedélyezte az előző lépésekben részletezett módon. Az adatai a naplózás engedélyezésekor megadott Storage-fiókban tárolódnak. A Application Gateway minden hozzáférése JSON formátumban van naplózva, ahogyan az a V1-hez készült következő példában látható:
 
-|Value (Díj)  |Leírás  |
+|Érték  |Leírás  |
 |---------|---------|
 |instanceId     | Application Gateway a kérelmet kézbesítő példány.        |
 |Ügyfélip     | A kérelemből származó IP-cím.        |
@@ -201,7 +201,7 @@ A hozzáférési napló csak akkor jön létre, ha minden Application Gateway p�
 ```
 Application Gateway és WAF v2 esetén a naplók valamivel több információt mutatnak be:
 
-|Value (Díj)  |Leírás  |
+|Érték  |Leírás  |
 |---------|---------|
 |instanceId     | Application Gateway a kérelmet kézbesítő példány.        |
 |Ügyfélip     | A kérelemből származó IP-cím.        |
@@ -213,7 +213,7 @@ Application Gateway és WAF v2 esetén a naplók valamivel több információt m
 |httpVersion     | A kérelem HTTP-verziója.        |
 |– Fogadott bájtok     | A fogadott csomagok mérete bájtban megadva.        |
 |– Küldött bájtok| Az elküldött csomagok mérete bájtban kifejezve.|
-|Eltelt idő| A kérelem feldolgozására és a hozzá tartozó válasz elküldésekor szükséges időtartam (ezredmásodpercben). Ez a számítás azt az időintervallumot számítja ki, amikor a Application Gateway egy HTTP-kérelem első bájtját kapja meg a válasz küldési műveletének befejezési idejére. Fontos megjegyezni, hogy az idő mező általában magában foglalja azt az időpontot, ameddig a kérelem és a válasz csomagjai a hálózaton keresztül utaznak. |
+|Eltelt idő| Az az időtartam ( **másodpercben**), ameddig a rendszer feldolgozza a kérést, és elküldi a válaszát. Ez a számítás azt az időintervallumot számítja ki, amikor a Application Gateway egy HTTP-kérelem első bájtját kapja meg a válasz küldési műveletének befejezési idejére. Fontos megjegyezni, hogy az idő mező általában magában foglalja azt az időpontot, ameddig a kérelem és a válasz csomagjai a hálózaton keresztül utaznak. |
 |sslEnabled| Azt jelzi, hogy a háttér-készletekkel való kommunikáció SSL protokollt használ-e. Az érvényes értékek be-és kikapcsolva.|
 |sslCipher| Az SSL-kommunikációhoz használt titkosító csomag (ha az SSL engedélyezve van).|
 |sslProtocol| Használt SSL/TLS protokoll (ha az SSL engedélyezve van).|
@@ -255,7 +255,7 @@ Application Gateway és WAF v2 esetén a naplók valamivel több információt m
 A rendszer csak akkor hozza létre a teljesítményadatokat, ha minden Application Gateway példányon engedélyezte azt az előző lépésekben részletezett módon. Az adatai a naplózás engedélyezésekor megadott Storage-fiókban tárolódnak. A Teljesítménynapló adatai 1 percenként jönnek létre. Csak a v1 SKU esetében érhető el. A v2 SKU esetében használja a teljesítményadatok [mérőszámait](application-gateway-metrics.md) . A rendszer naplózza a következő adatnaplókat:
 
 
-|Value (Díj)  |Leírás  |
+|Érték  |Leírás  |
 |---------|---------|
 |instanceId     |  Application Gateway példány, amelynél a teljesítményadatokat generálja a rendszer. A többpéldányos Application Gateway esetében a példányok száma egy sor.        |
 |healthyHostCount     | A háttér-készletben található kifogástalan állapotú gazdagépek száma.        |
@@ -263,7 +263,7 @@ A rendszer csak akkor hozza létre a teljesítményadatokat, ha minden Applicati
 |requestCount     | A kézbesített kérelmek száma.        |
 |Késleltetés | A példány és a háttérben futó kérelmek átlagos késése (ezredmásodpercben), amely a kérelmeket szolgálja ki. |
 |failedRequestCount| Sikertelen kérelmek száma.|
-|átviteli sebesség| Átlagos átviteli sebesség az utolsó napló óta, bájt/másodpercben mérve.|
+|Átviteli sebesség| Átlagos átviteli sebesség az utolsó napló óta, bájt/másodpercben mérve.|
 
 ```json
 {
@@ -292,7 +292,7 @@ A rendszer csak akkor hozza létre a teljesítményadatokat, ha minden Applicati
 A rendszer csak akkor hozza létre a tűzfal-naplót, ha engedélyezte az összes Application Gateway számára az előző lépésekben részletezett módon. Ehhez a naplóhoz az is szükséges, hogy a webalkalmazási tűzfal konfigurálva legyen egy Application gatewayen. Az adatai a naplózás engedélyezésekor megadott Storage-fiókban tárolódnak. A rendszer naplózza a következő adatnaplókat:
 
 
-|Value (Díj)  |Leírás  |
+|Érték  |Leírás  |
 |---------|---------|
 |instanceId     | Application Gateway a példány, amelyről a rendszer a tűzfalat hozza létre. A többpéldányos Application Gateway esetében a példányok száma egy sor.         |
 |Ügyfélip     |   A kérelemből származó IP-cím.      |
@@ -364,7 +364,7 @@ A Storage-fiókjához is csatlakozhat, és lekérheti a hozzáférés- és telje
 
 Közzétettünk egy Resource Manager-sablont, amely a népszerű [GoAccess](https://goaccess.io/) log Analyzert telepíti és futtatja Application Gateway hozzáférési naplókhoz. A GoAccess olyan értékes HTTP-forgalmi statisztikát biztosít, mint például az egyedi látogatók, a kért fájlok, gazdagépek, operációs rendszerek, böngészők, HTTP-állapotkódok és egyebek. További részletekért tekintse meg az [információs fájlt a GitHub Resource Manager-sablon mappájából](https://aka.ms/appgwgoaccessreadme).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Számlálók és Eseménynaplók megjelenítése [Azure monitor naplók](../azure-monitor/insights/azure-networking-analytics.md)használatával.
 * [Jelenítse meg az Azure-beli tevékenység naplóját Power bi](https://blogs.msdn.com/b/powerbi/archive/2015/09/30/monitor-azure-audit-logs-with-power-bi.aspx) blogbejegyzésben.

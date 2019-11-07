@@ -1,6 +1,6 @@
 ---
-title: Megjelenítheti az adatokat rendellenességek valós idejű események – Azure Event Hubs |} A Microsoft Docs
-description: Oktatóanyag – A Microsoft Azure Event Hubsba küldött valós idejű események adatanomáliáinak vizualizációja
+title: 'Oktatóanyag: adatrendellenességek megjelenítése valós idejű eseményekben – Azure Event Hubs'
+description: 'Oktatóanyag: az adatrendellenességek megjelenítése a Microsoft Azureba eljuttatott valós idejű eseményekben Event Hubs'
 services: event-hubs
 author: ShubhaVijayasarathy
 manager: timlt
@@ -8,17 +8,17 @@ ms.author: shvija
 ms.topic: tutorial
 ms.service: event-hubs
 ms.custom: seodec18
-ms.date: 02/26/2019
-ms.openlocfilehash: d6786e4e3382c7c4d7a6a6a28c3cd3621df221c1
-ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
+ms.date: 11/05/2019
+ms.openlocfilehash: 0cfff0196ebc20b9b01bc966b3590470d349e86e
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2019
-ms.locfileid: "64867134"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73717994"
 ---
-# <a name="tutorial-visualize-data-anomalies-in-real-time-events-sent-to-azure-event-hubs"></a>Oktatóanyag: Valós idejű események az Azure Event hubs szolgáltatásba küldött adatok protokollmegvalósításokat megjelenítése
+# <a name="tutorial-visualize-data-anomalies-in-real-time-events-sent-to-azure-event-hubs"></a>Oktatóanyag – Az Azure Event Hubsba küldött valós idejű események adatanomáliáinak vizualizációja
 
-Az Azure Event Hubsban az Azure Stream Analytics használatával ellenőrizheti a bejövő adatokat, és azonosíthatja az anomáliákat, amelyeket ezután megjeleníthet a Power BI-ban. Tegyük fel, hogy van több ezer eszköze, amelyek folyamatosan valós idejű adatokat küldenek egy eseményközpontba. Ez több millió eseményt jelent másodpercenként. Hogyan lehet anomáliákat vagy hibákat keresni ennyi adatban? Például Lehetőségelemzési az eszközök küldenek hitelkártya-tranzakciók, és rögzítheti bárhol több tranzakció több országban és régióban egy 5 másodperces időintervallumon belül van szüksége? Ez akkor történhet, ha valaki hitelkártyákat lop, majd a világ különböző pontjain több dolgot vásárol velük egyszerre. 
+Az Azure Event Hubsban az Azure Stream Analytics használatával ellenőrizheti a bejövő adatokat, és azonosíthatja az anomáliákat, amelyeket ezután megjeleníthet a Power BI-ban. Tegyük fel, hogy van több ezer eszköze, amelyek folyamatosan valós idejű adatokat küldenek egy eseményközpontba. Ez több millió eseményt jelent másodpercenként. Hogyan lehet anomáliákat vagy hibákat keresni ennyi adatban? Például mi történik, ha az eszközök bankkártyás tranzakciókat küldenek, és bárhol rögzíteni kell, hogy több országban/régióban több tranzakció van-e egy 5 másodperces időintervallumon belül? Ez akkor történhet, ha valaki hitelkártyákat lop, majd a világ különböző pontjain több dolgot vásárol velük egyszerre. 
 
 Ebben az oktatóanyagban ezt a példát szimulálja. Futtatni fog egy alkalmazást, amely hitelkártya-tranzakciókat hoz létre, és elküldi őket egy eseményközpontba. Ezután valós időben be fogja olvasni az adatstreamet az Azure Stream Analytics segítségével, amely elkülöníti az érvényes tranzakciókat az érvénytelenektől, majd a Power BI használatával vizuálisan azonosítani fogja az érvénytelenként megjelölt tranzakciókat.
 
@@ -176,17 +176,17 @@ Most már adatokat streamelhet az eseményközpontba. Az adatok Power BI-vizuali
 
 2. Adja meg a feladat alábbi adatait:
 
-   **Feladat neve**: Használat **contosoEHjob**. Ez a mező a feladat nevét tartalmazza, amelynek globálisan egyedinek kell lennie.
+   **Feladat neve**: Használja a **contosoEHjob** nevet. Ez a mező a feladat nevét tartalmazza, amelynek globálisan egyedinek kell lennie.
 
-   **Előfizetés**: Válassza ki előfizetését.
+   **Előfizetés**: Válassza ki az előfizetését.
 
-   **Erőforráscsoport**: Az event hub által használt ugyanazt az erőforráscsoportot használja (**ContosoResourcesEH**).
+   **Erőforráscsoport**: Használja az eseményközpont által használt erőforráscsoportot (**ContosoResourcesEH**).
 
-   **Hely**: A telepítési parancsprogram használja ugyanazt a helyet (**USA nyugati RÉGIÓJA**).
+   **Hely**: Használja a beállítási szkriptnél használt helyet (**USA nyugati régiója**).
 
    ![Új Azure Stream Analytics-feladat létrehozását bemutató képernyőkép.](./media/event-hubs-tutorial-visualize-anomalies/stream-analytics-add-job.png)
 
-    A többi mezőnél fogadja el az alapértelmezett beállításokat. Kattintson a **Create** (Létrehozás) gombra. 
+    A többi mezőnél fogadja el az alapértelmezett beállításokat. Kattintson a **Létrehozás** elemre. 
 
 ### <a name="add-an-input-to-the-stream-analytics-job"></a>Bemenet hozzáadása a Stream Analytics-feladathoz
 
@@ -201,17 +201,17 @@ A Steam Analytics-feladat bemenetei az eseményközpontból származó hitelkár
 
 2. A **Bemenetek** panelen kattintson a **Streambemenet hozzáadása** elemre, és válassza az Event Hubsot. A megjelenő képernyőn töltse ki az alábbi mezőket:
 
-   **Bemeneti áljel**: Használat **contosoinputs**. Ez a mező a bemeneti stream nevét tartalmazza, amelyet az adatlekérdezés meghatározásakor kell használni.
+   **Bemeneti alias**: Használja a **contosoinputs** aliast. Ez a mező a bemeneti stream nevét tartalmazza, amelyet az adatlekérdezés meghatározásakor kell használni.
 
-   **Előfizetés**: Válassza ki előfizetését.
+   **Előfizetés**: Válassza ki az előfizetését.
 
-   **Event Hubs-névtér**: Válassza ki az Event Hubs-névtér ($**eventHubNamespace**). 
+   **Event Hubs-névtér**: Válassza ki az Event Hubs-névterét ($**eventHubNamespace**). 
 
-   **Eseményközpont neve**: Kattintson a **meglévő használata** és az event hubs kiválasztása ($**eventHubName**).
+   **Eseményközpont neve**: Kattintson a **Meglévő használata** elemre, és válassza ki az eseményközpontját ($**eventHubName**).
 
-   **Event Hubs házirendnév**: Válassza ki **RootManageSharedAccessKey**.
+   **Eseményközpont szabályzatának neve**: Válassza a **RootManageSharedAccessKey** lehetőséget.
 
-   **Event Hubs fogyasztói csoportot**: Ezt a mezőt hagyja üresen az alapértelmezett felhasználói csoport használja.
+   **Eseményközpont fogyasztói csoportja**: Hagyja üresen ezt a mezőt az alapértelmezett fogyasztói csoport használatához.
 
    A többi mezőnél fogadja el az alapértelmezett beállításokat.
 
@@ -225,11 +225,11 @@ A Steam Analytics-feladat bemenetei az eseményközpontból származó hitelkár
 
 2. A **Kimenetek** panelen kattintson a **Hozzáadás**, majd a **Power BI** elemre. A megjelenő képernyőn töltse ki az alábbi mezőket:
 
-   **Kimeneti alias**: Használat **contosooutputs**. Ez a mező a kimenet egyedi aliasát tartalmazza. 
+   **Kimeneti alias**: Használja a **contosooutputs** aliast. Ez a mező a kimenet egyedi aliasát tartalmazza. 
 
-   **Adatkészlet neve**: Használat **contosoehdataset**. Ez a mező a Power BI-ban használni kívánt adatkészlet nevét tartalmazza. 
+   **Adatkészlet neve**: Használja a **contosoehdataset** nevet. Ez a mező a Power BI-ban használni kívánt adatkészlet nevét tartalmazza. 
 
-   **Táblanév**: Használat **contosoehtable**. Ez a mező a Power BI-ban használni kívánt tábla nevét tartalmazza. 
+   **Tábla neve**: Használja a **contosoehtable** nevet. Ez a mező a Power BI-ban használni kívánt tábla nevét tartalmazza. 
 
    A többi mezőnél fogadja el az alapértelmezett beállításokat.
 
@@ -325,7 +325,7 @@ A Stream Analytics-feladat területen kattintson az **Indítás**, a **Most**, m
     ![Képernyőkép az irányítópult-csempe címének és alcímének megadásáról.](./media/event-hubs-tutorial-visualize-anomalies/power-bi-tile-details.png)
 
     > [!IMPORTANT]
-    > Ha futtatja a mintaalkalmazást, és az adatok streamelése az event hubs, erre a csempére a szám gyorsan (másodpercenként) változik. Mivel a Stream Analytics-lekérdezés ténylegesen frissíti az értéket **másodpercenként**. A 3 perces átfedésmentes ablak az elmúlt néhány perc alatt az összeg megjelenítéséhez frissítse a lekérdezést. 
+    > Ha a minta alkalmazást és az adatfolyamot az Event hub-ra futtatja, a csempe száma gyorsan változik (másodpercenként). Ez azért van, mert a Stream Analytics lekérdezés **másodpercenként**frissíti az értéket. Frissítse a lekérdezést egy 3 perces késleltetésű ablakra, hogy az összeg az elmúlt néhány percben megjelenjen. 
 11. Adjon hozzá egy másik vizualizációt. Ismételje meg az első néhány lépést:
 
     * Kattintson a **Csempe hozzáadása** elemre.

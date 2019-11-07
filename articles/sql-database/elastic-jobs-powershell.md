@@ -1,5 +1,5 @@
 ---
-title: Azure SQL Database rugalmasfeladat-ügynök létrehozása a PowerShell használatával | Microsoft Docs
+title: 'Azure SQL Database rugalmas feladatok ügynökének létrehozása a PowerShell-lel '
 description: Megtudhatja, hogyan hozhat létre rugalmasfeladat-ügynököt a PowerShell használatával.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: johnpaulkee
 ms.author: joke
 ms.reviwer: sstein
 ms.date: 03/13/2019
-ms.openlocfilehash: 0d64bd150a43666679253f8244d80411e25dfdcd
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 80f9db2d11c875d9be9bef225c04e3e90f3d0ff8
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68935053"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73692248"
 ---
 # <a name="create-an-elastic-job-agent-using-powershell"></a>Rugalmasfeladat-ügynök létrehozása a PowerShell használatával
 
@@ -70,7 +70,7 @@ Get-Module Az.Sql
 
 A rugalmasfeladat-ügynök létrehozásához [feladat-adatbázisként](sql-database-job-automation-overview.md#job-database) használható (S0 vagy magasabb szintű) adatbázisra van szükség. 
 
-*Az alábbi szkript egy új erőforráscsoportot, kiszolgálót és feladat-adatbázisként használható adatbázist hoz létre. Az alábbi szkript egy második kiszolgálót is létrehoz két üres adatbázissal a feladatok végrehajtásához.*
+*Az alábbi szkript létrehoz egy új erőforráscsoportot, egy kiszolgálót és egy adatbázist, amely a feladatokhoz használható. Az alábbi szkript egy második kiszolgálót is létrehoz két üres adatbázissal a feladatok végrehajtásához.*
 
 A rugalmas feladatokhoz nem tartoznak külön elnevezési követelmények, így tetszőleges elnevezési konvenciót alkalmazhat, ha az megfelel [az Azure követelményeinek](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions).
 
@@ -215,7 +215,7 @@ $JobCred = $JobAgent | New-AzSqlElasticJobCredential -Name "jobuser" -Credential
 
 A [célcsoport](sql-database-job-automation-overview.md#target-group) határozza meg azt az egy vagy több adatbázist, amely(ek)en az adott feladatlépés végre lesz hajtva. 
 
-A következő kódrészlet két célcsoportot hoz létre: *ServerGroup*és *ServerGroupExcludingDb2*. A *ServerGroup* csoport céladatbázisa a kiszolgálón a végrehajtás időpontjában megtalálható összes adatbázis, a *ServerGroupExcludingDb2* csoporté pedig a kiszolgálón megtalálható összes adatbázis, a *TargetDb2* kivételével:
+Az alábbi kódrészlet két célcsoportot (*ServerGroup* és *ServerGroupExcludingDb2*) hoz létre. A *ServerGroup* csoport céladatbázisa a kiszolgálón a végrehajtás időpontjában megtalálható összes adatbázis, a *ServerGroupExcludingDb2* csoporté pedig a kiszolgálón megtalálható összes adatbázis, a *TargetDb2* kivételével:
 
 ```powershell
 Write-Output "Creating test target groups..."
@@ -297,7 +297,7 @@ A következő táblázat a lehetséges feladatok végrehajtásának állapotait 
 |**Sikerült** | A feladatok végrehajtása sikeresen befejeződött.|
 |**SucceededWithSkipped** | A feladatok végrehajtása sikeresen befejeződött, de néhány gyermeke ki lett hagyva.|
 |**Sikertelen** | A feladatok végrehajtása sikertelen volt, és kimerítette az újrapróbálkozásait.|
-|**TimedOut** | A feladatok végrehajtása túllépte az időkorlátot.|
+|**Időtúllépés** | A feladatok végrehajtása túllépte az időkorlátot.|
 |**Visszavont** | A feladat végrehajtása meg lett szakítva.|
 |**Kihagyva** | A rendszer kihagyta a feladatok végrehajtását, mert ugyanazon a feladattípusnak egy másik végrehajtása már fut ugyanazon a célhelyen.|
 |**WaitingForChildJobExecutions** | A feladatok végrehajtása a gyermek végrehajtásának befejeződésére vár.|

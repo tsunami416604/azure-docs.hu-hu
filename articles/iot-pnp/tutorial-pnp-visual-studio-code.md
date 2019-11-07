@@ -9,14 +9,14 @@ ms.custom: mvc
 ms.service: iot-pnp
 services: iot-pnp
 manager: philmea
-ms.openlocfilehash: b890fe1a9ef30e18a54ced9f48015bed39298807
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: b7b9cd1040accda4d39af4d0a18940b56a45f929
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70858877"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73569883"
 ---
-# <a name="tutorial-create-and-test-a-device-capability-model-using-visual-studio-code"></a>Oktatóanyag: Eszköz-képesség modell létrehozása és tesztelése a Visual Studio Code használatával
+# <a name="tutorial-create-and-test-a-device-capability-model-using-visual-studio-code"></a>Oktatóanyag: eszköz-képesség modell létrehozása és tesztelése a Visual Studio Code használatával
 
 Ebből az oktatóanyagból megtudhatja, hogyan, mint az eszköz fejlesztői, hogyan hozhat létre egy _eszköz-képesség modellt_a Visual Studio Code használatával. A modellel létrehozhatja a csontváz kódját olyan eszközön való futtatáshoz, amely a felhőben egy Azure IoT Hub-példányhoz csatlakozik.
 
@@ -34,7 +34,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 A jelen oktatóanyagban az eszköz képességeinek modelljével való együttműködéshez a következőkre lesz szüksége:
 
-* [Visual Studio Code](https://code.visualstudio.com/download): A VS Code több platformon is elérhető
+* [Visual Studio Code](https://code.visualstudio.com/download): a vs Code több platformon is elérhető
 * [Azure IoT-eszközök a vs Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) bővítményi csomaghoz. A következő lépésekkel telepítheti a kiterjesztési csomagot a VS Code-ban:
 
     1. A VS Code-ban válassza a **kiterjesztések** lapot.
@@ -43,14 +43,9 @@ A jelen oktatóanyagban az eszköz képességeinek modelljével való együttmű
 
 A generált C kód a Windowsban való létrehozásához ebben az oktatóanyagban a következőkre lesz szüksége:
 
-* [Visual Studio (közösségi, szakmai vagy vállalati)](https://visualstudio.microsoft.com/downloads/) – ügyeljen arra, hogy a **NuGet csomagkezelő** összetevőjét és az asztali fejlesztést a Visual Studio telepítésekor számítási **feladatokkal C++**  végezze el.
+* [Hozzon létre eszközöket a Visual studióhoz](https://visualstudio.microsoft.com/thank-you-downloading-visual-studio/?sku=BuildTools&rel=16) ,  **C++ és hozzon létre eszközöket** és **NuGet csomagkezelő összetevő** -számítási feladatokat. Ha már rendelkezik a [Visual Studióval (Közösség, Professional vagy Enterprise)](https://visualstudio.microsoft.com/downloads/) 2019, 2017 vagy 2015-val, és ugyanazokat a számítási feladatokat telepítette.
 * [Git](https://git-scm.com/download)
 * [CMake](https://cmake.org/download/)
-* Az Azure IoT C SDK helyi példánya:
-
-    ```cmd
-    git clone https://github.com/Azure/azure-iot-sdk-c.git --recursive -b public-preview
-    ```
 
 A jelen oktatóanyagban az eszköz kódjának teszteléséhez a következőkre lesz szüksége:
 
@@ -71,13 +66,13 @@ A VS Code-ban a IoT-eszköz képességeit meghatározó illesztőfelület-fájl 
 
 1. Indítsa el a VS Code-ot, és használja a **CTRL + SHIFT + P** billentyűkombinációt a parancssor megnyitásához.
 
-1. Adja meg **Plug and Play** , majd válassza **ki a IoT Plug & Play: Hozzon** létre illesztőfelület-parancsot.
+1. Adja meg **Plug and Play** , majd válassza ki a **IoT plug & Play: Create Interface** parancsot.
 
 1. Keresse meg és válassza ki a létrehozott **devicemodel** mappát.
 
 1. Ezután írja be a **EnvironmentalSensor** nevet az illesztő neveként, majd nyomja le az **ENTER**billentyűt. A VS Code egy **EnvironmentalSensor. Interface. JSON**nevű minta-illesztőfelület-fájlt hoz létre.
 
-1. Cserélje le a fájl tartalmát a következő JSON-ra, és `{your name}` cserélje le `@id` a mezőt egy egyedi értékre. Csak az a – z, A-Z, 0-9 és aláhúzás karaktereket használja. További információ: [digitális kettős azonosító formátuma](https://github.com/Azure/IoTPlugandPlay/tree/master/DTDL#digital-twin-identifier-format). A csatoló AZONOSÍTÓjának egyedinek kell lennie, hogy mentse a felületet az adattárba:
+1. Cserélje le a fájl tartalmát a következő JSON-ra, és cserélje le a `{your name}` értéket a `@id` mezőben egyedi értékkel. Csak az a – z, A-Z, 0-9 és aláhúzás karaktereket használja. További információ: [digitális kettős azonosító formátuma](https://github.com/Azure/IoTPlugandPlay/tree/master/DTDL#digital-twin-identifier-format). A csatoló AZONOSÍTÓjának egyedinek kell lennie, hogy mentse a felületet az adattárba:
 
     ```json
     {
@@ -176,7 +171,7 @@ A VS Code-ban a IoT-eszköz képességeit meghatározó illesztőfelület-fájl 
           "commandType": "synchronous"
         }
       ],
-      "@context": "http://azureiot.com/v1/contexts/Interface.json"
+      "@context": "http://azureiot.com/v1/contexts/IoTModel.json"
     }
     ```
 
@@ -219,9 +214,9 @@ A IoT Plug and Play-eszköz által megvalósított interfészeket megadó modell
 
 1. A Command paletta megnyitásához használja a **CTRL + SHIFT + P** billentyűkombinációt.
 
-1. Adja meg **Plug and Play** , majd válassza **ki a IoT Plug & Play: Képesség-modell** létrehozása parancs. Ezután adja meg a **SensorboxModel** nevet a modell neveként. A VS Code egy **SensorboxModel. capabilitymodel. JSON**nevű minta-illesztőfelület-fájlt hoz létre.
+1. Adja meg **Plug and Play** , majd válassza ki a **IoT plug & Play: képesség modell létrehozása** parancsot. Ezután adja meg a **SensorboxModel** nevet a modell neveként. A VS Code egy **SensorboxModel. capabilitymodel. JSON**nevű minta-illesztőfelület-fájlt hoz létre.
 
-1. Cserélje le a fájl tartalmát a következő JSON-ra, és `{your name}` cserélje le `@id` a mezőt és `EnvironmentalSensor` a felületet a **EnvironmentalSensor. Interface. JSON** fájlban használt értékkel. A csatoló AZONOSÍTÓjának egyedinek kell lennie, hogy mentse a felületet az adattárba:
+1. Cserélje le a fájl tartalmát a következő JSON-ra, és cserélje le a `{your name}` a `@id` és a `EnvironmentalSensor` felületen a **EnvironmentalSensor. Interface. JSON** fájlban használt értékkel. A csatoló AZONOSÍTÓjának egyedinek kell lennie, hogy mentse a felületet az adattárba:
 
     ```json
     {
@@ -256,7 +251,7 @@ A **DeviceInformation** felület letöltése a nyilvános modell adattárból a 
 
 1. Adja meg a **Plug and Playt**, válassza ki a **modell megnyitása** parancsot, majd válassza a **nyilvános modell-adattár megnyitása**lehetőséget.
 
-1. Válassza a **felületek**lehetőséget, majd válassza ki az eszköz adatai `urn:azureiot:DeviceManagement:DeviceInformation:1`felületet az azonosítóval, majd válassza a **Letöltés**lehetőséget.
+1. Válassza a **felületek**lehetőséget, majd válassza ki az eszköz információs felületét `urn:azureiot:DeviceManagement:DeviceInformation:1`azonosítóval, majd válassza a **Letöltés**lehetőséget.
 
 Most már rendelkezik az eszköz képességeinek modelljét alkotó három fájllal:
 
@@ -280,7 +275,7 @@ A vállalati adattár megnyitása a VS Code-ban:
 
 1. A Command paletta megnyitásához használja a **CTRL + SHIFT + P** billentyűkombinációt.
 
-1. Adja meg **Plug and Play** , majd válassza **ki a IoT Plug & Play: Nyissa meg** a Model repository parancsot.
+1. Adja meg **Plug and Play** , majd válassza ki a **IoT plug & Play: Open Model adattár** parancsát.
 
 1. Kattintson a **szervezeti modell megnyitása adattár** elemre, és illessze be a kapcsolatok sztringjét.
 
@@ -290,7 +285,7 @@ Az eszköz képességeinek modelljét és felületét a vállalati tárházban t
 
 1. A Command paletta megnyitásához használja a **CTRL + SHIFT + P** billentyűkombinációt.
 
-1. Adja meg **Plug and Play** , majd válassza **ki a IoT Plug & Play: Fájlok elküldése a Model** repository parancsba.
+1. Adja meg **Plug and Play** , majd válassza ki a **IoT Plug & Play: Files küldése a Model adattárba** parancsot.
 
 1. Válassza ki a **EnvironmentalSensor. Interface. JSON** és a **SensorboxModel. capabilitymodel. JSON** fájlt, majd kattintson **az OK gombra**.
 
@@ -302,7 +297,7 @@ A VS Code-hoz készült **Azure IoT Tools** használatával létrehozhat csontv�
 
 1. A Command paletta megnyitásához használja a **CTRL + SHIFT + P** billentyűkombinációt.
 
-1. Adja meg **Plug and Play** , majd válassza **ki a IoT Plug & Play: Eszköz kód-helyettes** parancsának előállítása.
+1. Adja meg **Plug and Play** , majd válassza ki a **IoT Plug & Play: az eszköz Code helyettes** parancsának létrehozását.
 
 1. Válassza ki a **SensorboxModel. capabilitymodel. JSON** képességi modellt tartalmazó fájlt.
 
@@ -310,9 +305,11 @@ A VS Code-hoz készült **Azure IoT Tools** használatával létrehozhat csontv�
 
 1. Válassza az **ANSI C** nyelvet.
 
-1. Célként válassza a **CMAK-projekt** lehetőséget.
-
 1. A kapcsolódáshoz válassza a **IoT hub eszköz kapcsolati sztringje** lehetőséget.
+
+1. Válassza **a Windows rendszerhez készült CMAK-projekt lehetőséget a** Project sablonként.
+
+1. Válassza a **Vcpkg keresztül** lehetőséget az eszköz SDK-nak való felvételéhez.
 
 A VS Code létrehozza a C-kód csontvázát, és a **sensorbox_app** mappában menti a fájlokat a **modelcode** mappában. A VS Code egy új ablakot nyit meg, amely a generált programkódokat tartalmazza.
 
@@ -355,9 +352,9 @@ A kód futtatásakor a rendszer csatlakozik IoT Hubhoz, és elkezdi a minta-tele
 
     Jegyezze fel a kapcsolatok sztringjét.
 
-1. A parancssorban navigáljon az **Azure-IOT-SDK-c** mappára, ahol létrehozta az SDK-t és a mintákat. Ezután navigáljon a **CMAK\\sensorbox_app\\kiadás** mappájához.
+1. A parancssorban navigáljon az **Azure-IOT-SDK-c** mappára, ahol létrehozta az SDK-t és a mintákat. Ezután navigáljon a **cmak\\sensorbox_app\\kiadás** mappájába.
 
-1. Futtassa a következő parancsot:
+1. Futtassa az alábbi parancsot:
 
     ```cmd
     sensorbox_app.exe {your device connection string}

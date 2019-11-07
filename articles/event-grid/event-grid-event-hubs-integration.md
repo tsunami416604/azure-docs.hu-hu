@@ -1,42 +1,42 @@
 ---
-title: Küldés az Event Hubs-adatok a data warehouse – Event Grid
-description: Ismerteti, hogyan lehet az Azure Event Grid és az Event Hubs használatával telepítse át az adatokat egy SQL Data Warehouse. Azure-függvény használatával kérje le a rögzítési fájlt.
+title: 'Oktatóanyag: Event Hubs-adatraktárba való küldés az adattárházba – Event Grid'
+description: 'Oktatóanyag: a Azure Event Grid és a Event Hubs használatával végezhető el az adatáttelepítés egy SQL Data Warehouse. Egy Azure-függvény használatával kéri le a rögzítési fájlt.'
 services: event-grid
 author: spelluru
 manager: timlt
 ms.service: event-grid
 ms.topic: tutorial
-ms.date: 01/13/2019
+ms.date: 11/05/2019
 ms.author: spelluru
-ms.openlocfilehash: 1ae7a18660d2a7324bc5897d6b3952da42b6c4b2
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.openlocfilehash: 6f5bd129b175210cd5b9415a65b8db06d904e24d
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65603440"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73718183"
 ---
-# <a name="tutorial-stream-big-data-into-a-data-warehouse"></a>Oktatóanyag: Big Data típusú adatok streamelése adattárházba
-Azure [Event Grid](overview.md) egy intelligens esemény-útválasztó szolgáltatás, amely lehetővé teszi értesítések (események) reagálni az alkalmazások és szolgáltatások. Például képes aktiválhat egy Azure-függvény, amely egy Azure Blob storage vagy az Azure Data Lake Storage rögzítésének befejeztével az Event Hubs-adatok feldolgozásához, és egyéb az adattárak az adatok áttelepítését. Ez [az Event Hubs és az Event Grid integráció minta](https://github.com/Azure/azure-event-hubs/tree/master/samples/e2e/EventHubsCaptureEventGridDemo) bemutatja, hogyan használatával az Event Hubs az Event Griddel áttelepíthetik rögzített az Event Hubs-adatok a blob storage-ból egy SQL Data Warehouse.
+# <a name="tutorial-stream-big-data-into-a-data-warehouse"></a>Oktatóanyag: stream big data adattárházba
+Az Azure [Event Grid](overview.md) egy intelligens esemény-útválasztási szolgáltatás, amely lehetővé teszi, hogy az alkalmazásokból és szolgáltatásokból érkező értesítésekre (eseményekre) reagáljon. Például elindíthat egy Azure-függvényt az Azure Blob Storage-ba vagy Azure Data Lake Storageba rögzített Event Hubs-adat feldolgozásához, és áttelepítheti azokat más adattárakba. Ez a [Event Hubs és Event Grid integrációs minta](https://github.com/Azure/azure-event-hubs/tree/master/samples/e2e/EventHubsCaptureEventGridDemo) azt mutatja be, hogyan használhatók a Event Hubs a Event Grid a blob Storage-ból rögzített Event Hubs adatok SQL Data Warehouseba való zökkenőmentes áttelepítéséhez.
 
-![Alkalmazások – áttekintés](media/event-grid-event-hubs-integration/overview.png)
+![Az alkalmazás áttekintése](media/event-grid-event-hubs-integration/overview.png)
 
-Ez az ábra a megoldás hoz létre, ebben az oktatóanyagban a munkafolyamat ábrázolja: 
+Ez az ábra az oktatóanyagban felépített megoldás munkafolyamatát ábrázolja: 
 
-1. Azure event hub küldött adatok rögzítése egy Azure blob Storage.
-2. Az adatváltozások rögzítése befejeződése után az esemény van és elküldhet az Azure event griddel. 
-3. Az event grid továbbítja az Azure-függvényalkalmazás eseményadatokat.
-4. A függvényalkalmazás az eseményadatokat a blob lekérése a storage a blob URL-címet használ. 
-5. A függvényalkalmazás áttelepíti a blob-adatokat egy Azure SQL data warehouse-bA. 
+1. Az Azure Event hub-nak elküldett adathalmazok egy Azure Blob Storage-tárolóban vannak rögzítve.
+2. Az adatrögzítés befejezése után létrejön egy esemény, amely egy Azure Event gridre lesz küldve. 
+3. Az Event Grid továbbítja ezt az eseményt az Azure Function alkalmazásnak.
+4. A Function alkalmazás az esemény adatainak blob URL-címét használja a blobnak a tárolóból való lekéréséhez. 
+5. A Function alkalmazás áttelepíti a blobot az Azure SQL-adattárházba. 
 
-Ebben a cikkben hajtsa végre a következő lépéseket:
+Ebben a cikkben a következő lépéseket hajtja végre:
 
 > [!div class="checklist"]
-> * Az infrastruktúra üzembe helyezése az Azure Resource Manager-sablon használatával: egy eseményközpontba, tárfiók, függvényalkalmazás, egy SQL data warehouse-bA.
-> * Hozzon létre egy táblát az adatraktárban.
-> * Adja hozzá a kódot a függvényalkalmazáshoz.
-> * Feliratkozás az esemény. 
-> * Futtassa az alkalmazást, amely adatokat küld az event hubs.
-> * Áttelepített adatok megtekintése a data warehouse-ban.
+> * Az infrastruktúra üzembe helyezéséhez használjon Azure Resource Manager sablont: egy Event hub, egy Storage-fiók, egy Function alkalmazás, egy SQL-adattárház.
+> * Hozzon létre egy táblát az adattárházban.
+> * Kód hozzáadása a Function alkalmazáshoz.
+> * Előfizetés az eseményre. 
+> * Olyan alkalmazás futtatása, amely adatokat küld az Event hub-nak.
+> * Megtekintheti az áttelepített adatraktárban tárolt adatfájlokat.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -45,46 +45,46 @@ Ebben a cikkben hajtsa végre a következő lépéseket:
 Az oktatóanyag teljesítéséhez a következőkre lesz szüksége:
 
 * Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/) a virtuális gép létrehozásának megkezdése előtt.
-* [A Visual studio 2019](https://www.visualstudio.com/vs/) a számítási feladatokkal: .NET asztali fejlesztés, Azure-fejlesztési, az ASP.NET és webfejlesztési, Node.js-fejlesztés és a Python fejlesztési.
-* Töltse le a [EventHubsCaptureEventGridDemo mintaprojektet](https://github.com/Azure/azure-event-hubs/tree/master/samples/e2e/EventHubsCaptureEventGridDemo) a számítógépre.
+* [Visual studio 2019](https://www.visualstudio.com/vs/) a következő számítási feladatokkal: .net Desktop-fejlesztés, Azure-fejlesztés, ASP.net és webfejlesztés, Node. js-fejlesztés és Python-fejlesztés.
+* Töltse le a [EventHubsCaptureEventGridDemo minta projektet](https://github.com/Azure/azure-event-hubs/tree/master/samples/e2e/EventHubsCaptureEventGridDemo) a számítógépre.
 
 ## <a name="deploy-the-infrastructure"></a>Az infrastruktúra üzembe helyezése
-Ebben a lépésben üzembe helyezi a szükséges infrastruktúra egy [Resource Manager-sablon](https://github.com/Azure/azure-docs-json-samples/blob/master/event-grid/EventHubsDataMigration.json). Ha a sablon üzembe helyezéséhez a következő erőforrások jönnek létre:
+Ebben a lépésben üzembe helyezi a szükséges infrastruktúrát egy [Resource Manager-sablonnal](https://github.com/Azure/azure-docs-json-samples/blob/master/event-grid/EventHubsDataMigration.json). A sablon központi telepítésekor a következő erőforrások jönnek létre:
 
-* Event hubs rögzítési funkciója engedélyezve a.
-* Storage-fiók a rögzített fájlok számára. 
-* App service-csomagot a függvényalkalmazás üzemeltetéséhez
+* Az Event hub engedélyezve van a rögzítési funkcióval.
+* A rögzített fájlok Storage-fiókja. 
+* App Service-csomag a Function app üzemeltetéséhez
 * Függvényalkalmazás az esemény feldolgozásához
 * SQL Server az adattárház üzemeltetéséhez
 * SQL Data Warehouse a migrált adatok tárolásához
 
-### <a name="launch-azure-cloud-shell-in-azure-portal"></a>Az Azure Portalon az Azure Cloud Shell indítása
+### <a name="launch-azure-cloud-shell-in-azure-portal"></a>Azure Cloud Shell elindítása Azure Portal
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com). 
-2. Válassza ki **Cloud Shell** gombra az oldal tetején.
+1. Jelentkezzen be az [Azure portálra](https://portal.azure.com). 
+2. Kattintson a felül **Cloud Shell** gombra.
 
     ![Azure Portal](media/event-grid-event-hubs-integration/azure-portal.png)
-3. A Cloud Shellben megnyitása a böngészőben alján megjelenik.
+3. Megjelenik a böngésző alján megnyíló Cloud Shell.
 
     ![Cloud Shell](media/event-grid-event-hubs-integration/launch-cloud-shell.png) 
-4. Ha megjelenik egy lehetőség, hogy a Cloud shellben **Bash** és **PowerShell**válassza **Bash**. 
-5. Ha a Cloud Shell az első alkalommal használ, hozzon létre egy tárfiókot kiválasztásával **tároló létrehozása**. Az Azure Cloud Shell egy Azure storage-fiók egyes fájlok tárolásához szükséges. 
+4. Ha a Cloud Shell a **bash** és a **PowerShell**közötti választás lehetőséget látja, válassza a **bash**elemet. 
+5. Ha első alkalommal használja a Cloud Shell, hozzon létre egy Storage-fiókot a **tároló létrehozása**lehetőség kiválasztásával. Azure Cloud Shell szükség van egy Azure Storage-fiókra néhány fájl tárolásához. 
 
-    ![Cloud Shell tároló létrehozása](media/event-grid-event-hubs-integration/create-storage-cloud-shell.png)
-6. Várjon, amíg a Cloud Shellben inicializálva van. 
+    ![Tároló létrehozása a Cloud shellhez](media/event-grid-event-hubs-integration/create-storage-cloud-shell.png)
+6. Várjon, amíg a Cloud Shell inicializálása be nem fejeződik. 
 
-    ![Cloud Shell tároló létrehozása](media/event-grid-event-hubs-integration/cloud-shell-initialized.png)
+    ![Tároló létrehozása a Cloud shellhez](media/event-grid-event-hubs-integration/cloud-shell-initialized.png)
 
 
 ### <a name="use-azure-cli"></a>Az Azure parancssori felület használatával
 
-1. Hozzon létre egy Azure-erőforráscsoportot a következő CLI-parancs futtatásával: 
-    1. Másolja és illessze be az alábbi parancsot a Cloud Shell-ablakról
+1. Hozzon létre egy Azure-erőforráscsoportot az alábbi CLI-parancs futtatásával: 
+    1. Másolja és illessze be a következő parancsot a Cloud Shell ablakába
 
         ```azurecli
         az group create -l eastus -n <Name for the resource group>
         ```
-    1. Adjon meg egy nevet a **erőforráscsoport**
+    1. Adja meg az **erőforráscsoport** nevét.
     2. Nyomja le az **ENTER** billentyűt. 
 
         Például:
@@ -102,8 +102,8 @@ Ebben a lépésben üzembe helyezi a szükséges infrastruktúra egy [Resource M
           "tags": null
         }
         ```
-2. A következő CLI-parancs futtatásával (event hubs, tárfiók, functions-alkalmazás, az SQL data warehouse) az előző szakaszban említett összes erőforrást üzembe: 
-    1. Másolja és illessze be a parancsot a Cloud Shell ablakába. Azt is megteheti érdemes másolja és illessze be azokat egy tetszőleges szövegszerkesztőben, beállítása és másolja a parancsot a Cloud Shellben. 
+2. Az alábbi CLI-parancs futtatásával telepítse az előző szakaszban említett összes erőforrást (Event hub, Storage-fiók, functions-alkalmazás, SQL-adattárház): 
+    1. Másolja és illessze be a parancsot a Cloud Shell ablakába. Azt is megteheti, hogy az Ön által választott szerkesztőbe szeretne másolni/beilleszteni, értékeket állít be, majd a parancsot a Cloud Shellba másolja. 
 
         ```azurecli
         az group deployment create \
@@ -111,73 +111,73 @@ Ebben a lépésben üzembe helyezi a szükséges infrastruktúra egy [Resource M
             --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/event-grid/EventHubsDataMigration.json \
             --parameters eventHubNamespaceName=<event-hub-namespace> eventHubName=hubdatamigration sqlServerName=<sql-server-name> sqlServerUserName=<user-name> sqlServerPassword=<password> sqlServerDatabaseName=<database-name> storageName=<unique-storage-name> functionAppName=<app-name>
         ```
-    2. Adja meg az értékeket a következő entitásokat:
-        1. A korábban létrehozott erőforráscsoport nevét.
-        2. Az eseményközpont-névtér nevét. 
-        3. Az eseményközpont neve. Az érték (hubdatamigration), mert hagyhatja.
-        4. Az SQL server neve.
+    2. Értékek megadása a következő entitásokhoz:
+        1. A korábban létrehozott erőforráscsoport neve.
+        2. Az Event hub-névtér neve. 
+        3. Az Event hub neve. Az értéket (hubdatamigration) is meghagyhatja.
+        4. Az SQL Server neve.
         5. Az SQL-felhasználó és a jelszó neve. 
-        6. Az SQL data warehouse neve
-        7. A tárfiók nevére. 
-        8. A függvényalkalmazás neve. 
-    3.  Nyomja meg **ENTER** a Cloud Shell-ablakban futtassa a parancsot. Ez a folyamat eltarthat egy ideig, mivel sok erőforrást hoz létre. A parancs eredménye győződjön meg arról, hogy nem történt nincsenek hibák. 
+        6. Az SQL-adatraktár neve
+        7. A Storage-fiók neve. 
+        8. A Function alkalmazás neve. 
+    3.  A parancs futtatásához nyomja le az **ENTER** billentyűt a Cloud Shell ablakban. Ez a folyamat hosszabb időt is igénybe vehet, hiszen egy csomó erőforrást hoz létre. A parancs eredményében ellenőrizze, hogy nincsenek-e hibák. 
     
 
-### <a name="use-azure-powershell"></a>Azure PowerShell használatával
+### <a name="use-azure-powershell"></a>Az Azure PowerShell használata
 
-1. Az Azure Cloud Shellben váltson át PowerShell módba. Válassza ki a lefelé mutató nyíl az Azure Cloud Shell a bal felső sarkában, és válassza ki **PowerShell**.
+1. Azure Cloud Shell váltson át PowerShell módba. A Azure Cloud Shell bal felső sarkában válassza a lefelé mutató nyilat, majd kattintson a **PowerShell**elemre.
 
-    ![Váltson át PowerShell](media/event-grid-event-hubs-integration/select-powershell-cloud-shell.png)
+    ![Váltás a PowerShellre](media/event-grid-event-hubs-integration/select-powershell-cloud-shell.png)
 2. Hozzon létre egy Azure-erőforráscsoportot a következő parancs futtatásával: 
-    1. Másolja és illessze be az alábbi parancsot a Cloud Shell ablakába.
+    1. Másolja és illessze be a következő parancsot a Cloud Shell ablakába.
 
         ```powershell
         New-AzResourceGroup -Name rgDataMigration -Location westcentralus
         ```
-    2. Adjon meg egy nevet a **erőforráscsoport**.
+    2. Adja meg az **erőforráscsoport**nevét.
     3. Nyomja le az ENTER billentyűt. 
-3. A következő parancs futtatásával (event hubs, tárfiók, functions-alkalmazás, az SQL data warehouse) az előző szakaszban említett összes erőforrást üzembe:
-    1. Másolja és illessze be a parancsot a Cloud Shell ablakába. Azt is megteheti érdemes másolja és illessze be azokat egy tetszőleges szövegszerkesztőben, beállítása és másolja a parancsot a Cloud Shellben. 
+3. Telepítse az előző szakaszban említett összes erőforrást (Event hub, Storage-fiók, functions alkalmazás, SQL-adattárház) a következő parancs futtatásával:
+    1. Másolja és illessze be a parancsot a Cloud Shell ablakába. Azt is megteheti, hogy az Ön által választott szerkesztőbe szeretne másolni/beilleszteni, értékeket állít be, majd a parancsot a Cloud Shellba másolja. 
 
         ```powershell
         New-AzResourceGroupDeployment -ResourceGroupName rgDataMigration -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/event-grid/EventHubsDataMigration.json -eventHubNamespaceName <event-hub-namespace> -eventHubName hubdatamigration -sqlServerName <sql-server-name> -sqlServerUserName <user-name> -sqlServerDatabaseName <database-name> -storageName <unique-storage-name> -functionAppName <app-name>
         ```
-    2. Adja meg az értékeket a következő entitásokat:
-        1. A korábban létrehozott erőforráscsoport nevét.
-        2. Az eseményközpont-névtér nevét. 
-        3. Az eseményközpont neve. Az érték (hubdatamigration), mert hagyhatja.
-        4. Az SQL server neve.
+    2. Értékek megadása a következő entitásokhoz:
+        1. A korábban létrehozott erőforráscsoport neve.
+        2. Az Event hub-névtér neve. 
+        3. Az Event hub neve. Az értéket (hubdatamigration) is meghagyhatja.
+        4. Az SQL Server neve.
         5. Az SQL-felhasználó és a jelszó neve. 
-        6. Az SQL data warehouse neve
-        7. A tárfiók nevére. 
-        8. A függvényalkalmazás neve. 
-    3.  Nyomja meg **ENTER** a Cloud Shell-ablakban futtassa a parancsot. Ez a folyamat eltarthat egy ideig, mivel sok erőforrást hoz létre. A parancs eredménye győződjön meg arról, hogy nem történt nincsenek hibák. 
+        6. Az SQL-adatraktár neve
+        7. A Storage-fiók neve. 
+        8. A Function alkalmazás neve. 
+    3.  A parancs futtatásához nyomja le az **ENTER** billentyűt a Cloud Shell ablakban. Ez a folyamat hosszabb időt is igénybe vehet, hiszen egy csomó erőforrást hoz létre. A parancs eredményében ellenőrizze, hogy nincsenek-e hibák. 
 
-### <a name="close-the-cloud-shell"></a>Zárja be a Cloud Shellben 
-Zárja be a cloud shellben kiválasztásával a **Cloud Shell** a portál gombjára (vagy) **X** gombra a Cloud Shell-ablakról jobb felső sarkában. 
+### <a name="close-the-cloud-shell"></a>A Cloud Shell lezárása 
+A Cloud Shell ablak jobb felső sarkában, a portál (vagy) **X** gombján a **Cloud Shell** gombra kattintva zárhatja be a Cloud shellt. 
 
-### <a name="verify-that-the-resources-are-created"></a>Győződjön meg arról, hogy az erőforrások létrejönnek
+### <a name="verify-that-the-resources-are-created"></a>Az erőforrások létrehozásának ellenőrzése
 
-1. Az Azure Portalon válassza ki a **erőforráscsoportok** a bal oldali menüben. 
-2. Erőforráscsoportok listájának szűrése kifejezést a keresőmezőbe írja be az erőforráscsoport nevét. 
-3. Válassza ki az erőforráscsoportot a listáról.
+1. A Azure Portal a bal oldali menüben válassza az **erőforráscsoportok** lehetőséget. 
+2. Az erőforráscsoportok listájának szűréséhez írja be az erőforráscsoport nevét a keresőmezőbe. 
+3. Válassza ki az erőforráscsoportot a listában.
 
-    ![Jelölje ki az erőforráscsoportot](media/event-grid-event-hubs-integration/select-resource-group.png)
-4. Győződjön meg arról, hogy megjelenik-e a következő erőforrások az erőforráscsoportban:
+    ![Válassza ki az erőforráscsoportot](media/event-grid-event-hubs-integration/select-resource-group.png)
+4. Győződjön meg arról, hogy az erőforráscsoport következő erőforrásai láthatók:
 
-    ![Az erőforráscsoportban lévő erőforrásokat](media/event-grid-event-hubs-integration/resources-in-resource-group.png)
+    ![Az erőforráscsoporthoz tartozó erőforrások](media/event-grid-event-hubs-integration/resources-in-resource-group.png)
 
 ### <a name="create-a-table-in-sql-data-warehouse"></a>Tábla létrehozása az SQL Data Warehouse-ban
-Hozzon létre egy táblát az adattárház futtatásával a [CreateDataWarehouseTable.sql](https://github.com/Azure/azure-event-hubs/blob/master/samples/e2e/EventHubsCaptureEventGridDemo/scripts/CreateDataWarehouseTable.sql) parancsfájlt. A parancsfájl futtatásához használhatja a Visual Studio vagy a Lekérdezésszerkesztő a portálon. A következő lépések bemutatják, hogyan használható a Lekérdezésszerkesztő: 
+Hozzon létre egy táblázatot az adattárházban a [CreateDataWarehouseTable. SQL](https://github.com/Azure/azure-event-hubs/blob/master/samples/e2e/EventHubsCaptureEventGridDemo/scripts/CreateDataWarehouseTable.sql) parancsfájl futtatásával. A szkript futtatásához használhatja a Visual studiót vagy a lekérdezés-szerkesztőt a portálon. A következő lépések bemutatják, hogyan használhatja a lekérdezés-szerkesztőt: 
 
-1. Az erőforráscsoportban lévő erőforrásokat listájában válassza ki az SQL data warehouse. 
-2. Válassza ki az SQL data warehouse lapon **Lekérdezésszerkesztő (előzetes verzió)** a bal oldali menüben. 
+1. Az erőforráscsoport erőforrásainak listájában válassza ki az SQL-adattárházat. 
+2. Az SQL-adattárház lapon a bal oldali menüben válassza a **Lekérdezés-szerkesztő (előzetes verzió)** lehetőséget. 
 
-    ![Az SQL data warehouse lapon](media/event-grid-event-hubs-integration/sql-data-warehouse-page.png)
-2. Adja meg a nevét **felhasználói** és **jelszó** az SQL server, és válassza ki a **OK**. 
+    ![SQL-adattárház lapja](media/event-grid-event-hubs-integration/sql-data-warehouse-page.png)
+2. Adja meg az SQL Server **felhasználójának** és **jelszavának** nevét, majd kattintson **az OK gombra**. 
 
     ![SQL Server-hitelesítés](media/event-grid-event-hubs-integration/sql-server-authentication.png)
-4. A lekérdezési ablakban másolja, és futtassa a következő SQL-parancsfájlt: 
+4. A lekérdezési ablakban másolja és futtassa a következő SQL-parancsfájlt: 
 
     ```sql
     CREATE TABLE [dbo].[Fact_WindTurbineMetrics] (
@@ -190,26 +190,26 @@ Hozzon létre egy táblát az adattárház futtatásával a [CreateDataWarehouse
     WITH (CLUSTERED COLUMNSTORE INDEX, DISTRIBUTION = ROUND_ROBIN);
     ```
 
-    ![SQL-lekérdezés futtatásához](media/event-grid-event-hubs-integration/run-sql-query.png)
-5. Ne zárja be a lapon vagy ablakban így ellenőrizheti, hogy az adatok létrejött-e az oktatóanyag végén. 
+    ![SQL-lekérdezés futtatása](media/event-grid-event-hubs-integration/run-sql-query.png)
+5. Tartsa meg ezt a lapot vagy ablakot úgy, hogy az oktatóanyag végén ellenőrizze, hogy létrejöttek-e az adatgyűjtés. 
 
 
 ## <a name="publish-the-azure-functions-app"></a>Az Azure Functions-alkalmazás közzététele
 
-1. Indítsa el a Visual Studiót.
-2. Nyissa meg a **EventHubsCaptureEventGridDemo.sln** megoldás, amelyikbe kibontotta a [GitHub](https://github.com/Azure/azure-event-hubs/tree/master/samples/e2e/EventHubsCaptureEventGridDemo) az Előfeltételek részeként.
+1. Indítsa el a Visual studiót.
+2. Nyissa meg a **EventHubsCaptureEventGridDemo. SLN** megoldást, amelyet az előfeltételek részeként letöltött a [githubról](https://github.com/Azure/azure-event-hubs/tree/master/samples/e2e/EventHubsCaptureEventGridDemo) .
 3. A Megoldáskezelőben kattintson a jobb gombbal a **FunctionEGDWDumper** elemre, majd válassza a **Közzététel** lehetőséget.
 
    ![Függvényalkalmazás közzététele](media/event-grid-event-hubs-integration/publish-function-app.png)
-4. Ha a következő képernyőt látja, válassza ki a **Start**. 
+4. Ha a következő képernyő jelenik meg, kattintson a **Start**gombra. 
 
-   ![Kezdő közzététel gomb](media/event-grid-event-hubs-integration/start-publish-button.png) 
-5. Az a **válasszon egy közzétételi célként** lapon válassza ki a **válasszon meglévő** lehetőséget, majd kattintson **profil létrehozása**. 
+   ![Közzététel indítása gomb](media/event-grid-event-hubs-integration/start-publish-button.png) 
+5. A **Közzététel célhelyének** kiválasztása lapon válassza a **meglévő kijelölése** lehetőséget, majd kattintson a **profil létrehozása**lehetőségre. 
 
    ![Közzétételi cél kiválasztása](media/event-grid-event-hubs-integration/publish-select-existing.png)
-6. Az App Service-ben oldalán válassza ki a **Azure-előfizetés**, jelölje be a **függvényalkalmazás** az erőforráscsoportot, és válassza ki a **OK**. 
+6. A App Service lapon válassza ki az **Azure-előfizetését**, válassza ki a **Function alkalmazást** az erőforráscsoporthoz, és kattintson az **OK gombra**. 
 
-   ![Az App Service lap](media/event-grid-event-hubs-integration/publish-app-service.png) 
+   ![App Service lap](media/event-grid-event-hubs-integration/publish-app-service.png) 
 1. Miután a Visual Studio konfigurálta a profilt, kattintson a **Közzététel** elemre.
 
    ![A Közzététel gomb kiválasztása](media/event-grid-event-hubs-integration/select-publish.png)
@@ -218,55 +218,55 @@ A függvény közzététele után feliratkozhat az eseményre.
 
 ## <a name="subscribe-to-the-event"></a>Feliratkozás az eseményre
 
-1. Új lap vagy egy webes böngésző új ablakban, keresse meg a [az Azure portal](https://portal.azure.com).
-2. Az Azure Portalon válassza ki a **erőforráscsoportok** a bal oldali menüben. 
-3. Erőforráscsoportok listájának szűrése kifejezést a keresőmezőbe írja be az erőforráscsoport nevét. 
-4. Válassza ki az erőforráscsoportot a listáról.
+1. A webböngésző új lapján vagy új ablakában navigáljon a [Azure Portal](https://portal.azure.com).
+2. A Azure Portal a bal oldali menüben válassza az **erőforráscsoportok** lehetőséget. 
+3. Az erőforráscsoportok listájának szűréséhez írja be az erőforráscsoport nevét a keresőmezőbe. 
+4. Válassza ki az erőforráscsoportot a listában.
 
-    ![Jelölje ki az erőforráscsoportot](media/event-grid-event-hubs-integration/select-resource-group.png)
-4. Válassza ki az App Service-csomagot a listából. 
-5. Az App Service-csomag lapon válasszon **alkalmazások** a bal oldali menüben, és válassza ki a függvényalkalmazást. 
+    ![Válassza ki az erőforráscsoportot](media/event-grid-event-hubs-integration/select-resource-group.png)
+4. Válassza ki a App Service tervet a listából. 
+5. A App Service terv lapon válassza az **alkalmazások** lehetőséget a bal oldali menüben, és válassza ki a Function alkalmazást. 
 
-    ![A functions-alkalmazás kiválasztása](media/event-grid-event-hubs-integration/select-function-app-app-service-plan.png)
-6. Bontsa ki a függvényalkalmazást, bontsa ki a Funkciók, és válassza ki a függvényt. 
+    ![Válassza ki a functions alkalmazást](media/event-grid-event-hubs-integration/select-function-app-app-service-plan.png)
+6. Bontsa ki a Function alkalmazást, bontsa ki a függvények elemet, majd válassza ki a függvényt. 
 
     ![Az Azure-függvény kiválasztása](media/event-grid-event-hubs-integration/select-function-add-button.png)
-7. Válassza ki **hozzáadása Event Grid-előfizetés** az eszköztáron. 
-8. Az a **Event Grid-előfizetés létrehozása** lapon, tegye a következőket: 
-    1. Az a **TÉMAKÖR RÉSZLETESEN** területén tegye a következőket:
+7. Válassza a **Event Grid előfizetés hozzáadása** lehetőséget az eszköztáron. 
+8. A **Event Grid-előfizetés létrehozása** lapon hajtsa végre a következő műveleteket: 
+    1. A **témakör részletei** szakaszban hajtsa végre a következő műveleteket:
         1. Válassza ki az Azure-előfizetését.
         2. Válassza ki az Azure-erőforráscsoportot.
-        3. Válassza ki az Event Hubs-névtér.
-    2. Az a **esemény-ELŐFIZETÉS RÉSZLETEIT** lap, adja meg az előfizetés nevét (például: captureEventSub), és válassza ki **létrehozás**. 
+        3. Válassza ki a Event Hubs névteret.
+    2. Az **esemény-előfizetés részletei** lapon adja meg az előfizetés nevét (például: captureEventSub), majd válassza a **Létrehozás**lehetőséget. 
 
-        ![Event Grid-előfizetés létrehozása](media/event-grid-event-hubs-integration/create-event-subscription.png)
+        ![Event Grid előfizetés létrehozása](media/event-grid-event-hubs-integration/create-event-subscription.png)
 
 ## <a name="run-the-app-to-generate-data"></a>Az alkalmazás futtatása az adatok létrehozásához
 Végeztünk az eseményközpont, az SQL-adattárház, az Azure-függvényalkalmazás és az esemény-előfizetés beállításával. Mielőtt futtatna egy alkalmazást, amely adatokat állít elő az eseményközpont számára, konfigurálnia kell néhány értéket.
 
-1. Az Azure Portalon keresse meg az erőforráscsoportot, a korábban végrehajtott. 
-2. Válassza ki az Event Hubs-névtér.
-3. Az a **Event Hubs-Namespace** lapon jelölje be **megosztott elérési házirendek** a bal oldali menüben.
-4. Válassza ki **RootManageSharedAccessKey** szabályzatok listájában. 
-5. Válassza ki a másolási gomb mellett a **kapcsolati karakterlánc – elsődleges kulcs** szövegmezőben. 
+1. A Azure Portalban navigáljon az erőforráscsoporthoz, mint korábban. 
+2. Válassza ki a Event Hubs névteret.
+3. A **Event Hubs névtér** lapon válassza a bal oldali menüben a **megosztott elérési házirendek** elemet.
+4. A szabályzatok listájában válassza a **RootManageSharedAccessKey** lehetőséget. 
+5. Kattintson a **kapcsolódási karakterlánc – elsődleges kulcs** szövegmező melletti Másolás gombra. 
 
-    ![Az eseményközpont-névtér kapcsolati karakterlánca](media/event-grid-event-hubs-integration/get-connection-string.png)
-1. Lépjen vissza a Visual Studio-megoldás. 
+    ![Az Event hub-névtér kapcsolati karakterlánca](media/event-grid-event-hubs-integration/get-connection-string.png)
+1. Térjen vissza a Visual Studio-megoldáshoz. 
 2. A WindTurbineDataGenerator projektben nyissa meg a **program.cs** fájlt.
-5. Cserélje le a két állandó értékét. Az **EventHubConnectionString** állandónál használja a másolt értéket. Az eseményközpont neveként használja a **hubdatamigration** értéket. Ha az event hubs egy másik nevet használt, adja meg ezt a nevet. 
+5. Cserélje le a két állandó értékét. Az **EventHubConnectionString** állandónál használja a másolt értéket. Az eseményközpont neveként használja a **hubdatamigration** értéket. Ha más nevet használt az Event hub számára, adja meg a nevet. 
 
    ```cs
    private const string EventHubConnectionString = "Endpoint=sb://demomigrationnamespace.servicebus.windows.net/...";
    private const string EventHubName = "hubdatamigration";
    ```
 
-6. Hozza létre a megoldást. Futtassa a **WindTurbineGenerator.exe** alkalmazás. 
+6. Hozza létre a megoldást. Futtassa a **WindTurbineGenerator. exe** alkalmazást. 
 7. Néhány perc elteltével kérdezze le a migrált adatokat az adattárház táblájából.
 
     ![Lekérdezés eredményei](media/event-grid-event-hubs-integration/query-results.png)
 
-### <a name="event-data-generated-by-the-event-hub"></a>Az event hub által generált események adatainak
-Az Event Grid elküldi az eseményadatokat az előfizetőknek. A következő példában az eseményadatok jönnek létre, ha egy blob egy eseményközponton keresztül adatstreamelési van rögzítve. Figyelje meg, ilyen például a `fileUrl` tulajdonságot a `data` objektumra mutat a blob Storage. A függvényalkalmazás az URL-cím használatával kérje le a rögzített adatok a blob-fájlt.
+### <a name="event-data-generated-by-the-event-hub"></a>Az Event hub által generált esemény-adatértékek
+Az Event Grid elküldi az eseményadatokat az előfizetőknek. Az alábbi példa azokat az eseményeket mutatja be, amelyek akkor jönnek létre, amikor az Event hub-on keresztül történő adatátvitelt egy blobban rögzíti. Figyelje meg, hogy a `data` objektum `fileUrl` tulajdonsága a tárolóban lévő blobra mutat. A Function alkalmazás ezt az URL-címet használja a rögzített adattal rendelkező blob-fájl lekéréséhez.
 
 ```json
 [

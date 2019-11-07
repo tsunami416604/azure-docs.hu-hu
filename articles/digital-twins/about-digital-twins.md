@@ -4,17 +4,17 @@ description: További információ a térbeli intelligenciát megvalósító Azu
 ms.author: alinast
 author: alinamstanciu
 manager: bertvanhoof
-ms.date: 09/17/2019
+ms.date: 11/05/2019
 ms.topic: overview
 ms.service: digital-twins
 services: digital-twins
 ms.custom: mvc
-ms.openlocfilehash: 2194afe4784d1b59dc5fd5628e3a9223d13f92be
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.openlocfilehash: 93adf946ac630d2839f761b01a02d02f6ca92b64
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71949290"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73718236"
 ---
 # <a name="overview-of-azure-digital-twins"></a>Az Azure Digital Twins áttekintése
 
@@ -93,7 +93,7 @@ Az Azure digitális Twins hasznos a fizikai világ és a sok kapcsolat ábrázol
 
 Az Azure Digital Twins az Azure IoT Hub segítségével csatlakozik az IoT-eszközökhöz és -érzékelőkhöz, amelyek naprakész adatokat szolgáltatnak a fizikai világról. Az alábbi ábra bemutatja, hogyan kapcsolódik az Azure digitális Twins más Azure IoT-szolgáltatásokhoz.
 
-[a ![Azure digitális Twins egy Azure-ra épülő szolgáltatás, IoT Hub](media/overview/azure-digital-twins-in-iot-ecosystem.png)](media/overview/azure-digital-twins-in-iot-ecosystem.png#lightbox)
+[![Azure Digital Twins az Azure-ra épülő szolgáltatás, IoT Hub](media/overview/azure-digital-twins-in-iot-ecosystem.png)](media/overview/azure-digital-twins-in-iot-ecosystem.png#lightbox)
 
 További információ a IoT: [Azure IoT-technológiák és-megoldások](../iot-fundamentals/iot-services-and-technologies.md).
 
@@ -102,12 +102,12 @@ További információ a IoT: [Azure IoT-technológiák és-megoldások](../iot-f
 Ugrás az Azure Digital Twins szolgáltatással kapcsolatos rövid bemutatóra:
 
 >[!div class="nextstepaction"]
->[Rövid útmutató: Elérhető szobák keresése az Azure Digital Twins @ no__t-0 használatával
+>[Gyors útmutató: elérhető szobák keresése az Azure Digital Twins használatával](./quickstart-view-occupancy-dotnet.md)
 
 Az Azure Digital Twins használatával alaposan megtekintheti a létesítmények felügyeleti alkalmazásait:
 
 >[!div class="nextstepaction"]
->[Oktatóanyag: Azure digitális Twins üzembe helyezése és térbeli gráf konfigurálása @ no__t-0
+>[Oktatóanyag: Az Azure Digital Twins üzembe helyezése és egy térbeli diagram konfigurálása](./tutorial-facilities-setup.md)
 
 Az Azure Digital Twins alapvető fogalmainak ismertetése:
 

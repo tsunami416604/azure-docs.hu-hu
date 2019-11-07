@@ -1,6 +1,6 @@
 ---
-title: Az Azure Event Grid használata a feltöltött képek átméretezésének automatizálására | Microsoft Docs
-description: Az Azure Event Grid a blobok Azure Storage-ba való feltöltésekor aktiválódhat. A segítségével Azure Storage-ba feltöltött képfájlokat küldhet más szolgáltatásoknak, például az Azure Functions szolgáltatásnak átméretezés vagy egyéb javítás céljából.
+title: 'Oktatóanyag: Azure Event Grid használata a feltöltött képek átméretezésének automatizálásához'
+description: 'Oktatóanyag: a Azure Event Grid az Azure Storage-ban blob-feltöltéseket indíthat. A segítségével Azure Storage-ba feltöltött képfájlokat küldhet más szolgáltatásoknak, például az Azure Functions szolgáltatásnak átméretezés vagy egyéb javítás céljából.'
 services: event-grid, functions
 author: spelluru
 manager: jpconnoc
@@ -9,17 +9,17 @@ ms.service: event-grid
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 01/29/2019
+ms.date: 11/05/2019
 ms.author: spelluru
 ms.custom: mvc
-ms.openlocfilehash: c09e2cd812dd34976218ff71036734466943e8cd
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 4359ce859e3fbe270785c3cf4bbc673e71d19799
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "69623877"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73718223"
 ---
-# <a name="tutorial-automate-resizing-uploaded-images-using-event-grid"></a>Oktatóanyag: Feltöltött képek átméretezésének automatizálása az Event Grid használatával
+# <a name="tutorial-automate-resizing-uploaded-images-using-event-grid"></a>Oktatóanyag: feltöltött képek átméretezésének automatizálása Event Grid használatával
 
 Az [Azure Event Grid](overview.md) egy felhőalapú eseménykezelési szolgáltatás. Az Event Grid lehetővé teszi, hogy előfizetéseket hozzon létre az Azure-szolgáltatások vagy külső erőforrások által létrehozott eseményekhez.  
 
@@ -31,11 +31,11 @@ Az Azure CLI és az Azure Portal segítségével hozzáadja az átméretezési f
 
 ![Közzétett webalkalmazás a böngészőben](./media/resize-images-on-storage-blob-upload-event/tutorial-completed.png)
 
-# <a name="nodejs-v2-sdktabnodejs"></a>[Node.js V2 SDK](#tab/nodejs)
+# <a name="nodejs-v2-sdktabnodejs"></a>[Node. js v2 SDK](#tab/nodejs)
 
 ![Közzétett webalkalmazás a böngészőben](./media/resize-images-on-storage-blob-upload-event/upload-app-nodejs-thumb.png)
 
-# <a name="nodejs-v10-sdktabnodejsv10"></a>[Node.js V10 SDK](#tab/nodejsv10)
+# <a name="nodejs-v10-sdktabnodejsv10"></a>[Node. js v10 SDK](#tab/nodejsv10)
 
 ![Közzétett webalkalmazás a böngészőben](./media/resize-images-on-storage-blob-upload-event/upload-app-nodejs-thumb.png)
 
@@ -54,7 +54,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 Az oktatóanyag elvégzéséhez:
 
-El kell végeznie az előző blob Storage-oktatóanyagot: [Képadatok feltöltése a felhőben az Azure Storage][previous-tutorial]szolgáltatással.
+El kell végeznie az előző blob Storage-oktatóanyagot: [képadatok feltöltése a felhőbe az Azure Storage szolgáltatással][previous-tutorial].
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -127,7 +127,7 @@ az functionapp config appsettings set --name $functionapp --resource-group $reso
 THUMBNAIL_WIDTH=100 FUNCTIONS_EXTENSION_VERSION=~2
 ```
 
-# <a name="nodejs-v2-sdktabnodejs"></a>[Node.js V2 SDK](#tab/nodejs)
+# <a name="nodejs-v2-sdktabnodejs"></a>[Node. js v2 SDK](#tab/nodejs)
 
 ```azurecli-interactive
 blobStorageAccount=<name of the Blob storage account you created in the previous tutorial>
@@ -140,7 +140,7 @@ az functionapp config appsettings set --name $functionapp --resource-group $reso
 THUMBNAIL_WIDTH=100 FUNCTIONS_EXTENSION_VERSION=~2
 ```
 
-# <a name="nodejs-v10-sdktabnodejsv10"></a>[Node.js V10 SDK](#tab/nodejsv10)
+# <a name="nodejs-v10-sdktabnodejsv10"></a>[Node. js v10 SDK](#tab/nodejsv10)
 
 ```azurecli-interactive
 blobStorageAccount=<name of the Blob storage account you created in the previous tutorial>
@@ -174,7 +174,7 @@ A minta C# átméretezése függvény a [githubon](https://github.com/Azure-Samp
 az functionapp deployment source config --name $functionapp --resource-group $resourceGroupName --branch master --manual-integration --repo-url https://github.com/Azure-Samples/function-image-upload-resize
 ```
 
-# <a name="nodejs-v2-sdktabnodejs"></a>[Node.js V2 SDK](#tab/nodejs)
+# <a name="nodejs-v2-sdktabnodejs"></a>[Node. js v2 SDK](#tab/nodejs)
 
 A minta Node.js-átméretezési függvény elérhető a [GitHubon](https://github.com/Azure-Samples/storage-blob-resize-function-node). Helyezze üzembe ezt a Functions-kódprojektet az [az functionapp deployment source config](/cli/azure/functionapp/deployment/source) paranccsal.
 
@@ -184,7 +184,7 @@ az functionapp deployment source config --name $functionapp \
 --repo-url https://github.com/Azure-Samples/storage-blob-resize-function-node
 ```
 
-# <a name="nodejs-v10-sdktabnodejsv10"></a>[Node.js V10 SDK](#tab/nodejsv10)
+# <a name="nodejs-v10-sdktabnodejsv10"></a>[Node. js v10 SDK](#tab/nodejsv10)
 
 A minta Node.js-átméretezési függvény elérhető a [GitHubon](https://github.com/Azure-Samples/storage-blob-resize-function-node-v10). Helyezze üzembe ezt a Functions-kódprojektet az [az functionapp deployment source config](/cli/azure/functionapp/deployment/source) paranccsal.
 
@@ -205,11 +205,11 @@ A projekt az `EventGridTrigger` típusú eseményindítót használja. Az által
 
 A függvénnyel kapcsolatos további tudnivalókért tekintse meg a [function.json és run.csx fájlt](https://github.com/Azure-Samples/function-image-upload-resize/tree/master/ImageFunctions).
 
-# <a name="nodejs-v2-sdktabnodejs"></a>[Node.js V2 SDK](#tab/nodejs)
+# <a name="nodejs-v2-sdktabnodejs"></a>[Node. js v2 SDK](#tab/nodejs)
 
 A függvénnyel kapcsolatos további tudnivalókért tekintse meg a [function. JSON és az index. js fájlt](https://github.com/Azure-Samples/storage-blob-resize-function-node/tree/master/Thumbnail).
 
-# <a name="nodejs-v10-sdktabnodejsv10"></a>[Node.js V10 SDK](#tab/nodejsv10)
+# <a name="nodejs-v10-sdktabnodejsv10"></a>[Node. js v10 SDK](#tab/nodejsv10)
 
 A függvénnyel kapcsolatos további tudnivalókért tekintse meg a [function. JSON és az index. js fájlt](https://github.com/Azure-Samples/storage-blob-resize-function-node-v10/tree/master/Thumbnail).
 
@@ -235,7 +235,7 @@ Az esemény-előfizetés jelzi, hogy melyik szolgáltató eseményeit kívánja 
 
     | Beállítás      | Ajánlott érték  | Leírás                                        |
     | ------------ |  ------- | -------------------------------------------------- |
-    | **Name** | imageresizersub | Az új esemény-előfizetés azonosítóneve. | 
+    | **Name (Név)** | imageresizersub | Az új esemény-előfizetés azonosítóneve. | 
     | **Témakörtípus** |  Tárfiókok | Válassza ki a Storage-fiók eseményszolgáltatóját. | 
     | **Előfizetés** | Az Azure-előfizetése | Alapértelmezés szerint az aktuális Azure-előfizetés van kiválasztva.   |
     | **Erőforráscsoport** | myResourceGroup | Válassza a **Meglévő használata** elemet, majd válassza ki az oktatóanyagban használt erőforráscsoportot.  |
@@ -245,10 +245,10 @@ Az esemény-előfizetés jelzi, hogy melyik szolgáltató eseményeit kívánja 
     | **Előfizető végpontja** | automatikusan létrehozott | Használja a rendszer által létrehozott végpont URL-címét. | 
 4. Váltson a **Filter (szűrő** ) lapra, és végezze el a következő műveleteket:     
     1. Válassza a **tulajdonosi szűrés engedélyezése** lehetőséget.
-    2. A **Tárgy**megkezdéséhez adja meg a következő értéket: **/blobServices/default/containers/images/Blobs/** .
+    2. A **Tárgy megkezdéséhez**adja meg a következő értéket: **/blobServices/default/containers/images/Blobs/** .
 
         ![Az esemény-előfizetés szűrőjének megadása](./media/resize-images-on-storage-blob-upload-event/event-subscription-filter.png) 
-2. Válassza a **Létrehozás** lehetőséget az esemény-előfizetés hozzáadásához. Ez egy olyan esemény-előfizetést hoz létre, amely elindítja `Thumbnail` a függvényt, ha blobot adnak hozzá a `images` tárolóhoz. A függvény átméretezi a képeket, és hozzáadja őket a `thumbnails` tárolóhoz.
+2. Válassza a **Létrehozás** lehetőséget az esemény-előfizetés hozzáadásához. Ez egy olyan esemény-előfizetést hoz létre, amely elindítja `Thumbnail` függvényt, amikor blobot adnak hozzá a `images` tárolóhoz. A függvény átméretezi a képeket, és hozzáadja őket a `thumbnails` tárolóhoz.
 
 Most, hogy konfigurálta a háttérszolgáltatásokat, tesztelni fogja a képátméretezési funkciót a minta-webalkalmazásban. 
 
@@ -264,15 +264,15 @@ Figyelje meg, hogy miután a feltöltött kép eltűnik, a feltöltött kép má
 
 ![Közzétett webalkalmazás a böngészőben](./media/resize-images-on-storage-blob-upload-event/tutorial-completed.png)
 
-# <a name="nodejs-v2-sdktabnodejs"></a>[Node.js V2 SDK](#tab/nodejs)
+# <a name="nodejs-v2-sdktabnodejs"></a>[Node. js v2 SDK](#tab/nodejs)
 
-Kattintson a **fájl** kiválasztása elemre egy fájl kiválasztásához, majd kattintson a **rendszerkép feltöltése**elemre. Ha a feltöltés sikeres, a böngésző egy sikerességi oldalra navigál. Kattintson a hivatkozásra a kezdőlapra való visszatéréshez. A feltöltött rendszerkép egy másolata megjelenik a **generált miniatűrök** területén. (Ha a rendszerkép nem jelenik meg először, próbálja meg újra betölteni a lapot.) A függvény átméretezte a képet, hozzáadta a *miniatűrök* tárolóhoz, a webes ügyfél pedig letöltötte a képet.
+Kattintson a **fájl** kiválasztása elemre egy fájl kiválasztásához, majd kattintson a **rendszerkép feltöltése**elemre. Ha a feltöltés sikeres, a böngésző egy sikerességi oldalra navigál. Kattintson a hivatkozásra a kezdőlapra való visszatéréshez. A feltöltött rendszerkép egy másolata megjelenik a **generált miniatűrök** területén. (Ha a rendszerkép nem jelenik meg először, próbálja meg újra betölteni a lapot.) A függvény átméretezi ezt a képet a *miniatűrök* tárolóba, és a webes ügyfél tölti le.
 
 ![Közzétett webalkalmazás a böngészőben](./media/resize-images-on-storage-blob-upload-event/upload-app-nodejs-thumb.png)
 
-# <a name="nodejs-v10-sdktabnodejsv10"></a>[Node.js V10 SDK](#tab/nodejsv10)
+# <a name="nodejs-v10-sdktabnodejsv10"></a>[Node. js v10 SDK](#tab/nodejsv10)
 
-Kattintson a **fájl** kiválasztása elemre egy fájl kiválasztásához, majd kattintson a **rendszerkép feltöltése**elemre. Ha a feltöltés sikeres, a böngésző egy sikerességi oldalra navigál. Kattintson a hivatkozásra a kezdőlapra való visszatéréshez. A feltöltött rendszerkép egy másolata megjelenik a **generált miniatűrök** területén. (Ha a rendszerkép nem jelenik meg először, próbálja meg újra betölteni a lapot.) A függvény átméretezte a képet, hozzáadta a *miniatűrök* tárolóhoz, a webes ügyfél pedig letöltötte a képet.
+Kattintson a **fájl** kiválasztása elemre egy fájl kiválasztásához, majd kattintson a **rendszerkép feltöltése**elemre. Ha a feltöltés sikeres, a böngésző egy sikerességi oldalra navigál. Kattintson a hivatkozásra a kezdőlapra való visszatéréshez. A feltöltött rendszerkép egy másolata megjelenik a **generált miniatűrök** területén. (Ha a rendszerkép nem jelenik meg először, próbálja meg újra betölteni a lapot.) A függvény átméretezi ezt a képet a *miniatűrök* tárolóba, és a webes ügyfél tölti le.
 
 ![Közzétett webalkalmazás a böngészőben](./media/resize-images-on-storage-blob-upload-event/upload-app-nodejs-thumb.png)
 

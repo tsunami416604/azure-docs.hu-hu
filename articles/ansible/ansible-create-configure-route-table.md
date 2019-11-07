@@ -1,6 +1,6 @@
 ---
 title: Oktatóanyag – Azure Route-táblák konfigurálása a Ansible használatával
-description: Ismerje meg, hogyan hozhat létre, módosíthat és törölhet Azure Route-táblákat a Ansible használatával
+description: Ismerje meg, hogyan hozhat létre, kezelhet és törölhet Azure Route-táblákat a Ansible használatával. Azt is megtudhatja, hogyan hozhat létre és törölhet útvonalakat.
 keywords: Ansible, Azure, devops, bash, ötletekbõl, hálózatkezelés, útvonal, útválasztási táblázat
 ms.topic: tutorial
 ms.service: ansible
@@ -8,12 +8,12 @@ author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.date: 04/30/2019
-ms.openlocfilehash: 14753af58a179ddf4011cb29c7ed08faab62875c
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: 0ffc00606eac4cf57cdf19072986373f5602aafa
+ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72241785"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73614345"
 ---
 # <a name="tutorial-configure-azure-route-tables-using-ansible"></a>Oktatóanyag: az Azure Route-táblázatok konfigurálása a Ansible használatával
 
@@ -117,7 +117,7 @@ ansible-playbook route_table_associate.yml
 
 Az ebben a szakaszban található forgatókönyv-kód leválasztja az alhálózatból származó útválasztási táblázatot.
 
-Amikor alhálózatból választ egy útválasztási táblázatot, állítsa az alhálózat `route_table` értéket `None` értékre. 
+Ha egy alhálózatból kiválaszt egy útválasztási táblázatot, állítsa `None`re az alhálózat `route_table`. 
 
 Mentse a következő forgatókönyvet `route_table_dissociate.yml` néven:
 
@@ -166,8 +166,8 @@ Mentse a következő forgatókönyvet `route_create.yml` néven:
 
 A forgatókönyv futtatása előtt tekintse meg a következő megjegyzéseket:
 
-* a `virtual_network_gateway` `next_hop_type` értékkel van definiálva. További információ arról, hogy az Azure hogyan választja ki az útvonalakat: az [Útválasztás áttekintése](/azure/virtual-network/virtual-networks-udr-overview).
-* a `address_prefix` `10.1.0.0/16` értékkel van definiálva. Az előtag nem duplikálható az útválasztási táblán belül.
+* `virtual_network_gateway` `next_hop_type`ként van definiálva. További információ arról, hogy az Azure hogyan választja ki az útvonalakat: az [Útválasztás áttekintése](/azure/virtual-network/virtual-networks-udr-overview).
+* `address_prefix` `10.1.0.0/16`ként van definiálva. Az előtag nem duplikálható az útválasztási táblán belül.
 
 Futtassa a forgatókönyvet a `ansible-playbook` parancs használatával:
 
@@ -204,7 +204,7 @@ ansible-playbook route_delete.yml
 
 ## <a name="get-route-table-information"></a>Útválasztási táblázat adatainak beolvasása
 
-Az ebben a szakaszban szereplő forgatókönyv-kód a `azure_rm_routetable_facts` Ansible-modult használja az útválasztási táblázat adatainak lekéréséhez.
+Az ebben a szakaszban található forgatókönyv-kód a Ansible modult használja `azure_rm_routetable_facts` az útválasztási tábla adatainak lekéréséhez.
 
 Mentse a következő forgatókönyvet `route_table_facts.yml` néven:
 
@@ -259,6 +259,6 @@ Futtassa a forgatókönyvet a `ansible-playbook` parancs használatával:
 ansible-playbook route_table_delete.yml
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 > [!div class="nextstepaction"] 
 > [Ansible az Azure-on](/azure/ansible/)

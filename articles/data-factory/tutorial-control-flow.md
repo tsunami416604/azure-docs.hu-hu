@@ -1,5 +1,5 @@
 ---
-title: Elágaztatás Azure Data Factory-folyamatokban | Microsoft Docs
+title: 'Elágazás Azure Data Factoryi folyamatban '
 description: Megismerheti, hogyan vezérelheti az adatok folyamát az Azure Data Factoryben elágaztatási és láncolási tevékenységekkel.
 services: data-factory
 documentationcenter: ''
@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: tutorial
 ms.date: 9/27/2019
-ms.openlocfilehash: d8ea5a507cc110c92bb74491c3376f7b671638d9
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: 0a7e5f56fe71c174c78f1363e403ae41a2ec90a6
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72176009"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73683676"
 ---
 # <a name="branching-and-chaining-activities-in-a-data-factory-pipeline"></a>Elágaztatási és láncolási tevékenységek a Data Factory-folyamatokban
 
@@ -77,7 +77,7 @@ C# .Net-konzol alkalmazás létrehozása:
 
 ### <a name="install-nuget-packages"></a>NuGet-csomagok telepítése
 
-1. Válassza az **eszközök**@no__t – 1**NuGet csomagkezelő**@no__t – 3**csomagkezelő konzolt**.
+1. Válassza az **eszközök** > **NuGet Package Manager** > **csomagkezelő konzolt**.
 1. A **Package Manager konzolon**futtassa a következő parancsokat a csomagok telepítéséhez. A részletekért tekintse meg a [Microsoft. Azure. Management. DataFactory nuget csomagot](https://www.nuget.org/packages/Microsoft.Azure.Management.DataFactory/) .
 
    ```powershell
@@ -133,7 +133,7 @@ C# .Net-konzol alkalmazás létrehozása:
    static string sendSuccessEmailActivity = "SendSuccessEmailActivity";
    ```
 
-1. Adja hozzá a következő kódot a(z) `Main` metódushoz. Ez a kód `DataFactoryManagementClient` osztály egy példányát hozza létre. Ezt az objektumot használhatja az adat-előállító, a társított szolgáltatás, az adatkészletek és a folyamat létrehozásához. Ezzel az objektummal is figyelheti a folyamat futtatásának részleteit.
+1. Adja hozzá a következő kódot a `Main` metódushoz: Ez a kód `DataFactoryManagementClient` osztály egy példányát hozza létre. Ezt az objektumot használhatja az adat-előállító, a társított szolgáltatás, az adatkészletek és a folyamat létrehozásához. Ezzel az objektummal is figyelheti a folyamat futtatásának részleteit.
 
    ```csharp
    // Authenticate and create a data factory management client
@@ -334,7 +334,7 @@ A munkafolyamat a következő példához hasonlóan néz ki:
 
 Ez a JSON-tartalom az előző szakaszban létrehozott `EmailRequest` osztályhoz igazodik.
 
-@No__t-0 művelet hozzáadása. Az **E-mail küldése** művelethez testre szabhatja az e-mailek formázásának módját a kérelem **törzse** JSON-sémájában átadott tulajdonságok használatával. Például:
+`Office 365 Outlook – Send an email`műveletének hozzáadása. Az **E-mail küldése** művelethez testre szabhatja az e-mailek formázásának módját a kérelem **törzse** JSON-sémájában átadott tulajdonságok használatával. Például:
 
 ![Logic app Designer – e-mail küldése művelet](media/tutorial-control-flow/customize-send-email-action.png)
 
@@ -453,9 +453,9 @@ Ebben a folyamatban a következő funkciókat használja:
 
 A folyamat kódjának első szakasza határozza meg a paramétereket.
 
-* `sourceBlobContainer` kérdésre adott válaszban foglalt lépéseket. A forrás blob-adatkészlet ezt a paramétert használja a folyamatban.
-* `sinkBlobContainer` kérdésre adott válaszban foglalt lépéseket. A fogadó blob-adatkészlet ezt a paramétert használja a folyamatban.
-* `receiver` kérdésre adott válaszban foglalt lépéseket. A folyamat két webes tevékenysége, amelyek sikeres vagy sikertelen e-maileket küldenek a fogadónak, ezt a paramétert használják.
+* `sourceBlobContainer`. A forrás blob-adatkészlet ezt a paramétert használja a folyamatban.
+* `sinkBlobContainer`. A fogadó blob-adatkészlet ezt a paramétert használja a folyamatban.
+* `receiver`. A folyamat két webes tevékenysége, amelyek sikeres vagy sikertelen e-maileket küldenek a fogadónak, ezt a paramétert használják.
 
 ```csharp
 Parameters = new Dictionary<string, ParameterSpecification>
@@ -491,7 +491,7 @@ A webes tevékenység lehetővé teszi a REST-végpontok hívását. További in
 A `Url` tulajdonságban illessze be a **http post URL-** végpontokat a Logic apps munkafolyamatokból. A `Body` tulajdonságban adja át a `EmailRequest` osztály egy példányát. Az e-mail-kérelem a következő tulajdonságokat tartalmazza:
 
 * Üzenetet. A `@{activity('CopyBlobtoBlob').output.dataWritten` értéket adja át. Hozzáfér az előző másolási tevékenység tulajdonságához, és átadja a `dataWritten` értékét. Sikertelen művelet esetén az átadott érték a `@{activity('CopyBlobtoBlob').error.message` helyett a hibakimenet.
-* Data Factory neve. @No__t-0 értékének átadása ez a rendszerváltozó lehetővé teszi a megfelelő adatelőállító-név elérését. A rendszerváltozók listáját a [rendszerváltozók](control-flow-system-variables.md)részben tekintheti meg.
+* Data Factory neve. `@{pipeline().DataFactory}` értékének átadása ez a rendszerváltozó lehetővé teszi a megfelelő adatelőállító-név elérését. A rendszerváltozók listáját a [rendszerváltozók](control-flow-system-variables.md)részben tekintheti meg.
 * A folyamat neve. A `@{pipeline().Pipeline}` értéket adja át. Ez a rendszerváltozó lehetővé teszi a megfelelő folyamat nevének elérését.
 * Fogadó. A `"@pipeline().parameters.receiver"` értéket adja át. A folyamat paramétereinek elérése.
 
@@ -749,7 +749,7 @@ Checking copy activity run details...
 Press any key to exit...
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban a következő feladatokat végezte el:
 

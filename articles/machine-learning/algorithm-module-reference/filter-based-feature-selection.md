@@ -1,7 +1,7 @@
 ---
 title: 'Szűrésen alapuló funkció kiválasztása: modul-hivatkozás'
 titleSuffix: Azure Machine Learning service
-description: Megtudhatja, hogyan használhatja a Azure Machine Learning szolgáltatás szűrő alapú funkció-kiválasztási modulját a legnagyobb prediktív teljesítménnyel rendelkező adatkészlet funkcióinak azonosításához.
+description: Megtudhatja, hogyan használhatja a Azure Machine Learning szolgáltatás szűrő alapú funkciójának kiválasztási modulját a legnagyobb prediktív teljesítménnyel rendelkező adatkészlet funkcióinak azonosításához.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,53 +9,54 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/10/2019
-ms.openlocfilehash: ac1421c93f1a4ca42d7f1d94bb898c423c380a57
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: f8ae4982f7602cd7403a78517fec79fa95d33aa2
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73517968"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73717204"
 ---
 # <a name="filter-based-feature-selection"></a>Szűrésen alapuló funkció kiválasztása
 
-Ez a cikk azt ismerteti, hogyan használhatja a Azure Machine Learning Designer (előzetes verzió) [szűrő alapú funkciójának kiválasztási](filter-based-feature-selection.md) modulját a bemeneti adatkészletben található azon oszlopok azonosítására, amelyek a legnagyobb prediktív teljesítménnyel rendelkeznek. 
+Ez a cikk bemutatja, hogyan használhatja a Azure Machine Learning Designer (előzetes verzió) szűrő alapú funkciójának kiválasztási modulját. Ez a modul segít azonosítani a bemeneti adatkészletben található azon oszlopokat, amelyek a legnagyobb prediktív teljesítménnyel rendelkeznek. 
 
-Általánosságban a *szolgáltatás kiválasztása* arra utal, hogy a megadott kimenet alapján statisztikai teszteket alkalmazzon a bemenetekre, hogy meghatározza, mely oszlopok a kimenetebb előrejelzési eredményei. A [szűrésen alapuló funkció kiválasztási](filter-based-feature-selection.md) modulja több funkció-kiválasztási algoritmust is biztosít, amelyek közül választhat, beleértve a korrelációs módszereket, például a Pearson korrelációs és a khi-négyzet értékeket. 
+Általánosságban a *szolgáltatás kiválasztása* arra utal, hogy a megadott kimenet alapján statisztikai teszteket alkalmazzon a bemenetekre. A cél annak meghatározása, hogy mely oszlopok legyenek a kimenet prediktív megjelenítése. A szűrésen alapuló funkció kiválasztási modulja több szolgáltatás-kiválasztási algoritmust is biztosít, amelyek közül választhat. A modul olyan korrelációs módszereket tartalmaz, mint például a Pearson korrelációs és a KHI-négyzetes értékek. 
 
-Ha a [szűrő alapú szolgáltatás kiválasztási](filter-based-feature-selection.md) modulját használja, akkor meg kell adnia egy adatkészletet, azonosítania kell a címkét vagy a függő változót tartalmazó oszlopot, majd meg kell adnia egyetlen módszert a funkció fontosságának méréséhez.
+A szűrő alapú szolgáltatás kiválasztási moduljának használatakor meg kell adnia egy adatkészletet, és azonosítania kell a címkét vagy a függő változót tartalmazó oszlopot. Ezt követően egyetlen módszert kell megadnia a funkció fontosságának méréséhez.
 
 A modul a legjobb funkciók oszlopait tartalmazó adatkészletet jeleníti meg, a prediktív Power alapján rangsorolva. Emellett a funkciók nevét és a hozzájuk tartozó pontszámokat is megjeleníti a kiválasztott metrika alapján.  
 
-### <a name="what-is-filter-based-feature-selection-and-why-use-it"></a>Mi a szűrésen alapuló funkció kiválasztása, és miért érdemes használni?  
+## <a name="what-filter-based-feature-selection-is"></a>A szűrésen alapuló funkció kiválasztása  
 
-Ennek a funkciónak a kiválasztásához a "filter-based" nevű modult kell használni, mert a kijelölt metrikával azonosítja a nem releváns attribútumokat, és kiszűri a modellből a redundáns oszlopokat.  Egyetlen statisztikai mértéket választ ki, amely megfelel az adatainak, a modul pedig kiszámítja az egyes szolgáltatások oszlopainak pontszámát. Az oszlopokat a szolgáltatás pontszámai rangsorolják. 
+Ennek a funkciónak a kiválasztásához a "szűrő-alapú" nevű modult kell használni, mert a kijelölt metrika a releváns attribútumok keresésére szolgál. Ezután kiszűri a redundáns oszlopokat a modellből. Egyetlen statisztikai mértéket választ ki, amely megfelel az adatainak, a modul pedig kiszámítja az egyes szolgáltatások oszlopainak pontszámát. Az oszlopokat a szolgáltatás pontszámai rangsorolják. 
 
 A megfelelő funkciók kiválasztásával növelheti a besorolás pontosságát és hatékonyságát. 
 
 Általában csak azokat az oszlopokat használja, amelyek a legjobb pontszámot használják a prediktív modell létrehozásához. A gyenge funkciók kiválasztásával rendelkező oszlopok maradhatnak az adatkészletben, és figyelmen kívül hagyhatók a modell létrehozásakor.  
 
-### <a name="how-to-choose-a-feature-selection-metric"></a>Szolgáltatás kiválasztási mérőszámának kiválasztása
+## <a name="how-to-choose-a-feature-selection-metric"></a>Szolgáltatás kiválasztási mérőszámának kiválasztása
 
-A **szűrésen alapuló szolgáltatás kiválasztása** számos mérőszámot biztosít az egyes oszlopokban található információ értékének értékeléséhez.  Ez a szakasz az egyes mérőszámok általános leírását és alkalmazási módját ismerteti. Az egyes mérőszámok használatának további követelményeit a [technikai megjegyzések](#technical-notes) szakaszban és az egyes modulok konfigurálására vonatkozó [utasításokban](#how-to-configure-filter-based-feature-selection) találja.
+A szűrésen alapuló funkció kiválasztási modulja számos mérőszámot biztosít az egyes oszlopokban található információ értékének értékeléséhez. Ez a szakasz az egyes mérőszámok általános leírását és alkalmazási módját ismerteti. További követelményeket is megtalálhat az egyes mérőszámok használatához a [technikai megjegyzésekben](#technical-notes) és az egyes modulok konfigurálásához szükséges [utasításokban](#how-to-configure-filter-based-feature-selection) .
 
 -   **Pearson korreláció**  
 
-     A Pearson korrelációs statisztikája vagy a Pearson korrelációs együtthatója a statisztikai modellekben is ismert `r` értékként. Bármely két változó esetében egy olyan értéket ad vissza, amely jelzi a korreláció erősségét.
+    A Pearson korrelációs statisztikája vagy a Pearson korrelációs együtthatója a statisztikai modellekben is ismert `r` értékként. Bármely két változó esetében egy olyan értéket ad vissza, amely jelzi a korreláció erősségét.
 
-     A Pearson korrelációs együtthatóját úgy számítjuk ki, hogy a két változó egymástól való eltérését és a szórásuk szorzatát választja. Az együtthatót a két változó méretezésének változásai nem érintik.  
+    A Pearson korrelációs együtthatóját úgy számítjuk ki, hogy a két változó egymástól való eltérését és a szórásuk szorzatát választja. A két változó méretezésének módosítása nem befolyásolja az együtthatót.  
 
 -   **Chi négyzetes**  
 
-     A kétirányú Chi-négyzetes teszt olyan statisztikai módszer, amely azt méri, hogy a várt értékek a tényleges eredmények legyenek. A metódus feltételezi, hogy a változók véletlenszerűek, és a független változók megfelelő mintáján alapulnak. Az eredményül kapott KHI-négyzetes statisztikai érték azt jelzi, hogy az eredmények milyen mértékben származnak a várt (véletlenszerű) eredményből.  
+    A kétirányú Chi-négyzetes teszt olyan statisztikai módszer, amely azt méri, hogy a várt értékek a tényleges eredmények legyenek. A metódus feltételezi, hogy a változók véletlenszerűek, és a független változók megfelelő mintáján alapulnak. Az eredményül kapott KHI-négyzetes statisztikai érték azt jelzi, hogy az eredmények milyen mértékben származnak a várt (véletlenszerű) eredményből.  
 
 
 > [!TIP]
-> Ha egy másik lehetőségre van szüksége az egyéni funkciók kiválasztási módszeréhez, használja az [R-parancsfájl végrehajtása](execute-r-script.md) modult. 
-##  <a name="how-to-configure-filter-based-feature-selection"></a>A szűrésen alapuló szolgáltatás kijelölésének konfigurálása
+> Ha az egyéni funkciók kiválasztási módszeréhez másik lehetőségre van szüksége, használja az [R-parancsfájl végrehajtása](execute-r-script.md) modult. 
 
-Kiválaszthatja a standard statisztikai metrikát, és a modul kiszámítja az oszlopok egy pár oszlopa közötti korrelációt: a Label oszlop és a szolgáltatás oszlopát.
+## <a name="how-to-configure-filter-based-feature-selection"></a>A szűrésen alapuló szolgáltatás kijelölésének konfigurálása
 
-1.  Adja hozzá a **szűrő alapú szolgáltatás kiválasztási** modulját a folyamathoz. A tervezőben a **funkció kiválasztása** kategóriában található.
+A standard statisztikai mérőszámot kell választania. A modul kiszámítja az egyes oszlopok közötti korrelációt: a Label oszlop és a szolgáltatás oszlopát.
+
+1.  Adja hozzá a szűrő alapú szolgáltatás kiválasztási modulját a folyamathoz. A tervezőben a **funkció kiválasztása** kategóriában található.
 
 2. Csatlakoztasson olyan bemeneti adatkészletet, amely legalább két olyan oszlopot tartalmaz, amelyek lehetséges funkciók.  
 
@@ -64,7 +65,7 @@ Kiválaszthatja a standard statisztikai metrikát, és a modul kiszámítja az o
     > [!IMPORTANT]
     > Győződjön meg arról, hogy a bemenetként megadott oszlopok lehetséges funkciók. Egy olyan oszlop például, amely egyetlen értéket tartalmaz, nem rendelkezik információs értékkel.
     >
-    > Ha tudja, hogy vannak olyan oszlopok, amelyek helytelen funkciókat tesznek elérhetővé, akkor eltávolíthatja őket az oszlop kiválasztásával. A [metaadatok szerkesztése](edit-metadata.md) modullal is megadhatja azokat **kategorikusként**. 
+    > Ha tudja, hogy egyes oszlopok helytelen funkciókat végeznek, akkor eltávolíthatja őket az oszlop kiválasztásával. A [metaadatok szerkesztése](edit-metadata.md) modullal is megjelölheti azokat **kategorikusként**. 
 3.  A **szolgáltatás pontozási módszere**esetében válassza az alábbi, a pontszámok kiszámításakor használandó statisztikai módszerek egyikét.  
 
     | Módszer              | Követelmények                             |
@@ -73,35 +74,34 @@ Kiválaszthatja a standard statisztikai metrikát, és a modul kiszámítja az o
     Chi négyzetes| A címkék és a szolgáltatások lehetnek szöveg vagy numerikus elemek. Használja ezt a módszert a számítási funkció fontosságához két kategorikus oszlop esetében.|
 
     > [!TIP]
-    > Ha módosítja a kijelölt metrikát, az összes többi beállítás alaphelyzetbe áll, ezért először állítsa be ezt a beállítást.)
-4.  Jelölje be a csak szolgáltatásként megjelölt oszlopokhoz csak a korábban funkciókként jelölt oszlopok esetében a **csak a funkció bekapcsolása oszlopok** lehetőséget. 
+    > Ha módosítja a kijelölt metrikát, az összes többi beállítás alaphelyzetbe áll. Ügyeljen arra, hogy először ezt a beállítást állítsa be.
+4.  Jelölje be a csak szolgáltatásként megjelölt oszlopok esetében a **csak a funkció bekapcsolása oszlopok** esetén lehetőséget. 
 
     Ha törli ezt a beállítást, a modul egy pontszámot hoz létre minden olyan oszlophoz, amely egyébként megfelel a feltételeknek, akár a **kívánt funkciók számában**megadott oszlopok számával.  
 
-5.  A **Target (cél) oszlopban**kattintson az **oszlop kiválasztásának elindítása** lehetőségre, hogy a Label (címke) oszlopot név vagy az index szerint válassza ki (az indexek egy-alapúak).  
+5.  A **cél oszlopnál**válassza az **oszlop kiválasztásának elindítása** lehetőséget a címke oszlop kiválasztásához név vagy az index alapján. (Az indexek egy-alapúak.)  
+    A statisztikai korrelációt magában foglaló összes módszerhez címkével ellátott oszlop szükséges. A modul tervezési idejű hibát ad vissza, ha a nem címke vagy több címke oszlopot választja. 
 
-     A statisztikai korrelációt magában foglaló összes módszerhez címkével ellátott oszlop szükséges. A modul tervezési idejű hibát ad vissza, ha a nem címke vagy több címke oszlopot választja. 
+6.  A **kívánt funkciók számának**megadásához adja meg az eredményként visszaadott szolgáltatások oszlopainak számát:  
 
-6.  A **kívánt funkciók számának**megadásához írja be az eredményként visszaadott szolgáltatás oszlopainak számát.  
+    - A minimálisan megadható szolgáltatások közül csak egy, de azt javasoljuk, hogy növelje ezt az értéket.  
 
-     - A megadható szolgáltatások minimális száma 1, de azt javasoljuk, hogy növelje ezt az értéket.  
+    - Ha a megadott számú kívánt funkció nagyobb, mint az adatkészlet oszlopainak száma, az összes funkció visszakerül. Még a nulla pontszámmal rendelkező funkciók is visszakerülnek.  
 
-     - Ha a megadott számú kívánt funkció nagyobb, mint az adatkészlet oszlopainak száma, akkor a rendszer az összes funkciót visszaadja, még a nulla pontszámmal is.  
+    - Ha kevesebb eredményt ad meg, mint a szolgáltatások oszlopai, a szolgáltatások csökkenő pontszám szerint vannak rangsorolva. A rendszer csak a legfontosabb funkciókat adja vissza. 
 
-    - Ha kevesebb eredményt ad meg, mint a szolgáltatások oszlopai, a szolgáltatások csökkenő pontszám szerint vannak rangsorolva, és csak a legfontosabb funkciók lesznek visszaadva. 
-
-7.  Futtassa a folyamatot, vagy válassza ki a [szűrésen alapuló funkció kiválasztási](filter-based-feature-selection.md) modulját, majd kattintson a **kijelölt futtatása**elemre.
+7.  Futtassa a folyamatot, vagy válassza ki a szűrésen alapuló funkció kiválasztási modulját, majd válassza a **kijelölt futtatása**lehetőséget.
 
 
 ## <a name="results"></a>Results (Eredmények)
 
 A feldolgozás befejezése után:
 
-+ Ha meg szeretné tekinteni az elemzett szolgáltatások oszlopainak teljes listáját, valamint azok pontszámait **, kattintson a**jobb gombbal a modulra, válassza a **szolgáltatások**lehetőséget, majd kattintson a vizualizáció elemre.  
++ Ha meg szeretné tekinteni az elemzett szolgáltatás oszlopainak teljes listáját és azok pontszámait, kattintson a jobb gombbal a modulra. Válassza a **szolgáltatások**lehetőséget, majd válassza a **Megjelenítés**lehetőséget.  
 
-+ A szolgáltatás kiválasztási feltételei alapján létrehozott adatkészlet megtekintéséhez kattintson a jobb gombbal a modulra, válassza az **adatkészlet**lehetőséget, majd kattintson a **Megjelenítés**elemre. 
++ A szolgáltatás kiválasztási feltételei alapján létrehozott adatkészlet megtekintéséhez kattintson a jobb gombbal a modulra. Válassza az **adatkészlet**lehetőséget, majd válassza a **Megjelenítés**lehetőséget. 
 
-Ha az adatkészlet kevesebb oszlopot tartalmaz, mint amennyit várt, ellenőrizze a modul beállításait, valamint a bemenetként megadott oszlopok adattípusait. Ha például az 1 értékre állítja be a **kívánt funkciókat** , a kimeneti adatkészlet csak két oszlopot tartalmaz: a Label oszlopot és a legmagasan rangsorolt funkció oszlopot.
+Ha az adatkészlet kevesebb oszlopot tartalmaz, mint amennyit várt, ellenőrizze a modul beállításait. Tekintse meg a bemenetként megadott oszlopok adattípusait is. Ha például az 1 értékre állítja be a **kívánt funkciókat** , a kimeneti adatkészlet csak két oszlopot tartalmaz: a Label oszlopot és a legmagasan rangsorolt funkció oszlopot.
 
 
 ##  <a name="technical-notes"></a>Technikai megjegyzések  
@@ -116,24 +116,24 @@ Ha a Pearson korrelációt egy numerikus szolgáltatáson és egy kategorikus c�
 
 ### <a name="requirements"></a>Követelmények  
 
--   Nem hozható létre szolgáltatás-kiválasztási pontszám a **címkeként** vagy **pontszámként** megjelölt oszlopokhoz.  
+-   Nem hozható létre funkció-kiválasztási pontszám a **label** vagy **score** oszlopként megjelölt oszlopokhoz.  
 
--   Ha a metódus által nem támogatott adattípusú oszlopra próbál pontozási metódust használni, akkor a modul hibát jelez, vagy az oszlophoz null értékű pontszám lesz hozzárendelve.  
+-   Ha a metódus által nem támogatott adattípusú oszlophoz próbál pontozási módszert használni, a modul hibát jelez. Vagy nulla pontszámot fog rendelni az oszlophoz.  
 
--   Ha egy oszlop logikai (igaz/hamis) értékeket tartalmaz, azok az igaz = 1 és a False = 0 értékkel lesznek feldolgozva.  
+-   Ha egy oszlop logikai (igaz/hamis) értékeket tartalmaz, azok `True = 1`ként és `False = 0`ként lesznek feldolgozva.  
 
 -   Egy oszlop nem lehet olyan szolgáltatás, amely **címkeként** vagy **pontszámként**lett megjelölve.  
 
 ### <a name="how-missing-values-are-handled"></a>A hiányzó értékek kezelése  
 
--   Nem adhat meg célként (label) oszlopként olyan oszlopot, amely tartalmazza az összes hiányzó értéket.  
+-   Nem adhat meg célként (label) oszlopot olyan oszlopként, amely minden hiányzó értéket tartalmaz.  
 
--   Ha egy oszlop hiányzó értékeket tartalmaz, a rendszer figyelmen kívül hagyja azokat az oszlop pontszámának kiszámításakor.  
+-   Ha egy oszlop hiányzó értékeket tartalmaz, a modul figyelmen kívül hagyja azokat, amikor az oszlophoz tartozó pontszámot felszámítja.  
 
--   Ha egy szolgáltatásként kijelölt oszlop minden hiányzó értékkel rendelkezik, a rendszer nulla pontszámot rendel hozzá.   
+-   Ha egy szolgáltatásként kijelölt oszlop minden hiányzó értékkel rendelkezik, a modul nulla pontszámot rendel hozzá.   
 
 
 ## <a name="next-steps"></a>További lépések
 
-Tekintse [meg Azure Machine learning szolgáltatás számára elérhető modulok készletét](module-reference.md) . 
+Tekintse meg a Azure Machine Learning szolgáltatás [számára elérhető modulok készletét](module-reference.md) . 
 

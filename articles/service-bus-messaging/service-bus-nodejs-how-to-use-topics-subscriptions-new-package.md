@@ -1,6 +1,6 @@
 ---
-title: Azure Service Bus témakörök és előfizetések használata a Node. js használatával | Microsoft Docs
-description: Megtudhatja, hogyan használhatja Service Bus témaköröket és előfizetéseket az Azure-ban egy Node. js-alkalmazásból.
+title: 'Gyors útmutató: Azure Service Bus témakörök és előfizetések használata a Node. js használatával'
+description: 'Gyors útmutató: megtudhatja, hogyan használhatja Service Bus témaköröket és előfizetéseket az Azure-ban egy Node. js-alkalmazásból.'
 services: service-bus-messaging
 documentationcenter: nodejs
 author: axisc
@@ -11,17 +11,17 @@ ms.service: service-bus-messaging
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: nodejs
-ms.topic: article
-ms.date: 04/15/2019
+ms.topic: quickstart
+ms.date: 11/05/2019
 ms.author: aschhab
-ms.openlocfilehash: f927274e1e866a9cba72330280316cc5ee7d8047
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: fa6f40eba02ffe171dc521f952e0d00fc35fc7e6
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72178060"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73721662"
 ---
-# <a name="how-to-use-service-bus-topics-and-subscriptions-with-nodejs-and-the-azureservice-bus-package"></a>Service Bus témakörök és előfizetések használata a Node. js-sel és az Azure/Service-Bus csomaggal
+# <a name="quickstart-how-to-use-service-bus-topics-and-subscriptions-with-nodejs-and-the-azureservice-bus-package"></a>Gyors útmutató: Service Bus témakörök és előfizetések használata a Node. js-sel és az Azure/Service-Bus csomaggal
 > [!div class="op_multi_selector" title1="Programozási nyelv" title2="Node. js-csomagjának felvétele"]
 > - [(Node. js | Azure-SB)](service-bus-nodejs-how-to-use-topics-subscriptions.md)
 > - [(Node. js | @azure/service-bus)](service-bus-nodejs-how-to-use-topics-subscriptions-new-package.md)
@@ -37,7 +37,7 @@ Ebből az oktatóanyagból megtudhatja, hogyan írhat egy Node. js-programot, am
 > - Az új [@azure/service-bus](https://www.npmjs.com/package/@azure/service-bus) csomag még nem támogatja a topcis és-előfizetések létrehozását. Ha programozott módon szeretné létrehozni őket, használja a [@azure/arm-servicebus](https://www.npmjs.com/package/@azure/arm-servicebus) csomagot.
 
 ### <a name="use-node-package-manager-npm-to-install-the-package"></a>Csomag telepítése a Node Package Manager (NPM) használatával
-A Service Bus NPM-csomagjának telepítéséhez nyisson meg egy parancssort, amely `npm` elérési úttal rendelkezik, módosítsa a könyvtárat arra a mappára, ahol a mintákat használni szeretné, majd futtassa ezt a parancsot.
+A Service Bus NPM-csomagjának telepítéséhez nyisson meg egy parancssort, amely az elérési útjában `npm` van, módosítsa a könyvtárat arra a mappára, ahol a mintákat használni szeretné, majd futtassa ezt a parancsot.
 
 ```bash
 npm install @azure/service-bus
@@ -85,11 +85,11 @@ A Service Bus témakörrel való interakció a [ServiceBusClient](https://docs.m
     });
     ```
 3. Adja meg a kapcsolatok karakterláncát és a témakör nevét a fenti kódban.
-4. Ezután futtassa az `node send.js` parancsot a parancssorban a fájl végrehajtásához. 
+4. Ezután futtassa a parancsot egy parancssorban a fájl végrehajtásához `node send.js`. 
 
 Gratulálunk! Csak egy Service Bus üzenetsor számára küldött üzeneteket.
 
-Az üzenetek olyan szabványos tulajdonságokkal rendelkeznek, mint a `label` és a `messageId`, amelyet a küldéskor beállíthat. Ha egyéni tulajdonságokat szeretne beállítani, használja a `userProperties` karakterláncot, amely egy JSON-objektum, amely az egyéni adatai kulcs-érték párokat képes tárolni.
+Az üzenetek olyan szabványos tulajdonságokkal rendelkeznek, mint a `label` és a `messageId`, amelyet a küldéskor beállíthat. Ha egyéni tulajdonságokat szeretne beállítani, használja a `userProperties`, amely egy JSON-objektum, amely az egyéni adatai kulcs-érték párokat képes tárolni.
 
 A Service Bus-üzenettémakörök a [Standard csomagban](service-bus-premium-messaging.md) legfeljebb 256 KB, a [Prémium csomagban](service-bus-premium-messaging.md) legfeljebb 1 MB méretű üzeneteket támogatnak. A témakörben tárolt üzenetek száma nincs korlátozva, de a témakörben tárolt üzenetek teljes mérete korlátozott. A témakör ezen méretét a létrehozáskor kell meghatározni, és a felső korlátja 5 GB. További információ a kvótákkal kapcsolatban: [Service Bus kvóták](service-bus-quotas.md).
 
@@ -128,16 +128,16 @@ A Service Bus-előfizetésekkel való interakció a [ServiceBusClient](https://d
     });
     ```
 3. A fenti kódban adja meg a témakör és az előfizetés nevét.
-4. Ezután futtassa az `node receiveMessages.js` parancsot a parancssorban a fájl végrehajtásához.
+4. Ezután futtassa a parancsot egy parancssorban a fájl végrehajtásához `node receiveMessages.js`.
 
 Gratulálunk! Csak Service Bus-előfizetésből érkezett üzenetek.
 
-A [createReceiver](https://docs.microsoft.com/javascript/api/%40azure/service-bus/subscriptionclient#createreceiver-receivemode-) metódus egy `ReceiveMode` értéket vesz igénybe, amely egy [ReceiveAndDelete](message-transfers-locks-settlement.md#settling-receive-operations) és [PeekLock](message-transfers-locks-settlement.md#settling-receive-operations)értékű enumerálás. Ne feledje, hogy [rendezze az üzeneteket](message-transfers-locks-settlement.md#settling-receive-operations) , ha a `PeekLock` üzemmódot használja a `complete()`, `abandon()`, `defer()` vagy `deadletter()` metódusok használatával az üzeneten.
+A [createReceiver](https://docs.microsoft.com/javascript/api/%40azure/service-bus/subscriptionclient#createreceiver-receivemode-) metódus egy `ReceiveMode`, amely egy [ReceiveAndDelete](message-transfers-locks-settlement.md#settling-receive-operations) és [PeekLock](message-transfers-locks-settlement.md#settling-receive-operations)értékű enumerálás. Ne feledje, hogy [rendezze az üzeneteket](message-transfers-locks-settlement.md#settling-receive-operations) , ha a `PeekLock` módot használja az üzenet `complete()`, `abandon()`, `defer()`vagy `deadletter()` metódusának használatával.
 
 ## <a name="subscription-filters-and-actions"></a>Előfizetési szűrők és műveletek
 Service Bus támogatja az [előfizetések szűrőit és műveleteit](topic-filters.md), így a beérkező üzeneteket szűrheti egy előfizetésre, és szerkesztheti a tulajdonságait.
 
-Ha már rendelkezik egy `SubscriptionClient` példánnyal, az alábbi módszerekkel kérheti le, adhat hozzá és távolíthat el szabályokat az előfizetéshez a szűrők és műveletek vezérléséhez.
+Ha már rendelkezik egy `SubscriptionClient` egy példányával, az alábbi módszerekkel kérheti le, adhat hozzá és távolíthat el szabályokat az előfizetéshez a szűrők és műveletek vezérléséhez.
 
 - getRules
 - addRule

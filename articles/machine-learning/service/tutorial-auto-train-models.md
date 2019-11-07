@@ -10,12 +10,12 @@ author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
 ms.date: 11/04/2019
-ms.openlocfilehash: a7bd735a808532ed0e61cf42dca2d7a797092487
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: HT
+ms.openlocfilehash: 23441fb64293647698921c17c06731ab413b7699
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/04/2019
-ms.locfileid: "73493703"
+ms.locfileid: "73582461"
 ---
 # <a name="tutorial-use-automated-machine-learning-to-predict-taxi-fares"></a>Oktatóanyag: automatikus gépi tanulás használata a taxi viteldíjak előrejelzéséhez
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -1062,7 +1062,7 @@ A hagyományos gépi tanulási modell fejlesztési folyamata nagy erőforrás-ig
 
 Ne hajtsa végre ezt a szakaszt, ha más Azure Machine Learning oktatóanyagok futtatását tervezi.
 
-### <a name="stop-the-compute-instance"></a>A számítási példány leállítása
+### <a name="stop-the-notebook-vm"></a>A notebook virtuális gép leállítása
 
 [!INCLUDE [aml-stop-server](../../../includes/aml-stop-server.md)]
 

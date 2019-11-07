@@ -1,7 +1,7 @@
 ---
 title: 'Gyors útmutató: Tudásbázis közzététele, REST, C# -QnA Maker'
 titleSuffix: Azure Cognitive Services
-description: Ez C# REST-alapú a rövid útmutató végigvezeti a közzététele, amely egy dedikált Azure Search-index a közzétett Tudásbázis jelölő leküldi a tesztelt Tudásbázis legújabb verzióját. Egy végpontot is létre fog hozni, amelyet az alkalmazásban vagy a csevegőrobot meg tud hívni.
+description: Ez C# a REST-alapú rövid útmutató közzéteszi a tudásbázist, és létrehoz egy olyan végpontot, amely hívható az alkalmazásban vagy a csevegési robotban.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -11,16 +11,16 @@ ms.subservice: qna-maker
 ms.topic: quickstart
 ms.date: 10/01/2019
 ms.author: diberry
-ms.openlocfilehash: 2b2c2ed43a229d929353767b229f8331b49a0e46
-ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
+ms.openlocfilehash: 8bb1b87e5df92605192a60c49a11f1995449d255
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71802902"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73721161"
 ---
-# <a name="quickstart-publish-a-knowledge-base-in-qna-maker-using-c"></a>Gyors útmutató: Tudásbázis közzététele QnA Maker használatávalC#
+# <a name="quickstart-publish-a-knowledge-base-in-qna-maker-using-c"></a>Rövid útmutató: Tudásbázis közzététele a QnA Makerben a C# használatával
 
-A REST-alapú rövid útmutató végigvezeti programozott módon közzététele (KB). A közzététel leküldi a tudásbázis legújabb verzióját egy dedikált Azure Search-indexre, és létrehoz egy, az alkalmazásban vagy csevegőrobotban meghívható végpontot.
+Ez a REST-alapú rövid útmutató végigvezeti a Tudásbázis (KB) programozott közzétételének lépésein. A közzététel leküldi a tudásbázis legújabb verzióját egy dedikált Azure Search-indexre, és létrehoz egy, az alkalmazásban vagy csevegőrobotban meghívható végpontot.
 
 Ebben a rövid útmutatóban QnA Maker API-kat hívunk meg:
 * [Publish](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/publish) – ehhez az API-hoz nem kell megadni információkat a kérés törzsében.
@@ -33,7 +33,7 @@ Ebben a rövid útmutatóban QnA Maker API-kat hívunk meg:
 
     ![QnA Maker tudásbázis-azonosító](../media/qnamaker-quickstart-kb/qna-maker-id.png)
 
-    Ha még nem rendelkezik tudásbázissal, létrehozhat egy, az ehhez a rövid útmutatóhoz használandó mintát: [Hozzon létre egy új tudásbázist](create-new-kb-csharp.md).
+    Ha még nem rendelkezik tudásbázissal, létrehozhat egy minta tudásbázist ehhez a rövid útmutatóhoz: [Új tudásbázis létrehozása](create-new-kb-csharp.md).
 
 > [!NOTE] 
 > A teljes megoldás fájl (ok) az [ **Azure-Samples/kognitív-Services-qnamaker-csharp** GitHub-adattárból](https://github.com/Azure-Samples/cognitive-services-qnamaker-csharp/tree/master/documentation-samples/quickstarts/publish-knowledge-base)érhetők el.
@@ -41,7 +41,7 @@ Ebben a rövid útmutatóban QnA Maker API-kat hívunk meg:
 ## <a name="create-knowledge-base-project"></a>Tudásbázisprojekt létrehozása
 
 1. Nyissa meg a Visual Studio 2019 Community Edition verziót.
-1. Hozzon létre egy új **Console app (.net Core)** projektet, és `QnaMakerQuickstart`nevezze el a projektet. Fogadja el az alapértelmezett értékeket a többi beállításnál.
+1. Hozzon létre egy új **Console app (.net Core)** projektet, és nevezze el a projektet `QnaMakerQuickstart`. Fogadja el az alapértelmezett értékeket a többi beállításnál.
 
 ## <a name="add-required-dependencies"></a>Szükséges függőségek hozzáadása
 
@@ -57,7 +57,7 @@ A **program** osztályban adja hozzá a szükséges állandókat a QnA Maker el�
 
 ## <a name="add-the-main-method-to-publish-the-knowledge-base"></a>A Tudásbázis közzétételéhez adja hozzá a Main metódust
 
-A szükséges állandókat után adja hozzá a következő kódra, amely egy HTTPS-kérést küld a QnA Maker API Tudásbázis közzététele, és megkapja a választ:
+A szükséges konstansok után adja hozzá a következő kódot, amely HTTPS-kérést küld a QnA Maker API egy Tudásbázis közzétételéhez, és fogadja a választ:
 
 [!code-csharp[Add HTTP Post request and response](~/samples-qnamaker-csharp/documentation-samples/quickstarts/publish-knowledge-base/QnAMakerPublishQuickstart/Program.cs?range=36-56 "Add HTTP Post request and response")]
 
@@ -65,7 +65,7 @@ Az API-hívás egy 204-es állapotot küld vissza a sikeres közzététel nyugt�
  
 ## <a name="build-and-run-the-program"></a>A program létrehozása és futtatása
 
-Hozza létre és futtassa a programot. A kérelem automatikusan elküldi a QnA Maker API a Tudásbázis közzététele, majd a konzolablakban a választ ki a program.
+Hozza létre és futtassa a programot. A rendszer automatikusan elküldi a kérést a QnA Maker APInak a Tudásbázis közzétételéhez, majd a válasz a konzol ablakára lesz kinyomtatva.
 
 Miután a tudásbázis közzé lett téve, lekérdezheti a tartalmát a végpontról egy ügyfélalkalmazás vagy csevegőrobot használatával. 
 
@@ -73,7 +73,7 @@ Miután a tudásbázis közzé lett téve, lekérdezheti a tartalmát a végpont
 
 ## <a name="next-steps"></a>További lépések
 
-A Tudásbázis közzététele után kell a [végponti URL-cím létrehozásához választ](../Tutorials/create-publish-answer.md#generating-an-answer). 
+Miután közzétette a tudásbázist, szüksége lesz a [végpont URL-címére a válasz létrehozásához](../Tutorials/create-publish-answer.md#generating-an-answer). 
 
 > [!div class="nextstepaction"]
 > [QnA Maker (V4) REST API-referencia](https://go.microsoft.com/fwlink/?linkid=2092179)

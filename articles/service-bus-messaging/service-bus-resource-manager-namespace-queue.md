@@ -1,6 +1,6 @@
 ---
-title: Azure Service Bus névtér és üzenetsor létrehozása Azure Resource Manager sablon használatával | Microsoft Docs
-description: Service Bus névtér és üzenetsor létrehozása Azure Resource Manager sablon használatával
+title: 'Rövid útmutató: Azure Service Bus névtér és üzenetsor létrehozása Azure Resource Manager sablon használatával'
+description: 'Gyors útmutató: Service Bus névtér és üzenetsor létrehozása Azure Resource Manager sablon használatával'
 services: service-bus-messaging
 documentationcenter: .net
 author: spelluru
@@ -9,19 +9,19 @@ editor: ''
 ms.assetid: a6bfb5fd-7b98-4588-8aa1-9d5f91b599b6
 ms.service: service-bus-messaging
 ms.devlang: tbd
-ms.topic: article
+ms.topic: quickstart
 ms.tgt_pltfrm: dotnet
 ms.workload: na
-ms.date: 01/23/2019
+ms.date: 11/05/2019
 ms.author: spelluru
-ms.openlocfilehash: 1c6a4202b944b2eb95008964eb1040f176645334
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 40aeff225cfa6d499ebdfae6736e0684b2a27244
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73482374"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73718798"
 ---
-# <a name="create-a-service-bus-namespace-and-a-queue-using-an-azure-resource-manager-template"></a>Service Bus névtér és üzenetsor létrehozása Azure Resource Manager sablon használatával
+# <a name="quickstart-create-a-service-bus-namespace-and-a-queue-using-an-azure-resource-manager-template"></a>Gyors útmutató: Service Bus névtér és üzenetsor létrehozása Azure Resource Manager sablon használatával
 
 Ez a cikk bemutatja, hogyan használható egy Azure Resource Manager-sablon, amely létrehoz egy Service Bus névteret és egy, az adott névtéren belüli várólistát. A cikk azt ismerteti, hogyan határozható meg, hogy mely erőforrások legyenek telepítve, és Hogyan határozható meg a központi telepítés végrehajtásakor megadott paraméterek. Ez a sablont használhatja a saját környezeteiben, vagy testre is szabhatja a saját követelményeinek megfelelően.
 
@@ -130,7 +130,7 @@ A JSON szintaxis és tulajdonságok esetében lásd: [névterek](/azure/template
 New-AzResourceGroupDeployment -ResourceGroupName \<resource-group-name\> -TemplateFile <https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/201-servicebus-create-queue/azuredeploy.json>
 ```
 
-## <a name="azure-cli"></a>Azure parancssori felület (CLI)
+## <a name="azure-cli"></a>Azure CLI
 
 ```azurecli
 azure config mode arm

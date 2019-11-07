@@ -1,5 +1,5 @@
 ---
-title: Azure SSIS integrációs modul üzembe helyezése PowerShell segítségével | Microsoft Docs
+title: A Azure-SSIS Integration Runtime kiépítése a PowerShell-lel
 description: Ismerje meg, hogyan helyezheti üzembe az Azure SSIS integrációs modult az Azure Data Factoryben a PowerShell használatával, hogy SSIS-csomagokat telepíthessen és futtathasson az Azure-ban.
 services: data-factory
 documentationcenter: ''
@@ -13,16 +13,16 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: 7a4ae2198653ea8adab136caef0f812019efd998
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 594cdd848a3712d2164616e38f7b75a01a21b7f6
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72326102"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73683590"
 ---
 # <a name="provision-the-azure-ssis-integration-runtime-in-azure-data-factory-with-powershell"></a>Azure SSIS integrációs modul üzembe helyezése az Azure Data Factoryben PowerShell segítségével
 
-Ez az oktatóanyag a Azure Data Factory (ADF) Azure-SQL Server Integration Services (SSIS) Integration Runtime (IR) üzembe helyezésének lépéseit ismerteti. Azure-SSIS IR támogatja a Azure SQL Database kiszolgáló/felügyelt példány (projekt-telepítési modell) által üzemeltetett SSIS-katalógusba (SSISDB) telepített csomagok futtatását, valamint a fájlrendszerek/fájlmegosztás/Azure Files (csomag-telepítési modell) által üzembe helyezett csomagokat. Azure-SSIS IR kiépítése után használhat ismerős eszközöket, például SQL Server Data Tools (SSDT)/SQL Server Management Studio (SSMS) és parancssori segédeszközöket, például `dtinstall` @ no__t-1 @ no__t-2 @ no__t-3 @ no__t-4, a csomagok üzembe helyezéséhez és futtatásához az Azure-ban. Az oktatóanyag során a következő lépéseket hajtja végre:
+Ez az oktatóanyag a Azure Data Factory (ADF) Azure-SQL Server Integration Services (SSIS) Integration Runtime (IR) üzembe helyezésének lépéseit ismerteti. Azure-SSIS IR támogatja a Azure SQL Database kiszolgáló/felügyelt példány (projekt-telepítési modell) által üzemeltetett SSIS-katalógusba (SSISDB) telepített csomagok futtatását, valamint a fájlrendszerek/fájlmegosztás/Azure Files (csomag-telepítési modell) által üzembe helyezett csomagokat. Azure-SSIS IR kiépítése után használhat ismerős eszközöket, például SQL Server Data Tools (SSDT)/SQL Server Management Studio (SSMS) és parancssori segédeszközöket, például `dtinstall`/`dtutil`/`dtexec`, a csomagok üzembe helyezéséhez és futtatásához Azure. Az oktatóanyag során a következő lépéseket hajtja végre:
 
 > [!NOTE]
 > Ez a cikk Azure PowerShellt használ egy Azure-SSIS IR kiépítéséhez. Ha Azure Portal/ADF-alkalmazást szeretne kiépíteni egy Azure-SSIS IR, tekintse meg az [oktatóanyag: kiépítési Azure-SSIS IR](tutorial-create-azure-ssis-runtime-portal.md). 
@@ -147,7 +147,7 @@ New-AzSqlServerFirewallRule -ResourceGroupName $ResourceGroupName `
 New-AzSqlServerFirewallRule -ResourceGroupName $ResourceGroupName -ServerName $SSISDBServerName -AllowAllAzureIPs
 ```
 
-## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
+## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
 Hozzon létre egy [Azure-erőforráscsoportot](../azure-resource-manager/resource-group-overview.md) a [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) parancs használatával. Az erőforráscsoport olyan logikai tároló, amelyben a rendszer üzembe helyezi és csoportként kezeli az Azure-erőforrásokat.
 
@@ -369,7 +369,7 @@ Azure-SSIS integrációs modul monitorozásával és kezelésével kapcsolatban 
 
 ## <a name="deploy-ssis-packages"></a>SSIS-csomagok üzembe helyezése
 
-Ha a SSISDB-t használja, a csomagokat üzembe helyezheti, és Azure-SSIS IR futtathatja azokat a SSDT/SSMS eszközök használatával, amelyek kiszolgálói végpontján keresztül csatlakoznak az adatbázis-kiszolgálóhoz. Azure SQL Database kiszolgáló/felügyelt példány nyilvános végponttal való használata esetén a kiszolgálói végpont formátuma `<server name>.database.windows.net` @ no__t-1 @ no__t-2. Ha nem használja a SSISDB-t, a csomagokat fájlrendszerek/fájlmegosztás/Azure Filesba helyezheti, és futtathatja azokat Azure-SSIS IR a `dtinstall` @ no__t-1 @ no__t-2 @ no__t-3 @ no__t-4 parancssori segédprogramok használatával. További információ: SSIS- [csomagok telepítése](/sql/integration-services/packages/deploy-integration-services-ssis-projects-and-packages#deploy-packages-to-integration-services-server). Mindkét esetben futtathatja az üzembe helyezett csomagokat Azure-SSIS IR a SSIS-csomag végrehajtása az ADF-folyamatokban művelettel történő futtatásával, lásd: [SSIS-csomag végrehajtásának meghívása első osztályú ADF-tevékenységként](https://docs.microsoft.com/azure/data-factory/how-to-invoke-ssis-package-ssis-activity).
+Ha a SSISDB-t használja, a csomagokat üzembe helyezheti, és Azure-SSIS IR futtathatja azokat a SSDT/SSMS eszközök használatával, amelyek kiszolgálói végpontján keresztül csatlakoznak az adatbázis-kiszolgálóhoz. Nyilvános végponttal rendelkező Azure SQL Database kiszolgáló/felügyelt példány esetén a kiszolgálói végpont formátuma `<server name>.database.windows.net`/`<server name>.public.<dns prefix>.database.windows.net,3342`. Ha nem használja a SSISDB-t, a csomagokat fájlrendszerek/fájlmegosztás/Azure Filesba helyezheti, és futtathatja azokat Azure-SSIS IR a `dtinstall`/`dtutil`/`dtexec` parancssori segédprogramok használatával. További információ: SSIS- [csomagok telepítése](/sql/integration-services/packages/deploy-integration-services-ssis-projects-and-packages#deploy-packages-to-integration-services-server). Mindkét esetben futtathatja az üzembe helyezett csomagokat Azure-SSIS IR a SSIS-csomag végrehajtása az ADF-folyamatokban művelettel történő futtatásával, lásd: [SSIS-csomag végrehajtásának meghívása első osztályú ADF-tevékenységként](https://docs.microsoft.com/azure/data-factory/how-to-invoke-ssis-package-ssis-activity).
 
 Lásd még a következő cikkeket a SSIS dokumentációjában: 
 
@@ -378,7 +378,7 @@ Lásd még a következő cikkeket a SSIS dokumentációjában:
 - [Csomagok végrehajtásának ütemezett végrehajtása az Azure-ban](/sql/integration-services/lift-shift/ssis-azure-schedule-packages)
 - [Csatlakozás helyszíni adatforrásokhoz Windows-hitelesítéssel](/sql/integration-services/lift-shift/ssis-azure-connect-with-windows-auth) 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket: 
 

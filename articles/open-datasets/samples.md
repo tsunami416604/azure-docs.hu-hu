@@ -1,5 +1,5 @@
 ---
-title: Példa Jupyter-jegyzetfüzetekre egy NOAA nyitott adatkészlet használatával
+title: Példa Jupyter-jegyzetfüzetekre a NOAA-adat használatával
 titleSuffix: Azure Open Datasets
 description: Használjon például Jupyter jegyzetfüzeteket az Azure Open-adatkészletekhez, hogy megtudja, hogyan tölthetők be a megnyitott adatkészletek, és hogyan használhatók a bemutatóhoz. A technikák a Spark és a pandák használatát is feldolgozzák az adatfeldolgozáshoz.
 ms.service: open-datasets
@@ -7,12 +7,12 @@ ms.topic: sample
 author: cjgronlund
 ms.author: cgronlun
 ms.date: 11/04/2019
-ms.openlocfilehash: 2ccdb7adcae40d22a36fbfb47fba6e4c87b3349a
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: HT
+ms.openlocfilehash: 8b96a35db91a282be1fb5e4c6143e6bd0a0203f2
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73496570"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73606143"
 ---
 # <a name="example-jupyter-notebooks-show-how-to-enrich-data-with-open-datasets"></a>Példa a Jupyter-jegyzetfüzetek megmutatják, hogyan bővítheti az adatokat a megnyitott adatkészletekkel 
 Az Azure Open-adatkészletek számára készült Jupyter-jegyzetfüzetek bemutatják, hogyan tölthetők be a megnyitott adatkészletek, és hogyan használhatók a bemutató adatai gazdagítása érdekében. A technikák a Apache Spark és a pandák használatát is feldolgozzák az adatfeldolgozáshoz.
@@ -40,6 +40,6 @@ Az Azure Open-adatkészletek számára készült Jupyter-jegyzetfüzetek bemutat
 
 ## <a name="next-steps"></a>További lépések
 
-* [Oktatóanyag: regressziós modellezés automatizált gépi tanulással és nyitott adatkészlettel](tutorial-opendatasets-automl.md)
+* [Oktatóanyag: regressziós modellezés automatizált gépi tanulással és nyitott adatkészlettel](/azure/machine-learning/service/tutorial-auto-train-models?context=azure/open-datasets/context/open-datasets-context)
 * [Python SDK a nyílt adatkészletekhez](/python/api/azureml-opendatasets/azureml.opendatasets?view=azure-ml-py)
 * [Azure Open-adatkészletek katalógusa](https://azure.microsoft.com/services/open-datasets/catalog/)

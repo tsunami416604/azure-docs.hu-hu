@@ -1,7 +1,7 @@
 ---
 title: Korlátozott próbaverziós projekt áthelyezése az Azure-ba
 titleSuffix: Azure Cognitive Services
-description: Megtudhatja, hogyan helyezhet át egy korlátozott próbaverziós projektet az Azure-ba.
+description: Korlátozott próbaverziós projekttel rendelkezett Custom Vision? Ez a cikk bemutatja, hogyan helyezheti át az Azure-ba egy áttelepítési parancsfájllal.
 services: cognitive-services
 author: anrothMSFT
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 02/19/2019
 ms.author: anroth
-ms.openlocfilehash: 22c3767dfac1e377890f1e01517d18263e694854
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 5c583270428a459f500ae0e220592805fd1bf454
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68560935"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73718907"
 ---
 # <a name="how-to-move-your-limited-trial-project-to-azure"></a>A korlátozott próbaverziós projekt áthelyezése az Azure-ba
 
@@ -29,7 +29,7 @@ Az [áttelepítési parancsfájl](https://github.com/Azure-Samples/custom-vision
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Szüksége lesz egy érvényes Azure-előfizetésre, amely ahhoz a Microsoft-fiók vagy Azure Active Directory (HRE) fiókhoz tartozik, amelyet használni szeretne a [Custom Vision](https://customvision.ai)webhelyre való bejelentkezéshez. 
+- Szüksége lesz egy érvényes Azure-előfizetésre, amely ahhoz a Microsoft-fiók vagy Azure Active Directory (HRE) fiókhoz tartozik, amelyet használni szeretne a [Custom Vision webhelyre](https://customvision.ai)való bejelentkezéshez. 
     - Ha nem rendelkezik Azure-fiókkal, [hozzon létre ingyen egy fiókot](https://azure.microsoft.com/free/) .
     - Az előfizetések és az erőforrások Azure-koncepciójának bevezetését az [Azure fejlesztői útmutatójában találja.](https://docs.microsoft.com/azure/guides/developer/azure-developer-guide#manage-your-subscriptions)
 -  [Python](https://www.python.org/downloads/)
@@ -39,14 +39,14 @@ Az [áttelepítési parancsfájl](https://github.com/Azure-Samples/custom-vision
 
 Az Azure-Custom Vision Service használatához létre kell hoznia Custom Vision képzési és előrejelzési erőforrásokat a [Azure Portal](https://portal.azure.com/?microsoft_azure_marketplace_ItemHideKey=microsoft_azure_cognitiveservices_customvision#create/Microsoft.CognitiveServicesCustomVision). 
 
-Több projekt is társítható egyetlen erőforráshoz. További részletek a [díjszabásról és](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/limits-and-quotas) a korlátozásokról. Ahhoz, hogy továbbra is használhassa a Custom Vision Service ingyenes használatát, kiválaszthatja a F0 szintet a Azure Portal. 
+Több projekt is társítható egyetlen erőforráshoz. További részletek a [díjszabásról és a korlátozásokról](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/limits-and-quotas) . Ahhoz, hogy továbbra is használhassa a Custom Vision Service ingyenes használatát, kiválaszthatja a F0 szintet a Azure Portal. 
 
 > [!NOTE]
-> Amikor áthelyezi a Custom Vision projektet egy Azure-erőforrásba, az örökli az []( https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal) adott Azure-erőforrás mögöttes engedélyeit. Ha a szervezet más felhasználói a projekthez tartozó Azure-erőforrás tulajdonosai, akkor a projekthez hozzáférhetnek a [Custom Vision webhelyén](https://customvision.ai). Hasonlóképpen, az erőforrások törlése törli a projekteket.  
+> Amikor áthelyezi a Custom Vision projektet egy Azure-erőforrásba, az örökli az adott Azure-erőforrás mögöttes [engedélyeit]( https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal) . Ha a szervezet más felhasználói a projekthez tartozó Azure-erőforrás tulajdonosai, akkor a projekthez hozzáférhetnek a [Custom Vision webhelyén](https://customvision.ai). Hasonlóképpen, az erőforrások törlése törli a projekteket.  
 
 ## <a name="find-your-limited-trial-project-information"></a>A korlátozott próbaverziós projekt adatainak megkeresése
 
-A projekt áthelyezéséhez szüksége lesz az áttelepíteni kívánt projekthez tartozó _projekt_ -azonosítóra és betanítási _kulcsra_ . Ha nem rendelkezik ezekkel az információkkal, [https://limitedtrial.customvision.ai/projects](https://limitedtrial.customvision.ai/projects) látogasson el az egyes projektek azonosítójának és kulcsának beszerzéséhez. 
+A projekt áthelyezéséhez szüksége lesz az áttelepíteni kívánt projekthez tartozó _projekt-azonosítóra_ és _betanítási kulcsra_ . Ha nem rendelkezik ezekkel az információkkal, látogasson el [https://limitedtrial.customvision.ai/projectsra](https://limitedtrial.customvision.ai/projects) az egyes projektek azonosítójának és kulcsának beszerzéséhez. 
 
 ## <a name="use-the-python-sample-code-to-copy-your-project-to-azure"></a>A projekt másolása az Azure-ba a Python-mintakód használatával
 

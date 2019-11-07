@@ -8,12 +8,12 @@ ms.topic: overview
 author: j-martens
 ms.author: jmartens
 ms.date: 10/29/2019
-ms.openlocfilehash: dae708a417a1bf8ca4b118f218e353a28e5675c1
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
-ms.translationtype: HT
+ms.openlocfilehash: 721f730aa78be39b91f7d8368655dbbd5878903b
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73684955"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73716691"
 ---
 # <a name="how-azure-machine-learning-differs-from-ml-studio-classic"></a>Miben különbözik a Azure Machine Learning ML Studiotól (klasszikus)
 
@@ -37,10 +37,10 @@ A Azure Machine Learning Designer hasonló húzási élményt nyújt a studióho
 
 ||  Azure Machine Learning Designer|Studio (klasszikus) |
 |---| --- | --- |
-||A Designer előzetes verzióban érhető el, Azure Machine Learning a GA|Általánosan elérhető (GA) | 
+||A tervező előzetes verzióban érhető el, Azure Machine Learning a GA|Általánosan elérhető (GA) | 
 |Húzási interfész| Igen | Igen|
 |Kísérlet| Méretezés számítási céllal|Scale (10GB betanítási adatkorlátja) | 
-|Illesztőfelületi modulok|  Számos népszerű modul|Számos |
+|Illesztőfelületi modulok| [Számos népszerű modul](algorithm-module-reference/module-reference.md) | Számos |
 |Számítási célok betanítása| PÉNZMOSÁS-számítás (GPU/CPU)|Tulajdonosi számítási cél, csak CPU|
 |Viszonyítási számítási célok| Azure Kubernetes szolgáltatás valós idejű következtetéshez <br/>PÉNZMOSÁS-számítás a Batch-következtetéshez|Tulajdonosi webszolgáltatás formátuma, nem testreszabható | 
 |ML-folyamat| Folyamat létrehozása <br/> közzétett folyamat <br/> Folyamat végpontja <br/> [További információ az ML-folyamatról](service/concept-ml-pipelines.md)|Nem támogatott | 
@@ -48,7 +48,7 @@ A Azure Machine Learning Designer hasonló húzási élményt nyújt a studióho
 |Modell| A standard formátum, amely a betanítási feladatoktól függ|Védett, nem hordozható formátum.| 
 |Automatizált modellek betanítása|Még nem a tervezőben, hanem a felületen és az SDK-n keresztül lehetséges.| Nem | 
 
-## <a name="get-started-with-azure-machine-learning-designer"></a>Ismerkedés a Azure Machine Learning Designer alkalmazással
+## <a name="get-started-with-azure-machine-learning"></a>Ismerkedés az Azure Machine Learning szolgáltatással
 
 A következő források segíthetnek a Azure Machine Learning megkezdésében
 
@@ -56,12 +56,11 @@ A következő források segíthetnek a Azure Machine Learning megkezdésében
 
 - [Hozza létre első tervezői folyamatát](service/tutorial-designer-automobile-price-train-score.md) az automatikus árak előrejelzéséhez.
 
-
 ![Azure Machine Learning Designer – példa](service/media/concept-ml-pipelines/designer-drag-and-drop.gif)
 
 ## <a name="next-steps"></a>További lépések
 
-A tervezőben a drag-n-drop képességeken kívül a Azure Machine Learning további elérhető eszközöket is tartalmaz:  
+A tervezőben a fogd és vidd funkció mellett a Azure Machine Learning más eszközök is elérhetők:  
   + [Python-jegyzetfüzetek használata & ML-modellek üzembe helyezéséhez](./service/tutorial-1st-experiment-sdk-setup.md)
   + [Az R Markdown használata & ML-modellek üzembe helyezéséhez](./service/tutorial-1st-r-experiment.md) 
   + [Az automatizált gépi tanulás használata & ML-modellek üzembe helyezéséhez](./service/tutorial-designer-automobile-price-train-score.md) 

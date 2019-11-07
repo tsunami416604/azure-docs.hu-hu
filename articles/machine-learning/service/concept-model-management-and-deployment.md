@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.reviewer: jmartens
 author: jpe316
 ms.author: jordane
-ms.date: 10/25/2019
+ms.date: 11/04/2019
 ms.custom: seodec18
-ms.openlocfilehash: 8741a9a362a10dfdb0150c9dc0dfddeed54594a7
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 0d0e567198fd25243b89245d54bbed5a658cc663
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73497434"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73716599"
 ---
 # <a name="mlops-manage-deploy-and-monitor-models-with-azure-machine-learning"></a>MLOps: modellek kezelése, üzembe helyezése és figyelése Azure Machine Learning
 
@@ -126,7 +126,7 @@ További információ: [modellek üzembe helyezése](how-to-deploy-and-where.md)
 A Microsoft Power BI támogatja a gépi tanulási modellek használatát az adatelemzéshez. További információ: [Azure Machine learning Integration in Power bi (előzetes verzió)](https://docs.microsoft.com/power-bi/service-machine-learning-integration).
 
 
-## <a name="monitor-ml-applications-for-operational-and-ml-related-issues"></a>ML-alkalmazások figyelése működési és ML-vel kapcsolatos problémák esetén
+## <a name="monitor-for-operational--ml-issues"></a>Az Operational & ML-vel kapcsolatos problémák monitorozása
 
 A figyelés lehetővé teszi, hogy megtudja, milyen adatok kerülnek a modellbe, valamint a visszaadott előrejelzések.
 
@@ -135,16 +135,16 @@ Ez az információ segít megérteni a modell felhasználásának módját. A be
 További információ: [a Model-adatok gyűjtésének engedélyezése](how-to-enable-data-collection.md).
 
 
-## <a name="capture-an-end-to-end-audit-trail-of-the-ml-lifecycle"></a>A ML életciklus végpontok közötti naplózási nyomvonalának rögzítése
+## <a name="audit-trail-of-the-ml-lifecycle"></a>A ML-életciklus naplózási nyomvonala
 
-Az Azure ML lehetővé teszi, hogy nyomon követhesse az összes ML-eszköz végpontok közötti naplózását. Konkrétan:
+Az Azure ML lehetővé teszi, hogy nyomon követhesse az összes ML-eszköz végpontok közötti naplózását. Ezek:
 
 - Az Azure ML a [git-vel integrálva](how-to-set-up-training-targets.md#gitintegration) követheti azokat az információkat, amelyek tárháza/ág/a kód véglegesítve származik.
 - Az [Azure ml-adatkészletek](how-to-create-register-datasets.md) segítenek a nyomon követésben és a verziókban.
 - Az Azure ML-futtatási előzményei a modell betanításához használt kód, adatok és számítások pillanatképét tárolják.
 - Az Azure ML-modell beállításjegyzéke rögzíti a modellhez társított összes metaadatot (amely kitanítja azt, hogy hol van üzembe helyezve, ha a központi telepítése kifogástalan).
 
-## <a name="automate-the-end-to-end-ml-lifecycle"></a>A végpontok közötti ML életciklus automatizálása 
+## <a name="automate-the-ml-lifecycle"></a>A ML életciklus automatizálása 
 
 A GitHub és az Azure-folyamatok segítségével folyamatos integrációs folyamatot hozhat létre, amely egy modellt hajt. Egy tipikus forgatókönyv esetén, amikor egy adattudós ellenőrzi a projekt git-tárházában bekövetkező változást, az Azure-folyamat elkezdi a képzés futtatását. A Futtatás eredményei megtekinthetők a betanított modell teljesítmény-jellemzőinek megtekintéséhez. Létrehozhat egy olyan folyamatot is, amely webszolgáltatásként telepíti a modellt.
 
@@ -157,8 +157,18 @@ További információ az Azure-folyamatok Azure Machine Learning használatával
 
 ## <a name="next-steps"></a>További lépések
 
-További információ a [modellek Azure Machine learning használatával történő üzembe helyezéséről](how-to-deploy-and-where.md) . A központi telepítésre példát a következő témakörben talál [: oktatóanyag: lemezkép-besorolási modell üzembe helyezése Azure Container instances-ben](tutorial-deploy-models-with-aml.md).
+További információ: a következő erőforrások olvasása és feltárása:
 
-Ismerje meg, hogyan hozhat létre [folyamatos integrációt és üzembe helyezést a ml-modellek Azure-folyamatokkal való](/azure/devops/pipelines/targets/azure-machine-learning)használatával. 
++ [Hogyan & a modellek üzembe helyezését](how-to-deploy-and-where.md) Azure Machine learning
 
-Megtudhatja, hogyan hozhat létre [webszolgáltatásként üzembe helyezett modellt](how-to-consume-web-service.md)használó ügyfélalkalmazások és szolgáltatások.
++ [Oktatóanyag: lemezkép-besorolási modell üzembe helyezése az ACI-ban](tutorial-deploy-models-with-aml.md).
+
++ [A végpontok közötti MLOps-példák tárháza](https://github.com/microsoft/MLOps)
+
++ [CI/CD/ML modellek Azure-folyamatokkal](/azure/devops/pipelines/targets/azure-machine-learning)
+
++ [Üzembe helyezett modellt](how-to-consume-web-service.md) használó ügyfelek létrehozása
+
++ [Gépi tanulás nagy léptékben](/architecture/data-guide/big-data/machine-learning-at-scale)
+
++ [Azure AI-referenciák architektúrái & ajánlott eljárások rep](https://github.com/microsoft/AI)

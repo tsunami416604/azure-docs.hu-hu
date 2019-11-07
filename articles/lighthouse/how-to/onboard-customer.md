@@ -4,15 +4,15 @@ description: Ismerje meg, hogyan végezheti el az ügyfelek bevezetését az Azu
 author: JnHs
 ms.author: jenhayes
 ms.service: lighthouse
-ms.date: 10/29/2019
+ms.date: 11/6/2019
 ms.topic: overview
 manager: carmonm
-ms.openlocfilehash: a96093c71658f53e372cbccb72b96da3ae4e593b
-ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
-ms.translationtype: HT
+ms.openlocfilehash: 259a0b1b278588ef2237622d61a89fe02e5c004c
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73615491"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73721392"
 ---
 # <a name="onboard-a-customer-to-azure-delegated-resource-management"></a>Ügyfél előkészítése az Azure által delegált erőforrás-kezeléshez
 
@@ -123,7 +123,7 @@ Az ügyfél beléptetéséhez létre kell hoznia egy [Azure Resource Manager](ht
 
 Az ügyfél előfizetésének bevezetéséhez használja a [minták](https://github.com/Azure/Azure-Lighthouse-samples/)tárházában megadott megfelelő Azure Resource Manager sablont, valamint egy megfelelő paramétereket tartalmazó fájlt, amelyet a konfigurációnak megfelelően módosítania kell, és meg kell határoznia az engedélyeket. A különálló sablonokat attól függően kell megadnia, hogy egy teljes előfizetést, egy erőforráscsoportot vagy több erőforráscsoportot kíván-e előkészíteni egy előfizetésen belül. Egy olyan sablont is biztosítunk, amely az Azure Marketplace-en közzétett, felügyelt szolgáltatási ajánlatot megvásárló ügyfelek számára is felhasználható, ha így szeretne előfizetni.
 
-|**A beléptetéshez**  |**Azure Resource Manager sablon használata**  |**A paraméter fájljának módosítása** |
+|A beléptetéshez  |Azure Resource Manager sablon használata  |A paraméter fájljának módosítása |
 |---------|---------|---------|
 |Előfizetés   |[delegatedResourceManagement.json](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/Azure-Delegated-Resource-Management/templates/delegated-resource-management/delegatedResourceManagement.json)  |[delegatedResourceManagement.parameters.json](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/Azure-Delegated-Resource-Management/templates/delegated-resource-management/delegatedResourceManagement.parameters.json)    |
 |Erőforráscsoport   |[rgDelegatedResourceManagement.json](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/Azure-Delegated-Resource-Management/templates/rg-delegated-resource-management/rgDelegatedResourceManagement.json)  |[rgDelegatedResourceManagement.parameters.json](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/Azure-Delegated-Resource-Management/templates/rg-delegated-resource-management/rgDelegatedResourceManagement.parameters.json)    |
@@ -187,15 +187,18 @@ Az alábbi példa az **delegatedResourceManagement. Parameters. JSON** fájlt mu
     }
 }
 ```
-A fenti példában szereplő utolsó engedély egy **principalId** hoz létre a felhasználói hozzáférés rendszergazdai szerepkörrel (18d7d88d-d35e-4fb5-a5c3-7773c20a72d9). A szerepkör kiosztásakor meg kell adnia a **delegatedRoleDefinitionIds** tulajdonságot, és egy vagy több beépített szerepkört. Az ezen engedélyben létrehozott felhasználó ezeket a beépített szerepköröket hozzárendelheti a [felügyelt identitásokhoz](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview). Vegye figyelembe, hogy a felhasználói hozzáférés-rendszergazdai szerepkörhöz tartozó egyéb engedélyek nem lesznek érvényesek erre a felhasználóra.
+A fenti példában szereplő utolsó engedély egy **principalId** hoz létre a felhasználói hozzáférés rendszergazdai szerepkörrel (18d7d88d-d35e-4fb5-a5c3-7773c20a72d9). A szerepkör kiosztásakor meg kell adnia a **delegatedRoleDefinitionIds** tulajdonságot, és egy vagy több beépített szerepkört. Az ebben az engedélyben létrehozott felhasználó ezeket a beépített szerepköröket a [felügyelt identitásokhoz](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)rendeli hozzá, ami szükséges a [szervizelhető házirendek telepítéséhez](deploy-policy-remediation.md). Erre a felhasználóra nem vonatkozik a felhasználói hozzáférés rendszergazdai szerepkörhöz tartozó egyéb engedélyek.
 
 ## <a name="deploy-the-azure-resource-manager-templates"></a>A Azure Resource Manager-sablonok üzembe helyezése
 
-A paraméter fájljának frissítése után az ügyfélnek az erőforrás-kezelési sablont kell központilag telepítenie az ügyfél bérlője számára előfizetési szintű telepítésként. Külön üzembe helyezésre van szükség minden olyan előfizetés esetében, amelyet be szeretne készíteni az Azure-beli delegált erőforrás-kezelésbe (vagy minden olyan előfizetéshez, amely a bevezetéshez használni kívánt erőforráscsoportokat tartalmaz).
+Miután frissítette a paramétert tartalmazó fájlt, az ügyfélnek a Azure Resource Manager sablont kell telepítenie az ügyfél bérlője számára előfizetési szintű telepítésként. Külön üzembe helyezésre van szükség minden olyan előfizetés esetében, amelyet be szeretne készíteni az Azure-beli delegált erőforrás-kezelésbe (vagy minden olyan előfizetéshez, amely a bevezetéshez használni kívánt erőforráscsoportokat tartalmaz).
+
+Mivel ez egy előfizetési szintű telepítés, nem indítható el a Azure Portalban. A központi telepítés a PowerShell vagy az Azure CLI használatával végezhető el, az alább látható módon.
 
 > [!IMPORTANT]
 > Az üzembe helyezést egy nem vendég fióknak kell végrehajtania az ügyfél bérlője számára, amely az előfizetéshez tartozó [tulajdonos beépített szerepkörrel](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#owner) rendelkezik (vagy amely tartalmazza az előkészítés alatt álló erőforráscsoportokat). Ha szeretné megtekinteni az összes olyan felhasználót, aki delegálhatja az előfizetést, az ügyfél bérlője kiválaszthatja az előfizetést a Azure Portalban, megnyithatja a **hozzáférés-vezérlés (iam)** elemet, és [megtekintheti a tulajdonosi szerepkörrel rendelkező felhasználókat](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal#view-roles-and-permissions).
 
+### <a name="powershell"></a>PowerShell
 
 ```azurepowershell-interactive
 # Log in first with Connect-AzAccount if you're not using Cloud Shell
@@ -246,6 +249,9 @@ A szolgáltató bérlője:
 1. Navigáljon a [saját ügyfelek oldalra](view-manage-customers.md).
 2. Válassza az **ügyfelek**lehetőséget.
 3. Győződjön meg arról, hogy az előfizetés (ok) a Resource Manager-sablonban megadott ajánlat nevével jelenik meg.
+
+> [!IMPORTANT]
+> Ha szeretné megtekinteni a delegált előfizetést az [ügyfeleken](view-manage-customers.md), a szolgáltató bérlője számára engedélyezni kell az [olvasó](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#reader) szerepkört (vagy egy másik beépített szerepkört is, amely olvasói hozzáférést is tartalmaz) az Azure-előfizetéshez. delegált erőforrás-kezelés.
 
 Az ügyfél bérlője:
 

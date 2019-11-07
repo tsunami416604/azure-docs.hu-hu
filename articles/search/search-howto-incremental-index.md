@@ -1,7 +1,7 @@
 ---
-title: A dúsított tartalom-alapú változások követésének növekményes indexelésének beállítása
+title: A bővített tartalom-alapú változások követésének növekményes indexelése (előzetes verzió) beállítása
 titleSuffix: Azure Cognitive Search
-description: A változások nyomon követésének engedélyezése és a dúsított tartalom állapotának megőrzése egy kognitív készségkészlet.
+description: A változások nyomon követésének engedélyezése és a dúsított tartalom állapotának megőrzése egy kognitív készségkészlet. Ez a szolgáltatás jelenleg nyilvános előzetes verzióban érhető el.
 author: vkurpad
 manager: eladz
 ms.author: vikurpad
@@ -9,24 +9,21 @@ ms.service: cognitive-search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: ac082d6ecb6624dc0d5bc0ab927ff8b91ebdabce
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 74631ee3167c65e59fbd05f53fe5327d1b532dba
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73512183"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73719939"
 ---
 # <a name="how-to-set-up-incremental-indexing-of-enriched-documents-in-azure-cognitive-search"></a>A dúsított dokumentumok növekményes indexelésének beállítása az Azure-ban Cognitive Search
+
+> [!IMPORTANT] 
+> A növekményes indexelés jelenleg nyilvános előzetes verzióban érhető el. Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). A [REST API 2019-05-06-es verziójának előzetes verziója](search-api-preview.md) biztosítja ezt a funkciót. Jelenleg nem érhető el portál vagy .NET SDK-támogatás.
 
 Ebből a cikkből megtudhatja, hogyan adhat állapotot és gyorsítótárazást az Azure Cognitive Search-bővítési folyamaton áthaladó, dúsított dokumentumokhoz, így fokozatosan indexelheti a dokumentumokat a támogatott adatforrásokból. Alapértelmezés szerint a készségkészlet állapota állapot nélküli, és az összeállítás bármely részének megváltoztatásához az indexelő teljes újrafuttatására van szükség. A növekményes indexeléssel az indexelő meghatározhatja, hogy a folyamat mely részeit módosították, a meglévő bővítéseket újra felhasználhatja a változatlan részekhez, és áttekintheti a módosításokat a módosítások végrehajtásához. A gyorsítótárazott tartalom az Azure Storage-ba kerül.
 
 Ha még nem ismeri az indexelő beállítását, kezdje az [Indexelő áttekintésével](search-indexer-overview.md) , majd folytassa a [szakértelmével](cognitive-search-working-with-skillsets.md) , hogy megismerje a dúsítási folyamatokat. A főbb fogalmakkal kapcsolatos további háttérért lásd: [növekményes indexelés](cognitive-search-incremental-indexing-conceptual.md).
-
-A növekményes indexelés a [keresési REST API-Version = 2019-05 -06-Preview](https://docs.microsoft.com/rest/api/searchservice/Indexer-operations)használatával van konfigurálva.
-
-> [!NOTE]
-> Ez a funkció még nem érhető el a portálon, és programozott módon kell használni.
->
 
 ## <a name="modify-an-existing-indexer"></a>Meglévő indexelő módosítása
 

@@ -1,22 +1,22 @@
 ---
-title: Esemény-adatok áttelepítése az SQL Data Warehouse – Azure Event Hubs |} A Microsoft Docs
-description: Ebből az oktatóanyagból megtudhatja, hogyan rögzíthet adatokat az eseményközpontból az SQL Data Warehouse-ba egy eseményrács által meghívott Azure-függvénnyel.
+title: 'Oktatóanyag: Event-adatáttelepítés SQL Data Warehouseba – Azure Event Hubs'
+description: 'Oktatóanyag: ez az oktatóanyag bemutatja, hogyan rögzíthet az Event hub adatait egy SQL-adattárházba egy Event Grid által aktivált Azure-függvény használatával.'
 services: event-hubs
 author: ShubhaVijayasarathy
 manager: ''
 ms.author: shvija
 ms.custom: seodec18
-ms.date: 12/06/2018
+ms.date: 11/05/2019
 ms.topic: tutorial
 ms.service: event-hubs
-ms.openlocfilehash: 90a17839afdddb4d6ad8abfa57963b4c76b100ed
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.openlocfilehash: 92c414afbb8121eb03353c79dfe3a51e0cfa7ec0
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65604293"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73718890"
 ---
-# <a name="migrate-captured-event-hubs-data-to-a-sql-data-warehouse-using-event-grid-and-azure-functions"></a>Rögzített az Event Hubs-adatok áttelepítése SQL Data Warehouse Event Grid és az Azure Functions használatával
+# <a name="tutorial-migrate-captured-event-hubs-data-to-a-sql-data-warehouse-using-event-grid-and-azure-functions"></a>Oktatóanyag: rögzített Event Hubs-adatSQL Data Warehousek migrálása a Event Grid és Azure Functions használatával
 
 Az Event Hubs [Capture](https://docs.microsoft.com/azure/event-hubs/event-hubs-capture-overview) a legegyszerűbb megoldás a streamelt Event Hubs-adatok Azure Blob Storage- vagy Azure Data Lake Store-fiókba történő automatikus továbbítására. Később feldolgozhatja és kézbesítheti az adatokat bármely más választott tárolási célhelyre, például az SQL Data Warehouse vagy Cosmos DB tárhelyekre. Ebben az oktatóanyagban megtudhatja, hogyan rögzíthet adatokat az eseményközpontból az SQL Data Warehouse-ba egy [eseményrács](https://docs.microsoft.com/azure/event-grid/overview) által meghívott Azure-függvénnyel.
 
@@ -39,7 +39,7 @@ Az oktatóanyag során a következő lépéseket hajtja végre:
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-- [A Visual studio 2019](https://www.visualstudio.com/vs/). Telepítés közben győződjön meg arról, hogy a következő számítási feladatokat is telepíti: .NET asztali fejlesztés, Azure-fejlesztés, ASP.NET- és webfejlesztés, Node.js-fejlesztés és Python-fejlesztés
+- [Visual studio 2019](https://www.visualstudio.com/vs/). Telepítés közben győződjön meg arról, hogy a következő számítási feladatokat is telepíti: .NET asztali fejlesztés, Azure-fejlesztés, ASP.NET- és webfejlesztés, Node.js-fejlesztés és Python-fejlesztés
 - Töltse le a [Git-mintát](https://github.com/Azure/azure-event-hubs/tree/master/samples/e2e/EventHubsCaptureEventGridDemo). A mintamegoldás az alábbi összetevőket tartalmazza:
     - *WindTurbineDataGenerator* – Egy egyszerű közzétevő, amely szélturbina-mintaadatokat küld egy olyan eseményközpontnak, amelyen a Capture engedélyezve van
     - *FunctionDWDumper* – Egy Azure-függvény, amely Event Grid-értesítést kap, ha az Azure Storage blobba egy Avro-fájlt rögzít a rendszer. Megkapja a blob URI elérési útvonalát, kiolvassa a tartalmát és közzéteszi ezt az adatot egy SQL Data Warehouse-ba.
@@ -106,7 +106,7 @@ WITH (CLUSTERED COLUMNSTORE INDEX, DISTRIBUTION = ROUND_ROBIN);
 
 ## <a name="publish-code-to-the-functions-app"></a>Kód közzététele a Functions-alkalmazásba
 
-1. Nyissa meg a megoldást *EventHubsCaptureEventGridDemo.sln* a Visual Studio 2019.
+1. Nyissa meg a *EventHubsCaptureEventGridDemo. SLN* megoldást a Visual Studio 2019-ben.
 
 1. A Megoldáskezelőben kattintson a jobb gombbal a *FunctionEGDWDumper* elemre, majd válassza a **Közzététel** lehetőséget.
 

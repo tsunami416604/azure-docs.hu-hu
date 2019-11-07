@@ -10,12 +10,12 @@ ms.subservice: anomaly-detector
 ms.topic: quickstart
 ms.date: 10/15/2019
 ms.author: aahi
-ms.openlocfilehash: 04d788160f1bdfd772f48b40b35f6db54cbf87b7
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 67d6bb0bf880de0b4bf6878128e2ed27e130b18d
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72554784"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73719003"
 ---
 # <a name="quickstart-anomaly-detector-client-library-for-net"></a>Gyors útmutató: anomália-Kiderítő ügyféloldali kódtára a .NET-hez
 
@@ -26,7 +26,7 @@ Használja a következőhöz tartozó rendellenesség-Kiderítő ügyféloldali 
 * Az idősorozat-adatkészlet összes rendellenességének észlelése batch-kérelemként
 * Az idősorozat legújabb adatpontjának anomália állapotának észlelése
 
-[Könyvtár-referenciák dokumentációja](https://docs.microsoft.com/dotnet/api/Microsoft.Azure.CognitiveServices.AnomalyDetector?view=azure-dotnet-preview)  | [Library forráskód](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/AnomalyDetector)  | [Package (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.AnomalyDetector/)  | [kód minták](https://github.com/Azure-Samples/anomalydetector)
+[Könyvtár-referenciák dokumentációja](https://docs.microsoft.com/dotnet/api/Microsoft.Azure.CognitiveServices.AnomalyDetector?view=azure-dotnet-preview) | [Library forráskód](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/AnomalyDetector) | [Package (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.AnomalyDetector/) | [kód minták](https://github.com/Azure-Samples/anomalydetector)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -41,7 +41,7 @@ Használja a következőhöz tartozó rendellenesség-Kiderítő ügyféloldali 
 
 ### <a name="create-a-new-net-core-application"></a>Új .NET Core-alkalmazás létrehozása
 
-A konzol ablakban (például cmd, PowerShell vagy bash) a DotNet `new` paranccsal hozzon létre egy új, `anomaly-detector-quickstart` nevű Console-alkalmazást. Ez a parancs egy egyszerű ""Helló világ!"alkalmazás" projektet hoz létre egyetlen C# forrásfájlban: *program.cs*. 
+A konzol ablakban (például cmd, PowerShell vagy bash) a DotNet `new` paranccsal hozzon létre egy új, `anomaly-detector-quickstart`nevű Console-alkalmazást. Ez a parancs egy egyszerű ""Helló világ!"alkalmazás" projektet hoz létre egyetlen C# forrásfájlban: *program.cs*. 
 
 ```console
 dotnet new console -n anomaly-detector-quickstart
@@ -71,7 +71,7 @@ Az alkalmazás könyvtárában telepítse a következő paranccsal a .NET-hez k�
 dotnet add package Microsoft.Azure.CognitiveServices.AnomalyDetector --version 0.8.0-preview
 ```
 
-A projekt könyvtárában nyissa meg a *program.cs* fájlt, és adja hozzá a következőt a `directives` használatával:
+A projekt könyvtárában nyissa meg a *program.cs* fájlt, és adja hozzá a következőt a `directives`használatával:
 
 [!code-csharp[using statements](~/samples-anomaly-detector/quickstarts/sdk/csharp-sdk-sample.cs?name=usingStatements)]
 
@@ -104,7 +104,7 @@ Egy új metódusban hozza létre az ügyfelet a végponttal és a kulccsal. Hozz
     
 ## <a name="load-time-series-data-from-a-file"></a>Adatsorozat-adatok betöltése fájlból
 
-A rövid útmutatóhoz tartozó példa adatainak letöltése a [githubról](https://github.com/Azure-Samples/AnomalyDetector/blob/master/example-data/request-data.csv):
+A rövid útmutatóhoz tartozó példa adatainak letöltése [a githubról](https://github.com/Azure-Samples/AnomalyDetector/blob/master/example-data/request-data.csv):
 1. A böngészőben kattintson a jobb gombbal a **RAW**elemre.
 2. Kattintson **a hivatkozás mentése másként**elemre.
 3. Mentse a fájlt egy. csv-fájlként az alkalmazás könyvtárába.
@@ -141,16 +141,10 @@ dotnet run
 
 Ha Cognitive Services-előfizetést szeretne törölni, törölheti az erőforrást vagy az erőforráscsoportot. Az erőforráscsoport törlésével az erőforráscsoporthoz társított egyéb erőforrások is törlődnek.
 
-* [Portal](../../cognitive-services-apis-create-account.md#clean-up-resources)
+* [Portál](../../cognitive-services-apis-create-account.md#clean-up-resources)
 * [Azure CLI](../../cognitive-services-apis-create-account-cli.md#clean-up-resources)
 
-A következő Cloud Shell-parancs futtatásával eltávolíthatja az erőforráscsoportot és a hozzá tartozó erőforrásokat is. Ez eltarthat néhány percig. 
-
-```azurecli-interactive
-az group delete --name example-anomaly-detector-resource-group
-```
-
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 >[Adatfolyam-rendellenességek észlelése Azure Databricks](../tutorials/anomaly-detection-streaming-databricks.md)

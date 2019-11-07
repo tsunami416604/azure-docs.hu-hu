@@ -14,19 +14,19 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 09/19/2019
 ms.author: spelluru
-ms.openlocfilehash: 10813600621293e9f559129230193f81ea0c505a
-ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
+ms.openlocfilehash: 2ac9e8b8d0635eceb7d4f85ad867b102f7d064f5
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71161533"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73585140"
 ---
 # <a name="how-to-access-a-classroom-lab-in-azure-lab-services"></a>Hozzáférés osztályterem-tesztkörnyezethez az Azure Lab Servicesben
 Ez a cikk bemutatja, hogyan regisztrálhat egy osztályterem laborba, megtekintheti az összes elérni kívánt labort, elindíthatja vagy leállíthatja a virtuális gépet a laborban, és csatlakozhat a virtuális géphez. 
 
 ## <a name="register-to-the-lab"></a>Regisztráció a laborba
 
-1. Keresse fel a **regisztrációs URL-címet**, amelyet a tanártól/oktatótól kapott. A regisztráció befejezése után nem szükséges a regisztrációs URL-cím használata. Ehelyett használja az URL-címet [https://labs.azure.com](https://labs.azure.com):. Az Internet Explorer 11 még nem támogatott. 
+1. Keresse fel a **regisztrációs URL-címet**, amelyet a tanártól/oktatótól kapott. A regisztráció befejezése után nem szükséges a regisztrációs URL-cím használata. Ehelyett használja az URL-címet: [https://labs.azure.com](https://labs.azure.com). Az Internet Explorer 11 még nem támogatott. 
 1. A regisztráció elvégzéséhez jelentkezzen be a szolgáltatásba az iskolai fiókjával. 
 
     > [!NOTE]
@@ -56,7 +56,7 @@ Ez a cikk bemutatja, hogyan regisztrálhat egy osztályterem laborba, megtekinth
 
     ![Kapcsolódás egy virtuális géphez](../media/tutorial-connect-vm-in-classroom-lab/connect-vm.png)
 2. Hajtsa végre az alábbi lépések egyikét: 
-    1. **Windows rendszerű** virtuális gépek esetén mentse az **RDP** -fájlt a merevlemezre. Nyissa meg az RDP-fájlt a virtuális géphez való kapcsolódáshoz. Használja az oktató/professzor által a gépre való bejelentkezéshez kapott felhasználónevet és **jelszót** . 
+    1. **Windows rendszerű** virtuális gépek esetén mentse az **RDP** -fájlt a merevlemezre. Nyissa meg az RDP-fájlt a virtuális géphez való kapcsolódáshoz. Használja az oktató/professzor által a gépre való bejelentkezéshez kapott **felhasználónevet** és **jelszót** . 
     3. **Linux** rendszerű virtuális gépek esetén az **SSH** vagy az **RDP** (ha engedélyezve van) használatával csatlakozhat hozzájuk. További információ: [Távoli asztali kapcsolat engedélyezése Linux rendszerű gépekhez](how-to-enable-remote-desktop-linux.md). 
     1. Ha **Mac** -t használ a tesztkörnyezet virtuális géphez való kapcsolódáshoz, kövesse a következő szakaszban található utasításokat. 
 
@@ -69,7 +69,7 @@ Ez a szakasz azt mutatja be, hogy egy tanuló hogyan tud csatlakozni a virtuáli
     ![Microsoft Távoli asztal](../media/how-to-use-classroom-lab/install-ms-remote-desktop.png)
 1. Telepítse a Microsoft Távoli asztal legújabb verzióját. 
 
-### <a name="step-2-access-the-vm-from-your-mac-using-rdp"></a>2\. lépés: A virtuális gép elérése Mac-kiszolgálóról RDP használatával
+### <a name="step-2-access-the-vm-from-your-mac-using-rdp"></a>2\. lépés: a virtuális gép elérése a Mac kiszolgálóról RDP használatával
 1. Nyissa meg a számítógépen letöltött **RDP** -fájlt, **Microsoft távoli asztal** telepítve van. Meg kell kezdenie a virtuális géphez való csatlakozást. 
 
     ![Kapcsolódás egy virtuális géphez](../media/how-to-use-classroom-lab/connect-linux-vm.png)
@@ -83,7 +83,7 @@ Ez a szakasz azt mutatja be, hogy egy tanuló hogyan tud csatlakozni a virtuáli
 
     ![VM](../media/how-to-use-classroom-lab/vm-ui.png)
 
-## <a name="progress-bar"></a>Folyamatjelző 
+## <a name="progress-bar"></a>Folyamatjelző sáv 
 A csempe folyamatjelzője megjeleníti az órák számát, amelyet a rendszer az Ön által hozzárendelt [kvóta-órák](how-to-configure-student-usage.md#set-quotas-for-users) száma alapján használ. Ez az idő az a további időpont, amelyet a tesztkörnyezet ütemezett ideje mellett is kiosztottak. Az állapotjelző sáv színe és a folyamatjelző alatti szöveg a következő esetekben változik:
 
 - Ha egy osztály folyamatban van (az osztály ütemtervén belül), a folyamatjelző sáv szürkén jelenik meg, hogy a rendszer ne használja a kvótákat. 
@@ -103,11 +103,11 @@ A csempe folyamatjelzője megjeleníti az órák számát, amelyet a rendszer az
 ## <a name="view-all-the-classroom-labs"></a>Az összes osztályterem-tesztkörnyezet megtekintése
 A laborba való regisztráció után az alábbi lépéseket követve megtekintheti az összes osztályterem Labs-t: 
 
-1. Navigáljon [https://labs.azure.com](https://labs.azure.com)a következőhöz:. Az Internet Explorer 11 még nem támogatott. 
+1. Navigáljon [https://labs.azure.com](https://labs.azure.com). Az Internet Explorer 11 még nem támogatott. 
 2. Jelentkezzen be a szolgáltatásba a laborba való regisztrációhoz használt felhasználói fiók használatával. 
 3. Győződjön meg arról, hogy az összes olyan labor megjelenik, amelyhez hozzáfér. 
 
-    ![Összes tesztkörnyezet megtekintése](../media/how-to-use-classroom-lab/all-labs.png)
+    ![Összes tesztkörnyezet megtekintése](../media/how-to-manage-classroom-labs/all-labs.png)
 
 
 ## <a name="next-steps"></a>További lépések

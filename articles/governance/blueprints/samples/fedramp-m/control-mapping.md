@@ -6,12 +6,12 @@ ms.author: dacoulte
 ms.date: 10/31/2019
 ms.topic: sample
 ms.service: blueprints
-ms.openlocfilehash: 668b2dd23ab43f0f3e438bfa3c55c9dde2db2d7a
-ms.sourcegitcommit: fa5ce8924930f56bcac17f6c2a359c1a5b9660c9
+ms.openlocfilehash: 35b2e524298b1b34bae3903c842577b1683b9a93
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73200795"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73581388"
 ---
 # <a name="control-mapping-of-the-fedramp-moderate-blueprint-sample"></a>A FedRAMP mérsékelt tervrajz-minta leképezésének vezérlése
 
@@ -281,7 +281,7 @@ Ez a terv a naplózás és az adatbiztonság Azure-erőforrásokon keresztüli n
 > [!NOTE]
 > Az adott Azure Policy-definíciók rendelkezésre állása Azure Government és más nemzeti felhőkben is változhat. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Most, hogy áttekintette a FedRAMP mérsékelt tervének vezérlési leképezését, a következő cikkekben megismerheti a terv ismertetését és a minta üzembe helyezésének módját:
 
@@ -289,7 +289,7 @@ Most, hogy áttekintette a FedRAMP mérsékelt tervének vezérlési leképezés
 > [FedRAMP mérsékelt terv – áttekintés](./index.md)
 > [FodRAMP mérsékelt terv – lépések üzembe helyezése](./deploy.md)
 
-További cikkek a tervekről és azok használatáról:
+További cikkek a tervekről és a használatukról:
 
 - Tudnivalók a [tervek életciklusáról](../../concepts/lifecycle.md).
 - A [statikus és dinamikus paraméterek](../../concepts/parameters.md) használatának elsajátítása.

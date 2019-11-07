@@ -1,6 +1,6 @@
 ---
-title: Service Bus-üzenettémakörök (Ruby) használata |} A Microsoft Docs
-description: Ismerje meg, hogyan használható a Service Bus-üzenettémák és előfizetések az Azure-ban. Ruby-alkalmazások Kódminták készültek.
+title: 'Gyors útmutató: Service Bus témák használata (Ruby)'
+description: 'Gyors útmutató: Service Bus témakörök és előfizetések használata az Azure-ban. A kód minták a Ruby-alkalmazásokhoz íródnak.'
 services: service-bus-messaging
 documentationcenter: ruby
 author: axisc
@@ -11,40 +11,40 @@ ms.service: service-bus-messaging
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: ruby
-ms.topic: article
-ms.date: 04/15/2019
+ms.topic: quickstart
+ms.date: 11/05/2019
 ms.author: aschhab
-ms.openlocfilehash: b2a05a4695ee80873a2d7464c0a1cf4d46ed30f5
-ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
+ms.openlocfilehash: b5401eae844ed2113a9fbc07c8b3ad8601709d43
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67543653"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73718927"
 ---
-# <a name="how-to-use-service-bus-topics-and-subscriptions-with-ruby"></a>Service Bus-üzenettémák és előfizetések használata a Ruby használatával
+# <a name="quickstart-how-to-use-service-bus-topics-and-subscriptions-with-ruby"></a>Gyors útmutató: Service Bus témakörök és előfizetések használata a Ruby használatával
  
 [!INCLUDE [service-bus-selector-topics](../../includes/service-bus-selector-topics.md)]
 
-Ez a cikk ismerteti, hogyan használható a Service Bus-üzenettémák és előfizetések a Ruby-alkalmazásokat. Az ismertetett forgatókönyvek a következők:
+Ez a cikk azt ismerteti, hogyan használhatók a Ruby-alkalmazásokból származó Service Bus témakörök és előfizetések. A tárgyalt forgatókönyvek a következők:
 
-- Üzenettémák és előfizetések létrehozása 
-- Előfizetés-szűrők létrehozása 
-- Üzenetek küldése egy üzenettémakörbe 
+- Témakörök és előfizetések létrehozása 
+- Előfizetési szűrők létrehozása 
+- Üzenetek küldése egy témakörnek 
 - Üzenetek fogadása egy előfizetésből
-- Üzenettémák és előfizetések törlése
+- Témakörök és előfizetések törlése
 
 
 ## <a name="prerequisites"></a>Előfeltételek
-1. Azure-előfizetés. Az oktatóanyag elvégzéséhez egy Azure-fiókra lesz szüksége. Aktiválhatja a [Visual Studio vagy az MSDN-előfizetői előnyeit](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A85619ABF) vagy regisztrálhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF).
-2. Kövesse lépéseket a [a rövid útmutató: Az Azure portal használatával hozzon létre egy Service Bus-témakörbe, és a témakörbe az előfizetések](service-bus-quickstart-topics-subscriptions-portal.md) hozhat létre egy Service Bus **névtér** , és a **kapcsolati karakterlánc**. 
+1. Azure-előfizetés. Az oktatóanyag elvégzéséhez egy Azure-fiókra lesz szüksége. Aktiválhatja [Visual Studio-vagy MSDN-előfizetői előnyeit](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A85619ABF) , vagy regisztrálhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF).
+2. Kövesse a rövid útmutató lépéseit [: a Azure Portal használatával hozzon létre egy Service Bus témakört és előfizetéseket a témakörhöz](service-bus-quickstart-topics-subscriptions-portal.md) , és hozzon létre egy Service Bus **névteret** , és szerezze be a **kapcsolódási karakterláncot**. 
 
     > [!NOTE]
-    > Létrehozhat egy **témakör** és a egy **előfizetés** használatával a témakörbe **Ruby** ebben a rövid útmutatóban. 
+    > Ebben a rövid útmutatóban a **Ruby** használatával hozzon létre egy **témakört** és egy **előfizetést** a témakörhöz. 
 
 [!INCLUDE [service-bus-ruby-setup](../../includes/service-bus-ruby-setup.md)]
 
 ## <a name="create-a-topic"></a>Üzenettémakör létrehozása
-A **Azure::ServiceBusService** objektum lehetővé teszi, hogy a témakörök. Az alábbi kód létrehoz egy **Azure::ServiceBusService** objektum. A témakör létrehozásához használja a `create_topic()` metódust. Az alábbi példa létrehoz egy üzenettémakört vagy kiírja az esetleges hibákat.
+Az **Azure:: ServiceBusService** objektum lehetővé teszi a témákkal való munkát. A következő kód egy **Azure:: ServiceBusService** objektumot hoz létre. Témakör létrehozásához használja a `create_topic()` metódust. A következő példa létrehoz egy témakört, vagy kinyomtatja az esetleges hibákat.
 
 ```ruby
 azure_service_bus_service = Azure::ServiceBus::ServiceBusService.new(sb_host, { signer: signer})
@@ -55,7 +55,7 @@ rescue
 end
 ```
 
-Is átadhat egy **Azure::ServiceBus::Topic** további beállítások, például a valós idejű vagy maximális Várólistaméret üzenet ideje témakör alapbeállítások felülírását is lehetővé tevő objektum. Az alábbi példa bemutatja, hogy a várólista maximális mérete 5 GB-os és az idő élettartama 1 percre állítja:
+Az **Azure:: ServiceBus:: topic** objektumot további beállításokkal is átadhatja, amelyek lehetővé teszik az alapértelmezett témakör-beállítások, például az üzenet élettartamának vagy a várólista maximális méretének felülbírálását. Az alábbi példa azt mutatja be, hogy a várólista maximális mérete 5 GB és idő 1 percre van állítva:
 
 ```ruby
 topic = Azure::ServiceBus::Topic.new("test-topic")
@@ -66,29 +66,29 @@ topic = azure_service_bus_service.create_topic(topic)
 ```
 
 ## <a name="create-subscriptions"></a>Előfizetések létrehozása
-Üzenettémakör-előfizetéseket is jönnek létre az a **Azure::ServiceBusService** objektum. Előfizetés neve, és rendelkezhetnek olyan szűrőkkel, amelyek az előfizetés virtuális üzenetsorának üzenetet korlátoz.
+A témakör-előfizetések az **Azure:: ServiceBusService** objektummal is létrejönnek. Az előfizetések neve és egy opcionális szűrő, amely korlátozza az előfizetés virtuális várólistára kézbesített üzenetek készletét.
 
-Alapértelmezés szerint az előfizetések állandó értékek. A futtatásuk továbbra is létezik, vagy csak, vagy a témakör társítva, a rendszer törli. Ha az alkalmazás-előfizetés létrehozása logikát tartalmaz, azt kell először ellenőrizze, hogy az előfizetés már a getSubscription módszer használatával.
+Alapértelmezés szerint az előfizetések állandóak. A rendszer addig továbbra is fennáll, amíg meg nem történik, vagy a hozzájuk társított témakör törölve lett. Ha az alkalmazás logikát tartalmaz egy előfizetés létrehozásához, először ellenőrizze, hogy az előfizetés már létezik-e a getSubscription metódussal.
 
-Használhat az előfizetéseket, azzal automatikusan törli a [AutoDeleteOnIdle tulajdonság](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.subscriptiondescription.autodeleteonidle).
+Az előfizetéseket a [AutoDeleteOnIdle tulajdonság](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.subscriptiondescription.autodeleteonidle)beállításával automatikusan törölheti.
 
 ### <a name="create-a-subscription-with-the-default-matchall-filter"></a>Előfizetés létrehozása az alapértelmezett (MatchAll) szűrővel
-Ha nincs meghatározva szűrő egy új előfizetés létrehozásakor, a **MatchAll** szűrő (alapértelmezett) használatos. Ha a **MatchAll** szűrőt használ, a témakörbe közzétett összes üzenetet az előfizetés virtuális üzenetsorának vannak elhelyezve. Az alábbi példa egy "minden-üzenetek" nevű előfizetést hoz létre, és használja az alapértelmezett **MatchAll** szűrőt.
+Ha nincs megadva szűrő az új előfizetés létrehozásakor, a rendszer a **MatchAll** szűrőt (alapértelmezett) használja. A **MatchAll** szűrő használatakor a témakörben közzétett összes üzenet az előfizetés virtuális várólistáján lesz elhelyezve. A következő példa létrehoz egy "All-messages" nevű előfizetést, és az alapértelmezett **MatchAll** szűrőt használja.
 
 ```ruby
 subscription = azure_service_bus_service.create_subscription("test-topic", "all-messages")
 ```
 
 ### <a name="create-subscriptions-with-filters"></a>Előfizetések létrehozása szűrőkkel
-Is meghatározhat szűrőket, amelyek lehetővé teszik annak meghatározását, amely egy témakörbe küldött üzenetek egy adott előfizetésen belül kell megjeleníteni.
+Meghatározhatja azokat a szűrőket is, amelyek segítségével megadhatja, hogy egy adott előfizetésen belül mely üzenetek jelenjenek meg a témakörben.
 
-A legrugalmasabb típusú szűrő előfizetések által támogatott a **Azure::ServiceBus::SqlFilter**, amely megvalósítja az SQL92 egy részhalmazát. Az SQL-szűrők az üzenettémába közzétett üzenetek tulajdonságain működnek. Az SQL-szűrőkkel használható kifejezésekkel kapcsolatos további részletekért tekintse át a [SqlFilter](service-bus-messaging-sql-filter.md) szintaxist.
+Az előfizetések által támogatott legrugalmasabb típusú szűrő az **Azure:: ServiceBus:: SqlFilter**, amely a SQL92 egy részhalmazát valósítja meg. Az SQL-szűrők az üzenettémába közzétett üzenetek tulajdonságain működnek. Az SQL-szűrőkkel használható kifejezésekkel kapcsolatos további információkért tekintse át a [SqlFilter](service-bus-messaging-sql-filter.md) szintaxisát.
 
-Az előfizetéshez szűrők is hozzáadhat a `create_rule()` módszere a **Azure::ServiceBusService** objektum. Ez a módszer lehetővé teszi új szűrőket hozzáadni egy meglévő előfizetéshez.
+Szűrőket adhat hozzá az előfizetésekhez az **Azure:: ServiceBusService** objektum `create_rule()` metódusának használatával. Ez a módszer lehetővé teszi új szűrők hozzáadását egy meglévő előfizetéshez.
 
-Mivel minden új előfizetés automatikusan alkalmazza az alapértelmezett szűrő, távolítsa el az alapértelmezett szűrő vagy a **MatchAll** bármely más szűrők, megadhatja azt felülírja. Eltávolíthatja az alapértelmezett szabály használatával a `delete_rule()` metódust a **Azure::ServiceBusService** objektum.
+Mivel az alapértelmezett szűrőt a rendszer automatikusan alkalmazza az összes új előfizetésre, először el kell távolítania az alapértelmezett szűrőt, vagy a **MatchAll** felülbírálja az esetlegesen megadható egyéb szűrőket. Az alapértelmezett szabályt az **Azure:: ServiceBusService** objektum `delete_rule()` metódusának használatával távolíthatja el.
 
-A következő példában létrehozunk egy "nagy-üzenetek" nevű előfizetést egy **Azure::ServiceBus::SqlFilter** , amely csak választja ki, amelyek egyéni üzenetek `message_number` 3-nál nagyobb tulajdonság:
+Az alábbi példa egy "magas szintű üzenet" nevű előfizetést hoz létre egy **Azure:: ServiceBus:: SqlFilter** , amely csak olyan üzeneteket jelöl ki, amelyeken a 3 értéknél nagyobb egyéni `message_number` tulajdonság szerepel:
 
 ```ruby
 subscription = azure_service_bus_service.create_subscription("test-topic", "high-messages")
@@ -102,7 +102,7 @@ rule.filter = Azure::ServiceBus::SqlFilter.new({
 rule = azure_service_bus_service.create_rule(rule)
 ```
 
-Hasonlóképpen, az alábbi példa egy nevű előfizetést hoz létre `low-messages` az egy **Azure::ServiceBus::SqlFilter** , amely csak rendelkező üzeneteket választja ki egy `message_number` tulajdonság kisebb vagy egyenlő, mint 3:
+Hasonlóképpen, a következő példában létrehozunk egy `low-messages` nevű előfizetést egy **Azure:: ServiceBus:: SqlFilter** , amely csak olyan üzeneteket jelöl ki, amelyek `message_number` tulajdonsága kisebb vagy egyenlő, mint 3:
 
 ```ruby
 subscription = azure_service_bus_service.create_subscription("test-topic", "low-messages")
@@ -116,12 +116,12 @@ rule.filter = Azure::ServiceBus::SqlFilter.new({
 rule = azure_service_bus_service.create_rule(rule)
 ```
 
-Ha egy már üzenettel `test-topic`, akkor mindig lehet kézbesíti az üzenetet az előfizetett a `all-messages` témakör-előfizetés, és szelektív módon kézbesíti a `high-messages` és `low-messages` üzenettémakör-előfizető (attól függően esetén a tartalmukat).
+Ha a rendszer elküld egy üzenetet a `test-topic`nak, a rendszer mindig kézbesíti a `all-messages` témakör-előfizetésre előfizetett fogadóknak, és szelektíven kézbesíti azokat a fogadóknak, akik előfizetettek az `high-messages` és `low-messages` témakör-előfizetésekre (az üzenettől függően). tartalom).
 
 ## <a name="send-messages-to-a-topic"></a>Üzenetek küldése egy üzenettémakörbe
-Egy üzenetet küld egy Service Bus-témakörbe, az alkalmazás használatához a `send_topic_message()` metódust a **Azure::ServiceBusService** objektum. Service Bus-témakörökbe küldött üzenetek olyan példányai a **Azure::ServiceBus::BrokeredMessage** objektumokat. **Azure::ServiceBus::BrokeredMessage** objektumok rendelkeznek egy szabványos tulajdonságkészlettel (például `label` és `time_to_live`), egyéni alkalmazásspecifikus tulajdonságokat használt, valamint egy karakterláncadatokat törzse. Az alkalmazás beállíthatja az üzenet törzsét egy karakterláncértéket történő átadásával az `send_topic_message()` módszerrel és bármilyen szükséges alapvető tulajdonságainak alapértelmezett értékek szerint fel van töltve.
+Ha üzenetet szeretne küldeni egy Service Bus témakörnek, az alkalmazásnak az `send_topic_message()` metódust kell használnia az **Azure:: ServiceBusService** objektumon. A Service Bus témakörökbe küldött üzenetek az **Azure:: ServiceBus:: BrokeredMessage** objektumok példányai. **Azure:: ServiceBus:: a BrokeredMessage** objektumok szabványos tulajdonságokkal rendelkeznek (például `label` és `time_to_live`), az egyéni alkalmazásspecifikus tulajdonságok tárolására szolgáló szótár, valamint egy karakterlánc-adattörzs. Egy alkalmazás beállíthatja az üzenet törzsét úgy, hogy egy karakterláncot továbbít a `send_topic_message()` metódusnak, és a szükséges standard tulajdonságokat az alapértelmezett értékek töltik fel.
 
-Az alábbi példa bemutatja, hogyan küldhető öt tesztüzenet az `test-topic`. A `message_number` egyéni tulajdonság értékének egyes üzenetek függ attól, a ciklus ismétléseinek (azt határozza meg, hogy melyik előfizetéssel kap,):
+Az alábbi példa bemutatja, hogyan küldhet öt tesztüzenet `test-topic`ba. Az egyes üzenetek `message_number` egyéni tulajdonságának értéke a hurok iterációjában változik (ez határozza meg, hogy melyik előfizetés kapja meg):
 
 ```ruby
 5.times do |i|
@@ -134,13 +134,13 @@ end
 A Service Bus-üzenettémakörök a [Standard csomagban](service-bus-premium-messaging.md) legfeljebb 256 KB, a [Prémium csomagban](service-bus-premium-messaging.md) legfeljebb 1 MB méretű üzeneteket támogatnak. A szabványos és az egyéni alkalmazástulajdonságokat tartalmazó fejléc mérete legfeljebb 64 KB lehet. A témakörökben tárolt üzenetek száma korlátlan, a témakörök által tárolt üzenetek teljes mérete azonban korlátozva van. A témakör ezen méretét a létrehozáskor kell meghatározni, és a felső korlátja 5 GB.
 
 ## <a name="receive-messages-from-a-subscription"></a>Üzenetek fogadása egy előfizetésből
-Üzenetek kapott egy előfizetés az a `receive_subscription_message()` metódust a **Azure::ServiceBusService** objektum. Alapértelmezés szerint az üzenetek read(peak) és anélkül, hogy törölné az előfizetés zárolva van. Olvassa el, és törli az üzenetet az előfizetésből beállításával a `peek_lock` beállítást **hamis**.
+Az üzenetek egy előfizetésből érkeznek az **Azure:: ServiceBusService** objektum `receive_subscription_message()` metódusának használatával. Alapértelmezés szerint az üzenetek olvasási (csúcs) és zárolva vannak anélkül, hogy törölné az előfizetésből. Az előfizetésből elolvashatja és törölheti az üzenetet, ha a `peek_lock` beállítást **hamis**értékre állítja.
 
-Az alapértelmezett viselkedés lehetővé teszi az olvasási és a egy kétszakaszos művelet, amely is lehetővé teszi alkalmazások, amelyek működését zavarják a hiányzó üzenetek támogatása törlése. Amikor a Service Bus fogad egy kérést, megkeresi és zárolja a következő feldolgozandó üzenetet, hogy más fogyasztók ne tudják fogadni, majd visszaadja az alkalmazásnak. A fogadási folyamat második fázisa meghívásával befejezése után az alkalmazás befejezi az üzenet feldolgozását (vagy megbízható módon tárolja a jövőbeli feldolgozáshoz), `delete_subscription_message()` metódust, és a paramétert a törlendő üzenet megadása. A `delete_subscription_message()` módszer jelöli meg az üzenetet, és távolítsa el az előfizetésből.
+Az alapértelmezett viselkedés lehetővé teszi a kétfázisú művelet olvasását és törlését, ami lehetővé teszi az olyan alkalmazások támogatását, amelyek nem tudják elviselni a hiányzó üzeneteket. Amikor a Service Bus fogad egy kérést, megkeresi és zárolja a következő feldolgozandó üzenetet, hogy más fogyasztók ne tudják fogadni, majd visszaadja az alkalmazásnak. Miután az alkalmazás befejezte az üzenet feldolgozását (vagy megbízhatóként tárolja azt a későbbi feldolgozáshoz), az `delete_subscription_message()` metódus meghívásával, valamint az üzenet paraméterként való törlésével elvégezte a fogadási folyamat második szakaszát. A `delete_subscription_message()` metódus az üzenetet felhasználja, és eltávolítja az előfizetésből.
 
-Ha a `:peek_lock` paraméter értéke **hamis**olvasása és törlése az üzenet válik, a legegyszerűbb modell, és leginkább forgatókönyvek, amelyben az alkalmazás működését nem dolgoz fel üzenetet, ha hiba történik. Képzeljen el egy forgatókönyvet, amelyben a fogyasztó a fogadási kérést, és majd összeomlik a feldolgozása előtt. Mivel a Service Bus az üzenetet, van megjelölve, majd az alkalmazás újraindításakor és megkezdésekor üzeneteket, kimaradt az összeomlás előtt feldolgozott üzenetet.
+Ha a `:peek_lock` paraméter értéke false ( **hamis**), az olvasás és az üzenet törlése a legegyszerűbb modell lesz, és a legjobban olyan helyzetekben működik, amikor egy alkalmazás meghibásodás esetén nem dolgozza fel az üzenetet. Vegyünk egy olyan forgatókönyvet, amelyben a fogyasztó kiadja a fogadási kérelmet, majd összeomlik a feldolgozás előtt. Mivel Service Bus az üzenetet felhasználva jelölte meg, akkor az alkalmazás újraindításakor és az üzenetek újbóli használatának megkezdése után a rendszer kihagyta az összeomlás előtt felhasznált üzenetet.
 
-A következő példa bemutatja, hogyan lehet üzeneteket fogadni, és a feldolgozott használatával `receive_subscription_message()`. A példában először kap, és törli az üzenetet a `low-messages` előfizetés használatával `:peek_lock` beállítása **hamis**, és a egy másik üzenetet kap a `high-messages` majd törli az üzenetet használatával`delete_subscription_message()`:
+Az alábbi példa azt mutatja be, hogyan fogadhatók el és dolgozhatók fel az üzenetek a `receive_subscription_message()`használatával. A példa először fogad és töröl egy üzenetet a `low-messages`-előfizetésből `:peek_lock` beállítás **hamis**értékre állításával, majd egy másik üzenetet kap a `high-messages`, majd törli az üzenetet a `delete_subscription_message()`használatával:
 
 ```ruby
 message = azure_service_bus_service.receive_subscription_message(
@@ -151,33 +151,33 @@ azure_service_bus_service.delete_subscription_message(message)
 ```
 
 ## <a name="how-to-handle-application-crashes-and-unreadable-messages"></a>Az alkalmazás-összeomlások és nem olvasható üzenetek kezelése
-A Service Bus olyan funkciókat biztosít, amelyekkel zökkenőmentesen helyreállíthatja az alkalmazás hibáit vagy az üzenetek feldolgozásának nehézségeit. Ha egy fogadó alkalmazás valamilyen okból az üzenet feldolgozása nem sikerült, akkor meghívhatja az `unlock_subscription_message()` metódust a **Azure::ServiceBusService** objektum. Hatására a Service Bus feloldja az üzenet az előfizetésen belüli zárolását, és tegye elérhetővé számára az azonos fogyasztó alkalmazás általi vagy egy másik fogyasztó alkalmazás általi ismételt fogadását.
+A Service Bus olyan funkciókat biztosít, amelyekkel zökkenőmentesen helyreállíthatja az alkalmazás hibáit vagy az üzenetek feldolgozásának nehézségeit. Ha egy fogadó alkalmazás valamilyen okból nem tudja feldolgozni az üzenetet, akkor a `unlock_subscription_message()` metódust hívhatja az **Azure:: ServiceBusService** objektumon. Ennek hatására Service Bus az üzenet zárolásának feloldására az előfizetésen belül, és elérhetővé teheti, hogy ugyanazt a fogyasztó vagy egy másik alkalmazás használja.
 
-Emellett van egy előfizetésen belül zárolva üzenethez társított időtúllépés, és az alkalmazás nem tudja feldolgozni az üzenetet a zárolási előtt időkorlát lejárta (például, ha az alkalmazás összeomlik), akkor a Service Bus automatikusan feloldja az üzenet és tegye elérhetővé számára az újbóli fogadását.
+Az előfizetésen belül zárolt üzenethez is tartozik időtúllépés, és ha az alkalmazás nem tudja feldolgozni az üzenetet a zárolási időkorlát lejárta előtt (például ha az alkalmazás összeomlik), akkor Service Bus automatikusan feloldja az üzenet zárolását, és elérhetővé teheti az újbóli fogadását.
 
-Abban az esetben, ha az alkalmazás összeomlik, mielőtt azonban az üzenet feldolgozása után a `delete_subscription_message()` módszert hívja meg, akkor az üzenet újbóli kézbesítése az alkalmazáshoz, amikor újraindul. Ezt gyakran nevezik *feldolgozása során legalább egyszer*; azaz minden üzenetet legalább egyszer dolgozza fel, de bizonyos helyzetekben előfordulhat ugyanazon üzenet előfordulhat, hogy újbóli kézbesítése. Ha a forgatókönyvben nem lehetségesek a duplikált üzenetek, akkor az alkalmazásfejlesztőnek további logikát kell az alkalmazásba építenie az üzenetek ismételt kézbesítésének kezeléséhez. A logikai gyakran érhető el, használja a `message_id` tulajdonság az üzenet, amely állandó marad a kézbesítési kísérletek során.
+Abban az esetben, ha az alkalmazás az üzenet feldolgozását követően összeomlik, de a `delete_subscription_message()` metódus meghívása előtt, akkor a rendszer az üzenetet az újraindításkor újra továbbítja az alkalmazásnak. Általában legalább egyszer kell meghívni *a feldolgozásra*; Ez azt eredményezi, hogy minden üzenet legalább egyszer fel van dolgozva, de bizonyos helyzetekben előfordulhat, hogy az üzenet újbóli kézbesítésre kerül. Ha a forgatókönyvben nem lehetségesek a duplikált üzenetek, akkor az alkalmazásfejlesztőnek további logikát kell az alkalmazásba építenie az üzenetek ismételt kézbesítésének kezeléséhez. Ez a logika gyakran az üzenet `message_id` tulajdonságával érhető el, amely állandó marad a kézbesítési kísérletek között.
 
 ## <a name="delete-topics-and-subscriptions"></a>Témakörök és előfizetések törlése
-Üzenettémák és előfizetések állandóak, kivéve, ha a [AutoDeleteOnIdle tulajdonság](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.subscriptiondescription.autodeleteonidle) van beállítva. Ezek lehetnek keresztül törölve a [az Azure portal][Azure portal] vagy programozott módon. A következő példa bemutatja, hogyan lehet törölni a témakör nevű `test-topic`.
+A témakörök és az előfizetések állandóak, kivéve, ha a [AutoDeleteOnIdle tulajdonság](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.subscriptiondescription.autodeleteonidle) be van állítva. A [Azure Portal][Azure portal] vagy programozott módon törölhetők. Az alábbi példa bemutatja, hogyan törölheti `test-topic`nevű témakört.
 
 ```ruby
 azure_service_bus_service.delete_topic("test-topic")
 ```
 
-Egy témakör törlése az adott témakörre regisztrált összes előfizetést is törli. Az előfizetések független módon is törölhetők. A következő kód bemutatja, hogyan lehet törölni az előfizetés nevű `high-messages` származó a `test-topic` témakör:
+Egy témakör törlése az adott témakörre regisztrált összes előfizetést is törli. Az előfizetések független módon is törölhetők. A következő kód bemutatja, hogyan törölheti `high-messages` nevű előfizetést a `test-topic` témakörből:
 
 ```ruby
 azure_service_bus_service.delete_subscription("test-topic", "high-messages")
 ```
 
 > [!NOTE]
-> A Service Bus-erőforrások is kezelhetők [Service Bus Explorerrel](https://github.com/paolosalvatori/ServiceBusExplorer/). A Service Bus Explorer lehetővé teszi, hogy a felhasználók csatlakozni a Service Bus-névtér és üzenetküldési entitások felügyelete egyszerű módon. Az eszköz például importálás/exportálás funkció vagy tesztelhetik, témakör, üzenetsorok, előfizetések, relay-szolgáltatások, a notification hubs és események hubok speciális szolgáltatásokat biztosítja. 
+> [Service Bus Explorerrel](https://github.com/paolosalvatori/ServiceBusExplorer/)kezelheti Service Bus erőforrásait. A Service Bus Explorer lehetővé teszi a felhasználók számára, hogy egy Service Bus névtérhez kapcsolódjanak, és egyszerű módon felügyelhetik az üzenetkezelési entitásokat. Az eszköz olyan speciális funkciókat biztosít, mint az importálási/exportálási funkció, illetve a témakör, a várólisták, az előfizetések, a Relay-szolgáltatások, az értesítési központok és az események hubok. 
 
 ## <a name="next-steps"></a>További lépések
-Most, hogy megismerte a Service Bus-üzenettémakörök alapjait, kövesse az alábbi hivatkozások további.
+Most, hogy megismerte Service Bus témakörök alapjait, kövesse az alábbi hivatkozásokat további információért.
 
-* Lásd: [üzenetsorok, témakörök és előfizetések](service-bus-queues-topics-subscriptions.md).
+* Lásd: [várólisták, témakörök és előfizetések](service-bus-queues-topics-subscriptions.md).
 * Az [SqlFilter](/dotnet/api/microsoft.servicebus.messaging.sqlfilter) API-referenciája.
-* Látogasson el a [Rubyhoz készült Azure SDK-t](https://github.com/Azure/azure-sdk-for-ruby) tárházban a Githubon.
+* Látogasson el az [Azure SDK for Ruby](https://github.com/Azure/azure-sdk-for-ruby) adattárára a githubon.
 
 [Azure portal]: https://portal.azure.com

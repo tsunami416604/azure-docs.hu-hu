@@ -1,5 +1,5 @@
 ---
-title: PowerShell-példaszkript Azure SQL-adatbázis új kiszolgálóra való másolásához | Microsoft Docs
+title: PowerShell-példa – másolás – Azure SQL Database – új kiszolgáló
 description: Azure PowerShell-példaszkript – Egy Azure SQL-adatbázis másolása új kiszolgálóra
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 03/12/2019
-ms.openlocfilehash: dad2364e64d9a30c5cc4f8af11146ad21ec71a2d
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: adb832f9f5fb44c5fa4216cb50862d8fc6e48207
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68570016"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73691722"
 ---
 # <a name="use-powershell-to-copy-a-sql-database-to-a-new-server"></a>A PowerShell használata SQL-adatbázis új kiszolgálóra való másolásához
 
@@ -48,9 +48,9 @@ A szkript a következő parancsokat használja. A táblázatban lévő összes p
 | Parancs | Megjegyzések |
 |---|---|
 | [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | Létrehoz egy erőforráscsoportot, amely az összes erőforrást tárolja. |
-| [New-AzSqlServer](/powershell/module/az.sql/new-azsqlserver) | Létrehoz egy SQL Database kiszolgálót, amely egyetlen adatbázist vagy rugalmas készletet üzemeltet. |
-| [New-AzSqlDatabase](/powershell/module/az.sql/new-azsqldatabase) | Egyetlen adatbázist vagy rugalmas készletet hoz létre. |
-| [New-AzSqlDatabaseCopy](/powershell/module/az.sql/new-azsqldatabasecopy) | Másolatot készít egy adatbázisról, amely az aktuális időpontban készített pillanatképet használja. |
+| [Új – AzSqlServer](/powershell/module/az.sql/new-azsqlserver) | Létrehoz egy SQL Database kiszolgálót, amely egyetlen adatbázist vagy rugalmas készletet üzemeltet. |
+| [Új – AzSqlDatabase](/powershell/module/az.sql/new-azsqldatabase) | Egyetlen adatbázist vagy rugalmas készletet hoz létre. |
+| [Új – AzSqlDatabaseCopy](/powershell/module/az.sql/new-azsqldatabasecopy) | Másolatot készít egy adatbázisról, amely az aktuális időpontban készített pillanatképet használja. |
 | [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | Töröl egy erőforráscsoportot az összes beágyazott erőforrással együtt. |
 |||
 

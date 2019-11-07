@@ -1,6 +1,6 @@
 ---
 title: Oktatóanyag – gyorsítótárak konfigurálása az Azure cache-ben a Redis-hez a Ansible használatával
-description: Ismerje meg, hogyan használhatja a Ansible a Redis Azure cache létrehozására, méretezésére és újraindítására
+description: Ismerje meg, hogyan használhatja a Ansible a Redis Azure cache-hez készült tűzfalszabály létrehozására, méretezésére, újraindítására és hozzáadására
 keywords: Ansible, Azure, devops, bash, ötletekbõl, cache, Redis
 ms.topic: tutorial
 ms.service: ansible
@@ -8,12 +8,12 @@ author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.date: 04/30/2019
-ms.openlocfilehash: 92592dffb3a9094ae74328e8819cafc9469c2ac7
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: 95b42bc9539c36a533eb528c3c26ade89e99290b
+ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72241789"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73614360"
 ---
 # <a name="tutorial-configure-caches-in-azure-cache-for-redis-using-ansible"></a>Oktatóanyag: gyorsítótárak konfigurálása az Azure cache-ben a Redis-hez a Ansible használatával
 
@@ -161,7 +161,7 @@ A következő kód törli a gyorsítótárat:
 ## <a name="get-the-sample-playbook"></a>A minta forgatókönyvének beolvasása
 
 A teljes példa a következő két módon szerezhető be:
-- [Töltse le a](https://github.com/Azure-Samples/ansible-playbooks/blob/master/rediscache.yml) forgatókönyvet, és mentse a `rediscache.yml` értékre.
+- [Töltse le a](https://github.com/Azure-Samples/ansible-playbooks/blob/master/rediscache.yml) forgatókönyvet, és mentse a `rediscache.yml`ba.
 - Hozzon létre egy `rediscache.yml` nevű új fájlt, és másolja bele a következő tartalomba:
 
 ```yml
@@ -242,7 +242,7 @@ A teljes példa a következő két módon szerezhető be:
 
 Ebben a szakaszban a forgatókönyv futtatásával tesztelheti a cikkben látható különféle funkciókat.
 
-A `vars` szakaszban cserélje le az `{{ resource_group_name }}` helyőrzőt az erőforráscsoport nevére.
+A `vars` szakaszban cserélje le a `{{ resource_group_name }}` helyőrzőt az erőforráscsoport nevére.
 
 Futtassa a forgatókönyvet a `ansible-playbook` parancs használatával:
 
@@ -328,7 +328,7 @@ Tuesday 12 March 2019  16:44:14 +0800 (0:00:06.217)       0:23:08.626
 
 Ha már nincs rá szükség, törölje a cikkben létrehozott erőforrásokat. 
 
-Mentse a következő kódot `cleanup.yml`-ként:
+Mentse a következő kódot `cleanup.yml`ként:
 
 ```yml
 - hosts: localhost
@@ -341,7 +341,7 @@ Mentse a következő kódot `cleanup.yml`-ként:
         state: absent
 ```
 
-A `vars` szakaszban cserélje le az `{{ resource_group_name }}` helyőrzőt az erőforráscsoport nevére.
+A `vars` szakaszban cserélje le a `{{ resource_group_name }}` helyőrzőt az erőforráscsoport nevére.
 
 Futtassa a forgatókönyvet a `ansible-playbook` parancs használatával:
 
@@ -349,7 +349,7 @@ Futtassa a forgatókönyvet a `ansible-playbook` parancs használatával:
 ansible-playbook cleanup.yml
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"] 
 > [Ansible az Azure-on](https://docs.microsoft.com/azure/ansible/)

@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: tutorial
 ms.date: 11/04/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 3e8f9f6f839f4effa039335e6326c163b18d3dcc
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: HT
+ms.openlocfilehash: d80d762338744c0ca783d1768bacb8443dbc5020
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73519344"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73606206"
 ---
 # <a name="optimize-throughput-when-bulk-importing-data-to-azure-cosmos-db-sql-api-account"></a>Adatátviteli sebesség optimalizálása az adatok Azure Cosmos DB SQL API-fiókba való tömeges importálásakor
 
@@ -81,7 +81,7 @@ Miközben továbbra is az alkalmazás könyvtárában található, telepítse a 
 
 A minta alkalmazásnak hitelesítenie kell magát az Azure Cosmos-fiókban. A hitelesítéshez át kell adni az Azure Cosmos-fiók hitelesítő adatait az alkalmazásnak. Az Azure Cosmos-fiók hitelesítő adatait a következő lépésekkel szerezheti be:
 
-1.  Bejelentkezés az [Azure Portalra](https://portal.azure.com/).
+1.  Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
 1.  Navigáljon az Azure Cosmos-fiókjához.
 1.  Nyissa meg a **kulcsok** ablaktáblát, és másolja a fiókjának **URI-JÁT** és **elsődleges kulcsát** .
 
@@ -95,6 +95,14 @@ Kezdjük azzal, hogy felülírja az alapértelmezett `Main` metódust, és defin
 
 
    ```csharp
+   using System;
+   using System.Collections.Generic;
+   using System.Diagnostics;
+   using System.IO;
+   using System.Text.Json;
+   using System.Threading.Tasks;
+   using Microsoft.Azure.Cosmos;
+
    public class Program
    {
         private const string EndpointUrl = "https://<your-account>.documents.azure.com:443/";

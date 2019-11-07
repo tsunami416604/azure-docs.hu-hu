@@ -9,52 +9,50 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 11/04/2019
-ms.openlocfilehash: 69fba508eac4b778dcd72371fd1471625ecb8c1a
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: b5fa1557999ae851bccafbf8ee7c41f0b3614614
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73501602"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73715913"
 ---
 # <a name="tutorial-deploy-a-machine-learning-model-with-the-designer-preview"></a>Oktatóanyag: gépi tanulási modell üzembe helyezése a Designerben (előzetes verzió)
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-enterprise-sku.md)]
 
-Annak érdekében, hogy az [oktatóanyag első részében](tutorial-designer-automobile-price-train-score.md)kifejlesztett prediktív modellt is használhassa, valós idejű végpontként telepítheti. Az 1. részben betanítja a modellt. Most itt az ideje, hogy a felhasználói bevitel alapján új előrejelzéseket hozzon. Az oktatóanyag ezen részében a következőket végezheti el:
+Az [oktatóanyag első részében](tutorial-designer-automobile-price-train-score.md) létrehozott prediktív modell üzembe helyezésével mások számára is lehetővé teheti a használatát. Az 1. részben betanítja a modellt. Most itt az ideje, hogy a felhasználói bevitel alapján új előrejelzéseket hozzon. Az oktatóanyag ezen részében a következőket fogja elsajátítani:
 
 > [!div class="checklist"]
-> * Valós idejű végpont üzembe helyezése
+> * Valós idejű következtetési folyamat létrehozása
 > * Következtetési fürt létrehozása
+> * Valós idejű végpont üzembe helyezése
 > * Valós idejű végpont tesztelése
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 [Az oktatóanyag első részében](tutorial-designer-automobile-price-train-score.md) megismerheti, hogyan végezheti el a gépi tanulási modellek betanítását és kiértékelését a tervezőben.
 
-## <a name="deploy-a-real-time-endpoint"></a>Valós idejű végpont üzembe helyezése
+## <a name="create-a-real-time-inference-pipeline"></a>Valós idejű következtetési folyamat létrehozása
 
-A folyamat üzembe helyezéséhez a következőket kell tennie:
-
-1. Alakítsa át a betanítási folyamatot egy valós idejű következtetési folyamatba, amely eltávolítja a betanítási modulokat, és bemeneteket és kimeneteket ad a következtetésekhez.
-1. A következtetési folyamat üzembe helyezése.
+A folyamat üzembe helyezéséhez először át kell alakítania a betanítási folyamatot egy valós idejű következtetési folyamatba. Ez a folyamat eltávolítja a betanítási modulokat, és bemeneteket és kimeneteket ad a következtetésekhez.
 
 ### <a name="create-a-real-time-inference-pipeline"></a>Valós idejű következtetési folyamat létrehozása
 
-1. A folyamat vászon tetején válassza a **következtetési folyamat létrehozása** > **valós idejű következtetési folyamat** lehetőséget.
-
-    Amikor kiválasztja a **következtetési folyamat létrehozása**lehetőséget, több dolog történik:
-    
-    * A betanított modellt a modul palettáján **adatkészlet** -modulként tárolja a rendszer. **Az adatkészletek**szakaszban találja.
-    * A képzéshez használt modulok, például a betanítási **modell** és a **felosztott adategységek**el lesznek távolítva.
-    * A rendszer visszaadja a mentett betanított modellt a folyamatba.
-    * A **webszolgáltatás bemeneti** és **webszolgáltatás-kimeneti** moduljai hozzáadódnak a szolgáltatáshoz. Ezek a modulok határozzák meg, hogy a felhasználói adattípusok hol lépnek be a modellbe, és hol lesznek visszaadva.
-
-    > [!Note]
-    > A **betanítási folyamat** a folyamat vászonjának tetején található új lapon lesz mentve. A tervezőben közzétett folyamatként is megtalálhatók.
-    >
+1. A folyamat fölötti vászonnál válassza a **következtetési folyamat létrehozása** > a **valós idejű következtetési folyamat** lehetőséget.
 
     A folyamatnak most így kell kinéznie:  
 
    ![Képernyőfelvétel a folyamat várható konfigurációjának megjelenítéséről az üzembe helyezés előkészítése után](./media/ui-tutorial-automobile-price-deploy/real-time-inference-pipeline.png)
+
+    Amikor kiválasztja a **következtetési folyamat létrehozása**lehetőséget, több dolog történik:
+    
+    * A betanított modellt a modul palettáján **adatkészlet** -modulként tárolja a rendszer. **Az adatkészletek**szakaszban találja.
+    * A képzési modulok, például a **betanítási modell** és a **felosztott adategységek** törlődnek.
+    * A rendszer visszaadja a mentett betanított modellt a folyamatba.
+    * A **webszolgáltatás bemeneti** és **webszolgáltatás-kimeneti** moduljai hozzáadódnak a szolgáltatáshoz. Ezek a modulok azt mutatják be, hogy a felhasználói adatai hol fognak belépni a modellbe, és hol lesznek visszaadva az adatai.
+
+    > [!Note]
+    > A **betanítási folyamat** a folyamat vászonjának tetején található új lapon lesz mentve. A tervezőben közzétett folyamatként is megtalálhatók.
+    >
 
 1. Válassza a **Futtatás** lehetőséget, és használja ugyanazt a számítási célt, és kísérletezzen, amelyet az 1. részben használt.
 
@@ -64,11 +62,11 @@ A folyamat üzembe helyezéséhez a következőket kell tennie:
 
 1. Válassza az **Üzembe helyezés** lehetőséget.
 
-### <a name="create-an-inferencing-cluster"></a>Következtetési fürt létrehozása
+## <a name="create-an-inferencing-cluster"></a>Következtetési fürt létrehozása
 
-A megjelenő párbeszédpanelen kiválaszthatja a munkaterületen meglévő Azure Kubernetes Service (ak) fürtöket a modell üzembe helyezéséhez. Ha nem rendelkezik AK-fürttel, a következő lépésekkel hozhat létre egyet.
+A megjelenő párbeszédpanelen bármelyik meglévő Azure Kubernetes Service-(ak-) fürtből kiválaszthatja a modell üzembe helyezését. Ha nem rendelkezik AK-fürttel, a következő lépésekkel hozhat létre egyet.
 
-1. Válassza a **számítás** lehetőséget a párbeszédpanelen a **számítási** oldal megnyitásához.
+1. A **számítási** lapon megjelenő párbeszédpanelen kattintson a **számítás** elemre.
 
 1. A navigációs menüszalagon válassza a **következtetési fürtök** >  **+ új**lehetőséget.
 
@@ -86,7 +84,7 @@ A megjelenő párbeszédpanelen kiválaszthatja a munkaterületen meglévő Azur
     > Egy új AK-szolgáltatás létrehozása körülbelül 15 percet vesz igénybe. A kiépítési állapotot a **következtetési fürtök** oldalon tekintheti meg
     >
 
-### <a name="deploy-the-real-time-endpoint"></a>A valós idejű végpont üzembe helyezése
+## <a name="deploy-the-real-time-endpoint"></a>A valós idejű végpont üzembe helyezése
 
 Miután az AK-szolgáltatás befejezte a kiépítést, térjen vissza a valós idejű következtetési folyamatra az üzembe helyezés befejezéséhez.
 
@@ -104,7 +102,7 @@ Miután az AK-szolgáltatás befejezte a kiépítést, térjen vissza a valós i
 
 ## <a name="test-the-real-time-endpoint"></a>A valós idejű végpont tesztelése
 
-A valós idejű végpontot a bal oldali munkaterület navigációs paneljének **végpontok** lapjára kattintva ellenőrizheti.
+Az üzembe helyezés befejezése után a valós idejű végpontot a **végpontok** lapra lépve ellenőrizheti.
 
 1. A **végpontok** lapon válassza ki a telepített végpontot.
 
@@ -112,9 +110,9 @@ A valós idejű végpontot a bal oldali munkaterület navigációs paneljének *
 
 1. Válassza a **teszt**lehetőséget.
 
-1. Adja meg a bemeneti tesztelési adatokat, vagy használja az kitöltött mintaadatok használatát, és válassza a **teszt**lehetőséget.
+1. Manuálisan is beírhatja a tesztelési adatokat, vagy használhatja az autofilled Sample-adatokat, és kiválaszthatja a **teszt**lehetőséget.
 
-    A rendszer elküldte a tesztelési kérelmet a végpontnak, és az eredmények megjelennek a lapon. Bár a bemeneti adatokhoz érték jön létre, a rendszer nem használja fel az előrejelzési érték generálására.
+    A portál egy teszt kérelmet küld a végpontnak, és megjeleníti az eredményeket. Bár a bemeneti adatokhoz érték jön létre, a rendszer nem használja fel az előrejelzési érték generálására.
 
     ![Képernyőfelvétel: a valós idejű végpont és az emelt szintű címke tesztelése](./media/ui-tutorial-automobile-price-deploy/test-endpoint.png)
 

@@ -8,18 +8,18 @@ ms.topic: include
 ms.date: 03/15/2019
 ms.author: robinsh
 ms.custom: include file
-ms.openlocfilehash: c779147e464a592d45da8a9a2d8e812320dc23e8
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 27a254b664e2035cc66109f7a473a3e9ef4d730e
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67179742"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73612082"
 ---
 <!-- This is the note explaining about the avro and json formats when routing to blob storage. -->
 > [!NOTE]
-> Az adatok a blob storage akár csak írható a [Apache Avro](https://avro.apache.org/) formátumba, ami az alapértelmezett vagy a JSON-ban (előzetes verzió). 
+> Az adattárakat a blob Storage-ba lehet írni az [Apache Avro](https://avro.apache.org/) formátumban, amely az alapértelmezett vagy a JSON (előzetes verzió). 
 >    
-> A szolgáltatás JSON formátumban kódolása előzetes verzióként érhető minden olyan régióban, amely az IoT Hub is elérhető, kivéve az USA keleti RÉGIÓJA, USA nyugati Régiójában és Nyugat-Európa. A kódolási formátum csak beállíthatja az idő a blob storage-végpont konfigurálva van. A formátum nem módosítható egy végpontot, amely már be lett állítva. JSON-kódolás használatakor be kell a contentType JSON-ra, a contentEncoding UTF-8 rendszer üzenet tulajdonságai. 
+> A JSON-formátum kódolásának lehetősége minden olyan régióban előzetes verzióban érhető el, amelyben IoT Hub elérhető, kivéve az USA keleti régiója, az USA nyugati régiója és Nyugat-Európa. A kódolás formátuma csak akkor állítható be, amikor a blob Storage-végpont konfigurálva van. A már beállított végpontok formátuma nem módosítható. JSON-kódolás használatakor a contentType JSON-ra és a contentEncoding UTF-8 értékre kell állítania az üzenetrendszer tulajdonságai között. 
 >
-> További részletes információ a blob storage-végpont használatával, lásd: [útmutatás a blob Storage-útválasztás](../articles/iot-hub/iot-hub-devguide-messages-d2c.md#azure-blob-storage).
+> A blob Storage-végpontok használatával kapcsolatos részletesebb információkért tekintse [meg az Útválasztás a Storage](../articles/iot-hub/iot-hub-devguide-messages-d2c.md#azure-storage)szolgáltatáshoz című témakör útmutatását.
 >

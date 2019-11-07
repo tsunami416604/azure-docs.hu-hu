@@ -1,22 +1,22 @@
 ---
-title: 'Oktatóanyag: Hozzon létre egy Java-alkalmazást az aszinkron Java SDK-val egy SQL API-fiók kezeléséhez Azure Cosmos DB'
-description: Az oktatóanyag bemutatja, hogyan kell tárolni és érheti el adatait egy SQL API-fiókon belül az Azure Cosmos DB aszinkron Java-alkalmazás használatával.
+title: 'Oktatóanyag: Java-alkalmazás létrehozása az aszinkron Java SDK-val egy SQL API-fiók kezeléséhez Azure Cosmos DB'
+description: Ebből az oktatóanyagból megtudhatja, hogyan tárolhat és férhet hozzá az SQL API-fiókban található, Azure Cosmos DB egy aszinkron Java-alkalmazás használatával.
 author: SnehaGunda
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: java
 ms.topic: tutorial
-ms.date: 12/15/2018
+ms.date: 11/05/2019
 ms.author: sngun
 Customer intent: As a developer, I want to build a Java application with the Async Java SDK to access and manage Azure Cosmos DB resources so that customers can utilize the global distribution, elastic scaling, multi-master, and other capabilities offered by Azure Cosmos DB.
-ms.openlocfilehash: 2a6f12bfe7aa3de028039d00c259a606d028a0e5
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 972328ec5052f5089994efbb940ff00c889ae78f
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69614598"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73720874"
 ---
-# <a name="tutorial-build-a-java-app-with-the-async-java-sdk-to-manage-data-stored-in-a-sql-api-account"></a>Oktatóanyag: Java-alkalmazás létrehozása az aszinkron Java SDK-val egy SQL API-fiókban tárolt adatkezeléshez
+# <a name="tutorial-build-a-java-app-with-the-async-java-sdk-to-manage-data-stored-in-a-sql-api-account"></a>Oktatóanyag: Java-alkalmazás létrehozása az aszinkron Java SDK-val az SQL API-fiókokban tárolt adatkezelési szolgáltatásokhoz
 
 > [!div class="op_single_selector"]
 > * [.NET](sql-api-get-started.md)
@@ -25,12 +25,12 @@ ms.locfileid: "69614598"
 > * [Node.js](sql-api-nodejs-get-started.md)
 > 
 
-Fejlesztőként lehetséges, hogy NoSQL dokumentum-adatokat használó alkalmazások. Segítségével az SQL API-fiókot az Azure Cosmos DB-ben Ez a dokumentum adatok tárolása és elérése. Ez az oktatóanyag bemutatja, hogyan hozhat létre, tárolhatja és kezelheti a dokumentum-adatokat az aszinkron Java SDK-val Java-alkalmazás. 
+Fejlesztőként rendelkezhet olyan alkalmazásokkal, amelyek NoSQL használnak. A dokumentumok tárolására és elérésére használhatja a Azure Cosmos DBban található SQL API-fiókot. Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre egy Java-alkalmazást az aszinkron Java SDK-val a dokumentumok tárolására és kezelésére. 
 
 Ez az oktatóanyag a következő feladatokat mutatja be:
 
 > [!div class="checklist"]
-> * Létrehozása és csatlakozás az Azure Cosmos-fiók
+> * Azure Cosmos-fiók létrehozása és csatlakoztatása
 > * A megoldás konfigurálása
 > * Gyűjtemény létrehozása
 > * JSON-dokumentumok létrehozása
@@ -50,13 +50,13 @@ Győződjön meg róla, hogy rendelkezik az alábbi erőforrásokkal:
 
 ## <a name="create-an-azure-cosmos-db-account"></a>Azure Cosmos DB-fiók létrehozása
 
-Az alábbi lépéseket követve hozzon létre egy Azure Cosmos-fiók:
+Hozzon létre egy Azure Cosmos-fiókot az alábbi lépések segítségével:
 
 [!INCLUDE [cosmos-db-create-dbaccount](../../includes/cosmos-db-create-dbaccount.md)]
 
-## <a id="GitClone"></a>Klónozza a GitHub-adattár
+## <a id="GitClone"></a>A GitHub-adattár klónozása
 
-Klónozza a GitHub-tárházat a [Azure Cosmos DB és a Java használatának első lépései](https://github.com/Azure-Samples/azure-cosmos-db-sql-api-async-java-getting-started). Ha például egy helyi könyvtárból futtassa a következőt a mintaprojekt helyi lekéréséhez.
+A GitHub-tárház klónozásával [megkezdheti a Azure Cosmos db és a Java megkezdését](https://github.com/Azure-Samples/azure-cosmos-db-sql-api-async-java-getting-started). Például egy helyi könyvtárból futtassa a következő parancsot a minta projekt helyi beolvasásához.
 
 ```bash
 git clone https://github.com/Azure-Samples/azure-cosmos-db-sql-api-async-java-getting-started.git
@@ -65,7 +65,7 @@ cd azure-cosmos-db-sql-api-async-java-getting-started
 cd azure-cosmosdb-get-started
 ```
 
-A könyvtár tartalmaz egy `pom.xml` fájl és a egy `src/main/java/com/microsoft/azure/cosmosdb/sample` mappát, amely tartalmazza a Java forráskód, beleértve a `Main.java`. A projekt tartalmazza az Azure Cosmos DB, például dokumentumok létrehozását vagy adatlekérdezést egy gyűjteményen belül műveletek végrehajtásához szükséges kódot. A `pom.xml` fájl tartalmaz egy függőség az a [Azure Cosmos DB Java SDK maven](https://mvnrepository.com/artifact/com.microsoft.azure/azure-documentdb).
+A könyvtár tartalmaz egy `pom.xml` fájlt és egy `src/main/java/com/microsoft/azure/cosmosdb/sample` mappát, amely Java-forráskódot tartalmaz, beleértve a `Main.java`. A projekt olyan kódot tartalmaz, amely a Azure Cosmos DBokkal végzett műveletek végrehajtásához szükséges, például dokumentumok létrehozásához és adatok lekérdezéséhez egy gyűjteményen belül. A `pom.xml` fájl függőséget tartalmaz a [Azure Cosmos db Java SDK](https://mvnrepository.com/artifact/com.microsoft.azure/azure-documentdb)-ból a mavenen.
 
 ```xml
 <dependency>
@@ -75,11 +75,11 @@ A könyvtár tartalmaz egy `pom.xml` fájl és a egy `src/main/java/com/microsof
 </dependency>
 ```
 
-## <a id="Connect"></a>Csatlakozás az Azure Cosmos-fiókhoz
+## <a id="Connect"></a>Kapcsolódás Azure Cosmos-fiókhoz
 
 Ezután lépjen vissza az [Azure Portalra](https://portal.azure.com) a végponti és az elsődleges főkulcs beszerzéséért. Az Azure Cosmos DB végpont és az elsődleges kulcs ahhoz szükséges, hogy az alkalmazás tudja, hova kell csatlakoznia, az Azure Cosmos DB pedig megbízzon az alkalmazás által létesített kapcsolatban. Az `AccountSettings.java` fájl tárolja az elsődleges kulcs és az URI értékeit. 
 
-Az Azure Portalon nyissa meg az Azure Cosmos-fiók, és kattintson a **kulcsok**. Ezután másolja ki az URI és az ELSŐDLEGES KULCS értékét a portálról, és illessze be az `AccountSettings.java` fájlba. 
+A Azure Portal nyissa meg az Azure Cosmos-fiókját, majd kattintson a **kulcsok**elemre. Ezután másolja ki az URI és az ELSŐDLEGES KULCS értékét a portálról, és illessze be az `AccountSettings.java` fájlba. 
 
 ```java
 public class AccountSettings 
@@ -99,9 +99,9 @@ public class AccountSettings
 
 ![Kulcsok lekérése a Portalról képernyőkép][keys]
 
-## <a name="initialize-the-client-object"></a>Az ügyfél objektum inicializálása
+## <a name="initialize-the-client-object"></a>Az ügyfél-objektum inicializálása
 
-Az ügyfél objektum inicializálása a gazdagép URI-t és a "AccountSettings.java" fájlban meghatározott elsődleges kulcs értékeit.
+Inicializálja az ügyféloldali objektumot a "AccountSettings. Java" fájlban definiált gazdagép URI és Primary Key értékek használatával.
 
 ```java
 client = new AsyncDocumentClient.Builder()
@@ -114,7 +114,7 @@ client = new AsyncDocumentClient.Builder()
 
 ## <a id="CreateDatabase"></a>Adatbázis létrehozása
 
-Hozza létre az Azure Cosmos-adatbázist a `createDatabaseIfNotExists()` DocumentClient osztály metódusának használatával. Az adatbázis a JSON-dokumentumtároló gyűjtemények között particionált logikai tárolója.
+Hozza létre az Azure Cosmos-adatbázist a DocumentClient osztály `createDatabaseIfNotExists()` metódusának használatával. Az adatbázis a JSON-dokumentumtároló gyűjtemények között particionált logikai tárolója.
 
 ```java
 private void createDatabaseIfNotExists() throws Exception 
@@ -158,7 +158,7 @@ private void createDatabaseIfNotExists() throws Exception
 
 ## <a id="CreateColl"></a>Gyűjtemény létrehozása
 
-Gyűjtemény használatával hozható létre a `createDocumentCollectionIfNotExists()` DocumentClient osztály metódusát. A gyűjtemény egy JSON-dokumentumokat és a kapcsolódó JavaScript-alkalmazáslogikát tartalmazó tároló.
+Gyűjtemény létrehozásához használja a DocumentClient osztály `createDocumentCollectionIfNotExists()` metódusát. A gyűjtemény egy JSON-dokumentumokat és a kapcsolódó JavaScript-alkalmazáslogikát tartalmazó tároló.
 
 > [!WARNING]
 > A **createCollection** létrehoz egy fenntartott adattovábbítási kapacitással rendelkező új gyűjteményt, amely költségeket von maga után. További részletekért látogasson el az [árképzést ismertető oldalra](https://azure.microsoft.com/pricing/details/cosmos-db/).
@@ -202,7 +202,7 @@ private void createDocumentCollectionIfNotExists() throws Exception
 
 ## <a id="CreateDoc"></a>JSON-dokumentumok létrehozása
 
-Hozzon létre egy dokumentumot a Documentclient módszer a DocumentClient osztály használatával. A dokumentumok a felhasználó által megadott (tetszőleges) JSON-tartalmak. Most már beilleszthetünk egy vagy több dokumentumot. A "src/main/java/com/microsoft/azure/cosmosdb/sample/Families.java" fájl határozza meg a családba tartozó JSON-dokumentumokat. 
+Hozzon létre egy dokumentumot a DocumentClient osztály createDocument metódusának használatával. A dokumentumok a felhasználó által megadott (tetszőleges) JSON-tartalmak. Most már beilleszthetünk egy vagy több dokumentumot. A "src/Main/Java/com/Microsoft/Azure/cosmosdb/Sample/familys. Java" fájl határozza meg a család JSON-dokumentumait. 
 
 ```java
 public static Family getJohnsonFamilyDocument() {
@@ -220,9 +220,9 @@ public static Family getJohnsonFamilyDocument() {
     }
 ```
 
-## <a id="Query"></a>Azure Cosmos DB-erőforrások lekérdezése
+## <a id="Query"></a>Azure Cosmos DB erőforrások lekérdezése
 
-Az Azure Cosmos DB támogatja az egyes gyűjteményekben tárolt JSON-dokumentumokon végzett részletes lekérdezéseket. Az alábbi mintakód bemutatja, hogyan kérdezheti le az Azure Cosmos DB használatával az SQL-szintaxis és a `queryDocuments` metódust.
+Az Azure Cosmos DB támogatja az egyes gyűjteményekben tárolt JSON-dokumentumokon végzett részletes lekérdezéseket. Az alábbi mintakód bemutatja, hogyan kérdezheti le a dokumentumokat a Azure Cosmos DB SQL-szintaxissal a `queryDocuments` metódussal.
 
 ```java
 private void executeSimpleQueryAsyncAndRegisterListenerForResult(CountDownLatch completionLatch) 
@@ -254,9 +254,9 @@ private void executeSimpleQueryAsyncAndRegisterListenerForResult(CountDownLatch 
 }
 ```
 
-## <a id="Run"></a>A Java Konzolalkalmazás futtatása
+## <a id="Run"></a>A Java-konzol alkalmazás futtatása
 
-Az alkalmazás futtatásához a konzolról, nyissa meg a projekt mappát, és fordítsa le a mavennel:
+Az alkalmazás konzolról való futtatásához lépjen a Project mappára, és fordítsa le a Maven használatával:
 
 ```bash
 mvn package
@@ -268,16 +268,16 @@ A `mvn package` futtatása letölti a legújabb Azure Cosmos DB-erőforrástára
 mvn exec:java -DACCOUNT_HOST=<YOUR_COSMOS_DB_HOSTNAME> -DACCOUNT_KEY= <YOUR_COSMOS_DB_MASTER_KEY>
 ```
 
-Most már elvégezte a NoSQL-oktatóanyagot, és a egy működőképes Java konzolalkalmazással rendelkezik.
+Ezzel elvégezte ezt a NoSQL-oktatóanyagot, és egy működőképes Java-konzollal rendelkezik.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Amikor szükség van rájuk már nem, törölheti az erőforráscsoportot, az Azure Cosmos-fiók és minden kapcsolódó erőforrás. Ehhez válassza ki a virtuális gép, jelölje be az erőforráscsoport **törlése**, majd erősítse meg a törölni kívánt erőforráscsoport nevét.
+Ha már nincs rájuk szükség, törölheti az erőforráscsoportot, az Azure Cosmos-fiókot és az összes kapcsolódó erőforrást. Ehhez válassza ki a virtuális géphez tartozó erőforráscsoportot, válassza a **Törlés**lehetőséget, majd erősítse meg a törölni kívánt erőforráscsoport nevét.
 
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben az oktatóanyagban bemutattuk, hogyan hozhat létre egy Java-alkalmazás és az aszinkron Java SDK az Azure Cosmos DB SQL API-adatok kezeléséhez. Továbbléphet a következő cikkre:
+Ebben az oktatóanyagban megtanulta, hogyan hozhat létre egy Java-alkalmazást az aszinkron Java SDK-val az SQL API-beli adatkezelési Azure Cosmos DB. Továbbléphet a következő cikkre:
 
 > [!div class="nextstepaction"]
 > [Node.js-konzolalkalmazás létrehozása a JavaScript SDK-val és az Azure Cosmos DB-vel](sql-api-nodejs-get-started.md)

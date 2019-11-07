@@ -1,20 +1,20 @@
 ---
-title: 'Oktatóanyag: Egy Node.js-webalkalmazás létrehozása Azure Cosmos DB SQL API-adatok kezelése a JavaScript SDK segítségével'
+title: 'Oktatóanyag: Node.js-webalkalmazás létrehozása a JavaScript SDK használatával az Azure Cosmos DB SQL API-adatok kezeléséhez'
 description: Ez a Node. js-oktatóanyag azt ismerteti, hogyan használható a Microsoft Azure Cosmos DB a Microsoft Azure App Service Web Apps funkciójában tárolt Node. js Express-webalkalmazásból származó adatok tárolására és elérésére.
 author: SnehaGunda
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: nodejs
 ms.topic: tutorial
-ms.date: 08/06/2019
+ms.date: 11/05/2019
 ms.author: sngun
 Customer intent: As a developer, I want to build a Node.js web application to access and manage SQL API account resources in Azure Cosmos DB, so that customers can better use the service.
-ms.openlocfilehash: 0f410e06e1f5b9ae3b5319c4ff63f9632a2159dc
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 8390520320566907e8aaef709a085a71e8c8e4d6
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68989449"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73720826"
 ---
 # <a name="tutorial-build-a-nodejs-web-app-using-the-javascript-sdk-to-manage-a-sql-api-account-in-azure-cosmos-db"></a>Oktatóanyag: Node. js-Webalkalmazás létrehozása a JavaScript SDK használatával az SQL API-fiók kezeléséhez Azure Cosmos DB 
 
@@ -51,7 +51,7 @@ A jelen cikkben lévő utasítások követése előtt győződjön meg arról, h
 * Telepítse a [git][Git] -t a helyi munkaállomáson.
 
 ## <a name="_Toc395637761"></a>Azure Cosmos DB fiók létrehozása
-Először hozzon létre egy Azure Cosmos DB-fiókot. Ha már rendelkezik fiókkal, vagy ha a Azure Cosmos db emulátort használja ehhez az oktatóanyaghoz, ugorjon a [2. lépésre: Hozzon létre egy új Node.](#_Toc395783178)js-alkalmazást.
+Először hozzon létre egy Azure Cosmos DB-fiókot. Ha már rendelkezik fiókkal, vagy az oktatóanyagban az Azure Cosmos DB Emulatort használja, továbbléphet a [2. lépés: Új Node.js-alkalmazás létrehozása](#_Toc395783178) című lépésre.
 
 [!INCLUDE [cosmos-db-create-dbaccount](../../includes/cosmos-db-create-dbaccount.md)]
 
@@ -93,7 +93,7 @@ Most megismerheti, hogyan hozhat létre egy alapszintű "Helló világ!" alkalma
 
 A **package.json** fájl egyike azon fájloknak, amelyek a projekt gyökérmappájában létrejönnek. Ez a fájl tartalmazza a Node.js-alkalmazáshoz szükséges további modulok listáját. Amikor az Azure-ba telepíti az alkalmazást, a rendszer ennek a fájlnak a segítségével határozza meg, hogy melyik modulokat kell az Azure-ban telepíteni ahhoz, hogy működjön az alkalmazás. A jelen oktatóanyagban telepítsen még két csomagot.
 
-1. Telepítse az  **\@Azure/Cosmos** modult a NPM-on keresztül. 
+1. Telepítse a **\@Azure/Cosmos** modult a NPM-on keresztül. 
 
    ```bash
    npm install @azure/cosmos
@@ -437,7 +437,7 @@ A második űrlap két beviteli mezőt és egy gombot tartalmaz, amely lehetőv�
 
 Most, hogy létrehozta az alkalmazást, helyileg futtathatja a következő lépésekkel:  
 
-1. Az alkalmazás helyi gépen való teszteléséhez futtassa a parancsot `npm start` a terminálon az alkalmazás elindításához, majd frissítse a [http://localhost:3000](http://localhost:3000) böngésző lapját. Az oldalnak az alábbi képernyőképen látható módon kell kinéznie:
+1. Ha tesztelni szeretné az alkalmazást a helyi gépen, futtassa `npm start` a terminálon az alkalmazás elindításához, majd frissítse a [http://localhost:3000](http://localhost:3000) Browser (böngésző) lapot. Az oldalnak az alábbi képernyőképen látható módon kell kinéznie:
    
     ![Képernyőfelvétel a My Todo List (Saját teendőlista) alkalmazásról egy böngészőablakban](./media/sql-api-nodejs-application/cosmos-db-node-js-localhost.png)
 

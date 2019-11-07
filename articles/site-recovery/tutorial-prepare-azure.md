@@ -1,5 +1,5 @@
 ---
-title: Készítse elő az Azure-t a helyszíni gépek vész-helyreállításához Azure Site Recovery
+title: Az Azure előkészítése helyszíni vész-helyreállításra Azure Site Recovery
 description: Ismerje meg, hogyan készítheti elő az Azure-t a helyszíni gépek vészhelyreállításához az Azure Site Recovery használatával.
 services: site-recovery
 author: rayne-wiselman
@@ -8,14 +8,14 @@ ms.topic: tutorial
 ms.date: 09/09/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 32aa2c8f4c97f247bfcff5fc82a3f810b8005591
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 1ec668fac087773001ca401eefb5ca8bc10ea2b8
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73488553"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73620596"
 ---
-# <a name="prepare-azure-resources-for-disaster-recovery-of-on-premises-machines"></a>Azure-erőforrások előkészítése helyszíni gépek vészhelyreállításához
+# <a name="prepare-azure-for-on-premises-disaster-recovery-to-azure"></a>Az Azure előkészítése helyszíni vész-helyreállításra az Azure-ba
 
 Ez a cikk az Azure-erőforrások és-összetevők előkészítését ismerteti, így a helyszíni VMware virtuális gépek, Hyper-V virtuális gépek vagy Windows/Linux rendszerű fizikai kiszolgálók vész-helyreállítását az Azure-ba állíthatja be a [Azure site Recovery](site-recovery-overview.md) szolgáltatás használatával.
 

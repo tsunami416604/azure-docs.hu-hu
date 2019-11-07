@@ -1,6 +1,6 @@
 ---
 title: '1\. Oktatóanyag: hitelkockázat előrejelzése'
-titleSuffix: Azure Machine Learning Studio (classic)
+titleSuffix: ML Studio (classic) Azure
 description: Részletes oktatóanyag, amely bemutatja, hogyan hozhat létre a hitelkockázat értékelésére szolgáló prediktív elemzési megoldást a Azure Machine Learning Studio klasszikus verziójában. Ez az oktatóanyag egy háromrészes oktatóanyag-sorozat első része.  Bemutatja, hogyan hozhat létre munkaterületet, tölthet fel és hozhat létre egy kísérletet.
 keywords: hitelkockázat, prediktív elemzési megoldás,kockázatértékelés
 author: sdgilley
@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: tutorial
 ms.date: 02/11/2019
-ms.openlocfilehash: b861fbca1f8b4fd6b313e770b1636674767e406a
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 78092bd4ad4da896cd2fd36768f181764335ee85
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73492610"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73619186"
 ---
 # <a name="tutorial-1-predict-credit-risk---azure-machine-learning-studio-classic"></a>1\. Oktatóanyag: hitelkockázat előrejelzése – Azure Machine Learning Studio (klasszikus)
 

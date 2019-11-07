@@ -1,5 +1,5 @@
 ---
-title: Az Azure Portal használata Data Factory-folyamatok létrehozására | Microsoft Docs
+title: Adatfeldolgozó folyamat létrehozása a Azure Portal használatával
 description: Az oktatóanyag részletes útmutatását követve létrehozhat egy adat-előállítót egy folyamat és az Azure Portal használatával. A folyamat egy másolási tevékenységgel másol adatokat egy Azure Blob Storage-ból egy SQL Database-be.
 services: data-factory
 documentationcenter: ''
@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.date: 06/21/2018
 ms.author: jingwang
-ms.openlocfilehash: 9a2ad8070c0406446f53c1bcaa6d341cdca0bb2a
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: ba348cdd478b1d66d7b7286ba0a54adfd98137e2
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70140716"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73683621"
 ---
 # <a name="copy-data-from-azure-blob-storage-to-a-sql-database-by-using-azure-data-factory"></a>Adatok másolása az Azure Blob Storage-ból egy SQL Database-be az Azure Data Factory segítségével
 Ebben az oktatóanyagban az Azure Data Factory felhasználói felületének használatával hoz létre egy adat-előállítót. Az adat-előállító folyamata adatokat másol az Azure Blob Storage-ból egy SQL Database-be. Az oktatóanyagban szereplő konfigurációs minta fájlalapú adattárból relációs adattárba való másolásra vonatkozik. A forrásként és fogadóként támogatott adattárak listája a [támogatott adattárakat tartalmazó](copy-activity-overview.md#supported-data-stores-and-formats) táblázatban található.
@@ -72,11 +72,11 @@ Készítse elő a Blob Storage-et és az SQL Database-t az oktatóanyaghoz a kö
 
 1. Engedélyezze az SQL Server elérését az Azure-szolgáltatások számára. Győződjön meg arról, hogy az **Azure-szolgáltatásokhoz való hozzáférés engedélyezése** **BE** van kapcsolva az SQL Serverhez, hogy a Data Factory tudjon adatokat írni az SQL Serverre. A beállítás ellenőrzéséhez és bekapcsolásához nyissa meg az Azure SQL Server > áttekintés > **a**kiszolgáló tűzfalának beállítása > az **Azure-szolgáltatásokhoz való hozzáférés engedélyezése** lehetőséget.
 
-## <a name="create-a-data-factory"></a>data factory létrehozása
+## <a name="create-a-data-factory"></a>Data factory létrehozása
 Ebben a lépésben létrehoz egy adat-előállítót, és elindítja a Data Factory felhasználói felületét, hogy létrehozzon egy folyamatot az adat-előállítóban. 
 
 1. Nyissa meg a **Microsoft Edge** vagy a **Google Chrome böngészőt**. A Data Factory felhasználói felületének használata jelenleg csak a Microsoft Edge-ben és a Google Chrome-ban támogatott.
-2. A bal oldali menüben válassza az **erőforrás** > létrehozása**elemzési** > **Data Factory**: 
+2. A bal oldali menüben válassza az **erőforrás létrehozása** > **Analytics** > **Data Factory**: 
   
    ![Data Factory kiválasztása az „Új” ablaktáblán](./media/doc-common-process/new-azure-data-factory-menu.png)
 
@@ -84,7 +84,7 @@ Ebben a lépésben létrehoz egy adat-előállítót, és elindítja a Data Fact
  
    Az Azure data factory nevének *globálisan egyedinek* kell lennie. Ha a név értékével kapcsolatos hibaüzenet kap, adjon meg másik nevet az adat-előállítóhoz. (például Sajátneveadftutorialdatafactory). A Data Factory-összetevők elnevezési szabályait a [Data Factory elnevezési szabályait](naming-rules.md) ismertető cikkben találja.
         
-     ![Új data factory](./media/doc-common-process/name-not-available-error.png)
+     ![Új adat-előállító](./media/doc-common-process/name-not-available-error.png)
 4. Válassza ki azt az **Azure-előfizetést**, amelyben az adat-előállítót létre szeretné hozni. 
 5. **Erőforráscsoport:** hajtsa végre a következő lépések egyikét:
      
@@ -96,7 +96,7 @@ Ebben a lépésben létrehoz egy adat-előállítót, és elindítja a Data Fact
 6. A **Verzió** résznél válassza a **V2** értéket.
 7. A **Hely** területen válassza ki az adat-előállító helyét. A legördülő listán csak a támogatott helyek jelennek meg. Az adat-előállítók által használt adattárak (például az Azure Storage és az SQL Database) és számítási erőforrások (például az Azure HDInsight) más régiókban is lehetnek.
 8. Kattintson a **Létrehozás** gombra. 
-9. A létrehozás befejezése után megjelenik az értesítési központban megjelenő értesítés. Válassza az **Ugrás** az erőforráshoz lehetőséget, hogy megnyissa az adatfeldolgozó lapot.
+9. A létrehozás befejezése után megjelenik az értesítési központban megjelenő értesítés. Válassza az **Ugrás az erőforráshoz** lehetőséget, hogy megnyissa az adatfeldolgozó lapot.
 10. A Data Factory felhasználói felületének külön lapon történő elindításához válassza a **Létrehozás és figyelés** csempét.
 
 
@@ -120,7 +120,7 @@ Ebben az oktatóanyagban először létrehozzuk a folyamatot. Ezután társítot
 
 ### <a name="configure-source"></a>Forrás konfigurálása
 
-1. Váltson a **Forrás** lapra. Forrásadatkészlet létrehozásához válassza az **+ Új** elemet. 
+1. Lépjen a **forrás** lapra. Válassza az **+ új** lehetőséget a forrás adatkészlet létrehozásához. 
 
 1. Az **új adatkészlet** párbeszédpanelen válassza az **Azure Blob Storage**lehetőséget, majd kattintson a **Folytatás**gombra. A forrásadatok egy Blob Storage-ban vannak, tehát forrásadatkészletként az **Azure Blob Storage**-ot válassza. 
 
@@ -172,7 +172,7 @@ Ebben az oktatóanyagban először létrehozzuk a folyamatot. Ezután társítot
 
     ![Folyamat lap](./media/tutorial-copy-data-portal/pipeline-tab-2.png)       
 
-A forrás sémáját leképezheti a cél megfelelő sémájára a másolási tevékenységben [lévő séma-hozzárendelés](copy-activity-schema-and-type-mapping.md) után.
+A forrás sémáját leképezheti a cél megfelelő sémájára a [másolási tevékenységben lévő séma-hozzárendelés](copy-activity-schema-and-type-mapping.md) után.
     
 ## <a name="validate-the-pipeline"></a>A folyamat érvényesítése
 A folyamat érvényesítéséhez válassza az **Érvényesítés** elemet az eszköztáron.
@@ -210,7 +210,7 @@ Ebben az ütemezésben egy ütemezési eseményindítót fog létrehozni a folya
 
 1. Nyissa meg a folyamatot, kattintson az **trigger hozzáadása** elemre az eszköztáron, majd válassza az **új/szerkesztés**lehetőséget. 
 
-1. Az **Eseményindítók hozzáadása** párbeszédpanelen válassza az **+ új** lehetőséget az **eseményindító** -területek kiválasztásához.
+1. Az **Eseményindítók hozzáadása** párbeszédpanelen válassza az **+ új** lehetőséget az **eseményindító-területek kiválasztásához** .
 
 1. Az **Új eseményindító** ablakban hajtsa végre az alábbi lépéseket: 
 
@@ -242,7 +242,7 @@ Ebben az ütemezésben egy ütemezési eseményindítót fog létrehozni a folya
 
     ![Aktivált folyamatfuttatások](./media/tutorial-copy-data-portal/triggered-pipeline-runs.png)   
  
-1. Ha váltani szeretne a **folyamat futtatása** nézetből az **trigger futtatása** nézetre, válassza az aktiválási futtatások lehetőséget az ablak tetején.
+1. Ha váltani szeretne a **folyamat futtatása** nézetből az **trigger futtatása** nézetre, válassza az **aktiválási futtatások** lehetőséget az ablak tetején.
 
 1. Itt megtekintheti az eseményindító-futtatások listáját. 
 

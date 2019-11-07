@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/28/2019
 ms.author: mjbrown
-ms.openlocfilehash: be639a67f70ab40f8d7dcc0f3793cbbd4a2ec4a3
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: e2ea934140322a13f07a90f4246bacd3f9dbe6c9
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72436810"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73721099"
 ---
 # <a name="create-containers-with-large-partition-key"></a>Nagyméretű partíciós kulccsal rendelkező tárolók létrehozása
 
@@ -71,11 +71,12 @@ A nagyméretű partíciós kulcsokat a következő SDK-k minimális verziói tá
 |.NET     |    1,18     |
 |Java-szinkronizálás     |   2.4.0      |
 |Java aszinkron   |  2.5.0        |
-| REST API | az `x-ms-version` kérelem fejlécének használatával a `2017-05-03` verziószáma nagyobb.|
+| REST API | a `2017-05-03` verziószáma nagyobb, mint a `x-ms-version` kérelem fejlécének használatával.|
+| Resource Manager-sablon | a 2. verzió a `partitionKey` objektumon belüli `"version":2` tulajdonság használatával. |
 
 Jelenleg nem használhat nagyméretű partíciós kulccsal rendelkező tárolókat Power BI és Azure Logic Apps. Ezekből az alkalmazásokból nagyméretű partíciós kulcs nélkül is használhat tárolókat.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Particionálás az Azure Cosmos DB-ben](partitioning-overview.md)
 * [Az Azure Cosmos DB kérelemegységei](request-units.md)

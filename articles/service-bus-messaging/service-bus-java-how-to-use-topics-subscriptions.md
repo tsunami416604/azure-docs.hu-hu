@@ -1,6 +1,6 @@
 ---
-title: A Java használatával Azure Service Bus témaköröket és előfizetéseket használhat
-description: Service Bus témaköröket és előfizetéseket használhat az Azure-ban.
+title: 'Gyors útmutató: Azure Service Bus témakörök és előfizetések használata Javával'
+description: 'Gyors útmutató: Service Bus témakörök és előfizetések használata az Azure-ban.'
 services: service-bus-messaging
 documentationcenter: java
 author: axisc
@@ -11,18 +11,18 @@ ms.service: service-bus-messaging
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: Java
-ms.topic: article
-ms.date: 04/15/2019
+ms.topic: quickstart
+ms.date: 11/05/2019
 ms.author: aschhab
 ms.custom: seo-java-july2019, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: affd62bd7cae0103b7d2510022fc12a66d26c865
-ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
+ms.openlocfilehash: 8a721d929ff89fd644c78296ae54cee757bf9610
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71155588"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73719998"
 ---
-# <a name="use-service-bus-topics-and-subscriptions-with-java"></a>A Java használatával Service Bus témaköröket és előfizetéseket használhat
+# <a name="quickstart-use-service-bus-topics-and-subscriptions-with-java"></a>Gyors útmutató: Service Bus témakörök és előfizetések használata Javával
 
 [!INCLUDE [service-bus-selector-topics](../../includes/service-bus-selector-topics.md)]
 
@@ -31,7 +31,7 @@ Ebben a rövid útmutatóban a Java-kódokat kell írnia, hogy üzeneteket küld
 ## <a name="prerequisites"></a>Előfeltételek
 
 1. Azure-előfizetés. Az oktatóanyag elvégzéséhez egy Azure-fiókra lesz szüksége. Aktiválhatja [Visual Studio-vagy MSDN-előfizetői előnyeit](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A85619ABF) , vagy regisztrálhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF).
-2. Kövesse a rövid útmutató [lépéseit: Az Azure Portal segítségével hozzon létre egy Service Bus témakört és előfizetéseket a témakörbe](service-bus-quickstart-topics-subscriptions-portal.md) a következő feladatok elvégzéséhez:
+2. Kövesse a rövid útmutató lépéseit [: a Azure Portal használatával hozzon létre egy Service Bus témakört és előfizetéseket a témakörbe](service-bus-quickstart-topics-subscriptions-portal.md) a következő feladatok elvégzéséhez:
     1. Hozzon létre egy Service Bus **névteret**.
     2. A **kapcsolatok karakterláncának**beolvasása.
     3. Hozzon létre egy **témakört** a névtérben.
@@ -49,7 +49,7 @@ Emellett hozzá kell adnia a következő tégelyeket a Java Build elérési útj
 - Commons-CLI-1.4. jar
 - proton-j-0.21.0. jar
 
-Adjon hozzá egy **fő** metódussal rendelkező osztályt, majd adja hozzá `import` a következő utasításokat a Java-fájl elejéhez:
+Adjon hozzá egy **fő** metódussal rendelkező osztályt, majd adja hozzá a következő `import` utasításokat a Java-fájl elejéhez:
 
 ```java
 import com.google.gson.reflect.TypeToken;
@@ -69,8 +69,8 @@ import org.apache.commons.cli.DefaultParser;
 Frissítse a **Main** metódust egy **TopicClient** objektum létrehozásához, és hívja meg a segítő metódust, amely aszinkron módon küldi el a Service Bus témakört.
 
 > [!NOTE] 
-> - Cserélje `<NameOfServiceBusNamespace>` le a helyére a Service Bus névtér nevét. 
-> - Cserélje `<AccessKey>` le a-t a névtérhez tartozó hozzáférési kulcsra.
+> - Cserélje le a `<NameOfServiceBusNamespace>`t a Service Bus névtér nevére. 
+> - Cserélje le a `<AccessKey>`t a névtérhez tartozó hozzáférési kulcsra.
 
 ```java
 public class MyServiceBusTopicClient {

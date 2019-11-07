@@ -10,12 +10,12 @@ ms.author: tzvikei
 author: tsikiksr
 ms.reviewer: nibaccam
 ms.date: 11/04/2019
-ms.openlocfilehash: 98ebc8d9408d937730643056f65c3d8011c1fdc4
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: HT
+ms.openlocfilehash: ecad41097786a40f7c605a686f085136856c950a
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/04/2019
-ms.locfileid: "73493410"
+ms.locfileid: "73581590"
 ---
 # <a name="tutorial-create-your-first-classification-model-with-automated-machine-learning"></a>Oktatóanyag: az első besorolási modell létrehozása automatizált gépi tanulással
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-enterprise-sku.md)]
@@ -132,7 +132,7 @@ A következő kísérletet a Azure Machine Learning Studióban, egy összevont f
         További&nbsp;konfigurációk|Leírás|&nbsp;oktatóanyag értéke&nbsp;
         ------|---------|---
         Elsődleges metrika| Az értékelési metrika, amelyet a Machine learning algoritmusa fog mérni.|AUC_weighted
-        Automatikus featurization| Az előfeldolgozás engedélyezése. Ez magában foglalja az automatikus adattisztítást, előkészítést és átalakítást a szintetikus funkciók létrehozásához.| Engedélyezés
+        Automatikus featurization| Az előfeldolgozás engedélyezése. Ez magában foglalja az automatikus adattisztítást, előkészítést és átalakítást a szintetikus funkciók létrehozásához.| Bekapcsolás
         Letiltott algoritmusok | A betanítási feladatokból kizárni kívánt algoritmusok| None
         Kilépési feltétel| Ha teljesülnek a feltételek, a betanítási feladatok leállnak. |&nbsp;feladatok betanítása&nbsp;idő (óra): 1 <br> Metrika&nbsp;pontszám&nbsp;küszöbérték: nincs
         Ellenőrzés | Válasszon egy több ellenőrzési típust és a tesztek számát.|Érvényesítés típusa:<br>&nbsp;k-szor&nbsp;kereszt-ellenőrzési <br> <br> Érvényességek száma: 2
@@ -159,7 +159,7 @@ A következő lépésekkel navigálhat a **modell részletein** és a **vizualiz
 
 ![Iteráció részleteinek futtatása](media/tutorial-1st-experiment-automated-ml/run-detail.gif)
 
-## <a name="deploy-the-model"></a>A modell rendszerbe állítása
+## <a name="deploy-the-model"></a>A modell üzembe helyezése
 
 A Azure Machine Learning Studióban található automatizált gépi tanulás lehetővé teszi a legjobb modell üzembe helyezését webszolgáltatásként néhány lépésben. Az üzembe helyezés a modell integrációja, így előre jelezhető az új adatmennyiség, és azonosíthatók a lehetséges lehetőségek is. 
 
@@ -171,18 +171,21 @@ Ebben a kísérleti kontextusban a **VotingEnsemble** a **AUC_weighted** metrika
 
 1. Kattintson a **legjobb modell telepítése** gombra a bal alsó sarokban.
 
-1. Töltse fel a **legjobb modell üzembe helyezése** panelt az alábbiak szerint:
+1. Töltse fel a **modell üzembe helyezése** panelt az alábbiak szerint:
 
     Mező| Érték
     ----|----
     Központi telepítés neve| My-automl – üzembe helyezés
     Központi telepítés leírása| Az első automatizált gépi tanulási kísérlet üzembe helyezése
-    Pontozási parancsfájl| Autogenerate
-    Környezeti parancsfájl| Autogenerate
+    Számítási típus | Azure számítási példány kiválasztása (ACI)
+    Hitelesítés engedélyezése| Megbénít. 
+    Egyéni központi telepítések használata| Megbénít. Lehetővé teszi az alapértelmezett illesztőprogram-fájl (pontozási parancsfájl) és a környezeti fájl számára az automatikusan generált értéket. 
     
+    Ebben a példában a *speciális* menüben megadott alapértékeket használjuk. 
+
 1. Válassza az **Üzembe helyezés** lehetőséget.  
 
-    Az **ajánlott modell** panelen a központi telepítés sikerességéről tájékoztató üzenet jelenik meg az üzembe helyezés **állapota** alatt az üzembe helyezés befejezésekor. A központi telepítés állapotának megtekintéséhez válassza a rendszeres **frissítés** lehetőséget.
+    A **Run (Futtatás** ) képernyő felső részén megjelenik egy zöld sikert jelző üzenet, és az **ajánlott modell** ablaktáblán megjelenik egy állapotjelző üzenet a **telepítés állapota**területen. A központi telepítés állapotának megtekintéséhez válassza a rendszeres **frissítés** lehetőséget.
     
 Most már rendelkezik egy operatív webszolgáltatással előrejelzések létrehozásához. 
 

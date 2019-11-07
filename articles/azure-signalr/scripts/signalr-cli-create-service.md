@@ -1,5 +1,5 @@
 ---
-title: Az Azure CLI Példaszkript – egy SignalR-szolgáltatás létrehozása
+title: Azure CLI parancsfájl-minta – szignáló szolgáltatás létrehozása
 description: Azure CLI-példaszkript – SignalR szolgáltatás létrehozása
 author: sffamily
 ms.service: signalr
@@ -8,12 +8,12 @@ ms.topic: sample
 ms.date: 04/20/2018
 ms.author: zhshang
 ms.custom: mvc
-ms.openlocfilehash: 93674574bceb24b75b9af36708ddfe7e77ebf0fe
-ms.sourcegitcommit: d2785f020e134c3680ca1c8500aa2c0211aa1e24
+ms.openlocfilehash: c6adda618282370b291ea2037ebee959628c9e93
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/04/2019
-ms.locfileid: "67565838"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73578957"
 ---
 # <a name="create-a-signalr-service"></a>SignalR szolgáltatás létrehozása 
 
@@ -27,15 +27,37 @@ Ha a parancssori felület helyi telepítése és használata mellett dönt, a t�
 
 ## <a name="sample-script"></a>Példaszkript
 
-Ez a szkript az Azure CLI *signalr* bővítményét használja. A példaszkript használata előtt a következő parancsot végrehajtva telepítse a *signalr* bővítményt az Azure CLI-hez:
-
-```azurecli-interactive
-az extension add -n signalr
-```
-
 Ez a szkript létrehoz egy új SignalR szolgáltatási erőforrást és egy új erőforráscsoportot. 
 
-[!code-azurecli-interactive[main](../../../cli_scripts/azure-signalr/create-signalr-service-and-group/create-signalr-service-and-group.sh "Creates a new Azure SignalR Service resource and resource group")]
+```azurecli-interactive
+#!/bin/bash
+
+# Generate a unique suffix for the service name
+let randomNum=$RANDOM*$RANDOM
+
+# Generate a unique service and group name with the suffix
+SignalRName=SignalRTestSvc$randomNum
+#resource name must be lowercase
+mySignalRSvcName=${SignalRName,,}
+myResourceGroupName=$SignalRName"Group"
+
+# Create resource group 
+az group create --name $myResourceGroupName --location eastus
+
+# Create the Azure SignalR Service resource
+az signalr create \
+  --name $mySignalRSvcName \
+  --resource-group $myResourceGroupName \
+  --sku Standard_S1 \
+  --unit-count 1 \
+  --service-mode Default
+
+# Get the SignalR primary connection string 
+primaryConnectionString=$(az signalr key list --name $mySignalRSvcName \
+  --resource-group $myResourceGroupName --query primaryConnectionString -o tsv)
+
+echo "$primaryConnectionString"
+```
 
 Jegyezze fel az új erőforráscsoporthoz létrehozott tényleges nevet. Ezt az erőforráscsoport-nevet fogja használni, amikor törölni szeretné a csoport összes erőforrását.
 

@@ -1,7 +1,7 @@
 ---
-title: CSV-Blobok indexelése az Azure Cognitive Search blob indexelő szolgáltatásával
+title: CSV-Blobok indexelése delimitedText-elemzési móddal (előzetes verzió)
 titleSuffix: Azure Cognitive Search
-description: CSV-Blobok bejárása az Azure Blob Storage-ban teljes szöveges kereséshez Azure Cognitive Search index használatával. Az indexelő automatizálja az adatfeldolgozást a kiválasztott adatforrásokhoz, például az Azure Blob Storage-hoz.
+description: A jelenleg nyilvános előzetes verzióban elérhető delimitedText-elemzési mód használatával kinyerheti és importálhatja a CSV-t az Azure Blob Storage-ból.
 manager: nitinme
 author: mgottein
 ms.author: magottei
@@ -9,18 +9,17 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 18d0eb704deba80bf83b5cae0a598f47181700f7
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 4edeb8d535504c305319aad35637bb1b09f65984
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72793778"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73719246"
 ---
-# <a name="how-to-index-csv-blobs-using-a-blob-indexer-in-azure-cognitive-search"></a>CSV-Blobok indexelése blob indexelő használatával az Azure-ban Cognitive Search 
+# <a name="how-to-index-csv-blobs-using-delimitedtext-parsing-mode-and-blob-indexers-in-azure-cognitive-search"></a>CSV-Blobok indexelése delimitedText-elemzési mód és blob-indexek használatával az Azure-ban Cognitive Search 
 
-> [!Note]
-> a delimitedText-elemzési mód előzetes verzióban érhető el, és nem éles használatra készült. A [REST API 2019-05-06-es verziójának előzetes verziója](search-api-preview.md) biztosítja ezt a funkciót. Jelenleg nincs .NET SDK-támogatás.
->
+> [!IMPORTANT] 
+> A delimitedText-elemzési mód jelenleg nyilvános előzetes verzióban érhető el. Az előzetes verziójú funkciók szolgáltatói szerződés nélkül érhetők el, és éles számítási feladatokhoz nem ajánlott. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). A [REST API 2019-05-06-es verziójának előzetes verziója](search-api-preview.md) biztosítja ezt a funkciót. Jelenleg nincs portál vagy .NET SDK-támogatás.
 
 Alapértelmezés szerint az [Azure Cognitive Search blob indexelő](search-howto-indexing-azure-blob-storage.md) egy különálló szövegként elemzi a tagolt szöveges blobokat. A CSV-fájlokat tartalmazó Blobokkal azonban gyakran a blob minden sorát külön dokumentumként kell kezelni. Például a következő tagolt szöveg esetében érdemes lehet két dokumentumra elemezni, melyek mindegyike "id", "datePublished" és "Tags" mezőket tartalmaz: 
 
@@ -28,7 +27,7 @@ Alapértelmezés szerint az [Azure Cognitive Search blob indexelő](search-howto
     1, 2016-01-12, "azure-search,azure,cloud" 
     2, 2016-07-07, "cloud,mobile" 
 
-Ebből a cikkből megtudhatja, hogyan elemezheti a CSV-blobokat egy Azure Cognitive Search blob indexerby az `delimitedText` elemzési mód beállításával. 
+Ebből a cikkből megtudhatja, hogyan elemezheti a CSV-blobokat egy Azure Cognitive Search blob-indexelő használatával a `delimitedText` elemzési mód beállításával. 
 
 > [!NOTE]
 > Kövesse az indexelő konfigurációs javaslatait az [egy-a-többhöz indexelésben](search-howto-index-one-to-many-blobs.md) , hogy egyetlen Azure-blobból végezzen több keresési dokumentumot.
@@ -47,7 +46,7 @@ Ha a Blobok nem tartalmaznak kezdeti fejlécet, a fejléceket az indexelő konfi
 
     "parameters" : { "configuration" : { "parsingMode" : "delimitedText", "delimitedTextHeaders" : "id,datePublished,tags" } } 
 
-A elválasztó karakter testreszabható a `delimitedTextDelimiter` konfigurációs beállítás használatával. Példa:
+A elválasztó karakter testreszabható a `delimitedTextDelimiter` konfigurációs beállítás használatával. Például:
 
     "parameters" : { "configuration" : { "parsingMode" : "delimitedText", "delimitedTextDelimiter" : "|" } }
 

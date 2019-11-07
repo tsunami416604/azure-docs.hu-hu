@@ -1,5 +1,5 @@
 ---
-title: Adatok növekményes másolása az Azure Data Factory használatával | Microsoft Docs
+title: 'Az Adatmásolás növekményes másolása Azure Data Factory használatával '
 description: Ezekből az oktatóanyagokból megtudhatja, hogyan másolhat adatokat növekményes módon egy forrásadattárból egy céladattárba. Az első kimásolja az adatokat egy táblából.
 services: data-factory
 documentationcenter: ''
@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: yexu
-ms.openlocfilehash: 51a6721c8bbac86e9c96ee392de3199b0456860f
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 9cbe9dfea116df30f49b89e2e59886f2f112487c
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72901360"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73683362"
 ---
 # <a name="incrementally-load-data-from-a-source-data-store-to-a-destination-data-store"></a>Növekményes módon betölti az adatokat egy forrásadattárból egy céladattárba
 
@@ -59,7 +59,7 @@ Csak az új fájlokat másolhatja, ahol a fájlok vagy mappák már időben part
 A részletes utasításokhoz lásd a következő oktatóanyagot: <br/>
 - [Új fájlok növekményes másolása az Azure Blob Storage-ból az Azure Blob Storage-ba, az idő particionált mappája vagy fájlneve alapján](tutorial-incremental-copy-partitioned-file-name-copy-data-tool.md)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Folytassa a következő oktatóanyaggal: 
 
 > [!div class="nextstepaction"]

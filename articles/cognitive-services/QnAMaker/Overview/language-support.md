@@ -1,7 +1,7 @@
 ---
 title: Nyelvi támogatás – QnA Maker
 titleSuffix: Azure Cognitive Services
-description: A Tudásbázis nyelve hatással van QnA Maker lehetőségére, hogy a forrásokból származó kérdéseket és válaszokat automatikusan kibontsa, valamint az eredmények QnA Maker a felhasználói lekérdezésekre adott válaszként. A tudásalapú QnA Maker által támogatott kulturális környezetek, természetes nyelvek listája. Ne keverje a nyelveket ugyanabban a Tudásbázisban.
+description: A tudásalapú QnA Maker által támogatott kulturális környezetek, természetes nyelvek listája. Ne keverje a nyelveket ugyanabban a Tudásbázisban.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: qna-maker
 ms.topic: reference
 ms.date: 09/24/2019
 ms.author: diberry
-ms.openlocfilehash: f4f7fffdde7d103271fa667bbab11c09ebc54825
-ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
+ms.openlocfilehash: 96440bf0e9c26e6f222f3bc94c8fabb0bc8f488d
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72285860"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73721000"
 ---
 # <a name="language-support-for-a-qna-maker-resource-and-knowledge-bases"></a>QnA Maker erőforrások és tudásbázisok nyelvi támogatása
 
@@ -85,7 +85,7 @@ A következő lista a QnA Maker erőforrás által támogatott nyelveket tartalm
 |urdu|
 |vietnami|
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Nyelv kiválasztása](../how-to/language-knowledge-base.md)

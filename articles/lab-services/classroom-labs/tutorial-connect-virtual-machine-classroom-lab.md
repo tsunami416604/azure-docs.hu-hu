@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 09/19/2019
+ms.date: 10/31/2019
 ms.author: spelluru
-ms.openlocfilehash: cf1bd223c852db930835ea1b56a93a381e8312c5
-ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
+ms.openlocfilehash: 30983d141f087a46e420f7ea457fba181956c28e
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71161423"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73577816"
 ---
-# <a name="tutorial-access-a-classroom-lab-in-azure-lab-services"></a>Oktatóanyag: Tantermi labor elérése Azure Lab Services
+# <a name="tutorial-access-a-classroom-lab-in-azure-lab-services"></a>Oktatóanyag: Hozzáférés egy osztályterem-tesztkörnyezethez az Azure Lab Services szolgáltatásban
 Ebben az oktatóanyagban a diákok megtanulnak csatlakozni egy osztályterem-tesztkörnyezet virtuális gépéhez (VM). 
 
 Az oktatóanyag során a következő lépéseket hajtja végre:
@@ -33,7 +33,7 @@ Az oktatóanyag során a következő lépéseket hajtja végre:
 
 ## <a name="register-to-the-lab"></a>Regisztráció a laborba
 
-1. Keresse fel a **regisztrációs URL-címet**, amelyet a tanártól/oktatótól kapott. A regisztráció befejezése után nem szükséges a regisztrációs URL-cím használata. Ehelyett használja az URL-címet [https://labs.azure.com](https://labs.azure.com):. Az Internet Explorer 11 még nem támogatott. 
+1. Keresse fel a **regisztrációs URL-címet**, amelyet a tanártól/oktatótól kapott. A regisztráció befejezése után nem szükséges a regisztrációs URL-cím használata. Ehelyett használja az URL-címet: [https://labs.azure.com](https://labs.azure.com). Az Internet Explorer 11 még nem támogatott. 
 1. A regisztráció elvégzéséhez jelentkezzen be a szolgáltatásba az iskolai fiókjával. 
 
     > [!NOTE]
@@ -64,7 +64,7 @@ Az oktatóanyag során a következő lépéseket hajtja végre:
 
     ![Kapcsolódás egy virtuális géphez](../media/tutorial-connect-vm-in-classroom-lab/connect-vm.png)
 2. Hajtsa végre az alábbi lépések egyikét: 
-    1. **Windows rendszerű** virtuális gépek esetén mentse az **RDP** -fájlt a merevlemezre. Nyissa meg az RDP-fájlt a virtuális géphez való kapcsolódáshoz. Használja az oktató/professzor által a gépre való bejelentkezéshez kapott felhasználónevet és **jelszót** . 
+    1. **Windows rendszerű** virtuális gépek esetén mentse az **RDP** -fájlt a merevlemezre. Nyissa meg az RDP-fájlt a virtuális géphez való kapcsolódáshoz. Használja az oktató/professzor által a gépre való bejelentkezéshez kapott **felhasználónevet** és **jelszót** . 
     3. **Linux** rendszerű virtuális gépek esetén az **SSH** vagy az **RDP** (ha engedélyezve van) használatával csatlakozhat hozzájuk. További információ: [Távoli asztali kapcsolat engedélyezése Linux rendszerű gépekhez](how-to-enable-remote-desktop-linux.md). 
 
 ## <a name="next-steps"></a>További lépések

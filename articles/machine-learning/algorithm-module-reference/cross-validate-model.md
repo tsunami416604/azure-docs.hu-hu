@@ -1,7 +1,7 @@
 ---
 title: 'Kereszt-ellenőrzési modell: modul-hivatkozás'
 titleSuffix: Azure Machine Learning service
-description: Megtudhatja, hogyan használhatja a Azure Machine Learning szolgáltatásban a modell átellenőrzése modult a besorolási vagy regressziós modellekre vonatkozó becslések átállításához az adatparticionálással.
+description: Megtudhatja, hogyan használhatja a Azure Machine Learning szolgáltatásban a modell átellenőrzése modult a besorolási vagy regressziós modellekre vonatkozó becslések átadásához az adatparticionálással.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,108 +9,107 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/10/2019
-ms.openlocfilehash: a5eea61ee8284010531e80e17bf1110ab470d04c
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: d83a9b5df7acc9d626613e53369f483367e55a54
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73512846"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73717238"
 ---
 # <a name="cross-validate-model"></a>Kereszt-ellenőrzési modell
 
-Ez a cikk azt ismerteti, hogyan használható a Azure Machine Learning Designerben (előzetes verzió) az **Cross validate Model** modul használata. A többértékű *ellenőrzés* a gépi tanulásban gyakran használt, az adatkészletek változékonyságának és az adatokat használó modellek megbízhatóságának felmérése.  
+Ez a cikk azt ismerteti, hogyan használható a Azure Machine Learning Designerben (előzetes verzió) az Cross validate Model modul használata. A többértékű *ellenőrzés* a gépi tanulásban gyakran használatos, és az adatkészletek változékonyságát, valamint az ezen adatokat használó modellek megbízhatóságát is felméri.  
 
-A **modell keresztbe** állítása modul a címkével ellátott adatkészlet bemenetét, valamint egy képzetlen besorolást vagy regressziós modellt használ. Az adatkészletet bizonyos számú részhalmazra osztja (*hajtogatás*), minden egyes foldon létrehoz egy modellt, majd a pontossági statisztikák készletét adja vissza az egyes hajtogatásoknak. Az összes hajtogatás pontossági statisztikájának összehasonlításával értelmezheti az adatkészletet, és megtudhatja, hogy a modell az adatok változásaira is alkalmas-e.  
+A modell keresztbe állítása modul a címkével ellátott adatkészlet bemenetét, valamint egy képzetlen besorolást vagy regressziós modellt használ. Az adatkészletet bizonyos számú részhalmazra osztja (*hajtogatás*), minden egyes foldon létrehoz egy modellt, majd a pontossági statisztikák készletét adja vissza az egyes hajtogatásoknak. Az összes hajtogatás pontossági statisztikájának összehasonlításával értelmezheti az adathalmaz minőségét. Ezután megtudhatja, hogy a modell érzékeny-e az adatváltozásokra.  
 
-A kereszthivatkozások az adatkészletek előre jelzett eredményeit és valószínűségeit is visszaadja, így az előrejelzések megbízhatóságát is kiértékelheti.  
+A Cross Validation Model az előre jelzett eredményeket és az adatkészlethez tartozó valószínűségeket is visszaadja, így az előrejelzések megbízhatóságát is kiértékelheti.  
 
-### <a name="how-cross-validation-works"></a>A több ellenőrzés működése
+### <a name="how-cross-validation-works"></a>A kereszt-ellenőrzés működése
 
-1. A több érvényesítés véletlenszerűen osztja el a betanítási adatmennyiséget számos partícióra, más néven *hajtogatásra*. 
+1. A többszörös érvényesítés véletlenszerűen felosztja a betanítási adatgyűjtést. 
 
-    + Az algoritmus alapértelmezett értéke 10, ha korábban még nem particionálta az adatkészletet. 
-    + Ha az adatkészletet más számú bedobásra szeretné osztani, használhatja a [partíció és a minta](partition-and-sample.md) modult, és jelezheti, hogy hány hajtogatást használ.  
+   Az algoritmus alapértelmezett értéke 10, ha korábban még nem particionálta az adatkészletet. Ha az adatkészletet más számú bedobásra szeretné osztani, használhatja a [partíció és a minta](partition-and-sample.md) modult, és jelezheti, hogy hány hajtogatást használ.  
 
-2.  A modul az 1. számú, az ellenőrzéshez használt adategységet (ezt néha *Holdout*is nevezik), és a fennmaradó ráncokat használja a modell betanításához. 
+2.  A modul az 1. hajtogatott adategységet az ellenőrzéshez használja. (Ezt néha a *Holdout Foldnak*is nevezik.) A modul a fennmaradó ráncokat használja a modell betanításához. 
 
-    Ha például öt betöltést hoz létre, akkor a modul öt modellt hoz létre a kereszt-ellenőrzés során, minden egyes modell 4/5-et használ, és tesztelte a fennmaradó 1/5.  
+    Ha például öt betöltést hoz létre, a modul öt modellt hoz létre a kereszt-ellenőrzés során. A modul az egyes modelleket az adatmennyiségek négy egyötödét használva hajtja majd be. Teszteli az egyes modelleket a fennmaradó egy ötödik oldalon.  
 
-3.  Az egyes hajtogatási modell tesztelése során a rendszer kiértékeli a több pontossági statisztikát. A használt statisztikák az Ön által kiértékelt modell típusától függenek. A besorolási modellek és a regressziós modellek kiértékelése különböző statisztikákat használ.  
+3.  Az egyes hajtogatási modell tesztelése során a modul több pontossági statisztikát értékel ki. A modul által használt statisztikák a modell típusától függenek. A rendszer különböző statisztikákat használ a besorolási modellek és a regressziós modellek kiértékelésére.  
 
-4.  Ha az épület és a kiértékelés folyamata befejeződött az összes betöltésnél, a **kereszt-ellenőrzési modell** teljesítmény-mérőszámokat generál, és az összes adathoz tartozó eredményeket jeleníti meg. Tekintse át ezeket a mérőszámokat, és ellenőrizze, hogy van-e különösen magas vagy alacsony pontosságú egyetlen fold 
+4.  Ha az épület és a kiértékelés folyamata befejeződött az összes betöltésnél, a kereszt-ellenőrzési modell teljesítmény-mérőszámokat generál, és az összes adathoz tartozó eredményeket jeleníti meg. Tekintse át ezeket a mérőszámokat, és ellenőrizze, hogy van-e magas vagy alacsony pontosságú egyetlen fold. 
 
 ### <a name="advantages-of-cross-validation"></a>A több ellenőrzés előnyei
 
-A modell kiértékelésének egy másik és gyakori módja az, hogy az adatmennyiséget egy betanítási és tesztelési csoportba ossza [szét](split-data.md), majd ellenőrzi a modellt a betanítási adaton. A kereszt-ellenőrzés azonban néhány előnyt nyújt:  
+A modellek kiértékelésének egy másik és gyakori módja az, hogy az adatmennyiséget a kiképzésre és a tesztelésre a [felosztott adat](split-data.md)használatával csoportosítsa, majd érvényesítse a modellt a betanítási adaton. A Cross-Validation azonban néhány előnyt nyújt:  
 
 -   Az ellenőrzés több tesztet használ.
 
-     A többértékű ellenőrzés a modell teljesítményét a megadott paraméterekkel méri nagyobb adatterületen. Ez azt is megtörténik, hogy a teljes betanítási adatkészletet a képzéshez és az értékeléshez használja, nem pedig egy részét. Ezzel szemben, ha a modellt egy véletlenszerű felosztásból generált adatok használatával érvényesíti, általában a modell kiértékelése csak 30%-os vagy kevesebb rendelkezésre álló adatok alapján történik.  
+    A többértékű ellenőrzés a modell teljesítményét a megadott paraméterekkel méri nagyobb adatterületen. Ez azt is megtörténik, hogy a teljes betanítási adatkészletet a képzéshez és az értékeléshez használja, egy rész helyett. Ezzel szemben, ha a modellt egy véletlenszerű felosztásból generált adatok használatával érvényesíti, általában a modell kiértékelése csak a rendelkezésre álló adatok 30 vagy kevesebb százalékára történik.  
 
-     Mivel azonban a kereszt-ellenőrzési vonatok és a modell többszöri ellenőrzése egy nagyobb adatkészleten keresztül történik, sokkal nagyobb számítási igényű, és sokkal hosszabb időt vesz igénybe, mint az ellenőrzés véletlenszerű felosztáskor.  
+    Mivel azonban a kereszt-ellenőrzési vonatok és a modellt többször is érvényesítik egy nagyobb adatkészleten keresztül, sokkal több számítási feladatuk van. Sokkal hosszabb időt vesz igénybe, mint az ellenőrzés véletlenszerű felosztáskor.  
 
--   A több érvényesítés kiértékeli az adatkészletet és a modellt is.
+-   A többszörös ellenőrzés kiértékeli az adatkészletet és a modellt is.
 
-     Az átellenőrzés nem csupán egy modell pontosságát méri, hanem azt is, hogy az adatkészletnek milyen reprezentatívnak kell lennie, és hogy mennyire érzékeny a modell az adatok változásaira.  
+    Az átellenőrzés nem csupán egy modell pontosságát méri. Emellett azt is megtudhatja, hogy az adatkészlet mennyire reprezentatív, és hogy mennyire érzékeny a modell az adatok változásaira.  
 
 ## <a name="how-to-use-cross-validate-model"></a>A Cross validate Model használata
 
-A több érvényesítés hosszú időt is igénybe vehet, ha az adatkészlet nagy méretű.  Ezért a modell kiépítésének és tesztelésének kezdeti fázisában **több ellenőrzési modellt** is használhat a modell paramétereinek kiértékeléséhez (feltéve, hogy a számítási idő tűrhető), majd betanítja és kiértékeli a modellt a a [kiépítési modellel](train-model.md) rendelkező paraméterek és a modell moduljainak [kiértékelése](evaluate-model.md) .
+A több érvényesítés hosszú időt is igénybe vehet, ha az adatkészlet nagy méretű.  Így a modell kiépítésének és tesztelésének kezdeti fázisában is használhat kereszt-ellenőrzési modellt. Ebben a fázisban kiértékelheti a modell paramétereinek jóságát (feltéve, hogy a számítási idő tűrhető). Ezután betaníthatja és kiértékelheti a modelljét a [betanítási modellel](train-model.md) létrehozott paraméterekkel, és [kiértékelheti a modell](evaluate-model.md) modulokat.
 
-Ebben az esetben a modellt a **Cross Validation Model**használatával is betanítja és teszteli.
+Ebben a forgatókönyvben a modellt többek között a modell betanításával és tesztelésével is elvégezheti.
 
-1. Adja hozzá a **Cross validate Model** modult a folyamathoz. Megtalálhatja Azure Machine Learning Designerben, a **modell pontozási & próbaverzió** kategóriában. 
+1. Adja hozzá a Cross validate Model modult a folyamathoz. Megtalálhatja Azure Machine Learning Designerben, a **modell pontozási & próbaverzió** kategóriában. 
 
-2. Bármely **besorolási** vagy **regressziós** modell kimenetének összekötése. 
+2. Bármely besorolási vagy regressziós modell kimenetének összekötése. 
 
-    Ha például **két osztályból álló Bayes-pontot** használ a besoroláshoz, konfigurálja a modellt a kívánt paraméterekkel, majd húzzon egy összekötőt az osztályozatlan **modell** portjáról a kereszt ellenőrzése megfelelő portra.  **Modell**. 
+    Ha például **két Class Bayes-pontot** használ a besoroláshoz, konfigurálja a modellt a kívánt paraméterekkel. Ezután húzzon egy összekötőt az osztályozatlan **modell** portjáról a kereszt-ellenőrzési modell megfelelő portjára. 
 
     > [!TIP] 
-    > A modellt nem szükséges betanítani, mert a **kereszt-ellenőrzési modell** automatikusan betanítja a modellt a kiértékelés részeként.  
-3.  A **kereszt-ellenőrzési modell** **adatkészletének** portjához csatlakoztasson bármely címkézett betanítási adatkészletet.  
+    > Nem kell betanítania a modellt, mert a kereszt-ellenőrzési modell automatikusan betanítja a modellt a kiértékelés részeként.  
+3.  A kereszt-ellenőrzési modell **adatkészletének** portjához csatlakoztasson bármely címkézett betanítási adatkészletet.  
 
-4.  A **kereszt-ellenőrzési modell** **Tulajdonságok** paneljén kattintson az **oszlop kiválasztásának indítása** elemre, és válassza ki azt az egyetlen oszlopot, amely tartalmazza az osztály címkéjét vagy a kiszámítható értéket. 
+4.  A kereszt-ellenőrzési modell **Tulajdonságok** paneljén válassza az **oszlop kiválasztó indítása**elemet. Válassza ki az osztály címkéjét vagy a kiszámítható értéket tartalmazó egyetlen oszlopot. 
 
-5. Állítsa be a **véletlenszerű vetőmag** paraméter értékét, ha szeretné megismételni az egymást követő futtatások egymás utáni futtatásainak eredményeit ugyanazon az adategységen.  
+5. Állítsa be a **véletlenszerű mag** paraméter értékét, ha meg szeretné ismételni a több ellenőrzés eredményét egymást követő futtatásokban ugyanazon az adategységen.  
 
-6.  A folyamat futtatása.
+6. A folyamat futtatása.
 
 7. A jelentések leírását a [Results (eredmények](#results) ) című szakaszban találja.
 
-    A modell későbbi újrafelhasználásához kattintson a jobb gombbal az algoritmust tartalmazó modul kimenetére (például a **két osztály Bayes pontjának gépe**), majd kattintson a **Mentés betanított modellként**elemre.
+    A modell későbbi újrafelhasználásához kattintson a jobb gombbal az algoritmust tartalmazó modul kimenetére (például a **két osztály Bayes pontjának gépe**). Ezután válassza **a Mentés betanítva modellként**lehetőséget.
 
 ## <a name="results"></a>Results (Eredmények)
 
-Az összes iteráció befejezése után a **Cross validate Model** a teljes adatkészlet pontszámait hozza létre, valamint a modell minőségének értékeléséhez használható teljesítménymutatókat.
+Az összes iteráció befejezése után a Cross validate Model a teljes adatkészlet pontszámait hozza létre. Emellett teljesítménymutatókat is létrehoz, amelyeket a modell minőségének felméréséhez használhat.
 
 ### <a name="scored-results"></a>Felhorzsolt eredmények
 
 A modul első kimenete tartalmazza az egyes sorokhoz tartozó forrásadatokat, valamint az előre jelzett értékeket és a kapcsolódó valószínűségeket. 
 
-Ha meg szeretné tekinteni ezeket az eredményeket, a folyamatban kattintson a jobb gombbal a **modell ellenőrzése** elemre, válassza a **pontozásos eredmények**lehetőséget, majd kattintson a **Megjelenítés**elemre.
+Ha meg szeretné tekinteni ezeket az eredményeket, a folyamatban kattintson a jobb gombbal a modell átellenőrzése modulra. Válassza a **pontozásos eredmények**lehetőséget, majd válassza a **Megjelenítés**lehetőséget.
 
 | Új oszlop neve      | Leírás                              |
 | -------------------- | ---------------------------------------- |
-| Pontozásos Címkék        | Ezt az oszlopot a rendszer az adatkészlet végén adja hozzá, és az egyes sorok előre jelzett értékét tartalmazza. |
-| Pontozásos valószínűségek | Ezt az oszlopot a rendszer az adatkészlet végén adja hozzá, és jelzi az érték becsült valószínűségét a **pontozásos címkékben**. |
-| Fold száma          | Azt jelzi, hogy a fold 0 alapú indexe az egyes adatsorokhoz lett rendelve, a kereszt-ellenőrzés során. |
+| Pontozásos Címkék        | Ezt az oszlopot az adatkészlet végén adja hozzá a rendszer. Az egyes sorok előre jelzett értékét tartalmazza. |
+| Pontozásos valószínűségek | Ezt az oszlopot az adatkészlet végén adja hozzá a rendszer. Azt jelzi, hogy az érték becsült valószínűsége a **pontozásos címkékben**. |
+| Fold száma          | A fold nulla alapú indexét jelzi, amelyet az egyes adatsorokhoz rendeltek a rendszer a kereszt-ellenőrzés során. |
 
  ### <a name="evaluation-results"></a>A kiértékelés eredménye
 
-A második jelentés hajtogatás szerint van csoportosítva. Ne feledje, hogy a végrehajtás során a **Cross validate Model** véletlenszerűen felosztja a betanítási adatait *n* -ba (alapértelmezés szerint 10). Az adatkészletben lévő minden egyes iteráció során a **Cross validate Model** egy behajtott ellenőrzési adatkészletként használja, és a fennmaradó *n-1* hajtogatást használja a modell betanításához. Az *n* -modellek mindegyike az összes többi karámban található adatra van tesztelve.
+A második jelentés hajtogatás szerint van csoportosítva. Ne feledje, hogy a végrehajtás során a Cross validate Model véletlenszerűen felosztja a betanítási adatait *n* -ba (alapértelmezés szerint 10). Az adatkészletben lévő minden egyes iteráció során a Cross validate Model egy foldot használ érvényesítési adatkészletként. A fennmaradó *n-1* hajtogatást használja a modell betanításához. Az *n* -modellek mindegyike az összes többi karámban található adatra van tesztelve.
 
 Ebben a jelentésben a kidobások index érték szerint, növekvő sorrendben vannak felsorolva.  Bármely más oszlop megrendeléséhez mentheti az eredményeket adatkészletként.
 
-Ha meg szeretné tekinteni ezeket az eredményeket, a folyamatban kattintson a jobb gombbal a **modell ellenőrzése** elemre, válassza ki a **kiértékelési eredmények kidobásával**lehetőséget, majd kattintson a **Megjelenítés**elemre.
+Ha meg szeretné tekinteni ezeket az eredményeket, a folyamatban kattintson a jobb gombbal a modell átellenőrzése modulra. Válassza ki **a kiértékelési eredmények**elemet, majd válassza a **Megjelenítés**lehetőséget.
 
 
 |Oszlop neve| Leírás|
 |----|----|
-|Fold száma| Az egyes összecsukható azonosítók. Ha 5 hajtogatást hozott létre, a 0 és 4 közötti számú adat 5 részhalmaza lesz.
+|Fold száma| Az egyes összecsukható azonosítók. Ha öt hajtogatást hozott létre, a 0 és 4 közötti számú adat öt részhalmaza lesz.
 |A kiszorzott példák száma|Az egyes hajtogatáshoz rendelt sorok száma Nagyjából egyenlőnek kell lenniük. |
 
 
-Emellett a következő metrikák is szerepelnek a kiértékelt modell típusától függően. 
+A modul a következő metrikákat is tartalmazza a kiértékeléshez használt modell típusától függően: 
 
 + **Besorolási modellek**: precizitás, visszahívás, F-pontszám, AUC, pontosság  
 
@@ -119,14 +118,14 @@ Emellett a következő metrikák is szerepelnek a kiértékelt modell típusát�
 
 ## <a name="technical-notes"></a>Technikai megjegyzések  
 
-+ Az adatkészletek normalizálása az ajánlott eljárás az adathalmazok átellenőrzése előtt. 
++ Az adatkészletek normalizálása az ajánlott eljárás, mielőtt a rendszer áttekintse azokat. 
 
-+ Mivel a **Cross validate Model** Trains és a modell többször is érvényesítve van, sokkal nagyobb számítási igényű, és hosszabb ideig tart, mint ha a modellt véletlenszerűen felosztott adatkészlet használatával érvényesítette. 
++ A Cross validate Model sokkal több számítási igényű, és hosszabb időt vesz igénybe, mint ha a modellt egy véletlenszerűen osztott adatkészlet alapján érvényesítette. Ennek az az oka, hogy a modell többek között ellenőrzi a vonatokat, és többször is ellenőrzi a modellt.
 
 + Az adatkészletet nem kell kiosztani képzésre és tesztelési csoportokra, ha a modell pontosságának méréséhez kereszt-érvényesítést használ. 
 
 
 ## <a name="next-steps"></a>További lépések
 
-Tekintse [meg Azure Machine learning szolgáltatás számára elérhető modulok készletét](module-reference.md) . 
+Tekintse meg a Azure Machine Learning szolgáltatás [számára elérhető modulok készletét](module-reference.md) . 
 

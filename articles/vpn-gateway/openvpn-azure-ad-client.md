@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 10/08/2019
 ms.author: cherylmc
-ms.openlocfilehash: f4241b2ace2d7c86e1ed9036ca6d1da4a59eb61f
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 704dcd6335766a6058de4e520b8dcbca0d304c9d
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73517526"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73721467"
 ---
 # <a name="configure-a-vpn-client-for-p2s-vpn-connections-azure-ad-authentication-preview"></a>VPN-ügyfél konfigurálása a P2S VPN-kapcsolatokhoz: Azure AD-hitelesítés (előzetes verzió)
 
@@ -20,7 +20,7 @@ Ebből a cikkből megtudhatja, hogyan konfigurálhat VPN-ügyfelet egy virtuáli
 
 ## <a name="profile"></a>Ügyféloldali profilok használata
 
-A csatlakozáshoz konfigurálnia kell egy VPN-ügyféloldali profilt minden olyan számítógépen, amely csatlakozni szeretne a VNet. Létrehozhat egy ügyféloldali profilt a számítógépen, exportálhatja, majd importálhatja további számítógépekre.
+A csatlakozáshoz [le kell töltenie](https://www.microsoft.com/p/azure-vpn-client-preview/9np355qt2sqb?rtc=1&activetab=pivot:overviewtab) az Azure VPN-ügyfelet, és konfigurálnia kell egy VPN-ügyféloldali profilt minden olyan számítógépen, amely csatlakozni szeretne a VNet. Létrehozhat egy ügyféloldali profilt a számítógépen, exportálhatja, majd importálhatja további számítógépekre.
 
 ### <a name="cert"></a>Tanúsítvány alapú ügyféloldali profil létrehozása
 

@@ -1,7 +1,7 @@
 ---
 title: Márka észlelése – Computer Vision
 titleSuffix: Azure Cognitive Services
-description: A Computer Vision API használatával a márka/embléma észlelésével kapcsolatos fogalmak.
+description: Ez a cikk az objektumok észlelésének speciális módját tárgyalja; a márka és/vagy embléma észlelése a Computer Vision API használatával.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 08/08/2019
 ms.author: pafarley
-ms.openlocfilehash: c3a80cbdd166f77681665ee3675c1a71ce3a9bd6
-ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
+ms.openlocfilehash: 117beca1284f28c75c1ac772425423f732b8a236
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70967093"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73718636"
 ---
 # <a name="detect-popular-brands-in-images"></a>Népszerű márkák felismerése képeken
 
@@ -74,7 +74,7 @@ Bizonyos esetekben a Brand detektor az embléma képét és a stilizált márkan
 
 ## <a name="use-the-api"></a>Az API használata
 
-A márka észlelése funkció a [rendszerkép elemzése](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) API részét képezi. Ezt az API-t natív SDK-n vagy REST-hívásokon keresztül hívhatja. Belefoglalás `Brands` a **visualFeatures** lekérdezési paraméterbe. Ezután, amikor megkapja a teljes JSON-választ, egyszerűen elemezze a `"brands"` szakasz tartalmának karakterláncát.
+A márka észlelése funkció a [rendszerkép elemzése](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) API részét képezi. Ezt az API-t natív SDK-n vagy REST-hívásokon keresztül hívhatja. `Brands` belefoglalása a **visualFeatures** lekérdezési paraméterbe. Ezután a teljes JSON-válasz beszerzése után egyszerűen elemezze az `"brands"` szakasz tartalmának karakterláncát.
 
-* [Rövid útmutató: Computer Vision .NET SDK](./quickstarts-sdk/csharp-sdk.md)
-* [Rövid útmutató: Rendszerkép elemzése (REST API)](./quickstarts/csharp-analyze.md)
+* [Gyors útmutató: Computer Vision .NET SDK](./quickstarts-sdk/csharp-sdk.md)
+* [Gyors útmutató: rendszerkép elemzése (REST API)](./quickstarts/csharp-analyze.md)

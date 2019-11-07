@@ -7,13 +7,13 @@ ms.author: jzim
 manager: jeconnoc
 ms.topic: tutorial
 ms.service: container-service
-ms.date: 05/14/2019
-ms.openlocfilehash: 01319de8fd72875ca35bb7a869a6eaedee62f2a7
-ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
+ms.date: 11/04/2019
+ms.openlocfilehash: 4a09a0fe4aa1f04e665aeb71ebece17a8b368090
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72285534"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73582389"
 ---
 # <a name="tutorial-create-an-azure-red-hat-openshift-cluster"></a>Oktatóanyag: Azure Red Hat OpenShift-fürt létrehozása
 
@@ -34,8 +34,6 @@ Ebben az oktatóanyag-sorozatban az alábbiakkal ismerkedhet meg:
 
 > [!IMPORTANT]
 > Ehhez az oktatóanyaghoz az Azure CLI verziójának 2.0.65 van szükség.
->    
-> Az Azure Red Hat OpenShift használata előtt legalább 4 Azure Red Hat OpenShift fenntartott alkalmazás-csomópontot kell vásárolnia az [Azure Red Hat OpenShift fejlesztői környezet beállítása](howto-setup-environment.md#purchase-azure-red-hat-openshift-application-nodes-reserved-instances)című témakörben leírtak szerint.
 
 Az oktatóanyag elkezdése előtt:
 
@@ -48,13 +46,13 @@ Győződjön meg arról, hogy [beállította a fejlesztési környezetet](howto-
 
 ## <a name="step-1-sign-in-to-azure"></a>1\. lépés: bejelentkezés az Azure-ba
 
-Ha helyileg futtatja az Azure CLI-t, nyisson meg egy bash parancs-rendszerhéjat, és futtassa `az login` parancsot az Azure-ba való bejelentkezéshez.
+Ha helyileg futtatja az Azure CLI-t, nyisson meg egy bash parancs-rendszerhéjat, és futtassa `az login` az Azure-ba való bejelentkezéshez.
 
 ```bash
 az login
 ```
 
- Ha több előfizetéshez is rendelkezik hozzáféréssel, futtassa `az account set -s {subscription ID}` `{subscription ID}` értéket a használni kívánt előfizetéssel.
+ Ha több előfizetéshez is rendelkezik hozzáféréssel, futtassa `az account set -s {subscription ID}` a használni kívánt előfizetéssel `{subscription ID}` cserélje le.
 
 ## <a name="step-2-create-an-azure-red-hat-openshift-cluster"></a>2\. lépés: Azure Red Hat OpenShift-fürt létrehozása
 
@@ -73,7 +71,7 @@ Válasszon egy helyet a fürt létrehozásához. Az Azure-OpenShift támogató A
 LOCATION=<location>
 ```
 
-Állítsa `APPID` értéket az [Azure ad-alkalmazás regisztrálásának](howto-aad-app-configuration.md#create-an-azure-ad-app-registration)5. lépésében mentett értékre.  
+Állítsa `APPID` értéket az [Azure ad-alkalmazás regisztrációjának létrehozása](howto-aad-app-configuration.md#create-an-azure-ad-app-registration)5. lépésében mentett értékre.  
 
 ```bash
 APPID=<app ID value>
@@ -85,13 +83,13 @@ APPID=<app ID value>
 GROUPID=<group ID value>
 ```
 
-Állítsa be a `SECRET` értéket az [ügyfél titkos kulcsának létrehozása](howto-aad-app-configuration.md#create-a-client-secret)szakasz 8. lépésében mentett értékre.  
+Állítsa be `SECRET` értéket az [ügyfél titkos kulcsának létrehozása](howto-aad-app-configuration.md#create-a-client-secret)szakasz 8. lépésében mentett értékre.  
 
 ```bash
 SECRET=<secret value>
 ```
 
-Állítsa be a `TENANT` értéket az [új bérlő létrehozása](howto-create-tenant.md#create-a-new-azure-ad-tenant) szakasz 7. lépésében mentett bérlői azonosító értékre.  
+`TENANT` beállítása az [új bérlő létrehozása](howto-create-tenant.md#create-a-new-azure-ad-tenant) a 7. lépésben mentett bérlői azonosító értékre  
 
 ```bash
 TENANT=<tenant ID>
@@ -111,7 +109,7 @@ Ha az alapértelmezett előfizetésen kívüli hálózathoz csatlakozik, akkor a
 
 `az provider register -n Microsoft.ContainerService --wait`
 
-Először kérje le a meglévő VNET azonosítóját. Az azonosító a következőket fogja megadni: `/subscriptions/{subscription id}/resourceGroups/{resource group of VNET}/providers/Microsoft.Network/virtualNetworks/{VNET name}`.
+Először kérje le a meglévő VNET azonosítóját. Az azonosító a következőket képezi: `/subscriptions/{subscription id}/resourceGroups/{resource group of VNET}/providers/Microsoft.Network/virtualNetworks/{VNET name}`.
 
 Ha nem ismeri a hálózat nevét vagy az erőforráscsoportot, amelyhez a meglévő VNET tartozik, lépjen a [Virtual Networks (virtuális hálózatok](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Network%2FvirtualNetworks) ) panelre, és kattintson a virtuális hálózatra. Megjelenik a virtuális hálózat lap, és felsorolja a hálózat nevét és a hozzá tartozó erőforráscsoportot.
 
@@ -145,7 +143,7 @@ az openshift create --resource-group $CLUSTER_NAME --name $CLUSTER_NAME -l $LOCA
 > [!NOTE]
 > Ha hibaüzenet jelenik meg, hogy az állomásnév nem érhető el, előfordulhat, hogy a fürt neve nem egyedi. Próbálja meg törölni az eredeti alkalmazás regisztrációját, és ismételje meg a lépéseket egy másik fürt nevével az [új alkalmazás regisztrációjának létrehozása](howto-aad-app-configuration.md#create-an-azure-ad-app-registration)című témakörben, és hagyja ki az új felhasználó és biztonsági csoport létrehozásának lépéseit.
 
-Néhány perc elteltével a `az openshift create` művelet befejeződik.
+Néhány perc elteltével `az openshift create` fog befejeződik.
 
 ### <a name="get-the-sign-in-url-for-your-cluster"></a>A fürt bejelentkezési URL-címének beolvasása
 
@@ -155,9 +153,9 @@ A következő parancs futtatásával szerezze be a fürtbe való bejelentkezésh
 az openshift show -n $CLUSTER_NAME -g $CLUSTER_NAME
 ```
 
-Keresse meg a `publicHostName` értéket a kimenetben, például: `"publicHostname": "openshift.xxxxxxxxxxxxxxxxxxxx.eastus.azmosa.io"`
+Keresse meg a `publicHostName` a kimenetben, például: `"publicHostname": "openshift.xxxxxxxxxxxxxxxxxxxx.eastus.azmosa.io"`
 
-A fürt bejelentkezési URL-címe `https://` lesz, amelyet a `publicHostName` érték követ.  Például: `https://openshift.xxxxxxxxxxxxxxxxxxxx.eastus.azmosa.io`.  Ezt az URI-t a következő lépésben fogja használni az alkalmazás regisztrációs átirányítási URI-ja részeként.
+A fürt bejelentkezési URL-címét a rendszer a `publicHostName` érték után `https://`.  Például: `https://openshift.xxxxxxxxxxxxxxxxxxxx.eastus.azmosa.io`.  Ezt az URI-t a következő lépésben fogja használni az alkalmazás regisztrációs átirányítási URI-ja részeként.
 
 ## <a name="step-3-update-your-app-registration-redirect-uri"></a>3\. lépés: az alkalmazás regisztrációs átirányítási URI-ja frissítése
 
@@ -199,11 +197,11 @@ A OpenShift-konzolon kattintson a jobb felső sarokban látható kérdőjelre a 
 >
 > Másik lehetőségként közvetlenül is [letöltheti az oC CLI](https://www.okd.io/download.html) -t.
 
-A **parancssori eszközök** lap `oc login https://<your cluster name>.<azure region>.cloudapp.azure.com --token=<token value>` formátumú parancsot biztosít.  A parancs másolásához kattintson a *Másolás a vágólapra* gombra.  A terminál ablakban [állítsa be az elérési utat](https://docs.okd.io/latest/cli_reference/get_started_cli.html#installing-the-cli) úgy, hogy az tartalmazza az oC-eszközök helyi telepítését. Ezután jelentkezzen be a fürtbe az átmásolt oC CLI-parancs használatával.
+A **parancssori eszközök** lap a `oc login https://<your cluster name>.<azure region>.cloudapp.azure.com --token=<token value>`űrlap parancsát tartalmazza.  A parancs másolásához kattintson a *Másolás a vágólapra* gombra.  A terminál ablakban [állítsa be az elérési utat](https://docs.okd.io/latest/cli_reference/get_started_cli.html#installing-the-cli) úgy, hogy az tartalmazza az oC-eszközök helyi telepítését. Ezután jelentkezzen be a fürtbe az átmásolt oC CLI-parancs használatával.
 
-Ha nem tudta lekérni a jogkivonat értékét a fenti lépésekkel, szerezze be a jogkivonat értékét a következőtől: `https://<your cluster name>.<azure region>.cloudapp.azure.com/oauth/token/request`.
+Ha nem tudta lekérni a jogkivonat értékét a fenti lépésekkel, szerezze be a jogkivonat értékét a következőből: `https://<your cluster name>.<azure region>.cloudapp.azure.com/oauth/token/request`.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az oktatóanyag jelen részében megismerkedhetett a következőkkel:
 

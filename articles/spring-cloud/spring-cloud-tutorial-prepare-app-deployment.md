@@ -1,20 +1,17 @@
 ---
 title: Spring-alkalmazás előkészítése az Azure Spring Cloud üzembe helyezéséhez | Microsoft Docs
 description: Ebben a rövid útmutatóban egy Java Spring-alkalmazást készít elő az üzembe helyezéshez.
-services: spring-cloud
-author: v-vasuke
-manager: jeconnoc
-editor: ''
+author: jpconnock
 ms.service: spring-cloud
-ms.topic: quickstart
+ms.topic: tutorial
 ms.date: 10/06/2019
-ms.author: v-vasuke
-ms.openlocfilehash: 98d9f3f656cff84cec8d223ed535255157155bd2
-ms.sourcegitcommit: d773b5743cb54b8cbcfa5c5e4d21d5b45a58b081
+ms.author: jeconnoc
+ms.openlocfilehash: 6c3048fd27c3d3d4fdba0841fb4ab21bd10e15fe
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72039006"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73721255"
 ---
 # <a name="tutorial-prepare-a-java-spring-application-for-deployment-in-azure-spring-cloud"></a>Oktatóanyag: Java Spring-alkalmazás előkészítése az Azure Spring Cloud üzembe helyezéséhez
 
@@ -93,27 +90,27 @@ Az alábbi táblázat a Spring boot/Spring Cloud alkalmazás megfelelő verziói
 
 Spring boot-verzió | Tavaszi felhő verziója | Azure Spring Cloud-verzió
 ---|---|---
-2.0. x | Finchley. RELEASE | 2.0.0 – PILLANATKÉP
-2.1. x | Greenwich. RELEASE | 2.1.0 – PILLANATKÉP
+2.0. x | Finchley. RELEASE | 2.0. x
+2.1. x | Greenwich. RELEASE | 2.1. x
 
-Vegye fel ezt a kódrészletet a `pom.xml` értékre a "függőség" megfelelő Azure Spring Cloud-verzióval:
+Adja meg az alábbi kódrészletek egyikét a `pom.xml`ban.  Válassza ki azt a kódrészletet, amelynek a verziója megegyezik a saját verziójával.
 
+### <a name="version-20x"></a>2\.0. x verzió:
 ```xml
-    <repositories>
-        <repository>
-            <id>nexus-snapshots</id>
-            <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
-            <snapshots>
-                <enabled>true</enabled>
-            </snapshots>
-        </repository>
-    </repositories>
-    
-    <dependency>
+<dependency>
         <groupId>com.microsoft.azure</groupId>
         <artifactId>spring-cloud-starter-azure-spring-cloud-client</artifactId>
-        <version>2.1.0-SNAPSHOT</version>
-    </dependency>
+        <version>2.0.0</version>
+</dependency>
+```
+
+### <a name="version-21x"></a>2\.1. x verzió:
+```xml
+<dependency>
+        <groupId>com.microsoft.azure</groupId>
+        <artifactId>spring-cloud-starter-azure-spring-cloud-client</artifactId>
+        <version>2.1.0</version>
+</dependency>
 ```
 
 ## <a name="other-required-dependencies"></a>Egyéb szükséges függőségek

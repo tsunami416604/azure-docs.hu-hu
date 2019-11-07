@@ -6,12 +6,12 @@ ms.author: dacoulte
 ms.date: 10/01/2019
 ms.topic: sample
 ms.service: blueprints
-ms.openlocfilehash: 64af398ec4829a0336294b33fef102392b9a4099
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 6549cf030772d805b063510b9931968027639511
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73163878"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73583141"
 ---
 # <a name="recommendation-mapping-of-the-cis-microsoft-azure-foundations-benchmark-blueprint-sample"></a>Javaslat a CIS Microsoft Azure alapítványok teljesítményteszt-tervezetének hozzárendelésére
 
@@ -354,15 +354,15 @@ Ez a terv egy [Azure Policy](../../../policy/overview.md) -definíciót rendel h
 
 - A webalkalmazás csak HTTPS protokollon keresztül érhető el
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Most, hogy áttekintette a CIS Microsoft Azure Founds teljesítményteszt-tervezetének vezérlési leképezését, a következő cikkben tájékozódhat a tervről, vagy felkeresheti a Azure Policy a Azure Portal a kezdeményezés hozzárendeléséhez:
+Most, hogy áttekintette a CIS Microsoft Azure Founds teljesítményteszt-tervezetének vezérlési leképezését, az alábbi cikkekben megismerheti a tervet, vagy megtekintheti a Azure Policy a Azure Portal a kezdeményezés hozzárendeléséhez:
 
 > [!div class="nextstepaction"]
-> [CIS Microsoft Azure alapítványok teljesítményteszt-tervezete – áttekintés](./index.md)
-> [Azure Portal](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyMenuBlade/Definitions)
+> [Cis Microsoft Azure alapítványok teljesítményteszt – áttekintés](./index.md)
+> [CIS Microsoft Azure alapítványok teljesítményteszt-terv – a lépések üzembe helyezése](./deploy.md)
 
-További cikkek a tervrajzokról és azok használatáról:
+További cikkek a tervekről és a használatukról:
 
 - Tudnivalók a [tervek életciklusáról](../../concepts/lifecycle.md).
 - A [statikus és dinamikus paraméterek](../../concepts/parameters.md) használatának elsajátítása.

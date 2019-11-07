@@ -1,22 +1,22 @@
 ---
-title: Blob storage-események küldéséhez a webes végpont - portálon |} A Microsoft Docs
-description: Az Azure Event Grid és az Azure Portal segítségével létrehozhat egy Blob Storage-fiókot, és feliratkozhat annak eseményeire. Az eseményeket küld egy Webhookot.
+title: 'Gyors útmutató: blob Storage-események küldése a webes végpontnak – portál'
+description: 'Gyors útmutató: Azure Event Grid és Azure Portal használatával hozzon létre blob Storage-fiókot, és regisztrálja az eseményeit. Küldje el az eseményeket egy webhookba.'
 services: event-grid
 keywords: ''
 author: spelluru
 ms.author: spelluru
-ms.date: 07/11/2019
+ms.date: 11/05/2019
 ms.topic: quickstart
 ms.service: event-grid
 ms.custom: seodec18
-ms.openlocfilehash: a11e04a92375f5b52849257124344673301739e5
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.openlocfilehash: 9ecffc25461a909d47329d536d1c19724b3c22ac
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67839151"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73718069"
 ---
-# <a name="quickstart-route-blob-storage-events-to-web-endpoint-with-the-azure-portal"></a>Gyors útmutató: Webes végpont az Azure Portallal Blob storage-események átirányítása
+# <a name="quickstart-route-blob-storage-events-to-web-endpoint-with-the-azure-portal"></a>Gyors útmutató: blob Storage-események átirányítása webes végpontra a Azure Portal
 
 Az Azure Event Grid egy felhőalapú eseménykezelési szolgáltatás. Ebben a cikkben létrehoz egy Blob Storage-fiókot az Azure Portallal, feliratkozik a Blob Storage-hoz tartozó eseményekre, és aktivál egy eseményt az eredmény megtekintéséhez. Általában olyan végpontoknak szoktunk eseményeket küldeni, amelyek eseményadatokat dolgoznak fel és műveleteket hajtanak végre. A cikk egyszerűsítése érdekében azonban az eseményeket egy olyan webalkalmazásnak küldjük el, amely az üzenetek gyűjtésével és megjelenítésével foglalkozik.
 
@@ -26,7 +26,7 @@ A folyamat végén látni fogja, hogy a rendszer elküldte az eseményadatokat a
 
 ![Eredmények megtekintése](./media/blob-event-quickstart-portal/view-results.png)
 
-## <a name="create-a-storage-account"></a>Tárfiók létrehozása
+## <a name="create-a-storage-account"></a>Create a storage account
 
 1. Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
 
@@ -102,7 +102,7 @@ A Blob Storage-hoz egy eseményt egy fájl feltöltésével aktiválhat. A fájl
 
 1. Keresse meg tallózással a tesztfájlt, és töltse fel.
 
-1. Ön kiváltotta az eseményt, az Event Grid pedig elküldte az üzenetet a feliratkozáskor konfigurált végpontnak. Az üzenet a JSON formátumban vannak, és a egy vagy több esemény álló tömböt tartalmaz. A következő példában a JSON-üzenetet egy esemény egy tömböt tartalmaz. Tekintse meg a webalkalmazását, és észreveheti, hogy az fogadott egy blob által létrehozott eseményt. 
+1. Ön kiváltotta az eseményt, az Event Grid pedig elküldte az üzenetet a feliratkozáskor konfigurált végpontnak. Az üzenet JSON formátumú, és egy vagy több eseményből álló tömböt tartalmaz. A következő példában a JSON-üzenet egyetlen eseményt tartalmazó tömböt tartalmaz. Tekintse meg a webalkalmazását, és észreveheti, hogy az fogadott egy blob által létrehozott eseményt. 
 
    ```json
    [{

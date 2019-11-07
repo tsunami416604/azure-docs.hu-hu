@@ -4,19 +4,19 @@ description: Útmutató Azure Migrate projekt létrehozásához és egy Assessme
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: article
-ms.date: 07/09/2019
+ms.date: 11/06/2019
 ms.author: raynew
-ms.openlocfilehash: bd119956ced79b73b0376fe4530c9eafaf870238
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: a4e66175b20552e632702cb2ba46d0ae6c0956d4
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70934179"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73720247"
 ---
 # <a name="add-an-assessmentmigration-tool-for-the-first-time"></a>Felmérési/migrálási eszköz hozzáadása első alkalommal
 
 Ez a cikk azt ismerteti, hogyan adhat hozzá értékelést vagy áttelepítési eszközt egy [Azure Migrate](migrate-overview.md) projekthez az első alkalommal.  
-Azure Migrate egy központi központot biztosít a helyszíni alkalmazások és munkaterhelések, valamint a magán-és nyilvános Felhőbeli virtuális gépek felderítésének, értékelésének és áttelepítésének nyomon követéséhez az Azure-ban. Az elosztó Azure Migrate eszközöket biztosít az értékeléshez és az áttelepítéshez, valamint a harmadik féltől származó, független szoftvergyártók (ISV) [ajánlatokhoz](migrate-services-overview.md#isv-integration) . 
+Azure Migrate egy központi központot biztosít a helyszíni alkalmazások és munkaterhelések, valamint a magán-és nyilvános Felhőbeli virtuális gépek felderítésének, értékelésének és áttelepítésének nyomon követéséhez az Azure-ban. Az elosztó Azure Migrate eszközöket biztosít az értékeléshez és az áttelepítéshez, valamint az egyéb eszközökhöz és a független szoftvergyártók (ISV) [ajánlatokhoz](migrate-services-overview.md#isv-integration) . 
 
 ## <a name="create-a-project-and-add-a-tool"></a>Projekt létrehozása és eszköz hozzáadása
 
@@ -67,7 +67,7 @@ Hozzon létre egy új Azure Migrate projektet egy Azure-előfizetésben, és adj
     > Projekt létrehozásakor legalább egy értékelési vagy áttelepítési eszközt hozzá kell adnia.
 
 5. Az **értékelés kiválasztása eszközben**adjon hozzá egy Assessment eszközt. Ha nincs szüksége értékelési eszközre, válassza **a kiértékelési eszköz hozzáadásának mellőzése most** > **tovább**lehetőséget. 
-2. Az **áttelepítési eszköz kiválasztása lapon**szükség szerint adjon hozzá egy áttelepítési eszközt. Ha jelenleg nincs szüksége áttelepítési eszközre, válassza a > **következőre** **az áttelepítési eszköz hozzáadásának mellőzése**lehetőséget.
+2. Az **áttelepítési eszköz kiválasztása lapon**szükség szerint adjon hozzá egy áttelepítési eszközt. Ha jelenleg nincs szüksége áttelepítési eszközre, válassza **az áttelepítési eszköz hozzáadásának mellőzése most > a** **tovább**lehetőséget.
 3. A **felülvizsgálat + eszközök hozzáadása**lapon tekintse át a beállításokat, majd kattintson az **eszközök hozzáadása**elemre.
 
 A projekt létrehozása után további eszközöket választhat a kiszolgálók és munkaterhelések, adatbázisok és webalkalmazások értékeléséhez és áttelepítéséhez.

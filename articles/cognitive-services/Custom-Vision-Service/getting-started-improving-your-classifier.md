@@ -1,7 +1,7 @@
 ---
 title: Az osztályozó javítása – Custom Vision Service
 titleSuffix: Azure Cognitive Services
-description: Ismerje meg, hogy miként javítható az osztályozó minősége.
+description: Ebből a cikkből megtudhatja, hogy az adatmennyiség, a minőség és a különböző mennyiség hogyan javíthatja az osztályozó minőségét a Custom Vision szolgáltatásban.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 03/21/2019
 ms.author: pafarley
-ms.openlocfilehash: d71c750185589fd488df70b63fd48e9e674ee3dc
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: c2858d5f9bca662cbbcd48b2345a7dc2c7ae48b2
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68561054"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73718542"
 ---
 # <a name="how-to-improve-your-classifier"></a>Az osztályozó javítása
 
@@ -53,11 +53,11 @@ Fontos figyelembe venni a betanítási adataihoz tartozó relatív mennyiségeke
 
 A probléma megoldásához több rendszerkép is használható, amelyek biztosítják, hogy az osztályozó is általánosítható legyen. Az alábbi módokon teheti meg, hogy a képzési lehetőségek sokrétűek legyenek:
 
-* __Háttér__ A különböző hátterek előtt adja meg az objektum képeit. A természetes környezetekben található fényképek jobbak, mint a semleges hátterű fényképek, mivel további információkat biztosítanak az osztályozó számára.
+* __Háttér:__ A különböző hátterek előtt adja meg az objektum képeit. A természetes környezetekben található fényképek jobbak, mint a semleges hátterű fényképek, mivel további információkat biztosítanak az osztályozó számára.
 
     ![Háttérbeli minták képe](./media/getting-started-improving-your-classifier/background.png)
 
-* __Világítás__ A képeket különböző világítással (a Flash, a magas expozícióval stb.), különösen akkor, ha az előrejelzéshez használt képek eltérő megvilágítással rendelkeznek. Az is hasznos, ha a képeket különböző telítettséggel, árnyalattal és fényerővel szeretné használni.
+* __Megvilágítás:__ A képeket különböző világítással (a Flash, a magas expozícióval stb.), különösen akkor, ha az előrejelzéshez használt képek eltérő megvilágítással rendelkeznek. Az is hasznos, ha a képeket különböző telítettséggel, árnyalattal és fényerővel szeretné használni.
 
     ![Világító minták képe](./media/getting-started-improving-your-classifier/lighting.png)
 
@@ -65,11 +65,11 @@ A probléma megoldásához több rendszerkép is használható, amelyek biztosí
 
     ![Méret minták képe](./media/getting-started-improving-your-classifier/size.png)
 
-* __Kamera szöge:__ Különböző kamera-szögek által készített lemezképek megadása. Ha az összes fényképet rögzített kamerákkal (például a térfigyelő kamerákkal) kell elvégezni, ügyeljen arra, hogy egy másik címkét rendeljen minden rendszeresen előforduló objektumhoz a nem kapcsolódó objektumok&mdash;(például Lámpaoszlopok) értelmezésének elkerülése érdekében. a legfontosabb szolgáltatásként.
+* __Kamera szöge:__ Különböző kamera-szögek által készített lemezképek megadása. Ha az összes fényképet rögzített kamerákkal (például megfigyelő kamerákkal) kell elvégezni, ügyeljen arra, hogy egy másik címkét rendeljen minden rendszeresen előforduló objektumhoz, hogy ne legyenek túlilleszkedő&mdash;a nem kapcsolódó objektumok (például a lámpaoszlopok) értelmezése a legfontosabb funkció.
 
     ![Szög minták képe](./media/getting-started-improving-your-classifier/angle.png)
 
-* __Stílusa__ Adja meg ugyanazt az osztály különböző stílusainak képeit (például az azonos gyümölcs különböző fajtáit). Ha azonban a különböző stílusok (például a Mickey Mouse és a valós egér) objektumai vannak, akkor azt javasoljuk, hogy külön osztályokként címkézse őket, hogy jobban képviseljék a különböző funkcióit.
+* __Stílus:__ Adja meg ugyanazt az osztály különböző stílusainak képeit (például az azonos gyümölcs különböző fajtáit). Ha azonban a különböző stílusok (például a Mickey Mouse és a valós egér) objektumai vannak, akkor azt javasoljuk, hogy külön osztályokként címkézse őket, hogy jobban képviseljék a különböző funkcióit.
 
     ![Stílusú minták képe](./media/getting-started-improving-your-classifier/style.png)
 
@@ -80,7 +80,7 @@ Előfordulhat, hogy a projekt egy bizonyos pontján _negatív mintákat_ kell ho
 > [!NOTE]
 > A Custom Vision Service támogatja a negatív rendszerképek automatikus kezelését. Ha például a szőlő és a banán besorolását készíti elő, és a cipőt az előrejelzéshez beküldi, akkor az osztályozó az adott képet a szőlő és a banán esetében is a 0%-os értékkel közelíti meg.
 > 
-> Ha azonban a negatív rendszerképek csak a betanítás során használt rendszerképek variációi, akkor valószínű, hogy a modell a nagy hasonlóságok miatt a negatív képeket címkézett osztályként fogja osztályozni. Ha például egy narancssárga és a grapefruit besorolással rendelkezik, és egy clementine-képet is megadsz, akkor a clementine narancssárgaként jelenhet meg, mivel a clementine számos funkciója hasonlít a narancssárga értékekre. Ha a negatív képek ilyen jellegűek, javasoljuk, hogy hozzon létre egy vagy több további címkét ( például a többiet), és címkézze a negatív képeket ezzel a címkével a képzés során, hogy a modell jobban megkülönböztetse ezeket az osztályokat.
+> Ha azonban a negatív rendszerképek csak a betanítás során használt rendszerképek variációi, akkor valószínű, hogy a modell a nagy hasonlóságok miatt a negatív képeket címkézett osztályként fogja osztályozni. Ha például egy narancssárga és a grapefruit besorolással rendelkezik, és egy clementine-képet is megadsz, akkor a clementine narancssárgaként jelenhet meg, mivel a clementine számos funkciója hasonlít a narancssárga értékekre. Ha a negatív képek ilyen jellegűek, javasoljuk, hogy hozzon létre egy vagy több további címkét (például a **többiet**), és címkézze a negatív képeket ezzel a címkével a képzés során, hogy a modell jobban megkülönböztetse ezeket az osztályokat.
 
 ## <a name="use-prediction-images-for-further-training"></a>Előrejelzési lemezképek használata a további képzéshez
 
@@ -92,7 +92,7 @@ Ha a lemezképet az előrejelzési végpontra küldi el, vagy a rendszerkép bes
 
 2. Vigye az egérmutatót egy képre az osztályozó által előre jelzett címkék megtekintéséhez. A képek rendezése úgy történik, hogy azok, amelyek az osztályozó legtöbb tökéletesítését lehetővé teszik, megjelennek a tetején. Ha másik rendezési módszert szeretne használni, válasszon ki egy kijelölést a __Rendezés__ szakaszban. 
 
-    Ha képet szeretne adni a meglévő betanítási adatokhoz, válassza ki a képet, állítsa be a megfelelő címkét, majd kattintson a __Mentés és bezárás__gombra. A rendszer eltávolítja a lemezképet az __előrejelzések__ közül, és hozzáadja a betanítási lemezképek készletéhez. A betanítási __képek__ lapon tekintheti meg.
+    Ha képet szeretne adni a meglévő betanítási adatokhoz, válassza ki a képet, állítsa be a megfelelő címkét, majd kattintson a __Mentés és bezárás__gombra. A rendszer eltávolítja a lemezképet az __előrejelzések__ közül, és hozzáadja a betanítási lemezképek készletéhez. A __betanítási képek__ lapon tekintheti meg.
 
     ![A címkézési lap képe](./media/getting-started-improving-your-classifier/tag.png)
 

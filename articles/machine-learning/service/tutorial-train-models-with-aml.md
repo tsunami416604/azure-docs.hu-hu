@@ -10,12 +10,12 @@ author: sdgilley
 ms.author: sgilley
 ms.date: 11/04/2019
 ms.custom: seodec18
-ms.openlocfilehash: dd215e754b7e72c9ac424a53015955332068558e
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: HT
+ms.openlocfilehash: 4d16c07bf42c99b905868cb956d82e8723da61d6
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/04/2019
-ms.locfileid: "73493565"
+ms.locfileid: "73581544"
 ---
 # <a name="tutorial-train-image-classification-models-with-mnist-data-and-scikit-learn-using-azure-machine-learning"></a>Oktatóanyag: képosztályozási modellek betanítása MNIST-adatokkal és scikit – további tudnivalók a Azure Machine Learning használatával
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -44,7 +44,7 @@ Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy ing
 * Fejezze be az [oktatóanyagot: első lépésként hozzon létre egy ml-kísérletet](tutorial-1st-experiment-sdk-setup.md) :
     * Munkaterület létrehozása
     * Az oktatóanyagok notebookjának klónozása a munkaterületen lévő mappába.
-    * Felhőalapú számítási példány létrehozása.
+    * Felhőalapú notebook-alapú virtuális gép létrehozása.
 
 * A klónozott **oktatóanyagok** mappában Nyissa meg az **IMG-besorolás-part1-Training. ipynb** notebookot. 
 

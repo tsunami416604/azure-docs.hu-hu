@@ -13,19 +13,19 @@ ms.date: 09/18/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5d6cce859aa26935f0b6007fe8e5ff2c2239b210
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: cddf2ab36b2372ce93ae8a2a6230ccb02ae30117
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67109447"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73721029"
 ---
 # <a name="azure-ad-connect-and-azure-ad-connect-health-installation-roadmap"></a>Az Azure AD Connect és az Azure AD Connect Health telepítési ütemterve
 
 ## <a name="install-azure-ad-connect"></a>Az Azure AD Connect telepítése
 
 > [!IMPORTANT]
-> A Microsoft nem támogatja az Azure AD Connect szinkronizálásának módosítását vagy a hivatalos dokumentumokban szereplő műveleteken kívüli használat. Minden ilyen művelet azt eredményezheti, hogy az Azure AD Connect szinkronizálása inkonzisztens vagy nem támogatott állapotba kerül. A Microsoft ezért nem tud műszaki támogatást biztosítani az ilyen környezetekhez.
+> A Microsoft nem támogatja az Azure AD Connect szinkronizálásának módosítását vagy a hivatalos dokumentumokban szereplő műveleteken kívüli használat. Ezen műveletek bármelyike inkonzisztens vagy nem támogatott állapotba Azure AD Connect szinkronizálást eredményezhet. Ennek eredményeképpen a Microsoft nem tud technikai támogatást biztosítani az ilyen üzemelő példányokhoz.
 
 Az Azure AD Connect a [Microsoft letöltőközpontból](https://go.microsoft.com/fwlink/?LinkId=615771) tölthető le.
 
@@ -46,7 +46,7 @@ Az Azure AD Connect a [Microsoft letöltőközpontból](https://go.microsoft.com
 |Telepítés gyorsbeállítások használatával | [Az Azure AD Connect gyorstelepítése](./how-to-connect-install-express.md)|
 |Telepítés testreszabott beállítások használatával | [Az Azure AD Connect testreszabott telepítése](./how-to-connect-install-custom.md)|
 |Frissítés a DirSync szolgáltatásról | [Frissítés az Azure AD szinkronizáló eszközéről (DirSync)](./how-to-dirsync-upgrade-get-started.md)|
-|A telepítést követően | [A telepítés ellenőrzése és licencek hozzárendelése](how-to-connect-post-installation.md)|
+|A telepítést követően | [A telepítés ellenőrzése és licencek kiosztása](how-to-connect-post-installation.md)|
 
 ### <a name="learn-more-about-install-azure-ad-connect"></a>További információk az Azure AD Connect telepítésével kapcsolatban
 Az [üzemeltetéssel](how-to-connect-sync-operations.md) kapcsolatban felmerülő kérdések kezelésére is érdemes felkészülni. [Vészhelyzet](how-to-connect-sync-staging-server.md#disaster-recovery) esetére megfontolhatja egy készenléti kiszolgáló üzembe állítását. Ha gyakori konfigurációs módosításokat tervez, egy [átmeneti üzemmódú](how-to-connect-sync-staging-server.md) kiszolgáló beállításán is elgondolkodhat.
@@ -56,7 +56,7 @@ Az [üzemeltetéssel](how-to-connect-sync-operations.md) kapcsolatban felmerül�
 |Támogatott topológiák | [Azure AD Connect-topológiák](plan-connect-topologies.md)|
 |Tervezési alapelvek | [Az Azure AD Connect tervezési alapelvei](plan-connect-design-concepts.md)|
 |Telepítési fiókok | [További információk az Azure AD Connect hitelesítő adataival és engedélyeivel kapcsolatban](reference-connect-accounts-permissions.md)|
-|Az üzemeltetés megtervezése | [Az Azure AD Connect szinkronizálása: Üzemeltetési feladatok és szempontok](how-to-connect-sync-operations.md)|
+|Az üzemeltetés megtervezése | [Az Azure AD Connect szinkronizálása: üzemeltetési feladatok és szempontok](how-to-connect-sync-operations.md)|
 |A felhasználói bejelentkezés lehetőségei | [A felhasználói bejelentkezés lehetőségei az Azure AD Connectben](plan-connect-user-signin.md)|
 
 ## <a name="configure-sync-features"></a>A szinkronizálási funkciók konfigurálása
@@ -68,7 +68,7 @@ A [jelszókivonat-szinkronizálás](how-to-connect-password-hash-synchronization
 
 A [jelszóvisszaíró](../authentication/quickstart-sspr.md) szolgáltatás lehetővé teszi a felhasználók számára jelszavak módosítását és visszaállítását a felhőben, valamint a helyszíni jelszóházirend alkalmazását.
 
-[Eszközvisszaírás](how-to-connect-device-writeback.md) lehetővé teszi egy eszköz visszaírását a helyszíni Active Directory, a feltételes hozzáféréshez használható az Azure AD-ben regisztrált.
+Az [eszköz visszaírási](how-to-connect-device-writeback.md) lehetővé teszi, hogy az Azure ad-ban regisztrált eszközök visszakerüljenek a helyszíni Active Directoryra, így feltételes hozzáféréshez is használhatók.
 
 A [véletlen törlések megakadályozása](how-to-connect-sync-feature-prevent-accidental-deletes.md) szolgáltatás alapértelmezés szerint be van kapcsolva, és a felhőcímtárat védi az egy időben végrehajtott többszörös törlésektől. Alapértelmezés szerint futtatásonként 500 törlést tesz lehetővé. Ezt a beállítást szervezetének mérete alapján módosíthatja.
 
@@ -77,13 +77,13 @@ Az [automatikus frissítés](how-to-connect-install-automatic-upgrade.md) szolg�
 ### <a name="next-steps-to-configure-sync-features"></a>A szinkronizálási funkciók konfigurálásának következő lépései
 |Témakör |Hivatkozás|  
 | --- | --- |
-|A szűrés konfigurálása | [Az Azure AD Connect szinkronizálása: A szűrés konfigurálása](how-to-connect-sync-configure-filtering.md)|
+|A szűrés konfigurálása | [Az Azure AD Connect szinkronizálása: a szűrés konfigurálása](how-to-connect-sync-configure-filtering.md)|
 |Jelszókivonat szinkronizálása | [Jelszókivonat szinkronizálása](how-to-connect-password-hash-synchronization.md)|
 |Átmenő hitelesítés | [Átmenő hitelesítés](how-to-connect-pta.md)
 |Jelszóvisszaíró | [A jelszókezelés első lépései](../authentication/quickstart-sspr.md)|
 |Eszközvisszaíró | [Eszközvisszaírás engedélyezése az Azure AD Connectben](how-to-connect-device-writeback.md)|
-|Véletlen törlések megakadályozása | [Az Azure AD Connect szinkronizálása: Véletlen törlések megakadályozása](how-to-connect-sync-feature-prevent-accidental-deletes.md)|
-|Automatikus frissítés | [Azure AD Connect: Automatikus frissítés](how-to-connect-install-automatic-upgrade.md)|
+|Véletlen törlések megakadályozása | [Az Azure AD Connect szinkronizálása: véletlen törlések megakadályozása](how-to-connect-sync-feature-prevent-accidental-deletes.md)|
+|Automatikus frissítés | [Azure AD Connect: automatikus frissítés](how-to-connect-install-automatic-upgrade.md)|
 
 ## <a name="customize-azure-ad-connect-sync"></a>Az Azure AD Connect szinkronizálásának testreszabása
 Az Azure AD Connect-szinkronizálás alapértelmezett konfigurációja a legtöbb ügyfél és topológia számára megfelelő. Mindig akadnak azonban olyan helyzetek, amikor az alapértelmezett konfiguráció nem használható, és módosítást igényel. A módosítások végrehajtása a jelen szakaszban és a hivatkozott témakörökben leírtak szerint támogatott.
@@ -98,10 +98,10 @@ A szinkronizálás során alkalmazott konfigurációs modell neve: [deklaratív 
 |Témakör |Hivatkozás|  
 | --- | --- |
 |Az Azure AD Connect-szinkronizáláshoz kapcsolódó összes cikk | [Az Azure AD Connect szinkronizálása](how-to-connect-sync-whatis.md)|
-|Technikai kulcsfogalmak | [Az Azure AD Connect szinkronizálása: Műszaki fogalmak](how-to-connect-sync-technical-concepts.md)|
-|Az alapértelmezett konfiguráció ismertetése | [Az Azure AD Connect szinkronizálása: Az alapértelmezett konfiguráció ismertetése](concept-azure-ad-connect-sync-default-configuration.md)|
-|A felhasználók és a kapcsolattartók ismertetése | [Az Azure AD Connect szinkronizálása: Understanding felhasználók és a kapcsolattartók](concept-azure-ad-connect-sync-user-and-contacts.md)|
-|Deklaratív kiépítés | [Az Azure AD Connect szinkronizálása: A deklaratív üzembehelyezési kifejezések ismertetése](concept-azure-ad-connect-sync-declarative-provisioning-expressions.md)|
+|Technikai kulcsfogalmak | [Az Azure AD Connect szinkronizálása: technikai kulcsfogalmak](how-to-connect-sync-technical-concepts.md)|
+|Az alapértelmezett konfiguráció ismertetése | [Az Azure AD Connect szinkronizálása: az alapértelmezett konfiguráció ismertetése](concept-azure-ad-connect-sync-default-configuration.md)|
+|A felhasználók és a kapcsolattartók ismertetése | [Az Azure AD Connect szinkronizálása: a felhasználók és a kapcsolattartók ismertetése](concept-azure-ad-connect-sync-user-and-contacts.md)|
+|Deklaratív kiépítés | [Az Azure AD Connect szinkronizálása: a deklaratív kiépítés kifejezéseinek ismertetése](concept-azure-ad-connect-sync-declarative-provisioning-expressions.md)|
 |Az alapértelmezett konfiguráció módosítása | [Az alapértelmezett konfiguráció módosításának ajánlott eljárásai](how-to-connect-sync-best-practices-changing-default-configuration.md)|
 
 ## <a name="configure-federation-features"></a>Az összevonási funkciók konfigurálása
@@ -159,16 +159,17 @@ Az Azure AD Connect Health portálon riasztásokat, teljesítményfigyelési ada
     
 ![Az Azure AD Connect Health portál](./media/whatis-hybrid-identity-health/portalsidebar.png)
 
-* **Gyors üzembe helyezési**: Ha ezt a beállítást, a **gyors üzembe helyezés** panel nyílik meg. A **Get Tools** (Eszközök beszerzése) lehetőség kiválasztásával letöltheti az Azure AD Connect Health-ügynököt. Emellett hozzáférhet a dokumentációkhoz, és visszajelzést is küldhet.
-* **Az Azure Active Directory Connect (sync)** : Ez a lehetőség az Azure AD Connect Health által aktuálisan figyelt Azure AD Connect-kiszolgálók mutatja. A **Szinkronizálási hibák** bejegyzés az első bevezetett szinkronizálási szolgáltatása alapszintű szinkronizálási hibáit jeleníti meg kategóriák szerint. Ha kiválasztja a **Szinkronizálási szolgáltatások** bejegyzést, a megnyíló panel az Azure AD Connect-kiszolgálókra vonatkozó információkat tartalmazza. További információ ezekről a képességekről: [Az Azure AD Connect Health szinkronizálási szolgáltatás használata az AD FS szolgáltatással](how-to-connect-health-sync.md).
-* **Active Directory összevonási szolgáltatások**: Ez a lehetőség az Azure AD Connect Health által aktuálisan figyelt összes AD FS szolgáltatást mutatja. Ha kiválaszt egy példányt, a megnyíló panel az adott szolgáltatáspéldányra vonatkozó információkat tartalmazza. Az információk között tulajdonságokat, riasztásokat, megfigyelési adatokat, használatelemzést és egy áttekintést talál. További információ ezekről a képességekről: [Az Azure AD Connect Health használata az AD FS szolgáltatással](how-to-connect-health-adfs.md).
-* **Active Directory Domain Services**: Ez a lehetőség az Azure AD Connect Health által aktuálisan figyelt összes AD DS-erdőt mutatja. Ha kiválaszt egy erdőt, a megnyíló panel az adott erdőre vonatkozó információkat tartalmazza. Ezek az adatok a következők áttekintését teszik lehetővé: lényeges információk, tartományvezérlő irányítópult, replikáció állapota irányítópult, riasztások és figyelés. További információ ezekről a képességekről: [Az Azure AD Connect Health használata az AD DS szolgáltatással](how-to-connect-health-adds.md).
-* **Konfigurálása**: Ez a szakasz az alábbi funkciók be- és kikapcsolása lehetőséget kínál:
+* **Quick Start** (Gyors üzembe helyezés): Ha ezt a beállítást választja, megnyílik a **gyors üzembe helyezés** panelje. A **Get Tools** (Eszközök beszerzése) lehetőség kiválasztásával letöltheti az Azure AD Connect Health-ügynököt. Emellett hozzáférhet a dokumentációkhoz, és visszajelzést is küldhet.
+* **Azure Active Directory Connect (Sync)** ((Szinkronizálási) Azure Active Directory Connect): Ez a lehetőség az Azure AD Connect Health által aktuálisan monitorozott Azure AD Connect-kiszolgálókat mutatja. A **Szinkronizálási hibák** bejegyzés az első bevezetett szinkronizálási szolgáltatása alapszintű szinkronizálási hibáit jeleníti meg kategóriák szerint. Ha kiválasztja a **Szinkronizálási szolgáltatások** bejegyzést, a megnyíló panel az Azure AD Connect-kiszolgálókra vonatkozó információkat tartalmazza. További információ ezekről a képességekről: [Az Azure AD Connect Health szinkronizálási szolgáltatás használata az AD FS szolgáltatással](how-to-connect-health-sync.md).
+* **Active Directory Federation Services** (Active Directory összevonási szolgáltatások): Ez a lehetőség az Azure AD Connect Health által aktuálisan monitorozott összes AD FS-szolgáltatást mutatja. Ha kiválaszt egy példányt, a megnyíló panel az adott szolgáltatáspéldányra vonatkozó információkat tartalmazza. Az információk között tulajdonságokat, riasztásokat, megfigyelési adatokat, használatelemzést és egy áttekintést talál. További információ ezekről a képességekről: [Az Azure AD Connect Health használata az AD FS szolgáltatással](how-to-connect-health-adfs.md).
+* **Active Directory Domain Services** (Active Directory tartományi szolgáltatások): Ez a lehetőség az Azure AD Connect Health által aktuálisan figyelt összes AD DS-erdőt mutatja. Ha kiválaszt egy erdőt, a megnyíló panel az adott erdőre vonatkozó információkat tartalmazza. Ezek az adatok a következők áttekintését teszik lehetővé: lényeges információk, tartományvezérlő irányítópult, replikáció állapota irányítópult, riasztások és figyelés. További információ ezekről a képességekről: [Az Azure AD Connect Health használata az AD DS szolgáltatással](how-to-connect-health-adds.md).
+* **Configure** (Konfigurálás): Ez a szakasz az alábbi funkciók be- vagy kikapcsolására szolgáló lehetőségeket tartalmaz:
 
-  - A **Beállítások** bejegyzésben megtalálhatók az ügynökei alapszintű konfigurációi is. Az automatikus frissítési beállítás lehetővé teszi, hogy az Azure AD Connect Health-ügynök automatikus frissítése a legújabb verzióra: Automatikusan frissül az Azure AD Connect Health-ügynök legújabb verziójára, ha elérhetővé válnak. Ez e beállítás alapértelmezés szerint engedélyezve van. Az Azure AD-címtár állapotadatok hibaelhárítási céllal Microsoft hozzáférés engedélyezése: Ha ez engedélyezve van, a Microsoft ugyanazokat az adatokat láthatja, amelyeket látható. Ez az információ a hibaelhárítás és a problémakezelés során jelenthet segítséget. A beállítás alapértelmezés szerint le van tiltva.
+   - Az Azure AD Connect Health-ügynök **frissítése** a legújabb verzióra: a Azure ad Connect Health ügynök automatikusan frissül, amikor új verziók állnak rendelkezésre. Ez a beállítás alapértelmezés szerint engedélyezve van.
+   - Az Azure AD-címtárból származó **adatokhoz való hozzáférés** csak hibaelhárítási célból a Microsoft számára: Ha ez a beállítás engedélyezve van, a Microsoft ugyanazokat az adatokhoz férhet hozzá, amelyet a felhasználó megtekint. Ezek az információk hasznosak lehetnek a hibaelhárításhoz és a szükséges segítség biztosításához. Ez a beállítás alapértelmezés szerint le van tiltva
 * A **Szerepköralapú hozzáférés-vezérlés (IAM)** szakasz ismerteti a Connect Health adatokhoz való hozzáférés felügyeletét szerepkör alapban. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Hardver és előfeltételek](how-to-connect-install-prerequisites.md) 
 - [Gyorsbeállítások](how-to-connect-install-express.md)

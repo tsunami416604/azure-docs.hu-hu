@@ -1,25 +1,24 @@
 ---
-title: Hozzon létre egy Knowledge Store-t a Azure Portal
+title: Hozzon létre egy Knowledge Store-t (előzetes verzió) a Azure Portal
 titleSuffix: Azure Cognitive Search
-description: Az adatimportálás varázsló használatával hozzon létre egy, a dúsított tartalom megőrzésére szolgáló tudásbázist. Kapcsolódjon a Knowledge Store-hoz más alkalmazásokból származó elemzéshez, vagy a dúsított tartalmat küldje el az alsóbb rétegbeli folyamatoknak.
+description: Az adatimportálás varázsló használatával hozzon létre egy, a dúsított tartalom megőrzésére szolgáló tudásbázist. Kapcsolódjon a Knowledge Store-hoz más alkalmazásokból származó elemzéshez, vagy a dúsított tartalmat küldje el az alsóbb rétegbeli folyamatoknak. Ez a szolgáltatás jelenleg nyilvános előzetes verzióban érhető el.
 author: lisaleib
 manager: nitinme
 ms.author: v-lilei
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 11/04/2019
-ms.openlocfilehash: 689b5aa0cd8a5fb310925b2c52baeec6860af0d5
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
-ms.translationtype: HT
+ms.openlocfilehash: 56053a942604a6f1cb935e6bddcae85ffc5a9e54
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73607083"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73720107"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-knowledge-store-in-the-azure-portal"></a>Gyors útmutató: Azure Cognitive Search Knowledge Store létrehozása a Azure Portal
 
-> [!Note]
-> A Knowledge Store előzetes verzióban érhető el, és nem használható éles környezetben. A Azure Portal és a [Search REST API 2019-05-06-es verziójának előzetes verziója](search-api-preview.md) biztosítja ezt a funkciót. Jelenleg nincs .NET SDK-támogatás.
->
+> [!IMPORTANT] 
+> A Knowledge Store jelenleg nyilvános előzetes verzióban érhető el. Az előzetes verziójú funkciók szolgáltatói szerződés nélkül érhetők el, és éles számítási feladatokhoz nem ajánlott. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). 
 
 A Knowledge Store az Azure Cognitive Search egyik funkciója, amely egy kognitív képességekből származó kimenetet biztosít a későbbi elemzésekhez vagy az alsóbb rétegbeli feldolgozáshoz. 
 

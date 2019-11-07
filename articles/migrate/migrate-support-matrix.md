@@ -8,12 +8,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 10/16/2019
 ms.author: raynew
-ms.openlocfilehash: 18032250bc5c321d638ad46204738f49f1a0c744
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 90b1250009e6efdb2f8cb9351fe270c8324cc77a
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73480129"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73715481"
 ---
 # <a name="azure-migrate-support-matrix"></a>Azure Migrate támogatási mátrix
 
@@ -34,20 +34,30 @@ A táblázat összefoglalja a támogatott felderítési, felmérési és áttele
 **Üzembe helyezés** | **Részletek** 
 --- | --- 
 **Alkalmazás-specifikus felderítés** | A VMware virtuális gépeken futó alkalmazásokat, szerepköröket és szolgáltatásokat is felderítheti. Ez a funkció jelenleg csak felderítésre korlátozódik. Az értékelés jelenleg a számítógép szintjén történik. Még nem kínálunk alkalmazás-, szerepkör-vagy szolgáltatás-specifikus értékelést. 
-**Helyszíni Értékelés** | A VMware virtuális gépeken és a Hyper-V virtuális gépeken futó helyszíni munkaterhelések és adatok értékelése. Értékelje Azure Migrate Server Assessment és Microsoft Data Migration Assistant (DMA) használatát, valamint a Cloudamize, a kölcsönzési technológiát és a Turbonomic kiszolgálót is tartalmazó külső eszközöket.
-**Helyszíni áttelepítés az Azure-ba** | Áttelepítheti a fizikai kiszolgálókon, a VMware virtuális gépeken, a Hyper-V virtuális gépeken, a fizikai kiszolgálókon és a felhőalapú virtuális gépeken futó számítási feladatokat és az Azure-ba. Migrálás Azure Migrate Server Assessment és Azure Database Migration Service (DMS) használatával, valamint a harmadik féltől származó, a Carbonite-és a CorentTech tartalmazó eszközök használatával.
+**Helyszíni Értékelés** | A VMware virtuális gépeken, Hyper-V virtuális gépeken és fizikai kiszolgálókon futó helyszíni munkaterhelések és adatok értékelése. Azure Migrate Server Assessment és Microsoft Data Migration Assistant (DMA), valamint más eszközök és ISV-ajánlatok használatával történő Értékelés.
+**Helyszíni áttelepítés az Azure-ba** | Áttelepítheti a fizikai kiszolgálókon, a VMware virtuális gépeken, a Hyper-V virtuális gépeken, a fizikai kiszolgálókon és a felhőalapú virtuális gépeken futó számítási feladatokat és az Azure-ba. Migrálás Azure Migrate Server Assessment és Azure Database Migration Service (DMS) használatával, valamint más eszközökkel és ISV-ajánlatokkal.
 
-Az eszközök adott támogatását az alábbiak szerint összegzi a rendszer.
 
-**Eszköz** | **Értékelés/áttelepítés** | **Részletek**
+## <a name="supported-tools"></a>Támogatott eszközök
+
+Az eszközök adott támogatását a táblázat foglalja össze.
+
+**Eszköz** | **Felmérése** | **Migrate (Áttelepítés)** 
 --- | --- | ---
-Azure Migrate kiszolgáló értékelése | Értékelés | Próbálja ki a [Hyper-V](tutorial-prepare-hyper-v.md) és a [VMware](tutorial-prepare-vmware.md)kiszolgáló értékelését.
-Cloudamize | Értékelés | [Részletek](https://www.cloudamize.com/platform#tab-0).
-CorentTech | Értékelés | [Részletek](https://www.corenttech.com/).
-Turbonomic | Értékelés | [Részletek](https://turbonomic.com/solutions/technologies/azure-cloud/).
-Azure Migrate kiszolgáló áttelepítése | Migrálás | Próbálja ki a kiszolgáló áttelepítését a [Hyper-V](tutorial-migrate-hyper-v.md) és a [VMware](tutorial-migrate-vmware.md)rendszerhez.
-Carbonite | Migrálás | [Részletek](https://www.carbonite.com/data-protection-resources/resource/Datasheet/carbonite-migrate-for-microsoft-azure).
-CorentTech | Migrálás | [Részletek](https://www.corenttech.com/).
+Azure Migrate kiszolgáló értékelése | A [VMWare virtuális gépek](tutorial-prepare-vmware.md), a [Hyper-V virtuális gépek](tutorial-prepare-hyper-v.md)és a [fizikai kiszolgálók](tutorial-prepare-physical.md)értékelése. |  Nem érhető el (NA)
+Azure Migrate kiszolgáló áttelepítése | NA | Telepítse át a [VMWare virtuális gépeket](tutorial-migrate-vmware.md), a [Hyper-V virtuális gépeket](tutorial-migrate-hyper-v.md)és a [fizikai kiszolgálókat](tutorial-migrate-physical-virtual-machines.md).
+[Carbonite](https://www.carbonite.com/data-protection-resources/resource/Datasheet/carbonite-migrate-for-microsoft-azure) | NA | VMware virtuális gépek, Hyper-V virtuális gépek, fizikai kiszolgálók, nyilvános Felhőbeli számítási feladatok migrálása. 
+[Cloudamize](https://www.cloudamize.com/platform#tab-0)| A VMware virtuális gépek, a Hyper-V virtuális gépek, a fizikai kiszolgálók, a nyilvános Felhőbeli munkaterhelések felmérése. | NA
+[A kölcsönzés technológiája](https://go.microsoft.com/fwlink/?linkid=2084928) | A VMware virtuális gépek, a Hyper-V virtuális gépek, a fizikai kiszolgálók, a nyilvános Felhőbeli munkaterhelések felmérése és migrálása. |  VMware virtuális gépek, Hyper-V virtuális gépek, fizikai kiszolgálók, nyilvános Felhőbeli számítási feladatok migrálása.
+[Eszköz 42](https://go.microsoft.com/fwlink/?linkid=2097158) | A VMware virtuális gépek, a Hyper-V virtuális gépek, a fizikai kiszolgálók, a nyilvános Felhőbeli munkaterhelések felmérése.| NA
+[DMA](https://docs.microsoft.com/sql/dma/dma-overview?view=sql-server-2017) | Helyszíni SQL Server-adatbázisok értékelése. | NA
+[DMS](https://docs.microsoft.com/azure/dms/dms-overview) | SQL Server, Oracle, MySQL, PostgreSQL, MongoDB migrálása. | NA
+[Tóparti](https://go.microsoft.com/fwlink/?linkid=2104908) | A virtuális asztali infrastruktúra (VDI) felmérése | NA
+[Mozgató](https://go.microsoft.com/fwlink/?linkid=2109528) | A VMWare virtuális gépek, a Hyper-V virtuális gépek, a Xen virtuális gépek, a fizikai gépek, a munkaállomások (beleértve a VDI-ket is) felmérése | NA
+[RackWare](https://go.microsoft.com/fwlink/?linkid=2102735) | NA | VMWare virtuális gépek, Hyper-V virtuális gépek, Xen virtuális gépek, KVM-alapú virtuális gépek, fizikai gépek, nyilvános Felhőbeli számítási feladatok migrálása 
+[Turbonomic](https://go.microsoft.com/fwlink/?linkid=2094295)  | A VMware virtuális gépek, a Hyper-V virtuális gépek, a fizikai kiszolgálók, a nyilvános Felhőbeli munkaterhelések felmérése. | NA
+[UnifyCloud](https://go.microsoft.com/fwlink/?linkid=2097195) | Felméri a VMware virtuális gépeket, a Hyper-V virtuális gépeket, a fizikai kiszolgálókat, a nyilvános Felhőbeli számítási feladatokat és a SQL Server adatbázisokat. | NA
+[WebApp Migration Assistant](https://appmigration.microsoft.com/) | Webes alkalmazások értékelése | Webes alkalmazások migrálása.
 
 
 ## <a name="azure-migrate-projects"></a>Azure Migrate projektek
@@ -76,7 +86,7 @@ Európa | Észak-Európa vagy Nyugat-Európa
 Franciaország | Közép-Franciaország
 India | Közép-India vagy Dél-India
 Japán |  Kelet-japán vagy Nyugat-Japán
-Dél-Korea | Korea középső régiója vagy Dél-Korea
+Korea | Korea középső régiója vagy Dél-Korea
 Egyesült Királyság | Egyesült Királyság déli régiója vagy Egyesült Királyság nyugati régiója
 Egyesült Államok | USA középső régiója vagy USA 2. nyugati régiója
 
