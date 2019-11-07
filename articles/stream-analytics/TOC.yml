@@ -97,6 +97,8 @@
           href: stream-analytics-power-bi-dashboard.md
         - name: Feladat leállítása vagy törlése
           href: stream-analytics-clean-up-your-job.md
+        - name: Feladat másolása vagy biztonsági mentése
+          href: copy-job.md
         - name: Feladatok párosítása a megbízhatóság érdekében
           href: stream-analytics-job-reliability.md
         - name: Hitelesítés felügyelt identitással – 1. generációs ADLS-kimenet

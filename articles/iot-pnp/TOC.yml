@@ -7,10 +7,14 @@
 - name: Gyors útmutatók
   expanded: true
   items:
-    - name: Eszközképesség-modell használata eszköz létrehozásához
+    - name: Eszköz létrehozása – Windows
       href: quickstart-create-pnp-device.md
-    - name: Eszköz csatlakoztatása az IoT Hubhoz
+    - name: Eszköz létrehozása – Linux
+      href: quickstart-create-pnp-device-linux.md
+    - name: Eszköz csatlakoztatása az IoT Hubhoz – Windows
       href: quickstart-connect-pnp-device.md
+    - name: Eszköz csatlakoztatása az IoT Hubhoz – Linux
+      href: quickstart-connect-pnp-device-linux.md
     - name: Eszköz csatlakoztatása az IoT Centralhoz
       href: ../iot-central/core/quick-create-pnp-device-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
     - name: Csatlakozás a megoldásban található eszközhöz

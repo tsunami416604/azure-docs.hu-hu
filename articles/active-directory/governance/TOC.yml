@@ -84,6 +84,14 @@
               href: entitlement-management-request-access.md
     - name: Hozzáférési felülvizsgálatok
       items:
+        - name: Hozzáférési csomagok
+          items:
+            - name: Hozzáférési felülvizsgálat létrehozása
+              href: entitlement-management-access-reviews-create.md
+            - name: Hozzáférés áttekintése
+              href: entitlement-management-access-reviews-review-access.md
+            - name: Hozzáférés saját áttekintése
+              href: entitlement-management-access-reviews-self-review.md
         - name: Csoportok és alkalmazások
           items:
             - name: Hozzáférési felülvizsgálat létrehozása

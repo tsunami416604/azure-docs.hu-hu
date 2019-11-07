@@ -84,9 +84,6 @@
     - name: Automatizált gépi tanulás
       displayName: 'automl, auto ml'
       href: concept-automated-ml.md
-    - name: Számítási példány
-      displayName: 'resource, dsvm, Data Science Virtual Machine'
-      href: concept-compute-instance.md
     - name: Számítási cél
       displayName: 'resource, dsvm, AKS, kubernetes, amlcompute, Data Science Virtual Machine, local, cluster, ACI, container instance, ADB, Databricks, data lake, lake, HDI, HDInsight'
       href: concept-compute-target.md
@@ -115,6 +112,8 @@
     - name: Deep learning
       displayName: 'deep learning vs machine learning, deep learning, vs, versus'
       href: concept-deep-learning-vs-machine-learning.md
+    - name: Event Grid-integráció
+      href: concept-event-grid-integration.md
     - name: Git-integráció
       displayName: git github gitlab
       href: concept-train-model-git-integration.md
@@ -163,6 +162,12 @@
         - name: Verzió és adathalmazok nyomon követése
           displayName: 'data, data set'
           href: how-to-version-track-datasets.md
+        - name: Adatok címkézése
+          displayName: 'data, dataset, labeling'
+          href: how-to-create-labeling-projects.md
+        - name: Képek címkézése
+          displayName: 'data, dataset, labeling'
+          href: how-to-label-images.md
     - name: Modellek betanítása
       items:
         - name: A tervező használata
@@ -227,11 +232,14 @@
         - name: Automatizált gépi tanulás használata (Python)
           displayName: SDK automl
           href: how-to-configure-auto-train.md
-        - name: Automatizált gépi tanulás használata (munkaterület kezdőlapja)
+        - name: Automatizált gépi tanulás használata (interfész)
           href: how-to-create-portal-experiments.md
         - name: Távoli számítógépcélok használata
           displayName: automl automated auto ml
           href: how-to-auto-train-remote.md
+        - name: Gépi tanulási feladatok meghatározása
+          displayName: 'machine learning, task type'
+          href: how-to-define-task-type.md
         - name: Előrejelzési modellek automatikus betanítása
           displayName: time series
           href: how-to-auto-train-forecast.md
@@ -270,7 +278,7 @@
         - name: Azure App Service
           displayName: web app
           href: how-to-deploy-app-service.md
-        - name: Számítási példányok
+        - name: Notebook virtuális gépek
           href: how-to-deploy-local-container-notebook-vm.md
         - name: Egyéni Docker-rendszerkép használata
           href: how-to-deploy-custom-docker-image.md
@@ -317,6 +325,9 @@
     - name: Adatok exportálása és törlése
       displayName: GDPR
       href: how-to-export-delete-data.md
+    - name: Eseményvezérelt munkafolyamatok létrehozása
+      displayName: event grid
+      href: how-to-use-event-grid.md
 - name: Referencia
   items:
     - name: ML SDK (Python)
@@ -328,6 +339,8 @@
     - name: Machine Learning CLI
       displayName: 'extension, command line, command-line, az, ci/cd, automate, automated'
       href: reference-azure-machine-learning-cli.md
+    - name: REST API
+      href: 'https://docs.microsoft.com/rest/api/azureml/'
     - name: Adatreferencia monitorozása
       href: monitor-resource-reference.md
     - name: Machine Learning-folyamatok – YAML-referencia

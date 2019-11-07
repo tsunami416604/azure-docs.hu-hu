@@ -39,6 +39,8 @@
       href: security-overview.md
     - name: Útválasztás
       href: virtual-networks-udr-overview.md
+    - name: Szolgáltatáscímkék
+      href: service-tags-overview.md
     - name: Szolgáltatásvégpontok
       href: virtual-network-service-endpoints-overview.md
     - name: Szolgáltatásvégpont-szabályzatok
@@ -65,6 +67,8 @@
       href: ipv6-public-ip-address-prefix.md
     - name: DDoS Protection
       href: ddos-protection-overview.md
+    - name: Alhálózati bővítmény
+      href: subnet-extension.md
     - name: Háttérkapcsolat együttműködési lehetőségei
       items:
         - name: Előtag- és tesztbeállítások
@@ -297,6 +301,8 @@
           href: diagnose-network-routing-problem.md
         - name: Az átviteli sebesség tesztelése
           href: virtual-network-bandwidth-testing.md
+        - name: Virtuális gép hálózati késleltetésének tesztelése
+          href: virtual-network-test-latency.md
         - name: Nem lehet törölni a virtuális hálózatokat
           href: virtual-network-troubleshoot-cannot-delete-vnet.md
         - name: Virtuális gépek közötti kapcsolódási problémák

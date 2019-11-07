@@ -502,6 +502,8 @@
           href: sql-database-elastic-pool-failover-group-tutorial.md
         - name: Biztonság konfigurálása
           href: sql-database-security-tutorial.md
+        - name: Adatok streamelése a Stream Analyticsszel
+          href: sql-database-stream-analytics.md
     - name: Alapelvek
       items:
         - name: Az önálló adatbázis erőforrásai

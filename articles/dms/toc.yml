@@ -8,6 +8,8 @@
   items:
     - name: Szolgáltatás létrehozása – Portál
       href: quickstart-create-data-migration-service-portal.md
+    - name: Szolgáltatás létrehozása hibrid módban – Portál
+      href: quickstart-create-data-migration-service-hybrid-portal.md
 - name: Oktatóanyagok
   items:
     - name: SQL Server offline migrálása önálló Azure SQL DB-adatbázisba

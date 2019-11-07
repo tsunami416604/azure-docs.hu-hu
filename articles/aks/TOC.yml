@@ -345,6 +345,8 @@
           maintainContext: true
         - name: Az üzembehelyezési központ indítója
           href: deployment-center-launcher.md
+        - name: GitHub-műveletek a Kuberneteshez
+          href: ../aks/kubernetes-action.md
     - name: Hibaelhárítás
       items:
         - name: Gyakori problémák

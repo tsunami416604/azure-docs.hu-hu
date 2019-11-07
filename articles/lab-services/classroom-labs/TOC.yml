@@ -52,6 +52,8 @@
       items:
         - name: Osztálytermi tesztkörnyezetek létrehozása és kezelése
           href: how-to-manage-classroom-labs.md
+        - name: Irányítópult használata
+          href: use-dashboard.md
         - name: 'Sablonok beállítása, testreszabása és közzététele'
           href: how-to-create-manage-template.md
         - name: Virtuális gépek készleteinek létrehozása és kezelése
@@ -80,6 +82,8 @@
   items:
     - name: REST API
       href: 'https://docs.microsoft.com/rest/api/labservices/'
+    - name: Az.LabServices PowerShell-modul (előzetes verzió)
+      href: reference-powershell-module.md
 - name: További források
   items:
     - name: Azure-frissítések

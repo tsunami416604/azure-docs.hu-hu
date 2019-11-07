@@ -47,10 +47,10 @@
           href: quickstart-scale-compute-tsql.md
     - name: Számítási feladatok kezelése
       items:
-        - name: Számításifeladat-osztályozó létrehozása
+        - name: Számításifeladat-elkülönítés létrehozása
           items:
             - name: T-SQL
-              href: quickstart-create-a-workload-classifier-tsql.md
+              href: quickstart-configure-workload-isolation-tsql.md
 - name: Alapelvek
   items:
     - name: Biztonság
@@ -213,14 +213,18 @@
           href: sql-data-warehouse-develop-label.md
     - name: Számítási feladatok kezelése
       items:
-        - name: Erőforrásosztályok és számítási feladatok kezelése
-          href: resource-classes-for-workload-management.md
+        - name: Áttekintés
+          href: sql-data-warehouse-workload-management.md
         - name: Számítási feladatok besorolása
           href: sql-data-warehouse-workload-classification.md
         - name: Számítási feladat fontossága
           href: sql-data-warehouse-workload-importance.md
+        - name: Számítási feladatok elkülönítése
+          href: sql-data-warehouse-workload-isolation.md
         - name: Memória- és egyidejűségi korlátok
-          href: memory-and-concurrency-limits.md
+          href: memory-concurrency-limits.md
+        - name: Erőforrásosztályok
+          href: resource-classes-for-workload-management.md
     - name: Kezelhetőség és monitorozás
       items:
         - name: Áttekintés
@@ -303,6 +307,8 @@
           href: sql-data-warehouse-how-to-manage-and-monitor-workload-importance.md
         - name: Számítási feladat fontosságának konfigurálása
           href: sql-data-warehouse-how-to-configure-workload-importance.md
+        - name: Erőforrásosztályok konvertálása számításifeladat-csoportokká
+          href: sql-data-warehouse-how-to-convert-resource-classes-workload-groups.md
     - name: Kezelés és monitorozás
       items:
         - name: Frissítés 2. generációs verzióra

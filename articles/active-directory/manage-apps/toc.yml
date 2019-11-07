@@ -5,7 +5,7 @@
   items:
     - name: Mi az a felhőalkalmazás-kezelés és az egyszeri bejelentkezés?
       href: what-is-application-management.md
-    - name: Mi az automatikus felhasználóátadás?
+    - name: Mit jelent az alkalmazások üzembe helyezése?
       href: user-provisioning.md
     - name: Mi a helyszíni alkalmazások alkalmazásproxyja?
       href: what-is-application-proxy.md
@@ -17,7 +17,7 @@
       href: view-applications-portal.md
 - name: Oktatóanyagok
   items:
-    - name: SaaS-alkalmazások oktatóanyagai
+    - name: 'Integrált katalógusalkalmazások (pl. ServiceNow, Salesforce, Dropbox)'
       href: /azure/active-directory/saas-apps/
     - name: Alkalmazásproxyval rendelkező helyszíni alkalmazás hozzáadása
       href: application-proxy-add-on-premises-application.md
@@ -66,12 +66,12 @@
               href: howto-saml-token-encryption.md
             - name: Végfelhasználói portálok
               href: end-user-experiences.md
-    - name: Felhasználók automatikus üzembe helyezése
+    - name: Alkalmazások üzembe helyezése (SCIM)
       items:
-        - name: Automatikus felhasználóátadást használó üzembe helyezés tervezése
-          href: plan-auto-user-provisioning.md
         - name: Automatikus üzembe helyezés SCIM-kompatibilis alkalmazásokhoz
           href: use-scim-to-provision-users-and-groups.md
+        - name: Automatikus felhasználóátadást használó üzembe helyezés tervezése
+          href: plan-auto-user-provisioning.md
     - name: Alkalmazásproxy helyszíni alkalmazásokhoz
       items:
         - name: Alkalmazásproxy
@@ -223,23 +223,21 @@
                   href: access-panel-extension-problem-installing.md
                 - name: Hiba történt az önkiszolgáló alkalmazás-hozzáférés használata közben
                   href: access-panel-troubleshoot-self-service-access.md
-    - name: Felhasználók automatikus üzembe helyezése
+    - name: Alkalmazások üzembe helyezése (SCIM)
       items:
         - name: Felhasználók átadásának konfigurálása
           items:
-            - name: Felhasználók átadása katalógusbeli alkalmazásokban
+            - name: Manuális és automatikus átadás
               href: application-provisioning-config-how-to.md
-            - name: Felhasználók automatikus átadásának engedélyezése több-bérlős alkalmazásokhoz
-              href: isv-automatic-provisioning-multi-tenant-apps.md
             - name: A felhasználók automatikus átadásának konfigurálása
               href: configure-automatic-user-provisioning-portal.md
-            - name: Alkalmazásattribútumok testreszabása
+            - name: Attribútumleképezések testreszabása
               href: Customize-application-attributes.md
-            - name: Hatókörszűrők
+            - name: Átadásra váró felhasználók vagy csoportok hatókörkezelése
               href: define-conditional-rules-for-provisioning-user-accounts.md
             - name: Hatókörön kívüli felhasználók törlésének mellőzése
               href: skip-out-of-scope-deletions.md
-            - name: Az átadási állapot ellenőrzése
+            - name: Átadás állapotának és teljesítményének monitorozása
               href: application-provisioning-when-will-provisioning-finish-specific-user.md
             - name: Jelentés a felhasználók automatikus átadásáról
               href: check-status-user-account-provisioning.md
@@ -249,20 +247,20 @@
           items:
             - name: A felhasználók átadásának hibaelhárítása
               href: application-provisioning-config-problem.md
-            - name: Karantén állapota
+            - name: Engedélyezési probléma (nem lehet menteni a rendszergazdai hitelesítési adatokat)
+              href: application-provisioning-config-problem-storage-limit.md
+            - name: A felhasználók átadása nem történik meg
+              href: application-provisioning-config-problem-no-users-provisioned.md
+            - name: Nem a megfelelő felhasználók lettek átadva
+              href: application-provisioning-config-problem-wrong-users-provisioned.md
+            - name: Átadási feladat a karanténban
               href: application-provisioning-quarantine-status.md
+            - name: Hiányzó forrásattribútum
+              href: user-provisioning-sync-attributes-for-mapping.md
+            - name: Az átadási feladat túl lassú
+              href: application-provisioning-when-will-provisioning-finish.md
             - name: Üzembehelyezési naplók
               href: /azure/active-directory/reports-monitoring/concept-provisioning-logs?context=azure/active-directory/manage-apps/context/manage-apps-context
-            - name: Attribútum szinkronizálása leképezéshez – katalógusbeli alkalmazás
-              href: user-provisioning-sync-attributes-for-mapping.md
-            - name: Órákat vesz igénybe – katalógusbeli alkalmazás
-              href: application-provisioning-when-will-provisioning-finish.md
-            - name: Probléma a rendszergazdai hitelesítő adatok mentésekor a felhasználók átadását végző katalógusbeli alkalmazás konfigurálása közben
-              href: application-provisioning-config-problem-storage-limit.md
-            - name: A felhasználók átadása nem történik meg – katalógusbeli alkalmazás
-              href: application-provisioning-config-problem-no-users-provisioned.md
-            - name: Nem a megfelelő felhasználók lettek átadva – katalógusbeli alkalmazás
-              href: application-provisioning-config-problem-wrong-users-provisioned.md
     - name: Alkalmazásproxy helyszíni alkalmazásokhoz
       items:
         - name: Összekötők konfigurálása
@@ -357,10 +355,12 @@
               href: application-proxy-understand-cors-issues.md
 - name: Referencia
   items:
-    - name: Felhasználók automatikus üzembe helyezése
+    - name: Alkalmazások üzembe helyezése (SCIM)
       items:
         - name: Kifejezések írása attribútumleképezésekhez
           href: functions-for-customizing-application-data.md
+        - name: Üzembehelyezési módszer kiválasztása
+          href: isv-automatic-provisioning-multi-tenant-apps.md
     - name: Azure AD Connect-kiépítési ügynök
       items:
         - name: Kiépítési ügynök verzióelőzményei

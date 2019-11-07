@@ -34,6 +34,8 @@
       href: vpn-over-expressroute.md
     - name: Virtuális hálózati átjáró csatlakoztatása virtuális WAN-ra
       href: connect-virtual-network-gateway-vwan.md
+    - name: Virtuális hálózatok közötti globális társviszony konfigurálása
+      href: global-peering-vnet.md
     - name: Egyéni IPsec-szabályzat konfigurálása
       href: virtual-wan-custom-ipsec-portal.md
     - name: Tanúsítványok konfigurálása felhasználói VPN-hez

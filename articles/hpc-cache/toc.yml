@@ -30,6 +30,8 @@
                   href: hpc-cache-ingest-msrsync.md
                 - name: A gyorsítótár feltöltése manuális fájlmásolással
                   href: hpc-cache-ingest-manual.md
+        - name: Céltárolók szerkesztése
+          href: hpc-cache-edit-storage.md
     - name: Csatlakozás a gyorsítótárhoz
       href: hpc-cache-mount.md
     - name: A gyorsítótár kezelése

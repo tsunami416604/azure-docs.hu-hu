@@ -141,6 +141,8 @@
       href: how-to-legacy-device-symm-key.md
     - name: Fejlesztés SDK-eszközökkel
       href: how-to-use-sdk-tools.md
+    - name: További adatok küldése eszközökről
+      href: how-to-send-additional-data.md
     - name: Hibaelhárítás
       href: how-to-troubleshoot-dps.md
 - name: Referencia

@@ -53,6 +53,8 @@
       href: functions-create-function-linux-custom-image.md
     - name: Functions IoT Edge-eszközön
       href: ../iot-edge/tutorial-deploy-function.md?toc=%2fazure%2fazure-functions%2ftoc.json
+    - name: A Java használata az Azure Cosmos DB-vel és az Event Hubszal
+      href: functions-event-hub-cosmos-db.md
 - name: Példák
   items:
     - name: Azure kiszolgáló nélküli közösségi kódtár
@@ -244,6 +246,8 @@
           href: install-update-binding-extensions-manual.md
         - name: Függvény letiltása
           href: disable-function.md
+        - name: Geo-vészhelyreállítás
+          href: functions-geo-disaster-recovery.md
     - name: Figyelés
       items:
         - name: Függvények figyelés
@@ -275,8 +279,6 @@
           href: ../app-service/overview-managed-identity.md?toc=%2fazure%2fazure-functions%2ftoc.json
         - name: Key Vaultból származó titkos kulcsok hivatkozása
           href: ../app-service/app-service-key-vault-references.md?toc=%2fazure%2fazure-functions%2ftoc.json
-        - name: Geo-vészhelyreállítás
-          href: functions-geo-disaster-recovery.md
     - name: Integrálás
       items:
         - name: Kötések hozzáadása

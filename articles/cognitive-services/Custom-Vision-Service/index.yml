@@ -1,9 +1,9 @@
 ### YamlMime:Landing
 title: A Custom Vision dokumentációja
-summary: A Custom Vision egy Cognitive Services-szolgáltatás, amellyel egyéni képosztályozókat hozhat létre, helyezhet üzembe és fejleszthet tovább. A képosztályozó olyan AI-szolgáltatás, amely a képeket vizuális tulajdonságaiknak megfelelő címkékkel látja el (amelyek osztályokat képviselnek).
+summary: A Custom Visionnel egyéni képosztályozókat hozhat létre, helyezhet üzembe és fejleszthet tovább. A képosztályozó olyan AI-szolgáltatás, amely a képeket vizuális tulajdonságaiknak megfelelő címkékkel látja el (amelyek osztályokat képviselnek).
 metadata:
   title: A Custom Vision dokumentációja – Gyorsútmutatók, oktatóanyagok és API-referencia – Azure Cognitive Services | Microsoft Docs
-  description: A Custom Vision egy Cognitive Services-szolgáltatás, amellyel egyéni képosztályozókat hozhat létre, helyezhet üzembe és fejleszthet tovább. A képosztályozó olyan AI-szolgáltatás, amely a képeket vizuális tulajdonságaiknak megfelelő címkékkel látja el (amelyek osztályokat képviselnek).
+  description: A Custom Visionnel egyéni képosztályozókat hozhat létre, helyezhet üzembe és fejleszthet tovább. A képosztályozó olyan AI-szolgáltatás, amely a képeket vizuális tulajdonságaiknak megfelelő címkékkel látja el (amelyek osztályokat képviselnek).
   services: cognitive-services
   ms.service: cognitive-services
   ms.subservice: custom-vision
@@ -11,12 +11,12 @@ metadata:
   author: PatrickFarley
   ms.author: pafarley
   ms.date: 09/05/2019
-  ms.openlocfilehash: 21e4c324b947cb863614f50bb2ee0bfe09246372
-  ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+  ms.openlocfilehash: 2ef22176b64638dc43a4a45096cf072a7c79931e
+  ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
   ms.translationtype: HT
   ms.contentlocale: hu-HU
-  ms.lasthandoff: 10/25/2019
-  ms.locfileid: "72931644"
+  ms.lasthandoff: 11/06/2019
+  ms.locfileid: "73647583"
 landingContent:
 - title: Tudnivalók a Custom Visionről
   linkLists:
@@ -80,7 +80,7 @@ landingContent:
       url: test-your-model.md
     - text: Modell továbbfejlesztése
       url: getting-started-improving-your-classifier.md
-    - text: Javasolt címkék használata
+    - text: Intelligens feliratozó használata
       url: suggested-tags.md
 - title: Modellek exportálása
   linkLists:

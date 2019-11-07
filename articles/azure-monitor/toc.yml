@@ -295,7 +295,7 @@
                 - name: Kivételek
                   href: app/asp-net-exceptions.md
                 - name: Nyomkövetési naplók
-                  href: app/java-trace-logs.md
+                  href: app/asp-net-trace-logs.md
                 - name: Unix-metrikák
                   href: app/java-collectd.md
                 - name: Függőségek
@@ -318,6 +318,8 @@
                   href: app/opencensus-python.md
                 - name: Függőségek
                   href: app/opencensus-python-dependency.md
+                - name: Kérelmek
+                  href: app/opencensus-python-request.md
             - name: Weblapok
               items:
                 - name: Ügyféloldali JavaScript
@@ -593,26 +595,39 @@
         - name: Erőforrásnaplók
           items:
             - name: Áttekintés
+              displayname: Resource logs
               href: platform/resource-logs-overview.md
             - name: Gyűjtés Azure Monitor-naplókban
+              displayname: Resource logs
               href: platform/resource-logs-collect-workspace.md
             - name: Archiválás a tárolóba
+              displayname: Resource logs
               href: platform/resource-logs-collect-storage.md
             - name: Streamelés az Event Hubsra
+              displayname: Resource logs
               href: platform/resource-logs-stream-event-hubs.md
         - name: Tevékenységnapló
           items:
             - name: Áttekintés
+              displayname: Activity log
               href: platform/activity-logs-overview.md
+            - name: Gyűjtés a diagnosztikai beállítással
+              displayname: Activity log
+              href: platform/diagnostic-settings-subscription.md
             - name: Megtekintés és lekérés
+              displayname: Activity log
               href: platform/activity-log-view.md
             - name: Összegyűjtés és elemzés
+              displayname: Activity log
               href: platform/activity-log-collect.md
             - name: Gyűjtés több bérlőből
+              displayname: Activity log
               href: platform/activity-log-collect-tenants.md
             - name: Exportálás
+              displayname: Activity log
               href: platform/activity-log-export.md
             - name: Séma
+              displayname: Activity log
               href: platform/activity-log-schema.md
         - name: Diagnosztikai beállítások
           items:
@@ -621,6 +636,7 @@
             - name: Diagnosztikai beállítások létrehozása Resource Managerrel
               href: platform/diagnostic-settings-template.md
             - name: Exportálás Blob Storage formátumba
+              displayname: Diagnostic settings
               href: platform/resource-logs-blob-format.md
         - name: Adatok streamelése az Event Hubsra
           href: platform/stream-monitoring-data-event-hubs.md

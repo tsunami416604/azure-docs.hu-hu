@@ -195,6 +195,8 @@
           href: search-blob-storage-integration.md
         - name: Blobindexelő beállítása
           href: search-howto-indexing-azure-blob-storage.md
+        - name: Azure Data Lake Storage Gen2-indexelő beállítása
+          href: search-howto-index-azure-data-lake-storage.md
         - name: Egy-a-többhöz típusú blobok indexelése
           href: search-howto-index-one-to-many-blobs.md
         - name: CSV-blobok indexelése

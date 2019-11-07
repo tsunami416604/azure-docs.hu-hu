@@ -54,18 +54,22 @@
       href: user-help-auth-app-backup-recovery.md
     - name: GYIK
       href: user-help-auth-app-faq.md
-- name: Saját profil (előzetes verzió) portál súgója
+- name: A Saját fiók portál súgója
   items:
     - name: Áttekintés
-      href: myprofile-portal-overview.md
+      href: my-account-portal-overview.md
     - name: Biztonsági adatok kezelése
       href: user-help-security-info-overview.md
-    - name: Saját szervezetek kezelése
-      href: myprofile-portal-organizations-page.md
     - name: Csatlakoztatott eszközök kezelése
-      href: myprofile-portal-devices-page.md
+      href: my-account-portal-devices-page.md
+    - name: Jelszó módosítása
+      href: my-account-change-password-page.md
+    - name: Saját szervezetek kezelése
+      href: my-account-portal-organizations-page.md
     - name: Adatvédelemmel kapcsolatos információk megtekintése
-      href: myprofile-portal-privacy-page.md
+      href: my-account-portal-privacy-page.md
+    - name: A legutóbbi bejelentkezési tevékenység megtekintése
+      href: my-account-portal-sign-ins-page.md
 - name: Biztonsági adatok (előzetes verzió) súgója
   items:
     - name: Áttekintés

@@ -57,6 +57,8 @@
       href: data-manager-portal.md
     - name: Data Manager konfigurálása – parancssori felület
       href: data-manager-cli.md
+    - name: Adatok közzététele a Cosmos DB-n
+      href: data-manager-cosmosdb.md
 - name: További források
   items:
     - name: Blockchain REST API

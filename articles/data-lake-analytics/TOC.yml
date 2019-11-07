@@ -121,11 +121,17 @@
     - name: Az Apache Spark ismertetése U-SQL-fejlesztőknek
       items:
         - name: Az Apache Spark ismertetése U-SQL-fejlesztőknek
-          href: data-lake-analytics-understand-spark-for-usql-developers.md
+          href: understand-spark-for-usql-developers.md
         - name: Az Apache Spark adatformátumainak ismertetése
-          href: data-lake-analytics-understand-spark-data-formats.md
+          href: understand-spark-data-formats.md
         - name: Az Apache Spark kódolási alapelveinek ismertetése
-          href: data-lake-analytics-understand-spark-code-concepts.md
+          href: understand-spark-code-concepts.md
+    - name: U-SQL-feladatok hibaelhárítása
+      items:
+        - name: U-SQL-futtatókörnyezet hibái
+          href: runtime-troubleshoot.md
+        - name: .NET-frissítések hibaelhárítása
+          href: dotnet-upgrade-troubleshoot.md
 - name: Referencia
   items:
     - name: Azure PowerShell

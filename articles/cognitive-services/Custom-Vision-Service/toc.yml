@@ -56,7 +56,7 @@
       href: getting-started-improving-your-classifier.md
     - name: Előrejelzési API használata
       href: use-prediction-api.md
-    - name: Javasolt címkék használata
+    - name: Intelligens feliratozó használata
       href: suggested-tags.md
     - name: Modellek exportálása
       items:

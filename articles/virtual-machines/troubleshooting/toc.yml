@@ -174,7 +174,7 @@
 - name: Rendszerindítási hibák
   href: boot-error-troubleshoot.md
   items:
-    - name: Az Azure Virtual Machine rendszerindítási hibája
+    - name: Grub Rescue
       href: troubleshoot-vm-boot-error.md
     - name: Rendszerindítási diagnosztika
       href: boot-diagnostics.md

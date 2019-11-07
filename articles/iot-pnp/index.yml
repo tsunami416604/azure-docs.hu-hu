@@ -1,39 +1,74 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Landing
 title: Az IoT Plug and Play előzetes verziójának dokumentációja
+summary: Az IoT Plug and Play előzetes verziójának használatával egy olyan eszközmodellt határozhat meg, amely lehetővé teszi a felhőmegoldások számára az eszköz automatikus megértését és a vele történő kommunikáció megkezdését – mindezt eszközkód írása nélkül.
 metadata:
-  title: Az IoT Plug and Play előzetes verziójának dokumentációja – oktatóanyagok és API-referencia | Microsoft Docs
-  description: 'Megismerheti az IoT Plug and Play használatát oktatóanyagok, API-referenciák, videók és egyéb dokumentációk segítségével.'
-  author: dominicbetts
-  manager: philmea
-  ms.service: iot-pnp
+  title: Az IoT Plug and Play előzetes verziójának dokumentációja
+  description: Az IoT Plug and Play előzetes verziójának használatával egy olyan eszközmodellt határozhat meg, amely lehetővé teszi a felhőmegoldások számára az eszköz automatikus megértését és a vele történő kommunikáció megkezdését – mindezt eszközkód írása nélkül.
   services: iot-pnp
+  ms.service: iot-pnp
   ms.topic: landing-page
-  ms.date: 07/23/2019
+  author: dominicbetts
   ms.author: dobett
-abstract:
-  description: 'Megtudhatja, hogyan határozhat meg az IoT Plug and Play előzetes verziójának használatával egy olyan eszközmodellt, amely engedélyezi a felhőmegoldásokat az eszköz automatikus megértése és annak kezelése érdekében – mindezt kód írása nélkül. Az oktatóanyagok, API-referenciák, videók és egyéb dokumentációk segítségével eszközöket csatlakoztathat az olyan felhőmegoldásokhoz, mint az Azure IoT Central vagy a partneralkalmazások.'
-  aside:
-    image:
-      alt: null
-      height: 110
-      src: media/index/video-thumb-pnp-introduction.png
-      width: 250
-    title: 'Az IoT Plug and Play bemutatása. (11:54)'
-    href: 'https://channel9.msdn.com/Shows/Internet-of-Things-Show/Introduction-to-IoT-Plug-and-Play/player'
-    width: 250
-sections:
-  - title: 5 perces gyors útmutatók
-    items:
-      - type: paragraph
-        text: Megismerheti az <a href="quickstart-create-pnp-device">eszközképesség-modellek eszköz létrehozásához történő használatát</a>.
-      - type: paragraph
-        text: Megismerheti az <a href="quickstart-connect-pnp-device-solution">eszközök megoldáshoz történő csatlakoztatásának módját</a>.
-  - title: Részletes útmutatók
-    items:
-      - type: list
-        style: ordered
-        items:
-          - html: <a href="tutorial-pnp-visual-studio-code">Eszköz létrehozása a Visual Studio Code használatával</a>
-          - html: <a href="tutorial-build-device-certification">Minősítésre kész eszköz létrehozása</a>
-          - html: <a href="tutorial-certification-test">Eszköz minősítése</a>
+  manager: philmea
+  ms.date: 10/31/2019
+  ms.openlocfilehash: 442b9c5028ef899329912fa9d21ce780437d7970
+  ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+  ms.translationtype: HT
+  ms.contentlocale: hu-HU
+  ms.lasthandoff: 11/04/2019
+  ms.locfileid: "73570177"
+landingContent:
+- title: Az IoT Plug and Play ismertetése
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Mi az IoT Plug and Play?
+      url: overview-iot-plug-and-play.md
+  - linkListType: video
+    links:
+    - text: Az IoT Plug and Play bemutatása
+      url: https://channel9.msdn.com/Shows/Internet-of-Things-Show/Introduction-to-IoT-Plug-and-Play/player
+- title: Eszközök fejlesztése
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Mintaeszköz csatlakoztatása az IoT Hubhoz
+      url: quickstart-connect-pnp-device.md
+    - text: Mintaeszköz csatlakoztatása az IoT Centralhoz
+      url: ../iot-central/quick-create-pnp-device-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+    - text: Eszközképesség-modell használata eszköz létrehozásához
+      url: quickstart-create-pnp-device.md
+  - linkListType: tutorial
+    links:
+    - text: Eszközképesség-modell létrehozása és tesztelése a Visual Studio Code-dal
+      url: tutorial-pnp-visual-studio-code.md
+    - text: Minősítésre kész eszköz létrehozása
+      url: tutorial-build-device-certification.md
+    - text: Eszköz minősítése
+      url: tutorial-certification-test.md
+  - linkListType: how-to-guide
+    links:
+    - text: Azure IoT-eszközök használata a Visual Studio Code-hoz
+      url: howto-develop-with-vs-vscode.md
+    - text: Regisztráció az Azure Certified for IoT-portálon
+      url: howto-onboard-portal.md
+  - linkListType: concept
+    links:
+    - text: Gyakori felületek
+      url: concepts-common-interfaces.md
+- title: Megoldások kiépítése
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Kommunikáció a megoldáshoz csatlakozó eszközzel
+      url: quickstart-connect-pnp-device-solution.md
+  - linkListType: concept
+    links:
+    - text: Modellfelderítés
+      url: concepts-model-discovery.md
+    - text: Gyakori felületek
+      url: concepts-common-interfaces.md
+  - linkListType: how-to-guide
+    links:
+    - text: Csatlakozás eszközökhöz a megoldásból
+      url: howto-develop-solution.md

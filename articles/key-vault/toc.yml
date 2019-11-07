@@ -7,17 +7,21 @@
 - name: Gyors útmutatók
   expanded: true
   items:
-    - name: Titkos kód beállítása és lekérése – parancssori felület
+    - name: parancssori felület
       href: quick-create-cli.md
-    - name: Titkos kód beállítása és lekérése – PowerShell
+    - name: PowerShell
       href: quick-create-powershell.md
-    - name: Titkos kód beállítása és lekérése – portál
+    - name: Portál
       href: quick-create-portal.md
-    - name: Titkos kód beállítása és lekérése – .NET
+    - name: Python
+      href: quick-create-python.md
+    - name: .NET (SDK v4)
       href: quick-create-net.md
-    - name: Titkos kód beállítása és lekérése – Node.js
+    - name: .NET (SDK v3)
+      href: quick-create-net-v3.md
+    - name: Node.js
       href: quick-create-node.md
-    - name: Titkos kód beállítása és lekérése – sablon
+    - name: Azure Resource Manager-sablon
       displayName: 'resource manager, resource manager template, arm'
       href: quick-create-template.md
 - name: Oktatóanyagok

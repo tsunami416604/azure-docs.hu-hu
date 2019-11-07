@@ -12,12 +12,12 @@ metadata:
   author: memildin
   ms.author: memildin
   ms.date: 11/04/2019
-  ms.openlocfilehash: 48140c014492383fd4c714669b070df1fa6214e6
-  ms.sourcegitcommit: 3f8017692169bd75483eefa96c225d45cd497f06
+  ms.openlocfilehash: 8174498a5cc94eca0883102c95b543630cd37fdf
+  ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
   ms.translationtype: HT
   ms.contentlocale: hu-HU
-  ms.lasthandoff: 11/04/2019
-  ms.locfileid: "73521153"
+  ms.lasthandoff: 11/05/2019
+  ms.locfileid: "73607504"
 landingContent:
 - title: Tudnivalók a Security Centerről
   linkLists:
@@ -27,6 +27,22 @@ landingContent:
       url: security-center-intro.md
     - text: Mely Windows Server- és Linux-verziókat támogatja?
       url: security-center-os-coverage.md
+- title: Legyen naprakész
+  linkLists:
+  - linkListType: whats-new
+    links:
+    - text: A tárolók védelme
+      url: container-security.md
+    - text: Dinamikus megfelelőségi csomagok hozzáadása
+      url: update-regulatory-compliance-packages.md
+    - text: Integráció a Windows Admin Centerrel
+      url: windows-admin-center-integration.md
+    - text: Riasztásokra és javaslatokra adott válaszok automatizálása
+      url: workflow-automation.md
+    - text: Biztonsági riasztások és javaslatok exportálása
+      url: continuous-export.md
+    - text: Az Advanced Threat Protection beállítása az Azure Key Vaulthoz
+      url: advanced-threat-protection-key-vault.md
 - title: Bevezetés
   linkLists:
   - linkListType: get-started

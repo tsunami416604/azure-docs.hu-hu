@@ -260,7 +260,7 @@
             - name: Cosmos DB
               href: /azure/databricks/data/data-sources/azure/cosmosdb-connector
               maintainContext: true
-            - name: SQL Data Warehouse
+            - name: Azure SQL Data Warehouse
               href: /azure/databricks/data/data-sources/azure/sql-data-warehouse
               maintainContext: true
             - name: Bináris fájlok
@@ -272,7 +272,7 @@
             - name: Couchbase
               href: /azure/databricks/data/data-sources/couchbase
               maintainContext: true
-            - name: Rugalmas keresés
+            - name: ElasticSearch
               href: /azure/databricks/data/data-sources/elasticsearch
               maintainContext: true
             - name: Képek
@@ -708,7 +708,7 @@
             - name: Példa döntési fára
               href: /azure/databricks/applications/machine-learning/mllib/decision-trees
               maintainContext: true
-            - name: MLib-folyamatok és strukturált streamelés
+            - name: MLlib-folyamatok és strukturált streamelés
               href: /azure/databricks/applications/machine-learning/mllib/mllib-pipelines-and-stuctured-streaming
               maintainContext: true
             - name: Speciális MLlib-példa
@@ -716,6 +716,9 @@
               maintainContext: true
         - name: Automatikus gépi tanulás
           items:
+            - name: Az automatikus gépi tanulás áttekintése
+              href: /azure/databricks/applications/machine-learning/automl/index
+              maintainContext: true
             - name: Hyperopt
               items:
                 - name: A Hyperopt áttekintése
@@ -732,6 +735,14 @@
                   maintainContext: true
             - name: MLlib és automatizált MLflow-követés
               href: /azure/databricks/applications/machine-learning/automl/mllib-mlflow-integration
+              maintainContext: true
+        - name: Gépi tanulási modellek exportálása és importálása
+          items:
+            - name: Az exportálás és importálás áttekintése
+              href: /azure/databricks/applications/machine-learning/model-export-import/index
+              maintainContext: true
+            - name: MLeap gépi tanulási modell exportálása
+              href: /azure/databricks/applications/machine-learning/model-export-import/mleap-model-export
               maintainContext: true
         - name: Külső gépi tanulás integrálása
           href: /azure/databricks/applications/machine-learning/third-party/index
@@ -826,33 +837,39 @@
         - name: Az MLflow áttekintése
           href: /azure/databricks/applications/mlflow/index
           maintainContext: true
-        - name: Bevezetés az MLflow használatába
-          href: /azure/databricks/applications/mlflow/quick-start
-          maintainContext: true
-        - name: Bevezetés az MLflow Java és Scala használatába
-          href: /azure/databricks/applications/mlflow/quick-start-java-scala
-          maintainContext: true
-        - name: Bevezetés az MLflow Python használatába
-          href: /azure/databricks/applications/mlflow/quick-start-python
-          maintainContext: true
-        - name: Bevezetés az MLflow R használatába
-          href: /azure/databricks/applications/mlflow/quick-start-r
-          maintainContext: true
+        - name: Első lépések
+          items:
+            - name: Bevezetés az MLflow használatába
+              href: /azure/databricks/applications/mlflow/quick-start
+              maintainContext: true
+            - name: Bevezetés az MLflow Java és Scala használatába
+              href: /azure/databricks/applications/mlflow/  quick-start-java-scala
+              maintainContext: true
+            - name: Bevezetés az MLflow Python használatába
+              href: /azure/databricks/applications/mlflow/  quick-start-python
+              maintainContext: true
+            - name: Bevezetés az MLflow R használatába
+              href: /azure/databricks/applications/mlflow/quick-start-r
+              maintainContext: true
         - name: A gépi tanulás betanítási futtatásainak nyomon követése
-          href: /azure/databricks/applications/mlflow/tracking
-          maintainContext: true
-        - name: Példák az MLflow általi nyomon követésre
-          href: /azure/databricks/applications/mlflow/tracking-examples
-          maintainContext: true
-        - name: Nyomon követés külső hozzáférése
-          href: /azure/databricks/applications/mlflow/access-hosted-tracking-server
-          maintainContext: true
+          items:
+            - name: A nyomon követés áttekintése
+              href: /azure/databricks/applications/mlflow/tracking
+              maintainContext: true
+            - name: Példák az MLflow általi nyomon követésre
+              href: /azure/databricks/applications/mlflow/  tracking-examples
+              maintainContext: true
+            - name: Nyomon követés külső hozzáférése
+              href: /azure/databricks/applications/mlflow/  access-hosted-tracking-server
+              maintainContext: true
         - name: 'Modellek mentése, betöltése és üzembe helyezése'
-          href: /azure/databricks/applications/mlflow/models
-          maintainContext: true
-        - name: Példák MLflow-modellekre
-          href: /azure/databricks/applications/mlflow/model-examples
-          maintainContext: true
+          items:
+            - name: 'A mentés, a betöltés és az üzembe helyezés áttekintése'
+              href: /azure/databricks/applications/mlflow/models
+              maintainContext: true
+            - name: Példák MLflow-modellekre
+              href: /azure/databricks/applications/mlflow/  model-examples
+              maintainContext: true
         - name: Futtatások reprodukálása MLflow-projektekkel
           href: /azure/databricks/applications/mlflow/projects
           maintainContext: true
@@ -880,9 +897,6 @@
         - name: A Genomics áttekintése
           href: /azure/databricks/applications/genomics/index
           maintainContext: true
-        - name: A Genomics ETL áttekintése
-          href: /azure/databricks/applications/genomics/etl/index
-          maintainContext: true
         - name: Másodlagos elemzés
           items:
             - name: A másodlagos elemzés áttekintése
@@ -908,6 +922,9 @@
               maintainContext: true
         - name: ETL
           items:
+            - name: A Genomics ETL áttekintése
+              href: /azure/databricks/applications/genomics/etl/index
+              maintainContext: true
             - name: IO-változat Apache Spark SQL-lel
               href: /azure/databricks/applications/genomics/etl/variant-data
               maintainContext: true
@@ -1211,10 +1228,7 @@
               maintainContext: true
             - name: A kódolás nem észlelhető a JSON-ban
               href: /azure/databricks/kb/data-sources/json-unicode
-              maintainContext: true
-            - name: A JDBC lekérdezési lehetőség az Oracle Database-hez nem használható
-              href: /azure/databricks/kb/data-sources/query-option-not-work-oracle
-              maintainContext: true
+              maintainContext: true j
         - name: DBFS
           items:
             - name: A DBFS-gyökérben tárolt objektumok nem olvashatók
@@ -1293,6 +1307,9 @@
               maintainContext: true
             - name: 'Meghiúsult feladat, maxresultsize'
               href: /azure/databricks/kb/jobs/job-fails-maxresultsize-exception
+              maintainContext: true
+            - name: Az idemopotencia biztosítása
+              href: /azure/databricks/kb/jobs/jobs-idempotency
               maintainContext: true
         - name: Kódtárak
           items:

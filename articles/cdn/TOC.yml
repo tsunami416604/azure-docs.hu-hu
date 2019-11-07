@@ -26,6 +26,8 @@
       href: cdn-custom-ssl.md
     - name: Gyorsítótárazási szabályok beállítása
       href: cdn-caching-rules-tutorial.md
+    - name: HTTPS kényszerítése a Standard szabálymotor használatával
+      href: cdn-standard-rules-engine.md
 - name: Példák
   items:
     - name: Kódminták
@@ -134,6 +136,13 @@
           href: cdn-troubleshoot-allowed-ca.md
 - name: Referencia
   items:
+    - name: A Microsoft Standard szabálymotor referenciája
+      href: cdn-standard-rules-engine-reference.md
+      items:
+        - name: A Standard szabálymotor egyezési feltételei
+          href: cdn-standard-rules-engine-match-conditions.md
+        - name: A Standard szabálymotor műveletei
+          href: cdn-standard-rules-engine-actions.md
     - name: A Verizon Premium-szabálymotor referenciája
       href: cdn-verizon-premium-rules-engine-reference.md
       items:

@@ -91,7 +91,7 @@
           href: how-to/run-dev-spaces-windows-containers.md
         - name: Traefik használata egyéni bejövő és HTTPS-kapcsolatokhoz
           href: how-to/ingress-https-traefik.md
-        - name: Az Azure Dev Spaces Connect használata (előzetes verzió)
+        - name: A fejlesztői gép csatlakoztatása egy AKS-fürthöz (előzetes verzió)
           href: how-to/connect.md
     - name: Hibaelhárítás
       href: troubleshooting.md

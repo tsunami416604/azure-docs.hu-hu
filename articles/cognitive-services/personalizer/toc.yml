@@ -41,7 +41,7 @@
         - name: Funkciók – Művelet és környezet
           href: concepts-features.md
           displayName: 'action, context, feature, namespace, JSON, best practice, set, ID, guid, event id,'
-        - name: Aktív tanulás
+        - name: Aktív és inaktív események
           href: concept-active-learning.md
           displayName: 'active, inactive'
         - name: Jutalmak

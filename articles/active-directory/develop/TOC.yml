@@ -436,7 +436,7 @@
                   href: msal-js-prompt-behavior.md
             - name: MSAL iOS és macOS rendszerekre
               items:
-                - name: Microsoft Authentication Library iOS és macOS rendszerekre
+                - name: Az MSAL iOS- és macOS-verziója közötti különbségek
                   href: msal-differences-ios-macos.md
                 - name: Kulcskarika konfigurálása
                   href: howto-v2-keychain-objc.md

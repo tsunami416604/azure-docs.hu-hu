@@ -31,6 +31,8 @@
       href: publish-marketplace-app.md
     - name: Felügyelt alkalmazás létrehozása egyéni szolgáltatóval
       href: tutorial-create-managed-app-with-custom-provider.md
+    - name: Erőforrások előkészítése egyéni szolgáltatókkal
+      href: tutorial-custom-providers-resource-onboarding.md
 - name: Példák
   items:
     - name: Azure CLI
@@ -45,6 +47,10 @@
       href: custom-providers-overview.md
     - name: Meghatározás megtekintése összetevő
       href: concepts-view-definition.md
+    - name: Szerepkör-definíció összetevő
+      href: concepts-custom-role-definition.md
+    - name: Erőforrások előkészítése
+      href: concepts-custom-providers-resourceonboarding.md
 - name: Útmutatók
   items:
     - name: Egyéni szolgáltatók

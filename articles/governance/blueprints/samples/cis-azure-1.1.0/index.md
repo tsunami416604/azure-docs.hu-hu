@@ -6,12 +6,12 @@ ms.author: dacoulte
 ms.date: 08/09/2019
 ms.topic: sample
 ms.service: blueprints
-ms.openlocfilehash: 0c33c0832590fdfd4fe78a1645ef1b0e3e391163
-ms.sourcegitcommit: fa5ce8924930f56bcac17f6c2a359c1a5b9660c9
+ms.openlocfilehash: bf4b79dbb3da15605dc4362b5f0578a457886316
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73200567"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73581369"
 ---
 # <a name="overview-of-the-cis-microsoft-azure-foundations-benchmark-blueprint-sample"></a>A CIS Microsoft Azure Foundations Benchmark tervmintájának áttekintése
 
@@ -19,16 +19,16 @@ A CIS Microsoft Azure Foundations Benchmark-tervminta az [Azure Policy](../../..
 
 ## <a name="recommendation-mapping"></a>Az ajánlások leképezése
 
-Az ajánlások leképezéséről szóló szakasz részletesen ismerteti a tervben található szabályzatokat, és hogy ezek hogyan érintik a CIS Microsoft Azure Foundations Benchmark különböző ajánlásait.
-Az Azure Policy kiértékeli, hogy az architektúrához rendelt erőforrások megfelelnek-e a hozzájuk rendelt szabályzatoknak. További információ: [Azure Policy](../../../policy/overview.md).
+Az ajánlások leképezéséről szóló szakasz részletesen ismerteti a tervben található szabályzatokat, és hogy ezek hogyan érintik a CIS Microsoft Azure Foundations Benchmark 1.1.0-s verziójának különböző ajánlásait. Az Azure Policy kiértékeli, hogy az architektúrához rendelt erőforrások megfelelnek-e a hozzájuk rendelt szabályzatoknak. További információ: [Azure Policy](../../../policy/overview.md).
 
 ## <a name="next-steps"></a>További lépések
 
 Ezzel megismerte a CIS Microsoft Azure Foundations Benchmark tervmintájának áttekintését.
-Következő lépésként tekintse meg az alábbi cikket, amely az ajánlások leképezését ismerteti:
+Következő lépésként tekintse meg az alábbi cikkeket, amelyek az ajánlások leképezését ismertetik:
 
 > [!div class="nextstepaction"]
 > [CIS Microsoft Azure Foundations Benchmark-terv – Ajánlásleképezés](./control-mapping.md)
+> [CIS Microsoft Azure Foundations Benchmark-terv – Üzembehelyezési lépések](./deploy.md)
 
 További cikkek a tervekről és a használatukról:
 
