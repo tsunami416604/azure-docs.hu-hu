@@ -1,8 +1,6 @@
 ---
 title: Azure Functions üzembe helyezési pontok
 description: Ismerje meg, hogyan hozhat létre és használhat üzembe helyezési tárolóhelyeket Azure Functions
-services: functions
-documentationcenter: na
 author: craigshoemaker
 manager: gwallace
 keywords: Azure functions, functions
@@ -10,12 +8,12 @@ ms.service: azure-functions
 ms.topic: reference
 ms.date: 08/12/2019
 ms.author: cshoe
-ms.openlocfilehash: 50337745b008cdd38dd860a0329e44ee712e7acd
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: 23a4870332266ce180c2e94aeb0b5ca24073878b
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "70085662"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73576315"
 ---
 # <a name="azure-functions-deployment-slots"></a>Azure Functions üzembe helyezési pontok
 
@@ -27,7 +25,7 @@ A következő, a függvények a tárolóhelyek cseréjével kapcsolatos hatásai
 - Ha egy függvény a swap során fut, a végrehajtás folytatódik, és az azt követő triggerek átirányítva lesznek a felcserélt alkalmazás-példányra.
 
 > [!NOTE]
-> A Linux-használati tervhez nem érhetők el tárolóhelyek.
+> A Linux-használati csomag jelenleg nem érhető el.
 
 ## <a name="why-use-slots"></a>Miért érdemes tárolóhelyeket használni?
 
@@ -82,7 +80,7 @@ A következő lépésekkel hozhat létre központi telepítési beállítást:
 
 ![Üzembe helyezési pont beállítása](./media/functions-deployment-slots/azure-functions-deployment-slots-deployment-setting.png)
 
-## <a name="deployment"></a>Üzembe helyezés
+## <a name="deployment"></a>Környezet
 
 Tárolóhelyek létrehozásakor a tárolóhelyek üresek. A [támogatott üzembe helyezési technológiák](./functions-deployment-technologies.md) bármelyikével üzembe helyezheti az alkalmazást egy tárolóhelyen.
 
@@ -111,8 +109,8 @@ A tárolóhelyeket a [CLI](https://docs.microsoft.com/cli/azure/functionapp/depl
 
 1. Navigáljon a Function alkalmazáshoz
 1. Kattintson a felcserélni kívánt forrás tárolóhely nevére
-1. Az *Áttekintés* lapon kattintson a **felcserélés** gombra ![Swap Azure functions üzembe helyezési pontra ](./media/functions-deployment-slots/azure-functions-deployment-slots-swap.png)
-1. Ellenőrizze a swap konfigurációs beállításait, majd kattintson a **swap** ![Swap Azure functions üzembe helyezési pontra ](./media/functions-deployment-slots/azure-functions-deployment-slots-swap-config.png)
+1. Az *Áttekintés* lapon kattintson a **Csere** gombra ![swap Azure functions üzembe helyezési pontra](./media/functions-deployment-slots/azure-functions-deployment-slots-swap.png)
+1. Ellenőrizze a swap konfigurációs beállításait, majd kattintson a **swap** ![swap Azure functions üzembe helyezési pontra](./media/functions-deployment-slots/azure-functions-deployment-slots-swap-config.png)
 
 A művelet eltarthat egy kis ideig, amíg a rendszer végrehajtja a swap-műveletet.
 
@@ -182,12 +180,12 @@ Az üzembe helyezési pontok két szinten támogatottak:
 | Operációs rendszer/üzemeltetési csomag           | Támogatási szint     |
 | ------------------------- | -------------------- |
 | Windows-felhasználás       | Általános elérhetőség |
-| Windows Premium (előzetes verzió) | Előzetes verzió              |
+| Windows Premium           | Általános elérhetőség  |
 | Dedikált Windows         | Általános elérhetőség |
 | Linux-felhasználás         | Nem támogatott          |
-| Linux Premium (előzetes verzió)   | Előzetes verzió              |
+| Linux Premium             | Általános elérhetőség  |
 | Linux dedikált           | Általános elérhetőség |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Üzembe helyezési technológiák Azure Functions](./functions-deployment-technologies.md)

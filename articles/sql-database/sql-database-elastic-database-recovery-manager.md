@@ -1,5 +1,5 @@
 ---
-title: A Recovery Manager használata a szegmenses térképekkel kapcsolatos problémák megoldásához | Microsoft Docs
+title: A Recovery Manager használata a szegmenses térképekkel kapcsolatos problémák megoldásához
 description: A Recoverymanager osztállyal osztály használata a szilánkokkal kapcsolatos térképek problémáinak megoldásához
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/03/2019
-ms.openlocfilehash: cbc4985f032c228db7a9ddf719390bbf2d0166b9
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 5920f0a3f08d83b1300956ca830b3b9b827fa5e2
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68568690"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73690486"
 ---
 # <a name="using-the-recoverymanager-class-to-fix-shard-map-problems"></a>Horizontális skálázási térképek javítása a RecoveryManager osztállyal
 
@@ -32,17 +32,17 @@ A kifejezések definícióit lásd: [Elastic Database eszközök Szószedet](sql
 
 ## <a name="why-use-the-recovery-manager"></a>Miért érdemes a Recovery Managert használni?
 
-A többrétegű adatbázis-környezetekben az adatbázis egy bérlője, a kiszolgálón pedig sok adatbázis található. A környezetben számos kiszolgáló is lehet. Minden adatbázis le van képezve a szegmenses térképen, ezért a rendszer a megfelelő kiszolgálóhoz és adatbázishoz irányítja a hívásokat. Az adatbázisok követése egy horizontális Felskálázási **kulcs**szerint történik, és minden szegmenshez hozzá van rendelve egy **tartomány**. Egy horizontális Felskálázási kulcs például a "D" értékről az "F" értékre nevezheti az ügyfelek nevét. Az összes szegmens (más néven adatbázisok) és a leképezési tartományok leképezése a globális szegmenses **Térkép (GSM)** részét képezi. Minden adatbázis tartalmaz egy térképet is a szegmensben található tartományokból, amelyek a helyi szegmensek **(LSM)** néven ismertek. Amikor egy alkalmazás egy szegmenshez csatlakozik, a leképezést a rendszer a gyors lekéréshez az alkalmazással gyorsítótárazza. A LSM a gyorsítótárazott adatértékek ellenőrzésére szolgál.
+A többrétegű adatbázis-környezetekben az adatbázis egy bérlője, a kiszolgálón pedig sok adatbázis található. A környezetben számos kiszolgáló is lehet. Minden adatbázis le van képezve a szegmenses térképen, ezért a rendszer a megfelelő kiszolgálóhoz és adatbázishoz irányítja a hívásokat. Az adatbázisok követése egy horizontális Felskálázási **kulcs**szerint történik, és minden **szegmenshez**hozzá van rendelve egy tartomány. Egy horizontális Felskálázási kulcs például a "D" értékről az "F" értékre nevezheti az ügyfelek nevét. Az összes szegmens (más néven adatbázisok) és a leképezési tartományok leképezése a globális szegmenses **Térkép (GSM)** részét képezi. Minden adatbázis tartalmaz egy térképet is a szegmensben található tartományokból, amelyek a helyi szegmensek **(LSM)** néven ismertek. Amikor egy alkalmazás egy szegmenshez csatlakozik, a leképezést a rendszer a gyors lekéréshez az alkalmazással gyorsítótárazza. A LSM a gyorsítótárazott adatértékek ellenőrzésére szolgál.
 
 Előfordulhat, hogy a GSM-és LSM a következő okok miatt nem lehet szinkronban:
 
-1. Annak a szegmensnek a törlése, amelynek a tartománya már nem használatban van, vagy egy szegmens átnevezése nem lehetséges. A szegmensek törlése **árva**szegmensek leképezését eredményezi. Hasonlóképpen, az átnevezett adatbázis árva szegmensek leképezését is okozhatja. A változás céljától függően előfordulhat, hogy a szegmenst el kell távolítani, vagy frissíteni kell a szegmens helyét. A törölt adatbázisok helyreállításáról a [törölt adatbázis visszaállítása](sql-database-recovery-using-backups.md)című cikkből tájékozódhat.
+1. Annak a szegmensnek a törlése, amelynek a tartománya már nem használatban van, vagy egy szegmens átnevezése nem lehetséges. A szegmensek törlése árva szegmensek **leképezését**eredményezi. Hasonlóképpen, az átnevezett adatbázis árva szegmensek leképezését is okozhatja. A változás céljától függően előfordulhat, hogy a szegmenst el kell távolítani, vagy frissíteni kell a szegmens helyét. A törölt adatbázisok helyreállításáról a [törölt adatbázis visszaállítása](sql-database-recovery-using-backups.md)című cikkből tájékozódhat.
 2. Földrajzi feladatátvételi esemény történik. A folytatáshoz frissítenie kell a kiszolgáló nevét és az adatbázis nevét az alkalmazásban, majd frissítenie kell a szegmens hozzárendelésének részleteit egy szegmenses térképen. Ha van földrajzi feladatátvétel, a helyreállítási logikának automatizáltnak kell lennie a feladatátvételi munkafolyamaton belül. A helyreállítási műveletek automatizálása lehetővé teszi a Geo-kompatibilis adatbázisok súrlódás nélküli kezelhetőségét, és elkerüli a manuális emberi műveleteket. Az adatbázisok helyreállításának lehetőségeiről az adatközpont meghibásodása esetén az [üzletmenet folytonossága](sql-database-business-continuity.md) és a vész- [helyreállítás](sql-database-disaster-recovery.md)című témakörben olvashat.
-3. Egy szilánk vagy a ShardMapManager-adatbázis egy korábbi időpontra van visszaállítva. A biztonsági másolatok használatával történő időpontra történő helyreállításról a [biztonsági másolatok használatával](sql-database-recovery-using-backups.md)történő helyreállítással foglalkozó témakörben olvashat.
+3. Egy szilánk vagy a ShardMapManager-adatbázis egy korábbi időpontra van visszaállítva. A biztonsági másolatok használatával történő időpontra történő helyreállításról a [biztonsági másolatok használatával történő helyreállítással](sql-database-recovery-using-backups.md)foglalkozó témakörben olvashat.
 
 A Azure SQL Database Elastic Database eszközökről, a Geo-replikációról és a visszaállításról további információt a következő témakörben talál:
 
-* [Áttekintés Felhőalapú üzletmenet-folytonossági és adatbázis-vész-helyreállítás SQL Database](sql-database-business-continuity.md)
+* [Áttekintés: felhőalapú üzletmenet-folytonossági és adatbázis-vész-helyreállítás SQL Database](sql-database-business-continuity.md)
 * [Ismerkedés a rugalmas adatbázis-eszközökkel](sql-database-elastic-scale-get-started.md)  
 * [ShardMap-kezelés](sql-database-elastic-scale-shard-map-management.md)
 
@@ -76,7 +76,7 @@ Ez a példa eltávolítja a szegmenseket a szegmens térképről.
    rm.DetachShard(s.Location, customerMap);
    ```
 
-A szegmensek leképezése a szegmensben lévő szegmens helyét tükrözi a GSM-szegmens törlése előtt. Mivel a szegmens törölve lett, feltételezhető, hogy ez szándékos volt, és a skálázási kulcs tartománya már nem használatban van. Ha nem, akkor a visszaállítási időpontot is végrehajthatja. a Szilánk visszaállítása egy korábbi időpontból. (Ebben az esetben tekintse át a következő szakaszt a szilánkok következetlenségének észleléséhez.) A helyreállításhoz lásd: időponthoz való [helyreállítás](sql-database-recovery-using-backups.md).
+A szegmensek leképezése a szegmensben lévő szegmens helyét tükrözi a GSM-szegmens törlése előtt. Mivel a szegmens törölve lett, feltételezhető, hogy ez szándékos volt, és a skálázási kulcs tartománya már nem használatban van. Ha nem, akkor a visszaállítási időpontot is végrehajthatja. a Szilánk visszaállítása egy korábbi időpontból. (Ebben az esetben tekintse át a következő szakaszt a szilánkok következetlenségének észleléséhez.) A helyreállításhoz lásd: [időponthoz való helyreállítás](sql-database-recovery-using-backups.md).
 
 Mivel a rendszer feltételezi, hogy az adatbázis-törlés szándékos volt, a végső felügyeleti törlési művelettel törölheti a bejegyzést a szegmensben a szegmensben lévő Térkép kezelőjében. Ez megakadályozza, hogy az alkalmazás véletlenül adatokat írjon egy nem várt tartományba.
 

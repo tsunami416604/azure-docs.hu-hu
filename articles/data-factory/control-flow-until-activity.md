@@ -1,5 +1,5 @@
 ---
-title: A Azure Data Factory tevékenységig | Microsoft Docs
+title: A tevékenység Azure Data Factory
 description: A amíg tevékenység végrehajtja a tevékenységek egy csoportját, amíg a tevékenységhez rendelt feltétel igaz vagy időtúllépést nem ad vissza.
 services: data-factory
 documentationcenter: ''
@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 80eebf0813b6403d5e1e8ff510003f7f0f57c821
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: ab24b4f3a819e2b44c68d052c355f10219eb1dc4
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70142449"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73679359"
 ---
 # <a name="until-activity-in-azure-data-factory"></a>A tevékenység Azure Data Factory
 A amíg tevékenység ugyanazokat a funkciókat biztosítja, mint a ciklusok közötti hurkos struktúra a programozási nyelvek esetében. Egy tevékenységkészletet futtat le ciklusosan addig, amíg a tevékenységhez rendelt feltétel igaz értéket nem ad vissza. Megadhat egy időtúllépési értéket az Until tevékenységhez a Data Factoryban. 
@@ -53,11 +53,11 @@ A amíg tevékenység ugyanazokat a funkciókat biztosítja, mint a ciklusok kö
 
 Tulajdonság | Leírás | Megengedett értékek | Kötelező
 -------- | ----------- | -------------- | --------
-name | A `Until` tevékenység neve. | Sztring | Igen
+név | A `Until` tevékenység neve. | Sztring | Igen
 type | **Csak**a értékre kell beállítani. | Sztring | Igen
-expression | Igaz vagy hamis értéket megadó kifejezés | Kifejezés.  | Igen
-timeout | A do-ig hurkos időtúllépés a megadott idő után. | Karakterlánc. `d.hh:mm:ss`vagy `hh:mm:ss`. Az alapértelmezett érték 7 nap. Maximális érték: 90 nap. | Nem
-Tevékenységek | Azoknak a tevékenységeknek a készlete, amelyeket a kifejezés `true`kiértékelése után hajt végre. | Tevékenységek tömbje. |  Igen
+kifejezés | Igaz vagy hamis értéket megadó kifejezés | Kifejezés.  | Igen
+timeout | A do-ig hurkos időtúllépés a megadott idő után. | karakterlánc. `d.hh:mm:ss` (vagy) `hh:mm:ss`. Az alapértelmezett érték 7 nap. Maximális érték: 90 nap. | Nem
+Tevékenységek | A kifejezésnek a `true`ba való kiértékelése után végrehajtott tevékenységek összessége. | Tevékenységek tömbje. |  Igen
 
 ## <a name="example-1"></a>1\. példa
 
@@ -65,7 +65,7 @@ Tevékenységek | Azoknak a tevékenységeknek a készlete, amelyeket a kifejez�
 > Ez a szakasz JSON-definíciókat és PowerShell-parancsokat tartalmaz a folyamat futtatásához. A Data Factory-adatfolyamatok Azure PowerShell és JSON-definíciók használatával történő létrehozásával kapcsolatos részletes útmutatásért lásd [: oktatóanyag: az adatfeldolgozó létrehozása a Azure PowerShell használatával](quickstart-create-data-factory-powershell.md).
 
 ### <a name="pipeline-with-until-activity"></a>Folyamat a tevékenységig
-Ebben a példában a folyamat két tevékenységgel rendelkezik: **Várjon**. A várakozási tevékenység a megadott ideig várakozik a webes tevékenység ciklusban való futtatása előtt. A Data Factory kifejezésekkel és függvényekkel kapcsolatos információkért lásd a [kifejezés nyelvét és funkcióit](control-flow-expression-language-functions.md)ismertető témakört. 
+Ebben a példában a folyamat két tevékenységgel rendelkezik: **eddig** és **várni**. A várakozási tevékenység a megadott ideig várakozik a webes tevékenység ciklusban való futtatása előtt. A Data Factory kifejezésekkel és függvényekkel kapcsolatos információkért lásd a [kifejezés nyelvét és funkcióit](control-flow-expression-language-functions.md)ismertető témakört. 
 
 ```json
 {
@@ -249,7 +249,7 @@ A folyamat beállítja a **folderPath** a folyamat **outputPath1** vagy **output
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Ezek a parancsok feltételezik, hogy mentette a JSON-fájlokat a mappába: C:\ADF. 
+Ezek a parancsok feltételezik, hogy mentette a JSON-fájlokat a következő mappába: C:\ADF. 
 
 ```powershell
 Connect-AzAccount

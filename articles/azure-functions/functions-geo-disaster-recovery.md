@@ -1,6 +1,6 @@
 ---
-title: Azure Functions geo-vész-helyreállítás | Microsoft Docs
-description: Hogyan használhatók a földrajzi régiók a feladatátvételre, és hogyan használhatók a vész-helyreállítás a Azure Functionsban.
+title: Azure Functions geo-vész-helyreállítás és magas rendelkezésre állás | Microsoft Docs
+description: A földrajzi régiók használata a redundancia és a feladatátvétel során a Azure Functionsban.
 services: functions
 documentationcenter: na
 author: wesmc7777
@@ -11,12 +11,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 08/29/2019
 ms.author: jehollan
-ms.openlocfilehash: 87f8b2fac3a123f2b92f77a70535f952b25557e0
-ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
+ms.openlocfilehash: 1d75d58a6df622ffb1b277f75ceedc2c2a66369d
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71310268"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73576263"
 ---
 # <a name="azure-functions-geo-disaster-recovery"></a>Azure Functions geo-vész-helyreállítás
 

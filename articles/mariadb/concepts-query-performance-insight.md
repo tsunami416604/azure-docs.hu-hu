@@ -5,20 +5,17 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 06/27/2019
-ms.openlocfilehash: b1007080c907eecc940b57184954c793b85f5eec
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.date: 11/04/2019
+ms.openlocfilehash: 31aacfea7c68614add0229c3a9c494de4714fe16
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72595586"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73604036"
 ---
 # <a name="query-performance-insight-in-azure-database-for-mariadb"></a>Lekérdezési terheléselemző a Azure Database for MariaDB
 
 **A következőkre vonatkozik:** Azure Database for MariaDB 10,2
-
-> [!IMPORTANT]
-> Lekérdezési terheléselemző előzetes verzióban érhető el.
 
 Lekérdezési terheléselemző segítségével gyorsan azonosíthatja a leghosszabb ideig futó lekérdezéseket, hogyan változnak az idő múlásával, és mi vár rájuk.
 
@@ -69,6 +66,6 @@ A várakozási Statisztika nézetben megjelenő lekérdezések csoportosítása 
 
 ![Lekérdezési terheléselemző vár statisztikái](./media/concepts-query-performance-insight/query-performance-insight-wait-statistics.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - További információ a Azure Database for MariaDB [figyeléséről és hangolásáról](concepts-monitoring.md) .

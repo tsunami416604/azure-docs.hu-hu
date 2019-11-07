@@ -1,19 +1,19 @@
 ---
-title: Azure HPC-gyorsítótár csatlakoztatása (előzetes verzió)
+title: Azure HPC-gyorsítótár csatlakoztatása
 description: Ügyfelek összekötése az Azure HPC cache szolgáltatással
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
-ms.date: 09/24/2019
+ms.date: 10/30/2019
 ms.author: rohogue
-ms.openlocfilehash: 3257cf92c628650fc50e0a36ec37fcab920aba2f
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.openlocfilehash: d906ed9a1a55e936c6374806a9037085c47e3b01
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72254569"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73582217"
 ---
-# <a name="mount-the-azure-hpc-cache-preview"></a>Az Azure HPC cache csatlakoztatása (előzetes verzió)
+# <a name="mount-the-azure-hpc-cache"></a>Az Azure HPC-gyorsítótár csatlakoztatása
 
 A gyorsítótár létrehozása után az NFS-ügyfelek egy egyszerű csatlakoztatási paranccsal férhetnek hozzá.
 
@@ -25,7 +25,7 @@ A csatlakoztatási parancs két elemből áll:
 ![képernyőkép az Azure HPC cache-példány áttekintő oldaláról, amely a jobb alsó sarokban lévő csatlakoztatási címek listája körüli kiemelési lista](media/hpc-cache-mount-addresses.png)
 
 > [!NOTE] 
-> A gyorsítótár-csatlakoztatási címek a gyorsítótár alhálózatán belüli hálózati adaptereknek felelnek meg. Egy erőforráscsoport esetében ezek a hálózati adapterek a `-cluster-nic-` és egy szám végződésű nevekkel vannak felsorolva. Ne módosítsa vagy törölje ezeket a csatolókat, vagy a gyorsítótár elérhetetlenné válik.
+> A gyorsítótár-csatlakoztatási címek a gyorsítótár alhálózatán belüli hálózati adaptereknek felelnek meg. Egy erőforráscsoport esetében ezek a hálózati adapterek `-cluster-nic-` és egy számnál végződő nevekkel vannak felsorolva. Ne módosítsa vagy törölje ezeket a csatolókat, vagy a gyorsítótár elérhetetlenné válik.
 
 A virtuális névtér elérési útjai a **tárolási célok** lapon jelennek meg. Kattintson egy egyedi tárolási cél nevére a részletek megjelenítéséhez, beleértve a hozzájuk társított összesített névtér-elérési utakat is.
 
@@ -61,8 +61,8 @@ Robusztus ügyfél csatlakoztatása esetén adja át ezeket a beállításokat �
 ``hard`` | Az Azure HPC cache-hez való Soft mounts az alkalmazás hibáival és az esetleges adatvesztéssel jár. 
 ``proto=netid`` | Ez a beállítás támogatja az NFS-hálózati hibák megfelelő kezelését.
 ``mountproto=netid`` | Ez a beállítás támogatja a hálózati hibák megfelelő kezelését a csatlakoztatási műveletekhez.
-``retry=n`` | Az átmeneti csatlakoztatási hibák elkerülése érdekében állítsa be a ``retry=30`` értéket. (Az előtér-csatlakoztatásokban egy másik érték használata javasolt.)
+``retry=n`` | Az átmeneti csatlakoztatási hibák elkerülése érdekében ``retry=30`` beállítása. (Az előtér-csatlakoztatásokban egy másik érték használata javasolt.)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Ha adatokat szeretne áthelyezni a gyorsítótár tárolási céljaira, olvassa el az [új Azure Blob Storage feltöltése](hpc-cache-ingest.md)című cikkét.

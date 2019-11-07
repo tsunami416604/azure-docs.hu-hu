@@ -1,27 +1,27 @@
 ---
-title: Az Azure HPC cache előzetes adatgyűjtése – párhuzamos másolási parancsfájl
+title: Azure HPC cache-adatfeldolgozás – párhuzamos másolási parancsfájl
 description: Egy párhuzamos másolási parancsfájl használata az Azure HPC cache-ben lévő blob Storage-tárolóba való áthelyezéshez
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
-ms.date: 08/30/2019
+ms.date: 10/30/2019
 ms.author: rohogue
-ms.openlocfilehash: 4899f946cb358693c969def3fa740af64675d934
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.openlocfilehash: 0bb74dcd683145fbae22cf0b6d2827ad9e16de0e
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72254499"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73582694"
 ---
-# <a name="azure-hpc-cache-preview-data-ingest---parallel-copy-script-method"></a>Azure HPC cache (előzetes verzió) – adatfeldolgozás – párhuzamos másolási parancsfájl metódusa
+# <a name="azure-hpc-cache-data-ingest---parallel-copy-script-method"></a>Azure HPC cache-adatfeldolgozás – párhuzamos másolási parancsfájl metódusa
 
-Ez a cikk útmutatást nyújt a ``parallelcp`` parancsfájl létrehozásához és a használatával egy blob Storage-tárolóba való áthelyezéshez az Azure HPC cache használatával.
+Ez a cikk útmutatást nyújt a ``parallelcp`` szkript létrehozásához és a használatával az Azure HPC cache-vel való használatra szolgáló blob Storage-tárolóba való áthelyezéshez.
 
 Ha többet szeretne megtudni arról, hogy az Azure HPC gyorsítótára hogyan helyezi át az adatátvitelt a blob Storage-ba, olvassa el az [adatáthelyezés Azure-beli blob Storage](hpc-cache-ingest.md)-ba Azure
 
 ## <a name="create-the-parallelcp-script"></a>A parallelcp parancsfájl létrehozása
 
-Az alábbi szkript hozzáadja a végrehajtható @no__t – 0 értéket. (Ezt a szkriptet Ubuntu-re tervezték, ha más disztribúciót használ, külön kell telepítenie a ``parallel``-ot.)
+Az alábbi szkript hozzáadja a végrehajtható `parallelcp`. (Ezt a szkriptet Ubuntu-re tervezték, ha más disztribúciót használ, külön kell telepítenie ``parallel``.)
 
 ```bash
 sudo touch /usr/bin/parallelcp && sudo chmod 755 /usr/bin/parallelcp && sudo sh -c "/bin/cat >/usr/bin/parallelcp" <<EOM 
@@ -75,11 +75,11 @@ EOM
 
 ## <a name="parallel-copy-example"></a>Példa párhuzamos másolásra
 
-Ez a példa a párhuzamos másolási parancsfájlt használja az Azure HPC cache-ben lévő forrásfájlok használatával ``glibc`` fordításához.
+Ez a példa a párhuzamos másolási parancsfájlt használja az Azure HPC cache-ben lévő forrásfájlok használatával történő fordításához ``glibc``.
 
 A forrásfájlok az Azure HPC cache csatlakoztatási pontján vannak gyorsítótárazva, és az objektum fájljai a helyi merevlemezen vannak tárolva.
 
-Ez a példa a párhuzamos másolási parancsfájlt használja a ``-j`` és a ``make`` kapcsolóval a párhuzamos megszerzéséhez.
+Ez a példa a párhuzamos másolási parancsfájlt használja a ``-j`` és az ``make`` lehetőséggel, hogy párhuzamos nyerjen.
 
 ```bash
 sudo apt-get update

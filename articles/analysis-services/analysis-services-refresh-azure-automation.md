@@ -1,17 +1,17 @@
 ---
 title: Azure Analysis Services modellek frissítése a Azure Automationsal | Microsoft Docs
-description: Ismerje meg, hogyan frissítheti a modelleket Azure Automation használatával.
+description: Ez a cikk azt ismerteti, hogyan lehet kódokat frissíteni a Azure Analysis Services számára a Azure Automation használatával.
 author: chrislound
 ms.service: analysis-services
 ms.topic: conceptual
-ms.date: 04/26/2019
+ms.date: 10/30/2019
 ms.author: chlound
-ms.openlocfilehash: ed1634ef1009149dc2937174b20248eab9cd335f
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: a79123d57f80474e1871ef68f9a92ea9417089ac
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72294794"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73572353"
 ---
 # <a name="refresh-with-azure-automation"></a>Frissítés az Azure Automationnel
 
@@ -21,7 +21,7 @@ A cikkben szereplő példa a [PowerShell SQLServer modulokat](https://docs.micro
 
 A cikk későbbi részében a modell frissítését bemutató PowerShell-Runbook is elérhető.  
 
-## <a name="authentication"></a>Hitelesítés
+## <a name="authentication"></a>Authentication
 
 Az összes hívást érvényes Azure Active Directory (OAuth 2) jogkivonattal kell hitelesíteni.  A cikkben szereplő példa egy egyszerű szolgáltatásnév (SPN) használatával hitelesíti a Azure Analysis Services.
 
@@ -101,11 +101,11 @@ Ezt a következőképpen lehet konfigurálni:
  
     ![Ütemterv létrehozása](./media/analysis-services-refresh-azure-automation/14.png)
 
-2. Kattintson az **ütemterv**@no__t – 1**új ütemterv létrehozása**lehetőségre, majd adja meg a részleteket.
+2. Kattintson az **ütemezett** > **új ütemterv létrehozása**lehetőségre, majd adja meg a részleteket.
 
     ![Ütemterv konfigurálása](./media/analysis-services-refresh-azure-automation/15.png)
 
-3. Kattintson a  **Create** (Létrehozás) gombra.
+3. Kattintson a **Létrehozás** elemre.
 
 4. Adja meg az ütemterv paramétereit. Ezeket a rendszer minden alkalommal felhasználja, amikor a Runbook elindítják. Az **WEBHOOKDATA** paramétert üresen kell hagyni, ha egy ütemterven keresztül fut.
 
@@ -144,10 +144,10 @@ Az **URL-cím** a webhookból létrehozott URL-cím.
 A **törzs** egy JSON-dokumentum, amely a következő tulajdonságokat tartalmazza:
 
 
-|Tulajdonság  |Value (Díj)  |
+|Tulajdonság  |Érték  |
 |---------|---------|
 |**AnalysisServicesDatabase**     |Az Azure Analysis Services adatbázis neve <br/> Példa: AdventureWorksDB         |
-|**AnalysisServicesServer**     |A Azure Analysis Services-kiszolgáló neve. <br/> Például: https: \//westus. asazure. Windows. net/Servers/MyServer/models/AdventureWorks/         |
+|**AnalysisServicesServer**     |A Azure Analysis Services-kiszolgáló neve. <br/> Például: https:\//westus.asazure.windows.net/servers/myserver/models/AdventureWorks/         |
 |**DatabaseRefreshType**     |A végrehajtandó frissítés típusa. <br/> Példa: Full         |
 
 Példa JSON-törzsre:
@@ -175,7 +175,7 @@ Egy statikus nyilvános IP-címmel rendelkező Azure-beli virtuális gép Azure 
 >
 >További információ a Azure Automation hibrid feldolgozók konfigurálásáról: [erőforrások automatizálása adatközpontban vagy felhőben hibrid Runbook-feldolgozók használatával](../automation/automation-hybrid-runbook-worker.md#install-a-hybrid-runbook-worker).
 
-A hibrid feldolgozók konfigurálása után hozzon létre egy webhookot a következő szakaszban leírtak szerint: [Data Factory használata](#consume-with-data-factory).  Az egyetlen különbség, hogy a webhook konfigurálásakor a **futtatás** > **hibrid feldolgozói** lehetőségre van kiválasztva.
+A hibrid feldolgozók konfigurálása után hozzon létre egy webhookot a következő szakaszban leírtak szerint: [Data Factory használata](#consume-with-data-factory).  Az egyetlen különbség az, ha a webhook konfigurálásakor a **futtatás** > **hibrid feldolgozói** beállítást választja.
 
 Példa a hibrid feldolgozót használó webhookra:
 
@@ -224,7 +224,7 @@ else
 ```
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [Minták](analysis-services-samples.md)  
 [REST API](https://docs.microsoft.com/rest/api/analysisservices/servers)

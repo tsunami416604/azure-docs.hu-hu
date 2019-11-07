@@ -1,5 +1,5 @@
 ---
-title: Azure SQL Database kiszolgálói erőforrás korlátai | Microsoft Docs
+title: Azure SQL Database kiszolgálói erőforrás korlátai
 description: Ez a cikk áttekintést nyújt az önálló adatbázisok és a rugalmas készletek Azure SQL Database kiszolgálói erőforrásának korlátairól. Emellett tájékoztatást nyújt arról is, hogy mi történik, ha az erőforrás korlátai elérik vagy túllépik azokat.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: sashan,moslake,josack
 ms.date: 04/18/2019
-ms.openlocfilehash: 175f694cbe46f871349136c9ce91888b6de48d21
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: b358e69df1df579e91a9098c120c7e6b4e3f2ead
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68566852"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73687489"
 ---
 # <a name="sql-database-resource-limits-for-azure-sql-database-server"></a>Azure SQL Database-kiszolgáló erőforrás-korlátainak SQL Database
 
@@ -27,12 +27,12 @@ Ez a cikk áttekintést nyújt az önálló adatbázisokat és rugalmas készlet
 
 ## <a name="maximum-resource-limits"></a>Erőforrás-korlátok maximális száma
 
-| Resource | Korlát |
+| Erőforrás | Korlát |
 | :--- | :--- |
 | Adatbázisok száma kiszolgálónként | 5000 |
 | Az előfizetéshez tartozó kiszolgálók alapértelmezett száma bármely régióban | 20 |
 | Kiszolgálók/előfizetés maximális száma bármely régióban | 200 |  
-| DTU/eDTU kvóta kiszolgálónkénti bontásban | 54,000 |  
+| DTU/eDTU kvóta kiszolgálónkénti bontásban | 54 000 |  
 | Virtuális mag-kvóta kiszolgálónkénti/példányon | 540 |
 | Készletek maximális száma kiszolgálónként | Korlátozott számú DTU vagy virtuális mag. Ha például az egyes készletek 1000 DTU, akkor a kiszolgáló támogatja az 54-es készleteket.|
 |||
@@ -44,7 +44,7 @@ Ez a cikk áttekintést nyújt az önálló adatbázisokat és rugalmas készlet
 > - Növekvő késés a főadatbázison futó lekérdezések futtatásakor.  Ide tartoznak az erőforrás-kihasználtsági statisztikák, például a sys. resource_stats nézetei.
 > - Növekvő késés a felügyeleti műveletekben és a portálon olyan nézőpontok, amelyek a kiszolgáló adatbázisainak számbavételét foglalják magukban.
 
-### <a name="storage-size"></a>Tároló mérete
+### <a name="storage-size"></a>Tárterület mérete
 - Önálló adatbázisok esetén a rources a [DTU-alapú erőforrás-korlátokat](sql-database-dtu-resource-limits-single-databases.md) vagy a [virtuális mag-alapú erőforrás-](sql-database-vcore-resource-limits-single-databases.md) korlátokat tekintheti meg.
 
 ## <a name="what-happens-when-database-resource-limits-are-reached"></a>Mi történik az adatbázis-erőforrások korlátainak elérésekor
@@ -59,7 +59,7 @@ Ha magas számítási kihasználtságot tapasztal, a kockázatcsökkentő lehet�
 
 ### <a name="storage"></a>Storage
 
-Ha az adatbázis-terület eléri a maximális méretkorlátot, az adatbázis-beszúrások és az adatméretet növelő frissítések sikertelenek [](sql-database-develop-error-messages.md)lesznek, és az ügyfelek hibaüzenetet kapnak. Az adatbázis kiválasztása és törlése a folytatás sikeres lesz.
+Ha az adatbázis-terület eléri a maximális méretkorlátot, az adatbázis-beszúrások és az adatméretet növelő frissítések sikertelenek lesznek, és az ügyfelek [hibaüzenetet](sql-database-develop-error-messages.md)kapnak. Az adatbázis kiválasztása és törlése a folytatás sikeres lesz.
 
 A magas lemezterület-használat során a megoldás a következőkre terjed ki:
 
@@ -106,6 +106,6 @@ Ha egy, a kívánt skálázhatóságot akadályozó naplózási sebességre vona
 
 ## <a name="next-steps"></a>További lépések
 
-- Az általános Azure-korlátokkal kapcsolatos információkért lásd: Azure-előfizetések [és-szolgáltatások korlátai, kvótái és](../azure-subscription-service-limits.md)megkötései.
+- Az általános Azure-korlátokkal kapcsolatos információkért lásd: [Azure-előfizetések és-szolgáltatások korlátai, kvótái és megkötései](../azure-subscription-service-limits.md).
 - További információ a DTU és a Edtu: [DTU és edtu](sql-database-purchase-models.md#dtu-based-purchasing-model).
 - További információ a tempdb méretéről: [tempdb Azure SQL Database](https://docs.microsoft.com/sql/relational-databases/databases/tempdb-database#tempdb-database-in-sql-database).

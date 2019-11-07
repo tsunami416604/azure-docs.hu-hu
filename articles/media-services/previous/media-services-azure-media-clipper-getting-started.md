@@ -1,25 +1,25 @@
 ---
-title: Ismerkedés az Azure Media Clipperrel |} A Microsoft Docs
-description: Ismerkedés az Azure Media Clipperrel, egy eszköz, amellyel videoklipeket az AMS-eszközök
+title: Bevezetés az Azure Media Clipper használatába | Microsoft Docs
+description: Ismerkedés az Azure Media Clipper szolgáltatással, amely az AMS-eszközökből származó videoklipek létrehozására szolgáló eszköz
 services: media-services
-keywords: clip;subclip;encoding;media
-author: dbgeorge
-manager: jasonsue
-ms.author: dwgeo
+keywords: klip; alklip; kódolás; média
+author: Juliako
+manager: femila
+ms.author: juliako
 ms.date: 03/14/2019
 ms.topic: article
 ms.service: media-services
-ms.openlocfilehash: 51848b9ba4d18b3ac7d652cfbd97cab6b85f2ee8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 45ecc81967d6a95f817b10bce7f8396d9379bc94
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61466272"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73685076"
 ---
-# <a name="create-clips-with-azure-media-clipper"></a>Készíthet az Azure Media Clipperrel
-Ez a szakasz bemutatja az alapvető lépéseken: első lépések az Azure Media Clipperrel. Az alábbi szakaszok nyújtanak konfigurálása az Azure Media Clipperrel adatait.
+# <a name="create-clips-with-azure-media-clipper"></a>Klipek létrehozása az Azure Media Clipper-vel
+Ez a szakasz az Azure Media Clipper első lépéseinek alapvető lépéseit mutatja be. Az alábbi szakasz az Azure Media Clipper konfigurálásának sajátosságait adja meg.
 
-- Először adja hozzá az alábbi hivatkozásokat az Azure Media Player és az Azure Media Clipperrel, a dokumentum fő. Azt javasoljuk, hogy a Clipperrel és az Azure Media Player verzió explicit módon megadása az URL-címeket. Ne használja ezeket az erőforrásokat a legújabb éles környezetben azok igény szerint változhatnak.
+- Először adja hozzá az alábbi hivatkozásokat az Azure Media Player és az Azure Media Clipper szolgáltatáshoz a dokumentum Head (bevezető) fiókjához. Javasoljuk, hogy explicit módon határozza meg a Clipper-verziót, és Azure Media Player az URL-címekben. Ne használja az erőforrások legújabb verzióját éles környezetben, mivel azok igény szerint változhatnak.
 
 ```javascript
 <!--Azure Media Player 2.1.4 or later is a prerequisite-->
@@ -30,19 +30,19 @@ Ez a szakasz bemutatja az alapvető lépéseken: első lépések az Azure Media 
 <script src="//amp.azure.net/libs/amc/0.1.0/azuremediaclipper.min.js"></script>
 ```
 
-- Ezután adja hozzá a következő osztályok a div elembe a Clipperrel vezérlőként hova.
+- Ezután adja hozzá a következő osztályokat a div elemhez, ahová a Clipper-t szeretné létrehozni.
 
 ```javascript
 <div id="root" class="azure-subclipper" />
 ```
 
-Opcionálisan ahhoz, hogy a sötét téma, adja hozzá a sötét-felszín osztály:
+Ha szeretné engedélyezni a sötét témát, adja hozzá a Dark-Skin osztályt:
 
 ```javascript
 <div id="root" class="azure-subclipper dark-skin" />
 ```
 
-- Következő lépésként hozza létre a Clipperrel a következő API-hívással:
+- Ezután hozza létre a Clipper-t a következő API-hívással:
 
 ```javascript
 var subclipper = new subclipper({
@@ -87,41 +87,41 @@ var subclipper = new subclipper({
 });
 ```
 
-Az inicializálás metódus hívásához paraméterei a következők:
-- `selector` {Az szükséges, karakterlánc}: CSS-választójára az egyező HTML elem, ahol a widget legyen megjelenítve.
-- `restVersion` {Az szükséges, karakterlánc}: A cél az Azure Media Services REST API verziója. A REST-verzió határozza meg a widget kimenetet formátumát. Jelenleg csak 2.0 támogatott.
-- `submitSubclipCallback` {SZÜKSÉGES, megtartva} A visszahívási függvény hívása a widget a "submit" gombra való kattintáskor. A visszahívási függvény a widget (egy renderelési feladat konfigurálása vagy egy szűrő definícióját) kimenetet kell látnia. További információkért tekintse meg a Küldés részklip visszahívás.
-- `logLevel` {OPTIONAL, {'info', 'warn', 'error'}}: A naplózási szint a böngészőbeli konzolon megjeleníteni. Alapértelmezett érték: hiba
-- `minimumMarkerGap` {Nem kötelező, csak int}: A minimális mérete egy részklip (másodpercben). Megjegyzés: az érték lehet kisebb, mint 6, ami egyben az alapértelmezett.
-- `singleBitrateMp4Profile` {A JSON-objektum OPCIONÁLIS} A renderelési feladat konfigurálása a vezérlő által generált használandó egyféle sávszélességű mp4 profil. Ha nincs megadva, akkor használja a [egyszeres átviteli sebességű MP4 profil alapértelmezett](https://docs.microsoft.com/azure/media-services/media-services-mes-preset-h264-single-bitrate-1080p).
-- `multiBitrateMp4Profile` {A JSON-objektum OPCIONÁLIS} A többszörös sávszélességű mp4-profil használandó feladat konfigurálása a vezérlő által generált jelennek meg. Ha nincs megadva, akkor használja a [többszörös sávszélességű MP4-profil alapértelmezett](https://docs.microsoft.com/azure/media-services/media-services-mes-preset-h264-multiple-bitrate-1080p).
-- `keymap` {A json-objektum OPCIONÁLIS} Lehetővé teszi, hogy a billentyűparancsokat a widget az testreszabása. További információkért lásd: [testre szabható billentyűparancsok](media-services-azure-media-clipper-keyboard-shortcuts.md).
-- `assetsPanelLoaderCallback` {Nem kötelező, megtartva} A visszahívási függvény hívása (aszinkron módon) egy új lap betöltéséhez az eszközök be az adategységek panelen minden alkalommal, amikor a felhasználó jobbra görget le a panel alján. További információkért tekintse meg az eszköz panel betöltő visszahívási.
-- `height` {Nem kötelező, number} A widget teljes magassága (minimális magasság legyen 600 képpont eszközök ablaktábla és a 850 nélkül az eszközök ablaktábla képpont).
-- `subclippingMode` (OPTIONAL, {'all', 'render', 'filter'}): Az engedélyezett részklipkészítés módokat. Az alapértelmezett érték az összeset használja.
-- `filterAssetsTypes` (Nem kötelező, logikai): filterAssetsTypes lehetővé teszik az Eszközök panelen szűrők legördülő megjelenítése/elrejtése. Az alapértelmezett érték: igaz.
-- `speedLevels` (Nem kötelező, tömb): speedLevels lehetővé teszi különböző sebességű szint beállítása a videolejátszó, lásd: [dokumentáció az Azure Media Player](https://amp.azure.net/libs/amp/latest/docs/#amp.player.playbackspeedoptions) további információ.
-- `resetOnJobDone` (Nem kötelező, logikai): resetOnJobDone lehetővé teszi, hogy a Clipperrel alaphelyzetbe állítása a részklipkészítési egy kezdeti állapota, amikor egy feladat elküldése sikerült.
-- `autoplayVideo` (Nem kötelező, logikai): autoplayVideo lehetővé teszi, hogy Clipperrel automatikus lejátszás a betöltéskor a videót. Az alapértelmezett érték: igaz.
-- `language` {Nem kötelező, csak karakterlánc}: nyelv, a widget nyelvet határozza meg. Ha nincs megadva, a widget próbálja meg megkeresni az üzeneteket, a böngésző nyelve alapján. A böngésző nincs nyelv észlelése esetén a widget alapértelmezés szerint angol. További információkért lásd: a [honosítás konfigurálása](media-services-azure-media-clipper-localization.md) szakaszban.
-- `languages` {Nem kötelező, JSON}: a nyelv paraméter az alapértelmezett szótár nyelveken cseréli a felhasználó által definiált egyéni szótár. További információkért lásd: a [honosítás konfigurálása](media-services-azure-media-clipper-localization.md) szakaszban.
-- `extraLanguages` (Nem kötelező, JSON): a extraLanguages paramétert az alapértelmezett szótár ad hozzá új nyelvek. További információkért lásd: a [honosítás konfigurálása](media-services-azure-media-clipper-localization.md) szakaszban.
+Az inicializálási metódus hívásának paraméterei a következők:
+- `selector` {kötelező, karakterlánc}: a megfelelő HTML-elem CSS-választója, ahol a widgetet meg kell jeleníteni.
+- `restVersion` {REQUIREd, string}: a Azure Media Services REST API a célként megadott verzió. A REST-verzió határozza meg a widget által generált kimenet formátumát. Jelenleg csak 2,0 támogatott.
+- `submitSubclipCallback` {kötelező, ígéret} a visszahívási függvényt a rendszer a widget Küldés gombjára kattintva hívja meg. A visszahívási függvénynek meg kell várnia a widget által generált kimenetet (a renderelési feladat konfigurációját vagy egy szűrő definícióját). További információ: alklip visszahívásának elküldése.
+- `logLevel` {opcionális, {"info", "warn", "Error"}}: a böngésző konzolján megjelenítendő naplózási szint. Alapértelmezett érték: hiba
+- `minimumMarkerGap` {opcionális, int}: egy alklip minimális mérete (másodpercben). Megjegyzés: az érték nem lehet kisebb, mint 6, ami egyben az alapértelmezett is.
+- `singleBitrateMp4Profile` {opcionális, JSON-objektum} a widget által generált renderelési feladatok konfigurációjának egyetlen bitráta MP4-profilját kell használnia. Ha nincs megadva, az [alapértelmezett egyetlen sávszélességű MP4-profilt](https://docs.microsoft.com/azure/media-services/media-services-mes-preset-h264-single-bitrate-1080p)használja.
+- `multiBitrateMp4Profile` {opcionális, JSON-objektum} a többszörös sávszélességű MP4-profil, amelyet a widget által generált feladatok konfigurációjának megjelenítéséhez kíván használni. Ha nincs megadva, az [alapértelmezett többszörös sávszélességű MP4-profilt](https://docs.microsoft.com/azure/media-services/media-services-mes-preset-h264-multiple-bitrate-1080p)használja.
+- `keymap` {opcionális, JSON-objektum} lehetővé teszi a widget billentyűparancsának testreszabását. További információ: [testreszabható billentyűparancsok](media-services-azure-media-clipper-keyboard-shortcuts.md).
+- `assetsPanelLoaderCallback` {nem kötelező, ígéret} a visszahívási függvény meghívja az adategységek panel új lapjainak betöltését (aszinkron módon) az eszközök ablaktáblára, amikor a felhasználó a ablaktábla aljára görget. További információ: Asset panel betöltő visszahívás.
+- `height` {opcionális, szám} a widget teljes magassága (a minimális magasság 600 px az eszközök ablaktábla nélkül és 850 px az eszközök ablaktáblán).
+- `subclippingMode` (opcionális, {"all", "render", "filter"}): a kivágási mód (ok) engedélyezett. Az alapértelmezett érték az összes.
+- `filterAssetsTypes` (nem kötelező, bool): a filterAssetsTypes lehetővé teszik a szűrők legördülő listájának megjelenítését vagy elrejtését az eszközök ablaktáblán. Az alapértelmezett érték TRUE (igaz).
+- `speedLevels` (nem kötelező, tömb): a speedLevels lehetővé teszi a videolejátszó különböző sebességének beállítását, további információért lásd a [Azure Media Player dokumentációját](https://amp.azure.net/libs/amp/latest/docs/#amp.player.playbackspeedoptions) .
+- `resetOnJobDone` (nem kötelező, bool): a resetOnJobDone lehetővé teszi a Clipper számára, hogy egy kezdeti állapotba állítsa alaphelyzetbe, ha a feladatot sikeresen elküldik.
+- `autoplayVideo` (nem kötelező, bool): a autoplayVideo lehetővé teszi a betöltést a videó lejátszásához. Az alapértelmezett érték TRUE (igaz).
+- `language` {OPTIONal, string}: Language beállítja a widget nyelvét. Ha nincs megadva, a widget megpróbálja honosítani az üzeneteket a böngésző nyelve alapján. Ha a böngészőben nem észlelhető nyelv, a widget alapértelmezett értéke az angol. További információ: [honosítás konfigurálása](media-services-azure-media-clipper-localization.md) szakasz.
+- `languages` {opcionális, JSON}: a languages paraméter lecseréli a nyelvek alapértelmezett szótárát a felhasználó által definiált egyéni szótárra. További információ: [honosítás konfigurálása](media-services-azure-media-clipper-localization.md) szakasz.
+- `extraLanguages` (nem kötelező, JSON): a extraLanguages paraméter új nyelveket helyez el az alapértelmezett szótárhoz. További információ: [honosítás konfigurálása](media-services-azure-media-clipper-localization.md) szakasz.
 
-## <a name="typescript-definition"></a>TypeScript-definíció
-A [TypeScript](https://www.typescriptlang.org/) a Clipperrel-definíciós fájljának található [Itt](https://amp.azure.net/libs/amc/latest/azuremediaclipper.d.ts).
+## <a name="typescript-definition"></a>Írógéppel-definíció
+[Itt](https://amp.azure.net/libs/amc/latest/azuremediaclipper.d.ts)megtalálhatja a Clipper-hez készült, [géppel](https://www.typescriptlang.org/) ellátható definíciós fájlt.
 
-## <a name="azure-media-clipper-api"></a>Az Azure Media Clipperrel API
-Ez a szakasz a dokumentumok a Clipperrel által biztosított API-felületet.
+## <a name="azure-media-clipper-api"></a>Azure Media Clipper API
+Ez a szakasz a Clipper által biztosított API-felületet dokumentálja.
 
-- `ready(handler)`: egy JavaScript futtatása, amint a Clipperrel, teljesen betöltött és használatra kész megoldást kínál.
-- `load(assets)`: az eszközök listáját betölti a widget ütemterv (assetsPanelLoaderCallback együtt nem használható). Ez [cikk](media-services-azure-media-clipper-load-assets.md) eszközöket tölthet be a Clipperrel részleteiért.
-- `setLogLevel(level)`: a böngészőbeli konzolon megjelenő naplózási szintjének beállítása. Lehetséges értékek a következők: `info`, `warn`, `error`.
-- `setHeight(height)`: Beállítja a widget teljes magassága képpontban (minimális magasság legyen 600 képpont Eszközök panel nélkül, és 850 az eszközök ablaktábla képpont).
-- `version`: a widget-verzió beolvasása.
+- `ready(handler)`: lehetővé teszik a JavaScript futtatását, amint a Clipper teljesen betöltődik, és készen áll a használatra.
+- `load(assets)`: az eszközök listájának betöltése a widget-idővonalba (a assetsPanelLoaderCallback együtt nem használható). Tekintse meg ezt a [cikket](media-services-azure-media-clipper-load-assets.md) , amelyből megtudhatja, hogyan tölthetők be az eszközök a Clipper szolgáltatásba.
+- `setLogLevel(level)`: a böngésző konzolján megjelenítendő naplózási szint beállítása. A lehetséges értékek a következők: `info`, `warn`, `error`.
+- `setHeight(height)`: beállítja a widget teljes magasságát képpontban megadva (a minimális magasság 600 px az eszközök panel nélkül, és 850 px az eszközök ablaktáblával).
+- `version`: lekéri a widget verzióját.
 
 ## <a name="next-steps"></a>További lépések
-Tekintse meg a következő lépések az Azure Media Clipperrel konfigurálása:
-- [Eszközök betöltése az Azure Media clipperbe](media-services-azure-media-clipper-load-assets.md)
+Tekintse meg az Azure Media Clipper konfigurálásának következő lépéseit:
+- [Eszközök betöltése az Azure Media Clipperbe](media-services-azure-media-clipper-load-assets.md)
 - [Egyéni billentyűparancsok konfigurálása](media-services-azure-media-clipper-keyboard-shortcuts.md)
-- [Az a Clipperrel klipekkel kapcsolatos feladatok elküldése](media-services-azure-media-clipper-submit-job.md)
+- [Levágási feladatok elküldése a Clipperből](media-services-azure-media-clipper-submit-job.md)
 - [Honosítás konfigurálása](media-services-azure-media-clipper-localization.md)

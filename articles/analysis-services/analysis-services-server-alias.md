@@ -1,18 +1,18 @@
 ---
 title: Alias-kiszolgálók Azure Analysis Services neve | Microsoft Docs
-description: A kiszolgálónév-aliasok létrehozását és használatát ismerteti.
+description: Megtudhatja, hogyan hozhat létre Azure Analysis Services kiszolgáló neve aliasokat. A felhasználók ezt követően a kiszolgáló neve helyett egy rövidebb aliast is tudnak csatlakozni a kiszolgálóhoz.
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
 ms.date: 10/29/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: ea618ecb29451650cbb01e9c95d263f42d406555
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 5e7017fad90e32cb8c4b952987fe248e463e4d03
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73146350"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73572296"
 ---
 # <a name="alias-server-names"></a>Alias-kiszolgálók nevei
 

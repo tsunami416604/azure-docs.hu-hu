@@ -1,5 +1,5 @@
 ---
-title: Ütemterv-eseményindítók létrehozása a Azure Data Factoryban | Microsoft Docs
+title: Ütemterv-eseményindítók létrehozása a Azure Data Factoryban
 description: Megtudhatja, hogyan hozhat létre olyan triggert Azure Data Factoryban, amely ütemezett folyamatokat futtat.
 services: data-factory
 documentationcenter: ''
@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/23/2018
-ms.openlocfilehash: f693b04cb2a7166436497239dc7a874bdc5cbf46
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 127db8a484b9624586dea70c44af3bc84b3fc84e
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70141626"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73673773"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-on-a-schedule"></a>Folyamat ütemezett futtatását futtató trigger létrehozása
 Ez a cikk az ütemezett triggerről és az ütemezett triggerek létrehozásának, indításának és figyelésének lépéseiről nyújt információkat. Más típusú eseményindítók esetén lásd: [folyamat-végrehajtás és eseményindítók](concepts-pipeline-execution-triggers.md).
@@ -42,9 +42,9 @@ Létrehozhat egy **ütemezett triggert** egy folyamat rendszeres időközönkén
     ![Eseményindítók hozzáadása – új eseményindító](./media/how-to-create-schedule-trigger/add-trigger-new-button.png)
 3. Az **új trigger** oldalon hajtsa végre a következő lépéseket: 
 
-    1. Ellenőrizze, hogy **be**van-e jelölve az **ütemterv** a típushoz. 
+    1. Ellenőrizze, hogy be van-e jelölve az **ütemterv** a **típushoz**. 
     2. Itt adhatja meg a **kezdő dátum (UTC) indítási dátumát (datetime)** . Alapértelmezés szerint az aktuális datetime értékre van beállítva. 
-    3. Az eseményindító ismétlődésének megadása. Válassza ki az egyik értéket a legördülő listából (percenként, óránként, naponta, hetente és havonta). Adja meg a szorzót a szövegmezőben. Ha például azt szeretné, hogy a trigger 15 percenként egyszer fusson, válassza a **percenként**lehetőséget, majd a szövegmezőbe írja be a **15** értéket. 
+    3. Az eseményindító **ismétlődésének** megadása. Válassza ki az egyik értéket a legördülő listából (percenként, óránként, naponta, hetente és havonta). Adja meg a szorzót a szövegmezőben. Ha például azt szeretné, hogy a trigger 15 percenként egyszer fusson, válassza a **percenként**lehetőséget, majd a szövegmezőbe írja be a **15** értéket. 
     4. Ha nem szeretné megadni az trigger befejezési dátumát, válassza a **nincs Befejezés**lehetőséget a **Befejezés** mezőben. A befejezési dátum időpontjának megadásához válassza **a dátum**, majd a záró dátum és idő lehetőséget, majd kattintson az **alkalmaz**gombra. Minden egyes folyamatfuttatás költséggel jár. Ha teszteli, érdemes lehet biztosítani, hogy a folyamat csak néhány alkalommal induljon el. Arról is győződjön meg, hogy elegendő idő áll rendelkezésre a folyamat futtatásához a közzététel időpontja és a befejezés időpontja között. Az eseményindító csak a Data Factoryban való közzététel után lesz aktív, a felhasználói felületen történő mentéskor még nem.
 
         ![Eseményindító-beállítások](./media/how-to-create-schedule-trigger/trigger-settings.png)
@@ -68,12 +68,12 @@ Létrehozhat egy **ütemezett triggert** egy folyamat rendszeres időközönkén
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Ebből a szakaszból megtudhatja, hogyan használhatja a Azure PowerShellt az ütemterv-triggerek létrehozásához, elindításához és figyeléséhez. A minta működésének megtekintéséhez először folytassa a [gyors üzembe helyezést: Hozzon létre egy adatgyárat](quickstart-create-data-factory-powershell.md)Azure PowerShell használatával. Ezután adja hozzá a következő kódot a Main metódushoz, amely egy 15 percenként futó ütemezett triggert hoz létre és indít el. Az trigger társítva van egy **Adfv2QuickStartPipeline** nevű folyamattal, amelyet a rövid útmutató részeként hoz létre.
+Ebből a szakaszból megtudhatja, hogyan használhatja a Azure PowerShellt az ütemterv-triggerek létrehozásához, elindításához és figyeléséhez. A minta működésének megtekintéséhez először tekintse át a gyors üzembe helyezési útmutatót [: hozzon létre egy adatgyárat Azure PowerShell használatával](quickstart-create-data-factory-powershell.md). Ezután adja hozzá a következő kódot a Main metódushoz, amely egy 15 percenként futó ütemezett triggert hoz létre és indít el. Az trigger társítva van egy **Adfv2QuickStartPipeline** nevű folyamattal, amelyet a rövid útmutató részeként hoz létre.
 
 1. Hozzon létre egy **MyTrigger. JSON** nevű JSON-fájlt a C:\ADFv2QuickStartPSH\ mappában a következő tartalommal:
 
     > [!IMPORTANT]
-    > A JSON-fájl mentése előtt állítsa be az időponthoz tartozó elem értékét az aktuális UTC-időre. Állítsa a befejezési elem értékét egy órára az aktuális UTC időpontnál.
+    > A JSON-fájl mentése előtt állítsa be az időponthoz **tartozó elem értékét** az aktuális UTC-időre. Állítsa a **befejezési** elem értékét egy órára az aktuális UTC időpontnál.
 
     ```json   
     {
@@ -144,7 +144,7 @@ Ebből a szakaszból megtudhatja, hogyan használhatja a Azure PowerShellt az ü
 
 
 ## <a name="net-sdk"></a>.NET SDK
-Ez a szakasz bemutatja, hogyan lehet triggert létrehozni, elindítani és figyelni a .NET SDK használatával. A minta működésének megtekintéséhez először folytassa a [gyors üzembe helyezést: Hozzon létre egy adatgyárat a .NET](quickstart-create-data-factory-dot-net.md)SDK használatával. Ezután adja hozzá a következő kódot a Main metódushoz, amely egy 15 percenként futó ütemezett triggert hoz létre és indít el. Az trigger társítva van egy **Adfv2QuickStartPipeline** nevű folyamattal, amelyet a rövid útmutató részeként hoz létre.
+Ez a szakasz bemutatja, hogyan lehet triggert létrehozni, elindítani és figyelni a .NET SDK használatával. A minta működésének megtekintéséhez először folytassa a gyors üzembe helyezési útmutatóval [: hozzon létre egy adatfeldolgozót a .net SDK használatával](quickstart-create-data-factory-dot-net.md). Ezután adja hozzá a következő kódot a Main metódushoz, amely egy 15 percenként futó ütemezett triggert hoz létre és indít el. Az trigger társítva van egy **Adfv2QuickStartPipeline** nevű folyamattal, amelyet a rövid útmutató részeként hoz létre.
 
 15 percenként futó ütemezett trigger létrehozásához és elindításához adja hozzá a következő kódot a Main metódushoz:
 
@@ -196,7 +196,7 @@ Ez a szakasz bemutatja, hogyan lehet triggert létrehozni, elindítani és figye
             client.Triggers.Start(resourceGroup, dataFactoryName, triggerName);
 ```
 
-Egy trigger futtatásának figyeléséhez adja hozzá a következő kódot a minta `Console.WriteLine` utolsó utasítása előtt:
+Egy trigger futtatásának figyeléséhez adja hozzá a következő kódot a minta utolsó `Console.WriteLine` utasításához:
 
 ```csharp
             // Check that the trigger runs every 15 minutes
@@ -224,7 +224,7 @@ Az trigger futtatásának és a folyamat futtatásának figyeléséhez a Azure P
 
 
 ## <a name="python-sdk"></a>Python SDK
-Ez a szakasz bemutatja, hogyan lehet triggert létrehozni, elindítani és figyelni a Python SDK használatával. A minta működésének megtekintéséhez először folytassa a [gyors üzembe helyezést: Hozzon létre egy adatgyárat a Python](quickstart-create-data-factory-python.md)SDK használatával. Ezután adja hozzá a következő kódrészletet a "folyamat-Futtatás figyelése" blokk után a Python-szkriptben. Ez a kód egy ütemezett triggert hoz létre, amely 15 percenként fut a megadott kezdési és befejezési időpontok között. Frissítse a **start_time** változót az aktuális UTC-időpontra, és a **end_time** változót egy órára az aktuális UTC időpontra.
+Ez a szakasz bemutatja, hogyan lehet triggert létrehozni, elindítani és figyelni a Python SDK használatával. A minta működésének megtekintéséhez először ugorjon végig a gyors üzembe helyezési útmutatóban [: hozzon létre egy adatgyárat a PYTHON SDK használatával](quickstart-create-data-factory-python.md). Ezután adja hozzá a következő kódrészletet a "folyamat-Futtatás figyelése" blokk után a Python-szkriptben. Ez a kód egy ütemezett triggert hoz létre, amely 15 percenként fut a megadott kezdési és befejezési időpontok között. Frissítse a **start_time** változót az aktuális UTC-időpontra, és a **end_time** változót egy órára az aktuális UTC időpontra.
 
 ```python
     # Create a trigger
@@ -322,13 +322,13 @@ Az alábbi táblázat magas szintű áttekintést nyújt az eseményindítóval 
 
 ### <a name="schema-defaults-limits-and-examples"></a>Séma alapértékei, korlátai és példái
 
-| JSON-tulajdonság | Type | Kötelező | Alapértelmezett érték | Érvényes értékek | Példa |
+| JSON-tulajdonság | Típus | Kötelező | Alapértelmezett érték | Érvényes értékek | Példa |
 |:--- |:--- |:--- |:--- |:--- |:--- |
-| **startTime** | Sztring | Igen | Nincsenek | ISO-8601 dátum-idők | `"startTime" : "2013-01-09T09:30:00-08:00"` |
-| **recurrence** | Object | Igen | Nincsenek | Recurrence objektum | `"recurrence" : { "frequency" : "monthly", "interval" : 1 }` |
-| **interval** | Number | Nem | 1 | 1–1000 | `"interval":10` |
-| **endTime** | Sztring | Igen | Nincsenek | Egy jövőbeli időpontot jelölő dátum-idő érték. | `"endTime" : "2013-02-09T09:30:00-08:00"` |
-| **schedule** | Object | Nem | Nincsenek | Schedule objektum | `"schedule" : { "minute" : [30], "hour" : [8,17] }` |
+| **startTime** | Sztring | Igen | None | ISO-8601 dátum-idők | `"startTime" : "2013-01-09T09:30:00-08:00"` |
+| **recurrence** | Objektum | Igen | None | Recurrence objektum | `"recurrence" : { "frequency" : "monthly", "interval" : 1 }` |
+| **interval** | Szám | Nem | 1 | 1–1000 | `"interval":10` |
+| **endTime** | Sztring | Igen | None | Egy jövőbeli időpontot jelölő dátum-idő érték. | `"endTime" : "2013-02-09T09:30:00-08:00"` |
+| **schedule** | Objektum | Nem | None | Schedule objektum | `"schedule" : { "minute" : [30], "hour" : [8,17] }` |
 
 ### <a name="starttime-property"></a>startTime tulajdonság
 Az alábbi táblázatban látható, hogy a **startTime** tulajdonság hogyan irányítja a folyamatfuttatást:
@@ -338,7 +338,7 @@ Az alábbi táblázatban látható, hogy a **startTime** tulajdonság hogyan ir�
 | Múltbeli kezdési időpont | Kiszámítja a kezdőidőpontot követő első jövőbeli végrehajtási időpontot, és abban az időpontban fut.<br/><br/>Az azt követő végrehajtásokat mindig az utolsó végrehajtási időpont alapján számítja ki.<br/><br/>Lásd a táblázat alatti példát. | Az eseményindító _nem indulhat hamarabb_ a megadott kezdési időpontnál. Az első előfordulás a kezdési időpontból kiszámított ütemezésen alapul.<br/><br/>Az azt követő végrehajtásokat az ismétlődési ütemezés alapján futtatja. |
 | Jövőbeli vagy aktuális kezdési időpont | Egyszer fut a megadott kezdési időpontban.<br/><br/>Az azt követő végrehajtásokat mindig az utolsó végrehajtási időpont alapján számítja ki. | Az eseményindító _nem indulhat hamarabb_ a megadott kezdési időpontnál. Az első előfordulás a kezdési időpontból kiszámított ütemezésen alapul.<br/><br/>Az azt követő végrehajtásokat az ismétlődési ütemezés alapján futtatja. |
 
-Tekintsünk meg egy példát arról, hogy mi történik, ha a kezdési időpont egy múltbeli időpont, ismétlődéssel, de ütemezés nélkül. Tegyük fel, hogy az aktuális időpont `2017-04-08 13:00`, a kezdési idő `2017-04-07 14:00`, és az eseményindító kétnaponta ismétlődik. (A **recurrence** értéke a **frequency** tulajdonság „day” értékre és az **interval** tulajdonság 2 értékre történő állításával adható meg.) Figyelje meg, hogy a **startTime** értéke múltbeli időpont, és az aktuális időpont elé esik.
+Tekintsünk meg egy példát arról, hogy mi történik, ha a kezdési időpont egy múltbeli időpont, ismétlődéssel, de ütemezés nélkül. Tegyük fel, hogy az aktuális időpont `2017-04-08 13:00`, a kezdési idő `2017-04-07 14:00`, és az eseményindító kétnaponta ismétlődik. (Az **Ismétlődés** értékének meghatározása: a **Frequency** tulajdonság értéke "Day", az **Interval** tulajdonság pedig 2 lesz.) Figyelje meg, hogy a **kezdő időpont** értéke korábbi, és az aktuális időpont előtt következik be.
 
 Ezen feltételek mellett az első végrehajtási időpont `2017-04-09 at 14:00`. Az ütemezőmotor a kezdési időpont alapján kiszámítja a végrehajtási alkalmakat. A múltbéli időpontokat a rendszer elveti. A motor az első jövőbeli alkalmat használja. Tehát ebben a forgatókönyvben a kezdési időpont `2017-04-07 at 2:00pm`, így a következő alkalom két napra esik ettől, azaz `2017-04-09 at 2:00pm`.
 
@@ -358,10 +358,10 @@ A következő táblázat részletesen ismerteti a **schedule** elemeit:
 
 | JSON-elem | Leírás | Érvényes értékek |
 |:--- |:--- |:--- |
-| **minutes** | Az óra azon perce, amikor az eseményindító fut. | <ul><li>Integer</li><li>Egész számok tömbje</li></ul>
-| **hours** | A nap azon órái, amikor az eseményindító fut. | <ul><li>Integer</li><li>Egész számok tömbje</li></ul> |
+| **minutes** | Az óra azon perce, amikor az eseményindító fut. | <ul><li>Egész szám</li><li>Egész számok tömbje</li></ul>
+| **hours** | A nap azon órái, amikor az eseményindító fut. | <ul><li>Egész szám</li><li>Egész számok tömbje</li></ul> |
 | **weekDays** | A hét azon napjai, amelyeken az eseményindító fut. Az érték csak heti gyakorisággal adható meg. | <ul><li>Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday (Hétfő, Kedd, Szerda, Csütörtök, Péntek, Szombat, Vasárnap)</li><li>A nap értékek tömbje (a tömb maximális értéke 7)</li><li>A nap értékek nem tesznek különbséget a kis- és nagybetű között</li></ul> |
-| **monthlyOccurrences** | A hónap azon napjai, amelyeken az eseményindító fut. Az érték csak havi gyakorisággal adható meg. | <ul><li>**MonthlyOccurrence** objektumok tömbje: `{ "day": day,  "occurrence": occurrence }`.</li><li>A **day** attribútum a hét azon napja, amelyen az eseményindító fut. Például a `{Sunday}` értékű **day** attribútummal rendelkező **monthlyOccurrences** tulajdonság a hónap minden vasárnapját jelenti. A **day** attribútum megadása kötelező.</li><li>Az **occurrence** attribútum a megadott **day** attribútum előfordulása a hónapban. Például a `{Sunday, -1}` értékű **day** és **occurrence** attribútumokkal rendelkező **monthlyOccurrences** tulajdonság a hónap utolsó vasárnapját jelenti. Az **occurrence** attribútum megadása nem kötelező.</li></ul> |
+| **monthlyOccurrences** | A hónap azon napjai, amelyeken az eseményindító fut. Az érték csak havi gyakorisággal adható meg. | <ul><li>**MonthlyOccurrence** -objektumok tömbje: `{ "day": day,  "occurrence": occurrence }`.</li><li>A **day** attribútum a hét azon napja, amelyen az eseményindító fut. Például a **értékű**day**attribútummal rendelkező**monthlyOccurrences`{Sunday}` tulajdonság a hónap minden vasárnapját jelenti. A **day** attribútum megadása kötelező.</li><li>Az **occurrence** attribútum a megadott **day** attribútum előfordulása a hónapban. Például a **értékű**day**és**occurrence**attribútumokkal rendelkező**monthlyOccurrences`{Sunday, -1}` tulajdonság a hónap utolsó vasárnapját jelenti. Az **occurrence** attribútum megadása nem kötelező.</li></ul> |
 | **monthDays** | A hónap azon napja, amelyen az eseményindító lefut. Az érték csak havi gyakorisággal adható meg. | <ul><li>Bármilyen érték -1 és -31 között</li><li>Bármilyen érték 1 és 31 között</li><li>Értékek tömbje</li></ul> |
 
 

@@ -8,12 +8,12 @@ ms.service: azure-databricks
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 03/13/2019
-ms.openlocfilehash: 06ab1783a6e0f4884ab46d3f00a26c47f28d02b0
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 410b945f1a9a8d659f55668e272e2d9d08482bde
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72596898"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73601760"
 ---
 # <a name="regional-disaster-recovery-for-azure-databricks-clusters"></a>Regionális vész-helyreállítás Azure Databricks-fürtökhöz
 
@@ -47,7 +47,7 @@ A saját regionális katasztrófa-helyreállítási topológiájának létrehoz�
 
    Ez a cikk számos olyan kódrészletet mutat be, amely a parancssori felületet használja az automatikus lépések többségéhez, mivel ez egy könnyen használható burkoló a Azure Databricks REST API.
 
-   Az áttelepítési lépések elvégzése előtt telepítse a databricks-CLI-t az asztali számítógépére vagy egy olyan virtuális gépre, ahol a munkát tervezi. További információ: [install DATABRICKS CLI](https://docs.azuredatabricks.net/user-guide/dev-tools/databricks-cli.html)
+   Az áttelepítési lépések elvégzése előtt telepítse a databricks-CLI-t az asztali számítógépére vagy egy olyan virtuális gépre, ahol a munkát tervezi. További információ: [install DATABRICKS CLI](/azure/databricks/dev-tools/databricks-cli)
 
    ```bash
    pip install databricks-cli
@@ -225,7 +225,7 @@ A saját regionális katasztrófa-helyreállítási topológiájának létrehoz�
 
    A feladatok konfigurációjának új vagy meglévő fürt beállításait kell megadnia. Ha meglévő fürtöt használ, az alábbi szkript ás kód megkísérli a régi fürt AZONOSÍTÓjának cseréjét új fürt-AZONOSÍTÓval.
 
-   Másolja és mentse a következő Python-szkriptet egy fájlba. Cserélje le `old_cluster_id` és `new_cluster_id` értékét, és a fürt áttelepítésének kimenetét az előző lépésben hajtsa végre. Futtassa a parancsot a databricks parancssori felületen, például `python scriptname.py`.
+   Másolja és mentse a következő Python-szkriptet egy fájlba. Cserélje le `old_cluster_id` és `new_cluster_id`értékét, és a fürt áttelepítésének kimenetét az előző lépésben hajtsa végre. Futtassa a parancsot a databricks parancssori felületen, például `python scriptname.py`.
 
    ```python
    from subprocess import call, check_output
@@ -286,7 +286,7 @@ A saját regionális katasztrófa-helyreállítási topológiájának létrehoz�
 
 8. **Azure Blob Storage és Azure Data Lake Storage csatlakoztatások migrálása**
 
-   Manuálisan csatlakoztassa az összes [Azure Blob Storage-tárolót](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-storage.html) , és [Azure Data Lake Storage (2. generációs)](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-datalake-gen2.html) csatlakoztatási pontokat egy jegyzetfüzet-alapú megoldás használatával. A tárolási erőforrások az elsődleges munkaterülethez lettek csatlakoztatva, és ezt meg kell ismételni a másodlagos munkaterületen. Nincs külső API a csatlakoztatásokhoz.
+   Manuálisan csatlakoztassa az összes [Azure Blob Storage-tárolót](/azure/databricks/data/data-sources/azure/azure-storage.html) , és [Azure Data Lake Storage (2. generációs)](/azure/databricks/data/data-sources/azure/azure-datalake-gen2.html) csatlakoztatási pontokat egy jegyzetfüzet-alapú megoldás használatával. A tárolási erőforrások az elsődleges munkaterülethez lettek csatlakoztatva, és ezt meg kell ismételni a másodlagos munkaterületen. Nincs külső API a csatlakoztatásokhoz.
 
 9. **A fürt inicializálási parancsfájljainak migrálása**
 
@@ -302,7 +302,7 @@ A saját regionális katasztrófa-helyreállítási topológiájának létrehoz�
 
 10. **Konfigurálja manuálisan a hozzáférés-vezérlést, és alkalmazza újra.**
 
-    Ha a meglévő elsődleges munkaterülete a prémium szint (SKU) használatára van konfigurálva, akkor valószínű, hogy a [Access Control funkciót](https://docs.azuredatabricks.net/administration-guide/admin-settings/index.html#manage-access-control)is használja.
+    Ha a meglévő elsődleges munkaterülete a prémium szint (SKU) használatára van konfigurálva, akkor valószínű, hogy a [Access Control funkciót](/azure/databricks/administration-guide/access-control/index)is használja.
 
     Ha a Access Control funkciót használja, manuálisan alkalmazza újra a hozzáférés-vezérlést az erőforrásokra (jegyzetfüzetek, fürtök, feladatok, táblák).
 
@@ -310,6 +310,6 @@ A saját regionális katasztrófa-helyreállítási topológiájának létrehoz�
 
 Ha más Azure-szolgáltatásokat használ, mindenképpen hajtsa végre a vész-helyreállítási ajánlott eljárásokat ezen szolgáltatások esetében is. Ha például külső Hive-metaadattár-példányt szeretne használni, érdemes megfontolnia a vész-helyreállítást az [azure SQL Server](../sql-database/sql-database-disaster-recovery.md), az [Azure HDInsight](../hdinsight/hdinsight-high-availability-linux.md)és/vagy a [Azure Database for MySQL](../mysql/concepts-business-continuity.md). A vész-helyreállítással kapcsolatos általános információkért lásd: vész- [helyreállítás Azure-alkalmazásokhoz](https://docs.microsoft.com/azure/architecture/resiliency/disaster-recovery-azure-applications).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-További információ: [Azure Databricks dokumentáció](https://docs.azuredatabricks.net/user-guide/index.html).
+További információ: [Azure Databricks dokumentáció](index.yml).

@@ -1,18 +1,18 @@
 ---
 title: Azure Analysis Services kiszolgáló metrikáinak monitorozása | Microsoft Docs
-description: Megtudhatja, hogyan figyelheti Analysis Services kiszolgáló metrikáit Azure Portal.
+description: Megtudhatja, hogyan Analysis Services az Azure Metrikaböngésző egy ingyenes eszközt a portálon, hogy segítse a kiszolgálók teljesítményének és állapotának figyelését.
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 10/29/2019
+ms.date: 10/30/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 57bcffad2634ea556cc0dd53763011f921acc5e0
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 9e6eab38e0f7bd55fa671aa8c1e99693eeb54c84
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73146802"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73572730"
 ---
 # <a name="monitor-server-metrics"></a>A kiszolgáló metrikáinak monitorozása
 
@@ -44,7 +44,7 @@ A táblázat segítségével meghatározhatja, hogy mely mérőszámok a legmegf
 |CurrentUserSessions|Aktuális felhasználói munkamenetek|Mennyiség|Átlag|A létrejött felhasználói munkamenetek aktuális száma.|
 |mashup_engine_memory_metric|M motor memóriája|Bájt|Átlag|Memóriahasználat az adategyesítési motor folyamatai szerint|
 |mashup_engine_qpu_metric|M motor QPU|Mennyiség|Átlag|QPU-használat az adategyesítési motor folyamatai szerint|
-|memory_metric|Memória|Bájt|Átlag|Memória. 0-25 GB-os tartomány S1, 0-50 GB az S2 és 0-100 GB for S4 esetében|
+|memory_metric|Memory (Memória)|Bájt|Átlag|Memória. 0-25 GB-os tartomány S1, 0-50 GB az S2 és 0-100 GB for S4 esetében|
 |memory_thrashing_metric|Memória-Kiverés|Százalék|Átlag|Memória átlagos kiverése.|
 |CleanerCurrentPrice|Memória: tisztító – aktuális ár|Mennyiség|Átlag|A memória aktuális ára, a $ re normalizálva, 1000-ra normalizálva.|
 |CleanerMemoryNonshrinkable|Memória: nem csökkenthető a tisztább memória|Bájt|Átlag|A memória mennyisége (bájtban), amelyet a háttérben futó tisztító nem szabályoz.|
@@ -87,7 +87,7 @@ A táblázat segítségével meghatározhatja, hogy mely mérőszámok a legmegf
 |TotalConnectionFailures|Összes sikertelen Kapcsolatfelvétel|Mennyiség|Átlag|A sikertelen csatlakozási kísérletek teljes száma.|
 |TotalConnectionRequests|Kapcsolatkérelmek teljes száma|Mennyiség|Átlag|A kapcsolatkérelmek teljes száma. |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 [Azure monitor áttekintése](../azure-monitor/overview.md)      
 [Első lépések az Azure Metrikaböngésző](../azure-monitor/platform/metrics-getting-started.md)      
 [Metrikák a Azure Monitor REST API](/rest/api/monitor/metrics)

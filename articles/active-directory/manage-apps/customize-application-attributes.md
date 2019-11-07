@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 04/03/2019
 ms.author: mimart
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ef3d6a47986056925f9964638c9c7192341ca5f9
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: 82c1a536bb86f0b3a4fe6a24af00379686ccc292
+ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72240992"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73641506"
 ---
 # <a name="customizing-user-provisioning-attribute-mappings-for-saas-applications-in-azure-active-directory"></a>A felhasználó kiépítési attribútumának testreszabása – SaaS-alkalmazások leképezése Azure Active Directory
 
@@ -77,6 +77,16 @@ A tulajdonsággal együtt az attribútum-hozzárendelések a következő attrib�
   - **Mindig** – alkalmazza ezt a leképezést a felhasználói létrehozási és frissítési műveletekre is.
   - **Csak a létrehozás során** – alkalmazza ezt a leképezést csak a felhasználói létrehozási műveletekre.
 
+## <a name="matching-users-in-the-source-and-target--systems"></a>A forrás-és a megcélzott rendszerek felhasználóinak egyeztetése
+Az Azure AD-kiépítési szolgáltatás a zöldmezős (a felhasználók nem kilépnek a célszámítógépen) és a rozsdaövezetek rehabilitálása (a felhasználók már léteznek a megcélzott rendszeren) forgatókönyvekben egyaránt üzembe helyezhetők. Mindkét forgatókönyv támogatásához a kiépítési szolgáltatás a megfelelő attribútum (ok) koncepcióját használja. A megfelelő attribútum (ok) segítségével meghatározhatja, hogyan azonosíthatók egyedi módon a felhasználók a forrásban, és hogyan egyeznek meg a célként megadott felhasználóval. Az üzembe helyezés megtervezésének részeként azonosítsa azt az attribútumot, amellyel egyedileg azonosíthatók a felhasználók a forrás-és a célként szolgáló rendszerekben. Tudnivaló:
+
+- **Az egyező attribútumok egyedinek kell lenniük:** Az ügyfelek gyakran használják az attribútumokat, például a userPrincipalName, az e-maileket vagy az objektumazonosítók használatát a megfelelő attribútumként.
+- **Több attribútum is használható egyező attribútumként:** Több attribútumot is megadhat a kiértékeléshez, ha a felhasználók és a kiértékelésük sorrendje (a felhasználói felületen egyező prioritásként van meghatározva). Ha például három attribútumot határoz meg egyező attribútumokként, és a felhasználó egyedi módon illeszkedik az első két attribútum kiértékelése után, akkor a szolgáltatás nem értékeli ki a harmadik attribútumot. A szolgáltatás a megadott sorrendben értékeli ki a megfelelő attribútumokat, és leállítja az értékelést, ha egyezés található.  
+- A **forrás és a cél értékének nem kell pontosan megegyeznie:** A cél értéke lehet a forrás értékének néhány egyszerű funkciója. Tehát a forrásban és a userPrincipalName lévő emailAddress attribútummal rendelkezhet, és az emailAddress attribútum egy függvényével egyezik meg, amely bizonyos karaktereket egy konstans értékkel helyettesít.  
+- Az **attribútumok kombinációja alapján történő megfeleltetés nem támogatott:** A legtöbb alkalmazás nem támogatja a lekérdezések két tulajdonság alapján történő lekérdezését, és a therfore az attribútumok kombinációja alapján nem lehet egyeztetni. Lehetséges, hogy egy másik után kiértékeli az egyes tulajdonságokat.
+- **Minden felhasználónak rendelkeznie kell legalább egy megfelelő attribútum értékével:** Ha egy egyező attribútumot határoz meg, az összes felhasználónak rendelkeznie kell egy értékkel az adott attribútumhoz a forrás rendszerében. Ha például a userPrincipalName-t a megfelelő attribútumként definiálja, az összes felhasználónak rendelkeznie kell userPrincipalName. Ha több egyező attribútumot (például extensionAttribute1 és e-mailt) definiál, nem minden felhasználónak ugyanazzal a megfelelő attribútummal kell rendelkeznie. Egy felhasználó rendelkezhet extensionAttribute1, de nem küldheti el az e-mailt, míg egy másik felhasználónak nem lehet extensionAttribute1. 
+- **A célként megadott alkalmazásnak támogatnia kell a szűrést a megfelelő attribútumon:** Az alkalmazások fejlesztői lehetővé teszik a felhasználók vagy csoportok API-k attribútumainak egy részhalmazának szűrését. A katalógusban található alkalmazások esetében biztosítjuk, hogy az alapértelmezett attribútum-hozzárendelés egy olyan attribútumhoz legyen hozzárendelve, amelyet a célalkalmazás API-je támogat a szűrést. Ha módosítja a célalkalmazás alapértelmezett egyező attribútumát, tekintse meg a harmadik féltől származó API-dokumentációt, és győződjön meg arról, hogy az attribútum szűrhető.  
+
 ## <a name="editing-group-attribute-mappings"></a>Csoport attribútumának szerkesztése – leképezések
 
 A kiválasztott számú alkalmazás, például a ServiceNow, a Box és a G Suite lehetővé teszi a csoport objektumainak és felhasználói objektumainak kiépítését. A csoport objektumai tartalmazhatnak olyan csoport-tulajdonságokat, mint a megjelenítendő nevek és az e-mail-aliasok, a csoporttagokkal együtt.
@@ -125,6 +135,113 @@ A támogatott attribútumok listájának szerkesztésekor a következő tulajdon
 - **Hivatkozott Object attribútum** – ha ez egy hivatkozástípus attribútum, akkor ezzel a menüvel kiválaszthatja a célalkalmazás azon tábláját és attribútumát, amely az attribútumhoz társított értéket tartalmazza. Ha például egy "részleg" nevű attribútummal rendelkezik, amelynek tárolt értéke egy különálló "részleg" táblában található objektumra hivatkozik, akkor válassza a "Departments.Name" elemet. Az adott alkalmazáshoz támogatott hivatkozási táblák és elsődleges azonosító mezők előre vannak konfigurálva, és jelenleg nem szerkeszthetők a Azure Portal használatával, de a [Graph API](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/synchronization-configure-with-custom-target-attributes)használatával szerkeszthetők.
 
 Új attribútum hozzáadásához görgessen a támogatott attribútumok listájának végére, és töltse ki a fenti mezőket a megadott bemenetek használatával, majd válassza az **attribútum hozzáadása**lehetőséget. Attribútumok hozzáadásának befejeződése után válassza a **Mentés** lehetőséget. Ezután újra kell töltenie a **kiépítés** lapot, hogy az új attribútumok elérhetővé váljanak az attribútum-leképezési szerkesztőben.
+## <a name="provisioning-a-role-to-a-scim-app"></a>Szerepkör üzembe helyezése egy SCIM-alkalmazásban
+Az alábbi lépésekkel szerepköröket hozhat létre az alkalmazáshoz. Vegye figyelembe, hogy az alábbi leírás az egyéni SCIM-alkalmazásokra vonatkozik. A Gallery-alkalmazások, például a Salesforce és a ServiceNow esetében használja az előre meghatározott szerepkör-leképezéseket. Az alábbi felsorolás leírja, hogyan alakíthatja át az AppRoleAssignments attribútumot az alkalmazás által várt formátumra.
+
+- Az Azure AD-beli appRoleAssignment az alkalmazás egyik szerepköréhez való leképezéséhez az attribútumot [kifejezéssel](https://docs.microsoft.com/azure/active-directory/manage-apps/functions-for-customizing-application-data)kell átalakítani. A appRoleAssignment attribútum **nem képezhető le közvetlenül** egy szerepkör-attribútumra anélkül, hogy kifejezést kellene használnia a szerepkör részleteinek elemzéséhez. 
+
+- **SingleAppRoleAssignment** 
+  - **Mikor kell használni:** A SingleAppRoleAssignment kifejezés használatával egyetlen szerepkört helyezhet üzembe egy felhasználó számára, és meghatározhatja az elsődleges szerepkört. 
+  - **Konfigurálás:** A fent ismertetett lépések végrehajtásával navigáljon az attribútum-hozzárendelések lapra, és használja a SingleAppRoleAssignment kifejezést a roles attribútum leképezéséhez. Három szerepkör-attribútum közül választhat: (szerepkörök [elsődleges EQ "igaz"]. megjelenítés, szerepkörök [elsődleges EQ "igaz]. típus és szerepkörök [elsődleges EQ" true "]. Value). Dönthet úgy, hogy a hozzárendelések bármelyikét vagy az összes szerepkör-attribútumot tartalmazza. Ha egynél többre szeretne belefoglalni, csak adjon hozzá egy új leképezést, és adja meg a célként megadott attribútumként.  
+  
+  ![SingleAppRoleAssignment hozzáadása](./media/customize-application-attributes/edit-attribute-singleapproleassignment.png)
+  - **Megfontolandó dolgok**
+    - Győződjön meg arról, hogy a rendszer nem rendel hozzá több szerepkört a felhasználóhoz. Nem garantáljuk, hogy melyik szerepkört kell kiépíteni.
+    
+  - **Példa kimenetre** 
+
+   ```json
+    {
+      "schemas": [
+          "urn:ietf:params:scim:schemas:core:2.0:User"
+      ],
+      "externalId": "alias",
+      "userName": "alias@contoso.OnMicrosoft.com",
+      "active": true,
+      "displayName": "First Name Last Name",
+      "meta": {
+           "resourceType": "User"
+      },
+      "roles": [
+         {
+               "primary": true,
+               "type": "WindowsAzureActiveDirectoryRole",
+               "value": "Admin"
+         }
+      ]
+   }
+   ```
+  
+- **AppRoleAssignmentsComplex** 
+  - **Mikor kell használni:** A AppRoleAssignmentsComplex kifejezés használatával több szerepkört is kiépítheti egy felhasználó számára. 
+  - **Konfigurálás:** Szerkessze a fentiekben ismertetett támogatott attribútumok listáját, és adjon hozzá egy új attribútumot a szerepkörökhöz: 
+  
+    ![Szerepkörök hozzáadása](./media/customize-application-attributes/add-roles.png)<br>
+
+    Ezután a AppRoleAssignmentsComplex kifejezés használatával képezhető le az egyéni szerepkör attribútumra az alábbi képen látható módon:
+
+    ![AppRoleAssignmentsComplex hozzáadása](./media/customize-application-attributes/edit-attribute-approleassignmentscomplex.png)<br>
+  - **Megfontolandó dolgok**
+    - Az összes szerepkör elsődleges = hamis értékként lesz kiépítve.
+    - A bejegyzés tartalmazza a szerepkör típusát. A javítási kérelem nem tartalmaz típust. Dolgozunk a típus küldésében a POST-és a PATCH-kérésekben.
+    
+  - **Példa kimenetre** 
+  
+   ```json
+   {
+       "schemas": [
+           "urn:ietf:params:scim:schemas:core:2.0:User"
+      ],
+      "externalId": "alias",
+      "userName": "alias@contoso.OnMicrosoft.com",
+      "active": true,
+      "displayName": "First Name Last Name",
+      "meta": {
+           "resourceType": "User"
+      },
+      "roles": [
+         {
+               "primary": false,
+               "type": "WindowsAzureActiveDirectoryRole",
+               "display": "Admin",
+               "value": "Admin"
+         },
+         {
+               "primary": false,
+               "type": "WindowsAzureActiveDirectoryRole",
+               "display": "User",
+             "value": "User"
+         }
+      ]
+   }
+   ```
+
+  
+
+
+## <a name="provisioning-a-multi-value-attribute"></a>Többértékű attribútum kiépítés
+Bizonyos attribútumok, például a phoneNumbers és az e-mailek olyan többértékű attribútumok, amelyekben különböző típusú telefonszámokat vagy e-maileket kell megadnia. Használja az alábbi kifejezést a többértékű attribútumok esetében. Lehetővé teszi az attribútum típusának és leképezésének megadását az értékhez tartozó Azure AD felhasználói attribútumhoz. 
+
+* phoneNumbers [type EQ "work"]. Value
+* phoneNumbers [type EQ "Mobile"]. Value
+* phoneNumbers [type EQ "fax"]. Value
+
+   ```json
+   "phoneNumbers": [
+       {
+         "value": "555-555-5555",
+         "type": "work"
+      },
+      {
+         "value": "555-555-5555",
+         "type": "mobile"
+      },
+      {
+         "value": "555-555-5555",
+         "type": "fax"
+      }
+   ]
+   ```
 
 ## <a name="restoring-the-default-attributes-and-attribute-mappings"></a>Az alapértelmezett attribútumok és attribútumok leképezésének visszaállítása
 
@@ -144,7 +261,7 @@ Ha ezt a beállítást választja, a kiépítési szolgáltatás futása közben
 - A IsSoftDeleted attribútum gyakran része az alkalmazás alapértelmezett leképezésének. A IsSoftdeleted a négy forgatókönyv egyikében igaz lehet (a felhasználó hatókörén kívül esik az alkalmazásból való kivonás miatt, a felhasználó hatókörén kívül esik, mert nem felel meg egy hatóköri szűrőnek, a felhasználót nem sikerült törölni az Azure AD-ben, vagy a AccountEnabled tulajdonság hamis értékre van állítva.  a felhasználón). 
 - Az Azure ad-kiépítési szolgáltatás nem támogatja a null értékek kiépítés
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [A felhasználók üzembe helyezésének és megszüntetésének automatizálása az SaaS-alkalmazásokban](user-provisioning.md)
 - [Kifejezések írása attribútum-leképezésekhez](functions-for-customizing-application-data.md)

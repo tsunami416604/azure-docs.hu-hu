@@ -11,12 +11,12 @@ author: tsikiksr
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 11/04/2019
-ms.openlocfilehash: 05bae18d35eafc47eddc7c1450eb06af5bbe5562
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: HT
+ms.openlocfilehash: e1bb84c142fb24086cf6c11a7b1070bdd29ae3f2
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/04/2019
-ms.locfileid: "73497250"
+ms.locfileid: "73581280"
 ---
 # <a name="create-explore-and-deploy-automated-machine-learning-experiments-with-azure-machine-learning-studio"></a>Gépi tanulási kísérletek létrehozása, megismerése és üzembe helyezése Azure Machine Learning Studióval
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-enterprise-sku.md)]
@@ -31,7 +31,7 @@ ms.locfileid: "73497250"
 
 * Egy **nagyvállalati kiadású**Azure Machine learning-munkaterület. Lásd: [Azure Machine learning munkaterület létrehozása](how-to-manage-workspace.md).  Ha egy meglévő munkaterületet nagyvállalati kiadásra szeretne frissíteni, tekintse meg [a frissítés az Enterprise Edition](how-to-manage-workspace.md#upgrade)rendszerre című
 
-## <a name="get-started"></a>Az első lépések
+## <a name="get-started"></a>Bevezetés
 
 1. Jelentkezzen be [Azure Machine learning studióba](https://ml.azure.com). 
 
@@ -104,7 +104,7 @@ Ellenkező esetben megjelenik a legújabb gépi tanulási kísérletek listája,
 
     Kattintson a **Tovább** gombra.
 
-1. A feladattípus **és beállítások** űrlapon válassza ki a feladattípust: besorolás, regresszió vagy előrejelzés. 
+1. A feladattípus **és beállítások** űrlapon válassza ki a feladattípust: besorolás, regresszió vagy előrejelzés. További információért lásd: tevékenységtípusok [definiálása](how-to-define-task-type.md) .
 
     1. A besoroláshoz is engedélyezheti a mély tanulást, amelyet a Text featurizations is használhat.
 
@@ -205,12 +205,17 @@ Az automatikus ML a kód írása nélkül segíti a modell üzembe helyezését:
 
     Mező| Érték
     ----|----
-    Központi telepítés neve| Adja meg a központi telepítés egyedi nevét.
-    Központi telepítés leírása| Adja meg a leírását, hogy jobban azonosítható legyen a központi telepítés.
-    Pontozási parancsfájl| Saját pontozási fájl automatikusan generált vagy feltölthető. [További információ a pontozási szkriptről](how-to-deploy-and-where.md#script).
-    Környezeti parancsfájl| Saját környezeti fájl automatikusan generált vagy feltölthető.
+    Name (Név)| Adja meg a központi telepítés egyedi nevét.
+    Leírás| Adja meg a leírását, hogy jobban azonosítható legyen a központi telepítés.
+    Számítási típus| Válassza ki a telepíteni kívánt végpont típusát: *Azure Kubernetes Service (ak)* vagy *Azure Container instance (ACI)* .
+    Name (Név)| *Csak ak-ra vonatkozik:* Válassza ki a telepíteni kívánt AK-fürt nevét.
+    Hitelesítés engedélyezése | Ezzel a beállítással engedélyezheti a jogkivonat-alapú vagy a kulcs alapú hitelesítést.
+    Egyéni központi telepítési eszközök használata| Engedélyezze ezt a funkciót, ha fel szeretné tölteni a saját pontozási parancsfájlját és a környezeti fájlját. [További információ a pontozási parancsfájlokról](how-to-deploy-and-where.md#script).
+
     >[!Important]
     > A fájlneveknek 32 karakternél rövidebbnek kell lenniük, és betűkkel kell kezdődnie és végződnie. Kötőjeleket, aláhúzásokat, pontokat és alfanumerikus elemeket tartalmazhat. Szóközök használata nem engedélyezett.
+
+    A *speciális* menü az alapértelmezett központi telepítési funkciókat kínálja, például az adatgyűjtés és az erőforrás-kihasználtság beállításait. Ha ezeket az alapértelmezett értékeket szeretné felülbírálni ebben a menüben.
 
 1. Válassza az **Üzembe helyezés** lehetőséget. Az üzembe helyezés körülbelül 20 percet vesz igénybe.
 

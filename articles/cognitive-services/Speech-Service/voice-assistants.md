@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: travisw
-ms.openlocfilehash: c97f6414876441290cade68b8f9a054970586402
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: HT
+ms.openlocfilehash: bd808c0c71e02483b4c4b06e612720c1802869a0
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/04/2019
-ms.locfileid: "73507736"
+ms.locfileid: "73577983"
 ---
 # <a name="about-voice-assistants"></a>A hangsegédek ismertetése
 
@@ -27,26 +27,29 @@ Az alkalmazások a beszédfelismerési szoftverfejlesztői készlettel (SDK) csa
 
    ![A hangsegéd-előkészítési szolgáltatás folyamatának fogalmi diagramja](media/voice-assistants/overview.png "A hangsegéd folyamata")
 
+## <a name="choosing-an-assistant-solution"></a>Asszisztensi megoldás kiválasztása
+
+A hangsegéd létrehozásának első lépése, hogy eldöntse, mit kell tennie. Az Azure Speech Services több, egymást kiegészítő megoldást biztosít a Segéd-interakciók kialakításához. Legyen szó akár a rugalmasságról és a sokoldalúságról, amit a bot Framework [közvetlen vonalas beszédének](direct-line-speech.md) csatornája biztosít, vagy az egyszerű forgatókönyvekhez [(előzetes verzió)](custom-commands.md) egyszerűen, a megfelelő eszközök kiválasztásával kezdheti meg az első lépéseket.
+
+| Ehhez a feladathoz... | Ezt követően tekintse meg... | Például... |
+|-------------------|------------------|----------------|
+|Nyílt végű beszélgetés robusztus szakértelem-integrációval és teljes körű üzembe helyezési ellenőrzéssel | A bot Framework [közvetlen vonalas beszédének](direct-line-speech.md) csatornája | <ul><li>"Be kell menni a Seattle-be"</li><li>"Milyen típusú pizzát rendelhetek?"</li></ul>
+|Parancs-és vezérlési vagy feladat-orientált beszélgetés egyszerűsített létrehozással és üzemeltetéssel | [Egyéni parancsok (előzetes verzió)](custom-commands.md) | <ul><li>"Az általános megvilágítás bekapcsolása"</li><li>"5 fokos meleg"</ul>
+
+Javasoljuk, hogy a [közvetlen vonalas beszédfelismerést](direct-line-speech.md) a legjobb alapértelmezett beállításként válassza, ha még nem biztos benne, hogy mit szeretne kezelni. Integrálja az eszközöket és a szerzői támogatást, például a [virtuális asszisztensi megoldást és a vállalati sablont](https://docs.microsoft.com/azure/bot-service/bot-builder-enterprise-template-overview) , valamint a [QnA Maker szolgáltatást](https://docs.microsoft.com/azure/cognitive-services/QnAMaker/Overview/overview) , hogy közös mintákon építsen, és a meglévő tudásbázisokat használja.
+
+Az [egyéni parancsok (előzetes verzió)](custom-commands.md) egy egyszerűsített szerzői és üzemeltetési élményt biztosítanak, amelyet kifejezetten a természetes nyelvi parancsok és a vezérlési forgatókönyvek számára alakítottak ki.
+   ![Asszisztensi megoldások összehasonlítása](media/voice-assistants/assistant-solution-comparison.png "CompArison ")
+
 ## <a name="core-features"></a>Alapvető funkciók
 
-| Kategória | Jellemzők |
+Akár [közvetlen vonalas beszédet](direct-line-speech.md) , akár [egyéni parancsokat (előzetes verzió)](custom-commands.md) választ a Segéd-interakciók létrehozásához, a testreszabási funkciók széles választékával testre szabhatja a Segédet a márka, a termék és a személyiség számára.
+
+| Kategória | Szolgáltatások |
 |----------|----------|
 |[Egyéni kulcsszó](speech-devices-sdk-create-kws.md) | A felhasználók olyan egyéni kulcsszóval indíthatnak el beszélgetéseket, mint például a "Hey contoso". Az alkalmazás a Speech SDK-ban egy egyéni kulcsszavas motorral rendelkezik, amely konfigurálható egy egyéni kulcsszóval, [amelyet itt is](speech-devices-sdk-create-kws.md)létrehozhat. A hangsegédek kiszolgálóoldali ellenőrzés használatával növelhetik a kulcsszó aktiválásának pontosságát (az eszköz helyett).
 |[Beszéd szövege](speech-to-text.md) | A hangsegédek valós idejű hangfelismerést végeznek az Azure Speech Servicesből származó [beszéd – szöveg](speech-to-text.md) használatával. Ez a szöveg a Segéd implementációjában és az ügyfélalkalmazásban is elérhető.
 |[Szöveg – beszéd](text-to-speech.md) | A Segéd szöveges válaszai az Azure Speech Servicesből származó [szöveges – beszéd szövegből](text-to-speech.md) lettek szintetizálva. Ezt a szintézist ezután az ügyfélalkalmazás elérhetővé válik egy hangadatfolyamként. A Microsoft lehetőséget nyújt saját, kiváló minőségű neurális TTS-hang létrehozására, amely hangvételt biztosít a márka számára. További információért [vegye fel velünk a kapcsolatot](mailto:mstts@microsoft.com).
-
-## <a name="comparing-assistant-solutions"></a>Asszisztensi megoldások összehasonlítása
-
-A hangsegéd szolgáltatás összekapcsolja az eszközön lévő alkalmazást az egyedi asszisztensi implementációval. A fejlesztők hangsegédeket készítenek (1) a bot Framework [közvetlen vonalas beszédfelismerési](direct-line-speech.md) csatornáját vagy (2) az [egyéni parancsok (előzetes verzió)](custom-commands.md) megoldás használatával.
-
-   ![Asszisztensi megoldások összehasonlítása](media/voice-assistants/assistant-solution-comparison.png "Asszisztensi megoldások összehasonlítása")
-
-| Megoldás | Jellemzők |
-|----------|----------|
-|[Egyéni parancsok (előzetes verzió)](custom-commands.md) | Az egyéni parancsok (előzetes verzió) egyszerűsített szerzői és üzemeltetési megoldást biztosítanak a hangsegédek számára. Ez a feladat-befejezési és a parancs-vezérlési forgatókönyvek igényeihez igazodik.
-|[Közvetlen vonalas beszéd](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech) | A közvetlen vonalas beszéd zökkenőmentes és zökkenőmentes kapcsolatot tesz lehetővé (1) az ügyfélalkalmazás, (2) egy kompatibilis robot, és (3) az Azure Speech Services képességei. A robot közvetlen vonalas hangcsatorna használatára való konfigurálásával kapcsolatos további információkért tekintse meg az [oldalát a bot Framework dokumentációjában](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech).
-
-Miután létrehozott egy hangsegédet az egyik megoldással, az eszközön lévő alkalmazást a Speech SDK `DialogServiceConnector` segítségével kapcsolja össze. További részletekért tekintse meg a gyors üzembe helyezést és a mintákat az egyes megoldásokhoz.
 
 ## <a name="getting-started-with-voice-assistants"></a>Első lépések a hangsegédek használatába
 

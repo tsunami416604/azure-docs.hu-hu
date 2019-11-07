@@ -2,37 +2,37 @@
 author: larryfr
 ms.service: machine-learning
 ms.topic: include
-ms.date: 07/26/2019
+ms.date: 10/06/2019
 ms.author: larryfr
-ms.openlocfilehash: b8913836baffdad200c198afa11475d617fe5d50
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 0463dbd67f27f6664ab246ad56af9c6fb95c52ee
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68729342"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73682097"
 ---
-A `deploymentconfig.json` dokumentumban szereplő bejegyzések a [AksWebservice. deploy_configuration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aks.aksservicedeploymentconfiguration?view=azure-ml-py)paramétereit képezik. A következő táblázat ismerteti a JSON-dokumentum entitásai és a metódus paramétereinek megfeleltetését:
+A `deploymentconfig.json` dokumentum bejegyzései a [AksWebservice. deploy_configuration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aks.aksservicedeploymentconfiguration?view=azure-ml-py)paramétereit képezik le. A következő táblázat ismerteti a JSON-dokumentum entitásai és a metódus paramétereinek megfeleltetését:
 
 | JSON-entitás | Metódus paramétere | Leírás |
 | ----- | ----- | ----- |
-| `computeType` | NA | A számítási cél. Az AK esetében az értéknek a `aks`következőnek kell lennie:. |
+| `computeType` | NA | A számítási cél. Az AK esetében az értéknek `aks`nak kell lennie. |
 | `autoScaler` | NA | Az automatikus skálázás konfigurációs elemeit tartalmazza. Tekintse meg az autoskálázási táblázatot. |
-| &emsp;&emsp;`autoscaleEnabled` | `autoscale_enabled` | Azt határozza meg, hogy engedélyezi-e az automatikus skálázást a webszolgáltatáshoz. Ha `numReplicas` , = egyéb esetben ,`False`. `0` `True` |
-| &emsp;&emsp;`minReplicas` | `autoscale_min_replicas` | A webszolgáltatás automatikus skálázásakor használandó tárolók minimális száma. Alapértelmezett érték:. `1` |
-| &emsp;&emsp;`maxReplicas` | `autoscale_max_replicas` | A webszolgáltatás automatikus skálázásakor használandó tárolók maximális száma. Alapértelmezett érték:. `10` |
-| &emsp;&emsp;`refreshPeriodInSeconds` | `autoscale_refresh_seconds` | Az autoskálázás milyen gyakran próbálja méretezni ezt a webszolgáltatást. Alapértelmezett érték:. `1` |
-| &emsp;&emsp;`targetUtilization` | `autoscale_target_utilization` | A cél kihasználtsága (az 100-as százalékban kifejezve), amelyet az autoskálázásnak meg kell próbálnia fenntartani a webszolgáltatás számára. Alapértelmezett érték:. `70` |
+| &emsp;&emsp;`autoscaleEnabled` | `autoscale_enabled` | Azt határozza meg, hogy engedélyezi-e az automatikus skálázást a webszolgáltatáshoz. Ha `numReplicas` = `0`, `True`; Ellenkező esetben `False`. |
+| &emsp;&emsp;`minReplicas` | `autoscale_min_replicas` | A webszolgáltatás automatikus skálázásakor használandó tárolók minimális száma. Alapértelmezett, `1`. |
+| &emsp;&emsp;`maxReplicas` | `autoscale_max_replicas` | A webszolgáltatás automatikus skálázásakor használandó tárolók maximális száma. Alapértelmezett, `10`. |
+| &emsp;&emsp;`refreshPeriodInSeconds` | `autoscale_refresh_seconds` | Az autoskálázás milyen gyakran próbálja méretezni ezt a webszolgáltatást. Alapértelmezett, `1`. |
+| &emsp;&emsp;`targetUtilization` | `autoscale_target_utilization` | A cél kihasználtsága (az 100-as százalékban kifejezve), amelyet az autoskálázásnak meg kell próbálnia fenntartani a webszolgáltatás számára. Alapértelmezett, `70`. |
 | `dataCollection` | NA | Az adatgyűjtés konfigurációs elemeit tartalmazza. |
-| &emsp;&emsp;`storageEnabled` | `collect_model_data` | Azt határozza meg, hogy engedélyezi-e a modell adatgyűjtését a webszolgáltatáshoz. Alapértelmezett érték:. `False` |
-| `authEnabled` | `auth_enabled` | Azt határozza meg, hogy engedélyezi-e a kulcsos hitelesítést a webszolgáltatáshoz. Mindkettő `tokenAuthEnabled` és `authEnabled` nem lehet `True`. Alapértelmezett érték:. `True` |
-| `tokenAuthEnabled` | `token_auth_enabled` | Azt határozza meg, hogy engedélyezve van-e a jogkivonat-hitelesítés a webszolgáltatáshoz. Mindkettő `tokenAuthEnabled` és `authEnabled` nem lehet `True`. Alapértelmezett érték:. `False` |
+| &emsp;&emsp;`storageEnabled` | `collect_model_data` | Azt határozza meg, hogy engedélyezi-e a modell adatgyűjtését a webszolgáltatáshoz. Alapértelmezett, `False`. |
+| `authEnabled` | `auth_enabled` | Azt határozza meg, hogy engedélyezi-e a kulcsos hitelesítést a webszolgáltatáshoz. A `tokenAuthEnabled` és a `authEnabled` nem lehet `True`. Alapértelmezett, `True`. |
+| `tokenAuthEnabled` | `token_auth_enabled` | Azt határozza meg, hogy engedélyezve van-e a jogkivonat-hitelesítés a webszolgáltatáshoz. A `tokenAuthEnabled` és a `authEnabled` nem lehet `True`. Alapértelmezett, `False`. |
 | `containerResourceRequirements` | NA | A processzor-és memória-entitások tárolója. |
-| &emsp;&emsp;`cpu` | `cpu_cores` | A webszolgáltatás számára lefoglalható CPU-magok száma. Alapértelmezett`0.1` |
-| &emsp;&emsp;`memoryInGB` | `memory_gb` | A webszolgáltatás számára lefoglalható memória mennyisége (GB-ban). Alapértelmezett`0.5` |
-| `appInsightsEnabled` | `enable_app_insights` | Azt határozza meg, hogy engedélyezi-e Application Insights naplózást a webszolgáltatáshoz. Alapértelmezett érték:. `False` |
-| `scoringTimeoutMs` | `scoring_timeout_ms` | A webszolgáltatásnak való pontozási hívások kényszerített időkorlátja. Alapértelmezett érték:. `60000` |
-| `maxConcurrentRequestsPerContainer` | `replica_max_concurrent_requests` | A webszolgáltatáshoz tartozó csomópontok maximális egyidejű kérelmeinek száma. Alapértelmezett érték:. `1` |
-| `maxQueueWaitMs` | `max_request_wait_time` | Az a maximális időtartam, ameddig egy kérelem a 503-es hiba visszaadása előtt a várólistában marad (ezredmásodpercben). Alapértelmezett érték:. `500` |
+| &emsp;&emsp;`cpu` | `cpu_cores` | A webszolgáltatás számára lefoglalható CPU-magok száma. Alapértékek, `0.1` |
+| &emsp;&emsp;`memoryInGB` | `memory_gb` | A webszolgáltatás számára lefoglalható memória mennyisége (GB-ban). Alapértelmezett, `0.5` |
+| `appInsightsEnabled` | `enable_app_insights` | Azt határozza meg, hogy engedélyezi-e Application Insights naplózást a webszolgáltatáshoz. Alapértelmezett, `False`. |
+| `scoringTimeoutMs` | `scoring_timeout_ms` | A webszolgáltatásnak való pontozási hívások kényszerített időkorlátja. Alapértelmezett, `60000`. |
+| `maxConcurrentRequestsPerContainer` | `replica_max_concurrent_requests` | A webszolgáltatáshoz tartozó csomópontok maximális egyidejű kérelmeinek száma. Alapértelmezett, `1`. |
+| `maxQueueWaitMs` | `max_request_wait_time` | Az a maximális időtartam, ameddig egy kérelem a 503-es hiba visszaadása előtt a várólistában marad (ezredmásodpercben). Alapértelmezett, `500`. |
 | `numReplicas` | `num_replicas` | A webszolgáltatás számára lefoglalható tárolók száma. Nincs alapértelmezett érték. Ha ez a paraméter nincs beállítva, az automéretező alapértelmezés szerint engedélyezve van. |
 | `keys` | NA | A kulcsok konfigurációs elemeit tartalmazza. |
 | &emsp;&emsp;`primaryKey` | `primary_key` | A webszolgáltatáshoz használandó elsődleges hitelesítési kulcs |

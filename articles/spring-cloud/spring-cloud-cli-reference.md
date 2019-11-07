@@ -6,12 +6,12 @@ ms.service: spring-cloud
 ms.topic: reference
 ms.date: 10/03/2019
 ms.author: jeconnoc
-ms.openlocfilehash: c0694bf53f4a0644c8da2b50660dbfd6a5b339c7
-ms.sourcegitcommit: d773b5743cb54b8cbcfa5c5e4d21d5b45a58b081
+ms.openlocfilehash: a1f82d4efa7756b44ca5ed9859aa872c1f55b565
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72038859"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73607826"
 ---
 # <a name="az-spring-cloud"></a>az Spring-Cloud
 
@@ -183,11 +183,11 @@ az spring-cloud app create --name -n
 
 | Választható paraméterek | |
 | --- | ---: |
-| --CPU | Virtuális magok száma egy példányban.  Alapértelmezett 1. |
+| --CPU | Virtuális magok száma egy példányban.  Alapértelmezett: 1. |
 | --Enable-perzisztens-Storage | Logikai érték.  Ha az értéke igaz, a egy 50 GB-lemezt csatlakoztat az alapértelmezett elérési úttal. |
-| – példányok száma | A példányok száma.  Alapértelmezett 1. |
+| – példányok száma | A példányok száma.  Alapértelmezett: 1. |
 | – nyilvános | Logikai érték.  Ha az értéke igaz, egy nyilvános tartományt rendel hozzá. |
-| – memória | A memória GB memóriájának száma egy példányban.  Alapértelmezett 1. |
+| – memória | A memória GB memóriájának száma egy példányban.  Alapértelmezett: 1. |
 
 ### <a name="examples"></a>Példák
 
@@ -734,9 +734,9 @@ A kód üzembe helyezéséhez vagy a beállítások egy meglévő telepítésre 
 
 | Választható paraméterek | |
 | --- | ---: |
-| --CPU | A virtuális CPU-magok száma példányban.  Alapértelmezett 1 |
+| --CPU | A virtuális CPU-magok száma példányban.  Alapértelmezett: 1 |
 | --env | Szóközzel tagolt környezeti változók a "Key [= Value]" formátumban. |
-| – példányok száma | Példányok száma. Alapértelmezett 1. |
+| – példányok száma | Példányok száma. Alapértelmezett: 1. |
 | --jar-elérési út | Ha meg van adni, telepítse a jar-t.  Egyéb esetben a jelenlegi mappát tar-ként telepítse. |
 | --JVM – beállítások | JVM-beállításokat tartalmazó karakterlánc.  A rendszerhéj-elemzési hibák elkerülése érdekében használja a "=" helyett a következőt: "". Például `--jvm-options='-Xms1024m -Xmx2048m`. |
 | – memória | A memória GB memóriájának száma egy példányban. |
@@ -1040,4 +1040,4 @@ az spring-cloud test-endpoint renew-key --name -n
 | --- | ---: |
 | --név | Az Azure Spring-felhő neve. |
 | --erőforrás-csoport-g | Az erőforráscsoport neve.  Az alapértelmezett csoportot `az configure --defaults group=<name>` használatával konfigurálhatja. |
-| – típus | A teszt végpont kulcsának típusa.  Megengedett értékek:  Elsődleges, másodlagos. |
+| – típus | A teszt végpont kulcsának típusa.  Engedélyezett értékek: elsődleges, másodlagos. |

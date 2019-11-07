@@ -6,12 +6,12 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 06/27/2019
 ms.author: tomfitz
-ms.openlocfilehash: 249afcaad85d9031e0972d4fcfc185b5ff890f65
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 197bd14c425d80a814f370a2050c085b1eef143d
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72390348"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73579013"
 ---
 # <a name="deploy-resources-with-resource-manager-templates-and-azure-portal"></a>Erőforrások üzembe helyezése Resource Manager-sablonokkal és az Azure Portallal
 
@@ -26,7 +26,7 @@ Emellett Azure Resource Manager sablont is üzembe helyezhet az Azure-erőforrá
 
 Ez a cikk mindkét módszert mutatja be.
 
-## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
+## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
 1. Új erőforráscsoport létrehozásához válassza az **erőforráscsoportok** lehetőséget a [Azure Portal](https://portal.azure.com).
 
@@ -89,7 +89,7 @@ Ha egy központi telepítést kíván végrehajtani, de nem használja a piacté
 1. A sablonok létrehozásához több lehetőség is megjelenik:
 
     - **Saját sablon készítése a szerkesztőben**: sablon létrehozása a portál sablon szerkesztőjével.  A szerkesztő képes az erőforrás-sablon sémájának hozzáadására.
-    - **Gyakori sablonok**: a linuxos virtuális gépek, a Windows rendszerű virtuális gépek, a webalkalmazások és az Azure SQL Database létrehozásához négy gyakori sablon áll rendelkezésre.
+    - **Gyakori sablonok**: a linuxos virtuális gépek, a Windows-alapú virtuális gépek, a webalkalmazások és az Azure SQL Database-adatbázisok létrehozásához négy gyakori sablon áll rendelkezésre.
     - **GitHub-gyorsindítási sablon betöltése**: meglévő rövid útmutató- [sablonok](https://azure.microsoft.com/resources/templates/)használata.
 
    ![Beállítások megtekintése](./media/resource-group-template-deploy-portal/see-options.png)
@@ -125,7 +125,7 @@ Ha egy központi telepítést kíván végrehajtani, de nem használja a piacté
 
 1. Válassza a **Beszerzés** lehetőséget.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - A naplók megtekintéséhez lásd: [műveletek naplózása a Resource Managerrel](./resource-group-audit.md).
 - Az üzembe helyezési hibák elhárításáról lásd: [telepítési műveletek megtekintése](./resource-manager-deployment-operations.md).

@@ -1,5 +1,5 @@
 ---
-title: Táblák tervezése – Azure SQL Data Warehouse | Microsoft Docs
+title: Táblák tervezése
 description: Bevezetés a táblázatok Azure SQL Data Warehouseban történő megtervezéséhez.
 services: sql-data-warehouse
 author: XiaoyuMSFT
@@ -10,12 +10,13 @@ ms.subservice: development
 ms.date: 03/15/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: 55da4e3dc9c7f1c1f86a649a654ce41ef59ad839
-ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
+ms.custom: seo-lt-2019
+ms.openlocfilehash: 9220d3adb31005551b6358034207f1071065b1a7
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71310098"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73692383"
 ---
 # <a name="designing-tables-in-azure-sql-data-warehouse"></a>Táblázatok tervezése Azure SQL Data Warehouseban
 
@@ -42,8 +43,8 @@ A SQL Data Warehouseban lévő táblák szervezetének megjelenítéséhez haszn
 
 | Wideworldimportersdw adattárházat táblázat  | Tábla típusa | SQL Data Warehouse |
 |:-----|:-----|:------|:-----|
-| City | Dimenzió | wwi.DimCity |
-| Rendelés | (Tény) | wwi.FactOrder |
+| Város | Dimenzió | WWI. DimCity |
+| Rendelés | Fact | WWI. FactOrder |
 
 
 ## <a name="table-persistence"></a>Tábla megőrzése 
@@ -65,7 +66,7 @@ Egy ideiglenes tábla csak a munkamenet időtartama alatt létezik. Egy ideiglen
 A külső tábla az Azure Storage-blobban vagy Azure Data Lake Storeban található adatterületre mutat. Ha a CREATE TABLE AS SELECT utasítással együtt használja, a külső táblából való kijelöléskor a rendszer beolvassa az adatok SQL Data Warehouseba való importálását. A külső táblák ezért hasznosak az betöltéshez. A betöltési oktatóanyagért lásd: az [adatok Azure Blob Storage-ból való betöltésének használata](load-data-from-azure-blob-storage-using-polybase.md).
 
 ## <a name="data-types"></a>Adattípusok
-SQL Data Warehouse a leggyakrabban használt adattípusokat támogatja. A támogatott adattípusok listáját a CREATE TABLE utasításban található [CREATE TABLE-hivatkozás adattípusai](/sql/t-sql/statements/create-table-azure-sql-data-warehouse#DataTypes) című témakörben tekintheti meg. Az adattípusok használatára vonatkozó útmutatásért [](sql-data-warehouse-tables-data-types.md)lásd az adattípusokat.
+SQL Data Warehouse a leggyakrabban használt adattípusokat támogatja. A támogatott adattípusok listáját a CREATE TABLE utasításban található [CREATE TABLE-hivatkozás adattípusai](/sql/t-sql/statements/create-table-azure-sql-data-warehouse#DataTypes) című témakörben tekintheti meg. Az adattípusok használatára vonatkozó útmutatásért lásd az [adattípusokat](sql-data-warehouse-tables-data-types.md).
 
 ## <a name="distributed-tables"></a>Elosztott táblák
 A SQL Data Warehouse alapvető funkciója, hogy képes a táblázatok tárolására és üzemeltetésére a különböző [disztribúciókban](massively-parallel-processing-mpp-architecture.md#distributions).  A SQL Data Warehouse három módszert támogat az adatterjesztéshez, a ciklikus multiplexelés (alapértelmezett), a kivonatoló és a replikált adatokat.
@@ -90,9 +91,9 @@ A tábla kategóriája általában meghatározza, hogy melyik lehetőséget kell
 
 | Táblázat kategóriája | Ajánlott terjesztési lehetőség |
 |:---------------|:--------------------|
-| (Tény)           | Használjon kivonatoló eloszlást a fürtözött oszlopcentrikus index használatával. A teljesítmény akkor javul, ha két kivonatoló tábla ugyanahhoz a terjesztési oszlophoz van csatlakoztatva. |
+| Fact           | Használjon kivonatoló eloszlást a fürtözött oszlopcentrikus index használatával. A teljesítmény akkor javul, ha két kivonatoló tábla ugyanahhoz a terjesztési oszlophoz van csatlakoztatva. |
 | Dimenzió      | Kisebb táblák esetében replikált használata. Ha a táblák túl nagyok az egyes számítási csomópontokon való tároláshoz, használja a kivonatoló eloszlást. |
-| Fájlok másolása folyamatban        | Ciklikus multiplexelés használata az előkészítési táblához. A CTAS terhelése gyors. Ha az adatgyűjtés az előkészítési táblában található, használja az INSERT... Ezzel a beállítással áthelyezheti az adatlemezeket az éles táblákba. |
+| Előkészítés        | Ciklikus multiplexelés használata az előkészítési táblához. A CTAS terhelése gyors. Ha az adatgyűjtés az előkészítési táblában található, használja az INSERT... Ezzel a beállítással áthelyezheti az adatlemezeket az éles táblákba. |
 
 ## <a name="table-partitions"></a>Táblapartíciók
 A particionált táblák az adattartományok szerint tárolják és végrehajtják a táblázat sorain lévő műveleteket. Egy tábla lehet például nap, hónap vagy év szerint particionálva. Javíthatja a lekérdezési teljesítményt a partíciók eltávolításán keresztül, ami korlátozza a lekérdezési vizsgálatát egy partíción belül. Az adattárolást partíciós váltással is megtarthatja. Mivel a SQL Data Warehouseban lévő adat már el van terjesztve, túl sok partíció lassítja a lekérdezések teljesítményét. További információ: [particionálási útmutató](sql-data-warehouse-tables-partition.md).  Ha a partíció nem üres táblázatos partícióra vált, érdemes lehet a TRUNCATE_TARGET beállítást használni az [ALTER TABLE](https://docs.microsoft.com/sql/t-sql/statements/alter-table-transact-sql) utasításban, ha a meglévő adatok csonkítva lesznek. Az alábbi kód az átalakított napi adatértékeket a SalesFact felülírja a meglévő összes adattal. 
@@ -342,4 +343,4 @@ ORDER BY    distribution_id
 ```
 
 ## <a name="next-steps"></a>További lépések
-Miután létrehozta az adattárházhoz tartozó táblákat, a következő lépés az adatai betöltése a táblába.  A betöltési oktatóanyagért [](load-data-wideworldimportersdw.md)lásd: az adatbetöltése SQL Data Warehouseba.
+Miután létrehozta az adattárházhoz tartozó táblákat, a következő lépés az adatai betöltése a táblába.  A betöltési oktatóanyagért lásd: az [Adatbetöltése SQL Data Warehouseba](load-data-wideworldimportersdw.md).

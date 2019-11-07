@@ -1,33 +1,35 @@
 ---
-title: Teljes körű blob-betöltés az Azure Adatkezelő használatávalC#
-description: Ebből a cikkből megtudhatja, hogyan végezheti el a Blobok betöltését az Azure C#Adatkezelőba egy teljes körű példával a használatával.
+title: Teljes körű blob-betöltés az Azure AdatkezelőC#
+description: Ebből a cikkből megtudhatja, hogyan végezheti el a Blobok betöltését az Azure Adatkezelőba egy C#olyan végpontok közötti példával, amelyet a használ.
 author: lucygoldbergmicrosoft
 ms.author: lugoldbe
 ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 10/23/2019
-ms.openlocfilehash: 7d737319c9ddc8040a7cae6f7a9991c625cc4fcd
-ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
+ms.openlocfilehash: e22621083a44555cb3eda615c610f673cd841ec1
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72809580"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73581838"
 ---
-# <a name="end-to-end-blob-ingestion-into-azure-data-explorer-using-c"></a>Teljes körű blob-betöltés az Azure Adatkezelő használatávalC#
+# <a name="end-to-end-blob-ingestion-into-azure-data-explorer-through-c"></a>Teljes körű blob-betöltés az Azure AdatkezelőC#
 
 > [!div class="op_single_selector"]
 > * [C#](end-to-end-csharp.md)
 > * [Python](end-to-end-python.md)
 >
 
-Az Azure Adatkezelő egy gyors és méretezhető adatelemzési szolgáltatás a napló-és telemetria. Ebből a cikkből megtudhatja, hogyan végezheti el az adatok betöltését Blob Storageból az Azure Adatkezelőba. Megtudhatja, hogyan hozhat létre programozott módon egy erőforráscsoportot, egy Storage-fiókot és egy tárolót, egy Event hubot és egy Azure Adatkezelő-fürtöt és-adatbázist. Azt is megtudhatja, hogyan állíthatja be programozott módon az Azure Adatkezelő az új Storage-fiókból származó adatok betöltésére.
+Az Azure Adatkezelő egy gyors és méretezhető adatelemzési szolgáltatás a napló-és telemetria. Ebből a cikkből megtudhatja, hogyan végezheti el az Azure Blob Storage-ból származó adatok Azure-Adatkezelőba való betöltését. 
+
+Megtudhatja, hogyan hozhat létre programozott módon egy erőforráscsoportot, egy Storage-fiókot és egy tárolót, egy Event hubot és egy Azure Adatkezelő-fürtöt és-adatbázist. Azt is megtudhatja, hogyan állíthatja be programozott módon az Azure Adatkezelőt az adatok az új Storage-fiókból való betöltéséhez.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes Azure-fiókot](https://azure.microsoft.com/free/) a virtuális gép létrehozásának megkezdése előtt.
 
-## <a name="install-c-nuget"></a>A C# Nuget telepítése
+## <a name="install-c-nuget"></a>A C# NuGet telepítése
 
 * Telepítse a [Microsoft. Azure. Management. kusto](https://www.nuget.org/packages/Microsoft.Azure.Management.Kusto/).
 * Telepítse a [Microsoft. Azure. Management. erőforráskezelő](https://www.nuget.org/packages/Microsoft.Azure.Management.ResourceManager).
@@ -41,16 +43,18 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 ## <a name="code-example"></a>Mintakód 
 
-Az alábbi kódrészlet egy folyamaton alapuló folyamatot eredményez, amely az Azure Adatkezelőba való adatfeldolgozást eredményez. Először létre kell hoznia egy erőforráscsoportot és egy Azure-erőforrást, például egy Storage-fiókot és egy tárolót, egy Event hub-t és egy Azure Adatkezelő-fürtöt és-adatbázist. Ezután létrehoz egy Event Grid-előfizetést és egy tábla-és oszlop-hozzárendelést az Azure Adatkezelő-adatbázisban. Végezetül hozza létre az adatkapcsolódást az Azure Adatkezelő konfigurálásához az új Storage-fiók adatainak betöltéséhez. 
+A következő mintakód olyan lépésenkénti folyamatot biztosít, amely az Azure Adatkezelőba való adatfeldolgozást eredményez. 
+
+Először létre kell hoznia egy erőforráscsoportot. Emellett Azure-erőforrásokat is létrehozhat, például egy Storage-fiókot és egy tárolót, egy Event hub-t és egy Azure Adatkezelő-fürtöt és-adatbázist. Ezután létrehoz egy Azure Event Grid-előfizetést, valamint egy tábla-és oszlop-hozzárendelést az Azure Adatkezelő-adatbázisban. Végezetül hozza létre az adatkapcsolódást az Azure Adatkezelő konfigurálásához az új Storage-fiók adatainak betöltéséhez. 
 
 ```csharp
 var tenantId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";//Directory (tenant) ID
 var clientId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";//Application ID
-var clientSecret = "xxxxxxxxxxxxxx";//Client Secret
+var clientSecret = "xxxxxxxxxxxxxx";//Client secret
 var subscriptionId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";
 string location = "West Europe";
 string locationSmallCase = "westeurope";
-string azureResourceTemplatePath = @"xxxxxxxxx\template.json";//path to the Azure Resource Manager template json from the previous section
+string azureResourceTemplatePath = @"xxxxxxxxx\template.json";//Path to the Azure Resource Manager template JSON from the previous section
 
 string deploymentName = "e2eexample";
 string resourceGroupName = deploymentName + "resourcegroup";
@@ -154,7 +158,7 @@ await kustoManagementClient.DataConnections.CreateOrUpdateAsync(resourceGroupNam
 
 ## <a name="test-the-code-example"></a>Példa a kód tesztelésére
 
-1. Fájl feltöltése a Storage-fiókba
+1. Töltsön fel egy fájlt a Storage-fiókba.
 
     ```csharp
     string storageConnectionString = "DefaultEndpointsProtocol=https;AccountName=xxxxxxxxxxxxxx;AccountKey=xxxxxxxxxxxxxx;EndpointSuffix=core.windows.net";
@@ -170,7 +174,7 @@ await kustoManagementClient.DataConnections.CreateOrUpdateAsync(resourceGroupNam
     |---|---|---|
     | storageConnectionString | A programozott módon létrehozott Storage-fiókhoz tartozó kapcsolatok karakterlánca.|
 
-2. Tesztelési lekérdezés futtatása az Azure Adatkezelő
+2. Futtasson tesztelési lekérdezést az Azure Adatkezelőban.
 
     ```csharp
     var kustoUri = $"https://{kustoClusterName}.{locationSmallCase}.kusto.windows.net";
@@ -203,9 +207,9 @@ Az erőforráscsoport törléséhez és az erőforrások tisztításához haszn�
 await resourceManagementClient.ResourceGroups.DeleteAsync(resourceGroupName);
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-*  [Hozzon létre egy Azure adatkezelő-fürtöt és-adatbázist](create-cluster-database-csharp.md) , és ismerkedjen meg a fürtök és adatbázisok létrehozásának egyéb módjaival.
-* Az [Azure adatkezelő](ingest-data-overview.md) a betöltési módszerekkel kapcsolatos további információért.
-* Gyors útmutató [: az Azure adatkezelő lekérdezése](web-query-data.md) Webes felhasználói felület.
+*  A fürtök és adatbázisok létrehozásának egyéb módjaival kapcsolatos további tudnivalókért lásd: [Azure adatkezelő-fürt és-adatbázis létrehozása](create-cluster-database-csharp.md).
+* A betöltési módszerekkel kapcsolatos további információkért lásd: [Azure adatkezelő adatfeldolgozás](ingest-data-overview.md).
+* A webalkalmazással kapcsolatos további tudnivalókért lásd: gyors üzembe helyezési információk az [Azure adatkezelő webes felhasználói felületén](web-query-data.md).
 * [Lekérdezések írása](write-queries.md) Kusto-lekérdezési nyelvvel.

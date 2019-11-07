@@ -1,5 +1,5 @@
 ---
-title: PowerShell DNS-aliashoz az Azure SQL-ben | Microsoft Docs
+title: PowerShell DNS-aliashoz Azure SQL
 description: A New-AzSqlServerDNSAlias PowerShell-parancsmagok lehetővé teszik az új ügyfélkapcsolatok átirányítását egy másik Azure SQL Database-kiszolgálóra anélkül, hogy meg kellene érintenie az ügyfél konfigurációját.
 keywords: DNS SQL Database
 services: sql-database
@@ -11,12 +11,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: genemi, amagarwa, maboja, jrasnick, vanto
 ms.date: 05/14/2019
-ms.openlocfilehash: 47afd905b1fa28ce65163203b9d43781f434233d
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: ebbca309b7f6acd071c7075e63e670a8efa49f4e
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71058554"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73685324"
 ---
 # <a name="powershell-for-dns-alias-to-azure-sql-database"></a>PowerShell DNS-aliashoz Azure SQL Database
 
@@ -26,16 +26,16 @@ Ez a cikk egy PowerShell-szkriptet tartalmaz, amely bemutatja, hogyan kezelhető
 
 A kódban használt parancsmagok a következők:
 
-- [New-AzSqlServerDNSAlias](https://docs.microsoft.com/powershell/module/az.Sql/New-azSqlServerDnsAlias): Új DNS-Alias létrehozása a Azure SQL Database szolgáltatási rendszerben. Az alias az 1. Azure SQL Database kiszolgálóra hivatkozik.
-- [Get-AzSqlServerDNSAlias](https://docs.microsoft.com/powershell/module/az.Sql/Get-azSqlServerDnsAlias): Az SQL DB Server 1 rendszerhez rendelt összes DNS-alias beolvasása és listázása.
-- [Set-AzSqlServerDNSAlias](https://docs.microsoft.com/powershell/module/az.Sql/Set-azSqlServerDnsAlias): Módosítja annak a kiszolgálónak a nevét, amelyre az alias hivatkozik, az 1. kiszolgálóról az SQL DB Server 2 értékre.
-- [Remove-AzSqlServerDNSAlias](https://docs.microsoft.com/powershell/module/az.Sql/Remove-azSqlServerDnsAlias): Távolítsa el a DNS-aliast az SQL DB Server 2-ből az alias nevével.
+- [New-AzSqlServerDNSAlias](https://docs.microsoft.com/powershell/module/az.Sql/New-azSqlServerDnsAlias): új DNS-Alias létrehozása a Azure SQL Database szolgáltatási rendszerben. Az alias az 1. Azure SQL Database kiszolgálóra hivatkozik.
+- [Get-AzSqlServerDNSAlias](https://docs.microsoft.com/powershell/module/az.Sql/Get-azSqlServerDnsAlias): az SQL db Server 1 rendszerhez rendelt összes DNS-alias beolvasása és listázása.
+- [Set-AzSqlServerDNSAlias](https://docs.microsoft.com/powershell/module/az.Sql/Set-azSqlServerDnsAlias): módosítja annak a kiszolgálónak a nevét, amelyre az alias hivatkozik, az 1. kiszolgálóról az SQL db Server 2 verzióra.
+- [Remove-AzSqlServerDNSAlias](https://docs.microsoft.com/powershell/module/az.Sql/Remove-azSqlServerDnsAlias): az alias nevének használatával távolítsa el a DNS-aliast az SQL db Server 2 kiszolgálóról.
 
 ## <a name="dns-alias-in-connection-string"></a>DNS-alias a kapcsolatok karakterláncában
 
 Egy adott Azure SQL Database-kiszolgáló összekapcsolásához az ügyfél, például a SQL Server Management Studio (SSMS) a DNS-alias nevét is megadhatja a True Server neve helyett. A következő példa kiszolgálói sztringben az alias- *Unique-alias-Name* az első pont-tagolt csomópontot helyettesíti a négy csomópontos kiszolgáló sztringben:
 
-- Példa kiszolgálói sztringre `any-unique-alias-name.database.windows.net`:.
+- Példa kiszolgálói sztringre: `any-unique-alias-name.database.windows.net`.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -44,7 +44,7 @@ Ha a jelen cikkben megadott demo PowerShell-szkriptet szeretné futtatni, a köv
 - Egy Azure-előfizetés és-fiók. Az ingyenes próbaverzióhoz kattintson a [https://azure.microsoft.com/free/][https://azure.microsoft.com/free/]elemre.
 - Azure PowerShell modul, a **New-AzSqlServerDNSAlias**parancsmaggal.
   - A telepítéshez vagy frissítéshez olvassa el [az Azure PowerShell-modul telepítését][install-Az-ps-84p] ismertető cikket.
-  - Futtassa `Get-Module -ListAvailable Az;` a parancsot\_a PowerShell ISE. exe fájljában a verzió megkereséséhez.
+  - Futtassa a `Get-Module -ListAvailable Az;` a PowerShell\_ISE. exe fájlból a verzió megkereséséhez.
 - Két Azure SQL Database-kiszolgáló.
 
 ## <a name="code-example"></a>Mintakód

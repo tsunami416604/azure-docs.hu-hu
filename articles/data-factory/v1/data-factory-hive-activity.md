@@ -1,5 +1,5 @@
 ---
-title: Adatátalakítás a méhkas tevékenységgel – Azure | Microsoft Docs
+title: Adatátalakítás a méhkas tevékenységgel – Azure
 description: Megtudhatja, hogyan használhatja a kaptár tevékenységeket egy Azure-beli adatgyárban a kaptár-lekérdezések futtatásához egy igény szerinti vagy saját HDInsight-fürtön.
 services: data-factory
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 8a7e6748f450ae398a05097ac6b192d074f5f1f7
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: f159f672c999d7877ef89cd78d23c4a608ccf1ab
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70139535"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73666991"
 ---
 # <a name="transform-data-using-hive-activity-in-azure-data-factory"></a>Az adatátalakítás a kaptár tevékenységgel Azure Data Factory 
 > [!div class="op_single_selector" title1="Átalakítási tevékenységek"]
@@ -38,7 +38,7 @@ ms.locfileid: "70139535"
 A Data Factory [folyamat](data-factory-create-pipelines.md) HDInsight-struktúrájának tevékenysége a [saját](data-factory-compute-linked-services.md#azure-hdinsight-linked-service) vagy [igény szerinti](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service) Windows/Linux-alapú HDInsight-fürtön hajtja végre a kaptár-lekérdezéseket. Ez a cikk az Adatátalakítási [tevékenységekről](data-factory-data-transformation-activities.md) szóló cikket ismerteti, amely általános áttekintést nyújt az adatátalakításról és a támogatott átalakítási tevékenységekről.
 
 > [!NOTE] 
-> Ha még nem Azure Data Factory, olvassa el a [Azure Data Factory](data-factory-introduction.md) bevezetését, és végezze el az oktatóanyagot: A cikk elolvasása előtt hozza [létre első](data-factory-build-your-first-pipeline.md) adatfolyamatát. 
+> Ha még nem ismeri a Azure Data Factoryt, olvassa el az [Azure Data Factory bevezetését](data-factory-introduction.md) , és végezze el az oktatóanyagot: a cikk elolvasása előtt hozza [létre az első adatfolyamatát](data-factory-build-your-first-pipeline.md) . 
 
 ## <a name="syntax"></a>Szintaxis
 
@@ -74,20 +74,20 @@ A Data Factory [folyamat](data-factory-create-pipelines.md) HDInsight-struktúr�
 ## <a name="syntax-details"></a>Szintaxis részletei
 | Tulajdonság | Leírás | Kötelező |
 | --- | --- | --- |
-| name |A tevékenység neve |Igen |
-| description |A tevékenység által használt szöveg leírása |Nem |
+| név |A tevékenység neve |Igen |
+| leírás |A tevékenység által használt szöveg leírása |Nem |
 | type |HDinsightHive |Igen |
-| inputs |A kaptár tevékenység által felhasznált bemenetek |Nem |
-| outputs |A kaptár tevékenység által létrehozott kimenetek |Igen |
+| bemenetek |A kaptár tevékenység által felhasznált bemenetek |Nem |
+| kimenetek |A kaptár tevékenység által létrehozott kimenetek |Igen |
 | linkedServiceName |Hivatkozás a Data Factory társított szolgáltatásként regisztrált HDInsight-fürtre |Igen |
-| script |A struktúra-parancsfájl beágyazottként való megadásának meghatározása |Nem |
+| szkriptet. |A struktúra-parancsfájl beágyazottként való megadásának meghatározása |Nem |
 | scriptPath |Tárolja a kaptár parancsfájlt egy Azure Blob Storage-tárolóban, és adja meg a fájl elérési útját. Használja a "script" vagy a "scriptPath" tulajdonságot. Mindkettő nem használható együtt. A fájl neve megkülönbözteti a kis-és nagybetűket. |Nem |
-| defines |Adja meg a paramétereket kulcs/érték párokként a kaptár parancsfájlban a "hiveconf" használatával való hivatkozáshoz. |Nem |
+| meghatározza |Adja meg a paramétereket kulcs/érték párokként a kaptár parancsfájlban a "hiveconf" használatával való hivatkozáshoz. |Nem |
 
 ## <a name="example"></a>Példa
 Vegyünk egy példát a game logs analyticsre, ahol a felhasználók által a vállalat által elindított játékokkal töltött idő azonosítására van szükség. 
 
-A következő napló egy példaként szolgáló, vesszővel (`,`) elválasztott napló, amely a következő mezőket tartalmazza – ProfileID, SessionStart, időtartam, SrcIPAddress és szakasz.
+A következő napló egy példaként szolgáló, vesszővel elválasztott (`,`) naplófájl, amely a következő mezőket tartalmazza – ProfileID, SessionStart, időtartam, SrcIPAddress és szakasz.
 
 ```
 1809,2014-05-04 12:04:25.3470000,14,221.117.223.75,CaptureFlag
@@ -128,7 +128,7 @@ A kaptár parancsfájl Data Factory-folyamatban való végrehajtásához a köve
 
 1. Hozzon létre egy társított szolgáltatást a [saját HDInsight számítási fürt](data-factory-compute-linked-services.md#azure-hdinsight-linked-service) regisztrálásához vagy [igény szerinti HDInsight számítási fürt](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service)konfigurálásához. Hívjuk ezt a társított szolgáltatást "HDInsightLinkedService".
 2. Hozzon létre egy [társított szolgáltatást](data-factory-azure-blob-connector.md) a kapcsolat konfigurálásához az Azure Blob Storage-hoz, amely az adattárolót üzemelteti. Hívjuk ezt a társított szolgáltatást "StorageLinkedService"
-3. A [](data-factory-create-datasets.md) bemeneti és a kimeneti adatokra mutató adatkészletek létrehozása. Hívjuk meg a "HiveSampleIn" bemeneti adatkészletet és a "HiveSampleOut" kimeneti adatkészletet
+3. A bemeneti és a kimeneti adatokra mutató [adatkészletek](data-factory-create-datasets.md) létrehozása. Hívjuk meg a "HiveSampleIn" bemeneti adatkészletet és a "HiveSampleOut" kimeneti adatkészletet
 4. Másolja a kaptár-lekérdezést fájlként az Azure-ba Blob Storage a következő lépésben konfigurálva: #2. Ha az adatok tárolására szolgáló tároló eltér a lekérdezési fájllal, hozzon létre egy külön Azure Storage-beli társított szolgáltatást, és tekintse meg azt a tevékenységben. A **scriptPath** használatával adja meg a kaptár-lekérdezési fájl és a **scriptlinkedservice szolgáltatás** elérési útját a parancsfájlt tartalmazó Azure-tároló megadásához. 
    
    > [!NOTE]
@@ -177,7 +177,7 @@ Ebben a példában a rendszer naponta betölti a játék naplóit az Azure Blob 
 
 A paraméteres struktúra parancsfájljának használatához tegye a következőket
 
-* Határozza meg a paramétereketa definiálva.
+* Határozza meg a paramétereket a **definiálva**.
 
     ```JSON  
     {

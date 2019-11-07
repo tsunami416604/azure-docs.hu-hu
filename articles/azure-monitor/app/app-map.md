@@ -8,12 +8,12 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 03/15/2019
 ms.reviewer: sdash
-ms.openlocfilehash: 49efad50b988da263a715c1aba9d53ad4b4a7121
-ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
+ms.openlocfilehash: 65a257cc4613fb9e4dece09a2544de2e78779ab4
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72678391"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73577062"
 ---
 # <a name="application-map-triage-distributed-applications"></a>Alkalmazás-hozzárendelés: elosztott alkalmazások osztályozása
 
@@ -77,7 +77,7 @@ Az alkalmazások adatai lekérdezéséhez és kivizsgálásához kattintson **a 
 
 ![Képernyőkép az elemzési élményről](media/app-map/analytics.png)
 
-### <a name="alerts"></a>Értesítések
+### <a name="alerts"></a>Riasztások
 
 Az aktív riasztások és a riasztások indítását kiváltó alapul szolgáló szabályok megtekintéséhez válassza a **riasztások**lehetőséget.
 
@@ -180,13 +180,22 @@ appInsights.defaultClient.addTelemetryProcessor(envelope => {
 
 ### <a name="java"></a>Java
 
+A Application Insights Java SDK 2.5.0-vel kezdődően megadhatja a Felhőbeli szerepkör nevét `<RoleName>` hozzáadásával a `ApplicationInsights.xml`-fájlhoz, például:
+
+```XML
+<?xml version="1.0" encoding="utf-8"?>
+<ApplicationInsights xmlns="http://schemas.microsoft.com/ApplicationInsights/2013/Settings" schemaVersion="2014-05-30">
+   <InstrumentationKey>** Your instrumentation key **</InstrumentationKey>
+   <RoleName>** Your role name **</RoleName>
+   ...
+</ApplicationInsights>
+```
+
 Ha a Spring Boott a Application Insights Spring boot Starter használatával használja, az egyetlen szükséges módosítás az alkalmazás egyéni nevének beállítása az Application. properties fájlban.
 
 `spring.application.name=<name-of-app>`
 
 A Spring boot Starter automatikusan hozzárendeli a Felhőbeli szerepkör nevét a spring.application.name tulajdonsághoz megadott értékhez.
-
-A Java-korrelációval kapcsolatos további információkért és a felhőalapú szerepkör nevének a nem SpringBoot alkalmazásokhoz való konfigurálásáról a korrelációs [szakaszban](https://docs.microsoft.com/azure/application-insights/application-insights-correlation#role-name) olvashat.
 
 ### <a name="clientbrowser-side-javascript"></a>Ügyfél/böngésző oldali JavaScript
 
@@ -227,11 +236,11 @@ Egy olyan forgatókönyv, amelyben érdemes lehet felülbírálni a Felhőbeli s
 
 További információ arról, hogyan bírálható felül a Felhőbeli szerepkör Name tulajdonsága a telemetria inicializálók használatával [: tulajdonságok hozzáadása: ITelemetryInitializer](api-filtering-sampling.md#add-properties-itelemetryinitializer).
 
-## <a name="troubleshooting"></a>Hibakeresés
+## <a name="troubleshooting"></a>Hibaelhárítás
 
 Ha nem tudja, hogy az alkalmazás-hozzárendelés a várt módon működjön, próbálja meg a következő lépéseket:
 
-### <a name="general"></a>Általános
+### <a name="general"></a>Általános kérdések
 
 1. Győződjön meg róla, hogy hivatalosan támogatott SDK-t használ. Előfordulhat, hogy a nem támogatott/közösségi SDK-k nem támogatják a korrelációt.
 
@@ -265,7 +274,7 @@ A visszajelzések megadásához használja a visszajelzés lehetőséget.
 
 ![MapLink – 1 rendszerkép](./media/app-map/14-updated.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Ha többet szeretne megtudni a korreláció működéséről Application Insights tekintse meg a [telemetria korrelációs cikkét](https://docs.microsoft.com/azure/application-insights/application-insights-correlation).
 * A [végpontok közötti tranzakció diagnosztikai felülete](transaction-diagnostics.md) összekapcsolja az összes Application Insights figyelt összetevőből származó kiszolgálóoldali telemetria egyetlen nézetbe.

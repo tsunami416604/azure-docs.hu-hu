@@ -7,16 +7,16 @@ ms.topic: conceptual
 author: lzchen
 ms.author: lechen
 ms.date: 10/15/2019
-ms.openlocfilehash: 00ebf86bf6d0d57b29d660f78aae3dd828d44ded
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: c28ef627e9ef65f9985a520c8c4f3facc7a160da
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72819141"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73575504"
 ---
 # <a name="track-dependencies-with-opencensus-python"></a>Függőségek követése a OpenCensus Pythonban
 
-A függőség egy külső összetevő, amelyet az alkalmazás meghív. A függőségi adatok gyűjtése a OpenCensus Python és annak különböző integrációi használatával történik. Az adat ezután a Azure Monitor alatt Application Insights küldi el.
+A függőség egy külső összetevő, amelyet az alkalmazás meghív. A függőségi adatok gyűjtése a OpenCensus Python és annak különböző integrációi használatával történik. Ezt követően a rendszer a Azure Monitor `dependencies` telemetria Application Insights küldi el az adatait.
 
 Először is a Python-alkalmazást a legújabb [OpenCensus PYTHON SDK](../../azure-monitor/app/opencensus-python.md)-val alakíthatja ki.
 
@@ -166,10 +166,10 @@ from opencensus.trace import config_integration
 config_integration.trace_integrations(['sqlalchemy'])
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Alkalmazástérkép](../../azure-monitor/app/app-map.md)
 * [Rendelkezésre állás](../../azure-monitor/app/monitor-web-app-availability.md)
-* [Search](../../azure-monitor/app/diagnostic-search.md)
+* [Keresés](../../azure-monitor/app/diagnostic-search.md)
 * [Log (Analytics) lekérdezés](../../azure-monitor/log-query/log-query-overview.md)
 * [Tranzakció-diagnosztika](../../azure-monitor/app/transaction-diagnostics.md)

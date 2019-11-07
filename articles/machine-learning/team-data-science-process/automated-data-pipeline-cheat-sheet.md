@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 03/14/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=garyericson, previous-ms.author=garye
-ms.openlocfilehash: b41241d3f0223e7c96dce4a9e98262b403cb0660
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 7c7011991deb632110264233ea0e7aeabe793fbb
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73495074"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73670468"
 ---
 # <a name="cheat-sheet-for-an-automated-data-pipeline-for-azure-machine-learning-predictions"></a>Gyorsreferencia az Azure Machine Learning-előrejelzések automatikus folyamatához
 Az **Microsoft Azure Machine learning automatizált adatcsatorna-Cheat Sheet** segítségével navigálhat az adatoknak a Machine learning webszolgáltatásba való beolvasására szolgáló technológiában, ahol a prediktív elemzési modell által is megadható.
@@ -36,6 +36,6 @@ Töltse le a Cheat Sheet itt:  **[Microsoft Azure Machine learning automatizált
 
 ## <a name="more-help-with-machine-learning-studio"></a>További segítség a Machine Learning Studio használatához
 * A Microsoft Azure Machine Learning áttekintését lásd: [Bevezetés a Microsoft Azure Machine learning](../studio/what-is-machine-learning.md)használatába.
-* A pontozási webszolgáltatás üzembe helyezésének ismertetése: [Azure Machine learning webszolgáltatás telepítése](../studio/publish-a-machine-learning-web-service.md).
+* A pontozási webszolgáltatás üzembe helyezésének ismertetése: [Azure Machine learning webszolgáltatás telepítése](../studio/deploy-a-machine-learning-web-service.md).
 * A pontozási webszolgáltatás használatáról a következő témakörben talál további információt: [Azure Machine learning webszolgáltatások felhasználása](../studio/consume-web-services.md).
 

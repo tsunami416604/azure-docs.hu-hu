@@ -1,5 +1,5 @@
 ---
-title: Adatok betöltése az Office 365-ből Azure Data Factory használatával | Microsoft Docs
+title: Adatok betöltése az Office 365-ből Azure Data Factory használatával
 description: Adatok másolása az Office 365-ből az Azure Data Factory használatával
 services: data-factory
 documentationcenter: ''
@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 10/22/2018
 ms.author: jingwang
-ms.openlocfilehash: da3d407b39ef00154b717b54213a3b40d2d110bb
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 0c938caef81063409d3c8d6632cd7e8df99f1ea1
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72754526"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73672622"
 ---
 # <a name="load-data-from-office-365-by-using-azure-data-factory"></a>Adatok betöltése az Office 365-ből Azure Data Factory használatával
 
@@ -24,7 +24,7 @@ Ebből a cikkből megtudhatja, hogyan használhatja a Data Factory _betöltési 
 
 ## <a name="create-a-data-factory"></a>Data factory létrehozása
 
-1. A bal oldali menüben válassza az **erőforrás létrehozása** > **Analitika** > **Data Factory**: 
+1. A bal oldali menüben válassza az **erőforrás létrehozása** > **Analytics** > **Data Factory**: 
    
    ![Data Factory kiválasztása az „Új” ablaktáblán](./media/quickstart-create-data-factory-portal/new-azure-data-factory-menu.png)
 
@@ -77,7 +77,7 @@ Ebből a cikkből megtudhatja, hogyan használhatja a Data Factory _betöltési 
 
     ![Config Office 365 adatkészlet táblázata](./media/load-office-365-data/edit-dataset.png)
 
-8. Most lépjen vissza a **folyamat**  > **forrás lapjára** , hogy továbbra is konfigurálja az Office 365-kinyerés további tulajdonságait.  A felhasználói hatókör és a felhasználói hatókör szűrője választható predikátumokat határozhat meg az Office 365-ből kinyerni kívánt adatok korlátozásához. A beállítások konfigurálásával kapcsolatban lásd az [Office 365-adatkészlet tulajdonságai](https://docs.microsoft.com/azure/data-factory/connector-office-365#dataset-properties) című szakaszt.
+8. Most lépjen vissza a **folyamat** > **forrás lapjára** , hogy továbbra is konfigurálja az Office 365-kinyerés további tulajdonságait.  A felhasználói hatókör és a felhasználói hatókör szűrője választható predikátumokat határozhat meg az Office 365-ből kinyerni kívánt adatok korlátozásához. A beállítások konfigurálásával kapcsolatban lásd az [Office 365-adatkészlet tulajdonságai](https://docs.microsoft.com/azure/data-factory/connector-office-365#dataset-properties) című szakaszt.
 
 9. Ki kell választania a Dátumszűrő egyikét, és meg kell adnia a kezdési és a befejezési időpontot.
 
@@ -130,8 +130,8 @@ A folyamat futtatásához társított tevékenységek megtekintéséhez válassz
 
 Ha ez az első alkalom, amikor adatokat kér ehhez a környezethez (az adattábla kombinációja, amelynek a rendeltetési helye a betöltésre kerül, és amely felhasználói identitása az adatelérési kérelem), megjelenik a másolási tevékenység. az állapot **folyamatban**van, és csak akkor, ha a műveletek területen a "Részletek" hivatkozásra kattint, az állapot **RequesetingConsent**lesz látható.  Az adathozzáférés-jóváhagyó csoport tagjának jóvá kell hagynia a kérést a Privileged Access Management az adatgyűjtés folytatásához.
 
-_Engedély_ kérése: 
- ![Activity végrehajtás részletei – kérelem belefoglalása ](./media/load-office-365-data/activity-details-request-consent.png) 
+_Engedély kérése:_ 
+![tevékenység-végrehajtás részletei – kérelem belefoglalása](./media/load-office-365-data/activity-details-request-consent.png) 
 
 _Állapot kibontási adatokként:_
 
@@ -143,7 +143,7 @@ Miután megadta a beleegyezett adatgyűjtést, a rendszer folytatja az adatfeldo
 
 Most lépjen a cél Azure Blob Storagera, és ellenőrizze, hogy az Office 365-es Adatkivonatok bináris formátumban lettek kibontva.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A következő cikkből megismerheti a Azure SQL Data Warehouse támogatását: 
 

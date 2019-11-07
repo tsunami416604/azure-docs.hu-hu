@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 0f8e605db3d647b5907c8c6741e4e2200bf14c4f
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.openlocfilehash: 56e0f720221f8de531087e8b8d0476688feb2547
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70772363"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73601481"
 ---
 # <a name="create-and-manage-vlanssubnets-for-your-private-clouds"></a>VLAN-ok/alhálózatok létrehozása és kezelése saját felhők számára
 
@@ -31,9 +31,13 @@ Nyissa meg a hálózat oldalon a VLAN-ok/alhálózatok lapot, és hozzon létre 
 5. Adja meg a VLAN-azonosítót.
 6. Adja meg az alhálózat nevét.
 7. Ha engedélyezni szeretné az útválasztást a VLAN-on (alhálózat), akkor az alhálózat CIDR tartományát kell megadnia. Győződjön meg arról, hogy a CIDR-tartomány nem fedi át a helyszíni alhálózatok, az Azure-alhálózatok vagy az átjáró-alhálózatok egyikét sem.
-8. Kattintson a **Submit** (Küldés) gombra.
+8. Kattintson a **Submit (Küldés**) gombra.
 
     ![VLAN/alhálózat létrehozása](media/create-new-vlan-subnet-details.png)
+
+
+> [!IMPORTANT]
+> Saját felhőben 30 VLAN-ra vonatkozó kvóta van. Ezeket a korlátokat a [támogatási szolgálattal](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)növelheti.
 
 ## <a name="use-vlan-information-to-set-up-a-distributed-port-group-in-vsphere"></a>Elosztott porttartomány beállítása a vSphere-ben VLAN-információk használatával
 

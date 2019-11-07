@@ -1,7 +1,7 @@
 ---
 title: Bérlői modell létrehozása (előzetes verzió) – beszédfelismerési szolgáltatás
 titleSuffix: Azure Cognitive Services
-description: Automatikusan hozhatja ki a Office 365-adatait használó egyéni beszédfelismerési modellt, hogy optimális hangfelismerést nyújtson a szervezetre vonatkozó, biztonságos és megfelelő feltételekhez.
+description: Automatikusan előállíthat egy bérlői modellt (Custom Speech az Office 365-adataival), amely kihasználja az Office 365-adatait, hogy optimális beszédfelismerést nyújtson a szervezetre vonatkozó, biztonságos és megfelelő feltételekhez.
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -10,19 +10,19 @@ ms.subservice: speech-service
 ms.topic: tutorial
 ms.date: 10/26/2019
 ms.author: erhopf
-ms.openlocfilehash: 85b9291ee24c024ebc8ce81ddba46d04f7744081
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: HT
+ms.openlocfilehash: c8a2855ce9cd320be3aea8b3b4a05f3b3eb39976
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/04/2019
-ms.locfileid: "73502659"
+ms.locfileid: "73578220"
 ---
 # <a name="create-a-tenant-model-preview"></a>Bérlői modell létrehozása (előzetes verzió)
 
-A bérlői modell egy olyan Office 365 vállalati ügyfelek számára elérhető, amely automatikusan létrehoz egy egyéni beszédfelismerési modellt a szervezet Office 365-adataiból. A létrehozott modell a technikai feltételekhez, a zsargonhoz és a személyek neveihez van optimalizálva, mindezt biztonságos és megfelelő módon.
+A bérlői modell (Custom Speech Office 365-adatokkal) egy, az Office 365 vállalati ügyfelei számára elérhető, a szervezet Office 365-adataiból automatikusan egyéni beszédfelismerési modellt generáló szolgáltatás. A létrehozott modell a technikai feltételekhez, a zsargonhoz és a személyek neveihez van optimalizálva, mindezt biztonságos és megfelelő módon.
 
 > [!IMPORTANT]
-> Ha a szervezete bérlői modellel regisztrál, a beszédfelismerési szolgáltatás elérheti a szervezet nyelvi modelljét, amelyet az Office 365-erőforrások, például az e-mailek és a dokumentumok generálnak. A szervezet Office 365 rendszergazdája be-és kikapcsolhatja a szervezeti szintű nyelvi modell használatát az Office 365 felügyeleti portál használatával.
+> Ha a szervezete bérlői modellel regisztrál, a beszédfelismerési szolgáltatás elérheti a szervezet nyelvi modelljét, amely az Office 365 nyilvános csoport e-mail-címéből és olyan dokumentumokból hozható létre, amelyeket bárki láthat a szervezetében. A szervezet Office 365 rendszergazdája be-és kikapcsolhatja a szervezeti szintű nyelvi modell használatát az Office 365 felügyeleti portál használatával.
 
 Az oktatóanyag segítségével megtanulhatja a következőket:
 
@@ -33,8 +33,6 @@ Az oktatóanyag segítségével megtanulhatja a következőket:
 > * Bérlői modell üzembe helyezése
 > * Bérlői modell használata a Speech SDK-val
 
-![Bérlői modell diagramja](media/tenant-language-model/tenant-language-model-diagram.png)
-
 ## <a name="enroll-using-the-microsoft-365-admin-center"></a>Regisztrálás a Microsoft 365 felügyeleti központtal
 
 A bérlői modell üzembe helyezése előtt először regisztrálnia kell a Microsoft 365 felügyeleti központban. Ezt a feladatot csak a Microsoft 365 rendszergazdája végezheti el.
@@ -42,11 +40,11 @@ A bérlői modell üzembe helyezése előtt először regisztrálnia kell a Micr
 1. Jelentkezzen be a [Microsoft 365 felügyeleti központba](https://admin.microsoft.com ).
 2. A bal oldali panelen válassza a **Beállítások** , majd az **alkalmazások**lehetőséget.
 
-   ![Bérlői modell diagramja](media/tenant-language-model/tenant-language-model-enrollment.png)
+   ![Bérlői modell beléptetése](media/tenant-language-model/tenant-language-model-enrollment.png)
 
 3. Keresse meg és válassza ki az **Azure Speech Services**elemet.
 
-   ![Bérlői modell diagramja](media/tenant-language-model/tenant-language-model-enrollment-2.png)
+   ![Bérlői modell beléptetése 2](media/tenant-language-model/tenant-language-model-enrollment-2.png)
 
 4. Kattintson a jelölőnégyzetre, és mentse.
 
@@ -77,9 +75,10 @@ Miután a rendszergazda engedélyezte a bérlői modellt a szervezet számára, 
 
 3. Ekkor megjelenik egy üzenet, amely tájékoztatja, ha Ön jogosult a bérlői modell létrehozására.
    > [!NOTE]
-   > Az Office 365 Enterprise ügyfelei Észak-Amerika jogosultak a bérlői modell (angol) létrehozására. Ha Ön Ügyfélszéf (CLB) vagy az ügyfél kulcsának (CK) ügyfelének, ez a funkció nem érhető el. A következő utasításokat követve állapíthatja meg, hogy Ön Ügyfélszéf vagy Customer Key-ügyfél-e:
+   > Az Office 365 Enterprise ügyfelei Észak-Amerika jogosultak a bérlői modell (angol) létrehozására. Ha Ön Ügyfélszéf (CLB), az ügyfél kulcsa (CK) vagy az Office 365 Government-ügyfél, akkor ez a funkció nem érhető el. A következő utasításokat követve állapíthatja meg, hogy Ön Ügyfélszéf vagy Customer Key-ügyfél-e:
    > * [Ügyfélszéf](https://docs.microsoft.com/office365/securitycompliance/controlling-your-data-using-customer-key#FastTrack)
    > * [Ügyfél kulcsa](https://docs.microsoft.com/microsoft-365/compliance/customer-lockbox-requests)
+   > * [Office 365-kormány](https://www.microsoft.com/microsoft-365/government)
 
 4. Ezután válassza **a**bekapcsolás lehetőséget. E-mailt fog kapni, ha a bérlői modell elkészült.
 

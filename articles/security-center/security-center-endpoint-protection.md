@@ -1,5 +1,5 @@
 ---
-title: Endpoint Protection-megoldások felderítése és állapotának felmérése Azure Security Centerban | Microsoft Docs
+title: Endpoint Protection-javaslatok az Azure Security Centers szolgáltatásban
 description: Az Endpoint Protection-megoldások felderítése és azonosítása kifogástalanként.
 services: security-center
 documentationcenter: na
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/08/2019
 ms.author: memildin
-ms.openlocfilehash: 8de0caa5db4a7e1d97c7d6c055bcb01fed635821
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
-ms.translationtype: MT
+ms.openlocfilehash: dad8c6173495d11abd6c9f5babb4ef8bc789e4ce
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71202261"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73686414"
 ---
 # <a name="endpoint-protection-assessment-and-recommendations-in-azure-security-center"></a>Endpoint Protection-Értékelés és javaslatok a Azure Security Center
 
@@ -29,29 +29,29 @@ A Azure Security Center az Endpoint Protection-megoldások [támogatott](https:/
 
 ## <a name="windows-defender"></a>Windows Defender
 
-* SecurityCenter**a [Get-MpComputerStatus](https://docs.microsoft.com/powershell/module/defender/get-mpcomputerstatus?view=win10-ps) futtatásakor javasolja az **Endpoint Protection-megoldások telepítését a virtuális gépen** , és az eredmény AMServiceEnabled: Hamis**
+* Security Center a [Get-MpComputerStatus](https://docs.microsoft.com/powershell/module/defender/get-mpcomputerstatus?view=win10-ps) futtatásakor javasolja az **Endpoint Protection-megoldások telepítését a virtuális gépen** , és az eredmény **AMServiceEnabled: false**
 
 * Security Center a [Get-MpComputerStatus](https://docs.microsoft.com/powershell/module/defender/get-mpcomputerstatus?view=win10-ps) futtatásakor javasolja az **Endpoint Protection-állapottal kapcsolatos problémák megoldását a gépeken** , valamint a következő esetekben:
 
   * A következő tulajdonságok bármelyike hamis:
 
-     **AMServiceEnabled**
+    **AMServiceEnabled**
 
-     **AntispywareEnabled**
+    **AntispywareEnabled**
 
-     **RealTimeProtectionEnabled**
+    **RealTimeProtectionEnabled**
 
-     **BehaviorMonitorEnabled**
+    **BehaviorMonitorEnabled**
 
-     **IoavProtectionEnabled**
+    **IoavProtectionEnabled**
 
-     **OnAccessProtectionEnabled**
+    **OnAccessProtectionEnabled**
 
   * Ha a következő tulajdonságok közül legalább egy 7 vagy több van.
 
-     **AntispywareSignatureAge**
+    **AntispywareSignatureAge**
 
-     **AntivirusSignatureAge**
+    **AntivirusSignatureAge**
 
 ## <a name="microsoft-system-center-endpoint-protection"></a>Microsoft System Center Endpoint Protection
 
@@ -61,23 +61,23 @@ A Azure Security Center az Endpoint Protection-megoldások [támogatott](https:/
 
     * A következő tulajdonságok közül legalább az egyik hamis:
 
-       **AMServiceEnabled**
+            **AMServiceEnabled**
+
+            **AntispywareEnabled**
     
-       **AntispywareEnabled**
+            **RealTimeProtectionEnabled**
     
-       **RealTimeProtectionEnabled**
+            **BehaviorMonitorEnabled**
     
-       **BehaviorMonitorEnabled**
+            **IoavProtectionEnabled**
     
-       **IoavProtectionEnabled**
-    
-       **OnAccessProtectionEnabled**
+            **OnAccessProtectionEnabled**
           
     * Ha a következő aláírások egyike vagy mindkét frissítése nagyobb vagy egyenlő, mint 7. 
 
-       **AntispywareSignatureAge**
+            **AntispywareSignatureAge**
     
-       **AntivirusSignatureAge**
+            **AntivirusSignatureAge**
 
 ## <a name="trend-micro"></a>Trend Micro
 
@@ -92,27 +92,27 @@ Security Center javasolja az **Endpoint Protection-megoldások telepítését a 
 
 * **HKLM: \ Software\Symantec\Symantec Endpoint Protection\CurrentVersion\PRODUCTNAME = "Symantec Endpoint Protection"**
 
-* **HKLM:\Software\Symantec\Symantec Endpoint Protection\CurrentVersion\public-opstate\ASRunningStatus = 1**
+* **HKLM: \ Software\Symantec\Symantec Endpoint Protection\CurrentVersion\public-opstate\ASRunningStatus = 1**
 
 Vagy
 
 * **HKLM: \ Software\Wow6432Node\Symantec\Symantec Endpoint Protection\CurrentVersion\PRODUCTNAME = "Symantec Endpoint Protection"**
 
-* **HKLM:\Software\Wow6432Node\Symantec\Symantec Endpoint Protection\CurrentVersion\public-opstate\ASRunningStatus = 1**
+* **HKLM: \ Software\Wow6432Node\Symantec\Symantec Endpoint Protection\CurrentVersion\public-opstate\ASRunningStatus = 1**
 
 Security Center azt javasolja, hogy **"az Endpoint Protection-állapottal kapcsolatos problémák megoldása a gépeken"** , ha a következő ellenőrzések bármelyike nem teljesül:
 
-* A Symantec > = 12 verziójának megkeresése:  Beállításjegyzék helye: **HKLM: \ Software\Symantec\Symantec Endpoint Protection\CurrentVersion "-value" PRODUCTVERSION "**
+* Keresse meg a Symantec verzióját > = 12: beállításjegyzék helye: **HKLM: \ Software\Symantec\Symantec Endpoint Protection\CurrentVersion "-value" PRODUCTVERSION "**
 
 * Valós idejű védelem állapotának keresése: **HKLM: \ Software\Wow6432Node\Symantec\Symantec Endpoint Protection\AV\Storages\Filesystem\RealTimeScan\OnOff = = 1**
 
-* Aláírás frissítési állapotának ellenőrzését: **HKLM\Software\Symantec\Symantec-végpont Protection\CurrentVersion\public-opstate\LatestVirusDefsDate < = 7 nap**
+* Aláírás frissítési állapotának megtekintése: **HKLM\Software\Symantec\Symantec Endpoint Protection\CurrentVersion\public-opstate\LatestVirusDefsDate < = 7 nap**
 
 * Teljes vizsgálat állapotának ellenőrzése: **HKLM: \ Software\Symantec\Symantec Endpoint Protection\CurrentVersion\public-opstate\LastSuccessfulScanDateTime < = 7 nap**
 
-* Az aláírás verziószámának elérési útja a Symantec 12 aláírási verziójának megkereséséhez: **Beállításjegyzékbeli elérési utak + "CurrentVersion\SharedDefs" – érték "SRTSP"** 
+* Az aláírás verziószámának elérési útja a Symantec 12 verzióhoz: **Registry paths + "CurrentVersion\SharedDefs"-value "SRTSP"** 
 
-* A Symantec 14 aláírási verziójának elérési útja: **Beállításjegyzékbeli elérési utak + "CurrentVersion\SharedDefs\SDSDefs" – érték "SRTSP"**
+* A Symantec 14 aláírási verziójának elérési útja: **beállításjegyzék elérési útjai + "CurrentVersion\SharedDefs\SDSDefs"-value "SRTSP"**
 
 Beállításjegyzékbeli elérési utak:
 
@@ -129,13 +129,13 @@ Security Center javasolja az **Endpoint Protection-megoldások telepítését a 
 
 Security Center azt javasolja, hogy **"az Endpoint Protection-állapottal kapcsolatos problémák megoldása a gépeken"** , ha a következő ellenőrzések bármelyike nem teljesül:
 
-* McAfee verziója: **HKLM:\SOFTWARE\McAfee\Endpoint\AV\ProductVersion >= 10**
+* McAfee-verzió: **HKLM: \ SOFTWARE\McAfee\Endpoint\AV\ProductVersion > = 10**
 
-* Aláírás verziójának keresése: **HKLM:\Software\McAfee\AVSolution\DS\DS -Value "dwContentMajorVersion"**
+* Aláírás verziójának keresése: **HKLM: \ Software\McAfee\AVSolution\DS\DS-Value "dwContentMajorVersion"**
 
 * Aláírási dátum keresése: **HKLM: \ Software\McAfee\AVSolution\DS\DS-Value "szContentCreationDate" > = 7 nap**
 
-* Vizsgálat dátumának keresése: **HKLM: \ Software\McAfee\Endpoint\AV\ODS-Value "LastFullScanOdsRunTime" > = 7 nap**
+* Keresési dátum keresése: **HKLM: \ Software\McAfee\Endpoint\AV\ODS-Value "LastFullScanOdsRunTime" > = 7 nap**
 
 ## <a name="mcafee-endpoint-security-for-linux-threat-prevention"></a>A McAfee-végpont biztonsága a Linux-veszélyforrások megelőzésére 
 
@@ -143,7 +143,7 @@ Security Center javasolja az **Endpoint Protection-megoldások telepítését a 
 
 - A fájl **/opt/ISEC/ENS/threatprevention/bin/isecav** bezárása 
 
-- a **"/opt/ISEC/ENS/threatprevention/bin/isecav--version"** kimenet a következő: **McAfee name = a McAfee Endpoint Security for Linux Threat Prevention és a McAfee verziója > = 10**
+- **"/opt/ISEC/ENS/threatprevention/bin/isecav--version"** kimenet: **McAfee Name = McAfee Endpoint Security for Linux Threat Prevention and McAfee version > = 10**
 
 Security Center azt javasolja, hogy **"az Endpoint Protection-állapottal kapcsolatos problémák megoldása a gépeken"** , ha a következő ellenőrzések bármelyike nem teljesül:
 
@@ -163,23 +163,22 @@ Security Center javasolja az **Endpoint Protection-megoldások telepítését a 
 
 Security Center azt javasolja, hogy **"az Endpoint Protection-állapottal kapcsolatos problémák megoldása a gépeken"** , ha a következő ellenőrzések bármelyike nem teljesül:
 
-- **"/opt/Sophos-AV/bin/savlog--MaxAge = 7 | GREP-i "ütemezett vizsgálat. a\* (z) "| tail-1" befejeződött**, egy értéket ad vissza.   
+- **"/opt/Sophos-AV/bin/savlog--MaxAge = 7 | GREP-i "ütemezett vizsgálat.\* befejezve "| farok-1 "** , egy értéket ad vissza.
 
-- **"/opt/Sophos-AV/bin/savlog--MaxAge = 7 | a GREP "vizsgálat elkészült"** | farok-1 ", egy értéket ad vissza.   
+- **"/opt/Sophos-AV/bin/savlog--MaxAge = 7 | a GREP "vizsgálat elkészült"** | farok-1 ", egy értéket ad vissza.
 
 - a **"/opt/Sophos-AV/bin/savdstatus--LastUpdate"** függvény a LastUpdate értéket adja vissza, amelynek < = 7 nap kell lennie 
 
 - a **"/opt/Sophos-AV/bin/savdstatus-v"** egyenlő **"a hozzáférés-ellenőrzés fut"** értékkel. 
 
-- a **"/opt/Sophos-AV/bin/savconfig Get LiveProtection"** érték engedélyezve  
+- a **"/opt/Sophos-AV/bin/savconfig Get LiveProtection"** érték engedélyezve
 
-## <a name="troubleshoot-and-support"></a>Hibaelhárítás és támogatás
+## <a name="troubleshoot-and-support"></a>Hibakeresés és támogatás
 
 ### <a name="troubleshoot"></a>Hibaelhárítás
 
-A Microsoft antimalware-bővítmény naplói a következő címen érhetők el:  
-**%Systemdrive%\WindowsAzure\Logs\Plugins\Microsoft.Azure.Security.IaaSAntimalware(Or PaaSAntimalware)\1.5.5.x(version#)\CommandExecution.log**
+A Microsoft antimalware-bővítmény naplói a következő címen érhetők el: **%SYSTEMDRIVE%\WindowsAzure\Logs\Plugins\Microsoft.Azure.Security.IaaSAntimalware (vagy PaaSAntimalware) \1.5.5.x (Version #) \CommandExecution.log**
 
 ### <a name="support"></a>Támogatás
 
-További segítségért forduljon az Azure-szakértőkhöz az [MSDN Azure-ban és stack overflow fórumokon](https://azure.microsoft.com/support/forums/). Vagy egy Azure-támogatási incidenst. Nyissa meg a [Azure támogatási webhelyén](https://azure.microsoft.com/support/options/) , és válassza ki a Get-támogatást. Azure-támogatási használatával kapcsolatos információkért olvassa el a [Microsoft Azure-támogatás – gyakori kérdések](https://azure.microsoft.com/support/faq/).
+További segítségért forduljon az Azure-szakértőkhöz az [MSDN Azure-ban és stack overflow fórumokon](https://azure.microsoft.com/support/forums/). Vagy egy Azure-támogatási incidenst. Nyissa meg az [Azure támogatási webhelyét](https://azure.microsoft.com/support/options/) , és válassza a támogatás kérése lehetőséget. További információ az Azure-támogatás használatáról: [Microsoft Azure támogatással kapcsolatos gyakori kérdések](https://azure.microsoft.com/support/faq/).

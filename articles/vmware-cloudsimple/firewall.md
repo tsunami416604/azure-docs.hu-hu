@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 798f95281740213ac23892eb3b54ff780ca18395
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.openlocfilehash: 411b4bb74c21a445f4001c949e1c7811af212453
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70772347"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73606457"
 ---
 # <a name="set-up-firewall-tables-and-rules-for-private-clouds"></a>Tűzfalszabályok és szabályok beállítása privát Felhőkhöz
 
@@ -33,6 +33,9 @@ A tűzfalak és a kapcsolódó szabályok lehetővé teszik, hogy korlátozások
 4. Adja meg a tábla nevét.
 5. A táblázat alapértelmezett szabálya szerepel a táblázatban. További szabály létrehozásához kattintson az **új szabály létrehozása** lehetőségre. A részletekért tekintse meg a következő eljárást.
 6. Kattintson a **kész** gombra a tűzfalszabály mentéséhez.
+
+> [!IMPORTANT]
+> Saját felhőben legfeljebb két tűzfal-táblázatot hozhat létre.
 
 ## <a name="firewall-rules"></a>Tűzfalszabályok
 
@@ -62,12 +65,15 @@ A tűzfalszabályok határozzák meg, hogy a tűzfal hogyan kezelje a különbö
 
 3. Kattintson a **kész** gombra a szabály mentéséhez és a tűzfalszabály szabályainak listájához való hozzáadásához.
 
+> [!IMPORTANT]
+> Minden egyes tűzfalszabály legfeljebb 10 bejövő szabályt és 20 kimenő szabályt tartalmazhat. Ezeket a korlátokat a [támogatási szolgálattal](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)növelheti.
+
 ## <a name="attach-vlanssubnets"></a>VLAN-ok/alhálózatok csatolása
 
 A tűzfalszabályok definiálása után megadhatja azokat az alhálózatokat, amelyek a táblázatban szereplő szabályok hatálya alá esnek.
 
-1. A **hálózati** > **tűzfal táblái** lapon válasszon ki egy tűzfal-táblázatot.
+1. A **hálózati** > **Tűzfalszabályok** lapon válasszon ki egy tűzfal-táblázatot.
 2. Nyissa meg a **csatolt VLAN-ok/alhálózat** lapot.
 3. Kattintson **a csatolás egy VLAN/alhálózat**elemre.
 4. Válassza ki a privát felhőt és a VLAN-t. Megjelenik a társított alhálózat neve és CIDR-blokkja.
-5. Kattintson a **Submit** (Küldés) gombra.
+5. Kattintson a **Submit (Küldés**) gombra.

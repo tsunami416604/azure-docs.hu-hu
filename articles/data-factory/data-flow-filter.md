@@ -1,5 +1,5 @@
 ---
-title: Átalakítás szűrése Azure Data Factory leképezési adatfolyamban | Microsoft Docs
+title: Átalakítás szűrése Azure Data Factory leképezési adatfolyamban
 description: Sorok kiszűrése a szűrő átalakításával Azure Data Factory leképezési adatfolyamban
 author: kromerm
 ms.author: makromer
@@ -7,12 +7,12 @@ ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 10/16/2019
-ms.openlocfilehash: a4dd53f37a8a963d05a3ad9c49769528e945f6a1
-ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
+ms.openlocfilehash: 77587d007d9bfcdc1461201f676c79880bd89d6b
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72527370"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73676176"
 ---
 # <a name="filter-transformation-in-mapping-data-flow"></a>Átalakítás szűrése a leképezési adatfolyamban
 
@@ -37,7 +37,7 @@ A szűrési feltétel kifejezésének megadásához használja az adatfolyam-Kif
 
 ### <a name="example"></a>Példa
 
-Az alábbi példa egy `FilterBefore1960` nevű feltételes felosztású átalakítás, amely bekerül a bejövő stream `CleanData`ba. A szűrési feltétel a `year <= 1960` kifejezés.
+Az alábbi példa egy `FilterBefore1960` nevű feltételes felosztású átalakítás, amely bekerül a bejövő stream `CleanData`ba. A szűrési feltétel a `year <= 1960`kifejezés.
 
 Az Data Factory UX-ben ez az átalakítás az alábbi képhez hasonlóan néz ki:
 
@@ -53,6 +53,6 @@ CleanData
 
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Oszlopok kiszűrése az [átalakítás kiválasztása](data-flow-select.md)

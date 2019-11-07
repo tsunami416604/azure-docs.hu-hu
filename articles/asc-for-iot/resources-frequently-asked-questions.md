@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/23/2019
 ms.author: mlottner
-ms.openlocfilehash: 0262be687b74ec1b97cb508f6da1b95cd5d7a533
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 639a3f89e470a832279add8d2ed7cf49441611f4
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68596923"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73571801"
 ---
 # <a name="azure-security-center-for-iot-frequently-asked-questions"></a>A IoT gyakori kérdései Azure Security Center  
 
@@ -70,11 +70,11 @@ A IoT biztonsági ügynök Azure Security Center nyílt forráskódú, és elér
 
 ## <a name="where-does-the-azure-security-center-for-iot-agent-get-installed"></a>Honnan telepíti a IoT-ügynök Azure Security Center? 
 
-Részletes telepítési és ügynök-telepítési információk találhatók a GitHubban: https://github.com/Azure/Azure-Security-IoT.
+Részletes telepítési és ügynök-telepítési információk találhatók a GitHubban: https://github.com/Azure/Azure-IoT-Security.
 
 ## <a name="what-are-the-dependencies-and-prerequisites-of-the-agent"></a>Mik az ügynök függőségei és előfeltételei?
 
-A IoT Azure Security Center számos platformot támogat. Az adott eszközök támogatásának ellenőrzéséhez tekintse meg a [támogatott](how-to-deploy-agent.md) eszközök platformot. 
+A IoT Azure Security Center számos platformot támogat. Az adott eszközök támogatásának ellenőrzéséhez tekintse meg a [támogatott eszközök platformot](how-to-deploy-agent.md) . 
 
 ## <a name="which-data-is-collected-by-the-agent"></a>Milyen adatokat gyűjt az ügynök?
 
@@ -92,9 +92,9 @@ A IoT Azure Security Center konfigurálható ügynökök vizsgálatát, adatpuff
 
 Igen. Az ügynök által továbbított adatokat a rendszer a IoT Hub kvótába számítja. 
 
-## <a name="what-next-ive-installed-an-agent-and-dont-see-any-activities-or-logs"></a>Következő lépések Telepítettem az ügynököt, és nem látok semmilyen tevékenységet vagy naplót...
+## <a name="what-next-ive-installed-an-agent-and-dont-see-any-activities-or-logs"></a>Mi a következő lépés? Telepítettem az ügynököt, és nem látok semmilyen tevékenységet vagy naplót...
 
-1. Győződjön meg arról, hogy az [ügynök típusa megfelel az eszköz kijelölt operációsrendszer](how-to-deploy-agent.md) -platformjának
+1. Győződjön meg arról, hogy az [ügynök típusa megfelel az eszköz kijelölt operációsrendszer-platformjának](how-to-deploy-agent.md)
 
 1. Ellenőrizze, hogy az [ügynök fut-e az eszközön](how-to-agent-configuration.md).
 
@@ -145,7 +145,7 @@ Ha többet szeretne megtudni a IoT Azure Security Center használatáról, tekin
 
 
 - Olvassa el a IoT Azure Security Centerét [– Áttekintés](overview.md)
-- A [szolgáltatás](service-prerequisites.md) előfeltételeinek ellenőrzése
+- A [szolgáltatás előfeltételeinek](service-prerequisites.md) ellenőrzése
 - További információ az [első lépésekről](getting-started.md)
 - [A IoT biztonsági riasztások Azure Security Center](concept-security-alerts.md) ismertetése
 

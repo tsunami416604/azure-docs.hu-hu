@@ -1,5 +1,5 @@
 ---
-title: Adatfolyam-tevékenység a Azure Data Factoryban | Microsoft Docs
+title: Adatfolyam-tevékenység Azure Data Factory
 description: Az adatfolyamatok végrehajtása egy adatfeldolgozó-folyamaton belül.
 services: data-factory
 documentationcenter: ''
@@ -10,12 +10,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.author: makromer
 ms.date: 10/07/2019
-ms.openlocfilehash: cbfa1acac34187263f8c4203e41bbe61d7e4c745
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 5623907346ee3882ad53a27695336ba4bc449db8
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72030508"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73679947"
 ---
 # <a name="data-flow-activity-in-azure-data-factory"></a>Adatfolyam-tevékenység Azure Data Factory
 
@@ -49,14 +49,14 @@ Az adatfolyam tevékenységgel átalakíthatja és áthelyezheti az adatait a le
 
 ## <a name="type-properties"></a>Típus tulajdonságai
 
-Tulajdonság | Leírás | Megengedett értékek | Szükséges
+Tulajdonság | Leírás | Megengedett értékek | Kötelező
 -------- | ----------- | -------------- | --------
 adatfolyam | A végrehajtandó adatfolyamra mutató hivatkozás | DataFlowReference | Igen
 integrationRuntime | Az a számítási környezet, amelyen az adatfolyam fut | IntegrationRuntimeReference | Igen
 előkészítés. linkedService | Ha SQL DW-forrást vagy-fogadót használ, a rendszer a alapszintű előkészítéshez használt Storage-fiókot használja. | Linkedservicereference sématulajdonsággal | Csak akkor, ha az adatfolyam beolvas vagy ír egy SQL DW-t
 előkészítés. folderPath | Ha SQL DW-forrást vagy-fogadót használ, a mappa elérési útja a blob Storage-fiókban | Sztring | Csak akkor, ha az adatfolyam beolvas vagy ír egy SQL DW-t
 
-Adatfolyam-(media/data-flow/activity-data-flow.png "végrehajtási") ![folyamat végrehajtása]
+![Adatfolyam végrehajtása](media/data-flow/activity-data-flow.png "Adatfolyam végrehajtása")
 
 ### <a name="data-flow-integration-runtime"></a>Adatfolyam-integrációs modul
 
@@ -79,19 +79,19 @@ Ha egy Azure SQL Data Warehouse fogadóként vagy forrásként használ, ki kell
 
 Ha az adatfolyam paraméteres adatkészleteket használ, állítsa be a paraméterek értékét a **Beállítások** lapon.
 
-![Az adatfolyam paramétereinek](media/data-flow/params.png "paramétereinek") végrehajtása
+![Adatfolyam paramétereinek végrehajtása](media/data-flow/params.png "Paraméterek")
 
 ### <a name="parameterized-data-flows"></a>Paraméteres adatfolyamatok
 
 Ha az adatfolyam paraméteres, állítsa be az adatfolyam paramétereinek dinamikus értékeit a **Parameters (paraméterek** ) lapon. Az ADF-folyamat kifejezésének nyelvét (csak karakterlánc-típusok esetében) vagy az adatfolyam kifejezésének nyelvét használhatja dinamikus vagy literális paraméterérték hozzárendeléséhez. További információ: adatfolyam- [Paraméterek](parameters-data-flow.md).
 
-Példa ![az adatforgalom paraméterének](media/data-flow/parameter-example.png "paraméterére") példa
+![Példa az adatforgalom paraméterének végrehajtására](media/data-flow/parameter-example.png "Példa paraméterre")
 
 ## <a name="pipeline-debug-of-data-flow-activity"></a>Adatáramlási tevékenység folyamatának hibakeresése
 
 Egy adatáramlási tevékenységgel futtatott hibakeresési folyamat végrehajtásához az adatfolyam-hibakeresési módot a felső sávon található **adatfolyam-hibakeresési** csúszka használatával kell bekapcsolni. A hibakeresési mód lehetővé teszi az adatfolyamok aktív Spark-fürtön való futtatását. További információ: [hibakeresési mód](concepts-data-flow-debug-mode.md).
 
-![Hibakeresés gomb](media/data-flow/debugbutton.png "hibakeresése gomb")
+![Hibakeresés gomb](media/data-flow/debugbutton.png "Hibakeresés gomb")
 
 A hibakeresési folyamat az aktív hibakeresési fürtön fut, nem az adatáramlási tevékenység beállításaiban megadott integrációs futtatókörnyezeti környezettel. A hibakeresési mód indításakor kiválaszthatja a hibakeresés számítási környezetét.
 

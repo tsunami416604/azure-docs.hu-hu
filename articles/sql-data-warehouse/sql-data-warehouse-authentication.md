@@ -1,86 +1,87 @@
 ---
-title: Hitelesítés az Azure SQL Data Warehouse |} A Microsoft Docs
-description: Ismerje meg, hogyan hitelesítheti az Azure SQL Data Warehouse, Azure Active Directory (AAD) vagy az SQL Server-hitelesítés használatával.
+title: Authentication
+description: Megtudhatja, hogyan végezhet hitelesítést a Azure SQL Data Warehouse Azure Active Directory (HRE) vagy a SQL Server hitelesítés használatával.
 services: sql-data-warehouse
-author: KavithaJonnakuti
+author: julieMSFT
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: security
 ms.date: 04/02/2019
-ms.author: kavithaj
+ms.author: jrasnick
 ms.reviewer: igorstan
-ms.openlocfilehash: a3bed9df5b62ce7f2f3df7046357dc4f2458575c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.custom: seo-lt-2019
+ms.openlocfilehash: fda29e432fbd952261893f3c32a4df7b9990ae66
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61475031"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73692934"
 ---
-# <a name="authenticate-to-azure-sql-data-warehouse"></a>Az Azure SQL Data Warehouse hitelesítése
-Ismerje meg, hogyan hitelesítheti az Azure SQL Data Warehouse, Azure Active Directory (AAD) vagy az SQL Server-hitelesítés használatával.
+# <a name="authenticate-to-azure-sql-data-warehouse"></a>Hitelesítés Azure SQL Data Warehouse
+Megtudhatja, hogyan végezhet hitelesítést a Azure SQL Data Warehouse Azure Active Directory (HRE) vagy a SQL Server hitelesítés használatával.
 
-Szeretne csatlakozni az SQL Data warehouse-ba, akkor meg kell adnia a biztonsági hitelesítő adatok hitelesítési célra. A kapcsolat létrehozása után egyes kapcsolati beállításai a lekérdezési munkamenetet létrehozó részeként.  
+A SQL Data Warehousehoz való kapcsolódáshoz hitelesítő adatokat kell átadnia hitelesítési célokra. A kapcsolat létrehozásakor a rendszer bizonyos kapcsolatbeállításokat a lekérdezési munkamenet létrehozásának részeként konfigurál.  
 
-További információ a biztonsági és az adattárház kapcsolatok engedélyezése: [biztonságossá egy adatbázis az SQL Data Warehouse][Secure a database in SQL Data Warehouse].
+A biztonsággal és az adattárház kapcsolatainak engedélyezésével kapcsolatos további információkért lásd: [adatbázis biztonságossá tétele SQL Data Warehouseban][Secure a database in SQL Data Warehouse].
 
 ## <a name="sql-authentication"></a>SQL-hitelesítés
-Csatlakozás az SQL Data Warehouse, a következő adatokat kell megadnia:
+A SQL Data Warehousehoz való kapcsolódáshoz a következő információkat kell megadnia:
 
 * Teljes kiszolgálónév
-* Adja meg az SQL-hitelesítés
+* SQL-hitelesítés meghatározása
 * Felhasználónév
 * Jelszó
 * Alapértelmezett adatbázis (nem kötelező)
 
-Alapértelmezés szerint a kapcsolat csatlakozik a *fő* adatbázis és a nem a felhasználói adatbázishoz. Szeretne csatlakozni a felhasználói adatbázishoz, választhat, két dolog egyikét ehhez:
+Alapértelmezés szerint a kapcsolat a *Master* adatbázishoz csatlakozik, nem pedig a felhasználói adatbázishoz. A felhasználói adatbázishoz való kapcsolódáshoz két dolog közül választhat:
 
-* Adja meg az alapértelmezett adatbázis, az SQL Server Object Explorer az SSDT-ben az ssms-ben, vagy az alkalmazás kapcsolati karakterláncában a kiszolgáló regisztrálásakor. Például az InitialCatalog paraméter egy ODBC-kapcsolat.
-* Jelölje ki a felhasználói adatbázis az SSDT-ben a munkamenet létrehozása előtt.
+* Adja meg az alapértelmezett adatbázist, amikor regisztrálja a kiszolgálót a SSDT, SSMS vagy az alkalmazás-kapcsolódási karakterláncban szereplő SQL Server Object Explorer. Adja meg például a InitialCatalog paramétert egy ODBC-kapcsolatok esetében.
+* A SSDT-munkamenet létrehozása előtt jelölje ki a felhasználói adatbázist.
 
 > [!NOTE]
-> A Transact-SQL utasítás **használata MyDatabase;** módosítása az adatbázis-kapcsolat esetén nem támogatott. Csatlakozás az SQL Data Warehouse és az SSDT együttes útmutatásért tekintse meg a [lekérdezés a Visual Studióval] [ Query with Visual Studio] cikk.
+> A Transact-SQL-utasítás a **MyDatabase; használata** nem támogatott a kapcsolatok adatbázisának módosításához. A SQL Data Warehouse és a SSDT közötti csatlakozással kapcsolatos útmutatásért tekintse meg a [lekérdezés a Visual Studióval][Query with Visual Studio] című cikket.
 > 
 > 
 
-## <a name="azure-active-directory-aad-authentication"></a>Az Azure Active Directory (AAD) hitelesítés
-[Az Azure Active Directory] [ What is Azure Active Directory] hitelesítés az identitások Azure Active Directoryban (Azure AD) használatával csatlakozik a Microsoft Azure SQL Data Warehouse egy mechanizmusa. Azure Active Directory-hitelesítéssel központilag kezelheti az identitásokat az adatbázis-felhasználók és más Microsoft-szolgáltatások egyetlen központi helyen. Központi azonosítófelügyeleti biztosít az SQL Data Warehouse-felhasználók kezelése egy helyen, és egyszerűsíti az engedélyek kezelését. 
+## <a name="azure-active-directory-aad-authentication"></a>Azure Active Directory (HRE) hitelesítés
+[Azure Active Directory][What is Azure Active Directory] hitelesítés a Microsoft Azure SQL Data Warehousehoz való kapcsolódási mechanizmus a Azure Active Directory (Azure ad) identitások használatával. A Azure Active Directory hitelesítéssel központilag kezelheti az adatbázis-felhasználók és más Microsoft-szolgáltatások identitásait egy központi helyen. A központi AZONOSÍTÓk kezelése egyetlen helyet biztosít a SQL Data Warehouse felhasználók felügyeletéhez, és egyszerűsíti az engedélyek kezelését. 
 
 ### <a name="benefits"></a>Előnyök
-Az Azure Active Directory előnyöket nyújtják:
+A Azure Active Directory előnyei a következők:
 
-* Itt az SQL Server-hitelesítés helyett.
-* Segít állítsa le a felhasználói identitások elterjedése adatbázis-kiszolgáló között.
-* Lehetővé teszi, hogy a jelszóváltoztatás egyetlen helyen
-* Külső (AAD-) csoportokat használ az adatbázis-engedélyek kezeléséhez.
-* Integrált Windows-hitelesítés és egyéb Azure Active Directory által támogatott hitelesítési engedélyezésével kiküszöböli a jelszavak tárolását.
-* Használja a tartalmazott adatbázis-felhasználók az adatbázis szintjén identitások hitelesítésére.
-* Jogkivonat-alapú hitelesítés támogatja az alkalmazások csatlakoztatásához az SQL Data warehouse-bA.
-* Támogatja a többtényezős hitelesítést az Active Directory univerzális hitelesítéssel a különböző eszközöket, beleértve a [SQL Server Management Studio](../sql-database/sql-database-ssms-mfa-authentication.md) és [SQL Server Data Tools](https://docs.microsoft.com/sql/ssdt/azure-active-directory?toc=/azure/sql-data-warehouse/toc.json).
+* A SQL Server hitelesítés alternatíváját adja meg.
+* Segít leállítani a felhasználói identitások elterjedését az adatbázis-kiszolgálókon.
+* Központi helyet biztosít a jelszóváltoztatáshoz
+* Adatbázis-engedélyek kezelése külső (HRE) csoportok használatával.
+* Az integrált Windows-hitelesítés és a Azure Active Directory által támogatott hitelesítés más formáinak engedélyezésével kiküszöböli a jelszavak tárolását.
+* A a tárolt adatbázis-felhasználók használatával hitelesíti az identitásokat az adatbázis szintjén.
+* Támogatja a jogkivonat-alapú hitelesítést a SQL Data Warehousehoz csatlakozó alkalmazások esetében.
+* A többtényezős hitelesítést Active Directory univerzális hitelesítéssel támogatja különböző eszközökhöz, például [SQL Server Management Studio](../sql-database/sql-database-ssms-mfa-authentication.md) és [SQL Server Data Toolsekhez](https://docs.microsoft.com/sql/ssdt/azure-active-directory?toc=/azure/sql-data-warehouse/toc.json).
 
 > [!NOTE]
-> Az Azure Active Directory még viszonylag újak és bizonyos korlátozások vonatkoznak. Győződjön meg arról, hogy az Azure Active Directory jó megoldás lehet a környezetben, lásd: [Azure AD-funkciók és korlátozások][Azure AD features and limitations], kifejezetten a további szempontok.
+> Azure Active Directory még mindig viszonylag új, és bizonyos korlátozásokkal rendelkezik. Annak biztosítása érdekében, hogy Azure Active Directory a környezetnek megfelelő legyen, tekintse meg az [Azure ad-szolgáltatások és-korlátozások][Azure AD features and limitations]című témakört, pontosabban a további szempontokat.
 > 
 > 
 
 ### <a name="configuration-steps"></a>Konfigurációs lépések
-Kövesse az alábbi lépéseket az Azure Active Directory-hitelesítés konfigurálása.
+Azure Active Directory hitelesítés konfigurálásához kövesse az alábbi lépéseket.
 
-1. Létre és tölthet fel egy Azure Active Directory
-2. Nem kötelező: Társítsa, vagy módosítsa az active directory jelenleg társított Azure-előfizetésében
-3. Hozzon létre egy Azure Active Directory-rendszergazda az Azure SQL Data warehouse-hoz.
-4. Az ügyfélszámítógépek konfigurálása
-5. Hozzon létre tartalmazottadatbázis-felhasználók az Azure AD-identitások leképezett adatbázis
-6. Csatlakozás az adattárházhoz az Azure AD-identitások használatával
+1. Azure Active Directory létrehozása és feltöltése
+2. Nem kötelező: az Azure-előfizetéshez jelenleg társított Active Directory társítása vagy módosítása
+3. Hozzon létre egy Azure Active Directory rendszergazdát Azure SQL Data Warehousehoz.
+4. Ügyfélszámítógépek konfigurálása
+5. Tárolt adatbázis-felhasználók létrehozása az adatbázisban az Azure AD-identitásokhoz rendelve
+6. Kapcsolódás az adattárházhoz az Azure AD-identitások használatával
 
-Jelenleg az Azure Active Directory-felhasználók nem jelennek meg az SSDT Object Explorerben. Áthidaló megoldásként a felhasználók megtekintéséhez [sys.database_principals](https://msdn.microsoft.com/library/ms187328.aspx).
+Jelenleg Azure Active Directory felhasználók nem jelennek meg a SSDT-Object Explorerokban. Megkerülő megoldásként tekintse meg a [sys. database_principals](https://msdn.microsoft.com/library/ms187328.aspx)felhasználóit.
 
-### <a name="find-the-details"></a>Keresse meg a részleteket
-* A lépéseket, konfigurálhatja és használhatja az Azure Active Directory-hitelesítés szinte azonosak az Azure SQL Database és az Azure SQL Data Warehouse. Kövesse a témakör részletes lépéseit [SQL Database vagy az SQL Data Warehouse által használatával az Azure Active Directory-hitelesítéssel csatlakozik](../sql-database/sql-database-aad-authentication.md).
-* Hozzon létre egyéni adatbázis-szerepkörökhöz, és felhasználók hozzáadása a szerepkörökhöz. Ezután adja meg a szerepkörök részletes engedélyeket. További információkért lásd: [– első lépések a Database Engine engedélyekkel](https://msdn.microsoft.com/library/mt667986.aspx).
+### <a name="find-the-details"></a>A részletek megkeresése
+* A Azure Active Directory hitelesítés konfigurálásának és használatának lépései közel azonosak a Azure SQL Database és a Azure SQL Data Warehouse esetében. Azure Active Directory hitelesítés használatával kövesse a következő témakör részletes lépéseit: [csatlakozás SQL Database vagy SQL Data Warehousehoz](../sql-database/sql-database-aad-authentication.md).
+* Hozzon létre egyéni adatbázis-szerepköröket, és adja hozzá a felhasználókat a szerepkörökhöz. Ezután adjon meg részletes engedélyeket a szerepkörökhöz. További információ: [első lépések az adatbázismotor engedélyeivel](https://msdn.microsoft.com/library/mt667986.aspx).
 
 ## <a name="next-steps"></a>További lépések
-A Visual Studio és más alkalmazások az adatraktár lekérdezéséről, lásd: [lekérdezés a Visual Studióval][Query with Visual Studio].
+További információ az adatraktár lekérdezéséről a Visual Studio vagy egyéb alkalmazások használatával: [Query with Visual Studio][Query with Visual Studio] (Lekérdezés a Visual Studióval).
 
 <!-- Article references -->
 [Secure a database in SQL Data Warehouse]: ./sql-data-warehouse-overview-manage-security.md

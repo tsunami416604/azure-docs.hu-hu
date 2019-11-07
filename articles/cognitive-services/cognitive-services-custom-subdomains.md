@@ -1,7 +1,7 @@
 ---
 title: Egyéni altartományok
 titleSuffix: Azure Cognitive Services
-description: Az Azure Cognitive Services a Azure Portal, a Azure Cloud Shell vagy az Azure CLI használatával létrehozott összes erőforráshoz egyéni tartományneveket használhat. A regionális végpontok eltérően, amelyek egy adott Azure-régióban lévő összes ügyfél esetében közösek, az egyéni altartományok nevei egyediek az erőforrás számára. Az egyéni altartományok neve szükséges az olyan funkciók engedélyezéséhez, mint a Azure Active Directory (Azure AD) a hitelesítéshez.
+description: Az egyes kognitív szolgáltatások erőforrásaihoz tartozó egyéni tartománynevek a Azure Portalon, Azure Cloud Shellon vagy az Azure CLI-n keresztül jönnek létre.
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 07/24/2019
 ms.author: erhopf
-ms.openlocfilehash: 7153735052f96bef65bf3daaccde4eab3e61b0f9
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.openlocfilehash: 108e5ebfa34db711af4ff33cbf4fbba897b8947d
+ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68473050"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73647696"
 ---
 # <a name="custom-subdomain-names-for-cognitive-services"></a>Cognitive Services egyéni tartománynevei
 
@@ -27,7 +27,7 @@ A 2019. július 1. előtt létrehozott erőforrások Cognitive Services a társ�
 Ha egy meglévő erőforrást szeretne áttelepíteni az egyéni altartománynevek kihasználása érdekében, hogy az Azure AD-hez hasonló szolgáltatásokat lehessen engedélyezni, kövesse az alábbi utasításokat:
 
 1. Jelentkezzen be a Azure Portalba, és keresse meg azt a Cognitive Services-erőforrást, amelyhez hozzá szeretné adni az egyéni altartomány nevét.
-2. Az **Áttekintés** panelen keresse meg és válassza ki az **Egyéni tartománynév**előállítása lehetőséget.
+2. Az **Áttekintés** panelen keresse meg és válassza ki az **Egyéni tartománynév előállítása**lehetőséget.
 3. Ekkor megnyílik egy panel, amely útmutatást ad az erőforrás egyedi egyéni altartományának létrehozásához.
    > [!WARNING]
    > Miután létrehozta az egyéni altartomány nevét, **nem** módosítható.
@@ -51,7 +51,7 @@ Igen. Az egyéni altartománynevek használata nem változtatja meg a Cognitive 
 
 ## <a name="what-are-the-requirements-for-a-custom-subdomain-name"></a>Milyen követelmények vonatkoznak az egyéni altartomány nevére?
 
-Az erőforrás egyedi altartományának neve egyéni. A név csak alfanumerikus karaktereket és `-` karaktert tartalmazhat, és hossza csak 2 és 64 karakter közötti lehet, és nem végződhet a `-`karakterrel.
+Az erőforrás egyedi altartományának neve egyéni. A név csak alfanumerikus karaktereket és a `-` karaktert tartalmazhatja. az értéknek 2 és 64 karakter közöttinek kell lennie, és nem végződhet `-`.
 
 ## <a name="can-i-change-a-custom-domain-name"></a>Módosíthatom az egyéni tartománynevet?
 
@@ -76,7 +76,7 @@ Igen. Az Azure Cognitive Services erőforrásaival használható regionális vé
 | | Közép-Kanada | `https://canadacentral.api.cognitive.microsoft.com` |
 | | USA középső régiója | `https://centralus.api.cognitive.microsoft.com` |
 | | Kelet-Ázsia | `https://eastasia.api.cognitive.microsoft.com` |
-| | East US | `https://eastus.api.cognitive.microsoft.com` |
+| | USA keleti régiója | `https://eastus.api.cognitive.microsoft.com` |
 | | USA 2. keleti régiója | `https://eastus2.api.cognitive.microsoft.com` |
 | | Közép-Franciaország | `https://francecentral.api.cognitive.microsoft.com` |
 | | Közép-India | `https://centralindia.api.cognitive.microsoft.com` |
@@ -87,16 +87,16 @@ Igen. Az Azure Cognitive Services erőforrásaival használható regionális vé
 | | Dél-Afrika északi régiója | `https://southafricanorth.api.cognitive.microsoft.com` |
 | | USA déli középső régiója | `https://southcentralus.api.cognitive.microsoft.com` |
 | | Délkelet-Ázsia | `https://southeastasia.api.cognitive.microsoft.com` |
-| | Az Egyesült Királyság déli régiója | `https://uksouth.api.cognitive.microsoft.com` |
+| | Egyesült Királyság déli régiója | `https://uksouth.api.cognitive.microsoft.com` |
 | | USA nyugati középső régiója | `https://westcentralus.api.cognitive.microsoft.com` |
 | | Nyugat-Európa | `https://westeurope.api.cognitive.microsoft.com` |
 | | USA nyugati régiója | `https://westus.api.cognitive.microsoft.com` |
-| | USA nyugati régiója, 2. | `https://westus2.api.cognitive.microsoft.com` |
-| US Gov | USA-beli államigazgatás – Virginia | `https://virginia.api.cognitive.microsoft.us` |
-| Kína | Kelet-Kína 2 | `https://chinaeast2.api.cognitive.azure.cn` |
+| | USA 2. nyugati régiója | `https://westus2.api.cognitive.microsoft.com` |
+| USA-beli államigazgatás | USA-beli államigazgatás – Virginia | `https://virginia.api.cognitive.microsoft.us` |
+| Kína | Kína 2. keleti régiója | `https://chinaeast2.api.cognitive.azure.cn` |
 | | Észak-Kína | `https://chinanorth.api.cognitive.azure.cn` |
 
-## <a name="see-also"></a>Lásd még
+## <a name="see-also"></a>Lásd még:
 
 * [Mi a Cognitive Services?](Welcome.md)
 * [Hitelesítés](authentication.md)

@@ -1,5 +1,5 @@
 ---
-title: Táblázatok indexelése Azure SQL Data Warehouseban | Microsoft Azure
+title: Táblázatok indexelése
 description: Javaslatok és példák a táblázatok indexeléséhez Azure SQL Data Warehouseban.
 services: sql-data-warehouse
 author: XiaoyuMSFT
@@ -10,13 +10,13 @@ ms.subservice: development
 ms.date: 03/18/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.custom: seoapril2019
-ms.openlocfilehash: 4d51bd6906a8299a25fe50ca817b1a2b6082ab91
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.custom: seo-lt-2019
+ms.openlocfilehash: 079891824bf71caf1ebfa575833de650a55ed5be
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68479843"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73685448"
 ---
 # <a name="indexing-tables-in-sql-data-warehouse"></a>Táblázatok indexelése SQL Data Warehouse
 
@@ -24,7 +24,7 @@ Javaslatok és példák a táblázatok indexeléséhez Azure SQL Data Warehouseb
 
 ## <a name="index-types"></a>Indextípusok
 
-SQL Data Warehouse több indexelési lehetőséget is kínál, többek között a [fürtözött oszlopcentrikus indexeket](/sql/relational-databases/indexes/columnstore-indexes-overview), a [fürtözött indexeket és](/sql/relational-databases/indexes/clustered-and-nonclustered-indexes-described)a nem fürtözött indexeket, valamint a nem indexelt lehetőséget [is.](/sql/relational-databases/indexes/heaps-tables-without-clustered-indexes)  
+SQL Data Warehouse több indexelési lehetőséget is kínál, többek között a [fürtözött oszlopcentrikus indexeket](/sql/relational-databases/indexes/columnstore-indexes-overview), a [fürtözött indexeket és a nem fürtözött indexeket](/sql/relational-databases/indexes/clustered-and-nonclustered-indexes-described) [, valamint a](/sql/relational-databases/indexes/heaps-tables-without-clustered-indexes)nem indexelt lehetőséget is.  
 
 Indextel rendelkező tábla létrehozásához tekintse meg a [create Table (Azure SQL Data Warehouse)](/sql/t-sql/statements/create-table-azure-sql-data-warehouse) dokumentációját.
 
@@ -154,7 +154,7 @@ WHERE    COMPRESSED_rowgroup_rows_AVG < 100000
 
 A lekérdezés futtatása után megkezdheti az adatgyűjtés megkeresését és az eredmények elemzését. Ez a táblázat ismerteti, hogy mit kell keresni a sorcsoport-elemzésben.
 
-| Oszlop | Az adathasználat használata |
+| Column | Az adathasználat használata |
 | --- | --- |
 | [table_partition_count] |Ha a tábla particionálva van, akkor várhatóan nagyobb számú nyitott sorcsoport is látható. A terjesztés minden partíciója elméletileg rendelkezhet egy nyitott sorcsoport-csoporttal. Ezt a faktort elemezze. A particionált kis tábla optimalizálható úgy, hogy teljesen eltávolítja a particionálást, mivel ez javítaná a tömörítést. |
 | [row_count_total] |A tábla teljes sorainak száma. Ezzel az értékkel például kiszámíthatja a tömörített állapotú sorok százalékos arányát. |
@@ -210,13 +210,13 @@ Ezekben az esetekben általában jobb az Azure Blob Storage-ban az adatgyűjtés
 
 ### <a name="too-many-partitions"></a>Túl sok partíció
 
-Egy másik megfontolandó dolog a fürtözött oszlopcentrikus-táblák particionálásának hatása.  A particionálás előtt a SQL Data Warehouse az adatait már 60 adatbázisra osztja.  A particionálás tovább osztja az adatait.  Ha particionálja az adatait, vegye figyelembe, hogy az **egyes** partíciók legalább 1 000 000 sort igényelnek egy fürtözött oszlopcentrikus-index kihasználása érdekében.  Ha 100 partícióra particionálja a táblázatot, a táblának legalább 6 000 000 000 sort kell használnia a fürtözött oszlopcentrikus-index (60-disztribúciók *100* -partíciók 1 000 000-sorok) kihasználása érdekében. Ha az 100-Partition tábla nem rendelkezik 6 000 000 000-sorral, csökkentse a partíciók számát, vagy használjon egy halom táblát.
+Egy másik megfontolandó dolog a fürtözött oszlopcentrikus-táblák particionálásának hatása.  A particionálás előtt a SQL Data Warehouse az adatait már 60 adatbázisra osztja.  A particionálás tovább osztja az adatait.  Ha particionálja az adatait, vegye figyelembe, hogy az **egyes** partíciók legalább 1 000 000 sort igényelnek egy fürtözött oszlopcentrikus-index kihasználása érdekében.  Ha 100 partícióra particionálja a táblázatot, a táblának legalább 6 000 000 000 sort kell használnia a fürtözött oszlopcentrikus-index (60-disztribúciók *100-partíciók* 1 000 000-sorok) kihasználása érdekében. Ha az 100-Partition tábla nem rendelkezik 6 000 000 000-sorral, csökkentse a partíciók számát, vagy használjon egy halom táblát.
 
 Miután betöltötte a táblákat néhány adattal, az alábbi lépéseket követve azonosíthatja és újraépítheti a táblákat az optimális oszlopcentrikus-indexekkel.
 
 ## <a name="rebuilding-indexes-to-improve-segment-quality"></a>Indexek újraépítése a szegmens minőségének javítása érdekében
 
-### <a name="step-1-identify-or-create-user-which-uses-the-right-resource-class"></a>1\. lépés: A megfelelő erőforrás osztályt használó felhasználó azonosítása vagy létrehozása
+### <a name="step-1-identify-or-create-user-which-uses-the-right-resource-class"></a>1\. lépés: a megfelelő erőforrás-osztályt használó felhasználó azonosítása vagy létrehozása
 
 Egy gyors módszer a szegmens minőségének azonnali javítására az index újraépítése.  A fenti nézet által visszaadott SQL ALTER INDEX Rebuild utasítást ad vissza, amely az indexek újraépítésére használható. Az indexek újraépítésekor ügyeljen arra, hogy elegendő memóriát foglaljon le a munkamenethez, amely újraépíti az indexet.  Ehhez növelje egy olyan felhasználó erőforrás-osztályát, amely jogosult a táblázat indexének újraépítésére a javasolt minimumra.
 
@@ -226,7 +226,7 @@ Az alábbi példa bemutatja, hogyan oszthat ki több memóriát a felhasználók
 EXEC sp_addrolemember 'xlargerc', 'LoadUser'
 ```
 
-### <a name="step-2-rebuild-clustered-columnstore-indexes-with-higher-resource-class-user"></a>2\. lépés: Fürtözött oszlopcentrikus indexek újraépítése magasabb erőforrás-osztállyal rendelkező felhasználóval
+### <a name="step-2-rebuild-clustered-columnstore-indexes-with-higher-resource-class-user"></a>2\. lépés: a fürtözött oszlopcentrikus indexek újraépítése magasabb erőforrás-osztállyal rendelkező felhasználóval
 
 Jelentkezzen be felhasználóként az 1. lépésből (pl. LoadUser), amely már magasabb erőforrás-osztályt használ, és végrehajtja az ALTER INDEX utasításait. Ügyeljen arra, hogy a felhasználó megváltoztassa a táblákat, amelyeken az index újraépítése zajlik. Ezek a példák azt mutatják be, hogyan lehet újraépíteni a teljes oszlopcentrikus-indexet, illetve hogyan lehet újraépíteni egy partíciót. A nagyméretű táblákon az indexek újraépítése sokkal hatékonyabb, ha egyszerre egy partíciót hoz létre.
 
@@ -252,9 +252,9 @@ ALTER INDEX ALL ON [dbo].[FactInternetSales] REBUILD Partition = 5 WITH (DATA_CO
 ALTER INDEX ALL ON [dbo].[FactInternetSales] REBUILD Partition = 5 WITH (DATA_COMPRESSION = COLUMNSTORE)
 ```
 
-SQL Data Warehouse egy indexének újraépítése offline művelet.  Az indexek újraépítésével kapcsolatos további információkért tekintse meg az indexek átállítása az [Oszlopcentrikus indexek töredezettségmentesítéséről](/sql/relational-databases/indexes/columnstore-indexes-defragmentation)című szakaszt, és [módosítsa](/sql/t-sql/statements/alter-index-transact-sql)az indexet.
+SQL Data Warehouse egy indexének újraépítése offline művelet.  Az indexek újraépítésével kapcsolatos további információkért tekintse meg az indexek átállítása az [Oszlopcentrikus indexek töredezettségmentesítéséről](/sql/relational-databases/indexes/columnstore-indexes-defragmentation)című szakaszt, és [módosítsa az indexet](/sql/t-sql/statements/alter-index-transact-sql).
 
-### <a name="step-3-verify-clustered-columnstore-segment-quality-has-improved"></a>3\. lépés: A fürtözött oszlopcentrikus szegmens minőségének ellenőrzése javult
+### <a name="step-3-verify-clustered-columnstore-segment-quality-has-improved"></a>3\. lépés: a fürtözött oszlopcentrikus szegmens minőségének ellenőrzése javult
 
 Futtassa újra a lekérdezést, amely a gyenge szegmensek minőségével rendelkező táblázatot azonosította, és a szegmens minőségének ellenőrzése javult.  Ha a szegmens minősége nem javult, akkor előfordulhat, hogy a tábla sorainak használata extra széles.  Az indexek újraépítésekor érdemes nagyobb erőforrás-osztályt vagy DWU használni.
 

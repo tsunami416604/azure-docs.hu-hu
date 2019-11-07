@@ -1,5 +1,5 @@
 ---
-title: Azure SQL Database – Azure Hybrid Benefit | Microsoft Docs
+title: Azure SQL Database – Azure Hybrid Benefit
 description: Meglévő SQL Server licencek használata SQL Database kedvezményekhez.
 services: sql-database
 ms.service: sql-database
@@ -9,18 +9,18 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: sashan, moslake, carlrab
 ms.date: 10/08/2019
-ms.openlocfilehash: cb5caf65a3083cfb5700432573cfddcfb7c6385f
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 9a09f7aec4966c02ccfa2101f4359c510ae8b111
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73515888"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73691101"
 ---
 # <a name="azure-hybrid-benefit"></a>Azure Hybrid Benefit
 
 A virtuális mag-alapú vásárlási modell kiépített számítási szintjein a meglévő licenceket a [SQL Server Azure Hybrid Benefit](https://azure.microsoft.com/pricing/hybrid-benefit/)használatával SQL Database kedvezményes díjszabásra cserélheti fel. Ez az Azure-kedvezmény lehetővé teszi, hogy Azure SQL Database akár 30%-ot is megtakaríthat a helyszíni SQL Server-licencek frissítési garanciával való használatával.
 
-![Árképzési](./media/sql-database-service-tiers/pricing.png)
+![árképzési](./media/sql-database-service-tiers/pricing.png)
 
 
 ## <a name="choose-a-license-model"></a>Licencelési modell kiválasztása

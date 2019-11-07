@@ -1,5 +1,5 @@
 ---
-title: Az Azure SQL-adatszinkronizálás adatszinkronizálási ügynöke | Microsoft Docs
+title: Az Azure SQL-adatszinkronizálás adatszinkronizálási ügynöke
 description: Ismerje meg, hogyan telepítheti és futtathatja az Azure SQL-adatszinkronizálás adatszinkronizálási ügynökét, hogy szinkronizálja az információkat a helyszíni SQL Server-adatbázisokkal
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: allenwux
 ms.author: xiwu
 ms.reviewer: carlrab
 ms.date: 12/20/2018
-ms.openlocfilehash: 13a59a9b536a25897d7c545b6fb466c1192cb545
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 097c8547093a13f73f1ae5facdc0f7e6c75c071d
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73177713"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73690785"
 ---
 # <a name="data-sync-agent-for-azure-sql-data-sync"></a>Az Azure SQL-adatszinkronizálás adatszinkronizálási ügynöke
 
@@ -314,7 +314,7 @@ SqlDataSyncAgentCommand.exe -action "updatecredential" -serverName localhost -da
 SqlDataSyncAgentCommand.exe -action "updatecredential" -serverName localhost -databaseName testdb -authentication windows -encryption true
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A SQL-adatszinkronizálásról további információt a következő cikkekben talál:
 

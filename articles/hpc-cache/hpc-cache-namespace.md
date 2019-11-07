@@ -1,21 +1,21 @@
 ---
-title: Azure HPC-gyorsítótár létrehozása (előzetes verzió)
+title: Azure HPC-gyorsítótár létrehozása
 description: Azure HPC cache-példány létrehozása
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
-ms.date: 09/24/2019
+ms.date: 10/30/2019
 ms.author: rohogue
-ms.openlocfilehash: fa6408d33504c6ac73eacec079e9c08acd4cece2
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.openlocfilehash: aaa939051a1aeafdb0650119772fc7214506aa8d
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72255264"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73582175"
 ---
 # <a name="plan-the-aggregated-namespace"></a>Az aggregált névtér tervezése
 
-Az Azure HPC cache (előzetes verzió) lehetővé teszi, hogy az ügyfelek különböző tárolási rendszerekhez férhessenek hozzá egy virtuális névtéren keresztül, amely elrejti a háttér-tárolási rendszer részleteit.
+Az Azure HPC cache lehetővé teszi, hogy az ügyfelek különböző tárolási rendszerekhez férhessenek hozzá egy virtuális névtéren keresztül, amely elrejti a háttérrendszer részletes adatait.
 
 Tárolási cél hozzáadásakor az ügyféloldali fájl elérési útját kell beállítania. Az ügyfélszámítógépek a fájl elérési útját csatlakoztatják, és a tárolórendszer közvetlen csatlakoztatása helyett a fájl olvasási kérelmét is elvégezhetik a gyorsítótárban.
 
@@ -57,8 +57,8 @@ Mivel az NFS-forrás elérési útjai azonos exportálási alkönyvtárak, meg k
 | *IP-cím vagy állomásnév* | /goldline/templates  | acme2017/sku798   | /templates/sku798 |
 | *IP-cím vagy állomásnév* | /goldline/templates  | acme2017/sku980   | /templates/sku980 |
 
-Egy ügyfélalkalmazás csatlakoztathatja a gyorsítótárat, és egyszerűen elérheti az összesített névtér elérési útját ``/source``, ``/templates/sku798`` és ``/templates/sku980``.
+Egy ügyfélalkalmazás csatlakoztathatja a gyorsítótárat, és egyszerűen elérheti az összesített névtér elérési útját ``/source``, ``/templates/sku798``és ``/templates/sku980``.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Miután eldöntötte, hogyan állíthatja be a virtuális fájlrendszert, [hozzon létre tárolási célokat](hpc-cache-add-storage.md) a háttérbeli tároló leképezéséhez az ügyfélre irányuló virtuális fájlok elérési útjaihoz.

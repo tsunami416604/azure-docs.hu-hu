@@ -1,18 +1,18 @@
 ---
 title: A Azure Analysis Services által támogatott adatforrások | Microsoft Docs
-description: A Azure Analysis Services adatmodelljei által támogatott adatforrásokat ismerteti.
+description: A táblázatos 1200-es és újabb adatmodellek által támogatott adatforrásokat és összekötőket ismerteti Azure Analysis Servicesban.
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
 ms.date: 10/16/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: cc47ff50aa7bb6dce58ed83f75f69fb600ad040b
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 5539d290ea182e24a50a103a762f011202ebf33a
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73146941"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73572960"
 ---
 # <a name="data-sources-supported-in-azure-analysis-services"></a>A Azure Analysis Services által támogatott adatforrások
 
@@ -38,7 +38,7 @@ A Visual Studióban az adatgyűjtés vagy importálás varázslóban látható a
 <a name="gen2">4</a> – ADLS Gen2 jelenleg nem támogatott.
 
 
-**Szolgáltató**    
+**Szolgáltató**   
 Az Azure-adatforrásokhoz csatlakozó memóriában tárolt és DirectQuery modellek a .NET-keretrendszer adatszolgáltatóját használják SQL Serverhoz.
 
 ## <a name="other-data-sources"></a>Egyéb adatforrások
@@ -99,7 +99,7 @@ Ha helyszíni SQL Server Analysis Services táblázatos modellt telepít át Azu
 
 1. A Visual Studióban > **táblázatos modell Explorer** > **adatforrások**területen kattintson a jobb gombbal az adatforrás-kapcsolatok elemre, majd kattintson az **Adatforrás szerkesztése**elemre.
 2. A **Kapcsolódás szerkesztése**ablakban kattintson a **speciális** elemre az előzetes Tulajdonságok ablak megnyitásához.
-3. A **Speciális tulajdonságok beállítása**  > **szolgáltatók**elemnél válassza ki a megfelelő szolgáltatót.
+3. A **Speciális tulajdonságok beállítása** > **szolgáltatók**elemnél válassza ki a megfelelő szolgáltatót.
 
 ## <a name="impersonation"></a>Megszemélyesítési
 Bizonyos esetekben szükség lehet egy másik megszemélyesítési fiók megadására. A megszemélyesítési fiók megadható a Visual Studióban vagy a SSMS.
@@ -117,7 +117,7 @@ Felhőbeli adatforrások esetén:
 
 A 1400-es és újabb kompatibilitási szinten található táblázatos modellek esetében a Azure SQL Database, a Azure SQL Data Warehouse, a Dynamics 365 és a SharePoint-lista támogatja a OAuth hitelesítő adatait. Azure Analysis Services kezeli a OAuth-adatforrások jogkivonat-frissítését, hogy elkerülje a hosszan futó frissítési műveletek időtúllépését. Érvényes tokenek létrehozásához állítsa be a hitelesítő adatokat a SSMS használatával.
 
-## <a name="next-steps"></a>Következő lépések
-Helyszíni [átjáró](analysis-services-gateway.md)    
+## <a name="next-steps"></a>További lépések
+Helyszíni [átjáró](analysis-services-gateway.md)   
 [A kiszolgáló kezelése](analysis-services-manage.md)   
 

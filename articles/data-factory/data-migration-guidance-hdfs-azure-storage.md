@@ -1,5 +1,5 @@
 ---
-title: A helyszíni Hadoop-fürtökről az Azure Storage-ba történő Migrálás Azure Data Factory használata | Microsoft Docs
+title: A helyszíni Hadoop-fürtről az Azure Storage-ba történő Migrálás Azure Data Factory használata
 description: Ismerje meg, hogyan telepítheti át a helyszíni Hadoop-fürtökről az Azure Storage-ba az Azure Data Factory használatával.
 services: data-factory
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 8/30/2019
-ms.openlocfilehash: a2e98e46b168ff2e1270c6512aa515278190350f
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: b952be49bf5bc00b338aa04ed51e9dc451b5c4f9
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71677955"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73675816"
 ---
 # <a name="use-azure-data-factory-to-migrate-data-from-an-on-premises-hadoop-cluster-to-azure-storage"></a>A helyszíni Hadoop-fürtről az Azure Storage-ba történő Migrálás Azure Data Factory használata 
 
@@ -25,8 +25,8 @@ A Azure Data Factory a helyszíni HDFS az Azure Blob Storage-ba vagy Azure Data 
 
 A Data Factory két alapvető megközelítést biztosít az adatok helyszíni HDFS az Azure-ba történő áttelepítéséhez. A megközelítést a forgatókönyv alapján választhatja ki. 
 
-- **Data Factory DistCp mód** (ajánlott): A Data Factory a [DistCp](https://hadoop.apache.org/docs/current3/hadoop-distcp/DistCp.html) (elosztott másolat) használatával másolhatja a fájlokat az Azure Blob Storage-ba (beleértve a [szakaszos másolást](https://docs.microsoft.com/azure/data-factory/copy-activity-performance#staged-copy)) vagy Azure Data Lake Store Gen2. A DistCp-mel integrált Data Factory használatával kihasználhatja a meglévő hatékony fürt előnyeit a legjobb másolási sebesség eléréséhez. A rugalmas ütemezést és az Data Factory-ból származó egységes monitorozási élményt is élvezheti. A Data Factory konfigurációjától függően a másolási tevékenység automatikusan létrehoz egy DistCp-parancsot, elküldi az adatait a Hadoop-fürtnek, majd figyeli a másolási állapotot. A helyszíni Hadoop-fürtökről az Azure-ba történő áttelepítéshez Data Factory DistCp módot ajánljuk.
-- **Data Factory natív integrációs futtatókörnyezet mód**: A DistCp nem minden esetben választható. Egy Azure-beli virtuális hálózati környezetben például a DistCp eszköz nem támogatja az Azure ExpressRoute Private-társítást egy Azure Storage virtuális hálózati végponttal. Emellett bizonyos esetekben nem kívánja használni a meglévő Hadoop-fürtöt az adatok áttelepítéséhez, hogy ne helyezzen el nagy terhelést a fürtön, ami hatással lehet a meglévő ETL-feladatok teljesítményére. Ehelyett a Data Factory Integration Runtime natív képességét használhatja olyan motorként, amely az adatok helyszíni HDFS az Azure-ba történő másolását végzi.
+- **Data Factory DistCp mód** (ajánlott): a Data Factoryban a [DistCp](https://hadoop.apache.org/docs/current3/hadoop-distcp/DistCp.html) (elosztott másolat) használatával fájlokat másolhat az Azure Blob Storage-ba (beleértve a [szakaszos másolást](https://docs.microsoft.com/azure/data-factory/copy-activity-performance#staged-copy)) vagy a Azure Data Lake Store Gen2. A DistCp-mel integrált Data Factory használatával kihasználhatja a meglévő hatékony fürt előnyeit a legjobb másolási sebesség eléréséhez. A rugalmas ütemezést és az Data Factory-ból származó egységes monitorozási élményt is élvezheti. A Data Factory konfigurációjától függően a másolási tevékenység automatikusan létrehoz egy DistCp-parancsot, elküldi az adatait a Hadoop-fürtnek, majd figyeli a másolási állapotot. A helyszíni Hadoop-fürtökről az Azure-ba történő áttelepítéshez Data Factory DistCp módot ajánljuk.
+- **Data Factory natív integrációs futtatókörnyezeti mód**: a DistCp nem minden esetben választható. Egy Azure-beli virtuális hálózati környezetben például a DistCp eszköz nem támogatja az Azure ExpressRoute Private-társítást egy Azure Storage virtuális hálózati végponttal. Emellett bizonyos esetekben nem kívánja használni a meglévő Hadoop-fürtöt az adatok áttelepítéséhez, hogy ne helyezzen el nagy terhelést a fürtön, ami hatással lehet a meglévő ETL-feladatok teljesítményére. Ehelyett a Data Factory Integration Runtime natív képességét használhatja olyan motorként, amely az adatok helyszíni HDFS az Azure-ba történő másolását végzi.
 
 Ez a cikk a következő információkat tartalmazza mindkét megközelítéssel kapcsolatban:
 > [!div class="checklist"]
@@ -52,7 +52,7 @@ További információ: [másolási tevékenység teljesítményének útmutatój
 
 ## <a name="resilience"></a>Rugalmasság
 
-Data Factory DistCp módban különböző DistCp parancssori paramétereket használhat (például `-i`, a hibák figyelmen kívül hagyása vagy `-update`, adatok írása, ha a forrásfájl és a célfájl mérete különbözik) a rugalmasság különböző szintjein.
+Data Factory DistCp módban különböző DistCp parancssori paramétereket használhat (például `-i`, a hibák figyelmen kívül hagyása vagy a `-update`, az adatok írása, ha a forrásfájl és a célfájl mérete különbözik) a rugalmasság különböző szintjein.
 
 A Data Factory natív integrációs modulban egyetlen másolási tevékenység futtatásakor Data Factory beépített újrapróbálkozási mechanizmussal rendelkezik. Képes az adattárakban vagy a mögöttes hálózaton lévő átmeneti hibák bizonyos szintjének kezelésére. 
 
@@ -64,7 +64,7 @@ Alapértelmezés szerint a Data Factory az adatok átvitelét a helyszíni HDFS 
 
 Ha nem szeretné, hogy az adatok a nyilvános interneten keresztül legyenek áthelyezve, a magasabb szintű biztonság érdekében a ExpressRoute keresztül átviheti az adatátvitelt privát kapcsolaton keresztül. 
 
-## <a name="solution-architecture"></a>Megoldás architektúrája
+## <a name="solution-architecture"></a>Megoldásarchitektúra
 
 Ez a rendszerkép az adatok áttelepítését mutatja be a nyilvános interneten keresztül:
 
@@ -107,7 +107,7 @@ Ha a másolási feladatok hálózati vagy adattárbeli átmeneti problémák mia
 
 ### <a name="delta-data-migration"></a>Különbözeti adatáttelepítés 
 
-Data Factory DistCp módban a (z) `-update` DistCp parancssori paramétert használhatja, ha a forrásfájl és a célfájl mérete eltérő, a különbözeti adatáttelepítés során.
+Data Factory DistCp módban a DistCp parancssori paramétert használhatja `-update`, az adatírást, ha a forrásfájl és a célfájl mérete eltér a különbözeti adatáttelepítésnél.
 
 Data Factory natív integrációs módban az új vagy módosított fájlok HDFS való azonosításának leghatékonyabb módja egy időpartíciós elnevezési konvenció használata. Ha a HDFS lévő adatok időszelet-információval vannak ellátva a fájl-vagy mappanév (például */yyyy/MM/DD/file.csv*) számára, a folyamat könnyen azonosítható, hogy mely fájlok és mappák legyenek növekményes másolásra.
 

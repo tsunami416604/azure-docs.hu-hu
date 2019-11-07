@@ -1,18 +1,18 @@
 ---
 title: Azure Analysis Services magas rendelkezésre állás | Microsoft Docs
-description: Azure Analysis Services magas rendelkezésre állás biztosítása.
+description: Ez a cikk azt ismerteti, hogy a Azure Analysis Services hogyan biztosít magas rendelkezésre állást a szolgáltatás megszakadásakor.
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 07/29/2019
+ms.date: 10/30/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 151739c77939ab98b0cdca6d75692267ef0d4385
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 2e750dce804ea93f3d3068ffd36bc7a73a50906a
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72295314"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73573354"
 ---
 # <a name="analysis-services-high-availability"></a>Analysis Services magas rendelkezésre állás
 
@@ -32,7 +32,7 @@ Ha nem szeretné, hogy a jelentéskészítő ügyfeleken ne kelljen módosítani
 
 ## <a name="related-information"></a>Kapcsolódó információk
 
-[Biztonsági mentés és visszaállítás](analysis-services-backup.md)@no__t – 1  
-[Azure Analysis Services @no__t kezelése](analysis-services-manage.md)– 1  
+  [biztonsági mentése és visszaállítása](analysis-services-backup.md)  
+[Azure Analysis Services kezelése](analysis-services-manage.md)   
 [Alias-kiszolgálók nevei](analysis-services-server-alias.md) 
 

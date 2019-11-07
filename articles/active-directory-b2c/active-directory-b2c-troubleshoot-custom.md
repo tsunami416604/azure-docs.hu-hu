@@ -1,74 +1,75 @@
 ---
-title: Az Azure Active Directory B2C az egyéni szabályzatokkal kapcsolatos problémák elhárítása az Application Insights |} A Microsoft Docs
-description: hogyan kell Application Insights nyomon követése a végrehajtás egyéni házirendek beállítása.
+title: Egyéni házirendek – Application Insights – Azure Active Directory B2C
+description: Application Insights beállítása az egyéni házirendek végrehajtásának nyomon követéséhez.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 08/04/2017
+ms.date: 11/04/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: df5d710792d8c47e491f5b06d88f4050e8eb4a01
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b8bf26791ca6489c12e4f9538d56ae0f0f66cc8c
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66508069"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73602022"
 ---
-# <a name="azure-active-directory-b2c-collecting-logs"></a>Azure Active Directory B2C: Naplók gyűjtése
+# <a name="collect-azure-active-directory-b2c-logs-with-application-insights"></a>Azure Active Directory B2C naplók gyűjtése Application Insights
 
-Ez a cikk lépéseit a naplók gyűjtésére az Azure AD B2C-ből, így diagnosztizálhatja a problémákat az egyéni házirendeknek.
+Ez a cikk a naplók Active Directory B2Cból (Azure AD B2C) való összegyűjtésének lépéseit ismerteti, így diagnosztizálhatja az egyéni házirendekkel kapcsolatos problémákat. Application Insights lehetővé teszi a kivételek diagnosztizálását és az alkalmazások teljesítményével kapcsolatos problémák megjelenítését. Azure AD B2C tartalmaz egy funkciót, amely az adatok Application Insights történő küldésére használható.
 
->[!NOTE]
->Jelenleg úgy tervezték, a részletes tevékenységnaplókat, az itt leírtak szerint **csak** , ezzel elősegítve az egyéni szabályzatok fejlesztését. Fejlesztői mód nem használható éles környezetben.  Naplók összegyűjtése minden jogcím küldött és az identitás-szolgáltatóktól származó fejlesztés során.  Ha éles környezetben használja, a fejlesztői felelősséget személyazonosításra alkalmas adatok (közvetlenül a Microsoftnak azonosításra alkalmas adatokat) a saját App Insights napló gyűjtése.  Ezek a részletes naplók csak gyűjtött, ha a házirend a **fejlesztői mód**.
+Az itt leírt részletes tevékenység-naplókat **csak** az egyéni szabályzatok fejlesztése során lehet engedélyezni.
 
+> [!WARNING]
+> A fejlesztési üzemmódot ne engedélyezze éles környezetben. A naplók begyűjtik az identitás-szolgáltatóktól érkező és az azoktól érkező összes jogcímet Ön, mint a fejlesztő vállalja a felelősséget a Application Insights naplókban gyűjtött személyes adatokért. A részletes naplók gyűjtése csak akkor történik meg, ha a házirend **fejlesztői módba**kerül.
 
-## <a name="use-application-insights"></a>Az Application Insights használata
+## <a name="set-up-application-insights"></a>Application Insights beállítása
 
-Az Azure AD B2C szolgáltatás adatokat küld az Application Insights támogatja.  Az Application Insights lehetővé teszi kivételek diagnosztizálása és alkalmazásteljesítménnyel kapcsolatos problémák megjelenítését.
+Ha még nem rendelkezik ilyennel, hozzon létre egy Application Insights példányt az előfizetésében.
 
-### <a name="setup-application-insights"></a>Az Application Insights beállítása
+1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
+1. Válassza ki a **címtár + előfizetés** szűrőt a felső menüben, majd válassza ki azt a könyvtárat, amely tartalmazza az Azure-előfizetését (nem a Azure ad B2C könyvtárat).
+1. Válassza az **erőforrás létrehozása** lehetőséget a bal oldali navigációs menüben.
+1. Keresse meg és válassza ki **Application Insights**, majd válassza a **Létrehozás**lehetőséget.
+1. Fejezze be az űrlapot, válassza a **felülvizsgálat + létrehozás**lehetőséget, majd kattintson a **Létrehozás**gombra.
+1. Az üzembe helyezés befejezése után válassza az **Ugrás erőforráshoz**lehetőséget.
+1. A **konfigurálás** Application Insights menüben válassza a **Tulajdonságok**lehetőséget.
+1. Jegyezze fel a kialakítási **kulcsot** egy későbbi lépésben való használatra.
 
-1. Nyissa meg az [Azure Portal](https://portal.azure.com). Ellenőrizze, hogy a bérlő az Azure-előfizetésében (nem Azure AD B2C-bérlőben).
-1. Kattintson a **+ új** a bal oldali navigációs menü.
-1. Keresse meg és válassza **Application Insights**, majd kattintson a **létrehozás**.
-1. Töltse ki az űrlapot, és kattintson a **létrehozás**. Válassza ki **általános** számára a **alkalmazástípus**.
-1. Ha az erőforrás létrejött, nyissa meg az Application Insights-erőforrást.
-1. Keresés **tulajdonságok** a bal oldali menüben, és kattintson rá.
-1. Másolás a **kialakítási kulcs** , és mentse a következő szakaszban.
+## <a name="configure-the-custom-policy"></a>Egyéni házirend konfigurálása
 
-### <a name="set-up-the-custom-policy"></a>Az egyéni házirend beállítása
-
-1. Nyissa meg a helyreállítási pont Védettként fájlt (például SignUpOrSignin.xml).
-1. A következő attribútumok hozzáadása a `<TrustFrameworkPolicy>` elem:
+1. Nyissa meg a függő entitás (RP) fájlját, például: *SignUpOrSignin. XML*.
+1. Adja hozzá a következő attribútumokat a `<TrustFrameworkPolicy>` elemhez:
 
    ```XML
    DeploymentMode="Development"
    UserJourneyRecorderEndpoint="urn:journeyrecorder:applicationinsights"
    ```
 
-1. Ha már nem létezik, adjon hozzá egy alárendelt csomópont `<UserJourneyBehaviors>` , a `<RelyingParty>` csomópont. Található után azonnal kell lennie a `<DefaultUserJourney ReferenceId="UserJourney Id from your extensions policy, or equivalent (for example:SignUpOrSigninWithAAD" />`
-2. Adja hozzá a következő csomópont gyermekeként a `<UserJourneyBehaviors>` elemet. Cserélje le `{Your Application Insights Key}` együtt a **kialakítási kulcs** Application Insights az előző szakaszban beszerzett.
+1. Ha még nem létezik, adjon hozzá egy `<UserJourneyBehaviors>` gyermek csomópontot a `<RelyingParty>` csomóponthoz. `<DefaultUserJourney ReferenceId="UserJourney Id" from your extensions policy, or equivalent (for example:SignUpOrSigninWithAAD" />`után azonnal el kell helyezni.
+1. Adja hozzá a következő csomópontot a `<UserJourneyBehaviors>` elem gyermekének. Ügyeljen arra, hogy a `{Your Application Insights Key}`t cserélje le a korábban feljegyzett Application Insights-kialakítási **kulcsra** .
 
-   ```XML
-   <JourneyInsights TelemetryEngine="ApplicationInsights" InstrumentationKey="{Your Application Insights Key}" DeveloperMode="true" ClientEnabled="false" ServerEnabled="true" TelemetryVersion="1.0.0" />
-   ```
+    ```XML
+    <JourneyInsights TelemetryEngine="ApplicationInsights" InstrumentationKey="{Your Application Insights Key}" DeveloperMode="true" ClientEnabled="false" ServerEnabled="true" TelemetryVersion="1.0.0" />
+    ```
 
-   * `DeveloperMode="true"` ApplicationInsights fejlesztéshez, de korlátozott nagy mennyiségben jó gyorsíthatja fel a telemetriát a feldolgozási folyamat keresztül közli.
-   * `ClientEnabled="true"` elküldi a ApplicationInsights ügyféloldali parancsfájl (nem kötelező) oldal nézet és az ügyféloldali hibák nyomon követéséhez.
-   * `ServerEnabled="true"` a meglévő UserJourneyRecorder JSON, egyéni eseményt küld az Application Insights.
-   Minta:
+    * `DeveloperMode="true"` megadja a ApplicationInsights, hogy felgyorsítsa a telemetria a feldolgozási folyamaton keresztül. Kiválóan használható a fejlesztéshez, de nagy mennyiségekben korlátozott.
+    * `ClientEnabled="true"` elküldi a ApplicationInsights ügyféloldali parancsfájlját a nyomkövetési oldal nézet és az ügyféloldali hibák követéséhez. Ezeket a **browserTimings** táblában tekintheti meg a Application Insights-portálon. A `ClientEnabled= "true"`beállításával Application Insightsokat adhat hozzá az oldal parancsfájljaihoz, és megtekintheti az oldalak betöltésének és az AJAX-hívások, a számok, a böngészőbeli kivételek és az AJAX-hibák részleteit, valamint a felhasználók és a munkamenetek számát. Ez a mező nem **kötelező**, és alapértelmezés szerint `false`ra van beállítva.
+    * `ServerEnabled="true"` elküldi a meglévő UserJourneyRecorder JSON-t egyéni eseményként Application Insights.
 
-   ```XML
-   <TrustFrameworkPolicy
-    ...
-    TenantId="fabrikamb2c.onmicrosoft.com"
-    PolicyId="SignUpOrSignInWithAAD"
-    DeploymentMode="Development"
-    UserJourneyRecorderEndpoint="urn:journeyrecorder:applicationinsights"
-   >
+    Például:
+
+    ```XML
+    <TrustFrameworkPolicy
+      ...
+      TenantId="fabrikamb2c.onmicrosoft.com"
+      PolicyId="SignUpOrSignInWithAAD"
+      DeploymentMode="Development"
+      UserJourneyRecorderEndpoint="urn:journeyrecorder:applicationinsights"
+    >
     ...
     <RelyingParty>
       <DefaultUserJourney ReferenceId="UserJourney ID from your extensions policy, or equivalent (for example: SignUpOrSigninWithAzureAD)" />
@@ -76,42 +77,36 @@ Az Azure AD B2C szolgáltatás adatokat küld az Application Insights támogatja
         <JourneyInsights TelemetryEngine="ApplicationInsights" InstrumentationKey="{Your Application Insights Key}" DeveloperMode="true" ClientEnabled="false" ServerEnabled="true" TelemetryVersion="1.0.0" />
       </UserJourneyBehaviors>
       ...
-   </TrustFrameworkPolicy>
-   ```
+    </TrustFrameworkPolicy>
+    ```
 
-3. A szabályzat feltöltése.
+1. Töltse fel a szabályzatot.
 
-### <a name="see-the-logs-in-application-insights"></a>Tekintse meg a naplókat az Application insights szolgáltatásban
+## <a name="see-the-logs-in-application-insights"></a>A naplók megtekintése Application Insights
 
->[!NOTE]
-> Van egy rövid késleltetés (kevesebb mint öt perc alatt) ahhoz, hogy az új naplók az Application Insightsban.
+Az új naplók a Application Insightsban való megtekintése előtt rövid késleltetéssel, jellemzően kevesebb mint öt perc alatt elérhető.
 
-1. Nyissa meg az Application Insights-erőforrást, amelyet a [az Azure portal](https://portal.azure.com).
-1. Az a **áttekintése** menüben kattintson a **Analytics**.
-1. Az Application Insights új lap megnyitásához.
-1. A naplók megtekintéséhez használhatja a lekérdezések listája
+1. Nyissa meg a [Azure Portalban](https://portal.azure.com)létrehozott Application Insights erőforrást.
+1. Az **Áttekintés** menüben válassza az **elemzés**lehetőséget.
+1. Nyisson meg egy új fület Application Insights.
+
+Az alábbi lista felsorolja a naplók megtekintésére használható lekérdezéseket:
 
 | Lekérdezés | Leírás |
 |---------------------|--------------------|
-nyomok | Megjelenik az összes Azure AD B2C által létrehozott naplók |
-nyomok \| amelyben időbélyeg > ago(1d) | Tekintse meg az utolsó napjára Azure AD B2C által létrehozott naplók mindegyikét
+`traces` | A Azure AD B2C által generált naplók megtekintése |
+`traces | where timestamp > ago(1d)` | Az elmúlt nap Azure AD B2C által generált naplók megtekintése
 
-A bejegyzések hosszú lehet.  Exportálás CSV-FÁJLBA a részletes bemutatása.
+Előfordulhat, hogy a bejegyzések hosszúak. Exportálás CSV-be alaposabb keresés céljából.
 
-Az Analytics eszközzel kapcsolatos többet is megtudhat [Itt](https://docs.microsoft.com/azure/application-insights/app-insights-analytics).
-
->[!NOTE]
->A Közösség egy felhasználói interakciósorozat megjelenítő identitás fejlesztők segítségével fejlesztett ki.  Nem Microsoft által támogatott és szigorúan lehetőségként elérhetővé tegyen-van.  Az Application Insights-példány olvas, és a felhasználó jól strukturált áttekintést nyújt a utazási események.  Szerezze be a forráskódot, és üzembe helyezni a saját megoldását.
-
-A megjelenítő, amely eseményeket olvas az Application Insights-verzió nem található [Itt](https://github.com/Azure-Samples/active-directory-b2c-advanced-policies/tree/master/wingtipgamesb2c/src/WingTipUserJourneyPlayerWebApplication)
-
->[!NOTE]
->Jelenleg úgy tervezték, a részletes tevékenységnaplókat, az itt leírtak szerint **csak** , ezzel elősegítve az egyéni szabályzatok fejlesztését. Fejlesztői mód nem használható éles környezetben.  Naplók összegyűjtése minden jogcím küldött és az identitás-szolgáltatóktól származó fejlesztés során.  Ha éles környezetben használja, a fejlesztői felelősséget személyazonosításra alkalmas adatok (közvetlenül a Microsoftnak azonosításra alkalmas adatokat) a saját App Insights napló gyűjtése.  Ezek a részletes naplók csak gyűjtött, ha a házirend a **fejlesztői mód**.
-
-[GitHub-tárházat a nem támogatott egyéni szabályzat minták és a kapcsolódó eszközök](https://github.com/Azure-Samples/active-directory-b2c-advanced-policies)
-
-
+A lekérdezéssel kapcsolatos további információkért lásd: [Azure monitorban található lekérdezések áttekintése](../azure-monitor/log-query/log-query-overview.md).
 
 ## <a name="next-steps"></a>További lépések
 
-Fedezze fel az adatokat az Application Insights segítségével megismerheti, hogyan során lép fel az identitás-kezelőfelületi keretrendszer alapul szolgáló B2C működik, hogy a saját identitását.
+A Közösség kidolgozta a felhasználói útvonalak megjelenítőjét, hogy segítse az identitás-fejlesztőket. Beolvassa a Application Insights példányát, és jól strukturált áttekintést nyújt a felhasználói útvonalak eseményeiről. Szerezze be a forráskódot, és telepítse azt a saját megoldásában.
+
+A Microsoft nem támogatja a felhasználói utazási lejátszót, és a szolgáltatás szigorúan elérhetővé válik.
+
+Megtalálhatja a megtekintő azon verzióját, amely a GitHubon Application Insights eseményeket olvas be:
+
+[Azure-Samples/Active-Directory-B2C-Advanced-policies](https://github.com/Azure-Samples/active-directory-b2c-advanced-policies/tree/master/wingtipgamesb2c/src/WingTipUserJourneyPlayerWebApplication)

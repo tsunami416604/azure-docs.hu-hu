@@ -1,5 +1,5 @@
 ---
-title: Transzparens adattitkosítás a Azure SQL Database és az adattárházban | Microsoft Docs
+title: 'Transzparens adattitkosítás a Azure SQL Database és az adattárházban '
 description: A SQL Database és az adattárház transzparens adattitkosításának áttekintése. A dokumentum a szolgáltatás által felügyelt transzparens adattitkosítást és Bring Your Own Keyt is magában foglaló előnyökkel és beállításokkal foglalkozik.
 services: sql-database
 ms.service: sql-database
@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: aliceku
 ms.author: aliceku
 ms.reviewer: vanto
-ms.date: 08/27/2019
-ms.openlocfilehash: b63a8c9defdf154f35a847f29182b49ff94ff3a6
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.date: 11/01/2019
+ms.openlocfilehash: ff712f956278a2a54584c0b0346f8f1147add189
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72933209"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73686791"
 ---
 # <a name="transparent-data-encryption-for-sql-database-and-data-warehouse"></a>Transzparens adattitkosítás a SQL Database és az adattárházban
 
@@ -42,10 +42,10 @@ A Microsoft emellett zökkenőmentesen helyezi át és felügyeli a kulcsokat a 
 
 ## <a name="customer-managed-transparent-data-encryption---bring-your-own-key"></a>Az ügyfél által felügyelt transzparens adattitkosítás – Bring Your Own Key
 
-A [Azure Key Vault ügyfél által felügyelt kulcsokkal történő TDE](transparent-data-encryption-byok-azure-sql.md) lehetővé teszi az adatbázis-titkosítási kulcs (adattitkosítási kulcsot) titkosítását a TDE Protector nevű ügyfél által felügyelt aszimmetrikus kulccsal.  Ezt általában a transzparens adattitkosítás Bring Your Own Key (BYOK) támogatása is említi. A BYOK-forgatókönyvben a TDE-védőt az Azure felhőalapú külső kulcs-felügyeleti rendszere tárolja az ügyfél által birtokolt és felügyelt [Azure Key Vaultban](https://docs.microsoft.com/azure/key-vault/key-vault-secure-your-key-vault). A TDE-védőt [a Key Vault generálhatja, vagy áthelyezheti a Key vaultba](https://docs.microsoft.com/azure/key-vault/about-keys-secrets-and-certificates#key-vault-keys) egy helyszíni HSM-eszközről. Az adatbázis rendszerindító oldalán tárolt TDE-ADATTITKOSÍTÁSI kulcsot a TDE Protector titkosítja és visszafejti, amelyet Azure Key Vault tárol, és soha nem hagyja a kulcstartót.  SQL Database engedélyeket kell adni az ügyfél által birtokolt kulcstartó számára a ADATTITKOSÍTÁSI kulcsot visszafejtéséhez és titkosításához. Ha a rendszer visszavonja a logikai SQL Server-kiszolgáló és a kulcstartó engedélyeit, az adatbázisok nem lesznek elérhetők, és az összes adatátvitel titkosítva lesz. Azure SQL Database esetében a TDE-védő a logikai SQL Server szintjén van beállítva, és az adott kiszolgálóhoz társított összes adatbázis örökli. Az [Azure SQL felügyelt példányainál](https://docs.microsoft.com/azure/sql-database/sql-database-howto-managed-instance) (BYOK funkció előzetes verzióban) a TDE-védő a példány szintjén van beállítva, és az adott példányon található összes *titkosított* adatbázis örökli. A *kiszolgáló* kifejezés a jelen dokumentumon belül a kiszolgáló és a példányra is vonatkozik, kivéve, ha másként van megadva.
+A [Azure Key Vault ügyfél által felügyelt kulcsokkal történő TDE](transparent-data-encryption-byok-azure-sql.md) lehetővé teszi az adatbázis-titkosítási kulcs (adattitkosítási kulcsot) titkosítását a TDE Protector nevű ügyfél által felügyelt aszimmetrikus kulccsal.  Ezt általában a transzparens adattitkosítás Bring Your Own Key (BYOK) támogatása is említi. A BYOK-forgatókönyvben a TDE-védőt az Azure felhőalapú külső kulcs-felügyeleti rendszere tárolja az ügyfél által birtokolt és felügyelt [Azure Key Vaultban](https://docs.microsoft.com/azure/key-vault/key-vault-secure-your-key-vault). A TDE-védőt [a Key Vault generálhatja, vagy áthelyezheti a Key vaultba](https://docs.microsoft.com/azure/key-vault/about-keys-secrets-and-certificates#key-vault-keys) egy helyszíni HSM-eszközről. Az adatbázis rendszerindító oldalán tárolt TDE-ADATTITKOSÍTÁSI kulcsot a TDE Protector titkosítja és visszafejti, amelyet Azure Key Vault tárol, és soha nem hagyja a kulcstartót.  SQL Database engedélyeket kell adni az ügyfél által birtokolt kulcstartó számára a ADATTITKOSÍTÁSI kulcsot visszafejtéséhez és titkosításához. Ha a rendszer visszavonja a logikai SQL Server-kiszolgáló és a kulcstartó engedélyeit, az adatbázisok nem lesznek elérhetők, és az összes adatátvitel titkosítva lesz. Azure SQL Database esetében a TDE-védő a logikai SQL Server szintjén van beállítva, és az adott kiszolgálóhoz társított összes adatbázis örökli. Az [Azure SQL felügyelt példányai](https://docs.microsoft.com/azure/sql-database/sql-database-howto-managed-instance)esetében a TDE-védő a példány szintjén van beállítva, és az adott példányon található összes *titkosított* adatbázis örökli. A *kiszolgáló* kifejezés a jelen dokumentumon belül a kiszolgáló és a példányra is vonatkozik, kivéve, ha másként van megadva.
 
 A Azure Key Vault-integrációval rendelkező TDE segítségével a felhasználók vezérelhetik a kulcsfontosságú felügyeleti feladatokat, beleértve a kulcsok elforgatását, a Key Vault engedélyeit és a biztonsági mentéseket, valamint lehetővé teszik a naplózást/jelentéskészítést az összes TDE-védelemmel Azure Key Vault funkcióval. Key Vault biztosítja a központi kulcskezelő szolgáltatásokat, kihasználja a jól felügyelt hardveres biztonsági modulok (HSM-EK) használatát, és lehetővé teszi a feladatok elkülönítését a kulcsok és az adatok felügyelete között a biztonsági szabályzatoknak való megfelelés elősegítése érdekében.
-Ha többet szeretne megtudni az Azure Key Vault integrációval (Bring Your Own Key támogatással) az Azure SQL Database, az SQL felügyelt példányának (BYOK funkció előzetes verzióban) és az adatraktáron, tekintse meg a [transzparens adattitkosítást a Azure Key Vault integráció](transparent-data-encryption-byok-azure-sql.md).
+Ha többet szeretne megtudni a Azure SQL Database, az SQL felügyelt példányához és az adatraktárhoz Azure Key Vault integrációval (Bring Your Own Key támogatással) kapcsolatos transzparens adattitkosításról, tekintse meg az [átlátható adattitkosítás Azure Key Vault-integrációval](transparent-data-encryption-byok-azure-sql.md)című témakört.
 
 Az Azure Key Vault Integration (Bring Your Own Key-támogatás) használatával történő transzparens adattitkosítás használatának megkezdéséhez tekintse meg a következő témakört: útmutató az [transzparens adattitkosítás bekapcsolásához a saját kulcsával Key Vault a PowerShell használatával](transparent-data-encryption-byok-azure-sql-configure.md).
 
@@ -71,7 +71,7 @@ Az egyetlen kivétel az, amikor egy SQL-adatbázisból exportál, és onnan expo
 
 
 ## <a name="manage-transparent-data-encryption"></a>Transzparens adattitkosítás kezelése
-# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
+# <a name="portaltabazure-portal"></a>[Portál](#tab/azure-portal)
 A Azure Portal transzparens adattitkosítás kezelése.
 
 A Azure Portal keresztüli transzparens adattitkosítás konfigurálásához Azure-tulajdonosként, közreműködőként vagy SQL Security managerként kell csatlakoznia.
@@ -146,7 +146,7 @@ Használja az alábbi parancsokat a Azure SQL Database és az adatraktárhoz:
 |[transzparens adattitkosítás konfiguráció beolvasása](https://docs.microsoft.com/rest/api/sql/transparentdataencryptions/get)|Az adatbázis transzparens adattitkosítási konfigurációjának lekérése|
 |[A transzparens adattitkosítás konfigurációs eredményeinek listázása](https://docs.microsoft.com/rest/api/sql/transparentdataencryptionactivities/listbyconfiguration)|Egy adatbázis titkosítási eredményének beolvasása|
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Az transzparens adattitkosítás általános ismertetését lásd: [transzparens adattitkosítás](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption).
 - Ha többet szeretne megtudni a Azure SQL Database, az Azure SQL felügyelt példányának és az adattárház Bring Your Own Key támogatásával kapcsolatos transzparens adattitkosításról, tekintse meg a következőt: [transzparens adattitkosítás bring your own Key-támogatással](transparent-data-encryption-byok-azure-sql.md).

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/16/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 766dacb69a3f1857197684f552d05a1376e94509
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: 267a63eba90c74b79078a7c04c1d2d8929cf2a44
+ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72514861"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73615776"
 ---
 # <a name="azure-files-scalability-and-performance-targets"></a>Méretezhetőségi és teljesítménybeli célok Azure Files
 
@@ -78,9 +78,9 @@ Az alábbi szakaszokban megtervezheti az üzembe helyezést, és a belső teszte
 | Rendszerkonfiguráció |  |
 |-|-|
 | CPU | 64 virtuális magok a 64 MiB L3 gyorsítótárral |
-| Memória | 128 GiB |
+| Memory (Memória) | 128 GiB |
 | Lemez | SAS-lemezek RAID 10 akkumulátorral rendelkező gyorsítótárral |
-| Network (Hálózat) | 1 GB/s hálózat |
+| Hálózat | 1 GB/s hálózat |
 | Számítási feladat | általános célú fájlkiszolgáló|
 
 | Egyszeri kiépítés kezdeti időpontja  |  |
@@ -98,7 +98,7 @@ Az alábbi szakaszokban megtervezheti az üzembe helyezést, és a belső teszte
 | Szinkronizált objektumok száma| 125 000 objektum (~ 1%-os forgalom) |
 | Adatkészlet mérete| 50 GiB |
 | Fájlméret átlagos mérete | ~ 500 KiB |
-| Feltöltési sebesség | 30 objektum másodpercenként |
+| Feltöltési sebesség | 20 objektum másodpercenként |
 | Teljes letöltési teljesítmény * | 60 objektum/másodperc |
 
 \* Ha a felhő-rétegek engedélyezve vannak, a jobb teljesítmény várható, mivel csak néhány fájl töltődik le. Azure File Sync csak akkor tölti le a gyorsítótárazott fájlok mennyiségét, ha azok bármelyik végponton módosulnak. Bármely rétegű vagy újonnan létrehozott fájl esetében az ügynök nem tölti le a fájlokat, hanem csak az összes kiszolgálói végpontra szinkronizálja a névteret. Az ügynök támogatja a többplatformos fájlok részleges letöltését is, mivel azok a felhasználó számára érhetők el. 

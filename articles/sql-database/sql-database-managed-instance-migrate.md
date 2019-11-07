@@ -1,5 +1,5 @@
 ---
-title: Az adatbázis SQL Server példányról Azure SQL Database felügyelt példányra történő migrálása | Microsoft Docs
+title: Adatbázis migrálása SQL Server példányról Azure SQL Database által felügyelt példányra
 description: Megtudhatja, hogyan telepíthet át egy adatbázist SQL Server-példányról Azure SQL Database felügyelt példányra.
 services: sql-database
 ms.service: sql-database
@@ -11,16 +11,16 @@ author: bonova
 ms.author: bonova
 ms.reviewer: douglas, carlrab
 ms.date: 07/11/2019
-ms.openlocfilehash: f877306170b45d65a52a4c76afd7f064e83f240a
-ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
+ms.openlocfilehash: 228b22d9d283fe8c23cbf7a82036b7f3782cbf25
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71937305"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73687998"
 ---
 # <a name="sql-server-instance-migration-to-azure-sql-database-managed-instance"></a>SQL Server példány áttelepítése Azure SQL Database felügyelt példányra
 
-Ebből a cikkből megtudhatja, hogyan telepíthet át egy SQL Server 2005-es vagy újabb verziójú példányt [Azure SQL Database felügyelt példányra](sql-database-managed-instance.md). Az önálló adatbázisra vagy rugalmas készletre való áttelepítéssel kapcsolatos információkért lásd: [áttelepítés egyetlen vagy készletezett adatbázisba](sql-database-cloud-migrate.md). A más platformokról való áttelepítéssel kapcsolatos információkért lásd: az [Azure Database](https://datamigration.microsoft.com/)áttelepítési útmutatója.
+Ebből a cikkből megtudhatja, hogyan telepíthet át egy SQL Server 2005-es vagy újabb verziójú példányt [Azure SQL Database felügyelt példányra](sql-database-managed-instance.md). Az önálló adatbázisra vagy rugalmas készletre való áttelepítéssel kapcsolatos információkért lásd: [áttelepítés egyetlen vagy készletezett adatbázisba](sql-database-cloud-migrate.md). A más platformokról való áttelepítéssel kapcsolatos információkért lásd: az [Azure Database áttelepítési útmutatója](https://datamigration.microsoft.com/).
 
 > [!NOTE]
 > Ha gyorsan szeretné elindítani a felügyelt példányokat, érdemes lehet ezt a lapot használni a [gyors üzembe helyezési útmutatóban](sql-database-managed-instance-quickstart-guide.md) . 
@@ -37,7 +37,7 @@ Az adatbázis-áttelepítési folyamat magas szinten a következőképpen néz k
 - [Figyelje az alkalmazásokat](#monitor-applications) , és győződjön meg arról, hogy a teljesítmény várható.
 
 > [!NOTE]
-> Ha önálló adatbázist szeretne áttelepíteni egyetlen adatbázisba vagy rugalmas készletbe, tekintse meg [a SQL Server adatbázis](sql-database-single-database-migrate.md)áttelepítését Azure SQL Databasere című témakört.
+> Ha önálló adatbázist szeretne áttelepíteni egyetlen adatbázisba vagy rugalmas készletbe, tekintse meg [a SQL Server adatbázis Áttelepítését Azure SQL Databasere](sql-database-single-database-migrate.md)című témakört.
 
 ## <a name="assess-managed-instance-compatibility"></a>Felügyelt példányok kompatibilitásának felmérése
 
@@ -66,7 +66,7 @@ Ha össze kell hasonlítani a számítási feladatok teljesítményét a felügy
 A teljesítmény alapkonfigurációja olyan paraméterek összessége, mint például az átlagos/maximális CPU-használat, az átlagos/maximális lemez i/o-késés, az átviteli sebesség, a IOPS, az átlagos/maximális oldal élettartama, a tempdb átlagos maximális mérete. A Migrálás után hasonló vagy még jobb paramétereket szeretne biztosítani, ezért fontos a paraméterek alapértékének mérése és rögzítése. A rendszerparaméterek mellett ki kell választania a reprezentatív lekérdezéseket vagy a legfontosabb lekérdezéseket a számítási feladatban, és mérnie kell a minimális/átlagos/maximális időtartamot, a kiválasztott lekérdezések CPU-kihasználtságát. Ezek az értékek lehetővé teszik a felügyelt példányon futó számítási feladatok teljesítményének összehasonlítását a forrás SQL Server eredeti értékeire.
 
 A SQL Server-példány méréséhez szükséges paraméterek némelyike a következő: 
-- [Figyelje a CPU](https://techcommunity.microsoft.com/t5/Azure-SQL-Database/Monitor-CPU-usage-on-SQL-Server/ba-p/680777#M131) -használatot a SQL Server példányon, és jegyezze fel az átlagos és a maximális CPU-használatot.
+- [Figyelje a CPU-használatot a SQL Server példányon](https://techcommunity.microsoft.com/t5/Azure-SQL-Database/Monitor-CPU-usage-on-SQL-Server/ba-p/680777#M131) , és jegyezze fel az átlagos és a maximális CPU-használatot.
 - [Figyelje a memória használatát a SQL Server példányon](https://docs.microsoft.com/sql/relational-databases/performance-monitor/monitor-memory-usage) , és határozza meg a különböző összetevők, például a puffer készlet, a terv gyorsítótár, az erőforráskészlet-készlet, [a memórián belüli OLTP](https://docs.microsoft.com/sql/relational-databases/in-memory-oltp/monitor-and-troubleshoot-memory-usage?view=sql-server-2017)stb. által használt memória mennyiségét. Emellett meg kell találnia az oldal élettartamának várható memória-teljesítményszámláló átlag-és csúcsérték-értékét.
 - Figyelje a lemez i/o-használatát a forrás SQL Server példányon a [sys. DM _io_virtual_file_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-io-virtual-file-stats-transact-sql) vagy a [teljesítményszámlálók](https://docs.microsoft.com/sql/relational-databases/performance-monitor/monitor-disk-usage)használatával.
 - A számítási feladatok és a lekérdezési teljesítmény, illetve a SQL Server példány figyelése a dinamikus felügyeleti nézetek és a lekérdezési tárolók vizsgálatával, ha SQL Server 2016 + verzióról végez áttelepítést. Azonosítsa a számítási feladat legfontosabb lekérdezéseinek átlagos időtartamát és CPU-felhasználását, hogy összehasonlítsa őket a felügyelt példányon futó lekérdezésekkel.
@@ -91,7 +91,7 @@ Kiválaszthatja a számítási és tárolási erőforrásokat a telepítési id�
 A VNet-infrastruktúra és a felügyelt példány létrehozásával kapcsolatos további információkért lásd: [felügyelt példány létrehozása](sql-database-managed-instance-get-started.md).
 
 > [!IMPORTANT]
-> Fontos, hogy a célként megadott VNet és alhálózatot mindig a felügyelt [példányok VNet követelményeinek](sql-database-managed-instance-connectivity-architecture.md#network-requirements)megfelelően tartsa. Minden inkompatibilitás megakadályozhatja, hogy új példányokat hozzon létre, vagy a már létrehozott személyeket használja. További információ a [meglévő](sql-database-managed-instance-configure-vnet-subnet.md) hálózatok [létrehozásáról](sql-database-managed-instance-create-vnet-subnet.md) és konfigurálásáról.
+> Fontos, hogy a célként megadott VNet és alhálózatot mindig a [felügyelt példányok VNet követelményeinek](sql-database-managed-instance-connectivity-architecture.md#network-requirements)megfelelően tartsa. Minden inkompatibilitás megakadályozhatja, hogy új példányokat hozzon létre, vagy a már létrehozott személyeket használja. További információ a meglévő hálózatok [létrehozásáról](sql-database-managed-instance-create-vnet-subnet.md) és [konfigurálásáról](sql-database-managed-instance-configure-vnet-subnet.md) .
 
 ## <a name="select-migration-method-and-migrate"></a>Áttelepítési módszer kiválasztása és migrálása
 
@@ -107,19 +107,19 @@ A felügyelt példány egy felügyelt szolgáltatás, amely lehetővé teszi, ho
 A felügyelt példány a következő adatbázis-áttelepítési lehetőségeket támogatja (jelenleg az egyetlen támogatott áttelepítési módszer):
 
 - Azure Database Migration Service – az áttelepítés közel nulla állásidővel,
-- Natív `RESTORE DATABASE FROM URL` – natív biztonsági mentéseket használ SQL Server, és némi állásidőt igényel.
+- Natív `RESTORE DATABASE FROM URL` – natív biztonsági másolatokat használ a SQL Serverból, és némi állásidőt igényel.
 
-### <a name="azure-database-migration-service"></a>Azure Database Migration szolgáltatás
+### <a name="azure-database-migration-service"></a>Azure Database Migration Service
 
 A [Azure Database Migration Service (DMS)](../dms/dms-overview.md) egy teljes körűen felügyelt szolgáltatás, amely lehetővé teszi, hogy a zökkenőmentes áttelepítések több adatbázisból az Azure-beli adatplatformokra minimális állásidővel. Ez a szolgáltatás egyszerűsíti a meglévő külső fél és SQL Server adatbázisok Azure-ba való áthelyezéséhez szükséges feladatokat. A nyilvános előzetes verzióban elérhető üzembe helyezési lehetőségek közé tartoznak az Azure-beli virtuális gépek Azure SQL Database és SQL Server adatbázisai. A DMS a vállalati munkaterhelések számára ajánlott áttelepítési módszer.
 
-Ha SQL Server Integration Servicest (SSIS) használ a helyszíni SQL Server, a DMS még nem támogatja a SSIS-csomagokat tároló SSIS-katalógus (SSISDB) áttelepítését, de kiépítheti az Azure-SSIS Integration Runtime (IR)-t Azure Data Factory (ADF) használatával. hozzon létre egy új SSISDB egy felügyelt példányban, majd újra üzembe helyezheti a csomagokat, lásd: [Azure-SSIS IR létrehozása az ADF-ben](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime).
+Ha SQL Server Integration Servicest (SSIS) használ a helyszíni SQL Server, a DMS még nem támogatja a SSIS-csomagokat tároló SSIS-katalógus (SSISDB) áttelepítését, de Azure-SSIS Integration Runtime (IR) is kiépíthető Azure Data Factory (ADF) hozzon létre egy új SSISDB egy felügyelt példányban, majd újra üzembe helyezheti a csomagokat, lásd: [Azure-SSIS IR létrehozása az ADF-ben](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime).
 
 Ha többet szeretne megtudni erről a forgatókönyvről és a DMS konfigurációs lépéseiről, tekintse [meg a helyszíni adatbázis migrálása felügyelt példányra a DMS használatával](../dms/tutorial-sql-server-to-managed-instance.md)című témakört.  
 
 ### <a name="native-restore-from-url"></a>Natív visszaállítás az URL-címről
 
-Az [Azure Storage](https://azure.microsoft.com/services/storage/)-ban elérhető, SQL Server helyszíni vagy SQL Server on Virtual Machinesról származó natív biztonsági másolatok [](https://azure.microsoft.com/services/virtual-machines/sql-server/)(. bak fájlok) visszaállítása a felügyelt példányok üzembe helyezési lehetőségének egyik fő funkciója, amely lehetővé teszi a gyors és egyszerű offline adatbázis migrálása.
+Az [Azure Storage](https://azure.microsoft.com/services/storage/)-ban elérhető, SQL Server helyszíni vagy [SQL Server on Virtual Machinesról](https://azure.microsoft.com/services/virtual-machines/sql-server/)származó natív biztonsági másolatok (. bak fájlok) visszaállítása a felügyelt példányok üzembe helyezési lehetőségének egyik fő funkciója, amely lehetővé teszi a gyors és egyszerű offline adatbázis migrálása.
 
 Az alábbi ábra a folyamat magas szintű áttekintését tartalmazza:
 
@@ -135,10 +135,10 @@ Az alábbi táblázat a forrás SQL Server a futtatott verziótól függően has
 |Visszaállítás az Azure Storage-ból felügyelt példányra|[Visszaállítás az URL-címről SAS-HITELESÍTő ADATOKkal](sql-database-managed-instance-get-started-restore.md)|
 
 > [!IMPORTANT]
-> - Ha [transzparens adattitkosítás](transparent-data-encryption-azure-sql.md) által védett adatbázist felügyelt példányra telepít át natív visszaállítási lehetőséggel, a helyszíni vagy SQL Server IaaS tartozó megfelelő tanúsítványt át kell telepíteni az adatbázis-visszaállítás előtt. A részletes lépésekért lásd: [TDE-tanúsítvány](sql-database-managed-instance-migrate-tde-certificate.md) áttelepítése felügyelt példányra
+> - Ha [transzparens adattitkosítás](transparent-data-encryption-azure-sql.md) által védett adatbázist felügyelt példányra telepít át natív visszaállítási lehetőséggel, a helyszíni vagy SQL Server IaaS tartozó megfelelő tanúsítványt át kell telepíteni az adatbázis-visszaállítás előtt. A részletes lépésekért lásd: [TDE-tanúsítvány áttelepítése felügyelt példányra](sql-database-managed-instance-migrate-tde-certificate.md)
 > - A rendszeradatbázisok visszaállítása nem támogatott. A példány szintű objektumok (Master vagy msdb-adatbázisokban tárolt) átmigrálása érdekében javasoljuk, hogy parancsfájlokat futtasson, és a T-SQL-szkripteket futtassa a cél példányon.
 
-Az adatbázis biztonsági másolatának egy felügyelt példányra SAS-hitelesítő adatokkal történő visszaállítását bemutató rövid útmutató a [biztonsági másolatból egy felügyelt példányra](sql-database-managed-instance-get-started-restore.md)történő visszaállítással foglalkozó témakörben olvasható.
+Az adatbázis biztonsági másolatának egy felügyelt példányra SAS-hitelesítő adatokkal történő visszaállítását bemutató rövid útmutató a [biztonsági másolatból egy felügyelt példányra történő visszaállítással](sql-database-managed-instance-get-started-restore.md)foglalkozó témakörben olvasható.
 
 > [!VIDEO https://www.youtube.com/embed/RxWYojo_Y3Q]
 
@@ -147,7 +147,7 @@ Az adatbázis biztonsági másolatának egy felügyelt példányra SAS-hitelesí
 
 Miután végrehajtotta a felügyelt példányra való áttelepítést, nyomon követheti a számítási feladatok viselkedését és teljesítményét. Ez a folyamat a következő tevékenységeket tartalmazza:
 - [Hasonlítsa össze a felügyelt példányon futó munkaterhelés teljesítményét](#compare-performance-with-the-baseline) a [forrás SQL Serveron létrehozott](#create-performance-baseline)alapkonfigurációval.
-- [A számítási feladatok teljesítményének](#monitor-performance) folyamatos figyelésével azonosíthatja a lehetséges problémákat és a fejlesztést.
+- [A számítási feladatok teljesítményének folyamatos figyelésével](#monitor-performance) azonosíthatja a lehetséges problémákat és a fejlesztést.
 
 ### <a name="compare-performance-with-the-baseline"></a>A teljesítmény összehasonlítása az alaptervvel
 
@@ -160,7 +160,7 @@ Előfeltételként ellenőrizze, hogy végrehajtotta-e a következő tevékenys�
 - A [tárolási ajánlott eljárásokra vonatkozó irányelvek bevezetése általános célú](https://techcommunity.microsoft.com/t5/DataCAT/Storage-performance-best-practices-and-considerations-for-Azure/ba-p/305525) például a jobb teljesítmény érdekében a fájlok méretének előzetes lefoglalása.
 - Ismerje meg azokat a [kulcsfontosságú környezeti különbségeket, amelyek a felügyelt példányok és a SQL Server közötti teljesítménybeli különbségeket okozhatják]( https://azure.microsoft.com/blog/key-causes-of-performance-differences-between-sql-managed-instance-and-sql-server/) , és azonosítják azokat a kockázatokat, amelyek befolyásolhatják a teljesítményt.
 - Győződjön meg arról, hogy a felügyelt példányon megtartja az engedélyezett lekérdezési tárolót és az automatikus finomhangolást. Ezek a funkciók lehetővé teszik a számítási feladatok teljesítményének mérését és a lehetséges teljesítménybeli problémák automatikus kijavítását. Megtudhatja, hogyan használhatja a Query Store-t optimális eszközként a munkaterhelés teljesítményének az adatbázis-kompatibilitási szint változása előtt és után történő beolvasásához, ahogy [azt a teljesítmény stabilitásának fenntartása az újabb SQL Server verzióra való frissítés során](https://docs.microsoft.com/sql/relational-databases/performance/query-store-usage-scenarios#CEUpgrade)című témakör ismerteti.
-Miután előkészítette a környezetet, amely a lehető legnagyobb mértékben összehasonlítható a helyszíni környezettel, megkezdheti a számítási feladatok futtatását és a teljesítmény mérését. A mérési folyamatnak meg kell egyeznie a megadott paraméterekkel, amikor a számítási feladatok alapteljesítményét a [forrás SQL Serveron hozza létre](#create-performance-baseline).
+Miután előkészítette a környezetet, amely a lehető legnagyobb mértékben összehasonlítható a helyszíni környezettel, megkezdheti a számítási feladatok futtatását és a teljesítmény mérését. A mérési folyamatnak meg kell egyeznie a megadott paraméterekkel, amikor a számítási [feladatok alapteljesítményét a forrás SQL Serveron hozza létre](#create-performance-baseline).
 Ennek eredményeképpen össze kell hasonlítani a teljesítménnyel kapcsolatos paramétereket az alapkonfigurációval, és meg kell határoznia a kritikus különbségeket.
 
 > [!NOTE]
@@ -181,7 +181,7 @@ Végezze el a paraméterek módosítását, vagy frissítse a szolgáltatási sz
 A felügyelt példányok számos speciális eszközt biztosítanak a figyeléshez és a hibaelhárításhoz, és ezeket érdemes használni a példány teljesítményének figyeléséhez. A következő paraméterek közül néhányat figyelnie kell:
 - A példány CPU-használata határozza meg, hogy az Ön által kiépített virtuális mag száma megfelelő-e a számítási feladatokhoz.
 - Page – várható élettartam a felügyelt példányon, hogy meghatározza a [szükséges további memóriát](https://techcommunity.microsoft.com/t5/Azure-SQL-Database/Do-you-need-more-memory-on-Azure-SQL-Managed-Instance/ba-p/563444).
-- A várakozási `INSTANCE_LOG_GOVERNOR` statisztikákhoz hasonló, vagy `PAGEIOLATCH` megtudhatja, hogy van-e a tároló IO-problémái, különösen általános célú szinten, ahol szükség lehet a fájlok előzetes lefoglalására a jobb IO-teljesítmény eléréséhez.
+- Várjon olyan statisztikát, mint például a `INSTANCE_LOG_GOVERNOR` vagy `PAGEIOLATCH`, amelyekről megtudhatja, hogy van-e tárolási IO-probléma, különösen általános célú szinten, ahol szükség lehet a fájlok előzetes lefoglalására a jobb i/o-teljesítmény eléréséhez.
 
 ## <a name="leverage-advanced-paas-features"></a>Speciális Pásti funkciók kihasználása
 
@@ -190,9 +190,9 @@ Ha egy teljes körűen felügyelt platformon van, és ellenőrizte, hogy a szám
 Még ha nem végez módosításokat a felügyelt példányon az áttelepítés során, nagy eséllyel előfordulhat, hogy bizonyos új funkciók bekapcsolására akkor van szükség, amikor a példányát használja, hogy kihasználhassa a legújabb adatbázismotor-fejlesztési funkciókat. Néhány módosítás csak az [adatbázis-kompatibilitási szint módosítása](https://docs.microsoft.com/sql/relational-databases/databases/view-or-change-the-compatibility-level-of-a-database)után engedélyezett.
 
 
-Például nem kell biztonsági másolatokat létrehoznia a felügyelt példányon – a szolgáltatás automatikusan készít biztonsági másolatokat. Többé nem kell aggódnia a biztonsági mentések ütemezésével, megkezdésével és kezelésével kapcsolatban. A felügyelt példány lehetőséget nyújt arra, hogy az időponthoz tartozó [helyreállítás (PITR)](sql-database-recovery-using-backups.md#point-in-time-restore)használatával bármely időpontra vissza tudja állítani a megőrzési időszakon belül. Emellett nem kell aggódnia, hogy a magas rendelkezésre állás [magas rendelkezésre](sql-database-high-availability.md) állású legyen.
+Például nem kell biztonsági másolatokat létrehoznia a felügyelt példányon – a szolgáltatás automatikusan készít biztonsági másolatokat. Többé nem kell aggódnia a biztonsági mentések ütemezésével, megkezdésével és kezelésével kapcsolatban. A felügyelt példány lehetőséget nyújt arra, hogy az [időponthoz tartozó helyreállítás (PITR)](sql-database-recovery-using-backups.md#point-in-time-restore)használatával bármely időpontra vissza tudja állítani a megőrzési időszakon belül. Emellett nem kell aggódnia, hogy a magas rendelkezésre állás [magas rendelkezésre](sql-database-high-availability.md) állású legyen.
 
-A biztonság megerősítése érdekében érdemes lehet [Azure Active Directory hitelesítést](sql-database-security-overview.md), [naplózást](sql-database-managed-instance-auditing.md), [veszélyforrások észlelését](sql-database-advanced-data-security.md), [sor szintű biztonságot](https://docs.microsoft.com/sql/relational-databases/security/row-level-security)és dinamikus adatmaszkolást használni. [](https://docs.microsoft.com/sql/relational-databases/security/dynamic-data-masking)
+A biztonság megerősítése érdekében érdemes lehet [Azure Active Directory hitelesítést](sql-database-security-overview.md), [naplózást](sql-database-managed-instance-auditing.md), [veszélyforrások észlelését](sql-database-advanced-data-security.md), [sor szintű biztonságot](https://docs.microsoft.com/sql/relational-databases/security/row-level-security)és [dinamikus adatmaszkolást](https://docs.microsoft.com/sql/relational-databases/security/dynamic-data-masking) használni.
 
 A speciális felügyeleti és biztonsági funkciók mellett a felügyelt példány olyan speciális eszközöket biztosít, amelyek segítségével [figyelheti és hangolhatja a számítási feladatokat](sql-database-monitor-tune-overview.md). Az [Azure SQL Analytics](https://docs.microsoft.com/azure/azure-monitor/insights/azure-sql) lehetővé teszi a felügyelt példányok nagy készletének figyelését és a nagy számú példány és adatbázis figyelését. A felügyelt példány [automatikus hangolásával](https://docs.microsoft.com/sql/relational-databases/automatic-tuning/automatic-tuning#automatic-plan-correction) folyamatosan figyelheti az SQL-terv végrehajtási statisztikáinak teljesítményét, és automatikusan kijavíthatja az azonosított teljesítménnyel kapcsolatos problémákat.
 

@@ -1,5 +1,5 @@
 ---
-title: 'A VMM-felhőkben lévő Hyper-V virtuális gépek replikálásának tesztelési eredményei egy másodlagos helyre a következővel: Azure Site Recovery | Microsoft Docs'
+title: Hyper-V virtuális gép replikálásának tesztelése másodlagos helyre a VMM használatával Azure Site Recovery
 description: Ez a cikk a VMM-felhőkben lévő Hyper-V virtuális gépeknek a Azure Site Recovery használatával történő replikálására szolgáló teljesítménytesztek adatait ismerteti.
 author: sujayt
 manager: rochakm
@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 12/27/2018
 ms.author: sutalasi
-ms.openlocfilehash: a7413b2dcb24a42092eb2af9816b1d29a8306e19
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: 3edd182e335bc679d95d7be64f45b617a9f54c1a
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68377226"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73663167"
 ---
 # <a name="test-results-for-hyper-v-replication-to-a-secondary-site"></a>A Hyper-V replikálásának tesztelési eredményei másodlagos helyre
 
@@ -108,7 +108,7 @@ Az eredmények egyértelműen azt mutatják, hogy Site Recovery, a Hyper-V repli
 
 | Kiszolgáló | RAM | Modell | Processzor | Processzorok száma | Hálózati adapter | Szoftver |
 | --- | --- | --- | --- | --- | --- | --- |
-| Hyper-V-kiszolgálók a fürtben: <br />ESTLAB-HOST11<br />ESTLAB-HOST12<br />ESTLAB-HOST13<br />ESTLAB-HOST14<br />ESTLAB-HOST25 |128<br />ESTLAB – a HOST25 256 |Dell™ PowerEdge™ R820 |Intel (r) Xeon (r) CPU E5 – 4620 0 \@ 2.20 GHz |4 |1 GB/s x 4 |Windows Server Datacenter 2012 R2 (x64) + Hyper-V szerepkör |
+| Hyper-V-kiszolgálók a fürtben: <br />ESTLAB-HOST11<br />ESTLAB-HOST12<br />ESTLAB-HOST13<br />ESTLAB-HOST14<br />ESTLAB-HOST25 |128<br />ESTLAB – a HOST25 256 |Dell™ PowerEdge™ R820 |Intel (R) Xeon (R) CPU E5 – 4620 0 \@ 2.20 GHz |4 |1 GB/s x 4 |Windows Server Datacenter 2012 R2 (x64) + Hyper-V szerepkör |
 | VMM-kiszolgáló |2 | | |2 |1 Gbps |Windows Server Database 2012 R2 (x64) + VMM 2012 R2 |
 
 ### <a name="secondary-site"></a>Másodlagos hely
@@ -120,9 +120,9 @@ Az eredmények egyértelműen azt mutatják, hogy Site Recovery, a Hyper-V repli
 
 | Kiszolgáló | RAM | Modell | Processzor | Processzorok száma | Hálózati adapter | Szoftver |
 | --- | --- | --- | --- | --- | --- | --- |
-| Hyper-V-kiszolgálók a fürtben: <br />ESTLAB-HOST07<br />ESTLAB-HOST08<br />ESTLAB-HOST09<br />ESTLAB-HOST10 |96 |Dell™ PowerEdge™ R720 |Intel (r) Xeon (r) CPU E5 – 2630 0 \@ 2.30 GHz |2 |1 GB/s x 4 |Windows Server Datacenter 2012 R2 (x64) + Hyper-V szerepkör |
-| ESTLAB-HOST17 |128 |Dell™ PowerEdge™ R820 |Intel (r) Xeon (r) CPU E5 – 4620 0 \@ 2.20 GHz |4 | |Windows Server Datacenter 2012 R2 (x64) + Hyper-V szerepkör |
-| ESTLAB-HOST24 |256 |Dell™ PowerEdge™ R820 |Intel (r) Xeon (r) CPU E5 – 4620 0 \@ 2.20 GHz |2 | |Windows Server Datacenter 2012 R2 (x64) + Hyper-V szerepkör |
+| Hyper-V-kiszolgálók a fürtben: <br />ESTLAB-HOST07<br />ESTLAB-HOST08<br />ESTLAB-HOST09<br />ESTLAB-HOST10 |96 |Dell™ PowerEdge™ R720 |Intel (R) Xeon (R) CPU E5-2630 0 \@ 2.30 GHz-es |2 |1 GB/s x 4 |Windows Server Datacenter 2012 R2 (x64) + Hyper-V szerepkör |
+| ESTLAB-HOST17 |128 |Dell™ PowerEdge™ R820 |Intel (R) Xeon (R) CPU E5 – 4620 0 \@ 2.20 GHz |4 | |Windows Server Datacenter 2012 R2 (x64) + Hyper-V szerepkör |
+| ESTLAB-HOST24 |256 |Dell™ PowerEdge™ R820 |Intel (R) Xeon (R) CPU E5 – 4620 0 \@ 2.20 GHz |2 | |Windows Server Datacenter 2012 R2 (x64) + Hyper-V szerepkör |
 | VMM-kiszolgáló |2 | | |2 |1 Gbps |Windows Server Database 2012 R2 (x64) + VMM 2012 R2 |
 
 ### <a name="server-workloads"></a>Kiszolgáló munkaterhelései
@@ -137,7 +137,7 @@ Az eredmények egyértelműen azt mutatják, hogy Site Recovery, a Hyper-V repli
 | SQL Server (1. kötet)<br />SQL Server (2. kötet) |8<br />64 |100%<br />100% |70%<br />0% |8<br />8 |100% véletlenszerű<br />100%-os szekvenciális |
 | Exchange |32 |100% |67% |8 |100% véletlenszerű |
 | Munkaállomás/VDI |4<br />64 |66%<br />34% |70%<br />95% |1<br />1 |100%-os véletlenszerű |
-| Web File Server |4<br />8<br />64 |33%<br />34%<br />33% |95%<br />95%<br />95% |8<br />8<br />8 |Minden 75% véletlenszerű |
+| Webfájl-kiszolgáló |4<br />8<br />64 |33%<br />34%<br />33% |95%<br />95%<br />95% |8<br />8<br />8 |Minden 75% véletlenszerű |
 
 ### <a name="vm-configuration"></a>Virtuális gép konfigurációja
 
@@ -152,7 +152,7 @@ Az eredmények egyértelműen azt mutatják, hogy Site Recovery, a Hyper-V repli
 | Fájlkiszolgáló |50 |1 |2 |552 |22 |
 | VDI |149 |.5 |1 |80 |6 |
 | Webkiszolgáló |149 |.5 |1 |80 |6 |
-| ÖSSZESEN |470 | | |96,83 TB |4108 |
+| TELJES |470 | | |96,83 TB |4108 |
 
 ### <a name="site-recovery-settings"></a>Site Recovery beállítások
 
@@ -161,10 +161,10 @@ Az eredmények egyértelműen azt mutatják, hogy Site Recovery, a Hyper-V repli
 
 | Elsődleges VMM-felhő | Védett virtuális gépek | Replikálás gyakorisága | További helyreállítási pontok |
 | --- | --- | --- | --- |
-| PrimaryCloudRpo15m |142 |15 perc |Nincsenek |
-| PrimaryCloudRpo30s |47 |30 másodperc |Nincsenek |
+| PrimaryCloudRpo15m |142 |15 perc |None |
+| PrimaryCloudRpo30s |47 |30 másodperc |None |
 | PrimaryCloudRpo30sArp1 |47 |30 másodperc |1 |
-| PrimaryCloudRpo5m |235 |5 perc |Nincsenek |
+| PrimaryCloudRpo5m |235 |5 perc |None |
 
 ### <a name="performance-metrics"></a>Teljesítmény-mérőszámok
 
@@ -173,12 +173,12 @@ A tábla összegzi az üzemelő példányban mért teljesítmény-mérőszámoka
 | Metrika | Számláló |
 | --- | --- |
 | CPU |\Processor(_Total)\% Processor Time |
-| Elérhető memória |\Memory\Available MB-ban |
-| IOPS |\PhysicalDisk(_Total)\Disk Transfers/sec |
+| Rendelkezésre álló memória |\Memory\Available MB-ban |
+| IOPS |\PhysicalDisk (összesen) \ átvitel/mp |
 | VIRTUÁLIS gépek olvasási (IOPS) műveletei (művelet/s) |\Hyper-V virtuális tárolóeszköz (\<VHD >) \Read művelet/mp |
 | Virtuális gép írási (IOPS) műveletei (művelet/s) |\Hyper-V virtuális tárolóeszköz (\<VHD >) \Write művelet/S |
-| Virtuális gép olvasási átviteli sebessége |\Hyper-V virtuális tárolóeszköz (VHD\<>) \Read sebessége (bájt/s) |
-| Virtuális gép írási sebessége |\Hyper-V virtuális tárolóeszköz (VHD\<>) \Write sebessége (bájt/s) |
+| Virtuális gép olvasási átviteli sebessége |\Hyper-V virtuális tárolóeszköz (\<VHD >) \Read bájt/mp |
+| Virtuális gép írási sebessége |\Hyper-V virtuális tárolóeszköz (\<VHD >) \Write bájt/mp |
 
 ## <a name="next-steps"></a>További lépések
 

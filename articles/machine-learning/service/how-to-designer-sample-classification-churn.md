@@ -1,5 +1,5 @@
 ---
-title: 'Tervezői példa #5: besorolás az elváltozások előrejelzéséhez + szolgáltatóváltást + értékesítés'
+title: 'Tervező: osztályozás, forgalom előrejelzése'
 titleSuffix: Azure Machine Learning
 description: Ez a tervező (előzetes verzió) mintavételi folyamat a forgalom bináris besorolási előrejelzését jeleníti meg, amely az Ügyfélkapcsolat-kezelés (CRM) általános feladata.
 services: machine-learning
@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: zhanxia
 ms.reviewer: sgilley
 ms.date: 11/04/2019
-ms.openlocfilehash: 52fcebb201fbdeebd7b75d9735fd81c3a647c337
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: a09060e16b877df4412b785edbb60930cb4122bc
+ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73516239"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73647181"
 ---
 # <a name="sample-5---classification-predict-churn"></a>5\. példa – besorolás: forgalom előrejelzése
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-enterprise-sku.md)]

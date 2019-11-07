@@ -1,5 +1,5 @@
 ---
-title: Teljesítmény-finomhangolási útmutató Azure SQL Database | Microsoft Docs
+title: Teljesítmény-finomhangolási útmutató Azure SQL Database
 description: Útmutató a Azure SQL Database lekérdezési teljesítmény manuális finomhangolásához.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: juliemsft
 ms.author: jrasnick
 ms.reviewer: carlrab
 ms.date: 01/25/2019
-ms.openlocfilehash: 4ea5d6c734659d36822f62237a42a8fbe332c996
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 971b35838f370f31d6e2d2da06dfdbced2fafb02
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68567114"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73687680"
 ---
 # <a name="manual-tune-query-performance-in-azure-sql-database"></a>A lekérdezés teljesítményének manuális finomhangolása Azure SQL Database
 
@@ -206,11 +206,11 @@ A példa egyes részei a 1 000-as paraméteres INSERT utasítás futtatását k�
 
 Mivel az eljárást az 1. érték használatával hajtottuk végre, az eredményül kapott terv az 1. értékhez optimális volt, de a tábla összes többi értékének is optimális volt. Az eredmény valószínűleg nem az, amit szeretne, ha minden csomagot véletlenszerűen választ ki, mert a terv lassabban működik, és több erőforrást használ.
 
-Ha a tesztet `SET STATISTICS IO` a `ON`beállítással futtatja, a logikai vizsgálat ebben a példában a színfalak mögött történik. Láthatja, hogy a csomag 1 148 olvasást végez (ami nem hatékony, ha az átlagos esetben csak egy sort kell visszaadnia):
+Ha a tesztet `SET STATISTICS IO` beállítással `ON`ra futtatja, akkor ebben a példában a logikai vizsgálat a színfalak mögött történik. Láthatja, hogy a csomag 1 148 olvasást végez (ami nem hatékony, ha az átlagos esetben csak egy sort kell visszaadnia):
 
 ![Lekérdezés finomhangolása logikai vizsgálat használatával](./media/sql-database-performance-guidance/query_tuning_2.png)
 
-A példa második része egy lekérdezési mutató használatával közli, hogy az optimalizáló egy adott értéket használjon a fordítási folyamat során. Ebben az esetben kényszeríti a lekérdezési processzort, hogy figyelmen kívül hagyja a paraméterként átadott értéket, és inkább `UNKNOWN`azt feltételezi. Ez olyan értékre hivatkozik, amely az átlagos gyakorisággal rendelkezik a táblában (a ferdeség figyelmen kívül hagyásával). Az eredményül kapott terv egy olyan Seek-alapú csomag, amely gyorsabban működik, és átlagosan kevesebb erőforrást használ, mint a terv 1. része:
+A példa második része egy lekérdezési mutató használatával közli, hogy az optimalizáló egy adott értéket használjon a fordítási folyamat során. Ebben az esetben kényszeríti a lekérdezési processzort, hogy figyelmen kívül hagyja a paraméterként átadott értéket, és ehelyett `UNKNOWN`. Ez olyan értékre hivatkozik, amely az átlagos gyakorisággal rendelkezik a táblában (a ferdeség figyelmen kívül hagyásával). Az eredményül kapott terv egy olyan Seek-alapú csomag, amely gyorsabban működik, és átlagosan kevesebb erőforrást használ, mint a terv 1. része:
 
 ![Lekérdezés finomhangolása lekérdezési javaslat használatával](./media/sql-database-performance-guidance/query_tuning_3.png)
 
@@ -230,7 +230,7 @@ ORDER BY start_time DESC
 
 A **sys. resource_stats** vizsgálatával megállapíthatja, hogy egy teszt erőforrása több vagy kevesebb erőforrást használ, mint egy másik teszt. Amikor összehasonlítja az adatmennyiséget, elkülöníti a tesztek időzítését, hogy ne legyenek ugyanabban az 5 perces ablakban a **sys. resource_stats** nézetben. A gyakorlat célja, hogy minimálisra csökkentse a felhasznált erőforrások teljes mennyiségét, és ne csökkentse a maximális erőforrásokat. Általában egy kódrészlet optimalizálása a késéshez is csökkenti az erőforrások felhasználását. Győződjön meg arról, hogy az alkalmazáson végzett módosítások szükségesek, és hogy a módosítások nem érintik negatívan az alkalmazásban a lekérdezési mutatókat használó személy felhasználói élményét.
 
-Ha a munkaterhelés ismétlődő lekérdezéseket tartalmaz, gyakran érdemes rögzíteni és érvényesíteni a csomag választási lehetőségeit, mivel az az adatbázis üzemeltetéséhez szükséges minimális erőforrás-méretet vezérli. Az érvényesítése után időnként újra megvizsgálja a csomagokat, hogy azok ne legyenek lecsökkentve. További információ a lekérdezési mutatókkal [(Transact-SQL)](https://msdn.microsoft.com/library/ms181714.aspx).
+Ha a munkaterhelés ismétlődő lekérdezéseket tartalmaz, gyakran érdemes rögzíteni és érvényesíteni a csomag választási lehetőségeit, mivel az az adatbázis üzemeltetéséhez szükséges minimális erőforrás-méretet vezérli. Az érvényesítése után időnként újra megvizsgálja a csomagokat, hogy azok ne legyenek lecsökkentve. További információ a [lekérdezési mutatókkal (Transact-SQL)](https://msdn.microsoft.com/library/ms181714.aspx).
 
 ### <a name="cross-database-sharding"></a>Adatbázisok közti horizontális felskálázás
 

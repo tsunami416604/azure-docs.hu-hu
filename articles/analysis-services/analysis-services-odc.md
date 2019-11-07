@@ -1,18 +1,18 @@
 ---
-title: Hozzon létre egy. odc-fájlt Azure Analysis Services kiszolgálóhoz való kapcsolódáshoz | Microsoft Docs
+title: Kapcsolódás Azure Analysis Serviceshoz. odc-fájllal | Microsoft Docs
 description: Megtudhatja, hogyan hozhat létre egy Office-adatkapcsolati fájlt egy Azure-beli Analysis Services-kiszolgálóról való kapcsolódáshoz és az adatok lekéréséhez.
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 10/28/2019
+ms.date: 10/30/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 5aa9645ec3138ed661305e1019b3e6dadfe4d212
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: a4e2dc09c54b39d58b0193e7ac9f585236886722
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73146686"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73572673"
 ---
 # <a name="create-an-office-data-connection-file"></a>Office-adatkapcsolatok fájljának létrehozása
 
@@ -21,7 +21,7 @@ A cikkben található információk azt ismertetik, hogyan hozhat létre Office-
 
 1. Másolja be az alábbi minta-kapcsolatfájl, és illessze be egy szövegszerkesztőbe. 
 
-2. A `odc:ConnectionString` értéknél módosítsa a következő tulajdonságokat:
+2. A `odc:ConnectionString`ban módosítsa a következő tulajdonságokat:
 
     *   A `Data Source=asazure://<region>.asazure.windows.net/<servername>;` változás `<region>` a Analysis Services-kiszolgáló régiójában, és `<servername>` a kiszolgáló nevéhez.
 

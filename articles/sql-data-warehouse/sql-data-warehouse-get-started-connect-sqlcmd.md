@@ -1,5 +1,5 @@
 ---
-title: Csatlakozás az Azure SQL Data Warehouse-hoz az sqlcmd használatával | Microsoft Docs
+title: Kapcsolat a Sqlcmd
 description: A Sqlcmd parancssori segédprogram használatával csatlakozhat egy Azure SQL Data Warehousehoz, és lekérdezheti azokat.
 services: sql-data-warehouse
 author: XiaoyuMSFT
@@ -10,12 +10,13 @@ ms.subservice: development
 ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: f3b93660fb9f8f3b0bfdddc37105b9e998ed9eee
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.custom: seo-lt-2019
+ms.openlocfilehash: e4b432e0be0cdded5089965b9d272aa82e31bd36
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68479506"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73685734"
 ---
 # <a name="connect-to-sql-data-warehouse-with-sqlcmd"></a>Csatlakozás az SQL Data Warehouse-hoz az sqlcmd használatával
 > [!div class="op_single_selector"]
@@ -29,17 +30,17 @@ ms.locfileid: "68479506"
 
 A [Sqlcmd][sqlcmd] parancssori segédprogram használatával csatlakozhat egy Azure SQL Data Warehousehoz, és lekérdezheti azokat.  
 
-## <a name="1-connect"></a>1. Kapcsolódás
+## <a name="1-connect"></a>1. kapcsolat
 Az [sqlcmd][sqlcmd] használatának megkezdéséhez nyissa meg a parancssort, és írja be az **sqlcmd** kifejezést, majd a saját SQL Data Warehouse-adatbázisának kapcsolati sztringjét. A kapcsolati sztringben a következő paraméterekre van szükség:
 
-* **Kiszolgáló (-S):** Kiszolgáló a (z)`>` kiszolgálóneve.database.Windows.net`<`
+* **Server (-S):** A kiszolgáló neve `<`kiszolgálónév`>`.database.windows.net formátumban.
 * **Database (-d):** Az adatbázis neve.
-* **Idézett azonosítók engedélyezése (-I):** A SQL Data Warehouse-példányhoz való kapcsolódáshoz engedélyezni kell az idézőjelben lévő azonosítókat.
+* **Enable Quoted Identifiers (-I):** Az SQL Data Warehouse-példányokhoz való csatlakozáshoz engedélyezni kell a határolójeles azonosítókat.
 
 Az SQL Server-hitelesítés használatához meg kell adnia a felhasználónév/jelszó paramétereit:
 
-* **Felhasználó (-U):** A kiszolgáló felhasználója az `<`űrlap felhasználója`>`
-* **Jelszó (-P):** A felhasználóhoz tartozó jelszó.
+* **User (-U):** A kiszolgálói felhasználó neve `<`felhasználó`>` formátumban.
+* **Password (-P):** A felhasználóhoz tartozó jelszó.
 
 A kapcsolati sztring például a következőképpen nézhet ki:
 
@@ -62,7 +63,7 @@ C:\>sqlcmd -S MySqlDw.database.windows.net -d Adventure_Works -G -I
 > 
 > 
 
-## <a name="2-query"></a>2. Lekérdezés
+## <a name="2-query"></a>2. lekérdezés
 A kapcsolódás után kiadhatók a példányon a támogatott Transact-SQL utasítások.  Ebben a példában a lekérdezések elküldése interaktív módban történik.
 
 ```sql

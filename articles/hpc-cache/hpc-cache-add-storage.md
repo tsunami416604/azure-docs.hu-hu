@@ -1,17 +1,17 @@
 ---
-title: Tárterület hozzáadása egy Azure HPC-gyorsítótárhoz (előzetes verzió)
+title: Tároló hozzáadása egy Azure HPC-gyorsítótárhoz
 description: Tárolási célok meghatározása úgy, hogy az Azure HPC-gyorsítótára használhassa a helyszíni NFS-rendszert vagy az Azure Blob-tárolókat a hosszú távú fájlok tárolásához
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
-ms.date: 10/01/2019
+ms.date: 10/30/2019
 ms.author: rohogue
-ms.openlocfilehash: dbcc68bacf8a11a7a85d5fad7fb4435fd03c7f93
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: b10692e352007ee2b0fd18543d8ae2ad8f9819dc
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72024556"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73621468"
 ---
 # <a name="add-storage-targets"></a>Céltárak hozzáadása
 
@@ -65,7 +65,7 @@ A RBAC szerepkörök hozzáadásának lépései:
 
 1. Nyissa meg a Storage-fiókhoz tartozó **hozzáférés-vezérlés (iam)** lapot. (A **tároló hozzáadása** lapon lévő hivatkozás automatikusan megnyitja ezt a lapot a kiválasztott fiókhoz.)
 
-1. Kattintson a lap tetején található **+** elemre, majd válassza a **szerepkör-hozzárendelés hozzáadása**lehetőséget.
+1. Kattintson a lap tetején található **+ra** , majd válassza a **szerepkör-hozzárendelés hozzáadása**lehetőséget.
 
 1. Válassza ki a "Storage-fiók közreműködője" szerepkört a listából.
 
@@ -74,7 +74,7 @@ A RBAC szerepkörök hozzáadásának lépései:
 1. A **Select (kiválasztás** ) mezőben keressen rá a "HPC" kifejezésre.  Ennek a karakterláncnak meg kell egyeznie egy "HPC cache erőforrás-szolgáltató" nevű egyszerű szolgáltatással. Kattintson erre a résztvevőre a kiválasztásához.
 
    > [!NOTE]
-   > Ha a "HPC" kifejezés nem működik, próbálja meg helyette a "storagecache" karakterláncot használni. Előfordulhat, hogy a korai előzetes verzióhoz csatlakozó felhasználóknak a szolgáltatásnév régebbi nevét kell használniuk.
+   > Ha a "HPC" kifejezés nem működik, próbálja meg helyette a "storagecache" karakterláncot használni. Előfordulhat, hogy az előzetes verzióhoz csatlakozó felhasználóknak a szolgáltatásnév régi nevét kell használniuk.
 
 1. Kattintson a **Save (Mentés** ) gombra a szerepkör-hozzárendelés a Storage-fiókhoz való hozzáadásához.
 
@@ -134,3 +134,5 @@ A tárolási célok létrehozása után vegye figyelembe a következő feladatok
 
 * [Az Azure HPC-gyorsítótár csatlakoztatása](hpc-cache-mount.md)
 * [Az Azure Blob Storage-ba irányuló adatáthelyezés](hpc-cache-ingest.md)
+
+Ha módosítania kell egy tárolási célt, olvassa el a [tárolási célok szerkesztése](hpc-cache-edit-storage.md) című témakört.

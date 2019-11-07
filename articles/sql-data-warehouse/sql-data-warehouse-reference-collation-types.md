@@ -1,5 +1,5 @@
 ---
-title: Rendezés – Azure SQL Data Warehouse | Microsoft Docs
+title: Egybevetés
 description: Azure SQL Data Warehouse támogatott rendezési típusok.
 services: sql-data-warehouse
 author: antvgski
@@ -9,12 +9,13 @@ ms.topic: conceptual
 ms.date: 07/10/2019
 ms.author: anvang
 ms.reviewer: jrasnick
-ms.openlocfilehash: 598ad4c103035ec2d94015e1f8e12194d1b723fc
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.custom: seo-lt-2019
+ms.openlocfilehash: f05e54a3dd4b69fff2bc7d122391d145b222b295
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68935105"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73692554"
 ---
 # <a name="database-collation-support-for-azure-sql-data-warehouse"></a>Adatbázis-rendezési támogatás Azure SQL Data Warehouse
 
@@ -99,5 +100,5 @@ Ha például módosítani szeretné az alapértelmezett rendezést a kis-és nag
 *   SQL_EBCDIC277_2_CP1_CS_AS
 
 ## <a name="checking-the-current-collation"></a>Az aktuális rendezés ellenőrzése
-Az adatbázis aktuális rendezésének ellenőrzését a következő T-SQL-kódrészlet futtatásával végezheti el: Válassza a DATABASEPROPERTYEX (DB_NAME (), "rendezés") rendezést; Ha a tulajdonság paraméterként a "rendezés" értéket adta át, a DatabasePropertyEx függvény a megadott adatbázis aktuális rendezését adja vissza. További információ a DatabasePropertyEx függvényről az MSDN webhelyen.
+Az adatbázis aktuális rendezésének megtekintéséhez futtassa a következő T-SQL-kódrészletet: SELECT DATABASEPROPERTYEX (DB_NAME (), ' rendezés ') rendezésként; Ha a tulajdonság paraméterként a "rendezés" értéket adta át, a DatabasePropertyEx függvény a megadott adatbázis aktuális rendezését adja vissza. További információ a DatabasePropertyEx függvényről az MSDN webhelyen.
 

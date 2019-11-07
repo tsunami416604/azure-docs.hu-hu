@@ -1,129 +1,118 @@
 ---
-title: Az Azure Red Hat OpenShift fejlesztési környezet beállítása |} A Microsoft Docs
-description: Az alábbiakban a Microsoft Azure Red Hat OpenShift használatának előfeltételei.
+title: Az Azure Red Hat OpenShift fejlesztési környezet beállítása | Microsoft Docs
+description: Itt láthatók a Microsoft Azure Red Hat OpenShift használatának előfeltételei.
 services: openshift
-keywords: Red hat openshift telepítés beállítása
+keywords: a Red Hat openshift beállítása
 author: jimzim
 ms.author: jzim
-ms.date: 05/10/2019
+ms.date: 11/04/2019
 ms.topic: conceptual
 ms.service: container-service
 manager: jeconnoc
-ms.openlocfilehash: a31655e8c8805505bdcc5e90bf25191590d35c18
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: fa09ed90258a62d37dafeea5f4760e1fabdc210b
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67672522"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73581601"
 ---
 # <a name="set-up-your-azure-red-hat-openshift-dev-environment"></a>Az Azure Red Hat OpenShift fejlesztői környezetének beállítása
 
-Alkalmazások létrehozását és futtatását a Microsoft Azure Red Hat OpenShift, a következőket kell tennie:
+Microsoft Azure Red Hat OpenShift-alkalmazások létrehozásához és futtatásához a következőket kell tennie:
 
-* Az Azure fenntartott virtuálisgép-példányok vásárolhat.
-* Verzió 2.0.65 telepítése (vagy magasabb) az Azure CLI-vel (vagy az Azure Cloud Shell használata).
-* Regisztráljon a `AROGA` szolgáltatás és a társított erőforrás-szolgáltatók.
-* Hozzon létre egy Azure Active Directory (Azure AD) bérlő.
-* Hozzon létre egy Azure AD alkalmazás-objektum.
+* Telepítse az Azure CLI 2.0.65 (vagy újabb) verzióját (vagy használja a Azure Cloud Shell).
+* Regisztráljon a `AROGA` szolgáltatáshoz és a társított erőforrás-szolgáltatóhoz.
+* Hozzon létre egy Azure Active Directory (Azure AD) bérlőt.
+* Hozzon létre egy Azure AD-alkalmazásobjektumet.
 * Hozzon létre egy Azure AD-felhasználót.
 
-Az alábbi utasításokat követve végigvezeti az összes ezeket az előfeltételeket.
-
-## <a name="purchase-azure-red-hat-openshift-application-nodes-reserved-instances"></a>Az Azure Red Hat OpenShift alkalmazás csomópontokon fenntartott példányok vásárlása
-
-Az Azure Red Hat OpenShift használata előtt kell vásárolni egy legalább 4 Azure Red Hat OpenShift fenntartott alkalmazás csomópontból, amely után is elérheti a fürtök létrehozása.
-
-Ha Ön Azure-ügyfélnek, [Azure Red Hat OpenShift fenntartott példányok megvásárlása](https://aka.ms/openshift/buy) az Azure Portalon keresztül. Vásárlás, után az előfizetés 24 órán belül aktív lesz.
-
-Ha nem Azure-ügyfélnek, [kapcsolatfelvétel az értékesítési részleggel](https://aka.ms/openshift/contact-sales) és a folyamat elindításához az oldal alján az értékesítési űrlap kitöltésekor.
-
-Tekintse meg a [Azure Red Hat OpenShift díjszabását ismertető lapon](https://aka.ms/openshift/pricing) további információt.
+Az alábbi utasítások végigvezetik az összes előfeltételen.
 
 ## <a name="install-the-azure-cli"></a>Telepítse az Azure CLI-t
 
-Azure Red Hat OpenShift igényel 2.0.65 verzió vagy újabb verzióját az Azure parancssori felület. Ha már telepítette az Azure CLI, melyik verzió van futtatásával ellenőrizheti:
+Az Azure Red Hat OpenShift az Azure CLI 2.0.65 vagy újabb verzióját igényli. Ha már telepítette az Azure CLI-t, megtekintheti, hogy melyik verziót futtatja:
 
 ```bash
 az --version
 ```
 
-Az első sor a kimeneti például lesz a parancssori felület verziójának `azure-cli (2.0.65)`.
+A kimenet első sora a CLI verzióját fogja tartalmazni, például `azure-cli (2.0.65)`.
 
-Az alábbiakban útmutatást [az Azure CLI telepítése](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) Ha szüksége van egy új telepítést vagy a verziófrissítésre.
+Az alábbi utasításokat követve [telepítheti az Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) -t, ha új telepítésre vagy frissítésre van szüksége.
 
-Másik lehetőségként használhatja a [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview). Az Azure Cloud Shell használata esetén ügyeljen arra, hogy válassza ki a **Bash** környezetet, ha azt tervezi, hogy kövesse a a [létrehozása és kezelése az Azure Red Hat OpenShift fürt](tutorial-create-cluster.md) oktatóanyag-sorozat.
+Másik lehetőségként használhatja a [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview). A Azure Cloud Shell használatakor ügyeljen arra, hogy a **bash** -környezetet válassza, ha azt tervezi, hogy követi az [Azure Red Hat OpenShift-fürt oktatóanyag-sorozatának létrehozását és felügyeletét](tutorial-create-cluster.md) .
 
-## <a name="register-providers-and-features"></a>Regisztrálja a szolgáltatók és funkciók
+## <a name="register-providers-and-features"></a>Szolgáltatók és szolgáltatások regisztrálása
 
-A `Microsoft.ContainerService AROGA` funkció, `Microsoft.Solutions`, `Microsoft.Compute`, `Microsoft.Storage`, `Microsoft.KeyVault` és `Microsoft.Network` szolgáltatók az előfizetéshez, az első Azure Red Hat OpenShift-fürt üzembe helyezése előtt manuálisan kell regisztrálni.
+Az első Azure Red Hat OpenShift-fürt üzembe helyezése előtt manuálisan regisztrálni kell az előfizetésben az `Microsoft.ContainerService AROGA` funkciót, `Microsoft.Solutions`, `Microsoft.Compute`, `Microsoft.Storage`, `Microsoft.KeyVault` és `Microsoft.Network` szolgáltatót.
 
-A szolgáltatók és a szolgáltatások manuálisan kell regisztrálnia, használja az alábbi utasításokat követve egy Bash rendszerhéjból, ha telepítette a parancssori felület vagy az Azure Cloud Shell (Bash) munkamenet az Azure Portalon:
+A szolgáltatók és szolgáltatások manuális regisztrálásához kövesse az alábbi utasításokat egy bash-rendszerhéjból, ha telepítette a CLI-t, vagy a Azure Portal Azure Cloud Shell (bash) munkamenetből:
 
-1. Ha több Azure-előfizetéssel rendelkezik, adja meg a megfelelő előfizetés-azonosító:
+1. Ha több Azure-előfizetéssel rendelkezik, akkor a megfelelő előfizetés-azonosítót kell megadnia:
 
     ```bash
     az account set --subscription <SUBSCRIPTION ID>
     ```
 
-1. A Microsoft.ContainerService AROGA funkció regisztrálása:
+1. Regisztrálja a Microsoft. Tárolószolgáltatás AROGA szolgáltatást:
 
     ```bash
     az feature register --namespace Microsoft.ContainerService -n AROGA
     ```
 
-1. A Microsoft.Storage szolgáltató regisztrálásához:
+1. Regisztrálja a Microsoft. Storage szolgáltatót:
 
     ```bash
     az provider register -n Microsoft.Storage --wait
     ```
     
-1. A Microsoft.Compute szolgáltató regisztrálásához:
+1. Regisztrálja a Microsoft. számítási szolgáltatót:
 
     ```bash
     az provider register -n Microsoft.Compute --wait
     ```
 
-1. A Microsoft.Solutions-szolgáltató regisztrálásához:
+1. Regisztrálja a Microsoft. Solutions szolgáltatót:
 
     ```bash
     az provider register -n Microsoft.Solutions --wait
     ```
 
-1. A Microsoft.Network szolgáltató regisztrálásához:
+1. Regisztrálja a Microsoft. Network szolgáltatót:
 
     ```bash
     az provider register -n Microsoft.Network --wait
     ```
 
-1. A Microsoft.KeyVault-szolgáltató regisztrálásához:
+1. Regisztrálja a Microsoft. kulcstartó szolgáltatót:
 
     ```bash
     az provider register -n Microsoft.KeyVault --wait
     ```
 
-1. A Microsoft.ContainerService erőforrás-szolgáltató regisztrációjának frissítése:
+1. Frissítse a Microsoft. Tárolószolgáltatás erőforrás-szolgáltató regisztrációját:
 
     ```bash
     az provider register -n Microsoft.ContainerService --wait
     ```
 
-## <a name="create-an-azure-active-directory-azure-ad-tenant"></a>Az Azure Active Directory (Azure AD) bérlő létrehozása
+## <a name="create-an-azure-active-directory-azure-ad-tenant"></a>Azure Active Directory (Azure AD-) bérlő létrehozása
 
-Az Azure Red Hat OpenShift szolgáltatáshoz szükséges egy társított Azure Active Directory (Azure AD) bérlő, amely a szervezet és a kapcsolat a Microsoftnak. Az Azure AD-bérlő regisztrálásához, hozhat létre, és alkalmazások kezelése, valamint más Azure-szolgáltatások lehetővé teszi.
+Az Azure Red Hat OpenShift szolgáltatáshoz hozzá kell rendelni egy társított Azure Active Directory (Azure AD) bérlőt, amely képviseli a szervezetét és a Microsofttal való kapcsolatát. Az Azure AD-bérlő lehetővé teszi az alkalmazások regisztrálását, összeállítását és kezelését, valamint más Azure-szolgáltatások használatát.
 
-Ha nem rendelkezik a bérlő adatokként Azure Red Hat OpenShift-fürthöz tartozó Azure AD, vagy létrehoz egy bérlőt tesztelési, kövesse a [Azure Red Hat OpenShift-fürthöz tartozó Azure AD-bérlő létrehozása](howto-create-tenant.md) előtt Ez az útmutató folytatása.
+Ha nem rendelkezik Azure AD-vel, hogy az Azure Red Hat OpenShift-fürt bérlője legyen, vagy szeretne létrehozni egy bérlőt tesztelésre, kövesse az Azure AD- [bérlő létrehozása az Azure Red Hat OpenShift-fürthöz](howto-create-tenant.md) című témakör utasításait az útmutató folytatása előtt .
 
-## <a name="create-an-azure-ad-user-security-group-and-application-object"></a>Hozzon létre egy Azure AD felhasználói, biztonsági csoportot és alkalmazást objektum
+## <a name="create-an-azure-ad-user-security-group-and-application-object"></a>Azure AD-felhasználó, biztonsági csoport és alkalmazásobjektum létrehozása
 
-Az Azure Red Hat OpenShift a fürtben, például a tárolás konfigurálása a feladatok végrehajtásához engedélyekkel kell rendelkeznie. Ezek az engedélyek vannak megadva keresztül egy [szolgáltatásnév](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals#service-principal-object). Érdemes azt is, egy új Active Directory-felhasználó létrehozása az Azure Red Hat OpenShift fürtön futó alkalmazások tesztelése.
+Az Azure Red Hat OpenShift engedélyekkel kell rendelkeznie a fürtön elvégzendő feladatok végrehajtásához, például a tároló konfigurálásához. Ezek az engedélyek egy [egyszerű szolgáltatásnév](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals#service-principal-object)szerint jelennek meg. Emellett új Active Directory felhasználót is létre kell hoznia az Azure Red Hat OpenShift-fürtön futó alkalmazások teszteléséhez.
 
-Kövesse a [hozzon létre egy Azure AD alkalmazás-objektum és a felhasználó](howto-aad-app-configuration.md) egy szolgáltatásnév létrehozásához, egy ügyfél titkos kulcs és a hitelesítési visszahívási URL-címet generálni az alkalmazáshoz, és hozzon létre egy új Azure AD biztonsági csoport és a felhasználói eléréséhez a a fürt.
+Kövesse az [Azure ad alkalmazás-objektum és-felhasználó létrehozása](howto-aad-app-configuration.md) egyszerű szolgáltatásnév létrehozásához, az alkalmazáshoz tartozó ügyfél-titkos és hitelesítési visszahívási URL-címet, majd hozzon létre egy új Azure ad biztonsági csoportot és felhasználót a fürt eléréséhez.
 
 ## <a name="next-steps"></a>További lépések
 
-Most már készen áll Azure Red Hat OpenShift használja!
+Most már készen áll az Azure Red Hat OpenShift használatára!
 
-Próbálja ki az oktatóanyag:
+Próbálja ki az oktatóanyagot:
 > [!div class="nextstepaction"]
 > [Azure Red Hat OpenShift-fürt létrehozása](tutorial-create-cluster.md)
 

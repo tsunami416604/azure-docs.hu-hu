@@ -5,14 +5,14 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 10/30/2019
+ms.date: 11/05/2019
 ms.author: helohr
-ms.openlocfilehash: b62351f1d99ef54d2416a2427264aea225afc5a8
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: cf344d6c551ecd3d301d79c29efe9e7adb7f8d83
+ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73171604"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73646893"
 ---
 # <a name="windows-virtual-desktop-partner-integrations"></a>Windows rendszerű virtuális asztali partner-integrációk
 
@@ -22,9 +22,9 @@ Ez a cikk a Windows rendszerű virtuális asztalok partnereit sorolja fel.
 
 ![Citrix-embléma](./media/partners/citrix.png)
 
-A Citrix egy olyan jóváhagyott szolgáltató, amely a vállalatok számára központosított hibrid felügyeletet biztosít a virtuális alkalmazások és asztali munkaterhelések számára az Azure-ban, a helyszíni üzembe helyezések mellett. A Citrix munkaterület a Virtual apps és a desktops szolgáltatás lehetővé teszi, hogy a felhasználók bármely eszközről hozzáférjenek az alkalmazásokhoz és az asztalokhoz, így a speciális Citrix HDX protokoll használatával a magas felbontású élmény bárhonnan elérhetővé válik.
+A Citrix egy olyan jóváhagyott szolgáltató, amely a virtuális alkalmazások és asztali munkaterhelések központi hibrid kezelését kínálja az Azure-ban, egymás mellett helyszíni környezetekkel. A Citrix munkaterület a Virtual apps és a desktops szolgáltatás lehetővé teszi, hogy a felhasználók bármely eszközről hozzáférjenek az alkalmazásokhoz és az asztalokhoz, így a speciális Citrix HDX protokoll használatával a magas felbontású élmény bárhonnan elérhetővé válik.
 
-A Citrix kiterjeszti a Windows virtuális asztal értékét robusztus nagyvállalati eszközökkel a felhasználók sűrűségének és teljesítményének javítására, a számítási feladatok igény szerinti kiépítésére, valamint a képek és az alkalmazások kezelésének egyszerűsítésére. Optimalizálhatja a költségeket az intelligens méretezési eszközökkel, miközben hihetetlen végfelhasználói élményt nyújt, amelyet a rendszer a legnehezebben a különböző iparágakban lévő alkalmazásoknál tesztelt.
+A Citrix kiterjeszti a Windows virtuális asztal értékét robusztus nagyvállalati eszközökkel a felhasználók sűrűségének és teljesítményének javítására, a számítási feladatok igény szerinti kiépítésére, valamint a képek és az alkalmazások kezelésének egyszerűsítésére. Optimalizálhatja a költségeket az intelligens méretezési eszközökkel, miközben egy hihetetlen felhasználói élményt nyújt, amely a legszigorúbb alkalmazások között kipróbálta az iparágban. Emellett a Citrix által felügyelt asztalok egy olyan Windows rendszerű virtuális asztali szolgáltatás, amely egy egyszerű, felhőalapú felügyeleti megoldást biztosít a virtuális alkalmazások és az asztali számítógépek bármely eszközre történő kézbesítéséhez.
 
 - [Lépjen a partner webhelyére](https://more.citrix.com/wvd).
 
@@ -55,7 +55,7 @@ A CloudJumper szoftvere, a Cloud Workspace Management Suite kiterjeszti a Window
 
 ![ControlUp embléma](./media/partners/controlup.png)
 
-A ControlUp egy Windows rendszerű virtuális asztali értéknövelt szolgáltatások szolgáltatója, amely lehetővé teszi az informatikai csapatok számára, hogy a helyszíni, hibrid Felhőbeli és Felhőbeli infrastruktúrában lévő problémákat egyetlen konzolról valós időben felügyeljék, hárítsa el, elemezzék és közvetlenül szervizelni tudják. A ControlUp elemzési és felügyeleti platformja azt is lehetővé teszi, hogy proaktív módon automatizálja a javításokat egy gyorsan növekvő használati esethez.
+A ControlUp egy Windows rendszerű virtuális asztali értéknövelt szolgáltatás szolgáltatója, amely lehetővé teszi az informatikai csapatok számára a helyszíni, hibrid Felhőbeli és felhőalapú infrastruktúrabeli problémák figyelését, hibaelhárítását, elemzését és közvetlen szervizelését egyetlen konzolról. A ControlUp elemzési és felügyeleti platformja azt is lehetővé teszi, hogy proaktív módon automatizálja a javításokat egy gyorsan növekvő használati esethez.
 
 Windows rendszerű virtuális asztallal való használat esetén a ControlUp további képességeket biztosít a Windows rendszerű virtuális asztali környezetek és a végfelhasználói élmény optimalizálása érdekében. A ControlUp-konzolról a végfelhasználói környezet láthatóvá válik a teljesítménnyel kapcsolatos problémák hatékony figyelése és hibaelhárítása érdekében. Az intuitív irányítópultok bepillantást és elemzéseket biztosítanak a virtuális asztali környezetekhez, valamint a közösségi referenciaértékekkel gazdagított automatizált jelentéskészítési lehetőségeket. A ControlUp több adatforrást és típust is kezelhet, amelyek nagy teljesítményű adatkészletekben vannak rendszerezve a számítási, tárolási és a Windows rendszerű virtuális asztali infrastruktúrában összesítve, így egyetlen üvegtábla részletes láthatóságát is lehetővé teszi.
 
@@ -66,11 +66,21 @@ Windows rendszerű virtuális asztallal való használat esetén a ControlUp tov
 
 ![deviceTRUST embléma](./media/partners/devicetrust.png)
 
-a deviceTRUST egy Windows rendszerű virtuális asztali értéknövelt szolgáltatások szolgáltatója, amely contextualizes a vállalati vállalatot, lehetővé téve a felhasználók számára, hogy bárhonnan, bármilyen eszközön, bármely hálózaton hozzáférjenek a Windowsos virtuális asztalhoz, miközben a részlegek az irányítási követelmények teljesítéséhez szükséges információkat és szabályozást. 
+a deviceTRUST egy Windows rendszerű virtuális asztali értéknövelt szolgáltatás, amely contextualizes a vállalati vállalatot. Lehetővé teszi a felhasználók számára, hogy bárhonnan, bármilyen hálózaton keresztül hozzáférjenek a Windows rendszerű virtuális asztalhoz, miközben az informatikai részlegek az irányítási követelmények teljesítéséhez szükséges információkat és szabályozást biztosítják. 
 
 a deviceTRUST kiterjeszti a Windows rendszerű virtuális asztal értékét a környezetfüggő biztonsági technológiával. a deviceTRUST lehetővé teszi a feltételes hozzáférést a biztonságos Windows virtuális asztali hozzáféréshez, a Windows rendszerű virtuális asztal feltételes alkalmazásokhoz való hozzáféréséhez, valamint a feltételes Windowsos virtuális asztali házirendek további infrastruktúra nélküli alkalmazásához. A deviceTRUST használata lehetővé teszi a mobil, rugalmas munkaterület használatát, amely megfelel az összes biztonsági, megfelelőségi és szabályozási követelménynek. 
 
 - [Lépjen a partner webhelyére](https://devicetrust.com/wvd).
+
+## <a name="igel"></a>IGEL
+
+![IGEL embléma](./media/partners/igel.png)
+
+A IGEL a Microsoft Azure és a Windows rendszerű virtuális asztali szolgáltatások jóváhagyott és ellenőrzött partnere. A IGEL a IGEL operációs rendszert, a Felhőbeli munkaterületekhez készült Next-Gen Edge operációs rendszert, amely a virtuális alkalmazások, az asztali számítógépek és a Felhőbeli munkaterületek elérését teszi lehetővé egy könnyű, egyszerű és biztonságos Linux-alapú végponttal. A platform-független szoftveres megoldás, a IGEL operációs rendszer és a kiszolgáló-alapú felügyeleti és vezérlési szoftver, a IGEL Universal Management Suite (UMS) egy Endpoint Management-és vezérlési megoldás, amely a vállalatoknak az Azure-alapú szolgáltatások teljes körű kihasználását felhasználja Felhőbeli példányok és Windows rendszerű virtuális asztali asztali számítógépek, beleértve a gazdaságos többmunkamenetes Windows virtuális asztalt, miközben csökkenti a végponti hardverek és a végponti eszközök felügyeletét és üzemeltetési költségeit.
+ 
+A IGEL operációs rendszer az összes népszerű virtuális alkalmazást, asztali gépeket és Felhőbeli munkaterület-protokollt támogatja a Citrixtől, a Microsofttól és a VMware-től. Integrált technológiákat tartalmaz a 85 perifériás, Interface és Protocol partnerektől, hogy a szervezetek gyorsan fogadjanak el Windowsos virtuális asztali szolgáltatásokat a saját egyedi felhasználói környezetében. A IGEL operációs rendszer írásvédett, moduláris végpont operációs rendszer, amely segít a védelemben. Emellett egy teljes "megbízhatósági láncot" is tartalmaz, amely ellenőrzi a végponton futó legfontosabb főbb folyamatok integritását, a végponti hardvertől (néhány kiválasztott modelltől), vagy az UEFI folyamattól egészen az Azure Cloud és a Windows Virtual Desktop szolgáltatásokhoz. A IGEL operációs rendszerrel a vállalatok az Azure-felhőből előfizethetnek a Windows rendszerű virtuális asztalra, így teljes körű megbízhatósággal rendelkeznek a felhasználói végpont eszközeinek integritásában, biztonságában és kezelhetőségében.
+
+- [Lépjen a partner webhelyére.](https://www.igel.com/igel-os-universal-desktop-operating-system/)
 
 ## <a name="ivanti"></a>Ivanti
 
@@ -78,7 +88,7 @@ a deviceTRUST kiterjeszti a Windows rendszerű virtuális asztal értékét a k�
 
 A Ivanti felhasználói munkaterület-kezelője egy Windows rendszerű virtuális asztali értéknövelt szolgáltatás, amely megkönnyíti az asztal üzembe helyezését és felügyeletét azáltal, hogy a felhasználói adatok az asztalról a zökkenőmentes hordozhatóság érdekében elválasztva. A Ivanti segítségével a felhasználók olyan összetett projekteket tehetnek elérhetővé, mint például a Windows 10-es verzióra való áttérés, az Office 365 bevezetése vagy a szolgáltatások felhőbe való áthelyezése. 
 
-A Windows rendszerű virtuális asztallal való használat esetén a Ivanti felhasználói munkaterület-kezelője egyszerű környezetfüggő felügyeletet biztosít a felhasználói asztali élményben, kiküszöbölve a hosszú bejelentkezési időt és a csoportházirend-rémálmok megszüntetését. A Ivanti felhasználói munkaterület-kezelő beépített sablonjai leegyszerűsítik a felhasználókat az ügynökökön és a meglévő konzolon keresztül. A Ivanti felhasználói munkaterület-kezelője rugalmas, biztonságos asztalokat biztosít a felhasználók számára, így pénzt takarít meg a kiszolgálókon, hatékonyabban kezelheti a felhasználókat, és csökkentheti a végpontok biztonsági kockázatát. 
+A Windows rendszerű virtuális asztallal való használat esetén a Ivanti felhasználói munkaterület-kezelője egyszerű környezetfüggő felügyeletet biztosít a felhasználói asztali élményben, kiküszöbölve a hosszú bejelentkezési időt és a csoportházirend-rémálmok felszámolását. A Ivanti felhasználói munkaterület-kezelő beépített sablonjai leegyszerűsítik a felhasználókat az ügynökökön és a meglévő konzolon keresztül. A Ivanti felhasználói munkaterület-kezelője rugalmas, biztonságos asztalokat biztosít a felhasználók számára, így pénzt takarít meg a kiszolgálókon, hatékonyabban kezelheti a felhasználókat, és csökkentheti a végpontok biztonsági kockázatát. 
 
 - [Lépjen a partner webhelyére](https://www.ivanti.com/products/user-workspace-manager).
 
@@ -137,9 +147,9 @@ A PolicyPak leggyakoribb felhasználási esetei a helyi rendszergazdai jogosults
 
 ![PrinterLogic embléma](./media/partners/printerlogic.png)
 
-A PrinterLogic egy Windows rendszerű virtuális asztali értéknövelt szolgáltatás szolgáltatói platformja, amely lehetővé teszi az informatikai szakemberek számára az összes nyomtatókiszolgáló kiiktatását, és a rendelkezésre álló, kiszolgáló nélküli nyomtatási infrastruktúra kézbesítését. A PrinterLogic kiterjeszti a Windows rendszerű virtuális asztal és az Azure értékét, így egyszerűen központilag felügyelheti és telepítheti a nyomtató-objektumokat bármely nyomtatóra vagy végpontra.   
+A PrinterLogic egy Windows rendszerű virtuális asztali értéknövelt szolgáltatói platform, amely lehetővé teszi az informatikai szakemberek számára az összes nyomtatókiszolgáló kiiktatását, és egy magasan elérhető kiszolgáló nélküli nyomtatási infrastruktúra kézbesítését. A PrinterLogic kiterjeszti a Windows rendszerű virtuális asztali környezet és az Azure értékét, így könnyen kezelhető a nyomtatók központi telepítése és üzembe helyezése bármely nyomtatón vagy végponti operációs rendszeren.   
 
-SaaS-ként vagy webes veremként érhető el a saját privát felhőben, a PrinterLogic platform biztosítja, hogy a felhasználók mindig rendelkezzenek a megfelelő nyomtatókhoz, amelyekre szükségük van a virtuális munkamenetekben a felhasználói azonosító, az eszköz neve vagy a hely alapján. Ezt a funkciót a nagyvállalati Nyomtatáskezelő funkciók teljes csomagja egészíti ki, például a nyomtatási nyomon követést és jelentéskészítést, a mobil nyomtatást és a biztonságos jelvény kiadásának nyomtatását. 
+A SaaS vagy webes veremként elérhető PrinterLogic platform biztosítja, hogy a felhasználók mindig rendelkeznek a megfelelő nyomtatókhoz, amelyekre szükségük van a virtuális munkamenetekben a felhasználói azonosító, az eszköz neve vagy a hely alapján. Ezt a funkciót a nagyvállalati Nyomtatáskezelő funkciók teljes csomagja egészíti ki, például a nyomtatási nyomon követést és jelentéskészítést, a mobil nyomtatást és a biztonságos jelvény kiadásának nyomtatását. 
 
 - [Lépjen a partner webhelyére](https://www.printerlogic.com).
 
@@ -147,9 +157,9 @@ SaaS-ként vagy webes veremként érhető el a saját privát felhőben, a Print
 
 ![Numecent embléma](./media/partners/numecent.png)
 
-A Numecent egy Windows rendszerű virtuális asztali értéknövelt szolgáltatások szolgáltatója, amely jelentősen csökkenti a teljes működési költséget a bonyolult vagy nem kompatibilis Windows-alkalmazások gyors bevezetésével és áttelepítésével a Windows rendszerű virtuális asztali környezetekben. A Numecent emellett minimálisra csökkenti a szükséges konfigurációs felhasználók mennyiségét, csökkenti az alkalmazások frissítéseit, és egyszerűbbé teszi az összetett folyamatokat. Mivel a Numecent Cloudpaging több alkalmazást is támogat a többi alkalmazás-kézbesítési eszköznél, csökkenti az időt és az IT-munkaterhelést olyan környezetekben, amelyekben sokféle alkalmazás található. 
+A Numecent egy Windows rendszerű virtuális asztali értéknövelt szolgáltatások szolgáltatója, amely jelentősen csökkenti a teljes működési költséget a bonyolult vagy nem kompatibilis Windows-alkalmazások gyors bevezetésével és áttelepítésével a Windows rendszerű virtuális asztali környezetekben. A Numecent emellett minimálisra csökkenti a felhasználók által igényelt konfiguráció mennyiségét, csökkenti az alkalmazások frissítéseit, és leegyszerűsíti az összetett folyamatokat. Mivel a Numecent Cloudpaging több alkalmazást is támogat a többi alkalmazás-kézbesítési eszköznél, csökkenti az időt és az IT-munkaterhelést olyan környezetekben, amelyekben sokféle alkalmazás található. 
 
-A Windows rendszerű virtuális asztallal való használat esetén a Cloudpaging tovább csökkenti a költségeket azzal, hogy a szoftveres eszközök életciklusát az üzembe helyezéstől az alkalmazások frissítéséhez, méréséhez és eltávolításához használja. A Cloudpaging leegyszerűsíti a képkezelést azáltal, hogy valós időben, a Windows rendszerű virtuális asztali környezetekben igény szerint dinamikusan kiépíti az alkalmazásokat. A Cloudpaging segítségével az alkalmazások felügyelet vagy beavatkozás nélkül futnak az időszakos Windows 10-es frissítéseken keresztül. A Cloudpaging a költséges alkalmazások licencelési költségeit is csökkenti az alkalmazások hatékonyabb üzembe helyezésének és használatának lehetővé tételével. 
+A Windows rendszerű virtuális asztallal való használat esetén a Cloudpaging tovább csökkenti a költségeket azzal, hogy a szoftveres eszközök életciklusát az üzembe helyezéstől az alkalmazások frissítéséhez, méréséhez és eltávolításához használja. A Cloudpaging leegyszerűsíti a képkezelést, ha a Windows rendszerű virtuális asztali környezetekben valós időben szükség szerint dinamikusan kiépíti az alkalmazásokat. A Cloudpaging segítségével az alkalmazások felügyelet vagy beavatkozás nélkül futnak az időszakos Windows 10-es frissítéseken keresztül. A Cloudpaging a költséges alkalmazások licencelési költségeit is csökkenti az alkalmazások hatékonyabb üzembe helyezésének és használatának lehetővé tételével. 
 
 - [Lépjen a partner webhelyére](https://www.numecent.com/partners/cloudpaging-for-windows-applications-windows-virtual-desktop/).
 
@@ -178,7 +188,7 @@ A ThinPrint ezeep-megoldása a meglévő vállalati nyomtatási infrastruktúrá
 
 ![Tricerat embléma](./media/partners/tricerat.png)
 
-A Tricerat kiváló nyomtatási megoldást kínál a Windows rendszerű virtuális asztali és egyéb asztali platformokhoz. A Tricerat szoftver robusztus funkcionalitással rendelkezik, és jobb felhasználói élményt nyújt mind a felhasználók, mind a rendszergazdák számára. A rendszergazdák a teljes illesztőprogram-felügyelettel, a nyomtatási várólisták egyszerűsített üzembe helyezésével és a hibrid platformok közötti konzisztens felügyelettel szereznek hatékonyságot. A felhasználói élmény a rövidebb bejelentkezési idő, a felhasználó, az eszköz és a hálózati hely alapján történő intelligens nyomtatási várólisták, valamint az önkiszolgáló lehetőségek a gyors nyomtató kiválasztásához. 
+A Tricerat kiváló nyomtatási megoldást kínál a Windows rendszerű virtuális asztali és egyéb asztali platformokhoz. A Tricerat szoftver robusztus funkcionalitással rendelkezik, és jobb felhasználói élményt nyújt mind a felhasználók, mind a rendszergazdák számára. A rendszergazdák a teljes illesztőprogram-felügyelettel, a nyomtatási várólisták egyszerűsített üzembe helyezésével és a hibrid platformok közötti konzisztens felügyelettel szereznek hatékonyságot. A felhasználói élmény a felhasználók, az eszközök és a hálózati hely alapján történő intelligens nyomtatási várólisták, valamint a gyors nyomtató kiválasztására szolgáló önkiszolgáló lehetőségek révén növeli a bejelentkezési időt. 
 
 A Tricerat esetében a nyomtatás zökkenőmentes a Windows rendszerű virtuális asztal és azon kívül is. A Tricerat szoftver lehetővé teszi a rendszergazdák számára a helyszíni nyomtatók egyszerű összekapcsolását a felhővel, a hagyományos környezetek vállalati nyomtatási felügyeletének bővítését új, modern munkaterületekre.
 
@@ -195,7 +205,7 @@ A Workspot kiterjeszti a Windows virtuális asztal értékét a Cloud Desktop-in
 - [Tekintse meg röviden a közös megoldást](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3oL8P).
 - [Lépjen a partner webhelyére](https://www.workspot.com/wvd).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [További információ a Windows rendszerű virtuális asztali környezetről](overview.md).
 - [Hozzon létre egy bérlőt a Windows rendszerű virtuális asztalon](tenant-setup-azure-active-directory.md).

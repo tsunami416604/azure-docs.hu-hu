@@ -1,5 +1,5 @@
 ---
-title: Data Factory függvények és rendszerváltozók | Microsoft Docs
+title: Data Factory függvények és rendszerváltozók
 description: A Azure Data Factory függvények és rendszerváltozók listáját tartalmazza
 documentationcenter: ''
 author: djpmsft
@@ -10,16 +10,16 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 243923fba5b81ef68d6e4e560182d228e3b8ad1a
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 9acc369e24d1bac92dea3fb6ae391a410e5f6c3d
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70139745"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73667654"
 ---
 # <a name="azure-data-factory---functions-and-system-variables"></a>Azure Data Factory – functions és System változók
 > [!NOTE]
-> Ez a cikk a Data Factory 1-es verziójára vonatkozik. Ha a Data Factory szolgáltatás aktuális verzióját használja, tekintse [meg a Data Factory](../control-flow-system-variables.md)rendszerváltozói című témakört.
+> Ez a cikk a Data Factory 1-es verziójára vonatkozik. Ha a Data Factory szolgáltatás aktuális verzióját használja, tekintse [meg a Data Factory rendszerváltozói](../control-flow-system-variables.md)című témakört.
 
 Ez a cikk a Azure Data Factory által támogatott függvényekről és változókról nyújt információkat.
 
@@ -27,10 +27,10 @@ Ez a cikk a Azure Data Factory által támogatott függvényekről és változó
 
 | Változó neve | Leírás | Objektum hatóköre | JSON-hatókör és-használati esetek |
 | --- | --- | --- | --- |
-| WindowStart |Az aktuális tevékenység futtatási ablakának időintervallumának kezdete |Tevékenység |<ol><li>Az adatkijelölési lekérdezések meghatározása. Lásd az adattovábbítási [tevékenységekről](data-factory-data-movement-activities.md) szóló cikkben hivatkozott összekötő cikkeket.</li> |
-| WindowEnd |Az aktuális tevékenység futtatási időszakának vége |Tevékenység |ugyanaz, mint a WindowStart. |
-| SliceStart |A létrehozott adatszeletek időintervallumának kezdete |Tevékenység<br/>adatkészlet |<ol><li>Az [Azure Blob](data-factory-azure-blob-connector.md) és a fájlrendszerbeli adatkészletek használatakor a [](data-factory-onprem-file-system-connector.md)dinamikus mappák elérési útját és fájlneveit is meg kell adni.</li><li>Adja meg a bemeneti függőségeket a adat-előállító függvényeknél a tevékenység bemenetek gyűjteményében.</li></ol> |
-| SliceEnd |Az aktuális adatszelet időtartamának vége. |Tevékenység<br/>adatkészlet |ugyanaz, mint a SliceStart. |
+| WindowStart |Az aktuális tevékenység futtatási ablakának időintervallumának kezdete |tevékenység |<ol><li>Az adatkijelölési lekérdezések meghatározása. Lásd az [adattovábbítási tevékenységekről](data-factory-data-movement-activities.md) szóló cikkben hivatkozott összekötő cikkeket.</li> |
+| WindowEnd |Az aktuális tevékenység futtatási időszakának vége |tevékenység |ugyanaz, mint a WindowStart. |
+| SliceStart |A létrehozott adatszeletek időintervallumának kezdete |tevékenység<br/>Adatkészlet |<ol><li>Az [Azure Blob](data-factory-azure-blob-connector.md) és a [fájlrendszerbeli adatkészletek](data-factory-onprem-file-system-connector.md)használatakor a dinamikus mappák elérési útját és fájlneveit is meg kell adni.</li><li>Adja meg a bemeneti függőségeket a adat-előállító függvényeknél a tevékenység bemenetek gyűjteményében.</li></ol> |
+| SliceEnd |Az aktuális adatszelet időtartamának vége. |tevékenység<br/>Adatkészlet |ugyanaz, mint a SliceStart. |
 
 > [!NOTE]
 > A jelenleg adat-előállító megköveteli, hogy a tevékenységben megadott ütemezése pontosan megfelel a kimeneti adatkészlet rendelkezésre állásában megadott ütemtervnek. Ezért a WindowStart, a WindowEnd, a SliceStart és a SliceEnd mindig ugyanarra az időszakra és egyetlen kimeneti szeletre mutatnak.
@@ -54,9 +54,9 @@ A következő példában a **SliceStart** év, hónap, nap és időpont a **Fold
 ## <a name="data-factory-functions"></a>Data Factory függvények
 Az adat-előállítóban a függvények a rendszerváltozókkal együtt a következő célokra használhatók:
 
-1. Az adatkijelölési lekérdezések megadásával (lásd az adatáthelyezési [tevékenységek](data-factory-data-movement-activities.md) által hivatkozott összekötő-cikkeket).
+1. Az adatkijelölési lekérdezések megadásával (lásd az [adatáthelyezési tevékenységek](data-factory-data-movement-activities.md) által hivatkozott összekötő-cikkeket).
    
-   A adat-előállító függvény meghívására szolgáló szintaxis a következő:  **$$ \<Function >** az adatkijelölési lekérdezésekhez és a tevékenységek és adatkészletek egyéb tulajdonságaihoz.  
+   A adat-előállító függvény meghívására szolgáló szintaxis a következő: **$$\<függvény >** az adatkijelölési lekérdezésekhez és a tevékenység és az adatkészletek egyéb tulajdonságaihoz.  
 2. A bemeneti függőségek megadása a adat-előállító függvényeknél a tevékenység bemenetei gyűjteményben.
    
     a $ $ nem szükséges a bemeneti függőségi kifejezések megadásához.     
@@ -72,35 +72,35 @@ A következő példában a JSON-fájl **sqlReaderQuery** tulajdonsága a `Text.F
 
 Tekintse meg az [Egyéni dátum-és időformátum-karakterláncok](https://msdn.microsoft.com/library/8kb3ddd4.aspx) témakört, amely leírja a különböző formázási beállításokat (például: ay vagy nn). 
 
-### <a name="functions"></a>Funkciók
+### <a name="functions"></a>Functions
 A következő táblázatok a Azure Data Factory összes funkcióját felsorolják:
 
-| Category | Függvény | Paraméterek | Leírás |
+| Kategória | Függvény | Paraméterek | Leírás |
 | --- | --- | --- | --- |
-| Time |AddHours(X,Y) |X: DateTime <br/><br/>Y: int |Y óra beadása a megadott időponthoz X. <br/><br/>Például: `9/5/2013 12:00:00 PM + 2 hours = 9/5/2013 2:00:00 PM` |
-| Time |AddMinutes(X,Y) |X: DateTime <br/><br/>Y: int |Y percet vesz fel X-re.<br/><br/>Például: `9/15/2013 12: 00:00 PM + 15 minutes = 9/15/2013 12: 15:00 PM` |
-| Time |StartOfHour(X) |X: Datetime |Az X óra összetevője által képviselt óra kezdő időpontjának beolvasása. <br/><br/>Például: `StartOfHour of 9/15/2013 05: 10:23 PM is 9/15/2013 05: 00:00 PM` |
-| Date |AddDays (X, Y) |X: DateTime<br/><br/>Y: int |Y nappal adja hozzá az X-et. <br/><br/>Példa: 9/15/2013 12:00:00 PM + 2 nap = 9/17/2013 12:00:00 PM.<br/><br/>Napokat is ki lehet vonni az Y negatív szám megadásával.<br/><br/>Példa: `9/15/2013 12:00:00 PM - 2 days = 9/13/2013 12:00:00 PM`. |
-| Date |AddMonths (X, Y) |X: DateTime<br/><br/>Y: int |Y hónapot hoz létre az X értékhez.<br/><br/>`Example: 9/15/2013 12:00:00 PM + 1 month = 10/15/2013 12:00:00 PM`.<br/><br/>Hónapok is kivonhatók, ha az Y értéket negatív számként határozza meg.<br/><br/>Példa: `9/15/2013 12:00:00 PM - 1 month = 8/15/2013 12:00:00 PM`.|
-| Date |AddQuarters (X, Y) |X: DateTime <br/><br/>Y: int |Y * 3 hónapot adja hozzá X értékhez.<br/><br/>Például: `9/15/2013 12:00:00 PM + 1 quarter = 12/15/2013 12:00:00 PM` |
-| Date |AddWeeks (X, Y) |X: DateTime<br/><br/>Y: int |Y * 7 nap feladása X értékre<br/><br/>Példa: 9/15/2013 12:00:00 PM + 1 hét = 9/22/2013 12:00:00 PM<br/><br/>Az Y negatív szám megadásával is kivonja a heteket.<br/><br/>Példa: `9/15/2013 12:00:00 PM - 1 week = 9/7/2013 12:00:00 PM`. |
-| Date |AddYears (X, Y) |X: DateTime<br/><br/>Y: int |Y évet adja hozzá az X-hez.<br/><br/>`Example: 9/15/2013 12:00:00 PM + 1 year = 9/15/2014 12:00:00 PM`<br/><br/>Ha az Y értéket negatív számként határozza meg, akkor az év is kivonható.<br/><br/>Példa: `9/15/2013 12:00:00 PM - 1 year = 9/15/2012 12:00:00 PM`. |
-| Date |Day(X) |X: DateTime |Az X nap összetevőjét kapja meg.<br/><br/>Példa: `Day of 9/15/2013 12:00:00 PM is 9`. |
-| Date |DayOfWeek (X) |X: DateTime |Beolvassa az X hét napjának összetevőjét.<br/><br/>Példa: `DayOfWeek of 9/15/2013 12:00:00 PM is Sunday`. |
-| Date |DayOfYear (X) |X: DateTime |Az X év összetevője által jelzett nap beolvasása.<br/><br/>Példák:<br/>`12/1/2015: day 335 of 2015`<br/>`12/31/2015: day 365 of 2015`<br/>`12/31/2016: day 366 of 2016 (Leap Year)` |
-| Date |DaysInMonth (X) |X: DateTime |Beolvassa az X paraméter hónap összetevőjével jelölt hónap napjait.<br/><br/>Példa: `DaysInMonth of 9/15/2013 are 30 since there are 30 days in the September month`. |
-| Date |EndOfDay(X) |X: DateTime |Az X nap (nap összetevője) végének dátumának és időpontjának beolvasása.<br/><br/>Példa: `EndOfDay of 9/15/2013 05:10:23 PM is 9/15/2013 11:59:59 PM`. |
-| Date |EndOfMonth (X) |X: DateTime |Lekérdezi a hónap végét, amelyet az X paraméter a hónap összetevője képvisel. <br/><br/>Példa: `EndOfMonth of 9/15/2013 05:10:23 PM is 9/30/2013 11:59:59 PM` (a hónap szeptember végét jelölő dátum-idő) |
-| Date |StartOfDay(X) |X: DateTime |Beolvassa az X paraméter Day összetevőjének napja által jelzett nap kezdetét.<br/><br/>Példa: `StartOfDay of 9/15/2013 05:10:23 PM is 9/15/2013 12:00:00 AM`. |
-| DateTime |Forrás: (X) |X: Sztring |X sztring értelmezése dátum és idő szerint. |
-| DateTime |Osztásjelek (X) |X: DateTime |Az X paraméter kullancsok tulajdonságának beolvasása. Egy Tick 100 nanoszekundumban. Ennek a tulajdonságnak az értéke a 12:00:00 éjfél óta eltelt kullancsok számát jelöli. január 1., 0,001. |
-| Text |Formátum (X) |X: Karakterlánc-változó |A szöveg formázása (a `\\'` kombináció használata Escape `'` -karakterrel).|
+| Time |AddHours (X, Y) |X: dátum és idő <br/><br/>Y: int |Y óra beadása a megadott időponthoz X. <br/><br/>Például: `9/5/2013 12:00:00 PM + 2 hours = 9/5/2013 2:00:00 PM` |
+| Time |AddMinutes (X, Y) |X: dátum és idő <br/><br/>Y: int |Y percet vesz fel X-re.<br/><br/>Például: `9/15/2013 12: 00:00 PM + 15 minutes = 9/15/2013 12: 15:00 PM` |
+| Time |Óra kezdete (X) |X: dátum és idő |Az X óra összetevője által képviselt óra kezdő időpontjának beolvasása. <br/><br/>Például: `StartOfHour of 9/15/2013 05: 10:23 PM is 9/15/2013 05: 00:00 PM` |
+| Dátum |AddDays (X, Y) |X: dátum és idő<br/><br/>Y: int |Y nappal adja hozzá az X-et. <br/><br/>Például: 9/15/2013 12:00:00 PM + 2 nap = 9/17/2013 12:00:00 PM.<br/><br/>Napokat is ki lehet vonni az Y negatív szám megadásával.<br/><br/>Példa: `9/15/2013 12:00:00 PM - 2 days = 9/13/2013 12:00:00 PM`. |
+| Dátum |AddMonths (X, Y) |X: dátum és idő<br/><br/>Y: int |Y hónapot hoz létre az X értékhez.<br/><br/>`Example: 9/15/2013 12:00:00 PM + 1 month = 10/15/2013 12:00:00 PM`.<br/><br/>Hónapok is kivonhatók, ha az Y értéket negatív számként határozza meg.<br/><br/>Példa: `9/15/2013 12:00:00 PM - 1 month = 8/15/2013 12:00:00 PM`.|
+| Dátum |AddQuarters (X, Y) |X: dátum és idő <br/><br/>Y: int |Y * 3 hónapot adja hozzá X értékhez.<br/><br/>Például: `9/15/2013 12:00:00 PM + 1 quarter = 12/15/2013 12:00:00 PM` |
+| Dátum |AddWeeks (X, Y) |X: dátum és idő<br/><br/>Y: int |Y * 7 nap feladása X értékre<br/><br/>Például: 9/15/2013 12:00:00 PM + 1 hét = 9/22/2013 12:00:00 PM<br/><br/>Az Y negatív szám megadásával is kivonja a heteket.<br/><br/>Példa: `9/15/2013 12:00:00 PM - 1 week = 9/7/2013 12:00:00 PM`. |
+| Dátum |AddYears (X, Y) |X: dátum és idő<br/><br/>Y: int |Y évet adja hozzá az X-hez.<br/><br/>`Example: 9/15/2013 12:00:00 PM + 1 year = 9/15/2014 12:00:00 PM`<br/><br/>Ha az Y értéket negatív számként határozza meg, akkor az év is kivonható.<br/><br/>Példa: `9/15/2013 12:00:00 PM - 1 year = 9/15/2012 12:00:00 PM`. |
+| Dátum |Nap (X) |X: dátum és idő |Az X nap összetevőjét kapja meg.<br/><br/>Példa: `Day of 9/15/2013 12:00:00 PM is 9`. |
+| Dátum |DayOfWeek (X) |X: dátum és idő |Beolvassa az X hét napjának összetevőjét.<br/><br/>Példa: `DayOfWeek of 9/15/2013 12:00:00 PM is Sunday`. |
+| Dátum |DayOfYear (X) |X: dátum és idő |Az X év összetevője által jelzett nap beolvasása.<br/><br/>Példák:<br/>`12/1/2015: day 335 of 2015`<br/>`12/31/2015: day 365 of 2015`<br/>`12/31/2016: day 366 of 2016 (Leap Year)` |
+| Dátum |DaysInMonth (X) |X: dátum és idő |Beolvassa az X paraméter hónap összetevőjével jelölt hónap napjait.<br/><br/>Példa: `DaysInMonth of 9/15/2013 are 30 since there are 30 days in the September month`. |
+| Dátum |EndOfDay (X) |X: dátum és idő |Az X nap (nap összetevője) végének dátumának és időpontjának beolvasása.<br/><br/>Példa: `EndOfDay of 9/15/2013 05:10:23 PM is 9/15/2013 11:59:59 PM`. |
+| Dátum |EndOfMonth (X) |X: dátum és idő |Lekérdezi a hónap végét, amelyet az X paraméter a hónap összetevője képvisel. <br/><br/>Példa: `EndOfMonth of 9/15/2013 05:10:23 PM is 9/30/2013 11:59:59 PM` (a hónap szeptember végét jelölő dátum/idő) |
+| Dátum |StartOfDay (X) |X: dátum és idő |Beolvassa az X paraméter Day összetevőjének napja által jelzett nap kezdetét.<br/><br/>Példa: `StartOfDay of 9/15/2013 05:10:23 PM is 9/15/2013 12:00:00 AM`. |
+| DateTime |Forrás: (X) |X: sztring |X sztring értelmezése dátum és idő szerint. |
+| DateTime |Osztásjelek (X) |X: dátum és idő |Az X paraméter kullancsok tulajdonságának beolvasása. Egy Tick 100 nanoszekundumban. Ennek a tulajdonságnak az értéke a 12:00:00 éjfél óta eltelt kullancsok számát jelöli. január 1., 0,001. |
+| Szöveg |Formátum (X) |X: string változó |A szöveg formázása (`\\'` kombináció használata Escape `'` karakter).|
 
 > [!IMPORTANT]
-> Ha egy függvényt egy másik függvényen belül használ, nincs szükség a **$$** belső függvény előtagjának használatára. Például: $ $Text. Format ( \\' PartitionKey EQ ' my_pkey_filter_value\\' és RowKey GE \\' {0: éééé-hh-nn óó: PP: SS}\\' ', Time. AddHours (SliceStart,-6)). Ebben a példában azt láthatja **$$** , hogy a **Time. AddHours** függvény nem használja az előtagot. 
+> Ha függvényt használ egy másik függvényen belül, nem szükséges **$$** előtagot használni a belső függvényhez. Például: $ $Text. Format (' PartitionKey EQ \\' my_pkey_filter_value\\' és RowKey GE \\' {0: éééé-hh-nn óó: PP: SS}\\' ', Time. AddHours (SliceStart,-6)). Ebben a példában azt láthatja, hogy a **Time. AddHours** függvény nem használja **$$** előtagot. 
 
 #### <a name="example"></a>Példa
-A következő példában a kaptár tevékenységhez tartozó bemeneti és kimeneti paramétereket a Function és a `Text.Format` SliceStart rendszerváltozó használatával határozzuk meg. 
+A következő példában a kaptár tevékenységhez tartozó bemeneti és kimeneti paramétereket a `Text.Format` függvény és a SliceStart rendszerváltozó használatával határozzuk meg. 
 
 ```json  
 {

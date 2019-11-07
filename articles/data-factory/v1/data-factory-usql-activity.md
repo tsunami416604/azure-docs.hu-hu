@@ -1,6 +1,6 @@
 ---
-title: Adatok átalakítása a használatával a U-SQL-szkript – Azure |} A Microsoft Docs
-description: Ismerje meg, feldolgozása és átalakítási adatok Azure Data Lake Analytics számítási szolgáltatás az U-SQL-parancsfájlok futtatásával.
+title: Adatátalakítás az U-SQL-parancsfájllal – Azure
+description: Megtudhatja, hogyan dolgozhat fel és alakíthat át az adatok a U-SQL-parancsfájlok futtatásával Azure Data Lake Analytics számítási szolgáltatáson.
 services: data-factory
 documentationcenter: ''
 ms.assetid: e17c1255-62c2-4e2e-bb60-d25274903e80
@@ -13,62 +13,62 @@ author: nabhishek
 ms.author: abnarain
 manager: craigg
 robots: noindex
-ms.openlocfilehash: 5835c37363c7e9d2dd3253c08ab97f17852725f5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7608719c4e0c2b9e23f1982efda9789d25f50224
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61248147"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73665952"
 ---
-# <a name="transform-data-by-running-u-sql-scripts-on-azure-data-lake-analytics"></a>Adatok átalakítása az Azure Data Lake Analytics U-SQL-parancsfájlok futtatásával 
-> [!div class="op_single_selector" title1="Válassza ki a Data Factory szolgáltatás használ:"]
+# <a name="transform-data-by-running-u-sql-scripts-on-azure-data-lake-analytics"></a>Az adatátalakítást U-SQL-parancsfájlok futtatásával Azure Data Lake Analytics 
+> [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory-szolgáltatás verzióját:"]
 > * [1-es verzió](data-factory-usql-activity.md)
 > * [2-es verzió (aktuális verzió)](../transform-data-using-data-lake-analytics.md)
 
 > [!NOTE]
-> Ez a cikk a Data Factory 1-es verziójára vonatkozik. Ha a jelenlegi verzió a Data Factory szolgáltatás használ, tekintse meg [U-SQL-tevékenység a v2-ben](../transform-data-using-data-lake-analytics.md).
+> Ez a cikk a Data Factory 1-es verziójára vonatkozik. Ha a Data Factory szolgáltatás aktuális verzióját használja, lásd: [U-SQL-tevékenység a v2-ben](../transform-data-using-data-lake-analytics.md).
 
-Az Azure data factory-folyamatot az adatok az társított storage-szolgáltatásokban csatolt számítási szolgáltatások használatával dolgozza fel. A tevékenységek, ahol minden egyes tevékenységhez meghatározott feldolgozási műveletet hajt végre egy feladatütemezési tartalmazza. Ez a cikk ismerteti a **Data Lake Analytics U-SQL-tevékenység** futtat egy **U-SQL** a parancsfájl egy **Azure Data Lake Analytics** számítási társított szolgáltatás. 
+Egy Azure-beli adatfeldolgozó folyamata összekapcsolt számítási szolgáltatások használatával dolgozza fel a társított tárolási szolgáltatásokban tárolt adatokkal. Olyan tevékenységek sorát tartalmazza, amelyekben minden tevékenység egy adott feldolgozási műveletet hajt végre. Ez a cikk azt a **Data Lake Analytics u-SQL-tevékenységet** ismerteti, amely egy **u-SQL-** parancsfájlt futtat egy **Azure Data Lake Analytics** számítási társított szolgáltatáson. 
 
-Hozzon létre egy Azure Data Lake Analytics-fiókot egy Data Lake Analytics U-SQL-tevékenység a folyamat létrehozása előtt. Az Azure Data Lake Analytics kapcsolatos további információkért lásd: [Ismerkedés az Azure Data Lake Analytics](../../data-lake-analytics/data-lake-analytics-get-started-portal.md).
+Hozzon létre egy Azure Data Lake Analytics fiókot, mielőtt létre szeretne hozni egy Data Lake Analytics U-SQL-tevékenységgel rendelkező folyamatot. További információ a Azure Data Lake Analyticsről: a [Azure Data Lake Analytics első lépései](../../data-lake-analytics/data-lake-analytics-get-started-portal.md).
 
-Tekintse át a [hozhat létre az első folyamat oktatóanyag](data-factory-build-your-first-pipeline.md) részletes lépései hozzon létre egy adat-előállítót, társított szolgáltatások, adatkészletek és folyamatok. Data Factory Editor vagy a Visual Studio vagy az Azure PowerShell-kódrészletek JSON használatával a Data Factory-entitások létrehozása.
+Az adat-előállító, a társított szolgáltatások, az adatkészletek és a folyamat létrehozásának részletes lépéseiért tekintse át az [első folyamat összeállítása oktatóanyagot](data-factory-build-your-first-pipeline.md) . Data Factory entitások létrehozásához használjon JSON-kódrészleteket Data Factory Editor vagy Visual Studio vagy Azure PowerShell használatával.
 
 ## <a name="supported-authentication-types"></a>Támogatott hitelesítési típusok
-U-SQL-tevékenység hitelesítési típusok ellen a Data Lake Analytics alábbi támogatja:
+Az U-SQL-tevékenység az alábbi hitelesítési típusok használatát támogatja Data Lake Analytics:
 * Egyszerű szolgáltatásnév hitelesítése
-* Felhasználói hitelesítő adatok (OAuth) hitelesítés 
+* Felhasználói hitelesítő adatok (OAuth) hitelesítése 
 
-Azt javasoljuk, hogy használjon egyszerű szolgáltatásnév hitelesítése, különösen egy ütemezett U-SQL-végrehajtás. Jogkivonat lejárati fordulhat elő a felhasználói hitelesítő adatok hitelesítéssel. További konfigurációs információkért lásd: a [társított szolgáltatások tulajdonságai](#azure-data-lake-analytics-linked-service) szakaszban.
+Javasoljuk, hogy a szolgáltatás egyszerű hitelesítését használja, különösen egy ütemezett U-SQL-végrehajtáshoz. A jogkivonat lejárati viselkedése a felhasználói hitelesítő adatok hitelesítésével történhet. A konfiguráció részleteiért tekintse meg a [társított szolgáltatás tulajdonságai](#azure-data-lake-analytics-linked-service) szakaszt.
 
-## <a name="azure-data-lake-analytics-linked-service"></a>Az Azure Data Lake Analytics-beli társított szolgáltatást
-Létrehoz egy **Azure Data Lake Analytics** társított szolgáltatást, az Azure Data Lake Analytics számítási szolgáltatás az Azure data factoryt. A Data Lake Analytics U-SQL-tevékenység, a folyamat a társított szolgáltatásra vonatkozik. 
+## <a name="azure-data-lake-analytics-linked-service"></a>Társított szolgáltatás Azure Data Lake Analytics
+Hozzon létre egy **Azure Data Lake Analytics** társított szolgáltatást egy Azure Data Lake Analytics számítási szolgáltatás Azure-beli adatgyárhoz való összekapcsolásához. A folyamat Data Lake Analytics U-SQL tevékenysége erre a társított szolgáltatásra hivatkozik. 
 
-Az alábbi táblázat ismerteti a JSON-definíciójában használt általános tulajdonságokat. További választhat egyszerű szolgáltatás és a felhasználói hitelesítő adatok hitelesítése.
+A következő táblázat a JSON-definícióban használt általános tulajdonságok leírásait tartalmazza. Az egyszerű szolgáltatásnév és a felhasználói hitelesítő adatok hitelesítése lehetőség közül választhat.
 
 | Tulajdonság | Leírás | Kötelező |
 | --- | --- | --- |
-| **type** |A type tulajdonságot kell beállítani: **AzureDataLakeAnalytics**. |Igen |
-| **accountName** |Azure Data Lake Analytics Account Name. |Igen |
+| **type** |A Type tulajdonságot a következőre kell beállítani: **AzureDataLakeAnalytics**. |Igen |
+| **accountName** |Azure Data Lake Analytics fiók neve. |Igen |
 | **dataLakeAnalyticsUri** |Azure Data Lake Analytics URI. |Nem |
-| **subscriptionId** |Azure-előfizetés azonosítója |Nem (Ha nincs megadva, a data Factory előfizetés szerepel). |
-| **resourceGroupName** |Azure-erőforráscsoport neve |Nem (Ha nincs megadva, a data Factory erőforrás-csoport szerepel). |
+| **subscriptionId** |Azure-előfizetés azonosítója |Nem (ha nincs megadva, a rendszer az adatfeldolgozó előfizetését használja). |
+| **resourceGroupName** |Azure-erőforráscsoport neve |Nem (ha nincs megadva, a rendszer az adatfeldolgozó erőforráscsoportot használja). |
 
 ### <a name="service-principal-authentication-recommended"></a>Egyszerű szolgáltatásnév hitelesítése (ajánlott)
-Egyszerű szolgáltatásnév hitelesítése alkalmazás entitás regisztrálása az Azure Active Directory (Azure AD), és hozzáférést, a Data Lake Store. Részletes lépéseiért lásd: [szolgáltatások közötti hitelesítés](../../data-lake-store/data-lake-store-authenticate-using-active-directory.md). Jegyezze fel a következő értékeket, mert a társított szolgáltatás definiálásához használja:
+Az egyszerű szolgáltatás hitelesítésének használatához regisztráljon egy alkalmazás-entitást Azure Active Directory (Azure AD), és adja meg a Data Lake Store elérését. A részletes lépésekért lásd: [szolgáltatások közötti hitelesítés](../../data-lake-store/data-lake-store-authenticate-using-active-directory.md). Jegyezze fel a következő értékeket, amelyeket a társított szolgáltatás definiálásához használ:
 * Alkalmazásazonosító
-* Alkalmazáskulcs 
+* Alkalmazás kulcsa 
 * Bérlőazonosító
 
-Egyszerű szolgáltatásnév hitelesítése használja a következő tulajdonságok megadásával:
+Az egyszerű szolgáltatás hitelesítését a következő tulajdonságok megadásával használhatja:
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| **servicePrincipalId** | Adja meg az alkalmazás ügyfél-azonosítót. | Igen |
-| **servicePrincipalKey** | Adja meg az alkalmazáskulcsot. | Igen |
-| **bérlő** | Adja meg a bérlő információkat (tartomány neve vagy a bérlő azonosítója) alatt az alkalmazás található. Kérheti a viszi az egérmutatót az Azure portal jobb felső sarkában. | Igen |
+| **servicePrincipalId** | Határozza meg az alkalmazás ügyfél-AZONOSÍTÓját. | Igen |
+| **servicePrincipalKey** | Az alkalmazás kulcsának meghatározása. | Igen |
+| **Bérlő** | Adja meg a bérlői adatokat (tartománynevet vagy bérlői azonosítót), amely alatt az alkalmazás található. Lekérheti a Azure Portal jobb felső sarkában lévő egér fölé. | Igen |
 
-**Példa: Egyszerű szolgáltatásnév hitelesítése**
+**Példa: egyszerű szolgáltatásnév hitelesítése**
 ```json
 {
     "name": "AzureDataLakeAnalyticsLinkedService",
@@ -88,14 +88,14 @@ Egyszerű szolgáltatásnév hitelesítése használja a következő tulajdonsá
 ```
 
 ### <a name="user-credential-authentication"></a>Felhasználói hitelesítő adatok hitelesítése
-Másik lehetőségként használhatja felhasználói hitelesítő adatok hitelesítési Data Lake Analytics a következő tulajdonságok megadásával:
+Azt is megteheti, hogy a következő tulajdonságok megadásával felhasználói hitelesítő adatokat használ a Data Lake Analyticshoz:
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| **Engedélyezési** | Kattintson a **engedélyezés** gombra a Data Factory szerkesztőjében, és adja meg a hitelesítő adat, amelyet az automatikusan létrehozott engedélyezési URL-címet rendel hozzá ezt a tulajdonságot. | Igen |
-| **sessionId** | OAuth munkamenet-azonosító az OAuth hitelesítési munkamenetből. Minden munkamenet-azonosító egyedi, és csak egyszer használhatók fel. Ez a beállítás automatikusan jön létre a Data Factory Editor használata esetén. | Igen |
+| **engedély** | Kattintson az **Engedélyezés** gombra a Data Factory szerkesztőben, és adja meg a hitelesítő adatait, amely hozzárendeli az automatikusan létrehozott engedélyezési URL-címet ehhez a tulajdonsághoz. | Igen |
+| **sessionId** | OAuth munkamenet-azonosító a OAuth-engedélyezési munkamenetből. Az egyes munkamenet-AZONOSÍTÓk egyediek, és csak egyszer használhatók fel. Ez a beállítás automatikusan létrejön a Data Factory-szerkesztő használatakor. | Igen |
 
-**Példa: Felhasználói hitelesítő adatok hitelesítése**
+**Példa: felhasználói hitelesítő adatok hitelesítése**
 ```json
 {
     "name": "AzureDataLakeAnalyticsLinkedService",
@@ -113,15 +113,15 @@ Másik lehetőségként használhatja felhasználói hitelesítő adatok hiteles
 }
 ```
 
-#### <a name="token-expiration"></a>Jogkivonat lejáratáról
-Az engedélyezési kód használatával létrehozott a **engedélyezés** gomb kis idő múlva jár le. Tekintse meg az alábbi táblázat a különböző típusú felhasználói fiókokat a lejárati idejét. Láthatja, hogy a következő hiba jelenik meg, ha a hitelesítés **jogkivonat lejár**: Hitelesítőadat-műveleti hiba: invalid_grant - AADSTS70002: Hiba történt a hitelesítő érvényesítésekor. AADSTS70008: A megadott hozzáférési engedély lejárt vagy visszavont. Trace ID: d18629e8-af88-43c5-88e3-d8419eb1fca1 Correlation ID: fac30a0c-6be6-4e02-8d69-a776d2ffefd7 Timestamp: 2015-12-15 21:09:31Z
+#### <a name="token-expiration"></a>Jogkivonat lejárata
+Az **Engedélyezés** gomb használatával létrehozott engedélyezési kód egy kis idő elteltével lejár. Az alábbi táblázatban megtekintheti a különböző típusú felhasználói fiókok lejárati idejét. A hitelesítési **jogkivonat érvényességének lejárta**után a következő hibaüzenet jelenhet meg: hitelesítőadat-műveleti hiba: INVALID_GRANT-AADSTS70002: hiba történt a hitelesítő adatok érvényesítése során. AADSTS70008: a megadott hozzáférési engedély lejárt vagy visszavont. Nyomkövetési azonosító: d18629e8-af88-43c5-88e3-d8419eb1fca1 korrelációs azonosítója: fac30a0c-6be6-4e02-8d69-a776d2ffefd7 timestamp: 2015-12-15 21:09:31Z
 
-| Felhasználó típusa | Tétlenség után lejár |
+| Felhasználó típusa | Lejárat után lejár |
 |:--- |:--- |
-| Felhasználói fiókok Azure Active Directory által nem felügyelt (@hotmail.com, @live.comstb.) |12 óra |
-| Felhasználói fiókok felügyelt által az Azure Active Directory (AAD) |Futtassa az utolsó szelet 14 nappal. <br/><br/>90 nap, ha egy OAuth-alapú társított szolgáltatás alapján végezzen szeletelést, 14 naponta legalább egyszer futtatja. |
+| A Azure Active Directory által nem felügyelt felhasználói fiókok (@hotmail.com, @live.comstb.) |12 óra |
+| A Azure Active Directory által kezelt felhasználói fiókok (HRE) |14 nappal az utolsó szelet futtatása után. <br/><br/>90 nap, ha egy OAuth-alapú társított szolgáltatáson alapuló szelet 14 naponta legalább egyszer fut. |
 
-Ez a hiba elkerüléséhez/elhárítási, engedélyezze újra a használatával a **engedélyezés** gombra, ha a **jogkivonat lejár** és ismételt üzembe helyezése a társított szolgáltatás. Az értékeket is létrehozhat **sessionId** és **engedélyezési** tulajdonságait programozott módon a következő kódot:
+A hiba elkerüléséhez vagy megoldásához **engedélyezze újra az Engedélyezés gombot,** ha a **jogkivonat lejár** , majd újból üzembe helyezi a társított szolgáltatást. A **munkamenet** -azonosító és az **engedélyezési** tulajdonságok értékét programozott módon is létrehozhatja a következő módon:
 
 ```csharp
 if (linkedService.Properties.TypeProperties is AzureDataLakeStoreLinkedService ||
@@ -148,10 +148,10 @@ if (linkedService.Properties.TypeProperties is AzureDataLakeStoreLinkedService |
 }
 ```
 
-Lásd: [AzureDataLakeStoreLinkedService osztály](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuredatalakestorelinkedservice.aspx), [AzureDataLakeAnalyticsLinkedService osztály](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuredatalakeanalyticslinkedservice.aspx), és [AuthorizationSessionGetResponse osztály](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.authorizationsessiongetresponse.aspx) témakörök tudnivalók a Data Factory-osztályokat használja a kód. Vegyen fel egy hivatkozást: Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms.dll WindowsFormsWebAuthenticationDialog osztály. 
+A kódban használt Data Factory osztályok részleteiért tekintse meg a [AzureDataLakeStoreLinkedService Class](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuredatalakestorelinkedservice.aspx), a [AzureDataLakeAnalyticsLinkedService Class](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuredatalakeanalyticslinkedservice.aspx)és a [AuthorizationSessionGetResponse osztály](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.authorizationsessiongetresponse.aspx) témakört. Adjon hozzá egy hivatkozást a következőhöz: Microsoft. IdentityModel. clients. ActiveDirectory. WindowsForms. dll a WindowsFormsWebAuthenticationDialog osztályhoz. 
 
 ## <a name="data-lake-analytics-u-sql-activity"></a>Data Lake Analytics U-SQL-tevékenység
-A következő JSON-kódrészlet definiál egy Data Lake Analytics U-SQL-tevékenység rendelkező folyamatot. A tevékenység meghatározásában tartalmaz egy hivatkozást a korábban létrehozott Azure Data Lake Analytics hivatkozott szolgáltatást.   
+A következő JSON-kódrészlet egy Data Lake Analytics U-SQL-tevékenységgel rendelkező folyamatot határoz meg. A tevékenység definíciója a korábban létrehozott Azure Data Lake Analytics társított szolgáltatásra mutató hivatkozást tartalmaz.   
 
 ```json
 {
@@ -204,26 +204,26 @@ A következő JSON-kódrészlet definiál egy Data Lake Analytics U-SQL-tevéken
 }
 ```
 
-A következő táblázat ismerteti a neveket és leírásokat erre a tevékenységre jellemző tulajdonságok. 
+A következő táblázat ismerteti a tevékenységre jellemző tulajdonságok nevét és leírását. 
 
-| Tulajdonság            | Leírás                              | Szükséges                                 |
+| Tulajdonság            | Leírás                              | Kötelező                                 |
 | :------------------ | :--------------------------------------- | :--------------------------------------- |
-| type                | A type tulajdonságot állítsa **DataLakeAnalyticsU-SQL**. | Igen                                      |
-| linkedServiceName   | A Data Factory társított szolgáltatásként regisztrálva az Azure Data Lake Analytics mutató hivatkozás | Igen                                      |
-| scriptPath          | A U-SQL parancsfájlt tartalmazó mappa elérési útja. A fájl neve, a kis-és nagybetűket. | Nem (Ha a parancsfájl használata)                   |
-| scriptLinkedService | A tároló, amely tartalmazza a szkriptet az adat-előállító mutató társított szolgáltatás | Nem (Ha a parancsfájl használata)                   |
-| parancsfájl              | Adja meg a beágyazott parancsfájlja scriptPath és a scriptLinkedService megadása helyett. Például: `"script": "CREATE DATABASE test"`. | Nem (Ha a scriptPath és a scriptLinkedService használ) |
-| degreeOfParallelism | A feladat futtatásához egyidejűleg használt csomópontok maximális száma. | Nem                                       |
-| prioritás            | Meghatározza, hogy mely feladatok közül, hogy a rendszer várólistára helyezi, melyet futtatni kíván van kiválasztva. Az alacsonyabb a szám, annál magasabb a prioritás. | Nem                                       |
-| paraméterek          | A U-SQL-szkript paramétereit          | Nem                                       |
-| runtimeVersion      | A U-SQL-motor használata futtatókörnyezet verziója | Nem                                       |
-| compilationMode     | <p>Fordítási mód az U-SQL. Ezek az értékek egyikének kell lennie:</p> <ul><li>**Szemantikai:** Szemantikai ellenőrzési és a szükséges megerősítések csak végrehajtani.</li><li>**Teljes:** Hajtsa végre a teljes fordítás, beleértve a szintaxis-ellenőrzés, optimalizálás, generování kódu, stb.</li><li>**SingleBox:** Hajtsa végre a teljes fordítás SingleBox TargetType beállítással együtt.</li></ul><p>Ez a tulajdonság értékét nem adja meg, ha a kiszolgáló meghatározza, hogy az optimális fordítási mód. </p> | Nem                                       |
+| type                | A Type tulajdonságot **DataLakeAnalyticsU-SQL**értékre kell beállítani. | Igen                                      |
+| linkedServiceName   | Hivatkozás a társított szolgáltatásként regisztrált Azure Data Lake Analytics Data Factory | Igen                                      |
+| scriptPath          | A U-SQL-parancsfájlt tartalmazó mappa elérési útja. A fájl neve megkülönbözteti a kis-és nagybetűket. | Nem (ha parancsfájlt használ)                   |
+| Scriptlinkedservice szolgáltatás | Társított szolgáltatás, amely összekapcsolja a parancsfájlt tartalmazó tárolót az adatgyárba | Nem (ha parancsfájlt használ)                   |
+| szkriptet.              | A scriptPath és a Scriptlinkedservice szolgáltatás meghatározása helyett beágyazott parancsfájlt adjon meg. Például: `"script": "CREATE DATABASE test"`. | Nem (scriptPath és Scriptlinkedservice szolgáltatás használata esetén) |
+| Analyticsunits | A feladatok futtatásához egyidejűleg használt csomópontok maximális száma. | Nem                                       |
+| prioritású            | Meghatározza, hogy az összes várólistán lévő feladatra kiválassza az első futtatást. Minél kisebb a szám, annál magasabb a prioritás. | Nem                                       |
+| paraméterek          | A U-SQL-parancsfájl paramétereinek          | Nem                                       |
+| runtimeVersion      | A használni kívánt U-SQL-motor futtatókörnyezet-verziója | Nem                                       |
+| compilationMode     | <p>U-SQL fordítási módja. A következő értékek egyikének kell lennie:</p> <ul><li>**Szemantika:** Csak szemantikai ellenőrzéseket és a szükséges józan ész-ellenőrzéseket kell végrehajtania.</li><li>**Teljes:** Végezze el a teljes fordítást, beleértve a szintaxis-ellenőrzést, az optimalizálást, a kód generálását stb.</li><li>**SingleBox:** Hajtsa végre a teljes fordítást a TargetType beállítással a SingleBox.</li></ul><p>Ha nem ad meg értéket ehhez a tulajdonsághoz, a kiszolgáló meghatározza az optimális fordítási módot. </p> | Nem                                       |
 
-Lásd: [SearchLogProcessing.txt szkriptet definíciójának](#sample-u-sql-script) a parancsfájl-definíciójában. 
+Lásd: [SearchLogProcessing. txt parancsfájl definíciója](#sample-u-sql-script) a parancsfájl definíciójában. 
 
-## <a name="sample-input-and-output-datasets"></a>Példa a bemeneti és kimeneti adatkészleteket
+## <a name="sample-input-and-output-datasets"></a>Minta bemeneti és kimeneti adatkészletek
 ### <a name="input-dataset"></a>Bemeneti adatkészlet
-Ebben a példában a bemeneti adatokat egy Azure Data Lake Store (searchlog.tsv fájlt fájlt a datalake/input mappában) található. 
+Ebben a példában a bemeneti adatok egy Azure Data Lake Store (SearchLog. TSV fájlban találhatók a datalake/input mappában). 
 
 ```json
 {
@@ -249,7 +249,7 @@ Ebben a példában a bemeneti adatokat egy Azure Data Lake Store (searchlog.tsv 
 ```
 
 ### <a name="output-dataset"></a>Kimeneti adatkészlet
-Ebben a példában a U-SQL-parancsfájl által előállított kimeneti adatok tárolva az Azure Data Lake Store (datalake-/ kimeneti mappa). 
+Ebben a példában a U-SQL-szkript által létrehozott kimeneti adatokat egy Azure Data Lake Store (datalake/output mappában) tárolja a rendszer. 
 
 ```json
 {
@@ -268,8 +268,8 @@ Ebben a példában a U-SQL-parancsfájl által előállított kimeneti adatok t�
 }
 ```
 
-### <a name="sample-data-lake-store-linked-service"></a>Mintául szolgáló Data Lake Store társított szolgáltatás
-Ez a definíció, a minta Azure Data Lake Store-beli társított szolgáltatást a bemeneti és kimeneti adatkészleteket használja. 
+### <a name="sample-data-lake-store-linked-service"></a>Példa Data Lake Store társított szolgáltatásra
+Itt látható a bemeneti/kimeneti adatkészletek által használt példa Azure Data Lake Store társított szolgáltatás definíciója. 
 
 ```json
 {
@@ -286,9 +286,9 @@ Ez a definíció, a minta Azure Data Lake Store-beli társított szolgáltatást
 }
 ```
 
-Lásd: [adatok importálására és az Azure Data Lake Store](data-factory-azure-datalake-connector.md) JSON-tulajdonságokkal leírását a cikk. 
+A JSON-tulajdonságok leírását az [adatok áthelyezése a és a Azure Data Lake Storere](data-factory-azure-datalake-connector.md) című cikk tartalmazza. 
 
-## <a name="sample-u-sql-script"></a>Példa U-SQL parancsfájl
+## <a name="sample-u-sql-script"></a>Minta U-SQL-parancsfájl
 
 ```
 @searchlog =
@@ -317,12 +317,12 @@ OUTPUT @rs1
       USING Outputters.Tsv(quoting:false, dateTimeFormat:null);
 ```
 
-A tartozó értékeket  **\@a** és  **\@ki** a U-SQL parancsfájl átadott paraméterek dinamikusan ADF "parameters" szakaszában. A folyamat definíciójában a "parameters" című szakaszában talál.
+A U-SQL-parancsfájlban található **\@** és **\@** a paraméterek szakaszban az ADF dinamikusan továbbítja az értékeket. Tekintse meg a folyamat definíciójának paraméterek szakaszát.
 
-Megadhat más tulajdonságokat, például degreeOfParallelism és prioritását, valamint a feladatokhoz, amelyek az Azure Data Lake Analytics szolgáltatás futnak a folyamat definíciójában.
+Egyéb tulajdonságokat is megadhat, például a Analyticsunits és a prioritást, valamint a folyamat definícióját a Azure Data Lake Analytics szolgáltatásban futó feladatok esetében.
 
 ## <a name="dynamic-parameters"></a>Dinamikus paraméterek
-A minta folyamatdefiníció és paraméterek vannak társítva változtatható értékekkel. 
+A mintavételi folyamat definíciójában a és a kimenő paraméterek rögzített értékekkel vannak társítva. 
 
 ```json
 "parameters": {
@@ -331,7 +331,7 @@ A minta folyamatdefiníció és paraméterek vannak társítva változtatható �
 }
 ```
 
-Használja helyette a dinamikus paraméterek lehetőség. Példa: 
+Ehelyett dinamikus paramétereket lehet használni. Például: 
 
 ```json
 "parameters": {
@@ -340,6 +340,6 @@ Használja helyette a dinamikus paraméterek lehetőség. Példa:
 }
 ```
 
-Ebben az esetben a bemeneti fájlok továbbra is mértékének /datalake/input mappából, és a kimeneti fájlok jönnek létre a /datalake/output mappában. A fájlok nevei megkülönböztetik a dinamikus a szelet kezdési időpont alapján.  
+Ebben az esetben a bemeneti fájlok továbbra is a/datalake/input mappából lesznek kiválasztva, és a kimeneti fájlok a/datalake/output mappában jönnek létre. A fájlnevek dinamikusak a szelet indítási ideje alapján.  
 
 

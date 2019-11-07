@@ -1,20 +1,17 @@
 ---
 title: Az állandó tárolás használata az Azure Spring Cloud-ban | Microsoft Docs
 description: Az állandó tárterület használata az Azure Spring Cloud-ban
-services: spring-cloud
-author: v-vasuke
-manager: gwallace
-editor: ''
+author: jpconnock
 ms.service: spring-cloud
-ms.topic: quickstart
+ms.topic: conceptual
 ms.date: 10/07/2019
 ms.author: jeconnoc
-ms.openlocfilehash: f14da7d8e64c58a54a9da4d851ac22fd710ea8ca
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: d70e7ff747b80b661e848f1c208f0d1c2c928248
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73163734"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73607769"
 ---
 # <a name="how-to-use-persistent-storage-in-azure-spring-cloud"></a>Az állandó tárterület használata az Azure Spring Cloud-ban
 
@@ -54,6 +51,12 @@ Ha az állandó tárterület engedélyezve van, a mérete és elérési útja is
 
 ## <a name="use-the-azure-cli-to-modify-persistent-storage"></a>Az állandó tároló módosítása az Azure CLI használatával
 
+Ha szükséges, telepítse az Azure CLI-hez készült Spring Cloud bővítményt:
+
+```azurecli
+az extension add --name spring-cloud
+```
+
 Állandó lemezzel rendelkező alkalmazás létrehozása:
  
 ```azurecli
@@ -75,6 +78,6 @@ az spring-cloud app update -n <app> -g <resource-group> -s <service-name> --enab
 az spring-cloud app update -n <app> -g <resource-group> -s <service-name> --enable-persistent-storage false
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ismerje meg az [alkalmazás-és szolgáltatási kvótákat](spring-cloud-quotas.md), vagy Ismerje meg, hogyan [méretezheti manuálisan az alkalmazást](spring-cloud-tutorial-scale-manual.md).

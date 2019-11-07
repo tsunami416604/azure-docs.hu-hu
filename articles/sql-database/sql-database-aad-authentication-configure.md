@@ -1,5 +1,5 @@
 ---
-title: Azure Active Directory hitelesítés konfigurálása – SQL | Microsoft Docs
+title: Azure Active Directory hitelesítés konfigurálása – SQL
 description: Megtudhatja, hogyan csatlakozhat SQL Databasehoz, felügyelt példányhoz és SQL Data Warehousehoz Azure Active Directory hitelesítéssel – az Azure AD konfigurálása után.
 services: sql-database
 ms.service: sql-database
@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto, carlrab
-ms.date: 10/16/2019
-ms.openlocfilehash: 1dbccf43d03907cefb68315b6908a35735f373ce
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.date: 11/06/2019
+ms.openlocfilehash: d23fcb781f5eddd71d5ddce9344d988d2e323611
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73177651"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73691382"
 ---
 # <a name="configure-and-manage-azure-active-directory-authentication-with-sql"></a>Azure Active Directory hitelesítés konfigurálása és kezelése SQL-sel
 
@@ -57,6 +57,9 @@ Ha Geo-replikációval Azure Active Directory használ, a Azure Active Directory
 
 > [!IMPORTANT]
 > Csak akkor hajtsa végre ezeket a lépéseket, ha felügyelt példányt épít ki. Ezt a műveletet csak a globális/vállalati rendszergazda vagy az Azure AD Kiemelt szerepkörű rendszergazdája hajthatja végre. A következő lépések azt mutatják be, hogyan adhatók meg engedélyek a különböző jogosultságokkal rendelkező felhasználók számára a címtárban.
+
+> [!NOTE]
+> A GA előtt létrehozott Azure AD-rendszergazdák esetében, de továbbra is a GA utáni működést, a meglévő viselkedést nem változtatja meg. További részletekért tekintse meg az [új Azure ad-rendszergazdai funkciót a mi](#new-azure-ad-admin-functionality-for-mi) szakaszban.
 
 A felügyelt példánynak engedélyre van szüksége az Azure AD olvasásához, hogy sikeresen hajtsa végre a felhasználókat, például a biztonsági csoporttagság vagy az új felhasználók létrehozása révén a felhasználók hitelesítését. Ahhoz, hogy működjön, engedélyeket kell adnia a felügyelt példánynak az Azure AD olvasásához. Ezt kétféleképpen teheti meg: a portálról és a PowerShellből. A következő lépések mindkét módszert követik.
 
@@ -146,10 +149,34 @@ A felügyelt példánynak engedélyre van szüksége az Azure AD olvasásához, 
 
     A rendszergazda módosításának folyamata több percet is igénybe vehet. Ezután megjelenik az új rendszergazda a Active Directory admin mezőben.
 
-Miután kiépített egy Azure AD-rendszergazdát a felügyelt példányhoz, megkezdheti az Azure AD Server-rendszerbiztonsági tag (bejelentkezések) (**nyilvános előzetes**verzió) LÉTREHOZÁSÁT a <a href="/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">bejelentkezési szintaxis létrehozásával</a> . További információ: a [felügyelt példányok áttekintése](sql-database-managed-instance.md#azure-active-directory-integration).
+Miután kiépített egy Azure AD-rendszergazdát a felügyelt példányhoz, megkezdheti az Azure AD Server-rendszerbiztonsági tag (bejelentkezések) létrehozását a <a href="/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">bejelentkezési szintaxis létrehozásával</a> . További információ: a [felügyelt példányok áttekintése](sql-database-managed-instance.md#azure-active-directory-integration).
 
 > [!TIP]
 > Ha később el szeretné távolítani a rendszergazdát, a Active Directory-rendszergazda lap tetején válassza a **rendszergazda eltávolítása**lehetőséget, majd kattintson a **Mentés**gombra.
+
+### <a name="new-azure-ad-admin-functionality-for-mi"></a>Új Azure AD-rendszergazdai funkciók a MI számára
+
+Az alábbi táblázat összefoglalja az Azure AD-beli nyilvános előzetes bejelentkezési adminisztrátor funkcióit, valamint az Azure AD-bejelentkezésekhez készült új funkciókat.
+
+| Az Azure AD bejelentkezési rendszergazdája a nyilvános előzetes verzióban | Az Azure AD rendszergazdai GA funkciói a MI számára |
+| --- | ---|
+| Hasonló módon viselkedik, mint a SQL Database Azure AD-rendszergazdája, amely lehetővé teszi az Azure AD-hitelesítést, de az Azure AD-rendszergazda nem tud Azure AD-vagy SQL-bejelentkezéseket létrehozni a Master dB-ben a MI számára. | Az Azure AD-rendszergazda rendszergazdai jogosultságokkal rendelkezik, és létrehozhat HRE és SQL-bejelentkezéseket a Master dB-ben a MI számára. |
+| Nem szerepel a sys. server_principals nézetben | Megtalálható a sys. server_principals nézetben |
+| Lehetővé teszi, hogy az egyes Azure AD vendég felhasználók Azure AD-rendszergazdaként legyenek beállítva a MI számára. További információ: [Azure Active Directory B2B együttműködéssel rendelkező felhasználók hozzáadása a Azure Portal](../active-directory/b2b/add-users-administrator.md). | Az Azure AD-csoport létrehozásához a vendég felhasználók tagként való létrehozását igényli a csoport Azure AD-rendszergazdaként való beállításához. További információ: az [Azure ad Business to Business támogatása](sql-database-ssms-mfa-authentication.md#azure-ad-business-to-business-support). |
+
+Az ajánlott eljárás a GA előtt létrehozott meglévő Azure AD-rendszergazdák számára, és továbbra is a GA utáni működés alaphelyzetbe állítása az Azure AD-Azure Portal rendszergazdának a "rendszergazda eltávolítása" és a "rendszergazda beállítása" lehetőséggel azonos Azure AD-felhasználó vagy-csoport esetén.
+
+### <a name="known-issues-with-the-azure-ad-login-ga-for-mi"></a>Az Azure AD bejelentkezési GA-vel kapcsolatos ismert problémák
+
+- Ha egy Azure AD-bejelentkezés létezik a MI számára készült Master adatbázisban, a T-SQL parancs `CREATE LOGIN [myaadaccount] FROM EXTERNAL PROVIDER`használatával jött létre, az nem állítható be Azure AD-rendszergazdaként a MI számára. Az Azure AD-bejelentkezés létrehozásához a Azure Portal, a PowerShell vagy a CLI-parancsok használatával hibát tapasztalhat a bejelentkezés Azure AD-rendszergazdaként való beállításakor. 
+  - A bejelentkezést a főadatbázisból a `DROP LOGIN [myaadaccount]`parancs használatával kell eldobni, mielőtt a fiókot Azure AD-rendszergazdaként lehetne létrehozni.
+  - A `DROP LOGIN` sikeres végrehajtása után állítsa be az Azure AD-beli rendszergazdai fiókot a Azure Portal. 
+  - Ha nem tudja beállítani az Azure AD-beli rendszergazdai fiókot, a bejelentkezéshez ellenőrizze a felügyelt példány Master adatbázisát. Használja a következő parancsot: `SELECT * FROM sys.server_principals`
+  - Az Azure AD-rendszergazda beállítása a MI számára automatikusan létrehoz egy bejelentkezési azonosítót a főadatbázisban ehhez a fiókhoz. Az Azure AD-rendszergazda eltávolításával automatikusan elkerülheti a bejelentkezést a Master adatbázisból.
+   
+- Az egyéni Azure AD vendég felhasználói nem használhatók Azure AD-rendszergazdákként a MI számára. A vendég felhasználók számára az Azure AD-rendszergazdaként beállítani kívánt Azure AD-csoport részét kell képeznie. Jelenleg a Azure Portal panel nem szürke a vendég felhasználók számára egy másik Azure AD-hoz, így a felhasználók továbbra is elérhetik a rendszergazda beállításait. Ha a vendég felhasználókat Azure AD-rendszergazdaként menti, a telepítő sikertelen lesz. 
+  - Ha szeretné, hogy a vendég felhasználó egy Azure AD-rendszergazdát hozzon létre a MI számára, foglalja bele a vendég felhasználót egy Azure AD-csoportba, és állítsa be ezt a csoportot Azure AD-rendszergazdaként.
+
 
 ### <a name="powershell-for-sql-managed-instance"></a>PowerShell a felügyelt SQL-példányhoz
 
@@ -318,8 +345,8 @@ Ezeket a követelményeket az alábbiak szerint teljesítheti:
 
 ## <a name="create-contained-database-users-in-your-database-mapped-to-azure-ad-identities"></a>Tárolt adatbázis-felhasználók létrehozása az adatbázisban az Azure AD-identitásokhoz rendelve
 
->[!IMPORTANT]
->A felügyelt példány mostantól támogatja az Azure ad Server rendszerbiztonsági tag (bejelentkezések) (**nyilvános előzetes**verzió) használatát, amely lehetővé teszi az Azure ad-felhasználók,-csoportok vagy-alkalmazások bejelentkezési adatainak létrehozását. Az Azure AD-kiszolgálói rendszerbiztonsági tag (Logins) lehetővé teszi a felügyelt példányok hitelesítését anélkül, hogy az adatbázis-felhasználók számára a tárolt adatbázis-felhasználóként kellene létrehozni. További információ: a [felügyelt példányok áttekintése](sql-database-managed-instance.md#azure-active-directory-integration). Az Azure AD Server-rendszerbiztonsági tag (Logins) létrehozásával kapcsolatos szintaxisért lásd: <a href="/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">create login (bejelentkezés létrehozása</a>).
+> [!IMPORTANT]
+> A felügyelt példány mostantól támogatja az Azure ad Server-rendszerbiztonsági tag (bejelentkezések) használatát, amely lehetővé teszi az Azure AD-felhasználók,-csoportok vagy-alkalmazások bejelentkezési adatainak létrehozását. Az Azure AD-kiszolgálói rendszerbiztonsági tag (Logins) lehetővé teszi a felügyelt példányok hitelesítését anélkül, hogy az adatbázis-felhasználók számára a tárolt adatbázis-felhasználóként kellene létrehozni. További információ: a [felügyelt példányok áttekintése](sql-database-managed-instance.md#azure-active-directory-integration). Az Azure AD Server-rendszerbiztonsági tag (Logins) létrehozásával kapcsolatos szintaxisért lásd: <a href="/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">create login (bejelentkezés létrehozása</a>).
 
 Azure Active Directory hitelesítéshez az adatbázis-felhasználók a tárolt adatbázis-felhasználókként hozhatók létre. Egy Azure AD-identitáson alapuló adatbázis-felhasználó egy olyan adatbázis-felhasználó, amely nem rendelkezik bejelentkezési azonosítóval a főadatbázisban, és amely az adatbázishoz társított Azure AD-címtárban található identitáshoz rendelhető. Az Azure AD-identitás lehet egyéni felhasználói fiók vagy csoport is. További információ a tárolt adatbázis-felhasználókról: [tárolt adatbázis-felhasználók – az adatbázis hordozhatóvé tétele](https://msdn.microsoft.com/library/ff929188.aspx).
 
@@ -405,7 +432,7 @@ Ezt a módszert akkor használja, ha Azure ad-beli egyszerű névvel csatlakozik
 Ezzel a módszerrel a natív vagy összevont Azure AD-felhasználók számára az Azure AD-vel végezhet hitelesítést az SQL DB/DW használatával. Egy natív felhasználó az Azure AD-ben explicit módon jön létre, és felhasználónévvel és jelszóval van hitelesítve, míg egy összevont felhasználó egy olyan Windows-felhasználó, amelynek tartományát az Azure AD-vel összevonták. Az utóbbi módszer (felhasználói & jelszó használata) akkor használható, ha a felhasználó Windows-hitelesítő adatait szeretné használni, de a helyi számítógép nincs csatlakoztatva a tartományhoz (például egy távelérés használatával). Ebben az esetben a Windows-felhasználó megadhatja a tartományi fiókját és jelszavát, és az összevont hitelesítő adatok használatával hitelesítheti magát az SQL DB/DW-ben.
 
 1. Indítsa el Management Studio vagy az adateszközöket, és a **Kapcsolódás a kiszolgálóhoz** (vagy a **Kapcsolódás az adatbázis-kezelőhöz**) párbeszédpanel **hitelesítés** mezőjében válassza a **Active Directory-Password**lehetőséget.
-2. **A Felhasználónév mezőbe írja** be a Azure Active Directory felhasználónevét a **Felhasználónév \@domain. com**formátumban. A felhasználónévnek a Azure Active Directory vagy egy olyan fiókból kell származnia, amely a Azure Active Directory összevonása.
+2. **A Felhasználónév mezőbe írja** be a Azure Active Directory felhasználónevét a **Felhasználónév\@domain.com**formátumban. A felhasználónévnek a Azure Active Directory vagy egy olyan fiókból kell származnia, amely a Azure Active Directory összevonása.
 3. A **jelszó** mezőbe írja be a Azure Active Directory fiók vagy összevont tartományi fiók felhasználói jelszavát.
 
     ![AD jelszó-hitelesítés kiválasztása][12]
@@ -475,7 +502,7 @@ sqlcmd -S Target_DB_or_DW.testsrv.database.windows.net  -G
 sqlcmd -S Target_DB_or_DW.testsrv.database.windows.net -U bob@contoso.com -P MyAADPassword -G -l 30
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Az SQL Database hozzáféréseinek és felügyeletének áttekintéséről az [SQL Database-hozzáférés és -felügyelet](sql-database-control-access.md) részben olvashat.
 - Az SQL Database bejelentkezéseinek, felhasználóinak és adatbázis-szerepköreinek áttekintését a [Bejelentkezések, felhasználók és adatbázis-szerepkörök](sql-database-manage-logins.md) részben találja.

@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: troubleshooting
 ms.date: 08/13/2018
 ms.author: saudas
-ms.openlocfilehash: 2c25069ce5231a1f89027dea69579231f0fe4bcd
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: 270dbb24d851645ff7a7f0bcf5f78bfb95bcd095
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72517080"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73604734"
 ---
 # <a name="aks-troubleshooting"></a>AK-hibaelhárítás
 
@@ -30,13 +30,13 @@ A Microsoft Engineering által kiadott [hibaelhárítási útmutató](https://gi
 ## <a name="what-is-the-maximum-pods-per-node-setting-for-aks"></a>Mekkora a hüvelyek maximális száma az AK-ban?
 
 A hüvelyek maximális száma alapértelmezés szerint 30, ha AK-fürtöt helyez üzembe a Azure Portalban.
-Alapértelmezés szerint a hüvelyek maximális száma 110, ha az Azure CLI-ben helyez üzembe egy AK-fürtöt. (Ügyeljen arra, hogy az Azure CLI legújabb verzióját használja). Ezt az alapértelmezett beállítást a `az aks create` parancs `–-max-pods` jelzője segítségével módosíthatja.
+Alapértelmezés szerint a hüvelyek maximális száma 110, ha az Azure CLI-ben helyez üzembe egy AK-fürtöt. (Ügyeljen arra, hogy az Azure CLI legújabb verzióját használja). Ez az alapértelmezett beállítás a `az aks create` parancs `–-max-pods` jelzője segítségével módosítható.
 
 ## <a name="im-getting-an-insufficientsubnetsize-error-while-deploying-an-aks-cluster-with-advanced-networking-what-should-i-do"></a>InsufficientSubnetSize hibaüzenetet kapok egy AK-fürt speciális hálózatkezeléssel való üzembe helyezése során. Mit tegyek?
 
-Ha az Azure CNI (speciális Hálózatkezelés) van használatban, a (z) "Max-hüvelyek" által konfigurált csomópontok alapján a rendszer előre lefoglalja az IP-címet. Egy AK-fürt csomópontjainak száma 1 és 110 között lehet. A konfigurált maximális hüvelyek/csomópontok alapján az alhálózat méretének nagyobbnak kell lennie, mint a csomópontok számának és a maximális Pod/csomópontnak a szorzata. A következő alapegyenlet körvonalazza ezt:
+Ha az Azure CNI (speciális Hálózatkezelés) van használatban, az AK IP-címeket foglal le a konfigurált csomópontok maximális száma alapján. A konfigurált maximális hüvelyek/csomópontok alapján az alhálózat méretének nagyobbnak kell lennie a csomópontok számának és a maximális Pod/csomópont-beállítás szorzatának. A következő egyenlet körvonalazza ezt:
 
-Az alhálózati méret > a fürt csomópontjainak száma (a jövőbeli skálázási követelmények figyelembevételével) * a maximális hüvely/csomópont.
+Az alhálózat mérete > a fürt csomópontjainak száma (figyelembe véve a jövőbeli skálázási követelményeket) * a csomópontok maximális száma.
 
 További információt [a fürt IP-címzésének megtervezése](configure-azure-cni.md#plan-ip-addressing-for-your-cluster)című témakörben talál.
 
@@ -59,7 +59,7 @@ A figyelmeztetések az irányítópulton az oka, hogy a fürt most már engedél
 
 ## <a name="i-cant-connect-to-the-dashboard-what-should-i-do"></a>Nem tudok csatlakozni az irányítópulthoz. Mit tegyek?
 
-A szolgáltatás fürtön kívüli elérésének legegyszerűbb módja a `kubectl proxy` futtatása, amely a 8001-es localhost-portra küldött kérelmeket a Kubernetes API-kiszolgálóra továbbítja. Az API-kiszolgáló innen proxyt tud a szolgáltatáshoz: `http://localhost:8001/api/v1/namespaces/kube-system/services/kubernetes-dashboard/proxy/#!/node?namespace=default`.
+A szolgáltatás fürtön kívüli elérésének legegyszerűbb módja a `kubectl proxy` futtatása, amelyet a rendszer a localhost 8001-as portra küldött a Kubernetes API-kiszolgálónak. Innen az API-kiszolgáló proxyt tud a szolgáltatáshoz: `http://localhost:8001/api/v1/namespaces/kube-system/services/kubernetes-dashboard/proxy/#!/node?namespace=default`.
 
 Ha nem látja a Kubernetes irányítópultot, ellenőrizze, hogy fut-e a `kube-proxy` Pod a `kube-system` névtérben. Ha nem fut állapotban van, törölje a pod-t, majd indítsa újra.
 
@@ -77,7 +77,7 @@ Előfordulhat, hogy ez a hiba azért fordul elő, mert a címkéket az AK-fürt�
 
 Ez a hiba akkor fordul elő, ha a fürtök több okból is hibás állapotba kerülnek. Kövesse az alábbi lépéseket a fürt sikertelen állapotának feloldásához a korábban sikertelen művelet újbóli megkísérlése előtt:
 
-1. Amíg a fürt nincs `failed` állapotban, `upgrade` és `scale` műveletek sikertelenek lesznek. A leggyakoribb gyökérszintű problémák és megoldások a következők:
+1. Amíg a fürt nem `failed` állapotú, `upgrade` és a `scale` művelet nem fog sikerülni. A leggyakoribb gyökérszintű problémák és megoldások a következők:
     * A nem **megfelelő számítási (CRP-) kvóta**skálázása. A megoldáshoz először a kvótán belüli, stabil cél állapotba kell állítani a fürtöt. Ezután kövesse az alábbi [lépéseket a számítási kvóta növelésének](../azure-supportability/resource-manager-core-quotas-request.md) megkezdéséhez, mielőtt a kezdeti kvóta-korlátokon felül ismét fel kellene mérni.
     * Fürt méretezése speciális hálózatkezeléssel és nem **elegendő alhálózat (Hálózatkezelés) erőforrásokkal**. A megoldáshoz először a kvótán belüli, stabil cél állapotba kell állítani a fürtöt. Ezután kövesse az [alábbi lépéseket az erőforrás-kvóta növelésének](../azure-resource-manager/resource-manager-quota-errors.md#solution) megkezdéséhez, mielőtt a kezdeti kvóta-korlátokon felül ismét fel kellene mérni a skálázást.
 2. Miután megoldotta a frissítési hiba kiváltó okát, a fürtnek sikeres állapotban kell lennie. A sikeres állapot ellenőrzése után próbálja megismételni az eredeti műveletet.
@@ -88,7 +88,7 @@ Ez a hiba akkor fordul elő, ha a fürtök több okból is hibás állapotba ker
 
 Egyetlen csomóponttal rendelkező fürtön lévő műveletek frissítése és méretezése, illetve a [több csomóponttal](use-multiple-node-pools.md) rendelkező fürtök kölcsönösen kizárják egymást. Nem lehet egyszerre frissíteni és méretezni a fürt vagy a csomópont készletét. Ehelyett minden Művelettípus a következő, ugyanazon az erőforráson megjelenő kérelem előtt fejeződik be a cél erőforráson. Ennek eredményeképpen a műveletek korlátozottak, ha az aktív verziófrissítési vagy méretezési műveletek történnek, és a későbbiekben sikertelenek voltak. 
 
-A probléma megoldásához futtassa `az aks show -g myResourceGroup -n myAKSCluster -o table` a fürt részletes állapotának lekéréséhez. Az eredmény alapján:
+A probléma diagnosztizálásához futtassa a `az aks show -g myResourceGroup -n myAKSCluster -o table` parancsot a fürt részletes állapotának lekéréséhez. Az eredmény alapján:
 
 * Ha a fürt aktívan frissít, várjon, amíg a művelet leáll. Ha sikerült, próbálkozzon újra a korábban sikertelen művelettel.
 * Ha a fürt nem tudta frissíteni a frissítést, kövesse az előző szakaszban ismertetett lépéseket.
@@ -118,7 +118,7 @@ A megfelelő dokumentum lépéseinek *megkezdése előtt* kövesse az AK-fürt m
 
 Az elnevezési korlátozásokat az Azure platform és az AK is implementálja. Ha egy erőforrás neve vagy paramétere megszakítja az egyik ilyen korlátozást, a rendszer hibaüzenetet küld, amely megkéri, hogy adjon meg egy másik bemenetet. A következő közös elnevezési irányelvek érvényesek:
 
-* Az AK- *MC_* erőforráscsoport neve kombinálja az erőforráscsoport nevét és az erőforrás nevét. @No__t_0 automatikusan generált szintaxisa nem lehet nagyobb, mint 80 karakter. Ha szükséges, csökkentse az erőforráscsoport-név vagy az AK-fürt nevének hosszát.
+* Az AK- *MC_* erőforráscsoport neve kombinálja az erőforráscsoport nevét és az erőforrás nevét. `MC_resourceGroupName_resourceName_AzureRegion` automatikusan generált szintaxisa nem lehet nagyobb, mint 80 karakter. Ha szükséges, csökkentse az erőforráscsoport-név vagy az AK-fürt nevének hosszát.
 * A *dnsPrefix* alfanumerikus értékekkel kell kezdődnie és végződnie. Az érvényes karakterek alfanumerikus értékeket és kötőjeleket (-) tartalmazhatnak. A *dnsPrefix* nem tartalmazhat speciális karaktereket, például pontot (.).
 
 ## <a name="im-receiving-errors-when-trying-to-create-update-scale-delete-or-upgrade-cluster-that-operation-is-not-allowed-as-another-operation-is-in-progress"></a>Hibák léptek fel a fürt létrehozása, frissítése, skálázása, törlése vagy frissítése során, ez a művelet nem engedélyezett, mert folyamatban van egy másik művelet.
@@ -172,14 +172,14 @@ Győződjön meg arról, hogy a beállítások nem ütköznek a szükséges vagy
 
 A Kubernetes 1,10-es verziójában a MountVolume. WaitForAttach sikertelen lehet az Azure-lemez újracsatlakoztatásával.
 
-Linux rendszeren helytelen DevicePath formátumú hiba jelenhet meg. Példa:
+Linux rendszeren helytelen DevicePath formátumú hiba jelenhet meg. Például:
 
 ```console
 MountVolume.WaitForAttach failed for volume "pvc-f1562ecb-3e5f-11e8-ab6b-000d3af9f967" : azureDisk - Wait for attach expect device path as a lun number, instead got: /dev/disk/azure/scsi1/lun1 (strconv.Atoi: parsing "/dev/disk/azure/scsi1/lun1": invalid syntax)
   Warning  FailedMount             1m (x10 over 21m)   kubelet, k8s-agentpool-66825246-0  Unable to mount volumes for pod
 ```
 
-A Windows rendszerben hibás DevicePath (LUN) hiba jelenhet meg. Példa:
+A Windows rendszerben hibás DevicePath (LUN) hiba jelenhet meg. Például:
 
 ```console
 Warning  FailedMount             1m    kubelet, 15282k8s9010    MountVolume.WaitForAttach failed for volume "disk01" : azureDisk - WaitForAttach failed within timeout node (15282k8s9010) diskId:(andy-mghyb
@@ -192,7 +192,7 @@ Ezt a problémát a Kubernetes következő verzióiban rögzítették:
 | -- | :--: |
 | 1,10 | 1.10.2 vagy újabb |
 | 1,11 | 1.11.0 vagy újabb |
-| 1,12 és újabb verziók | – |
+| 1,12 és újabb verziók | N/A |
 
 ### <a name="failure-when-setting-uid-and-gid-in-mountoptions-for-azure-disk"></a>Hiba történt az UID és a GID beállításakor az Azure Disk mountOptions esetében
 
@@ -225,7 +225,7 @@ spec:
   >[!NOTE]
   > Mivel a GID és az UID alapértelmezés szerint root-ként vagy 0-ként van csatlakoztatva. Ha a GID vagy az UID nem legfelső szintűként van beállítva, például 1000, a Kubernetes `chown` fogja használni az adott lemezen található összes könyvtár és fájl módosítására. Ez a művelet időt vehet igénybe, és nagyon lassú lehet a lemez csatlakoztatása.
 
-* A GID és az UID beállításához használja a initContainers `chown` a következőben:. Példa:
+* A GID és az UID beállításához használja a initContainers `chown` a következőben:. Például:
 
 ```yaml
 initContainers:
@@ -239,7 +239,7 @@ initContainers:
 
 ### <a name="error-when-deleting-azure-disk-persistentvolumeclaim-in-use-by-a-pod"></a>Hiba történt az Azure-lemezek Pod-beli PersistentVolumeClaim való törlésekor
 
-Ha olyan Azure-beli PersistentVolumeClaim próbál törölni, amelyet egy Pod használ, előfordulhat, hogy hibaüzenet jelenik meg. Példa:
+Ha olyan Azure-beli PersistentVolumeClaim próbál törölni, amelyet egy Pod használ, előfordulhat, hogy hibaüzenet jelenik meg. Például:
 
 ```console
 $ kubectl describe pv pvc-d8eebc1d-74d3-11e8-902b-e22b71bb1c06
@@ -266,7 +266,7 @@ Ezt a problémát a Kubernetes következő verzióiban rögzítették:
 | 1,11 | 1.11.5 vagy újabb |
 | 1,12 | 1.12.3 vagy újabb |
 | 1,13 | 1.13.0 vagy újabb |
-| 1,14 és újabb verziók | – |
+| 1,14 és újabb verziók | N/A |
 
 Ha olyan Kubernetes-verziót használ, amely nem rendelkezik a probléma javításával, a probléma megoldásához várjon néhány percet, és próbálkozzon újra.
 
@@ -287,7 +287,7 @@ Ezt a problémát a Kubernetes következő verzióiban rögzítették:
 | 1,11 | 1.11.6 vagy újabb |
 | 1,12 | 1.12.4 vagy újabb |
 | 1,13 | 1.13.0 vagy újabb |
-| 1,14 és újabb verziók | – |
+| 1,14 és újabb verziók | N/A |
 
 Ha olyan Kubernetes-verziót használ, amely nem rendelkezik a probléma javításával, a probléma megoldásához próbálkozzon az alábbiakkal:
 
@@ -295,7 +295,7 @@ Ha olyan Kubernetes-verziót használ, amely nem rendelkezik a probléma javít�
 
 ### <a name="azure-disk-waiting-to-detach-indefinitely"></a>Az Azure-lemez határozatlan idejű leválasztásra vár
 
-Bizonyos esetekben, ha az első kísérlet során az Azure Disk leválasztási művelete meghiúsul, nem próbálkozik újra a leválasztási művelettel, és továbbra is az eredeti csomópont virtuális géphez lesz csatolva. Ez a hiba akkor fordulhat elő, ha a lemezt egyik csomópontról a másikra helyezi át. Példa:
+Bizonyos esetekben, ha az első kísérlet során az Azure Disk leválasztási művelete meghiúsul, nem próbálkozik újra a leválasztási művelettel, és továbbra is az eredeti csomópont virtuális géphez lesz csatolva. Ez a hiba akkor fordulhat elő, ha a lemezt egyik csomópontról a másikra helyezi át. Például:
 
 ```console
 [Warning] AttachVolume.Attach failed for volume “pvc-7b7976d7-3a46-11e9-93d5-dee1946e6ce9” : Attach volume “kubernetes-dynamic-pvc-7b7976d7-3a46-11e9-93d5-dee1946e6ce9" to instance “/subscriptions/XXX/resourceGroups/XXX/providers/Microsoft.Compute/virtualMachines/aks-agentpool-57634498-0” failed with compute.VirtualMachinesClient#CreateOrUpdate: Failure sending request: StatusCode=0 -- Original Error: autorest/azure: Service returned an error. Status= Code=“ConflictingUserInput” Message=“Disk ‘/subscriptions/XXX/resourceGroups/XXX/providers/Microsoft.Compute/disks/kubernetes-dynamic-pvc-7b7976d7-3a46-11e9-93d5-dee1946e6ce9’ cannot be attached as the disk is already owned by VM ‘/subscriptions/XXX/resourceGroups/XXX/providers/Microsoft.Compute/virtualMachines/aks-agentpool-57634498-1’.”
@@ -308,7 +308,7 @@ Ezt a problémát a Kubernetes következő verzióiban rögzítették:
 | 1,11 | 1.11.9 vagy újabb |
 | 1,12 | 1.12.7 vagy újabb |
 | 1,13 | 1.13.4 vagy újabb |
-| 1,14 és újabb verziók | – |
+| 1,14 és újabb verziók | N/A |
 
 Ha olyan Kubernetes-verziót használ, amely nem rendelkezik a probléma javításával, a lemez manuális leválasztásával enyhítheti a problémát.
 
@@ -323,7 +323,7 @@ Ezt a problémát a Kubernetes következő verzióiban rögzítették:
 | 1,12 | 1.12.9 vagy újabb |
 | 1,13 | 1.13.6 vagy újabb |
 | 1,14 | 1.14.2 vagy újabb |
-| 1,15 és újabb verziók | – |
+| 1,15 és újabb verziók | N/A |
 
 Ha olyan Kubernetes-verziót használ, amely nem rendelkezik a probléma javításával, és a csomópont virtuális gépe elavult lemezzel rendelkezik, a probléma megoldásához leválaszthatja a virtuális gépről származó összes nem létező lemezt egyetlen, tömeges műveletként. **A nem létező lemezek különálló leválasztása sikertelen lehet.**
 
@@ -343,7 +343,7 @@ Ezt a problémát a Kubernetes következő verzióiban rögzítették:
 | 1,12 | 1.12.10 vagy újabb |
 | 1,13 | 1.13.8 vagy újabb |
 | 1,14 | 1.14.4 vagy újabb |
-| 1,15 és újabb verziók | – |
+| 1,15 és újabb verziók | N/A |
 
 Ha olyan Kubernetes-verziót használ, amely nem rendelkezik a probléma javításával, és a csomópont virtuális gépe hibás állapotban van, a probléma megoldásához manuálisan frissítse a virtuális gép állapotát az alábbi lépések egyikével:
 
@@ -460,7 +460,7 @@ Ezt a problémát a Kubernetes következő verzióiban rögzítették:
 | -- | :--: |
 | 1,12 | 1.12.6 vagy újabb |
 | 1,13 | 1.13.4 vagy újabb |
-| 1,14 és újabb verziók | – |
+| 1,14 és újabb verziók | N/A |
 
 ### <a name="azure-files-mount-fails-due-to-storage-account-key-changed"></a>A Azure Files csatlakoztatása a Storage-fiók kulcsának módosítása miatt meghiúsult
 
@@ -468,13 +468,13 @@ Ha a Storage-fiók kulcsa módosult, Azure Files csatlakoztatási hibák merülh
 
 A probléma megoldásához végezze el manuálisan a *azurestorageaccountkey* -mező manuális frissítését az Azure file Secret-ben a Base64-kódolású Storage-fiók kulcsával.
 
-A Storage-fiók kulcsa Base64-ben történő kódolásához használhatja a `base64`. Példa:
+A Storage-fiók kulcsa Base64-ben történő kódolásához használhatja a `base64`. Például:
 
 ```console
 echo X+ALAAUgMhWHL7QmQ87E1kSfIqLKfgC03Guy7/xk9MyIg2w4Jzqeu60CVw2r/dm6v6E0DWHTnJUEJGVQAoPaBc== | base64
 ```
 
-Az Azure Secret-fájl frissítéséhez használja a `kubectl edit secret`. Példa:
+Az Azure Secret-fájl frissítéséhez használja a `kubectl edit secret`. Például:
 
 ```console
 kubectl edit secret azure-storage-account-{storage-account-name}-secret

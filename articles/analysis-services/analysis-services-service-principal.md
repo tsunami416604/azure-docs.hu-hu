@@ -1,18 +1,18 @@
 ---
 title: Azure Analysis Services feladatok automatizálása egyszerű szolgáltatásokkal | Microsoft Docs
-description: Megtudhatja, hogyan hozhat létre egyszerű szolgáltatásokat Azure Analysis Services feladatok automatizálásához.
+description: Megtudhatja, hogyan hozhat létre egyszerű szolgáltatásnevet Azure Analysis Services felügyeleti feladatok automatizálásához.
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 10/29/2019
+ms.date: 10/30/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: a590590faa422d47306e697a7c90bb635ea8c6e9
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 5078fcc1ba5c581aca475025b286d0319d6024a6
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73146359"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73572607"
 ---
 # <a name="automation-with-service-principals"></a>Automatizálás szolgáltatásnevekkel
 
@@ -33,7 +33,7 @@ Az egyszerű szolgáltatások a Azure Portal vagy a PowerShell használatával h
 
 Az egyszerű szolgáltatás hitelesítő adatai és tanúsítványai biztonságosan tárolhatók Azure Automation runbook-műveletekhez. További tudnivalókért lásd:
 
-[Hitelesítőadat-eszközök a Azure Automation](../automation/automation-credentials.md)   
+[A hitelesítő adatok Azure Automation](../automation/automation-credentials.md)   
 [Az Azure Automation tanúsítvány adategységei](../automation/automation-certificates.md)
 
 ## <a name="add-service-principals-to-server-admin-role"></a>Egyszerű szolgáltatások hozzáadása a kiszolgálói rendszergazdai szerepkörhöz
@@ -92,9 +92,9 @@ Invoke-ProcessTable -Server "asazure://westcentralus.asazure.windows.net/myserve
 
 ### <a name="amo-and-adomd"></a>AMO és ADOMD 
 
-Az ügyfélalkalmazások és a webalkalmazások, az [amo és a ADOMD ügyfél-kódtárak](analysis-services-data-providers.md) verziójának 15.0.2 és magasabb telepíthető csomagjai a NuGet a következő szintaxissal használhatók a kapcsolati sztringekben: `app:AppID` és jelszó vagy @no__ t-2. 
+Az ügyfélalkalmazások és a webalkalmazások, az [amo és a ADOMD ügyféloldali kódtárak](analysis-services-data-providers.md) verziójának 15.0.2 és magasabb telepíthető csomagjai a NuGet a következő szintaxissal használhatók a kapcsolati sztringekben: `app:AppID` és jelszó vagy @no_ _t_2_ .`cert:thumbprint` 
 
-A következő példában a `appID` és a `password` a modell adatbázis-frissítési műveletének végrehajtásához használható:
+Az alábbi példában `appID` és egy `password` a modell adatbázis-frissítési műveletének végrehajtásához:
 
 ```csharp
 string appId = "xxx";
@@ -108,6 +108,6 @@ tbl.RequestRefresh(RefreshType.Full);
 db.Model.SaveChanges();
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 [Bejelentkezés Azure PowerShell](https://docs.microsoft.com/powershell/azure/authenticate-azureps)   
 [Egyszerű szolgáltatásnév hozzáadása a kiszolgáló-rendszergazdai szerepkörhöz](analysis-services-addservprinc-admins.md)   

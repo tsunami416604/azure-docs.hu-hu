@@ -1,5 +1,5 @@
 ---
-title: Saját üzemeltetésű integrációs modul konfigurálása a SSIS-ben a Azure Data Factory-ben | Microsoft Docs
+title: Saját üzemeltetésű integrációs modul konfigurálása proxyként a SSIS-ben Azure Data Factory
 description: Megtudhatja, hogyan konfigurálhat saját üzemeltetésű Integration Runtime proxyként Azure-SSIS Integration Runtimehoz.
 services: data-factory
 documentationcenter: ''
@@ -12,12 +12,12 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: 2ade270011ad5c1e1e5f5940ca305687e52bba86
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 178628db11b95fbd345e94111ebf15809da3fc35
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71200303"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73684297"
 ---
 # <a name="configure-self-hosted-ir-as-a-proxy-for-azure-ssis-ir-in-adf"></a>Saját üzemeltetésű IR konfigurálása az ADF-Azure-SSIS IR proxyként
 Ez a cikk azt ismerteti, hogyan futtathatók a SQL Server Integration Services (SSIS) csomagok Azure-SSIS Integration Runtime (IR)-ben Azure Data Factory (ADF)-ben, a saját üzemeltetésű IR proxyként konfigurálva.  Ez a funkció lehetővé teszi a helyszíni adatelérést anélkül, hogy a [virtuális hálózathoz csatlakozna a Azure-SSIS IR](https://docs.microsoft.com/azure/data-factory/join-azure-ssis-integration-runtime-virtual-network).  Ez akkor hasznos, ha a vállalati hálózat túlságosan összetett konfigurációval/korlátozó házirenddel rendelkezik, amellyel befecskendezheti a Azure-SSIS IR.
@@ -40,7 +40,7 @@ Végezetül le kell töltenie és telepítenie kell a saját üzemeltetésű int
 Hozzon létre egy Azure Blob Storage társított szolgáltatást ugyanabban az ADF-ben, ahol a Azure-SSIS IR kiépítve, ha még nem tette volna meg, kövesse az [ADF-hez társított szolgáltatás létrehozásával kapcsolatos](https://docs.microsoft.com/azure/data-factory/quickstart-create-data-factory-portal#create-a-linked-service) cikket.  Ellenőrizze a következőket:
 - Az **Azure Blob Storage** van kiválasztva az **adattárhoz**
 - Az **integrációs modulon keresztüli csatlakozás** **AutoResolveIntegrationRuntime** van kiválasztva
-- Vagy a **fiók kulcs**/**sas URI**/**egyszerű szolgáltatásnév** van kiválasztva a **hitelesítési módszerhez**
+- Vagy a **fiók kulcsa**/**sas URI**/**egyszerű szolgáltatásnév** van kiválasztva a **hitelesítési módszerhez**
 
 ![Az Azure Blob Storage társított szolgáltatás előkészítése átmeneti használatra](media/self-hosted-integration-runtime-proxy-ssis/shir-azure-blob-storage-linked-service.png)
 
@@ -59,7 +59,7 @@ Amikor az OLEDB/Flat file sources használatával olyan új csomagokat tervez, a
 ![ConnectByProxy tulajdonság engedélyezése](media/self-hosted-integration-runtime-proxy-ssis/shir-connection-manager-properties.png)
 
 Ezt a tulajdonságot akkor is engedélyezheti, ha már meglévő csomagokat futtat, és nem kell manuálisan módosítania őket.  2 lehetőség közül választhat:
-- A csomagokat tartalmazó projekt megnyitása, újraépítése és újbóli üzembe helyezése a legújabb SSDT a Azure-SSIS IRon való futtatáshoz: A tulajdonság ezután engedélyezhető úgy, hogy az **igaz** értékre van állítva a megfelelő ügyfélkapcsolat-kezelők számára, amelyek megjelennek a csomag előugró **ablakban a SSMS** származó csomagok futtatásakor.
+- A csomagokat tartalmazó projekt megnyitása, újraépítése és újbóli üzembe helyezése a legújabb SSDT, hogy az a Azure-SSIS IR fusson: a tulajdonság engedélyezéséhez állítsa **igaz** értékre a kapcsolódáson megjelenő megfelelő Csatlakozáskezelő-kezelők esetében.A csomagok a SSMS-ből való futtatásakor az előugró ablak-előkészítési ablak kezelők lapja.
 
   ![ConnectByProxy property2 engedélyezése](media/self-hosted-integration-runtime-proxy-ssis/shir-connection-managers-tab-ssms.png)
 
@@ -67,16 +67,16 @@ Ezt a tulajdonságot akkor is engedélyezheti, ha már meglévő csomagokat futt
   
   ![ConnectByProxy property3 engedélyezése](media/self-hosted-integration-runtime-proxy-ssis/shir-connection-managers-tab-ssis-activity.png)
 
-- A csomagokat tartalmazó projekt újbóli üzembe helyezése az SSIS IR-ben való futtatáshoz: Ezt követően a tulajdonságot engedélyezheti a tulajdonság elérési útjának `\Package.Connections[YourConnectionManagerName].Properties[ConnectByProxy]`megadásával, és beállíthatja, hogy a tulajdonság felülbírálja a csomag előugró ablakának **speciális** lapján a csomagok SSMS való futtatásakor.
+- A csomagokat tartalmazó projekt újbóli üzembe helyezése az SSIS IR-ben: a tulajdonság ezután engedélyezhető a tulajdonság elérési útjának megadásával, a `\Package.Connections[YourConnectionManagerName].Properties[ConnectByProxy]`és az **igaz** értékre állításával a csomag előugró ablakának **speciális** lapján. csomagok SSMS-ból való futtatásakor.
 
   ![ConnectByProxy property4 engedélyezése](media/self-hosted-integration-runtime-proxy-ssis/shir-advanced-tab-ssms.png)
 
-  A tulajdonságot `\Package.Connections[YourConnectionManagerName].Properties[ConnectByProxy]`a tulajdonság elérési útjának megadásával is engedélyezheti, és a tulajdonság felülbírálását a tulajdonságok felülbírálása a SSIS- [csomag végrehajtása tevékenységben](https://docs.microsoft.com/azure/data-factory/how-to-invoke-ssis-package-ssis-activity) a csomagok ADF-folyamatokban való futtatásakor.
+  A tulajdonságot engedélyezheti a tulajdonság elérési útjának megadásával, a `\Package.Connections[YourConnectionManagerName].Properties[ConnectByProxy]`ával és az **igaz** értékre való beállításával, **Ha a csomagok** az ADF-folyamatokban való futtatásakor a tulajdonságok felülbírálása lapon a [SSIS](https://docs.microsoft.com/azure/data-factory/how-to-invoke-ssis-package-ssis-activity) .
   
   ![ConnectByProxy property5 engedélyezése](media/self-hosted-integration-runtime-proxy-ssis/shir-property-overrides-tab-ssis-activity.png)
 
 ## <a name="debug-the-first-and-second-staging-tasks"></a>Az első és a második előkészítési feladat hibakeresése
-A saját üzemeltetésű integrációs modulban `C:\ProgramData\SSISTelemetry` megtalálhatja a futásidejű naplókat a mappában, valamint az első előkészítési `C:\ProgramData\SSISTelemetry\ExecutionLog` feladatok végrehajtási naplóit a mappában.  A második előkészítési feladatok végrehajtási naplói a SSISDB vagy a megadott naplózási elérési utakon találhatók, attól függően, hogy a csomagokat a SSISDB, illetve a fájlrendszer/fájlmegosztás/Azure Filesban tárolja-e a rendszer.  Az első előkészítési feladatok egyedi azonosítói is megtalálhatók a második előkészítési feladatok végrehajtási naplóiban, például: 
+A saját üzemeltetésű integrációs modulban megtalálhatja a futásidejű naplókat `C:\ProgramData\SSISTelemetry` mappában, valamint az első előkészítési feladatok végrehajtási naplóit `C:\ProgramData\SSISTelemetry\ExecutionLog` mappában.  A második előkészítési feladatok végrehajtási naplói a SSISDB vagy a megadott naplózási elérési utakon találhatók, attól függően, hogy a csomagokat a SSISDB, illetve a fájlrendszer/fájlmegosztás/Azure Filesban tárolja-e a rendszer.  Az első előkészítési feladatok egyedi azonosítói is megtalálhatók a második előkészítési feladatok végrehajtási naplóiban, például: 
 
 ![Az első előkészítési feladat egyedi azonosítója](media/self-hosted-integration-runtime-proxy-ssis/shir-first-staging-task-guid.png)
 
@@ -88,7 +88,7 @@ A Azure-SSIS IR futó második előkészítési feladatok külön nem lesznek fe
 ## <a name="current-limitations"></a>Aktuális korlátozások
 
 - Jelenleg csak az OLEDB/Flat file-kapcsolatok kezelői és az OLEDB/Flat file-források támogatottak. 
-- Jelenleg csak az Azure Blob Storage társított szolgáltatások vannak konfigurálva a **fiók kulcs**/**sas URI**/ **-hitelesítésével** .
+- Jelenleg csak az Azure Blob Storage társított szolgáltatások vannak konfigurálva a **fiók kulcsa**/**sas URI**/**egyszerű szolgáltatásnév** -hitelesítés.
 - Csak a saját üzemeltetésű integrációs modul van kiépítve ugyanabban az ADF-ben, ahol a Azure-SSIS IR kiépítve jelenleg támogatott.
 - Az OLEDB/Flat file sources és a kapcsolatkezelő tulajdonságain belüli SSIS paraméterek/változók használata nem támogatott.
 

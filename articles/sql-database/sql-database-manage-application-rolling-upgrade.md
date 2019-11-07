@@ -1,5 +1,5 @@
 ---
-title: Alkalmazások működés közbeni frissítései – Azure SQL Database | Microsoft Docs
+title: Alkalmazások működés közbeni frissítései – Azure SQL Database
 description: Ismerje meg, hogyan használhatja a Azure SQL Database geo-replikációt a felhőalapú alkalmazás online frissítéseinek támogatásához.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 02/13/2019
-ms.openlocfilehash: 55b23b8d8e03a79aa0806a68306017f89c747760
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 253a10e75832cf6ee8294405e34fa93b801c1b49
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68567781"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73689500"
 ---
 # <a name="manage-rolling-upgrades-of-cloud-applications-by-using-sql-database-active-geo-replication"></a>Felhőalapú alkalmazások működés közbeni frissítésének kezelése SQL Database aktív földrajzi replikálás használatával
 
@@ -34,7 +34,7 @@ A frissítési lehetőségek kiértékelése során vegye figyelembe a következ
 Ha az alkalmazás az adatbázis automatikus biztonsági mentésére támaszkodik, és a Geo-visszaállítást használja a vész-helyreállításhoz, akkor egyetlen Azure-régióba kerül üzembe. A felhasználói fennakadás csökkentése érdekében hozzon létre egy átmeneti környezetet az adott régióban a frissítésben érintett összes alkalmazás-összetevővel. Az első diagram a frissítési folyamat előtt mutatja be az operatív környezetet. A végpont `contoso.azurewebsites.net` a webalkalmazás éles környezetét jelöli. Ahhoz, hogy vissza tudja állítani a frissítést, létre kell hoznia egy átmeneti környezetet az adatbázis teljesen szinkronizált példányával. Az alábbi lépéseket követve hozhat létre átmeneti környezetet a frissítéshez:
 
 1. Hozzon létre egy másodlagos adatbázist ugyanabban az Azure-régióban. Figyelje meg a másodlagost, és ellenőrizze, hogy a kiindulási folyamat befejeződött-e (1).
-2. Hozzon létre egy új környezetet a webalkalmazáshoz, és hívja meg az "átmeneti" állapotot. Azure DNS az URL-címmel `contoso-staging.azurewebsites.net` (2) lesz regisztrálva.
+2. Hozzon létre egy új környezetet a webalkalmazáshoz, és hívja meg az "átmeneti" állapotot. Az URL-cím `contoso-staging.azurewebsites.net` (2) Azure DNS lesz regisztrálva.
 
 > [!NOTE]
 > Ezek az előkészítési lépések nem érintik az éles környezetet, ami teljes hozzáférésű módban működhet.
@@ -51,7 +51,7 @@ Az előkészítési lépések elvégzése után az alkalmazás készen áll a t�
 
 Ha a frissítés sikeresen befejeződött, most már készen áll arra, hogy átváltsa a felhasználókat az alkalmazás frissített példányára, amely éles környezetvé válik. A váltás néhány további lépést is magában foglal, ahogy azt a következő ábra szemlélteti:
 
-1. Egy swap-művelet aktiválása a webalkalmazás üzemi és átmeneti környezetei között (6). A művelet bekapcsolja a két környezet URL-címeit. Most `contoso.azurewebsites.net` a webhely v2-verziójára és az adatbázisra (éles környezet) mutat. 
+1. Egy swap-művelet aktiválása a webalkalmazás üzemi és átmeneti környezetei között (6). A művelet bekapcsolja a két környezet URL-címeit. Most `contoso.azurewebsites.net` mutat a webhely v2-verziójára és az adatbázisra (éles környezet). 
 2. Ha már nincs szüksége a v1-es verzióra, amely átmeneti másolatot vált a swap után, akkor leszerelheti az átmeneti környezetet (7).
 
 ![SQL Database geo-replikációs konfiguráció a Felhőbeli vész-helyreállításhoz.](media/sql-database-manage-application-rolling-upgrade/option1-3.png)
@@ -79,13 +79,13 @@ Ha az alkalmazás aktív geo-replikálási vagy automatikus feladatátvételi cs
 * Az alkalmazás a frissítési folyamat során mindig védelmet biztosít a katasztrofális hibáktól.
 * Az alkalmazás geo-redundáns összetevőit az aktív összetevőkkel párhuzamosan frissíti a rendszer.
 
-Ahhoz, hogy ezeket a célokat a Web Apps környezetek használata mellett is elérhetővé tegye, az Azure Traffic Manager előnyeit egy aktív végponttal és egy biztonsági mentési végponttal rendelkező feladatátvételi profillal használhatja. A következő diagram a frissítési folyamat előtt mutatja be az operatív környezetet. A webhelyek `contoso-dr.azurewebsites.net` és az alkalmazás éles környezetét képviselik teljes földrajzi redundanciával. `contoso-1.azurewebsites.net` Az éles környezet a következő összetevőket tartalmazza:
+Ahhoz, hogy ezeket a célokat a Web Apps környezetek használata mellett is elérhetővé tegye, az Azure Traffic Manager előnyeit egy aktív végponttal és egy biztonsági mentési végponttal rendelkező feladatátvételi profillal használhatja. A következő diagram a frissítési folyamat előtt mutatja be az operatív környezetet. A webhelyek `contoso-1.azurewebsites.net` és `contoso-dr.azurewebsites.net` az alkalmazás éles környezetét képviselik teljes földrajzi redundanciával. Az éles környezet a következő összetevőket tartalmazza:
 
-* A webalkalmazás `contoso-1.azurewebsites.net` éles környezete az elsődleges régióban (1)
+* Az elsődleges régióban `contoso-1.azurewebsites.net` webalkalmazás éles környezete (1)
 * Az elsődleges régió elsődleges adatbázisa (2)
 * A webalkalmazás készenléti példánya a biztonsági mentési régióban (3)
 * A földrajzi replikált másodlagos adatbázis a biztonsági mentési régióban (4)
-* Egy Traffic Manager Performance profil egy nevű `contoso-1.azurewebsites.net` online végponttal és egy kapcsolat nélküli végpont`contoso-dr.azurewebsites.net`
+* Egy `contoso-1.azurewebsites.net` nevű online végponttal és egy `contoso-dr.azurewebsites.net` nevű offline végponttal rendelkező Traffic Manager Performance profil
 
 A frissítés visszavonásához létre kell hoznia egy átmeneti környezetet az alkalmazás teljesen szinkronizált példányával. Mivel meg kell győződnie arról, hogy az alkalmazás gyorsan helyreállítható, ha a frissítési folyamat során végzetes hiba történik, az átmeneti környezetnek is földrajzilag redundánsnak kell lennie. A következő lépések szükségesek egy átmeneti környezet létrehozásához a frissítéshez:
 
@@ -117,7 +117,7 @@ ALTER DATABASE <Prod_DB>
 REMOVE SECONDARY ON SERVER <Partner-Server>
 ```
 
-3. Futtassa a frissítési parancsfájlt `contoso-1-staging.azurewebsites.net`a `contoso-dr-staging.azurewebsites.net`, a és az átmeneti elsődleges adatbázison (12). Az adatbázis módosításait a rendszer automatikusan replikálja a másodlagos átmeneti állapotba.
+3. Futtassa a frissítési parancsfájlt `contoso-1-staging.azurewebsites.net`, `contoso-dr-staging.azurewebsites.net`és az átmeneti elsődleges adatbázison (12). Az adatbázis módosításait a rendszer automatikusan replikálja a másodlagos átmeneti állapotba.
 
 ![SQL Database geo-replikációs konfiguráció a Felhőbeli vész-helyreállításhoz.](media/sql-database-manage-application-rolling-upgrade/option2-2.png)
 
@@ -144,7 +144,7 @@ Ennek a lehetőségnek a legfőbb előnye, hogy az alkalmazást és annak geo-re
 
 A fő kompromisszum az, hogy minden alkalmazás-összetevőnél kettős redundancia szükséges, ezért magasabb dollár-költségekkel jár. Emellett bonyolultabb munkafolyamatot is magában foglal.
 
-## <a name="summary"></a>Összegzés
+## <a name="summary"></a>Összefoglalás
 
 A cikkben leírt két frissítési módszer különbözik az összetettség és a dollár díja között, de mindkettőre összpontosít, hogy a felhasználó mennyi ideig korlátozódik a csak olvasási műveletekre. Ezt az időt közvetlenül a Frissítési parancsfájl időtartama határozza meg. Ez nem függ az adatbázis méretétől, a választott szolgáltatási szinttől, a webhely konfigurációjától vagy más olyan tényezőktől, amelyeket nem tud egyszerűen szabályozni. Az előkészítési lépések elvesznek a frissítés lépéseitől, és nem befolyásolják az éles alkalmazást. A Frissítési parancsfájl hatékonysága kulcsfontosságú tényező, amely meghatározza a felhasználói élményt a frissítések során. Így a legjobb megoldás az, hogy a lehető leghatékonyabban fejlessze a frissítési szkriptet.
 

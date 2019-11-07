@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: c3d07c95592c1c43a070afbbf5091693ce0a6611
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: adcaa29ed894f2d61871f467369bcdd05f8cc593
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72950352"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73601591"
 ---
 # <a name="manage-devices-in-your-azure-iot-central-application"></a>Az Azure IoT Central-alkalmazásban lévő eszközök kezelése
 
@@ -21,7 +21,7 @@ ms.locfileid: "72950352"
 
 Ez a cikk azt ismerteti, hogyan felügyelheti az eszközöket az Azure IoT Central alkalmazásban. Operátorként a következőket teheti:
 
-- Az **Device Explorer** oldalon megtekintheti, hozzáadhatja és törölheti az Azure IoT Central-alkalmazáshoz csatlakoztatott eszközöket.
+- Az **eszközök** lapon megtekintheti, hozzáadhatja és törölheti az Azure IoT Central-alkalmazáshoz csatlakoztatott eszközöket.
 - Naprakész leltárt készíthet az eszközökről.
 - Tartsa naprakészen az eszköz metaadatait az eszköz tulajdonságaiban tárolt értékek módosításával.
 - Az eszközök viselkedésének szabályozása egy adott eszköz **beállításainak a beállítások** lapról történő frissítésével.
@@ -30,11 +30,11 @@ Ez a cikk azt ismerteti, hogyan felügyelheti az eszközöket az Azure IoT Centr
 
 Egy adott eszköz megtekintése:
 
-1. A bal oldali panelen válassza a **Device Explorer** lehetőséget. Itt láthatja az [eszköz sablonjainak](howto-set-up-template.md)listáját.
+1. Válassza az **eszközök** lehetőséget a bal oldali ablaktáblán. Itt láthatja az [eszköz sablonjainak](howto-set-up-template.md)listáját.
 
 1. Válassza ki az eszköz sablonját a **sablonok** listájában.
 
-1. A **Device Explorer** lap jobb oldali ablaktáblájában megjelenik az adott eszköz sablonjában létrehozott eszközök listája. Válasszon ki egy egyéni eszközt az eszköz adatai lap megjelenítéséhez:
+1. Az **eszközök** lap jobb oldali ablaktábláján megjelenik az adott eszköz sablonjában létrehozott eszközök listája. Válasszon ki egy egyéni eszközt az eszköz adatai lap megjelenítéséhez:
 
     ![Eszköz részletei lap](./media/howto-manage-devices/devicelist.png)
 
@@ -42,7 +42,7 @@ Egy adott eszköz megtekintése:
 
 Eszköz hozzáadása az Azure IoT Central-alkalmazáshoz:
 
-1. A bal oldali panelen válassza a **Device Explorer** lehetőséget.
+1. Válassza az **eszközök** lehetőséget a bal oldali ablaktáblán.
 
 1. Válassza ki azt az eszközt, amelyből eszközt szeretne létrehozni.
 
@@ -59,7 +59,7 @@ Ha nagy számú eszközt szeretne összekötni az alkalmazással, tömegesen imp
 
 Eszközök tömeges regisztrálása az alkalmazásban:
 
-1. A bal oldali panelen válassza a **Device Explorer** lehetőséget.
+1. Válassza az **eszközök** lehetőséget a bal oldali ablaktáblán.
 
 1. A bal oldali panelen válassza ki azt az eszközt, amelyhez tömegesen szeretné létrehozni az eszközöket.
 
@@ -84,7 +84,7 @@ Ha az eszköz importálási művelete meghiúsul, hibaüzenet jelenik meg az esz
 
 Ha regisztrálja az eszközöket az importálás elindításával a nem **társított eszközök**területen, az eszközök létrehozása nem minden sablon társítása nélkül történik. Az eszközöket hozzá kell rendelni egy sablonhoz az eszköz adatainak és egyéb adatainak megismeréséhez. Kövesse az alábbi lépéseket az eszközök sablonhoz való hozzárendeléséhez:
 
-1. A bal oldali panelen válassza a **Device Explorer** lehetőséget.
+1. Válassza az **eszközök** lehetőséget a bal oldali ablaktáblán.
 
 1. A bal oldali panelen válassza a nem **társított eszközök**elemet:
 
@@ -109,7 +109,7 @@ Ha egy valós eszközt szeretne csatlakoztatni a IoT Centralhoz, szüksége lesz
 
 Eszközök tömeges exportálása az alkalmazásból:
 
-1. A bal oldali panelen válassza a **Device Explorer** lehetőséget.
+1. Válassza az **eszközök** lehetőséget a bal oldali ablaktáblán.
 
 1. A bal oldali panelen válassza ki azt az eszközt, amelyről exportálni szeretné az eszközöket.
 
@@ -140,7 +140,7 @@ Lásd: az eszköz csatlakoztatása [Az Azure IoT Centralban](concepts-connectivi
 
 Valós vagy szimulált eszköz törlése az Azure IoT Central alkalmazásból:
 
-1. A bal oldali panelen válassza a **Device Explorer** lehetőséget.
+1. Válassza az **eszközök** lehetőséget a bal oldali ablaktáblán.
 
 1. Válassza ki a törölni kívánt eszköz eszközének sablonját.
 
@@ -152,7 +152,7 @@ Valós vagy szimulált eszköz törlése az Azure IoT Central alkalmazásból:
 
 A beállítások vezérlik az eszköz viselkedését. Más szóval lehetővé teszik a bemenetek megadását az eszközön. Az eszközbeállítások lapon megtekintheti és frissítheti **az eszköz beállításait** .
 
-1. A bal oldali panelen válassza a **Device Explorer** lehetőséget.
+1. Válassza az **eszközök** lehetőséget a bal oldali ablaktáblán.
 
 1. Válassza ki annak az eszköznek a sablonját, amelynek a beállításait módosítani szeretné.
 
@@ -166,7 +166,7 @@ A beállítások vezérlik az eszköz viselkedését. Más szóval lehetővé te
 
 A tulajdonságok az eszközhöz társított eszköz-metaadatok, például a város és a sorozatszám. Az **eszköz részletei** lapon megtekintheti és frissítheti a tulajdonságokat.
 
-1. A bal oldali panelen válassza a **Device Explorer** lehetőséget.
+1. Válassza az **eszközök** lehetőséget a bal oldali ablaktáblán.
 
 1. Válassza ki annak az eszköznek a sablonját, amelynek a tulajdonságait módosítani szeretné.
 
@@ -177,7 +177,7 @@ A tulajdonságok az eszközhöz társított eszköz-metaadatok, például a vár
 > [!NOTE]
 > Az _eszköz tulajdonságainak_értéke nem módosítható. Az eszköz tulajdonságait az eszköz állítja be, és csak olvasható az Azure IoT Central alkalmazásban.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Most, hogy megismerte, hogyan felügyelheti az eszközöket az Azure IoT Central alkalmazásban, itt látható a következő lépés:
 

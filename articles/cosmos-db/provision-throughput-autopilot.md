@@ -1,19 +1,19 @@
 ---
-title: Hozzon létre Azure Cosmos-tárolókat és-adatbázisokat az átviteli sebességgel az Autopilot módban.
+title: Hozzon létre Azure Cosmos-tárolókat és-adatbázisokat az Autopilot módban.
 description: Ismerje meg az előnyöket, használati eseteket, valamint az Azure Cosmos-adatbázisok és-tárolók üzembe helyezését Autopilot módban.
 author: kirillg
 ms.author: kirillg
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 598dc6394e8be8b3372f4ed61a522454830a22d6
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 3e2d9b892ad42563b481a0b1fe6a468daefad672
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73512274"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73606440"
 ---
-# <a name="create-azure-cosmos-containers-and-databases-with-provisioned-throughput-in-autopilot-mode-preview"></a>Azure Cosmos-tárolók és-adatbázisok létrehozása a kiosztott átviteli sebességgel az Autopilot módban (előzetes verzió)
+# <a name="create-azure-cosmos-containers-and-databases-in-autopilot-mode-preview"></a>Azure Cosmos-tárolók és-adatbázisok létrehozása Autopilot módban (előzetes verzió)
 
 Azure Cosmos DB lehetővé teszi az átviteli sebesség manuális vagy Autopilot módban való kiépítését a tárolókban. Ez a cikk az Autopilot mód előnyeit és használati eseteit ismerteti.
 
@@ -24,7 +24,9 @@ Az átviteli sebesség manuális kiépítés mellett mostantól az Azure Cosmos-
 
 Többé nem kell manuálisan kezelnie a kiépített átviteli sebességet vagy a kezelői sebesség korlátozásával kapcsolatos problémákat. Az Autopilot módban konfigurált Azure Cosmos-tárolók azonnal méretezhetők a munkaterhelésre adott válasz nélkül, anélkül, hogy ez hatással lenne a munkaterhelés rendelkezésre állására, késésére, átviteli sebességére vagy teljesítményére. A magas kihasználtság alatt az Autopilot módban konfigurált Azure Cosmos-tárolók a folyamatban lévő műveletek befolyásolása nélkül méretezhetők vagy leállíthatók.
 
-A tárolók és adatbázisok robotpilóta-módban való konfigurálásakor meg kell adnia a maximális átviteli sebességet, `Tmax` nem lehet túllépni. A tárolók ezután azonnal méretezhetők a számítási feladatok igénye alapján a `0.1*Tmax < T < Tmax` tartományon belül. Más szóval a tárolók és az adatbázisok a munkaterhelési igényeknek megfelelően méretezhetők, a beállított átviteli sebességtől számított 10%-os értéktől egészen a megadott maximális beállított értékig. Az Autopilot-adatbázison vagy a tárolón bármikor módosíthatja a maximális átviteli sebesség (Tmax) beállítást.
+A tárolók és adatbázisok robotpilóta-módban való konfigurálásakor meg kell adnia a maximális átviteli sebességet, `Tmax` nem lehet túllépni. A tárolók ezután azonnal méretezhetők a számítási feladatok igénye alapján a `0.1*Tmax < T < Tmax` tartományon belül. Más szóval a tárolók és az adatbázisok a munkaterhelési igényeknek megfelelően méretezhetők, a beállított maximális átviteli sebességtől 10%-kal, a beállított maximális átviteli sebességig. Az Autopilot-adatbázison vagy a tárolón bármikor módosíthatja a maximális átviteli sebesség (Tmax) beállítást.
+
+Az Autopilot előzetes verziójában a tárolón vagy az adatbázison megadott maximális átviteli sebességnél a rendszer a számított tárolási korláton belül lehetővé teszi a működést. Ha túllépi a tárolási korlátot, a maximális átviteli sebesség automatikusan magasabb értékre van igazítva. Ha az adatbázis-szint átviteli sebességét robotpilóta módban használja, az adatbázison belül engedélyezett tárolók száma a következő lesz: (0,001 * maximális átviteli sebesség). Ha például 20 000 Autopilot RU/s-t épít ki, akkor az adatbázis 20 tárolóval rendelkezhet.
 
 ## <a name="benefits-of-autopilot-mode"></a>Az Autopilot mód előnyei
 
@@ -60,11 +62,21 @@ Az előző problémák megoldásához nem csupán nagy mennyiségű időt kell i
 
 |  | Manuális módban konfigurált tárolók  | Robotpilóta-módban konfigurált tárolók |
 |---------|---------|---------|
-| **Kiosztott átviteli sebesség** | Manuálisan kiépítve | Proaktívan és reaktívan méretezhető a munkaterhelés-használati minták alapján. |
-| **Kérelmek/műveletek korlátozása (429)**  | Előfordulhat, hogy a felhasználás meghaladja a kiosztott kapacitást. | Nem fog történni.  |
+| **Kiosztott átviteli sebesség** | Manuálisan kiépítve | Automatikusan és azonnal méretezhető a munkaterhelés-használati minták alapján. |
+| **Kérelmek/műveletek korlátozása (429)**  | Előfordulhat, hogy a felhasználás meghaladja a kiosztott kapacitást. | Nem fog történni, ha a felhasznált átviteli sebesség az Autopilot módban kiválasztott maximális átviteli sebességen belül van.   |
 | **Kapacitástervezés** |  Meg kell tennie a kezdeti kapacitás megtervezését és a szükséges átviteli sebesség kiépítését. |    Nem kell aggódnia a kapacitás megtervezése miatt. A rendszer automatikusan gondoskodik a kapacitás megtervezéséről és a kapacitások kezeléséről. |
 | **Díjszabás** | Manuálisan kiépített RU/s óránként. | Az egyszeri írási régió fiókjai esetében óradíjat használ a robotpilóta (RU/s) óránkénti díjszabása alapján. <br/><br/>A több írási régióval rendelkező fiókok esetében nem számítunk fel külön díjat a robotpilóta számára. Az óránkénti átviteli sebességért kell fizetnie, ugyanazzal a több főkiszolgálós RU/s-díj használatával. |
 | **Legmegfelelőbb a számítási feladatok típusaihoz** |  Kiszámítható és stabil számítási feladatok|   Kiszámíthatatlan és változó számítási feladatok  |
+
+## <a name="enable-autopilot-from-azure-portal"></a>Az Autopilot engedélyezése Azure Portal
+
+Kipróbálhatja az Autopilot-t az Azure Cosmos-fiókokban, ha engedélyezi a alkalmazást a Azure Portalról. Az Autopilot beállítás engedélyezéséhez kövesse az alábbi lépéseket:
+
+1. Jelentkezzen be a [Azure Portalba.](https://portal.azure.com)
+
+2. Navigáljon az Azure Cosmos-fiókjához, és nyissa meg az **új funkciók** lapot. Válassza az **automatikus próba** és **regisztrálás** lehetőséget a következő képernyőképen látható módon:
+
+![Tároló létrehozása Autopilot módban](./media/provision-throughput-autopilot/enable-autopilot-azure-portal.png)
 
 ## <a name="create-a-database-or-a-container-with-autopilot-mode"></a>Adatbázis vagy tároló létrehozása robotpilóta-móddal
 
@@ -74,13 +86,13 @@ Az Autopilot-t konfigurálhatja adatbázisok vagy tárolók létrehozásához. H
 
 1. Navigáljon az Azure Cosmos-fiókjához, és nyissa meg a **adatkezelő** lapot.
 
-1. Válassza az **új adatbázis**lehetőséget, adja meg az adatbázis nevét. Az **Autopilot** beállításnál válassza az **engedélyezve** lehetőséget, és adja meg azt a maximális átviteli sebességet, amelyet az adatbázis nem tud túllépni az Autopilot beállítás használatakor.
+1. Válassza az **új tároló**elemet, adja meg a tároló nevét, egy partíciós kulcsot. Válassza ki az **Autopilot** beállítást, és válassza ki azt a maximális átviteli sebességet, amelyet a tároló nem tud túllépni az Autopilot beállítás használatakor.
 
-   ![Adatbázis létrehozása Autopilot módban](./media/provision-throughput-autopilot/create-database-autopilot-mode.png)
+   ![Tároló létrehozása Autopilot módban](./media/provision-throughput-autopilot/create-container-autopilot-mode.png)
 
 1. Kattintson az **OK** gombra.
 
-A hasonló lépéseket követve létrehozhat egy kiépített átviteli sebességű tárolót is az Autopilot módban.
+A hasonló lépéseket követve létrehozhat egy, a kiépített átviteli sebességgel rendelkező adatbázist is az Autopilot módban.
 
 ## <a name="next-steps"></a>További lépések
 

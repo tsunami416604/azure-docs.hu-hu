@@ -3,20 +3,20 @@ title: Lemez típusának kiválasztása az Azure IaaS Windows rendszerű virtuá
 description: Ismerje meg a Windows rendszerű virtuális gépekhez elérhető Azure-lemezeket, például az ultrakönnyű lemezeket, a prémium SSD-ket, a standard SSD-ket és a standard HDD-ket
 author: roygara
 ms.author: rogarana
-ms.date: 08/15/2019
+ms.date: 11/04/2019
 ms.topic: conceptual
 ms.service: virtual-machines-windows
 ms.subservice: disks
-ms.openlocfilehash: 634ff02b216403788c1ded9223909e2cce230207
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: 5f06af41f2ad75d704836944e9d8d8d180aed730
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69512670"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73606586"
 ---
 [!INCLUDE [virtual-machines-disk-types](../../../includes/virtual-machines-managed-disks-types-overview.md)]
 
-Ha szeretné megkezdeni az ultra-lemezek használatát, tekintse meg a tárgyat ismertető cikket: [Az Azure Ultra Disks használata](disks-enable-ultra-ssd.md).
+Ha szeretné megkezdeni az ultra-lemezek használatát, tekintse meg a tárgyat ismertető cikket: az [Azure Ultra Disks használatával](disks-enable-ultra-ssd.md).
 
 [!INCLUDE [virtual-machines-managed-disks-types-ga](../../../includes/virtual-machines-managed-disks-types-ga.md)]
 

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e17a99a522c6ab960c2ccd0cc2729076c54ed07f
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 8c8bfa5fc31ce8500d1ed339ba28afeed21e25a0
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73151846"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73603511"
 ---
 # <a name="passwordless-authentication-options"></a>Jelszóval nem rendelkező hitelesítési lehetőségek
 
@@ -52,7 +52,7 @@ Az iOS-vagy Android-telefonokat egy erős, jelszó nélküli hitelesítő adatba
 
 A FIDO2 biztonsági kulcsai egy nem adattípusra épülő, szabványos jelszavas hitelesítési módszer, amely bármilyen típusú tényezőt tartalmazhat. A gyors identitású online (pont) egy nyílt szabvány a jelszó nélküli hitelesítéshez. Lehetővé teszi, hogy a felhasználók és a szervezetek a standard használatával bejelentkezzenek az erőforrásaik számára Felhasználónév vagy jelszó nélkül, egy külső biztonsági kulccsal vagy egy eszközre épített platform-kulccsal.
 
-A nyilvános előzetes verzióban az alkalmazottak a biztonsági kulcsok használatával jelentkezhetnek be az Azure AD-be vagy hibrid Azure AD-hez csatlakoztatott Windows 10-es eszközökre, és egyszeri bejelentkezést kapnak a felhőbe és a helyszíni erőforrásokhoz. A támogatott böngészőkbe is bejelentkezhetnek.
+A nyilvános előzetes verzióban az alkalmazottak a biztonsági kulcsokkal jelentkezhetnek be az Azure AD-hez csatlakoztatott Windows 10 rendszerű eszközökre, és egyszeri bejelentkezést kapnak a felhőbe és a helyszíni erőforrásokhoz. A támogatott böngészőkbe is bejelentkezhetnek.
 
 ![Bejelentkezés a Microsoft Edge-be egy biztonsági kulccsal](./media/concept-authentication-passwordless/concept-web-sign-in-security-key.png)
 
@@ -69,7 +69,7 @@ A biztonsági kulcsnak a következő szolgáltatásokat és bővítményeket **k
 
 A következő szolgáltatók olyan FIDO2 biztonsági kulcsokat kínálnak, amelyekről ismert, hogy kompatibilisek a jelszóval nem rendelkező felülettel. A Microsoft arra bátorítja az ügyfeleket, hogy értékelik a kulcsok biztonsági tulajdonságait, ha kapcsolatba lép a szállítóval, valamint a következővel:.
 
-| Szolgáltató | Kapcsolatfelvétel |
+| Szolgáltató | Kapcsolattartó |
 | --- | --- |
 | Yubico | [https://www.yubico.com/support/contact/](https://www.yubico.com/support/contact/) |
 | Feitian | [https://www.ftsafe.com/about/Contact_Us](https://www.ftsafe.com/about/Contact_Us) |
@@ -81,7 +81,7 @@ A következő szolgáltatók olyan FIDO2 biztonsági kulcsokat kínálnak, amely
 > [!NOTE]
 > Az NFC-alapú biztonsági kulcsok megvásárlása és megtervezése esetén támogatott NFC-olvasóra lesz szüksége.
 
-Ha Ön szállító, és szeretné lekérni az eszközt ezen a listán, lépjen kapcsolatba [Fido2Request@Microsoft.com](mailto:Fido2Request@Microsoft.com).
+Ha Ön szállító, és szeretné lekérni az eszközt ezen a listán, forduljon a [Fido2Request@Microsoft.comhoz ](mailto:Fido2Request@Microsoft.com).
 
 A FIDO2 biztonsági kulcsai nagyszerű lehetőséget biztosítanak olyan nagyvállalatok számára, akik nagyon érzékenyek a biztonságra, vagy olyan forgatókönyvekkel vagy alkalmazottakkal rendelkeznek, akik nem hajlandók vagy nem tudják használni a telefont második tényezőként.
 
@@ -94,7 +94,7 @@ A FIDO2 biztonsági kulcsai nagyszerű lehetőséget biztosítanak olyan nagyvá
    - Microsoft Authenticator alkalmazás: olyan helyzetekben fog működni, ahol az Azure AD-hitelesítés használatban van, beleértve az összes böngészőt, a Windows 10-es (OOBE) telepítése során, valamint az integrált Mobile apps bármely operációs rendszeren.
    - Biztonsági kulcsok: a Windows 10 és a web zárolási képernyőjén működik a Microsoft Edge-hez hasonló támogatott böngészőkben.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [A FIDO2 biztonsági kulcs passwordlesss beállításainak engedélyezése a szervezetben](howto-authentication-passwordless-security-key.md)
 

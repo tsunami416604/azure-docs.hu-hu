@@ -1,5 +1,5 @@
 ---
-title: Az átalakítás összekapcsolása Azure Data Factory leképezési adatfolyamban | Microsoft Docs
+title: Az átalakítás összekapcsolása Azure Data Factory leképezési adatfolyamban
 description: Két adatforrásból származó adatok összevonása az Azure Data Factory-leképezési folyamat illesztési átalakításának használatával
 author: kromerm
 ms.author: makromer
@@ -7,12 +7,12 @@ ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 10/17/2019
-ms.openlocfilehash: 78de9f2bedfc36add567053e1de47e8893bfaf3c
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 4680804017a9b08248bb41ff999c6ba6371e99c8
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72597048"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73675915"
 ---
 # <a name="join-transformation-in-mapping-data-flow"></a>Az átalakítás összekapcsolása a leképezési adatfolyamban
 
@@ -32,7 +32,7 @@ A bal oldali külső illesztés visszaadja az összes sort a bal oldali adatfoly
 
 ### <a name="right-outer"></a>Jobb oldali külső
 
-A bal oldali külső illesztés a jobb oldali adatfolyamból származó összes sort visszaadja a bal oldali adatfolyamból. Ha a jobb oldali adatfolyamból származó sor nem egyezik, a jobb oldali adatfolyamból származó kimeneti oszlopok NULL értékre vannak állítva. A kimenet a belső illesztés által visszaadott sorok, valamint a jobb oldali adatfolyamban található nem egyező sorokból áll.
+A jobb oldali külső illesztés a jobb oldali adatfolyamból származó összes sort visszaadja a bal oldali adatfolyamból. Ha a jobb oldali adatfolyamból származó sor nem egyezik, a bal oldali adatfolyam kimeneti oszlopai NULL értékre vannak állítva. A kimenet a belső illesztés által visszaadott sorok, valamint a jobb oldali adatfolyamban található nem egyező sorokból áll.
 
 ### <a name="full-outer"></a>Teljes külső
 
@@ -83,7 +83,7 @@ Az adatelőnézetsel rendelkező illesztési átalakítások hibakeresési módb
 
 ### <a name="inner-join-example"></a>Példa belső illesztésre
 
-Az alábbi példa egy `JoinMatchedData` nevű összekapcsolási átalakítás, amely a stream `TripData` és a jobb oldali stream `TripFare`t veszi át.  Az illesztési feltétel az a kifejezés `hack_license == { hack_license} && TripData@medallion == TripFare@medallion && vendor_id == { vendor_id} && pickup_datetime == { pickup_datetime}`, amely igaz értéket ad vissza, ha az egyes adatfolyamok `hack_license`, `medallion`, `vendor_id` és `pickup_datetime` oszlopok szerepelnek. A `joinType` `'inner'`. Csak a bal oldali streamben engedélyezzük a szórást, így `broadcast` érték `'left'`.
+Az alábbi példa egy `JoinMatchedData` nevű összekapcsolási átalakítás, amely a stream `TripData` és a jobb oldali stream `TripFare`t veszi át.  Az illesztési feltétel az a kifejezés `hack_license == { hack_license} && TripData@medallion == TripFare@medallion && vendor_id == { vendor_id} && pickup_datetime == { pickup_datetime}`, amely igaz értéket ad vissza, ha az egyes adatfolyamok `hack_license`, `medallion`, `vendor_id`és `pickup_datetime` oszlopok szerepelnek. A `joinType` `'inner'`. Csak a bal oldali streamben engedélyezzük a szórást, így `broadcast` érték `'left'`.
 
 Az Data Factory UX-ben ez az átalakítás az alábbi képhez hasonlóan néz ki:
 
@@ -105,7 +105,7 @@ TripData, TripFare
 
 ### <a name="cross-join-example"></a>Példa a többhöz való csatlakozásra
 
-Az alábbi példa egy `CartesianProduct` nevű összekapcsolási átalakítás, amely a stream `TripData` és a jobb oldali stream `TripFare`t veszi át. Ez a transzformáció két streamet vesz igénybe, és a soraik Descartes szorzatát adja vissza. Az illesztési feltétel `true()`, mert egy teljes Descartes-szorzatot eredményez. A `cross` `joinType`. Csak a bal oldali streamben engedélyezzük a szórást, így `broadcast` érték `'left'`.
+Az alábbi példa egy `CartesianProduct` nevű összekapcsolási átalakítás, amely a stream `TripData` és a jobb oldali stream `TripFare`t veszi át. Ez a transzformáció két streamet vesz igénybe, és a soraik Descartes szorzatát adja vissza. Az illesztési feltétel `true()`, mert egy teljes Descartes-szorzatot eredményez. A `cross``joinType`. Csak a bal oldali streamben engedélyezzük a szórást, így `broadcast` érték `'left'`.
 
 Az Data Factory UX-ben ez az átalakítás az alábbi képhez hasonlóan néz ki:
 
@@ -122,6 +122,6 @@ TripData, TripFare
     )~> CartesianProduct
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az adategyesítést követően hozzon létre egy [származtatott oszlopot](data-flow-derived-column.md) [, és az](data-flow-sink.md) adatait egy célhely adattárba.

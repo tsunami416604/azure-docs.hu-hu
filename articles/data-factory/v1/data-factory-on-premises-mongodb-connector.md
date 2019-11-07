@@ -1,6 +1,6 @@
 ---
-title: Adatok áthelyezése a Data Factory segítségével a MongoDB-ből |} A Microsoft Docs
-description: Tudnivalók az adatok áthelyezése az Azure Data Factory használatával a MongoDB-adatbázisból.
+title: Adatok áthelyezése a MongoDB a Data Factory használatával
+description: Ismerje meg, hogyan helyezhetők át adatok a MongoDB-adatbázisból a Azure Data Factory használatával.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -13,108 +13,108 @@ ms.topic: conceptual
 ms.date: 04/13/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: e7a84d74e1bda6de8549c79dab1bec8c2515e213
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.openlocfilehash: 6f982928e706b442229cc249c17c3f7aabe1f60a
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67839067"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73666657"
 ---
-# <a name="move-data-from-mongodb-using-azure-data-factory"></a>Adatok áthelyezése a mongodb-hez az Azure Data Factory használatával
-> [!div class="op_single_selector" title1="Válassza ki a Data Factory szolgáltatás használ:"]
+# <a name="move-data-from-mongodb-using-azure-data-factory"></a>Adatok áthelyezése a MongoDB a Azure Data Factory használatával
+> [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory-szolgáltatás verzióját:"]
 > * [1-es verzió](data-factory-on-premises-mongodb-connector.md)
 > * [2-es verzió (aktuális verzió)](../connector-mongodb.md)
 
 > [!NOTE]
-> Ez a cikk a Data Factory 1-es verziójára vonatkozik. Ha a jelenlegi verzió a Data Factory szolgáltatás használ, tekintse meg [MongoDB-összekötővel a v2-ben](../connector-mongodb.md).
+> Ez a cikk a Data Factory 1-es verziójára vonatkozik. Ha a Data Factory szolgáltatás aktuális verzióját használja, tekintse meg a [MongoDB-összekötőt a v2-ben](../connector-mongodb.md).
 
 
-Ez a cikk ismerteti az Azure Data Factory a másolási tevékenység használatával helyezheti át egy helyszíni MongoDB-adatbázist. Épül a [adattovábbítási tevékenységek](data-factory-data-movement-activities.md) című cikket, amely megadja az adatok áthelyezését a másolási tevékenységgel rendelkező általános áttekintése.
+Ez a cikk azt ismerteti, hogyan használható a másolási tevékenység a Azure Data Factoryban az adatok egy helyszíni MongoDB-adatbázisból való áthelyezéséhez. Az [adattovábbítási tevékenységekről](data-factory-data-movement-activities.md) szóló cikkre épül, amely általános áttekintést nyújt az adatáthelyezésről a másolási tevékenységgel.
 
-A mongodb-hez a helyszíni adattárolókból adatokat másolhatja bármely támogatott fogadó adattárba. A másolási tevékenység által fogadóként támogatott adattárak listáját lásd: a [támogatott adattárak](data-factory-data-movement-activities.md#supported-data-stores-and-formats) tábla. A Data factory jelenleg csak helyez át adatokat egy MongoDB-adattár pedig más adattárakban, de a más adattárakból származó adatok áthelyezése egy MongoDB-adattároló nem támogatja.
+A helyszíni MongoDB-adattárból bármely támogatott fogadó adattárba másolhat adatok. A másolási tevékenység által mosogatóként támogatott adattárak listáját a [támogatott adattárak](data-factory-data-movement-activities.md#supported-data-stores-and-formats) táblázatban tekintheti meg. A MongoDB-adattár jelenleg csak az adatok áthelyezését támogatja más adattárakba, de az adatok más adattárakból egy MongoDB adattárba való áthelyezésére nem.
 
 ## <a name="prerequisites"></a>Előfeltételek
-Az Azure Data Factory szolgáltatás csatlakozni a helyi MongoDB-adatbázishoz telepítenie kell a következő összetevők:
+Ahhoz, hogy a Azure Data Factory szolgáltatás csatlakozni tudjon a helyszíni MongoDB-adatbázishoz, a következő összetevőket kell telepítenie:
 
-- MongoDB-verziók a következők: 2.4, 2.6-os, 3.0-s, 3.2, 3.4-es és 3.6-ot.
-- Az adatkezelési átjáró ugyanarra a gépre, amelyen az adatbázis vagy egy külön számítógépen az adatbázis-erőforrások versengő elkerülése érdekében. Az adatkezelési átjáró, olyan szoftver, amely a helyszíni adatforrásokhoz csatlakozik a cloud services biztonságos és felügyelt módon. Lásd: [adatkezelési átjáró](data-factory-data-management-gateway.md) adatkezelési átjáró részleteit ismertető cikket. Lásd: [adatok áthelyezése a helyszínről a felhőbe](data-factory-move-data-between-onprem-and-cloud.md) a cikk a részletes adatok áthelyezése az adatfolyamatok az átjáró beállítása.
+- A támogatott MongoDB-verziók a következők: 2,4, 2,6, 3,0, 3,2, 3,4 és 3,6.
+- Adatkezelés átjárót ugyanazon a gépen, amely az adatbázist üzemelteti, vagy egy különálló gépen, hogy elkerülje az adatbázissal való versengés elkerülését. Adatkezelés Gateway egy olyan szoftver, amely biztonságos és felügyelt módon köti össze a helyszíni adatforrásokat a Cloud Services szolgáltatással. Adatkezelés átjáróval kapcsolatos részletekért tekintse meg a [adatkezelés Gateway](data-factory-data-management-gateway.md) -cikket. Az adatok áthelyezéséhez az átjáró adatfolyamatának beállításával kapcsolatos részletes utasításokért lásd: [adatok áthelyezése a helyszíni rendszerből a felhőbe](data-factory-move-data-between-onprem-and-cloud.md) .
 
-    Az átjáró telepítésekor automatikusan telepíti a mongodb-hez való kapcsolódáshoz használt Microsoft MongoDB ODBC-illesztőt.
+    Az átjáró telepítésekor a automatikusan telepíti a MongoDB-hez való csatlakozáshoz használt Microsoft MongoDB ODBC-illesztőt.
 
     > [!NOTE]
-    > Csatlakozás a mongodb-hez, még akkor is, ha Azure IaaS virtuális gépek vannak tárolva, az átjáró használatára van szüksége. Ha egy felhőben üzemeltetett MongoDB-példányhoz való csatlakozáshoz, az IaaS-beli virtuális gépen is telepítheti a átjárópéldány.
+    > A MongoDB való kapcsolódáshoz az átjárót kell használnia, még akkor is, ha az Azure IaaS-beli virtuális gépeken van üzemeltetve. Ha a felhőben üzemeltetett MongoDB-példányhoz próbál csatlakozni, akkor a IaaS virtuális gépen is telepítheti az átjáró példányát.
 
-## <a name="getting-started"></a>Első lépések
-Létrehozhat egy folyamatot egy másolási tevékenységgel az adatok áthelyezéséhez a mongodb-hez a helyszíni adattárolókból a különböző eszközök/API-k használatával.
+## <a name="getting-started"></a>Bevezetés
+Létrehozhat egy másolási tevékenységgel rendelkező folyamatot, amely különböző eszközök/API-k használatával helyez át egy helyszíni MongoDB-adattárból származó adatokkal.
 
-A folyamat létrehozásának legegyszerűbb módja az, hogy használja a **másolása varázsló**. Lásd: [oktatóanyag: Hozzon létre egy folyamatot a másolás varázsló használatával](data-factory-copy-data-wizard-tutorial.md) gyors bemutató létrehozása egy folyamatot az adatok másolása varázsló használatával.
+A folyamat létrehozásának legegyszerűbb módja a **Másolás varázsló**használata. Tekintse meg az [oktatóanyag: folyamat létrehozása a másolás varázslóval](data-factory-copy-data-wizard-tutorial.md) című témakört, amely gyors áttekintést nyújt a folyamat létrehozásáról az adatmásolási varázsló használatával.
 
-A következő eszközök használatával hozzon létre egy folyamatot: **A Visual Studio**, **Azure PowerShell-lel**, **Azure Resource Manager-sablon**, **.NET API**, és **REST API-val**. Lásd: [másolási tevékenység oktatóanyagát](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) egy másolási tevékenységgel ellátott adatcsatorna létrehozása a részletes útmutatóját.
+A következő eszközöket is használhatja a folyamat létrehozásához: **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager template**, **.NET API**és **REST API**. A másolási tevékenységgel rendelkező folyamat létrehozásával kapcsolatos részletes utasításokat a [másolási tevékenységről szóló oktatóanyagban](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) talál.
 
-Az eszközök vagy az API-kat használja, hogy létrehoz egy folyamatot, amely a helyez át adatokat egy forrásadattárból egy fogadó adattárba a következő lépéseket fogja végrehajtani:
+Függetlenül attól, hogy az eszközöket vagy API-kat használja, a következő lépések végrehajtásával hozhat létre egy folyamatot, amely egy forrás adattárból egy fogadó adattárba helyezi át az adatait:
 
-1. Hozzon létre **társított szolgáltatásokat** mutató hivatkozást a bemeneti és kimeneti adatokat tárolja a data factoryjához.
-2. Hozzon létre **adatkészletek** , amely a másolási művelet bemeneti és kimeneti adatokat jelöli.
-3. Hozzon létre egy **folyamat** egy másolási tevékenységgel, amely egy adatkészletet bemenetként, és a egy adatkészletet pedig kimenetként.
+1. **Társított szolgáltatások** létrehozása a bemeneti és kimeneti adattáraknak az adat-előállítóhoz való összekapcsolásához.
+2. Hozzon létre **adatkészleteket** a másolási művelet bemeneti és kimeneti adatok ábrázolásához.
+3. Hozzon **létre egy másolási tevékenységgel rendelkező folyamatot** , amely egy adatkészletet bemenetként és egy adatkészlet kimenetként való elvégzéséhez szükséges.
 
-A varázsló használatakor a rendszer automatikusan létrehozza a Data Factory-entitásokat (társított szolgáltatások, adatkészletek és folyamat) JSON-definíciói az Ön számára. Eszközök/API-k (kivéve a .NET API) használatakor adja meg a Data Factory-entitások a JSON formátumban.  A Data Factory-entitások, amelyek a mongodb-hez a helyszíni adattárolókból az adatok másolása JSON-definíciói egy minta: [JSON-példa: Adatok másolása a MongoDB-ből az Azure-Blobba](#json-example-copy-data-from-mongodb-to-azure-blob) című szakaszát.
+A varázsló használatakor a rendszer automatikusan létrehozza a Data Factory entitások (társított szolgáltatások, adatkészletek és a folyamat) JSON-definícióit. Ha eszközöket/API-kat használ (kivéve a .NET API-t), akkor ezeket a Data Factory entitásokat JSON-formátumban kell megadnia.  A helyszíni MongoDB-adattárakból származó adatok másolásához használt Data Factory JSON-definíciókkal rendelkező minta esetében lásd a jelen cikk [JSON-példa: adatok másolása a MongoDB-ből az Azure blobba](#json-example-copy-data-from-mongodb-to-azure-blob) című szakaszát.
 
-A következő szakaszok a MongoDB-forráshoz való adott Data Factory-entitások definiálásához használt JSON-tulajdonságokkal kapcsolatos részletekért:
+A következő szakaszokban részletesen ismertetjük a MongoDB-forrásra jellemző Data Factory-entitások definiálásához használt JSON-tulajdonságokat:
 
 ## <a name="linked-service-properties"></a>Társított szolgáltatás tulajdonságai
-A következő táblázat tartalmazza a megadott JSON-elemek leírását **OnPremisesMongoDB** társított szolgáltatást.
+A következő táblázat a **OnPremisesMongoDB** társított szolgáltatáshoz tartozó JSON-elemek leírását tartalmazza.
 
-| Tulajdonság | Leírás | Szükséges |
+| Tulajdonság | Leírás | Kötelező |
 | --- | --- | --- |
-| type |A type tulajdonságot kell beállítani: **OnPremisesMongoDb** |Igen |
-| server |IP-cím vagy a gazdagép neve a MongoDB-kiszolgáló. |Igen |
-| port |A MongoDB-kiszolgáló az ügyfélkapcsolatok figyeléséhez használt TCP-port. |Nem kötelező, csak az alapértelmezett érték: 27017 |
+| type |A Type tulajdonságot a következőre kell beállítani: **OnPremisesMongoDb** |Igen |
+| kiszolgáló |A MongoDB-kiszolgáló IP-címe vagy állomásneve. |Igen |
+| port |A MongoDB-kiszolgáló által az ügyfélkapcsolatok figyeléséhez használt TCP-port. |Nem kötelező, alapértelmezett érték: 27017 |
 | authenticationType |Alapszintű vagy névtelen. |Igen |
-| username |Felhasználói fiók MongoDB eléréséhez. |Igen (alapszintű hitelesítés használata esetén). |
-| password |A felhasználó jelszava. |Igen (alapszintű hitelesítés használata esetén). |
-| authSource |A MongoDB-adatbázis, amely a hitelesítéshez a hitelesítő adatok ellenőrzésére használni kívánt nevét. |Nem kötelező, (ha az alapszintű hitelesítés használata). alapértelmezett: a rendszergazdai fiókkal és -databaseName tulajdonsággal megadott adatbázis használja. |
+| felhasználónév |Felhasználói fiók a MongoDB eléréséhez. |Igen (ha alapszintű hitelesítést használ). |
+| jelszó |A felhasználó jelszava. |Igen (ha alapszintű hitelesítést használ). |
+| authSource |Annak a MongoDB-adatbázisnak a neve, amelyet a hitelesítés hitelesítő adatainak ellenőrzéséhez használni kíván. |Nem kötelező (ha alapszintű hitelesítést használ). alapértelmezett: a databaseName tulajdonsággal megadott rendszergazdai fiókot és adatbázist használja. |
 | databaseName |Az elérni kívánt MongoDB-adatbázis neve. |Igen |
-| gatewayName |Az átjáró, amely hozzáfér az adattár neve. |Igen |
-| encryptedCredential |A hitelesítőadat-átjáró által titkosított. |Optional |
+| Átjáró neve |Azon átjáró neve, amely hozzáfér az adattárhoz. |Igen |
+| encryptedCredential |Az átjáró által titkosított hitelesítő adat. |Optional |
 
 ## <a name="dataset-properties"></a>Adatkészlet tulajdonságai
-Szakaszok & adatkészletek definiálását tulajdonságainak teljes listáját lásd: a [adatkészletek létrehozása](data-factory-create-datasets.md) cikk. Például a szerkezetet, rendelkezésre állást és szabályzatát adatkészlet JSON szakaszok hasonlóak az összes adatkészlet esetében (az Azure SQL, az Azure blob-, az Azure table-, stb.).
+Az adatkészletek definiálásához rendelkezésre álló & Tulajdonságok teljes listáját az [adatkészletek létrehozása](data-factory-create-datasets.md) című cikkben találja. Az adathalmazok (például a struktúra, a rendelkezésre állás és a szabályzat) minden adatkészlet esetében hasonlóak (például az Azure SQL, az Azure Blob, az Azure Table stb.).
 
-A **typeProperties** szakasz eltérő az egyes adatkészlet, és az adattárban lévő adatok helyét ismerteti. A typeProperties szakasz típusú adatkészlet **MongoDbCollection** tulajdonságai a következők:
+A **typeProperties** szakasz különbözik az egyes adatkészletek típusaitól, és információt nyújt az adattárban található adatok helyéről. A **MongoDbCollection** típusú adatkészlet typeProperties szakasza a következő tulajdonságokkal rendelkezik:
 
-| Tulajdonság | Leírás | Szükséges |
+| Tulajdonság | Leírás | Kötelező |
 | --- | --- | --- |
-| collectionName |MongoDB-adatbázisban szereplő gyűjtemény neve. |Igen |
+| collectionName |A gyűjtemény neve a MongoDB adatbázisban. |Igen |
 
 ## <a name="copy-activity-properties"></a>Másolási tevékenység tulajdonságai
-Szakaszok & definiálását tevékenységek tulajdonságainak teljes listáját lásd: a [folyamatok létrehozása](data-factory-create-pipelines.md) cikk. Tulajdonságok, mint például a nevét, leírását, bemeneti és kimeneti táblák és a házirend az összes típusú tevékenységek érhetők el.
+A tevékenységek definiálásához elérhető & Tulajdonságok teljes listáját a [folyamatok létrehozása](data-factory-create-pipelines.md) című cikkben találja. A tulajdonságok, például a név, a leírás, a bemeneti és a kimeneti táblák, valamint a szabályzatok minden típusú tevékenységhez elérhetők.
 
-A rendelkezésre álló tulajdonságok a **typeProperties** a tevékenység szakaszban tevékenységek minden típusának másrészről számától függ. A másolási tevékenységhez azok változhat a forrásként és fogadóként típusú is.
+A tevékenység **typeProperties** szakaszában elérhető tulajdonságok az egyes tevékenységtípusok esetében eltérőek. Másolási tevékenység esetén a források és a nyelők típusaitól függően változnak.
 
-Ha a forrása típusa **MongoDbSource** typeProperties szakasz érhető el az alábbi tulajdonságokat:
+Ha a forrás típusa **MongoDbSource** , a következő tulajdonságok érhetők el a typeProperties szakaszban:
 
-| Tulajdonság | Leírás | Megengedett értékek | Szükséges |
+| Tulajdonság | Leírás | Megengedett értékek | Kötelező |
 | --- | --- | --- | --- |
-| query |Az egyéni lekérdezés segítségével olvassa el az adatokat. |SQL-92 lekérdezési karakterláncot. Például: válassza ki * from tábla. |Nem (Ha **collectionName** , **adatkészlet** van megadva) |
+| lekérdezés |Az egyéni lekérdezés használatával olvashatja el az adatolvasást. |SQL-92 lekérdezési karakterlánc. Például: select * from Sajáttábla. |Nem (ha meg van adva az **adatkészlet** **collectionName** ) |
 
 
 
-## <a name="json-example-copy-data-from-mongodb-to-azure-blob"></a>JSON-példa: Adatok másolása a MongoDB-ből az Azure Blobba
-Ebben a példában biztosít, amellyel létrehoz egy folyamatot használatával példa JSON-definíciók [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) vagy [Azure PowerShell-lel](data-factory-copy-activity-tutorial-using-powershell.md). Ez bemutatja, hogyan másolhat adatokat egy helyi MongoDB-ből az Azure Blob Storage. Azonban adatok átmásolhatók a conditions stated above fogadóként valamelyik [Itt](data-factory-data-movement-activities.md#supported-data-stores-and-formats) a másolási tevékenységgel az Azure Data Factoryban.
+## <a name="json-example-copy-data-from-mongodb-to-azure-blob"></a>JSON-példa: adatok másolása a MongoDB-ből az Azure-Blobba
+Ez a példa JSON-definíciókat tartalmaz, amelyek segítségével a [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) vagy a [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md)használatával hozhat létre folyamatokat. Bemutatja, hogyan másolhat adatok egy helyszíni MongoDB egy Azure-Blob Storageba. Az adatmásolási művelet azonban az [itt](data-factory-data-movement-activities.md#supported-data-stores-and-formats) megadott összes mosogatóba átmásolható a Azure Data Factoryban.
 
-A minta az alábbi data factory-entitások rendelkezik:
+A minta a következő adatgyári entitásokat tartalmazhatja:
 
-1. A társított szolgáltatás típusa [OnPremisesMongoDb](#linked-service-properties).
-2. A társított szolgáltatás típusa [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties).
-3. Egy bemeneti [adatkészlet](data-factory-create-datasets.md) típusú [MongoDbCollection](#dataset-properties).
-4. Kimenet [adatkészlet](data-factory-create-datasets.md) típusú [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties).
-5. A [folyamat](data-factory-create-pipelines.md) másolási tevékenységgel, amely használja [MongoDbSource](#copy-activity-properties) és [BlobSink](data-factory-azure-blob-connector.md#copy-activity-properties).
+1. [OnPremisesMongoDb](#linked-service-properties)típusú társított szolgáltatás.
+2. [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties)típusú társított szolgáltatás.
+3. [MongoDbCollection](#dataset-properties)típusú bemeneti [adatkészlet](data-factory-create-datasets.md) .
+4. [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties)típusú kimeneti [adatkészlet](data-factory-create-datasets.md) .
+5. [MongoDbSource](#copy-activity-properties) és [BlobSink](data-factory-azure-blob-connector.md#copy-activity-properties)használó másolási tevékenységgel rendelkező [folyamat](data-factory-create-pipelines.md) .
 
-A minta adatokat másol egy MongoDB-adatbázist a lekérdezés eredménye egy blobba óránként. Ezek a minták a használt JSON-tulajdonságokat a minták a következő szakaszok ismertetik.
+A minta egy lekérdezési eredményből másolja az adatait a MongoDB-adatbázisba óránként egy blobba. Az ezekben a mintákban használt JSON-tulajdonságokat a mintákat követő szakaszokban ismertetjük.
 
-Első lépésként beállítása az adatkezelési átjárót az utasításoknak a [adatkezelési átjáró](data-factory-data-management-gateway.md) cikk.
+Első lépésként állítsa be az adatkezelési átjárót az [adatkezelés átjáró](data-factory-data-management-gateway.md) című cikkben szereplő utasítások szerint.
 
-**Mongodb-hez társított szolgáltatást:**
+**MongoDB társított szolgáltatás:**
 
 ```json
 {
@@ -137,7 +137,7 @@ Első lépésként beállítása az adatkezelési átjárót az utasításoknak 
 }
 ```
 
-**Az Azure Storage társított szolgáltatást:**
+**Azure Storage-beli társított szolgáltatás:**
 
 ```json
 {
@@ -151,7 +151,7 @@ Első lépésként beállítása az adatkezelési átjárót az utasításoknak 
 }
 ```
 
-**Bemeneti adatkészlet mongodb-hez:** Beállítás az "external": "true" tájékoztatja a Data Factory szolgáltatásban, hogy a tábla a data factory a külső, és nem hozzák az adat-előállító adott tevékenységéhez.
+**MongoDB bemeneti adatkészlete:** A "külső" beállítása: az "igaz" érték tájékoztatja a Data Factory szolgáltatást arról, hogy a tábla kívül esik az adatelőállítón, és nem az adatelőállító tevékenysége.
 
 ```json
 {
@@ -171,9 +171,9 @@ Első lépésként beállítása az adatkezelési átjárót az utasításoknak 
 }
 ```
 
-**Azure blobkimeneti adatkészlet:**
+**Azure-Blob kimeneti adatkészlete:**
 
-Adatokat írt egy új blob minden órában (frequency: óra, időköz: 1). A mappa elérési útját a BLOB a feldolgozás alatt álló szelet kezdő időpontja alapján dinamikusan kiértékeli. A mappa elérési útját használja, év, hónap, nap és óra részei a kezdési időpontot.
+A rendszer óránként egy új blobba írja az adatbevitelt (frekvencia: óra, intervallum: 1). A blob mappájának elérési útját a rendszer dinamikusan kiértékeli a feldolgozás alatt álló szelet kezdési időpontja alapján. A mappa elérési útja a kezdési idő év, hónap, nap és óra részét használja.
 
 ```json
 {
@@ -231,9 +231,9 @@ Adatokat írt egy új blob minden órában (frequency: óra, időköz: 1). A map
 }
 ```
 
-**Másolási tevékenység a MongoDB-forráshoz és a fogadó Blob-folyamat:**
+**Másolási tevékenység egy folyamatba MongoDB forrással és blob-fogadóval:**
 
-A folyamat használja a fenti bemeneti és kimeneti adatkészleteket konfigurált másolási tevékenységet tartalmazó és a tervek szerint óránként fut le. A folyamat JSON-definíciót a **forrás** típusa **MongoDbSource** és **fogadó** típusa **BlobSink**. A megadott SQL-lekérdezést a **lekérdezés** tulajdonság kiválasztja az adatokat másolni az elmúlt órában.
+A folyamat egy másolási tevékenységet tartalmaz, amely a fenti bemeneti és kimeneti adatkészletek használatára van konfigurálva, és óránkénti futásra van ütemezve. A folyamat JSON-definíciójában a **forrás** típusa **MongoDbSource** értékre van állítva, a **fogadó típusa** pedig **BlobSink**. A **lekérdezési** tulajdonsághoz megadott SQL-lekérdezés a másoláshoz az elmúlt órában kijelöli az összes adatforrást.
 
 ```json
 {
@@ -282,75 +282,75 @@ A folyamat használja a fenti bemeneti és kimeneti adatkészleteket konfigurál
 ```
 
 
-## <a name="schema-by-data-factory"></a>Adat-előállítók által séma
-Az Azure Data Factory szolgáltatás egy MongoDB-gyűjteményt sémáját kikövetkezteti a legutóbbi 100 dokumentumok a gyűjtemény használatával. Ha 100 dokumentumok tartalmazza a teljes séma, néhány oszlop figyelmen kívül hagyhatja a másolási művelet során.
+## <a name="schema-by-data-factory"></a>Séma Data Factory szerint
+Azure Data Factory a szolgáltatás egy MongoDB-gyűjtemény sémáját a gyűjteményben a legújabb 100-dokumentumok használatával. Ha ezek a 100-dokumentumok nem tartalmaznak teljes sémát, egyes oszlopok figyelmen kívül hagyhatók a másolási művelet során.
 
-## <a name="type-mapping-for-mongodb"></a>Adattípus-leképezés a mongodb-hez
-Említetteknek megfelelően az [adattovábbítási tevékenységek](data-factory-data-movement-activities.md) a cikkben a másolási tevékenység végzi az automatikus típuskonverziók a fogadó-típusokat az alábbi 2. lépés – a módszert használja a forrás típusa:
+## <a name="type-mapping-for-mongodb"></a>Típus leképezése MongoDB
+Ahogy azt az [adattovábbítási tevékenységek](data-factory-data-movement-activities.md) című cikk ismerteti, a másolási tevékenység az alábbi kétlépéses megközelítéssel hajtja végre az automatikus típus-konverziókat a forrás típusairól a fogadó típusokra:
 
-1. A natív forrástípusok átalakítása typ .NET
-2. A .NET-típusból átalakítása natív fogadó típusa
+1. Konvertálás natív forrásokból .NET-típusra
+2. Konvertálás .NET-típusról natív fogadó típusra
 
-Ha adatok áthelyezése a mongodb-hez a következő hozzárendeléseket a rendszer a MongoDB-típusok .NET Tulajdonságtípusokat használja.
+Az adatok MongoDB való áthelyezésekor a rendszer a következő leképezéseket használja a MongoDB típusokból .NET-típusokra.
 
-| MongoDB-típus | .NET-keretrendszer típusa |
+| MongoDB típusa | .NET-keretrendszer típusa |
 | --- | --- |
-| Binary |Byte[] |
+| Bináris |Bájt [] |
 | Logikai |Logikai |
-| Date |Datetime |
-| NumberDouble |Double |
+| Dátum |DateTime |
+| NumberDouble |duplán |
 | NumberInt |Int32 |
 | NumberLong |Int64 |
 | ObjectID |Sztring |
-| String |Sztring |
-| UUID |Guid |
-| Object |Renormalized be simítja egybe az oszlopok, "_" beágyazott elválasztóként |
+| Sztring |Sztring |
+| UUID |GUID |
+| Objektum |Normalizálva a "_" oszlopokkal beágyazott elválasztóként |
 
 > [!NOTE]
-> Virtuális táblák használata tömbök támogatása kapcsolatos további információkért tekintse meg [virtuális tábla használatával összetett típusok támogatása](#support-for-complex-types-using-virtual-tables) szakaszt.
+> Ha többet szeretne megtudni a virtuális táblák használatával történő tömbök támogatásáról, tekintse meg a következő témakört [: összetett típusok támogatása virtuális táblák használatával](#support-for-complex-types-using-virtual-tables) .
 
-Jelenleg a következő MongoDB-adattípusok nem támogatottak: A kulcs DBPointer, JavaScript, Max és Min – reguláris kifejezés, szimbólum, Timestamp, nincs megadva
+Jelenleg a következő MongoDB-adattípusok nem támogatottak: DBPointer, JavaScript, max/min kulcs, reguláris kifejezés, szimbólum, időbélyeg, nem definiált
 
-## <a name="support-for-complex-types-using-virtual-tables"></a>Virtuális tábla használatával összetett típusok támogatása
-Az Azure Data Factory kapcsolódni, és adatokat másol a MongoDB-adatbázis egy beépített ODBC-illesztőt használja. A dokumentumok között különböző típusú tömbök vagy objektumok például komplex típusok esetében az illesztőprogram újra normalizálja adatok megfelelő virtuális táblákba. Pontosabban a tábla tartalmaz ilyen oszlopokhoz, ha az illesztőprogram állít elő, a következő virtuális táblák:
+## <a name="support-for-complex-types-using-virtual-tables"></a>Összetett típusok támogatása virtuális táblák használatával
+A Azure Data Factory egy beépített ODBC-illesztővel csatlakozik a MongoDB-adatbázishoz, és másolja azokat. Az olyan összetett típusok esetében, mint például a tömbök vagy különböző típusú objektumok a dokumentumokban, az illesztőprogram újranormalizálja az adatmennyiséget a megfelelő virtuális táblákba. Pontosabban, ha egy tábla ilyen oszlopokat tartalmaz, az illesztőprogram a következő virtuális táblákat hozza létre:
 
-* A **alaptábla**, amely ugyanazokat az adatokat, mint a valódi tábla kivételével a komplex típusú oszlopokat tartalmaz. Az alaptábla ugyanazt a nevet használja, mint a valódi tábla, amely azt jelöli.
-* A **virtuális tábla** minden komplex típusú oszlophoz, amely kibővíti a beágyazott adatok. A virtuális táblák elnevezése a valódi tábla, "_" elválasztó és a tömb vagy objektum nevét, a név használatával.
+* Egy **alaptábla**, amely ugyanazokat az adatokkal rendelkezik, mint a valós tábla, kivéve a komplex típusú oszlopokat. Az alaptábla ugyanazt a nevet használja, mint az azt jelképező valódi tábla.
+* Az egyes komplex típusú oszlopokhoz tartozó **virtuális táblázat** , amely kibővíti a beágyazott adattípusokat. A virtuális táblák neve a valódi tábla, a "_" elválasztója és a tömb vagy objektum neve alapján történik.
 
-Tekintse meg az adatok denormalizált adatokat az illesztőprogram, a valós táblázatban virtuális táblákat. Lásd: a példában az alábbi részletek szakaszban. A tartalom a MongoDB-tömbök elérheti, lekérdezés és a virtuális táblázatok összekapcsolása.
+A virtuális táblák a valós táblázatba tartozó, az illesztőprogramnak a denormalizált információhoz való hozzáférésének engedélyezésére vonatkoznak. Lásd az alábbi részleteket. A MongoDB-tömbök tartalmát a virtuális táblák lekérdezésével és a hozzájuk való csatlakozással érheti el.
 
-Használhatja a [másolása varázsló](data-factory-data-movement-activities.md#create-a-pipeline-with-copy-activity) intuitív a táblák listáját megtekintheti a MongoDB-adatbázist, beleértve a virtuális táblákat, és lévő adatok előnézetének megtekintéséhez. A másolás varázsló lekérdezést is, és érvényesíteni az eredmény megjelenítéséhez.
+A [Másolás varázslóval](data-factory-data-movement-activities.md#create-a-pipeline-with-copy-activity) intuitív módon megtekintheti a MongoDB-adatbázisban lévő táblák listáját, beleértve a virtuális táblákat, és megtekintheti az adatmegjelenítést a belsejében. Létrehozhat egy lekérdezést is a másolás varázslóban, és ellenőrizheti, hogy az eredmény megjelenik-e.
 
 ### <a name="example"></a>Példa
-Például "ExampleTable" alatt egy MongoDB-tábla, amely rendelkezik egy oszlopot az objektumok egy tömbjét mindegyik cellába – a számlák és a egy oszlop skaláris típusok – minősítési tömbjét.
+Például az alábbi "ExampleTable" olyan MongoDB-tábla, amely egyetlen oszlopból áll, és az egyes cellákban található objektumok tömbje, valamint egy skaláris típusok tömbjét tartalmazó oszlop.
 
-| _id | Ügyfél neve | Számlák | Szolgáltatásszint | Minősítések |
+| _id | Ügyfél neve | Számlák | Szolgáltatásszint | Értékelés |
 | --- | --- | --- | --- | --- |
-| 1111 |ABC |[{invoice_id: "123" elem: "a toaster", ár: "456" kedvezményt: "0.2-es"}, {invoice_id: "124"-elem: "helyezzük", ár: "1235", kedvezmény: "0.2-es"}] |Ezüst |[5,6] |
-| 2222 |XYZ |[{invoice_id: "135", cikk: "fridge", ár: "12543" kedvezményt: "0.0"}] |Arany |[1,2] |
+| 1111 |ABC |[{invoice_id: "123", elem: "kenyérpirító", Ár: "456", kedvezmény: "0.2"}, {invoice_id: "124", elem: "sütő", Ár: "1235", kedvezmény: "0,2"}] |Ezüst |[5, 6] |
+| 2222 |XYZ |[{invoice_id: "135", elem: "hűtőszekrény", Ár: "12543", kedvezmény: "0,0"}] |Arany |[1, 2] |
 
-Az illesztőprogram hoz létre több virtuális táblákat, amelyek ebben a táblázatban szerepelnek. Az első virtuális tábla az alaptábla nevű, "ExampleTable" alább látható. Az alaptábla tartalmaz az eredeti tábla összes adatot, de a rendszer kihagyta a tömbök származó adatokat, és ki van bontva, a virtuális táblák.
+Az illesztőprogram több virtuális táblát fog előállítani, hogy ezt az egyetlen táblát képviseljék. Az első virtuális tábla a "ExampleTable" nevű alaptábla, amely az alábbi ábrán látható. Az alaptábla az eredeti tábla összes adatát tartalmazza, de a tömbökből származó adatok ki lettek hagyva, és ki lettek bontva a virtuális táblákban.
 
 | _id | Ügyfél neve | Szolgáltatásszint |
 | --- | --- | --- |
 | 1111 |ABC |Ezüst |
 | 2222 |XYZ |Arany |
 
-Az alábbi táblázatok bemutatják a virtuális táblákat, amelyek a példában az eredeti tömböket. Ezek a táblázatok a következőket tartalmazzák:
+A következő táblázatok a példában szereplő eredeti tömböket képviselő virtuális táblákat mutatják be. Ezek a táblák a következőket tartalmazzák:
 
-* Egy hivatkozást a sor az eredeti tömb (keresztül a _azonosítója. oszlop) megfelelő eredeti elsődleges kulcs oszlopa
-* Arra utalhat, hogy az adatok az eredeti tömbön belüli pozíciója
-* A kibontott adatok belül a tömb egyes elemei
+* Az eredeti tömb soraihoz tartozó eredeti elsődleges kulcs oszlopra való hivatkozás (a _id oszlopon keresztül)
+* Az eredeti tömbben lévő adatok pozíciójának jelzése
+* A tömbben lévő egyes elemek kibontott adathalmaza
 
-"ExampleTable_Invoices". tábla:
+Tábla "ExampleTable_Invoices":
 
-| _id | ExampleTable_Invoices_dim1_idx | invoice_id | item | price | Kedvezmény |
+| _id | ExampleTable_Invoices_dim1_idx | invoice_id | elem | price | Kedvezmény |
 | --- | --- | --- | --- | --- | --- |
-| 1111 |0 |123 |a toaster |456 |0.2 |
-| 1111 |1 |124 |Helyezzük |1235 |0.2 |
-| 2222 |0 |135 |fridge |12543 |0.0 |
+| 1111 |0 |123 |kenyérpirító |456 |0,2 |
+| 1111 |1 |124 |sütő |1235 |0,2 |
+| 2222 |0 |135 |hűtőszekrény |12543 |0,0 |
 
-"ExampleTable_Ratings". tábla:
+Tábla "ExampleTable_Ratings":
 
 | _id | ExampleTable_Ratings_dim1_idx | ExampleTable_Ratings |
 | --- | --- | --- |
@@ -359,14 +359,14 @@ Az alábbi táblázatok bemutatják a virtuális táblákat, amelyek a példába
 | 2222 |0 |1 |
 | 2222 |1 |2 |
 
-## <a name="map-source-to-sink-columns"></a>A fogadó-oszlopok térkép forrása
-Fogadó-adatkészlet oszlopaihoz forrásadatkészlet leképezés oszlopai kapcsolatos további információkért lásd: [az Azure Data Factoryban adatkészletoszlopok leképezése](data-factory-map-columns.md).
+## <a name="map-source-to-sink-columns"></a>Forrás leképezése a fogadó oszlopokra
+A forrás adatkészletben lévő oszlopok a fogadó adatkészlet oszlopaihoz való leképezésével kapcsolatos további tudnivalókért lásd: [adatkészlet oszlopainak leképezése Azure Data Factoryban](data-factory-map-columns.md).
 
-## <a name="repeatable-read-from-relational-sources"></a>A relációs források megismételhető olvasása
-Amikor adatmásolásra, relációs adatokat tárol, ismételhetőség tartsa szem előtt, nem kívánt eredmények elkerülése érdekében. Az Azure Data Factoryben futtathatja a szelet manuálisan. Beállíthatja az újrapróbálkozási szabályzat egy adatkészlethez, úgy, hogy a szelet akkor fut újra, ha hiba történik. Ha a szelet akkor fut újra, vagy módon, győződjön meg arról, hogy ugyanazokat az adatokat olvasható függetlenül attól, hogy hány alkalommal fut egy szeletet, kell. Lásd: [olvasni a relációs források Repeatable](data-factory-repeatable-copy.md#repeatable-read-from-relational-sources).
+## <a name="repeatable-read-from-relational-sources"></a>Megismételhető olvasás a rokon forrásokból
+Az adatok a kapcsolódó adattárakból való másolása során érdemes megismételni a nem kívánt eredmények elkerülését. Azure Data Factory a szeleteket manuálisan is újra futtathatja. Az újrapróbálkozási szabályzatot is konfigurálhatja egy adatkészlethez, hogy a rendszer hiba esetén újrafuttassa a szeleteket. Ha egy szeletet mindkét módon újrafuttat, meg kell győződnie arról, hogy a szeletek hányszor futnak. Lásd: [megismételhető olvasás a rokon forrásokból](data-factory-repeatable-copy.md#repeatable-read-from-relational-sources).
 
-## <a name="performance-and-tuning"></a>Teljesítmény és finomhangolás
-Lásd: [másolási tevékenységek teljesítményéhez és teljesítményhangolási útmutatóból](data-factory-copy-activity-performance.md) megismerheti a kulcsfontosságú szerepet játszik az adatáthelyezés (másolási tevékenység) az Azure Data Factory és a különféle módokon optimalizálhatja azt, hogy hatással lehet a teljesítményre.
+## <a name="performance-and-tuning"></a>Teljesítmény és hangolás
+A [másolási tevékenység teljesítményének & hangolási útmutatójában](data-factory-copy-activity-performance.md) megismerheti azokat a főbb tényezőket, amelyek hatással vannak az adatáthelyezés (másolási tevékenység) teljesítményére Azure Data Factory és az optimalizálás különféle módjaival.
 
 ## <a name="next-steps"></a>További lépések
-Lásd: [adatok áthelyezése a helyszíni és a felhő között](data-factory-move-data-between-onprem-and-cloud.md) cikk részletes útmutatás az adatfolyamatok létrehozásához, amely helyez át adatokat a helyszíni adattárolókból az Azure-adattárba.
+Az adatok [áthelyezése a helyszíni és a felhő között](data-factory-move-data-between-onprem-and-cloud.md) című cikk részletes útmutatást nyújt olyan adatfolyamatok létrehozásához, amelyek egy helyszíni adattárból egy Azure-adattárba helyezik át az adatok áthelyezését.

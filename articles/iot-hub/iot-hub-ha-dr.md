@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/21/2019
 ms.author: philmea
-ms.openlocfilehash: f1944e06989844528a55c89f82c3db3b3a28dca1
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
-ms.translationtype: MT
+ms.openlocfilehash: 533a199f75baa5a27ed06698f22d4d046be45507
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69876892"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73607875"
 ---
 # <a name="iot-hub-high-availability-and-disaster-recovery"></a>Magas rendelkezésre állás és vész-helyreállítás IoT Hub
 
@@ -32,7 +32,7 @@ A IoT-megoldások számára meghatározott rendelkezésre állási céloktól f�
 
 ## <a name="intra-region-ha"></a>Régión belüli HA
 
-A IoT Hub szolgáltatás a régión belüli e-mailben biztosítja a redundancia megvalósítását a szolgáltatás szinte minden rétegében. A [IoT hub szolgáltatás által közzétett SLA](https://azure.microsoft.com/support/legal/sla/iot-hub) -t a redundanciák használatával érheti el. Egy IoT-megoldás fejlesztőinek nincs szüksége további munkára, hogy kihasználhassa ezeket a HA funkciókat. Bár a IoT Hub ésszerűen magas idejű garanciát nyújt, az átmeneti hibák továbbra is megtekinthetők az elosztott számítástechnikai platformokkal. Ha most kezdi a megoldások felhőbe való áttelepítését egy helyszíni megoldásból, a fókusznak a "hibák közötti átlagos idő" értékről "a helyreállítás ideje" kifejezésre kell váltania. Ez azt jelenti, hogy az átmeneti hibák normálisnak számítanak, miközben a felhőben működnek a vegyesen. A [](iot-hub-reliability-features-in-sdks.md) megfelelő újrapróbálkozási házirendeket olyan összetevőkhöz kell beépíteni, amelyek egy felhőalapú alkalmazással működnek az átmeneti hibák kezeléséhez.
+A IoT Hub szolgáltatás a régión belüli e-mailben biztosítja a redundancia megvalósítását a szolgáltatás szinte minden rétegében. A [IoT hub szolgáltatás által közzétett SLA](https://azure.microsoft.com/support/legal/sla/iot-hub) -t a redundanciák használatával érheti el. Egy IoT-megoldás fejlesztőinek nincs szüksége további munkára, hogy kihasználhassa ezeket a HA funkciókat. Bár a IoT Hub ésszerűen magas idejű garanciát nyújt, az átmeneti hibák továbbra is megtekinthetők az elosztott számítástechnikai platformokkal. Ha most kezdi a megoldások felhőbe való áttelepítését egy helyszíni megoldásból, a fókusznak a "hibák közötti átlagos idő" értékről "a helyreállítás ideje" kifejezésre kell váltania. Ez azt jelenti, hogy az átmeneti hibák normálisnak számítanak, miközben a felhőben működnek a vegyesen. A megfelelő [újrapróbálkozási házirendeket](iot-hub-reliability-features-in-sdks.md) olyan összetevőkhöz kell beépíteni, amelyek egy felhőalapú alkalmazással működnek az átmeneti hibák kezeléséhez.
 
 > [!NOTE]
 > Bizonyos Azure-szolgáltatások a [Availability Zones (AZs)](../availability-zones/az-overview.md)integrálásával a régión belül további rendelkezésre állási rétegeket is biztosítanak. A IoT Hub szolgáltatás jelenleg nem támogatja a AZs.
@@ -45,7 +45,7 @@ Az ilyen helyzetben lévő ügyfelek számára elérhető helyreállítási lehe
 
 Mindkét feladatátvételi beállítás a következő helyreállítási pontok célkitűzéseit (RPO) kínálja:
 
-| Adattípus | Helyreállítási pontok célkitűzései (RPO) |
+| Data type | Helyreállítási pontok célkitűzései (RPO) |
 | --- | --- |
 | Identitás-nyilvántartó |0-5 perc adatvesztés |
 | Eszköz Twin-adatkészletei |0-5 perc adatvesztés |
@@ -60,9 +60,9 @@ Mindkét feladatátvételi beállítás a következő helyreállítási pontok c
 Miután az IoT hub feladatátvételi művelete befejeződött, az eszközről és a háttérbeli alkalmazásokról érkező összes művelet manuális beavatkozás nélkül is működni fog. Ez azt jelenti, hogy az eszközről a felhőbe irányuló üzenetek továbbra is működőképesek maradnak, és a teljes eszköz beállításjegyzéke érintetlen. A Event Grid használatával kibocsátott események a korábban konfigurált előfizetéseken keresztül is felhasználhatók, feltéve, hogy a Event Grid-előfizetések továbbra is elérhetők.
 
 > [!CAUTION]
-> - A IoT Hub beépített események végpontjának az Event hub-kompatibilis neve és végpontja módosult a feladatátvétel után. Ha az Event hub-ügyfél vagy az esemény-feldolgozó gazdagép használatával fogad telemetria üzeneteket a beépített végpontról, az [IoT hub kapcsolati karakterláncát](iot-hub-devguide-messages-read-builtin.md#read-from-the-built-in-endpoint) kell használnia a kapcsolat létrehozásához. Ez biztosítja, hogy a háttérbeli alkalmazások a feladatátvétel utáni manuális beavatkozás nélkül is működjenek. Ha az Event hub-kompatibilis nevet és végpontot használja közvetlenül a háttérbeli alkalmazásban, újra kell konfigurálnia az alkalmazást úgy, hogy a feladatátvételt követően beolvassa [az új Event hub-kompatibilis nevet és végpontot](iot-hub-devguide-messages-read-builtin.md#read-from-the-built-in-endpoint) a műveletek folytatásához.
+> - A IoT Hub beépített események végpontjának az Event hub-kompatibilis neve és végpontja módosult a feladatátvétel után. Ha az Event hub-ügyfél vagy az esemény-feldolgozó gazdagép használatával fogad telemetria üzeneteket a beépített végpontról, az [IoT hub kapcsolati karakterláncát kell használnia](iot-hub-devguide-messages-read-builtin.md#read-from-the-built-in-endpoint) a kapcsolat létrehozásához. Ez biztosítja, hogy a háttérbeli alkalmazások a feladatátvétel utáni manuális beavatkozás nélkül is működjenek. Ha az Event hub-kompatibilis nevet és végpontot használja közvetlenül a háttérbeli alkalmazásban, újra kell konfigurálnia az alkalmazást úgy, hogy a feladatátvételt követően [beolvassa az új Event hub-kompatibilis nevet és végpontot](iot-hub-devguide-messages-read-builtin.md#read-from-the-built-in-endpoint) a műveletek folytatásához.
 >
-> - A blob Storage-hoz való útválasztás esetén javasoljuk a Blobok bekapcsolását és az azokhoz való iterációt, hogy minden tárolót beolvasson a partíciós feltételezések elkészítése nélkül. A partíció tartománya esetleg változhat a Microsoft által kezdeményezett feladatátvétel vagy manuális feladatátvétel során. A Blobok listájának enumerálásával kapcsolatos információkért lásd: [Útválasztás a blob Storage-](iot-hub-devguide-messages-d2c.md#azure-blob-storage)ba.
+> - A Storage szolgáltatásba történő útválasztás esetén ajánlott bejelentkezni a tárolóba, majd megismételni őket, hogy minden tárolót beolvasson a partíciós feltételezések nélkül. A partíció tartománya esetleg változhat a Microsoft által kezdeményezett feladatátvétel vagy manuális feladatátvétel során. A Blobok listájának enumerálásával kapcsolatos információkért lásd: az [Azure Storage-ba történő útválasztás](iot-hub-devguide-messages-d2c.md#azure-storage).
 
 ## <a name="microsoft-initiated-failover"></a>Microsoft által kezdeményezett feladatátvétel
 
@@ -113,9 +113,9 @@ Ha a regionális feladatátvételi modellt a IoT Hub használatával kívánja m
    > [!NOTE]
    > Az IoT hub szolgáltatás nem támogatott végponti típus az Azure Traffic Managerban. Javasoljuk, hogy az Azure Traffic Managerrel integrálja a javasolt concierge szolgáltatást az Endpoint Health mintavételi API megvalósításával.
 
-* **Identitás-beállításjegyzék replikációja**: Ahhoz, hogy használható legyen, a másodlagos IoT hub-nak tartalmaznia kell az összes olyan eszköz-identitást, amely képes csatlakozni a megoldáshoz. A megoldásnak meg kell őriznie az eszköz-identitások földrajzilag replikált biztonsági mentését, és fel kell töltenie őket a másodlagos IoT hubhoz, mielőtt az aktív végpontot átváltja az eszközökre. A IoT Hub eszköz-identitás exportálási funkciója hasznos ebben a környezetben. További információ: [IoT hub fejlesztői útmutató – Identity Registry](iot-hub-devguide-identity-registry.md).
+* **Identitás-beállításjegyzék replikációja**: ahhoz, hogy használható legyen, a másodlagos IoT hub-nak tartalmaznia kell minden olyan eszköz-identitást, amely képes csatlakozni a megoldáshoz. A megoldásnak meg kell őriznie az eszköz-identitások földrajzilag replikált biztonsági mentését, és fel kell töltenie őket a másodlagos IoT hubhoz, mielőtt az aktív végpontot átváltja az eszközökre. A IoT Hub eszköz-identitás exportálási funkciója hasznos ebben a környezetben. További információ: [IoT hub fejlesztői útmutató – Identity Registry](iot-hub-devguide-identity-registry.md).
 
-* **Logikai egyesítés**: Ha az elsődleges régió újra elérhetővé válik, a másodlagos helyen létrehozott összes államot és az összes adattal át kell telepíteni az elsődleges régióba. Ez az állapot és az adatok többnyire az eszközök identitására és az alkalmazás metaadataira vonatkoznak, amelyeket egyesíteni kell az elsődleges IoT hub-vel és minden más, az elsődleges régióban lévő alkalmazásspecifikus tárolóval. 
+* **Logikai egyesítés**: Ha az elsődleges régió újra elérhetővé válik, a másodlagos helyen létrehozott összes állapotot és adatsort át kell telepíteni az elsődleges régióba. Ez az állapot és az adatok többnyire az eszközök identitására és az alkalmazás metaadataira vonatkoznak, amelyeket egyesíteni kell az elsődleges IoT hub-vel és minden más, az elsődleges régióban lévő alkalmazásspecifikus tárolóval. 
 
 Ennek a lépésnek a leegyszerűsítése érdekében idempotens műveleteket kell használnia. A idempotens-műveletek az események végleges eloszlása, valamint a duplikált vagy az események sorrendjében történő kézbesítésének mellékhatásait csökkenthetik. Emellett az alkalmazás logikáját úgy kell kialakítani, hogy a potenciális inkonzisztencia vagy némileg elavult állapotban legyen. Ez a helyzet akkor fordulhat elő, ha a rendszernek a helyreállítási pontok célkitűzései (RPO) alapján történő megtartásához szükséges további időt kell meggyógyítania.
 
@@ -123,14 +123,14 @@ Ennek a lépésnek a leegyszerűsítése érdekében idempotens műveleteket kel
 
 Íme egy összefoglaló az ebben a cikkben bemutatott HA/DR lehetőségről, amely a megoldáshoz használható megfelelő lehetőség kiválasztására szolgál.
 
-| HA/DR beállítás | RTO | Helyreállítási időkorlát | Manuális beavatkozásra van szüksége? | Implementáció bonyolultsága | További költséghatékonyság|
+| HA/DR beállítás | RTO | RPO | Manuális beavatkozásra van szüksége? | Implementáció bonyolultsága | További költséghatékonyság|
 | --- | --- | --- | --- | --- | --- |
-| Microsoft által kezdeményezett feladatátvétel |2-26 óra|Tekintse át a fenti RPO-táblázatot|Nem|Nincsenek|Nincsenek|
-| Manuális feladatátvétel |10 perc – 2 óra|Tekintse át a fenti RPO-táblázatot|Igen|Nagyon alacsony. Ezt a műveletet csak a portálról kell elindítania.|Nincsenek|
+| Microsoft által kezdeményezett feladatátvétel |2-26 óra|Tekintse át a fenti RPO-táblázatot|Nem|None|None|
+| Manuális feladatátvétel |10 perc – 2 óra|Tekintse át a fenti RPO-táblázatot|Igen|Nagyon alacsony. Ezt a műveletet csak a portálról kell elindítania.|None|
 | Régión átívelő HA |< 1 perc|Az egyéni HA-megoldás replikációs gyakoriságának függvénye|Nem|Magas|> 1 IoT hub díja|
 
 ## <a name="next-steps"></a>További lépések
 
 * [Mi az Azure IoT Hub?](about-iot-hub.md)
 * [Ismerkedés a IoT Hubokkal (gyors útmutató)](quickstart-send-telemetry-dotnet.md)
-* [Oktatóanyag: Manuális feladatátvétel végrehajtása egy IoT hub esetében](tutorial-manual-failover.md)
+* [Oktatóanyag: manuális feladatátvétel végrehajtása egy IoT hub esetében](tutorial-manual-failover.md)

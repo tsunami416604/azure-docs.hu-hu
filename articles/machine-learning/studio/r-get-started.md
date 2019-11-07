@@ -1,6 +1,6 @@
 ---
 title: Első lépések az R-vel
-titleSuffix: Azure Machine Learning Studio (classic)
+titleSuffix: ML Studio (classic) Azure
 description: Ezzel az R programozási oktatóanyaggal megkezdheti az R nyelv és a Azure Machine Learning Studio (klasszikus) használatának megkezdését az előrejelzési megoldás létrehozásához.
 services: machine-learning
 ms.service: machine-learning
@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/01/2019
-ms.openlocfilehash: 1d3bc64291f58c5dd77531141c31490451cc8ea2
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 1a9fd7f6041961ee0f9f33e9e319d321050709f4
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73496831"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73619172"
 ---
 # <a name="getting-started-with-the-r-programming-language-in-azure-machine-learning-studio-classic"></a>Első lépések az R programozási nyelv Azure Machine Learning Studio (klasszikus)
 

@@ -8,12 +8,12 @@ author: lgayhardt
 ms.author: lagayhar
 ms.date: 06/07/2019
 ms.reviewer: sergkanz
-ms.openlocfilehash: 4f1b8b116cf2a8411a90946dd5801dd1e541323c
-ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
+ms.openlocfilehash: bcdc6633980ec3684217c8c19b4799befe2af3a3
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73063947"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73576859"
 ---
 # <a name="telemetry-correlation-in-application-insights"></a>Telemetria korreláció a Application Insightsban
 
@@ -35,7 +35,7 @@ A Service-környezetekben az összetevőkből származó nyomkövetési adatok k
 
 ## <a name="example"></a>Példa
 
-Vegyük például a részvényárfolyamok nevű alkalmazást, amely egy `Stock` nevű külső API használatával mutatja be a készlet aktuális piaci árát. A tőzsdei díjszabási alkalmazás egy `Stock page` nevű oldallal rendelkezik, amelyet az ügyfél webböngészője a `GET /Home/Stock` használatával nyit meg. Az alkalmazás lekérdezi a `Stock` API-t egy HTTP-hívás `GET /api/stock/value` használatával.
+Vegyük például a részvényárfolyamok nevű alkalmazást, amely egy `Stock`nevű külső API használatával mutatja be a készlet aktuális piaci árát. A tőzsdei díjszabási alkalmazás egy `Stock page` nevű oldallal rendelkezik, amelyet az ügyfél webböngészője a `GET /Home/Stock`használatával nyit meg. Az alkalmazás lekérdezi a `Stock` API-t egy HTTP-hívás `GET /api/stock/value`használatával.
 
 Az eredményül kapott telemetria a következő lekérdezés futtatásával elemezheti:
 
@@ -90,8 +90,8 @@ Ha az SDK régebbi verzióját futtatja, javasoljuk, hogy frissítse, vagy alkal
 Ez a funkció `Microsoft.ApplicationInsights.Web`ban érhető el, és `Microsoft.ApplicationInsights.DependencyCollector` a 2.8.0-béta verziótól kezdődő csomagok.
 Alapértelmezés szerint le van tiltva. Ennek engedélyezéséhez módosítsa `ApplicationInsights.config`:
 
-- A `RequestTrackingTelemetryModule` területen adja hozzá a `EnableW3CHeadersExtraction` elemet a következő értékkel: `true`.
-- A `DependencyTrackingTelemetryModule` területen adja hozzá a `EnableW3CHeadersInjection` elemet a következő értékkel: `true`.
+- A `RequestTrackingTelemetryModule`területen adja hozzá a `EnableW3CHeadersExtraction` elemet a következő értékkel: `true`.
+- A `DependencyTrackingTelemetryModule`területen adja hozzá a `EnableW3CHeadersInjection` elemet a következő értékkel: `true`.
 - `W3COperationCorrelationTelemetryInitializer` hozzáadása a `TelemetryInitializers` hasonló módon 
 
 ```xml
@@ -244,14 +244,14 @@ if __name__ == '__main__':
     app.run(host='localhost', port=8080, threaded=True)
 ```
 
-Ez egy minta `flask` alkalmazást futtat a helyi gépen, amely a port `8080` figyeli. A nyomkövetési kontextus összekapcsolásához egy kérést küldünk a végpontnak. Ebben a példában egy `curl` parancsot használhatunk.
+Ez egy minta `flask` alkalmazást futtat a helyi gépen, amely a port `8080`figyeli. A nyomkövetési kontextus összekapcsolásához egy kérést küldünk a végpontnak. Ebben a példában egy `curl` parancsot használhatunk.
 ```
 curl --header "traceparent: 00-4bf92f3577b34da6a3ce929d0e0e4736-00f067aa0ba902b7-01" localhost:8080
 ```
-A [nyomkövetési kontextus fejlécének formátuma](https://www.w3.org/TR/trace-context/#trace-context-http-headers-format)a következő információkat származtatja: `version`: `00` 
- `trace-id`: `4bf92f3577b34da6a3ce929d0e0e4736` 
- `parent-id/span-id`: `00f067aa0ba902b7` 
- 0: 1
+A [nyomkövetési kontextus fejlécének formátuma](https://www.w3.org/TR/trace-context/#trace-context-http-headers-format)a következő információkat származtatja: `version`: `00`
+`trace-id`: `4bf92f3577b34da6a3ce929d0e0e4736`
+`parent-id/span-id`: `00f067aa0ba902b7`
+`trace-flags`: `01`
 
 Ha megvizsgáljuk a Azure Monitorba küldendő kérelem bejegyzését, láthatjuk, hogy a nyomkövetési fejléc adataival feltöltött mezők láthatók. Ezeket az adatnaplókat (Analitika) a Azure Monitor Application Insights erőforrásban találja.
 
@@ -263,7 +263,7 @@ A `operation_ParentId` mező formátuma `<trace-id>.<parent-id>`, ahol a `trace-
 
 ### <a name="logs-correlation"></a>Korrelációs naplók
 
-A OpenCensus Python lehetővé teszi a naplók korrelációját a log-rekordok a nyomkövetési AZONOSÍTÓval, a span ID-vel és a mintavételezési jelzővel való bővítésével Ezt a OpenCensus [naplózási integrációjának](https://pypi.org/project/opencensus-ext-logging/)telepítésével teheti meg. A következő attribútumok lesznek hozzáadva a Python `LogRecord`shoz: `traceId`, `spanId` és `traceSampled`. Vegye figyelembe, hogy ez csak az integráció után létrehozott naplózók esetében lép érvénybe.
+A OpenCensus Python lehetővé teszi a naplók korrelációját a log-rekordok a nyomkövetési AZONOSÍTÓval, a span ID-vel és a mintavételezési jelzővel való bővítésével Ezt a OpenCensus [naplózási integrációjának](https://pypi.org/project/opencensus-ext-logging/)telepítésével teheti meg. A következő attribútumok lesznek hozzáadva a Python `LogRecord`s: `traceId`, `spanId` és `traceSampled`hoz. Vegye figyelembe, hogy ez csak az integráció után létrehozott naplózók esetében lép érvénybe.
 Az alábbiakban egy minta alkalmazás szemlélteti ezt.
 
 ```python
@@ -289,7 +289,7 @@ A kód futtatásakor a következő a konzolon érhető el:
 2019-10-17 11:25:59,384 traceId=c54cb1d4bbbec5864bf0917c64aeacdc spanId=70da28f5a4831014 In the span
 2019-10-17 11:25:59,385 traceId=c54cb1d4bbbec5864bf0917c64aeacdc spanId=0000000000000000 After the span
 ```
-Figyelje meg, hogy van-e olyan spanId, amely a tartományon belüli naplófájlhoz tartozik, amely ugyanaz a spanId, amely a (z) `hello` nevű tartományhoz tartozik.
+Figyelje meg, hogy van-e olyan spanId, amely a tartományon belüli naplófájlhoz tartozik, amely ugyanaz a spanId, amely a (z) `hello`nevű tartományhoz tartozik.
 
 A naplózási adatai a `AzureLogHandler`használatával exportálhatók. További információt [itt](https://docs.microsoft.com/azure/azure-monitor/app/opencensus-python#logs) találhat
 
@@ -308,9 +308,9 @@ A `DiagnosticSource` [tevékenységek útmutatója](https://github.com/dotnet/co
 
 A ASP.NET Core 2,0 támogatja a HTTP-fejlécek kinyerését és új tevékenység indítását.
 
-`System.Net.Http.HttpClient` a 4.1.0 verziótól kezdődően a a korrelációs HTTP-fejlécek automatikus befecskendezését és a HTTP-hívás tevékenységként való nyomon követését támogatja.
+`System.Net.Http.HttpClient`a 4.1.0 verziótól kezdődően a a korrelációs HTTP-fejlécek automatikus befecskendezését és a HTTP-hívás tevékenységként való nyomon követését támogatja.
 
-Létezik egy új HTTP-modul, a [Microsoft. AspNet. TelemetryCorrelation](https://www.nuget.org/packages/Microsoft.AspNet.TelemetryCorrelation/)a klasszikus ASP.net. Ez a modul `DiagnosticSource` használatával valósítja meg a telemetria korrelációját. Elindít egy tevékenységet a bejövő kérelmek fejlécei alapján. Emellett a kérelmek feldolgozásának különböző szakaszaiból is összefügg a telemetria, még akkor is, ha a Internet Information Services (IIS) feldolgozásának minden fázisa egy másik felügyelt szálon fut.
+Létezik egy új HTTP-modul, a [Microsoft. AspNet. TelemetryCorrelation](https://www.nuget.org/packages/Microsoft.AspNet.TelemetryCorrelation/)a klasszikus ASP.net. Ez a modul `DiagnosticSource`használatával valósítja meg a telemetria korrelációját. Elindít egy tevékenységet a bejövő kérelmek fejlécei alapján. Emellett a kérelmek feldolgozásának különböző szakaszaiból is összefügg a telemetria, még akkor is, ha a Internet Information Services (IIS) feldolgozásának minden fázisa egy másik felügyelt szálon fut.
 
 A 2.4.0-béta verziótól kezdődően a Application Insights SDK a `DiagnosticSource` és a `Activity` használatával gyűjti össze a telemetria, és társítja az aktuális tevékenységhez.
 
@@ -334,27 +334,24 @@ A telemetria az aszinkron rugós rendszerindítási alkalmazásban való összek
 
 Időnként előfordulhat, hogy testre szeretné szabni, hogy az összetevők nevei hogyan jelenjenek meg az [alkalmazás-hozzárendelésben](../../azure-monitor/app/app-map.md). Ehhez manuálisan állíthatja be a `cloud_RoleName` a következők egyikével:
 
+- A Application Insights Java SDK 2.5.0-vel kezdődően megadhatja a Felhőbeli szerepkör nevét `<RoleName>` hozzáadásával a `ApplicationInsights.xml`-fájlhoz, például:
+
+  ```XML
+  <?xml version="1.0" encoding="utf-8"?>
+  <ApplicationInsights xmlns="http://schemas.microsoft.com/ApplicationInsights/2013/Settings" schemaVersion="2014-05-30">
+     <InstrumentationKey>** Your instrumentation key **</InstrumentationKey>
+     <RoleName>** Your role name **</RoleName>
+     ...
+  </ApplicationInsights>
+  ```
+
 - Ha a Spring Boott a Application Insights Spring boot Starter használatával használja, az egyetlen szükséges módosítás az alkalmazás egyéni nevének beállítása az Application. properties fájlban.
 
   `spring.application.name=<name-of-app>`
 
   A Spring boot Starter automatikusan `cloudRoleName` rendel hozzá a `spring.application.name` tulajdonsághoz megadott értékhez.
 
-- Ha a `WebRequestTrackingFilter` használja, a `WebAppNameContextInitializer` automatikusan beállítja az alkalmazás nevét. Adja hozzá a következőt a konfigurációs fájlhoz (ApplicationInsights. xml):
-
-  ```XML
-  <ContextInitializers>
-    <Add type="com.microsoft.applicationinsights.web.extensibility.initializers.WebAppNameContextInitializer" />
-  </ContextInitializers>
-  ```
-
-- Ha a felhő környezeti osztályát használja:
-
-  ```Java
-  telemetryClient.getContext().getCloud().setRole("My Component Name");
-  ```
-
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Egyéni telemetria](../../azure-monitor/app/api-custom-events-metrics.md)írása.
 - A ASP.NET Core-és ASP.NET kapcsolatos speciális korrelációs forgatókönyvek esetében tekintse meg az [Egyéni műveletek nyomon követése](custom-operations-tracking.md) című cikket.

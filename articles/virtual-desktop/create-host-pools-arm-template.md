@@ -1,5 +1,5 @@
 ---
-title: Windows rendszerű virtuális asztali címkészlet létrehozása Azure Resource Manager sablonnal – Azure
+title: Windows rendszerű virtuális asztali címkészlet Azure Resource Manager – Azure
 description: A Windows rendszerű virtuális asztalban lévő gazdagépek létrehozása Azure Resource Manager sablonnal.
 services: virtual-desktop
 author: Heidilohr
@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 08/29/2019
 ms.author: helohr
-ms.openlocfilehash: b96ecad93c481a762b81a7888940850ed3a73e5f
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: 23d032a2496e975c7e6ceafb61691c2cb1216218
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71679614"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73605754"
 ---
 # <a name="create-a-host-pool-with-an-azure-resource-manager-template"></a>Gazdagépcsoport létrehozása Azure Resource Manager-sablonnal
 
@@ -42,7 +42,7 @@ Ha felhőalapú megoldás-szolgáltatói előfizetést használ, kövesse az al�
 
 1. Görgessen le, és kattintson **a jobb gombbal az Azure**-ba, majd válassza a **hivatkozás helyének másolása**lehetőséget.
 2. Nyisson meg egy szövegszerkesztőt, például a jegyzettömböt, és illessze be a hivatkozást.
-3. Közvetlenül a "https://portal.azure.com/" után és a hashtag (#) előtt adja meg a (z) (@) jelet a bérlői tartomány neve után. Íme egy példa a használni kívánt formátumra: https://portal.azure.com/@Contoso.onmicrosoft.com#create/.
+3. Közvetlenül a "https://portal.azure.com/" után és a hashtag (#) előtt írja be a következőt: (@), amelyet a bérlői tartomány neve követ. Íme egy példa a használni kívánt formátumra: https://portal.azure.com/@Contoso.onmicrosoft.com#create/.
 4. Jelentkezzen be a Azure Portal felhasználóként rendszergazdai/közreműködői engedélyekkel a felhőalapú megoldás-szolgáltató előfizetéséhez.
 5. Illessze be a szövegszerkesztőbe másolt hivatkozást a címsorba.
 

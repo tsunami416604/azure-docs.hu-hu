@@ -1,5 +1,5 @@
 ---
-title: Felosztási-egyesítési szolgáltatás üzembe helyezése | Microsoft Docs
+title: Felosztási-egyesítési szolgáltatás üzembe helyezése
 description: A felosztott egyesítés használatával is áthelyezheti az adatátvitelt a többrétegű adatbázisok között.
 services: sql-database
 ms.service: sql-database
@@ -11,16 +11,16 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/04/2018
-ms.openlocfilehash: a8c50f492c28bf1e009d15d6332e939959190a49
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 009fb4be61aad5c700c7520764e9414ed9422721
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68568507"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73690315"
 ---
 # <a name="deploy-a-split-merge-service-to-move-data-between-sharded-databases"></a>Felosztási-egyesítési szolgáltatás üzembe helyezése a szilánkokra osztott adatbázisok közötti adatáthelyezéshez
 
-A felosztott egyesítés eszköz lehetővé teszi az adatáthelyezést a töredezett adatbázisok között. Lásd: az adatáthelyezés a kibővített [felhőalapú adatbázisok között](sql-database-elastic-scale-overview-split-and-merge.md)
+A felosztott egyesítés eszköz lehetővé teszi az adatáthelyezést a töredezett adatbázisok között. Lásd: [az adatáthelyezés a kibővített felhőalapú adatbázisok között](sql-database-elastic-scale-overview-split-and-merge.md)
 
 ## <a name="download-the-split-merge-packages"></a>A Split-Merge csomagok letöltése
 1. Töltse le a legújabb NuGet-verziót a [NuGet](https://docs.nuget.org/docs/start-here/installing-nuget)webhelyről.
@@ -34,7 +34,7 @@ A fájlok a **Microsoft. Azure. SqlDatabase. ElasticScale. Service. SplitMerge. 
 
 ## <a name="prerequisites"></a>Előfeltételek
 1. Hozzon létre egy Azure SQL DB-adatbázist, amelyet a rendszer felosztó állapot-adatbázisként fog használni. Nyissa meg az [Azure Portal](https://portal.azure.com). Hozzon létre egy új **SQL Database**. Adjon nevet az adatbázisnak, és hozzon létre egy új rendszergazdát és jelszót. Ügyeljen rá, hogy a nevet és a jelszót a későbbi használatra jegyezze fel.
-2. Győződjön meg arról, hogy az Azure SQL DB-kiszolgáló lehetővé teszi az Azure-szolgáltatások számára a kapcsolódást. A portálon, a **tűzfal beállításainál**ellenőrizze, hogy az **Azure-szolgáltatások hozzáférésének engedélyezése** beállítás be értékre van-e **állítva.** Kattintson a Save (Mentés) ikonra.
+2. Győződjön meg arról, hogy az Azure SQL DB-kiszolgáló lehetővé teszi az Azure-szolgáltatások számára a kapcsolódást. A portálon, a **tűzfal beállításainál**ellenőrizze, hogy az **Azure-szolgáltatások hozzáférésének engedélyezése** beállítás be értékre van **-e állítva.** Kattintson a Save (Mentés) ikonra.
 3. Hozzon létre egy Azure Storage-fiókot a diagnosztika kimenetéhez.
 4. Hozzon létre egy Azure Cloud Service-t a Split-Merge szolgáltatáshoz.
 
@@ -45,7 +45,7 @@ A fájlok a **Microsoft. Azure. SqlDatabase. ElasticScale. Service. SplitMerge. 
 3. Hozzon létre egy új adatbázist, vagy válasszon ki egy meglévő adatbázist, amely az állapot-adatbázisként szolgál a felosztási és egyesítési műveletekhez, és kérje le az adatbázishoz tartozó kapcsolódási karakterláncot. 
    
    > [!IMPORTANT]
-   > Ebben az esetben az állapot-adatbázisnak a latin rendezést kell használnia\_(\_az\_SQL latin\_általános CP1\_CI as). További információ: [Windows rendezési név (Transact-SQL)](https://msdn.microsoft.com/library/ms188046.aspx).
+   > Jelenleg az állapot-adatbázisnak a latin rendezést (SQL\_latin\_általános\_CP1\_CI\_AS-t) kell használnia. További információ: [Windows rendezési név (Transact-SQL)](https://msdn.microsoft.com/library/ms188046.aspx).
    >
 
    Az Azure SQL DB-vel a kapcsolatok karakterlánca általában a következőkből áll:
@@ -62,7 +62,7 @@ A szolgáltatás biztonságának konfigurálásával kapcsolatos részletes utas
 Az oktatóanyag egyszerű tesztelési célú üzembe helyezése érdekében a szolgáltatás működésének megkezdéséhez minimális konfigurációs lépéseket kell végrehajtani. Ezek a lépések csak azt a gépet vagy fiókot teszik lehetővé, amelyet a szolgáltatással való kommunikációra hajtanak végre.
 
 ### <a name="create-a-self-signed-certificate"></a>Önaláírt tanúsítvány létrehozása
-Hozzon létre egy új könyvtárat, és ebből a könyvtárból hajtsa végre a következő parancsot a [Visual Studio](https://msdn.microsoft.com/library/ms229859.aspx) ablakának fejlesztői parancssorában:
+Hozzon létre egy új könyvtárat, és ebből a könyvtárból hajtsa végre a következő parancsot a [Visual Studio ablakának fejlesztői parancssorában](https://msdn.microsoft.com/library/ms229859.aspx) :
 
    ```
     makecert ^
@@ -146,7 +146,7 @@ Ha a feldolgozói szerepkör nem tud online állapotba jutni, de a webes szerepk
 
 ## <a name="test-the-service-deployment"></a>A szolgáltatás központi telepítésének tesztelése
 ### <a name="connect-with-a-web-browser"></a>Webböngészővel való kapcsolat
-Határozza meg a felosztási-egyesítési szolgáltatás webes végpontját. Ezt a portálon a felhőalapú szolgáltatás áttekintésével, a jobb oldalon pedig a **webhely URL-címével** tekintheti meg. Cserélje le az **http://** -t a **https://** -re, mert az alapértelmezett biztonsági beállítások LEtiltják a http-végpontot Töltse be az URL-cím lapját a böngészőben.
+Határozza meg a felosztási-egyesítési szolgáltatás webes végpontját. Ezt a portálon a felhőalapú szolgáltatás **áttekintésével** , a jobb oldalon pedig a **webhely URL-címével** tekintheti meg. Cserélje le az **http://** -t a **https://** -re, mert az alapértelmezett biztonsági beállítások LEtiltják a http-végpontot Töltse be az URL-cím lapját a böngészőben.
 
 ### <a name="test-with-powershell-scripts"></a>Tesztelés PowerShell-parancsfájlokkal
 A központi telepítés és a környezet a mellékelt minta PowerShell-szkriptek futtatásával is tesztelhető.
@@ -165,7 +165,7 @@ A parancsfájl fájljai a következők:
        <th>Lépések</th>
      </tr>
      <tr>
-       <th rowspan="5">SetupSampleSplitMergeEnvironment.ps1</th>
+       <th rowspan="5">SetupSampleSplitMergeEnvironment. ps1</th>
        <td>1.    Egy szegmens Map Manager-adatbázis létrehozása</td>
      </tr>
      <tr>
@@ -187,7 +187,7 @@ A parancsfájl fájljai a következők:
        <th>Lépések</th>
      </tr>
    <tr>
-       <th rowspan="4">ExecuteSampleSplitMerge.ps1 </th>
+       <th rowspan="4">ExecuteSampleSplitMerge. ps1 </th>
        <td>1.    Elküld egy felosztott kérelmet a Split-Merge szolgáltatás webes felületének, amely az első szegmens adatainak felére osztja ketté a második szilánkot.</td>
      </tr>
      <tr>

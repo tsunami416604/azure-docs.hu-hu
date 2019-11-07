@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 04/10/2019
 ms.author: lahugh
 ms.custom: seodec18
-ms.openlocfilehash: b4be715bd910326b3d06837508e7a07ac853189f
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 78f29bacaadac5f01e4a8dd26bf03b2bda84f2bf
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68322640"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73577583"
 ---
 # <a name="create-an-azure-batch-pool-in-a-virtual-network"></a>Azure Batch-készlet létrehozása egy virtuális hálózaton
 
@@ -30,7 +30,7 @@ Egy Azure Batch-készlet olyan beállításokkal rendelkezik, amelyekkel a szám
 
 * **Egy Azure-VNet**. A VNet követelményeinek és konfigurációjának megtekintéséhez tekintse meg a következő szakaszt. Egy vagy több alhálózattal rendelkező VNet előkészítéséhez használhatja a Azure Portal, Azure PowerShell, az Azure parancssori felületét (CLI) vagy más metódusokat is.  
   * Azure Resource Manager-alapú VNet létrehozásával kapcsolatban lásd: [virtuális hálózat létrehozása](../virtual-network/manage-virtual-network.md#create-a-virtual-network). A Resource Manager-alapú VNet új központi telepítések esetén ajánlott, és csak a virtuális gép konfigurációjában található készletekben támogatott.
-  * Klasszikus VNet létrehozásával kapcsolatban lásd: [virtuális hálózat (klasszikus) létrehozása több](../virtual-network/create-virtual-network-classic.md)alhálózattal. A klasszikus VNet csak a Cloud Services konfigurációjában található készletekben támogatott.
+  * Klasszikus VNet létrehozásával kapcsolatban lásd: [virtuális hálózat (klasszikus) létrehozása több alhálózattal](../virtual-network/create-virtual-network-classic.md). A klasszikus VNet csak a Cloud Services konfigurációjában található készletekben támogatott.
 
 ## <a name="vnet-requirements"></a>A virtuális hálózat követelményei
 
@@ -56,9 +56,9 @@ Előfordulhat, hogy a szervezete követelményei szerint a rendszer átirányít
 
 Annak biztosítása érdekében, hogy a Azure Batch-készlet számítási csomópontjai olyan VNet működjenek, amelyeken engedélyezve van a kényszerített bújtatás, hozzá kell adnia a következő, [felhasználó által definiált útvonalakat](../virtual-network/virtual-networks-udr-overview.md) ehhez az alhálózathoz:
 
-* A Batch szolgáltatásnak kommunikálnia kell a készlet számítási csomópontjaival az ütemezési feladatokhoz. A kommunikáció engedélyezéséhez adjon hozzá egy felhasználó által megadott útvonalat a Batch szolgáltatás által használt egyes IP-címekhez abban a régióban, ahol a Batch-fiók létezik. További információ a Batch szolgáltatás IP-címeinek beszerzéséről: [szolgáltatások címkéi a helyszínen](../virtual-network/security-overview.md#service-tags-in-on-premises)
+* A Batch szolgáltatásnak kommunikálnia kell a készlet számítási csomópontjaival az ütemezési feladatokhoz. A kommunikáció engedélyezéséhez adjon hozzá egy felhasználó által megadott útvonalat a Batch szolgáltatás által használt egyes IP-címekhez abban a régióban, ahol a Batch-fiók létezik. További információ a Batch szolgáltatás IP-címeinek beszerzéséről: [szolgáltatások címkéi a helyszínen](../virtual-network/service-tags-overview.md)
 
-* Győződjön meg arról, hogy az Azure Storage-ba irányuló kimenő adatforgalom `<account>.queue.core.windows.net`(pontosabban az űrlap `<account>.table.core.windows.net`, a és `<account>.blob.core.windows.net`az URL-címek) nincs letiltva a helyszíni hálózati berendezésen keresztül.
+* Győződjön meg arról, hogy az Azure Storage-ba irányuló kimenő adatforgalom (pontosabban az űrlap URL-címei `<account>.table.core.windows.net`, `<account>.queue.core.windows.net`és `<account>.blob.core.windows.net`) nincs letiltva a helyszíni hálózati berendezésen keresztül.
 
 Felhasználó által definiált útvonal hozzáadásakor adja meg az útvonalat az egyes kapcsolódó batch IP-címek előtagjához, és állítsa be a **következő ugrás típusát** az **Internet**értékre. Lásd a következő példát:
 

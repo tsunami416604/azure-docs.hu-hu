@@ -1,5 +1,5 @@
 ---
-title: Replikáció konfigurálása Azure SQL Database felügyelt példány-adatbázisban | Microsoft Docs
+title: 'Replikáció konfigurálása Azure SQL Database felügyelt példány-adatbázisban '
 description: Tudnivalók a tranzakciós replikáció konfigurálásáról egy Azure SQL Database felügyelt példány adatbázisában
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: allenwux
 ms.author: xiwu
 ms.reviewer: mathoma
 ms.date: 02/07/2019
-ms.openlocfilehash: b940be1d1b68e4e2a41e3f8353cb54fdb51bb886
-ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
+ms.openlocfilehash: 21275ce7716ffc394c1e7445c3f6836f09b44c87
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71338736"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73692165"
 ---
 # <a name="configure-replication-in-an-azure-sql-database-managed-instance-database"></a>Replikáció konfigurálása Azure SQL Database felügyelt példány-adatbázisban
 
@@ -41,7 +41,7 @@ A felügyelt példányok közzétevőként és/vagy terjesztőként való konfig
 - A közzétevő felügyelt példánya ugyanazon a virtuális hálózaton van, mint a terjesztő és az előfizető, vagy a [vNet](../virtual-network/tutorial-connect-virtual-networks-powershell.md) -társítás a mindhárom entitás virtuális hálózatai között létrejött. 
 - A kapcsolat SQL-hitelesítést használ a replikációs résztvevők között.
 - Egy Azure Storage-fiók megosztása a replikációs munkakönyvtárhoz.
-- Az 445-as (TCP kimenő) port a felügyelt példányok NSG biztonsági szabályaiban van megnyitva az Azure-fájlmegosztás eléréséhez.  Ha "nem sikerült csatlakozni az Azure Storage \<storage fióknév > a 53-os hiba miatt" hibaüzenet jelenik meg, akkor hozzá kell adnia egy kimenő szabályt a megfelelő SQL felügyelt példány alhálózatának NSG.
+- Az 445-as (TCP kimenő) port a felügyelt példányok NSG biztonsági szabályaiban van megnyitva az Azure-fájlmegosztás eléréséhez.  Ha "nem sikerült csatlakozni az Azure Storage-hoz \<Storage-fiók neve > a 53-as operációsrendszer-hiba" hibaüzenet jelenik meg, hozzá kell adnia egy kimenő szabályt a megfelelő SQL felügyelt példány alhálózatának NSG.
 
 
  > [!NOTE]
@@ -63,7 +63,7 @@ A következő szolgáltatások nem támogatottak a felügyelt példányokban Azu
  
 ## <a name="1---create-a-resource-group"></a>1 – erőforráscsoport létrehozása
 
-A [Azure Portal](https://portal.azure.com) használatával hozzon létre egy erőforráscsoportot a következő névvel: `SQLMI-Repl`.  
+A [Azure Portal](https://portal.azure.com) használatával hozzon létre egy erőforráscsoportot a (z) `SQLMI-Repl`néven.  
 
 ## <a name="2---create-managed-instances"></a>2 – felügyelt példányok létrehozása
 
@@ -78,15 +78,15 @@ Az Azure SQL Database felügyelt példányaihoz való [kapcsolódáshoz konfigur
 
 [Hozzon létre egy Azure Storage-fiókot](https://docs.microsoft.com/azure/storage/common/storage-create-storage-account#create-a-storage-account) a munkakönyvtár számára, majd hozzon létre egy [fájlmegosztást](../storage/files/storage-how-to-create-file-share.md) a Storage-fiókon belül. 
 
-Másolja a fájlmegosztás elérési útját a: `\\storage-account-name.file.core.windows.net\file-share-name` formátumban.
+Másolja a fájlmegosztás elérési útját a (z) formátumban: `\\storage-account-name.file.core.windows.net\file-share-name`
 
-Másolja a Storage-hozzáférési kulcsokat a formátuma: `DefaultEndpointsProtocol=https;AccountName=<Storage-Account-Name>;AccountKey=****;EndpointSuffix=core.windows.net`
+Másolja a Storage-hozzáférési kulcsokat a (z) formátumban: `DefaultEndpointsProtocol=https;AccountName=<Storage-Account-Name>;AccountKey=****;EndpointSuffix=core.windows.net`
 
  További információért lásd: [View and copy storage access keys](../storage/common/storage-account-manage.md#access-keys) (A tárelérési kulcsok megtekintése és másolása). 
 
 ## <a name="4---create-a-publisher-database"></a>4 – közzétevő adatbázis létrehozása
 
-Kapcsolódjon a `sql-mi-pub` felügyelt példányhoz SQL Server Management Studio használatával, és futtassa a következő Transact-SQL (T-SQL) kódot a közzétevő adatbázis létrehozásához:
+Kapcsolódjon `sql-mi-pub` felügyelt példányához a SQL Server Management Studio használatával, és futtassa a következő Transact-SQL (T-SQL) kódot a közzétevő adatbázis létrehozásához:
 
 ```sql
 USE [master]
@@ -120,7 +120,7 @@ GO
 
 ## <a name="5---create-a-subscriber-database"></a>5 – előfizetői adatbázis létrehozása
 
-Kapcsolódjon a `sql-mi-sub` felügyelt példányhoz SQL Server Management Studio használatával, és futtassa az alábbi T-SQL-kódot az üres előfizetői adatbázis létrehozásához:
+Kapcsolódjon `sql-mi-sub` felügyelt példányához SQL Server Management Studio használatával, és futtassa az alábbi T-SQL-kódot az üres előfizetői adatbázis létrehozásához:
 
 ```sql
 USE [master]
@@ -141,7 +141,7 @@ GO
 
 ## <a name="6---configure-distribution"></a>6 – eloszlás konfigurálása
 
-Kapcsolódjon a `sql-mi-pub` felügyelt példányhoz a SQL Server Management Studio használatával, és futtassa a következő T-SQL-kódot a terjesztési adatbázis konfigurálásához. 
+Kapcsolódjon a `sql-mi-pub` felügyelt példányához a SQL Server Management Studio használatával, és futtassa a következő T-SQL-kódot a terjesztési adatbázis konfigurálásához. 
 
 ```sql
 USE [master]
@@ -154,7 +154,7 @@ GO
 
 ## <a name="7---configure-publisher-to-use-distributor"></a>7 – a közzétevő konfigurálása a terjesztő használatára 
 
-A közzétevő felügyelt példányán @no__t – 0, módosítsa a lekérdezés végrehajtását [Sqlcmd](/sql/ssms/scripting/edit-sqlcmd-scripts-with-query-editor) módra, és futtassa a következő kódot az új terjesztő közzétevőhöz való regisztrálásához. 
+A közzétevő felügyelt példányán `sql-mi-pub`módosítsa a lekérdezés végrehajtását [Sqlcmd](/sql/ssms/scripting/edit-sqlcmd-scripts-with-query-editor) módra, és a következő kód futtatásával regisztrálja az új terjesztőt a közzétevővel. 
 
 ```sql
 :setvar username loginUsedToAccessSourceManagedInstance
@@ -322,7 +322,7 @@ EXEC sp_dropdistributor @no_checks = 1
 GO
 ```
 
-Az Azure-erőforrások tisztításához [törölje a felügyelt példányok erőforrásait az erőforráscsoporthoz](../azure-resource-manager/manage-resources-portal.md#delete-resources) , majd törölje az `SQLMI-Repl` erőforráscsoportot. 
+Az Azure-erőforrások tisztításához [törölje a felügyelt példányok erőforrásait az erőforráscsoporthoz](../azure-resource-manager/manage-resources-portal.md#delete-resources) , majd törölje az erőforráscsoportot `SQLMI-Repl`. 
 
    
 ## <a name="see-also"></a>Lásd még:

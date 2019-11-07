@@ -1,5 +1,5 @@
 ---
-title: Visual authoring in Azure Data Factory | Microsoft Docs
+title: Visual authoring in Azure Data Factory
 description: Ismerje meg, hogyan használható a Visual authoring a Azure Data Factory
 services: data-factory
 documentationcenter: ''
@@ -12,12 +12,12 @@ author: djpmsft
 ms.author: daperlov
 ms.reviewer: ''
 manager: craigg
-ms.openlocfilehash: e8b9aa3af6b15272e19589eb422016f4abd9380f
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 71f0e283c9609e949cc9b09f20a16c6f5c9c3e50
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68883661"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73681619"
 ---
 # <a name="visual-authoring-in-azure-data-factory"></a>Visual authoring in Azure Data Factory
 
@@ -25,7 +25,7 @@ A Azure Data Factory felhasználói felületi élmény (UX) segítségével vizu
 
 ## <a name="authoring-canvas"></a>Szerzői vászon
 
-A szerzői **műveletek vászon**megnyitásához kattintson a ceruza ikonra. 
+A **szerzői műveletek vászon**megnyitásához kattintson a ceruza ikonra. 
 
 ![Szerzői vászon](media/author-visually/authoring-canvas.png)
 
@@ -49,7 +49,7 @@ A kifejezés nyelvével kapcsolatos további információkért lásd: [kifejezé
 
 ## <a name="provide-feedback"></a>Visszajelzés küldése
 
-Válassza ki a visszajelzéseket a funkciókkal kapcsolatos megjegyzésekhez, vagy tájékoztassa a Microsoftot az eszközzel kapcsolatos problémákról:
+Válassza ki a **visszajelzéseket** a funkciókkal kapcsolatos megjegyzésekhez, vagy tájékoztassa a Microsoftot az eszközzel kapcsolatos problémákról:
 
 ![Visszajelzés](media/author-visually/provide-feedback.png)
 

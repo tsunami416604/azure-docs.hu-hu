@@ -1,5 +1,5 @@
 ---
-title: Parametrizálja társított szolgáltatások a Azure Data Factoryban | Microsoft Docs
+title: Parametrizálja társított szolgáltatások Azure Data Factory
 description: Megtudhatja, hogyan parametrizálja a társított szolgáltatásokat a Azure Data Factoryban, és hogyan adhat át dinamikus értékeket a futási időben.
 services: data-factory
 documentationcenter: ''
@@ -11,12 +11,12 @@ ms.date: 12/18/2018
 author: djpmsft
 ms.author: daperlov
 manager: craigg
-ms.openlocfilehash: 285b7c182fc218a590b7a3980e43175c76555106
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 46ea65c09ec9567bb03a524470a3550c9cdfd00e
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70140953"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73684577"
 ---
 # <a name="parameterize-linked-services-in-azure-data-factory"></a>Parametrizálja társított szolgáltatások Azure Data Factory
 
@@ -41,7 +41,7 @@ A társított szolgáltatás paraméterezés jelenleg a Azure Portal Data Factor
 - Cosmos DB
 - Amazon Redshift
 - MySQL
-- Azure Database for MySQL
+- A MySQL-hez készült Azure Database
 
 ## <a name="data-factory-ui"></a>A Data Factory felhasználói felülete
 

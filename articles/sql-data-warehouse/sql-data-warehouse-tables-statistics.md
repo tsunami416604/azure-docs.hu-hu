@@ -1,5 +1,5 @@
 ---
-title: Statisztikák létrehozása, frissítése – Azure SQL Data Warehouse | Microsoft Docs
+title: Statisztikák létrehozása, frissítése
 description: Javaslatok és példák a lekérdezés-optimalizálási statisztikák létrehozására és frissítésére a Azure SQL Data Warehouse tábláiban.
 services: sql-data-warehouse
 author: XiaoyuMSFT
@@ -10,13 +10,13 @@ ms.subservice: development
 ms.date: 05/09/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.custom: seoapril2019
-ms.openlocfilehash: 00643e303b3352ce9ce39e5a27fd8b42246aac51
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.custom: seo-lt-2019
+ms.openlocfilehash: c995358fc0135a1f9b504b57b23ecb3f6b41d6da
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68479162"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73692410"
 ---
 # <a name="table-statistics-in-azure-sql-data-warehouse"></a>Táblázat statisztikája Azure SQL Data Warehouse
 
@@ -47,7 +47,7 @@ SET AUTO_CREATE_STATISTICS ON
 Ezek az utasítások a statisztikák automatikus létrehozását fogják elindítani:
 
 - SELECT
-- INSERT-SELECT
+- BESZÚRÁS – KIJELÖLÉS
 - CTAS
 - UPDATE
 - DELETE
@@ -61,7 +61,7 @@ A statisztikák automatikus létrehozása szinkron módon történik, így előf
 > [!NOTE]
 > A statisztikák létrehozása a [sys. DM _pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?view=azure-sqldw-latest) történik, egy másik felhasználói környezetben.
 
-Az automatikus statisztikák létrehozásakor a rendszer a következőket teszi: A _WA_Sys_< 8 jegyű oszlop azonosítóját hexadecimális > _ < 8 számjegyű tábla-azonosítót hexadecimális >. A már létrehozott statisztikákat a [DBCC SHOW_STATISTICS](/sql/t-sql/database-console-commands/dbcc-show-statistics-transact-sql?view=azure-sqldw-latest) parancs futtatásával tekintheti meg:
+Az automatikus statisztikák létrehozásakor a rendszer az alábbiakat használja: _WA_Sys_< 8 számjegyű oszlop-azonosító a hexadecimális > _ < 8 számjegyű tábla azonosítója hexadecimális >. A már létrehozott statisztikákat a [DBCC SHOW_STATISTICS](/sql/t-sql/database-console-commands/dbcc-show-statistics-transact-sql?view=azure-sqldw-latest) parancs futtatásával tekintheti meg:
 
 ```sql
 DBCC SHOW_STATISTICS (<table_name>, <target>)
@@ -77,7 +77,7 @@ A következő javaslatok frissítik a statisztikát:
 
 |||
 |-|-|
-| **A statisztika frissítéseinek gyakorisága**  | Konzervatív Napi </br> Az adatai betöltése vagy átalakítása után |
+| **A statisztika frissítéseinek gyakorisága**  | Konzervatív: naponta </br> Az adatai betöltése vagy átalakítása után |
 | **Mintavételezés** |  Kevesebb mint 1 000 000 000 sor, használja az alapértelmezett mintavételezést (20 százalék). </br> A több mint 1 000 000 000 sorral a mintavételezést két százalékkal kell használni. |
 
 Az egyik első kérdés a lekérdezés hibaelhárításakor: **"a statisztikák naprakészek?"**
@@ -118,7 +118,7 @@ WHERE
 
 Az adatraktárban lévő **dátumok oszlopai** például általában gyakori statisztikai frissítésekre van szükség. Minden alkalommal, amikor új sorok töltődnek be az adatraktárba, új betöltési dátumok vagy tranzakciós dátumok lesznek hozzáadva. Ezek az adateloszlást módosítják, és a statisztikákat elavultan teszik elérhetővé. Ezzel ellentétben előfordulhat, hogy az ügyfél táblában nem kell frissíteni a nemek szerinti oszlop statisztikáit. Feltételezve, hogy a terjesztés állandó az ügyfelek között, és új sorokat ad hozzá a táblázat variációhoz, nem fogja módosítani az adateloszlást. Ha azonban az adattárház csak egyetlen nemet tartalmaz, és egy új követelmény több nemet eredményez, akkor frissítenie kell a nemek oszlop statisztikáit.
 
-További információ: általános útmutató a statisztikákhoz [](/sql/relational-databases/statistics/statistics).
+További információ: általános útmutató a [statisztikákhoz](/sql/relational-databases/statistics/statistics).
 
 ## <a name="implementing-statistics-management"></a>A statisztikák kezelésének megvalósítása
 
@@ -130,11 +130,11 @@ A következő irányadó elveket kell megadnia a statisztikák frissítéséhez 
 * A JOIN, a GROUP BY, a ORDER BY és a DISTINCT záradékban részt vevő oszlopokra koncentrálhat.
 * Érdemes lehet frissíteni a "növekvő kulcs" oszlopokat, például a tranzakció dátumát gyakrabban, mert ezek az értékek nem szerepelnek a statisztikai hisztogramon.
 * Érdemes lehet ritkábban frissíteni a statikus terjesztési oszlopokat.
-* Ne feledje, hogy minden egyes statisztikai objektum sorba van frissítve. A megvalósítás `UPDATE STATISTICS <TABLE_NAME>` egyszerűen nem mindig ideális, különösen a sok statisztikai objektummal rendelkező széles táblák esetében.
+* Ne feledje, hogy minden egyes statisztikai objektum sorba van frissítve. A `UPDATE STATISTICS <TABLE_NAME>` egyszerűen implementálása nem mindig ideális, különösen a sok statisztikai objektummal rendelkező széles táblák esetében.
 
 További információ: a [kardinális becslése](/sql/relational-databases/performance/cardinality-estimation-sql-server).
 
-## <a name="examples-create-statistics"></a>Példák: Statisztika létrehozása
+## <a name="examples-create-statistics"></a>Példák: statisztikák létrehozása
 
 Ezek a példák azt mutatják be, hogyan használhatók a különböző beállítások a statisztikák létrehozásához. Az egyes oszlopokhoz használt beállítások az adatok jellemzőitől és az oszlopnak a lekérdezésekben való használatának módjától függnek.
 
@@ -148,7 +148,7 @@ Ez a szintaxis az összes alapértelmezett beállítást használja. Alapértelm
 CREATE STATISTICS [statistics_name] ON [schema_name].[table_name]([column_name]);
 ```
 
-Példa:
+Például:
 
 ```sql
 CREATE STATISTICS col1_stats ON dbo.table1 (col1);
@@ -164,7 +164,7 @@ A teljes táblázat mintavételezéséhez használja a következő szintaxist:
 CREATE STATISTICS [statistics_name] ON [schema_name].[table_name]([column_name]) WITH FULLSCAN;
 ```
 
-Példa:
+Például:
 
 ```sql
 CREATE STATISTICS col1_stats ON dbo.table1 (col1) WITH FULLSCAN;
@@ -210,13 +210,13 @@ Több oszlopból álló statisztikai objektum létrehozásához egyszerűen hasz
 > [!NOTE]
 > A lekérdezési eredményben szereplő sorok számának becsléséhez használt hisztogram csak a statisztikai objektum definíciójában felsorolt első oszlop esetében érhető el.
 
-Ebben a példában a hisztogram a *termék\_kategóriájában*van. A több oszlopra vonatkozó statisztikák a *termékkategória\_* és a *termék\_sub_category*számítanak:
+Ebben a példában a hisztogram a *termék\_kategóriában*található. Az adatoszlopok statisztikáit a *termék\_kategóriára* és a *termék\_sub_category*számítjuk ki:
 
 ```sql
 CREATE STATISTICS stats_2cols ON table1 (product_category, product_sub_category) WHERE product_category > '2000101' AND product_category < '20001231' WITH SAMPLE = 50 PERCENT;
 ```
 
-Mivel a *termék\_kategóriája* és a *termék\_\_* alkategóriája közötti korreláció áll fenn, a többoszlopos statisztikai objektum akkor lehet hasznos, ha ezek az oszlopok egyszerre érhetők el.
+Mivel a *termék\_kategóriája* és a *termék\_Al\_kategóriája*között korreláció van, akkor a többoszlopos statisztikai objektum akkor lehet hasznos, ha ezek az oszlopok egyszerre érhetők el.
 
 ### <a name="create-statistics-on-all-columns-in-a-table"></a>Statisztikák létrehozása egy tábla összes oszlopához
 
@@ -352,7 +352,7 @@ EXEC [dbo].[prc_sqldw_create_stats] 3, 20;
 
 Mintavételen alapuló statisztika létrehozása az összes oszlopból
 
-## <a name="examples-update-statistics"></a>Példák: Frissítési statisztika
+## <a name="examples-update-statistics"></a>Példák: frissítési statisztikák
 
 A statisztikák frissítéséhez a következőket teheti:
 
@@ -367,7 +367,7 @@ A következő szintaxissal frissíthet egy adott statisztikai objektumot:
 UPDATE STATISTICS [schema_name].[table_name]([stat_name]);
 ```
 
-Példa:
+Például:
 
 ```sql
 UPDATE STATISTICS [dbo].[table1] ([stats_col1]);
@@ -383,7 +383,7 @@ Egy egyszerű módszer a tábla összes statisztikai objektumának frissítésé
 UPDATE STATISTICS [schema_name].[table_name];
 ```
 
-Példa:
+Például:
 
 ```sql
 UPDATE STATISTICS dbo.table1;
@@ -408,11 +408,11 @@ Ezek a rendszernézetek a statisztikával kapcsolatos információkat tartalmazn
 
 | Katalógus nézet | Leírás |
 |:--- |:--- |
-| [sys.columns](/sql/relational-databases/system-catalog-views/sys-columns-transact-sql) |Egy sor az egyes oszlopokhoz. |
-| [sys.objects](/sql/relational-databases/system-catalog-views/sys-objects-transact-sql) |Egy sor az adatbázis minden objektumához. |
+| [sys. Columns](/sql/relational-databases/system-catalog-views/sys-columns-transact-sql) |Egy sor az egyes oszlopokhoz. |
+| [sys. Objects](/sql/relational-databases/system-catalog-views/sys-objects-transact-sql) |Egy sor az adatbázis minden objektumához. |
 | [sys. schemas](/sql/relational-databases/system-catalog-views/sys-objects-transact-sql) |Az adatbázis minden sémájának egy sora. |
-| [sys.stats](/sql/relational-databases/system-catalog-views/sys-stats-transact-sql) |Egy sor az egyes statisztikai objektumokhoz. |
-| [sys.stats_columns](/sql/relational-databases/system-catalog-views/sys-stats-columns-transact-sql) |Egy sor a statisztikai objektum minden oszlopához. Hivatkozásokat tartalmaz a sys. Columns fájlra. |
+| [sys. stats](/sql/relational-databases/system-catalog-views/sys-stats-transact-sql) |Egy sor az egyes statisztikai objektumokhoz. |
+| [sys. stats_columns](/sql/relational-databases/system-catalog-views/sys-stats-columns-transact-sql) |Egy sor a statisztikai objektum minden oszlopához. Hivatkozásokat tartalmaz a sys. Columns fájlra. |
 | [sys. Tables](/sql/relational-databases/system-catalog-views/sys-tables-transact-sql) |Az egyes táblák egy sora (beleértve a külső táblákat is). |
 | [sys. table_types](/sql/relational-databases/system-catalog-views/sys-table-types-transact-sql) |Minden adattípus egy sora. |
 
@@ -465,7 +465,7 @@ AND     st.[user_created] = 1
 ;
 ```
 
-## <a name="dbcc-showstatistics-examples"></a>DBCC SHOW_STATISTICS () példák
+## <a name="dbcc-show_statistics-examples"></a>DBCC SHOW_STATISTICS () példák
 
 A DBCC SHOW_STATISTICS () megjeleníti a statisztikai objektumon belül tárolt adatokat. Ezek az adatkészletek három részből állnak:
 
@@ -483,13 +483,13 @@ Ez az egyszerű példa egy statisztikai objektum mindhárom részét megjelenít
 DBCC SHOW_STATISTICS([<schema_name>.<table_name>],<stats_name>)
 ```
 
-Példa:
+Például:
 
 ```sql
 DBCC SHOW_STATISTICS (dbo.table1, stats_col1);
 ```
 
-### <a name="show-one-or-more-parts-of-dbcc-showstatistics"></a>A DBCC SHOW_STATISTICS () egy vagy több részének megjelenítése
+### <a name="show-one-or-more-parts-of-dbcc-show_statistics"></a>A DBCC SHOW_STATISTICS () egy vagy több részének megjelenítése
 
 Ha csak bizonyos részeket szeretne megtekinteni, használja a `WITH` záradékot, és határozza meg, hogy mely részeket szeretné megtekinteni:
 
@@ -497,13 +497,13 @@ Ha csak bizonyos részeket szeretne megtekinteni, használja a `WITH` záradéko
 DBCC SHOW_STATISTICS([<schema_name>.<table_name>],<stats_name>) WITH stat_header, histogram, density_vector
 ```
 
-Példa:
+Például:
 
 ```sql
 DBCC SHOW_STATISTICS (dbo.table1, stats_col1) WITH histogram, density_vector
 ```
 
-## <a name="dbcc-showstatistics-differences"></a>DBCC SHOW_STATISTICS () különbségek
+## <a name="dbcc-show_statistics-differences"></a>DBCC SHOW_STATISTICS () különbségek
 
 A DBCC SHOW_STATISTICS () a SQL Serverhoz képest szigorúbban implementált SQL Data Warehouseban:
 

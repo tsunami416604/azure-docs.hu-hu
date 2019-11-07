@@ -9,16 +9,24 @@ ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
 ms.date: 11/04/2019
-ms.openlocfilehash: dddc39a0b7b3c43f283750c95d4feaef2cf15b36
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: HT
+ms.openlocfilehash: d9b7a433dd7392e83719f09815f736dbd85f9c7f
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/04/2019
-ms.locfileid: "73514276"
+ms.locfileid: "73582892"
 ---
 # <a name="monitoring-azure-machine-learning"></a>Figyelés Azure Machine Learning
 
 Ez a cikk a Azure Machine Learning által generált figyelési információkat ismerteti. Azt is leírja, hogyan használható a Azure Monitor az adatelemzéshez és a riasztások definiálásához.
+
+> [!TIP]
+> A jelen dokumentumban található információk elsősorban rendszergazdák számára készültek, mivel a Azure Machine Learning szolgáltatás figyelését ismerteti. Ha Ön egy adattudós vagy fejlesztő, és szeretné figyelni a modell-oktatóprogramokra vonatkozó információkat, tekintse meg a következő dokumentumokat:
+>
+> * [Betanítási futtatások indítása, figyelése és megszakítása](how-to-manage-runs.md)
+> * [A betanítási futtatások naplózási mérőszámai](how-to-track-experiments.md)
+> * [Eexperiments követése a MLflow](how-to-use-mlflow.md)
+> * [A futtatások megjelenítése a TensorBoard](how-to-monitor-tensorboard.md)
 
 ## <a name="azure-monitor"></a>Azure Monitor
 

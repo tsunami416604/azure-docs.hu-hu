@@ -1,5 +1,5 @@
 ---
-title: Kapcsolódás a Windows rendszerű virtuális asztalhoz egy webböngészőből – Azure
+title: A Windows rendszerű virtuális asztali webes ügyfélprogram összekötése – Azure
 description: Kapcsolódás a Windows rendszerű virtuális asztalhoz a webes ügyfélprogram használatával.
 services: virtual-desktop
 author: Heidilohr
@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 09/24/2019
 ms.author: helohr
-ms.openlocfilehash: e7fa1d2b21bfde6495a63676bc2aa1faa07e6bc5
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: a29081f77587a96dc48930eab359610a42fc0be5
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71676755"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73605812"
 ---
 # <a name="connect-with-the-web-client"></a>Kapcsolódás a webügyféllel
 
@@ -25,7 +25,7 @@ A webes ügyfél lehetővé teszi a Windows rendszerű virtuális asztali erőfo
 
 Habár minden HTML5-kompatibilis böngészőnek működnie kell, a következő operációs rendszereket és böngészőket hivatalosan támogatjuk.
 
-| Browser           | Támogatott operációs rendszer                     | Megjegyzések               |
+| Böngésző           | Támogatott operációs rendszer                     | Megjegyzések               |
 |-------------------|----------------------------------|---------------------|
 | Microsoft Edge    | Windows                          |                     |
 | Internet Explorer | Windows                          |                     |

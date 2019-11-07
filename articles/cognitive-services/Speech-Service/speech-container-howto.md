@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: dapine
-ms.openlocfilehash: 647edcab5ec2925016e8a099ae43b6133037f8de
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: HT
+ms.openlocfilehash: efb2fd8fd6b77a27130b834c2b192c1e88eec97c
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/04/2019
-ms.locfileid: "73491155"
+ms.locfileid: "73578387"
 ---
 # <a name="install-and-run-speech-service-containers"></a>Beszédfelismerő szolgáltatás tárolóinak telepítése és futtatása
 
@@ -26,7 +26,7 @@ A beszédfelismerési tárolók lehetővé teszik, hogy az ügyfelek olyan besz�
 > [!IMPORTANT]
 > Az összes beszédfelismerési tároló jelenleg egy [nyilvános "GateD" előzetes](../cognitive-services-container-support.md#public-gated-preview-container-registry-containerpreviewazurecrio)verzió részeként érhető el. Bejelentést kell készíteni, amikor a beszédfelismerési tárolók az általánosan elérhetővé vált (GA).
 
-| Függvény | Jellemzők | Legújabb |
+| Függvény | Szolgáltatások | Legújabb |
 |--|--|--|
 | Diktálás | Folyamatos valós idejű beszédet vagy kötegelt hangfelvételeket vált ki közbenső eredményekkel rendelkező szövegbe. | 2.0.0 |
 | Custom Speech – szöveg | A [Custom Speech portál](https://speech.microsoft.com/customspeech)egyéni modelljét használva folyamatos valós idejű beszédet vagy batch-hangfelvételeket vált ki közbenső eredményekkel rendelkező szövegbe. | 2.0.0 |
@@ -167,19 +167,7 @@ A következő címke egy példa a formátumra:
 2.0.0-amd64-en-us-preview
 ```
 
-A következő táblázat a 2.0.0-verzióban található **beszéd – szöveg** támogatott területi beállításokat sorolja fel:
-
-| Nyelvi területi beállítás | Címkék |
-|--|--|
-| kínai | `zh-CN` |
-| Angol | `en-US`<br>`en-GB`<br>`en-AU`<br>`en-IN` |
-| francia | `fr-CA`<br>`fr-FR` |
-| német | `de-DE` |
-| olasz | `it-IT` |
-| japán | `ja-JP` |
-| koreai | `ko-KR` |
-| portugál | `pt-BR` |
-| spanyol | `es-ES`<br>`es-MX` |
+A **beszéd – szöveg** típusú tároló 2.0.0-verziójában támogatott területi beállítások esetén a bérlet a [beszéd – szöveg nyelvi támogató](language-support.md#speech-to-text) tábla **tárolók támogatása** oszlopában található.
 
 # <a name="custom-speech-to-texttabcstt"></a>[Custom Speech – szöveg](#tab/cstt)
 
@@ -221,24 +209,7 @@ A következő címke egy példa a formátumra:
 1.3.0-amd64-en-us-jessarus-preview
 ```
 
-A következő táblázat a tároló 1.3.0-verziójában lévő **szöveg-beszéd** támogatott területi beállításokat sorolja fel:
-
-| Nyelvi területi beállítás | Címkék | Támogatott hangok |
-|--|--|--|
-| kínai | `zh-CN` | huihuirus<br>kangkang – Apollo<br>yaoyao – Apollo |
-| Angol | `en-AU` | Catherine<br>hayleyrus |
-| Angol | `en-GB` | George – Apollo<br>hazelrus<br>Susan – Apollo |
-| Angol | `en-IN` | heera – Apollo<br>priyarus<br>fosztogatás – Apollo<br> |
-| Angol | `en-US` | jessarus<br>benjaminrus<br>jessa24krus<br>zirarus<br>guy24krus |
-| francia | `fr-CA` | Caroline<br>harmonierus |
-| francia | `fr-FR` | hortenserus<br>Julie – Apollo<br>Paul – Apollo |
-| német | `de-DE` | hedda<br>heddarus<br>Stefan – Apollo |
-| olasz | `it-IT` | Cosimo – Apollo<br>luciarus |
-| japán | `ja-JP` | Ayumi – Apollo<br>harukarus<br>Ichiro – Apollo |
-| koreai | `ko-KR` | heamirus |
-| portugál | `pt-BR` | Daniel – Apollo<br>heloisarus |
-| spanyol | `es-ES` | elenarus<br>Laura – Apollo<br>Pablo – Apollo<br> |
-| spanyol | `es-MX` | hildarus<br>Raul – Apollo |
+Az összes támogatott területi beállításhoz és a **szöveg – beszéd** tároló 1.3.0-verziójában található megfelelő hangokhoz tekintse meg a [standard Voices nyelvi támogatási](language-support.md#standard-voices) tábla **tároló-támogatás** oszlopát.
 
 > [!IMPORTANT]
 > *Szabványos szöveg-beszéd http-* bejegyzés létrehozásakor a [Speech szintézis MARKUP Language (SSML)](speech-synthesis-markup.md) üzenetéhez `voice` elemnek `name` attribútummal kell rendelkeznie. Az érték a megfelelő tároló területi beállítása és hangja, más néven ["rövid név"](language-support.md#standard-voices). Például a `latest` címke neve `en-US-JessaRUS`.
@@ -260,7 +231,7 @@ docker pull containerpreview.azurecr.io/microsoft/cognitive-services-custom-text
 
 ## <a name="how-to-use-the-container"></a>A tároló használata
 
-Miután a tároló a [gazdagépen](#the-host-computer)található, a következő eljárással dolgozhat a tárolóval.
+Miután a tároló a [gazdagépen](#the-host-computer) található, a következő eljárással dolgozhat a tárolóval.
 
 1. [Futtassa a tárolót](#run-the-container-with-docker-run)a kötelező számlázási beállításokkal. További [példák](speech-container-configuration.md#example-docker-run-commands) a `docker run` parancsra.
 1. [A tároló előrejelzési végpontjának lekérdezése](#query-the-containers-prediction-endpoint).

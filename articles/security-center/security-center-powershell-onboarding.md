@@ -1,5 +1,5 @@
 ---
-title: A PowerShell használata a Azure Security Center bevezetéséhez és a hálózat biztonságához | Microsoft Docs
+title: Azure Security Center a PowerShell-lel
 description: Ez a dokumentum végigvezeti a Azure Security Center PowerShell-parancsmagokkal történő bevezetésének folyamatán.
 services: security-center
 documentationcenter: na
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/02/2018
 ms.author: memildin
-ms.openlocfilehash: 8e2f7b87efe89166175748cec310f24575b7f102
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: b20b3c1e4216fe8065fbc8ac24c7d8097903fc5a
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71201217"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73686371"
 ---
 # <a name="automate-onboarding-of-azure-security-center-using-powershell"></a>Azure Security Center bevezetésének automatizálása a PowerShell használatával
 
@@ -31,13 +31,13 @@ Ez a cikk egy minta PowerShell-parancsfájlt tartalmaz, amely módosítható és
 
 Ebben a példában a következő AZONOSÍTÓval rendelkező előfizetések esetében engedélyezzük a Security Centert: d07c0080-170c-4c24-861d-9c817742786c és a magas szintű védelmet biztosító ajánlott beállítások alkalmazása a Security Center Standard szintjének megvalósításával, amely a következőket biztosítja: komplex veszélyforrások elleni védelem és észlelési képességek:
 
-1. Állítsa be az [Asc standard szintű védelmet](https://azure.microsoft.com/pricing/details/security-center/). 
+1. Állítsa be a [Security Center standard szintű védelmet](https://azure.microsoft.com/pricing/details/security-center/). 
  
 2. Állítsa be azt a Log Analytics munkaterületet, amelyhez a Microsoft monitoring Agent az előfizetéshez társított virtuális gépeken gyűjtött adatokat küldi el – ebben a példában egy meglévő felhasználó által definiált munkaterületet (Sajátmunkaterület).
 
 3. Aktiválja Security Center automatikus ügynökének [üzembe helyezését, amely telepíti a Microsoft monitoring Agent ügynököt](security-center-enable-data-collection.md#auto-provision-mma).
 
-5. A szervezet CISO adja meg [Az ASC-riasztások és a jelentős események biztonsági kapcsolattartójának](security-center-provide-security-contact-details.md).
+5. A szervezet CISO adja meg [Security Center riasztások és jelentős események biztonsági kapcsolattartójának](security-center-provide-security-contact-details.md).
 
 6. Security Center [alapértelmezett biztonsági házirendjeinek](tutorial-security-policy.md)kiosztása.
 
@@ -58,7 +58,7 @@ Ezeket a lépéseket az Security Center-parancsmagok futtatása előtt kell vég
         Set-AzContext -Subscription "d07c0080-170c-4c24-861d-9c817742786c"
         Register-AzResourceProvider -ProviderNamespace 'Microsoft.Security' 
 
-2.  Nem kötelező: Az előfizetések lefedettségi szintjének (árképzési szint) beállítása (ha nincs meghatározva, az árképzési szint értéke ingyenes):
+2.  Nem kötelező: az előfizetések lefedettségi szintjének (árképzési szint) beállítása (ha nincs meghatározva, az árképzési szint szabad értékre van állítva):
 
         Set-AzContext -Subscription "d07c0080-170c-4c24-861d-9c817742786c"
         Set-AzSecurityPricing -Name "default" -PricingTier "Standard"
@@ -78,7 +78,7 @@ Ezeket a lépéseket az Security Center-parancsmagok futtatása előtt kell vég
     > Javasoljuk, hogy az automatikus kiépítés engedélyezésével győződjön meg arról, hogy az Azure-beli virtuális gépeket a Azure Security Center automatikusan védi.
     >
 
-5.  Nem kötelező: Erősen ajánlott megadnia a beépített előfizetések biztonsági kapcsolattartási adatait, amelyeket a Security Center által generált riasztások és értesítések címzettjeiként fog használni:
+5.  Nem kötelező: erősen ajánlott megadnia a beépített előfizetések biztonsági kapcsolattartási adatait, amelyeket a rendszer a Security Center által generált riasztások és értesítések címzettjeiként használ:
 
         Set-AzSecurityContact -Name "default1" -Email "CISO@my-org.com" -Phone "2142754038" -AlertAdmin -NotifyOnAlert 
 
@@ -97,7 +97,7 @@ Ezeket a PowerShell-parancsmagokat az Automation-parancsfájlok segítségével 
 
 
 
-## <a name="see-also"></a>Lásd még
+## <a name="see-also"></a>Lásd még:
 Ha többet szeretne megtudni arról, hogy a PowerShell Hogyan automatizálható a Security Center bevezetésének automatizálásához, tekintse meg a következő cikket:
 
 * [Az. Security](https://docs.microsoft.com/powershell/module/az.security).

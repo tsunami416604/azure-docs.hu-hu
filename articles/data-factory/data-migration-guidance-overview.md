@@ -1,5 +1,5 @@
 ---
-title: Az adatok áttelepíthetők az Azure-ba és az adattárházból az Azure-ba a Azure Data Factory használatával | Microsoft Docs
+title: Az adatok áttelepíthetők az Azure-ba és az adattárházból a Azure Data Factory használatával
 description: Az adatok áttelepíthetők az Azure-ba a Azure Data Factory használatával.
 services: data-factory
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 7/30/2019
-ms.openlocfilehash: 2d2fc1e2992e379c80a16dee2c1983f9559470c5
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: 0be9cbc9c5af2e0778654ef70c5350b48f10c35d
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70931132"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73675761"
 ---
 # <a name="use-azure-data-factory-to-migrate-data-from-your-data-lake-or-data-warehouse-to-azure"></a>Az adatok áttelepíthetők a Azure Data Factory használatával az Azure-ba vagy az adattárházból
 
@@ -36,7 +36,7 @@ A Azure Data Factory áthelyezheti a petabájt (PB) adatait a Lake Migration ada
   - A Azure Data Factory utólagos elszámolású módszert használ, így csak az Azure-ba történő adatáttelepítés során ténylegesen használt idő után kell fizetnie.  
 - Azure Data Factory egyszerre egy egyszeri betöltést és ütemezett növekményes terhelést is végrehajthat.
 - A Azure Data Factory az Azure Integration Runtime (IR) használatával helyezi át az adatátvitelt a nyilvánosan elérhető adattó és a raktári végpontok között. Emellett saját üzemeltetésű integrációs modult is használhat az Azure Virtual Network (VNet) vagy egy tűzfal mögött található adattó-és raktár-végpontok adatáthelyezéséhez.
-- A Azure Data Factory nagyvállalati szintű biztonsággal rendelkezik: Az Windows Installer (MSI) vagy a szolgáltatás identitását használhatja a biztonságos szolgáltatások közötti integrációhoz, vagy használhatja a Azure Key Vaultt a hitelesítő adatok kezeléséhez.
+- A Azure Data Factory nagyvállalati szintű biztonsággal rendelkezik: az Windows Installer (MSI) vagy a szolgáltatás identitását használhatja a biztonságos szolgáltatások közötti integrációhoz, vagy használhat Azure Key Vault a hitelesítő adatok kezeléséhez.
 - A Azure Data Factory egy ingyenes, beépített monitorozási irányítópultot biztosít a kód nélküli szerzői műveletekhez.  
 
 ## <a name="online-vs-offline-data-migration"></a>Online és offline adatáttelepítés
@@ -51,7 +51,7 @@ Az online és az offline áttelepítési módszer közül három fő szempontot 
 
 Tegyük fel például, hogy az adatáttelepítés két héten belül történő elvégzéséhez tervezi Azure Data Factory használatát (az *áttelepítési ablak*). Figyelje meg a rózsaszín/kék határvonalat a következő táblázatban. Az adott oszlop legalacsonyabb rózsaszín cellája azt az adatméretet/hálózati sávszélesség-párosítást jeleníti meg, amelynek áttelepítési ablaka a legközelebb van, de kevesebb, mint két hét. (A kék cellában lévő bármilyen méretű vagy sávszélességű párosítás Online áttelepítési időszaka több mint két hétig tart.) 
 
-![online vagy offline](media/data-migration-guidance-overview/online-offline.png) – ez a táblázat segít eldönteni, hogy a tervezett áttelepítési időszakot az adatforgalom és a rendelkezésre álló hálózati sávszélesség alapján tudja-e teljesíteni az online áttelepítéssel (Azure Data Factory). Ha az online áttelepítési ablak kettőnél több hetet használ, offline áttelepítést érdemes használni.
+![online vagy offline](media/data-migration-guidance-overview/online-offline.png) a táblázat segítségével meghatározhatja, hogy a tervezett áttelepítési időszakot az adatmennyiség és a rendelkezésre álló hálózati sávszélesség alapján kell-e teljesíteni az online áttelepítés (Azure Data Factory) használatával. Ha az online áttelepítési ablak kettőnél több hetet használ, offline áttelepítést érdemes használni.
 
 > [!NOTE]
 > Az online áttelepítés használatával a korábbi és a növekményes adatbevitelt is elérheti egyetlen eszközön keresztül.  Ezzel a megközelítéssel az adatokat szinkronizálni lehet a meglévő tároló és az új áruház között a teljes áttelepítési időszak alatt. Ez azt jelenti, hogy újraépítheti az ETL-logikát az új tárolóban a frissített adatértékekkel.

@@ -1,36 +1,36 @@
 ---
-title: Eszközök betöltése az Azure Media clipperbe |} A Microsoft Docs
-description: Eszközök betöltése az Azure Media clipperbe lépései
+title: Eszközök betöltése az Azure Media Clipperbe | Microsoft Docs
+description: Az eszközök Azure Media Clipperbe való betöltésének lépései
 services: media-services
-keywords: clip;subclip;encoding;media
-author: dbgeorge
-manager: jasonsue
-ms.author: dwgeo
+keywords: klip; alklip; kódolás; média
+author: Juliako
+manager: femila
+ms.author: juliako
 ms.date: 03/14/2019
 ms.topic: article
 ms.service: media-services
-ms.openlocfilehash: ec8cd06be78bbd8df0bca390696e736c3a6ee075
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 66b4ca5b2859dd306f6eb1c669a07840189f53d5
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61465881"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73685042"
 ---
-# <a name="loading-assets-into-azure-media-clipper"></a>Eszközök betöltése az Azure Media clipperbe  
+# <a name="loading-assets-into-azure-media-clipper"></a>Eszközök betöltése az Azure Media Clipperbe  
 
-Eszközök által kétféleképpen tölthetők az Azure Media clipperbe:
-1. A szalagtár eszközök statikusan átadása
-2. Dinamikusan létrehozni az API-n keresztül az eszközök listája
+Az eszközöket kétféleképpen lehet betölteni az Azure Media Clipperbe:
+1. Statikusan átadása az eszközök egy könyvtárában
+2. Eszközök listájának dinamikusan generálása API-n keresztül
 
-## <a name="statically-load-videos-into-clipper"></a>Videók statikusan betöltheti Clipperrel
-Videók statikusan töltse be a végfelhasználók számára, hogy klipeket készíthet anélkül, hogy videókat az eszköz kiválasztás panel engedélyezése Clipperrel.
+## <a name="statically-load-videos-into-clipper"></a>Videók statikus betöltése a Clipperbe
+A videók statikus betöltésével lehetővé teheti, hogy a végfelhasználók klipeket hozzanak létre anélkül, hogy az eszköz kiválasztása panelről kiválasztanak videókat.
 
-Ebben az esetben átadhatja eszközök statikus készletét a Clipperrel. Minden eszköz egy AMS eszköz/szűrés azonosító, név, már közzétett egy streamelési URL-cím. magában foglalja. Ha szükséges, egy hitelesítési tokent a content protection vagy a tömb Miniatűr URL-címek lehet átadni. Ha az átadott, a miniatűrök fel van töltve a felületen. Az olyan forgatókönyvekben, ahol az eszközintelligencia-könyvtár kis- és statikus az egyes eszközök a könyvtárban az eszközintelligencia szerződésben adhat át.
+Ebben az esetben az eszközök statikus készletét kell átadnia a Clipper-nek. Minden eszköz tartalmaz egy AMS-eszközt/szűrőt, a nevet, a közzétett streaming URL-címet. Ha alkalmazható, a rendszer átadja a tartalomvédelmi hitelesítési jogkivonatot vagy a miniatűr URL-címek tömbjét is. Ha a érték be van töltve, a miniatűrök bekerülnek az illesztőfelületbe. Azokban az esetekben, amelyekben az adattárat statikus és kisméretű, a könyvtárban található minden egyes eszközhöz átadhatja a tárgyi szerződést.
 
 > [!NOTE]
-> Eszközök statikusan betöltenie a Clipperrel, eszközök bővül **közvetlenül az idővonalon a** és a **eszköz ablaktáblában nem jelenik meg**. Az első eszköz bekerül az idővonalon, és az eszközök a többi adatbázisfiókhoz az idősor jobb szélén).
+> Ha az adattárolóba statikusan tölt be eszközöket, az eszközök **közvetlenül az idővonalhoz** lesznek hozzáadva, és az **eszköz panel nem jelenik**meg. Az első adategység hozzá lesz adva az idővonalhoz, és a többi objektum az idősor jobb oldalán van halmozva.
 
-Az eszközintelligencia statikus kódtár betöltése, használja a **betöltése** metódust minden eszköz JSON-ábrázolását adja át. Az alábbi példakód mutatja be a JSON-reprezentációval egy eszközre.
+A statikus adattár betöltéséhez használja a **Load** metódust az egyes eszközök JSON-ábrázolásának továbbításához. Az alábbi mintakód szemlélteti egy adott eszköz JSON-ábrázolását.
 
 ```javascript
 var assets = [
@@ -99,10 +99,10 @@ subclipper.ready(function () {
 ```
 
 > [!NOTE]
-> Javasoljuk, hogy lánc a load() metódust hívja meg a ready(handler) metódus az előző példában látható módon. Az előző példában garantálja, hogy a vezérlő készen áll az eszközök betöltése előtt.
+> A Load () metódus hívása a Ready (kezelő) metódussal történik, ahogy az előző példában is látható. Az előző példa garantálja, hogy a widget készen áll az eszközök betöltése előtt.
 
 > [!NOTE]
-> A Miniatűr URL-címek használatával működnek megfelelően, a Clipperrel idővonalról, egyenletesen között kell elosztania (időtartama alapján) a videó és a tömbön belüli időrendi sorrendben. Használhatja az alábbi előre definiált JSON-kódrészlet minta referenciaként a "Media Encoder Standard" processzor rendszerképek létrehozásához:
+> Ahhoz, hogy a miniatűr URL-címek a várt módon működjenek a beosztási időkereten belül, a videón (az időtartam alapján) és a tömbön belüli időrendi sorrendben egyenletesen el kell osztani őket. A következő JSON-kódrészletet használhatja mintaként a rendszerképek "Media Encoder Standard" processzorral történő generálásához:
 
 ```json
 {
@@ -120,13 +120,13 @@ subclipper.ready(function () {
 }
 ```
 
-## <a name="dynamically-load-videos-in-clipper"></a>Dinamikusan a Clipperrel a videók betöltése
-Videók dinamikusan töltse be a Clipperrel engedélyezéséhez jelölje be a videókat az eszköz kiválasztása panel grafikus ellen, a végfelhasználók számára.
+## <a name="dynamically-load-videos-in-clipper"></a>Videók dinamikus betöltése a Clipper-ben
+A videók dinamikusan tölthetők be a Clipper-be, hogy a végfelhasználók az eszköz kiválasztására szolgáló panelen is kiválasszák a videókat.
 
-Másik lehetőségként dinamikusan használatával egy visszahívást eszközök betöltheti. Olyan esetekben, ahol eszközök dinamikusan jönnek létre, vagy a könyvtárban nagy a visszahívás útján kell betölteni. Eszközintelligencia dinamikusan betöltése, meg kell valósítani a választható onLoadAssets visszahívást függvény. Ez a függvény az inicializáláskor Clipperrel átad a. A feloldott adategységek meg kell felelnie a statikusan betöltött objektumként ugyanazt a szerződést. A következő példakód azt szemlélteti, a podpis metody, a várt bemeneti és a várt kimeneti.
+Azt is megteheti, hogy a visszahívási funkcióval dinamikusan betölti az eszközöket. Olyan helyzetekben, ahol az eszközök dinamikusan jönnek létre, vagy a könyvtár nagy méretű, a visszahíváson keresztül kell betölteni. Az eszköz dinamikus betöltéséhez végre kell hajtania az opcionális onLoadAssets visszahívási függvényt. Ezt a függvényt a rendszer az inicializáláskor továbbítja a Clipper-be. A feloldott eszközöknek ugyanahhoz a szerződéshez kell tartoznia, mint a statikusan betöltött eszközök. A következő mintakód szemlélteti a metódus aláírását, a várt bemenetet és a várt kimenetet.
 
 > [!NOTE]
-> Ha dinamikusan betöltenie a Clipperrel eszközök, eszközök jelennek az **eszköz időkiválasztás panel**.
+> Amikor dinamikusan tölti be az eszközöket a Clipper-be, az eszközök az **eszköz kiválasztása panelen**jelennek meg.
 
 ```javascript
 // Video Assets Pane Callback

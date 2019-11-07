@@ -1,5 +1,5 @@
 ---
-title: Egybérlős SaaS-oktatóanyag – Azure SQL Database | Microsoft Docs
+title: Egyetlen bérlős SaaS-oktatóanyag – Azure SQL Database
 description: Egy önálló, egybérlős SaaS-alkalmazás üzembe helyezése és megismerése, amely Azure SQL Databaset használ.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: MightyPen
 ms.author: genemi
 ms.reviewer: sstein
 ms.date: 11/07/2018
-ms.openlocfilehash: 2e6b18e53358cad1bfe89e8c0ae7fbacec24d179
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: df9c3913851055f1bb477264cf5a7486f79b56b0
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68570204"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73691961"
 ---
 # <a name="deploy-and-explore-a-standalone-single-tenant-application-that-uses-azure-sql-database"></a>A Azure SQL Databaset használó önálló egybérlős alkalmazás üzembe helyezése és megismerése
 
@@ -43,11 +43,11 @@ A rendszer további oktatóanyagokat is felszabadít. Lehetővé teszik, hogy az
 Telepítse az alkalmazást a három megadott bérlőhöz:
 
 1. Kattintson a kék **üzembe helyezés az Azure** -ban gombra, hogy megnyissa a központi telepítési sablont a [Azure Portal](https://portal.azure.com). Minden sablonhoz két paraméter érték szükséges; egy új erőforráscsoport neve, valamint egy olyan Felhasználónév, amely megkülönbözteti a központi telepítést az alkalmazás más központi telepítései között. A következő lépés az értékek beállításának részleteit tartalmazza.<br><br>
-    <a href="https://aka.ms/deploywingtipsa-contoso" target="_blank"><img style="vertical-align:middle" src="media/saas-standaloneapp-get-started-deploy/deploy.png"/></a>**Contoso Concert Hall** &nbsp;
+    <a href="https://aka.ms/deploywingtipsa-contoso" target="_blank"><img style="vertical-align:middle" src="media/saas-standaloneapp-get-started-deploy/deploy.png"/></a> &nbsp; **contoso Concert Hall**
 <br><br>
-    <a href="https://aka.ms/deploywingtipsa-dogwood" target="_blank"><img style="vertical-align:middle" src="media/saas-standaloneapp-get-started-deploy/deploy.png"/></a>**Somfai Dojo** &nbsp;
+    <a href="https://aka.ms/deploywingtipsa-dogwood" target="_blank"><img style="vertical-align:middle" src="media/saas-standaloneapp-get-started-deploy/deploy.png"/></a> &nbsp; **somfa Dojo**
 <br><br>
-    <a href="https://aka.ms/deploywingtipsa-fabrikam" target="_blank"><img style="vertical-align:middle" src="media/saas-standaloneapp-get-started-deploy/deploy.png"/></a>**Fabrikam Jazz Club** &nbsp;
+    <a href="https://aka.ms/deploywingtipsa-fabrikam" target="_blank"><img style="vertical-align:middle" src="media/saas-standaloneapp-get-started-deploy/deploy.png"/></a> &nbsp; **Fabrikam Jazz Club**
 
 2. Adja meg az egyes központi telepítések kötelező paramétereinek értékét.
 
@@ -55,7 +55,7 @@ Telepítse az alkalmazást a három megadott bérlőhöz:
     > Bizonyos hitelesítési és kiszolgálói tűzfalak szándékosan nem biztonságosak a demonstrációs célokra. **Hozzon létre egy új erőforráscsoportot** az egyes alkalmazások telepítéséhez.  Ne használjon meglévő erőforráscsoportot. Ne használja az alkalmazást vagy az általa létrehozott erőforrásokat éles környezetben. Törölje az összes erőforráscsoportot, ha elkészült az alkalmazásokkal a kapcsolódó számlázás leállításához.
 
     A legjobb, ha csak kisbetűket, számokat és kötőjeleket használ az erőforrásnevek.
-    * Az **erőforráscsoport**területen válassza az új létrehozása lehetőséget, majd adja meg az erőforráscsoport kisbetűs nevét. a **Wingtip-SA\<-\>-venueNamefelhasználó\<azajánlottminta\>**  .  A \<venueName\>cserélje le a helyszín nevét szóközök nélkül. A \<felhasználó\>mezőben cserélje le a felhasználói értéket alulról.  Ezzel a mintával az erőforráscsoportok nevei lehetnek *Wingtip-SA-contosoconcerthall-AF1*, *Wingtip-SA-dogwooddojo-AF1*, *Wingtip-SA-fabrikamjazzclub-AF1*.
+    * Az **erőforráscsoport**területen válassza az új létrehozása lehetőséget, majd adja meg az erőforráscsoport kisbetűs nevét. **Wingtip-SA-\<venueName\>-\<felhasználói\>** a javasolt minta.  \<venueName\>esetében cserélje le a helyszín nevét szóköz nélkül. \<felhasználói\>a lenti felhasználói értéket cserélje le.  Ezzel a mintával az erőforráscsoportok nevei lehetnek *Wingtip-SA-contosoconcerthall-AF1*, *Wingtip-SA-dogwooddojo-AF1*, *Wingtip-SA-fabrikamjazzclub-AF1*.
     * Válasszon ki egy **helyet** a legördülő listából.
 
     * **Felhasználó** számára – egy rövid felhasználói értéket ajánlunk, például a monogramját és egy számjegyét: például *AF1*.
@@ -75,16 +75,16 @@ Az alkalmazás az eseményeket üzemeltető helyszíneket mutatja be.  A helysz�
 
 1. Nyissa meg az Events (események) lapot a három bérlő mindegyikéhez külön böngésző lapjain:
 
-   - http://events.contosoconcerthall.&lt ;user&gt;.trafficmanager.net
-   - http://events.dogwooddojo.&lt ;user&gt;.trafficmanager.net
-   - http://events.fabrikamjazzclub.&lt ;user&gt;.trafficmanager.net
+   - http://events.contosoconcerthall.&lt; felhasználó&gt;. trafficmanager.net
+   - http://events.dogwooddojo.&lt; felhasználó&gt;. trafficmanager.net
+   - http://events.fabrikamjazzclub.&lt; felhasználó&gt;. trafficmanager.net
 
-     (Minden URL-címben cserélje &lt;le&gt; a felhasználót a telepítés felhasználói értékére.)
+     (Minden URL-címben cserélje le &lt;felhasználói&gt; a központi telepítés felhasználói értékére.)
 
-   ![Events](./media/saas-standaloneapp-get-started-deploy/fabrikam.png)
+   ![Események](./media/saas-standaloneapp-get-started-deploy/fabrikam.png)
 
 A bejövő kérelmek eloszlásának szabályozásához az alkalmazás az [*Azure Traffic Manager*](../traffic-manager/traffic-manager-overview.md)-t használja. Minden bérlőre jellemző alkalmazás-példány tartalmazza a bérlő nevét a tartománynév részeként az URL-címben. Az összes bérlői URL-cím tartalmazza az adott **felhasználói** értéket. Az URL-címek a következő formátumot követik:
-- http://events.&lt ;venuename&gt;.&lt; user&gt;.trafficmanager.net
+- http://events.&lt; venuename&gt;.&lt;felhasználói&gt;. trafficmanager.net
 
 Az egyes bérlők adatbázis- **helye** a megfelelő telepített alkalmazás Alkalmazásbeállítások részét képezi.
 
@@ -97,7 +97,7 @@ Nézzük meg az üzembe helyezett erőforrásokat:
 
 1. A [Azure Portal](https://portal.azure.com)tallózással keresse meg az erőforráscsoportok listáját.
 2. Ekkor látnia kell a három bérlői erőforráscsoportot.
-3. Nyissa meg a **Wingtip-SA-&lt;Fabrikam&gt; -User** erőforráscsoportot, amely a fabrikam Jazz Club üzembe helyezésének erőforrásait tartalmazza.  A **fabrikamjazzclub-&lt;User&gt;**  kiszolgáló tartalmazza a **fabrikamjazzclub** -adatbázist.
+3. Nyissa meg a **Wingtip-SA-Fabrikam-&lt;felhasználói&gt;** erőforráscsoportot, amely a fabrikam Jazz Club üzembe helyezésének erőforrásait tartalmazza.  A **fabrikamjazzclub-&lt;felhasználói&gt;** kiszolgáló tartalmazza a **fabrikamjazzclub** -adatbázist.
 
 Minden bérlői adatbázis 50 DTU *önálló* adatbázis.
 

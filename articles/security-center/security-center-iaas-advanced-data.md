@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: db700c1c06b89e1a3287b5eee1a11fc8877dedde
-ms.sourcegitcommit: 3f8017692169bd75483eefa96c225d45cd497f06
-ms.translationtype: HT
+ms.openlocfilehash: 93e52b393db288f5b19afde4a31e08d0bb91b471
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/04/2019
-ms.locfileid: "73520838"
+ms.locfileid: "73571563"
 ---
 # <a name="advanced-data-security-for-sql-servers-on-azure-virtual-machines-preview"></a>Speciális adatbiztonság az Azure-beli SQL-kiszolgálókon Virtual Machines (előzetes verzió)
 Az Azure Virtual Machines-beli SQL serverek speciális adatbiztonsága egy egységes csomag a fejlett SQL-alapú biztonsági funkciókhoz. Ez az előzetes verziójú funkció a lehetséges adatbázis-sebezhetőségek azonosítására és enyhítésére, valamint a rendellenes tevékenységek észlelésére, amelyek az adatbázis fenyegetéseit jelezhetik. 
@@ -63,7 +63,7 @@ A SQL Server gazdagép munkaterülethez való összekapcsolásához kövesse a [
 
 ## <a name="set-up-email-notification-for-atp-alerts"></a>E-mail-értesítés beállítása ATP-riasztásokhoz 
 
-Megadhatja a címzettek listáját, amely e-mailben értesítést kap az ASC-riasztások létrehozásakor. Az e-mail tartalmaz egy közvetlen hivatkozást a riasztáshoz Azure Security Center az összes releváns részletet. 
+Megadhatja a címzettek listáját, amely e-mailben értesítést kap a Security Center riasztások létrehozásakor. Az e-mail tartalmaz egy közvetlen hivatkozást a riasztáshoz Azure Security Center az összes releváns részletet. 
 
 1. Lépjen a **Security Center** > **díjszabás & a beállítások** elemre, és kattintson a megfelelő előfizetésre.
 
@@ -100,7 +100,7 @@ A sebezhetőségi felmérés eredményeit és jelentéseit közvetlenül a Log A
 
     ![Az elmúlt 7 nap beállítása](./media/security-center-advanced-iaas-data/ads-sql-server-2.png)
 
-1. További részletekért kattintson az irányítópult egyik elemére. Példa:
+1. További részletekért kattintson az irányítópult egyik elemére. Például:
 
    1. A **sikertelen ellenőrzések összegzése** szakaszban a sebezhetőségi ellenőrzés lehetőségre kattintva megtekintheti az összes adatbázisra vonatkozóan az ellenőrzés eredményét log Analytics táblázatot. Az eredményekkel rendelkezők elsőként vannak felsorolva.
 

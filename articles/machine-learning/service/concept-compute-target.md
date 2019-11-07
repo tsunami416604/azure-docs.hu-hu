@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 11/04/2019
-ms.openlocfilehash: c3791946ee31183e4b3c5131a8e62934bf87dfee
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: HT
+ms.openlocfilehash: 75e789ac1f9c161bc67ba90062be39f986f5b140
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/04/2019
-ms.locfileid: "73497476"
+ms.locfileid: "73580585"
 ---
 #  <a name="what-are-compute-targets-in-azure-machine-learning"></a>Mik azok a számítási célok Azure Machine Learning? 
 
@@ -46,22 +46,11 @@ Megtudhatja, [hol és hogyan helyezheti üzembe a modellt egy számítási célr
 <a name="amlcompute"></a>
 ## <a name="azure-machine-learning-compute-managed"></a>Azure Machine Learning számítás (felügyelt)
 
-A felügyelt számítási erőforrásokat Azure Machine Learning hozza létre és kezeli. Ez a számítás a gépi tanulási munkaterhelésekre van optimalizálva. Azure Machine Learning számítási fürtök és [számítási példányok](concept-compute-instance.md) az egyetlen felügyelt számítások. A későbbiekben további felügyelt számítási erőforrások is hozzáadhatók.
+A felügyelt számítási erőforrásokat Azure Machine Learning hozza létre és kezeli. Ez a számítás a gépi tanulási munkaterhelésekre van optimalizálva. Azure Machine Learning számítási fürtök. A későbbiekben további felügyelt számítási erőforrások is hozzáadhatók.
 
-Azure Machine Learning számítási példányokat vagy számítási fürtöket a ben hozhat létre:
-
-| | Azure Machine Learning Studio | Azure Portal | SDK | Resource Manager-sablon | CLI |
-|---| ----- | ----- | ----- | ----- | ----- |
-| Számítási példány | igen | igen | igen | igen |  |
-| Számítási fürt | igen | igen | igen | igen | igen |
+Létrehozhat Azure Machine Learning számítási fürtöket Azure Machine Learning Studióban, Azure Portalban, az SDK-ban, egy Resource Manager-sablonban vagy a parancssori felületen.
 
 Ha létrehozta ezeket a számítási erőforrásokat, az automatikusan a munkaterület részét képezi, a más típusú számítási céloktól eltérően.
-
-> [!NOTE]
-> A számítási példányok csak az **USA északi középső** régióját vagy **Egyesült Királyság déli régiójat**tartalmazó munkaterületekhez érhetők el.
->Ha a munkaterület bármely más régióban található, akkor továbbra is létrehozhat és használhat [notebookos virtuális gépet](concept-compute-instance.md#notebookvm) . 
-
-### <a name="compute-clusters"></a>Számítási fürtök
 
 Azure Machine Learning számítási fürtöket a betanításhoz és a Batch-következtetésekhez (előzetes verzió) is használhatja.  Ezzel a számítási erőforrással a következőket teheti:
 

@@ -1,18 +1,18 @@
 ---
 title: Diagnosztikai naplózás a Azure Analysis Serviceshoz | Microsoft Docs
-description: További információ a Azure Analysis Services diagnosztikai naplózásának beállításáról.
+description: Leírja, hogyan kell beállítani az Azure Resource Diagnostics naplózását a Azure Analysis Services-kiszolgáló figyeléséhez.
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 09/12/2019
+ms.date: 10/31/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: a9684042a76c9c906a75334c319b4ca8ee0b727b
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: b8ae2c529bebebae4ebc2d7b0b8a7e420fe9bcc7
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72298605"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73572773"
 ---
 # <a name="setup-diagnostic-logging"></a>Diagnosztikai naplózás beállítása
 
@@ -90,7 +90,7 @@ A metrikák kategória ugyanazokat a [kiszolgálói metrikákat](analysis-servic
 
 3. Kattintson a **Save** (Mentés) gombra.
 
-    Ha olyan hibaüzenetet kap, amely szerint a "nem sikerült frissíteni a \<workspace > diagnosztikát. Az előfizetés \<subscription azonosítója > nincs regisztrálva a Microsoft. reinsights használatára. " Kövesse a fiók regisztrálásához [Azure Diagnostics](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-storage) útmutatást, majd próbálja megismételni a műveletet.
+    Ha olyan hibaüzenetet kap, amely szerint a "nem sikerült frissíteni a \<munkaterület neve > a diagnosztikát. Az előfizetés \<előfizetés-azonosító > nincs regisztrálva a Microsoft. bepillantások használatára. " Kövesse a fiók regisztrálásához [Azure Diagnostics](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-storage) útmutatást, majd próbálja megismételni a műveletet.
 
     Ha módosítani szeretné a diagnosztikai naplók mentésének módját a jövő bármely pontjára, térjen vissza erre a lapra a beállítások módosításához.
 
@@ -158,7 +158,7 @@ A diagnosztikai adatok megtekintéséhez Log Analytics munkaterületen nyissa me
 
 ![A Azure Portal keresési beállításainak naplózása](./media/analysis-services-logging/aas-logging-open-log-search.png)
 
-A lekérdezés-szerkesztőben bontsa ki a **LogManagement** > **AzureDiagnostics**elemet. A AzureDiagnostics motor-és szolgáltatási eseményeket tartalmaz. Figyelje meg, hogy a rendszer menet közben hozza létre a lekérdezést. A EventClass @ no__t-0s mező tartalmazza a xEvent nevét, ami ismerős lehet, ha a helyszíni naplózáshoz használta a Xevent típusú eseményekhez-t. Kattintson a **EventClass @ no__t-1s** elemre, vagy az egyik esemény nevére, és log Analytics munkaterület folytatja a lekérdezés összeállítását. Ügyeljen arra, hogy a lekérdezéseket később újra felhasználhassa.
+A lekérdezés-szerkesztőben bontsa ki a **LogManagement** > **AzureDiagnostics**elemet. A AzureDiagnostics motor-és szolgáltatási eseményeket tartalmaz. Figyelje meg, hogy a rendszer menet közben hozza létre a lekérdezést. A EventClass\_s mező xEvent neveket tartalmaz, amelyek ismerősek lehetnek, ha a helyszíni naplózáshoz Xevent típusú eseményekhez használta. Kattintson a **EventClass\_s** vagy az egyik esemény nevére, és log Analytics a munkaterület folytatja a lekérdezés összeállítását. Ügyeljen arra, hogy a lekérdezéseket később újra felhasználhassa.
 
 ### <a name="example-queries"></a>Példák lekérdezésekre
 
@@ -220,7 +220,7 @@ Az oktatóanyag elvégzéséhez a következő erőforrásokkal kell rendelkeznie
 
 * Egy meglévő Azure Analysis Services-kiszolgáló. A kiszolgálói erőforrások létrehozásával kapcsolatos utasításokért lásd: [kiszolgáló létrehozása Azure Portalban](analysis-services-create-server.md), vagy [Azure Analysis Services kiszolgáló létrehozása a PowerShell használatával](analysis-services-create-powershell.md).
 
-### <a name="aconnect-to-your-subscriptions"></a>@no__t – 0Connect az előfizetésekhez
+### <a name="aconnect-to-your-subscriptions"></a></a>csatlakozhat az előfizetésekhez
 
 Indítson el egy Azure PowerShell-munkamenetet, és jelentkezzen be az Azure-fiókjába az alábbi paranccsal:  
 
@@ -251,7 +251,7 @@ Set-AzContext -SubscriptionId <subscription ID>
 
 A naplókhoz meglévő Storage-fiókot is használhat, feltéve, hogy az a kiszolgálóval megegyező előfizetésben található. Ebben az oktatóanyagban egy új Storage-fiókot hoz létre, amely Analysis Services naplókhoz van hozzárendelve. Az egyszerűvé tétel érdekében a Storage-fiók adatait egy **sa**nevű változóban tárolja.
 
-Ugyanezt az erőforráscsoportot is használja, mint amely a Analysis Services-kiszolgálót tartalmazza. A `awsales_resgroup`, `awsaleslogs` és `West Central US` helyettesítő értékei a saját értékeivel:
+Ugyanezt az erőforráscsoportot is használja, mint amely a Analysis Services-kiszolgálót tartalmazza. `awsales_resgroup`, `awsaleslogs`és `West Central US` helyettesítő értékei a saját értékekkel:
 
 ```powershell
 $sa = New-AzStorageAccount -ResourceGroupName awsales_resgroup `
@@ -324,7 +324,7 @@ Set-AzDiagnosticSetting -ResourceId $account.ResourceId`
   -RetentionEnabled $true -RetentionInDays 90
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ az [Azure erőforrás-diagnosztika naplózásáról](../azure-monitor/platform/resource-logs-overview.md).
 

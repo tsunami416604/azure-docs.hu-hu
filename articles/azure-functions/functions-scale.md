@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 03/27/2019
 ms.author: glenga
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ce91d53bec3c74a8a55d46fd53bc3cf0ccd7e28a
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: bf713029f26ac7ec0b6c043fb887fa5190083888
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72550639"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73576058"
 ---
 # <a name="azure-functions-scale-and-hosting"></a>Méretezés és üzemeltetés Azure Functions
 
@@ -47,8 +47,8 @@ A következő táblázat a három üzemeltetési csomag jelenlegi támogatását
 
 | | Használatalapú csomag | Prémium szintű csomag | Dedikált csomag |
 |-|:----------------:|:------------:|:----------------:|
-| Windows | FE | előzetes verzió | FE |
-| Linux | FE | előzetes verzió | FE |
+| Windows | FE | FE | FE |
+| Linux | FE | FE | FE |
 
 ## <a name="consumption-plan"></a>Használatalapú csomag
 
@@ -65,7 +65,7 @@ Az azonos régióban található Function apps ugyanahhoz a használati tervhez 
 
 Ha többet szeretne megtudni arról, hogyan becsülheti fel a költségeket a használati tervekben, tekintse meg a [felhasználási terv költségeinek megismerése](functions-consumption-costs.md)című témakört.
 
-## <a name="premium-plan"></a>Prémium csomag (előzetes verzió)
+## <a name="premium-plan"></a>Prémium csomag
 
 A Prémium csomag használatakor a rendszer a Azure Functions gazdagép példányait a beérkező események száma alapján adja hozzá és távolítja el, a használati tervhez hasonlóan.  A Prémium csomag a következő funkciókat támogatja:
 

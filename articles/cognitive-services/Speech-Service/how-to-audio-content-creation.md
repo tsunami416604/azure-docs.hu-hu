@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 10/26/2019
+ms.date: 11/04/2019
 ms.author: erhopf
-ms.openlocfilehash: 8e3a76abe840a70ba7410855cde1d82ec96c28eb
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: HT
+ms.openlocfilehash: 6ec98d1f7956ef1460909f62384a931400b596c4
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/04/2019
-ms.locfileid: "73506955"
+ms.locfileid: "73579635"
 ---
 # <a name="audio-content-creation"></a>Hangtartalom létrehozása
 
@@ -29,7 +29,7 @@ Ez az ábra a testreszabott beszéd-szöveg kimenetek finomhangolásához és ex
 
 ![](media/audio-content-creation/audio-content-creation-diagram.jpg)
 
-1. Első lépésként létre kell [hoznia egy Azure-fiókot, regisztrálnia kell egy beszédfelismerési erőforrást, és be kell szereznie egy előfizetési kulcsot](#create-a-speech-resource). Ha rendelkezik előfizetési kulccsal, használhatja a beszédfelismerési szolgáltatás meghívására, valamint a [hangtartalom létrehozásának](https://aka.ms/audiocontentcreation)elérésére.
+1. Első lépésként létre kell [hoznia egy Azure-fiókot, regisztrálnia kell egy beszédfelismerési erőforrást, és be kell szereznie egy előfizetési kulcsot](#create-a-speech-resource). Ha rendelkezik előfizetési kulccsal, használhatja a beszédfelismerési szolgáltatás meghívására, valamint a [hangtartalom létrehozásához](https://aka.ms/audiocontentcreation).
 2. [Hozzon létre egy hang-hangolási fájlt](#create-an-audio-tuning-file) egyszerű SZÖVEGES vagy SSML használatával.
 3. Válassza ki a felvenni kívánt hangot és nyelvet. A hangtartalom létrehozása magában foglalja az összes [Microsoft szöveg-beszéd hangokat](language-support.md#text-to-speech). Használhatja a standard, a neurális vagy a saját egyéni hangját is.
    >[!NOTE]
@@ -43,7 +43,7 @@ Ez az ábra a testreszabott beszéd-szöveg kimenetek finomhangolásához és ex
 
 Kövesse az alábbi lépéseket egy beszédfelismerési erőforrás létrehozásához és a Speech studióhoz való kapcsolódáshoz.
 
-1. Kövesse ezeket az utasításokat [egy Azure-fiók regisztrálásához és egy beszédfelismerési erőforrás létrehozásához](https://docs.microsoft.com/azure/cognitive-services/speech-service/get-started#create-a-speech-resource-in-azure). Győződjön meg arról, hogy a díjszabási szintje **S0**értékre van állítva. Ha az egyik neurális hangját használja, győződjön meg arról, hogy az erőforrást egy [támogatott régióban](regions.md#standard-and-neural-voices)hozza létre.
+1. Kövesse ezeket az utasításokat [egy Azure-fiók regisztrálásához](https://docs.microsoft.com/azure/cognitive-services/speech-service/get-started#new-azure-account) és [egy beszédfelismerési erőforrás létrehozásához](https://docs.microsoft.com/azure/cognitive-services/speech-service/get-started#create-a-speech-resource-in-azure). Győződjön meg arról, hogy a díjszabási szintje **S0**értékre van állítva. Ha az egyik neurális hangját használja, győződjön meg arról, hogy az erőforrást egy [támogatott régióban](regions.md#standard-and-neural-voices)hozza létre.
 2. Jelentkezzen be a [hangtartalom létrehozásához](https://aka.ms/audiocontentcreation).
 3. Válasszon ki egy meglévő projektet, vagy kattintson az **új létrehozása**lehetőségre.
 4. Az előfizetést bármikor módosíthatja a **Beállítások** lehetőséggel, amely a felső NAV-ban található.
@@ -104,7 +104,7 @@ Miután áttekintette a hangkimenetet, és elégedett a hangolással és a beál
 | WAV | riff-16khz-16bit-mono-PCM | riff-24khz-16bit-mono-PCM |
 | MP3 | hang-16khz-128kbitrate-mono-MP3 | hang-24khz-160kbitrate-mono-MP3 |
 
-## <a name="see-also"></a>Lásd még
+## <a name="see-also"></a>Lásd még:
 
 * [Hosszú hang API](https://aka.ms/long-audio-api)
 

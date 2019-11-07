@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
-ms.date: 10/09/2019
+ms.date: 11/04/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: 15253e67283d1ad53bb1d4c018987dceaafac6c8
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: HT
+ms.openlocfilehash: 418324ea0d50cb2f8ff4a30018a31e7807d52eac
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73486751"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73602584"
 ---
 # <a name="add-chit-chat-to-a-knowledge-base"></a>Chit-csevegés hozzáadása egy tudásbázishoz
 
@@ -45,15 +45,15 @@ A Chit-Chat adatkészletek a következő nyelveken támogatottak:
 
 |Nyelv|
 |--|
-|Kínai, `zh-cn`|
-|Angol, `en-us`|
-|Francia, `fr-fr`|
-|Németország, `de-de`|
-|Olasz, `it-it`|
-|Japán, `ja-jp`|
-|Koreai, `ko-kr`|
-|Portugál, `pr-br`|
-|Spanyol, `es-es`|
+|kínai|
+|Angol|
+|francia|
+|Németország|
+|olasz|
+|japán|
+|koreai|
+|portugál|
+|spanyol|
 
 
 ## <a name="add-chit-chat-during-kb-creation"></a>Chit-Chat hozzáadása a KB létrehozásakor
@@ -86,6 +86,6 @@ Válassza ki a KB-ot, és navigáljon a **Beállítások** lapra. Az adott Chit-
 > [!div class="nextstepaction"]
 > [Tudásbázis importálása](../Tutorials/migrate-knowledge-base.md)
 
-## <a name="see-also"></a>Lásd még 
+## <a name="see-also"></a>Lásd még: 
 
 [A QnA Maker áttekintése](../Overview/overview.md)

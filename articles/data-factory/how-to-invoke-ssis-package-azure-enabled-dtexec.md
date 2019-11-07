@@ -1,5 +1,5 @@
 ---
-title: SQL Server Integration Services-(SSIS-) csomagok végrehajtása az Azure-kompatibilis dtexec segédprogrammal | Microsoft Docs
+title: SQL Server Integration Services-(SSIS-) csomagok végrehajtása az Azure-kompatibilis dtexec segédprogrammal
 description: Ismerje meg, hogyan hajthat végre SQL Server Integration Services (SSIS) csomagokat az Azure-kompatibilis dtexec segédprogrammal.
 services: data-factory
 documentationcenter: ''
@@ -12,12 +12,12 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: 472792351b8b7ab96e055bacd64141840ce7a630
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 9ab308d0e2145a0d0b40e8b37c8c5be07b55dac6
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72596952"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73673556"
 ---
 # <a name="run-sql-server-integration-services-packages-with-the-azure-enabled-dtexec-utility"></a>SQL Server Integration Services csomagok futtatása az Azure-kompatibilis dtexec segédprogrammal
 Ez a cikk az Azure-kompatibilis dtexec (AzureDTExec) parancssori segédprogramot ismerteti. SQL Server Integration Services (SSIS) csomagok futtatására használatos a Azure-SSIS Integration Runtime (IR) Azure Data Factory.
@@ -34,7 +34,7 @@ A AzureDTExec konfigurálható a SSMS-on keresztül egy olyan Azure Active Direc
 A AzureDTExec használatához töltse le és telepítse a SSMS legújabb verzióját, amely 18,3-es vagy újabb verziójú. Töltse le a [webhelyről](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-2017).
 
 ## <a name="configure-the-azuredtexec-utility"></a>A AzureDTExec segédprogram konfigurálása
-A SSMS telepítése a helyi gépen a AzureDTExec-t is telepíti. A beállítások konfigurálásához indítsa el a SSMS a **Futtatás rendszergazdaként** beállítással. Ezután válassza az **eszközök**  > **Migrálás az azure-ba  >  az** **Azure-kompatibilis DTExec konfigurálása**lehetőséget.
+A SSMS telepítése a helyi gépen a AzureDTExec-t is telepíti. A beállítások konfigurálásához indítsa el a SSMS a **Futtatás rendszergazdaként** beállítással. Ezután válassza az **eszközök** > **Migrálás az azure-ba > az** **Azure-kompatibilis DTExec konfigurálása**lehetőséget.
 
 ![Az Azure-kompatibilis dtexec menü konfigurálása](media/how-to-invoke-ssis-package-azure-enabled-dtexec/ssms-azure-enabled-dtexec-menu.png)
 
@@ -68,7 +68,7 @@ Ha el szeretné kerülni, hogy a *AzureDTExec. Settings* fájlba írt bizalmas �
 ## <a name="invoke-the-azuredtexec-utility"></a>A AzureDTExec segédprogram meghívása
 A AzureDTExec meghívhatja a parancssori parancssorból, és megadhatja a megfelelő értékeket a használati esethez tartozó konkrét beállításokhoz.
 
-A segédprogram a `{SSMS Folder}\Common7\IDE\CommonExtensions\Microsoft\SSIS\150\Binn` számítógépen van telepítve. Az elérési utat hozzáadhatja az "ELÉRÉSi út" környezeti változóhoz, amelyet a rendszer bárhonnan meghívhat.
+A segédprogram `{SSMS Folder}\Common7\IDE\CommonExtensions\Microsoft\SSIS\150\Binn`lesz telepítve. Az elérési utat hozzáadhatja az "ELÉRÉSi út" környezeti változóhoz, amelyet a rendszer bárhonnan meghívhat.
 
 ```dos
 > cd "C:\Program Files (x86)\Microsoft SQL Server Management Studio 18\Common7\IDE\CommonExtensions\Microsoft\SSIS\150\Binn"
@@ -86,12 +86,12 @@ A AzureDTExec meghívása hasonló beállításokat kínál a dtexec meghívás�
 - **/Conf [igFile]** : meghatározza az értékek kinyerésére szolgáló konfigurációs fájlt. Ezzel a beállítással megadhatja a csomag futásidejű konfigurációját, amely eltér a tervezési időpontban megadott értéktől. Egy XML-konfigurációs fájlban különböző beállításokat tárolhat, majd betöltheti őket a csomag végrehajtása előtt. További információ: SSIS- [csomag beállításai](https://docs.microsoft.com/sql/integration-services/packages/package-configurations?view=sql-server-2017). A beállítás értékének megadásához használja az UNC elérési utat a fájlrendszerben, a fájlmegosztást vagy Azure Files a saját dtsConfig-bővítménnyel. Ha a megadott UNC elérési út szóközt tartalmaz, tegye idézőjelek közé a teljes elérési utat.
 - **/Conn [csolat]** : a csomag meglévő kapcsolataihoz tartozó kapcsolatok karakterláncait határozza meg. Ezzel a beállítással beállíthatja, hogy a csomagban lévő, a tervezési időpontban megadott beállításoktól eltérő futásidejű kapcsolatok karakterláncai meglegyenek a csomag meglévő kapcsolataihoz. A beállítás értékét a következőképpen adhatja meg: `connection_manager_name_or_id;connection_string [[;connection_manager_name_or_id;connection_string]...]`.
 - **Készlet**: felülbírálja a paraméter, változó, tulajdonság, tároló, naplózási szolgáltató, foreach enumerálás vagy a csomagbeli kapcsolatok konfigurációját. Ez a beállítás többször is megadható. A beállítás értékét a következőképpen adhatja meg: `property_path;value`. Például `\package.variables[counter].Value;1` felülbírálja `counter` változó értékét 1-ként. A **csomag konfigurációja** varázslóval megkeresheti, átmásolhatja és beillesztheti `property_path` értékét a csomagban található elemekhez, amelynek értékét felül szeretné bírálni. További információ: [csomag konfigurálása varázsló](https://docs.microsoft.com/sql/integration-services/package-configuration-wizard-ui-reference?view=sql-server-2014).
-- **/De [Crypt]** : beállítja a **EncryptAllWithPassword** /**EncryptSensitiveWithPassword** védelmi szintjével konfigurált csomag visszafejtési jelszavát.
+- **/De [Crypt]** : beállítja a **EncryptAllWithPassword**/**EncryptSensitiveWithPassword** védelmi szintjével konfigurált csomag visszafejtési jelszavát.
 
 > [!NOTE]
 > A AzureDTExec új értékekkel való meghívásával új folyamat jön létre, kivéve a **/de [csfájl]** kapcsolót.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Miután a rendszer létrehozta és futtatja az SSIS-csomag végrehajtásával kapcsolatos egyedi folyamatokat a AzureDTExec meghívása után, megfigyelhetők a Data Factory-portálon. További információ: SSIS- [csomagok futtatása Data Factory tevékenységként](https://docs.microsoft.com/azure/data-factory/how-to-invoke-ssis-package-ssis-activity).
 

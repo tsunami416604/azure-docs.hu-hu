@@ -1,5 +1,5 @@
 ---
-title: 'Oktatóanyag: A munkahelyi beállítások konfigurálása a Facebookban az Azure Active Directory-nal való automatikus kiépítés esetén | Microsoft Docs'
+title: 'Oktatóanyag: a munkahelyi konfiguráció konfigurálása a Facebookban a felhasználók automatikus kiépítés Azure Active Directory használatával | Microsoft Docs'
 description: Ismerje meg, hogyan konfigurálhatja az egyszeri bejelentkezést a Azure Active Directory és a munkahely között a Facebook használatával.
 services: active-directory
 documentationCenter: na
@@ -15,14 +15,14 @@ ms.topic: article
 ms.date: 01/26/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f040ff4c8e59f764676aa6fdd9460ec94641684a
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: 7ee091d1c8f0f477354f6bb422d041278ec5668e
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70881800"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73574262"
 ---
-# <a name="tutorial-configure-workplace-by-facebook-for-automatic-user-provisioning"></a>Oktatóanyag: A munkahely beállítása a Facebook használatával a felhasználók automatikus üzembe helyezéséhez
+# <a name="tutorial-configure-workplace-by-facebook-for-automatic-user-provisioning"></a>Oktatóanyag: a munkahelyi környezet konfigurálása a Facebook használatával a felhasználók automatikus üzembe helyezéséhez
 
 Ennek az oktatóanyagnak a célja, hogy megmutassa, milyen lépéseket kell elvégeznie a munkahelyen a Facebook és az Azure AD használatával, hogy automatikusan kiépítse és kiépítse a felhasználói fiókokat az Azure AD-ből a munkahelyi Facebook-ban.
 
@@ -34,11 +34,11 @@ Az Azure AD-integrációnak a munkahelyi Facebook-nal való konfigurálásához 
 - A Facebook egyszeri bejelentkezéses előfizetést használó munkaterülete
 
 > [!NOTE]
-> Ebben az oktatóanyagban a lépéseket teszteléséhez nem ajánlott éles környezetben használja.
+> Az oktatóanyag lépéseinek teszteléséhez nem javasoljuk éles környezet használatát.
 
-Ebben az oktatóanyagban a lépéseket teszteléséhez kövesse ezeket a javaslatokat:
+Az oktatóanyag lépéseinek teszteléséhez kövesse az alábbi javaslatokat:
 
-- Ne használja az éles környezetben, csak szükség esetén.
+- Ne használja éles környezetét, ha szükséges.
 - Ha még nem rendelkezik Azure AD-próbaverzióval, [itt](https://azure.microsoft.com/pricing/free-trial/)kérhet egy hónapos próbaverziót.
 
 ## <a name="assigning-users-to-workplace-by-facebook"></a>Felhasználók kiosztása a munkahelyhez Facebook használatával
@@ -76,9 +76,9 @@ Az Azure AD lehetővé teszi, hogy a Facebook használatával automatikusan szin
 
 4. Állítsa a **kiépítési módot** **automatikus**értékre. 
 
-    ![kiépítés folyamatban](./media/workplacebyfacebook-provisioning-tutorial/provisioning.png)
+    ![kiépítési](./media/workplacebyfacebook-provisioning-tutorial/provisioning.png)
 
-5. A **rendszergazdai hitelesítő adatok** szakaszban adja meg a munkahelyi hozzáférési jogkivonatot a Facebook rendszergazdája, és állítsa be a bérlői `https://www.facebook.com/scim/v1/` URL-címet értékre. A munkahelyi hozzáférési jogkivonat létrehozásával kapcsolatos [utasításokat](https://developers.facebook.com/docs/workplace/integrations/custom-integrations/apps) itt találhatja meg. 
+5. A **rendszergazdai hitelesítő adatok** szakaszban adja meg a munkahelyi hozzáférési jogkivonatot a Facebook rendszergazdája, és állítsa a bérlői URL-címet `https://www.facebook.com/scim/v1/` értékre. A munkahelyi hozzáférési jogkivonat létrehozásával kapcsolatos [utasításokat](https://developers.facebook.com/docs/workplace/integrations/custom-integrations/apps) itt találhatja meg. 
 
 6. A Azure Portalban kattintson a **kapcsolat tesztelése** elemre annak biztosításához, hogy az Azure ad a Facebook-alkalmazás segítségével csatlakozhasson a munkahelyhez. Ha a kapcsolat meghiúsul, győződjön meg róla, hogy a munkahelyi Facebook-fiók rendelkezik a csoport rendszergazdai engedélyeivel.
 
@@ -88,18 +88,18 @@ Az Azure AD lehetővé teszi, hogy a Facebook használatával automatikusan szin
 
 9. A leképezések szakaszban válassza a **Azure Active Directory felhasználók szinkronizálása a munkahelyhez a Facebook lehetőséget.**
 
-10. Az **attribútum-hozzárendelések** szakaszban tekintse át az Azure ad-ből szinkronizált felhasználói attribútumokat a Facebook használatával. Az **egyeztetési** tulajdonságokként kiválasztott attribútumok a Facebook által a frissítési műveletekhez használt felhasználói fiókokkal egyeznek meg. Válassza ki a Mentés gombra a módosítások véglegesítéséhez.
+10. Az **attribútum-hozzárendelések** szakaszban tekintse át az Azure ad-ből szinkronizált felhasználói attribútumokat a Facebook használatával. Az **egyeztetési** tulajdonságokként kiválasztott attribútumok a Facebook által a frissítési műveletekhez használt felhasználói fiókokkal egyeznek meg. A módosítások elvégzéséhez kattintson a Save (Mentés) gombra.
 
 11. Az Azure AD-kiépítési szolgáltatás a Facebook számára történő engedélyezéséhez módosítsa a **kiépítési állapotot** a következőre a **Beállítások** **szakaszban:**
 
 12. Kattintson a **Mentés gombra.**
 
-További információ az automatikus kiépítés konfigurálásáról:[https://developers.facebook.com/docs/facebook-at-work/provisioning/cloud-providers](https://developers.facebook.com/docs/facebook-at-work/provisioning/cloud-providers)
+További információ az automatikus kiépítés konfigurálásáról: [https://developers.facebook.com/docs/facebook-at-work/provisioning/cloud-providers](https://developers.facebook.com/docs/facebook-at-work/provisioning/cloud-providers)
 
 Most már létrehozhat egy teszt fiókot is. Várjon akár 20 percet, és ellenőrizze, hogy a fiók szinkronizálva lett-e a munkahelyi Facebook-nal.
 
 > [!NOTE]
-> A Facebook csapata szorosan együttműködik a munkahelytel, hogy az Azure AD-alkalmazás jóvá legyen hagyva, és megfeleljen az új irányelveknek.   
+> A Facebook csapata szorosan együttműködik a munkahelytel, hogy az Azure AD-alkalmazás jóvá legyen hagyva, és megfeleljen az új irányelveknek. A munkahelyen Facebook-határidők december 16-iak, és várhatóan megfelelünk ennek. Ebben az időben nem várható az ügyfelek munkája. 28 – február-2020 között az ügyfeleknek át kell térniük az új integrációra. Az áttelepítési útvonal elérhetővé tételét azonnal itt tesszük közzé.    
 
 ## <a name="additional-resources"></a>További források
 

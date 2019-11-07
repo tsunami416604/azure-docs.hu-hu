@@ -1,5 +1,5 @@
 ---
-title: T-SQL-hurkok használata a Azure SQL Data Warehouseban | Microsoft Docs
+title: T-SQL-hurkok használata
 description: Tippek a T-SQL-hurkok használatához és a Azure SQL Data Warehouse kurzorok cseréjéhez a megoldások fejlesztéséhez.
 services: sql-data-warehouse
 author: XiaoyuMSFT
@@ -10,12 +10,13 @@ ms.subservice: development
 ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: e27edcc1383a235fbdb9513066e69e2f680ea2f9
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.custom: seo-lt-2019
+ms.openlocfilehash: b57358e32bda83ef51fe67aa1057411d51773fa6
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68479630"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73685825"
 ---
 # <a name="using-t-sql-loops-in-sql-data-warehouse"></a>T-SQL-hurkok használata a SQL Data Warehouseban
 Tippek a T-SQL-hurkok használatához és a Azure SQL Data Warehouse kurzorok cseréjéhez a megoldások fejlesztéséhez.
@@ -25,7 +26,7 @@ Tippek a T-SQL-hurkok használatához és a Azure SQL Data Warehouse kurzorok cs
 A SQL Data Warehouse a [while](/sql/t-sql/language-elements/while-transact-sql) ciklust is támogatja az utasítások ismételt végrehajtásához. Ez a ciklus addig folytatódik, amíg a megadott feltételek teljesülnek, vagy amíg a kód kifejezetten leállítja a hurkot a BREAK kulcsszó használatával. A hurkok hasznosak az SQL-kódban definiált kurzorok cseréjéhez. Szerencsére az SQL Code-ban írt összes kurzor a gyors továbbítás, csak olvasható fajta. Ezért a [WHILE] hurkok nagyszerű alternatíva a kurzorok cseréjéhez.
 
 ## <a name="replacing-cursors-in-sql-data-warehouse"></a>Kurzorok cseréje SQL Data Warehouse
-Először azonban a következő kérdéssel kell megtennie a merülés előtt: "Lehet, hogy ez a kurzor a set-based Operations használatával lett újraírva?" Sok esetben a válasz igen, és gyakran a legjobb megoldás. A készleten alapuló művelet gyakran gyorsabb, mint egy iterációs, soron belüli módszer.
+Mielőtt azonban először felmerül a merülés, a következő kérdéssel kell megkérdezni: "lehetséges, hogy ezt a kurzort a rendszer a beállított műveletekre írja át?" Sok esetben a válasz igen, és gyakran a legjobb megoldás. A készleten alapuló művelet gyakran gyorsabb, mint egy iterációs, soron belüli módszer.
 
 A gyors továbbítást csak olvasható kurzorok egyszerűen lecserélhetik hurkos szerkezettel. A következő egy egyszerű példa. Ez a kódrészlet frissíti az adatbázis minden táblájának statisztikáit. Ha megismétli a hurokban lévő táblákat, az egyes parancsok végrehajtása sorban történik.
 

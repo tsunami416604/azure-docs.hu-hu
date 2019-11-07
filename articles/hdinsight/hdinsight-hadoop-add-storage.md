@@ -1,73 +1,73 @@
 ---
-title: A HDInsight további Azure storage-fiókok hozzáadása
-description: Ismerje meg, további Azure storage-fiókok hozzáadása egy meglévő HDInsight-fürthöz.
+title: További Azure Storage-fiókok hozzáadása a HDInsight-hez
+description: Ismerje meg, hogyan adhat hozzá további Azure Storage-fiókokat egy meglévő HDInsight-fürthöz.
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 04/08/2019
-ms.author: hrasheed
-ms.openlocfilehash: 8a844465f7ba2222acd7efaf100c7b682c15adb2
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.date: 10/31/2019
+ms.openlocfilehash: e29041942157e720cce3414f7b6e6904667c1894
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67433518"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73665480"
 ---
-# <a name="add-additional-storage-accounts-to-hdinsight"></a>A HDInsight további tárfiókok hozzáadása
+# <a name="add-additional-storage-accounts-to-hdinsight"></a>További Storage-fiókok hozzáadása a HDInsight-hez
 
-Ismerje meg, hogyan szkriptműveletek használatával adjon hozzá további az Azure storage *fiókok* a HDInsight. A jelen dokumentumban leírt lépések hozzáadása a storage *fiók* meglévő Linux-alapú HDInsight-fürtre. Ez a cikk vonatkozik, és *fiókok* (nem az alapértelmezett fürt tárfiók), és nincs további tárhely például [Azure Data Lake Storage Gen1](hdinsight-hadoop-use-data-lake-store.md) és [Azure Data Lake Storage Gen2 ](hdinsight-hadoop-use-data-lake-storage-gen2.md).
+Megtudhatja, hogyan használhat parancsfájl-műveleteket további Azure Storage- *fiókok* HDInsight való hozzáadásához. A jelen dokumentum lépései egy meglévő Linux-alapú HDInsight-fürthöz adhatnak hozzá Storage- *fiókot* . Ez a cikk a Storage- *fiókokra* vonatkozik (nem az alapértelmezett fürtlemez-fiókra), és nem a további tárterület, például a [Azure Data Lake Storage Gen1](hdinsight-hadoop-use-data-lake-store.md) és a [Azure Data Lake Storage Gen2](hdinsight-hadoop-use-data-lake-storage-gen2.md).
 
 > [!IMPORTANT]  
-> A jelen dokumentumban lévő információk további tárhely hozzáadása egy fürt létrehozása után van. Információk a storage-fiókok hozzáadása a fürt létrehozása során: [fürtök beállítása a HDInsight az Apache Hadoop, az Apache Spark, az Apache Kafka és további](hdinsight-hadoop-provision-linux-clusters.md).
+> A jelen dokumentumban található információk további Storage-fiók (ok) egy fürthöz való hozzáadását ismertetik a létrehozása után. A Storage-fiókok fürt létrehozása során történő hozzáadásával kapcsolatos információkért lásd: [fürtök beállítása a HDInsight-ben Apache Hadoop, Apache Spark, Apache Kafka és sok más](hdinsight-hadoop-provision-linux-clusters.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* A HDInsight Hadoop-fürt. Lásd: [HDInsight Linux első lépések](./hadoop/apache-hadoop-linux-tutorial-get-started.md).
-* Tárfiók neve és kulcsa. Lásd: [kezelése a tárfiók-beállítások az Azure Portalon](../storage/common/storage-account-manage.md).
-* [Megfelelően kisbetűsek fürtnév](hdinsight-hadoop-manage-ambari-rest-api.md#identify-correctly-cased-cluster-name).
-* Ha a PowerShell használatával kell a AZ modul.  Lásd: [Azure PowerShell áttekintése](https://docs.microsoft.com/powershell/azure/overview).
-* Ha még nem telepítette az Azure CLI-vel, tekintse meg [Azure parancssori felület (CLI)](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest).
-* Ha a bash vagy egy windows parancssori ablakba, is kell **jq**, egy parancssori JSON feldolgozó.  Lásd: [ https://stedolan.github.io/jq/ ](https://stedolan.github.io/jq/). Találhat bash on Ubuntu on Windows 10 [Linux telepítési útmutató a Windows 10-es Windows-alrendszer](https://docs.microsoft.com/windows/wsl/install-win10).
+* Hadoop-fürt a HDInsight-on. Lásd: Ismerkedés [a HDInsight Linux rendszeren](./hadoop/apache-hadoop-linux-tutorial-get-started.md).
+* A Storage-fiók neve és kulcsa. Lásd: [a Azure Portal a Storage-fiókok beállításainak kezelése](../storage/common/storage-account-manage.md).
+* A [fürt nevének megfelelő betokozása](hdinsight-hadoop-manage-ambari-rest-api.md#identify-correctly-cased-cluster-name).
+* Ha a PowerShellt használja, szüksége lesz az az modulra.  Lásd: [Azure PowerShell áttekintése](https://docs.microsoft.com/powershell/azure/overview).
+* Ha még nem telepítette az Azure CLI-t, tekintse meg az [Azure parancssori felület (CLI)](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest)című témakört.
+* Ha bash-t vagy Windows-parancssort használ, **jQ**, parancssori JSON-processzorra is szüksége lesz.  Lásd: [https://stedolan.github.io/jq/](https://stedolan.github.io/jq/). A bash on Ubuntu on Windows 10 lásd: [Windows alrendszer a Linux-telepítési útmutató a Windows 10](https://docs.microsoft.com/windows/wsl/install-win10)rendszerhez.
 
 ## <a name="how-it-works"></a>Működés
 
-Ez a szkript a következő paramétereket fogadja:
+A szkript a következő paramétereket veszi figyelembe:
 
-* __Az Azure storage-fiók neve__: A HDInsight-fürt hozzáadása a tárfiók neve. A szkript futtatása után HDInsight olvashat és írhat a tárfiókban tárolt adatokat.
+* __Azure Storage-fiók neve__: a HDInsight-fürthöz hozzáadandó Storage-fiók neve. A szkript futtatása után a HDInsight képes olvasni és írni az ebben a Storage-fiókban tárolt adatfájlokat.
 
-* __Az Azure storage-fiókkulcs__: Egy kulcs, amely engedélyezi a hozzáférést a tárfiókhoz.
+* __Azure Storage-fiók kulcsa__: olyan kulcs, amely hozzáférést biztosít a Storage-fiókhoz.
 
-* __-p__ (nem kötelező): Ha meg van adva, a kulcs nem titkosított, és egyszerű szövegként a core-site.xml fájlban tárolja.
+* __-p__ (nem kötelező): Ha meg van adva, a kulcs nincs titkosítva, és a Core-site. xml fájlban tárolja egyszerű szövegként.
 
-A feldolgozás során a szkript a következő műveleteket hajtja végre:
+A feldolgozás során a parancsfájl a következő műveleteket hajtja végre:
 
-* A tárfiók már létezik a core-site.xml a fürt konfigurációját, ha a parancsfájl kilép, és nincs több teendő történik.
+* Ha a Storage-fiók már létezik a fürt Core-site. XML konfigurációjában, a parancsfájl kilép, és nem hajt végre további műveletet.
 
-* Ellenőrzi, hogy a tárfiók létezik, és a kulcs segítségével érhetők el.
+* Ellenőrzi, hogy a Storage-fiók létezik-e, és hogy a kulcs használatával érhető-e el.
 
-* Titkosítja a kulcsot, a fürt hitelesítő adatok használatával.
+* Titkosítja a kulcsot a fürt hitelesítő adatainak használatával.
 
-* A storage-fiók hozzáadása a core-site.xml fájlt.
+* Hozzáadja a Storage-fiókot a Core-site. xml fájlhoz.
 
-* Leállítja és újraindítja a [Apache Oozie](https://oozie.apache.org/), [Apache Hadoop YARN](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html), [Apache Hadoop MapReduce2](https://hadoop.apache.org/docs/current/hadoop-mapreduce-client/hadoop-mapreduce-client-core/MapReduceTutorial.html), és [Apache Hadoop HDFS](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsUserGuide.html) szolgáltatások. Ezek a szolgáltatások indítása és leállítása lehetővé teszi, hogy az új tárfiókot használni őket.
+* Leállítja és újraindítja az [Apache Oozie](https://oozie.apache.org/), [Apache Hadoop fonalat](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html), [Apache Hadoop MapReduce2](https://hadoop.apache.org/docs/current/hadoop-mapreduce-client/hadoop-mapreduce-client-core/MapReduceTutorial.html)és [Apache Hadoop HDFS](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsUserGuide.html) szolgáltatásokat. A szolgáltatások leállítása és elindítása lehetővé teszi, hogy az új Storage-fiókot használják.
 
 > [!WARNING]  
-> A HDInsight-fürt, mint egy másik helyen lévő tárfiókok használata nem támogatott.
+> A HDInsight-fürttől eltérő helyen lévő Storage-fiók használata nem támogatott.
 
 ## <a name="the-script"></a>A parancsfájl
 
 __Parancsfájl helye__: [https://hdiconfigactions.blob.core.windows.net/linuxaddstorageaccountv01/add-storage-account-v01.sh](https://hdiconfigactions.blob.core.windows.net/linuxaddstorageaccountv01/add-storage-account-v01.sh)
 
-__Követelmények__:  A parancsfájl a alkalmazni kell a __Átjárócsomópontokhoz__. Nem kell megjelölni, ez a szkript __megőrzött__, ahogy azt közvetlenül frissíti a fürt Ambari konfigurációját.
+__Követelmények__: a szkriptet a __fő csomópontokon__kell alkalmazni. A parancsfájlt nem kell megőrzöttként megjelölni __, mert közvetlenül__frissíti a fürt Ambari-konfigurációját.
 
-## <a name="to-use-the-script"></a>A parancsfájl használata
+## <a name="to-use-the-script"></a>A szkript használata
 
-Ez a szkript az Azure PowerShell, Azure CLI-vel vagy az Azure Portalon is használható.
+Ezt a szkriptet a Azure PowerShell, az Azure CLI vagy a Azure Portal használhatja.
 
 ### <a name="powershell"></a>PowerShell
 
-Használatával [elküldése AzHDInsightScriptAction](https://docs.microsoft.com/powershell/module/az.hdinsight/submit-azhdinsightscriptaction). Cserélje le `CLUSTERNAME`, `ACCOUNTNAME`, és `ACCOUNTKEY` megfelelő értékeivel.
+A [Submit-AzHDInsightScriptAction](https://docs.microsoft.com/powershell/module/az.hdinsight/submit-azhdinsightscriptaction)használata. Cserélje le a `CLUSTERNAME`, `ACCOUNTNAME`és `ACCOUNTKEY` értékeket a megfelelő értékekre.
 
 ```powershell
 # Update these parameters
@@ -88,7 +88,7 @@ Submit-AzHDInsightScriptAction `
 
 ### <a name="azure-cli"></a>Azure CLI
 
-Használatával [az hdinsight-parancsfájlművelet végrehajtása](https://docs.microsoft.com/cli/azure/hdinsight/script-action?view=azure-cli-latest#az-hdinsight-script-action-execute).  Cserélje le `CLUSTERNAME`, `RESOURCEGROUP`, `ACCOUNTNAME`, és `ACCOUNTKEY` megfelelő értékeivel.
+Az [az hdinsight script-Action Execute](https://docs.microsoft.com/cli/azure/hdinsight/script-action?view=azure-cli-latest#az-hdinsight-script-action-execute)paranccsal.  Cserélje le a `CLUSTERNAME`, `RESOURCEGROUP`, `ACCOUNTNAME`és `ACCOUNTKEY` értékeket a megfelelő értékekre.
 
 ```cli
 az hdinsight script-action execute ^
@@ -102,129 +102,124 @@ az hdinsight script-action execute ^
 
 ### <a name="azure-portal"></a>Azure Portal
 
-Lásd: [szkriptműveletet vonatkozik egy futó fürt](hdinsight-hadoop-customize-cluster-linux.md#apply-a-script-action-to-a-running-cluster).
+Lásd: [parancsfájl-művelet alkalmazása futó fürtre](hdinsight-hadoop-customize-cluster-linux.md#apply-a-script-action-to-a-running-cluster).
 
 ## <a name="known-issues"></a>Ismert problémák
 
-### <a name="storage-firewall"></a>Storage-tűzfal
+### <a name="storage-firewall"></a>Tárolási tűzfal
 
-Ha úgy dönt, hogy a tárfiók biztonságos a **tűzfalak és virtuális hálózatok** korlátozásai **kiválasztott hálózatok**, ügyeljen arra, hogy a kivétel engedélyezése **engedélyezése a Microsoft megbízható szolgáltatások...**  úgy, hogy a HDInsight képes hozzáférni a tárfiókhoz.
+Ha úgy dönt, hogy védi a Storage-fiókot a **tűzfalakkal és a virtuális hálózatokkal** kapcsolatos korlátozásokkal a **kiválasztott hálózatokon**, ügyeljen arra, hogy a kivételt engedélyezze a **megbízható Microsoft-szolgáltatások számára** ... így a HDInsight hozzáférhet a tárolóhoz fiók.
 
-### <a name="storage-accounts-not-displayed-in-azure-portal-or-tools"></a>Storage-fiókok nem jelenik meg az Azure Portalon vagy az eszközök
+### <a name="storage-accounts-not-displayed-in-azure-portal-or-tools"></a>Azure Portal vagy eszközök nem jelennek meg a Storage-fiókok között
 
-A HDInsight-fürt az Azure Portalon megtekintésekor kiválasztása a __Tárfiókok__ bejegyzés alatt __tulajdonságok__ nem jelennek meg a parancsprogram-művelet során hozzáadott tárfiókok. Az Azure PowerShell és az Azure CLI-vel nem jelennek meg a további tárfiókot vagy.
+Ha a HDInsight-fürtöt a Azure Portal tekinti meg, akkor a __Tulajdonságok__ területen a __Storage-fiókok__ bejegyzés nem jeleníti meg a parancsfájl-művelettel hozzáadott tárolási fiókokat. Azure PowerShell és az Azure CLI nem jeleníti meg a további Storage-fiókot sem.
 
-A storage-adatokat nem jelenik meg, mert a parancsfájl csak módosítja a core-site.xml a fürt konfigurációját. Ezeket az információkat nem használja az Azure felügyeleti API-k használatával fürtinformációkat lekérésekor.
+A tárolási adatok nem jelennek meg, mert a parancsfájl csak a fürt Core-site. XML konfigurációját módosítja. Ez az információ nem használatos a fürt adatainak Azure felügyeleti API-k használatával történő beolvasásakor.
 
-Az Ambari REST API használatával hozzá a fürthöz, a parancsfájl tárfiók-információ megtekintéséhez. A következő parancsok használatával lekérheti a fürt ezt az információt:
+Ha meg szeretné tekinteni a fürthöz az ezzel a parancsfájllal hozzáadott Storage-fiók adatait, használja a Ambari REST API. A fürthöz tartozó információk beolvasásához használja a következő parancsokat:
 
 ### <a name="powershell"></a>PowerShell
 
-Cserélje le `CLUSTERNAME` megfelelően kisbetűsek fürt nevét. Először határozza meg a konfigurációs verzióját használja az alábbi parancs beírásával:
-
-```powershell
-# getting service_config_version
-$clusterName = "CLUSTERNAME"
-
-$resp = Invoke-WebRequest -Uri "https://$clusterName.azurehdinsight.net/api/v1/clusters/$clusterName`?fields=Clusters/desired_service_config_versions/HDFS" `
-    -Credential $creds -UseBasicParsing
-$respObj = ConvertFrom-Json $resp.Content
-$respObj.Clusters.desired_service_config_versions.HDFS.service_config_version
-```
-
-Cserélje le `ACCOUNTNAME` a tényleges nevét. Ezután cserélje le `4` tényleges config verziója szolgáltatást, és adja meg a parancsot. Amikor a rendszer kéri, adja meg a fürt bejelentkezési jelszava.
+Cserélje le a `CLUSTERNAME`t a megfelelő tokozású fürt nevére. Cserélje le a `ACCOUNTNAME`t a tényleges nevekre. Ha a rendszer kéri, adja meg a fürt bejelentkezési jelszavát.
 
 ```powershell
 # Update values
+$clusterName = "CLUSTERNAME"
 $accountName = "ACCOUNTNAME"
-$version = 4
 
 $creds = Get-Credential -UserName "admin" -Message "Enter the cluster login credentials"
-$resp = Invoke-WebRequest -Uri "https://$clusterName.azurehdinsight.net/api/v1/clusters/$clusterName/configurations/service_config_versions?service_name=HDFS&service_config_version=$version" `
+
+# getting service_config_version
+$resp = Invoke-WebRequest -Uri "https://$clusterName.azurehdinsight.net/api/v1/clusters/$clusterName`?fields=Clusters/desired_service_config_versions/HDFS" `
+    -Credential $creds -UseBasicParsing
+$respObj = ConvertFrom-Json $resp.Content
+
+$configVersion=$respObj.Clusters.desired_service_config_versions.HDFS.service_config_version
+
+$resp = Invoke-WebRequest -Uri "https://$clusterName.azurehdinsight.net/api/v1/clusters/$clusterName/configurations/service_config_versions?service_name=HDFS&service_config_version=$configVersion" `
     -Credential $creds
 $respObj = ConvertFrom-Json $resp.Content
 $respObj.items.configurations.properties."fs.azure.account.key.$accountName.blob.core.windows.net"
 ```
 
-### <a name="bash"></a>A bash
-Cserélje le `myCluster` megfelelően kisbetűsek fürt nevét.
+### <a name="bash"></a>bash
+
+Cserélje le a `CLUSTERNAME`t a megfelelő tokozású fürt nevére. Cserélje le a `PASSWORD`t a fürt rendszergazdai jelszavára. Cserélje le a `STORAGEACCOUNT`t a tényleges Storage-fiók nevére.
 
 ```bash
-export CLUSTERNAME='myCluster'
+export clusterName="CLUSTERNAME"
+export password='PASSWORD'
+export storageAccount="STORAGEACCOUNT"
 
-curl --silent -u admin -G "https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME?fields=Clusters/desired_service_config_versions/HDFS" \
-| jq ".Clusters.desired_service_config_versions.HDFS[].service_config_version" 
-```
+export ACCOUNTNAME='"'fs.azure.account.key.$storageAccount.blob.core.windows.net'"'
 
-Cserélje le `myAccount` a tényleges nevét. Ezután cserélje le `4` tényleges config verziója szolgáltatást, és adja meg a parancsot:
+export configVersion=$(curl --silent -u admin:$password -G "https://$clusterName.azurehdinsight.net/api/v1/clusters/$clusterName?fields=Clusters/desired_service_config_versions/HDFS" \
+| jq ".Clusters.desired_service_config_versions.HDFS[].service_config_version")
 
-```bash
-export ACCOUNTNAME='"fs.azure.account.key.myAccount.blob.core.windows.net"'
-export VERSION='4'
-
-curl --silent -u admin -G "https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME/configurations/service_config_versions?service_name=HDFS&service_config_version=$VERSION" \
+curl --silent -u admin:$password -G "https://$clusterName.azurehdinsight.net/api/v1/clusters/$clusterName/configurations/service_config_versions?service_name=HDFS&service_config_version=$configVersion" \
 | jq ".items[].configurations[].properties[$ACCOUNTNAME] | select(. != null)"
 ```
 
 ### <a name="cmd"></a>cmd
 
-Cserélje le `CLUSTERNAME` mindkét szkriptek a fürt megfelelően kisbetűsek néven. Először határozza meg a konfigurációs verzióját használja az alábbi parancs beírásával:
+Cserélje le a `CLUSTERNAME`t a megfelelő tokozású fürt nevére mindkét parancsfájlban. Először azonosítsa a szolgáltatás konfigurációs verzióját a használatban az alábbi parancs beírásával:
 
 ```cmd
 curl --silent -u admin -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME?fields=Clusters/desired_service_config_versions/HDFS" | ^
-jq-win64 ".Clusters.desired_service_config_versions.HDFS[].service_config_version" 
+jq-win64 ".Clusters.desired_service_config_versions.HDFS[].service_config_version"
 ```
 
-Cserélje le `ACCOUNTNAME` a tényleges nevét. Ezután cserélje le `4` tényleges config verziója szolgáltatást, és adja meg a parancsot:
+Cserélje le a `ACCOUNTNAME`t a tényleges Storage-fiók nevére. Ezután cserélje le `4`t a tényleges szolgáltatás konfigurációjának verziójára, és írja be a parancsot:
 
 ```cmd
 curl --silent -u admin -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/configurations/service_config_versions?service_name=HDFS&service_config_version=4" | ^
 jq-win64 ".items[].configurations[].properties["""fs.azure.account.key.ACCOUNTNAME.blob.core.windows.net"""] | select(. != null)"
 ```
+
 ---
 
- Ez a parancs által visszaadott információ jelenik meg az alábbi szöveghez hasonló:
+A parancs által visszaadott adatok az alábbi szöveghez hasonlóan jelennek meg:
 
     "MIIB+gYJKoZIhvcNAQcDoIIB6zCCAecCAQAxggFaMIIBVgIBADA+MCoxKDAmBgNVBAMTH2RiZW5jcnlwdGlvbi5henVyZWhkaW5zaWdodC5uZXQCEA6GDZMW1oiESKFHFOOEgjcwDQYJKoZIhvcNAQEBBQAEggEATIuO8MJ45KEQAYBQld7WaRkJOWqaCLwFub9zNpscrquA2f3o0emy9Vr6vu5cD3GTt7PmaAF0pvssbKVMf/Z8yRpHmeezSco2y7e9Qd7xJKRLYtRHm80fsjiBHSW9CYkQwxHaOqdR7DBhZyhnj+DHhODsIO2FGM8MxWk4fgBRVO6CZ5eTmZ6KVR8wYbFLi8YZXb7GkUEeSn2PsjrKGiQjtpXw1RAyanCagr5vlg8CicZg1HuhCHWf/RYFWM3EBbVz+uFZPR3BqTgbvBhWYXRJaISwssvxotppe0ikevnEgaBYrflB2P+PVrwPTZ7f36HQcn4ifY1WRJQ4qRaUxdYEfzCBgwYJKoZIhvcNAQcBMBQGCCqGSIb3DQMHBAhRdscgRV3wmYBg3j/T1aEnO3wLWCRpgZa16MWqmfQPuansKHjLwbZjTpeirqUAQpZVyXdK/w4gKlK+t1heNsNo1Wwqu+Y47bSAX1k9Ud7+Ed2oETDI7724IJ213YeGxvu4Ngcf2eHW+FRK"
 
-Ez a szöveg, amelyek egy titkosított kulcs, amely a tárfiók eléréséhez használatos.
+Ez a szöveg egy titkosított kulcs példája, amely a Storage-fiók elérésére szolgál.
 
-### <a name="unable-to-access-storage-after-changing-key"></a>Nem fér hozzá a tárolási kulcs módosítása után
+### <a name="unable-to-access-storage-after-changing-key"></a>Nem lehet hozzáférni a tárolóhoz a kulcs módosítása után
 
-Ha módosítja a tárfiók kulcsát, HDInsight már nem tud hozzáférni a tárfiókhoz. HDInsight a core-site.xml kulcs gyorsítótárazott másolatának a fürt használja. Ezt a gyorsítótárazott példányt frissíteni kell, hogy az új kulcs egyezik.
+Ha megváltoztatja egy Storage-fiók kulcsát, a HDInsight már nem fér hozzá a Storage-fiókhoz. A HDInsight a kulcs gyorsítótárazott példányát használja a Core-site. xml fájlban a fürthöz. Ezt a gyorsítótárazott másolatot frissíteni kell, hogy az megfeleljen az új kulcsnak.
 
-Parancsfájl művelet ismételt futtatása does __nem__ frissíteni a kulcsot, mert a parancsfájl ellenőrzi, hogy a storage-fiókhoz tartozó bejegyzés már létezik. Ha már létezik egy bejegyzést, azt nem végezze el a módosításokat.
+A parancsfájl-művelet ismételt futtatása __nem__ frissíti a kulcsot, mivel a parancsfájl ellenőrzi, hogy van-e már létező bejegyzés a Storage-fiókhoz. Ha egy bejegyzés már létezik, nem végez módosítást.
 
-A probléma megkerüléséhez, el kell távolítania a meglévő bejegyzést a tárfiókhoz. Az alábbi lépések segítségével, meglévő bejegyzés eltávolításához:
+A probléma megkerüléséhez el kell távolítania a meglévő bejegyzést a Storage-fiókhoz. A meglévő bejegyzés eltávolításához kövesse az alábbi lépéseket:
 
 > [!IMPORTANT]  
-> A tárfiók hívóbetűjét, a fürt csatlakoztatott elsődleges tárfiók elforgatás nem támogatott.
+> A fürthöz csatolt elsődleges Storage-fiók tárolási kulcsának elforgatása nem támogatott.
 
-1. Egy webböngészőben nyissa meg az Ambari webes felhasználói Felületet, a HDInsight-fürt számára. Az URI-ja `https://CLUSTERNAME.azurehdinsight.net`. Cserélje le a `CLUSTERNAME` elemet a fürt nevére.
+1. A böngészőben nyissa meg a Ambari webes felhasználói felületét a HDInsight-fürthöz. Az URI `https://CLUSTERNAME.azurehdinsight.net`. Cserélje le a `CLUSTERNAME` elemet a fürt nevére.
 
-    Amikor a rendszer kéri, adja meg a HTTP-bejelentkezési felhasználónév és jelszó a fürt számára.
+    Ha a rendszer kéri, adja meg a fürthöz tartozó HTTP-bejelentkezési felhasználót és jelszót.
 
-2. Az oldal bal oldalán a szolgáltatások listájából válassza ki a __HDFS__. Válassza ki a __Configs__ fülre az oldal közepén.
+2. A lap bal oldalán található szolgáltatások listájából válassza a __HDFS__lehetőséget. Ezután válassza az oldal közepén található __konfigurációk__ lapot.
 
-3. Az a __szűrése...__  mezőben adja meg a egy értéke __fs.azure.account__. Ez a lettek hozzáadva a fürt minden további tárfiókok bejegyzést ad vissza. Két típusú bejegyzéseket; __keyprovider__ és __kulcs__. A kulcsnév részeként a tárfiók nevét is tartalmaz.
+3. A __Filter...__ mezőben adja meg az __FS. Azure. Account__értéket. Ez a függvény a fürthöz hozzáadott további Storage-fiókok bejegyzéseinek visszaadása. Két típusú bejegyzés létezik; __a__ kulcstartó és a __kulcs__. Mindkettő tartalmazza a Storage-fiók nevét a kulcs neve részeként.
 
-    A következő nevű tárfiókok példa tételt __mystorage__:
+    A következő példa egy __mystorage__nevű Storage-fiókra vonatkozó bejegyzéseket mutat be:
 
         fs.azure.account.keyprovider.mystorage.blob.core.windows.net
         fs.azure.account.key.mystorage.blob.core.windows.net
 
-4. Miután azonosította, hogy a kulcsokat a tárfiók, el kell távolítania, használja a piros "-" ikont jobb oldalán a bejegyzés törli-e. Ezután a __mentése__ gombra a módosítások mentéséhez.
+4. Miután azonosította az eltávolítandó Storage-fiókhoz tartozó kulcsokat, a törléshez használja a "-" ikont a bejegyzés jobb oldalán. Ezután mentse a módosításokat a __Save (Mentés__ ) gombra kattintva.
 
-5. Módosítások mentése után a parancsfájl művelettel a storage-fiók és az új kulcs-érték hozzáadása a fürthöz.
+5. A módosítások mentése után a parancsfájl művelettel adja hozzá a Storage-fiókot és az új kulcs értékét a fürthöz.
 
-### <a name="poor-performance"></a>Gyenge teljesítményt
+### <a name="poor-performance"></a>Gyenge teljesítmény
 
-Ha a tárfiók más régióban, mint a HDInsight-fürt, gyenge teljesítményt tapasztalhat. Egy másik régióban lévő adatok elérése elküldi a hálózati forgalom, a regionális Azure adatközponton kívül és késés megjelentetni nyilvános interneten keresztül.
+Ha a Storage-fiók a HDInsight-fürttől eltérő régióban található, a teljesítmény gyenge lehet. Az adatok egy másik régióban való elérése a regionális Azure-adatközponton és a nyilvános interneten kívüli hálózati forgalmat küld, amely a késést is képes bevezetni.
 
 ### <a name="additional-charges"></a>További díjak
 
-Ha a tárfiók más régióban, mint a HDInsight-fürt, az Azure számlázását a előfordulhat, hogy figyelje meg a további kimenő forgalom költségeit. Egy kimenő forgalmi díjat adatok kikerül egy regionális adatközpont esetén is alkalmazva lesz. A díj akkor is, ha a forgalom egy másik Azure-adatközpontban egy másik régióban lévő szánt van alkalmazva.
+Ha a Storage-fiók a HDInsight-fürttől eltérő régióban található, az Azure-számlázás további kimenő költségeire is figyelmeztetheti. Ha az adatközpont elhagyja a helyi adatközpontot, a kimenő forgalom díját is alkalmazza. Ez a díj akkor is alkalmazható, ha a forgalmat egy másik régióban lévő Azure-adatközpontra szánják.
 
 ## <a name="next-steps"></a>További lépések
 
-Megtanulhatta, hogyan adhat hozzá további tárfiókok meglévő HDInsight-fürtre. Parancsfájlműveletekkel további információkért lásd: [testreszabása Linux-alapú HDInsight-fürtök szkriptműveletek használatával](hdinsight-hadoop-customize-cluster-linux.md)
+Megtanulta, hogyan adhat hozzá további Storage-fiókokat egy meglévő HDInsight-fürthöz. További információ a parancsfájl-műveletekről: [Linux-alapú HDInsight-fürtök testreszabása parancsfájl-művelet használatával](hdinsight-hadoop-customize-cluster-linux.md)

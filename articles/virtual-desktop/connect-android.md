@@ -7,16 +7,16 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 09/26/2019
 ms.author: helohr
-ms.openlocfilehash: c19aa6e0acc936c5b03afdab99ce0b9230838ce2
-ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
+ms.openlocfilehash: 41b0c1ced9e66bd58d73683865b2c40afc16c5d3
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71339009"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73605849"
 ---
-# <a name="connect-with-the-android-client"></a>Az Android-ügyféllel való kapcsolat
+# <a name="connect-with-the-android-client"></a>Kapcsolódás az Android-ügyféllel
 
-> A következőkre érvényes: Android 4,1 és újabb verziók, Chromebook ChromeOS 53 vagy újabb verzióval.
+> A következőkre vonatkozik: Android 4,1 és újabb verziók, Chromebook a ChromeOS 53 és újabb verziókkal.
 
 >[!NOTE]
 > A Windows rendszerű virtuális asztali erőforrások az Android-ügyfélről való elérésének lehetősége jelenleg előzetes verzióban érhető el.
@@ -33,9 +33,9 @@ Fizessen elő a rendszergazda által biztosított hírcsatornára, hogy lekérje
 
 Előfizetés a hírcsatornára:
 
-1. A kapcsolatkezelő koppintson a **+** elemre, majd koppintson a **távoli erőforrás-hírcsatorna**elemre.
+1. A Csatlakozáskezelőben koppintson a **+** elemre, majd koppintson a **távoli erőforrás-hírcsatorna**elemre.
 2. Írja be a hírcsatorna URL-címét a **hírcsatorna URL-címe** mezőbe. A hírcsatorna URL-címe lehet URL vagy e-mail-cím.
-   - Ha URL-címet használ, használja a rendszergazda által megadott értéket, amely általában <https://rdweb.wvd.microsoft.com>.
+   - Ha URL-címet használ, használja a rendszergazdát, és általában <https://rdweb.wvd.microsoft.com>.
    - E-mail-cím használatához adja meg az e-mail-címét. Az ügyfél megkeresi az e-mail-címéhez tartozó URL-címet, ha a rendszergazda úgy konfigurálta a kiszolgálót.
 3. Koppintson a **tovább**gombra.
 4. Ha a rendszer kéri, adja meg a hitelesítő adatait.

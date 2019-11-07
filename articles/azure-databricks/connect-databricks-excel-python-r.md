@@ -1,6 +1,6 @@
 ---
-title: 'Csatlakozás az Azure Databricks a Excel-, Python vagy R '
-description: Ismerje meg, hogyan csatlakozhat a Simba illesztőprogram Azure Databricks Excel-, Python vagy R.
+title: 'Kapcsolódás Azure Databricks Excel, Python vagy R rendszerből '
+description: Ismerje meg, hogyan használható a Simba-illesztőprogram a Azure Databricks Excel, Python vagy R rendszerhez való összekapcsolásához.
 services: azure-databricks
 author: mamccrea
 ms.reviewer: jasonh
@@ -9,109 +9,109 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: mamccrea
-ms.openlocfilehash: 1805f04d7833dea180847defadd865cb23e9df62
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.openlocfilehash: f7494d36cf9b16ac6c7a1287a6ff96dd2285c6e2
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67340859"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73601950"
 ---
-# <a name="connect-to-azure-databricks-from-excel-python-or-r"></a>Csatlakozás az Azure Databricks a Excel-, Python vagy R
+# <a name="connect-to-azure-databricks-from-excel-python-or-r"></a>Kapcsolódás Azure Databricks Excel, Python vagy R rendszerből
 
-Ebből a cikkből elsajátíthatja a Databricks ODBC-illesztő használatával csatlakozzon az Azure Databricks a Microsoft Excel-, Python, vagy az R nyelvvel. A kapcsolat létrejötte után elérheti az adatokat az Azure Databricksben az Excel-, Python vagy R-ügyfelekről. Használhatja az ügyfelek adatainak további elemzéséhez. 
+Ebből a cikkből megtudhatja, hogyan használhatja a Databricks ODBC-illesztőt a Azure Databricks Microsoft Excel, Python vagy R nyelvvel való összekapcsolásához. Miután létrehozta a kapcsolatot, Azure Databricks az Excel-, Python-vagy R-ügyfelekről férhet hozzá az adatokhoz. Az ügyfeleket az adatelemzés további elemzésére is használhatja. 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Azure Databricks-munkaterületet, Spark-fürt és a fürthöz társított mintaadatokat kell rendelkeznie. Ha Ön még nem rendelkezik ezeket az előfeltételeket, hajtsa végre a rövid útmutató: [Spark-feladatok futtatása Azure databricksen az Azure portal használatával](quickstart-create-databricks-workspace-portal.md).
+* Rendelkeznie kell egy Azure Databricks-munkaterülettel, egy Spark-fürttel és a fürthöz társított mintaadatok. Ha még nem rendelkezik ezekkel az előfeltételekkel, hajtsa végre a gyors üzembe helyezési útmutatót [Azure Databricks a Azure Portal használatával](quickstart-create-databricks-workspace-portal.md).
 
-* Töltse le a Databricks ODBC-illesztőprogramot az [Databricks illesztőprogram letöltési oldal](https://databricks.com/spark/odbc-driver-download). Az alkalmazástól függően 32 bites vagy 64 bites verzióját telepítse, ahonnan csak szeretné az Azure Databricks csatlakozni. Csatlakozhat az Excelből, például az illesztőprogram 32 bites verzióját telepítse. Csatlakozás az R és Python, telepítse az illesztőprogram 64 bites verzióját.
+* Töltse le a Databricks ODBC-illesztőt a [Databricks-illesztőprogram letöltési oldaláról](https://databricks.com/spark/odbc-driver-download). Telepítse a 32 bites vagy a 64 bites verziót attól függően, hogy melyik alkalmazásból szeretne csatlakozni a Azure Databrickshoz. Például az Excelből való kapcsolódáshoz telepítse az illesztőprogram 32 bites verzióját. Az R és a Python használatával való kapcsolódáshoz telepítse az illesztőprogram 64 bites verzióját.
 
-* Állítsa be a személyes hozzáférési tokent a Databricksben. Útmutatásért lásd: [felügyeleti Token](https://docs.azuredatabricks.net/api/latest/authentication.html#token-management).
+* Hozzon létre egy személyes hozzáférési jogkivonatot a Databricks-ben. Útmutatásért lásd a [jogkivonat-kezelés](/azure/databricks/dev-tools/api/latest/authentication)című témakört.
 
-## <a name="set-up-a-dsn"></a>Állítsa be az Adatbázisnevet
+## <a name="set-up-a-dsn"></a>DSN beállítása
 
-Egy adatforrás neve (DSN) egy adott adatforrásra vonatkozó információkat tartalmazza. ODBC-illesztő a DSN adatforráshoz csatlakozni kell. Ebben a szakaszban állítsa be, hogy az ügyfelek számára, mint például a Microsoft Excelt, Python vagy R. csatlakozni az Azure Databricks a Databricks ODBC-illesztő használható Adatbázisnevet
+Az adatforrás neve (DSN) az adott adatforrásra vonatkozó információkat tartalmazza. Egy ODBC-illesztőprogramnak szüksége van erre az ADATFORRÁSNEVET egy adatforráshoz való kapcsolódáshoz. Ebben a szakaszban egy olyan DSN-t állít be, amely a Databricks ODBC-illesztővel való Azure Databricks kapcsolódáshoz használható olyan ügyfelekhez, mint a Microsoft Excel, a Python vagy az R.
 
-1. Az Azure Databricks-munkaterület keresse meg a Databricks-fürtön.
+1. A Azure Databricks munkaterületen navigáljon a Databricks-fürthöz.
 
-    ![Nyissa meg Databricks-fürt](./media/connect-databricks-excel-python-r/open-databricks-cluster.png "nyissa meg a Databricks-fürt")
+    ![Databricks-fürt megnyitása](./media/connect-databricks-excel-python-r/open-databricks-cluster.png "Databricks-fürt megnyitása")
 
-2. Alatt a **konfigurációs** lapra, majd a **JDBC/ODBC** fület, és másolja a tartozó értékeket **kiszolgáló állomásnevét** és **HTTP elérési útja**. Ezek az értékek a jelen cikkben ismertetett lépések végrehajtásához szüksége.
+2. A **konfiguráció** lapon kattintson a **JDBC/ODBC** lapra, és másolja a **kiszolgálói állomásnév** és a **http elérési útja**értékeit. Ezekre az értékekre szüksége lesz a cikk lépéseinek elvégzéséhez.
 
-    ![Databricks-konfiguráció beolvasása](./media/connect-databricks-excel-python-r/get-databricks-jdbc-configuration.png "Databricks első konfiguráció")
+    ![Databricks-konfiguráció beolvasása](./media/connect-databricks-excel-python-r/get-databricks-jdbc-configuration.png "Databricks-konfiguráció beolvasása")
 
-3. A számítógépen indítsa el a **ODBC adatforrások** alkalmazás (32 bites vagy 64 bites) az alkalmazástól függően. Csatlakozás az Excelből, 32 bites verzióját használja. Csatlakozás az R és Python, 64 bites verzióját használja.
+3. A számítógépen az alkalmazástól függően indítsa el az **ODBC adatforrások** alkalmazást (32 bites vagy 64 bites). Az Excelből való kapcsolódáshoz használja a 32 bites verziót. Az R és a Python használatával való kapcsolódáshoz használja a 64 bites verziót.
 
-    ![Indítsa el a ODBC](./media/connect-databricks-excel-python-r/launch-odbc-app.png "ODBC-alkalmazás indítása")
+    ![ODBC elindítása](./media/connect-databricks-excel-python-r/launch-odbc-app.png "ODBC-alkalmazás elindítása")
 
-4. Alatt a **felhasználói DSN** lapra, majd **Hozzáadás**. Az a **új adatforrás létrehozása** párbeszédpanelen válassza ki a **Simba Spark ODBC-illesztő**, és kattintson a **Befejezés**.
+4. A **felhasználói DSN** lapon kattintson a **Hozzáadás**gombra. Az **új adatforrás létrehozása** párbeszédpanelen válassza a **Simba Spark ODBC-illesztőt**, majd kattintson a **Befejezés**gombra.
 
-    ![Indítsa el a ODBC](./media/connect-databricks-excel-python-r/add-new-user-dsn.png "ODBC-alkalmazás indítása")
+    ![ODBC elindítása](./media/connect-databricks-excel-python-r/add-new-user-dsn.png "ODBC-alkalmazás elindítása")
 
-5. Az a **Simba Spark ODBC-illesztő** párbeszédpanelen adja meg a következő értékeket:
+5. A **Simba Spark ODBC-illesztő** párbeszédpanelen adja meg a következő értékeket:
 
-    ![Konfigurálja a DSN](./media/connect-databricks-excel-python-r/odbc-dsn-setup.png "DSN konfigurálása")
+    ![DSN konfigurálása](./media/connect-databricks-excel-python-r/odbc-dsn-setup.png "DSN konfigurálása")
 
-    Az alábbi táblázat az értékeket a párbeszédpanelen adja meg az információkat.
+    A következő táblázat a párbeszédpanelen megadható értékekkel kapcsolatos információkat tartalmazza.
     
     |Mező  | Érték  |
     |---------|---------|
     |**Adatforrás neve**     | Adja meg az adatforrás nevét.        |
-    |**Host(s)**     | Adja meg a Databricks-munkaterület kimásolt érték *kiszolgáló állomásnevét*.        |
-    |**Port**     | Adja meg *443-as*.        |
-    |**Hitelesítési** > **mechanizmus**     | Válassza ki *felhasználónevet és jelszót*.        |
-    |**Felhasználónév**     | Adja meg *token*.        |
-    |**Jelszó**     | A Databricks-munkaterület másolt jogkivonat értéket írja. |
+    |**Állomás (ok)**     | Adja meg azt az értéket, amelyet a Databricks munkaterületről másolt a *kiszolgálói állomásnévhez*.        |
+    |**Port**     | Adja meg a *443*értéket.        |
+    |**Hitelesítési** > **mechanizmus**     | Válassza ki *a felhasználónevet és a jelszót*.        |
+    |**Felhasználónév**     | Adja meg a *tokent*.        |
+    |**Jelszó**     | Adja meg a Databricks munkaterületről másolt jogkivonat értékét. |
     
-    Hajtsa végre az alábbi kiegészítő lépéseket a DSN-beállítások párbeszédpanel.
+    Hajtsa végre a következő további lépéseket a DSN beállítása párbeszédpanelen.
     
-    * Kattintson a **HTTP-beállítások**. A megnyíló párbeszédpanelen illessze be az értéket, a *HTTP elérési útja* Databricks-munkaterület kimásolt. Kattintson az **OK** gombra.
-    * Kattintson a **SSL-beállítások**. A megnyíló párbeszédpanelen válassza ki a **SSL engedélyezése** jelölőnégyzetet. Kattintson az **OK** gombra.
-    * Kattintson a **tesztelése** az Azure databricks a kapcsolat teszteléséhez. Kattintson a **OK** a konfiguráció mentéséhez.
-    * Az a **ODBC Data Source Administrator** párbeszédpanelen kattintson a **OK**.
+    * Kattintson a **http-beállítások**elemre. A megnyíló párbeszédpanelen illessze be a Databricks-munkaterületről másolt *http-elérési út* értékét. Kattintson az **OK** gombra.
+    * Kattintson az **SSL-beállítások**elemre. A megnyíló párbeszédpanelen jelölje be az **SSL engedélyezése** jelölőnégyzetet. Kattintson az **OK** gombra.
+    * Kattintson a **teszt** gombra a Azure Databrickshoz való kapcsolódás ellenőrzéséhez. A konfiguráció mentéséhez kattintson **az OK** gombra.
+    * Az **ODBC-adatforrás rendszergazdája** párbeszédpanelen kattintson az **OK**gombra.
 
-Most már a DSN-beállítása. A következő szakaszokban használhatja a DSN csatlakozni az Azure databricks Excel-, Python vagy R.
+Most már beállította az ADATFORRÁSNEVET. A következő részekben ezt az ADATFORRÁSNEVET használja az Excel-, Python-vagy R-Azure Databrickshoz való kapcsolódáshoz.
 
-## <a name="connect-from-microsoft-excel"></a>Csatlakozás a Microsoft Excel
+## <a name="connect-from-microsoft-excel"></a>A Microsoft Excelben való kapcsolat
 
-Ebben a szakaszban, kér le adatot az Azure Databricks a Microsoft Excel formátumba a korábban létrehozott Adatforrásnevet használ. Mielőtt elkezdené, győződjön meg arról, hogy a számítógépen telepített Microsoft Excel. Használhatja az Excel próbaverzióját [próbaverzió a Microsoft Excel-hivatkozás](https://products.office.com/excel).
+Ebben a szakaszban a korábban létrehozott DSN használatával kéri le a Azure Databricks adatait a Microsoft Excelben. Mielőtt elkezdené, győződjön meg arról, hogy a Microsoft Excel telepítve van a számítógépen. Használhatja az Excel próbaverzióját a [Microsoft Excel próbaverziós hivatkozásával](https://products.office.com/excel).
 
-1. Nyissa meg egy üres munkafüzetet a Microsoft Excelben. Az a **adatok** menüszalagra, majd **adatok lekérése**. Kattintson a **egyéb forrásokból származó** majd **származó ODBC**.
+1. Nyisson meg egy üres munkafüzetet a Microsoft Excelben. Az **adatok** menüszalagon kattintson az **adatok lekérése**elemre. Kattintson **a más forrásokból** lehetőségre, majd **az ODBC**elemre.
 
-    ![Indítsa el az Excelből ODBC](./media/connect-databricks-excel-python-r/launch-odbc-from-excel.png "indítsa el az Excelből ODBC")
+    ![ODBC elindítása az Excelből](./media/connect-databricks-excel-python-r/launch-odbc-from-excel.png "ODBC elindítása az Excelből")
 
-2. Az a **származó ODBC** párbeszédpanelen válassza ki a korábban létrehozott Adatforrásnevet, majd kattintson **OK**.
+2. Az **ODBC-ből** párbeszédpanelen válassza ki a korábban létrehozott DSN-t, majd kattintson **az OK**gombra.
 
-    ![Select DSN](./media/connect-databricks-excel-python-r/excel-select-dsn.png "Select DSN")
+    ![ADATFORRÁS kiválasztása](./media/connect-databricks-excel-python-r/excel-select-dsn.png "ADATFORRÁS kiválasztása")
 
-3. Ha a rendszer kéri a hitelesítő adatokat, a felhasználó nevét adja meg **token**. A jelszó adja meg a token értékét, a Databricks-munkaterület lekért.
+3. Ha a rendszer hitelesítő adatokat kér, a Felhasználónév mezőben adja meg a **tokent**. A Password (jelszó) mezőben adja meg a Databricks munkaterületről lekért jogkivonat-értéket.
 
-    ![Adja meg a hitelesítő adatokat a Databricks](./media/connect-databricks-excel-python-r/excel-databricks-token.png "DSN kiválasztása")
+    ![Hitelesítő adatok megadása a Databricks](./media/connect-databricks-excel-python-r/excel-databricks-token.png "ADATFORRÁS kiválasztása")
 
-4. A navigációs ablakban válassza ki a táblát a Databricksben betöltése az Excel, és kattintson a kívánt **betöltése**. 
+4. A navigátor ablakban válassza ki azt a Databricks, amelyet az Excelbe szeretne betölteni, majd kattintson a **Betöltés**elemre. 
 
-    ![A dta betöltése az Excel](./media/connect-databricks-excel-python-r/excel-load-data.png "terhelés dta Excelbe")
+    ![DTA betöltése az Excelbe](./media/connect-databricks-excel-python-r/excel-load-data.png "DTA betöltése az Excelbe")
 
-Miután az adatok az Excel-munkafüzetben, rajta elemzési műveleteket hajthat végre.
+Miután az Excel-munkafüzetben található adatokkal rendelkezik, elemzési műveleteket végezhet rajta.
 
-## <a name="connect-from-r"></a>Csatlakozás az R-hez
+## <a name="connect-from-r"></a>Kapcsolat az R-ből
 
 > [!NOTE]
-> Ez a szakasz információt nyújt az R Studio ügyfél az Azure Databricks asztali számítógépeken futó integrálható az. Az R Studio használata az Azure Databricks-fürt magát az utasításokért lásd: [R Studiót az Azure databricks szolgáltatásban](https://docs.azuredatabricks.net/spark/latest/sparkr/rstudio.html).
+> Ez a szakasz arról nyújt tájékoztatást, hogyan integrálható az asztali számítógépeken futó R Studio-ügyfél Azure Databricks használatával. Az R Studio Azure Databricks-fürtön való használatáról az [r Studio on Azure Databricks](/azure/databricks/spark/latest/sparkr/rstudio)című témakörben talál útmutatást.
 
-Ebben a szakaszban egy R nyelvvel IDE referenciaadatok elérhető az Azure Databricks használatával. Mielőtt hozzákezd, rendelkeznie kell a következőknek telepítve a számítógépen.
+Ebben a szakaszban egy R Language IDE-t használ a Azure Databricks elérhetővé tételéhez. Mielőtt elkezdené, a számítógépen telepítve kell lennie a következőknek.
 
-* Egy ide-vel R nyelvvel. Ez a cikk az RStudio Desktop használja. Telepítheti a [R Studio letöltési](https://www.rstudio.com/products/rstudio/download/).
-* Az RStudio Desktop-t használja az IDE, ha is telepítheti a Microsoft R Client [ https://aka.ms/rclient/ ](https://aka.ms/rclient/). 
+* IDE az R nyelvhez. Ez a cikk az asztali RStudio használatát ismerteti. Az [R Studio letöltésével](https://www.rstudio.com/products/rstudio/download/)telepítheti.
+* Ha IDE-ként használja az RStudio for Desktopot, telepítse a Microsoft R-ügyfelet a [https://aka.ms/rclient/ból ](https://aka.ms/rclient/)is. 
 
-Nyissa meg az RStudio, és kövesse az alábbi lépéseket:
+Nyissa meg a RStudio, és hajtsa végre a következő lépéseket:
 
-- Referencia a `RODBC` csomagot. Ez lehetővé teszi, hogy kapcsolódjon az Azure Databricks használatával a korábban létrehozott Adatforrásnevet.
-- A DSN kapcsolatot létesíteni.
-- SQL-lekérdezést futtathat az adatok az Azure Databricksben. Az alábbi kódrészletben *radio_sample_data* egy táblázatot, amely már létezik az Azure Databricksben.
-- Hajtsa végre a lekérdezést, hogy a kimenet ellenőrzése az egyes műveletek. 
+- Hivatkozzon a `RODBC` csomagra. Ez lehetővé teszi, hogy a korábban létrehozott DSN használatával kapcsolódjon Azure Databrickshoz.
+- Hozzon létre egy kapcsolatot az DSN használatával.
+- Futtasson egy SQL-lekérdezést a Azure Databricks található adatelemen. A következő kódrészletben a *radio_sample_data* olyan tábla, amely már létezik a Azure Databricksban.
+- Hajtson végre néhány műveletet a lekérdezésen a kimenet ellenőrzéséhez. 
 
-A következő kódrészletet az alábbi feladatokat hajtja végre:
+A következő kódrészlet hajtja végre ezeket a feladatokat:
 
     # reference the 'RODBC' package
     require(RODBC)
@@ -128,24 +128,24 @@ A következő kódrészletet az alábbi feladatokat hajtja végre:
     # print out the number of rows in the query output
     nrow (res)
 
-## <a name="connect-from-python"></a>Csatlakozás a Pythonnal
+## <a name="connect-from-python"></a>Kapcsolat a Pythonból
 
-Ebben a szakaszban a referenciaadatok elérhető az Azure Databricksben (például a TÉTLEN) Python IDE használatával. Mielőtt elkezdené, hajtsa végre a következő előfeltételek vonatkoznak:
+Ebben a szakaszban egy Python IDE-t (például TÉTLEN) használ a Azure Databricks elérhetővé tételéhez. Mielőtt elkezdené, végezze el a következő előfeltételeket:
 
-* Telepítse a Pythont a [Itt](https://www.python.org/downloads/). Is erre a hivatkozásra a Python telepítése telepíti a TÉTLEN.
+* Telepítse [a Pythont innen.](https://www.python.org/downloads/) Ha telepíti a Pythont ebből a hivatkozásból, az inaktív állapotba kerül.
 
-* Egy parancssorból a számítógépen, telepítse a `pyodbc` csomagot. Futtassa a következő parancsot:
+* Telepítse a `pyodbc` csomagot a számítógépen egy parancssorból. Futtassa az alábbi parancsot:
 
       pip install pyodbc
 
-Nyissa meg a TÉTLEN, és kövesse az alábbi lépéseket:
+Nyissa meg a TÉTLEN műveletet, és hajtsa végre a következő lépéseket:
 
-- Importálás a `pyodbc` csomagot. Ez lehetővé teszi, hogy kapcsolódjon az Azure Databricks használatával a korábban létrehozott Adatforrásnevet.
-- A korábban létrehozott DSN kapcsolatot létesíteni.
--  Egy SQL-lekérdezés futtatásához a kapcsolatot hozott létre. Az alábbi kódrészletben *radio_sample_data* egy táblázatot, amely már létezik az Azure Databricksben.
-- Hajtsa végre a lekérdezést, hogy a kimenet ellenőrzése műveleteket.
+- Importálja a `pyodbc` csomagot. Ez lehetővé teszi, hogy a korábban létrehozott DSN használatával kapcsolódjon Azure Databrickshoz.
+- Hozzon létre egy kapcsolatot a korábban létrehozott DSN használatával.
+-  Futtasson egy SQL-lekérdezést a létrehozott kapcsolatban. A következő kódrészletben a *radio_sample_data* olyan tábla, amely már létezik a Azure Databricksban.
+- Hajtson végre műveleteket a lekérdezésen a kimenet ellenőrzéséhez.
 
-A következő kódrészletet az alábbi feladatokat hajtja végre:
+A következő kódrészlet hajtja végre ezeket a feladatokat:
 
 ```python
 # import the `pyodbc` package:
@@ -165,6 +165,6 @@ for row in cursor.fetchall():
 
 ## <a name="next-steps"></a>További lépések
 
-* Importálhat adatokat az Azure Databricksbe forrásainak kapcsolatos további információkért lásd: [Azure Databricks-adatforrások](https://docs.azuredatabricks.net/spark/latest/data-sources/index.html#)
+* Az adatok Azure Databricksba való importálásának forrásairól a [Azure Databricks adatforrásaiban](/azure/databricks/data/data-sources/index) talál további információt.
 
 

@@ -1,5 +1,5 @@
 ---
-title: Alkalmi jelentéskészítési lekérdezések futtatása több Azure SQL-adatbázis között | Microsoft Docs
+title: Alkalmi jelentéskészítési lekérdezések futtatása több Azure SQL-adatbázis között
 description: Egy több-bérlős alkalmazásban például több SQL-adatbázisban is futtathat ad hoc jelentéskészítési lekérdezéseket.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: AyoOlubeko
 ms.author: craigg
 ms.reviewer: sstein
 ms.date: 10/30/2018
-ms.openlocfilehash: 0a6b45db3c8b4071b591ca2b5fc604b986598c0c
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 3d345e222dac98a63400dd2661ce92674f2534f6
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68570358"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73692087"
 ---
 # <a name="run-ad-hoc-analytics-queries-across-multiple-azure-sql-databases"></a>Alkalmi elemzési lekérdezések futtatása több Azure SQL-adatbázis között
 
@@ -34,7 +34,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 Az oktatóanyag teljesítéséhez meg kell felelnie az alábbi előfeltételeknek:
 
 * A Wingtip tickets SaaS több-bérlős adatbázis-alkalmazás telepítve van. Ha kevesebb mint öt perc alatt kíván üzembe helyezni, tekintse meg [a Wingtip tickets SaaS több-bérlős adatbázis-alkalmazás üzembe helyezése és megismerése](saas-multitenantdb-get-started-deploy.md) című részt
-* Az Azure PowerShell telepítve van. A részletekért lásd: [Ismerkedés az Azure PowerShell-lel](https://docs.microsoft.com/powershell/azure/get-started-azureps)
+* Az Azure PowerShell telepítve van. Részletes információk: [Ismerkedés az Azure PowerShell-lel](https://docs.microsoft.com/powershell/azure/get-started-azureps)
 * SQL Server Management Studio (SSMS) telepítve van. A SSMS letöltéséhez és telepítéséhez lásd: [SQL Server Management Studio letöltése (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms).
 
 
@@ -48,7 +48,7 @@ Ezeknek az adatoknak egyetlen több bérlős adatbázisban történő elérése 
 
 A lekérdezéseknek a bérlői adatbázisokban való terjesztése révén a rugalmas lekérdezés azonnali betekintést nyújt az éles üzemi adataiba. Mivel azonban a rugalmas lekérdezés akár több adatbázisból is lekéri az adatok mennyiségét, a lekérdezés késése esetenként magasabb lehet, mint az egyetlen több-bérlős adatbázisba küldött egyenértékű lekérdezések esetében. Ügyeljen arra, hogy a visszaadott adatforgalom minimalizálására szolgáló lekérdezéseket tervezzen. A rugalmas lekérdezés többnyire kis mennyiségű valós idejű adat lekérdezésére alkalmas, a gyakran használt vagy összetett elemzési lekérdezések vagy jelentések kiépítése helyett. Ha a lekérdezések nem jól teljesítenek, tekintse meg a [végrehajtási tervet](https://docs.microsoft.com/sql/relational-databases/performance/display-an-actual-execution-plan) , és tekintse meg, hogy a lekérdezés milyen része lett leküldve a távoli adatbázisra. És mérje fel, hogy mennyi adattal tért vissza a rendszer. Az összetett analitikus feldolgozást igénylő lekérdezések jobb kiszolgálása a kinyert bérlői adatoknak az elemzési lekérdezésekhez optimalizált adatbázisba való mentésekor lehet. A SQL Database és a SQL Data Warehouse az elemzési adatbázist is üzemeltetheti.
 
-Az elemzések mintáját a bérlői [elemzési oktatóanyag](saas-multitenantdb-tenant-analytics.md)ismerteti.
+Az elemzések mintáját a [bérlői elemzési oktatóanyag](saas-multitenantdb-tenant-analytics.md)ismerteti.
 
 ## <a name="get-the-wingtip-tickets-saas-multi-tenant-database-application-source-code-and-scripts"></a>A Wingtip tickets SaaS több-bérlős adatbázis-alkalmazás forráskódjának és parancsfájljainak beszerzése
 
@@ -58,7 +58,7 @@ A Wingtip jegyek SaaS több-bérlős adatbázis-parancsfájljai és az alkalmaz�
 
 Ha több érdekes adathalmazon szeretne lekérdezéseket futtatni, a Ticket-Generator futtatásával hozzon létre jegyeladási adatforgalmat.
 
-1. A *POWERSHELL ISE*-ben nyissa meg a... \\\\ A képzési modulok operatív elemzési ad\\hoc jelentése demo-AdhocReporting. ps1 parancsfájl, és a következő értékeket adja meg: \\
+1. A *POWERSHELL ISE*-ben nyissa meg a...\\learning-modulokat\\operatív elemzési\\ad hoc jelentéskészítés\\*demo-AdhocReporting. ps1* szkriptet, és állítsa be a következő értékeket:
    * **$DemoScenario** = 1, **jegyek vásárlása minden helyszínen**.
 2. Nyomja le az **F5** billentyűt a szkript futtatásához és a jegyek értékesítésének létrehozásához. A parancsfájl futása közben folytassa az oktatóanyag lépéseit. A jegyeket az *ad hoc elosztott lekérdezések futtatása* szakaszban kérdezi le, ezért várjon, amíg a Ticket Generator befejeződik.
 
@@ -72,7 +72,7 @@ Ennek a mintának az eléréséhez minden bérlői tábla tartalmaz egy *VenueId
 
 Ez a gyakorlat telepíti a *adhocreporting* -adatbázist. Ez az a fő adatbázis, amely az összes bérlői adatbázis lekérdezéséhez használt sémát tartalmazza. A rendszer telepíti az adatbázist a meglévő Catalog kiszolgálóra, amely a minta alkalmazásban található összes felügyelettel kapcsolatos adatbázishoz használt kiszolgáló.
 
-1. Megnyitás... \\\\\\A tanulási modulok operatív elemzési ad hoc jelentése*demo-AdhocReporting. ps1* a *PowerShell ISE* -ben, és állítsa be a következő értékeket: \\
+1. Nyissa meg a...\\learning-modulokat\\Operational Analytics\\ad hoc jelentéskészítés\\*demo-AdhocReporting. ps1* a *PowerShell ISE* -ben, és állítsa be a következő értékeket:
    * **$DemoScenario** = 2, **ad hoc elemzési adatbázis üzembe helyezése**.
 
 2. Nyomja le az **F5** billentyűt a szkript futtatásához és a *adhocreporting* -adatbázis létrehozásához.
@@ -91,7 +91,7 @@ Ez a gyakorlat hozzáadja a sémát (a külső adatforrást és a külső tábla
 
     ![hitelesítő adat létrehozása](media/saas-multitenantdb-adhoc-reporting/create-credential.png)
 
-   Ha a katalógus-adatbázist külső adatforrásként használja, a rendszer a lekérdezés futtatásakor a katalógusban regisztrált összes adatbázisra terjeszti a lekérdezéseket. Mivel a kiszolgálók nevei eltérőek az egyes központi telepítések esetében, ez az inicializálási parancsfájl lekéri a katalógus-adatbázis helyét az aktuális kiszolgáló@servername(@) beolvasásával, ahol a parancsfájlt végrehajtja.
+   Ha a katalógus-adatbázist külső adatforrásként használja, a rendszer a lekérdezés futtatásakor a katalógusban regisztrált összes adatbázisra terjeszti a lekérdezéseket. Mivel a kiszolgálók nevei eltérőek az egyes központi telepítések esetében, ez az inicializálási parancsfájl lekéri a katalógus-adatbázis helyét az aktuális kiszolgáló (@@servername) beolvasásával, ahol a parancsfájlt végrehajtja.
 
     ![külső adatforrás létrehozása](media/saas-multitenantdb-adhoc-reporting/create-external-data-source.png)
 
@@ -115,9 +115,9 @@ Most, hogy beállította a *adhocreporting* -adatbázist, ugorjon előre, és fu
 
 A végrehajtási terv vizsgálatakor vigye a kurzort a terv ikonjaira a részletekért. 
 
-1. A *SSMS*nyissa meg a... \\Oktatásimodulok\\operatív\\elemzési\\ad hoc jelentéskészítés*demo-AdhocReportingQueries. SQL*.
+1. A *SSMS*-ben nyissa meg a...\\learning-modulok\\Operational Analytics\\ad hoc jelentés\\*demo-AdhocReportingQueries. SQL*.
 2. Győződjön meg arról, hogy csatlakozik a **adhocreporting** -adatbázishoz.
-3. Válassza a **lekérdezés** menüt, majd kattintson a **tényleges végrehajtási terv** belefoglalása elemre.
+3. Válassza a **lekérdezés** menüt, majd kattintson a **tényleges végrehajtási terv belefoglalása** elemre.
 4. Jelölje ki a *jelenleg regisztrált helyszíneket?* lekérdezés, és nyomja le az **F5**billentyűt.
 
    A lekérdezés a teljes helyszín listáját adja vissza, amely azt szemlélteti, hogy milyen gyorsan és egyszerűen lehet lekérdezni az összes bérlőt, és visszaadni az egyes bérlők adatait.
@@ -138,12 +138,12 @@ A végrehajtási terv vizsgálatakor vigye a kurzort a terv ikonjaira a részlet
 
    Ez a lekérdezés egy kicsit összetettebb csatlakozást és összesítést végez. Fontos megjegyezni, hogy a feldolgozás nagy része távolról történik, és ismét csak a szükséges sorokat vesszük vissza, és csak egyetlen sort adunk vissza minden helyszín összesített jegyek eladásának napi száma alapján.
 
-   ![query](media/saas-multitenantdb-adhoc-reporting/query3-plan.png)
+   ![lekérdezés](media/saas-multitenantdb-adhoc-reporting/query3-plan.png)
 
 
 ## <a name="next-steps"></a>További lépések
 
-Ennek az oktatóanyagnak a segítségével megtanulta a következőket:
+Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]
 > 

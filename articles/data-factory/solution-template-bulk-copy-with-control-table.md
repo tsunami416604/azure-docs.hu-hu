@@ -1,6 +1,6 @@
 ---
-title: Tömegesen másolni egy adatbázisból vezérlő táblázat az Azure Data Factory használatával |} A Microsoft Docs
-description: Ismerje meg, hogyan használható a megoldássablon tömeges adatokat másol egy adatbázist egy külső vezérlőelem tábla használatával a forrás-táblák partíció listájának tárolása az Azure Data Factory használatával.
+title: Tömeges másolás adatbázisból egy Azure Data Factory tartalmazó vezérlőelem-táblázat használatával
+description: Megtudhatja, hogyan másolhat egy külső vezérlőt egy olyan megoldási sablonnal, amellyel a Azure Data Factory használatával tárolhatja a forrásadatok listáját egy adatbázisból.
 services: data-factory
 documentationcenter: ''
 author: dearandyxu
@@ -13,38 +13,38 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 12/14/2018
-ms.openlocfilehash: c4224693642e8c9f76deedc0c8ad8586e122cc23
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: b651721e9b833c02e4789c79ff5ad0b49ce31343
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60635388"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73684277"
 ---
-# <a name="bulk-copy-from-a-database-with-a-control-table"></a>A tömeges másolás az ellenőrzési tábla adatbázisból
+# <a name="bulk-copy-from-a-database-with-a-control-table"></a>Tömeges másolás egy vezérlőelem-táblázattal rendelkező adatbázisból
 
-Adatok másolása az adattárház az Oracle-kiszolgálóhoz, Netezza, Teradata vagy SQL Server az Azure SQL Data Warehouse, hatalmas mennyiségű adat betöltése több táblájából rendelkezik. Az adatok általában úgy, hogy párhuzamosan több szálon rendelkező sor betöltése egy egyetlen táblázatból származó particionálandó mindegyik tábla rendelkezik. Ez a cikk ismerteti egy ezekben a forgatókönyvekben használandó sablont.
+Ha az Oracle Server, a Netezza, a Teradata SQL Server vagy a Azure SQL Data Warehouse adattárházból szeretne Adatmásolást készíteni, több táblából is nagy mennyiségű adattal kell betöltenie. Az adatok általában az egyes táblákban particionálva vannak, így egyetlen táblából párhuzamosan több szálat tartalmazó sorok is betölthetők. Ez a cikk az ezekben a forgatókönyvekben használandó sablont ismerteti.
 
- >! Vegye figyelembe, ha szeretne egy kis számú táblában viszonylag kis adatkötettel adatokat másol az SQL Data Warehouse, hatékonyabb, ha használja a [Azure Data Factory az adatok másolása eszköz](copy-data-tool.md). A sablon (ebben a cikkben ismertetett) több mint kell ehhez a forgatókönyvhöz.
+ >! Vegye figyelembe, hogy ha kis számú táblából szeretne adatmásolni viszonylag kis adatmennyiséggel SQL Data Warehouse, akkor hatékonyabbá válik a [Azure Data Factory adatok másolása eszköz](copy-data-tool.md)használata. A cikkben ismertetett sablon ennél a forgatókönyvnél többre van szüksége.
 
-## <a name="about-this-solution-template"></a>Ez a megoldássablon kapcsolatban
+## <a name="about-this-solution-template"></a>Tudnivalók a megoldási sablonról
 
-Ez a sablon a forráspartíciók adatbázis másolása egy külső vezérlőelem táblából listájának beolvasása. Ezután mindegyik partíció a forrásadatbázis ismétel, és átmásolja az adatokat a célhelyre.
+Ez a sablon lekéri a forrás adatbázis-partíciók listáját, amelyeket egy külső vezérlő táblából másolhat. Ezután megismétli a forrás-adatbázis egyes partícióit, és átmásolja azokat a célhelyre.
 
-A sablon a három tevékenységet tartalmaz:
-- **Keresési** meg arról, hogy adatbázis-partíciók listájának beolvasása egy külső vezérlőelem táblából.
-- **ForEach** partíció listájának beolvasása a keresési tevékenység eredménylistáját és végiglépkedve mindegyik partíció a másolási tevékenységnek.
-- **Másolás** mindegyik partíció másol a forrásadattárba a adatbázis tárolási célhelye.
+A sablon három tevékenységet tartalmaz:
+- A **lookup** lekéri az adatbázis-partíciók listáját egy külső vezérlő táblából.
+- A **foreach** beolvassa a keresési tevékenységből a partíciók listáját, és megismétli az egyes partíciókat a másolási tevékenységnek.
+- **Másolja** az egyes partíciókat a forrás-adatbázis tárolójából a célhelyre.
 
-A sablon meghatározza öt:
-- *Control_Table_Name* a külső vezérlőelem tábla, amely tárolja a Partíciólista a forrásadatbázishoz.
-- *Control_Table_Schema_PartitionID* neve, a vezérlőelem külső tábla, amely tárolja az egyes partícióazonosító. az oszlop neve Győződjön meg arról, hogy a forrásadatbázis minden partíció esetében egyedi legyen-e a Partícióazonosító.
-- *Control_Table_Schema_SourceTableName* a vezérlőelem külső tábla, amely tárolja a forrásadatbázisból minden táblanévhez.
-- *Control_Table_Schema_FilterQuery* a külső vezérlőelem táblában, amely a szűrő-lekérdezés az adatok bekérése mindegyik partíció az adatforrás-adatbázisban tárolja az oszlop neve. Például, ha az adatok dokumentumtárolási év, a lekérdezés minden egyes sorban tárolt lehet hasonló "Válassza ki * az adatforrás ahol LastModifytime > =" 2015-01-01 00:00:00: "% és LastModifytime < ="2015-12-31 23:59:59.999: "%".
-- *Data_Destination_Folder_Path* ahol az adatokat másolja be a céltároló elérési útja. Ez a paraméter csak akkor látható, ha a cél, Ön által választott fájlalapú tárolást. Ha úgy dönt, hogy az SQL Data Warehouse a cél tárolóként, ezt a paramétert, nem szükséges. De a táblanevek, az SQL Data Warehouse a séma megegyezik a forrásadatbázis rétegében kell lennie.
+A sablon öt paramétert határoz meg:
+- A *Control_Table_Name* a külső vezérlő tábla, amely a forrásadatbázis partíciós listáját tárolja.
+- A *Control_Table_Schema_PartitionID* a külső vezérlő táblában található oszlopnév neve, amely az egyes PARTÍCIÓk azonosítóit tárolja. Győződjön meg arról, hogy a partíció azonosítója egyedi a forrásadatbázis minden partícióján.
+- A *Control_Table_Schema_SourceTableName* a külső vezérlő tábla, amely az egyes táblák nevét a forrás-adatbázisból tárolja.
+- A *Control_Table_Schema_FilterQuery* a külső vezérlő tábla azon oszlopának neve, amely a szűrő lekérdezését tárolja, hogy lekérje a forrás-adatbázis egyes partícióinak adatait. Ha például az adatok évről évre particionálva lettek, az egyes sorokban tárolt lekérdezés hasonló lehet a "Select" adatforráshoz, ahol a LastModifytime > = "2015-01-01 00:00:00" és a LastModifytime < = "" 2015-12-31 23:59:59.999 "".
+- A *Data_Destination_Folder_Path* az az elérési út, ahová a rendszer a célhelyre másolja az adatfájlokat. Ez a paraméter csak akkor látható, ha a kiválasztott cél a fájl alapú tárterület. Ha a cél tárolóként SQL Data Warehouse választja, akkor ez a paraméter nem szükséges. A táblák neveinek és a SQL Data Warehouse sémájának meg kell egyeznie a forrás-adatbázisban találhatókkal.
 
-## <a name="how-to-use-this-solution-template"></a>Ez a megoldássablon használata
+## <a name="how-to-use-this-solution-template"></a>A megoldás sablonjának használata
 
-1. Vezérlő tábla létrehozása az SQL Server vagy az Azure SQL Database tömeges másolására szolgáló forrásból adatbázis Partíciólista tárolásához. Az alábbi példában nincsenek öt partíciókat a forrásadatbázisban. A rendszer három partíció a *datasource_table*, és a kettő a *project_table*. Az oszlop *LastModifytime* van tábla particionálásához használt *datasource_table* a forrásadatbázisból. A lekérdezés, amellyel az első partíció beolvasása "Válassza ki * datasource_table a ahol LastModifytime > =" 2015-01-01 00:00:00: "% és LastModifytime < ="2015-12-31 23:59:59.999: "%". Egy hasonló lekérdezés segítségével adatok olvasása a többi partíciótól.
+1. Hozzon létre egy vezérlőelem-táblázatot SQL Server vagy Azure SQL Database a forrás adatbázis-partíciók listájának tömeges másoláshoz való tárolásához. A következő példában öt partíció található a forrás adatbázisban. A *datasource_table*három partíció van, a kettő pedig a *project_table*. A *LastModifytime* oszlop a *datasource_table* található adatok particionálására szolgál. Az első partíció olvasásához használt lekérdezés "select * from datasource_table, ahol LastModifytime > =" 2015-01-01 00:00:00 "" és LastModifytime < = "" 2015-12-31 23:59:59.999 "" ". Hasonló lekérdezést használhat más partíciók adatainak olvasásához.
 
      ```sql
             Create table ControlTableForTemplate
@@ -64,37 +64,37 @@ A sablon meghatározza öt:
             (5, 'project_table','select * from project_table where ID >= 1000 and ID < 2000');
     ```
 
-2. Nyissa meg a **tömeges másolási adatbázisból** sablont. Hozzon létre egy **új** a külső vezérlőelem táblában az 1. lépésben létrehozott kapcsolat.
+2. Nyissa meg a **tömeges másolást az adatbázis-** sablonból. Hozzon létre egy **új** kapcsolódást az 1. lépésben létrehozott külső vezérlő táblához.
 
-    ![A vezérlő táblához új kapcsolat létrehozása](media/solution-template-bulk-copy-with-control-table/BulkCopyfromDB_with_ControlTable2.png)
+    ![Új kapcsolódás létrehozása a vezérlő táblához](media/solution-template-bulk-copy-with-control-table/BulkCopyfromDB_with_ControlTable2.png)
 
-3. Hozzon létre egy **új** , másolunk adatokat az adatforrás-adatbázishoz való csatlakozáshoz.
+3. Hozzon létre egy **új** kapcsolódást a forrás-adatbázishoz, amelyből az adatok másolása folyamatban van.
 
-     ![Hozzon létre egy új kapcsolatot a forráshely adatbázisára](media/solution-template-bulk-copy-with-control-table/BulkCopyfromDB_with_ControlTable3.png)
+     ![Új kapcsolódás létrehozása a forrás-adatbázishoz](media/solution-template-bulk-copy-with-control-table/BulkCopyfromDB_with_ControlTable3.png)
     
-4. Hozzon létre egy **új** kapcsolatot a cél-adatok tárolására, hogy másolunk adatokat.
+4. Hozzon létre egy **új** kapcsolódást ahhoz a célhely-adattárhoz, amelyhez az adatok másolása folyamatban van.
 
-    ![Hozzon létre egy új kapcsolatot tárolási célhelye](media/solution-template-bulk-copy-with-control-table/BulkCopyfromDB_with_ControlTable4.png)
+    ![Új kapcsolódás létrehozása a célhelyhez](media/solution-template-bulk-copy-with-control-table/BulkCopyfromDB_with_ControlTable4.png)
 
-5. Válassza ki **ezzel a sablonnal**.
+5. Válassza **a sablon használata**lehetőséget.
 
-    ![Ezzel a sablonnal](media/solution-template-bulk-copy-with-control-table/BulkCopyfromDB_with_ControlTable5.png)
+    ![A sablon használata](media/solution-template-bulk-copy-with-control-table/BulkCopyfromDB_with_ControlTable5.png)
     
-6. A folyamat az alábbi példában látható módon jelenik meg:
+6. Ekkor megjelenik a folyamat, ahogy az az alábbi példában is látható:
 
     ![A folyamat áttekintése](media/solution-template-bulk-copy-with-control-table/BulkCopyfromDB_with_ControlTable6.png)
 
-7. Válassza ki **Debug**, adja meg a **paraméterek**, majd válassza ki **Befejezés**.
+7. Válassza a **hibakeresés**lehetőséget, adja meg a **paramétereket**, majd kattintson a **Befejezés gombra**.
 
-    ![Kattintson a ** hibakeresési **](media/solution-template-bulk-copy-with-control-table/BulkCopyfromDB_with_ControlTable7.png)
+    ![Kattintson * * hibakeresés * *](media/solution-template-bulk-copy-with-control-table/BulkCopyfromDB_with_ControlTable7.png)
 
-8. Az alábbi példához hasonló eredmény jelenik meg:
+8. A következő példához hasonló eredmények jelennek meg:
 
-    ![Tekintse át az eredmény](media/solution-template-bulk-copy-with-control-table/BulkCopyfromDB_with_ControlTable8.png)
+    ![Az eredmény áttekintése](media/solution-template-bulk-copy-with-control-table/BulkCopyfromDB_with_ControlTable8.png)
 
-9. (Nem kötelező) Ha az SQL Data Warehouse, az adat célhelyét, meg kell adnia egy kapcsolatot az Azure Blob storage, az SQL Data Warehouse Polybase által előírt, előkészítési. Győződjön meg arról, hogy a Blob storage-tárolóba már létrejött.
+9. Választható Ha a SQL Data Warehouse adatcélhelyként választotta, meg kell adnia egy kapcsolódást az Azure Blob Storage-hoz az átmeneti tároláshoz, SQL Data Warehouse-alapú alapértéknek megfelelően. Győződjön meg arról, hogy a blob Storage tárolóban már létrejött a tároló.
     
-    ![A Polybase-beállítás](media/solution-template-bulk-copy-with-control-table/BulkCopyfromDB_with_ControlTable9.png)
+    ![Alapszintű beállítás](media/solution-template-bulk-copy-with-control-table/BulkCopyfromDB_with_ControlTable9.png)
        
 ## <a name="next-steps"></a>További lépések
 

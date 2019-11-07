@@ -1,5 +1,5 @@
 ---
-title: Adatfelderítési & besorolásának Azure SQL Database és SQL Data Warehousee | Microsoft Docs
+title: Adatfelderítési & besorolása Azure SQL Database és SQL Data Warehouse
 description: Azure SQL Database és az adatfelderítési & besorolása
 services: sql-database
 ms.service: sql-database
@@ -11,16 +11,16 @@ author: barmichal
 ms.author: mibar
 ms.reviewer: vanto
 ms.date: 08/22/2019
-ms.openlocfilehash: b85793223e23aa3d668d6f86494da3ee78c43e91
-ms.sourcegitcommit: a819209a7c293078ff5377dee266fa76fd20902c
+ms.openlocfilehash: 9bcb8ce69a65892109702f0f0a409310945b6781
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71009991"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73690771"
 ---
 # <a name="azure-sql-database-and-sql-data-warehouse-data-discovery--classification"></a>Adatfelderítési & besorolása Azure SQL Database és SQL Data Warehouse
 
-Az adatfelderítési & besorolása olyan speciális képességeket biztosít, & amelyek aAzure SQL Databaseba illeszkednek **, és**a bizalmas adatoknak az adatbázisokban való**védelmét** is lehetővé teszi.
+Az adatfelderítési & besorolása olyan speciális képességeket biztosít, amelyek Azure SQL Databaseba vannak építve, **így a bizalmas** adatoknak az adatbázisokban való **feltárásához**, **osztályozásához**, **címkézéséhez** & .
 
 A legérzékenyebb adatok (üzleti, pénzügyi, egészségügyi, személyazonosításra alkalmas adatok) felfedése és besorolása kulcsfontosságú szerepet játszik a szervezeti adatok védelmében. A következő infrastruktúrát nyújtja:
 
@@ -134,8 +134,8 @@ A T-SQL használatával oszlop besorolásokat adhat hozzá vagy távolíthat el,
 > [!NOTE]
 > Ha T-SQL-T használ a címkék kezeléséhez, nincs olyan érvényesítés, amely egy oszlophoz hozzáadott címkék léteznek a szervezeti Information Protection-házirendben (a portál ajánlásaiban megjelenő címkék halmaza). Ezért ennek ellenőrzése.
 
-- Egy vagy több oszlop besorolásának hozzáadása/frissítése: [ÉRZÉKENYSÉGI BESOROLÁS HOZZÁADÁSA](https://docs.microsoft.com/sql/t-sql/statements/add-sensitivity-classification-transact-sql)
-- Távolítsa el a besorolást egy vagy több oszlopból: [ELDOBÁSI ÉRZÉKENYSÉG BESOROLÁSA](https://docs.microsoft.com/sql/t-sql/statements/drop-sensitivity-classification-transact-sql)
+- Egy vagy több oszlop besorolásának hozzáadása/frissítése: [érzékenységi besorolás hozzáadása](https://docs.microsoft.com/sql/t-sql/statements/add-sensitivity-classification-transact-sql)
+- Távolítsa el a besorolást egy vagy több oszlopból: [eldobási érzékenység besorolása](https://docs.microsoft.com/sql/t-sql/statements/drop-sensitivity-classification-transact-sql)
 - Az adatbázis összes besorolásának megtekintése: [sys. sensitivity_classifications](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-sensitivity-classifications-transact-sql)
 
 ### <a name="manage-classifications-using-rest-apis"></a>Besorolások kezelése REST API-k használatával
@@ -144,8 +144,8 @@ Használhatja a REST API-kat is a besorolások programozott kezeléséhez. A kö
 
 - [Létrehozás vagy frissítés](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/createorupdate) – egy adott oszlop érzékenységi címkéjének létrehozása vagy frissítése
 - [Delete (Törlés](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/delete) ) – egy adott oszlop érzékenységi címkéjét törli
-- [Javaslat letiltása](https://docs.microsoft.com/en-us/rest/api/sql/sensitivitylabels/disablerecommendation) – az érzékenységi javaslatok letiltása egy adott oszlopban
-- [Javaslat engedélyezése](https://docs.microsoft.com/en-us/rest/api/sql/sensitivitylabels/enablerecommendation) – az érzékenységi javaslatok engedélyezése egy adott oszlopban (a javaslatok alapértelmezés szerint engedélyezve vannak az összes oszlopban)
+- [Javaslat letiltása](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/disablerecommendation) – az érzékenységi javaslatok letiltása egy adott oszlopban
+- [Javaslat engedélyezése](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/enablerecommendation) – az érzékenységi javaslatok engedélyezése egy adott oszlopban (a javaslatok alapértelmezés szerint engedélyezve vannak az összes oszlopban)
 - [Get](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/get) -lekéri egy adott oszlop érzékenységi címkéjét
 - [Aktuális adatbázis listázása](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/listcurrentbydatabase) – egy adott adatbázis aktuális érzékenységi címkéit kapja meg
 
@@ -171,7 +171,7 @@ Az Azure SQL Database-adatbázisok és a felügyelt példányok összes javasolt
 
 ## <a name="permissions"></a>Engedélyek
 
-A következő beépített szerepkörök beolvashatják az Azure SQL Database-adatbázisok adatbesorolását: `Owner` `SQL Security Manager` `Reader` `Contributor`,, és `User Access Administrator`.
+A következő beépített szerepkörök beolvashatják az Azure SQL Database-adatbázisok adatbesorolását: `Owner`, `Reader`, `Contributor`, `SQL Security Manager` és `User Access Administrator`.
 
 A következő beépített szerepkörök módosíthatják egy Azure SQL Database-adatbázis adatbesorolását: `Owner`, `Contributor`, `SQL Security Manager`.
 

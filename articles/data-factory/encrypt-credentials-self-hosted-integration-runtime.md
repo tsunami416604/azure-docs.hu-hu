@@ -1,6 +1,6 @@
 ---
-title: Az Azure Data Factoryban hitelesítő adatainak titkosítása |} A Microsoft Docs
-description: Megtudhatja, hogyan titkosításához, és a helyszíni adattárakban hitelesítő adatainak tárolása a saját üzemeltetésű integrációs modult egy gépen.
+title: Hitelesítő adatok titkosítása Azure Data Factory
+description: Megtudhatja, hogyan titkosíthatja és tárolhatja a helyszíni adattárak hitelesítő adatait egy saját üzemeltetésű integrációs modult futtató gépen.
 services: data-factory
 documentationcenter: ''
 author: nabhishek
@@ -12,24 +12,24 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/15/2018
 ms.author: abnarain
-ms.openlocfilehash: 8e705a4430f6ccee847dc7d41ef80456a6dc4ea5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 41e353931fb2d9fe26c0a6bd73d5085495ad7b78
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66155137"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73675055"
 ---
-# <a name="encrypt-credentials-for-on-premises-data-stores-in-azure-data-factory"></a>Az Azure Data Factory a helyszíni adattárak hitelesítő adatok titkosítása
-Titkosításához, és tárolja a hitelesítő adatait a helyszíni adattárakban (bizalmas adatokat a társított szolgáltatások) egy gépen a saját üzemeltetésű integrációs modult. 
+# <a name="encrypt-credentials-for-on-premises-data-stores-in-azure-data-factory"></a>Hitelesítő adatok titkosítása a helyszíni adattárakhoz Azure Data Factory
+A saját üzemeltetésű integrációs modult futtató gépen titkosíthatja és tárolhatja a helyszíni adattárak hitelesítő adatait (a társított szolgáltatások bizalmas információkkal). 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Egy JSON-definíciós fájl hitelesítő adatokkal adja át a <br/>[**Új AzDataFactoryV2LinkedServiceEncryptedCredential** ](/powershell/module/az.datafactory/New-AzDataFactoryV2LinkedServiceEncryptedCredential) parancsmag segítségével előállít egy kimeneti definícióját tartalmazó JSON-fájl a titkosított hitelesítő adatokat. Ezután használja a frissített JSON-definíciót a társított szolgáltatások létrehozása.
+Egy JSON-definíciós fájlt továbbít a hitelesítő adatokkal a <br/>[**New-AzDataFactoryV2LinkedServiceEncryptedCredential**](/powershell/module/az.datafactory/New-AzDataFactoryV2LinkedServiceEncryptedCredential) parancsmag egy kimeneti JSON-definíciós fájl előállításához a titkosított hitelesítő adatokkal. Ezután használja a frissített JSON-definíciót a társított szolgáltatások létrehozásához.
 
-## <a name="author-sql-server-linked-service"></a>Fejlesztés az SQL Server-alapú társított szolgáltatás
-Hozzon létre egy JSON-fájlt **SqlServerLinkedService.json** bármely mappában az alábbi tartalommal:  
+## <a name="author-sql-server-linked-service"></a>SQL Server társított szolgáltatás szerzője
+Hozzon létre egy **SqlServerLinkedService. JSON** nevű JSON-fájlt bármilyen mappában a következő tartalommal:  
 
-Cserélje le `<servername>`, `<databasename>`, `<username>`, és `<password>` értékekkel, az SQL Server, a fájl mentése előtt. És cserélje le `<integration runtime name>` az integration runtime nevére. 
+A fájl mentése előtt cserélje le `<servername>`, `<databasename>`, `<username>`és `<password>` értékeket a SQL Server értékére. És cserélje le a `<integration runtime name>`t az Integration Runtime nevére. 
 
 ```json
 {
@@ -51,19 +51,19 @@ Cserélje le `<servername>`, `<databasename>`, `<username>`, és `<password>` é
 ```
 
 ## <a name="encrypt-credentials"></a>Hitelesítő adatok titkosítása
-A bizalmas hasznos JSON-a helyszíni saját üzemeltetésű integrációs modul-adatok titkosításához futtassa **New-AzDataFactoryV2LinkedServiceEncryptedCredential**, és adja át a JSON-adattartalmat. Ez a parancsmag biztosítja, hogy a hitelesítő adatok titkosítottak DPAPI-t használ, és a saját üzemeltetésű integrációs modul csomópontján helyileg tárolja. A kimenő hasznos a tartalmazó titkosított a hitelesítő adatok átirányíthatóak egy másik JSON-fájlba (ebben az esetben "encryptedlinkedservice.JSON fájlba").
+A helyi saját üzemeltetésű integrációs modulban található JSON-adattartalomból származó bizalmas adatok titkosításához futtassa a **New-AzDataFactoryV2LinkedServiceEncryptedCredential**parancsot, és továbbítsa a JSON-adattartalmat. Ez a parancsmag biztosítja, hogy a hitelesítő adatok a DPAPI használatával legyenek titkosítva, és a saját üzemeltetésű Integration Runtime csomóponton helyileg tárolódnak. A hitelesítő adatok titkosított hivatkozását tartalmazó kimeneti adattartalom átirányítható egy másik JSON-fájlba (ebben az esetben "encryptedLinkedService. JSON").
 
 ```powershell
 New-AzDataFactoryV2LinkedServiceEncryptedCredential -DataFactoryName $dataFactoryName -ResourceGroupName $ResourceGroupName -Name "SqlServerLinkedService" -DefinitionFile ".\SQLServerLinkedService.json" > encryptedSQLServerLinkedService.json
 ```
 
-## <a name="use-the-json-with-encrypted-credentials"></a>A JSON használja a titkosított hitelesítő adataival
-Most a kimeneti JSON-fájlt a titkosított hitelesítő adatokat tartalmazó az előző parancs által használatával állítsa be a **SqlServerLinkedService**.
+## <a name="use-the-json-with-encrypted-credentials"></a>A JSON használata titkosított hitelesítő adatokkal
+Most a **SqlServerLinkedService**beállításához használja az előző parancs kimeneti JSON-fájlját, amely a titkosított hitelesítő adatokat tartalmazza.
 
 ```powershell
 Set-AzDataFactoryV2LinkedService -DataFactoryName $dataFactoryName -ResourceGroupName $ResourceGroupName -Name "EncryptedSqlServerLinkedService" -DefinitionFile ".\encryptedSqlServerLinkedService.json" 
 ```
 
 ## <a name="next-steps"></a>További lépések
-Adatáthelyezés biztonsági szempontjai kapcsolatos információkért lásd: [az adatáthelyezés biztonsági szempontjai](data-movement-security-considerations.md).
+További információ az adatáthelyezéssel kapcsolatos biztonsági megfontolásokról: [adatátviteli biztonsági megfontolások](data-movement-security-considerations.md).
 

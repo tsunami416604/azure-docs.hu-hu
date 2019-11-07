@@ -1,5 +1,5 @@
 ---
-title: Az Azure karbantartási eseményeinek tervezése – Azure SQL Database | Microsoft Docs
+title: Az Azure karbantartási eseményeinek tervezése – Azure SQL Database
 description: Megtudhatja, hogyan készítheti elő a tervezett karbantartási eseményeket a Azure SQL Database.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: aamalvea
 ms.author: aamalvea
 ms.reviewer: carlrab
 ms.date: 01/30/2019
-ms.openlocfilehash: 1bb88d6f74ab4b93e226fe8630f07f0a96f4ba47
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 5598d5a465645ce20d9244011de6d9cef47ac3c4
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68567048"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73687629"
 ---
 # <a name="planning-for-azure-maintenance-events-in-azure-sql-database"></a>Azure-karbantartási események tervezése Azure SQL Database
 
@@ -28,13 +28,13 @@ Az Azure SQL DB minden adatbázis esetében az adatbázis-replikák kvórumát t
 
 ## <a name="what-to-expect-during-a-planned-maintenance-event"></a>Mire számíthat egy tervezett karbantartási esemény során
 
-Az újrakonfigurálások/feladatátvételek általában 30 másodpercen belül befejeződik – az átlag 8 másodperc. Ha már csatlakoztatva van, az alkalmazásnak újra kapcsolódnia kell az adatbázisa új elsődleges másodpéldányához. Ha új kapcsolatra van kísérlet, miközben az adatbázis újrakonfigurálást végez az új elsődleges replika online állapotba lépését megelőzően, akkor a 40613-es hiba jelenik meg (az adatbázis nem érhető el): A (z) {servername} kiszolgáló {databasename} adatbázisa jelenleg nem érhető el. Próbálja megismételni a kapcsolatokat később. " Ha az adatbázis hosszú ideig futó lekérdezéssel rendelkezik, akkor a lekérdezés az újrakonfigurálás során megszakad, és újra kell indítani.
+Az újrakonfigurálások/feladatátvételek általában 30 másodpercen belül befejeződik – az átlag 8 másodperc. Ha már csatlakoztatva van, az alkalmazásnak újra kapcsolódnia kell az adatbázisa új elsődleges másodpéldányához. Ha egy új kapcsolatra akkor kerül sor, amikor az adatbázis újrakonfigurálást végez az új elsődleges replika online állapotba lépését megelőzően, akkor a 40613-as hibaüzenet jelenik meg (az adatbázis nem érhető el): a (z) {servername} kiszolgáló {databasename} adatbázisa jelenleg nem érhető el. Próbálja megismételni a kapcsolatokat később. " Ha az adatbázis hosszú ideig futó lekérdezéssel rendelkezik, akkor a lekérdezés az újrakonfigurálás során megszakad, és újra kell indítani.
 
 ## <a name="retry-logic"></a>Újrapróbálkozási logika
 
-A felhőalapú adatbázis-szolgáltatáshoz csatlakozó összes ügyfél-éles alkalmazásnak robusztus kapcsolati [](sql-database-connectivity-issues.md#retry-logic-for-transient-errors)újrapróbálkozási logikát kell létrehoznia. Ez segít enyhíteni ezeket a helyzeteket, és általában a végfelhasználók számára transzparens módon végezze el a hibákat.
+A felhőalapú adatbázis-szolgáltatáshoz csatlakozó összes ügyfél-éles alkalmazásnak robusztus kapcsolati [újrapróbálkozási logikát](sql-database-connectivity-issues.md#retry-logic-for-transient-errors)kell létrehoznia. Ez segít enyhíteni ezeket a helyzeteket, és általában a végfelhasználók számára transzparens módon végezze el a hibákat.
 
-## <a name="frequency"></a>Gyakoriság
+## <a name="frequency"></a>Frequency
 
 Átlagosan 1,7 tervezett karbantartási esemény történik havonta.
 
@@ -45,5 +45,5 @@ Ha az SQL-adatbázis bejelentkezési hibákat észlel, tekintse meg az aktuális
 
 ## <a name="next-steps"></a>További lépések
 
-- További információ a [](sql-database-resource-health.md) SQL Database Resource Healthről
-- Az újrapróbálkozási logikával kapcsolatos további információkért lásd az [átmeneti hibákra vonatkozó](sql-database-connectivity-issues.md#retry-logic-for-transient-errors) újrapróbálkozási logikát.
+- További információ a SQL Database [Resource Healthről](sql-database-resource-health.md)
+- Az újrapróbálkozási logikával kapcsolatos további információkért lásd az [átmeneti hibákra vonatkozó újrapróbálkozási logikát](sql-database-connectivity-issues.md#retry-logic-for-transient-errors) .

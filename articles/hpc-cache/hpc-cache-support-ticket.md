@@ -1,19 +1,19 @@
 ---
-title: Támogatási jegy megnyitása az Azure HPC cache-hez (előzetes verzió)
+title: Támogatási jegy megnyitása az Azure HPC cache-hez
 description: Súgó kérésének megnyitása az Azure HPC cache-hez
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
-ms.date: 09/24/2019
+ms.date: 10/30/2019
 ms.author: rohogue
-ms.openlocfilehash: 8c9a92cb21128d3c35fc5ecb7e72ebb4eba87b44
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.openlocfilehash: c000fb48abfb383e4d166a6f5ae5bb05ac93da5a
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72254559"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73582106"
 ---
-# <a name="open-a-support-ticket-for-azure-hpc-cache-preview"></a>Támogatási jegy megnyitása az Azure HPC cache-hez (előzetes verzió)
+# <a name="open-a-support-ticket-for-azure-hpc-cache"></a>Támogatási jegy megnyitása az Azure HPC cache-hez
 
 Támogatási jegy megnyitásához használja a Azure Portal. Navigáljon a gyorsítótár-példányhoz, majd kattintson az **új támogatási kérelem** hivatkozásra, amely megjelenik az oldalsáv alján.
 
@@ -21,11 +21,11 @@ Ha nem rendelkezik aktív gyorsítótárral, akkor a jegy megnyitásához haszn�
 
 Válassza ki az előfizetését a listából.
 
-Az Azure HPC cache előzetes verziójának megkereséséhez kattintson a **minden szolgáltatás** gombra, és keressen rá a HPC kifejezésre.
+Az Azure HPC cache szolgáltatás megkereséséhez kattintson a **minden szolgáltatás** gombra, és keressen rá a HPC kifejezésre.
 
 ![Képernyőkép a támogatási kérelemről – alapismeretek lap, részben kitöltve a leírtak szerint](media/hpc-cache-support-request.png)
 
-<!-- update screenshot after preview to update product name -->
+<!-- check screenshot after GA for possible update -->
 
 Töltse ki a többi mezőt az adataival és beállításaival, majd küldje el a jegyet, ha elkészült.
 

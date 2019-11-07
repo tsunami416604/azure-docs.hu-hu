@@ -1,18 +1,18 @@
 ---
 title: Azure Analysis Services kezelése | Microsoft Docs
-description: Ismerje meg, hogyan kezelhet egy Analysis Services-kiszolgálót az Azure-ban.
+description: Ez a cikk a Azure Analysis Services-kiszolgálók adminisztrációs és felügyeleti feladatainak kezeléséhez használt eszközöket ismerteti.
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
 ms.date: 10/28/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 6846eaedc7f20f5a7597ee889193e977e86a5ed6
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 28d7b2955c84833841760e441cd2919181e22bc7
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73146844"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73572794"
 ---
 # <a name="manage-analysis-services"></a>Az Analysis Services felügyelete
 Miután létrehozott egy Analysis Services-kiszolgálót az Azure-ban, lehet, hogy bizonyos adminisztrációs és felügyeleti feladatok elvégzéséhez azonnal el kell végeznie az utat. Például futtasson feldolgozást az adatfrissítésre, szabályozhatja, hogy ki férhet hozzá a modellekhez a kiszolgálón, vagy figyelje a kiszolgáló állapotát. Egyes felügyeleti feladatok csak Azure Portalban hajthatók végre, másokat SQL Server Management Studio (SSMS), és néhány feladatot bármelyikben elvégezhet.
@@ -62,7 +62,7 @@ Azure Analysis Services a felhasználók két típusa van, a kiszolgálói rends
 ## <a name="troubleshooting-connection-problems"></a>Kapcsolódási problémák elhárítása
 Ha a SSMS használatával csatlakozik, akkor előfordulhat, hogy törölnie kell a bejelentkezési gyorsítótárat. Nincs a lemezre gyorsítótárazva. A gyorsítótár kiürítéséhez zárjuk be, majd indítsa újra a kapcsolódási folyamatot. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ha még nem telepített táblázatos modellt az új kiszolgálóra, most már jó ideje van. További információkért lásd [az Azure Analysis Servicesben történő üzembe helyezést](analysis-services-deploy.md) ismertető cikket.
 
 Ha már telepített egy modellt a-kiszolgálóra, az ügyfél vagy a böngésző használatával csatlakozhat hozzá. További információért lásd: [adatok Beolvasása Azure Analysis Services kiszolgálóról](analysis-services-connect.md).

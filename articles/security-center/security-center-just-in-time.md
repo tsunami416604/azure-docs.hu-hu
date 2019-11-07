@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 09/10/2019
 ms.author: memildin
-ms.openlocfilehash: a6326b2ea9b4c2247df4f93eba904b7527666131
-ms.sourcegitcommit: 9f330c3393a283faedaf9aa75b9fcfc06118b124
+ms.openlocfilehash: fb092a3c6b473680480c3bba0ad6f437176833de
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/07/2019
-ms.locfileid: "71996391"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73576404"
 ---
 # <a name="manage-virtual-machine-access-using-just-in-time"></a>A virtuális gépekhez való hozzáférés kezelése igény szerint
 
@@ -61,12 +61,12 @@ A JIT-szabályzatok konfigurálásának három módja van a virtuális gépen:
 - [JIT-hozzáférés konfigurálása Azure-beli virtuális gépek paneljén](#jit-vm)
 - [JIT-szabályzat konfigurálása virtuális gépen programozott módon](#jit-program)
 
-## <a name="configure-jit-in-asc"></a>A JIT konfigurálása az ASC-ben
+## <a name="configure-jit-in-security-center"></a>A JIT konfigurálása Security Center
 
-Az ASC szolgáltatásban beállíthat egy JIT-szabályzatot, és egy JIT-szabályzattal kérhet hozzáférést a virtuális géphez.
+A Security Centerban beállíthat egy JIT-szabályzatot, és egy JIT-házirenddel egy virtuális géphez való hozzáférést igényelhet.
 
 
-### JIT-hozzáférés konfigurálása az ASC-beli virtuális gépen<a name="jit-asc"></a>
+### JIT-hozzáférés konfigurálása Security Center-beli virtuális gépen<a name="jit-asc"></a>
 
 1. Nyissa meg a **Security Center** irányítópultját.
 
@@ -99,7 +99,7 @@ Az ASC szolgáltatásban beállíthat egy JIT-szabályzatot, és egy JIT-szabál
       - 5986 – WinRM
 6. Emellett egyéni portokat is konfigurálhat:
 
-      1. Kattintson a **Hozzáadás**lehetőségre. Megnyílik a **port hozzáadása konfiguráció** ablak.
+      1. Kattintson az **Add** (Hozzáadás) parancsra. Megnyílik a **port hozzáadása konfiguráció** ablak.
       2. Minden olyan port esetében, amelyet úgy szeretne konfigurálni, hogy az alapértelmezett és az egyéni beállítást is testreszabja, a következő beállításokat szabhatja testre:
 
     - **Protokoll típusa**– a kérelem jóváhagyásakor a porton engedélyezett protokoll.
@@ -114,9 +114,9 @@ Az ASC szolgáltatásban beállíthat egy JIT-szabályzatot, és egy JIT-szabál
 >Ha a JIT virtuális gép hozzáférése engedélyezve van egy virtuális gépen, Azure Security Center létrehozza az összes bejövő forgalom megtagadása szabályt a kiválasztott portokhoz a társított és Azure Firewall hálózati biztonsági csoportokban. Ha a kiválasztott portokhoz más szabályok lettek létrehozva, akkor a meglévő szabályok prioritást élveznek az új "minden bejövő forgalom tiltása" szabályban. Ha nincsenek meglévő szabályok a kiválasztott portokon, akkor az új "minden bejövő forgalom tiltása" szabály kiemelt prioritást élvez a hálózati biztonsági csoportokban és Azure Firewall.
 
 
-## <a name="request-jit-access-via-asc"></a>JIT-hozzáférés kérése az ASC használatával
+## <a name="request-jit-access-via-security-center"></a>JIT-hozzáférés kérése Security Centeron keresztül
 
-Hozzáférés kérése egy virtuális géphez az ASC használatával:
+Virtuális géphez való hozzáférés kérése Security Center használatával:
 
 1. A **virtuális gépek igény szerinti elérése**területen válassza a **konfigurált** lapot.
 
@@ -140,7 +140,7 @@ Hozzáférés kérése egy virtuális géphez az ASC használatával:
 > [!NOTE]
 > Ha egy hozzáférést kérő felhasználó proxy mögött van, akkor az **IP-cím** nem működik. Előfordulhat, hogy meg kell határoznia a szervezet teljes IP-címtartományt.
 
-## <a name="edit-a-jit-access-policy-via-asc"></a>JIT hozzáférési szabályzat szerkesztése ASC használatával
+## <a name="edit-a-jit-access-policy-via-security-center"></a>JIT hozzáférési szabályzat szerkesztése Security Center használatával
 
 A virtuális gép meglévő igény szerinti házirendjét a virtuális gép védelméhez szükséges új port hozzáadásával és konfigurálásával, vagy egy már védett portra vonatkozó egyéb beállítások módosításával módosíthatja.
 
@@ -149,9 +149,9 @@ Egy virtuális gép meglévő, igény szerinti házirendjének szerkesztése:
 
 1. Válassza a **Szerkesztés** elemet.
 1. A **JIT VM-hozzáférés konfigurálása**területen szerkesztheti a már védett portok meglévő beállításait, vagy hozzáadhat egy új egyéni portot is. 
-  @no__t – 0jit virtuális gép hozzáférése @ no__t-1
+  ![JIT VM-hozzáférés](./media/security-center-just-in-time/edit-policy.png)
 
-## <a name="audit-jit-access-activity-in-asc"></a>A JIT hozzáférési tevékenységének naplózása az ASC-ben
+## <a name="audit-jit-access-activity-in-security-center"></a>A JIT hozzáférési tevékenység naplózása Security Center
 
 A naplóbeli kereséssel betekintést nyerhet a virtuális gépek tevékenységeibe. Naplók megtekintése:
 
@@ -168,11 +168,11 @@ Módosítsa a szűrőket, és kattintson az **alkalmaz** gombra a keresés és a
 
 
 
-## JIT-hozzáférés konfigurálása Azure-beli virtuális gépek paneljén<a name="jit-vm"></a>
+## JIT-hozzáférés konfigurálása Azure-beli virtuális gép oldaláról<a name="jit-vm"></a>
 
-Az Ön kényelme érdekében közvetlenül a JIT használatával csatlakozhat egy virtuális géphez az Azure virtuális gép paneljéről.
+Az Ön kényelme érdekében közvetlenül a JIT használatával tud csatlakozni a virtuális GÉPHEZ a Security Center-beli virtuális gép oldaláról.
 
-### <a name="configure-jit-access-on-a-vm-via-the-azure-vm-blade"></a>JIT-hozzáférés konfigurálása virtuális gépen az Azure VM panel használatával
+### <a name="configure-jit-access-on-a-vm-via-the-azure-vm-page"></a>JIT-hozzáférés konfigurálása virtuális gépen az Azure-beli virtuális gép oldalán keresztül
 
 Ahhoz, hogy könnyen el lehessen érni a virtuális gépek igény szerinti elérését, beállíthatja, hogy a virtuális gép csak az igény szerinti hozzáférést engedélyezze közvetlenül a virtuális gépről.
 
@@ -206,8 +206,8 @@ Ha a Azure Portal egy virtuális géphez próbál csatlakozni, az Azure ellenőr
 
   A hozzáférés kérése a következő alapértelmezett paraméterekkel történik:
 
-  - **forrás IP-címe**: "Any" (*) (nem módosítható)
-  - **időtartomány**: Három óra (nem módosítható) <!--Isn't this set in the policy-->
+  - **forrás IP-címe**: "any" (*) (nem módosítható)
+  - **időtartomány**: három óra (nem módosítható) <!--Isn't this set in the policy-->
   - **portszám** RDP-port 3389 for Windows/a 22-es port a Linux rendszerhez (módosítható)
 
     > [!NOTE]

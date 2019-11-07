@@ -1,45 +1,45 @@
 ---
-title: Az Azure tűzfal FQDN címkék áttekintése
-description: Ismerje meg a teljes tartománynév címkéket az Azure-tűzfal
+title: Az Azure Firewall FQDN-címkék áttekintése
+description: Tudnivalók a Azure Firewall FQDN-címkékkel kapcsolatban
 services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: article
 ms.date: 4/23/2019
 ms.author: victorh
-ms.openlocfilehash: 7a412589f4e86f2a49d07f2d01ca34bf30fd528b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d78f67b96776fa3fb1d13fbf7b385e41ca3aa59a
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64721165"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73665562"
 ---
-# <a name="fqdn-tags-overview"></a>Teljes tartománynév címkék áttekintése
+# <a name="fqdn-tags-overview"></a>FQDN-címkék – áttekintés
 
-Egy teljesen minősített tartománynév-címke egy teljesen minősített tartománynevet (FQDN), a jól ismert a Microsoft a szolgáltatásokkal kapcsolatos csoportját jelöli. Egy teljesen minősített tartománynév-címke használhatja az alkalmazás szabályok lehetővé teszik a szükséges kimenő hálózati forgalmat a tűzfalon keresztül.
+Az FQDN címke a jól ismert Microsoft-szolgáltatásokhoz társított teljes tartománynevek (FQDN-EK) csoportját jelöli. Az alkalmazási szabályokban az FQDN címke használatával engedélyezheti a szükséges kimenő hálózati forgalmat a tűzfalon keresztül.
 
-Például ahhoz, hogy manuálisan a Windows Update hálózati adatforgalom a tűzfalon keresztül, meg kell a Microsoft-dokumentációt kiszolgálónként több alkalmazás szabályokat hozhat létre. FQDN címkéket használ, hozzon létre egy alkalmazás szabályt, adjon meg a **Windows-frissítések** címkét, és most már a hálózati forgalmat a Microsoft Windows Update végpontokat is áthaladhat a tűzfalat.
+Ha például manuálisan szeretné engedélyezni Windows Update hálózati forgalmat a tűzfalon keresztül, létre kell hoznia több alkalmazási szabályt a Microsoft dokumentációjában. A FQDN-címkék használatával létrehozhat egy alkalmazási szabályt, belefoglalhatja a **Windows Updates** címkét, és most a Microsoft Windows Update-végpontok felé irányuló hálózati forgalmat a tűzfalon keresztül is elvégezheti.
 
-Nem hozható létre a saját teljesen minősített tartománynév címkét, és nem is, adja meg, amelyek teljes tartománynevek egyes címkék. A Microsoft kezeli az FQDN a teljes tartománynév-címke vonatkozik, és teljes tartománynevek megfelelően a címke frissíti. 
+Nem hozhat létre saját FQDN-címkéket, és nem adhatja meg, hogy mely teljes tartománynevek szerepeljenek a címkén belül. A Microsoft kezeli a teljes tartománynév címke által felölelt teljes tartományneveket, és frissíti a címkét FQDN-ként. 
 
 <!--- screenshot of application rule with a FQDN tag.-->
 
-Az alábbi táblázat a jelenlegi teljes tartománynév címkét lehet használni. A Microsoft fenntartja a címkéket, és várhatóan rendszeresen hozzáadandó további címkéket.
+A következő táblázat a jelenleg használható FQDN-címkéket mutatja. A Microsoft fenntartja ezeket a címkéket, és rendszeres időközönként további címkéket is hozzáadhat.
 
-## <a name="current-fqdn-tags"></a>Aktuális FQDN címkék
+## <a name="current-fqdn-tags"></a>Jelenlegi FQDN-Címkék
 
-|Teljes tartománynév-címke  |Leírás  |
+|FQDN címke  |Leírás  |
 |---------|---------|
-|Windows Update     |Engedélyezi a kimenő hozzáférést a Microsoft Update, leírtak szerint [tűzfal konfigurálása a szoftverfrissítésekhez tartozó](https://technet.microsoft.com/library/bb693717.aspx).|
-|Windows diagnosztika|Engedélyezi a kimenő hozzáférést az összes [Windows diagnosztika végpontok](https://docs.microsoft.com/windows/privacy/configure-windows-diagnostic-data-in-your-organization#endpoints).|
-|Microsoft Active Protection Service (MAPS)|Engedélyezi a kimenő hozzáférést a [MAPS](https://cloudblogs.microsoft.com/enterprisemobility/2016/05/31/important-changes-to-microsoft-active-protection-service-maps-endpoint/).|
-|App Service Environment (ASE)|ASE platform forgalmat kimenő hozzáférést biztosít. Ez a címke nem fedi le az ASE által létrehozott ügyfél-specifikus tárolási és SQL végpontok. Ezek segítségével engedélyezni kell [Szolgáltatásvégpontok](../virtual-network/tutorial-restrict-network-access-to-resources.md) vagy manuálisan hozzáadni.<br><br>Az ASE Azure tűzfal integrálásával kapcsolatos további információkért lásd: [App Service-környezet sémákra](../app-service/environment/firewall-integration.md#configuring-azure-firewall-with-your-ase).|
-|Azure Backup|Lehetővé teszi a kimenő hozzáférést az Azure Backup szolgáltatás.|
-|Azure HDInsight<br>(Előzetes verzió)|Lehetővé teszi a kimenő hozzáférést a HDInsight platformon forgalmat. Ez a címke nem fedi le ügyfél-specifikus tárolási vagy az SQL forgalmi a HDInsight. Ezek segítségével engedélyezése [Szolgáltatásvégpontok](../virtual-network/tutorial-restrict-network-access-to-resources.md) vagy manuálisan is hozzáadhatja.|
+|Windows Update     |A Microsoft Update kimenő hozzáférésének engedélyezése a [tűzfal konfigurálása a szoftverfrissítések számára](https://technet.microsoft.com/library/bb693717.aspx)című témakörben leírtak szerint.|
+|Windows diagnosztika|Engedélyezze a kimenő hozzáférést az összes [Windows diagnosztikai végponthoz](https://docs.microsoft.com/windows/privacy/configure-windows-diagnostic-data-in-your-organization#endpoints).|
+|Microsoft Active Protection Service (MAPS)|A [Maps](https://cloudblogs.microsoft.com/enterprisemobility/2016/05/31/important-changes-to-microsoft-active-protection-service-maps-endpoint/)-hez való kimenő hozzáférés engedélyezése.|
+|App Service Environment (bemutató)|Lehetővé teszi a kimenő hozzáférést a beadási platform forgalmához. Ez a címke nem fedi le a beszállító által létrehozott ügyfél-specifikus tárterületet és SQL-végpontokat. Ezeket a [szolgáltatás-végpontokon](../virtual-network/tutorial-restrict-network-access-to-resources.md) keresztül kell engedélyezni, vagy manuálisan kell hozzáadni.<br><br>További információ a Azure Firewall beépítéséről a bevonással: [app Service Environment zárolása](../app-service/environment/firewall-integration.md#configuring-azure-firewall-with-your-ase).|
+|Azure Backup|Engedélyezi a kimenő hozzáférést a Azure Backup szolgáltatásokhoz.|
+|Azure HDInsight|Engedélyezi a kimenő hozzáférést a HDInsight-platform forgalmához. Ez a címke nem fedi le az ügyfél-specifikus tárterületet vagy az HDInsight-ből származó SQL-forgalmat. Engedélyezze ezeket a [szolgáltatás-végpontok](../virtual-network/tutorial-restrict-network-access-to-resources.md) használatával, vagy manuálisan adja hozzá őket.|
 
 > [!NOTE]
-> Egy alkalmazás a szabály a teljes tartománynév-címke kiválasztásakor a protokoll: port mezőben állítsa **https**.
+> Ha egy alkalmazási szabályban kijelöli a teljes tartománynevet, a port mezőt a **https**értékre kell beállítani.
 
 ## <a name="next-steps"></a>További lépések
 
-Ismerje meg, hogyan helyezhet üzembe egy Azure-tűzfal, lásd: [oktatóanyag: Telepítse és konfigurálja az Azure portal segítségével Azure tűzfal](tutorial-firewall-deploy-portal.md).
+A Azure Firewall telepítésének megismeréséhez tekintse meg [az oktatóanyag: Azure Firewall telepítése és konfigurálása a Azure Portal használatával](tutorial-firewall-deploy-portal.md)című témakört.

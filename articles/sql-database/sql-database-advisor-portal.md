@@ -1,5 +1,5 @@
 ---
-title: Teljesítményre vonatkozó javaslatok alkalmazása – Azure SQL Database | Microsoft Docs
+title: Teljesítményre vonatkozó javaslatok alkalmazása – Azure SQL Database
 description: A Azure Portal használatával olyan teljesítménnyel kapcsolatos javaslatokat találhat, amelyek optimalizálják a Azure SQL Database teljesítményét.
 services: sql-database
 ms.service: sql-database
@@ -11,26 +11,26 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 12/19/2018
-ms.openlocfilehash: b6bcb2650cd11ed97b6e81fda6aaafe7fca61202
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 24a590a80e768bba2e9b102bdf200e0cd96858f8
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68569600"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73691289"
 ---
 # <a name="find-and-apply-performance-recommendations"></a>Teljesítményre vonatkozó javaslatok keresése és alkalmazása
 
-A Azure Portal használatával olyan teljesítménnyel kapcsolatos ajánlásokat találhat, amelyek optimalizálják a Azure SQL Database teljesítményét, vagy kijavítják a munkaterhelésben azonosított problémákat. A Azure Portal teljesítményre vonatkozó **javaslat** lapja lehetővé teszi a leggyakoribb javaslatok megkeresését a lehetséges hatásuk alapján. 
+A Azure Portal használatával olyan teljesítménnyel kapcsolatos ajánlásokat találhat, amelyek optimalizálják a Azure SQL Database teljesítményét, vagy kijavítják a munkaterhelésben azonosított problémákat. A Azure Portal **teljesítményre vonatkozó javaslat** lapja lehetővé teszi a leggyakoribb javaslatok megkeresését a lehetséges hatásuk alapján. 
 
 ## <a name="viewing-recommendations"></a>Javaslatok megtekintése
 
-A teljesítménnyel kapcsolatos javaslatok megtekintéséhez és alkalmazásához a megfelelő [szerepköralapú hozzáférés](../role-based-access-control/overview.md) -vezérlési engedélyekre van szükség az Azure-ban. Az **olvasó**, az **SQL-adatbázis közreműködői** engedélyekre van szükség a javaslatok megtekintéséhez és a **tulajdonoshoz**, az SQL- **adatbázis közreműködői** engedélyekre van szükség a műveletek végrehajtásához; indexek létrehozása vagy eldobása, indexek létrehozásának megszakítása.
+A teljesítménnyel kapcsolatos javaslatok megtekintéséhez és alkalmazásához a megfelelő [szerepköralapú hozzáférés-vezérlési](../role-based-access-control/overview.md) engedélyekre van szükség az Azure-ban. Az **olvasó**, az **SQL-adatbázis közreműködői** engedélyekre van szükség a javaslatok megtekintéséhez és a **tulajdonoshoz**, az **SQL-adatbázis közreműködői** engedélyekre van szükség a műveletek végrehajtásához; indexek létrehozása vagy eldobása, indexek létrehozásának megszakítása.
 
 A következő lépések végrehajtásával Azure Portal teljesítményére vonatkozó javaslatokat talál:
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
-2. Nyissa meg az **összes szolgáltatás** > **SQL**-adatbázisát, és válassza ki az adatbázist.
-3. A kiválasztott adatbázishoz elérhető javaslatok megtekintéséhez navigáljon a **teljesítménnyel** kapcsolatos javaslathoz.
+1. Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
+2. Lépjen az **összes szolgáltatás** > **SQL-adatbázis**elemre, és válassza ki az adatbázist.
+3. A kiválasztott adatbázishoz elérhető javaslatok megtekintéséhez navigáljon a **teljesítménnyel kapcsolatos javaslathoz** .
 
 A teljesítménnyel kapcsolatos javaslatok az alábbi ábrán láthatóhoz hasonló táblázatban láthatók:
 
@@ -46,7 +46,7 @@ A javaslatok a következő kategóriákba sorolhatók a teljesítményre gyakoro
 
 
 > [!NOTE]
-> A Azure SQL Databasenak legalább egy napig figyelnie kell a tevékenységeket a javaslatok azonosítása érdekében. A Azure SQL Database könnyebben optimalizálható a konzisztens lekérdezési minták esetében, mint a véletlenszerű, pattanásos adattörések esetében. Ha a javaslatok jelenleg nem érhetők el, a teljesítményre vonatkozó **javaslat** oldalon egy üzenet ismerteti, hogy miért.
+> A Azure SQL Databasenak legalább egy napig figyelnie kell a tevékenységeket a javaslatok azonosítása érdekében. A Azure SQL Database könnyebben optimalizálható a konzisztens lekérdezési minták esetében, mint a véletlenszerű, pattanásos adattörések esetében. Ha a javaslatok jelenleg nem érhetők el, a **teljesítményre vonatkozó javaslat** oldalon egy üzenet ismerteti, hogy miért.
 > 
 
 Megtekintheti a korábbi műveletek állapotát is. Válasszon ki egy javaslatot vagy egy állapotot a további információk megtekintéséhez.
@@ -81,13 +81,13 @@ A kiválasztott ajánlást a rendszer az adatbázison alkalmazza.
 Ha a javaslatok listája olyan elemeket tartalmaz, amelyeket el szeretne távolítani a listáról, elvetheti a javaslatot:
 
 1. Válasszon ki egy javaslatot a **javaslatok** listájában a részletek megnyitásához.
-2. A **részletek** lapon kattintson az Elvetés gombra.
+2. A **részletek** lapon kattintson az **Elvetés** gombra.
 
 Ha kívánja, hozzáadhat elvetett elemeket a **javaslatok** listájához:
 
-1. A **javaslatok** lapon kattintson az elvetettek **megtekintése**elemre.
+1. A **javaslatok** lapon kattintson az **elvetettek megtekintése**elemre.
 2. A részletek megtekintéséhez válasszon ki egy elvetett elemet a listából.
-3. Ha szeretné, kattintson az Elvetés visszavonása gombra, és adja hozzá az indexet a **javaslatok**fő listájához.
+3. Ha szeretné, kattintson az **Elvetés visszavonása** gombra, és adja hozzá az indexet a **javaslatok**fő listájához.
 
 > [!NOTE]
 > Vegye figyelembe, hogy ha SQL Database [automatikus hangolás](sql-database-automatic-tuning.md) engedélyezve van, és ha manuálisan elvetett egy javaslatot a listáról, a rendszer soha nem alkalmazza automatikusan az adott javaslatot. A javaslatok figyelmen kívül hagyása egy praktikus módszer a felhasználók számára, hogy az automatikus hangolás engedélyezve legyen abban az esetben, ha egy konkrét javaslatot nem kell alkalmazni.
@@ -118,7 +118,7 @@ Válassza ki az egyik javaslatot, majd kattintson a **parancsfájl megjeleníté
 
 ### <a name="canceling-recommendations"></a>Javaslatok megszakítása
 
-A **függőben lévő**, érvényesítésivagy **sikerességi** állapotú javaslatok megvonhatók. Nem lehet megszakítani a **végrehajtás** állapotával kapcsolatos ajánlásokat.
+A **függőben lévő**, **érvényesítési**vagy **sikerességi** állapotú javaslatok megvonhatók. Nem lehet megszakítani a **végrehajtás** állapotával kapcsolatos ajánlásokat.
 
 1. Válasszon ki egy javaslatot a **hangolási előzmények** területen a **javaslatok részletei** lap megnyitásához.
 2. Kattintson a **Mégse** gombra a javaslat alkalmazási folyamatának megszakításához.
@@ -129,13 +129,13 @@ Előfordulhat, hogy egy javaslat alkalmazása nem történik meg azonnal. A port
 
 | Állapot | Leírás |
 |:--- |:--- |
-| Függőben lévő |A javaslat alkalmazása parancs beérkezett, és végrehajtásra van ütemezve. |
-| Végrehajtás |A javaslat alkalmazása folyamatban van. |
-| Érvényesítés |Az ajánlás alkalmazása sikeresen megtörtént, és a szolgáltatás az előnyöket méri. |
-| Siker |Az ajánlás alkalmazása sikeresen megtörtént, és a rendszer kiértékelte az előnyöket. |
-| Hiba |Hiba történt az ajánlás alkalmazásának folyamatában. Ez lehet átmeneti probléma, vagy lehetséges, hogy a séma módosul a táblán, és a parancsfájl már nem érvényes. |
-| Visszaállítás |A javaslat alkalmazása megtörtént, de nem megfelelőnek minősül, és a rendszer automatikusan visszaállította. |
-| Visszaállítva |Az ajánlás visszavonásra került. |
+| Függőben |A javaslat alkalmazása parancs beérkezett, és végrehajtásra van ütemezve. |
+| Végrehajtása |A javaslat alkalmazása folyamatban van. |
+| Érvényesítése |Az ajánlás alkalmazása sikeresen megtörtént, és a szolgáltatás az előnyöket méri. |
+| Sikeres |Az ajánlás alkalmazása sikeresen megtörtént, és a rendszer kiértékelte az előnyöket. |
+| Hiba |Hiba történt a javaslat alkalmazásának folyamata során. Ez lehet átmeneti probléma, vagy lehetséges, hogy a séma módosul a táblán, és a parancsfájl már nem érvényes. |
+| Visszatérés |A javaslat alkalmazása megtörtént, de nem megfelelőnek minősül, és a rendszer automatikusan visszaállította. |
+| Visszatért |Az ajánlás visszavonásra került. |
 
 További információk megjelenítéséhez kattintson egy folyamaton belüli javaslatra a listából.
 
@@ -145,16 +145,16 @@ További információk megjelenítéséhez kattintson egy folyamaton belüli jav
 Ha a teljesítményre vonatkozó javaslatokkal alkalmazta a javaslatot (ami azt jelenti, hogy nem futtatta manuálisan a T-SQL-szkriptet), akkor a automatikusan visszaváltja a változást, ha a negatív hatással van a teljesítményre. Ha bármilyen okból kifolyólag egyszerűen visszaállít egy javaslatot, a következőket teheti:
 
 1. Válasszon ki egy sikeresen alkalmazott javaslatot a **hangolási előzmények** területen.
-2. Kattintson a Recover elemre a **Javaslat részletei** lapon.
+2. Kattintson a **Recover** elemre a **Javaslat részletei** lapon.
 
 ![Ajánlott indexek](./media/sql-database-advisor-portal/details.png)
 
 ## <a name="monitoring-performance-impact-of-index-recommendations"></a>Az indexre vonatkozó javaslatok teljesítményének figyelése
-A javaslatok sikeres implementálása után (jelenleg csak az indexelési műveletek és a parametrizálja-lekérdezések ajánlásai) a javaslat részletei lapon a lekérdezési teljesítmény elemzése lehetőségre kattintva megnyithatja a [lekérdezési teljesítménnyel](sql-database-query-performance.md) kapcsolatos információkat, és megtekintheti azokat. a legfontosabb lekérdezések teljesítményére gyakorolt hatás.
+A javaslatok sikeres implementálása után (jelenleg csak az indexelési műveletek és a parametrizálja-lekérdezések ajánlásai) a javaslat részletei lapon **a lekérdezési** teljesítmény elemzése lehetőségre kattintva megnyithatja a [lekérdezési teljesítménnyel](sql-database-query-performance.md) kapcsolatos információkat, és megtekintheti azokat. a legfontosabb lekérdezések teljesítményére gyakorolt hatás.
 
 ![Teljesítmény-hatás figyelése](./media/sql-database-advisor-portal/query-insights.png)
 
-## <a name="summary"></a>Összegzés
+## <a name="summary"></a>Összefoglalás
 Azure SQL Database ajánlásokat biztosít az SQL Database teljesítményének javításához. A T-SQL-parancsfájlok nyújtásával segítséget nyújt az adatbázis optimalizálásában, és végül a lekérdezési teljesítmény javításában.
 
 ## <a name="next-steps"></a>További lépések

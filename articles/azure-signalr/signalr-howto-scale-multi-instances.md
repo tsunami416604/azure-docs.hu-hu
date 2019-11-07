@@ -1,30 +1,30 @@
 ---
-title: Több példány az Azure SignalR Service méretezése
-description: Számos méretezési esetekben gyakran kell több példány kiépítését és konfigurálását a nagy léptékű üzembe helyezés létrehozása együtt használja őket. Például a horizontális skálázás van szükség, támogatja a több példányt.
+title: Az Azure Signaler szolgáltatás több példányának méretezése
+description: Számos skálázási helyzetben a vásárlónak gyakran több példányt kell kiépítenie, és úgy kell konfigurálnia, hogy együtt használja őket a nagyméretű központi telepítés létrehozásához. A horizontális skálázás például több példány támogatását igényli.
 author: sffamily
 ms.service: signalr
 ms.topic: conceptual
 ms.date: 03/27/2019
 ms.author: zhshang
-ms.openlocfilehash: e284a0492774e02cab79db6d9006c1718a7fcfc9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1e31bc4133cced793d793c07d2e0ee3df29efddb
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60809239"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73672338"
 ---
-# <a name="how-to-scale-signalr-service-with-multiple-instances"></a>Hogyan méretezése a SignalR Service több példányra?
-A legújabb SignalR Service SDK támogatja a több végpontot SignalR Service-példányokhoz. Ez a funkció segítségével méretezheti az egyidejű kapcsolatok, vagy a régiók közötti üzenetkezelés használata.
+# <a name="how-to-scale-signalr-service-with-multiple-instances"></a>Hogyan méretezheti a Signaler szolgáltatást több példányon?
+A legújabb Signaler Service SDK támogatja a Signaler szolgáltatás példányainak több végpontját. Ezzel a szolgáltatással méretezheti az egyidejű kapcsolatokat, vagy felhasználhatja a régiók közötti üzenetkezeléshez.
 
-## <a name="for-aspnet-core"></a>For ASP.NET Core
+## <a name="for-aspnet-core"></a>ASP.NET Core
 
-### <a name="how-to-add-multiple-endpoints-from-config"></a>Több végpont hozzáadása a konfiguráció hogyan?
+### <a name="how-to-add-multiple-endpoints-from-config"></a>Hogyan lehet több végpontot felvenni a konfigurációból?
 
-A kulcs konfigurációs `Azure:SignalR:ConnectionString` vagy `Azure:SignalR:ConnectionString:` SignalR Service kapcsolati karakterlánc.
+A konfigurációt a Key `Azure:SignalR:ConnectionString` vagy `Azure:SignalR:ConnectionString:` a Signal Service-kapcsolatok karakterláncához.
 
-Ha a kulcs kezdődik `Azure:SignalR:ConnectionString:`, formátumúnak kell lennie `Azure:SignalR:ConnectionString:{Name}:{EndpointType}`, ahol `Name` és `EndpointType` tulajdonságaiként a `ServiceEndpoint` objektumot, és elérhető kódot.
+Ha a kulcs `Azure:SignalR:ConnectionString:`rel kezdődik, akkor formátum `Azure:SignalR:ConnectionString:{Name}:{EndpointType}`kell lennie, ahol a `Name` és a `EndpointType` a `ServiceEndpoint` objektum tulajdonságai, és elérhetők a kódból.
 
-Hozzáadhat több példány kapcsolati karakterláncok az alábbi `dotnet` parancsokat:
+A következő `dotnet` paranccsal adhat hozzá több példányos kapcsolatok karakterláncot:
 
 ```batch
 dotnet user-secrets set Azure:SignalR:ConnectionString:east-region-a <ConnectionString1>
@@ -32,10 +32,10 @@ dotnet user-secrets set Azure:SignalR:ConnectionString:east-region-b:primary <Co
 dotnet user-secrets set Azure:SignalR:ConnectionString:backup:secondary <ConnectionString3>
 ```
 
-### <a name="how-to-add-multiple-endpoints-from-code"></a>Több végpont hozzáadása a kód hogyan?
+### <a name="how-to-add-multiple-endpoints-from-code"></a>Hogyan lehet több végpontot felvenni a kódból?
 
-A `ServicEndpoint` osztály Azure SignalR Service-ben a végpont tulajdonságainak leírása jelenik meg.
-Több példány végpont használata az Azure SignalR Service SDK segítségével konfigurálhatja:
+Egy `ServicEndpoint` osztály van bevezetve, amely leírja az Azure Signaler szolgáltatás végpontjának tulajdonságait.
+Ha az Azure Signaler Service SDK-t használja a használatával, több példány-végpontot is beállíthat:
 ```cs
 services.AddSignalR()
         .AddAzureSignalR(options => 
@@ -53,23 +53,23 @@ services.AddSignalR()
         });
 ```
 
-### <a name="how-to-customize-endpoint-router"></a>Hogyan szabhatja testre a végpont útválasztó?
+### <a name="how-to-customize-endpoint-router"></a>Az Endpoint router testreszabása
 
-Alapértelmezés szerint az SDK-t használja a [DefaultEndpointRouter](https://github.com/Azure/azure-signalr/blob/dev/src/Microsoft.Azure.SignalR/EndpointRouters/DefaultEndpointRouter.cs) végpontokat felvenni.
+Alapértelmezés szerint az SDK a [DefaultEndpointRouter](https://github.com/Azure/azure-signalr/blob/dev/src/Microsoft.Azure.SignalR/EndpointRouters/DefaultEndpointRouter.cs) használja a végpontok felvételéhez.
 
 #### <a name="default-behavior"></a>Alapértelmezett viselkedés 
-1. Ügyfél alkalmazáskérelmek irányítása
+1. Ügyfél-kérelem útválasztása
 
-    Ha ügyfél `/negotiate` az app-kiszolgálóval. SDK alapértelmezés szerint **véletlenszerűen kiválaszt** egy végpontja elérhető Szolgáltatásvégpontok készletéből.
+    Ha az ügyfél `/negotiate` az App Serverrel. Az SDK alapértelmezés szerint **véletlenszerűen kiválaszt** egy végpontot az elérhető szolgáltatási végpontok készletéről.
 
-2. Kiszolgáló üzenet-útválasztása
+2. Kiszolgálói üzenet útválasztása
 
-    Ha a *üzenetet küld egy adott **kapcsolat*** x és a cél kapcsolat továbbítja a rendszer az aktuális kiszolgáló, az üzenet közvetlenül csatlakoztatott, hogy a végpont kerül. Ellenkező esetben az üzenetek vannak küldött minden Azure SignalR-végpontra.
+    Ha * üzenet küldése egy adott * * kapcsolat * * * felé, és a célként megadott kapcsolat az aktuális kiszolgálóra van irányítva, az üzenet közvetlenül erre a csatlakoztatott végpontra kerül. Ellenkező esetben az üzenetek az összes Azure Signaler-végpontra továbbítva lesznek.
 
-#### <a name="customize-routing-algorithm"></a>Útválasztási algoritmust testreszabása
-A saját útválasztó hozhat létre, ha alapos ismeretére azonosításához milyen végpontokat, az üzenetek el kell küldeni.
+#### <a name="customize-routing-algorithm"></a>Útválasztási algoritmus testreszabása
+Saját útválasztót is létrehozhat, ha speciális ismeretekkel rendelkezik annak azonosításához, hogy mely végpontoknak kell megjelenniük.
 
-Egyéni útválasztó van megadva. például ha csoportok, `east-` mindig látogasson el a végpont nevű `east`:
+Az alábbi példa egy egyéni útválasztót határoz meg, ha a `east-` kezdődő csoportok mindig a `east`nevű végpontra kerülnek:
 
 ```cs
 private class CustomRouter : EndpointRouterDecorator
@@ -87,7 +87,7 @@ private class CustomRouter : EndpointRouterDecorator
 }
 ```
 
-Egy másik példa az alábbi, amely felülbírálja az alapértelmezett viselkedés egyeztetni, jelölje be a végpontok attól függ, ahol az alkalmazás-kiszolgáló.
+Egy másik példa alább, amely felülbírálja az alapértelmezett egyeztetési viselkedést, a végpontok kiválasztásához attól függ, hogy hol található az App Server.
 
 ```cs
 private class CustomRouter : EndpointRouterDecorator
@@ -110,7 +110,7 @@ private class CustomRouter : EndpointRouterDecorator
 }
 ```
 
-Ne felejtse el regisztrálni az útválasztót, hogy DI-tároló használatával:
+Ne felejtse el regisztrálni az útválasztót a DI Container használatával:
 
 ```cs
 services.AddSingleton(typeof(IEndpointRouter), typeof(CustomRouter));
@@ -127,15 +127,15 @@ services.AddSignalR()
             });
 ```
 
-## <a name="for-aspnet"></a>For ASP.NET
+## <a name="for-aspnet"></a>ASP.NET
 
-### <a name="how-to-add-multiple-endpoints-from-config"></a>Több végpont hozzáadása a konfiguráció hogyan?
+### <a name="how-to-add-multiple-endpoints-from-config"></a>Hogyan lehet több végpontot felvenni a konfigurációból?
 
-A kulcs konfigurációs `Azure:SignalR:ConnectionString` vagy `Azure:SignalR:ConnectionString:` SignalR Service kapcsolati karakterlánc.
+A konfigurációt a Key `Azure:SignalR:ConnectionString` vagy `Azure:SignalR:ConnectionString:` a Signal Service-kapcsolatok karakterláncához.
 
-Ha a kulcs kezdődik `Azure:SignalR:ConnectionString:`, formátumúnak kell lennie `Azure:SignalR:ConnectionString:{Name}:{EndpointType}`, ahol `Name` és `EndpointType` tulajdonságaiként a `ServiceEndpoint` objektumot, és elérhető kódot.
+Ha a kulcs `Azure:SignalR:ConnectionString:`rel kezdődik, akkor formátum `Azure:SignalR:ConnectionString:{Name}:{EndpointType}`kell lennie, ahol a `Name` és a `EndpointType` a `ServiceEndpoint` objektum tulajdonságai, és elérhetők a kódból.
 
-Hozzáadhat több példány kapcsolati sztringek az `web.config`:
+Több példányos kapcsolódási karakterláncot is hozzáadhat a `web.config`hoz:
 
 ```xml
 <?xml version="1.0" encoding="utf-8" ?>
@@ -150,10 +150,10 @@ Hozzáadhat több példány kapcsolati sztringek az `web.config`:
 </configuration>
 ```
 
-### <a name="how-to-add-multiple-endpoints-from-code"></a>Több végpont hozzáadása a kód hogyan?
+### <a name="how-to-add-multiple-endpoints-from-code"></a>Hogyan lehet több végpontot felvenni a kódból?
 
-A `ServicEndpoint` osztály Azure SignalR Service-ben a végpont tulajdonságainak leírása jelenik meg.
-Több példány végpont használata az Azure SignalR Service SDK segítségével konfigurálhatja:
+Egy `ServicEndpoint` osztály van bevezetve, amely leírja az Azure Signaler szolgáltatás végpontjának tulajdonságait.
+Ha az Azure Signaler Service SDK-t használja a használatával, több példány-végpontot is beállíthat:
 
 ```cs
 app.MapAzureSignalR(
@@ -171,11 +171,11 @@ app.MapAzureSignalR(
         });
 ```
 
-### <a name="how-to-customize-router"></a>Hogyan szabhatja testre az útválasztó?
+### <a name="how-to-customize-router"></a>Az útválasztó testreszabása
 
-Az egyetlen különbség az ASP.NET SignalR és az ASP.NET Core SignalR között nem http környezet típusú `GetNegotiateEndpoint`. Az ASP.NET SignalR, célszerű a [IOwinContext](https://github.com/Azure/azure-signalr/blob/dev/src/Microsoft.Azure.SignalR.AspNet/EndpointRouters/DefaultEndpointRouter.cs#L19) típusa.
+Az egyetlen különbség a ASP.NET-jelző és a ASP.NET Core-jelző között a `GetNegotiateEndpoint`a http-környezet típusa. A ASP.NET-jelző esetében [IOwinContext](https://github.com/Azure/azure-signalr/blob/dev/src/Microsoft.Azure.SignalR.AspNet/EndpointRouters/DefaultEndpointRouter.cs#L19) típusú.
 
-Az alábbi, az egyéni példa egyeztetni az ASP.NET SignalR:
+Alább látható a ASP.NET-jelzőhöz tartozó egyéni egyeztetési példa:
 
 ```cs
 private class CustomRouter : EndpointRouterDecorator
@@ -197,7 +197,7 @@ private class CustomRouter : EndpointRouterDecorator
 }
 ```
 
-Ne felejtse el regisztrálni az útválasztót, hogy DI-tároló használatával:
+Ne felejtse el regisztrálni az útválasztót a DI Container használatával:
 
 ```cs
 var hub = new HubConfiguration();
@@ -213,33 +213,33 @@ app.MapAzureSignalR(GetType().FullName, hub, options => {
 });
 ```
 
-## <a name="configuration-in-cross-region-scenarios"></a>Konfiguráció a régiók közötti forgatókönyvek
+## <a name="configuration-in-cross-region-scenarios"></a>Konfigurálás régiók közötti forgatókönyvekben
 
-A `ServiceEndpoint` objektum rendelkezik egy `EndpointType` értékkel rendelkező tulajdonság `primary` vagy `secondary`.
+A `ServiceEndpoint` objektumhoz `primary` vagy `secondary`értékű `EndpointType` tulajdonság tartozik.
 
-`primary` a végpontok olyan előnyben részesített végpontok ügyfél forgalom fogadására és megbízhatóbb hálózati kapcsolatokat; kell tekinteni `secondary` végpontok minősülnek, kevésbé megbízható hálózati kapcsolattal rendelkezik, és csak véve kiszolgáló ügyfél forgalmát, például teszi közzé az üzeneteket, nem pedig a licenckiszolgáló forgalmának véve ügyfél használ.
+`primary` végpontok előnyben részesített végpontok az ügyfél forgalmának fogadására, és megbízhatóbb hálózati kapcsolatnak tekintendők. `secondary`-végpontok kevésbé megbízható hálózati kapcsolatoknak minősülnek, és csak a kiszolgálók közötti adatforgalomhoz, például szórási üzenetekhez használatosak, és nem az ügyfél és a kiszolgáló közötti adatforgalomhoz.
 
-A régiók közötti esetben hálózati instabil lehet. Egy alkalmazás-kiszolgálóhoz tartozó *USA keleti RÉGIÓJA*, ugyanaz a SignalR Service-végpont található *USA keleti Régiójában* régió beállítható `primary` , más régiókban lévő végpontok van megjelölve `secondary`. Ebben a konfigurációban a Szolgáltatásvégpontok más régiókban is **kap** ez üzeneteit *USA keleti RÉGIÓJA* alkalmazáskiszolgáló, de nem lesz kell nincs **régiók közötti** ügyfeleket átirányítva Ezen alkalmazások kiszolgálói. Az architektúra az alábbi ábrán látható:
+Régiók közötti esetekben a hálózat instabil lehet. Az *USA keleti*régiójában található egyik app Server esetében a signaler szolgáltatás végpontja az *USA keleti* régiójában található, `primary`ként és végpontként is konfigurálható más régiókban `secondary`ként megjelölve. Ebben a konfigurációban a más régiókban lévő szolgáltatási végpontok **fogadhatnak** e-maileket erről az USA-beli *East* app Server-kiszolgálóról, de nem lesznek átirányítva **régiók közötti** ügyfelek az adott app Serverhez. Az architektúra az alábbi ábrán látható:
 
-![Kereszt-földrajzi infrastruktúra](./media/signalr-howto-scale-multi-instances/cross_geo_infra.png)
+![Földrajzilag átnyúló infra](./media/signalr-howto-scale-multi-instances/cross_geo_infra.png)
 
-Amikor egy ügyfél megpróbálja `/negotiate` az app-kiszolgálóval, az alapértelmezett útválasztóval SDK **véletlenszerűen kiválaszt** elérhető a készletből egy végpontot `primary` végpontok. Ha végpont érhető el, majd az SDK-t **véletlenszerűen kiválaszt** az összes rendelkezésre álló `secondary` végpontok. A végpont van megjelölve **elérhető** amikor a kiszolgáló és a szolgáltatásvégpontot közötti kapcsolat működik-e.
+Amikor egy ügyfél megpróbál `/negotiate` az App Serverrel, az alapértelmezett útválasztóval, az SDK **véletlenszerűen kiválaszt** egy végpontot az elérhető `primary` végpontok készletéről. Ha az elsődleges végpont nem érhető el, az SDK **véletlenszerűen kiválasztja** az összes rendelkezésre álló `secondary` végpontot. A végpont **elérhetőként** van megjelölve, ha a kiszolgáló és a szolgáltatási végpont közötti kapcsolat él.
 
-Régiók közötti forgatókönyvben, ha egy ügyfél megpróbálja `/negotiate` lévő üzemeltetett alkalmazás-kiszolgálóval *USA keleti Régiójában*, alapértelmezett azt mindig értéket ad vissza a `primary` ugyanabban a régióban található végponti. Ha az összes *USA keleti Régiójában* végpontok nem érhetők el, a rendszer átirányítja az ügyfél más régiókban lévő végpontok. Feladatátvétel az alábbi szakasz részletesen ismertetjük a forgatókönyvet.
+Régiók közötti forgatókönyv esetén, amikor egy ügyfél megpróbál `/negotiate` az *USA keleti*régiójában üzemeltetett app Serverrel, alapértelmezés szerint mindig az ugyanabban a régióban található `primary` végpontot adja vissza. Ha az összes *kelet-amerikai* végpont nem érhető el, a rendszer átirányítja az ügyfelet más régiókban lévő végpontokra. Az alábbi feladatátvételi szakasz részletesen ismerteti a forgatókönyvet.
 
-![Normál egyeztetése](./media/signalr-howto-scale-multi-instances/normal_negotiate.png)
+![Normál egyeztetés](./media/signalr-howto-scale-multi-instances/normal_negotiate.png)
 
 ## <a name="fail-over"></a>Feladatátvétel
 
-Ha az összes `primary` végpontok nem érhetők el, ügyfél `/negotiate` kiválasztja az elérhető `secondary` végpontok. A feladatátvétel mechanizmus megköveteli, hogy minden végpont szolgáljon `primary` legalább egy alkalmazás kiszolgálói végpontot.
+Ha az összes `primary` végpont nem érhető el, az ügyfél `/negotiate` a rendelkezésre álló `secondary` végpontok közül. Ez a feladatátvételi mechanizmus megköveteli, hogy mindegyik végpontnak `primary` végpontnak kell lennie legalább egy app Server-kiszolgálónak.
 
 ![Feladatátvétel](./media/signalr-howto-scale-multi-instances/failover_negotiate.png)
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben az útmutatóban megismerhette több példány konfigurálása a skálázás, a horizontális skálázás és a régiók közötti forgatókönyvek ugyanazt az alkalmazást.
+Ebből az útmutatóból megtudhatta, hogyan konfigurálhat több példányt ugyanabban az alkalmazásban a méretezés, a horizontális skálázás és a régiók közötti helyzetekhez.
 
-Több végpont által támogatott magas rendelkezésre állási és vészhelyreállítási forgatókönyvek is használható.
+Több végpont is támogatott magas rendelkezésre állású és vész-helyreállítási helyzetekben.
 
 > [!div class="nextstepaction"]
-> [A telepítő SignalR Service vészhelyreállítás és magas rendelkezésre állás](./signalr-concept-disaster-recovery.md)
+> [A riasztási szolgáltatás beállítása a vész-helyreállításhoz és a magas rendelkezésre álláshoz](./signalr-concept-disaster-recovery.md)

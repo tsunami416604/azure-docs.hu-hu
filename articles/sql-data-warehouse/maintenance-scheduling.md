@@ -1,5 +1,5 @@
 ---
-title: Azure-karbantartási ütemtervek (előzetes verzió) | Microsoft Docs
+title: Azure-karbantartási ütemtervek
 description: A karbantartási ütemezés lehetővé teszi, hogy az ügyfelek megtervezzék a Azure SQL Data Warehouse szolgáltatás által az új funkciók, frissítések és javítások elvégzéséhez szükséges ütemezett karbantartási eseményeket.
 services: sql-data-warehouse
 author: antvgski
@@ -10,12 +10,12 @@ ms.subservice: design
 ms.date: 07/16/2019
 ms.author: anvang
 ms.reviewer: jrasnick
-ms.openlocfilehash: 0e5df583112bbb6db9651004e5deaceb6b5b9d12
-ms.sourcegitcommit: 7868d1c40f6feb1abcafbffcddca952438a3472d
+ms.openlocfilehash: 91b202f8a5df841fa3d6aa1f0903999b395f8137
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71958898"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73686064"
 ---
 # <a name="use-maintenance-schedules-to-manage-service-updates-and-maintenance"></a>Karbantartási ütemtervek használata a szolgáltatások frissítéseinek és karbantartásának kezeléséhez
 
@@ -56,7 +56,7 @@ Alapértelmezés szerint minden újonnan létrehozott Azure SQL Data Warehouse-p
 
 Az adattárház karbantartási ütemezésének megtekintéséhez hajtsa végre az alábbi lépéseket:
 
-1.  Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
+1.  Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
 2.  Válassza ki a megtekinteni kívánt adatraktárat. 
 3.  A kiválasztott adattárház megnyílik az Áttekintés panelen. Az adatraktárra alkalmazott karbantartási ütemterv a **karbantartási ütemterv**alatt jelenik meg.
 
@@ -72,7 +72,7 @@ A karbantartási ütemtervet bármikor frissítheti vagy módosíthatja. Ha a ki
 Az elsődleges és a másodlagos Windowsnak külön napi tartományokkal kell rendelkeznie. Ilyen például a kedd – csütörtök elsődleges ablak és a szombat – vasárnap egy másodlagos ablak.
 
 Az adattárház karbantartási ütemtervének módosításához hajtsa végre a következő lépéseket:
-1.  Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
+1.  Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
 2.  Válassza ki a frissíteni kívánt adatraktárat. Megnyílik az oldal az Áttekintés panelen. 
 3.  Nyissa meg a karbantartási ütemterv beállításainak lapját. Ehhez válassza a **karbantartási ütemterv (előzetes verzió) összefoglalás** hivatkozást az Áttekintés panelen. Vagy válassza a **karbantartási ütemterv** lehetőséget a bal oldali erőforrás menüjében.  
 
@@ -83,9 +83,9 @@ Az adattárház karbantartási ütemtervének módosításához hajtsa végre a 
    ![Karbantartási beállítások panel](media/sql-data-warehouse-maintenance-scheduling/maintenance-settings-page.png)
 
 5. Válassza ki a kívánt elsődleges és másodlagos karbantartási időszakokat a legördülő lista használatával:
-   - **Nap**: Az előnyben részesített nap a kiválasztott ablak karbantartásának elvégzéséhez.
-   - **Kezdés időpontja**: A karbantartási időszak előnyben részesített kezdési ideje.
-   - **Időablak**: Az időablak előnyben részesített időtartama.
+   - **Nap**: az előnyben részesített nap a kiválasztott ablak karbantartásának végrehajtásához.
+   - **Kezdési idő**: a karbantartási időszak előnyben részesített kezdési ideje.
+   - **Időablak**: az időtartomány előnyben részesített időtartama.
 
    A panel alján található **ütemezett összefoglalás** terület a kiválasztott értékek alapján frissül. 
   

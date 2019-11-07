@@ -10,13 +10,13 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
-ms.date: 10/03/2019
-ms.openlocfilehash: cc7e510d9a6db93edc211799eda8df79116236a7
-ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
+ms.date: 11/05/2019
+ms.openlocfilehash: ecd2750926fd04c84d2d6b48f5fde06363dd15df
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73053650"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73606759"
 ---
 # <a name="known-issuesmigration-limitations-with-online-migrations-from-oracle-to-azure-db-for-postgresql-single-server"></a>Ismert problémák/áttelepítési korlátozások az Oracle-ből az Azure-ba való online áttelepítéssel a PostgreSQL-hez – egyetlen kiszolgáló
 
@@ -26,7 +26,7 @@ Az Oracle-ből az Azure Database for PostgreSQL-Single Serverre történő onlin
 
 A Azure Database Migration Service a következőhöz való csatlakozást támogatja:
 
-- Az Oracle 10g-, 11c-és 12c-verziója.
+- Az Oracle 10g-, 11g-és 12c-verziója.
 - Oracle Enterprise, standard, Express és Personal kiadás.
 
 Azure Database Migration Service nem támogatja a több-bérlős tároló adatbázisaihoz (CDBs) való csatlakozást.

@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 08/05/2019
-ms.openlocfilehash: 035a559f27d11a89dba1983f1bcaf406ef6a0d05
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: cab67a9a50d8e9d91897c170ef2cb0884f169c64
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72331946"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73606678"
 ---
 # <a name="choose-the-right-mysql-server-option-in-azure"></a>Válassza ki a megfelelő MySQL-kiszolgáló lehetőséget az Azure-ban
 
@@ -38,10 +38,10 @@ A fenti lehetőségek közötti fő különbségek a következő táblázatban l
 | MySQL-javítás     | Automatikus  | Ügyfelek által felügyelt |
 | Magas rendelkezésre állás | A magas rendelkezésre állású (HA) modell olyan beépített feladatátvételi mechanizmusokon alapul, amelyekben csomópont szintű megszakítás történik. Ilyen esetekben a szolgáltatás automatikusan létrehoz egy új példányt, és csatolja a tárolót ehhez a példányhoz. | Az ügyfelek a magas rendelkezésre állás kialakítását, tesztelését és karbantartását is elismerik. A képességek lehetnek többek között a feladatátvételi fürtszolgáltatás, a folyamatos replikálás, a naplózás vagy a tranzakciós replikáció.|
 | Zóna redundancia | Jelenleg nem támogatott | Az Azure-beli virtuális gépek különböző rendelkezésre állási zónákban való futtatásra állíthatók be. Helyszíni megoldás esetén az ügyfeleknek saját másodlagos adatközpontot kell létrehozniuk, kezelnie és karbantartani.|
-| Hibrid forgatókönyvek | A [felhőbe irányuló replikálás](https://docs.microsoft.com/azure/mysql/concepts-data-in-replication)segítségével egy külső MySQL-kiszolgáló adatait szinkronizálhatja a Azure Database for MySQL szolgáltatásba. A külső kiszolgáló lehet helyszíni, virtuális gépek vagy más felhőalapú szolgáltatók által üzemeltetett adatbázis-szolgáltatás.<br/><br/> Az [olvasási replika](https://docs.microsoft.com/azure/postgresql/concepts-read-replicas) funkcióval egy Azure Database for MySQL főkiszolgálóról legfeljebb öt írásvédett másodpéldány-kiszolgálóra lehet replikálni az adatait. A replikák vagy ugyanabban az Azure-régióban vagy régiókban találhatók. Az írásvédett replikák aszinkron módon frissülnek a BinLog replikációs technológiával.<br/><br/>A régiók közötti olvasási replikálás jelenleg nyilvános előzetes verzióban érhető el.| Ügyfelek által felügyelt
+| Hibrid forgatókönyvek | A [felhőbe irányuló replikálás](https://docs.microsoft.com/azure/mysql/concepts-data-in-replication)segítségével egy külső MySQL-kiszolgáló adatait szinkronizálhatja a Azure Database for MySQL szolgáltatásba. A külső kiszolgáló lehet helyszíni, virtuális gépek vagy más felhőalapú szolgáltatók által üzemeltetett adatbázis-szolgáltatás.<br/><br/> Az [olvasási replika](https://docs.microsoft.com/azure/postgresql/concepts-read-replicas) funkcióval egy Azure Database for MySQL főkiszolgálóról legfeljebb öt írásvédett másodpéldány-kiszolgálóra lehet replikálni az adatait. A replikák vagy ugyanabban az Azure-régióban vagy régiókban találhatók. Az írásvédett replikák aszinkron módon frissülnek a BinLog replikációs technológiával.| Ügyfelek által felügyelt
 | Biztonsági mentés és helyreállítás | A automatikusan létrehozza a [kiszolgáló biztonsági másolatait](https://docs.microsoft.com/azure/mysql/concepts-backup#backups) , és tárolja azokat a helyileg redundáns vagy földrajzilag redundáns, felhasználó által konfigurált tárolóban. A szolgáltatás teljes, differenciális és tranzakciónapló-alapú biztonsági mentéseket tart | Ügyfelek által felügyelt |
 | Adatbázis-műveletek figyelése | A lehetővé teszi az ügyfeleknek, hogy [riasztásokat állítsanak be](https://docs.microsoft.com/azure/mysql/concepts-monitoring) az adatbázis-műveletre, és a küszöbértékek elérésekor járjanak. | Ügyfelek által felügyelt |
-| Komplex veszélyforrások elleni védelem | [Fejlett veszélyforrások elleni védelmet](https://docs.microsoft.com/azure/mysql/howto-database-threat-protection-portal)nyújt. Ez a védelem olyan rendellenes tevékenységeket észlel, amelyek szokatlan és potenciálisan ártalmas kísérleteket jeleznek az adatbázisok eléréséhez vagy kiaknázásához. | Az ügyfeleknek saját maguknak kell elkészíteniük ezt a védelmet.
+| Fejlett fenyegetésvédelem | [Fejlett veszélyforrások elleni védelmet](https://docs.microsoft.com/azure/mysql/howto-database-threat-protection-portal)nyújt. Ez a védelem olyan rendellenes tevékenységeket észlel, amelyek szokatlan és potenciálisan ártalmas kísérleteket jeleznek az adatbázisok eléréséhez vagy kiaknázásához. | Az ügyfeleknek saját maguknak kell elkészíteniük ezt a védelmet.
 | Vészhelyreállítás | Az automatizált biztonsági mentéseket a felhasználó által konfigurált [helyileg redundáns vagy földrajzilag redundáns tárolóban](https://docs.microsoft.com/azure/mysql/howto-restore-server-portal)tárolja. A biztonsági mentések egy adott időpontban is visszaállíthatják a kiszolgálót. A megőrzési időtartam 7 és 35 nap között van. A visszaállítás a Azure Portal használatával valósul meg. | Az ügyfelek teljes körűen kezelik. A felelősség magában foglalja az ütemezési, tesztelési, archiválási, tárolási és adatmegőrzési feladatokat. Egy másik lehetőség egy Azure Recovery Services-tároló használata az Azure-beli virtuális gépek és adatbázisok biztonsági mentésére a virtuális gépeken. Ez a beállítás előzetes verzióban érhető el. |
 | Teljesítménnyel kapcsolatos javaslatok | [Teljesítményre vonatkozó javaslatokat](https://techcommunity.microsoft.com/t5/Azure-Database-for-MySQL/Azure-brings-intelligence-and-high-performance-to-Azure-Database/ba-p/769110) biztosít az ügyfeleknek a rendszer által létrehozott használati naplófájlok alapján. A javaslatok segítenek optimalizálni a munkaterheléseket. | Ügyfelek által felügyelt |
 
@@ -49,7 +49,7 @@ A fenti lehetőségek közötti fő különbségek a következő táblázatban l
 
 A MySQL-adatbázisok üzemeltetéséhez több tényező is befolyásolhatja a IaaS-t vagy a kiválasztását.
 
-### <a name="cost"></a>Költség
+### <a name="cost"></a>Költségek
 
 A korlátozott finanszírozás gyakran az elsődleges szempont, amely meghatározza az adatbázisok üzemeltetésének legjobb megoldását. Ez akkor is igaz, ha kevés pénzzel vagy csapattal rendelkezik egy olyan vállalatnál, amely szűk költségvetési megkötések keretében működik. Ez a szakasz a számlázási és licencelési alapismereteket ismerteti az Azure-ban, mivel azok az Azure-beli virtuális gépeken a Azure Database for MySQL és a MySQL
 
@@ -66,7 +66,7 @@ A díjszabással kapcsolatos további információkért tekintse meg a következ
 * [Virtuális gépek díjszabása](https://azure.microsoft.com/pricing/details/virtual-machines/)
 * [Azure-díjkalkulátor](https://azure.microsoft.com/pricing/calculator/)
 
-### <a name="administration"></a>Felügyelet
+### <a name="administration"></a>Adminisztráció
 
 Sok vállalat esetében a felhőalapú szolgáltatásba való áttérésre vonatkozó döntés annyit jelent, mint az adminisztráció bonyolultságának kiszervezése. A IaaS és a Pásti, a Microsoft:
 
@@ -80,7 +80,7 @@ A következő lista az egyes lehetőségek felügyeleti szempontjait ismerteti:
 
 * A Azure Database for MySQL használatával továbbra is felügyelheti az adatbázist. Azonban már nincs szükség az adatbázismotor, az operációs rendszer vagy a hardver felügyeletére. Példák a továbbra is felügyelhető elemekre:
 
-  - Adatbázis-kezelés
+  - Adatbázisok
   - Bejelentkezés
   - Index-finomhangolás
   - Lekérdezés finomhangolása
@@ -99,7 +99,7 @@ A következő lista az egyes lehetőségek felügyeleti szempontjait ismerteti:
 
   Mivel nincs szükség a bemutató, az alkalmazás és az adatrétegek módosítására, időt és költségvetést takaríthat meg a meglévő megoldás újratervezése során. Ehelyett a megoldások Azure-ba való áttelepítésére és az Azure-platform által igényelt teljesítmény-optimalizálásokra koncentrálhat.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Lásd: [Azure Database for MySQL díjszabása](https://azure.microsoft.com/pricing/details/MySQL/).
 * Első lépésként [létrehozhatja az első kiszolgálóját](https://review.docs.microsoft.com/azure/MySQL/quickstart-create-MySQL-server-database-using-azure-portal).

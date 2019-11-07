@@ -1,17 +1,17 @@
 ---
-title: Az Azure HPC cache (előzetes verzió) felhőalapú tárolóba való áthelyezése
+title: Az Azure HPC cache Cloud Container-tárolóba való áthelyezése
 description: Az Azure Blob Storage feltöltése az Azure HPC cache használatával
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
-ms.date: 10/07/2019
+ms.date: 10/30/2019
 ms.author: rohogue
-ms.openlocfilehash: 6c505e6918071b61a4152b0b421ed7cee3282206
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: a206b63b03bcb3bb17e201487f0e00bcb3926151
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72024495"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73582229"
 ---
 # <a name="move-data-to-azure-blob-storage"></a>Az Azure Blob Storage-ba irányuló adatáthelyezés
 
@@ -58,7 +58,7 @@ A avere CLFSLoad segédprogramnak a következő információkra van szüksége:
 
 Ha nem szeretné a avere CLFSLoad segédprogramot használni, vagy ha nagy mennyiségű adatmennyiséget szeretne hozzáadni egy meglévő blob Storage-tárolóhoz, akkor a gyorsítótárba másolhatja. Az Azure HPC cache több ügyfél egyidejű kiszolgálására lett kialakítva, így az adatok gyorsítótáron keresztül történő másolásához több ügyfélről is párhuzamos írásokat kell használnia.
 
-![Több ügyfelet tartalmazó, többszálas adatáthelyezést ábrázoló diagram: A bal felső sarokban látható, hogy a helyszíni hardveres tárterület ikonja több nyilat tartalmaz. A nyilak négy ügyfélszámítógépre mutatnak. Az egyes ügyfélgépekről három nyíl mutat az Azure HPC cache felé. Az Azure HPC-gyorsítótárból több nyíl mutat a blob Storage-hoz.](media/hpc-cache-parallel-ingest.png)
+![Több ügyfélből álló, többszálas adatáthelyezést ábrázoló diagram: a bal felső sarokban a helyszíni hardveres tárterület ikonja több nyílból származik. A nyilak négy ügyfélszámítógépre mutatnak. Az egyes ügyfélgépekről három nyíl mutat az Azure HPC cache felé. Az Azure HPC-gyorsítótárból több nyíl mutat a blob Storage-hoz.](media/hpc-cache-parallel-ingest.png)
 
 A ``cp`` vagy ``copy`` parancs, amelyet általában az adatok egyik tárolási rendszerből egy másikba való átvitelére használ, egyetlen szálból álló folyamatok, amelyek egyszerre csak egy fájlt másolnak. Ez azt jelenti, hogy a fájlkiszolgáló egyszerre csak egy fájlt tölt be – ez a gyorsítótár erőforrásainak hulladéka.
 
@@ -79,9 +79,9 @@ Az Azure HPC cache-vel való párhuzamos adatfeldolgozási stratégiák a követ
 
 * Manuális másolás – manuálisan is létrehozhat többszálas másolatot egy ügyfélen, ha több másolási parancsot futtat egyszerre a háttérben a fájlok vagy elérési utak előre definiált készletei között. A részletekért olvassa el az [Azure HPC cache-adatok betöltése – manuális másolási módszert](hpc-cache-ingest-manual.md) .
 
-* A részlegesen automatizált másolás ``msrsync`` @ no__t-1 @ no__t-2 egy olyan burkoló segédprogram, amely több párhuzamos, ``rsync`` folyamatot futtat. Részletekért olvassa el az [Azure HPC cache-adatok betöltése – msrsync metódust](hpc-cache-ingest-msrsync.md).
+* A részlegesen automatizált másolás ``msrsync`` - ``msrsync`` egy olyan burkoló segédprogram, amely több párhuzamos ``rsync`` folyamatot futtat. Részletekért olvassa el az [Azure HPC cache-adatok betöltése – msrsync metódust](hpc-cache-ingest-msrsync.md).
 
-* Parancsfájlba foglalt másolás ``parallelcp`` használatával – megtudhatja, hogyan hozhat létre és futtathat párhuzamos másolási parancsfájlt az [Azure HPC cache-adatok feldolgozásával párhuzamos másolási parancsfájl-metódussal](hpc-cache-ingest-parallelcp.md).
+* Parancsfájlba foglalt másolás a ``parallelcp`` használatával – megtudhatja, hogyan hozhat létre és futtathat párhuzamos másolási parancsfájlokat az [Azure HPC cache-adatfeldolgozással párhuzamos másolási parancsfájl-metódussal](hpc-cache-ingest-parallelcp.md).
 
 ## <a name="next-steps"></a>További lépések
 

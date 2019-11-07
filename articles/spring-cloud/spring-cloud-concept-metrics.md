@@ -1,20 +1,17 @@
 ---
 title: Az Azure Spring Cloud metrikáinak ismertetése
 description: Ismerje meg, hogyan tekintheti át a metrikákat az Azure Spring Cloud-ban
-services: spring-cloud
-author: v-vasuke
-manager: jeconnoc
-editor: ''
+author: jpconnock
 ms.service: spring-cloud
-ms.topic: quickstart
+ms.topic: conceptual
 ms.date: 10/06/2019
-ms.author: v-vasuke
-ms.openlocfilehash: d9c6f14b7ecfc2929dc48c11e0df1fe80303c8b1
-ms.sourcegitcommit: d773b5743cb54b8cbcfa5c5e4d21d5b45a58b081
+ms.author: jeconnoc
+ms.openlocfilehash: 952dfc1c707df3b7fa61443ea6ea18630352f0dc
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72039125"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73607813"
 ---
 # <a name="metrics-for-azure-spring-cloud"></a>Az Azure Spring Cloud mérőszámai
 
@@ -26,11 +23,11 @@ Az egyes alkalmazások **alkalmazás-áttekintő** lapja egy mérőszámokat tar
 
 5 diagramot biztosítunk percenként frissített metrikákkal a következőkhöz:
 
-* **Http-kiszolgálói hibák**: Az alkalmazáshoz tartozó HTTP-kérelmek száma.
-* **A-ben tárolt adatértékek**: Az alkalmazás által fogadott bájtok száma.
-* **Kimenő adatvesztés**: Az alkalmazásnak eljuttatott bájtok száma.
-* **Kérelmek**: Az alkalmazás által fogadott kérelmek.
-* **Átlagos válaszidő**: Az alkalmazás átlagos válaszideje.
+* **Http-kiszolgálóhiba: hibák**száma az alkalmazásra irányuló HTTP-kérések esetében.
+* **A-ben lévő adat**: az alkalmazás által fogadott bájtok száma.
+* **Kimenő adat**: az alkalmazásnak elküldett bájtok száma.
+* **Kérelmek**: az alkalmazás által fogadott kérelmek.
+* **Átlagos válaszidő**: az alkalmazás átlagos válaszideje.
 
 Kiválaszthat egy időtartományt a diagram 1 óra és 7 nap közötti időtartamára.
 
@@ -44,9 +41,9 @@ A metrikai adatok áttekintéséhez ki kell választania a metrikát, az **össz
 
 Az Azure minden percben lekérdezi és frissíti a metrikákat. Az Azure háromféle módon összesíti az adatokat egy kiválasztott időszakra vonatkozóan:
 
-* **Összesen**: Az összes metrika összegzése célként megadott kimenetként.
-* **Átlag**: Használja az időszak átlagos értékét célként megadott kimenetként.
-* **Maximum/perc**: A maximális/minimális értéket adja meg az időszakban célként megadott kimenetként.
+* **Összesen**: az összes mérőszámot célként megadott kimenetként összesíti.
+* **Átlag**: az időszakban az átlagos értéket célként megadott kimenetként használja.
+* **Max/Min**: használja a maximális/legkisebb értéket az időszakban célként megadott kimenetként.
 
 ### <a name="time-range"></a>Időtartomány
 

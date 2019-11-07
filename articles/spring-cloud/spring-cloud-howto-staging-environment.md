@@ -1,20 +1,17 @@
 ---
 title: Átmeneti környezet beállítása az Azure Spring Cloud-ban | Microsoft Docs
 description: Ismerje meg, hogyan használható a kék-zöld üzembe helyezés az Azure Spring Cloud használatával
-services: spring-cloud
-author: v-vasuke
-manager: gwallace
-editor: ''
+author: jpconnock
 ms.service: spring-cloud
-ms.topic: quickstart
-ms.date: 10/07/2019
-ms.author: v-vasuke
-ms.openlocfilehash: 454eeaa2568891ec35fe698cdb20c5448e10887e
-ms.sourcegitcommit: d773b5743cb54b8cbcfa5c5e4d21d5b45a58b081
+ms.topic: conceptual
+ms.date: 10/31/2019
+ms.author: jeconnoc
+ms.openlocfilehash: 24ce4dee04e4daf3eaee4144f8dc56de5867bbca
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72038985"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73607210"
 ---
 # <a name="how-to-set-up-a-staging-environment"></a>Átmeneti környezet beállítása
 
@@ -26,26 +23,18 @@ Ez a cikk azt feltételezi, hogy már telepítette a PiggyMetrics alkalmazást a
 
 Ha más alkalmazást szeretne használni ehhez a példához, az alkalmazás nyilvános részén egyszerű módosítást kell végeznie.  Ez a változás megkülönbözteti az átmeneti üzembe helyezést az éles környezetben.
 
->[!NOTE]
-> A rövid útmutató megkezdése előtt győződjön meg arról, hogy az Azure-előfizetése hozzáfér az Azure Spring Cloud-hoz.  Előzetes verziójú szolgáltatásként azt javasoljuk, hogy forduljon hozzánk, hogy fel tudja venni az előfizetését az engedélyezési listára.  Ha szeretné felfedezni az Azure Spring Cloud képességeit, lépjen kapcsolatba velünk e-mailben: azure-spring-cloud@service.microsoft.com.
-
 >[!TIP]
 > Az Azure Cloud Shell egy olyan ingyenes interaktív kezelőfelület, amelyet a jelen cikkben található lépések futtatására használhat.  A közös Azure-eszközök előre telepítve vannak, beleértve a git, a JDK, a Maven és az Azure CLI legújabb verzióit. Ha bejelentkezett az Azure-előfizetésbe, indítsa el a [Azure Cloud shellt](https://shell.azure.com) a shell.Azure.com webhelyről.  A Azure Cloud Shellről a [dokumentáció beolvasásával](../cloud-shell/overview.md) tájékozódhat bővebben
 
 A cikk elvégzéséhez:
 
-1. [A Git telepítése](https://git-scm.com/)
-1. [A JDK 8 telepítése](https://docs.microsoft.com/java/azure/jdk/?view=azure-java-stable)
-1. [A Maven 3,0-es vagy újabb verziójának telepítése](https://maven.apache.org/download.cgi)
-1. [Telepítse az Azure CLI-t](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)
-1. [Feliratkozás Azure-előfizetésre](https://azure.microsoft.com/free/)
 
 ## <a name="install-the-azure-cli-extension"></a>Az Azure CLI-bővítmény telepítése
 
 Telepítse az Azure CLI-hez készült Azure Spring Cloud-bővítményt az alábbi paranccsal
 
 ```azurecli
-az extension add -y --source https://azureclitemp.blob.core.windows.net/spring-cloud/spring_cloud-0.1.0-py2.py3-none-any.whl
+az extension add --name spring-cloud
 ```
     
 ## <a name="view-all-deployments"></a>Az összes üzemelő példány megtekintése
@@ -79,10 +68,10 @@ Nyissa meg a szolgáltatási példányt a Azure Portalban, és válassza a **kö
 
 >[!TIP]
 > * Győződjön meg arról, hogy a tesztelési végpont a "/" értékkel végződik, hogy a CSS betöltődik-e.  
-> * Ha a böngésző megköveteli a bejelentkezési hitelesítő adatok megadását a lap megtekintéséhez, használja az [URL-címet](https://www.urldecoder.org/) a teszt végpont dekódolásához. Az URL-cím dekódolása egy "https://\<username >: \<Password > @ \<cluster-Name >. test. azureapps. IO/Gateway/Green" formátumú URL-címet ad vissza.  Ezzel elérheti a végpontot.
+> * Ha a böngésző megköveteli a bejelentkezési hitelesítő adatok megadását a lap megtekintéséhez, használja az [URL-címet](https://www.urldecoder.org/) a teszt végpont dekódolásához. Az URL-cím dekódolása egy URL-címet ad vissza "https://\<username >:\<Password > @\<cluster-Name >. test. azureapps. IO/Gateway/Green".  Ezzel elérheti a végpontot.
 
 >[!NOTE]    
-> A konfigurációs kiszolgáló beállításai az átmeneti környezetre és a gyártásra is érvényesek. Ha például az alkalmazás-átjáró környezeti elérési útját (`server.servlet.context-path`) állítja be a konfigurációs kiszolgálón a *somepath*-ben, akkor a zöld telepítési módosítások elérési útja: "https://\<username >: \<password > @ \<cluster-Name >. test. azureapps. IO/ átjáró/zöld/somepath/... "
+> A konfigurációs kiszolgáló beállításai az átmeneti környezetre és a gyártásra is érvényesek. Ha például az alkalmazás-átjáró környezeti elérési útját (`server.servlet.context-path`) a konfigurációs kiszolgálón *somepath*-ként állítja be, akkor a zöld telepítésének elérési útja: "https://\<username >:\<Password > @\<cluster-Name >. test.azureapps.io/gateway/green/somepath/... "
  
  Ha ezen a ponton látogatja meg a nyilvános alkalmazás-átjárót, az új módosítás nélkül látnia kell a régi oldalt.
     

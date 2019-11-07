@@ -1,6 +1,6 @@
 ---
-title: Az Azure SQL Data Warehouse a oszlopcentrikus index teljesítményének javításához |} A Microsoft Docs
-description: Memóriakövetelményei csökkentse vagy növelje a szabad memória a maximalizálása érdekében az oszlopcentrikus index tömöríti az egyes sorcsoportokba sorok számát.
+title: A oszlopcentrikus index teljesítményének javítása
+description: Azure SQL Data Warehouse csökkentse a memória követelményeit, vagy növelje a rendelkezésre álló memóriát, hogy maximalizálja a oszlopcentrikus-indexek által az egyes sorcsoport tömörítéséhez szükséges sorok számát.
 services: sql-data-warehouse
 author: kevinvngo
 manager: craigg
@@ -10,36 +10,37 @@ ms.subservice: load-data
 ms.date: 03/22/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: ec85bcc764ba7a7ae6341e0490530c31fdb5a02b
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.custom: seo-lt-2019
+ms.openlocfilehash: d5dba4e9a086502f638252a0ce2b16b4abeeb643
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67595464"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73685658"
 ---
-# <a name="maximizing-rowgroup-quality-for-columnstore"></a>Oszlopcentrikus minőségű sorcsoportokba maximalizálása
+# <a name="maximizing-rowgroup-quality-for-columnstore"></a>A oszlopcentrikus sorcsoport-minőségének maximalizálása
 
-Minőségű Sorcsoportokba egy sorcsoport sorainak száma határozza meg. A rendelkezésre álló memória növelése maximalizálhatja az oszlopcentrikus index tömöríti az egyes sorcsoportokba sorok számát.  Ezek a módszerek használatával tömörítési sebesség növelése és a lekérdezési teljesítmény az oszlopcentrikus indexek.
+A sorcsoport minőségét a sorcsoport sorainak száma határozza meg. A rendelkezésre álló memória növelésével maximalizálható, hogy a oszlopcentrikus-indexek hány sort tömörítenek az egyes sorcsoport.  Ezekkel a módszerekkel javíthatja a tömörítési sebességet és a lekérdezési teljesítményt a oszlopcentrikus indexek esetében.
 
-## <a name="why-the-rowgroup-size-matters"></a>Miért fontos a sorcsoport mérete
-Oszlopcentrikus index megvizsgálja a tábla egyes naplóbájtot oszlop szegmenseinek vizsgálatával, mivel az egyes sorcsoportokba sorainak száma jelentős javítja a lekérdezési teljesítmény. Ha naplóbájtot nagy mennyiségű sort, az adattömörítés javítja a ami azt jelenti, hogy kevesebb lemezről beolvasott adatok.
+## <a name="why-the-rowgroup-size-matters"></a>A sorcsoport méretének okai
+Mivel a oszlopcentrikus-indexek egy táblázatot vizsgálnak az egyes sorcsoportokba való tömörítéséhez oszlopainak vizsgálatával, az egyes sorcsoport sorainak maximális száma növeli a lekérdezési teljesítményt. Ha a sorcsoportokba való tömörítéséhez nagy számú sort tartalmaz, az adattömörítés javítja azt, ami azt jelenti, hogy a lemezből kevesebb adatok olvashatók be.
 
-Naplóbájtot kapcsolatos további információkért lásd: [Oszlopcentrikus indexek áttekintésével](https://msdn.microsoft.com/library/gg492088.aspx).
+További információ a sorcsoportokba való tömörítéséhez: [Oszlopcentrikus indexek útmutató](https://msdn.microsoft.com/library/gg492088.aspx).
 
-## <a name="target-size-for-rowgroups"></a>Cél mérete naplóbájtot
-A legjobb lekérdezési teljesítmény a célja a sorok sorcsoportonkénti az oszlopcentrikus index száma maximalizálása érdekében. Egy sorcsoport legfeljebb 1 048 576 sort is rendelkezhet. Már nem rendelkezik a sorok sorcsoportonkénti maximális számát. Az Oszlopcentrikus indexek jó teljesítményt érhet el, ha naplóbájtot legalább 100 000 sorral rendelkezik.
+## <a name="target-size-for-rowgroups"></a>Sorcsoportokba való tömörítéséhez-cél mérete
+A legjobb lekérdezési teljesítmény érdekében a cél a sorcsoport sorok számának maximalizálása egy oszlopcentrikus indexben. A sorcsoport legfeljebb 1 048 576 sort tartalmazhat. A sorok maximális száma nem lehet sorcsoport. A oszlopcentrikus indexek jó teljesítményt érnek el, ha a sorcsoportokba való tömörítéséhez legalább 100 000 sor van.
 
-## <a name="rowgroups-can-get-trimmed-during-compression"></a>Naplóbájtot is első vágott a tömörítés során
+## <a name="rowgroups-can-get-trimmed-during-compression"></a>A sorcsoportokba való tömörítéséhez a tömörítés során kivágásra kerülhet
 
-Során egy tömeges betöltési vagy oszlopcentrikus index újraépítése néha nincs elég használható memória tömörítenie az egyes sorcsoportokba kijelölt összes sorát. Ha van rendelkezésre álló memória mennyisége, az oszlopcentrikus indexek az sorcsoport méretek trim, így az oszloptárba tömörítési sikeres. 
+Tömeges betöltés vagy oszlopcentrikus index újraépítése során előfordulhat, hogy nem áll rendelkezésre elegendő memória az egyes sorcsoport kijelölt sorok tömörítéséhez. Ha van memória-nyomás, a oszlopcentrikus indexek kivágja a sorcsoport méretét, így a oszlopcentrikus tömörítése sikeres lehet. 
 
-Nincs elegendő memória legalább 10 000 sort az egyes sorcsoportokba való tömörítéséhez, amikor az SQL Data Warehouse hibaüzenetet hoz létre.
+Ha nincs elegendő memória ahhoz, hogy legalább 10 000 sort tömörítse az egyes sorcsoport, SQL Data Warehouse hibát generál.
 
-További információ a tömeges betöltés: [egy fürtözött oszlopcentrikus indexbe a tömeges betöltés](https://msdn.microsoft.com/library/dn935008.aspx#Bulk ).
+A tömeges betöltéssel kapcsolatos további információkért lásd: [tömeges betöltés fürtözött oszlopcentrikus indexbe](https://msdn.microsoft.com/library/dn935008.aspx#Bulk ).
 
-## <a name="how-to-monitor-rowgroup-quality"></a>Minőségű sorcsoportokba figyelése
+## <a name="how-to-monitor-rowgroup-quality"></a>A sorcsoport minőségének figyelése
 
-A DMV sys.dm_pdw_nodes_db_column_store_row_group_physical_stats ([sys.dm_db_column_store_row_group_physical_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-column-store-row-group-physical-stats-transact-sql) tartalmazza a nézetdefiníció megfelelő SQL-adatbázis az SQL Data Warehouse), amely elérhetővé teszi a hasznos információk például naplóbájtot és a tisztítás, ha ott volt vágást okát a sorok számát. A következő nézet létrehozhatja úgy is sablonszolgáltatása segítségével kényelmesen sorcsoport levágási kapcsolatban információért a DMV lekérdezéséhez.
+A DMV sys. DM _pdw_nodes_db_column_store_row_group_physical_stats ([sys. DM _db_column_store_row_group_physical_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-column-store-row-group-physical-stats-transact-sql) tartalmazza a View definition Matching SQL db to SQL Data Warehouse), amely hasznos információkat tesz elérhetővé, például a sorok számát a következőben: sorcsoportokba való tömörítéséhez és a vágás oka, ha a vágás megtörtént. A következő nézetet praktikus módon is létrehozhatja a DMV lekérdezéséhez, hogy információkat kapjon a sorcsoport-vágásról.
 
 ```sql
 create view dbo.vCS_rg_physical_stats
@@ -66,63 +67,63 @@ select *
 from cte;
 ```
 
-A trim_reason_desc arról tájékoztatja, hogy vágott lett-e a sorcsoport (trim_reason_desc = NO_TRIM nincs tisztítás történt, és sorcsoport optimális minőségű jelenti). A következő vágás okokból azt jelzik, hogy a sorcsoport idő előtti előtti:
-- BULKLOAD: A vágás OK akkor használható, ha a terhelés bejövő sorköteg kevesebb mint 1 millió sorral rendelkezett. A motor tömörített sorcsoport hoz létre, ha vannak a nagyobb, mint 100 000 sort (ellentétben a különbözeti tároló beszúrása) beszúrt, de a vágás OK BULKLOAD állítja be. Ebben az esetben fontolja meg a batch terheléssel további sorokat tartalmazza. Emellett kiértékeli a particionálási sémát, ez a lehetőség nem túl részletes sorcsoportok nem terjedhetnek ki partícióhatárok biztosításához.
-- MEMORY_LIMITATION: 1 millió sor sorcsoportok létrehozásához, egy bizonyos mennyiségű memóriát működő a motor által van szükség. Ha a betöltési munkamenet rendelkezésre álló memória kevesebb, mint a szükséges munkát memória, a lekérése túl korán vágott sorcsoportok. Az alábbi szakaszok azt ismertetik, hogyan becslése memóriára van szükség, és több memóriát lefoglalni.
-- DICTIONARY_SIZE: Trim ezért azt jelzi, hogy sorcsoport tisztítás történt, mert hiba történt legalább egy karakterláncoszlop széles és/vagy nagy számosságú karakterláncokkal. A szótárkészítéses méret legfeljebb 16 MB-ra a memóriában, és ez a korlát elérésekor a sorcsoport tömörítve van. Ha ez a helyzet, fontolja meg a problémás oszlop elkülönítése egy önálló táblába.
+A trim_reason_desc azt jelzi, hogy a sorcsoport el lett-e vágva (trim_reason_desc = NO_TRIM azt jelenti, hogy a vágás és a sorcsoport nem optimális minőségű). A következő vágási okok a sorcsoport idő előtti kivágását jelzik:
+- BULKLOAD: Ez a vágási ok akkor használatos, ha a terhelés sorainak bejövő kötege kevesebb, mint 1 000 000 sor volt. A motor tömörített sorcsoport-csoportokat hoz létre, ha több mint 100 000 sor van beszúrva (a különbözeti tárolóba való behelyezés helyett), de a Trim ok BULKLOAD állítja be. Ebben az esetben érdemes lehet növelni a Batch-terhelést, hogy több sort tartalmazzon. A particionálási séma újraértékelésével győződjön meg arról, hogy az nem túl részletes, mert a Sorcsoportok nem terjedhetnek ki a partíciós határokra.
+- MEMORY_LIMITATION: a 1 000 000 sorral rendelkező sorcsoport létrehozásához a motornak bizonyos mennyiségű munkamemóriát kell megadnia. Ha a betöltési munkamenet rendelkezésre álló memóriája kisebb, mint a szükséges munkamemória, a sorcsoport idő előtt le lesz vágva. A következő szakaszokban megtudhatja, hogyan becsülheti meg a szükséges memóriát, és hogyan foglalhat le memóriát.
+- DICTIONARY_SIZE: Ez a vágási ok azt jelzi, hogy a sorcsoport-kivágás történt, mert legalább egy olyan karakterlánc-oszlop volt, amely széles és/vagy magas kardinális karakterláncokkal rendelkezik. A szótár mérete legfeljebb 16 MB a memóriában, és ha eléri ezt a korlátot, a rendszer tömöríti a sort. Ha ezt a helyzetet választja, érdemes elkülöníteni a problémás oszlopot egy különálló táblába.
 
-## <a name="how-to-estimate-memory-requirements"></a>Hogyan memória követelményeinek becslése
+## <a name="how-to-estimate-memory-requirements"></a>A memória követelményeinek becslése
 
 <!--
 To view an estimate of the memory requirements to compress a rowgroup of maximum size into a columnstore index, download and run the view [dbo.vCS_mon_mem_grant](). This view shows the size of the memory grant that a rowgroup requires for compression in to the columnstore.
 -->
 
-Egy sorcsoport tömörítése a maximális szükséges memória mérete körülbelül
+Egy sorcsoport tömörítéséhez szükséges maximális memória körülbelül
 
 - 72 MB +
 - \#sorok \* \#oszlopok \* 8 bájt +
-- \#sorok \* \#rövid – karakterlánc-oszlopok \* 32 bájt +
-- \#a hosszú – karakterlánc-oszlopok \* tömörítési 16 MB
+- \#sorok \* \#rövid karakterlánc-oszlopok \* 32 bájt +
+- \#hosszú karakterlánc-oszlopok \* 16 MB a tömörítési szótárhoz
 
-ahol a rövid – karakterlánc-oszlopok használata adattípusokkal, < = 32 bájt és hosszú – karakterlánc-oszlopok használata adattípusokkal > 32 bájt.
+ahol a rövid karakterlánc-oszlopok karakterlánc adattípusokat használnak < = 32 bájt és hosszú karakterlánc típusú oszlopokban, a > 32 bájtos karakterlánc-adattípusokat használnak.
 
-Hosszú karakterláncok tömörített készült szöveges tömöríti a tömörítési módszer. A tömörítéses módszer használ egy *szótár* szövegminták tárolásához. Egy szótárban maximális mérete 16 MB. Nincs a sorcsoport hosszú karakterlánc-oszlopok csak egy szótárban.
+A hosszú karakterláncok tömörítve lettek a szöveg tömörítésére szolgáló tömörítési módszerrel. Ez a tömörítési módszer *szótárt* használ a szöveges mintázatok tárolásához. A szótár maximális mérete 16 MB. A sorcsoport minden hosszú sztring oszlopához csak egy szótár van.
 
-Egy oszlopcentrikus memóriakövetelményei részletes tárgyalását lásd: a videó [Azure SQL Data Warehouse méretezése: konfigurációs és útmutatás](https://channel9.msdn.com/Events/Ignite/2016/BRK3291).
+A oszlopcentrikus memória követelményeinek részletes ismertetését lásd a videó [Azure SQL Data Warehouse skálázás: konfiguráció és útmutatás](https://channel9.msdn.com/Events/Ignite/2016/BRK3291)című témakörben.
 
-## <a name="ways-to-reduce-memory-requirements"></a>Memóriakövetelményei csökkentésére
+## <a name="ways-to-reduce-memory-requirements"></a>A memória-követelmények csökkentésének módjai
 
-Az alábbi technikák segítségével csökkentse a memóriakövetelményei naplóbájtot tömöríti az oszlopcentrikus indexek.
+A következő módszerekkel csökkentheti a sorcsoportokba való tömörítéséhez tömörítéséhez szükséges memóriát a oszlopcentrikus indexek szolgáltatásban.
 
-### <a name="use-fewer-columns"></a>Kevesebb oszlopot használja.
-Ha lehetséges keressen a kevesebb oszlopot tartalmazó táblát. Ha egy sorcsoport az oszloptárba van tömörítve – az oszlopcentrikus index külön-külön tömöríti minden oszlop szegmensben. Ezért egy sorcsoport tömörítendő memóriakövetelményei növekszik oszlopok számának növelése.
+### <a name="use-fewer-columns"></a>Kevesebb oszlop használata
+Ha lehetséges, tervezze meg a táblázatot kevesebb oszloppal. Ha egy sorcsoport a oszlopcentrikus tömörítve van, a oszlopcentrikus-index külön tömöríti az egyes oszlopok szegmenseit. Ezért a sorcsoport tömörítéséhez szükséges memória-követelmények növelik az oszlopok számát.
 
 
-### <a name="use-fewer-string-columns"></a>Oszlopok karakterlánc
-String adattípusú oszlopok numerikus több memóriát és dátum típusú adatokat igényelnek. Memória követelmények csökkentése érdekében fontolja meg a ténytáblák karakterlánc oszlopok eltávolítása, és kisebb dimenziótáblák helyezné azokat.
+### <a name="use-fewer-string-columns"></a>Kevesebb karakterlánc-oszlop használata
+A karakterlánc típusú adattípusok oszlopai több memóriát igényelnek, mint a numerikus és a dátum adattípusok. A memóriára vonatkozó követelmények csökkentése érdekében fontolja meg az egyedkapcsolati táblák karakterlánc-oszlopainak eltávolítását, és a kisebb dimenziós táblákban való elhelyezését.
 
-Karakterlánc tömörítési további memóriára vonatkozó követelmények:
+További memória-követelmények a karakterláncok tömörítéséhez:
 
-- Legfeljebb 32 karakter hosszúságú karakterlánc adattípusok 32 további bájtok száma érték lehet szükség.
-- Adattípusokkal, legfeljebb 32 karakterből álló dictionary módszerekkel tömörítve vannak.  Minden egyes oszlopának a sorcsoport hozhat létre a szótár legfeljebb további 16 MB lehet szükség.
+- A karakterlánc-adattípusok legfeljebb 32 karakterből állhatnak a 32 további bájtok értékkel.
+- A több mint 32 karaktert tartalmazó karakterlánc-adattípusokat a rendszer a szótárak módszereit használva tömöríti.  A sorcsoport minden oszlopa további 16 MB-ra is felhasználhatja a szótár összeállítását.
 
-### <a name="avoid-over-partitioning"></a>Kerülje a fölösleges particionálása
+### <a name="avoid-over-partitioning"></a>A túlzott particionálás elkerülése
 
-Az Oszlopcentrikus indexek hozzon létre egy vagy több naplóbájtot partíciónként. Az SQL Data Warehouse a partíciók számának gyorsan növekednek, mert az adatok terjesztése, és minden egyes terjesztési particionálva van. Ha a tábla túl sok partíció van, a nem feltétlenül a naplóbájtot adatlehívást. A tömörítés során sorok hiánya rendelkezésre álló memória mennyisége nem hoz létre, de vezet, amely nem érhető el a legjobb lekérdezési teljesítmény oszlopcentrikus naplóbájtot.
+A oszlopcentrikus indexek egy vagy több sorcsoportokba való tömörítéséhez hoznak létre. A SQL Data Warehouseban a partíciók száma gyorsan növekszik, mivel az elosztott adatforgalom és az egyes eloszlások particionálva vannak. Ha a tábla túl sok partíciót tartalmaz, előfordulhat, hogy nem áll rendelkezésre elegendő sor a sorcsoportokba való tömörítéséhez kitöltéséhez. A sorok hiánya nem hoz létre memóriát a tömörítés során, de olyan sorcsoportokba való tömörítéséhez vezet, amelyek nem érik el a legjobb oszlopcentrikus-lekérdezési teljesítményt.
 
-Egy másik, kerülje a fölösleges particionálási oka egy többletterhelést okoz, a sorok való egy particionált tábla oszlopcentrikus index betöltésének memóriával. A betöltés során sok partíció kaphassák meg a bejövő szerepelnek, amelyek a memóriában vannak tartva, amíg mindegyik partíció rendelkezik elég sort az tömöríti. Túl sok partíció hoz létre a rendelkezésre álló további memória mennyisége.
+A túlzott particionálás elkerülésének egy másik oka, hogy a sorok terhelését egy particionált tábla oszlopcentrikus indexére kell betölteni. A terhelés során számos partíció fogadhatja a bejövő sorokat, amelyeket a memóriában tartanak, amíg az egyes partíciók nem tömörítik a megfelelő sorokat. A túl sok partíció további memóriát hoz létre.
 
-### <a name="simplify-the-load-query"></a>A betöltés lekérdezés egyszerűsítése
+### <a name="simplify-the-load-query"></a>Leegyszerűsíti a betöltési lekérdezést
 
-Az adatbázis között a lekérdezésben minden operátor egy lekérdezés memóriaengedélyt fájlmegosztások. Amikor egy betöltési lekérdezési összetett rendezést és összekapcsolásokról, csökken a tömörítési rendelkezésre álló memória.
+Az adatbázis megosztja a lekérdezéshez tartozó memória-hozzáférést a lekérdezésben szereplő összes operátor között. Ha egy betöltési lekérdezés összetett rendezéseket és illesztéseket tartalmaz, a tömörítéshez rendelkezésre álló memória csökken.
 
-Hogy arra koncentrálhasson, csak a lekérdezés betöltése a terhelés lekérdezés tervezéséhez. Ha átalakításokat futtat az adatok van szüksége, futtassa őket külön betöltése a lekérdezésből. Például a halomtábla az adatok előkészítéséhez, az átalakítások futtatása és az átmeneti tárolási tábla majd betöltheti az oszlopcentrikus indexet. Először is az adatok betöltéséhez, és az MPP rendszer segítségével az adatok átalakításához.
+Tervezze meg a betöltési lekérdezést úgy, hogy csak a lekérdezés betöltésére koncentráljon. Ha átalakításokat kell futtatnia az adatokon, futtassa őket külön a betöltési lekérdezésből. Például megadhatja az adathalom-tábla adatkészletét, futtathatja az átalakításokat, majd betöltheti az előkészítési táblát a oszlopcentrikus indexbe. Először is betöltheti az adatkészleteket, majd a MPP rendszer használatával átalakíthatja az adattípusokat.
 
-### <a name="adjust-maxdop"></a>Adjust MAXDOP
+### <a name="adjust-maxdop"></a>MAXDOP módosítása
 
-Minden egyes terjesztési tömöríti naplóbájtot párhuzamosan az oszloptárba, ha egynél több processzormaggal érhető el terjesztési száma. A párhuzamosság szükséges további memória-erőforrásokat, amelyek a rendelkezésre álló memória mennyisége és sorcsoport levágási vezethet.
+Minden eloszlás párhuzamosan tömöríti a sorcsoportokba való tömörítéséhez a oszlopcentrikus, ha az eloszlásban több CPU-mag is elérhető. A párhuzamossághoz további memória-erőforrások szükségesek, ami memória-és sorcsoport tisztítást eredményezhet.
 
-Rendelkezésre álló memória mennyisége csökkentése érdekében a MAXDOP lekérdezési mutató kényszerítése a betöltési művelet belül minden egyes terjesztési soros módban történő futtatására használhatja.
+A memória terhelésének csökkentése érdekében a MAXDOP lekérdezési mutatóval kényszerítheti a betöltési műveletet, hogy soros módban fusson az egyes eloszlásokon belül.
 
 ```sql
 CREATE TABLE MyFactSalesQuota
@@ -131,14 +132,14 @@ AS SELECT * FROM FactSalesQuota
 OPTION (MAXDOP 1);
 ```
 
-## <a name="ways-to-allocate-more-memory"></a>Több memóriát lefoglalni módjai
+## <a name="ways-to-allocate-more-memory"></a>Több memória foglalásának módjai
 
-DWU méretének és a felhasználó erőforrásosztályhoz együtt határozza meg, mennyi memória érhető el a felhasználói lekérdezés. Egy betöltési lekérdezés memóriaengedélyt növelése érdekében dwu-k számának növelése vagy is növelheti a erőforrásosztályhoz.
+A DWU mérete és a felhasználói erőforrás osztály együttesen határozzák meg, hogy mekkora memória érhető el a felhasználói lekérdezésekhez. A betöltési lekérdezések memória-engedélyezésének növeléséhez növelje a DWU számát, vagy növelje az erőforrás osztályt.
 
-- A Dwu növelését, lásd: [hogyan méretezhető teljesítmény?](quickstart-scale-compute-portal.md)
-- Ha módosítani szeretné egy lekérdezés erőforrásosztály, lásd: [módosítása egy felhasználói erőforrás osztály példa](resource-classes-for-workload-management.md#change-a-users-resource-class).
+- A DWU növeléséhez lásd: [Hogyan méretezési teljesítmény?](quickstart-scale-compute-portal.md)
+- Ha módosítani szeretné egy lekérdezés erőforrás osztályát, tekintse meg a [felhasználói erőforrás osztályának módosítása](resource-classes-for-workload-management.md#change-a-users-resource-class)című témakört.
 
 ## <a name="next-steps"></a>További lépések
 
-Talál további részleteket az SQL Data Warehouse teljesítményének javításához, tekintse meg a [teljesítmény áttekintése](sql-data-warehouse-overview-manage-user-queries.md).
+Ha többet szeretne megtudni a SQL Data Warehouse teljesítményének növeléséhez, tekintse meg a [teljesítmény áttekintését](sql-data-warehouse-overview-manage-user-queries.md).
 

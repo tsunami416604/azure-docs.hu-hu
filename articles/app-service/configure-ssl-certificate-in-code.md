@@ -1,5 +1,5 @@
 ---
-title: SSL-tanúsítvány használata az alkalmazás kódjában – Azure App Service | Microsoft Docs
+title: SSL-tanúsítvány használata a Code-Azure App Serviceban | Microsoft Docs
 description: Ismerje meg, hogyan használhatók az Ügyféltanúsítványok az azokat igénylő távoli erőforrásokhoz való kapcsolódáshoz.
 services: app-service
 documentationcenter: ''
@@ -10,22 +10,22 @@ ms.service: app-service
 ms.workload: web
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 10/16/2019
+ms.date: 11/04/2019
 ms.author: cephalin
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: 1f042f72f82d2198472fe81670c697c0c4b28321
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: HT
+ms.openlocfilehash: 93dfe784d45cd9cd93d22c5e8c3275c563f7f88b
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/04/2019
-ms.locfileid: "73513691"
+ms.locfileid: "73572080"
 ---
-# <a name="use-an-ssl-certificate-in-your-application-code-in-azure-app-service"></a>Használjon SSL-tanúsítványt az alkalmazás kódjában Azure App Service
+# <a name="use-an-ssl-certificate-in-your-code-in-azure-app-service"></a>SSL-tanúsítvány használata a kódban Azure App Service
 
-Az App Service-alkalmazás kódja ügyfélként működhet, és olyan külső szolgáltatáshoz férhet hozzá, amelyhez tanúsítványalapú hitelesítés szükséges. Ez a útmutató bemutatja, hogyan használhatók a nyilvános vagy privát tanúsítványok az alkalmazás kódjában.
+Az alkalmazás kódjában elérheti a [app Servicehoz hozzáadott nyilvános vagy privát tanúsítványokat](configure-ssl-certificate.md). Az alkalmazás kódja ügyfélként működhet, és olyan külső szolgáltatáshoz férhet hozzá, amelyhez tanúsítványalapú hitelesítés szükséges, vagy szükség lehet titkosítási feladatok végrehajtására. Ez a útmutató bemutatja, hogyan használhatók a nyilvános vagy privát tanúsítványok az alkalmazás kódjában.
 
-A kódban szereplő tanúsítványok használatának módszere a App Service SSL funkciójának használatát igényli, amelyhez az alkalmazásnak **alapszintű vagy magasabb szintűnek** kell lennie. Azt is megteheti, hogy [felveszi a tanúsítványfájl alkalmazást az alkalmazás-adattárba](#load-certificate-from-file), de nem ajánlott eljárás a privát tanúsítványokhoz.
+A kódban szereplő tanúsítványok használatának módszere a App Service SSL funkciójának használatát igényli, amelyhez az alkalmazásnak **alapszintű vagy magasabb szintűnek** kell lennie. Ha az alkalmazás **ingyenes** vagy **megosztott** szinten van, akkor az alkalmazás adattárában is megadhatja [a tanúsítványfájl-fájlt](#load-certificate-from-file).
 
 Ha App Service felügyeli az SSL-tanúsítványokat, megtarthatja a tanúsítványokat és az alkalmazás kódját, és gondoskodhat a bizalmas adatok védelméről is.
 
@@ -46,9 +46,9 @@ Keresse meg a használni kívánt tanúsítványt, és másolja az ujjlenyomatot
 
 ![A tanúsítvány ujjlenyomatának másolása](./media/configure-ssl-certificate/create-free-cert-finished.png)
 
-## <a name="load-the-certificate"></a>A tanúsítvány betöltése
+## <a name="make-the-certificate-accessible"></a>A tanúsítvány elérhetővé tétele
 
-Ha egy tanúsítványt szeretne használni az alkalmazás kódjában, adja hozzá az ujjlenyomatát a `WEBSITE_LOAD_CERTIFICATES` alkalmazás beállításához a következő parancs futtatásával a <a target="_blank" href="https://shell.azure.com" >Cloud Shellban</a>:
+Ha az alkalmazás kódjában szeretne hozzáférni egy tanúsítványhoz, adja hozzá az ujjlenyomatát a `WEBSITE_LOAD_CERTIFICATES` alkalmazás beállításához a következő parancs futtatásával a <a target="_blank" href="https://shell.azure.com" >Cloud Shellban</a>:
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings WEBSITE_LOAD_CERTIFICATES=<comma-separated-certificate-thumbprints>
@@ -56,15 +56,14 @@ az webapp config appsettings set --name <app-name> --resource-group <resource-gr
 
 Az összes tanúsítvány elérhetővé tételéhez állítsa `*`értékre az értéket.
 
-> [!NOTE]
-> Ez a beállítás a legtöbb díjszabási szinten elhelyezi a megadott tanúsítványokat a [jelenlegi Settingsnew](/windows-hardware/drivers/install/local-machine-and-current-user-certificate-stores) -tárolóban, de az **elkülönített** szinten (azaz az alkalmazás [app Service Environmentban](environment/intro.md)fut) a tanúsítványokat a [helyi Machine\My](/windows-hardware/drivers/install/local-machine-and-current-user-certificate-stores) helyezi el. Store.
->
+## <a name="load-certificate-in-windows-apps"></a>Tanúsítvány betöltése Windows-alkalmazásokban
 
-A konfigurált tanúsítványok most már készen állnak a kód használatára.
+A `WEBSITE_LOAD_CERTIFICATES` alkalmazás beállítása lehetővé teszi, hogy a megadott tanúsítványok elérhetők legyenek a Windows által üzemeltetett alkalmazás számára a Windows tanúsítványtárolóban, és a hely az [árképzési szinttől](overview-hosting-plans.md)függ:
 
-## <a name="load-the-certificate-in-code"></a>A tanúsítvány betöltése a kódban
+- **Elkülönített** réteg – [helyi Machine\My](/windows-hardware/drivers/install/local-machine-and-current-user-certificate-stores). 
+- Minden egyéb réteg – az [aktuális Settingsnew](/windows-hardware/drivers/install/local-machine-and-current-user-certificate-stores).
 
-Miután a tanúsítvány elérhetővé válik, a Tanúsítvány ujjlenyomata alapján férhet hozzá a C# kódban. A következő kód betölt egy tanúsítványt az ujjlenyomattal `E661583E8FABEF4C0BEF694CBC41C28FB81CD870`.
+A C# kódban a Tanúsítvány ujjlenyomata alapján férhet hozzá a tanúsítványhoz. A következő kód betölt egy tanúsítványt az ujjlenyomattal `E661583E8FABEF4C0BEF694CBC41C28FB81CD870`.
 
 ```csharp
 using System;
@@ -89,30 +88,74 @@ certStore.Close();
 ...
 ```
 
-<a name="file"></a>
-## <a name="load-certificate-from-file"></a>Tanúsítvány betöltése fájlból
+A Java-kódban a tulajdonos köznapi név mezővel férhet hozzá a tanúsítványhoz a "Windows-MY" áruházból (lásd: [nyilvános kulcsú tanúsítvány](https://en.wikipedia.org/wiki/Public_key_certificate)). A következő kód bemutatja, hogyan tölthető be egy titkos kulcsú tanúsítvány:
 
-Ha be kell töltenie egy tanúsítványfájl-fájlt az alkalmazás könyvtárából, akkor jobb, ha például a [git](deploy-local-git.md)helyett a [FTPS](deploy-ftp.md) használatával tölti fel. A bizalmas adatokat, például egy privát tanúsítványt a forrás-ellenőrzésen kívül kell tartania.
+```java
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.RequestMapping;
+import java.security.KeyStore;
+import java.security.cert.Certificate;
+import java.security.PrivateKey;
 
-Annak ellenére, hogy a fájlt közvetlenül a .NET-kódban tölti be, a függvénytár továbbra is ellenőrzi, hogy az aktuális felhasználói profil be van-e töltve. Az aktuális felhasználói profil betöltéséhez állítsa be a `WEBSITE_LOAD_USER_PROFILE` alkalmazás beállítását a <a target="_blank" href="https://shell.azure.com" >Cloud Shell</a>következő parancsával.
+...
+KeyStore ks = KeyStore.getInstance("Windows-MY");
+ks.load(null, null); 
+Certificate cert = ks.getCertificate("<subject-cn>");
+PrivateKey privKey = (PrivateKey) ks.getKey("<subject-cn>", ("<password>").toCharArray());
 
-```azurecli-interactive
-az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings WEBSITE_LOAD_USER_PROFILE=1
+// Use the certificate and key
+...
 ```
 
-A beállítás beállítása után a következő C# példa egy `mycert.pfx` nevű tanúsítványt tölt be az alkalmazás adattárának `certs` könyvtárából.
+Azokon a nyelveken, amelyeken nem támogatott vagy nem nyújt elegendő támogatást a Windows tanúsítványtárolóhoz, lásd: [tanúsítvány betöltése fájlból](#load-certificate-from-file).
+
+## <a name="load-certificate-in-linux-apps"></a>Tanúsítvány betöltése Linux-alkalmazásokban
+
+A `WEBSITE_LOAD_CERTIFICATES` Alkalmazásbeállítások lehetővé teszik, hogy a megadott tanúsítványok elérhetők legyenek a Linux által üzemeltetett alkalmazások számára (beleértve az egyéni tároló alkalmazásait) fájlként. A fájlok a következő könyvtárakban találhatók:
+
+- Privát tanúsítványok – `/var/ssl/private` (`.p12` fájlok)
+- Nyilvános tanúsítványok – `/var/ssl/certs` (`.der` fájlok)
+
+A tanúsítványfájl neve a tanúsítvány ujjlenyomatai megfelelnek. A következő C# kód bemutatja, hogyan tölthető be egy nyilvános tanúsítvány egy Linux-alkalmazásban.
 
 ```csharp
 using System;
 using System.Security.Cryptography.X509Certificates;
 
 ...
-// Replace the parameter with "~/<relative-path-to-cert-file>".
-string certPath = Server.MapPath("~/certs/mycert.pfx");
+var bytes = System.IO.File.ReadAllBytes("/var/ssl/certs/<thumbprint>.der");
+var cert = new X509Certificate2(bytes);
 
-X509Certificate2 cert = GetCertificate(certPath, signatureBlob.Thumbprint);
-...
+// Use the loaded certificate
 ```
+
+Az SSL-tanúsítványoknak a Node. js, a PHP, a Python, a Java vagy a Ruby fájlból való betöltéséről a megfelelő nyelvi vagy webes platform dokumentációjában talál további információt.
+
+## <a name="load-certificate-from-file"></a>Tanúsítvány betöltése fájlból
+
+Ha manuálisan feltöltött tanúsítványfájl betöltését szeretné elvégezni, akkor jobb, ha például a [git](deploy-local-git.md)helyett a [FTPS](deploy-ftp.md) használatával tölti fel a tanúsítványt. A bizalmas adatokat, például egy privát tanúsítványt a forrás-ellenőrzésen kívül kell tartania.
+
+> [!NOTE]
+> A Windows ASP.NET és ASP.NET Core akkor is el kell érnie a tanúsítványtárolót, ha fájlból tölt be tanúsítványt. Egy Windows .NET-alkalmazásban lévő tanúsítványfájl betöltéséhez töltse be az aktuális felhasználói profilt a <a target="_blank" href="https://shell.azure.com" >Cloud Shell</a>következő parancsával:
+>
+> ```azurecli-interactive
+> az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings WEBSITE_LOAD_USER_PROFILE=1
+> ```
+
+Az alábbi C# példa egy nyilvános tanúsítványt tölt be egy relatív elérési útról az alkalmazásban:
+
+```csharp
+using System;
+using System.Security.Cryptography.X509Certificates;
+
+...
+var bytes = System.IO.File.ReadAllBytes("~/<relative-path-to-cert-file>");
+var cert = new X509Certificate2(bytes);
+
+// Use the loaded certificate
+```
+
+Az SSL-tanúsítványoknak a Node. js, a PHP, a Python, a Java vagy a Ruby fájlból való betöltéséről a megfelelő nyelvi vagy webes platform dokumentációjában talál további információt.
 
 ## <a name="more-resources"></a>További erőforrások
 

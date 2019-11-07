@@ -1,5 +1,5 @@
 ---
-title: 'Azure Data Factory: gyakori kérdések | Microsoft Docs'
+title: 'Azure Data Factory: gyakori kérdések '
 description: Választ kaphat a Azure Data Factoryával kapcsolatos gyakori kérdésekre.
 services: data-factory
 documentationcenter: ''
@@ -9,20 +9,20 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 06/27/2018
-ms.openlocfilehash: 7ebcf865ad23e75b2aa9070fe14fc3ee8f1397c7
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 2da12bbc760ff06ad0737ed9d48e12ea81260655
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73481145"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73674729"
 ---
 # <a name="azure-data-factory-faq"></a>Azure Data Factory GYIK
 Ez a cikk a Azure Data Factoryával kapcsolatos gyakori kérdésekre adott válaszokat tartalmazza.  
 
 ## <a name="what-is-azure-data-factory"></a>Mi az az Azure Data Factory? 
-A Data Factory egy teljes körűen felügyelt, felhőalapú, adatintegrációs szolgáltatás, amely automatizálja az adatátvitelt és-átalakítást. Mint egy olyan gyár, amely a nyersanyagok késztermékbe alakítására szolgáló berendezéseket futtat, Azure Data Factory összehangolja a meglévő olyan szolgáltatásokat, amelyek nyers adatokat gyűjtenek, és a használatra kész információkra alakítják át azokat. 
+A Data Factory egy teljes körűen felügyelt, felhőalapú, adatintegrációs ETL szolgáltatás, amely automatizálja az adatátvitelt és-átalakítást. Mint egy olyan gyár, amely a nyersanyagok késztermékbe alakítására szolgáló berendezéseket futtat, Azure Data Factory összehangolja a meglévő olyan szolgáltatásokat, amelyek nyers adatokat gyűjtenek, és a használatra kész információkra alakítják át azokat. 
 
-A Azure Data Factory használatával adatvezérelt munkafolyamatokat hozhat létre, amelyekkel áthelyezheti az adatátvitelt a helyszíni és a Felhőbeli adattárak között. Emellett számítási szolgáltatások, például az Azure HDInsight, a Azure Data Lake Analytics és az SQL Server Integration Services (SSIS) integrációs modul használatával is feldolgozhatja és átalakíthatja az adatgyűjtést. 
+A Azure Data Factory használatával adatvezérelt munkafolyamatokat hozhat létre, amelyekkel áthelyezheti az adatátvitelt a helyszíni és a Felhőbeli adattárak között. És az adatfolyamatokkal is feldolgozhatja és átalakíthatja az adatforgalmat. Az ADF a számítási szolgáltatások, például az Azure HDInsight, a Azure Databricks és a SQL Server Integration Services (SSIS) integrációs modul használatával is támogatja a külső számítási motorokat a kézzel kódolt átalakításokhoz. 
 
 Az Data Factory segítségével az adatfeldolgozást Azure-alapú felhőalapú szolgáltatáson vagy saját üzemeltetésű számítási környezetben, például SSIS, SQL Server vagy Oracle-ben is végrehajthatja. Ha olyan folyamatot hoz létre, amely végrehajtja a szükséges műveletet, ütemezheti rendszeres időközönként (például óránként, naponta vagy hetente), az időablakok ütemezését, vagy az esemény bekövetkezésekor a folyamat aktiválását. További információkért lásd: [Az Azure Data Factory bemutatása](introduction.md).
 
@@ -108,6 +108,9 @@ Az Azure-előfizetések több Azure Data Factory-példányt (más néven adat-el
 
 ### <a name="pipelines"></a>Folyamatok
 A data factory egy vagy több folyamattal rendelkezhet. A folyamat a tevékenységek logikai csoportosítása a Munkaegységek elvégzéséhez. A folyamatban lévő tevékenységek együtt egy feladatot hajtanak végre. Egy folyamat például tartalmazhat olyan tevékenységeket, amelyek egy Azure-blobból töltenek le adatot, majd egy HDInsight-fürtön futtatnak egy kaptár-lekérdezést az adatok particionálásához. Ennek az az előnye, hogy egy folyamattal kezelheti a tevékenységeket készletként ahelyett, hogy az egyes tevékenységeket külön kell kezelnie. Egy folyamaton belül összekapcsolhatja a tevékenységeket, hogy azok egymás után is működjenek, vagy egymástól függetlenül, párhuzamosan is működhetnek.
+
+### <a name="data-flows"></a>Adatforgalom
+Az adatfolyamatok olyan objektumok, amelyeket vizuálisan hozhat létre Data Factory, amelyek a háttérbeli Spark-szolgáltatásokban nagy mennyiségű adatátalakítást végeznek. Nincs szükség a programozás vagy a Spark belső elemeinek megismerésére. Egyszerűen tervezze meg az Adatátalakítási szándékot gráfok (leképezések) vagy számolótáblák (huzavona-EK) használatával.
 
 ### <a name="activities"></a>Tevékenységek
 Egy folyamatban a tevékenységek a feldolgozási lépéseket jelentik. A másolási tevékenység használatával például az adatok egy adattárból egy másik adattárba másolhatók. Ehhez hasonlóan használhat egy kaptár-tevékenységet is, amely egy Azure HDInsight-fürtön futó kaptár-lekérdezést futtat az adatai átalakításához vagy elemzéséhez. A Data Factory három típusú tevékenységet támogat: az adattovábbítási tevékenységeket, az adat-átalakítási tevékenységeket és a vezérlési tevékenységeket.

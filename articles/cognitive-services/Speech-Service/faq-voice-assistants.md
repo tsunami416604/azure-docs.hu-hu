@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: travisw
-ms.openlocfilehash: 7ad3f932e9a10723d6cc1bae2fc4854c932d4c64
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: HT
+ms.openlocfilehash: eccf2a7a1b9c7ea7a21cd5d0cf0f60728284c05d
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/04/2019
-ms.locfileid: "73507076"
+ms.locfileid: "73579667"
 ---
 # <a name="voice-assistants-frequently-asked-questions"></a>Hangvezérelt asszisztensek: gyakori kérdések
 
@@ -29,7 +29,7 @@ Ha a jelen dokumentumban nem talál választ a kérdéseire, tekintse meg az [eg
 
 **K: használhatok egyéni parancsokat (előzetes verzió) vagy közvetlen vonalas beszédet? Mi a különbség?**
 
-**A:** az [egyéni parancsok (előzetes verzió)](custom-commands.md) egy alacsonyabb bonyolultságú eszközkészletet biztosítanak, amellyel könnyedén létrehozhatók és beállíthatók a feladat-végrehajtási forgatókönyvekhez jól illeszkedő asszisztensek. A [közvetlen vonalas beszéd](direct-line-speech.md) gazdagabb és kifinomultabb képességeket biztosít, amelyek lehetővé teszik robusztus társalgási forgatókönyvek használatát. További információért lásd a [segéd-megoldások összehasonlítását](voice-assistants.md#comparing-assistant-solutions) ismertető témakört.
+**A:** az [egyéni parancsok (előzetes verzió)](custom-commands.md) egy alacsonyabb bonyolultságú eszközkészletet biztosítanak, amellyel könnyedén létrehozhatók és beállíthatók a feladat-végrehajtási forgatókönyvekhez jól illeszkedő asszisztensek. A [közvetlen vonalas beszéd](direct-line-speech.md) gazdagabb és kifinomultabb képességeket biztosít, amelyek lehetővé teszik robusztus társalgási forgatókönyvek használatát. További információért lásd a [segéd-megoldások összehasonlítását](voice-assistants.md#choosing-an-assistant-solution) ismertető témakört.
 
 **K: Hogyan első lépések?**
 
@@ -40,6 +40,17 @@ Ha a jelen dokumentumban nem talál választ a kérdéseire, tekintse meg az [eg
 * [Robot összekötése a közvetlen vonalas beszéd csatornával](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech)
 
 ## <a name="debugging"></a>Hibakeresés
+
+**K: hol van a Channel Secret?**
+
+**A:** Ha a Direct line Speech előzetes verzióját használta, vagy a kapcsolódó dokumentációt olvasta, előfordulhat, hogy a Direct line Speech Channel regisztrációs lapján talál egy titkos kulcsot. A Speech SDK-ban a v 1.7 `DialogServiceConfig` Factory metódus `FromBotSecret` is ezt az értéket várja.
+
+A Direct line Speech legújabb verziója leegyszerűsíti a robot egy eszközről való kapcsolatfelvételi folyamatát. A Channel Registration (csatorna regisztrálása) lapon a felül lévő legördülő lista a Direct line Speech Channel-regisztrációt egy beszédfelismerési erőforrással társítja. Ha társítva van, a v 1.8 Speech SDK tartalmaz egy `BotFrameworkConfig::FromSubscription` Factory metódust, amely egy `DialogServiceConnector` konfigurál, hogy kapcsolatba lépjen az előfizetéshez társított robottal.
+
+Ha továbbra is áttelepíti az ügyfélalkalmazás alkalmazást a v 1.7-ről a v 1.8-ra, `DialogServiceConfig::FromBotSecret` továbbra is dolgozhat a Channel Secret paraméteréhez nem üres, nem null értékű értékkel, például a korábban használt titokkal. Ezt a rendszer egyszerűen figyelmen kívül hagyja, ha egy újabb csatornás regisztrációhoz társított beszédfelismerési előfizetést használ. Vegye figyelembe, hogy az érték *nem lehet null* és nem üres, mivel ezeket a rendszer az eszközön a szolgáltatási oldal társítása előtt ellenőrzi.
+
+
+Részletesebb útmutatásért tekintse meg az [oktatóanyag című szakaszt](tutorial-voice-enable-your-bot-speech-sdk.md#register-the-direct-line-speech-channel) , amely végigvezeti a csatorna regisztrálásán.
 
 **K: 401-es hibaüzenetet kapok a csatlakozáskor, és semmi nem működik. Tudom, hogy a Speech előfizetés kulcsa érvényes. mi történik?**
 

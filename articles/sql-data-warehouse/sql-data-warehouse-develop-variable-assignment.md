@@ -1,5 +1,5 @@
 ---
-title: Változók kiosztása Azure SQL Data Warehouseban | Microsoft Docs
+title: Változók kiosztása
 description: Tippek a T-SQL-változók Azure SQL Data Warehouse való hozzárendeléséhez a megoldások fejlesztéséhez.
 services: sql-data-warehouse
 author: XiaoyuMSFT
@@ -10,12 +10,13 @@ ms.subservice: development
 ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: 6c943478f3904aac17a572f012f2b2b69ffa2223
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.custom: seo-lt-2019
+ms.openlocfilehash: 1ae5285a8d1cf6fa391c082d0196b213e6b6a9c5
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68479562"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73692756"
 ---
 # <a name="assigning-variables-in-azure-sql-data-warehouse"></a>Változók hozzárendelésének Azure SQL Data Warehouse
 
@@ -23,7 +24,7 @@ Tippek a T-SQL-változók Azure SQL Data Warehouse való hozzárendeléséhez a 
 
 ## <a name="setting-variables-with-declare"></a>Változók beállítása a DECLARE értékkel
 
-A SQL Data Warehouse változók az `DECLARE` utasítással vagy az `SET` utasítással vannak beállítva. A változók és a bevallások inicializálása az egyik legrugalmasabb módszer a SQL Data Warehouse változó értékének megadására.
+A SQL Data Warehouse változók a `DECLARE` utasítás vagy a `SET` utasítás használatával vannak beállítva. A változók és a bevallások inicializálása az egyik legrugalmasabb módszer a SQL Data Warehouse változó értékének megadására.
 
 ```sql
 DECLARE @v  int = 0
@@ -38,7 +39,7 @@ DECLARE @v  INT = (SELECT TOP 1 c_customer_sk FROM Customer where c_last_name = 
 ;
 ```
 
-Nem inicializálható és nem használható változó ugyanabban a DEKLARÁLt utasításban. A pont szemléltetése érdekében a következő példa **nem** engedélyezett, mivel @p1 mindkettő inicializálva van, és ugyanabban a deklarált utasításban van használatban. A következő példa hibát jelez.
+Nem inicializálható és nem használható változó ugyanabban a DEKLARÁLt utasításban. A pont szemléltetéséhez a következő példa **nem** engedélyezett, mert @p1 egyszerre van inicializálva, és UGYANABBAN a deklarált utasításban van használatban. A következő példa hibát jelez.
 
 ```sql
 DECLARE @p1 int = 0

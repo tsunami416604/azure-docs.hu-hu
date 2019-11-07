@@ -1,5 +1,5 @@
 ---
-title: Kiszolgáló nélküli Azure SQL Database | Microsoft Docs
+title: Kiszolgáló nélküli Azure SQL Database
 description: Ez a cikk az új kiszolgáló nélküli számítási szintet ismerteti, és összehasonlítja a meglévő kiépített számítási szintjével.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: moslake
 ms.author: moslake
 ms.reviewer: sstein, carlrab
 ms.date: 11/04/2019
-ms.openlocfilehash: e8629baa3487795349844229b26d80321c1316ee
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: fcd79182e046d94f9e67acecebd5cf6a45f2706f
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73496254"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73687386"
 ---
 # <a name="azure-sql-database-serverless"></a>Kiszolgáló nélküli Azure SQL Database
 
@@ -43,7 +43,7 @@ Az önálló adatbázisok kiszolgáló nélküli számítási rétegét egy szá
 
 További részletekért tekintse meg a [számlázást](sql-database-serverless.md#billing)ismertető témakört.
 
-## <a name="scenarios"></a>Alkalmazási helyzetek
+## <a name="scenarios"></a>Forgatókönyvek
 
 A kiszolgáló nélküli, időszakos, kiszámíthatatlan használati mintákkal rendelkező önálló adatbázisokhoz optimalizált ár-teljesítmény, amely némi késést biztosít a számítási felmelegszik a tétlen használati időszakok után. Ezzel szemben a kiépített számítási szint az önálló adatbázisokra vagy a rugalmas készletekben található több adatbázisra optimalizált, magasabb átlagos használattal, amely nem biztosít semmilyen késleltetést a számítási felmelegítőben.
 
@@ -174,8 +174,6 @@ Ha egy új adatbázist hoz létre, vagy egy meglévő adatbázist kiszolgáló n
    |Minimális virtuális mag|A maximális virtuális mag függ – lásd az [erőforrás-korlátokat](sql-database-vcore-resource-limits-single-databases.md#general-purpose---serverless-compute---gen5).|0,5 virtuális mag|
    |Automatikus szüneteltetés késleltetése|Minimum: 60 perc (1 óra)<br>Maximum: 10080 perc (7 nap)<br>Növekmények: 60 perc<br>Automatikus szüneteltetés letiltása:-1|60 perc|
 
-> [!NOTE]
-> A T-SQL használatával egy meglévő adatbázist kiszolgáló nélkülire helyezhet át, vagy megváltoztathatja a számítási méretet, de a Azure Portal vagy a PowerShell segítségével végezhető el.
 
 ### <a name="create-new-database-in-serverless-compute-tier"></a>Új adatbázis létrehozása kiszolgáló nélküli számítási szinten 
 
@@ -200,6 +198,17 @@ New-AzSqlDatabase `
   -AutoPauseDelayInMinutes 720
 ```
 
+#### <a name="use-transact-sql-t-sql"></a>Transact-SQL (T-SQL) használata
+
+Az alábbi példa egy új adatbázist hoz létre a kiszolgáló nélküli számítási szinten.
+
+```sql
+CREATE DATABASE testdb
+( EDITION = 'GeneralPurpose', SERVICE_OBJECTIVE = 'GP_S_Gen5_1' ) ;
+```
+
+Részletekért lásd: [adatbázis létrehozása](/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-current).  
+
 ### <a name="move-database-from-provisioned-compute-tier-into-serverless-compute-tier"></a>Adatbázis áthelyezése a kiépített számítási rétegekből kiszolgáló nélküli számítási szintjére
 
 #### <a name="use-powershell"></a>A PowerShell használata
@@ -218,6 +227,17 @@ Set-AzSqlDatabase `
   -MaxVcore 4 `
   -AutoPauseDelayInMinutes 1440
 ```
+
+#### <a name="use-transact-sql-t-sql"></a>Transact-SQL (T-SQL) használata
+
+Az alábbi példa egy adatbázist helyez át a kiépített számítási szintről a kiszolgáló nélküli számítási szintbe. 
+
+```sql
+ALTER DATABASE testdb 
+MODIFY ( SERVICE_OBJECTIVE = 'GP_S_Gen5_1') ;
+```
+
+Részletekért lásd: [adatbázis módosítása](/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current).
 
 ### <a name="move-database-from-serverless-compute-tier-into-provisioned-compute-tier"></a>Adatbázis áthelyezése kiszolgáló nélküli számítási szintjéről kiépített számítási szinten
 
@@ -323,6 +343,10 @@ Pontosabban, a példában szereplő számítási számla kiszámítása a követ
 |24 órán át számlázott virtuális mag-másodpercek összesen||||50400 virtuális mag másodperc|
 
 Tegyük fel, hogy a számítási egység ára $0.000073/virtuális mag/Second.  Ezt követően a 24 órás időszakra kiszámított számítás a számítási egység árának és a virtuális mag másodpercben mért kiszámlázásának szorzata: $0.000073/virtuális mag/Second * 50400 virtuális mag másodperc = $3,68
+
+### <a name="azure-hybrid-benefit-and-reserved-capacity"></a>Azure Hybrid Benefit és fenntartott kapacitás
+
+A Azure Hybrid Benefit (AHB) és a fenntartott kapacitási kedvezmények nem vonatkoznak a kiszolgáló nélküli számítási szintjére.
 
 ## <a name="available-regions"></a>Elérhető régiók
 

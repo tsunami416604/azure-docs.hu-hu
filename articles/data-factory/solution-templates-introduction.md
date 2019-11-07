@@ -1,5 +1,5 @@
 ---
-title: A Azure Data Factory sablonjainak áttekintése | Microsoft Docs
+title: A Azure Data Factory sablonjainak áttekintése
 description: Megtudhatja, hogyan használható előre definiált sablon a Azure Data Factory gyors megkezdéséhez.
 services: data-factory
 documentationcenter: ''
@@ -11,12 +11,12 @@ ms.date: 01/04/2019
 author: djpmsft
 ms.author: daperlov
 manager: craigg
-ms.openlocfilehash: eb7a7eb8e1bdacae4b74e3a0019a376c440fe4d5
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 7895fedd0f68ae1c8ea4808c54a18a4e73b57b2c
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71091977"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73684066"
 ---
 # <a name="templates"></a>Sablonok
 
@@ -30,11 +30,11 @@ A következő két módon teheti meg a Data Factory folyamat létrehozását a s
 
     ![A sablon-gyűjtemény megnyitása az Áttekintés lapról](media/solution-templates-introduction/templates-intro-image1.png)
 
-1.  A erőforrás-kezelő szerző lapján válassza a, majd **+** a **folyamat sablonból** lehetőséget a sablon-gyűjtemény megnyitásához.
+1.  A erőforrás-kezelő szerző lapján válassza a **+** , majd a **folyamat sablonból** lehetőséget a sablon-gyűjtemény megnyitásához.
 
     ![A sablon-gyűjtemény megnyitása a szerző lapról](media/solution-templates-introduction/templates-intro-image2.png)
 
-## <a name="template-gallery"></a>Sablontár
+## <a name="template-gallery"></a>Sablon gyűjteménye
 
 ![A sablon gyűjteménye](media/solution-templates-introduction/templates-intro-image3.png)
 
@@ -54,7 +54,7 @@ A Data Factory Azure Resource Manager sablonokat használ a következő adattár
 
     -   [Különbözeti másolat az adatbázisból](solution-template-delta-copy-with-control-table.md)
 
-    -   \<Másolás\> forrásrólcélhelyre\<\>
+    -   Másolás \<forrás\>ról \<célhelyre\>
 
         -   [Amazon S3-ról Azure Data Lake Store Gen 2](solution-template-migration-s3-azure.md)
 
@@ -72,7 +72,7 @@ A Data Factory Azure Resource Manager sablonokat használ a következő adattár
 
 -   SSIS-sablonok
 
-    -   Az Azure-SSIS Integration Runtime ütemezett SSIS-csomagok végrehajtása
+    -   SSIS-csomagok végrehajtásának ütemezett Azure-SSIS Integration Runtime
 
 -   Sablonok átalakítása
 

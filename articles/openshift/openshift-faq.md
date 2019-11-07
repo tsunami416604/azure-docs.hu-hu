@@ -7,27 +7,17 @@ ms.author: jzim
 manager: jeconnoc
 ms.service: container-service
 ms.topic: article
-ms.date: 05/08/2019
-ms.openlocfilehash: 8f7349310f72c8cccc7b1906239ece3038dd7861
-ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
+ms.date: 11/04/2019
+ms.openlocfilehash: d8707e2edccf144cbe58a530bcfe2c176e656915
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72249218"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73582406"
 ---
 # <a name="azure-red-hat-openshift-faq"></a>Azure Red Hat OpenShift – gyakori kérdések
 
 Ez a cikk a Microsoft Azure Red Hat OpenShift kapcsolatos gyakori kérdéseket (GYIK) tárgyalja.
-
-## <a name="how-do-i-get-started"></a>Hogyan kezdhetem el használni?
-
-Az Azure Red Hat OpenShift használatához legalább 4 Azure Red Hat OpenShift fenntartott alkalmazás-csomópontot kell vásárolnia.
-
-Ha Ön Azure-ügyfél, akkor az[Azure Red Hat OpenShift fenntartott példányait](https://aka.ms/openshift/buy) az Azure Portalon keresztül vásárolhatja meg. A vásárlást követően az előfizetés 24 órán belül aktiválva lesz, amely után a fürtöket kiépítheti.
-
-Ha Ön nem Azure-ügyfél, [forduljon az értékesítésekhez](https://aka.ms/openshift/contact-sales) , és töltse ki az oldal alján található Sales (értékesítés) űrlapot a folyamat elindításához.
-
-További információkért tekintse meg az [Azure Red Hat OpenShift díjszabását ismertető oldalt](https://aka.ms/openshift/pricing) .
 
 ## <a name="which-azure-regions-are-supported"></a>Mely Azure-régiók támogatottak?
 
@@ -39,7 +29,7 @@ Nem. Azonban egy Azure Red Hat OpenShift-fürtöt összekapcsolhatók egy meglé
 
 ## <a name="what-cluster-operations-are-available"></a>Milyen fürtözött műveletek érhetők el?
 
-Csak a számítási csomópontok számának vertikális fel-és leskálázására van lehetőség. A létrehozás után nem engedélyezett a `Microsoft.ContainerService/openShiftManagedClusters` erőforrás használata. A számítási csomópontok maximális száma 20-ra van korlátozva.
+Csak a számítási csomópontok számának vertikális fel-és leskálázására van lehetőség. A létrehozás után nem engedélyezett a `Microsoft.ContainerService/openShiftManagedClusters` erőforrás más módosítása. A számítási csomópontok maximális száma 20-ra van korlátozva.
 
 ## <a name="what-virtual-machine-sizes-can-i-use"></a>Milyen virtuálisgép-méreteket használhatok?
 
@@ -59,11 +49,11 @@ Nem, aktuális időpontban nem.
 
 ## <a name="is-the-docker-registry-available-externally-so-i-can-use-tools-such-as-jenkins"></a>A Docker-beállításjegyzék külsőleg is elérhető, így olyan eszközöket is használhatok, mint például a Jenkins?
 
-A Docker-beállításjegyzék `https://docker-registry.apps.<clustername>.<region>.azmosa.io/`-tól érhető el, azonban nincs megadva erős tárolási tartóssági garancia. [Azure Container Registry](https://azure.microsoft.com/services/container-registry/)is használhatja.
+A Docker-beállításjegyzék elérhető `https://docker-registry.apps.<clustername>.<region>.azmosa.io/` azonban nincs megadva erős tárolási tartóssági garancia. [Azure Container Registry](https://azure.microsoft.com/services/container-registry/)is használhatja.
 
 ## <a name="is-cross-namespace-networking-supported"></a>Támogatott-e a névterek közötti hálózatkezelés?
 
-Az ügyfél és az egyéni Project-rendszergazdák a `NetworkPolicy` objektumok használatával testre szabhatják a névterek közötti hálózatkezelést (beleértve a Megtagadás megtagadását is).
+Az ügyfél és az egyéni projekt-rendszergazdák a `NetworkPolicy` objektumok használatával testre szabhatják a névtérbeli hálózatkezelést (beleértve a megtagadást is).
 
 ## <a name="can-an-admin-manage-users-and-quotas"></a>A rendszergazdák kezelhetik a felhasználókat és a kvótákat?
 
@@ -85,9 +75,9 @@ Nem. Az összes erőforrás, beleértve a fürt főkiszolgálóját is, az ügyf
 
 Igen. A OSBA az Azure Red Hat OpenShift használatával is használhatja. További információért lásd a [Service Broker megnyitása az Azure](https://github.com/Azure/open-service-broker-azure#openshift-project-template) -ban című témakört.
 
-## <a name="i-am-trying-to-peer-into-a-virtual-network-in-a-different-subscription-but-getting-failed-to-get-vnet-cidr-error"></a>Egy másik előfizetésben lévő virtuális hálózatba próbálok csatlakozni, de `Failed to get vnet CIDR` hibát kapok.
+## <a name="i-am-trying-to-peer-into-a-virtual-network-in-a-different-subscription-but-getting-failed-to-get-vnet-cidr-error"></a>Egy másik előfizetésben lévő virtuális hálózatba próbálok csatlakozni, de `Failed to get vnet CIDR` hiba történt.
 
-Győződjön meg arról, hogy a virtuális hálózatot tartalmazó előfizetésben regisztrálja `Microsoft.ContainerService` szolgáltatót `az provider register -n Microsoft.ContainerService --wait` használatával 
+Győződjön meg arról, hogy a virtuális hálózatot tartalmazó előfizetésben regisztrálja `Microsoft.ContainerService` szolgáltatót `az provider register -n Microsoft.ContainerService --wait` 
 
 ## <a name="what-is-the-azure-red-hat-openshift-aro-maintenance-process"></a>Mi az Azure Red Hat OpenShift (ARO) karbantartási folyamata?
 
@@ -129,9 +119,9 @@ A etcd szintjén nincs titkosítva. A bekapcsolásának lehetősége jelenleg ne
 
 A syslog, a Docker-naplók, a Journal és a dmesg kezelése a felügyelt szolgáltatással történik, és az ügyfelek számára nem érhető el.
 
-## <a name="how-can-a-customer-get-access-to-metrics-like-cpumemory-at-the-node-level-to-take-action-to-scale-debug-issues-etc-i-cannot-seem-to-run-kubectl-top-on-an-aro-cluster"></a>Hogyan érhetik el az ügyfél az olyan mérőszámokat, mint a CPU/memória a csomópont szintjén, hogy a méretezési, hibakeresési és egyéb műveleteket is végrehajtsa. Nem úgy tűnik, hogy egy ARO-fürtön `kubectl top` fut.
+## <a name="how-can-a-customer-get-access-to-metrics-like-cpumemory-at-the-node-level-to-take-action-to-scale-debug-issues-etc-i-cannot-seem-to-run-kubectl-top-on-an-aro-cluster"></a>Hogyan érhetik el az ügyfél az olyan mérőszámokat, mint a CPU/memória a csomópont szintjén, hogy a méretezési, hibakeresési és egyéb műveleteket is végrehajtsa. Úgy tűnik, hogy nem fut `kubectl top` egy ARO-fürtön.
 
-a `kubectl top` nem érhető el a Red Hat OpenShift. Ehhez a OpenShift-figyelési veremben a Heapster (elavult) vagy metrika-Server (inkubálás vagy alfa) típusú háttérrendszer-forrás szükséges.
+a `kubectl top` Red Hat OpenShift nem érhető el. Ehhez a OpenShift-figyelési veremben a Heapster (elavult) vagy metrika-Server (inkubálás vagy alfa) típusú háttérrendszer-forrás szükséges.
 
 ## <a name="what-is-the-default-pod-scheduler-configuration-for-aro"></a>Mi az az alapértelmezett Pod Scheduler-konfiguráció az ARO-hoz?
 

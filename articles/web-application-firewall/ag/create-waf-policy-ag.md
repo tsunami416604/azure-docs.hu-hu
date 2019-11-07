@@ -7,16 +7,19 @@ author: vhorne
 ms.service: web-application-firewall
 ms.date: 10/26/2019
 ms.author: victorh
-ms.openlocfilehash: a7622489008a8fabef8aee3ffb2ffc4f33b48296
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: HT
+ms.openlocfilehash: 31a5ad92942b40e42b66e404df2d09cd8158f7a2
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73516668"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73606488"
 ---
 # <a name="create-web-application-firewall-policies-for-application-gateway"></a>Webalkalmazási tűzfal házirendjeinek létrehozása a Application Gatewayhoz
 
 A WAF szabályzatok a figyelőkkel való társítása lehetővé teszi, hogy a különböző szabályzatok által védett, egyetlen WAF mögötti helyek is védve legyenek. Ha például öt hely van a WAF mögött, öt különálló WAF-szabályzat közül választhat (egyet az egyes figyelőknél) a kizárások, az egyéni szabályok és a felügyelt szabályrendszerek egy adott helyhez való testreszabásához anélkül, hogy a másik négyet kellene végrehajtania. Ha egyetlen szabályzatot szeretne alkalmazni az összes webhelyre, egyszerűen társíthatja a szabályzatot a Application Gatewayhoz, nem pedig az egyes figyelőkhöz, hogy az alkalmazás globálisan legyen alkalmazva. A házirendek egy elérésiút-alapú útválasztási szabályra is alkalmazhatók. 
+
+   > [!NOTE]
+   > A site WAF-szabályzatok az USA déli középső régiójában és Észak-Európában is elérhetők. Ha a portálon szeretné elérni őket, használja [ezt a hivatkozást](https://aka.ms/AppgwwafWithAllFeatureFlags) , amíg mindenki számára elérhetővé nem válik.  
 
 Tetszőleges számú szabályzatot készíthet. Miután létrehozta a szabályzatot, ahhoz társítania kell egy Application Gateway, hogy az érvénybe lépjen, de az Application Gateway és a figyelők tetszőleges kombinációjával társítható. 
 

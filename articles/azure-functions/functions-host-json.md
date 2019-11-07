@@ -7,12 +7,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 09/08/2018
 ms.author: glenga
-ms.openlocfilehash: 96c346db74c1e6c43c3501b657621d09e019309c
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: HT
+ms.openlocfilehash: 584fb7b97b8342289d7ca2f23b0479eb1169867a
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/04/2019
-ms.locfileid: "73469200"
+ms.locfileid: "73575896"
 ---
 # <a name="hostjson-reference-for-azure-functions-2x"></a>Host. JSON-hivatkozás Azure Functions 2. x rendszerhez  
 
@@ -127,7 +127,7 @@ A konfigurációs beállítás [Cosmos db eseményindítókban és kötésekben]
 
 A konfigurációs beállítás a [Durable functions kötéseiben](durable/durable-functions-bindings.md#host-json)található.
 
-## <a name="eventhub"></a>EventHub
+## <a name="eventhub"></a>eventHub
 
 A konfigurációs beállítások az [Event hub-eseményindítókban és-kötésekben](functions-bindings-event-hubs.md#host-json)találhatók. 
 
@@ -182,23 +182,7 @@ A [gazdagép állapotának figyelésére](https://github.com/Azure/azure-webjobs
 
 ## <a name="http"></a>http
 
-A konfigurációs beállítások a http- [Eseményindítók és-kötések](functions-bindings-http-webhook.md)szolgáltatásban találhatók.
-
-```json
-{
-    "extensions": {
-        "http": {
-            "routePrefix": "api",
-            "maxOutstandingRequests": 200,
-            "maxConcurrentRequests": 100,
-            "dynamicThrottlesEnabled": true
-        }
-    }
-}
-```
-
-
-[!INCLUDE [functions-host-json-http](../../includes/functions-host-json-http.md)]
+A konfigurációs beállítások a http- [Eseményindítók és-kötések](functions-bindings-http-webhook.md#hostjson-settings)szolgáltatásban találhatók.
 
 ## <a name="logging"></a>Naplózás
 
@@ -206,7 +190,7 @@ A Function alkalmazás naplózási viselkedését szabályozza, beleértve a App
 
 ```json
 "logging": {
-    "fileLoggingMode": "debugOnly",
+    "fileLoggingMode": "debugOnly"
     "logLevel": {
       "Function.MyFunction": "Information",
       "default": "None"
@@ -267,7 +251,7 @@ A konfigurációs beállítások a [Storage üzenetsor-eseményindítók és-kö
 
 A konfigurációs beállítás a SendGrid- [Eseményindítók és-kötések](functions-bindings-sendgrid.md#host-json)szolgáltatásban található.
 
-## <a name="servicebus"></a>ServiceBus
+## <a name="servicebus"></a>serviceBus
 
 A konfigurációs beállítás [Service Bus eseményindítókban és kötésekben](functions-bindings-service-bus.md#host-json)található.
 

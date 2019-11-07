@@ -1,6 +1,6 @@
 ---
-title: Az SQL Data Warehouse szolgáltatással integrált megoldásokat hozhat létre |} A Microsoft Docs
-description: 'Az eszközök és az SQL Data Warehouse szolgáltatással integrált megoldásokat kínáló partnerek. '
+title: Integrált megoldások készítése
+description: Eszközök és partnerek Azure SQL Data Warehouse-nal integrált megoldásokkal.
 services: sql-data-warehouse
 author: mlee3gsd
 manager: craigg
@@ -10,52 +10,53 @@ ms.subservice: integration
 ms.date: 04/17/2018
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: 43a714ae175e0d60f20b5e7ad79e1fa90125b0f8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.custom: seo-lt-2019
+ms.openlocfilehash: 6e159e0e254ae8b2515515dfaeb2c514e0f25e0b
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65873342"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73685641"
 ---
-# <a name="integrate-other-services-with-sql-data-warehouse"></a>Más szolgáltatások integrálása az SQL Data warehouse-bA
-A fő funkciói mellett az SQL Data Warehouse lehetővé teszi a felhasználók számos, az Azure-ban a más szolgáltatások integrálása. Ezek a szolgáltatások a következők:
+# <a name="integrate-other-services-with-sql-data-warehouse"></a>Más szolgáltatások integrálása SQL Data Warehouse
+Az alapvető funkciói mellett SQL Data Warehouse lehetővé teszi a felhasználók számára az Azure számos más szolgáltatásának integrálását. Néhány ilyen szolgáltatás a következőket tartalmazza:
 
 * Power BI
 * Azure Data Factory
 * Azure Machine Learning
 * Azure Stream Analytics
 
-Az SQL Data Warehouse továbbra is fennáll, további szolgáltatások integrálása az Azure-ban, és további [az integrációs partnerek](sql-data-warehouse-partner-data-integration.md).
+SQL Data Warehouse továbbra is integrálva van több szolgáltatással az Azure-ban és több [integrációs partneren](sql-data-warehouse-partner-data-integration.md)keresztül.
 
 ## <a name="power-bi"></a>Power BI
-Power BI-integráció lehetővé teszi az SQL Data Warehouse a számítási teljesítmény kombinálva dinamikus jelentéskészítő és vizualizációs a Power bi. A Power BI integrációja jelenleg tartalmazza:
+A Power BI integráció lehetővé teszi a SQL Data Warehouse számítási teljesítményének összevonását a Power BI dinamikus jelentéskészítésével és vizualizációval. Power BI integráció jelenleg a következőket tartalmazza:
 
-* **Közvetlen csatlakozás**: Az SQL Data Warehouse elleni logikai legördülő lista speciális kapcsolatot. Legördülő lista gyorsabb elemzés által nagyobb méretekben biztosít.
-* **Nyissa meg a Power bi-ban**: A "Megnyitás Power BI-ban" gomb példányadatai csatlakoztathat így egyszerűbb a Power bi-bA továbbítja.
+* **Közvetlen**kapcsolat: egy fejlettebb kapcsolat a logikai pushdown SQL Data Warehouse. A pushdown gyorsabb elemzést tesz lehetővé nagyobb méretekben.
+* **Megnyitás a Power BIban**: a "Megnyitás Power bi" gomb a példányok információit átadja a Power BInak a kapcsolódás egyszerűsített módjaként.
 
-További információkért lásd: [integráció a Power BI](sql-data-warehouse-get-started-visualize-with-power-bi.md), vagy a [Power BI dokumentációja](https://powerbi.microsoft.com/blog/exploring-azure-sql-data-warehouse-with-power-bi/).
+További információ: Integration [with Power bi](sql-data-warehouse-get-started-visualize-with-power-bi.md), vagy a [Power bi dokumentációja](https://powerbi.microsoft.com/blog/exploring-azure-sql-data-warehouse-with-power-bi/).
 
 ## <a name="azure-data-factory"></a>Azure Data Factory
-Az Azure Data Factory egy felügyelt platform összetett kinyerési létrehozására és betöltésére folyamatok biztosítja a felhasználók számára. Az SQL Data Warehouse-integráció az Azure Data Factory tartalmazza:
+Azure Data Factory a felhasználók számára felügyelt platformot biztosít összetett kinyerési és betöltési folyamatok létrehozásához. A SQL Data Warehouse Azure Data Factory integrációja a következőket tartalmazza:
 
-* **Tárolt eljárások**: Koordinálhatja az SQL Data Warehouse a tárolt eljárások végrehajtását.
-* **Másolás**: Az ADF használata adatok áthelyezéséhez az SQL Data Warehouse-bA. Ez a művelet az ADF standard szintű adatátviteli mechanizmus vagy a PolyBase a háttérben. 
+* **Tárolt eljárások**: összehangolja a tárolt eljárások végrehajtását SQL Data Warehouseon.
+* **Másolás**: használja az ADF-et az adatSQL Data Warehouseba való áthelyezéséhez. Ez a művelet az ADF standard adatáthelyezési mechanizmusát vagy a borítók alá tartozó albaset is használhatja. 
 
-További információkért lásd: [integrálás az Azure Data Factoryvel](https://docs.microsoft.com/azure/data-factory/load-azure-sql-data-warehouse?toc=/azure/sql-data-warehouse/toc.json).
+További információ: [integráció a Azure Data Factorysal](https://docs.microsoft.com/azure/data-factory/load-azure-sql-data-warehouse?toc=/azure/sql-data-warehouse/toc.json).
 
 ## <a name="azure-machine-learning"></a>Azure Machine Learning
-Az Azure Machine Learning egy teljes körűen felügyelt elemzési szolgáltatás, amely lehetővé teszi, hogy bonyolult modellek prediktív eszközök használatával hozzon létre egy. Az SQL Data Warehouse a forrás- és a cél ezen modellek is támogatott, a következő funkciók:
+A Azure Machine Learning egy teljes körűen felügyelt elemzési szolgáltatás, amely lehetővé teszi, hogy bonyolult modelleket hozzon létre a prediktív eszközök nagy készletével. A SQL Data Warehouse a modellek forrásaként és célként is támogatott a következő funkciókkal:
 
-* **Olvassa el az adatokat:** A meghajtó modellek ipari méretekben, szemben az SQL Data Warehouse a T-SQL használatával.
-* **Adatok írása:** Minden modell a változtatások véglegesítése a vissza az SQL Data Warehouse.
+* **Olvasási információk:** A méreteket a T-SQL-lel SQL Data Warehouse.
+* **Írási érték:** A változások bármely modellből visszakerülnek a SQL Data Warehousera.
 
-További információkért lásd: [integrálás az Azure Machine Learning](sql-data-warehouse-get-started-analyze-with-azure-machine-learning.md).
+További információ: [integráció a Azure Machine Learningsal](sql-data-warehouse-get-started-analyze-with-azure-machine-learning.md).
 
 ## <a name="azure-stream-analytics"></a>Azure Stream Analytics
-Az Azure Stream Analytics egy összetett, teljes körűen felügyelt infrastruktúra feldolgozás és az Azure Event Hubs generált események adatainak felhasználása.  Integráció az SQL Data Warehouse lehetővé teszi a streamelési adatok hatékony feldolgozni és tárolt relációs adatok mélyebb, fejlett elemzési engedélyezése mellett.  
+A Azure Stream Analytics egy összetett, teljes körűen felügyelt infrastruktúra az Azure Event hub-ból generált események feldolgozásához és felhasználásához.  A SQL Data Warehouse való integráció lehetővé teszi, hogy a folyamatos átvitelt és a fejlettebb elemzést lehetővé tévő kapcsolatok mellett a streaming-adattovábbítás hatékonyan feldolgozható és tárolható legyen.  
 
-* **Feladat kimenete:** A Stream Analytics-feladatok kimeneti küldjön közvetlenül az SQL Data warehouse-bA.
+* **Feladatok kimenete:** Kimenet küldése Stream Analytics feladatokból közvetlenül a SQL Data Warehouse.
 
-További információkért lásd: [integrálás az Azure Stream Analytics](sql-data-warehouse-integrate-azure-stream-analytics.md).
+További információ: [integráció a Azure stream Analyticssal](sql-data-warehouse-integrate-azure-stream-analytics.md).
 
 

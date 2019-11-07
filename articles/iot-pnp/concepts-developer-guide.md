@@ -7,12 +7,12 @@ ms.date: 07/05/2019
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 6d5247454fe65e5539a2401330192f1db9a65114
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 6d8e0e9e675b88c69b74cdad261280f5dcaf7161
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69880565"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73581629"
 ---
 # <a name="iot-plug-and-play-preview-modeling-developer-guide"></a>IoT Plug and Play előzetes verzió modellezése – fejlesztői útmutató
 
@@ -52,14 +52,14 @@ A következő példa egy termosztátos eszköz eszköz-képesség modelljét mut
 A képesség-modellnek van néhány kötelező mezője:
 
 - `@id`: egyedi azonosító egyszerű egységes erőforrás-név formájában.
-- `@type`: kijelenti, hogy ez az objektum egy képességi modell.
+- `@type`: kijelenti, hogy ez az objektum egy képesség modell.
 - `@context`: a képesség modellhez használt DTDL-verziót adja meg.
 - `implements`: az eszköz által megvalósított felületek felsorolása.
 
 A megvalósítások szakaszban található felületek listájának minden bejegyzése a következőket tartalmazza:
 
 - `name`: az interfész programozási neve.
-- `schema`: az a felület, amelyet a képesség modell implementál.
+- `schema`: a képesség modell által megvalósított felület.
 
 További választható mezőket is használhat, amelyekkel további részleteket adhat hozzá a képesség modelljéhez, például a megjelenítendő név és a Leírás mezőben. A képességi modellben deklarált felületek az eszköz összetevőiként is megtekinthetők. A nyilvános előzetes verzióban az illesztőfelületek listájának sémája csak egy bejegyzéssel rendelkezhet.
 
@@ -84,7 +84,7 @@ A következő példa egy termosztátos eszköz felületét szemlélteti:
       "schema": "double"
     }
   ],
-  "@context": "http://azureiot.com/v1/contexts/Interface.json"
+  "@context": "http://azureiot.com/v1/contexts/IoTModel.json"
 }
 ```
 
@@ -92,18 +92,18 @@ Az illesztőfelületnek van néhány kötelező mezője:
 
 - `@id`: egyedi azonosító egyszerű egységes erőforrás-név formájában.
 - `@type`: kijelenti, hogy ez az objektum illesztőfelület.
-- `@context`: az illesztőfelülethez használt DTDL-verziót adja meg.
+- `@context`: a csatolóhoz használt DTDL-verziót adja meg.
 - `contents`: az eszközt alkotó tulajdonságok, telemetria és parancsok felsorolása.
 
 Ebben az egyszerű példában csak egyetlen telemetria mező van. A mező minimális leírása a következőket tartalmazhatja:
 
-- `@type`: a képesség típusát adja meg: `Telemetry`, `Property`, vagy `Command`.
+- `@type`: a képesség típusát adja meg: `Telemetry`, `Property`vagy `Command`.
 - `name`: megadja a telemetria értékének nevét.
 - `schema`: a telemetria adattípusát adja meg. Ez az érték egyszerű típus lehet, például dupla, Integer, Boolean vagy string. Az összetett objektumtípusok, tömbök és leképezések is támogatottak.
 
 További választható mezők, például a megjelenítendő név és a leírás, lehetővé teszik további részletek hozzáadását az interfészhez és a képességekhez.
 
-### <a name="properties"></a>properties
+### <a name="properties"></a>Tulajdonságok
 
 Alapértelmezés szerint a tulajdonságok csak olvashatók. A csak olvasható tulajdonságok azt jelentik, hogy az eszköz a IoT-hubhoz frissíti a tulajdonság értékét. Az IoT hub nem tudja beállítani a csak olvasható tulajdonság értékét.
 
@@ -111,13 +111,13 @@ Egy tulajdonságot egy felületen írhatóként is megadhat. Az eszköz a IoT hu
 
 Az eszközöknek nem kell csatlakozniuk a tulajdonságértékek beállításához. A frissített értékek akkor lesznek átadva, amikor az eszköz a következőhöz csatlakozik a hubhoz. Ez a viselkedés a csak olvasható és írható tulajdonságokra is vonatkozik.
 
-Ne használjon tulajdonságokat a telemetria az eszközről való küldéséhez. Például egy írásvédett tulajdonság például `temperatureSetting=80` azt jelenti, hogy az eszköz hőmérséklete 80 értékre van állítva, és az eszköz megpróbál bejutni vagy maradni, ez a hőmérséklet.
+Ne használjon tulajdonságokat a telemetria az eszközről való küldéséhez. Például egy írásvédett tulajdonság, például `temperatureSetting=80` azt jelenti, hogy az eszköz hőmérséklete 80 értékre van állítva, és az eszköz megpróbál bejutni vagy maradni, ez a hőmérséklet.
 
 Az írható tulajdonságok esetében az eszköz a kívánt állapot kódját, verzióját és leírását adja vissza annak jelzésére, hogy a kapott és alkalmazta-e a tulajdonság értékét.
 
 ### <a name="telemetry"></a>Telemetria
 
-Alapértelmezés szerint a IoT Hub az eszközökről érkező összes telemetria-üzenetet a [beépített szolgáltatáshoz kapcsolódó végpontra (**üzenetek/események**)](../iot-hub/iot-hub-devguide-messages-read-builtin.md) irányítja, amely [](https://azure.microsoft.com/documentation/services/event-hubs/)kompatibilis a Event Hubsval.
+Alapértelmezés szerint a IoT Hub az eszközökről érkező összes telemetria-üzenetet a [beépített szolgáltatáshoz kapcsolódó végpontra (**üzenetek/események**)](../iot-hub/iot-hub-devguide-messages-read-builtin.md) irányítja, amely kompatibilis a [Event Hubsval](https://azure.microsoft.com/documentation/services/event-hubs/).
 
 A [IoT hub egyéni végpontok és útválasztási szabályok](../iot-hub/iot-hub-devguide-messages-d2c.md) segítségével telemetria küldhet más célhelyekre, például a blob Storage-ba vagy más esemény-hubokba. Az útválasztási szabályok az üzenet tulajdonságait használják az üzenetek kiválasztásához.
 
@@ -128,8 +128,8 @@ A parancsok szinkron vagy aszinkron jellegűek. A szinkron parancsoknak alapért
 Használjon aszinkron parancsokat a hosszan futó műveletekhez. Az eszköz telemetria-üzenetek használatával küldi el a végrehajtási adatokat. Ezek az állapotjelző üzenetek a következő fejléc-tulajdonságokkal rendelkeznek:
 
 - `iothub-command-name`: a parancs neve, például `UpdateFirmware`.
-- `iothub-command-request-id`: a kiszolgáló oldalán generált kérelem-azonosító, amelyet a rendszer a kezdeti hívásban az eszköznek küld.
-- `iothub-interface-id`:  Annak az adapternek az azonosítója, amelyhez ez a parancs van meghatározva, például `urn:example:AssetTracker:1`:.
+- `iothub-command-request-id`: a kiszolgáló oldalán generált kérelem-azonosító, amelyet a kezdeti hívásban az eszköznek küldtek.
+- `iothub-interface-id`: a parancs által definiált interfész azonosítója (például `urn:example:AssetTracker:1`).
  `iothub-interface-name`: az interfész példányának neve, például `myAssetTracker`.
 - `iothub-command-statuscode`: az eszközről visszaadott állapotkód, például `202`.
 
@@ -184,15 +184,15 @@ A IoT Plug and Play lehetővé teszi olyan eszközök használatát, amelyek reg
 
 Ha az IoT hubhoz csatlakoztatott IoT Plug and Play eszközt kíván használni, használja a IoT Hub REST API vagy az egyik IoT nyelvi SDK-t. Az alábbi példák a IoT Hub REST API használják.
 
-Ha egy eszköz tulajdonság értékét (`fwVersion`például a belső vezérlőprogram verzióját) `DeviceInformation` szeretné lekérni a termosztát felületén, használja a digitális Twins REST API.
+Az eszköz tulajdonságainak (például a belső vezérlőprogram verziója (`fwVersion`) a termosztátban található `DeviceInformation` felületen való beszerzéséhez használja a digitális ikrek REST API.
 
-Ha a termosztátos eszközt hívja `t-123`meg, az eszköz által megvalósított összes tulajdonságot egy REST API Get hívással érheti el:
+Ha a termosztátos eszközt `t-123`nevezik, az eszköz által megvalósított összes tulajdonságot egy REST API GET hívással érheti el:
 
 ```REST
 GET /digitalTwins/t-123/interfaces
 ```
 
-Általánosságban az összes tulajdonság ehhez a REST API-sablonhoz érhető el, `{device-id}` ahol az az eszköz azonosítója:
+Általánosságban az összes tulajdonság a REST API sablonnal érhető el, ahol `{device-id}` az eszköz azonosítója:
 
 ```REST
 GET /digitalTwins/{device-id}/interfaces
@@ -204,13 +204,13 @@ Ha ismeri a csatoló nevét, és az adott csatoló tulajdonságait szeretné lek
 GET /digitalTwins/t-123/interfaces/info
 ```
 
-Általánosságban az adott interfész tulajdonságai a REST API sablonon keresztül érhetők el, ahol `device-id` az az eszköz azonosítója, és `{interface-name}` az interfész neve:
+Általánosságban az adott interfész tulajdonságai a REST API sablonon keresztül érhetők el, ahol `device-id` az eszköz azonosítója, és `{interface-name}` a csatoló neve:
 
 ```REST
 GET /digitalTwins/{device-id}/interfaces/{interface-name}
 ```
 
-Közvetlenül is meghívhatja a IoT Plug and Play eszköz parancsait. Ha az `t-123` eszközön található `restart` felületrendelkezikparanccsal,meghívhatjaRESTAPIposthívással:`Thermostat`
+Közvetlenül is meghívhatja a IoT Plug and Play eszköz parancsait. Ha a `t-123` eszköz `Thermostat` felületének `restart` parancsa van, meghívhatja egy REST API POST hívással:
 
 ```REST
 POST /digitalTwins/t-123/interfaces/thermostat/commands/restart
@@ -231,5 +231,5 @@ POST /digitalTwins/t-123/interfaces/thermostat/commands/restart
 Most, hogy megismerte az eszközök modellezését, íme néhány további erőforrás:
 
 - [Digital Twin Definition Language (DTDL)](https://aka.ms/DTDL)
-- [C eszköz-SDK](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/)
+- [C eszköz SDK](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/)
 - [IoT REST API](https://docs.microsoft.com/rest/api/iothub/device)

@@ -1,5 +1,5 @@
 ---
-title: Adatok másolása Azure SQL Data Warehouseba és onnan a Azure Data Factory használatával | Microsoft Docs
+title: Adatok másolása Azure SQL Data Warehouseba és onnan a Azure Data Factory használatával
 description: Megtudhatja, hogyan másolhatja át a támogatott forrásokból származó adatok Azure SQL Data Warehouse vagy SQL Data Warehouseról a Data Factory használatával támogatott fogadó tárolók számára.
 services: data-factory
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 09/16/2019
 ms.author: jingwang
-ms.openlocfilehash: 5351f7f01bbe99b1e3ebc3c94a0805f0419cc1cf
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: b64bfd046a42a630e7913c45213053e84377a037
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72387919"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73681148"
 ---
 # <a name="copy-data-to-or-from-azure-sql-data-warehouse-by-using-azure-data-factory"></a>Adatok másolása Azure SQL Data Warehouseba vagy onnan a Azure Data Factory használatával 
 > [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory-szolgáltatás verzióját:"]
@@ -45,7 +45,7 @@ Pontosabban, ez a Azure SQL Data Warehouse-összekötő támogatja ezeket a funk
 > Ha Azure Data Factory Integration Runtime használatával másol Adatmásolást, konfigurálja az [Azure SQL Server-tűzfalat](https://msdn.microsoft.com/library/azure/ee621782.aspx#ConnectingFromAzure) úgy, hogy az Azure-szolgáltatások hozzáférhessenek a kiszolgálóhoz.
 > Ha saját üzemeltetésű integrációs modul használatával másol Adatmásolást, konfigurálja az Azure SQL Server-tűzfalat a megfelelő IP-címtartomány engedélyezéséhez. Ez a tartomány tartalmazza a számítógép IP-címét, amely a Azure SQL Databasehoz való kapcsolódáshoz használatos.
 
-## <a name="get-started"></a>Az első lépések
+## <a name="get-started"></a>Bevezetés
 
 > [!TIP]
 > A legjobb teljesítmény érdekében az adatok Azure SQL Data Warehouseba való betöltéséhez használja a következőt: Base. Az [adatok Azure SQL Data Warehouse szakaszba való betöltéséhez használja](#use-polybase-to-load-data-into-azure-sql-data-warehouse) a következőt:. A használati eseteket bemutató bemutatóért lásd: [1 TB Betöltése Azure SQL Data Warehouse 15 perc alatt Azure Data Factory](load-azure-sql-data-warehouse.md).
@@ -58,7 +58,7 @@ A következő szakaszokban részletesen ismertetjük azokat a tulajdonságokat, 
 
 Azure SQL Data Warehouse társított szolgáltatás esetében a következő tulajdonságok támogatottak:
 
-| Tulajdonság            | Leírás                                                  | Szükséges                                                     |
+| Tulajdonság            | Leírás                                                  | Kötelező                                                     |
 | :------------------ | :----------------------------------------------------------- | :----------------------------------------------------------- |
 | type                | A Type tulajdonságot **AzureSqlDW**értékre kell beállítani.             | Igen                                                          |
 | connectionString    | A **ConnectionString** tulajdonsághoz tartozó Azure SQL Data Warehouse-példányhoz való kapcsolódáshoz szükséges információk megadása. <br/>A mező megjelölése SecureString, hogy biztonságosan tárolja Data Factoryban. A jelszó/egyszerű szolgáltatásnév kulcsát a Azure Key Vaultban is elhelyezheti, és ha az SQL-hitelesítése lekéri a `password` konfigurációt a kapcsolatok karakterláncán kívülre. További részletekért tekintse meg a táblázat alatti JSON-példát, és [tárolja a hitelesítő adatokat Azure Key Vault](store-credentials-in-key-vault.md) cikkben. | Igen                                                          |
@@ -74,7 +74,7 @@ Különböző hitelesítési típusok esetén tekintse át az előfeltételek é
 - Azure AD-alkalmazás-jogkivonat hitelesítése: [felügyelt identitások az Azure-erőforrásokhoz](#managed-identity)
 
 >[!TIP]
->Ha a hibakódot "UserErrorFailedToConnectToSqlServer"-ként találta, és a következőhöz hasonló üzenet jelenik meg: "az adatbázis munkamenet-korlátja XXX, és elérte a műveletet.", adja hozzá @no__t – 0 értéket a kapcsolati karakterlánchoz, és próbálkozzon újra.
+>Ha a hibakódot "UserErrorFailedToConnectToSqlServer"-ként találta, és a következőhöz hasonló üzenet jelenik meg: "az adatbázis munkamenet-korlátja XXX, és elérte a műveletet.", adja hozzá `Pooling=false` a kapcsolati karakterlánchoz, és próbálkozzon újra.
 
 ### <a name="sql-authentication"></a>SQL-hitelesítés
 
@@ -231,11 +231,11 @@ Az adatkészletek definiálásához rendelkezésre álló csoportok és tulajdon
 
 Az adatok Azure SQL Data Warehouseba való másolásához a következő tulajdonságok támogatottak:
 
-| Tulajdonság  | Leírás                                                  | Szükséges                    |
+| Tulajdonság  | Leírás                                                  | Kötelező                    |
 | :-------- | :----------------------------------------------------------- | :-------------------------- |
 | type      | Az adatkészlet **Type** tulajdonságát **AzureSqlDWTable**értékre kell állítani. | Igen                         |
 | Séma | A séma neve. |Nem, forrás, igen, fogadó  |
-| Tábla | A tábla vagy nézet neve. |Nem, forrás, igen, fogadó  |
+| tábla | A tábla vagy nézet neve. |Nem, forrás, igen, fogadó  |
 | tableName | A tábla/nézet neve a sémával. Ez a tulajdonság visszamenőleges kompatibilitás esetén támogatott. Az új számítási feladatokhoz használja a `schema` és a `table` értéket. | Nem, forrás, igen, fogadó |
 
 #### <a name="dataset-properties-example"></a>Adatkészlet tulajdonságai – példa
@@ -267,7 +267,7 @@ A tevékenységek definiálásához elérhető csoportok és tulajdonságok telj
 
 Az adatok Azure SQL Data Warehouseból való másolásához a másolási tevékenység forrásában állítsa a **Type (típus** ) tulajdonságot **SqlDWSource**értékre. A másolási tevékenység **forrása** szakasz a következő tulajdonságokat támogatja:
 
-| Tulajdonság                     | Leírás                                                  | Szükséges |
+| Tulajdonság                     | Leírás                                                  | Kötelező |
 | :--------------------------- | :----------------------------------------------------------- | :------- |
 | type                         | A másolási tevékenység forrásának **Type** tulajdonságát **SqlDWSource**értékre kell állítani. | Igen      |
 | sqlReaderQuery               | Az egyéni SQL-lekérdezés használatával olvassa be az adatolvasást. Példa: `select * from MyTable`. | Nem       |
@@ -277,7 +277,7 @@ Az adatok Azure SQL Data Warehouseból való másolásához a másolási tevéke
 ### <a name="points-to-note"></a>Megjegyzésre mutató pontok
 
 - Ha a **sqlReaderQuery** meg van adva a **SqlSource**, a másolási tevékenység lefuttatja ezt a lekérdezést a Azure SQL Data Warehouse forráson az adatkéréshez. Vagy megadhat egy tárolt eljárást is. A **sqlReaderStoredProcedureName** és a **storedProcedureParameters** megadása, ha a tárolt eljárás paraméterekkel rendelkezik.
-- Ha nem ad meg **sqlReaderQuery** vagy **sqlReaderStoredProcedureName**-t, a rendszer egy lekérdezés létrehozásához az adatkészlet JSON-fájljának **struktúra** szakaszában meghatározott oszlopokat használja. @no__t – 0 a Azure SQL Data Warehouseon fut. Ha az adatkészlet definíciója nem rendelkezik a **struktúrával**, az összes oszlop ki lesz választva a táblából.
+- Ha nem ad meg **sqlReaderQuery** vagy **sqlReaderStoredProcedureName**-t, a rendszer egy lekérdezés létrehozásához az adatkészlet JSON-fájljának **struktúra** szakaszában meghatározott oszlopokat használja. a `select column1, column2 from mytable` Azure SQL Data Warehouseon fut. Ha az adatkészlet definíciója nem rendelkezik a **struktúrával**, az összes oszlop ki lesz választva a táblából.
 
 #### <a name="sql-query-example"></a>Példa SQL-lekérdezésre
 
@@ -370,7 +370,7 @@ GO
 
 Az adatAzure SQL Data Warehouseba való másoláshoz állítsa a fogadó típust a másolási tevékenység **SqlDWSink**. A másolási tevékenység fogadója szakasz a következő tulajdonságokat támogatja:
 
-| Tulajdonság          | Leírás                                                  | Szükséges                                      |
+| Tulajdonság          | Leírás                                                  | Kötelező                                      |
 | :---------------- | :----------------------------------------------------------- | :-------------------------------------------- |
 | type              | A másolási tevékenység fogadójának **Type** tulajdonságát **SqlDWSink**értékre kell állítani. | Igen                                           |
 | allowPolyBase     | Azt jelzi, hogy a BULKINSERT mechanizmus helyett a következőt kell-e használni, ha van ilyen. <br/><br/> Azt javasoljuk, hogy az adatok a SQL Data Warehouseba való betöltését a Base használatával. A korlátozások és részletek érdekében tekintse meg a következő témakört: az adatok Azure SQL Data Warehouse szakaszba való [betöltésének használata](#use-polybase-to-load-data-into-azure-sql-data-warehouse) .<br/><br/>Az engedélyezett értékek: **true** és **false** (alapértelmezett). | Nem                                            |
@@ -383,7 +383,7 @@ Az adatAzure SQL Data Warehouseba való másoláshoz állítsa a fogadó típust
 | writeBatchTimeout | Várakozási idő a kötegelt beszúrási művelet befejezéséhez az időtúllépés előtt. Csak akkor érvényes, ha a rendszer nem használja a főadatbázist.<br/><br/>Az engedélyezett érték a **TimeSpan**. Például: "00:30:00" (30 perc). | Nem                                            |
 | preCopyScript     | Adja meg a másolási tevékenység futtatásához szükséges SQL-lekérdezést, mielőtt az egyes futtatások Azure SQL Data Warehousebe írna. Ezzel a tulajdonsággal törölheti az előre feltöltött adatkészleteket. | Nem                                            |
 | tableOption | Meghatározza, hogy a rendszer automatikusan létrehozza-e a fogadó táblát, ha az nem létezik a forrásoldali séma alapján. Az automatikus tábla létrehozása nem támogatott, ha a szakaszos másolás a másolási tevékenységben van konfigurálva. Az engedélyezett értékek a következők: `none` (alapértelmezett), `autoCreate`. |Nem |
-| disableMetricsCollection | A Data Factory olyan mérőszámokat gyűjt, mint például a SQL Data Warehouse DWU a másolási teljesítmény optimalizálása és a javaslatok tekintetében. Ha ezt a viselkedést érinti, a kikapcsolásához a `true` értéket kell megadnia. | Nem (az alapértelmezett érték `false`) |
+| disableMetricsCollection | A Data Factory olyan mérőszámokat gyűjt, mint például a SQL Data Warehouse DWU a másolási teljesítmény optimalizálása és a javaslatok tekintetében. Ha ezt a viselkedést érinti, a kikapcsolásához válassza a `true` lehetőséget. | Nem (az alapértelmezett érték `false`) |
 
 #### <a name="sql-data-warehouse-sink-example"></a>SQL Data Warehouse fogadó példa
 
@@ -436,14 +436,14 @@ Ha a követelmények nem teljesülnek, Azure Data Factory ellenőrzi a beállít
 2. A **forrásadatok formátuma** a következő konfigurációkkal rendelkező **parketta**, **ork**vagy **tagolt szöveg**:
 
    1. A mappa elérési útja nem tartalmaz helyettesítő szűrőt.
-   2. A fájl neve üres, vagy egyetlen fájlra mutat. Ha a helyettesítő fájl nevét adja meg a másolási tevékenységben, akkor csak `*` vagy `*.*` lehet.
-   3. a `rowDelimiter` a **default**, a **\n**, a **\r\n**vagy a **\r**.
-   4. a `nullValue` az alapértelmezett érték, vagy **üres sztring** ("") értékre van állítva, és a `treatEmptyAsNull` értéke alapértelmezett, vagy igaz értékre van állítva.
-   5. a `encodingName` a default (alapértelmezett), vagy az **UTF-8**értékre van állítva.
-   6. `quoteChar`, `escapeChar` és `skipLineCount` nincs megadva. A albase-támogatás kihagyása a fejlécsorból, amely `firstRowAsHeader` értékkel konfigurálható ADF-ben.
-   7. a `compression` **nem lehet tömörítés**, **gzip**vagy **deflate**.
+   2. A fájl neve üres, vagy egyetlen fájlra mutat. Ha helyettesítő fájl nevét adja meg a másolási tevékenységben, akkor csak `*` vagy `*.*`lehet.
+   3. a `rowDelimiter` **alapértelmezett**, **\n**, **\r\n**vagy **\r**.
+   4. `nullValue` az alapértelmezett érték, vagy **üres sztring** ("") értékre van állítva, és `treatEmptyAsNull` az alapértelmezett érték, vagy igaz értékre van állítva.
+   5. `encodingName` az alapértelmezett érték, vagy az **UTF-8**értékre van állítva.
+   6. `quoteChar`, `escapeChar`és `skipLineCount` nincs megadva. A albase-támogatás kihagyása a fejlécsorból, amely `firstRowAsHeader`ként konfigurálható ADF-ben.
+   7. `compression` nem lehet **tömörítés**, **gzip**vagy **deflate**.
 
-3. Ha a forrás mappa, a másolási tevékenység `recursive` értékének igaz értékűnek kell lennie.
+3. Ha a forrás egy mappa, a másolási tevékenység `recursive` a True értékre kell állítani.
 
 >[!NOTE]
 >Ha a forrás mappa, vegye figyelembe, hogy a Base lekéri a fájlokat a mappából és annak összes almappájából, és nem kéri le az adatokból azokat a fájlokat, amelyekhez a fájlnév aláhúzással (_) vagy ponttal (.) kezdődik [.](https://docs.microsoft.com/sql/t-sql/statements/create-external-table-transact-sql?view=azure-sqldw-latest#arguments-2)
@@ -486,7 +486,7 @@ Ha a követelmények nem teljesülnek, Azure Data Factory ellenőrzi a beállít
 
 Ha a forrásadatok nem felelnek meg az előző szakasz feltételeinek, engedélyezze az adatok másolását egy átmeneti Azure Blob Storage-példányon keresztül. Nem lehet Azure-Premium Storage. Ebben az esetben a Azure Data Factory automatikusan futtatja az adatok átalakításait, hogy megfeleljen a Base adatformátumra vonatkozó követelményeinek. Ezt követően a program a SQL Data Warehouseba tölti be az adatok betöltéséhez használt alalapot. Végezetül törli az ideiglenes adatait a blob Storage-ból. Az adatok átmeneti Azure Blob Storage-példányon keresztül történő másolásával kapcsolatos részletekért tekintse meg a [Lépcsőzetes másolás című szakaszt](copy-activity-performance.md#staged-copy) .
 
-A szolgáltatás használatához hozzon létre egy [azure blob Storage társított szolgáltatást](connector-azure-blob-storage.md#linked-service-properties) , amely az Azure Storage-fiókra hivatkozik az ideiglenes blob Storage-tárolóval. Ezután adja meg a másolási tevékenység `enableStaging` és `stagingSettings` tulajdonságát az alábbi kódban látható módon.
+A szolgáltatás használatához hozzon létre egy [azure blob Storage társított szolgáltatást](connector-azure-blob-storage.md#linked-service-properties) , amely az Azure Storage-fiókra hivatkozik az ideiglenes blob Storage-tárolóval. Ezután adja meg a másolási tevékenység `enableStaging` és `stagingSettings` tulajdonságait, ahogy az a következő kódban látható.
 
 >[!IMPORTANT]
 >Ha az előkészítési Azure Storage VNet szolgáltatás-végponttal van konfigurálva, akkor felügyelt identitás-hitelesítést kell használnia – a [VNet szolgáltatás-végpontok Azure Storage-ban való használatának következményeire](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage)utal. Az [Azure Blob által felügyelt identitás-hitelesítés](connector-azure-blob-storage.md#managed-identity)Data Factory a szükséges konfigurációk megismerése.
@@ -561,7 +561,7 @@ ErrorCode=FailedDbOperation, ......HadoopSqlException: Error converting data typ
 A megoldás az "**alapértelmezett típus használata**" beállítás kijelölésének feloldása (hamis) a másolási tevékenység fogadója – > a bázisterület alapbeállításai. A "[USE_TYPE_DEFAULT](https://docs.microsoft.com/sql/t-sql/statements/create-external-file-format-transact-sql?view=azure-sqldw-latest#arguments
 )" egy alapszintű natív konfiguráció, amely meghatározza, hogy a rendszer hogyan kezelje a hiányzó értékeket a tagolt szövegfájlokban, amikor a viszonyítási adatok beolvasása a szövegfájlból történik. 
 
-**@no__t – 1 Azure SQL Data Warehouse**
+**`tableName` a Azure SQL Data Warehouse**
 
 A következő táblázat példákat mutat be arra, hogyan határozhatja meg a **Táblanév** tulajdonságot a JSON-adatkészletben. A séma és a táblanév számos kombinációját mutatja.
 
@@ -605,9 +605,9 @@ Amikor a vagy a rendszerből másol adatokból Azure SQL Data Warehouse, a rends
 | Bináris                                | Bájt []                         |
 | bites                                   | Logikai                        |
 | char                                  | Karakterlánc, char []                 |
-| dátum                                  | Dátum és idő                       |
-| datetime                              | Dátum és idő                       |
-| datetime2                             | Dátum és idő                       |
+| dátum                                  | DateTime                       |
+| datetime                              | DateTime                       |
+| datetime2                             | DateTime                       |
 | DateTimeOffset                        | DateTimeOffset                 |
 | Decimális                               | Decimális                        |
 | FILESTREAM attribútum (varbinary (max)) | Bájt []                         |
@@ -620,7 +620,7 @@ Amikor a vagy a rendszerből másol adatokból Azure SQL Data Warehouse, a rends
 | nvarchar                              | Karakterlánc, char []                 |
 | valós                                  | Önálló                         |
 | ROWVERSION                            | Bájt []                         |
-| idő adattípusúra                         | Dátum és idő                       |
+| idő adattípusúra                         | DateTime                       |
 | smallint                              | Int16                          |
 | túlcsordulási                            | Decimális                        |
 | time                                  | TimeSpan                       |
@@ -637,5 +637,5 @@ A tulajdonságok részleteinek megismeréséhez tekintse meg a [keresési tevék
 
 A tulajdonságok részleteinek megismeréséhez tekintse meg a [GetMetaData tevékenységet](control-flow-get-metadata-activity.md) 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 A forrásként és fogadóként támogatott adattárak listáját a Azure Data Factory másolási tevékenysége című részben tekintheti meg a [támogatott adattárak és-formátumok](copy-activity-overview.md##supported-data-stores-and-formats)című témakörben.

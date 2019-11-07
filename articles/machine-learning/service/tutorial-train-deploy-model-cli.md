@@ -9,12 +9,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 09/12/2019
-ms.openlocfilehash: 3f619caf7e2713e1c9251550b06c8bdefba5936f
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: HT
+ms.openlocfilehash: 1854599956755716955a6e691c3266ac54ddafd9
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/04/2019
-ms.locfileid: "73493394"
+ms.locfileid: "73581554"
 ---
 # <a name="tutorial-train-and-deploy-a-model-from-the-cli"></a>Oktatóanyag: modellek betanítása és üzembe helyezése a parancssori felületről
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -183,7 +183,7 @@ Ez a parancs létrehoz egy `.azureml/config.json` fájlt, amely a munkaterület�
 
 ## <a name="create-the-compute-target-for-training"></a>Számítási cél létrehozása képzéshez
 
-Ez a példa egy Azure Machine Learning számítási fürtöt használ a modell betanításához. Új számítási fürt létrehozásához használja a következő parancsot:
+Ez a példa egy Azure Machine Learning notebook virtuális gépet használ a modell betanításához. Új notebook virtuális gép létrehozásához használja a következő parancsot:
 
 ```azurecli-interactive
 az ml computetarget create amlcompute -n cpu --max-nodes 4 --vm-size Standard_D2_V2
@@ -239,7 +239,7 @@ Ezt a szöveget a betanítási szkriptből (`train-sklearn.py`) naplózza a rend
 
 Ha megvizsgálja a `train-sklearn.py`, megfigyelheti, hogy az alfa értéket is használja, ha a betanított modellt (ka) t a fájlba tárolja. Ebben az esetben több modellt is betanít. Az egyik a legmagasabb alfa legyen a legjobb. A fenti kimenet, valamint a kód, a 0,95-es alfa-modellel rendelkező modell a következőképpen lett mentve: `./outputs/ridge_0.95.pkl`
 
-A modellt a rendszer a `./outputs` könyvtárba mentette a számítási célhelyen, ahol azt betanítták. Ebben az esetben a Azure Machine Learning számítási példány az Azure-felhőben. A betanítási folyamat automatikusan feltölti a `./outputs` könyvtár tartalmát a számítási célhelyről, ahol a képzés bekerül a Azure Machine Learning munkaterületre. A kísérlet részeként tárolódik (`myexperiment` ebben a példában).
+A modellt a rendszer a `./outputs` könyvtárba mentette a számítási célhelyen, ahol azt betanítták. Ebben az esetben a Azure Machine Learning notebook virtuális gép az Azure-felhőben. A betanítási folyamat automatikusan feltölti a `./outputs` könyvtár tartalmát a számítási célhelyről, ahol a képzés bekerül a Azure Machine Learning munkaterületre. A kísérlet részeként tárolódik (`myexperiment` ebben a példában).
 
 ## <a name="register-the-model"></a>A modell regisztrálása
 

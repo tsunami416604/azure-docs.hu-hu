@@ -7,14 +7,14 @@ manager: jeconnoc
 keywords: ''
 ms.service: azure-functions
 ms.topic: conceptual
-ms.date: 10/22/2019
+ms.date: 11/03/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 0bac6f9105d505bdfc1492b6966c2352771e73b0
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 4b4e82acbd3037c70b87731c0661605041090435
+ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72791289"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73614512"
 ---
 # <a name="versioning-in-durable-functions-azure-functions"></a>Verziószámozás Durable Functions (Azure Functions)
 
@@ -32,7 +32,7 @@ Tegyük fel például, hogy a következő Orchestrator függvényt használjuk.
 
 ```csharp
 [FunctionName("FooBar")]
-public static Task Run([OrchestrationTrigger] DurableOrchestrationContext context)
+public static Task Run([OrchestrationTrigger] IDurableOrchestrationContext context)
 {
     bool result = await context.CallActivityAsync<bool>("Foo");
     await context.CallActivityAsync("Bar", result);
@@ -43,16 +43,19 @@ Ez a leegyszerűsítő függvény a **foo** eredményeit veszi át, és a **sáv
 
 ```csharp
 [FunctionName("FooBar")]
-public static Task Run([OrchestrationTrigger] DurableOrchestrationContext context)
+public static Task Run([OrchestrationTrigger] IDurableOrchestrationContext context)
 {
     int result = await context.CallActivityAsync<int>("Foo");
     await context.CallActivityAsync("Bar", result);
 }
 ```
 
-Ez a változás jól működik a Orchestrator függvény összes új példányán, de a repülés közbeni példányokat is megszakítja. Vegyük például azt az esetet, amikor egy összehangoló példány egy **foo**-t hív meg, és egy logikai értéket, majd ellenőrzőpontokat kap vissza. Ha az aláírás módosítása ezen a ponton történik, az ellenőrzőpontos példány azonnal meghiúsul, amikor folytatja, és visszajátssza a `context.CallActivityAsync<int>("Foo")`hívását. Ennek az az oka, hogy az előzmények táblázatának eredménye `bool`, de az új kód megpróbálja deszerializálni `int`ba.
+> [!NOTE]
+> Az előző C# példák célja Durable functions 2. x. Durable Functions 1. x esetén a `IDurableOrchestrationContext`helyett `DurableOrchestrationContext`t kell használnia. A verziók közötti különbségekről a [Durable functions verziók](durable-functions-versions.md) című cikkben olvashat bővebben.
 
-Ez csak az egyik módja annak, hogy az aláírás módosítása megszakítja a meglévő példányokat. Általánosságban elmondható, hogy ha egy Orchestrator módosítania kell egy függvény meghívásának módját, akkor a változás valószínűleg problematikus lesz.
+Ez a változás jól működik a Orchestrator függvény összes új példányán, de a repülés közbeni példányokat is megszakítja. Vegyük például azt az esetet, amikor egy összehangoló példány egy `Foo`nevű függvényt hív meg, és egy logikai értéket kap vissza, majd ellenőrzőpontokat. Ha az aláírás módosítása ezen a ponton történik, az ellenőrzőpontos példány azonnal meghiúsul, amikor folytatja, és visszajátssza a `context.CallActivityAsync<int>("Foo")`hívását. Ez a hiba azért fordul elő, mert az előzmények táblázatának eredménye `bool`, de az új kód megpróbálja deszerializálni `int`ba.
+
+Ez a példa az aláírások módosításának számos különböző módja, amely megszakíthatja a meglévő példányokat. Általánosságban elmondható, hogy ha egy Orchestrator módosítania kell egy függvény meghívásának módját, akkor a változás valószínűleg problematikus lesz.
 
 ### <a name="changing-orchestrator-logic"></a>Orchestrator-logika módosítása
 
@@ -62,7 +65,7 @@ Vegye figyelembe a következő Orchestrator függvényt:
 
 ```csharp
 [FunctionName("FooBar")]
-public static Task Run([OrchestrationTrigger] DurableOrchestrationContext context)
+public static Task Run([OrchestrationTrigger] IDurableOrchestrationContext context)
 {
     bool result = await context.CallActivityAsync<bool>("Foo");
     await context.CallActivityAsync("Bar", result);
@@ -73,7 +76,7 @@ Most tegyük fel, hogy látszólag ártatlan változást kíván tenni egy mási
 
 ```csharp
 [FunctionName("FooBar")]
-public static Task Run([OrchestrationTrigger] DurableOrchestrationContext context)
+public static Task Run([OrchestrationTrigger] IDurableOrchestrationContext context)
 {
     bool result = await context.CallActivityAsync<bool>("Foo");
     if (result)
@@ -85,7 +88,10 @@ public static Task Run([OrchestrationTrigger] DurableOrchestrationContext contex
 }
 ```
 
-Ez a változás egy új függvény hívását adja hozzá a **SendNotification** a **foo** és a **Bar**között. Nincsenek aláírási változások. A probléma akkor fordul elő, amikor egy meglévő példány folytatja a hívást a **sávra**. Ha a visszajátszáskor a **foo** eredeti hívása `true`lett visszaadva, akkor a Orchestrator visszajátszás olyan **SendNotification** fog hívni, amely nem szerepel a végrehajtás előzményeiben. Ennek eredményeképpen az állandó feladathoz tartozó keretrendszer egy `NonDeterministicOrchestrationException` miatt meghiúsul, mert a rendszer a **SendNotification** hívását észlelte, amikor a rendszer a **sáv**hívását várta. Ugyanaz a probléma akkor fordulhat elő, ha a "tartós" API-khoz (például `CreateTimer`, `WaitForExternalEvent`stb.) bármilyen hívást felvesznek.
+> [!NOTE]
+> Az előző C# példák célja Durable functions 2. x. Durable Functions 1. x esetén a `IDurableOrchestrationContext`helyett `DurableOrchestrationContext`t kell használnia. A verziók közötti különbségekről a [Durable functions verziók](durable-functions-versions.md) című cikkben olvashat bővebben.
+
+Ez a változás egy új függvény hívását adja hozzá a **SendNotification** a **foo** és a **Bar**között. Nincsenek aláírási változások. A probléma akkor fordul elő, amikor egy meglévő példány folytatja a hívást a **sávra**. Ha a visszajátszáskor a **foo** eredeti hívása `true`lett visszaadva, akkor a Orchestrator visszajátszás a **SendNotification**, amely nem szerepel a végrehajtás előzményeiben. Ennek eredményeképpen az állandó feladathoz tartozó keretrendszer egy `NonDeterministicOrchestrationException` miatt meghiúsul, mert a rendszer a **SendNotification** hívását észlelte, amikor a rendszer a **sáv**hívását várta. Ugyanaz a probléma akkor fordulhat elő, ha a "tartós" API-khoz (például `CreateTimer`, `WaitForExternalEvent`stb.) bármilyen hívást felvesznek.
 
 ## <a name="mitigation-strategies"></a>Kockázatcsökkentő stratégiák
 
@@ -99,11 +105,11 @@ Ez a változás egy új függvény hívását adja hozzá a **SendNotification**
 
 A feltörési változások kezelésének legegyszerűbb módja a fedélzeti előkészítési példányok meghibásodása. Az új példányok sikeresen futtatták a módosított kódot.
 
-Ez a probléma attól függ, hogy a fedélzeti példányok mennyire fontosak. Ha aktív fejlesztést végez, és nem érdeklik a fedélzeti példányok, ez elég jó lehet. Azonban a diagnosztika folyamatában a kivételekkel és a hibákkal kell foglalkoznia. Ha el szeretné kerülni ezeket a dolgokat, tekintse át a többi verziószámozási lehetőséget.
+Ez a hiba attól függ, hogy az ilyen típusú hibák a repülésen kívüli példányok fontosságán alapulnak-e. Ha aktív fejlesztést végez, és nem érdeklik a fedélzeti példányok, ez elég jó lehet. Azonban a diagnosztika folyamatában a kivételekkel és a hibákkal kell foglalkoznia. Ha el szeretné kerülni ezeket a dolgokat, tekintse át a többi verziószámozási lehetőséget.
 
 ### <a name="stop-all-in-flight-instances"></a>Az összes fedélzeti példány leállítása
 
-Egy másik lehetőség az összes fedélzeti példány leállítása. Ezt úgy teheti meg, hogy törli a belső **vezérlő – üzenetsor** és a **Munkatétel-várólista** várólistájának tartalmát. A példányok örökre megakadnak, ahol vannak, de nem fogják a telemetria a hibaüzenetekkel együtt. Ez ideális megoldás a gyors prototípus-fejlesztéshez.
+Egy másik lehetőség az összes fedélzeti példány leállítása. Az összes példány leállítása a belső **vezérlő – üzenetsor** és a **Munkatétel-várólista** várólistájának tartalmának törlésével végezhető el. A példányok örökre megakadnak, ahol ezek a felhasználók, de a naplófájlokat nem fogja felhasználni a hibaüzenetekkel. Ez a megközelítés ideális megoldás a gyors prototípus-fejlesztéshez.
 
 > [!WARNING]
 > A várólisták részletei idővel változhatnak, ezért ne használja ezt a technikát éles számítási feladatokhoz.
@@ -114,7 +120,7 @@ A legtöbb sikertelen működést biztosító módszer, amellyel biztosítható,
 
 * Telepítse az összes frissítést teljes mértékben új függvényként, így a meglévő függvények is megmaradnak. Ez trükkös lehet, mert az új függvények verzióinak hívóit is frissíteni kell Ugyanezen irányelvek követésével.
 * Telepítse az összes frissítést új Function-alkalmazásként egy másik Storage-fiókkal.
-* Telepítse a Function alkalmazás egy új példányát ugyanazzal a Storage-fiókkal, de egy frissített `taskHub`-névvel. Ez az ajánlott eljárás.
+* Telepítse a Function alkalmazás egy új példányát ugyanazzal a Storage-fiókkal, de egy frissített `taskHub`-névvel. Az ajánlott eljárás a párhuzamos üzembe helyezés.
 
 ### <a name="how-to-change-task-hub-name"></a>A feladat központ nevének módosítása
 
@@ -130,7 +136,7 @@ A feladat hub a következő módon konfigurálható a *Host. JSON* fájlban:
 }
 ```
 
-#### <a name="functions-2x"></a>Functions 2.x
+#### <a name="functions-20"></a>Függvények 2,0
 
 ```json
 {
@@ -151,7 +157,7 @@ Javasoljuk, hogy a Function alkalmazás új verzióját egy új [üzembe helyez�
 > [!NOTE]
 > Ez a stratégia akkor működik a legjobban, ha HTTP-és webhook-eseményindítókat használ a Orchestrator functions szolgáltatáshoz. A nem HTTP-alapú eseményindítók, például a várólisták vagy a Event Hubs esetében az eseményindító definíciójának [olyan alkalmazás-beállításból kell származnia](../functions-bindings-expressions-patterns.md#binding-expressions---app-settings) , amely a swap művelet részeként frissül.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Ismerje meg, hogyan kezelheti a teljesítménnyel és a skálázással kapcsolatos problémákat](durable-functions-perf-and-scale.md)

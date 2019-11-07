@@ -7,14 +7,14 @@ manager: jeconnoc
 keywords: ''
 ms.service: azure-functions
 ms.topic: conceptual
-ms.date: 03/14/2019
+ms.date: 11/03/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 53f561283d4d07d58bd03b59a24a30d8010caaf0
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: 5efe571e2c7ff75ace584755324964003176b5f0
+ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70933293"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73614716"
 ---
 # <a name="performance-and-scale-in-durable-functions-azure-functions"></a>Teljesítmény és méretezés Durable Functions (Azure Functions)
 
@@ -30,9 +30,9 @@ Ha egy előkészítési példány futtatására van szükség, az előzmények t
 
 ## <a name="instances-table"></a>Példányok tábla
 
-A **instances** tábla egy másik Azure Storage-tábla, amely a feladatok központján belüli összes összehangoló példány állapotát tartalmazza. A példányok létrehozásakor a rendszer új sorokat ad hozzá ehhez a táblához. A tábla partíciós kulcsa a megszervezési példány azonosítója, a sor kulcsa pedig rögzített állandó. Egy összeszerelési példányon egy sor van.
+A **instances** tábla egy másik Azure Storage-tábla, amely az összes előkészítési és entitási példány állapotát tartalmazza egy adott feladatsoron belül. A példányok létrehozásakor a rendszer új sorokat ad hozzá ehhez a táblához. A tábla partíciós kulcsa a megszervezési példány azonosítója vagy az entitás kulcsa, és a sor kulcsa rögzített állandó. A rendszer egy összehangoló vagy egy entitás-példányon egy sort jelöl.
 
-Ez a táblázat a [GetStatusAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_GetStatusAsync_System_String_) (.net) és `getStatus` (JavaScript) API-k, valamint az [állapot lekérdezési http API](durable-functions-http-api.md#get-instance-status)-k által küldött példány-lekérdezési kérelmek kielégítésére szolgál. A rendszer végül konzisztensen tartja a korábban említett **History (korábbi** ) tábla tartalmát. Egy különálló Azure Storage-tábla használata a példányok lekérdezési műveleteinek hatékony kielégítése érdekében a [lekérdezési és manipulációs szerepek szétválasztása (CQRS) minta](https://docs.microsoft.com/azure/architecture/patterns/cqrs)befolyásolja.
+Ez a táblázat a `GetStatusAsync` (.NET) és a `getStatus` (JavaScript) API-k, valamint az [állapot lekérdezése http API](durable-functions-http-api.md#get-instance-status)-k által küldött példány-lekérdezési kérelmek kielégítésére szolgál. A rendszer végül konzisztensen tartja a korábban említett **History (korábbi** ) tábla tartalmát. Egy különálló Azure Storage-tábla használata a példányok lekérdezési műveleteinek hatékony kielégítése érdekében a [lekérdezési és manipulációs szerepek szétválasztása (CQRS) minta](https://docs.microsoft.com/azure/architecture/patterns/cqrs)befolyásolja.
 
 ## <a name="internal-queue-triggers"></a>Belső üzenetsor-eseményindítók
 
@@ -40,11 +40,11 @@ A Orchestrator functions és a Activity függvények is a belső várólisták �
 
 ### <a name="the-work-item-queue"></a>A munkahelyi elem várólistája
 
-A Durable Functionsben egy munkaelem-várólista (Task hub) van. Ez egy alapszintű várólista, és hasonlóan viselkedik a Azure functions `queueTrigger` összes többi várólistájának. Ez a várólista az állapot nélküli *tevékenységek működésének* elindítására szolgál egy adott üzenet egyetlen üzenetből való törlésével. Mindegyik üzenet tartalmaz tevékenység-és egyéb metaadatokat, például a végrehajtandó műveletet. Ha egy Durable Functions alkalmazás több virtuális gépre is kiterjed, ezek a virtuális gépek mind versenyeznek a munkaelemek várólistából való munkához.
+A Durable Functionsben egy munkaelem-várólista (Task hub) van. Ez egy alapszintű várólista, és hasonlóan viselkedik a Azure Functions többi `queueTrigger`-sorához. Ez a várólista az állapot nélküli *tevékenységek működésének* elindítására szolgál egy adott üzenet egyetlen üzenetből való törlésével. Mindegyik üzenet tartalmaz tevékenység-és egyéb metaadatokat, például a végrehajtandó műveletet. Ha egy Durable Functions alkalmazás több virtuális gépre is kiterjed, ezek a virtuális gépek mind versenyeznek a munkaelemek várólistából való munkához.
 
 ### <a name="control-queues"></a>Vezérlési várólista (ok)
 
-A Durable Functionsban több *ellenőrzési várólista* található. A *vezérlő üzenetsor* sokkal kifinomultabb, mint az egyszerűbb munkaelem-várólista. A vezérlési várólisták az állapot-nyilvántartó Orchestrator funkcióinak aktiválására szolgálnak. Mivel a Orchestrator függvény példányai az állapot-nyilvántartó példányok, nem lehet versengő fogyasztói modellt használni a terhelés elosztásához a virtuális gépek között. Ehelyett a Orchestrator-üzenetek terheléselosztása a vezérlési várólisták között történik. Ennek a viselkedésnek a további részletei a következő részekben olvashatók.
+A Durable Functionsban több *ellenőrzési várólista* található. A *vezérlő üzenetsor* sokkal kifinomultabb, mint az egyszerűbb munkaelem-várólista. A vezérlési várólisták az állapot-nyilvántartó Orchestrator és az entitás funkcióinak aktiválására szolgálnak. Mivel a Orchestrator és az Entity függvény példányainak állapota egyedi, nem lehetséges versengő fogyasztói modellt használni a terhelés elosztásához a virtuális gépek között. Ehelyett a Orchestrator és az entitás-üzenetek terheléselosztása a vezérlési várólisták között történik. Ennek a viselkedésnek a további részletei a következő részekben olvashatók.
 
 A vezérlési várólisták számos különböző előkészítési életciklus-típusú üzenetet tartalmaznak. Ilyenek például a [Orchestrator-vezérlési üzenetek](durable-functions-instance-management.md), a tevékenység- *visszajelzési* üzenetek és az időzítő üzenetek. Az 32-as számú üzenetek egy lekérdezési sorból lesznek elküldve egyetlen lekérdezésben. Ezek az üzenetek hasznos adatokat és metaadatokat tartalmaznak, beleértve a kívánt előkészítési példányt is. Ha ugyanahhoz a hangelőkészítési példányhoz több elküldött üzenetet kíván, a rendszer kötegként dolgozza fel őket.
 
@@ -52,26 +52,30 @@ A vezérlési várólisták számos különböző előkészítési életciklus-t
 
 A tartós feladathoz tartozó bővítmény egy véletlenszerű exponenciális visszakapcsolási algoritmust valósít meg, amely csökkenti az üresjárati üzenetsor lekérdezésének hatását a tárolási tranzakciós költségekre. Ha egy üzenet található, a futtatókörnyezet azonnal egy másik üzenetet keres; Ha nem talál üzenetet, egy ideig várakozik, mielőtt újra próbálkozik. A várakozási sor üzenetének későbbi sikertelen próbálkozásai után a várakozási idő továbbra is növekszik, amíg el nem éri a maximális várakozási időt, amely az alapértelmezett érték 30 másodperc.
 
-A maximális lekérdezési késleltetés a `maxQueuePollingInterval` [Host. JSON fájl](../functions-host-json.md#durabletask)tulajdonságán keresztül konfigurálható. Ha magasabb értékre állítja ezt a beállítást, a rendszer magasabb szintű üzenetkezelési késéseket eredményezhet. A nagyobb késések csak a tétlenségi időszakok után várhatók. Ha ez alacsonyabb értékre van állítva, a megnövekedett tárolási tranzakciók miatt magasabb tárolási költségekhez vezethet.
+A maximális lekérdezési késleltetés a [Host. JSON fájl](../functions-host-json.md#durabletask)`maxQueuePollingInterval` tulajdonságán keresztül konfigurálható. Ha ezt a tulajdonságot magasabb értékre állítja, akkor az üzenet feldolgozási késése magasabb lehet. A nagyobb késések csak a tétlenségi időszakok után várhatók. Ha ez a tulajdonság alacsonyabb értékre van állítva, a megnövekedett tárolási tranzakciók miatt magasabb tárolási költségek léphetnek fel.
 
 > [!NOTE]
 > A Azure Functions-felhasználás és a prémium csomagok futtatásakor a [Azure functions skálázási vezérlő](../functions-scale.md#how-the-consumption-and-premium-plans-work) 10 másodpercenként egyszer lekérdezi az egyes vezérlőket és a munkaelemek várólistáit. Ez a további lekérdezés a Function app-példányok aktiválásához és a méretezési döntések elvégzéséhez szükséges. Az írás időpontjában ez a 10 másodperces intervallum állandó, és nem konfigurálható.
 
 ## <a name="storage-account-selection"></a>Storage-fiók kiválasztása
 
-Az Durable Functions által használt várólisták, táblák és Blobok egy konfigurált Azure Storage-fiókban jönnek létre. A használni kívánt fiók a `durableTask/azureStorageConnectionStringName` **Host. JSON** fájl beállításával adható meg.
+Az Durable Functions által használt várólisták, táblák és Blobok egy konfigurált Azure Storage-fiókban jönnek létre. A használni kívánt fiók a **Host. JSON** fájl `durableTask/storageProvider/connectionStringName` beállításával (vagy az Durable functions 1. x `durableTask/azureStorageConnectionStringName` beállításával adható meg).
 
-### <a name="functions-1x"></a>Functions 1.x
+### <a name="durable-functions-2x"></a>Durable Functions 2. x
 
 ```json
 {
-  "durableTask": {
-    "azureStorageConnectionStringName": "MyStorageAccountAppSetting"
+  "extensions": {
+    "durableTask": {
+      "storageProvider": {
+        "connectionStringName": "MyStorageAccountAppSetting"
+      }
+    }
   }
 }
 ```
 
-### <a name="functions-2x"></a>Functions 2.x
+### <a name="durable-functions-1x"></a>Durable Functions 1. x
 
 ```json
 {
@@ -83,23 +87,27 @@ Az Durable Functions által használt várólisták, táblák és Blobok egy kon
 }
 ```
 
-Ha nincs megadva, a rendszer `AzureWebJobsStorage` az alapértelmezett Storage-fiókot használja. A teljesítményre érzékeny munkaterhelések esetében azonban ajánlott a nem alapértelmezett Storage-fiók konfigurálása. Durable Functions az Azure Storage szolgáltatást erősen használja, és egy dedikált Storage-fiók elkülöníti Durable Functions tárterület-használatot a Azure Functions gazdagép belső használatáról.
+Ha nincs megadva, a rendszer az alapértelmezett `AzureWebJobsStorage` Storage-fiókot használja. A teljesítményre érzékeny munkaterhelések esetében azonban ajánlott a nem alapértelmezett Storage-fiók konfigurálása. Durable Functions az Azure Storage szolgáltatást erősen használja, és egy dedikált Storage-fiók elkülöníti Durable Functions tárterület-használatot a Azure Functions gazdagép belső használatáról.
 
 ## <a name="orchestrator-scale-out"></a>Orchestrator kibővíthető
 
-A tevékenységi funkciók állapot nélküliek, és a virtuális gépek hozzáadásával automatikusan méretezhetők. A Orchestrator függvények viszont egy vagy több vezérlő várólistán vannak *particionálva* . A vezérlési várólisták száma a **Host. JSON** fájlban van definiálva. A következő példa a Host. JSON kódrészletet `durableTask/partitionCount` állítja be `3`a tulajdonságra.
+A tevékenységi funkciók állapot nélküliek, és a virtuális gépek hozzáadásával automatikusan méretezhetők. A Orchestrator függvények és entitások viszont egy vagy több vezérlő várólistán vannak *particionálva* . A vezérlési várólisták száma a **Host. JSON** fájlban van definiálva. A következő példa a Host. JSON kódrészletet állítja be a `durableTask/storageProvider/partitionCount` tulajdonságra (vagy Durable Functions 1. x `durableTask/partitionCount`) `3`.
 
-### <a name="functions-1x"></a>Functions 1.x
+### <a name="durable-functions-2x"></a>Durable Functions 2. x
 
 ```json
 {
-  "durableTask": {
-    "partitionCount": 3
+  "extensions": {
+    "durableTask": {
+      "storageProvider": {
+          "partitionCount": 3
+      }
+    }
   }
 }
 ```
 
-### <a name="functions-2x"></a>Functions 2.x
+### <a name="durable-functions-1x"></a>Durable Functions 1. x
 
 ```json
 {
@@ -113,7 +121,7 @@ A tevékenységi funkciók állapot nélküliek, és a virtuális gépek hozzáa
 
 A feladatok központja 1 és 16 partíciót is konfigurálhat. Ha nincs megadva, az alapértelmezett partíciók száma **4**.
 
-Ha több Function Host-példányra (jellemzően különböző virtuális gépeken) végez skálázást, az egyes példányok a vezérlési várólisták egyikén zárolják a zárolást. Ezek a zárolások a blob Storage-bérletekben belsőleg valósulnak meg, és biztosítják, hogy egy összehangoló példány egyszerre csak egyetlen gazdagép-példányon fusson. Ha egy feladatsor három vezérlési várólistával van konfigurálva, a koordinálási példányok akár több, mint három virtuális gép között is betölthetők. További virtuális gépek is hozzáadhatók a tevékenységi funkciók végrehajtásának kapacitásának növeléséhez.
+Ha több Function Host-példányra (jellemzően különböző virtuális gépeken) végez skálázást, az egyes példányok a vezérlési várólisták egyikén zárolják a zárolást. Ezek a zárolások a blob Storage-bérletekben belsőleg valósulnak meg, és gondoskodnak arról, hogy egy előkészítési példány vagy entitás egyszerre csak egyetlen gazdagép-példányon fusson. Ha egy feladatsor három vezérlési várólistával van konfigurálva, akkor a bevezetési példányok és az entitások több mint három virtuális gép között is betölthetők. További virtuális gépek is hozzáadhatók a tevékenységi funkciók végrehajtásának kapacitásának növeléséhez.
 
 Az alábbi ábra azt szemlélteti, hogy a Azure Functions gazdagép hogyan kommunikál a tárolási entitásokkal egy kibővíthető környezetben.
 
@@ -121,15 +129,18 @@ Az alábbi ábra azt szemlélteti, hogy a Azure Functions gazdagép hogyan kommu
 
 Ahogy az előző ábrán is látható, az összes virtuális gép versenyez a munkaelem-várólistán lévő üzenetekkel. Azonban csak három virtuális gép kaphat üzeneteket a vezérlési várólistákból, és mindegyik virtuális gép egyetlen vezérlő várólistát zárol.
 
-Az előkészítési példányok az összes vezérlő üzenetsor-példány között oszlanak meg. A terjesztés az előkészítési példány AZONOSÍTÓjának kivonatolásával történik. A példány-azonosítók alapértelmezés szerint véletlenszerű GUID azonosítók, így biztosítható, hogy a példányok egyenlően oszlanak meg az összes vezérlő várólistán.
+Az előkészítési példányok és entitások az összes vezérlő üzenetsor-példányon vannak elosztva. A terjesztés az összehangolás vagy az entitás neve és a kulcspár példány-AZONOSÍTÓjának kivonatolásával történik. Az előkészítési példányok alapértelmezett értékei véletlenszerű GUID azonosítók, így biztosítható, hogy a példányok egyenlően oszlanak meg az összes vezérlő várólistán.
 
-Általánosságban elmondható, hogy a Orchestrator függvények egyszerűek, és nem igényelnek nagy mennyiségű számítási teljesítményt. Ezért nem szükséges nagy mennyiségű ellenőrzési várólista-partíciót létrehozni a nagy átviteli sebesség eléréséhez. A nagy részét az állapot nélküli tevékenységek függvényében kell elvégezni, ami a végtelen méretekben méretezhető.
+Általánosságban elmondható, hogy a Orchestrator függvények egyszerűek, és nem igényelnek nagy mennyiségű számítási teljesítményt. Ezért nem szükséges nagy számú vezérlési várólista-partíciót létrehozni, hogy nagyszerű teljesítményt kapjon a feladatokhoz. A nagy részét az állapot nélküli tevékenységek függvényében kell elvégezni, ami a végtelen méretekben méretezhető.
 
 ## <a name="auto-scale"></a>Automatikus méretezés
 
-Ahogy a használati tervben Azure Functions fut, Durable Functions támogatja az automatikus méretezést a [Azure functions skálázási vezérlőn](../functions-scale.md#runtime-scaling)keresztül. A skálázási vezérlő figyeli az összes várólista késését a _betekintés_ parancsainak rendszeres kiállításával. A beérkező üzenetek késése alapján a méretezési vezérlő eldönti, hogy virtuális gépeket kíván-e hozzáadni vagy eltávolítani.
+Csakúgy, mint a használat és a rugalmas prémium csomagokban futó összes Azure Functions esetében, Durable Functions az [Azure functions skálázási vezérlőn](../functions-scale.md#runtime-scaling)keresztül támogatja az automatikus méretezést. A skálázási vezérlő figyeli az összes várólista késését a _betekintés_ parancsainak rendszeres kiállításával. A beérkező üzenetek késése alapján a méretezési vezérlő eldönti, hogy virtuális gépeket kíván-e hozzáadni vagy eltávolítani.
 
 Ha a méretezési vezérlő meghatározza, hogy a vezérlő üzenetsor-üzeneteinek késése túl magas, akkor a virtuálisgép-példányok hozzáadására csak akkor kerül sor, ha az üzenet késése elfogadható szintre csökken, vagy eléri a vezérlési várólista partícióinak darabszámát. Hasonlóképpen, a skálázási vezérlő folyamatosan hozzá fogja adni a virtuálisgép-példányokat, ha a munkaelem-várólista késése magas, a partíciók számától függetlenül.
+
+> [!NOTE]
+> A Durable Functions 2,0-es verziótól kezdődően a Function apps konfigurálható úgy, hogy a VNET-védelemmel ellátott szolgáltatás-végpontokon fusson a rugalmas prémium csomagon belül. Ebben a konfigurációban a Durable Functions eseményindítók elindítják a méretezési kérelmeket a skálázási vezérlő helyett.
 
 ## <a name="thread-usage"></a>Szál használata
 
@@ -137,24 +148,15 @@ A Orchestrator függvények egyetlen szálon futnak, így biztosítható, hogy a
 
 A tevékenység-függvények mindegyike ugyanazokkal a viselkedésekkel rendelkezik, mint a normál üzenetsor által aktivált függvények. Biztonságosan végezhetik el az I/O-t, végrehajtják a CPU-intenzív műveleteket, és több szálat is használhatnak. Mivel a tevékenység-eseményindítók állapot nélküliek, szabadon méretezhetők a virtuális gépek számára.
 
+Az Entity functions szolgáltatást egy szálon is végrehajtja a rendszer, és egy-egy időben dolgozza fel a műveleteket. Azonban az Entity functions nem tartalmaz korlátozásokat a végrehajtható kód típusára vonatkozóan.
+
 ## <a name="concurrency-throttles"></a>Egyidejűségi szabályozások
 
-Azure Functions egyszerre több függvényt hajt végre egyetlen alkalmazás-példányon belül. Az egyidejű végrehajtás segít a párhuzamosság növelésében, és minimálisra csökkenti a "hideg indulások" számát, amelyet egy tipikus alkalmazás az idő múlásával fog tapasztalni. A magas Egyidejűség azonban magas/virtuális virtuálisgép-használatot eredményezhet. A Function alkalmazás igényeitől függően szükség lehet a felhasználónkénti Egyidejűség szabályozására, hogy elkerülje a nagy terhelésű helyzetekben a memória kifutásának lehetőségét.
+Azure Functions egyszerre több függvényt hajt végre egyetlen alkalmazás-példányon belül. Az egyidejű végrehajtás segít a párhuzamosság növelésében, és minimálisra csökkenti a "hideg indulások" számát, amelyet egy tipikus alkalmazás az idő múlásával fog tapasztalni. A magas Egyidejűség azonban a virtuálisgép-rendszererőforrások (például a hálózati kapcsolatok vagy a rendelkezésre álló memória) esetében is kimeríthető. A Function alkalmazás igényeitől függően szükség lehet a felhasználónkénti Egyidejűség szabályozására, hogy elkerülje a nagy terhelésű helyzetekben a memória kifutásának lehetőségét.
 
-A **Host. JSON** fájlban a tevékenység és a Orchestrator függvények párhuzamossági korlátai is konfigurálhatók. A megfelelő beállítások a `durableTask/maxConcurrentActivityFunctions` következők `durableTask/maxConcurrentOrchestratorFunctions` : és.
+A tevékenység, a Orchestrator és az entitás függvényének egyidejűségi korlátai konfigurálhatók a **Host. JSON** fájlban. A vonatkozó beállítások a Orchestrator és az Entity functions esetében `durableTask/maxConcurrentActivityFunctions` a tevékenység-és a `durableTask/maxConcurrentOrchestratorFunctions`.
 
-### <a name="functions-1x"></a>Functions 1.x
-
-```json
-{
-  "durableTask": {
-    "maxConcurrentActivityFunctions": 10,
-    "maxConcurrentOrchestratorFunctions": 10
-  }
-}
-```
-
-### <a name="functions-2x"></a>Functions 2.x
+### <a name="functions-20"></a>Függvények 2,0
 
 ```json
 {
@@ -167,30 +169,29 @@ A **Host. JSON** fájlban a tevékenység és a Orchestrator függvények párhu
 }
 ```
 
-Az előző példában legfeljebb 10 Orchestrator függvény és 10 tevékenységi funkció futhat egyetlen virtuális gépen egyszerre. Ha nincs megadva, az egyidejű tevékenység és a Orchestrator függvény végrehajtásának száma a virtuális gépen lévő magok száma 10X-re van korlátozva.
-
-> [!NOTE]
-> Ezek a beállítások a memória és a CPU-használat egyetlen virtuális gépen való kezeléséhez hasznosak. Ha azonban több virtuális gépen bővíti a skálázást, minden virtuális gépnek saját korlátja lesz. Ezek a beállítások nem használhatók globális szintű Egyidejűség vezérlésére.
-
-## <a name="orchestrator-function-replay"></a>Orchestrator függvény újrajátszása
-
-Ahogy azt korábban említettük, az Orchestrator függvények az **Előzmények** tábla tartalmával lesznek újrajátszva. Alapértelmezés szerint a rendszer minden alkalommal újra lejátssza a Orchestrator-függvény kódját, amikor az üzenetek egy kötegét a rendszer elvégzi a vezérlési sorból.
-
-Ezt az agresszív újralejátszási viselkedést letilthatja a **kiterjesztett munkamenetek**engedélyezésével. Ha a kiterjesztett munkamenetek engedélyezve vannak, a Orchestrator függvény példányai a memóriában maradnak, és az új üzenetek teljes visszajátszás nélkül is feldolgozhatók. A kiterjesztett munkamenetek engedélyezve vannak `durableTask/extendedSessionsEnabled` a `true` **Host. JSON** fájlban való beállítással. A `durableTask/extendedSessionIdleTimeoutInSeconds` beállítással szabályozható, hogy mennyi ideig tart a rendszer az üresjárati munkamenetet a memóriában:
-
 ### <a name="functions-1x"></a>Functions 1.x
 
 ```json
 {
   "durableTask": {
-    "extendedSessionsEnabled": true,
-    "extendedSessionIdleTimeoutInSeconds": 30
+    "maxConcurrentActivityFunctions": 10,
+    "maxConcurrentOrchestratorFunctions": 10
   }
 }
 ```
 
-### <a name="functions-2x"></a>Functions 2.x
+Az előző példában legfeljebb 10 Orchestrator vagy Entity függvény és 10 tevékenységi funkció futhat egyszerre egyetlen virtuális gépen. Ha nincs megadva, az egyidejű tevékenység-és Orchestrator, illetve az entitások függvényének végrehajtásának száma a virtuális gépen lévő magok száma alapján, 10X-re van korlátozva.
 
+> [!NOTE]
+> Ezek a beállítások a memória és a CPU-használat egyetlen virtuális gépen való kezeléséhez hasznosak. Ha azonban több virtuális gépen bővíti a skálázást, minden virtuális gépnek saját korlátai vannak. Ezek a beállítások nem használhatók globális szintű Egyidejűség vezérlésére.
+
+## <a name="extended-sessions"></a>Bővített munkamenetek
+
+A kiterjesztett munkamenetek olyan beállítások, amelyek az üzenetek feldolgozásának befejezése után is megőrzik a munkafolyamatokat és az entitásokat a memóriában. A kiterjesztett munkamenetek engedélyezésének tipikus hatása az Azure Storage-fiókra és a teljes továbbfejlesztett átviteli sebességre csökken.
+
+A kibővített munkameneteket a **Host. JSON** fájlban lévő `true` `durableTask/extendedSessionsEnabled` beállításával engedélyezheti. A `durableTask/extendedSessionIdleTimeoutInSeconds` beállítással szabályozható, hogy mennyi ideig tart a rendszer a memóriában a tétlen munkamenetet:
+
+**Függvények 2,0**
 ```json
 {
   "extensions": {
@@ -202,26 +203,54 @@ Ezt az agresszív újralejátszási viselkedést letilthatja a **kiterjesztett m
 }
 ```
 
-A kiterjesztett munkamenetek engedélyezésének tipikus hatása az Azure Storage-fiókra és a teljes továbbfejlesztett átviteli sebességre csökken.
+**Függvények 1,0**
+```json
+{
+  "durableTask": {
+    "extendedSessionsEnabled": true,
+    "extendedSessionIdleTimeoutInSeconds": 30
+  }
+}
+```
 
-Ennek a funkciónak a hátránya azonban az, hogy az inaktív Orchestrator függvény példányai továbbra is a memóriában maradnak. Két tényezőt kell figyelembe venni:
+Ennek a beállításnak két lehetséges hátránya van:
 
-1. Általános növekedés a Function app memóriahasználat használatával.
-2. Az átviteli sebesség teljes csökkenése, ha sok párhuzamos, rövid élettartamú Orchestrator függvény végrehajtása történik.
+1. Összességében megnő a Function app memóriahasználat használata.
+2. Ha sok egyidejű, rövid életű Orchestrator vagy entitás-függvény végrehajtást használ, az átviteli sebesség összességében csökkenhet.
 
-Ha `durableTask/extendedSessionIdleTimeoutInSeconds` például 30 másodpercre van beállítva, akkor egy rövid élettartamú Orchestrator függvény, amely az 1 másodpercnél kevesebbet hajt végre, 30 másodpercig továbbra is elfoglalja a memóriát. Emellett a `durableTask/maxConcurrentOrchestratorFunctions` korábban említett kvótával is számolni kell, ami megakadályozhatja, hogy más Orchestrator függvények fussanak.
+Ha például a `durableTask/extendedSessionIdleTimeoutInSeconds` 30 másodpercre van állítva, akkor egy rövid élettartamú Orchestrator vagy entitás-függvény, amely 1 másodpercnél kevesebbet hajt végre, továbbra is 30 másodpercig foglal memóriát. Emellett a korábban említett `durableTask/maxConcurrentOrchestratorFunctions` kvótára is vonatkozik, ami esetleg megakadályozza más Orchestrator vagy Entity függvények futtatását.
+
+A következő szakaszok ismertetik a kiterjesztett munkamenetek a Orchestrator és az Entity functions szolgáltatásban megadott effektusait.
+
+### <a name="orchestrator-function-replay"></a>Orchestrator függvény újrajátszása
+
+Ahogy azt korábban említettük, az Orchestrator függvények az **Előzmények** tábla tartalmával lesznek újrajátszva. Alapértelmezés szerint a rendszer minden alkalommal újra lejátssza a Orchestrator-függvény kódját, amikor az üzenetek egy kötegét a rendszer elvégzi a vezérlési sorból. Ha a kiterjesztett munkamenetek engedélyezve vannak, a Orchestrator függvény példányai a memóriában maradnak, és az új üzenetek teljes előzmény-újrajátszás nélkül is feldolgozhatók.
+
+A kiterjesztett munkamenetek teljesítményének növelése leggyakrabban a következő helyzetekben figyelhető meg:
+
+* Ha egy korlátozott számú összehangoló példány egyidejűleg fut.
+* Ha a hangfelismerések nagy számú szekvenciális művelettel rendelkeznek (több száz tevékenység-hívás), amely gyorsan elkészül.
+* Az összehangolás és a ventilátor – nagy mennyiségű művelet, amely egy időben fejeződik be.
+* Ha a Orchestrator függvénynek nagy méretű üzeneteket kell feldolgoznia, vagy bármilyen CPU-igényes adatfeldolgozást kell végeznie.
+
+Minden más esetben a Orchestrator függvények esetében általában nem észlelhető a teljesítmény.
 
 > [!NOTE]
-> Ezeket a beállításokat csak akkor kell használni, ha egy Orchestrator függvényt teljesen fejlesztettek ki és teszteltek. Az alapértelmezett agresszív újralejátszási viselkedés hasznos lehet a idempotencia hibák észleléséhez a Orchestrator-függvényekben a fejlesztési időszakban.
+> Ezeket a beállításokat csak akkor kell használni, ha egy Orchestrator függvényt teljesen fejlesztettek ki és teszteltek. Az alapértelmezett agresszív újraindítási viselkedés hasznos lehet a [Orchestrator-kódok](durable-functions-code-constraints.md) észlelésére a fejlesztési időszakban, ezért alapértelmezés szerint le van tiltva.
+
+### <a name="entity-function-unloading"></a>Entitás funkciójának eltávolítása
+
+Az Entity functions legfeljebb 20 műveletet dolgoz fel egyetlen kötegben. Amint egy entitás befejezi a műveletek kötegelt feldolgozását, megőrzi az állapotát és a memóriából való eltávolítását. A kibővített munkamenetek beállítás használatával késleltetheti az entitások memóriából való eltávolítását. Az entitások továbbra is megőrzik az állapotukat az előzőekben leírtaknak megfelelően, de a beállított ideig továbbra is a memóriában maradnak az Azure Storage-ból betöltött terhelés csökkentése érdekében. Az Azure Storage-ból betöltött terhelések csökkentése növelheti a gyakran használt entitások teljes átviteli sebességét.
 
 ## <a name="performance-targets"></a>Teljesítménybeli célok
 
 Ha éles alkalmazások Durable Functions használatát tervezi használni, fontos, hogy a tervezési folyamat elején vegye figyelembe a teljesítménnyel kapcsolatos követelményeket. Ez a szakasz néhány alapszintű használati forgatókönyvet és a várt maximális átviteli sebességet ismerteti.
 
-* **Szekvenciális tevékenységek végrehajtása**: Ez a forgatókönyv egy Orchestrator függvényt mutat be, amely egy sor tevékenységi funkciót futtat egy másik után. A leginkább hasonlít a [függvény láncolására](durable-functions-sequence.md) szolgáló mintára.
-* **Párhuzamos tevékenységek végrehajtása**: Ez a forgatókönyv egy olyan Orchestrator függvényt ír le, amely sok tevékenység-funkciót hajt végre párhuzamosan a [ventilátor-out, ventilátor-in](durable-functions-cloud-backup.md) mintázat használatával.
-* **Párhuzamos reagálások feldolgozása**: Ez a forgatókönyv a [fan-out, a fan-in](durable-functions-cloud-backup.md) mintázat második fele. A ventilátor teljesítményére koncentrál. Fontos megjegyezni, hogy a ventilátortól eltérően a ventilátort egyetlen Orchestrator-függvény példánya végzi el, ezért csak egyetlen virtuális gépen futtatható.
-* **Külső események feldolgozása**: Ez a forgatókönyv egyetlen Orchestrator-függvényt képvisel, amely a [külső eseményekre](durable-functions-external-events.md)vár egy adott időpontban.
+* **Szekvenciális tevékenység-végrehajtás**: Ez a forgatókönyv egy Orchestrator függvényt ismertet, amely egy sor tevékenységi funkciót futtat egy másik után. A leginkább hasonlít a [függvény láncolására](durable-functions-sequence.md) szolgáló mintára.
+* **Párhuzamos tevékenység-végrehajtás**: Ez a forgatókönyv egy Orchestrator függvényt ismertet, amely sok tevékenység-funkciót hajt végre párhuzamosan a [ventilátor-out, ventilátor-in](durable-functions-cloud-backup.md) mintázat használatával.
+* **Párhuzamos reagálások feldolgozása**: Ez a forgatókönyv a [kiugró, ventilátoros](durable-functions-cloud-backup.md) minta második fele. A ventilátor teljesítményére koncentrál. Fontos megjegyezni, hogy a ventilátortól eltérően a ventilátort egyetlen Orchestrator-függvény példánya végzi el, ezért csak egyetlen virtuális gépen futtatható.
+* **Külső események feldolgozása**: Ez a forgatókönyv egyetlen Orchestrator-függvényt képvisel, amely a [külső eseményekre](durable-functions-external-events.md)vár egyszerre.
+* **Entitás-művelet feldolgozása**: Ez a forgatókönyv azt vizsgálja, hogy egy _adott_ [számláló entitás](durable-functions-entities.md) milyen gyorsan dolgozhat fel egy állandó adatfolyamot.
 
 > [!TIP]
 > A ventilátorokkal ellentétben a ventilátoros műveletek egyetlen virtuális gépre korlátozódnak. Ha az alkalmazás a ventilátort, a ventilátort használja, és Ön aggódik a ventilátorok teljesítményével kapcsolatban, vegye fontolóra a tevékenység funkcióinak [több alfolyamaton](durable-functions-sub-orchestrations.md)belüli felosztását.
@@ -234,6 +263,7 @@ A következő táblázat a korábban ismertetett forgatókönyvek várható *max
 | Párhuzamos tevékenységek végrehajtása (ventilátor – kimenő) | 100 tevékenység/másodperc/példány |
 | Párhuzamos reagálások feldolgozása (ventilátor) | 150 válasz másodpercenként, a példányok száma szerint |
 | Külső események feldolgozása | 50 esemény másodpercenként, a példányok száma szerint |
+| Entitás műveletének feldolgozása | 64 művelet másodpercenként |
 
 > [!NOTE]
 > Ezek a számok a Durable Functions bővítmény v 1.4.0 (GA) kiadásában aktuálisak. Ezek a számok idővel megváltozhatnak, amikor a funkció kiforr, és optimalizálást végez.

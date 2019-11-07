@@ -6,12 +6,12 @@ ms.author: dacoulte
 ms.date: 10/18/2019
 ms.topic: conceptual
 ms.service: resource-graph
-ms.openlocfilehash: bcc272a8189ebb175f546f6a50c2c117a7975216
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: 44f31a8c9e5b47fdcc62c87f6181a3812697aa4b
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72800179"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73622612"
 ---
 # <a name="working-with-large-azure-resource-data-sets"></a>Nagyméretű Azure-beli erőforrás-adatkészletek használata
 
@@ -24,7 +24,7 @@ A lekérdezések magas gyakorisággal történő kezelésével kapcsolatos útmu
 Alapértelmezés szerint az erőforrás-gráf korlátozza a lekérdezéseket, hogy csak **100** rekordokat adjanak vissza. Ez a vezérlő védi a felhasználót és a szolgáltatást olyan véletlen lekérdezésektől, amelyek nagy adatkészleteket eredményezhetnek. Ez az esemény leggyakrabban akkor fordul elő, amikor az ügyfél a lekérdezésekkel kísérletezik, és az adott igényeknek megfelelő módon keresi és szűri az erőforrásokat. Ez a vezérlő más, mint a [felső](/azure/kusto/query/topoperator) vagy [Az Azure adatkezelő](/azure/kusto/query/limitoperator) nyelvi operátorok használatának korlátozása az eredmények korlátozásához.
 
 > [!NOTE]
-> **Első**használata esetén ajánlott az eredményeket legalább egy olyan oszlop szerint rendelni, amelynek `asc` vagy `desc` értékűnek kell lennie. Rendezés nélkül a visszaadott eredmények véletlenszerűek, és nem ismételhetők.
+> **Első**használata esetén ajánlott az eredményeket legalább egy olyan oszlop szerint rendelni, amelynek `asc` vagy `desc`. Rendezés nélkül a visszaadott eredmények véletlenszerűek, és nem ismételhetők.
 
 Az alapértelmezett korlát felülbírálható az erőforrás-Gráftal való interakció minden módszerén keresztül. Az alábbi példák bemutatják, hogyan módosíthatja az adathalmaz méretének korlátját a _200_értékre:
 
@@ -47,7 +47,7 @@ Az **első** jelenleg a maximálisan engedélyezett _5000_-as értékkel rendelk
 A nagyméretű adatkészletek használatának következő lehetősége a **kihagyás** vezérlőelem. Ez a vezérlő lehetővé teszi, hogy a lekérdezés átugorjon vagy kihagyja a megadott számú rekordot, mielőtt visszaadná az eredményeket. A **skip (kihagyás** ) olyan lekérdezések esetében hasznos, amelyek értelmes módon jelenítik meg az eredményeket. Ha a szükséges eredmények a visszaadott adathalmaz végén találhatók, akkor hatékonyabb, ha más rendezési konfigurációt használ, és az eredményeket az adathalmaz elejéről kéri le.
 
 > [!NOTE]
-> A **skip**használata esetén ajánlott az eredményeket legalább egy olyan oszlop szerint rendelni, amelynek `asc` vagy `desc` értékűnek kell lennie. Rendezés nélkül a visszaadott eredmények véletlenszerűek, és nem ismételhetők.
+> Ha a **kihagyást**használja, azt javasoljuk, hogy az eredményeket legalább egy, `asc` vagy `desc`oszlopot tartalmazó oszlop alapján rendelje. Rendezés nélkül a visszaadott eredmények véletlenszerűek, és nem ismételhetők.
 
 Az alábbi példák azt mutatják be, hogyan lehet kihagyni az első _10_ rekordot, amely a lekérdezés eredményét eredményezi, ehelyett a visszaadott eredményhalmaz 11. rekorddal való megadásával:
 
@@ -87,7 +87,7 @@ Példaként tekintse meg a [következő oldal lekérdezését](/rest/api/azurere
 
 A Resource Graph-lekérdezések eredményei két formátumban, _tábla_ -és _ObjectArray_érhetők el. A formátum a **resultFormat** paraméterrel van konfigurálva a kérési beállítások részeként. A **resultFormat**alapértelmezett értéke a _táblázat_ formátuma.
 
-Az Azure CLI-ből származó eredmények alapértelmezés szerint a JSON-ben vannak megadva. Az Azure PowerShell alapértelmezés szerint **pscustomobject formájában kapja** , de a `ConvertTo-Json` parancsmag használatával gyorsan átalakíthatók JSON-ra. Más SDK-k esetén a lekérdezés eredményei konfigurálhatók úgy, hogy kiállítsák a _ObjectArray_ formátumot.
+Az Azure CLI-ből származó eredmények alapértelmezés szerint a JSON-ben vannak megadva. Az Azure PowerShell alapértelmezés szerint **pscustomobject formájában kapja** , de a `ConvertTo-Json` parancsmag használatával gyorsan átalakítható JSON-ra. Más SDK-k esetén a lekérdezés eredményei konfigurálhatók úgy, hogy kiállítsák a _ObjectArray_ formátumot.
 
 ### <a name="format---table"></a>Táblázat formázása
 
@@ -167,8 +167,8 @@ request = QueryRequest(query="Resources | limit 1", subscriptions=subs_list, opt
 response = client.resources(request)
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Tekintse meg az [alapszintű lekérdezésekben](../samples/starter.md)használt nyelvet.
 - Lásd: speciális alkalmazások a [speciális lekérdezésekben](../samples/advanced.md).
-- Ismerje meg az [erőforrások feltárását](explore-resources.md).
+- További információ az [erőforrások feltárásáról](explore-resources.md).

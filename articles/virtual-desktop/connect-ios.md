@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: helohr
-ms.openlocfilehash: 764ed4fefd1a3aba1f0b7812fa2965505aa34161
-ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
+ms.openlocfilehash: bfc7efa6e8ead3b53704e3c9bd189b18cb787618
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71338686"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73605837"
 ---
 # <a name="connect-with-the-ios-client"></a>Kapcsolódás az iOS-ügyfélhez
 
@@ -28,7 +28,7 @@ Az iOS Beta-ügyfél telepítése:
 
 1. Telepítse az [Apple testflighthoz](https://apps.apple.com/us/app/testflight/id899247664) alkalmazást az iOS-eszközön.
 2. Az iOS-eszközön nyisson meg egy böngészőt, és navigáljon a [aka.MS/rdiosbeta](https://aka.ms/rdiosbeta).
-3. A címke **2. lépése: Csatlakozzon a bétaverzióhoz**, és válassza a **tesztelés indítása**lehetőséget.
+3. A **2. lépés: csatlakozás a bétaverzióhoz**szakaszban válassza a **tesztelés indítása**lehetőséget.
 4. Ha átirányítja a Testflighthoz alkalmazáshoz, válassza az **elfogadás**lehetőséget, majd válassza a **telepítés**lehetőséget.
 
 ## <a name="subscribe-to-a-feed"></a>Előfizetés hírcsatornára
@@ -37,9 +37,9 @@ Fizessen elő a rendszergazda által biztosított hírcsatornára az iOS-eszköz
 
 Előfizetés a hírcsatornára:
 
-1. A Csatlakozáskezelő területen koppintson **+** a elemre, majd koppintson a **munkaterület hozzáadása**lehetőségre.
+1. A Csatlakozáskezelőben koppintson a **+** elemre, majd koppintson a **munkaterület hozzáadása**lehetőségre.
 2. Írja be a hírcsatorna URL-címét a **hírcsatorna URL-címe** mezőbe. A hírcsatorna URL-címe lehet URL vagy e-mail-cím.
-   - Ha URL-címet használ, használja a rendszergazdát. Általában az URL-cím <https://rdweb.wvd.microsoft.com>.
+   - Ha URL-címet használ, használja a rendszergazdát. Az URL-cím általában <https://rdweb.wvd.microsoft.com>.
    - E-mail-cím használatához adja meg az e-mail-címét. Ez azt jelzi, hogy az ügyfél megkeresi az e-mail-címéhez tartozó URL-címet, ha a rendszergazda konfigurálta a kiszolgálót.
 3. Koppintson a **tovább**gombra.
 4. Ha a rendszer kéri, adja meg a hitelesítő adatait.

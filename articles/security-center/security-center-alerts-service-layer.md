@@ -1,5 +1,5 @@
 ---
-title: Veszélyforrások észlelése az Azure szolgáltatási rétegéhez Azure Security Centerban | Microsoft Docs
+title: Azure szolgáltatási réteg fenyegetések észlelése – Azure Security Center
 description: Ez a témakör a Azure Security Centerban elérhető Azure szolgáltatási rétegbeli riasztásokat mutatja be.
 services: security-center
 documentationcenter: na
@@ -10,12 +10,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 08/25/2019
 ms.author: memildin
-ms.openlocfilehash: 9a600b6b45dbef49f600a5e9e913c9d1839eff93
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: b82eab9d20966ddd0678c9213bf25a14b5313f58
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71202444"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73686449"
 ---
 # <a name="threat-detection-for-the-azure-service-layer-in-azure-security-center"></a>Veszélyforrások észlelése az Azure szolgáltatási rétegében Azure Security Center
 
@@ -66,8 +66,8 @@ A Security Center egy további védelmi réteget biztosít Azure Resource Manage
 |**Gyanús felügyeleti munkamenet inaktív fiók használatával**|Az előfizetési tevékenység naplófájljainak elemzése gyanús viselkedést észlelt. A hosszú ideig nem használt rendszerbiztonsági tag mostantól olyan műveleteket hajt végre, amelyek biztonságos adatmegőrzést biztosítanak a támadók számára.|
 |**Gyanús felügyeleti munkamenet a PowerShell használatával**|Az előfizetési tevékenység naplófájljainak elemzése gyanús viselkedést észlelt. Egy olyan rendszerbiztonsági tag, amely nem használja rendszeresen a PowerShellt az előfizetési környezet kezeléséhez, most már a PowerShellt használja, és olyan műveleteket hajt végre, amelyek biztonságban lehetnek a támadók számára.|
 |**Fejlett Azure-adatmegőrzési technikák használata**|Az előfizetési tevékenység naplófájljainak elemzése gyanús viselkedést észlelt. Testreszabott szerepkörök lettek megadva legitimized. Ez azt eredményezheti, hogy a támadó a perzisztencia egy Azure-beli felhasználói környezetben szerezheti be.|
-|**Ritkán használt országból indított tevékenység**|Olyan helyről származó tevékenység, amely a szervezet bármely felhasználója által nemrég vagy soha nem járt le.<br/>Az észlelés múltbeli tevékenységet helyek meghatározásához az új és a ritka figyelembe veszi. Az anomáliadetektálási motor a fenti helyeken, a szervezet felhasználói által használt információkat tárol. 
-|**Névtelen IP-címekről indított tevékenység**|A rendszer olyan IP-címről származó felhasználói tevékenységet észlelt, amely névtelen proxy IP-címként lett azonosítva. <br/>Ezeket a proxykat olyan személyek használják, akik el szeretnék rejteni az eszköz IP-címét, és rosszindulatú szándékkal is használhatók. Ez az észlelés egy gépi tanulási algoritmust használ, amely csökkenti a téves pozitív értéket, például a szervezet felhasználói által széles körben használt, helytelenül címkézett IP-címeket.|
+|**Ritkán használt országból származó tevékenység**|Olyan helyről származó tevékenység, amely a szervezet bármely felhasználója által nemrég vagy soha nem járt le.<br/>Ez az észlelés a múltbeli tevékenységek helyét vizsgálja meg az új és a ritkán használt helyszínek meghatározásához. Az anomáliák észlelési motorja a szervezet felhasználói által használt korábbi helyekre vonatkozó adatokat tárolja. 
+|**Névtelen IP-címekről származó tevékenység**|A rendszer olyan IP-címről származó felhasználói tevékenységet észlelt, amely névtelen proxy IP-címként lett azonosítva. <br/>Ezeket a proxykat olyan személyek használják, akik el szeretnék rejteni az eszköz IP-címét, és rosszindulatú szándékkal is használhatók. Ez az észlelés egy gépi tanulási algoritmust használ, amely csökkenti a téves pozitív értéket, például a szervezet felhasználói által széles körben használt, helytelenül címkézett IP-címeket.|
 |**Lehetetlen utazás észlelhető**|Két felhasználói tevékenység történt (egyetlen vagy több munkamenetben), amely földrajzilag távoli helyekről származik. Ez egy rövidebb időszakon belül történik, mint amikor a felhasználó az első helyről a másodikra utazott volna. Ez azt jelzi, hogy egy másik felhasználó ugyanazokat a hitelesítő adatokat használja. <br/>Ez az észlelés egy gépi tanulási algoritmust használ, amely figyelmen kívül hagyja a nem megfelelő utazási feltételekhez, például a VPN-hez és a szervezet más felhasználói által rendszeresen használt helyekhez hozzájáruló nyilvánvaló téves riasztásokat. Az észlelés kezdeti tanulási időszaka hét nap, amely során az új felhasználó tevékenységi mintáját tanulja meg.|
 
 >[!NOTE]

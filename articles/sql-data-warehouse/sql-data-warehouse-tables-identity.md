@@ -1,5 +1,5 @@
 ---
-title: Helyettesítő kulcsok létrehozása az IDENTITY használatával – Azure SQL Data Warehouse | Microsoft Docs
+title: IDENTITÁS használata helyettesítő kulcsok létrehozásához
 description: Javaslatok és példák az IDENTITY tulajdonság használatára a helyettesítő kulcsok létrehozásához a Azure SQL Data Warehouse tábláiban.
 services: sql-data-warehouse
 author: XiaoyuMSFT
@@ -10,12 +10,13 @@ ms.subservice: development
 ms.date: 04/30/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: 4c65bf7cc8edfa246508bb22001aed40c34414f3
-ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
+ms.custom: seo-lt-2019
+ms.openlocfilehash: 0ee15b975b5513077b26cceeb80ea3fb8c02456b
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68515585"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73692471"
 ---
 # <a name="using-identity-to-create-surrogate-keys-in-azure-sql-data-warehouse"></a>Helyettesítő kulcsok létrehozása a Azure SQL Data Warehouseban identitás használatával
 
@@ -43,7 +44,7 @@ WITH
 ;
 ```
 
-A paranccsal `INSERT..SELECT` feltöltheti a táblázatot.
+Ezután a `INSERT..SELECT` használatával feltöltheti a táblázatot.
 
 Ez a szakasz a megvalósítás árnyalatait emeli ki, hogy könnyebben megértse őket.  
 
@@ -76,13 +77,13 @@ FROM dbo.T1;
 DBCC PDW_SHOWSPACEUSED('dbo.T1');
 ```
 
-Az előző példában két sor landolt az 1. eloszlásban. Az első sorban 1 érték szerepel az oszlopban `C1`, a második sorban pedig a 61-es helyettesítő érték szerepel. Mindkét értéket az IDENTITY tulajdonság generálta. Azonban az értékek kiosztása nem folytonos. Ez a működésmód szándékos.
+Az előző példában két sor landolt az 1. eloszlásban. Az első sorban a `C1`oszlop 1 értékének helyettesítő értéke szerepel, a második sorban pedig az 61-es helyettesítő érték szerepel. Mindkét értéket az IDENTITY tulajdonság generálta. Azonban az értékek kiosztása nem folytonos. Ez a működésmód szándékos.
 
 ### <a name="skewed-data"></a>Elferdített adatértékek
 
-Az adattípus értékeinek tartománya egyenletesen oszlik el az eloszlások között. Ha egy elosztott tábla elferdíti az adatmennyiséget, akkor az adattípushoz elérhető értékek tartománya túl korán is kimeríthető. Ha például az összes adatok egyetlen eloszlásban fejeződik be, akkor a tábla gyakorlatilag csak egy hatvanadik fér hozzá az adattípushoz. Emiatt az Identity tulajdonság csak a `INT` és `BIGINT` az adattípusokra korlátozódik.
+Az adattípus értékeinek tartománya egyenletesen oszlik el az eloszlások között. Ha egy elosztott tábla elferdíti az adatmennyiséget, akkor az adattípushoz elérhető értékek tartománya túl korán is kimeríthető. Ha például az összes adatok egyetlen eloszlásban fejeződik be, akkor a tábla gyakorlatilag csak egy hatvanadik fér hozzá az adattípushoz. Emiatt az IDENTITY tulajdonság csak `INT` és `BIGINT` adattípusokra korlátozódik.
 
-### <a name="selectinto"></a>VÁLASSZA A.. A
+### <a name="selectinto"></a>Válassza a.. A
 
 Ha egy meglévő IDENTITY oszlop van kiválasztva egy új táblába, az új oszlop örökli az IDENTITY tulajdonságot, kivéve, ha az alábbi feltételek egyike igaz:
 
@@ -95,11 +96,11 @@ Ha az ilyen feltételek bármelyike igaz, az oszlop létrehozása nem NULL az ID
 
 ### <a name="create-table-as-select"></a>CREATE TABLE VÁLASSZA KI
 
-CREATE TABLE AS SELECT (CTAS) a SELECT... SQL Server viselkedését követi. A. Azonban nem adhat meg Identity tulajdonságot az utasítás `CREATE TABLE` részeként definiált oszlop definíciójában. A CTAS `SELECT` részében nem használhatja az Identity függvényt is. Egy tábla feltöltéséhez a használatával `CREATE TABLE` kell megadnia a táblázatot, `INSERT..SELECT` amelyet a feltöltéshez kell adnia.
+CREATE TABLE AS SELECT (CTAS) a SELECT... SQL Server viselkedését követi. A. Azonban nem adhat meg egy IDENTITY tulajdonságot az utasítás `CREATE TABLE` része oszlopának definíciójában. A CTAS `SELECT` részében nem használhatja az IDENTITY függvényt is. Egy tábla feltöltéséhez `CREATE TABLE` kell használnia a tábla megadásához, majd a `INSERT..SELECT` a feltöltéshez.
 
 ## <a name="explicitly-inserting-values-into-an-identity-column"></a>Értékek explicit beszúrása egy IDENTITY oszlopba
 
-SQL Data Warehouse támogatja `SET IDENTITY_INSERT <your table> ON|OFF` a szintaxist. Ezt a szintaxist használva explicit módon szúrhat be értékeket az IDENTITY oszlopba.
+SQL Data Warehouse támogatja `SET IDENTITY_INSERT <your table> ON|OFF` szintaxist. Ezt a szintaxist használva explicit módon szúrhat be értékeket az IDENTITY oszlopba.
 
 Számos adatmodell, például az előre meghatározott negatív értékek használata a dimenziókban megadott sorokhoz. Ilyen például az-1 vagy az "ismeretlen tag" sor.
 
@@ -157,10 +158,10 @@ DBCC PDW_SHOWSPACEUSED('dbo.T1');
 ```
 
 > [!NOTE]
-> A jelenleg nem használható `CREATE TABLE AS SELECT` , ha az adatok betöltését egy azonosító oszlopot tartalmazó táblába helyezi.
+> Az adatok nem használhatók `CREATE TABLE AS SELECT` jelenleg, ha azonosító oszlopot tartalmazó táblába töltenek be adatbevitelt.
 >
 
-Az adatok betöltésével kapcsolatos további információkért lásd: [a kinyerési, betöltési és átalakítási (elt) tervezés a Azure SQL Data Warehouse és az](design-elt-data-loading.md) [ajánlott eljárások](guidance-for-loading-data.md)betöltéséhez.
+Az adatok betöltésével kapcsolatos további információkért lásd: [a kinyerési, betöltési és átalakítási (elt) tervezés a Azure SQL Data Warehouse és az](design-elt-data-loading.md) [ajánlott eljárások betöltéséhez](guidance-for-loading-data.md).
 
 ## <a name="system-views"></a>Rendszernézetek
 
@@ -203,7 +204,7 @@ A következő kapcsolódó függvények nem támogatottak SQL Data Warehouseban:
 - [IDENT_INCR](/sql/t-sql/functions/ident-incr-transact-sql)
 - [IDENT_SEED](/sql/t-sql/functions/ident-seed-transact-sql)
 
-## <a name="common-tasks"></a>Gyakori feladatok
+## <a name="common-tasks"></a>Gyakori műveletek
 
 Ez a szakasz egy olyan mintakód használatát ismerteti, amellyel általános feladatokat hajthat végre az identitás oszlopainak használatakor.
 
@@ -211,7 +212,7 @@ A C1 oszlop a következő feladatok IDENTITÁSa.
 
 ### <a name="find-the-highest-allocated-value-for-a-table"></a>Egy tábla legmagasabb lefoglalt értékének megkeresése
 
-Az elosztott `MAX()` táblához lefoglalt legmagasabb érték meghatározásához használja a függvényt:
+A `MAX()` függvény használatával meghatározhatja az elosztott táblák legmagasabb értékét:
 
 ```sql
 SELECT MAX(C1)

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 11/04/2019
-ms.openlocfilehash: 9fbe4f34bb27d2de662f11dbdd047356ff3d3941
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: HT
+ms.openlocfilehash: 4fe405d4027535eb6b0211f7a3f997194b8819aa
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/04/2019
-ms.locfileid: "73497374"
+ms.locfileid: "73580749"
 ---
 # <a name="what-is-an-azure-machine-learning-workspace"></a>Mi az Azure Machine Learning munkaterület?
 
@@ -32,7 +32,7 @@ A munkaterület taxonómiaét az alábbi ábra szemlélteti:
 
 A diagram a munkaterület következő összetevőit jeleníti meg:
 
-+ A munkaterületek tartalmazhatnak [Azure Machine learning számítási példányokat](concept-compute-instance.md), a Azure Machine learning futtatásához szükséges Python-környezettel konfigurált Felhőbeli erőforrásokat.
++ A munkaterületek Azure Machine Learning notebook-alapú virtuális gépeket, a Azure Machine Learning futtatásához szükséges Python-környezettel konfigurált Felhőbeli erőforrásokat is tartalmazhatnak.
 + A [felhasználói szerepkörök](how-to-assign-roles.md) lehetővé teszik a munkaterület más felhasználókkal, csapatokkal vagy projektekkel való megosztását.
 + A kísérletek futtatásához [számítási célokat](concept-azure-machine-learning-architecture.md#compute-targets) kell használni.
 + A munkaterület létrehozásakor a [társított erőforrások](#resources) is létrejönnek Önnek.
@@ -75,11 +75,8 @@ A következő munkaterület-felügyeleti feladatokat is végrehajthatja:
 | Munkaterület-hozzáférés kezelése    | **&check;**   || |  **&check;**    |
 | Frissítés a Enterprise Edition verzióra    | **&check;** |  | |     |
 | Számítási erőforrások létrehozása és kezelése    |   | **&check;** | **&check;** |  **&check;**   |
-| Számítási példány létrehozása | **&check;**  | **&check;** | **&check;** |     |
+| Jegyzetfüzet-alapú virtuális gép létrehozása |   | **&check;** | |     |
 
-> [!NOTE]
-> A számítási példányok csak az **USA északi középső** régióját vagy **Egyesült Királyság déli régiójat**tartalmazó munkaterületekhez érhetők el.
->Ha a munkaterület bármely más régióban található, akkor továbbra is létrehozhat és használhat [notebookos virtuális gépet](concept-compute-instance.md#notebookvm) .
 
 ## <a name='create-workspace'></a>Munkaterület létrehozása
 
@@ -101,7 +98,7 @@ Több módon is létrehozhat egy munkaterületet:
 Amikor új munkaterületet hoz létre, az automatikusan létrehoz több Azure-erőforrást, amelyet a munkaterület használ:
 
 + [Azure Container Registry](https://azure.microsoft.com/services/container-registry/): regisztrálja a betanítás során használt Docker-tárolókat, és amikor üzembe helyezi a modellt. A költségek csökkentése érdekében az ACR a telepítési lemezképek létrehozása előtt **betöltődik** .
-+ [Azure Storage-fiók](https://azure.microsoft.com/services/storage/): a munkaterület alapértelmezett adattára.  A Azure Machine Learning számítási példányhoz használt Jupyter-jegyzetfüzeteket is itt tárolja.
++ [Azure Storage-fiók](https://azure.microsoft.com/services/storage/): a munkaterület alapértelmezett adattára.  A Azure Machine Learning notebook virtuális géphez használt Jupyter-jegyzetfüzeteket is itt tárolja.
 + [Azure Application Insights](https://azure.microsoft.com/services/application-insights/): a modellekkel kapcsolatos figyelési információkat tárolja.
 + [Azure Key Vault](https://azure.microsoft.com/services/key-vault/): a számítási célok és a munkaterület által igényelt egyéb bizalmas információk által használt titkokat tárolja.
 

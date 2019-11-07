@@ -1,18 +1,18 @@
 ---
-title: Azure Analysis Serviceshoz való csatlakozáshoz szükséges ügyféloldali kódtárak | Microsoft Docs
+title: Azure Analysis Services ügyféloldali kódtárak | Microsoft Docs
 description: Az ügyfélalkalmazások és eszközök kapcsolódásához szükséges ügyféloldali kódtárakat ismerteti Azure Analysis Services
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 10/16/2019
+ms.date: 10/30/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 8ce5083d444aa05b59677fb46e7aa80200835412
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: f78ac8686f23c47995cab9686c2ca3f6cf88fa6b
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73147078"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73573051"
 ---
 # <a name="client-libraries-for-connecting-to-azure-analysis-services"></a>Az Azure Analysis Serviceshoz való csatlakozáshoz használható ügyféloldali kódtárak
 
@@ -54,11 +54,11 @@ Az ügyfélkapcsolatok ügyféloldali kódtárai eltérnek a Azure Analysis Serv
   
  A Analysis Services OLE DB-szolgáltató a legtöbb eszköz és a Analysis Services adatbázisok eléréséhez használt ügyfélalkalmazások által automatikusan települ. A Analysis Services-adateléréshez használt számítógépeken telepítve kell lennie.  
   
- A OLE DB szolgáltatók gyakran vannak megadva a kapcsolatok karakterláncokban. Egy Analysis Services kapcsolódási karakterlánc egy másik nómenklatúrát használ, amely a OLE DB szolgáltatóra hivatkozik: MSOLAP. \<version >. dll.
+ A OLE DB szolgáltatók gyakran vannak megadva a kapcsolatok karakterláncokban. Egy Analysis Services kapcsolódási karakterlánc egy másik nómenklatúrát használ, amely a OLE DB szolgáltatóra hivatkozik: MSOLAP.\<verziója >. dll.
 
 ### <a name="amo"></a>AMO  
 
- Az AMO a kiszolgálók felügyeletéhez és az adatdefinícióhoz használt felügyelt ügyféloldali kódtár. Az eszközök és ügyfélalkalmazások telepítik és használják. Például SQL Server Management Studio (SSMS) az AMO-t használja a Analysis Serviceshoz való kapcsolódáshoz. Az AMO-t használó kapcsolatok általában minimálisak, `"data source=\<servername>"`-ból állnak. A kapcsolatok létrehozása után az API-val dolgozhat az adatbázis-gyűjtemények és a főbb objektumok használatával. A Visual Studio és a SSMS is az AMO használatával csatlakozhat egy Analysis Services-példányhoz.  
+ Az AMO a kiszolgálók felügyeletéhez és az adatdefinícióhoz használt felügyelt ügyféloldali kódtár. Az eszközök és ügyfélalkalmazások telepítik és használják. Például SQL Server Management Studio (SSMS) az AMO-t használja a Analysis Serviceshoz való kapcsolódáshoz. Az AMO-t használó kapcsolatok általában minimálisak, amely `"data source=\<servername>"`t tartalmaz. A kapcsolatok létrehozása után az API-val dolgozhat az adatbázis-gyűjtemények és a főbb objektumok használatával. A Visual Studio és a SSMS is az AMO használatával csatlakozhat egy Analysis Services-példányhoz.  
 
   
 ### <a name="adomd"></a>ADOMD
@@ -90,6 +90,6 @@ Az ügyfélkapcsolatok ügyféloldali kódtárai eltérnek a Azure Analysis Serv
 2. Kattintson a jobb gombbal a **Microsoft. AnalysisServices. AdomdClient** > **Tulajdonságok** > **részletek**elemre.  
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 [Kapcsolódjon az Excel](analysis-services-connect-excel.md)    
 [Kapcsolódás PowerBI-jal](analysis-services-connect-pbi.md)

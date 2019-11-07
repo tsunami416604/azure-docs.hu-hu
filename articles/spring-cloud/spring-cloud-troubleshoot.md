@@ -1,20 +1,17 @@
 ---
 title: Az Azure Spring Cloud hibaelhárítási útmutatója | Microsoft Docs
 description: Az Azure Spring Cloud hibaelhárítási útmutatója
-services: spring-cloud
-author: v-vasuke
-manager: gwallace
-editor: ''
+author: jpconnock
 ms.service: spring-cloud
-ms.topic: quickstart
-ms.date: 10/07/2019
-ms.author: v-vasuke
-ms.openlocfilehash: 546c97421fdb3a581a22e34f6110986a1a0732b6
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.topic: troubleshooting
+ms.date: 11/04/2019
+ms.author: jeconnoc
+ms.openlocfilehash: 9603f4a687b55f45be2875ccaa7b801c0c5589c9
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72929150"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73607625"
 ---
 # <a name="troubleshooting-guide-for-common-problems"></a>Gyakori problémák hibaelhárítási útmutatója
 
@@ -31,13 +28,13 @@ A következő hiba megkeresése a naplókban két valószínű probléma egyiké
 `org.springframework.context.ApplicationContextException: Unable to start web server`
 
 * Hiányzik az egyik bab vagy annak valamelyik függősége.
-* A bean egyik tulajdonsága hiányzik vagy érvénytelen. Ebben az esetben valószínűleg `java.lang.IllegalArgumentException` fog megjelenni.
+* A bean egyik tulajdonsága hiányzik vagy érvénytelen. Ebben az esetben valószínűleg `java.lang.IllegalArgumentException` lesz látható.
 
 A szolgáltatási kötések az alkalmazás indítási hibáját is okozhatják. A naplók lekérdezéséhez használjon a kötött szolgáltatásokhoz kapcsolódó kulcsszavakat.  Tegyük fel például, hogy az alkalmazáshoz kötés tartozik egy helyi rendszeridőre beállított MySQL-példányhoz. Ha az alkalmazás nem indul el, a következő hibaüzenet jelenhet meg a naplóban:
 
 `java.sql.SQLException: The server time zone value 'Coordinated Universal Time' is unrecognized or represents more than one time zone.`
 
-A hiba kijavításához nyissa meg a MySql-példány `server parameters`ét, és módosítsa a `time_zone`t `SYSTEM`ról `+0:00`ra.
+Ennek a hibának a kijavításához lépjen a MySql-példány `server parameters`-ra, és változtassa meg a `time_zone` értéket `SYSTEM` és `+0:00` között.
 
 
 ### <a name="my-application-crashes-or-throws-an-unexpected-error"></a>Az alkalmazás összeomlik, vagy váratlan hibát ad vissza
@@ -70,7 +67,7 @@ A helyzet megállapításához
 
 1. Lépjen a _Metrikák_ területre, és válassza a(z) `Service CPU Usage Percentage` vagy a(z) `Service Memory Used` lehetőséget,
 2. Adjon hozzá egy `App=` szűrőt, hogy megadja, melyik alkalmazást kívánja monitorozni.
-3. A metrikák felosztása `Instance` alapján.
+3. A metrikák felosztása `Instance` értékkel.
 
 Ha az összes példány magas CPU-/memória-értékkel rendelkezik, akkor fel kell mérnie az alkalmazást, vagy fel kell mérnie a PROCESSZORt vagy a memóriát. További részletekért tekintse meg az [alkalmazások méretezése](spring-cloud-tutorial-scale-manual.md)
 
@@ -107,7 +104,7 @@ Ha azonban az Azure _Spring Cloud_ Service-példányt az [Azure CLI](https://doc
 
 Ha a Resource Manager-sablon segítségével próbálja kiépíteni az _Azure Spring Cloud_ Service-példányt, látogasson el https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authoring-templates a sablon szintaxisának megtekintéséhez.
 
-A rendszer az _Azure Spring Cloud_ Service-példány nevét fogja használni a `azureapps.io` alatti altartomány nevének megadásához, ezért a kiépítés meghiúsul, ha a név ütközik egy meglévővel. További részleteket a tevékenységnaplókban talál.
+A rendszer az _Azure Spring Cloud_ Service-példány nevét fogja használni a `azureapps.io`alatti altartomány nevének megadásához, ezért a kiépítés meghiúsul, ha a név ütközik egy meglévővel. További részleteket a tevékenységnaplókban talál.
 
 ### <a name="i-cannot-deploy-a-jar-package"></a>Nem lehet üzembe helyezni a JAR-csomagot
 
@@ -185,7 +182,7 @@ A környezeti változók tájékoztatják az Azure Spring Cloud Framework szolg�
     }
     ```
 
-Keresse meg `systemEnvironment` nevű gyermek csomópontot.  Ez a csomópont tartalmazza az alkalmazás környezeti változóit.
+Keresse meg `systemEnvironment`nevű gyermek csomópontot.  Ez a csomópont tartalmazza az alkalmazás környezeti változóit.
 
 > [!IMPORTANT]
 > Ne felejtse el megfordítani a környezeti változók expozícióját, mielőtt az alkalmazása elérhetővé váljon a nyilvánosság számára.  Nyissa meg a Azure Portal, keresse meg az alkalmazás konfigurációs lapját, és törölje a következő környezeti változót: `MANAGEMENT_ENDPOINTS_WEB_EXPOSURE_INCLUDE`.
@@ -194,7 +191,7 @@ Keresse meg `systemEnvironment` nevű gyermek csomópontot.  Ez a csomópont tar
 
 Nyissa meg az _app Management_ szolgáltatást, és _ellenőrizze, hogy_ _fut_ -e az alkalmazás.
 
-Ha a _JVM_ metrikák láthatók, de a _tomcat_nem rendelkezik metrikával, akkor ellenőrizze, hogy a `spring-boot-actuator` függőség engedélyezve van-e az alkalmazáscsomag, és hogy sikeresen elindul-e.
+Ha a _JVM_ metrikák láthatók, de a _tomcat_nem rendelkezik metrikával, akkor ellenőrizze, hogy a`spring-boot-actuator` függőség engedélyezve van-e az alkalmazáscsomag, és hogy sikeresen elindul-e.
 
 ```xml
 <dependency>

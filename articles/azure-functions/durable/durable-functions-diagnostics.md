@@ -7,14 +7,14 @@ manager: jeconnoc
 keywords: ''
 ms.service: azure-functions
 ms.topic: conceptual
-ms.date: 09/04/2019
+ms.date: 11/02/2019
 ms.author: azfuncdf
-ms.openlocfilehash: d2badee3eaa5a9af48e89adc1b59beacc1571792
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: 333ddbc15e3ff62b1cd46383c4e3be75fb3dbb88
+ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70933502"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73614937"
 ---
 # <a name="diagnostics-in-durable-functions-in-azure"></a>Diagnosztika Durable Functions az Azure-ban
 
@@ -24,33 +24,33 @@ Több lehetőség is van a [Durable Functionsával](durable-functions-overview.m
 
 [Application Insights](../../azure-monitor/app/app-insights-overview.md) a diagnosztika és a figyelés ajánlott módszere Azure Functionsokban. Ugyanez vonatkozik a Durable Functionsra is. A Application Insightsnek a Function alkalmazásban való kihasználása áttekintését lásd: [Azure functions figyelése](../functions-monitoring.md).
 
-A Azure Functions tartós bővítmény olyan *követési eseményeket* is kibocsát, amelyek segítségével nyomon követheti a folyamat végpontok közötti végrehajtását. Ezek a Azure Portal [Application Insights Analytics](../../azure-monitor/app/analytics.md) eszközének használatával találhatók meg és kérhetők le.
+A Azure Functions tartós bővítmény olyan *követési eseményeket* is kibocsát, amelyek segítségével nyomon követheti a folyamat végpontok közötti végrehajtását. Ezek a követési események a Azure Portal [Application Insights Analytics](../../azure-monitor/app/analytics.md) eszközének használatával találhatók meg és kérhetők le.
 
 ### <a name="tracking-data"></a>Adatkövetés
 
-Egy összehangoló példány minden életciklus-eseménye egy követési eseményt ír a Application Insights **nyomkövetési** gyűjteményéből. Ez az esemény több mezőből álló **customDimensions** -adattartalmat tartalmaz.  A `prop__`mezők nevei minden előtagértéke.
+Egy összehangoló példány minden életciklus-eseménye egy követési eseményt ír a Application Insights **nyomkövetési** gyűjteményéből. Ez az esemény több mezőből álló **customDimensions** -adattartalmat tartalmaz.  A mezőnevek minden `prop__`előtagértéke.
 
-* **hubName**: Annak a feladatnak a neve, amelyben a rendszer fut.
-* **appName**: A Function alkalmazás neve. Ez akkor hasznos, ha több Function-alkalmazással is rendelkezik, amelyek ugyanazt a Application Insights példányt osztják meg.
-* **slotName**: Az [üzembe helyezési](../functions-deployment-slots.md) pont, amelyben az aktuális Function alkalmazás fut. Ez akkor lehet hasznos, ha az üzembe helyezési pontokat a felépítésük verziójára használja.
-* **függvénynév**: A Orchestrator vagy a tevékenység függvény neve.
-* **functionType**: A függvény típusa, például **Orchestrator** vagy **tevékenység**.
-* **instanceId**: A koordináló példány egyedi azonosítója.
-* **állapot**: A példány életciklus-végrehajtási állapota. Érvényes értékek a következők:
-  * **Ütemezett**: A függvény ütemezése végrehajtásra lett ütemezve, de még nem indult el.
-  * **Elindítva**: A függvény futása megkezdődött, de még nem várt vagy nem fejeződött be.
-  * **Várt**: A Orchestrator ütemezett némi munkát, és arra vár, hogy befejeződjön.
-  * **Figyelés**: A Orchestrator egy külső eseményről szóló értesítést figyel.
-  * **Befejezve**: A függvény sikeresen befejeződött.
-  * **Sikertelen**: A függvény hibával meghiúsult.
-* **OK**: A nyomkövetési eseményhez kapcsolódó további információk. Ha például egy példány egy külső eseményről szóló értesítésre vár, akkor ez a mező a várt esemény nevét jelzi. Ha egy függvény meghiúsult, akkor a hiba részleteit fogja tartalmazni.
-* **isReplay**: Logikai érték, amely azt jelzi, hogy a követési esemény az újrajátszott végrehajtásra van-e kiválasztva.
-* **extensionVersion**: A tartós feladathoz tartozó bővítmény verziója. Ez különösen fontos, ha a bővítmény lehetséges hibáit jelenti. A hosszan futó példányok több verziót is jelenthetnek, ha a futás közben frissítés történik.
-* **sorszám**: Esemény végrehajtási sorszáma. Az időbélyeggel kombinálva a végrehajtás ideje alapján rendezheti az eseményeket. *Vegye figyelembe, hogy ez a szám nulla értékre áll vissza, ha a gazdagép újraindul, miközben a példány fut, ezért fontos, hogy először az időbélyegző alapján rendezze az értéket, majd sorszám.*
+* **hubName**: annak a feladatnak a neve, amelyben a rendszer fut.
+* **appName**: a Function alkalmazás neve. Ez a mező akkor hasznos, ha több Function-alkalmazással is rendelkezik, amelyek ugyanazt a Application Insights példányt osztják meg.
+* **slotName**: az [üzembe helyezési](../functions-deployment-slots.md) pont, amelyben az aktuális Function alkalmazás fut. Ez a mező akkor lehet hasznos, ha az üzembe helyezési pontokat kihasználva használja fel a folyamatokat.
+* **függvénynév**: a Orchestrator vagy a tevékenység függvény neve.
+* **functionType**: a függvény típusa, például **Orchestrator** vagy **tevékenység**.
+* **instanceId**: a koordináló példány egyedi azonosítója.
+* **állapot**: a példány életciklus-végrehajtási állapota. Az érvényes értékek a következők:
+  * **Ütemezve**: a függvény végrehajtásra lett ütemezve, de még nem indult el.
+  * **Elindítva**: a függvény futása megkezdődött, de még nem várt vagy nem fejeződött be.
+  * **Várt**: a Orchestrator ütemezett némi munkát, és arra vár, hogy befejeződjön.
+  * **Figyelés**: a Orchestrator egy külső eseményről szóló értesítést figyel.
+  * **Befejezett**: a függvény sikeresen befejeződött.
+  * **Sikertelen**: a függvény hibával meghiúsult.
+* **OK**: a nyomkövetési eseményhez kapcsolódó további információk. Ha például egy példány egy külső eseményről szóló értesítésre vár, akkor ez a mező a várt esemény nevét jelzi. Ha egy függvény meghiúsult, akkor ez a mező a hiba részleteit tartalmazza.
+* **isReplay**: logikai érték, amely azt jelzi, hogy a követési esemény az újrajátszott végrehajtáshoz van-e.
+* **extensionVersion**: a tartós feladat kiterjesztésének verziója. A verzió adatai különösen fontos adatokat jelentenek a bővítmény lehetséges hibáinak jelentésekor. A hosszan futó példányok több verziót is jelenthetnek, ha a futás közben frissítés történik.
+* **sorszám**: az esemény végrehajtási sorszáma. Az időbélyeggel kombinálva a végrehajtás ideje alapján rendezheti az eseményeket. *Vegye figyelembe, hogy ez a szám nulla értékre áll vissza, ha a gazdagép újraindul, miközben a példány fut, ezért fontos, hogy először az időbélyegző alapján rendezze az értéket, majd sorszám.*
 
-A Application Insightsra kibocsátott adatok részletességét a `logger` `host.json` fájl (functions 1. x) vagy `logging` (functions 2. x) szakaszában lehet konfigurálni.
+A Application Insightsra kibocsátott adatok részletességét az `host.json` fájl `logger` (functions 1. x) vagy `logging` (functions 2,0) szakasza is konfigurálhatja.
 
-#### <a name="functions-1x"></a>Functions 1.x
+#### <a name="functions-10"></a>Függvények 1,0
 
 ```json
 {
@@ -64,7 +64,7 @@ A Application Insightsra kibocsátott adatok részletességét a `logger` `host.
 }
 ```
 
-#### <a name="functions-2x"></a>Functions 2.x
+#### <a name="functions-20"></a>Függvények 2,0
 
 ```json
 {
@@ -76,11 +76,11 @@ A Application Insightsra kibocsátott adatok részletességét a `logger` `host.
 }
 ```
 
-Alapértelmezés szerint az összes nem újrajátszható követési esemény ki van bocsátva. Az adatmennyiség csökkenthető a beállítással `Host.Triggers.DurableTask` , `"Warning"` illetve `"Error"` a esetében, amikor a követési események csak kivételes helyzetekben lesznek kibocsátva.
+Alapértelmezés szerint az összes nem újrajátszható követési esemény ki van bocsátva. Az adatmennyiség csökkenthető a `Host.Triggers.DurableTask` beállításával `"Warning"` vagy `"Error"`, amelyben az események követési eseményei csak kivételes helyzetekben lesznek kibocsátva.
 
-Ha engedélyezni szeretné a részletes előkészítési események kiosztását, a `LogReplayEvents` a `host.json` fájlban `durableTask` az alábbi `true` módon állítható be:
+Ha engedélyezni szeretné a részletes előkészítési események kiosztását, a `LogReplayEvents` beállítható úgy, hogy a `host.json` fájlban `true` a `durableTask` alatt látható módon:
 
-#### <a name="functions-1x"></a>Functions 1.x
+#### <a name="functions-10"></a>Függvények 1,0
 
 ```json
 {
@@ -90,7 +90,7 @@ Ha engedélyezni szeretné a részletes előkészítési események kiosztását
 }
 ```
 
-#### <a name="functions-2x"></a>Functions 2.x
+#### <a name="functions-20"></a>Függvények 2,0
 
 ```javascript
 {
@@ -107,7 +107,7 @@ Ha engedélyezni szeretné a részletes előkészítési események kiosztását
 
 ### <a name="single-instance-query"></a>Egypéldányos lekérdezés
 
-A következő lekérdezés a [Hello Sequence](durable-functions-sequence.md) függvény összehangolása egyetlen példányának korábbi követési adatait jeleníti meg. A [Application Insights lekérdezési nyelv (AIQL)](https://aka.ms/LogAnalyticsLanguageReference)használatával van írva. Kiszűri az ismétlések végrehajtását, így csak a *logikai* végrehajtási útvonal látható. Az események rendezési `timestamp` `sequenceNumber` sorrendje az alábbi lekérdezés szerint rendezhető:
+A következő lekérdezés a [Hello Sequence](durable-functions-sequence.md) függvény összehangolása egyetlen példányának korábbi követési adatait jeleníti meg. A [Application Insights lekérdezési nyelv (AIQL)](https://aka.ms/LogAnalyticsLanguageReference)használatával van írva. Kiszűri az ismétlések végrehajtását, így csak a *logikai* végrehajtási útvonal látható. Az események rendezése `timestamp` és `sequenceNumber` alapján rendezhető az alábbi lekérdezésben látható módon:
 
 ```AIQL
 let targetInstanceId = "ddd1aaa685034059b545eb004b15d4eb";
@@ -161,8 +161,9 @@ Fontos, hogy a Orchestrator-újrajátszás viselkedését ne feledje, amikor kö
 ### <a name="precompiled-c"></a>ElőfordítottC#
 
 ```csharp
+[FunctionName("FunctionChain")]
 public static async Task Run(
-    [OrchestrationTrigger] DurableOrchestrationContext context,
+    [OrchestrationTrigger] IDurableOrchestrationContext context,
     ILogger log)
 {
     log.LogInformation("Calling F1.");
@@ -179,7 +180,7 @@ public static async Task Run(
 
 ```csharp
 public static async Task Run(
-    DurableOrchestrationContext context,
+    IDurableOrchestrationContext context,
     ILogger log)
 {
     log.LogInformation("Calling F1.");
@@ -192,7 +193,7 @@ public static async Task Run(
 }
 ```
 
-### <a name="javascript-functions-2x-only"></a>JavaScript (csak 2. x függvény)
+### <a name="javascript-functions-20-only"></a>JavaScript (csak functions 2,0)
 
 ```javascript
 const df = require("durable-functions");
@@ -208,7 +209,7 @@ module.exports = df.orchestrator(function*(context){
 });
 ```
 
-Az eredményül kapott naplók a következőhöz hasonló módon fognak kinézni:
+Az eredményül kapott naplózási adatokat a következő példában szereplő kimenethez hasonlóan fogjuk kinézni:
 
 ```txt
 Calling F1.
@@ -226,13 +227,14 @@ Done!
 > [!NOTE]
 > Ne feledje, hogy míg a naplók az F1, az F2 és az F3 meghívását kérik, ezeket a függvényeket *csak az* első alkalommal nevezik. A rendszer kihagyja az újrajátszás során megjelenő további hívásokat, és a kimeneteket visszajátssza a Orchestrator logikába.
 
-Ha csak a nem újrajátszható végrehajtást szeretné bejelentkezni, írhat egy feltételes kifejezést úgy, hogy csak akkor `IsReplaying` jelentkezzen be, ha a. `false` Vegye figyelembe a fenti példát, de ezúttal újrajátszás-ellenőrzésekkel.
+Ha csak a nem újrajátszható végrehajtást szeretné bejelentkezni, írhat egy feltételes kifejezést úgy, hogy csak akkor jelentkezzen be, ha `IsReplaying` `false`. Vegye figyelembe a fenti példát, de ezúttal újrajátszás-ellenőrzésekkel.
 
 #### <a name="precompiled-c"></a>ElőfordítottC#
 
 ```csharp
+[FunctionName("FunctionChain")]
 public static async Task Run(
-    [OrchestrationTrigger] DurableOrchestrationContext context,
+    [OrchestrationTrigger] IDurableOrchestrationContext context,
     ILogger log)
 {
     if (!context.IsReplaying) log.LogInformation("Calling F1.");
@@ -249,7 +251,7 @@ public static async Task Run(
 
 ```cs
 public static async Task Run(
-    DurableOrchestrationContext context,
+    IDurableOrchestrationContext context,
     ILogger log)
 {
     if (!context.IsReplaying) log.LogInformation("Calling F1.");
@@ -262,7 +264,7 @@ public static async Task Run(
 }
 ```
 
-#### <a name="javascript-functions-2x-only"></a>JavaScript (csak 2. x függvény)
+#### <a name="javascript-functions-20-only"></a>JavaScript (csak functions 2,0)
 
 ```javascript
 const df = require("durable-functions");
@@ -278,7 +280,26 @@ module.exports = df.orchestrator(function*(context){
 });
 ```
 
-Ezzel a módosítással a napló kimenete a következő:
+A Durable Functions 2,0-es verziótól kezdődően a .NET Orchestrator functions olyan `ILogger` létrehozására is lehetőséget biztosít, amely automatikusan kiszűri a napló utasításait a visszajátszás során. Ez az automatikus szűrés a `IDurableOrchestrationContext.CreateReplaySafeLogger(ILogger)` API használatával végezhető el.
+
+```csharp
+[FunctionName("FunctionChain")]
+public static async Task Run(
+    [OrchestrationTrigger] IDurableOrchestrationContext context,
+    ILogger log)
+{
+    log = context.CreateReplaySafeLogger(log);
+    log.LogInformation("Calling F1.");
+    await context.CallActivityAsync("F1");
+    log.LogInformation("Calling F2.");
+    await context.CallActivityAsync("F2");
+    log.LogInformation("Calling F3");
+    await context.CallActivityAsync("F3");
+    log.LogInformation("Done!");
+}
+```
+
+A korábban említett módosításokat követően a napló kimenete a következő:
 
 ```txt
 Calling F1.
@@ -287,14 +308,18 @@ Calling F3.
 Done!
 ```
 
+> [!NOTE]
+> Az előző C# példák a Durable functions 2. x verzióra vonatkoznak. Durable Functions 1. x esetén a `IDurableOrchestrationContext`helyett `DurableOrchestrationContext`t kell használnia. A verziók közötti különbségekről a [Durable functions verziók](durable-functions-versions.md) című cikkben olvashat bővebben.
+
 ## <a name="custom-status"></a>Egyéni állapot
 
-Az egyéni előkészítési állapot lehetővé teszi egyéni állapot értékének megadását a Orchestrator függvényhez. Ezt az állapotot a http-állapot lekérdezési API- `DurableOrchestrationClient.GetStatusAsync` jával vagy az API-n keresztül biztosítjuk. Az egyéni előkészítési állapot lehetővé teszi a Orchestrator függvények szélesebb körű figyelését. A Orchestrator függvény kódja például tartalmazhat `DurableOrchestrationContext.SetCustomStatus` hívásokat a hosszan futó művelet előrehaladásának frissítéséhez. Az ügyfél, például egy weblap vagy más külső rendszer, rendszeres időközönként lekérdezheti a HTTP-állapot lekérdezési API-jait a részletes végrehajtási információkhoz. Az alábbi minta `DurableOrchestrationContext.SetCustomStatus` használatával kell megadnia a mintát:
+Az egyéni előkészítési állapot lehetővé teszi egyéni állapot értékének megadását a Orchestrator függvényhez. Ezt az állapotot a HTTP status Query API vagy a `IDurableOrchestrationClient.GetStatusAsync` API segítségével biztosítjuk. Az egyéni előkészítési állapot lehetővé teszi a Orchestrator függvények szélesebb körű figyelését. Például a Orchestrator függvény kódja tartalmazhat `IDurableOrchestrationContext.SetCustomStatus` hívásokat a hosszan futó művelet előrehaladásának frissítéséhez. Az ügyfél, például egy weblap vagy más külső rendszer, rendszeres időközönként lekérdezheti a HTTP-állapot lekérdezési API-jait a részletes végrehajtási információkhoz. A `IDurableOrchestrationContext.SetCustomStatus`t használó mintát az alábbi táblázat ismerteti:
 
 ### <a name="precompiled-c"></a>ElőfordítottC#
 
 ```csharp
-public static async Task SetStatusTest([OrchestrationTrigger] DurableOrchestrationContext context)
+[FunctionName("SetStatusTest")]
+public static async Task SetStatusTest([OrchestrationTrigger] IDurableOrchestrationContext context)
 {
     // ...do work...
 
@@ -306,7 +331,10 @@ public static async Task SetStatusTest([OrchestrationTrigger] DurableOrchestrati
 }
 ```
 
-### <a name="javascript-functions-2x-only"></a>JavaScript (csak 2. x függvény)
+> [!NOTE]
+> Az előző C# példa a Durable functions 2. x. Durable Functions 1. x esetén a `IDurableOrchestrationContext`helyett `DurableOrchestrationContext`t kell használnia. A verziók közötti különbségekről a [Durable functions verziók](durable-functions-versions.md) című cikkben olvashat bővebben.
+
+### <a name="javascript-functions-20-only"></a>JavaScript (csak functions 2,0)
 
 ```javascript
 const df = require("durable-functions");
@@ -349,13 +377,13 @@ Az ügyfelek a következő választ kapják:
 
 Azure Functions támogatja a hibakeresési funkció programkódjának közvetlen használatát, és ugyanezen támogatás a Durable Functions, akár az Azure-ban, akár helyileg fut. Előfordulhat azonban, hogy a hibakeresés során néhány viselkedést kell figyelembe vennie:
 
-* **Visszajátszás**: A Orchestrator függvények rendszeresen [újrajátszják](durable-functions-orchestrations.md#reliability) az új bemenetek fogadását. Ez azt jelenti, hogy egy Orchestrator-függvény egyetlen *logikai* végrehajtásával több alkalommal is megtalálhatja ugyanazt a töréspontot, különösen akkor, ha a függvény kódja korán van beállítva.
-* **Várakozás**: Ha egy Orchestrator-függvényben fordul elő, a rendszervisszairányítjaavezérléstatartósfeladatokkeretrendszerénekkiosztójának.`await` Ha az első alkalommal `await` fordul elő, a kapcsolódó feladat *soha nem* folytatódik. Mivel a feladat soha nem folytatódik *, a várakozás (az F10* a Visual Studióban) nem lehetséges. Az átlépés csak akkor működik, ha egy feladat újra van játszva.
-* **Üzenetkezelési időtúllépések**: A belső Durable Functions üzenetsor-üzeneteket használ a Orchestrator, a tevékenység és az entitás funkcióinak végrehajtásához. A több virtuális gépre kiterjedő környezetekben a hosszabb ideig tartó hibakeresés miatt egy másik virtuális gép is felveheti az üzenetet, ami ismétlődő végrehajtást eredményezhet. Ez a viselkedés a rendszeres üzenetsor-trigger függvények esetében is létezik, de fontos, hogy ebben a környezetben is kimutasson, mivel a várólisták megvalósítási részletességgel rendelkeznek.
-* **Leállítás és indítás**: A tartós függvények üzenetei megmaradnak a hibakeresési munkamenetek között. Ha leállítja a hibakeresést, és leállítja a helyi gazdagép folyamatát egy tartós függvény végrehajtása közben, akkor a függvény automatikusan újrafuthat egy jövőbeli hibakeresési munkamenetben. Ez zavaró lehet, ha nem várt. A [belső tárolási várólistákról](durable-functions-perf-and-scale.md#internal-queue-triggers) érkező összes üzenet törlése a hibakeresési munkamenetek között egy olyan módszer, amellyel elkerülhető a működés.
+* **Visszajátszás**: a Orchestrator függvény rendszeresen [újrajátszható](durable-functions-orchestrations.md#reliability) , ha új bemenet érkezik. Ez a viselkedés azt jelenti, hogy egy Orchestrator függvény egyetlen *logikai* végrehajtásával több alkalommal is megtalálhatja ugyanazt a töréspontot, különösen akkor, ha a függvény kódja korán van beállítva.
+* **Várakozás**: ha egy `await` egy Orchestrator-függvényben fordul elő, a rendszer visszairányítja a vezérlést a tartós feladatokhoz. Ha az első alkalommal, amikor egy adott `await` észlelhető, a kapcsolódó feladat *soha nem* folytatódik. Mivel a feladat soha nem folytatódik *, a várakozás (az F10* a Visual Studióban) nem lehetséges. Az átlépés csak akkor működik, ha egy feladat újra van játszva.
+* **Üzenetkezelési időtúllépések**: a Durable functions belsőleg használ üzenetsor-üzeneteket a Orchestrator, a tevékenység és az entitás funkcióinak végrehajtásához. A több virtuális gépre kiterjedő környezetekben a hosszabb ideig tartó hibakeresés miatt egy másik virtuális gép is felveheti az üzenetet, ami ismétlődő végrehajtást eredményezhet. Ez a viselkedés a rendszeres üzenetsor-trigger függvények esetében is létezik, de fontos, hogy ebben a környezetben is kimutasson, mivel a várólisták megvalósítási részletességgel rendelkeznek.
+* **Leállítás és indítás**: a tartós függvények üzenetei megmaradnak a hibakeresési munkamenetek között. Ha leállítja a hibakeresést, és leállítja a helyi gazdagép folyamatát egy tartós függvény végrehajtása közben, akkor a függvény automatikusan újrafuthat egy jövőbeli hibakeresési munkamenetben. Ez a viselkedés zavaró lehet, ha nem várt. A [belső tárolási várólistákról](durable-functions-perf-and-scale.md#internal-queue-triggers) érkező összes üzenet törlése a hibakeresési munkamenetek között egy olyan módszer, amellyel elkerülhető a működés.
 
 > [!TIP]
-> Ha töréspontokat állít be a Orchestrator függvényekben, ha csak a nem újrajátszható végrehajtást szeretné megszakítani, beállíthat egy feltételes töréspontot, `IsReplaying` amely `false`csak akkor szakad meg, ha a értéke.
+> Ha töréspontokat állít be a Orchestrator függvényekben, ha csak a nem újrajátszható végrehajtást szeretné megszüntetni, beállíthat egy feltételes töréspontot, amely csak akkor szakad meg, ha a `IsReplaying` `false`.
 
 ## <a name="storage"></a>Storage
 

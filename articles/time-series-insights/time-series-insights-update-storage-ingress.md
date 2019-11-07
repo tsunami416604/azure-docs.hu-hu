@@ -8,35 +8,57 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 10/23/2019
+ms.date: 11/04/2019
 ms.custom: seodec18
-ms.openlocfilehash: 0b61e194bdea5fd8272ffc0fc9e16a2d80d3cf60
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: d0cdd78aaa2b58743e16a2e7cfe213a9daed85ff
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72989704"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73605886"
 ---
 # <a name="data-storage-and-ingress-in-azure-time-series-insights-preview"></a>Adattárolás és bejövő forgalom Azure Time Series Insights előzetes verzióban
 
-Ez a cikk az adattárolási és a bejövő Azure Time Series Insights előzetes verziójának frissítéseit ismerteti. Lefedi a mögöttes tárolási struktúrát, a fájlformátumot és az idősorozat-azonosító tulajdonságot. Emellett ismerteti az alapul szolgáló bejövő folyamatokat, az átviteli sebességet és a korlátozásokat.
+Ez a cikk az adattárolási és a bejövő Azure Time Series Insights előzetes verziójának frissítéseit ismerteti. Lefedi a mögöttes tárolási struktúrát, a fájlformátumot és az idősorozat-azonosító tulajdonságot. Emellett tárgyalja az alapul szolgáló beáramlási folyamatot, az ajánlott eljárásokat és az aktuális előzetes verzióra vonatkozó korlátozásokat.
 
 ## <a name="data-ingress"></a>Bejövő adatforgalom
 
-Time Series Insights előzetes verzióban az adatbeviteli szabályzatok határozzák meg, hogy az adatok honnan származnak, és milyen formátumban kell megadni az adatok formátumát.
-
-[![Time Series-modell áttekintése](media/v2-update-storage-ingress/tsi-data-ingress.png)](media/v2-update-storage-ingress/tsi-data-ingress.png#lightbox)
+Az Azure Time Series Insights-környezet egy betöltési motort tartalmaz az idősoros adatok gyűjtéséhez, feldolgozásához és tárolásához. A környezet megtervezése során figyelembe kell venni, hogy az összes bejövő adatot feldolgozzák, és hogy magas beáramlási arányt és kis mennyiségű adatfeldolgozási késleltetést kell elérni (az ÁME által az eseményből származó adatok olvasására és feldolgozására tett idő forrás). Time Series Insights előzetes verzióban az adatbeviteli szabályzatok határozzák meg, hogy az adatok honnan származnak, és milyen formátumban kell megadni az adatok formátumát.
 
 ### <a name="ingress-policies"></a>Bejövő házirendek
 
-Time Series Insights előzetes verzió támogatja ugyanazokat az eseményforráskat, amelyek Time Series Insights jelenleg a következőket támogatják:
+Time Series Insights előzetes verzió a következő eseményforrás-forrásokat támogatja:
 
 - [Azure IoT Hub](../iot-hub/about-iot-hub.md)
 - [Azure Event Hubs](../event-hubs/event-hubs-about.md)
 
 Time Series Insights az előzetes verzió legfeljebb két eseményforrás használatát támogatja példányok esetében.
   
-Azure Time Series Insights támogatja az Azure IoT Hub vagy az Azure Event Hubs használatával küldött JSON-t. A IoT JSON-adatai optimalizálásával megismerheti a [JSON formázását](./time-series-insights-send-events.md#supported-json-shapes).
+Azure Time Series Insights támogatja az Azure IoT Hub vagy az Azure Event Hubs használatával küldött JSON-t.
+
+> [!WARNING] 
+> Amikor új eseményforrás csatolását a Time Series Insights előzetes verziójának környezetéhez, a IoT Hub vagy az Event hub eseményeinek számától függően előfordulhat, hogy magas kezdeti betöltési késést tapasztal. Az adatok betöltése esetén ezt a nagy késést kell elvárnia, de ha a felhasználói élmény azt jelzi, hogy az adott esetben a támogatási jegyet a Azure Portalon keresztül küldi el, vegye fel velünk a kapcsolatot.
+
+## <a name="ingress-best-practices"></a>Beáramló ajánlott eljárások
+
+Javasoljuk, hogy a következő ajánlott eljárásokat alkalmazza:
+
+* Konfigurálja a Time Series Insights és az IoT hub-t vagy az Event hub-t ugyanabban a régióban. Ez csökkenti a hálózat miatt felmerülő betöltési késést.
+* Tervezze meg a méretezési igényeket a várható betöltési arány kiszámításával és annak ellenőrzésével, hogy az az alább felsorolt támogatott díjszabás alá esik
+* Megtudhatja, hogyan optimalizálhatja és formázhatja a JSON-adatait, valamint az előzetes verzió jelenlegi korlátozásait, ha beolvassa, [Hogyan formázhatja a JSON-t a bejövő és a lekérdezési](./time-series-insights-update-how-to-shape-events.md)művelethez.
+
+### <a name="ingress-scale-and-limitations-in-preview"></a>Átáramló méretezés és korlátozások az előzetes verzióban
+
+Alapértelmezés szerint a Time Series Insights-előnézet legfeljebb 1 megabájt/másodperc (MB/s) méretű kezdeti bejövő forgalom használatát támogatja. Ha szükséges, akár 16 MB/s adatátviteli sebesség is rendelkezésre áll, vegye fel velünk a kapcsolatot, ha erre szükség van, ha beküld egy támogatási jegyet a Azure Portal. Emellett a partíciós korlát 0,5 MB/s. Ennek az a következménye, hogy az ügyfelek IoT Hub kifejezetten a IoT Hub eszköz egy partíciója közötti affinitást használják. Azokban az esetekben, amikor egy átjáró-eszköz a saját eszköz-AZONOSÍTÓjának és kapcsolati karakterláncának használatával továbbít üzeneteket a hubhoz, fennáll a veszélye annak, hogy elérte az 0,5 MB/s korlátot, mivel az üzenetek egyetlen partíción érkeznek meg, még akkor is, ha az esemény adattartalma eltérő TS-t használ Azonosítók. Általánosságban elmondható, hogy a bejövő forgalom aránya a szervezetben lévő eszközök számának, az esemény-kibocsátás gyakoriságának és az esemény méretének a tényezője. A betöltési arány kiszámításakor IoT Hub felhasználóknak a használatban lévő hub-kapcsolatok számát kell használniuk, nem a szervezet összes eszközét. A továbbfejlesztett méretezési támogatás folyamatban van. Ezt a dokumentációt a rendszer frissíti, hogy tükrözze ezeket a módosításokat. 
+
+> [!WARNING]
+> Az IoT Hub eseményforrásként használó környezetek esetében a használatban lévő hub-eszközök száma alapján számítja ki a betöltési arányt.
+
+A következő hivatkozásokra kattintva további információkat találhat az átviteli egységekről és a partícióról:
+
+* [IoT Hub skála](https://docs.microsoft.com/azure/iot-hub/iot-hub-scaling)
+* [Event hub-skála](https://docs.microsoft.com/azure/event-hubs/event-hubs-scalability#throughput-units)
+* [Event hub-partíciók](https://docs.microsoft.com/azure/event-hubs/event-hubs-features#partitions)
 
 ### <a name="data-storage"></a>Adattárolás
 
@@ -53,19 +75,11 @@ Time Series Insights az előnézet a hűtőházi tároló adatait az Azure Blob 
 > Az Azure Blob Storage-fiók tulajdonosaként, ahol a hűtőházi adattárolási adat található, teljes hozzáférése van a fiókban lévő összes adathoz. Ez a hozzáférés írási és törlési engedélyeket is tartalmaz. Ne szerkessze vagy törölje az előnézeti írással Time Series Insights adatot, mert az adatvesztést eredményezhet.
 
 ### <a name="data-availability"></a>Az adatelérhetőség
+
 Az optimális lekérdezési teljesítmény érdekében Time Series Insights előnézeti partíciókat és indexeli az adataikat. A lekérdezés az indexelés után elérhetővé válik. A betöltött adatmennyiség hatással lehet erre a rendelkezésre állásra.
 
 > [!IMPORTANT]
-> A Time Series Insights általánosan elérhető kiadása 60 másodpercen belül elérhetővé teszi az adatoknak az esemény forrásból való beolvasása után. Az előzetes verzió ideje alatt hosszabb időt is igénybe vehet, amíg az adatszolgáltatás elérhetővé válik. Ha 60 másodpercen túli jelentős késés tapasztalható, vegye fel velünk a kapcsolatot.
-
-### <a name="scale"></a>Méretezés
-
-Alapértelmezés szerint a Time Series Insights-előnézet legfeljebb 1 megabájt/másodperc (MB/s) méretű kezdeti bejövő forgalom használatát támogatja. Ha szüksége van rá, legfeljebb 16 MB/s sebesség érhető el. Ha továbbfejlesztett méretezési támogatásra van szüksége, vegye fel velünk a kapcsolatot.
-
-További bejövő és méretezési képességeket kaphat az eseményforrás számára:
-
-* [IoT Hub](../iot-hub/iot-hub-scaling.md)
-* [Event Hubs](../event-hubs/event-hubs-scalability.md)
+> A Time Series Insights közelgő általánosan elérhető (GA) kiadása 60 másodpercen belül elérhetővé teszi az adatoknak az esemény forrásból való beolvasása után. Az előzetes verzió ideje alatt hosszabb időt is igénybe vehet, amíg az adatszolgáltatás elérhetővé válik. Ha 60 másodpercen túli jelentős késés tapasztalható, küldjön egy támogatási jegyet a Azure Portalon keresztül.
 
 ## <a name="azure-storage"></a>Azure Storage
 
@@ -132,7 +146,7 @@ Time Series Insights előnézeti események a következő módon vannak leképez
 * A telemetria-adatként elküldett összes többi tulajdonságot a tulajdonság típusától függően `_string` (string), `_bool` (Boolean), `_datetime` (datetime) vagy `_double` (Double) végződésű oszlopokra kell leképezni.
 * Ez a leképezési séma a fájl formátumának első verziójára vonatkozik, amelyre a **V = 1**hivatkozik. A szolgáltatás fejlődése során előfordulhat, hogy a név növekszik.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Olvassa el [Azure Time Series Insights előnézeti tárolót és a bejövő](./time-series-insights-update-storage-ingress.md)forgalmat.
 

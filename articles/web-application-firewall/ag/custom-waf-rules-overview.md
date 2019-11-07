@@ -7,12 +7,12 @@ author: vhorne
 ms.service: web-application-firewall
 ms.date: 10/04/2019
 ms.author: victorh
-ms.openlocfilehash: 844e24466e9a9b46be3212690767a408e75f234d
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: HT
+ms.openlocfilehash: 0ac37378797c59d79af5d026200b68154836c5ac
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/04/2019
-ms.locfileid: "73516616"
+ms.locfileid: "73585394"
 ---
 # <a name="custom-rules-for-web-application-firewall-v2-on-azure-application-gateway"></a>Egyéni szabályok a webalkalmazási tűzfal v2-hez az Azure Application Gateway
 
@@ -162,6 +162,11 @@ Azoknak az értékeknek a listája, amelyek megfelelnek a következőnek *: "ED*
 - Log – lehetővé teszi a szabály írását a naplóba, de a többi szabály futtatását is lehetővé teszi a kiértékeléshez. A következő egyéni szabályok prioritási sorrendben, majd a felügyelt szabályok alapján lesznek kiértékelve.
 
 ## <a name="geomatch-custom-rules-preview"></a>Egyéni Geomatch-szabályok (előzetes verzió)
+
+Az egyéni szabályok lehetővé teszik a testreszabott szabályok létrehozását az alkalmazások pontos igényeinek megfelelően, valamint a biztonsági házirendeket. Most már a nyilvános előzetes verzióban elérhető ország/régió alapján korlátozhatja a webalkalmazásokhoz való hozzáférést. Az összes egyéni szabályhoz hasonlóan ez a logika más szabályokkal is felhasználható az alkalmazás igényeinek megfelelően. 
+
+   > [!NOTE]
+   > A Geomatch egyéni szabályai az USA déli középső régiójában és Észak-Európában is elérhetők. Ha a portálon szeretné elérni őket, használja [ezt a hivatkozást](https://aka.ms/AppGWWAFGeoMatch) , amíg mindenki számára elérhetővé nem válik. 
 
 Ha a Geomatch operátort használja, a választókat a következő kétszámjegyű országkódok bármelyike lehet. 
 

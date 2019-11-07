@@ -1,5 +1,5 @@
 ---
-title: Folyamatok monitorozása és kezelése a Azure Portal és a PowerShell használatával | Microsoft Docs
+title: Folyamatok monitorozása és kezelése a Azure Portal és a PowerShell használatával
 description: Megtudhatja, hogyan használhatja a Azure Portal és Azure PowerShell a létrehozott Azure-beli adatüzemek és-folyamatok figyelésére és felügyeletére.
 services: data-factory
 documentationcenter: ''
@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 04/30/2018
-ms.openlocfilehash: 8e8215d9737087cf1a5632dc8514c12988ff999f
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 44aadecfa80524345932c03abb51e8ebd040a902
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70139658"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73666969"
 ---
 # <a name="monitor-and-manage-azure-data-factory-pipelines-by-using-the-azure-portal-and-powershell"></a>Azure Data Factory folyamatok monitorozása és kezelése a Azure Portal és a PowerShell használatával
 > [!div class="op_single_selector"]
@@ -46,11 +46,11 @@ A Azure Portal használatával a következőket teheti:
 Ez a szakasz azt is leírja, hogy az adatkészlet-szeletek hogyan alakulnak át az egyik állapotból egy másikba.   
 
 ### <a name="navigate-to-your-data-factory"></a>Navigáljon a saját adatgyárhoz
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-2. Kattintson a bal oldali menüben található adatüzemek elemre. Ha nem jelenik meg, kattintson a **További szolgáltatások >** elemre, majd kattintson az **intelligencia és Analitika** kategóriába tartozó **adat** -előállítók elemre.
+1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
+2. Kattintson a bal oldali menüben található **adatüzemek** elemre. Ha nem jelenik meg, kattintson a **További szolgáltatások >** elemre, majd kattintson az **intelligencia és Analitika** kategóriába tartozó **adat** -előállítók elemre.
 
    ![Az összes >-adatgyár tallózása](./media/data-factory-monitor-manage-pipelines/browseall-data-factories.png)
-3. Az adatüzemek panelen válassza ki azt az adatelőállítót, amelyre kíváncsi.
+3. **Az adatüzemek** panelen válassza ki azt az adatelőállítót, amelyre kíváncsi.
 
     ![Adat-előállító kiválasztása](./media/data-factory-monitor-manage-pipelines/select-data-factory.png)
 
@@ -61,7 +61,7 @@ Ez a szakasz azt is leírja, hogy az adatkészlet-szeletek hogyan alakulnak át 
 #### <a name="diagram-view-of-your-data-factory"></a>Az adatgyár diagram nézete
 Az adatok előállítójának **diagram** nézete egyetlen panelt biztosít az adatok előállítójának és eszközeinek figyeléséhez és kezeléséhez. Az adatgyár **diagram** nézetének megjelenítéséhez kattintson a **diagram** elemre az adatelőállító kezdőlapján.
 
-![Diagram nézet](./media/data-factory-monitor-manage-pipelines/diagram-view.png)
+![Diagramnézet](./media/data-factory-monitor-manage-pipelines/diagram-view.png)
 
 A nagyításhoz, a kicsinyítéshez, a nagyításhoz, a nagyításhoz 100%-ra, a diagram elrendezésének zárolására, valamint a folyamatok és adatkészletek automatikus elhelyezésére használható. Megtekintheti az adatbányászati adatokat is (azaz a kijelölt elemek felsőbb rétegbeli és alárendelt elemeinek megjelenítését).
 
@@ -87,7 +87,7 @@ Az adat-előállítóban található adatkészlet-szeletek a következő állapo
 
 <table>
 <tr>
-    <th align="left">State</th><th align="left">Alállapot</th><th align="left">Leírás</th>
+    <th align="left">Állapot</th><th align="left">Alállapotot</th><th align="left">Leírás</th>
 </tr>
 <tr>
     <td rowspan="8">Várakozás</td><td>ScheduleTime</td><td>A szelet futtatásához szükséges idő.</td>
@@ -108,14 +108,14 @@ Az adat-előállítóban található adatkészlet-szeletek a következő állapo
 <td>Retry</td><td>A tevékenység végrehajtásának újrapróbálása folyamatban van.</td>
 </tr>
 <tr>
-<td>Érvényesítés</td><td>Az érvényesítés még nincs elindítva.</td>
+<td>Ellenőrzés</td><td>Az érvényesítés még nincs elindítva.</td>
 </tr>
 <tr>
 <td>ValidationRetry</td><td>Az érvényesítés az újrapróbálkozásra vár.</td>
 </tr>
 <tr>
 <tr>
-<td rowspan="2">InProgress</td><td>Érvényesítés</td><td>Az érvényesítés folyamatban van.</td>
+<td rowspan="2">Folyamatban</td><td>Érvényesítése</td><td>Az érvényesítés folyamatban van.</td>
 </tr>
 <td>-</td>
 <td>A szelet feldolgozása folyamatban van.</td>
@@ -127,7 +127,7 @@ Az adat-előállítóban található adatkészlet-szeletek a következő állapo
 <td>Megszakítva</td><td>A szeletet a felhasználói művelet megszakította.</td>
 </tr>
 <tr>
-<td>Érvényesítés</td><td>Az érvényesítés sikertelen volt.</td>
+<td>Ellenőrzés</td><td>Az érvényesítés sikertelen volt.</td>
 </tr>
 <tr>
 <td>-</td><td>A szelet létrehozása és/vagy ellenőrzése nem sikerült.</td>
@@ -135,10 +135,10 @@ Az adat-előállítóban található adatkészlet-szeletek a következő állapo
 <td>Kész</td><td>-</td><td>A szelet készen áll a felhasználásra.</td>
 </tr>
 <tr>
-<td>Kihagyva</td><td>Nincsenek</td><td>A szelet feldolgozása nem történik meg.</td>
+<td>Kimarad</td><td>None</td><td>A szelet feldolgozása nem történik meg.</td>
 </tr>
 <tr>
-<td>Nincsenek</td><td>-</td><td>Egy olyan szelet, amely más állapottal is létezik, de alaphelyzetbe lett állítva.</td>
+<td>None</td><td>-</td><td>Egy olyan szelet, amely más állapottal is létezik, de alaphelyzetbe lett állítva.</td>
 </tr>
 </table>
 
@@ -148,11 +148,11 @@ A szeletek részleteit úgy tekintheti meg, ha rákattint egy szeletre a **legut
 
 ![Szelet részletei](./media/data-factory-monitor-manage-pipelines/slice-details.png)
 
-Ha a szelet többször is végre lett hajtva, több sor jelenik meg a **tevékenység** -futtatások listájában. A tevékenységek futtatásával kapcsolatos részleteket a **tevékenység** futtatások listájának Futtatás bejegyzésére kattintva tekintheti meg. A lista megjeleníti az összes naplófájlt, valamint egy hibaüzenetet, ha van ilyen. Ez a funkció hasznos lehet a naplók megtekintésére és hibakeresésére anélkül, hogy el kellene hagynia az adatgyárat.
+Ha a szelet többször is végre lett hajtva, több sor jelenik meg a **tevékenység-futtatások** listájában. A tevékenységek futtatásával kapcsolatos részleteket a **tevékenység** futtatások listájának Futtatás bejegyzésére kattintva tekintheti meg. A lista megjeleníti az összes naplófájlt, valamint egy hibaüzenetet, ha van ilyen. Ez a funkció hasznos lehet a naplók megtekintésére és hibakeresésére anélkül, hogy el kellene hagynia az adatgyárat.
 
 ![Tevékenységfuttatás részletei](./media/data-factory-monitor-manage-pipelines/activity-run-details.png)
 
-Ha a szelet nem **üzemkész** állapotban van, láthatja, hogy a felsőbb rétegbeli szeletek nem állnak készen, és blokkolja az aktuális szeletet a **nem kész** listán szereplő felsőbb rétegbeli szeleteken. Ez a funkció akkor hasznos, ha a szelet **várakozási** állapotban van, és meg szeretné ismerni, hogy milyen felsőbb rétegbeli függőségek várnak a szeletre.
+Ha a szelet nem **üzemkész** állapotban van, láthatja, hogy a felsőbb rétegbeli szeletek nem állnak készen, és blokkolja az aktuális szeletet a **nem kész listán szereplő felsőbb rétegbeli szeleteken** . Ez a funkció akkor hasznos, ha a szelet **várakozási** állapotban van, és meg szeretné ismerni, hogy milyen felsőbb rétegbeli függőségek várnak a szeletre.
 
 ![Felsőbb rétegbeli szeletek, amelyek nem állnak készen](./media/data-factory-monitor-manage-pipelines/upstream-slices-not-ready.png)
 
@@ -161,9 +161,9 @@ Miután üzembe helyezte az adat-előállítót, és a folyamatok érvényes akt
 
 ![Állapot diagramja](./media/data-factory-monitor-manage-pipelines/state-diagram.png)
 
-Az adatkészlet állapotának átváltási folyamata az adat-előállítóban a következő: Várakozási > folyamatban/folyamatban (érvényesítés) – > Ready/failed.
+Az adatkészlet állapotának átváltási folyamata az adat-előállítóban a következő: folyamatban lévő > várakozási idő/folyamatban (érvényesítés) – > Ready/failed.
 
-A szelet **várakozási** állapotba kerül, és arra vár, hogy a végrehajtás előtt meg lehessen felelni az előfeltételeknek. Ezután a tevékenység elindítja a végrehajtást, és a szelet **folyamatban** állapotba kerül. A tevékenység végrehajtása sikeres vagy sikertelen lehet. A szelet készként vagy sikertelenkéntvan megjelölve a végrehajtás eredménye alapján.
+A szelet **várakozási** állapotba kerül, és arra vár, hogy a végrehajtás előtt meg lehessen felelni az előfeltételeknek. Ezután a tevékenység elindítja a végrehajtást, és a szelet **folyamatban** állapotba kerül. A tevékenység végrehajtása sikeres vagy sikertelen lehet. A szelet **készként** vagy **sikertelenként**van megjelölve a végrehajtás eredménye alapján.
 
 Alaphelyzetbe állíthatja a szeletet, hogy visszalépjen a **Ready** vagy a **failed** állapotból a **várakozási** állapotba. Azt is megteheti, hogy **kihagyja**a szelet állapotát, ami megakadályozza a tevékenység végrehajtását, és nem dolgozza fel a szeletet.
 
@@ -178,7 +178,7 @@ A **AzDataFactoryPipeline PowerShell-** parancsmag használatával szünetelteth
 ```powershell
 Suspend-AzDataFactoryPipeline [-ResourceGroupName] <String> [-DataFactoryName] <String> [-Name] <String>
 ```
-Példa:
+Például:
 
 ```powershell
 Suspend-AzDataFactoryPipeline -ResourceGroupName ADF -DataFactoryName productrecgamalbox1dev -Name PartitionProductsUsagePipeline
@@ -189,7 +189,7 @@ A probléma a folyamattal való javítása után a következő PowerShell-paranc
 ```powershell
 Resume-AzDataFactoryPipeline [-ResourceGroupName] <String> [-DataFactoryName] <String> [-Name] <String>
 ```
-Példa:
+Például:
 
 ```powershell
 Resume-AzDataFactoryPipeline -ResourceGroupName ADF -DataFactoryName productrecgamalbox1dev -Name PartitionProductsUsagePipeline
@@ -222,7 +222,7 @@ Ha a tevékenység futtatása meghiúsul egy folyamat során, a folyamat által 
     ```powershell   
     Get-AzDataFactorySlice [-ResourceGroupName] <String> [-DataFactoryName] <String> [-DatasetName] <String> [-StartDateTime] <DateTime> [[-EndDateTime] <DateTime> ] [-Profile <AzureProfile> ] [ <CommonParameters>]
     ```   
-   Példa:
+   Például:
 
     ```powershell   
     Get-AzDataFactorySlice -ResourceGroupName ADF -DataFactoryName LogProcessingFactory -DatasetName EnrichedGameEventsTable -StartDateTime 2014-05-04 20:00:00
@@ -236,7 +236,7 @@ Ha a tevékenység futtatása meghiúsul egy folyamat során, a folyamat által 
     <DateTime> [-Profile <AzureProfile> ] [ <CommonParameters>]
     ```
 
-    Példa:
+    Például:
 
     ```powershell   
     Get-AzDataFactoryRun -ResourceGroupName ADF -DataFactoryName LogProcessingFactory -DatasetName EnrichedGameEventsTable -StartDateTime "5/5/2014 12:00:00 AM"
@@ -283,14 +283,14 @@ A folyamatok hibáinak elhárítása és hibakeresése után újrafuttathatja a 
 
 ![Sikertelen szelet újrafuttatása](./media/data-factory-monitor-manage-pipelines/rerun-slice.png)
 
-Abban az esetben, ha a szelet házirend-meghibásodás miatt sikertelen volt (például ha az adatmennyiség nem érhető el), a parancssorban a validate ( **Érvényesítés** ) gombra kattintva javítsa ki a hibát, és ismételje meg az érvényesítést.
+Abban az esetben, ha a szelet házirend-meghibásodás miatt sikertelen volt (például ha az adatmennyiség nem érhető el), a parancssorban a **validate (érvényesítés** ) gombra kattintva javítsa ki a hibát, és ismételje meg az érvényesítést.
 
 ![Hibajavítások és érvényesítés](./media/data-factory-monitor-manage-pipelines/fix-error-and-validate.png)
 
-### <a name="use-azure-powershell"></a>Azure PowerShell használatával
+### <a name="use-azure-powershell"></a>Az Azure PowerShell használata
 A hibákat a **set-AzDataFactorySliceStatus** parancsmag használatával futtathatja újra. A parancsmag szintaxisát és egyéb részleteit lásd a [set-AzDataFactorySliceStatus](https://docs.microsoft.com/powershell/module/az.datafactory/set-azdatafactoryslicestatus) témakörben.
 
-**Példa:**
+**Példa**
 
 A következő példa a "DAWikiAggregatedData" tábla összes szeletének állapotát a "Waiting" értékre állítja a "WikiADF" Azure-beli adat-előállítóban.
 
@@ -309,7 +309,7 @@ Set-AzDataFactorySliceStatus -ResourceGroupName ADF -DataFactoryName WikiADF -Da
 
     ![Új riasztás létrehozása](media/data-factory-monitor-manage-pipelines/v1alerts-image2.png)
 
-3.  Adja mega riasztási feltételt. (Ügyeljen arra, hogy a **szűrés erőforrás típusa** mezőben válassza az adatüzemek elemet.) Megadhatja a dimenziókértékeit is.
+3.  Adja meg a **riasztási feltételt**. (Ügyeljen arra, hogy a **szűrés erőforrás típusa** mezőben válassza az **adatüzemek** elemet.) Megadhatja a **dimenziók**értékeit is.
 
     ![A riasztási feltétel meghatározása – cél kiválasztása](media/data-factory-monitor-manage-pipelines/v1alerts-image3.png)
 

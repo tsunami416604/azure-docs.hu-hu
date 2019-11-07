@@ -4,13 +4,13 @@ ms.service: data-explorer
 ms.topic: include
 ms.date: 10/07/2019
 ms.author: orspodek
-ms.openlocfilehash: 4c98e8130ade4cd09cbcc1ac8140f0003733551f
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: a04f17ac809832b6fec51d1ffe0d9fcd6285b4ff
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72031525"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73581803"
 ---
 ## <a name="authentication"></a>Authentication
 
-A következő példa futtatásához szüksége van egy Azure AD-alkalmazásra és egy egyszerű szolgáltatásra, amely hozzáférhet az erőforrásokhoz. Tekintse meg az [Azure ad-alkalmazás létrehozása](/azure/active-directory/develop/howto-create-service-principal-portal) az ingyenes Azure ad-alkalmazás létrehozásához és a szerepkör-hozzárendelés hozzáadása az előfizetési szinten című témakört. Szüksége lesz a `directory (tenant) ID`, `application ID` és `client secret` értékekre is.
+A következő példa futtatásához szüksége van egy Azure Active Directory (Azure AD) alkalmazásra és egyszerű szolgáltatásra, amely hozzáférhet az erőforrásokhoz. Ha ingyenes Azure AD-alkalmazást szeretne létrehozni, és szerepkör-hozzárendelést szeretne hozzáadni az előfizetési szinten, tekintse meg az [Azure ad-alkalmazás létrehozása](/azure/active-directory/develop/howto-create-service-principal-portal)című témakört. Szüksége lesz a címtárra (bérlőre), az alkalmazás-AZONOSÍTÓra és az ügyfél titkos KÓDJÁra is.

@@ -4,14 +4,14 @@ description: Azure Cosmos DB létrehozásához és konfigurálásához használj
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 10/28/2019
+ms.date: 10/31/2019
 ms.author: mjbrown
-ms.openlocfilehash: 7861196daf3b04430200096a0d42bdcc6e6d5cf9
-ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
+ms.openlocfilehash: ecdfe89e899e0d416784ae32a0d66b335c09e2b6
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73053224"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73582807"
 ---
 # <a name="azure-resource-manager-templates-for-azure-cosmos-db"></a>Azure Cosmos DB Azure Resource Manager sablonjai
 
@@ -21,10 +21,8 @@ Az alábbi táblázatok a Azure Cosmos DB Azure Resource Manager sablonjaira mut
 
 |**Sablon**|**Leírás**|
 |---|---|
-|[Azure Cosmos-fiók, adatbázis, tároló létrehozása](manage-sql-with-resource-manager.md#create-resource) | Ez a sablon létrehoz egy SQL-(Core-) API-fiókot két régióban, ahol engedélyezve van a több főkiszolgáló. Az Azure Cosmos-fióknak két tárolója lesz, amelyek osztoznak az adatbázis-szintű átviteli sebességgel. |
+|[Azure Cosmos-fiók, adatbázis, tároló létrehozása](manage-sql-with-resource-manager.md#create-resource) | Ez a sablon létrehoz egy SQL-(Core-) API-fiókot két régióban két tárolóval, amelyek közös adatbázis-átviteli sebességgel és egy dedikált átviteli sebességgel rendelkező tárolóval rendelkeznek. Az átviteli sebesség frissítéséhez küldje el újra a sablont a frissített átviteli érték tulajdonságával. |
 |[Azure Cosmos-fiók, adatbázis és tároló létrehozása tárolt eljárással, triggerrel és UDF-vel](manage-sql-with-resource-manager.md#create-sproc) | Ez a sablon egy SQL-(Core-) API-fiókot hoz létre két régióban egy tárolóhoz tárolt eljárással, triggerrel és UDF-vel. |
-|[Adatbázis frissítési teljesítményének (RU/s) frissítése](manage-sql-with-resource-manager.md#database-ru-update) | Ez a sablon egy SQL-(Core-) API-fiókban frissíti egy adatbázis átviteli sebességét. |
-|[Egy tárolóra vonatkozó frissítési teljesítmény (RU/s)](manage-sql-with-resource-manager.md#container-ru-update) | Ez a sablon egy SQL-(Core-) API-fiókban lévő tároló átviteli sebességét frissíti. |
 
 ## <a name="mongodb-api"></a>MongoDB API
 

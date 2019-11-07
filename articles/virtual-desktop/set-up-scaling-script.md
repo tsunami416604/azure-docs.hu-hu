@@ -1,5 +1,5 @@
 ---
-title: Windows rendszerű virtuális asztali munkamenet-gazdagépek automatikus méretezése – Azure
+title: Windows rendszerű virtuális asztali munkamenet-gazdagépek dinamikus méretezése – Azure
 description: Útmutató az automatikus skálázási parancsfájl beállításához a Windows rendszerű virtuális asztali munkamenet-gazdagépekhez.
 services: virtual-desktop
 author: Heidilohr
@@ -7,14 +7,14 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 10/02/2019
 ms.author: helohr
-ms.openlocfilehash: 932fbe6814df8ec324dd3360bcacfcbcf1c19b62
-ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
+ms.openlocfilehash: 744f7d5c191180757620e87d926422c9f1e0baba
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71842775"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73607458"
 ---
-# <a name="scale-session-hosts-dynamically"></a>A munkamenet-gazdagépek dinamikus méretezése
+# <a name="scale-session-hosts-dynamically"></a>Munkamenet-gazdagépek dinamikus skálázása
 
 Számos, az Azure-beli Windows rendszerű virtuális asztali környezet esetében a virtuális gépek költségei a Windows rendszerű virtuális asztali telepítés teljes költségének jelentős részét jelentik. A költségek csökkentése érdekében érdemes leállítani és felszabadítani a munkamenet-gazda virtuális gépeket (VM-EK) a használaton kívüli órákban, majd újraindítani őket a maximális kihasználtsági idő alatt.
 
@@ -49,7 +49,7 @@ A következő eljárásokkal megtudhatja, hogyan helyezheti üzembe a skálázá
 Először készítse elő a környezetet a skálázási parancsfájlhoz:
 
 1. Jelentkezzen be a virtuális gépre (a méretezési virtuális gépre), amely az ütemezett feladatot egy tartományi rendszergazdai fiókkal fogja futtatni.
-2. Hozzon létre egy mappát a méretezési virtuális gépen a skálázási parancsfájl és a konfigurációjának tárolásához (például **C: \\scaling-HostPool1**).
+2. Hozzon létre egy mappát a méretezési virtuális gépen a skálázási parancsfájl és a konfigurációjának tárolásához (például **C:\\skálázás-HostPool1**).
 3. Töltse le a **basicScale. ps1**, a **config. XML**és az **functions-PSStoredCredentials. Ps1** fájlt, valamint a **PowershellModules** mappát a [skálázási parancsfájl-tárházból](https://github.com/Azure/RDS-Templates/tree/master/wvd-sh/WVD%20scaling%20script) , és másolja azokat a 2. lépésben létrehozott mappába. A skálázási virtuális gépre való másolás előtt két fő módszert kell megszereznie a fájlok beszerzéséhez:
     - A git-tárház klónozása a helyi gépre.
     - Tekintse meg az egyes fájlok **nyers** verzióját, másolja és illessze be az egyes fájlok tartalmát egy szövegszerkesztőbe, majd mentse a fájlokat a megfelelő fájlnévvel és fájltípussal. 
@@ -72,9 +72,9 @@ Ezután létre kell hoznia a biztonságos tárolt hitelesítő adatokat:
     Set-Variable -Name KeyPath -Scope Global -Value <LocalScalingScriptFolder>
     ```
     
-    **Adja meg például a következőt: set-változó-Name – scope Global-Value "c: \\scaling-HostPool1"**
-5. Futtassa a **New-StoredCredential-\$KeyPath** parancsmagot. Ha a rendszer kéri, adja meg a Windows rendszerű virtuális asztali hitelesítő adatait, amely jogosult a gazdagép lekérdezésére (az alkalmazáskészletet a **config. XML**fájlban lehet megadni).
-    - Ha más egyszerű szolgáltatásnevet vagy standard fiókot használ, akkor minden egyes fiók esetében futtassa a **New-StoredCredential \$KeyPath** parancsmagot egyszer, hogy helyi tárolt hitelesítő adatokat hozzon létre.
+    **Adja meg például a következőt: set-változó-Name – scope Global-Value "c:\\skálázás – HostPool1"**
+5. Futtassa a **New-StoredCredential-\$** . Ha a rendszer kéri, adja meg a Windows rendszerű virtuális asztali hitelesítő adatait, amely jogosult a gazdagép lekérdezésére (az alkalmazáskészletet a **config. XML**fájlban lehet megadni).
+    - Ha más egyszerű szolgáltatásnevet vagy standard fiókot használ, akkor a helyi tárolt hitelesítő adatok létrehozásához minden fióknál futtassa a **New-StoredCredential------\$-a-a-a-a-a-** .
 6. A **Get-StoredCredential-List** futtatásával erősítse meg, hogy a hitelesítő adatok sikeresen létrejöttek.
 
 ### <a name="configure-the-configxml-file"></a>A config. xml fájl konfigurálása
@@ -89,7 +89,7 @@ Adja meg a megfelelő értékeket a következő mezőkben, hogy frissítse a mé
 | currentAzureSubscriptionId    | Annak az Azure-előfizetésnek az azonosítója, amelyben a munkamenet-gazda virtuális gépek futnak                        |
 | tenantName                    | Windows rendszerű virtuális asztali bérlő neve                                                    |
 | hostPoolName                  | Windows rendszerű virtuális asztali címkészlet neve                                                 |
-| RDBroker                      | A WVD szolgáltatás URL-címe, alapértelmezett érték: https: \//rdbroker. WVD. microsoft. com             |
+| RDBroker                      | A WVD szolgáltatás URL-címe, alapértelmezett érték: https:\//rdbroker.wvd.microsoft.com             |
 | Felhasználónév                      | Az egyszerű szolgáltatásnév alkalmazásának azonosítója (ez lehet ugyanaz a szolgáltatás, mint a AADApplicationId) vagy a standard felhasználó a multi-Factor Authentication használata nélkül |
 | isServicePrincipal            | Az elfogadott értékek: **true** vagy **false**. Azt jelzi, hogy a használt hitelesítő adatok második halmaza egy egyszerű szolgáltatásnév vagy egy normál fiók. |
 | BeginPeakTime                 | A csúcsérték-használat idejének kezdete                                                            |
@@ -105,13 +105,13 @@ Adja meg a megfelelő értékeket a következő mezőkben, hogy frissítse a mé
 
 A Configuration. xml fájl konfigurálása után a Feladatütemezőt úgy kell konfigurálnia, hogy rendszeres időközönként futtassa az basicScaler. ps1 fájlt.
 
-1. Indítsael a Feladatütemezőt.
-2. A Feladatütemező ablakban válassza a **feladat létrehozása..** . lehetőséget.
+1. Indítsa el a **Feladatütemezőt**.
+2. A Feladatütemező **ablakban válassza** a **feladat létrehozása..** . lehetőséget.
 3. **A feladat létrehozása** párbeszédpanelen válassza az **általános** lapot, adjon meg egy **nevet** (például "dinamikus RDSH"), válassza a Futtatás lehetőséget, **hogy a felhasználó bejelentkezett-e vagy sem** , és **a legmagasabb jogosultságokkal fusson**.
 4. Lépjen az **Eseményindítók** lapra, majd válassza az **új...** lehetőséget.
 5. Az **új trigger** párbeszédablak **Speciális beállítások**területén jelölje be a **Feladat ismétlése** jelölőnégyzetet, és válassza ki a megfelelő időtartamot és időtartamot (például **15 perc** vagy **határozatlan**idő).
 6. Válassza a **műveletek** fület, és kattintson az **új...** lehetőségre.
-7. Az **új művelet** párbeszédpanelen írja be a **PowerShell. exe fájlt** a **program/parancsfájl** mezőbe, majd írja be a **C: \\scaling @ No__t-5basicScale. ps1** parancsot az **argumentumok hozzáadása (nem kötelező)** mezőbe.
+7. Az **új művelet** párbeszédpanelen írja be a **PowerShell. exe fájlt** a **program/parancsfájl** mezőbe, majd írja be a **C:\\skálázás\\BasicScale. ps1** parancsot az **argumentumok hozzáadása (nem kötelező)** mezőbe.
 8. Lépjen a **feltételek** és **Beállítások** lapokra, majd kattintson az **OK gombra** az egyes beállítások alapértelmezett beállításainak elfogadásához.
 9. Adja meg annak a rendszergazdai fióknak a jelszavát, amelyben futtatni szeretné a skálázási parancsfájlt.
 

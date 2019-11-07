@@ -1,5 +1,5 @@
 ---
-title: IP-tűzfalszabályok Azure SQL Database és Azure SQL Data Warehouse | Microsoft Docs
+title: IP-tűzfalszabályok Azure SQL Database és Azure SQL Data Warehouse
 description: Kiszolgálói szintű IP-tűzfalszabályok konfigurálása SQL-adatbázishoz vagy SQL Data Warehouse tűzfalhoz. Az adatbázis-szintű IP-tűzfalszabályok hozzáférésének kezelése és konfigurálása egyetlen vagy készletezett adatbázishoz.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: carlrab
 ms.date: 03/12/2019
-ms.openlocfilehash: e3e65a6deadfbcad563a6b64c0a9f48182cdd571
-ms.sourcegitcommit: 6013bacd83a4ac8a464de34ab3d1c976077425c7
+ms.openlocfilehash: 52566dbc60c3c2fd532891ab4f7d3461f9d77557
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71686473"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73690049"
 ---
 # <a name="azure-sql-database-and-azure-sql-data-warehouse-ip-firewall-rules"></a>IP-tűzfalszabályok Azure SQL Database és Azure SQL Data Warehouse
 
@@ -178,10 +178,10 @@ EXECUTE sp_delete_firewall_rule @name = N'ContosoFirewallRule'
 > [!IMPORTANT]
 > Az Azure SQL Database továbbra is támogatja a PowerShell Azure Resource Manager modult, de a fejlesztés most már az az. SQL modulhoz készült. Ezekhez a parancsmagokhoz lásd: [AzureRM. SQL](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). Az az és a AzureRm modulok parancsainak argumentumai lényegében azonosak.
 
-| A parancsmag | Szint | Leírás |
+| Parancsmag | Szint | Leírás |
 | --- | --- | --- |
 | [Get-AzSqlServerFirewallRule](/powershell/module/az.sql/get-azsqlserverfirewallrule) |Kiszolgáló |Az aktuális kiszolgálószintű tűzfalszabályokat adja vissza |
-| [New-AzSqlServerFirewallRule](/powershell/module/az.sql/new-azsqlserverfirewallrule) |Kiszolgáló |Új kiszolgálószintű tűzfalszabály létrehozása |
+| [Új – AzSqlServerFirewallRule](/powershell/module/az.sql/new-azsqlserverfirewallrule) |Kiszolgáló |Új kiszolgálószintű tűzfalszabály létrehozása |
 | [Set-AzSqlServerFirewallRule](/powershell/module/az.sql/set-azsqlserverfirewallrule) |Kiszolgáló |Meglévő kiszolgálószintű tűzfalszabály tulajdonságainak frissítése |
 | [Remove-AzSqlServerFirewallRule](/powershell/module/az.sql/remove-azsqlserverfirewallrule) |Kiszolgáló |Kiszolgálószintű tűzfalszabályok eltávolítása |
 
@@ -198,7 +198,7 @@ New-AzSqlServerFirewallRule -ResourceGroupName "myResourceGroup" `
 
 ### <a name="use-cli-to-manage-server-level-ip-firewall-rules"></a>Kiszolgálói szintű IP-tűzfalszabályok kezelése a CLI használatával
 
-| A parancsmag | Szint | Leírás |
+| Parancsmag | Szint | Leírás |
 | --- | --- | --- |
 |[az SQL Server Firewall-Rule Create](/cli/azure/sql/server/firewall-rule#az-sql-server-firewall-rule-create)|Kiszolgáló|Kiszolgálói IP-tűzfalszabály létrehozása|
 |[az SQL Server Firewall-Rule List](/cli/azure/sql/server/firewall-rule#az-sql-server-firewall-rule-list)|Kiszolgáló|A kiszolgálón található IP-tűzfalszabályok listája|
@@ -231,7 +231,7 @@ Vegye figyelembe a következő szempontokat, amikor a SQL Database szolgáltatá
 
 - **Helyi tűzfal konfigurációja:**
 
-  Ahhoz, hogy a számítógép hozzáférhessen SQL Databasehoz, előfordulhat, hogy létre kell hoznia egy tűzfal-kivételt a számítógépen a 1433-es TCP-porthoz. Előfordulhat, hogy az Azure-felhő határain belül szeretne kapcsolatokat létesíteni. további portok megnyitására van lehetőség. További információkért tekintse meg a "SQL Database: A [ADO.NET 4,5-es és a SQL Database-es portokon túli portok](sql-database-develop-direct-route-ports-adonet-v12.md)szakasza kívülről, a 1433
+  Ahhoz, hogy a számítógép hozzáférhessen SQL Databasehoz, előfordulhat, hogy létre kell hoznia egy tűzfal-kivételt a számítógépen a 1433-es TCP-porthoz. Előfordulhat, hogy az Azure-felhő határain belül szeretne kapcsolatokat létesíteni. további portok megnyitására van lehetőség. További információ: a [1433-es és a SQL Database-es porton túli portok](sql-database-develop-direct-route-ports-adonet-v12.md)"SQL Database: külső és belső" szakasza, 4,5 ADO.net.
 
 - **Hálózati címfordítás:**
 
@@ -260,7 +260,7 @@ Vegye figyelembe a következő szempontokat, amikor a SQL Database szolgáltatá
 - Ellenőrizze, hogy a vállalati hálózati környezet lehetővé teszi-e a bejövő kommunikációt az Azure-adatközpontok által használt számítási IP-címtartományok (beleértve az SQL-tartományokat is). Előfordulhat, hogy ezeket az IP-címeket fel kell vennie az engedélyezési listára. Lásd: [Microsoft Azure adatközpont IP-tartományai](https://www.microsoft.com/download/details.aspx?id=41653).  
 - A kiszolgálói szintű IP-tűzfalszabály létrehozásával kapcsolatos rövid útmutató: [Azure SQL Database létrehozása](sql-database-single-database-get-started.md).
 - A nyílt forráskódú vagy külső alkalmazásokból származó Azure SQL Database-adatbázisokhoz való csatlakozással kapcsolatos segítségért tekintse meg a következő témakört: az ügyfél-útmutató [kódok mintái SQL Database](https://msdn.microsoft.com/library/azure/ee336282.aspx).
-- További információ a megnyitható további portokról: "SQL Database: A [ADO.NET 4,5-es és a SQL Database-es portokon 1433 túli portok](sql-database-develop-direct-route-ports-adonet-v12.md) szakasza kívülről
+- További információ a megnyitható további portokról: a [ADO.NET 4,5-es és a 1433 SQL Database-es porton túli portok](sql-database-develop-direct-route-ports-adonet-v12.md) "SQL Database: külső vs belső" szakasza.
 - A Azure SQL Database biztonság áttekintését lásd: [az adatbázis biztonságossá tétele](sql-database-security-overview.md).
 
 <!--Image references-->

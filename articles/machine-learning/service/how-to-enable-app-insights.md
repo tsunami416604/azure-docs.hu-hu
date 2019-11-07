@@ -11,12 +11,12 @@ ms.author: copeters
 author: lostmygithubaccount
 ms.date: 10/11/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 9da057683f3da41f077b309db79271a10738b59d
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: HT
+ms.openlocfilehash: c02c502dc2ab85a6ae1c602c53723e9b5a758250
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/04/2019
-ms.locfileid: "73490008"
+ms.locfileid: "73576740"
 ---
 # <a name="monitor-and-collect-data-from-ml-web-service-endpoints"></a>A ML webszolgáltatás-végpontokról származó adatok figyelése és gyűjtése
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -112,39 +112,6 @@ Az Azure Application Insights letiltásához használja a következő kódot:
 ## replace <service_name> with the name of the web service
 <service_name>.update(enable_app_insights=False)
 ```
-    
-## <a name="use-studio-to-configure"></a>A Studio használata a konfiguráláshoz
-
-A Azure Machine Learning Studióban engedélyezheti és letilthatja Application Insights.
-
-1. A [Azure Machine learning Studióban](https://ml.azure.com)nyissa meg a munkaterületet.
-
-1. A **központi telepítések** lapon válassza ki azt a szolgáltatást, amelyen engedélyezni szeretné a Application Insights.
-
-   [a szolgáltatások listájának ![a központi telepítések lapon](media/how-to-enable-app-insights/Deployments.PNG)](./media/how-to-enable-app-insights/Deployments.PNG#lightbox)
-
-3. Válassza a **Szerkesztés** elemet.
-
-   [![Szerkesztés gomb](media/how-to-enable-app-insights/Edit.PNG)](./media/how-to-enable-app-insights/Edit.PNG#lightbox)
-
-4. A **Speciális beállítások**területen jelölje be a **AppInsights-diagnosztika engedélyezése** jelölőnégyzetet.
-
-   [a diagnosztika engedélyezéséhez ![kiválasztott jelölőnégyzet](media/how-to-enable-app-insights/AdvancedSettings.png)](./media/how-to-enable-app-insights/AdvancedSettings.png#lightbox)
-
-1. Kattintson a **frissítés** gombra a képernyő alján a módosítások alkalmazásához. 
-
-### <a name="disable"></a>Letiltás
-1. A [Azure Machine learning Studióban](https://ml.azure.com)nyissa meg a munkaterületet.
-1. Jelölje ki a **központi telepítések**elemet, válassza ki a szolgáltatást, majd válassza a **Szerkesztés**lehetőséget.
-
-   [![használja a Szerkesztés gombot](media/how-to-enable-app-insights/Edit.PNG)](./media/how-to-enable-app-insights/Edit.PNG#lightbox)
-
-1. A **Speciális beállítások**területen törölje a jelet a **AppInsights-diagnosztika engedélyezése** jelölőnégyzetből. 
-
-   [a diagnosztika engedélyezéséhez ![törölve jelölőnégyzet](media/how-to-enable-app-insights/uncheck.png)](./media/how-to-enable-app-insights/uncheck.png#lightbox)
-
-1. Kattintson a **frissítés** gombra a képernyő alján a módosítások alkalmazásához. 
- 
 
 ## <a name="evaluate-data"></a>Az adatértékelés
 A szolgáltatás adatait a rendszer az Azure Application Insights-fiókjában tárolja, amely ugyanabban az erőforráscsoporthoz van, mint Azure Machine Learning.

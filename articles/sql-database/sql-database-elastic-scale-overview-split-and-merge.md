@@ -1,5 +1,5 @@
 ---
-title: Az adatáthelyezés a kibővített felhőalapú adatbázisok között | Microsoft Docs
+title: Adatok mozgatása kiterjesztett felhőalapú adatbázisok között
 description: Elmagyarázza, hogyan kezelhetők a szegmensek, és hogyan helyezhetők át az adatai egy saját üzemeltetésű szolgáltatással a rugalmas adatbázis-API-k használatával.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/12/2019
-ms.openlocfilehash: 841794dcbb41249ea25f615524150df4bd257b45
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 9b2203b7fb9e168b251eda16a9505ae2004b0460
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68568395"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73690195"
 ---
 # <a name="moving-data-between-scaled-out-cloud-databases"></a>Adatok mozgatása kiterjesztett felhőalapú adatbázisok között
 
@@ -28,7 +28,7 @@ A felosztási egyesítési eszköz Azure-webszolgáltatásként fut. A rendszerg
 
 ## <a name="download"></a>Letöltés
 
-[Microsoft.Azure.SqlDatabase.ElasticScale.Service.SplitMerge](https://www.nuget.org/packages/Microsoft.Azure.SqlDatabase.ElasticScale.Service.SplitMerge/)
+[Microsoft. Azure. SqlDatabase. ElasticScale. Service. SplitMerge](https://www.nuget.org/packages/Microsoft.Azure.SqlDatabase.ElasticScale.Service.SplitMerge/)
 
 ## <a name="documentation"></a>Dokumentáció
 
@@ -98,7 +98,7 @@ A felosztási egyesítési eszköz Azure-webszolgáltatásként fut. A rendszerg
 
     A többi tábla lehet egy felosztási és egyesítési művelet forrásán vagy célján is. A felosztási-egyesítési szolgáltatás figyelmen kívül hagyja ezeket a táblákat bármilyen adatáthelyezési vagy másolási művelet esetében. Ne feledje azonban, hogy megkötések esetén ezek a műveletek zavarhatják a műveleteket.
 
-    A hivatkozással és a többrétegű táblákkal kapcsolatos információkat az `SchemaInfo` API-k tartalmazzák a szegmenses térképen. Az alábbi példa bemutatja, hogyan használhatók ezek az API-k egy adott szegmenses Térkép-kezelő objektumon:
+    A hivatkozással és a többrétegű táblákkal kapcsolatos információkat a szegmensek `SchemaInfo` API-k nyújtanak. Az alábbi példa bemutatja, hogyan használhatók ezek az API-k egy adott szegmenses Térkép-kezelő objektumon:
 
     ```csharp
     // Create the schema annotations
@@ -115,7 +115,7 @@ A felosztási egyesítési eszköz Azure-webszolgáltatásként fut. A rendszerg
     smm.GetSchemaInfoCollection().Add(Configuration.ShardMapName, schemaInfo);
     ```
 
-    A "Region" és a "Nation" tábla a hivatkozási táblákként van definiálva, és a rendszer a felosztott/egyesítési/áthelyezési műveletekkel másolja őket. a "Customer" és a "Orders" elem a következőként van meghatározva: szilánkokra osztott táblák. `C_CUSTKEY`és `O_CUSTKEY` a kiosztott kulcsként szolgál.
+    A "Region" és a "Nation" tábla a hivatkozási táblákként van definiálva, és a rendszer a felosztott/egyesítési/áthelyezési műveletekkel másolja őket. a "Customer" és a "Orders" elem a következőként van meghatározva: szilánkokra osztott táblák. a `C_CUSTKEY` és a `O_CUSTKEY` a kiosztott kulcsként szolgál.
 
 - **Hivatkozási integritás**
 
@@ -211,7 +211,7 @@ A felosztott egyesítés szolgáltatás biztosítja a **RequestStatus** táblát
 
 ### <a name="azure-diagnostics"></a>Azure Diagnostics
 
-A felosztási-egyesítési szolgáltatás az Azure SDK 2,5-alapú, monitorozási és diagnosztikai célú Azure Diagnosticst használja. A diagnosztika konfigurációját az itt leírtak szerint szabályozhatja: [Diagnosztika engedélyezése az Azure Cloud Services és Virtual Machines](../cloud-services/cloud-services-dotnet-diagnostics.md). A letöltési csomag két diagnosztikai konfigurációt tartalmaz: egyet a webes szerepkörhöz, egyet pedig a feldolgozói szerepkörhöz. Ez magában foglalja a teljesítményszámlálók naplózását, az IIS-naplókat, a Windows-eseménynaplókat és a felosztott alkalmazás-eseménynaplókat.
+A felosztási-egyesítési szolgáltatás az Azure SDK 2,5-alapú, monitorozási és diagnosztikai célú Azure Diagnosticst használja. A diagnosztikai konfigurációt az itt leírtak szerint vezérelheti: a [diagnosztika engedélyezése az Azure Cloud Services és Virtual Machines](../cloud-services/cloud-services-dotnet-diagnostics.md). A letöltési csomag két diagnosztikai konfigurációt tartalmaz: egyet a webes szerepkörhöz, egyet pedig a feldolgozói szerepkörhöz. Ez magában foglalja a teljesítményszámlálók naplózását, az IIS-naplókat, a Windows-eseménynaplókat és a felosztott alkalmazás-eseménynaplókat.
 
 ## <a name="deploy-diagnostics"></a>Diagnosztika üzembe helyezése
 
@@ -233,11 +233,11 @@ Ha a NuGet-csomag által biztosított webes és feldolgozói szerepkörök diagn
     Set-AzureServiceDiagnosticsExtension -StorageContext $storageContext -DiagnosticsConfigurationPath $config_path -ServiceName $service_name -Slot Production -Role "SplitMergeWorker"
 ```
 
-A diagnosztikai beállítások konfigurálásával és telepítésével kapcsolatos további információkért tekintse meg a következőt: [Diagnosztika engedélyezése az Azure Cloud Services és Virtual Machines](../cloud-services/cloud-services-dotnet-diagnostics.md).
+A diagnosztikai beállítások konfigurálásával és üzembe helyezésével kapcsolatos további információkért tekintse meg a [diagnosztika engedélyezése az Azure-ban Cloud Services és Virtual Machines](../cloud-services/cloud-services-dotnet-diagnostics.md).
 
 ## <a name="retrieve-diagnostics"></a>Diagnosztika beolvasása
 
-A diagnosztika a Server Explorer fájának Azure-részében könnyen elérhető a Visual Studio Server Explorerben. Nyisson meg egy Visual Studio-példányt, és a menüsávban kattintson a nézet, majd a Server Explorer elemre. Az Azure-előfizetéshez való kapcsolódáshoz kattintson az Azure ikonra. Ezután navigáljon az Azure-> Storage- `<your storage account>` >-> Tables-> WADLogsTable. További információ: [Server Explorer](https://msdn.microsoft.com/library/x603htbk.aspx).
+A diagnosztika a Server Explorer fájának Azure-részében könnyen elérhető a Visual Studio Server Explorerben. Nyisson meg egy Visual Studio-példányt, és a menüsávban kattintson a nézet, majd a Server Explorer elemre. Az Azure-előfizetéshez való kapcsolódáshoz kattintson az Azure ikonra. Ezután navigáljon az Azure-> Storage-> `<your storage account>`-> Tables-> WADLogsTable. További információ: [Server Explorer](https://msdn.microsoft.com/library/x603htbk.aspx).
 
 ![WADLogsTable][2]
 
@@ -266,7 +266,7 @@ A frissítéshez nem szükséges új metaadat-adatbázist kiépíteni a feloszto
 
 - Definiáljon egy teszt bérlőt, és gyakorolja a legfontosabb felosztott/egyesítési/áthelyezési műveleteket a több szegmensen belüli tesztelési Bérlővel. Győződjön meg arról, hogy az összes metaadat helyesen van definiálva a szegmenses térképen, és hogy a műveletek nem sértik a korlátozásokat vagy a külső kulcsokat.
 - Tartsa meg a legnagyobb bérlő maximális adatmérete feletti teszt bérlői adatméretet, hogy ne legyenek az adatmérettel kapcsolatos problémák. Ez segít felmérni a felső határt arra az időre, amíg egyetlen bérlőt helyez át a köré.
-- Győződjön meg arról, hogy a séma lehetővé teszi a törlést. A felosztási-egyesítési szolgáltatásnak képesnek kell lennie az adatok eltávolítására a forrás szegmensből, ha az adatok a célhelyre való másolása sikeresen megtörtént. Az eseményindítók **törlésével** például megakadályozhatja, hogy a szolgáltatás törölje a forrás adatait, és a műveletek meghiúsulnak.
+- Győződjön meg arról, hogy a séma lehetővé teszi a törlést. A felosztási-egyesítési szolgáltatásnak képesnek kell lennie az adatok eltávolítására a forrás szegmensből, ha az adatok a célhelyre való másolása sikeresen megtörtént. Az **Eseményindítók törlésével** például megakadályozhatja, hogy a szolgáltatás törölje a forrás adatait, és a műveletek meghiúsulnak.
 - A horizontális Felskálázási kulcsnak az elsődleges kulcs vagy az egyedi index definíciójának vezető oszlopának kell lennie. Ez biztosítja a legjobb teljesítményt a felosztási vagy egyesítési ellenőrzési lekérdezéseknél, valamint a tényleges adatáthelyezési és törlési műveletekhez, amelyek mindig a kulcsfontosságú tartományokon működnek.
 - A rézvezetékes végezhet a régióban és az adatközpontban tárolja az adatbázisokat.
 

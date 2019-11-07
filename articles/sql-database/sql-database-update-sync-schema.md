@@ -1,5 +1,5 @@
 ---
-title: A séma-változások replikálásának automatizálása az Azure SQL-adatszinkronizálásban | Microsoft Docs
+title: A séma változásainak az Azure-ban való replikálásának automatizálása SQL-adatszinkronizálás
 description: Ismerje meg, hogyan automatizálható a séma módosításainak replikálása az Azure SQL-adatszinkronizálásban.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: allenwux
 ms.author: xiwu
 ms.reviewer: carlrab
 ms.date: 11/14/2018
-ms.openlocfilehash: b1c3f49808a59576f02178dee1107b4019e34b5e
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 01cc82a2ada1f4ac8f26b223b7168b2cca157793
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68566257"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73686887"
 ---
 # <a name="automate-the-replication-of-schema-changes-in-azure-sql-data-sync"></a>A séma változásainak az Azure-ban való replikálásának automatizálása SQL-adatszinkronizálás
 
@@ -31,7 +31,7 @@ Ez a cikk egy olyan megoldást mutat be, amely automatikusan replikálja a séma
 Ez a cikk a MÓDOSÍTÁSi táblázatot használja példaként a séma módosítására, de ez a megoldás más típusú sémákban is működik.
 
 > [!IMPORTANT]
-> Javasoljuk, hogy figyelmesen olvassa el ezt a cikket, különösen a [hibaelhárítási](#troubleshoot) és [egyéb szempontokat](#other)ismertető szakaszt, mielőtt megkezdené az automatikus séma-módosítási replikáció megvalósítását a szinkronizálási környezetben. Azt is javasoljuk, hogy a [szinkronizálási információk több Felhőbeli és](sql-database-sync-data.md)helyszíni adatbázison is beolvashatók legyenek SQL-adatszinkronizálás. Egyes adatbázis-műveletek megszüntetik a jelen cikkben ismertetett megoldást. A problémák elhárításához szükség lehet a SQL Server és a Transact-SQL további tartományi ismeretére.
+> Javasoljuk, hogy figyelmesen olvassa el ezt a cikket, különösen a [hibaelhárítási](#troubleshoot) és [egyéb szempontokat](#other)ismertető szakaszt, mielőtt megkezdené az automatikus séma-módosítási replikáció megvalósítását a szinkronizálási környezetben. Azt is javasoljuk, hogy a [szinkronizálási információk több Felhőbeli és helyszíni adatbázison](sql-database-sync-data.md)is beolvashatók legyenek SQL-adatszinkronizálás. Egyes adatbázis-műveletek megszüntetik a jelen cikkben ismertetett megoldást. A problémák elhárításához szükség lehet a SQL Server és a Transact-SQL további tartományi ismeretére.
 
 ![A séma módosításainak replikálásának automatizálása](media/sql-database-update-sync-schema/automate-schema-changes.png)
 
@@ -88,7 +88,7 @@ További eseményindítókat is hozzáadhat a séma más típusú változásaina
 
 ### <a name="create-a-trigger-on-other-endpoints-to-apply-schema-changes-during-insertion"></a>Trigger létrehozása más végpontokon a séma módosításának a Beszúrás során történő alkalmazásához
 
-Ez az indító a séma módosítása parancsot hajtja végre, ha más végpontokhoz van szinkronizálva. Ezt az triggert az összes végponton létre kell hoznia, kivéve a séma módosításának helyét (azaz abban az adatbázisban, amelyben az előző lépésben létrehozta `AlterTableDDLTrigger` a DDL-triggert).
+Ez az indító a séma módosítása parancsot hajtja végre, ha más végpontokhoz van szinkronizálva. Ezt az triggert az összes végponton létre kell hoznia, kivéve a séma módosításának helyét (azaz abban az adatbázisban, amelyben a DDL-trigger `AlterTableDDLTrigger` az előző lépésben jött létre).
 
 ```sql
 CREATE TRIGGER SchemaChangesTrigger
@@ -161,7 +161,7 @@ Miután a séma módosítása replikálódik az összes végpontra, további lé
 
 1.  Frissítse az adatbázis-sémát.
 
-1.  Ha az új és a régi adattípusok nem teljes mértékben kompatibilisek – például akkor, ha `int` a `bigint` verzióról szinkronizálásra vált, a triggerek létrehozásához szükséges lépések végrehajtása előtt sikertelen lehet. A szinkronizálás az újrapróbálkozást követően sikeres lesz.
+1.  Ha az új és a régi adattípusok nem teljes mértékben kompatibilisek – például akkor, ha `int`ról `bigint`ra vált, az eseményindítók létrehozásának lépéseinek elvégzése előtt sikertelen lehet a szinkronizálás. A szinkronizálás az újrapróbálkozást követően sikeres lesz.
 
 #### <a name="rename-columns-or-tables"></a>Oszlopok vagy táblák átnevezése
 
@@ -223,13 +223,13 @@ További információ az SQL Data Syncről:
 
 -   Áttekintés – az [adatszinkronizálás több felhőalapú és helyszíni adatbázis között az Azure SQL-adatszinkronizálás](sql-database-sync-data.md)
 -   Adatszinkronizálás beállítása
-    - A portálon – [oktatóanyag: Az Azure SQL Database és a helyszíni SQL Server közötti adatszinkronizálás SQL-adatszinkronizálás beállítása](sql-database-get-started-sql-data-sync.md)
+    - A portálon – [oktatóanyag: SQL-adatszinkronizálás beállítása az Azure SQL Database és a helyszíni SQL Server közötti adatszinkronizáláshoz](sql-database-get-started-sql-data-sync.md)
     - A PowerShell-lel
-        -  [A PowerShell használata több Azure SQL Database-adatbázis közötti szinkronizáláshoz](scripts/sql-database-sync-data-between-sql-databases.md)
-        -  [A PowerShell használata egy Azure-beli SQL Database-adatbázis és egy helyszíni SQL Server-adatbázis közötti szinkronizáláshoz](scripts/sql-database-sync-data-between-azure-onprem.md)
--   Adatok szinkronizálása az ügynök - [adatok szinkronizálása az Azure SQL Data Sync ügynök](sql-database-data-sync-agent.md)
+        -  [A PowerShell használata több Azure SQL-adatbázis közötti szinkronizáláshoz](scripts/sql-database-sync-data-between-sql-databases.md)
+        -  [A PowerShell használata egy Azure SQL-adatbázis és egy helyszíni SQL Server-adatbázis közötti szinkronizáláshoz](scripts/sql-database-sync-data-between-azure-onprem.md)
+-   Adatszinkronizálási ügynök – [Az Azure SQL-adatszinkronizálás adatszinkronizálási ügynöke](sql-database-data-sync-agent.md)
 -   Ajánlott eljárások – [ajánlott eljárások az Azure SQL-adatszinkronizálás](sql-database-best-practices-data-sync.md)
 -   Figyelő – [SQL-adatszinkronizálás figyelése Azure monitor naplókkal](sql-database-sync-monitor-oms.md)
--   Hibaelhárítás – [Az Azure SQL-adatszinkronizálás](sql-database-troubleshoot-data-sync.md) hibáinak elhárítása
+-   Hibaelhárítás – [Az Azure SQL-adatszinkronizálás hibáinak elhárítása](sql-database-troubleshoot-data-sync.md)
 -   A szinkronizálási séma frissítése
     -   A PowerShell [használatával – egy meglévő szinkronizálási csoportban lévő szinkronizálási séma frissítéséhez használja a PowerShellt](scripts/sql-database-sync-update-schema.md) .

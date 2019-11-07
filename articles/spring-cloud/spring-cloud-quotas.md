@@ -4,14 +4,14 @@ description: Ismerje meg az Azure Spring Cloud szolgáltatáshoz kapcsolódó kv
 author: jpconnock
 ms.service: spring-cloud
 ms.topic: conceptual
-ms.date: 9/27/2019
+ms.date: 11/04/2019
 ms.author: jeconnoc
-ms.openlocfilehash: 89934ee0ab0c901a904a1a5ac2fb620185571a23
-ms.sourcegitcommit: d773b5743cb54b8cbcfa5c5e4d21d5b45a58b081
+ms.openlocfilehash: 41a2b1a7d9aa5089ba2ee73cd3c5c5c5e31f5225
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72038781"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73607665"
 ---
 # <a name="quotas-and-service-plans-for-azure-spring-cloud"></a>Kvóták és szolgáltatási csomagok az Azure Spring Cloud-hoz
 
@@ -23,7 +23,7 @@ Ez a cikk az aktuális előzetes időszakban felkínált szolgáltatási kvótá
 
 Az előzetes verzió ideje alatt az Azure Spring Cloud csak egy szolgáltatási szintet kínál.
 
-Resource | Mennyiség
+Erőforrás | Mennyiség
 ------- | -------
 vCPU | 4
 Memory (Memória) | 8 GByte
@@ -33,8 +33,8 @@ Alkalmazás-példányok teljes száma Azure Spring Cloud Service-példányon | 5
 Alkalmazás-példányok teljes száma tavasszal | 20
 Állandó kötetek | 10 x 50 GByte
 
-Amikor eléri a kvótát, egy 400-es hibaüzenet jelenik meg, amely a következőket olvassa: "A kvóta meghaladja *az előfizetés előfizetésének* korlátját a régió *régiójában, ahol az Azure Spring Cloud Service létrejött*.
+Amikor eléri a kvótát, egy 400-as hibaüzenet jelenik meg: "a kvóta meghaladja az *előfizetésre* vonatkozó előfizetési korlátot a régió *régiójában, ahol az Azure Spring Cloud Service létrejött*.
 
 ## <a name="next-steps"></a>További lépések
 
-Egyes alapértelmezett korlátok és kvóták növelhetők. Ha az erőforrás növekedésre szorul, küldje el nekünk kérelmét: azure-spring-cloud@service.microsoft.com.
+Egyes alapértelmezett korlátok és kvóták növelhetők. Ha az erőforrás növekedésre szorul, [hozzon létre egy támogatási kérést](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request).

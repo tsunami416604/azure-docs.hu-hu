@@ -1,5 +1,5 @@
 ---
-title: A grafikus teljesítménnyel kapcsolatos problémák diagnosztizálása a távoli asztalon – Azure
+title: Grafikus teljesítménnyel kapcsolatos problémák diagnosztizálása Távoli asztal – Azure
 description: Ez a cikk azt ismerteti, hogyan használhatók a távoli asztali protokoll munkameneteiben lévő távoli grafikus számlálók a Windows rendszerű virtuális asztalban található grafikákkal kapcsolatos teljesítményproblémák diagnosztizálásához.
 services: virtual-desktop
 author: Heidilohr
@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: troubleshooting
 ms.date: 05/23/2019
 ms.author: helohr
-ms.openlocfilehash: b6a78fbf2fcb12962b42537965deea6c7912315d
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: c41a433ee19969546e1db2aa583c72ed166b7ebf
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71676531"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73607465"
 ---
 # <a name="diagnose-graphics-performance-issues-in-remote-desktop"></a>A grafikus teljesítménnyel kapcsolatos problémák diagnosztizálása a Távoli asztalban
 
@@ -24,8 +24,8 @@ A grafikus teljesítményszámlálók azonosításához szüksége lesz a távol
 
 1. Nyissa meg a Windows-parancssort a távoli munkamenetből.
 2. Futtassa a **qwinsta** parancsot, és keresse meg a munkamenet nevét.
-    - Ha a munkamenet egy több munkamenetből álló virtuális gépen (VM) fut: Az egyes számlálók példányának utótagja azonos számú, mint a munkamenet neve, például "RDP-TCP 37".
-    - Ha a munkamenet olyan virtuális GÉPEN fut, amely támogatja a virtuális grafikus processzorokat (vGPU): Az egyes számlálók példányát a rendszer a virtuális gép helyett a kiszolgálón tárolja. A számláló példányai között szerepel a virtuális gép neve a munkamenet neve helyett, például "Win8 Enterprise VM".
+    - Ha a munkamenet egy több munkamenetből álló virtuális gépen fut (VM): az egyes számlálók példánya azonos számú utótaggal rendelkezik, mint a munkamenet neve, például "RDP-TCP 37".
+    - Ha a munkamenet egy olyan virtuális GÉPEN fut, amely támogatja a virtuális grafikus processzorokat (vGPU): az egyes számlálók példányát a rendszer a virtuális gép helyett a kiszolgálón tárolja. A számláló példányai között szerepel a virtuális gép neve a munkamenet neve helyett, például "Win8 Enterprise VM".
 
 >[!NOTE]
 > Míg a számlálók távolról is szerepelnek a nevükben, a távoli asztali grafikákat is tartalmazzák a vGPU-forgatókönyvekben.
@@ -34,7 +34,7 @@ A grafikus teljesítményszámlálók azonosításához szüksége lesz a távol
 
 Miután meghatározta a távoli munkamenet nevét, kövesse az alábbi utasításokat, hogy összegyűjtse a távoli munkamenethez tartozó távoli grafikus teljesítményszámlálókat.
 
-1. Válassza > a**felügyeleti eszközök** > **Teljesítményfigyelő**indítása elemet.
+1. Válassza a **Start** > **felügyeleti eszközök** > **Teljesítményfigyelő**elemet.
 2. A **Teljesítményfigyelő** párbeszédpanelen bontsa ki a **figyelési eszközök**elemet, válassza a **Teljesítményfigyelő**lehetőséget, majd kattintson a **Hozzáadás**gombra.
 3. A **számlálók hozzáadása** párbeszédpanelen, a **rendelkezésre álló számlálók** listából bontsa ki a távoli rendszerképekhez tartozó szakaszt.
 4. Válassza ki a figyelni kívánt számlálókat.

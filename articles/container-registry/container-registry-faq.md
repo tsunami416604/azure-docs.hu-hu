@@ -8,14 +8,14 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 07/02/2019
 ms.author: sajaya
-ms.openlocfilehash: cfa8efe0b73811474b1e50a7d2fb1e9abe9045c6
-ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
+ms.openlocfilehash: 88c4b2065576bd5bdcb29a266bd564c60b0e537c
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72286515"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73622709"
 ---
-# <a name="frequently-asked-questions-about-azure-container-registry"></a>Gyakori kérdések a Azure Container Registry
+# <a name="frequently-asked-questions-about-azure-container-registry"></a>Gyakori kérdések az Azure Container Registryről
 
 Ez a cikk a Azure Container Registryával kapcsolatos gyakori kérdésekre és ismert problémákra mutat.
 
@@ -111,7 +111,7 @@ Időbe telik a tűzfalszabály módosításainak propagálása. A tűzfalbeáll�
 
 ### <a name="how-do-i-access-docker-registry-http-api-v2"></a>Hogyan Access Docker Registry HTTP API v2?
 
-Az ACR támogatja a Docker beállításjegyzék HTTP API v2-es verzióját. Az API-k a következő címen érhetők el: `https://<your registry login server>/v2/`. Például: `https://mycontainerregistry.azurecr.io/v2/`
+Az ACR támogatja a Docker beállításjegyzék HTTP API v2-es verzióját. Az API-k a `https://<your registry login server>/v2/`címen érhetők el. Például: `https://mycontainerregistry.azurecr.io/v2/`
 
 ### <a name="how-do-i-delete-all-manifests-that-are-not-referenced-by-any-tag-in-a-repository"></a>Hogyan törölni az összes olyan jegyzékfájlt, amelyre nem hivatkozik az adattár egyik címkéje sem?
 
@@ -127,7 +127,7 @@ PowerShell esetén:
 az acr repository show-manifests -n myRegistry --repository myRepository --query "[?tags[0]==null].digest" -o tsv | %{ az acr repository delete -n myRegistry -t myRepository@$_ }
 ```
 
-Megjegyzés: a törlési parancsban @no__t – 0 hozzáadásával kihagyhatja a megerősítést.
+Megjegyzés: `-y` hozzáadásával kihagyhatja a jóváhagyást a DELETE parancsban.
 
 További információ: [Container-lemezképek törlése Azure Container Registryban](container-registry-delete.md).
 
@@ -188,32 +188,32 @@ az acr login -n MyRegistry
 
 Igen. Engedélyezze a TLS-t a legutóbbi Docker-ügyfél (18.03.0 vagy újabb verzió) használatával. 
 
-### <a name="does-azure-container-registry-support-content-trust"></a>Támogatja a Azure Container Registry a tartalom megbízhatóságát?
+### <a name="does-azure-container-registry-support-content-trust"></a>Támogatja az Azure Container Registry a tartalommegbízhatóságot?
 
 Igen, a Azure Container Registryban megbízható rendszerképeket használhat, mivel a [Docker közjegyző](https://docs.docker.com/notary/getting_started/) integrálva van, és engedélyezhető. Részletekért lásd: [a tartalom megbízhatósága Azure Container Registryban](container-registry-content-trust.md).
 
 
 ####  <a name="where-is-the-file-for-the-thumbprint-located"></a>Hol található a fájl az ujjlenyomathoz?
 
-@No__t-0 alatt:
+`~/.docker/trust/tuf/myregistry.azurecr.io/myrepository/metadata`alatt:
 
-* Az összes szerepkör nyilvános kulcsait és tanúsítványait (kivéve a delegálási szerepköröket) a `root.json` tárolja.
+* Az összes szerepkör nyilvános kulcsait és tanúsítványait (kivéve a delegálási szerepköröket) a `root.json`tárolja.
 * A delegálási szerepkör nyilvános kulcsait és tanúsítványait a szülő szerepkör JSON-fájlja tárolja (például `targets.json` a `targets/releases` szerepkörhöz).
 
 Javasoljuk, hogy ellenőrizze ezeket a nyilvános kulcsokat és tanúsítványokat a Docker és a közjegyző ügyfél által végzett teljes TUF-ellenőrzés után.
 
 ### <a name="how-do-i-grant-access-to-pull-or-push-images-without-permission-to-manage-the-registry-resource"></a>Hogyan hozzáférést biztosítanak a lekéréses vagy leküldéses képekhez engedély nélkül a beállításjegyzék-erőforrás kezeléséhez?
 
-Az ACR olyan [Egyéni szerepköröket](container-registry-roles.md) támogat, amelyek különböző szintű engedélyeket biztosítanak. A `AcrPull` és a `AcrPush` szerepkörök lehetővé teszik a felhasználók számára a rendszerképek lekérését és/vagy leküldését anélkül, hogy a beállításjegyzék-erőforrást az Azure-ban kezelhesse.
+Az ACR olyan [Egyéni szerepköröket](container-registry-roles.md) támogat, amelyek különböző szintű engedélyeket biztosítanak. A `AcrPull` és `AcrPush` szerepkörök lehetővé teszik a felhasználók számára a rendszerképek lekérését és/vagy leküldését anélkül, hogy a beállításjegyzék-erőforrást az Azure-ban kezelhesse.
 
-* Azure Portal: a beállításjegyzék-> Access Control (IAM) – > Hozzáadás (SELECT `AcrPull` vagy `AcrPush` a szerepkörhöz).
+* Azure Portal: a beállításjegyzék-> Access Control (IAM) – > Hozzáadás (válassza ki `AcrPull` vagy `AcrPush` a szerepkörhöz).
 * Azure CLI: keresse meg a beállításjegyzék erőforrás-AZONOSÍTÓját a következő parancs futtatásával:
 
   ```azurecli
   az acr show -n myRegistry
   ```
   
-  Ezután hozzárendelheti a `AcrPull` vagy a `AcrPush` szerepkört egy felhasználóhoz (a következő példában a `AcrPull`):
+  Ezután hozzárendelheti a `AcrPull` vagy `AcrPush` szerepkört egy felhasználóhoz (a következő példában a `AcrPull`):
 
   ```azurecli
     az role assignment create --scope resource_id --role AcrPull --assignee user@example.com
@@ -263,15 +263,15 @@ A kép karanténba helyezése jelenleg az ACR előzetes verziójú funkciója. E
 - [Miért nem sikerül beolvasni a Azure Portal adattárakat vagy címkéket?](#why-does-the-azure-portal-fail-to-fetch-repositories-or-tags)
 - [A Hogyan http-nyomkövetéseket gyűjt a Windows rendszeren?](#how-do-i-collect-http-traces-on-windows)
 
-### <a name="check-health-with-az-acr-check-health"></a>Állapot ellenõrzése `az acr check-health`
+### <a name="check-health-with-az-acr-check-health"></a>Állapot-ellenőrzési `az acr check-health`
 
 A gyakori környezet-és beállításjegyzék-problémák megoldásához tekintse meg [Az Azure Container Registry állapotának ellenőrzését](container-registry-check-health.md)ismertető témakört.
 
 ### <a name="docker-pull-fails-with-error-nethttp-request-canceled-while-waiting-for-connection-clienttimeout-exceeded-while-awaiting-headers"></a>a Docker-lekérés sikertelen a következő hibával: net/http: a kérelem megszakadt a kapcsolatra való várakozás közben (az ügyfél. időtúllépési korlátja túllépte a fejléceket)
 
  - Ha ez a hiba átmeneti probléma, akkor az Újrapróbálkozás sikeres lesz.
- - Ha a `docker pull` művelet folyamatosan leáll, akkor probléma lehet a Docker-démonsal. A probléma általában a Docker-démon újraindításával csökkenthető. 
- - Ha továbbra is ezt a problémát látja a Docker-démon újraindítása után, akkor előfordulhat, hogy a probléma a gép hálózati kapcsolatával kapcsolatos problémába ütközik. Annak ellenőrzéséhez, hogy a gép általános hálózata kifogástalan állapotú-e, futtassa a következő parancsot a végponti kapcsolat teszteléséhez. Az ezt a kapcsolat-ellenőrzési parancsot tartalmazó minimális `az acr` verzió 2.2.9. Ha régebbi verziót használ, frissítse az Azure CLI-t.
+ - Ha a `docker pull` folyamatosan leáll, akkor probléma lehet a Docker-démonsal. A probléma általában a Docker-démon újraindításával csökkenthető. 
+ - Ha továbbra is ezt a problémát látja a Docker-démon újraindítása után, akkor előfordulhat, hogy a probléma a gép hálózati kapcsolatával kapcsolatos problémába ütközik. Annak ellenőrzéséhez, hogy a gép általános hálózata kifogástalan állapotú-e, futtassa a következő parancsot a végponti kapcsolat teszteléséhez. A kapcsolat-ellenőrzési parancsot tartalmazó minimális `az acr`-verzió 2.2.9. Ha régebbi verziót használ, frissítse az Azure CLI-t.
  
    ```azurecli
     az acr check-health -n myRegistry
@@ -298,7 +298,7 @@ A Fedora 28 kiszolgáló például a következő Docker-démoni beállításokka
 OPTIONS='--selinux-enabled --log-driver=journald --live-restore'
 ```
 
-A `--signature-verification=false` hiányzik értékkel a `docker pull` a következőhöz hasonló hibával meghiúsul:
+Ha `--signature-verification=false` hiányzik, `docker pull` a következőhöz hasonló hibával meghiúsul:
 
 ```bash
 Trying to pull repository myregistry.azurecr.io/myimage ...
@@ -306,7 +306,7 @@ unauthorized: authentication required
 ```
 
 A hiba elhárítása:
-1. Adja hozzá a `--signature-verification=false` lehetőséget a Docker-démon konfigurációs fájljához `/etc/sysconfig/docker`. Példa:
+1. Adja hozzá a `--signature-verification=false` elemet a Docker-démon konfigurációs fájljához `/etc/sysconfig/docker`. Például:
 
   ```
   OPTIONS='--selinux-enabled --log-driver=journald --live-restore --signature-verification=false'
@@ -317,11 +317,11 @@ A hiba elhárítása:
   sudo systemctl restart docker.service
   ```
 
-A `--signature-verification` adatai a `man dockerd` futtatásával találhatók meg.
+A `--signature-verification` részletei a `man dockerd`futtatásával találhatók.
 
 ### <a name="enable-and-get-the-debug-logs-of-the-docker-daemon"></a>A Docker-démon hibakeresési naplóinak engedélyezése és lekérése  
 
-Indítsa el a `dockerd` értéket a `debug` kapcsolóval. Először hozza létre a Docker-démon konfigurációs fájlját (`/etc/docker/daemon.json`), ha nem létezik, és adja hozzá a `debug` kapcsolót:
+Indítsa el `dockerd` a `debug` kapcsolóval. Először hozza létre a Docker-démon konfigurációs fájlját (`/etc/docker/daemon.json`), ha az nem létezik, és adja hozzá a `debug` beállítást:
 
 ```json
 {   
@@ -350,21 +350,21 @@ Részletekért lásd a [Docker dokumentációját](https://docs.docker.com/engin
     docker run --net=host --ipc=host --uts=host --pid=host -it --security-opt=seccomp=unconfined --privileged --rm -v /:/host alpine /bin/sh
     chroot /host
     ```
-    Most már hozzáférhet a `dockerd` rendszert futtató virtuális gép összes fájljához. A napló a következő helyen található: `/var/log/docker.log`.
+    Most már hozzáférhet a `dockerd`rendszert futtató virtuális gép összes fájljához. A napló a következő helyen található: `/var/log/docker.log`.
 
 ### <a name="new-user-permissions-may-not-be-effective-immediately-after-updating"></a>Előfordulhat, hogy az új felhasználói engedélyek nem lépnek azonnal érvénybe a frissítés után
 
 Ha új engedélyeket (új szerepköröket) ad meg egy egyszerű szolgáltatáshoz, előfordulhat, hogy a módosítás azonnal érvénybe lép. Két lehetséges oka van:
 
 * Azure Active Directory a szerepkör-hozzárendelés késleltetését. Általában gyors, de a terjesztési késleltetés miatt percek alatt eltarthat.
-* Engedély késleltetése az ACR-jogkivonat-kiszolgálón. Ez akár 10 percet is igénybe vehet. A megoldáshoz `docker logout`, majd az 1 perc után ugyanazzal a felhasználóval végezheti el a hitelesítést:
+* Engedély késleltetése az ACR-jogkivonat-kiszolgálón. Ez akár 10 percet is igénybe vehet. A megoldáshoz egy perc elteltével `docker logout`, majd újra hitelesítenie kell magát ugyanazzal a felhasználóval:
 
   ```bash
   docker logout myregistry.azurecr.io
   docker login myregistry.azurecr.io
   ```
 
-Az ACR jelenleg nem támogatja a felhasználók által végrehajtott otthoni replikálást. A megkerülő megoldás az, hogy tartalmazza a Kezdőlap replikációját a sablonban, de hagyja ki a létrehozását `"condition": false` hozzáadásával, ahogy az alábbi ábrán látható:
+Az ACR jelenleg nem támogatja a felhasználók által végrehajtott otthoni replikálást. A megkerülő megoldás az, hogy tartalmazza a Kezdőlap replikációját a sablonban, de kihagyhatja a létrehozását a `"condition": false` hozzáadásával az alábbi ábrán látható módon:
 
 ```json
 {
@@ -382,8 +382,8 @@ Az ACR jelenleg nem támogatja a felhasználók által végrehajtott otthoni rep
 
 ### <a name="authentication-information-is-not-given-in-the-correct-format-on-direct-rest-api-calls"></a>A hitelesítési adatok nem a megfelelő formátumban vannak megadva a közvetlen REST API hívásokban
 
-Előfordulhat, hogy `InvalidAuthenticationInfo` hibába ütközik, különösen az `curl` eszköz használatával, `-L` `--location` kapcsolóval (az átirányítások követéséhez).
-Például a blob beolvasása `curl` használatával `-L` kapcsolóval és alapszintű hitelesítéssel:
+Előfordulhat, hogy `InvalidAuthenticationInfo` hibát tapasztal, különösen az `curl` eszköz használatával `-L`, `--location` (az átirányítások követéséhez).
+Például a blob beolvasása `curl` használatával `-L` és alapszintű hitelesítéssel:
 
 ```bash
 curl -L -H "Authorization: basic $credential" https://$registry.azurecr.io/v2/$repository/blobs/$digest
@@ -398,9 +398,9 @@ RequestId:00000000-0000-0000-0000-000000000000
 Time:2019-01-01T00:00:00.0000000Z</Message></Error>
 ```
 
-Az alapvető ok az, hogy egyes `curl` implementációk az eredeti kérelem fejléceit követik.
+Az alapvető ok az, hogy egyes `curl` megvalósítások követik az eredeti kérelemből származó fejlécekkel való átirányítást.
 
-A probléma megoldásához a fejlécek nélkül manuálisan kell átirányítani az átirányítást. Nyomtassa ki a válasz fejléceit `curl` `-D -` kapcsolóval, majd bontsa ki a (z) `Location` fejlécet:
+A probléma megoldásához a fejlécek nélkül manuálisan kell átirányítani az átirányítást. Nyomtassa ki a válasz fejléceit `curl` `-D -` lehetőséggel, majd bontsa ki az `Location` fejlécet:
 
 ```bash
 redirect_url=$(curl -s -D - -H "Authorization: basic $credential" https://$registry.azurecr.io/v2/$repository/blobs/$digest | grep "^Location: " | cut -d " " -f2 | tr -d '\r')
@@ -420,7 +420,7 @@ Előfordulhat, hogy a böngésző nem tudja elküldeni a tárolók vagy címkék
 * Ad-blokkolók
 * DNS-hibák
 
-Forduljon a hálózati rendszergazdához, vagy ellenőrizze a hálózati konfigurációt és a kapcsolatot. Próbálja meg `az acr check-health -n yourRegistry` futtatását az Azure CLI-vel, és ellenőrizze, hogy a környezet képes-e kapcsolódni a Container Registryhoz. Emellett a böngészőben egy inkognitóban-vagy privát munkamenetet is kipróbálhat, hogy elkerülje az elavult böngésző gyorsítótárának vagy cookie-jait.
+Forduljon a hálózati rendszergazdához, vagy ellenőrizze a hálózati konfigurációt és a kapcsolatot. Próbálja meg futtatni `az acr check-health -n yourRegistry` az Azure CLI használatával annak vizsgálatához, hogy a környezet képes-e kapcsolódni a Container Registryhoz. Emellett a böngészőben egy inkognitóban-vagy privát munkamenetet is kipróbálhat, hogy elkerülje az elavult böngésző gyorsítótárának vagy cookie-jait.
 
 ### <a name="how-do-i-collect-http-traces-on-windows"></a>A Hogyan http-nyomkövetéseket gyűjt a Windows rendszeren?
 
@@ -448,6 +448,8 @@ Konfigurálja a Docker-proxyt az előző parancs és a 8888-es port kimenetére 
 
 - [Hogyan batch-megszakítást futtat?](#how-do-i-batch-cancel-runs)
 - [Hogyan tartalmazza a. git mappát az az ACR Build paranccsal?](#how-do-i-include-the-git-folder-in-az-acr-build-command)
+- [Támogatja a feladatok a GitLab a forrás-eseményindítók esetében?](#does-tasks-support-gitlab-for-source-triggers)
+- [Milyen git-tárház-kezelési szolgáltatást támogat a feladatok?](#what-git-repository-management-service-does-tasks-support)
 
 ### <a name="how-do-i-batch-cancel-runs"></a>Hogyan batch-megszakítást futtat?
 
@@ -460,19 +462,38 @@ az acr task list-runs -r $myregistry --run-status Running --query '[].runId' -o 
 
 ### <a name="how-do-i-include-the-git-folder-in-az-acr-build-command"></a>Hogyan tartalmazza a. git mappát az az ACR Build paranccsal?
 
-Ha a `az acr build` paranccsal átadja a helyi forrás mappáját, a rendszer alapértelmezés szerint kizárja a `.git` mappát a feltöltött csomagból. A következő beállítással hozhat létre `.dockerignore` fájlt. Azt jelzi, hogy a parancs az `.git` alatti összes fájlt visszaállítja a feltöltött csomagban. 
+Ha átadja a helyi forrás mappáját a `az acr build` parancsnak, a rendszer alapértelmezés szerint kizárja a `.git` mappát a feltöltött csomagból. `.dockerignore` fájlt a következő beállítással hozhat létre. Azt jelzi, hogy a parancs a feltöltött csomagban lévő `.git` összes fájlját visszaállítja. 
 
-```
+```sh
 !.git/**
 ```
 
 Ez a beállítás a `az acr run` parancsra is érvényes.
+
+### <a name="does-tasks-support-gitlab-for-source-triggers"></a>Támogatja a feladatok a GitLab a forrás-eseményindítók esetében?
+
+Jelenleg nem támogatjuk a GitLab a forrás-eseményindítók esetében.
+
+### <a name="what-git-repository-management-service-does-tasks-support"></a>Milyen git-tárház-kezelési szolgáltatást támogat a feladatok?
+
+| Git szolgáltatás | Forrás kontextus | Manuális létrehozás | Automatikus létrehozás a commit trigger használatával |
+|---|---|---|---|
+| GitHub | https://github.com/user/myapp-repo.git#mybranch:myfolder | Igen | Igen |
+| Azure Repos | https://dev.azure.com/user/myproject/_git/myapp-repo#mybranch:myfolder | Igen | Igen |
+| GitLab | https://gitlab.com/user/myapp-repo.git#mybranch:myfolder | Igen | Nem |
+| BitBucket | https://user@bitbucket.org/user/mayapp-repo.git#mybranch:myfolder | Igen | Nem |
+
+## <a name="run-error-message-troubleshooting"></a>Hibaüzenetek futtatása – hibaelhárítás
+
+| Hibaüzenet | Hibaelhárítási útmutató |
+|---|---|
+|Nincs hozzáférés konfigurálva a virtuális géphez, ezért nem találhatók előfizetések|Ez akkor fordulhat elő, ha `az login --identity`t használ az ACR-feladatban. Ez egy átmeneti hiba, amely akkor fordul elő, ha a felügyelt identitás szerepkör-hozzárendelése nem lett propagálva. Várakozás néhány másodpercre az újrapróbálkozások előtt.|
 
 ## <a name="cicd-integration"></a>CI/CD-integráció
 
 - [CircleCI](https://github.com/Azure/acr/blob/master/docs/integration/CircleCI.md)
 - [GitHub-műveletek](https://github.com/Azure/acr/blob/master/docs/integration/github-actions/github-actions.md)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [További](container-registry-intro.md) információ a Azure Container Registryról.

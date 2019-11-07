@@ -1,5 +1,5 @@
 ---
-title: A gépek és alkalmazások védelme Azure Security Centerban | Microsoft Docs
+title: Azure Security Center gépek és alkalmazások védetté való ellátása
 description: Ez a dokumentum olyan Security Center javaslatokat tartalmaz, amelyek segítenek a virtuális gépek és számítógépek, valamint a webalkalmazások és a App Service környezetek védelmében.
 services: security-center
 documentationcenter: na
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/20/2019
 ms.author: memildin
-ms.openlocfilehash: 2317d0206e3fc4a342606d17c172ac42cbe82870
-ms.sourcegitcommit: 3f8017692169bd75483eefa96c225d45cd497f06
+ms.openlocfilehash: 803e64c9df1b52a33a1b50714f77b005032bf200
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73520678"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73686355"
 ---
 # <a name="protecting-your-machines-and-applications-in-azure-security-center"></a>A gépek és alkalmazások védelme Azure Security Center
 Azure Security Center elemzi az Azure-erőforrások, a nem Azure-kiszolgálók és a virtuális gépek biztonsági állapotát. Ha a Security Center felismeri a lehetséges biztonsági réseket, javaslatokat hoz létre, amelyek végigvezetik a szükséges vezérlők konfigurálásának folyamatán. A javaslatok az Azure-erőforrásokra vonatkoznak: Virtual Machines (VM) és Computers, Applications, Networking, SQL, és Identity and Access.
@@ -58,7 +58,7 @@ A bővítményt a már telepített helyi ügynökön kívül is telepítheti a n
 
 [A Monitoring Agent állapotproblémái](security-center-troubleshooting-guide.md#mon-agent) szakaszban többet is megtudhat arról, hogy a Security Center miért nem tudja sikeresen monitorozni az automatikus üzembe helyezésre inicializált virtuális gépeket és számítógépeket.
 
-### <a name="recommendations"></a>Ajánlatok
+### <a name="recommendations"></a>Javaslatok
 Ez a szakasz ajánlásokat tartalmaz az egyes virtuális gépekre és számítógépekre, a webes és feldolgozói szerepkörökre, a Azure App Service Web Appsra és a Security Center figyelők Azure App Service Environment. Az első oszlop a javaslatokat sorolja fel. A második oszlop az adott javaslat által érintett erőforrások teljes számát jeleníti meg. A harmadik oszlop a probléma súlyosságát mutatja.
 
 Mindegyik javaslat olyan műveleteket tartalmaz, amelyeket a kiválasztása után elvégezhet. Ha például a **hiányzó rendszerfrissítések**lehetőséget választja, akkor a virtuális gépek és a hiányzó javításokat tartalmazó számítógépek száma, valamint a hiányzó frissítés súlyossága jelenik meg.
@@ -153,7 +153,7 @@ A listában háromféle ikon látható:
 
 2. Válasszon egy javaslatot a javaslat leírásának megtekintéséhez, valamint a nem megfelelő állapotú erőforrások, az egészséges erőforrások és a nem ellenőrzött erőforrások listájához.
 
-   - Az **átadott értékelések** oszlopban az átadott értékelések listája szerepel.  Az értékelések súlyossága mindig zöld.
+   - Az **átadott értékelések** oszlopban az átadott értékelések listája szerepel. Az értékelések súlyossága mindig zöld.
 
    - Válasszon ki egy átadott értékelést a listából az értékelés leírásához, a nem megfelelő állapotú és kifogástalan erőforrások listáját, valamint a nem ellenőrzött erőforrások listáját. A nem megfelelő állapotú erőforrásokhoz tartozó lap szerepel, de ez a lista mindig üres, mert az értékelés sikeres volt.
 
@@ -198,7 +198,7 @@ Ha az összes meglévő méretezési csoportot be szeretné állítani a Microso
 |Számítási erőforrások (batch)|5|Diagnosztikai naplók engedélyezése a Batch-fiókokban|Engedélyezheti a naplókat, és akár egy évig megtarthatja őket. Ez lehetővé teszi, hogy a tevékenységi nyomvonalak újbóli létrehozása a biztonsági incidens bekövetkeztekor vagy a hálózat biztonsága esetén vizsgálat céljára történjen. |
 |Számítási erőforrások (Event hub)|5|Az Event hub diagnosztikai naplóit engedélyezni kell|Engedélyezheti a naplókat, és akár egy évig megtarthatja őket. Ez lehetővé teszi, hogy a tevékenységi nyomvonalak újbóli létrehozása a biztonsági incidens bekövetkeztekor vagy a hálózat biztonsága esetén vizsgálat céljára történjen. |
 |Számítási erőforrások (logikai alkalmazások)|5|Diagnosztikai naplók engedélyezése Logic Apps|Engedélyezheti a naplókat, és akár egy évig megtarthatja őket. Ez lehetővé teszi, hogy a tevékenységi nyomvonalak újbóli létrehozása a biztonsági incidens bekövetkeztekor vagy a hálózat biztonsága esetén vizsgálat céljára történjen. |
-|Számítási erőforrások (Service Fabric)|15|Állítsa a ClusterProtectionLevel tulajdonságot EncryptAndSign értékre Service Fabric|A Service Fabric három védelmi szintet biztosít (nincs, aláírás és EncryptAndSign) a csomópontok közötti kommunikációhoz az elsődleges fürt tanúsítványának használatával.  Állítsa be a védelmi szintet annak biztosítására, hogy minden csomópont-csomópont típusú üzenet titkosítva legyen, és digitálisan alá legyen írva. |
+|Számítási erőforrások (Service Fabric)|15|Állítsa a ClusterProtectionLevel tulajdonságot EncryptAndSign értékre Service Fabric|A Service Fabric három védelmi szintet biztosít (nincs, aláírás és EncryptAndSign) a csomópontok közötti kommunikációhoz az elsődleges fürt tanúsítványának használatával. Állítsa be a védelmi szintet annak biztosítására, hogy minden csomópont-csomópont típusú üzenet titkosítva legyen, és digitálisan alá legyen írva. |
 |Számítási erőforrások (Service Bus)|1|Az összes engedélyezési szabály eltávolítása Service Bus névtérből származó RootManageSharedAccessKey kivételével |Service Bus-ügyfelek nem használhatnak névtér szintű hozzáférési szabályzatot, amely hozzáférést biztosít a névtérben lévő összes várólistához és témakörhöz. A legalacsonyabb jogosultsági szintű biztonsági modellel való összehangoláshoz hozzáférési házirendeket kell létrehoznia az entitások szintjén a várólistákhoz és a témakörökhöz, hogy csak az adott entitáshoz lehessen hozzáférést biztosítani.|
 |Számítási erőforrások (Event hub)|1|A RootManageSharedAccessKey kivételével az összes engedélyezési szabályt el kell távolítani az Event hub-névtérből|Az Event hub-ügyfelek nem használhatnak olyan névtér szintű hozzáférési szabályzatot, amely hozzáférést biztosít a névtérben lévő összes várólistához és témakörhöz. A legalacsonyabb jogosultsági szintű biztonsági modellel való összehangoláshoz hozzáférési házirendeket kell létrehoznia az entitások szintjén a várólistákhoz és a témakörökhöz, hogy csak az adott entitáshoz lehessen hozzáférést biztosítani.|
 |Számítási erőforrások (Event hub)|5|Az Event hub-entitás engedélyezési szabályait definiálni kell|Az Event hub-entitás engedélyezési szabályainak naplózása a legkevésbé privilegizált hozzáférés biztosításához.|

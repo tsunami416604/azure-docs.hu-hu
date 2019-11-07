@@ -1,5 +1,5 @@
 ---
-title: Intelligent Insights teljesítmény diagnosztikai naplója – Azure SQL Database | Microsoft Docs
+title: Intelligent Insights teljesítmény diagnosztikai naplója – Azure SQL Database
 description: Intelligent Insights diagnosztikai naplót biztosít Azure SQL Database teljesítménnyel kapcsolatos problémákról
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 12/19/2018
-ms.openlocfilehash: c25d37a4d1695ab94cc0667a13e36e4da640e12a
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 86381f5670f09b5e6a215793dc1ea4eab7ecbb8e
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71262149"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73689704"
 ---
 # <a name="use-the-intelligent-insights-azure-sql-database-performance-diagnostics-log"></a>A Intelligent Insights Azure SQL Database teljesítmény-diagnosztikai naplójának használata
 
@@ -80,7 +80,7 @@ Az észlelt teljesítménnyel kapcsolatos probléma függvényében a diagnoszti
 | Erőforrás-korlátok elérése | <li>Érintett erőforrások</li><li>Lekérdezések kivonatai</li><li>Erőforrás-felhasználási százalék</li> |
 | Munkaterhelés növekedése | <li>A végrehajtást megnövelő lekérdezések száma</li><li>Lekérdezési kivonatok lekérése a legnagyobb mértékben hozzájárul a munkaterhelés növeléséhez</li> |
 | Memória nyomása | <li>Memória-jegyző</li> |
-| Zárolás | <li>Érintett lekérdezési kivonatok</li><li>Lekérdezési kivonatok blokkolása</li> |
+| Zárolási | <li>Érintett lekérdezési kivonatok</li><li>Lekérdezési kivonatok blokkolása</li> |
 | Megnövekedett MAXDOP | <li>Lekérdezések kivonatai</li><li>CXP várakozási ideje</li><li>Várakozási idő</li> |
 | Pagelatch-tartalom | <li>A lekérdezést kiváltó lekérdezések kivonatai</li> |
 | Hiányzó index | <li>Lekérdezések kivonatai</li> |
@@ -99,7 +99,7 @@ A hatás (hatás) tulajdonság azt írja le, hogy az észlelt viselkedés mekkor
 
 ### <a name="impacted-queries"></a>Érintett lekérdezések
 
-A Intelligent Insights napló következő szakasza információt nyújt az észlelt teljesítménnyel kapcsolatos problémák által érintett lekérdezésekről. Ezeket az információkat a impact_s tulajdonságban beágyazott objektumok tömbje kell közzétenni. Az Impact tulajdonság entitásokból és mérőszámokból áll. Az entitások egy adott lekérdezésre vonatkoznak (típus: Lekérdezés). Az egyedi lekérdezési kivonatot az érték (érték) tulajdonság alatt kell közzétenni. Emellett a közzétett lekérdezések mindegyikét egy metrika és egy érték követi, amely egy észlelt teljesítménnyel kapcsolatos problémát jelez.
+A Intelligent Insights napló következő szakasza információt nyújt az észlelt teljesítménnyel kapcsolatos problémák által érintett lekérdezésekről. Ezeket az információkat a impact_s tulajdonságban beágyazott objektumok tömbje kell közzétenni. Az Impact tulajdonság entitásokból és mérőszámokból áll. Az entitások egy adott lekérdezésre (típus: lekérdezés) vonatkoznak. Az egyedi lekérdezési kivonatot az érték (érték) tulajdonság alatt kell közzétenni. Emellett a közzétett lekérdezések mindegyikét egy metrika és egy érték követi, amely egy észlelt teljesítménnyel kapcsolatos problémát jelez.
 
 A következő példában a rendszer a kivonat 0x9102EXZ4 rendelkező lekérdezést észlelte a végrehajtás megnövekedésének időtartamával (metrikus: DurationIncreaseSeconds). Az 110 másodperces érték azt jelzi, hogy az adott lekérdezés végrehajtása hosszabb volt, mint 110 másodperc. Mivel több lekérdezés is észlelhető, az adott napló szakasz több lekérdezési bejegyzést is tartalmazhat.
 

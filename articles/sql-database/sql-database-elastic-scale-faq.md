@@ -1,5 +1,5 @@
 ---
-title: Azure SQL rugalmas méretezés – GYIK | Microsoft Docs
+title: Azure SQL rugalmas méretezés – gyakori kérdések
 description: Gyakori kérdések Azure SQL Database rugalmas Skálázásról.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/25/2019
-ms.openlocfilehash: 2b101aebd048b94ac95e1dba0f6504446d6d6803
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 8ef99d6d752f1e9474fccea6c00b51b61ae1304b
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68568444"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73690256"
 ---
 # <a name="elastic-database-tools-frequently-asked-questions-faq"></a>Rugalmas adatbázis-eszközök – gyakori kérdések (GYIK)
 
@@ -26,7 +26,7 @@ A séma-információs objektum csak egyesítési forgatókönyvek felosztására
 
 ## <a name="ive-provisioned-a-database-and-i-already-have-a-shard-map-manager-how-do-i-register-this-new-database-as-a-shard"></a>Létrehoztam egy adatbázist, és már van egy szegmenses Map Manager, hogyan regisztrálhatom ezt az új adatbázist szegmensként
 
-[A rugalmas adatbázis ügyféloldali függvénytárának használatával](sql-database-elastic-scale-add-a-shard.md)kapcsolatban lásd: szegmens hozzáadása egy alkalmazáshoz.
+[A rugalmas adatbázis ügyféloldali függvénytárának használatával kapcsolatban lásd: szegmens hozzáadása egy alkalmazáshoz](sql-database-elastic-scale-add-a-shard.md).
 
 ## <a name="how-much-do-elastic-database-tools-cost"></a>Mennyibe kerül a rugalmas adatbázis eszközeinek díja
 
@@ -34,7 +34,7 @@ A rugalmas adatbázis-ügyfél függvénytárának használata nem jár semmilye
 
 ## <a name="why-are-my-credentials-not-working-when-i-add-a-shard-from-a-different-server"></a>Miért nem működnek a hitelesítő adataim, amikor egy másik kiszolgálóról veszek fel egy szegmenst
 
-Ne használja a hitelesítő adatokat "felhasználó azonosítója =username@servername" formában, hanem egyszerűen használja a "felhasználói azonosító = username" értéket.  Győződjön meg arról is, hogy a "username" bejelentkezési engedélyekkel rendelkezik a szegmensen.
+Ne használja a hitelesítő adatokat a "felhasználói azonosító =username@servername" formában, hanem egyszerűen használja a "felhasználói azonosító = Felhasználónév" értéket.  Győződjön meg arról is, hogy a "username" bejelentkezési engedélyekkel rendelkezik a szegmensen.
 
 ## <a name="do-i-need-to-create-a-shard-map-manager-and-populate-shards-every-time-i-start-my-applications"></a>Létre kell hozni egy szegmenses Térkép-kezelőt, és fel kell tölteni a szegmenseket minden alkalommal, amikor elkezdem az alkalmazásaim
 

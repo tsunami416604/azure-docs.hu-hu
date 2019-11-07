@@ -1,6 +1,6 @@
 ---
-title: Tesztkörnyezetfiókok konfigurálása az Azure Lab Services |} A Microsoft Docs
-description: Útmutató a létrehozást követően tesztkörnyezetfiók konfigurálandó.
+title: Tesztkörnyezet-fiókok konfigurálása a Azure Lab Servicesban | Microsoft Docs
+description: Megtudhatja, hogyan konfigurálhat labor-fiókot a létrehozása után.
 services: lab-services
 documentationcenter: na
 author: spelluru
@@ -13,70 +13,73 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/07/2019
 ms.author: spelluru
-ms.openlocfilehash: ba469c038f04a31a57e798b97b5120bec573feae
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9faf7de25b8bf227dd4c7f3588972f98f7493439
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65414042"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73583945"
 ---
-# <a name="configure-lab-accounts-in-azure-lab-services"></a>Tesztkörnyezetfiókok konfigurálása az Azure Lab Services 
-Az Azure Lab Services tesztkörnyezetfiók az felügyelt tesztkörnyezet-típusok, például osztályterem-tesztkörnyezetek tárolója. A rendszergazda állítja be az Azure Lab Services tesztkörnyezetfiók és labortulajdonosok labs hozhat létre a fiók számára hozzáférést biztosít. Ez a cikk bemutatja, hogyan tesztkörnyezetfiók létrehozása, megtekintheti az összes tesztkörnyezetfiókok, vagy törölheti a labor.
+# <a name="configure-lab-accounts-in-azure-lab-services"></a>Tesztkörnyezet-fiókok konfigurálása Azure Lab Services 
+Azure Lab Services a labor-fiók a felügyelt labor típusok, például a tanterem Labs tárolója. A rendszergazda létrehoz egy Azure Lab Services, és hozzáférést biztosít a labor tulajdonosai számára, akik a fiókban létrehozhatnak laborokat. Ez a cikk bemutatja, hogyan hozhat létre labor-fiókot, megtekintheti az összes tesztkörnyezet fiókját, vagy törölhet egy labor-fiókot.
 
-## <a name="connect-with-a-peer-virtual-network"></a>A társ virtuális hálózat összekapcsolása
-Virtuális hálózat összekapcsolása egy társ hálózatként a labor virtuális hálózathoz, kövesse az alábbi lépéseket:
+## <a name="connect-with-a-peer-virtual-network"></a>Kapcsolat egyenrangú virtuális hálózattal
+Ha egy virtuális hálózatot egyenrangú hálózatként szeretne csatlakozni a labor virtuális hálózatához, kövesse az alábbi lépéseket:
 
-1. Az a **labor fiók** lapon jelölje be **Labs konfigurációs** a bal oldali menüben.
+1. A **labor-fiók** lapon válassza a bal oldali menü **Labs-konfiguráció** elemét.
 
-    ![Laborok konfigurációs lapja](../media/how-to-manage-lab-accounts/labs-configuration-page.png) 
-1. A **társ virtuális hálózatnak**válassza **engedélyezve** vagy **letiltott**. Az alapértelmezett érték **letiltott**. Ahhoz, hogy a társ virtuális hálózatnak, tegye a következőket: 
-    1. Válassza ki **engedélyezve**.
+    ![Labs konfigurációs lapja](../media/how-to-manage-lab-accounts/labs-configuration-page.png) 
+1. A **társ virtuális hálózat**esetében válassza az **engedélyezve** vagy a **Letiltva**lehetőséget. Az alapértelmezett érték **le van tiltva**. A társ virtuális hálózat engedélyezéséhez hajtsa végre a következő lépéseket: 
+    1. Válassza az **engedélyezve**lehetőséget.
     2. Válassza ki a **VNet** a legördülő listából. 
 3. Válassza az eszköztár **Save** (Mentés) elemét. 
 
-Ehhez a fiókhoz a létrehozott Labs csatlakozik a kiválasztott virtuális hálózaton. A kiválasztott virtuális hálózaton lévő erőforrások eléréséhez. További információkért lásd: [a tesztkörnyezet hálózati csatlakozás és a társ virtuális hálózat az Azure Lab Services](how-to-connect-peer-virtual-network.md).
+Az ebben a fiókban létrehozott laborok a kiválasztott virtuális hálózathoz csatlakoznak. Hozzáférhetnek a kiválasztott virtuális hálózatban lévő erőforrásokhoz. További információ: [a tesztkörnyezet hálózatának összekötése egy társ virtuális hálózattal Azure Lab Servicesban](how-to-connect-peer-virtual-network.md).
 
-Amikor kiválaszt egy virtuális hálózatot a **társ virtuális hálózatnak** mező, a **engedélyezése tesztkörnyezet létrehozója, labor helyre** lehetőség le van tiltva. Fontos, mivel labs labor-fiókban, hogy a társ virtuális hálózatnak az erőforrásokhoz való kapcsolódás labor fiókként ugyanabban a régióban kell lennie. 
+Ha kijelöl egy virtuális hálózatot a **társ virtuális hálózat** mezőhöz, akkor a **tesztkörnyezet-létrehozó engedélyezése a laborban hely** beállítás le van tiltva. Ez azért van, mert a labor-fiókban lévő laboroknak ugyanabban a régióban kell lenniük, mint a társ virtuális hálózatban lévő erőforrásokhoz való kapcsolódáshoz. 
 
-## <a name="allow-lab-creator-to-pick-location-for-the-lab"></a>Tesztkörnyezet létrehozója a tesztkörnyezethez helyre való engedélyezése
-Tesztkörnyezet létrehozója, a tesztkörnyezetek létrehozása a lab-fiók helye eltérő helyre a következő lépésekkel engedélyezheti: 
+## <a name="allow-lab-creator-to-pick-location-for-the-lab"></a>A labor Creator számára a tesztkörnyezet helyének kiválasztása
+Az alábbi lépéseket követve engedélyezheti a labor Creator számára, hogy a labor-fiók helyétől eltérő helyen hozza létre a laborokat: 
 
-1. Az a **labor fiók** lapon jelölje be **Labs konfigurációs** a bal oldali menüben.
-2. Az a **engedélyezése tesztkörnyezet létrehozója, labor helyre**, jelölje be **engedélyezve** Ha azt szeretné, hogy a tesztkörnyezet létrehozója tudják válasszon ki egy helyet a tesztkörnyezethez. Ha le van tiltva, a rendszer automatikusan létrehozza a labs ugyanazon a helyen, amelyben a labor fiók létezik. 
+1. A **labor-fiók** lapon válassza a bal oldali menü **Labs-konfiguráció** elemét.
+2. Ahhoz, hogy a labor létrehozója kiválassza a **labor helyét**, válassza az **engedélyezve** lehetőséget, ha azt szeretné, hogy a labor létrehozója ki tudja választani a tesztkörnyezet helyét. Ha a szolgáltatás le van tiltva, a rendszer automatikusan létrehozza a laborokat ugyanazon a helyen, ahol a labor-fiók létezik. 
     
-    Ez a mező le van tiltva, a virtuális hálózat kiválasztásakor a **társ virtuális hálózatnak** mező. Fontos, mivel labs labor-fiókban, hogy a társ virtuális hálózaton lévő erőforrások eléréséhez a labor fiókként ugyanabban a régióban kell lennie. 
+    Ez a mező le van tiltva, amikor kiválaszt egy virtuális hálózatot a **társ virtuális hálózat** mezőhöz. Ez azért van, mert a labor-fiókban lévő laboroknak ugyanabban a régióban kell lenniük, mint a társ virtuális hálózat erőforrásaihoz való hozzáféréshez. 
 1. Válassza az eszköztár **Save** (Mentés) elemét. 
 
-    ![Hely laboratóriumban konfigurálása](../media/how-to-manage-lab-accounts/labs-configuration-page-lab-location.png)
+    ![Tesztkörnyezet helyének beállítása](../media/how-to-manage-lab-accounts/labs-configuration-page-lab-location.png)
 
 
-## <a name="specify-an-address-range-for-vms-in-the-lab"></a>-Címtartományt ad meg a virtuális gépek a lab-ben
-Az alábbi eljárás lépéseit-címtartományt ad meg a virtuális gépek a laborban rendelkezik. A korábban megadott tartományt frissít, a módosított címtartomány csak vonatkozik a módosítás után létrehozott virtuális gépeket. 
+## <a name="specify-an-address-range-for-vms-in-the-lab"></a>Címtartomány megadása a virtuális gépek számára a tesztkörnyezetben
+A következő eljárás a virtuális gépekhez tartozó címtartomány megadásának lépéseit írja le a laborban. Ha frissíti a korábban megadott tartományt, a módosított címtartomány csak a módosítás után létrehozott virtuális gépekre vonatkozik. 
 
-A címtartományt, amely szem előtt kell tartania megadásakor az alábbiakban néhány korlátozás. 
+Íme néhány korlátozás a címtartomány megadásához, amelyet érdemes szem előtt tartani. 
 
-- Az előtag maximális megengedett értéke – 23 kell lennie. 
-- Ha egy virtuális hálózat társviszonyban áll a labor-fiókjába, a megadott címtartomány társviszonyban lévő virtuális hálózati címtartományt, nem lehet átfedésben.
+- Az előtagnak kisebbnek vagy egyenlőnek kell lennie, mint 23. 
+- Ha egy virtuális hálózat a labor-fiókhoz van társítva, a megadott címtartomány nem lehet átfedésben a társ virtuális hálózatból származó címtartományból.
 
-1. Az a **labor fiók** lapon jelölje be **Labs konfigurációs** a bal oldali menüben.
-2. Az a **címtartomány** mezőben adja meg a címtartományt a virtuális gépek, a laborban létrehozni. A címtartomány a classless inter-domain routing (CIDR) formátumban kell lennie (Példa: 10.20.0.0/23). A lab-ben a virtuális gépek jönnek a címtartományt.
+1. A **labor-fiók** lapon válassza a bal oldali menü **Labs-konfiguráció** elemét.
+2. A **címtartomány** mezőben határozza meg a laborban létrehozandó virtuális gépek címtartomány-tartományát. A címtartomány legyen az osztály nélküli tartományok közötti útválasztás (CIDR) jelölése (például: 10.20.0.0/23). A laborban található virtuális gépek ebben a címtartományból lesznek létrehozva.
 3. Válassza az eszköztár **Save** (Mentés) elemét. 
 
-    ![Cím-tartomány konfigurálása](../media/how-to-manage-lab-accounts/labs-configuration-page-address-range.png)
+    ![Címtartomány konfigurálása](../media/how-to-manage-lab-accounts/labs-configuration-page-address-range.png)
 
 ## <a name="add-a-user-to-the-lab-creator-role"></a>Felhasználó hozzáadása a Tesztkörnyezet-létrehozó szerepkörhöz
 A felhasználónak **Tesztkörnyezet-létrehozó** szerepkörrel kell rendelkeznie a tesztkörnyezetfiókban ahhoz, hogy létrehozhasson egy osztályterem-tesztkörnyezetet. A tesztkörnyezetfiók létrehozásához használt fiók automatikusan hozzáadódik ehhez a szerepkörhöz. Ha ugyanazt a felhasználói fiókot tervezi használni az osztályterem-tesztkörnyezet létrehozásához, ezt a lépést kihagyhatja. Ha egy másik felhasználói fiókot tervez használni, kövesse a következő lépéseket: 
 
 Ha engedélyt kíván adni az oktatóknak, hogy létrehozzák a tesztkörnyezeteket a tanóráikhoz, adja hozzá őket a **Tesztkörnyezet-létrehozó** szerepkörhöz:
 
-1. A a **labor fiók** lapon válassza ki **hozzáférés-vezérlés (IAM)** , és kattintson a **+ szerepkör-hozzárendelés hozzáadása** az eszköztáron. 
+1. A **labor-fiók** lapon válassza a **hozzáférés-vezérlés (iam)** lehetőséget, majd kattintson a **+ szerepkör-hozzárendelés hozzáadása** elemre az eszköztáron. 
 
-    ![Hozzáférés-vezérlés -> szerepkör-hozzárendelés hozzáadása gomb](../media/tutorial-setup-lab-account/add-role-assignment-button.png)
-1. Az a **szerepkör-hozzárendelés hozzáadása** lapon jelölje be **tesztkörnyezet létrehozója** a **szerepkör**, válassza ki a felhasználót, adja hozzá a labor létrehozó szerepkörhöz, és válassza ki a kívánt **mentése**. 
+    ![Access Control – > szerepkör-hozzárendelés hozzáadása gomb](../media/tutorial-setup-lab-account/add-role-assignment-button.png)
+1. A **szerepkör-hozzárendelés hozzáadása** lapon válassza a **tesztkörnyezet létrehozója** **szerepkört**, válassza ki azt a felhasználót, amelyet hozzá szeretne adni a labor létrehozói szerepkörhöz, majd válassza a **Mentés**lehetőséget. 
 
-    ![Tesztkörnyezet létrehozója hozzáadása](../media/tutorial-setup-lab-account/add-lab-creator.png)
+    ![Tesztkörnyezet létrehozójának hozzáadása](../media/tutorial-setup-lab-account/add-lab-creator.png)
 
-## <a name="specify-marketplace-images-available-to-lab-creators"></a>Adja meg a Marketplace-rendszerképek labor létrehozói számára elérhető
+    > [!NOTE]
+    > Ha nem Microsoft-fiók felhasználót ad hozzá labor creatorként, tekintse meg a [nem Microsoft-fiók felhasználó hozzáadása labor creatorként](#add-a-non-microsoft-account-user-as-a-lab-creator) című szakaszt. 
+
+## <a name="specify-marketplace-images-available-to-lab-creators"></a>A tesztkörnyezet-készítők számára elérhető Piactéri lemezképek meghatározása
 A tesztkörnyezetfiók tulajdonosaként megadhatja azokat a Marketplace-beli rendszerképeket, amelyek használatával a tesztkörnyezet-létrehozók tesztkörnyezeteket hozhatnak létre a tesztkörnyezetfiókban. 
 
 1. Válassza a bal oldali menüből a **Marketplace-beli rendszerképek** elemet. Alapértelmezés szerint a rendszerképek teljes listája jelenik meg (az engedélyezett és a letiltott rendszerképek egyaránt). A fenti legördülő listában a **Csak az engedélyezettek**/**Csak a letiltottak** lehetőségre kattintva szűrheti a listát, hogy csak az engedélyezett/letiltott rendszerképek jelenjenek meg. 
@@ -99,13 +102,42 @@ A tesztkörnyezetfiók tulajdonosaként megadhatja azokat a Marketplace-beli ren
     1. Kattintson az utolsó oszlopban a három pontra **(...)** , majd a **Rendszerkép engedélyezése** lehetőségre. 
     2. Jelöljön ki egy vagy több, a listában szereplő rendszerképet a nevük előtti jelölőnégyzet kijelölésével, majd kattintson a **Kiválasztott rendszerképek engedélyezése** lehetőségre. 
 
+## <a name="add-a-non-microsoft-account-user-as-a-lab-creator"></a>Nem Microsoft-fiók felhasználó hozzáadása labor creatorként
+Ha egy felhasználót labor creatorként szeretne felvenni, használja az e-mail-fiókját. A következő típusú e-mail-fiókokat lehet használni:
 
+- Az egyetemi Office 365 Azure Active Directory (HRE) által biztosított e-mail-fiók. 
+- Egy Microsoft e-mail-fiók, például `@outlook.com`, `@hotmail.com`, `@msn.com`vagy `@live.com`.
+- Egy nem a Microsofttól származó e-mail-fiók, például a Yahoo vagy a Google által biztosított. Az ilyen típusú fiókoknak azonban Microsoft-fiókhoz kell kapcsolódniuk.
+- Egy GitHub-fiók. Ennek a fióknak egy Microsoft-fiók-vel kell összekapcsolnia.
+
+### <a name="using-a-non-microsoft-email-account"></a>Nem a Microsofttól származó e-mail-fiók használata
+A labor-készítők/oktatók a nem a Microsofttól származó e-mail-fiókokkal regisztrálhatnak és bejelentkezhetnek egy osztályterem laborba.  A labor Services portálra való bejelentkezéshez azonban az oktatóknak először létre kell hozniuk egy Microsoft-fiók, amely nem a Microsoft e-mail-címéhez van csatolva.
+
+Lehet, hogy számos oktató már rendelkezik egy Microsoft-fiók a nem Microsoft-e-mail-címeihez. Például az oktatóknak már van Microsoft-fiókuk, ha az e-mail-címüket a Microsoft más termékeivel vagy szolgáltatásaival (például Office, Skype, OneDrive vagy Windows) használták.  
+
+Amikor az oktatók bejelentkeznek a labor Services portálra, a rendszer az e-mail-címük és jelszavuk megadását kéri. Ha az oktató olyan nem Microsoft-fiókba próbál bejelentkezni, amelyhez nincs Microsoft-fiók társítva, akkor az oktató a következő hibaüzenetet kapja: 
+
+![Hibaüzenet](../media/how-to-configure-student-usage/cant-find-account.png)
+
+Microsoft-fiókra való feliratkozáshoz az oktatóknak [http://signup.live.com](http://signup.live.com)kell lépniük.  
+
+
+### <a name="using-a-github-account"></a>GitHub-fiók használata
+Az oktatók egy meglévő GitHub-fiókkal is regisztrálhatnak és bejelentkezhetnek egy osztályterem laborba. Ha az oktató már rendelkezik egy Microsoft-fiók a GitHub-fiókjához, akkor bejelentkezhet, és megadhatja a jelszavát az előző szakaszban látható módon. Ha még nem csatolták a GitHub-fiókját egy Microsoft-fiókhoz, akkor a **bejelentkezési lehetőségeket**kell választania:
+
+![Bejelentkezési beállítások hivatkozása](../media/how-to-configure-student-usage/signin-options.png)
+
+A **bejelentkezési beállítások** lapon válassza a **Bejelentkezés a githubkal**lehetőséget.
+
+![Bejelentkezés GitHub-hivatkozással](../media/how-to-configure-student-usage/signin-github.png)
+
+Végül a rendszer kéri, hogy hozzon létre egy Microsoft-fiók, amely a GitHub-fiókjához van csatolva. Automatikusan megtörténik, amikor az oktató kiválasztja a **Next (tovább**) gombot.  Ezután az oktató azonnal bejelentkezik, és csatlakozik az osztályterem laborhoz.
 
 
 ## <a name="next-steps"></a>További lépések
 Lásd az alábbi cikkeket:
 
-- [Labortulajdonosként hozzon létre és laborok kezelése](how-to-manage-classroom-labs.md)
-- [Labortulajdonosként állítsa be, és a sablonok közzététele](how-to-create-manage-template.md)
-- [Labortulajdonosként konfigurálása, és a egy lab használatának szabályozása](how-to-configure-student-usage.md)
-- [Labor felhasználóként osztályterem-tesztkörnyezetek elérése](how-to-use-classroom-lab.md)
+- [Labor tulajdonosaként Labs létrehozása és kezelése](how-to-manage-classroom-labs.md)
+- [A labor tulajdonosaként hozzon létre és tegyen közzé sablonokat](how-to-create-manage-template.md)
+- [Tesztkörnyezet tulajdonosaként konfigurálhatja és szabályozhatja a labor használatát](how-to-configure-student-usage.md)
+- [Labor-felhasználóként az osztályterem Labs eléréséhez](how-to-use-classroom-lab.md)

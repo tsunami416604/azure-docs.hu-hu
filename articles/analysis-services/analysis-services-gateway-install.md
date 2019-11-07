@@ -1,18 +1,18 @@
 ---
 title: Helyszíni adatátjáró telepítése Azure Analysis Serviceshoz | Microsoft Docs
-description: Ismerje meg, hogyan telepítheti és konfigurálhatja a helyszíni adatátjárót.
+description: Megtudhatja, hogyan telepíthet és konfigurálhat helyszíni adatátjárót egy Azure Analysis Services-kiszolgálóról a helyszíni adatforrásokhoz való kapcsolódáshoz.
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 10/28/2019
+ms.date: 10/30/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 99b5a0ff9cc0fd7fdc3b8a0e453ed287c45e1c60
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 37658ea6b94d6369d282c49f79947a1f183b61c7
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73147126"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73572850"
 ---
 # <a name="install-and-configure-an-on-premises-data-gateway"></a>Helyszíni adatátjáró telepítése és konfigurálása
 
@@ -75,14 +75,14 @@ Az Azure-beli átjáró-erőforrások létrehozásához regisztrálnia kell az �
 
 1.  Válassza **az új átjáró regisztrálása ezen a számítógépen**lehetőséget.
 
-    ![Regisztráció](media/analysis-services-gateway-install/aas-gateway-register-new.png)
+    ![Regisztráljon](media/analysis-services-gateway-install/aas-gateway-register-new.png)
 
 2. Adja meg az átjáró nevét és helyreállítási kulcsát. Alapértelmezés szerint az átjáró az előfizetés alapértelmezett régióját használja. Ha másik régiót kell kiválasztania, válassza a **régió módosítása**lehetőséget.
 
     > [!IMPORTANT]
     > Mentse a helyreállítási kulcsot biztonságos helyen. A helyreállítási kulcs szükséges az átjáró átvételéhez, átmigrálához vagy visszaállításához. 
 
-   ![Regisztráció](media/analysis-services-gateway-install/aas-gateway-register-name.png)
+   ![Regisztráljon](media/analysis-services-gateway-install/aas-gateway-register-name.png)
 
 
 ## <a name="create-resource"></a>Azure Gateway-erőforrás létrehozása
@@ -129,7 +129,7 @@ Az átjáró telepítése és regisztrálása után létre kell hoznia egy átj�
 
 Ennyi az egész. Ha portok megnyitására vagy hibaelhárításra van szüksége, mindenképpen tekintse [meg a helyszíni adatátjárót](analysis-services-gateway.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Az Analysis Services felügyelete](analysis-services-manage.md)   
 * [Adatok lekérése Azure Analysis Servicesról](analysis-services-connect.md)   

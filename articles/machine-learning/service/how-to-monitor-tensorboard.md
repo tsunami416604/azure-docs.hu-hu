@@ -9,12 +9,12 @@ ms.topic: conceptual
 author: maxluk
 ms.author: maxluk
 ms.date: 06/28/2019
-ms.openlocfilehash: a45548d3698d28a0189be4f46c26e418da8c91ef
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: HT
+ms.openlocfilehash: 272dbbbc335574456feebfb85e4c5eafd544f8d6
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/04/2019
-ms.locfileid: "73489626"
+ms.locfileid: "73574293"
 ---
 # <a name="visualize-experiment-runs-and-metrics-with-tensorboard-and-azure-machine-learning"></a>A kísérlet futtatásának és metrikáinak megjelenítése TensorBoard és Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -28,13 +28,16 @@ A TensorBoard Azure Machine Learning kísérletekkel való elindításának mód
 
 + Olyan kísérletek esetén, amelyek nem rendelkeznek natív módon kimeneti TensorBoard (például a Scikit-Learn vagy a Azure Machine Learning kísérletekkel), [a `export_to_tensorboard()` metódus](#export) használatával exportálja a futtatási előzményeket TensorBoard-naplókként, és onnan indítsa el a TensorBoard. 
 
+> [!TIP]
+> A jelen dokumentumban található információk elsősorban olyan adatszakértők és fejlesztők számára készültek, akik figyelni szeretnék a modell betanítási folyamatát. Ha Ön olyan rendszergazda, aki az Azure Machine learning erőforrás-felhasználásának és eseményeinek figyelését érdekli, például a kvótákat, a befejezett képzések futtatását vagy az elkészült modell üzembe helyezését, tekintse meg a [figyelés Azure Machine learning](monitor-azure-machine-learning.md).
+
 ## <a name="prerequisites"></a>Előfeltételek
 
 * A TensorBoard elindításához és a kísérlet futtatási előzményeinek megtekintéséhez a kísérleteknek előzőleg engedélyeznie kell a naplózást, hogy nyomon kövessék a metrikákat és a teljesítményt.  
 
-* A útmutatóban szereplő kód a következő környezetek bármelyikében futtatható: 
+* A dokumentumban szereplő kód a következő környezetek bármelyikében futtatható: 
 
-    * Azure Machine Learning számítási példány – nincs szükség letöltésre vagy telepítésre
+    * Azure Machine Learning notebook VM – nincs szükség letöltésre vagy telepítésre
 
         * Fejezze be a következő [oktatóanyagot: telepítési környezet és munkaterület](tutorial-1st-experiment-sdk-setup.md) egy dedikált notebook-kiszolgáló létrehozásához az SDK-val és a minta adattárral.
 
@@ -216,7 +219,7 @@ data = {
 
 ### <a name="run-experiment-and-log-metrics"></a>Kísérlet és naplók metrikáinak futtatása
 
-Ebben a kódban egy lineáris regressziós modellt és a log Key mérőszámokat, az Alpha együtthatót, a `alpha` és a középérték négyzetes hibát `mse`a futtatási előzményekben.
+Ebben a kódban egy lineáris regressziós modellt és a log Key mérőszámokat, az Alpha együtthatót, a `alpha`t és a középérték négyzetes hibát `mse`a futtatási előzményekben.
 
 ```Python
 from tqdm import tqdm

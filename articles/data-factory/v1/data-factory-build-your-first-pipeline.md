@@ -1,5 +1,5 @@
 ---
-title: 'Data Factory oktatóanyag: Az első adatfolyamat | Microsoft Docs'
+title: 'Data Factory oktatóanyag: az első adatfolyamat '
 description: Ez a Azure Data Factory oktatóanyag azt mutatja be, hogyan hozhat létre és ütemezhet olyan adatelőállítót, amely egy Hadoop-fürtön található kaptár-parancsfájl használatával dolgozza fel az adatfeldolgozást.
 services: data-factory
 documentationcenter: ''
@@ -11,14 +11,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/22/2018
-ms.openlocfilehash: 2dd2edfabff51c749890fe20d47a29c1ec39947c
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 90084864f9a93117a0f94dc1d36e6119e88ee335
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70140383"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73682933"
 ---
-# <a name="tutorial-build-your-first-pipeline-to-transform-data-using-hadoop-cluster"></a>Oktatóanyag: Az első folyamat létrehozása az Hadoop-fürtön keresztüli adatátalakításhoz
+# <a name="tutorial-build-your-first-pipeline-to-transform-data-using-hadoop-cluster"></a>Oktatóanyag: az első folyamat létrehozása az Hadoop-fürtön keresztüli adatátalakításhoz
 > [!div class="op_single_selector"]
 > * [Áttekintés és előfeltételek](data-factory-build-your-first-pipeline.md)
 > * [Visual Studio](data-factory-build-your-first-pipeline-using-vs.md)
@@ -28,7 +28,7 @@ ms.locfileid: "70140383"
 
 
 > [!NOTE]
-> Ez a cikk a Data Factory 1-es verziójára vonatkozik. Ha a Data Factory szolgáltatás aktuális verzióját használja, tekintse meg a gyors [útmutató: Hozzon létre egy adatgyárat a Azure Data Factory](../quickstart-create-data-factory-dot-net.md)használatával.
+> Ez a cikk a Data Factory 1-es verziójára vonatkozik. Ha a Data Factory szolgáltatás aktuális verzióját használja, tekintse meg [az adat-előállító Azure Data Factoryvel való létrehozását ismertető rövid útmutatót](../quickstart-create-data-factory-dot-net.md).
 
 Ebben az oktatóanyagban létrehozhatja az első Azure-beli adatfeldolgozót egy adatfolyamattal. A folyamat egy Azure HDInsight (Hadoop) fürtön futó struktúra-parancsfájl futtatásával átalakítja a bemeneti adatokat a kimeneti adatok előállításához.  
 
@@ -37,28 +37,28 @@ Ez a cikk az oktatóanyag áttekintését és előfeltételeit ismerteti. Az el�
 ## <a name="tutorial-overview"></a>Az oktatóanyag áttekintése
 Az oktatóanyagban az alábbi lépéseket fogja végrehajtani:
 
-1. Hozzonlétre egy adatelőállítót. Az adatfeldolgozók egy vagy több adatfolyamatot is tartalmazhatnak, amelyek áthelyezik és átalakítják az adatátvitelt. 
+1. Hozzon létre egy **adatelőállítót**. Az adatfeldolgozók egy vagy több adatfolyamatot is tartalmazhatnak, amelyek áthelyezik és átalakítják az adatátvitelt. 
 
     Ebben az oktatóanyagban egy folyamatot hoz létre az adatelőállítóban. 
-2. **Folyamat**létrehozása. Egy folyamathoz egy vagy több tevékenység tartozhat (például: Másolási tevékenység, HDInsight-struktúra tevékenység). Ez a példa a HDInsight-struktúra tevékenységét használja, amely egy HDInsight Hadoop-fürtön futtatja a kaptár-parancsfájlt. A szkript először létrehoz egy táblázatot, amely az Azure Blob Storage-ban tárolt nyers webnapló-adatokra hivatkozik, majd a nyers adatok év és hónap szerint particionálva.
+2. **Folyamat**létrehozása. Egy folyamat egy vagy több tevékenységgel rendelkezhet (például: másolási tevékenység, HDInsight struktúra tevékenység). Ez a példa a HDInsight-struktúra tevékenységét használja, amely egy HDInsight Hadoop-fürtön futtatja a kaptár-parancsfájlt. A szkript először létrehoz egy táblázatot, amely az Azure Blob Storage-ban tárolt nyers webnapló-adatokra hivatkozik, majd a nyers adatok év és hónap szerint particionálva.
 
     Ebben az oktatóanyagban a folyamat a kaptár tevékenységgel alakítja át az adatátalakítást egy Azure HDInsight Hadoop fürtön futó kaptár-lekérdezés futtatásával. 
 3. **Társított szolgáltatások**létrehozása. Egy társított szolgáltatás létrehozásával összekapcsolhatja az adattárakat vagy a számítási szolgáltatásokat az adatok gyárával. Az adattárak, például az Azure Storage a folyamatban lévő tevékenységek bemeneti/kimeneti adatait tárolják. Olyan számítási szolgáltatás, mint például a HDInsight Hadoop, az adatok átalakítását végzi.
 
-    Ebben az oktatóanyagban két társított szolgáltatást hoz létre: Az **Azure Storage** és az **Azure HDInsight**. Az Azure Storage társított szolgáltatás egy Azure Storage-fiókot társít, amely a bemeneti/kimeneti adatokat tárolja az adat-előállítóban. Az Azure HDInsight társított szolgáltatás egy Azure HDInsight-fürtöt társít, amely az adatátalakításra szolgál az adatgyárban. 
-3. Bemeneti és kimeneti adatkészletek létrehozása. A bemeneti adatkészletek a folyamattevékenységek bemenetét jelölik, a kimeneti adatkészletek pedig a tevékenységek kimeneteit.
+    Ebben az oktatóanyagban két társított szolgáltatást hoz létre: az **Azure Storage** -t és az **Azure HDInsight**-t. Az Azure Storage társított szolgáltatás egy Azure Storage-fiókot társít, amely a bemeneti/kimeneti adatokat tárolja az adat-előállítóban. Az Azure HDInsight társított szolgáltatás egy Azure HDInsight-fürtöt társít, amely az adatátalakításra szolgál az adatgyárban. 
+3. Bemeneti és kimeneti **adatkészletek**létrehozása. A bemeneti adatkészletek a folyamattevékenységek bemenetét jelölik, a kimeneti adatkészletek pedig a tevékenységek kimeneteit.
 
     Ebben az oktatóanyagban a bemeneti és kimeneti adatkészletek a bemeneti és kimeneti adatok helyét adják meg az Azure Blob Storageban. Az Azure Storage társított szolgáltatás határozza meg, hogy melyik Azure Storage-fiókot használja a rendszer. A bemeneti adatkészlet meghatározza a bemeneti fájlok helyét, és a kimeneti adatkészlet meghatározza, hogy a kimeneti fájlok hol vannak elhelyezve. 
 
 
-A Azure Data Factory részletes áttekintéséhez tekintse [meg a Azure Data Factory](data-factory-introduction.md) bevezetését ismertető cikket.
+A Azure Data Factory részletes áttekintéséhez tekintse [meg a Azure Data Factory bevezetését](data-factory-introduction.md) ismertető cikket.
   
 Itt látható az oktatóanyagban felépített mintaadatok-előállító **diagram nézete** . A **MyFirstPipeline** egy kaptár típusú tevékenységgel rendelkezik, amely a **AzureBlobInput** adatkészletet bemenetként használja, és **AzureBlobOutput** -adatkészletet állít elő kimenetként. 
 
 ![Diagram nézet Data Factory oktatóanyagban](media/data-factory-build-your-first-pipeline/data-factory-tutorial-diagram-view.png)
 
 
-Ebben az oktatóanyagban a **adfgetstarted** Azure Blob-tároló **inputdata** mappájában egy input. log nevű fájl található. A naplófájl három hónapból származó bejegyzéseket tartalmaz: Január, február és március 2016. Itt láthatók a bemeneti fájlban lévő minden hónaphoz tartozó mintavételi sorok. 
+Ebben az oktatóanyagban a **adfgetstarted** Azure Blob-tároló **inputdata** mappájában egy input. log nevű fájl található. A naplófájl három hónapból álló bejegyzéseket tartalmaz: január, February és március 2016. Itt láthatók a bemeneti fájlban lévő minden hónaphoz tartozó mintavételi sorok. 
 
 ```
 2016-01-01,02:01:09,SAMPLEWEBSITE,GET,/blogposts/mvc4/step2.png,X-ARR-LOG-ID=2ec4b8ad-3cf0-4442-93ab-837317ece6a1,80,-,1.54.23.196,Mozilla/5.0+(Windows+NT+6.3;+WOW64)+AppleWebKit/537.36+(KHTML,+like+Gecko)+Chrome/31.0.1650.63+Safari/537.36,-,http://weblogs.asp.net/sample/archive/2007/12/09/asp-net-mvc-framework-part-4-handling-form-edit-and-post-scenarios.aspx,\N,200,0,0,53175,871 
@@ -79,10 +79,10 @@ A fent látható minta sorokból az első (2016-01-01) a hónap = 1 mappában ta
 ## <a name="prerequisites"></a>Előfeltételek
 Az oktatóanyag megkezdése előtt a következő előfeltételeket kell megadnia:
 
-1. **Azure-előfizetés** – ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy ingyenes próbaverziós fiókot. Az ingyenes [](https://azure.microsoft.com/pricing/free-trial/) próbaverziós fiók beszerzésével kapcsolatos további információkért tekintse meg az ingyenes próbaverziót ismertető cikket.
-2. **Azure Storage** – Azure Storage-fiókot használ az ebben az oktatóanyagban tárolt adattároláshoz. Ha nem rendelkezik Azure storage-fiókkal, tekintse meg a [hozzon létre egy tárfiókot](../../storage/common/storage-quickstart-create-account.md) cikk. A Storage-fiók létrehozása után jegyezze fel a **fiók nevét** és a **hozzáférési kulcsot**. Lásd: [tároló-hozzáférési kulcsok megtekintése, másolása és](../../storage/common/storage-account-manage.md#access-keys)újragenerálása.
+1. **Azure-előfizetés** – ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy ingyenes próbaverziós fiókot. Az ingyenes [próbaverziós](https://azure.microsoft.com/pricing/free-trial/) fiók beszerzésével kapcsolatos további információkért tekintse meg az ingyenes próbaverziót ismertető cikket.
+2. **Azure Storage** – Azure Storage-fiókot használ az ebben az oktatóanyagban tárolt adattároláshoz. Ha nem rendelkezik Azure Storage-fiókkal, tekintse meg a [Storage-fiók létrehozása](../../storage/common/storage-quickstart-create-account.md) című cikket. A Storage-fiók létrehozása után jegyezze fel a **fiók nevét** és a **hozzáférési kulcsot**. Lásd: [tároló-hozzáférési kulcsok megtekintése, másolása és újragenerálása](../../storage/common/storage-account-manage.md#access-keys).
 3. Töltse le és tekintse át a következő helyen található kaptár-lekérdezési fájlt (**HQL**): [https://adftutorialfiles.blob.core.windows.net/hivetutorial/partitionweblogs.hql](https://adftutorialfiles.blob.core.windows.net/hivetutorial/partitionweblogs.hql). Ez a lekérdezés átalakítja a bemeneti adatokat a kimeneti adatok előállításához. 
-4. Töltse le és tekintse át a következő helyen található minta bemeneti fájlt (**input. log**):[https://adftutorialfiles.blob.core.windows.net/hivetutorial/input.log](https://adftutorialfiles.blob.core.windows.net/hivetutorial/input.log)
+4. Töltse le és tekintse át a következő helyen található minta bemeneti fájlt (**input. log**): [https://adftutorialfiles.blob.core.windows.net/hivetutorial/input.log](https://adftutorialfiles.blob.core.windows.net/hivetutorial/input.log)
 5. Hozzon létre egy **adfgetstarted** nevű BLOB-tárolót az Azure-Blob Storage. 
 6. Töltse fel a **partitionweblogs. HQL** fájlt a **adfgetstarted** tároló **parancsfájl** mappájába. Használjon olyan eszközöket, mint például a [Microsoft Azure Storage Explorer](https://storageexplorer.com/). 
 7. Töltse fel a **bemeneti. log** fájlt a **adfgetstarted** tároló **inputdata** mappájába. 
@@ -97,7 +97,7 @@ Az előfeltételek elvégzése után válassza az alábbi eszközök/SDK-k egyik
 A Visual Studio grafikus felhasználói felületet biztosít az adatüzemek létrehozásához. Míg a PowerShell, a Resource Manager-sablon és a REST API lehetőségek lehetővé teszik az adatüzemek létrehozásához a parancsfájlkezelést és a programozási módszert.
 
 > [!NOTE]
-> Az oktatóanyagban található adatfolyamat átalakítja a bemeneti adatokat, hogy ezzel kimeneti adatokat hozzon létre. A forrásadattár adatait nem másolja egy céladattárba. Az Azure Data Factory használatával történő adatmásolással kapcsolatos oktatóanyagért lásd [: oktatóanyag: Adatok másolása Blob Storageból SQL Databaseba](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md).
+> Az oktatóanyagban található adatfolyamat átalakítja a bemeneti adatokat, hogy ezzel kimeneti adatokat hozzon létre. A forrásadattár adatait nem másolja egy céladattárba. Az adatok Azure Data Factory használatával történő másolásának útmutatásáért olvassa el [az adatok Blob Storage-ból SQL Database-be történő másolását ismertető oktatóanyagot](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md).
 > 
 > Összefűzhet két tevékenységet (vagyis egymás után futtathatja őket), ha az egyik tevékenység kimeneti adatkészletét a másik tevékenység bemeneti adatkészleteként állítja be. Lásd [a Data Factorybeli ütemezést és végrehajtást](data-factory-scheduling-and-execution.md) ismertető cikket. 
 

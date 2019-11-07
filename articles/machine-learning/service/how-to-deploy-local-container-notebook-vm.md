@@ -1,7 +1,7 @@
 ---
-title: Modellek üzembe helyezése számítási példányokban
+title: Modellek üzembe helyezése notebook virtuális gépeken
 titleSuffix: Azure Machine Learning
-description: Megtudhatja, hogyan helyezheti üzembe a Azure Machine Learning modelleket webszolgáltatásként számítási példányok használatával.
+description: Megtudhatja, hogyan helyezheti üzembe a Azure Machine Learning modelleket webszolgáltatásként notebook-alapú virtuális gépek használatával.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,38 +10,34 @@ ms.author: mnark
 author: MrudulaN
 ms.reviewer: larryfr
 ms.date: 10/25/2019
-ms.openlocfilehash: bb187826250b3edc9ac3d9e36a243d75819a45b3
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: HT
+ms.openlocfilehash: d4e37b02b3d7a21546a04c8948fbbfb7262bfa6a
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/04/2019
-ms.locfileid: "73496882"
+ms.locfileid: "73584771"
 ---
-# <a name="deploy-a-model-to-azure-machine-learning-compute-instances"></a>Modell üzembe helyezése Azure Machine Learning számítási példányok számára
+# <a name="deploy-a-model-to-azure-machine-learning-notebook-vms"></a>Modell üzembe helyezése Azure Machine Learning notebook virtuális gépeken
 
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-> [!NOTE]
-> A számítási példányok csak az **USA északi középső** régióját vagy **Egyesült Királyság déli régiójat**tartalmazó munkaterületekhez érhetők el.
->Ha a munkaterület bármely más régióban található, akkor továbbra is létrehozhat és használhat [notebookos virtuális gépet](concept-compute-instance.md#notebookvm) .  Az ebben a cikkben ismertetett lépéseket követve központilag telepítheti a modelleket számítási példányra vagy notebook virtuális gépre.
-
-Ismerje meg, hogyan helyezhet üzembe egy modellt webszolgáltatásként a Azure Machine Learning számítási példányon Azure Machine Learning használatával. Használjon számítási példányokat, ha a következő feltételek egyike igaz:
+Ismerje meg, hogyan helyezhet üzembe egy modellt webszolgáltatásként a Azure Machine Learning notebook virtuális gépen a Azure Machine Learning használatával. Használjon notebookos virtuális gépeket, ha az alábbi feltételek egyike teljesül:
 
 - Gyorsan üzembe kell helyeznie és ellenőriznie kell a modellt.
 - A fejlesztés alatt álló modellt tesztel.
 
 > [!TIP]
-> Egy modell üzembe helyezése egy számítási példányon lévő Jupyter Notebook, egy virtuális gépen lévő webszolgáltatás esetében egy _helyi telepítés_. Ebben az esetben a "helyi" számítógép a számítási példány. További információ a központi telepítésekről: [modellek üzembe helyezése a Azure Machine Learningsal](how-to-deploy-and-where.md).
+> Egy modell üzembe helyezése egy jegyzetfüzet-alapú virtuális gépen lévő Jupyter Notebookról egy _helyi üzembe helyezést_nyújtó webszolgáltatásra. Ebben az esetben a "helyi" számítógép a notebook virtuális gép. További információ a központi telepítésekről: [modellek üzembe helyezése a Azure Machine Learningsal](how-to-deploy-and-where.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Egy Azure Machine Learning munkaterületen futó számítási példány. További információ: [telepítési környezet és munkaterület](tutorial-1st-experiment-sdk-setup.md).
+- Azure Machine Learning munkaterület, amelyen fut egy jegyzetfüzet virtuális gép. További információ: [telepítési környezet és munkaterület](tutorial-1st-experiment-sdk-setup.md).
 
-## <a name="deploy-to-the-compute-instances"></a>Üzembe helyezés a számítási példányokon
+## <a name="deploy-to-the-notebook-vms"></a>Üzembe helyezés a notebook virtuális gépeken
 
-A számítási példány tartalmaz egy példaként szolgáló jegyzetfüzetet, amely bemutatja a helyi központi telepítéseket. A következő lépésekkel töltse be a jegyzetfüzetet, és telepítse a modellt webszolgáltatásként a virtuális gépen:
+A notebook virtuális gépe tartalmaz egy példaként szolgáló jegyzetfüzetet, amely bemutatja a helyi központi telepítéseket. A következő lépésekkel töltse be a jegyzetfüzetet, és telepítse a modellt webszolgáltatásként a virtuális gépen:
 
-1. [Azure Machine learning Studióban](https://ml.azure.com)válassza ki a Azure Machine learning számítási példányokat.
+1. [Azure Machine learning Studióban](https://ml.azure.com)válassza ki a Azure Machine learning notebook virtuális gépeket.
 
 1. Nyissa meg a `samples-*` alkönyvtárat, majd nyissa meg a `how-to-use-azureml/deploy-to-local/register-model-deploy-local.ipynb`. A Megnyitás után futtassa a jegyzetfüzetet.
 
@@ -51,13 +47,7 @@ A számítási példány tartalmaz egy példaként szolgáló jegyzetfüzetet, a
 
     ![Képernyőkép a futó helyi szolgáltatás portról](media/how-to-deploy-local-container-notebookvm/deploy-local-service-port.png)
 
-1. A szolgáltatás számítási példányból való teszteléséhez használja a `https://localhost:<local_service.port>` URL-címet. Távoli ügyfélről történő teszteléshez szerezze be a számítási példányon futó szolgáltatás nyilvános URL-címét. A nyilvános URL-cím a következő képlet használatával határozható meg: 
-    * Notebook VM: `https://<vm_name>-<local_service_port>.<azure_region_of_workspace>.notebooks.azureml.net/score`. 
-    * Számítási példány: `https://<vm_name>-<local_service_port>.<azure_region_of_workspace>.instances.azureml.net/score`. 
-    
-    Például: 
-    * Notebook VM: `https://vm-name-6789.northcentralus.notebooks.azureml.net/score` 
-    * Számítási példány: `https://vm-name-6789.northcentralus.instances.azureml.net/score`
+1. A szolgáltatás notebook virtuális gépről való teszteléséhez használja a `https://localhost:<local_service.port>` URL-címet. Távoli ügyfélről történő teszteléshez szerezze be a notebook virtuális gépen futó szolgáltatás nyilvános URL-címét. A nyilvános URL-cím a következő képlet használatával határozható meg: `https://<notebookvm_name>-<local_service_port>.<azure_region_of_notebook>.notebooks.azureml.net/score`. Például: `https://mynotebookvm-6789.eastus2.notebooks.azureml.net/score`.
 
 ## <a name="test-the-service"></a>A szolgáltatás tesztelése
 

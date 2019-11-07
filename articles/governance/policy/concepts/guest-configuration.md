@@ -3,15 +3,15 @@ title: Tudnivalók a virtuális gépek tartalmának naplózásáról
 description: Megtudhatja, hogyan használja a Azure Policy a vendégek konfigurációját egy Azure-gépen lévő beállítások naplózására.
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 09/20/2019
+ms.date: 11/04/2019
 ms.topic: conceptual
 ms.service: azure-policy
-ms.openlocfilehash: efe929a6ea38a8df7ad9fe37a92c181e3d409b25
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: HT
+ms.openlocfilehash: 0e5592f629646db3132ffd65fd56b1a0d5d5be39
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/04/2019
-ms.locfileid: "73464060"
+ms.locfileid: "73581428"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>Azure Policy vendég konfigurációjának ismertetése
 
@@ -121,30 +121,27 @@ Azure Policy a vendég-konfiguráció erőforrás-szolgáltatói **complianceSta
 > [!NOTE]
 > Az **DeployIfNotExists** szabályzat szükséges ahhoz, hogy a **AuditIfNotExists** -házirend eredményét visszaállítsa. A **DeployIfNotExists**nélkül a **AuditIfNotExists** házirend "0/0" erőforrást jelenít meg állapotként.
 
-A vendég konfigurációhoz tartozó összes beépített szabályzatot egy olyan kezdeményezés tartalmazza, amely csoportosítja a definíciókat a hozzárendelésekben való használathoz. A (z) [előzetes verzió] nevű beépített kezdeményezés *: a jelszó biztonsági beállításainak naplózása a Linux és a Windows rendszerű gépeken* 18 szabályzatot tartalmaz. A Windows hat **DeployIfNotExists** és **AuditIfNotExists** pár, a Linux esetében pedig három pár. A [szabályzat-definíció](definition-structure.md#policy-rule) logikája ellenőrzi, hogy csak a cél operációs rendszer van-e kiértékelve.
+A vendég konfigurációhoz tartozó összes beépített szabályzatot egy olyan kezdeményezés tartalmazza, amely csoportosítja a definíciókat a hozzárendelésekben való használathoz. A _\[Preview\]nevű beépített kezdeményezés: a jelszó biztonsági beállításainak naplózása Linux és Windows rendszerű gépeken_ 18 szabályzatot tartalmaz. A Windows hat **DeployIfNotExists** és **AuditIfNotExists** pár, a Linux esetében pedig három pár. A [szabályzat-definíció](definition-structure.md#policy-rule) logikája ellenőrzi, hogy csak a cél operációs rendszer van-e kiértékelve.
 
 #### <a name="auditing-operating-system-settings-following-industry-baselines"></a>Az operációs rendszer beállításainak naplózása az iparági alapkonfigurációkat követve
 
-A Azure Policyban elérhető kezdeményezések egyike lehetővé teszi a virtuális gépeken belüli operációs rendszer beállításainak naplózását a Microsoft alapkonfigurációját követve.  A definíció, *[előzetes verzió]: az Azure-beli biztonsági alapbeállításoknak nem megfelelő Windows-alapú virtuális gépek naplózása* a Active Directory csoportházirend beállításain alapuló naplózási szabályok teljes készletét tartalmazza.
+A Azure Policyban elérhető kezdeményezések egyike lehetővé teszi a virtuális gépeken belüli operációs rendszer beállításainak naplózását a Microsoft alapkonfigurációját követve. A definíció, _\[előzetes verzió\]: az Azure-beli biztonsági alapbeállításoknak nem megfelelő Windows-alapú virtuális gépek naplózása_ a Active Directory csoportházirend beállításai alapján teljes naplózási szabályt tartalmaz.
 
-A beállítások többsége paraméterekként érhető el.  Ez a funkció lehetővé teszi, hogy testreszabja, hogy a rendszer hogyan naplózza a szabályzatot a szervezeti követelményekkel, vagy hogy a szabályzatot harmadik féltől származó információkra, például iparági szabályozási szabványokra képezze.
+A beállítások többsége paraméterekként érhető el. Ez a funkció lehetővé teszi, hogy testreszabja a naplózást, hogy a szabályzatot a szervezeti követelményeknek megfelelően hangolja össze, vagy a szabályzatot harmadik féltől származó információkhoz (például iparági szabályozási szabványok) képezze.
 
-Egyes paraméterek egy egész érték tartományát támogatják.  A jelszó maximális élettartama paraméter például beállítható egy tartomány operátor használatával, hogy rugalmasságot biztosítson a gépek tulajdonosainak.  Azt is megteheti, hogy a felhasználó által a jelszavuk módosítására vonatkozó érvényes Csoportházirend beállítás nem lehet hosszabb 70 nap, de nem lehet kevesebb, mint 1 nap.  A paraméterhez tartozó info-Bubble kifejezésben leírtak szerint az érvényes naplózási értéket állítsa "1, 70" értékre.
+Egyes paraméterek egy egész érték tartományát támogatják. A jelszó maximális élettartama paraméter például beállítható egy tartomány operátor használatával, hogy rugalmasságot biztosítson a gépek tulajdonosainak. Azt is megteheti, hogy a felhasználóknak a jelszavuk módosítására vonatkozó hatályos Csoportházirend beállítás értéke legfeljebb 70 nap, de nem lehet kevesebb, mint egy nap. A paraméterhez tartozó info-Bubble kifejezésben leírtak szerint ez az üzleti házirend az érvényes naplózási értékre van állítva, az értéket állítsa "1, 70" értékre.
 
-Ha a szabályzatot egy Azure Resource Manager dployment-sablonnal rendeli hozzá, egy paraméter-fájllal kezelheti ezeket a beállításokat a verziókövetés segítségével.
-Ha egy olyan eszközt használ, mint például a git a naplózási szabályzatok változásainak az egyes bejelentkezésekhez fűzött megjegyzésekkel való kezeléséhez, dokumentálja a bizonyítékokat arról, hogy a hozzárendelés miért van a várt értéktől eltekintve.
+Ha a szabályzatot egy Azure Resource Manager telepítési sablonnal rendeli hozzá, egy paraméter-fájllal kezelheti ezeket a beállításokat a verziókövetés segítségével. Egy olyan eszközzel, mint például a git a naplózási szabályzatok változásainak az egyes beadási dokumentumokkal kapcsolatos megjegyzésekkel való kezeléséhez, tanúsítja, hogy a hozzárendelés miért kivétel a várt értéktől.
 
 #### <a name="applying-configurations-using-guest-configuration"></a>Konfigurációk alkalmazása a vendég konfiguráció használatával
 
-A Azure Policy legújabb funkciója a számítógépeken belüli beállítások konfigurálását végzi.
-A definíció a *Windows rendszerű gépeken beállított időzónát konfigurálja* úgy, hogy az időzóna konfigurálásával módosítja a gépet.
+A Azure Policy legújabb funkciója a számítógépeken belüli beállítások konfigurálását végzi. A definíció a _Windows rendszerű gépeken beállított időzónát konfigurálja_ úgy, hogy az időzóna konfigurálásával megváltoztatja a gépet.
 
-Ha a *konfigurálással*kezdődő definíciókat rendeli hozzá, akkor a definíciók *központi telepítésének előfeltételeit is hozzá kell rendelnie a Windows rendszerű virtuális gépeken a vendég-konfigurációs szabályzat engedélyezés*
-Ezeket a definíciókat a választott kezdeményezéssel kombinálhatja.
+Ha a _konfigurálással_kezdődő definíciókat rendeli hozzá, akkor a definíciók _központi telepítésének előfeltételeit is hozzá kell rendelnie a Windows rendszerű virtuális gépeken a vendég-konfigurációs szabályzat engedélyezés_ Ezeket a definíciókat a választott kezdeményezéssel kombinálhatja.
 
 #### <a name="assigning-policies-to-machines-outside-of-azure"></a>Szabályzatok kiosztása az Azure-on kívüli gépekhez
 
-A vendég konfigurációhoz elérhető naplózási házirendek közé tartozik a **Microsoft. HybridCompute/Machines** erőforrástípus.  A rendszer automatikusan felvesz minden olyan gépet, amely a hozzárendelés hatókörébe tartozó Azure-ív részét képezi.
+A vendég konfigurációhoz elérhető naplózási házirendek közé tartozik a **Microsoft. HybridCompute/Machines** erőforrástípus. Az Azure-ív részét képező, a házirend-hozzárendelés hatókörében lévő kiszolgálók automatikusan beletartoznak a [szolgáltatásba](../../../azure-arc/servers/overview.md) .
 
 ### <a name="multiple-assignments"></a>Több hozzárendelés
 
@@ -152,8 +149,7 @@ A vendég-konfigurációs házirendek jelenleg csak egyszer használják a vend�
 
 ## <a name="built-in-resource-modules"></a>Beépített erőforrás-modulok
 
-A vendég konfigurációs bővítmény telepítésekor a "GuestConfiguration" PowerShell-modul a DSC-erőforrás moduljainak legújabb verziójához tartozik. Ez a modul letölthető a PowerShell-galéria a "manuális Letöltés" hivatkozásra kattintva a modul oldal [GuestConfiguration](https://www.powershellgallery.com/packages/GuestConfiguration/).
-A ". nupkg" fájlformátumot átnevezheti ". zip" névre a kibontáshoz és a felülvizsgálathoz.
+A vendég konfigurációs bővítmény telepítésekor a "GuestConfiguration" PowerShell-modul a DSC-erőforrás moduljainak legújabb verziójához tartozik. Ez a modul letölthető a PowerShell-galéria a "manuális Letöltés" hivatkozásra kattintva a modul oldal [GuestConfiguration](https://www.powershellgallery.com/packages/GuestConfiguration/). A ". nupkg" fájlformátumot átnevezheti ". zip" névre a kibontáshoz és a felülvizsgálathoz.
 
 ## <a name="client-log-files"></a>Ügyfél naplófájljai
 

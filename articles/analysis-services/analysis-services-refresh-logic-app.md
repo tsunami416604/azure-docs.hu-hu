@@ -1,17 +1,17 @@
 ---
 title: Frissítés a Logic Apps for Azure Analysis Services models szolgáltatással | Microsoft Docs
-description: Megtudhatja, hogyan lehet az aszinkron frissítést a Azure Logic Apps használatával dekódolni.
+description: Ez a cikk azt ismerteti, hogyan lehet a Azure Logic Apps használatával az aszinkron frissítést Azure Analysis Services.
 author: chrislound
 ms.service: analysis-services
 ms.topic: conceptual
-ms.date: 04/26/2019
+ms.date: 10/30/2019
 ms.author: chlound
-ms.openlocfilehash: acf31bf3e7e8c3a0835640dee36f8435a1eba625
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: a44aa5b355bea675f5d99761d97b8876a9b2a7d7
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72294613"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73572342"
 ---
 # <a name="refresh-with-logic-apps"></a>Frissítés a Logic Apps használatával
 
@@ -19,7 +19,7 @@ Logic Apps és REST-hívások használatával automatizált adatfrissítési mű
 
 Ha többet szeretne megtudni a REST API-k Azure Analysis Services használatával történő használatáról, tekintse meg [az aszinkron frissítés a REST APIával](analysis-services-async-refresh.md)című témakört.
 
-## <a name="authentication"></a>Hitelesítés
+## <a name="authentication"></a>Authentication
 
 Az összes hívást érvényes Azure Active Directory (OAuth 2) jogkivonattal kell hitelesíteni.  A cikkben szereplő példák egy egyszerű szolgáltatásnév (SPN) használatával végzik el a hitelesítést Azure Analysis Services. További információ: [egyszerű szolgáltatásnév létrehozása Azure Portal használatával](../active-directory/develop/howto-create-service-principal-portal.md).
 
@@ -62,10 +62,10 @@ Ez a lépés a logikai alkalmazás mentése után a HTTP POST URL-címével lesz
 
 Konfigurálja a HTTP-tevékenységet a következőképpen:
 
-|Tulajdonság  |Value (Díj)  |
+|Tulajdonság  |Érték  |
 |---------|---------|
 |**Metódus**     |UTÁNI         |
-|**URI**     | https://*a*/Servers/AAS-*kiszolgáló neve*/models/*az adatbázis neve*/refreshes <br /> <br /> Például: https: \//westus. asazure. Windows. net/Servers/MyServer/models/AdventureWorks/refreshs|
+|**URI**     | https://*a*/Servers/AAS-*kiszolgáló neve*/models/*az adatbázis neve*/refreshes <br /> <br /> Például: https:\//westus.asazure.windows.net/servers/myserver/models/AdventureWorks/refreshes|
 |**Fejlécek**     |   Content-Type, Application/JSON <br /> <br />  ![Fejlécek](./media/analysis-services-async-refresh-logic-app/6.png)    |
 |**Törzs**     |   A kérés törzsének kialakításával kapcsolatos további tudnivalókért tekintse meg [az aszinkron frissítés a REST API utáni/refreshes](analysis-services-async-refresh.md#post-refreshes)című témakört. |
 |**Hitelesítés**     |Active Directory OAuth         |
@@ -113,7 +113,7 @@ Válassza ki a kívánt órát.
 
 Mentse a logikai alkalmazást.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [Minták](analysis-services-samples.md)  
 [REST API](https://docs.microsoft.com/rest/api/analysisservices/servers)

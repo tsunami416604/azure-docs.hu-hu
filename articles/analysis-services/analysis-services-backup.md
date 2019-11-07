@@ -1,18 +1,18 @@
 ---
 title: Adatbázis biztonsági mentése és visszaállítása Azure Analysis Services | Microsoft Docs
-description: Útmutató Azure Analysis Services adatbázis biztonsági mentéséhez és visszaállításához.
+description: Ez a cikk azt ismerteti, hogyan lehet biztonsági másolatot készíteni és visszaállítani a modell metaadatait és adatait egy Azure Analysis Services adatbázisból.
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 07/29/2019
+ms.date: 10/30/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: fde545f3764f5910d00da5a8ce7f0e8c1772c7ea
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 3f63ecf560a14248fed6dea53c30a27acdf9a938
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72295416"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73573452"
 ---
 # <a name="backup-and-restore"></a>Biztonsági mentés és visszaállítás
 
@@ -37,7 +37,7 @@ A biztonsági mentés előtt konfigurálnia kell a kiszolgáló tárolási beál
 
 2.  Kattintson az **engedélyezve**elemre, majd a **tárolási beállítások**elemre.
 
-    ![Engedélyezés](./media/analysis-services-backup/aas-backup-enable.png)
+    ![Bekapcsolás](./media/analysis-services-backup/aas-backup-enable.png)
 
 3. Válassza ki a Storage-fiókot, vagy hozzon létre egy újat.
 
@@ -49,7 +49,7 @@ A biztonsági mentés előtt konfigurálnia kell a kiszolgáló tárolási beál
 
     ![Biztonsági mentési beállítások mentése](./media/analysis-services-backup/aas-backup-save.png)
 
-## <a name="backup"></a>Backup
+## <a name="backup"></a>Biztonsági mentés
 
 ### <a name="to-backup-by-using-ssms"></a>Biztonsági mentés a SSMS használatával
 

@@ -11,16 +11,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/12/2019
+ms.date: 10/31/2019
 ms.author: spelluru
-ms.openlocfilehash: 40cdd0adf7bf100e1dbca64dbba68db3bc59a4fe
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: d89d506d8912706bbdb802801b16d01036ecb8e2
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72331444"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73583494"
 ---
-# <a name="set-up-and-manage-virtual-machine-pool"></a>Virtuálisgép-készlet beállítása és kezelése 
+# <a name="set-up-and-manage-virtual-machine-pool"></a>Virtuális gépek készleteinek létrehozása és kezelése 
 Ez a cikk bemutatja, hogyan végezheti el a következő feladatokat:
 
 - A virtuális gépek (VM-EK) számának növeléséhez a tesztkörnyezetben
@@ -30,12 +30,12 @@ Ez a cikk bemutatja, hogyan végezheti el a következő feladatokat:
 ## <a name="update-the-lab-capacity"></a>A tesztkörnyezet kapacitásának frissítése
 A labor kapacitásának növeléséhez vagy csökkentéséhez (a laborban található virtuális gépek száma) hajtsa végre a következő lépéseket:
 
-1. A **virtuálisgép-készlet** lapon válassza a **labor kapacitása: &lt;number @ no__t-3 Machines**elemet.
+1. A **virtuálisgép-készlet** lapon válassza a **labor kapacitása: &lt;szám&gt; Machines**elemet.
 2. Adja meg a laborban használni kívánt **virtuális gépek új számát** . Ennek a számnak nagyobbnak vagy egyenlőnek kell lennie a laborban regisztrált felhasználók számával. 
 3. Ezt követően válassza a **Mentés** lehetőséget. 
 
     ![Összes elindítása gomb](../media/how-to-set-virtual-machine-passwords/number-of-vms-in-lab.png)
-4. Ha növelte a kapacitást, megtekintheti a létrehozott virtuális gépet vagy virtuális gépeket. 
+4. Ha növelte a kapacitást, megtekintheti a létrehozott virtuális gépet vagy virtuális gépeket. Ha nem látja az új virtuális gépet a listában, frissítse a lapot. 
 
     ![Létrehozott virtuális gép](../media/how-to-set-virtual-machine-passwords/vm-being-created.png)
 
@@ -51,11 +51,13 @@ A labor kapacitásának növeléséhez vagy csökkentéséhez (a laborban talál
     ![Összes leállítása gomb](../media/how-to-set-virtual-machine-passwords/stop-all-vms-button.png)
 
 ### <a name="start-selected-vms"></a>Kijelölt virtuális gépek indítása
-A kiválasztott virtuális gépek kétféleképpen indíthatók el (egy vagy több). Első lépésként válassza ki a virtuális gépet vagy virtuális gépeket a listából, majd válassza az **Indítás** lehetőséget az eszköztáron. A második módszer a virtuális gép vagy virtuális gépek kiválasztása a listában, válassza ki a legördülő menüt az **állapot** oszlopban az egyik sorban, majd válassza az **Indítás**lehetőséget. 
+A kiválasztott virtuális gépek kétféleképpen indíthatók el (egy vagy több). Első lépésként válassza ki a virtuális gépet vagy virtuális gépeket a listából, majd válassza az **Indítás** lehetőséget az eszköztáron. 
+
+A második módszer egy vagy több virtuális gép kijelölése a listában, majd az **állapot** oszlopban lévő gomb bekapcsolása. 
 
 ![Kijelölt virtuális gépek indítása](../media/how-to-set-virtual-machine-passwords/start-selected-vms.png)
 
-Hasonlóképpen leállíthat egy vagy több virtuális gépet az **állapot** oszlop legördülő listájának használatával, vagy **leállíthatja** az eszköztáron. 
+Hasonlóképpen leállíthat egy vagy több virtuális gépet is, ha az **állapot** oszlopban lévő gombra kattint, vagy kiválasztja az eszköztár **Leállítás** elemét. 
 
 ## <a name="reset-vms"></a>Virtuális gépek alaphelyzetbe állítása
 Egy vagy több virtuális gép alaphelyzetbe állításához jelölje ki azokat a listában, majd válassza az **Alaphelyzetbe állítás** lehetőséget az eszköztáron. 
@@ -81,13 +83,21 @@ Ha engedélyezi vagy letiltja az **azonos jelszó használata az összes virtuá
 ### <a name="reset-password-later"></a>Jelszó alaphelyzetbe állítása később
 
 1. A labor **sablon** lapján válassza a **jelszó alaphelyzetbe állítása** lehetőséget az eszköztáron. 
-
-    ![Jelszó alaphelyzetbe állítása menü a kezdőlapon](../media/how-to-set-virtual-machine-passwords/reset-password-menu-dashboard.png)
 1. A **jelszó alaphelyzetbe állítása** párbeszédpanelen adja meg a jelszót, és válassza a **jelszó alaphelyzetbe állítása**lehetőséget.
     
     ![Jelszó beállítása párbeszédpanel](../media/how-to-set-virtual-machine-passwords/set-password.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="connect-to-student-vms"></a>Kapcsolódás tanulói virtuális gépekhez
+A labor Creator (oktató/professzor) a következő feltételek teljesülése esetén tud csatlakozni a tanuló virtuális géphez: 
+
+- A tesztkörnyezet létrehozásakor a **virtuális gépekhez ugyanazt a jelszót kell használni**
+- A virtuális gép fut 
+
+ A tanuló virtuális géphez való kapcsolódáshoz vigye az egeret a listában a virtuális gépre, és válassza a számítógép gombot.  
+
+![Kapcsolódás tanulói virtuális géphez gomb](../media/how-to-set-virtual-machine-passwords/connect-student-vm.png)
+
+## <a name="next-steps"></a>További lépések
 Ha szeretne többet megtudni a tanulók által beállítható egyéb használati lehetőségekről, tekintse meg a következő cikket: a [tanulói használat konfigurálása](how-to-configure-student-usage.md).
 
 A virtuális gépek jelszavának alaphelyzetbe állításáról a következő témakörben olvashat: [Virtual Machines-jelszó beállítása vagy alaphelyzetbe állítása a tanterem Labs-ban (diákok)](how-to-set-virtual-machine-passwords-student.md).

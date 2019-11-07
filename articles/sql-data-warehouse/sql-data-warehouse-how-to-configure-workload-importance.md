@@ -1,6 +1,6 @@
 ---
-title: Számítási feladatok fontossági konfigurálása az Azure SQL Data Warehouse |} A Microsoft Docs
-description: Ismerje meg, hogyan állítsa be a kérelem szintű fontosság.
+title: Számítási feladat fontosságának konfigurálása
+description: Megtudhatja, hogyan állíthatja be a kérelmek szintjének fontosságát.
 services: sql-data-warehouse
 author: ronortloff
 manager: craigg
@@ -10,26 +10,27 @@ ms.topic: conceptual
 ms.date: 05/20/2019
 ms.author: rortloff
 ms.reviewer: igorstan
-ms.openlocfilehash: e4d410f32068b4d3035dcab0c61b7b9205103690
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.custom: seo-lt-2019
+ms.openlocfilehash: 59ba4b936f6098b0d0b3f5e571f107af088206e0
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67588686"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73692693"
 ---
-# <a name="configure-workload-importance-in-azure-sql-data-warehouse"></a>Az Azure SQL Data Warehouse számítási feladatok fontossági konfigurálása
+# <a name="configure-workload-importance-in-azure-sql-data-warehouse"></a>A számítási feladatok fontosságának konfigurálása Azure SQL Data Warehouse
 
-Fontosság beállítása az SQL Data Warehouse lehetővé teszi a befolyásolhatják a lekérdezések vezénylését. A magasabb fontossági lekérdezések futtatása előtt lekérdezések, az alacsonyabb fontossági lesz ütemezve. Fontosság hozzárendelése a lekérdezéseket, szüksége egy számítási feladat osztályozó létrehozása.
+A SQL Data Warehouse fontosságának beállítása lehetővé teszi a lekérdezések ütemezésének befolyásolását. A nagyobb jelentőségű lekérdezéseket a rendszer úgy ütemezi, hogy az alacsonyabb fontosságú lekérdezések előtt fusson. A lekérdezések fontosságának kiosztásához létre kell hoznia egy számítási feladatok besorolását.
 
-## <a name="create-a-workload-classifier-with-importance"></a>Hozzon létre egy számítási feladat osztályozó fontosság
+## <a name="create-a-workload-classifier-with-importance"></a>Számítási feladatok besorolása fontossággal
 
-Gyakran egy adatraktár-forgatókönyvet a felhasználóval rendelkezik, akiknek szükség van a lekérdezések gyorsan futhassanak.  A felhasználó lehet a vállalat vezetők, akik jelentéseket vagy a felhasználó lehet egy elemző, az ad hoc ad hoc lekérdezések futtatása. A számítási feladatok osztályozó fontosság hozzárendelése egy lekérdezést hoz létre.  Az alábbi példák az új használata [munkaterhelés-osztályozó létrehozása](/sql/t-sql/statements/create-workload-classifier-transact-sql?view=azure-sqldw-latest) szintaxisa két osztályozó létrehozása.  Membername lehet egy felhasználó vagy csoport. Egyéni felhasználói besorolások elsőbbséget élveznek a szerepkör besorolásokat. A meglévő data warehouse felhasználók megkereséséhez futtassa:
+Gyakran egy adattárház-forgatókönyvben olyan felhasználókkal rendelkezik, akiknek a lekérdezéseit gyorsan futtatni kell.  Előfordulhat, hogy a felhasználó a vállalat vezetőinek kell futnia, vagy ha a felhasználó egy ad hoc lekérdezést futtató elemző. Létre kell hoznia egy számítási feladatok besorolását, amely fontosságot rendel a lekérdezéshez.  Az alábbi példák az új [munkaterhelés-osztályozó](/sql/t-sql/statements/create-workload-classifier-transact-sql?view=azure-sqldw-latest) szintaxist használják két osztályozó létrehozásához.  A tagnév lehet egyetlen felhasználó vagy csoport is. Az egyes felhasználói besorolások elsőbbséget élveznek a szerepkör-besorolásokkal szemben. Meglévő adatraktár-felhasználók megkereséséhez futtassa a következőt:
 
 ```sql
 Select name from sys.sysusers
 ```
 
-Hozzon létre egy számítási feladat osztályozó, magasabb fontossági rendelkező futtassa:
+A számítási feladatok besorolásának létrehozásához nagyobb jelentőségű felhasználó esetén a következőt kell futtatni:
 
 ```sql
 CREATE WORKLOAD CLASSIFIER ExecReportsClassifier  
@@ -39,7 +40,7 @@ CREATE WORKLOAD CLASSIFIER ExecReportsClassifier 
 
 ```
 
-Alacsonyabb fontossági futtassa az ad hoc ad hoc lekérdezéseket futtatnak a számítási feladatok besorolás létrehozása:  
+A számítási feladatok besorolásának létrehozása az olyan felhasználók számára, akik az alkalmi lekérdezéseket alacsonyabb fontossággal futtatják:  
 
 ```sql
 CREATE WORKLOAD CLASSIFIER AdhocClassifier  
@@ -49,8 +50,8 @@ CREATE WORKLOAD CLASSIFIER AdhocClassifier 
 ```
 
 ## <a name="next-steps"></a>További lépések
-- Számítási feladatok kezelésével kapcsolatos további információkért lásd: [munkaterhelés besorolás](sql-data-warehouse-workload-classification.md)
-- Fontosság további információkért lásd: [számítási feladatok fontossági](sql-data-warehouse-workload-importance.md)
+- A számítási feladatok kezelésével kapcsolatos további információkért lásd: [munkaterhelés besorolása](sql-data-warehouse-workload-classification.md)
+- További információ a Fontosságról: számítási [feladatok fontossága](sql-data-warehouse-workload-importance.md)
 
 > [!div class="nextstepaction"]
-> [Ugrás a kezelés és számítási feladatok fontossági figyelése](sql-data-warehouse-how-to-manage-and-monitor-workload-importance.md)
+> [Ugrás a számítási feladatok fontosságának kezeléséhez és figyeléséhez](sql-data-warehouse-how-to-manage-and-monitor-workload-importance.md)

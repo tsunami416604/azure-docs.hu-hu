@@ -65,6 +65,10 @@
               href: rest-speech-to-text.md
             - name: Kötegelt átírás REST API-k
               href: batch-transcription.md
+    - name: További források
+      items:
+        - name: Diktálás – GYIK
+          href: faq-stt.md
 - name: Szövegfelolvasás
   exanded: false
   items:
@@ -112,6 +116,10 @@
           items:
             - name: Szövegfelolvasás REST API
               href: rest-text-to-speech.md
+    - name: További források
+      items:
+        - name: Szövegfelolvasás – GYIK
+          href: faq-text-to-speech.md
 - name: Szándékfelismerés
   exanded: false
   items:
@@ -182,6 +190,10 @@
               href: 'https://aka.ms/csspeech/pythonref'
             - name: Kibocsátási megjegyzések
               href: releasenotes.md
+    - name: További források
+      items:
+        - name: Beszédfordítás – GYIK
+          href: 'https://www.microsoft.com/translator/faq.aspx'
 - name: Beszédátírás
   expanded: false
   items:
@@ -254,7 +266,7 @@
       items:
         - name: Robot hangvezérlésének engedélyezése a Speech SDK használatával
           href: tutorial-voice-enable-your-bot-speech-sdk.md
-    - name: Referencia
+    - name: További források
       items:
         - name: Hangvezérelt asszisztensekkel kapcsolatos gyakori kérdések
           href: faq-voice-assistants.md
@@ -368,6 +380,8 @@
           href: scenario-availability.md
     - name: Gyors útmutatók
       items:
+        - name: Projekt létrehozása
+          href: quickstarts/create-project.md
         - name: 'Speech SDK beállítása C#-pal'
           href: quickstarts/setup-platform.md?pivots=programming-language-csharp
         - name: Speech SDK beállítása C++ -szal

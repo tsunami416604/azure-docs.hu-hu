@@ -4,16 +4,16 @@ ms.service: data-explorer
 ms.topic: include
 ms.date: 10/23/2019
 ms.author: lugoldbe
-ms.openlocfilehash: 9aca01b24bc3351460c462c08689fdaa41e3a755
-ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
+ms.openlocfilehash: d0cef9f8ec4d7afde4f83e4f83bccdb44d5615ca
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73057284"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73581811"
 ---
 ## <a name="azure-resource-manager-template"></a>Azure Resource Manager-sablon
 
-Ebben a cikkben egy Azure Resource Manager-sablon létrehoz egy erőforráscsoportot, egy Storage-fiókot és egy tárolót, egy Event hubot, valamint egy Azure Adatkezelő-fürtöt és-adatbázist. Mentse a következő tartalmat egy `template.json`nevű fájlba, amelyet a rendszer a programkód futtatására fog használni.
+Ebben a cikkben egy Azure Resource Manager sablonnal hozzon létre egy erőforráscsoportot, egy Storage-fiókot és egy tárolót, egy Event hubot és egy Azure Adatkezelő-fürtöt és-adatbázist. Mentse az alábbi tartalmat egy `template.json`nevű fájlba. Ezt a fájlt fogja használni a kód futtatásához.
 
 ```json
 {

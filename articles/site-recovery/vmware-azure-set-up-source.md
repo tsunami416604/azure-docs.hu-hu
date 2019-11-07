@@ -1,5 +1,5 @@
 ---
-title: A VMware-ből az Azure-ba történő replikációra szolgáló forrásoldali környezet beállítása Azure Site Recovery használatával | Microsoft Docs
+title: A VMware vész-helyreállítási forrás beállításainak beállítása az Azure-ba Azure Site Recovery
 description: Ez a cikk azt ismerteti, hogyan állíthatja be a helyszíni környezetet a VMware virtuális gépek Azure-ba való replikálásához Azure Site Recovery használatával.
 services: site-recovery
 author: Rajeswari-Mamilla
@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 04/14/2019
 ms.author: ramamill
-ms.openlocfilehash: bf1ff4dfba105b6c90ab949217453e1db82d109d
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: ff01aed92669acb193ff149ea9298550134f42a3
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72791771"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73622213"
 ---
 # <a name="set-up-the-source-environment-for-vmware-to-azure-replication"></a>A forrás-környezet beállítása a VMware – Azure replikáláshoz
 
@@ -84,5 +84,5 @@ A következő mappák kizárása a víruskereső szoftverből
 7. Azure Site Recovery terheléselosztási folyamat kiszolgálójának telepítési könyvtára, példa: C:\Program Files (x86) \Microsoft Azure Site Recovery
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 [A célként megadott környezet beállítása](./vmware-azure-set-up-target.md) 

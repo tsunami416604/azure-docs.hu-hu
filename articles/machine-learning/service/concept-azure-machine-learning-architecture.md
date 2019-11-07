@@ -10,12 +10,12 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 10/16/2019
 ms.custom: seodec18
-ms.openlocfilehash: ba6d81596cd8a690f5c17e1ca55b91c5ff27b916
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: HT
+ms.openlocfilehash: 36c496b77be5bfda83b3ed424a7fdf2b53101aa4
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/04/2019
-ms.locfileid: "73497529"
+ms.locfileid: "73580620"
 ---
 # <a name="how-azure-machine-learning-works-architecture-and-concepts"></a>A Azure Machine Learning működése: architektúra és fogalmak
 
@@ -56,7 +56,7 @@ Ezeket az eszközöket Azure Machine Learning használhatja:
 
 ## <a name="glossary"></a>Szószedet
 + <a href="#activities">Tevékenység</a>
-+ <a href="#compute-instance">Számítási példány</a>
++ <a href="#compute-instance">Notebook VM</a>
 + <a href="#compute-targets">Számítási célok</a>
 + <a href="#datasets-and-datastores">Adathalmaz & adattárolók</a>
 + <a href="#endpoints">Végpontok</a>
@@ -84,15 +84,11 @@ A tevékenységek hosszú ideig futó műveletet jelentenek. A következő műve
 
 A tevékenységek az SDK-n vagy a webes felületen keresztül nyújthatnak értesítéseket, így könnyen nyomon követheti a műveletek előrehaladását.
 
-### <a name="compute-instance"></a>Számítási példány
+### <a name="compute-instance"></a>Notebook VM
 
-> [!NOTE]
-> A számítási példányok csak az **USA északi középső** régióját vagy **Egyesült Királyság déli régiójat**tartalmazó munkaterületekhez érhetők el.
->Ha a munkaterület bármely más régióban található, akkor továbbra is létrehozhat és használhat [notebookos virtuális gépet](concept-compute-instance.md#notebookvm) . 
+A **Azure Machine learning notebook VM** egy teljes körűen felügyelt felhőalapú munkaállomás, amely több, gépi tanulásra telepített eszközt és környezetet is tartalmaz. A notebook virtuális gépek használhatók számítási célként a kisebb betanítási és következtetési feladatokhoz. A nagyméretű feladatokhoz Azure Machine Learning a többcsomópontos skálázási képességekkel rendelkező [számítási fürtök](how-to-set-up-training-targets.md#amlcompute) jobb számítási célt választhatnak.
 
-A **Azure Machine learning számítási példány** (korábban notebook VM) egy teljes körűen felügyelt felhőalapú munkaállomás, amely több eszközt és környezetet is tartalmaz a gépi tanuláshoz. A számítási példányok számítási célként használhatók a betanítási és a következtetési feladatokhoz. A nagyméretű feladatokhoz Azure Machine Learning a többcsomópontos skálázási képességekkel rendelkező [számítási fürtök](how-to-set-up-training-targets.md#amlcompute) jobb számítási célt választhatnak.
-
-További információ a [számítási példányokról](concept-compute-instance.md).
+További információ a notebook virtuális gépekről.
 
 ### <a name="compute-targets"></a>Számítási célok
 

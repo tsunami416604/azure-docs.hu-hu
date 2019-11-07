@@ -1,21 +1,21 @@
 ---
 title: 'Gyors útmutató: LUIS-kulcs létrehozása'
 titleSuffix: Azure Cognitive Services
-description: Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre gyorsan egy LUIS-alkalmazást.
+description: Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre LUIS-alkalmazást, és hogyan szerezhet be kulcsot.
 services: cognitive-services
 author: wolfma61
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: tutorial
-ms.date: 08/28/2019
+ms.date: 11/04/2019
 ms.author: wolfma
-ms.openlocfilehash: 95becb2574a45536610aef87f8045b3dad5a5003
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 2ee2b25958feac2387779d9e60734a6600b60a2e
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73504080"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73682073"
 ---
 # <a name="quickstart-getting-a-luis-endpoint-key"></a>Gyors útmutató: LUIS Endpoint kulcs beszerzése
 
@@ -54,7 +54,7 @@ A **kulcsok és végpont beállításai** lapon:
    * Az **előfizetés neve**területen válassza ki azt az Azure-előfizetést, amely a használni kívánt Luis-erőforrást tartalmazza.
    * A **kulcs**alatt válassza ki az alkalmazással használni kívánt Luis-erőforrást.
 
-   Az új előfizetés hamarosan megjelenik a lap alján található táblázatban. 
+   Az új előfizetés hamarosan megjelenik a lap alján található táblázatban.
 
 1. Kattintson a kulcs melletti ikonra a vágólapra másoláshoz. (Bármelyik kulcsot használhatja.)
 

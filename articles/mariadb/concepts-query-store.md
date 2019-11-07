@@ -5,20 +5,17 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 10/17/2019
-ms.openlocfilehash: ab543ee8e379b89aaa9a1133bb75387ed9904002
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.date: 11/04/2019
+ms.openlocfilehash: 67ca6aa36166e8ae08bedec82441e45930976b80
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72598395"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73603999"
 ---
 # <a name="monitor-azure-database-for-mariadb-performance-with-query-store"></a>A Azure Database for MariaDB teljesítményének figyelése a lekérdezési tárolóval
 
 **A következőkre vonatkozik:** Azure Database for MariaDB 10,2
-
-> [!IMPORTANT]
-> A lekérdezési tároló előzetes verzióban érhető el.
 
 Az Azure Database for MariaDB lekérdezés-tárolási funkciója lehetővé teszi a lekérdezési teljesítmény időbeli nyomon követését. A Query Store leegyszerűsíti a teljesítménnyel kapcsolatos hibaelhárítást, így gyorsan megtalálhatja a leghosszabb ideig futó és a legtöbb erőforrás-igényes lekérdezést. A Query Store automatikusan rögzíti a lekérdezések és a futásidejű statisztikák előzményeit, és megőrzi azokat az áttekintéshez. Elkülöníti az adatokat az időablakok alapján, hogy az adatbázis használati mintái láthatók legyenek. A rendszer az összes felhasználóra, adatbázisra és lekérdezésre vonatkozó, a Azure Database for MariaDB-példányban található **MySQL** Schema adatbázisban tárolja az összes felhasználót.
 
@@ -175,10 +172,10 @@ Ez a nézet visszaadja az események várakozási idejének értékét a lekérd
 ## <a name="limitations-and-known-issues"></a>Korlátozások és ismert problémák
 
 - Ha a MariaDB-kiszolgáló `default_transaction_read_only` paraméterrel rendelkezik, a Query Store nem tudja rögzíteni az adatmennyiséget.
-- A lekérdezés-tárolási funkció megszakítható, ha hosszú Unicode-lekérdezéseket (\> = 6000 bájt) tapasztal.
+- A lekérdezés-tárolási funkció megszakítható, ha hosszú Unicode-lekérdezéseket (\>= 6000 bájt) tapasztal.
 - A várakozási statisztikák megőrzési időtartama 24 óra.
 - A várakozási statisztikában a példa az események töredékét rögzíti. A gyakoriság a `query_store_wait_sampling_frequency` paraméter használatával módosítható.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - További információ a [lekérdezési teljesítményről](concepts-query-performance-insight.md)

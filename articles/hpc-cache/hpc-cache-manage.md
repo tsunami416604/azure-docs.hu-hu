@@ -1,17 +1,17 @@
 ---
-title: Az Azure HPC cache kezelése és frissítése (előzetes verzió)
+title: Az Azure HPC cache kezelése és frissítése
 description: Az Azure HPC cache kezelése és frissítése a Azure Portal használatával
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
-ms.date: 10/25/2019
+ms.date: 10/30/2019
 ms.author: rohogue
-ms.openlocfilehash: b5607f1d97e4e240a86ba8e7800af7cb21083217
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 62b54bfe120acdde1fd22c4a0d04165ea7243b50
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72952016"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73582203"
 ---
 # <a name="manage-your-cache-from-the-azure-portal"></a>A gyorsítótár kezelése a Azure Portal
 
@@ -73,7 +73,7 @@ Az Áttekintés oldalon néhány alapszintű gyorsítótár-statisztika – a gy
 
 Ezek a diagramok az Azure beépített monitorozási és elemzési eszközeinek részét képezik. A portál oldalsávjának **figyelés** fejléce alatt további eszközök és riasztások érhetők el. További információt az [Azure monitoring dokumentációjának](../azure-monitor/insights/monitor-azure-resource.md#monitoring-in-the-azure-portal)portál szakasza tartalmaz.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 <!-- * Learn more about metrics and statistics for hpc cache -->
 * További információ az [Azure mérőszámok és statisztikai eszközökről](../azure-monitor/index.yml)

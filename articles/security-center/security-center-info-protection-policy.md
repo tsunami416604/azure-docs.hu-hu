@@ -1,5 +1,5 @@
 ---
-title: Az SQL Information Protection-szabályzat testreszabása Azure Security Centerban | Microsoft Docs
+title: Az SQL Information Protection testreszabása – Azure Security Center
 description: Megtudhatja, hogyan szabhatja testre az Information Protection-szabályzatokat a Azure Security Centerban.
 services: security-center
 documentationcenter: na
@@ -13,29 +13,29 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/29/2019
 ms.author: memildin
-ms.openlocfilehash: f9b161bbb692c1336083640250b93f9d87f1e0d9
-ms.sourcegitcommit: 3f8017692169bd75483eefa96c225d45cd497f06
-ms.translationtype: HT
+ms.openlocfilehash: d37333c0ca3f8acab7a35c23bbab67beef056b72
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73520801"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73664393"
 ---
 # <a name="customize-the-sql-information-protection-policy-in-azure-security-center-preview"></a>Az SQL Information Protection-szabályzat testreszabása Azure Security Centerban (előzetes verzió)
  
-Az SQL Information Protection-szabályzatok a teljes Azure-bérlőhöz meghatározhatók és testreszabhatók Azure Security Centerban.
+Megadhatja és testreszabhatja a teljes Azure-bérlőhöz tartozó SQL Information Protection-szabályzatot Azure Security Centerban.
 
-Az adatvédelem egy speciális biztonsági funkció, amely az Azure-adaterőforrásokban lévő bizalmas adatok felfedésére, osztályozására, címkézésére és védelmére szolgál. A bizalmas adatok (üzleti, pénzügyi, egészségügyi, személyes adatok stb.) felfedése és besorolása kulcsfontosságú szerepet játszik a szervezeti adatok védelmében. A következő infrastruktúrát nyújtja:
+Az adatvédelem egy fejlett biztonsági képesség az Azure-beli adatforrásokban lévő bizalmas adatok felfedéséhez, besorolásához, címkézéséhez és védelméhez. A bizalmas adatok (üzleti, pénzügyi, egészségügyi, személyes adatok stb.) felfedése és besorolása kulcsfontosságú szerepet játszik a szervezeti adatok védelmében. A következő infrastruktúrát nyújtja:
 - Az adatvédelmi szabványoknak és a szabályozási megfelelőségi követelményeknek való megfelelés elősegítése
-- Különböző biztonsági forgatókönyvek, például a figyelés (naplózás) és a bizalmas adatok rendellenes hozzáférésének riasztása
+- Biztonsági helyzetek, mint például a figyelés (naplózás) és a bizalmas adatok rendellenes hozzáférésének riasztása
 - A fokozottan bizalmas adatokat tartalmazó adattárak biztonságának szabályozása és a hozzáférés megerősítése
  
-Az [sql Information Protection](../sql-database/sql-database-data-discovery-and-classification.md) implementálja ezt a paradigmát az SQL-adattárak számára, jelenleg a Azure SQL Database támogatja. Az SQL Information Protection automatikusan felkeresi és osztályozza a potenciálisan bizalmas adatokat, címkéző mechanizmust biztosít a bizalmas adatoknak a besorolási attribútumokkal való tartós címkézéséhez, és részletes irányítópultot jelenít meg a az adatbázis besorolási állapota. Emellett kiszámítja az SQL-lekérdezések eredmény-beállítását is, így a bizalmas adatokat kinyerő lekérdezések explicit módon naplózhatók, és az adatok védetté is menthetők. Az SQL Information Protectionről további részleteket a [Azure SQL Database adatfelderítés és besorolás](../sql-database/sql-database-data-discovery-and-classification.md)című témakörben talál.
+Az [sql Information Protection](../sql-database/sql-database-data-discovery-and-classification.md) implementálja ezt a paradigmát az SQL-adattárak számára, jelenleg a Azure SQL Database támogatja. Az SQL Information Protection automatikusan felkeresi és osztályozza a potenciálisan bizalmas adatokat, címkéző mechanizmust biztosít a bizalmas adatoknak a besorolási attribútumokkal való tartós címkézéséhez, és részletes irányítópultot jelenít meg a az adatbázis besorolási állapota. Emellett kiszámítja az SQL-lekérdezések eredmény-beállítását is, így a bizalmas adatokat kinyerő lekérdezések explicit módon naplózhatók, és az adatok védetté is menthetők. További információ az SQL Information Protectionről: [Azure SQL Database adatfelderítés és besorolás](../sql-database/sql-database-data-discovery-and-classification.md).
  
 A besorolási mechanizmus két elsődleges összeállításon alapul, amelyek a besorolási besorolást – **címkéket** és **adattípusokat**alkotnak.
 - **Labels (címkék** ) – a fő besorolási attribútumok, amelyek az oszlopban tárolt adatmennyiség érzékenységi szintjének meghatározására szolgálnak. 
 - **Adattípusok** – további részletességi adatokat biztosít az oszlopban tárolt adatok típusához.
  
-A Information Protection a címkék és az adattípusok beépített készletét tartalmazza, amelyeket alapértelmezés szerint használ a rendszer. Ezek testreszabásához testreszabhatja Azure Security Center adatvédelmi szabályzatát.
+A Information Protection a címkék és az adattípusok beépített készletét tartalmazza, amelyeket alapértelmezés szerint használ a rendszer. A címkék és típusok testreszabásához Security Centerban testreszabhatja az Information Protection-házirendet.
  
 ## <a name="customize-the-information-protection-policy"></a>Az Information Protection-szabályzat testreszabása
 Az Azure-bérlőhöz tartozó Information Protection-házirend testreszabásához [rendszergazdai jogosultságokkal kell rendelkeznie a bérlő legfelső szintű felügyeleti csoportjában](security-center-management-groups.md). 

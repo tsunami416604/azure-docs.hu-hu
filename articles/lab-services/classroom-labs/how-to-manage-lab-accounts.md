@@ -1,6 +1,6 @@
 ---
-title: Az Azure Lab Services tesztkörnyezetfiókok kezelése |} A Microsoft Docs
-description: Ismerje meg, hogyan tesztkörnyezetfiók létrehozása, megtekintheti az összes tesztkörnyezetfiókok vagy törölheti a tesztkörnyezet Azure-előfizetéssel.
+title: Labor-fiókok kezelése a Azure Lab Servicesban | Microsoft Docs
+description: Megtudhatja, hogyan hozhat létre labor-fiókot, megtekintheti az összes laboratóriumi fiókot, vagy törölhet egy Lab-fiókot egy Azure-előfizetésben.
 services: lab-services
 documentationcenter: na
 author: spelluru
@@ -11,91 +11,93 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/07/2019
+ms.date: 10/31/2019
 ms.author: spelluru
-ms.openlocfilehash: 6f283ce007e96547e01a01a3753ddcb60574bfc3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ee64780bca13bf497793dc90ad22d3eaf91949a6
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65412807"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73606325"
 ---
-# <a name="manage-lab-accounts-in-azure-lab-services"></a>Az Azure Lab Services tesztkörnyezetfiókok kezelése 
-Az Azure Lab Services tesztkörnyezetfiók az felügyelt tesztkörnyezet-típusok, például osztályterem-tesztkörnyezetek tárolója. A rendszergazda állítja be az Azure Lab Services tesztkörnyezetfiók és labortulajdonosok labs hozhat létre a fiók számára hozzáférést biztosít. Ez a cikk bemutatja, hogyan tesztkörnyezetfiók létrehozása, megtekintheti az összes tesztkörnyezetfiókok, vagy törölheti a labor.
+# <a name="manage-lab-accounts-in-azure-lab-services"></a>Lab-fiókok kezelése a Azure Lab Servicesban 
+Azure Lab Services a labor-fiók a felügyelt labor típusok, például a tanterem Labs tárolója. A rendszergazda létrehoz egy Azure Lab Services, és hozzáférést biztosít a labor tulajdonosai számára, akik a fiókban létrehozhatnak laborokat. Ez a cikk bemutatja, hogyan hozhat létre labor-fiókot, megtekintheti az összes tesztkörnyezet fiókját, vagy törölhet egy labor-fiókot.
 
 ## <a name="create-a-lab-account"></a>Tesztkörnyezetfiók létrehozása
 A következő lépések bemutatják, hogyan használhatja az Azure Portalt tesztkörnyezetfiók létrehozására az Azure Lab Services szolgáltatásban. 
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-2. Válassza ki **minden szolgáltatás** a bal oldali menüben. Válassza ki **Tesztkörnyezetfiókok** a a **fejlesztési és üzemeltetési** szakaszban. Ha bejelöli a csillag (`*`) melletti **Tesztkörnyezetfiókok**, megjelenik a **Kedvencek** szakaszban a bal oldali menüben. És újabb verziók esetében a következő időpont választja **Tesztkörnyezetfiókok** alatt **Kedvencek**.
+1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
+2. Válassza a **minden szolgáltatás** lehetőséget a bal oldali menüben. A **DevOps** szakaszban válassza a **labor-fiókok** lehetőséget. Ha a csillag (`*`) lehetőséget választja a **labor-fiókok**mellett, a rendszer hozzáadja a bal oldali menü **Kedvencek** szakaszához. A következő időponttól kezdve válassza a **labor-fiókok** lehetőséget a **Kedvencek**alatt.
 
-    ![Az összes szolgáltatás -> Lab-fiókokban](../media/tutorial-setup-lab-account/select-lab-accounts-service.png)
-3. Az a **Tesztkörnyezetfiókok** lapon jelölje be **Hozzáadás** az eszköztáron. 
+    ![Minden szolgáltatás – > Lab-fiókok](../media/tutorial-setup-lab-account/select-lab-accounts-service.png)
+3. A **labor-fiókok** lapon kattintson a **Hozzáadás** elemre az eszköztáron. 
 
-    ![A Lab-fiókokban oldalon válassza a Hozzáadás](../media/tutorial-setup-lab-account/add-lab-account-button.png)
-4. Az a **labor fiók** lapon, tegye a következőket: 
+    ![Válassza a Hozzáadás lehetőséget a labor-fiókok oldalon](../media/tutorial-setup-lab-account/add-lab-account-button.png)
+4. A **labor-fiók** oldalon hajtsa végre a következő műveleteket: 
     1. Írjon be egy nevet a **Tesztkörnyezetfiók neve** mezőbe. 
     2. Válassza ki azt az **Azure-előfizetést**, amelyben a tesztkörnyezetfiókot létre szeretné hozni.
     3. Az **Erőforráscsoport** esetében válassza az **Új létrehozása** lehetőséget, majd adjon nevet az új erőforráscsoportnak.
     4. A **Helyszín** esetében válassza ki a helyszínt/régiót, ahol létre szeretné hozni a tesztkörnyezetfiókot. 
-    5. Válasszon egy meglévő **megosztott lemezkép-katalógusában** vagy hozzon létre egyet. A Virtuálisgép-sablon mentheti a megosztott rendszerkép-katalógusában ahhoz, hogy a mások által felhasználható. Megosztott kép katalógusok részletes információkért lásd: [használata az Azure Lab Services egy megosztott képgyűjtemény](how-to-use-shared-image-gallery.md).
-    6. A **társ virtuális hálózatnak**, válassza ki a társ virtuális hálózatnak (VNet), a tesztlabor-hálózat. Ehhez a fiókhoz a létrehozott Labs a kiválasztott virtuális hálózat csatlakozik, és rendelkezik az erőforrásokhoz való hozzáférést a kiválasztott virtuális hálózat. 
-    7. Adjon meg egy **címtartomány** a laborkörnyezetben található virtuális gépek számára. A címtartomány a classless inter-domain routing (CIDR) formátumban kell lennie (Példa: 10.20.0.0/23). A lab-ben a virtuális gépek jönnek a címtartományt. További információkért lásd: [-címtartományt ad meg a virtuális gépek a laborban](how-to-configure-lab-accounts.md#specify-an-address-range-for-vms-in-the-lab).    
-    8. Az a **engedélyezése tesztkörnyezet létrehozója, labor helyre** mezőben adja meg, hogy tesztlabor kiindulópontként szolgálhat ki egy helyet a tesztkörnyezethez. Alapértelmezés szerint a beállítás le van tiltva. Le van tiltva, ha a labor alkotói nem adható meg egy helyet a tesztkörnyezethez hoznak létre. A labs labor-fiókba az Önhöz legközelebbi földrajzi helyet jönnek létre. Ha engedélyezve van, egy tesztkörnyezet létrehozója lab létrehozása idején válasszon egy helyet is.      
+    5. Válasszon ki egy meglévő **megosztott képtárat** , vagy hozzon létre egyet. A sablon virtuális gépet a megosztott rendszerkép-katalógusba mentheti, amelyet mások is felhasználhatnak. A megosztott képtárakkal kapcsolatos részletes információkért lásd: [közös rendszerkép-katalógus használata Azure Lab Servicesban](how-to-use-shared-image-gallery.md).
+    6. A **társ virtuális hálózat**területen válasszon ki egy társ virtuális hálózatot (VNet) a tesztkörnyezet hálózatához. A fiókban létrehozott laborok kapcsolódnak a kiválasztott VNet, és hozzáférnek a kiválasztott VNet lévő erőforrásokhoz. 
+    7. Válasszon **címtartományt** a virtuális gépek számára a laborban. A címtartomány legyen az osztály nélküli tartományok közötti útválasztás (CIDR) jelölése (például: 10.20.0.0/23). A laborban található virtuális gépek ebben a címtartományból lesznek létrehozva. További információ: [címtartomány megadása virtuális gépek számára a laborban](how-to-configure-lab-accounts.md#specify-an-address-range-for-vms-in-the-lab).    
+    8. Ahhoz, hogy a labor létrehozója kiválassza a **labor helye** mezőt, adja meg, hogy szeretné-e, ha a labor készítői ki tudják választani a tesztkörnyezet helyét. Alapértelmezés szerint a beállítás le van tiltva. Ha le van tiltva, a labor létrehozói nem tudnak megadni egy helyet a létrehozandó labornak. A laborok a legközelebbi földrajzi helyen a labor-fiókhoz jönnek létre. Ha engedélyezve van, a tesztkörnyezet létrehozója kiválaszthatja a kívánt helyet a labor létrehozásakor.      
     9. Kattintson a **Létrehozás** gombra. 
 
         ![Tesztkörnyezetfiók létrehozása ablak](../media/tutorial-setup-lab-account/lab-account-settings.png)
-5. Válassza ki a **harang ikonra** eszköztár (**értesítések**), győződjön meg arról, hogy az üzembe helyezés sikeres volt-e, és válassza ki **erőforrás megnyitása**. 
+5. Válassza a **harang ikont** az eszköztáron (**értesítések**), ellenőrizze, hogy az üzembe helyezés sikeres volt-e, majd válassza az **erőforrás keresése**lehetőséget. 
 
-    Jelölje ki **frissítése** a a **Tesztkörnyezetfiókok** lapon, és válassza ki a létrehozott tesztkörnyezet-fiókot. 
+    Másik lehetőségként válassza a **labor-fiókok** lapon a **frissítés** lehetőséget, majd válassza ki a létrehozott labor-fiókot. 
 
     ![Tesztkörnyezetfiók létrehozása ablak](../media/tutorial-setup-lab-account/go-to-lab-account.png)    
 6. Megjelenik az alábbi **tesztkörnyezetfiók** oldala:
 
     ![Tesztkörnyezetfiók-oldal](../media/tutorial-setup-lab-account/lab-account-page.png)
 
-## <a name="view-lab-accounts"></a>Tesztkörnyezetfiókok megtekintése
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-2. Válassza ki **összes erőforrás** a menüből. 
-3. Válassza ki **Tesztkörnyezetfiókok** számára a **típus**. 
-    Előfizetés, erőforráscsoport, helyek és címkék szerint is szűrheti. 
+## <a name="view-lab-accounts"></a>Tesztkörnyezet-fiókok megtekintése
+1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
+2. Válassza ki az **összes erőforrás** elemet a menüből. 
+3. Válassza a **típushoz**tartozó **labor-fiókok** lehetőséget. 
+    Az előfizetés, az erőforráscsoport, a helyszínek és a címkék alapján is szűrhető. 
 
-    ![Az összes erőforrás -> Lab-fiókokban](../media/how-to-manage-lab-accounts/all-resources-lab-accounts.png)
+    ![Minden erőforrás – > Lab-fiókok](../media/how-to-manage-lab-accounts/all-resources-lab-accounts.png)
 
-## <a name="view-and-manage-labs-in-the-lab-account"></a>Megtekintheti és kezelheti a labs labor-fiókban
+## <a name="view-and-manage-labs-in-the-lab-account"></a>Labs megtekintése és kezelése a labor-fiókban
 
-1. Az a **labor fiók** lapon jelölje be **Labs** a bal oldali menüben.
+1. A **labor-fiók** lapon válassza a bal oldali menüben a **laborok** lehetőséget.
 
-    ![A fiókban lévő Labs](../media/how-to-manage-lab-accounts/labs-in-account.png)
-1. Megjelenik egy **tesztkörnyezetek listájában** a számlán a következő információkat: 
-    1. A labor nevét.
-    2. A dátum, amelyen a labor létrehozása. 
-    3. E-mail-címét a felhasználó, aki létrehozta a labor létrehozása. 
-    4. A laborkörnyezetbe engedélyezett felhasználók maximális száma. 
-    5. A labor állapotát. 
+    ![A fiókban található Labs](../media/how-to-manage-lab-accounts/labs-in-account.png)
+1. A fiókban található **Labs-lista** a következő információkat tartalmazza: 
+    1. A labor neve.
+    2. A labor létrehozásának dátuma. 
+    3. A labort létrehozó felhasználó e-mail-címe. 
+    4. A laborban engedélyezett felhasználók maximális száma. 
+    5. A labor állapota. 
 
-## <a name="delete-a-lab-in-the-lab-account"></a>A lab-fiókban tesztkörnyezet törlése
-Kövesse az utasításokat az előző szakaszban a labor-fiókban a labs listájának megtekintéséhez.
+## <a name="delete-a-lab-in-the-lab-account"></a>Tesztkörnyezet törlése a labor-fiókban
+Kövesse az előző szakasz utasításait a labor-fiókban található laborok listájának megtekintéséhez.
 
-1. Válassza ki **... három (pont)** , és válassza ki **törlése**. 
+1. Válassza a **... lehetőséget. (három pont)** , majd válassza a **Törlés**lehetőséget. 
 
-    ![Tesztkörnyezet törlése – gomb](../media/how-to-manage-lab-accounts/delete-lab-button.png)
-2. Válassza ki **Igen** a figyelmeztető üzenet jelenik meg. 
+    ![Tesztkörnyezet törlése](../media/how-to-manage-lab-accounts/delete-lab-button.png)
+2. Válassza az **Igen** lehetőséget a figyelmeztető üzenetben. 
 
-    ![Labor törlésének megerősítése](../media/how-to-manage-lab-accounts/confirm-lab-delete.png)
+    ![Tesztkörnyezet törlésének megerősítése](../media/how-to-manage-lab-accounts/confirm-lab-delete.png)
 
-## <a name="delete-a-lab-account"></a>Tesztkörnyezetfiók törlése
-Kövesse az utasításokat az előző szakaszban, hogy a lab-fiókokban listában jeleníti meg. Tesztkörnyezetfiók törléséhez kövesse az alábbi utasításokat: 
+## <a name="delete-a-lab-account"></a>Labor-fiók törlése
+Kövesse az előző szakasz utasításait, amely a listában szereplő Lab-fiókokat jeleníti meg. A labor-fiók törléséhez kövesse az alábbi utasításokat: 
 
-1. Válassza ki a **labor fiók** , amelyet törölni szeretne. 
-2. Válassza ki **törlése** az eszköztáron. 
+1. Válassza ki a törölni kívánt **labor-fiókot** . 
+2. Válassza a **Törlés** lehetőséget az eszköztáron. 
 
-    ![Tesztkörnyezetfiókok -> a Törlés gombra.](../media/how-to-manage-lab-accounts/delete-button.png)
-1. Típus **Igen** megerősítést.
+    ![Labor-fiókok – > Törlés gomb](../media/how-to-manage-lab-accounts/delete-button.png)
+1. Erősítse meg az **Igen** értéket.
 1. Válassza a **Törlés** elemet. 
 
-    ![Törölje a labor-fiók – megerősítés](../media/how-to-manage-lab-accounts/delete-lab-account-confirmation.png)
+    ![Labor-fiók törlése – megerősítés](../media/how-to-manage-lab-accounts/delete-lab-account-confirmation.png)
 
+> [!NOTE]
+> A Lab-fiókok kezeléséhez az az. LabServices PowerShell-modult (előzetes verzió) is használhatja. További információ: az az [. LabServices Kezdőlap a githubon](https://github.com/Azure/azure-devtestlab/tree/master/samples/ClassroomLabs/Modules/Library).
 
 ## <a name="next-steps"></a>További lépések
-Tekintse meg a következő cikket: [Tesztkörnyezetfiókok konfigurálása](how-to-configure-lab-accounts.md).
+Tekintse meg a következő cikket: [Lab-fiókok konfigurálása](how-to-configure-lab-accounts.md).

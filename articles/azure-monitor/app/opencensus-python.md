@@ -8,12 +8,12 @@ author: reyang
 ms.author: reyang
 ms.date: 10/11/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 0d848027d6c754df371b4d87cf01c5b2fdbc8c02
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: 7fb436ef8d915898bc8f36dd10766e71f63e4a59
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72820735"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73575567"
 ---
 # <a name="set-up-azure-monitor-for-your-python-application-preview"></a>Azure Monitor beállítása a Python-alkalmazáshoz (előzetes verzió)
 
@@ -23,8 +23,6 @@ Azure Monitor támogatja a Python-alkalmazások elosztott nyomkövetését, metr
 
 - Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/) a virtuális gép létrehozásának megkezdése előtt.
 - Python-telepítés. Ez a cikk a [Python 3.7.0](https://www.python.org/downloads/)használja, bár a korábbi verziók valószínűleg kisebb módosításokkal fognak működni.
-
-
 
 ## <a name="sign-in-to-the-azure-portal"></a>Jelentkezzen be az Azure Portalra
 
@@ -40,7 +38,7 @@ Először létre kell hoznia egy Application Insights erőforrást a Azure Monit
 
 1. Megjelenik egy konfigurációs ablak. A beviteli mezők kitöltéséhez használja az alábbi táblázatot.
 
-   | Beállítás        | Value (Díj)           | Leírás  |
+   | Beállítás        | Érték           | Leírás  |
    | ------------- |:-------------|:-----|
    | **Name (Név)**      | Globálisan egyedi érték | A figyelt alkalmazást azonosító név |
    | **Erőforráscsoport**     | myResourceGroup      | Az új erőforráscsoport neve Application Insights-adattároláshoz |
@@ -55,6 +53,8 @@ Telepítse a OpenCensus Azure Monitor-exportőröket:
 ```console
 python -m pip install opencensus-ext-azure
 ```
+
+A csomagok és integrációk teljes listájáért lásd: [OpenCensus-csomagok](https://docs.microsoft.com/azure/azure-monitor/app/nuget#common-packages-for-python-using-opencensus).
 
 > [!NOTE]
 > A `python -m pip install opencensus-ext-azure` parancs feltételezi, hogy rendelkezik egy, a Python-telepítéshez beállított `PATH` környezeti változóval. Ha még nem konfigurálta ezt a változót, meg kell adnia a teljes könyvtár elérési útját, ahol a Python-végrehajtható fájl található. Az eredmény az alábbihoz hasonló parancs: `C:\Users\Administrator\AppData\Local\Programs\Python\Python37-32\python.exe -m pip install opencensus-ext-azure`.
@@ -84,7 +84,7 @@ Az SDK három Azure Monitor-exportálót használ különböző típusú telemet
         main()
     ```
 
-2. A kód futtatása többször is felszólítja, hogy adjon meg egy értéket. Az egyes bejegyzések esetében az érték a rendszerhéjra lesz kinyomtatva, a OpenCensus Python-modul pedig egy megfelelő `SpanData` fog készíteni. A OpenCensus-projekt egy [nyomkövetési struktúrát](https://opencensus.io/core-concepts/tracing/)határoz meg.
+2. A kód futtatása többször is felszólítja, hogy adjon meg egy értéket. Az egyes bejegyzések esetében az érték a rendszerhéjra lesz kinyomtatva, a OpenCensus Python-modul pedig egy megfelelő `SpanData`fog készíteni. A OpenCensus-projekt egy [nyomkövetési struktúrát](https://opencensus.io/core-concepts/tracing/)határoz meg.
     
     ```
     Enter a value: 4
@@ -126,9 +126,13 @@ Az SDK három Azure Monitor-exportálót használ különböző típusú telemet
         main()
     ```
 
-4. A Python-szkript futtatásakor a rendszer továbbra is kéri az értékek megadását, de csak az érték lesz kinyomtatva a rendszerhéjban. A rendszer elküldi a létrehozott `SpanData` Azure Monitor. A kibocsátott span-adat a `dependencies` alatt található.
+4. A Python-szkript futtatásakor a rendszer továbbra is kéri az értékek megadását, de csak az érték lesz kinyomtatva a rendszerhéjban. A rendszer elküldi a létrehozott `SpanData` Azure Monitor. A kibocsátott span-adat a `dependencies`alatt található.
 
-### <a name="metrics"></a>Metrikák
+5. A OpenCensus-mintavételezéssel kapcsolatos információkért tekintse meg a [mintavételezést a OpenCensus](https://docs.microsoft.com/azure/azure-monitor/app/sampling#configuring-fixed-rate-sampling-in-opencensus-python).
+
+6. A nyomkövetési adatok telemetria kapcsolatos részletekért tekintse meg a OpenCensus [telemetria korrelációt](https://docs.microsoft.com/azure/azure-monitor/app/correlation#telemetry-correlation-in-opencensus-python)ismertető részt.
+
+### <a name="metrics"></a>Mérőszámok
 
 1. Először hozzon elő néhány helyi metrikai adatokat. Egy egyszerű mérőszámot hozunk létre, amely nyomon követheti, hogy a felhasználó hányszor nyomja meg az ENTER billentyűt.
 
@@ -229,7 +233,7 @@ Az SDK három Azure Monitor-exportálót használ különböző típusú telemet
         main()
     ```
 
-4. Az exportőr a metrikus adatokat a Azure Monitor rögzített időközönként küldi el. Az alapértelmezett érték 15 másodpercenként. Egyetlen mérőszámot követünk nyomon, ezért a metrikai adatok minden, a benne foglalt értékkel és időbélyegzővel elküldve lesznek minden intervallumban. Az `customMetrics` alatti adat található.
+4. Az exportőr a metrikus adatokat a Azure Monitor rögzített időközönként küldi el. Az alapértelmezett érték 15 másodpercenként. Egyetlen mérőszámot követünk nyomon, ezért a metrikai adatok minden, a benne foglalt értékkel és időbélyegzővel elküldve lesznek minden intervallumban. A `customMetrics`alatt található adat.
 
 ### <a name="logs"></a>Naplók
 
@@ -290,7 +294,9 @@ Az SDK három Azure Monitor-exportálót használ különböző típusú telemet
         main()
     ```
 
-4. Az exportőr a Azure Monitorba küldi a naplófájlokat. Az `traces` alatti adat található.
+4. Az exportőr a Azure Monitorba küldi a naplófájlokat. A `traces`alatt található adat.
+
+5. A naplók nyomkövetési környezeti adatokkal való bővítésével kapcsolatos részletekért lásd: OpenCensus Python- [naplók integrációja](https://docs.microsoft.com/azure/azure-monitor/app/correlation#logs-correlation).
 
 ## <a name="start-monitoring-in-the-azure-portal"></a>Monitorozás indítása az Azure Portalon
 
@@ -324,9 +330,9 @@ A **naplók (Analytics)** lapon megtekintheti az alkalmazásból elküldett tele
 
 A listában az **aktív**:
 
-- A Azure Monitor Trace exportőrrel küldött telemetria esetében a bejövő kérelmek a `requests` alatt jelennek meg. A kimenő vagy folyamaton belüli kérelmek a `dependencies` alatt jelennek meg.
-- A Azure Monitor metrikákkal ellátott telemetria esetében az eljuttatott metrikák a `customMetrics` területen jelennek meg.
-- A Azure Monitor naplók exportőrével eljuttatott telemetria a naplók a `traces` alatt jelennek meg. A kivételek a `exceptions` alatt jelennek meg.
+- A Azure Monitor Trace exportőrrel küldött telemetria esetében a bejövő kérelmek a `requests`alatt jelennek meg. A kimenő vagy folyamaton belüli kérelmek a `dependencies`alatt jelennek meg.
+- A Azure Monitor metrikákkal ellátott telemetria esetében az eljuttatott metrikák a `customMetrics`területen jelennek meg.
+- A Azure Monitor naplók exportőrével eljuttatott telemetria a naplók a `traces`alatt jelennek meg. A kivételek a `exceptions`alatt jelennek meg.
 
 További információ a lekérdezések és naplók használatáról: [naplók a Azure monitorban](https://docs.microsoft.com/azure/azure-monitor/platform/data-platform-logs).
 
@@ -339,12 +345,12 @@ További információ a lekérdezések és naplók használatáról: [naplók a 
 * [MySQL-integráció](https://github.com/census-instrumentation/opencensus-python/tree/master/contrib/opencensus-ext-mysql)
 * [PostgreSQL](https://github.com/census-instrumentation/opencensus-python/tree/master/contrib/opencensus-ext-postgresql)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Alkalmazás-hozzárendelés](./../../azure-monitor/app/app-map.md)
 * [Végpontok közötti teljesítmény figyelése](./../../azure-monitor/learn/tutorial-performance.md)
 
-### <a name="alerts"></a>Értesítések
+### <a name="alerts"></a>Riasztások
 
 * [Rendelkezésre állási tesztek](../../azure-monitor/app/monitor-web-app-availability.md): Hozzon létre teszteket, hogy megbizonyosodjon róla, oldala látható a weben.
 * [Intelligens diagnosztika](../../azure-monitor/app/proactive-diagnostics.md): Ezek a tesztek automatikusan futnak, a beállításukhoz semmit sem kell tennie. Értesítést kap, ha az alkalmazásában szokatlanul magas a meghiúsult kérelmek száma.

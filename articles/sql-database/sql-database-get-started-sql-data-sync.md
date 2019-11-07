@@ -1,5 +1,5 @@
 ---
-title: Az Azure SQL-adatszinkronizálás beállítása | Microsoft Docs
+title: Az Azure SQL Data Sync beállítása
 description: Ez az oktatóanyag bemutatja, hogyan állíthatja be az Azure SQL-adatszinkronizálás
 services: sql-database
 ms.service: sql-database
@@ -11,14 +11,14 @@ author: allenwux
 ms.author: xiwu
 ms.reviewer: carlrab
 ms.date: 01/14/2019
-ms.openlocfilehash: 37b8f64360e871236be7a8623460bbe75bd1d8b5
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 082721ef1436d0b6668016aca29870016038af86
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68568171"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73689995"
 ---
-# <a name="tutorial-set-up-sql-data-sync-between-azure-sql-database-and-sql-server-on-premises"></a>Oktatóanyag: SQL-adatszinkronizálás beállítása a helyszíni Azure SQL Database és a SQL Server között
+# <a name="tutorial-set-up-sql-data-sync-between-azure-sql-database-and-sql-server-on-premises"></a>Oktatóanyag: SQL-adatszinkronizálás beállítása Azure SQL Database és a helyszíni SQL Server között
 
 Ebből az oktatóanyagból megtudhatja, hogyan állíthatja be az Azure SQL-adatszinkronizálás egy olyan szinkronizálási csoport létrehozásával, amely Azure SQL Database és SQL Server példányokat is tartalmaz. A szinkronizálási csoport egyéni konfigurálva van, és szinkronizálja a beállított ütemtervet.
 
@@ -46,7 +46,7 @@ PowerShell-példák a SQL-adatszinkronizálás konfigurálásához: Hogyan lehet
 
    ![1\. lépés beállításai](media/sql-database-get-started-sql-data-sync/stepone.png)
 
-   Az adatszinkronizálási **csoport létrehozása** lapon módosítsa a következő beállításokat:
+   Az **adatszinkronizálási csoport létrehozása** lapon módosítsa a következő beállításokat:
 
    | Beállítás                        | Leírás |
    | ------------------------------ | ------------------------------------------------- |
@@ -56,11 +56,11 @@ PowerShell-példák a SQL-adatszinkronizálás konfigurálásához: Hogyan lehet
    | **Ütközés feloldása** | Válassza a **hub Win** vagy a **tag Win**lehetőséget.<br/><br/>A **hub-Win** azt jelenti, hogy ütközések esetén a központi adatbázisban lévő adatai felülírják a tag adatbázisában található ütköző adatforrásokat.<br/><br/>A **tag Win** azt jelenti, hogy ütközések esetén a tag adatbázisában lévő adatai felülírják az ütköző adatforrásokat a központi adatbázisban. |
 
    > [!NOTE]
-   > A Microsoft azt javasolja, hogy hozzon létre egy új, üres adatbázist a **szinkronizálási metaadat**-adatbázisként való használatra. Az adatok szinkronizálása táblákat hoz létre ebben az adatbázisban, és gyakori számítási feladatokat futtat. Ez az adatbázis a kiválasztott régió összes szinkronizálási csoportjának **szinkronizálási metaadat** -adatbázisa, és nem módosítható az adatbázis vagy a neve anélkül, hogy az összes szinkronizálási csoportot és szinkronizálási ügynököt el kellene távolítani a régióból.
+   > A Microsoft azt javasolja, hogy hozzon létre egy új, üres adatbázist a **szinkronizálási metaadat-adatbázisként**való használatra. Az adatok szinkronizálása táblákat hoz létre ebben az adatbázisban, és gyakori számítási feladatokat futtat. Ez az adatbázis a kiválasztott régió összes szinkronizálási csoportjának **szinkronizálási metaadat-adatbázisa** , és nem módosítható az adatbázis vagy a neve anélkül, hogy az összes szinkronizálási csoportot és szinkronizálási ügynököt el kellene távolítani a régióból.
 
    Kattintson az **OK gombra** , és várja meg a szinkronizálási csoport létrehozását és üzembe helyezését.
 
-## <a name="add-sync-members"></a>Szinkronizálási tagok hozzáadása
+## <a name="add-sync-members"></a>Szinkronizálási Tagok hozzáadása
 
 Az új szinkronizálási csoport létrehozása és telepítése után a **szinkronizálási Tagok hozzáadása (2. lépés)** kiemelve jelenik meg az **új szinkronizálási csoport** lapon.
 
@@ -80,7 +80,7 @@ A **tag adatbázisa** szakaszban opcionálisan hozzáadhat egy Azure SQL Databas
   | ----------------------------- | ------------------------------------------------- |
   | **Szinkronizálási tag neve** | Adja meg az új szinkronizálási tag nevét. Ez a név nem azonos az adatbázis nevével. |
   | **Előfizetés** | Válassza ki a társított Azure-előfizetést számlázási célokra. |
-  | **Azure SQL Server** | Válassza ki a meglévő SQL Database-kiszolgálót. |
+  | **Azure-SQL Server** | Válassza ki a meglévő SQL Database-kiszolgálót. |
   | **Azure SQL Database** | Válassza ki a meglévő SQL-adatbázist. |
   | **Szinkronizálási irányok** | Válassza a **kétirányú szinkronizálás**, **a hub**vagy **a hub**lehetőséget. |
   | **Felhasználónév** és **jelszó** | Adja meg azon SQL Database-kiszolgáló meglévő hitelesítő adatait, amelyen a tag adatbázisa található. Ebben a szakaszban ne adjon meg *új* hitelesítő adatokat. |
@@ -102,7 +102,7 @@ A **tag adatbázisa** szakaszban opcionálisan hozzáadhat egy helyszíni SQL Se
 
    Ha az **új ügynök létrehozása**lehetőséget választja, tegye a következőket:
 
-   1. Töltse le az adatszinkronizálási ügynököt a megadott hivatkozásról, és telepítse azt azon a számítógépen, ahol a SQL Server található. Az ügynököt közvetlenül a [SQL Azure](https://www.microsoft.com/download/details.aspx?id=27693)adatszinkronizálási ügynökről is letöltheti.
+   1. Töltse le az adatszinkronizálási ügynököt a megadott hivatkozásról, és telepítse azt azon a számítógépen, ahol a SQL Server található. Az ügynököt közvetlenül a [SQL Azure adatszinkronizálási ügynökről](https://www.microsoft.com/download/details.aspx?id=27693)is letöltheti.
 
       > [!IMPORTANT]
       > Meg kell nyitnia a 1433-as kimenő TCP-portot a tűzfalon, hogy az ügyfél kommunikáljon a kiszolgálóval.
@@ -159,7 +159,7 @@ Az új szinkronizálási csoport tagjainak létrehozása és telepítése után 
 
 1. Kattintson a **Mentés** gombra.
 
-1. Alapértelmezés szerint az adatbázisok nincsenek szinkronizálva az ütemezett vagy a manuális futtatásig. Manuális szinkronizálás futtatásához navigáljon az SQL-adatbázishoz a Azure Portalban, válassza a **szinkronizálás más adatbázisokhoz**lehetőséget, majd válassza ki a szinkronizálási csoportot. Megnyílik az adatszinkronizálás lap. Válassza a **Szinkronizálás** elemet.
+1. Alapértelmezés szerint az adatbázisok nincsenek szinkronizálva az ütemezett vagy a manuális futtatásig. Manuális szinkronizálás futtatásához navigáljon az SQL-adatbázishoz a Azure Portalban, válassza a **szinkronizálás más adatbázisokhoz**lehetőséget, majd válassza ki a szinkronizálási csoportot. Megnyílik az **adatszinkronizálás** lap. Válassza a **Szinkronizálás** elemet.
 
     ![Manuális szinkronizálás](media/sql-database-get-started-sql-data-sync/datasync-sync.png)
 

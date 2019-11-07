@@ -1,5 +1,5 @@
 ---
-title: Mi az a Computer Vision API? – Computer Vision
+title: Mi a Computer Vision? – Computer Vision
 titleSuffix: Azure Cognitive Services
 description: A Computer Vision szolgáltatás a fejlesztők számára hozzáférést biztosít speciális képfeldolgozó és információt visszaadó algoritmusokhoz.
 services: cognitive-services
@@ -8,27 +8,31 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: overview
-ms.date: 10/01/2019
+ms.date: 11/04/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: db62f003f7eb8dd272305b86712cf1d721797114
-ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
+ms.openlocfilehash: a34fdb24573df3287b72991454963c67e9689b9f
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71719539"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73604542"
 ---
 # <a name="what-is-computer-vision"></a>Mi a Computer Vision?
 
-Az Azure Computer Vision szolgáltatása lehetővé teszi a fejlesztőknek, hogy a képeket feldolgozó és a visszaadott adatokat használó fejlett algoritmusokhoz hozzáférjenek. A kép elemzéséhez feltöltheti a képet, vagy megadhatja a kép URL-címét. A képfeldolgozó algoritmusok számos különböző módon elemezheti a tartalmakat, attól függően, hogy milyen vizuális funkciók érdeklik. A Computer Vision például megállapíthatja, hogy egy rendszerkép tartalmaz-e felnőtt tartalmat, vagy megtalálhatja a képen látható összes emberi arcot.
+Az Azure Computer Vision szolgáltatása olyan fejlett algoritmusokhoz biztosít hozzáférést a fejlesztőknek, amelyek a kívánt vizuális funkcióktól függően képeket dolgoznak fel, és adatokat adnak vissza. A Computer Vision például megállapíthatja, hogy egy rendszerkép tartalmaz-e felnőtt tartalmat, vagy megtalálhatja a képen látható összes emberi arcot.
 
-A Computer Vision az alkalmazásban natív SDK használatával vagy közvetlenül a REST API meghívásával használhatja. Ez az oldal széles körben ismerteti, hogy mit tehet a Computer Vision.
+Az alkalmazásban használhatja a Computer Visiont natív SDK-n keresztül, vagy közvetlenül a REST API meghívásával. Ez az oldal széles körben ismerteti, hogy mit tehet a Computer Vision.
+
+## <a name="computer-vision-for-digital-asset-management"></a>Computer Vision a digitális eszközök kezeléséhez
+
+A Computer Vision számos digitális Asset Management-(DAM-) forgatókönyvet képes kihasználni. A DAM a gazdag média-eszközök rendszerezésének, tárolásának és lekérésének üzleti folyamata, valamint a digitális jogok és engedélyek kezelése. Előfordulhat például, hogy egy vállalat szeretné csoportosítani és azonosítani a képeket a látható emblémák, arcok, objektumok, színek és egyebek alapján. Vagy előfordulhat, hogy automatikusan kívánja [létrehozni a képekhez tartozó feliratokat](./Tutorials/storage-lab-tutorial.md) és kulcsszavakat csatolni, hogy azok kereshetőek legyenek. Az Cognitive Services, Azure Search és intelligens jelentéskészítést használó all-in-One DAM megoldásért tekintse meg a következőt: a Knowledge Reporting [Solution-gyorsító útmutató](https://github.com/Azure-Samples/azure-search-knowledge-mining) a githubon. Más DAM-példákért tekintse meg a [Computer Vision megoldási sablonok](https://github.com/Azure-Samples/Cognitive-Services-Vision-Solution-Templates) tárházát.
 
 ## <a name="analyze-images-for-insight"></a>Képek elemzése a betekintéshez
 
 A képeket elemezheti a vizualizáció funkcióinak és jellemzőinek észleléséhez és elemzéséhez. Az alábbi táblázat összes funkcióját a [rendszerkép elemzése](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) API tartalmazza.
 
-| Action | Leírás |
+| Műveletek | Leírás |
 | ------ | ----------- |
 |**[Vizuális jellemzők címkézése](concept-tagging-images.md)**|Azonosíthatja és címkézheti egy kép vizualizációs funkcióit több ezer felismerhető objektumból, az élő dolgokból, a díszletből és a tevékenységekből álló készletből. Ha a címkék nem egyértelműek vagy nem általános ismeretek, az API-válasz a címke kontextusának tisztázására szolgáló tippeket tartalmaz. A címkézés nem korlátozódik a kép fő témájára, például az előtérben szereplő személyre, hanem magában foglalja a környezetet (beltér vagy kültér), bútorokat, eszközöket, növényeket, állatokat, kiegészítőket, készülékeket stb.|
 |**[Objektumok észlelése](concept-object-detection.md)**| Az objektum-észlelés hasonlít a címkézéshez, de az API az egyes alkalmazott címkékhez tartozó határoló mezők koordinátáit adja vissza. Ha például egy rendszerkép kutyát, macskát és személyt tartalmaz, az észlelési művelet a képen látható koordinátákkal együtt listázza ezeket az objektumokat. Ezt a funkciót használhatja a képek objektumai közötti további kapcsolatok feldolgozásához. Azt is megtudhatja, hogy mikor van több példánya ugyanazzal a címkével egy képen.|
@@ -47,8 +51,6 @@ A képeket elemezheti a vizualizáció funkcióinak és jellemzőinek észlelés
 A Computer Vision [READ API](concept-recognizing-text.md#read-api) használatával kinyerheti a nyomtatott és a kézírásos szöveget a képekből egy géppel olvasható karakteres adatfolyamba. Az olvasási API a legújabb modelleket használja, és számos felületen és háttérbeli szöveggel dolgozik, például a nyugták, a plakátok, az üzleti kártyák, a levelek és a táblák. Jelenleg az egyetlen támogatott nyelv az angol.
 
 Az optikai karakterfelismerési [(OCR)](concept-recognizing-text.md#ocr-optical-character-recognition-api) API használatával több nyelven is kinyerheti a nyomtatott szöveget. Ha szükséges, az OCR kijavította a felismert szöveg forgását, és megadja az egyes szavak keretének koordinátáit. Az OCR 25 nyelvet támogat, és automatikusan észleli a felismert szöveg nyelvét.
-
-
 
 ## <a name="moderate-content-in-images"></a>Mérsékelt tartalom a képekben
 
@@ -75,6 +77,6 @@ Akárcsak az összes Cognitive Services esetében, a Computer Vision szolgáltat
 
 A Computer Vision használatának első lépései a gyors üzembe helyezési útmutatót követve:
 
-- [Rövid útmutató: Computer Vision .NET SDK](quickstarts-sdk/csharp-sdk.md)
-- [Rövid útmutató: Python SDK Computer Vision](quickstarts-sdk/python-sdk.md)
-- [Rövid útmutató: Java SDK Computer Vision](quickstarts-sdk/java-sdk.md)
+- [Gyors útmutató: Computer Vision .NET SDK](quickstarts-sdk/csharp-sdk.md)
+- [Gyors útmutató: Computer Vision Python SDK](quickstarts-sdk/python-sdk.md)
+- [Rövid útmutató: Computer Vision Java SDK](quickstarts-sdk/java-sdk.md)

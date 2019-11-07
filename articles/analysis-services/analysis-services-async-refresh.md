@@ -1,18 +1,18 @@
 ---
 title: Azure Analysis Services modellek aszinkron frissítése | Microsoft Docs
-description: Megtudhatja, hogyan lehet az aszinkron frissítést a REST API használatával dekódolni.
+description: Ismerteti, hogyan használható a Azure Analysis Services REST API a modell adatai aszinkron frissítésének kódolásához.
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
 ms.date: 10/28/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 5fbb3f2cbc0e53ab1bc04d57b583802e26b92a60
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 7c6fba10264939335cdef26f288973f8217f340b
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73147369"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73573394"
 ---
 # <a name="asynchronous-refresh-with-the-rest-api"></a>Aszinkron frissítés a REST API-val
 
@@ -56,12 +56,12 @@ Használhatja például a frissítések gyűjtemény utáni műveletét a friss�
 https://westus.asazure.windows.net/servers/myserver/models/AdventureWorks/refreshes
 ```
 
-## <a name="authentication"></a>Hitelesítés
+## <a name="authentication"></a>Authentication
 
 Minden hívást az engedélyezési fejlécben érvényes Azure Active Directory (OAuth 2) jogkivonattal kell hitelesíteni, és meg kell felelnie az alábbi követelményeknek:
 
 - A tokennek felhasználói jogkivonatnak vagy egyszerű alkalmazási szolgáltatásnak kell lennie.
-- A tokennek a megfelelő célközönséget kell beállítania `https://*.asazure.windows.net` értékre.
+- A tokennek a megfelelő célközönséget kell beállítania `https://*.asazure.windows.net`.
 - A kért hívás elvégzéséhez a felhasználónak vagy az alkalmazásnak megfelelő engedélyekkel kell rendelkeznie a kiszolgálón vagy a modellben. Az engedélyezési szintet a modellben vagy a kiszolgálón lévő felügyeleti csoportban lévő szerepkörök határozzák meg.
 
     > [!IMPORTANT]
@@ -97,7 +97,7 @@ A törzs a következőhöz hasonló lehet:
 
 Paraméterek megadása nem kötelező. A rendszer az alapértelmezett értéket alkalmazza.
 
-| Név             | Type (Típus)  | Leírás  |Alapértelmezett  |
+| Name (Név)             | Típus  | Leírás  |Alapértelmezett  |
 |------------------|-------|--------------|---------|
 | `Type`           | Felsorolás  | A végrehajtandó feldolgozás típusa. A típusok összhangban vannak a TMSL [frissítési parancs](https://docs.microsoft.com/bi-reference/tmsl/refresh-command-tmsl) típusával: Full, clearValues, számítsuk, dataOnly, Automatic és defragment. A Hozzáadás típusa nem támogatott.      |   Automatikus      |
 | `CommitMode`     | Felsorolás  | Meghatározza, hogy az objektumok kötegekben lesznek-e véglegesítve, vagy csak akkor, ha a művelet befejeződött. A módok a következők: alapértelmezett, tranzakciós, partialBatch.  |  tranzakciós       |
@@ -207,7 +207,7 @@ A mintakód a [szolgáltatás egyszerű](#service-principal) hitelesítését ha
 Az egyszerű szolgáltatásnév beállításával és a szükséges engedélyek az Azure-ban való hozzárendelésével kapcsolatos további információkért lásd: [egyszerű szolgáltatásnév létrehozása – Azure Portal](../active-directory/develop/howto-create-service-principal-portal.md) és [egy egyszerű szolgáltatásnév hozzáadása a kiszolgálói rendszergazdai szerepkörhöz](analysis-services-addservprinc-admins.md) . A lépések elvégzése után végezze el a következő további lépéseket:
 
 1.  A kód mintában keresse meg a **String Authority =... karakterláncot**, cserélje le a **commit** a szervezet bérlői azonosítójával.
-2.  Megjegyzés/Megjegyzés: a ClientCredential osztály a cred objektum létrehozásához használatos. Győződjön meg arról, hogy a \<App azonosító > és \<App kulcs > értékek biztonságos módon érhetők el, vagy használjon tanúsítványalapú hitelesítést az egyszerű szolgáltatásokhoz.
+2.  Megjegyzés/Megjegyzés: a ClientCredential osztály a cred objektum létrehozásához használatos. Győződjön meg arról, hogy a \<alkalmazás-azonosító > és \<az alkalmazás kulcsának > értékeket biztonságos módon kell elérni, vagy tanúsítványalapú hitelesítést kell használnia az egyszerű szolgáltatásokhoz.
 3.  Futtassa a mintát.
 
 

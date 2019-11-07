@@ -9,11 +9,11 @@ ms.date: 07/25/2019
 ms.author: cynthn
 ms.custom: include file
 ms.openlocfilehash: 262880997c6b065dc5293a18d9a07c52ac836f37
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68703015"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73590862"
 ---
 > [!IMPORTANT]
 > Az Azure dedikált gazdagépek jelenleg nyilvános előzetes verzióban érhetők el.
@@ -37,16 +37,16 @@ Dönthet úgy is, hogy a rendelkezésre állási zónákat és a tartalék tarto
 Ebben a példában egy 1 rendelkezésre állási zónát és 2 tartalék tartományt használó gazdagépet hozunk létre. 
 
 
-1. Nyissa meg [](https://portal.azure.com)az Azure Portalt.
+1. Nyissa meg az Azure [Portalt](https://portal.azure.com).
 1. Válassza az **erőforrás létrehozása** lehetőséget a bal felső sarokban.
-1. Keresse meg a gazdagépet, majd az eredmények közül válassza ki a **gazdagép-csoportokat (előzetes verzió)** .
+1. Keresse meg a **gazdagépet** , majd az eredmények közül válassza ki a **gazdagép-csoportokat (előzetes verzió)** .
 
     ![A gazdagép-csoportok keresési eredménye.](./media/virtual-machines-common-dedicated-hosts-portal/host-group.png)
 1. A **gazdagép-csoportok (előzetes verzió)** lapon válassza a **Létrehozás**lehetőséget.
 1. Válassza ki a használni kívánt előfizetést, majd válassza az **új létrehozása** lehetőséget egy új erőforráscsoport létrehozásához.
 1. A név mezőbe írja be a *MyDedicatedHostsRG* **nevet** , majd kattintson az **OK gombra**.
 1. A **gazdagép-csoport neve**mezőbe írja be a következőt: *myHostGroup*.
-1. A **hely**mezőben válassza az **USA keleti**régiója lehetőséget.
+1. A hely mezőben válassza az **USA keleti** **régiója**lehetőséget.
 1. A **rendelkezésre állási zóna**beállításnál válassza az **1**lehetőséget.
 1. A tartalék **tartományok száma**beállításnál válassza a **2**lehetőséget.
 1. Válassza a **felülvizsgálat + létrehozás** lehetőséget, majd várja meg az érvényesítést.
@@ -58,7 +58,7 @@ Csak néhány percet vehet igénybe a gazda csoport létrehozásakor.
 
 ## <a name="create-a-dedicated-host"></a>Dedikált gazdagép létrehozása
 
-Most hozzon létre egy dedikált gazdagépet a gazdagép csoportban. A gazdagép neve mellett meg kell adnia a gazdagéphez tartozó SKU-t is. A gazdagép SKU rögzíti a támogatott virtuálisgép-sorozatot, valamint a dedikált gazdagép hardveres generációját.  Az előzetes verzió ideje alatt a következő gazdagépi SKU-értékeket fogjuk támogatni: DSv3_Type1 és ESv3_Type1.
+Most hozzon létre egy dedikált gazdagépet a gazdagép csoportban. A gazdagép neve mellett meg kell adnia a gazdagéphez tartozó SKU-t is. A gazdagép SKU rögzíti a támogatott virtuálisgép-sorozatot, valamint a dedikált gazdagép hardveres generációját.  Az előzetes verzióban a következő gazdagépi SKU-értékeket fogjuk támogatni: DSv3_Type1 és ESv3_Type1.
 
 A gazdagép SKU-ról és a díjszabásról további információt az [Azure dedikált gazdagép díjszabása](https://aka.ms/ADHPricing)című témakörben talál.
 
@@ -72,7 +72,7 @@ Ha a gazdagéphez a tartalék tartományokat állítja be, a rendszer megkéri, 
 1. Válassza ki a használni kívánt előfizetést.
 1. Válassza az *myDedicatedHostsRG* elemet az **erőforráscsoport**elemnél.
 1. A **példány részletei**mezőbe írja be a myHost **nevet** , és válassza az *USA keleti* régiója lehetőséget a helyhez.
-1. A **hardverprofil**területen válassza a *standard Es3 Family-Type 1* elemet a **család méretéhez**, **válassza a** *myHostGrup* lehetőséget, majd válassza az *1* értéket a tartalék **tartomány**számára. Hagyja meg az alapértelmezett értékeket a többi mezőnél.
+1. A **hardverprofil**területen válassza a *standard Es3 Family-Type 1* elemet a **család méretéhez**, válassza a *MyHostGrup* lehetőséget **, majd válassza** az *1* értéket a tartalék **tartomány**számára. Hagyja meg az alapértelmezett értékeket a többi mezőnél.
 1. Ha elkészült, válassza a **felülvizsgálat + létrehozás** lehetőséget, és várja meg az érvényesítést.
 
     ![Gazdagép beállításai](./media/virtual-machines-common-dedicated-hosts-portal/host-settings.png)

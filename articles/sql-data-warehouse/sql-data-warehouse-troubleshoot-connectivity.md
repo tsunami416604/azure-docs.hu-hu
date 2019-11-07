@@ -1,6 +1,6 @@
 ---
-title: Hibaelhárítási Azure SQL Data Warehouse | Microsoft Docs
-description: Hibaelhárítási Azure SQL Data Warehouse.
+title: Kapcsolat hibaelhárítása
+description: Azure SQL Data Warehouse-kapcsolat hibaelhárítása.
 services: sql-data-warehouse
 author: anumjs
 manager: craigg
@@ -10,23 +10,24 @@ ms.subservice: supportability
 ms.date: 03/27/2019
 ms.author: anjangsh
 ms.reviewer: igorstan
-ms.openlocfilehash: ebdeaf21253e89a9a14e3a56ca7be0f6e8adceb0
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.custom: seo-lt-2019
+ms.openlocfilehash: d1139032176b3b44c58471b87cabd10ffeaa3d20
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70859230"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73692424"
 ---
 # <a name="troubleshooting-connectivity-issues"></a>Kapcsolódási problémák elhárítása
 
 Ez a cikk a SQL Data Warehousehoz való csatlakozással kapcsolatos gyakori hibaelhárítási technikákat sorolja fel.
 - [Szolgáltatás rendelkezésre állásának keresése](./sql-data-warehouse-troubleshoot-connectivity.md#check-service-availability)
 - [Szüneteltetett vagy skálázási művelet keresése](./sql-data-warehouse-troubleshoot-connectivity.md#check-for-paused-or-scaling-operation)
-- [A tűzfal beállításainak megtekintése](./sql-data-warehouse-troubleshoot-connectivity.md#check-your-firewall-settings)
-- [A VNet/szolgáltatás végpontjának beállításai](./sql-data-warehouse-troubleshoot-connectivity.md#check-your-vnetservice-endpoint-settings)
-- [A legújabb illesztőprogramok keresése](./sql-data-warehouse-troubleshoot-connectivity.md#check-for-the-latest-drivers)
-- [A kapcsolatok karakterláncának keresése](./sql-data-warehouse-troubleshoot-connectivity.md#check-your-connection-string)
-- [Időnkénti kapcsolatok problémái](./sql-data-warehouse-troubleshoot-connectivity.md#intermittent-connection-issues)
+- [A tűzfalbeállítások ellenőrzése](./sql-data-warehouse-troubleshoot-connectivity.md#check-your-firewall-settings)
+- [A Vnet/szolgáltatásvégpont beállításainak ellenőrzése](./sql-data-warehouse-troubleshoot-connectivity.md#check-your-vnetservice-endpoint-settings)
+- [A legújabb illesztők keresése](./sql-data-warehouse-troubleshoot-connectivity.md#check-for-the-latest-drivers)
+- [A kapcsolati sztring ellenőrzése](./sql-data-warehouse-troubleshoot-connectivity.md#check-your-connection-string)
+- [Időszakos kapcsolódási problémák](./sql-data-warehouse-troubleshoot-connectivity.md#intermittent-connection-issues)
 - [Gyakori hibaüzenetek](./sql-data-warehouse-troubleshoot-connectivity.md#common-error-messages)
 
 ## <a name="check-service-availability"></a>Szolgáltatás rendelkezésre állásának keresése
@@ -35,13 +36,13 @@ Ellenőrizze, hogy elérhető-e a szolgáltatás. A Azure Portal lépjen a csatl
 
 ![Erőforrás állapotának kiválasztása](./media/sql-data-warehouse-troubleshoot-connectivity/diagnostics-link.png)
 
-A SQL Data Warehouse állapota itt jelenik meg. Ha a szolgáltatás nem elérhetőkéntjelenik meg, tekintse meg a további lépéseket.
+A SQL Data Warehouse állapota itt jelenik meg. Ha a szolgáltatás nem **elérhetőként**jelenik meg, tekintse meg a további lépéseket.
 
 ![Elérhető szolgáltatás](./media/sql-data-warehouse-troubleshoot-connectivity/resource-health.png)
 
 Ha az erőforrás állapota azt mutatja, hogy az adattárház szüneteltetve van vagy méretezést végez, kövesse az útmutatást az adattárház folytatásához.
 
-![A szolgáltatás szüneteltette](./media/sql-data-warehouse-troubleshoot-connectivity/resource-health-pausing.png) a Resource Health további információit itt találja.
+a ![szolgáltatás szüneteltetve](./media/sql-data-warehouse-troubleshoot-connectivity/resource-health-pausing.png) további információkkal szolgál Resource Healthről.
 
 ## <a name="check-for-paused-or-scaling-operation"></a>Szüneteltetett vagy skálázási művelet keresése
 
@@ -57,7 +58,7 @@ Ellenkező esetben kérdezze meg a rendszergazdát, hogy a karbantartás nem üt
 
 ## <a name="check-your-firewall-settings"></a>A tűzfal beállításainak megtekintése
 
-Az SQL Data Warehouse az 1433-as portot használja a kommunikációhoz.   Ha vállalati hálózaton belülről próbál csatlakozni, előfordulhat, hogy a hálózati tűzfal nem engedélyezi a kimenő forgalmat az 1433-as porton keresztül. Ebben az esetben nem tud csatlakozni a Azure SQL Database-kiszolgálóhoz, ha az informatikai részleg nem nyitja meg a 1433-es portot. A tűzfal-konfigurációkról további információt [itt](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure#create-and-manage-ip-firewall-rules)találhat.
+Az SQL Data Warehouse az 1433-as portot használja a kommunikációhoz.   Ha vállalati hálózaton belülről próbál csatlakozni, előfordulhat, hogy a hálózati tűzfal nem engedélyezi a kimenő forgalmat az 1433-as porton keresztül. Ebben az esetben nem tud csatlakozni az Azure SQL-adatbáziskiszolgálóhoz, ha az informatikai részleg nem nyitja meg az 1433-as portot. A tűzfal-konfigurációkról további információt [itt](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure#create-and-manage-ip-firewall-rules)találhat.
 
 ## <a name="check-your-vnetservice-endpoint-settings"></a>A VNet/szolgáltatás végpontjának beállításai
 
@@ -84,7 +85,7 @@ Győződjön meg arról, hogy a legújabb illesztőprogram-verziókat használja
 
 ## <a name="check-your-connection-string"></a>A kapcsolatok karakterláncának keresése
 
-Győződjön meg arról, hogy a kapcsolódási karakterláncok megfelelően vannak beállítva.  Az alábbiakban néhány példa látható.  Itt további információkat talál a [kapcsolatok karakterláncáról](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-connection-strings).
+Ellenőrizze, hogy a kapcsolati sztring megfelelően van-e beállítva.  Az alábbiakban néhány példa látható.  [Itt talál további információt a kapcsolati sztringekről](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-connection-strings).
 
 ADO.NET kapcsolati sztring
 
@@ -112,7 +113,7 @@ jdbc:sqlserver://yourserver.database.windows.net:1433;database=yourdatabase;user
 
 ## <a name="intermittent-connection-issues"></a>Időnkénti kapcsolatok problémái
 
-Ellenőrizze, hogy nagy mennyiségű várólistán lévő kéréssel tapasztal-e nagy terhelést a kiszolgálón. Előfordulhat, hogy további erőforrásokhoz is szükség van az adattárház vertikális felskálázására.
+Ellenőrizze, hogy nagy terhelés alatt áll-e a kiszolgáló, sok várólistára helyezett kéréssel. Lehetséges, hogy vertikálisan fel kell skáláznia az adattárházat, hogy további erőforrásokat tegyen elérhetővé.
 
 ## <a name="common-error-messages"></a>Gyakori hibaüzenetek
 

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: librown, aakapo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b5758b1fbb9d311219e3dc4dd483691f6c9d80c1
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 9b57fe9241a6a29e6f5ce12b7a1412455df4a001
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73172167"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73603478"
 ---
 # <a name="enable-passwordless-security-key-sign-in-to-windows-10-devices-preview"></a>Jelszó nélküli biztonsági kulcs bejelentkezésének engedélyezése Windows 10-es eszközökre (előzetes verzió)
 
@@ -29,19 +29,13 @@ Ez a dokumentum a FIDO2 biztonsági kulcson alapuló jelszavas hitelesítésnek 
 
 ## <a name="requirements"></a>Követelmények
 
-| Eszköz típusa | Azure AD-hez csatlakoztatott | Hibrid Azure AD-csatlakozás |
-| --- | --- | --- |
-| [Azure-Multi-Factor Authentication](howto-mfa-getstarted.md) | X | X |
-| [A kombinált biztonsági információk regisztrációjának előzetes verziója](concept-registration-mfa-sspr-combined.md) | X | X |
-| Kompatibilis [FIDO2 biztonsági kulcsok](concept-authentication-passwordless.md#fido2-security-keys) | X | X |
-| A WebAuthN a Windows 10 1809-es vagy újabb verzióját igényli | X | X |
-| Az [Azure ad-hez csatlakoztatott eszközökhöz](../devices/concept-azure-ad-join.md) a Windows 10 1809-es vagy újabb verziója szükséges | X |   |
-| A [hibrid Azure ad-hez csatlakoztatott eszközökhöz](../devices/concept-azure-ad-join-hybrid.md) Windows 10 bennfentes Build 18945 vagy újabb verzió szükséges |   | X |
-| Teljes mértékben kijavítottuk a Windows Server 2016/2019 rendszerű tartományvezérlőket. |   | X |
-| Frissítés a [Azure ad Connect](../hybrid/how-to-connect-install-roadmap.md#install-azure-ad-connect) legújabb verziójára |   | X |
-| [Microsoft Intune](https://docs.microsoft.com/intune/fundamentals/what-is-intune) (nem kötelező) | X | X |
-| Kiépítési csomag (nem kötelező) | X | X |
-| Csoportházirend (nem kötelező) |   | X |
+- [Azure-Multi-Factor Authentication](howto-mfa-getstarted.md)
+- [A kombinált biztonsági információk regisztrációjának előzetes verziója](concept-registration-mfa-sspr-combined.md)
+- Kompatibilis [FIDO2 biztonsági kulcsok](concept-authentication-passwordless.md#fido2-security-keys)
+- A WebAuthN a Windows 10 1809-es vagy újabb verzióját igényli
+- Az [Azure ad-hez csatlakoztatott eszközökhöz](../devices/concept-azure-ad-join.md) a Windows 10 1809-es vagy újabb verziója szükséges
+- [Microsoft Intune](https://docs.microsoft.com/intune/fundamentals/what-is-intune) (nem kötelező)
+- Kiépítési csomag (nem kötelező)
 
 ### <a name="unsupported-scenarios"></a>Nem támogatott forgatókönyvek
 
@@ -56,8 +50,6 @@ Ez a dokumentum a FIDO2 biztonsági kulcson alapuló jelszavas hitelesítésnek 
 
 Az Azure AD-hez csatlakoztatott eszközöknek, amelyekkel kísérletezni fog, a Windows 10 1809-es vagy újabb verziójának kell futnia. A legjobb élmény a Windows 10 1903-es vagy újabb verziója.
 
-A teszteléshez használt hibrid Azure AD-hez csatlakoztatott eszközöket a Windows 10 Insider Build 18945 vagy újabb verziójának kell futnia.
-
 ## <a name="enable-security-keys-for-windows-sign-in"></a>Biztonsági kulcsok engedélyezése a Windows-bejelentkezéshez
 
 A szervezetek az alábbi módszerek közül egyet vagy többet is választhatnak, hogy a szervezet követelményei alapján engedélyezzék a Windows-bejelentkezéshez szükséges biztonsági kulcsok használatát.
@@ -65,12 +57,6 @@ A szervezetek az alábbi módszerek közül egyet vagy többet is választhatnak
 - [Engedélyezés az Intune-nal](#enable-with-intune)
    - [Célként megadott Intune-telepítés](#targeted-intune-deployment)
 - [Engedélyezés kiépítési csomaggal](#enable-with-a-provisioning-package)
-- [Engedélyezés Csoportházirendsal (csak hibrid Azure AD-hez csatlakoztatott eszközök)](#enable-with-group-policy)
-
-> [!IMPORTANT]
-> A **hibrid Azure ad-hez csatlakoztatott eszközökhöz** tartozó szervezeteknek **is** el kell végezniük a cikkben ismertetett lépéseket, engedélyezni kell a [FIDO2 hitelesítést a helyszíni erőforrásokhoz](howto-authentication-passwordless-security-key-on-premises.md) , mielőtt a Windows 10 FIDO2 a biztonsági kulcs hitelesítése működni fog.
->
-> Az **Azure ad-hez csatlakoztatott eszközökhöz** tartozó szervezeteknek ezt azelőtt kell megtenniük, hogy az eszközeik a FIDO2 biztonsági kulcsokkal képesek legyenek hitelesíteni a helyszíni erőforrásokon.
 
 ### <a name="enable-with-intune"></a>Engedélyezés az Intune-nal
 
@@ -124,18 +110,7 @@ Az Intune által nem felügyelt eszközök esetében a kiépítési csomag telep
 > [!NOTE]
 > A Windows 10 1809-es verzióját futtató eszközökön a megosztott számítógépes üzemmódot (EnableSharedPCMode) is engedélyeznie kell. A funtionality engedélyezésével kapcsolatos információkért tekintse meg a következő cikket: [megosztott vagy vendég számítógép beállítása Windows 10 rendszeren](https://docs.microsoft.com/windows/configuration/set-up-shared-or-guest-pc).
 
-### <a name="enable-with-group-policy"></a>Engedélyezés Csoportházirend
-
-A **hibrid Azure ad-hez csatlakoztatott eszközökhöz** tartozó szervezetek a következő csoportházirend-beállítást konfigurálhatják, hogy lehetővé tegyék a. biztonsági kulcsos bejelentkezést.
-
-A beállítás a **Számítógép konfigurációja** > **Felügyeleti sablonok** > **rendszer** > **Bejelentkezés** > a **biztonsági kulcs bejelentkezésének bekapcsolása**lehetőség alatt található.
-
-- Ha ezt a házirendet **engedélyezve** értékre állítja, lehetővé teszi a felhasználók számára a biztonsági kulcsokkal való bejelentkezést.
-- Ha a házirendet **le szeretné tiltani** vagy **nincs konfigurálva** , a felhasználók nem tudnak bejelentkezni a biztonsági kulcsokkal.
-
-Ennek a Csoportházirend beállításnak a `credentialprovider.admx` Csoportházirend sablon frissített verzióját kell megadnia. Ez az új sablon a Windows Server következő verziójával és a Windows 10 20H1 érhető el. Ezt a beállítást olyan eszközzel lehet felügyelni, amely a Windows újabb verzióinak egyikét futtatja, vagy központilag a támogatási témakör útmutatását követve a [windows Csoportházirend felügyeleti sablonok központi tárolójának létrehozása és kezelése](https://support.microsoft.com/help/3087759/how-to-create-and-manage-the-central-store-for-group-policy-administra).
-
-## <a name="sign-in-with-fido2-security-key"></a>Bejelentkezés FIDO2 biztonsági kulccsal
+## <a name="sign-in-to-windows-with-a-fido2-security-key"></a>Bejelentkezés a Windowsba FIDO2 biztonsági kulccsal
 
 Az alábbi példában a felhasználói Bala FIDO2 már kiépített egy biztonsági kulcsot az előző cikkben leírt lépésekkel, [engedélyezheti a jelszó nélküli biztonsági kulcs bejelentkezését](howto-authentication-passwordless-security-key.md#user-registration-and-management-of-fido2-security-keys). A Bala kiválaszthatja a biztonsági kulcs hitelesítő adatait szolgáltatót a Windows 10 zárolási képernyőjén, és beillesztheti a biztonsági kulcsot a Windowsba való bejelentkezéshez.
 
@@ -157,9 +132,29 @@ Ha meg szeretné osztani a visszajelzéseket, vagy problémákba ütközik a fun
    1. Alkategória:
 1. A naplók rögzítéséhez használja a következő lehetőséget: a **probléma újbóli létrehozása**
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="frequently-asked-questions"></a>Gyakori kérdések
 
-[Helyszíni erőforrásokhoz való hozzáférés engedélyezése az Azure AD-hez és a hibrid Azure AD-hez csatlakoztatott eszközökhöz](howto-authentication-passwordless-security-key-on-premises.md)
+### <a name="does-this-work-in-my-on-premises-environment"></a>Működik ez a helyszíni környezetben?
+
+Ez a funkció nem működik tiszta helyszíni Active Directory tartományi szolgáltatások (AD DS) környezetben.
+
+### <a name="my-organization-requires-two-factor-authentication-to-access-resources-what-can-i-do-to-support-this-requirement"></a>A szervezetem két faktoros hitelesítést igényel az erőforrások eléréséhez, Mire használhatom ezt a követelményt?
+
+A biztonsági kulcsok különféle formában jelennek meg. Vegye fel a kapcsolatot az eszköz gyártójával, és beszéljen arról, hogy az eszközük hogyan engedélyezhető PIN-kód vagy biometrikus azonosító használatával második tényezőként.
+
+### <a name="can-admins-set-up-security-keys"></a>A rendszergazdák beállítják a biztonsági kulcsokat?
+
+Ezen funkció általánosan elérhetővé vált ezen a lehetőségen.
+
+### <a name="where-can-i-go-to-find-compliant-security-keys"></a>Hol találhatom meg a megfelelő biztonsági kulcsokat?
+
+[FIDO2 biztonsági kulcsok](concept-authentication-passwordless.md#fido2-security-keys)
+
+### <a name="what-do-i-do-if-i-lose-my-security-key"></a>Mi a teendő, ha elveszítem a biztonsági kulcsot?
+
+A kulcsokat a Azure Portalból távolíthatja el, ha a biztonsági adatok lapra navigál, és eltávolítja a biztonsági kulcsot.
+
+## <a name="next-steps"></a>További lépések
 
 [További információ az eszközök regisztrálásáról](../devices/overview.md)
 

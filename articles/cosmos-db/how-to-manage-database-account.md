@@ -4,14 +4,14 @@ description: Megismerheti, hogyan kezelhet adatbázisfiókokat az Azure Cosmos D
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 09/28/2019
+ms.date: 10/31/2019
 ms.author: mjbrown
-ms.openlocfilehash: f67487f6da5c9be028703d7890e16ffab0c858c6
-ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
+ms.openlocfilehash: 049be390403fe984ed4f8f38a4cdc86e24060e49
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71812531"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73582623"
 ---
 # <a name="manage-an-azure-cosmos-account"></a>Azure Cosmos-fiók kezelése
 
@@ -33,19 +33,19 @@ Tekintse meg [Azure Cosmos db fiók létrehozása a PowerShell használatával](
 
 ### <a id="create-database-account-via-arm-template"></a>Azure Resource Manager sablon
 
-Ez a Azure Resource Manager sablon létrehoz egy Azure Cosmos-fiókot minden olyan támogatott API számára, amely két régióval van konfigurálva, és lehetőség van a konzisztencia, az automatikus feladatátvétel és a több főkiszolgáló kiválasztására. A sablon üzembe helyezéséhez kattintson az üzembe helyezés az Azure-ra lehetőségre a readme oldalon, [Azure Cosmos-fiók létrehozása](https://github.com/Azure/azure-quickstart-templates/tree/master/101-cosmosdb-create-multi-region-account)
+Ez a Azure Resource Manager-sablon létrehoz egy Azure Cosmos-fiókot az SQL API-hoz két régióval és lehetőséggel, hogy kiválassza a konzisztencia szintjét, az automatikus feladatátvételt és a több főkiszolgálót. A sablon üzembe helyezéséhez kattintson az üzembe helyezés az Azure-ra lehetőségre a readme oldalon, [Azure Cosmos-fiók létrehozása](https://github.com/Azure/azure-quickstart-templates/tree/master/101-cosmosdb-sql)
 
 ## <a name="addremove-regions-from-your-database-account"></a>Régiók hozzáadása és eltávolítása az adatbázisfiókból
 
 ### <a id="add-remove-regions-via-portal"></a>Azure Portal
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com). 
+1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
 
 1. Nyissa meg az Azure Cosmos-fiókját, és nyissa meg az **adatreplikálás globális** menüjét.
 
-1. Régiók hozzáadásához válassza ki a térképen **+** a hatszögeket a kívánt régió (k) nek megfelelő címkével. Másik lehetőségként a régió hozzáadásához válassza a **+ régió hozzáadása** lehetőséget, és válasszon egy régiót a legördülő menüből.
+1. Régiók hozzáadásához válassza ki a térképen a hatszögeket a kívánt régió (k) nek megfelelő **+** címkével. Másik lehetőségként a régió hozzáadásához válassza a **+ régió hozzáadása** lehetőséget, és válasszon egy régiót a legördülő menüből.
 
-1. A régiók eltávolításához törölje a térképen egy vagy több régiót úgy, hogy a kék hatszögeket jelöli a pipa jelekkel. Vagy válassza a jobb oldalon található régió🗑melletti "szemétkosár" () ikont.
+1. A régiók eltávolításához törölje a térképen egy vagy több régiót úgy, hogy a kék hatszögeket jelöli a pipa jelekkel. Vagy válassza a jobb oldalon található régió melletti "szemétkosár" (🗑) ikont.
 
 1. A módosítások mentéséhez kattintson **az OK gombra**.
 
@@ -81,7 +81,7 @@ Lásd: [több írási régió engedélyezése a PowerShell](manage-with-powershe
 
 ### <a id="configure-multiple-write-regions-arm"></a>Resource Manager-sablon
 
-A fiók a fiók és a beállítás `enableMultipleWriteLocations: true`létrehozásához használt Resource Manager-sablon üzembe helyezésével telepíthető át egyetlen főkiszolgálóról a több főkiszolgálóra. A következő Azure Resource Manager sablon egy egyszerű sablon, amely az SQL API-hoz két régióval és több írási hellyel rendelkező Azure Cosmos-fiókot helyez üzembe.
+A fiók a fiók létrehozásához és a `enableMultipleWriteLocations: true`beállításához használt Resource Manager-sablon üzembe helyezésével telepíthető át egy-egy főkiszolgálóról a több főkiszolgálóra. A következő Azure Resource Manager sablon egy egyszerű sablon, amely az SQL API-hoz két régióval és több írási hellyel rendelkező Azure Cosmos-fiókot helyez üzembe.
 
 ```json
 {
@@ -113,7 +113,7 @@ A fiók a fiók és a beállítás `enableMultipleWriteLocations: true`létrehoz
             "type": "Microsoft.DocumentDb/databaseAccounts",
             "kind": "GlobalDocumentDB",
             "name": "[parameters('name')]",
-            "apiVersion": "2015-04-08",
+            "apiVersion": "2019-08-01",
             "location": "[parameters('location')]",
             "tags": {},
             "properties": {
@@ -123,11 +123,13 @@ A fiók a fiók és a beállítás `enableMultipleWriteLocations: true`létrehoz
                 [
                     {
                         "locationName": "[parameters('primaryRegion')]",
-                        "failoverPriority": 0
+                        "failoverPriority": 0,
+                        "isZoneRedundant": false
                     },
                     {
                         "locationName": "[parameters('secondaryRegion')]",
-                        "failoverPriority": 1
+                        "failoverPriority": 1,
+                        "isZoneRedundant": false
                     }
                 ],
                 "enableMultipleWriteLocations": true

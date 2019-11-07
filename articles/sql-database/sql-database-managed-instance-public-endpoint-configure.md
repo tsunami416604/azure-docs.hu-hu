@@ -1,5 +1,5 @@
 ---
-title: Nyilvános végpont konfigurálása – Azure SQL Database felügyelt példány | Microsoft Docs
+title: Nyilvános végpont konfigurálása – felügyelt példány Azure SQL Database
 description: Megtudhatja, hogyan konfigurálhat nyilvános végpontot felügyelt példányhoz
 services: sql-database
 ms.service: sql-database
@@ -10,12 +10,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: vanto, carlrab
 ms.date: 05/07/2019
-ms.openlocfilehash: cebe6b4ca61b835e7c77f51592c20799fe271853
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 6f953e4c549619a30564bdb061e98761474174c3
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68567403"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73687959"
 ---
 # <a name="configure-public-endpoint-in-azure-sql-database-managed-instance"></a>Nyilvános végpont konfigurálása Azure SQL Database felügyelt példányban
 
@@ -38,12 +38,12 @@ A felügyelt példányban lévő adatérzékenység miatt a felügyelt példány
 
 ## <a name="enabling-public-endpoint-for-a-managed-instance-in-the-azure-portal"></a>Felügyelt példányok nyilvános végpontjának engedélyezése a Azure Portalban
 
-1. A Azure Portal elindítása<https://portal.azure.com/.>
+1. A Azure Portal elindítása <https://portal.azure.com/.>
 1. Nyissa meg az erőforráscsoportot a felügyelt példánnyal, és válassza ki azt az **SQL felügyelt példányt** , amelyen a nyilvános végpontot konfigurálni kívánja.
 1. A **biztonsági** beállítások lapon válassza a **virtuális hálózat** lapot.
 1. A virtuális hálózat konfigurációja lapon válassza az **Engedélyezés** , majd a **Mentés** ikont a konfiguráció frissítéséhez.
 
-![mi-vnet-config.png](media/sql-database-managed-instance-public-endpoint-configure/mi-vnet-config.png)
+![Mi-vnet-config. png](media/sql-database-managed-instance-public-endpoint-configure/mi-vnet-config.png)
 
 ## <a name="enabling-public-endpoint-for-a-managed-instance-using-powershell"></a>Felügyelt példány nyilvános végpontjának engedélyezése a PowerShell használatával
 
@@ -80,13 +80,13 @@ Set-AzSqlInstance -PublicDataEndpointEnabled $false -force
 
 ## <a name="allow-public-endpoint-traffic-on-the-network-security-group"></a>Nyilvános végponti forgalom engedélyezése a hálózati biztonsági csoportban
 
-1. Ha a felügyelt példány konfigurációs lapja továbbra is nyitva van, navigáljon az **Áttekintés** lapra. Ellenkező esetben lépjen vissza az **SQL felügyelt példányának** erőforrására. Válassza ki a **virtuális hálózat/alhálózat** hivatkozást, amely a virtuális hálózat konfigurációja lapra kerül.
+1. Ha a felügyelt példány konfigurációs lapja továbbra is nyitva van, lépjen az **Áttekintés** lapra. Máskülönben lépjen vissza az **SQL felügyelt példány** -erőforráshoz. Válassza ki a **virtuális hálózat/alhálózat** hivatkozást, amely a virtuális hálózat konfigurációja lapra kerül.
 
-    ![mi-overview.png](media/sql-database-managed-instance-public-endpoint-configure/mi-overview.png)
+    ![Mi-Overview. png](media/sql-database-managed-instance-public-endpoint-configure/mi-overview.png)
 
-1. Válassza az alhálózatok fület a virtuális hálózat bal oldali konfigurációs paneljén, és jegyezze fel a felügyelt példány **biztonsági csoportját** .
+1. Válassza az **alhálózatok** fület a virtuális hálózat bal oldali konfigurációs paneljén, és jegyezze fel a felügyelt példány **biztonsági csoportját** .
 
-    ![mi-vnet-subnet.png](media/sql-database-managed-instance-public-endpoint-configure/mi-vnet-subnet.png)
+    ![Mi-vnet-subnet. png](media/sql-database-managed-instance-public-endpoint-configure/mi-vnet-subnet.png)
 
 1. Lépjen vissza a felügyelt példányt tartalmazó erőforráscsoporthoz. Ekkor meg kell jelennie a **hálózati biztonsági csoport** fent említett nevének. Válassza ki a hálózati biztonsági csoport konfigurációs lapjára felvenni kívánt nevet.
 
@@ -96,13 +96,13 @@ Set-AzSqlInstance -PublicDataEndpointEnabled $false -force
     |---------|---------|---------|
     |**Forrás**     |Bármely IP-cím vagy szolgáltatás címkéje         |<ul><li>Az Azure-szolgáltatások, például a Power BI esetében válassza az Azure Cloud Service címkét</li> <li>A számítógép vagy az Azure-beli virtuális gép esetében használja a NAT IP-címet</li></ul> |
     |**Forrásport-tartományok**     |*         |Hagyja ezt a lehetőséget * (bármely), mivel a forrás portjai általában dinamikusan vannak lefoglalva, és mint ilyen, kiszámíthatatlan |
-    |**Cél**     |Any         |A célhely kihagyása a felügyelt példány alhálózatára való adatforgalom engedélyezéséhez |
+    |**Cél**     |Bármelyik         |A célhely kihagyása a felügyelt példány alhálózatára való adatforgalom engedélyezéséhez |
     |**Célport tartományai**     |3342         |Hatóköri célport a 3342-re, amely a felügyelt példány nyilvános TDS-végpontja |
     |**Protocol (Protokoll)**     |TCP         |A felügyelt példány a TDS protokollhoz TCP protokollt használ. |
-    |**Művelet**     |Allow         |Felügyelt példány bejövő forgalmának engedélyezése a nyilvános végponton keresztül |
-    |**prioritás**     |1300         |Győződjön meg arról, hogy ez a szabály magasabb prioritású, mint a **deny_all_inbound** szabály |
+    |**Művelet**     |Engedélyezés         |Felügyelt példány bejövő forgalmának engedélyezése a nyilvános végponton keresztül |
+    |**Priority (Prioritás)**     |1300         |Győződjön meg arról, hogy ez a szabály magasabb prioritású, mint a **deny_all_inbound** szabály |
 
-    ![mi-nsg-rules.png](media/sql-database-managed-instance-public-endpoint-configure/mi-nsg-rules.png)
+    ![Mi-NSG-rules. png](media/sql-database-managed-instance-public-endpoint-configure/mi-nsg-rules.png)
 
     > [!NOTE]
     > Az 3342-es port a felügyelt példányhoz tartozó nyilvános végponti kapcsolatokhoz használatos, és ezen a ponton nem módosítható.
@@ -112,7 +112,7 @@ Set-AzSqlInstance -PublicDataEndpointEnabled $false -force
 1. Navigáljon az SQL felügyelt példányának konfiguráció lapjára, amelyen engedélyezve van a nyilvános végpont. Válassza a **kapcsolatok karakterláncok** lapot a **Beállítások** konfiguráció alatt.
 1. Vegye figyelembe, hogy a nyilvános végpont állomásneve < mi_name > formátumban jön. **nyilvános**. < dns_zone >. database. Windows. net és a csatlakozáshoz használt port 3342.
 
-    ![mi-public-endpoint-conn-string.png](media/sql-database-managed-instance-public-endpoint-configure/mi-public-endpoint-conn-string.png)
+    ![Mi-Public-Endpoint-Conn-string. png](media/sql-database-managed-instance-public-endpoint-configure/mi-public-endpoint-conn-string.png)
 
 ## <a name="next-steps"></a>További lépések
 

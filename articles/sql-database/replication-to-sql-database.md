@@ -1,5 +1,5 @@
 ---
-title: Replikálás Azure SQL Databaseba | Microsoft Docs "
+title: Replikálás Azure SQL Database "
 description: Tudnivalók a SQL Server replikáció használatáról Azure SQL Database önálló adatbázisok és adatbázisok rugalmas készletekben való használatával
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: allenwux
 ms.author: xiwu
 ms.reviewer: mathoma
 ms.date: 01/25/2019
-ms.openlocfilehash: eab8f4809742b69e92cb835801493722d28afe49
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: ae564a98b77b1ac564fa9aae152b27c491187d0c
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68570484"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73692219"
 ---
 # <a name="replication-to-sql-database-single-and-pooled-databases"></a>Replikálás egyetlen és készletezett adatbázis SQL Database
 
@@ -33,12 +33,12 @@ SQL Server replikáció konfigurálható egyetlen és készletezett adatbázisra
 ## <a name="versions"></a>Verziók  
 
 - A közzétevőnek és a terjesztőnek legalább a következő verziók egyikének kell lennie:  
-- SQL Server 2017 (14.x)
-- SQL Server 2016 (13.x)
+- SQL Server 2017 (14. x)
+- SQL Server 2016 (13. x)
 - SQL Server 2014 (12. x) SP1 CU3
 - SQL Server 2014 (12. x) RTM CU10
 - SQL Server 2012 (11. x) SP2 CU8 vagy SP3
-- Ha a replikálást egy régebbi verzióval kísérli meg konfigurálni, a MSSQL_REPL20084 hibakódot eredményezhet (a folyamat nem tudott csatlakozni az előfizetőhöz.) és a \<MSSQL_REPL40532 (nem nyitható meg a bejelentkezés által kért kiszolgáló neve >. A bejelentkezés sikertelen.)  
+- Ha a replikálást egy régebbi verzióval kísérli meg konfigurálni, a MSSQL_REPL20084 hibakódot eredményezhet (a folyamat nem tudott csatlakozni az előfizetőhöz.) és a MSSQL_REPL40532 (a kiszolgáló \<neve nem nyitható meg a bejelentkezés által kért >. A bejelentkezés sikertelen.)  
 - A Azure SQL Database összes funkciójának használatához a [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) és a [SQL Server Data Tools](https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt)legújabb verzióit kell használnia.  
   
 ## <a name="remarks"></a>Megjegyzések
@@ -51,12 +51,12 @@ SQL Server replikáció konfigurálható egyetlen és készletezett adatbázisra
 - SQL Server egyetlen kiadványa képes támogatni Azure SQL Database és SQL Server (helyszíni és SQL Server Azure-beli virtuális gépeken) előfizetők számára.  
 - A replikációs felügyeletet, a figyelést és a hibaelhárítást a helyszíni SQL Server kell végrehajtania.  
 - Csak a Azure SQL Database leküldéses előfizetések támogatottak.  
-- Csak `@subscriber_type = 0` SQL Database esetén támogatott a **sp_addsubscription** .  
+- SQL Database esetében csak `@subscriber_type = 0` támogatott a **sp_addsubscription** .  
 - A Azure SQL Database nem támogatja a kétirányú, azonnali, frissíthető vagy egyenrangú replikálást.
 
 ## <a name="replication-architecture"></a>Replikációs architektúra  
 
-![replication-to-sql-database](./media/replication-to-sql-database/replication-to-sql-database.png)  
+![replikálás – SQL-adatbázis](./media/replication-to-sql-database/replication-to-sql-database.png)  
 
 ## <a name="scenarios"></a>Forgatókönyvek  
 
@@ -83,7 +83,7 @@ Azure SQL Database-előfizetések esetén a következő beállítások nem támo
 - Alapértelmezett kötések másolása  
 - Szabály-kötések másolása  
 - Teljes szöveges indexek másolása  
-- Copy XML XSD  
+- XML XSD másolása  
 - XML-indexek másolása  
 - Másolási engedélyek  
 - Térbeli indexek másolása  
@@ -106,13 +106,13 @@ Azure SQL Database-előfizetések esetén a következő beállítások nem támo
 Hozzon létre egy kiadványt és egy leküldéses előfizetést. További információkért lásd:
   
 - [Kiadvány létrehozása](https://docs.microsoft.com/sql/relational-databases/replication/publish/create-a-publication)
-- [Hozzon létre egy](https://docs.microsoft.com/sql/relational-databases/replication/create-a-push-subscription/) leküldéses előfizetést a Azure SQL Database kiszolgáló nevének előfizetőként való használatával (például **N'azuresqldbdns. database. Windows. net**) és az Azure SQL Database-adatbázis nevét célként megadott adatbázisként (például **AdventureWorks** ).  
+- [Hozzon létre egy leküldéses előfizetést](https://docs.microsoft.com/sql/relational-databases/replication/create-a-push-subscription/) a Azure SQL Database kiszolgáló nevének előfizetőként való használatával (például **N'azuresqldbdns. database. Windows. net**) és az Azure SQL Database-adatbázis nevét célként megadott adatbázisként (például **AdventureWorks** ).  
 
 ## <a name="see-also"></a>Lásd még:  
 
 - [Tranzakciós replikáció](sql-database-managed-instance-transactional-replication.md)
 - [Kiadvány létrehozása](https://docs.microsoft.com/sql/relational-databases/replication/publish/create-a-publication)
 - [Leküldéses előfizetés létrehozása](https://docs.microsoft.com/sql/relational-databases/replication/create-a-push-subscription/)
-- [Replikálási típusok](https://docs.microsoft.com/sql/relational-databases/replication/types-of-replication)
+- [A replikáció típusai](https://docs.microsoft.com/sql/relational-databases/replication/types-of-replication)
 - [Figyelés (replikálás)](https://docs.microsoft.com/sql/relational-databases/replication/monitor/monitoring-replication)
 - [Előfizetés inicializálása](https://docs.microsoft.com/sql/relational-databases/replication/initialize-a-subscription)  

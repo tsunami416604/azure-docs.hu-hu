@@ -1,5 +1,5 @@
 ---
-title: Azure SQL Database példány-készletek (előzetes verzió) | Microsoft Docs
+title: Azure SQL Database példány-készletek (előzetes verzió)
 description: Ez a cikk Azure SQL Database példányok készleteit (előzetes verzió) ismerteti.
 services: sql-database
 ms.service: sql-database
@@ -11,18 +11,18 @@ author: bonova
 ms.author: bonova
 ms.reviewer: sstein, carlrab
 ms.date: 09/05/2019
-ms.openlocfilehash: 34e779f04f59b23733c6fbfa3450931fccb442b1
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: 7d8c316d5c78cfe09bcf134b5a5c513e1c007d74
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70294255"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73689764"
 ---
 # <a name="what-are-sql-database-instance-pools-preview"></a>Mik azok a SQL Database példány-készletek (előzetes verzió)?
 
 A példány-készletek a Azure SQL Database egy új erőforrása, amely kényelmes és költséghatékony megoldást kínál a kisebb SQL-példányok felhőbe való átméretezésére.
 
-A példányok készletei lehetővé teszik a számítási erőforrások előzetes kiépítését a teljes áttelepítési követelményeknek megfelelően. Ezután üzembe helyezhet több egyéni felügyelt példányt az előre kiosztott számítási szintig. Ha például előre kiépít 8 virtuális mag, két virtuális mag és egy 4 virtuális mag példányt telepíthet, majd áttelepítheti az adatbázisokat ezekben a példányokban. A példányok elérhetővé válása előtt a kisebb és kisebb számítási igényű munkaterheléseket gyakran egy nagyobb felügyelt példányba kell összevonni a felhőbe való Migrálás során. Az adatbázis-csoportok nagy példányra való áttelepítéséhez általában körültekintő kapacitás-tervezésre és erőforrás-szabályozásra, további biztonsági megfontolásokra és néhány további adatösszesítésre van szükség a példány szintjén.
+A példánykészletek lehetővé teszik a számítási erőforrások migrálási követelményeknek megfelelő, előzetes létrehozását. Ezt követően több egyedi felügyelt példányt is üzembe helyezhet, az előzetesen megadott számítási szintig. Ha például előre kiépít 8 virtuális mag, két virtuális mag és egy 4 virtuális mag példányt telepíthet, majd áttelepítheti az adatbázisokat ezekben a példányokban. A példányok elérhetővé válása előtt a kisebb és kisebb számítási igényű munkaterheléseket gyakran egy nagyobb felügyelt példányba kell összevonni a felhőbe való Migrálás során. Az adatbázis-csoportok nagy példányra való áttelepítéséhez általában körültekintő kapacitás-tervezésre és erőforrás-szabályozásra, további biztonsági megfontolásokra és néhány további adatösszesítésre van szükség a példány szintjén.
 
 A példányok emellett támogatják a natív VNet-integrációt is, így több példány-készletet és több példányt is telepíthet ugyanabban az alhálózatban.
 
@@ -31,7 +31,7 @@ A példányok emellett támogatják a natív VNet-integrációt is, így több p
 
 A példány-készletek a következő előnyöket nyújtják:
 
-1. 2 virtuális mag-példány üzemeltetésének képessége. *Csak a példányok példányai esetében. \**
+1. 2 virtuális mag-példány üzemeltetésének képessége. *csak a példányokhoz tartozó példányok esetében\** .
 2. Kiszámítható és gyors példány üzembe helyezési ideje (legfeljebb 5 perc).
 3. Minimális IP-cím kiosztása.
 
@@ -59,7 +59,7 @@ Az alábbi lista azokat a fő felhasználási eseteket tartalmazza, amelyekben a
 
 ## <a name="architecture-of-instance-pools"></a>Példány-készletek architektúrája
 
-A példány-készletek hasonló architektúrával rendelkeznek a normál felügyelt példányokhoz (*egyetlen példány*). Az  [Azure Virtual Networks (virtuális hálózatok) szolgáltatáson belüli központi telepítések](../virtual-network/virtual-network-for-azure-services.md#deploy-azure-services-into-virtual-networks)támogatásához, valamint az ügyfelek elkülönítésének és biztonságának biztosításához a példány-készletek a [virtuális fürtökre](sql-database-managed-instance-connectivity-architecture.md#high-level-connectivity-architecture)is támaszkodnak. A virtuális fürtök az ügyfél virtuális hálózati alhálózatán belül üzembe helyezett elkülönített virtuális gépek dedikált készletét jelölik.
+A példány-készletek hasonló architektúrával rendelkeznek a normál felügyelt példányokhoz (*egyetlen példány*). Az [Azure Virtual Networks (virtuális hálózatok) szolgáltatáson belüli központi telepítések](../virtual-network/virtual-network-for-azure-services.md#deploy-azure-services-into-virtual-networks) támogatásához , valamint az ügyfelek elkülönítésének és biztonságának biztosításához a példányok készletei is a [virtuális fürtökre](sql-database-managed-instance-connectivity-architecture.md#high-level-connectivity-architecture)támaszkodnak. A virtuális fürtök az ügyfél virtuális hálózati alhálózatán belül üzembe helyezett elkülönített virtuális gépek dedikált készletét jelölik.
 
 A két üzemi modell közötti fő különbség az, hogy a példányok több SQL Server folyamat telepítését teszik lehetővé ugyanazon a virtuálisgép-csomóponton, amely a [Windows-feladatok objektumaira](https://docs.microsoft.com/windows/desktop/ProcThread/job-objects)érvényes erőforrás, míg az önálló példányok mindig a egy virtuálisgép-csomópont.
 
@@ -71,7 +71,7 @@ Minden példány-készlet létrehoz egy különálló virtuális fürtöt a alat
 
 ## <a name="instance-pools-resource-limitations"></a>Példány-készletek erőforrás-korlátai
 
-Több erőforrás-korlátozás vonatkozik a példányokra és a készletekben lévő példányokra:
+A példánykészletekre és a készletekben lévő példányokra többféle erőforrás-korlátozás is vonatkozik:
 
 - A példány-készletek csak Gen5 hardveren érhetők el.
 - A készleten belüli példányok dedikált PROCESSZORral és RAM-mal rendelkeznek, így az összes példány virtuális mag összesített száma nem lehet kisebb a készlethez lefoglalt virtuális mag számával.
@@ -136,8 +136,8 @@ a készlet virtuális mag díja attól függetlenül történik, hogy hány pél
 
 A számítási díj (virtuális mag mérve) esetében két díjszabási lehetőség érhető el:
 
-  1. *Licenc belefoglalva*: Frissítési garanciával rendelkező meglévő SQL Server-licencek alkalmazása.
-  2. *Azure Hybrid Benefit*: Kedvezményes ár, amely tartalmazza a SQL Server Azure Hybrid Benefit. Az ügyfelek a frissítési garanciával rendelkező meglévő SQL Server-licencek használatával dönthetik el ezt az árat. A jogosultsági és egyéb részleteket lásd: [Azure Hybrid Benefit](https://azure.microsoft.com/pricing/hybrid-benefit/).
+  1. *Licenc mellékelve*: meglévő SQL Server licencek alkalmazása frissítési garanciával.
+  2. *Azure Hybrid Benefit*: kedvezményes ár, amely SQL Server Azure Hybrid Benefit tartalmaz. Az ügyfelek a frissítési garanciával rendelkező meglévő SQL Server-licencek használatával dönthetik el ezt az árat. A jogosultsági és egyéb részleteket lásd: [Azure Hybrid Benefit](https://azure.microsoft.com/pricing/hybrid-benefit/).
 
 A különböző díjszabási lehetőségek beállítása nem lehetséges a készletben lévő egyes példányok esetében. A szülő készletben lévő összes példánynak licenccel ellátott árat vagy Azure Hybrid Benefit árat kell tartalmaznia. A készlethez tartozó licencelési modell a készlet létrehozása után módosítható.
 

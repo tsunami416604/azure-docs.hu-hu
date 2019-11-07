@@ -1,5 +1,5 @@
 ---
-title: Azure-beli adatgyár programozott figyelése | Microsoft Docs
+title: Azure-beli adatgyár programozott figyelése
 description: Megtudhatja, hogyan figyelheti a folyamatokat egy adatgyárban különböző szoftverfejlesztői készletek (SDK-k) használatával.
 services: data-factory
 documentationcenter: ''
@@ -11,12 +11,12 @@ ms.date: 01/16/2018
 author: djpmsft
 ms.author: daperlov
 manager: craigg
-ms.openlocfilehash: 5c1f64282f1e0b1f225bcad0935c4c9b9a0f96b4
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: f9e85a2660ffe1088a9897e9936b6fd0360f87d5
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70141039"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73684596"
 ---
 # <a name="programmatically-monitor-an-azure-data-factory"></a>Azure-beli adatgyár programozott figyelése
 Ez a cikk bemutatja, hogyan figyelheti a folyamatokat egy adatgyárban különböző szoftverfejlesztői készletek (SDK-k) használatával. 
@@ -25,7 +25,7 @@ Ez a cikk bemutatja, hogyan figyelheti a folyamatokat egy adatgyárban különb�
 
 ## <a name="data-range"></a>Adattartomány
 
-Data Factory csak a 45 napig tárolja a folyamat futási értékeit. Amikor programozott módon kérdezi le az Data Factory folyamat futtatásával kapcsolatos adatokra vonatkozó információkat – például a PowerShell `Get-AzDataFactoryV2PipelineRun` -paranccsal –, a nem kötelező `LastUpdatedAfter` és `LastUpdatedBefore` a paraméterek esetében nincsenek maximális dátumok. Ha azonban az elmúlt év adatait kérdezi le, például a lekérdezés nem ad vissza hibát, de csak az utolsó 45 nap adatfeldolgozási folyamatát adja vissza.
+Data Factory csak a 45 napig tárolja a folyamat futási értékeit. Amikor programozott módon kérdezi le az Data Factory folyamat futtatásával kapcsolatos adatokra vonatkozó információkat – például a PowerShell-paranccsal `Get-AzDataFactoryV2PipelineRun` – nincsenek maximális dátumok a választható `LastUpdatedAfter` és a `LastUpdatedBefore` paraméterekhez. Ha azonban az elmúlt év adatait kérdezi le, például a lekérdezés nem ad vissza hibát, de csak az utolsó 45 nap adatfeldolgozási folyamatát adja vissza.
 
 Ha 45 napnál hosszabb ideig kívánja megőrizni a folyamat adatait, állítsa be a saját diagnosztikai naplózását [Azure monitor](monitor-using-azure-monitor.md).
 
@@ -65,7 +65,7 @@ A folyamatok .NET SDK-val történő létrehozásával és figyelésével kapcso
     Console.ReadKey();
     ```
 
-A .NET SDK-val kapcsolatos teljes dokumentációért tekintse meg [Data Factory .net SDK](/dotnet/api/microsoft.azure.management.datafactory?view=azure-dotnet)-referenciát.
+A .NET SDK-val kapcsolatos teljes dokumentációért tekintse meg [Data Factory .net SDK-referenciát](/dotnet/api/microsoft.azure.management.datafactory?view=azure-dotnet).
 
 ## <a name="python"></a>Python
 A folyamat Python SDK-val történő létrehozásával és figyelésével kapcsolatban lásd: [adatelőállító és-folyamat létrehozása a Python használatával](quickstart-create-data-factory-python.md).
@@ -83,7 +83,7 @@ activity_runs_paged = list(adf_client.activity_runs.list_by_pipeline_run(
 print_activity_run_details(activity_runs_paged[0])
 ```
 
-A Python SDK-val kapcsolatos teljes dokumentációért lásd [Data Factory PYTHON SDK](/python/api/overview/azure/datafactory?view=azure-python)-referenciát.
+A Python SDK-val kapcsolatos teljes dokumentációért lásd [Data Factory PYTHON SDK-referenciát](/python/api/overview/azure/datafactory?view=azure-python).
 
 ## <a name="rest-api"></a>REST API
 A folyamatok REST API használatával történő létrehozásáról és figyeléséről a következő témakörben talál részletes útmutatót: [adatfeldolgozó és-folyamat létrehozása REST API használatával](quickstart-create-data-factory-rest-api.md).
@@ -113,7 +113,7 @@ A folyamatok REST API használatával történő létrehozásáról és figyelé
     $response | ConvertTo-Json
     ```
 
-A REST API teljes dokumentációját lásd: [Data Factory REST API](/rest/api/datafactory/)-referenciák.
+A REST API teljes dokumentációját lásd: [Data Factory REST API-referenciák](/rest/api/datafactory/).
 
 ## <a name="powershell"></a>PowerShell
 A folyamat PowerShell használatával történő létrehozásával és figyelésével kapcsolatos teljes útmutatóért lásd: [adatelőállító és-folyamat létrehozása a PowerShell használatával](quickstart-create-data-factory-powershell.md).

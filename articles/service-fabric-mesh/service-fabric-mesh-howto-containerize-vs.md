@@ -1,74 +1,74 @@
 ---
-title: A Service Fabric-háló egy meglévő .NET-alkalmazás tárolóalapúvá |} A Microsoft Docs
-description: Háló-támogatás hozzáadása egy meglévő .NET-alkalmazás
+title: Meglévő .NET-alkalmazás tárolóba helyezése Service Fabric Meshhoz | Microsoft Docs
+description: Adja hozzá Service Fabric Mesh-tárolók előkészítésének támogatását a teljes .NET-keretrendszert használó ASP.NET és konzolos projektekhez.
 services: service-fabric-mesh
-keywords: service fabric háló tárolóba
+keywords: tárolóba helyezése Service Fabric Mesh
 author: dkkapur
 ms.author: dekapur
 ms.date: 11/08/2018
 ms.topic: conceptual
 ms.service: service-fabric-mesh
 manager: chakdan
-ms.openlocfilehash: cb4e327e1c8c0a653cb94233f568b4847494c439
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 070d07316c0ff06a45e76936e75cb5345548e78f
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60419440"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73686276"
 ---
-# <a name="containerize-an-existing-net-app-for-service-fabric-mesh"></a>A Service Fabric-háló egy meglévő .NET-alkalmazás tárolóalapúvá
+# <a name="containerize-an-existing-net-app-for-service-fabric-mesh"></a>Meglévő .NET-alkalmazás tárolóba helyezése Service Fabric Mesh számára
 
-Ez a cikk bemutatja, hogyan Service Fabric-háló tárolótámogatás vezénylési hozzáadása egy meglévő .NET-alkalmazást.
+Ez a cikk bemutatja, hogyan adhat hozzá Service Fabric Mesh Container-előkészítési támogatást egy meglévő .NET-alkalmazáshoz.
 
-A Visual Studio 2017 a teljes .NET-keretrendszert használó ASP.NET és a konzol projektek bontás támogatást adhat hozzá.
+A Visual Studio 2017-es verziójában tárolókra bontás-támogatást adhat hozzá a teljes .NET-keretrendszert használó ASP.NET és konzolos projektekhez.
 
 > [!NOTE]
-> .NET **core** projektek jelenleg nem támogatottak.
+> A .NET **Core** -projektek jelenleg nem támogatottak.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Ha nem rendelkezik Azure-előfizetéssel, kezdés előtt [létrehozhat egy ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-* Győződjön meg arról, hogy [a fejlesztési környezet beállítása](service-fabric-mesh-howto-setup-developer-environment-sdk.md). Ebbe beletartozik a Service Fabric-futtatókörnyezet, SDK-t, a Docker, a Visual Studio 2017 telepítése és a egy helyi fürtöt hoz létre.
+* Győződjön meg arról, hogy [beállította a fejlesztési környezetet](service-fabric-mesh-howto-setup-developer-environment-sdk.md). Ide tartozik a Service Fabric futtatókörnyezet, az SDK, a Docker, a Visual Studio 2017 telepítése és egy helyi fürt létrehozása.
 
-## <a name="open-an-existing-net-app"></a>Nyissa meg a meglévő .NET-alkalmazások
+## <a name="open-an-existing-net-app"></a>Meglévő .NET-alkalmazás megnyitása
 
-Nyissa meg a vezénylési tárolótámogatás hozzáadni kívánt alkalmazást.
+Nyissa meg azt az alkalmazást, amelyhez hozzá szeretné adni a Container-előkészítési támogatást.
 
-Ha szeretné próbálja példaként, használhatja a [eShop](https://github.com/MikkelHegn/ContainersSFLab) kódmintát. Ez a cikk többi része feltételezi, hogy használjuk-e erre a projektre, bár ezeket a lépéseket a saját project is alkalmazhat.
+Ha példát szeretne kipróbálni, használhatja az [üzlet](https://github.com/MikkelHegn/ContainersSFLab) kód mintát. A cikk további része azt feltételezi, hogy ezt a projektet használjuk, bár ezeket a lépéseket saját projektre is alkalmazhatja.
 
-Egy példánya a **eShop** projekt:
+Az **üzlet** -projekt másolatának beolvasása:
 
 ```git
 git clone https://github.com/MikkelHegn/ContainersSFLab.git
 ```
 
-Amely rendelkezik a letöltést követően a Visual Studio 2017 nyílt **ContainersSFLab\eShopLegacyWebFormsSolution\eShopLegacyWebForms.sln**.
+A letöltés után a Visual Studio 2017-es verziójában nyissa meg a **ContainersSFLab\eShopLegacyWebFormsSolution\eShopLegacyWebForms.SLN**.
 
-## <a name="add-container-support"></a>Adja hozzá a tároló támogatása
+## <a name="add-container-support"></a>Tároló-támogatás hozzáadása
  
-Vezénylési tárolótámogatás hozzáadása egy meglévő ASP.NET- vagy konzol projekt használatával a Service Fabric-háló eszközöket az alábbiak szerint:
+Adja hozzá a Container-előkészítési támogatást egy meglévő ASP.NET-vagy konzol-projekthez az Service Fabric Mesh Tools használatával a következőképpen:
 
-A Visual Studio megoldáskezelőben kattintson a jobb gombbal a projekt neve (a példában **eShopLegacyWebForms**) majd **Hozzáadás** > **tároló az Orchestrator-támogatás** .
-A **adja hozzá az Orchestrator Tárolótámogatás** párbeszédpanel jelenik meg.
+A Visual Studio Solution Explorerben kattintson a jobb gombbal a projekt nevére (a példában a **eShopLegacyWebForms**), majd válassza a **Hozzáadás** > **tároló Orchestrator-támogatás**lehetőséget.
+Megjelenik a **Container Orchestrator-támogatás hozzáadása** párbeszédpanel.
 
-![A Visual Studio hozzáadása tároló orchestrator párbeszédpanel](./media/service-fabric-mesh-howto-containerize-vs/add-container-orchestration-support.png)
+![A Visual Studio tároló-Orchestrator hozzáadása párbeszédpanel](./media/service-fabric-mesh-howto-containerize-vs/add-container-orchestration-support.png)
 
-Válasszon **Service Fabric-háló** a legördülő listából és kattintson a **OK**.
+Válassza ki **Service Fabric rácsvonalat** a legördülő listából, majd kattintson **az OK**gombra.
 
-Az eszköz ezután ellenőrzi, hogy a Docker telepítve van, egy docker-fájlban ad hozzá a projekthez és lekéri a docker-rendszerkép a projekthez.  
-Egy Service Fabric-háló-projektet a megoldáshoz kerül. A háló tartalmaz közzétételi profilok és konfigurációs fájlok. A projekt neve megegyezik a projekt nevére, például az utolsó összefűzött alkalmazással **eShopLegacyWebFormsApplication**. 
+Az eszköz ezután ellenőrzi, hogy telepítve van-e a Docker, hozzáadja a Docker a projekthez, és lekéri a projekthez tartozó Docker-rendszerképet.  
+A megoldáshoz egy Service Fabric Mesh-alkalmazási projekt van hozzáadva. A háló közzétételi profiljait és konfigurációs fájljait tartalmazza. A projekt neve megegyezik a projekt nevével, az "alkalmazás" a végéhez fűzve, például **eShopLegacyWebFormsApplication**. 
 
-Az új háló projekt látni fogja a két, célszerű tisztában lennie a mappák:
-- **Alkalmazás-erőforrások** további háló-erőforrások, például a hálózati leíró YAML-fájlokat tartalmazó.
-- **Szolgáltatás-erőforrások** amely tartalmaz egy service.yaml fájlt, amely azt ismerteti, hogyan kell futnia az alkalmazás telepítésekor.
+Az új háló projektben két mappát fog látni:
+- Olyan YAML-fájlokat tartalmazó **alkalmazás-erőforrások** , amelyek további rácsvonal-erőforrásokat, például a hálózatot írják le.
+- A Service. YAML fájlt tartalmazó **szolgáltatás-erőforrások** , amelyek azt ismertetik, hogyan kell futtatni az alkalmazást az üzembe helyezéskor.
 
-Miután vezénylési tárolótámogatás van adva az alkalmazáshoz, nyomja le **F5** hibakeresése a helyi Service Fabric-háló fürtön lévő .NET-alkalmazásait. A Service Fabric-háló fürtön futó eShop ASP.NET-alkalmazás a következő: 
+Miután hozzáadta a Container-előkészítési támogatást az alkalmazáshoz, az **F5** billentyű lenyomásával hibakeresést végezhet a .net-alkalmazáson a helyi Service Fabric Mesh-fürtön. Itt látható az Service Fabric Mesh-fürtön futó ASP.NET alkalmazás: 
 
-![eShop alkalmazás](./media/service-fabric-mesh-howto-containerize-vs/eshop-running.png)
+![Elektronikus alkalmazás](./media/service-fabric-mesh-howto-containerize-vs/eshop-running.png)
 
-Az alkalmazás közzététele az Azure Service Fabric-háló most.
+Most már közzéteheti az alkalmazást az Azure Service Fabric Mesh szolgáltatásban.
 
 ## <a name="next-steps"></a>További lépések
 
-Alkalmazások közzététele a Service Fabric-háló való használatáról: [Az oktatóanyagban üzembe helyezése egy Service Fabric-háló-alkalmazás](service-fabric-mesh-tutorial-deploy-service-fabric-mesh-app.md)
+Tekintse meg, hogyan tehet közzé egy alkalmazást a Service Fabric Meshban: [oktatóanyag – Service Fabric Mesh-alkalmazás üzembe helyezése](service-fabric-mesh-tutorial-deploy-service-fabric-mesh-app.md)

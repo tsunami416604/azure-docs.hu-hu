@@ -1,18 +1,18 @@
 ---
-title: Egyszerű szolgáltatásnév hozzáadása Azure Analysis Services kiszolgálói rendszergazdai szerepkörhöz | Microsoft Docs
-description: Ismerje meg, hogyan adhat hozzá automatizálási szolgáltatásnevet a kiszolgálói rendszergazdai szerepkörhöz
+title: Egyszerű szolgáltatásnév hozzáadása Azure Analysis Services rendszergazdai szerepkörhöz | Microsoft Docs
+description: Megtudhatja, hogyan adhat hozzá egy Automation-szolgáltatásnevet a Azure Analysis Services kiszolgálói rendszergazdai szerepkörhöz
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
 ms.date: 10/29/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: c141bcea030f5afcc3cb33adba32f4a96c335eec
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 0a3a86283c8ec9876fbec049a2a1a110eb1a80f3
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73147398"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73573619"
 ---
 # <a name="add-a-service-principal-to-the-server-administrator-role"></a>Egyszerű szolgáltatásnév hozzáadása a kiszolgáló-rendszergazdai szerepkörhöz 
 

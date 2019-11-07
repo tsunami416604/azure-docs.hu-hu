@@ -10,12 +10,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 07/24/2019
 ms.author: memildin
-ms.openlocfilehash: 7e45dffd15cdf2acf15c7d46ed0cf42fc5997a6a
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: c69352b8ff11edfce8bd800a0d3aad4584557572
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72244565"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73621346"
 ---
 # <a name="threat-detection-for-data-services-in-azure-security-center"></a>Veszélyforrások észlelése a Azure Security Center adatszolgáltatásaiban
 
@@ -40,7 +40,7 @@ Az SQL-veszélyforrások észlelése olyan rendellenes tevékenységeket azonos�
 
 További információ az SQL-veszélyforrások észleléséről: [Azure SQL Database fenyegetések észlelése](https://docs.microsoft.com/azure/sql-database/sql-database-threat-detection-overview). Tekintse át a veszélyforrások észlelésével kapcsolatos riasztások szakaszt. Azt is megtudhatja, [hogyan Azure Security Center segít feltárni a cyberattack](https://azure.microsoft.com/blog/how-azure-security-center-helps-reveal-a-cyberattack/) , hogy megtudja, Security Center hogyan használják a rosszindulatú SQL-tevékenység észlelését a támadás felderítése érdekében.
 
-## Storage<a name="azure-storage"></a>
+## Azure Storage<a name="azure-storage"></a>
 
 >[!NOTE]
 > A tárterület komplex veszélyforrások elleni védelme jelenleg csak a blob Storage esetében érhető el.
@@ -53,7 +53,7 @@ Security Center elemzi az olvasási, írási és törlési kérelmeket a blob St
 
 |Riasztás|Leírás|
 |---|---|
-|**Szokatlan hely elérési rendellenessége**|A mintavételes hálózati forgalom elemzése rendellenes kimenő RDP protokoll (RDP) kommunikációt észlelt a telepítésben lévő erőforrásból. Ez a tevékenység rendellenesnek minősül ebben a környezetben. Azt jelezheti, hogy az erőforrást feltörték, és már használatban van egy külső RDP-végpont támadásával. Vegye figyelembe, hogy ez a típusú tevékenység azt eredményezheti, hogy az IP-címe rosszindulatúként van megjelölve külső entitások szerint.|
+|**Szokatlan hely elérési rendellenessége**|A mintavételes hálózati forgalom elemzése rendellenes kimenő RDP protokoll (RDP) kommunikációt észlelt a telepítésben lévő erőforrásból. Ez a tevékenység rendellenesnek minősül ebben a környezetben. Azt jelezheti, hogy az erőforrást feltörték, és már használatban van egy külső RDP-végpont támadásával. Ez a típusú tevékenység azt okozhatja, hogy az IP-címe rosszindulatúként van megjelölve külső entitások számára.|
 |**Alkalmazás-hozzáférési rendellenesség**|Azt jelzi, hogy egy szokatlan alkalmazás hozzáfért ehhez a Storage-fiókhoz. A lehetséges ok az, hogy egy támadó új alkalmazás használatával fér hozzá a Storage-fiókhoz.|
 |**Névtelen hozzáférési rendellenesség**|Azt jelzi, hogy a hozzáférési minta módosult egy Storage-fiókban. A fiókhoz például névtelenül (hitelesítés nélkül) férhet hozzá, ami nem várt, mint a fiók legutóbbi hozzáférési mintája. Ennek lehetséges oka, hogy egy támadó nyilvános olvasási hozzáférést kapott a blob Storage-t tároló tárolóhoz.|
 |**Tor-anomália**|Azt jelzi, hogy ez a fiók sikeresen elérhető egy olyan IP-címről, amely a Tor aktív kilépési csomópontjának (anonimizálásával-proxy) ismert. Ennek a riasztásnak a súlyossága figyelembe veszi a használt hitelesítési típust (ha van ilyen), és hogy ez az ilyen hozzáférés első esete-e. Lehetséges okok lehetnek olyan támadók, akik a Tor használatával hozzáfértek a Storage-fiókjához, vagy egy olyan legitim felhasználó, aki a Tor használatával fér hozzá a Storage-fiókhoz.|
@@ -63,6 +63,7 @@ Security Center elemzi az olvasási, írási és törlési kérelmeket a blob St
 |**Engedély-hozzáférési rendellenesség**|Azt jelzi, hogy a tároló hozzáférési engedélyei szokatlan módon módosultak. Ennek lehetséges oka, hogy egy támadó megváltoztatta a tárolók engedélyeit, hogy gyengítse biztonsági állapotát, vagy az adatmegőrzést.|
 |**Ellenőrzési hozzáférési rendellenesség**|Azt jelzi, hogy a Storage-fiók hozzáférési engedélyei szokatlan módon lettek megvizsgálva, a fiók legutóbbi tevékenységéhez képest. A lehetséges ok az, hogy egy támadó egy jövőbeli támadáshoz Felderítőt hajtott végre.|
 |**Adatfeltárási rendellenesség**|Azt jelzi, hogy a Storage-fiókban lévő Blobok vagy tárolók rendellenes módon vannak felsorolva, a fiók legutóbbi tevékenységéhez képest. A lehetséges ok az, hogy egy támadó egy jövőbeli támadáshoz Felderítőt hajtott végre.|
+|**Lehetséges kártevők feltöltése**|Azt jelzi, hogy egy lehetséges kártevőt tartalmazó blob feltöltve lett egy Storage-fiókba. A lehetséges okok miatt előfordulhat, hogy a támadók szándékos kártevőket töltenek fel egy ártó szándékú, rosszindulatú blob általi feltöltéssel, amely egy legitim felhasználó.|
 
 >[!NOTE]
 >A komplex veszélyforrások elleni védelem jelenleg nem érhető el az Azure governmentben és a szuverén Felhőbeli régiókban.

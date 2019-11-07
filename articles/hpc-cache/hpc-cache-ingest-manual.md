@@ -1,19 +1,19 @@
 ---
-title: Az Azure HPC cache előzetes adatgyűjtése – manuális másolás
+title: Azure HPC cache-adatfeldolgozás – manuális másolás
 description: A CP-parancsok használata az Azure HPC cache-ben lévő blob Storage-tárolóba való áthelyezéshez
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
-ms.date: 08/30/2019
+ms.date: 10/30/2019
 ms.author: rohogue
-ms.openlocfilehash: 7e29cbd202b32897026bed074743de543d3fd587
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.openlocfilehash: b2514eaaf70d13d3be63963f24ea7be99c4fbcce
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72254473"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73582287"
 ---
-# <a name="azure-hpc-cache-preview-data-ingest---manual-copy-method"></a>Azure HPC cache (előzetes verzió) adatfeldolgozás – manuális másolási módszer
+# <a name="azure-hpc-cache-data-ingest---manual-copy-method"></a>Azure HPC cache-adatfeldolgozás – manuális másolási módszer
 
 Ez a cikk részletes útmutatást nyújt az adatok blob Storage-tárolóba történő manuális másolásához az Azure HPC cache használatával. Több szálon futó párhuzamos műveleteket használ a másolás sebességének optimalizálása érdekében.
 
@@ -23,7 +23,7 @@ Ha többet szeretne megtudni arról, hogy az Azure HPC gyorsítótára hogyan he
 
 Manuálisan is létrehozhat többszálas másolatot egy ügyfélen, ha több másolási parancsot futtat egyszerre a háttérben a fájlok vagy elérési utak előre definiált készletei között.
 
-A Linux/UNIX ``cp`` parancs ``-p`` argumentumot tartalmaz a tulajdonosi és a mtime-metaadatok megőrzése érdekében. Az argumentum hozzáadása az alábbi parancsokhoz nem kötelező. (Az argumentum hozzáadása növeli az ügyféltől a célhely fájlrendszerig a metaadatok módosítására irányuló fájlrendszer-hívások számát.)
+A Linux/UNIX ``cp`` parancs a tulajdonosi és a mtime metaadatok megőrzéséhez ``-p`` argumentumot tartalmazza. Az argumentum hozzáadása az alábbi parancsokhoz nem kötelező. (Az argumentum hozzáadása növeli az ügyféltől a célhely fájlrendszerig a metaadatok módosítására irányuló fájlrendszer-hívások számát.)
 
 Ez az egyszerű példa két fájlt másol át párhuzamosan:
 
@@ -31,13 +31,13 @@ Ez az egyszerű példa két fájlt másol át párhuzamosan:
 cp /mnt/source/file1 /mnt/destination1/ & cp /mnt/source/file2 /mnt/destination1/ &
 ```
 
-A parancs kiadása után a `jobs` parancs azt jeleníti meg, hogy két szál fut.
+A parancs kiadása után a `jobs` parancs azt mutatja, hogy két szál fut.
 
 ## <a name="copy-data-with-predictable-file-names"></a>Az Adatmásolás Kiszámítható fájlnevekkel
 
 Ha a fájlnevek előre jelezhető, használhat kifejezéseket párhuzamos másolási szálak létrehozására. 
 
-Ha például a könyvtár 1000-es fájlokat tartalmaz, amelyek egymás után, `0001` értékről `1000`-re vannak számozva, a következő kifejezésekkel hozhat létre tíz párhuzamos szálat, amelyek mindegyike 100-fájlok másolására használható:
+Ha például a könyvtár 1000-es fájlokat tartalmaz, amelyek `0001` egymás után sorszámozással `1000`, a következő kifejezésekkel hozhat létre 10 párhuzamos szálat, amelyek az egyes 100-fájlok másolására szolgálnak:
 
 ```bash
 cp /mnt/source/file0* /mnt/destination1/ & \
@@ -56,7 +56,7 @@ cp /mnt/source/file9* /mnt/destination1/
 
 Ha a fájl elnevezési szerkezete nem kiszámítható, a fájlokat a címtár neve alapján csoportosíthatja. 
 
-Ez a példa teljes könyvtárat gyűjt a ``cp`` parancsok futtatásához háttérbeli feladatokként:
+Ez a példa az ``cp`` parancsok futtatásához használható teljes címtárakat gyűjti a háttérben feladatként:
 
 ```bash
 /root
@@ -92,7 +92,7 @@ Ha ez történik, az ügyféloldali csatlakoztatási pontokat hozzáadhatja más
 10.1.1.103:/nfs on /mnt/destination3type nfs (rw,vers=3,proto=tcp,addr=10.1.1.103)
 ```
 
-Az ügyféloldali csatlakoztatási pontok hozzáadásával további másolási parancsokat is kikapcsolhat a további @no__t – 0 csatlakoztatási pontokhoz, így további párhuzamosságot lehet elérni.  
+Az ügyféloldali csatlakoztatási pontok hozzáadásával további másolási parancsokat is kikapcsolhat a további `/mnt/destination[1-3]` csatlakoztatási pontokhoz, így további párhuzamosságot lehet elérni.  
 
 Ha például a fájlok nagyon nagy méretűek, a másolási parancsokat definiálhatja a különböző elérési utak használatára, és a másolást végző ügyféltől párhuzamosan több parancsot is küldhet.
 
@@ -214,7 +214,7 @@ for i in 1 2 3 4 5; do sed -n ${i}~5p /tmp/foo > /tmp/client${i}; done
 for i in 1 2 3 4 5 6; do sed -n ${i}~6p /tmp/foo > /tmp/client${i}; done
 ```
 
-A rendszer *n* eredményül kapott fájlokat fog kapni, amelyek mindegyike *n* -ügyfélhez tartozik, és az elérési utak nevei a `find` parancs kimenetének részeként kapott szint-négy könyvtárra vonatkoznak. 
+*N* eredményül kapott fájlokat fog kapni, amelyek mindegyike *n* -ügyfélhez tartozik, és az elérési út neve megegyezik a `find` parancs kimenetének részeként kapott négy szinttel. 
 
 Az egyes fájlok használatával hozza létre a másolási parancsot:
 

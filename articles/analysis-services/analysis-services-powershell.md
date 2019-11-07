@@ -1,18 +1,18 @@
 ---
 title: Azure Analysis Services kezelése a PowerShell használatával | Microsoft Docs
-description: Azure Analysis Services kezelése a PowerShell-lel.
+description: Ismerteti Azure Analysis Services PowerShell-parancsmagokat a gyakori felügyeleti feladatokhoz, például a kiszolgálók létrehozásához, a műveletek felfüggesztéséhez vagy a szolgáltatási szint módosításához.
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: reference
 ms.date: 10/28/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 329ea51895c45c8cdf50a323328fac3c580ffc16
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 2c8f4c0541d97a189087af692658cfe794eaaf7e
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73146221"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73572695"
 ---
 # <a name="manage-azure-analysis-services-with-powershell"></a>Azure Analysis Services kezelése a PowerShell-lel
 
@@ -39,7 +39,7 @@ Azure Analysis Services adatbázis-műveletek ugyanazt a SqlServer modult haszn�
 
 A SqlServer modul a feladat-specifikus adatbázis-kezelési parancsmagokat, valamint az általános célú meghívó-ASCmd parancsmagot is tartalmazza, amely a táblázatos modell parancsnyelv (TMSL) lekérdezését vagy parancsfájlját fogadja el. Azure Analysis Services a következő parancsmagok támogatottak a SqlServer modulban.
 
-Modul telepítése- [SqlServer](https://www.powershellgallery.com/packages/SqlServer)   
+Modul telepítése – [SqlServer](https://www.powershellgallery.com/packages/SqlServer)   
 Dokumentáció – [SQLServer-hivatkozás](/powershell/module/sqlserver)
 
 ### <a name="supported-cmdlets"></a>Támogatott parancsmagok

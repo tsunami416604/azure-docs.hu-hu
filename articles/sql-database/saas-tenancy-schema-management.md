@@ -1,5 +1,5 @@
 ---
-title: Azure SQL Database séma kezelése egyetlen bérlős alkalmazásban | Microsoft Docs
+title: Azure SQL Database séma kezelése egyetlen bérlős alkalmazásban
 description: Több bérlő sémájának kezelése egyetlen bérlős alkalmazásban, amely Azure SQL Databaset használ
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: billgib
 ms.date: 09/19/2018
-ms.openlocfilehash: 95d13c997d3871815ebd541e5985eb9fef726a76
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 32460feebeb55b2639a237db32dbc3923ba27171
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72029745"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73691844"
 ---
 # <a name="manage-schema-in-a-saas-application-using-the-database-per-tenant-pattern-with-azure-sql-database"></a>A sémák kezelése SaaS-alkalmazásokban az adatbázis-bérlői minta használatával Azure SQL Database
  
@@ -37,7 +37,7 @@ Ezen oktatóanyag segítségével megtanulhatja a következőket:
 Az oktatóanyag teljesítéséhez meg kell felelnie az alábbi előfeltételeknek:
 
 * A Wingtip jegyek SaaS-adatbázisa egy bérlői alkalmazáson van üzembe helyezve. Ha kevesebb, mint öt perc alatt kíván üzembe helyezni, tekintse meg [a Wingtip tickets SaaS-adatbázis üzembe helyezése és megismerése bérlői alkalmazásokban](saas-dbpertenant-get-started-deploy.md)
-* Az Azure PowerShell telepítve van. A részletekért lásd: [Ismerkedés az Azure PowerShell-lel](https://docs.microsoft.com/powershell/azure/get-started-azureps)
+* Az Azure PowerShell telepítve van. Részletes információk: [Ismerkedés az Azure PowerShell-lel](https://docs.microsoft.com/powershell/azure/get-started-azureps)
 * Telepítve van az SQL Server Management Studio (SSMS) legújabb verziója. [Az SSMS letöltése és telepítése](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms)
 
 > [!NOTE]
@@ -65,37 +65,37 @@ Az alkalmazás forráskódja és a felügyeleti szkriptek a [WingtipTicketsSaaS-
 
 Ehhez az oktatóanyaghoz a PowerShell használatával kell létrehoznia a feladatokhoz tartozó ügynököt és a hozzá tartozó feladatkártya-adatbázist. A feladatok ügynökének adatbázisában a feladatütemezés, a feladatok állapota és az előzmények szerepelnek. A feladat-ügynök és az adatbázis létrehozása után azonnal létrehozhatja és figyelheti a feladatokat.
 
-1. **A POWERSHELL ISE-ben**nyissa meg a... \\Learning modulok @ No__t-2Schema Management @ no__t-3*demo-SchemaManagement. ps1*.
+1. **A POWERSHELL ISE-ben**nyissa meg a...\\learning-modulokat\\Schema Management\\*demo-SchemaManagement. ps1*.
 1. A szkriptek futtatásához nyomja le az **F5** billentyűt.
 
 A *demo-SchemaManagement. ps1* parancsfájl meghívja a *Deploy-SchemaManagement. ps1* parancsfájlt egy *osagent* nevű SQL-adatbázis létrehozásához a Catalog kiszolgálón. Ezután létrehozza a feladatot, amely az adatbázis paraméterként való használatával jön létre.
 
 ## <a name="create-a-job-to-deploy-new-reference-data-to-all-tenants"></a>Feladat létrehozása új referenciaadatok bevezetéséhez az összes bérlőn
 
-A Wingtip tickets alkalmazásban a bérlői adatbázisok a támogatott helyszíneket tartalmazzák. Minden helyszín egy adott típusú helyszín, amely meghatározza a üzemeltethető események típusát, és meghatározza az alkalmazásban használt háttérképet. Ahhoz, hogy az alkalmazás támogassa az új típusú eseményeket, ezeket a hivatkozási adattípusokat frissíteni kell, és új helyszíneket kell hozzáadni.  Ebben a gyakorlatban egy frissítést helyez üzembe az összes bérlői adatbázison két további hely típusának hozzáadásához: *Motorkerékpár-verseny* és az *úszó klub*.
+A Wingtip tickets alkalmazásban a bérlői adatbázisok a támogatott helyszíneket tartalmazzák. Minden helyszín egy adott típusú helyszín, amely meghatározza a üzemeltethető események típusát, és meghatározza az alkalmazásban használt háttérképet. Ahhoz, hogy az alkalmazás támogassa az új típusú eseményeket, ezeket a hivatkozási adattípusokat frissíteni kell, és új helyszíneket kell hozzáadni.  Ebben a gyakorlatban frissítést helyezhet üzembe az összes bérlői adatbázison két további helyszíntípus hozzáadásához: *Motorkerékpár-verseny* és *Úszóklub*.
 
 Először tekintse át az egyes bérlői adatbázisokban található helyszín típusait. Kapcsolódjon SQL Server Management Studio (SSMS) egyik bérlői adatbázisához, és vizsgálja meg a VenueTypes táblát.  Ezt a táblázatot a Azure Portal lekérdezés-szerkesztőjében is lekérdezheti, amely az adatbázis lapról érhető el. 
 
-1. Nyissa meg a SSMS, és kapcsolódjon a bérlői kiszolgálóhoz: *tenants1-DPT-@no__t -1User&gt;.database.windows.net*
-1. Annak megerősítéséhez, hogy a *motorkerékpár-verseny* és **az** *úszás Club* jelenleg nem szerepel, keresse meg a _contosoconcerthall_ -adatbázist a *tenants1-DPT-&lt;user @ No__t-6* kiszolgálón, és kérdezze le a *VenueTypes* tábla.
+1. Nyissa meg a SSMS, és kapcsolódjon a bérlői kiszolgálóhoz: *tenants1-DPT-&lt;user&gt;. database.Windows.net*
+1. Annak megerősítéséhez, hogy a *motorkerékpár-verseny* és **az** *úszás Club* jelenleg nem szerepel, keresse meg a _contosoconcerthall_ -adatbázist a *tenants1-DPT-&lt;felhasználói&gt;* kiszolgálón, és kérdezze le a *VenueTypes* tábla.
 
 Most hozzon létre egy feladatot, amely frissíti a *VenueTypes* táblát az összes bérlői adatbázisban az új helyszín típusának hozzáadásához.
 
 Új feladat létrehozásához a feladat ügynökének létrehozásakor a _jobagent_ -adatbázisban létrehozott feladatok rendszertárolt eljárásait kell használnia.
 
-1. A SSMS-ben kapcsolódjon a Catalog kiszolgálóhoz: *Catalog-DPT-@no__t -1User&gt;.database.windows.net* Server 
-1. A SSMS-ben nyissa meg a fájlt... \\Learning modulok @ no__t-1Schema Management\\DeployReferenceData.sql
-1. Módosítsa az utasítást: SET @wtpUser = &lt;User @ no__t-2, és cserélje le a felhasználói értéket, amelyet a Wingtip-jegyek SaaS-adatbázisának telepítésekor használ a bérlői alkalmazás
+1. A SSMS-ben kapcsolódjon a Catalog kiszolgálóhoz: *Catalog-DPT-&lt;user&gt;. database.Windows.net* Server 
+1. A SSMS-ben nyissa meg a fájlt...\\learning-modulok\\Schema Management\\DeployReferenceData. SQL
+1. Az utasítás módosítása: állítsa be @wtpUser = &lt;felhasználói&gt; és cserélje le a felhasználói értéket, amelyet a Wingtip tickets SaaS-adatbázis üzembe helyezése után használ a bérlői alkalmazásban
 1. Győződjön meg arról, hogy csatlakozik a _jobagent_ -adatbázishoz, és nyomja le az **F5** billentyűt a szkript futtatásához.
 
 Figyelje meg a következő elemeket a *DeployReferenceData. SQL* parancsfájlban:
-* **SP @ no__t-1Add @ no__t-2target @ no__t-3group** létrehozza a célcsoport nevét DemoServerGroup.
-* **SP @ no__t-1Add @ no__t-2target @ no__t-3group @ no__t-4member** a megcélzott adatbázisok készletének meghatározására szolgál.  Először adja hozzá a _tenants1-DPT-&lt;User @ no__t-2_ kiszolgálót.  A kiszolgáló célként való hozzáadásával az adott kiszolgálón lévő adatbázisok a feladatok végrehajtásának időpontjában fognak szerepelni a feladatokban. Ezután a _basetenantdb_ -adatbázis és a *adhocreporting* -adatbázis (amelyet egy későbbi oktatóanyagban használ) hozzá lesz adva célként.
-* **SP @ no__t-1Add @ no__t-2job** létrehoz egy _hivatkozási adatok központi telepítés_nevű feladatot.
-* **SP @ no__t-1Add @ no__t-2jobstep** létrehozza a t-SQL-parancs szövegét tartalmazó feladatot a hivatkozási tábla (VenueTypes) frissítéséhez.
+* **sp\_hozzáadás\_cél\_csoport** létrehozza a célcsoport nevét DemoServerGroup.
+* **sp\_hozzáadás\_cél\_csoport\_tag** a célként megadott adatbázisok meghatározására szolgál.  Először adja hozzá a _tenants1-DPT-&lt;felhasználói&gt;-_ kiszolgálót.  A kiszolgáló célként való hozzáadásával az adott kiszolgálón lévő adatbázisok a feladatok végrehajtásának időpontjában fognak szerepelni a feladatokban. Ezután a _basetenantdb_ -adatbázis és a *adhocreporting* -adatbázis (amelyet egy későbbi oktatóanyagban használ) hozzá lesz adva célként.
+* az **sp\_add\_Job** létrehoz egy _hivatkozási adatok központi telepítés_nevű feladatot.
+* **sp\_add\_jobstep** létrehozza a t-SQL-parancs szövegét tartalmazó feladatot, amely frissíti a VenueTypes.
 * A szkript fennmaradó nézetei megjelenítik, hogy léteznek-e az objektumok, és figyelik a feladat-végrehajtást. Ezekkel a lekérdezésekkel áttekintheti az állapot értékét az **életciklus** oszlopban annak megállapításához, hogy a feladatok befejeződtek-e az összes célként megadott adatbázison.
 
-A parancsfájl befejezését követően ellenőrizheti, hogy frissültek-e a hivatkozási adathalmazok.  A SSMS-ben keresse meg a *contosoconcerthall* adatbázist a *tenants1-DPT-&lt;user @ no__t-3* kiszolgálón, és kérdezze le a *VenueTypes* táblát.  Győződjön meg arról, hogy a *motorkerékpár-verseny* és az *úszó klub* már jelen **van** .
+A parancsfájl befejezését követően ellenőrizheti, hogy frissültek-e a hivatkozási adathalmazok.  A SSMS-ben keresse meg a *contosoconcerthall* adatbázist a *tenants1-DPT-&lt;felhasználói&gt;* kiszolgálón, és kérdezze le a *VenueTypes* táblát.  Győződjön meg arról, hogy a *motorkerékpár-verseny* és az *úszó klub* már jelen **van** .
 
 
 ## <a name="create-a-job-to-manage-the-reference-table-index"></a>Feladat létrehozása a referenciatábla indexének kezeléséhez
@@ -104,21 +104,21 @@ Ez a gyakorlat egy feladatot használ az index újraépítéséhez a hivatkozás
 
 Hozzon létre egy feladatot ugyanannak a feladatnak a „system” által tárolt eljárásait használva.
 
-1. Nyissa meg a SSMS-t, és kapcsolódjon a _Catalog-DPT-@no__t -1User&gt;.database.windows.net_ -kiszolgálóhoz
-1. Nyissa meg a fájlt _... \\Learning modulok @ no__t-2Schema Management\\OnlineReindex.sql_
-1. Kattintson a jobb gombbal, válassza a kapcsolat lehetőséget, és kapcsolódjon a _Catalog-DPT-@no__t -1User&gt;.database.windows.net-_ kiszolgálóhoz, ha még nincs csatlakoztatva
+1. Nyissa meg a SSMS-t, és kapcsolódjon a _Catalog-DPT-&lt;felhasználói&gt;. database.Windows.net-_ kiszolgálóhoz
+1. Nyissa meg a fájlt _...\\learning-modulok\\Schema Management\\Sémakezelés. SQL_
+1. Kattintson a jobb gombbal, válassza a kapcsolat lehetőséget, és kapcsolódjon a _Catalog-DPT-&lt;felhasználói&gt;. database.Windows.net_ kiszolgálóhoz, ha még nincs csatlakoztatva
 1. Győződjön meg arról, hogy csatlakozik a _jobagent_ -adatbázishoz, és nyomja le az **F5** billentyűt a szkript futtatásához.
 
 Figyelje meg a következő elemeket a _Sémakezelés. SQL_ parancsfájlban:
-* **SP @ no__t-1Add @ no__t-2job** létrehoz egy új, "online reindex PK @ no__t-3 @ No__t-4VenueTyp @ no__t-5 @ NO__T-6265E44FD7FD4C885" nevű feladatot.
-* **SP @ no__t-1Add @ no__t-2jobstep** létrehozza a t-SQL-parancs szövegét tartalmazó feladatot az index frissítéséhez
+* **sp\_hozzáadás\_feladatokhoz** létrehoz egy "online reindex PK\_\_VenueTyp\_\_265E44FD7FD4C885" nevű új feladatot.
+* **sp\_hozzáadás\_jobstep** létrehozza a t-SQL-parancs szövegét tartalmazó feladatot az index frissítéséhez
 * A parancsfájl-figyelő feladatok végrehajtásának hátralévő nézetei. Ezekkel a lekérdezésekkel áttekintheti az állapot értékét az **életciklus** oszlopban annak megállapításához, hogy a feladatok sikeresen befejeződtek-e az összes célcsoport-tagon.
 
 
 
 ## <a name="next-steps"></a>További lépések
 
-Ennek az oktatóanyagnak a segítségével megtanulta a következőket:
+Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]
 > 

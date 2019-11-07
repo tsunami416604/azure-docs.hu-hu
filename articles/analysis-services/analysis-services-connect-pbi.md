@@ -1,18 +1,18 @@
 ---
 title: Kapcsolódás a Azure Analysis Serviceshoz Power BI használatával | Microsoft Docs
-description: Megtudhatja, hogyan csatlakozhat egy Azure Analysis Services-kiszolgálóhoz Power BI használatával.
+description: Megtudhatja, hogyan csatlakozhat egy Azure Analysis Services-kiszolgálóhoz Power BI használatával. A csatlakozást követően a felhasználók megismerhetik a modellre vonatkozó adatgyűjtést.
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 07/29/2019
+ms.date: 10/30/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 181a63fda1feddfb654eb32f46632f0656febb82
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: db0c00268c343cd99e439bb49460523cf0563c3c
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72295294"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73573103"
 ---
 # <a name="connect-with-power-bi"></a>Kapcsolódás Power BI-jal
 
@@ -44,7 +44,7 @@ Miután létrehozott egy kiszolgálót az Azure-ban, és egy táblázatos modell
 ## <a name="connect-in-power-bi-service"></a>Kapcsolódjon Power BI (szolgáltatás)
 
 1. Hozzon létre egy Power BI Desktop fájlt, amely élő kapcsolatban áll a modellel a-kiszolgálón.
-2. [Power bi](https://powerbi.microsoft.com)kattintson az **adatlekérdezés** > **fájlok**elemre, majd keresse meg és válassza ki a. pbix fájlt.
+2. [Power bi](https://powerbi.microsoft.com)kattintson az adat > **fájlok** **lekérése** elemre, majd keresse meg és válassza ki a. pbix fájlt.
 
 ## <a name="see-also"></a>Lásd még:
 [Kapcsolódás Azure Analysis Services](analysis-services-connect.md)   

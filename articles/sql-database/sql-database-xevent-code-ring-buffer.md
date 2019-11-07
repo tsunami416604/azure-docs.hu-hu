@@ -1,5 +1,5 @@
 ---
-title: SQL Database XEvent-gyűrűs puffer kódja | Microsoft Docs
+title: SQL Database XEvent
 description: Egy Transact-SQL-kódrészletet biztosít, amely egyszerűen és gyorsan használható a gyűrűs puffer céljának használatával Azure SQL Databaseban.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: MightyPen
 ms.author: genemi
 ms.reviewer: jrasnik
 ms.date: 12/19/2018
-ms.openlocfilehash: f1ec9cd3a4256597ade409fb3e04d44171277554
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 8fd04cac394f05a9db18e84117a8647c1a17ba30
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68566159"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73686806"
 ---
 # <a name="ring-buffer-target-code-for-extended-events-in-sql-database"></a>A kibővített eseményekhez tartozó gyűrűs pufferek SQL Database
 
@@ -54,10 +54,10 @@ Ez a témakör egy Transact-SQL-kód mintát mutat be, amely a következőket ta
 
 ## <a name="code-sample"></a>Kódminta
 
-Nagyon kicsi módosítás esetén a következő gyűrűs puffer kód Azure SQL Database vagy Microsoft SQL Server is futtatható. A különbség a "_database" csomópont jelenléte a (z) 5. lépésben a FROM záradékban használt dinamikus felügyeleti nézetek (DMV) nevében. Példa:
+Nagyon kicsi módosítás esetén a következő gyűrűs puffer kód Azure SQL Database vagy Microsoft SQL Server is futtatható. A különbség a "_database" csomópont jelenléte a (z) 5. lépésben a FROM záradékban használt dinamikus felügyeleti nézetek (DMV) nevében. Például:
 
-* sys.dm_xe<strong>_database</strong>_session_targets
-* sys.dm_xe_session_targets
+* sys. DM _xe<strong>_database</strong>_session_targets
+* sys. DM _xe_session_targets
 
 &nbsp;
 
@@ -222,7 +222,7 @@ Az eredmények megtekintéséhez a **target_data_XML**oszlop fejlécére kattint
 
 Ezután az eredmények ablaktáblán a cellára kattintott az oszlop fejlécének **target_data_XML**. Ehhez kattintson a létrehozott egy másik fájl fülre a SSMS. exe fájlban, amelyben az eredmény cellájának tartalma XML-ként jelenik meg.
 
-A kimenet az alábbi blokkban látható. Hosszú, de csak két  **\<esemény >** elemet.
+A kimenet az alábbi blokkban látható. Úgy néz ki, hogy hosszú, de csak két **\<event >** elemet.
 
 &nbsp;
 
@@ -347,7 +347,7 @@ Azure SQL Database a kiterjesztett események elsődleges témája:
 
 A kiterjesztett eseményekre vonatkozó egyéb mintakód-témakörök a következő hivatkozásokon érhetők el. A mintavételt azonban rendszeresen ellenőriznie kell, hogy látható-e a minta célja Microsoft SQL Server szemben Azure SQL Database. Ezután eldöntheti, hogy szükség van-e kisebb módosításokra a minta futtatásához.
 
-* Mintakód a Azure SQL Databasehoz: [Az eseménynaplóban a kiterjesztett események SQL Database](sql-database-xevent-code-event-file.md)
+* Mintakód a Azure SQL Database számára: az [eseménynaplóban a kiterjesztett események SQL Database](sql-database-xevent-code-event-file.md)
 
 <!--
 ('lock_acquired' event.)

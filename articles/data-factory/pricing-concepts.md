@@ -1,5 +1,5 @@
 ---
-title: Példák a Azure Data Factory díjszabásának megismerésére | Microsoft Docs
+title: A Azure Data Factory díjszabásának ismertetése példákkal
 description: Ez a cikk ismerteti és bemutatja a Azure Data Factory díjszabási modellt részletes példákkal
 documentationcenter: ''
 author: djpmsft
@@ -10,12 +10,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 09/25/2018
-ms.openlocfilehash: 168d977b9dc0ea6117796cf98a8562f168258d28
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: c42946733ee49ed6acf2c8deadf850208e003339
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72387454"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73684543"
 ---
 # <a name="understanding-data-factory-pricing-through-examples"></a>A Data Factory díjszabásának ismertetése példákkal
 
@@ -51,10 +51,10 @@ A forgatókönyv végrehajtásához létre kell hoznia egy folyamatot a követke
 **Forgatókönyvek teljes díjszabása: $0,16811**
 
 - Data Factory műveletek = **$0,0001**
-  - Írás/írás = 10 @ no__t-000001 = $0,0001 [1 R/W = $0,50/50000 = 0,00001]
-  - Figyelés = 2 @ no__t-0000005 = $0,00001 [1 figyelés = $0,25/50000 = 0,000005]
-- Folyamat-előkészítés @no__t – 0 végrehajtás = **$0,168**
-  - Tevékenység-futtatások = 001 @ no__t-02 = 0,002 [1 Futtatás = $1/1000 = 0,001]
+  - Írás/írás = 10\*00001 = $0,0001 [1 R/W = $0,50/50000 = 0,00001]
+  - Monitoring = 2\*000005 = $0,00001 [1 figyelés = $0,25/50000 = 0,000005]
+- Folyamat-összehangolás &amp; végrehajtás = **$0,168**
+  - Tevékenység-futtatások = 001\*2 = 0,002 [1 Futtatás = $1/1000 = 0,001]
   - Adatáthelyezési tevékenységek = $0,166 (a végrehajtási idő 10 perce arányban. 0,25 USD/óra Azure Integration Runtime)
 
 ## <a name="copy-data-and-transform-with-azure-databricks-hourly"></a>Az Adatmásolás és az átalakítás Azure Databricks óránként
@@ -83,10 +83,10 @@ A forgatókönyv végrehajtásához létre kell hoznia egy folyamatot a követke
 **Forgatókönyvek teljes díjszabása: $0,16916**
 
 - Data Factory műveletek = **$0,00012**
-  - Olvasás/írás = 11 @ no__t-000001 = $0,00011 [1 R/W = $0,50/50000 = 0,00001]
-  - Figyelés = 3 @ no__t-0000005 = $0,00001 [1 figyelés = $0,25/50000 = 0,000005]
-- Folyamat-előkészítés @no__t – 0 végrehajtás = **$0,16904**
-  - Tevékenység-futtatások = 001 @ no__t-03 = 0,003 [1 Futtatás = $1/1000 = 0,001]
+  - Írás/írás = 11\*00001 = $0,00011 [1 R/W = $0,50/50000 = 0,00001]
+  - Monitoring = 3\*000005 = $0,00001 [1 figyelés = $0,25/50000 = 0,000005]
+- Folyamat-összehangolás &amp; végrehajtás = **$0,16904**
+  - Tevékenység-futtatások = 001\*3 = 0,003 [1 Futtatás = $1/1000 = 0,001]
   - Adatáthelyezési tevékenységek = $0,166 (a végrehajtási idő 10 perce arányban. 0,25 USD/óra Azure Integration Runtime)
   - Külső folyamat tevékenysége = $0,000041 (a végrehajtási idő 10 perce arányban. $0.00025/óra Azure Integration Runtime)
 
@@ -118,10 +118,10 @@ A forgatókönyv végrehajtásához létre kell hoznia egy folyamatot a követke
 **Forgatókönyvek teljes díjszabása: $0,17020**
 
 - Data Factory műveletek = **$0,00013**
-  - Olvasás/írás = 11 @ no__t-000001 = $0,00011 [1 R/W = $0,50/50000 = 0,00001]
-  - Monitoring = 4 @ no__t-0000005 = $0,00002 [1 figyelés = $0,25/50000 = 0,000005]
-- Folyamat-előkészítés @no__t – 0 végrehajtás = **$0,17007**
-  - Tevékenység-futtatások = 001 @ no__t-04 = 0,004 [1 Futtatás = $1/1000 = 0,001]
+  - Írás/írás = 11\*00001 = $0,00011 [1 R/W = $0,50/50000 = 0,00001]
+  - Monitoring = 4\*000005 = $0,00002 [1 figyelés = $0,25/50000 = 0,000005]
+- Folyamat-összehangolás &amp; végrehajtás = **$0,17007**
+  - Tevékenység-futtatások = 001\*4 = 0,004 [1 Futtatás = $1/1000 = 0,001]
   - Adatáthelyezési tevékenységek = $0,166 (a végrehajtási idő 10 perce arányban. 0,25 USD/óra Azure Integration Runtime)
   - Folyamat aktivitása = $0,00003 (a végrehajtási idő 1 perces elszámolása. $0.002/óra Azure Integration Runtime)
   - Külső folyamat tevékenysége = $0,000041 (a végrehajtási idő 10 perce arányban. $0.00025/óra Azure Integration Runtime)
@@ -153,19 +153,19 @@ A forgatókönyv végrehajtásához létre kell hoznia egy folyamatot a követke
 | Folyamat létrehozása | 3 olvasási/írási entitás (1 a folyamat létrehozásához, 2 az adatkészlet-hivatkozásokhoz) |
 | Folyamat beolvasása | 1 olvasási/írási entitás |
 | Folyamat futtatása | 2 tevékenység fut (1 a trigger futtatásához, 1 a tevékenység futtatásához) |
-| Adatáramlási feltételezések: végrehajtási idő = 10 perc + 10 perc TTL | 10 @no__t – 0 8 általános számítási sebesség a 10-es TTL-vel |
+| Adatáramlási feltételezések: végrehajtási idő = 10 perc + 10 perc TTL | 10 \* 8 mag az általános számítási feladatokhoz 10 TTL-vel |
 | Figyelő folyamat feltételezése: csak 1 Futtatás történt | 2 figyelési futtatási rekordok újrapróbálva (1 a folyamat futtatásához, 1 a tevékenység futtatásához) |
 
 **Forgatókönyvek teljes díjszabása: $0,3011**
 
 - Data Factory műveletek = **$0,0001**
-  - Írás/írás = 10 @ no__t-000001 = $0,0001 [1 R/W = $0,50/50000 = 0,00001]
-  - Figyelés = 2 @ no__t-0000005 = $0,00001 [1 figyelés = $0,25/50000 = 0,000005]
-- Folyamat-előkészítés @no__t – 0 végrehajtás = **$0,301**
-  - Tevékenység-futtatások = 001 @ no__t-02 = 0,002 [1 Futtatás = $1/1000 = 0,001]
+  - Írás/írás = 10\*00001 = $0,0001 [1 R/W = $0,50/50000 = 0,00001]
+  - Monitoring = 2\*000005 = $0,00001 [1 figyelés = $0,25/50000 = 0,000005]
+- Folyamat-összehangolás &amp; végrehajtás = **$0,301**
+  - Tevékenység-futtatások = 001\*2 = 0,002 [1 Futtatás = $1/1000 = 0,001]
   - Adatfolyam-tevékenységek = $0,299 arány 20 percre (10 perc végrehajtási idő + 10 perc TTL). $0.112/óra Azure Integration Runtime 8 maggal általános számítási feladatokkal
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Most, hogy megértette Azure Data Factory díjszabását, megkezdheti!
 

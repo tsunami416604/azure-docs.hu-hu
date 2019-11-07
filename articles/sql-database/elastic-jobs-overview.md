@@ -1,5 +1,5 @@
 ---
-title: Azure SQL Elastic Database-feladatok (előzetes verzió) | Microsoft Docs
+title: Azure SQL Elastic Database-feladatok (előzetes verzió)
 description: Elastic Database feladatok (előzetes verzió) konfigurálása a Transact-SQL (T-SQL) parancsfájlok futtatásához egy vagy több Azure SQL Database-adatbázison keresztül
 services: sql-database
 ms.service: sql-database
@@ -11,16 +11,16 @@ author: srinia
 ms.author: srinia
 ms.reviewer: sstein
 ms.date: 12/18/2018
-ms.openlocfilehash: 3a0aa6e28ea4c40d5cad5ba99edec344c7979acf
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 2afe7d5c9667002c97d354cd1e94f292c6302558
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68935081"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73685292"
 ---
 # <a name="create-configure-and-manage-elastic-jobs"></a>Rugalmas feladatok létrehozása, konfigurálása és kezelése
 
-Ebből a cikkből megtudhatja, hogyan hozhat létre, konfigurálhat és kezelhet rugalmas feladatokat. Ha nem használt rugalmas feladatokat, ismerkedjen [meg a Azure SQL Database feladat-automatizálási fogalmakkal](sql-database-job-automation-overview.md).
+Ebből a cikkből megtudhatja, hogyan hozhat létre, konfigurálhat és kezelhet rugalmas feladatokat. Ha nem használt rugalmas feladatokat, [Ismerkedjen meg a Azure SQL Database feladat-automatizálási fogalmakkal](sql-database-job-automation-overview.md).
 
 ## <a name="create-and-configure-the-agent"></a>Az ügynök létrehozása és konfigurálása
 
@@ -48,7 +48,7 @@ A feladatok [adatbázishoz kötődő hitelesítő adatokat](/sql/t-sql/statement
 Lehetséges, hogy a feladatfuttatáshoz szükséges megfelelő hitelesítő adatok beállítása nem egyértelmű, ezért tartsa szem előtt a következőket:
 
 - Az adatbázishoz kötődő hitelesítő adatokat a *feladat-adatbázisban* kell létrehozni.
-- **Az összes célként megadott adatbázisnak [megfelelő engedélyekkel](https://docs.microsoft.com/sql/relational-databases/security/permissions-database-engine) kell rendelkeznie ahhoz, hogy a feladatok sikeresen befejeződik** (`jobuser` az alábbi ábrán).
+- Az **összes célként megadott adatbázisnak [megfelelő engedélyekkel](https://docs.microsoft.com/sql/relational-databases/security/permissions-database-engine) kell rendelkeznie ahhoz, hogy a feladatok sikeresen befejeződik** (`jobuser` az alábbi ábrán).
 - A hitelesítő adatok újra felhasználhatók a feladatok között, a hitelesítő adatok jelszava pedig titkosítva van, és a feladat objektumaihoz csak olvasási hozzáféréssel rendelkező felhasználók férhetnek hozzá.
 
 Az alábbi kép segítséget nyújt a megfelelő hitelesítő adatok megértéséhez és beállításához. **Ne feledje létrehozni a felhasználót minden olyan adatbázisban (minden *célként megjelölt felhasználói adatbázisban*), ahol a feladatot futtatni szeretné**.
@@ -75,7 +75,7 @@ Jelenleg az előzetes verzió 100 feladat egyidejű futtatására képes.
 
 Ha szeretné elkerülni, hogy az erőforrások túlterheltek legyenek egy rugalmas SQL-készlet adatbázisain történő feladatvégrehajtás közben, akkor a feladatok esetén konfigurálhatja, hogy azok egyszerre legfeljebb hány adatbázison futhatnak.
 
-Állítsa be a feladat által futtatott egyidejű adatbázisok számát úgy, hogy `sp_add_jobstep` a tárolt `@max_parallelism` eljárás paraméterét a T-SQL- `Add-AzSqlElasticJobStep -MaxParallelism` ben vagy a PowerShellben állítja be.
+Állítsa be a feladat által futtatott egyidejű adatbázisok számát a `sp_add_jobstep` tárolt eljárás `@max_parallelism` paraméterének T-SQL-ben vagy `Add-AzSqlElasticJobStep -MaxParallelism` a PowerShellben való beállításával.
 
 ## <a name="best-practices-for-creating-jobs"></a>Ajánlott eljárások feladatok létrehozásához
 

@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/12/2019
+ms.date: 10/31/2019
 ms.author: spelluru
-ms.openlocfilehash: 65a77b8243e7afc8d858360d3d3be86f44e6b67e
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: cb9a3e2b9ddcd0f74bfa4978f0bc3f4eb0688257
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72332221"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73583707"
 ---
 # <a name="enable-remote-desktop-for-linux-virtual-machines-in-a-lab-in-azure-lab-services"></a>A távoli asztal használatának engedélyezése a Linux rendszerű virtuális gépek számára a Azure Lab Services tesztkörnyezetben
 Ez a cikk bemutatja, hogyan végezheti el a következő feladatokat:
@@ -63,5 +63,5 @@ A tanároknak először SSH-val kell csatlakozniuk a sablon virtuális géphez, 
 4. RDP-és GUI-csomagok telepítése, hogy a tanulók a Linux rendszerű gépeket később RDP-kapcsolaton keresztül csatlakozhassanak. További információkért lásd: [Távoli asztal telepítése és konfigurálása egy linuxos virtuális géphez való kapcsolódáshoz az Azure-ban](../../virtual-machines/linux/use-remote-desktop.md). Ezt követően közzéteheti a képet, hogy a tanulók RDP-be tudják állítani a tanulói Linux virtuális gépeket.
 5. A csomagok telepítése után a **Kapcsolódás sablonhoz** lehetőséget használhatja az eszköztáron, majd a **Kapcsolódás RDP** -kapcsolaton keresztül lehetőségre kattintva csatlakozhat a sablon virtuális géphez RDP-kapcsolaton keresztül. Mentse az RDP-fájlt, és használja arra, hogy RDP-kapcsolaton keresztül csatlakozzon a sablon virtuális géphez. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Miután egy oktató engedélyezte a távoli asztali kapcsolat funkciót, a diákok RDP/SSH-n keresztül csatlakozhatnak a virtuális gépekhez. További információ: a [Távoli asztal használata Linux rendszerű virtuális gépekhez egy osztályterem laborban](how-to-use-remote-desktop-linux-student.md). 

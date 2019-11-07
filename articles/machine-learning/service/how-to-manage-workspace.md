@@ -10,12 +10,12 @@ ms.author: sgilley
 author: sdgilley
 ms.date: 11/04/2019
 ms.custom: seodec18
-ms.openlocfilehash: 1985c596b9f4b9b78b0055bfe1eab9888c30e201
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 9e3915a2f55680fc2e24ac63d5e7170ada026c2e
+ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73489758"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73615190"
 ---
 # <a name="create-and-manage-azure-machine-learning-workspaces-in-the-azure-portal"></a>Azure Machine Learning munkaterületek létrehozása és kezelése a Azure Portal
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -30,13 +30,13 @@ Munkaterület létrehozásához Azure-előfizetésre van szükség. Ha nem rende
 
 1. A Azure Portal bal felső sarkában válassza az **+ erőforrás létrehozása**lehetőséget.
 
-      ![Új erőforrás létrehozása](../../../includes/media/aml-create-in-portal/portal-create-resource.png)
+      ![Új erőforrás létrehozása](../../../includes/media/aml-create-in-portal/create-workspace.gif)
 
-1. A keresősáv használatával megkeresheti **Machine learning szolgáltatás munkaterületét**.
+1. A keresősáv használatával megkeresheti **Machine learning**.
 
-1. Válassza **Machine learning szolgáltatás munkaterületet**.
+1. Válassza a **Machine learning**lehetőséget.
 
-1. A **Machine learning szolgáltatás munkaterülete** ablaktáblán kattintson a **Létrehozás** elemre a kezdéshez.
+1. A **Machine learning** ablaktáblán kattintson a **Létrehozás** elemre a kezdéshez.
 
 1. Adja meg az alábbi adatokat az új munkaterület konfigurálásához:
 
@@ -45,7 +45,7 @@ Munkaterület létrehozásához Azure-előfizetésre van szükség. Ha nem rende
    Munkaterület neve |Adjon meg egy egyedi nevet, amely azonosítja a munkaterületet. Ebben a példában a **docs-ws-** t használjuk. A névnek egyedinek kell lennie az erőforráscsoport között. Használjon könnyen felhívható nevet, és a mások által létrehozott munkaterületek megkülönböztetését.  
    Előfizetés |Válassza ki a használni kívánt Azure-előfizetést.
    Erőforráscsoport | Használjon egy meglévő erőforráscsoportot az előfizetésben, vagy adjon meg egy nevet egy új erőforráscsoport létrehozásához. Egy erőforráscsoport kapcsolódó erőforrásokat tárol egy Azure-megoldáshoz. Ebben a példában a **docs-pénzmosást**használjuk. 
-   Földrajzi egység | Válassza ki a felhasználókhoz legközelebb eső helyet, valamint az adatforrásokat a munkaterület létrehozásához.
+   Hely | Válassza ki a felhasználókhoz legközelebb eső helyet, valamint az adatforrásokat a munkaterület létrehozásához.
    Munkaterület kiadása | Válassza az **Alap** vagy a **vállalat**lehetőséget.  Ez a munkaterület-kiadás határozza meg azokat a szolgáltatásokat, amelyekhez hozzáférésre és díjszabásra van szüksége. További információ az [alapszintű és a nagyvállalati kiadási ajánlatokról](overview-what-is-azure-ml.md#sku). 
 
     ![Munkaterület konfigurálása](media/how-to-manage-workspace/select-edition.png)
@@ -89,18 +89,15 @@ A munkaterületet az alapszintű kiadásról a nagyvállalati kiadásra frissít
 
 ## <a name="view"></a>Munkaterület keresése
 
-1. A portál bal felső sarkában válassza a **minden szolgáltatás**lehetőséget.
+1. A felső Keresés mezőbe írja be a következőt: **Machine learning**.  
 
-1. A **minden szolgáltatás** szűrő mezőbe írja be a **Machine learning**értéket.  
+1. Válassza a **Machine learning**lehetőséget.
 
-1. Válassza a **Azure Machine learning**lehetőséget.
-
-   ![Azure Machine Learning munkaterület keresése](media/how-to-manage-workspace/all-services.png)
+   ![Azure Machine Learning munkaterület keresése](media/how-to-manage-workspace/find-workspaces.png)
 
 1. Tekintse át a talált munkaterületek listáját. Az előfizetés, az erőforráscsoportok és a helyszínek alapján szűrhet.  
 
 1. Válasszon ki egy munkaterületet a tulajdonságainak megjelenítéséhez.
-   ![munkaterület tulajdonságai](media/how-to-manage-workspace/allservices_view_workspace_full.PNG)
 
 ## <a name="delete-a-workspace"></a>Munkaterület törlése
 

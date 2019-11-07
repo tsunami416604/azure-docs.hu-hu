@@ -1,5 +1,5 @@
 ---
-title: Az alkalmazás-hitelesítés értékének beolvasása – Azure SQL Database | Microsoft Docs
+title: Az alkalmazás-hitelesítés értékének beolvasása – Azure SQL Database
 description: Hozzon létre egy egyszerű szolgáltatást, amely a kóddal való SQL Database elérésére szolgál.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/12/2019
-ms.openlocfilehash: d7c8c6788a8699c5b57c39731c148454ad8dcfcf
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 6a8f5263e2f79f130814aa520712f679430440fd
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68569323"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73691012"
 ---
 # <a name="get-the-required-values-for-authenticating-an-application-to-access-sql-database-from-code"></a>Az alkalmazások kód SQL Database való eléréséhez szükséges értékek beolvasása
 
@@ -71,7 +71,7 @@ A következő PowerShell-parancsprogram létrehozza az Active Directory (AD)-alk
 
 
 
-## <a name="see-also"></a>Lásd még
+## <a name="see-also"></a>Lásd még:
 * [SQL-adatbázis létrehozása aC#](sql-database-get-started-csharp.md)
 * [Csatlakozás SQL Databasehoz Azure Active Directory hitelesítés használatával](sql-database-aad-authentication.md)
 

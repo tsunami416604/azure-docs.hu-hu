@@ -1,26 +1,23 @@
 ---
 title: Gyakran ismételt kérdések az Azure Spring Cloud-ról | Microsoft Docs
 description: Az Azure Spring Cloud gyakori kérdéseinek áttekintése
-services: spring-cloud
-author: v-vasuke
-manager: jeconnoc
-editor: ''
+author: jpconnock
 ms.service: spring-cloud
-ms.topic: quickstart
+ms.topic: conceptual
 ms.date: 10/07/2019
-ms.author: v-vasuke
-ms.openlocfilehash: 12ef5586ac1e7ecf27824f95add3355451cf555a
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.author: jeconnoc
+ms.openlocfilehash: 1fb241ab1335e6b9c9be55acbbe2e21378831b69
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73163776"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73607233"
 ---
 # <a name="frequently-asked-questions"></a>Gyakori kérdések
 
 Ez a cikk az Azure Spring Cloud szolgáltatással kapcsolatos gyakori kérdéseket tárgyalja. 
 
-## <a name="general"></a>Általános
+## <a name="general"></a>Általános kérdések
 
 ### <a name="why-azure-spring-cloud"></a>Az Azure Spring Cloud bemutatása
 
@@ -95,7 +92,7 @@ Jelenleg három szolgáltatás támogatott: Azure Cosmos DB, Azure Database for 
 ### <a name="can-i-viewaddmove-persistent-volumes-from-inside-my-applications"></a>Megtekinthetem, hogyan lehet állandó köteteket megtekinteni/felvenni vagy áthelyezni az alkalmazásaim belsejében?
 Igen.
 
-## <a name="deployment"></a>Üzembe helyezés
+## <a name="deployment"></a>Környezet
 
 ### <a name="does-azure-spring-cloud-support-blue-green-deployment"></a>Támogatja az Azure Spring Cloud a Blue-Green üzembe helyezést?
 Igen, tekintse meg az [átmeneti környezet útmutatóját](spring-cloud-howto-staging-environment.md) további részletekért.
@@ -123,6 +120,6 @@ A meglévő Spring-szolgáltatásoknak az Azure Spring Cloud-ba való migrálás
 
 Az áttelepítés után figyelje a CPU/RAM mérőszámait és a hálózati forgalmat annak érdekében, hogy az alkalmazás példányai megfelelően méretezhetők legyenek.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [Ha további kérdései vannak, tekintse meg a hibaelhárítási útmutatót](spring-cloud-troubleshoot.md).

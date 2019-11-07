@@ -1,5 +1,5 @@
 ---
-title: A Azure Data Factory entitások elnevezésére vonatkozó szabályok | Microsoft Docs
+title: Azure Data Factory entitások elnevezésére vonatkozó szabályok
 description: Leírja Data Factory entitások elnevezési szabályait.
 services: data-factory
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: fd1cdfac91a48d016857d06d5c9843fcdc4f5d9f
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: e8bfc5fe9a63ba54e055fe86af6a9bb88d7348d5
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70139209"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73666688"
 ---
 # <a name="azure-data-factory---naming-rules"></a>Azure Data Factory – elnevezési szabályok
 > [!NOTE]
@@ -28,7 +28,7 @@ Az alábbi táblázat a Data Factory összetevők elnevezési szabályait tartal
 
 | Name (Név) | Név egyedisége | Ellenőrzés ellenőrzése |
 |:--- |:--- |:--- |
-| Data Factory |Egyedi a Microsoft Azure között. A nevek nem megkülönböztetik a kis- `MyDF` és `mydf` nagybetűket, azaz ugyanarra az adat-előállítóra hivatkoznak. |<ul><li>Minden egyes adatfeldolgozó pontosan egy Azure-előfizetéshez van kötve.</li><li>Az objektumok nevének betűvel vagy számmal kell kezdődnie, és csak betűket, számokat és kötőjel (-) karaktert tartalmazhat.</li><li>Minden kötőjel (-) karaktert közvetlenül előtt kell megadni, majd betűvel vagy számmal kell kiegészíteni. Az egymást követő kötőjelek nem engedélyezettek a tárolók neveiben.</li><li>A név 3-63 karakter hosszú lehet.</li></ul> |
-| Társított szolgáltatások/táblák/folyamatok |Egyedi a-ben egy adatelőállítóban. A nevek nem megkülönböztetik a kis-és nagybetűket. |<ul><li>Karakterek maximális száma a táblázat nevében: 260.</li><li>Az objektumok nevének betűvel, számmal vagy aláhúzással (_) kell kezdődnie.</li><li>A következő karakterek nem engedélyezettek: ".", "+", "?", "/", "<", ">", "*", "%", "&", ":", "\\"</li></ul> |
+| Data Factory |Egyedi a Microsoft Azure között. A nevek kis-és nagybetűket nem megkülönböztetőek, azaz `MyDF` és `mydf` ugyanarra az adat-előállítóra vonatkoznak. |<ul><li>Minden egyes adatfeldolgozó pontosan egy Azure-előfizetéshez van kötve.</li><li>Az objektumok nevének betűvel vagy számmal kell kezdődnie, és csak betűket, számokat és kötőjel (-) karaktert tartalmazhat.</li><li>Minden kötőjel (-) karaktert közvetlenül előtt kell megadni, majd betűvel vagy számmal kell kiegészíteni. Az egymást követő kötőjelek nem engedélyezettek a tárolók neveiben.</li><li>A név 3-63 karakter hosszú lehet.</li></ul> |
+| Társított szolgáltatások/táblák/folyamatok |Egyedi a-ben egy adatelőállítóban. A nevek nem megkülönböztetik a kis-és nagybetűket. |<ul><li>A tábla nevében szereplő karakterek maximális száma: 260.</li><li>Az objektumok nevének betűvel, számmal vagy aláhúzással (_) kell kezdődnie.</li><li>A következő karakterek nem engedélyezettek: ".", "+", "?", "/", "<", ">", "*", "%", "&", ":", "\\"</li></ul> |
 | Erőforráscsoport |Egyedi a Microsoft Azure között. A nevek nem megkülönböztetik a kis-és nagybetűket. |<ul><li>Karakterek maximális száma: 1000.</li><li>A név csak betűket, számokat és a következő karaktereket tartalmazhatja: "-", "_", "," és "."</li></ul> |
 

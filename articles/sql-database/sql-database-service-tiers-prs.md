@@ -1,5 +1,5 @@
 ---
-title: Azure SQL Database prémium RS szolgáltatási rétegek nyugdíjazása | Microsoft Docs
+title: Azure SQL Database prémium RS szolgáltatási szintek nyugdíjazása
 description: 'Folyamatban van a prémium RS szolgáltatási réteg kivonása, és a támogatása megszűnik – lásd: áttelepítési beállítások.'
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 02/07/2019
-ms.openlocfilehash: d2637618ea9e2a0a0d0369eddce01fae073be221
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 688fd3fdefb54fc25d5236277c85dd4262df5f34
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68566637"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73687244"
 ---
 # <a name="azure-sql-database-premium-rs-service-tier-preview-is-being-retired---options-for-migration"></a>Azure SQL Database prémium RS szolgáltatási réteg (előzetes verzió) kivonása folyamatban van – áttelepítési lehetőségek
 

@@ -1,5 +1,5 @@
 ---
-title: Data Factory – .NET API-változási napló | Microsoft Docs
+title: Data Factory – .NET API-változási napló
 description: Leírja a megszakított változásokat, a funkciók kiegészítéseit, hibajavításokat stb. a Azure Data Factory .NET API adott verziójában.
 services: data-factory
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: conceptual
 robots: noindex
 ms.date: 01/22/2018
-ms.openlocfilehash: 35f0145526aa596691fde26e92695f64f5ac35e0
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: e1902db6bc3a127262f5e37f36e82b07ab15c7c9
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70140516"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73683195"
 ---
 # <a name="azure-data-factory---net-api-change-log"></a>Azure Data Factory – .NET API-változási napló
 > [!NOTE]
@@ -86,7 +86,7 @@ Szolgáltatások kiegészítései:
 ### <a name="feature-additions"></a>Szolgáltatások kiegészítései
 * A következő tulajdonságok lettek hozzáadva a [PipelineProperties](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.pipelineproperties_properties.aspx)-hez:
   * [PipelineMode](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.pipelineproperties.pipelinemode.aspx)
-  * [ExpirationTime](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.pipelineproperties.expirationtime.aspx)
+  * [Expirationtime tulajdonságok](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.pipelineproperties.expirationtime.aspx)
   * [Adatkészletek](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.pipelineproperties.datasets.aspx)
 * A következő tulajdonságok lettek hozzáadva a [PipelineRuntimeInfo](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.common.models.pipelineruntimeinfo.aspx)-hez:
   * [PipelineState](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.common.models.pipelineruntimeinfo.pipelinestate.aspx)
@@ -101,7 +101,7 @@ Szolgáltatások kiegészítései:
 * A következő adatkészlet-típusok lettek hozzáadva:
   * [ODataResourceDataset](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.odataresourcedataset.aspx), [WebTableDataset](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.webtabledataset.aspx)
 * A következő típusú másolási források lettek hozzáadva:     
-  * [WebSource](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.websource.aspx)
+  * [Webforrások](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.websource.aspx)
 
 ## <a name="version-440"></a>4\.4.0 verziója
 ### <a name="feature-additions"></a>Szolgáltatások kiegészítései

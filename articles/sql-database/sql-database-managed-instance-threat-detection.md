@@ -1,5 +1,5 @@
 ---
-title: Komplex veszélyforrások elleni védelem konfigurálása – Azure SQL Database felügyelt példány | Microsoft Docs
+title: Összetett veszélyforrások elleni védelem konfigurálása – Azure SQL Database felügyelt példány
 description: A komplex veszélyforrások elleni védelem rendellenes adatbázis-tevékenységeket észlel, amelyeken a felügyelt példányok adatbázisa potenciális biztonsági fenyegetéseket jelez.
 services: sql-database
 ms.service: sql-database
@@ -11,16 +11,16 @@ author: rmatchoro
 ms.author: ronmat
 ms.reviewer: vanto
 ms.date: 08/05/2019
-ms.openlocfilehash: eb6d8229e85e54a6a3fc8591dc4688a73773fd8b
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: 8e419031c34a693bac7ab9f9825c24576e80ba14
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68816583"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73687878"
 ---
 # <a name="configure-advanced-threat-protection-in-azure-sql-database-managed-instance"></a>Az összetett veszélyforrások elleni védelem konfigurálása Azure SQL Database felügyelt példányban
 
-A felügyelt példányok [](sql-database-managed-instance-index.yml) komplex [veszélyforrások elleni védelme](sql-database-threat-detection-overview.md) olyan rendellenes tevékenységeket észlel, amelyek szokatlan és potenciálisan ártalmas kísérleteket jeleznek az adatbázisok eléréséhez vagy kiaknázásához. A komplex veszélyforrások elleni védelem képes azonosítani a **lehetséges SQL**-injektálásokat, **a szokatlan helyekről vagy**adatközpontokból való hozzáférést, **az ismeretlen elsődleges vagy potenciálisan ártalmas alkalmazások elérését**, valamint a **találgatásos SQL-hitelesítő adatok** megtekintését. További információ a komplex [veszélyforrások elleni védelem riasztásokról](sql-database-threat-detection-overview.md#advanced-threat-protection-alerts).
+A [felügyelt példányok](sql-database-managed-instance-index.yml) komplex [veszélyforrások elleni védelme](sql-database-threat-detection-overview.md) olyan rendellenes tevékenységeket észlel, amelyek szokatlan és potenciálisan ártalmas kísérleteket jeleznek az adatbázisok eléréséhez vagy kiaknázásához. A komplex veszélyforrások elleni védelem képes azonosítani a **lehetséges SQL-injektálásokat**, **a szokatlan helyekről vagy adatközpontokból való hozzáférést**, **az ismeretlen elsődleges vagy potenciálisan ártalmas alkalmazások elérését**, valamint a **találgatásos SQL-hitelesítő adatok** megtekintését. További információ a komplex [veszélyforrások elleni védelem riasztásokról](sql-database-threat-detection-overview.md#advanced-threat-protection-alerts).
 
 Értesítéseket kaphat az észlelt fenyegetésekről az [e-mail-értesítések](sql-database-threat-detection-overview.md#explore-anomalous-database-activities-upon-detection-of-a-suspicious-event) vagy a [Azure Portal](sql-database-threat-detection-overview.md#explore-advanced-threat-protection-alerts-for-your-database-in-the-azure-portal) használatával
 
@@ -28,7 +28,7 @@ A komplex [veszélyforrások elleni védelem](sql-database-threat-detection-over
 
 ## <a name="set-up-advanced-threat-protection-in-the-azure-portal"></a>Az összetett veszélyforrások elleni védelem beállítása a Azure Portal
 
-1. Indítsa el a Azure Portal [https://portal.azure.com](https://portal.azure.com)a következő helyen:.
+1. Indítsa el a Azure Portalt a [https://portal.azure.com](https://portal.azure.com).
 2. Navigáljon a védelemmel ellátni kívánt felügyelt példány konfigurációs lapjára. A **Beállítások** lapon kattintson a **speciális adatbiztonság**elemre.
 3. A speciális adatbiztonság konfigurálása lapon
    - **A** speciális adatbiztonság bekapcsolása.
@@ -37,7 +37,7 @@ A komplex [veszélyforrások elleni védelem](sql-database-threat-detection-over
    - Válassza ki a konfigurálni kívánt komplex **veszélyforrások elleni védelem típusát** . További információ a komplex [veszélyforrások elleni védelem riasztásokról](sql-database-threat-detection-overview.md).
 4. Kattintson a **Save (Mentés** ) gombra az új vagy frissített speciális adatbiztonsági házirend mentéséhez.
 
-   ![Advanced Threat Protection](./media/sql-database-managed-instance-threat-detection/threat-detection.png)
+   ![Fejlett fenyegetésvédelem](./media/sql-database-managed-instance-threat-detection/threat-detection.png)
 
    > [!NOTE]
    > A képernyőképek árai nem mindig tükrözik az aktuális árat, és példa erre.

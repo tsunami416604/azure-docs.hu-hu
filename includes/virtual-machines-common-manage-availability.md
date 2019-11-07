@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 0879cb33a0796e19724bd143e57780d6ce27bfcf
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 7c884d3c7102fc47f6efad86d9fe3704afd0edcf
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69657799"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73590824"
 ---
 ## <a name="understand-vm-reboots---maintenance-vs-downtime"></a>A virtuális gépek újraindításának ismertetése – karbantartás és állásidő
 Az Azure-beli virtuális gépeket három forgatókönyv befolyásolja: nem tervezett hardveres karbantartás, váratlan leállás és tervezett karbantartás.
@@ -39,7 +39,7 @@ Az ilyen események okozta állásidő hatásainak csökkentése érdekében jav
 
 ## <a name="use-availability-zones-to-protect-from-datacenter-level-failures"></a>A rendelkezésre állási zónák használata az adatközponti szintű hibák elleni védelemhez
 
-A [rendelkezésre állási zónák](../articles/availability-zones/az-overview.md) kibővítik a vezérlés szintjét, hogy a virtuális gépeken elérhető alkalmazások és adatmennyiségek rendelkezésre álljanak. A rendelkezésre állási zónák egyedi fizikai helyszínek az Azure-régióban. Minden zóna egy vagy több adatközpont független áramellátással, hűtéssel és hálózati található tevődik össze. A rugalmasság biztosítása érdekében az összes engedélyezett régióban legalább három különálló zónának kell lennie. Egy régión belüli Availability Zones fizikai elkülönítése megvédi az alkalmazásokat és az adatközpontok meghibásodását. Zóna – a redundáns szolgáltatások az alkalmazások és az adatok replikálását Availability Zones az egypontos meghibásodások elleni védelem érdekében.
+A [rendelkezésre állási zónák](../articles/availability-zones/az-overview.md) kibővítik a vezérlés szintjét, hogy a virtuális gépeken elérhető alkalmazások és adatmennyiségek rendelkezésre álljanak. A rendelkezésreállási zónák fizikailag elkülönített helyek egy Azure-régión belül. Minden rendelkezésreállási zóna egy vagy több, független áramforrással, hűtéssel és hálózatkezelési megoldással ellátott adatközpontból áll. A rugalmasság biztosítása érdekében az összes engedélyezett régióban legalább három különálló zónának kell lennie. Egy régión belüli Availability Zones fizikai elkülönítése megvédi az alkalmazásokat és az adatközpontok meghibásodását. Zóna – a redundáns szolgáltatások az alkalmazások és az adatok replikálását Availability Zones az egypontos meghibásodások elleni védelem érdekében.
 
 Az Azure-régiók rendelkezésre állási zónái egy tartalék **tartomány** és egy **frissítési tartomány**kombinációja. Ha például három vagy több virtuális gépet hoz létre három zónában egy Azure-régióban, a virtuális gépeket a rendszer gyakorlatilag három tartalék tartományba és három frissítési tartományba terjeszti. Az Azure platform felismeri ezt az eloszlást a frissítési tartományok között, hogy megbizonyosodjon róla, hogy a különböző zónákban lévő virtuális gépek nem frissülnek egyidőben.
 
@@ -47,7 +47,7 @@ Az Azure Availability Zones az iparág legjobb 99,99%-os rendelkezésre állás�
 
 ![Rendelkezésre állási zónák](./media/virtual-machines-common-regions-and-availability/three-zones-per-region.png)
 
-További információ a [Windows](../articles/virtual-machines/windows/create-powershell-availability-zone.md) vagy [Linux](../articles/virtual-machines/linux/create-cli-availability-zone.md) rendszerű virtuális gépek rendelkezésre állási zónában való üzembe helyezéséről.
+További információ a Windows vagy [Linux](../articles/virtual-machines/linux/create-cli-availability-zone.md) [rendszerű](../articles/virtual-machines/windows/create-powershell-availability-zone.md) virtuális gépek rendelkezésre állási zónában való üzembe helyezéséről.
 
 ## <a name="configure-multiple-virtual-machines-in-an-availability-set-for-redundancy"></a>Több virtuális gép rendelkezésre állási csoportba konfigurálása a redundancia biztosítása érdekében
 A rendelkezésre állási csoportok egy másik adatközpont-konfiguráció, amely biztosítja a virtuális gépek redundanciát és rendelkezésre állását. Ez az adatközponton belüli konfiguráció biztosítja, hogy a tervezett vagy nem tervezett karbantartási események során legalább egy virtuális gép elérhető legyen, és megfelel a 99,95%-os Azure SLA-nak. További információkért lásd [a virtuális gépek esetében érvényes SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/) részleteit.
@@ -60,24 +60,31 @@ A mögöttes Azure platform a rendelkezésre állási csoportban lévő mindegyi
 A tartalék tartományok azonos tápforrással és hálózati kapcsolóval rendelkező virtuális gépek csoportjai. Alapértelmezés szerint a rendelkezésre állási csoportba konfigurált virtuális gépek legfeljebb három tartalék tartományba vannak elkülönítve a Resource Manager-környezetben (két tartalék tartományba a klasszikus környezetben). Bár a virtuális gépek rendelkezésre állási csoportokba rendezése nem védi az alkalmazást az operációs rendszerre vezethető vagy az alkalmazásspecifikus hibáktól, korlátozza a potenciális hardvermeghibásodások, hálózatkimaradások vagy tápellátás-megszakadások hatását.
 
 <!--Image reference-->
-   ![A frissítési tartomány és a tartalék tartomány konfigurációjának fogalmi rajza](./media/virtual-machines-common-manage-availability/ud-fd-configuration.png)
+   a frissítési tartomány és a tartalék tartomány konfigurációjának ![fogalmi rajza](./media/virtual-machines-common-manage-availability/ud-fd-configuration.png)
 
 ## <a name="use-managed-disks-for-vms-in-an-availability-set"></a>Felügyelt lemezek használata rendelkezésre állási csoporthoz tartozó virtuális gépekkel
 Ha jelenleg a virtuális gépeket nem felügyelt lemezeken használja, határozottan ajánlott [a rendelkezésre állási csoportban lévő virtuális gépeket átalakítása, hogy felügyelt lemezeken fussanak](../articles/virtual-machines/windows/convert-unmanaged-to-managed-disks.md).
 
 A [felügyelt lemezek](../articles/virtual-machines/windows/managed-disks-overview.md) jobb rendelkezésre állást nyújtanak a rendelkezésre állási csoportok számára, mivel biztosítják a rendelkezésre állási csoportban lévő virtuális gépek lemezeinek megfelelő elszigetelését a kritikus hibapontok elkerülése érdekében. Ezt úgy teszi meg, hogy a lemezeket a különböző tárolási tartalék tartományokban (Storage-fürtökben) helyezi el, és a virtuálisgép-tartalék tartományhoz igazítja őket. Ha a tárolási tartalék tartomány hardveres vagy szoftveres hiba miatt meghiúsul, akkor csak a tárolási tartalék tartomány lemezeit tartalmazó virtuálisgép-példány meghiúsul.
-![Felügyelt lemezek tartalék](./media/virtual-machines-common-manage-availability/md-fd-updated.png)
+![felügyelt lemezek tartalék](./media/virtual-machines-common-manage-availability/md-fd-updated.png)
 
 > [!IMPORTANT]
 > A felügyelt rendelkezésre állási csoportok tartalék tartományainak száma régiónként eltérő – régiónként kettő vagy három lehet. A régiónkénti mennyiségeket az alábbi táblázat mutatja
 
 [!INCLUDE [managed-disks-common-fault-domain-region-list](managed-disks-common-fault-domain-region-list.md)]
 
-Ha nem felügyelt lemezekkel rendelkező virtuális gépeket szeretne használni, kövesse az alábbi ajánlott eljárásokat azokhoz a tárolási fiókokhoz, amelyekben a virtuális merevlemezek [](https://docs.microsoft.com/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs#about-page-blobs)(VHD-k) blobként vannak tárolva.
+> Megjegyzés: bizonyos esetekben előfordulhat, hogy az azonos üzemmódú két virtuális gép ugyanazon a FaultDomain van megosztva. Ezt megerősítheti a üzemmódú, és a "tartalék tartomány" oszlopot is megtekintheti.
+> Ez a viselkedés akkor figyelhető meg, ha a virtuális gépek telepítése során a következő folyamat történt:
+> - Az első virtuális gép üzembe helyezése
+> - Az első virtuális gép leállítása/felszabadítása
+> - A 2. virtuális gép üzembe helyezése ilyen körülmények között előfordulhat, hogy a második virtuális gép operációsrendszer-lemeze ugyanazon a tartalék tartományon jön létre, mint az első virtuális gép, így a második virtuális gép is ugyanazon a FaultDomain fog futni. 
+> A probléma elkerülése érdekében javasoljuk, hogy ne állítsa le/szabadítsa fel a virtuális gépet az üzemelő példányok között.
+
+Ha nem felügyelt lemezekkel rendelkező virtuális gépeket szeretne használni, kövesse az alábbi ajánlott eljárásokat azokhoz a tárolási fiókokhoz, amelyekben a virtuális merevlemezek (VHD-k) [blobként](https://docs.microsoft.com/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs#about-page-blobs)vannak tárolva.
 
 1. **Tárolja az egyazon virtuális géppel társított összes lemezt (operációsrendszer- és adatlemezt) ugyanabban a tárfiókban.**
 2. **Tekintse át a Storage-fiókokban lévő nem felügyelt lemezekre vonatkozó [korlátokat](../articles/storage/common/storage-scalability-targets.md),** mielőtt további virtuális merevlemezeket adna hozzá egy tárfiókhoz.
-3. **Használjon külön tárfiókot minden egyes virtuális géphez a rendelkezésre állási csoportban.** Ne tárolja az egyazon rendelkezésre állási csoportban lévő virtuális gépeket ugyanabban a Storage-fiókban. A különböző rendelkezésre állási csoportokban lévő virtuális gépek számára elfogadható a tárolási fiókok megosztása, ha a ![fenti ajánlott eljárások követik a nem felügyelt lemezek tartalék](./media/virtual-machines-common-manage-availability/umd-updated.png)
+3. **Használjon külön tárfiókot minden egyes virtuális géphez a rendelkezésre állási csoportban.** Ne tárolja az egyazon rendelkezésre állási csoportban lévő virtuális gépeket ugyanabban a Storage-fiókban. A különböző rendelkezésre állási csoportokban lévő virtuális gépek számára elfogadható a Storage-fiókok megosztása, ha az ajánlott eljárások követése ![nem felügyelt lemezek tartalék](./media/virtual-machines-common-manage-availability/umd-updated.png)
 
 ## <a name="use-scheduled-events-to-proactively-respond-to-vm-impacting-events"></a>Ütemezett események használatával proaktív módon válaszolhat a virtuális gépeket érintő eseményekre
 
@@ -89,7 +96,7 @@ Ha a virtuális gépek csaknem azonosak, és ugyanazt a célt szolgálják az al
 Például az IIS, az Apache és az Nginx egyetlen rendelkezésre állási zónában vagy a set-ben való futtatásával az alkalmazás kezelőfelületének összes virtuális gépet üzembe helyezheti. Győződjön meg arról, hogy csak az előtér-virtuális gépek vannak elhelyezve ugyanahhoz a rendelkezésre állási zónához vagy a készlethez. Hasonlóképpen ügyeljen arra, hogy csak az adatrétegbeli virtuális gépek legyenek elhelyezve a saját rendelkezésre állási zónájában vagy készletében, például a replikált SQL Server virtuális gépekhez vagy a MySQL virtuális gépekhez.
 
 <!--Image reference-->
-   ![Alkalmazások szintjei](./media/virtual-machines-common-manage-availability/application-tiers.png)
+   ![alkalmazási rétegek](./media/virtual-machines-common-manage-availability/application-tiers.png)
 
 ## <a name="combine-a-load-balancer-with-availability-zones-or-sets"></a>Terheléselosztó kombinálása rendelkezésre állási zónákkal vagy készletekkel
 Egyesítse a [Azure Load Balancer](../articles/load-balancer/load-balancer-overview.md) egy rendelkezésre állási zónával, vagy állítsa be a legtöbb alkalmazás rugalmasságát. Az Azure Load Balancer több virtuális gép között osztja el a forgalmat. A Standard csomagban elérhető virtuális gépek esetében az Azure Load Balancer a csomag részét képezi. Nem mindegyik virtuális gép csomagja tartalmazza az Azure Load Balancert. A virtuális gépek terheléselosztásáról további információkért lásd a [virtuális gépek terheléselosztását](../articles/virtual-machines/virtual-machines-linux-load-balance.md) ismertető témakört.

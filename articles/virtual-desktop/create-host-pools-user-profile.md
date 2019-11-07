@@ -1,5 +1,5 @@
 ---
-title: FSLogix-profil tároló létrehozása egy gazdagép-készlethez virtuálisgép-alapú fájlmegosztás használatával – Azure
+title: Windows rendszerű virtuális asztali FSLogix-profil tárolójának megosztása – Azure
 description: FSLogix-profilok tárolójának beállítása egy Windows rendszerű virtuális asztali készlethez virtuális gépi alapú fájlmegosztás használatával.
 services: virtual-desktop
 author: Heidilohr
@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 08/20/2019
 ms.author: helohr
-ms.openlocfilehash: 0e7516fc4874e4cbc387f2f494efc6ef745d64f7
-ms.sourcegitcommit: 9dec0358e5da3ceb0d0e9e234615456c850550f6
+ms.openlocfilehash: 65d800cc6c1b6818369807ffeae9cd350a34066f
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2019
-ms.locfileid: "72311590"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73606994"
 ---
 # <a name="create-a-profile-container-for-a-host-pool-using-a-file-share"></a>Profiltároló létrehozása gazdagépkészlet számára fájlmegosztás használatával
 
@@ -59,13 +59,13 @@ A virtuális gépek FSLogix-szoftverrel való konfigurálásához tegye a követ
 
 1. [Kapcsolódjon a virtuális géphez](https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-portal#connect-to-virtual-machine) a virtuális gép létrehozásakor megadott hitelesítő adatokkal.
 2. Nyisson meg egy webböngészőt, és navigáljon [erre a hivatkozásra](https://go.microsoft.com/fwlink/?linkid=2084562) a FSLogix-ügynök letöltéséhez.
-3. Navigáljon \\ @ no__t-1Win32 @ no__t-2Release vagy \\ @ no__t-4X64 @ no__t-5Release a. zip fájlban, és futtassa a **FSLogixAppsSetup** -t a FSLogix-ügynök telepítéséhez.  További információ a FSLogix telepítéséről: a [FSLogix letöltése és telepítése](https://docs.microsoft.com/fslogix/install-ht).
-4. Navigáljon a **programfájlok** > **FSLogix** > **alkalmazások** elemre, hogy erősítse meg az ügynök telepítését.
-5. A Start menüben futtassa a **Regedit parancsot** rendszergazdaként. Navigáljon a következő **számítógéphez: @ no__t-1HKEY_LOCAL_MACHINE @ no__t-2software @ no__t-3FSLogix**.
+3. Navigáljon \\\\Win32\\kiadására, vagy \\\\x64\\kiadására a. zip fájlban, és futtassa a **FSLogixAppsSetup** -t a FSLogix-ügynök telepítéséhez.  További információ a FSLogix telepítéséről: a [FSLogix letöltése és telepítése](https://docs.microsoft.com/fslogix/install-ht).
+4. Navigáljon a **programfájlok** > **FSLogix** > **alkalmazások** elemre, és erősítse meg az ügynök telepítését.
+5. A Start menüben futtassa a **Regedit parancsot** rendszergazdaként. Navigáljon a **számítógép\\HKEY_LOCAL_MACHINE\\szoftver\\FSLogix**.
 6. Hozzon létre egy **profilok**nevű kulcsot.
 7. Hozza létre a következő értékeket a profilok kulcshoz:
 
-| Név                | Type (Típus)               | Az adatértékek/értékek                        |
+| Name (Név)                | Típus               | Az adatértékek/értékek                        |
 |---------------------|--------------------|-----------------------------------|
 | Engedélyezve             | DWORD              | 1                                 |
 | VHDLocations        | Több karakterláncos érték | "Fájlmegosztás hálózati elérési útja"     |

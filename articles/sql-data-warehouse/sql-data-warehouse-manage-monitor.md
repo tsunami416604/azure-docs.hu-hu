@@ -1,5 +1,5 @@
 ---
-title: A számítási feladatok figyelése a DMV használatával | Microsoft Docs
+title: Monitor your workload using DMVs
 description: Megtudhatja, hogyan figyelheti a munkaterhelést a DMV használatával.
 services: sql-data-warehouse
 author: ronortloff
@@ -10,12 +10,12 @@ ms.subservice: manage
 ms.date: 08/23/2019
 ms.author: rortloff
 ms.reviewer: igorstan
-ms.openlocfilehash: 1d1af13eb54daf060f0172a0506370ca459f2ece
-ms.sourcegitcommit: 3f78a6ffee0b83788d554959db7efc5d00130376
+ms.openlocfilehash: e1a754747ae5c0fb7c50653f4881b67a81e011ef
+ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70018946"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73645673"
 ---
 # <a name="monitor-your-workload-using-dmvs"></a>Monitor your workload using DMVs
 Ez a cikk azt ismerteti, hogyan használhatók a dinamikus felügyeleti nézetek (DMV) a számítási feladatok figyelésére. Ide tartozik a lekérdezés végrehajtásának vizsgálata Azure SQL Data Warehouseban.
@@ -45,7 +45,7 @@ Az SQL Data Warehouseon végrehajtott összes lekérdezést a [sys. DM _pdw_exec
 
 Az alábbi lépéseket követve vizsgálhatja meg a lekérdezés-végrehajtási terveket és időpontokat egy adott lekérdezés esetében.
 
-### <a name="step-1-identify-the-query-you-wish-to-investigate"></a>1\. LÉPÉS: A vizsgálni kívánt lekérdezés azonosítása
+### <a name="step-1-identify-the-query-you-wish-to-investigate"></a>1\. lépés: a vizsgálni kívánt lekérdezés azonosítása
 ```sql
 -- Monitor active queries
 SELECT * 
@@ -61,9 +61,9 @@ ORDER BY total_elapsed_time DESC;
 
 ```
 
-A fenti lekérdezési eredményekből **jegyezze** fel a vizsgálni kívánt lekérdezés azonosítóját.
+A fenti lekérdezési eredményekből jegyezze fel a vizsgálni kívánt lekérdezés **azonosítóját** .
 
-A felfüggesztett állapotú lekérdezések a nagy számú aktív futó lekérdezés miatt várólistára helyezhetők. Ezek a lekérdezések a [sys. DM _pdw_waits](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-waits-transact-sql) is megjelennek a lekérdezés UserConcurrencyResourceType. A párhuzamossági korlátokkal kapcsolatos információkért lásd: [teljesítmény](performance-tiers.md) -és [erőforrás-osztályok a számítási feladatok kezeléséhez](resource-classes-for-workload-management.md). A lekérdezések más okokat is várhatnak, például az objektumok zárolását.  Ha a lekérdezés egy erőforrásra vár, tekintse meg a jelen cikk további [erőforrásaira váró lekérdezések kivizsgálását][Investigating queries waiting for resources] ismertető cikket.
+A **felfüggesztett** állapotú lekérdezések a nagy számú aktív futó lekérdezés miatt várólistára helyezhetők. Ezek a lekérdezések a [sys. DM _pdw_waits](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-waits-transact-sql) is megjelennek a lekérdezés UserConcurrencyResourceType. A párhuzamossági korlátokkal kapcsolatos információkért lásd: [teljesítmény](performance-tiers.md) -és [erőforrás-osztályok a számítási feladatok kezeléséhez](resource-classes-for-workload-management.md). A lekérdezések más okokat is várhatnak, például az objektumok zárolását.  Ha a lekérdezés egy erőforrásra vár, tekintse meg a jelen cikk további [erőforrásaira váró lekérdezések kivizsgálását][Investigating queries waiting for resources] ismertető cikket.
 
 A [sys. DM _pdw_exec_requests](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql) táblában lévő lekérdezések keresésének egyszerűbbé tételéhez a [label][LABEL] paranccsal rendeljen hozzá egy olyan megjegyzést a lekérdezéshez, amely a sys. DM _pdw_exec_requests nézetben kereshető.
 
@@ -81,7 +81,7 @@ FROM    sys.dm_pdw_exec_requests
 WHERE   [label] = 'My Query';
 ```
 
-### <a name="step-2-investigate-the-query-plan"></a>2\. LÉPÉS: A lekérdezési terv vizsgálata
+### <a name="step-2-investigate-the-query-plan"></a>2\. lépés: a lekérdezési terv vizsgálata
 A kérelem azonosítója segítségével kérje le a lekérdezés elosztott SQL-(DSQL-) tervét a [sys. DM _pdw_request_steps][sys.dm_pdw_request_steps].
 
 ```sql
@@ -97,10 +97,10 @@ Ha egy DSQL-csomag a vártnál hosszabb időt vesz igénybe, az ok lehet egy ös
 
 Egy adott lépés további részleteinek vizsgálatához a hosszan futó lekérdezési lépés *operation_type* oszlopát, és jegyezze fel a **lépés indexét**:
 
-* Folytassa az **SQL-műveletek**3a. lépésével: OnOperation, RemoteOperation, ReturnOperation.
-* Folytassa a 3b. lépéssel az adatáthelyezési **műveletekhez**: ShuffleMoveOperation, BroadcastMoveOperation, TrimMoveOperation, PartitionMoveOperation, MoveOperation, CopyOperation.
+* Folytassa a 3a. lépéssel az **SQL-műveletekhez**: OnOperation, RemoteOperation, ReturnOperation.
+* Folytassa a 3b lépéssel az **adatáthelyezési műveletekhez**: ShuffleMoveOperation, BroadcastMoveOperation, TrimMoveOperation, PartitionMoveOperation, MoveOperation, CopyOperation.
 
-### <a name="step-3a-investigate-sql-on-the-distributed-databases"></a>3a. lépés: Az SQL vizsgálata az elosztott adatbázisokon
+### <a name="step-3a-investigate-sql-on-the-distributed-databases"></a>3a. lépés: az SQL vizsgálata az elosztott adatbázisokon
 A Request ID és a Step index használatával kérhet le részleteket a [sys. DM _pdw_sql_requests][sys.dm_pdw_sql_requests], amely az összes elosztott adatbázis lekérdezési lépésének végrehajtási információit tartalmazza.
 
 ```sql
@@ -120,7 +120,7 @@ Ha a lekérdezési lépés fut, a [DBCC PDW_SHOWEXECUTIONPLAN][DBCC PDW_SHOWEXEC
 DBCC PDW_SHOWEXECUTIONPLAN(1, 78);
 ```
 
-### <a name="step-3b-investigate-data-movement-on-the-distributed-databases"></a>3b. lépés: Az elosztott adatbázisok adatáthelyezésének vizsgálata
+### <a name="step-3b-investigate-data-movement-on-the-distributed-databases"></a>3b. lépés: az adatáthelyezés vizsgálata az elosztott adatbázisokon
 A Request ID és a Step index használatával adatokat kérhet le egy, a [sys. DM _pdw_dms_workers][sys.dm_pdw_dms_workers]származó egyes eloszláson futó adatáthelyezési lépésről.
 
 ```sql
@@ -290,7 +290,7 @@ ORDER BY
 ```
 
 ## <a name="next-steps"></a>További lépések
-További információ a DMV: rendszernézetek. [][System views]
+További információ a DMV: [rendszernézetek][System views].
 
 
 <!--Image references-->

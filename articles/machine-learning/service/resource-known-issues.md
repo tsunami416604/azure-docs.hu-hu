@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 7c52adfb919586fc590ef60215592a5b5c1c1cb3
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: HT
+ms.openlocfilehash: 3fd97e33c88e7767e1d9b230792aea675a744f27
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73476129"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73619785"
 ---
 # <a name="known-issues-and-troubleshooting-azure-machine-learning"></a>Ismert problémák és hibaelhárítási Azure Machine Learning
 
@@ -88,9 +88,19 @@ A bináris besorolási diagramok (a pontosság-visszahívás, a ROC, a nyereség
 
 ## <a name="datasets-and-data-preparation"></a>Adatkészletek és adat-előkészítés
 
+Ezek Azure Machine Learning adatkészletek ismert problémái.
+
 ### <a name="fail-to-read-parquet-file-from-http-or-adls-gen-2"></a>Nem sikerült beolvasni a Parquet-fájlt a HTTP vagy a ADLS Gen 2 használatával
 
-Létezik egy ismert probléma a AzureML Adatelőkészítés SDK verziójának 1.1.25, amely meghibásodást okoz az adatkészlet létrehozásakor, ha a HTTP vagy a ADLS Gen 2 fájlból olvassa be a parketta-fájlokat. A probléma megoldásához frissítsen a 1.1.26-nál magasabb verzióra, vagy a 1.1.24-nél alacsonyabb verzióra.
+Létezik egy ismert probléma a AzureML Adatelőkészítés SDK verziójának 1.1.25, amely meghibásodást okoz az adatkészlet létrehozásakor, ha a HTTP vagy a ADLS Gen 2 fájlból olvassa be a parketta-fájlokat. `Cannot seek once reading started.`esetén sikertelen lesz. A probléma megoldásához frissítse `azureml-dataprep`t a 1.1.26-nál magasabb verzióra, vagy a 1.1.24-nál alacsonyabb verzióra.
+
+```python
+pip install --upgrade azureml-dataprep
+```
+
+### <a name="typeerror-mount-got-an-unexpected-keyword-argument-invocation_id"></a>TypeError: a Mount () nem várt kulcsszó-argumentumot ("invocation_id") kapott
+
+Ez a hiba akkor fordul elő, ha nem kompatibilis verziójú `azureml-core` és `azureml-dataprep`között. Ha ezt a hibát látja, frissítse `azureml-dataprep` csomagot egy újabb verzióra (nagyobb vagy egyenlő, mint 1.1.29).
 
 ```python
 pip install --upgrade azureml-dataprep
@@ -146,15 +156,8 @@ Ha ezek a lépések nem oldják meg a problémát, próbálja meg újraindítani
 Ha Azure Databricks fürtön lévő adatolvasáskor `FailToSendFeather` hibaüzenet jelenik meg, tekintse meg a következő megoldásokat:
 
 * `azureml-sdk[automl]` csomag frissítése a legújabb verzióra.
-* Adja hozzá `azure-dataprep` 1.1.8 vagy újabb verziót.
+* Adja hozzá `azureml-dataprep` 1.1.8 vagy újabb verziót.
 * Adja hozzá a `pyarrow` 0,11-es vagy újabb verzióját.
-
-
-## <a name="datasets"></a>Adathalmazok
-
-Ezek Azure Machine Learning adatkészletek ismert problémái.
-
-+ **Nem sikerült beolvasni a parketta-fájlokat a Azure Data Lake Storage Gen2** Azure Data Lake Storage Gen2 adattárolóból származó parketta-fájlok olvasása nem működik, ha `azureml-dataprep==1.1.25` telepítve van. `Cannot seek once reading started.`esetén sikertelen lesz. Ha ezt a hibát látja, telepítheti `azureml-dataprep<=1.1.24` vagy telepítheti `azureml-dataprep>=1.1.26`.
 
 ## <a name="azure-portal"></a>Azure Portal
 
@@ -262,3 +265,23 @@ Ez a kivétel a betanítási szkriptből származik. A naplófájlokat a Azure P
 
 ### <a name="horovod-is-shutdown"></a>A Horovod leállítása
 A legtöbb esetben ez a kivétel azt jelenti, hogy a horovod leállítását okozó folyamatok egyikében egy mögöttes kivétel történt. Az MPI-feladatok mindegyik rangsora saját dedikált naplófájlba kerül az Azure ML-ben. Ezek a naplók neve `70_driver_logs`. Elosztott képzés esetén a naplók neve a `_rank` utótaggal van ellátva, hogy könnyen megkülönböztesse a naplókat. A horovod leállítását okozó pontos hiba megtalálásához hajtsa végre az összes naplófájlt, és keresse meg `Traceback` a driver_log-fájlok végén. Ezen fájlok egyike megadja a tényleges mögöttes kivételt. 
+
+## <a name="labeling-projects-issues"></a>Projektek problémáinak címkézése
+
+A projektek címkézésével kapcsolatos ismert problémák.
+
+### <a name="only-datasets-created-on-blob-datastores-can-be-used"></a>Csak a blob-adattárolók használatával létrehozott adatkészletek használhatók
+
+Ez az aktuális kiadás ismert korlátozása. 
+
+### <a name="after-creation-the-project-shows-initializing-for-a-long-time"></a>A létrehozást követően a projekt hosszú ideje "inicializálást" mutat.
+
+Manuálisan frissítse a lapot. Az inicializálásnak másodpercenként körülbelül 20 datapoints kell lennie. Az AutoFrissítés hiánya ismert probléma. 
+
+### <a name="bounding-box-cannot-be-drawn-all-the-way-to-right-edge-of-image"></a>A határolókeret nem rajzolható egészen a képek jobb széléhez 
+
+Próbálja meg átméretezni a böngészőablakot. A viselkedés okának megállapítását vizsgáljuk. 
+
+### <a name="when-reviewing-images-newly-labeled-images-are-not-shown"></a>Képek áttekintésekor a rendszer nem jeleníti meg az újonnan címkézett képeket
+
+Az összes címkézett kép betöltéséhez válassza az **első** gombot. Az **első** gomb a lista elejére kerül, de az összes címkével ellátott adattal betöltődik.

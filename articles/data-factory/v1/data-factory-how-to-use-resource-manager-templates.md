@@ -1,5 +1,5 @@
 ---
-title: Resource Manager-sablonok használata a Data Factoryban | Microsoft Docs
+title: Resource Manager-sablonok használata a Data Factoryban
 description: Megtudhatja, hogyan hozhat létre és használhat Azure Resource Manager sablonokat Data Factory entitások létrehozásához.
 services: data-factory
 documentationcenter: ''
@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: d2360efe71327f02d5cb7d16cb8141f47c304b0c
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: d9ee060b7d1f7a443357c7116c01e8aaf972e666
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70164681"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73682524"
 ---
 # <a name="use-templates-to-create-azure-data-factory-entities"></a>Sablonok használata Azure Data Factory entitások létrehozásához
 > [!NOTE]
@@ -29,16 +29,16 @@ Vegye figyelembe azt a helyzetet, amelyben a szervezet 10 gyártó üzeme van a 
 
 Ebben az esetben egy feladatot ugyanabban a környezetben kell megismételni, de különböző értékekkel kell rendelkeznie az egyes gyártói üzemekhez tartozó 10 adat-előállítók között. Érvényben van az **Ismétlődés** . A sablon lehetővé teszi ennek az általános folyamatnak az absztrakcióját (azaz a folyamatokat, amelyek ugyanazt a tevékenységet használják az egyes adatelőállítókban), de az egyes gyártási üzemekhez külön paramétereket használnak.
 
-Továbbá, mivel a szervezet a 10 adatfeldolgozót többször szeretné telepíteni különböző környezetekben, a sablonok a fejlesztési, tesztelési és éles környezetekhez külön paraméter-fájlok használatával is használhatják ezt a felhasználhatóságot.
+Továbbá, mivel a szervezet a 10 adatfeldolgozót többször szeretné telepíteni különböző környezetekben, a sablonok a fejlesztési, tesztelési és éles környezetekhez külön paraméter-fájlok használatával is használhatják ezt a **felhasználhatóságot** .
 
 ## <a name="templating-with-azure-resource-manager"></a>Sablon Azure Resource Manager
 A [Azure Resource Manager-sablonok](../../azure-resource-manager/template-deployment-overview.md) nagyszerű lehetőséget biztosítanak a sablonoknak a Azure Data Factory való megvalósítására. A Resource Manager-sablonok JSON-fájl segítségével határozzák meg az Azure-megoldás infrastruktúráját és konfigurációját. Mivel Azure Resource Manager sablonok az összes/legtöbb Azure-szolgáltatással működnek, széles körben használható az Azure-eszközök összes erőforrásának egyszerű kezelése. A Resource Manager-sablonokkal kapcsolatos további információkért lásd: [Azure Resource Manager-sablonok készítése](../../azure-resource-manager/resource-group-authoring-templates.md) .
 
-## <a name="tutorials"></a>Oktatóanyagok
+## <a name="tutorials"></a>oktatóanyagokat
 A következő oktatóanyagok részletes útmutatást biztosítanak Data Factory entitások Resource Manager-sablonok használatával történő létrehozásához:
 
-* [Oktatóanyag: Adatmásolási folyamat létrehozása Azure Resource Manager sablon használatával](data-factory-copy-activity-tutorial-using-azure-resource-manager-template.md)
-* [Oktatóanyag: Folyamat létrehozása az adatfeldolgozáshoz Azure Resource Manager sablon használatával](data-factory-build-your-first-pipeline.md)
+* [Oktatóanyag: adatmásolási folyamat létrehozása Azure Resource Manager sablon használatával](data-factory-copy-activity-tutorial-using-azure-resource-manager-template.md)
+* [Oktatóanyag: folyamat létrehozása adatfeldolgozásra Azure Resource Manager sablon használatával](data-factory-build-your-first-pipeline.md)
 
 ## <a name="data-factory-templates-on-github"></a>Sablonok Data Factory a GitHubon
 Tekintse meg a következő Azure gyors üzembe helyezési sablonokat a GitHubon:
@@ -127,7 +127,7 @@ A telepíteni kívánt társított szolgáltatás JSON-tulajdonságainak részle
     ...
 }
 ```
-Tekintse át a [támogatott](data-factory-data-movement-activities.md#supported-data-stores-and-formats) adattárakat a telepíteni kívánt adatkészlet JSON-tulajdonságaival kapcsolatos részletekért. Vegye figyelembe, hogy a "dependsOn" paraméter a megfelelő adatgyár és a Storage társított szolgáltatás nevét adja meg. Az Azure Blob Storage adatkészlet-típusának definiálására példa látható a következő JSON-definícióban:
+Tekintse át a [támogatott adattárakat](data-factory-data-movement-activities.md#supported-data-stores-and-formats) a telepíteni kívánt adatkészlet JSON-tulajdonságaival kapcsolatos részletekért. Vegye figyelembe, hogy a "dependsOn" paraméter a megfelelő adatgyár és a Storage társított szolgáltatás nevét adja meg. Az Azure Blob Storage adatkészlet-típusának definiálására példa látható a következő JSON-definícióban:
 
 ```JSON
 "type": "datasets",

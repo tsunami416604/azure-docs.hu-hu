@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 07/04/2019
 ms.author: raynew
-ms.openlocfilehash: e2faa47a58283623747ae569de22e1c57df1a51f
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: 249cbea173afe1671118446e0714b721b8c7f72b
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70231142"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73685092"
 ---
 # <a name="azure-migrate-appliance"></a>Azure Migrate-berendezés
 
@@ -25,14 +25,14 @@ Ez a cikk a Azure Migrate berendezést ismerteti. Ha Azure Migrate felmérési �
 
 A Azure Migrate berendezés típusai és használata a következő.
 
-**Központilag telepítve** | **Használt** | **Részletek**
+**Központilag telepítve** | **Használatban** | **Részletek**
 --- | --- |  ---
 VMware virtuális gép | VMware virtuális gép értékelése a Azure Migrate Assessment Tool eszközzel.<br/><br/> VMware VM ügynök nélküli áttelepítés a Azure Migrate Server áttelepítési eszközzel | Töltse le a petesejtek sablonját, és importálja vCenter Serverre a készülék virtuális gépe létrehozásához.
 Hyper-V virtuális gép | A Hyper-V virtuális gép értékelése a Azure Migrate Assessment Tool eszközzel. | Töltse le a tömörített VHD-t, és importálja a Hyper-V-be a készülék virtuális gépe létrehozásához.
 
 ## <a name="appliance-access"></a>Készülék-hozzáférés
 
-Miután konfigurálta a készüléket, a 3389-es TCP-porton keresztül távolról elérheti a készülék virtuális gépe szolgáltatását. A (z) 44368-as porton keresztül távolról is elérheti a készülék webkezelési `https://<appliance-ip-or-name>:44368`alkalmazását a következő URL-címmel:.
+Miután konfigurálta a készüléket, a 3389-es TCP-porton keresztül távolról elérheti a készülék virtuális gépe szolgáltatását. Távolról is elérheti a készülékhez készült webkezelési alkalmazást az 44368-es porton a következő URL-címmel: `https://<appliance-ip-or-name>:44368`.
 
 ## <a name="appliance-license"></a>Készülék licence
 A készülékhez tartozik egy Windows Server 2016 próbaverziós licenc, amely 180 napig érvényes. Ha a próbaidőszak le van zárva, javasoljuk, hogy töltsön le és helyezzen üzembe egy új készüléket, vagy aktiválja a készülék virtuális gépe operációs rendszerének licencét.
@@ -60,12 +60,12 @@ Itt látható a VMware virtuális gép teljesítményadatokat, amelyet a készü
 
 **Adatok** | **Számláló** | **Értékelés hatása**
 --- | --- | ---
-Processzorkihasználtság | cpu.usage.average | Ajánlott virtuális gép mérete/díja
-Memóriakihasználtság | mem.usage.average | Ajánlott virtuális gép mérete/díja
-Lemez olvasási sebessége (MB/s) | virtualDisk.read.average | A lemez méretére, a tárolási díjakra, a virtuális gépek méretére vonatkozó számítás
-Lemez írási sebessége (MB/s) | virtualDisk.write.average | A lemez méretére, a tárolási díjakra, a virtuális gépek méretére vonatkozó számítás
-Lemez olvasási műveletei másodpercenként | virtualDisk.numberReadAveraged.average | A lemez méretére, a tárolási díjakra, a virtuális gépek méretére vonatkozó számítás
-Lemez írási műveletei másodpercenként | virtualDisk.numberWriteAveraged.average  | A lemez méretére, a tárolási díjakra, a virtuális gépek méretére vonatkozó számítás
+CPU-kihasználtság | CPU. használat. átlag | Ajánlott virtuális gép mérete/díja
+Memória kihasználtsága | mem. használat. átlag | Ajánlott virtuális gép mérete/díja
+Lemez olvasási sebessége (MB/s) | virtualDisk. Read. Average | A lemez méretére, a tárolási díjakra, a virtuális gépek méretére vonatkozó számítás
+Lemez írási sebessége (MB/s) | virtualDisk. Write. Average | A lemez méretére, a tárolási díjakra, a virtuális gépek méretére vonatkozó számítás
+Lemez olvasási műveletei másodpercenként | virtualDisk. numberReadAveraged. Average | A lemez méretére, a tárolási díjakra, a virtuális gépek méretére vonatkozó számítás
+Lemez írási műveletei másodpercenként | virtualDisk. numberWriteAveraged. Average  | A lemez méretére, a tárolási díjakra, a virtuális gépek méretére vonatkozó számítás
 Hálózati adapter olvasási sebessége (MB/s) | net. Received. Average | A virtuális gép méretének kiszámítása
 Hálózati adapter írási sebessége (MB/s) | net. továbbítandó. Average  |A virtuális gép méretének kiszámítása
 
@@ -80,45 +80,45 @@ Itt találja a készülék által gyűjtött és az Azure-ba küldött VMware VM
 **Adatok** | **Számláló**
 --- | --- 
 **Gép részletei** | 
-VIRTUÁLIS GÉP AZONOSÍTÓJA | vm.Config.InstanceUuid 
-a virtuális gép neve | vm.Config.Name
+VIRTUÁLIS GÉP AZONOSÍTÓJA | VM. Config. értékű 
+a virtuális gép neve | VM. Config.Name
 vCenter Server azonosítója | VMwareClient.Instance.Uuid
-Virtuális gép leírása | vm.Summary.Config.Annotation
-Licenc terméknév | vm.Client.ServiceContent.About.LicenseProductName
+Virtuális gép leírása | VM. Summary. config. Megjegyzés
+Licenc terméknév | VM. Client. ServiceContent. about. LicenseProductName
 Operációs rendszer típusa | vm.SummaryConfig.GuestFullName
-Rendszerindítás típusa | vm.Config.Firmware
-Magok száma | vm.Config.Hardware.NumCPU
-Memória (MB) | vm.Config.Hardware.MemoryMB
+Rendszerindítás típusa | VM. Config. firmware
+Magok száma | VM. Config. Hardware. NumCPU
+Memória (MB) | VM. Config. Hardware. MemoryMB
 Lemezek száma | VM. Config. Hardware. Device. ToList (). FindAll (x = > VirtualDisk). darabszám
 Lemez mérete lista | VM. Config. Hardware. Device. ToList (). FindAll (x = > VirtualDisk)
 Hálózati adapterek listája | VM. Config. Hardware. Device. ToList (). FindAll (x = > VirtualEthernet). darabszám
-Processzorkihasználtság | cpu.usage.average
-Memóriakihasználtság |mem.usage.average
+CPU-kihasználtság | CPU. használat. átlag
+Memória kihasználtsága |mem. használat. átlag
 **/Lemez adatai** | 
 Lemez kulcsának értéke | lemez. Kulcs
-Dikunit száma | disk.UnitNumber
-Lemezvezérlő-kulcs értéke | disk.ControllerKey.Value
-Kiépített gigabájt | virtualDisk.DeviceInfo.Summary
+Dikunit száma | lemez. UnitNumber
+Lemezvezérlő-kulcs értéke | lemez. ControllerKey. Value
+Kiépített gigabájt | virtualDisk. DeviceInfo. Summary
 Lemez neve | A lemez használatával generált érték. UnitNumber, lemez. Kulcs, lemez. ControllerKey. VAlue
-Olvasási műveletek másodpercenként | virtualDisk.numberReadAveraged.average
-Írási műveletek másodpercenként | virtualDisk.numberWriteAveraged.average
-Olvasási sebesség (MB/s) | virtualDisk.read.average
-Írási sebesség (MB/s) | virtualDisk.write.average
+Olvasási műveletek másodpercenként | virtualDisk. numberReadAveraged. Average
+Írási műveletek másodpercenként | virtualDisk. numberWriteAveraged. Average
+Olvasási sebesség (MB/s) | virtualDisk. Read. Average
+Írási sebesség (MB/s) | virtualDisk. Write. Average
 **Hálózati adapter adatai** | 
 Hálózati adapter neve | hálózati. Kulcs
-MAC-cím | ((VirtualEthernetCard)nic).MacAddress
+MAC-címe | ((VirtualEthernetCard) NIC). MacAddress
 IPv4-címek | VM. Guest.Net
 IPv6-címek | VM. Guest.Net
 Olvasási sebesség (MB/s) | net. Received. Average
 Írási sebesség (MB/s) | net. továbbítandó. Average
 **Leltár elérési útja – részletek** | 
-Name (Név) | container.GetType().Name
+Name (Név) | tároló. GetType (). név
 Gyermekobjektum típusa | tároló. ChildType
 Hivatkozás részletei | tároló. MoRef
 Szülő részletei | Container. Parent
-Mappa részletei virtuális gépenként | ((Folder)container).ChildEntity.Type
-Adatközpont részletei virtuális gépenként | ((Datacenter)container).VmFolder
-Az adatközpont részletei egy gazdagép mappájában | ((Datacenter)container).HostFolder
+Mappa részletei virtuális gépenként | ((Mappa) tároló). ChildEntity. Type
+Adatközpont részletei virtuális gépenként | (Datacenter) tároló. VmFolder
+Az adatközpont részletei egy gazdagép mappájában | (Datacenter) tároló. HostFolder
 Fürt adatai egy gazdagépen | ((ClusterComputeResource)container).Host
 Gazdagép adatai virtuális gépenként | ((HostSystem)container).VM
 
@@ -129,7 +129,7 @@ Gazdagép adatai virtuális gépenként | ((HostSystem)container).VM
 > [!NOTE]
 > A Azure Migrate készülék által felderített metaadatok segítségével az alkalmazások az Azure-ba való áttelepítéskor, az Azure megfelelőségi elemzés, az alkalmazás-függőségi elemzés és a költséghatékonyság megtervezése révén könnyebben méretezhető alkalmazásait. A Microsoft nem használja ezeket az adattípusokat a licencek megfelelőségi ellenőrzéséhez képest.
 
-Itt látható a VMware virtuális gép teljesítményadatokat, amelyet a készülék az Azure-ba gyűjt és küld.
+Itt látható a virtuális gép által összegyűjtött és az Azure-ba küldött teljesítményadatok.
 
 **Teljesítményszámláló osztálya** | **Számláló** | **Értékelés hatása**
 --- | --- | ---
@@ -162,7 +162,7 @@ Operációs rendszer neve/verziója/teljes tartományneve | Msvm_KvpExchangeComp
 Virtuális gép energiaellátási állapota | Msvm_ComputerSystem | EnabledState
 **/Lemez adatai** | 
 Lemez azonosítója | Msvm_VirtualHardDiskSettingData | VirtualDiskId
-Virtuális merevlemez típusa | Msvm_VirtualHardDiskSettingData | Type
+Virtuális merevlemez típusa | Msvm_VirtualHardDiskSettingData | Típus
 Virtuális merevlemez mérete | Msvm_VirtualHardDiskSettingData | MaxInternalSize
 Virtuális merevlemez szülőjének | Msvm_VirtualHardDiskSettingData | ParentPath
 **Hálózati adapter adatai** | 
@@ -187,14 +187,14 @@ A készülék a következő eljárással kommunikál a vCenter-kiszolgálókkal 
 2. **Metaadatok és teljesítményadatok összegyűjtése**:
     - A készülék egy CIM-(CIM-) munkamenetet használ a Hyper-V virtuális gépek adatainak a Hyper-V-gazdagépről a 5985-es és 5986-es portokon való összegyűjtéséhez.
     - A készülék alapértelmezés szerint az 443-as porttal kommunikál a VMware virtuális gépek adatainak a vCenter Serverból való összegyűjtéséhez.
-3. Adatküldés: A készülék elküldi az összegyűjtött adatokat Azure Migrate Server Assessment és Azure Migrate Server áttelepítésre az 443-as SSL-porton keresztül.
+3. **Adatküldés**: a készülék elküldi az összegyűjtött adatokat Azure Migrate kiszolgáló értékelésére és Azure Migrate kiszolgáló áttelepítésére az 443-as SSL-porton keresztül.
     - A teljesítményadatok esetében a készülék valós idejű kihasználtsági adatokat gyűjt.
         - A teljesítményadatokat a rendszer minden egyes teljesítménymutató esetében 20 másodpercenként gyűjti a VMware-hez, és minden 30 másodpercenként a Hyper-V-hez.
         - Az összegyűjtött adatokat a rendszer összesíti, hogy egy adatpontot tíz percen belül hozzon létre.
         - A csúcsérték kihasználtsági értéke a 20/30 második adatpontból van kiválasztva, és az Azure-ba az értékelés kiszámításakor lesz elküldve.
         - Az értékelés tulajdonságaiban (50/90/95./esetek 99%) megadott százalékos érték alapján a tíz perces pont növekvő sorrendbe kerül, és az értékelés kiszámításához a megfelelő percentilis értéket használja a rendszer.
     - A kiszolgáló áttelepítése esetén a készülék elkezdi a virtuális gépekkel kapcsolatos adatok gyűjtését, és replikálja azt az Azure-ba.
-4. **Értékelés és áttelepítés**: Most már létrehozhat értékeléseket a készülék által gyűjtött metaadatokból Azure Migrate kiszolgáló értékelése alapján. Emellett a VMware virtuális gépek áttelepítését is megkezdheti Azure Migrate kiszolgáló áttelepítésével az ügynök nélküli virtuális gép replikálásának előkészítéséhez.
+4. **Értékelés és Migrálás**: most már létrehozhat értékeléseket a készülék által gyűjtött metaadatokból Azure Migrate Server Assessment használatával. Emellett a VMware virtuális gépek áttelepítését is megkezdheti Azure Migrate kiszolgáló áttelepítésével az ügynök nélküli virtuális gép replikálásának előkészítéséhez.
 
 
 ![Architektúra](./media/migrate-appliance/architecture.png)

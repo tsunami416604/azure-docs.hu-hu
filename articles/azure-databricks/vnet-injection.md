@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: azure-databricks
 ms.topic: conceptual
 ms.date: 10/10/2019
-ms.openlocfilehash: 0bb3221c201e6dd4dd17cca8ef7e3ed3331de228
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: 5eded3217e96ccc45951acae004d1424e16cb098
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72432661"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73605670"
 ---
 # <a name="deploy-azure-databricks-in-your-virtual-network"></a>Az Azure Databricks üzembe helyezése virtuális hálózaton
 
@@ -37,7 +37,7 @@ A Azure Portal Azure Databricks munkaterület telepítési felületének haszná
 
 A Azure Databricks munkaterületet üzembe helyező virtuális hálózatnak meg kell felelnie a következő követelményeknek:
 
-### <a name="location"></a>Földrajzi egység
+### <a name="location"></a>Hely
 
 A virtuális hálózatnak a Azure Databricks munkaterülettel azonos helyen kell lennie.
 
@@ -99,7 +99,7 @@ Ha egy virtuális hálózatot, hálózati biztonsági csoportokat és Azure Data
 
 A sablon használatakor nincs szükség az alhálózati forgalom manuális engedélyezési listájának megadására.
 
-### <a name="network-security-groups"></a>Hálózati biztonsági csoportok
+### <a name="network-security-groups"></a>Network security groups (Hálózati biztonsági csoportok)
 
 Ha hálózati biztonsági csoportokat szeretne létrehozni egy meglévő virtuális hálózathoz szükséges szabályokkal, használja a [hálózati biztonsági csoport sablonját a Databricks VNet injekcióhoz](https://azure.microsoft.com/resources/templates/101-databricks-all-in-one-template-for-vnet-injection/).
 
@@ -119,9 +119,9 @@ Ha ezt a sablont a hálózati biztonsági csoportok sablonjának használata né
 
 ## <a name="whitelisting-subnet-traffic"></a>Alhálózati forgalom engedélyezési listája
 
-Ha nem használja a hálózati biztonsági csoportok létrehozásához [Azure Portal](https://docs.azuredatabricks.net/administration-guide/cloud-configurations/azure/vnet-inject.html#vnet-inject-portal) vagy [Azure Resource Manager sablonokat](https://docs.azuredatabricks.net/administration-guide/cloud-configurations/azure/vnet-inject.html#vnet-inject-advanced) , manuálisan kell megadnia a következő forgalmat az alhálózatokon.
+Ha nem használja a hálózati biztonsági csoportok létrehozásához [Azure Portal](/azure/databricks/administration-guide/cloud-configurations/azure/vnet-inject#vnet-inject-portal) vagy [Azure Resource Manager sablonokat](/azure/databricks/administration-guide/cloud-configurations/azure/vnet-inject.html#vnet-inject-advanced) , manuálisan kell megadnia a következő forgalmat az alhálózatokon.
 
-|Irány|Protocol (Protokoll)|Forrás|Forrásport|Cél|Célport|
+|Irány|Protokoll|Forrás|Forrásport|Cél|Célport|
 |---------|--------|------|-----------|-----------|----------------|
 |Bejövő|\*|VirtualNetwork|\*|\*|\*|
 |Bejövő|\*|Vezérlési sík NAT IP-címe|\*|\*|22|
@@ -144,7 +144,7 @@ Az alhálózati forgalom engedélyezési listája a következő IP-címek haszn�
 |USA 2. nyugati régiója|Vezérlési sík NAT </br></br>WebApp|40.83.178.242/32 </br></br>40.118.174.12/32|
 |Közép-Kanada|Vezérlési sík NAT </br></br>WebApp|40.85.223.25/32 </br></br>13.71.184.74/32|
 |Kelet-Kanada|Vezérlési sík NAT </br></br>WebApp|40.85.223.25/32 </br></br>13.71.184.74/32|
-|Egyesült Királyság nyugati régiója|Vezérlési sík NAT </br></br>WebApp|51.140.203.27/32 </br></br>51.140.204.4/32|
+|Az Egyesült Királyság nyugati régiója|Vezérlési sík NAT </br></br>WebApp|51.140.203.27/32 </br></br>51.140.204.4/32|
 |Egyesült Királyság déli régiója|Vezérlési sík NAT </br></br>WebApp|51.140.203.27/32 </br></br>51.140.204.4/32|
 |Nyugat-Európa|Vezérlési sík NAT </br></br>WebApp|23.100.0.135/32 </br></br>52.232.19.246/32|
 |Észak-Európa|Vezérlési sík NAT </br></br>WebApp|23.100.0.135/32 </br></br>52.232.19.246/32|
@@ -153,14 +153,14 @@ Az alhálózati forgalom engedélyezési listája a következő IP-címek haszn�
 |Nyugat-India|Vezérlési sík NAT </br></br>WebApp|104.211.89.81/32 </br></br>104.211.101.14/32|
 |Délkelet-Ázsia|Vezérlési sík NAT </br></br>WebApp|52.187.0.85/32 </br></br>52.187.145.107/32|
 |Kelet-Ázsia|Vezérlési sík NAT </br></br>WebApp|52.187.0.85/32 </br></br>52.187.145.107/32|
-|Ausztrália keleti régiója|Vezérlési sík NAT </br></br>WebApp|13.70.105.50/32 </br></br>13.75.218.172/32|
+|Kelet-Ausztrália|Vezérlési sík NAT </br></br>WebApp|13.70.105.50/32 </br></br>13.75.218.172/32|
 |Délkelet-Ausztrália|Vezérlési sík NAT </br></br>WebApp|13.70.105.50/32 </br></br>13.75.218.172/32|
 |Ausztrália középső régiója|Vezérlési sík NAT </br></br>WebApp|13.70.105.50/32 </br></br>13.75.218.172/32|
 |Ausztrália 2. középső régiója|Vezérlési sík NAT </br></br>WebApp|13.70.105.50/32 </br></br>13.75.218.172/32|
 |Kelet-Japán|Vezérlési sík NAT </br></br>WebApp|13.78.19.235/32 </br></br>52.246.160.72/32|
 |Nyugat-Japán|Vezérlési sík NAT </br></br>WebApp|13.78.19.235/32 </br></br>52.246.160.72/32|
 
-## <a name="troubleshooting"></a>Hibakeresés
+## <a name="troubleshooting"></a>Hibaelhárítás
 
 ### <a name="workspace-launch-errors"></a>Munkaterület indítási hibái
 
@@ -196,7 +196,7 @@ Lehetséges ok: a feldolgozók közötti kommunikáció le van tiltva. Javítsa 
 
 Lehetséges ok: a dolgozóktól a Azure Databricks WebApp felé irányuló forgalom blokkolva van. Javítsa ki, hogy a kimenő biztonsági szabályok megfelelnek-e a követelményeknek.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Adatok kinyerése, átalakítása és betöltése az Azure Databricks használatával](databricks-extract-load-sql-data-warehouse.md)

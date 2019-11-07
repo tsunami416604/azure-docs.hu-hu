@@ -1,39 +1,36 @@
 ---
-title: Az Azure tűzfal fenyegetésfelderítés alapú szűrés
-description: További tudnivalók az Azure-tűzfal threat intelligence szűrése
+title: Azure Firewall fenyegetések felderítésére alapuló szűrés
+description: Tudnivalók a fenyegetések felderítésének Azure Firewalláról
 services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: article
-ms.date: 3/11/2019
+ms.date: 11/05/2019
 ms.author: victorh
-ms.openlocfilehash: 4ef9089c94d9e806cc519c4f8243cdcb7e73953a
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: f6a60d7c29fc7e482e32233aa86d65a801e3f55c
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60194047"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73582254"
 ---
-# <a name="azure-firewall-threat-intelligence-based-filtering---public-preview"></a>Azure tűzfal threat intelligence-alapú szűrés – nyilvános előzetes verzió
+# <a name="azure-firewall-threat-intelligence-based-filtering"></a>Azure Firewall fenyegetés intelligencia-alapú szűrés
 
-Engedélyezheti a veszélyforrás-felderítésen alapuló szűrést a tűzfalon az ismert kártékony IP-címekről és tartományokból származó vagy azokba irányuló adatforgalomról való riasztáshoz és annak letiltásához. Az IP-címek és a tartományok a Microsoft Threat Intelligence hírcsatornájáról származnak. [Intelligent Security Graph](https://www.microsoft.com/en-us/security/operations/intelligence) Microsoft fenyegetésfelderítő működteti, és több szolgáltatást, többek között az Azure Security Center által használt.
+Engedélyezheti a veszélyforrás-felderítésen alapuló szűrést a tűzfalon az ismert kártékony IP-címekről és tartományokból származó vagy azokba irányuló adatforgalomról való riasztáshoz és annak letiltásához. Az IP-címek és a tartományok a Microsoft Threat Intelligence hírcsatornájáról származnak. A [intelligens biztonsági gráf](https://www.microsoft.com/en-us/security/operations/intelligence) a Microsoft fenyegetésekkel kapcsolatos intelligenciát, és több szolgáltatás, például Azure Security Center használatát is használja.
 
-![Tűzfal fenyegetések felderítése](media/threat-intel/firewall-threat.png)
+![Tűzfal-veszélyforrások felderítése](media/threat-intel/firewall-threat.png)
 
-> [!IMPORTANT]
-> Threat intelligence alapú szűrés jelenleg nyilvános előzetes verzióban és a egy előzetes szolgáltatói szerződést. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik.  A részleteket lásd: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+Ha engedélyezte a fenyegetést jelentő intelligencia-alapú szűrést, a rendszer feldolgozza a társított szabályokat a NAT-szabályok, a hálózati szabályok vagy az alkalmazási szabályok előtt.
 
-Threat intelligence szerinti szűrés engedélyezve van, ha a hozzárendelt szabályokat dolgozza fel előbb bármelyikét a NAT-szabályok, a hálózati szabályok és alkalmazás szabályokat. Az előzetes verzióban csak a legmagasabb megbízhatósági rekordokat is.
+Dönthet úgy, hogy csak a riasztást naplózza egy szabály indításakor, vagy választhatja a riasztás és a Megtagadás módot is.
 
-Jelentkezzen egy riasztást, amikor egy szabály akkor lesz kiváltva, vagy válassza ki a riasztást, és megtagadási mód választhatja.
+Alapértelmezés szerint a fenyegetési intelligencia-alapú szűrés riasztási módban van engedélyezve. Ezt a funkciót nem lehet kikapcsolni, vagy módosítani a módot, amíg a portál felülete elérhetővé nem válik a régiójában.
 
-Alapértelmezés szerint a threat intelligence szerinti szűrés riasztási módban van engedélyezve. Nem kapcsolja ki ezt a szolgáltatást, vagy módosíthatja a módot, amíg az Ön régiójában elérhetővé válik a portál felületén.
-
-![Fenyegetések felderítése-alapú szűrési felületén](media/threat-intel/threat-intel-ui.png)
+![Fenyegetésekkel kapcsolatos intelligencia-alapú szűrési portál felülete](media/threat-intel/threat-intel-ui.png)
 
 ## <a name="logs"></a>Naplók
 
-A következő cikkből napló szerint jeleníti meg egy aktivált szabályhoz:
+A következő naplózási részlet egy aktivált szabályt mutat be:
 
 ```
 {
@@ -49,12 +46,12 @@ A következő cikkből napló szerint jeleníti meg egy aktivált szabályhoz:
 
 ## <a name="testing"></a>Tesztelés
 
-- **Kimenő tesztelés** – kimenő forgalom riasztások kell lennie egy ritka esemény, mivel azt jelenti, hogy a környezet biztonsága sérült. Segítségével teszt kimenő riasztások dolgozik, teljes tartománynév létrehozása egy tesztet, amely riasztást vált ki. Használat **testmaliciousdomain.eastus.cloudapp.azure.com** a kimenő tesztek számára.
+- **Kimenő tesztelés** – a kimenő forgalmi riasztásoknak ritka előfordulásnak kell lenniük, mivel ez azt jelenti, hogy a környezet biztonsága sérült. A kimenő riasztások tesztelésének segítése érdekében a rendszer létrehoz egy teljes tartománynevet, amely riasztást indít el. A kimenő tesztek **testmaliciousdomain.eastus.cloudapp.Azure.com** használata.
 
-- **Bejövő tesztelés** -kell riasztások megtekintéséhez a bejövő forgalom, ha a DNAT-szabályok úgy vannak konfigurálva, a tűzfalon. Ez igaz, akkor is, ha csak a meghatározott források engedélyezettek a DNAT-szabály és a forgalom ellenkező esetben a rendszer megtagadja. Azure-tűzfalon nem szükséges riasztás az összes ismert portot képolvasók; csak az ismert kártékony tevékenységek is végezhetnek képolvasók.
+- **Bejövő tesztelés** – a rendszer a bejövő forgalomra vonatkozó riasztásokat jelenít meg, ha a TŰZFALon DNAT-szabályok vannak konfigurálva. Ez akkor is igaz, ha csak bizonyos források engedélyezettek a DNAT-szabályban, és a forgalom egyébként meg van tagadva. Azure Firewall az összes ismert porton nem jeleníti meg a riasztásokat; csak olyan lapolvasók esetében, amelyekről ismert, hogy rosszindulatú tevékenységet is folytatnak.
 
 ## <a name="next-steps"></a>További lépések
 
-- Lásd: [Azure tűzfal Log Analytics-minták](log-analytics-samples.md)
-- Ismerje meg, hogyan [üzembe helyezése és az Azure-tűzfalak konfigurálása](tutorial-firewall-deploy-portal.md)
-- Tekintse át a [Microsoft Security fenyegetésfelderítési jelentés](https://www.microsoft.com/en-us/security/operations/security-intelligence-report)
+- Lásd: [Azure Firewall log Analytics minták](log-analytics-samples.md)
+- Megtudhatja, hogyan [helyezhet üzembe és konfigurálhat egy Azure Firewall](tutorial-firewall-deploy-portal.md)
+- A [Microsoft biztonsági intelligencia jelentésének](https://www.microsoft.com/en-us/security/operations/security-intelligence-report) áttekintése

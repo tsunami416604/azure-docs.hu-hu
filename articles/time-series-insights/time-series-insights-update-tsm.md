@@ -8,51 +8,51 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 10/21/2019
+ms.date: 10/25/2019
 ms.custom: seodec18
-ms.openlocfilehash: 802fd444c953c69dfa99fbd49fdf9541cda372ba
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: 3c9bface359df020cea0bfff8f82e25e25efbc47
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72989794"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73585250"
 ---
 # <a name="time-series-model"></a>Time Series-modell
 
-Ez a dokumentum leírja a Time Series-modellt, azok képességeit, valamint azt, hogy miként hozhat létre és frissíthet saját Time Series Insights környezetben.
+Ez a cikk az idősorozat-modellt, a képességeket, valamint a saját modelljeinek a Azure Time Series Insights előnézeti környezetben való létrehozásának és frissítésének megkezdését ismerteti.
 
 > [!TIP]
->  * Navigáljon a [contoso szélerőműpark bemutató](https://insights.timeseries.azure.com/preview/samples) környezetéhez egy élő idősorozat-modell példája alapján.
-> * Az idősorozat-modell felhasználói felületének megismeréséhez olvassa el a [Time Series Insights Preview Explorer böngészőt](time-series-insights-update-explorer.md) .
+>  * Nyissa meg a [contoso szélerőműpark bemutató](https://insights.timeseries.azure.com/preview/samples) környezetét egy élő idősorozat-modellre példaként.
+> * Az idősorozat-modell felhasználói felületének megismeréséhez olvassa el a [Azure Time Series Insights Preview Explorer böngészőt](time-series-insights-update-explorer.md) .
 
 ## <a name="summary"></a>Összefoglalás
 
-Hagyományosan a IoT-eszközökről összegyűjtött adatok nem rendelkeznek környezetfüggő információkkal, ami megnehezíti az érzékelők gyors megtalálását és elemzését. A Time Series-modell fő motivációja a IoT-/idősorozat-adatok megkeresésének és elemzésének egyszerűsítése. Ezt a célt úgy éri el, hogy lehetővé teszi a Time Series-adatokat a kurátorok, a karbantartás és az idősorozat-adathalmazok gazdagítása érdekében, hogy előkészítse a felhasználók számára kész adatkészleteket
+Hagyományosan a IoT-eszközökről összegyűjtött adatok nem rendelkeznek környezetfüggő információkkal, ami megnehezíti az érzékelők gyors megtalálását és elemzését. Az idősorozat-modell fő motivációja a IoT és az idősoros adatok megkeresésének és elemzésének egyszerűbbé tétele. Ezt a célt úgy éri el, hogy lehetővé teszi a Time Series-adatokat a kurátorok, a karbantartás és az idősorozat-adathalmazok gazdagítása érdekében, hogy előkészítse a felhasználók számára kész adatkészleteket
 
 ## <a name="scenario-contosos-new-smart-oven"></a>Forgatókönyv: contoso új intelligens kemence
 
-**Vegye fontolóra egy új contoso intelligens kemence kitalált forgatókönyvét.** Ebben az esetben tegyük fel, hogy minden contoso intelligens kemence öt hőmérséklet-érzékelővel rendelkezik, egyet a négy legfelső szintű égőkhez, egyet pedig magához a kemencéhez. Egészen a közelmúltig minden contoso hőmérséklet-érzékelő elküldve, tárolva és vizualizációban tárolja az adattartalmakat. A konyhai berendezés monitorozásához a contoso az alapszintű diagramokra támaszkodik, amelyek mindegyike egy adott érzékelőhöz tartozik.
+**Vegye figyelembe a contoso intelligens kemence kitalált forgatókönyvét.** Ebben az esetben tegyük fel, hogy minden contoso intelligens kemence öt hőmérséklet-érzékelővel rendelkezik, egyet a négy legfelső szintű égőkhez, egyet pedig magához a kemencéhez. Egészen a közelmúltig minden contoso hőmérséklet-érzékelő elküldve, tárolva és vizualizációban tárolja az adattartalmakat. A konyhai berendezés monitorozásához a contoso az alapszintű diagramokra támaszkodik, amelyek mindegyike egy adott érzékelőhöz tartozik.
 
-Habár a contoso elégedett volt a kezdeti és a vizualizációs megoldással, számos korlátozás nyilvánvalóvá vált:
+Habár a contoso elégedett volt a kezdeti és vizualizációs megoldással, számos korlátozás nyilvánvalóvá vált:
 
-* Az ügyfelek szeretnék megismerni, hogy a teljes kemence milyen meleget fog kapni, amikor a legtöbb legfelső szintű égők bekerültek, és a contoso még nem tudta elemezni és bemutatni a teljes kemence feltételeivel kapcsolatos egységes választ.
-* A contoso-mérnökök szeretnék ellenőrizni, hogy a leggyakrabban futó égők nem eredményeznek-e nem hatékony energiaellátást, és nem volt olyan nehézség, amely a hőmérséklet-és feszültség-érzékelők egymáshoz való kapcsolásával, valamint a hely megtalálásával kapcsolatos az áruházban.
-* A contoso minőségbiztosítási csapata szeretné naplózni és összehasonlítani a két érzékelő verziójának előzményeit, és nem volt nehéz meghatározni, hogy az adott érzékelő melyik adataihoz tartoztak.
+* Az ügyfelek szeretnék megismerni, hogy a teljes kemence milyen gyakran fog megjelenni, amikor a legtöbb legtöbbet a legjobb égők használták. A contoso a teljes kemence feltételeivel kapcsolatban több nehézséget okozott, és egységes választ mutat.
+* A contoso-mérnökök szeretnék ellenőrizni, hogy a leggyakrabban futó égők nem eredményeznek-e nem hatékony energiaellátást. Nehézségekbe ütközik, hogy mely hőmérséklet-és feszültség-érzékelők voltak társítva egymáshoz, és hogyan lehet megkeresni őket az áruházban.
+* A contoso minőségbiztosítási csapata a két érzékelő verziójának előzményeit szeretné naplózni és összehasonlítani. Nehéz volt megállapítani, hogy mely adatkészlethez tartozó az érzékelő verziója.
 
-Az átfogó, intelligens kemence idősorozat-modell strukturálása, rendszerezése és definiálása nélkül minden hőmérséklet-érzékelő a kihelyezett, elkülönített és kevésbé informatív adatpontokat kezeli. Az adatpontok gyakorlatban hasznosítható elemzésekre való bekapcsolása nehezebbé vált, mivel minden adathalmaz a többitől függetlenül élt.
+Az átfogó, intelligens kemence idősorozat-modell strukturálása, rendszerezése és definiálása nélkül minden hőmérséklet-érzékelő a kihelyezett, elkülönített és kevésbé informatív adatpontokat kezeli. Az adatpontok gyakorlatban alkalmazható információkhoz való bekapcsolása nehezebbé vált, mivel az egyes adatkészletek a többitől függetlenül éltek.
 
 Ezek a korlátozások az intelligens adatösszesítési és vizualizációs eszközök fontosságát mutatták ki a contoso új kemencéhez való csatlakozáshoz:
 
-* Az adatvizualizáció hasznosnak bizonyulhat, ha az adatgyűjtést és-összevonást egy kényelmes nézetben szeretné használni. Például a feszültség érzékelők, valamint a hőmérséklet-érzékelők láthatók.
-* A többdimenziós adatmennyiség több entitáshoz való kezelése, valamint az összehasonlítás, a nagyítás és az időtartomány-funkciók megnehezítik.
+* Az adatvizualizáció hasznosnak bizonyulhat, ha az adatgyűjtést és-összevonást egy kényelmes nézetben szeretné használni. Ilyenek például a feszültség érzékelők a hőmérséklet-érzékelőkkel együtt.
+* A többdimenziós adatmennyiségek több entitáshoz való kezelése, valamint az összehasonlítás, a nagyítás és az időtartomány-funkcionalitás nehéz feladat lehet.
 
-A **Time Series-modell kényelmes megoldást kínál** a fenti fiktív példában szereplő számos forgatókönyvhöz:
+Az **idősorozat-modell kényelmes megoldást kínál** a kitalált példán belül előforduló számos forgatókönyv esetében:
 
-[idősorozat-modell diagram![](media/v2-update-tsm/tsi-charting.png)](media/v2-update-tsm/tsi-charting.png#lightbox)
+[idősorozat-modell diagram ![](media/v2-update-tsm/tsi-charting.png)](media/v2-update-tsm/tsi-charting.png#lightbox)
 
 * Az idősorozat-modell fontos szerepet játszik a lekérdezésekben és a navigálásban, mivel az összehasonlításokat az időtartományok, valamint az érzékelők és az eszközök közötti contextualizes teszi lehetővé.
-* Az adatok továbbra is kontextusba kerülnek, mert egy idősorozat-modellben megőrzött adatok megőrzik a Time Series lekérdezési számításait változókként, és ezeket a lekérdezési időpontokban használják.
-* Az idősorozat-modell rendszerezi és összesíti az adatokat a jobb vizualizációs és felügyeleti funkciókhoz.
+* Az adatok továbbra is környezetfüggők, mert a Time Series-modellben megőrzött adatok megőrzik a Time Series lekérdezési számításait változókként, és ezeket a lekérdezési időpontokban használják.
+* Az idősorozat-modell rendszerezi és összesíti az adatokat a jobb vizualizációs és felügyeleti képességekhez.
 
 ### <a name="key-capabilities"></a>Főbb képességek
 
@@ -60,11 +60,11 @@ Azzal a céllal, hogy egyszerű és könnyedebb legyen a Time Series contextuali
 
 * Létrehozhat és kezelhet számításokat vagy képleteket a skaláris függvények, az összesítési műveletek és így tovább.
 * Szülő-gyermek kapcsolatok definiálása a Navigálás, a keresés és a hivatkozás engedélyezéséhez.
-* Definiálja a példányokhoz társított tulajdonságokat, a *példány mezőiben* definiált értéket, és használja őket a hierarchiák létrehozásához.
+* Definiálja a példányokhoz társított tulajdonságokat, a *példány mezőinek*meghatározását, és használja őket a hierarchiák létrehozásához.
 
 ### <a name="components"></a>Összetevők
 
-A Time Series-modell három alapvető összetevővel rendelkezik:
+A Time Series-modell három alapvető összetevőből áll:
 
 * [Idősorozat-modell példányai](#time-series-model-instances)
 * [Idősorozat-modell hierarchiái](#time-series-model-hierarchies)
@@ -74,19 +74,19 @@ Ezek az összetevők össze vannak egyesítve egy idősorozat-modell megadásáh
 
 [![Time Series-modell áttekintése](media/v2-update-tsm/tsm.png)](media/v2-update-tsm/tsm.png#lightbox)
 
-Az idősorozat-modell hozható létre és kezelhető a [Time Series Insights előzetes](time-series-insights-update-how-to-tsm.md) verziójának felületén keresztül. Az idősorozat-modell beállításai a [Model Settings API](https://docs.microsoft.com/rest/api/time-series-insights/preview-model#model-settings-api)használatával kezelhetők.
+Egy idősorozat-modell hozható létre és kezelhető a [Time Series Insights előnézet](time-series-insights-update-how-to-tsm.md) felületén keresztül. Az idősorozat-modell beállításai a [Model Settings API](https://docs.microsoft.com/rest/api/time-series-insights/preview-model#model-settings-api)használatával kezelhetők.
 
 ## <a name="time-series-model-instances"></a>Idősorozat-modell példányai
 
 Az idősorozat-modell *példányai* magukban foglalhatják magukban az idősorozatok virtuális ábrázolását.
 
-A legtöbb esetben az **deviceId** vagy a **assetid**egyedileg azonosítja a példányokat, ezeket a rendszer idősorozat-azonosítóként menti.
+A legtöbb esetben a példányokat az **deviceId** vagy a **assetid**egyedileg azonosítják, amelyek idősorozat-azonosítóként lesznek mentve.
 
-A példányok egy *példány tulajdonságainak* , például egy idősorozat-azonosító, a típus, a név, a leírás, a hierarchiák és a példány mezőkhöz tartozó leíró információkkal rendelkeznek. A példányok minimális tulajdonságai között a hierarchia adatai szerepelnek.
+A példányok a *példány tulajdonságaihoz*tartozó, például egy idősorozat-azonosító, típus, név, leírás, hierarchia és példány mezőkhöz rendelt leíró információkat rendelkeznek. A példányok minimális tulajdonságai között a hierarchia adatai szerepelnek.
 
-A példány mezői olyan leíró információk gyűjteményei, amelyek a hierarchia szintjeire, valamint a gyártóra, az operátorra stb. vonatkozó értékeket is tartalmazhatnak.
+A *példány mezői* olyan leíró információk gyűjteményei, amelyek a hierarchia szintjeire, valamint a gyártóra, a kezelőre és így továbbra is tartalmazhatnak értékeket.
 
-Ha egy eseményforrás konfigurálva van a Time Series Insights-környezethez, a rendszer automatikusan felderíti és létrehozta a példányokat az idősorozat-modellben. A példányok Time Series Insights Explorerben hozhatók létre vagy frissíthetők a Time Series Model – lekérdezések használatával.
+Ha egy eseményforrás konfigurálva van a Time Series Insights-környezethez, a rendszer automatikusan felderíti és létrehozza a példányokat egy idősorozat-modellben. A példányok a Time Series Insights Explorerben hozhatók létre vagy frissíthetők az idősorozat-modell lekérdezéseinek használatával.
 
 A [contoso szélerőműpark bemutatója](https://insights.timeseries.azure.com/preview/samples) több élő példányra vonatkozó példát is tartalmaz.
 
@@ -99,14 +99,14 @@ A példányokat a **timeSeriesId**, a **typeId**, a **Name**, a **description**,
 | Tulajdonság | Leírás |
 | --- | ---|
 | timeSeriesId | Az idősorozathoz tartozó UUID, amelyhez a példány társítva van. |
-| typeId | Az idősorozat-modell UUID-azonosítója, amelyhez a példány társítva van. Alapértelmezés szerint az összes felderített új példány egy alapértelmezett típushoz van társítva|
-| név | A *Name* tulajdonság nem kötelező, és megkülönbözteti a kis-és nagybetűket. Ha a *név* nem érhető el, az alapértelmezés szerint a *timeSeriesId*lesz. Ha megadja a *nevet* , a *timeSeriesId* továbbra [is elérhető lesz.](time-series-insights-update-explorer.md#preview-well) |
+| typeId | Az idősorozat-modell UUID-azonosítója, amelyhez a példány társítva van. Alapértelmezés szerint az összes felderített új példány egy alapértelmezett típushoz van társítva.
+| név | A **Name** tulajdonság nem kötelező, és megkülönbözteti a kis-és nagybetűket. Ha a **név** nem érhető el, az alapértelmezett érték a **timeSeriesId**. Ha megadja a nevet, a **timeSeriesId** továbbra [is elérhető.](time-series-insights-update-explorer.md#preview-well) |
 | leírás | A példány szöveges leírása. |
 | hierarchyIds | Meghatározza, hogy mely hierarchiák tartoznak a példányhoz. |
-| instanceFields | a *instanceFields* egy példány tulajdonságai, valamint a példányt definiáló statikus adatmennyiségek. A hierarchia vagy a hierarchián kívüli tulajdonságok értékeit határozzák meg, miközben a keresési műveletek végrehajtásához is támogatják az indexelést. |
+| instanceFields | a **instanceFields** egy példány tulajdonságai, valamint a példányt definiáló statikus adatmennyiségek. A hierarchia vagy a hierarchián kívüli tulajdonságok értékeit határozzák meg, miközben a keresési műveletek végrehajtásához is támogatják az indexelést. |
 
 > [!NOTE]
-> A hierarchiák **példányok**használatával készültek, és további **instanceFields** adhatók hozzá a további példányok tulajdonságainak meghatározásához.
+> A hierarchiák a példány mezőinek használatával készültek. További **instanceFields** adhatók hozzá további példány-tulajdonságok definíciói.
 
 A példányok a következő JSON-ábrázolással rendelkeznek:
 
@@ -128,7 +128,7 @@ A példányok a következő JSON-ábrázolással rendelkeznek:
 ```
 
 > [!TIP]
-> Time Series Insights instance API és a szifilisz támogatásához olvassa el az [Adatlekérdezési](time-series-insights-update-tsq.md#time-series-model-query-tsm-q-apis) cikket és a [példány API Rest dokumentációját](https://docs.microsoft.com/rest/api/time-series-insights/preview-model#instances-api).
+> A Time Series Insights-példány API-hoz és a létrehozásához, olvasásához, frissítéséhez és törléséhez (szifilisz) támogatásához tekintse meg az [Adatlekérdezési](time-series-insights-update-tsq.md#time-series-model-query-tsm-q-apis) cikket és a [példány API Rest dokumentációját](https://docs.microsoft.com/rest/api/time-series-insights/preview-model#instances-api).
 
 ## <a name="time-series-model-hierarchies"></a>Idősorozat-modell hierarchiái
 
@@ -138,7 +138,7 @@ Egy adott Time Series Insights környezetben több hierarchiát is beállíthat.
 
 A [contoso szélerőműpark bemutató](https://insights.timeseries.azure.com/preview/samples) ügyfél felülete szabványos példányt és típus-hierarchiát jelenít meg.
 
-[idősorozat-modell hierarchiáinak![](media/v2-update-tsm/hierarchy.png)](media/v2-update-tsm/hierarchy.png#lightbox)
+[idősorozat-modell hierarchiáinak ![](media/v2-update-tsm/hierarchy.png)](media/v2-update-tsm/hierarchy.png#lightbox)
 
 ### <a name="hierarchy-definition"></a>Hierarchia definíciója
 
@@ -146,9 +146,9 @@ A hierarchiákat a hierarchia **azonosítója**, **neve**és **forrása**határo
 
 | Tulajdonság | Leírás |
 | ---| ---|
-| id | A hierarchia egyedi azonosítója, amelyet például egy példány definiálásakor használtak. |
+| id | A hierarchia egyedi azonosítója, amely például egy példány definiálásakor használatos. |
 | név | A hierarchia nevének megadására szolgáló sztring. |
-| source | Meghatározza a szervezeti hierarchiát vagy elérési utat, amely a felhasználók által létrehozandó hierarchia legfelső szintű szülő-gyermek sorrendje. A szülő-gyermek tulajdonságok hozzárendelésének *mezői*. |
+| source | Meghatározza a szervezeti hierarchiát vagy elérési utat, amely a felhasználók által létrehozandó hierarchia legfelső szintű szülő-gyermek sorrendje. A szülő-gyermek tulajdonságok hozzárendelésének mezői. |
 
 A hierarchia a következőképpen jelenik meg a JSON-ben:
 
@@ -179,17 +179,17 @@ A hierarchia a következőképpen jelenik meg a JSON-ben:
 }
 ```
 
-Fenti
+Az előző JSON-példában:
 
-* a `Location` szülő `states` és gyermek `cities`rendelkező hierarchiát határoz meg. Minden `location` több `states` is rendelkezhet, amelyek viszont több `cities`is rendelkezhetnek.
-* a `ManufactureDate` szülő `year` és gyermek `month`rendelkező hierarchiát határoz meg. Minden `ManufactureDate` több `years` is rendelkezhet, amelyek viszont több `months`is rendelkezhetnek.
+* a `Location` szülő `states` és gyermek `cities`rendelkező hierarchiát határoz meg. Minden `location` több `states`is rendelkezhet, ami viszont több `cities`is rendelkezhet.
+* a `ManufactureDate` szülő `year` és gyermek `month`rendelkező hierarchiát határoz meg. Minden `ManufactureDate` több `years`is rendelkezhet, ami viszont több `months`is rendelkezhet.
 
 > [!TIP]
-> Time Series Insights instance API és a szifilisz támogatásához olvassa el az [Adatlekérdezési](time-series-insights-update-tsq.md#time-series-model-query-tsm-q-apis) cikket és a [hierarchia API Rest dokumentációját](https://docs.microsoft.com/rest/api/time-series-insights/preview-model#hierarchies-api).
+> A Time Series Insights-példány API-hoz és a szifilisz támogatásához tekintse meg az [Adatlekérdezési](time-series-insights-update-tsq.md#time-series-model-query-tsm-q-apis) cikket és a [hierarchia API Rest dokumentációját](https://docs.microsoft.com/rest/api/time-series-insights/preview-model#hierarchies-api).
 
 ### <a name="hierarchy-example"></a>Példa hierarchia
 
-Vegyünk például egy olyan példát, ahol a **H1** hierarchia a **instanceFieldNames** -definíciójának részeként *épületet*, *padlót*és *helyet* tartalmaz:
+Vegyünk egy példát arra, hogy a **H1** hierarchia `building`, `floor`és `room` a **instanceFieldNames** definíciójának részeként:
 
 ```JSON
 {
@@ -205,7 +205,7 @@ Vegyünk például egy olyan példát, ahol a **H1** hierarchia a **instanceFiel
 }
 ```
 
-A fenti definícióban és a több idősorozatban használt **példány mezők** esetében a hierarchia attribútumai és értékei az alábbi táblázatban látható módon jelennek meg:
+Az előző definícióban és a több idősorozatban használt példány mezők esetében a hierarchia attribútumai és értékei az alábbi táblázatban látható módon jelennek meg:
 
 | Idősorozat-azonosító | Példány mezői |
 | --- | --- |
@@ -213,11 +213,11 @@ A fenti definícióban és a több idősorozatban használt **példány mezők**
 | ID2 | "Building" = "1000", "Room" = "55" |
 | ID3 | "Floor" = "10" |
 | ID4 | "Building" = "1000", "Floor" = "10"  |
-| ID5 | A "Building", a "Floor" vagy a "Room" nincs beállítva |
+| ID5 | A "Building", a "Floor" vagy a "Room" nincs beállítva. |
 
-Az idősorozat **ID1** és **id4** a **H1** hierarchia részeként jelenik meg a [Azure Time Series Insights Explorerben](time-series-insights-update-explorer.md) , mivel teljes mértékben definiálva és megfelelően rendezett *kialakítással*, *padlóval*és *helyiséggel* rendelkeznek. paraméterek.
+Az idősorozat **ID1** és **id4** a **H1** hierarchia részeként jelennek meg a [Azure Time Series Insights Explorerben](time-series-insights-update-explorer.md) , mivel teljes mértékben definiálva és megfelelően rendezett *kialakítással*, *padlóval*és *helyiséggel* rendelkeznek. paraméterek.
 
-A többiek a nem *szülő példányok* alá lesznek sorolva, mivel nem felelnek meg a megadott adathierarchiának.
+A többiek a nem *szülő példányok* alá vannak sorolva, mert nem felelnek meg a megadott adathierarchiának.
 
 ## <a name="time-series-model-types"></a>Idősorozat-modell típusai
 
@@ -230,7 +230,7 @@ A [contoso szélerőműpark bemutatója](https://insights.timeseries.azure.com/p
 [![idősorozat-modell típusai](media/v2-update-tsm/types.png)](media/v2-update-tsm/types.png#lightbox)
 
 > [!TIP]
-> Time Series Insights-példány API-hoz és a szifilisz támogatásához olvassa el az [Adatlekérdezési](time-series-insights-update-tsq.md#time-series-model-query-tsm-q-apis) cikket és az [API Rest-dokumentációját](https://docs.microsoft.com/rest/api/time-series-insights/preview-model#types-api).
+> Time Series Insights instance API és a szifilisz támogatásához tekintse meg az [Adatlekérdezési](time-series-insights-update-tsq.md#time-series-model-query-tsm-q-apis) cikket és az [API Rest-dokumentációját](https://docs.microsoft.com/rest/api/time-series-insights/preview-model#types-api).
 
 ### <a name="type-properties"></a>Típus tulajdonságai
 
@@ -285,15 +285,15 @@ A típusok megfelelnek a következő JSON-példának:
 
 ### <a name="variables"></a>Változók
 
-Time Series Insights típusok több változót is tartalmazhatnak, amelyek a képleteket és számítási szabályokat határozzák meg az eseményeken.
+A Time Series Insights típusok számos változót tartalmazhatnak, amelyek a képleteket és számítási szabályokat határozzák meg az eseményeken.
 
 Mindegyik változó a három *típus*egyike lehet: *numerikus*, *kategorikus*és *aggregált*.
 
-* A *numerikus típusú számok* folytonos értékekkel működnek. 
-* A *kategorikus* típusok a különálló értékek meghatározott készletével működnek.
-* Az *összesített* értékek egyetlen típusú változót egyesítenek (vagy az összes *numerikus* vagy az összes *kategorikus*).
+* A **numerikus típusú számok** folytonos értékekkel működnek. 
+* A **kategorikus** típusok a különálló értékek meghatározott készletével működnek.
+* Az **összesített** értékek egyetlen típus több változóját kombinálják (vagy az összes numerikus vagy az összes kategorikus).
 
-Az alábbi táblázat megjeleníti, hogy az egyes változók milyen tulajdonságokkal rendelkeznek.
+Az alábbi táblázat az egyes változókhoz tartozó tulajdonságokat mutatja be.
 
 [![idősorozat-modell típusai](media/v2-update-tsm/variable-table.png)](media/v2-update-tsm/variable-table.png#lightbox)
 
@@ -302,8 +302,8 @@ Az alábbi táblázat megjeleníti, hogy az egyes változók milyen tulajdonság
 | Változó tulajdonság | Leírás |
 | --- | ---|
 | Változó szűrő | A szűrők nem kötelező feltételes záradékok, amelyek korlátozzák a számításba veendő sorok számát. |
-| Változó értéke | Telemetria az eszközről/érzékelőkről érkező számításokhoz vagy az idősorozat-kifejezések használatával átalakított értékekhez. A numerikus típusok változóinak *dupla*típusúnak kell lenniük.|
-| Változó interpoláció | A interpoláció azt adja meg, hogyan lehet a jeleket újralétrehozni meglévő adataival. A *Step* és a *lineáris* interpolációs beállítások a numerikus változókhoz érhetők el. |
+| Változó értéke | Az eszközről vagy érzékelőkről származó számításhoz használt telemetria-értékek, vagy az idősorozat-kifejezések használatával alakíthatók át. A numerikus típusú változóknak *dupla*típusúnak kell lenniük.|
+| Változó interpoláció | A interpoláció azt adja meg, hogyan lehet a jeleket újradefiniálni a meglévő adatforgalom használatával. A *Step* és a *lineáris* interpolációs beállítások a numerikus változókhoz érhetők el. |
 | Változó összesítése | A kiszámítások támogatása az *AVG*, a *min*, a *Max*, a *Sum*, a *Count*, a *First*, a *Last* és az Time-súlyozott (*AVG*, *min*, *Max*, *Sum*, *Left*) operátorral. |
 
 A változók megfelelnek a következő JSON-példának:
@@ -332,9 +332,9 @@ A változók megfelelnek a következő JSON-példának:
 | Változó tulajdonság | Leírás |
 | --- | ---|
 | Változó szűrő | A szűrők nem kötelező feltételes záradékok, amelyek korlátozzák a számításba veendő sorok számát. |
-| Változó értéke | Az eszközből/érzékelőkből származó számításhoz használt telemetria-értékek. A kategorikus típus változóinak vagy *hosszúnak* vagy *sztringnek*kell lenniük. |
-| Változó interpoláció | A interpoláció azt adja meg, hogyan lehet a jeleket újralétrehozni meglévő adataival. A *lépésenkénti* interpolációs beállítás a kategorikus változók esetében érhető el. |
-| Változók kategóriái | A kategóriák az eszközről/érzékelőkről a címkére érkező értékek közötti leképezést hoznak létre. |
+| Változó értéke | Az eszközről vagy érzékelőkről származó számításhoz használt telemetria-értékek. A kategorikus típus változóinak vagy *hosszúnak* vagy *sztringnek*kell lenniük. |
+| Változó interpoláció | A interpoláció azt adja meg, hogyan lehet a jeleket újradefiniálni a meglévő adatforgalom használatával. A *Step* interpolációs beállítás a kategorikus változóknál érhető el. |
+| Változók kategóriái | A kategóriák az eszközről vagy érzékelőkről a címkére érkező értékek közötti leképezést hoznak létre. |
 | Változó alapértelmezett kategóriája | Az alapértelmezett kategória minden olyan értékhez tartozik, amely nincs leképezve a "Categories" tulajdonságban. |
 
 A változók megfelelnek a következő JSON-példának:
@@ -386,10 +386,8 @@ A változók megfelelnek a következő JSON-példának:
 
 A változók egy idősorozat-modell definíciójában tárolódnak, és a [lekérdezési API](time-series-insights-update-tsq.md) -kon keresztül is elérhetők a tárolt definíció felülbírálásához.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Lásd: [Azure Time Series Insights előnézeti tároló és bejövő](./time-series-insights-update-storage-ingress.md)forgalom.
-
 - Ismerkedjen meg a gyakori idősorozat-modellezési műveletekkel [Azure Time Series Insights előzetes](./time-series-insights-update-how-to-tsm.md) verzióban
-
 - Olvassa el az új [Idősorozat-modell](https://docs.microsoft.com/rest/api/time-series-insights/preview-model) dokumentációját.

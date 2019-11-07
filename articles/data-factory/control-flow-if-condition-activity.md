@@ -1,5 +1,5 @@
 ---
-title: Ha feltételi tevékenység a Azure Data Factoryban | Microsoft Docs
+title: Ha a feltétel tevékenysége Azure Data Factory
 description: Az IF Condition tevékenység lehetővé teszi, hogy egy feltétel alapján vezérelje a feldolgozási folyamatot.
 services: data-factory
 documentationcenter: ''
@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: fc6318b5033ff1297f917ab95b28f8ed9285e930
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 562e84b4fe51603ae32884057578541f5536ebd4
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70142493"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73679846"
 ---
 # <a name="if-condition-activity-in-azure-data-factory"></a>Ha a feltétel tevékenysége Azure Data Factory
 Az If Condition tevékenység ugyanazokat a funkciókat biztosítja, mint a programnyelvek if utasítása. Egy tevékenységkészletet futtat le, ha a feltétel `true` értéket ad vissza, és egy másik tevékenységkészletet, ha a feltétel `false` értéket ad vissza. 
@@ -65,11 +65,11 @@ Az If Condition tevékenység ugyanazokat a funkciókat biztosítja, mint a prog
 
 Tulajdonság | Leírás | Megengedett értékek | Kötelező
 -------- | ----------- | -------------- | --------
-name | Az IF-Condition tevékenység neve. | Sztring | Igen
+név | Az IF-Condition tevékenység neve. | Sztring | Igen
 type | **IfCondition** értékre kell állítani | Sztring | Igen
-expression | Igaz vagy hamis értéket megadó kifejezés | Kifejezés az eredmény típusú logikai értékkel | Igen
-ifTrueActivities | A kifejezés kiértékelése `true`során végrehajtott tevékenységek összessége. | Array | Igen
-ifFalseActivities | A kifejezés kiértékelése `false`során végrehajtott tevékenységek összessége. | Array | Igen
+kifejezés | Igaz vagy hamis értéket megadó kifejezés | Kifejezés az eredmény típusú logikai értékkel | Igen
+ifTrueActivities | Azoknak a tevékenységeknek a csoportja, amelyek akkor futnak, amikor a kifejezés kiértékeli a `true`. | Tömb | Igen
+ifFalseActivities | Azoknak a tevékenységeknek a csoportja, amelyek akkor futnak, amikor a kifejezés kiértékeli a `false`. | Tömb | Igen
 
 ## <a name="example"></a>Példa
 Az ebben a példában szereplő folyamat adatokat másol egy bemeneti mappából a kimeneti mappába. A kimeneti mappát a (z) routeSelection folyamat paraméterének értéke határozza meg. Ha a routeSelection értéke TRUE (igaz), a rendszer átmásolja az adatmennyiséget a outputPath1. Ha pedig a routeSelection értéke hamis, a rendszer az outputPath2-re másolja az adatfájlokat. 
@@ -247,7 +247,7 @@ A folyamat beállítja a **folderPath** a folyamat **outputPath1** vagy **output
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Ezek a parancsok feltételezik, hogy mentette a JSON-fájlokat a mappába: C:\ADF. 
+Ezek a parancsok feltételezik, hogy mentette a JSON-fájlokat a következő mappába: C:\ADF. 
 
 ```powershell
 Connect-AzAccount

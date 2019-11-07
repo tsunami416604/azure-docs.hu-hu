@@ -1,5 +1,5 @@
 ---
-title: A munkamenet-gazdagép virtuális gép konfigurációja – Azure
+title: Windows rendszerű virtuális asztali munkamenetgazda – Azure
 description: A Windows rendszerű virtuális asztali munkamenetgazda virtuális gépek konfigurálásakor felmerülő problémák megoldása.
 services: virtual-desktop
 author: Heidilohr
@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: troubleshooting
 ms.date: 10/02/2019
 ms.author: helohr
-ms.openlocfilehash: a847ba7d782b332d9cae7f83bc1278fea58b8811
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 1470bb049cffce52ae921057bdaece40f3d3161c
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72330816"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73607399"
 ---
 # <a name="session-host-virtual-machine-configuration"></a>Munkamenetgazda virtuális gép konfigurációja
 
@@ -233,7 +233,7 @@ A szervizelés futtatásához használt virtuális gépnek ugyanazon az alháló
 Az alábbi utasításokat követve futtassa a szervizelést ugyanarról az alhálózatról és tartományról:
 
 1. Kapcsolódjon a standard RDP protokoll (RDP) szolgáltatáshoz a virtuális géphez, ahonnan a javítást alkalmazni fogja.
-2. Töltse le a PsExec https://docs.microsoft.com/sysinternals/downloads/psexec címről.
+2. A PsExec letöltése https://docs.microsoft.com/sysinternals/downloads/psexecról.
 3. Bontsa ki a letöltött fájlt.
 4. Indítsa el a parancssort helyi rendszergazdaként.
 5. Navigáljon a mappához, ahol a PsExec ki lett csomagolva.
@@ -309,7 +309,7 @@ Ha ezeket az üzeneteket látja, ez azt jelenti, hogy a lemezképen nincsenek te
 
 ### <a name="disable-the-remote-desktop-licensing-mode-group-policy-setting"></a>A Távoli asztal licencelési mód csoportházirend-beállításának letiltása
 
-A csoportházirend-beállítás megadásával nyissa meg a Csoportházirend-szerkesztőt a virtuális gépen, és navigáljon a **Felügyeleti sablonok** > **Windows-összetevők** > **Távoli asztali szolgáltatások** > **Távoli asztal munkamenet-gazdagép**@no __t-7**licencelési**@no__t – 9.**állítsa be a távoli asztal licencelési módot**. Ha a csoportházirend-beállítás **engedélyezve**van, módosítsa a szolgáltatást **Letiltva**értékre. Ha már le van tiltva, akkor hagyja a következőképpen:.
+A csoportházirend-beállítás megadásához nyissa meg a Csoportházirend-szerkesztőt a virtuális gépen, és navigáljon **Felügyeleti sablonok** > **Windows-összetevők** > **Távoli asztali szolgáltatások** > **Távoli asztal munkamenet-gazdagép** > **licencelési** > **állítsa be a távoli asztal licencelési módot**. Ha a csoportházirend-beállítás **engedélyezve**van, módosítsa a szolgáltatást **Letiltva**értékre. Ha már le van tiltva, akkor hagyja a következőképpen:.
 
 >[!NOTE]
 >Ha a csoportházirendet a tartományon keresztül állítja be, tiltsa le ezt a beállítást a Windows 10 Enterprise több munkamenetet használó virtuális gépeket megcélozó házirendekben.
@@ -335,7 +335,7 @@ Ha a verziószáma a "1809" értéket adja meg, telepítse [a KB4516077 frissít
 
 Ha a verziószáma a "1903" értéket adja meg, telepítse [a KB4517211 frissítését](https://support.microsoft.com/help/4517211).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - A Windows rendszerű virtuális asztalok és a eszkalációs sávok hibaelhárításával kapcsolatban lásd: [Hibaelhárítás – áttekintés, visszajelzés és támogatás](troubleshoot-set-up-overview.md).
 - A bérlők és a gazdagépek Windows rendszerű virtuális asztali környezetben való létrehozásakor felmerülő problémák elhárításához tekintse meg a [bérlői és az alkalmazáskészletek létrehozását](troubleshoot-set-up-issues.md)ismertető részt.

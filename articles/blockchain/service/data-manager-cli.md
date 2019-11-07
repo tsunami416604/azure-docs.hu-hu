@@ -8,12 +8,12 @@ ms.date: 11/04/2019
 ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: chroyal
-ms.openlocfilehash: 1e92ae36aee5e62cd05b40bbaa38a226943f0adb
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: HT
+ms.openlocfilehash: 9f408b090db40e5145b424034c39cdba4de14a8f
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73518020"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73605905"
 ---
 # <a name="configure-blockchain-data-manager-using-azure-cli"></a>Blockchain-Data Manager konfigurálása az Azure CLI-vel
 
@@ -259,6 +259,10 @@ az resource create \
 
 Blockchain-alkalmazás hozzáadásakor a Blockchain Data Manager dekódolja az alkalmazás esemény-és tulajdonsági állapotát. Ellenkező esetben a rendszer csak a nyers blokkot és a nyers tranzakciós adatkészletet küldi el. A Blockchain Data Manager a szerződések központi telepítésekor is felfedi a szerződések címét. Több blockchain-alkalmazást is hozzáadhat egy Blockchain Data Manager-példányhoz.
 
+
+> [!IMPORTANT]
+> Jelenleg a [blockchain vagy a](https://solidity.readthedocs.io/en/v0.5.12/types.html#arrays) [leképezési típusokat](https://solidity.readthedocs.io/en/v0.5.12/types.html#mapping-types) deklaráló alkalmazások nem teljes mértékben támogatottak. A tömbként vagy leképezési típusként deklarált tulajdonságokat a rendszer nem dekódolja a *ContractPropertiesMsg* vagy a *DecodedContractEventsMsg* üzenetekben.
+
 ``` azurecli
 az resource create \
                    --resource-group <Resource group> \
@@ -306,7 +310,7 @@ Konfigurációs JSON-példa egy alkalmazás-erőforrás létrehozására az *USA
 | location | A régió, ahol az alkalmazás-erőforrást létre kell hozni. |
 | artifactType | Az alkalmazás típusa. Jelenleg a **EthereumSmartContract** támogatott. |
 | abiFileUrl | Az intelligens szerződések ABI JSON-fájljának URL-címe. A szerződéses ABI beszerzésével és az URL-cím létrehozásával kapcsolatos további információkért lásd: az [ABI és a bytecode szerződés lekérése](data-manager-portal.md#get-contract-abi-and-bytecode) és a [szerződési ABI és bytecode URL-cím létrehozása](data-manager-portal.md#create-contract-abi-and-bytecode-url). |
-| bytecodeFileUrl | Az intelligens szerződés bytecode tartozó JSON-fájl URL-címe. Az intelligens szerződés bytecode és az URL-cím létrehozásával kapcsolatos további információkért lásd: az [ABI és a bytecode lekérése](data-manager-portal.md#get-contract-abi-and-bytecode) és a [szerződési ABI és bytecode URL-cím létrehozása](data-manager-portal.md#create-contract-abi-and-bytecode-url). |
+| bytecodeFileUrl | Az intelligens szerződés üzembe helyezett bytecode JSON-fájljának URL-címe. Az intelligens szerződések üzembe helyezett bytecode és URL-cím létrehozásával kapcsolatos további információkért lásd: az [ABI és a bytecode szerződés](data-manager-portal.md#get-contract-abi-and-bytecode) beszerzése és a [szerződési ABI és bytecode URL-cím létrehozása](data-manager-portal.md#create-contract-abi-and-bytecode-url). Megjegyzés: a Blockchain Data Manager igényli a **telepített bytecode**. |
 | queryTargetTypes | Közzétett üzenetek típusai. A **ContractProperties** megadásával közzéteheti a *ContractPropertiesMsg* üzenet típusát. A **ContractEvents** megadásával közzéteheti a *DecodedContractEventsMsg* üzenet típusát. Megjegyzés: a *RawBlockAndTransactionMsg* és a *RawTransactionContractCreationMsg* típusú üzenetek mindig közzé lesznek téve. |
 
 Hozzon létre egy *myApplication* for *mywatcher* nevű alkalmazást, amely figyeli egy JSON-karakterlánc által definiált intelligens szerződést.
@@ -415,4 +419,7 @@ az resource delete \
 
 ## <a name="next-steps"></a>További lépések
 
-További információ a [Azure Event Grid-beli eseménykezelőről](../../event-grid/event-handlers.md).
+Hozzon létre egy blockchain-tranzakciót a Blockchain Data Manager és Azure Cosmos DB használatával.
+
+> [!div class="nextstepaction"]
+> [Oktatóanyag: az Blockchain-Data Manager használata az adatküldés Azure Cosmos DB](data-manager-cosmosdb.md)

@@ -5,20 +5,17 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 10/17/2019
-ms.openlocfilehash: b7395a8ab71e860c2e584339dcd581077a4f4020
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.date: 11/04/2019
+ms.openlocfilehash: 38299a8ffd72722c2d2c1dda9227b7fbf76c0386
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72595450"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73603110"
 ---
 # <a name="query-performance-insight-in-azure-database-for-mysql"></a>Lekérdezési terheléselemző a Azure Database for MySQL
 
 **A következőkre vonatkozik:** Azure Database for MySQL 5,7
-
-> [!IMPORTANT]
-> Lekérdezési terheléselemző előzetes verzióban érhető el.
 
 Lekérdezési terheléselemző segítségével gyorsan azonosíthatja a leghosszabb ideig futó lekérdezéseket, hogyan változnak az idő múlásával, és mi vár rájuk.
 
@@ -69,6 +66,6 @@ A várakozási Statisztika nézetben megjelenő lekérdezések csoportosítása 
 
 ![Lekérdezési terheléselemző vár statisztikái](./media/concepts-query-performance-insight/query-performance-insight-wait-statistics.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - További információ a Azure Database for MySQL [figyeléséről és hangolásáról](concepts-monitoring.md) .

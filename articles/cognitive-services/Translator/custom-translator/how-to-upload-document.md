@@ -1,7 +1,7 @@
 ---
 title: Dokumentum feltöltése – egyéni fordító
 titleSuffix: Azure Cognitive Services
-description: A dokumentum feltöltése funkcióval párhuzamos dokumentumot tölthet fel a képzések számára. A párhuzamos dokumentumok olyan dokumentumok, amelyekben az egyik a másik fordítása. A pár egyik dokumentuma mondatokat tartalmaz a forrás nyelvén, a másik dokumentum pedig ezeket a mondatokat a célként megadott nyelvre lefordítva tartalmazza.
+description: A dokumentum feltöltése funkció feltölti a párhuzamos dokumentumokat (két dokumentum, ahol az egyik a forrás, a másik pedig a fordítás) a szolgáltatásba.
 author: swmachan
 manager: nitinme
 ms.service: cognitive-services
@@ -9,12 +9,12 @@ ms.subservice: translator-text
 ms.date: 02/21/2019
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: f2bd6103c27d455265ee967554fb27513f78a472
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: b2a249a40d8c782d54a12df43d33655f3409753c
+ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68595645"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73647382"
 ---
 # <a name="upload-a-document"></a>Dokumentum feltöltése
 
@@ -37,27 +37,27 @@ A [Custom Translator](https://portal.customtranslator.azure.ai) Portalon kattint
 
     a.  Dokumentum típusa:
 
-    -  Betanítás: A rendszer ezeket a dokumentumokat fogja használni a betanítási készlethez.
-    -  Tuning A rendszer ezeket a dokumentumokat fogja használni a hangolási készlethez.
-    -  Vizsgálat A rendszer ezeket a dokumentumokat fogja használni a tesztelési készlethez.
-    -  Szótár kifejezése: A rendszer ezeket a dokumentumokat fogja használni a szótár kifejezéséhez.
-    -  Mondat szótár: A rendszer ezeket a dokumentumokat fogja használni a mondat szótárához
+    -  Képzés: ezeket a dokumentumokat a betanítási készlethez fogjuk használni.
+    -  Hangolás: ezeket a dokumentumokat a hangolási készlethez fogjuk használni.
+    -  Tesztelés: a rendszer ezeket a dokumentumokat fogja használni a tesztelési készlethez.
+    -  Szótár kifejezése: ezeket a dokumentumokat a kifejezés szótárához fogjuk használni.
+    -  Mondat szótár: a rendszer ezeket a dokumentumokat fogja használni a mondat szótárához
 
     b.  Nyelvi pár
 
-    c.  Felülbírálási dokumentum, ha létezik: Jelölje be ezt a jelölőnégyzetet, ha felül szeretné írni az azonos nevű meglévő dokumentumokat.
+    c.  Felülbírálási dokumentum ha létezik: jelölje be ezt a jelölőnégyzetet, ha felül szeretné írni az azonos nevű meglévő dokumentumokat.
 
     d.  Adja meg a megfelelő szakaszt párhuzamos vagy kombinált adattípushoz.
 
     -  Párhuzamos adatértékek:
-        -  Forrásfájl: Válassza ki a forrás nyelvi fájl elemet a helyi számítógépről.
-        -  Célfájl: Válassza ki a célként megadott nyelvi fájlt a helyi számítógépről.
-        -  Dokumentum neve: Csak akkor használható, ha párhuzamos fájlokat tölt fel.
+        -  Forrásfájl: válassza a forrás nyelvi fájl lehetőséget a helyi számítógépről.
+        -  Célfájl: válassza a cél nyelvi fájl lehetőséget a helyi számítógépen.
+        -  Dokumentum neve: csak akkor használható, ha párhuzamos fájlokat tölt fel.
 
     - Kombinált adatkészletek:
-        -  Kombinált fájl: Válassza ki a kombinált fájlt a helyi számítógépről. A kombinált fájl a forrás-és a cél nyelvi mondatokkal is rendelkezik. Az [elnevezési konvenció](document-formats-naming-convention.md) a kombinált fájlok esetében fontos.
+        -  Kombinált fájl: válassza ki a kombinált fájlt a helyi számítógépről. A kombinált fájl a forrás-és a cél nyelvi mondatokkal is rendelkezik. Az [elnevezési konvenció](document-formats-naming-convention.md) a kombinált fájlok esetében fontos.
 
-    e.  Kattintson a feltöltés
+    e.  Kattintson a feltöltés gombra
 
     ![Dokumentum feltöltése párbeszédpanel](media/how-to/how-to-upload-dialog.png)
 
@@ -87,4 +87,4 @@ A feltöltési Előzmények lapon megtekintheti az összes dokumentum feltölté
 ## <a name="next-steps"></a>További lépések
 
 - A kinyert mondatok listájának áttekintéséhez használja a [dokumentum részletei lapot](how-to-view-document-details.md) .
-- [Modell](how-to-train-model.md)betanítása.
+- [Modell betanítása](how-to-train-model.md).

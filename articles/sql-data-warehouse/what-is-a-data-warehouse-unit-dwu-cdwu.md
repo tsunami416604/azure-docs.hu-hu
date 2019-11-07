@@ -1,5 +1,5 @@
 ---
-title: Adattárház-egységek (DWU, cDWUs) az Azure szinapszis Analyticsben (korábban SQL DW) | Microsoft Docs
+title: Adattárház-egységek (DWU, cDWUs) az Azure szinapszis Analyticsben (korábban SQL DW)
 description: Javaslatok az adatraktár-egységek (DWU, cDWUs) ideális számának kiválasztásához az árak és a teljesítmény optimalizálásához, valamint az egységek számának módosításához.
 services: sql-data-warehouse
 author: mlee3gsd
@@ -10,13 +10,13 @@ ms.subservice: design
 ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-mscustom: sqlfreshmay19
-ms.openlocfilehash: 32e75b78b8a5c304fc65a9c20d16fb85b4f8307b
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.custom: seo-lt-2019
+ms.openlocfilehash: f3415522a6ae80723500ba2d38867322fdef0dd7
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73475746"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73685340"
 ---
 # <a name="data-warehouse-units-dwus-and-compute-data-warehouse-units-cdwus"></a>Adatraktár-egységek (DWU-EK) és számítási adattárház-egységek (cDWUs-EK)
 
@@ -215,4 +215,4 @@ Amikor elindít egy méretezési műveletet, a rendszer először az összes nyi
 
 ## <a name="next-steps"></a>További lépések
 
-A teljesítmény kezelésével kapcsolatos további információkért lásd: [erőforrás-osztályok a számítási feladatok kezeléséhez](resource-classes-for-workload-management.md) , valamint a [memória és a Egyidejűség korlátai](memory-and-concurrency-limits.md).
+A teljesítmény kezelésével kapcsolatos további információkért lásd: [erőforrás-osztályok a számítási feladatok kezeléséhez](resource-classes-for-workload-management.md) és a [memória és egyidejűségi korlátok] memória – egyidejűség-Limits.MD).

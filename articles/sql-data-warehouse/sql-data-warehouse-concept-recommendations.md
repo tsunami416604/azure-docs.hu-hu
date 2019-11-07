@@ -1,6 +1,6 @@
 ---
-title: SQL Data Warehouse-ajánlatok – fogalmak |} A Microsoft Docs
-description: Ismerje meg az SQL Data Warehouse javaslatok, és hogyan generáljon
+title: Javaslatok SQL Data Warehouse
+description: Tudnivalók a SQL Data Warehouse javaslatairól és azok létrehozásáról
 services: sql-data-warehouse
 author: kevinvngo
 manager: craigg-msft
@@ -10,56 +10,57 @@ ms.subservice: manage
 ms.date: 11/05/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: b275f23209979e1a8068ecd99465f7b52392bc6c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.custom: seo-lt-2019
+ms.openlocfilehash: 09dff2c8ddf5b9038aa715cef02e099ccbc68f8a
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61421222"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73685911"
 ---
-# <a name="sql-data-warehouse-recommendations"></a>Az SQL Data Warehouse javaslatok
+# <a name="sql-data-warehouse-recommendations"></a>Javaslatok SQL Data Warehouse
 
-Ez a cikk ismerteti az Azure advisorral az SQL Data Warehouse által kiszolgált javaslatokat.  
+Ez a cikk a SQL Data Warehouse által a Azure Advisor által kiszolgált ajánlásokat ismerteti.  
 
-Az SQL Data Warehouse biztosít annak biztosítása érdekében az adattárház javaslatok következetesen teljesítmény van optimalizálva. Data warehouse javaslatok szorosan integrálva [az Azure Advisor](https://docs.microsoft.com/azure/advisor/advisor-performance-recommendations) belül ajánlott eljárások közvetlenül tudja biztosítani a [az Azure portal](https://aka.ms/Azureadvisor). Az SQL Data Warehouse elemzi az adattárház jelenlegi állapotát, a napi szintű telemetriai és a Surface-eszközök javaslatok a aktív számítási feladatok számára gyűjti. Az alábbiakban javasolt műveletek alkalmazása mellett vázolt a támogatott data warehouse javaslat forgatókönyveket.
+SQL Data Warehouse ajánlásokat biztosít annak biztosítására, hogy az adattárház konzisztensen legyen optimalizálva a teljesítményre. Az adatraktárral kapcsolatos javaslatok szorosan integrálva vannak a [Azure Advisorekkel](https://docs.microsoft.com/azure/advisor/advisor-performance-recommendations) , így közvetlenül a [Azure Portalon](https://aka.ms/Azureadvisor)belül biztosíthatja az ajánlott eljárásokat. SQL Data Warehouse elemzi az adattárház aktuális állapotát, gyűjti a telemetria, és az aktív számítási feladatokra vonatkozó ajánlásokat készít a napi ütemben. A támogatott adattárház-javaslatok alább láthatók a javasolt műveletek alkalmazásával együtt.
 
-Ha bármilyen visszajelzése van az SQL Data Warehouse Advisor a vagy problémákat tapasztal, forduljon [ sqldwadvisor@service.microsoft.com ](mailto:sqldwadvisor@service.microsoft.com).   
+Ha visszajelzést szeretne küldeni a SQL Data Warehouse Advisorról, vagy bármilyen problémába ütközik, akkor [sqldwadvisor@service.microsoft.com](mailto:sqldwadvisor@service.microsoft.com).   
 
-Kattintson a [Itt](https://aka.ms/Azureadvisor) a javaslatok ellenőrzése még ma! Ez a funkció jelenleg csak a Gen2 adattárházak alkalmazható. 
+Kattintson [ide](https://aka.ms/Azureadvisor) a javaslatok megtekintéséhez! Ez a funkció jelenleg csak a Gen2 adattárházak esetében alkalmazható. 
 
-## <a name="data-skew"></a>Adateltérés
+## <a name="data-skew"></a>Az adattorzítás
 
-Adatok torzulása további adatok mozgását vagy az erőforrás szűk keresztmetszeteket okozhat, a számítási feladatok futtatásakor. Az alábbi dokumentáció azt ismerteti, adatok torzulása azonosításához, és a egy optimális terjesztési kulcs kiválasztásával el kerülni megjelenítése.
+Az adatok eldöntése további adatáthelyezést vagy erőforrás-szűk keresztmetszetet eredményezhet a számítási feladatok futtatásakor. Az alábbi dokumentáció ismerteti, hogyan azonosíthatja az adatok eldöntését, és megakadályozhatja, hogy az optimális terjesztési kulcs kiválasztásával megtörténjen.
 
-- [Azonosításához és eltávolításához a döntés](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-tables-distribute#how-to-tell-if-your-distribution-column-is-a-good-choice) 
+- [A döntés azonosítása és eltávolítása](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-tables-distribute#how-to-tell-if-your-distribution-column-is-a-good-choice) 
 
 ## <a name="no-or-outdated-statistics"></a>Nem vagy elavult statisztika
 
-Optimálisnál rosszabb statisztikáit súlyosan hatással lehet a lekérdezési teljesítmény, az optimálisnál rosszabb lekérdezési tervek készítése az SQL Data Warehouse lekérdezésoptimalizáló okozhat. Az alábbi dokumentáció azt ismerteti, hogy körül statisztikák létrehozása és frissítése az ajánlott eljárásokat:
+Az optimálisnál rosszabb statisztikai adatok súlyos hatással lehetnek a lekérdezési teljesítményre, mivel a SQL Data Warehouse lekérdezés-optimalizáló a legoptimálisabb lekérdezési csomagok előállítására is használható. Az alábbi dokumentáció a statisztikák létrehozásával és frissítésével kapcsolatos ajánlott eljárásokat ismerteti:
 
-- [Tábla statisztikák létrehozása és frissítése](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-tables-statistics)
+- [Táblázat statisztikáinak létrehozása és frissítése](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-tables-statistics)
 
-Ezekkel az ajánlásokkal által érintett táblák listájának megtekintéséhez futtassa a következő [T-SQL parancsfájl](https://github.com/Microsoft/sql-data-warehouse-samples/blob/master/samples/sqlops/MonitoringScripts/ImpactedTables). Az Advisor folyamatosan futó ugyanezt a T-SQL szkriptet létrehozni ezeket a javaslatokat.
+Ha meg szeretné tekinteni az érintett táblák listáját a javaslatok alapján, futtassa az alábbi [T-SQL-szkriptet](https://github.com/Microsoft/sql-data-warehouse-samples/blob/master/samples/sqlops/MonitoringScripts/ImpactedTables). Az Advisor folyamatosan futtatja ugyanazt a T-SQL-szkriptet a javaslatok létrehozásához.
 
 ## <a name="replicate-tables"></a>Táblák replikálása
 
-Az Advisor replikált tábla javaslatok, észleli a tábla jelöltek a következő fizikai jellemzők alapján:
+A replikált táblákra vonatkozó javaslatok esetében az Advisor a következő fizikai jellemzők alapján észleli a táblázatos pályázókat:
 
 - Replikált tábla mérete
 - Oszlopok száma
-- Tábla terjesztési típusa
-- A partíciók száma
+- Tábla eloszlásának típusa
+- Partíciók száma
 
-Az Advisor folyamatosan kihasználja az heurisztika terhelésen alapuló tábla hozzáférés gyakorisága, például a visszaadott sorok átlagosan és küszöbértékek adatok adatraktár-méretét és magas színvonalú javaslatok jönnek létre, hogy a tevékenység. 
+Az Advisor folyamatosan kihasználja a munkaterhelés-alapú heurisztikus feladatokat, például a táblák elérési gyakoriságát, az átlagban visszaadott sorokat, valamint az adatraktár méretének és tevékenységének küszöbértékeit, hogy magas színvonalú javaslatokat generáljon. 
 
-A következő előfordulhat, hogy az Azure Portalon minden replikált tábla ajánlási terhelésen alapuló heurisztika ismerteti:
+Az alábbiakban az egyes replikált táblákra vonatkozó javaslatok Azure Portalban találhatja meg a munkaterhelés-alapú heurisztikus feladatokat:
 
-- Átlagos – a átlagos százalékos aránya az elmúlt hét napban a tábla minden egyes tábla hozzáférés visszaadott sorok beolvasása
-- Gyakori Olvasás, frissítés nélkül – azt jelzi, hogy a tábla nem lett frissítve az elmúlt hét napban hozzáférési tevékenység megjelenítése közben a
-- Olvasási és frissítési arány – hogyan gyakori a tábla fértek hozzá mikor frissül az elmúlt hét napban viszonyított aránya
-- Tevékenység – a használati hozzáférési tevékenység alapján méri. A tábla hozzáférési tevékenység az átlagos tábla-hozzáférési tevékenységet képest ez összehasonlítja az adatraktár között az elmúlt hét napban. 
+- Scan AVG – a táblázatból visszaadott sorok átlagos százaléka az elmúlt hét napban való hozzáférés során
+- Gyakori olvasás, nincs frissítés – azt jelzi, hogy a tábla nem frissült az elmúlt hét napban a hozzáférési tevékenység megjelenítése közben.
+- Olvasási/frissítési arány – annak a gyakorisága, hogy a táblázat milyen gyakran érhető el, ha az elmúlt hét napban frissül
+- Tevékenység – a használatot a hozzáférési tevékenység alapján méri. Ez összehasonlítja a tábla-hozzáférési tevékenységet az adattárházban az elmúlt hét napban megadott átlagos tábla-hozzáférési tevékenységhez képest. 
 
-Jelenleg az Advisor csak akkor jelenik meg, legfeljebb négy replikált tábla jelöltek egyszerre fontossági sorrend a legnagyobb tevékenység fürtözött oszlopcentrikus indexekkel rendelkező.
+Az Advisor jelenleg legfeljebb négy replikált tábla jelöltjét jeleníti meg egyszerre a fürtözött oszlopcentrikus indexekkel, amelyek rangsorolják a legmagasabb tevékenységet.
 
 > [!IMPORTANT]
-> A replikált tábla javaslat nem teljes koncepció, és nem veszik figyelembe az adatátviteli műveletek. Ez egy heurisztika hozzáadása folyamatban van, de addig is kell mindig ellenőrizze, hogy a számítási feladatok a javaslat alkalmazása után. Vegye fel a kapcsolatot sqldwadvisor@service.microsoft.com Ha a tudomására jut, amelynek hatására a számítási feladatok, amelyikre a replikált tábla javaslatok. Replikált táblák kapcsolatos további információkért látogasson el a következő [dokumentáció](https://docs.microsoft.com/azure/sql-data-warehouse/design-guidance-for-replicated-tables#what-is-a-replicated-table).
+> A replikált tábla javaslata nem teljes körűen igazolható, és nem veszi figyelembe az adatáthelyezési műveleteket. Jelenleg is dolgozunk, de a javaslat alkalmazása után mindig ellenőriznie kell a munkaterhelést. Vegye fel a kapcsolatot sqldwadvisor@service.microsoft.com ha felderíti a visszafejlődés számítási feladatait kiváltó replikált táblázatos javaslatokat. A replikált táblákkal kapcsolatos további információkért tekintse meg az alábbi [dokumentációt](https://docs.microsoft.com/azure/sql-data-warehouse/design-guidance-for-replicated-tables#what-is-a-replicated-table).

@@ -10,12 +10,12 @@ ms.subservice: core
 ms.reviewer: trbye
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: d9a879e92f78275f2366ccfc008068afbe208e5a
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: HT
+ms.openlocfilehash: 276e741a9462c19a3cba9ad1f9ac44e2da7ef1d3
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/04/2019
-ms.locfileid: "73497386"
+ms.locfileid: "73580707"
 ---
 # <a name="auto-train-a-time-series-forecast-model"></a>Idősorozat-előrejelzési modell automatikus betanítása
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -181,7 +181,7 @@ Tekintse meg az [energia igényét bemutató notebookot](https://github.com/Azur
 
 Az előrejelzési DNN kihasználása érdekében `enable_dnn` a AutoMLConfig paramétert True értékre kell állítani a. 
 
-A DNN használatához javasoljuk, hogy használjon olyan pénzmosás-számítási fürtöt, amely GPU SKU-ket és legalább 2 csomópontot használ számítási célként. További információkért tekintse meg a [pénzmosás-számítás dokumentációját](https://docs.microsoft.com/en-us/azure/machine-learning/service/how-to-set-up-training-targets#amlcompute) . A GPU-ket tartalmazó virtuálisgép-méretekkel kapcsolatos további információkért lásd a GPU-ra [optimalizált virtuális gépek méretét](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/sizes-gpu) .
+A DNN használatához javasoljuk, hogy használjon olyan pénzmosás-számítási fürtöt, amely GPU SKU-ket és legalább 2 csomópontot használ számítási célként. További információkért tekintse meg a [pénzmosás-számítás dokumentációját](how-to-set-up-training-targets.md#amlcompute) . A GPU-ket tartalmazó virtuálisgép-méretekkel kapcsolatos további információkért lásd a GPU-ra [optimalizált virtuális gépek méretét](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-gpu) .
 
 Ahhoz, hogy elegendő idő legyen a DNN képzés befejezésére, javasoljuk, hogy a kísérlet időtúllépését legalább néhány óráig állítsa be.
 

@@ -1,5 +1,5 @@
 ---
-title: Data Factory adatkezelés átjárója | Microsoft Docs
+title: Data Factory adatkezelés átjárója
 description: Állítson be egy adatátjárót a helyszíni és a felhő közötti adatáthelyezéshez. Az adatáthelyezéshez használja a Azure Data Factory adatkezelés átjáróját.
 services: data-factory
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 0e4cf8802f9f12774f03199b76b58cb494f1c439
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 41d8a5d3569d0b38ff569f9ccfa28a4b2af1d959
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73162730"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73682712"
 ---
 # <a name="data-management-gateway"></a>Adatkezelési átjáró
 > [!NOTE]
@@ -365,7 +365,7 @@ Az alábbi táblázat az **átjáró-csomópontok** listájában szereplő oszlo
 
 Figyelési tulajdonság | Leírás
 :------------------ | :----------
-Név | Az átjáróhoz társított logikai átjáró és csomópontok neve. A csomópont egy helyszíni Windows-gép, amelyen az átjáró telepítve van. További információ arról, hogyan lehet egynél több csomópontot (legfeljebb négy csomópontot) egyetlen logikai átjáróban megtekinteni: [adatkezelés átjáró – magas rendelkezésre állás és méretezhetőség](data-factory-data-management-gateway-high-availability-scalability.md).
+Name (Név) | Az átjáróhoz társított logikai átjáró és csomópontok neve. A csomópont egy helyszíni Windows-gép, amelyen az átjáró telepítve van. További információ arról, hogyan lehet egynél több csomópontot (legfeljebb négy csomópontot) egyetlen logikai átjáróban megtekinteni: [adatkezelés átjáró – magas rendelkezésre állás és méretezhetőség](data-factory-data-management-gateway-high-availability-scalability.md).
 Állapot | A logikai átjáró és az átjáró csomópontjainak állapota. Példa: online/offline/korlátozott/stb. További információ ezekről az állapotokról: [átjáró állapota](#gateway-status) szakasz.
 Verzió | Megjeleníti a logikai átjáró és az egyes átjáró-csomópontok verzióját. A logikai átjáró verziószáma a csoport csomópontjainak többsége alapján van meghatározva. Ha a logikai átjáró beállításában különböző verziójú csomópontok vannak, akkor csak a logikai átjáróval megegyező verziószámmal rendelkező csomópontok működnek. Mások korlátozott módban vannak, és manuálisan kell frissíteni (csak abban az esetben, ha az automatikus frissítés meghiúsul).
 Rendelkezésre álló memória | Rendelkezésre álló memória egy átjáró-csomóponton. Ez az érték a közel valós idejű pillanatkép.
@@ -479,7 +479,7 @@ Ha API-alapú megközelítést keres a hitelesítő adatok titkosításához, a 
 
 A hitelesítő adatoknak a Data Factory Editor használatával történő beállításának még egy megközelítése van. Ha SQL Server társított szolgáltatást hoz létre a szerkesztővel, és egyszerű szövegként adja meg a hitelesítő adatokat, a hitelesítő adatok titkosítva lesznek a Data Factory szolgáltatás tulajdonosa által használt tanúsítvánnyal. NEM használja azt a tanúsítványt, amelyet az átjáró a használatára konfigurált. Habár ez a megközelítés némileg gyorsabb lehet bizonyos esetekben, kevésbé biztonságos. Ezért javasoljuk, hogy ezt a megközelítést csak fejlesztési/tesztelési célokra kövesse.
 
-## <a name="powershell-cmdlets"></a>PowerShell-parancsok
+## <a name="powershell-cmdlets"></a>PowerShell-parancsmagok
 Ez a szakasz azt ismerteti, hogyan lehet átjárót létrehozni és regisztrálni Azure PowerShell-parancsmagok használatával.
 
 1. **Azure PowerShell** elindítása rendszergazdai módban.
@@ -543,5 +543,5 @@ Get-AzDataFactoryGateway -DataFactoryName jasoncopyusingstoredprocedure -Resourc
 Remove-AzDataFactoryGateway -Name JasonHDMG_byPSRemote -ResourceGroupName ADF_ResourceGroup -DataFactoryName jasoncopyusingstoredprocedure -Force
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * Lásd: az [adatáthelyezés a helyszíni és a Felhőbeli adattárak között](data-factory-move-data-between-onprem-and-cloud.md) . Az útmutatóban egy olyan folyamatot hoz létre, amely az átjárót használja az adatok helyszíni SQL Server-adatbázisból egy Azure-blobba való áthelyezéséhez.

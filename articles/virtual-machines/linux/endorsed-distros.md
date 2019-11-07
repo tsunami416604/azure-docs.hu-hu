@@ -12,42 +12,42 @@ ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.topic: article
-ms.date: 05/16/2019
+ms.date: 11/04/2019
 ms.author: szark
-ms.openlocfilehash: 4b254b508e5fac5721e579620e207c2a8612352d
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: c9537ec39e58d5703ed3bc1774520a12b25147b0
+ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70083401"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73615578"
 ---
 # <a name="endorsed-linux-distributions-on-azure"></a>Támogatott Linux-disztribúciók az Azure-ban
 A partnerek linuxos rendszerképeket biztosítanak az Azure piactéren. Számos Linux-Közösséggel dolgozunk, hogy még több ízeket adjanak hozzá a támogatott terjesztési listához. Addig is, amíg a piactéren nem érhető el a disztribúció, a [Linux operációs rendszert tartalmazó virtuális merevlemez létrehozása és feltöltése](https://docs.microsoft.com/azure/virtual-machines/linux/create-upload-generic)című rész útmutatását követve mindig saját Linux-t hozhat létre.
 
 ## <a name="supported-distributions-and-versions"></a>Támogatott disztribúciók és verziók
-A következő táblázat felsorolja az Azure-ban támogatott Linux-disztribúciókat és-verziókat. A Linux és a nyílt forráskódú technológiák Azure-beli támogatásával kapcsolatos részletesebb információkért tekintse meg a [Linux](https://support.microsoft.com/help/2941892/support-for-linux-and-open-source-technology-in-azure) -rendszerképek támogatását Microsoft Azureban.
+A következő táblázat felsorolja az Azure-ban támogatott Linux-disztribúciókat és-verziókat. A Linux és a nyílt forráskódú technológiák Azure-beli támogatásával kapcsolatos részletesebb információkért tekintse meg a [Linux-rendszerképek támogatását Microsoft Azureban](https://support.microsoft.com/help/2941892/support-for-linux-and-open-source-technology-in-azure) .
 
 A Hyper-V és az Azure-hoz készült Linux Integration Services (LIS) illesztőprogramok a Microsoft által közvetlenül a felsőbb rétegbeli linuxos kernelhez hozzájáruló kernel-modulok.  Egyes LIS-illesztőprogramok alapértelmezés szerint a terjesztés rendszermagba vannak építve. A Red Hat Enterprise (RHEL)/CentOS alapuló régebbi disztribúciók külön letöltésként érhetők el a [Linux Integration Services 4,2-es verziójában a Hyper-V és az Azure számára](https://www.microsoft.com/download/details.aspx?id=55106). Az LIS-illesztőprogramokkal kapcsolatos további információkért tekintse meg a [Linux kernelre vonatkozó követelményeket](create-upload-generic.md#linux-kernel-requirements) .
 
-Az Azure Linux-ügynök már előre telepítve van az Azure Marketplace-lemezképeken, és általában a terjesztési csomag adattárában érhető el. A forráskód megtalálható a githubon [](https://github.com/azure/walinuxagent).
+Az Azure Linux-ügynök már előre telepítve van az Azure Marketplace-lemezképeken, és általában a terjesztési csomag adattárában érhető el. A forráskód megtalálható a [githubon](https://github.com/azure/walinuxagent).
 
 
-| Disztribúció | Version | Illesztőprogramok | Ügynök |
+| Disztribúció | Verzió | Illesztőprogramok | Ügynök |
 | --- | --- | --- | --- |
-| CentOS |CentOS 6.3 +, 7.0 + |CentOS 6,3: [LIS Letöltés](https://www.microsoft.com/download/details.aspx?id=55106)<p>CentOS 6.4 +: A kernelben |Csomag: A [](http://olcentgbl.trafficmanager.net/openlogic/6/openlogic/x86_64/RPMS/) tárházban a "WALinuxAgent" alatt <br/>Forráskód: [GitHubon](https://github.com/Azure/WALinuxAgent) |
-| [CoreOS](https://coreos.com/docs/running-coreos/cloud-providers/azure/) |494.4.0+ |A kernelben |Forráskód: [GitHubon](https://github.com/coreos/coreos-overlay/tree/master/app-emulation/wa-linux-agent) |
-| Debian |Debian 7.9 +, 8.2 + |A kernelben |Csomag: A tárházban a "waagent" alatt <br/>Forráskód: [GitHubon](https://github.com/Azure/WALinuxAgent) |
-| Oracle Linux |6.4+, 7.0+ |A kernelben |Csomag: A tárházban a "WALinuxAgent" alatt <br/>Forráskód: [GitHubon](https://go.microsoft.com/fwlink/p/?LinkID=250998) |
-| Red Hat Enterprise Linux |RHEL 6.7 +, 7.1 +, 8.0 + |A kernelben |Csomag: A tárházban a "WALinuxAgent" alatt <br/>Forráskód: [GitHubon](https://github.com/Azure/WALinuxAgent) |
-| SUSE Linux Enterprise |SLES/SLES az SAP-hoz<br>11 SP4<br>12 SP1 +<br>15|A kernelben |Csomag:<p> 11 a [felhőben: eszközök](https://build.opensuse.org/project/show/Cloud:Tools) tárháza<br>a "nyilvános felhő" modulban a "Python-Azure-Agent" alatt található 12.<br/>Forráskód: [GitHubon](https://go.microsoft.com/fwlink/p/?LinkID=250998) |
-| openSUSE |openSUSE LEAP 42.2 + |A kernelben |Csomag: A [felhőben: eszközök](https://build.opensuse.org/project/show/Cloud:Tools) tárháza a "Python-Azure-Agent" alatt <br/>Forráskód: [GitHubon](https://github.com/Azure/WALinuxAgent) |
-| Ubuntu |Ubuntu 12.04 +  **<sup>1</sup>** |A kernelben |Csomag: A tárházban a "walinuxagent" alatt <br/>Forráskód: [GitHubon](https://github.com/Azure/WALinuxAgent) |
+| CentOS |CentOS 6.3 +, 7.0 +, 8.0 + |CentOS 6,3: [lis Letöltés](https://www.microsoft.com/download/details.aspx?id=55106)<p>CentOS 6.4 +: a kernelben |Csomag [: a tárházban a "](http://olcentgbl.trafficmanager.net/openlogic/6/openlogic/x86_64/RPMS/) WALinuxAgent" alatt <br/>Forráskód: [GitHub](https://github.com/Azure/WALinuxAgent) |
+| [CoreOS](https://coreos.com/docs/running-coreos/cloud-providers/azure/) |494.4.0 + |A kernelben |Forráskód: [GitHub](https://github.com/coreos/coreos-overlay/tree/master/app-emulation/wa-linux-agent) |
+| Debian |Debian 7.9 +, 8.2 +, 9, 10 |A kernelben |Csomag: a tárházban a "waagent" alatt <br/>Forráskód: [GitHub](https://github.com/Azure/WALinuxAgent) |
+| Oracle Linux |6.4 +, 7.0 + |A kernelben |Csomag: a tárházban a "WALinuxAgent" alatt <br/>Forráskód: [GitHub](https://go.microsoft.com/fwlink/p/?LinkID=250998) |
+| Red Hat Enterprise Linux |RHEL 6.7 +, 7.1 +, 8.0 + |A kernelben |Csomag: a tárházban a "WALinuxAgent" alatt <br/>Forráskód: [GitHub](https://github.com/Azure/WALinuxAgent) |
+| SUSE Linux Enterprise |SLES/SLES az SAP-hoz<br>11 SP4<br>12 SP1 +<br>15|A kernelben |Package:<p> 11 a [felhőben: eszközök](https://build.opensuse.org/project/show/Cloud:Tools) tárháza<br>a "nyilvános felhő" modulban a "Python-Azure-Agent" alatt található 12.<br/>Forráskód: [GitHub](https://go.microsoft.com/fwlink/p/?LinkID=250998) |
+| openSUSE |openSUSE LEAP 42.2 + |A kernelben |Csomag: a [felhőben: eszközök](https://build.opensuse.org/project/show/Cloud:Tools) tárháza a "Python-Azure-Agent" alatt <br/>Forráskód: [GitHub](https://github.com/Azure/WALinuxAgent) |
+| Ubuntu |Ubuntu 12.04 +  **<sup>1</sup>** |A kernelben |Csomag: a tárházban a "walinuxagent" alatt <br/>Forráskód: [GitHub](https://github.com/Azure/WALinuxAgent) |
 
-  - **<sup>1</sup>** az Ubuntu 12,04 és 14,04 kiterjesztett támogatásával kapcsolatos információk itt találhatók: [Ubuntu kiterjesztett biztonsági karbantartás](https://www.ubuntu.com/esm).
+  - **<sup>1</sup>** az Ubuntu 12,04 és 14,04 kiterjesztett támogatásával kapcsolatos információk itt találhatók: [Ubuntu Extended Security karbantartás](https://www.ubuntu.com/esm).
 
 
 ## <a name="image-update-cadence"></a>Rendszerkép frissítésének ritmusa
-Az Azure-nak szüksége van arra, hogy a támogatott Linux-disztribúciók közzétevői rendszeresen frissítse lemezképeit az Azure Marketplace-en a legújabb javításokkal és biztonsági javításokkal, negyedévente vagy gyorsabb ütemben. Az Azure Marketplace-en frissített lemezképek automatikusan elérhetők az ügyfelek számára a lemezkép SKU új verzióiként. További információ a Linux-rendszerképek megkereséséről: Linux rendszerű virtuálisgép [-lemezképek keresése az Azure piactéren](https://docs.microsoft.com/azure/virtual-machines/linux/cli-ps-findimage).
+Az Azure-nak szüksége van arra, hogy a támogatott Linux-disztribúciók közzétevői rendszeresen frissítse lemezképeit az Azure Marketplace-en a legújabb javításokkal és biztonsági javításokkal, negyedévente vagy gyorsabb ütemben. Az Azure Marketplace-en frissített lemezképek automatikusan elérhetők az ügyfelek számára a lemezkép SKU új verzióiként. További információ a Linux-rendszerképek megkereséséről: Linux rendszerű [virtuális gépek rendszerképeinek megkeresése az Azure piactéren](https://docs.microsoft.com/azure/virtual-machines/linux/cli-ps-findimage).
 
 ### <a name="additional-links"></a>További hivatkozások
  - [SUSE nyilvános Felhőbeli rendszerképek életciklusa](https://www.suse.com/c/suse-public-cloud-image-life-cycle/)
@@ -73,7 +73,7 @@ A CoreOS webhelyén:
 
 *A CoreOS a biztonság, a konzisztencia és a megbízhatóság érdekében készült. A csomagok yum vagy apt használatával történő telepítése helyett a CoreOS Linux-tárolókat használ a szolgáltatások kezeléséhez magasabb szintű absztrakciós szinten. Egyetlen szolgáltatás kódja és minden függősége egy tárolón belül van csomagolva, amely egy vagy több CoreOS-gépen futtatható.*
 
-### <a name="credativ"></a>credativ
+### <a name="credativ"></a>Credativ
 [https://www.credativ.co.uk/credativ-blog/debian-images-microsoft-azure](https://www.credativ.co.uk/credativ-blog/debian-images-microsoft-azure)
 
 A Credativ egy független tanácsadói és szolgáltatási cég, amely a professzionális megoldások fejlesztésére és megvalósítására specializálódott ingyenes szoftverek használatával. A vezető nyílt forráskódú szakemberek a Credativ nemzetközi elismeréssel rendelkeznek, és számos informatikai részleggel rendelkeznek, amelyek támogatják a támogatást. A Microsofttal együtt a Credativ jelenleg a megfelelő Debian-rendszerképeket készíti elő a Debian 8 (Jessie) és a Debian 7-es verziójában (zihálás). Mindkét rendszerkép kifejezetten az Azure-ban való futtatásra készült, és könnyen kezelhető a platformon keresztül. A Credativ az Azure-hoz készült Debian-rendszerképek hosszú távú karbantartását és frissítését is támogatja a nyílt forráskódú támogatási központjain keresztül.

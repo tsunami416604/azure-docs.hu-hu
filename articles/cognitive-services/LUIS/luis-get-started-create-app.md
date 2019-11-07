@@ -9,16 +9,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: quickstart
-ms.date: 10/23/2019
+ms.date: 11/04/2019
 ms.author: diberry
-ms.openlocfilehash: 4acf6e4df978ffee6e0f8320bafbb64994aa0639
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: HT
+ms.openlocfilehash: 22a37dbd0b76710a14183aec1795639614207d16
+ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73495287"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73613696"
 ---
 # <a name="quickstart-use-prebuilt-home-automation-app"></a>Rövid útmutató: Előre összeállított otthonautomatizálási alkalmazás használata
+
+[!INCLUDE [Uses preview portal](./includes/uses-portal-preview.md)]
 
 Ebben a rövid útmutatóban egy LUIS-alkalmazást hoz létre, amely az előre összeállított `HomeAutomation` tartományt használja a világítás és a berendezések be- és kikapcsolásához. Ez az előre összeállított tartomány szándékokat, entitásokat és kimondott szövegek példáit tartalmazza. Amikor végzett, egy felhőben futó LUIS-végponttal fog rendelkezni.
 
@@ -28,6 +30,8 @@ Ehhez a cikkhez egy ingyenes LUIS-fiókra van szüksége, amely a [https://www.l
 
 [!INCLUDE [Sign in to LUIS](./includes/sign-in-process.md)]
 
+[!INCLUDE [Select authoring resource](./includes/select-authoring-resource.md)]
+
 ## <a name="create-a-new-app"></a>Új alkalmazás létrehozása
 A **My Apps** (Saját alkalmazások) lapon hozhatja létre és kezelheti az alkalmazásokat. 
 
@@ -35,7 +39,7 @@ A **My Apps** (Saját alkalmazások) lapon hozhatja létre és kezelheti az alka
 
     ![A LUIS portál saját alkalmazások listájában válassza a + létrehozás elemet.](./media/create-app-in-portal.png)
 
-1. A párbeszédpanelen nevezze el az alkalmazást `Home Automation` majd válassza a **kész**lehetőséget. LUIS létrehozza az alkalmazást.
+1. A párbeszédpanelen nevezze el az alkalmazást `Home Automation` majd válassza a **kész**lehetőséget. LUIS létrehozza az alkalmazást. A leírás nem kötelező, és nem használható szerzői vagy előrejelzési műveletekhez. LUIS-alkalmazás létrehozásakor az előrejelzési erőforrás is opcionális. Ha az alkalmazást éles környezetben teszi közzé, egy előrejelzési erőforrást kell rendelnie, hogy az alkalmazás képes legyen sok kérést kezelni.  
 
     ![A párbeszédpanelen nevezze el az alkalmazás "Home Automation"](./media/create-new-app-details.png)
 
@@ -65,7 +69,7 @@ Válassza a **HomeAutomation.TurnOff** szándékot. Láthatja, hogy a szándék 
 
 ## <a name="train-the-luis-app"></a>A LUIS-alkalmazás betanítása
 
-[!INCLUDE [LUIS How to Train steps](../../../includes/cognitive-services-luis-tutorial-how-to-train.md)]
+[!INCLUDE [LUIS How to Train steps](includes/howto-train.md)]
 
 ## <a name="test-your-app"></a>Az alkalmazás tesztelése
 Miután betanította az alkalmazását, tesztelheti is. Válassza a **teszt**lehetőséget. Írjon be egy tesztet, például `Turn off the lights` az interaktív teszt ablaktáblába, majd nyomja le az ENTER billentyűt. 
@@ -114,7 +118,25 @@ Válassza ismét a **Test** (Tesztelés) gombot a tesztpanel összecsukásához.
             "topIntent": "HomeAutomation.TurnOff",
             "intents": {
                 "HomeAutomation.TurnOff": {
-                    "score": 0.967174649
+                    "score": 0.984315455
+                },
+                "HomeAutomation.QueryState": {
+                    "score": 0.009912962
+                },
+                "HomeAutomation.TurnDown": {
+                    "score": 0.00626645749
+                },
+                "HomeAutomation.TurnUp": {
+                    "score": 0.00572059769
+                },
+                "HomeAutomation.SetDevice": {
+                    "score": 0.00379381469
+                },
+                "HomeAutomation.TurnOn": {
+                    "score": 0.00366983772
+                },
+                "None": {
+                    "score": 0.000623856
                 }
             },
             "entities": {
@@ -138,7 +160,7 @@ Válassza ismét a **Test** (Tesztelés) gombot a tesztpanel összecsukásához.
                             "text": "living room",
                             "startIndex": 13,
                             "length": 11,
-                            "score": 0.9494325,
+                            "score": 0.907323956,
                             "modelTypeId": 1,
                             "modelType": "Entity Extractor",
                             "recognitionSources": [

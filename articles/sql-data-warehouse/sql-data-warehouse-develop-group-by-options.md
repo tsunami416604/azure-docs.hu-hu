@@ -1,5 +1,5 @@
 ---
-title: Csoportosítási lehetőségek használata a Azure SQL Data Warehouseban | Microsoft Docs
+title: Csoportosítási lehetőségek használata
 description: Tippek a csoportok megvalósítási lehetőségeinek végrehajtásához Azure SQL Data Warehouse a megoldások fejlesztéséhez.
 services: sql-data-warehouse
 author: XiaoyuMSFT
@@ -10,12 +10,13 @@ ms.subservice: query
 ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: 2f6614f32c31338c9cf4f00307c475db4e02f553
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.custom: seo-lt-2019
+ms.openlocfilehash: 8d5d0f28fa210a56460ced25323b96a68f245895
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68479637"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73685849"
 ---
 # <a name="group-by-options-in-sql-data-warehouse"></a>Csoportosítási lehetőségek a SQL Data Warehouseban
 Tippek a csoportok megvalósítási lehetőségeinek végrehajtásához Azure SQL Data Warehouse a megoldások fejlesztéséhez.
@@ -50,7 +51,7 @@ GROUP BY ROLLUP (
 A kumulatív használatával az előző példa a következő összesítéseket kéri:
 
 * Ország és régió
-* Country
+* Ország
 * Végösszeg
 
 Ha az ÖSSZESÍTÉSt cserélni szeretné, és ugyanazokat az eredményeket adja vissza, használhatja a UNION ALL utasítást, és explicit módon megadhatja a szükséges összesítéseket:

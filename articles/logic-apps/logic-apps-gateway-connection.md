@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: arthii, LADocs
 ms.topic: article
 ms.date: 10/18/2019
-ms.openlocfilehash: 6a01999eff6accf1b8d7f56729d9dce77fbedb0a
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: 49ed6eedf55a8a3c0faa2fa1ff60b9894af78285
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72988722"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73580857"
 ---
 # <a name="connect-to-on-premises-data-sources-from-azure-logic-apps"></a>Helyi adatforrásokhoz való kapcsolódás Azure Logic Apps
 
@@ -28,8 +28,8 @@ Ez a cikk bemutatja, hogyan hozhatja létre az Azure Gateway-erőforrást egy ko
 Az átjáró más szolgáltatásokkal való használatáról a következő cikkekben talál további információt:
 
 * [Microsoft Power BI helyszíni adatátjáró](https://powerbi.microsoft.com/documentation/powerbi-gateway-onprem/)
-* [Helyszíni adatátjáró Microsoft Flow](https://flow.microsoft.com/documentation/gateway-manage/)
-* [Helyszíni adatátjáró Microsoft PowerApps](https://powerapps.microsoft.com/tutorials/gateway-management/)
+* [A helyszíni adatátjáró automatizálása](https://flow.microsoft.com/documentation/gateway-manage/)
+* [Microsoft Power apps helyszíni adatátjáró](https://powerapps.microsoft.com/tutorials/gateway-management/)
 * [Helyszíni adatátjáró Azure Analysis Services](../analysis-services/analysis-services-gateway.md)
 
 <a name="supported-connections"></a>
@@ -140,7 +140,7 @@ Az átjáró-kapcsolatok beállításainak frissítéséhez szerkesztheti a kapc
 
 Az Azure-előfizetéshez társított összes API-kapcsolat megkeresése:
 
-* Az Azure fő menüjében lépjen a **minden szolgáltatás**  > **webes**  > **API-kapcsolatok**elemre.
+* Az Azure fő menüjében lépjen a **minden szolgáltatás** > **webes** > **API-kapcsolatok**elemre.
 * Vagy az Azure főmenüjében válassza az **összes erőforrás**lehetőséget. Állítsa a **típus** szűrőt **API-kapcsolatok**értékre.
 
 <a name="change-delete-gateway-resource"></a>
@@ -153,7 +153,7 @@ Egy másik átjáró-erőforrás létrehozásához csatolja az átjáró telepí
 
 1. Ha még nincs bejelölve, az átjáró erőforrás menüjében válassza **a helyszíni adatátjáró**lehetőséget. Az átjáró erőforrás eszköztárán válassza a **Törlés**lehetőséget.
 
-   Példa:
+   Például:
 
    ![Átjáró erőforrásának törlése az Azure-ban](./media/logic-apps-gateway-connection/delete-on-premises-data-gateway-resource.png)
 
@@ -172,7 +172,7 @@ Egy másik átjáró-erőforrás létrehozásához csatolja az átjáró telepí
 
 [!INCLUDE [existing-gateway-location-changed](../../includes/logic-apps-existing-gateway-location-changed.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [A logikai alkalmazások védelme](./logic-apps-securing-a-logic-app.md)
 * [Gyakori példák és forgatókönyvek logikai alkalmazásokhoz](./logic-apps-examples-and-scenarios.md)

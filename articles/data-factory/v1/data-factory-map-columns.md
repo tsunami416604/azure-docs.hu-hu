@@ -1,6 +1,6 @@
 ---
-title: Az Azure Data Factoryban adatkészletoszlopok leképezése |} A Microsoft Docs
-description: Ismerje meg, hogyan képezhet le forrásoszlopok céloszlopok.
+title: Adatkészlet oszlopainak megfeleltetése Azure Data Factory
+description: Ismerje meg, hogyan képezhető le a forrás oszlopai a cél oszlopokra.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -12,35 +12,35 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 1b009ac2ca42e9804b88989b55b2e73524732550
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 80ba7dc48da7cb5c43aae209c4e76c54948b8f88
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60238106"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73666790"
 ---
-# <a name="map-source-dataset-columns-to-destination-dataset-columns"></a>Adatkészlet céloszlopok forrás adatkészletoszlopok leképezése
+# <a name="map-source-dataset-columns-to-destination-dataset-columns"></a>Forrás adatkészlet oszlopainak leképezése a cél adatkészlet oszlopaira
 > [!NOTE]
 > Ez a cikk a Data Factory 1-es verziójára vonatkozik. 
 
-Adja meg, hogyan oszlopokban a "struktúrában megadott" forrás tábla térkép oszlopok a "struktúrában" fogadó tábla megadott oszlop-hozzárendelés használható. A **columnMapping** tulajdonság érhető el a **typeProperties** szakasz látható a másolási tevékenység.
+Az oszlop-hozzárendeléssel megadhatja, hogy a forrástábla "szerkezetében" milyen oszlopok legyenek megadva a fogadó tábla "Structure" oszlopában. A **columnMapping** tulajdonság a másolási tevékenység **typeProperties** szakaszában érhető el.
 
-Oszlop-hozzárendelés a következő eseteket támogatja:
+Az oszlop-hozzárendelés a következő forgatókönyveket támogatja:
 
-* A forrás adatkészlet-szerkezetekben minden oszlop összes oszlopot a fogadó adatkészlet-szerkezetekben vannak leképezve.
-* A forrás adatkészlet-szerkezetekben az oszlopok egy része lesz leképezve a fogadó adatkészlet-szerkezetekben összes oszlopot.
+* A forrás adatkészlet struktúrájában lévő összes oszlop a fogadó adatkészlet struktúrájában lévő összes oszlopra van leképezve.
+* A forrás-adatkészlet struktúrájában lévő oszlopok egy részhalmaza a fogadó adatkészlet struktúrájában lévő összes oszlopra van leképezve.
 
-A kivétel eredményező hiba feltételek a következők:
+A következő hibák a kivételt eredményezik:
 
-* Kevesebb oszlopot vagy több oszlop szerepel a "" fogadó tábla szerkezetének, mint a leképezésben megadott.
-* Kettős hozzárendelés.
-* SQL-lekérdezés eredménye nem rendelkezik olyan oszlopnevet, amely a leképezés van megadva.
+* Kevesebb oszlop vagy több oszlop szerepel a (z) "Structure" táblában a leképezésben megadottnél.
+* Ismétlődő leképezés.
+* Az SQL-lekérdezés eredménye nem rendelkezik a leképezésben megadott oszlopnevet.
 
 > [!NOTE]
-> A következő minták az Azure SQL és az Azure Blob, de alkalmazhatók minden adattárhoz, amely támogatja a téglalap alakú adatkészlet. Módosítsa az adatkészlet és a példákat, mutasson az adatok a megfelelő adatforrást a kapcsolódószolgáltatás-definíció.
+> A következő minták az Azure SQL és az Azure Blob esetében használhatók, de minden olyan adattárra alkalmazhatók, amely támogatja a téglalap alakú adatkészleteket. Az adatkészlet és a társított szolgáltatás definícióinak módosítása példákban, hogy a megfelelő adatforrásban lévő adatokat mutassanak.
 
-## <a name="sample-1--column-mapping-from-azure-sql-to-azure-blob"></a>Oszlop leképezése az Azure SQL az Azure-blobba 1 – minta
-Ebben a példában a bemeneti tábla struktúrája, és a egy Azure SQL database az SQL-táblájára mutat.
+## <a name="sample-1--column-mapping-from-azure-sql-to-azure-blob"></a>1\. példa – oszlop-hozzárendelés az Azure SQL-ből az Azure blobba
+Ebben a példában a bemeneti tábla egy szerkezettel rendelkezik, és egy Azure SQL Database-adatbázis egy SQL-táblájára mutat.
 
 ```json
 {
@@ -73,7 +73,7 @@ Ebben a példában a bemeneti tábla struktúrája, és a egy Azure SQL database
 }
 ```
 
-Ebben a példában a kimeneti tábla egy struktúrája, és a egy Azure blob Storage-blobba mutat.
+Ebben a példában a kimeneti tábla egy szerkezettel rendelkezik, amely egy Azure Blob Storage-beli blobra mutat.
 
 ```json
 {
@@ -106,7 +106,7 @@ Ebben a példában a kimeneti tábla egy struktúrája, és a egy Azure blob Sto
 }
 ```
 
-A következő JSON egy másolási tevékenységet a folyamat határozza meg. Az oszlopok hozzárendelve fogadó oszlopai forrásból (**leképezésekben**) használatával a **Translator** tulajdonság.
+A következő JSON a másolási tevékenységet definiálja egy folyamaton belül. A forrás oszlopai a fogadó (**columnMappings**) oszlopokra vannak leképezve a **Translator** tulajdonság használatával.
 
 ```json
 {
@@ -140,8 +140,8 @@ A következő JSON egy másolási tevékenységet a folyamat határozza meg. Az 
 
 ![Oszlop-hozzárendelési folyamat](./media/data-factory-map-columns/column-mapping-flow.png)
 
-## <a name="sample-2--column-mapping-with-sql-query-from-azure-sql-to-azure-blob"></a>Az Azure blob SQL-lekérdezést az Azure SQL-címtársítás oszlop 2 – minta
-Ebben a példában egy SQL-lekérdezés segítségével adatok kinyerése az Azure SQL helyett egyszerűen adja meg a táblázat neve és az oszlop neve "struktúra" szakaszban. 
+## <a name="sample-2--column-mapping-with-sql-query-from-azure-sql-to-azure-blob"></a>2\. minta – oszlop-hozzárendelés SQL-lekérdezéssel az Azure SQL-ből az Azure blobba
+Ebben a példában egy SQL-lekérdezést használunk az adatok Azure SQL-ből való kinyerésére ahelyett, hogy egyszerűen megadta a tábla nevét és az oszlopnevek nevét a "Structure" (struktúra) szakaszban. 
 
 ```json
 {
@@ -173,13 +173,13 @@ Ebben a példában egy SQL-lekérdezés segítségével adatok kinyerése az Azu
         }
 }
 ```
-A lekérdezési eredmények ebben az esetben először vannak leképezve "struktúrában" forrás megadott oszlopra. Ezután "struktúra" forrás oszlopai vannak leképezve fogadó "struktúra" oszlopai leképezésekben megadott szabályoknak.  Tegyük fel, hogy a lekérdezés visszaadja az 5 oszlopokhoz, és két új oszlop, mint a forrás "struktúrában" megadott.
+Ebben az esetben a lekérdezés eredményei először a forrás "struktúra" részében megadott oszlopokra vannak leképezve. Ezt követően a "Structure" forrás oszlopai a columnMappings-ben megadott szabályok szerint vannak leképezve a "Structure" oszlopba.  Tegyük fel, hogy a lekérdezés 5 oszlopot ad vissza, a forrás "struktúra" részében megadott két további oszlopot.
 
 **Oszlop-hozzárendelési folyamat**
 
-![Flow – 2. oszlopot leképezés](./media/data-factory-map-columns/column-mapping-flow-2.png)
+![Oszlop-hozzárendelési folyamat – 2](./media/data-factory-map-columns/column-mapping-flow-2.png)
 
 ## <a name="next-steps"></a>További lépések
-Olvassa el a másolási tevékenység használatával oktatóanyagot: 
+A másolási tevékenység használatával kapcsolatos oktatóanyagért tekintse meg a következő cikket: 
 
-- [Adatok másolása Blob Storage-ból SQL-adatbázis](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
+- [Adatok másolása Blob Storageból SQL Database](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)

@@ -9,16 +9,18 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 992e3f7aa53fdd006d29c06113cd30b07a406f3b
-ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
+ms.openlocfilehash: 5cb4602ac0431e09208953122f13b30124ab77f5
+ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70734337"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73614755"
 ---
 # <a name="monitor-scenario-in-durable-functions---weather-watcher-sample"></a>Figyelő forgatókönyv Durable Functions-Weather Watcher minta
 
 A figyelő minta egy munkafolyamatban egy rugalmas *ismétlődő* folyamatra utal – például az egyes feltételek teljesülése esetén történő lekérdezésre. Ez a cikk a figyelés megvalósítását [Durable functions](durable-functions-overview.md) használó mintát ismerteti.
+
+[!INCLUDE [v1-note](../../../includes/functions-durable-v1-tutorial-note.md)]
 
 [!INCLUDE [durable-functions-prerequisites](../../../includes/durable-functions-prerequisites.md)]
 
@@ -41,7 +43,7 @@ Ez a minta figyeli a hely aktuális időjárási feltételeit, és SMS-ben figye
 
 Ez a példa a Weather Underground API-t használja a hely aktuális időjárási feltételeinek vizsgálatához.
 
-Az első dolog, amire szüksége van egy időjárási Underground-fiók. Létrehozhat egyet ingyen a következő címen: [https://www.wunderground.com/signup](https://www.wunderground.com/signup). Ha már rendelkezik fiókkal, meg kell adnia egy API-kulcsot. Ehhez látogasson [https://www.wunderground.com/weather/api](https://www.wunderground.com/weather/api/?MR=1)el, és válassza a Key Settings (Alapbeállítások) lehetőséget. Az Stratus fejlesztői terve ingyenes, és elegendő a minta futtatásához.
+Az első dolog, amire szüksége van egy időjárási Underground-fiók. A [https://www.wunderground.com/signup](https://www.wunderground.com/signup)címen ingyenesen létrehozhat egyet. Ha már rendelkezik fiókkal, meg kell adnia egy API-kulcsot. Ehhez látogasson el [https://www.wunderground.com/weather/api](https://www.wunderground.com/weather/api/?MR=1), majd válassza a Key Settings (Alapbeállítások) lehetőséget. Az Stratus fejlesztői terve ingyenes, és elegendő a minta futtatásához.
 
 Ha már rendelkezik API-kulccsal, adja hozzá a következő **alkalmazás-beállítást** a Function alkalmazáshoz.
 
@@ -53,11 +55,11 @@ Ha már rendelkezik API-kulccsal, adja hozzá a következő **alkalmazás-beáll
 
 Ez a cikk a minta alkalmazás következő funkcióit ismerteti:
 
-* `E3_Monitor`: Egy Orchestrator függvény, amely `E3_GetIsClear` rendszeresen hív meg. `E3_SendGoodWeatherAlert` Ha`E3_GetIsClear` igaz értéket ad vissza, meghívja a függvényt.
-* `E3_GetIsClear`: Egy tevékenységi függvény, amely egy adott hely aktuális időjárási feltételeit ellenőrzi.
-* `E3_SendGoodWeatherAlert`: Egy tevékenység-függvény, amely SMS-üzenetet küld a Twilio-on keresztül.
+* `E3_Monitor`: egy Orchestrator-függvény, amely rendszeres időközönként meghívja a `E3_GetIsClear`. Ha a `E3_GetIsClear` igaz értéket ad vissza, meghívja a `E3_SendGoodWeatherAlert`.
+* `E3_GetIsClear`: egy tevékenység-függvény, amely egy adott hely aktuális időjárási feltételeit ellenőrzi.
+* `E3_SendGoodWeatherAlert`: egy tevékenység-függvény, amely SMS-üzenetet küld a Twilio-on keresztül.
 
-A következő szakaszokban ismertetjük a C# parancsfájlok és a JavaScriptek konfigurációját és kódját. A Visual Studio-fejlesztés kódja a cikk végén látható.
+A következő szakaszokban ismertetjük a C# parancsfájlok futtatásához és a javascripthez használt konfigurációt és kódokat. A Visual Studio-fejlesztés kódja a cikk végén látható.
 
 ## <a name="the-weather-monitoring-orchestration-visual-studio-code-and-azure-portal-sample-code"></a>Időjárás-figyelési előkészítés (Visual Studio Code és Azure Portal mintakód)
 
@@ -71,7 +73,7 @@ Itt látható a függvényt megvalósító kód:
 
 [!code-csharp[Main](~/samples-durable-functions/samples/csx/E3_Monitor/run.csx)]
 
-### <a name="javascript-functions-2x-only"></a>JavaScript (csak 2. x függvény)
+### <a name="javascript-functions-20-only"></a>JavaScript (csak functions 2,0)
 
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/E3_Monitor/index.js)]
 
@@ -82,7 +84,7 @@ Ez a Orchestrator-függvény a következő műveleteket hajtja végre:
 3. Meghívja a **E3_GetIsClear** annak megállapítására, hogy van-e egyértelmű égbolt a kért helyen.
 4. Ha az időjárás egyértelmű, a meghívja a **E3_SENDGOODWEATHERALERT** SMS-értesítés küldését a kért telefonszámra.
 5. Tartós időzítőt hoz létre, amely a következő lekérdezési időszakban folytatja a koordinálást. A minta egy nehezen kódolt értéket használ a rövidség kedvéért.
-6. A továbbra is fut,C#amíg a `currentUtcDateTime` [CurrentUtcDateTime](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_CurrentUtcDateTime) () vagy a (JavaScript) nem továbbítja a figyelő lejárati idejét, vagy SMS-riasztást küld.
+6. A továbbra is fut, amíg a `CurrentUtcDateTime` (.NET) vagy `currentUtcDateTime` (JavaScript) át nem adja a figyelő lejárati idejét, vagy SMS-riasztást küld.
 
 Több Orchestrator-példány is futhat egyszerre több **MonitorRequests**küldésével. Megadható a figyelni kívánt hely és a telefonszám, amely SMS-riasztást küld.
 
@@ -97,7 +99,7 @@ A JavaScript-minta szabványos JSON-objektumokat használ paraméterként.
 
 ## <a name="helper-activity-functions"></a>Segítő tevékenység functions
 
-Más mintákhoz hasonlóan a segítő tevékenység funkciói az `activityTrigger` trigger-kötést használó reguláris függvények. A **E3_GetIsClear** függvény az időjárási földalatti API használatával beolvassa az aktuális időjárási feltételeket, és meghatározza, hogy az ég tiszta-e. A *function. JSON* a következőképpen van definiálva:
+Más mintákhoz hasonlóan a segítő tevékenység funkciói a `activityTrigger` trigger kötést használó rendszeres függvények. A **E3_GetIsClear** függvény az időjárási földalatti API használatával beolvassa az aktuális időjárási feltételeket, és meghatározza, hogy az ég tiszta-e. A *function. JSON* a következőképpen van definiálva:
 
 [!code-json[Main](~/samples-durable-functions/samples/csx/E3_GetIsClear/function.json)]
 
@@ -107,7 +109,7 @@ Itt pedig a megvalósítás. Az adatátvitelhez használt POCOs-hez hasonlóan a
 
 [!code-csharp[Main](~/samples-durable-functions/samples/csx/E3_GetIsClear/run.csx)]
 
-### <a name="javascript-functions-2x-only"></a>JavaScript (csak 2. x függvény)
+### <a name="javascript-functions-20-only"></a>JavaScript (csak functions 2,0)
 
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/E3_GetIsClear/index.js)]
 
@@ -121,7 +123,7 @@ Itt látható az SMS-üzenetet küldő kód:
 
 [!code-csharp[Main](~/samples-durable-functions/samples/csx/E3_SendGoodWeatherAlert/run.csx)]
 
-### <a name="javascript-functions-2x-only"></a>JavaScript (csak 2. x függvény)
+### <a name="javascript-functions-20-only"></a>JavaScript (csak functions 2,0)
 
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/E3_SendGoodWeatherAlert/index.js)]
 
@@ -140,10 +142,10 @@ Content-Type: application/json
 ```
 HTTP/1.1 202 Accepted
 Content-Type: application/json; charset=utf-8
-Location: https://{host}/admin/extensions/DurableTaskExtension/instances/f6893f25acf64df2ab53a35c09d52635?taskHub=SampleHubVS&connection=Storage&code={SystemKey}
+Location: https://{host}/runtime/webhooks/durabletask/instances/f6893f25acf64df2ab53a35c09d52635?taskHub=SampleHubVS&connection=Storage&code={SystemKey}
 RetryAfter: 10
 
-{"id": "f6893f25acf64df2ab53a35c09d52635", "statusQueryGetUri": "https://{host}/admin/extensions/DurableTaskExtension/instances/f6893f25acf64df2ab53a35c09d52635?taskHub=SampleHubVS&connection=Storage&code={systemKey}", "sendEventPostUri": "https://{host}/admin/extensions/DurableTaskExtension/instances/f6893f25acf64df2ab53a35c09d52635/raiseEvent/{eventName}?taskHub=SampleHubVS&connection=Storage&code={systemKey}", "terminatePostUri": "https://{host}/admin/extensions/DurableTaskExtension/instances/f6893f25acf64df2ab53a35c09d52635/terminate?reason={text}&taskHub=SampleHubVS&connection=Storage&code={systemKey}"}
+{"id": "f6893f25acf64df2ab53a35c09d52635", "statusQueryGetUri": "https://{host}/runtime/webhooks/durabletask/instances/f6893f25acf64df2ab53a35c09d52635?taskHub=SampleHubVS&connection=Storage&code={systemKey}", "sendEventPostUri": "https://{host}/runtime/webhooks/durabletask/instances/f6893f25acf64df2ab53a35c09d52635/raiseEvent/{eventName}?taskHub=SampleHubVS&connection=Storage&code={systemKey}", "terminatePostUri": "https://{host}/runtime/webhooks/durabletask/instances/f6893f25acf64df2ab53a35c09d52635/terminate?reason={text}&taskHub=SampleHubVS&connection=Storage&code={systemKey}"}
 ```
 
 A **E3_Monitor** példány elindul, és lekérdezi a kért hely aktuális időjárási feltételeit. Ha az időjárás törölve van, akkor egy tevékenység függvényt hív meg, amely riasztást küld; Ellenkező esetben egy időzítőt állít be. Ha az időzítő lejár, a rendszer folytatja a koordinálást.
@@ -166,10 +168,10 @@ A munkafolyamatok tevékenysége a Azure Functions portálon megjelenő függvé
 2018-03-01T01:14:54.030 Function completed (Success, Id=561d0c78-ee6e-46cb-b6db-39ef639c9a2c, Duration=62ms)
 ```
 
-A rendszer az időtúllépés elérésekor vagy az égbolt észlelésének törlésével [leáll](durable-functions-instance-management.md) . Használhatja `TerminateAsync` a (.net) vagy `terminate` a (JavaScript) függvényt egy másik függvényen belül, vagy meghívhatja a fenti 202-válaszban hivatkozott **terminatePostUri** http post webhookot, a lemondási ok helyett `{text}` :
+A rendszer az időtúllépés elérésekor vagy az égbolt észlelésének törlésével [leáll](durable-functions-instance-management.md) . Egy másik függvényben `TerminateAsync` (.NET) vagy `terminate` (JavaScript) is használhat, vagy meghívhatja a fenti 202-válaszban hivatkozott **terminatePostUri** http post webhookot, és lecseréli az `{text}`t a lemondási ok miatt:
 
 ```
-POST https://{host}/admin/extensions/DurableTaskExtension/instances/f6893f25acf64df2ab53a35c09d52635/terminate?reason=Because&taskHub=SampleHubVS&connection=Storage&code={systemKey}
+POST https://{host}/runtime/webhooks/durabletask/instances/f6893f25acf64df2ab53a35c09d52635/terminate?reason=Because&taskHub=SampleHubVS&connection=Storage&code={systemKey}
 ```
 
 ## <a name="visual-studio-sample-code"></a>Visual Studio-mintakód

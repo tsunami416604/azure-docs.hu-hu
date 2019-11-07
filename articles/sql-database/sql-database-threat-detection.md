@@ -1,24 +1,25 @@
 ---
-title: Komplex veszélyforrások elleni védelem – Azure SQL Database | Microsoft Docs
+title: Komplex veszélyforrások elleni védelem konfigurálása – Azure SQL Database
 description: A komplex veszélyforrások elleni védelem rendellenes adatbázis-tevékenységeket észlel, amelyekkel az adatbázis potenciális biztonsági fenyegetéseket jelenthet egyetlen adatbázisban vagy rugalmas készletben.
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
+ms.custom: seo-dt-2019
 ms.topic: conceptual
 author: rmatchoro
 ms.author: ronmat
 ms.reviewer: vanto, carlrab
 ms.date: 08/05/2019
-ms.openlocfilehash: 755a3b391cb7b4909169b034cc8d89892ec2ed05
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: 8a6d40f37dec3488009a702d52d6437cd345717b
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68816548"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73686944"
 ---
 # <a name="azure-sql-database-advanced-threat-protection-for-single-or-pooled-databases"></a>Azure SQL Database komplex veszélyforrások elleni védelem egyetlen vagy készletezett adatbázisokhoz
 
-Az önálló és a készletezett adatbázisok komplex [veszélyforrások elleni védelme](sql-database-threat-detection-overview.md) olyan rendellenes tevékenységeket észlel, amelyek szokatlan és potenciálisan ártalmas kísérleteket jeleznek az adatbázisok eléréséhez vagy kiaknázásához. A komplex veszélyforrások elleni védelem képes azonosítani a **lehetséges SQL**-injektálásokat, **a szokatlan helyekről vagy**adatközpontokból való hozzáférést, **az ismeretlen elsődleges vagy potenciálisan ártalmas alkalmazások elérését**, valamint a **találgatásos SQL-hitelesítő adatok** megtekintését. További információ a komplex [veszélyforrások elleni védelem riasztásokról](sql-database-threat-detection-overview.md#advanced-threat-protection-alerts).
+Az önálló és a készletezett adatbázisok komplex [veszélyforrások elleni védelme](sql-database-threat-detection-overview.md) olyan rendellenes tevékenységeket észlel, amelyek szokatlan és potenciálisan ártalmas kísérleteket jeleznek az adatbázisok eléréséhez vagy kiaknázásához. A komplex veszélyforrások elleni védelem képes azonosítani a **lehetséges SQL-injektálásokat**, **a szokatlan helyekről vagy adatközpontokból való hozzáférést**, **az ismeretlen elsődleges vagy potenciálisan ártalmas alkalmazások elérését**, valamint a **találgatásos SQL-hitelesítő adatok** megtekintését. További információ a komplex [veszélyforrások elleni védelem riasztásokról](sql-database-threat-detection-overview.md#advanced-threat-protection-alerts).
 
 Értesítéseket kaphat az észlelt fenyegetésekről az [e-mail-értesítések](sql-database-threat-detection-overview.md#explore-anomalous-database-activities-upon-detection-of-a-suspicious-event) vagy a [Azure Portal](sql-database-threat-detection-overview.md#explore-advanced-threat-protection-alerts-for-your-database-in-the-azure-portal) használatával
 
@@ -26,7 +27,7 @@ A komplex [veszélyforrások elleni védelem](sql-database-threat-detection-over
 
 ## <a name="set-up-advanced-threat-protection-in-the-azure-portal"></a>Az összetett veszélyforrások elleni védelem beállítása a Azure Portal
 
-1. Indítsa el a Azure Portal [https://portal.azure.com](https://portal.azure.com)a következő helyen:.
+1. Indítsa el a Azure Portalt a [https://portal.azure.com](https://portal.azure.com).
 2. Navigáljon a védelemmel ellátni kívánt Azure SQL Database-kiszolgáló konfigurációs lapjára. A biztonsági beállítások területen válassza a **speciális adatbiztonság**lehetőséget.
 3. A **speciális adatbiztonság** beállítása lapon:
 
@@ -46,7 +47,7 @@ A parancsfájlokra példa: a [naplózás és az összetett veszélyforrások ell
 
 - További információ a komplex [veszélyforrások elleni védelemről](sql-database-threat-detection-overview.md).
 - További információ a [felügyelt példányok komplex veszélyforrások elleni védelméről](sql-database-managed-instance-threat-detection.md).  
-- További információ a [speciális](sql-database-advanced-data-security.md)adatbiztonságról.
+- További információ a [speciális adatbiztonságról](sql-database-advanced-data-security.md).
 - További információ a [naplózásról](sql-database-auditing.md)
 - További információ az [Azure Security Centerről](https://docs.microsoft.com/azure/security-center/security-center-intro)
 - A díjszabással kapcsolatos további információkért tekintse meg a [SQL Database díjszabási oldalát](https://azure.microsoft.com/pricing/details/sql-database/) .  

@@ -7,18 +7,20 @@ manager: jeconnoc
 keywords: ''
 ms.service: azure-functions
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 11/02/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 81c1279670e786ddaa03946869773121a859d3b7
-ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
+ms.openlocfilehash: e2f1042fe1210fe51ae79b1152e51191e7fb066a
+ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70735238"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73615030"
 ---
 # <a name="fan-outfan-in-scenario-in-durable-functions---cloud-backup-example"></a>Fan-out/ventilátor – forgatókönyv Durable Functions – Felhőbeli biztonsági mentési példa
 
 A *ventilátor ki-* és bekapcsolása a több függvény egyidejű végrehajtásával, majd az eredmények összesítésének végrehajtásával kapcsolatos mintázatra utal. Ez a cikk egy olyan mintát ismertet, amely [Durable Functionst](durable-functions-overview.md) használ egy ventilátor-vagy ventilátor-kijelentkezési forgatókönyv megvalósításához. A minta egy olyan tartós funkció, amely egy alkalmazás összes vagy néhány oldalának tartalmát az Azure Storage-ba készíti.
+
+[!INCLUDE [v1-note](../../../includes/functions-durable-v1-tutorial-note.md)]
 
 [!INCLUDE [durable-functions-prerequisites](../../../includes/durable-functions-prerequisites.md)]
 
@@ -26,9 +28,9 @@ A *ventilátor ki-* és bekapcsolása a több függvény egyidejű végrehajtás
 
 Ebben a példában a függvények a megadott könyvtár összes fájlját feltöltik rekurzív módon a blob Storage-ba. A feltöltött bájtok teljes számát is megszámolják.
 
-Egyetlen függvényt is írhat, amely mindenről gondoskodik. A futtatásának fő problémája a **méretezhetőség**. Egyetlen függvény végrehajtása csak egyetlen virtuális gépen futtatható, így az átviteli sebességet az adott virtuális gép átviteli sebessége fogja korlátozni. Egy másik probléma a **megbízhatóság**. Ha a futási idő félúton, vagy ha a teljes folyamat 5 percnél hosszabb időt vesz igénybe, akkor a biztonsági mentés részben befejezett állapotban is meghiúsulhat. Ezt követően újra kell indítani.
+Egyetlen függvényt is írhat, amely mindenről gondoskodik. A futtatásának fő problémája a **méretezhetőség**. Egyetlen függvény végrehajtása csak egyetlen virtuális gépen futtatható, így az átviteli sebességet az adott virtuális gép átviteli sebessége fogja korlátozni. Egy másik probléma a **megbízhatóság**. Ha a művelet félúton, vagy ha a teljes folyamat 5 percnél hosszabb időt vesz igénybe, akkor a biztonsági mentés részben befejezett állapotba kerülhet. Ezt követően újra kell indítani.
 
-A robusztusabb megközelítés két normál függvény írásához szükséges: az egyik a fájlok enumerálása és a fájlnevek hozzáadása egy várólistához, a másik pedig a várólistából, és a fájlok feltöltése a blob Storage-ba. Ez jobb az átviteli sebesség és a megbízhatóság szempontjából, de a várólista üzembe helyezéséhez és kezeléséhez szükséges. Ennél is fontosabb, hogy az **állami felügyelet** és a **koordináció** szempontjából jelentős bonyolultságot jelent, ha többet szeretne tenni, például a feltöltött bájtok teljes számát.
+A robusztusabb megközelítés két normál függvény írásához szükséges: az egyik a fájlok enumerálása és a fájlnevek hozzáadása egy várólistához, a másik pedig a várólistából, és a fájlok feltöltése a blob Storage-ba. Ez a megközelítés jobb az átviteli sebesség és a megbízhatóság szempontjából, de a várólista üzembe helyezéséhez és kezeléséhez szükséges. Ennél is fontosabb, hogy az **állami felügyelet** és a **koordináció** szempontjából jelentős bonyolultságot jelent, ha többet szeretne tenni, például a feltöltött bájtok teljes számát.
 
 A Durable Functions megközelítéssel az összes említett előnyt nagyon alacsony terheléssel ruházhatja fel.
 
@@ -54,28 +56,28 @@ Itt látható a Orchestrator függvényt megvalósító kód:
 
 [!code-csharp[Main](~/samples-durable-functions/samples/csx/E2_BackupSiteContent/run.csx)]
 
-### <a name="javascript-functions-2x-only"></a>JavaScript (csak 2. x függvény)
+### <a name="javascript-functions-20-only"></a>JavaScript (csak functions 2,0)
 
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/E2_BackupSiteContent/index.js)]
 
 Ez a Orchestrator-függvény lényegében a következő műveleteket végzi el:
 
-1. Bemeneti paraméterként egy `rootDirectory` értéket vesz fel.
-2. Meghív egy függvényt a fájlok rekurzív listájának beolvasásához `rootDirectory`a alatt.
+1. Bemeneti paraméterként `rootDirectory` értéket vesz fel.
+2. Meghív egy függvényt a fájlok rekurzív listájának beolvasásához a `rootDirectory`alatt.
 3. Több párhuzamos függvényt hív meg az egyes fájlok Azure Blob Storageba való feltöltéséhez.
 4. Megvárja, amíg az összes feltöltés befejeződik.
 5. Az Azure Blob Storageba feltöltött összes bájt összegét adja vissza.
 
-Figyelje meg `await Task.WhenAll(tasks);` aC#() `yield context.df.Task.all(tasks);` és a (JavaScript) sorokat. A `E2_CopyFileToBlob` függvény minden egyes hívása *nem* várt. Ez szándékos, hogy lehetővé tegye, hogy párhuzamosan fussanak. Ha a feladatok `Task.WhenAll` tömbjét (C#) vagy `context.df.Task.all` (JavaScript) adja át, egy olyan feladatot kapunk vissza, amely nem fejeződött be, *amíg az összes másolási művelet*be nem fejeződik. Ha már ismeri a (tpl) feladatot a .net-ben vagy [`Promise.all`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/all) a JavaScriptben, akkor ez nem új Önnek. A különbség az, hogy ezek a feladatok egyszerre több virtuális gépen is futhatnak, és a Durable Functions bővítmény biztosítja, hogy a végpontok közötti végrehajtás rugalmasan dolgozza fel az újrahasznosítás folyamatát.
+Figyelje meg a `await Task.WhenAll(tasks);`C#() és a `yield context.df.Task.all(tasks);` (JavaScript) sorokat. A `E2_CopyFileToBlob` függvény összes egyedi hívása *nem* várt, ami lehetővé teszi, hogy párhuzamosan fussanak. Ha a feladatok tömbjét `Task.WhenAll` (C#) vagy `context.df.Task.all` (JavaScript) értékre adja át, egy olyan feladatot kapunk vissza, amely nem fejeződött be, *amíg az összes másolási művelet*be nem fejeződik. Ha ismeri a .NET-ben vagy a [`Promise.all`ban](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/all) a JavaScriptben a feladat Parallel Library-t (tpl), akkor ez nem új az Ön számára. A különbség az, hogy ezek a feladatok egyszerre több virtuális gépen is futhatnak, és a Durable Functions bővítmény biztosítja, hogy a végpontok közötti végrehajtás rugalmasan dolgozza fel az újrahasznosítás folyamatát.
 
 > [!NOTE]
-> Habár a feladatok fogalmi hasonlóságot mutatnak a JavaScript-ígéretekhez `context.df.Task.all` , `context.df.Task.any` a Orchestrator `Promise.all` függvényeknek a `Promise.race` és a helyett a feladatok párhuzamos kell használniuk.
+> Habár a feladatok fogalmi hasonlóságot mutatnak a JavaScript-ígéretekhez, a Orchestrator függvények a `context.df.Task.all` és a `context.df.Task.any` helyett a `Promise.all` és a `Promise.race`t használják a feladatok párhuzamos kezeléséhez.
 
-A várttól ( `Task.WhenAll` vagy abból származó `context.df.Task.all`hozamtól) való várakozás után tudjuk, hogy minden függvény hívása befejeződött, és visszaadott értékeket. Minden hívás, `E2_CopyFileToBlob` amely a feltöltött bájtok számát adja vissza, így a teljes bájtok számának kiszámítása az összes visszaadott érték együttes hozzáadására szolgál.
+A `Task.WhenAll`tól való várakozást követően (vagy a `context.df.Task.all`ból való betöltés után) tudjuk, hogy az összes függvény hívása befejeződött, és visszaadott értékeket vissza hozzánk. A `E2_CopyFileToBlob` minden hívása a feltöltött bájtok számát adja vissza, így a teljes bájtok számának kiszámítása az összes visszaadott érték együttes hozzáadására szolgál.
 
 ## <a name="helper-activity-functions"></a>Segítő tevékenység functions
 
-A segítő tevékenység más mintákhoz hasonlóan csak olyan rendszeres függvények, amelyek az `activityTrigger` trigger kötését használják. A *function. JSON* fájl `E2_GetFileList` például a következőhöz hasonlóan néz ki:
+A segítő tevékenység más mintákhoz hasonlóan csak olyan rendszeres függvények, amelyek a `activityTrigger` trigger kötést használják. A `E2_GetFileList` a *function. JSON* fájl például a következőhöz hasonlóan néz ki:
 
 [!code-json[Main](~/samples-durable-functions/samples/csx/E2_GetFileList/function.json)]
 
@@ -85,35 +87,35 @@ A segítő tevékenység más mintákhoz hasonlóan csak olyan rendszeres függv
 
 [!code-csharp[Main](~/samples-durable-functions/samples/csx/E2_GetFileList/run.csx)]
 
-### <a name="javascript-functions-2x-only"></a>JavaScript (csak 2. x függvény)
+### <a name="javascript-functions-20-only"></a>JavaScript (csak functions 2,0)
 
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/E2_GetFileList/index.js)]
 
-A JavaScript-implementációja `E2_GetFileList` a `readdirp` modul használatával rekurzív módon olvassa be a címtár-struktúrát.
+A `E2_GetFileList` JavaScript-implementációja a `readdirp` modul használatával rekurzív módon olvassa be a címtár-struktúrát.
 
 > [!NOTE]
 > Lehet, hogy kíváncsi, miért nem tudta közvetlenül a kódot a Orchestrator függvénybe helyezni. Előfordulhat, hogy ez a Orchestrator functions egyik alapvető szabálya, ami azt eredményezi, hogy soha nem végeznek I/O-t, beleértve a helyi fájlrendszer elérését.
 
-A *function. JSON* fájl `E2_CopyFileToBlob` hasonlóan egyszerű:
+A `E2_CopyFileToBlob` *function. JSON* fájlja hasonlóan egyszerű:
 
 [!code-json[Main](~/samples-durable-functions/samples/csx/E2_CopyFileToBlob/function.json)]
 
-A C# megvalósítás is elég egyszerű. Az Azure functions-kötések (azaz a `Binder` paraméter használata) speciális funkcióinak használata történik, de nem kell aggódnia ezen útmutató céljára.
+A C# megvalósítás is egyszerű. A Azure Functions kötések (azaz a `Binder` paraméter használata) speciális funkcióinak használata történik, de nem kell aggódnia a jelen útmutatóban szereplő adatokkal kapcsolatban.
 
 ### <a name="c"></a>C#
 
 [!code-csharp[Main](~/samples-durable-functions/samples/csx/E2_CopyFileToBlob/run.csx)]
 
-### <a name="javascript-functions-2x-only"></a>JavaScript (csak 2. x függvény)
+### <a name="javascript-functions-20-only"></a>JavaScript (csak functions 2,0)
 
-A JavaScript-implementáció nem fér hozzá a `Binder` Azure functions funkcióhoz, így a [csomóponthoz tartozó Azure Storage SDK](https://github.com/Azure/azure-storage-node) -val rendelkezik.
+A JavaScript-implementáció nem fér hozzá a Azure Functions `Binder` szolgáltatásához, ezért a [csomóponthoz tartozó Azure Storage SDK](https://github.com/Azure/azure-storage-node) -t veszi igénybe.
 
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/E2_CopyFileToBlob/index.js)]
 
 A megvalósítás betölti a fájlt a lemezről, és aszinkron módon továbbítja a tartalmat egy azonos nevű blobba a "Backups" tárolóban. A visszaadott érték a tárterületre másolt bájtok száma, amelyet a Orchestrator függvény használ az összesített összeg kiszámításához.
 
 > [!NOTE]
-> Ez egy tökéletes példa arra, hogy az I/O-műveletek `activityTrigger` egy függvénybe legyenek áthelyezve. A munka nem csupán a különböző virtuális gépek között terjeszthető, de a folyamat ellenőrzőpontjának előnyeit is kihasználhatja. Ha a gazdagép folyamata valamilyen okból leáll, tudja, hogy mely feltöltések lettek végrehajtva.
+> Ez egy tökéletes példa arra, hogy az I/O-műveletek egy `activityTrigger` függvénybe legyenek áthelyezve. A munka nem csupán a különböző virtuális gépek között terjeszthető, de a folyamat ellenőrzőpontjának előnyeit is kihasználhatja. Ha a gazdagép folyamata valamilyen okból leáll, tudja, hogy mely feltöltések lettek végrehajtva.
 
 ## <a name="run-the-sample"></a>Minta futtatása
 
@@ -128,32 +130,32 @@ Content-Length: 20
 ```
 
 > [!NOTE]
-> A `HttpStart` meghívó függvény csak JSON-formátumú tartalommal működik. Emiatt a `Content-Type: application/json` fejléc megadása kötelező, a könyvtár elérési útja pedig JSON-karakterláncként van kódolva. Emellett a http-kódrészlet feltételezi, hogy van egy bejegyzés `host.json` a fájlban, amely eltávolítja `api/` az alapértelmezett előtagot a http-trigger összes funkciójának URL-címéről. A konfigurációhoz `host.json` tartozó jelölést a mintákban található fájlban találja.
+> A csak a JSON-formátumú tartalommal rendelkező `HttpStart` függvény. Emiatt a `Content-Type: application/json` fejléc szükséges, és a könyvtár elérési útja JSON-karakterláncként van kódolva. Emellett a HTTP-kódrészlet feltételezi, hogy van egy bejegyzés a `host.json` fájlban, amely eltávolítja az alapértelmezett `api/` előtagot az összes HTTP-trigger függvény URL-címéből. A konfigurációhoz tartozó jelölést a minták `host.json` fájljában találja.
 
-Ez a HTTP-kérelem `E2_BackupSiteContent` elindítja a Orchestrator, és `D:\home\LogFiles` paraméterként továbbítja a karakterláncot. A válasz egy hivatkozást tartalmaz a biztonsági mentési művelet állapotának lekéréséhez:
+Ez a HTTP-kérelem elindítja a `E2_BackupSiteContent` Orchestrator, és paraméterként továbbítja a karakterláncot `D:\home\LogFiles`. A válasz egy hivatkozást tartalmaz a biztonsági mentési művelet állapotának lekéréséhez:
 
 ```
 HTTP/1.1 202 Accepted
 Content-Length: 719
 Content-Type: application/json; charset=utf-8
-Location: http://{host}/admin/extensions/DurableTaskExtension/instances/b4e9bdcc435d460f8dc008115ff0a8a9?taskHub=DurableFunctionsHub&connection=Storage&code={systemKey}
+Location: http://{host}/runtime/webhooks/durabletask/instances/b4e9bdcc435d460f8dc008115ff0a8a9?taskHub=DurableFunctionsHub&connection=Storage&code={systemKey}
 
 (...trimmed...)
 ```
 
-A függvény alkalmazásban található naplófájlok számától függően a művelet végrehajtása több percet is igénybe vehet. A legutóbbi állapotot a korábbi http 202-válasz `Location` fejlécében lévő URL-cím lekérdezésével érheti el.
+A függvény alkalmazásban található naplófájlok számától függően a művelet végrehajtása több percet is igénybe vehet. A legutóbbi állapotot a korábbi HTTP 202-válasz `Location` fejlécében található URL-cím lekérdezésével szerezheti be.
 
 ```
-GET http://{host}/admin/extensions/DurableTaskExtension/instances/b4e9bdcc435d460f8dc008115ff0a8a9?taskHub=DurableFunctionsHub&connection=Storage&code={systemKey}
+GET http://{host}/runtime/webhooks/durabletask/instances/b4e9bdcc435d460f8dc008115ff0a8a9?taskHub=DurableFunctionsHub&connection=Storage&code={systemKey}
 ```
 
 ```
 HTTP/1.1 202 Accepted
 Content-Length: 148
 Content-Type: application/json; charset=utf-8
-Location: http://{host}/admin/extensions/DurableTaskExtension/instances/b4e9bdcc435d460f8dc008115ff0a8a9?taskHub=DurableFunctionsHub&connection=Storage&code={systemKey}
+Location: http://{host}/runtime/webhooks/durabletask/instances/b4e9bdcc435d460f8dc008115ff0a8a9?taskHub=DurableFunctionsHub&connection=Storage&code={systemKey}
 
-{"runtimeStatus":"Running","input":"D:\\home\\LogFiles","output":null,"createdTime":"2017-06-29T18:50:55Z","lastUpdatedTime":"2017-06-29T18:51:16Z"}
+{"runtimeStatus":"Running","input":"D:\\home\\LogFiles","output":null,"createdTime":"2019-06-29T18:50:55Z","lastUpdatedTime":"2019-06-29T18:51:16Z"}
 ```
 
 Ebben az esetben a függvény még fut. Megtekintheti a Orchestrator-állapotba mentett bemenetet és az utolsó frissítés időpontját. Továbbra is használhatja a `Location` fejléc értékeit a lekérdezés befejezéséhez. Ha az állapot "befejezett", a következőhöz hasonló HTTP-válaszüzenet jelenik meg:
@@ -163,17 +165,17 @@ HTTP/1.1 200 OK
 Content-Length: 152
 Content-Type: application/json; charset=utf-8
 
-{"runtimeStatus":"Completed","input":"D:\\home\\LogFiles","output":452071,"createdTime":"2017-06-29T18:50:55Z","lastUpdatedTime":"2017-06-29T18:51:26Z"}
+{"runtimeStatus":"Completed","input":"D:\\home\\LogFiles","output":452071,"createdTime":"2019-06-29T18:50:55Z","lastUpdatedTime":"2019-06-29T18:51:26Z"}
 ```
 
-Most láthatja, hogy a folyamat elkészült, és körülbelül mennyi időt vett igénybe. Megtekintheti a `output` mező értékét is, amely azt jelzi, hogy a rendszer körülbelül 450 kb-ot töltött fel a naplókban.
+Most láthatja, hogy a folyamat elkészült, és körülbelül mennyi időt vett igénybe. A `output` mező értékét is megtekintheti, ami azt jelzi, hogy a naplók körülbelül 450 KB-át lettek feltöltve.
 
 ## <a name="visual-studio-sample-code"></a>Visual Studio-mintakód
 
 Íme egy Visual Studio-projekt egyetlen C# fájlja:
 
 > [!NOTE]
-> Az alábbi mintakód futtatásához telepítenie kell a `Microsoft.Azure.WebJobs.Extensions.Storage` Nuget csomagot.
+> Az alábbi mintakód futtatásához telepítenie kell a `Microsoft.Azure.WebJobs.Extensions.Storage` NuGet csomagot.
 
 [!code-csharp[Main](~/samples-durable-functions/samples/precompiled/BackupSiteContent.cs)]
 

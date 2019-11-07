@@ -1,5 +1,5 @@
 ---
-title: VNet-végpontok és-szabályok az önálló és a készletezett adatbázisokhoz az Azure SQL-ben | Microsoft Docs
+title: 'VNet-végpontok és-szabályok az önálló és a készletezett adatbázisokhoz az Azure SQL-ben '
 description: Alhálózat megjelölése Virtual Network szolgáltatási végpontként. Ezt követően a végpontot virtuális hálózati szabályként adja meg a Azure SQL Database hozzáférés-vezérlési listához. Ezután SQL Database a kommunikációt az alhálózaton lévő összes virtuális gépről és más csomópontról.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto, genemi
 ms.date: 08/27/2019
-ms.openlocfilehash: 5506f95d532f69286bf29ec8916485bd63ce94da
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: e1f8ab6725c58d9e1f15f88e6d2465ab88df79e2
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71828826"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73686919"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-database-servers"></a>Virtuális hálózati szolgáltatási végpontok és az adatbázis-kiszolgálók szabályainak használata
 
@@ -53,8 +53,8 @@ Minden virtuális hálózati szabály a teljes Azure SQL Database-kiszolgálóra
 
 A biztonsági szerepkörök elkülönítése Virtual Network szolgáltatási végpontok felügyelete alatt áll. A következő szerepkörök mindegyike esetében beavatkozásra van szükség:
 
-- **Hálózati rendszergazda:** &nbsp;Kapcsolja be a végpontot.
-- **Adatbázis-rendszergazda:** &nbsp;Frissítse a hozzáférés-vezérlési listát (ACL), hogy hozzáadja a megadott alhálózatot a SQL Database-kiszolgálóhoz.
+- **Hálózati rendszergazda:** &nbsp; kapcsolja be a végpontot.
+- **Adatbázis-rendszergazda:** &nbsp; a hozzáférés-vezérlési lista (ACL) frissítésével adja hozzá a megadott alhálózatot a SQL Database-kiszolgálóhoz.
 
 *RBAC alternatíva:*
 
@@ -89,7 +89,7 @@ Azure SQL Database esetében a virtuális hálózati szabályok funkció a köve
 
 Ha Azure SQL Database szolgáltatási végpontokat használ, tekintse át a következő szempontokat:
 
-- **Azure SQL Database nyilvános IP-címekre való kimenő forgalom kötelező**: A kapcsolat engedélyezéséhez meg kell nyitni a hálózati biztonsági csoportokat (NSG) Azure SQL Database IP-címekre. Ezt a Azure SQL Database NSG- [szolgáltatásának címkéi](../virtual-network/security-overview.md#service-tags) segítségével teheti meg.
+- **Azure SQL Database nyilvános IP-címekre való kimenő forgalom szükséges**: hálózati biztonsági csoportokat (NSG) kell megnyitni ahhoz, hogy a kapcsolat lehetővé váljon a Azure SQL Database IP-címek számára. Ezt a Azure SQL Database NSG- [szolgáltatásának címkéi](../virtual-network/security-overview.md#service-tags) segítségével teheti meg.
 
 ### <a name="expressroute"></a>ExpressRoute
 
@@ -191,19 +191,19 @@ A 40914-es kapcsolati hiba a Azure Portal tűzfal ablaktábláján megadott *vir
 
 *Üzenet szövege:* Nem nyitható meg a bejelentkezés által kért " *[Server-Name]* " kiszolgáló. Az ügyfél nem jogosult a kiszolgálóhoz való hozzáférésre.
 
-*Hiba leírása:* Az ügyfél olyan alhálózatban található, amely virtuális hálózati kiszolgáló-végpontokkal rendelkezik. A Azure SQL Database-kiszolgálónak azonban nincs olyan virtuális hálózati szabálya, amely engedélyezi az alhálózatnak a SQL Databaseval való kommunikációt.
+*Hiba leírása:* Az ügyfél olyan alhálózatban található, amely virtuális hálózati kiszolgáló-végpontokkal rendelkezik. De az Azure SQL-adatbáziskiszolgáló nem rendelkezik olyan virtuális hálózati szabállyal, amely jogosultságot ad az alhálózatnak az SQL-adatbázissal való kommunikációra.
 
 *Hiba feloldása:* A Azure Portal tűzfal paneljén a virtuális hálózati szabályok vezérlőelem használatával [adjon hozzá egy virtuális hálózati szabályt](#anchor-how-to-by-using-firewall-portal-59j) az alhálózathoz.
 
 ### <a name="error-40615"></a>40615-es hiba
 
-*Üzenet szövege:* Nem nyitható meg a{0}bejelentkezés által kért "" kiszolgáló. A (z) "{1}" IP-címmel rendelkező ügyfél nem jogosult a kiszolgálóhoz való hozzáférésre.
+*Üzenet szövege:* Nem nyitható meg a bejelentkezés által kért "{0}" kiszolgáló. A (z) "{1}" IP-címmel rendelkező ügyfél nem jogosult a kiszolgálóhoz való hozzáférésre.
 
 *Hiba leírása:* Az ügyfél olyan IP-címről próbál csatlakozni, amely nem rendelkezik jogosultsággal a Azure SQL Database-kiszolgálóhoz való csatlakozáshoz. A kiszolgáló tűzfalán nincs olyan IP-cím-szabály, amely engedélyezné, hogy az adott IP-címről ügyfelek kommunikáljanak az SQL Database-zel.
 
-*Hiba feloldása:* Adja meg az ügyfél IP-címét IP-szabályként. Ezt a Azure Portal tűzfal paneljének használatával teheti meg.
+*Hiba feloldása:* Adja meg az ügyfél IP-címét IP-szabályként. Ezt az Azure Portal Tűzfal panelén végezheti el.
 
-[Itt][sql-database-develop-error-messages-419g]találja a több SQL Database hibaüzenetek listáját.
+[Itt][sql-database-develop-error-messages-419g] találja az SQL-adatbázis számos hibaüzenetének listáját.
 
 <a name="anchor-how-to-by-using-firewall-portal-59j" />
 
@@ -218,13 +218,13 @@ Ez a szakasz azt szemlélteti, hogyan használható a [Azure Portal][http-azure-
 
 ## <a name="powershell-alternative"></a>PowerShell-alternatíva
 
-A PowerShell-parancsfájlok létrehozhatnak virtuális hálózati szabályokat is. The crucial cmdlet **New-AzSqlServerVirtualNetworkRule**. Ha érdeklik, tekintse meg [a PowerShellt, és hozzon létre egy Virtual Network szolgáltatási végpontot és szabályt a Azure SQL Databasehoz][sql-db-vnet-service-endpoint-rule-powershell-md-52d].
+A PowerShell-parancsfájlok létrehozhatnak virtuális hálózati szabályokat is. A **New-AzSqlServerVirtualNetworkRule**kritikus parancsmag. Ha érdeklik, tekintse meg [a PowerShellt, és hozzon létre egy Virtual Network szolgáltatási végpontot és szabályt a Azure SQL Databasehoz][sql-db-vnet-service-endpoint-rule-powershell-md-52d].
 
 ## <a name="rest-api-alternative"></a>REST API alternatív megoldás
 
 Belsőleg a PowerShell-parancsmagok az SQL VNet műveleteihez REST API-kat hívnak. A REST API-kat közvetlenül is meghívhatja.
 
-- [Virtual Network szabályok: Operations][rest-api-virtual-network-rules-operations-862r]
+- [Virtual Network szabályok: műveletek][rest-api-virtual-network-rules-operations-862r]
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -237,9 +237,9 @@ Már rendelkeznie kell egy olyan alhálózattal, amely az adott Virtual Network 
 
 ## <a name="azure-portal-steps"></a>Azure Portal lépések
 
-1. Jelentkezzen be az [Azure Portalra][http-azure-portal-link-ref-477t].
+1. Jelentkezzen be az [Azure portálra][http-azure-portal-link-ref-477t].
 
-2. Ezután navigáljon a portálon az **SQL Server** &gt; **-tűzfal/virtuális hálózatok**területére.
+2. Ezután navigáljon a portálon az **SQL-kiszolgálók** &gt; **tűzfal/virtuális hálózatok**elemre.
 
 3. Állítsa be az **Azure-szolgáltatások hozzáférés engedélyezése** a kikapcsoláshoz lehetőséget.
 
@@ -254,7 +254,7 @@ Már rendelkeznie kell egy olyan alhálózattal, amely az adott Virtual Network 
 
     > [!TIP]
     > Meg kell adnia az alhálózat helyes **címének előtagját** . Az értéket a portálon találja.
-    > Navigáljon az összes **virtuális hálózat** **típusú** &gt; **erőforráshoz** &gt; . A szűrő megjeleníti a virtuális hálózatokat. Kattintson a virtuális hálózatra, majd az **alhálózatok**elemre. A **címtartomány** oszlopban a szükséges előtag szerepel.
+    > Navigáljon **minden erőforráshoz** **&gt;** &gt; **virtuális hálózatokhoz**. A szűrő megjeleníti a virtuális hálózatokat. Kattintson a virtuális hálózatra, majd az **alhálózatok**elemre. A **címtartomány** oszlopban a szükséges előtag szerepel.
 
     ![Adja meg a mezőket az új szabályhoz.][image-portal-firewall-create-update-vnet-rule-20-png]
 
@@ -266,10 +266,10 @@ Már rendelkeznie kell egy olyan alhálózattal, amely az adott Virtual Network 
 
 > [!NOTE]
 > A következő állapotok vagy állapotok érvényesek a szabályokra:
-> - **Készen** Azt jelzi, hogy az elindított művelet sikeresen befejeződött.
-> - **Sikertelen** Azt jelzi, hogy az Ön által kezdeményezett művelet meghiúsult.
-> - **Törölve** Csak a törlési műveletre vonatkozik, és azt jelzi, hogy a szabály törölve lett, és már nem érvényes.
-> - **Folyamatban** Azt jelzi, hogy a művelet folyamatban van. A régi szabály akkor érvényes, ha a művelet ebben az állapotban van.
+> - **Kész:** Azt jelzi, hogy az elindított művelet sikeresen befejeződött.
+> - **Sikertelen:** Azt jelzi, hogy az Ön által kezdeményezett művelet meghiúsult.
+> - **Törölve:** Csak a törlési műveletre vonatkozik, és azt jelzi, hogy a szabály törölve lett, és már nem érvényes.
+> - **Inprogress:** Azt jelzi, hogy a művelet folyamatban van. A régi szabály akkor érvényes, ha a művelet ebben az állapotban van.
 
 <a name="anchor-how-to-links-60h" />
 
@@ -283,7 +283,7 @@ A Azure SQL Database virtuális hálózati szabály funkciója a 2017 szeptember
 ## <a name="next-steps"></a>További lépések
 
 - [A PowerShell használatával hozzon létre egy virtuális hálózati szolgáltatási végpontot, majd egy virtuális hálózati szabályt a Azure SQL Databasehoz.][sql-db-vnet-service-endpoint-rule-powershell-md-52d]
-- [Virtual Network szabályok: Műveletek][rest-api-virtual-network-rules-operations-862r] REST API-kkal
+- [Virtual Network szabályok:][rest-api-virtual-network-rules-operations-862r] a REST API-kkal végzett műveletek
 
 <!-- Link references, to images. -->
 

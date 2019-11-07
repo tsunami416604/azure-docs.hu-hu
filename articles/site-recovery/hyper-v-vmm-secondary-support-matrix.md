@@ -1,18 +1,18 @@
 ---
-title: Támogatási mátrix a VMM-felhőkben lévő Hyper-V virtuális gépek vész-helyreállításához egy másodlagos helyre Azure Site Recovery
+title: Támogatás mátrix – Hyper-V vész-helyreállítás egy másodlagos VMM-helyre Azure Site Recovery
 description: Összefoglalja a Hyper-V virtuális gépek replikációjának támogatását a VMM-felhőkben egy másodlagos helyre Azure Site Recovery használatával.
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 09/09/2019
+ms.date: 11/06/2019
 ms.author: raynew
-ms.openlocfilehash: 46d6cba1d702773639420a3bc5ac74b9c16ce706
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 7711ebaaddccd68d4322c1d3ebdd049a57bc709b
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72933814"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73686169"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-hyper-v-vms-to-a-secondary-site"></a>A Hyper-V virtuális gépek másodlagos helyre történő helyreállításának támogatási mátrixa
 
@@ -67,13 +67,13 @@ Vendég virtuális gép – Windows/Linux – statikus IP-cím | Igen
 Vendég virtuális gép – több hálózati adapter | Igen
 
 
-## <a name="storage"></a>Adattárolás
+## <a name="storage"></a>Storage
 
 ### <a name="host-storage"></a>Gazdagép tárterülete
 
 **Storage (gazdagép)** | **Támogatott**
 --- | --- 
-NFS | –
+NFS | N/A
 SMB 3.0 |  Igen
 SAN (ISCSI) | Igen
 Több elérési út (MPIO) | Igen
@@ -82,15 +82,15 @@ Több elérési út (MPIO) | Igen
 
 **Konfigurálás** | **Támogatott**
 --- | --- | 
-VMDK |  –
+VMDK |  N/A
 VHD/VHDX | Igen (legfeljebb 16 lemez)
 2\. generációs VM | Igen
 Megosztott fürtözött lemez | Nem
 Titkosított lemez | Nem
-UEFI| –
+UEFI| N/A
 NFS | Nem
 SMB 3.0 | Nem
-RDM | –
+RDM | N/A
 Lemez > 1 TB | Igen
 Kötet szalagos lemezzel > 1 TB<br/><br/> LVM | Igen
 Tárolóhelyek | Igen
@@ -115,7 +115,7 @@ A szolgáltató koordinálja a VMM-kiszolgálók közötti kommunikációt.
 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [VMM-felhőkben lévő Hyper-V virtuális gépek replikálása másodlagos helyre](tutorial-vmm-to-vmm.md)
 

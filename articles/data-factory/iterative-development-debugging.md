@@ -1,5 +1,5 @@
 ---
-title: Iterációs fejlesztés és hibakeresés a Azure Data Factoryban | Microsoft Docs
+title: Ismétlődő fejlesztés és hibakeresés a Azure Data Factoryban
 description: Megtudhatja, hogyan fejleszthet és kereshet Data Factory folyamatokat a Azure Portal iteratív.
 ms.date: 09/26/2018
 ms.topic: conceptual
@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 author: djpmsft
 ms.author: daperlov
 manager: craigg
-ms.openlocfilehash: a1c4bf55fbb8242293fc0e30bbe16a6884b901cb
-ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
+ms.openlocfilehash: 38e51e33ef487da8879132eb1ce9cf1e63a814e4
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2019
-ms.locfileid: "71178625"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73672848"
 ---
 # <a name="iterative-development-and-debugging-with-azure-data-factory"></a>Ismétlődő fejlesztés és hibakeresés Azure Data Factory
 
@@ -27,7 +27,7 @@ A szolgáltatás nyolc perces bevezetéséhez és bemutatásához tekintse meg a
 > [!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/Iterative-development-and-debugging-with-Azure-Data-Factory/player]
 
 ## <a name="iterative-debugging-features"></a>Ismétlődő hibakeresési funkciók
-Folyamatokat hozhat létre, és tesztelési műveleteket hajthat végre a folyamat vásznon található hibakeresési funkcióval anélkül, hogy egyetlen sor kódot kellene írnia.
+Folyamatokat hozhat létre, és tesztelési műveleteket hajthat végre a folyamat vásznon található **hibakeresési** funkcióval anélkül, hogy egyetlen sor kódot kellene írnia.
 
 ![Hibakeresési képesség a folyamat vásznon](media/iterative-development-debugging/iterative-development-image1.png)
 
@@ -35,7 +35,7 @@ A teszt eredményeinek megtekintése a folyamat vászonjának **output (kimenet*
 
 ![A folyamat vászonjának kimeneti ablaka](media/iterative-development-debugging/iterative-development-image2.png)
 
-A tesztek sikeres futtatása után további tevékenységeket adhat hozzá a folyamathoz, és ismétlődő módon folytathatja a hibakeresést. Egy teszt futtatása is megszakítható, amíg folyamatban van.
+A tesztek sikeres futtatása után további tevékenységeket adhat hozzá a folyamathoz, és ismétlődő módon folytathatja a hibakeresést. Egy teszt futtatása is **megszakítható** , amíg folyamatban van.
 
 ![Teszt futtatásának megszakítása](media/iterative-development-debugging/iterative-development-image3.png)
 
@@ -58,7 +58,7 @@ Ha aktív adatfolyam-hibakeresési munkamenetek vannak, akkor ezek a munkamenete
 
 ## <a name="monitoring-debug-runs"></a>Hibakeresési hibák figyelése
 
-A hibakeresési funkcióval kezdeményezett tesztek nem érhetők el a **figyelés** lap listájában. A **figyelés** lapon csak az **eseményindító most**, a **Schedule**vagy a **bukdácsoló ablakos** eseményindítók által aktivált futtatások láthatók. A folyamat-vászon **kimeneti** ablakában a hibakeresési képességgel indított utolsó tesztet láthatja.
+A **hibakeresési** funkcióval kezdeményezett tesztek nem érhetők el a **figyelés** lap listájában. A **figyelés** lapon csak az **eseményindító most**, a **Schedule**vagy a **bukdácsoló ablakos** eseményindítók által aktivált futtatások láthatók. A folyamat-vászon **kimeneti** ablakában a **hibakeresési** képességgel indított utolsó tesztet láthatja.
 
 ## <a name="setting-breakpoints-for-debugging"></a>Töréspontok beállítása hibakereséshez
 

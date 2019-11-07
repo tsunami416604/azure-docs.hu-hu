@@ -1,6 +1,7 @@
 ---
 title: Kibocsátási megjegyzések – Custom Vision Service
 titleSuffix: Azure Cognitive Services
+description: Szerezze be a legújabb információkat a Custom Vision csapat új kiadásairól.
 services: cognitive-services
 author: anrothMSFT
 manager: nitinme
@@ -9,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 04/03/2019
 ms.author: anroth
-ms.openlocfilehash: 79f3f2a5545b8cdcee86e52f35bd22a31e93d387
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: b9606c63ec7b53fb0b69918c21bdd9206f34c555
+ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68564095"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73647570"
 ---
 # <a name="custom-vision-service-release-notes"></a>Custom Vision Service kibocsátási megjegyzések
 
@@ -45,7 +46,7 @@ ms.locfileid: "68564095"
 - Új modell-exportálási célok lettek hozzáadva. A Docker export frissítve lett a következőhöz: málna PI 3. Az exportálási támogatás hozzá lett adva a [jövőkép AI fejlesztői csomaghoz.](https://visionaidevkit.com/)
 - Megnövelt számú címke/projekt – 500 a S0 szinten. Nagyobb számú lemezkép projektenként és 100 000 a S0 szinten.
 - A felnőtt tartomány eltávolítva. Ehelyett az általános tartomány ajánlott.
-- Az [](https://azure.microsoft.com/pricing/details/cognitive-services/custom-vision-service/) általános elérhetőség díjszabása bejelentve.  
+- Az általános elérhetőség [díjszabása](https://azure.microsoft.com/pricing/details/cognitive-services/custom-vision-service/) bejelentve.  
 
 ## <a name="february-25-2019"></a>Február 25., 2019
 
@@ -53,7 +54,7 @@ ms.locfileid: "68564095"
 
 ## <a name="january-22-2019"></a>2019. január 22.
 
-- Új Azure-régiók támogatása: USA 2. nyugati régiója, USA 2. keleti régiója, Nyugat-Európa, Észak-Európa, Délkelet-Ázsia, Kelet-Ausztrália, Közép-India, Egyesült Királyság déli régiója, Kelet-japán és az USA északi középső régiója. A támogatás továbbra is az USA déli középső régiójában működik.
+- Támogatás az új Azure-régiókhoz: USA 2. nyugati régiója, USA keleti régiója, USA 2. keleti régiója, Nyugat-Európa, Észak-Európa, Délkelet-Ázsia, Kelet-Ausztrália, Közép-India, Egyesült Királyság déli régiója, Kelet-japán és Észak-Közép-USA. A támogatás továbbra is az USA déli középső régiójában működik.
 
 ## <a name="december-12-2018"></a>2018. december 12.
 
@@ -107,7 +108,7 @@ Hibajavítások, beleértve a speciális karaktereket tartalmazó ONNX exportál
 
 ## <a name="december-19-2017"></a>2017. december 19.
 
-- Hozzáadott exportálás Androidba (TensorFlow), a korábban kiadott, iOS-be történő (CoreML) exportálási lehetőség mellett. Ez lehetővé teszi, hogy egy betanított kompakt modell exportálása offline fusson egy alkalmazásban.
+- Exportálás az Androidba (TensorFlow) a korábban kiadott, iOS-re (CoreML.) való exportálás mellett Ez lehetővé teszi egy betanított kompakt modell exportálását offline állapotba egy alkalmazásban.
 - Kiskereskedelem és Tereptárgy „kompakt” tartományok hozzáadva, így elérhetővé válik bennük a modellexportálás.
 - Az [1.2 Training API](https://southcentralus.dev.cognitive.microsoft.com/docs/services/f2d62aa3b93843d79e948fe87fa89554/operations/5a3044ee08fa5e06b890f11f) és az [1.1 Prediction API](https://southcentralus.dev.cognitive.microsoft.com/docs/services/57982f59b5964e36841e22dfbfe78fc1/operations/5a3044f608fa5e06b890f164) kiadva. A frissített API-k támogatják a modellexportálást, illetve az új előrejelzési műveletet, amely nem menti a képeket az előrejelzések közé. Bevezetett kötegelt műveletek a Training API-ban.
 - UX-finomhangolások, beleértve azt a lehetőséget, amellyel megtekinthető, hogy melyik tartomány használatával lett betanítva az ismétlés.

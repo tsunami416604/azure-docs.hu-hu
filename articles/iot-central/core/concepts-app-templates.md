@@ -7,14 +7,14 @@ ms.date: 10/25/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: ee1168c32cf4d8797b3957340e0acee5605ccc0f
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: eb7319d665f228c552423a60a3b1529dc9b1143f
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72951886"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73583213"
 ---
-# <a name="what-are-application-templates"></a>Mik azok az alkalmazások sablonjai?
+# <a name="what-are-application-templates"></a>Mik azok az alkalmazássablonok?
 
 Az Azure IoT Central alkalmazás-sablonjai segítenek a megoldás-építők számára a IoT-megoldás fejlesztésében. Az alkalmazás-sablonokkal mindent megtalálhat, hogy a lehető legtöbbet tudja használni, így teljes mértékben testre szabhatja és fehér módon címkézheti az alkalmazást az ügyfeleknek való viszonteladás céljából.
 
@@ -37,16 +37,15 @@ Az Azure IoT Central az iparági független alkalmazások platformja. Az alkalma
   - Tárolt elemzések – pénztár
   - Intelligens leltár kezelése
 - [Energiafogyasztás](../energy/overview-iot-central-energy.md)
-  - Kapcsolódó logisztika
   - Intelligens fogyasztásmérő figyelése
   - Napelemek figyelése
 - [Kormány](../government/overview-iot-central-government.md)
-  - Csatlakoztatott hulladékgazdálkodás
-  - A víz felhasználásának figyelése
-  - A víz minőségének monitorozása
+  - Összekapcsolt hulladékgazdálkodás
+  - Vízfogyasztás figyelése
+  - Vízminőség figyelése
 - [Egészségügyi ellátás](../healthcare/overview-iot-central-healthcare.md).
-  - Folyamatos beteg monitorozása
+  - Folyamatos betegfigyelés
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Most, hogy tudja, mi IoT Central alkalmazás-sablonok, első lépésként [hozzon létre egy IoT Central alkalmazást](quick-deploy-iot-central-pnp.md).

@@ -1,5 +1,5 @@
 ---
-title: Azure SQL Database szolgáltatási szintek – DTU-alapú vásárlási modell | Microsoft Docs
+title: 'Azure SQL Database szolgáltatási szintek – DTU-alapú vásárlási modell '
 description: A számítási és tárolási méretek biztosításához a DTU-alapú vásárlási modellben megismerheti az önálló és a készletezett adatbázisok szolgáltatási rétegeit.
 services: sql-database
 ms.service: sql-database
@@ -11,164 +11,164 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 09/06/2019
-ms.openlocfilehash: e735d8832912f5b512b7cfe015ca47efbe641da7
-ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
+ms.openlocfilehash: 43f4f9e0d1e5f33dde32e5274dddf9d17776db21
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/07/2019
-ms.locfileid: "72000427"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73687304"
 ---
 # <a name="service-tiers-in-the-dtu-based-purchase-model"></a>Szolgáltatási szintek a DTU-alapú vásárlási modellben
 
-A DTU-alapú vásárlási modellben a szolgáltatási szintek különböző számítási méretekből állnak, amelyek rögzített mennyiségű foglalt tárterülettel, rögzített megőrzési időtartammal rendelkeznek a biztonsági mentésekhez és a rögzített árakhoz képest. A DTU-alapú vásárlási modell minden szolgáltatási szintje rugalmasságot biztosít a számítási méretek minimális [állásidővel](https://azure.microsoft.com/support/legal/sla/sql-database/v1_2/)való módosításához. van azonban egy olyan időszak, amelyben a kapcsolat megszakadt az adatbázisba rövid idő alatt, ami az újrapróbálkozási logika használatával enyhíthető. Önálló adatbázisok és rugalmas készletek számlázása óraszám alapján, a szolgáltatási szint és a számítási méret.
+A DTU-alapú vásárlási modellben a szolgáltatási szintek különböző számítási méretekből állnak, amelyek rögzített mennyiségű foglalt tárterülettel, rögzített megőrzési időtartammal rendelkeznek a biztonsági mentésekhez és a rögzített árakhoz képest. A DTU-alapú vásárlási modell minden szolgáltatási szintje rugalmasságot biztosít a számítási méretek minimális [állásidővel](https://azure.microsoft.com/support/legal/sla/sql-database/v1_2/)való módosításához. van azonban egy olyan időszak, amelyben a kapcsolat megszakadt az adatbázisba rövid idő alatt, ami az újrapróbálkozási logika használatával enyhíthető. Az önálló adatbázisok és a rugalmas készletek számlázása óránként, a szolgáltatási réteg és a számítási méret alapján történik.
 
 > [!IMPORTANT]
-> SQL Database felügyelt példány nem támogatja a DTU-alapú vásárlási modellt. További információkért lásd: [Azure SQL Database felügyelt példányába](sql-database-managed-instance.md).
+> SQL Database felügyelt példány nem támogatja a DTU-alapú vásárlási modellt. További információ: [Azure SQL Database felügyelt példány](sql-database-managed-instance.md).
 > [!NOTE]
-> További információ a Virtuálismag-alapú szolgáltatásszintek: [Virtuálismag-alapú szolgáltatásszintek](sql-database-service-tiers-vcore.md). További információ a DTU-alapú szolgáltatásszintek és a Virtuálismag-alapú szolgáltatásszintek sokoldalúbbá: [vásárlási modellek az Azure SQL Database](sql-database-purchase-models.md).
+> További információ a virtuális mag-alapú szolgáltatási rétegekről: [virtuális mag-alapú szolgáltatási szintek](sql-database-service-tiers-vcore.md). További információ a DTU-alapú szolgáltatási szintek és a virtuális mag-alapú szolgáltatási szintek megkülönböztetéséről: [Azure SQL Database vásárlási modellek](sql-database-purchase-models.md).
 
-## <a name="compare-the-dtu-based-service-tiers"></a>A DTU-alapú szolgáltatásszintek összehasonlítása
+## <a name="compare-the-dtu-based-service-tiers"></a>A DTU-alapú szolgáltatási Rétegek összehasonlítása
 
-Szolgáltatásszint kiválasztása elsődlegesen az üzleti folytonosság, tárolás és teljesítmény-követelmények attól függ.
+A szolgáltatási szint kiválasztása elsősorban az üzletmenet folytonossága, a tárterület és a teljesítménnyel kapcsolatos követelményektől függ.
 
-||Alapszintű|Standard|Prémium|
+||Basic|Standard|Prémium|
 | :-- | --: |--:| --:|
-|Egyes számítási feladatokhoz|Fejlesztési és éles környezetek|Fejlesztési és éles környezetek|Fejlesztési és éles környezetek|
+|Cél munkaterhelés|Fejlesztés és gyártás|Fejlesztés és gyártás|Fejlesztés és gyártás|
 |SLA-ban garantált üzemidő|99.99%|99.99%|99.99%|
-|Biztonsági másolatok maximális megőrzése|7 nap|35 napon belül|35 napon belül|
-|CPU|Alacsony|Alacsony, közepes, nagy|Közepes, nagy|
-|IO-átviteli sebesség (becsült) |1-5 IOPS/DTU| 1-5 IOPS/DTU | 25 IOPS/DTU|
-|IO-késés (becsült)|5 ezredmásodperc (olvasás), 10 ms (írás)|5 ezredmásodperc (olvasás), 10 ms (írás)|2 ms (olvasás/írás)|
-|Oszlopcentrikus indexelés |–|S3 vagy újabb verzió|Támogatott|
-|Memóriabeli OLTP beállítása|–|–|Támogatott|
+|Biztonsági másolatok maximális megőrzése|7 nap|35 nap|35 nap|
+|CPU|Alacsony|Alacsony, közepes és magas|Közepes, magas|
+|IO-átviteli sebesség (hozzávetőleges) |1-5 IOPS/DTU| 1-5 IOPS/DTU | 25 IOPS/DTU|
+|IO-késés (hozzávetőleges)|5 MS (olvasás), 10 MS (írás)|5 MS (olvasás), 10 MS (írás)|2 MS (olvasás/írás)|
+|Oszlopcentrikus indexelése |N/A|S3 és újabb verziók|Támogatott|
+|Memóriában tárolt OLTP|N/A|N/A|Támogatott|
 |||||
 
 > [!NOTE]
-> Az Azure-ban az ingyenes Azure SQL Database-t az alapszintű szolgáltatási szinten érheti el. További információ: [felügyelt felhőbeli adatbázis létrehozása az ingyenes Azure-fiók](https://azure.microsoft.com/free/services/sql-database/).
+> Az Azure-ban az ingyenes Azure SQL Database-t az alapszintű szolgáltatási szinten érheti el. További információkért lásd: [felügyelt felhőalapú adatbázis létrehozása az ingyenes Azure-fiókkal](https://azure.microsoft.com/free/services/sql-database/).
 
-## <a name="single-database-dtu-and-storage-limits"></a>Önálló adatbázis DTU- és tárterületi korlátozásai
+## <a name="single-database-dtu-and-storage-limits"></a>Önálló adatbázis-DTU és tárterület-korlátok
 
-A számítási méret az önálló adatbázisok adatbázis-tranzakciós egységek (dtu-k) és a rugalmas Database Transaction Unitok (Edtu) rugalmas készletek vannak kifejezve. További információ a dtu-król és Edtu-: [DTU-alapú vásárlási modell](sql-database-purchase-models.md#dtu-based-purchasing-model)?
+A számítási méretek az önálló adatbázisok és a rugalmas adatbázis-tranzakciós egységek (Edtu-EK) adatbázis-tranzakciós egységei (DTU) alapján vannak kifejezve. A DTU és a Edtu szolgáltatással kapcsolatos további információkért lásd: [DTU-alapú vásárlási modell](sql-database-purchase-models.md#dtu-based-purchasing-model)?
 
-||Alapszintű|Standard|Prémium|
+||Basic|Standard|Prémium|
 | :-- | --: | --: | --: |
-| Maximális tárterület méretét | 2 GB | 1 TB | 4 TB  |
-| Maximális dtu-k | 5 | 3000 | 4000 | 
+| Maximális tárterület | 2 GB | 1 TB | 4 TB  |
+| Maximális DTU | 5 | 3000 | 4000 | 
 |||||
 
 > [!IMPORTANT]
-> Bizonyos körülmények között szükség lehet az adatbázis nem használt terület felszabadítását zsugorítani. További információkért lásd: [kezelése az Azure SQL Database területe](sql-database-file-space-management.md).
+> Bizonyos körülmények között előfordulhat, hogy az adatbázist fel kell zsugorodnia a fel nem használt területek visszaigényléséhez. További információ: [a tárterület kezelése Azure SQL Databaseban](sql-database-file-space-management.md).
 
-## <a name="elastic-pool-edtu-storage-and-pooled-database-limits"></a>Rugalmas készlet edtu-k, a storage és a készletezett adatbázis korlátok
+## <a name="elastic-pool-edtu-storage-and-pooled-database-limits"></a>Rugalmas készlet eDTU, tárolás és készletezett adatbázisok korlátai
 
 | | **Basic** | **Standard** | **Prémium** |
 | :-- | --: | --: | --: |
-| Az adatbázisonkénti maximális mérete  | 2 GB | 1 TB | 1 TB |
-| Készletenkénti maximális mérete | 156 GB | 4 TB | 4 TB |
-| Maximális Edtu adatbázisonként | 5 | 3000 | 4000 |
-| Maximális edtu-k száma készletenként | 1600 | 3000 | 4000 |
-| Készletenkénti adatbázisok maximális száma | 500  | 500 | 100 |
+| Tárterület maximális mérete adatbázison  | 2 GB | 1 TB | 1 TB |
+| Tárterület maximális mérete készlet szerint | 156 GB | 4 TB | 4 TB |
+| Edtu maximális száma | 5 | 3000 | 4000 |
+| Edtu maximális száma | 1600 | 3000 | 4000 |
+| Adatbázisok maximális száma készlet szerint | 500  | 500 | 100 |
 |||||
 
 > [!IMPORTANT]
-> A prémium szinten több mint 1 TB tárterület érhető el az összes régióban, kivéve a következőket: Kelet-Kína, Észak-Kína, Közép-Németország, Északkelet-Németország, USA nyugati középső régiója, US DoD régiók és USA kormányzati központja. Ezekben a régiókban a prémium szinthez tartozó tárterület maximuma 1 TB.  További információ: [P11-P15 current korlátozások](sql-database-single-database-scale.md#p11-and-p15-constraints-when-max-size-greater-than-1-tb).  
+> A prémium szinten több mint 1 TB tárterület érhető el az összes régióban, kivéve a következőket: Kelet-Kína, Észak-Kína, Közép-Németország, Németország északkeleti régiója, az USA nyugati középső régiója, US DoD régiók és az USA kormányzati központja. Ezekben a régiókban a prémium szinthez tartozó tárterület maximuma 1 TB.  További információ: [P11-P15 current korlátozások](sql-database-single-database-scale.md#p11-and-p15-constraints-when-max-size-greater-than-1-tb).  
 > [!IMPORTANT]
-> Bizonyos körülmények között szükség lehet az adatbázis nem használt terület felszabadítását zsugorítani. További információ: [a tárterület kezelése Azure SQL Databaseban](sql-database-file-space-management.md).
+> Bizonyos körülmények között előfordulhat, hogy az adatbázist fel kell zsugorodnia a fel nem használt területek visszaigényléséhez. További információ: [a tárterület kezelése Azure SQL Databaseban](sql-database-file-space-management.md).
 
 ## <a name="dtu-benchmark"></a>DTU-teljesítményteszt
 
-Fizikai tulajdonságait (Processzor, memória, IO) társított minden egyes DTU mérték, amely szimulálja a valós számítási feladatokkal a teljesítményteszt használatával vannak korlátokon belül.
+Az egyes DTU-mértékekhez társított fizikai jellemzők (CPU, memória, IO) egy olyan teljesítményteszt használatával vannak kalibrálva, amely szimulálja a valós adatbázis-számítási feladatokat.
 
-### <a name="correlating-benchmark-results-to-real-world-database-performance"></a>Számításiteljesítmény-mérési eredmények naplókezelője valós adatbázis teljesítménye
+### <a name="correlating-benchmark-results-to-real-world-database-performance"></a>Teljesítményteszt eredményeinek összekorrelációja a valós adatbázis-teljesítményhez
 
-Fontos megérteni, hogy minden a referenciaértékek reprezentatív és tájékoztató csak. A tranzakciós díjakat biztosítanak a teljesítményteszt alkalmazással elért nem ugyanazok, mint, előfordulhat, hogy más alkalmazásokkal érhető el. A teljesítményteszt típusok futtatásához egy sémát tartalmazó táblák és adattípusok számos különböző tranzakció gyűjteményét foglalja magában. A teljesítményteszt gyakorol az ugyanazon alapvető műveleteket, amelyek közösek az összes OLTP-munkaterhelések, amíg nem tartozik adatbázis vagy az alkalmazás bármely adott osztály. A teljesítményteszt az a célja, hogy adjon meg egy ésszerű útmutató, amellyel egy adatbázist, amikor a számítási méret között felfelé és lefelé skálázás várható egymáshoz viszonyított teljesítményébe. A valóságban ez adatbázisok különböző méretekre és összetettséget, számítási feladatok különböző keverékei észlel, és különböző módokon válaszol. Például i/o-igényes alkalmazások i/o-küszöbértékek hamarabb ütközhet, vagy a CPU-igényes alkalmazások CPU korlátok hamarabb tapasztalhat. Nem biztos, hogy bármely adott adatbázis lesz skálázva a ugyanúgy, mint a teljesítményteszt növekvő terhelés alatt van.
+Fontos tisztában lenni azzal, hogy az összes teljesítményteszt csak reprezentatív és csak tájékoztató jellegű. A teljesítményteszt-alkalmazás által elért tranzakciók aránya nem ugyanaz, mint más alkalmazásokkal. A teljesítményteszt egy különböző tranzakciótípusok gyűjteményét tartalmazza, amely egy, a táblákat és az adattípusokat tartalmazó sémán fut. Míg a teljesítményteszt ugyanazokat az alapszintű műveleteket alkalmazza, amelyek az összes OLTP-számítási feladatnál közösek, nem az adatbázis vagy alkalmazás adott osztályát jelöli. A viszonyítási alap célja, hogy ésszerű útmutatást nyújtson egy olyan adatbázis relatív teljesítményéhez, amely várhatóan a számítási méretek közötti felfelé vagy lefelé történő skálázás esetén várható. A valóságban az adatbázisok különböző méretűek és összetettebbek, a számítási feladatok különböző kombinációit tapasztalják, és különböző módokon reagálnak. Például egy IO-igényes alkalmazás hamarabb elérheti az IO-küszöbértékeket, vagy a CPU-igényes alkalmazások hamarabb megkaphatják a CPU-korlátokat. Nincs garancia arra, hogy az adott adatbázis a terhelés növelésével megegyező módon fog méretezni.
 
-A teljesítményteszt és a módszereket ismerteti részletesebben az alábbi.
+Az alábbiakban részletesebben ismertetjük a teljesítménytesztet és annak módszerét.
 
-### <a name="benchmark-summary"></a>Számításiteljesítmény-mérési összefoglaló
+### <a name="benchmark-summary"></a>Teljesítményteszt összefoglalása
 
-A teljesítményteszt a leggyakrabban az online tranzakció-feldolgozási (OLTP) számítási feladatokban leggyakrabban előforduló alapszintű adatbázis-műveletek együttes teljesítményét méri. Bár a teljesítményteszt a felhő-számítástechnika a szem előtt, az adatbázis-séma, az adatokkal való feltöltés célja, és a tranzakciók széles körben reprezentatívnak a leggyakrabban használt OLTP számítási feladatokat a alapszintű elemek is úgy lett kialakítva.
+A teljesítményteszt a leggyakrabban az online tranzakció-feldolgozási (OLTP) számítási feladatokban leggyakrabban előforduló alapszintű adatbázis-műveletek együttes teljesítményét méri. Bár a teljesítménytesztet a felhőalapú számítástechnika szem előtt tartásával tervezték, az adatbázis-sémát, az adatpopulációt és a tranzakciókat úgy alakítottuk ki, hogy széles körben reprezentatívak legyenek a OLTP-munkaterhelésekben leggyakrabban használt alapelemek esetében.
 
 ### <a name="schema"></a>Séma
 
-A séma van úgy tervezték, hogy elegendő különböző és összetettsége műveletek széles körét támogatja. A teljesítményteszt fut egy adatbázis-csoportból áll, hat táblára. A táblák három kategóriába sorolhatók: rögzített méretű, skálázás, és nő. Két a rögzített méretű táblák; három méretezési táblázatokban; és a egy egyre bővülő tábla. Rögzített méretű táblák sorok számának állandó rendelkeznek. Méretezési táblák egy, az adatbázis teljesítménye arányos, de nem módosítja a teljesítményteszt során Számosság rendelkeznek. A növekvő tábla van például a kezdeti betöltés, de a számosság módosítások képviselőinkkel sort beszúrni, és törölni a teljesítményteszt futó méretezési táblázat méretezni.
+A séma úgy lett kialakítva, hogy elegendő változatosságot és összetettséget nyújtson a műveletek széles körének támogatásához. A teljesítményteszt hat táblázatból álló adatbázison fut. A táblázatok három kategóriába sorolhatók: rögzített méretű, méretezés és növekvő. Két rögzített méretű tábla létezik; három skálázási táblázat; és egy növekvő tábla. A rögzített méretű táblák állandó számú sorral rendelkeznek. A skálázási táblázatok olyan számos fajta, amely az adatbázis teljesítményével arányos, de a teljesítményteszt során nem változik. A növekvő tábla a kezdeti betöltéshez hasonló méretezési táblázattal rendelkezik, de ezt követően a rendszer a teljesítményteszt futtatásának menetét is megváltoztatja a sorok beillesztése és törlése során.
 
-A séma tartalmaz vegyesen adattípusok alapján, beleértve az egész szám, dátum és idő, numerikus és karakter. A séma tartalmazza az elsődleges és másodlagos kulcsok, de nem idegen kulcsokkal – a, hogy nincs hivatkozási integritási megkötéseket táblák között.
+A séma többféle adattípust tartalmaz, beleértve az egész számot, a számot, a karaktert és a dátumot és az időt. A séma elsődleges és másodlagos kulcsokat is tartalmaz, de nem rendelkezik idegen kulcsokkal – vagyis nincsenek a táblák közötti hivatkozási integritási korlátozások.
 
-Adatok generációs program állít elő, a kezdeti adatbázis adatait. Egész szám és numerikus adatokat a különböző stratégiák jön létre. Bizonyos esetekben a értékek véletlenszerűen vannak elosztva egy tartományt. Más esetekben értékek egy halmazát van véletlenszerűen a(z) %u kell biztosítják, hogy egy adott terjesztési. Súlyozott listájából, valósághű, akik adatokat a keresett szavakat szöveges mezők jönnek létre.
+Az adatgeneráló program létrehozza a kezdeti adatbázishoz tartozó adatértékeket. Az egész szám és a numerikus adat különböző stratégiákkal jön létre. Bizonyos esetekben az értékek eloszlása véletlenszerűen történik egy tartományon belül. Más esetekben az értékek egy halmaza véletlenszerűen permuted, így biztosítható, hogy egy adott eloszlás megmaradjon. A szöveges mezők a szavak súlyozott listájából jönnek létre, amelyek reális megjelenési adatok előállítására szolgálnak.
 
-Az adatbázis méretezése alapján "nagyságrendi tényezőt." A méretezési tényező (SF rövidítése) a méretezés és a táblák növekvő számossága határozza meg. Szakaszban leírtak szerint alatt a felhasználók és Pacing, az adatbázis méretét a felhasználók számára, és az összes arányosan méretezése a maximális teljesítmény.
+Az adatbázis méretezési tényezőn alapul. A méretezési tényező (SF-ként rövidítve) meghatározza a skálázási és a növekvő táblákat. A következő szakaszban leírtak szerint a felhasználók és a tempó, az adatbázis mérete, a felhasználók száma és a maximális teljesítmény az összes méretezés arányában.
 
 ### <a name="transactions"></a>Tranzakciók
 
-A számítási feladatok kilenc tranzakciótípusok áll, az alábbi táblázatban látható módon. Minden tranzakció célja jelöljön ki egy meghatározott adatbázis motor és a rendszer hardver, kontrasztos megjelenítés a más tranzakciók a rendszer jellemzőit. Ez a megközelítés megkönnyíti a különböző összetevőket az általános teljesítmény hatásainak kiértékelését. Például az "Olvasás (nagy erőforrásigényű)" tranzakció lemez olvasási műveletek jelentős számú hoz létre.
+A munkaterhelés kilenc tranzakciós típusból áll, ahogy az alábbi táblázatban is látható. Minden tranzakció úgy van kialakítva, hogy kiemelje a rendszerjellemzők egy adott készletét az adatbázismotor és a rendszer hardverén, nagy kontraszttal a többi tranzakciótól. Ezzel a megközelítéssel könnyebben mérhetővé válik a különböző összetevők hatása a teljes teljesítményre. Például a "READ Heavy" tranzakció jelentős számú olvasási műveletet eredményez a lemezről.
 
 | Tranzakció típusa | Leírás |
 | --- | --- |
-| Olvassa el a Lite |VÁLASSZA KI A; a memóriában; csak olvasható |
-| Olvassa el közepes |VÁLASSZA KI A; elsősorban memóriabeli; csak olvasható |
-| Olvasás (nagy erőforrásigényű) |VÁLASSZA KI A; többnyire nincs memórián belüli; csak olvasható |
-| Lite Update |FRISSÍTÉS; a memóriában; olvasási és írási |
-| Frissítés (nagy erőforrásigényű) |FRISSÍTÉS; többnyire nincs memórián belüli; olvasási és írási |
-| Lite beszúrása |HELYEZZE BE; a memóriában; olvasási és írási |
-| (Nagy erőforrásigényű) beszúrása |HELYEZZE BE; többnyire nincs memórián belüli; olvasási és írási |
-| Törlés |TÖRLÉSE; a memóriában, és nem a memóriában; olvasási és írási |
-| Processzor (nagy erőforrásigényű) |VÁLASSZA KI A; a memóriában; viszonylag nagy CPU-terhelés; csak olvasható |
+| A Lite olvasása |Válassza memóriában tárolt; csak olvasható |
+| Adathordozó olvasása |Válassza többnyire a memóriában; csak olvasható |
+| Jelentős olvasási |Válassza többnyire nincs a memóriában; csak olvasható |
+| A Lite frissítése |FRISSÍTÉSE memóriában tárolt; írás és olvasás |
+| Nagy frissítés |FRISSÍTÉSE többnyire nincs a memóriában; írás és olvasás |
+| Lite beszúrása |INSERT memóriában tárolt; írás és olvasás |
+| Nehéz Beszúrás |INSERT többnyire nincs a memóriában; írás és olvasás |
+| Törlés |TÖRLÉSE memóriában tárolt és nem memóriában tárolt értékek írás és olvasás |
+| Nagy CPU |Válassza memóriában tárolt; viszonylag nagy CPU-terhelés; csak olvasható |
 
-### <a name="workload-mix"></a>Vegyes számítási feladatok
+### <a name="workload-mix"></a>Munkaterhelés-kombináció
 
-Tranzakciók véletlenszerűen kiválasztott egy súlyozott terjesztési az a következő általános vegyesen. A teljes vegyesen tartalmaz egy olvasási/írási arány körülbelül 2:1.
+A tranzakciók véletlenszerűen vannak kiválasztva egy súlyozott eloszlásból a következő összesített kombinációval. A teljes kombináció körülbelül 2:1 olvasási/írási aránnyal rendelkezik.
 
-| Tranzakció típusa | %-a vegyes |
+| Tranzakció típusa | Vegyes |
 | --- | --- |
-| Olvassa el a Lite |35 |
-| Olvassa el közepes |20 |
-| Olvasás (nagy erőforrásigényű) |5 |
-| Lite Update |20 |
-| Frissítés (nagy erőforrásigényű) |3 |
+| A Lite olvasása |35 |
+| Adathordozó olvasása |20 |
+| Jelentős olvasási |5 |
+| A Lite frissítése |20 |
+| Nagy frissítés |3 |
 | Lite beszúrása |3 |
-| (Nagy erőforrásigényű) beszúrása |2 |
+| Nehéz Beszúrás |2 |
 | Törlés |2 |
-| Processzor (nagy erőforrásigényű) |10 |
+| Nagy CPU |10 |
 
-### <a name="users-and-pacing"></a>Felhasználók és pacing
+### <a name="users-and-pacing"></a>Felhasználók és a tempó
 
-A javasolt számítási feladatok az alkalmazások egy eszközt, amely elküldi a tranzakciók több kapcsolatok szimulálásához egy egyidejű felhasználók száma. Bár a kapcsolatok és a tranzakció összes gép jön létre, az egyszerűség kedvéért nevezzük ezeket a kapcsolatokat felhasználóként"." Bár az egyes felhasználók működése független a többi felhasználó, minden felhasználó az azonos ciklus az alábbi lépéseket hajtsa végre:
+A teljesítményteszt számítási feladatait egy olyan eszköz vezérli, amely több kapcsolaton keresztül küld tranzakciókat a több egyidejű felhasználó viselkedésének szimulálása érdekében. Bár az összes kapcsolat és tranzakció a gép által generált, az egyszerűség kedvéért ezeket a kapcsolatokat a "felhasználók" kifejezéssel tekintjük át. Bár minden felhasználó az összes többi felhasználótól függetlenül működik, az összes felhasználó ugyanazon ciklusban hajtja végre az alábbi lépéseket:
 
-1. Adatbázis-kapcsolat létesítéséhez.
-2. Mindaddig, amíg kilép jelzést ismételje meg:
-   - Válasszon ki egy tranzakciót, véletlenszerű (az egy súlyozott elosztás).
-   - A kijelölt tranzakció végrehajtása, és a válaszidő mérése.
-   - Várjon, amíg pacing késést.
-3. Zárja be az adatbázis-kapcsolat.
-4. Kilépés.
+1. Hozzon létre egy adatbázis-kapcsolatot.
+2. Ismételje meg a jelet a kilépésig:
+   - Válassza ki a tranzakciót véletlenszerűen (súlyozott eloszlásból).
+   - Hajtsa végre a kiválasztott tranzakciót, és mérje fel a válaszidőt.
+   - Várjon egy tempót.
+3. Az adatbázis-kapcsolatok lezárása.
+4. Kilépési.
 
-Véletlenszerűen kiválasztott a pacing késleltetése (2/c. lépés), de terjesztési az 1.0-ás másodpercenként átlagosan, amely rendelkezik. Így minden felhasználó, az átlagos generálhat legfeljebb egy-egy tranzakció / másodperc.
+Az ingerlési késleltetés (a 2c. lépésben) véletlenszerűen van kiválasztva, de egy átlagos 1,0 másodperces eloszlással. Így minden felhasználó átlagosan legfeljebb egy tranzakciót tud előállítani másodpercenként.
 
-### <a name="scaling-rules"></a>Skálázási szabályokkal
+### <a name="scaling-rules"></a>Skálázási szabályok
 
-A felhasználók száma (a mértéktényező egység) az adatbázis mérete határozza meg. Nincs minden öt mértéktényező egységet egy felhasználót. A pacing késedelem miatt egy felhasználói hozhat létre legfeljebb egy-egy tranzakció, másodpercenként átlagosan.
+A felhasználók számát az adatbázis mérete határozza meg (a skála faktoros egységekben). Minden öt méretezési faktoros egységhez egyetlen felhasználó van. A késés miatt az egyik felhasználó másodpercenként legfeljebb egy tranzakciót tud előállítani.
 
-Például egy méretezési csoport tényezős az 500-as (SF = 500) adatbázis 100 felhasználóval fog rendelkezni, amely is 100 TPS maximális száma. Egy újabb TPS meghajtó arány szükséges további felhasználók és a egy nagyobb adatbázist.
+Például az 500-es (SF = 500) adatbázis skálázási tényezője 100 felhasználó lesz, és a maximálisan engedélyezett 100 TPS. Magasabb TPS arány növeléséhez több felhasználónak és egy nagyobb adatbázisnak kell lennie.
 
-### <a name="measurement-duration"></a>Mérési időtartama
+### <a name="measurement-duration"></a>Mérési időtartam
 
-Egy érvényes teljesítményteszt futtatása egyenletes mérési időtartama: legalább egy órát igényel.
+Egy érvényes teljesítményteszt-futtatáshoz legalább egy óra egyenletes állapotú mérési időtartamra van szükség.
 
 ### <a name="metrics"></a>Mérőszámok
 
-A legfontosabb metrikákat, a teljesítményteszt átviteli sebességet és válaszidőt.
+A teljesítményteszt fő mérőszámai az átviteli sebesség és a válaszidő.
 
-- Átviteli sebesség a teljesítményteszt alapvető teljesítményének mérték. Átviteli sebesség tranzakció /-időegység, minden tranzakciótípusok számbavételi jelenti.
-- Válaszidő azt méri, teljesítmény kiszámíthatóságot nyújtanak. A válasz ideje korlátozás függ-szolgáltatás, amelynek szigorúbb válasz ideje követelmény, hogy ahogy az alábbi szolgáltatás magasabb osztályok osztályát.
+- Az átviteli sebesség a teljesítményteszt alapvető teljesítményének mértéke. Az átviteli sebesség az egyes egységenkénti tranzakciókban, az összes tranzakciótípus számlálásával van jelezve.
+- A válaszidő a teljesítmény kiszámíthatóságának mértéke. A válaszidő-korlátozás a szolgáltatási osztálytól eltérő, a magasabb szintű szolgáltatási osztályokkal pedig szigorúbb válaszidő szükséges, ahogy az alább látható.
 
-| A szolgáltatás osztályban | Átviteli sebesség mérték | Válasz ideje követelmény |
+| Szolgáltatás osztálya | Átviteli sebesség mértéke | Válaszadási idő követelménye |
 | --- | --- | --- |
-| Prémium |Másodpercenkénti tranzakciók |0,5 másodperc, a 95. percentilis |
-| Standard |Percenkénti tranzakciók |90. százalékértékre, 1.0-ás másodperc |
-| Alapszintű |Óránkénti tranzakciók |80. százalékos érték a 2.0-s másodperc |
+| Prémium |Másodpercenkénti tranzakciók |95. percentilis 0,5 másodpercnél |
+| Standard |Percenkénti tranzakciók |90 százalék 1,0 másodpercnél |
+| Basic |Óránkénti tranzakciók |80th percentilis 2,0 másodpercnél |
 
 ## <a name="next-steps"></a>További lépések
 
-- Részletek az adott számítási méretek és a tároló mérete lehetőségek az önálló adatbázisok számára elérhető, lásd: [SQL adatbázis DTU-alapú erőforráskorlátok az önálló adatbázisok](sql-database-dtu-resource-limits-single-databases.md#single-database-storage-sizes-and-compute-sizes).
-- Részletek az adott számítási méretek és a tároló mérete választható rugalmas készletek számára elérhető, lásd: [SQL Database DTU-alapú erőforráskorlátok](sql-database-dtu-resource-limits-elastic-pools.md#elastic-pool-storage-sizes-and-compute-sizes).
+- Az önálló adatbázisok esetében elérhető számítási méretekről és a tárolási méretekről az önálló [adatbázisok SQL Database DTU-alapú erőforrás-korlátozásai](sql-database-dtu-resource-limits-single-databases.md#single-database-storage-sizes-and-compute-sizes)című témakörben olvashat bővebben.
+- Az adott számítási méretek és a rugalmas készletekhez rendelkezésre álló tárolási méretek részleteiért lásd: [SQL Database DTU-alapú erőforrás-korlátok](sql-database-dtu-resource-limits-elastic-pools.md#elastic-pool-storage-sizes-and-compute-sizes).

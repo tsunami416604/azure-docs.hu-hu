@@ -1,5 +1,5 @@
 ---
-title: Azure SQL Database Biztonság beállítása a vész-helyreállításhoz | Microsoft Docs
+title: Azure SQL Database Biztonság beállítása a vész-helyreállításhoz
 description: Megtudhatja, hogyan konfigurálhatja és kezelheti a biztonsági szempontokat egy adatbázis-visszaállítás vagy egy másodlagos kiszolgáló feladatátvétele után.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 12/18/2018
-ms.openlocfilehash: 4d4939b7a0179216d11f594ce12f384276d15e05
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 3c08ba1a37d7b0d16042d6496c27e0de8d070b75
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68568126"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73689970"
 ---
 # <a name="configure-and-manage-azure-sql-database-security-for-geo-restore-or-failover"></a>Azure SQL Database biztonsági beállítások konfigurálása és kezelése geo-visszaállításhoz vagy feladatátvételhez
 
@@ -48,7 +48,7 @@ A Geo-replikációhoz való felhasználói hozzáférés előkészítését a Ge
 
 A bejelentkezések a célkiszolgálón való beállítása az alábbi három lépést ismerteti:
 
-#### <a name="1-determine-logins-with-access-to-the-primary-database"></a>1. Az elsődleges adatbázishoz hozzáféréssel rendelkező bejelentkezések meghatározása
+#### <a name="1-determine-logins-with-access-to-the-primary-database"></a>1. az elsődleges adatbázishoz hozzáféréssel rendelkező bejelentkezések meghatározása
 
 A folyamat első lépése annak meghatározása, hogy mely bejelentkezéseket kell duplikálni a célkiszolgálón. Ez egy pár SELECT utasítással érhető el, egyet a forráskiszolgálón található logikai főadatbázisban, egyet pedig maga az elsődleges adatbázisban.
 
@@ -64,7 +64,7 @@ Csak a db_owner adatbázis-szerepkör, a dbo-felhasználó vagy a kiszolgáló r
     FROM [sys].[database_principals]
     WHERE [type_desc] = 'SQL_USER'
 
-#### <a name="2-find-the-sid-for-the-logins-identified-in-step-1"></a>2. Az 1. lépésben azonosított bejelentkezések SID-azonosítójának megkeresése
+#### <a name="2-find-the-sid-for-the-logins-identified-in-step-1"></a>2. Keresse meg az 1. lépésben azonosított bejelentkezések SID-azonosítóját
 
 Az előző szakaszban található lekérdezések kimenetének és a biztonsági azonosítók megfeleltetésének összehasonlításával leképezheti a kiszolgáló bejelentkezési adatait az adatbázis felhasználójának. A megfelelő biztonsági azonosítóval rendelkező adatbázis-felhasználóval rendelkező bejelentkezések felhasználói hozzáféréssel rendelkeznek az adatbázishoz, mint az adatbázis felhasználói rendszerbiztonsági tag.
 
@@ -77,7 +77,7 @@ A következő lekérdezéssel megtekintheti az összes felhasználói résztvev�
 > [!NOTE]
 > A **entitástulajdonos** és a **sys** felhasználók *Null* SID azonosítóval rendelkeznek, a **vendég** SID pedig **kell lennie 0x00**. A **dbo** SID a *0x01060000000001648000000000048454*-vel kezdődhet, ha az adatbázis létrehozója a kiszolgáló rendszergazdája volt a **DbManager**tagja helyett.
 
-#### <a name="3-create-the-logins-on-the-target-server"></a>3. A bejelentkezések létrehozása a célkiszolgálón
+#### <a name="3-create-the-logins-on-the-target-server"></a>3. a bejelentkezések létrehozása a célkiszolgálón
 
 Utolsó lépésként nyissa meg a célkiszolgálóra vagy a kiszolgálókat, és a megfelelő biztonsági azonosítókkal létrehozza a bejelentkezéseket. Az alapszintű szintaxis a következő.
 
@@ -96,7 +96,7 @@ Utolsó lépésként nyissa meg a célkiszolgálóra vagy a kiszolgálókat, és
 
 ## <a name="next-steps"></a>További lépések
 
-* Az adatbázis-hozzáférés és bejelentkezések kezelésével kapcsolatos további információkért [lásd: SQL Database biztonság: Az adatbázis-hozzáférés és a](sql-database-manage-logins.md)bejelentkezési biztonság kezelése.
+* Az adatbázis-hozzáférés és a bejelentkezések kezelésével kapcsolatos további információkért lásd [: SQL Database biztonság: az adatbázis-hozzáférés és a bejelentkezési biztonság kezelése](sql-database-manage-logins.md).
 * További információ a tárolt adatbázis-felhasználókról: [tárolt adatbázis-felhasználók – az adatbázis hordozhatóvé tétele](https://msdn.microsoft.com/library/ff929188.aspx).
 * Az aktív geo-replikációval kapcsolatos információkért lásd: [aktív földrajzi replikálás](sql-database-active-geo-replication.md).
 * További információ az automatikus feladatátvételi csoportokról: [automatikus feladatátvételi csoportok](sql-database-auto-failover-group.md).

@@ -1,6 +1,6 @@
 ---
-title: Az Azure Event Grid-esemény séma
-description: Ismerteti a tulajdonságait, amelyet az Azure Event Grid-események
+title: Azure Event Gridi esemény sémája
+description: Az Azure Event Grid-val kapcsolatos eseményekhez megadott tulajdonságokat ismerteti.
 services: event-grid
 author: banisadr
 manager: timlt
@@ -8,29 +8,29 @@ ms.service: event-grid
 ms.topic: reference
 ms.date: 01/20/2019
 ms.author: babanisa
-ms.openlocfilehash: 8a8193d21bbc1d0af933657705e605ce31589cbf
-ms.sourcegitcommit: 1572b615c8f863be4986c23ea2ff7642b02bc605
+ms.openlocfilehash: 44cc611a9a7d71a3ac4ac7b0d779b18778d0aacd
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67785851"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73607613"
 ---
-# <a name="azure-event-grid-event-schema"></a>Az Azure Event Grid-esemény séma
+# <a name="azure-event-grid-event-schema"></a>Azure Event Gridi esemény sémája
 
-Ez a cikk ismerteti a tulajdonságok és a sémát, amely az összes esemény találhatók. Események állnak öt szükséges karakterlánc-tulajdonságok és a egy szükséges objektum. A Tulajdonságok megegyeznek az összes eseményt, a bármely gyártótól. Az objektum tulajdonság tartozik, amely mindegyik közzétevő jellemző. A rendszer témaköröket ezek a Tulajdonságok konkrétan az erőforrás-szolgáltató, például az Azure Storage vagy az Azure Event Hubs a.
+Ez a cikk az összes eseményhez tartozó tulajdonságokat és sémákat ismerteti. Az események öt kötelező karakterlánc-tulajdonságot és egy kötelező adatobjektumot foglalnak magukban. A tulajdonságok minden közzétevőtől származó eseményre jellemzőek. Az adatobjektumhoz az egyes közzétevők jellemző tulajdonságai tartoznak. A rendszertémakörök esetében ezek a tulajdonságok az erőforrás-szolgáltatóra jellemzőek, például az Azure Storage vagy az Azure Event Hubs.
 
-Zdroje událostí események küldése az Azure Event Grid egy tömb, amely több esemény-objektumot. Az eseményeket egy event grid-témakör az üzenetküldés, ha a tömb rendelkezhet egy teljes mérete legfeljebb 1 MB. A tömbben szereplő minden esemény korlátozódik 64 KB-os (nyilvánosan elérhetők) vagy 1 MB (előzetes verzió). Ha egy esemény vagy a tömb nagyobb, mint a méretbeli korlátokat, a válasz érkezik **413 adattartalom túl nagy**.
+Az eseményforrás az eseményeket egy tömbben Azure Event Gridba küldi, amely több eseményvezérelt objektummal is rendelkezhet. Amikor eseményeket küld egy Event Grid-témakörbe, a tömb legfeljebb 1 MB méretű lehet. A tömbben lévő összes esemény 64 KB-ra (általános rendelkezésre állás) vagy 1 MB-ra (előzetes verzió) korlátozódik. Ha egy esemény vagy a tömb mérete nagyobb, mint a méretkorlát, a 413-as **számú válasz túl nagy**lesz.
 
 > [!NOTE]
-> Egy esemény mérete legfeljebb 64 KB-os által általánosan elérhető (GA) szolgáltatói szerződés (SLA) vonatkozik. Támogatást biztosít az esemény mérete legfeljebb 1 MB jelenleg előzetes verzióban érhető el. Események több mint 64 KB-os 64 KB-os egységekben számoljuk. 
+> A 64 KB-ig terjedő méretű események általánosan elérhetők (GA) szolgáltatói szerződés (SLA). A legfeljebb 1 MB méretű esemény támogatása jelenleg előzetes verzióban érhető el. Az 64 KB-nál nagyobb számú esemény díja 64 KB. 
 
-Event Grid az eseményeket küld egy tömb, amely egy egyszeri esemény rendelkezik az előfizetőknek. Ez a viselkedés a későbbiekben változhatnak.
+Event Grid küldi az eseményeket egy olyan tömbben lévő előfizetőknek, amely egyetlen eseménnyel rendelkezik. Ez a viselkedés a jövőben változhat.
 
-A JSON-sémájában az Event Grid-esemény és az egyes Azure közzétevő adattartalom megtalálja a [Eseménysémája store](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/eventgrid/data-plane).
+A Event Grid eseményhez és az egyes Azure-közzétevők adattartalmahoz tartozó JSON-sémát az [Event Schema Store](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/eventgrid/data-plane)-ban találja.
 
 ## <a name="event-schema"></a>Eseményséma
 
-Az alábbi példa bemutatja az összes esemény-közzétevők által használt tulajdonságokat:
+Az alábbi példa az összes esemény-közzétevő által használt tulajdonságokat mutatja be:
 
 ```json
 [
@@ -49,7 +49,7 @@ Az alábbi példa bemutatja az összes esemény-közzétevők által használt t
 ]
 ```
 
-Ha például egy Azure Blob storage esemény közzétett sémája:
+Az Azure Blob Storage-eseményekhez közzétett séma például a következő:
 
 ```json
 [
@@ -81,38 +81,39 @@ Ha például egy Azure Blob storage esemény közzétett sémája:
 
 ## <a name="event-properties"></a>Esemény tulajdonságai
 
-Az összes esemény rendelkezik ugyanazokat az alábbi felső szintű adatokat:
+Minden esemény a következő legfelső szintű adatértékekkel rendelkezik:
 
 | Tulajdonság | Típus | Leírás |
 | -------- | ---- | ----------- |
-| topic | string | A forrás teljes erőforrás elérési útja. Ez a mező nem írható. Event Grid biztosítja ezt az értéket. |
-| subject | string | Az esemény tárgya közzétevő által megadott elérési útja. |
-| eventType | string | Ehhez eseményre adatforráshoz regisztrált esemény típusok egyikét. |
-| eventTime | string | Az esemény akkor jön létre az idő alapján a szolgáltató UTC idő. |
-| id | string | Az esemény egyedi azonosítója. |
-| data | object | Eseményadatok adott erőforrás-szolgáltatónál. |
-| dataVersion | string | Az adatobjektum sémaverziója. A közzétevő a sémaverziót határozza meg. |
-| metadataVersion | string | Az esemény-metaadatok sémaverziója. Event Grid sémáját, a legfelső szintű tulajdonságait határozza meg. Event Grid biztosítja ezt az értéket. |
+| témakör | sztring | Az eseményforrás teljes erőforrás-elérési útja. Ez a mező nem írható. Event Grid megadja ezt az értéket. |
+| Tulajdonos | sztring | Közzétevő által megadott elérési út az esemény tárgya számára. |
+| EventType | sztring | Az eseményforrás egyik regisztrált eseménytípus. |
+| eventTime | sztring | Az esemény a szolgáltató UTC-ideje alapján történő létrehozásakor. |
+| id | sztring | Az esemény egyedi azonosítója. |
+| adatok | objektum | Az erőforrás-szolgáltatóhoz tartozó esemény-adatértékek. |
+| dataVersion | sztring | Az adatobjektum séma-verziója. A közzétevő határozza meg a séma verzióját. |
+| metadataVersion | sztring | Az esemény metaadatainak séma-verziója. Event Grid a legfelső szintű tulajdonságok sémáját határozza meg. Event Grid megadja ezt az értéket. |
 
-Az az objektum tulajdonságainak kapcsolatos további információkért tekintse meg az eseményforrás:
+Az adatobjektum tulajdonságainak megismeréséhez tekintse meg az esemény forrását:
 
-* [Az Azure-előfizetések (műveletek)](event-schema-subscriptions.md)
+* [Azure-előfizetések (felügyeleti műveletek)](event-schema-subscriptions.md)
 * [Container Registry](event-schema-container-registry.md)
 * [Blob Storage](event-schema-blob-storage.md)
 * [Event Hubs](event-schema-event-hubs.md)
 * [IoT Hub](event-schema-iot-hub.md)
 * [Médiaszolgáltatások](../media-services/latest/media-services-event-schemas.md?toc=%2fazure%2fevent-grid%2ftoc.json)
-* [Erőforráscsoportok (műveletek)](event-schema-resource-groups.md)
+* [Erőforráscsoportok (felügyeleti műveletek)](event-schema-resource-groups.md)
 * [Szolgáltatásbusz](event-schema-service-bus.md)
-* [Azure SignalR](event-schema-azure-signalr.md)
+* [Azure-jelző](event-schema-azure-signalr.md)
+* [Azure Machine Learning](event-schema-machine-learning.md)
 
-Egyéni témakörök az esemény-közzétevő határozza meg az objektum. A legfelső szintű adatokat standard erőforrás által definiált események, ugyanazokat a mezőket kell rendelkeznie.
+Az egyéni témakörök esetében az esemény-közzétevő határozza meg az adatobjektumot. A legfelső szintű adatnak ugyanazokkal a mezőkkel kell rendelkeznie, mint a szabványos erőforrás-definíciós események.
 
-Amikor eseményeket tesz közzé egyéni témaköröket, hozzon létre a tulajdonosok az eseményeket, amelyek megkönnyítik a tudja-e azok érdeklik az esemény-előfizetők számára. Előfizetők használhatják a tárgy események szűrése és útvonalat. Vegye figyelembe, hogy kezeléséről az elérési út, az esemény történt, így az elérési út szegmensei lehet szűrni az előfizetők számára. Az elérési út révén széles körben vagy szűken események szűrése előfizetők. Ha például három szegmens elérési utat, például adnia `/A/B/C` az e-mail tárgyát, az előfizetők az első szegmens szerint szűrheti `/A` különböző események beolvasásához. Ezeket az előfizetőket témákat, mint például az események beolvasása `/A/B/C` vagy `/A/D/E`. Más előfizetőkkel szerint szűrheti `/A/B` beolvasni a szűkebb események egy meghatározott készletének.
+Az események egyéni témakörökbe való közzétételekor olyan témákat hozhat létre az eseményekhez, amelyek megkönnyítik az előfizetők számára, hogy megismerjék, hogy érdeklik-e az esemény. Az előfizetők a tulajdonos használatával szűrhetik és irányítják az eseményeket. Gondolja át, hogy hol történt az esemény, így az előfizetők az elérési út szakaszai alapján szűrhetik az útvonalat. Az elérési út lehetővé teszi az előfizetők számára az események szűk vagy széles körű szűrését. Ha például egy három szegmens elérési utat ad meg, mint a tárgy `/A/B/C`, az előfizetők az első szegmens alapján szűrhetik a `/A`, hogy az események széles körét kapják meg. Ezek az előfizetők olyan eseményeket kapnak, mint a `/A/B/C` vagy a `/A/D/E`. Más előfizetők a `/A/B` alapján szűrhetik az események szűkebb körét.
 
-A tulajdonos néha történtekről további információkra van szüksége. Például a **Tárfiókok** közzétevő tárgyát `/blobServices/default/containers/<container-name>/blobs/<file>` egy fájl hozzáadásakor egy tárolóba. Az elérési út alapján szűrheti az előfizető `/blobServices/default/containers/testcontainer` az adott tárolóban, de nem más a tárfiókban lévő tárolók összes eseményének lekérdezése. Az előfizető is szűrhetőek vagy útvonalat az utótagot `.txt` csak együttműködni az szöveges fájlok.
+Előfordulhat, hogy a tárgya több részletet is igényel, hogy mi történt. A **Storage-fiókok** közzétevője például a tulajdonos `/blobServices/default/containers/<container-name>/blobs/<file>`t adja meg, amikor egy fájlt hozzáadnak egy tárolóhoz. Az előfizető az elérési út alapján szűrheti az `/blobServices/default/containers/testcontainer`, hogy lekérje az adott tároló összes eseményét, de a Storage-fiókban ne legyenek más tárolók. Az előfizető a `.txt` utótaggal is szűrheti vagy átirányíthatja a szöveget, hogy csak szöveges fájlokkal működjön.
 
 ## <a name="next-steps"></a>További lépések
 
-* Azure Event Grid bemutatása, lásd: [Mi az Event Grid?](overview.md)
-* Az Azure Event Grid-előfizetés létrehozásával kapcsolatos további információkért lásd: [Event Grid-előfizetés séma](subscription-creation-schema.md).
+* A Azure Event Grid bemutatása: [Mi az Event Grid?](overview.md)
+* Azure Event Grid-előfizetés létrehozásával kapcsolatos további információkért lásd: [Event Grid előfizetés sémája](subscription-creation-schema.md).
