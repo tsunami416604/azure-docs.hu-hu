@@ -1,5 +1,5 @@
 ---
-title: 'Azure Resource Manager: Önálló adatbázis létrehozása – Azure SQL Database | Microsoft Docs'
+title: 'Azure Resource Manager: hozzon létre egy önálló adatbázist – Azure SQL Database '
 description: Hozzon létre egyetlen adatbázist Azure SQL Database a Azure Resource Manager sablonnal.
 services: sql-database
 ms.service: sql-database
@@ -11,14 +11,14 @@ author: mumian
 ms.author: jgao
 ms.reviewer: carlrab
 ms.date: 06/28/2019
-ms.openlocfilehash: f3e9bb0e9a2c4c58a205798441ddc2208019e7d2
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 3c46dbe5cac4407eda8b4198613eda1c1742ed35
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68566574"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73687203"
 ---
-# <a name="quickstart-create-a-single-database-in-azure-sql-database-using-the-azure-resource-manager-template"></a>Gyors útmutató: Önálló adatbázis létrehozása Azure SQL Database a Azure Resource Manager sablon használatával
+# <a name="quickstart-create-a-single-database-in-azure-sql-database-using-the-azure-resource-manager-template"></a>Gyors útmutató: önálló adatbázis létrehozása Azure SQL Database a Azure Resource Manager sablon használatával
 
 [Egyetlen adatbázis](sql-database-single-database.md) létrehozása a leggyorsabb és legegyszerűbb üzembe helyezési lehetőség az adatbázisok Azure SQL Database-ben való létrehozásához. Ez a rövid útmutató bemutatja, hogyan hozhat létre egyetlen adatbázist a Azure Resource Manager sablonnal. További információ: [Azure Resource Manager dokumentáció](/azure/azure-resource-manager/).
 
@@ -76,7 +76,7 @@ Read-Host -Prompt "Press [ENTER] to continue ..."
 ## <a name="next-steps"></a>További lépések
 
 - Hozzon létre egy kiszolgálói szintű tűzfalszabály, amely a helyszíni vagy távoli eszközökről csatlakozik az önálló adatbázishoz. További információ: [kiszolgálói szintű tűzfalszabály létrehozása](sql-database-server-level-firewall-rule.md).
-- A kiszolgálói szintű tűzfalszabály létrehozása után több különböző eszköz és nyelv használatával kapcsolódhat az adatbázishoz, [és](sql-database-connect-query.md) lekérdezheti azt.
+- A kiszolgálói szintű tűzfalszabály létrehozása után több különböző eszköz és nyelv használatával kapcsolódhat az adatbázishoz, [és lekérdezheti](sql-database-connect-query.md) azt.
   - [Kapcsolódás és lekérdezés az SQL Server Management Studióval](sql-database-connect-query-ssms.md)
   - [Kapcsolódás és lekérdezés az Azure Data Studióval](https://docs.microsoft.com/sql/azure-data-studio/quickstart-sql-database?toc=/azure/sql-database/toc.json)
 - Ha egyetlen adatbázist szeretne létrehozni az Azure CLI használatával, tekintse meg az [Azure CLI-minták](sql-database-cli-samples.md)című témakört.

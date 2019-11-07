@@ -1,5 +1,5 @@
 ---
-title: Mit takar a Windows Virtual Desktop?  – Azure
+title: Mit takar a Windows Virtual Desktop? – Azure
 description: A Windows rendszerű virtuális asztal áttekintése.
 services: virtual-desktop
 author: Heidilohr
@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: overview
 ms.date: 08/07/2019
 ms.author: helohr
-ms.openlocfilehash: e1ae0501e2a558967b7d53229dc629e035c5e067
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 058cf516fd8d10cef1e1c93e5493f8c19bdc679d
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72597905"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73607486"
 ---
 # <a name="what-is-windows-virtual-desktop"></a>Mit takar a Windows Virtual Desktop? 
 
@@ -139,7 +139,7 @@ Az elérhető automatizálási és üzembe helyezési lehetőségek attól függ
 |Windows Server 2016|Igen|Igen|Igen|Igen|Automatikus|
 |Windows Server 2012 R2|Igen|Igen|Nem|Nem|Automatikus|
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Első lépésként létre kell hoznia egy bérlőt. Ha többet szeretne megtudni a bérlők létrehozásáról, folytassa a bérlői létrehozási oktatóanyaggal.
 

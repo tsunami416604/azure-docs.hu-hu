@@ -1,5 +1,5 @@
 ---
-title: Privát hivatkozás a Azure SQL Database és az adattárházhoz | Microsoft Docs
+title: Privát hivatkozás a Azure SQL Database és az adattárházhoz
 description: A Private Endpoint szolgáltatás áttekintése
 author: rohitnayakmsft
 ms.author: rohitna
@@ -7,12 +7,12 @@ ms.service: sql-database
 ms.topic: overview
 ms.reviewer: vanto
 ms.date: 09/17/2019
-ms.openlocfilehash: 3adcccde89823f865535c9e1350ac4c3e541eef6
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: a056c4beeeb05886d4b4ed492a05d1963372b366
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "71066256"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73687609"
 ---
 # <a name="private-link-for-azure-sql-database-and-data-warehouse-preview"></a>Privát hivatkozás a Azure SQL Database és az adattárházhoz (előzetes verzió)
 
@@ -49,7 +49,7 @@ A privát kapcsolat lehetővé teszi, hogy a felhasználók az expressz útvonal
 
 ### <a name="creation-process"></a>Létrehozási folyamat
 A privát végpontokat a portál, a PowerShell vagy az Azure CLI használatával lehet létrehozni:
-- [Portal](../private-link/create-private-endpoint-portal.md)
+- [Portál](../private-link/create-private-endpoint-portal.md)
 - [PowerShell](../private-link/create-private-endpoint-powershell.md)
 - [Parancssori felület](../private-link/create-private-endpoint-cli.md)
 
@@ -60,16 +60,16 @@ Miután a hálózati rendszergazda létrehozta a magánhálózati végpontot (PE
 
     - (1) válassza ki a privát végponti kapcsolatokat a bal oldali ablaktáblán
     - (2) az összes privát végponti kapcsolat (Pécs) listáját jeleníti meg
-    - (3) a hozzá tartozó saját végpont (PE) létrehozva @no__t – az összes Pécs @ no__t-1 0Screenshot
+    - (3) a megfelelő magán-végpont (PE) létrehozása ![az összes Pécs][3]
 
 1. Válasszon ki egy egyéni PEC-t a listából.
-@no__t – 0Screenshot kiválasztott PEC @ no__t-1
+![képernyőfelvétel a PEC-][6]
 
 1. Az SQL-rendszergazda dönthet úgy, hogy jóváhagyja vagy elutasítja a PEC-t, és opcionálisan egy rövid szöveges választ is hozzáadhat.
-@no__t – 0Screenshot a PEC jóváhagyása @ no__t-1
+a PEC jóváhagyásának ![képernyőképe][4]
 
 1. Jóváhagyás vagy elutasítás után a lista a megfelelő állapotot jeleníti meg a válasz szövegével együtt.
-@no__t – az összes Pécs 0Screenshot a jóváhagyás után @ no__t-1
+![képernyőkép az összes Pécsről jóváhagyás után][5]
 
 ## <a name="use-cases-of-private-link-for-azure-sql-database"></a>Privát hivatkozás használata Azure SQL Database esetén 
 
@@ -128,7 +128,7 @@ A kimenet azt mutatja, hogy a Psping pingelheti a PEC-hez társított magánhál
 
 ### <a name="check-connectivity-using-nmap"></a>Kapcsolat ellenőrzése az nmap használatával
 
-Az nmap (Network Mapper) egy ingyenes és nyílt forráskódú eszköz, amely a hálózati felderítéshez és a biztonsági naplózáshoz használatos. További információt és a letöltési hivatkozást a https://nmap.org webhelyen talál. Ezzel az eszközzel ellenőrizheti, hogy a magánhálózati végpont a 1433-es porton keresztül figyeli-e a kapcsolatokat.
+Az nmap (Network Mapper) egy ingyenes és nyílt forráskódú eszköz, amely a hálózati felderítéshez és a biztonsági naplózáshoz használatos. További információért és a letöltési hivatkozásért látogasson el https://nmap.org. Ezzel az eszközzel ellenőrizheti, hogy a magánhálózati végpont a 1433-es porton keresztül figyeli-e a kapcsolatokat.
 
 A következőképpen futtathatja az nmap-t úgy, hogy megadja a magánhálózati végpontot futtató alhálózat címtartomány-tartományát.
 
@@ -178,7 +178,7 @@ A Base általában az adatok Azure Storage-fiókokból Azure SQL Data Warehouseb
 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - A Azure SQL Database biztonság áttekintését lásd: [az adatbázis biztonságossá tétele](sql-database-security-overview.md)
 - Az Azure SQL Database kapcsolatok áttekintését lásd: [Azure SQL connectivity Architecture](sql-database-connectivity-architecture.md)

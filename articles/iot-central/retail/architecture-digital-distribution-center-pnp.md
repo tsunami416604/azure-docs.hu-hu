@@ -4,14 +4,15 @@ description: A IoT Centralhez készült Digital Distribution Center alkalmazás-
 author: KishorIoT
 ms.author: nandab
 ms.service: iot-central
+ms.subservice: iot-central-retail
 ms.topic: overview
 ms.date: 10/20/2019
-ms.openlocfilehash: 1ce0896d3b9fd60190625b49d0e4580a2038e638
-ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
+ms.openlocfilehash: 2ab79cccaafeb1b48100285a5fd495340b545278
+ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73027374"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73615341"
 ---
 # <a name="architecture-of-iot-central-digital-distribution-center-application-template"></a>A IoT Central Digital Distribution Center alkalmazás-sablon architektúrája
 
@@ -44,7 +45,7 @@ Az Azure IoT Central egy megoldás-fejlesztői platform, amely leegyszerűsíti 
 ## <a name="business-insights--actions-via-data-egress"></a>Üzleti elemzések & műveletek a kimenő adatforgalomon keresztül 
 A IoT Central platform a folyamatos adatexportálás (CDE) és az API-k révén gazdag bővíthetőségi lehetőségeket biztosít. A telemetria adatfeldolgozási vagy nyers telemetria alapuló üzleti elemzések általában egy előnyben részesített üzletági alkalmazásba exportálhatók. Ez a webhook, a Service Bus, az Event hub vagy a blob Storage szolgáltatáson keresztül érhető el, amely a gépi tanulási modellek fejlesztéséhez, betanításához és üzembe helyezéséhez & további ismereteket biztosít.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * Útmutató a [digitális terjesztési központ sablonjának](./tutorial-iot-central-digital-distribution-center-pnp.md) üzembe helyezéséhez
 * További információ a [IoT Central kiskereskedelmi sablonokról](./overview-iot-central-retail-pnp.md)
 * További információ a IoT Centralról [IoT Central áttekintés](../core/overview-iot-central-pnp.md)

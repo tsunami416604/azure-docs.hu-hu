@@ -1,5 +1,5 @@
 ---
-title: Azure-beli adat-előállító létrehozása Resource Manager-sablon használatával | Microsoft Docs
+title: Azure-beli adatelőállító létrehozása Resource Manager-sablonnal
 description: Ebben az oktatóprogramban egy egyszerű minta Azure Data Factory-folyamatot fog létrehozni egy Azure Resource Manager-sablon segítségével.
 services: data-factory
 documentationcenter: ''
@@ -11,20 +11,20 @@ ms.date: 02/20/2019
 author: djpmsft
 ms.author: daperlov
 manager: craigg
-ms.openlocfilehash: 8766ff461227a749a432771dfe7dbe96a291109a
-ms.sourcegitcommit: a819209a7c293078ff5377dee266fa76fd20902c
+ms.openlocfilehash: 6bba764060c243417711205083bf02f84a68fed1
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71008715"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73684526"
 ---
-# <a name="tutorial-create-an-azure-data-factory-using-azure-resource-manager-template"></a>Oktatóanyag: Azure-beli adatelőállító létrehozása Azure Resource Manager sablon használatával
+# <a name="tutorial-create-an-azure-data-factory-using-azure-resource-manager-template"></a>Oktatóanyag: Azure-beli adat-előállító létrehozása Azure Resource Manager-sablon használatával
 
 > [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory-szolgáltatás verzióját:"]
 > * [1-es verzió](v1/data-factory-build-your-first-pipeline-using-arm.md)
 > * [Aktuális verzió](quickstart-create-data-factory-resource-manager-template.md)
 
-A rövid útmutató bemutatja, hogyan hozhat létre Azure-beli adat-előállítókat Azure Resource Manager-sablonokkal. Az adat-előállítóban létrehozott folyamat adatokat **másol** egy Azure-blobtároló egyik mappájából egy másikba. Az adatAzure Data Factory használatával történő **átalakításával** kapcsolatos oktatóanyagért lásd [: oktatóanyag: Az adatátalakítás a](transform-data-using-spark.md)Spark használatával.
+A rövid útmutató bemutatja, hogyan hozhat létre Azure-beli adat-előállítókat Azure Resource Manager-sablonokkal. Az adat-előállítóban létrehozott folyamat adatokat **másol** egy Azure-blobtároló egyik mappájából egy másikba. Az adatok Azure Data Factoryval történő **átalakításának** útmutatásáért olvassa el az [az adatok Spark segítségével történő átalakítását ismertető oktatóanyagot](transform-data-using-spark.md).
 
 > [!NOTE]
 > Ez a cikk nem mutatja be részletesen a Data Factory szolgáltatást. Ha szeretné megismerni az Azure Data Factoryt, tekintse meg [Az Azure Data Factory bemutatását](introduction.md).
@@ -37,11 +37,11 @@ A rövid útmutató bemutatja, hogyan hozhat létre Azure-beli adat-előállít�
 
 Kövesse [az Azure PowerShell telepítését és konfigurálását](/powershell/azure/install-Az-ps) ismertető cikkben szereplő utasításokat a legújabb Azure PowerShell-modulok telepítéséhez.
 
-## <a name="resource-manager-templates"></a>Resource Manager-sablonok
+## <a name="resource-manager-templates"></a>Erőforrás-kezelői sablonok
 
 A Resource Manager-sablonokkal kapcsolatos általános információkért tekintse meg [az Azure Resource Manager-sablonok készítését ismertető cikket](../azure-resource-manager/resource-group-authoring-templates.md).
 
-A következő szakasz a Data Factory-entitások meghatározására szolgáló teljes Resource Manager-sablont ismerteti, így gyorsan végighaladhat az oktatóanyagon és tesztelheti a sablont. Az egyes Data Factory-entitások meghatározásának megértéséhez tekintse meg a [Data Factory-entitások a sablonban](#data-factory-entities-in-the-template) szakaszt.
+A következő szakasz a Data Factory-entitások meghatározására szolgáló teljes Resource Manager-sablont ismerteti, így gyorsan végighaladhat az oktatóanyagon, és tesztelheti a sablont. Az egyes Data Factory-entitások meghatározásának megértéséhez tekintse meg a [Data Factory-entitások a sablonban](#data-factory-entities-in-the-template) szakaszt.
 
 A sablon Data Factory erőforrásainak JSON-szintaxisával és tulajdonságaival kapcsolatos információkért lásd: [Microsoft. DataFactory-erőforrástípusok](/azure/templates/microsoft.datafactory/allversions).
 
@@ -288,7 +288,7 @@ Hozzon létre egy **ADFTutorialARM-Parameters.json** elnevezésű JSON-fájlt, a
 
 > [!IMPORTANT]
 > - Adja meg az Azure Storage-fiók nevét és kulcsát a **storageAccountName** és **storageAccountKey** paraméterek értékeinek ebben a paraméterfájlban. Létrehozta az adftutorial tárolót, és feltöltötte a mintafájlt (emp.txt) az Azure Blob Storage bemeneti mappájába.
-> - Adjon meg egy globálisan egyedi nevet az adat-előállító számára a **dataFactoryName** paraméterhez. Példa: ARMTutorialFactoryJohnDoe11282017.
+> - Adjon meg egy globálisan egyedi nevet az adat-előállító számára a **dataFactoryName** paraméterhez. Például: ARMTutorialFactoryJohnDoe11282017.
 > - A **triggerStartTime** paraméterhez adja meg az aktuális napot a következő formátumban: `2019-09-08T00:00:00`.
 > - A **triggerEndTime** paraméterhez adja meg a következő napot a következő formátumban: `2019-09-09T00:00:00`. Az aktuális UTC-időt is megtekintheti, és befejezési időpontként megadhatja a következő egy-két órát. Például ha az aktuális UTC-idő 1:32, adja meg a következőt befejezési időpontként: `2019-09-09:03:00:00`. Ebben az esetben az eseményindító kétszer futtatja a folyamatot (2:00-kor és 3:00-kor).
 
@@ -435,16 +435,16 @@ Az üzembe helyezett eseményindító leállított állapotban van. Az trigger i
 
 3. Az adatfeldolgozó lapon kattintson a **szerző & figyelés** csempére.
 
-4. Az **első lépések** lapon válassza a **figyelés fület**.  ![Folyamat futtatásának figyelése](media/doc-common-process/get-started-page-monitor-button.png)
+4. Az **első lépések** lapon válassza a **figyelés fület**.  ![figyelő folyamatának futtatása](media/doc-common-process/get-started-page-monitor-button.png)
 
     > [!IMPORTANT]
-    > A folyamat futását csak az óra órája látja (például: 4, 5, 6, stb.). Kattintson az eszköztár **Frissítés** gombjára a lista frissítéséhez, amikor megkezdődik a következő óra.
+    > Látható, hogy a folyamat csak egész órakor fut (például: 4:00, 5:00, 6:00 stb.). Kattintson az eszköztár **Frissítés** gombjára a lista frissítéséhez, amikor megkezdődik a következő óra.
 
 5. Kattintson a **műveletek** oszlop **Megtekintés tevékenység futtatása** hivatkozására.
 
     ![Folyamat művelethivatkozása](media/quickstart-create-data-factory-resource-manager-template/pipeline-actions-link.png)
 
-6. Itt a folyamat futtatásához kapcsolódó tevékenységfuttatások láthatóak. Ebben a rövid útmutatóban a folyamatnak csak egy típusú tevékenysége van: Másolja. Így ennek a tevékenységnek a futtatása látható.
+6. Itt a folyamat futtatásához kapcsolódó tevékenységfuttatások láthatóak. Ebben a rövid útmutatóban a folyamat csak egyetlen tevékenységtípussal rendelkezik: Másolás. Így ennek a tevékenységnek a futtatása látható.
 
     ![Tevékenységfuttatások](media/quickstart-create-data-factory-resource-manager-template/activity-runs.png)
 7. Kattintson a **kimenet** hivatkozásra a műveletek oszlop alatt. Megjelenik a másolási művelet kimenete egy **Kimenet** ablakban. A teljes kimenet megtekintéséhez kattintson a teljes méret gombra. Visszaállíthatja a kimeneti ablak eredeti méretét, vagy be is zárhatja azt.
@@ -694,7 +694,7 @@ New-AzResourceGroupDeployment -Name MyARMDeployment -ResourceGroupName ADFTutori
 
 Megfigyelheti, hogy az első parancs a fejlesztőkörnyezet, a második a tesztkörnyezet, a harmadik pedig az éles környezet paraméterfájlját használja.
 
-Emellett ismétlődő feladatok elvégzéséhez is újból felhasználhatja a sablont. Például létrehozhat több olyan, egy vagy több folyamattal rendelkező adat-előállítót, amelyek ugyanazt a logikát alkalmazzák, de az egyes adat-előállítók különböző Azure Storage-fiókokat használnak. Ebben a forgatókönyvben ugyanazt a sablont használja ugyanabban a környezetben (fejlesztői, teszt vagy éles) különböző paraméterfájlokkal a data factoryk létrehozásához.
+Emellett ismétlődő feladatok elvégzéséhez is újból felhasználhatja a sablont. Például létrehozhat több olyan, egy vagy több folyamattal rendelkező adat-előállítót, amelyek ugyanazt a logikát alkalmazzák, de az egyes adat-előállítók különböző Azure Storage-fiókokat használnak. Ebben a forgatókönyvben ugyanazt a sablont használja ugyanabban a környezetben (fejlesztői, teszt vagy éles) különböző paraméterfájlokkal az adat-előállítók létrehozásához.
 
 ## <a name="next-steps"></a>További lépések
 

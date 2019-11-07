@@ -4,14 +4,15 @@ description: A IoT Central rendszerhez készült intelligens leltár-kezelési a
 author: KishorIoT
 ms.author: nandab
 ms.service: iot-central
+ms.subservice: iot-central-retail
 ms.topic: overview
 ms.date: 10/20/2019
-ms.openlocfilehash: 7c8b2379ccb7562a79077df026a7083831e5415b
-ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
+ms.openlocfilehash: 8360db3e31899dc7ca0a2b502d0036358f0858d6
+ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73027269"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73615233"
 ---
 # <a name="tutorial-deploy-and-walk-through-a-smart-inventory-management-application-template"></a>Oktatóanyag: üzembe helyezés és útmutató intelligens leltár-kezelési alkalmazás sablonja
 
@@ -105,7 +106,7 @@ Ha nem folytatja az alkalmazás használatát, törölje az alkalmazás sablonj�
 > [!div class="mx-imgBorder"]
 > ![intelligens leltár felügyeleti irányítópultja](./media/tutorial-iot-central-smart-inventory-management/smart_inventory_management_cleanup.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * További információ az intelligens leltár felügyeletének [intelligens leltár-kezelési koncepcióról](./architecture-smart-inventory-management-pnp.md)
 * További információ a [IoT Central kiskereskedelmi sablonokról](./overview-iot-central-retail-pnp.md)
 * További információ a IoT Centralról [IoT Central áttekintés](../core/overview-iot-central-pnp.md)

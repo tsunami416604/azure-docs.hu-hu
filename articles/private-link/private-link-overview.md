@@ -5,14 +5,14 @@ services: private-link
 author: KumudD
 ms.service: private-link
 ms.topic: overview
-ms.date: 09/16/2019
+ms.date: 11/04/2019
 ms.author: kumud
-ms.openlocfilehash: 9e6206e6f7e09ebe03659eb6e515a9b26d3469bd
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: HT
+ms.openlocfilehash: aa176cb5ffc67ebba826cf13a1a66608301af5e5
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73475943"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73601533"
 ---
 # <a name="what-is-azure-private-link-preview"></a>Mi az az Azure privát kapcsolat? (Előzetes verzió)
 Az Azure Private link lehetővé teszi az Azure Pásti-szolgáltatások (például az Azure Storage, a Azure Cosmos DB és a SQL Database) és az Azure által üzemeltetett ügyfél/partner szolgáltatások elérését a virtuális hálózat [privát végpontján](private-endpoint-overview.md) keresztül. A virtuális hálózat és a szolgáltatás közötti forgalom a Microsoft gerinchálózatán keresztül halad át, így kiküszöböli a nyilvános internet jelentette kitettséget. Létrehozhatja saját [privát kapcsolati szolgáltatását](private-link-service-overview.md) is a virtuális hálózaton (VNet), és saját maga is elvégezheti az ügyfelek számára. Az Azure Private link használatával történő telepítési és használati élmény konzisztens az Azure Pásti, az ügyfél és a megosztott partneri szolgáltatások között.
@@ -35,17 +35,17 @@ Az Azure Private link a következő előnyöket biztosítja:
  
 - **Kiterjesztheti saját szolgáltatásait**: ugyanazokat a szolgáltatásokat és funkciókat használhatja, mint a saját szolgáltatásait az Azure-ban saját ügyfelei számára. Ha a szolgáltatást egy standard Load Balancer mögé helyezi, akkor engedélyezheti azt a privát hivatkozáshoz. A fogyasztó ezután közvetlenül kapcsolódhat a szolgáltatáshoz a saját VNet lévő privát végpont használatával. Ezeket a kapcsolatkérelmeket egyszerű jóváhagyási hívási folyamattal kezelheti. Az Azure Private link a különböző Active Directory bérlők által használt felhasználók és szolgáltatások számára is működik. 
 
-## <a name="availability"></a>Elérhetőség 
+## <a name="availability"></a>Rendelkezésre állás 
  A következő táblázat felsorolja a privát kapcsolati szolgáltatásokat, valamint azokat a régiókat, ahol elérhetők. 
 
-|Alkalmazási helyzet  |Támogatott szolgáltatások   |Elérhető régiók | Állapot   |
+|Forgatókönyv  |Támogatott szolgáltatások   |Elérhető régiók | Állapot   |
 |---------|---------|---------|---------|
-|Privát hivatkozás az ügyfél tulajdonában lévő szolgáltatásokhoz|standard Load Balancer mögötti privát kapcsolati szolgáltatások |USA nyugati középső régiója; WestUS USA déli középső régiója; USA keleti régiója; USA északi középső régiója  |  Előzetes verzió  |
-|Privát hivatkozás az Azure Pásti-szolgáltatásokhoz   | Azure Storage        |  USA keleti régiója, USA nyugati régiója, USA nyugati középső régiója       | Előzetes verzió         |
-|  | 2\. generációs Azure Data Lake Storage        |  USA keleti régiója, USA nyugati régiója, USA nyugati középső régiója       | Előzetes verzió         |
-|  |  Azure SQL Database         | USA nyugati középső régiója; WestUS USA déli középső régiója; USA keleti régiója; USA északi középső régiója      |   Előzetes verzió      |
-||Azure SQL Data Warehouse| USA nyugati középső régiója; WestUS USA déli középső régiója; USA keleti régiója; USA északi középső régiója |Előzetes verzió|
-||Azure Cosmos DB| USA nyugati középső régiója; WestUS EastUS USA északi középső régiója; EastUS 2; 2. WestUS |Előzetes verzió|
+|Privát hivatkozás az ügyfél tulajdonában lévő szolgáltatásokhoz|standard Load Balancer mögötti privát kapcsolati szolgáltatások | Összes nyilvános régió  |  Előzetes verzió  |
+|Privát hivatkozás az Azure Pásti-szolgáltatásokhoz   | Azure Storage        |  Összes nyilvános régió      | Előzetes verzió         |
+|  | 2\. generációs Azure Data Lake Storage        |  Összes nyilvános régió      | Előzetes verzió         |
+|  |  Azure SQL Database         | Összes nyilvános régió      |   Előzetes verzió      |
+||Azure SQL Data Warehouse| Összes nyilvános régió |Előzetes verzió|
+||Azure Cosmos DB| USA nyugati középső régiója, WestUS, USA északi középső régiója |Előzetes verzió|
 
 A legfrissebb értesítésekért keresse fel az [Azure Virtual Network Updates oldalt](https://azure.microsoft.com/updates/?product=virtual-network).
 
@@ -64,7 +64,7 @@ A díjszabással kapcsolatos információkért lásd: az [Azure Private link dí
 ## <a name="faqs"></a>Gyakori kérdések  
 Gyakori kérdések: [Azure Private link – gyakori kérdések](private-link-faq.md).
  
-## <a name="limits"></a>Korlátozások  
+## <a name="limits"></a>Korlátok  
 A korlátokat lásd: [Azure Private link Limits](../azure-subscription-service-limits.md#private-link-limits).
 
 ## <a name="next-steps"></a>További lépések

@@ -11,16 +11,18 @@ ms.topic: quickstart
 ms.date: 11/07/2018
 ms.author: glenga
 ms.reviewer: azfuncdf, cotresne
-ms.openlocfilehash: b47e828f3b8d760594cb04ba40ceaa7248050c52
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: 1a1586124a1cfb05f2b7c4e9c3b0070170447b96
+ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70933470"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73614572"
 ---
 # <a name="create-your-first-durable-function-in-javascript"></a>Az első tartós függvény létrehozása a JavaScriptben
 
 A *Durable Functions* [Azure functions](../functions-overview.md) , amely lehetővé teszi állapot-nyilvántartó függvények írására kiszolgáló nélküli környezetben. A bővítmény automatikusan kezeli az állapotokat, az ellenőrzőpontokat és az újraindításokat.
+
+[!INCLUDE [v1-note](../../../includes/functions-durable-v1-tutorial-note.md)]
 
 Ebből a cikkből megtudhatja, hogyan használhatja a Visual Studio Code Azure Functions bővítményt a "Hello World" tartós funkciójának helyi létrehozására és tesztelésére.  Ez a függvény összehangolja és összekapcsolja a hívásokat más funkciókkal. Ezután közzéteheti a függvénykódot az Azure-ban.
 
@@ -46,7 +48,7 @@ Az oktatóanyag elvégzéséhez:
 
 ## <a name="install-the-durable-functions-npm-package"></a>A Durable Functions NPM-csomag telepítése
 
-1. Telepítse a `durable-functions` NPM csomagot `npm install durable-functions` a Function alkalmazás gyökérkönyvtárában.
+1. Telepítse a `durable-functions` NPM csomagot a Function alkalmazás gyökérkönyvtárában `npm install durable-functions` futtatásával.
 
 ## <a name="creating-your-functions"></a>A függvények létrehozása
 
@@ -56,7 +58,7 @@ Most létrehozjuk a három olyan függvényt, amely a Durable Functions megkezd�
 
 Először hozzon létre egy HTTP által aktivált függvényt, amely tartós függvény-előkészítést indít el.
 
-1. Az *Azure-ból: Függvények*területen válassza a **create Function (függvény létrehozása** ) ikont.
+1. Az *Azure: functions*elemnél válassza a **create Function (függvény létrehozása** ) ikont.
 
     ![Függvény létrehozása](./media/quickstart-js-vscode/create-function.png)
 
@@ -74,7 +76,7 @@ Most létrehoztunk egy belépési pontot a tartós függvénynek. Vegyünk fel e
 
 Most létrehozunk egy Orchestrator a tevékenység-függvények koordinálásához.
 
-1. Az *Azure-ból: Függvények*területen válassza a **create Function (függvény létrehozása** ) ikont.
+1. Az *Azure: functions*elemnél válassza a **create Function (függvény létrehozása** ) ikont.
 
     ![Függvény létrehozása](./media/quickstart-js-vscode/create-function.png)
 
@@ -88,7 +90,7 @@ Felvettünk egy Orchestrator a tevékenységi funkciók koordinálására. Most 
 
 Most létrehozunk egy tevékenység-függvényt, amely ténylegesen elvégzi a megoldás munkáját.
 
-1. Az *Azure-ból: Függvények*területen válassza a **create Function (függvény létrehozása** ) ikont.
+1. Az *Azure: functions*elemnél válassza a **create Function (függvény létrehozása** ) ikont.
 
     ![Függvény létrehozása](./media/quickstart-js-vscode/create-function.png)
 
@@ -102,14 +104,14 @@ Most már hozzáadta az összes olyan összetevőt, amely egy előkészítés é
 
 Az Azure Functions Core Tools lehetővé teszi Azure Functions-projektek helyi fejlesztői számítógépen való futtatását. Amikor a Visual Studio Code-ból először indít el egy függvényt, a rendszer arra kéri, hogy telepítse ezeket az eszközöket.
 
-1. A Windows rendszerű számítógépen indítsa el az Azure Storage Emulatort, és győződjön meg arról, hogy a *Local. Settings. JSON* `UseDevelopmentStorage=true` **AzureWebJobsStorage** tulajdonsága a következőre van beállítva:.
+1. Indítsa el a Windows rendszerű számítógépen az Azure Storage Emulatort, és győződjön meg arról, hogy a *Local. Settings. JSON* **AzureWebJobsStorage** tulajdonsága `UseDevelopmentStorage=true`értékre van állítva.
 
-    A Storage Emulator 5,8 esetén győződjön meg arról, hogy a local. Settings. JSON **AzureWebJobsSecretStorageType** tulajdonsága a következőre van beállítva `files`:. Mac vagy Linux rendszerű számítógépen a **AzureWebJobsStorage** tulajdonságot egy meglévő Azure Storage-fiókhoz tartozó kapcsolódási sztringre kell beállítania. Ebben a cikkben később létrehoz egy Storage-fiókot.
+    A Storage Emulator 5,8 esetén győződjön meg arról, hogy a local. Settings. JSON **AzureWebJobsSecretStorageType** tulajdonsága `files`értékre van állítva. Mac vagy Linux rendszerű számítógépen a **AzureWebJobsStorage** tulajdonságot egy meglévő Azure Storage-fiókhoz tartozó kapcsolódási sztringre kell beállítania. Ebben a cikkben később létrehoz egy Storage-fiókot.
 
 2. A függvény teszteléséhez állítson be egy töréspontot a függvény kódjában, majd nyomja le az F5 billentyűt a függvényalkalmazás-projekt elindításához. A Core Tools kimenete a **Terminal** (Terminál) panelen jelenik meg. Ha első alkalommal használja a Durable Functions-t, a Durable Functions bővítmény telepítve lesz, és a Build eltarthat néhány másodpercig.
 
     > [!NOTE]
-    > A JavaScript Durable Functions a **Microsoft. Azure. webjobs. Extensions. DurableTask** kiterjesztés **1.7.0** vagy újabb verzióját igényli. Futtassa a következő parancsot a Azure Functions alkalmazás gyökérkönyvtárában a Durable Functions bővítmény telepítéséhez`func extensions install -p Microsoft.Azure.WebJobs.Extensions.DurableTask -v 1.7.0`
+    > A JavaScript Durable Functions a **Microsoft. Azure. webjobs. Extensions. DurableTask** kiterjesztés **1.7.0** vagy újabb verzióját igényli. Futtassa az alábbi parancsot a Azure Functions alkalmazás gyökérkönyvtárában a Durable Functions bővítmény telepítéséhez `func extensions install -p Microsoft.Azure.WebJobs.Extensions.DurableTask -v 1.7.0`
 
 3. A **Terminal** (Terminál) panelen másolja a vágólapra a HTTP által indított függvény URL-végpontját.
 
@@ -121,7 +123,7 @@ Az Azure Functions Core Tools lehetővé teszi Azure Functions-projektek helyi f
 
    A válasz a HTTP-függvény kezdeti eredménye, amely közli, hogy a tartós összehangolás sikeresen elindult. Még nem az előkészítés végeredménye. A válasz több hasznos URL-címet is tartalmaz. Most pedig lekérdezjük a folyamat állapotát.
 
-6. Másolja ki az URL- `statusQueryGetUri` címet, és illessze be a böngésző címsorába, majd hajtsa végre a kérelmet. Azt is megteheti, hogy továbbra is a Poster használatával adja ki a GET kérelmet.
+6. Másolja a `statusQueryGetUri` URL-címét, és illessze be a böngésző címsorába, majd hajtsa végre a kérelmet. Azt is megteheti, hogy továbbra is a Poster használatával adja ki a GET kérelmet.
 
    A kérelem lekérdezi az állapotot az előkészítési példányon. Egy végleges választ kap, amely megmutatja, hogy a példány befejeződik, és tartalmazza a tartós funkció kimeneteit vagy eredményét. A következőképpen néz ki: 
 

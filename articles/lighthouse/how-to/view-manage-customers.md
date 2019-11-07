@@ -7,12 +7,12 @@ ms.service: lighthouse
 ms.date: 10/23/2019
 ms.topic: overview
 manager: carmonm
-ms.openlocfilehash: f6c98a67394db8028901f3f1f8e799af4c7a8c5f
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: d68ac0a1b6a66482a85f7ab79840099a34c731c2
+ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72898911"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73615537"
 ---
 # <a name="view-and-manage-customers-and-delegated-resources"></a>Ügyfelek és delegált erőforrások megtekintése és kezelése
 
@@ -30,6 +30,9 @@ Ne feledje, hogy a **saját ügyfelek** lap felső szakasza csak a delegált el�
 Az ügyfél részleteinek megtekintéséhez válassza a **Customers** (ügyfelek) lehetőséget a **Customers (ügyfelek)** oldal bal oldalán.
 
 Minden ügyfél esetében látni fogja az ügyfél nevét, az ügyfél AZONOSÍTÓját (bérlői AZONOSÍTÓját), valamint az engagement szolgáltatáshoz tartozó ajánlatot. A **delegálások** oszlopban látható a delegált előfizetések száma és/vagy a delegált erőforráscsoportok száma.
+
+> [!IMPORTANT]
+> A delegálás megtekintéséhez a felhasználóknak meg kell adni az [olvasó](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#reader) szerepkört (vagy egy másik beépített szerepkört, amely olvasói hozzáférést is tartalmaz) a bevezetési folyamat során.
 
 Az oldal tetején lévő szűrők segítségével rendezheti és csoportosíthatja az ügyfél adatait, vagy szűrheti az ügyfelek, ajánlatok vagy kulcsszavak alapján.
 
@@ -61,7 +64,7 @@ Ha ezt követően olyan szolgáltatáshoz fér hozzá, amely támogatja a [több
 
 A delegált előfizetésekhez vagy erőforráscsoportokhöz kapcsolódó funkciókat a több-bérlős felügyeletet támogató szolgáltatásokon belül is elérheti, ha kijelöli az előfizetést vagy az erőforráscsoportot a szolgáltatáson belül.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - További információ a [bérlők közötti felügyeleti élményekről](../concepts/cross-tenant-management-experience.md).
 - Ismerje meg, hogy az ügyfelek hogyan [tekinthetik meg és kezelhetik a szolgáltatókat](view-manage-service-providers.md) a Azure Portalban **található szolgáltatók** használatával.
