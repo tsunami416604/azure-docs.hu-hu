@@ -1,44 +1,44 @@
 ---
-title: Azure Media Clipperrel honosítás konfigurálása |} A Microsoft Docs
-description: További tudnivalók az Azure Media Clipperrel támogatott nyelvek és honosítási támogatás
+title: Az Azure Media Clipper honosításának konfigurálása | Microsoft Docs
+description: Ismerje meg az Azure Media Clipper által támogatott nyelveket és a honosítási támogatást
 services: media-services
-keywords: clip;subclip;encoding;media
-author: dbgeorge
-manager: jasonsue
-ms.author: dwgeo
+keywords: klip; alklip; kódolás; média
+author: Juliako
+manager: femila
+ms.author: juliako
 ms.date: 03/14/2019
 ms.topic: article
 ms.service: media-services
-ms.openlocfilehash: 41fd483a0b78619db6d018cf4b2ab7933a7c3031
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 96ffdfe5e6b3e913bd5596dd624e35afcaecfabe
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61465796"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73685026"
 ---
 # <a name="configure-localization"></a>Honosítás konfigurálása 
 
-Az Azure Media Clipperrel 18 nyelveken érhető el. A widget nyelvének beállítása, meg kell határoznia a `language` paraméter az inicializálás során. Adja át az alábbi listából a kívánt nyelvű kód karakterlánc:
-- Chinese (Simplified): zh-hans
-- Kínai (hagyományos): zh-hant
-- Cseh: cs
-- Holland, Flemish: nl
-- Angol nyelvű: en
+Az Azure Media Clipper 18 nyelven érhető el. A widget nyelvének beállításához az inicializálás során meg kell adnia a `language` paramétert. Adja meg a kívánt nyelvi kód sztringjét a következő listából:
+- Kínai (egyszerűsített): zh-Hans
+- Kínai (hagyományos): zh-Hant
+- Cseh: CS
+- Holland, flamand: nl
+- Angol: hu
 - Francia: fr
-- Német: Németország
+- Német: de
 - Magyar: hu
-- Olasz:,
-- Japán: japán
-- Koreai: ko
+- Olasz: it
+- Japán: ja
+- Koreai: Ko
 - Lengyel: pl
 - Portugál (brazíliai): pt-br
-- Portugál (portugáliai): pt-pt
+- Portugál (portugáliai): PT-PT
 - Orosz: ru
 - Spanyol: es
-- Svéd: sv
-- Török: tr
+- Svéd: Sv
+- Török: TR
 
-Állítsa be egy egyéni szótár, vagy bővítheti az alapértelmezett nyelv szótár, meg kell adnia a `languages` vagy `extraLanguages` paramétert, illetve. A következő JSON-formátumban egy egyéni szótárba adja át:
+Egyéni nyelvi szótár beállításához vagy az alapértelmezett nyelvi szótár kibővítéséhez meg kell adnia a `languages` vagy `extraLanguages` paramétert. A következő JSON-formátummal továbbítson egy egyéni szótárt:
 
 ```javascript
 {
@@ -50,7 +50,7 @@ Az Azure Media Clipperrel 18 nyelveken érhető el. A widget nyelvének beállí
 }
 ```
 
-Az alábbi minta például az angol nyelvű honosított karakterláncot határozza meg:
+Az alábbi minta például a honosított angol sztringeket határozza meg:
 
 ```javascript
 {
@@ -140,7 +140,7 @@ Az alábbi minta például az angol nyelvű honosított karakterláncot határoz
 ```
 
 ## <a name="next-steps"></a>További lépések
-Tekintse meg a következő lépések az Azure Media Clipperrel konfigurálása:
-- [Eszközök betöltése az Azure Media clipperbe](media-services-azure-media-clipper-load-assets.md)
+Tekintse meg az Azure Media Clipper konfigurálásának következő lépéseit:
+- [Eszközök betöltése az Azure Media Clipperbe](media-services-azure-media-clipper-load-assets.md)
 - [Egyéni billentyűparancsok konfigurálása](media-services-azure-media-clipper-keyboard-shortcuts.md)
-- [Az a Clipperrel klipekkel kapcsolatos feladatok elküldése](media-services-azure-media-clipper-submit-job.md)
+- [Levágási feladatok elküldése a Clipperből](media-services-azure-media-clipper-submit-job.md)

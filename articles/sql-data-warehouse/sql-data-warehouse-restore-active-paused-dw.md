@@ -1,5 +1,5 @@
 ---
-title: Meglévő Azure SQL Data Warehouse visszaállítása | Microsoft Docs
+title: Meglévő adattárház visszaállítása
 description: Útmutató egy meglévő Azure SQL Data Warehouse visszaállításához.
 services: sql-data-warehouse
 author: anumjs
@@ -10,12 +10,13 @@ ms.subservice: manage
 ms.date: 08/29/2018
 ms.author: anjangsh
 ms.reviewer: igorstan
-ms.openlocfilehash: 7470dd96109823057a174d2ecf097583dcb51898
-ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
+ms.custom: seo-lt-2019
+ms.openlocfilehash: a73658510111df44c522d88ed5eceb7dcfa80d0d
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69575270"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73685532"
 ---
 # <a name="restore-an-existing-azure-sql-data-warehouse"></a>Meglévő Azure SQL Data Warehouse visszaállítása
 
@@ -23,9 +24,9 @@ Ebből a cikkből megtudhatja, hogyan állíthatja vissza egy meglévő SQL Data
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-**Ellenőrizze a DTU kapacitását.** Mindegyik SQL Data Warehouse egy SQL-kiszolgáló (például myserver.database.windows.net) üzemelteti, amely rendelkezik alapértelmezett DTU-kvótával. Ellenőrizze, hogy az SQL-kiszolgáló rendelkezik-e elegendő fennmaradó DTU-kvótával az adatbázis visszaállításához. A szükséges DTU kiszámításához, illetve további DTU igényléséhez lásd: [DTU-kvóta][Request a DTU quota change]megváltoztatásának kérése.
+**Ellenőrizze a DTU kapacitását.** Mindegyik SQL Data Warehouse egy SQL-kiszolgáló (például myserver.database.windows.net) üzemelteti, amely rendelkezik alapértelmezett DTU-kvótával. Ellenőrizze, hogy az SQL-kiszolgáló rendelkezik-e elegendő fennmaradó DTU-kvótával az adatbázis visszaállításához. A szükséges DTU kiszámításához, illetve további DTU igényléséhez lásd: [DTU-kvóta megváltoztatásának kérése][Request a DTU quota change].
 
-## <a name="before-you-begin"></a>Előkészületek
+## <a name="before-you-begin"></a>Előzetes teendők
 
 1. Győződjön meg arról, hogy a [Azure PowerShell telepítését][Install Azure PowerShell]végzi.
 2. Rendelkeznie kell egy meglévő visszaállítási ponttal, amelyet vissza szeretne állítani. Ha új visszaállítást szeretne létrehozni, tekintse meg [az új felhasználó által definiált visszaállítási pont létrehozását ismertető oktatóanyagot][the tutorial to create a new user-defined restore point].
@@ -88,7 +89,7 @@ $RestoredDatabase.status
 
 ## <a name="restore-an-existing-data-warehouse-through-the-azure-portal"></a>Meglévő adattárház visszaállítása a Azure Portal
 
-1. Jelentkezzen be az [Azure Portalra][Azure portal].
+1. Jelentkezzen be az [Azure portálra][Azure portal].
 2. Navigáljon ahhoz a SQL Data Warehouse, amelyet vissza szeretne állítani.
 3. Az Áttekintés panel tetején válassza a **visszaállítás**lehetőséget.
 

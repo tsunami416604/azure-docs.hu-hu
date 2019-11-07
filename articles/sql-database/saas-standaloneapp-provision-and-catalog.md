@@ -1,5 +1,5 @@
 ---
-title: Több-bérlős SaaS-oktatóanyag – Azure SQL Database | Microsoft Docs
+title: Több-bérlős SaaS-oktatóanyag – Azure SQL Database
 description: Új bérlők kiépítése és katalogizálása az önálló alkalmazás mintájának használatával
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: billgib
 ms.date: 09/24/2018
-ms.openlocfilehash: f9087ff33bccb54497ec8d781a47469553683d65
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: de1007aac3988f2ea78b9d1b7b1de19b862f196a
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68570274"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73691950"
 ---
 # <a name="provision-and-catalog-new-tenants-using-the--application-per-tenant-saas-pattern"></a>Új bérlők kiépítése és katalogizálása az alkalmazással a bérlői SaaS-minták alapján
 
@@ -71,7 +71,7 @@ Az oktatóanyag végén önálló bérlői alkalmazásokkal rendelkezik, és min
 
 Az oktatóanyag teljesítéséhez meg kell felelnie az alábbi előfeltételeknek: 
 
-* Az Azure PowerShell telepítve van. A részletekért lásd: [Ismerkedés az Azure PowerShell-lel](https://docs.microsoft.com/powershell/azure/get-started-azureps)
+* Az Azure PowerShell telepítve van. Részletes információk: [Ismerkedés az Azure PowerShell-lel](https://docs.microsoft.com/powershell/azure/get-started-azureps)
 * A három minta bérlői alkalmazás telepítve van. Ha kevesebb, mint öt perc alatt szeretné telepíteni ezeket az alkalmazásokat, tekintse meg [a Wingtip tickets SaaS önálló alkalmazási minta üzembe helyezése és megismerése](saas-standaloneapp-get-started-deploy.md)című részt
 
 ## <a name="provision-the-catalog"></a>A katalógus kiépítése
@@ -84,7 +84,7 @@ Ebben a feladatban megtudhatja, hogyan építheti ki az összes bérlői adatbá
 1. A PowerShell ISE-ben nyissa meg a *. ..\Learning Modules\UserConfig.PSM* , és frissítse a **\<felhasználói\>** értéket a három minta alkalmazás telepítésekor használt értékre.  **Mentse a fájlt**.  
 1. A PowerShell ISE-ben nyissa meg a *. ..\Learning Modules\ProvisionTenants\Demo-ProvisionAndCatalog.ps1* , és állítsa **$Scenario = 1**. Telepítse a bérlői katalógust, és regisztrálja az előre meghatározott bérlőket.
 
-1. Adjon hozzá egy töréspontot úgy, hogy a kurzort bárhová helyezi `& $PSScriptRoot\New-Catalog.ps1`a sorba, majd nyomja le az **F9**billentyűt.
+1. Adjon hozzá egy töréspontot úgy, hogy a kurzort bárhová helyezi, `& $PSScriptRoot\New-Catalog.ps1`, majd nyomja le az **F9**billentyűt.
 
     ![Töréspont beállítása nyomkövetéshez](media/saas-standaloneapp-provision-and-catalog/breakpoint.png)
 
@@ -97,14 +97,14 @@ Ha a parancsfájl befejeződik, a katalógus már létezik, és a rendszer az ö
 
 Most tekintse meg a létrehozott erőforrásokat.
 
-1. Nyissa meg a [Azure Portal](https://portal.azure.com/) , és tallózással keresse meg az erőforráscsoportot.  Nyissa meg a **Wingtip-SA-\<Catalog\> -User** erőforráscsoportot, és jegyezze fel a katalógus-kiszolgálót és az adatbázist.
-1. Nyissa meg az adatbázist a portálon , és válassza az adatkezelő lehetőséget a bal oldali menüben.  Kattintson a login parancsra, majd adja meg a jelszót = **P\@ssword1**.
+1. Nyissa meg a [Azure Portal](https://portal.azure.com/) , és tallózással keresse meg az erőforráscsoportot.  Nyissa meg a **Wingtip-SA-Catalog-\<felhasználói\>** erőforráscsoportot, és jegyezze fel a katalógus-kiszolgálót és az adatbázist.
+1. Nyissa meg az adatbázist a portálon, és válassza az *adatkezelő* lehetőséget a bal oldali menüben.  Kattintson a login parancsra, majd írja be a jelszót = **P\@ssword1**.
 
 
 1. Fedezze fel a *tenantcatalog* -adatbázis sémáját.  
-   * A `__ShardManagement` sémában lévő objektumokat a Elastic Database ügyféloldali kódtár is megadja.
-   * A `Tenants` táblázat és `TenantsExtended` a nézet a mintában szereplő bővítmények, amelyek bemutatják, hogyan terjesztheti ki a katalógust további érték biztosítására.
-1. Futtassa a lekérdezést `SELECT * FROM dbo.TenantsExtended`.          
+   * A `__ShardManagement` sémában található objektumokat az Elastic Database ügyféloldali kódtár is megadja.
+   * A `Tenants` tábla és `TenantsExtended` nézet a mintában szereplő bővítmények, amelyek bemutatják, hogyan terjesztheti ki a katalógust további érték biztosítására.
+1. Futtassa a lekérdezést, `SELECT * FROM dbo.TenantsExtended`.          
 
    ![adatkezelő](media/saas-standaloneapp-provision-and-catalog/data-explorer-tenantsextended.png)
 
@@ -119,12 +119,12 @@ Ebben a feladatban megtudhatja, hogyan építhet ki egyetlen bérlős alkalmazá
 
 * **Hozzon létre egy új erőforráscsoportot** a bérlőhöz. 
 * **Az alkalmazás és az adatbázis kiépítése** az új erőforráscsoporthoz egy Azure Resource Management-sablonnal.  Ez a művelet magában foglalja az adatbázis általános sémával és hivatkozási adattal való inicializálását egy bacpac-fájl importálásával. 
-* **Inicializálja az adatbázist**alapszintű bérlői információkkal. Ez a művelet magában foglalja a helyszín típusának megadását, amely meghatározza a háttérként használt fényképet az események webhelyén. 
+* **Inicializálja az adatbázist alapszintű bérlői információkkal**. Ez a művelet magában foglalja a helyszín típusának megadását, amely meghatározza a háttérként használt fényképet az események webhelyén. 
 * **Regisztrálja az adatbázist a katalógus-adatbázisban**. 
 
 1. A PowerShell ISE-ben nyissa meg a *. ..\Learning Modules\ProvisionTenants\Demo-ProvisionAndCatalog.ps1* , és állítsa be a **$Scenario = 2**. A bérlői katalógus üzembe helyezése és az előre definiált bérlők regisztrálása
 
-1. Vegyen fel egy töréspontot a szkriptbe úgy, hogy a kurzort az 49 `& $PSScriptRoot\New-TenantApp.ps1`-es sorban helyezi el, amely a következőt adja meg:
+1. Vegyen fel egy töréspontot a szkriptbe úgy, hogy a kurzort bárhová a 49-as sorban helyezi el, amely a következőt mondja: `& $PSScriptRoot\New-TenantApp.ps1`
 1. Futtassa a szkriptet az **F5**billentyű lenyomásával. 
 1.  Miután a szkript végrehajtása leáll a törésponton, nyomja le az **F11** billentyűt a New-Catalog. ps1 parancsfájl beléptetéséhez.
 1.  A szkript végrehajtásának nyomon követéséhez használja a Debug menüpontot, az F10 és az F11 billentyűt a függvények meghívásához.

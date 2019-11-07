@@ -1,5 +1,5 @@
 ---
-title: A Azure Data Factory SSIS Integration Runtime felügyeletének hibáinak megoldása | Microsoft Docs
+title: 'A SSIS Integration Runtime-kezelés hibáinak megoldása Azure Data Factory '
 description: Ez a cikk hibaelhárítási útmutatást nyújt a SSIS Integration Runtime (SSIS IR) felügyeleti problémáival kapcsolatban.
 services: data-factory
 documentationcenter: ''
@@ -12,12 +12,12 @@ author: chinadragon0515
 ms.author: dashe
 ms.reviewer: sawinark
 manager: craigg
-ms.openlocfilehash: d16267e104d753770dc40ce99b0f56e5c749b2d0
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 3452fc2274eb646acb19c0e6a203ebadcb81cad5
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72752170"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73684022"
 ---
 # <a name="troubleshoot-ssis-integration-runtime-management-in-azure-data-factory"></a>A SSIS Integration Runtime-kezelés hibáinak megoldása Azure Data Factory
 
@@ -105,7 +105,7 @@ Ez a hiba azt jelenti, hogy az egyéni telepítési szkript (main.cmd) végrehaj
 
 ### <a name="customsetupscripttimeout"></a>CustomSetupScriptTimeout
 
-Ez a hiba az egyéni telepítési szkript végrehajtásának időtúllépését jelzi. Győződjön meg arról, hogy a parancsfájl csendesen hajtható végre, és nincs szükség interaktív bevitelre, és győződjön meg arról, hogy a blob-tároló csak a szükséges egyéni telepítőfájlokat tartalmazza. Először a parancsfájlt kell tesztelni a helyi gépen. Az egyéni telepítés végrehajtási naplóit is ellenőriznie kell a blobtárolóban. Az egyéni telepítés maximális időtartama 45 perc, mielőtt időtúllépés történik, amely magában foglalja az összes fájl a tárolóból való letöltéséhez, majd az SSIS IR-ban való telepítéséhez szükséges időt is. Ha hosszabb időre van szüksége, hozzon létre egy támogatási jegyet.
+Ez a hiba az egyéni telepítési szkript végrehajtásának időtúllépését jelzi. Győződjön meg arról, hogy a szkript végrehajtható csendes módban, felhasználói beavatkozás nélkül, és hogy a blobtároló csak a szükséges egyéni telepítési fájlokat tartalmazza. Javasoljuk, hogy a szkriptet először tesztelje a helyi számítógépen. Az egyéni telepítés végrehajtási naplóit is ellenőriznie kell a blobtárolóban. Az egyéni telepítés maximális időtartama 45 perc, mielőtt időtúllépés történik, amely magában foglalja az összes fájl a tárolóból való letöltéséhez, majd az SSIS IR-ban való telepítéséhez szükséges időt is. Ha hosszabb időre van szüksége, hozzon létre egy támogatási jegyet.
 
 ### <a name="customsetupscriptloguploadfailure"></a>CustomSetupScriptLogUploadFailure
 

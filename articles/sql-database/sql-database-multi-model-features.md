@@ -1,5 +1,5 @@
 ---
-title: Többmodelles képességek Azure SQL Database | Microsoft Docs
+title: Többmodelles képességek Azure SQL Database
 description: Azure SQL Database lehetővé teszi több adatmodell használatát ugyanabban az adatbázisban.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: ''
 ms.date: 12/17/2018
-ms.openlocfilehash: e319daf322d688828c7d05d78dacd2359273223f
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 7156b9923c9cb98ae3dde143c98eb32a6eb11a9c
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68567135"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73687730"
 ---
 # <a name="multi-model-capabilities-of-azure-sql-database"></a>Azure SQL Database több modellből álló képességei
 
@@ -34,7 +34,7 @@ A következő esetekben érdemes megfontolni a Azure SQL Database többmodelles 
 ## <a name="overview"></a>Áttekintés
 
 Az Azure SQL a következő többmodelles funkciókat biztosítja:
-- A [Graph-funkciók](#graph-features) lehetővé teszik, hogy az adatait csomópontok és élek szerint képviseljék, és a Graph- `MATCH` kezelővel bővített szabványos Transact-SQL-lekérdezéseket használja a Graph-adatlekérdezéshez.
+- A [Graph-funkciók](#graph-features) lehetővé teszik, hogy az adatait csomópontok és élek szerint képviseljék, és szabványos Transact-SQL-lekérdezéseket használjon, amelyek a Graph `MATCH` operátorral bővülnek a gráf adatai lekérdezéséhez.
 - A [JSON-funkciók](#json-features) lehetővé teszik a JSON-dokumentumok táblázatokba való behelyezését, a kapcsolódó adattípusok a JSON-dokumentumokra való átalakítását és fordítva. A normál Transact-SQL nyelvet a JSON-függvények használatával a dokumentumok elemzéséhez használhatja, a nem fürtözött indexeket, a oszlopcentrikus indexeket és a memóriára optimalizált táblákat pedig a lekérdezések optimalizálására használhatja.
 - A [térbeli funkciók](#spatial-features) lehetővé teszik a földrajzi és a geometriai adattárolást, a térbeli indexekkel való indexelést, valamint a térbeli lekérdezések használatával történő lekérését.
 - Az [XML-funkciók](#xml-features) lehetővé teszik az XML-adatok tárolását és indexelését az adatbázisban, és natív XQuery/XPath műveleteket használhatnak az XML-adatokkal való munkavégzéshez. Az Azure SQL Database speciális beépített XML-lekérdezési motorral rendelkezik, amely XML-adatfeldolgozást dolgoz fel.
@@ -132,7 +132,7 @@ CREATE TABLE Collection (
 )
 ```
 
-Ezt a kulcs-érték struktúrát úgy szabhatja testre, hogy korlátozás nélkül illeszkedjen az igényeihez. Az érték például lehet XML-dokumentum a `nvarchar(max)` típus helyett, ha az érték JSON-dokumentum, a JSON-tartalom érvényességét ellenőrző `CHECK` korlátozást adhat meg. A további oszlopok egy kulcsával kapcsolatos tetszőleges számú értéket adhat hozzá, a számított oszlopok és indexek hozzáadásával egyszerűsítheti és optimalizálhatja az adatelérést, valamint a tábla memóriához/optimalizált séma-táblaként való definiálásával jobb teljesítményt érhet el.
+Ezt a kulcs-érték struktúrát úgy szabhatja testre, hogy korlátozás nélkül illeszkedjen az igényeihez. Az érték például lehet XML-dokumentum `nvarchar(max)` típus helyett, ha az érték JSON-dokumentum, `CHECK` korlátozást is beállíthat, amely ellenőrzi a JSON-tartalom érvényességét. A további oszlopok egy kulcsával kapcsolatos tetszőleges számú értéket adhat hozzá, a számított oszlopok és indexek hozzáadásával egyszerűsítheti és optimalizálhatja az adatelérést, valamint a tábla memóriához/optimalizált séma-táblaként való definiálásával jobb teljesítményt érhet el.
 
 Megtudhatja, [hogyan használja a BWin a memóriában tárolt OLTP, hogy példátlan teljesítményt és méretezést](https://blogs.msdn.microsoft.com/sqlcat/20../../how-bwin-is-using-sql-server-2016-in-memory-oltp-to-achieve-unprecedented-performance-and-scale/) biztosítson a ASP.net gyorsítótárazási megoldás számára, amely másodpercenként 1.200.000-kötegeket ért el, például hogyan lehet a viszonyítási modellt hatékonyan használni kulcs-érték párok megoldásként eljárás.
 

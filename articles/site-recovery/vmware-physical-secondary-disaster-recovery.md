@@ -1,19 +1,19 @@
 ---
-title: VMware virtuális gépek vagy fizikai kiszolgálók vész-helyreállításának beállítása másodlagos helyre a Azure Site Recovery használatával | Microsoft Docs
+title: VMware virtuális gépek/fizikai kiszolgálók vész-helyreállítása másodlagos helyre Azure Site Recovery
 description: Megtudhatja, hogyan állíthatja be a VMware virtuális gépek, illetve a Windows-és Linux-alapú fizikai kiszolgálók vész-helyreállítását egy másodlagos helyre Azure Site Recovery használatával.
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 services: site-recovery
 ms.topic: conceptual
-ms.date: 08/22/2019
+ms.date: 11/05/2019
 ms.author: raynew
-ms.openlocfilehash: a87abfdd70db07e4310dc6a39a280e12f664d03b
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: 71d230c9fea25edfbf0ca4ea40f15b69779ad060
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69972094"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73620521"
 ---
 # <a name="set-up-disaster-recovery-of-on-premises-vmware-virtual-machines-or-physical-servers-to-a-secondary-site"></a>Helyszíni VMware virtuális gépek vagy fizikai kiszolgálók vész-helyreállításának beállítása másodlagos helyre
 
@@ -29,8 +29,8 @@ A helyszíni VMware-vagy fizikai adatközpontok közötti replikálás Azure Sit
 
 A 2018-es és a 2019-es verzióban két frissítés jelenik meg: 
 
--   7\. frissítés: Javítja a hálózati konfigurációt és a megfelelőségi problémákat, és biztosítja a TLS 1,2-támogatást.
--   8\. frissítés: Támogatást nyújt a Linux operációs rendszerek RHEL/CentOS 7.3/7.4/7.5 és SUSE 12 rendszerhez
+-   7\. frissítés: megjavítja a hálózati konfigurációt és a megfelelőségi problémákat, és biztosítja a TLS 1,2-támogatást.
+-   8\. frissítés: támogatást nyújt a Linux operációs rendszerek RHEL/CentOS 7.3/7.4/7.5 és SUSE 12 rendszerhez
 
 A 8. frissítés után a rendszer nem szabadít fel további frissítéseket. A 8. frissítésben hozzáadott operációs rendszerek esetében korlátozott a gyorsjavítások támogatása, a hibajavítások pedig a legjobb erőfeszítés alapján.
 
@@ -39,8 +39,8 @@ A Azure Site Recovery továbbra is innovációra törekszik azáltal, hogy a VMw
 ### <a name="scenario-migration"></a>Forgatókönyv áttelepítése
 Alternatív megoldásként javasoljuk, hogy a helyszíni VMware virtuális gépek és a fizikai gépek vész-helyreállítását az Azure-ba replikálva állítsa be. Ezt a következőképpen teheti meg:
 
-1.  Tekintse át az alábbi gyors összehasonlítást. A helyszíni gépek replikálásához ellenőriznie kell, hogy megfelelnek-e az Azure-ba [](./vmware-physical-azure-support-matrix.md#replicated-machines) történő replikáció követelményeinek. Ha VMware virtuális gépeket replikál, javasoljuk, hogy tekintse át a [kapacitás-tervezési irányelveket](./site-recovery-plan-capacity-vmware.md), és futtassa az [Deployment Planner eszközt](./site-recovery-deployment-planner.md) az identitási kapacitásra vonatkozó követelményekkel, és ellenőrizze a megfelelőséget.
-2.  A Deployment Planner futtatása után beállíthatja a replikációt: o a VMware virtuális gépekhez, a következő oktatóanyagok segítségével előkészítheti az [Azure](./tutorial-prepare-azure.md)-t, előkészítheti [a helyszíni VMware-környezetet](./vmware-azure-tutorial-prepare-on-premises.md), és beállíthatja a vész- [helyreállítást](./vmware-azure-tutorial-prepare-on-premises.md).
+1.  Tekintse át az alábbi gyors összehasonlítást. A helyszíni gépek replikálásához ellenőriznie kell, hogy megfelelnek-e az Azure-ba történő replikáció [követelményeinek](./vmware-physical-azure-support-matrix.md#replicated-machines) . Ha VMware virtuális gépeket replikál, javasoljuk, hogy tekintse át a [kapacitás-tervezési irányelveket](./site-recovery-plan-capacity-vmware.md), és futtassa az [Deployment Planner eszközt](./site-recovery-deployment-planner.md) az identitási kapacitásra vonatkozó követelményekkel, és ellenőrizze a megfelelőséget.
+2.  A Deployment Planner futtatása után beállíthatja a replikációt: o a VMware virtuális gépekhez, a következő oktatóanyagok segítségével [előkészítheti az Azure](./tutorial-prepare-azure.md)-t, előkészítheti [a helyszíni VMware-környezetet](./vmware-azure-tutorial-prepare-on-premises.md), és beállíthatja a vész- [helyreállítást](./vmware-azure-tutorial-prepare-on-premises.md).
 o fizikai gépek esetén kövesse ezt az [oktatóanyagot](./physical-azure-disaster-recovery.md).
 3.  Miután a gépek az Azure-ba replikálódnak, a vész- [helyreállítási gyakorlat](./site-recovery-test-failover-to-azure.md) futtatásával gondoskodhat arról, hogy minden a várt módon működjön.
 
@@ -50,18 +50,18 @@ o fizikai gépek esetén kövesse ezt az [oktatóanyagot](./physical-azure-disas
 --|--|--
 **Szükséges összetevők** |Mobilitási szolgáltatás replikált gépeken. Helyszíni konfigurációs kiszolgáló, Process Server, fő célkiszolgáló. Ideiglenes folyamat-kiszolgáló az Azure-ban a feladat-visszavételhez.|Mobilitási szolgáltatás, a Process Server, a konfigurációs kiszolgáló és a fő cél
 **Konfigurálás és előkészítés** |Recovery Services tároló a Azure Portal | A vContinuum használata 
-**Replikált** |Lemez (Windows és Linux) |Volume-Windows<br> Lemez – Linux
+**Replikált** |Lemez (Windows és Linux) |Kötet – Windows<br> Lemez – Linux
 **Megosztott lemezes fürt** |Nem támogatott|Támogatott
-**Adatforgalomra vonatkozó korlátok (átlag)** |10 MB/s adatlemez<br> 25MB/s-adatmennyiség virtuális gépenként<br> [További információ](./site-recovery-vmware-deployment-planner-analyze-report.md#azure-site-recovery-limits) | lemezenként > 10 MB/s adatmennyiség  <br> virtuális gépenként > 25 MB/s adatmennyiség
+**Adatforgalomra vonatkozó korlátok (átlag)** |10 MB/s adatlemez<br> 25MB/s-adatmennyiség virtuális gépenként<br> [Részletek](./site-recovery-vmware-deployment-planner-analyze-report.md#azure-site-recovery-limits) | lemezenként > 10 MB/s adatmennyiség  <br> virtuális gépenként > 25 MB/s adatmennyiség
 **Monitorozás** |Azure Portal|CX-ból (konfigurációs kiszolgáló)
-**Támogatási mátrix** | [A részletekért kattintson ide](./vmware-physical-azure-support-matrix.md)|[Az ASR-felderítővel kompatibilis mátrix letöltése](https://aka.ms/asr-scout-cm)
+**Támogatási mátrix** | [Részletekért kattintson ide](./vmware-physical-azure-support-matrix.md)|[Az ASR-felderítővel kompatibilis mátrix letöltése](https://aka.ms/asr-scout-cm)
 
 
 ## <a name="prerequisites"></a>Előfeltételek
 Az oktatóanyag elvégzéséhez:
 
 - [Tekintse át](vmware-physical-secondary-support-matrix.md) az összes összetevő támogatási követelményeit.
-- Győződjön meg róla, hogy a replikálni kívánt gépek megfelelnek a replikált gépek [támogatásának](vmware-physical-secondary-support-matrix.md#replicated-vm-support).
+- Győződjön meg róla, hogy a replikálni kívánt gépek megfelelnek a [replikált gépek támogatásának](vmware-physical-secondary-support-matrix.md#replicated-vm-support).
 
 
 ## <a name="download-and-install-component-updates"></a>Összetevők frissítéseinek letöltése és telepítése
@@ -81,54 +81,54 @@ Telepítse a frissítéseket a következőképpen:
 >Az összes felderítő összetevő fájljának frissítési verziója nem lehet azonos az Update. zip fájlban. A régebbi verzió azt jelzi, hogy az összetevő nem módosult a frissítés korábbi frissítése óta.
 
 Töltse le az [Update](https://aka.ms/asr-scout-update7) . zip fájlt, valamint a [MySQL és a PHP frissítési](https://aka.ms/asr-scout-u7-mysql-php-manualupgrade) konfigurációs fájljait. Az Update. zip fájl a következő összetevők összes alap bináris fájljait és kumulatív frissítését tartalmazza: 
-- InMage_ScoutCloud_RX_8.0.1.0_RHEL6-64_GA_02Mar2015.tar.gz
-- RX_8.0.7.0_GA_Update_7_2965621_28Dec18.tar.gz
-- InMage_CX_8.0.1.0_Windows_GA_26Feb2015_release.exe
-- InMage_CX_TP_8.0.1.0_Windows_GA_26Feb2015_release.exe
-- CX_Windows_8.0.7.0_GA_Update_7_2965621_28Dec18.exe
-- InMage_PI_8.0.1.0_Windows_GA_26Feb2015_release.exe
-- InMage_Scout_vContinuum_MT_8.0.7.0_Windows_GA_27Dec2018_release.exe
-- InMage_UA_8.0.7.0_Windows_GA_27Dec2018_release.exe
-- InMage_UA_8.0.7.0_OL5-32_GA_03Dec2018_release.tar.gz
-- InMage_UA_8.0.7.0_OL5-64_GA_03Dec2018_release.tar.gz
-- InMage_UA_8.0.7.0_OL6-32_GA_03Dec2018_release.tar.gz
-- InMage_UA_8.0.7.0_OL6-64_GA_03Dec2018_release.tar.gz
-- InMage_UA_8.0.7.0_RHEL5-32_GA_03Dec2018_release.tar.gz
-- InMage_UA_8.0.7.0_RHEL5-64_GA_03Dec2018_release.tar.gz
-- InMage_UA_8.0.7.0_RHEL6-32_GA_03Dec2018_release.tar.gz
-- InMage_UA_8.0.7.0_RHEL6-64_GA_03Dec2018_release.tar.gz
-- InMage_UA_8.0.7.0_RHEL7-64_GA_03Dec2018_release.tar.gz
-- InMage_UA_8.0.7.0_SLES10-32_GA_03Dec2018_release.tar.gz
-- InMage_UA_8.0.7.0_SLES10-64_GA_03Dec2018_release.tar.gz
-- InMage_UA_8.0.7.0_SLES10-SP1-32_GA_03Dec2018_release.tar.gz
-- InMage_UA_8.0.7.0_SLES10-SP1-64_GA_03Dec2018_release.tar.gz
-- InMage_UA_8.0.7.0_SLES10-SP2-32_GA_03Dec2018_release.tar.gz
-- InMage_UA_8.0.7.0_SLES10-SP2-64_GA_03Dec2018_release.tar.gz
-- InMage_UA_8.0.7.0_SLES10-SP3-32_GA_03Dec2018_release.tar.gz
-- InMage_UA_8.0.7.0_SLES10-SP3-64_GA_03Dec2018_release.tar.gz
-- InMage_UA_8.0.7.0_SLES10-SP4-32_GA_03Dec2018_release.tar.gz
-- InMage_UA_8.0.7.0_SLES10-SP4-64_GA_03Dec2018_release.tar.gz
-- InMage_UA_8.0.7.0_SLES11-32_GA_03Dec2018_release.tar.gz
-- InMage_UA_8.0.7.0_SLES11-64_GA_04Dec2018_release.tar.gz
-- InMage_UA_8.0.7.0_SLES11-SP1-32_GA_03Dec2018_release.tar.gz
-- InMage_UA_8.0.7.0_SLES11-SP1-64_GA_04Dec2018_release.tar.gz
-- InMage_UA_8.0.7.0_SLES11-SP2-32_GA_03Dec2018_release.tar.gz
-- InMage_UA_8.0.7.0_SLES11-SP2-64_GA_03Dec2018_release.tar.gz
-- InMage_UA_8.0.7.0_SLES11-SP3-32_GA_03Dec2018_release.tar.gz
-- InMage_UA_8.0.7.0_SLES11-SP3-64_GA_03Dec2018_release.tar.gz
-- InMage_UA_8.0.7.0_SLES11-SP4-64_GA_03Dec2018_release.tar.gz
+- InMage_ScoutCloud_RX_ 8.0.1.0 _RHEL6-64_GA_02Mar2015. tar. gz
+- RX_ 8.0.7.0 _GA_Update_7_2965621_28Dec18. tar. gz
+- InMage_CX_ 8.0.1.0 _Windows_GA_26Feb2015_release. exe
+- InMage_CX_TP_ 8.0.1.0 _Windows_GA_26Feb2015_release. exe
+- CX_Windows_ 8.0.7.0 _GA_Update_7_2965621_28Dec18. exe
+- InMage_PI_ 8.0.1.0 _Windows_GA_26Feb2015_release. exe
+- InMage_Scout_vContinuum_MT_ 8.0.7.0 _Windows_GA_27Dec2018_release. exe
+- InMage_UA_ 8.0.7.0 _Windows_GA_27Dec2018_release. exe
+- InMage_UA_ 8.0.7.0 _OL5-32_GA_03Dec2018_release. tar. gz
+- InMage_UA_ 8.0.7.0 _OL5-64_GA_03Dec2018_release. tar. gz
+- InMage_UA_ 8.0.7.0 _OL6-32_GA_03Dec2018_release. tar. gz
+- InMage_UA_ 8.0.7.0 _OL6-64_GA_03Dec2018_release. tar. gz
+- InMage_UA_ 8.0.7.0 _RHEL5-32_GA_03Dec2018_release. tar. gz
+- InMage_UA_ 8.0.7.0 _RHEL5-64_GA_03Dec2018_release. tar. gz
+- InMage_UA_ 8.0.7.0 _RHEL6-32_GA_03Dec2018_release. tar. gz
+- InMage_UA_ 8.0.7.0 _RHEL6-64_GA_03Dec2018_release. tar. gz
+- InMage_UA_ 8.0.7.0 _RHEL7-64_GA_03Dec2018_release. tar. gz
+- InMage_UA_ 8.0.7.0 _SLES10-32_GA_03Dec2018_release. tar. gz
+- InMage_UA_ 8.0.7.0 _SLES10-64_GA_03Dec2018_release. tar. gz
+- InMage_UA_ 8.0.7.0 _SLES10-SP1-32_GA_03Dec2018_release. tar. gz
+- InMage_UA_ 8.0.7.0 _SLES10-SP1-64_GA_03Dec2018_release. tar. gz
+- InMage_UA_ 8.0.7.0 _SLES10-SP2-32_GA_03Dec2018_release. tar. gz
+- InMage_UA_ 8.0.7.0 _SLES10-SP2-64_GA_03Dec2018_release. tar. gz
+- InMage_UA_ 8.0.7.0 _SLES10-SP3-32_GA_03Dec2018_release. tar. gz
+- InMage_UA_ 8.0.7.0 _SLES10-SP3-64_GA_03Dec2018_release. tar. gz
+- InMage_UA_ 8.0.7.0 _SLES10-SP4-32_GA_03Dec2018_release. tar. gz
+- InMage_UA_ 8.0.7.0 _SLES10-SP4-64_GA_03Dec2018_release. tar. gz
+- InMage_UA_ 8.0.7.0 _SLES11-32_GA_03Dec2018_release. tar. gz
+- InMage_UA_ 8.0.7.0 _SLES11-64_GA_04Dec2018_release. tar. gz
+- InMage_UA_ 8.0.7.0 _SLES11-SP1-32_GA_03Dec2018_release. tar. gz
+- InMage_UA_ 8.0.7.0 _SLES11-SP1-64_GA_04Dec2018_release. tar. gz
+- InMage_UA_ 8.0.7.0 _SLES11-SP2-32_GA_03Dec2018_release. tar. gz
+- InMage_UA_ 8.0.7.0 _SLES11-SP2-64_GA_03Dec2018_release. tar. gz
+- InMage_UA_ 8.0.7.0 _SLES11-SP3-32_GA_03Dec2018_release. tar. gz
+- InMage_UA_ 8.0.7.0 _SLES11-SP3-64_GA_03Dec2018_release. tar. gz
+- InMage_UA_ 8.0.7.0 _SLES11-SP4-64_GA_03Dec2018_release. tar. gz
   1. Bontsa ki a. zip-fájlokat.
-  2. **Rx-kiszolgáló**: Másolja a **rx_ 8.0.7.0 _ga_update_7_2965621_28dec18. tar. gz** -t az RX-kiszolgálóra, és bontsa ki. A kibontott mappában futtassa a **/install**parancsot.
-  3. **Konfigurációs kiszolgáló és folyamat kiszolgálója**: Másolja a **cx_windows_ 8.0.7.0 _ga_update_7_2965621_28dec18. exe fájlt** a konfigurációs kiszolgálóra és a Process Serverre. Kattintson rá duplán a futtatásához.<br>
-  4. **Windows fő célkiszolgáló**: Az egyesített ügynök frissítéséhez másolja a **inmage_ua_ 8.0.7.0 _windows_ga_27dec2018_release. exe fájlt** a kiszolgálóra. Kattintson rá duplán a futtatásához. Ugyanez a fájl is használható a friss telepítéshez. Ugyanez az egyesített ügynök frissítése is alkalmazható a forráskiszolgálón.
+  2. **Rx-kiszolgáló**: másolja a **rx_ 8.0.7.0 _ga_update_7_2965621_28dec18. tar. gz** -t az RX-kiszolgálóra, és bontsa ki. A kibontott mappában futtassa a **/install**parancsot.
+  3. **Konfigurációs kiszolgáló és Process Server**: másolja a **cx_windows_ 8.0.7.0 _ga_update_7_2965621_28dec18. exe fájlt** a konfigurációs kiszolgálóra és a Process Serverre. Kattintson rá duplán a futtatásához.<br>
+  4. **Windows fő célkiszolgáló**: az egyesített ügynök frissítéséhez másolja a **inmage_ua_ 8.0.7.0 _windows_ga_27dec2018_release. exe fájlt** a kiszolgálóra. Kattintson rá duplán a futtatásához. Ugyanez a fájl is használható a friss telepítéshez. Ugyanez az egyesített ügynök frissítése is alkalmazható a forráskiszolgálón.
   A frissítést nem kell alkalmazni a **inmage_scout_vcontinuum_mt_ 8.0.7.0 _windows_ga_27dec2018_release. exe** fájllal előkészített fő célhelyen, mivel ez új GA-telepítő a legújabb módosításokkal.
-  5. **vContinuum-kiszolgáló**:  Másolja a **inmage_scout_vcontinuum_mt_ 8.0.7.0 _windows_ga_27dec2018_release. exe fájlt** a kiszolgálóra.  Győződjön meg arról, hogy bezárta a vContinuum varázslót. A futtatásához kattintson duplán a fájlra.
-  6. **Linuxos fő célkiszolgáló**: Az egyesített ügynök frissítéséhez másolja a **inmage_ua_ 8.0.7.0 _rhel6-64_ga_03dec2018_release. tar. gz** -t a Linux fő célkiszolgálóra, és bontsa ki. A kibontott mappában futtassa a **/install**parancsot.
-  7. **Windows Server-forráskiszolgáló**: Az egyesített ügynök frissítéséhez másolja a **inmage_ua_ 8.0.7.0 _windows_ga_27dec2018_release. exe fájlt** a forráskiszolgálóról. A futtatásához kattintson duplán a fájlra. 
-  8. **Linuxos forráskiszolgáló**: Az egyesített ügynök frissítéséhez másolja az egyesített ügynök fájljának megfelelő verzióját a Linux-kiszolgálóra, és bontsa ki. A kibontott mappában futtassa a **/install**parancsot.  Példa: A RHEL 6,7 64 bites kiszolgálók esetében másolja a **inmage_ua_ 8.0.7.0 _rhel6-64_ga_03dec2018_release. tar. gz** -t a kiszolgálóra, és bontsa ki. A kibontott mappában futtassa a **/install**parancsot.
+  5. **vContinuum-kiszolgáló**: másolja a **inmage_scout_vcontinuum_mt_ 8.0.7.0 _windows_ga_27dec2018_release. exe fájlt** a kiszolgálóra.  Győződjön meg arról, hogy bezárta a vContinuum varázslót. A futtatásához kattintson duplán a fájlra.
+  6. **Linuxos fő célkiszolgáló**: az egyesített ügynök frissítéséhez másolja a **inmage_ua_ 8.0.7.0 _rhel6-64_ga_03dec2018_release. tar. gz** -t a Linux fő célkiszolgálóra, és bontsa ki. A kibontott mappában futtassa a **/install**parancsot.
+  7. **Windows-forráskiszolgáló**: az egyesített ügynök frissítéséhez másolja a **inmage_ua_ 8.0.7.0 _windows_ga_27dec2018_release. exe fájlt** a forráskiszolgálóról. A futtatásához kattintson duplán a fájlra. 
+  8. **Linuxos forráskiszolgáló**: az egyesített ügynök frissítéséhez másolja az egyesített ügynök fájljának megfelelő verzióját a Linux-kiszolgálóra, és bontsa ki. A kibontott mappában futtassa a **/install**parancsot.  Példa: a RHEL 6,7 64 bites kiszolgáló esetében másolja a **inmage_ua_ 8.0.7.0 _rhel6-64_ga_03dec2018_release. tar. gz** -t a kiszolgálóra, és bontsa ki. A kibontott mappában futtassa a **/install**parancsot.
   9. A konfigurációs kiszolgáló, a Process Server és az RX kiszolgáló és a fenti telepítők frissítése után a PHP-és MySQL-kódtárakat manuálisan kell frissíteni a [gyors telepítési útmutató](https://aka.ms/asr-scout-quick-install-guide)7,4. szakaszában említett lépések végrehajtásával.
 
-## <a name="enable-replication"></a>Replikáció engedélyezése
+## <a name="enable-replication"></a>A replikáció engedélyezése
 
 1. Állítsa be a replikációt a forrás és a cél VMware-helyek között.
 2. A telepítéssel, a védelemmel és a helyreállítással kapcsolatos további információkért tekintse meg a következő dokumentumokat:
@@ -143,18 +143,18 @@ Töltse le az [Update](https://aka.ms/asr-scout-update7) . zip fájlt, valamint 
 ## <a name="updates"></a>Frissítések
 
 ### <a name="site-recovery-scout-801-update-7"></a>Site Recovery Scout 8.0.1 7. frissítés 
-Frissítve: December 31., 2018 a [Scout Update 7](https://aka.ms/asr-scout-update7)letöltése.
+Frissítve: 2018. december 31-ig a [Scout Update 7](https://aka.ms/asr-scout-update7)letöltése.
 A Scout Update 7 egy teljes telepítő, amely a friss telepítéshez, valamint a korábbi frissítésekhez tartozó meglévő ügynökök/MT frissítéséhez is használható (az 1. frissítéstől a 6. frissítésig). Az 1. frissítés összes javítását tartalmazza a 6. frissítéshez, valamint az alább ismertetett új javításokat és fejlesztéseket.
  
-#### <a name="new-features"></a>Új funkciók
+#### <a name="new-features"></a>ÚJ funkciók
 * PCI-megfelelőség
 * TLS 2.0-támogatás
 
 #### <a name="bug-and-security-fixes"></a>Hibák és biztonsági javítások
-* Rögzített A Windows-fürt/önálló gépek helytelen IP-konfigurációval rendelkeznek a helyreállítás/DR-részletezés alapján.
-* Rögzített Időnként a V2V-fürthöz nem sikerül a lemez hozzáadása művelet.
+* Kijavítva: a Windows-fürt/önálló gépek helytelen IP-konfigurációval rendelkeznek a helyreállítás/DR-részletezés alapján.
+* Kijavítva: a V2V-fürtön időnként sikertelen volt a lemez hozzáadása művelet.
 * Kijavítva: a vContinuum varázsló elakad a helyreállítási fázis során, ha a fő cél a Windows Server 2016
-* Rögzített A MySQL biztonsági problémák enyhítésére a MySQL és a verzió 5.7.23 frissítése
+* Kijavítva: a MySQL biztonsági problémák enyhítésére a MySQL és a verzió 5.7.23 frissítése
 
 #### <a name="manual-upgrade-for-php-and-mysql-on-csps-and-rx"></a>A PHP és a MySQL manuális frissítése CS, PS és RX rendszeren
 A PHP Scripting platformot frissíteni kell a konfigurációs kiszolgáló, a Process Server és az RX-kiszolgáló 7.2.10 verzióra.
@@ -162,7 +162,7 @@ A MySQL adatbázis-kezelő rendszert a konfigurációs kiszolgáló, a Process S
 A PHP-és MySQL-verziók frissítéséhez kövesse a [gyors telepítési útmutatóban](https://aka.ms/asr-scout-quick-install-guide) megadott utasításokat.
 
 ### <a name="site-recovery-scout-801-update-6"></a>Site Recovery Scout 8.0.1 6. frissítés 
-Frissítve: 2017. október 12.
+Frissítve: október 12., 2017
 
 A [Scout 6 frissítésének](https://aka.ms/asr-scout-update6)letöltése.
 
@@ -183,23 +183,23 @@ Telepítse a frissítéseket a következőképpen:
 >Az összes felderítő összetevő fájljának frissítési verziója nem lehet azonos az Update. zip fájlban. A régebbi verzió azt jelzi, hogy az összetevő nem módosult a frissítés korábbi frissítése óta.
 
 Töltse le az [Update](https://aka.ms/asr-scout-update6) . zip fájlt. A fájl a következő összetevőket tartalmazza: 
-- RX_8.0.4.0_GA_Update_4_8725872_16Sep16.tar.gz
-- CX_Windows_8.0.6.0_GA_Update_6_13746667_18Sep17.exe
-- UA_Windows_8.0.5.0_GA_Update_5_11525802_20Apr17.exe
-- UA_RHEL6-64_8.0.4.0_GA_Update_4_9035261_26Sep16.tar.gz
-- vCon_Windows_8.0.6.0_GA_Update_6_11525767_21Sep17.exe
-- UA Update4 BITS a RHEL5, OL5, OL6, SUSE 10, SUSE 11 esetén: UA_\<Linux operációs rendszer > _ 8.0.4.0 _ga_update_4_9035261_26sep16. tar. gz
+- RX_ 8.0.4.0 _GA_Update_4_8725872_16Sep16. tar. gz
+- CX_Windows_ 8.0.6.0 _GA_Update_6_13746667_18Sep17. exe
+- UA_Windows_ 8.0.5.0 _GA_Update_5_11525802_20Apr17. exe
+- UA_RHEL6-64_ 8.0.4.0 _GA_Update_4_9035261_26Sep16. tar. gz
+- vCon_Windows_ 8.0.6.0 _GA_Update_6_11525767_21Sep17. exe
+- UA Update4 BITS a RHEL5, OL5, OL6, SUSE 10, SUSE 11 esetén: UA_\<Linux OS > _ 8.0.4.0 _GA_Update_4_9035261_26Sep16. tar. gz
   1. Bontsa ki a. zip-fájlokat.
-  2. **Rx-kiszolgáló**: Másolja a **rx_ 8.0.4.0 _ga_update_4_8725872_16sep16. tar. gz** -t az RX-kiszolgálóra, és bontsa ki. A kibontott mappában futtassa a **/install**parancsot.
-  3. **Konfigurációs kiszolgáló és folyamat kiszolgálója**: Másolja a **cx_windows_ 8.0.6.0 _ga_update_6_13746667_18sep17. exe fájlt** a konfigurációs kiszolgálóra és a Process Serverre. Kattintson rá duplán a futtatásához.<br>
-  4. **Windows fő célkiszolgáló**: Az egyesített ügynök frissítéséhez másolja a **ua_windows_ 8.0.5.0 _ga_update_5_11525802_20apr17. exe fájlt** a kiszolgálóra. Kattintson rá duplán a futtatásához. Ugyanez az egyesített ügynök frissítése is alkalmazható a forráskiszolgálón. Ha a forrás nem frissült a 4. frissítésre, frissítse az egyesített ügynököt.
+  2. **Rx-kiszolgáló**: másolja a **rx_ 8.0.4.0 _ga_update_4_8725872_16sep16. tar. gz** -t az RX-kiszolgálóra, és bontsa ki. A kibontott mappában futtassa a **/install**parancsot.
+  3. **Konfigurációs kiszolgáló és Process Server**: másolja a **cx_windows_ 8.0.6.0 _ga_update_6_13746667_18sep17. exe fájlt** a konfigurációs kiszolgálóra és a Process Serverre. Kattintson rá duplán a futtatásához.<br>
+  4. **Windows fő célkiszolgáló**: az egyesített ügynök frissítéséhez másolja a **ua_windows_ 8.0.5.0 _ga_update_5_11525802_20apr17. exe fájlt** a kiszolgálóra. Kattintson rá duplán a futtatásához. Ugyanez az egyesített ügynök frissítése is alkalmazható a forráskiszolgálón. Ha a forrás nem frissült a 4. frissítésre, frissítse az egyesített ügynököt.
   A frissítést nem kell alkalmazni a **inmage_scout_vcontinuum_mt_ 8.0.1.0 _windows_ga_10oct2017_release. exe** fájllal előkészített fő célhelyen, mivel ez új GA-telepítő a legújabb módosításokkal.
-  5. **vContinuum-kiszolgáló**:  Másolja a **vcon_windows_ 8.0.6.0 _ga_update_6_11525767_21sep17. exe fájlt** a kiszolgálóra.  Győződjön meg arról, hogy bezárta a vContinuum varázslót. A futtatásához kattintson duplán a fájlra.
+  5. **vContinuum-kiszolgáló**: másolja a **vcon_windows_ 8.0.6.0 _ga_update_6_11525767_21sep17. exe fájlt** a kiszolgálóra.  Győződjön meg arról, hogy bezárta a vContinuum varázslót. A futtatásához kattintson duplán a fájlra.
   A frissítést nem kell alkalmazni a **inmage_scout_vcontinuum_mt_ 8.0.1.0 _windows_ga_10oct2017_release. exe** fájllal előkészített fő célhelyen, mivel ez új GA-telepítő a legújabb módosításokkal.
-  6. **Linuxos fő célkiszolgáló**: Az egyesített ügynök frissítéséhez másolja a **ua_rhel6-64_ 8.0.4.0 _ga_update_4_9035261_26sep16. tar. gz** -t a fő célkiszolgálóra, és bontsa ki. A kibontott mappában futtassa a **/install**parancsot.
-  7. **Windows Server-forráskiszolgáló**: Az egyesített ügynök frissítéséhez másolja a **ua_windows_ 8.0.5.0 _ga_update_5_11525802_20apr17. exe fájlt** a forráskiszolgálóról. A futtatásához kattintson duplán a fájlra. 
+  6. **Linuxos fő célkiszolgáló**: az egyesített ügynök frissítéséhez másolja a **ua_rhel6-64_ 8.0.4.0 _ga_update_4_9035261_26sep16. tar. gz** -t a fő célkiszolgálóra, és bontsa ki. A kibontott mappában futtassa a **/install**parancsot.
+  7. **Windows-forráskiszolgáló**: az egyesített ügynök frissítéséhez másolja a **ua_windows_ 8.0.5.0 _ga_update_5_11525802_20apr17. exe fájlt** a forráskiszolgálóról. A futtatásához kattintson duplán a fájlra. 
   Nem kell telepítenie az 5. frissítés ügynököt a forráskiszolgálón, ha már frissítve lett a 4. frissítésre vagy a forrás-ügynökre a legújabb Base Installer **inmage_ua_ 8.0.1.0 _windows_ga_28sep2017_release. exe**használatával.
-  8. **Linuxos forráskiszolgáló**: Az egyesített ügynök frissítéséhez másolja az egyesített ügynök fájljának megfelelő verzióját a Linux-kiszolgálóra, és bontsa ki. A kibontott mappában futtassa a **/install**parancsot.  Példa: A RHEL 6,7 64 bites kiszolgálók esetében másolja a **ua_rhel6-64_ 8.0.4.0 _ga_update_4_9035261_26sep16. tar. gz** -t a kiszolgálóra, és bontsa ki. A kibontott mappában futtassa a **/install**parancsot.
+  8. **Linuxos forráskiszolgáló**: az egyesített ügynök frissítéséhez másolja az egyesített ügynök fájljának megfelelő verzióját a Linux-kiszolgálóra, és bontsa ki. A kibontott mappában futtassa a **/install**parancsot.  Példa: a RHEL 6,7 64 bites kiszolgáló esetében másolja a **ua_rhel6-64_ 8.0.4.0 _ga_update_4_9035261_26sep16. tar. gz** -t a kiszolgálóra, és bontsa ki. A kibontott mappában futtassa a **/install**parancsot.
 
 
 > [!NOTE]
@@ -231,7 +231,7 @@ A Scout Update 5 összesítő frissítés. Az 1. frissítés összes javításá
     * Rögzített – az egycsomópontos fürt védelme nem sikerül, mert egy SCSI-eltérési probléma történt. 
     * A P2V Windows-fürtjének javított újbóli védelme sikertelen, ha a cél fürtözött lemezek jelen vannak. 
     
-* Rögzített A feladat-visszavételi védelem során, ha a kijelölt fő célkiszolgáló nem ugyanazon az ESXi-kiszolgálón található, mint a védett forrásoldali gép (a továbbítási védelem során), a vContinuum felveszi a nem megfelelő fő célkiszolgáló-kiszolgálót a feladat-visszavétel helyreállítása során, és a helyreállítást a művelet sikertelen.
+* Kijavítva: a feladat-visszavétel védelme során, ha a kijelölt fő célkiszolgáló nem ugyanazon az ESXi-kiszolgálón található, mint a védett forrásszámítógép (a továbbítási védelem során), akkor a vContinuum a feladat-visszavétel során nem a megfelelő fő célkiszolgáló megadását és a helyreállítást hajtja végre. a művelet sikertelen.
 
 > [!NOTE]
 > * A P2V-fürtök csak azokra a fizikai MSCS-fürtökre vonatkoznak, amelyek újonnan védettek az 5. Site Recovery felderítő frissítéssel. Ha a fürt javításait a védett P2V MSCS-fürtökön a régebbi frissítésekkel szeretné telepíteni, kövesse a [site Recovery Scout kibocsátási megjegyzésének](https://aka.ms/asr-scout-release-notes)12. szakaszában említett frissítési lépéseket.
@@ -266,9 +266,9 @@ A Scout Update 4 egy összesítő frissítés. Az 1. frissítés összes javít�
 * További ellenőrzéseket és naplókat adtak hozzá a hálózati konfiguráció változásaihoz a feladatátvétel és a vész-helyreállítási gyakorlat során.
 * Olyan probléma javítása, amely miatt a rendszer nem jelentett adatmegőrzési adatokat a konfigurációs kiszolgálónak.  
 * Fizikai fürtök esetén olyan probléma javítását eredményezi, amely miatt a kötet átméretezése sikertelen volt a vContinuum varázslóban, a forrás kötetének csökkentésekor.
-* Hiba miatt meghiúsult fürt védelmi probléma elhárítása: "Nem sikerült megkeresni a lemez aláírását", ha a fürtlemez PRDM lemez.
+* Egy, a következő hibával meghiúsult fürt védelmére vonatkozó probléma: "nem sikerült megtalálni a lemez aláírását", ha a fürtlemez PRDM lemez.
 * Egy cxps-átviteli kiszolgáló összeomlása, amelyet a tartományon kívüli kivétel okoz.
-* A kiszolgáló neve és az IP-cím oszlopok mostantól átméretezhetők a vContinuum varázsló leküldéses **telepítés** lapján.
+* A kiszolgáló neve és az IP-cím oszlopok mostantól átméretezhetők a vContinuum varázsló **leküldéses telepítés** lapján.
 * Az RX API továbbfejlesztései:
   * A legújabb elérhető általános konzisztencia-pontok mostantól elérhetők (csak a garantált címkék).
   * A kapacitás és a szabad terület adatai megjelennek az összes védett eszközön.
@@ -309,24 +309,24 @@ A 3. frissítés a következő problémákat javítja:
   * CentOS 6 7. frissítés
 * A konfigurációs kiszolgáló és az RX-konzol mostantól a pároshoz tartozó értesítéseket jeleníti meg, amelyek a bitkép üzemmódba kerülnek.
 * A következő biztonsági javítások lettek hozzáadva az RX-ben:
-    * Hitelesítés a paraméter-módosításon keresztül: Korlátozott hozzáférés a nem megfelelő felhasználókhoz.
-    * Helyek közötti kérelmek hamisítása: A Page-token koncepciója implementálva lett, és minden oldalon véletlenszerűen generál. Ez azt jelenti, hogy ugyanahhoz a felhasználóhoz csak egyetlen bejelentkezési példány van, és az oldal frissítése nem működik. Ehelyett a rendszer átirányítja az irányítópultra.
-    * Rosszindulatú fájl feltöltése: A fájlok meghatározott kiterjesztésekre korlátozódnak: z, AIFF, ASF, AVI, BMP, CSV, doc, docx, Fla, FLV, GIF, GZ, gzip, JPEG, jpg, log, Mid, MOV, MP3, MP4, MPC, MPEG, MPG, ODS, ODT, PDF, PNG, ppt, PPTX, PXD, QT, RAM, rar, RM, az RMI, RMVB, RTF, SDC, sitd, SWF , sxc, sxw, Tar, TGZ, TIF, TIFF, txt, VSD, WAV, WMA, WMV, xls, xlsx, XML és zip.
-    * Állandó helyek közötti parancsfájlkezelés: A bemeneti érvényesítések hozzá lettek adva.
+    * Hitelesítés engedélyezése a paraméter-módosításon keresztül: korlátozott hozzáférés a nem megfelelő felhasználókhoz.
+    * Helyek közötti kérelmek hamisítása: a Page-token koncepciója implementálva lett, és minden oldal esetében véletlenszerűen jön létre. Ez azt jelenti, hogy ugyanahhoz a felhasználóhoz csak egyetlen bejelentkezési példány van, és az oldal frissítése nem működik. Ehelyett a rendszer átirányítja az irányítópultra.
+    * Rosszindulatú Fájlfeltöltés: a fájlok meghatározott kiterjesztésekre vannak korlátozva: z, AIFF, ASF, AVI, BMP, CSV, doc, docx, Fla, FLV, GIF, GZ, gzip, JPEG, jpg, log, Mid, MOV, MP3, MP4, MPC, MPEG, MPG, ODS, ODT, PDF, PNG, ppt, PPTX, PXD, QT, RAM, rar, RM, az RMI, RMVB, RTF , SDC, sitd, SWF, sxc, sxw, Tar, TGZ, TIF, TIFF, txt, VSD, WAV, WMA, WMV, xls, xlsx, XML és zip.
+    * Állandó helyközi parancsfájlkezelés: a bemeneti érvényesítések hozzá lettek adva.
 
 ### <a name="azure-site-recovery-scout-801-update-2-update-03dec15"></a>Azure Site Recovery Scout 8.0.1 2. frissítés (03Dec15 frissítése)
 
 A 2. frissítésben szereplő javítások a következők:
 
-* **Konfigurációs kiszolgáló**: Azok a problémák, amelyek meggátolták a 31 napos ingyenes mérési funkció működését a várt módon, amikor a konfigurációs kiszolgáló regisztrálva van Azure Site Recovery-tárolóban.
-* **Egyesített ügynök**: Javítsa ki az 1. frissítés egyik hibáját, amelynek eredményeképpen a frissítés nem lett telepítve a fő célkiszolgálón, az 8,0-es verzióról a 8.0.1-re történő frissítés során.
+* **Konfigurációs kiszolgáló**: olyan problémák, amelyek meggátolták a 31 napos ingyenes mérési funkció működését a várt módon, amikor a konfigurációs kiszolgáló regisztrálva van Azure site Recovery-tárolóban.
+* **Egyesített ügynök**: javítsa ki az 1. frissítés egyik hibáját, amelynek eredményeként a frissítés nem lett telepítve a fő célkiszolgálón, a 8,0-es verzióról a 8.0.1-re történő frissítés során.
 
 ### <a name="azure-site-recovery-scout-801-update-1"></a>Azure Site Recovery Scout 8.0.1 1. frissítés
 Az 1. frissítés a következő hibajavításokat és új funkciókat tartalmazza:
 
 * a kiszolgálónkénti példányok által biztosított ingyenes védelem 31 nap. Ez lehetővé teszi a funkciók tesztelését, vagy egy próba-koncepció beállítását.
 * A kiszolgálón lévő összes művelet, beleértve a feladatátvételt és a feladat-visszavételt, az első 31 napra ingyenes. Az idő akkor kezdődik, amikor a kiszolgálót először Site Recovery Scout védi. A 32nd naptól kezdve minden védett kiszolgáló a Site Recovery védelemhez használt standard szintű példány díjszabása alapján történik az ügyfél által birtokolt webhelyre.
-* A jelenleg felszámított védett kiszolgálók száma bármikor elérhető az irányítópulton a tárolóban .
+* A jelenleg felszámított védett kiszolgálók száma bármikor elérhető az **irányítópulton** a tárolóban.
 * Támogatás lett hozzáadva a vSphere parancssori felülethez (vCLI) 5,5 Update 2.
 * A következő linuxos operációs rendszerek támogatása lett hozzáadva a forráskiszolgálón:
     * RHEL 6, 6. frissítés

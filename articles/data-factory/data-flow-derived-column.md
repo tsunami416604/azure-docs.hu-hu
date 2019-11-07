@@ -1,17 +1,17 @@
 ---
-title: Származtatott oszlop átalakítása Azure Data Factory leképezési adatfolyamban | Microsoft Docs
+title: Származtatott oszlop átalakítása Azure Data Factory leképezési adatfolyamban
 description: Megtudhatja, hogyan alakíthatja át az adatmennyiséget a Azure Data Factory a leképezési adatfolyam származtatott oszlopainak átalakításával.
 author: kromerm
 ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 10/15/2019
-ms.openlocfilehash: 60451fa6152590ed0fde51be436c867f39906acf
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: 387af25b87fdedff5d15ccb6a03819ad8b020e9a
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72514813"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73676872"
 ---
 # <a name="derived-column-transformation-in-mapping-data-flow"></a>Származtatott oszlop átalakítása a leképezési adatfolyamban
 
@@ -46,7 +46,7 @@ További származtatott oszlopok hozzáadásához vigye a kurzort egy meglévő 
 
 ### <a name="example"></a>Példa
 
-Az alábbi példa egy `CleanData` nevű származtatott oszlop, amely egy bejövő adatfolyamot `MoviesYear`, és két származtatott oszlopot hoz létre. Az első származtatott oszlop a `Rating` oszlopot helyettesíti egész típusú értékként. A második származtatott oszlop egy minta, amely minden olyan oszlopnak megfelel, amelynek a neve "Movies" karakterrel kezdődik. Minden egyező oszlophoz létrehoz egy olyan oszlopot `movie`, amely megegyezik az "movie_" előtaggal ellátott egyező oszlop értékével. 
+Az alábbi példa egy `CleanData` nevű származtatott oszlop, amely egy bejövő adatfolyamot `MoviesYear`, és két származtatott oszlopot hoz létre. Az első származtatott oszlop az oszlop `Rating` a minősítés értékének egész típusúra vált. A második származtatott oszlop egy minta, amely minden olyan oszlopnak megfelel, amelynek a neve "Movies" karakterrel kezdődik. Minden egyező oszlophoz létrehoz egy olyan oszlopot `movie`, amely megegyezik az "movie_" előtaggal ellátott egyező oszlop értékével. 
 
 Az Data Factory UX-ben ez az átalakítás az alábbi képhez hasonlóan néz ki:
 
@@ -64,6 +64,6 @@ MoviesYear derive(
             ) ~> CleanData
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - További információ a [leképezési adatfolyam kifejezésének nyelvéről](data-flow-expression-functions.md).

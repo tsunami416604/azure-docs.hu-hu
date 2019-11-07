@@ -1,5 +1,5 @@
 ---
-title: Elosztott táblák tervezési útmutatója – Azure SQL Data Warehouse | Microsoft Docs
+title: Az elosztott táblák tervezési útmutatója
 description: Javaslatok a kivonatok elosztott és ciklikusan elosztott táblázatának tervezéséhez Azure SQL Data Warehouseban.
 services: sql-data-warehouse
 author: XiaoyuMSFT
@@ -10,12 +10,13 @@ ms.subservice: development
 ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: 4b322415592a7202387cb6776d2c040cda765b27
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.custom: seo-lt-2019
+ms.openlocfilehash: f05e732e11fb9cd88d4671528d551c68e448a8d7
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68479352"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73685467"
 ---
 # <a name="guidance-for-designing-distributed-tables-in-azure-sql-data-warehouse"></a>Útmutatás a Azure SQL Data Warehouse elosztott tábláinak megtervezéséhez
 Javaslatok a kivonatok elosztott és ciklikusan elosztott táblázatának tervezéséhez Azure SQL Data Warehouseban.
@@ -25,7 +26,7 @@ Ez a cikk feltételezi, hogy ismeri a SQL Data Warehouse adatelosztási és adat
 ## <a name="what-is-a-distributed-table"></a>Mi az elosztott tábla?
 Egy elosztott tábla egyetlen táblázatként jelenik meg, de a sorok ténylegesen 60-eloszlásban vannak tárolva. A sorok kivonattal vagy ciklikus multiplexelés algoritmussal vannak elosztva.  
 
-**Kivonat – az elosztott táblák** javítják a lekérdezési teljesítményt a nagyméretű táblákon, és a cikk középpontjában állnak. A ciklikusan megjelenő **táblázatok** a betöltési sebesség javításához hasznosak. Ezek a tervezési döntések jelentős hatással vannak a lekérdezések és a teljesítmény-betöltés javítására.
+**Kivonat – az elosztott táblák** javítják a lekérdezési teljesítményt a nagyméretű táblákon, és a cikk középpontjában állnak. A **ciklikusan** megjelenő táblázatok a betöltési sebesség javításához hasznosak. Ezek a tervezési döntések jelentős hatással vannak a lekérdezések és a teljesítmény-betöltés javítására.
 
 Egy másik tábla tárolási lehetőség egy kis tábla replikálása az összes számítási csomóponton. További információ: [tervezési útmutató a replikált táblákhoz](design-guidance-for-replicated-tables.md). A három lehetőség közül a gyors választáshoz tekintse meg az elosztott táblák című részt a [táblázatok áttekintésében](sql-data-warehouse-tables-overview.md). 
 
@@ -37,7 +38,7 @@ A tábla kialakításának részeként a lehető legnagyobb mértékben megismer
 
 
 ### <a name="hash-distributed"></a>Kivonat kiosztva
-A kivonatok – az elosztott tábla a számítási csomópontok között egy determinisztikus kivonatoló függvény használatával osztja el a táblázat sorait egy eloszláshoz [](massively-parallel-processing-mpp-architecture.md#distributions). 
+A kivonatok – az elosztott tábla a számítási csomópontok között egy determinisztikus kivonatoló függvény használatával osztja el a táblázat sorait egy [eloszláshoz](massively-parallel-processing-mpp-architecture.md#distributions). 
 
 ![Elosztott tábla](media/sql-data-warehouse-distributed-data/hash-distributed-table.png "Elosztott tábla")  
 
@@ -64,7 +65,7 @@ A következő helyzetekben érdemes lehet a táblázat ciklikus multiplexelés h
 - Ha az illesztés kevésbé jelentős, mint a lekérdezés többi illesztése
 - Ha a tábla ideiglenes előkészítési tábla
 
-Az oktatóanyag [betölti a New York-i taxik-Azure SQL Data Warehousei](load-data-from-azure-blob-storage-using-polybase.md#load-the-data-into-your-data-warehouse) az adatgyűjtési példát, amely egy ciklikus multiplexelés-előkészítési táblába helyezi az betöltést.
+Az oktatóanyag [betölti a New York-i taxik-Azure SQL Data Warehousei az adatgyűjtési](load-data-from-azure-blob-storage-using-polybase.md#load-the-data-into-your-data-warehouse) példát, amely egy ciklikus multiplexelés-előkészítési táblába helyezi az betöltést.
 
 
 ## <a name="choosing-a-distribution-column"></a>Terjesztési oszlop kiválasztása
@@ -112,8 +113,8 @@ A lekérdezési eredmények helyes lekérdezéséhez az adatok az egyik számít
 
 Az adatáthelyezés minimalizálásához válasszon ki egy terjesztési oszlopot:
 
-- A `JOIN` ,`GROUP BY` ,,`HAVING` és záradékokban van használatban. `DISTINCT` `OVER` Ha két nagy egyedkapcsolat-táblázat gyakran csatlakozik egymáshoz, a lekérdezés teljesítménye javul, ha mindkét táblát az egyik illesztési oszlopon osztja el.  Ha egy tábla nem használatos az illesztésekben, érdemes lehet a táblát olyan oszlopra terjeszteni, amely gyakran szerepel `GROUP BY` a záradékban.
-- *Nem* használatos a `WHERE` záradékokban. Ez leszűkítheti a lekérdezést úgy, hogy az ne fusson az összes disztribúción. 
+- `JOIN`, `GROUP BY`, `DISTINCT`, `OVER`és `HAVING` záradékban használatos. Ha két nagy egyedkapcsolat-táblázat gyakran csatlakozik egymáshoz, a lekérdezés teljesítménye javul, ha mindkét táblát az egyik illesztési oszlopon osztja el.  Ha egy tábla nincs használatban az illesztésekben, érdemes lehet a táblázatot olyan oszlopra terjeszteni, amely gyakran szerepel a `GROUP BY` záradékban.
+- `WHERE` záradékban *nincs* használatban. Ez leszűkítheti a lekérdezést úgy, hogy az ne fusson az összes disztribúción. 
 - *Nem* dátum típusú oszlop. WHERE záradékok gyakran dátum szerint vannak szűrve.  Ebben az esetben az összes feldolgozás csak néhány disztribúción futhat.
 
 ### <a name="what-to-do-when-none-of-the-columns-are-a-good-distribution-column"></a>Mi a teendő, ha egyik oszlop sem jó terjesztési oszlop.
@@ -135,7 +136,7 @@ DBCC PDW_SHOWSPACEUSED('dbo.FactInternetSales');
 
 A 10%-nál több adateltérést tartalmazó táblák azonosításához:
 
-1. Hozza létre a dbo. vTableSizes nézetet, amely a [táblázatok](sql-data-warehouse-tables-overview.md#table-size-queries) áttekintő cikkében látható.  
+1. Hozza létre a dbo. vTableSizes nézetet, amely a [táblázatok áttekintő](sql-data-warehouse-tables-overview.md#table-size-queries) cikkében látható.  
 2. Futtassa a következő lekérdezést:
 
 ```sql
@@ -161,7 +162,7 @@ Az adatáthelyezés elkerülése a csatlakozás során:
 - Az illesztésben részt vevő táblákat kivonattal kell elosztani az illesztésben részt vevő oszlopok **egyikén** .
 - Az illesztési oszlopok adattípusának egyeznie kell mindkét tábla között.
 - Az oszlopokat egyenrangú operátorral kell csatlakoztatni.
-- Az illesztés típusa nem lehet `CROSS JOIN`a következő:.
+- Az illesztési típus nem lehet `CROSS JOIN`.
 
 Ha szeretné megtudni, hogy a lekérdezések adatáthelyezést tapasztalnak-e, tekintse meg a lekérdezési tervet.  
 

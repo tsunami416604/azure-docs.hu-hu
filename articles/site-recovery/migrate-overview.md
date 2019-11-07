@@ -1,19 +1,19 @@
 ---
-title: A helyszíni gépek és az Azure virtuális gépek áttelepítése Azure Site Recovery
-description: Ez a cikk bemutatja, hogyan telepítheti át a helyszíni és az Azure IaaS virtuális gépeket az Azure-ba a Azure Site Recovery szolgáltatás használatával.
+title: Kiszolgálók és virtuális gépek áttelepítése az Azure-ba Azure Site Recovery
+description: Ismerteti, hogyan telepítheti át a helyszíni és az Azure IaaS virtuális gépeket az Azure-ba a Azure Site Recovery szolgáltatás használatával.
 services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 09/09/2019
+ms.date: 11/05/2019
 ms.author: raynew
-ms.openlocfilehash: c043950de9565f96d52c848f96efac80385f2321
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: 8e256aac16bb8c2d2f1eca494981458f71cc2e4d
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70814493"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73620620"
 ---
 # <a name="about-migration"></a>A migrálás ismertetése
 
@@ -21,12 +21,12 @@ Ebből a cikkből megtudhatja, hogyan segíti a [Azure site Recovery](site-recov
 
 A Site Recovery használatával áttelepíthetők:
 
-- **Migrálás a helyszínről az Azure-ba**: Helyszíni Hyper-V virtuális gépek, VMware virtuális gépek és fizikai kiszolgálók migrálása az Azure-ba. Az áttelepítés után a helyszíni gépeken futó számítási feladatok az Azure-beli virtuális gépeken fognak futni. 
-- **Migrálás az Azure**-on belül: Azure-beli virtuális gépek migrálása az Azure-régiók között. 
-- **AWS migrálása**: AWS Windows-példányok migrálása az Azure IaaS virtuális gépekre. 
+- **Migrálás a helyszínről az Azure**-ba: helyszíni Hyper-V virtuális gépek, VMWare virtuális gépek és fizikai kiszolgálók migrálása az Azure-ba. Az áttelepítés után a helyszíni gépeken futó számítási feladatok az Azure-beli virtuális gépeken fognak futni. 
+- **Áttelepítés az Azure-on belül**: Azure-beli virtuális gépek áttelepítése Azure-régiók között. 
+- **AWS áttelepítése**: AWS Windows-példányok áttelepítése Azure IaaS virtuális gépekre. 
 
 > [!NOTE]
-> Mostantól áttelepítheti a helyszínről az Azure-ba a Azure Migrate szolgáltatás használatával. [További információk](../migrate/migrate-overview.md).
+> Mostantól áttelepítheti a helyszínről az Azure-ba a Azure Migrate szolgáltatás használatával. [Részletek](../migrate/migrate-overview.md).
 
 ## <a name="what-do-we-mean-by-migration"></a>Mit értünk áttelepítés alatt?
 

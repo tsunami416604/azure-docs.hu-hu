@@ -1,5 +1,5 @@
 ---
-title: FSLogix-profil tároló létrehozása a Windows rendszerű virtuális asztali számítógépeken Azure NetApp Filest használó címkészlet számára
+title: FSLogix-profil tárolók NetApp Windows virtuális asztal – Azure
 description: FSLogix-profil tároló létrehozása a Windows rendszerű virtuális asztali Azure NetApp Files használatával.
 services: virtual-desktop
 author: Heidilohr
@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 08/26/2019
 ms.author: helohr
-ms.openlocfilehash: 4e714b872ae43eb313efe549c77f5610342f430c
-ms.sourcegitcommit: 9dec0358e5da3ceb0d0e9e234615456c850550f6
+ms.openlocfilehash: 1f5d1050815961f51c2bb1cfce256b1ea37d3ac1
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2019
-ms.locfileid: "72311635"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73605766"
 ---
 # <a name="create-an-fslogix-profile-container-for-a-host-pool-using-azure-netapp-files"></a>FSLogix-profil tárolójának létrehozása a Azure NetApp Files használatával
 
@@ -134,7 +134,7 @@ Ezután létre kell hoznia egy új kötetet.
     - A **Virtual Network (virtuális hálózat**) területen válasszon ki egy meglévő virtuális hálózatot, amely a tartományvezérlőhöz kapcsolódik a legördülő menüből.
     - Az **alhálózat**területen válassza az **új létrehozása**lehetőséget. Ne feledje, hogy ez az alhálózat Azure NetApp Files lesz delegálva.
 
-3.  Válassza a **Next (tovább): protokoll \> @ no__t-2** elemet a protokoll lap megnyitásához és a mennyiségi hozzáférési paraméterek konfigurálásához.
+3.  Válassza a **Tovább: protokoll \>\>** lehetőséget a protokoll lap megnyitásához és a mennyiségi hozzáférési paraméterek konfigurálásához.
 
 ## <a name="configure-volume-access-parameters"></a>Mennyiségi hozzáférési paraméterek konfigurálása
 
@@ -160,7 +160,7 @@ Ez a szakasz a [címkészlet egy fájlmegosztási használatával történő lé
 
 2. Bontsa ki a letöltött fájlt.
 
-3. A fájlban lépjen az **x64** > **kiadásra** , és futtassa a **FSLogixAppsSetup. exe**fájlt. Ekkor megnyílik a telepítési menü.
+3. A fájlban keresse meg az **x64** > **kiadásokat** , és futtassa a **FSLogixAppsSetup. exe**fájlt. Ekkor megnyílik a telepítési menü.
 
 4.  Ha van termékkulcs, írja be a termékkulcsot szövegmezőbe.
 
@@ -168,11 +168,11 @@ Ez a szakasz a [címkészlet egy fájlmegosztási használatával történő lé
 
 6. Válassza az **Install** (Telepítés) lehetőséget.
 
-7. Navigáljon a **C: \\Program Files @ no__t-2FSLogix @ no__t-3Apps** elemre, hogy erősítse meg az ügynök telepítését.
+7. Navigáljon a **C:\\Program Files\\FSLogix\\alkalmazások** elemre, és erősítse meg az ügynök telepítését.
 
 8. A Start menüben futtassa a **Regedit parancsot** rendszergazdaként.
 
-9. Navigáljon a következő **számítógéphez: @ no__t-1HKEY_LOCAL_MACHINE @ no__t-2software @ no__t-3FSLogix**.
+9. Navigáljon a **számítógép\\HKEY_LOCAL_MACHINE\\szoftver\\FSLogix**.
 
 10. Hozzon létre egy **profilok**nevű kulcsot.
 
@@ -207,7 +207,7 @@ Ez a szakasz a [címkészlet egy fájlmegosztási használatával történő lé
 
 ## <a name="make-sure-users-can-access-the-azure-netapp-file-share"></a>Győződjön meg arról, hogy a felhasználók el tudják érni az Azure NetApp-fájlmegosztást
 
-1. Nyissa meg az Internet böngészőt, és lépjen a <https://rdweb.wvd.microsoft.com/webclient/index.html> webhelyre.
+1. Nyissa meg az Internet böngészőt, és lépjen a <https://rdweb.wvd.microsoft.com/webclient/index.html>.
 
 2. Jelentkezzen be az Távoli asztal csoporthoz rendelt felhasználó hitelesítő adataival.
 
@@ -219,12 +219,12 @@ Ez a szakasz a [címkészlet egy fájlmegosztási használatával történő lé
 
 5. Lépjen az **Áttekintés** lapra, és ellenőrizze, hogy a FSLogix-profil tárolója használ-e helyet.
 
-6. Közvetlenül kapcsolódhat a gazdagép bármely virtuálisgép-részéhez Távoli asztal használatával, és megnyithatja a **fájlkezelőt.** Ezután navigáljon a **csatlakoztatási útvonalhoz** (a következő példában a csatlakoztatási útvonal @no__t -1\\anf-SMB-3863.gt1107.onmicrosoft.com @ no__t-3ANF-Vol).
+6. Közvetlenül kapcsolódhat a gazdagép bármely virtuálisgép-részéhez Távoli asztal használatával, és megnyithatja a **fájlkezelőt.** Ezután navigáljon a **csatlakoztatási útvonalhoz** (a következő példában a csatlakoztatási útvonal \\\\ANF-SMB-3863.gt1107.onmicrosoft.com\\ANF-Vol).
 
    Ebben a mappában léteznie kell egy profilt tartalmazó VHD-nek (vagy VHDX), amely az alábbi példában láthatóhoz hasonló.
 
    ![Képernyőkép a mappa tartalmáról a csatlakoztatási útvonalon. A belül egy "Profile_ssbb" nevű VHD-fájl.](media/mount-path-folder.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A felhasználói profilok megosztásának beállításához használhatja a FSLogix-profilok tárolóit. Ha meg szeretné tudni, hogyan hozhat létre felhasználói profilokat az új tárolókkal, tekintse meg a következőt: [fájlmegosztás használatával létrehozott profil tárolója](create-host-pools-user-profile.md).

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/16/2018
 ms.author: sedusch
-ms.openlocfilehash: 7be0cfbe538d06da617049ac74cba60ff1b713e6
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 8c7da1b989546950bf61153e96193c0bab11d8ac
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72791712"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73603543"
 ---
 # <a name="setting-up-pacemaker-on-suse-linux-enterprise-server-in-azure"></a>A pacemaker beállítása SUSE Linux Enterprise Server az Azure-ban
 
@@ -50,7 +50,7 @@ Kövesse az alábbi lépéseket, ha SBD-eszközt kíván használni a kerítésh
 
 ### <a name="set-up-iscsi-target-servers"></a>ISCSI-tároló kiszolgálók beállítása
 
-Először létre kell hoznia az iSCSI cél virtuális gépeket. az iSCSI-célkiszolgáló több pacemaker-fürttel is megoszthatók.
+Először az iSCSI cél virtuális gépek létrehozásához. az iSCSI-célkiszolgáló több pacemaker-fürttel is megoszthatók.
 
 1. Helyezzen üzembe új SLES 12 SP1 vagy újabb virtuális gépet, és csatlakozzon hozzájuk SSH-n keresztül. A gépeknek nem kell nagy méretűeknek lenniük. A virtuális gép mérete (például Standard_E2s_v3 vagy Standard_D2s_v3) elegendő. Ügyeljen arra, hogy a Premium Storage-ot használja az operációsrendszer-lemezen.
 
@@ -378,14 +378,15 @@ A következő elemek a **[a]** előtaggal vannak ellátva, amelyek az összes cs
 
 1. **[2]** SSH-hozzáférés engedélyezése
 
-   <pre><code># insert the public key you copied in the last step into the authorized keys file on the second server
-   sudo vi /root/.ssh/authorized_keys
-   
+   <pre><code>
    sudo ssh-keygen
-
+   
    # Enter file in which to save the key (/root/.ssh/id_rsa): -> Press ENTER
    # Enter passphrase (empty for no passphrase): -> Press ENTER
    # Enter same passphrase again: -> Press ENTER
+   
+   # insert the public key you copied in the last step into the authorized keys file on the second server
+   sudo vi /root/.ssh/authorized_keys   
    
    # copy the public key
    sudo cat /root/.ssh/id_rsa.pub
@@ -442,14 +443,13 @@ A következő elemek a **[a]** előtaggal vannak ellátva, amelyek az összes cs
 
 1. **[1]** fürt telepítése
 
-   <pre><code>sudo ha-cluster-init
+   <pre><code>sudo ha-cluster-init -u
    
    # ! NTP is not configured to start at system boot.
    # Do you want to continue anyway (y/n)? <b>y</b>
    # /root/.ssh/id_rsa already exists - overwrite (y/n)? <b>n</b>
-   # Network address to bind to (e.g.: 192.168.1.0) [10.0.0.0] <b>Press ENTER</b>
-   # Multicast address (e.g.: 239.x.x.x) [239.232.97.43] <b>Press ENTER</b>
-   # Multicast port [5405] <b>Press ENTER</b>
+   # Address for ring0 [10.0.0.6] <b>Press ENTER</b>
+   # Port for ring0 [5405] <b>Press ENTER</b>
    # SBD is already configured to use /dev/disk/by-id/scsi-36001405639245768818458b930abdf69;/dev/disk/by-id/scsi-36001405afb0ba8d3a3c413b8cc2cca03;/dev/disk/by-id/scsi-36001405f88f30e7c9684678bc87fe7bf - overwrite (y/n)? <b>n</b>
    # Do you wish to configure an administration IP (y/n)? <b>n</b>
    </code></pre>
@@ -469,12 +469,12 @@ A következő elemek a **[a]** előtaggal vannak ellátva, amelyek az összes cs
    <pre><code>sudo passwd hacluster
    </code></pre>
 
-1. **[A]** konfigurálja a Corosync más átvitel használatára és nodeList hozzáadására. A fürt másképp nem működik.
+1. **[A] módosítsa A** Corosync beállításait.  
 
    <pre><code>sudo vi /etc/corosync/corosync.conf
    </code></pre>
 
-   Adja hozzá a következő félkövér tartalmat a fájlhoz, ha az értékek nem léteznek vagy eltérőek. Győződjön meg arról, hogy a tokent 30000 értékre módosítja, hogy a memóriát megőrizve karbantartást lehessen végezni. További információt a Linux vagy a [Windows rendszerhez][virtual-machines-windows-maintenance]készült [cikkben][virtual-machines-linux-maintenance] talál. Ügyeljen arra is, hogy távolítsa el a mcastaddr paramétert.
+   Adja hozzá a következő félkövér tartalmat a fájlhoz, ha az értékek nem léteznek vagy eltérőek. Győződjön meg arról, hogy a tokent 30000 értékre módosítja, hogy a memóriát megőrizve karbantartást lehessen végezni. További információt a Linux vagy a [Windows rendszerhez][virtual-machines-windows-maintenance]készült [cikkben][virtual-machines-linux-maintenance] talál.
 
    <pre><code>[...]
      <b>token:          30000
@@ -486,20 +486,16 @@ A következő elemek a **[a]** előtaggal vannak ellátva, amelyek az összes cs
      interface { 
         [...] 
      }
-     <b>transport:      udpu</b>
-     # remove parameter mcastaddr
-     <b># mcastaddr: IP</b>
+     transport:      udpu
    } 
-   <b>nodelist {
+   nodelist {
      node {
-      # IP address of <b>prod-cl1-0</b>
       ring0_addr:10.0.0.6
      }
      node {
-      # IP address of <b>prod-cl1-1</b>
       ring0_addr:10.0.0.7
      } 
-   }</b>
+   }
    logging {
      [...]
    }
@@ -633,7 +629,7 @@ sudo crm configure property maintenance-mode=false
      Figyelmeztetés: CIB-bootstrap-Options: ismeretlen "hostName_ <strong>hostName</strong>" attribútum  
    > Ezek a figyelmeztető üzenetek figyelmen kívül hagyhatók.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Azure Virtual Machines az SAP tervezéséhez és megvalósításához][planning-guide]
 * [Azure Virtual Machines üzembe helyezés az SAP-ban][deployment-guide]

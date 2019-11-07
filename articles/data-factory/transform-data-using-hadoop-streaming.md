@@ -1,6 +1,6 @@
 ---
-title: Adatok átalakítása Hadoop Streamelési tevékenységben használatával az Azure Data Factoryban |} A Microsoft Docs
-description: Ismerteti, hogyan Hadoop Streamelési tevékenységben az Azure Data Factoryban az adatok átalakítása Hadoop Streamelési programok egy Hadoop-fürtön való futtatásával.
+title: Adatátalakítás Hadoop-adatfolyam-továbbítási tevékenység használatával Azure Data Factory
+description: A cikk azt ismerteti, hogyan lehet az Hadoop adatfolyam-továbbítási tevékenységet használni a Azure Data Factoryban az adatátalakításhoz a Hadoop-fürtön futó Hadoop streaming programok futtatásával
 services: data-factory
 documentationcenter: ''
 ms.service: data-factory
@@ -11,23 +11,23 @@ ms.date: 01/16/2018
 author: nabhishek
 ms.author: abnarain
 manager: craigg
-ms.openlocfilehash: 0d8267f1cd65f78d5e98ae9d288d5fa5c4214420
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6977f7a6ad7fd79a51083bf2ef71c539e04837e5
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60848248"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73683789"
 ---
-# <a name="transform-data-using-hadoop-streaming-activity-in-azure-data-factory"></a>Adatok átalakítása Hadoop Streamelési tevékenységben használatával az Azure Data Factoryban
-> [!div class="op_single_selector" title1="Válassza ki a Data Factory szolgáltatás használ:"]
+# <a name="transform-data-using-hadoop-streaming-activity-in-azure-data-factory"></a>Adatátalakítás Hadoop-adatfolyam-továbbítási tevékenység használatával Azure Data Factory
+> [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory-szolgáltatás verzióját:"]
 > * [1-es verzió](v1/data-factory-hadoop-streaming-activity.md)
 > * [Aktuális verzió](transform-data-using-hadoop-streaming.md)
 
-A HDInsight Streaming-tevékenység az adat-előállító [folyamat](concepts-pipelines-activities.md) Hadoop Streamelési programok lefut a [saját](compute-linked-services.md#azure-hdinsight-linked-service) vagy [igény szerinti](compute-linked-services.md#azure-hdinsight-on-demand-linked-service) HDInsight-fürt. Ez a cikk épül, amely a [adat-átalakítási tevékenységeket](transform-data.md) című cikket, amely megadja az adatok átalakítását és a támogatott Adatátalakítási tevékenységek általános áttekintése.
+A Data Factory [folyamat](concepts-pipelines-activities.md) HDInsight adatfolyam-továbbítási tevékenysége a [saját](compute-linked-services.md#azure-hdinsight-linked-service) vagy [igény szerinti](compute-linked-services.md#azure-hdinsight-on-demand-linked-service) HDInsight-fürtön hajtja végre a Hadoop streaming-programokat. Ez a cikk az Adatátalakítási [tevékenységekről](transform-data.md) szóló cikket ismerteti, amely általános áttekintést nyújt az adatátalakításról és a támogatott átalakítási tevékenységekről.
 
-Ha most ismerkedik az Azure Data Factory, olvassa el az [az Azure Data Factory bemutatását](introduction.md) és végezze el a [oktatóanyag: adatok átalakítása](tutorial-transform-data-spark-powershell.md) Ez a cikk elolvasása előtt. 
+Ha még nem ismeri a Azure Data Factoryt, olvassa el a [Azure Data Factory bevezetését](introduction.md) , és végezze el az [oktatóanyagot: az adatátalakítást](tutorial-transform-data-spark-powershell.md) a cikk elolvasása előtt. 
 
-## <a name="json-sample"></a>JSON-példa
+## <a name="json-sample"></a>JSON-minta
 ```json
 {
     "name": "Streaming Activity",
@@ -68,31 +68,31 @@ Ha most ismerkedik az Azure Data Factory, olvassa el az [az Azure Data Factory b
 
 ## <a name="syntax-details"></a>Szintaxis részletei
 
-| Tulajdonság          | Leírás                              | Szükséges |
+| Tulajdonság          | Leírás                              | Kötelező |
 | ----------------- | ---------------------------------------- | -------- |
-| name              | A tevékenység neve                     | Igen      |
-| description       | Mire használható a tevékenységet leíró szöveg | Nem       |
-| type              | A Hadoop Streamelési tevékenységben a tevékenység típusa a HDInsightStreaming | Igen      |
-| linkedServiceName | Referencia a HDInsight-fürthöz társított szolgáltatásként a Data Factory regisztrálva. Ezt a társított szolgáltatást kapcsolatos további információkért lásd: [társított szolgáltatások számítása](compute-linked-services.md) cikk. | Igen      |
-| eseményleképező            | A végrehajtható eseményleképező neve | Igen      |
-| Nyomáscsökkentő           | A végrehajtható nyomáscsökkentő neve | Igen      |
-| egyesítő          | A végrehajtható egyesítő neve | Nem       |
-| fileLinkedService | Egy Azure Storage társított szolgáltatás hivatkozik a Teljesítményleképező egyesítő és nyomáscsökkentő programok futtatását tárolására használható. Ha nem adja meg ezt a társított szolgáltatást, az Azure Storage társított szolgáltatás a HDInsight társított szolgáltatásban meghatározott használja. | Nem       |
-| filePath          | Adja meg a elérési út tömbjét Leképezőjét, egyesítő, hogy, és az Azure Storage-ban tárolt nyomáscsökkentő programok fileLinkedService által hivatkozott. Az elérési út megkülönbözteti a kis- és nagybetűket. | Igen      |
-| bemenet             | Megadja a Teljesítményleképező a WASB-elérési út a bemeneti fájl. | Igen      |
-| kimenet            | Megadja a nyomáscsökkentő a WASB-elérési út a kimeneti fájlba. | Igen      |
-| getDebugInfo      | Itt adhatja meg, amikor a naplófájlok másolja az Azure Storage HDInsight-fürt által használt (vagy) scriptlinkedservice szolgáltatás által megadott. Megengedett értékek: Nincs, mindig, vagy sikertelen. Alapértelmezett érték: Nincs. | Nem       |
-| argumentumok         | Argumenty Pro Hadoop-feladatok egy tömbjét adja meg. Az argumentumok adhatók be a parancssori argumentumok minden egyes tevékenységhez. | Nem       |
-| defines           | Kulcs/érték párokként paraméterek megadása a Hive-parancsfájl belül hivatkozik. | Nem       | 
+| név              | A tevékenység neve                     | Igen      |
+| leírás       | A tevékenység által használt szöveg leírása | Nem       |
+| type              | Hadoop adatfolyam-továbbítási tevékenység esetén a tevékenység típusa HDInsightStreaming. | Igen      |
+| linkedServiceName | Hivatkozás a Data Factory társított szolgáltatásként regisztrált HDInsight-fürtre. A társított szolgáltatással kapcsolatos további információkért lásd: [számítási társított szolgáltatások](compute-linked-services.md) cikk. | Igen      |
+| leképező            | A Mapper végrehajtható fájljának nevét adja meg | Igen      |
+| szűkítő           | A csökkentő végrehajtható fájl nevét adja meg | Igen      |
+| egyesítő          | A Combiner végrehajtható fájljának nevét adja meg | Nem       |
+| fileLinkedService | Hivatkozás egy Azure Storage társított szolgáltatásra, amely a leképezett Mapper, Combiner és redukáló programok tárolására szolgál. Ha nem megadja ezt a társított szolgáltatást, a rendszer a HDInsight társított szolgáltatásban definiált Azure Storage társított szolgáltatást használja. | Nem       |
+| FilePath          | Adja meg a fileLinkedService által hivatkozott Azure Storage-ban tárolt Mapper, Combiner és redukáló programok elérési útjának tömbjét. Az elérési út megkülönbözteti a kis- és nagybetűket. | Igen      |
+| bemenet             | Meghatározza a Mapper bemeneti fájljának WASB elérési útját. | Igen      |
+| output            | Megadja a szűkítő kimeneti fájljának WASB elérési útját. | Igen      |
+| getDebugInfo      | Megadja, hogy a rendszer mikor másolja a naplófájlokat a Scriptlinkedservice szolgáltatás által meghatározott HDInsight-fürt (vagy) által használt Azure-tárolóba. Megengedett értékek: nincs, mindig vagy sikertelen. Alapértelmezett érték: nincs. | Nem       |
+| argumentumok         | Argumentumok tömbjét adja meg egy Hadoop feladatokhoz. Az argumentumok parancssori argumentumként lesznek átadva az egyes feladatokhoz. | Nem       |
+| meghatározza           | Adja meg a paramétereket kulcs/érték párokként a kaptár-parancsfájlon belüli hivatkozáshoz. | Nem       | 
 
 ## <a name="next-steps"></a>További lépések
-Tekintse meg a következő cikkek, amelyek bemutatják, hogyan alakíthat át adatokat, egyéb módon: 
+A következő cikkekből megtudhatja, hogyan alakíthat át más módon az adatátalakítást: 
 
 * [U-SQL-tevékenység](transform-data-using-data-lake-analytics.md)
-* [Hive-tevékenység](transform-data-using-hadoop-hive.md)
+* [Struktúra tevékenysége](transform-data-using-hadoop-hive.md)
 * [Pig-tevékenység](transform-data-using-hadoop-pig.md)
-* [MapReduce-tevékenység](transform-data-using-hadoop-map-reduce.md)
+* [MapReduce tevékenység](transform-data-using-hadoop-map-reduce.md)
 * [Spark-tevékenység](transform-data-using-spark.md)
 * [.NET egyéni tevékenység](transform-data-using-dotnet-custom-activity.md)
-* [Machine Learning kötegelt végrehajtási tevékenység](transform-data-using-machine-learning.md)
+* [Batch-végrehajtási tevékenység Machine Learning](transform-data-using-machine-learning.md)
 * [Tárolt eljárási tevékenység](transform-data-using-stored-procedure.md)

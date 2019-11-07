@@ -1,5 +1,5 @@
 ---
-title: Meglévő virtuális hálózat konfigurálása Azure SQL Database felügyelt példányhoz | Microsoft Docs
+title: Meglévő virtuális hálózat konfigurálása Azure SQL Database felügyelt példányhoz
 description: Ez a cikk azt ismerteti, hogyan lehet konfigurálni egy meglévő virtuális hálózatot és alhálózatot, ahol Azure SQL Database felügyelt példányt telepíthet.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, bonova, carlrab
 ms.date: 01/15/2019
-ms.openlocfilehash: 509a08705d87e8f789e26ebbcec295a31f99f416
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 0f6ababa9d25798f4b150c322d48d4c7af04a511
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68567632"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73689381"
 ---
 # <a name="configure-an-existing-virtual-network-for-azure-sql-database-managed-instance"></a>Meglévő virtuális hálózat konfigurálása Azure SQL Database felügyelt példányhoz
 
@@ -25,7 +25,7 @@ Azure SQL Database felügyelt példányt egy Azure-beli [virtuális hálózaton]
 Ha a következő esetek valamelyike vonatkozik Önre, a jelen cikkben ismertetett parancsfájllal ellenőrizheti és módosíthatja a hálózatot:
 
 - Olyan új alhálózattal rendelkezik, amely még nincs konfigurálva.
-- Nem biztos benne, hogy az alhálózat igazodik a követelményekhez [](sql-database-managed-instance-connectivity-architecture.md#network-requirements).
+- Nem biztos benne, hogy az alhálózat igazodik a [követelményekhez](sql-database-managed-instance-connectivity-architecture.md#network-requirements).
 - Azt szeretné, hogy az alhálózat továbbra is megfeleljen a [hálózati követelményeknek](sql-database-managed-instance-connectivity-architecture.md#network-requirements) , miután végzett a módosításokat.
 
 > [!Note]
@@ -52,9 +52,9 @@ Invoke-Command -ScriptBlock ([Scriptblock]::Create((iwr ($scriptUrlBase+'/prepar
 
 A parancsfájl három lépésben készíti elő az alhálózatot:
 
-1. Érvényesít Ellenőrzi a kiválasztott virtuális hálózatot és alhálózatot a felügyelt példányok hálózati követelményeihez.
-2. Ellenőrizze Ez a felhasználó olyan módosításokat jelenít meg, amelyeket az alhálózat felügyelt példányok telepítéséhez való előkészítéséhez kell végezni. Emellett beleegyezik.
-3. Előkészítése Megfelelően konfigurálja a virtuális hálózatot és az alhálózatot.
+1. Ellenőrzés: ellenőrzi a kiválasztott virtuális hálózatot és alhálózatot a felügyelt példányok hálózati követelményeihez.
+2. Confirm (megerősítés): megjeleníti a felhasználó által a felügyelt példányok központi telepítésének előkészítéséhez szükséges módosítások készletét. Emellett beleegyezik.
+3. Előkészítés: helyesen konfigurálja a virtuális hálózatot és az alhálózatot.
 
 ## <a name="next-steps"></a>További lépések
 

@@ -1,5 +1,5 @@
 ---
-title: Azure SQL Database – általános célú és üzleti szempontból kritikus fontosságú | Microsoft Docs
+title: 'Azure SQL Database – általános célú és üzleti szempontból kritikus fontosságú '
 description: A cikk a virtuális mag-alapú vásárlási modell általános célú és üzleti szempontból kritikus szolgáltatási rétegeit tárgyalja.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: sashan, moslake, carlrab
 ms.date: 10/01/2019
-ms.openlocfilehash: a971b428da72028bcabd874e848d53bc2392a0f6
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: c6af083c4b3d16fa695da0ccc968c90b5480b6c4
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73496116"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73687267"
 ---
 # <a name="azure-sql-database-service-tiers"></a>Azure SQL Database szolgáltatási szintek
 
@@ -37,23 +37,23 @@ A következő táblázat ismerteti a legújabb generációs szolgáltatási szin
 | **Legjobb a következőhöz:** | |  A költségvetés-orientált kiegyensúlyozott számítási és tárolási lehetőségeket kínál. | A legtöbb üzleti számítási feladat. A tárterület méretének automatikus skálázása 100 TB-ig, folyékony vertikális és horizontális számítási skálázás, gyors adatbázis-visszaállítás. | OLTP alkalmazások nagy tranzakciós sebességgel és alacsony IO-késéssel. Maximális rugalmasságot biztosít a hibák és a gyors feladatátvételek esetében, több szinkronban frissített replika használatával.|
 |  **Erőforrás-típusban elérhető:** ||Önálló adatbázis/rugalmas készlet/felügyelt példány | Önálló adatbázis | Önálló adatbázis/rugalmas készlet/felügyelt példány |
 | **Számítási méret**|Önálló adatbázis/rugalmas készlet | 1 – 80 virtuális mag | 1 – 80 virtuális mag | 1 – 80 virtuális mag |
-| | Felügyelt példány | 4, 8, 16, 24, 32, 40, 64, 80 virtuális mag | – | 4, 8, 16, 24, 32, 40, 64, 80 virtuális mag |
-| | Felügyelt példányok készletei | 2, 4, 8, 16, 24, 32, 40, 64, 80 virtuális mag | – | – |
-| **Tárolás típusa** | Mind | Prémium szintű távoli tárterület (/példány) | A leválasztott tárterület helyi SSD-gyorsítótárral (/példány) | Villámgyors helyi SSD-tároló (példány) |
+| | Felügyelt példány | 4, 8, 16, 24, 32, 40, 64, 80 virtuális mag | N/A | 4, 8, 16, 24, 32, 40, 64, 80 virtuális mag |
+| | Felügyelt példányok készletei | 2, 4, 8, 16, 24, 32, 40, 64, 80 virtuális mag | N/A | N/A |
+| **Tárolás típusa** | Összes | Prémium szintű távoli tárterület (/példány) | A leválasztott tárterület helyi SSD-gyorsítótárral (/példány) | Villámgyors helyi SSD-tároló (példány) |
 | **Adatbázis mérete** | Önálló adatbázis/rugalmas készlet | 5 GB – 4 TB | Akár 100 TB | 5 GB – 4 TB |
-| | Felügyelt példány  | 32 GB – 8 TB | – | 32 GB – 4 TB |
+| | Felügyelt példány  | 32 GB – 8 TB | N/A | 32 GB – 4 TB |
 | **Tárterület mérete** | Önálló adatbázis/rugalmas készlet | 5 GB – 4 TB | Akár 100 TB | 5 GB – 4 TB |
-| | Felügyelt példány  | 32 GB – 8 TB | – | 32 GB – 4 TB |
+| | Felügyelt példány  | 32 GB – 8 TB | N/A | 32 GB – 4 TB |
 | **TempDB mérete** | Önálló adatbázis/rugalmas készlet | [32 GB/virtuális mag](sql-database-vcore-resource-limits-single-databases.md#general-purpose---provisioned-compute---gen4) | [32 GB/virtuális mag](sql-database-vcore-resource-limits-single-databases.md#hyperscale---provisioned-compute---gen5) | [32 GB/virtuális mag](sql-database-vcore-resource-limits-single-databases.md#business-critical---provisioned-compute---gen4) |
-| | Felügyelt példány  | [24 GB/virtuális mag](sql-database-managed-instance-resource-limits.md#service-tier-characteristics) | – | Legfeljebb 4 TB – [a tárterület mérete korlátozva](sql-database-managed-instance-resource-limits.md#service-tier-characteristics) |
+| | Felügyelt példány  | [24 GB/virtuális mag](sql-database-managed-instance-resource-limits.md#service-tier-characteristics) | N/A | Legfeljebb 4 TB – [a tárterület mérete korlátozva](sql-database-managed-instance-resource-limits.md#service-tier-characteristics) |
 | **Írási sebesség naplózása** | Önálló adatbázis | [1,875 MB/s/virtuális mag (max. 30 MB/s)](sql-database-vcore-resource-limits-single-databases.md#general-purpose---provisioned-compute---gen4) | 100 MB/s | [6 MB/s/s/virtuális mag (max. 96 MB/s)](sql-database-vcore-resource-limits-single-databases.md#business-critical---provisioned-compute---gen4) |
-| | Felügyelt példány | [3 MB/s/s virtuális mag (max. 22 MB/s)](sql-database-managed-instance-resource-limits.md#service-tier-characteristics) | – | [4 MB/s/s virtuális mag (max. 48 MB/s)](sql-database-managed-instance-resource-limits.md#service-tier-characteristics) |
-|**Rendelkezésre állás**|Mind| 99.99% |  [99,95% egyetlen másodlagos replikával, 99,99%-kal több replikával](sql-database-service-tier-hyperscale-faq.md#what-slas-are-provided-for-a-hyperscale-database) | 99.99% <br/> [99,995% a zóna redundáns önálló adatbázisával](https://azure.microsoft.com/blog/understanding-and-leveraging-azure-sql-database-sla/) |
-|**Mentések**|Mind|RA-GRS, 7-35 nap (alapértelmezés szerint 7 nap)| RA-GRS, 7 nap, állandó időpontra történő helyreállítás (PITR) | RA-GRS, 7-35 nap (alapértelmezés szerint 7 nap) |
-|**Memóriában tárolt OLTP** | | – | – | Elérhető |
+| | Felügyelt példány | [3 MB/s/s virtuális mag (max. 22 MB/s)](sql-database-managed-instance-resource-limits.md#service-tier-characteristics) | N/A | [4 MB/s/s virtuális mag (max. 48 MB/s)](sql-database-managed-instance-resource-limits.md#service-tier-characteristics) |
+|**Rendelkezésre állás**|Összes| 99.99% |  [99,95% egyetlen másodlagos replikával, 99,99%-kal több replikával](sql-database-service-tier-hyperscale-faq.md#what-slas-are-provided-for-a-hyperscale-database) | 99.99% <br/> [99,995% a zóna redundáns önálló adatbázisával](https://azure.microsoft.com/blog/understanding-and-leveraging-azure-sql-database-sla/) |
+|**Mentések**|Összes|RA-GRS, 7-35 nap (alapértelmezés szerint 7 nap)| RA-GRS, 7 nap, állandó időpontra történő helyreállítás (PITR) | RA-GRS, 7-35 nap (alapértelmezés szerint 7 nap) |
+|**Memóriában tárolt OLTP** | | N/A | N/A | Elérhető |
 |**Írásvédett replikák**| | 0  | 0 - 4 | 1 (beépített, árba belefoglalva) |
 |**Díjszabás/számlázás** | Önálló adatbázis | a [virtuális mag, a fenntartott tárterület és a biztonsági mentési tár](https://azure.microsoft.com/pricing/details/sql-database/single/) díja. <br/>A IOPS nem számítunk fel díjat. | [az egyes replikák és a felhasznált tárolók virtuális mag](https://azure.microsoft.com/pricing/details/sql-database/single/) számítunk fel díjat. <br/>A IOPS még nincs felszámítva. | a [virtuális mag, a fenntartott tárterület és a biztonsági mentési tár](https://azure.microsoft.com/pricing/details/sql-database/single/) díja. <br/>A IOPS nem számítunk fel díjat. |
-|| Felügyelt példány | a [virtuális mag és a fenntartott tároló](https://azure.microsoft.com/pricing/details/sql-database/managed/) díja. <br/>A IOPS nem számítunk fel díjat.<br/>A biztonsági mentési tár még nincs felszámítva. | – | a [virtuális mag és a fenntartott tároló](https://azure.microsoft.com/pricing/details/sql-database/managed/) díja. <br/>A IOPS nem számítunk fel díjat.<br/>A biztonsági mentési tár még nincs felszámítva. | 
+|| Felügyelt példány | a [virtuális mag és a fenntartott tároló](https://azure.microsoft.com/pricing/details/sql-database/managed/) díja. <br/>A IOPS nem számítunk fel díjat.<br/>A biztonsági mentési tár még nincs felszámítva. | N/A | a [virtuális mag és a fenntartott tároló](https://azure.microsoft.com/pricing/details/sql-database/managed/) díja. <br/>A IOPS nem számítunk fel díjat.<br/>A biztonsági mentési tár még nincs felszámítva. | 
 |**Kedvezményes modellek**| | [Fenntartott példányok](sql-database-reserved-capacity.md)<br/>[Azure Hybrid Benefit](sql-database-azure-hybrid-benefit.md) (nem érhető el a fejlesztési és tesztelési előfizetéseken)<br/>[Nagyvállalati](https://azure.microsoft.com/offers/ms-azr-0148p/) és [utólagos](https://azure.microsoft.com/offers/ms-azr-0023p/) elszámolású fejlesztési és tesztelési előfizetések| [Azure Hybrid Benefit](sql-database-azure-hybrid-benefit.md) (nem érhető el a fejlesztési és tesztelési előfizetéseken)<br/>[Nagyvállalati](https://azure.microsoft.com/offers/ms-azr-0148p/) és [utólagos](https://azure.microsoft.com/offers/ms-azr-0023p/) elszámolású fejlesztési és tesztelési előfizetések| [Fenntartott példányok](sql-database-reserved-capacity.md)<br/>[Azure Hybrid Benefit](sql-database-azure-hybrid-benefit.md) (nem érhető el a fejlesztési és tesztelési előfizetéseken)<br/>[Nagyvállalati](https://azure.microsoft.com/offers/ms-azr-0148p/) és [utólagos](https://azure.microsoft.com/offers/ms-azr-0023p/) elszámolású fejlesztési és tesztelési előfizetések|
 
 További információkért tekintse meg az [önálló adatbázis (virtuális mag)](sql-database-vcore-resource-limits-single-databases.md), az [önálló adatbázis-készletek (virtuális mag)](sql-database-dtu-resource-limits-single-databases.md), az [önálló adatbázisok (DTU)](sql-database-dtu-resource-limits-single-databases.md), az [önálló adatbázis-készletek (DTU)](sql-database-dtu-resource-limits-single-databases.md)és a [felügyelt példányok](sql-database-managed-instance-resource-limits.md) közötti különbségeket. lapok.

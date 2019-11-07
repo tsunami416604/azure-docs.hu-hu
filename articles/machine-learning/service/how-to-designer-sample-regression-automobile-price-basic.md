@@ -1,5 +1,5 @@
 ---
-title: 'Tervezői példa #1: regresszió az ár előrejelzéséhez'
+title: 'Tervező: előrejelzési ár (regresszió)'
 titleSuffix: Azure Machine Learning
 description: Ismerje meg, hogyan hozhat létre gépi tanulási modellt az autó árának előrejelzéséhez egyetlen sor kód írása nélkül.
 services: machine-learning
@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: zhanxia
 ms.reviewer: peterlu
 ms.date: 11/04/2019
-ms.openlocfilehash: 14b9f5fd1459ebd3341218a4ada14b16ddb4853f
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 0cdf2d0b632368a5a5bc24e092783c979f7c26bc
+ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73515472"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73647153"
 ---
 # <a name="sample-1---regression-predict-price"></a>1\. példa – regresszió: előrejelzési ár
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-enterprise-sku.md)]
@@ -28,7 +28,7 @@ A képzési gépi tanulási modell alapvető lépései a következők:
 
 1. Az adatok lekérése
 1. Az adatfeldolgozás előkezelése
-1. A modell tanítása
+1. A modell betanítása
 1. A modell értékelése
 
 Itt látható a folyamat utolsó, befejezett gráfja. Ez a cikk az összes modul indoklását tartalmazza, így a hasonló döntéseket saját maga is megteheti.
@@ -54,7 +54,7 @@ A sok hiányzó értékkel rendelkező normalizált veszteségek kizárásához 
 
 ![Adatfeldolgozás előtti](./media/how-to-ui-sample-regression-predict-automobile-price-basic/data-processing.png)
 
-## <a name="train-the-model"></a>A modell tanítása
+## <a name="train-the-model"></a>A modell betanítása
 
 A gépi tanulási problémák változhatnak. Az általános gépi tanulási feladatok közé tartoznak a besorolási, fürtözési, regressziós és ajánlott rendszerek, amelyek mindegyike más algoritmust igényelhet. Az Ön által választott algoritmus gyakran a használati eset követelményeitől függ. Az algoritmus kiválasztása után a paramétereket a pontosabb modell betanításához kell hangolnia. Ezután ki kell értékelnie az összes modellt, például a pontosságot, az érthetőséget és a hatékonyságot mutató mérőszámok alapján.
 

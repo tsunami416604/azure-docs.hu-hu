@@ -1,5 +1,5 @@
 ---
-title: Az Azure SQL Database-alapú alkalmazásfejlesztés áttekintése | Microsoft Docs
+title: SQL Database-alapú alkalmazásfejlesztés – áttekintés
 description: Megismerheti az SQL Database-hez elérhető adatkapcsolattárakat és ajánlott eljárásokat az alkalmazások csatlakoztatásához.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: genemi
 ms.date: 02/07/2019
-ms.openlocfilehash: 42fc73b5557fba91cc132a0abe8561f0a72bbb64
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 58f823aad157657de5445b1010a405af01c70171
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68568857"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73690644"
 ---
 # <a name="sql-database-application-development-overview"></a>SQL Database alkalmazás-fejlesztés áttekintése
 
@@ -44,20 +44,20 @@ Az ügyfél csatlakozási logikájában írja felül az alapértelmezett időtú
 
 Ha [kapcsolatkészletet](https://msdn.microsoft.com/library/8xx3tyca.aspx) használ, azonnal bontsa a kapcsolatot, ha a program már nem használja aktívan, és nem is tervezi az ismételt használatát.
 
-Kerülje a hosszan futó tranzakciók elkerülését, mert az infrastruktúra vagy a kapcsolatok meghibásodása is visszaállíthatja a tranzakciót. Ha lehetséges, Ossza szét a tranzakciót a több kisebb tranzakcióban, és a [teljesítmény növelése érdekében](sql-database-use-batching-to-improve-performance.md)használjon batchs-t.
+Kerülje a hosszan futó tranzakciók elkerülését, mert az infrastruktúra vagy a kapcsolatok meghibásodása is visszaállíthatja a tranzakciót. Ha lehetséges, Ossza szét a tranzakciót a több kisebb tranzakcióban, és a [teljesítmény növelése érdekében használjon batchs-t](sql-database-use-batching-to-improve-performance.md).
 
-## <a name="resiliency"></a>Rugalmasság
+## <a name="resiliency"></a>Resiliency
 
-Azure SQL Database egy felhőalapú szolgáltatás, amely az alapul szolgáló infrastruktúrában vagy a felhőalapú entitások közötti kommunikációban felmerülő átmeneti hibákat várhat. Bár a Azure SQL Database rugalmas a tranzitív infrastruktúra meghibásodása esetén, ezek a hibák hatással lehetnek a kapcsolatra. Ha átmeneti hiba történik a SQL Databasehoz való csatlakozáskor, a kódnak [újra kell próbálkoznia a hívással](sql-database-connectivity-issues.md). Ajánlott, hogy az újrapróbálkozási logika leállítási logikát használjon, hogy több ügyfél egyidejű újrapróbálkozási kísérlete ne terhelje túl az SQL Database-t. Az újrapróbálkozási logika a [SQL Database](sql-database-develop-error-messages.md)-ügyfélprogramok hibaüzenetei függ.
+Azure SQL Database egy felhőalapú szolgáltatás, amely az alapul szolgáló infrastruktúrában vagy a felhőalapú entitások közötti kommunikációban felmerülő átmeneti hibákat várhat. Bár a Azure SQL Database rugalmas a tranzitív infrastruktúra meghibásodása esetén, ezek a hibák hatással lehetnek a kapcsolatra. Ha átmeneti hiba történik a SQL Databasehoz való csatlakozáskor, a kódnak [újra kell próbálkoznia a hívással](sql-database-connectivity-issues.md). Ajánlott, hogy az újrapróbálkozási logika leállítási logikát használjon, hogy több ügyfél egyidejű újrapróbálkozási kísérlete ne terhelje túl az SQL Database-t. Az újrapróbálkozási logika a [SQL Database-ügyfélprogramok hibaüzenetei](sql-database-develop-error-messages.md)függ.
 
 Az Azure SQL Database-ben tervezett karbantartási események előkészítésével kapcsolatos további információkért lásd: [Az Azure karbantartási eseményeinek tervezése Azure SQL Databaseban](sql-database-planned-maintenance.md).
 
 ## <a name="network-considerations"></a>Hálózati megfontolások
 
 - Győződjön meg róla, hogy az ügyfélprogramot futtató számítógép tűzfala engedélyezi a kimenő TCP-kommunikációt az 1433-as porton.  További információ: [Azure SQL Database tűzfal konfigurálása](sql-database-configure-firewall-settings.md).
-- Ha az ügyfélprogram egy Azure-beli virtuális gépen (VM) fut, akkor a SQL Databasehoz kell csatlakoznia, és meg kell nyitnia bizonyos porttartomány-tartományokat a virtuális gépen. További információ: [A ADO.NET 4,5 és SQL Database 1433-nál nagyobb portok](sql-database-develop-direct-route-ports-adonet-v12.md).
+- Ha az ügyfélprogram egy Azure-beli virtuális gépen (VM) fut, akkor a SQL Databasehoz kell csatlakoznia, és meg kell nyitnia bizonyos porttartomány-tartományokat a virtuális gépen. További információ: [a 1433-es, ADO.NET 4,5-es és SQL Database-es porton túli portok](sql-database-develop-direct-route-ports-adonet-v12.md).
 - A Azure SQL Databasehoz való ügyfélkapcsolatok időnként megkerülik a proxyt, és közvetlenül az adatbázissal működnek. Ekkor válnak fontossá az 1433-astól különböző portok. További információért [Azure SQL Database kapcsolati architektúrát](sql-database-connectivity-architecture.md) és [portokat a 1433 ADO.NET 4,5 és SQL Database](sql-database-develop-direct-route-ports-adonet-v12.md).
-- Felügyelt példány hálózatkezelési konfigurációjának megtekintéséhez lásd: a felügyelt példányok [hálózati konfigurációja](sql-database-howto-managed-instance.md#network-configuration).
+- Felügyelt példány hálózatkezelési konfigurációjának megtekintéséhez lásd: a [felügyelt példányok hálózati konfigurációja](sql-database-howto-managed-instance.md#network-configuration).
 
 ## <a name="next-steps"></a>További lépések
 

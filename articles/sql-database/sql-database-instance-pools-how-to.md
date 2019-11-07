@@ -1,5 +1,5 @@
 ---
-title: A Azure SQL Database-példányok útmutatója (előzetes verzió) | Microsoft Docs
+title: Azure SQL Database-példányok útmutatója (előzetes verzió)
 description: Ez a cikk bemutatja, hogyan hozhatók létre és kezelhetők Azure SQL Database példány-készletek (előzetes verzió).
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: sstein, carlrab
 ms.date: 09/05/2019
-ms.openlocfilehash: 5862a54c92de7395ce42865ae32d453e926048d8
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: 461de4da35905ed860fb2ed9d2c655b55b777683
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70294268"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73689734"
 ---
 # <a name="azure-sql-database-instance-pools-preview-how-to-guide"></a>A Azure SQL Database instance Pools (előzetes verzió) útmutatója
 
@@ -28,7 +28,7 @@ A következő táblázat a példány-készletekhez kapcsolódó elérhető műve
 
 |Parancs|Azure Portal|PowerShell|
 |:---|:---|:---|
-|Példány-készlet létrehozása|Nem|Igen|
+|Példánykészlet létrehozása|Nem|Igen|
 |Példány frissítése (korlátozott számú tulajdonság)|Nem |Igen |
 |Példány-készlet használatának és tulajdonságainak megtekintése|Nem|Igen |
 |Példány-készlet törlése|Nem|Igen|
@@ -41,7 +41,7 @@ A következő táblázat a példány-készletekhez kapcsolódó elérhető műve
 
 Elérhető [PowerShell-parancsok](https://docs.microsoft.com/powershell/module/az.sql/)
 
-|A parancsmag |Leírás |
+|Parancsmag |Leírás |
 |:---|:---|
 |[Új – AzSqlInstancePool](/powershell/module/az.sql/new-azsqlinstancepool/) | Létrehoz egy Azure SQL Database példány-készletet. |
 |[Get-AzSqlInstancePool](/powershell/module/az.sql/get-azsqlinstancepool/) | Az Azure SQL-példány készletével kapcsolatos információkat ad vissza. |
@@ -92,7 +92,7 @@ A következő korlátozások vonatkoznak a példány-készletekre:
 
 - Nyilvános előzetes verzióban csak általános célú és Gen5 érhető el.
 - A készlet neve csak kisbetűket, számokat és kötőjelet tartalmazhat, és nem kezdődhet kötőjeltel.
-- Az alhálózat AZONOSÍTÓjának lekéréséhez `Get-AzVirtualNetworkSubnetConfig -Name "miPoolSubnet" -VirtualNetwork $virtualNetwork`használja a következőt:.
+- Az alhálózat AZONOSÍTÓjának lekéréséhez használja a `Get-AzVirtualNetworkSubnetConfig -Name "miPoolSubnet" -VirtualNetwork $virtualNetwork`.
 - Ha a AHB (Azure Hybrid Benefit) szeretné használni, azt a rendszer a példány készlet szintjén alkalmazza. A licenc típusát a készlet létrehozása során állíthatja be, vagy a létrehozás után bármikor frissítheti.
 
 > [!IMPORTANT]

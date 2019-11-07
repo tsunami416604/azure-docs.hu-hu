@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 09/25/2019
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: 28a391fded422b00508e006bfd613d6c98d82f17
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: 1fda05ffcac8952ee5a12c23383aad1a04d36b97
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72166466"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73601318"
 ---
 # <a name="troubleshoot-common-issues-in-azure-container-instances"></a>Azure Container Instances gyakori problémáinak elhárítása
 
@@ -37,7 +37,7 @@ A tároló specifikációjának meghatározásakor bizonyos paramétereknek meg 
 
 ## <a name="os-version-of-image-not-supported"></a>A rendszerkép operációs rendszerének verziója nem támogatott
 
-Ha olyan rendszerképet ad meg, amelyet a Azure Container Instances nem támogat, a rendszer @no__t 0 hibát ad vissza. A hiba a következőhöz hasonló, ahol a `{0}` a telepíteni próbált lemezkép neve:
+Ha olyan rendszerképet ad meg, amely Azure Container Instances nem támogatja, a rendszer `OsVersionNotSupported` hibát ad vissza. A hiba az alábbihoz hasonló, ahol a `{0}` a telepíteni próbált rendszerkép neve:
 
 ```json
 {
@@ -52,7 +52,7 @@ Ez a hiba leggyakrabban a 1709-es vagy a 1803-es féléves csatornán alapuló W
 
 ## <a name="unable-to-pull-image"></a>Nem sikerült lekérni a rendszerképet
 
-Ha a Azure Container Instances kezdetben nem tudja lekérni a rendszerképet, a rendszer egy ideig újrapróbálkozik. Ha a lekéréses művelet továbbra is sikertelen, az ACI végül nem fogja tudni végrehajtani az üzemelő példányt, és `Failed to pull image` hibát tapasztalhat.
+Ha a Azure Container Instances kezdetben nem tudja lekérni a rendszerképet, a rendszer egy ideig újrapróbálkozik. Ha a lekéréses művelet továbbra is sikertelen, az ACI végül sikertelenül hajtja végre a telepítést, és `Failed to pull image` hibát tapasztalhat.
 
 A probléma megoldásához törölje a tároló példányát, majd próbálja megismételni a telepítést. Győződjön meg arról, hogy a rendszerkép létezik a beállításjegyzékben, és hogy helyesen írta be a rendszerkép nevét.
 
@@ -160,7 +160,7 @@ A Windows-lemezképek [további szempontokat is figyelembe](#cached-images)kell 
 
 Ha a tároló hosszú időt vesz igénybe, de végül sikeres, először tekintse meg a tároló rendszerképének méretét. Mivel Azure Container Instances igény szerint lekéri a tároló képét, a megjelenő indítási idő közvetlenül kapcsolódik a méretéhez.
 
-A tároló rendszerképének méretét a Docker CLI `docker images` parancsával tekintheti meg:
+A tároló rendszerképének méretét a Docker CLI `docker images` parancsának használatával tekintheti meg:
 
 ```console
 $ docker images
@@ -176,7 +176,7 @@ Egy másik lehetőség, hogy csökkentse a rendszerkép hatását a tároló ind
 
 ### <a name="cached-images"></a>Gyorsítótárazott lemezképek
 
-A Azure Container Instances egy gyorsítótárazási mechanizmust használ a közös [Windows alapképekre](container-instances-faq.md#what-windows-base-os-images-are-supported)épülő rendszerképekhez, beleértve a `nanoserver:1809`, a `servercore:ltsc2019` és a `servercore:1809` beállítást. A gyakran használt Linux-rendszerképek, például a `ubuntu:1604` és a `alpine:3.6` is gyorsítótárazva vannak. A gyorsítótárazott képek és címkék naprakész listája a [gyorsítótárazott lemezképek listája][list-cached-images] API-t használja.
+A Azure Container Instances egy gyorsítótárazási mechanizmust használ a [Windows alaplemezképekre](container-instances-faq.md#what-windows-base-os-images-are-supported)épülő rendszerképek (például a `nanoserver:1809`, a `servercore:ltsc2019`és a `servercore:1809`) rendszerképeinek elindításához. A gyakran használt Linux-rendszerképek, például a `ubuntu:1604` és az `alpine:3.6` is gyorsítótárazva vannak. A gyorsítótárazott képek és címkék naprakész listája a [gyorsítótárazott lemezképek listája][list-cached-images] API-t használja.
 
 > [!NOTE]
 > A Windows Server 2019-alapú rendszerképek használata a Azure Container Instances előzetes verzióban érhető el.
@@ -204,19 +204,19 @@ A Azure Container Instances nem tesz elérhetővé közvetlen hozzáférést a t
 
 ## <a name="container-group-ip-address-may-not-be-accessible-due-to-mismatched-ports"></a>Előfordulhat, hogy a tároló csoport IP-címe nem érhető el, mert nem egyeznek a portok
 
-A Azure Container Instances még nem támogatja a port-hozzárendelést, például a normál Docker-konfigurációt. Ha úgy találja, hogy a tároló csoport IP-címe nem érhető el, akkor győződjön meg arról, hogy a tároló-rendszerkép úgy lett konfigurálva, hogy a `ports` tulajdonsággal megegyező portokra figyeljen.
+A Azure Container Instances még nem támogatja a port-hozzárendelést, például a normál Docker-konfigurációt. Ha úgy találja, hogy a tároló csoport IP-címe nem érhető el, akkor győződjön meg arról, hogy a tároló rendszerképét úgy konfigurálta, hogy a `ports` tulajdonsággal megegyező portokra figyeljen.
 
-Ha szeretné ellenőrizni, hogy Azure Container Instances tud-e figyelni a tároló rendszerképében konfigurált porton, ellenőrizze a `aci-helloworld` rendszerkép központi telepítését, amely elérhetővé teszi a portot. Futtassa a `aci-helloworld` alkalmazást is, hogy az figyelje a portot. a `aci-helloworld` opcionális környezeti változót fogad el `PORT` értékkel az alapértelmezett 80-es port felülbírálásához. Például a 9000-es port teszteléséhez:
+Ha szeretné ellenőrizni, hogy Azure Container Instances tud-e figyelni a tároló rendszerképében konfigurált porton, tesztelje a portot közzétevő `aci-helloworld`-rendszerkép központi telepítését. Futtassa a `aci-helloworld` alkalmazást is, hogy az figyelje a portot. a `aci-helloworld` egy opcionális környezeti változót is elfogad `PORT` az alapértelmezett 80-es port felülbírálásához. Például a 9000-es port teszteléséhez állítsa be a [környezeti változót](container-instances-environment-variables.md) a tároló csoport létrehozásakor:
 
-1. Állítsa be a tároló csoportot a 9000-es port megjelenítéséhez, és adja át a portszámot a környezeti változó értékeként:
+1. Állítsa be a tároló csoportot a 9000-es port megjelenítéséhez, és adja át a portszámot a környezeti változó értékeként. A példa a bash-rendszerhéjra van formázva. Ha egy másik rendszerhéjt, például a PowerShellt vagy a parancssort részesíti előnyben, a változó hozzárendelést ennek megfelelően kell módosítania.
     ```azurecli
     az container create --resource-group myResourceGroup \
     --name mycontainer --image mcr.microsoft.com/azuredocs/aci-helloworld \
     --ip-address Public --ports 9000 \
     --environment-variables 'PORT'='9000'
     ```
-1. Keresse meg a tároló csoport IP-címét a `az container create` parancs kimenetében. Keresse meg az **IP**értékét. 
-1. A tároló sikeres kiépítés után tallózással keresse meg a tároló alkalmazás IP-címét és portját a böngészőben, például: `192.0.2.0:9000`. 
+1. Keresse meg a tároló csoport IP-címét a `az container create`parancs kimenetében. Keresse meg az **IP**értékét. 
+1. A tároló sikeres kiépítés után keresse meg a böngészőben a tároló alkalmazás IP-címét és portját, például: `192.0.2.0:9000`. 
 
     Megjelenik az "Üdvözöljük Azure Container Instances!" a webalkalmazás által megjelenített üzenet.
 1. Ha elkészült a tárolóval, távolítsa el a `az container delete` paranccsal:
@@ -225,7 +225,7 @@ Ha szeretné ellenőrizni, hogy Azure Container Instances tud-e figyelni a táro
     az container delete --resource-group myResourceGroup --name mycontainer
     ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Megtudhatja, hogyan [kérhet le tároló naplókat és eseményeket](container-instances-get-logs.md) a tárolók hibakereséséhez.
 

@@ -1,5 +1,5 @@
 ---
-title: Több SQL-adatbázis kezelése rugalmas készletekkel – Azure | Microsoft Docs
+title: Több SQL-adatbázis kezelése rugalmas készletekkel – Azure
 description: Több száz és ezer SQL-adatbázist kezelhet és méretezheti rugalmas készletek használatával. Egy díj az erőforrások számára, amelyekhez szükség esetén terjeszthető.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: oslake
 ms.author: moslake
 ms.reviewer: ninarn, carlrab
 ms.date: 08/06/2019
-ms.openlocfilehash: 0b0a6bec7916c056c187ed9e588dd3ac8fea8d84
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 68bb68b47ca240d6c20153af3ed4b0eb42475282
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69876402"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73690454"
 ---
 # <a name="elastic-pools-help-you-manage-and-scale-multiple-azure-sql-databases"></a>A rugalmas készletek segítségével több Azure SQL Database-adatbázist kezelhet és méretezheti
 
@@ -101,7 +101,7 @@ Ne feledje, hogy ebben a példában nem vesszük számításba a készlet egyéb
 
 Az adatbázisok kiugró és átlagos kihasználtsága közötti lényeges különbség a hosszú, alacsony kihasználtságú és a rövid magas kihasználtságú időszakokban mutatkozik meg. Ilyen felhasználási minta esetén ideális az erőforrások adatbázisok közötti megosztása. Az adatbázis készletben való használatát akkor érdemes megfontolni, ha a kiugró mértékű kihasználtsága hozzávetőlegesen másfélszer nagyobb az átlagos kihasználtságánál.
 
-**Példa a DTU-alapú vásárlási modellre**: Ha egy 100 DTU-s kiugró kihasználtsággal működő S3-adatbázis átlagosan legfeljebb 67 DTU-t használ, akkor jó jelöltnek számít egy eDTU-kat közösen használó készlethez. Ha pedig egy 20 DTU-s kiugró kihasználtsággal működő S1-adatbázis átlagosan legfeljebb 13 DTU-t használ, akkor jó jelöltnek számít egy készlethez.
+**DTU-alapú vásárlási modell**: egy olyan S3-adatbázis, amely 100 DTU-ra és átlagosan 67 DTU vagy annál kevesebb értékre mutat, jó választás a edtu egy készletben való megosztásához. Ha pedig egy 20 DTU-s kiugró kihasználtsággal működő S1-adatbázis átlagosan legfeljebb 13 DTU-t használ, akkor jó jelöltnek számít egy készlethez.
 
 ## <a name="how-do-i-choose-the-correct-pool-size"></a>Hogyan a megfelelő készlet méretének kiválasztása
 
@@ -116,11 +116,11 @@ Ha nincs lehetősége eszközök használatára, az alábbi részletes útmutat�
 
 1. Becsülje meg a készlethez szükséges Edtu vagy virtuális mag a következőképpen:
 
-   DTU-alapú vásárlási modell esetén: MAX(<*Az adatbázisok teljes száma* X *Az egyes adatbázisok átlagos DTU-használata*>,<br>  
+   A DTU-alapú vásárlási modell esetében: MAX (<*adatbázisok* *átlagos DTU-kihasználtsága/db*>,<br>  
    <*A kiugró kihasználtsággal egyszerre működő adatbázisok száma* X *Az egyes adatbázisok kiugró DTU-használata*)
 
-   Virtuális mag-alapú vásárlási modell esetén: MAX (<*adatbázisok* *átlagos virtuális mag*-kihasználtsága (db >)<br>  
-   <*Egyidejű csúcsérték-kiugró adatbázisok száma* X *csúcsérték-virtuális mag kihasználtsága/db*)
+   A virtuális mag-alapú vásárlási modell esetében: MAX (<*adatbázisok* *átlagos virtuális mag-kihasználtsága/db*>,<br>  
+   <*egyidejű csúcsérték-kiugró* X- *csúcs virtuális mag kihasználtsága/db*)
 
 2. A készlethez szükséges tárterület méretének becsléséhez adja össze a készlet egyes adatbázisaihoz szükséges bájtok számát. Ezután határozza meg a szükséges tárhelyet biztosító eDTU-készlet méretét.
 3. A DTU-alapú vásárlási modell esetében az 1. és a 2. lépésben szereplő eDTU-becslések nagyobb mennyiségét kell megbecsülni. A virtuális mag-alapú vásárlási modell esetében az 1. lépés alapján végezze el a virtuális mag becslését.
@@ -143,7 +143,7 @@ A rugalmas készletbe helyezett adatbázisok általánosságban ugyanazokat [az 
 
   Az időponthoz való visszaállítás az adatbázis automatikus biztonsági mentését használja a készletben lévő adatbázisok egy adott időpontra történő helyreállításához. Lásd: [Időponthoz kötött visszaállítás](sql-database-recovery-using-backups.md#point-in-time-restore)
 
-- **Geo-restore**
+- **Geo-visszaállítás**
 
   A Geo-visszaállítás az alapértelmezett helyreállítási beállítást adja meg, ha egy adatbázis nem érhető el, mert az adatbázist futtató régióban egy incidens található. Lásd: [Az Azure SQL-adatbázis visszaállítása vagy feladatátvétel a másodlagos kiszolgálóra](sql-database-disaster-recovery.md)
 
@@ -167,7 +167,7 @@ Kétféle módon hozhat létre rugalmas készletet a Azure Portal.
 > [!NOTE]
 > Egy kiszolgálón több készlet is létrehozható, de nem adhat hozzá különböző kiszolgálókon lévő adatbázisokat ugyanahhoz a készlethez.
 
-A készlet szolgáltatási szintje határozza meg a készletben lévő rugalmas készletek elérhető funkcióit, valamint az egyes adatbázisok számára elérhető erőforrások maximális mennyiségét. Részletekért lásd: rugalmas készletek erőforrás-korlátai a [DTU](sql-database-dtu-resource-limits-elastic-pools.md#elastic-pool-storage-sizes-and-compute-sizes)-modellben. A rugalmas készletek virtuális mag-alapú erőforrás-korlátaival kapcsolatban lásd: [virtuális mag-alapú erőforrás-korlátok – rugalmas készletek](sql-database-vcore-resource-limits-elastic-pools.md).
+A készlet szolgáltatási szintje határozza meg a készletben lévő rugalmas készletek elérhető funkcióit, valamint az egyes adatbázisok számára elérhető erőforrások maximális mennyiségét. Részletekért lásd: rugalmas készletek erőforrás-korlátai a [DTU-modellben](sql-database-dtu-resource-limits-elastic-pools.md#elastic-pool-storage-sizes-and-compute-sizes). A rugalmas készletek virtuális mag-alapú erőforrás-korlátaival kapcsolatban lásd: [virtuális mag-alapú erőforrás-korlátok – rugalmas készletek](sql-database-vcore-resource-limits-elastic-pools.md).
 
 A készlet erőforrásainak és díjszabásának konfigurálásához kattintson a **készlet konfigurálása**elemre. Ezután válasszon ki egy szolgáltatási szintet, adja hozzá az adatbázisokat a készlethez, és konfigurálja az erőforrás-korlátokat a készlethez és az adatbázisaihoz.
 

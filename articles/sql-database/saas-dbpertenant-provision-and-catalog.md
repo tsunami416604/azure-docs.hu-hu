@@ -1,5 +1,5 @@
 ---
-title: Új bérlők kiépítése egy Azure SQL Databaset használó több-bérlős alkalmazásban | Microsoft Docs
+title: Új bérlők kiépítése egy Azure SQL Databaset használó több-bérlős alkalmazásban
 description: Ismerje meg, hogyan hozhat létre és katalogizálhat új bérlőket egy Azure SQL Database több-bérlős SaaS-alkalmazásban
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 09/24/2018
-ms.openlocfilehash: b5a996fe6be5aa839b78b6693accac9b1000cef8
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: f0f1ebd8b2ef719a9556b6b20f6685d1da493263
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68570433"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73692112"
 ---
 # <a name="learn-how-to-provision-new-tenants-and-register-them-in-the-catalog"></a>Ismerje meg, hogyan hozhat létre új bérlőket, és hogyan regisztrálhat azokat a katalógusban
 
@@ -45,7 +45,7 @@ A katalógus lehetővé teszi az adatbázis nevének vagy helyének módosítás
 
 A katalógus további bérlői vagy adatbázis-metaadatokat is tárolhat, ilyen például a bérlők számára felkínált séma verziója, szolgáltatáscsomag vagy SLA. A katalógus más adatokat is tárolhat, amelyek lehetővé teszik az alkalmazások felügyeletét, az ügyfélszolgálatot vagy a DevOps. 
 
-Az SaaS-alkalmazáson túl a katalógus is engedélyezheti az adatbázis-eszközöket. A Wingtip tickets SaaS-adatbázis – bérlői minta alapján a katalógus a több-bérlős lekérdezés engedélyezésére szolgál, amelyet az [ad hoc jelentéskészítési oktatóanyagban](saas-tenancy-cross-tenant-reporting.md)vizsgálunk meg. Az adatbázisok közötti feladatok felügyeletét a [séma kezelése](saas-tenancy-schema-management.md) és a bérlői [elemzési](saas-tenancy-tenant-analytics.md) oktatóanyagok ismertetik. 
+Az SaaS-alkalmazáson túl a katalógus is engedélyezheti az adatbázis-eszközöket. A Wingtip tickets SaaS-adatbázis – bérlői minta alapján a katalógus a több-bérlős lekérdezés engedélyezésére szolgál, amelyet az [ad hoc jelentéskészítési oktatóanyagban](saas-tenancy-cross-tenant-reporting.md)vizsgálunk meg. Az adatbázisok közötti feladatok felügyeletét a [séma kezelése](saas-tenancy-schema-management.md) és a [bérlői elemzési](saas-tenancy-tenant-analytics.md) oktatóanyagok ismertetik. 
 
 A Wingtip tickets SaaS-mintákban a katalógus a [Elastic Database ügyféloldali kódtár (EDCL)](sql-database-elastic-database-client-library.md)szegmens felügyeleti funkcióinak használatával valósul meg. A EDCL a javában és a .NET-keretrendszerben érhető el. A EDCL lehetővé teszi, hogy az alkalmazások egy adatbázis-alapú szegmens-hozzárendelést hozzanak létre, kezeljenek és használjanak. 
 
@@ -77,11 +77,11 @@ A Wingtip jegyek SaaS-szkriptek és az alkalmazás forráskódja az [WingtipTick
 
 Annak megismeréséhez, hogy a Wingtip tickets alkalmazás hogyan valósítja meg az új bérlői üzembe helyezést, adjon hozzá egy töréspontot, és kövesse a munkafolyamatot a bérlő kiépítése közben.
 
-1. A PowerShell ISE-ben nyissa meg a... \\Tanulási modulok\\ProvisionAndCatalogdemo-ProvisionAndCatalog\\ _. ps1_ és állítsa be a következő paramétereket:
+1. A PowerShell ISE-ben nyissa meg a...\\learning-modulok\\ProvisionAndCatalog\\_demo-ProvisionAndCatalog. ps1_ , és állítsa be a következő paramétereket:
 
    * **$TenantName** = az új helyszín neve (például *Bushwillow Blues*).
    * **$VenueType** = az egyik előre definiált helyszín típusa: _blues, ClassicalMusic, Dance, jazz, judo, Motor Racing, többcélú, Opera, rockzene, Soccer_.
-   * $DemoScenario = **1**, *egyetlen bérlő kiépítése*.
+   * **$DemoScenario** = **1**, *egyetlen bérlő kiépítése*.
 
 2. Töréspont hozzáadásához vigye a kurzort a *New-bérlőt*tartalmazó sorra. Ezután nyomja le az F9 billentyűt.
 
@@ -105,7 +105,7 @@ Nem kell explicit módon követnie ezt a munkafolyamatot. Ismerteti, hogyan lehe
 * **Konfigurációs adatok beolvasása.** Lépjen be a Get-Configuration paranccsal az F11 használatával, és tekintse meg, hogyan van megadva az alkalmazás konfigurációja. Az erőforrásnevek és az alkalmazás-specifikus értékek itt vannak meghatározva. Ne módosítsa ezeket az értékeket egészen addig, amíg nem ismeri a parancsfájlokat.
 * **A katalógus objektum beolvasása.** Lépjen be a Get-Catalog szolgáltatásba, amely a magasabb szintű parancsfájlban használt Catalog objektumot állít össze és ad vissza. Ez a függvény a **AzureShardManagement. psm1**-ből importált szegmens-felügyeleti függvényeket használja. A katalógus objektum a következő elemekből áll:
 
-   * $catalogServerFullyQualifiedName a standard szárral és a felhasználó nevével ( _Catalog-\<User\>. database. Windows .net_) jön létre.
+   * a $catalogServerFullyQualifiedName a standard szár és a felhasználó neve: _Catalog-\<felhasználó\>. database. Windows .net_.
    * $catalogDatabaseName – a *tenantcatalog* konfigurációból származik.
    * $shardMapManager – ez az objektum a katalógus-adatbázisból van inicializálva.
    * $shardMap – ez az objektum a katalógus-adatbázisban található _tenantcatalog_ szilánkleképezésből van inicializálva. Egy katalógus-objektum áll és visszaadva. Ez a magasabb szintű parancsfájlban használatos.
@@ -135,9 +135,9 @@ A kiépítés befejezése után a végrehajtás visszatér az eredeti *bemutató
 
 Ez a gyakorlat 17 bérlős köteget foglal le. Javasoljuk, hogy a bérlők számára kiépítse ezt a köteget, mielőtt más Wingtip-jegyeket SaaS-adatbázis-bérlői oktatóanyagokat indít el. Több adatbázissal is dolgozhat a szolgáltatással.
 
-1. A PowerShell ISE-ben nyissa meg a... Learning-\\modulokProvisionAndCatalog\\*demo-ProvisionAndCatalog. ps1.* \\ Módosítsa a *$DemoScenario* paramétert 3 értékre:
+1. A PowerShell ISE-ben nyissa meg a...\\learning-modulok\\ProvisionAndCatalog\\*demo-ProvisionAndCatalog. ps1*. Módosítsa a *$DemoScenario* paramétert 3 értékre:
 
-   *  = **3**$DemoScenario a *bérlők kötegének kiépítése*.
+   * **$DemoScenario** = **3**, *bérlők kötegének kiépítése*.
 2. A szkript futtatásához nyomja le az F5 billentyűt.
 
 A szkript üzembe helyezi a további bérlők kötegét. Egy [Azure Resource Manager sablont](../azure-resource-manager/resource-manager-template-walkthrough.md) használ, amely a köteget vezérli, és az egyes adatbázisok kiépítési feltételeit egy csatolt sablonra delegálja. A sablonok ily módon való alkalmazása lehetővé teszi, hogy az Azure Resource Manager közvetítse a szkriptnek a kiépítési folyamatot. A sablonok szükség esetén párhuzamosan kiépítik az adatbázisokat és kezelik az újrapróbálkozásokat. A szkript idempotens, így ha az sikertelen vagy valamilyen okból leáll, futtassa újra.
@@ -154,16 +154,16 @@ A szkript üzembe helyezi a további bérlők kötegét. Egy [Azure Resource Man
 
 Az oktatóanyagban nem szereplő egyéb kiépítési minták:
 
-**Előzetes kiépítési adatbázisok**: Az előzetes kiépítési minta kihasználja azt a tényt, hogy a rugalmas készletben lévő adatbázisok nem vesznek fel extra költségeket. A számlázás a rugalmas készletre vonatkozik, nem az adatbázisokra. Az üresjáratban lévő adatbázisok nem használnak erőforrást. Ha az adatbázisokat előzetesen kiépíti egy készletbe, és szükség esetén lefoglalja őket, csökkentheti a bérlők hozzáadásának idejét. Az előre kiépített adatbázisok száma szükség szerint módosítható a várható kiépítési sebességhez megfelelő puffer megőrzése érdekében.
+**Adatbázisok előzetes kiépítése**: az előzetes kiépítési minta kihasználja azt a tényt, hogy a rugalmas készletben lévő adatbázisok nem vesznek fel extra költségeket. A számlázás a rugalmas készletre vonatkozik, nem az adatbázisokra. Az üresjáratban lévő adatbázisok nem használnak erőforrást. Ha az adatbázisokat előzetesen kiépíti egy készletbe, és szükség esetén lefoglalja őket, csökkentheti a bérlők hozzáadásának idejét. Az előre kiépített adatbázisok száma szükség szerint módosítható a várható kiépítési sebességhez megfelelő puffer megőrzése érdekében.
 
-**Automatikus**kiépítés: Az automatikus kiépítési mintában a kiépítési szolgáltatás szükség szerint automatikusan kiépíti a kiszolgálókat, a készleteket és az adatbázisokat. Ha szeretné, a rugalmas készletekben is megadhatja az előzetesen kiépíthető adatbázisokat. Ha az adatbázisok le vannak szerelve és törlődnek, a kiépítési szolgáltatás kitöltheti a rugalmas készletekben lévő hézagokat. Ilyen szolgáltatás lehet egyszerű vagy összetett, például a több földrajzi helyről történő kiépítés és a földrajzi replikálás beállítása a vész-helyreállításhoz. 
+**Automatikus kiépítés**: az automatikus kiépítési mintában a létesítési szolgáltatás szükség szerint automatikusan kiépíti a kiszolgálókat, készleteket és adatbázisokat. Ha szeretné, a rugalmas készletekben is megadhatja az előzetesen kiépíthető adatbázisokat. Ha az adatbázisok le vannak szerelve és törlődnek, a kiépítési szolgáltatás kitöltheti a rugalmas készletekben lévő hézagokat. Ilyen szolgáltatás lehet egyszerű vagy összetett, például a több földrajzi helyről történő kiépítés és a földrajzi replikálás beállítása a vész-helyreállításhoz. 
 
 Az automatikus kiépítési mintával egy ügyfélalkalmazás vagy parancsfájl kiépítési kérelmet küld egy várólistára, amelyet a kiépítési szolgáltatás feldolgoz. Ezután lekérdezi a szolgáltatást a Befejezés megállapításához. Ha az előzetes kiépítés használatban van, a rendszer gyorsan kezeli a kérelmeket. A szolgáltatás kiépít egy helyettesítő adatbázist a háttérben.
 
 
 ## <a name="next-steps"></a>További lépések
 
-Ennek az oktatóanyagnak a segítségével megtanulta a következőket:
+Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]
 > 

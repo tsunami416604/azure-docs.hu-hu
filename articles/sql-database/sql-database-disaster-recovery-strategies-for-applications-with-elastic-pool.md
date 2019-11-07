@@ -1,5 +1,5 @@
 ---
-title: Vészhelyzeti helyreállítási megoldások tervezése – Azure SQL Database | Microsoft Docs
+title: Vészhelyzeti helyreállítási megoldások tervezése – Azure SQL Database
 description: Megtudhatja, hogyan tervezheti meg a felhőalapú megoldást a vész-helyreállításhoz a megfelelő feladatátvételi minta kiválasztásával.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: carlrab
 ms.date: 01/25/2019
-ms.openlocfilehash: ccdd2443254da065a15911f567577672492ddb4f
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 535397dcf32a617038ab4bef4ec7aa227f4563b1
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68568885"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73690648"
 ---
 # <a name="disaster-recovery-strategies-for-applications-using-sql-database-elastic-pools"></a>Vészhelyzeti helyreállítási stratégiák SQL Database rugalmas készleteket használó alkalmazásokhoz
 
@@ -31,7 +31,7 @@ Ez a cikk ismerteti a DR-stratégiákat, amelyek számos különböző forgatók
 > [!NOTE]
 > Ha prémium szintű vagy üzletileg kritikus-adatbázisokat és rugalmas készleteket használ, rugalmasan végezheti el a regionális kimaradásokat a zónák redundáns üzembe helyezési konfigurációjához való átalakításával. Lásd: [zóna – redundáns adatbázisok](sql-database-high-availability.md).
 
-## <a name="scenario-1-cost-sensitive-startup"></a>forgatókönyv 1. Cost szenzitív indítás
+## <a name="scenario-1-cost-sensitive-startup"></a>1\. forgatókönyv Cost szenzitív indítás
 
 Induló vállalkozás vagyok, és rendkívül költséges vagyok.  Szeretném leegyszerűsíteni az alkalmazás üzembe helyezését és felügyeletét, és korlátozott SLA-t biztosíthatok az egyes ügyfelek számára. De szeretném biztosítani, hogy az alkalmazás egésze soha ne legyen offline állapotban.
 
@@ -65,7 +65,7 @@ Ezen a ponton az alkalmazás online állapotban van az elsődleges régióban az
 
 Ennek a stratégiának a legfőbb **előnye** , hogy az adatcsomag-redundancia terén alacsony a folyamatos díj. A biztonsági mentéseket a SQL Database szolgáltatás automatikusan elvégzi az alkalmazások újraírása nélkül, és díjmentesen.  A költségek csak a rugalmas adatbázisok visszaállításakor merülnek fel. A **kompromisszum** az, hogy az összes bérlői adatbázis teljes helyreállítása jelentős időt vesz igénybe. Az idő hossza a DR régióban kezdeményezett visszaállítások számától és a bérlői adatbázisok teljes méretétől függ. A meglévő ügyfelek adatbázisaira gyakorolt általános hatás csökkentése érdekében még akkor is, ha a bérlők számára rangsorolja a többi bérlőt, Ön pedig az összes többi olyan visszaállítással verseng, amelyek ugyanabban a régióban lettek elindítva, mint a szolgáltatási egyeztetések és a szabályozások. Emellett a bérlői adatbázisok helyreállítása nem indítható el, amíg a DR régió új rugalmas készlete nem jön létre.
 
-## <a name="scenario-2-mature-application-with-tiered-service"></a>forgatókönyv 2. Érett alkalmazás többplatformos szolgáltatással
+## <a name="scenario-2-mature-application-with-tiered-service"></a>2\. forgatókönyv Érett alkalmazás többplatformos szolgáltatással
 
 Egy kiforrott SaaS-alkalmazást használok, amely többplatformos szolgáltatást kínál, valamint különböző SLA-kat a próbaverziós ügyfelekhez és az ügyfelek fizetéséhez. A próbaverziós ügyfelek esetében a lehető legnagyobb mértékben csökkenteni kell a költségeket. A próbaverziós ügyfelek leállást vehetnek igénybe, de szeretnék csökkenteni a valószínűségét. A fizető ügyfelek esetében minden állásidő egy repülési kockázat. Ezért szeretném meggyőződni arról, hogy az ügyfelek mindig hozzáférhetnek az adatszolgáltatáshoz.
 
@@ -105,7 +105,7 @@ Ha az Azure-t a DR régióban visszaállította az alkalmazás visszaállítása
 > [!NOTE]
 > A feladatátvételi művelet aszinkron módon működik. A helyreállítási idő minimálisra csökkentése érdekében fontos, hogy a bérlői adatbázisok feladatátvételi parancsát legalább 20 adatbázist tartalmazó kötegekben hajtsa végre.
 
-Ennek a stratégiának a legfőbb **előnye** , hogy a fizetős ügyfelek számára a legmagasabb SLA-t biztosítja. Emellett azt is garantálja, hogy az új próbaverziók feloldása azonnal megtörténjen, amint létrejön a próbaverzió DR-készlete. A kikapcsolás az, hogy ez a beállítás növeli a bérlői adatbázisok teljes díját a másodlagos Dr-készletnek a fizetős ügyfelek esetében felszámolt költsége alapján. Emellett, ha a másodlagos készlet mérete eltérő, a fizető ügyfelek a feladatátvételt követően alacsonyabb teljesítményt tapasztalhatnak, amíg a DR régióban a készlet frissítése be nem fejeződik.
+Ennek a stratégiának a legfőbb **előnye** , hogy a fizetős ügyfelek számára a legmagasabb SLA-t biztosítja. Emellett azt is garantálja, hogy az új próbaverziók feloldása azonnal megtörténjen, amint létrejön a próbaverzió DR-készlete. A **kikapcsolás** az, hogy ez a beállítás növeli a bérlői adatbázisok teljes díját a másodlagos Dr-készletnek a fizetős ügyfelek esetében felszámolt költsége alapján. Emellett, ha a másodlagos készlet mérete eltérő, a fizető ügyfelek a feladatátvételt követően alacsonyabb teljesítményt tapasztalhatnak, amíg a DR régióban a készlet frissítése be nem fejeződik.
 
 ## <a name="scenario-3-geographically-distributed-application-with-tiered-service"></a>3\. forgatókönyv Földrajzilag elosztott alkalmazás többplatformos szolgáltatással
 
@@ -162,9 +162,9 @@ A fő **kompromisszumok** a következők:
 * A felügyeleti adatbázis összetettebb kialakítását igényli. Az egyes bérlői rekordok például egy olyan hely címkével rendelkeznek, amelyet a feladatátvétel és a feladat-visszavétel során módosítani kell.  
 * A fizető ügyfelek a szokásosnál alacsonyabb teljesítményt tapasztalhatnak, amíg a B régióban a készlet frissítése be nem fejeződik.
 
-## <a name="summary"></a>Összegzés
+## <a name="summary"></a>Összefoglalás
 
-Ez a cikk a SaaS ISV több-bérlős alkalmazás által használt adatbázis-rétegre vonatkozó vész-helyreállítási stratégiákra összpontosít. Az Ön által választott stratégia az alkalmazás igényeinek, például az üzleti modellnek, az ügyfeleknek felkínált SLA-nak, a költségvetési korlátozásnak stb. Mindegyik ismertetett stratégia ismerteti az előnyöket és a kompromisszumot, így tájékozott döntést hozhat. Emellett az adott alkalmazás valószínűleg más Azure-összetevőket is tartalmaz. Ezért tekintse át az üzletmenet-folytonossági útmutatót, és hangolja össze az adatbázis-rétegek helyreállítását. Az adatbázis-alkalmazások Azure-ban történő helyreállításával kapcsolatos további tudnivalókért tekintse meg a [felhőalapú megoldások tervezése a](sql-database-designing-cloud-solutions-for-disaster-recovery.md)vész-helyreállításhoz című témakört.  
+Ez a cikk a SaaS ISV több-bérlős alkalmazás által használt adatbázis-rétegre vonatkozó vész-helyreállítási stratégiákra összpontosít. Az Ön által választott stratégia az alkalmazás igényeinek, például az üzleti modellnek, az ügyfeleknek felkínált SLA-nak, a költségvetési korlátozásnak stb. Mindegyik ismertetett stratégia ismerteti az előnyöket és a kompromisszumot, így tájékozott döntést hozhat. Emellett az adott alkalmazás valószínűleg más Azure-összetevőket is tartalmaz. Ezért tekintse át az üzletmenet-folytonossági útmutatót, és hangolja össze az adatbázis-rétegek helyreállítását. Az adatbázis-alkalmazások Azure-ban történő helyreállításával kapcsolatos további tudnivalókért tekintse meg a [felhőalapú megoldások tervezése a vész-helyreállításhoz](sql-database-designing-cloud-solutions-for-disaster-recovery.md)című témakört.  
 
 ## <a name="next-steps"></a>További lépések
 

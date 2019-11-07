@@ -1,5 +1,5 @@
 ---
-title: Adatok másolása az Amazon Marketplace webszolgáltatásból a Azure Data Factory használatával | Microsoft Docs
+title: Adatok másolása az Amazon Marketplace webszolgáltatásból Azure Data Factory használatával
 description: Megtudhatja, hogyan másolhat adatokat az Amazon Marketplace webszolgáltatásból egy Azure Data Factory-folyamat másolási tevékenységének használatával.
 services: data-factory
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/01/2018
 ms.author: jingwang
-ms.openlocfilehash: cddb8eaf546760ad9d983c429424144ff131de11
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 8613b52ff8d04b578342a34fe24d6e9e12a8a98c
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72931202"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73681413"
 ---
 # <a name="copy-data-from-amazon-marketplace-web-service-using-azure-data-factory"></a>Adatok másolása az Amazon Marketplace webszolgáltatásból Azure Data Factory használatával
 
@@ -44,7 +44,7 @@ A következő szakaszokban részletesen ismertetjük azokat a tulajdonságokat, 
 
 Az Amazon Marketplace webszolgáltatás társított szolgáltatása a következő tulajdonságokat támogatja:
 
-| Tulajdonság | Leírás | Szükséges |
+| Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
 | type | A Type tulajdonságot a következőre kell beállítani: **AmazonMWS** | Igen |
 | endpoint | Az Amazon MWS-kiszolgáló végpontja (azaz mws.amazonservices.com)  | Igen |
@@ -88,7 +88,7 @@ Az adatkészletek definiálásához rendelkezésre álló csoportok és tulajdon
 
 Az adatok az Amazon Marketplace webszolgáltatásból való másolásához állítsa az adatkészlet Type (típus) tulajdonságát **AmazonMWSObject**értékre. A következő tulajdonságok támogatottak:
 
-| Tulajdonság | Leírás | Szükséges |
+| Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
 | type | Az adatkészlet Type tulajdonságát a következőre kell beállítani: **AmazonMWSObject** | Igen |
 | tableName | A tábla neve. | Nem (ha a "lekérdezés" van megadva a tevékenység forrásában) |
@@ -119,7 +119,7 @@ A tevékenységek definiálásához elérhető csoportok és tulajdonságok telj
 
 Az adatok az Amazon Marketplace webszolgáltatásból való másolásához állítsa a forrás típusát a másolás tevékenység **AmazonMWSSource**. A másolási tevékenység **forrása** szakasz a következő tulajdonságokat támogatja:
 
-| Tulajdonság | Leírás | Szükséges |
+| Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
 | type | A másolási tevékenység forrásának Type tulajdonságát a következőre kell beállítani: **AmazonMWSSource** | Igen |
 | lekérdezés | Az egyéni SQL-lekérdezés használatával olvassa be az adatolvasást. Például: `"SELECT * FROM Orders where  Amazon_Order_Id = 'xx'"`. | Nem (ha meg van adva a "táblanév" az adatkészletben) |
@@ -160,5 +160,5 @@ Az adatok az Amazon Marketplace webszolgáltatásból való másolásához áll�
 
 A tulajdonságok részleteinek megismeréséhez tekintse meg a [keresési tevékenységet](control-flow-lookup-activity.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 A Azure Data Factory a másolási tevékenység által forrásként és nyelőként támogatott adattárak listáját lásd: [támogatott adattárak](copy-activity-overview.md#supported-data-stores-and-formats).

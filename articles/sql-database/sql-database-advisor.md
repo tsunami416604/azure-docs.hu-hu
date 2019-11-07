@@ -1,5 +1,5 @@
 ---
-title: Teljesítménnyel kapcsolatos javaslatok – Azure SQL Database | Microsoft Docs
+title: Teljesítménnyel kapcsolatos javaslatok – Azure SQL Database
 description: Azure SQL Database javaslatokat nyújt az SQL-adatbázisokhoz, amelyek javíthatják az aktuális lekérdezési teljesítményt.
 services: sql-database
 ms.service: sql-database
@@ -11,19 +11,19 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik
 ms.date: 12/19/2018
-ms.openlocfilehash: 08def3ac2fd94f01586bc690d867c04758b8856b
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: de6ddd8886f8cadafa57724a5d5e33a3ba4e3c74
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68569528"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73691245"
 ---
 # <a name="performance-recommendations-for-sql-database"></a>Teljesítménnyel kapcsolatos javaslatok a SQL Database
 
 Azure SQL Database tanul és alkalmazkodik az alkalmazáshoz. Testreszabott ajánlásokat biztosít, amelyek lehetővé teszik az SQL-adatbázisok teljesítményének maximalizálását. SQL Database folyamatosan vizsgálja és elemzi az SQL-adatbázisok használati előzményeit. A megadott javaslatok adatbázis-egyedi számítási feladatokon alapulnak, és javítják a teljesítményt.
 
 > [!TIP]
-> Az [automatikus hangolás](sql-database-automatic-tuning.md) az ajánlott módszer a leggyakoribb adatbázis-teljesítménnyel kapcsolatos problémák automatikus finomhangolására. [](sql-database-query-performance.md) Az alapszintű Azure SQL Database teljesítmény-figyelési igényeknek megfelelően a lekérdezési teljesítményre vonatkozó információ a javasolt módszer. A [Azure SQL Analytics](../azure-monitor/insights/azure-sql.md) ajánlott módszer az adatbázis-teljesítmény magas szinten történő figyelésére, beépített intelligenciával az automatikus teljesítménnyel kapcsolatos hibaelhárításhoz.
+> Az [automatikus hangolás](sql-database-automatic-tuning.md) az ajánlott módszer a leggyakoribb adatbázis-teljesítménnyel kapcsolatos problémák automatikus finomhangolására. Az alapszintű Azure SQL Database teljesítmény-figyelési igényeknek megfelelően a [lekérdezési teljesítményre](sql-database-query-performance.md) vonatkozó információ a javasolt módszer. A [Azure SQL Analytics](../azure-monitor/insights/azure-sql.md) ajánlott módszer az adatbázis-teljesítmény magas szinten történő figyelésére, beépített intelligenciával az automatikus teljesítménnyel kapcsolatos hibaelhárításhoz.
 >
 
 ## <a name="create-index-recommendations"></a>Tárgymutató-javaslatok létrehozása
@@ -76,7 +76,7 @@ A "sémával kapcsolatos problémák" a SQL Server szintaktikai hibáinak osztá
 
 A "séma javítása" javaslat akkor jelenik meg, ha az Azure SQL Database szolgáltatás anomália az SQL-adatbázison futó, a sémával kapcsolatos SQL-hibák számán. A következő táblázat a séma problémáira vonatkozó hibákat mutatja be:
 
-| SQL-hibakód | Message |
+| SQL-hibakód | Üzenet |
 | --- | --- |
 | 201 |A (z) "" eljárás vagy függvény a (z) ""*paramétert várja*, amely nem lett megadva. |
 | 207 |Érvénytelen oszlopnév: "*". |

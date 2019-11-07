@@ -1,5 +1,5 @@
 ---
-title: Felügyelt példány kapcsolati architektúrája Azure SQL Databaseban | Microsoft Docs
+title: Felügyelt példány kapcsolati architektúrája Azure SQL Database
 description: Ismerkedjen meg Azure SQL Database felügyelt példányok kommunikációs és kapcsolati architektúrával, valamint arról, hogy az összetevők hogyan irányítsák át a felügyelt példányra.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, bonova, carlrab
 ms.date: 04/16/2019
-ms.openlocfilehash: 7e32cb302322f7a80154a3f2a246d7d4f1743c09
-ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
+ms.openlocfilehash: 881f116988ae0c9a6a33c8454cd1e4012580bfab
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72249365"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73688207"
 ---
 # <a name="connectivity-architecture-for-a-managed-instance-in-azure-sql-database"></a>Felügyelt példány kapcsolati architektúrája Azure SQL Database
 
@@ -66,7 +66,7 @@ Ismerkedjen meg a felügyelt példányok kapcsolati architektúrájának mélyeb
 
 ![A virtuális fürt kapcsolati architektúrája](./media/managed-instance-connectivity-architecture/connectivityarch003.png)
 
-Az ügyfelek a `<mi_name>.<dns_zone>.database.windows.net` formátumú állomásnév használatával csatlakoznak egy felügyelt példányhoz. Ez az állomásnév a magánhálózati IP-címekre lesz feloldva, bár egy nyilvános tartománynévrendszer-(DNS-) zónában van regisztrálva, és nyilvánosan feloldható. A `zone-id` automatikusan létrejön a fürt létrehozásakor. Ha egy újonnan létrehozott fürt egy másodlagos felügyelt példányt futtat, akkor a zóna AZONOSÍTÓját megosztja az elsődleges fürttel. További információ: [automatikus feladatátvételi csoportok használata több adatbázis átlátható és koordinált feladatátvételének engedélyezéséhez](sql-database-auto-failover-group.md##enabling-geo-replication-between-managed-instances-and-their-vnets).
+Az ügyfelek egy felügyelt példányhoz csatlakoznak olyan állomásnév használatával, amely `<mi_name>.<dns_zone>.database.windows.net`űrlapot tartalmaz. Ez az állomásnév a magánhálózati IP-címekre lesz feloldva, bár egy nyilvános tartománynévrendszer-(DNS-) zónában van regisztrálva, és nyilvánosan feloldható. A rendszer automatikusan létrehozza a `zone-id` a fürt létrehozásakor. Ha egy újonnan létrehozott fürt egy másodlagos felügyelt példányt futtat, akkor a zóna AZONOSÍTÓját megosztja az elsődleges fürttel. További információ: [automatikus feladatátvételi csoportok használata több adatbázis átlátható és koordinált feladatátvételének engedélyezéséhez](sql-database-auto-failover-group.md##enabling-geo-replication-between-managed-instances-and-their-vnets).
 
 Ez a magánhálózati IP-cím a felügyelt példány belső terheléselosztó része. A terheléselosztó átirányítja a forgalmat a felügyelt példány átjárójának. Mivel több felügyelt példány futhat ugyanazon a fürtön belül, az átjáró a felügyelt példány állomásneve használatával irányítja át a forgalmat a megfelelő SQL Engine szolgáltatásba.
 
@@ -96,7 +96,7 @@ Felügyelt példány üzembe helyezése egy dedikált alhálózaton a virtuális
 
 ### <a name="mandatory-inbound-security-rules"></a>Kötelező bejövő biztonsági szabályok
 
-| Név       |Port                        |Protocol (Protokoll)|Forrás           |Cél|Műveletek|
+| Name (Név)       |Port                        |Protokoll|Forrás           |Cél|Műveletek|
 |------------|----------------------------|--------|-----------------|-----------|------|
 |felügyelet  |9000, 9003, 1438, 1440, 1452|TCP     |Bármelyik              |MI ALHÁLÓZAT  |Engedélyezés |
 |mi_subnet   |Bármelyik                         |Bármelyik     |MI ALHÁLÓZAT        |MI ALHÁLÓZAT  |Engedélyezés |
@@ -104,7 +104,7 @@ Felügyelt példány üzembe helyezése egy dedikált alhálózaton a virtuális
 
 ### <a name="mandatory-outbound-security-rules"></a>Kötelező kimenő biztonsági szabályok
 
-| Név       |Port          |Protocol (Protokoll)|Forrás           |Cél|Műveletek|
+| Name (Név)       |Port          |Protokoll|Forrás           |Cél|Műveletek|
 |------------|--------------|--------|-----------------|-----------|------|
 |felügyelet  |443, 12000    |TCP     |MI ALHÁLÓZAT        |AzureCloud |Engedélyezés |
 |mi_subnet   |Bármelyik           |Bármelyik     |MI ALHÁLÓZAT        |MI ALHÁLÓZAT  |Engedélyezés |
@@ -112,7 +112,7 @@ Felügyelt példány üzembe helyezése egy dedikált alhálózaton a virtuális
 > [!IMPORTANT]
 > Győződjön meg arról, hogy csak egy bejövő szabály van a 9000, 9003, 1438, 1440, 1452 és egy kimenő szabály számára a következő portokhoz: 80, 443, 12000. A felügyelt példányok üzembe helyezése Azure Resource Manager központi telepítések esetén sikertelen lesz, ha a bejövő és a kimenő szabályok külön vannak konfigurálva az egyes portokhoz. Ha ezek a portok külön szabályokban vannak, a telepítés sikertelen lesz, hibakód: `VnetSubnetConflictWithIntendedPolicy`
 
-a \* MI ALHÁLÓZAT a 10. x. x. x/y formátumú alhálózat IP-címtartományt jelenti. Ezeket az információkat az alhálózati tulajdonságok Azure Portaljában találja.
+\* MI ALHÁLÓZAT a 10. x. x. x/y formátumú alhálózat IP-címtartományt jelenti. Ezeket az információkat az alhálózati tulajdonságok Azure Portaljában találja.
 
 > [!IMPORTANT]
 > Habár a kötelező bejövő biztonsági szabályok engedélyezik a forgalmat a 9000, 9003, 1438, 1440 és 1452 portok _bármely_ forrásáról, ezeket a portokat egy beépített tűzfal védi. További információ: [a felügyeleti végponti címek meghatározása](sql-database-managed-instance-find-management-endpoint-ip-address.md).
@@ -121,7 +121,7 @@ a \* MI ALHÁLÓZAT a 10. x. x. x/y formátumú alhálózat IP-címtartományt j
 
 ### <a name="user-defined-routes"></a>Felhasználó által megadott útvonalak
 
-|Név|Címelőtag|Következő ugrás|
+|Name (Név)|Címelőtag|Következő ugrás|
 |----|--------------|-------|
 |subnet_to_vnetlocal|MI ALHÁLÓZAT|Virtuális hálózat|
 |Mi-13-64-11-nexthop-Internet|13.64.0.0/11|Internet|
@@ -251,7 +251,7 @@ Felügyelt példány üzembe helyezése egy dedikált alhálózaton a virtuális
 
 ### <a name="mandatory-inbound-security-rules-with-service-aided-subnet-configuration"></a>Kötelező bejövő biztonsági szabályok a szolgáltatással segített alhálózat konfigurációjával 
 
-| Név       |Port                        |Protocol (Protokoll)|Forrás           |Cél|Műveletek|
+| Name (Név)       |Port                        |Protokoll|Forrás           |Cél|Műveletek|
 |------------|----------------------------|--------|-----------------|-----------|------|
 |felügyelet  |9000, 9003, 1438, 1440, 1452|TCP     |SqlManagement    |MI ALHÁLÓZAT  |Engedélyezés |
 |            |9000, 9003                  |TCP     |CorpnetSaw       |MI ALHÁLÓZAT  |Engedélyezés |
@@ -261,14 +261,14 @@ Felügyelt példány üzembe helyezése egy dedikált alhálózaton a virtuális
 
 ### <a name="mandatory-outbound-security-rules-with-service-aided-subnet-configuration"></a>Kötelező kimenő biztonsági szabályok a szolgáltatással segített alhálózat konfigurációjával 
 
-| Név       |Port          |Protocol (Protokoll)|Forrás           |Cél|Műveletek|
+| Name (Név)       |Port          |Protokoll|Forrás           |Cél|Műveletek|
 |------------|--------------|--------|-----------------|-----------|------|
 |felügyelet  |443, 12000    |TCP     |MI ALHÁLÓZAT        |AzureCloud |Engedélyezés |
 |mi_subnet   |Bármelyik           |Bármelyik     |MI ALHÁLÓZAT        |MI ALHÁLÓZAT  |Engedélyezés |
 
 ### <a name="user-defined-routes-with-service-aided-subnet-configuration"></a>A felhasználó által megadott útvonalak a szolgáltatással segített alhálózat konfigurációjával 
 
-|Név|Címelőtag|Következő ugrás|
+|Name (Név)|Címelőtag|Következő ugrás|
 |----|--------------|-------|
 |alhálózat – vnetlocal|MI ALHÁLÓZAT|Virtuális hálózat|
 |Mi-13-64-11-nexthop-Internet|13.64.0.0/11|Internet|
@@ -425,9 +425,9 @@ Felügyelt példány üzembe helyezése egy dedikált alhálózaton a virtuális
 |Mi-216-220-208-20-nexthop-Internet|216.220.208.0/20|Internet|
 ||||
 
-a \* MI ALHÁLÓZAT a 10. x. x. x/y formátumú alhálózat IP-címtartományt jelenti. Ezeket az információkat az alhálózati tulajdonságok Azure Portaljában találja.
+\* MI ALHÁLÓZAT a 10. x. x. x/y formátumú alhálózat IP-címtartományt jelenti. Ezeket az információkat az alhálózati tulajdonságok Azure Portaljában találja.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Az áttekintést lásd: [SQL Database speciális adatbiztonság](sql-database-managed-instance.md).
 - Ismerje meg, hogyan [állíthat be egy új Azure-beli virtuális hálózatot](sql-database-managed-instance-create-vnet-subnet.md) vagy egy [meglévő Azure-beli virtuális hálózatot](sql-database-managed-instance-configure-vnet-subnet.md) , ahol felügyelt példányokat helyezhet üzembe.
@@ -436,4 +436,4 @@ a \* MI ALHÁLÓZAT a 10. x. x. x/y formátumú alhálózat IP-címtartományt j
   - A [Azure Portal](sql-database-managed-instance-get-started.md).
   - A [PowerShell](scripts/sql-database-create-configure-managed-instance-powershell.md)használatával.
   - [Azure Resource Manager sablon](https://azure.microsoft.com/resources/templates/101-sqlmi-new-vnet/)használatával.
-  - [Egy Azure Resource Manager-sablon használatával (az JumpBox használatával, a SSMS tartalmazza)](https://azure.microsoft.com/en-us/resources/templates/201-sqlmi-new-vnet-w-jumpbox/). 
+  - [Egy Azure Resource Manager-sablon használatával (az JumpBox használatával, a SSMS tartalmazza)](https://azure.microsoft.com/resources/templates/201-sqlmi-new-vnet-w-jumpbox/). 

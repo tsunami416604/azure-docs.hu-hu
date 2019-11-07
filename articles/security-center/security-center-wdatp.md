@@ -1,5 +1,5 @@
 ---
-title: A Microsoft Defender komplex veszélyforrások elleni védelem Azure Security Center
+title: Microsoft Defender komplex veszélyforrások elleni védelem – Azure Security Center
 description: Ez a dokumentum bemutatja a Azure Security Center és a Microsoft Defender komplex veszélyforrások elleni védelemének integrációját.
 services: security-center
 documentationcenter: na
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/24/2019
 ms.author: memildin
-ms.openlocfilehash: 6ceed914d1c69ccdfce5d7acb6dcfc1afc9ef868
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: 46b9fe5c6a038aa98cf8df64c40bf8ea1747efec
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72819886"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73663612"
 ---
 # <a name="microsoft-defender-advanced-threat-protection-with-azure-security-center"></a>A Microsoft Defender komplex veszélyforrások elleni védelem Azure Security Center
 
@@ -95,7 +95,7 @@ Ha olyan proxyval vagy tűzfallal rendelkezik, amely blokkolja a névtelen forga
 
 Jóindulatú Microsoft Defender ATP-teszt riasztás létrehozása:
 
-1. A Távoli asztal használatával elérheti a Windows Server 2012 R2 vagy a Windows Server 2016 rendszerű virtuális gépeket.  Nyisson meg egy parancssori ablakot.
+1. A Távoli asztal használatával elérheti a Windows Server 2012 R2 vagy a Windows Server 2016 rendszerű virtuális gépeket. Nyisson meg egy parancssori ablakot.
 
 2. A parancssorba másolja és futtassa a következő parancsot. A parancssori ablak automatikusan bezáródik.
 
@@ -107,11 +107,11 @@ Jóindulatú Microsoft Defender ATP-teszt riasztás létrehozása:
 
 3. Ha a parancs sikeres, egy új riasztás jelenik meg a Azure Security Center-irányítópulton és a Microsoft Defender ATP-portálon. Ez a riasztás néhány percet is igénybe vehet.
 
-4. A Security Center riasztásának áttekintéséhez lépjen a **biztonsági riasztások** >  a **gyanús PowerShell parancssori**elemre.
+4. A Security Center riasztásának áttekintéséhez lépjen a **biztonsági riasztások** > a **gyanús PowerShell parancssori**elemre.
 
 5. A vizsgálat ablakban válassza ki a Microsoft Defender ATP-portálra mutató hivatkozást.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Az Azure Security Center által támogatott platformok és szolgáltatások](security-center-os-coverage.md)
 - [Biztonsági szabályzatok beállítása Azure Security Centerban](tutorial-security-policy.md): Ismerje meg, hogyan konfigurálhatja az Azure-előfizetések és-erőforráscsoportok biztonsági szabályzatait.

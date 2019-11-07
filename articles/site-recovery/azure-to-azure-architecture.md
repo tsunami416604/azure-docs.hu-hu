@@ -1,19 +1,19 @@
 ---
-title: Azure-ról Azure-ra történő replikálási architektúra a Azure Site Recoveryban | Microsoft Docs
-description: Ez a cikk áttekintést nyújt azokról az összetevőkről és architektúráról, amelyeket az Azure-beli virtuális gépekhez tartozó Azure-régiók közötti vész-helyreállítás beállításakor használ a Azure Site Recovery szolgáltatás használatával.
+title: Azure-ról Azure-ra Azure Site Recovery vész-helyreállítási architektúrája
+description: Az Azure-beli virtuális gépek Azure-régiói közötti vész-helyreállítást biztosító architektúra áttekintése, az Azure Site Recovery szolgáltatás használatával.
 services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 09/03/2019
+ms.date: 11/05/2019
 ms.author: raynew
-ms.openlocfilehash: d415f303976ae454cb99f07e8d6e15e338e24d7d
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: e83c14e5ce337e8a3c4c119acc2397b98afd5b56
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70231469"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73621110"
 ---
 # <a name="azure-to-azure-disaster-recovery-architecture"></a>Az Azure-ból Azure-ba történő vészhelyreállítás architektúrája
 
@@ -59,11 +59,11 @@ A cél erőforrásait a következőképpen kezelheti:
 
 
 
-## <a name="replication-policy"></a>Replikációs házirend 
+## <a name="replication-policy"></a>Replikációs szabályzat 
 
 Az Azure-beli virtuális gépek replikálásának engedélyezésekor a Site Recovery alapértelmezés szerint létrehoz egy új replikációs házirendet a táblázatban összegzett alapértelmezett beállításokkal.
 
-**Szabályzat-beállítás** | **Részletek** | **Alapértelmezett**
+**Házirend-beállítás** | **Részletek** | **Alapértelmezett**
 --- | --- | ---
 **Helyreállítási pont megőrzése** | Meghatározza, hogy a Site Recovery mennyi ideig tart a helyreállítási pontok | 24 óra
 **Alkalmazás-konzisztens pillanatkép gyakorisága** | Milyen gyakran Site Recovery egy alkalmazás-konzisztens pillanatképet. | Négy óránként
@@ -97,13 +97,13 @@ A következő táblázat a konzisztencia különböző típusait ismerteti.
 
 ### <a name="crash-consistent"></a>Összeomlás – konzisztens
 
-**Leírás** | **Részletek** | **Az ajánlás**
+**Leírás** | **Részletek** | **Ajánlás**
 --- | --- | ---
 Az összeomlás-konzisztens Pillanatképek rögzítik a lemezen lévő, a pillanatkép elkészítéséhez szükséges adatok mennyiségét. Nem tartalmaz semmit a memóriában.<br/><br/> Tartalmazza a lemezen lévő adatok megfelelőjét, amely akkor jelenik meg, ha a virtuális gép összeomlott vagy a tápkábelt a kiszolgálóról húzta le a pillanattól kezdve, hogy a pillanatkép elkészítése megtörtént.<br/><br/> Az összeomlás-konzisztens érték nem garantálja az operációs rendszer vagy a virtuális gépen futó alkalmazások adatkonzisztenciáját. | A Site Recovery alapértelmezés szerint öt percenként hoz létre összeomlás-konzisztens helyreállítási pontokat. Ez a beállítás nem módosítható.<br/><br/>  | Napjainkban a legtöbb alkalmazás jól helyreállítható az összeomlás-konzisztens pontokból.<br/><br/> Az összeomlás-konzisztens helyreállítási pontok általában elegendőek az operációs rendszerek és az alkalmazások, például a DHCP-kiszolgálók és a nyomtatókiszolgálók replikálásához.
 
 ### <a name="app-consistent"></a>Alkalmazás – konzisztens
 
-**Leírás** | **Részletek** | **Az ajánlás**
+**Leírás** | **Részletek** | **Ajánlás**
 --- | --- | ---
 Az alkalmazással konzisztens helyreállítási pontok az alkalmazással konzisztens Pillanatképek alapján jönnek létre.<br/><br/> Az alkalmazás-konzisztens Pillanatképek tartalmazzák az összeomlás-konzisztens Pillanatképek összes adatát, valamint a memóriában lévő összes adatot és a folyamatban lévő tranzakciókat. | Az alkalmazással konzisztens Pillanatképek a Kötet árnyékmásolata szolgáltatást (VSS) használják:<br/><br/>   1.) Ha pillanatképet kezdeményez, a VSS a köteten egy másolási írási (COW) műveletet hajt végre.<br/><br/>   2) mielőtt elvégezte a TEHENEt, a VSS tájékoztatja a gépen lévő összes alkalmazást, hogy a memóriában tárolt adatok lemezre való kiürítése szükséges.<br/><br/>   3) a VSS ezután lehetővé teszi a biztonsági mentési/vész-helyreállítási alkalmazás (ebben az esetben Site Recovery) számára a pillanatkép-adatok olvasását és a folytatást. | Az alkalmazással konzisztens Pillanatképek a megadott gyakoriságnak megfelelően készülnek. A gyakoriságnak mindig kisebbnek kell lennie, mint a helyreállítási pontok megőrzéséhez. Ha például megőrzi a helyreállítási pontokat a 24 órás alapértelmezett beállítással, a gyakoriságot 24 óránál rövidebb ideig kell beállítania.<br/><br/>Összetettebbek, és hosszabb időt is igénybe vehetik, mint az összeomlás-konzisztens Pillanatképek.<br/><br/> Hatással vannak a replikálásra engedélyezett virtuális gépeken futó alkalmazások teljesítményére. 
 
@@ -145,7 +145,7 @@ Vegye figyelembe, hogy a hálózati kapcsolatra vonatkozó követelmények rész
 
 **Szabály** |  **Részletek** | **Szolgáltatáscímke**
 --- | --- | --- 
-HTTPS-kimenő engedélyezése: 443-es port | A forrás régióban lévő Storage-fiókoknak megfelelő tartományok engedélyezése | Storage. \<régió neve >.
+HTTPS-kimenő engedélyezése: 443-es port | A forrás régióban lévő Storage-fiókoknak megfelelő tartományok engedélyezése | Storage.\<régió – név >.
 HTTPS-kimenő engedélyezése: 443-es port | Azure Active Directory (Azure AD)-nak megfelelő tartományok engedélyezése.<br/><br/> Ha a jövőben Azure AD-címeket adnak hozzá, új hálózati biztonsági csoport (NSG) szabályokat kell létrehoznia.  | AzureActiveDirectory
 HTTPS-kimenő engedélyezése: 443-es port | A célhelynek megfelelő [site Recovery végpontok](https://aka.ms/site-recovery-public-ips) elérésének engedélyezése. 
 
@@ -153,9 +153,9 @@ HTTPS-kimenő engedélyezése: 443-es port | A célhelynek megfelelő [site Reco
 
 **Szabály** |  **Részletek** | **Szolgáltatáscímke**
 --- | --- | --- 
-HTTPS-kimenő engedélyezése: 443-es port | A célként megadott régióban lévő Storage-fiókoknak megfelelő tartományok engedélyezése. | Storage. \<régió neve >.
+HTTPS-kimenő engedélyezése: 443-es port | A célként megadott régióban lévő Storage-fiókoknak megfelelő tartományok engedélyezése. | Storage.\<régió – név >.
 HTTPS-kimenő engedélyezése: 443-es port | Az Azure AD-nek megfelelő tartományok engedélyezése.<br/><br/> Ha a jövőben Azure AD-címeket adnak hozzá, új NSG-szabályokat kell létrehoznia.  | AzureActiveDirectory
-HTTPS-kimenő engedélyezése: 443-es port | Hozzáférés engedélyezése a forrás helyének megfelelő [site Recovery](https://aka.ms/site-recovery-public-ips) -végpontokhoz. 
+HTTPS-kimenő engedélyezése: 443-es port | Hozzáférés engedélyezése a forrás helyének megfelelő [site Recovery-végpontokhoz](https://aka.ms/site-recovery-public-ips) . 
 
 
 #### <a name="control-access-with-nsg-rules"></a>Hozzáférés szabályozása NSG-szabályokkal

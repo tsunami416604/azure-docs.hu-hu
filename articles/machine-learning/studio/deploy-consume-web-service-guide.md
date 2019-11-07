@@ -1,6 +1,6 @@
 ---
 title: Üzembe helyezés és felhasználás
-titleSuffix: Azure Machine Learning Studio (classic)
+titleSuffix: ML Studio (classic) Azure
 description: A gépi tanulási munkafolyamatok és modellek webszolgáltatásként való üzembe helyezéséhez Azure Machine Learning Studio (klasszikus) használható. Ezek a webszolgáltatások a gépi tanulási modellek interneten keresztüli meghívására használhatók az előrejelzések valós idejű vagy kötegelt módban történő elvégzéséhez.
 services: machine-learning
 ms.service: machine-learning
@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 04/19/2017
-ms.openlocfilehash: bf169a9b7064bd83caf0c9f8ec6dd6dd55894d67
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 47cd04615919fcc9db757ed4b9e8fd06eb297592
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73493016"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73684823"
 ---
 # <a name="azure-machine-learning-studio-classic-web-services-deployment-and-consumption"></a>Azure Machine Learning Studio (klasszikus) webszolgáltatások: üzembe helyezés és felhasználás
 
@@ -31,8 +31,8 @@ A Studio (klasszikus) portál és a Microsoft Azure Machine Learning Web Service
 
 Az alábbi hivatkozások általános információkat nyújtanak az új webszolgáltatás üzembe helyezéséről:
 
-* A Azure Resource Manageron alapuló új webszolgáltatás üzembe helyezéséről az [új webszolgáltatás üzembe helyezését](publish-a-machine-learning-web-service.md)ismertető cikkben olvashat.
-* A webszolgáltatások üzembe helyezésével kapcsolatos útmutatóért lásd: [Azure Machine learning webszolgáltatás üzembe](publish-a-machine-learning-web-service.md)helyezése.
+* A Azure Resource Manageron alapuló új webszolgáltatás üzembe helyezéséről az [új webszolgáltatás üzembe helyezését](deploy-a-machine-learning-web-service.md)ismertető cikkben olvashat.
+* A webszolgáltatások üzembe helyezésével kapcsolatos útmutatóért lásd: [Azure Machine learning webszolgáltatás üzembe](deploy-a-machine-learning-web-service.md)helyezése.
 * A webszolgáltatások létrehozásával és üzembe helyezésével kapcsolatos teljes útmutatóért először az [1. Oktatóanyag: a hitelkockázat előrejelzése](tutorial-part1-credit-risk.md)című témakörben olvashat.
 * Webszolgáltatások üzembe helyezésére szolgáló konkrét Példákért lásd:
 
@@ -87,8 +87,8 @@ További részletekért tekintse meg a következő cikkeket és mintakód-kódot
 
 A webszolgáltatást a Azure Machine Learning webszolgáltatások portálján ellenőrizheti. Ez magában foglalja a Request-Response Service (RR) és a Batch végrehajtási szolgáltatás (BES) felületének tesztelését.
 
-* [Új webszolgáltatás üzembe helyezése](publish-a-machine-learning-web-service.md)
-* [Azure Machine Learning webszolgáltatás üzembe helyezése](publish-a-machine-learning-web-service.md)
+* [Új webszolgáltatás üzembe helyezése](deploy-a-machine-learning-web-service.md)
+* [Azure Machine Learning webszolgáltatás üzembe helyezése](deploy-a-machine-learning-web-service.md)
 * [3. Oktatóanyag: hitelkockázat-modell üzembe helyezése](tutorial-part3-credit-risk-deploy.md)
 
 ### <a name="from-excel"></a>Excelből

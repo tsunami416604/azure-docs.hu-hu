@@ -11,18 +11,20 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 11/03/2019
 ms.author: diberry
-ms.openlocfilehash: 08f78e4945b612a92d372c832490c380d3749811
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 0cab6eb38459a632f1e7bd1a21e6a7251d33f683
+ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73487522"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73647419"
 ---
 # <a name="machine-learned-features"></a>Gépi megtanult funkciók 
 
 A gépi tanulásban a *funkció* egy olyan megkülönböztető tulajdonság vagy adatattribútum, amelyet a rendszer a & megismerésével megfigyel. A Language Understanding (LUIS) egy funkció leírja és ismerteti a szándékait és entitásait illető jelentős jelentőséget.
 
-## <a name="features-in-language-understanding"></a>A Language Understanding szolgáltatásai
+A [Luis-portálon](https://preview.luis.ai)a funkciók _leírók_ , mert a szándék vagy az entitás _leírására_ szolgálnak.  
+
+## <a name="features-_descriptors_-in-language-understanding"></a>Szolgáltatások (_leírók_) Language Understanding
 
 A funkciók, más néven leírók, leírják a Language Understanding azonosítására szolgáló hosszúságú kimondott szöveg. Funkciók: 
 

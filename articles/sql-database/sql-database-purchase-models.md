@@ -1,5 +1,5 @@
 ---
-title: Azure SQL Database beszerzési modellek | Microsoft Docs
+title: 'Azure SQL Database vásárlási modellek '
 description: Ismerje meg a Azure SQL Database számára elérhető vásárlási modelleket.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 04/26/2019
-ms.openlocfilehash: ab291ab60a5e72b5c61552bc54c10e303c1df1a9
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 48537ec4c62410565d32350b1e3a11bbc7a2ca6e
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73492493"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73687556"
 ---
 # <a name="choose-between-the-vcore-and-the-dtu-purchasing-models"></a>A virtuális mag és a DTU beszerzési modelljei közül választhat
 
@@ -102,7 +102,7 @@ A munkaterhelés által használt erőforrások nem érintik az Azure-felhőben 
 
 ![határolókeret](./media/sql-database-what-is-a-dtu/bounding-box.png)
 
-A DTU leghasznosabb az Azure SQL Database-adatbázisok számára a különböző számítási méreteken és szolgáltatási szinteknél lefoglalt relatív erőforrások megismerése. Példa:
+A DTU leghasznosabb az Azure SQL Database-adatbázisok számára a különböző számítási méreteken és szolgáltatási szinteknél lefoglalt relatív erőforrások megismerése. Például:
 
 - A DTU megkettőzése az adatbázis számítási méretének növelésével egyenlő az adatbázis számára elérhető erőforrások készletének megkettőzésével.
 - A prémium szintű szolgáltatási szint P11-adatbázisa és a 1750 DTU 350x több DTU számítási teljesítményt nyújt, mint az alapszintű szolgáltatási szint adatbázisa 5 DTU.  

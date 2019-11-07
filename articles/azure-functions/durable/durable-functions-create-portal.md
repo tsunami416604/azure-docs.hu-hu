@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 10/23/2018
 ms.author: glenga
 ms.reviewer: azfuncdf
-ms.openlocfilehash: b765e7a03f84211d4a86c4242e9484b3517c95f9
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: 238969b320608c08491c3d3e85870d57f41c1589
+ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70933563"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73614980"
 ---
 # <a name="create-durable-functions-using-the-azure-portal"></a>Durable Functions létrehozása a Azure Portal használatával
 
@@ -36,7 +36,7 @@ Alapértelmezés szerint a létrehozott Function alkalmazás a Azure Functions f
 
 ## <a name="install-the-durable-functions-npm-package-javascript-only"></a>A tartós függvények NPM-csomagjának telepítése (csak JavaScript)
 
-Ha JavaScript-Durable functions hoz létre, akkor telepítenie kell a [ `durable-functions` NPM csomagot](https://www.npmjs.com/package/durable-functions).
+Ha JavaScript-Durable Functions hoz létre, akkor telepítenie kell a [`durable-functions` NPM csomagot](https://www.npmjs.com/package/durable-functions).
 
 1. Válassza ki a függvény alkalmazásának nevét, majd a **platform funkcióit**, majd a **speciális eszközöket (kudu)** .
 
@@ -46,25 +46,25 @@ Ha JavaScript-Durable functions hoz létre, akkor telepítenie kell a [ `durable
 
    ![Kudu hibakeresési konzol](./media/durable-functions-create-portal/kudu-choose-debug-console.png)
 
-3. A Function alkalmazás fájljának könyvtár-struktúrájának meg kell jelennie. Navigáljon a `site/wwwroot` mappához. Innen feltöltheti `package.json` a fájlt úgy, hogy áthúzza a fájl könyvtár ablakába. A minta `package.json` a következő:
+3. A Function alkalmazás fájljának könyvtár-struktúrájának meg kell jelennie. Navigáljon a `site/wwwroot` mappához. Innen feltölthet egy `package.json` fájlt úgy, hogy áthúzza a fájl könyvtár ablakba. A minta `package.json` a következő:
 
     ```json
     {
       "dependencies": {
-        "durable-functions": "^1.1.2"
+        "durable-functions": "^1.3.1"
       }
     }
     ```
 
    ![Kudu feltöltési csomag. JSON](./media/durable-functions-create-portal/kudu-choose-debug-console.png)
 
-4. A feltöltése után futtassa a `npm install` parancsot a kudu távoli végrehajtási konzolon. `package.json`
+4. A `package.json` feltöltése után futtassa a `npm install` parancsot a kudu távoli végrehajtási konzolról.
 
    ![Kudu NPM-telepítés futtatása](./media/durable-functions-create-portal/kudu-npm-install.png)
 
 ## <a name="create-an-orchestrator-function"></a>Orchestrator függvény létrehozása
 
-1. Bontsa ki a függvényalkalmazást, és kattintson a **Függvények** elem melletti **+** gombra. Ha ez az első függvény a függvényalkalmazásban, válassza a **Portálba épített**, majd a **Folytatás** lehetőséget. Ha nem ez az első, folytassa a harmadik lépéssel.
+1. Bontsa ki a függvényalkalmazást, és kattintson a **Függvények+ elem melletti**  gombra. Ha ez az első függvény a függvényalkalmazásban, válassza a **Portálba épített**, majd a **Folytatás** lehetőséget. Ha nem ez az első, folytassa a harmadik lépéssel.
 
    ![Függvények gyors létrehozásának oldala az Azure Portalon](./media/durable-functions-create-portal/function-app-quickstart-choose-portal.png)
 
@@ -72,17 +72,17 @@ Ha JavaScript-Durable functions hoz létre, akkor telepítenie kell a [ `durable
 
     ![Függvények rövid útmutatója - további sablonok kiválasztása](./media/durable-functions-create-portal/add-first-function.png)
 
-1. A Keresés mezőbe írja be `durable` a kifejezést, majd válassza ki a **Durable functions http-indító** sablont.
+1. A keresőmezőbe írja be a `durable` kifejezést, majd válassza a **DURABLE FUNCTIONS http-indító** sablont.
 
 1. Ha a rendszer kéri, válassza a **telepítés** lehetőséget az Azure DurableTask bővítmény bármely függőségének telepítéséhez a Function alkalmazásban. Az Add Function alkalmazáshoz csak egyszer kell telepítenie a bővítményt. A telepítést követően válassza a **Folytatás** gombot.
 
     ![Kötési bővítmények telepítése](./media/durable-functions-create-portal/install-durabletask-extension.png)
 
-1. A telepítés befejezése után nevezze el az új függvényt `HttpStart` , és válassza a **Létrehozás**lehetőséget. A létrehozott függvény az előkészítés elindítására szolgál.
+1. A telepítés befejezése után nevezze el az új függvényt `HttpStart` majd válassza a **Létrehozás**lehetőséget. A létrehozott függvény az előkészítés elindítására szolgál.
 
-1. Hozzon létre egy másik függvényt a Function alkalmazásban, ezúttal a **Durable functions Orchestrator** sablon használatával. Nevezze el az új előkészítési `HelloSequence`függvényt.
+1. Hozzon létre egy másik függvényt a Function alkalmazásban, ezúttal a **Durable functions Orchestrator** sablon használatával. Nevezze el az új összehangoló függvényt `HelloSequence`.
 
-1. Hozzon létre egy nevű `Hello` harmadik függvényt a **Durable functions Activity** sablon használatával.
+1. Hozzon létre egy `Hello` nevű harmadik függvényt a **Durable functions Activity** sablon használatával.
 
 ## <a name="test-the-durable-function-orchestration"></a>A tartós függvények előkészítésének tesztelése
 
@@ -94,7 +94,7 @@ Ha JavaScript-Durable functions hoz létre, akkor telepítenie kell a [ `durable
     curl -X POST https://{your-function-app-name}.azurewebsites.net/api/orchestrators/HelloSequence
     ```
 
-    Ebben a példában `{your-function-app-name}` az a tartomány, amely a Function alkalmazás neve. A válaszüzenet olyan URI-végpontokat tartalmaz, amelyek segítségével figyelheti és kezelheti a végrehajtást, ami a következő példához hasonlóan néz ki:
+    Ebben a példában a `{your-function-app-name}` az a tartomány, amely a Function alkalmazás neve. A válaszüzenet olyan URI-végpontokat tartalmaz, amelyek segítségével figyelheti és kezelheti a végrehajtást, ami a következő példához hasonlóan néz ki:
 
     ```json
     {  
@@ -106,7 +106,7 @@ Ha JavaScript-Durable functions hoz létre, akkor telepítenie kell a [ `durable
     }
     ```
 
-1. Hívja meg `statusQueryGetUri` a végpont URI-ját, és láthatja a tartós függvény aktuális állapotát, ami az alábbi példához hasonló lehet:
+1. Hívja meg az `statusQueryGetUri` Endpoint URI-t, és láthatja a tartós függvény aktuális állapotát, ami a következő példához hasonló lehet:
 
     ```json
         {

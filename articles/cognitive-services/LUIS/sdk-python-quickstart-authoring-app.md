@@ -1,7 +1,7 @@
 ---
-title: 'Gyors útmutató: Language Understanding (LUIS) a Pythonhoz készült ügyféloldali kódtár készítése'
+title: 'Rövid útmutató: Language Understanding (LUIS) a Pythonhoz készült ügyféloldali kódtár készítése'
 titleSuffix: Azure Cognitive Services
-description: Ismerkedés a Pythonhoz készült Language Understanding (LUIS) ügyféloldali kódtáraval. Az alábbi lépéseket követve telepítheti a csomagot, és kipróbálhatja az alapszintű feladatokhoz tartozó példa kódját.  Language Understanding (LUIS) lehetővé teszi, hogy egyéni gépi tanulási intelligenciát alkalmazzon egy felhasználó társalgási, természetes nyelvi szövegére az általános jelentés megbecslése érdekében, és a vonatkozó, részletes információk kiolvasását.
+description: Ismerkedés a Pythonhoz készült LUIS ügyféloldali kódtáraval. Az alábbi lépéseket követve telepítheti a csomagot, és kipróbálhatja az alapszintű feladatokhoz tartozó példa kódját.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -10,14 +10,14 @@ ms.subservice: language-understanding
 ms.topic: quickstart
 ms.date: 08/07/2019
 ms.author: diberry
-ms.openlocfilehash: f8149372e0a96cda81ef38558ee0bcf87eb53bb3
-ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
+ms.openlocfilehash: 1b586af569a9406d7fe9fa3d05c198f62f32744f
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70258765"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73672007"
 ---
-# <a name="quickstart-language-understanding-luis-authoring-client-library-for-python"></a>Gyors útmutató: Language Understanding (LUIS) a Pythonhoz készült ügyféloldali kódtár készítése
+# <a name="quickstart-language-understanding-luis-authoring-client-library-for-python"></a>Rövid útmutató: Language Understanding (LUIS) a Pythonhoz készült ügyféloldali kódtár készítése
 
 Ismerkedés a Pythonhoz készült Language Understanding (LUIS) létrehozásával. Az alábbi lépéseket követve telepítheti a csomagot, és kipróbálhatja az alapszintű feladatokhoz tartozó példa kódját.  Language Understanding (LUIS) lehetővé teszi, hogy egyéni gépi tanulási intelligenciát alkalmazzon egy felhasználó társalgási, természetes nyelvi szövegére az általános jelentés megbecslése érdekében, és a vonatkozó, részletes információk kiolvasását. 
 
@@ -28,18 +28,18 @@ Használja a Pythonhoz készült Language Understanding (LUIS) a következőhöz
 * Funkciók hozzáadása, például egy kifejezési lista.
 * Alkalmazás betanítása és közzététele.
 
-[A dokumentáció](https://docs.microsoft.com/python/api/azure-cognitiveservices-language-luis/index?view=azure-python) | [könyvtár forráskódjának](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-language-luis/azure/cognitiveservices/language/luis) | [szerzői csomagja (PyPI)](https://pypi.org/project/azure-cognitiveservices-language-luis/) | [mintái](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/LUIS/application_quickstart.py)
+[Dokumentáció](https://docs.microsoft.com/python/api/azure-cognitiveservices-language-luis/index?view=azure-python) | [könyvtár forráskódja](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-language-luis/azure/cognitiveservices/language/luis) | [authoring Package (PyPI)](https://pypi.org/project/azure-cognitiveservices-language-luis/) | [minták](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/LUIS/application_quickstart.py)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Language Understanding (LUIS) portál fiókja: [Hozzon létre egyet ingyen](https://www.luis.ai).
-* [Python 3.x](https://www.python.org/)
+* Language Understanding (LUIS) portál fiókja: [hozzon létre egyet ingyen](https://www.luis.ai).
+* [Python 3. x](https://www.python.org/)
 
 ## <a name="setting-up"></a>Beállítás
 
 ### <a name="get-your-language-understanding-luis-starter-key"></a>A Language Understanding (LUIS) indító kulcs beszerzése
 
-Szerezze be a [kezdő kulcsot](luis-how-to-azure-subscription.md#starter-key), és [hozzon létre egy környezeti változót](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) a `LUIS_AUTHORING_KEY` kulcs, a named és a környezeti változó számára a `LUIS_REGION`kulcs régiójában.
+Szerezze be a [kezdő kulcsot](luis-how-to-azure-subscription.md#starter-key), és [hozzon létre egy környezeti változót](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) a kulcshoz, a nevű `LUIS_AUTHORING_KEY` és egy környezeti változót a kulcs régiójában, `LUIS_REGION`.
 
 ### <a name="install-the-python-library-for-luis"></a>A Python-könyvtár telepítése a LUIS számára
 
@@ -91,7 +91,7 @@ Hozzon létre egy [CognitiveServicesCredentials](https://docs.microsoft.com/pyth
 
 [!code-python[Create LUIS client object](~/cognitive-services-quickstart-code/python/LUIS/application_quickstart.py?name=Client)]
 
-## <a name="create-a-luis-app"></a>A LUIS-alkalmazás létrehozása
+## <a name="create-a-luis-app"></a>LUIS-alkalmazás létrehozása
 
 1. Hozzon létre egy LUIS-alkalmazást, amely tartalmazza a természetes nyelvi feldolgozó (NLP) modellt, amely a szándékok, az entitások és a példa hosszúságú kimondott szöveg. 
 
@@ -111,7 +111,7 @@ Használja a [modellt. adja hozzá az _intent](https://docs.microsoft.com/python
 
 Habár az entitások nem kötelezőek, a legtöbb alkalmazásban megtalálhatók. Az entitás kinyeri az adatokat a felhasználótól, és a felhasználó szándékának fullfil szükséges. Az [előre elkészített](https://docs.microsoft.com/python/api/azure-cognitiveservices-language-luis/azure.cognitiveservices.language.luis.authoring.operations.modeloperations?view=azure-python#add-prebuilt-app-id--version-id--prebuilt-extractor-names--custom-headers-none--raw-false----operation-config-) és az egyéni entitások több típusa is van, amelyek mindegyike saját Adatátalakítási objektum-(DTO-) modellel rendelkezik.  Az alkalmazásba felvenni kívánt közös előre összeépített entitások közé tartozik a [Number](luis-reference-prebuilt-number.md), a [datetimeV2](luis-reference-prebuilt-datetimev2.md), a [geographyV2](luis-reference-prebuilt-geographyv2.md)és a [sorszám](luis-reference-prebuilt-ordinal.md). 
 
-Ez a **add_entities** metódus egy `Location` egyszerű entitást hozott létre két szerepkörrel, egy `Class` egyszerű `Flight` entitással, egy összetett entitással és több előre elkészített entitás hozzáadásával.
+Ez a **add_entities** metódus egy `Location` egyszerű entitást hozott létre két szerepkörrel, egy `Class` egyszerű entitással, egy `Flight` összetett entitással és több előre elkészített entitás hozzáadásával.
 
 Fontos tudni, hogy az entitások nincsenek megjelölve szándékkal megjelölve. Ezek általában számos szándékra vonatkoznak. Csak például a felhasználó hosszúságú kimondott szöveg van megjelölve egy adott, egyetlen szándékkal.
 
@@ -147,7 +147,7 @@ Tegye közzé a LUIS alkalmazást az [app. publish](https://docs.microsoft.com/p
 
 ## <a name="run-the-application"></a>Az alkalmazás futtatása
 
-Futtassa az alkalmazást `python` a gyors üzembe helyezési fájlban található paranccsal.
+Futtassa az alkalmazást a gyors üzembe helyezési fájlban lévő `python` paranccsal.
 
 ```console
 python quickstart-file.py

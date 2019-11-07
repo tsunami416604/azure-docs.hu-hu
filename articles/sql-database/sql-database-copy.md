@@ -1,5 +1,5 @@
 ---
-title: Azure SQL Database-adatbázis másolása | Microsoft Docs
+title: Azure SQL Database-adatbázis másolása
 description: Hozzon létre tranzakciós szempontból konzisztens másolatot egy meglévő Azure SQL Database-adatbázisról ugyanazon a kiszolgálón vagy egy másik kiszolgálón.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sashan
 ms.reviewer: carlrab
 ms.date: 09/04/2019
-ms.openlocfilehash: de56e66046bb61ac31c1842ae6ce7a9c6720760d
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: d49896d8088ae1352cb2785d061cde6c8647cb89
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70934205"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73690800"
 ---
 # <a name="copy-a-transactionally-consistent-copy-of-an-azure-sql-database"></a>Azure SQL Database-adatbázis tranzakciós szempontból konzisztens másolatának másolása
 
@@ -37,7 +37,7 @@ Ha egy másik SQL Database-kiszolgálóra másol egy adatbázist, az új kiszolg
 
 Ha [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md)használ, teljes mértékben kizárja a hitelesítő adatoknak a másolatban való kezelésének szükségességét. Ha azonban új kiszolgálóra másolja az adatbázist, előfordulhat, hogy a bejelentkezési alapú hozzáférés nem működik, mert a bejelentkezések nem léteznek az új kiszolgálón. Ha más SQL Database-kiszolgálóra másol egy adatbázist, a bejelentkezések kezelésével kapcsolatos további információkért lásd: [Az Azure SQL Database biztonságának kezelése](sql-database-geo-replication-security-config.md)a vész-helyreállítás után. 
 
-A másolás sikeres és a többi felhasználó újraleképezése után csak a másolást kezdeményező bejelentkezést, az adatbázis tulajdonosát lehet bejelentkezni az új adatbázisba. A másolási művelet befejezését követően a bejelentkezések feloldásához [](#resolve-logins)tekintse meg a bejelentkezések feloldása című témakört.
+A másolás sikeres és a többi felhasználó újraleképezése után csak a másolást kezdeményező bejelentkezést, az adatbázis tulajdonosát lehet bejelentkezni az új adatbázisba. A másolási művelet befejezését követően a bejelentkezések feloldásához tekintse meg a [bejelentkezések feloldása](#resolve-logins)című témakört.
 
 ## <a name="copy-a-database-by-using-the-azure-portal"></a>Adatbázis másolása a Azure Portal használatával
 
@@ -72,8 +72,8 @@ Adatbázis-másolat létrehozásához a következő szerepköröket kell megadni
 - SQL Server közreműködő szerepkör vagy
 - Egyéni szerepkör a forrás-és a célként megadott adatbázisokhoz a következő engedélyekkel:
 
-   Microsoft.Sql/servers/databases/read   
-   Microsoft.Sql/servers/databases/write   
+   Microsoft. SQL/kiszolgálók/adatbázisok/olvasás   
+   Microsoft. SQL/kiszolgálók/adatbázisok/írás   
 
 Az adatbázis-másolatok megszakításához a következő szerepköröket kell megadnia
 
@@ -81,21 +81,21 @@ Az adatbázis-másolatok megszakításához a következő szerepköröket kell m
 - SQL Server közreműködő szerepkör vagy
 - Egyéni szerepkör a forrás-és a célként megadott adatbázisokhoz a következő engedélyekkel:
 
-   Microsoft.Sql/servers/databases/read   
-   Microsoft.Sql/servers/databases/write   
+   Microsoft. SQL/kiszolgálók/adatbázisok/olvasás   
+   Microsoft. SQL/kiszolgálók/adatbázisok/írás   
    
 Az adatbázis-másolat Azure Portal használatával történő kezeléséhez a következő engedélyekre is szüksége lesz:
 
-&nbsp;&nbsp; Microsoft.Resources/előfizetések&nbsp; /erőforrások/olvasás   
-&nbsp;&nbsp; Microsoft.Resources/Subscriptions/&nbsp; Resources/Write   
-&nbsp;&nbsp; Microsoft.Resources/&nbsp; központi telepítések/olvasás   
-&nbsp;&nbsp; Microsoft.Resources&nbsp; /üzembe helyezés/írás   
-&nbsp;&nbsp; Microsoft.Resources/üzembe&nbsp; helyezés/operationstatuses/olvasás    
+&nbsp; &nbsp; &nbsp; Microsoft. Resources/Subscriptions/Resources/READ   
+&nbsp; &nbsp; &nbsp; Microsoft. erőforrások/előfizetések/erőforrások/írás   
+&nbsp; &nbsp; &nbsp; Microsoft. erőforrások/központi telepítések/olvasás   
+&nbsp; &nbsp; &nbsp; Microsoft. erőforrások/központi telepítések/írás   
+&nbsp; &nbsp; &nbsp; Microsoft. erőforrások/központi telepítések/operationstatuses/olvasás    
 
 Ha szeretné megtekinteni a központi telepítések alatt lévő műveleteket a portálon található erőforráscsoporthoz, több erőforrás-szolgáltató műveletei, beleértve az SQL-műveleteket, szüksége lesz ezekre a további RBAC szerepkörökre: 
 
-&nbsp;&nbsp; Microsoft.erőforrások/előfizetések/resourcegroups/üzembehelyezések&nbsp; /műveletek/olvasás   
-&nbsp;&nbsp; Microsoft.Resources/előfizetések/resourcegroups/üzembe&nbsp; helyezés/operationstatuses/olvasás
+&nbsp; &nbsp; &nbsp; Microsoft. erőforrások/előfizetések/resourcegroups/központi telepítések/műveletek/olvasás   
+&nbsp; &nbsp; &nbsp; Microsoft. erőforrások/előfizetések/resourcegroups/központi telepítések/operationstatuses/olvasás
 
 
 

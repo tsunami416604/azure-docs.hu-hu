@@ -1,5 +1,5 @@
 ---
-title: Machine Learning modellek frissítése a Azure Data Factory használatával | Microsoft Docs
+title: Machine Learning modellek frissítése a Azure Data Factory használatával
 description: Ismerteti, hogyan hozhat létre prediktív folyamatokat a Azure Data Factory és a Azure Machine Learning használatával
 services: data-factory
 documentationcenter: ''
@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/22/2018
-ms.openlocfilehash: a980f269c8b88618ffa3311c05310a88ade379ed
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 190a4e704b002a4d6d4876d048c693a5fffe0114
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70140470"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73683124"
 ---
 # <a name="updating-azure-machine-learning-models-using-update-resource-activity"></a>Azure Machine Learning modellek frissítése az erőforrás frissítése tevékenység használatával
 
@@ -36,26 +36,26 @@ ms.locfileid: "70140470"
 > [!NOTE]
 > Ez a cikk a Data Factory 1-es verziójára vonatkozik. Ha a Data Factory szolgáltatás aktuális verzióját használja, tekintse [meg a Machine learning-modellek frissítése a Data Factory-ben](../update-machine-learning-models.md)című témakört.
 
-Ez a cikk a fő Azure Data Factory Azure Machine Learning integrációs cikket egészíti ki: [Prediktív folyamatokat hozhat létre Azure Machine learning és Azure Data Factory használatával](data-factory-azure-ml-batch-execution-activity.md). Ha még nem tette meg, tekintse át a fő cikket, mielőtt beolvassa ezt a cikket. 
+Ez a cikk a Azure Data Factory Azure Machine Learning integrációs cikket egészíti ki: [prediktív folyamatok létrehozása Azure Machine learning és Azure Data Factory használatával](data-factory-azure-ml-batch-execution-activity.md). Ha még nem tette meg, tekintse át a fő cikket, mielőtt beolvassa ezt a cikket. 
 
 ## <a name="overview"></a>Áttekintés
 Idővel az Azure ML-pontozási kísérletek prediktív modelljeit új bemeneti adatkészletek használatával kell áttanítani. Miután végzett az újraképzéssel, frissítenie kell a pontozási webszolgáltatást az áttelepített ML-modellel. Az Azure ML-modellek webszolgáltatásokon keresztül történő átképzésének és frissítésének tipikus lépései a következők:
 
 1. Hozzon létre egy kísérletet az [Azure ml Studioban](https://studio.azureml.net).
-2. Ha elégedett a modellel, az Azure ML Studio használatával közzéteheti a webes szolgáltatásokat a betanítási **kísérlet** és a pontozási/**prediktív kísérlet**során.
+2. Ha elégedett a modellel, az Azure ML Studio használatával közzéteheti a webes szolgáltatásokat a **betanítási kísérlet** és a pontozási/**prediktív kísérlet**során.
 
 A következő táblázat ismerteti az ebben a példában használt webszolgáltatásokat.  További részletekért lásd: [Machine learning modellek átképzése programozott](../../machine-learning/machine-learning-retrain-models-programmatically.md) módon.
 
-- A betanítási **webszolgáltatás** betanítási és betanított modelleket hoz létre. Az átképzés kimenete egy. ilearner fájl az Azure Blob Storage-ban. Az **alapértelmezett végpont** automatikusan létrejön, amikor webszolgáltatásként teszi közzé a betanítási kísérletet. Több végpontot is létrehozhat, de a példa csak az alapértelmezett végpontot használja.
+- A **betanítási webszolgáltatás** betanítási és betanított modelleket hoz létre. Az átképzés kimenete egy. ilearner fájl az Azure Blob Storage-ban. Az **alapértelmezett végpont** automatikusan létrejön, amikor webszolgáltatásként teszi közzé a betanítási kísérletet. Több végpontot is létrehozhat, de a példa csak az alapértelmezett végpontot használja.
 - **Pontozási webszolgáltatás** – a rendszer címkézetlen adatpéldákat fogad, és előrejelzéseket készít. Az előrejelzés kimenete különböző formákat tartalmazhat, például egy. csv-fájlt vagy egy Azure SQL-adatbázis sorait a kísérlet konfigurációjától függően. A rendszer automatikusan létrehozza az alapértelmezett végpontot, amikor a prediktív kísérletet webszolgáltatásként teszi közzé. 
 
 Az alábbi ábrán az Azure ML-ben megjelenő tanítási és pontozási végpontok közötti kapcsolat látható.
 
 ![Webszolgáltatások](./media/data-factory-azure-ml-batch-execution-activity/web-services.png)
 
-A betanítási **webszolgáltatás** az **Azure ml batch végrehajtási tevékenységének**használatával hívható meg. A betanítási webszolgáltatás meghívása ugyanaz, mint egy Azure ML webszolgáltatás (pontozási webszolgáltatás) meghívása az adatpontozási szolgáltatáshoz. Az előző fejezetekben részletesen ismertetjük, hogyan hívhat meg egy Azure ML-webszolgáltatást egy Azure Data Factory folyamatból. 
+A **betanítási webszolgáltatás** az **Azure ml batch végrehajtási tevékenységének**használatával hívható meg. A betanítási webszolgáltatás meghívása ugyanaz, mint egy Azure ML webszolgáltatás (pontozási webszolgáltatás) meghívása az adatpontozási szolgáltatáshoz. Az előző fejezetekben részletesen ismertetjük, hogyan hívhat meg egy Azure ML-webszolgáltatást egy Azure Data Factory folyamatból. 
 
-A **pontozási** webszolgáltatást az **Azure ml Update Resource tevékenység** használatával lehet meghívni a webszolgáltatás az újonnan betanított modellel való frissítéséhez. A következő példák a társított szolgáltatás definícióit biztosítják: 
+A **pontozási webszolgáltatást** az **Azure ml Update Resource tevékenység** használatával lehet meghívni a webszolgáltatás az újonnan betanított modellel való frissítéséhez. A következő példák a társított szolgáltatás definícióit biztosítják: 
 
 ## <a name="scoring-web-service-is-a-classic-web-service"></a>A pontozási webszolgáltatás egy klasszikus webszolgáltatás
 Ha a pontozási webszolgáltatás egy **klasszikus webszolgáltatás**, akkor a Azure Portal használatával hozza létre a második **nem alapértelmezett és frissíthető végpontot** . A lépések a [végpontok létrehozása](../../machine-learning/machine-learning-create-endpoint.md) című cikkben olvashatók. Miután létrehozta a nem alapértelmezett frissíthető végpontot, hajtsa végre a következő lépéseket:
@@ -111,7 +111,7 @@ A webszolgáltatások Azure Machine Learning webszolgáltatások [portálján](h
 A következő forgatókönyv további részleteket tartalmaz. Ez egy példa az Azure ML-modellek átképzésére és frissítésére egy Azure Data Factory folyamatból.
 
 ## <a name="scenario-retraining-and-updating-an-azure-ml-model"></a>Forgatókönyv: az Azure ML-modellek átképzése és frissítése
-Ez a szakasz egy olyan mintát tartalmaz, amely az **Azure ml batch végrehajtási tevékenységét** használja a modell újratanításához. A folyamat az **Azure ml Update erőforrás** -tevékenységgel is frissíti a modellt a pontozási webszolgáltatásban. A szakasz a példában szereplő társított szolgáltatások, adatkészletek és folyamatok JSON-kódrészleteit is tartalmazza.
+Ez a szakasz egy olyan mintát tartalmaz, amely az **Azure ml batch végrehajtási tevékenységét** használja a modell újratanításához. A folyamat az **Azure ml Update erőforrás-tevékenységgel** is frissíti a modellt a pontozási webszolgáltatásban. A szakasz a példában szereplő társított szolgáltatások, adatkészletek és folyamatok JSON-kódrészleteit is tartalmazza.
 
 Itt látható a mintavételezési folyamat diagram nézete. Amint láthatja, az Azure ML batch végrehajtási tevékenysége betanítja a betanítási adatokat, és létrehoz egy képzési kimenetet (iLearner-fájlt). Az Azure ML frissítési erőforrás tevékenysége ezt a betanítási kimenetet veszi át, és frissíti a modellt a pontozási webszolgáltatás végpontján. Az erőforrás frissítése tevékenység nem hoz létre kimenetet. A placeholderBlob csak egy olyan próbabábu kimeneti adatkészlete, amelyre a Azure Data Factory szolgáltatásnak szüksége van a folyamat futtatásához.
 
@@ -211,7 +211,7 @@ A következő JSON-kódrészlet definiál egy Azure Machine Learning társított
 Az **Azure ml Studio**tegye a következőket a **MlEndpoint** és a **apiKey**értékeinek lekéréséhez:
 
 1. A bal oldali menüben kattintson a **Web Services** elemre.
-2. A webszolgáltatások listájában kattintson a betanítási **webszolgáltatás** elemre.
+2. A webszolgáltatások listájában kattintson a **betanítási webszolgáltatás** elemre.
 3. Kattintson az API- **kulcs** szövegmező melletti Másolás lehetőségre. Illessze be a vágólapra a kulcsot a Data Factory JSON-szerkesztőbe.
 4. Az **Azure ml Studióban**kattintson a **Batch-végrehajtási** hivatkozás elemre.
 5. Másolja a kérési **URI** -t a **kérelem** szakaszból, és ILLESSZE be a Data Factory JSON-szerkesztőbe.   

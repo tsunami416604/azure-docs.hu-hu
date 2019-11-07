@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
-ms.openlocfilehash: 62fb5552d86a802c3ba0213d99be2f91f21025e2
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 7547db502056304307094541dcfd2474eda999d8
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73472127"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73620426"
 ---
 # <a name="access-and-customize-developer-portal"></a>A fejlesztői portál elérése és testreszabása
 
@@ -125,7 +125,7 @@ Ahhoz, hogy a portál és a legújabb módosításai elérhetők legyenek a lát
 
 ## <a name="visit-the-published-portal"></a>A közzétett portál meglátogatása
 
-A portál közzététele után a felügyeleti panellel megegyező URL-címen érheti el, például `https://contoso-api.portal.azure-api.net`. Nyissa meg egy új böngésző lapon, és tekintse meg külső látogatóként.
+A portál közzététele után a felügyeleti panellel megegyező URL-címen érheti el, például `https://contoso-api.developer.azure-api.net`. Megtekintheti egy különálló böngésző-munkamenetben (inkognitóban/privát böngészési mód) külső látogatóként.
 
 ## <a name="next-steps"></a>További lépések
 

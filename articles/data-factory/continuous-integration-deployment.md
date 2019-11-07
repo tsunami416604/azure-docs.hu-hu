@@ -1,5 +1,5 @@
 ---
-title: Folyamatos integráció és kézbesítés a Azure Data Factoryban | Microsoft Docs
+title: Folyamatos integráció és kézbesítés Azure Data Factory
 description: Megtudhatja, hogyan használhatja a folyamatos integrációt és a szállítást, hogy Data Factory folyamatokat helyezzen át egy környezetből (fejlesztés, tesztelés, termelés) egy másikra.
 services: data-factory
 documentationcenter: ''
@@ -11,12 +11,12 @@ ms.reviewer: maghan
 manager: jroth
 ms.topic: conceptual
 ms.date: 08/14/2019
-ms.openlocfilehash: ff1d34852890a8d5005153ebdfa2fa0f9749d129
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 7c5c1e91e97087bf28b03629659e5194f67c22b3
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72030619"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73680026"
 ---
 # <a name="continuous-integration-and-delivery-cicd-in-azure-data-factory"></a>Folyamatos integráció és szállítás (CI/CD) Azure Data Factory
 
@@ -122,7 +122,7 @@ Az alábbi útmutató egy Azure-beli folyamatok kiadásának beállítására sz
 
     f.  Válassza a **... lehetőséget.** a **sablon paraméterei mezőben.** a parameters (paraméterek) fájl kiválasztásához. Válassza ki a megfelelő fájlt attól függően, hogy létrehozott-e egy másolatot, vagy az alapértelmezett *ARMTemplateParametersForFactory. JSON*fájlt használja.
 
-    g.  Válassza a **... lehetőséget.** a **felülbírálási sablon paraméterei** mező mellett adja meg a cél Data Factory információit. A Key vaultból érkező hitelesítő adatok esetében adja meg a titkos nevet idézőjelek között. Ha például a titok neve `cred1`, akkor adja meg a `"$(cred1)"`for értékét.
+    g.  Válassza a **... lehetőséget.** a **felülbírálási sablon paraméterei** mező mellett adja meg a cél Data Factory információit. A Key vaultból érkező hitelesítő adatok esetében adja meg a titkos nevet idézőjelek között. Ha például a titok neve `cred1`, akkor adja meg a `"$(cred1)"`értékét.
 
     ![](media/continuous-integration-deployment/continuous-integration-image9.png)
 
@@ -335,14 +335,14 @@ Az alapértelmezett paraméterezés-sablon felülbírálásához a következő f
 
 Az egyéni paraméterek fájljának létrehozásakor az alábbi irányelvek használhatók. A fájl az egyes entitások típusának egy szakaszát tartalmazza: trigger, folyamat, társított szolgáltatás, adatkészlet, integrációs futtatókörnyezet stb.
 * Adja meg a tulajdonság elérési útját a megfelelő entitás típusa mezőben.
-* Ha a tulajdonság nevét "\*" értékre állítja, akkor azt jelzi, hogy az összes tulajdonságot meg szeretné parametrizálja (csak az első szintre, nem rekurzív módon). Ezen kívül kivételeket is megadhat.
-* Ha egy tulajdonság értékét karakterláncként állítja be, akkor azt jelzi, hogy a tulajdonságot parametrizálja kívánja. Használja a @ no__t-0 formátumot.
-   *  `<action>` @ no__t-1can a következő karakterek egyike lehet:
-      * `=` @ no__t – 1means megtartja az aktuális értéket a paraméter alapértelmezett értékeként.
-      * `-` @ no__t-1means nem őrzi meg a paraméter alapértelmezett értékét.
-      * `|` @ no__t-1is különleges esetet biztosít a titkok Azure Key Vault a kapcsolatok karakterláncai vagy kulcsai számára.
-   * `<name>` @ no__t-1is a paraméter nevét. Ha üres, akkor a tulajdonság nevét veszi fel. Ha az érték `-` karakterrel kezdődik, a rendszer lerövidíti a nevet. Például a `AzureStorage1_properties_typeProperties_connectionString` a `AzureStorage1_connectionString` értékre lesz rövidítve.
-   * `<stype>` @ no__t – 1is a paraméter típusát. Ha a @ no__t-0 @ no__t-1is üres, az alapértelmezett típus: `string`. Támogatott értékek: `string`, `bool`, `number`, `object` és `securestring`.
+* Ha a tulajdonság nevét "\*" értékre állítja, akkor azt jelzi, hogy az összes tulajdonságot le szeretné parametrizálja (csak az első szintre, nem rekurzív módon). Ezen kívül kivételeket is megadhat.
+* Ha egy tulajdonság értékét karakterláncként állítja be, akkor azt jelzi, hogy a tulajdonságot parametrizálja kívánja. Használja a `<action>:<name>:<stype>`formátumot.
+   *  `<action>` a következő karakterek egyike lehet:
+      * `=` azt jelenti, hogy az aktuális értéket a paraméter alapértelmezett értékeként kell megőrizni.
+      * `-` azt jelenti, hogy nem tartja meg a paraméter alapértelmezett értékét.
+      * a `|` egy speciális eset a titkokhoz Azure Key Vault a kapcsolatok karakterláncai vagy kulcsai számára.
+   * `<name>` a paraméter neve. Ha üres, akkor a tulajdonság nevét veszi fel. Ha az érték `-` karakterrel kezdődik, a rendszer lerövidíti a nevet. Például a `AzureStorage1_properties_typeProperties_connectionString` a `AzureStorage1_connectionString` értékre lesz rövidítve.
+   * `<stype>` a paraméter típusa. Ha `<stype>` üres, az alapértelmezett típus `string`. Támogatott értékek: `string`, `bool`, `number`, `object` és `securestring`.
 * Amikor megad egy tömböt a definíciós fájlban, azt jelzi, hogy a sablonban szereplő egyező tulajdonság egy tömb. Data Factory a tömbben lévő összes objektumra vonatkozóan a tömb Integration Runtime objektumában megadott definíció használatával. A második objektum, egy karakterlánc, a tulajdonság neve lesz, amely az egyes iterációk paraméterének neveként szerepel.
 * Az adott erőforrás-példányra vonatkozó definíció nem lehet. Bármely definíció az adott típusú összes erőforrásra vonatkozik.
 * Alapértelmezés szerint az összes biztonságos karakterlánc, például a Key Vault titkos kódok és a biztonságos karakterláncok, például a kapcsolati karakterláncok, kulcsok és jogkivonatok paraméterei.
@@ -423,7 +423,7 @@ Alább látható a fenti sablon kialakításának magyarázata, erőforrás típ
 
 #### <a name="triggers"></a>Eseményindítók
 
-* A `typeProperties` alatt két tulajdonság paraméteres. Az első egy `maxConcurrency`, amely alapértelmezett értékkel rendelkezik, és a következő típusú: @ no__t-1. Az alapértelmezett paraméter neve `<entityName>_properties_typeProperties_maxConcurrency`.
+* A `typeProperties` alatt két tulajdonság paraméteres. Az első egy `maxConcurrency`, amely alapértelmezett értékkel rendelkezik, és`string`típusú. Az alapértelmezett paraméter neve `<entityName>_properties_typeProperties_maxConcurrency`.
 * A `recurrence` tulajdonság paraméterrel is rendelkezik. Ebben az esetben az adott szinten lévő összes tulajdonságot karakterláncként kell megadni, alapértelmezett értékekkel és paraméterek nevével. Kivételt képeznek a `interval` tulajdonság, amely a szám típusaként van paraméterként, és az `<entityName>_properties_typeProperties_recurrence_triggerSuffix` utótaggal rendelkező paraméter neve. Hasonlóképpen, a `freq` tulajdonság egy karakterlánc, amely karakterláncként van paraméterként. A `freq` tulajdonság azonban alapértelmezett érték nélkül van paraméterben. A név rövidítve és utótaggal van elnevezve. Például: `<entityName>_freq`.
 
 #### <a name="linkedservices"></a>LinkedServices
@@ -434,7 +434,7 @@ Alább látható a fenti sablon kialakításának magyarázata, erőforrás típ
 
 #### <a name="datasets"></a>Adathalmazok
 
-* Bár a típus-specifikus Testreszabás elérhető az adatkészletekhez, a konfigurációt külön @no__t -0 konfiguráció nélkül is megadhatja. A fenti példában a `typeProperties` alatti összes adatkészlet-tulajdonság paraméteres.
+* Bár a típus-specifikus Testreszabás elérhető az adatkészletekhez, a konfigurációt a \*szintű konfiguráció explicit beállítása nélkül is megadhatja. A fenti példában a `typeProperties` alatti összes adatkészlet-tulajdonság paraméteres.
 
 ### <a name="default-parameterization-template"></a>Alapértelmezett paraméterezés-sablon
 

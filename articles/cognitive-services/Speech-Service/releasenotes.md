@@ -11,14 +11,38 @@ ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: brianem
 ms.custom: seodec18
-ms.openlocfilehash: 353e0478172ed03cde848d8c5127d2ee41724963
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: b40df5878d08b222d145531bfdad1e30b2fe989d
+ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73481243"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73647405"
 ---
 # <a name="release-notes"></a>Kibocsátási megjegyzések
+
+## <a name="speech-sdk-180-2019-november-release"></a>Speech SDK 1.8.0:2019 – november kiadás
+
+**Új funkciók**
+*   Hozzáadott egy FromHost () API-t, amely megkönnyíti a helyszíni tárolók és a szuverén felhők használatát.
+*   A beszédfelismeréshez hozzáadott automatikus forrás Nyelvfelismerés (Java és C++)
+*   SourceLanguageConfig-objektum hozzáadva a beszédfelismeréshez, amely a várt forrás nyelvek megadására C++szolgál (Java és)
+*   KeywordRecognizer-támogatás hozzáadva a Windows (UWP), az Android és az iOS rendszerhez a Nuget és az Unity csomagok segítségével
+*   Távoli beszélgetési Java API hozzáadva a beszélgetések átírásához aszinkron kötegekben.
+
+**Változtatások megszakítása**
+*   A beszélgetési átirat funkciói a Microsoft. CognitiveServices. Speech. átíró névtér alatt lettek áthelyezve.
+*   A beszélgetési átirat módszereinek egy részét áthelyezi az új beszélgetési osztályba.
+*   Eldobott támogatás a 32 bites (ARMv7 és x86) iOS-hez 
+
+**Hibajavítások**
+*   Az összeomlás javítása, ha a helyi KeywordRecognizer érvényes Speech Service-előfizetési kulcs nélkül használja
+
+**Minták**
+*   Xamarin minta a KeywordRecognizer
+*   Unity minta a KeywordRecognizer
+*   C++és Java-mintákat az automatikus forrás Nyelvfelismerés.
+
+
 ## <a name="speech-sdk-170-2019-september-release"></a>Speech SDK 1.7.0:2019 – szeptemberi kiadás
 
 **Új funkciók**
@@ -37,7 +61,6 @@ ms.locfileid: "73481243"
 *   Az UUID-mel kapcsolatos kijavított probléma bizonyos kapcsolatok tulajdonságaiban nem egyedi.
 *   Néhány figyelmeztetés a Swift-kötésekben a nullák megadásával kapcsolatban (kis kód megváltoztatására lehet szükség)
 *   Kijavítva egy olyan hibát, amely miatt a WebSocket-kapcsolatok nem megfelelően vannak lezárva a hálózati terhelés alatt
-*   iOS: eldobott támogatás a arm7s architektúra számára
 *   Kijavított egy problémát az Androidon, amely időnként a DialogServiceConnector által használt duplikált benyomási azonosítókat eredményez
 *   A kapcsolatok stabilitásának fejlesztése több fordulatos interakciók és a hibák jelentése (a megszakított események használatával), amikor a DialogServiceConnector
 *   A DialogServiceConnector-munkamenet megkezdése mostantól megfelelően biztosítja az eseményeket, beleértve a ListenOnceAsync () hívásakor az aktív StartKeywordRecognitionAsync ()

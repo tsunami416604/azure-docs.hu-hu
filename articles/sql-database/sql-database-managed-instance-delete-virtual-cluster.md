@@ -1,5 +1,5 @@
 ---
-title: Alhálózat törlése Azure SQL Database felügyelt példány törlése után | Microsoft Docs
+title: Alhálózat törlése Azure SQL Database felügyelt példány törlése után
 description: Megtudhatja, hogyan törölhet egy Azure-beli virtuális hálózatot Azure SQL Database felügyelt példány törlése után.
 services: sql-database
 ms.service: sql-database
@@ -10,12 +10,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: douglas, carlrab, sstein
 ms.date: 06/26/2019
-ms.openlocfilehash: 7ad09682275b5cc2311b792899a85c1c47eafc0d
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: 84298e49de2de2ac43c33ec38c22846fd8d1e968
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72431289"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73688135"
 ---
 # <a name="delete-a-subnet-after-deleting-an-azure-sql-database-managed-instance"></a>Alhálózat törlése Azure SQL Database felügyelt példány törlése után
 
@@ -48,7 +48,7 @@ Azure Portal értesítések megerősítik, hogy a virtuális fürt törlésére 
 
 Ha a virtuális fürtöt az API-n keresztül szeretné törölni, használja a [virtuális fürtök delete metódusában](https://docs.microsoft.com/rest/api/sql/virtualclusters/delete)megadott URI-paramétereket.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Tekintse át a [Mi az a felügyelt példány?](sql-database-managed-instance.md)című témakört.
 - Ismerje meg a [felügyelt példány kapcsolati architektúráját](sql-database-managed-instance-connectivity-architecture.md).

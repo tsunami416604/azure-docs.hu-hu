@@ -1,5 +1,5 @@
 ---
-title: Tervezési útmutató a replikált táblákhoz – Azure SQL Data Warehouse | Microsoft Docs
+title: Tervezési útmutató a replikált táblákhoz
 description: Javaslatok a replikált táblák tervezéséhez a Azure SQL Data Warehouse sémában. 
 services: sql-data-warehouse
 author: XiaoyuMSFT
@@ -10,12 +10,13 @@ ms.subservice: development
 ms.date: 03/19/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: c622edc6c3a37b2bc71323cf0e2c155f7aec6e33
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.custom: seo-lt-2019
+ms.openlocfilehash: 18577cb729c9f17a112979cd1ebb763af38b9ca2
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68479316"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73693048"
 ---
 # <a name="design-guidance-for-using-replicated-tables-in-azure-sql-data-warehouse"></a>Tervezési útmutató a replikált táblák használatához Azure SQL Data Warehouse
 Ez a cikk a SQL Data Warehouse séma replikált tábláinak kialakítására vonatkozó ajánlásokat ismerteti. Ezekkel az ajánlásokkal javíthatja a lekérdezési teljesítményt azáltal, hogy csökkenti az adatáthelyezést és a lekérdezés bonyolultságát.
@@ -42,7 +43,7 @@ A replikált táblák jól működnek a Star-sémák dimenziós tábláiban. A d
 
 Egy replikált tábla használata:
 
-- A lemezen lévő táblázat mérete kevesebb, mint 2 GB, a sorok számától függetlenül. A tábla méretének megkereséséhez használhatja a [DBCC PDW_SHOWSPACEUSED](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-pdw-showspaceused-transact-sql) parancsot: `DBCC PDW_SHOWSPACEUSED('ReplTableCandidate')`. 
+- A lemezen lévő táblázat mérete kevesebb, mint 2 GB, a sorok számától függetlenül. Egy tábla méretének megkereséséhez használhatja a [DBCC PDW_SHOWSPACEUSED](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-pdw-showspaceused-transact-sql) parancsot: `DBCC PDW_SHOWSPACEUSED('ReplTableCandidate')`. 
 - A tábla olyan illesztésekben használatos, amelyek egyébként adatáthelyezést igényelnek. Ha olyan táblákat szeretne csatlakoztatni, amelyek nem ugyanazon az oszlopon vannak elosztva, például egy kivonattal elosztott táblán egy ciklikus multiplexelés táblázatba, a lekérdezés befejezéséhez adatáthelyezés szükséges.  Ha a táblák egyike kicsi, vegye fontolóra a replikált táblát. A legtöbb esetben javasolt a replikált táblák használata a ciklikus multiplexelés helyett. Az adatáthelyezési műveletek lekérdezési tervekben való megtekintéséhez használja a [sys. DM _pdw_request_steps](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-request-steps-transact-sql).  A BroadcastMoveOperation a tipikus adatáthelyezési művelet, amely egy replikált tábla használatával törölhető.  
  
 A replikált táblák nem eredményezik a legjobb lekérdezési teljesítményt, ha:
@@ -95,7 +96,7 @@ DROP TABLE [dbo].[DimSalesTerritory_old];
 
 A replikált táblákhoz nincs szükség adatáthelyezésre az illesztésekhez, mert a teljes tábla már megtalálható az egyes számítási csomópontokon. Ha a dimenziós táblák ciklikusan elosztottak, az illesztések teljes mértékben átmásolják a dimenzió táblát az egyes számítási csomópontokra. Az adatáthelyezéshez a lekérdezési terv egy BroadcastMoveOperation nevű műveletet tartalmaz. Ez a típusú adatáthelyezési művelet lelassítja a lekérdezési teljesítményt, és a replikált táblák használatával kiesik. A lekérdezési terv lépéseinek megtekintéséhez használja a [sys. DM _pdw_request_steps](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-request-steps-transact-sql) Rendszerkatalógus nézetét. 
 
-A AdventureWorks séma következő lekérdezésében például a `FactInternetSales` tábla kivonat-eloszlású. A `DimDate` és`DimSalesTerritory` a táblák kisebb dimenzió táblák. Ez a lekérdezés a 2004-as pénzügyi év teljes értékesítéseit adja vissza Észak-Amerika:
+Például a AdventureWorks séma következő lekérdezésében a `FactInternetSales` tábla kivonat-eloszlású. A `DimDate` és `DimSalesTerritory` táblák kisebb dimenzió táblák. Ez a lekérdezés a 2004-as pénzügyi év teljes értékesítéseit adja vissza Észak-Amerika:
 
 ```sql
 SELECT [TotalSalesAmount] = SUM(SalesAmount)
@@ -107,11 +108,11 @@ INNER JOIN dbo.DimSalesTerritory t
 WHERE d.FiscalYear = 2004
   AND t.SalesTerritoryGroup = 'North America'
 ```
-Újra létre lett hozva `DimDate` , `DimSalesTerritory` és ciklikus időszeletelésű táblázatként. Ennek eredményeképpen a lekérdezés a következő lekérdezési tervet mutatta, amelynek több szórásos mozgatási művelete van: 
+Újra létrehoztunk `DimDate` és `DimSalesTerritory` Round-Robin Tables néven. Ennek eredményeképpen a lekérdezés a következő lekérdezési tervet mutatta, amelynek több szórásos mozgatási művelete van: 
  
 ![Ciklikus multiplexelés – lekérdezési terv](media/design-guidance-for-replicated-tables/round-robin-tables-query-plan.jpg) 
 
-A rendszer újból `DimDate` létrehozta `DimSalesTerritory` a és a replikált táblákat, majd újra futtatta a lekérdezést. Az eredményül kapott lekérdezési terv sokkal rövidebb, és nem rendelkezik szórási lépésekkel.
+A rendszer újból létrehozta `DimDate` és `DimSalesTerritory` replikált táblákként, majd újra futtatta a lekérdezést. Az eredményül kapott lekérdezési terv sokkal rövidebb, és nem rendelkezik szórási lépésekkel.
 
 ![Replikált lekérdezési terv](media/design-guidance-for-replicated-tables/replicated-tables-query-plan.jpg) 
 

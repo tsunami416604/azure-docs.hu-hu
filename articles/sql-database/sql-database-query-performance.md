@@ -1,5 +1,5 @@
 ---
-title: Lekérdezési terheléselemző a Azure SQL Databasehoz | Microsoft Docs
+title: Azure SQL Database Lekérdezési terheléselemző
 description: A lekérdezés teljesítményének figyelése az Azure SQL Database-adatbázisok leggyakrabban felhasználható lekérdezéseit azonosítja.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 01/03/2019
-ms.openlocfilehash: 659022f625604fe31c2ce47978d1132b20b7ffc8
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: eb6827669829dc7aeeb6758a07218a29955b3682
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68567035"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73687591"
 ---
 # <a name="query-performance-insight-for-azure-sql-database"></a>Azure SQL Database Lekérdezési terheléselemző
 
@@ -58,7 +58,7 @@ A Lekérdezési terheléselemző könnyen használható:
 
 3. Az első lapon tekintse át a leggyakoribb erőforrás-felhasználású lekérdezések listáját.
 4. Válasszon ki egy egyéni lekérdezést a részleteinek megtekintéséhez.
-5. Nyissa meg az **intelligens teljesítménnyel** > kapcsolatos**teljesítménnyel kapcsolatos javaslatokat** , és ellenőrizze, hogy van-e elérhető teljesítményre vonatkozó javaslat. További információ a beépített teljesítménnyel kapcsolatos javaslatokról: [SQL Database Advisor](sql-database-advisor.md).
+5. Nyissa meg az **intelligens teljesítmény** > a **teljesítménnyel kapcsolatos javaslatokat** , és ellenőrizze, hogy van-e elérhető teljesítményre vonatkozó javaslat. További információ a beépített teljesítménnyel kapcsolatos javaslatokról: [SQL Database Advisor](sql-database-advisor.md).
 6. A megfigyelt intervallum módosításához használjon csúszkákat vagy nagyítási ikonokat.
 
    ![Teljesítmény-irányítópult](./media/sql-database-query-performance/performance.png)
@@ -122,7 +122,7 @@ Alapértelmezés szerint a Lekérdezési terheléselemző megjeleníti az első 
    >
    > Előfordulhat például, hogy egy lekérdezés jelentős mennyiségű DTU használ egy ideig, bár a megfigyelt időszakon belüli teljes felhasználás kevesebb, mint a többi legfelső szintű lekérdezés. Ilyen esetben a lekérdezés Erőforrás-kihasználtsága nem jelenik meg a diagramon.
    >
-   > Ha meg kell értenie az Lekérdezési terheléselemző korlátain túli legfelső szintű lekérdezés-végrehajtást [](../azure-monitor/insights/azure-sql.md) , érdemes lehet Azure SQL Analyticst használni a speciális adatbázis-teljesítmény figyeléséhez és hibaelhárításához.
+   > Ha meg kell értenie az Lekérdezési terheléselemző korlátain túli legfelső szintű lekérdezés-végrehajtást, érdemes lehet [Azure SQL Analyticst](../azure-monitor/insights/azure-sql.md) használni a speciális adatbázis-teljesítmény figyeléséhez és hibaelhárításához.
    >
 
 ## <a name="view-individual-query-details"></a>Egyéni lekérdezés részleteinek megtekintése
@@ -163,7 +163,7 @@ A hosszú ideig futó lekérdezések azonosítása:
 4. Válassza ki az összesítési függvényt:
 
    * A **Sum** a teljes megfigyelési időszakra vonatkozó összes lekérdezés végrehajtási idejét hozzáadja.
-   * A maximálisan **megkeresi** azokat a lekérdezéseket, amelyekben a végrehajtási idő elérte a teljes megfigyelési időközt.
+   * A **maximálisan megkeresi** azokat a lekérdezéseket, amelyekben a végrehajtási idő elérte a teljes megfigyelési időközt.
    * Az **AVG** megkeresi az összes lekérdezés végrehajtásának átlagos végrehajtási időpontját, és megjeleníti a fenti átlagok legfontosabb értékeit.
 
    ![Lekérdezés időtartama](./media/sql-database-query-performance/top-duration.png)
@@ -236,16 +236,16 @@ A második eset akkor fordul elő, ha a lekérdezési tár nincs engedélyezve, 
 
 Az adatmegőrzési szabályzatoknak két típusa van:
 
-* **Méret alapján**: Ha a házirend **automatikus**értékre van beállítva, akkor a rendszer automatikusan törli az adatmennyiséget, amikor eléri a maximális méretet.
-* **Időalapú**: Alapértelmezés szerint ez a házirend 30 napra van beállítva. Ha a lekérdezési tároló nem áll rendelkezésre, a 30 napnál régebbi lekérdezési adatokat fogja törölni.
+* **Méret-alapú**: Ha a házirend **automatikus**értékre van beállítva, akkor a rendszer automatikusan törli az adatmennyiséget, amikor a maximális méret elérte a szinteket.
+* **Időalapú**: alapértelmezés szerint ez a házirend 30 napra van állítva. Ha a lekérdezési tároló nem áll rendelkezésre, a 30 napnál régebbi lekérdezési adatokat fogja törölni.
 
 Beállíthatja a rögzítési szabályzatot a következőre:
 
-* **Összes**: A lekérdezési tároló rögzíti az összes lekérdezést.
-* **Automatikus**: A lekérdezési tároló figyelmen kívül hagyja a ritka lekérdezéseket és a nem jelentős fordítási és végrehajtási időtartamú lekérdezéseket. A végrehajtások száma, a fordítás időtartama és a futásidejű időtartam küszöbértékei belsőleg vannak meghatározva. Ez az alapértelmezett beállítás.
-* **Nincs**: A lekérdezési tároló leállítja az új lekérdezések rögzítését, de a már rögzített lekérdezésekhez tartozó futásidejű statisztikák továbbra is begyűjthetők.
+* **Összes**: a lekérdezési tároló rögzíti az összes lekérdezést.
+* **Automatikus**: a lekérdezési tároló figyelmen kívül hagyja a ritka lekérdezéseket és a nem jelentős fordítási és végrehajtási időtartamú lekérdezéseket. A végrehajtások száma, a fordítás időtartama és a futásidejű időtartam küszöbértékei belsőleg vannak meghatározva. Ez az alapértelmezett beállítás.
+* **Nincs**: a lekérdezési tároló leállítja az új lekérdezések rögzítését, de a már rögzített lekérdezésekhez tartozó futásidejű statisztikák továbbra is begyűjthetők.
 
-Javasoljuk, hogy a [SSMS](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) vagy a Azure Portal az alábbi parancsok végrehajtásával állítsa be az összes szabályzatot **automatikusra** és a tisztítási házirendre. (Cserélje `YourDB` le az adatbázis nevére.)
+Javasoljuk, hogy a [SSMS](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) vagy a Azure Portal az alábbi parancsok végrehajtásával állítsa be az összes szabályzatot **automatikusra** és a tisztítási házirendre. (`YourDB` cseréje az adatbázis nevére.)
 
 ```sql
     ALTER DATABASE [YourDB]
@@ -258,14 +258,14 @@ Javasoljuk, hogy a [SSMS](https://docs.microsoft.com/sql/ssms/download-sql-serve
     SET QUERY_STORE (QUERY_CAPTURE_MODE = AUTO);
 ```
 
-Növelje a lekérdezési tároló méretét úgy, hogy a [SSMS](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) vagy a Azure Portal használatával csatlakozik egy adatbázishoz, és futtatja a következő lekérdezést. (Cserélje `YourDB` le az adatbázis nevére.)
+Növelje a lekérdezési tároló méretét úgy, hogy a [SSMS](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) vagy a Azure Portal használatával csatlakozik egy adatbázishoz, és futtatja a következő lekérdezést. (`YourDB` cseréje az adatbázis nevére.)
 
 ```T-SQL
     ALTER DATABASE [YourDB]
     SET QUERY_STORE (MAX_STORAGE_SIZE_MB = 1024);
 ```
 
-Ezen beállítások alkalmazása végül a Query Store telemetria gyűjti az új lekérdezéseket. Ha a Query Store-nak azonnal működőképesnek kell lennie, dönthet úgy, hogy törli a lekérdezési tárolót úgy, hogy a következő lekérdezést futtatja a SSMS vagy a Azure Portal használatával. (Cserélje `YourDB` le az adatbázis nevére.)
+Ezen beállítások alkalmazása végül a Query Store telemetria gyűjti az új lekérdezéseket. Ha a Query Store-nak azonnal működőképesnek kell lennie, dönthet úgy, hogy törli a lekérdezési tárolót úgy, hogy a következő lekérdezést futtatja a SSMS vagy a Azure Portal használatával. (`YourDB` cseréje az adatbázis nevére.)
 
 > [!NOTE]
 > A következő lekérdezés futtatása törli a lekérdezési tárolóban korábban összegyűjtött figyelt telemetria.
@@ -274,7 +274,7 @@ Ezen beállítások alkalmazása végül a Query Store telemetria gyűjti az új
     ALTER DATABASE [YourDB] SET QUERY_STORE CLEAR;
 ```
 
-## <a name="summary"></a>Összegzés
+## <a name="summary"></a>Összefoglalás
 
 Lekérdezési terheléselemző segít megérteni a lekérdezés számítási feladatának hatását, valamint azt, hogy hogyan kapcsolódik az adatbázis-erőforrások felhasználásához. Ezzel a szolgáltatással megismerheti az adatbázis legszélesebb körű lekérdezéseit, és az optimalizáláshoz szükséges lekérdezéseket megtalálhatja a probléma előtt.
 

@@ -1,6 +1,6 @@
 ---
-title: Adatok másolása Blob Storage-ból az SQL Database – Azure |} A Microsoft Docs
-description: Az oktatóanyag bemutatja, hogyan lehet Azure Data Factory-folyamatot másolási tevékenység használatával adatok másolása Blob storage-ból az SQL database.
+title: Adatok másolása Blob Storageból SQL Databaseba – Azure
+description: Ebből az oktatóanyagból megtudhatja, hogyan használhatja a másolási tevékenységet egy Azure Data Factory folyamatba az adatok blob Storage-ból az SQL Database-be való másolásához.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -14,14 +14,14 @@ ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: ad114ce3a40e11048d01c6768811089c43cdf1db
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.openlocfilehash: 5a254979e345ae07bef5c8e79006bd0aaa0bf7df
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67839392"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73682796"
 ---
-# <a name="tutorial-copy-data-from-blob-storage-to-sql-database-using-data-factory"></a>Oktatóanyag: Adatok másolása Blob Storage-ból az SQL Database Data Factory használatával
+# <a name="tutorial-copy-data-from-blob-storage-to-sql-database-using-data-factory"></a>Oktatóanyag: adatok másolása Blob Storageról SQL Databasera a Data Factory használatával
 > [!div class="op_single_selector"]
 > * [Áttekintés és előfeltételek](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
 > * [Másolás varázsló](data-factory-copy-data-wizard-tutorial.md)
@@ -34,59 +34,59 @@ ms.locfileid: "67839392"
 > [!NOTE]
 > Ez a cikk a Data Factory 1-es verziójára vonatkozik. Ha a Data Factory szolgáltatás aktuális verzióját használja, tekintse meg a [másolási tevékenység oktatóanyagát](../quickstart-create-data-factory-dot-net.md). 
 
-Ebben az oktatóanyagban egy adat-előállítót egy folyamat az adatok másolása Blob storage-ból az SQL database és létrehozása.
+Ebben az oktatóanyagban egy adatfeldolgozót hoz létre egy folyamattal, amely az adatok blob Storage-ból az SQL Database-be való másolásához szükséges.
 
 A másolási tevékenység végzi az adatok továbbítását az Azure Data Factoryban. Egy olyan, globálisan elérhető szolgáltatás működteti, amely biztonságos, megbízható és méretezhető módon másolja át az adatokat a különböző adattárak között. A Másolás tevékenységgel kapcsolatos részletekért tekintse meg a [Data Movement Activities](data-factory-data-movement-activities.md) (Adattovábbítási tevékenységek) című cikket.  
 
 > [!NOTE]
-> A Data Factory szolgáltatás részletes bemutatásáért lásd: a [az Azure Data Factory bemutatását](data-factory-introduction.md) cikk.
+> A Data Factory szolgáltatás részletes áttekintését lásd: [Bevezetés a Azure Data Factory](data-factory-introduction.md) cikkbe.
 >
 >
 
 ## <a name="prerequisites-for-the-tutorial"></a>Az oktatóanyag előfeltételei
-Ez az oktatóanyag elkezdéséhez az alábbi előfeltételekkel kell rendelkeznie:
+Az oktatóanyag megkezdése előtt a következő előfeltételeket kell megadnia:
 
-* **Azure-előfizetés**.  Ha nem rendelkezik előfizetéssel, mindössze néhány perc alatt létrehozhat egy ingyenes próbafiókot. Tekintse meg a [ingyenes próbaverzió](https://azure.microsoft.com/pricing/free-trial/) részleteivel.
-* **Az Azure Storage-fiók**. A blob storage-ot használ egy **forrás** ebben az oktatóanyagban. Ha még nem rendelkezik Azure Storage-fiókkal, a létrehozás folyamatáért lásd a [tárfiók létrehozását](../../storage/common/storage-quickstart-create-account.md) ismertető cikket.
-* **Azure SQL Database** Egy Azure SQL database-t használja egy **cél** ebben az oktatóanyagban. Ha nem rendelkezik Azure SQL-adatbázis, amelyet használhat az oktatóanyagban, lásd: [létrehozása és konfigurálása az Azure SQL Database](../../sql-database/sql-database-get-started.md) hozhat létre egyet.
-* **Az SQL Server 2012 vagy 2014 vagy a Visual Studio 2013**. Használja az SQL Server Management Studio vagy a Visual Studio, és hozzon létre egy mintaadatbázist, és az eredmény adatok megtekintése az adatbázisban.  
+* **Azure-előfizetés**.  Ha nem rendelkezik előfizetéssel, mindössze néhány perc alatt létrehozhat egy ingyenes próbafiókot. További részletekért tekintse meg az [ingyenes próbaverziót](https://azure.microsoft.com/pricing/free-trial/) ismertető cikket.
+* **Azure Storage-fiók**. Ebben az oktatóanyagban a blob Storage-t használja **forrásként** szolgáló adattárként. Ha még nem rendelkezik Azure Storage-fiókkal, a létrehozás folyamatáért lásd a [tárfiók létrehozását](../../storage/common/storage-quickstart-create-account.md) ismertető cikket.
+* **Azure SQL Database** Ebben az oktatóanyagban az Azure SQL Database-t használja **célként** szolgáló adattárként. Ha nem rendelkezik Azure SQL-adatbázissal, amelyet az oktatóanyagban használhat, tekintse meg a következő témakört: [Azure SQL Database létrehozása és konfigurálása](../../sql-database/sql-database-get-started.md) egy létrehozásához.
+* **SQL Server 2012/2014 vagy Visual Studio 2013**. A SQL Server Management Studio vagy a Visual Studio használatával hozzon létre egy mintaadatbázis-adatbázist, és tekintse meg az eredményeket az adatbázisban.  
 
-## <a name="collect-blob-storage-account-name-and-key"></a>A blob storage-fiók neve és kulcsa gyűjtése
-A fiók nevét és az Azure storage-fiók, ez az oktatóanyag elvégzéséhez fiókkulcs van szüksége. Jegyezze fel **fióknév** és **fiókkulcs** az Azure storage-fiók.
+## <a name="collect-blob-storage-account-name-and-key"></a>BLOB Storage-fiók nevének és kulcsának gyűjtése
+Az oktatóanyag elvégzéséhez szüksége lesz az Azure Storage-fiókja fiókjának nevére és a fiók kulcsára. Jegyezze fel az Azure Storage-fiókhoz tartozó **fiók nevét** és a **fiók kulcsát** .
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
-2. Kattintson a **minden szolgáltatás** a bal oldali menüben, és válassza **Tárfiókok**.
+1. Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
+2. A bal oldali menüben kattintson a **minden szolgáltatás** elemre, majd válassza a **Storage-fiókok**lehetőséget.
 
     ![Tallózás – Storage-fiókok](media/data-factory-copy-data-from-azure-blob-storage-to-sql-database/browse-storage-accounts.png)
-3. Az a **Tárfiókok** panelen válassza ki a **Azure storage-fiók** ebben az oktatóanyagban használni kívánt.
-4. Válassza ki **hozzáférési kulcsok** mellett kapcsolni **beállítások**.
-5. Kattintson a **másolási** (kép) gomb melletti **tárfióknevet** szöveg mezőbe, majd a Mentés és illessze be azt valahová (például: egy szövegfájlba).
-6. Ismételje meg az előző lépésben másolja ki és jegyezze fel a **key1**.
+3. A **Storage-fiókok** panelen válassza ki azt az **Azure Storage-fiókot** , amelyet ebben az oktatóanyagban szeretne használni.
+4. Válassza a **hozzáférési kulcsok** hivatkozását a **Beállítások**alatt.
+5. Kattintson a **Másolás** (rendszerkép) gombra a **Storage-fiók neve** szövegmező mellett, és mentse/illessze be valahova (például szövegfájlba).
+6. Az előző lépés megismétlésével másolja vagy jegyezze fel a **key1**.
 
-    ![Tárelérési kulcs](media/data-factory-copy-data-from-azure-blob-storage-to-sql-database/storage-access-key.png)
-7. Kattintva zárja be az egyik panelen sem aktív **X**.
+    ![Tároló-hozzáférési kulcs](media/data-factory-copy-data-from-azure-blob-storage-to-sql-database/storage-access-key.png)
+7. Az **X**gombra kattintva zárjuk le az összes pengét.
 
-## <a name="collect-sql-server-database-user-names"></a>Az SQL server, a database, a felhasználói neveket gyűjtése
-Szüksége lesz az Azure SQL server, az adatbázis és a felhasználó ebben az oktatóanyagban annak nevét. Jegyezze fel a neveket **kiszolgáló**, **adatbázis**, és **felhasználói** az Azure SQL Database.
+## <a name="collect-sql-server-database-user-names"></a>SQL Server, adatbázis, felhasználónevek gyűjtése
+Ehhez az oktatóanyaghoz az Azure SQL Server, az adatbázis és a felhasználó nevét kell megadnia. Jegyezze fel a **kiszolgáló**, az **adatbázis**és a **felhasználó** nevét az Azure SQL Database-ben.
 
-1. Az a **az Azure portal**, kattintson a **minden szolgáltatás** a bal oldalon, majd válassza a **SQL-adatbázisok**.
-2. Az a **SQL-adatbázisok panelen**, jelölje be a **adatbázis** , amelyet ebben az oktatóanyagban használni szeretne. Jegyezze fel a **adatbázisnév**.  
-3. Az a **SQL-adatbázis** panelen kattintson a **tulajdonságok** alatt **beállítások**.
-4. Jegyezze fel a tartozó értékeket **kiszolgálónév** és **KISZOLGÁLÓI rendszergazdai BEJELENTKEZÉSSEL**.
-5. Kattintva zárja be az egyik panelen sem aktív **X**.
+1. A **Azure Portal**kattintson a bal oldali **minden szolgáltatás** elemre, és válassza az **SQL-adatbázisok**lehetőséget.
+2. Az **SQL-adatbázisok**panelen válassza ki az oktatóanyagban használni kívánt **adatbázist** . Jegyezze fel az **adatbázis nevét**.  
+3. Az **SQL Database** panelen kattintson a **Tulajdonságok** elemre a **Beállítások**területen.
+4. Jegyezze fel a **kiszolgálónév** és a **kiszolgálói rendszergazdai bejelentkezés**értékeit.
+5. Az **X**gombra kattintva zárjuk le az összes pengét.
 
-## <a name="allow-azure-services-to-access-sql-server"></a>SQL server elérését az Azure-szolgáltatások engedélyezése
-Ügyeljen arra, hogy **Azure-szolgáltatásokhoz való hozzáférés engedélyezése** bekapcsolva beállítás **ON** az Azure SQL Serverhez, hogy a Data Factory szolgáltatás tudjon férni az Azure SQL Serverhez. A beállítás ellenőrzéséhez és bekapcsolásához hajtsa végre a következő lépéseket:
+## <a name="allow-azure-services-to-access-sql-server"></a>Az SQL Server elérésének engedélyezése az Azure-szolgáltatások számára
+Győződjön **meg** arról, hogy az Azure- **szolgáltatások hozzáférésének engedélyezése** beállítás be van kapcsolva az Azure SQL Serverhez, hogy a Data Factory szolgáltatás hozzáférhessen az Azure SQL Serverhez. A beállítás ellenőrzéséhez és bekapcsolásához hajtsa végre a következő lépéseket:
 
-1. Kattintson a **minden szolgáltatás** hubra a bal oldalon, majd a **SQL Server-kiszolgálók**.
+1. Kattintson a bal oldali **összes szolgáltatás** központ elemre, majd az **SQL-kiszolgálók**lehetőségre.
 2. Válassza ki a kiszolgálót, és kattintson a **BEÁLLÍTÁSOK** területen a **Tűzfal** elemre.
 3. A **Tűzfalbeállítások** panelen kattintson a **BE** kapcsolóra az **Azure-szolgáltatások hozzáférésének engedélyezése** beállítás mellett.
-4. Kattintva zárja be az egyik panelen sem aktív **X**.
+4. Az **X**gombra kattintva zárjuk le az összes pengét.
 
-## <a name="prepare-blob-storage-and-sql-database"></a>A Blob Storage és SQL Database előkészítése
-Készítse elő az Azure blob storage és Azure SQL database-t az oktatóanyaghoz a következő lépések végrehajtásával:  
+## <a name="prepare-blob-storage-and-sql-database"></a>Blob Storage és SQL Database előkészítése
+Készítse elő az Azure Blob Storage-t és az Azure SQL Database-t az oktatóanyaghoz az alábbi lépések végrehajtásával:  
 
-1. Indítsa el a Jegyzettömböt. Másolja az alábbi szöveget, és mentse **emp.txt** való **C:\ADFGetStarted** mappába a merevlemezen.
+1. Indítsa el a Jegyzettömböt. Másolja az alábbi szöveget, és mentse **EMP. txt** néven a **C:\ADFGetStarted** mappába a merevlemezen.
 
     ```
     John, Doe
@@ -108,12 +108,12 @@ Készítse elő az Azure blob storage és Azure SQL database-t az oktatóanyagho
     CREATE CLUSTERED INDEX IX_emp_ID ON dbo.emp (ID);
     ```
 
-    **Ha rendelkezik az SQL Server 2012 vagy 2014 van telepítve a számítógépen:** kövesse az utasításokat [Azure SQL Database szolgáltatás felügyelete az SQL Server Management Studióval](../../sql-database/sql-database-manage-azure-ssms.md) az Azure SQL-kiszolgálóhoz csatlakozhat, és futtassa az SQL-parancsfájlt. 
+    **Ha a számítógépen SQL Server 2012/2014 van telepítve:** kövesse az [Azure SQL Database SQL Server Management Studio használatával történő kezelésével](../../sql-database/sql-database-manage-azure-ssms.md) kapcsolatos utasításokat az Azure SQL Serverhez való kapcsolódáshoz és az SQL-szkript futtatásához. 
 
     Ha az ügyfél számára nem engedélyezett az Azure SQL Server elérése, konfigurálnia kell az Azure SQL Server tűzfalát, hogy engedélyezze a hozzáférést a gép számára (IP-cím). Az Azure SQL Server-tűzfal konfigurálásának lépéseit lásd [ebben a cikkben](../../sql-database/sql-database-configure-firewall-settings.md).
 
 ## <a name="create-a-data-factory"></a>Data factory létrehozása
-Teljesítette az előfeltételeket. Létrehozhat egy adat-előállítót a következő módszerek egyikével. Kattintson a beállítások a legördülő lista tetején, vagy az alábbi hivatkozások az oktatóanyag elvégzéséhez.     
+Végrehajtotta az előfeltételeket. A következő módszerek egyikével hozhat létre egy adatelőállítót: Az oktatóanyag elvégzéséhez kattintson a felül lévő legördülő lista egyik lehetőségére, vagy az alábbi hivatkozásokra.     
 
 * [Másolás varázsló](data-factory-copy-data-wizard-tutorial.md)
 * [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)
@@ -123,6 +123,6 @@ Teljesítette az előfeltételeket. Létrehozhat egy adat-előállítót a köve
 * [.NET API](data-factory-copy-activity-tutorial-using-dotnet-api.md)
 
 > [!NOTE]
-> Az oktatóanyagban található adatfeldolgozási folyamat adatokat másol egy forrásadattárból egy céladattárba. A bemeneti adatokat nem alakítja át kimeneti adatok létrehozásához. Adatok átalakítása az Azure Data Factory használatával kapcsolatos oktatóanyagért lásd: [oktatóanyag: Az adatok Hadoop-fürt segítségével történő átalakítására szolgáló első folyamat létrehozása](data-factory-build-your-first-pipeline.md).
+> Az oktatóanyagban található adatfeldolgozási folyamat adatokat másol egy forrásadattárból egy céladattárba. A bemeneti adatokat nem alakítja át kimeneti adatok létrehozásához. Az adatok Azure Data Factoryval történő átalakításának útmutatásáért olvassa el [az adatok Hadoop-fürt segítségével történő átalakítására szolgáló első folyamat létrehozását ismertető oktatóanyagot](data-factory-build-your-first-pipeline.md).
 > 
 > Összefűzhet két tevékenységet (vagyis egymás után futtathatja őket), ha az egyik tevékenység kimeneti adatkészletét a másik tevékenység bemeneti adatkészleteként állítja be. Lásd [a Data Factorybeli ütemezést és végrehajtást](data-factory-scheduling-and-execution.md) ismertető cikket. 

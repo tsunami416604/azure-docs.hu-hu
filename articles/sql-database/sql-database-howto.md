@@ -1,5 +1,5 @@
 ---
-title: A Azure SQL Database konfigurálása | Microsoft Docs
+title: Azure SQL Database konfigurálása
 description: Útmutató Azure SQL Database konfigurálásához és kezeléséhez.
 services: sql-database
 ms.service: sql-database
@@ -11,16 +11,16 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein
 ms.date: 01/25/2019
-ms.openlocfilehash: 98c522f3d2718691e32b4e78180027b69f28289f
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: ccdeb883dc9cf2cba499e45e25ff4706bb120463
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68568016"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73689878"
 ---
 # <a name="how-to-use-azure-sql-database"></a>A Azure SQL Database használata
 
-Ebben a szakaszban különféle útmutatókat, parancsfájlokat és magyarázatokat talál, amelyek segíthetnek a Azure SQL Database kezelésében és konfigurálásában. Az [önálló adatbázisokhoz](sql-database-howto-single-database.md) és a felügyelt példányokhoz is találhat konkrét [](sql-database-howto-managed-instance.md)útmutatókat.
+Ebben a szakaszban különféle útmutatókat, parancsfájlokat és magyarázatokat talál, amelyek segíthetnek a Azure SQL Database kezelésében és konfigurálásában. Az [önálló adatbázisokhoz](sql-database-howto-single-database.md) és a [felügyelt példányokhoz](sql-database-howto-managed-instance.md)is találhat konkrét útmutatókat.
 
 ## <a name="load-data"></a>Adatok betöltése
 
@@ -32,7 +32,7 @@ Ebben a szakaszban különféle útmutatókat, parancsfájlokat és magyarázato
 
 ### <a name="data-sync"></a>Adatszinkronizálás
 
-- [SQL Data Sync](sql-database-sync-data.md)
+- [SQL-adatszinkronizálás](sql-database-sync-data.md)
 - [Adatszinkronizálási ügynök](sql-database-data-sync-agent.md)
 - [Séma módosításainak replikálása](sql-database-update-sync-schema.md)
 - [Figyelés az OMS-szel](sql-database-sync-monitor-oms.md)
@@ -48,7 +48,7 @@ Ebben a szakaszban különféle útmutatókat, parancsfájlokat és magyarázato
 - [Intelligent Insights diagnosztikai napló használata](sql-database-intelligent-insights-use-diagnostics-log.md)
 - [Memóriabeli OLTP-terület figyelése](sql-database-in-memory-oltp-monitoring.md)
 
-### <a name="extended-events"></a>Bővített események
+### <a name="extended-events"></a>Kiterjesztett események
 
 - [Bővített események](sql-database-xevent-db-diff-from-svr.md)
 - [Kiterjesztett események tárolása az Event file-ban](sql-database-xevent-code-event-file.md)
@@ -95,5 +95,5 @@ Ebben a szakaszban különféle útmutatókat, parancsfájlokat és magyarázato
 
 ## <a name="next-steps"></a>További lépések
 
-- További információ a [felügyelt példányokkal](sql-database-howto-managed-instance.md)kapcsolatos útmutatókról.
+- További információ a [felügyelt példányokkal kapcsolatos útmutatókról](sql-database-howto-managed-instance.md).
 - További információ [az önálló adatbázisok](sql-database-howto-single-database.md)útmutatóinak megismeréséről.

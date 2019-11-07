@@ -1,5 +1,5 @@
 ---
-title: Speciális adatbiztonság – Azure SQL Database | Microsoft Docs
+title: Speciális adatbiztonság – Azure SQL Database
 description: Ismerje meg a bizalmas adatok felderítésének és besorolásának funkcióit, az adatbázis-sebezhetőségek kezelését, valamint az Azure SQL Database fenyegetését jelző rendellenes tevékenységek észlelését.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: memildin
 manager: rkarlin
 ms.reviewer: vanto
 ms.date: 03/31/2019
-ms.openlocfilehash: 40e556b5d0fe22629eeca9a088d10ea5fc9b95ac
-ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
+ms.openlocfilehash: ce9cfa7e4b08dac878de52ba9765bcc204ed8196
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72965503"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73691300"
 ---
 # <a name="advanced-data-security-for-azure-sql-database"></a>Speciális adatbiztonság a Azure SQL Database
 
@@ -72,7 +72,7 @@ Az adatbázis-kiszolgáló vagy a felügyelt példány speciális biztonsági be
 
 ![Adatbázis-beállítások](./media/sql-advanced-protection/database_settings.png) 
 
-## <a name="next-steps"></a>Következő lépések 
+## <a name="next-steps"></a>További lépések 
 
 - További tudnivalók az [adatfelderítési & besorolásáról](sql-database-data-discovery-and-classification.md) 
 - További információ a [sebezhetőségi felmérésről](sql-vulnerability-assessment.md) 

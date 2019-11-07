@@ -1,5 +1,5 @@
 ---
-title: Elsődleges kulcs, külső kulcs és egyedi kulcs a Azure SQL Data Warehouseban | Microsoft Docs
+title: Elsődleges, idegen és egyedi kulcsok
 description: A táblázat megkötései támogatják a Azure SQL Data Warehouse
 services: sql-data-warehouse
 author: XiaoyuMSFT
@@ -10,18 +10,19 @@ ms.subservice: development
 ms.date: 09/05/2019
 ms.author: xiaoyul
 ms.reviewer: nibruno; jrasnick
-ms.openlocfilehash: b02f219e549f2206f71c08c9d465b2bc05a6d526
-ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
+ms.custom: seo-lt-2019
+ms.openlocfilehash: 8f3102425c6f984df0f50bc05eeb6f9a5e66d3dd
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71310294"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73685495"
 ---
 # <a name="primary-key-foreign-key-and-unique-key-in-azure-sql-data-warehouse"></a>Elsődleges kulcs, külső kulcs és egyedi kulcs Azure SQL Data Warehouse
 
 További információ a Azure SQL Data Warehouseban található táblázatos korlátozásokról, beleértve az elsődleges kulcsot, a külső kulcsot és az egyedi kulcsot.
 
-## <a name="table-constraints"></a>Táblázat megkötései 
+## <a name="table-constraints"></a>Táblakorlátozások 
 A Azure SQL Data Warehouse a következő táblázatos korlátozásokat támogatja: 
 - Az elsődleges kulcs csak akkor támogatott, ha nem FÜRTÖZÖTT és nem KÉNYSZERÍTett érték is használatban van.    
 - Az egyedi korlátozás csak a nem KÉNYSZERÍTett használata esetén támogatott.   
@@ -170,4 +171,4 @@ CREATE TABLE t6 (c1 INT UNIQUE NOT ENFORCED, c2 INT);
 
 ## <a name="next-steps"></a>További lépések
 
-Miután létrehozta az adattárházhoz tartozó táblákat, a következő lépés az adatai betöltése a táblába. A betöltési oktatóanyagért [](load-data-wideworldimportersdw.md)lásd: az adatbetöltése SQL Data Warehouseba.
+Miután létrehozta az adattárházhoz tartozó táblákat, a következő lépés az adatai betöltése a táblába. A betöltési oktatóanyagért lásd: az [Adatbetöltése SQL Data Warehouseba](load-data-wideworldimportersdw.md).

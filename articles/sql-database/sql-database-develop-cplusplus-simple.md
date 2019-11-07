@@ -1,5 +1,5 @@
 ---
-title: Kapcsolódás SQL Database a C és C++ a | használatával Microsoft Docs
+title: Kapcsolódás SQL Database a C és aC++
 description: Ebben a rövid útmutatóban a mintakód segítségével modern alkalmazást hozhat létre a felhőben található hatékony, a Azure SQL Databaset használó, nagy teljesítményű C++ és a felhőben.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/12/2018
-ms.openlocfilehash: c06a16071b1e22e7aa788ff5f15ce8afbf17da04
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: fb6094ec418d2b212759bddd2c4d49c7e6193849
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68568924"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73690701"
 ---
 # <a name="connect-to-sql-database-using-c-and-c"></a>Kapcsolódás SQL Database a C és aC++
 
@@ -33,18 +33,18 @@ Győződjön meg róla, hogy rendelkezik az alábbi elemekkel:
 ## <a id="AzureSQL"></a>Azure SQL Database és SQL Server virtuális gépeken
 Az Azure SQL Microsoft SQL Server épül, és magas rendelkezésre állást, teljesítményt és skálázható szolgáltatást biztosít. Számos előnnyel jár a SQL Azure használata a helyszíni adatbázison keresztül. A SQL Azure nem kell telepítenie, beállítania, karbantartani vagy kezelnie az adatbázist, de csak az adatbázis tartalmát és szerkezetét. Az olyan adatbázisok esetében, mint például a hibatűrés és a redundancia, az olyan általános dolgok, amiket az összes beépített.
 
-Az Azure jelenleg két lehetőséget kínál az SQL Server-munkaterhelések üzemeltetésére: Azure SQL Database, adatbázis-szolgáltatás és Virtual Machines (VM) SQL Server. Nem fogjuk részletesen megjelenni a két különbség között, kivéve, hogy az Azure SQL Database a legjobb megoldás az új felhőalapú alkalmazások számára, hogy kihasználhassa a Cloud Services által nyújtott költségmegtakarítást és a teljesítmény optimalizálását. Ha a helyszíni alkalmazások felhőbe való áttelepítését vagy kiterjesztését tervezi, az Azure-beli virtuális gépen futó SQL Server jobban dolgozhat Önnek. A cikk egyszerű megtartásához hozzon létre egy Azure SQL Database-adatbázist.
+Az Azure jelenleg két lehetőséget kínál az SQL Server számítási feladatainak üzemeltetésére: az Azure SQL Database-t, az adatbázis-szolgáltatást és az SQL Servert Virtual Machineson (VM). Nem fogjuk részletesen megjelenni a két különbség között, kivéve, hogy az Azure SQL Database a legjobb megoldás az új felhőalapú alkalmazások számára, hogy kihasználhassa a Cloud Services által nyújtott költségmegtakarítást és a teljesítmény optimalizálását. Ha a helyszíni alkalmazások felhőbe való áttelepítését vagy kiterjesztését tervezi, az Azure-beli virtuális gépen futó SQL Server jobban dolgozhat Önnek. A cikk egyszerű megtartásához hozzon létre egy Azure SQL Database-adatbázist.
 
 ## <a id="ODBC"></a>Adatelérési technológiák: ODBC és OLE DB
-Az Azure SQL DB-hez való csatlakozás nem különbözik, és jelenleg kétféleképpen lehet csatlakozni az adatbázisokhoz: ODBC (nyílt adatbázis-kapcsolat) és OLE DB (objektum-csatolási és beágyazási adatbázis). Az elmúlt években a Microsoft az ODBC-vel igazította a [natív kapcsolati](https://blogs.msdn.microsoft.com/sqlnativeclient/20../../microsoft-is-aligning-with-odbc-for-native-relational-data-access/)adathozzáférést. Az ODBC viszonylag egyszerű, és sokkal gyorsabb, mint a OLE DB. Az egyetlen kivétel az, hogy az ODBC a régi C stílusú API-t használja.
+Az Azure SQL DB-hez való csatlakozás nem különbözik, és jelenleg kétféleképpen lehet csatlakozni az adatbázisokhoz: ODBC (nyílt adatbázis-kapcsolat) és OLE DB (objektumok összekapcsolása és beágyazási adatbázis). Az elmúlt években a Microsoft az ODBC-vel igazította a [natív kapcsolati adathozzáférést](https://blogs.msdn.microsoft.com/sqlnativeclient/20../../microsoft-is-aligning-with-odbc-for-native-relational-data-access/). Az ODBC viszonylag egyszerű, és sokkal gyorsabb, mint a OLE DB. Az egyetlen kivétel az, hogy az ODBC a régi C stílusú API-t használja.
 
-## <a id="Create"></a>1. lépés:  A Azure SQL Database létrehozása
+## <a id="Create"></a>1. lépés: a Azure SQL Database létrehozása
 Tekintse meg az [első lépéseket ismertető oldalt](sql-database-single-database-get-started.md) , amelyből megtudhatja, hogyan hozhat létre egy mintaadatbázis-adatbázist.  Azt is megteheti, hogy ezt a [rövid két perces videót](https://azure.microsoft.com/documentation/videos/azure-sql-database-create-dbs-in-seconds/) használja az Azure Portal használatával létrehozott Azure SQL Database-adatbázis létrehozásához.
 
-## <a id="ConnectionString"></a>2. lépés:  A kapcsolatok karakterláncának beolvasása
+## <a id="ConnectionString"></a>2. lépés: a kapcsolatok karakterláncának beolvasása
 Az Azure SQL Database üzembe helyezése után el kell végeznie az alábbi lépéseket a kapcsolódási adatok meghatározásához és az ügyfél IP-címének a tűzfal-hozzáféréshez való hozzáadásához.
 
-A [Azure Portal](https://portal.azure.com/)az adatbázis áttekintés szakaszának részeként megjelenített **adatbázis** -kapcsolati karakterláncok megjelenítésével nyissa meg az Azure SQL Database ODBC-kapcsolati karakterláncát:
+A [Azure Portal](https://portal.azure.com/)az adatbázis áttekintés szakaszának részeként megjelenített **adatbázis-kapcsolati karakterláncok megjelenítésével** nyissa meg az Azure SQL Database ODBC-kapcsolati karakterláncát:
 
 ![ODBCConnectionString](./media/sql-database-develop-cplusplus-simple/azureportal.png)
 
@@ -52,14 +52,14 @@ A [Azure Portal](https://portal.azure.com/)az adatbázis áttekintés szakaszán
 
 Másolja az **ODBC (tartalmazza a Node. js fájlt) [SQL Authentication]** karakterláncot. Ezt a karakterláncot később használjuk az C++ ODBC parancssori tolmácsból való kapcsolódáshoz. Ez a karakterlánc részletes adatokat tartalmaz, például az illesztőprogramot, a kiszolgálót és az egyéb adatbázis-kapcsolati paramétereket.
 
-## <a id="Firewall"></a>3. lépés:  Adja hozzá az IP-címet a tűzfalhoz
-Nyissa meg az adatbázis-kiszolgáló tűzfal szakaszát, és adja hozzá az [ügyfél IP-címét a tűzfalhoz ezekkel](sql-database-configure-firewall-settings.md) a lépésekkel, és ellenőrizze, hogy sikerült-e sikeres kapcsolatot létesíteni:
+## <a id="Firewall"></a>3. lépés: az IP-cím hozzáadása a tűzfalhoz
+Nyissa meg az adatbázis-kiszolgáló tűzfal szakaszát, és adja hozzá az [ügyfél IP-címét a tűzfalhoz ezekkel a lépésekkel](sql-database-configure-firewall-settings.md) , és ellenőrizze, hogy sikerült-e sikeres kapcsolatot létesíteni:
 
 ![AddyourIPWindow](./media/sql-database-develop-cplusplus-simple/ip.png)
 
 Ekkor konfigurálta az Azure SQL DB-t, és készen áll a C++ kódokhoz való kapcsolódásra.
 
-## <a id="Windows"></a>4. lépés: Csatlakozás Windows C/C++ alkalmazásból
+## <a id="Windows"></a>4. lépés: csatlakozás Windows C/C++ alkalmazásból
 Az Azure SQL-ADATBÁZIShoz egyszerűen kapcsolódhat az [ODBC használatával a Windowsban](https://github.com/Microsoft/VCSamples/tree/master/VC2015Samples/ODBC%20database%20sample%20%28windows%29) a Visual Studióval építhető minta használatával. A minta egy ODBC parancssori tolmácsot valósít meg, amely az Azure SQL-ADATBÁZIShoz való kapcsolódáshoz használható. Ez a példa egy adatbázis forrásának (DSN) fájlját veszi igénybe parancssori argumentumként, vagy pedig a korábban a Azure Portalból másolt részletes kapcsolatok sztringjét. Hozza létre a projekt tulajdonságlapját, és illessze be a (z) paramétert az itt látható módon:
 
 ![DSN Propsfile](./media/sql-database-develop-cplusplus-simple/props.png)
@@ -76,7 +76,7 @@ Azt is megteheti, hogy létrehoz egy DSN-fájlt a varázsló segítségével, am
 
 Gratulálunk! Sikeresen csatlakozott az Azure SQL-hez a és C++ az ODBC használatával Windows rendszeren. A Linux platformon is megteheti az olvasást.
 
-## <a id="Linux"></a>5. lépés: Csatlakozás linuxos C/C++ alkalmazásból
+## <a id="Linux"></a>5. lépés: csatlakozás linuxos C/C++ alkalmazásból
 Ha még nem hallotta a híreket, a Visual Studio mostantól lehetővé teszi a C++ Linux-alkalmazások fejlesztését is. Erről az új forgatókönyvről a [Visual C++ for Linux fejlesztői](https://blogs.msdn.microsoft.com/vcblog/20../../visual-c-for-linux-development/) blogjában olvashat. A Linuxra való kiépítéshez szüksége van egy távoli gépre, amelyen a Linux-disztribúció fut. Ha még nem rendelkezik ilyennel, a [Linux Azure Virtual Machines](../virtual-machines/linux/quick-create-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)használatával gyorsan beállíthatja a virtuális gépeket.
 
 Ebben az oktatóanyagban tegyük fel, hogy Ubuntu 16,04 Linux-disztribúció van beállítva. A lépéseket az Ubuntu 15,10, a Red Hat 6 és a Red Hat 7 rendszerre is alkalmazni kell.
@@ -111,7 +111,7 @@ A fordítás előtt a legutolsó teendő, ha az **ODBC** -t függvénytár-függ
 
 ![ODBC hozzáadása bemeneti kódtárként](./media/sql-database-develop-cplusplus-simple/lib.png)
 
-Az alkalmazás elindításához nyissa meg a Linux-konzolt a hibakeresési menüből:
+Az alkalmazás elindításához nyissa meg a Linux-konzolt a **hibakeresési** menüből:
 
 ![Linux-konzol](./media/sql-database-develop-cplusplus-simple/linuxconsole.png)
 
@@ -129,7 +129,7 @@ Az ebben a cikkben szereplő összes mintát tartalmazó GetStarted-megoldás me
 
 ## <a name="next-steps"></a>További lépések
 * Tekintse át a [SQL Database fejlesztés áttekintését](sql-database-develop-overview.md)
-* További információ az [ODBC API](https://docs.microsoft.com/sql/odbc/reference/syntax/odbc-api-reference/) -referenciáról
+* További információ az [ODBC API-referenciáról](https://docs.microsoft.com/sql/odbc/reference/syntax/odbc-api-reference/)
 
 ## <a name="additional-resources"></a>További források
 * [Tervezési minták az Azure SQL Database-t használó több-bérlős SaaS-alkalmazásokhoz](sql-database-design-patterns-multi-tenancy-saas-applications.md)

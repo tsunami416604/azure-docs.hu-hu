@@ -1,5 +1,5 @@
 ---
-title: Számítási erőforrások kezelése Azure SQL Data Warehouseban | Microsoft Docs
+title: Számítási erőforrás kezelése
 description: Ismerje meg a Azure SQL Data Warehouse teljesítményének kibővíthető képességeit. Az adattárház felfüggesztésével felskálázást végez a DWU és az alacsonyabb költségek módosításával.
 services: sql-data-warehouse
 author: kevinvngo
@@ -10,21 +10,22 @@ ms.subservice: manage
 ms.date: 04/17/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: f0935ccc4c4274bfab0c589ef158d4ea0bef455c
-ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
+ms.custom: seo-lt-2019
+ms.openlocfilehash: f93996d834ab805f2228543a833c4ce601042dc4
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69575327"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73692631"
 ---
 # <a name="manage-compute-in-azure-sql-data-warehouse"></a>Számítások kezelése Azure SQL Data Warehouseban
 További információ a számítási erőforrások Azure SQL Data Warehouseban történő kezeléséről. Csökkentse az adattárház felfüggesztését, vagy méretezze át az adattárházat a teljesítményre vonatkozó igények kielégítése érdekében. 
 
 ## <a name="what-is-compute-management"></a>Mi a számítási felügyelet?
-A SQL Data Warehouse architektúrája elkülöníti a tárolást és a számítást, így egymástól függetlenül méretezhetők. Ennek eredményeképpen a számítási kapacitást úgy méretezheti, hogy az adattárolástól függetlenül megfeleljen a teljesítményi igényeknek. A számítási erőforrások szüneteltetését és folytatását is elvégezheti. Ennek az architektúrának a természetes következménye [](https://azure.microsoft.com/pricing/details/sql-data-warehouse/) , hogy a számítás és a tárolás számlázása külön történik. Ha egy ideig nem kell használnia az adattárházat, a számítási költségeket a számítási költségek felfüggesztésével mentheti. 
+A SQL Data Warehouse architektúrája elkülöníti a tárolást és a számítást, így egymástól függetlenül méretezhetők. Ennek eredményeképpen a számítási kapacitást úgy méretezheti, hogy az adattárolástól függetlenül megfeleljen a teljesítményi igényeknek. A számítási erőforrások szüneteltetését és folytatását is elvégezheti. Ennek az architektúrának a természetes következménye, hogy a számítás és a tárolás [számlázása](https://azure.microsoft.com/pricing/details/sql-data-warehouse/) külön történik. Ha egy ideig nem kell használnia az adattárházat, a számítási költségeket a számítási költségek felfüggesztésével mentheti. 
 
 ## <a name="scaling-compute"></a>Méretezési számítás
-Az adatraktár adattárház- [egység](what-is-a-data-warehouse-unit-dwu-cdwu.md) beállításának módosításával kibővítheti vagy méretezheti a számítási kapacitást. A betöltés és a lekérdezés teljesítménye lineárisan növekedhet, ha további adattárház-egységeket ad hozzá. 
+Az adatraktár [adattárház-egység](what-is-a-data-warehouse-unit-dwu-cdwu.md) beállításának módosításával kibővítheti vagy méretezheti a számítási kapacitást. A betöltés és a lekérdezés teljesítménye lineárisan növekedhet, ha további adattárház-egységeket ad hozzá. 
 
 A kibővített lépésekért tekintse meg a [Azure Portal](quickstart-scale-compute-portal.md), a [PowerShell](quickstart-scale-compute-powershell.md)vagy a [T-SQL](quickstart-scale-compute-tsql.md) rövid útmutatót. Kibővíthető műveleteket is végrehajthat [REST API](sql-data-warehouse-manage-compute-rest-api.md#scale-compute)használatával.
 
@@ -32,7 +33,7 @@ A méretezési művelet végrehajtásához SQL Data Warehouse először az össz
 
 A következő táblázat azt mutatja be, hogy a számítási csomópontok hány eloszlása változik az adatraktár-egységek változásakor.  A DWU6000 60 számítási csomópontot biztosít, és sokkal nagyobb lekérdezési teljesítményt érhet el, mint a DWU100. 
 
-| Adattárházegységek  | \#a számítási csomópontok | \#/csomópontok eloszlása |
+| Adattárházegységek  | Számítási csomópontok \# | eloszlások \# csomóponton |
 | ---- | ------------------ | ---------------------------- |
 | 100  | 1                  | 60                           |
 | 200  | 2                  | 30                           |
@@ -115,4 +116,4 @@ Az adatraktár skálázásához az [Alter Database](/sql/t-sql/statements/alter-
 
 
 ## <a name="next-steps"></a>További lépések
-A számítási erőforrások kezelésével kapcsolatos [](manage-compute-with-azure-functions.md) további tudnivalókat lásd a különböző számítási erőforrások lefoglalása az egyes lekérdezésekhez című témakör útmutatását. További információ: erőforrás- [osztályok a számítási feladatok kezeléséhez](resource-classes-for-workload-management.md).
+A számítási erőforrások kezelésével kapcsolatos [további](manage-compute-with-azure-functions.md) tudnivalókat lásd a különböző számítási erőforrások lefoglalása az egyes lekérdezésekhez című témakör útmutatását. További információ: erőforrás- [osztályok a számítási feladatok kezeléséhez](resource-classes-for-workload-management.md).

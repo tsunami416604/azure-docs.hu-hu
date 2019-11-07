@@ -1,5 +1,5 @@
 ---
-title: Azure SQL Database erőforrások áthelyezése másik régióba | Microsoft Docs
+title: Azure SQL Database erőforrások áthelyezése másik régióba
 description: Megtudhatja, hogyan helyezheti át a Azure SQL Databaset, az Azure SQL rugalmas készletét vagy az Azure SQL felügyelt példányát egy másik régióba.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: carlrab
 ms.date: 06/25/2019
-ms.openlocfilehash: 2158d4120445de4c62461fb89555a1b73bc1e2b4
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 9e7cd6cb338de1d029d38ef08693a7b52f7cf15c
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68567166"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73687775"
 ---
 # <a name="how-to-move-azure-sql-resources-to-another-region"></a>Azure SQL-erőforrások áthelyezése másik régióba
 
@@ -67,19 +67,19 @@ Ez a cikk általános munkafolyamatot biztosít az erőforrások másik régiób
  
 ### <a name="monitor-the-preparation-process"></a>Az előkészítési folyamat figyelése
 
-Rendszeres időközönként meghívhatja a [Get-AzSqlDatabaseFailoverGroup-](/powershell/module/az.sql/get-azsqldatabasefailovergroup) t az adatbázisok replikációjának figyelésére a forrásról a célra. A kimeneti objektum `Get-AzSqlDatabaseFailoverGroup` tartalmazza a **ReplicationState**tulajdonságát: 
-   - **ReplicationState = 2** A (CATCH_UP) azt jelzi, hogy az adatbázis szinkronizálva van, és a rendszer biztonságosan feladatátvételt hajt végre. 
-   - **ReplicationState = 0** (Kivetés) azt jelzi, hogy az adatbázis még nincs bevezetve, és a feladatátvételi kísérlet sikertelen lesz. 
+Rendszeres időközönként meghívhatja a [Get-AzSqlDatabaseFailoverGroup-](/powershell/module/az.sql/get-azsqldatabasefailovergroup) t az adatbázisok replikációjának figyelésére a forrásról a célra. `Get-AzSqlDatabaseFailoverGroup` kimeneti objektuma tartalmaz egy tulajdonságot a **ReplicationState**: 
+   - A **ReplicationState = 2** (CATCH_UP) azt jelzi, hogy az adatbázis szinkronizálva van, és a rendszer biztonságosan feladatátvételt hajt végre. 
+   - **ReplicationState = 0** (előkészítés) – azt jelzi, hogy az adatbázis még nincs bevezetve, és a feladatátvételi kísérlet sikertelen lesz. 
 
 ### <a name="test-synchronization"></a>Szinkronizálás tesztelése
 
-Ha **ReplicationState** `2`, kapcsolódjon az egyes adatbázisokhoz vagy az adatbázisok egy részhalmazához a másodlagos `<fog-name>.secondary.database.windows.net` végpont használatával, és hajtson végre bármilyen lekérdezést az adatbázisokon a kapcsolat, a megfelelő biztonsági konfiguráció és az adatok biztosításához. replikációs. 
+Ha a **ReplicationState** `2`, kapcsolódjon az egyes adatbázisokhoz vagy az adatbázisok egy részhalmazához a másodlagos végpont használatával `<fog-name>.secondary.database.windows.net` és hajtson végre bármilyen lekérdezést az adatbázisokon a kapcsolat, a megfelelő biztonsági konfiguráció és az adatreplikáció biztosítása érdekében. 
 
 ### <a name="initiate-the-move"></a>Az áthelyezés kezdeményezése
 
 1. Kapcsolódjon a célkiszolgálóra a másodlagos végpont `<fog-name>.secondary.database.windows.net`használatával.
 1. A [switch-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/switch-azsqldatabasefailovergroup) használatával váltson át a másodlagos felügyelt példányra, hogy az elsődleges legyen teljes szinkronizálással. A művelet vagy sikeres lesz, vagy visszaállítja. 
-1. Győződjön meg arról, hogy a parancs sikeresen befejeződött `nslook up <fog-name>.secondary.database.windows.net` a használatával annak megállapításához, hogy a DNS-CNAME bejegyzés a célként megadott régió IP-címére mutat. Ha a Switch parancs sikertelen, a CNAME nem frissül. 
+1. Ellenőrizze, hogy a parancs végrehajtása sikeres volt-e a `nslook up <fog-name>.secondary.database.windows.net` használatával annak megállapításához, hogy a DNS-CNAME bejegyzés a célként megadott régió IP-címére mutat-e. Ha a Switch parancs sikertelen, a CNAME nem frissül. 
 
 ### <a name="remove-the-source-databases"></a>A forrás-adatbázisok eltávolítása
 
@@ -119,19 +119,19 @@ Az áthelyezés befejeződése után távolítsa el a forrás régió erőforrá
 
 ### <a name="monitor-the-preparation-process"></a>Az előkészítési folyamat figyelése
 
-Rendszeres időközönként meghívhatja a [Get-AzSqlDatabaseFailoverGroup-](/powershell/module/az.sql/get-azsqldatabasefailovergroup) t az adatbázisok replikációjának figyelésére a forrásról a célra. A kimeneti objektum `Get-AzSqlDatabaseFailoverGroup` tartalmazza a **ReplicationState**tulajdonságát: 
-   - **ReplicationState = 2** A (CATCH_UP) azt jelzi, hogy az adatbázis szinkronizálva van, és a rendszer biztonságosan feladatátvételt hajt végre. 
-   - **ReplicationState = 0** (Kivetés) azt jelzi, hogy az adatbázis még nincs bevezetve, és a feladatátvételi kísérlet sikertelen lesz. 
+Rendszeres időközönként meghívhatja a [Get-AzSqlDatabaseFailoverGroup-](/powershell/module/az.sql/get-azsqldatabasefailovergroup) t az adatbázisok replikációjának figyelésére a forrásról a célra. `Get-AzSqlDatabaseFailoverGroup` kimeneti objektuma tartalmaz egy tulajdonságot a **ReplicationState**: 
+   - A **ReplicationState = 2** (CATCH_UP) azt jelzi, hogy az adatbázis szinkronizálva van, és a rendszer biztonságosan feladatátvételt hajt végre. 
+   - **ReplicationState = 0** (előkészítés) – azt jelzi, hogy az adatbázis még nincs bevezetve, és a feladatátvételi kísérlet sikertelen lesz. 
 
 ### <a name="test-synchronization"></a>Szinkronizálás tesztelése
  
-Ha **ReplicationState** `2`, kapcsolódjon az egyes adatbázisokhoz vagy az adatbázisok egy részhalmazához a másodlagos `<fog-name>.secondary.database.windows.net` végpont használatával, és hajtson végre bármilyen lekérdezést az adatbázisokon a kapcsolat, a megfelelő biztonsági konfiguráció és az adatok biztosításához. replikációs. 
+Ha a **ReplicationState** `2`, kapcsolódjon az egyes adatbázisokhoz vagy az adatbázisok egy részhalmazához a másodlagos végpont használatával `<fog-name>.secondary.database.windows.net` és hajtson végre bármilyen lekérdezést az adatbázisokon a kapcsolat, a megfelelő biztonsági konfiguráció és az adatreplikáció biztosítása érdekében. 
 
 ### <a name="initiate-the-move"></a>Az áthelyezés kezdeményezése
  
 1. Kapcsolódjon a célkiszolgálóra a másodlagos végpont `<fog-name>.secondary.database.windows.net`használatával.
 1. A [switch-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/switch-azsqldatabasefailovergroup) használatával váltson át a másodlagos felügyelt példányra, hogy az elsődleges legyen teljes szinkronizálással. A művelet vagy sikeres lesz, vagy visszaállítja. 
-1. Győződjön meg arról, hogy a parancs sikeresen befejeződött `nslook up <fog-name>.secondary.database.windows.net` a használatával annak megállapításához, hogy a DNS-CNAME bejegyzés a célként megadott régió IP-címére mutat. Ha a Switch parancs sikertelen, a CNAME nem frissül. 
+1. Ellenőrizze, hogy a parancs végrehajtása sikeres volt-e a `nslook up <fog-name>.secondary.database.windows.net` használatával annak megállapításához, hogy a DNS-CNAME bejegyzés a célként megadott régió IP-címére mutat-e. Ha a Switch parancs sikertelen, a CNAME nem frissül. 
 
 ### <a name="remove-the-source-elastic-pools"></a>A forrás rugalmas készletek eltávolítása
  
@@ -166,19 +166,19 @@ Hozzon létre egy feladatátvételi csoportot az egyes forrásoldali példányok
  
 ### <a name="monitor-the-preparation-process"></a>Az előkészítési folyamat figyelése
 
-Rendszeres időközönként meghívhatja a [Get-AzSqlDatabaseFailoverGroup-](/powershell/module/az.sql/get-azsqldatabasefailovergroup?view=azps-2.3.2) t az adatbázisok replikációjának figyelésére a forrásról a célra. A kimeneti objektum `Get-AzSqlDatabaseFailoverGroup` tartalmazza a **ReplicationState**tulajdonságát: 
-   - **ReplicationState = 2** A (CATCH_UP) azt jelzi, hogy az adatbázis szinkronizálva van, és a rendszer biztonságosan feladatátvételt hajt végre. 
-   - **ReplicationState = 0** (Kivetés) azt jelzi, hogy az adatbázis még nincs bevezetve, és a feladatátvételi kísérlet sikertelen lesz. 
+Rendszeres időközönként meghívhatja a [Get-AzSqlDatabaseFailoverGroup-](/powershell/module/az.sql/get-azsqldatabasefailovergroup?view=azps-2.3.2) t az adatbázisok replikációjának figyelésére a forrásról a célra. `Get-AzSqlDatabaseFailoverGroup` kimeneti objektuma tartalmaz egy tulajdonságot a **ReplicationState**: 
+   - A **ReplicationState = 2** (CATCH_UP) azt jelzi, hogy az adatbázis szinkronizálva van, és a rendszer biztonságosan feladatátvételt hajt végre. 
+   - **ReplicationState = 0** (előkészítés) – azt jelzi, hogy az adatbázis még nincs bevezetve, és a feladatátvételi kísérlet sikertelen lesz. 
 
 ### <a name="test-synchronization"></a>Szinkronizálás tesztelése
 
-Ha **ReplicationState** `2`, kapcsolódjon az egyes adatbázisokhoz vagy az adatbázisok egy részhalmazához a másodlagos `<fog-name>.secondary.database.windows.net` végpont használatával, és hajtson végre bármilyen lekérdezést az adatbázisokon a kapcsolat, a megfelelő biztonsági konfiguráció és az adatok biztosításához. replikációs. 
+Ha a **ReplicationState** `2`, kapcsolódjon az egyes adatbázisokhoz vagy az adatbázisok egy részhalmazához a másodlagos végpont használatával `<fog-name>.secondary.database.windows.net` és hajtson végre bármilyen lekérdezést az adatbázisokon a kapcsolat, a megfelelő biztonsági konfiguráció és az adatreplikáció biztosítása érdekében. 
 
 ### <a name="initiate-the-move"></a>Az áthelyezés kezdeményezése 
 
 1. Kapcsolódjon a célkiszolgálóra a másodlagos végpont `<fog-name>.secondary.database.windows.net`használatával.
 1. A [switch-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/switch-azsqldatabasefailovergroup?view=azps-2.3.2) használatával váltson át a másodlagos felügyelt példányra, hogy az elsődleges legyen teljes szinkronizálással. A művelet vagy sikeres lesz, vagy visszaállítja. 
-1. Győződjön meg arról, hogy a parancs sikeresen befejeződött `nslook up <fog-name>.secondary.database.windows.net` a használatával annak megállapításához, hogy a DNS-CNAME bejegyzés a célként megadott régió IP-címére mutat. Ha a Switch parancs sikertelen, a CNAME nem frissül. 
+1. Ellenőrizze, hogy a parancs végrehajtása sikeres volt-e a `nslook up <fog-name>.secondary.database.windows.net` használatával annak megállapításához, hogy a DNS-CNAME bejegyzés a célként megadott régió IP-címére mutat-e. Ha a Switch parancs sikertelen, a CNAME nem frissül. 
 
 ### <a name="remove-the-source-managed-instances"></a>A forrás felügyelt példányainak eltávolítása
 Az áthelyezés befejeződése után távolítsa el a forrás régió erőforrásait a szükségtelen költségek elkerülése érdekében. 

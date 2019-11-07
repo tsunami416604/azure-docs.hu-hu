@@ -8,27 +8,32 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 10/10/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 5e6e51d2a058f89a04a81800b81f3c316be4eab7
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: b47604f2c8703ba587e98d68dc30552e5944f562
+ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72301489"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73614503"
 ---
 # <a name="zero-downtime-deployment-for-durable-functions"></a>Nulla állásidő üzembe helyezése Durable Functions
+
 A Durable Functions [megbízható végrehajtási modellje](durable-functions-checkpointing-and-replay.md) megköveteli, hogy a rendszer determinisztikus, ami egy további kihívást jelent, amelyet a frissítések központi telepítésekor figyelembe kell venni. Ha egy központi telepítés a tevékenységi függvények aláírásait vagy a Orchestrator logikát tartalmazza, a fedélzeti előkészítési példányok meghiúsulnak. Ez a helyzet különösen a hosszan futó munkafolyamatok példányai esetében fordul elő, amely órákat vagy munkanapokat is jelenthet.
 
 A hibák megelőzése érdekében vagy késleltetni kell a telepítést, amíg az összes futó előkészítési példány be nem fejeződik, vagy győződjön meg arról, hogy a futó előkészítési példányok a függvények meglévő verzióit használják. További információ a verziószámozásról: [verziószámozás a Durable Functionsban](durable-functions-versioning.md).
 
+> [!NOTE]
+> Ez a cikk útmutatást nyújt a functions-alkalmazásokhoz Durable Functions 1. x. Még nem frissült a Durable Functions 2. x verzióban bevezetett változások miatt. A bővítmény-verziók közötti különbségekről a [Durable functions verziók](durable-functions-versions.md) című cikkben olvashat bővebben.
+
 Az alábbi táblázat összehasonlítja a három fő stratégiát, amelyekkel a Durable Functions nulla állásidőt lehet elérni: 
 
-| Stratégia |  When to use | Szakemberek | Hátrányok |
+| Stratégia |  A következő esetekben használja | Szakemberek | Hátrányok |
 | -------- | ------------ | ---- | ---- |
 | **[Verziószámozás](#versioning)** |  Olyan alkalmazások, amelyek nem tapasztalnak gyakori [feltörési változásokat.](durable-functions-versioning.md) | Egyszerűen implementálható. |  A Function app-méret növelése a memóriában és a függvények száma.<br/>A kód duplikálása. |
 | **[Állapot-ellenőrzési tárolóhelytel](#status-check-with-slot)** | Olyan rendszer, amely nem rendelkezik a 24 óránál hosszabb ideig futó, vagy gyakran átfedésben lévő előkészítési folyamatokkal. | Egyszerű kód alapja.<br/>Nincs szükség további Function app-felügyeletre. | További Storage-fiókot vagy a Task hub felügyeletét igényli.<br/>Olyan időszakot igényel, amikor a rendszer nem fut. |
 | **[Alkalmazás-Útválasztás](#application-routing)** | Olyan rendszer, amely nem rendelkezik olyan időtartammal, amely nem fut, mint például a 24 óránál hosszabb ideig tartó vagy a gyakran átfedésben lévő Összehangolók. | Kezeli a rendszerek új verzióit, és folyamatosan futó, a változásokat megsértő munkafolyamatokat. | Intelligens alkalmazás-útválasztót igényel.<br/>Az előfizetés által engedélyezett Function Apps-alkalmazások maximális száma (alapértelmezett 100). |
 
 ## <a name="versioning"></a>Verziókezelés
+
 Adja meg a függvények új verzióit, és hagyja meg a régi verziókat a Function alkalmazásban. Ahogy az ábrán látható, a függvény verziója a neve részévé válik. Mivel a függvények korábbi verziói megmaradnak, a fedélzeti előkészítési példányok továbbra is hivatkozhatnak rájuk. Eközben az új előkészítési példányokra vonatkozó kérések a legújabb verziót kérik, amelyet a rendszerelőkészítési ügyfél függvénye hivatkozhat az alkalmazás beállításától függően.
 
 ![Verziószámozási stratégia](media/durable-functions-zero-downtime-deployment/versioning-strategy.png)
@@ -62,7 +67,7 @@ Az alábbi ábra az üzembe helyezési pontok és a Storage-fiókok leírt konfi
 
 A következő JSON-töredékek a Host. JSON fájlban található kapcsolatok karakterlánc-beállításra mutatnak példákat.
 
-#### <a name="functions-2x"></a>Functions 2.x
+#### <a name="functions-20"></a>Függvények 2,0
 
 ```json
 {
@@ -146,7 +151,7 @@ Az útválasztó felügyeli, hogy az alkalmazás kódjának melyik verziója van
 
 ![Alkalmazás-útválasztás (első alkalommal)](media/durable-functions-zero-downtime-deployment/application-routing.png)
 
-Az útválasztó átirányítja az üzembe helyezési és-előkészítési kéréseket a megfelelő Function alkalmazásnak a kéréssel küldött `version` alapján, figyelmen kívül hagyva a javítási verziót.
+Az útválasztó az üzembe helyezési és-előkészítési kérelmeket a kéréssel elküldött `version` alapján irányítja a megfelelő függvény alkalmazásba, figyelmen kívül hagyva a javítás verzióját.
 
 Ha új verziót helyez üzembe az alkalmazásban, és ez *nem* módosul, megnövelheti a javítási verziót. Az útválasztó üzembe helyezi a meglévő Function alkalmazást, és a kód régi és új verzióira vonatkozó kérelmeket küldi át ugyanahhoz a Function alkalmazáshoz.
 
@@ -160,13 +165,13 @@ Az útválasztó a (z) 1.0.1-es verziójában figyeli a munkafolyamatok állapot
 
 ### <a name="tracking-store-settings"></a>Nyomkövetési tároló beállításai
 
-Mindegyik Function alkalmazásnak külön ütemezési várólistákat kell használnia, valószínűleg külön Storage-fiókokban. Ha azonban az alkalmazás összes verziójában le szeretné kérdezni az összes előkészítési példányt, megoszthatja a példányok és az előzmények táblázatait a Function apps szolgáltatásban. A táblák megosztásához konfigurálja a `trackingStoreConnectionStringName` és a `trackingStoreNamePrefix` értéket a [Host. JSON-beállítási](durable-functions-bindings.md#host-json) fájlban, hogy mindegyik ugyanazt az értékeket használja.
+Mindegyik Function alkalmazásnak külön ütemezési várólistákat kell használnia, valószínűleg külön Storage-fiókokban. Ha azonban az alkalmazás összes verziójában le szeretné kérdezni az összes előkészítési példányt, megoszthatja a példányok és az előzmények táblázatait a Function apps szolgáltatásban. A táblák megosztásához konfigurálja a `trackingStoreConnectionStringName` és `trackingStoreNamePrefix` a [Host. JSON-beállítási](durable-functions-bindings.md#host-json) fájlban, hogy mindegyik ugyanazt az értéket használja.
 
 További részletekért [Durable functions Azure-beli példányait kezelheti](durable-functions-instance-management.md).
 
 ![Nyomkövetési tároló beállításai](media/durable-functions-zero-downtime-deployment/tracking-store-settings.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Verziószámozás Durable Functions](durable-functions-versioning.md)

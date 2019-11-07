@@ -1,5 +1,5 @@
 ---
-title: Adatok másolása az SAP ECC-ból Azure Data Factory használatával | Microsoft Docs
+title: Adatok másolása az SAP ECC-ból Azure Data Factory használatával
 description: Megtudhatja, hogyan másolhat adatokat az SAP ECC-ból egy Azure Data Factory-folyamat másolási tevékenységének használatával támogatott fogadó adattárakba.
 services: data-factory
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 09/02/2019
 ms.author: jingwang
-ms.openlocfilehash: c2b9fcc3f75b8f310532978061c887776f007ff0
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 526f85ca4b8854a36232c75a55847a73a8d372cc
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71089537"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73680297"
 ---
 # <a name="copy-data-from-sap-ecc-by-using-azure-data-factory"></a>Adatok másolása az SAP ECC-ból Azure Data Factory használatával
 
@@ -33,7 +33,7 @@ Ez az SAP ECC-összekötő a következő tevékenységek esetén támogatott:
 - [Másolási tevékenység](copy-activity-overview.md) [támogatott forrás/fogadó mátrixtal](copy-activity-overview.md)
 - [Keresési tevékenység](control-flow-lookup-activity.md)
 
-Az SAP ECC-adatok bármely támogatott fogadó adattárba másolhatók. A másolási tevékenység által források vagy fogadóként támogatott adattárak listáját lásd: a [támogatott adattárak](copy-activity-overview.md#supported-data-stores-and-formats) tábla.
+Az SAP ECC-adatok bármely támogatott fogadó adattárba másolhatók. A másolási tevékenység által forrásként vagy nyelőként támogatott adattárak listáját a [támogatott adattárak](copy-activity-overview.md#supported-data-stores-and-formats) táblázatban tekintheti meg.
 
 Ez az SAP ECC-összekötő a következőket támogatja:
 
@@ -74,11 +74,11 @@ Az SAP ECC társított szolgáltatás a következő tulajdonságokat támogatja:
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| `type` | A `type` tulajdonságot a következőre `SapEcc`kell beállítani:. | Igen |
+| `type` | A `type` tulajdonságot `SapEcc`értékre kell beállítani. | Igen |
 | `url` | Az SAP ECC OData szolgáltatás URL-címe. | Igen |
 | `username` | Az SAP ECC-hoz való kapcsolódáshoz használt Felhasználónév. | Nem |
 | `password` | Az SAP ECC-hoz való kapcsolódáshoz használt egyszerű szöveges jelszó. | Nem |
-| `connectVia` | A [integrációs modul](concepts-integration-runtime.md) az adattárban való kapcsolódáshoz használandó. További tudnivalók az [Előfeltételek](#prerequisites) szakaszban olvashatók. Ha nem ad meg futtatókörnyezetet, a rendszer az alapértelmezett Azure Integration Runtime-t használja. | Nem |
+| `connectVia` | Az adattárhoz való csatlakozáshoz használt [integrációs](concepts-integration-runtime.md) modul. További tudnivalók az [Előfeltételek](#prerequisites) szakaszban olvashatók. Ha nem ad meg futtatókörnyezetet, a rendszer az alapértelmezett Azure Integration Runtime-t használja. | Nem |
 
 ### <a name="example"></a>Példa
 
@@ -107,7 +107,7 @@ Az SAP ECC társított szolgáltatás a következő tulajdonságokat támogatja:
 
 Az adatkészletek definiálásához rendelkezésre álló csoportok és tulajdonságok teljes listáját lásd: [adatkészletek](concepts-datasets-linked-services.md). A következő szakasz az SAP ECC-adatkészlet által támogatott tulajdonságokat tartalmazza.
 
-Az adatok SAP ECC-ból történő másolásához `type` állítsa az `SapEccResource`adatkészlet tulajdonságát a következőre:.
+Az SAP ECC-ból származó adatok másolásához állítsa `SapEccResource`értékre az adatkészlet `type` tulajdonságát.
 
 A következő tulajdonságok támogatottak:
 
@@ -140,14 +140,14 @@ A tevékenységek definiálásához rendelkezésre álló csoportok és tulajdon
 
 ### <a name="sap-ecc-as-a-source"></a>SAP ECC forrásként
 
-Az SAP ECC-ból származó adatok másolásához `type` a másolási `source` tevékenység `SapEccSource`szakaszának tulajdonságát állítsa a következőre:.
+Az SAP ECC-ból származó adatok másolásához állítsa a másolási tevékenység `source` szakaszának `type` tulajdonságát a következőre: `SapEccSource`.
 
 A másolási tevékenység `source` szakasza a következő tulajdonságokat támogatja:
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| `type` | A másolási `source` tevékenység `SapEccSource`szakaszának tulajdonságát be kell állítani. `type` | Igen |
-| `query` | Az OData lekérdezési beállításai az adatszűréshez. Példa:<br/><br/>`"$select=Name,Description&$top=10"`<br/><br/>Az SAP ECC-összekötő az összesített URL-címről másolja az adatait:<br/><br/>`<URL specified in the linked service>/<path specified in the dataset>?<query specified in the copy activity's source section>`<br/><br/>További információ: [OData URL-összetevők](https://www.odata.org/documentation/odata-version-3-0/url-conventions/). | Nem |
+| `type` | A másolási tevékenység `source` szakaszának `type` tulajdonságát `SapEccSource`értékre kell beállítani. | Igen |
+| `query` | Az OData lekérdezési beállításai az adatszűréshez. Például:<br/><br/>`"$select=Name,Description&$top=10"`<br/><br/>Az SAP ECC-összekötő az összesített URL-címről másolja az adatait:<br/><br/>`<URL specified in the linked service>/<path specified in the dataset>?<query specified in the copy activity's source section>`<br/><br/>További információ: [OData URL-összetevők](https://www.odata.org/documentation/odata-version-3-0/url-conventions/). | Nem |
 
 ### <a name="example"></a>Példa
 
@@ -185,7 +185,7 @@ A másolási tevékenység `source` szakasza a következő tulajdonságokat tám
 
 Az SAP ECC-ból történő adatmásoláskor a következő leképezések használatosak az SAP ECC-adatok OData adattípusaiból Azure Data Factory ideiglenes adattípusokhoz. Ha szeretné megtudni, hogyan képezi le a másolási tevékenység a forrás sémát és az adattípust a fogadóra, tekintse meg a [séma-és adattípus-leképezéseket](copy-activity-schema-and-type-mapping.md)
 
-| OData adattípusa | Data Factory közbenső adattípus |
+| OData adattípusa | Data Factory időközi adattípus |
 |:--- |:--- |
 | `Edm.Binary` | `String` |
 | `Edm.Boolean` | `Bool` |

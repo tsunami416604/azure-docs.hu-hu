@@ -1,5 +1,5 @@
 ---
-title: Azure SQL Database szolgáltatásra vonatkozó korlátozások | Microsoft Docs
+title: Azure SQL Database szolgáltatásra vonatkozó korlátozások
 description: Azure SQL Database a szolgáltatásra vonatkozó korlátozások javítják az adatbázis biztonságát azáltal, hogy korlátozza az adatbázis azon funkcióit, amelyeket a támadók a bennük lévő információk elérésére használhatnak.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: barmichal
 ms.author: mibar
 ms.reviewer: vanto
 ms.date: 03/22/2019
-ms.openlocfilehash: f2fd6cb73428c69fbb27cb93377f851a4e06221d
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: e9518065b2240d72698ed75f2fa8a7aed343b7bf
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70959135"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73690060"
 ---
 # <a name="azure-sql-database-feature-restrictions"></a>Azure SQL Database szolgáltatásra vonatkozó korlátozások
 
@@ -24,7 +24,7 @@ Az SQL Server támadások egyik gyakori forrása a webalkalmazások, amelyek hoz
 
 ## <a name="enabling-feature-restrictions"></a>A szolgáltatásra vonatkozó korlátozások engedélyezése
 
-A szolgáltatás korlátozásának engedélyezése a tárolt `sp_add_feature_restriction` eljárással végezhető el a következő módon:
+A szolgáltatás korlátozásának engedélyezése a `sp_add_feature_restriction` tárolt eljárással végezhető el az alábbiak szerint:
 
 ```sql
 EXEC sp_add_feature_restriction <feature>, <object_class>, <object_name>
@@ -32,14 +32,14 @@ EXEC sp_add_feature_restriction <feature>, <object_class>, <object_name>
 
 A következő funkciók korlátozhatók:
 
-| Funkció          | Leírás |
+| Szolgáltatás          | Leírás |
 |------------------|-------------|
 | N'ErrorMessages' | Ha korlátozva van, a rendszer a hibaüzenetben lévő összes felhasználói adattal maszkot fog tartalmazni. Lásd a [hibaüzenetek szolgáltatás korlátozását](#error-messages-feature-restriction) |
 | N'Waitfor'       | Ha korlátozott, a parancs késedelem nélkül vissza fog térni. Lásd: [waitfor szolgáltatás korlátozása](#waitfor-feature-restriction) |
 
-A értéke `object_class` `object_name` lehet vagy annak`N'Role'` jelölése, hogy a felhasználó neve vagy a szerepkör neve szerepel-e az adatbázisban. `N'User'`
+A `object_class` értéke lehet `N'User'` vagy `N'Role'`, amely azt jelzi, hogy a `object_name` Felhasználónév vagy szerepkör neve szerepel-e az adatbázisban.
 
-A következő példa a felhasználó `MyUser` által maszkolt összes hibaüzenetet fogja okozni:
+A következő példa hatására a rendszer az összes hibaüzenetet a felhasználói `MyUser` maszkolásához:
 
 ```sql
 EXEC sp_add_feature_restriction N'ErrorMessages', N'User', N'MyUser'
@@ -47,13 +47,13 @@ EXEC sp_add_feature_restriction N'ErrorMessages', N'User', N'MyUser'
 
 ## <a name="disabling-feature-restrictions"></a>Szolgáltatási korlátozások letiltása
 
-A szolgáltatás korlátozásait a következő módon `sp_drop_feature_restriction` hajthatja végre a tárolt eljárás használatával:
+A szolgáltatás korlátozásait a `sp_drop_feature_restriction` tárolt eljárással teheti meg a következő módon:
 
 ```sql
 EXEC sp_drop_feature_restriction <feature>, <object_class>, <object_name>
 ```
 
-A következő példa letiltja a felhasználói `MyUser`hibaüzenetek maszkolását:
+A következő példa letiltja a felhasználói `MyUser`a hibaüzenetek maszkolását:
 
 ```sql
 EXEC sp_drop_feature_restriction N'ErrorMessages', N'User', N'MyUser'
@@ -61,13 +61,13 @@ EXEC sp_drop_feature_restriction N'ErrorMessages', N'User', N'MyUser'
 
 ## <a name="viewing-feature-restrictions"></a>A szolgáltatásra vonatkozó korlátozások megtekintése
 
-A `sys.sql_feature_restrictions` nézet a jelenleg definiált szolgáltatásokra vonatkozó korlátozásokat jeleníti meg az adatbázison. A következő oszlopokból áll:
+A `sys.sql_feature_restrictions` nézet az adatbázis jelenleg definiált szolgáltatásainak korlátozásait mutatja be. A következő oszlopokból áll:
 
-| Oszlop neve | Adattípus | Leírás |
+| Oszlop neve | Data type | Leírás |
 |-------------|-----------|-------------|
 | Osztály       | nvarchar (128) | Azon objektum osztálya, amelyre a korlátozás vonatkozik |
-| object      | nvarchar (256) | Annak az objektumnak a neve, amelyre a korlátozás vonatkozik |
-| funkcióval     | nvarchar (128) | Korlátozott funkció |
+| objektum      | nvarchar (256) | Annak az objektumnak a neve, amelyre a korlátozás vonatkozik |
+| Vonás     | nvarchar (128) | Korlátozott funkció |
 
 ## <a name="feature-restrictions"></a>Szolgáltatásokra vonatkozó korlátozások
 
@@ -81,13 +81,13 @@ Vegyünk egy olyan webalkalmazást, amely a következő formában rendelkezik k�
 http://www.contoso.com/employee.php?id=1
 ```
 
-A következő adatbázis-lekérdezést hajtja végre:
+a következő adatbázis-lekérdezést hajtja végre:
 
 ```sql
 SELECT Name FROM EMPLOYEES WHERE Id=$EmpId
 ```
 
-Ha a webalkalmazás-kérelem `id` paraméterének átadott értéket másolja a rendszer az adatbázis-lekérdezésben szereplő $EmpId helyére, a támadó a következő kérelmet teheti:
+Ha a webalkalmazás-kérelemre `id` paraméterként átadott értéket másolja a rendszer az adatbázis-lekérdezésben szereplő $EmpId helyére, a támadó a következő kérelmet teheti:
 
 ```html
 http://www.contoso.com/employee.php?id=1 AND CAST(DB_NAME() AS INT)=0
@@ -125,7 +125,7 @@ Arithmetic overflow error for data type ******, value = ******.
 
 ### <a name="waitfor-feature-restriction"></a>WAITFOR szolgáltatás korlátozása
 
-A vak SQL-injektálás akkor történik, ha egy alkalmazás nem biztosít támadót a befecskendezett SQL vagy hibaüzenet eredményeivel, de a támadó adatokat tud kikövetkeztetni az adatbázisból egy feltételes lekérdezés létrehozásával, amelyben a két feltételes ág végezze el a végrehajtás különböző időtartamát. A válaszadási idő összehasonlításával a támadó megtudhatja, hogy melyik ág lett végrehajtva, és így a rendszerrel kapcsolatos információkat is megismerheti. A támadás legegyszerűbb változata az `WAITFOR` utasítást használja a késleltetés bevezetéséhez.
+A vak SQL-injektálás akkor történik, ha egy alkalmazás nem biztosít támadót a befecskendezett SQL vagy hibaüzenet eredményeivel, de a támadó adatokat tud kikövetkeztetni az adatbázisból egy feltételes lekérdezés létrehozásával, amelyben a két feltételes ág végezze el a végrehajtás különböző időtartamát. A válaszadási idő összehasonlításával a támadó megtudhatja, hogy melyik ág lett végrehajtva, és így a rendszerrel kapcsolatos információkat is megismerheti. A támadás legegyszerűbb változata a `WAITFOR` utasítást használja a késleltetés bevezetéséhez.
 
 Vegyünk egy olyan webalkalmazást, amely a következő formában rendelkezik kéréssel:
 
@@ -145,4 +145,4 @@ Ha a webalkalmazási kérelmekhez azonosító paraméterként átadott értéket
 http://www.contoso.com/employee.php?id=1; IF SYSTEM_USER='sa' WAITFOR DELAY '00:00:05'
 ```
 
-Ha a `sa` fiók használatban van, a lekérdezés további 5 másodpercig is eltarthat. Ha `WAITFOR` a szolgáltatásra vonatkozó korlátozás le van tiltva az `WAITFOR` adatbázisban, a rendszer figyelmen kívül hagyja az utasítást, és a támadás használatával nem szivárog az adatok.
+Ha a `sa` fiókot használták, a lekérdezés további 5 másodpercet is igénybe vesz. Ha `WAITFOR` szolgáltatás korlátozása le van tiltva az adatbázisban, a rendszer figyelmen kívül hagyja a `WAITFOR` utasítást, és a támadás használatával nem szivárog az információ.

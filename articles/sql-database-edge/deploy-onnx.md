@@ -4,21 +4,22 @@ description: Ismerje meg, hogyan alakíthatja ki a modelleket, hogyan alakíthat
 keywords: az SQL Database Edge üzembe helyezése
 services: sql-database-edge
 ms.service: sql-database-edge
+ms.subservice: machine-learning
 ms.topic: conceptual
 author: ronychatterjee
 ms.author: achatter
 ms.reviewer: davidph
 ms.date: 11/04/2019
-ms.openlocfilehash: 2306a63aa46bd8816c742b0a6d076471705c46a6
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 37fc04919b844d1edf87be62a587c34de4a8c4d5
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73514068"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73692334"
 ---
 # <a name="deploy-and-make-predictions-with-an-onnx-model-in-sql-database-edge-preview"></a>Előrejelzések üzembe helyezése és elkészítése egy ONNX-modellel SQL Database Edge előzetes verzióban
 
-Ebben a rövid útmutatóban megismerheti, hogyan végezheti el a modell betanítását, hogyan alakíthatja át a ONNX, hogyan telepítheti Azure SQL Database Edge előzetes verzióra, majd a feltöltött ONNX modell használatával natív ELŐREJELZÉSt futtathat az adatairól.
+Ebben a rövid útmutatóban megismerheti, hogyan végezheti el a modell betanítását, hogyan alakíthatja át a ONNX, hogyan telepítheti Azure SQL Database Edge előzetes verzióra, majd a feltöltött ONNX modell használatával natív ELŐREJELZÉSt futtathat az adatairól. További információ: [Machine learning és AI with ONNX in SQL Database Edge Preview](onnx-overview.md).
 
 Ez a rövid útmutató a **scikit-tanuláson** alapul, és a [bostoni lakhatási adatkészletet](https://scikit-learn.org/stable/modules/generated/sklearn.datasets.load_boston.html)használja.
 

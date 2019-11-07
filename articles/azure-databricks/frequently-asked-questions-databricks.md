@@ -9,23 +9,23 @@ ms.service: azure-databricks
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 10/25/2018
-ms.openlocfilehash: 8707aa55c1126af6a7fb2812d4c7314f031209d0
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 0436a0898f27d3059069ce2df1fdfb143a98f325
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72597477"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73601810"
 ---
 # <a name="frequently-asked-questions-about-azure-databricks"></a>Az Azure Databricks szolgáltatással kapcsolatos gyakori kérdések
 
 Ez a cikk a Azure Databrickshoz kapcsolódó leggyakoribb kérdéseket sorolja fel. Emellett felsorolja a Databricks használata során esetlegesen előforduló gyakori problémákat is. További információ: [What is Azure Databricks](what-is-azure-databricks.md). 
 
 ## <a name="can-i-use-azure-key-vault-to-store-keyssecrets-to-be-used-in-azure-databricks"></a>Használhatom a Azure Key Vault az Azure Databricksban használandó kulcsok/titkos kódok tárolására?
-Igen. A Azure Key Vault használatával a kulcsok/titkos kódok tárolhatók a Azure Databricksval való használathoz. További információ: [Azure Key Vault támogatott hatókörök](https://docs.azuredatabricks.net/user-guide/secrets/secret-scopes.html#akv-ss).
+Igen. A Azure Key Vault használatával a kulcsok/titkos kódok tárolhatók a Azure Databricksval való használathoz. További információ: [Azure Key Vault támogatott hatókörök](/azure/databricks/security/secrets/secret-scopes).
 
 
 ## <a name="can-i-use-azure-virtual-networks-with-databricks"></a>Használhatom az Azure-beli virtuális hálózatokat a Databricks?
-Igen. Azure Databricks használatával Azure Virtual Network (VNET) is használható. További információ: [Azure Databricks üzembe helyezése az Azure-Virtual Networkban](https://docs.azuredatabricks.net/administration-guide/cloud-configurations/azure/vnet-inject.html).
+Igen. Azure Databricks használatával Azure Virtual Network (VNET) is használható. További információ: [Azure Databricks üzembe helyezése az Azure-Virtual Networkban](/azure/databricks/administration-guide/cloud-configurations/azure/vnet-inject).
 
 ## <a name="how-do-i-access-azure-data-lake-storage-from-a-notebook"></a>Hogyan a Notebookról való hozzáférési Azure Data Lake Storage? 
 
@@ -34,7 +34,7 @@ Kövesse az alábbi lépéseket:
 1. Rendelje hozzá a szükséges engedélyeket az egyszerű szolgáltatáshoz Data Lake Storageban.
 1. Data Lake Storage található fájl eléréséhez használja az egyszerű szolgáltatás hitelesítő adatait a jegyzetfüzetben.
 
-További információ: [Azure Data Lake Storage használata a Azure Databricks használatával](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-datalake.html).
+További információ: [Azure Data Lake Storage használata a Azure Databricks használatával](/azure/databricks/data/data-sources/azure/azure-datalake.html).
 
 ## <a name="fix-common-problems"></a>Gyakori problémák elhárítása
 
@@ -67,9 +67,9 @@ A probléma néhány megoldása a következő:
 
 * Ez a hiba akkor is előfordulhat, ha az e-mail tartományneve több címtárhoz van rendelve az Azure AD-ben. A probléma megkerüléséhez hozzon létre egy új felhasználót abban a könyvtárban, amely a Databricks-munkaterülettel rendelkező előfizetést tartalmazza.
 
-    a. A Azure Portal nyissa meg az Azure AD-t. **Felhasználók és csoportok** kiválasztása  > **felhasználó hozzáadása**.
+    a. A Azure Portal nyissa meg az Azure AD-t. **Felhasználók és csoportok** kiválasztása > **felhasználó hozzáadása**.
 
-    b. @No__t_1 e-mail-cím helyett adjon hozzá egy `@<tenant_name>.onmicrosoft.com` e-mail-címmel rendelkező felhasználót. Ezt a lehetőséget az Azure Portal Azure AD-ban található **Egyéni tartományokban**találja.
+    b. `@<your_domain>` e-mail-cím helyett adjon hozzá egy `@<tenant_name>.onmicrosoft.com` e-mail-címmel rendelkező felhasználót. Ezt a lehetőséget az Azure Portal Azure AD-ban található **Egyéni tartományokban**találja.
     
     c. Adja meg ezt az új felhasználót a **közreműködői** szerepkörnek a Databricks-munkaterület erőforráson.
     
@@ -82,7 +82,7 @@ A probléma néhány megoldása a következő:
 
 #### <a name="solution"></a>Megoldás
 
-Ha nem hozta létre a munkaterületet, és felhasználóként adja hozzá, forduljon a munkaterületet létrehozó személyhez. Adja hozzá a személyt a Azure Databricks felügyeleti konzoljának használatával. Útmutatásért lásd: [felhasználók hozzáadása és kezelése](https://docs.azuredatabricks.net/administration-guide/admin-settings/users.html). Ha létrehozta a munkaterületet, és továbbra is ezt a hibaüzenetet kapja, próbálja meg újra kiválasztani a **munkaterületet** a Azure Portal.
+Ha nem hozta létre a munkaterületet, és felhasználóként adja hozzá, forduljon a munkaterületet létrehozó személyhez. Adja hozzá a személyt a Azure Databricks felügyeleti konzoljának használatával. Útmutatásért lásd: [felhasználók hozzáadása és kezelése](/azure/databricks/administration-guide/users-groups/users). Ha létrehozta a munkaterületet, és továbbra is ezt a hibaüzenetet kapja, próbálja meg újra kiválasztani a **munkaterületet** a Azure Portal.
 
 ### <a name="issue-cloud-provider-launch-failure-while-setting-up-the-cluster-publicipcountlimitreached"></a>Probléma: a felhőalapú szolgáltató indítási hibája a fürt beállításakor (PublicIPCountLimitReached)
 
@@ -119,7 +119,7 @@ Azure Databricks integrálva van Azure Active Directorysal. Az Azure AD-beli fel
 
 Jelentkezzen be globális rendszergazdaként a Azure Portalba. Azure Active Directory esetében lépjen a **felhasználói beállítások** lapra, és győződjön meg arról, hogy a **felhasználók jóváhagyják az alkalmazások számára a vállalati adatokhoz való hozzáférést** az **Igen**értékre.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Gyors útmutató: az Azure Databricks használatának első lépései](quickstart-create-databricks-workspace-portal.md)
 - [Mi az Azure Databricks?](what-is-azure-databricks.md)

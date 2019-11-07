@@ -1,5 +1,5 @@
 ---
-title: Azure SQL Database virtuális mag erőforrás-korlátai – önálló adatbázis | Microsoft Docs
+title: Azure SQL Database virtuális mag erőforrás-korlátai – önálló adatbázis
 description: Ez az oldal a Azure SQL Database egyetlen adatbázisának néhány gyakori virtuális mag-erőforrás-korlátját ismerteti.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 11/04/2019
-ms.openlocfilehash: 55b0b28f3081cfe643645683a9773b4c97b9caef
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: b3b55b3542eb0dd8c3c61d7a82c8ce2e9d271113
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73495948"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73686863"
 ---
 # <a name="resource-limits-for-single-databases-using-the-vcore-purchasing-model"></a>Az virtuális mag beszerzési modellt használó önálló adatbázisok erőforrás-korlátai
 
@@ -44,7 +44,7 @@ A [kiszolgáló nélküli számítási rétegek](sql-database-serverless.md) jel
 |Minimális memória maximális mérete (GB)|2.02 – 3|2.05 – 6|2.10-12|2,25 – 18|3,00 – 24|
 |Automatikus szüneteltetés minimális késleltetése (perc)|60|60|60|60|60|
 |Oszlopcentrikus-támogatás|Igen|Igen|Igen|Igen|Igen|
-|Memóriában tárolt OLTP-tároló (GB)|–|–|–|–|–|
+|Memóriában tárolt OLTP-tároló (GB)|N/A|N/A|N/A|N/A|N/A|
 |Maximális adatméret (GB)|512|1024|1024|1024|1536|
 |Napló maximális mérete (GB)|154|307|307|307|461|
 |TempDB maximális adatméret (GB)|32|64|128|192|256|
@@ -55,8 +55,8 @@ A [kiszolgáló nélküli számítási rétegek](sql-database-serverless.md) jel
 |Egyidejű feldolgozók maximális száma (kérelem)|75|150|300|450|600|
 |Egyidejű munkamenetek maximális száma|30000|30000|30000|30000|30000|
 |Replikák száma|1|1|1|1|1|
-|Több – AZ|–|–|–|–|–|
-|Felskálázás|–|–|–|–|–|
+|Több – AZ|N/A|N/A|N/A|N/A|N/A|
+|Felskálázás|N/A|N/A|N/A|N/A|N/A|
 |Mellékelt biztonsági mentési tár|1X DB méret|1X DB méret|1X DB méret|1X DB méret|1X DB méret|
 
 ### <a name="gen5-compute-generation-part-2"></a>Gen5 számítási generációja (2. rész)
@@ -68,7 +68,7 @@ A [kiszolgáló nélküli számítási rétegek](sql-database-serverless.md) jel
 |Minimális memória maximális mérete (GB)|3,75 – 30|4.50 – 36|5.25 – 42|6,00 – 48|
 |Automatikus szüneteltetés minimális késleltetése (perc)|60|60|60|60|
 |Oszlopcentrikus-támogatás|Igen|Igen|Igen|Igen|
-|Memóriában tárolt OLTP-tároló (GB)|–|–|–|–|
+|Memóriában tárolt OLTP-tároló (GB)|N/A|N/A|N/A|N/A|
 |Maximális adatméret (GB)|1536|1536|1536|3072|
 |Napló maximális mérete (GB)|461|461|461|922|
 |TempDB maximális adatméret (GB)|320|384|448|512|
@@ -79,8 +79,8 @@ A [kiszolgáló nélküli számítási rétegek](sql-database-serverless.md) jel
 |Egyidejű feldolgozók maximális száma (kérelem)|750|900|1050|1200|
 |Egyidejű munkamenetek maximális száma|30000|30000|30000|30000|
 |Replikák száma|1|1|1|1|
-|Több – AZ|–|–|–|–|
-|Felskálázás|–|–|–|–|
+|Több – AZ|N/A|N/A|N/A|N/A|
+|Felskálázás|N/A|N/A|N/A|N/A|
 |Mellékelt biztonsági mentési tár|1X DB méret|1X DB méret|1X DB méret|1X DB méret|
 
 
@@ -95,7 +95,7 @@ A [kiszolgáló nélküli számítási rétegek](sql-database-serverless.md) jel
 |Memória (GB)|10.2|20,4|40,8|81,6|122,4|163,2|204|408|
 |[RBPEX](sql-database-service-tier-hyperscale.md#compute) Méret|3X memória|3X memória|3X memória|3X memória|3X memória|3X memória|3X memória|3X memória|
 |Oszlopcentrikus-támogatás|Igen|Igen|Igen|Igen|Igen|Igen|Igen|Igen|
-|Memóriában tárolt OLTP-tároló (GB)|–|–|–|–|–|–|–|–|
+|Memóriában tárolt OLTP-tároló (GB)|N/A|N/A|N/A|N/A|N/A|N/A|N/A|N/A|
 |Maximális adatméret (TB)|100 |100 |100 |100 |100 |100 |100 |100 |
 |Napló maximális mérete (TB)|1 |1 |1 |1 |1 |1 |1 |1 |
 |TempDB maximális adatméret (GB)|64|128|256|384|384|384|384|384|
@@ -105,7 +105,7 @@ A [kiszolgáló nélküli számítási rétegek](sql-database-serverless.md) jel
 |Egyidejű feldolgozók maximális száma (kérelem)|200|400|800|1600|2400|3200|4000|8000|
 |Egyidejű munkamenetek maximális száma|30000|30000|30000|30000|30000|30000|30000|30000|
 |Másodlagos replikák|0-4|0-4|0-4|0-4|0-4|0-4|0-4|0-4|
-|Több – AZ|–|–|–|–|–|–|–|–|
+|Több – AZ|N/A|N/A|N/A|N/A|N/A|N/A|N/A|N/A|
 |Felskálázás|Igen|Igen|Igen|Igen|Igen|Igen|Igen|Igen|
 |Biztonsági mentési tár megőrzése|7 nap|7 nap|7 nap|7 nap|7 nap|7 nap|7 nap|7 nap|
 |||
@@ -131,7 +131,7 @@ A [kiszolgáló nélküli számítási rétegek](sql-database-serverless.md) jel
 |Virtuális mag|1|2|3|4|5|6|
 |Memória (GB)|7|14|21|28|35|42|
 |Oszlopcentrikus-támogatás|Igen|Igen|Igen|Igen|Igen|Igen|
-|Memóriában tárolt OLTP-tároló (GB)|–|–|–|–|–|–|
+|Memóriában tárolt OLTP-tároló (GB)|N/A|N/A|N/A|N/A|N/A|N/A|
 |Maximális adatméret (GB)|1024|1024|1536|1536|1536|3072|
 |Napló maximális mérete (GB)|307|307|461|461|461|922|
 |TempDB maximális adatméret (GB)|32|64|96|128|160|192|
@@ -142,8 +142,8 @@ A [kiszolgáló nélküli számítási rétegek](sql-database-serverless.md) jel
 |Egyidejű feldolgozók maximális száma (kérelem)|200|400|600|800|1000|1200|
 |Egyidejű munkamenetek maximális száma|30000|30000|30000|30000|30000|30000|
 |Replikák száma|1|1|1|1|1|1|
-|Több – AZ|–|–|–|–|–|–|
-|Felskálázás|–|–|–|–|–|–|
+|Több – AZ|N/A|N/A|N/A|N/A|N/A|N/A|
+|Felskálázás|N/A|N/A|N/A|N/A|N/A|N/A|
 |Mellékelt biztonsági mentési tár|1X DB méret|1X DB méret|1X DB méret|1X DB méret|1X DB méret|1X DB méret|
 
 ### <a name="gen4-compute-generation-part-2"></a>Gen4 számítási generációja (2. rész)
@@ -154,7 +154,7 @@ A [kiszolgáló nélküli számítási rétegek](sql-database-serverless.md) jel
 |Virtuális mag|7|8|9|10|16|24|
 |Memória (GB)|49|56|63|70|112|168|
 |Oszlopcentrikus-támogatás|Igen|Igen|Igen|Igen|Igen|Igen|
-|Memóriában tárolt OLTP-tároló (GB)|–|–|–|–|–|–|
+|Memóriában tárolt OLTP-tároló (GB)|N/A|N/A|N/A|N/A|N/A|N/A|
 |Maximális adatméret (GB)|3072|3072|3072|3072|4096|4096|
 |Napló maximális mérete (GB)|922|922|922|922|1229|1229|
 |TempDB maximális adatméret (GB)|224|256|288|320|384|384|
@@ -165,8 +165,8 @@ A [kiszolgáló nélküli számítási rétegek](sql-database-serverless.md) jel
 |Egyidejű feldolgozók maximális száma (kérelem)|1400|1600|1800|2000|3200|4800|
 |Egyidejű munkamenetek maximális száma|30000|30000|30000|30000|30000|30000|
 |Replikák száma|1|1|1|1|1|1|
-|Több – AZ|–|–|–|–|–|–|
-|Felskálázás|–|–|–|–|–|–|
+|Több – AZ|N/A|N/A|N/A|N/A|N/A|N/A|
+|Felskálázás|N/A|N/A|N/A|N/A|N/A|N/A|
 |Mellékelt biztonsági mentési tár|1X DB méret|1X DB méret|1X DB méret|1X DB méret|1X DB méret|1X DB méret|
 
 ## <a name="general-purpose---provisioned-compute---gen5"></a>Általános célú kiépített számítás – Gen5
@@ -179,7 +179,7 @@ A [kiszolgáló nélküli számítási rétegek](sql-database-serverless.md) jel
 |Virtuális mag|2|4|6|8|10|12|14|
 |Memória (GB)|10.2|20,4|30,6|40,8|51|61,2|71,4|
 |Oszlopcentrikus-támogatás|Igen|Igen|Igen|Igen|Igen|Igen|Igen|
-|Memóriában tárolt OLTP-tároló (GB)|–|–|–|–|–|–|–|
+|Memóriában tárolt OLTP-tároló (GB)|N/A|N/A|N/A|N/A|N/A|N/A|N/A|
 |Maximális adatméret (GB)|1024|1024|1536|1536|1536|3072|3072|
 |Napló maximális mérete (GB)|307|307|461|461|461|922|922|
 |TempDB maximális adatméret (GB)|64|128|192|256|320|384|384|
@@ -190,8 +190,8 @@ A [kiszolgáló nélküli számítási rétegek](sql-database-serverless.md) jel
 |Egyidejű feldolgozók maximális száma (kérelem)|200|400|600|800|1000|1200|1400|
 |Egyidejű munkamenetek maximális száma|30000|30000|30000|30000|30000|30000|30000|
 |Replikák száma|1|1|1|1|1|1|1|
-|Több – AZ|–|–|–|–|–|–|–|
-|Felskálázás|–|–|–|–|–|–|–|
+|Több – AZ|N/A|N/A|N/A|N/A|N/A|N/A|N/A|
+|Felskálázás|N/A|N/A|N/A|N/A|N/A|N/A|N/A|
 |Mellékelt biztonsági mentési tár|1X DB méret|1X DB méret|1X DB méret|1X DB méret|1X DB méret|1X DB méret|1X DB méret|
 
 ### <a name="gen5-compute-generation-part-2"></a>Gen5 számítási generációja (2. rész)
@@ -202,7 +202,7 @@ A [kiszolgáló nélküli számítási rétegek](sql-database-serverless.md) jel
 |Virtuális mag|16|18|20|24|32|40|80|
 |Memória (GB)|81,6|91,8|102|122,4|163,2|204|408|
 |Oszlopcentrikus-támogatás|Igen|Igen|Igen|Igen|Igen|Igen|Igen|
-|Memóriában tárolt OLTP-tároló (GB)|–|–|–|–|–|–|–|
+|Memóriában tárolt OLTP-tároló (GB)|N/A|N/A|N/A|N/A|N/A|N/A|N/A|
 |Maximális adatméret (GB)|3072|3072|3072|4096|4096|4096|4096|
 |Napló maximális mérete (GB)|922|922|922|1229|1229|1229|1229|
 |TempDB maximális adatméret (GB)|384|384|384|384|384|384|384|
@@ -213,8 +213,8 @@ A [kiszolgáló nélküli számítási rétegek](sql-database-serverless.md) jel
 |Egyidejű feldolgozók maximális száma (kérelem)|1600|1800|2000|2400|3200|4000|8000|
 |Egyidejű munkamenetek maximális száma|30000|30000|30000|30000|30000|30000|30000|
 |Replikák száma|1|1|1|1|1|1|1|
-|Több – AZ|–|–|–|–|–|–|–|
-|Felskálázás|–|–|–|–|–|–|–|
+|Több – AZ|N/A|N/A|N/A|N/A|N/A|N/A|N/A|
+|Felskálázás|N/A|N/A|N/A|N/A|N/A|N/A|N/A|
 |Mellékelt biztonsági mentési tár|1X DB méret|1X DB méret|1X DB méret|1X DB méret|1X DB méret|1X DB méret|1X DB méret|
 
 ## <a name="general-purpose---provisioned-compute---fsv2-series"></a>Általános célú kiépített számítás – Fsv2 sorozat
@@ -227,7 +227,7 @@ A [kiszolgáló nélküli számítási rétegek](sql-database-serverless.md) jel
 |Virtuális mag|72|
 |Memória (GB)|136|
 |Oszlopcentrikus-támogatás|Igen|
-|Memóriában tárolt OLTP-tároló (GB)|–|
+|Memóriában tárolt OLTP-tároló (GB)|N/A|
 |Maximális adatméret (GB)|4096|
 |Napló maximális mérete (GB)|1024|
 |TempDB maximális adatméret (GB)|333|
@@ -238,8 +238,8 @@ A [kiszolgáló nélküli számítási rétegek](sql-database-serverless.md) jel
 |Egyidejű feldolgozók maximális száma (küldetések)|3600|
 |Egyidejű munkamenetek maximális száma|30000|
 |Replikák száma|1|
-|Több – AZ|–|
-|Felskálázás|–|
+|Több – AZ|N/A|
+|Felskálázás|N/A|
 |Mellékelt biztonsági mentési tár|1X DB méret|
 
 
@@ -281,7 +281,7 @@ A [kiszolgáló nélküli számítási rétegek](sql-database-serverless.md) jel
 |Virtuális mag|7|8|9|10|16|24|
 |Memória (GB)|49|56|63|70|112|168|
 |Oszlopcentrikus-támogatás|Igen|Igen|Igen|Igen|Igen|Igen|
-|Memóriában tárolt OLTP-tároló (GB)|7|8|9,5|11|20|36|
+|Memóriában tárolt OLTP-tároló (GB)|7|8|9.5|11|20|36|
 |Tárolási típus|Helyi SSD|Helyi SSD|Helyi SSD|Helyi SSD|Helyi SSD|Helyi SSD|
 |Maximális adatméret (GB)|1024|1024|1024|1024|1024|1024|
 |Napló maximális mérete (GB)|307|307|307|307|307|307|

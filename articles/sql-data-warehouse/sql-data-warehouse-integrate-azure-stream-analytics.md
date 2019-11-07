@@ -1,6 +1,6 @@
 ---
-title: Az Azure Stream Analytics használata az SQL Data Warehouse |} A Microsoft Docs
-description: Tippek az Azure Stream Analytics használatával Azure SQL Data Warehouse-megoldások fejlesztése.
+title: Azure Stream Analytics használata
+description: Tippek a Azure Stream Analytics és a Azure SQL Data Warehouse használatával a megoldások fejlesztéséhez.
 services: sql-data-warehouse
 author: mlee3gsd
 manager: craigg
@@ -10,60 +10,61 @@ ms.subservice: integration
 ms.date: 03/22/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: 94646c41d9894dd00018ff5ca44d76534d35e8c5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.custom: seo-lt-2019
+ms.openlocfilehash: 63803f3ac477e48d8d1c14a72e2ee9b9d4860047
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65873269"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73685721"
 ---
-# <a name="use-azure-stream-analytics-with-sql-data-warehouse"></a>Az Azure Stream Analytics használata SQL Data warehouse-bA
-Az Azure Stream Analytics egy teljes körűen felügyelt szolgáltatást, amely kis késleltetésű, magas rendelkezésre állású, méretezhető összetett eseményfeldolgozást keresztül streamelési adatok a felhőben. Olvassa el is alapismeretek a Mobilfunkciók [Azure Stream Analytics bemutatása][Introduction to Azure Stream Analytics]. Ezután megismerheti a Stream Analytics egy teljes körű megoldás létrehozása a következő a [első lépései az Azure Stream Analytics] [ Get started using Azure Stream Analytics] oktatóanyag.
+# <a name="use-azure-stream-analytics-with-sql-data-warehouse"></a>Azure Stream Analytics használata a SQL Data Warehouse
+A Azure Stream Analytics egy teljes körűen felügyelt szolgáltatás, amely kis késleltetésű, magasan elérhető, skálázható, összetett eseményt biztosít a felhőben tárolt adatfolyam-adatfeldolgozáshoz. Az alapvető tudnivalókat a [Azure stream Analytics bevezetésének][Introduction to Azure Stream Analytics]olvasásával ismerheti meg. Ezt követően megtudhatja, hogyan hozhat létre teljes körű megoldást a Stream Analytics az [Azure stream Analytics oktatóanyag használatának első lépéseivel][Get started using Azure Stream Analytics] .
 
-Ebből a cikkből megtudhatja, az Azure SQL Data Warehouse-adatbázis használata a Stream Analytics-feladatok kimeneti fogadójaként.
+Ebből a cikkből megtudhatja, hogyan használhatja a Azure SQL Data Warehouse-adatbázist kimeneti fogadóként a Stream Analytics feladatokhoz.
 
 ## <a name="prerequisites"></a>Előfeltételek
-Először haladjon végig a következő lépéseket a [első lépései az Azure Stream Analytics] [ Get started using Azure Stream Analytics] oktatóanyag.  
+Először hajtsa végre az alábbi lépéseket az első [lépések Azure stream Analytics][Get started using Azure Stream Analytics] oktatóanyagban.  
 
-1. Hozzon létre egy Event Hub-bemenet
-2. Konfigurálja és indítsa el az eseménylétrehozó alkalmazás
-3. Stream Analytics-feladat kiépítése
-4. Adja meg a feladat bemeneti és a lekérdezés
+1. Event hub-bemenet létrehozása
+2. Event Generator-alkalmazás konfigurálása és elindítása
+3. Stream Analytics-feladatok kiépítése
+4. A feladatok bemenetének és lekérdezésének megadása
 
-Ezután hozzon létre egy Azure SQL Data Warehouse-adatbázis
+Ezután hozzon létre egy Azure SQL Data Warehouse adatbázist
 
-## <a name="specify-job-output-azure-sql-data-warehouse-database"></a>Adja meg a feladat kimenete: Az Azure SQL Data Warehouse-adatbázis
+## <a name="specify-job-output-azure-sql-data-warehouse-database"></a>Adja meg a feladatok kimenetét: Azure SQL Data Warehouse adatbázis
 ### <a name="step-1"></a>1\. lépés
-A Stream Analytics-feladat kattintson **kimeneti** , az oldalon, majd kattintson a felső **hozzáadása**.
+A Stream Analytics-feladatokban kattintson a **kimenet** elemre az oldal tetején, majd kattintson a **Hozzáadás**gombra.
 
 ### <a name="step-2"></a>2\. lépés
-Válassza ki az SQL Database.
+Válassza a SQL Database lehetőséget.
 
 ### <a name="step-3"></a>3\. lépés
-A következő oldalon adja meg a következő értékeket:
+Adja meg a következő értékeket a következő oldalon:
 
-* *Kimeneti Alias*: Adjon meg egy rövid nevet a feladat kimenetének.
+* *Kimeneti alias*: adjon meg egy rövid nevet a feladatok kimenetének.
 * *Előfizetés*:
-  * Ha az SQL Data Warehouse-adatbázis nem ugyanahhoz az előfizetéshez tartozik, mint a Stream Analytics-feladat, válassza ki az SQL Database az aktuális előfizetésben.
-  * Ha az adatbázis egy másik előfizetésben található, válassza ki az SQL Database egy másik előfizetésből.
-* *Adatbázis*: Adja meg a cél-adatbázis nevét.
-* *Kiszolgálónév*: Adja meg az imént megadott adatbázis a kiszolgáló nevét. Az Azure portal segítségével megkeresésével.
+  * Ha a SQL Data Warehouse-adatbázis a Stream Analytics feladatokhoz tartozó előfizetésben szerepel, válassza a SQL Database használata a jelenlegi előfizetésből lehetőséget.
+  * Ha az adatbázis egy másik előfizetésben található, válassza a SQL Database használata másik előfizetésből lehetőséget.
+* *Adatbázis*: adja meg a céladatbázis nevét.
+* *Kiszolgáló neve*: adja meg az imént megadott adatbázis kiszolgálójának nevét. Ennek megkereséséhez használhatja a Azure Portal.
 
 ![][server-name]
 
-* *Felhasználónév*: Adja meg azon felhasználó felhasználónevét,-fiókot, amely rendelkezik írási engedéllyel az adatbázis.
-* *Jelszó*: A megadott felhasználói fiók jelszavát adja meg.
-* *tábla*: Adja meg a céloldali tábla nevét az adatbázisban.
+* *Felhasználónév*: adja meg egy olyan fiók felhasználónevét, amely rendelkezik írási engedéllyel az adatbázishoz.
+* *Password (jelszó*): adja meg a megadott felhasználói fiók jelszavát.
+* *Tábla*: adja meg a cél tábla nevét az adatbázisban.
 
 ![][add-database]
 
 ### <a name="step-4"></a>4\. lépés
-Kattintson a pipa gombra a feladat kimenetének hozzáadása, és győződjön meg arról, hogy Stream Analytics képes csatlakozni az adatbázishoz.
+Kattintson a pipa gombra a feladatok kimenetének hozzáadásához és annak ellenőrzéséhez, hogy a Stream Analytics sikeresen tud-e csatlakozni az adatbázishoz.
 
-Sikeres a kapcsolat az adatbázissal, látni fogja a portálon értesítést. Az adatbázis kapcsolatának teszteléséhez a vizsgálat gombra.
+Amikor az adatbázishoz való csatlakozás sikeres, megjelenik egy értesítés a portálon. A teszt gombra kattintva tesztelheti a kapcsolódást az adatbázishoz.
 
 ## <a name="next-steps"></a>További lépések
-Integráció áttekintését lásd: [SQL Data Warehouse-integráció áttekintése][SQL Data Warehouse integration overview].
+Az integráció áttekintése: [SQL Data Warehouse integráció áttekintése][SQL Data Warehouse integration overview].
 
 További fejlesztési tippek: [SQL Data Warehouse fejlesztői áttekintés][SQL Data Warehouse development overview].
 

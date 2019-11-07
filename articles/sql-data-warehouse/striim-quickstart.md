@@ -1,6 +1,6 @@
 ---
-title: Gyors üzembe helyezési Striim az Azure SQL Data Warehouse |} A Microsoft Docs
-description: Gyors használatbavétel a Striim és az Azure SQL Data warehouse-bA.
+title: Striim – első lépések
+description: Gyorsan elsajátíthatja a Striim és a Azure SQL Data Warehouse.
 services: sql-data-warehouse
 author: mlee3gsd
 manager: craigg
@@ -10,58 +10,59 @@ ms.subservice: integration
 ms.date: 10/12/2018
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: 8ed9936884a648d736942caecade2ac3c2980e67
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.custom: seo-lt-2019
+ms.openlocfilehash: 65dc0b8fcece4364f3828fee09221612b999df4e
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65873407"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73685348"
 ---
-# <a name="striim-azure-sql-dw-marketplace-offering-install-guide"></a>Striim Azure SQL DW Piactéri ajánlat telepítési útmutató
+# <a name="striim-azure-sql-dw-marketplace-offering-install-guide"></a>A Striim Azure SQL DW Marketplace-ajánlat telepítési útmutatója
 
-Ez a rövid útmutató azt feltételezi, hogy már rendelkezik egy meglévő példányát az SQL Data warehouse-bA.
+Ez a rövid útmutató azt feltételezi, hogy már rendelkezik SQL Data Warehouse meglévő példányával.
 
-Az Azure Marketplace-en Striim kereshet, és válassza ki a Striim Adatintegráció az SQL Data warehouse-ba (előkészített) lehetőséget 
+Keresse meg a Striim az Azure Marketplace-en, és válassza ki a Striim az adatintegrációhoz SQL Data Warehouse (szakaszos) beállítást. 
 
-![Telepítse a Striim][install]
+![A Striim telepítése][install]
 
-A Striim virtuális gép konfigurálása a megadott tulajdonságokkal, jegyezze fel a Striim fürt nevét, a jelszó és a rendszergazdai jelszó
+Konfigurálja a Striim virtuális gépet a megadott tulajdonságokkal, és jegyezze fel a Striim-fürt nevét, jelszavát és rendszergazdai jelszavát.
 
 ![Striim konfigurálása][configure]
 
-Üzembe helyezése után kattintson a \<virtuális gép neve >-masternode az Azure Portalon kattintson a Kapcsolódás elemre, és másolja a virtuális gép helyi fiókjával bejelentkezés 
+Az üzembe helyezést követően kattintson \<virtuális gép neve >-masternode elemre a Azure Portalban, kattintson a kapcsolat elemre, és másolja a bejelentkezést a VM helyi fiók használatával 
 
-![Striim csatlakozhat az SQL Data warehouse-bA][connect]
+![A Striim SQL Data Warehousehoz való kapcsolódása][connect]
 
-Töltse le a sqljdbc42.jar a <https://www.microsoft.com/en-us/download/details.aspx?id=54671> a helyi gépen. 
+Töltse le a sqljdbc42. jar fájlt <https://www.microsoft.com/en-us/download/details.aspx?id=54671>ról a helyi gépre. 
 
-Nyisson meg egy parancssori ablakot, és módosítsa a könyvtárat, amelybe letöltötte a JDBC jar. Szolgáltatáskapcsolódási pont a jar-fájlt a Striim virtuális gépre, a cím és jelszó lekérése az Azure Portalon
+Nyisson meg egy parancssori ablakot, és változtassa meg a könyvtárakat a JDBC jar letöltésére. SCP a jar-fájlt a Striim virtuális géphez, és a Azure Portal címről és jelszaváról
 
-![Másolja a jar-fájlt a virtuális géphez][copy-jar]
+![Jar-fájl másolása a virtuális gépre][copy-jar]
 
-Nyisson meg egy másik parancssori ablakot, vagy használjon egy ssh segédprogram ssh a Striim be a fürtben
+Nyisson meg egy másik parancssori ablakot, vagy használjon SSH-segédprogramot SSH-ba a Striim-fürtön
 
-![SSH-t a fürt][ssh]
+![SSH a fürtbe][ssh]
 
-Hajtsa végre az alábbi parancsokat a JDBC jar-fájl áthelyezése a Striim lib könyvtárba, és indítsa el, és a kiszolgáló leállítására.
+A következő parancsok végrehajtásával helyezze át a JDBC jar-fájlt a Striim lib könyvtárába, és indítsa el és állítsa le a kiszolgálót.
 
-   1. sudo su
-   2. cd /tmp
-   3. mv sqljdbc42.jar /opt/striim/lib
-   4. systemctl stop striim-csomópont
-   5. striim – dbms systemctl stop
-   6. systemctl kezdő striim – dbms
-   7. systemctl kezdő striim-csomópont
+   1. sudo Su
+   2. CD-/tmp
+   3. MV sqljdbc42. jar/opt/striim/lib
+   4. systemctl leállítása striim-Node
+   5. systemctl leállítása striim – adatbázis-kezelő
+   6. systemctl Start striim – adatbázis-kezelő
+   7. systemctl-striim indítása – csomópont
 
-![A Striim fürt elindításához][start-striim]
+![A Striim-fürt elindítása][start-striim]
 
-Most nyissa meg a kedvenc böngészőjét, és navigáljon \<DNS-neve >: 9080
+Most nyissa meg a kedvenc böngészőjét, és navigáljon \<DNS-név >: 9080
 
-![Keresse meg a bejelentkezési képernyőn][navigate]
+![Lépjen a bejelentkezési képernyőre][navigate]
 
-Jelentkezzen be a felhasználónevét és jelszavát, állítsa be az Azure Portalon, és válassza az előnyben részesített varázsló első lépései, vagy az alkalmazások oldalon húzza a használatának megkezdéséhez, és dobja el a felhasználói felület
+Jelentkezzen be a Azure Portalban beállított felhasználónévvel és jelszóval, és válassza ki a kívánt varázslót a kezdéshez, vagy lépjen az alkalmazások oldalra az egérrel a fogd és vidd felhasználói felület használatának megkezdéséhez.
 
-![Kiszolgáló hitelesítő adataikkal jelentkezzenek be][login]
+![Bejelentkezés kiszolgálói hitelesítő adatokkal][login]
 
 
 

@@ -7,19 +7,19 @@ ms.service: private-link
 ms.topic: article
 ms.date: 09/16/2019
 ms.author: kumud
-ms.openlocfilehash: c67d2cd4e90b2fa61a4d95e89a68c888a6e1fe3f
-ms.sourcegitcommit: a6718e2b0251b50f1228b1e13a42bb65e7bf7ee2
+ms.openlocfilehash: 57ab18c8dfffb6994983179f434491b97589ebda
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71273636"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73693229"
 ---
 # <a name="create-a-private-link-service-using-azure-cli"></a>Privát kapcsolati szolgáltatás létrehozása az Azure CLI-vel
 Ebből a cikkből megtudhatja, hogyan hozhat létre egy privát hivatkozási szolgáltatást az Azure-ban az Azure CLI használatával.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Ha az Azure CLI helyi telepítését és használatát választja, akkor ehhez a rövid útmutatóhoz az Azure CLI legújabb verzióját kell használnia. A telepített verziójának megkereséséhez `az --version`futtassa a parancsot. További információ: az [Azure CLI telepítése](/cli/azure/install-azure-cli) a telepítéshez vagy a frissítéshez.
+Ha az Azure CLI helyi telepítését és használatát választja, akkor ehhez a rövid útmutatóhoz az Azure CLI legújabb verzióját kell használnia. A telepített verzió megkereséséhez futtassa a `az --version`. További információ: az [Azure CLI telepítése](/cli/azure/install-azure-cli) a telepítéshez vagy a frissítéshez.
 ## <a name="create-a-private-link-service"></a>Privát kapcsolati szolgáltatás létrehozása
 ### <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
@@ -104,7 +104,7 @@ az network private-link-service create \
 ```
 A létrehozást követően jegyezze fel a Private link Service AZONOSÍTÓját. Később szüksége lesz erre a szolgáltatásra való kapcsolódás igénylésére.  
  
-Ebben a szakaszban a privát kapcsolati szolgáltatás sikeresen létrejött, és készen áll a forgalom fogadására. Vegye figyelembe, hogy a fenti példa csak a privát kapcsolati szolgáltatás Azure CLI-vel történő létrehozását mutatja be.  Nem konfiguráltuk a terheléselosztó-háttér készleteit vagy bármely alkalmazást a háttér-készleteken a forgalom figyelésére. Ha szeretné megtekinteni a végpontok közötti adatforgalom folyamatát, javasoljuk, hogy az alkalmazást a standard Load Balancer mögött konfigurálja.  
+Ebben a szakaszban a privát kapcsolati szolgáltatás sikeresen létrejött, és készen áll a forgalom fogadására. Vegye figyelembe, hogy a fenti példa csak a privát kapcsolati szolgáltatás Azure CLI-vel történő létrehozását mutatja be.  Nem konfiguráltuk a terheléselosztó-háttér készleteit vagy bármely alkalmazást a háttér-készleteken a forgalom figyelésére. Ha szeretné megtekinteni a végpontok közötti adatforgalmat, javasoljuk, hogy az alkalmazást a standard Load Balancer mögött konfigurálja.  
  
 Ezután bemutatjuk, hogyan képezheti le ezt a szolgáltatást egy másik virtuális hálózatban lévő privát végpontra az Azure CLI használatával. Ez a példa a privát végpont létrehozására és az Azure CLI használatával a fent létrehozott privát kapcsolati szolgáltatáshoz való csatlakozásra korlátozódik. Emellett a virtuális hálózatban virtuális gépeket is létrehozhat, hogy forgalmat küldjön/fogadjon a privát végpontnak.        
  
@@ -119,7 +119,7 @@ az network vnet create \
 --address-prefix 10.0.0.0/16  
 ```
 ### <a name="create-the-subnet"></a>Az alhálózat létrehozása 
-Hozzon létre egy alhálózatot a virtuális hálózatban az [az Network vnet subnet Create](/cli/azure/network/vnet/subnet#az-network-vnet-subnet-create)paranccsal. Ez a példa létrehoz egy *mySubnet* nevű alhálózatot a *myPEVnet* nevű virtuális hálózatban az *myResourcegroup*nevű erőforráscsoport-csoportban: 
+Hozzon létre egy alhálózatot a virtuális hálózatban az [az Network vnet subnet Create](/cli/azure/network/vnet/subnet#az-network-vnet-subnet-create)paranccsal. Ez a példa létrehoz egy *mySubnet* nevű alhálózatot a *myResourcegroup*nevű *myPEVnet* nevű virtuális hálózatban: 
 
 ```azurecli-interactive 
 az network vnet subnet create \
@@ -151,7 +151,7 @@ az network private-endpoint create \
 --connection-name myPEConnectingPLS \
 --location westcentralus 
 ```
-A privát *kapcsolat erőforrás-azonosítóját* `az network private-link-service show` a Private link Service szolgáltatásban szerezheti be. Az azonosító a következőképpen fog kinézni:   
+A *magánhálózati kapcsolat erőforrás-azonosítóját* a `az network private-link-service show` a Private link Service szolgáltatásban kérheti le. Az azonosító a következőképpen fog kinézni:   
 /subscriptions/subID/resourceGroups/*resourcegroupname*/Providers/Microsoft.Network/privateLinkServices/**privatelinkservicename** 
  
 ## <a name="show-private-link-service-connections"></a>Magánhálózati kapcsolati szolgáltatás kapcsolatainak megjelenítése 

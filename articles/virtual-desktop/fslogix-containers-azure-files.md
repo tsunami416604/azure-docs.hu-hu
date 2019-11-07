@@ -1,5 +1,5 @@
 ---
-title: FSLogix-profilok és Azure Files a Windows rendszerű virtuális asztali környezetekben – Azure
+title: Windows rendszerű virtuális asztali FSLogix-profilok fájljai – Azure
 description: Ez a cikk a Windows rendszerű virtuális asztali és az Azure Files FSLogix-profilok tárolóit ismerteti.
 services: virtual-desktop
 author: Heidilohr
@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 08/07/2019
 ms.author: helohr
-ms.openlocfilehash: e651695055b9bfdbfbb5b6281af8c1d21235009b
-ms.sourcegitcommit: 9dec0358e5da3ceb0d0e9e234615456c850550f6
+ms.openlocfilehash: cf4274931d83b51afb4a8ada7d1c9040ccce3c14
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2019
-ms.locfileid: "72311796"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73606836"
 ---
 # <a name="fslogix-profile-containers-and-azure-files"></a>FSLogix-profiltárolók és Azure Files
 
@@ -58,7 +58,7 @@ Az alábbi táblázat a korábbi felhasználói profilok technológiáinak előn
 
 A UPD a teljesítményre vonatkozó követelmények kielégítéséhez [közvetlen tárolóhelyek (S2D)](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/rds-storage-spaces-direct-deployment) szükséges. A UPD Server Message Block (SMB) protokollt használ. Átmásolja a profilt arra a virtuális gépre, amelyben a felhasználó naplózva van. A UPD és a S2D a Windows rendszerű virtuális asztali környezethez ajánlott megoldás.  
 
-#### <a name="cost"></a>Költség
+#### <a name="cost"></a>Költségek
 
 Bár a S2D-fürtök a szükséges teljesítményt érik el, a nagyvállalati ügyfelek számára költséges költség, különösen a kis-és közepes méretű vállalkozások (SMB) ügyfelei számára. Ebben a megoldásban a vállalatok a Storage-lemezekért fizetnek, valamint a megosztások lemezeit használó virtuális gépek költségeit.
 
@@ -93,7 +93,7 @@ Annak biztosítása érdekében, hogy a Windows rendszerű virtuális asztali k�
 - Az optimális teljesítmény érdekében a tárolási megoldásnak és a FSLogix-profil tárolójának ugyanabban az adatközpont-helyen kell lennie.
 - A fő lemezképet tartalmazó Storage-fióknak ugyanabban a régióban és előfizetésben kell lennie, ahol a virtuális gépek üzembe lettek kiépítve.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A következő útmutatók segítségével állíthatja be a Windows rendszerű virtuális asztali környezetet.
 

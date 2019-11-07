@@ -2,17 +2,17 @@
 title: Azure HDInsight virtuális hálózati architektúra
 description: Ismerje meg a HDInsight-fürt Azure-Virtual Network való létrehozásakor elérhető erőforrásokat.
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 03/26/2019
-ms.author: hrasheed
-ms.openlocfilehash: 340974201d62f97669db442f4a95439a6ac90a5e
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.date: 10/31/2019
+ms.openlocfilehash: 0a1139f7bf1711a5f6d980e67a8a9027bfd3af52
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70960625"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73665322"
 ---
 # <a name="azure-hdinsight-virtual-network-architecture"></a>Azure HDInsight virtuális hálózati architektúra
 
@@ -22,7 +22,7 @@ Ez a cikk ismerteti azokat az erőforrásokat, amelyek akkor jelennek meg, amiko
 
 Az Azure HDInsight-fürtök különböző típusú virtuális gépekkel vagy csomópontokkal rendelkeznek. Minden csomópont-típus a rendszer működésében játszik szerepet. A következő táblázat összefoglalja ezeket a csomópont-típusokat és azok szerepköreit a fürtben.
 
-| Type | Leírás |
+| Típus | Leírás |
 | --- | --- |
 | Átjárócsomópont |  Az Apache Storm kivételével az összes fürtjénél a fő csomópontok futtatják az elosztott alkalmazás végrehajtását kezelő folyamatokat. A fő csomópont egyben a csomópont is, amelyből SSH-ba helyezheti és végrehajthatja azokat az alkalmazásokat, amelyek a fürt erőforrásai között futnak. A fő csomópontok száma a fürt összes típusa esetében kettőnél van rögzítve. |
 | ZooKeeper csomópont | A Zookeeper az adatfeldolgozást végző csomópontok között koordinálja a feladatokat. Emellett a fő csomópontot is vezeti, és nyomon követi, hogy melyik főcsomóponton fut egy adott főkiszolgáló. A ZooKeeper-csomópontok száma három helyen van rögzítve. |
@@ -53,7 +53,7 @@ A következő hálózati erőforrások automatikusan létrejönnek a HDInsight h
 
 | Hálózati erőforrás | Szám jelen | Részletek |
 | --- | --- | --- |
-|Load Balancer | három | |
+|Terheléselosztó | három | |
 |Hálózati illesztők | kilenc | Ez az érték egy normál fürtön alapul, ahol minden egyes csomópont saját hálózati adapterrel rendelkezik. A kilenc csatoló a két fő csomópontra, három Zookeeper-csomópontra, két feldolgozói csomópontra és az előző táblázatban említett két átjáró-csomópontra mutat. |
 |Nyilvános IP-címek | kettő |    |
 
@@ -61,17 +61,17 @@ A következő hálózati erőforrások automatikusan létrejönnek a HDInsight h
 
 A HDInsight-fürtöt háromféle módon érheti el:
 
-- Egy HTTPS-végpont a virtuális hálózaton kívül a `CLUSTERNAME.azurehdinsight.net`következő helyen:.
-- Egy SSH-végpont, amely közvetlenül csatlakozik a átjárócsomóponthoz `CLUSTERNAME-ssh.azurehdinsight.net`a következő helyen:.
-- Egy HTTPS-végpont a virtuális hálózaton `CLUSTERNAME-int.azurehdinsight.net`belül. Figyelje meg az "-int" kifejezést ebben az URL-ben. Ez a végpont a virtuális hálózatban lévő magánhálózati IP-címekre lesz feloldva, és nem érhető el a nyilvános internetről.
+- Egy HTTPS-végpont a virtuális hálózaton kívül a következő helyen: `CLUSTERNAME.azurehdinsight.net`.
+- Egy SSH-végpont, amely közvetlenül csatlakozik a átjárócsomóponthoz `CLUSTERNAME-ssh.azurehdinsight.net`.
+- A virtuális hálózat `CLUSTERNAME-int.azurehdinsight.net`ján belüli HTTPS-végpont. Figyelje meg az "-int" kifejezést ebben az URL-ben. Ez a végpont a virtuális hálózatban lévő magánhálózati IP-címekre lesz feloldva, és nem érhető el a nyilvános internetről.
 
 Ez a három végpont mindegyike hozzá van rendelve egy terheléselosztó.
 
 A rendszer a nyilvános IP-címeket is megadja a két végpont számára, amelyek engedélyezik a kapcsolódást a virtuális hálózaton kívülről.
 
-1. Egy nyilvános IP-cím van hozzárendelve a terheléselosztó számára a teljes tartománynév (FQDN) számára, amelyet az internetről `CLUSTERNAME.azurehdinsight.net`a fürthöz való csatlakozáskor kell használni.
-1. A második nyilvános IP-cím csak az SSH-tartománynévhez `CLUSTERNAME-ssh.azurehdinsight.net`használatos.
+1. Egy nyilvános IP-cím van hozzárendelve a terheléselosztó számára a teljes tartománynévhez (FQDN), amelyet a fürthöz való csatlakozáskor használni kell az Internet `CLUSTERNAME.azurehdinsight.net`.
+1. A második nyilvános IP-cím csak az SSH-beli tartománynév `CLUSTERNAME-ssh.azurehdinsight.net`használatos.
 
 ## <a name="next-steps"></a>További lépések
 
-* [Biztonságos bejövő forgalom HDInsight-fürtökhöz privát végponttal rendelkező virtuális hálózaton](https://azure.microsoft.com/blog/secure-incoming-traffic-to-hdinsight-clusters-in-a-vnet-with-private-endpoint/)
+- [Biztonságos bejövő forgalom HDInsight-fürtökhöz privát végponttal rendelkező virtuális hálózaton](https://azure.microsoft.com/blog/secure-incoming-traffic-to-hdinsight-clusters-in-a-vnet-with-private-endpoint/)

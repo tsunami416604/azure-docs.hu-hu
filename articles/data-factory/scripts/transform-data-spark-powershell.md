@@ -1,5 +1,5 @@
 ---
-title: PowerShell-szkript – az adatátalakítás a felhőben Data Factory használatával | Microsoft Docs
+title: 'PowerShell-parancsfájl – adatátalakítás a felhőben Data Factory használatával '
 description: Ez a PowerShell-parancsfájl egy Azure HDInsight Spark fürtön futó Spark-program futtatásával átalakítja a felhőben tárolt adatfájlokat.
 author: djpmsft
 ms.author: daperlov
@@ -9,12 +9,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 09/12/2017
-ms.openlocfilehash: 973efe90ea1da68e4c4e4b0dbbb4c191be18213d
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 53f64103819476e4efe918bd7a7be4ee2a1bcca3
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70140879"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73684319"
 ---
 # <a name="powershell-script---transform-data-in-cloud-using-azure-data-factory"></a>PowerShell-parancsfájl – adatátalakítás a felhőben Azure Data Factory használatával
 
@@ -62,7 +62,7 @@ Ez a PowerShell-parancsfájl egy olyan folyamatot hoz létre, amely egy Azure HD
 
 ### <a name="upload-the-input-file"></a>A bemeneti fájl feltöltése
 1. Hozzon létre egy **minecraftstory.txt** nevű fájlt némi szöveges tartalommal. A Spark-program megszámolja a szavak számát ebben a szövegben. 
-2. Hozzon létre egy `inputfiles` nevű almappát a blob `spark` -tároló mappájában. 
+2. Hozzon létre egy `inputfiles` nevű almappát a blob tároló `spark` mappában. 
 3. Töltse fel a `minecraftstory.txt` fájlt az `inputfiles` almappába. 
 
 ## <a name="sample-script"></a>Példaszkript
@@ -94,7 +94,7 @@ Ez a szkript a következő parancsokat használja:
 | [Set-AzDataFactoryV2](/powershell/module/az.datafactory/set-Azdatafactoryv2) | Adat-előállító létrehozása |
 | [Set-AzDataFactoryV2LinkedService](/powershell/module/az.datafactory/set-Azdatafactoryv2linkedservice) | Létrehoz egy társított szolgáltatást az adatelőállítóban. A társított szolgáltatások adattárakhoz vagy számítási feladatokhoz kapcsolódnak egy adatgyárban. |
 | [Set-AzDataFactoryV2Pipeline](/powershell/module/az.datafactory/set-Azdatafactoryv2pipeline) | Folyamat létrehozása az adatelőállítóban. Egy folyamat egy vagy több olyan tevékenységet tartalmaz, amely egy bizonyos műveletet hajt végre. Ebben a folyamatban egy Spark-tevékenység egy Azure HDInsight Spark-fürtön futó program futtatásával átalakítja az adathalmazt. |
-| [Invoke-AzDataFactoryV2Pipeline](/powershell/module/az.datafactory/invoke-Azdatafactoryv2pipeline) | Létrehoz egy futtatást a folyamathoz. Más szóval a folyamat futtatása folyamatban van. |
+| [Meghívás – AzDataFactoryV2Pipeline](/powershell/module/az.datafactory/invoke-Azdatafactoryv2pipeline) | Létrehoz egy futtatást a folyamathoz. Más szóval a folyamat futtatása folyamatban van. |
 | [Get-AzDataFactoryV2ActivityRun](/powershell/module/az.datafactory/get-Azdatafactoryv2activityrun) | A folyamaton belüli tevékenység futtatásának (tevékenység futtatása) részleteinek beolvasása. 
 | [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | Töröl egy erőforráscsoportot az összes beágyazott erőforrással együtt. |
 |||
@@ -103,4 +103,4 @@ Ez a szkript a következő parancsokat használja:
 
 Az Azure PowerShellről további tudnivalókért tekintse meg az [Azure PowerShell dokumentációt](https://docs.microsoft.com/powershell/).
 
-További Azure Data Factory PowerShell-szkriptek is találhatók a [Azure Data Factory PowerShell](../samples-powershell.md)-mintákban.
+További Azure Data Factory PowerShell-szkriptek is találhatók a [Azure Data Factory PowerShell-mintákban](../samples-powershell.md).

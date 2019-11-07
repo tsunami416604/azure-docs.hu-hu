@@ -1,5 +1,5 @@
 ---
-title: Meglévő Azure SQL Data Warehouse migrálása a Gen2-be | Microsoft Docs
+title: Az adattárház migrálása a Gen2-be
 description: Útmutató egy meglévő adattárház Gen2-re történő áttelepítéséhez és az áttelepítési ütemterv régiónként történő áttelepítéséhez.
 services: sql-data-warehouse
 author: mlee3gsd
@@ -10,12 +10,13 @@ ms.assetid: 04b05dea-c066-44a0-9751-0774eb84c689
 ms.service: sql-data-warehouse
 ms.topic: article
 ms.date: 07/22/2019
-ms.openlocfilehash: ac478a7b75bbac0c5e7f59cbe565ec2bbcd643ce
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.custom: seo-lt-2019
+ms.openlocfilehash: 888f50d645c9b3babf95335e434db65423108ccb
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70900318"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73693032"
 ---
 # <a name="upgrade-your-data-warehouse-to-gen2"></a>Az adattárház frissítése a Gen2
 
@@ -28,45 +29,45 @@ A Microsoft segít elvezetni az adatraktár futtatásának belépési szintű k�
 
 A következő táblázat összefoglalja a régiót, ha az alsó Gen2 számítási szintje elérhető lesz, és az automatikus frissítés elindul. A dátumok változhatnak. Térjen vissza, és tekintse meg, hogy mikor válik elérhetővé a régió.
 
-\*azt jelzi, hogy a régióhoz megadott ütemterv jelenleg nem érhető el.
+\* azt jelzi, hogy a régióhoz megadott ütemterv jelenleg nem érhető el.
 
 | **Régió** | **Alacsonyabb Gen2 érhető el** | **Automatikus frissítések kezdete** |
 |:--- |:--- |:--- |
-| Kelet-Ausztrália |Elérhető |Kész |
-| Délkelet-Ausztrália |Elérhető |Kész |
-| Dél-Brazília |Elérhető |Kész |
-| Közép-Kanada |Elérhető |Kész |
+| Kelet-Ausztrália |Elérhető |Befejezve |
+| Délkelet-Ausztrália |Elérhető |Befejezve |
+| Dél-Brazília |Elérhető |Befejezve |
+| Közép-Kanada |Elérhető |Befejezve |
 | Kelet-Kanada |2020. június 1. |2020. július 1. |
-| USA középső régiója |Elérhető |Kész |
+| USA középső régiója |Elérhető |Befejezve |
 | Kelet-Kína |\* |\* |
-| Kelet-Kína 2 |Elérhető |Kész |
+| Kína 2. keleti régiója |Elérhető |Befejezve |
 | Észak-Kína |\* |\* |
-| Észak-Kína 2 |Elérhető |Kész |
-| Kelet-Ázsia |Elérhető |Kész |
-| East US |Elérhető |Kész |
-| USA 2. keleti régiója |Elérhető |Kész |
+| Kína 2. északi régiója |Elérhető |Befejezve |
+| Kelet-Ázsia |Elérhető |Befejezve |
+| USA keleti régiója |Elérhető |Befejezve |
+| USA 2. keleti régiója |Elérhető |Befejezve |
 | Közép-Franciaország |Elérhető |Folyamatban |
 | Közép-Németország |\* |\* |
-| Németország nyugati középső régiója |2019. szeptember 1.|2019. október 1. |
-| Közép-India |Elérhető |Kész |
-| Dél-India |Elérhető |Kész |
+| Középnyugat-Németország |2019. szeptember 1.|2019. október 1. |
+| Közép-India |Elérhető |Befejezve |
+| Dél-India |Elérhető |Befejezve |
 | Nyugat-India |2019. július 1. |Folyamatban |
-| Kelet-Japán |Elérhető |Kész |
-| Nyugat-Japán |Elérhető |Kész |
-| Korea középső régiója |Elérhető |Kész |
-| Korea déli régiója |Elérhető |Kész |
-| USA északi középső régiója |Elérhető |Kész |
-| Észak-Európa |Elérhető |Kész |
-| Dél-Afrika északi régiója |2019. július 12. |Kész |
-| USA déli középső régiója |Elérhető |Kész |
-| Délkelet-Ázsia |Elérhető |Kész |
-| Egyesült Arab Emírségek északi régiója |2019. július 20. |Kész |
-| Az Egyesült Királyság déli régiója |Elérhető |Folyamatban |
+| Kelet-Japán |Elérhető |Befejezve |
+| Nyugat-Japán |Elérhető |Befejezve |
+| Korea középső régiója |Elérhető |Befejezve |
+| Korea déli régiója |Elérhető |Befejezve |
+| USA északi középső régiója |Elérhető |Befejezve |
+| Észak-Európa |Elérhető |Befejezve |
+| Dél-Afrika északi régiója |2019. július 12. |Befejezve |
+| USA déli középső régiója |Elérhető |Befejezve |
+| Délkelet-Ázsia |Elérhető |Befejezve |
+| Egyesült Arab Emírségek északi régiója |2019. július 20. |Befejezve |
+| Egyesült Királyság déli régiója |Elérhető |Folyamatban |
 | Az Egyesült Királyság nyugati régiója |Elérhető |Folyamatban |
 | USA nyugati középső régiója |November 1., 2019 |2019. december 1.|
-| Nyugat-Európa |Elérhető |Kész |
-| USA nyugati régiója |Elérhető |Kész |
-| USA nyugati régiója, 2. |Elérhető |Kész |
+| Nyugat-Európa |Elérhető |Befejezve |
+| USA nyugati régiója |Elérhető |Befejezve |
+| USA 2. nyugati régiója |Elérhető |Befejezve |
 
 ## <a name="automatic-upgrade-process"></a>Automatikus frissítési folyamat
 
@@ -88,8 +89,8 @@ Az alábbi lépéseket egy meglévő Gen1-adattárházon végezheti el: saját f
 - [Helyben történő frissítés](upgrade-to-latest-generation.md) – ez a beállítás a meglévő Gen1-adattárházat a Gen2-re frissíti. A frissítési folyamat során az adattárház újraindításakor a kapcsolat rövid csökkenése (körülbelül 5 perc) lesz.  Az adattárház újraindítása után a szolgáltatás teljes mértékben elérhető lesz. Ha a frissítés során problémák merülnek fel, nyisson meg egy [támogatási kérést](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-get-started-create-support-ticket) , és hivatkozzon a "Gen2 upgrade" kifejezésre a lehetséges okok miatt.
 - [Frissítés visszaállítási pontról](sql-data-warehouse-restore.md) – hozzon létre egy felhasználó által definiált visszaállítási pontot az aktuális Gen1-adatraktárban, majd állítsa vissza közvetlenül egy Gen2-példányra. A meglévő Gen1-adattárház továbbra is érvényben marad. A visszaállítás befejezése után a Gen2-adattárház teljes mértékben elérhető lesz a használatra.  Miután futtatta az összes tesztelési és érvényesítési folyamatot a visszaállított Gen2-példányon, törölheti az eredeti Gen1-példányt.
 
-   - 1\. lépés: A Azure Portal [hozza létre a felhasználó által definiált visszaállítási pontot](sql-data-warehouse-restore-active-paused-dw.md#restore-an-existing-data-warehouse-through-the-azure-portal).
-   - 2\. lépés: Felhasználó által definiált visszaállítási pontról történő visszaállításkor állítsa a "teljesítményszint" értéket az előnyben részesített Gen2-szintre.
+   - 1\. lépés: a Azure Portalból [hozzon létre egy felhasználó által definiált visszaállítási pontot](sql-data-warehouse-restore-active-paused-dw.md#restore-an-existing-data-warehouse-through-the-azure-portal).
+   - 2\. lépés: a felhasználó által definiált visszaállítási pontról történő visszaállításkor állítsa a "teljesítményszint" értéket az előnyben részesített Gen2-szintre.
 
 Visszaesést tapasztalhat a teljesítményben, miközben a frissítési folyamat az adatfájlok frissítését végzi a háttérben. A teljesítménycsökkenés teljes időtartama az adatfájlok méretétől függően változik.
 
@@ -104,49 +105,49 @@ További információ: [verziófrissítés a Gen2](upgrade-to-latest-generation.
 
 ## <a name="migration-frequently-asked-questions"></a>Áttelepítés – gyakori kérdések
 
-**K: A Gen2 ára ugyanaz, mint a Gen1?**
+**K: a Gen2 ára ugyanaz, mint a Gen1?**
 
 - V: Igen.
 
-**K: Hogyan befolyásolja a frissítések az Automation-parancsfájlokat?**
+**K: Hogyan érintik a frissítések az Automation-parancsfájlokat?**
 
-- V: A szolgáltatási szintre vonatkozó célkitűzésre hivatkozó Automation-parancsfájlokat úgy kell módosítani, hogy azok megfeleljenek a Gen2-nek.  Tekintse meg [a részleteket.](upgrade-to-latest-generation.md#sign-in-to-the-azure-portal)
+- A: a szolgáltatási szintre vonatkozó célkitűzésekre hivatkozó Automation-parancsfájlokat úgy kell módosítani, hogy azok megfeleljenek a Gen2-nek.  Tekintse meg [a részleteket.](upgrade-to-latest-generation.md#sign-in-to-the-azure-portal)
 
-**K: Mennyi ideig tart az önálló frissítés?**
+**K: mennyi ideig tart az önálló frissítés normál esetben?**
 
-- V: Egy visszaállítási pontról frissítheti a helyet vagy a frissítést.  
+- Válasz: frissítheti a helyet, vagy frissíthet egy visszaállítási pontról.  
    - A helyben történő frissítés során az adattárház egy pillanatra szüneteltethető és folytatható.  A háttérben futó folyamat folytatódni fog, amíg az adattárház online állapotban van.  
    - Ha egy visszaállítási ponton keresztül frissíti a szolgáltatást, a frissítés a teljes visszaállítási folyamaton keresztül történik.
 
-**K: Mennyi ideig tart az automatikus frissítés?**
+**K: mennyi ideig tart az automatikus frissítés?**
 
-- V: A frissítéssel járó tényleges állásidő csak az az időtartam, amely a szolgáltatás szüneteltetéséhez és újraindításához szükséges, azaz 5-10 perc. A rövid állásidőt követően egy háttérfolyamat tárolómigrálást fog futtatni. Az adattárház méretétől függ, hogy a háttérfolyamat mennyi idő alatt hajtja végre a migrálást.
+- A: a frissítés tényleges állásidője csak a szolgáltatás szüneteltetéséhez és folytatásához szükséges idő, amely 5 – 10 percet vesz igénybe. A rövid állásidőt követően egy háttérfolyamat tárolómigrálást fog futtatni. Az adattárház méretétől függ, hogy a háttérfolyamat mennyi idő alatt hajtja végre a migrálást.
 
 **K: Mikor kerül sor az automatikus frissítésre?**
 
-- V: Karbantartási ütemterve alatt. Ha kihasználja a kiválasztott karbantartási ütemtervet, a rendszer a vállalkozása számára csökkentheti a fennakadást.
+- A: a karbantartási ütemterv során. Ha kihasználja a kiválasztott karbantartási ütemtervet, a rendszer a vállalkozása számára csökkentheti a fennakadást.
 
-**K: Mi a teendő, ha úgy tűnik, hogy a háttérben futó frissítési folyamat beragadt?**
+**K: mit tegyek, ha úgy tűnik, hogy a háttérben futó frissítési folyamat beragadt?**
 
- - V: Indítsa el a Oszlopcentrikus-táblák újraindexelését. Vegye figyelembe, hogy a tábla újraindexelése a művelet során offline állapotba kerül.
+ - A: indítsa el a Oszlopcentrikus-táblák újraindexelését. Vegye figyelembe, hogy a tábla újraindexelése a művelet során offline állapotba kerül.
 
-**K: Mi a teendő, ha a Gen2 nem rendelkezik a szolgáltatási szint célkitűzéssel a Gen1?**
-- V: Ha kor DW600 vagy DW1200 futtat a Gen1-on, javasolt a DW500c vagy a DW1000c használata, mivel a Gen2 több memóriát, erőforrást és nagyobb teljesítményt nyújt, mint a Gen1.
+**K: mi a teendő, ha a Gen2 nem rendelkezik a szolgáltatási szint célkitűzéssel a Gen1?**
+- A: Ha kor DW600 vagy DW1200 futtat a Gen1-on, javasolt a DW500c vagy a DW1000c használata, mivel a Gen2 több memóriát, erőforrást és nagyobb teljesítményt nyújt, mint a Gen1.
 
 **K: Letilthatom a Geo-biztonsági mentést?**
-- V: Nem. A Geo-Backup egy vállalati szolgáltatás, amellyel megőrizheti az adattárház rendelkezésre állását abban az esetben, ha egy régió elérhetetlenné válik. Ha további kérdései vannak, nyisson meg egy [támogatási kérést](sql-data-warehouse-get-started-create-support-ticket.md) .
+- A: nem. A Geo-Backup egy vállalati szolgáltatás, amellyel megőrizheti az adattárház rendelkezésre állását abban az esetben, ha egy régió elérhetetlenné válik. Ha további kérdései vannak, nyisson meg egy [támogatási kérést](sql-data-warehouse-get-started-create-support-ticket.md) .
 
-**K: Van különbség a Gen1 és a Gen2 között a T-SQL szintaxisban?**
+**K: van különbség a Gen1 és a Gen2 között a T-SQL szintaxisban?**
 
-- V: A T-SQL nyelvi szintaxisa nem változik a Gen1 és a Gen2 között.
+- Válasz: a T-SQL nyelvi szintaxisa nem változik a Gen1 és a Gen2 között.
 
-**K: Támogatja a Gen2 a karbantartási időszakokat?**
+**K: a Gen2 támogatja a karbantartási időszakokat?**
 
 - V: Igen.
 
 **K: Létrehozhatok új Gen1-példányt a régióm frissítése után?**
 
-- V: Nem. A régió frissítése után az új Gen1-példányok létrehozása le lesz tiltva.
+- A: nem. A régió frissítése után az új Gen1-példányok létrehozása le lesz tiltva.
 
 ## <a name="next-steps"></a>További lépések
 

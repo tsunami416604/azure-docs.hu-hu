@@ -1,5 +1,5 @@
 ---
-title: Üdvözli a wingtips app-Azure SQL Database | Microsoft Docs
+title: 'Üdvözli a wingtips app-Azure SQL Database '
 description: Ismerje meg az adatbázis-bérleti modelleket, valamint a wingtips SaaS-alkalmazással kapcsolatos tudnivalókat a felhőalapú környezet Azure SQL Database.
 keywords: sql database-oktatóanyag
 services: sql-database
@@ -12,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: billgib
 ms.date: 01/25/2019
-ms.openlocfilehash: ca534d3ffcfd1d4caeb9cf755934a846fafae26e
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 6b8cb9bed2f5fdd0b246e73c84731081d0f2e41e
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68570107"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73691824"
 ---
 # <a name="the-wingtip-tickets-saas-application"></a>A Wingtip tickets SaaS-alkalmazás
 
@@ -35,13 +35,13 @@ Az alkalmazás három verziója érhető el; mindegyik megvizsgál egy másik ad
 
 Az önálló alkalmazás/bérlői minta egyetlen bérlői alkalmazást használ az egyes bérlők adatbázisával. Az egyes bérlők alkalmazásait, beleértve az adatbázisát is, külön Azure-erőforráscsoporthoz helyezik üzembe. Az erőforráscsoport a szolgáltató előfizetésében vagy a bérlő előfizetésében is üzembe helyezhető, és a szolgáltató a bérlő nevében felügyelhető. Az önálló alkalmazás/bérlői minta biztosítja a bérlők legnagyobb elkülönítését, de általában a legdrágább, mivel nincs lehetőség több bérlő közötti erőforrások megosztására.  Ez a minta jól használható olyan alkalmazásokhoz, amelyek összetettebbek lehetnek, és amelyek kisebb számú bérlőhöz vannak telepítve.  Önálló telepítések esetén az alkalmazás minden bérlő számára könnyebben testreszabható, mint más mintákban.  
 
-Tekintse meg [][docs-tutorials-for-wingtip-sa] az oktatóanyagokat és a kódot a GitHub [. ../Microsoft/WingtipTicketsSaaS-StandaloneApp][github-code-for-wingtip-sa].
+Tekintse meg az [oktatóanyagokat][docs-tutorials-for-wingtip-sa] és a kódot a GitHub [. ../Microsoft/WingtipTicketsSaaS-StandaloneApp][github-code-for-wingtip-sa].
 
 ## <a name="database-per-tenant-pattern"></a>Adatbázis/bérlői minta
 
 Az adatbázis/bérlői minta a bérlői elkülönítéssel érintett szolgáltatók esetében érvényes, és olyan központi szolgáltatást szeretne futtatni, amely lehetővé teszi a megosztott erőforrások költséghatékony használatát. Létrejön egy adatbázis az egyes helyszínekhez vagy bérlőhöz, és az összes adatbázis központilag felügyelt. Az adatbázisok rugalmas készletekbe helyezhetők, így költséghatékony és könnyen kezelhető a teljesítmény, ami kihasználja a bérlők előre nem látható számítási feladatait. A katalógus-adatbázis a bérlők és az adatbázisaik közötti leképezést tárolja. Ezt a leképezést a [Elastic Database ügyféloldali függvénytárának](sql-database-elastic-database-client-library.md)a szegmensek közötti leképezés-kezelési funkcióival felügyeli, amely hatékony ügyfélkapcsolat-kezelést biztosít az alkalmazás számára.
 
-Tekintse meg [][docs-tutorials-for-wingtip-dpt] az oktatóanyagokat és a kódot a GitHub [. ../Microsoft/WingtipTicketsSaaS-DbPerTenant][github-code-for-wingtip-dpt].
+Tekintse meg az [oktatóanyagokat][docs-tutorials-for-wingtip-dpt] és a kódot a GitHub [. ../Microsoft/WingtipTicketsSaaS-DbPerTenant][github-code-for-wingtip-dpt].
 
 ## <a name="sharded-multi-tenant-database-pattern"></a>Több-bérlős, több-bérlős adatbázis mintája
 
@@ -49,7 +49,7 @@ A több-bérlős adatbázisok a bérlők alacsonyabb díjait kereső szolgáltat
 
 Ez a minta lehetővé teszi a *hibrid* modell használatát is, amelyben optimalizálhatja a költségeket több Bérlővel egy adatbázisban, vagy optimalizálhatja az elkülönítést egyetlen Bérlővel a saját adatbázisában. A választást bérlői bérlői alapon lehet elvégezni, ha a bérlő kiépítve vagy később van, és nincs hatással az alkalmazásra.  Ez a modell hatékonyan használható, ha a bérlők csoportjait különbözőképpen kell kezelni. Az alacsony díjas bérlők például megosztott adatbázisokhoz rendelhetők, míg a prémium szintű bérlők a saját adatbázisaihoz rendelhetők. 
 
-Tekintse meg [][docs-tutorials-for-wingtip-mt] az oktatóanyagokat és a kódot a GitHub [. ../Microsoft/WingtipTicketsSaaS-MultiTenantDb][github-code-for-wingtip-mt].
+Tekintse meg az [oktatóanyagokat][docs-tutorials-for-wingtip-mt] és a kódot a GitHub [. ../Microsoft/WingtipTicketsSaaS-MultiTenantDb][github-code-for-wingtip-mt].
 
 ## <a name="next-steps"></a>További lépések
 

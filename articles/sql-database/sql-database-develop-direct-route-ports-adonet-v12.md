@@ -1,5 +1,5 @@
 ---
-title: '1433-nál nem nagyobb portok a következőhöz: SQL Database | Microsoft Docs'
+title: 1433-nál nem nagyobb portok SQL Database
 description: A ADO.NET és a Azure SQL Database közötti ügyfélkapcsolatok megkerülhetik a proxyt, és közvetlenül a 1433-es portokon keresztül kommunikálnak az adatbázissal.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: MightyPen
 ms.author: genemi
 ms.reviewer: sstein
 ms.date: 04/03/2019
-ms.openlocfilehash: a39cfd1981041c807a91a08c198378d238f0846e
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 38ab3b6b0c64ad17311d15fd12e7625e8aa728ce
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68568918"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73690686"
 ---
 # <a name="ports-beyond-1433-for-adonet-45"></a>1433-nál nem nagyobb portok ADO.NET 4,5
 
@@ -30,11 +30,11 @@ Ez a témakör a ADO.NET 4,5-et vagy újabb verziót használó ügyfelekhez Azu
 
 A Azure SQL Databasehoz való kapcsolódáshoz először azt kell megkérdezni, hogy az ügyfélalkalmazás az Azure Cloud határán *kívül* vagy *belül* fut-e. Az alszakaszok két gyakori forgatókönyvet tárgyalnak.
 
-### <a name="outside-client-runs-on-your-desktop-computer"></a>*Kívül* Ügyfél fut az asztali számítógépen
+### <a name="outside-client-runs-on-your-desktop-computer"></a>*Kívül:* Ügyfél fut az asztali számítógépen
 
 A 1433-as port az egyetlen olyan port, amelyet a SQL Database ügyfélalkalmazás gazdagépét futtató asztali számítógépen kell megnyitni.
 
-### <a name="inside-client-runs-on-azure"></a>*Belül* Az ügyfél az Azure-ban fut
+### <a name="inside-client-runs-on-azure"></a>*Belül:* Az ügyfél az Azure-ban fut
 
 Ha az ügyfél az Azure-felhő határain belül fut, az azt használja, hogy a SQL Database-kiszolgálóval való kommunikációhoz egy *közvetlen útvonalat* hívjon fel. A kapcsolat létrejötte után az ügyfél és az adatbázis közötti további interakciók nem tartalmaznak Azure SQL Database átjárót.
 
@@ -78,11 +78,11 @@ Ez a szakasz a termék verziójára hivatkozó monikereket pontosítja. Emellett
 
 * Microsoft® ODBC-illesztő 17 SQL Server®-Windows, Linux, & macOS https://www.microsoft.com/download/details.aspx?id=56567
 
-* Kapcsolódás Azure SQL Database V12-hez átirányítás útján https://techcommunity.microsoft.com/t5/DataCAT/Connect-to-Azure-SQL-Database-V12-via-Redirection/ba-p/305362
+* Kapcsolódás Azure SQL Database V12-hez átirányítási https://techcommunity.microsoft.com/t5/DataCAT/Connect-to-Azure-SQL-Database-V12-via-Redirection/ba-p/305362
 
 * [TDS protokoll verzióinak listája](https://www.freetds.org/userguide/tdshistory.htm)
 * [SQL Database fejlesztés áttekintése](sql-database-develop-overview.md)
 * [Azure SQL Database tűzfal](sql-database-firewall-configure.md)
-* [Útmutató: A tűzfal beállításainak konfigurálása az SQL Database szolgáltatásban](sql-database-configure-firewall-settings.md)
+* [Útmutató: a tűzfal beállításainak konfigurálása SQL Database](sql-database-configure-firewall-settings.md)
 
 

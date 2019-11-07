@@ -1,5 +1,5 @@
 ---
-title: Felosztás – biztonsági konfiguráció egyesítése | Microsoft Docs
+title: Felosztás – biztonsági konfiguráció egyesítése
 description: Állítsa be a x409 tanúsítványokat a titkosításhoz a Split/Merge szolgáltatással a rugalmas skálázáshoz.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: sstein
 ms.date: 12/18/2018
-ms.openlocfilehash: ada794807f980854c203b56874e452713ecef6ea
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 98d645fc76010d96bc016a63b4882979f3489698
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68568353"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73690146"
 ---
 # <a name="split-merge-security-configuration"></a>Felosztás – biztonsági konfiguráció egyesítése
 
@@ -33,12 +33,12 @@ A tanúsítványok két módon vannak konfigurálva.
 
 A tanúsítványok a nyilvános hitelesítésszolgáltatóktól (CA) vagy a [Windows Certificate Service szolgáltatásból](https://msdn.microsoft.com/library/windows/desktop/aa376539.aspx)szerezhetők be. A tanúsítványok beszerzésének előnyben részesített módszerei.
 
-Ha ezek a beállítások nem érhetők el, önaláírt **tanúsítványokat**is létrehozhat.
+Ha ezek a beállítások nem érhetők el, **önaláírt tanúsítványokat**is létrehozhat.
 
 ## <a name="tools-to-generate-certificates"></a>Tanúsítványok létrehozásához szükséges eszközök
 
-* [makecert.exe](https://msdn.microsoft.com/library/bfsktky3.aspx)
-* [pvk2pfx.exe](https://msdn.microsoft.com/library/windows/hardware/ff550672.aspx)
+* [MakeCert. exe](https://msdn.microsoft.com/library/bfsktky3.aspx)
+* [pvk2pfx. exe](https://msdn.microsoft.com/library/windows/hardware/ff550672.aspx)
 
 ### <a name="to-run-the-tools"></a>Az eszközök futtatása
 
@@ -47,7 +47,7 @@ Ha ezek a beállítások nem érhetők el, önaláírt **tanúsítványokat**is 
     Ha telepítve van, lépjen a következőre:
   
         %ProgramFiles(x86)%\Windows Kits\x.y\bin\x86 
-* A WDK [beszerzése a Windows 8,1 rendszerből: Csomagok és eszközök letöltése](https://msdn.microsoft.com/windows/hardware/gg454513#drivers)
+* A WDK beszerzése a [Windows 8,1 rendszerből: letölthető készletek és eszközök](https://msdn.microsoft.com/windows/hardware/gg454513#drivers)
 
 ## <a name="to-configure-the-ssl-certificate"></a>Az SSL-tanúsítvány konfigurálása
 
@@ -120,7 +120,7 @@ Az alapértelmezett konfiguráció megtagadja a HTTP-végponthoz való hozzáfé
 Az alapértelmezett konfiguráció lehetővé teszi a HTTPS-végponthoz való hozzáférést. Ez a beállítás továbbra is korlátozható.
 
 ### <a name="changing-the-configuration"></a>A konfiguráció módosítása
-A és a végpontra vonatkozó hozzáférés-  **\<** vezérlési szabályok csoportja a EndpointAcls > szakaszban van konfigurálva a **szolgáltatás konfigurációs fájljában**.
+A és a végpontra vonatkozó hozzáférés-vezérlési szabályok csoportja a **szolgáltatás konfigurációs fájljának** **\<EndpointAcls >** szakaszában van konfigurálva.
 
 ```xml
 <EndpointAcls>
@@ -351,7 +351,7 @@ Minden olyan személynek, akivel egy ügyféltanúsítványt kiállítottak, imp
 ## <a name="copy-client-certificate-thumbprints"></a>Ügyféltanúsítvány ujjlenyomatai megfelelnek másolása
 A tanúsítvány ujjlenyomatának beszerzéséhez minden olyan személynek, akivel egy ügyféltanúsítványt bocsátottak ki, az alábbi lépéseket kell követnie a szolgáltatás konfigurációs fájljához:
 
-* Run certmgr.exe
+* Futtassa a certmgr. exe fájlt
 * Személyes lap kiválasztása
 * Kattintson duplán a hitelesítéshez használandó ügyféltanúsítvány használatára
 * A megnyíló tanúsítvány párbeszédpanelen válassza a részletek lapot.
@@ -418,11 +418,11 @@ Frissítse a szolgáltatás konfigurációs fájljának következő beállítás
 Kövesse az alábbi lépéseket:
 
 1. Futtassa az MMC. exe fájlt.
-2. File -> Add/Remove Snap-in…
+2. Fájl – > beépülő modul hozzáadása/eltávolítása...
 3. Válassza a **tanúsítványok**lehetőséget.
-4. Kattintson a **Hozzáadás**lehetőségre.
+4. Kattintson az **Add** (Hozzáadás) parancsra.
 5. Válassza ki a tanúsítványtároló helyét.
-6. Kattintson a **Befejezés**gombra.
+6. Kattintson a **Befejezés** gombra.
 7. Kattintson az **OK** gombra.
 8. Bontsa ki a **tanúsítványok**csomópontot.
 9. Bontsa ki a tanúsítványtároló csomópontot.
@@ -442,7 +442,7 @@ A **Tanúsítvány exportálása varázslóban**:
 8. Kattintson a **Tovább** gombra.
 9. Írja be vagy tallózással keresse meg azt a fájlnevet, amelyben tárolni kívánja a tanúsítványt (a-t használja. PFX-bővítmény).
 10. Kattintson a **Tovább** gombra.
-11. Kattintson a **Befejezés**gombra.
+11. Kattintson a **Befejezés** gombra.
 12. Kattintson az **OK** gombra.
 
 ## <a name="import-certificate"></a>Tanúsítvány importálása
@@ -458,9 +458,9 @@ A tanúsítvány importálása varázslóban:
    1. Adja meg a titkos kulcs védelmét biztosító jelszót
    2. Importálási beállítások kiválasztása
 5. Válassza a "hely" tanúsítványokat a következő tárolóban
-6. Kattintson a **Browse** (Tallózás) gombra.
+6. Kattintson a **Tallózás** gombra.
 7. Válassza ki a kívánt tárolót.
-8. Kattintson a **Befejezés**gombra.
+8. Kattintson a **Befejezés** gombra.
    
    * Ha a megbízható legfelső szintű hitelesítésszolgáltató tárolót választotta, kattintson az **Igen**gombra.
 9. Kattintson **az OK** gombra az összes párbeszédablak-ablakban.

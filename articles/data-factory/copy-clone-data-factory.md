@@ -1,5 +1,5 @@
 ---
-title: Adatelőállító másolása vagy klónozása Azure Data Factoryban | Microsoft Docs
+title: Adatfeldolgozó másolása vagy klónozása Azure Data Factory
 description: Megtudhatja, hogyan másolhat vagy klónozott egy adatgyárat Azure Data Factory
 services: data-factory
 documentationcenter: ''
@@ -11,12 +11,12 @@ manager: jroth
 ms.reviewer: maghan
 ms.topic: conceptual
 ms.date: 01/09/2019
-ms.openlocfilehash: 6e23cc583c9b403619ad2e47f2085ef7c0149bd2
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: bafe70655f05b5dda32f51393591f82b4b5625f1
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70142372"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73678132"
 ---
 # <a name="copy-or-clone-a-data-factory-in-azure-data-factory"></a>Adatfeldolgozó másolása vagy klónozása Azure Data Factory
 
@@ -28,7 +28,7 @@ Ez a cikk bemutatja, hogyan másolhat vagy klónozott egy adatgyárat a Azure Da
 
 -   **Erőforrások átnevezése**. Az Azure nem támogatja az erőforrások átnevezését. Ha átnevezni szeretne egy adatelőállítót, akkor az adatgyárat más néven is megoszthatja, majd törölheti a meglévőt.
 
--   A hibakeresési funkciók nem elégségesek. Időnként előfordulhat, hogy tesztelni kívánja a módosításokat egy másik gyárban, mielőtt alkalmazná azokat a fő számára. A legtöbb esetben használhatja a hibakeresést. Előfordulhat azonban, hogy az eseményindítók változásai, például hogy a módosítások hogyan viselkednek automatikusan, vagy egy időablakban, nem tesztelhető könnyen a bejelentkezés nélkül. Ezekben az esetekben a gyár klónozása és a módosítások alkalmazása sok értelmet tesz lehetővé. Mivel a Azure Data Factory díjat elsősorban a futtatások száma alapján számítjuk fel, a második gyár nem jár további költségekkel.
+-   A **hibakeresési** funkciók nem elégségesek. Időnként előfordulhat, hogy tesztelni kívánja a módosításokat egy másik gyárban, mielőtt alkalmazná azokat a fő számára. A legtöbb esetben használhatja a hibakeresést. Előfordulhat azonban, hogy az eseményindítók változásai, például hogy a módosítások hogyan viselkednek automatikusan, vagy egy időablakban, nem tesztelhető könnyen a bejelentkezés nélkül. Ezekben az esetekben a gyár klónozása és a módosítások alkalmazása sok értelmet tesz lehetővé. Mivel a Azure Data Factory díjat elsősorban a futtatások száma alapján számítjuk fel, a második gyár nem jár további költségekkel.
 
 ## <a name="how-to-clone-a-data-factory"></a>Az adatfeldolgozó klónozása
 

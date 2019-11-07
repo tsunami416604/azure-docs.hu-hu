@@ -1,5 +1,5 @@
 ---
-title: Azure Monitor naplók használata SQL Database több-bérlős alkalmazással | Microsoft Docs
+title: Azure Monitor naplók használata SQL Database több-bérlős alkalmazással
 description: Azure Monitor naplók beállítása és használata több-bérlős Azure SQL Database SaaS-alkalmazással
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: billgib
 ms.date: 01/25/2019
-ms.openlocfilehash: 6b9b2239cfdf0f214ed2f2b179978fe2828d1be3
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: d7b568424d5e33c19efc9d9d9c21d0023459b6c7
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68570517"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73692151"
 ---
 # <a name="set-up-and-use-azure-monitor-logs-with-a-multitenant-sql-database-saas-app"></a>Azure Monitor naplók beállítása és használata több-bérlős SQL Database SaaS-alkalmazással
 
@@ -47,7 +47,7 @@ Az OMS-munkaterületeket mostantól Log Analytics-munkaterületeknek nevezzük. 
 
 ### <a name="create-performance-diagnostic-data-by-simulating-a-workload-on-your-tenants"></a>Teljesítmény-diagnosztikai adatok létrehozása a munkaterhelésnek a bérlők számára történő szimulálása révén 
 
-1. A PowerShell ISE-ben nyissa meg a *.. WingtipTicketsSaaS-MultiTenantDb – Master\\learning-\\modulok Teljesítményfigyelés és-\\felügyelet demo-PerformanceMonitoringAndManagement. ps1. \\* Tartsa nyitva ezt a szkriptet, mert előfordulhat, hogy az oktatóanyag során több betöltési generációs forgatókönyvet szeretne futtatni.
+1. A PowerShell ISE-ben nyissa meg a *..\\WingtipTicketsSaaS-MultiTenantDb-master\\learning-modulok\\Teljesítményfigyelés és felügyelet\\demo-PerformanceMonitoringAndManagement. ps1*. Tartsa nyitva ezt a szkriptet, mert előfordulhat, hogy az oktatóanyag során több betöltési generációs forgatókönyvet szeretne futtatni.
 1. Ha még nem tette volna meg, hozzon létre egy köteget, hogy a figyelési környezet érdekesebb legyen. Ez a folyamat néhány percet vesz igénybe.
 
    a. Állítsa be a **$DemoScenario = 1**, _bérlők kötegének kiépítése_.
@@ -68,7 +68,7 @@ A Wingtip jegyek SaaS több-bérlős adatbázis-szkriptek és az alkalmazás for
 
 Azure Monitor egy különálló szolgáltatás, amelyet konfigurálni kell. Azure Monitor naplók a napló adatait, a telemetria és a metrikákat egy Log Analytics munkaterületen gyűjtik. Az Azure-ban más erőforrásokhoz hasonlóan Log Analytics munkaterületet is létre kell hozni. A munkaterületet nem kell ugyanabban az erőforráscsoporthoz létrehozni, mint az általa figyelt alkalmazásokkal. Ezt gyakran a lehető legtöbbet teszi. A Wingtip tickets alkalmazás esetében egyetlen erőforráscsoport használatával győződjön meg arról, hogy a munkaterület törölve lett az alkalmazással.
 
-1. A PowerShell ISE-ben nyissa meg a *.. \\\\\\WingtipTicketsSaaS-MultiTenantDb – fő tanulási modulok\\Teljesítményfigyelés és felügyelet log Analytics demo-LogAnalytics. ps1. \\*
+1. A PowerShell ISE-ben nyissa meg a *..\\WingtipTicketsSaaS-MultiTenantDb-master\\learning-modulok\\Teljesítményfigyelés és felügyelet\\Log Analytics\\demo-LogAnalytics. ps1*.
 1. A szkript futtatásához nyomja le az F5 billentyűt.
 
 Most már megnyithatja Azure Monitor naplókat a Azure Portal. Néhány percet vesz igénybe, hogy telemetria gyűjtsön a Log Analytics munkaterületen, és láthatóvá tegye azt. Minél tovább hagyja a rendszer a diagnosztikai adatgyűjtést, annál érdekesebb a tapasztalat. 
@@ -82,7 +82,7 @@ Ebben a gyakorlatban nyissa meg Log Analytics munkaterületet a Azure Portalban,
 
    ![Log Analytics munkaterület megnyitása](media/saas-dbpertenant-log-analytics/log-analytics-open.png)
 
-1. Válassza ki a _&lt;wtploganalytics-User&gt;_ nevű munkaterületet.
+1. Válassza ki a _wtploganalytics-&lt;felhasználói&gt;_ nevű munkaterületet.
 
 1. Válassza az **Áttekintés** lehetőséget a log Analytics-megoldás megnyitásához a Azure Portalban.
 
@@ -93,7 +93,7 @@ Ebben a gyakorlatban nyissa meg Log Analytics munkaterületet a Azure Portalban,
 
 1. Válassza ki a **Azure SQL Analytics** csempét a megnyitásához.
 
-    ![Áttekintés csempe](media/saas-dbpertenant-log-analytics/overview.png)
+    ![Áttekintő csempe](media/saas-dbpertenant-log-analytics/overview.png)
 
 1. A megoldásban látható nézetek a saját belső görgetősávjának alján vannak görgetve. Szükség esetén frissítse az oldalt.
 
@@ -128,7 +128,7 @@ Ebben a gyakorlatban nyissa meg Log Analytics munkaterületet a Azure Portalban,
 
 1. A Log Analytics munkaterületen kattintson a **OMS portál** lehetőségre a munkaterület megnyitásához.
 
-    ![Log Analytics-munkaterület](media/saas-dbpertenant-log-analytics/log-analytics-workspace-oms-portal.png)
+    ![Log Analytics munkaterület](media/saas-dbpertenant-log-analytics/log-analytics-workspace-oms-portal.png)
 
 A Log Analytics munkaterületen további információkért tekintse meg a napló és a metrika adatait. 
 
@@ -141,7 +141,7 @@ A munkaterületen lévő adatmennyiség alapján Azure Monitor naplókat a SQL D
 
 ## <a name="next-steps"></a>További lépések
 
-Ennek az oktatóanyagnak a segítségével megtanulta a következőket:
+Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]
 > * Azure Monitor naplók telepítése és konfigurálása.

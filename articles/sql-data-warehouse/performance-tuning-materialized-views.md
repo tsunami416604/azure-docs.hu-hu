@@ -1,5 +1,5 @@
 ---
-title: Teljesítmény-Finomhangolás Azure SQL Data Warehouse anyagokkal rendelkező nézetekkel | Microsoft Docs
+title: Teljesítmény-Finomhangolás a jelentős nézetekkel
 description: 'A lekérdezési teljesítmény javítása érdekében a következő ajánlásokat és szempontokat érdemes ismernie:'
 services: sql-data-warehouse
 author: XiaoyuMSFT
@@ -10,12 +10,13 @@ ms.subservice: development
 ms.date: 09/05/2019
 ms.author: xiaoyul
 ms.reviewer: nibruno; jrasnick
-ms.openlocfilehash: 593841ac95c4c6f17f33a8d35d6b3f83a6db1124
-ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
+ms.custom: seo-lt-2019
+ms.openlocfilehash: c1cfd3b4c365a04c3d4704f37e4ed4177fa74619
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71338910"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73692984"
 ---
 # <a name="performance-tuning-with-materialized-views"></a>Teljesítmény-Finomhangolás a jelentős nézetekkel 
 A Azure SQL Data Warehouseban található anyagbeli nézetek alacsony karbantartási módszert biztosítanak a komplex analitikai lekérdezésekhez, így a lekérdezés módosítása nélkül juthatnak hozzá a gyors teljesítményhez. Ebből a cikkből megtudhatja, hogyan használhatja az általános útmutatást a jelentős nézetek használatával kapcsolatban.
@@ -37,7 +38,7 @@ A standard nézetekre vonatkozó követelmények többsége továbbra is érvén
 |Meghatározás megtekintése                 | Az Azure-adattárházban tárolva.              | Az Azure-adattárházban tárolva.    
 |Tartalom megtekintése                    | A rendszer minden alkalommal létrehozta a nézetet, amikor a nézet használatban van.   | Az Azure-adattárházban előre feldolgozva és tárolva a nézet létrehozása során. Frissítve, mert a rendszer az adatokat hozzáadja az alapul szolgáló táblákhoz.                                             
 |Adatfrissítés                    | Mindig frissítve                               | Mindig frissítve                          
-|Az összetett lekérdezések adatainak megtekintési sebessége     | lassú                                         | Gyors  
+|Az összetett lekérdezések adatainak megtekintési sebessége     | Lassú                                         | Gyors  
 |Extra tárterület                   | Nem                                           | Igen                             
 |Szintaxis                          | NÉZET LÉTREHOZÁSA                                  | A KIVÁLASZTÁSNAK MEGFELELŐEN HOZZON LÉTRE EGY ANYAGBELI NÉZETET           
      
@@ -106,7 +107,7 @@ A kimutatott nézetek számának csökkentésére szolgáló beállítások:
 
 - Dobja el az alacsony kihasználtságú vagy már nem szükséges anyagbeli nézeteket.  A letiltott anyagbeli nézet nem tart fenn, de továbbra is A tárolási költségekkel jár.  
 
-- Összekapcsolhatja az azonos vagy hasonló alaptáblákon létrehozott, az adatok átfedését még akkor is, ha az adatok nem fedik át egymást.  A kifésülő anyagbeli nézetek nagyobb méretű nézetet eredményezhetnek, mint a különálló nézetek összege, azonban a karbantartási költségeket is csökkenteni kell.  Példa:
+- Összekapcsolhatja az azonos vagy hasonló alaptáblákon létrehozott, az adatok átfedését még akkor is, ha az adatok nem fedik át egymást.  A kifésülő anyagbeli nézetek nagyobb méretű nézetet eredményezhetnek, mint a különálló nézetek összege, azonban a karbantartási költségeket is csökkenteni kell.  Például:
 
 ```sql
 

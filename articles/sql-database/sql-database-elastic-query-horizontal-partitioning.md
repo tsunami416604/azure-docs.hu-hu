@@ -1,5 +1,5 @@
 ---
-title: Kibővített felhőalapú adatbázisok közötti jelentéskészítés | Microsoft Docs
+title: Kibővített felhőalapú adatbázisok közötti jelentéskészítés
 description: rugalmas lekérdezések beállítása horizontális partíciókon
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: MladjoA
 ms.author: mlandzic
 ms.reviewer: sstein
 ms.date: 01/03/2019
-ms.openlocfilehash: 1416cbdc29d355e2ed83737140b46306de734127
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 37b19cd86cd13dd2bdc8b3a38abf61898b81d01b
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68568576"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73690381"
 ---
 # <a name="reporting-across-scaled-out-cloud-databases-preview"></a>A kibővített felhőalapú adatbázisok (előzetes verzió) közötti jelentéskészítés
 
@@ -54,7 +54,7 @@ A rugalmas lekérdezés a hitelesítő adatokat használja a távoli adatbáziso
     [;]
 
 > [!NOTE]
-> Győződjön meg arról, *hogy\<a\>"username"* nem tartalmaz *"\@servername"* utótagot.
+> Győződjön meg arról, hogy a *"\<username\>"* nem tartalmaz *"\@servername"* utótagot.
 
 ## <a name="12-create-external-data-sources"></a>1,2 külső adatforrások létrehozása
 
@@ -136,17 +136,17 @@ Külső táblák eldobása:
 
 ### <a name="remarks"></a>Megjegyzések
 
-Az adatforrás\_-záradék meghatározza a külső táblához használt külső adatforrást (egy szegmenses leképezést).  
+Az adat\_SOURCE záradék a külső táblához használt külső adatforrást (egy SZEGMENSes leképezést) definiálja.  
 
-A séma\_neve és objektumnév\_záradéka a külső tábla definícióját egy másik sémában lévő táblára képezi le. Ha nincs megadva, a rendszer feltételezi, hogy a távoli objektum sémája "dbo" lesz, és a neve megegyezik a definiált külső táblanév nevével. Ez akkor hasznos, ha a távoli tábla neve már szerepel az adatbázisban, amelyben létre kívánja hozni a külső táblát. Tegyük fel például, hogy egy külső táblázatot szeretne meghatározni, amely összesített nézetet jelenít meg a katalógus nézeteiből vagy a DMV a kibővíthető adatszinten. Mivel a katalógus-nézetek és a DMV már helyileg léteznek, a külső tábla definíciójának neve nem használható. Ehelyett használjon másik nevet, és használja a katalógus nézet vagy a DMV nevét a séma\_neve és/vagy objektumnév\_záradékban. (Lásd az alábbi példát.)
+A (z)\_NAME záradék SÉMÁja\_a külső tábla definícióját egy másik sémában lévő táblára képezi le. Ha nincs megadva, a rendszer feltételezi, hogy a távoli objektum sémája "dbo" lesz, és a neve megegyezik a definiált külső táblanév nevével. Ez akkor hasznos, ha a távoli tábla neve már szerepel az adatbázisban, amelyben létre kívánja hozni a külső táblát. Tegyük fel például, hogy egy külső táblázatot szeretne meghatározni, amely összesített nézetet jelenít meg a katalógus nézeteiből vagy a DMV a kibővíthető adatszinten. Mivel a katalógus-nézetek és a DMV már helyileg léteznek, a külső tábla definíciójának neve nem használható. Ehelyett használjon másik nevet, és használja a katalógus nézet vagy a DMV nevét a séma\_neve és/vagy objektum\_NAME záradékban. (Lásd az alábbi példát.)
 
 A DISTRIBUTion záradék meghatározza az ehhez a táblához használt adateloszlást. A lekérdezési processzor a terjesztési záradékban található információkat használja a leghatékonyabb lekérdezési csomagok létrehozásához.
 
-1. A szilánkos érték azt jelenti, hogy az adategységek horizontálisan vannak particionálva az adatbázisok között. Az Adatterjesztés particionálási kulcsa a **< sharding_column_name >** paraméter.
-2. A replikált érték azt jelenti, hogy a tábla azonos példányszámban szerepel az egyes adatbázisokon. Az Ön felelőssége, hogy a replikák azonosak legyenek az adatbázisok között.
-3. **A\_ciklikus multiplexelés** azt jelenti, hogy a tábla vízszintesen particionálva van egy alkalmazás-függő terjesztési módszer használatával.
+1. A **szilánkos** érték azt jelenti, hogy az adategységek horizontálisan vannak particionálva az adatbázisok között. Az Adatterjesztés particionálási kulcsa a **< sharding_column_name >** paraméter.
+2. A **replikált** érték azt jelenti, hogy a tábla azonos példányszámban szerepel az egyes adatbázisokon. Az Ön felelőssége, hogy a replikák azonosak legyenek az adatbázisok között.
+3. A **ROUND\_Robin** azt jelenti, hogy a tábla vízszintesen particionálva van egy alkalmazás-függő terjesztési módszer használatával.
 
-**Adatcsomag**-referenciák: A külső tábla DDL egy külső adatforrásra hivatkozik. A külső adatforrás egy szegmenses térképet határoz meg, amely a külső táblát tartalmazza az adatrétegben található összes adatbázis megkereséséhez szükséges információkkal.
+**Adatcsomag-referenciák**: a külső tábla DDL egy külső adatforrásra hivatkozik. A külső adatforrás egy szegmenses térképet határoz meg, amely a külső táblát tartalmazza az adatrétegben található összes adatbázis megkereséséhez szükséges információkkal.
 
 ### <a name="security-considerations"></a>Biztonsági szempontok
 
@@ -175,16 +175,16 @@ A következő lekérdezés háromféleképpen csatlakozik a raktárak, a megrend
     group by w_id, o_c_id
 ```
 
-## <a name="stored-procedure-for-remote-t-sql-execution-spexecuteremote"></a>Tárolt eljárás távoli T-SQL-végrehajtáshoz:\_SP execute_remote
+## <a name="stored-procedure-for-remote-t-sql-execution-sp_execute_remote"></a>Tárolt eljárás távoli T-SQL-végrehajtáshoz: SP\_execute_remote
 
-A rugalmas lekérdezés egy tárolt eljárást is bevezet, amely közvetlen hozzáférést biztosít a szegmensekhez. A tárolt eljárás neve [\_SP Execute \_Remote](https://msdn.microsoft.com/library/mt703714) , és használható távoli tárolt eljárások vagy T-SQL-kód végrehajtásához a távoli adatbázisokon. A következő paramétereket veszi figyelembe:
+A rugalmas lekérdezés egy tárolt eljárást is bevezet, amely közvetlen hozzáférést biztosít a szegmensekhez. A tárolt eljárás neve [sp\_végrehajtás \_távoli](https://msdn.microsoft.com/library/mt703714) , és használható távoli tárolt eljárások vagy t-SQL-kód végrehajtásához a távoli adatbázisokon. A következő paramétereket veszi figyelembe:
 
-* Adatforrás neve (nvarchar): A RDBMS típusú külső adatforrás neve.
-* Lekérdezés (nvarchar): Az egyes szegmenseken végrehajtandó T-SQL-lekérdezés.
-* Paraméter deklarációja (nvarchar) – nem kötelező: A lekérdezési paraméterben (például Sp_executesql) használt paraméterek adattípus-definícióit tartalmazó karakterlánc.
-* Paraméter értékének listája – nem kötelező: A paraméterek értékeinek vesszővel tagolt listája (például Sp_executesql).
+* Adatforrás neve (nvarchar): a RDBMS típusú külső adatforrás neve.
+* Query (nvarchar): az egyes szegmenseken végrehajtandó T-SQL-lekérdezés.
+* Paraméter deklarációja (nvarchar) – nem kötelező: a lekérdezési paraméterben használt paraméterek (például a Sp_executesql) adattípus-definíciókkal rendelkező karakterlánca.
+* Paraméter értékének listája – nem kötelező: a paraméterek értékeinek vesszővel tagolt listája (például Sp_executesql).
 
-Az SP\_Execute\_Remote a Meghívási paraméterekben megadott külső adatforrást használja az adott T-SQL-utasítás távoli adatbázisokon való végrehajtásához. A külső adatforrás hitelesítő adatait használja a shardmap-kezelő adatbázisához és a távoli adatbázisokhoz való kapcsolódáshoz.  
+Az SP\_Execute\_távoli a Meghívási paraméterekben megadott külső adatforrást használja a távoli adatbázisokon a megadott T-SQL-utasítás végrehajtásához. A külső adatforrás hitelesítő adatait használja a shardmap-kezelő adatbázisához és a távoli adatbázisokhoz való kapcsolódáshoz.  
 
 Példa:
 
@@ -209,9 +209,9 @@ Az alkalmazáshoz, a BI-és az adatintegrációs eszközökhöz a külső tábl�
 
 * A rugalmas lekérdezés áttekintését lásd: [rugalmas lekérdezés áttekintése](sql-database-elastic-query-overview.md).
 * A vertikális particionálással kapcsolatos oktatóanyagért lásd: [Bevezetés az adatbázisok közötti lekérdezéssel (vertikális particionálás)](sql-database-elastic-query-getting-started-vertical.md).
-* A függőlegesen particionált információk szintaxisát és mintáit lásd [](sql-database-elastic-query-vertical-partitioning.md) : függőlegesen particionált adatlekérdezés
+* A függőlegesen particionált információk szintaxisát és mintáit lásd: [függőlegesen particionált adatlekérdezés](sql-database-elastic-query-vertical-partitioning.md)
 * A horizontális particionálással (skálázással) kapcsolatos oktatóanyagért lásd: az [első lépések a rugalmas lekérdezéssel a horizontális particionáláshoz](sql-database-elastic-query-getting-started.md).
-* Lásd [:\_az \_SP távoli futtatása](https://msdn.microsoft.com/library/mt703714) olyan tárolt eljáráshoz, amely Transact-SQL-utasítást hajt végre egyetlen távoli Azure SQL Database vagy egy horizontális particionálási sémában szegmensként szolgáló adatbázis-készleten.
+* Lásd: [sp\_\_távoli végrehajtása](https://msdn.microsoft.com/library/mt703714) egy tárolt eljáráshoz, amely Transact-SQL-utasítást hajt végre egyetlen távoli Azure SQL Database vagy egy horizontális particionálási sémában szegmensként szolgáló adatbázis-készletet.
 
 <!--Image references-->
 [1]: ./media/sql-database-elastic-query-horizontal-partitioning/horizontalpartitioning.png

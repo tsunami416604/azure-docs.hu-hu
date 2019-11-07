@@ -7,39 +7,39 @@ manager: jeconnoc
 keywords: ''
 ms.service: azure-functions
 ms.topic: conceptual
-ms.date: 12/08/2018
+ms.date: 11/03/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 11edfc11fc1e54684a99774c21517d4c322348b1
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: a24d6e96df3abf385b0a64ec4bc7e1f1c248998b
+ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70087045"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73614637"
 ---
 # <a name="timers-in-durable-functions-azure-functions"></a>Időzítők Durable Functions (Azure Functions)
 
-[](durable-functions-overview.md) A Durable functions *tartós időzítőket* biztosít a Orchestrator függvényekben a késések megvalósításához, illetve az aszinkron műveletek időtúllépésének beállításához. Tartós időzítőket kell `Thread.Sleep` használni a és `Task.Delay` a (C#), vagy `setTimeout()` `setInterval()` a (JavaScript) helyett a Orchestrator függvényekben.
+[](durable-functions-overview.md) A Durable functions *tartós időzítőket* biztosít a Orchestrator függvényekben a késések megvalósításához, illetve az aszinkron műveletek időtúllépésének beállításához. `Thread.Sleep` és `Task.Delay` (C#), vagy `setTimeout()` és `setInterval()` (JavaScript) helyett tartós időzítőket kell használni a Orchestrator függvényekben.
 
-Tartós időzítőt hoz létre a [DurableOrchestrationContext](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html) [CreateTimer](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_CreateTimer_) metódusának meghívásával a .net-ben `createTimer` vagy `DurableOrchestrationContext` a JavaScript-metódusban. A metódus egy olyan feladatot ad vissza, amely egy megadott dátumon és időpontban folytatja a műveletet.
+A tartós időzítőt úgy hozhatja létre, hogy meghívja a `CreateTimer` (.NET) metódust vagy a koordinációs [trigger kötésének](durable-functions-bindings.md#orchestration-trigger)`createTimer` (JavaScript) metódusát. A metódus egy olyan feladatot ad vissza, amely egy adott dátumon és időpontban fejeződik be.
 
 ## <a name="timer-limitations"></a>Időzítő korlátozásai
 
-Amikor a 4:30 órakor lejáró időzítőt hoz létre, az alapul szolgáló tartós feladati keretrendszer enqueues egy üzenetet, amely csak a 4:30 órakor lesz látható. Ha a Azure Functions használati tervben fut, akkor az újonnan látható időzítő üzenet biztosítja, hogy a Function alkalmazás aktiválva legyen egy megfelelő virtuális gépen.
+Amikor a 4:30 órakor lejáró időzítőt hoz létre, az alapul szolgáló tartós feladati keretrendszer enqueues egy olyan üzenetet, amely csak a 4:30 órakor lesz látható. Ha a Azure Functions használati tervben fut, akkor az újonnan látható időzítő üzenet biztosítja, hogy a Function alkalmazás aktiválva legyen egy megfelelő virtuális gépen.
 
 > [!NOTE]
-> * Az Azure Storage korlátozásai miatt a tartós időzítők legfeljebb 7 napig tarthatnak. Egy szolgáltatási kérelemben dolgozunk [, amely 7 napon túli kibővíti az időzítőket](https://github.com/Azure/azure-functions-durable-extension/issues/14).
-> * Mindig használjon [CurrentUtcDateTime](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_CurrentUtcDateTime) `DateTime.UtcNow` -t a `Date.now` .net `currentUtcDateTime` helyett, vagy `Date.UTC` a JavaScript helyett, az alábbi példákban látható módon, amikor a tartós időzítő relatív határidejét számítja ki.
+> * A tartós időzítők jelenleg legfeljebb 7 napig tartanak. Ha hosszabb késésre van szükség, akkor szimulálható az időzítő API-k használatával `while` hurokban.
+> * Mindig a `CurrentUtcDateTime` használja a .NET-ben vagy a `Date.now` `currentUtcDateTime`-ben való `DateTime.UtcNow` helyett a .NET-ben vagy a `Date.UTC`-ban, ha a tartós időzítők esetében a tűzzel kapcsolatos időt a számítási További információ: [Orchestrator Function Code megkötések](durable-functions-code-constraints.md) cikk.
 
 ## <a name="usage-for-delay"></a>Használat késleltetéshez
 
-Az alábbi példa azt szemlélteti, hogyan használható a tartós időzítő a végrehajtás késleltetéséhez. A példa minden nap tíz napra szóló számlázási értesítést állít ki.
+Az alábbi példa azt szemlélteti, hogyan használható a tartós időzítő a végrehajtás késleltetéséhez. A példa minden nap 10 napra szóló számlázási értesítést állít ki.
 
 ### <a name="c"></a>C#
 
 ```csharp
 [FunctionName("BillingIssuer")]
 public static async Task Run(
-    [OrchestrationTrigger] DurableOrchestrationContext context)
+    [OrchestrationTrigger] IDurableOrchestrationContext context)
 {
     for (int i = 0; i < 10; i++)
     {
@@ -50,7 +50,10 @@ public static async Task Run(
 }
 ```
 
-### <a name="javascript-functions-2x-only"></a>JavaScript (csak 2. x függvény)
+> [!NOTE]
+> Az előző C# példában Durable functions 2. x. Durable Functions 1. x esetén a `IDurableOrchestrationContext`helyett `DurableOrchestrationContext`t kell használnia. A verziók közötti különbségekről a [Durable functions verziók](durable-functions-versions.md) című cikkben olvashat bővebben.
+
+### <a name="javascript-functions-20-only"></a>JavaScript (csak functions 2,0)
 
 ```js
 const df = require("durable-functions");
@@ -67,7 +70,7 @@ module.exports = df.orchestrator(function*(context) {
 ```
 
 > [!WARNING]
-> Kerülje a végtelen hurkokat a Orchestrator functions szolgáltatásban. A végtelen hurkos forgatókönyvek biztonságos és hatékony megvalósításával kapcsolatos további információkért lásd: [örök](durable-functions-eternal-orchestrations.md)összeszerelések.
+> Kerülje a végtelen hurkokat a Orchestrator functions szolgáltatásban. A végtelen hurkos forgatókönyvek biztonságos és hatékony megvalósításával kapcsolatos további információkért lásd: [örök összeszerelések](durable-functions-eternal-orchestrations.md).
 
 ## <a name="usage-for-timeout"></a>Használat időtúllépés esetén
 
@@ -78,7 +81,7 @@ Ez a példa azt szemlélteti, hogyan használhatók a tartós időzítők az id�
 ```csharp
 [FunctionName("TryGetQuote")]
 public static async Task<bool> Run(
-    [OrchestrationTrigger] DurableOrchestrationContext context)
+    [OrchestrationTrigger] IDurableOrchestrationContext context)
 {
     TimeSpan timeout = TimeSpan.FromSeconds(30);
     DateTime deadline = context.CurrentUtcDateTime.Add(timeout);
@@ -104,7 +107,10 @@ public static async Task<bool> Run(
 }
 ```
 
-### <a name="javascript-functions-2x-only"></a>JavaScript (csak 2. x függvény)
+> [!NOTE]
+> Az előző C# példában Durable functions 2. x. Durable Functions 1. x esetén a `IDurableOrchestrationContext`helyett `DurableOrchestrationContext`t kell használnia. A verziók közötti különbségekről a [Durable functions verziók](durable-functions-versions.md) című cikkben olvashat bővebben.
+
+### <a name="javascript-functions-20-only"></a>JavaScript (csak functions 2,0)
 
 ```js
 const df = require("durable-functions");
@@ -131,11 +137,11 @@ module.exports = df.orchestrator(function*(context) {
 ```
 
 > [!WARNING]
-> A (z) használatával szakítson megC#egy tartós időzítőt (), vagy hívja `cancel()` meg a visszaadott `TimerTask` értéket (JavaScript) ,haakódnemvárjamegabetöltését.`CancellationTokenSource` A tartós feladatok keretrendszere nem változtatja meg a "befejezett" állapotot, amíg az összes fennmaradó feladat be nem fejeződik vagy meg nem szakítva.
+> Használjon egy `CancellationTokenSource` egy tartós időzítő (.NET) törléséhez, vagy hívja meg `cancel()` a visszaadott `TimerTask` (JavaScript), ha a kód nem várja meg a betöltését. A tartós feladatok keretrendszere nem változtatja meg a "befejezett" állapotot, amíg az összes fennmaradó feladat be nem fejeződik vagy meg nem szakítva.
 
-Ez a mechanizmus valójában nem szakítja meg a folyamatban lévő tevékenységek működésének végrehajtását. Ehelyett egyszerűen lehetővé teszi, hogy a Orchestrator függvény figyelmen kívül hagyja az eredményt, és továbblép. Ha a Function alkalmazás a használati tervet használja, akkor az elhagyott tevékenység által felhasznált időt és memóriát is számlázni fogja. Alapértelmezés szerint a használati tervben futó függvények öt percen belül időtúllépéssel rendelkeznek. Ha túllépi ezt a korlátot, a rendszer újrahasznosítja a Azure Functions gazdagépet az összes végrehajtás leállításához és a elszabadult számlázási helyzet elkerüléséhez. A [függvény időtúllépése konfigurálható](../functions-host-json.md#functiontimeout).
+Ez a lemondási mechanizmus nem szakítja meg a folyamatban lévő tevékenység vagy az alhálózatok végrehajtásának folyamatát. Ehelyett egyszerűen lehetővé teszi, hogy a Orchestrator függvény figyelmen kívül hagyja az eredményt, és továbblép. Ha a Function alkalmazás a használati tervet használja, akkor az elhagyott tevékenység által felhasznált időt és memóriát továbbra is számlázza. Alapértelmezés szerint a használati tervben futó függvények öt percen belül időtúllépéssel rendelkeznek. Ha túllépi ezt a korlátot, a rendszer újrahasznosítja a Azure Functions gazdagépet az összes végrehajtás leállításához és a elszabadult számlázási helyzet elkerüléséhez. A [függvény időtúllépése konfigurálható](../functions-host-json.md#functiontimeout).
 
-A Orchestrator functions-időtúllépések megvalósításának alaposabb példáját az [emberi interakció & időtúllépések – telefonos ellenőrzési](durable-functions-phone-verification.md) útmutató című témakörben tekintheti meg.
+A Orchestrator functions-időtúllépések megvalósításának alaposabb példáját az [emberi interakció & időtúllépések – telefonos ellenőrzés](durable-functions-phone-verification.md) című cikkben találja.
 
 ## <a name="next-steps"></a>További lépések
 

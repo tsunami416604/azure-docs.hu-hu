@@ -1,6 +1,6 @@
 ---
 title: Egyéni R-modulok definiálása
-titleSuffix: Azure Machine Learning Studio (classic)
+titleSuffix: ML Studio (classic) Azure
 description: Ez a témakör bemutatja, hogyan hozhat létre és helyezhet üzembe egyéni R studiót (klasszikus). Elmagyarázza, hogy milyen egyéni R-modulokat és milyen fájlokat használnak ezek definiálásához.
 services: machine-learning
 ms.service: machine-learning
@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 11/29/2017
-ms.openlocfilehash: 92a6e0fec07c5e90c1e64a8c4a9e7470cf9fd634
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: dba1b092d9a12f189ce7b4a207c362cad2bf8858
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73493189"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73619493"
 ---
 # <a name="define-custom-r-modules-for-azure-machine-learning-studio-classic"></a>Egyéni R-modulok definiálása a Azure Machine Learning Studiohoz (klasszikus)
 
@@ -290,7 +290,7 @@ A modul paramétereit az XML-definíciós fájl **argumentumok** szakaszának **
     * Címke
     * Szolgáltatás
     * Pontszám
-    * Mind
+    * Összes
   * **alapértelmezett** – az oszlop választójának alapértelmezett értékei a következők: 
     
     * None
@@ -313,7 +313,7 @@ A modul paramétereit az XML-definíciós fájl **argumentumok** szakaszának **
     * AllLabel
     * AllFeature
     * AllScore
-    * Mind
+    * Összes
 
 **Legördülő menü**: felhasználó által megadott enumerálás (legördülő lista). A legördülő elemek a **Tulajdonságok** elemen belül, egy **Item** elem használatával vannak megadva. Az egyes **elemek** **azonosítójának** egyedinek és érvényes R-változónak kell lennie. Az **elemek** **nevének** értéke a megjelenő szövegként és az R-függvénynek átadott értékként szolgál.
 

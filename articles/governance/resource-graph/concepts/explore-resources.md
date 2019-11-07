@@ -6,12 +6,12 @@ ms.author: dacoulte
 ms.date: 10/18/2019
 ms.topic: conceptual
 ms.service: resource-graph
-ms.openlocfilehash: b92975e3fe73fb1c882bdfc4338fd8e169728e8b
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 58eb5abc9a8857b81ada65c96eb7deaaa5cc5aeb
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72387639"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73622667"
 ---
 # <a name="explore-your-azure-resources-with-resource-graph"></a>Az Azure-erőforrások felfedezése a Resource Graph használatával
 
@@ -308,10 +308,10 @@ az graph query -q="Resources | where type =~ 'Microsoft.Network/publicIPAddresse
 Search-AzGraph -Query "Resources | where type =~ 'Microsoft.Network/publicIPAddresses' | where id in ('$($ips.publicIp -join "','")') | project ip = tostring(properties['ipAddress']) | where isnotempty(ip) | distinct ip"
 ```
 
-Ha szeretné megtekinteni, hogyan hajthatja végre ezeket a lépéseket egyetlen lekérdezésben a `join` operátorral, tekintse meg a [virtuális gépek listázása hálózati interfésszel és nyilvános IP-](../samples/advanced.md#join-vmpip) címmel című mintát.
+Ha szeretné megtudni, hogyan hajthatja végre ezeket a lépéseket egyetlen lekérdezésben a `join` operátorral, tekintse meg a [virtuális gépek listázása hálózati interfésszel és nyilvános IP-](../samples/advanced.md#join-vmpip) címmel című mintát.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-- További információk a [lekérdezés nyelvéről](query-language.md)
-- Megtekintheti az [alapszintű lekérdezésekben](../samples/starter.md) használt nyelvet
-- Lásd: speciális alkalmazások a [speciális lekérdezésekben](../samples/advanced.md)
+- További információ a [lekérdezési nyelvről](query-language.md).
+- Tekintse meg az [alapszintű lekérdezésekben](../samples/starter.md)használt nyelvet.
+- Lásd: speciális alkalmazások a [speciális lekérdezésekben](../samples/advanced.md).

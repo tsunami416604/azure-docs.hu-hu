@@ -1,6 +1,6 @@
 ---
-title: Több tároló fájlok másolása az Azure Data Factory használatával |} A Microsoft Docs
-description: Ismerje meg, hogyan több tárolót az Azure Data Factory használatával fájlok másolása megoldás sablon használatával.
+title: Több tárolóból származó fájlok másolása Azure Data Factory használatával
+description: Megtudhatja, hogyan másolhat több tárolóból származó fájlokat Azure Data Factory használatával a megoldási sablon használatával.
 services: data-factory
 documentationcenter: ''
 author: dearandyxu
@@ -12,61 +12,61 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 11/1/2018
-ms.openlocfilehash: a52729adf8d6df3f4e44e561b45b854db433628c
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 004a623f0dfe251da9d452b53c2541e53339d965
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60635180"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73684264"
 ---
-# <a name="copy-files-from-multiple-containers-with-azure-data-factory"></a>Fájlok másolása az Azure Data Factory használatával több tároló
+# <a name="copy-files-from-multiple-containers-with-azure-data-factory"></a>Több tárolóból származó fájlok másolása Azure Data Factory
 
-Ez a cikk ismerteti, amelyek segítségével több tároló között fájl tárolja a fájlok másolása megoldás sablon. Például használhatja azt a data lake áttelepítése az AWS S3-ból az Azure Data Lake Store. Vagy használhatja a sablont egy másikra egy Azure Blob storage-fiókból minden replikálni.
+Ez a cikk egy megoldási sablont ismertet, amellyel több tárolóból is másolhat fájlokat a tárak között. A segítségével például áttelepítheti a adattavat az AWS S3-ból Azure Data Lake Storeba. Másik lehetőségként a sablon használatával replikálhatja az egyik Azure Blob Storage-fiókból a másikba.
 
 > [!NOTE]
-> Ha azt szeretné, hogy fájlokat másoljon egy egyetlen tároló, a hatékonyabb, ha használja a [Copy Data eszköz](copy-data-tool.md) egy másolási tevékenységgel rendelkező folyamat létrehozása. Ez a cikk a sablon több mint egyszerű forgatókönyvhöz szükséges.
+> Ha egyetlen tárolóból szeretné átmásolni a fájlokat, hatékonyabban használhatja a [adatok másolása eszközt](copy-data-tool.md) egyetlen másolási tevékenységgel rendelkező folyamat létrehozásához. Az ebben a cikkben szereplő sablon több, mint amire szüksége van az adott egyszerű forgatókönyvhöz.
 
-## <a name="about-this-solution-template"></a>Ez a megoldássablon kapcsolatban
+## <a name="about-this-solution-template"></a>Tudnivalók a megoldási sablonról
 
-Ez a sablon a tárolók a forrás tárolási áruházból enumerálása. Ezt követően lemásolja készregyártásának a cél-tárolójában.
+Ez a sablon enumerálja a tárolókat a forrás Storage-tárolóból. Ezután átmásolja ezeket a tárolókat a célhelyre.
 
-A sablon a három tevékenységet tartalmaz:
-- **GetMetadata** megvizsgálja a forrásadattárba a storage és a tároló listájának beolvasása.
-- **ForEach** a tároló listájának beolvasása a **GetMetadata** tevékenység a lista ismétel és a tárolók átadja a másolási tevékenységnek.
-- **Másolás** egyes tárolók másol a forrásadattárba a storage tárolási célhelye.
+A sablon három tevékenységet tartalmaz:
+- A **GetMetaData** megvizsgálja a forrásként szolgáló tárolót, és lekéri a tárolók listáját.
+- A **foreach** lekéri a **GetMetaData** tevékenységből a tárolók listáját, majd megismétli a listát, és átadja az egyes tárolókat a másolási tevékenységnek.
+- **Másolja** az egyes tárolókat a forrásként szolgáló tárolóból a célhelyre.
 
-A sablon meghatározza a két paramétert:
-- *SourceFilePath* a forrásadattár, ahol a tárolók listáját is megkapja az elérési útja. A legtöbb esetben az elérési út a gyökérkönyvtár, amely több tároló mappát tartalmaz. Az alapértelmezett érték a paraméter `/`.
-- *DestinationFilePath* ahol a fájlok lesznek másolva az a cél tároló elérési útja. Az alapértelmezett érték a paraméter `/`.
+A sablon két paramétert határoz meg:
+- A *SourceFilePath* az adatforrás-tároló elérési útja, ahol lekérheti a tárolók listáját. A legtöbb esetben az elérési út a gyökérkönyvtár, amely több tároló-mappát tartalmaz. A paraméter alapértelmezett értéke `/`.
+- A *DestinationFilePath* az az elérési út, ahová a rendszer átmásolja a fájlokat a célhely-tárolóba. A paraméter alapértelmezett értéke `/`.
 
-## <a name="how-to-use-this-solution-template"></a>Ez a megoldássablon használata
+## <a name="how-to-use-this-solution-template"></a>A megoldás sablonjának használata
 
-1. Nyissa meg a **több fájlokat tároló közötti adatáthelyezéshez fájl másolása** sablont. Hozzon létre egy **új** a forrásadattárba a tárolási kapcsolat. A forrás tárolási tároló, ahová fájlokat másoljon a több tároló.
+1. Lépjen a **több fájl másolása tárolók között a fájlmegosztás** sablonba. Hozzon létre egy **új** kapcsolódást a forrás Storage-tárolóhoz. A forrásként szolgáló tár az a hely, ahol a fájlokat több tárolóból kívánja másolni.
 
-    ![A forrás egy új kapcsolat létrehozása](media/solution-template-copy-files-multiple-containers/copy-files-multiple-containers-image1.png)
+    ![Új kapcsolódás létrehozása a forráshoz](media/solution-template-copy-files-multiple-containers/copy-files-multiple-containers-image1.png)
 
-2. Hozzon létre egy **új** a céltár tárolási kapcsolat.
+2. Hozzon létre egy **új** kapcsolódást a cél Storage-tárolóhoz.
 
-    ![Hozzon létre egy új kapcsolatot a célhelyre](media/solution-template-copy-files-multiple-containers/copy-files-multiple-containers-image2.png)
+    ![Új kapcsolódás létrehozása a célhoz](media/solution-template-copy-files-multiple-containers/copy-files-multiple-containers-image2.png)
 
-3. Válassza ki **ezzel a sablonnal**.
+3. Válassza **a sablon használata**lehetőséget.
 
-    ![Ezzel a sablonnal](media/solution-template-copy-files-multiple-containers/copy-files-multiple-containers-image3.png)
+    ![A sablon használata](media/solution-template-copy-files-multiple-containers/copy-files-multiple-containers-image3.png)
     
-4. A folyamat a következő példához hasonlóan jelenik meg:
+4. Ekkor megjelenik a folyamat, ahogy az alábbi példában is látható:
 
     ![A folyamat megjelenítése](media/solution-template-copy-files-multiple-containers/copy-files-multiple-containers-image4.png)
 
-5. Válassza ki **Debug**, adja meg a **paraméterek**, majd válassza ki **Befejezés**.
+5. Válassza a **hibakeresés**lehetőséget, adja meg a **paramétereket**, majd kattintson a **Befejezés gombra**.
 
     ![A folyamat futtatása](media/solution-template-copy-files-multiple-containers/copy-files-multiple-containers-image5.png)
 
 6. Tekintse át az eredményt.
 
-    ![Tekintse át az eredmény](media/solution-template-copy-files-multiple-containers/copy-files-multiple-containers-image6.png)
+    ![Az eredmény áttekintése](media/solution-template-copy-files-multiple-containers/copy-files-multiple-containers-image6.png)
 
 ## <a name="next-steps"></a>További lépések
 
-- [Tömegesen másolni egy adatbázisból vezérlő táblázat az Azure Data Factory használatával](solution-template-bulk-copy-with-control-table.md)
+- [Tömeges másolás adatbázisból egy Azure Data Factory tartalmazó vezérlőelem-táblázat használatával](solution-template-bulk-copy-with-control-table.md)
 
-- [Fájlok másolása az Azure Data Factory használatával több tároló](solution-template-copy-files-multiple-containers.md)
+- [Több tárolóból származó fájlok másolása Azure Data Factory](solution-template-copy-files-multiple-containers.md)

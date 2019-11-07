@@ -1,5 +1,5 @@
 ---
-title: Hibaelhárítási Azure SQL Data Warehouse | Microsoft Docs
+title: Hibaelhárítás
 description: Hibaelhárítási Azure SQL Data Warehouse.
 services: sql-data-warehouse
 author: kevinvngo
@@ -10,36 +10,37 @@ ms.subservice: manage
 ms.date: 7/29/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: a6a6fdf6e63bf8c063f8dd6f23ae380e9ce7b98d
-ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
+ms.custom: seo-lt-2019
+ms.openlocfilehash: 2aa7926286be277c7ad0aa7054b4bd6fceb8229f
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69575511"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73685403"
 ---
 # <a name="troubleshooting-azure-sql-data-warehouse"></a>Hibaelhárítási Azure SQL Data Warehouse
 Ez a cikk a gyakori hibaelhárítási kérdéseit sorolja fel.
 
 ## <a name="connecting"></a>Csatlakozás
-| Probléma                                                        | Megoldás:                                                   |
+| Probléma                                                        | Felbontás                                                   |
 | :----------------------------------------------------------- | :----------------------------------------------------------- |
-| A következő felhasználó bejelentkezése sikertelen volt: "NT AUTHORITY \ névtelen LOGON". (Microsoft SQL Server, Hiba: 18456) | Ez a hiba akkor fordul elő, amikor egy HRE-felhasználó megpróbál csatlakozni a Master adatbázishoz, de nem rendelkezik felhasználóval a főkiszolgálón.  A probléma megoldásához adja meg azt a SQL Data Warehouse, amelyhez csatlakozni szeretne, vagy adja hozzá a felhasználót a Master adatbázishoz.  További részletekért tekintse meg a [Biztonság áttekintése][Security overview] című cikket. |
-| A "MyUserName" kiszolgálói tag nem tud hozzáférni a "Master" adatbázishoz az aktuális biztonsági környezetben. A felhasználói alapértelmezett adatbázis nem nyitható meg. A bejelentkezés sikertelen. A következő felhasználó bejelentkezése sikertelen volt: "MyUserName". (Microsoft SQL Server, Hiba: 916) | Ez a hiba akkor fordul elő, amikor egy HRE-felhasználó megpróbál csatlakozni a Master adatbázishoz, de nem rendelkezik felhasználóval a főkiszolgálón.  A probléma megoldásához adja meg azt a SQL Data Warehouse, amelyhez csatlakozni szeretne, vagy adja hozzá a felhasználót a Master adatbázishoz.  További részletekért tekintse meg a [Biztonság áttekintése][Security overview] című cikket. |
+| Az „NT AUTHORITY\ANONYMOUS LOGON” felhasználó bejelentkezése nem sikerült. (Microsoft SQL Server, hiba: 18456) | Ez a hiba akkor fordul elő, ha egy AAD-felhasználó megpróbál csatlakozni a master adatbázishoz, de nem rendelkezik felhasználóval a master adatbázisban.  A hiba kijavítása érdekében adja meg azt az SQL Data Warehouse-t, amelyhez csatlakozni szeretne a kapcsolódáskor, vagy adja hozzá a felhasználót a master adatbázishoz.  További részletekért tekintse meg a [Biztonság áttekintése][Security overview] című cikket. |
+| A „MyUserName” kiszolgálói tag a jelenlegi biztonsági környezetben nem tud hozzáférni a „master” adatbázishoz. Nem lehet megnyitni a felhasználói alapértelmezett adatbázist. A bejelentkezés sikertelen volt. A következő felhasználó bejelentkezése nem sikerült: „MyUserName”. (Microsoft SQL Server, hiba: 916) | Ez a hiba akkor fordul elő, ha egy AAD-felhasználó megpróbál csatlakozni a master adatbázishoz, de nem rendelkezik felhasználóval a master adatbázisban.  A hiba kijavítása érdekében adja meg azt az SQL Data Warehouse-t, amelyhez csatlakozni szeretne a kapcsolódáskor, vagy adja hozzá a felhasználót a master adatbázishoz.  További részletekért tekintse meg a [Biztonság áttekintése][Security overview] című cikket. |
 | CTAIP hiba                                                  | Ez a hiba akkor fordulhat elő, ha az SQL Server főadatbázisán egy bejelentkezési azonosítót hoztak létre, de nem szerepelnek a SQL Data Warehouse adatbázisban.  Ha ezt a hibát tapasztalja, tekintse meg a [biztonsági áttekintést ismertető][Security overview] cikket.  Ez a cikk azt ismerteti, hogyan hozható létre egy bejelentkezési azonosító és egy felhasználó a főkiszolgálón, majd hogyan hozható létre felhasználó a SQL Data Warehouse adatbázisban. |
 | Tűzfal blokkolja                                          | Az Azure SQL Database-adatbázisokat kiszolgáló-és adatbázis-szintű tűzfalak védik, hogy csak az ismert IP-címek férhessenek hozzá egy adatbázishoz. Alapértelmezés szerint a tűzfalak biztonságosak, ami azt jelenti, hogy a kapcsolat megkezdése előtt explicit módon engedélyeznie kell és meg kell adnia az IP-címet vagy a címtartományt.  A tűzfal hozzáférésre való konfigurálásához kövesse a [kiszolgáló tűzfal-hozzáférés konfigurálása az ügyfél IP][Configure server firewall access for your client IP] -címére című témakör lépéseit a [létesítési utasításokban][Provisioning instructions]. |
 | Nem lehet kapcsolatot létesíteni az eszközzel vagy az illesztőprogrammal                           | SQL Data Warehouse a [SSMS][SSMS], [a SSDT for Visual Studio][SSDT for Visual Studio]vagy a [Sqlcmd][sqlcmd] használatát javasolja az adatai lekérdezéséhez. Az illesztőprogramokkal és a SQL Data Warehousehoz való csatlakozással kapcsolatos további információkért lásd: [illesztőprogramok Azure SQL Data Warehouse][Drivers for Azure SQL Data Warehouse] és [Csatlakozás Azure SQL Data Warehouse][Connect to Azure SQL Data Warehouse] cikkekhez. |
 
 ## <a name="tools"></a>Eszközök
-| Probléma                                                        | Megoldás:                                                   |
+| Probléma                                                        | Felbontás                                                   |
 | :----------------------------------------------------------- | :----------------------------------------------------------- |
 | A Visual Studio Object Explorerből hiányzik a HRE-felhasználók           | Ez egy ismert probléma.  Megkerülő megoldásként tekintse meg a [sys. database_principals][sys.database_principals]felhasználóit.  A Azure Active Directory és a SQL Data Warehouse használatával kapcsolatos további tudnivalókért tekintse meg a [Azure SQL Data Warehouse hitelesítés][Authentication to Azure SQL Data Warehouse] című témakört. |
 | A manuális parancsfájlok, a parancsfájlkezelés varázsló használata vagy a SSMS-on keresztüli csatlakozás lassú, nem válaszol, vagy hibákat állít elő. | Győződjön meg arról, hogy a felhasználók létre lettek hozva a Master adatbázisban. A parancsfájl-kezelési beállítások területen győződjön meg arról, hogy a motor kiadása "Microsoft Azure SQL Data Warehouse Edition", a motor típusa pedig "Microsoft Azure SQL Database". |
 | A szkriptek előállítása meghiúsul a SSMS                               | A SQL Data Warehouse parancsfájl létrehozása meghiúsul, ha a "függő objektumok létrehozásához szükséges parancsfájl létrehozása" beállítás értéke "true" (igaz). Megkerülő megoldásként a felhasználóknak manuálisan kell megadniuk az eszközök-> Options-> SQL Server Object Explorer-> parancsfájlt létrehozni a függő beállításokhoz, és false értékre kell állítani. |
 
 ## <a name="performance"></a>Teljesítmény
-| Probléma                                                        | Megoldás:                                                   |
+| Probléma                                                        | Felbontás                                                   |
 | :----------------------------------------------------------- | :----------------------------------------------------------- |
-| A lekérdezés teljesítményével kapcsolatos hibaelhárítás                            | Ha egy adott lekérdezést próbál elhárítani, kezdje a megtanulni [a lekérdezések figyelését][Learning how to monitor your queries]. |
+| A lekérdezés teljesítményével kapcsolatos hibaelhárítás                            | Ha egy adott lekérdezést próbál elhárítani, kezdje a [megtanulni a lekérdezések figyelését][Learning how to monitor your queries]. |
 | A hiányos lekérdezési teljesítmény és a tervek gyakran a hiányzó statisztikák eredménye. | A gyenge teljesítmény leggyakoribb oka a táblák statisztikáinak hiánya.  A statisztikák létrehozásával és a teljesítmény szempontjából kritikus fontosságú információkkal kapcsolatos további információkért tekintse meg a [táblák statisztikáinak fenntartását][Statistics] ismertető témakört. |
 | Alacsony Egyidejűség/lekérdezések várólistán                             | A számítási [feladatok kezelésének][Workload management] megismerése fontos annak megismerése érdekében, hogy miként lehet kiegyensúlyozni a memória elosztását a párhuzamosságtal. |
 | Az ajánlott eljárások megvalósítása                              | A legjobb megoldás, ha a lekérdezési teljesítmény javításának módszereit [SQL Data Warehouse ajánlott eljárásokat][SQL Data Warehouse best practices] ismertető cikkben találja. |
@@ -47,22 +48,22 @@ Ez a cikk a gyakori hibaelhárítási kérdéseit sorolja fel.
 | Gyenge lekérdezési teljesítmény a gyenge index minősége miatt     | Bizonyos időpontokban a lekérdezések lelassulnak a [gyenge oszlopcentrikus indexe][Poor columnstore index quality]miatt.  Ebből a cikkből megtudhatja, hogyan [hozhat létre az indexeket a szegmensek minőségének javítása érdekében][Rebuild indexes to improve segment quality]. |
 
 ## <a name="system-management"></a>Rendszerkezelés
-| Probléma                                                        | Megoldás:                                                   |
+| Probléma                                                        | Felbontás                                                   |
 | :----------------------------------------------------------- | :----------------------------------------------------------- |
-| Msg 40847: A művelet nem hajtható végre, mert a kiszolgáló túllépi az engedélyezett adatbázis-tranzakciós egység 45000-os kvótáját. | Csökkentse a létrehozni kívánt adatbázis [DWU][DWU] vagy a [kvóta növelését][request a quota increase]. |
+| Msg 40847: nem végezhető el a művelet, mert a kiszolgáló túllépi az engedélyezett adatbázis-tranzakciós egység (45000) kvótáját. | Csökkentse a létrehozni kívánt adatbázis [DWU][DWU] vagy a [kvóta növelését][request a quota increase]. |
 | A terület kihasználtságának vizsgálata                              | A rendszerek lemezterület-kihasználtságának megismeréséhez tekintse meg a [táblázat méretét][Table sizes] . |
-| Súgó a táblázatok kezeléséhez                                    | A táblák kezelésével kapcsolatos segítségért tekintse meg a [táblázat áttekintését][Overview] ismertető cikket.  A cikk a részletes témakörökre mutató hivatkozásokat is tartalmaz, például a [táblázat][Data types]adattípusait, [a táblázatok terjesztését][Distribute], [a][Index]táblák indexelését, [a][Partition]táblák particionálását, a táblák [statisztikáit][Statistics] és az [ideiglenes táblákat][Temporary]. |
+| Súgó a táblázatok kezeléséhez                                    | A táblák kezelésével kapcsolatos segítségért tekintse meg a [táblázat áttekintését][Overview] ismertető cikket.  A cikk a részletes témakörökre mutató hivatkozásokat is tartalmaz, például a [táblázat adattípusait][Data types], [a táblázatok terjesztését][Distribute], [a táblák indexelését][Index], [a táblák particionálását, a][Partition]táblák [statisztikáit][Statistics] és az [ideiglenes táblákat][Temporary]. |
 | Az transzparens adattitkosítás (TDE) folyamatjelző sáv nem frissül a Azure Portal | A TDE állapotát a [PowerShell](/powershell/module/az.sql/get-azsqldatabasetransparentdataencryption)segítségével tekintheti meg. |
 
 
 ## <a name="differences-from-sql-database"></a>Különbségek a SQL Database
-| Probléma                                 | Megoldás:                                                   |
+| Probléma                                 | Felbontás                                                   |
 | :------------------------------------ | :----------------------------------------------------------- |
 | Nem támogatott SQL Database funkciók     | Lásd: nem [támogatott táblázatos funkciók][Unsupported table features]. |
-| Nem támogatott SQL Database adattípusok   | Lásd: nem [támogatott][Unsupported data types]adattípusok.        |
-| TÖRLÉSi és frissítési korlátozások         | [A nem támogatott frissítési és törlési szintaxissal][Using CTAS to work around unsupported UPDATE and DELETE syntax]kapcsolatban tekintse meg a [megoldások frissítése][UPDATE workarounds], a megkerülő [megoldások törlése][DELETE workarounds] és a CTAS használata című témakört. |
+| Nem támogatott SQL Database adattípusok   | Lásd: nem [támogatott adattípusok][Unsupported data types].        |
+| TÖRLÉSi és frissítési korlátozások         | [A nem támogatott frissítési és törlési szintaxissal][Using CTAS to work around unsupported UPDATE and DELETE syntax]kapcsolatban tekintse meg a [megoldások frissítése][UPDATE workarounds], a [megkerülő megoldások törlése][DELETE workarounds] és a CTAS használata című témakört. |
 | A MERGE utasítás nem támogatott      | Lásd: [egyesítési Áthidaló megoldás][MERGE workarounds].                  |
-| Tárolt eljárások korlátai          | A tárolt eljárások korlátainak megismeréséhez tekintse meg a [tárolt eljárásokra][Stored procedure limitations] vonatkozó korlátozásokat. |
+| Tárolt eljárások korlátai          | A tárolt eljárások korlátainak megismeréséhez tekintse meg a [tárolt eljárásokra vonatkozó korlátozásokat][Stored procedure limitations] . |
 | A UDF nem támogatja a SELECT utasítások használatát | Ez a UDF jelenlegi korlátozása.  Az általunk támogatott szintaxishoz lásd: [create Function][CREATE FUNCTION] . |
 
 ## <a name="next-steps"></a>További lépések

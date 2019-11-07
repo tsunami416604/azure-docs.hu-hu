@@ -1,26 +1,26 @@
 ---
-title: Azure Media Clipperrel billentyűzet beállításainak konfigurálása |} A Microsoft Docs
-description: Az Azure Media Clipperrel konfigurálható billentyűparancsok beállításának lépéseit
+title: Az Azure Media Clipper Keyboard beállításainak konfigurálása | Microsoft Docs
+description: Az Azure Media Clipper konfigurálható billentyűparancsok beállításának lépései
 services: media-services
-keywords: clip;subclip;encoding;media
-author: dbgeorge
-manager: jasonsue
-ms.author: dwgeo
+keywords: klip; alklip; kódolás; média
+author: Juliako
+manager: femila
+ms.author: juliako
 ms.date: 03/14/2019
 ms.topic: article
 ms.service: media-services
-ms.openlocfilehash: 2eb32b8ec265a4afa2581374c1f07ac06958a576
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 013ca640d30baceeb41e9cb38fab69020b3c50dd
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61466106"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73685060"
 ---
-# <a name="configure-azure-media-clipper-keyboard-shortcuts"></a>Azure Media Clipperrel billentyűparancsok konfigurálása 
+# <a name="configure-azure-media-clipper-keyboard-shortcuts"></a>Az Azure Media Clipper billentyűparancsok konfigurálása 
 
-Az Azure Media Clipperrel támogatja az alapértelmezett billentyűparancsok testreszabása azáltal, hogy egy nem kötelező `keymap` JSON-paraméter.
+Az Azure Media Clipper a választható `keymap` JSON-paraméterekkel támogatja az alapértelmezett billentyűparancsok testreszabását.
 
-Az alábbi minta JSON az alapértelmezett billentyűparancsok mutatja be. Testre szabhatja, hogy ezek a beállítások kulcsmezők és ad át a paramétert a Clipperrel inicializálásakor.
+Az alábbi JSON-minta az alapértelmezett billentyűparancsokat mutatja be. Ezeket a beállításokat úgy szabhatja testre, hogy megváltoztatja a kulcs mezőit, és átadja a paramétert a Clipper inicializálásakor.
 
 ```json
 {

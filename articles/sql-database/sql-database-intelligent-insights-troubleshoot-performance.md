@@ -1,5 +1,5 @@
 ---
-title: A Intelligent Insights teljesítménnyel kapcsolatos problémák elhárítása Azure SQL Database Microsoft Docs
+title: A Intelligent Insights teljesítményével kapcsolatos hibák elhárítása Azure SQL Database
 description: A Intelligent Insights segítségével elháríthatja Azure SQL Database teljesítménnyel kapcsolatos problémákat.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 01/25/2019
-ms.openlocfilehash: f884b39db92f44f7cff938e0ac4b9c2e22dc36cb
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: fef1ed386dbf3acccc09b9bba743b6b33492da0e
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71262190"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73689720"
 ---
 # <a name="troubleshoot-azure-sql-database-performance-issues-with-intelligent-insights"></a>A Intelligent Insights teljesítményével kapcsolatos hibák elhárítása Azure SQL Database
 
@@ -108,9 +108,9 @@ A legmagasabb memóriahasználat használatával optimalizálhatja vagy eltávol
 
 Emellett csökkentheti a munkaterhelést, ha több adatbázisra optimalizálja vagy terjeszti azt. A számítási feladatokat több adatbázis között is eloszthatja. Ha ezek a megoldások nem lehetségesek, érdemes lehet növelni az SQL Database-előfizetés díjszabási szintjét, hogy növelje az adatbázis számára elérhető memória-erőforrások mennyiségét.
 
-További hibaelhárítási javaslatokért lásd [: a memóriabeli támogatások meditációja: A titokzatos SQL Server memória fogyasztó sok névvel](https://blogs.msdn.microsoft.com/sqlmeditation/20../../memory-meditation-the-mysterious-sql-server-memory-consumer-with-many-names/).
+További hibaelhárítási javaslatokért lásd [: memória-ösztöndíjak meditáció: a titokzatos SQL Server memória fogyasztója sok névvel](https://blogs.msdn.microsoft.com/sqlmeditation/20../../memory-meditation-the-mysterious-sql-server-memory-consumer-with-many-names/).
 
-## <a name="locking"></a>Zárolás
+## <a name="locking"></a>Zárolási
 
 ### <a name="what-is-happening"></a>mi történik
 
@@ -226,7 +226,7 @@ Ez a észlelhető teljesítményi minta egy adatbázis-teljesítménnyel kapcsol
 
 ### <a name="troubleshooting"></a>Hibaelhárítás
 
-A diagnosztikai napló megjeleníti a tempDB-tartalom részleteit. Az információkat kiindulási pontként használhatja a hibaelhárításhoz. Két dolgot kell követnie, hogy enyhítse ezt a fajta versenyt, és növelje a teljes munkaterhelés átviteli sebességét: Az ideiglenes táblák használatát leállíthatja. Használhatja a memóriára optimalizált táblákat is. 
+A diagnosztikai napló megjeleníti a tempDB-tartalom részleteit. Az információkat kiindulási pontként használhatja a hibaelhárításhoz. Az ilyen jellegű és a teljes munkaterhelés teljesítményének növelésére két dolgot kell követnie: az ideiglenes táblák használatát le is állíthatja. Használhatja a memóriára optimalizált táblákat is. 
 
 További információ: [Bevezetés a memóriába optimalizált táblákba](https://docs.microsoft.com/sql/relational-databases/in-memory-oltp/introduction-to-memory-optimized-tables). 
 
@@ -320,7 +320,7 @@ Ha csökkentette az árképzési szintet, és így a DTU elérhetővé válik a 
 
 Intelligent Insights a Azure Portal keresztül érheti el a Azure SQL Analytics. Próbálja meg megkeresni a bejövő teljesítmény riasztását, és jelölje ki. Azonosítsa, hogy mi történik az észlelések lapon. Figyelje meg a probléma okának elemzését, a lekérdezés szövegét, a lekérdezési idő trendjeit és az incidensek evolúcióját. A probléma megoldásához a Intelligent Insights javaslat használatával próbálja megoldani a problémát. 
 
-[![Folyamatábra hibaelhárítása](./media/sql-database-intelligent-insights/intelligent-insights-troubleshooting-flowchart.png)](https://github.com/Microsoft/sql-server-samples/blob/master/samples/features/intelligent-insight/Troubleshoot%20Azure%20SQL%20Database%20performance%20issues%20using%20Intelligent%20Insight.pdf)
+[![hibaelhárítási folyamatábra](./media/sql-database-intelligent-insights/intelligent-insights-troubleshooting-flowchart.png)](https://github.com/Microsoft/sql-server-samples/blob/master/samples/features/intelligent-insight/Troubleshoot%20Azure%20SQL%20Database%20performance%20issues%20using%20Intelligent%20Insight.pdf)
 
 > [!TIP]
 > Válassza ki a folyamatábrát egy PDF-verzió letöltéséhez.

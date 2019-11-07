@@ -1,5 +1,5 @@
 ---
-title: Változó tevékenység hozzáfűzése a Azure Data Factoryban | Microsoft Docs
+title: Változó tevékenység hozzáfűzése Azure Data Factory
 description: Megtudhatja, hogyan állíthatja be a változó hozzáfűzése tevékenységet úgy, hogy értéket adjon hozzá egy Data Factory folyamatban definiált meglévő tömb-változóhoz.
 services: data-factory
 documentationcenter: ''
@@ -11,12 +11,12 @@ ms.author: daperlov
 manager: jroth
 ms.reviewer: maghan
 ms.date: 10/09/2018
-ms.openlocfilehash: 24808c9ed4bda5e8d3b0ce23ab93bc59eb260374
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: bcecd3411b6e6e751032f33862a671d8adbca046
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70141725"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73679975"
 ---
 # <a name="append-variable-activity-in-azure-data-factory"></a>Változó tevékenység hozzáfűzése Azure Data Factory
 
@@ -26,10 +26,10 @@ A változó hozzáfűzése tevékenységgel hozzáadhat egy értéket egy Data F
 
 Tulajdonság | Leírás | Kötelező
 -------- | ----------- | --------
-name | A tevékenység neve a folyamatban | Igen
-description | A tevékenység működését leíró szöveg | nem
+név | A tevékenység neve a folyamatban | Igen
+leírás | A tevékenység működését leíró szöveg | nem
 type | A tevékenység típusa AppendVariable | igen
-value | A megadott változóhoz való hozzáfűzéshez használt karakterlánc-literál vagy kifejezés objektum értéke | igen
+érték | A megadott változóhoz való hozzáfűzéshez használt karakterlánc-literál vagy kifejezés objektum értéke | igen
 variableName | Annak a változónak a neve, amely tevékenység alapján módosul, a változónak "Array" típusúnak kell lennie. | igen
 
 ## <a name="next-steps"></a>További lépések

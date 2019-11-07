@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: helohr
-ms.openlocfilehash: fa61d69ae7aa650b6011696fd45d05ba20d2ac8b
-ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
+ms.openlocfilehash: dc980d60c1db684a47c38b3b8efceb08dd618838
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71338708"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73605811"
 ---
 # <a name="connect-with-the-macos-client"></a>Kapcsolódás a macOS-ügyfélhez
 
@@ -35,7 +35,7 @@ Előfizetés a hírcsatornára:
 
 1. A főoldalon válassza a **hírcsatorna hozzáadása** lehetőséget a szolgáltatáshoz való kapcsolódáshoz és az erőforrások lekéréséhez.
 2. Adja meg a hírcsatorna URL-címét. Ez lehet URL-cím vagy e-mail-cím:
-   - Ha URL-címet használ, használja a rendszergazdát. Általában az URL-cím <https://rdweb.wvd.microsoft.com>.
+   - Ha URL-címet használ, használja a rendszergazdát. Az URL-cím általában <https://rdweb.wvd.microsoft.com>.
    - E-mail-cím használatához adja meg az e-mail-címét. Ez azt jelzi, hogy az ügyfél megkeresi az e-mail-címéhez tartozó URL-címet, ha a rendszergazda konfigurálta a kiszolgálót.
 3. Válassza az **előfizetés**lehetőséget.
 4. Ha a rendszer kéri, jelentkezzen be a felhasználói fiókjával.

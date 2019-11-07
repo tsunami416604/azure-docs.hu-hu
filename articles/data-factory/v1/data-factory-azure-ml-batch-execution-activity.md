@@ -1,5 +1,5 @@
 ---
-title: Prediktív adatfolyamatok létrehozása a Azure Data Factory használatával | Microsoft Docs
+title: Prediktív adatfolyamatok létrehozása Azure Data Factory használatával
 description: Ismerteti, hogyan hozhat létre prediktív folyamatokat a Azure Data Factory és a Azure Machine Learning használatával
 services: data-factory
 documentationcenter: ''
@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/22/2018
-ms.openlocfilehash: e7c48c1d91ae08be29531f4a99ea75ab7a928f34
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: eba5df587d6bd6dda6083314cfb94836c6669393
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70140490"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73683146"
 ---
 # <a name="create-predictive-pipelines-using-azure-machine-learning-and-azure-data-factory"></a>Prediktív folyamatok létrehozása Azure Machine Learning és Azure Data Factory használatával
 
@@ -34,7 +34,7 @@ ms.locfileid: "70140490"
 
 ## <a name="introduction"></a>Bevezetés
 > [!NOTE]
-> Ez a cikk a Data Factory 1-es verziójára vonatkozik. Ha a Data Factory szolgáltatás aktuális verzióját használja, olvassa el az adatátalakítás a [Data Factory Machine learning használatával](../transform-data-using-machine-learning.md)című témakört.
+> Ez a cikk a Data Factory 1-es verziójára vonatkozik. Ha a Data Factory szolgáltatás aktuális verzióját használja, olvassa el az [adatátalakítás a Data Factory Machine learning használatával](../transform-data-using-machine-learning.md)című témakört.
 
 
 ### <a name="azure-machine-learning"></a>Azure Machine Learning
@@ -59,7 +59,7 @@ Idővel a Azure Machine Learning Studio-pontozási kísérletek prediktív model
 1. Tegye közzé a betanítási kísérletet (nem prediktív kísérletet) webszolgáltatásként. Ezt a lépést a Azure Machine Learning Studióban végezheti el, mivel a prediktív kísérletet webszolgáltatásként teszi elérhetővé az előző forgatókönyvben.
 2. A Azure Machine Learning Studio batch végrehajtási tevékenységével meghívja a webszolgáltatást a betanítási kísérlethez. Alapvetően a Azure Machine Learning Studio batch végrehajtási tevékenységgel is meghívhatja a betanítási webszolgáltatás és a pontozási webszolgáltatás szolgáltatást.
 
-Miután elvégezte a betanítást, frissítse a pontozási webszolgáltatást (webszolgáltatásként elérhető prediktív kísérlet) az újonnan betanított modellel az **Azure Machine learning Studio Update Resource tevékenység**használatával. Részletekért lásd: [modellek frissítése a frissítés erőforrás](data-factory-azure-ml-update-resource-activity.md) -tevékenységgel című cikkben.
+Miután elvégezte a betanítást, frissítse a pontozási webszolgáltatást (webszolgáltatásként elérhető prediktív kísérlet) az újonnan betanított modellel az **Azure Machine learning Studio Update Resource tevékenység**használatával. Részletekért lásd: [modellek frissítése a frissítés erőforrás-tevékenységgel](data-factory-azure-ml-update-resource-activity.md) című cikkben.
 
 ## <a name="invoking-a-web-service-using-batch-execution-activity"></a>Webszolgáltatások kötegelt végrehajtási tevékenységgel történő meghívása
 A Azure Data Factory segítségével hangolhatja az adatáthelyezést és a feldolgozást, majd elvégezheti a Batch-végrehajtást a Azure Machine Learning használatával. A legfelső szintű lépések:
@@ -74,13 +74,13 @@ A Azure Data Factory segítségével hangolhatja az adatáthelyezést és a feld
 
       ![Batch URI](./media/data-factory-azure-ml-batch-execution-activity/batch-uri.png)
 
-### <a name="scenario-experiments-using-web-service-inputsoutputs-that-refer-to-data-in-azure-blob-storage"></a>Forgatókönyv: Az Azure-ban tárolt adatokra hivatkozó webszolgáltatási bemeneteket/kimeneteket használó kísérletek Blob Storage
+### <a name="scenario-experiments-using-web-service-inputsoutputs-that-refer-to-data-in-azure-blob-storage"></a>Forgatókönyv: az Azure-beli adatokra hivatkozó webszolgáltatási bemeneteket/kimeneteket használó kísérletek Blob Storage
 Ebben az esetben a Azure Machine Learning webszolgáltatás előrejelzést készít az Azure Blob Storage-ból származó fájlból származó adatokról, és az előrejelzési eredményeket a blob Storage-ban tárolja. A következő JSON egy Data Factory folyamatot határoz meg egy AzureMLBatchExecution-tevékenységgel. A tevékenység kimenetként a bemeneti és a **DecisionTreeResultBlob** adatkészletet **DecisionTreeInputBlob** . A **DecisionTreeInputBlob** a **webServiceInput** JSON-tulajdonság használatával továbbítja a webszolgáltatásnak. A **DecisionTreeResultBlob** a webszolgáltatás kimenetként adja át a **webServiceOutputs** JSON-tulajdonság használatával.
 
 > [!IMPORTANT]
-> Ha a webszolgáltatás több bemenetet is igénybe vesz, használja a **webServiceInputs** tulajdonságot a **webServiceInput**használata helyett. Tekintse meg a webszolgáltatáshoz [több bemenet szükséges](#web-service-requires-multiple-inputs) szakaszt a webServiceInputs tulajdonság használatához.
+> Ha a webszolgáltatás több bemenetet is igénybe vesz, használja a **webServiceInputs** tulajdonságot a **webServiceInput**használata helyett. Tekintse meg a [webszolgáltatáshoz több bemenet szükséges](#web-service-requires-multiple-inputs) szakaszt a webServiceInputs tulajdonság használatához.
 >
-> A **webServiceInput**/**webServiceInputs** és a **webServiceOutputs** tulajdonságok ( **typeProperties**) által hivatkozott adatkészleteket is fel kell venni a tevékenység bemenetei és **kimenetei**közé.
+> A **webServiceInput**/**webServiceInputs** és **webServiceOutputs** tulajdonságok ( **typeProperties**) által hivatkozott adatkészleteknek is szerepelniük kell a tevékenység **bemenetei** és **kimenetei**között.
 >
 > A Azure Machine Learning Studio-kísérletben a webszolgáltatás bemeneti és kimeneti portjai és a globális paraméterek alapértelmezett neve ("input1", "input2") testreszabható. A webServiceInputs, a webServiceOutputs és a globalParameters-beállításokhoz használt névnek pontosan egyeznie kell a kísérletekben szereplő nevekkel. Az Azure Machine Learning Studio-végpont batch-végrehajtás Súgó lapján megtekintheti a minta kérések hasznos adatait a várt leképezés ellenőrzéséhez.
 >
@@ -150,7 +150,7 @@ Javasoljuk, hogy az [első folyamat létrehozása Data Factory][adf-build-1st-pi
       }
     }
     ```
-2. Hozza létre a **bemeneti** Azure Data Factory adatkészletet. A többi Data Factory adatkészlettől eltérően ezek az adatkészletek mind a **folderPath** , mind a **filename** értékeket tartalmazniuk kell. A particionálással az egyes batch-végrehajtásokat (minden adatszeletet) feldolgozhatja, illetve egyedi bemeneti és kimeneti fájlokat hozhat létre. Előfordulhat, hogy egy felsőbb rétegbeli tevékenységet is tartalmaznia kell a CSV-fájlformátumba való átalakításhoz, és az egyes szeletekhez tartozó Storage-fiókba kell helyeznie azt. Ebben az esetben nem kell megadnia az alábbi példában látható **külső** és **externalData** beállításokat, és a DecisionTreeInputBlob egy másik tevékenység kimeneti adatkészlete lenne.
+2. Hozza létre a **bemeneti** Azure Data Factory **adatkészletet**. A többi Data Factory adatkészlettől eltérően ezek az adatkészletek mind a **folderPath** , mind a **filename** értékeket tartalmazniuk kell. A particionálással az egyes batch-végrehajtásokat (minden adatszeletet) feldolgozhatja, illetve egyedi bemeneti és kimeneti fájlokat hozhat létre. Előfordulhat, hogy egy felsőbb rétegbeli tevékenységet is tartalmaznia kell a CSV-fájlformátumba való átalakításhoz, és az egyes szeletekhez tartozó Storage-fiókba kell helyeznie azt. Ebben az esetben nem kell megadnia az alábbi példában látható **külső** és **externalData** beállításokat, és a DecisionTreeInputBlob egy másik tevékenység kimeneti adatkészlete lenne.
 
     ```JSON
     {
@@ -182,7 +182,7 @@ Javasoljuk, hogy az [első folyamat létrehozása Data Factory][adf-build-1st-pi
     }
     ```
 
-    A bemeneti CSV-fájlnak tartalmaznia kell az oszlop fejlécének sorát. Ha a **másolási tevékenység** használatával hozza létre vagy helyezi át a CSV-fájlt a blob Storage-ba, a fogadó tulajdonságot **igaz**értékre kell állítania **blobWriterAddHeader** . Példa:
+    A bemeneti CSV-fájlnak tartalmaznia kell az oszlop fejlécének sorát. Ha a **másolási tevékenység** használatával hozza létre vagy helyezi át a CSV-fájlt a blob Storage-ba, a fogadó tulajdonságot **igaz**értékre kell állítania **blobWriterAddHeader** . Például:
 
     ```JSON
     sink:
@@ -192,8 +192,8 @@ Javasoljuk, hogy az [első folyamat létrehozása Data Factory][adf-build-1st-pi
     }
     ```
 
-    Ha a CSV-fájl nem tartalmazza a fejlécet, a következő hibaüzenet jelenhet meg: **Hiba a tevékenységben: Hiba a karakterlánc olvasásakor. Nem várt jogkivonat: StartObject. Elérési út: "", 1.** sor, 1. pozíció.
-3. Hozza létre a **kimeneti** Azure Data Factory adatkészletet. Ez a példa particionálással hoz létre egyedi kimeneti útvonalat az egyes szeletek végrehajtásához. A particionálás nélkül a tevékenység felülírja a fájlt.
+    Ha a CSV-fájl nem tartalmazza a fejlécet, a következő hibaüzenet jelenhet meg: **hiba a tevékenységben: hiba történt a karakterlánc olvasása során. Váratlan jogkivonat: StartObject. Elérési út: "", 1. sor, 1. pozíció**.
+3. Hozza létre a **kimeneti** Azure Data Factory **adatkészletet**. Ez a példa particionálással hoz létre egyedi kimeneti útvonalat az egyes szeletek végrehajtásához. A particionálás nélkül a tevékenység felülírja a fájlt.
 
     ```JSON
     {
@@ -301,24 +301,24 @@ Javasoljuk, hogy az [első folyamat létrehozása Data Factory][adf-build-1st-pi
       }
       ```
 
-      A **kezdő** és a **záró** dátum/idő értékének [ISO formátumúnak](https://en.wikipedia.org/wiki/ISO_8601)kell lennie. Példa: 2014-10-14T16:32:41Z. A **befejezési** időpont nem kötelező. Ha nem ad meg értéket a **Befejezés** tulajdonsághoz, a rendszer a következőt számítja ki: "**Start + 48 óra".** A folyamat határozatlan ideig történő futtatásához adja meg a **9999-09-09** értéket az **end** (befejezés) tulajdonsághoz. A JSON-tulajdonságokkal kapcsolatos információkért lásd: [JSON Scripting Reference](https://msdn.microsoft.com/library/dn835050.aspx) (Referencia a JSON-parancsprogramokhoz).
+      A **kezdő** és a **záró** dátum/idő értékének [ISO formátumúnak](https://en.wikipedia.org/wiki/ISO_8601)kell lennie. Például: 2014-10-14T16:32:41Z. A **befejezési** időpont nem kötelező. Ha nem ad meg értéket a **Befejezés** tulajdonsághoz, a rendszer a következőt számítja ki: "**Start + 48 óra".** A folyamat határozatlan ideig történő futtatásához adja meg a **9999-09-09** értéket az **end** (befejezés) tulajdonsághoz. A JSON-tulajdonságokkal kapcsolatos információkért lásd: [JSON Scripting Reference](https://msdn.microsoft.com/library/dn835050.aspx) (Referencia a JSON-parancsprogramokhoz).
 
       > [!NOTE]
       > A AzureMLBatchExecution tevékenység bemenetének megadása nem kötelező.
       >
       >
 
-### <a name="scenario-experiments-using-readerwriter-modules-to-refer-to-data-in-various-storages"></a>Forgatókönyv: Olvasó/író modulok használatával végzett kísérletek különböző tárolókban található adataira
+### <a name="scenario-experiments-using-readerwriter-modules-to-refer-to-data-in-various-storages"></a>Forgatókönyv: az olvasó/író modulok használatával végzett kísérletek különböző tárolókban lévő adataira vonatkoznak
 Azure Machine Learning Studio-kísérletek létrehozásakor egy másik gyakori forgatókönyv az olvasó és az író modulok használata. Az olvasó modul az adatok kísérletbe való betöltésére szolgál, az író modul pedig az adatok a kísérletekből való mentéséhez. Az olvasó és az író modulok részletes ismertetését az MSDN Library [olvasó](https://msdn.microsoft.com/library/azure/dn905997.aspx) és [író](https://msdn.microsoft.com/library/azure/dn905984.aspx) témaköreiben találja.
 
-Az olvasó-és író modulok használata esetén célszerű webszolgáltatási paramétert használni az olvasó/író modulok minden tulajdonságához. Ezek a webes paraméterek lehetővé teszik az értékek konfigurálását futásidőben. Létrehozhat például egy kísérletet egy Azure SQL Databaset használó olvasó modullal: XXX.database.windows.net. A webszolgáltatás üzembe helyezése után engedélyezni szeretné a webszolgáltatás felhasználói számára, hogy megadják a YYY.database.windows.net nevű másik Azure-SQL Server. Webszolgáltatási paraméter használatával engedélyezheti ezt az értéket.
+Az olvasó-és író modulok használata esetén célszerű webszolgáltatási paramétert használni az olvasó/író modulok minden tulajdonságához. Ezek a webes paraméterek lehetővé teszik az értékek konfigurálását futásidőben. Létrehozhat például egy kísérletet egy olvasó modullal, amely egy Azure SQL Database: XXX.database.windows.net-t használ. A webszolgáltatás üzembe helyezése után engedélyezni szeretné a webszolgáltatás felhasználói számára, hogy megadják a YYY.database.windows.net nevű másik Azure-SQL Server. Webszolgáltatási paraméter használatával engedélyezheti ezt az értéket.
 
 > [!NOTE]
 > A webszolgáltatások bemenete és kimenete eltér a webszolgáltatás paramétereinek. Az első forgatókönyvben azt tapasztalja, hogyan adható meg egy Azure Machine Learning Studio webszolgáltatás bemenete és kimenete. Ebben a forgatókönyvben egy olyan webszolgáltatás paramétereit adja át, amely az olvasó/író modulok tulajdonságainak felel meg.
 >
 >
 
-Nézzük meg a webszolgáltatási paraméterek használatának forgatókönyvét. Rendelkezik egy telepített Azure Machine Learning webszolgáltatással, amely egy olvasó modul használatával olvassa be a Azure Machine Learning által támogatott adatforrások adatait (például: Azure SQL Database). A Batch-végrehajtás elvégzése után az eredményeket egy író modul (Azure SQL Database) segítségével kell megírni.  A kísérletekben nincs definiálva webszolgáltatás-bemenet és-kimenet. Ebben az esetben javasoljuk, hogy konfigurálja az olvasó és az író modulok releváns webszolgáltatás-paramétereit. Ez a konfiguráció lehetővé teszi, hogy az olvasó/író modulok a AzureMLBatchExecution tevékenység használatakor legyenek konfigurálva. A webszolgáltatás paramétereit az alábbi módon adhatja meg a tevékenység JSON- **globalParameters** szakaszában.
+Nézzük meg a webszolgáltatási paraméterek használatának forgatókönyvét. Rendelkezik egy telepített Azure Machine Learning webszolgáltatással, amely egy olvasó modult használ a Azure Machine Learning által támogatott adatforrások (például: Azure SQL Database) adatainak olvasásához. A Batch-végrehajtás elvégzése után az eredményeket egy író modul (Azure SQL Database) segítségével kell megírni.  A kísérletekben nincs definiálva webszolgáltatás-bemenet és-kimenet. Ebben az esetben javasoljuk, hogy konfigurálja az olvasó és az író modulok releváns webszolgáltatás-paramétereit. Ez a konfiguráció lehetővé teszi, hogy az olvasó/író modulok a AzureMLBatchExecution tevékenység használatakor legyenek konfigurálva. A webszolgáltatás paramétereit az alábbi módon adhatja meg a tevékenység JSON- **globalParameters** szakaszában.
 
 ```JSON
 "typeProperties": {
@@ -347,7 +347,7 @@ A webszolgáltatás paramétereinek átadásához [Data Factory függvények](da
 ### <a name="using-a-reader-module-to-read-data-from-multiple-files-in-azure-blob"></a>Olvasó modul használata az Azure blobban található több fájlból származó adatok olvasásához
 A Pig és a kaptár tevékenységekkel rendelkező Big adatfolyamatok egy vagy több kimeneti fájlt is létrehozhatnak kiterjesztés nélkül. Ha például külső kaptár-táblázatot ad meg, a külső struktúra táblázatának az Azure Blob Storage-ban tárolt adattára a következő névvel 000000_0. Egy kísérlet olvasó moduljának használatával több fájlt is beolvashat, és az előrejelzésekhez használhatja őket.
 
-Ha egy Azure Machine Learning kísérletben az olvasó modult használja, megadhatja bemenetként az Azure blobot. Az Azure Blob Storage-ban található fájlok lehetnek a kimeneti fájlok (például: 000000_0), amelyet a HDInsight-on futó Pig és kaptár szkript állít elő. Az olvasó modul lehetővé teszi a fájlok (kiterjesztés nélküli) olvasását a **tároló, a könyvtár és a blob elérési útjának**konfigurálásával. A **tárolóra mutató elérési út** a tárolóra, a könyvtárra és a **blobra** mutat, hogy a fájlokat tartalmazó mappa a következő képen látható módon jelenjen meg. A csillag \*() **azt adja meg, hogy a tárolóban/mappában lévő összes fájl (azaz az aggregateddata/év = 2014/hónap-6/\*)** a kísérlet részeként legyen beolvasva.
+Ha egy Azure Machine Learning kísérletben az olvasó modult használja, megadhatja bemenetként az Azure blobot. Az Azure Blob Storage-ban található fájlok lehetnek a HDInsight-on futó Pig-és kaptár-parancsfájlok által előállított kimeneti fájlok (például: 000000_0). Az olvasó modul lehetővé teszi a fájlok (kiterjesztés nélküli) olvasását a **tároló, a könyvtár és a blob elérési útjának**konfigurálásával. A **tárolóra mutató elérési út** a tárolóra, a **könyvtárra és a blobra** mutat, hogy a fájlokat tartalmazó mappa a következő képen látható módon jelenjen meg. A csillag (\*) **azt adja meg, hogy a tárolóban/mappában lévő összes fájl (azaz az aggregateddata/év = 2014/hónap-6/\*)** a kísérlet részeként legyen beolvasva.
 
 ![Azure-Blob tulajdonságai](./media/data-factory-create-predictive-pipelines/azure-blob-properties.png)
 
@@ -404,12 +404,12 @@ Ha egy Azure Machine Learning kísérletben az olvasó modult használja, megadh
 
 A fenti JSON-példában:
 
-* A központilag telepített Azure Machine Learning webszolgáltatás egy olvasót és egy író modult használ az adatok olvasására/írására egy Azure SQL Database. Ez a webszolgáltatás a következő négy paramétert teszi elérhetővé:  Az adatbázis-kiszolgáló neve, az adatbázis neve, a kiszolgáló felhasználói fiókjának neve és a kiszolgáló felhasználói fiókjának jelszava.
-* A **kezdő** és a **záró** dátum/idő értékének [ISO formátumúnak](https://en.wikipedia.org/wiki/ISO_8601)kell lennie. Példa: 2014-10-14T16:32:41Z. A **befejezési** időpont nem kötelező. Ha nem ad meg értéket a **Befejezés** tulajdonsághoz, a rendszer a következőt számítja ki: "**Start + 48 óra".** A folyamat határozatlan ideig történő futtatásához adja meg a **9999-09-09** értéket az **end** (befejezés) tulajdonsághoz. A JSON-tulajdonságokkal kapcsolatos információkért lásd: [JSON Scripting Reference](https://msdn.microsoft.com/library/dn835050.aspx) (Referencia a JSON-parancsprogramokhoz).
+* A központilag telepített Azure Machine Learning webszolgáltatás egy olvasót és egy író modult használ az adatok olvasására/írására egy Azure SQL Database. Ez a webszolgáltatás a következő négy paramétert teszi elérhetővé: az adatbázis-kiszolgáló neve, az adatbázis neve, a kiszolgáló felhasználói fiókjának neve és a kiszolgáló felhasználói fiókjának jelszava.
+* A **kezdő** és a **záró** dátum/idő értékének [ISO formátumúnak](https://en.wikipedia.org/wiki/ISO_8601)kell lennie. Például: 2014-10-14T16:32:41Z. A **befejezési** időpont nem kötelező. Ha nem ad meg értéket a **Befejezés** tulajdonsághoz, a rendszer a következőt számítja ki: "**Start + 48 óra".** A folyamat határozatlan ideig történő futtatásához adja meg a **9999-09-09** értéket az **end** (befejezés) tulajdonsághoz. A JSON-tulajdonságokkal kapcsolatos információkért lásd: [JSON Scripting Reference](https://msdn.microsoft.com/library/dn835050.aspx) (Referencia a JSON-parancsprogramokhoz).
 
 ### <a name="other-scenarios"></a>Egyéb forgatókönyvek
 #### <a name="web-service-requires-multiple-inputs"></a>A webszolgáltatás több bemenetet igényel
-Ha a webszolgáltatás több bemenetet is igénybe vesz, használja a **webServiceInputs** tulajdonságot a **webServiceInput**használata helyett. A **webServiceInputs** hivatkozott adatkészleteket is szerepelnie kell a tevékenység bemenetei között.
+Ha a webszolgáltatás több bemenetet is igénybe vesz, használja a **webServiceInputs** tulajdonságot a **webServiceInput**használata helyett. A **webServiceInputs** hivatkozott adatkészleteket is szerepelnie kell a tevékenység **bemenetei**között.
 
 A Azure Machine Learning Studio-kísérletben a webszolgáltatás bemeneti és kimeneti portjai és a globális paraméterek alapértelmezett neve ("input1", "input2") testreszabható. A webServiceInputs, a webServiceOutputs és a globalParameters-beállításokhoz használt névnek pontosan egyeznie kell a kísérletekben szereplő nevekkel. Az Azure Machine Learning Studio-végpont batch-végrehajtás Súgó lapján megtekintheti a minta kérések hasznos adatait a várt leképezés ellenőrzéséhez.
 
@@ -536,7 +536,7 @@ Lehetséges, hogy a Azure Machine Learning Studio webszolgáltatás-olvasó és-
 },
 ```
 
-Az elvihetők a következők:
+Az **elvihetők** a következők:
 
 * Ha a kísérleti végpont egy webServiceInput használ: azt egy blob-adatkészlet jelképezi, és a tevékenység bemenetei és a webServiceInput tulajdonság tartalmazza. Ellenkező esetben a webServiceInput tulajdonság nincs megadva.
 * Ha a kísérleti végpont webServiceOutput (ka) t használ: ezeket a blob-adatkészletek jelölik, és a tevékenységek kimenetében és a webServiceOutputs tulajdonságban szerepelnek. A tevékenység kimeneteit és webServiceOutputs a kísérletben szereplő egyes kimenetek nevével kell leképezni. Ellenkező esetben a webServiceOutputs tulajdonság nincs megadva.
@@ -545,7 +545,7 @@ Az elvihetők a következők:
 
 
 ## <a name="updating-models-using-update-resource-activity"></a>Modellek frissítése a frissítési erőforrás tevékenység használatával
-Miután elvégezte a betanítást, frissítse a pontozási webszolgáltatást (webszolgáltatásként elérhető prediktív kísérlet) az újonnan betanított modellel az **Azure Machine learning Studio Update Resource tevékenység**használatával. Részletekért lásd: [modellek frissítése a frissítés erőforrás](data-factory-azure-ml-update-resource-activity.md) -tevékenységgel című cikkben.
+Miután elvégezte a betanítást, frissítse a pontozási webszolgáltatást (webszolgáltatásként elérhető prediktív kísérlet) az újonnan betanított modellel az **Azure Machine learning Studio Update Resource tevékenység**használatával. Részletekért lásd: [modellek frissítése a frissítés erőforrás-tevékenységgel](data-factory-azure-ml-update-resource-activity.md) című cikkben.
 
 ### <a name="reader-and-writer-modules"></a>Olvasó és író modulok
 A webszolgáltatás paramétereinek használatának gyakori forgatókönyve az Azure SQL-olvasók és-írók használata. Az olvasó modul a Azure Machine Learning Studioon kívüli adatkezelési szolgáltatásokból származó adatok betöltésére szolgál. Az író modul a kísérletek adatainak mentése a Azure Machine Learning Studioon kívüli adatkezelési szolgáltatásba.
@@ -555,7 +555,7 @@ Az Azure Blob/Azure SQL Reader/Writer szolgáltatással kapcsolatos további inf
 ## <a name="frequently-asked-questions"></a>Gyakori kérdések
 **K:** Több fájl is van, amelyeket az big data-folyamatok hoztak létre. Használhatom az AzureMLBatchExecution tevékenységet az összes fájlon?
 
-**V:** Igen. További részletekért tekintse meg az **olvasói modul használata az Azure blobban található több fájlból származó adatok** beolvasásához című szakaszt.
+**V:** Igen. További részletekért tekintse meg az **olvasói modul használata az Azure blobban található több fájlból származó adatok beolvasásához** című szakaszt.
 
 ## <a name="azure-machine-learning-studio-batch-scoring-activity"></a>Azure Machine Learning Studio batch pontozási tevékenység
 Ha a **AzureMLBatchScoring** tevékenységet használja az Azure Machine learning-nal való integráláshoz, javasoljuk, hogy használja a legújabb **AzureMLBatchExecution** -tevékenységet.
@@ -628,7 +628,7 @@ A webszolgáltatás paramétereinek átadásához [Data Factory függvények](da
 >
 
 ## <a name="see-also"></a>Lásd még:
-* [Azure-blogbejegyzés: Azure Data Factory és Azure Machine Learning első lépései](https://azure.microsoft.com/blog/getting-started-with-azure-data-factory-and-azure-machine-learning-4/)
+* [Azure blogbejegyzés: a Azure Data Factory és a Azure Machine Learning első lépései](https://azure.microsoft.com/blog/getting-started-with-azure-data-factory-and-azure-machine-learning-4/)
 
 [adf-build-1st-pipeline]: data-factory-build-your-first-pipeline.md
 

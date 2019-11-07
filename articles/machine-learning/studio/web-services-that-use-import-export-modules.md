@@ -1,5 +1,6 @@
 ---
-title: Az adatimportálás/-exportálás a web Servicesben – Azure Machine Learning Studio (klasszikus) | Microsoft Docs
+title: Adatimportálási/-exportálási szolgáltatás
+titleSuffix: ML Studio (classic) Azure
 description: Bemutatjuk, hogyan lehet az adatok importálása és az adatmodulok exportálása az adatok küldésére és fogadására egy webszolgáltatásból.
 services: machine-learning
 author: xiaoharper
@@ -11,12 +12,12 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: conceptual
 ms.date: 03/28/2017
-ms.openlocfilehash: a9259856a792dbd3c2f22ed98eef26c8e5f7b17d
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 3a88d3958378a0746a22e99a817ad9ecebf217dc
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73500109"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73684713"
 ---
 # <a name="deploy-azure-machine-learning-studio-classic-web-services-that-use-data-import-and-data-export-modules"></a>Az adatimportálást és az adatexportálási modulokat használó Azure Machine Learning Studio (klasszikus) webszolgáltatások üzembe helyezése
 

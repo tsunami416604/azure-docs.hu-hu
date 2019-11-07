@@ -1,5 +1,5 @@
 ---
-title: Azure App Service – hálózati konfiguráció szinkronizálása | Microsoft Docs
+title: Azure App Service – hálózati konfiguráció szinkronizálása
 description: Ez a cikk azt ismerteti, hogyan lehet szinkronizálni a hálózati konfigurációt Azure App Service üzemeltetési tervhez.
 services: sql-database
 ms.service: sql-database
@@ -11,16 +11,16 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, bonova, carlrab
 ms.date: 12/13/2018
-ms.openlocfilehash: 920851e33255b0bcb5b085c541ae636c5988be72
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: e7263d6a7716caf9f53e8496c6fb02b6d17b5509
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68567312"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73687898"
 ---
 # <a name="sync-networking-configuration-for-azure-app-service-hosting-plan"></a>Azure App Service üzemeltetési csomag hálózati konfigurációjának szinkronizálása
 
-Előfordulhat, hogy bár az [alkalmazást Azure](../app-service/web-sites-integrate-with-vnet.md)-Virtual Networkrel integrálta, nem tud kapcsolatot létesíteni a felügyelt példányokkal. Az egyik lehetőség, hogy megpróbáljuk frissíteni a szolgáltatási csomag hálózati konfigurációját.
+Előfordulhat, hogy bár az [alkalmazást Azure-Virtual Networkrel integrálta](../app-service/web-sites-integrate-with-vnet.md), nem tud kapcsolatot létesíteni a felügyelt példányokkal. Az egyik lehetőség, hogy megpróbáljuk frissíteni a szolgáltatási csomag hálózati konfigurációját.
 
 ## <a name="sync-network-configuration-for-app-service-hosting-plan"></a>App Service üzemeltetési csomag hálózati konfigurációjának szinkronizálása
 
@@ -28,7 +28,7 @@ Ehhez kövesse az alábbi lépéseket:
 
 1. Nyissa meg a Web Apps App Service csomagot.
 
-   ![app service-csomag](./media/sql-database-managed-instance-sync-networking/app-service-plan.png)
+   ![App Service-csomag](./media/sql-database-managed-instance-sync-networking/app-service-plan.png)
 
 2. Kattintson a **hálózatkezelés** elemre, majd **a kezeléshez kattintson ide**.
 

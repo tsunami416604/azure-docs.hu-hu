@@ -1,5 +1,5 @@
 ---
-title: 'Azure Backup: Biztonsági mentési szabályzatok létrehozása REST API használatával'
+title: 'Azure Backup: biztonsági mentési szabályzatok létrehozása a REST API használatával'
 description: Biztonsági mentési szabályzatok (ütemterv és megőrzés) kezelése REST API használatával
 ms.reviewer: pullabhk
 author: dcurwin
@@ -10,16 +10,16 @@ ms.topic: conceptual
 ms.date: 08/21/2018
 ms.author: dacurwin
 ms.assetid: 5ffc4115-0ae5-4b85-a18c-8a942f6d4870
-ms.openlocfilehash: 8b812ea053cb8e9da7cd3ef021ab6b74196d36ca
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
-ms.translationtype: MT
+ms.openlocfilehash: 50cc327c69529e420837571fdd60c1b2a1364b10
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68954971"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73670144"
 ---
 # <a name="create-azure-recovery-services-backup-policies-using-rest-api"></a>Azure Recovery Services biztonsági mentési szabályzatok létrehozása REST API használatával
 
-Az Azure Recovery Services-tárolóra vonatkozó biztonsági mentési szabályzat létrehozásához szükséges lépéseket a [szabályzat REST API dokumentum](https://docs.microsoft.com/rest/api/backup/protectionpolicies/createorupdate)ismerteti. Ezt a dokumentumot hivatkozásként használjuk az Azure virtuális gépek biztonsági mentésére szolgáló szabályzat létrehozásához.
+Az Azure Recovery Services-tárolóra vonatkozó biztonsági mentési szabályzat létrehozásához szükséges lépéseket a [szabályzat REST API dokumentum](https://docs.microsoft.com/rest/api/backup/protectionpolicies(2019-05-13)/createorupdate)ismerteti. Ezt a dokumentumot hivatkozásként használjuk az Azure virtuális gépek biztonsági mentésére szolgáló szabályzat létrehozásához.
 
 ## <a name="backup-policy-essentials"></a>Biztonsági mentési szabályzat alapjai
 
@@ -30,8 +30,8 @@ Az Azure Recovery Services-tárolóra vonatkozó biztonsági mentési szabályza
   - Azure-fájlmegosztás
 - Egy szabályzat több erőforráshoz is hozzárendelhető. Az Azure-beli virtuális gépek biztonsági mentési szabályzata számos Azure-beli virtuális gép biztosítására használható.
 - A szabályzat két összetevőből áll
-  - Menetrend Mikor kell biztonsági másolatot készíteni
-  - Visszatartás Az egyes biztonsági másolatok megőrzésének idejére.
+  - Ütemezett: Mikor kell biztonsági másolatot készíteni
+  - Megőrzöttség: az egyes biztonsági másolatok megőrzésének idejére.
 - Az ütemterv "napi" vagy "hetente" is definiálható egy adott időpontra.
 - A megőrzés a "napi", a "hetente", a "havi", az "éves" biztonsági mentési pontok esetében adható meg.
 - a "hetente" a hét egy adott napján egy biztonsági mentésre utal, a "havonta" a hónap egy adott napján történő biztonsági mentést, az "éves" pedig az év adott napján biztonsági mentést jelent.
@@ -41,10 +41,10 @@ Az Azure Recovery Services-tárolóra vonatkozó biztonsági mentési szabályza
 Azure Backup szabályzat létrehozásához vagy frissítéséhez használja a következő *put* műveletet
 
 ```http
-PUT https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupPolicies/{policyName}?api-version=2016-12-01
+PUT https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupPolicies/{policyName}?api-version=2019-05-13
 ```
 
-A `{policyName}` és`{vaultName}` az URI-ban van megadva. A kérés törzsében további információk is megtalálhatók.
+A `{policyName}` és a `{vaultName}` az URI-ban található. A kérés törzsében további információk is megtalálhatók.
 
 ## <a name="create-the-request-body"></a>A kérelem törzsének létrehozása
 
@@ -52,10 +52,10 @@ Ha például az Azure virtuális gép biztonsági mentésére vonatkozó szabál
 
 |Name (Név)  |Kötelező  |Típus  |Leírás  |
 |---------|---------|---------|---------|
-|properties     |   True      |  ProtectionPolicy:[AzureIaaSVMProtectionPolicy](https://docs.microsoft.com/rest/api/backup/protectionpolicies/createorupdate#azureiaasvmprotectionpolicy)      | ProtectionPolicyResource tulajdonságai        |
-|címkék     |         | Object        |  Erőforráscímkék       |
+|properties     |   True (Igaz)      |  ProtectionPolicy:[AzureIaaSVMProtectionPolicy](https://docs.microsoft.com/rest/api/backup/protectionpolicies(2019-05-13)/createorupdate#azureiaasvmprotectionpolicy)      | ProtectionPolicyResource tulajdonságai        |
+|címkét     |         | Objektum        |  Erőforráscímkék       |
 
-A kérelem törzsében található definíciók teljes listájáért tekintse meg a [biztonsági mentési szabályzat REST API dokumentumát](https://docs.microsoft.com/rest/api/backup/protectionpolicies/createorupdate).
+A kérelem törzsében található definíciók teljes listájáért tekintse meg a [biztonsági mentési szabályzat REST API dokumentumát](https://docs.microsoft.com/rest/api/backup/protectionpolicies(2019-05-13)/createorupdate).
 
 ### <a name="example-request-body"></a>Példa kérelem törzsére
 
@@ -152,7 +152,7 @@ A szabályzat szerint:
 > [!IMPORTANT]
 > Az ütemterv és a megőrzési idő formátuma csak a DateTime formátumot támogatja. Nem támogatják az időformátumot.
 
-## <a name="responses"></a>Responses
+## <a name="responses"></a>Válaszok
 
 A biztonsági mentési szabályzat létrehozása/frissítése [aszinkron művelet](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations). Ez azt jelenti, hogy ez a művelet egy másik műveletet hoz létre, amelyet külön kell nyomon követni.
 
@@ -160,8 +160,8 @@ Két választ ad vissza: 202 (elfogadva) egy másik művelet létrehozásakor, m
 
 |Name (Név)  |Típus  |Leírás  |
 |---------|---------|---------|
-|200 OK     |    [Védelem PolicyResource](https://docs.microsoft.com/rest/api/backup/protectionpolicies/createorupdate#protectionpolicyresource)     |  OK       |
-|202 elfogadva     |         |     Elfogadva    |
+|200 OK     |    [Védelem PolicyResource](https://docs.microsoft.com/rest/api/backup/protectionpolicies(2019-05-13)/createorupdate#protectionpolicyresource)     |  OK       |
+|202 elfogadva     |         |     Elfogadott    |
 
 ### <a name="example-responses"></a>Válaszok – példa
 
@@ -181,14 +181,14 @@ x-ms-correlation-request-id: db785be0-bb20-4598-bc9f-70c9428b170b
 x-ms-routing-request-id: SOUTHINDIA:20180521T073907Z:db785be0-bb20-4598-bc9f-70c9428b170b
 Cache-Control: no-cache
 Date: Mon, 21 May 2018 07:39:06 GMT
-Location: https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/SwaggerTestRg/providers/Microsoft.RecoveryServices/vaults/testVault/backupPolicies/testPolicy1/operationResults/00000000-0000-0000-0000-000000000000?api-version=2016-06-01
+Location: https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/SwaggerTestRg/providers/Microsoft.RecoveryServices/vaults/testVault/backupPolicies/testPolicy1/operationResults/00000000-0000-0000-0000-000000000000?api-version=2019-05-13
 X-Powered-By: ASP.NET
 ```
 
 Ezután nyomon követheti az eredményül kapott műveletet a Location fejléc vagy az Azure-AsyncOperation fejléc használatával egy egyszerű *Get* paranccsal.
 
 ```http
-GET https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/SwaggerTestRg/providers/Microsoft.RecoveryServices/vaults/testVault/backupPolicies/testPolicy1/operationResults/00000000-0000-0000-0000-000000000000?api-version=2016-06-01
+GET https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/SwaggerTestRg/providers/Microsoft.RecoveryServices/vaults/testVault/backupPolicies/testPolicy1/operationResults/00000000-0000-0000-0000-000000000000?api-version=2019-05-13
 ```
 
 A művelet befejezése után a 200 (OK) értéket adja vissza a válasz törzsében lévő szabályzat tartalmával.
@@ -288,4 +288,4 @@ Ha egy házirend már használatban van egy elem védelmére, a házirendben sze
 A Azure Backup REST API-kkal kapcsolatos további információkért tekintse meg a következő dokumentumokat:
 
 - [Azure Recovery Services-szolgáltató REST API](/rest/api/recoveryservices/)
-- [Ismerkedés az Azure REST API](/rest/api/azure/)
+- [Bevezetés az Azure REST API használatába](/rest/api/azure/)

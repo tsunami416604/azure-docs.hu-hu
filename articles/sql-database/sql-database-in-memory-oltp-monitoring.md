@@ -1,5 +1,5 @@
 ---
-title: Memóriában tárolt XTP figyelése | Microsoft Docs
+title: Memóriában tárolt XTP figyelése
 description: Megbecsülheti és figyelheti a XTP memóriabeli tárolási használatát, a kapacitást; kapacitás feloldása 41823
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: juliemsft
 ms.author: jrasnick
 ms.reviewer: genemi
 ms.date: 01/25/2019
-ms.openlocfilehash: 1c5a57f634c01cc42934a98decd8f392334dede6
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: d67a6d151f65252faab40f8f7289fe9e884eff17
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68567981"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73689800"
 ---
 # <a name="monitor-in-memory-oltp-storage"></a>Memóriában tárolt OLTP-tárolók figyelése
 
@@ -36,7 +36,7 @@ A tábla és a tábla változó sorai, valamint az indexek a maximális felhaszn
 A memóriában tárolt tárolók használatát a [Azure Portal](https://portal.azure.com/)számítási méretének százalékos értékeként is megfigyelheti: 
 
 1. Az adatbázis panelen keresse meg az Erőforrás kihasználtsága mezőt, és kattintson a Szerkesztés gombra.
-2. Válassza ki a `In-Memory OLTP Storage percentage`metrikát.
+2. Válassza ki a metrikát `In-Memory OLTP Storage percentage`.
 3. Riasztás hozzáadásához kattintson az Erőforrás kihasználtsága mezőre a metrika panel megnyitásához, majd kattintson a riasztás hozzáadása lehetőségre.
 
 Vagy használja a következő lekérdezést a memóriában tárolt tárterület használatának megjelenítéséhez:

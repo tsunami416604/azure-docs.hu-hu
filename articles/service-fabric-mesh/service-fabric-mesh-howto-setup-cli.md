@@ -1,6 +1,6 @@
 ---
 title: Az Azure Service Fabric Mesh parancssori felületének beállítása | Microsoft Docs
-description: Ez a dokumentum az Azure Service Fabric Mesh parancssori felület beállítását ismerteti.
+description: Service Fabric Mesh parancssori felület (CLI) szükséges az erőforrások helyi és Azure-beli Service Fabric Mesh-beli üzembe helyezéséhez és kezeléséhez. Itt állíthatja be.
 services: service-fabric-mesh
 keywords: ''
 author: dkkapur
@@ -9,23 +9,23 @@ ms.date: 11/28/2018
 ms.topic: conceptual
 ms.service: service-fabric-mesh
 manager: timlt
-ms.openlocfilehash: 46b2a9a0c4d8a1d9e0fa069d512670dffb94fc28
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: 5c9733a5fc5aec337a326fe39e78c3e5c0b8ca4f
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71173768"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73686305"
 ---
 # <a name="set-up-service-fabric-mesh-cli"></a>A Service Fabric Mesh parancssori felületének beállítása
-Service Fabric Mesh parancssori felület (CLI) szükséges az erőforrások helyi és Azure-beli Service Fabric Mesh-beli üzembe helyezéséhez és kezeléséhez. 
+Service Fabric Mesh parancssori felület (CLI) szükséges az erőforrások helyi és Azure-beli Service Fabric Mesh-beli üzembe helyezéséhez és kezeléséhez. Itt állíthatja be.
 
-A CLI három típusa használható, és az alábbi táblázatban láthatók. 
+A CLI három típusa használható, és az alábbi táblázatban láthatók.
 
 | CLI-modul | Cél környezet |  Leírás | 
 |---|---|---|
 | az Mesh | Azure Service Fabric Mesh | Az elsődleges CLI, amely lehetővé teszi az alkalmazások üzembe helyezését és az erőforrások kezelését az Azure Service Fabric Mesh-környezettel. 
 | sfctl | Helyi fürtök | Service Fabric parancssori felület, amely lehetővé teszi Service Fabric erőforrások üzembe helyezését és tesztelését helyi fürtökön.  
-| Maven parancssori felület | Helyi fürtök & Azure Service Fabric Mesh | Egy burkoló `az mesh` `sfctl` , amely lehetővé teszi a Java-fejlesztők számára, hogy ismerős parancssori felületet használjanak a helyi és az Azure-beli fejlesztési élményhez.  
+| Maven parancssori felület | Helyi fürtök & Azure Service Fabric Mesh | `az mesh` és `sfctl` burkolója, amely lehetővé teszi a Java-fejlesztők számára, hogy jól ismert parancssori felületet használjanak a helyi és az Azure-beli fejlesztési élményhez.  
 
 Az előzetes verzióban az Azure Service Fabric Mesh parancssori felülete az Azure CLI bővítményeként van megírva. Telepítheti az Azure Cloud Shellbe vagy az Azure CLI helyileg telepített példányába. 
 

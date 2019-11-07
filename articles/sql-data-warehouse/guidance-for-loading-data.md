@@ -1,5 +1,5 @@
 ---
-title: Az adatbetöltés ajánlott eljárásai – Azure SQL Data Warehouse | Microsoft Docs
+title: Ajánlott adatbetöltési eljárások
 description: Az adatok Azure SQL Data Warehouse-ba való betöltése – javaslatok és teljesítményoptimalizálás
 services: sql-data-warehouse
 author: kevinvngo
@@ -10,13 +10,13 @@ ms.subservice: load-data
 ms.date: 08/08/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.custom: seoapril2019
-ms.openlocfilehash: a1433139695eb59fa3fd721852fae3181b8f892b
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.custom: seo-lt-2019
+ms.openlocfilehash: 01bb53488bf63f32d2bae804e4844400a7fd2d31
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68882479"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73686099"
 ---
 # <a name="best-practices-for-loading-data-into-azure-sql-data-warehouse"></a>Az adatok Azure SQL Data Warehouse-ba való betöltésének ajánlott eljárásai
 
@@ -60,7 +60,7 @@ Kapcsolódjon az adattárházhoz, majd hozzon létre egy felhasználót. A köve
 
 Ha a Staticrc20 erőforrásosztályhoz erőforrás-osztályaihoz erőforrásokkal rendelkező terhelést szeretne futtatni, jelentkezzen be LoaderRC20 néven, és futtassa a terhelést.
 
-A betöltéseket inkább statikus, mint dinamikus erőforrásosztályokkal futtassa. A statikus erőforrás-osztályok használata ugyanazokat az erőforrásokat garantálja, függetlenül [](what-is-a-data-warehouse-unit-dwu-cdwu.md)az adattárház-egységektől. Ha dinamikus erőforrásosztályt használ, az erőforrások a szolgáltatásszinttől függően változhatnak. Dinamikus osztályok esetében egy alacsonyabb szolgáltatási szint azt jelenti, hogy feltehetően nagyobb erőforrásosztályt kell használnia a betöltést végző felhasználóhoz.
+A betöltéseket inkább statikus, mint dinamikus erőforrásosztályokkal futtassa. A statikus erőforrás-osztályok használata ugyanazokat az erőforrásokat garantálja, függetlenül az [adattárház-egységektől](what-is-a-data-warehouse-unit-dwu-cdwu.md). Ha dinamikus erőforrásosztályt használ, az erőforrások a szolgáltatásszinttől függően változhatnak. Dinamikus osztályok esetében egy alacsonyabb szolgáltatási szint azt jelenti, hogy feltehetően nagyobb erőforrásosztályt kell használnia a betöltést végző felhasználóhoz.
 
 ## <a name="allowing-multiple-users-to-load"></a>Betöltés engedélyezése több felhasználó számára
 
@@ -143,6 +143,6 @@ A mögöttes külső adatforrásokban nem kell más módosítást elvégezni.
 
 ## <a name="next-steps"></a>További lépések
 
-- További információ a PolyBase-ről és a kinyerési, betöltési és átalakítási (ELT) folyamat megtervezéséről: [ELT tervezése SQL Data Warehouse-hoz](design-elt-data-loading.md).
+- További információ a PolyBase-ről és egy kinyerési, betöltési és átalakítási (ETL) folyamat megtervezéséről: [ETL tervezése SQL Data Warehouse-hoz](design-elt-data-loading.md).
 - Betöltési oktatóanyag: [Adatok betöltése az Azure Blob Storage-ból az Azure SQL Data Warehouse-ba a PolyBase használatával](load-data-from-azure-blob-storage-using-polybase.md).
 - Az adatbetöltések monitorozása: [A számítási feladat monitorozása DMV-kkel](sql-data-warehouse-manage-monitor.md).

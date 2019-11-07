@@ -5,46 +5,29 @@ services: virtual-machines
 author: roygara
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 08/15/2019
+ms.date: 11/04/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 3f910a3d0466153bd60fe23ef2f9f656cac292ee
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: 838037804baad9105b4636934de957c2e5f3e810
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70919689"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73612079"
 ---
 # <a name="using-azure-ultra-disks"></a>Az Azure Ultra Disks használata
 
 Az Azure Ultra Disks nagy teljesítményű, magas IOPS és konzisztens, alacsony késésű lemezes tárolást biztosít az Azure IaaS Virtual Machines (VM) szolgáltatásokhoz. Ez az új ajánlat a vonal teljesítményét a meglévő lemezekkel megegyező rendelkezésre állási szinten biztosítja. Az ultra Disks szolgáltatás egyik fő előnye, hogy dinamikusan megváltoztathatja az SSD teljesítményét a számítási feladatokkal együtt anélkül, hogy újra kellene indítania a virtuális gépeket. Az ultra-lemezek olyan adatigényes számítási feladatokhoz használhatók, mint a SAP HANA, a legfelső szintű adatbázisok és a tranzakció-nagy számítási feladatok.
 
-## <a name="check-if-your-subscription-has-access"></a>Ellenőrizze, hogy az előfizetése rendelkezik-e hozzáféréssel
+## <a name="ga-scope-and-limitations"></a>A GA hatóköre és korlátai
 
-Ha már regisztrált az ultra-lemezekre, és szeretné megtekinteni, hogy az előfizetése engedélyezve van-e az ultra-lemezekhez, használja az alábbi parancsokat: 
+[!INCLUDE [managed-disks-ultra-disks-GA-scope-and-limitations](managed-disks-ultra-disks-GA-scope-and-limitations.md)]
 
-CLI`az feature show --namespace Microsoft.Compute --name UltraSSD`
+## <a name="determine-vm-size-and-region-availability"></a>A virtuális gép méretének és a régió rendelkezésre állásának meghatározása
 
-PowerShell: `Get-AzProviderFeature -ProviderNamespace Microsoft.Compute -FeatureName UltraSSD`
+Az ultra-lemezek kihasználása érdekében meg kell határoznia, hogy melyik rendelkezésre állási zónát használja. Nem minden régió támogatja a virtuálisgép-méreteket az ultra Disks szolgáltatással. Annak megállapításához, hogy a régió, a zóna és a virtuális gép mérete támogatja-e az ultra-lemezeket, futtassa a következő parancsok egyikét, és először cserélje le a **régió**, a **vmSize**és az **előfizetés** értékét:
 
-Ha az előfizetés engedélyezve van, a kimenetnek a következőhöz hasonlóan kell kinéznie:
-
-```bash
-{
-  "id": "/subscriptions/<yoursubID>/providers/Microsoft.Features/providers/Microsoft.Compute/features/UltraSSD",
-  "name": "Microsoft.Compute/UltraSSD",
-  "properties": {
-    "state": "Registered"
-  },
-  "type": "Microsoft.Features/providers/features"
-}
-```
-
-## <a name="determine-your-availability-zone"></a>A rendelkezésre állási zóna meghatározása
-
-A jóváhagyást követően el kell döntenie, hogy melyik rendelkezésre állási zónát kívánja használni az ultra-lemezek használatához. Futtassa a következő parancsok egyikét annak meghatározásához, hogy melyik zónában szeretné üzembe helyezni az ultra-lemezt, és először cserélje le a **régiót**, a **vmSize**és az **előfizetési** értékeket:
-
-CLI:
+CLI
 
 ```bash
 $subscription = "<yourSubID>"
@@ -62,26 +45,26 @@ $vmSize = "Standard_E64s_v3"
 (Get-AzComputeResourceSku | where {$_.Locations.Contains($region) -and ($_.Name -eq $vmSize) -and $_.LocationInfo[0].ZoneDetails.Count -gt 0})[0].LocationInfo[0].ZoneDetails
 ```
 
-A válasz az alábbi űrlaphoz hasonló lesz, ahol az X a kiválasztott régióban való üzembe helyezéshez használt zóna. Az X a következők egyike lehet: 1, 2 vagy 3. Jelenleg csak három régió támogatja az ultra-lemezeket, a következők: USA 2. keleti régiója, Délkelet-Ázsia és Észak-Európa.
+A válasz az alábbi űrlaphoz hasonló lesz, ahol az X a kiválasztott régióban való üzembe helyezéshez használt zóna. Az X a következők egyike lehet: 1, 2 vagy 3.
 
 Őrizze meg a **zónák** értékét, amely a rendelkezésre állási zónát képviseli, és szüksége lesz rá egy ultra-lemez üzembe helyezése érdekében.
 
-|Erőforrástípus  |Name (Név)  |Location  |Zónák  |Korlátozás  |Képesség  |Value  |
+|ResourceType  |Name (Név)  |Hely  |Zóna  |Korlátozás  |Képesség  |Érték  |
 |---------|---------|---------|---------|---------|---------|---------|
 |lemezek     |UltraSSD_LRS         |eastus2         |X         |         |         |         |
 
 > [!NOTE]
-> Ha nem volt válasz a parancstól, akkor a szolgáltatásra való regisztráció még függőben van, vagy a CLI vagy a PowerShell egy régebbi verzióját használja.
+> Ha nem volt válasz a parancstól, akkor a kiválasztott virtuálisgép-méret nem támogatott a kiválasztott régióban lévő Ultra-lemezek esetén.
 
 Most, hogy megismerte, hogy melyik zónát kívánja telepíteni, kövesse a jelen cikk központi telepítési lépéseit, és telepítsen egy virtuális gépet egy csatlakoztatott, vagy egy ultra lemez csatlakoztatása egy meglévő virtuális géphez.
 
 ## <a name="deploy-an-ultra-disk-using-azure-resource-manager"></a>Ultra-lemez üzembe helyezése Azure Resource Manager használatával
 
-Először határozza meg a telepítendő virtuális gép méretét. Egyelőre csak a DsV3 és a EsV3 virtuálisgép-családok támogatják az ultra lemezeket. A virtuális gépek méretével kapcsolatos további részletekért tekintse meg a [blog](https://azure.microsoft.com/blog/introducing-the-new-dv3-and-ev3-vm-sizes/) második táblázatát.
+Először határozza meg a telepítendő virtuális gép méretét. A támogatott virtuálisgép-méretek listáját a [GA hatókör és korlátozások](#ga-scope-and-limitations) című szakaszban találja.
 
 Ha több Ultra lemezzel rendelkező virtuális gépet szeretne létrehozni, tekintse meg a mintát [több Ultra lemezzel rendelkező virtuális gép létrehozása](https://aka.ms/ultradiskArmTemplate)című témakörben.
 
-Ha saját sablont szeretne használni, győződjön meg róla, hogy a **apiVersion** a `Microsoft.Compute/virtualMachines` `2018-06-01` és `Microsoft.Compute/Disks` a (vagy újabb) értékre van beállítva.
+Ha saját sablont szeretne használni, győződjön meg róla, hogy a `Microsoft.Compute/virtualMachines` és `Microsoft.Compute/Disks` **apiVersion** beállítása `2018-06-01` (vagy újabb).
 
 Állítsa be a lemez SKU- **UltraSSD_LRS**, majd állítsa be a lemez kapacitása, a IOPS, a rendelkezésre állási zóna és az átviteli sebesség (MB/s) értéket egy ultra-lemez létrehozásához.
 
@@ -89,11 +72,11 @@ A virtuális gép üzembe helyezése után particionálhatja és formázhatja az
 
 ## <a name="deploy-an-ultra-disk-using-cli"></a>Ultra-lemez üzembe helyezése a parancssori felület használatával
 
-Először határozza meg a telepítendő virtuális gép méretét. Egyelőre csak a DsV3 és a EsV3 virtuálisgép-családok támogatják az ultra lemezeket. A virtuális gépek méretével kapcsolatos további részletekért tekintse meg a [blog](https://azure.microsoft.com/blog/introducing-the-new-dv3-and-ev3-vm-sizes/) második táblázatát.
+Először határozza meg a telepítendő virtuális gép méretét. A támogatott virtuálisgép-méretek listáját a [GA hatókör és korlátozások](#ga-scope-and-limitations) című szakaszban találja.
 
 Ultra-lemez csatlakoztatásához létre kell hoznia egy olyan virtuális gépet, amely képes az ultrakönnyű lemezek használatára.
 
-Cserélje le vagy állítsa be a **$vmname**, **$rgname**, **$diskname**, **$Location**, **$Password**, **$User** változókat a saját értékeivel. Állítsa **$Zone** értéket a [cikk elejétől](#determine-your-availability-zone)kapott rendelkezésre állási zóna értékére. Ezután futtassa az alábbi CLI-parancsot egy ultra-kompatibilis virtuális gép létrehozásához:
+Cserélje le vagy állítsa be a **$vmname**, **$rgname**, **$diskname**, **$Location**, **$Password**, **$User** változókat a saját értékeivel. Állítsa **$Zone** értéket a [cikk elejétől](#determine-vm-size-and-region-availability)kapott rendelkezésre állási zóna értékére. Ezután futtassa az alábbi CLI-parancsot egy ultra-kompatibilis virtuális gép létrehozásához:
 
 ```azurecli-interactive
 az vm create --subscription $subscription -n $vmname -g $rgname --image Win2016Datacenter --ultra-ssd-enabled true --zone $zone --authentication-type password --admin-password $password --admin-username $user --size Standard_D4s_v3 --location $location
@@ -152,9 +135,9 @@ az disk update `
 
 ## <a name="deploy-an-ultra-disk-using-powershell"></a>Ultra-lemez üzembe helyezése a PowerShell használatával
 
-Először határozza meg a telepítendő virtuális gép méretét. Egyelőre csak a DsV3 és a EsV3 virtuálisgép-családok támogatják az ultra lemezeket. A virtuális gépek méretével kapcsolatos további részletekért tekintse meg a [blog](https://azure.microsoft.com/blog/introducing-the-new-dv3-and-ev3-vm-sizes/) második táblázatát.
+Először határozza meg a telepítendő virtuális gép méretét. A támogatott virtuálisgép-méretek listáját a [GA hatókör és korlátozások](#ga-scope-and-limitations) című szakaszban találja. További információ ezekről a virtuálisgép-méretekről.
 
-Az ultra-lemezek használatához létre kell hoznia egy virtuális gépet, amely képes az ultra lemezek használatára. Cserélje le vagy állítsa be a **$resourcegroup** és a **$vmName** változót a saját értékeivel. Állítsa **$Zone** értéket a [cikk elejétől](#determine-your-availability-zone)kapott rendelkezésre állási zóna értékére. Ezután futtassa a következő [New-AzVm](/powershell/module/az.compute/new-azvm) parancsot egy ultra-kompatibilis virtuális gép létrehozásához:
+Az ultra-lemezek használatához létre kell hoznia egy virtuális gépet, amely képes az ultra lemezek használatára. Cserélje le vagy állítsa be a **$resourcegroup** és a **$vmName** változót a saját értékeivel. Állítsa **$Zone** értéket a [cikk elejétől](#determine-vm-size-and-region-availability)kapott rendelkezésre állási zóna értékére. Ezután futtassa a következő [New-AzVm](/powershell/module/az.compute/new-azvm) parancsot egy ultra-kompatibilis virtuális gép létrehozásához:
 
 ```powershell
 New-AzVm `

@@ -1,5 +1,5 @@
 ---
-title: Gyorsított adatbázis-helyreállítás – Azure SQL Database | Microsoft Docs
+title: Gyorsított adatbázis-helyreállítás – Azure SQL Database
 description: A Azure SQL Database egy új funkcióval rendelkezik, amely gyors és konzisztens adatbázis-helyreállítást, azonnali tranzakció-visszaállítást és agresszív naplózási lecsonkítt biztosít az önálló adatbázisokhoz és a készletezett adatbázisokhoz Azure SQL Database és az Azure SQL-alapú adatbázisokban Adatraktár.
 ms.service: sql-database
 ms.subservice: high-availability
@@ -10,12 +10,12 @@ author: mashamsft
 ms.author: mathoma
 ms.reviewer: carlrab
 ms.date: 01/25/2019
-ms.openlocfilehash: d516dc51a25cbef92ff9fa22012773507b528a99
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: e66b3e6563d796cc7b59e82233bd1b22bc906c6e
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68569634"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73691358"
 ---
 # <a name="accelerated-database-recovery"></a>Gyorsított adatbázis-helyreállítás
 
@@ -95,7 +95,7 @@ Az ADR négy fő összetevője a következők:
 
 - **Megőrzött verzió tárolója (PVS)**
 
-  A megőrzött verzió tárolója egy új SQL Database Engine-mechanizmus, amely a hagyományos `tempdb` verziójú tároló helyett maga az adatbázisában előállított sorok verzióinak megőrzését is megőrzi. A PVS lehetővé teszi az erőforrások elkülönítését, valamint javítja az olvasható formátumú másodlagos zónák rendelkezésre állását.
+  A megőrzött verzió tároló egy új SQL adatbázismotor-mechanizmus, amellyel megőrizhető az adatbázisból előállított, a hagyományos `tempdb` verzió-áruház helyett létrehozott sor verziója. A PVS lehetővé teszi az erőforrások elkülönítését, valamint javítja az olvasható formátumú másodlagos zónák rendelkezésre állását.
 
 - **Logikai visszaállítása**
 
@@ -105,7 +105,7 @@ Az ADR négy fő összetevője a következők:
   - A PVS használatával végez visszaállítást az összes felhasználói tranzakcióhoz
   - Minden zárolás kiadása a tranzakció megszakítása után azonnal
 
-- **sLog**
+- **Üt**
 
   a üt egy másodlagos memóriában tárolt log stream, amely a nem verziószámú műveletek (például a metaadat-gyorsítótár érvénytelenítése, a zárolási beszerzések stb.) rekordjait tárolja. A üt a következőket:
 

@@ -1,5 +1,5 @@
 ---
-title: Azure SQL Database nagy kapacitású – áttekintés | Microsoft Docs
+title: Azure SQL Database nagy kapacitású áttekintése
 description: Ez a cikk ismerteti a nagy kapacitású szolgáltatási rétegét a Azure SQL Database virtuális mag-alapú vásárlási modellben, és elmagyarázza, hogy miben különbözik a általános célú és a üzletileg kritikus szolgáltatási rétegtől.
 services: sql-database
 ms.service: sql-database
@@ -7,16 +7,16 @@ ms.subservice: service
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: stevestein
-ms.author: sstein
+author: dimitri-furman
+ms.author: dfurman
 ms.reviewer: ''
 ms.date: 10/01/2019
-ms.openlocfilehash: db6e47b39b7ebe35a6c0fef42af53f91e96c363f
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: HT
+ms.openlocfilehash: 38402d6ccf5c5582fff878ad60bf1c9fd4a07118
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73496207"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73687318"
 ---
 # <a name="hyperscale-service-tier"></a>Rugalmas skálázás szolgáltatási szint
 
@@ -82,7 +82,7 @@ Az egy helyen/folyamatban lévő összes adatkezelési függvényt központosít
 
 A következő ábra a nagy kapacitású-adatbázisok különböző típusait szemlélteti:
 
-![architektúra](./media/sql-database-hyperscale/hyperscale-architecture.png)
+![architektúra](./media/sql-database-hyperscale/hyperscale-architecture2.png)
 
 A nagy kapacitású-adatbázisok a következő különböző típusú összetevőket tartalmazzák:
 
@@ -104,7 +104,7 @@ Az Azure Storage egy adatbázis összes adatfájlját tartalmazza. Az oldal-kisz
 
 ## <a name="backup-and-restore"></a>Biztonsági mentés és visszaállítás
 
-A biztonsági mentések a fájlok pillanatkép-alapúak, ezért szinte azonnal elérhetők. A tárolási és a számítási elkülönítés lehetővé teszi a biztonsági mentési/visszaállítási művelet lenyomását a tárolási rétegre, hogy csökkentse az elsődleges számítási replika feldolgozási terhelését. Ennek eredményeképpen az adatbázis biztonsági mentése nem befolyásolja az elsődleges számítási csomópont teljesítményét; Hasonlóképpen, a visszaállítások a fájl-Pillanatképek visszavonásával is elvégezhető, és nem az adatműveletek mérete. A visszaállítás egy állandó idejű művelet, és akár több terabájtos adatbázis is visszaállítható óra vagy nap helyett percek alatt. Új adatbázisok létrehozása egy meglévő biztonsági másolat visszaállításával is kihasználhatja ezt a funkciót: adatbázis-másolatok létrehozása fejlesztési vagy tesztelési célokra, akár terabájt méretű adatbázisok esetén is, percek alatt megvalósítható.
+A biztonsági mentések a fájlok pillanatkép-alapúak, ezért szinte azonnal elérhetők. A tárolási és a számítási elkülönítés lehetővé teszi a biztonsági mentési/visszaállítási művelet lenyomását a tárolási rétegre, hogy csökkentse az elsődleges számítási replika feldolgozási terhelését. Ennek eredményeképpen az adatbázis biztonsági mentése nem befolyásolja az elsődleges számítási csomópont teljesítményét; Hasonlóképpen, a visszaállítások a fájl-Pillanatképek visszavonásával is elvégezhető, és nem az adatműveletek mérete. A visszaállítás egy állandó idejű művelet, és akár több terabájtos adatbázis is visszaállítható óra vagy nap helyett percek alatt. Az új adatbázisok létrehozása egy meglévő biztonsági másolat visszaállításával is kihasználhatja ezt a funkciót: az adatbázis-másolatok létrehozása ugyanazon a logikai kiszolgálón belül, fejlesztési vagy tesztelési célból, akár terabájt méretű adatbázisok esetén is, percek alatt megvalósítható.
 
 ## <a name="scale-and-performance-advantages"></a>Méretezési és teljesítménybeli előnyök
 

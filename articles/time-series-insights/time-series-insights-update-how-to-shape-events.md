@@ -8,18 +8,18 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 10/22/2019
+ms.date: 10/31/2019
 ms.custom: seodec18
-ms.openlocfilehash: f8a50e062d2dac1f30f8b745f351570262daac53
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: 8b9dd10a4017d821794af037e502c784b10cd62f
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72990897"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73585278"
 ---
 # <a name="shape-events-with-azure-time-series-insights-preview"></a>Események Azure Time Series Insights előzetes verzióval
 
-Ebből a cikkből megtudhatja, hogyan alakíthatja át a JSON-fájlt, hogy maximalizálja Azure Time Series Insights előnézeti lekérdezések hatékonyságát.
+Ebből a cikkből megtudhatja, hogyan alakíthatja ki a JSON-fájlt a betöltéshez, és hogy maximalizálja Azure Time Series Insights előnézeti lekérdezések hatékonyságát.
 
 ## <a name="best-practices"></a>Ajánlott eljárások
 
@@ -36,7 +36,9 @@ A legjobb lekérdezési teljesítmény érdekében tegye a következőket:
 * Ne használjon mély tömbös beágyazást. Time Series Insights az előzetes verzió legfeljebb két olyan beágyazott tömböt támogat, amelyek objektumokat tartalmaznak. Time Series Insights az előnézet az üzenetekben található tömböket több, tulajdonság érték párokkal rendelkező eseménybe.
 * Ha csak néhány mérték létezik az összes vagy a legtöbb eseménynél, érdemes elküldenie ezeket a mértékeket különálló tulajdonságokként ugyanazon az objektumon belül. A küldésük külön csökkenti az események számát, és növelheti a lekérdezési teljesítményt, mert kevesebb eseményt kell feldolgozni.
 
-## <a name="example"></a>Példa
+A betöltés során a beágyazást tartalmazó hasznos adatok összeolvasztása is megtörténik, így az oszlop neve egyetlen érték egy határolóval. Time Series Insights az előnézet aláhúzást használ a Körvonalazás során. Fontos megjegyezni, hogy ez a használt termék GA-verziójának változása. Az előzetes verzió használata során a rendszer kikötést mutat az összeolvasztással kapcsolatban, amely az alábbi második példában látható.
+
+## <a name="examples"></a>Példák
 
 A következő példa egy olyan forgatókönyvön alapul, amelyben a két vagy több eszköz méréseket vagy jeleket küld. A mérések vagy jelek *áramlási sebessége*, a *motor*olajnyomás, a *hőmérséklet*és a *páratartalom*lehet.
 
@@ -44,75 +46,78 @@ A példában egyetlen Azure IoT Hub üzenet jelenik meg, amelyben a külső töm
 
 Az idősorozat-példány eszköz-metaadatokat tartalmaz. Ez a metaadatok nem változnak minden eseménnyel, de hasznos tulajdonságokat biztosít az adatok elemzéséhez. Ha menteni szeretné a huzalon küldött bájtokat, és hatékonyabbá teszi az üzenetet, érdemes lehet a közös dimenzió értékeit és az idősorozat-példányok metaadatait használni.
 
-### <a name="example-json-payload"></a>Példa JSON-adattartalomra
+### <a name="example-1"></a>1\. példa:
 
 ```JSON
 [
-    {
-        "deviceId": "FXXX",
-        "timestamp": "2018-01-17T01:17:00Z",
-        "series": [
-            {
-                "Flow Rate ft3/s": 1.0172575712203979,
-                "Engine Oil Pressure psi ": 34.7
-            },
-            {
-                "Flow Rate ft3/s": 2.445906400680542,
-                "Engine Oil Pressure psi ": 49.2
-            }
-        ]
-    },
-    {
-        "deviceId": "FYYY",
-        "timestamp": "2018-01-17T01:18:00Z",
-        "series": [
-            {
-                "Flow Rate ft3/s": 0.58015072345733643,
-                "Engine Oil Pressure psi ": 22.2
-            }
-        ]
-    }
+  {
+    "deviceId":"FXXX",
+    "timestamp":"2018-01-17T01:17:00Z",
+    "series":[
+      {
+        "Flow Rate ft3/s":1.0172575712203979,
+        "Engine Oil Pressure psi ":34.7
+      },
+      {
+        "Flow Rate ft3/s":2.445906400680542,
+        "Engine Oil Pressure psi ":49.2
+      }
+    ]
+  },
+  {
+    "deviceId":"FYYY",
+    "timestamp":"2018-01-17T01:18:00Z",
+    "series":[
+      {
+        "Flow Rate ft3/s":0.58015072345733643,
+        "Engine Oil Pressure psi ":22.2
+      }
+    ]
+  }
 ]
 ```
 
 ### <a name="time-series-instance"></a>Idősorozat-példány 
+
 > [!NOTE]
 > Az idősorozat-azonosító a *deviceId*.
 
 ```JSON
-{
-    "timeSeriesId": [
+[
+  {
+    "timeSeriesId":[
       "FXXX"
     ],
-    "typeId": "17150182-daf3-449d-adaf-69c5a7517546",
-    "hierarchyIds": [
+    "typeId":"17150182-daf3-449d-adaf-69c5a7517546",
+    "hierarchyIds":[
       "b888bb7f-06f0-4bfd-95c3-fac6032fa4da"
     ],
-    "description": null,
-    "instanceFields": {
-      "L1": "REVOLT SIMULATOR",
-      "L2": "Battery System",
+    "description":null,
+    "instanceFields":{
+      "L1":"REVOLT SIMULATOR",
+      "L2":"Battery System"
     }
   },
   {
-    "timeSeriesId": [
+    "timeSeriesId":[
       "FYYY"
     ],
-    "typeId": "17150182-daf3-449d-adaf-69c5a7517546",
-    "hierarchyIds": [
+    "typeId":"17150182-daf3-449d-adaf-69c5a7517546",
+    "hierarchyIds":[
       "b888bb7f-06f0-4bfd-95c3-fac6032fa4da"
     ],
-    "description": null,
-    "instanceFields": {
-      "L1": "COMMON SIMULATOR",
-      "L2": "Battery System",
+    "description":null,
+    "instanceFields":{
+      "L1":"COMMON SIMULATOR",
+      "L2":"Battery System"
     }
-  },
+  }
+]
 ```
 
 Time Series Insights az előnézet Összekapcsol egy táblát (az összeolvasztás után) a lekérdezés ideje alatt. A tábla további oszlopokat, például **típust**tartalmaz. Az alábbi példa bemutatja, hogyan [alakíthatja](./time-series-insights-send-events.md#supported-json-shapes) át a telemetria adatait.
 
-| deviceId  | Type (Típus) | L1 | L2 | időbélyeg | sorozat. Áramlási sebesség FT3/s | sorozat. Motor olajnyomás PSI |
+| deviceId  | Típus | L1 | L2 | időbélyeg | series_Flow arány FT3/s | series_Engine olajnyomás – PSI |
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
 | `FXXX` | Default_Type | SZIMULÁTOR | Akkumulátorrendszer | 2018-01-17T01:17:00Z |   1.0172575712203979 |    34,7 |
 | `FXXX` | Default_Type | SZIMULÁTOR |   Akkumulátorrendszer |    2018-01-17T01:17:00Z | 2.445906400680542 |  49,2 |
@@ -123,13 +128,33 @@ Az előző példában vegye figyelembe a következő szempontokat:
 * A statikus tulajdonságok Time Series Insights előzetes verzióban tárolódnak, hogy optimalizálják a hálózaton keresztül továbbított adatátvitelt.
 * Time Series Insights az előnézeti idő a példányban definiált idősorozat-AZONOSÍTÓn keresztül csatlakozik a lekérdezési időponthoz.
 * Két beágyazási réteg van használatban. Ez a szám a legtöbbet Time Series Insights előzetes verzió támogatja. Fontos, hogy elkerülje a mélyen beágyazott tömböket.
-* Mivel a rendszer néhány mértéket használ, ezeket külön tulajdonságokként küldik el ugyanazon az objektumon belül. A példában a **sorozat. Áramlási sebesség PSI**, **sorozat. A motor olajnyomás PSI**és **adatsorozatok. A flow Rate FT3/s** egyedi oszlopok.
+* Mivel a rendszer néhány mértéket használ, ezeket külön tulajdonságokként küldik el ugyanazon az objektumon belül. A példában a **Series_Flow ráta PSI**, a **series_Engine olajnyomás PSI**és a **series_Flow Rate FT3/s** egyedi oszlopok.
 
 >[!IMPORTANT]
 > A példány mezői nem tárolódnak a telemetria. A rendszer metaadatokat tárol a Time Series-modellben.
 > Az előző táblázat a lekérdezés nézetet jelöli.
 
-## <a name="next-steps"></a>Következő lépések
+### <a name="example-2"></a>2\. példa
+
+Vegye figyelembe a következő JSON-t:
+
+```JSON
+{
+  "deviceId": "FXXX",
+  "timestamp": "2019-01-18T01:17:00Z",
+  "data": {
+        "flow": 1.0172575712203979,
+    },
+  "data_flow" : 1.76435072345733643
+}
+```
+A fenti példában az összeolvasztott `data_flow` tulajdonság elnevezési ütközést jelent a `data_flow` tulajdonsággal. Ebben az esetben a *legújabb* tulajdonság értéke felülírja a korábbiat. Ha ez a viselkedés kihívást jelent az üzleti forgatókönyvek számára, forduljon az ÁME csapatához.
+
+> [!WARNING] 
+> Azokban az esetekben, ahol a duplikált tulajdonságok ugyanabban az esemény-adattartalomban találhatók, mint az összeolvasztás vagy más mechanizmus miatt, a rendszer a legújabb overwritting tárolja, és minden korábbi értéket megadhat.
+
+
+## <a name="next-steps"></a>További lépések
 
 - Az irányelvek gyakorlatba való helyezéséhez lásd: [Azure Time Series Insights előnézeti lekérdezés szintaxisa](./time-series-insights-query-data-csharp.md). A lekérdezési szintaxissal kapcsolatos további információkért tekintse meg az adatelérés Time Series Insights előzetes verzió REST APIét.
 - A támogatott JSON-alakzatokkal kapcsolatos további tudnivalókért lásd a [támogatott JSON-alakzatokat](./time-series-insights-send-events.md#supported-json-shapes).

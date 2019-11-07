@@ -1,5 +1,5 @@
 ---
-title: A Azure SQL Database DNS-aliasa | Microsoft Docs
+title: A Azure SQL Database DNS-aliasa
 description: Az alkalmazások csatlakozni tudnak a Azure SQL Database-kiszolgáló nevéhez. Eközben megváltoztathatja az aliasok SQL Databaseét bármikor, a tesztelés megkönnyítéséhez és így tovább.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: genemi, jrasnick, vanto
 ms.date: 06/26/2019
-ms.openlocfilehash: 5d37b41fa7b51871f9ce1b21c62de1f9ab7f3b82
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: c3681e882fea3e8e36472c8e540db0255cd654bb
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71058567"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73692281"
 ---
 # <a name="dns-alias-for-azure-sql-database"></a>A Azure SQL Database DNS-aliasa
 
@@ -59,7 +59,7 @@ A következő tulajdonságok a SQL Database-kiszolgáló minden DNS-aliasára é
 - *A kiszolgáló megadása kötelező:* Nem hozható létre DNS-alias, ha pontosan egy kiszolgálóra hivatkozik, és a kiszolgálónak már léteznie kell. A frissített aliasoknak mindig pontosan egy meglévő kiszolgálóra kell hivatkoznia.
   - SQL Database-kiszolgáló eldobásakor az Azure-rendszer az összes olyan DNS-aliast is eldobja, amely a kiszolgálóra hivatkozik.
 - *Nincs a régióhoz kötve:* A DNS-aliasok nincsenek régióhoz kötve. Bármely DNS-alias frissíthető úgy, hogy egy Azure SQL Database-kiszolgálóra hivatkozzon, amely bármely földrajzi régióban található.
-  - Ha azonban egy alias frissítése egy másik kiszolgálóra hivatkozik, mindkét kiszolgálónak ugyanabban az Azure-előfizetésbenkell lennie.
+  - Ha azonban egy alias frissítése egy másik kiszolgálóra hivatkozik, mindkét kiszolgálónak ugyanabban az Azure- *előfizetésben*kell lennie.
 - *Engedélyek:* A DNS-aliasok kezeléséhez a felhasználónak *kiszolgálói közreműködői* engedélyekkel kell rendelkeznie vagy magasabbnak kell lennie. További információ: Bevezetés a [szerepköralapú Access Control használatába a Azure Portal](../role-based-access-control/overview.md).
 
 ## <a name="manage-your-dns-aliases"></a>A DNS-aliasok kezelése
@@ -92,10 +92,10 @@ A DNS-aliasok kezeléséhez használt PowerShell-parancsmagok például a követ
 
 A kódban használt parancsmagok a következők:
 
-- [New-AzSqlServerDNSAlias](https://docs.microsoft.com/powershell/module/az.Sql/New-azSqlServerDnsAlias): Új DNS-Alias létrehozása a Azure SQL Database szolgáltatási rendszerben. Az alias az 1. Azure SQL Database kiszolgálóra hivatkozik.
-- [Get-AzSqlServerDNSAlias](https://docs.microsoft.com/powershell/module/az.Sql/Get-azSqlServerDnsAlias): Az SQL DB Server 1 rendszerhez rendelt összes DNS-alias beolvasása és listázása.
-- [Set-AzSqlServerDNSAlias](https://docs.microsoft.com/powershell/module/az.Sql/Set-azSqlServerDnsAlias): Módosítja annak a kiszolgálónak a nevét, amelyre az alias hivatkozik, az 1. kiszolgálóról az SQL DB Server 2 értékre.
-- [Remove-AzSqlServerDNSAlias](https://docs.microsoft.com/powershell/module/az.Sql/Remove-azSqlServerDnsAlias): Távolítsa el a DNS-aliast az SQL DB Server 2-ből az alias nevével.
+- [New-AzSqlServerDNSAlias](https://docs.microsoft.com/powershell/module/az.Sql/New-azSqlServerDnsAlias): új DNS-Alias létrehozása a Azure SQL Database szolgáltatási rendszerben. Az alias az 1. Azure SQL Database kiszolgálóra hivatkozik.
+- [Get-AzSqlServerDNSAlias](https://docs.microsoft.com/powershell/module/az.Sql/Get-azSqlServerDnsAlias): az SQL db Server 1 rendszerhez rendelt összes DNS-alias beolvasása és listázása.
+- [Set-AzSqlServerDNSAlias](https://docs.microsoft.com/powershell/module/az.Sql/Set-azSqlServerDnsAlias): módosítja annak a kiszolgálónak a nevét, amelyre az alias hivatkozik, az 1. kiszolgálóról az SQL db Server 2 verzióra.
+- [Remove-AzSqlServerDNSAlias](https://docs.microsoft.com/powershell/module/az.Sql/Remove-azSqlServerDnsAlias): az alias nevének használatával távolítsa el a DNS-aliast az SQL db Server 2 kiszolgálóról.
 
 ## <a name="limitations-during-preview"></a>Korlátozások az előzetes verzióban
 
@@ -108,7 +108,7 @@ A DNS-aliasok jelenléte a következő korlátozásokkal jár:
   - A tábla naplózása elavult.
   - Javasoljuk, hogy térjen át a [blob-naplózásra](sql-database-auditing.md).
 
-## <a name="related-resources"></a>Kapcsolódó erőforrások
+## <a name="related-resources"></a>Kapcsolódó források (lehet, hogy a cikkek angol nyelvűek)
 
 - [A Azure SQL Database üzleti folytonosságának áttekintése](sql-database-business-continuity.md), beleértve a vész-helyreállítást is.
 

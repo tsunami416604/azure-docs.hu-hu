@@ -1,5 +1,5 @@
 ---
-title: SQL Database vész-helyreállítás | Microsoft Docs
+title: SQL Database vész-helyreállítás
 description: Megtudhatja, hogyan állíthatja helyre az adatbázisokat regionális adatközpontok meghibásodása esetén, illetve ha a Azure SQL Database aktív földrajzi replikálást és a Geo-visszaállítási képességeket.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 06/21/2019
-ms.openlocfilehash: 95814805d0bcb2532c09f4f68c6b8d97c3b8c6a5
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: bc4968541c29e3bf18eb4caca2abe648d17342a4
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68568832"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73690604"
 ---
 # <a name="restore-an-azure-sql-database-or-failover-to-a-secondary"></a>Azure SQL Database vagy feladatátvétel visszaállítása másodlagosra
 
@@ -24,7 +24,7 @@ Azure SQL Database a következő képességeket biztosítja az áramszünetek he
 
 - [Aktív georeplikáció](sql-database-active-geo-replication.md)
 - [Automatikus feladatátvételi csoportok](sql-database-auto-failover-group.md)
-- [Geo-restore](sql-database-recovery-using-backups.md#point-in-time-restore)
+- [Geo-visszaállítás](sql-database-recovery-using-backups.md#point-in-time-restore)
 - [Zóna – redundáns adatbázisok](sql-database-high-availability.md)
 
 Az üzletmenet-folytonossági forgatókönyvek és az ilyen forgatókönyveket támogató funkciók megismeréséhez tekintse meg az [üzletmenet folytonosságát](sql-database-business-continuity.md)ismertető témakört.
@@ -43,7 +43,7 @@ Az üzletmenet-folytonossági forgatókönyvek és az ilyen forgatókönyveket t
 
 Ha a helyreállítást egy másik adatterületre feladatátvételi csoport vagy a Geo-redundáns biztonsági másolatok segítségével kívánja végezni, elő kell készítenie egy kiszolgálót egy másik adatközpont-kimaradásban, hogy az új elsődleges kiszolgálónak kellene lennie, és jól definiált lépéseket kelljen dokumentálni, és a rendszer tesztelte a zökkenőmentes helyreállítás érdekében. Az előkészítés lépései a következők:
 
-- Azonosítsa a SQL Database kiszolgálót egy másik régióban, hogy az új elsődleges kiszolgáló legyen. A Geo-visszaállítás esetében ez általában egy kiszolgáló a párosított [régióban](../best-practices-availability-paired-regions.md) azon régió esetében, amelyben az adatbázis található. Ez kiküszöböli a további forgalmi költségeket a Geo-visszaállítási műveletek során.
+- Azonosítsa a SQL Database kiszolgálót egy másik régióban, hogy az új elsődleges kiszolgáló legyen. A Geo-visszaállítás esetében ez általában egy kiszolgáló a [párosított régióban](../best-practices-availability-paired-regions.md) azon régió esetében, amelyben az adatbázis található. Ez kiküszöböli a további forgalmi költségeket a Geo-visszaállítási műveletek során.
 - Azonosítsa és opcionálisan definiálja a kiszolgálói szintű IP-tűzfalszabályok szükségesek a felhasználók számára az új elsődleges adatbázis eléréséhez.
 - Határozza meg, hogyan fogja átirányítani a felhasználókat az új elsődleges kiszolgálóra, például a kapcsolódási karakterláncok módosításával vagy a DNS-bejegyzések módosításával.
 - Azonosítsa és opcionálisan hozza létre azokat a bejelentkezéseket, amelyeknek szerepelniük kell a főadatbázisban az új elsődleges kiszolgálón, és biztosítania kell, hogy ezek a bejelentkezések megfelelő engedélyekkel rendelkezzenek a Master adatbázisban, ha van ilyen. További információ: [SQL Database biztonság a katasztrófa utáni helyreállítás után](sql-database-geo-replication-security-config.md)
@@ -63,7 +63,7 @@ A helyreállítási művelet hatással van az alkalmazásra. Ehhez az SQL-kapcso
 
 Az alkalmazási toleranciára és az esetleges üzleti felelősségre függően a következő helyreállítási lehetőségek közül választhat.
 
-Használja a helyreállítható [adatbázis](https://msdn.microsoft.com/library/dn800985.aspx) beolvasása (*LastAvailableBackupDate*) lehetőséget a legújabb földrajzi replikálási visszaállítási pont lekéréséhez.
+Használja a helyreállítható [adatbázis beolvasása](https://msdn.microsoft.com/library/dn800985.aspx) (*LastAvailableBackupDate*) lehetőséget a legújabb földrajzi replikálási visszaállítási pont lekéréséhez.
 
 ## <a name="wait-for-service-recovery"></a>Várakozás a szolgáltatás helyreállítására
 
@@ -89,7 +89,7 @@ Ha az alkalmazás leállása nem jelent üzleti felelősséget, a [geo-visszaál
 
 Ha a Geo-visszaállítás segítségével állítja helyre a helyreállítást, meg kell győződnie arról, hogy az új adatbázisokhoz való kapcsolódás megfelelően van konfigurálva, hogy a normál alkalmazás-funkció folytatódni lehessen. Ez egy ellenőrzőlista a feladatokról, amelyekkel készen áll a helyreállított adatbázis gyártására.
 
-### <a name="update-connection-strings"></a>Kapcsolati sztringek frissítése
+### <a name="update-connection-strings"></a>A kapcsolatok karakterláncának frissítése
 
 Mivel a helyreállított adatbázis egy másik kiszolgálón található, frissítenie kell az alkalmazás kapcsolódási karakterláncát, hogy erre a kiszolgálóra mutasson.
 
@@ -97,7 +97,7 @@ A kapcsolatok sztringek módosításával kapcsolatos további információkért
 
 ### <a name="configure-firewall-rules"></a>Tűzfalszabályok konfigurálása
 
-Győződjön meg arról, hogy a kiszolgálón és az adatbázison konfigurált tűzfalszabályok megfelelnek az elsődleges kiszolgálón és az elsődleges adatbázisban konfigurált szabályoknak. További információkért lásd: [hogyan: Adja meg a tűzfalbeállítások beállításait (](sql-database-configure-firewall-settings.md)Azure SQL Database).
+Győződjön meg arról, hogy a kiszolgálón és az adatbázison konfigurált tűzfalszabályok megfelelnek az elsődleges kiszolgálón és az elsődleges adatbázisban konfigurált szabályoknak. További információkért lásd [: How to: Firewall Settings (tűzfalbeállítások konfigurálása (Azure SQL Database)](sql-database-configure-firewall-settings.md).
 
 ### <a name="configure-logins-and-database-users"></a>Bejelentkezések és adatbázis-felhasználók konfigurálása
 

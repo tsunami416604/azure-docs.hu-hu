@@ -1,5 +1,5 @@
 ---
-title: 'SaaS-alkalmazások: Azure SQL Database geo-redundáns biztonsági másolatok a vész-helyreállításhoz | Microsoft Docs'
+title: 'SaaS-alkalmazások: Azure SQL Database geo-redundáns biztonsági mentések a vész-helyreállításhoz '
 description: Megtudhatja, hogyan használhat Azure SQL Database geo-redundáns biztonsági mentést egy több-bérlős SaaS-alkalmazás helyreállításához leállás esetén
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: AyoOlubeko
 ms.author: craigg
 ms.reviewer: sstein
 ms.date: 01/14/2019
-ms.openlocfilehash: c8990e5183d09e8f530fdef952a80a09104d3617
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 2f058a5cd20fff845a1feafe42b66beb1afef766
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68570488"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73692198"
 ---
 # <a name="use-geo-restore-to-recover-a-multitenant-saas-application-from-database-backups"></a>Geo-visszaállítás használata több-bérlős SaaS-alkalmazás helyreállításához az adatbázis biztonsági másolatainak használatával
 
@@ -62,7 +62,7 @@ A vész-helyreállítási (DR) fontos szempont számos alkalmazás számára, le
 Ez az oktatóanyag a Azure SQL Database funkcióit és az Azure platformot használja az alábbi problémák megoldásához:
 
 * [Azure Resource Manager sablonokat](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-create-first-template), hogy a lehető leggyorsabban lefoglalja a szükséges kapacitást. Azure Resource Manager sablonokkal a helyreállítási régióban található eredeti kiszolgálók és rugalmas készletek tükörképét lehet kiépíteni. Az új bérlők üzembe helyezéséhez külön-kiszolgáló és-készlet is létrejön.
-* [Elastic Database ügyféloldali kódtár](sql-database-elastic-database-client-library.md) (EDCL) a bérlői adatbázis-katalógus létrehozásához és karbantartásához. A kiterjesztett katalógus rendszeres időközönként frissített készletet és adatbázis-konfigurációs adatokat tartalmaz.
+* [Elastic Database ügyféloldali kódtárat](sql-database-elastic-database-client-library.md) (EDCL) a bérlői adatbázis-katalógus létrehozásához és karbantartásához. A kiterjesztett katalógus rendszeres időközönként frissített készletet és adatbázis-konfigurációs adatokat tartalmaz.
 * A EDCL szegmensek közötti [felügyeleti helyreállítási funkciói](sql-database-elastic-database-recovery-manager.md) a helyreállítás és a visszaállítás során a katalógusban található adatbázis-helyek bejegyzéseinek fenntartásához.  
 * A [geo-visszaállítással](sql-database-disaster-recovery.md)helyreállíthatja a katalógust és a bérlői adatbázisokat, így automatikusan megőrizheti a Geo-redundáns biztonsági mentéseket. 
 * A bérlői prioritású sorrendben eljuttatott [aszinkron visszaállítási műveleteket](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations)a rendszer az egyes készletekhez várólistára helyezi, és a kötegekben dolgozza fel, hogy a készlet ne legyen túlterhelve. Ezek a műveletek a végrehajtás előtt vagy közben is megvonhatók, ha szükséges.   
@@ -71,7 +71,7 @@ Ez az oktatóanyag a Azure SQL Database funkcióit és az Azure platformot haszn
 
 ## <a name="get-the-disaster-recovery-scripts"></a>A vész-helyreállítási parancsfájlok beszerzése
 
-Az oktatóanyagban használt DR szkriptek a [Wingtip tickets SaaS-adatbázisban](https://github.com/Microsoft/WingtipTicketsSaaS-DbPerTenant)találhatók a bérlői GitHub-tárházban. Tekintse meg az Wingtip tickets felügyeleti parancsfájlok letöltéséhez és feloldásához szükséges lépéseket ismertető [általános útmutatót](saas-tenancy-wingtip-app-guidance-tips.md) .
+Az oktatóanyagban használt DR szkriptek a [Wingtip tickets SaaS-adatbázisban találhatók a bérlői GitHub-tárházban](https://github.com/Microsoft/WingtipTicketsSaaS-DbPerTenant). Tekintse meg az Wingtip tickets felügyeleti parancsfájlok letöltéséhez és feloldásához szükséges lépéseket ismertető [általános útmutatót](saas-tenancy-wingtip-app-guidance-tips.md) .
 
 > [!IMPORTANT]
 > A Wingtip jegyek felügyeleti parancsfájljaihoz hasonlóan a DR szkriptek is minőségi minta, ezért nem használhatók éles környezetben.
@@ -79,7 +79,7 @@ Az oktatóanyagban használt DR szkriptek a [Wingtip tickets SaaS-adatbázisban]
 ## <a name="review-the-healthy-state-of-the-application"></a>Az alkalmazás kifogástalan állapotának áttekintése
 A helyreállítási folyamat megkezdése előtt tekintse át az alkalmazás rendeltetésszerű kifogástalan állapotát.
 
-1. A böngészőben nyissa meg a Wingtip tickets Events hubot http://events.wingtip-dpt.&lt (;&gt; user. trafficmanager.net, &lt; cserélje&gt; le a felhasználót a telepítés felhasználói értékére).
+1. A böngészőben nyissa meg a Wingtip tickets Events hub (http://events.wingtip-dpt.&lt; User&gt;. trafficmanager.net, és cserélje le &lt;User&gt; az üzembe helyezés felhasználói értékét).
     
    Görgessen a lap aljára, és figyelje meg a katalógus kiszolgálójának nevét és helyét a láblécben. A hely az a régió, amelyben üzembe helyezte az alkalmazást.    
 
@@ -105,7 +105,7 @@ Ebben a feladatban elindít egy folyamatot, amely a kiszolgálók, a rugalmas k�
 > [!IMPORTANT]
 > Az egyszerűség kedvéért a szinkronizálási folyamat és az egyéb hosszan futó helyreállítási és újratelepítési folyamatok a helyi PowerShell-feladatok vagy az ügyfél-felhasználói bejelentkezés alatt futó munkamenetek keretében valósulnak meg. A bejelentkezéskor kiállított hitelesítési tokenek több óra elteltével lejárnak, és a feladatok sikertelenek lesznek. Éles környezetben a hosszan futó folyamatokat olyan megbízható Azure-szolgáltatásként kell megvalósítani, amely egy egyszerű szolgáltatásnév keretében fut. Lásd: a [Azure PowerShell használata egy egyszerű szolgáltatásnév létrehozásához tanúsítvánnyal](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authenticate-service-principal). 
 
-1. A PowerShell ISE-ben nyissa meg a. ..\Learning Modules\UserConfig.psm1 fájlt. Cserélje `<resourcegroup>` le `<user>` a és a értéket a 10-es és a 11-es vonalakra az alkalmazás üzembe helyezésekor használt értékkel. Mentse a fájlt.
+1. A PowerShell ISE-ben nyissa meg a. ..\Learning Modules\UserConfig.psm1 fájlt. Cserélje le az `<resourcegroup>` és a `<user>`t a 10. és a 11. vonalon az alkalmazás üzembe helyezésekor használt értékkel. Mentse a fájlt.
 
 2. A PowerShell ISE-ben nyissa meg a. ..\Learning Modules\Business folytonosságát és a katasztrófa-Recovery\DR-RestoreFromBackup\Demo-RestoreFromBackup.ps1 parancsfájlt.
 
@@ -113,7 +113,7 @@ Ebben a feladatban elindít egy folyamatot, amely a kiszolgálók, a rugalmas k�
 
 3. Állítsa be a következőket:
 
-    $DemoScenario = 1: Indítson el egy olyan háttér-feladatot, amely szinkronizálja a bérlői kiszolgálót és a készlet konfigurációs adatait a katalógusba.
+    $DemoScenario = 1: indítson el egy háttérben futó feladatot, amely a bérlői kiszolgáló és a készlet konfigurációs adatait szinkronizálja a katalógusba.
 
 4. A szinkronizálási parancsfájl futtatásához nyomja le az F5 billentyűt. 
 
@@ -173,7 +173,7 @@ Képzelje el, hogy a régióban az alkalmazás központi telepítése történik
 
 1. A PowerShell ISE-ben a. ..\Learning Modules\Business folytonossága és a katasztrófa-Recovery\DR-RestoreFromBackup\Demo-RestoreFromBackup.ps1 parancsfájlban állítsa be a következő értéket:
 
-    $DemoScenario = 2: Állítsa helyre az alkalmazást egy helyreállítási régióban a Geo-redundáns biztonsági másolatokből való visszaállítással.
+    $DemoScenario = 2: állítsa helyre az alkalmazást egy helyreállítási régióban a Geo-redundáns biztonsági másolatokből való visszaállítással.
 
 2. A parancsfájl futtatásához válassza az F5 lehetőséget.  
 
@@ -199,7 +199,7 @@ Amíg az alkalmazás végpontja le van tiltva a Traffic Managerban, az alkalmaz�
  
     ![Helyreállítási folyamat](media/saas-dbpertenant-dr-geo-restore/events-hub-tenants-offline-in-recovery-region.png)    
 
-  * Ha közvetlenül a bérlő offline állapotban nyitja meg a bérlői események lapot, a lap egy bérlő offline értesítését jeleníti meg. Ha például a contoso Concert Hall offline állapotban van, próbálja meg http://events.wingtip-dpt.&lt megnyitni a&gt; következőt:. user. trafficmanager.net/contosoconcerthall.
+  * Ha közvetlenül a bérlő offline állapotban nyitja meg a bérlői események lapot, a lap egy bérlő offline értesítését jeleníti meg. Ha például a contoso Concert Hall offline állapotban van, próbálja meg megnyitni http://events.wingtip-dpt.&lt; felhasználó&gt;. trafficmanager.net/contosoconcerthall.
 
     ![Helyreállítási folyamat](media/saas-dbpertenant-dr-geo-restore/dr-in-progress-offline-contosoconcerthall.png)
 
@@ -208,7 +208,7 @@ Még a bérlői adatbázisok visszaállítása előtt is kiépítheti az új bé
 
 1. A PowerShell ISE-ben, a. ..\Learning Modules\Business folytonossága és a katasztrófa-Recovery\DR-RestoreFromBackup\Demo-RestoreFromBackup.ps1 parancsfájlban állítsa be a következő tulajdonságot:
 
-    $DemoScenario = 3: Hozzon létre egy új bérlőt a helyreállítási régióban.
+    $DemoScenario = 3: új bérlő kiépítése a helyreállítási régióban.
 
 2. A parancsfájl futtatásához válassza az F5 lehetőséget.
 
@@ -246,13 +246,13 @@ A helyreállítási folyamat befejeződése után az alkalmazás és az összes 
 
    * A katalógus és a tenants1-kiszolgálók helyreállítási verziói a-Recovery utótaggal. Ezen kiszolgálókon a visszaállított katalógus és bérlői adatbázisok mindegyike az eredeti régióban használt neveket tartalmazza.
 
-   * A tenants2-DPT-&lt;User&gt;-Recovery SQL Server. Ez a kiszolgáló új bérlők kiépítési felállítására szolgál a leállás során.
+   * A tenants2-DPT-&lt;felhasználó&gt;-Recovery SQL Server. Ez a kiszolgáló új bérlők kiépítési felállítására szolgál a leállás során.
 
-   * Az App Service nevű Events-Wingtip-DPT&lt;-&gt;recoveryregion&gt;-&lt;felhasználó, amely az Events alkalmazás helyreállítási példánya.
+   * Az App Service nevű Events-Wingtip-DPT-&lt;recoveryregion&gt;-&lt;felhasználói&gt;, amely az Events alkalmazás helyreállítási példánya.
 
      ![Contoso-erőforrások a helyreállítási régióban](media/saas-dbpertenant-dr-geo-restore/resources-in-recovery-region.png) 
     
-5. Nyissa meg a tenants2-&lt;DPT&gt;-User-Recovery SQL Servert. Figyelje meg, hogy az adatbázis hawthornhall és a rugalmas készlet Pool1 tartalmazza. A hawthornhall-adatbázis rugalmas adatbázisként van konfigurálva a Pool1 rugalmas készletben.
+5. Nyissa meg a tenants2-DPT-&lt;felhasználói&gt;-Recovery SQL Servert. Figyelje meg, hogy az adatbázis hawthornhall és a rugalmas készlet Pool1 tartalmazza. A hawthornhall-adatbázis rugalmas adatbázisként van konfigurálva a Pool1 rugalmas készletben.
 
 ## <a name="change-the-tenant-data"></a>Bérlői adatértékek módosítása 
 Ebben a feladatban frissíti a visszaállított bérlői adatbázisok egyikét. A rehazatérési folyamat átmásolja a visszaállított adatbázisokat, amelyek az eredeti régióra módosultak. 
@@ -261,11 +261,11 @@ Ebben a feladatban frissíti a visszaállított bérlői adatbázisok egyikét. 
 
 2. A PowerShell ISE-ben a. ..\Learning Modules\Business folytonossága és a katasztrófa-Recovery\DR-RestoreFromBackup\Demo-RestoreFromBackup.ps1 parancsfájlban állítsa be a következő értéket:
 
-    $DemoScenario = 4: Egy esemény törlése a helyreállítási régióban lévő bérlőből.
+    $DemoScenario = 4: esemény törlése a helyreállítási régióban lévő bérlőből.
 
 3. A szkript végrehajtásához válassza az F5 lehetőséget.
 
-4. Frissítse a contoso Concert Events- http://events.wingtip-dpt.&lt események oldalát (; User&gt;. trafficmanager.net/contosoconcerthall), és figyelje meg, hogy az esemény súlyos Strauss-hiánya hiányzik.
+4. Frissítse a contoso Concert Events-események oldalát (http://events.wingtip-dpt.&lt; User&gt;. trafficmanager.net/contosoconcerthall), és figyelje meg, hogy az esemény súlyos Strauss-hiánya hiányzik.
 
 Az oktatóanyag ezen pontján visszaállította az alkalmazást, amely már fut a helyreállítási régióban. Kiépített egy új bérlőt a helyreállítási régióban, és módosította az egyik visszaállított bérlőt.  
 
@@ -319,17 +319,17 @@ Ha követte az oktatóanyagot, a szkript azonnal újraaktiválja a fabrikam jazz
   
 1. A PowerShell ISE-ben, a. ..\Learning Modules\Business folytonossága és a katasztrófa-Recovery\DR-RestoreFromBackup\Demo-RestoreFromBackup.ps1 parancsfájlban ellenőrizze, hogy a katalógus szinkronizálási folyamata továbbra is fut-e a PowerShell-példányában. Szükség esetén indítsa újra a beállítást:
 
-    $DemoScenario = 1: Megkezdheti a bérlői kiszolgáló, a készlet és az adatbázis-konfigurációs adatok szinkronizálását a katalógusba.
+    $DemoScenario = 1: a bérlői kiszolgáló, a készlet és az adatbázis-konfigurációs adatok szinkronizálásának megkezdése a katalógusba.
 
     A parancsfájl futtatásához válassza az F5 lehetőséget.
 
 2.  Ezután állítsa be a következőt:
 
-    $DemoScenario = 5: Szabadon hazautalhatnak az alkalmazást az eredeti régiójába.
+    $DemoScenario = 5: szabadon hazautalhatnak az alkalmazást az eredeti régiójába.
 
     Ha a helyreállítási parancsfájlt egy új PowerShell-ablakban szeretné futtatni, válassza az F5 lehetőséget. A rehazatérés több percet is igénybe vehet, és a PowerShell-ablakban figyelhető.
 
-3. A parancsfájl futása közben frissítse az Events hub oldalt (http://events.wingtip-dpt.&lt ; User&gt;. trafficmanager.net).
+3. A parancsfájl futtatása közben frissítse az Events hub lapot (http://events.wingtip-dpt.&lt; felhasználó&gt;. trafficmanager.net).
 
     Figyelje meg, hogy az összes bérlő online állapotban van, és elérhető a folyamat során.
 
@@ -351,7 +351,7 @@ A visszaállítási folyamat létrehozza a helyreállítási erőforráscsoport 
 
 1. A PowerShell ISE-ben, a. ..\Learning Modules\Business folytonossági és katasztrófa-Recovery\DR-RestoreFromBackup\Demo-RestoreFromBackup.ps1 parancsfájljában állítsa be a következőket:
     
-    $DemoScenario = 6: Törölje az elavult erőforrásokat a helyreállítási régióból.
+    $DemoScenario = 6: elavult erőforrások törlése a helyreállítási régióból.
 
 2. A parancsfájl futtatásához válassza az F5 lehetőséget.
 

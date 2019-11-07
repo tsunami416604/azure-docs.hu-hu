@@ -5,20 +5,17 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 10/17/2019
-ms.openlocfilehash: 40718cdb12cbc46bf0587dfdc657ee06c090061b
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.date: 11/04/2019
+ms.openlocfilehash: c8891fc96e3e511e4127b4e114a45b5a865cf8eb
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72598246"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73603028"
 ---
 # <a name="monitor-azure-database-for-mysql-performance-with-query-store"></a>A Azure Database for MySQL teljesítményének figyelése a lekérdezési tárolóval
 
 **A következőkre vonatkozik:** Azure Database for MySQL 5,7
-
-> [!IMPORTANT]
-> A lekérdezési tároló előzetes verzióban érhető el.
 
 A Azure Database for MySQL lekérdezés-tárolási funkciója lehetővé teszi a lekérdezési teljesítmény időbeli nyomon követését. A Query Store leegyszerűsíti a teljesítménnyel kapcsolatos hibaelhárítást, így gyorsan megtalálhatja a leghosszabb ideig futó és a legtöbb erőforrás-igényes lekérdezést. A Query Store automatikusan rögzíti a lekérdezések és a futásidejű statisztikák előzményeit, és megőrzi azokat az áttekintéshez. Elkülöníti az adatokat az időablakok alapján, hogy az adatbázis használati mintái láthatók legyenek. A rendszer az összes felhasználóra, adatbázisra és lekérdezésre vonatkozó, a Azure Database for MySQL-példányban található **MySQL** Schema adatbázisban tárolja az összes felhasználót.
 
@@ -107,7 +104,7 @@ A következő lehetőségek kifejezetten a várakozási statisztikára vonatkozn
 > [!NOTE]
 > Jelenleg a **query_store_capture_mode** felülírja ezt a konfigurációt, ami azt jelenti, hogy a **query_store_capture_mode** és a **query_store_wait_sampling_capture_mode** egyaránt engedélyezve kell lennie mind a várakozási statisztikák működéséhez. Ha a **query_store_capture_mode** ki van kapcsolva, a várakozási statisztikák ki vannak kapcsolva, a várakozási statisztikák pedig a performance_schema által engedélyezett és a lekérdezési tároló által rögzített query_text is használják.
 
-A [Azure Portal](howto-server-parameters.md)  or [Azure CLI](howto-configure-server-parameters-using-cli.md) -vel  to a Get vagy a paraméter értékeként adja meg a kívánt értéket.
+A [Azure Portal](howto-server-parameters.md) vagy az [Azure CLI](howto-configure-server-parameters-using-cli.md) használatával beolvashatja vagy beállíthatja a paraméter eltérő értékét.
 
 ## <a name="views-and-functions"></a>Nézetek és függvények
 
@@ -175,10 +172,10 @@ Ez a nézet visszaadja az események várakozási idejének értékét a lekérd
 ## <a name="limitations-and-known-issues"></a>Korlátozások és ismert problémák
 
 - Ha a MySQL-kiszolgáló `default_transaction_read_only` paraméterrel rendelkezik, a Query Store nem tudja rögzíteni az adatmennyiséget.
-- A lekérdezés-tárolási funkció megszakítható, ha hosszú Unicode-lekérdezéseket (\> = 6000 bájt) tapasztal.
+- A lekérdezés-tárolási funkció megszakítható, ha hosszú Unicode-lekérdezéseket (\>= 6000 bájt) tapasztal.
 - A várakozási statisztikák megőrzési időtartama 24 óra.
 - A várakozási statisztikák minta használatával rögzítik az események egy részét. A gyakoriság a `query_store_wait_sampling_frequency` paraméter használatával módosítható.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - További információ a [lekérdezési teljesítményről](concepts-query-performance-insight.md)

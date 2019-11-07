@@ -1,7 +1,7 @@
 ---
 title: Közzétételi régiók & végpontok – LUIS
 titleSuffix: Azure Cognitive Services
-description: 3 a számos közzétételi régiót a szerzői régiók és a portálok támogatják. A régió, amelyben a LUIS-alkalmazás közzététele a régiónak vagy az Azure Portalon egy Azure LUIS végponti kulcs létrehozásakor megadott felel meg. Amikor közzétesz egy alkalmazást, a LUIS automatikusan létrehozza a kulcsot az ahhoz tartozó régiót-végpont URL-címe.
+description: A Azure Portalban megadott régió ugyanaz, ahol a LUIS-alkalmazást közzé fogja tenni, és egy végponti URL-cím jön létre ugyanahhoz a régióhoz.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -11,25 +11,25 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 07/31/2019
 ms.author: diberry
-ms.openlocfilehash: f859047caf64d27ef63783ecd42f12fc9b79b4fd
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: fe4436afe56e631ae308b70ae35b1fb4a7c32e11
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68933350"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73669190"
 ---
 # <a name="authoring-and-publishing-regions-and-the-associated-keys"></a>Régiók és a hozzájuk tartozó kulcsok létrehozása és közzététele
 
-A megfelelő LUIS-portálok három szerzői régiót támogatnak. A LUIS alkalmazás közzététele több régióban, régiónként legalább egy kulcs szükséges. 
+A megfelelő LUIS-portálok három szerzői régiót támogatnak. Egy LUIS-alkalmazás több régióba való közzétételéhez régiónként legalább egy kulcsra van szükség. 
 
 <a name="luis-website"></a>
 
 ## <a name="luis-authoring-regions"></a>LUIS authoring-régiók
-A régió alapján három LUIS authoring portál található. Hozhat létre és közzététele ugyanabban a régióban kell. 
+A régió alapján három LUIS authoring portál található. Ugyanabban a régióban kell létrehoznia és közzétennie. 
 
-|LUIS|Szerzői műveletek terület|Azure-régió neve|
+|LUIS|Szerzői régió|Azure-régió neve|
 |--|--|--|
-|[www.luis.ai][www.luis.ai]|USA<br>nem Európa<br>nem Ausztrália| `westus`|
+|[www.luis.ai][www.luis.ai]|Az USA<br>nem Európa<br>nem Ausztrália| `westus`|
 |[au.luis.ai][au.luis.ai]|Ausztrália| `australiaeast`|
 |[eu.luis.ai][eu.luis.ai]|Európa|`westeurope`|
 
@@ -38,49 +38,49 @@ A szerzői régiók [párosított feladatátvételi régiókkal](https://docs.mi
 <a name="regions-and-azure-resources"></a>
 
 ## <a name="publishing-regions-and-azure-resources"></a>Közzétételi régiók és Azure-erőforrások
-Az alkalmazás közzé van téve a LUIS erőforrások a LUIS portálon hozzá társított összes régióba. Ha például egy [www.Luis.ai][www.luis.ai]-on létrehozott alkalmazáshoz létrehoz egy Luis vagy kognitív szolgáltatási erőforrást a **westus** -ben, és [hozzáadja az alkalmazáshoz erőforrásként](luis-how-to-azure-subscription.md), akkor az alkalmazás az adott régióban lesz közzétéve. 
+Az alkalmazás közzé van téve a LUIS-portálon hozzáadott LUIS-erőforrásokhoz társított összes régióban. Ha például egy [www.Luis.ai][www.luis.ai]-on létrehozott alkalmazáshoz létrehoz egy Luis vagy kognitív szolgáltatási erőforrást a **westus** -ben, és [hozzáadja az alkalmazáshoz erőforrásként](luis-how-to-azure-subscription.md), akkor az alkalmazás az adott régióban lesz közzétéve. 
 
 ## <a name="public-apps"></a>Nyilvános alkalmazások
-A nyilvános alkalmazás közzé van téve az összes régióban, hogy egy felhasználó egy LUIS-erőforrás régió-alapú kulccsal hozzáférhet az alkalmazás bármelyik régióban az erőforrás-kulcs társítva.
+A nyilvános alkalmazások minden régióban közzé vannak téve, hogy a régió-alapú LUIS-erőforrás kulcsával rendelkező felhasználók hozzáférhessenek az alkalmazáshoz, amely bármelyik régióban hozzá van rendelve az erőforrás-kulcshoz.
 
 <a name="publishing-regions"></a>
 
 ## <a name="publishing-regions-are-tied-to-authoring-regions"></a>A közzétételi régiók a létrehozási régiókhoz vannak kötve
 
-A szerzői műveletek terület app csak közzétehető egy megfelelő régió közzététele. Ha az alkalmazás jelenleg a megfelelő szerzői régióban, alkalmazást, és importálja azt a megfelelő szerzői régió a közzétételi régiója. 
+Az authoring region alkalmazást csak a megfelelő közzétételi régióban lehet közzétenni. Ha az alkalmazás jelenleg nem megfelelő authoring régióban van, exportálja az alkalmazást, és importálja a közzétételi régiójának megfelelő szerzői régióba. 
 
-A létrehozott LUIS-alkalmazások https://www.luis.ai kivételével az összes végpontok teheti közzé a [Európai](#publishing-to-europe) és [ausztrál](#publishing-to-australia) régióban. 
+A https://www.luis.aion létrehozott LUIS-alkalmazások közzétehetők az összes végponton, kivéve az [Európai](#publishing-to-europe) és [ausztráliai](#publishing-to-australia) régiókat. 
 
-## <a name="publishing-to-europe"></a>Közzététel az Európa
+## <a name="publishing-to-europe"></a>Közzététel Európába
 
-Tesz közzé, az Európai régiókban, létre kell hozni a LUIS Apps alkalmazások https://eu.luis.ai csak. Ha közzé bárhol ellenkező esetben az Európai régióban a kulcs használatával kísérli meg, LUIS figyelmeztető üzenetet jeleníti meg. Ehelyett használjon https://eu.luis.ai. A [https://eu.luis.ai][eu.luis.ai] -ben létrehozott Luis-alkalmazások nem lesznek automatikusan migrálva más régiókba. Exportálja és importálja a LUIS-alkalmazásokon ahhoz, hogy telepítse át.
+Az európai régiókban való közzétételhez csak https://eu.luis.aion hozhat létre LUIS alkalmazásokat. Ha az Európa régió egyik kulcsával próbál meg máshol közzétenni, a LUIS figyelmeztető üzenetet jelenít meg. Ehelyett használja a https://eu.luis.ai. A [https://eu.luis.ai][eu.luis.ai] címen létrehozott Luis-alkalmazások nem települnek át automatikusan más régiókba. Exportálja, majd importálja a LUIS alkalmazást a Migrálás érdekében.
 
 ## <a name="europe-publishing-regions"></a>Európa közzétételi régiói
 
- Globális régió | API-régió készítése & authoring webhelye| Közzétételi & régió lekérdezése<br>`API region name`   |  Végpont URL-formátum   |
+ Globális régió | API-régió készítése & authoring webhelye| & Lekérdezési régió közzététele<br>`API region name`   |  Végpont URL-formátuma   |
 |-----|------|------|------|
 | [Európa](#publishing-to-europe)| `westeurope`<br>[eu.luis.ai][eu.luis.ai]| Közép-Franciaország<br>`francecentral`     | https://francecentral.api.cognitive.microsoft.com/luis/v2.0/apps/YOUR-APP-ID?subscription-key=YOUR-SUBSCRIPTION-KEY   | 
 | [Európa](#publishing-to-europe)| `westeurope`<br>[eu.luis.ai][eu.luis.ai]| Észak-Európa<br>`northeurope`     | https://northeurope.api.cognitive.microsoft.com/luis/v2.0/apps/YOUR-APP-ID?subscription-key=YOUR-SUBSCRIPTION-KEY   | 
 | [Európa](#publishing-to-europe) | `westeurope`<br>[eu.luis.ai][eu.luis.ai]| Nyugat-Európa<br>`westeurope`    |  https://westeurope.api.cognitive.microsoft.com/luis/v2.0/apps/YOUR-APP-ID?subscription-key=YOUR-SUBSCRIPTION-KEY   | 
-| [Európa](#publishing-to-europe) | `westeurope`<br>[eu.luis.ai][eu.luis.ai]| Az Egyesült Királyság déli régiója<br>`uksouth`    |  https://uksouth.api.cognitive.microsoft.com/luis/v2.0/apps/YOUR-APP-ID?subscription-key=YOUR-SUBSCRIPTION-KEY   |
+| [Európa](#publishing-to-europe) | `westeurope`<br>[eu.luis.ai][eu.luis.ai]| Egyesült Királyság déli régiója<br>`uksouth`    |  https://uksouth.api.cognitive.microsoft.com/luis/v2.0/apps/YOUR-APP-ID?subscription-key=YOUR-SUBSCRIPTION-KEY   |
 
-## <a name="publishing-to-australia"></a>Közzététel az Ausztrália
+## <a name="publishing-to-australia"></a>Közzététel Ausztráliában
 
-Az ausztráliai régiókban való közzétételéhez, LUIS alkalmazások létrehozása, https://au.luis.ai csak. Ha közzé bárhol ellenkező esetben az ausztráliai régióban a kulcs használatával kísérli meg, LUIS figyelmeztető üzenetet jeleníti meg. Ehelyett használjon https://au.luis.ai. A [https://au.luis.ai][au.luis.ai] -ben létrehozott Luis-alkalmazások nem lesznek automatikusan migrálva más régiókba. Exportálja és importálja a LUIS-alkalmazásokon ahhoz, hogy telepítse át.
+Az ausztráliai régiókban való közzétételhez csak https://au.luis.aion hozhat létre LUIS alkalmazásokat. Ha egy, az ausztráliai régió egyik kulcsát használva próbál meg mást közzétenni, a LUIS figyelmeztető üzenetet jelenít meg. Ehelyett használja a https://au.luis.ai. A [https://au.luis.ai][au.luis.ai] címen létrehozott Luis-alkalmazások nem települnek át automatikusan más régiókba. Exportálja, majd importálja a LUIS alkalmazást a Migrálás érdekében.
 
 ## <a name="australia-publishing-regions"></a>Ausztráliai közzétételi régiók
 
- Globális régió | API-régió készítése & authoring webhelye| Közzétételi & régió lekérdezése<br>`API region name`   |  Végpont URL-formátum   |
+ Globális régió | API-régió készítése & authoring webhelye| & Lekérdezési régió közzététele<br>`API region name`   |  Végpont URL-formátuma   |
 |-----|------|------|------|
 | [Ausztrália](#publishing-to-australia) | `australiaeast`<br>[au.luis.ai][au.luis.ai]| Kelet-Ausztrália<br>`australiaeast`     |  https://australiaeast.api.cognitive.microsoft.com/luis/v2.0/apps/YOUR-APP-ID?subscription-key=YOUR-SUBSCRIPTION-KEY   |
 
 ## <a name="publishing-to-other-regions"></a>Közzététel más régiókban
 
-A többi régióban való közzétételhez [https://www.luis.ai](https://www.luis.ai) csak a Luis-alkalmazásokat kell létrehoznia. 
+A többi régióban való közzétételhez csak [https://www.luis.aion](https://www.luis.ai) hozhat létre Luis alkalmazásokat. 
 
 ## <a name="other-publishing-regions"></a>Egyéb közzétételi régiók
 
- Globális régió | API-régió készítése & authoring webhelye| Közzétételi & régió lekérdezése<br>`API region name`   |  Végpont URL-formátum   |
+ Globális régió | API-régió készítése & authoring webhelye| & Lekérdezési régió közzététele<br>`API region name`   |  Végpont URL-formátuma   |
 |-----|------|------|------|
 | Afrika | `westus`<br>[www.luis.ai][www.luis.ai]| Dél-Afrika északi régiója<br>`southafricanorth` |  https://southafricanorth.api.cognitive.microsoft.com/luis/v2.0/apps/YOUR-APP-ID?subscription-key=YOUR-SUBSCRIPTION-KEY   |
 | Ázsia | `westus`<br>[www.luis.ai][www.luis.ai]| Közép-India<br>`centralindia` |  https://centralindia.api.cognitive.microsoft.com/luis/v2.0/apps/YOUR-APP-ID?subscription-key=YOUR-SUBSCRIPTION-KEY   |
@@ -91,13 +91,13 @@ A többi régióban való közzétételhez [https://www.luis.ai](https://www.lui
 | Ázsia | `westus`<br>[www.luis.ai][www.luis.ai]| Délkelet-Ázsia<br>`southeastasia`     |   https://southeastasia.api.cognitive.microsoft.com/luis/v2.0/apps/YOUR-APP-ID?subscription-key=YOUR-SUBSCRIPTION-KEY   |
 | Észak-Amerika |`westus`<br>[www.luis.ai][www.luis.ai] | Közép-Kanada<br>`canadacentral`     |   https://canadacentral.api.cognitive.microsoft.com/luis/v2.0/apps/YOUR-APP-ID?subscription-key=YOUR-SUBSCRIPTION-KEY   |
 | Észak-Amerika |`westus`<br>[www.luis.ai][www.luis.ai] | USA középső régiója<br>`centralus`     |   https://centralus.api.cognitive.microsoft.com/luis/v2.0/apps/YOUR-APP-ID?subscription-key=YOUR-SUBSCRIPTION-KEY   |
-| Észak-Amerika |`westus`<br>[www.luis.ai][www.luis.ai] | East US<br>`eastus`      |  https://eastus.api.cognitive.microsoft.com/luis/v2.0/apps/YOUR-APP-ID?subscription-key=YOUR-SUBSCRIPTION-KEY   |
+| Észak-Amerika |`westus`<br>[www.luis.ai][www.luis.ai] | USA keleti régiója<br>`eastus`      |  https://eastus.api.cognitive.microsoft.com/luis/v2.0/apps/YOUR-APP-ID?subscription-key=YOUR-SUBSCRIPTION-KEY   |
 | Észak-Amerika | `westus`<br>[www.luis.ai][www.luis.ai] | USA 2. keleti régiója<br>`eastus2`     |  https://eastus2.api.cognitive.microsoft.com/luis/v2.0/apps/YOUR-APP-ID?subscription-key=YOUR-SUBSCRIPTION-KEY   |
 | Észak-Amerika | `westus`<br>[www.luis.ai][www.luis.ai] | USA északi középső régiója<br>`northcentralus`  |  https://northcentralus.api.cognitive.microsoft.com/luis/v2.0/apps/YOUR-APP-ID?subscription-key=YOUR-SUBSCRIPTION-KEY   | 
 | Észak-Amerika | `westus`<br>[www.luis.ai][www.luis.ai] | USA déli középső régiója<br>`southcentralus`  |  https://southcentralus.api.cognitive.microsoft.com/luis/v2.0/apps/YOUR-APP-ID?subscription-key=YOUR-SUBSCRIPTION-KEY   | 
 | Észak-Amerika |`westus`<br>[www.luis.ai][www.luis.ai] | USA nyugati középső régiója<br>`westcentralus`    |  https://westcentralus.api.cognitive.microsoft.com/luis/v2.0/apps/YOUR-APP-ID?subscription-key=YOUR-SUBSCRIPTION-KEY   |
 | Észak-Amerika | `westus`<br>[www.luis.ai][www.luis.ai] | USA nyugati régiója<br>`westus`  |   https://westus.api.cognitive.microsoft.com/luis/v2.0/apps/YOUR-APP-ID?subscription-key=YOUR-SUBSCRIPTION-KEY  |
-| Észak-Amerika |`westus`<br>[www.luis.ai][www.luis.ai] | USA nyugati régiója, 2.<br>`westus2`    |  https://westus2.api.cognitive.microsoft.com/luis/v2.0/apps/YOUR-APP-ID?subscription-key=YOUR-SUBSCRIPTION-KEY  |
+| Észak-Amerika |`westus`<br>[www.luis.ai][www.luis.ai] | USA 2. nyugati régiója<br>`westus2`    |  https://westus2.api.cognitive.microsoft.com/luis/v2.0/apps/YOUR-APP-ID?subscription-key=YOUR-SUBSCRIPTION-KEY  |
 | Dél-Amerika | `westus`<br>[www.luis.ai][www.luis.ai] | Dél-Brazília<br>`brazilsouth`    |  https://brazilsouth.api.cognitive.microsoft.com/luis/v2.0/apps/YOUR-APP-ID?subscription-key=YOUR-SUBSCRIPTION-KEY   |
 
 ## <a name="endpoints"></a>Végpontok
@@ -106,16 +106,16 @@ A LUIS jelenleg 2 végponttal rendelkezik: egy az authoring és egy a lekérdez�
 
 |Cél|URL-cím|
 |--|--|
-|Szerzői műveletek|`https://{region}.api.cognitive.microsoft.com/luis/api/v2.0/apps/{appID}/`|
-|Szövegelemzés (lekérdezés előrejelzés)|`https://{region}.api.cognitive.microsoft.com/luis/v2.0/apps/{appId}?q={q}[&timezoneOffset][&verbose][&spellCheck][&staging][&bing-spell-check-subscription-key][&log]`|
+|Tartalomkészítés|`https://{region}.api.cognitive.microsoft.com/luis/api/v2.0/apps/{appID}/`|
+|Szöveg elemzése (lekérdezés előrejelzése)|`https://{region}.api.cognitive.microsoft.com/luis/v2.0/apps/{appId}?q={q}[&timezoneOffset][&verbose][&spellCheck][&staging][&bing-spell-check-subscription-key][&log]`|
 
-A következő táblázat ismerteti a paraméterek, a kapcsos zárójelek szintben `{}`, az előző táblázatban.
+Az alábbi táblázat az előző táblázatban szereplő, kapcsos zárójelekkel `{}`paramétereket ismerteti.
 
 |Paraméter|Cél|
 |--|--|
-|régió|Azure-régió - létrehozási és közzétételi rendelkezik különböző régiókban|
-|appID|A LUIS alkalmazás azonosító URL-CÍMÉT az útvonalban használt és az alkalmazás irányítópulton található|
-|válaszok|például csevegőrobot ügyfélalkalmazástól utterance (kifejezés) szövegét|
+|régió|Azure-régió – a szerzői műveletek és a közzététel különböző régiókban|
+|appID|Az URL Route-ben használt LUIS-alkalmazás azonosítója, amely megtalálható az alkalmazás irányítópultján|
+|q|az ügyfélalkalmazás, például a csevegési bot által eljuttatott teljes szöveg|
 
 ## <a name="failover-regions"></a>Feladatátvételi régiók
 
@@ -126,7 +126,7 @@ A szerzői régiók [párosított feladatátvételi régiókkal](https://docs.mi
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Előre összeállított entitások referenciája](./luis-reference-prebuilt-entities.md)
+> [Előre elkészített entitások referenciája](./luis-reference-prebuilt-entities.md)
 
  [www.luis.ai]: https://www.luis.ai
  [au.luis.ai]: https://au.luis.ai

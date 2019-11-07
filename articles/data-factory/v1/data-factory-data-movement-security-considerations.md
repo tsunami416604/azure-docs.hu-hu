@@ -1,5 +1,5 @@
 ---
-title: A Azure Data Factory adatáthelyezésének biztonsági szempontjai | Microsoft Docs
+title: A Azure Data Factory adatáthelyezésének biztonsági szempontjai
 description: További információ az adatáthelyezés biztonságossá tételéről Azure Data Factoryban.
 services: data-factory
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: b425db761375c705d3c810002234a937bac46d78
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.openlocfilehash: 7f18505e02c5d65d21e93759eb5da480c20e2eb3
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68610163"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73682623"
 ---
 # <a name="azure-data-factory---security-considerations-for-data-movement"></a>Azure Data Factory – az adatáthelyezés biztonsági szempontjai
 
@@ -29,17 +29,17 @@ Ez a cikk azt az alapszintű biztonsági infrastruktúrát ismerteti, amelyet az
 
 A Data Factory-megoldásokkal egy vagy több [adatfolyamatot](data-factory-create-pipelines.md) is létrehozhat. A folyamatok olyan tevékenységek logikus csoportosításai, amelyek együttesen vesznek részt egy feladat végrehajtásában. Ezek a folyamatok abban a régióban találhatók, ahol az adat-előállítót létrehozták. 
 
-Bár a Data Factory csak az **USA nyugati**régiójában, az **USA keleti**régiójában és az **észak-európai** régióban érhető el, az adatáthelyezési szolgáltatás globálisan [számos régióban](data-factory-data-movement-activities.md#global)elérhető. Data Factory szolgáltatás biztosítja, hogy az adatforgalom ne maradjon földrajzi terület/régió, kivéve, ha kifejezetten arra utasítja a szolgáltatást, hogy alternatív régiót használjon, ha az adatátviteli szolgáltatás még nincs telepítve az adott régióban. 
+Bár a Data Factory csak az **USA nyugati**régiójában, az **USA keleti**régiójában és az **észak-európai** régióban érhető el, az adatáthelyezési szolgáltatás [globálisan számos régióban](data-factory-data-movement-activities.md#global)elérhető. Data Factory szolgáltatás biztosítja, hogy az adatforgalom ne maradjon földrajzi terület/régió, kivéve, ha kifejezetten arra utasítja a szolgáltatást, hogy alternatív régiót használjon, ha az adatátviteli szolgáltatás még nincs telepítve az adott régióban. 
 
 A Azure Data Factory maga nem tárol adatokat, kivéve a társított szolgáltatás hitelesítő adatait a felhőalapú adattárakhoz, amelyek tanúsítványokkal vannak titkosítva. Lehetővé teszi viszont olyan adatvezérelt munkafolyamatok létrehozását, amelyekkel előkészíthető a [támogatott adattárak](data-factory-data-movement-activities.md#supported-data-stores-and-formats) közötti adatmozgás és az adatok [számítási szolgáltatásokkal](data-factory-compute-linked-services.md) történő feldolgozása más régiókban, illetve helyszíni környezetben. Lehetővé teszi továbbá a [munkafolyamatok figyelését és kezelését](data-factory-monitor-manage-pipelines.md) mind szoftveres, mind pedig felhasználói felületi mechanizmusokkal.
 
-A Azure Data Factory használatával történő adatáthelyezés a következőhöz lett hitelesítve:
+A Azure Data Factory használatával történő adatáthelyezés a következőhöz lett **hitelesítve** :
 -   [HIPAA/HITECH](https://www.microsoft.com/en-us/trustcenter/Compliance/HIPAA)  
 -   [ISO/IEC 27001](https://www.microsoft.com/en-us/trustcenter/Compliance/ISO-IEC-27001)  
 -   [ISO/IEC 27018](https://www.microsoft.com/en-us/trustcenter/Compliance/ISO-IEC-27018) 
 -   [CSA-CSILLAG](https://www.microsoft.com/en-us/trustcenter/Compliance/CSA-STAR-Certification)
      
-Ha érdekli az Azure megfelelősége, és hogy az Azure Hogyan védi a saját infrastruktúráját, látogasson el a [Microsoft adatvédelmi](https://microsoft.com/en-us/trustcenter/default.aspx)központba. 
+Ha érdekli az Azure megfelelősége, és hogy az Azure Hogyan védi a saját infrastruktúráját, látogasson el a [Microsoft adatvédelmi központba](https://microsoft.com/en-us/trustcenter/default.aspx). 
 
 Ebben a cikkben a következő két adatáthelyezési forgatókönyvben tekintjük át a biztonsági szempontokat: 
 
@@ -50,13 +50,13 @@ Ebben a cikkben a következő két adatáthelyezési forgatókönyvben tekintjü
 
 ## <a name="cloud-scenarios"></a>Felhőbeli forgatókönyvek
 ### <a name="securing-data-store-credentials"></a>Adattároló hitelesítő adatainak biztonságossá tétele
-Azure Data Factory védi az adattár hitelesítő adatait a **Microsoft által kezelt tanúsítványok**használatával. Ezeket a tanúsítványokat kétévente elforgatják **(ami** magában foglalja a tanúsítvány megújítását és a hitelesítő adatok áttelepítését). Ezeket a titkosított hitelesítő adatokat a rendszer biztonságosan tárolja **Azure Data Factory felügyeleti szolgáltatások által felügyelt Azure**-tárolóban. Az Azure Storage biztonságával kapcsolatos további információkért tekintse meg az [Azure Storage biztonsági áttekintése](../../security/fundamentals/storage-overview.md)című témakört.
+Azure Data Factory védi az adattár hitelesítő **adatait a** **Microsoft által kezelt tanúsítványok**használatával. Ezeket a tanúsítványokat **kétévente elforgatják (ami** magában foglalja a tanúsítvány megújítását és a hitelesítő adatok áttelepítését). Ezeket a titkosított hitelesítő adatokat a rendszer biztonságosan tárolja **Azure Data Factory felügyeleti szolgáltatások által felügyelt Azure-tárolóban**. Az Azure Storage biztonságával kapcsolatos további információkért tekintse meg az [Azure Storage biztonsági áttekintése](../../security/fundamentals/storage-overview.md)című témakört.
 
 ### <a name="data-encryption-in-transit"></a>Adattitkosítás az átvitel során
 Ha a felhőalapú adattár támogatja a HTTPS-t vagy a TLS-t, az adatátviteli Data Factory szolgáltatások és a felhőalapú adattárolók közötti adatforgalom a biztonságos csatorna HTTPS vagy TLS protokollon keresztül történik.
 
 > [!NOTE]
-> **Azure SQL Database** és **Azure SQL Data Warehouse** összes kapcsolata mindig titkosítást (SSL/TLS) igényel, miközben az adatok átvitele folyamatban van az adatbázisba és onnan. Egy folyamat JSON-szerkesztővel való készítése közben adja hozzá a **titkosítási** tulajdonságot, és állítsa **igaz** értékre a kapcsolódási **karakterláncban**. A [Másolás varázsló](data-factory-azure-copy-wizard.md)használatakor a varázsló alapértelmezés szerint beállítja ezt a tulajdonságot. Az **Azure Storage**esetében a kapcsolati sztringben **HTTPS protokollt** használhat.
+> **Azure SQL Database** és **Azure SQL Data Warehouse** összes kapcsolata mindig titkosítást (SSL/TLS) igényel, miközben az adatok átvitele folyamatban van az adatbázisba és onnan. Egy folyamat JSON-szerkesztővel való készítése közben adja hozzá a **titkosítási** tulajdonságot, és állítsa **igaz** értékre a **kapcsolódási karakterláncban**. A [Másolás varázsló](data-factory-azure-copy-wizard.md)használatakor a varázsló alapértelmezés szerint beállítja ezt a tulajdonságot. Az **Azure Storage**esetében a kapcsolati sztringben **HTTPS protokollt** használhat.
 
 ### <a name="data-encryption-at-rest"></a>Adat-titkosítás inaktív állapotban
 Egyes adattárak támogatják a nyugalmi állapotban lévő adatok titkosítását. Javasoljuk, hogy ezekhez az adattárakhoz engedélyezze az adattitkosítási mechanizmust. 
@@ -127,11 +127,11 @@ A virtuális hálózat a hálózat logikai ábrázolása a felhőben. Helyszíni
 
 A következő táblázat összefoglalja a hálózati és átjárók konfigurációs javaslatait a hibrid adatáthelyezéshez használt forrás-és célhelyek különböző kombinációi alapján.
 
-| Source | Cél | Hálózati konfiguráció | Átjáró beállítása |
+| Forrás | Cél | Hálózati konfiguráció | Átjáró beállítása |
 | ------ | ----------- | --------------------- | ------------- | 
-| Helyszíni | Virtuális hálózatokban üzembe helyezett virtuális gépek és felhőalapú szolgáltatások | IPSec VPN (pont – hely vagy hely – hely) | Az átjáró a VNet-ben a helyszínen vagy egy Azure-beli virtuális gépen (VM) is telepíthető. | 
-| Helyszíni | Virtuális hálózatokban üzembe helyezett virtuális gépek és felhőalapú szolgáltatások | ExpressRoute (privát társ) | Az átjáró a VNet-ben a helyszínen vagy egy Azure-beli virtuális gépen is telepíthető. | 
-| Helyszíni | Nyilvános végponttal rendelkező Azure-alapú szolgáltatások | ExpressRoute (nyilvános peering) | Az átjárót a helyszínen kell telepíteni | 
+| Helyszíni követelmények | Virtuális hálózatokban üzembe helyezett virtuális gépek és felhőalapú szolgáltatások | IPSec VPN (pont – hely vagy hely – hely) | Az átjáró a VNet-ben a helyszínen vagy egy Azure-beli virtuális gépen (VM) is telepíthető. | 
+| Helyszíni követelmények | Virtuális hálózatokban üzembe helyezett virtuális gépek és felhőalapú szolgáltatások | ExpressRoute (privát társ) | Az átjáró a VNet-ben a helyszínen vagy egy Azure-beli virtuális gépen is telepíthető. | 
+| Helyszíni követelmények | Nyilvános végponttal rendelkező Azure-alapú szolgáltatások | ExpressRoute (nyilvános peering) | Az átjárót a helyszínen kell telepíteni | 
 
 Az alábbi képek a adatkezelés Gateway használatát mutatják be a helyszíni adatbázis és az Azure-szolgáltatások közötti adatáthelyezéshez az expressz útvonal és az IPSec VPN használatával (Virtual Network):
 
@@ -182,14 +182,14 @@ A következő felhőalapú adattárakhoz az átjáró-gép IP-címének engedél
 
 ## <a name="frequently-asked-questions"></a>Gyakori kérdések
 
-**Kérdés** Megoszthatók az átjárók a különböző adatüzemek között?
-**Válasz** Ez a funkció még nem támogatott. Már dolgozunk rajta.
+**Kérdés:** Megoszthatók az átjárók a különböző adatüzemek között?
+**Válasz:** Ez a funkció még nem támogatott. Már dolgozunk rajta.
 
-**Kérdés** Milyen portokra vonatkozó követelmények vonatkoznak az átjáró működéséhez?
-**Válasz** Az átjáró HTTP-alapú kapcsolatokat tesz elérhetővé az Internet megnyitásához. A kapcsolódáshoz a **443-es és a 80-as kimenő portnak** kell megnyitnia az átjáró számára. Nyissa meg a 8050-es **bejövő portot** a Hitelesítőadat-kezelő alkalmazáshoz csak a számítógép szintjén (a vállalati tűzfal szintjén). Ha Azure SQL Database vagy Azure SQL Data Warehouse forrásként vagy célhelyként van használatban, akkor a **1433** -as portot is meg kell nyitnia. További információ: a [tűzfal konfigurációi és az IP-címek engedélyezési](#firewall-configurations-and-whitelisting-ip-address-of gateway) listája szakasz. 
+**Kérdés:** Milyen portokra vonatkozó követelmények vonatkoznak az átjáró működéséhez?
+**Válasz:** Az átjáró HTTP-alapú kapcsolatokat tesz elérhetővé az Internet megnyitásához. A kapcsolódáshoz a **443-es és a 80-as kimenő portnak** kell megnyitnia az átjáró számára. Nyissa meg a 8050-es **bejövő portot** a Hitelesítőadat-kezelő alkalmazáshoz csak a számítógép szintjén (a vállalati tűzfal szintjén). Ha Azure SQL Database vagy Azure SQL Data Warehouse forrásként vagy célhelyként van használatban, akkor a **1433** -as portot is meg kell nyitnia. További információ: a [tűzfal konfigurációi és az IP-címek engedélyezési](#firewall-configurations-and-whitelisting-ip-address-of gateway) listája szakasz. 
 
-**Kérdés** Mik a tanúsítványokra vonatkozó követelmények az átjáróhoz?
-**Válasz** Az aktuális átjáróhoz szükség van egy tanúsítványra, amelyet a Hitelesítőadat-kezelő alkalmazás az adattár hitelesítő adatainak biztonságos beállításához használ. Ez a tanúsítvány az átjáró telepítője által létrehozott és konfigurált önaláírt tanúsítvány. Ehelyett saját TLS/SSL-tanúsítványt is használhat. További információ: [Click-Once Hitelesítőadat-kezelő alkalmazás](#click-once-credentials-manager-app) szakasz. 
+**Kérdés:** Mik a tanúsítványokra vonatkozó követelmények az átjáróhoz?
+**Válasz:** Az aktuális átjáróhoz szükség van egy tanúsítványra, amelyet a Hitelesítőadat-kezelő alkalmazás az adattár hitelesítő adatainak biztonságos beállításához használ. Ez a tanúsítvány az átjáró telepítője által létrehozott és konfigurált önaláírt tanúsítvány. Ehelyett saját TLS/SSL-tanúsítványt is használhat. További információ: [Click-Once Hitelesítőadat-kezelő alkalmazás](#click-once-credentials-manager-app) szakasz. 
 
 ## <a name="next-steps"></a>További lépések
 A másolási tevékenység teljesítményével kapcsolatos további információkért lásd: a [másolási tevékenység teljesítményének és finomhangolásának útmutatója](data-factory-copy-activity-performance.md).

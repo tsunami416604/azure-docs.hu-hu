@@ -1,5 +1,5 @@
 ---
-title: Szerepkörök és engedélyek a Azure Data Factoryhoz | Microsoft Docs
+title: A Azure Data Factory szerepkörei és engedélyei
 description: Az adat-előállítók létrehozásához és a gyermekek erőforrásainak használatához szükséges szerepköröket és engedélyeket ismerteti.
 ms.date: 11/5/2018
 ms.topic: conceptual
@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 author: djpmsft
 ms.author: daperlov
 manager: craigg
-ms.openlocfilehash: 9df65322958bffd3182aaa8d734e8b29717d939d
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: f5b4cbc670a429a84f42be79adb00057656a5483
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70142525"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73681429"
 ---
 # <a name="roles-and-permissions-for-azure-data-factory"></a>A Azure Data Factory szerepkörei és engedélyei
 
@@ -57,7 +57,7 @@ Az Azure Repos és a GitHub engedélyei függetlenek Data Factory engedélyeitő
 
 ### <a name="custom-scenarios-and-custom-roles"></a>Egyéni forgatókönyvek és egyéni szerepkörök
 
-Előfordulhat, hogy különböző hozzáférési szinteket kell megadnia a különböző adat-előállító felhasználók számára. Példa:
+Előfordulhat, hogy különböző hozzáférési szinteket kell megadnia a különböző adat-előállító felhasználók számára. Például:
 - Előfordulhat, hogy olyan csoportra van szüksége, amelyben a felhasználók csak egy adott adatelőállítóhoz rendelkeznek engedéllyel.
 - Vagy szükség lehet egy olyan csoportra, amelyben a felhasználók csak egy adatgyárat (vagy gyárakat) tudnak figyelni, de nem módosíthatják azt.
 
@@ -82,7 +82,7 @@ Ezeket az egyéni forgatókönyveket egyéni szerepkörök létrehozásával és
 
 - A felhasználó csak a társított szolgáltatásban lévő kapcsolat tesztelését teszi lehetővé
 
-    Hozzon létre egy egyéni szerepkör-szerepkört, amely rendelkezik engedélyekkel a következő műveletekhez: **Microsoft. DataFactory/gyárak/getFeatureValue/Read** és **Microsoft. DataFactory/gyárak/getDataPlaneAccess/Read**. Rendelje hozzá ezt az egyéni szerepkört a felhasználóhoz tartozó adat-előállító erőforráshoz.
+    Hozzon létre egy egyéni szerepkör-szerepkört, amely rendelkezik engedélyekkel a következő műveletekhez: **Microsoft. DataFactory/Factorys/getFeatureValue/Read** és **Microsoft. DataFactory/gyárak/getDataPlaneAccess/Read**. Rendelje hozzá ezt az egyéni szerepkört a felhasználóhoz tartozó adat-előállító erőforráshoz.
 
 - Lehetővé teheti, hogy a felhasználó frissítsen egy adatgyárat a PowerShellből vagy az SDK-ból, de ne a Azure Portal.
 

@@ -1,5 +1,5 @@
 ---
-title: Több-bérlős SaaS-minták – Azure SQL Database | Microsoft Docs
+title: 'Több-bérlős SaaS-minták – Azure SQL Database '
 description: Ismerje meg az Azure Cloud Environment szolgáltatásban futó több-bérlős szoftverek (SaaS) adatbázis-alkalmazásai követelményeit és közös adatarchitektúra-mintáit.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: MightyPen
 ms.author: genemi
 ms.reviewer: billgib, sstein
 ms.date: 01/25/2019
-ms.openlocfilehash: 8cbf0e45ac368f0d2dd1678984bd14392452e63a
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: ecbcf2cdfea2714e46d0c9cff4066befabddeeb8
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68570188"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73691925"
 ---
 # <a name="multi-tenant-saas-database-tenancy-patterns"></a>Több-bérlős SaaS-adatbázisok bérletének mintái
 
@@ -26,29 +26,29 @@ Több-bérlős SaaS-alkalmazások tervezésekor gondosan ki kell választania az
 
 ## <a name="a-saas-concepts-and-terminology"></a>A. SaaS-fogalmak és-terminológia
 
-A szoftveres szolgáltatásként (SaaS) modellben a vállalat nem értékesít licenceket a szoftverhez. Ehelyett minden ügyfél kifizet a vállalatnak, így minden ügyfél bérlője lesz a vállalatának.
+A szoftveres szolgáltatásként (SaaS) modellben a vállalat nem értékesít *licenceket* a szoftverhez. Ehelyett minden ügyfél kifizet a vállalatnak, így minden ügyfél *bérlője* lesz a vállalatának.
 
 A bérleti díj fejében az egyes bérlők hozzáférést kapnak a SaaS-alkalmazás összetevőihez, és az adataikat a SaaS-rendszer tárolja.
 
 A *bérleti modell* kifejezés arra utal, hogy a bérlők tárolt információi hogyan vannak rendszerezve:
 
-- *Önálló bérlet:* &nbsp; Minden adatbázis csak egy bérlő adatait tárolja.
-- *Több-bérlő:* &nbsp; Minden adatbázis több különálló bérlő adatait tárolja (az adatvédelmet biztosító mechanizmusokkal).
+- *Egyszeres bérlet:* &nbsp; minden adatbázis csak egy bérlő adatait tárolja.
+- *Több-* bérlős:&nbsp; az egyes adatbázisok több különálló bérlőtől származó adatokat tárolnak (az adatvédelmet biztosító mechanizmusokkal).
 - A hibrid bérlői modellek is elérhetők.
 
 ## <a name="b-how-to-choose-the-appropriate-tenancy-model"></a>B. A megfelelő bérleti modell kiválasztása
 
 Általánosságban elmondható, hogy a bérleti modell nem befolyásolja az alkalmazások működését, de ez valószínűleg a teljes megoldás egyéb szempontjait is befolyásolja.  A következő feltételek használhatók az egyes modellek értékelésére:
 
-- **Méretezhetőség**
+- **Méretezhetőség:**
     - Bérlők száma.
     - Storage/bérlő.
     - A tárterület összesítésben.
     - Munkaterhelés.
 
-- **Bérlő elkülönítése:** &nbsp; Adatok elkülönítése és teljesítménye (akár egy bérlő munkaterhelése is kihat másokra).
+- **Bérlői elkülönítés:** &nbsp; az adatok elkülönítését és teljesítményét (függetlenül attól, hogy egy bérlő munkaterhelése hatással van-e másokra).
 
-- **/Bérlői díj:** &nbsp; Az adatbázis költségei.
+- **Bérlői költségek:** &nbsp; adatbázis költségei.
 
 - **Fejlesztési komplexitás:**
     - A séma módosításai.
@@ -60,7 +60,7 @@ A *bérleti modell* kifejezés arra utal, hogy a bérlők tárolt információi 
     - Bérlő visszaállítása.
     - Vészhelyreállítás.
 
-- **Testreszabhatóság**&nbsp; Egyszerűvé teszi a séma-specifikus vagy bérlői osztályra jellemző testreszabások támogatását.
+- **Testreszabhatóság:** &nbsp; megkönnyíti az olyan séma-testreszabások támogatását, amelyek bérlő-vagy bérlői osztályra jellemzőek.
 
 A bérleti vitát az *adatrétegre* összpontosítjuk.  Azonban Vegyünk egy pillanatra az *alkalmazás* rétegét.  Az alkalmazás rétegét monolit entitásként kezeli a rendszer.  Ha az alkalmazást sok kis összetevőre osztja, a bérlői modell választása változhat.  Néhány összetevőt eltérő módon kezelhet, mint a bérletet, valamint a felhasznált tárolási technológiát vagy platformot.
 
@@ -125,9 +125,9 @@ Egy másik elérhető minta egy több-bérlős adatbázisban található bérlő
 
 #### <a name="tenant-isolation-is-sacrificed"></a>A bérlő elkülönítése feláldozva
 
-*Adatok*&nbsp; A több-bérlős adatbázisok szükségszerűen feláldozzák A bérlők elkülönítését.  A több bérlő által tárolt adatmennyiséget egy adatbázisban tárolja a rendszer.  A fejlesztés során győződjön meg arról, hogy a lekérdezések soha nem teszik elérhetővé egynél több bérlő adatait.  A SQL Database támogatja a [sor szintű biztonságot][docu-sql-svr-db-row-level-security-947w], amely kikényszerítheti, hogy egy lekérdezés által visszaadott adatok hatóköre egyetlen bérlőre legyen érvényes.
+*Adatkezelés:* &nbsp; egy több-bérlős adatbázis szükségszerűen feláldozza A bérlő elkülönítését.  A több bérlő által tárolt adatmennyiséget egy adatbázisban tárolja a rendszer.  A fejlesztés során győződjön meg arról, hogy a lekérdezések soha nem teszik elérhetővé egynél több bérlő adatait.  A SQL Database támogatja a [sor szintű biztonságot][docu-sql-svr-db-row-level-security-947w], amely kikényszerítheti, hogy egy lekérdezés által visszaadott adatok hatóköre egyetlen bérlőre legyen érvényes.
 
-*Feldolgozási*&nbsp; A több-bérlős adatbázisok megosztják a számítási és tárolási erőforrásokat az összes bérlője között.  Az adatbázis teljes egészében megfigyelhető annak biztosítása érdekében, hogy a szolgáltatás elfogadható módon legyen végrehajtva.  Az Azure-rendszer azonban nem rendelkezik beépített módszerrel ezen erőforrások egyetlen bérlő általi használatának monitorozásához és kezeléséhez.  Ezért a több-bérlős adatbázis nagyobb kockázatot jelent a zajos szomszédokkal való találkozás során, amikor egy túlaktív bérlő munkaterhelése hatással van az ugyanazon adatbázisban lévő többi bérlő teljesítményére.  A további alkalmazás-szintű figyelés a bérlői szintű teljesítmény figyelésére is képes.
+*Feldolgozás:* &nbsp; egy több-bérlős adatbázis osztozik a számítási és tárolási erőforrások között az összes bérlőn.  Az adatbázis teljes egészében megfigyelhető annak biztosítása érdekében, hogy a szolgáltatás elfogadható módon legyen végrehajtva.  Az Azure-rendszer azonban nem rendelkezik beépített módszerrel ezen erőforrások egyetlen bérlő általi használatának monitorozásához és kezeléséhez.  Ezért a több-bérlős adatbázis nagyobb kockázatot jelent a zajos szomszédokkal való találkozás során, amikor egy túlaktív bérlő munkaterhelése hatással van az ugyanazon adatbázisban lévő többi bérlő teljesítményére.  A további alkalmazás-szintű figyelés a bérlői szintű teljesítmény figyelésére is képes.
 
 #### <a name="lower-cost"></a>Alacsonyabb költségek
 
@@ -135,13 +135,13 @@ Egy másik elérhető minta egy több-bérlős adatbázisban található bérlő
 
 A több-bérlős adatbázis-modell két változatát tárgyaljuk a következőkben, a több-bérlős, több-bérlős modell pedig a legrugalmasabb és skálázható.
 
-## <a name="f-multi-tenant-app-with-a-single-multi-tenant-database"></a>F. Több-bérlős alkalmazás egyetlen több-bérlős adatbázissal
+## <a name="f-multi-tenant-app-with-a-single-multi-tenant-database"></a>f. Több-bérlős alkalmazás egyetlen több-bérlős adatbázissal
 
 A legegyszerűbb több-bérlős adatbázis-minta egyetlen adatbázist használ az összes bérlőre vonatkozó adattároláshoz.  Ahogy egyre több bérlő lett hozzáadva, az adatbázis nagyobb tárolási és számítási erőforrásokkal bővült.  Lehetséges, hogy ez a vertikális felskálázás szükséges, bár mindig van egy végső méretezési korlát.  Azonban a korlát megkezdése előtt az adatbázis nem lesz kezelhető.
 
 Az egyes bérlők felé irányuló felügyeleti műveletek összetettebbek a több-bérlős adatbázisok megvalósításához.  Ezek a műveletek nagy mértékben elfogadhatatlanul lassúak lehetnek.  Az egyik példa az, hogy csak egy bérlőhöz tartozó adatpontra vonatkozóan kell visszaállítani az adott időt.
 
-## <a name="g-multi-tenant-app-with-sharded-multi-tenant-databases"></a>G. Több-bérlős alkalmazás több-bérlős adatbázisokkal
+## <a name="g-multi-tenant-app-with-sharded-multi-tenant-databases"></a>g. Több-bérlős alkalmazás több-bérlős adatbázisokkal
 
 A legtöbb SaaS-alkalmazás egyszerre csak egy bérlő információit éri el.  Ez a hozzáférési minta lehetővé teszi, hogy a bérlői adatforgalom több adatbázisban vagy szegmensben legyen elosztva, ahol az egyik bérlő összes információja egy szegmensben található.  Több-bérlős adatbázis-mintával kombinálva a többrétegű modell szinte korlátlan méretet tesz lehetővé.
 
@@ -165,7 +165,7 @@ A használaton kívüli megközelítéstől függően további megkötések is m
 
 A több-bérlős többbérlős adatbázisok rugalmas készletekben helyezhetők el.  Általánosságban elmondható, hogy a készletek számos egybérlős adatbázisa költséghatékonyan működik, és több bérlőt is kínál néhány több-bérlős adatbázisban.  A több-bérlős adatbázisok előnyösek, ha nagy számú viszonylag inaktív bérlő van.
 
-## <a name="h-hybrid-sharded-multi-tenant-database-model"></a>H. Hibrid többhelyes, több-bérlős adatbázis-modell
+## <a name="h-hybrid-sharded-multi-tenant-database-model"></a>h. Hibrid többhelyes, több-bérlős adatbázis-modell
 
 A hibrid modellben minden adatbázis rendelkezik a bérlői azonosítóval a sémájában.  Az adatbázisok egyszerre több bérlőt is tárolhatnak, az adatbázisok pedig elhelyezhetők.  Tehát a séma szempontjából mind a több-bérlős adatbázisok.  A gyakorlatban még néhány ilyen adatbázis csak egy bérlőt tartalmaz.  Függetlenül attól, hogy egy adott adatbázisban tárolt bérlők mennyisége nincs hatással az adatbázis-sémára.
 

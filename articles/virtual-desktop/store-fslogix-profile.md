@@ -1,5 +1,5 @@
 ---
-title: Tárolási beállítások a Windows rendszerű virtuális asztali FSLogix-profilok tárolói számára – Azure
+title: Storage FSLogix-profil tároló Windows virtuális asztal – Azure
 description: A Windows rendszerű virtuális asztali FSLogix-profil Azure Storage-beli tárolásának lehetőségei.
 services: virtual-desktop
 author: Heidilohr
@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 10/14/2019
 ms.author: helohr
-ms.openlocfilehash: fc869bc0c52a54044cbc095cd20f0395e590c852
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 3577b459a1b6612d24346428512cfbc509515f52
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72332819"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73607410"
 ---
 # <a name="storage-options-for-fslogix-profile-containers-in-windows-virtual-desktop"></a>Tárolási beállítások a Windows rendszerű virtuális asztali FSLogix-profilok tárolói számára
 
@@ -24,10 +24,10 @@ A következő táblázatok összehasonlítják a Storage Solutions Azure Storage
 
 ## <a name="azure-platform-details"></a>Azure-platform – részletek
 
-|Jellemzők|Azure Files|Azure NetApp Files|Közvetlen tárolóhelyek|
+|Szolgáltatások|Azure Files|Azure NetApp Files|Közvetlen tárolóhelyek|
 |--------|-----------|------------------|---------------------|
 |Platform szolgáltatás|Igen, Azure-natív megoldás|Igen, Azure-natív megoldás|Nem, önállóan felügyelt|
-|Regionális elérhetőség|Minden régió|[Régiók kiválasztása](https://azure.microsoft.com/global-infrastructure/services/?products=netapp&regions=all)|Minden régió|
+|Régiónkénti rendelkezésre állás|Minden régió|[Régiók kiválasztása](https://azure.microsoft.com/global-infrastructure/services/?products=netapp&regions=all)|Minden régió|
 |Redundancia|Helyileg redundáns/Zone-redundáns/geo-redundáns|Locally redundant (Helyileg redundáns)|Helyileg redundáns/Zone-redundáns/geo-redundáns|
 |Rétegek és teljesítmény|Standard<br>Prémium<br>Akár 100 000 000 IOPS, 5 GB/s megosztással, körülbelül 3 MS késéssel|Standard<br>Prémium<br>Ultranagy<br>Akár 320k (16K) IOPS 4,5 GB/s-onként, körülbelül 1 MS késéssel|Standard HDD: legfeljebb 500 IOPS korlát<br>Standard SSD: legfeljebb 4k IOPS korlát<br>Prémium SSD: legfeljebb 20000 IOPS korlát<br>A prémium szintű lemezeket ajánlott Közvetlen tárolóhelyek|
 |Kapacitás|100 TiB/megosztás|100 TiB/kötet, akár 12,5 PiB/előfizetés|Maximális 32 TiB/lemez|
@@ -36,16 +36,16 @@ A következő táblázatok összehasonlítják a Storage Solutions Azure Storage
 
 ## <a name="azure-management-details"></a>Azure-felügyelet részletei
 
-|Jellemzők|Azure Files|Azure NetApp Files|Közvetlen tárolóhelyek|
+|Szolgáltatások|Azure Files|Azure NetApp Files|Közvetlen tárolóhelyek|
 |--------|-----------|------------------|---------------------|
 |Hozzáférés|Felhő, helyszíni és hibrid (Azure file Sync)|Felhő, helyszíni (ExpressRoute-n keresztül)|Felhő, helyszíni|
-|Backup|Azure Backup pillanatkép-integráció|Pillanatképek Azure NetApp Files|Azure Backup pillanatkép-integráció|
+|Biztonsági mentés|Azure Backup pillanatkép-integráció|Pillanatképek Azure NetApp Files|Azure Backup pillanatkép-integráció|
 |Biztonság és megfelelőség|[Az összes Azure által támogatott tanúsítvány](https://www.microsoft.com/trustcenter/compliance/complianceofferings)|ISO befejezve|[Az összes Azure által támogatott tanúsítvány](https://www.microsoft.com/trustcenter/compliance/complianceofferings)|
 |Azure Active Directory-integráció|Azure Active Directory és Azure Active Directory Domain Services|[Azure Active Directory Domain Services és natív Active Directory](../azure-netapp-files/azure-netapp-files-faqs.md#does-azure-netapp-files-support-azure-active-directory)|Natív Active Directory vagy Azure Active Directory Domain Services csak támogatás|
 
 Ha kiválasztotta a tárolási módszert, tekintse meg a [Windows rendszerű virtuális asztali díjszabást](https://azure.microsoft.com/pricing/details/virtual-desktop/) a díjszabási tervekkel kapcsolatos információkért.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ha többet szeretne megtudni a FSLogix, a felhasználói profil lemezekről és az egyéb felhasználói Profilos technológiákról, tekintse meg a [FSLogix-profilok és az Azure Files](fslogix-containers-azure-files.md)tábla táblázatát.
 

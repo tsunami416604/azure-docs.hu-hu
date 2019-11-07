@@ -1,5 +1,5 @@
 ---
-title: Teljesítmény-Finomhangolás Azure SQL Data Warehouse rendezett fürtözött oszlopcentrikus indextel | Microsoft Docs
+title: Teljesítmény-Finomhangolás a rendezett fürtözött oszlopcentrikus indextel
 description: A lekérdezési teljesítmény javítása érdekében érdemes megfontolni, hogy a rendezett fürtözött oszlopcentrikus index használata során milyen javaslatokat és szempontokat kell figyelembe vennie.
 services: sql-data-warehouse
 author: XiaoyuMSFT
@@ -10,12 +10,13 @@ ms.subservice: development
 ms.date: 09/05/2019
 ms.author: xiaoyul
 ms.reviewer: nibruno; jrasnick
-ms.openlocfilehash: 37d8f17e825daa3a1c160509b1a38f8c70256d1c
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.custom: seo-lt-2019
+ms.openlocfilehash: 3cc2f140eeed0a4667a01aa8c5ccbad7e4411521
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72595366"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73686002"
 ---
 # <a name="performance-tuning-with-ordered-clustered-columnstore-index"></a>Teljesítmény-Finomhangolás a rendezett fürtözött oszlopcentrikus indextel  
 
@@ -43,7 +44,7 @@ ORDER BY o.name, pnp.distribution_id, cls.min_data_id
 ```
 
 > [!NOTE] 
-> Egy rendezett CCI-táblázatban a DML-ből vagy az betöltési műveletből eredő új adatok nem rendezhetők automatikusan.  A felhasználók újra felépíthetik a rendezett CCI-t, hogy a táblázatban szereplő összes adattal sorba lehessen rendezni.  Azure SQL Data Warehouse a oszlopcentrikus index újraépítése offline művelet.  Particionált tábla esetén az Újraépítés egyszerre egy partíciót hajt végre.  Az újraépített partícióban lévő adatkapcsolat "offline" állapotú, és nem érhető el, amíg a partíció újraépítése be nem fejeződik. 
+> Egy rendezett CCI-táblázatban a DML-ből vagy az betöltési műveletből eredő új adatok a kötegen belül vannak rendezve, a tábla összes adathalmaza esetében nincs globális rendezés.  A felhasználók újra felépíthetik a rendezett CCI-t, hogy a táblázatban szereplő összes adattal sorba lehessen rendezni.  Azure SQL Data Warehouse a oszlopcentrikus index újraépítése offline művelet.  Particionált tábla esetén az Újraépítés egyszerre egy partíciót hajt végre.  Az újraépített partícióban lévő adatkapcsolat "offline" állapotú, és nem érhető el, amíg a partíció újraépítése be nem fejeződik. 
 
 ## <a name="query-performance"></a>Lekérdezési teljesítmény
 
@@ -63,7 +64,7 @@ ORDER (Col_C, Col_B, Col_A)
 
 ```
 
-Az 1. lekérdezés teljesítménye jobban kihasználhatja a megrendelt CCI-t, mint a többi 3 lekérdezést. 
+Az 1. lekérdezés teljesítménye jobban kihasználhatja a megrendelt KKU-t, mint a többi három lekérdezést. 
 
 ```sql
 -- Query #1: 
@@ -112,7 +113,7 @@ OPTION (MAXDOP 1);
 - A rendezési kulcs (ok) alapján előre rendezheti az adathalmazt, mielőtt betölti azokat Azure SQL Data Warehouse táblákba.
 
 
-Itt látható egy példa arra, hogy egy rendezett CCI-táblázat eloszlása nulla szegmenst tartalmaz, amely a fenti ajánlásokat követve átfedésben van. A rendezett CCI-táblázat egy DWU1000c-adatbázisban jön létre a CTAS-on keresztül egy 20 GB-os halom-táblából, amely az 1. és a xlargerc.  A KKU nem duplikált BIGINT oszlopra van rendezve.  
+Itt látható egy példa arra, hogy egy rendezett CCI-táblázat eloszlása nulla szegmenst tartalmaz, amely a fenti ajánlásokat követve átfedésben van. A rendezett CCI-táblázat egy DWU1000c-adatbázisban jön létre a CTAS-on keresztül egy 20 GB-os halom-táblából, amely az 1. és a xlargerc-t használja.  A KKU nem duplikált BIGINT oszlopra van rendezve.  
 
 ![Segment_No_Overlapping](media/performance-tuning-ordered-cci/perfect-sorting-example.png)
 
@@ -143,5 +144,5 @@ ORDER (ProductKey, SalesAmount)
 WITH (DROP_EXISTING = ON)
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 További fejlesztési tippek: [SQL Data Warehouse fejlesztői áttekintés](sql-data-warehouse-overview-develop.md).

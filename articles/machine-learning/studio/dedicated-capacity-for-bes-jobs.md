@@ -1,6 +1,6 @@
 ---
 title: Azure Batch szolgáltatási feladatok
-titleSuffix: Azure Machine Learning Studio (classic)
+titleSuffix: ML Studio (classic) Azure
 description: Machine Learning Studio (klasszikus) feladatok Azure Batch szolgáltatásainak áttekintése. A Batch-készlet feldolgozása lehetővé teszi, hogy olyan készleteket hozzon létre, amelyeken kötegelt feladatokat küldhet.
 services: machine-learning
 ms.service: machine-learning
@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18, previous-title='Dedicated capacity for batch execution service jobs - Azure Machine Learning Studio (classic) | Microsoft Docs'
 ms.date: 04/19/2017
-ms.openlocfilehash: 1de7ad10a54c34595f69a543843097cee1377067
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: a0e829f61117df25f8643301a0acdadeafd7c267
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73493025"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73684811"
 ---
 # <a name="azure-batch-service-for-azure-machine-learning-studio-classic-jobs"></a>Azure Machine Learning Studio (klasszikus) feladatok Azure Batch szolgáltatása
 
@@ -43,7 +43,7 @@ A készletek létrehozásához hívja meg a készlet létrehozása műveletet a 
 
 Használhat bármely új Resource Manager-alapú webszolgáltatást, de vegye figyelembe, hogy a feladatok számlázása az adott szolgáltatáshoz társított számlázási terv alapján történik. Létrehozhat egy webszolgáltatást és egy új számlázási tervet, amely kifejezetten a Batch Pool-feladatok futtatására szolgál.
 
-A webszolgáltatások létrehozásával kapcsolatos további információkért lásd: [Azure Machine learning webszolgáltatás üzembe helyezése](publish-a-machine-learning-web-service.md).
+A webszolgáltatások létrehozásával kapcsolatos további információkért lásd: [Azure Machine learning webszolgáltatás üzembe helyezése](deploy-a-machine-learning-web-service.md).
 
 A készlet létrehozása után elküldheti a BES feladatot a webszolgáltatás batch-kérelmek URL-címével. Dönthet úgy is, hogy egy készletbe vagy egy klasszikus kötegelt feldolgozásba küldi. A Batch-készlet feldolgozására vonatkozó feladatok elküldéséhez adja hozzá a következő paramétert a beküldési kérelem törzséhez:
 

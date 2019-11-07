@@ -1,5 +1,5 @@
 ---
-title: Monitorozás és teljesítmény finombeállítása – Azure SQL Database | Microsoft Docs
+title: Monitorozás és teljesítmény finombeállítása – Azure SQL Database
 description: Tippek a teljesítmény finomhangolásához Azure SQL Database a kiértékelés és fejlesztés révén.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: jrasnick, carlrab
 ms.date: 01/25/2019
-ms.openlocfilehash: 5df9df1474489d7f1b1fb4e1089143cca63a3e42
-ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
+ms.openlocfilehash: c11112963ec82a0e53df156048495e7b5141bcb7
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71935601"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73687765"
 ---
 # <a name="monitoring-and-performance-tuning"></a>Monitorozás és teljesítmény-finomhangolás
 
@@ -34,9 +34,9 @@ A következő lépésekkel biztosíthatja, hogy egy adatbázis probléma nélkü
 
 Az Azure-beli SQL-adatbázisok teljesítményének figyeléséhez először figyelje a választott adatbázis-teljesítmény szintjéhez képest felhasznált erőforrásokat. A következő erőforrások figyelése:
  - **CPU-használat**: Ellenőrizze, hogy az adatbázis hosszabb ideig eléri-e a CPU-használat 100 százalékát. A magas CPU-használat azt jelezheti, hogy azonosítania és hangolnia kell a legtöbb számítási teljesítményt használó lekérdezéseket. A magas CPU-használat azt is jelezheti, hogy az adatbázist vagy a példányt magasabb szolgáltatási szintre kell frissíteni. 
- - **Várakozási statisztika**: A [sys. DM _os_wait_stats (Transact-SQL)](/sql/relational-databases/system-dynamic-management-views/sys-dm-os-wait-stats-transact-sql) használatával határozza meg, hogy mennyi ideig várakozik a lekérdezések. A lekérdezések erőforrásokra, várakozási sorokra vagy külső várakozásokra is várnak. 
+ - **Várakozási statisztika**: a [sys. DM _os_wait_stats (Transact-SQL)](/sql/relational-databases/system-dynamic-management-views/sys-dm-os-wait-stats-transact-sql) használatával határozhatja meg, hogy a lekérdezések mennyi ideig várnak. A lekérdezések erőforrásokra, várakozási sorokra vagy külső várakozásokra is várnak. 
  - **I/o-használat**: Ellenőrizze, hogy az adatbázis eléri-e a mögöttes tároló IO-korlátait.
- - **Memóriahasználat**: Az adatbázis vagy a példány számára rendelkezésre álló memória mennyisége arányos a virtuális mag számával. Győződjön meg arról, hogy a memória elég a munkaterheléshez. A lap várható élettartama azon paraméterek egyike, amelyek azt jelezhetik, hogy a rendszer milyen gyorsan távolítja el a lapokat a memóriából.
+ - **Memóriahasználat**: az adatbázishoz vagy példányhoz rendelkezésre álló memória mennyisége arányos a virtuális mag számával. Győződjön meg arról, hogy a memória elég a munkaterheléshez. A lap várható élettartama azon paraméterek egyike, amelyek azt jelezhetik, hogy a rendszer milyen gyorsan távolítja el a lapokat a memóriából.
 
 A Azure SQL Database szolgáltatás olyan eszközöket és erőforrásokat tartalmaz, amelyek segítenek a lehetséges teljesítménnyel kapcsolatos problémák megoldásában. A [teljesítmény-finomhangolási javaslatok](sql-database-advisor.md)áttekintésével azonosíthatja a lekérdezési teljesítmény javításának és optimalizálásának lehetőségeit az erőforrások módosítása nélkül. 
 
@@ -67,13 +67,13 @@ A teljesítménnyel kapcsolatos problémák diagnosztizálásához és megoldás
 A számítási feladatok teljesítményével kapcsolatos problémát a CPU-tartalom okozhatja (egy *futó* feltételt) vagy egy bizonyos, a *várakozással kapcsolatos* feltételre váró lekérdezéseket.
 
 A futtatással kapcsolatos problémákat az alábbiak okozhatják:
-- **Fordítási problémák**: Az SQL-lekérdezés-optimalizáló az elavult statisztikák miatt előkészítheti a legoptimálisabb tervet, a feldolgozandó sorok számának és a szükséges memória pontatlan becslésének megfelelően. Ha tudja, hogy a lekérdezés a múltban vagy egy másik példányon (felügyelt példányon vagy SQL Server-példányon) lett végrehajtva, hasonlítsa össze a tényleges végrehajtási terveket, és ellenőrizze, hogy azok eltérnek-e. Próbáljon meg lekérdezési tippeket alkalmazni, vagy újjáépíteni a statisztikákat vagy indexeket a jobb terv beszerzéséhez. A problémák automatikus mérsékléséhez engedélyezze a Azure SQL Database automatikus tervének javítását.
+- **Fordítási problémák**: az SQL-lekérdezés-optimalizáló az elavult statisztikai adatok miatt előkészítheti a legoptimálisabb tervet, a feldolgozandó sorok számának vagy a szükséges memória pontatlan becslésének megfelelően. Ha tudja, hogy a lekérdezés a múltban vagy egy másik példányon (felügyelt példányon vagy SQL Server-példányon) lett végrehajtva, hasonlítsa össze a tényleges végrehajtási terveket, és ellenőrizze, hogy azok eltérnek-e. Próbáljon meg lekérdezési tippeket alkalmazni, vagy újjáépíteni a statisztikákat vagy indexeket a jobb terv beszerzéséhez. A problémák automatikus mérsékléséhez engedélyezze a Azure SQL Database automatikus tervének javítását.
 - **Végrehajtási problémák**: Ha a lekérdezési terv optimális, valószínűleg az adatbázis erőforrás-korlátait, például a napló írási sebességét éri el. Vagy lehet, hogy olyan töredezett indexeket használ, amelyeket újra kell építeni. A végrehajtási problémák akkor is előfordulhat, ha az egyidejű lekérdezések nagy száma ugyanazokat az erőforrásokat igényel. A *várakozással kapcsolatos* problémák általában a végrehajtási problémákkal kapcsolatosak, mert a nem hatékonyan végrehajtandó lekérdezések valószínűleg bizonyos erőforrásokra várnak.
 
 A várakozással kapcsolatos problémákat az alábbiak okozhatják:
-- **Blokkolás**: Előfordulhat, hogy egy lekérdezés zárolja az adatbázisban lévő objektumokat, míg mások megpróbálnak hozzáférni ugyanahhoz az objektumhoz. A blokkoló lekérdezéseket DMV vagy figyelési eszközök használatával is azonosíthatja.
-- **IO-problémák**: Előfordulhat, hogy a lekérdezések a lapokat az adatvagy a naplófájlba való írásra várnak. Ebben az esetben `INSTANCE_LOG_RATE_GOVERNOR`a, `WRITE_LOG`a vagy `PAGEIOLATCH_*` a wait statisztikát a DMV-ben találja.
-- **Tempdb problémák**: Ha a munkaterhelés ideiglenes táblákat használ, vagy a TempDB kifolyások vannak, akkor előfordulhat, hogy a lekérdezések TempDB átviteli sebességgel rendelkeznek. 
+- **Blokkolás**: az egyik lekérdezés rendelkezhet az adatbázisban lévő objektumok zárolásával, míg mások megpróbálnak hozzáférni ugyanahhoz az objektumhoz. A blokkoló lekérdezéseket DMV vagy figyelési eszközök használatával is azonosíthatja.
+- **IO-problémák**: Előfordulhat, hogy a lekérdezések arra várnak, hogy a lapok az adatfájlba vagy a naplófájlba kerüljenek. Ebben az esetben keresse meg a `INSTANCE_LOG_RATE_GOVERNOR`, `WRITE_LOG`vagy `PAGEIOLATCH_*` WAIT statisztikát a DMV-ben.
+- **Tempdb problémák**: Ha a munkaterhelés ideiglenes táblákat használ, vagy a csomagok tempdb kifolyása van, előfordulhat, hogy a lekérdezések tempdb átviteli sebességgel rendelkeznek. 
 - **Memóriával kapcsolatos problémák**: Ha a munkaterhelés nem rendelkezik elegendő memóriával, az oldal várható élettartama csökkenhet, vagy előfordulhat, hogy a lekérdezések kevesebb memóriát igényelnek. Bizonyos esetekben a lekérdezés-optimalizáló beépített intelligencia javítja a memóriával kapcsolatos problémákat.
  
 A következő szakaszokban ismertetjük az egyes típusú problémák azonosításának és hibaelhárításának módját.
@@ -105,7 +105,7 @@ További információ a paraméterek elemzéséről és a lekérdezések feldolg
 
 Több megkerülő megoldás is csökkentheti a PSP-problémákat. Minden megkerülő megoldáshoz kapcsolódó kompromisszumok és hátrányok tartoznak:
 
-- A lekérdezés [](https://docs.microsoft.com/sql/t-sql/queries/hints-transact-sql-query) végrehajtásához használja az újrafordítási lekérdezési célzást. Ez a megkerülő megoldás a minőség javítása érdekében a fordítási időt és a CPU-t növeli. A `RECOMPILE` beállítás gyakran nem lehetséges olyan munkaterhelések esetén, amelyeknél magas átviteli sebesség szükséges.
+- A lekérdezés végrehajtásához használja az [ÚJRAfordítási](https://docs.microsoft.com/sql/t-sql/queries/hints-transact-sql-query) lekérdezési célzást. Ez a megkerülő megoldás a minőség javítása érdekében a fordítási időt és a CPU-t növeli. A `RECOMPILE` beállítás használata gyakran nem lehetséges a nagy átviteli sebességet igénylő munkaterhelések esetében.
 - Használja a [(z) (optimalizálás a...)](https://docs.microsoft.com/sql/t-sql/queries/hints-transact-sql-query) lekérdezési mutatót a tényleges paraméterérték felülbírálására egy jellemző paraméter értékkel, amely egy olyan tervet hoz létre, amely elég jó a legtöbb paraméter-érték lehetőséghez. Ehhez a beállításhoz jól ismerni kell az optimális paramétereket és a társított terv jellemzőit.
 - A [(z) (ismeretlen)](https://docs.microsoft.com/sql/t-sql/queries/hints-transact-sql-query) lekérdezési mutatóval felülbírálhatja a tényleges paraméter értékét, és Ehelyett használhatja a sűrűség vektor átlagát. Ezt úgy is megteheti, hogy beírja a bejövő paraméterek értékét a helyi változók között, majd a predikátumok helyi változóit használja a paraméterek használata helyett. Ennél a javításnál az átlagos sűrűségnek *elég jónak*kell lennie.
 - Tiltsa le a paraméterek teljes elemzését a [DISABLE_PARAMETER_SNIFFING](https://docs.microsoft.com/sql/t-sql/queries/hints-transact-sql-query) -lekérdezési mutató használatával.
@@ -118,7 +118,7 @@ A PSP-problémák megoldásával kapcsolatos további információkért tekintse
 
 - [Egy paramétert érzek](https://blogs.msdn.microsoft.com/queryoptteam/2006/03/31/i-smell-a-parameter/)
 - [A (z) és a dinamikus SQL vs. eljárások és a paraméteres lekérdezések minőségének megtervezése](https://blogs.msdn.microsoft.com/conor_cunningham_msft/2009/06/03/conor-vs-dynamic-sql-vs-procedures-vs-plan-quality-for-parameterized-queries/)
-- [SQL-lekérdezés optimalizálási módszerei SQL Serverban: Paraméter-elemzés](https://www.sqlshack.com/query-optimization-techniques-in-sql-server-parameter-sniffing/)
+- [SQL-lekérdezés optimalizálási módszerei SQL Server: paraméter-elemzés](https://www.sqlshack.com/query-optimization-techniques-in-sql-server-parameter-sniffing/)
 
 ### <a name="compile-activity-caused-by-improper-parameterization"></a>Helytelen paraméterezés által okozott tevékenységek fordítása
 
@@ -132,7 +132,7 @@ FROM t1 JOIN t2 ON t1.c1 = t2.c1
 WHERE t1.c1 = @p1 AND t2.c2 = '961C3970-0E54-4E8E-82B6-5545BE897F8F'
 ```
 
-Ebben a példában `t1.c1` a veszi `@p1`, de `t2.c2` továbbra is a GUID-ot használja literálként. Ebben az esetben, ha megváltoztatja a értékét `c2`, a lekérdezés más lekérdezésként lesz kezelve, és új fordítás fog történni. Ebben a példában a fordítások csökkentése érdekében parametrizálja a GUID azonosítót is.
+Ebben a példában a `t1.c1` `@p1`, de a `t2.c2` továbbra is a GUID-ot használja literálként. Ebben az esetben, ha módosítja `c2`értékét, a lekérdezés más lekérdezésként lesz kezelve, és új fordítás fog történni. Ebben a példában a fordítások csökkentése érdekében parametrizálja a GUID azonosítót is.
 
 Az alábbi lekérdezés a lekérdezési kivonatok számát jeleníti meg, hogy a lekérdezés megfelelően van-e konfigurálva:
 
@@ -175,13 +175,13 @@ Ha újrafordítási emlékeztetőt használ, a rendszer nem gyorsítótárazza a
 
 Az újrafordítás (vagy a gyorsítótár kiürítése utáni friss fordítás) továbbra is az eredetivel megegyező lekérdezés-végrehajtási terv létrehozását eredményezheti. Ha a terv a korábbi vagy az eredeti csomag alapján változik, a következő magyarázatok valószínűek:
 
-- **Megváltozott fizikai kialakítás**: Például az újonnan létrehozott indexek hatékonyabban fedezik a lekérdezés követelményeit. Az új indexeket új fordításban lehet használni, ha a lekérdezés-optimalizáló úgy dönt, hogy az új indexet használja, mint az eredetileg a lekérdezés-végrehajtás első verziójára kiválasztott adatstruktúra használata.  A hivatkozott objektumok fizikai változásai a fordítási idő új tervének megválasztásához vezethetnek.
+- **Megváltozott fizikai kialakítás**: például az újonnan létrehozott indexek hatékonyabban fedik le a lekérdezés követelményeit. Az új indexeket új fordításban lehet használni, ha a lekérdezés-optimalizáló úgy dönt, hogy az új indexet használja, mint az eredetileg a lekérdezés-végrehajtás első verziójára kiválasztott adatstruktúra használata.  A hivatkozott objektumok fizikai változásai a fordítási idő új tervének megválasztásához vezethetnek.
 
-- **Kiszolgálói erőforrások eltérései**: Ha egy rendszer egyik csomagja eltér a tervtől egy másik rendszeren, az erőforrások rendelkezésre állása, például a rendelkezésre álló processzorok száma befolyásolhatja, hogy melyik terv jön létre.  Ha például egy rendszer több processzorral rendelkezik, lehetséges, hogy egy párhuzamos tervet választ ki. 
+- **Kiszolgáló erőforrásainak eltérései**: Ha egy rendszer egyik csomagja eltér a tervtől, akkor az erőforrás rendelkezésre állása, például az elérhető processzorok száma, befolyásolhatja, hogy melyik tervet hozza létre a rendszer.  Ha például egy rendszer több processzorral rendelkezik, lehetséges, hogy egy párhuzamos tervet választ ki. 
 
-- **Különböző statisztikák**: Előfordulhat, hogy a hivatkozott objektumokhoz tartozó statisztikák módosultak, vagy az eredeti rendszer statisztikái lényegesen eltérőek lehetnek.  Ha a statisztikai változás és az újrafordítás történik, a lekérdezés-optimalizáló a változástól kezdődő statisztikát használja. Az átdolgozott statisztikai adatok eloszlása és gyakorisága eltérő lehet az eredeti fordítástól.  Ezek a változások a kardinális becslések létrehozásához használatosak. (A*kardinális becslések* a logikai lekérdezési fában áthaladó sorok száma.) A kardinális becslések változásai a különböző fizikai operátorok és a hozzájuk tartozó műveletek elvégzésére is kiválaszthatók.  A statisztikában még kisebb változások is megváltoztathatják a lekérdezés végrehajtási tervét.
+- **Különböző statisztikák**: a hivatkozott objektumokhoz társított statisztikák változhattak, vagy az eredeti rendszer statisztikái lényegesen eltérőek lehetnek.  Ha a statisztikai változás és az újrafordítás történik, a lekérdezés-optimalizáló a változástól kezdődő statisztikát használja. Az átdolgozott statisztikai adatok eloszlása és gyakorisága eltérő lehet az eredeti fordítástól.  Ezek a változások a kardinális becslések létrehozásához használatosak. (A*kardinális becslések* a logikai lekérdezési fában áthaladó sorok száma.) A kardinális becslések változásai a különböző fizikai operátorok és a hozzájuk tartozó műveletek elvégzésére is kiválaszthatók.  A statisztikában még kisebb változások is megváltoztathatják a lekérdezés végrehajtási tervét.
 
-- **Módosult az adatbázis kompatibilitási szintje vagy a kardinális kalkulátor verziója**:  Az adatbázis-kompatibilitási szint változásai olyan új stratégiákat és szolgáltatásokat is tartalmazhatnak, amelyek eltérő lekérdezés-végrehajtási tervet eredményezhetnek.  Az adatbázis-kompatibilitási szinten kívül a letiltott vagy engedélyezett nyomkövetési jelző 4199 vagy az adatbázis-hatókörű konfigurációs QUERY_OPTIMIZER_HOTFIXES módosult állapota is befolyásolhatja a lekérdezés végrehajtási tervének választási lehetőségeit a fordítás ideje alatt.  A nyomkövetési jelzők 9481 (örökölt CE) és 2312 (az alapértelmezett CE kényszerített) a tervet is érintik. 
+- **Módosult az adatbázis-kompatibilitási szint vagy a Cardinals-kalkulátor verziója**: az adatbázis kompatibilitási szintjének módosítása lehetővé teszi, hogy az új stratégiák és szolgáltatások egy másik lekérdezés-végrehajtási tervet eredményeznek.  Az adatbázis-kompatibilitási szinten kívül a letiltott vagy engedélyezett nyomkövetési jelző 4199 vagy az adatbázis-hatókörű konfigurációs QUERY_OPTIMIZER_HOTFIXES módosult állapota is befolyásolhatja a lekérdezés végrehajtási tervének választási lehetőségeit a fordítás ideje alatt.  A nyomkövetési jelzők 9481 (örökölt CE) és 2312 (az alapértelmezett CE kényszerített) a tervet is érintik. 
 
 ### <a name="resolve-problem-queries-or-provide-more-resources"></a>Probléma-lekérdezések feloldása vagy további erőforrások biztosítása
 
@@ -203,11 +203,11 @@ Az alkalmazások forgalmának növekedése és a számítási feladatok mennyis�
 
 Nem mindig könnyű megállapítani a CPU-problémát okozó számítási feladatok kötetének változását. Vegye figyelembe a következő tényezőket: 
 
-- **Módosított erőforrás-használat**: Vegyünk például egy olyan forgatókönyvet, amelyben a CPU-használat hosszabb ideig 80%-ra nőtt.  A CPU-használat önmagában nem jelenti azt, hogy a munkaterhelés mennyisége megváltozott. A lekérdezés-végrehajtási terv és az adateloszlás változásainak regressziói is hozzájárulhatnak az erőforrás-használathoz, még akkor is, ha az alkalmazás ugyanazt a munkaterhelést hajtja végre.
+- **Megváltoztatott erőforrás-használat**: Vegyünk például egy olyan forgatókönyvet, amelyben a CPU-használat hosszabb ideig 80%-ra nőtt.  A CPU-használat önmagában nem jelenti azt, hogy a munkaterhelés mennyisége megváltozott. A lekérdezés-végrehajtási terv és az adateloszlás változásainak regressziói is hozzájárulhatnak az erőforrás-használathoz, még akkor is, ha az alkalmazás ugyanazt a munkaterhelést hajtja végre.
 
-- **Új lekérdezés megjelenése**: Egy alkalmazás különböző időpontokban is elvégezheti a lekérdezések új készletét.
+- **Új lekérdezés megjelenése**: az alkalmazás különböző időpontokban lehet új lekérdezéseket vezetni.
 
-- **A kérelmek számának növelése vagy csökkentése**: Ez a forgatókönyv a számítási feladatok legnyilvánvalóbb mérőszáma. A lekérdezések száma nem mindig felel meg az erőforrás-felhasználásnak. Ez a metrika azonban még mindig jelentős jel, feltéve, hogy más tényezők nem változnak.
+- **A kérelmek számának növelése vagy csökkenése**: Ez a forgatókönyv a számítási feladatok legnyilvánvalóbb mérőszáma. A lekérdezések száma nem mindig felel meg az erőforrás-felhasználásnak. Ez a metrika azonban még mindig jelentős jel, feltéve, hogy más tényezők nem változnak.
 
 ## <a name="waiting-related-performance-problems"></a>Várakozó teljesítménnyel kapcsolatos problémák 
 

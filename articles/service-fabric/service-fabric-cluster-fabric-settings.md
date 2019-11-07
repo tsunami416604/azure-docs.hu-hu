@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/30/2019
 ms.author: atsenthi
-ms.openlocfilehash: d0d87b42232a19d6bcd3c225fb4a4f8f8b459350
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: cf070e91d6f15e80f51242722a59918d1bc70696
+ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73177796"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73615560"
 ---
 # <a name="customize-service-fabric-cluster-settings"></a>Service Fabric fürt beállításainak testreszabása
 Ez a cikk a Service Fabric-fürthöz testreszabható különböző háló-beállításokat ismerteti. Az Azure-ban üzemeltetett fürtök esetében a beállításokat a [Azure Portal](https://portal.azure.com) vagy egy Azure Resource Manager sablon segítségével szabhatja testre. További információ: Azure- [fürt konfigurációjának frissítése](service-fabric-cluster-config-upgrade-azure.md). Önálló fürtök esetében testreszabhatja a beállításokat a *ClusterConfig. JSON* fájl frissítésével és a fürtön végzett konfigurációs frissítés elindításával. További információ: [önálló fürt konfigurációjának frissítése](service-fabric-cluster-config-upgrade-windows-server.md).
@@ -224,23 +224,22 @@ Az alábbi lista a testre szabható, a szakasz alapján rendszerezhető háló-b
 |ClusterPauseThreshold|int, az alapértelmezett érték 1|Dinamikus|Ha a rendszer csomópontjainak száma az alábbi érték alá kerül, akkor az elhelyezés; terheléselosztás; és a feladatátvétel le van állítva. |
 |CreateInstanceTimeLimit|TimeSpan, alapértelmezés szerint gyakori:: TimeSpan:: FromSeconds (300)|Dinamikus|Másodpercek alatt meg kell adni a TimeSpan. Állapot nélküli példány létrehozásának határideje; a figyelmeztetési állapot jelentésének elindítását követően |
 |ExpectedClusterSize|int, az alapértelmezett érték 1|Dinamikus|A fürt első indításakor; az FM megvárja, amíg a több csomópont jelentést készít a többi szolgáltatás megkezdése előtt. például a rendszerszolgáltatások, például a Névadás. Ennek az értéknek a növelésével megnövekszik a fürt elindításához szükséges idő. azonban megakadályozza, hogy a korai csomópontok túlterhelve legyenek, és a további átlépések is szükségesek lesznek, ahogy a további csomópontok online állapotba kerülnek. Ezt az értéket általában úgy kell beállítani, hogy a fürt kezdeti méretének néhány kis hányada legyen. |
-|ExpectedNodeDeactivationDuration|TimeSpan, alapértelmezés szerint gyakori:: TimeSpan:: FromSeconds (60.0 \* 30)|Dinamikus|Másodpercek alatt meg kell adni a TimeSpan. Ez az a várható időtartam, amikor egy csomópont inaktiválást végez a ben. |
-|ExpectedNodeFabricUpgradeDuration|TimeSpan, alapértelmezés szerint gyakori:: TimeSpan:: FromSeconds (60.0 \* 30)|Dinamikus|Másodpercek alatt meg kell adni a TimeSpan. A csomópontnak a Windows Fabric frissítése során történő frissítésének várható időtartama. |
-|ExpectedReplicaUpgradeDuration|TimeSpan, alapértelmezés szerint gyakori:: TimeSpan:: FromSeconds (60.0 \* 30)|Dinamikus|Másodpercek alatt meg kell adni a TimeSpan. Ez az az időtartam, ameddig az összes replikát frissíteni kell egy csomóponton az alkalmazás frissítése során. |
+|ExpectedNodeDeactivationDuration|TimeSpan, az alapértelmezett érték gyakori:: TimeSpan:: FromSeconds (60.0 \* 30)|Dinamikus|Másodpercek alatt meg kell adni a TimeSpan. Ez az a várható időtartam, amikor egy csomópont inaktiválást végez a ben. |
+|ExpectedNodeFabricUpgradeDuration|TimeSpan, az alapértelmezett érték gyakori:: TimeSpan:: FromSeconds (60.0 \* 30)|Dinamikus|Másodpercek alatt meg kell adni a TimeSpan. A csomópontnak a Windows Fabric frissítése során történő frissítésének várható időtartama. |
+|ExpectedReplicaUpgradeDuration|TimeSpan, az alapértelmezett érték gyakori:: TimeSpan:: FromSeconds (60.0 \* 30)|Dinamikus|Másodpercek alatt meg kell adni a TimeSpan. Ez az az időtartam, ameddig az összes replikát frissíteni kell egy csomóponton az alkalmazás frissítése során. |
 |IsSingletonReplicaMoveAllowedDuringUpgrade|bool, az alapértelmezett érték TRUE (igaz)|Dinamikus|Ha True értékre van állítva; a cél másodpéldány-készlet 1. méretével rendelkező replikák a frissítés közben is áthelyezhetők. |
 |MinReplicaSetSize|Int, az alapértelmezett érték 3|Nem engedélyezett|Ez a replikakészlet minimális mérete az FM számára. Ha az aktív FM-replikák száma ezen érték alá csökken; az FM elutasítja a fürt változásait egészen addig, amíg a replikák minimális száma helyre nem kerül. |
 |PlacementConstraints|karakterlánc, az alapértelmezett érték: ""|Nem engedélyezett|A feladatátvételi kezelő replikáinak elhelyezésére vonatkozó korlátozások |
 |PlacementTimeLimit|TimeSpan, alapértelmezés szerint gyakori:: TimeSpan:: FromSeconds (600)|Dinamikus|Másodpercek alatt meg kell adni a TimeSpan. A cél replikák számának elérésére vonatkozó időkorlát; a figyelmeztetési állapot jelentésének elindítását követően |
 |QuorumLossWaitDuration |Az idő másodpercben, az alapértelmezett érték a MaxValue |Dinamikus|Másodpercek alatt meg kell adni a TimeSpan. Ez a maximális időtartam, amellyel a partíciók kvórum elvesztésének állapotában engedélyezhető. Ha a partíció továbbra is a kvórum elvesztése után következik be az időtartam után; a partíció helyreállítása a kvórum elvesztésével történik azáltal, hogy a leállított replikák elvesznek. Vegye figyelembe, hogy ez adatvesztést eredményezhet. |
 |ReconfigurationTimeLimit|TimeSpan, alapértelmezés szerint gyakori:: TimeSpan:: FromSeconds (300)|Dinamikus|Másodpercek alatt meg kell adni a TimeSpan. Az újrakonfigurálás határideje; a figyelmeztetési állapot jelentésének elindítását követően |
-|ReplicaRestartWaitDuration|TimeSpan, alapértelmezés szerint gyakori:: TimeSpan:: FromSeconds (60.0 \* 30)|Nem engedélyezett|Másodpercek alatt meg kell adni a TimeSpan. Ez a FMService ReplicaRestartWaitDuration |
+|ReplicaRestartWaitDuration|TimeSpan, az alapértelmezett érték gyakori:: TimeSpan:: FromSeconds (60.0 \* 30)|Nem engedélyezett|Másodpercek alatt meg kell adni a TimeSpan. Ez a FMService ReplicaRestartWaitDuration |
+| SeedNodeQuorumAdditionalBufferNodes | int, az alapértelmezett érték 0 | Dinamikus | A felvenni kívánt mag-csomópontok puffere (a vetőmag-csomópontok kvórumával együtt) az FM-nek lehetővé kell tennie, hogy legfeljebb (totalNumSeedNodes-(seedNodeQuorum + SeedNodeQuorumAdditionalBufferNodes)) vetőmag-csomópont álljon le. |
 |StandByReplicaKeepDuration|TimeSpan, alapértelmezés szerint gyakori:: TimeSpan:: FromSeconds (3600.0 \* 24 \* 7)|Nem engedélyezett|Másodpercek alatt meg kell adni a TimeSpan. Ez a FMService StandByReplicaKeepDuration |
 |TargetReplicaSetSize|Int, az alapértelmezett érték 7|Nem engedélyezett|A Windows Fabric által karbantartott FM-replikák száma. A nagyobb szám nagyobb megbízhatóságot eredményez az FM-adatmennyiségnél; kis teljesítményű kompromisszummal. |
 |UserMaxStandByReplicaCount |int, az alapértelmezett érték 1 |Dinamikus|A rendszer által a felhasználói szolgáltatások számára megmaradó készenléti replikák alapértelmezett maximális száma. |
 |UserReplicaRestartWaitDuration |Az idő másodpercben, az alapértelmezett érték 60,0 \* 30 |Dinamikus|Másodpercek alatt meg kell adni a TimeSpan. Ha egy megőrzött replika leáll; Windows Fabric vár erre az időtartamra a replika számára, hogy új helyettesítő replikák létrehozása előtt készítsen biztonsági mentést (ami az állapot másolatát igényli). |
-|UserStandByReplicaKeepDuration |Idő másodpercben, alapértelmezett értéke 3600,0 \* 24 \* 7 |Dinamikus|Másodpercek alatt meg kell adni a TimeSpan. Ha egy megőrzött replika vissza fog térni a leállási állapotból; lehetséges, hogy már lecserélték. Ez az időzítő azt határozza meg, hogy az FM mennyi ideig tart a készenléti replika számára az eldobás előtt. |
-|WaitForInBuildReplicaSafetyCheckTimeout|TimeSpan, az alapértelmezett érték gyakori:: TimeSpan:: FromSeconds (60 * 10)|Dinamikus|Másodpercek alatt meg kell adni a TimeSpan. A választható WaitForInBuildReplica biztonsági ellenőrzési időtúllépés konfigurációs bejegyzése. Ez a konfiguráció határozza meg a csomópont-inaktiválások és-frissítések WaitForInBuildReplica biztonsági vizsgálatának időtúllépését. Ez a biztonsági ellenőrzés meghiúsul, ha az alábbiak bármelyike igaz:-egy elsődleges létrehozása folyamatban van, és az Ft cél másodpéldányának mérete > 1 – ha az aktuális replika buildben van, és meg van őrizni – ha ez a jelenlegi elsődleges, és egy új replika készül, a biztonsági ellenőrzés kihagyása megmarad PED, ha az időkorlát akkor is lejár, ha az egyik korábbi feltétel még mindig igaz. |
-|WaitForReconfigurationSafetyCheckTimeout|TimeSpan, az alapértelmezett érték gyakori:: TimeSpan:: FromSeconds (60.0 * 10)|Dinamikus|Másodpercek alatt meg kell adni a TimeSpan. A választható WaitForReconfiguration biztonsági ellenőrzési időtúllépés konfigurációs bejegyzése. Ez a konfiguráció határozza meg a csomópont-inaktiválások és-frissítések WaitForReconfiguration biztonsági vizsgálatának időtúllépését. Ez a biztonsági ellenőrzés sikertelen, ha a bejelölt replika az újrakonfigurálás alatt álló partíció része. Az időkorlát lejárta után a biztonsági ellenőrzés kimarad, még akkor is, ha a partíció még mindig újrakonfigurálás alatt áll.|
+|UserStandByReplicaKeepDuration |Az idő másodpercben, az alapértelmezett érték 3600,0 \* 24 \* 7 |Dinamikus|Másodpercek alatt meg kell adni a TimeSpan. Ha egy megőrzött replika vissza fog térni a leállási állapotból; lehetséges, hogy már lecserélték. Ez az időzítő azt határozza meg, hogy az FM mennyi ideig tart a készenléti replika számára az eldobás előtt. |
 
 ## <a name="faultanalysisservice"></a>FaultAnalysisService
 
@@ -340,6 +339,8 @@ Az alábbi lista a testre szabható, a szakasz alapján rendszerezhető háló-b
 |ActivationRetryBackoffInterval |Az idő másodpercben, az alapértelmezett érték 5 |Dinamikus|Leállítási időköz minden aktiválási hiba esetén; A rendszer minden folyamatos aktiválási hiba esetén újra megkísérli az aktiválást a MaxActivationFailureCount. Az újrapróbálkozási időköz minden próbálkozáskor a folyamatos aktiválási hiba és az aktiválási visszatartási időköz szorzata. |
 |ActivationTimeout| TimeSpan, alapértelmezés szerint gyakori:: TimeSpan:: FromSeconds (180)|Dinamikus| Másodpercek alatt meg kell adni a TimeSpan. Az alkalmazás aktiválásának időtúllépése; inaktiválás és frissítés. |
 |ApplicationHostCloseTimeout| TimeSpan, alapértelmezés szerint gyakori:: TimeSpan:: FromSeconds (120)|Dinamikus| Másodpercek alatt meg kell adni a TimeSpan. Ha a háló kilépését egy önaktivált folyamat észleli, A FabricRuntime lezárja a felhasználó gazdagépének (applicationHost) folyamatában lévő összes replikát. Ez a bezárási művelet időtúllépése. |
+| CnsNetworkPluginCnmUrlPort | wstring, alapértelmezett érték: L "48080" | Statikus | Azure CNM API URL-port |
+| CnsNetworkPluginCnsUrlPort | wstring, alapértelmezett érték: L "10090" | Statikus | Azure CNS URL-port |
 |ContainerServiceArguments|karakterlánc, az alapértelmezett érték a "-H localhost: 2375-H npipe://"|Statikus|Service Fabric (SF) a Docker-démont (kivéve a Windows-ügyfélszámítógépeken, például a Win10) kezeli. Ez a konfiguráció lehetővé teszi, hogy a felhasználó olyan egyéni argumentumokat határozzon meg, amelyeket a Docker-démonnak át kell adni a indításakor. Ha egyéni argumentumok vannak megadva, Service Fabric ne adjon át más argumentumot a Docker-motornak a "--Pidfile" argumentum kivételével. Ezért a felhasználóknak nem szabad a "--Pidfile" argumentumot megadniuk az ügyfél argumentumai részeként. Emellett az egyéni argumentumoknak biztosítaniuk kell, hogy a Docker-démon figyelje az alapértelmezett Name pipe-ot a Windowsban (vagy Linux-alapú tartomány socket on Linux rendszeren) ahhoz, hogy a Service Fabric kommunikálni tudjon.|
 |ContainerServiceLogFileMaxSizeInKb|int, alapértelmezett érték 32768|Statikus|A Docker-tárolók által generált naplófájl maximális fájlmérete.  Csak Windows.|
 |Containerimagedownloadtimeout attribútummal állítható|int, másodpercek száma, alapértelmezett érték 1200 (20 perc)|Dinamikus|A rendszerkép letöltésének időkorlátja másodpercben.|
@@ -357,6 +358,7 @@ Az alábbi lista a testre szabható, a szakasz alapján rendszerezhető háló-b
 |DisableContainers|bool, az alapértelmezett érték FALSE|Statikus|A tárolók letiltására szolgáló konfiguráció a DisableContainerServiceStartOnContainerActivatorOpen helyett, amely elavult konfiguráció |
 |DisableDockerRequestRetry|bool, az alapértelmezett érték FALSE |Dinamikus| Alapértelmezés szerint az SF a DD-vel (Docker Dameon) és a (z) "DockerRequestTimeout" időtúllépéssel kommunikál a hozzájuk küldött összes http-kérelemnél. Ha a DD nem válaszol az adott időszakon belül; Az SF újraküldi a kérést, ha a legfelső szintű művelet továbbra is hátralévő ideig tart.  HyperV-tárolóval; A DD időnként sokkal több időt vesz igénybe, hogy felvegye a tárolót, vagy inaktiválja azt. Ilyen esetekben a DD-kérelmek időtúllépése az SF perspektívából, az SF pedig újrapróbálkozik a művelettel. Néha úgy tűnik, hogy a DD-ra nagyobb nyomást okoz. Ez a konfiguráció lehetővé teszi az újrapróbálkozások letiltását, és várjon, amíg a DD válaszol. |
 |DnsServerListTwoIps | bool, az alapértelmezett érték FALSE | Statikus | Ez a jelző kétszer hozzáadja a helyi DNS-kiszolgálót az időszakos megoldási problémák enyhítése érdekében. |
+| DoNotInjectLocalDnsServer | bool, az alapértelmezett érték FALSE | Statikus | Megakadályozza, hogy a futtatókörnyezet a helyi IP-címet a tárolók DNS-kiszolgálójának beinjektálja. |
 |EnableActivateNoWindow| bool, az alapértelmezett érték FALSE|Dinamikus| Az aktivált folyamat a háttérben, konzol nélkül jön létre. |
 |EnableContainerServiceDebugMode|bool, az alapértelmezett érték TRUE (igaz)|Statikus|A Docker-tárolók naplózásának engedélyezése/letiltása.  Csak Windows.|
 |EnableDockerHealthCheckIntegration|bool, az alapértelmezett érték TRUE (igaz)|Statikus|Lehetővé teszi a Docker HEALTHCHECK-események integrálását Service Fabric rendszerállapot-jelentéssel |
@@ -423,7 +425,7 @@ Az alábbi lista a testre szabható, a szakasz alapján rendszerezhető háló-b
 | --- | --- | --- | --- |
 |IsEnabled|bool, az alapértelmezett érték FALSE|Statikus|A felügyelt identitási jogkivonat szolgáltatás jelenlétének és állapotának szabályozása a fürtben; ez az előfeltétel a Service Fabric alkalmazások felügyelt identitási funkciójának használatához.|
 
-## <a name="management"></a>Felügyelet
+## <a name="management"></a>Kezelés
 
 | **Paraméter** | **Megengedett értékek** | **Frissítési szabályzat** | **Útmutatás vagy rövid leírás** |
 | --- | --- | --- | --- |
@@ -649,14 +651,14 @@ Az alábbi lista a testre szabható, a szakasz alapján rendszerezhető háló-b
 ## <a name="security"></a>Biztonság
 | **Paraméter** | **Megengedett értékek** |**Frissítési szabályzat**| **Útmutatás vagy rövid leírás** |
 | --- | --- | --- | --- |
-|AADCertEndpointFormat|karakterlánc, az alapértelmezett érték: ""|Statikus|HRE tanúsítvány-végpont formátuma, alapértelmezett Azure-beli kereskedelmi értéke, amely nem alapértelmezett környezetekhez van megadva, például Azure Government "https: \//login. microsoftonline. us/{0}/federationmetadata/2007-06/federationmetadata. xml" |
+|AADCertEndpointFormat|karakterlánc, az alapértelmezett érték: ""|Statikus|HRE tanúsítvány-végpont formátuma, alapértelmezett Azure-beli kereskedelmi értéke, amely nem alapértelmezett környezetekhez van megadva, például Azure Government "https:\//login.microsoftonline.us/{0}/federationmetadata/2007-06/federationmetadata.xml" |
 |AADClientApplication|karakterlánc, az alapértelmezett érték: ""|Statikus|A natív ügyfélalkalmazás neve vagy azonosítója, amely a Fabric-ügyfeleket jelképezi |
 |AADClusterApplication|karakterlánc, az alapértelmezett érték: ""|Statikus|A fürtöt jelölő webes API-alkalmazás neve vagy azonosítója |
-|AADLoginEndpoint|karakterlánc, az alapértelmezett érték: ""|Statikus|HRE bejelentkezési végpont, alapértelmezett Azure Commercial, nem alapértelmezett környezethez van megadva, például Azure Government "https: \//login. microsoftonline. us" |
+|AADLoginEndpoint|karakterlánc, az alapértelmezett érték: ""|Statikus|HRE bejelentkezési végpont, alapértelmezett Azure Commercial, nem alapértelmezett környezethez megadva, például Azure Government "https:\//login.microsoftonline.us" |
 |AADTenantId|karakterlánc, az alapértelmezett érték: ""|Statikus|Bérlő azonosítója (GUID) |
 |AcceptExpiredPinnedClusterCertificate|bool, az alapértelmezett érték FALSE|Dinamikus|Jelző, amely azt jelzi, hogy az ujjlenyomattal deklarált lejárt fürtözött tanúsítványok csak a fürt tanúsítványainak esetében érvényesek-e. a fürt életben tartásához. |
 |AdminClientCertThumbprints|karakterlánc, az alapértelmezett érték: ""|Dinamikus|Az ügyfelek által a rendszergazdai szerepkörben használt tanúsítványok ujjlenyomatai megfelelnek. Vesszővel tagolt nevek listája. |
-|AADTokenEndpointFormat|karakterlánc, az alapértelmezett érték: ""|Statikus|HRE jogkivonat-végpont, alapértelmezett Azure Commercial, nem alapértelmezett környezethez megadva, például Azure Government "https: \//login. microsoftonline. us/{0}" |
+|AADTokenEndpointFormat|karakterlánc, az alapértelmezett érték: ""|Statikus|HRE jogkivonat-végpont, alapértelmezett Azure-beli kereskedelmi érték, amely nem alapértelmezett környezetekhez van megadva, például Azure Government "https:\//login.microsoftonline.us/{0}" |
 |AdminClientClaims|karakterlánc, az alapértelmezett érték: ""|Dinamikus|A rendszergazdai ügyfelektől várt összes lehetséges jogcím; a ClientClaims megegyező formátum; Ez a lista belsőleg bekerül a ClientClaims; így nem kell ugyanazt a bejegyzést hozzáadnia a ClientClaims. |
 |AdminClientIdentities|karakterlánc, az alapértelmezett érték: ""|Dinamikus|A Fabric-ügyfelek Windows-identitásai a rendszergazdai szerepkörben; a Kiemelt háló műveleteinek engedélyezésére szolgál. Vesszővel tagolt lista; Minden bejegyzés egy tartományi fiók neve vagy egy csoportnév. A kényelem érdekében a Fabric. exe fájlt futtató fiók automatikusan hozzá van rendelve a rendszergazdai szerepkörhöz; tehát a csoport ServiceFabricAdministrators. |
 |AppRunAsAccountGroupX509Folder|karakterlánc, az alapértelmezett érték a/Home/sfuser/sfusercerts |Statikus|Az a mappa, ahol a AppRunAsAccountGroup X509 tanúsítványai és titkos kulcsai találhatók |
@@ -677,6 +679,7 @@ Az alábbi lista a testre szabható, a szakasz alapján rendszerezhető háló-b
 |DisableFirewallRuleForDomainProfile| bool, az alapértelmezett érték TRUE (igaz) |Statikus| Azt jelzi, hogy a tűzfalszabály nem engedélyezhető-e a tartományi profilhoz |
 |DisableFirewallRuleForPrivateProfile| bool, az alapértelmezett érték TRUE (igaz) |Statikus| Azt jelzi, hogy nincs-e engedélyezve a tűzfalszabály a magánhálózati profilhoz | 
 |DisableFirewallRuleForPublicProfile| bool, az alapértelmezett érték TRUE (igaz) | Statikus|Azt jelzi, hogy nincs-e engedélyezve a tűzfalszabály a nyilvános profilhoz |
+| EnforceLinuxMinTlsVersion | bool, az alapértelmezett érték FALSE | Dinamikus | Ha True értékre van állítva; csak a TLS 1.2-es és újabb verziója támogatott.  Ha hamis; a korábbi TLS-verziók támogatása. Csak a Linux rendszerre vonatkozik |
 |FabricHostSpn| karakterlánc, az alapértelmezett érték: "" |Statikus| A Hálóbeli egyszerű szolgáltatásnév neve; Ha a háló egyetlen tartományi felhasználóként (gMSA/tartományi felhasználói fiók) fut, és a Hálóbeli a számítógépfiók alatt fut. Ez a Hálóbeli IPC-figyelő SPN-je; Alapértelmezés szerint üresen kell hagyni, mivel a Hálóbeli a számítógépfiók alatt fut |
 |IgnoreCrlOfflineError|bool, az alapértelmezett érték FALSE|Dinamikus|Azt jelzi, hogy a CRL offline hibát figyelmen kívül hagy-e, amikor a kiszolgálóoldali hitelesíti a bejövő ügyféltanúsítványt |
 |IgnoreSvrCrlOfflineError|bool, az alapértelmezett érték TRUE (igaz)|Dinamikus|Azt jelzi, hogy a CRL offline hibát figyelmen kívül hagy-e, amikor az ügyféloldali ellenőrzi a bejövő kiszolgálói tanúsítványokat; az alapértelmezett érték TRUE (igaz). A visszavont kiszolgálói tanúsítványokkal való támadásoknak meg kell felelnie a DNS-nek; nehezebb, mint a visszavont Ügyféltanúsítványok. |
@@ -743,7 +746,7 @@ Az alábbi lista a testre szabható, a szakasz alapján rendszerezhető háló-b
 |InvokeContainerApi|karakterlánc, az alapértelmezett érték a "rendszergazda"|Dinamikus|Tároló API meghívása |
 |InvokeInfrastructureCommand |karakterlánc, az alapértelmezett érték a "rendszergazda" |Dinamikus| Az infrastruktúra-feladatok felügyeleti parancsainak biztonsági konfigurációja. |
 |InvokeInfrastructureQuery |karakterlánc, az alapértelmezett érték a "rendszergazda\|\|felhasználó" | Dinamikus|Az infrastruktúra-feladatok lekérdezésének biztonsági beállításai. |
-|Listázás |karakterlánc, az alapértelmezett érték a "rendszergazda\|\|felhasználó" | Dinamikus|Biztonsági konfiguráció a rendszerkép-tárolói ügyfél-fájllista művelethez. |
+|Lista |karakterlánc, az alapértelmezett érték a "rendszergazda\|\|felhasználó" | Dinamikus|Biztonsági konfiguráció a rendszerkép-tárolói ügyfél-fájllista művelethez. |
 |MoveNextFabricUpgradeDomain |karakterlánc, az alapértelmezett érték a "rendszergazda" |Dinamikus| Biztonsági konfiguráció a fürt frissítéseinek egy explicit frissítési tartománnyal való folytatásához. |
 |MoveNextUpgradeDomain |karakterlánc, az alapértelmezett érték a "rendszergazda" |Dinamikus| Biztonsági konfiguráció egy explicit frissítési tartománnyal folytatott alkalmazások frissítéseinek folytatásához. |
 |MoveReplicaControl |karakterlánc, az alapértelmezett érték a "rendszergazda" | Dinamikus|Replika áthelyezése. |
@@ -831,7 +834,7 @@ Az alábbi lista a testre szabható, a szakasz alapján rendszerezhető háló-b
 | --- | --- | --- | --- |
 |PropertyGroup|X509NameMap, alapértelmezés szerint nincs|Dinamikus|Ez a "Name" és a "value" pár listája. Az egyes "nevek" a X509-tanúsítványok tulajdonos köznapi neve vagy DnsName. Az adott "név" értéknél a "value" a kiállítói ujjlenyomatai megfelelnek tartozó tanúsítvány vesszővel elválasztott listája, ha nem üres, a kiszolgálói tanúsítványok közvetlen kiállítójának szerepelnie kell a listán.|
 
-## <a name="setup"></a>Beállítás
+## <a name="setup"></a>Telepítés
 
 | **Paraméter** | **Megengedett értékek** | **Frissítési szabályzat** | **Útmutatás vagy rövid leírás** |
 | --- | --- | --- | --- |
@@ -869,7 +872,7 @@ Az alábbi lista a testre szabható, a szakasz alapján rendszerezhető háló-b
 |MaxSecondaryReplicationQueueSize |Uint, alapértelmezett érték 16384 | Statikus |A másodlagos replikálási várólistában található műveletek maximális száma. Vegye figyelembe, hogy a teljesítményének 2-nek kell lennie. |
 |ReplicatorAddress |karakterlánc, az alapértelmezett érték "localhost: 0" | Statikus | A végpont egy "IP: Port" karakterlánc formájában jelenik meg, amelyet az Windows Fabric-replikátor használ a más replikákkal való kapcsolat létesítéséhez a küldési/fogadási műveletek érdekében. |
 
-## <a name="transport"></a>Közlekedés
+## <a name="transport"></a>Átvitel
 | **Paraméter** | **Megengedett értékek** |**Frissítési szabályzat** |**Útmutatás vagy rövid leírás** |
 | --- | --- | --- | --- |
 |ConnectionOpenTimeout|TimeSpan, alapértelmezés szerint gyakori:: TimeSpan:: FromSeconds (60)|Statikus|Másodpercek alatt meg kell adni a TimeSpan. Időtúllépés a bejövő és a fogadó oldalon (beleértve a biztonsági egyeztetést biztonságos módban) a kapcsolatok beállításához |
@@ -917,5 +920,5 @@ Az alábbi lista a testre szabható, a szakasz alapján rendszerezhető háló-b
 | --- | --- | --- | --- |
 |PropertyGroup| UserServiceMetricCapacitiesMap, alapértelmezés szerint nincs | Statikus | A felhasználói szolgáltatások erőforrás-irányítási határértékeinek gyűjteményének statikusnak kell lennie, mivel az automatikus észlelési logikát érint |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 További információ: Azure- [fürt konfigurációjának frissítése](service-fabric-cluster-config-upgrade-azure.md) és [önálló fürt konfigurációjának frissítése](service-fabric-cluster-config-upgrade-windows-server.md).

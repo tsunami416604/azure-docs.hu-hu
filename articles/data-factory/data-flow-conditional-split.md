@@ -1,5 +1,5 @@
 ---
-title: Feltételes felosztású átalakítás Azure Data Factory leképezési adatforgalomban | Microsoft Docs
+title: Feltételes felosztás átalakítása Azure Data Factory leképezési adatfolyamatban
 description: Adatfelosztás különböző streamekre a feltételes felosztás átalakításával Azure Data Factory leképezési adatfolyamban
 author: kromerm
 ms.author: makromer
@@ -7,12 +7,12 @@ ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 10/16/2019
-ms.openlocfilehash: 2d794714f27340e8886843988b6c075dd8d3366e
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: 9ace415aa725a82d8feda5702d25d7e5ff9875d9
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72527414"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73676814"
 ---
 # <a name="conditional-split-transformation-in-mapping-data-flow"></a>Feltételes felosztású átalakítás a leképezési adatfolyamban
 
@@ -42,7 +42,7 @@ Az adatfolyam-Kifejezésszerkesztő használatával adjon meg egy kifejezést a 
 
 ### <a name="example"></a>Példa
 
-Az alábbi példa egy `SplitByYear` nevű feltételes felosztású átalakítás, amely bekerül a bejövő stream `CleanData`ba. Az átalakításnak két felosztott feltétele van `year < 1960` és `year > 1980`. a `disjoint` hamis, mert az adatértékek az első egyező feltételnek felelnek meg. Minden, az első feltételnek megfelelő sor az adatfolyam-`moviesBefore1960` kimenetére mutat. A második feltételnek megfelelő összes fennmaradó sor a kimeneti adatfolyam `moviesAFter1980`. Az összes többi sor az alapértelmezett stream-`AllOtherMovies`on keresztül folyik.
+Az alábbi példa egy `SplitByYear` nevű feltételes felosztású átalakítás, amely bekerül a bejövő stream `CleanData`ba. Az átalakításnak két felosztott feltétele van `year < 1960` és `year > 1980`. a `disjoint` hamis, mert az adatértékek az első egyező feltételnek felelnek meg. Minden, az első feltételnek megfelelő sor az adatfolyam-`moviesBefore1960`kimenetére mutat. A második feltételnek megfelelő összes fennmaradó sor a kimeneti adatfolyam `moviesAFter1980`. Az összes többi sor az alapértelmezett stream-`AllOtherMovies`on keresztül folyik.
 
 Az Data Factory UX-ben ez az átalakítás az alábbi képhez hasonlóan néz ki:
 
@@ -59,6 +59,6 @@ CleanData
     ) ~> SplitByYear@(moviesBefore1960, moviesAfter1980, AllOtherMovies)
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A feltételes felosztással használt közös adatfolyam-átalakítások az [összekapcsolási transzformáció](data-flow-join.md), a [keresési átalakítás](data-flow-lookup.md)és az [átalakítás kiválasztása](data-flow-select.md)

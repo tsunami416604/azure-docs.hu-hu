@@ -1,5 +1,5 @@
 ---
-title: Rugalmas készlet erőforrásainak méretezése – Azure SQL Database | Microsoft Docs
+title: Rugalmas készlet erőforrásainak méretezése – Azure SQL Database
 description: Ez az oldal a Azure SQL Database rugalmas készletei erőforrásainak méretezését ismerteti.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: oslake
 ms.author: moslake
 ms.reviewer: carlrab
 ms.date: 3/14/2019
-ms.openlocfilehash: c96be7930a33185077134d051b49cba0695327e3
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 812de89b43d1cb2bc7f9b5c5c619f3860344d5dd
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68568639"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73690434"
 ---
 # <a name="scale-elastic-pool-resources-in-azure-sql-database"></a>Rugalmas készlet erőforrásainak méretezése Azure SQL Database
 
@@ -45,11 +45,11 @@ Egy rugalmas készlet szolgáltatási rétegének vagy számítási méretének 
 
 A szolgáltatási réteg módosításának becsült késése vagy egy önálló adatbázis vagy rugalmas készlet számítási méretének átméretezése a következő paraméterekkel történik:
 
-|Szolgáltatási szint|Alapszintű önálló adatbázis,</br>Standard (S0-S1)|Alapszintű rugalmas készlet,</br>Standard (S2-S12), </br>Nagy kapacitású </br>Önálló adatbázis vagy rugalmas készlet általános célú|Prémium vagy üzletileg kritikus önálló adatbázis vagy rugalmas készlet|
+|Szolgáltatásszint|Alapszintű önálló adatbázis,</br>Standard (S0-S1)|Alapszintű rugalmas készlet,</br>Standard (S2-S12), </br>Nagy kapacitású </br>Önálló adatbázis vagy rugalmas készlet általános célú|Prémium vagy üzletileg kritikus önálló adatbázis vagy rugalmas készlet|
 |:---|:---|:---|:---|
-|**Alapszintű önálló</br> adatbázis, Standard (S0-S1)**|&bull;&nbsp;Állandó időbeli késés a felhasznált területtől függetlenül</br>&bull;&nbsp;Általában kevesebb, mint 5 perc|&bull;&nbsp;Az Adatmásolás miatt használt adatbázis-területtel arányos késés</br>&bull;&nbsp;Általában kevesebb, mint 1 perc/GB felhasznált lemezterület|&bull;&nbsp;Az Adatmásolás miatt használt adatbázis-területtel arányos késés</br>&bull;&nbsp;Általában kevesebb, mint 1 perc/GB felhasznált lemezterület|
-|**Alapszintű rugalmas </br>készlet, Standard (S2-S12 </br>), </br>nagy kapacitású, általános célú önálló adatbázis vagy rugalmas készlet**|&bull;&nbsp;Az Adatmásolás miatt használt adatbázis-területtel arányos késés</br>&bull;&nbsp;Általában kevesebb, mint 1 perc/GB felhasznált lemezterület|&bull;&nbsp;Állandó időbeli késés a felhasznált területtől függetlenül</br>&bull;&nbsp;Általában kevesebb, mint 5 perc|&bull;&nbsp;Az Adatmásolás miatt használt adatbázis-területtel arányos késés</br>&bull;&nbsp;Általában kevesebb, mint 1 perc/GB felhasznált lemezterület|
-|**Prémium vagy üzletileg kritikus önálló adatbázis vagy rugalmas készlet**|&bull;&nbsp;Az Adatmásolás miatt használt adatbázis-területtel arányos késés</br>&bull;&nbsp;Általában kevesebb, mint 1 perc/GB felhasznált lemezterület|&bull;&nbsp;Az Adatmásolás miatt használt adatbázis-területtel arányos késés</br>&bull;&nbsp;Általában kevesebb, mint 1 perc/GB felhasznált lemezterület|&bull;&nbsp;Az Adatmásolás miatt használt adatbázis-területtel arányos késés</br>&bull;&nbsp;Általában kevesebb, mint 1 perc/GB felhasznált lemezterület|
+|**Alapszintű önálló adatbázis,</br> standard (S0-S1)**|&bull; &nbsp;állandó időbeli késés a felhasznált területtől függetlenül</br>&bull; &nbsp;általában kevesebb, mint 5 perc|&bull; &nbsp;késés az Adatmásolás miatt használt adatbázis-területhez viszonyítva</br>&bull; &nbsp;általában kevesebb, mint 1 perc/GB felhasznált lemezterület|&bull; &nbsp;késés az Adatmásolás miatt használt adatbázis-területhez viszonyítva</br>&bull; &nbsp;általában kevesebb, mint 1 perc/GB felhasznált lemezterület|
+|**Alapszintű rugalmas készlet, </br>standard (S2-S12), </br>nagy kapacitású, </br>általános célú önálló adatbázis vagy rugalmas készlet**|&bull; &nbsp;késés az Adatmásolás miatt használt adatbázis-területhez viszonyítva</br>&bull; &nbsp;általában kevesebb, mint 1 perc/GB felhasznált lemezterület|&bull; &nbsp;állandó időbeli késés a felhasznált területtől függetlenül</br>&bull; &nbsp;általában kevesebb, mint 5 perc|&bull; &nbsp;késés az Adatmásolás miatt használt adatbázis-területhez viszonyítva</br>&bull; &nbsp;általában kevesebb, mint 1 perc/GB felhasznált lemezterület|
+|**Prémium vagy üzletileg kritikus önálló adatbázis vagy rugalmas készlet**|&bull; &nbsp;késés az Adatmásolás miatt használt adatbázis-területhez viszonyítva</br>&bull; &nbsp;általában kevesebb, mint 1 perc/GB felhasznált lemezterület|&bull; &nbsp;késés az Adatmásolás miatt használt adatbázis-területhez viszonyítva</br>&bull; &nbsp;általában kevesebb, mint 1 perc/GB felhasznált lemezterület|&bull; &nbsp;késés az Adatmásolás miatt használt adatbázis-területhez viszonyítva</br>&bull; &nbsp;általában kevesebb, mint 1 perc/GB felhasznált lemezterület|
 
 > [!NOTE]
 >
@@ -57,7 +57,7 @@ A szolgáltatási réteg módosításának becsült késése vagy egy önálló 
 > - Ha az adatbázist egy rugalmas készletre vagy-re helyezi át, csak az adatbázis által használt terület befolyásolja a késést, nem a rugalmas készlet által használt területet.
 >
 > [!TIP]
-> A folyamatban lévő műveletek figyeléséhez lásd: [Az SQL REST API használatával kezelheti a](https://docs.microsoft.com/rest/api/sql/operations/list)műveleteket, kezelheti a [parancssori](/cli/azure/sql/db/op)felületeket, figyelheti a [műveleteket a T-SQL](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database) és a két PowerShell-parancs használatával: [Get-AzSqlDatabaseActivity](/powershell/module/az.sql/get-azsqldatabaseactivity) and [Stop-AzSqlDatabaseActivity](/powershell/module/az.sql/stop-azsqldatabaseactivity).
+> A folyamatban lévő műveletek figyeléséhez tekintse meg a következő témakört: [műveletek kezelése az SQL REST API használatával](https://docs.microsoft.com/rest/api/sql/operations/list), műveletek [kezelése a CLI](/cli/azure/sql/db/op)használatával, a műveletek [FIGYELÉSe a T-SQL](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database) használatával és a két PowerShell-paranccsal: [Get-AzSqlDatabaseActivity](/powershell/module/az.sql/get-azsqldatabaseactivity) és [ Stop-AzSqlDatabaseActivity](/powershell/module/az.sql/stop-azsqldatabaseactivity).
 
 ### <a name="additional-considerations-when-changing-service-tier-or-rescaling-compute-size"></a>A szolgáltatási réteg módosításának és a számítási méret átméretezésének további szempontjai
 
@@ -71,7 +71,7 @@ Az adatbázis óránkénti számlázása az adott órában alkalmazott legmagasa
 ## <a name="change-elastic-pool-storage-size"></a>Rugalmas készlet tárolási méretének módosítása
 
 > [!IMPORTANT]
-> Bizonyos körülmények között szükség lehet az adatbázis nem használt terület felszabadítását zsugorítani. További információkért lásd: [kezelése az Azure SQL Database területe](sql-database-file-space-management.md).
+> Bizonyos körülmények között előfordulhat, hogy az adatbázist fel kell zsugorodnia a fel nem használt területek visszaigényléséhez. További információ: [a tárterület kezelése Azure SQL Databaseban](sql-database-file-space-management.md).
 
 ### <a name="vcore-based-purchasing-model"></a>Virtuálismag-alapú vásárlási modell
 
@@ -83,7 +83,7 @@ Az adatbázis óránkénti számlázása az adott órában alkalmazott legmagasa
 - A rugalmas készlet tárterületének ára a tárolási kapacitás, a szolgáltatási szintet tartalmazó tárolási egység árával megszorozva. További információ az extra tárterület díjszabásáról: [SQL Database díjszabása](https://azure.microsoft.com/pricing/details/sql-database/).
 
 > [!IMPORTANT]
-> Bizonyos körülmények között szükség lehet az adatbázis nem használt terület felszabadítását zsugorítani. További információkért lásd: [kezelése az Azure SQL Database területe](sql-database-file-space-management.md).
+> Bizonyos körülmények között előfordulhat, hogy az adatbázist fel kell zsugorodnia a fel nem használt területek visszaigényléséhez. További információ: [a tárterület kezelése Azure SQL Databaseban](sql-database-file-space-management.md).
 
 ### <a name="dtu-based-purchasing-model"></a>DTU-alapú vásárlási modell
 
@@ -92,7 +92,7 @@ Az adatbázis óránkénti számlázása az adott órában alkalmazott legmagasa
 - A rugalmas készlet extra tárterületének díja a további tárterület mérete, a szolgáltatási szinten található extra tárolási egység árával megszorozva. További információ az extra tárterület díjszabásáról: [SQL Database díjszabása](https://azure.microsoft.com/pricing/details/sql-database/).
 
 > [!IMPORTANT]
-> Bizonyos körülmények között szükség lehet az adatbázis nem használt terület felszabadítását zsugorítani. További információkért lásd: [kezelése az Azure SQL Database területe](sql-database-file-space-management.md).
+> Bizonyos körülmények között előfordulhat, hogy az adatbázist fel kell zsugorodnia a fel nem használt területek visszaigényléséhez. További információ: [a tárterület kezelése Azure SQL Databaseban](sql-database-file-space-management.md).
 
 ## <a name="next-steps"></a>További lépések
 

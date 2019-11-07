@@ -1,6 +1,6 @@
 ---
-title: Távolítsa el az SSISDB-naplók az Azure rugalmas adatbázis-feladatok |} A Microsoft Docs
-description: Ez a cikk bemutatja, hogyan SSISDB naplók karbantartása indítható a tárolt eljárást, amely erre a célra az Azure rugalmas adatbázis-feladatok használatával
+title: 'SSISDB-naplók karbantartása az Azure Elastic Database-feladatokkal '
+description: Ez a cikk azt ismerteti, hogyan lehet megtisztítani a SSISDB-naplókat az Azure rugalmas adatbázis-feladatok használatával az erre a célra használt tárolt eljárás elindításához
 services: data-factory
 documentationcenter: ''
 ms.service: data-factory
@@ -12,30 +12,30 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: 1afc40bd601c06def57ae59797d31a5edf4095bd
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0697addb14894855f554c1d82f59f3798e63d03b
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61345551"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73674743"
 ---
-# <a name="clean-up-ssisdb-logs-with-azure-elastic-database-jobs"></a>Azure Elastic Database-feladatok az SSISDB-naplók törlése
+# <a name="clean-up-ssisdb-logs-with-azure-elastic-database-jobs"></a>SSISDB-naplók karbantartása az Azure Elastic Database-feladatokkal
 
-Ez a cikk ismerteti az Azure rugalmas adatbázis-feladatok használata a tárolt eljárást az SQL Server Integration Services katalógus-adatbázis, naplók módszerétől aktiválásához `SSISDB`.
+Ez a cikk azt ismerteti, hogyan lehet az Azure Elastic Database-feladatokkal elindítani a tárolt eljárást, amely törli a naplókat az SQL Server Integration Services Catalog-adatbázishoz, `SSISDB`.
 
-Elastic Database-feladatok egy Azure-szolgáltatás, amellyel könnyedén automatizálhatja és a egy adatbázist vagy adatbáziscsoportok futtathat feladatokat. Ütemezése, futtatása és figyelése, ezeket a feladatokat az Azure Portalon, a Transact-SQL, a PowerShell vagy a REST API-k használatával. A rugalmas adatbázis-feladatok használatával elindíthatja a tárolt eljárás a naplókarbantartás egyszer vagy ütemezés szerint. Kiválaszthatja, hogy az ütemezési időköz, nagy adatbázis-terhelés elkerülése érdekében SSISDB erőforrás-használat alapján.
+Elastic Database feladatok egy Azure-szolgáltatás, amely megkönnyíti a feladatok automatizálását és futtatását egy adatbázison vagy egy adatbázis-csoporton. Ezeket a feladatokat a Azure Portal, a Transact-SQL, a PowerShell vagy a REST API-k használatával ütemezheti, futtathatja és figyelheti. A Elastic Database feladat használatával aktiválhatja a napló-karbantartási műveletet egy alkalommal vagy egy ütemezett időpontban. Az SSISDB erőforrás-használat alapján kiválaszthatja az ütemezett időközt, hogy elkerülje a nagy mennyiségű adatbázis terhelését.
 
-További információ: [csoportok a adatbázisok az Elastic Database-feladatok kezelése](../sql-database/elastic-jobs-overview.md).
+További információ: [adatbázisok csoportjainak kezelése Elastic Database feladatokkal](../sql-database/elastic-jobs-overview.md).
 
-A következő szakaszok ismertetik, hogy miként indítható el a tárolt eljárás `[internal].[cleanup_server_retention_window_exclusive]`, amely eltávolítja a a rendszergazda által beállított megőrzési időtartamon kívül eső SSISDB-naplókat.
+A következő szakaszok azt ismertetik, hogyan kell elindítani a tárolt eljárást `[internal].[cleanup_server_retention_window_exclusive]`, ami eltávolítja a rendszergazda által beállított adatmegőrzési időszakon kívüli SSISDB-naplókat.
 
-## <a name="clean-up-logs-with-power-shell"></a>PowerShell-naplók törlése
+## <a name="clean-up-logs-with-power-shell"></a>Naplók törlése a Power shellben
 
 [!INCLUDE [requires-azurerm](../../includes/requires-azurerm.md)]
 
-A következő PowerShell-példaszkriptekre hozzon létre egy új rugalmas feladat indításához az SSISDB a naplókarbantartás tárolt eljárást. További információ: [hozzon létre egy PowerShell-lel feladatügynök](../sql-database/elastic-jobs-powershell.md).
+Az alábbi PowerShell-parancsfájlok új rugalmas feladatot hoznak létre a SSISDB-napló karbantartásához tárolt eljárás elindításához. További információ: [rugalmas feladatok ügynökének létrehozása a PowerShell használatával](../sql-database/elastic-jobs-powershell.md).
 
-### <a name="create-parameters"></a>Paramétereinek létrehozása
+### <a name="create-parameters"></a>Paraméterek létrehozása
 
 ``` powershell
 # Parameters needed to create the Job Database
@@ -65,7 +65,7 @@ $IntervalCount = $(Read-Host "Please enter the detailed interval value in the gi
 $StartTime = (Get-Date)
 ```
 
-### <a name="trigger-the-cleanup-stored-procedure"></a>A Lemezkarbantartó tárolt eljárás eseményindító
+### <a name="trigger-the-cleanup-stored-procedure"></a>A karbantartási tárolt eljárás elindítása
 
 ```powershell
 # Install the latest PackageManagement powershell package which PowershellGet v1.6.5 is dependent on
@@ -157,13 +157,13 @@ Write-Output "Start the execution schedule of the stored procedure for SSISDB lo
 $Job | Set-AzureRmSqlElasticJob -IntervalType $IntervalType -IntervalCount $IntervalCount -StartTime $StartTime -Enable
 ```
 
-## <a name="clean-up-logs-with-transact-sql"></a>A Transact-SQL-naplók törlése
+## <a name="clean-up-logs-with-transact-sql"></a>Naplók törlése a Transact-SQL-sel
 
-Az alábbi példa Transact-SQL-parancsfájlok a tárolt eljárást az SSISDB a naplókarbantartás aktiválhat egy új rugalmas feladat létrehozása. További információ: [használata Transact-SQL (T-SQL) létrehozása és kezelése Elastic Database-feladatok](../sql-database/elastic-jobs-tsql.md).
+A következő példa Transact-SQL-szkriptek új rugalmas feladatot hoznak létre a SSISDB-napló karbantartására szolgáló tárolt eljárás elindításához. További információ: [a Transact-SQL (T-SQL) használata Elastic Database feladatok létrehozásához és kezeléséhez](../sql-database/elastic-jobs-tsql.md).
 
-1. Hozzon létre, vagy egy üres S0 vagy magasabb szintű Azure SQL Database a SSISDBCleanup feladat adatbázis lehet azonosítani. Ezután hozzon létre egy rugalmas feladatot ügynök a [az Azure portal](https://ms.portal.azure.com/#create/Microsoft.SQLElasticJobAgent).
+1. Hozzon létre vagy azonosítson egy üres S0 vagy magasabb Azure SQL Database, hogy a SSISDBCleanup-feladatok adatbázisa legyen. Ezután hozzon létre egy rugalmas feladatot a [Azure Portalban](https://ms.portal.azure.com/#create/Microsoft.SQLElasticJobAgent).
 
-2. A feladat-adatbázisban hozzon létre az SSISDB napló tisztítási feladat hitelesítő adatot. A hitelesítő adat segítségével csatlakozzon az SSISDB adatbázis a naplók tisztításához.
+2. A feladathoz tartozó adatbázisban hozzon létre egy hitelesítő adatot a SSISDB napló-karbantartási feladathoz. Ezt a hitelesítő adatot a rendszer a SSISDB-adatbázishoz való kapcsolódáshoz használja a naplók tisztításához.
 
     ```sql
     -- Connect to the job database specified when creating the job agent
@@ -174,7 +174,7 @@ Az alábbi példa Transact-SQL-parancsfájlok a tárolt eljárást az SSISDB a n
     CREATE DATABASE SCOPED CREDENTIAL SSISDBLogCleanupCred WITH IDENTITY = 'SSISDBLogCleanupUser', SECRET = '<EnterStrongPasswordHere>'; 
     ```
 
-3. Adja meg a célcsoportot, amely tartalmazza az SSISDB-adatbázis, amelynek meg szeretné hajtsa végre a tisztítás tárolt eljárást.
+3. Adja meg azt a SSISDB-adatbázist tartalmazó célcsoportot, amelynek a karbantartási tárolt eljárását futtatni kívánja.
 
     ```sql
     -- Connect to the job database 
@@ -191,7 +191,7 @@ Az alábbi példa Transact-SQL-parancsfájlok a tárolt eljárást az SSISDB a n
     SELECT * FROM jobs.target_groups WHERE target_group_name = 'SSISDBTargetGroup';
     SELECT * FROM jobs.target_group_members WHERE target_group_name = 'SSISDBTargetGroup';
     ```
-4. Adja meg az SSISDB-adatbázis megfelelő engedélyeket. Az SSISDB-katalógusban tárolt eljárás sikeresen futtatni az SSISDB a naplókarbantartás megfelelő engedélyekkel kell rendelkeznie. Részletes útmutatásért lásd: [bejelentkezések kezelése](../sql-database/sql-database-manage-logins.md).
+4. Adja meg a megfelelő engedélyeket a SSISDB-adatbázishoz. A SSISDB-katalógusnak megfelelő engedélyekkel kell rendelkeznie ahhoz, hogy a tárolt eljárás sikeresen futtassa a SSISDB-napló karbantartását. Részletes útmutatásért lásd: [bejelentkezések kezelése](../sql-database/sql-database-manage-logins.md).
 
     ```sql
     -- Connect to the master database in the target server including SSISDB 
@@ -201,7 +201,7 @@ Az alábbi példa Transact-SQL-parancsfájlok a tárolt eljárást az SSISDB a n
     CREATE USER SSISDBLogCleanupUser FROM LOGIN SSISDBLogCleanupUser;
     GRANT EXECUTE ON internal.cleanup_server_retention_window_exclusive TO SSISDBLogCleanupUser
     ```
-5. A feladat létrehozása, és adja hozzá az SSISDB a naplókarbantartás tárolt eljárás végrehajtásának aktiválása egy feladat lépést.
+5. Hozza létre a feladatot, és adjon hozzá egy feladatot, amely elindítja a SSISDB-napló karbantartása tárolt eljárásának végrehajtását.
 
     ```sql
     --Connect to the job database 
@@ -214,9 +214,9 @@ Az alábbi példa Transact-SQL-parancsfájlok a tárolt eljárást az SSISDB a n
     @credential_name='SSISDBLogCleanupCred',
     @target_group_name='SSISDBTargetGroup'
     ```
-6. A folytatás előtt győződjön meg arról, a megőrzési időtartamon megfelelően van beállítva. A időszakon kívül SSISDB naplók törlődnek, és nem állítható helyre.
+6. A folytatás előtt győződjön meg arról, hogy az adatmegőrzési időszak megfelelően be van állítva. Az ablakon kívüli SSISDB-naplók törlődnek, és nem állíthatók helyre.
 
-   A feladat azonnal megkezdheti a naplókarbantartás SSISDB majd futtathatja.
+   Ezután azonnal futtathatja a feladatot a SSISDB-napló karbantartásának megkezdéséhez.
 
     ```sql
     --Connect to the job database 
@@ -228,7 +228,7 @@ Az alábbi példa Transact-SQL-parancsfájlok a tárolt eljárást az SSISDB a n
     select @je
     select * from jobs.job_executions where job_execution_id = @je
     ```
-7. Szükség esetén ütemezése feladat-végrehajtások SSISDB naplók ütemezés szerint a megőrzési időtartamon kívül eltávolítani. Egy hasonló utasítás használatával frissítheti a feladat paramétereit.
+7. A feladatok végrehajtásának ütemezhető úgy is, hogy a SSISDB-naplókat egy ütemezett adatmegőrzési időszakon kívül is eltávolítsa. Használjon hasonló utasítást a feladatok paramétereinek frissítéséhez.
 
     ```sql
     --Connect to the job database 
@@ -241,15 +241,15 @@ Az alábbi példa Transact-SQL-parancsfájlok a tárolt eljárást az SSISDB a n
     @schedule_end_time='<EnterProperEndTimeForSchedule>'
     ```
 
-## <a name="monitor-the-cleanup-job-in-the-azure-portal"></a>A figyelő a karbantartási feladat az Azure Portalon
+## <a name="monitor-the-cleanup-job-in-the-azure-portal"></a>A karbantartási feladatok figyelése a Azure Portal
 
-Az Azure Portalon a karbantartási feladat végrehajtásának követheti nyomon. Minden egyes végrehajtása, tekintse meg az állapotot, indítsa el, és a feladat befejezési időpontja.
+A karbantartási feladatok végrehajtását a Azure Portal ellenőrizheti. Mindegyik végrehajtásnál megjelenik a feladatokhoz tartozó állapot, Kezdési idő és befejezési idő.
 
-![A figyelő a karbantartási feladat az Azure Portalon](media/how-to-clean-up-ssisdb-logs-with-elastic-jobs/monitor-cleanup-job-portal.png)
+![A karbantartási feladatok figyelése a Azure Portal](media/how-to-clean-up-ssisdb-logs-with-elastic-jobs/monitor-cleanup-job-portal.png)
 
-## <a name="monitor-the-cleanup-job-with-transact-sql"></a>A Transact-SQL-karbantartási feladat figyelése
+## <a name="monitor-the-cleanup-job-with-transact-sql"></a>A karbantartási feladatok figyelése a Transact-SQL-sel
 
-A Transact-SQL használatával a karbantartási feladat végrehajtási előzményeinek megtekintése.
+A Transact-SQL használatával is megtekintheti a karbantartási feladatok végrehajtási előzményeit.
 
 ```sql
 --Connect to the job database 
@@ -264,8 +264,8 @@ ORDER BY start_time DESC
 
 ## <a name="next-steps"></a>További lépések
 
-A felügyeleti és megfigyelési feladatok, az Azure-SSIS integrációs modul kapcsolódik tekintse meg a következő cikkekben talál. Az Azure-SSIS integrációs modul az SSISDB az Azure SQL Database tárolja az SSIS-csomagok futásidejű összetevő.
+A Azure-SSIS Integration Runtime kapcsolatos felügyeleti és figyelési feladatokhoz tekintse meg a következő cikkeket. A Azure-SSIS IR a Azure SQL Database SSISDB tárolt SSIS-csomagok futásidejű motorja.
 
 -   [Az Azure-SSIS Integration Runtime újrakonfigurálása](manage-azure-ssis-integration-runtime.md)
 
--   [Az Azure-SSIS integrációs modul monitorozása](monitor-integration-runtime.md#azure-ssis-integration-runtime).
+-   [Figyelje az Azure-SSIS integrációs](monitor-integration-runtime.md#azure-ssis-integration-runtime)modult.

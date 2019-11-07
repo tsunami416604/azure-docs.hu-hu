@@ -1,6 +1,6 @@
 ---
-title: Az SQL Data Warehouse adatkezelési partnerek |} A Microsoft Docs
-description: Harmadik felek adatkezelési partnerek olyan megoldásokkal, amelyek támogatják az SQL Data Warehouse listája.
+title: Adatkezelési partnerek
+description: A Azure SQL Data Warehouset támogató megoldásokkal rendelkező, harmadik féltől származó adatkezelési partnerek listája.
 services: sql-data-warehouse
 author: mabasile-MSFT
 manager: craigg
@@ -10,27 +10,28 @@ ms.subservice: consume
 ms.date: 04/17/2018
 ms.author: mabasile
 ms.reviewer: igorstan
-ms.openlocfilehash: 98f581eca893fc3f0cf2eae12fdcffbe0440bdd7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.custom: seo-lt-2019
+ms.openlocfilehash: b26d81a125cd64987a9725d88b2f3fcadbdb19ac
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65873695"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73685582"
 ---
-# <a name="sql-data-warehouse-data-management-partners"></a>Az SQL Data Warehouse adatkezelési partnerek
-Az adattárház-megoldást létrehozni, számos különböző iparágvezető eszközök közül választhat. Ez a cikk az adatok felügyeleti eszközöket és megoldásokat támogató Azure SQL Data Warehouse a Microsoft partnervállalatokban emeli ki.
+# <a name="sql-data-warehouse-data-management-partners"></a>Adatkezelési partnerek SQL Data Warehouse
+Az adattárház-megoldás létrehozásához válasszon az piacvezető eszközök széles választékával. Ez a cikk a Microsoft partner vállalatait mutatja be a Azure SQL Data Warehouset támogató adatkezelési eszközökkel és megoldásokkal.
 
 ## <a name="data-management-partners"></a>Adatkezelési partnerek
-| Partner | Leírás | Webhely és a termék hivatkozása |
+| Partner | Leírás | Webhely/termék hivatkozása |
 | ------- | ----------- | -------------------- |
-| ![Adattárház-coffing][1] |**Adattárház-coffing**<br>Nexus Chameleon, egy eszközt, a Tervező lekérdezése rendszerek számára kijelölt 10 éves coffing Adattárházak biztosít. Nexus egy SQL Data warehouse-hoz elérhető lekérdezési eszköz érhető el. Nexus használatával lekérdezheti a belső fejlesztésű, és a számítógépek és adatait felhőbeli több különböző platformon. Pont – kattintson-jelentés! |[Termék oldalát][coffing_website]<br> |
-| ![Inbrein][2] |**Inbrein MicroERD**<br>Inbrein MicroERD biztosítja az eszközöket, amelyek a pontos adatmodell létrehozása, csökkenteni a redundáns adattárolás érdekében, növelheti a hatékonyságot, és figyelje meg az előírásoknak. A felhasználói felület használatával, amelyek célja a széles körű felhasználói élményt alapján, olyan modellező dolgozhatnak DB modellek könnyen és kényelmesen. Folyamatosan élvezheti MicroERD Rákérdezés támogatottá vagy frissítések új és továbbfejlesztett funkcióit. |[Termék oldalát][inbrein_website]<br> |
-| ![Infolibrarian][3] |**Infolibrarian (metaadat-felügyeleti kiszolgáló)**<br>InfoLibrarian összegyűjti, tárolja és kezeli a metaadatokat az adatkezelési kulcs problémás pontok megoldásához. Infolibrarian emellett metaadatok felügyeleti adatszabályozást és felügyeleti szoftvermegoldások eszköz kezelését, közzétételéhez kezébe a különböző eszközök és technológiák metaadataiból. |[Termék oldalát][infolibrarian_website]<br> [Az Azure Marketplace-en][infolibrarian_marketplace]<br> |
-| ![Globális Redpoint][4] |**RedPoint Data Management**<br>RedPoint adatkezelés lehetővé teszi a forgalmazók adataikat cross-csatorna ügyfélkapcsolati során strukturált és strukturálatlan adatok kezelése a alkalmazni. Az Azure SQL Data Warehouse és RedPoint előnyeit kihasználva maximalizálható a strukturált és strukturálatlan adatokhoz, hogy a mai omni csatornán belüli ügyfelek végezhetnek szükség hyper személyre szabott, környezetfüggő interakciókat értékét. Fogd és vidd felület kialakítása, és könnyen adatok felügyeleti folyamatok végrehajtása teszi. |[Termék oldalát][redpoint_dm_website]<br> [Az Azure Marketplace-en][redpoint_dm_marketplace]<br> |
-| ![Egy Sentry][5] |**A SentryOne (DW-figyelő)**<br>Az intelligens adatok mozgását irányítópult és az esemény naptár, a mindig tudja, pontosan mi negatív hatással van a számítási feladatok. Tervezték, hogy a lekérdezések és betölteni a biztonsági mentést, vagy állítsa vissza az adatokat a futó feladatokat, akkor soha nem kell foglalkoznia a legtöbbet hozhatja ki az Azure-erőforrások. |[Termék oldalát][sql_sentry_website]<br>[Az Azure Marketplace-en][sql_sentry_marketplace]<br> |
+| ![Coffing adattárház][1] |**Coffing adattárház**<br>A Coffing adattárháza a Nexus Chameleon-t, egy olyan eszközt, amely a rendszerek lekérdezésére szolgáló, 10 éves kialakítású. A Nexus a SQL Data Warehouse lekérdezési eszközeként érhető el. A Nexus használatával lekérdezheti a házon belüli és a felhőben lévő számítógépeket, és különböző platformokon csatlakoztathatja az adategységeket. Point-Click-Report! |[Termék lap][coffing_website]<br> |
+| ![Inbrein][2] |**Inbrein MicroERD**<br>A Inbrein MicroERD biztosítja azokat az eszközöket, amelyek pontos adatmodell létrehozásához szükségesek, csökkentik az adatredundanciát, javítják a hatékonyságot, és megfigyelik a szabványokat. Az olyan felhasználói felületével, amely kiterjedt felhasználói élmények alapján lett kifejlesztve, könnyen és kényelmesen dolgozhat az adatbázis-modelleken. A MicroERD új és továbbfejlesztett funkciói az azonnali funkcionalitással kapcsolatos fejlesztéseket és frissítéseket is igénybe vehetik. |[Termék lap][inbrein_website]<br> |
+| ![Infolibrarian][3] |**Infolibrarian (metaadat-felügyeleti kiszolgáló)**<br>A InfoLibrarian katalogizálja, tárolja és kezeli a metaadatokat az adatkezelés kulcsfontosságú pontjainak megoldásához. Emellett a Infolibrarian metaadat-kezelési, adatkezelési és vagyonkezelési szoftveres megoldásokat biztosít a metaadatok különböző eszközkészletből és technológiákból történő kezeléséhez és közzétételéhez. |[Termék lap][infolibrarian_website]<br> [Azure Marketplace][infolibrarian_marketplace]<br> |
+| ![Globális Redpoint][4] |**RedPoint adatkezelés**<br>A RedPoint adatkezelés lehetővé teszi a marketingesek számára, hogy az összes adatát a többcsatornás ügyfelek szerepvállalására használják, miközben strukturált és strukturálatlan adatkezelést végeznek. A Azure SQL Data Warehouse és a RedPoint előnyeit kihasználva maximalizálhatja a strukturált és strukturálatlan adat értékét, így biztosíthatja a felhasználók által a mai Omni Channel-ügyfelek bevonásához szükséges, testre szabott, környezetfüggő interakciókat. A drag-and-drop interfész megkönnyíti az adatkezelési folyamatok megtervezését és végrehajtását. |[Termék lap][redpoint_dm_website]<br> [Azure Marketplace][redpoint_dm_marketplace]<br> |
+| ![Sentry One][5] |**Szoftverével (DW Sentry)**<br>Az intelligens adatáthelyezési irányítópult és az Eseménynaptár révén mindig pontosan megtudhatja, hogy mi befolyásolja a számítási feladatokat. Az adatok betöltésére, biztonsági mentésére vagy visszaállítására szolgáló lekérdezések és feladatok láthatóságának biztosítása érdekében soha nem kell aggódnia az Azure-erőforrások legjelentősebb kihasználása érdekében. |[Termék lap][sql_sentry_website]<br>[Azure Marketplace][sql_sentry_marketplace]<br> |
 
 ## <a name="next-steps"></a>További lépések
-Más partnerekkel kapcsolatos további információkért lásd: [üzleti intelligencia partnerek] [ bi_partners] és [adatokat az integrációs partnerek][di_partners].
+A többi partnerrel kapcsolatos további tudnivalókért tekintse meg az [üzleti intelligencia-partnerek][bi_partners] és [az adatintegrációs partnerek][di_partners]című témakört.
 
 <!--Image references-->
 

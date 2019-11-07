@@ -1,7 +1,7 @@
 ---
 title: Egyszerű entitás típusa – LUIS
 titleSuffix: Azure Cognitive Services
-description: Az egyszerű entitások olyan általános entitások, amelyek egyetlen fogalmat ismertetnek, és a gép által megtanult környezetből származnak. Mivel az egyszerű entitások általában nevek, például a cégnevek, a terméknév vagy más kategóriájú nevek, akkor adjon meg egy kifejezési listát, ha egyszerű entitást használ a használt nevek jelzésének növelésére.
+description: Az egyszerű entitások a gépi megtanult környezet egyetlen koncepcióját írják le. Ha egyszerű entitást használ az eredmények javítására, vegyen fel egy kifejezést tartalmazó listát.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 09/29/2019
 ms.author: diberry
-ms.openlocfilehash: 2eb3ff847f9bfc162adfb281d2ac1fad6f8c5093
-ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
+ms.openlocfilehash: 27eb4d827c1488b0d051505e62286fd66d6a286b
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71695132"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73671519"
 ---
 # <a name="simple-entity"></a>Egyszerű entitás 
 
@@ -27,13 +27,13 @@ Az egyszerű entitások olyan általános entitások, amelyek egyetlen fogalmat 
 
 ![egyszerű entitás](./media/luis-concept-entities/simple-entity.png)
 
-## <a name="example-json"></a>Példa JSON-ban
+## <a name="example-json"></a>Példa JSON-ra
 
 `Bob Jones wants 3 meatball pho`
 
-Az előző utterance (kifejezés), a `Bob Jones` van jelölve egy egyszerű `Customer` entitás.
+Az előző Kimondás során `Bob Jones` egyszerű `Customer` entitásként van megjelölve.
 
-A végpont által visszaadott szerepel az entitás nevét, a felderített szöveget az utterance (kifejezés), a helyét a felderített szöveg és a pontszám:
+A végpont által visszaadott adatok között szerepel az entitás neve, a felderített szöveg a Kimondás után, a felderített szöveg helye és a pontszám:
 
 #### <a name="v2-prediction-endpoint-responsetabv2"></a>[V2 előrejelzési végpont válasza](#tab/V2)
 
@@ -88,7 +88,7 @@ This is the JSON if `verbose=true` is set in the query string:
 
 * * * 
 
-|Objektum|Entitás neve|Érték|
+|Adatobjektum|Entitás neve|Érték|
 |--|--|--|
 |Egyszerű entitás|`Customer`|`bob jones`|
 

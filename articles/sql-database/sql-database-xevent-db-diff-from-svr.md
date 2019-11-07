@@ -1,5 +1,5 @@
 ---
-title: Bővített események a SQL Databaseban | Microsoft Docs
+title: Bővített események SQL Database
 description: Ismerteti a Azure SQL Database kiterjesztett eseményeit (Xevent típusú eseményekhez), valamint azt, hogy az esemény-munkamenetek hogyan térnek el kis mértékben a Microsoft SQL Server esemény-munkameneteitől.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: MightyPen
 ms.author: genemi
 ms.reviewer: jrasnik
 ms.date: 12/19/2018
-ms.openlocfilehash: f9af487e2eb35e7dc94e1b70945d5c03ffdde2ba
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 64cfcd9451416a6eb35301268b285bd00cf0cad4
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68566080"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73686781"
 ---
 # <a name="extended-events-in-sql-database"></a>Bővített események SQL Database
 [!INCLUDE [sql-database-xevents-selectors-1-include](../../includes/sql-database-xevents-selectors-1-include.md)]
@@ -31,7 +31,7 @@ A *xevent típusú eseményekhez* egy nem hivatalos Felhasználónév, amelyet n
 
 További információ a Azure SQL Database és Microsoft SQL Server kiterjesztett eseményeiről:
 
-- [Gyorskonfigurálás: Bővített események SQL Server](https://msdn.microsoft.com/library/mt733217.aspx)
+- [Gyorskonfigurálás: bővített események a SQL Server](https://msdn.microsoft.com/library/mt733217.aspx)
 - [Bővített események](https://msdn.microsoft.com/library/bb630282.aspx)
 
 ## <a name="prerequisites"></a>Előfeltételek
@@ -58,7 +58,7 @@ A kapcsolódó témakörök két mintakód-mintát biztosítanak:
 
 - [A kibővített eseményekhez tartozó gyűrűs pufferek SQL Database](sql-database-xevent-code-ring-buffer.md)
     - Rövid egyszerű Transact-SQL-szkript.
-    - Kiemeljük a kód minta témakörben, hogy ha a gyűrűs puffer céljával készült, akkor az erőforrásait az Alter-drop `ALTER EVENT SESSION ... ON DATABASE DROP TARGET ...;` utasítás végrehajtásával kell felszabadítani. Később a gyűrűs puffer `ALTER EVENT SESSION ... ON DATABASE ADD TARGET ...`egy másik példányát is hozzáadhatja.
+    - Kiemeljük a kód minta témakörben, hogy ha a gyűrűs puffer céljával készült, akkor az erőforrásait az Alter-drop `ALTER EVENT SESSION ... ON DATABASE DROP TARGET ...;` utasítás végrehajtásával kell felszabadítani. Később a gyűrűs puffer egy másik példányát is hozzáadhatja `ALTER EVENT SESSION ... ON DATABASE ADD TARGET ...`.
 
 
 - [Az eseménynaplóban a kiterjesztett események SQL Database](sql-database-xevent-code-event-file.md)
@@ -71,7 +71,7 @@ A kapcsolódó témakörök két mintakód-mintát biztosítanak:
 - Ha az esemény- [munkamenet létrehozása](https://msdn.microsoft.com/library/bb677289.aspx) parancsot SQL Serveron hajtja végre, használja a **on Server** záradékot. SQL Database azonban a **on Database** záradékot használja.
 
 
-- A **on Database** záradék az [Alter Event](https://msdn.microsoft.com/library/bb630368.aspx) -munkamenetre és a [drop Event Session](https://msdn.microsoft.com/library/bb630257.aspx) Transact-SQL parancsokra is vonatkozik.
+- A **on Database** záradék az [Alter Event-munkamenetre](https://msdn.microsoft.com/library/bb630368.aspx) és a [drop Event Session](https://msdn.microsoft.com/library/bb630257.aspx) Transact-SQL parancsokra is vonatkozik.
 
 
 - Az ajánlott eljárás a **STARTUP_STATE = on** esemény-munkamenet-beállítás belefoglalása az **esemény-munkamenet létrehozása** vagy az **esemény-munkamenet** -utasítások módosítása.
@@ -83,13 +83,13 @@ A kiterjesztett események funkciót számos [katalógus-nézet](https://msdn.mi
 
 | Neve<br/>Katalógus nézet | Leírás |
 |:--- |:--- |
-| **sys.database_event_session_actions** |Minden művelet sorát adja vissza egy esemény-munkamenet minden eseményén. |
-| **sys.database_event_session_events** |Egy adott esemény-munkamenetben lévő események sorát adja vissza. |
-| **sys.database_event_session_fields** |Egy sort ad vissza minden olyan testre szabható oszlophoz, amely explicit módon be van állítva az eseményekre és a célokra. |
-| **sys.database_event_session_targets** |Egy adott esemény-munkamenethez tartozó összes esemény céljának sorát adja vissza. |
-| **sys.database_event_sessions** |Egy sort ad vissza a SQL Database-adatbázisban található minden egyes esemény-munkamenethez. |
+| **sys. database_event_session_actions** |Minden művelet sorát adja vissza egy esemény-munkamenet minden eseményén. |
+| **sys. database_event_session_events** |Egy adott esemény-munkamenetben lévő események sorát adja vissza. |
+| **sys. database_event_session_fields** |Egy sort ad vissza minden olyan testre szabható oszlophoz, amely explicit módon be van állítva az eseményekre és a célokra. |
+| **sys. database_event_session_targets** |Egy adott esemény-munkamenethez tartozó összes esemény céljának sorát adja vissza. |
+| **sys. database_event_sessions** |Egy sort ad vissza a SQL Database-adatbázisban található minden egyes esemény-munkamenethez. |
 
-A Microsoft SQL Server hasonló katalógus-nézetek olyan nevekkel rendelkeznek, amelyek. *Server\_*  helyett a. *Database\_* nevet tartalmazzák. A név mint **sys. server_event_%** .
+Microsoft SQL Server hasonló katalógus-nézetek olyan nevekkel rendelkeznek, mint a. *Server\_* a *. Database\_* helyett. A név mint **sys. server_event_%** .
 
 ## <a name="new-dynamic-management-views-dmvshttpsmsdnmicrosoftcomlibraryms188754aspx"></a>Új dinamikus felügyeleti nézetek [(DMV)](https://msdn.microsoft.com/library/ms188754.aspx)
 
@@ -97,23 +97,23 @@ A Azure SQL Database [dinamikus felügyeleti nézetekkel (DMV) rendelkeznek](htt
 
 | DMV neve | Leírás |
 |:--- |:--- |
-| **sys.dm_xe_database_session_event_actions** |Az esemény-munkamenet műveletekkel kapcsolatos adatokat adja vissza. |
-| **sys.dm_xe_database_session_events** |A munkamenet-eseményekre vonatkozó adatokat adja vissza. |
-| **sys.dm_xe_database_session_object_columns** |Megjeleníti a munkamenethez kötött objektumok konfigurációs értékeit. |
-| **sys.dm_xe_database_session_targets** |A munkamenet-célokkal kapcsolatos adatokat adja vissza. |
-| **sys.dm_xe_database_sessions** |Az aktuális adatbázisra hatókörben lévő minden esemény-munkamenet sorát adja vissza. |
+| **sys. DM _xe_database_session_event_actions** |Az esemény-munkamenet műveletekkel kapcsolatos adatokat adja vissza. |
+| **sys. DM _xe_database_session_events** |A munkamenet-eseményekre vonatkozó adatokat adja vissza. |
+| **sys. DM _xe_database_session_object_columns** |Megjeleníti a munkamenethez kötött objektumok konfigurációs értékeit. |
+| **sys. DM _xe_database_session_targets** |A munkamenet-célokkal kapcsolatos adatokat adja vissza. |
+| **sys. DM _xe_database_sessions** |Az aktuális adatbázisra hatókörben lévő minden esemény-munkamenet sorát adja vissza. |
 
-A Microsoft SQL Server hasonló katalógus-nézetek neve nem a  *\_név adatbázis* része, például:
+A Microsoft SQL Server hasonló katalógus-nézetek neve nem a név *\_adatbázis* része, például:
 
-- **sys. DM _xe_sessions**, név helyett<br/>**sys.dm_xe_database_sessions**.
+- **sys. DM _xe_sessions**, név helyett<br/>**sys. DM _xe_database_sessions**.
 
 ### <a name="dmvs-common-to-both"></a>DMV közös
 A kiterjesztett eseményeknél további DMV is léteznek, amelyek a Azure SQL Database és Microsoft SQL Server egyaránt közösek:
 
-- **sys.dm_xe_map_values**
-- **sys.dm_xe_object_columns**
-- **sys.dm_xe_objects**
-- **sys.dm_xe_packages**
+- **sys. DM _xe_map_values**
+- **sys. DM _xe_object_columns**
+- **sys. DM _xe_objects**
+- **sys. DM _xe_packages**
 
   <a name="sqlfindseventsactionstargets" id="sqlfindseventsactionstargets"></a>
 
@@ -171,7 +171,7 @@ Az Azure Storage-tárolóhoz létrehozott SAS-jogkivonatnak meg kell adnia az en
 
 - Olvasás
 - Írás
-- List
+- Lista
 
 ## <a name="performance-considerations"></a>A teljesítménnyel kapcsolatos megfontolások
 
@@ -180,7 +180,7 @@ Vannak olyan forgatókönyvek, amelyekben a kiterjesztett események intenzív h
 Ha olyan hibaüzenetet kap, amely szerint a rendszer maximálisan kikényszeríti a memóriát, néhány javítási művelet elvégezhető:
 
 - Kevesebb egyidejű esemény-munkamenet futtatása.
-- Az esemény -munkamenetek létrehozási és **módosítási** utasításai segítségével csökkentheti a **maximális\_memória** záradékban megadott memória mennyiségét.
+- Az esemény-munkamenetek **létrehozási** és **módosítási** utasításai csökkentik a **maximális\_memória** záradékban megadott memória mennyiségét.
 
 ### <a name="network-latency"></a>Hálózati késleltetés
 
@@ -195,7 +195,7 @@ Az **eseményvezérelt fájl** célja hálózati késést vagy hibát tapasztalh
 - [Azure PowerShell használata az Azure Storage](../storage/common/storage-powershell-guide-full.md) -ban – átfogó információkat nyújt a PowerShell és az Azure Storage szolgáltatásról.
 - [A blob Storage használata a .NET-keretrendszerrel](../storage/blobs/storage-dotnet-how-to-use-blobs.md)
 - [CREATE CREDENTIAL (Transact-SQL)](https://msdn.microsoft.com/library/ms189522.aspx)
-- [CREATE EVENT SESSION (Transact-SQL)](https://msdn.microsoft.com/library/bb677289.aspx)
+- [ESEMÉNY-munkamenet létrehozása (Transact-SQL)](https://msdn.microsoft.com/library/bb677289.aspx)
 - [Jonathan Kehayias ' blogbejegyzések a bővített eseményekről Microsoft SQL Server](https://www.sqlskills.com/blogs/jonathan/category/extended-events/)
 
 

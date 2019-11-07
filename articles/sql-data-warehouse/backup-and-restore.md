@@ -1,5 +1,5 @@
 ---
-title: Azure SQL Data Warehouse biztonsági mentés és visszaállítás – Pillanatképek, Geo-redundáns | Microsoft Docs
+title: Biztonsági mentés és visszaállítás – Pillanatképek, Geo-redundáns
 description: Ismerje meg, hogyan működik a biztonsági mentés és a visszaállítás a Azure SQL Data Warehouseban. Az adatraktár biztonsági másolatait használva állítsa vissza az adattárházat az elsődleges régió visszaállítási pontjára. A Geo-redundáns biztonsági mentések használatával egy másik földrajzi régióba állíthatja vissza a visszaállítást.
 services: sql-data-warehouse
 author: kevinvngo
@@ -10,12 +10,13 @@ ms.subservice: manage
 ms.date: 10/21/2019
 ms.author: anjangsh
 ms.reviewer: igorstan
-ms.openlocfilehash: 1cf6444b155830326f4876d2d65bcdaa5923fc35
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.custom: seo-lt-2019"
+ms.openlocfilehash: f37ca56f7875dcb6ab254a11b859c3e85f6a1dd0
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72788810"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73686146"
 ---
 # <a name="backup-and-restore-in-azure-sql-data-warehouse"></a>Biztonsági mentés és visszaállítás Azure SQL Data Warehouse
 
@@ -104,6 +105,6 @@ Az adattárházat bármely olyan régióra [visszaállíthatja](https://docs.mic
 > [!NOTE]
 > A Geo-redundáns visszaállítás végrehajtásához nem kell kijelölnie ezt a funkciót.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ a katasztrófák tervezéséről: az [üzletmenet folytonosságának áttekintése](../sql-database/sql-database-business-continuity.md)
