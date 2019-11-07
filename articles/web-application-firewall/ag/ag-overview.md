@@ -4,15 +4,15 @@ description: Ez a cikk áttekintést nyújt a webalkalmazási tűzfalról (WAF) 
 services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
-ms.date: 10/16/2019
+ms.date: 11/05/2019
 ms.author: victorh
 ms.topic: overview
-ms.openlocfilehash: 3cc0af122143d2ee702f1f16ee26c010befa1155
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: HT
+ms.openlocfilehash: 6d073648dc908cbbe40962f7ba079abcfe85ce45
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73502344"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73607324"
 ---
 # <a name="azure-web-application-firewall-on-azure-application-gateway"></a>Azure webalkalmazási tűzfal az Azure Application Gateway
 
@@ -20,10 +20,10 @@ Az Azure-Application Gateway Azure webalkalmazási tűzfala (WAF) lehetővé tes
 
 A WAF on Application Gateway az Open Web Application Security Project (OWASP) [alapszintű szabálykészlet (CRS)](https://www.owasp.org/index.php/Category:OWASP_ModSecurity_Core_Rule_Set_Project) 3,1, 3,0 vagy 2.2.9 alapul. A WAF automatikusan frissíti az új biztonsági rések elleni védelmet, és nincs szükség további konfigurálásra. 
 
-Az alább felsorolt WAF-funkciók egy WAF szabályzaton belül találhatók. Tetszőleges számú szabályzatot hozhat létre, és társíthatja egy Application Gatewayhoz, az egyes figyelőkhöz, vagy egy Application Gateway Path-alapú útválasztási szabályaihoz. Így szükség esetén külön házirendeket hozhat a Application Gateway mögött lévő helyekhez. A WAF-szabályzatokkal kapcsolatos további információkért lásd: [WAF szabályzat létrehozása](create-waf-policy-ag.md).
+Az alább felsorolt WAF-funkciók egy WAF szabályzaton belül találhatók. Több házirend is létrehozható, és társítható egy Application Gatewayhoz, az egyes figyelőkhöz vagy egy Application Gateway elérésiút-alapú útválasztási szabályaihoz. Így szükség esetén külön házirendeket hozhat a Application Gateway mögött lévő helyekhez. A WAF-szabályzatokkal kapcsolatos további információkért lásd: [WAF szabályzat létrehozása](create-waf-policy-ag.md).
 
    > [!NOTE]
-   > A helyszíni és az URI-WAF szabályzatok nyilvános előzetes verzióban érhetők el. Ez azt jelenti, hogy ez a funkció a Microsoft kiegészítő használati feltételeinek hatálya alá tartozik. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/en-us/support/legal/preview-supplemental-terms/).
+   > A helyszíni és az URI-WAF szabályzatok nyilvános előzetes verzióban érhetők el. Ez azt jelenti, hogy ez a funkció a Microsoft kiegészítő használati feltételeinek hatálya alá tartozik. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ![Application Gateway WAF diagram](../media/ag-overview/waf1.png)
 
@@ -39,9 +39,11 @@ Ez a szakasz a Application Gateway által nyújtott WAF alapvető előnyeit isme
 
 * A webalkalmazások a webes sebezhetőségek és támadások elleni védelem a háttér-programkód módosítása nélkül.
 
-* Egyszerre több webalkalmazást is el kell látni. A Application Gateway egy példánya akár 100 webhelyet is tartalmazhat, amelyeket egy webalkalmazási tűzfal véd.
+* Egyszerre több webalkalmazást is el kell látni. A Application Gateway egy példánya akár 40 webhelyet is tartalmazhat, amelyeket egy webalkalmazási tűzfal véd.
 
-* A webalkalmazások elleni védelem rosszindulatú robotoktól az IP-címmel
+* Egyéni WAF-szabályzatok létrehozása ugyanazon WAF mögötti különböző helyekhez 
+
+* A webalkalmazások rosszindulatú robotoktól való ellátása az IP hírnévre vonatkozó szabályrendszert (előzetes verzió)
 
 ### <a name="monitoring"></a>Figyelés
 
@@ -51,21 +53,26 @@ Ez a szakasz a Application Gateway által nyújtott WAF alapvető előnyeit isme
 
 ### <a name="customization"></a>Testreszabás
 
-* A WAF szabályokat és a szabályok csoportjait testreszabhatja az alkalmazás követelményeinek megfelelően, és elkerülheti a téves pozitív értéket.
+* Szabja testre a WAF szabályokat és a szabályok csoportjait az alkalmazás követelményeinek megfelelően, és távolítsa el a téves pozitív értéket.
 
-* A WAF mögött található minden helyhez hozzárendelhet egy WAF-szabályzatot, hogy engedélyezze a helyspecifikus konfigurációt
+* Rendeljen hozzá egy WAF házirendet a WAF mögötti minden helyhez, hogy engedélyezze a hely-specifikus konfigurációt
 
-## <a name="features"></a>Jellemzők
+* Egyéni szabályok létrehozása az alkalmazás igényeinek megfelelően
+
+## <a name="features"></a>Szolgáltatások
 
 - SQL-befecskendezéses védelem.
 - Helyek közötti parancsfájlok elleni védelem.
 - Más gyakori webes támadások elleni védelem, például a parancsok befecskendezése, a HTTP-kérések csempészete, a HTTP-válaszok felosztása és a távoli fájlok bevonása.
 - A HTTP protokoll megsértésének védelme.
 - A HTTP protokollal kapcsolatos rendellenességek, például a gazdagépek hiányzó felhasználói ügynökének védelme és a fejlécek elfogadása.
-- Védelem a robotok, a keresőrobotok és a képolvasók ellen.
+- Védelem a keresőrobotok és a képolvasók ellen.
 - Az alkalmazások gyakori konfigurációs beállításainak (például az Apache és az IIS) észlelése.
 - Konfigurálható kérelmek méretének korlátja alsó és felső korlátokkal.
 - A kizárási listák lehetővé teszik bizonyos WAF kiértékelését. Gyakori példa Active Directory beszúrt tokenek használata a hitelesítéshez vagy a jelszó mezőkhöz.
+- Egyéni szabályokat hozhat létre az alkalmazások konkrét igényeinek megfelelően.
+- Geo-szűrési forgalom, amely engedélyezi vagy letiltja bizonyos országok számára, hogy hozzáférjenek az alkalmazásaihoz. (előzetes verzió)
+- Az alkalmazásait a robotoktól a bot-elhárítási szabályokkal védekezhet. (előzetes verzió)
 
 ## <a name="waf-policy"></a>WAF szabályzat
 
@@ -79,7 +86,7 @@ További információ: a [webalkalmazási TŰZFAL CRS-szabályait tartalmazó cs
 
 ### <a name="custom-rules"></a>Egyéni szabályok
 
-Application Gateway az egyéni szabályokat is támogatja. Egyéni szabályokkal saját szabályokat hozhat létre, amelyeket a rendszer az WAF-on keresztül áthaladó kérelmek esetében értékel ki. Ezek a szabályok magasabb prioritással rendelkeznek, mint a felügyelt szabálykészlet többi szabálya. Ha teljesülnek a feltételek, a rendszer műveletet végez az engedélyezéshez vagy a blokkoláshoz. 
+A Application Gateway támogatja az egyéni szabályokat is. Egyéni szabályokkal saját szabályokat hozhat létre, amelyeket a rendszer az WAF-on keresztül áthaladó kérelmek esetében értékel ki. Ezek a szabályok magasabb prioritással rendelkeznek, mint a felügyelt szabálykészlet többi szabálya. Ha teljesülnek a feltételek, a rendszer műveletet végez az engedélyezéshez vagy a blokkoláshoz. 
 
 További információ: [Application Gateway egyéni szabályai.](custom-waf-rules-overview.md)
 
@@ -138,6 +145,15 @@ Application Gateway naplók integrálva vannak a [Azure Monitorekkel](../../azur
 
 ![Security Center áttekintése ablak](../media/ag-overview/figure1.png)
 
+#### <a name="azure-sentinel"></a>Azure Sentinel
+
+A Microsoft Azure Sentinel egy skálázható, Felhőbeli natív, biztonsági információkkal kapcsolatos esemény-felügyeleti (SIEM) és biztonsági előkészítési (felszárnyaló) megoldás. Az Azure Sentinel intelligens biztonsági elemzési és fenyegetésekkel kapcsolatos intelligenciát biztosít a vállalaton belül, így egyetlen megoldást kínál a riasztások észlelésére, a fenyegetések láthatóságára, a proaktív vadászatra és a fenyegetésekre való reagálásra.
+
+A beépített Azure WAF Firewall Events munkafüzettel áttekintést kaphat a WAF lévő biztonsági eseményekről. Ilyenek például az események, a megfeleltetett és a blokkolt szabályok, valamint minden más, ami bekerül a tűzfal naplófájljaiba. További információk az alábbi naplózásban. 
+
+
+![Sentinel](../media/ag-overview/sentinel.png)
+
 #### <a name="logging"></a>Naplózás
 
 Application Gateway WAF részletes jelentéskészítést biztosít az általa észlelt fenyegetésekről. A naplózás integrálva van Azure Diagnostics naplókba. A riasztások. JSON formátumban vannak rögzítve. Ezek a naplók [Azure monitor naplókkal](../../azure-monitor/insights/azure-networking-analytics.md)integrálhatók.
@@ -186,4 +202,8 @@ A díjszabási modellek a WAF_v1 és a WAF_v2 SKU-ban különböznek. További i
 
 ## <a name="next-steps"></a>További lépések
 
+- Első lépések [WAF szabályzat létrehozásával](create-waf-policy-ag.md)
+- További információ a [WAF felügyelt szabályairól](application-gateway-crs-rulegroups-rules.md)
+- További információ az [Egyéni szabályokról](custom-waf-rules-overview.md)
 - Ismerje meg [a webalkalmazási tűzfalat az Azure bejárati ajtaján](../afds/afds-overview.md)
+

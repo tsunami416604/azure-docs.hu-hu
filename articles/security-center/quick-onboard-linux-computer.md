@@ -1,5 +1,5 @@
 ---
-title: Azure Security Center rövid útmutató – Linux rendszerű számítógépek felvétele a Security Centerbe | Microsoft Docs
+title: Linux rendszerű számítógépek beléptetése a Azure Security Centerba | Microsoft Docs
 description: Ez a rövid útmutató bemutatja, hogyan vehet fel Linux rendszerű számítógépeket a Security Centerbe.
 services: security-center
 documentationcenter: na
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/02/2018
 ms.author: memildin
-ms.openlocfilehash: 82ce466f12acef529b5e45e5dd94c64b94be0f7e
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 9f49b858a23d0a1f58505d9f9971a31e8c9167e9
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71202884"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73664503"
 ---
-# <a name="quickstart-onboard-linux-computers-to-azure-security-center"></a>Gyors útmutató: Linux rendszerű számítógépek előkészítése Azure Security Center
+# <a name="quickstart-onboard-linux-computers-to-azure-security-center"></a>Rövid útmutató: Linux rendszerű számítógépek felvétele a Security Centerbe
 Az Azure-előfizetések előkészítése után az ügynök kiépítésével engedélyezheti az Azure-on kívül, például a helyszínen vagy más felhőkben futó Linux-erőforrások Security Centerét. Az ügynök neve Microsoft monitoring Agent (MMA), de más néven OMS-ügynök.
 
 Ez a rövid útmutató bemutatja, hogyan telepítheti az ügynököt egy Linux rendszerű számítógépre.
@@ -39,7 +39,7 @@ A rövid útmutató megkezdése előtt rendelkeznie kell a Security Center Stand
    ![Security Center – Áttekintés][2]
 
 3. A Security Center főmenüjében válassza az **Első lépések** elemet.
-4. Válassza a **Bevezetés** lapot. ![Bevezetés][3]
+4. Válassza ki az első **lépések** fület. ![első lépések][3]
 
 5. Az **Új nem Azure-beli számítógépek hozzáadása** menüpont alatt kattintson a **Konfigurálás** elemre, hogy megjelenítse a Log Analytics-munkaterületek listáját. Ha van ilyen, a lista tartalmazza azt az alapértelmezett munkaterületet is, amelyet a Security Center hozott létre, amikor az automatikus kiépítés engedélyezve volt. Válassza ki ezt a munkaterületet, vagy egy másik használni kívánt munkaterületet.
 
@@ -56,7 +56,7 @@ A rövid útmutató megkezdése előtt rendelkeznie kell a Security Center Stand
 
    ![Az ügynök telepítése][5]
 
-Az ügynök naplói a következő helyen találhatók: */var/opt/Microsoft/omsagent/\<Workspace ID >/log/*
+Az ügynök naplói a következő helyen találhatók: */var/opt/microsoft/omsagent/\<munkaterület azonosítója >/log/*
 
   ![Az ügynök naplói][6]
 

@@ -10,12 +10,12 @@ keywords: Azure Automation, DSC, PowerShell, a kívánt állapot konfigurálása
 ms.date: 11/04/2019
 ms.custom: mvc
 ms.topic: quickstart
-ms.openlocfilehash: 91d8ddf7d8051baeb42ceb58673c93555908f03a
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: ddade9472517d080d01b04c853db9dd1848fe0f3
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73501973"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73668464"
 ---
 # <a name="quickstart-connect-machines-to-azure-using-azure-arc-for-servers---powershell"></a>Gyors útmutató: számítógépek összekötése az Azure-hoz az Azure arc for Servers használatával – PowerShell
 
@@ -198,6 +198,29 @@ A gépek Azure arc-kiszolgálókról történő leválasztásához két lépést
 
 1. Válassza ki a gépet a [portálon](https://aka.ms/hybridmachineportal), kattintson a három pontra (`...`), majd válassza a **Törlés**lehetőséget.
 1. Távolítsa el az ügynököt a gépről.
+
+   Windows rendszeren az "alkalmazások & szolgáltatások" Vezérlőpult használatával távolíthatja el az ügynököt.
+  
+  ![Alkalmazások & funkciók](./media/quickstart-onboard/apps-and-features.png)
+
+   Ha parancsfájlt szeretne használni az eltávolításhoz, használja a következő példát, amely lekéri a **PackageId** , és eltávolítja az ügynököt `msiexec /X`használatával.
+
+   Keresse meg a `HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Uninstall` beállításkulcsot, és keresse meg a **PackageId**. Ezután eltávolíthatja az ügynököt `msiexec`használatával.
+
+   Az alábbi példa az ügynök eltávolítását mutatja be.
+
+   ```powershell
+   Get-ChildItem -Path HKLM:\Software\Microsoft\Windows\CurrentVersion\Uninstall | `
+   Get-ItemProperty | `
+   Where-Object {$_.DisplayName -eq "Azure Connected Machine Agent"} | `
+   ForEach-Object {MsiExec.exe /Quiet /X "$($_.PsChildName)"}
+   ```
+
+   Linux rendszeren futtassa a következő parancsot az ügynök eltávolításához.
+
+   ```bash
+   sudo apt purge hybridagent
+   ```
 
 ## <a name="next-steps"></a>További lépések
 

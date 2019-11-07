@@ -3,17 +3,17 @@ title: A Visual Studio és a Visual Studio Code használata a IoT-Plug and Play 
 description: A Visual Studio és a Visual Studio Code használatával felgyorsíthatja az IoT Plug and Play az eszközök modelljeinek készítését és az eszköz kódjának megvalósítását.
 author: liydu
 ms.author: liydu
-ms.date: 09/10/2019
+ms.date: 10/29/2019
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
-ms.openlocfilehash: d68a3f99096ca64b357239f61cf7ff17d6fc3f83
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: 7bb4e507df24f50238197b738fd54e6b5c1d05ee
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70935728"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73571186"
 ---
 # <a name="use-azure-iot-tools-for-visual-studio-code"></a>A Visual Studio Code-hoz készült Azure IoT Tools használata
 
@@ -25,7 +25,7 @@ Ez a cikk bemutatja, hogyan végezheti el a következőket:
 - Használja a generált kódot az eszköz projektben.
 - Ismételje meg a csontváz kód újragenerálását.
 
-Ha többet szeretne megtudni a VS Code IoT-eszközök fejlesztéséről, olvassa [https://github.com/microsoft/vscode-iot-workbench](https://github.com/microsoft/vscode-iot-workbench)el a következő témakört:.
+Ha többet szeretne megtudni a VS Code IoT-eszközök fejlesztéséről, tekintse meg a következőt: [https://github.com/microsoft/vscode-iot-workbench](https://github.com/microsoft/vscode-iot-workbench).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -46,23 +46,32 @@ A VS Code-ban a **CTRL + SHIFT + P** billentyűkombinációval nyissa meg a para
 
 - **Projekt neve**. A projekt neve a generált kód és más projektfájlok mappájának neveként szerepel. A mappa alapértelmezés szerint a DCM-fájl mellett van elhelyezve. Ha nem szeretné manuálisan átmásolni a generált kód mappát, amikor frissíti a DCM-et, és újragenerálja az eszköz kódját, tartsa meg a DCM-fájlt a Project mappával megegyező mappában.
 
-- **Projekt típusa** A Code Generator egy projektfájlt is létrehoz, hogy integrálni tudja a kódot a saját projektbe vagy az eszköz SDK-projektbe. Jelenleg a támogatott projektek típusai a következők:
-
-    - **CMAK-projekt**: egy olyan eszköz-projekthez, amely a [cmakt](https://cmake.org/) használja Build rendszerként. Ez a beállítás a `CMakeLists.txt` C kóddal megegyező mappában hozza létre a fájlt.
-    - **MXChip IoT fejlesztői készlet-projekt**: egy [MXChip IoT fejlesztői készlet](https://aka.ms/iot-devkit) eszközön futó eszköz-projekthez. Ez a beállítás egy Arduino-projektet hoz létre, amelyet [vs Code](https://docs.microsoft.com/azure/iot-hub/iot-hub-arduino-iot-devkit-az3166-get-started) -ban vagy az Arduino IDE-ben használhat a IoT fejlesztői készlet-eszközön való létrehozásához és futtatásához.
-
 - Az **Azure IoT való kapcsolódás módszere**. A generált fájlok emellett kódot is tartalmaznak, amelyekkel konfigurálhatja az eszközt az Azure IoT Hubhoz való kapcsolódáshoz. Dönthet úgy is, hogy közvetlenül csatlakozik az [Azure IoT hubhoz](https://docs.microsoft.com/azure/iot-hub) , vagy használja az [eszköz kiépítési szolgáltatását](https://docs.microsoft.com/azure/iot-dps).
 
     - **IoT hub eszköz kapcsolati karakterlánca**: Itt adhatja meg azt az eszköz-kapcsolati karakterláncot, amelyhez az alkalmazás közvetlenül csatlakozik IoT hubhoz.
-    - **DPS szimmetrikus kulcson keresztül**: Itt adhatja meg az alkalmazás **hatókör-azonosítóját**, **regisztrációs azonosítóját**és **sas-kulcsát** , amelyek szükségesek a IoT hubhoz való kapcsolódáshoz vagy az IoT Central a DPS használatával.
+    - **DPS szimmetrikus kulcson keresztül**: Itt adhatja meg az eszköz alkalmazásának **hatókörét**, a **szimmetrikus kulcs** és az **eszköz azonosítóját** , amely szükséges ahhoz, hogy a DPS használatával IoT hub vagy IoT Centralhoz kapcsolódjon.
+
+- **Projekt típusa** A Code Generator egy CMak-vagy Arduino-projektet is létrehoz. Jelenleg a támogatott projektek típusai a következők:
+
+    - A **Windows rendszerhez készült CMAK-projekt**: olyan eszköz-projekthez, amely a Windows rendszerű Build-rendszerként a [cmakt](https://cmake.org/) használja. Ez a beállítás a C kóddal megegyező mappában hozza létre a `CMakeLists.txt` az eszköz SDK-konfigurációjáról.
+    - **A Linux**rendszerhez készült CMAK-projekt: egy olyan eszköz-projekthez, amely a [Cmakt](https://cmake.org/) használja Linux-alapú Build rendszerként. Ez a beállítás a C kóddal megegyező mappában hozza létre a `CMakeLists.txt` az eszköz SDK-konfigurációjáról.
+    - **MXChip IoT fejlesztői készlet-projekt**: egy [MXChip IoT fejlesztői készlet](https://aka.ms/iot-devkit) eszközön futó eszköz-projekthez. Ez a beállítás egy Arduino-projektet hoz létre, amelyet [vs Code](https://docs.microsoft.com/azure/iot-hub/iot-hub-arduino-iot-devkit-az3166-get-started) -ban vagy az Arduino IDE-ben használhat a IoT fejlesztői készlet-eszközön való létrehozásához és futtatásához.
+
+- **Eszköz SDK-típusa** Ha a CMak a projekt típusaként lehetőséget választja, ez a lépés azt adja meg, hogy a generált kód hogyan fogja tartalmazni a `CMakeLists.txt`Azure IoT C Device SDK-t:
+
+    - **Forráskódon keresztül**: a generált kód az [eszköz SDK forráskódján](https://github.com/Azure/azure-iot-sdk-c) alapul, amely tartalmazza a-t, és azzal együtt épít. Ez akkor ajánlott, ha testre szabta az eszköz SDK-forráskódját.
+    - **Vcpkg**-on keresztül: a generált kód az [eszköz SDK-Vcpkg](https://github.com/microsoft/vcpkg/tree/master/ports/azure-iot-sdk-c) támaszkodik, amely tartalmazza a-t, és együtt is épít vele. Ez a Windows, Linux vagy macOS rendszerű eszközök ajánlott módja.
+
+    > [!NOTE]
+    > Az Azure IoT C Device SDK Vcpkg macOS-támogatása folyamatban van.
 
 A Code Generator megpróbálja használni a helyi mappában található DCM és Interface fájlokat. Ha az illesztőfelület fájljai nincsenek a helyi mappában, a Code Generator a nyilvános modell adattárában vagy a vállalati modell adattárában keresi a fájlokat. Az [általános interfészek fájljait](./concepts-common-interfaces.md) a nyilvános modell tárháza tárolja.
 
 A kód létrehozása után a bővítmény megnyílik egy új VS Code-ablak a kóddal. Ha olyan létrehozott fájlt nyit meg, mint a **Main. c**, akkor előfordulhat, hogy az IntelliSense azt jelenti, hogy nem tudja megnyitni a c SDK-forrásfájlokat. Az IntelliSense és a kód helyes navigálásának engedélyezéséhez kövesse az alábbi lépéseket a C SDK-forrás felvételéhez:
 
-1. A VS Code-ban a **CTRL + SHIFT + P** billentyűkombinációval nyissa meg a parancssort **, írjaC++be a parancsot, és válassza a C/: Szerkessze a konfigurációkat** (JSON) a **c_cpp_properties. JSON** fájl megnyitásához.
+1. A vs Code-ban használja a **CTRL + SHIFT + P** billentyűkombinációt a parancs paletta megnyitásához, írja be a **C/C++: Edit configurations (JSON)** parancsot a **c_cpp_properties. JSON** fájl megnyitásához.
 
-1. Adja hozzá az eszköz SDK elérési útját `includePath` a szakaszhoz:
+1. Adja hozzá az eszköz SDK elérési útját a `includePath` szakaszban:
 
     ```json
     "includePath": [
@@ -79,100 +88,81 @@ Az alábbi utasítások azt ismertetik, hogyan használható a létrehozott kód
 
 ### <a name="linux"></a>Linux
 
-Az eszköz kódjának és a C SDK-val együtt történő létrehozása a CMak használatával Linux-környezetben, például Ubuntu vagy Debian rendszerben:
+Az eszköz kódjának és az eszköz C SDK-Vcpkg együtt történő létrehozása a CMak használatával Linux-környezetben, például Ubuntu vagy Debian rendszerben:
 
 1. Nyisson meg egy terminál alkalmazást.
 
-1. Telepítse a **GCC**, a `cmake` **git**, a és az összes függőséget a `apt-get` parancs használatával:
+1. Telepítse a **GCC**, a **Git**, a `cmake`és az összes függőséget az `apt-get` parancs használatával:
 
-    ```sh
+    ```bash
     sudo apt-get update
     sudo apt-get install -y git cmake build-essential curl libcurl4-openssl-dev libssl-dev uuid-dev
     ```
 
-    Ellenőrizze, hogy a `cmake` verziója meghaladja-e a **2.8.12** , és hogy a **GCC** verziója meghaladja-e a **4.4.7**-t.
+    Ellenőrizze, hogy a `cmake` verziója meghaladja-e a **2.8.12** , és a **GCC** verziója meghaladja a **4.4.7**-t.
 
-    ```sh
+    ```bash
     cmake --version
     gcc --version
     ```
 
-1. Az [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) -tárház klónozása:
+1. A Vcpkg telepítése:
 
-    ```sh
-    git clone https://github.com/Azure/azure-iot-sdk-c --recursive -b public-preview
+    ```bash
+    git clone https://github.com/Microsoft/vcpkg.git
+    cd vcpkg
+
+    ./bootstrap-vcpkg.sh
     ```
 
-    Ez a művelet várhatóan több percig is eltarthat.
+    Ezután a felhasználó szintű [integráció](https://github.com/microsoft/vcpkg/blob/master/docs/users/integration.md)összekapcsolása érdekében futtassa a következőt:
 
-1. Másolja a generált kódot tartalmazó mappát az eszköz SDK gyökérkönyvtárba.
-
-1. A vs Code-ban nyissa meg a `CMakeLists.txt` fájlt az eszköz SDK gyökérmappa mappájába.
-
-1. Adja hozzá a következő sort a `CMakeLists.txt` fájl végéhez, hogy az az SDK fordításakor tartalmazza az eszköz kód-helyettes mappáját:
-
-    ```txt
-    add_subdirectory({generated_code_folder_name})
+    ```bash
+    ./vcpkg integrate install
     ```
 
-1. Hozzon létre egy `cmake` nevű mappát az eszköz SDK gyökérkönyvtárában, és navigáljon a mappához.
+1. Az Azure IoT C Device SDK Vcpkg telepítése:
 
-    ```sh
+    ```bash
+    ./vcpkg install azure-iot-sdk-c[public-preview,use_prov_client]
+    ```
+
+1. Hozzon létre egy `cmake` alkönyvtárat a mappában, amely tartalmazza a generált kódot, és navigáljon a következő mappába:
+
+    ```bash
     mkdir cmake
     cd cmake
     ```
 
 1. Futtassa a következő parancsokat a CMak használatával az eszköz SDK és a generált kód létrehozásához:
 
-    ```cmd\sh
-    cmake -Duse_prov_client=ON -Dhsm_type_symm_key:BOOL=ON ..
+    ```bash
+    cmake .. -Duse_prov_client=ON -Dhsm_type_symm_key:BOOL=ON -DCMAKE_TOOLCHAIN_FILE="{directory of your Vcpkg repo}/scripts/buildsystems/vcpkg.cmake"
+
     cmake --build .
     ```
 
 1. A létrehozás sikerességét követően futtassa az alkalmazást, és adja meg a IoT Hub eszköz kapcsolatok sztringjét paraméterként.
 
-    ```cmd\sh
-    cd azure-iot-sdk-c/cmake/{generated_code_folder_name}/
+    ```bash
     ./{generated_code_project_name} "[IoT Hub device connection string]"
     ```
 
 ### <a name="windows"></a>Windows
 
-Az eszköz kódjának és a Windows-eszközök C SDK-val együtt történő létrehozásához a CMak és a VisualC++ Studio C/fordítóprogramok segítségével a parancssorban tekintse meg a [IoT Plug and Play](./quickstart-create-pnp-device.md)gyors útmutató című témakört. A következő lépések bemutatják, hogyan hozhatja létre az eszköz kódját és a C SDK-t a CMak-projektként a Visual Studióban.
+Az eszköz kódjának és a Windows-eszközök C SDK-val együtt történő létrehozásához a CMak és a VisualC++ Studio C/fordítóprogramok segítségével a parancssorban tekintse meg a [IoT Plug and Play](./quickstart-create-pnp-device.md)gyors útmutató című témakört. Az alábbi lépések bemutatják, hogyan hozhatja létre az eszköz kódját a C SDK-Vcpkg a Visual Studióban a CMak-projektként.
+
+1. Kövesse a rövid útmutató lépéseit, és telepítse a C Azure IoT Device [SDK-t](https://docs.microsoft.com/azure/iot-pnp/quickstart-create-pnp-device#prepare-the-development-environment) a Vcpkg-on keresztül.
 
 1. A [Visual Studio 2019 (Community, Professional vagy Enterprise)](https://visualstudio.microsoft.com/downloads/) telepítése – ügyeljen arra, hogy a **NuGet csomagkezelő** összetevőjét és az **asztali fejlesztést C++**  is tartalmazza a számítási feladatok segítségével.
 
-1. Nyissa meg a Visual studiót, és az **első lépések** oldalon válassza a **klónozott vagy a kijelentkezési kód**lehetőséget:
-
-1. A **tárház helye**területen az [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) -tárház klónozása:
-
-    ```txt
-    https://github.com/Azure/azure-iot-sdk-c
-    ```
-
-    A művelet elvégzése több percet is igénybe vehet, és a folyamat a **Team Explorer** ablaktáblán látható.
-
-1. Nyissa meg az **Azure-IOT-SDK-c** tárházat a **Team Explorerban**, válassza az **ágak**lehetőséget, keresse meg a **nyilvános előzetes** verzió ágat, és nézze meg.
-
-    ![Nyilvános előzetes](media/howto-develop-with-vs-vscode/vs-public-preview.png)
-
-1. Másolja a generált kódot tartalmazó mappát az eszköz SDK gyökérkönyvtárba.
-
-1. Nyissa `azure-iot-sdk-c` meg a mappát a vs.
-
-1. Nyissa `CMakeLists.txt` meg a fájlt az eszköz SDK gyökérkönyvtárában.
-
-1. Adja hozzá a következő sort a `CMakeLists.txt` fájl végéhez, hogy az az SDK fordításakor tartalmazza az eszköz kód-helyettes mappáját:
-
-    ```txt
-    add_subdirectory({generated_code_folder_name})
-    ```
+1. Nyissa meg a Visual studiót, válassza a **fájl > megnyitás > CMAK lehetőséget.** Ha meg szeretné nyitni a `CMakeLists.txt`t a mappában, a generált kódot tartalmaz.
 
 1. Az **általános** eszköztáron keresse meg a **konfigurációk** legördülő menüt. Válassza a **konfiguráció kezelése** lehetőséget a projekthez tartozó CMAK-beállítás hozzáadásához.
 
     ![Konfiguráció kezelése](media/howto-develop-with-vs-vscode/vs-manage-config.png)
 
-1. A **CMAK beállításainál**adjon hozzá egy új konfigurációt, és válassza az **x64-Release** elemet célként.
+1. A **CMAK beállításainál**adjon hozzá egy új konfigurációt, és válassza az **x86-debug** lehetőséget célként.
 
 1. A **CMAK parancs argumentumai**területen adja hozzá a következő sort:
 
@@ -182,13 +172,16 @@ Az eszköz kódjának és a Windows-eszközök C SDK-val együtt történő lét
 
 1. Mentse a fájlt.
 
-1. A **megoldáskezelő**kattintson `CMakeLists.txt` a jobb gombbal a gyökérkönyvtárban található elemre, majd a helyi menüből válassza a **Létrehozás** lehetőséget az eszköz SDK és a generált kód létrehozásához.
+1. Váltson az **x86-debug** értékre a **konfigurációk** legördülő menüben. Szükség van néhány másodpercre, hogy a CMak létrehozza a gyorsítótárat. Tekintse meg a kimenet ablakot a folyamat előrehaladásának megtekintéséhez.
+
+    ![A CMak kimenete](media/howto-develop-with-vs-vscode/vs-cmake-output.png)
+
+1. A **megoldáskezelő**kattintson a jobb gombbal a gyökérkönyvtárban található `CMakeLists.txt`ra, majd válassza a **Létrehozás** lehetőséget a helyi menüből a generált kód kiépítéséhez az eszköz SDK-val.
 
 1. A létrehozás sikerességét követően futtassa az alkalmazást a parancssorban, és adja meg az IoT Hub eszköz-kapcsolatok karakterláncát paraméterként.
 
     ```cmd
-    cd %USERPROFILE%\CMakeBuilds\{workspaceHash}\build\x64-Release\{generated_code_folder_name}\
-    {generated_code_project_name}.exe "[IoT Hub device connection string]"
+    .\out\build\x86-Debug\{generated_code_project_name}.exe "[IoT Hub device connection string]"
     ```
 
 > [!TIP]
@@ -196,7 +189,7 @@ Az eszköz kódjának és a Windows-eszközök C SDK-val együtt történő lét
 
 ### <a name="macos"></a>macOS
 
-A következő lépések bemutatják, hogyan hozhatja létre az eszköz kódját az C SDK-val macOS rendszeren a CMak használatával:
+A következő lépések bemutatják, hogyan hozhatja létre az eszköz kódját a macOS-hez készült C SDK-forráskód használatával a CMak segítségével:
 
 1. Nyissa meg a Terminal alkalmazást.
 
@@ -215,7 +208,7 @@ A következő lépések bemutatják, hogyan hozhatja létre az eszköz kódját 
 
 1. Az elérhető legújabb verzióra a [fürt javítása](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/devbox_setup.md#upgrade-curl-on-mac-os) .
 
-1. Az [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) -tárház klónozása:
+1. A generált kódot tartalmazó mappában az [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) -tárház klónozása:
 
     ```bash
     git clone https://github.com/Azure/azure-iot-sdk-c --recursive -b public-preview
@@ -223,17 +216,7 @@ A következő lépések bemutatják, hogyan hozhatja létre az eszköz kódját 
 
     Ez a művelet várhatóan több percig is eltarthat.
 
-1. Másolja a generált kódot tartalmazó mappát az eszköz SDK gyökérkönyvtárba.
-
-1. A vs Code-ban nyissa meg a `CMakeLists.txt` fájlt az eszköz SDK gyökérmappa mappájába.
-
-1. Adja hozzá a következő sort a `CMakeLists.txt` fájl végéhez, hogy az az SDK fordításakor tartalmazza az eszköz kód-helyettes mappáját:
-
-    ```txt
-    add_subdirectory({generated_code_folder_name})
-    ```
-
-1. Hozzon létre egy `cmake` nevű mappát az eszköz SDK gyökérkönyvtárában, és navigáljon a mappához.
+1. Hozzon létre egy `cmake` nevű mappát a generált kódot tartalmazó mappában, és navigáljon a mappához.
 
     ```bash
     mkdir cmake
@@ -250,7 +233,7 @@ A következő lépések bemutatják, hogyan hozhatja létre az eszköz kódját 
 1. A létrehozás sikerességét követően futtassa az alkalmazást, és adja meg a IoT Hub eszköz kapcsolatok sztringjét paraméterként.
 
     ```bash
-    cd azure-iot-sdk-c/cmake/{generated_code_folder_name}/
+    cd {generated_code_folder_name}/cmake/
     ./{generated_code_project_name} "[IoT Hub device connection string]"
     ```
 
@@ -264,10 +247,10 @@ A kód generátora újragenerálhatja a kódot, ha módosítja a DCM-vagy az ill
 
 1. Válassza **a {Project Name} kód újbóli előállítása**lehetőséget.
 
-1. A Code Generator a korábban konfigurált beállításokat használja, és újragenerálja a kódot. Azonban nem írja felül azokat a fájlokat, amelyek felhasználói kódokat `main.c` (például és `{project_name}_impl.c`) tartalmazhatnak.
+1. A Code Generator a korábban konfigurált beállításokat használja, és újragenerálja a kódot. Azonban nem írja felül azokat a fájlokat, amelyek felhasználói kódokat tartalmazhatnak, például `main.c` és `{project_name}_impl.c`.
 
 > [!NOTE]
-> Ha frissíti az URN-azonosítót a csatoló fájljában, azt a rendszer új csatolóként kezeli. A kód újbóli létrehozásakor a Code Generator programkódot hoz létre a csatolóhoz, de nem írja felül az eredetit `{project_name}_impl.c` a fájlban.
+> Ha frissíti az URN-azonosítót a csatoló fájljában, azt a rendszer új csatolóként kezeli. A kód újbóli létrehozásakor a Code Generator programkódot hoz létre a csatolóhoz, de nem írja felül az eredetit a `{project_name}_impl.c` fájlban.
 
 ## <a name="problems-and-feedback"></a>Problémák és visszajelzés
 

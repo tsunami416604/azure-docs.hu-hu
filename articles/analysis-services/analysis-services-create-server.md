@@ -1,18 +1,18 @@
 ---
-title: Rövid útmutató – Azure Analysis Services-kiszolgáló létrehozása az Azure Portal használatával | Microsoft Docs
-description: Útmutatás egy Azure-beli Analysis Services-kiszolgálópéldány létrehozásához.
+title: Rövid útmutató – Analysis Services kiszolgáló létrehozása Azure Portalban | Microsoft Docs
+description: Megtudhatja, hogyan hozhat létre gyorsan egy Azure Analysis Services Server-példányt a Azure Portal használatával.
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: quickstart
-ms.date: 07/02/2019
+ms.date: 10/30/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: c104af3bcfddb4b0863f69b6571d4cd62ca9c2b8
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: cfd624ce49add0f8fd04bfccca9d6b7c3f1f71bd
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73147113"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73573064"
 ---
 # <a name="quickstart-create-a-server---portal"></a>Gyors útmutató: Kiszolgáló létrehozása – Portal
 
@@ -28,9 +28,9 @@ Ez a rövid útmutató bemutatja, hogyan hozhat létre erőforrást egy Azure An
 [Bejelentkezés a portálra](https://portal.azure.com)
 
 
-## <a name="create-a-server"></a>Kiszolgáló létrehozása
+## <a name="create-a-server"></a>A kiszolgáló létrehozása
 
-1. Kattintson **az + erőforrás létrehozása** > **Analitika** > **Analysis Services**elemre.
+1. Kattintson **az + erőforrás létrehozása** > **Analytics** > **Analysis Services**elemre.
 
     ![Portál](./media/analysis-services-create-server/aas-create-server-portal.png)
 
@@ -54,7 +54,7 @@ Ha már nincs rá szükség, törölje a kiszolgálót. Nyissa meg a kiszolgál�
  ![Felesleges tartalmak törlése](./media/analysis-services-create-server/aas-create-server-cleanup.png)
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ebből a rövid útmutatóból megtudta, hogyan hozhat létre kiszolgálót az Azure-előfizetésében. Most, hogy már rendelkezik kiszolgálóval, biztonságosabbá teheti azt egy (nem kötelező) kiszolgálótűzfal konfigurálásával. Hozzáadhat a kiszolgálóhoz egy alapszintű minta adatmodellt is közvetlenül a portálról. A mintamodell azért hasznos, mert segít megismerni a modell adatbázis-szerepkörök konfigurálását és tesztelni az ügyfélkapcsolatokat. További tudnivalókért folytassa a mintamodell hozzáadását ismertető oktatóanyaggal.
 
 > [!div class="nextstepaction"]

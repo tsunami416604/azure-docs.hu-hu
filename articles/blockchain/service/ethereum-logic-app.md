@@ -6,16 +6,16 @@ keywords: ''
 author: PatAltimore
 ms.author: patricka
 ms.date: 10/14/2019
-ms.topic: tutorial
+ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: chrisseg
 manager: femila
-ms.openlocfilehash: cff1085d14f2f849134b0b6f602e272fbb5bc561
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: bb23d6b9b42e1c51646765255870a14a1b5d39f7
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72329280"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73579944"
 ---
 # <a name="use-the-ethereum-blockchain-connector-with-azure-logic-apps"></a>A Ethereum Blockchain-összekötő használata a Azure Logic Apps
 
@@ -138,7 +138,7 @@ Például a következő lépések egy REST-alapú, a gyors üzembe helyezési **
 
     ![Logic Apps Designer panel a HTTP POST URL-címmel](./media/ethereum-logic-app/post-url.png)
 
-1. Hozzon létre egy HTTP POST-kérelmet a cURL használatával. Cserélje le a helyőrző szövegre *\<HTTP post URL @ no__t-2* elemet az előző lépés URL-címével.
+1. Hozzon létre egy HTTP POST-kérelmet a cURL használatával. Cserélje le a helyőrző szöveget *\<http post URL-\>* az előző lépés URL-címére.
 
     ``` bash
     curl -d "{}" -H "Content-Type: application/json" -X POST "<HTTP POST URL>"
@@ -267,7 +267,7 @@ Ha a fejlesztői készletet vagy a szarvasgombát használta az intelligens szer
 
 **A szilárdtest-fordító használata:**
 
-A szerződés bytecode létrehozásához használja a `solc --bin <smart contract>.sol` parancsot.
+A `solc --bin <smart contract>.sol` parancs használatával létrehozza a szerződés bytecode.
 
 ## <a name="get-the-contract-address"></a>A szerződési címnek beszerzése
 
@@ -288,6 +288,6 @@ A szarvasgomba az intelligens szerződés üzembe helyezése után megjeleníti 
 
 ![Metaadatok a Visual Studio Code-ban található címtartomány értékével](./media/ethereum-logic-app/contract-address-metadata.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Tekintse meg a videó gyakori forgatókönyveit a [Logic Appsával](https://channel9.msdn.com/Shows/Blocktalk/Doing-more-with-Logic-Apps?term=logic%20apps%20blockchain&lang-en=true).

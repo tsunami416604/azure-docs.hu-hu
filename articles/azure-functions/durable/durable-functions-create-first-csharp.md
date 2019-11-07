@@ -8,18 +8,20 @@ manager: jeconnoc
 keywords: azure functions, függvények, eseményfeldolgozás, számítás, kiszolgáló nélküli architektúra
 ms.service: azure-functions
 ms.topic: quickstart
-ms.date: 07/19/2019
+ms.date: 11/02/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 1579a4dfbab1ec9d9aa6bb3995bd88d948d6d5e2
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: 563412fbc5e8d9af3c399b1f75696053549143c4
+ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70933973"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73615010"
 ---
-# <a name="create-your-first-durable-function-in-c"></a>Hozza létre első tartós funkcióját a C-ben\#
+# <a name="create-your-first-durable-function-in-c"></a>Hozza létre első tartós funkcióját C\#
 
 A *Durable Functions* [Azure functions](../functions-overview.md) , amely lehetővé teszi állapot-nyilvántartó függvények írására kiszolgáló nélküli környezetben. A bővítmény automatikusan kezeli az állapotokat, az ellenőrzőpontokat és az újraindításokat.
+
+[!INCLUDE [v1-note](../../../includes/functions-durable-v1-tutorial-note.md)]
 
 Ebből a cikkből megtudhatja, hogyan használhatja a Visual Studio 2019-et a "Hello World" tartós funkciójának helyi létrehozására és tesztelésére.  Ez a függvény összehangolja és láncokba rendezi a más függvények hívásait. Ezután közzéteheti a függvénykódot az Azure-ban. Ezek az eszközök az Azure-fejlesztési számítási feladatok részeként érhetők el a Visual Studio 2019-ben.
 
@@ -39,9 +41,9 @@ Az oktatóanyag elvégzéséhez:
 
 A Azure Functions sablon létrehoz egy projektet, amely közzétehető egy Azure-beli Function alkalmazásban. A függvényalkalmazás lehetővé teszi, hogy logikai egységbe csoportosítsa a függvényeket az erőforrások felügyelete, üzembe helyezése és megosztása érdekében.
 
-1. A Visual Studio **Fájl** menüjében válassza az **Új** > **Projekt** lehetőséget.
+1. A Visual Studio **Fájl** menüjében válassza az  > Új**Projekt** lehetőséget.
 
-1. Az **új projekt hozzáadása** párbeszédpanelen keresse meg `functions`a elemet, válassza ki a **Azure functions** sablont, és kattintson a **tovább**gombra. 
+1. Az **új projekt hozzáadása** párbeszédpanelen keresse meg a `functions`, válassza ki a **Azure functions** sablont, és kattintson a **tovább**gombra. 
 
     ![Új projekt párbeszédpanel a Visual Studióban egy függvény létrehozásához](./media/durable-functions-create-first-csharp/functions-vs-new-project.png)
 
@@ -53,8 +55,8 @@ A Azure Functions sablon létrehoz egy projektet, amely közzétehető egy Azure
 
     | Beállítás      | Ajánlott érték  | Leírás                      |
     | ------------ |  ------- |----------------------------------------- |
-    | **Verzió** | Azure Functions 2.x <br />(.NET Core) | Létrehoz egy Function projektet, amely a .NET Core-ot támogató Azure Functions 2. x futtatókörnyezetét használja. Az Azure Functions 1.x támogatja a .NET-keretrendszert. További információ: [Azure Functions futtatókörnyezet-verzió megcélzása](../functions-versions.md).   |
-    | **Sablon** | Üres | Létrehoz egy üres Function alkalmazást. |
+    | **Verzió** | Azure Functions 2,0 <br />(.NET Core) | Egy olyan Function projektet hoz létre, amely a .NET Core-ot támogató Azure Functions 2,0-es verzióját használja. A Azure Functions 1,0 támogatja a .NET-keretrendszert. További információ: [Azure Functions futtatókörnyezet-verzió megcélzása](../functions-versions.md).   |
+    | **Sablon** | üres | Létrehoz egy üres Function alkalmazást. |
     | **Storage-fiók**  | Storage Emulator | A tartós működés állapotának kezeléséhez Storage-fiókra van szükség. |
 
 4. Válassza a **Létrehozás** lehetőséget egy üres Function projekt létrehozásához. Ez a projekt a függvények futtatásához szükséges alapszintű konfigurációs fájlokat tartalmaz.
@@ -63,7 +65,7 @@ A Azure Functions sablon létrehoz egy projektet, amely közzétehető egy Azure
 
 A következő lépésekkel hozhatja létre a projektben a tartós függvény kódját.
 
-1. Kattintson a jobb gombbal a projektre a Visual Studióban, majd válassza az**új Azure-függvény** **hozzáadása** > lehetőséget.
+1. Kattintson a jobb gombbal a projektre a Visual Studióban, majd válassza a **hozzáadás** > **új Azure-függvény**lehetőséget.
 
     ![Új függvény hozzáadása](./media/durable-functions-create-first-csharp/functions-vs-add-new-function.png)
 
@@ -72,6 +74,9 @@ A következő lépésekkel hozhatja létre a projektben a tartós függvény kó
 1. Válassza ki a **Durable functions a hangszerelési** sablont, majd kattintson **az OK gombra** .
 
     ![Tartós sablon kiválasztása](./media/durable-functions-create-first-csharp/functions-vs-select-template.png)  
+
+> [!NOTE]
+> Ez a sablon jelenleg egy tartós függvényt hoz létre a bővítmény régebbi 1. x verziójának használatával. Tekintse meg a [Durable functions verziókról](durable-functions-versions.md) szóló cikket, amely arról nyújt tájékoztatást, hogyan frissíthet a Durable functions újabb 2. x verziójára.
 
 A rendszer új tartós függvényt ad hozzá az alkalmazáshoz.  A tartalom megtekintéséhez nyissa meg az új. cs fájlt. Ez a tartós függvény egy egyszerű függvények láncolására szolgáló példa a következő módszerekkel:  
 
@@ -99,9 +104,9 @@ Az Azure Functions Core Tools lehetővé teszi Azure Functions-projektek helyi f
 
     A válasz a HTTP-függvény kezdeti eredménye, amely közli, hogy a tartós összehangolás sikeresen elindult.  Még nem az előkészítés végeredménye.  A válasz több hasznos URL-címet is tartalmaz.  Most pedig lekérdezjük a folyamat állapotát.
 
-4. Másolja ki `statusQueryGetUri` és illessze be az URL-címet a böngésző címsorába, majd hajtsa végre a kérelmet.
+4. Másolja `statusQueryGetUri` és illessze be az URL-címet a böngésző címsorába, majd hajtsa végre a kérelmet.
 
-    A kérelem lekérdezi az állapotot az előkészítési példányon. A következőhöz hasonló, végleges választ kaphat.  Ez azt mutatja, hogy a példány befejeződött, és tartalmazza a tartós funkció kimeneteit vagy eredményét.
+    A kérelem lekérdezi az állapotot az előkészítési példányon. A következőhöz hasonló, végleges választ kaphat.  Ez a kimenet mutatja, hogy a példány befejeződött, és tartalmazza a tartós függvény kimeneteit vagy eredményét.
 
     ```json
     {
@@ -114,8 +119,8 @@ Az Azure Functions Core Tools lehetővé teszi Azure Functions-projektek helyi f
             "Hello Seattle!",
             "Hello London!"
         ],
-        "createdTime": "2018-11-08T07:07:40Z",
-        "lastUpdatedTime": "2018-11-08T07:07:52Z"
+        "createdTime": "2019-11-02T07:07:40Z",
+        "lastUpdatedTime": "2019-11-02T07:07:52Z"
     }
     ```
 

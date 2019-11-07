@@ -8,12 +8,12 @@ ms.topic: overview
 ms.service: iot-central
 services: iot-central
 manager: abjork
-ms.openlocfilehash: 8272764e967fccfbfa88d54e688f9d7aaf4e0917
-ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
+ms.openlocfilehash: cab593990369bb8a4135e82534a2eb409b574e96
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73027684"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73582766"
 ---
 # <a name="azure-iot-central---smart-meter-app-architecture"></a>Azure IoT Central – intelligens fogyasztásmérő alkalmazás architektúrája
 
@@ -21,8 +21,8 @@ ms.locfileid: "73027684"
 
 Ez a cikk áttekintést nyújt az intelligens fogyasztásmérő monitorozási alkalmazás sablonjának architektúráról. Az alábbi ábra egy általánosan használt architektúrát mutat be az Azure-beli Smart Meter-alkalmazáshoz IoT Central platform használatával.
 
-[!div class="mx-imgBorder"]
-![intelligens fogyasztásmérő architektúrája](media/concept-iot-central-smart-meter/smart-meter-app-architecture.png)
+> [!div class="mx-imgBorder"]
+> ![intelligens fogyasztásmérő architektúrája](media/concept-iot-central-smart-meter/smart-meter-app-architecture.png)
 
 Az architektúra az alábbi összetevőkből áll. Előfordulhat, hogy egyes megoldások nem igénylik az itt felsorolt összes összetevőt.
 
@@ -39,7 +39,7 @@ Az Azure IoT Central egy olyan platform, amely leegyszerűsíti a IoT-megoldás 
 ## <a name="extensibility-options-to-build-with-iot-central"></a>Bővíthetőségi lehetőségek a IoT Central létrehozásához
 A IoT Central platform két bővíthetőségi lehetőséget kínál: folyamatos adatexportálást (CDE) és API-kat. Az ügyfelek és a partnerek választhatnak ezek között a lehetőségek közül, hogy testre szabják az adott igényeknek megfelelő megoldásokat. Például az egyik partner konfigurálta az Azure Data Lake Storage (ADLS) CDE. A ADLS használják a hosszú távú adatmegőrzésre és más, a lassú elérésű útvonalak tárolási helyzetére, az ilyen kötegelt feldolgozásra, a naplózásra és a jelentéskészítésre. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Most, hogy megismerte az architektúrát, [ingyenes Smart Meter-alkalmazást készíthet](https://apps.azureiotcentral.com/build/new/smart-meter-monitoring)
 * További információ a IoT Centralről: [IoT Central áttekintése](https://docs.microsoft.com/azure/iot-central/)

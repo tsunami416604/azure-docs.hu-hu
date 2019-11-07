@@ -13,12 +13,12 @@ ms.date: 10/30/2019
 ms.author: lizross
 ms.custom: user-help
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c3c9e047db48e12f6ce797c034a6b40084542c8e
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 38fe0b0ff3bcb38133444819200254a684f08d44
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73178094"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73573788"
 ---
 # <a name="access-and-use-workspaces-on-the-my-apps-preview-portal"></a>Munkaterületek elérése és használata a saját alkalmazások (előzetes verzió) portálon
 
@@ -41,7 +41,7 @@ A listában megjelenő többi munkaterületet a rendszergazda hozta létre, és 
 
 Ha kiválaszt és megtekint egy munkaterületet, csak azok az alapértelmezett alkalmazások jelennek meg, amelyekhez hozzáfér.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Miután az alkalmazásokat a **saját alkalmazások** portál különböző kategóriáira rendezi, a következőket teheti:
 
@@ -49,8 +49,8 @@ Miután az alkalmazásokat a **saját alkalmazások** portál különböző kate
 
 ## <a name="related-articles"></a>Kapcsolódó cikkek
 
-- [Frissítse a profilját és a fiókadatok adatait](myprofile-portal-overview.md). Útmutató a **saját profil** (előzetes verzió) portálon megjelenő személyes adatok frissítéséhez.
+- [Frissítse a profilját és a fiókadatok adatait](my-account-portal-overview.md). Útmutató a **saját profil** (előzetes verzió) portálon megjelenő személyes adatok frissítéséhez.
 
-- [Kezelheti szervezeteit](myprofile-portal-organizations-page.md). Útmutatás a szervezettel kapcsolatos információk megtekintéséhez és kezeléséhez a **saját profil** portál **szervezetek** lapján.
+- [Kezelheti szervezeteit](my-account-portal-organizations-page.md). Útmutatás a szervezettel kapcsolatos információk megtekintéséhez és kezeléséhez a **saját profil** portál **szervezetek** lapján.
 
-- [A csatlakoztatott eszközök kezelése](myprofile-portal-devices-page.md). Útmutató a saját munkahelyi vagy iskolai fiókjához csatlakoztatott eszközök kezeléséhez a **saját profil** portál **eszközök** lapján.
+- [A csatlakoztatott eszközök kezelése](my-account-portal-devices-page.md). Útmutató a saját munkahelyi vagy iskolai fiókjához csatlakoztatott eszközök kezeléséhez a **saját profil** portál **eszközök** lapján.

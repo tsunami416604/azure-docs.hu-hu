@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
-ms.openlocfilehash: 41a626ba602ad33f22c3ea4acc39dd4f3438cbd0
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: eb4f607672c39d45b7791ccaeeb6f7cff9393cb9
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70935689"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73571016"
 ---
 # <a name="install-and-use-the-azure-iot-extension-for-the-azure-cli"></a>Az Azure IoT bővítmény telepítése és használata az Azure CLI-hez
 
@@ -62,7 +62,7 @@ Az Azure CLI-hez készült Azure IoT-bővítmény használatához a következők
     > [!NOTE]
     > A nyilvános előzetes verzióban a IoT Plug and Play funkciói csak az **USA középső**régiójában, Észak- **Európában**és Kelet- **japán** régióban létrehozott IoT-hubokon érhetők el.
 
-- Az IoT hub-ban regisztrált eszköz. Az alábbi Azure CLI-parancs használatával regisztrálhat egy eszközt, `{YourIoTHubName}` és `{YourDeviceID}` a helyőrzőket cserélje le az értékekre:
+- Az IoT hub-ban regisztrált eszköz. Az alábbi Azure CLI-paranccsal regisztrálhat egy eszközt, és a `{YourIoTHubName}` és `{YourDeviceID}` helyőrzőket cserélje le az értékekre:
 
     ```cmd/sh
     az iot hub device-identity create --hub-name {YourIoTHubName} --device-id {YourDeviceID}
@@ -88,7 +88,7 @@ IoT Plug and Play-eszköz által regisztrált összes felület listázása:
 az iot dt list-interfaces --hub-name {YourIoTHubName} --device-id {YourDeviceID}
 ```
 
-#### <a name="properties"></a>properties
+#### <a name="properties"></a>Tulajdonságok
 
 Az eszközön található felület összes tulajdonságának és tulajdonságának listázása:
 
@@ -131,26 +131,26 @@ A `--repo-login` paraméter nélkül ez a parancs a nyilvános modell tárházá
 Parancs meghívása:
 
 ```cmd/sh
-az iot dt invoke-command --hub-name {YourIoTHubName} --device-id {YourDeviceID} --interface {YourInterfaceID} --command-name {CommandName} --command-payload {CommandPayload or FilePath}
+az iot dt invoke-command --hub-name {YourIoTHubName} --device-id {YourDeviceID} --interface {YourInterfaceID} --cn {CommandName} --command-payload {CommandPayload or FilePath}
 ```
 
-#### <a name="telemetry"></a>Telemetria
+#### <a name="digital-twin-events"></a>Digitális kettős események
 
-Egy adott eszközről és csatolóról származó összes IoT figyelése Plug and Play telemetria a **$default** Event hub-végpontra:
+Az összes IoT figyelése egy adott eszközről és felületről Plug and Play digitális Twin-eseményekről az **$default** Event hub fogyasztói csoportba:
 
 ```cmd/sh
-az iot dt monitor-events --hub-name {YourIoTHubName} --device-id {YourDeviceID} --interface {YourInterfaceID} --source private --repo-login {YourCompanyModelRepoConnectionString}
+az iot dt monitor-events --hub-name {YourIoTHubName} --device-id {YourDeviceID} --interface {YourInterfaceID}
 ```
 
-Egy adott eszköz és egy adott felhasználói csoport telemetria tartozó összes Plug and Play IoT figyelése:
+Az összes IoT figyelése egy adott eszközről és egy adott felhasználói csoportba tartozó csatolón keresztüli digitális két esemény Plug and Play:
 
 ```cmd/sh
-az iot dt monitor-events --hub-name {YourIoTHubName} --device-id {YourDeviceID} --interface {YourInterfaceID} --source private --repo-login {YourCompanyModelRepoConnectionString} --consumer-group {YourConsumerGroup}
+az iot dt monitor-events --hub-name {YourIoTHubName} --device-id {YourDeviceID} --interface {YourInterfaceID} --consumer-group {YourConsumerGroup}
 ```
 
 ### <a name="manage-interfaces-in-a-model-repository"></a>Felületek kezelése a modell adattárában
 
-Az alábbi parancsok a nyilvános IoT Plug and Play Model repositoryt használják. A vállalati modell tárházának használatához adja hozzá az `--login` argumentumot a Model adattár-kapcsolódási karakterlánccal.
+Az alábbi parancsok a nyilvános IoT Plug and Play Model repositoryt használják. A vállalati modell tárházának használatához adja hozzá a `--login` argumentumot a Model adattár-kapcsolódási karakterlánccal.
 
 A nyilvános IoT Plug and Play Model adattárában található felületek listázása:
 
@@ -190,7 +190,7 @@ Csak a Microsoft-partnerek tehetnek közzé felületet a nyilvános modell adatt
 
 ### <a name="manage-device-capability-models-in-a-model-repository"></a>Eszköz-képesség modellek kezelése a modell-tárházban
 
-Az alábbi parancsok a nyilvános IoT Plug and Play Model repositoryt használják. A vállalati modell tárházának használatához adja hozzá az `--login` argumentumot a Model adattár-kapcsolódási karakterlánccal.
+Az alábbi parancsok a nyilvános IoT Plug and Play Model repositoryt használják. A vállalati modell tárházának használatához adja hozzá a `--login` argumentumot a Model adattár-kapcsolódási karakterlánccal.
 
 Eszköz-képesség modellek listázása a IoT Plug and Play nyilvános modell tárházban:
 

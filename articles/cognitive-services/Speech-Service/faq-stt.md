@@ -10,18 +10,18 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 10/17/2019
 ms.author: panosper
-ms.openlocfilehash: 1f934bc5627331cc92ad3f497f1f7e4e0e5526cd
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 3b957181015cba06eb361272ca1004ba3e7a7008
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72595338"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73579682"
 ---
 # <a name="speech-to-text-frequently-asked-questions"></a>Beszéd szöveggel kapcsolatos gyakori kérdések
 
 Ha nem talál választ a kérdéseire ebben a GYIK-ban, tekintse meg az [egyéb támogatási lehetőségeket](support.md).
 
-## <a name="general"></a>Általános
+## <a name="general"></a>Általános kérdések
 
 **K: mi a különbség az alapmodell és a szöveges modell egyéni beszéde között?**
 
@@ -87,7 +87,7 @@ Az alapmodellek egyidejűségének növeléséhez a következő információkra 
 vagy
 
 - az előfizetéshez tartozó erőforrás-azonosító:
-  - Ugrás a https://portal.azure.com ra
+  - Ugrás a https://portal.azure.comra
   - a keresőmezőbe válassza a `Cognitive Services` lehetőséget,
   - a megjelenített szolgáltatások közül válassza ki azt a beszédfelismerési szolgáltatást, amelyhez a párhuzamosságot növelni szeretné,
   - a szolgáltatás tulajdonságainak megjelenítése;
@@ -176,7 +176,19 @@ Válasz **: attól**függ, hogy az alkalmazásban használt szókincs és kifeje
 
 **A**: a szavak listájának feltöltése felveszi a szavakat a szókincsbe, de nem fogja tanítani a rendszerre, hogy a szavakat általában hogyan használják. Ha teljes vagy részleges hosszúságú kimondott szöveg (mondatokat vagy kifejezéseket) biztosít a felhasználók számára, akkor a nyelvi modell megismerheti az új szavakat és azok használatát. Az egyéni nyelvi modell nem csupán az új szavak a rendszerhez való hozzáadására, hanem az alkalmazáshoz tartozó ismert szavak valószínűségének módosítására is jó. A teljes hosszúságú kimondott szöveg biztosítása segít a rendszeren a jobb megismerésben. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="tenant-model-custom-speech-with-office-365-data"></a>Bérlői modell (Custom Speech Office 365-adattal)
+
+**K: milyen információk szerepelnek a bérlői modellben, és hogyan jön létre?**
+
+**A:** A bérlői modell olyan [nyilvános csoportos](https://support.office.com/article/learn-about-office-365-groups-b565caa1-5c40-40ef-9915-60fdb2d97fa2) e-mailek és dokumentumok használatával készült, amelyeket bárki láthat a szervezetében. 
+ 
+**K: milyen beszédfelismerési élményt fejlesztenek a bérlői modell?**
+
+**A:** Ha a bérlői modell engedélyezése, létrehozása és közzététele megtörténik, a rendszer a beszédfelismerési szolgáltatással létrehozott vállalati alkalmazások felismerését is javítja. Ez egy felhasználói HRE tokent is továbbít, amely a vállalatnak való tagságot jelzi. 
+ 
+Az Office 365-ben beépített beszédfelismerési élmények, például a diktálás és a PowerPoint-feliratok, nem változnak, amikor létrehoz egy bérlői modellt a Speech Service-alkalmazásokhoz.
+
+## <a name="next-steps"></a>További lépések
 
 * [hibaelhárítással](troubleshooting.md)
-* [Kiadási megjegyzések](releasenotes.md)
+* [Kibocsátási megjegyzések](releasenotes.md)

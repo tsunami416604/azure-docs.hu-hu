@@ -1,70 +1,70 @@
 ---
-title: Az Azure SignalR Service – gyakori kérdések
-description: Az Azure SignalR Service – gyakori kérdések.
+title: Az Azure Signaler szolgáltatással kapcsolatos gyakori kérdések
+description: Az Azure Signaler szolgáltatással kapcsolatos gyakori kérdések.
 author: sffamily
 ms.service: signalr
 ms.topic: overview
 ms.date: 03/01/2019
 ms.author: zhshang
-ms.openlocfilehash: e9e41ffa335aa95b139a5d5658424c1c5915b569
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 771124d0b8ca15bf72501fdeff8c31d0a43050b8
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64914963"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73578682"
 ---
-# <a name="azure-signalr-service-faq"></a>Az Azure SignalR Service – gyakori kérdések
+# <a name="azure-signalr-service-faq"></a>Azure Signaler szolgáltatás – gyakori kérdések
 
-## <a name="is-azure-signalr-service-ready-for-production-use"></a>Az Azure SignalR Service éles használatra kész van?
+## <a name="is-azure-signalr-service-ready-for-production-use"></a>Az Azure Signaler szolgáltatás készen áll éles használatra?
 
 Igen.
-Az általános elérhetőség közleményt, lásd: [már általánosan elérhető az Azure SignalR Service](https://azure.microsoft.com/blog/azure-signalr-service-now-generally-available/). 
+Az általános elérhetőségről az [Azure signaler szolgáltatás általánosan elérhetővé](https://azure.microsoft.com/blog/azure-signalr-service-now-generally-available/)tételét ismertető témakörben talál további információt. 
 
-[Az ASP.NET Core SignalR](https://docs.microsoft.com/aspnet/core/signalr/introduction) teljes mértékben támogatott.
+A [ASP.net Core jelző](https://docs.microsoft.com/aspnet/core/signalr/introduction) teljes mértékben támogatott.
 
-Az ASP.NET SignalR támogatása továbbra is van a *nyilvános előzetes verzióban*. Íme egy [példakód](https://github.com/aspnet/AzureSignalR-samples/tree/master/aspnet-samples/ChatRoom).
+A ASP.NET-jelző támogatása továbbra is a *nyilvános előzetes*verzióban érhető el. Íme egy [példa egy kódra](https://github.com/aspnet/AzureSignalR-samples/tree/master/aspnet-samples/ChatRoom).
 
-## <a name="the-client-connection-closes-with-the-error-message-no-server-available-what-does-it-mean"></a>Az ügyfél kapcsolata bezárul a "Nincs elérhető kiszolgáló". Mit jelent?
+## <a name="the-client-connection-closes-with-the-error-message-no-server-available-what-does-it-mean"></a>Az ügyfél-csatlakozás a "nincs kiszolgáló érhető el" hibaüzenettel zárul. Mit jelent?
 
-Ez a hiba akkor fordul elő, csak akkor, ha az ügyfelek üzeneteket küldenek a SignalR-szolgáltatáshoz.
+Ez a hiba csak akkor fordul elő, ha az ügyfelek üzeneteket küldenek a Signaler szolgáltatásnak.
 
-Ha nem rendelkezik minden olyan alkalmazáskiszolgáló, és csak a SignalR Service REST API-val, van-e ez a viselkedés **elvárt**.
-Kiszolgáló nélküli architektúra, az ügyfélkapcsolatok vannak **FIGYELÉSÉRE** mód és a nem küldése a SignalR Service küldött üzeneteket fogja.
-További tudnivalók a [REST API-val](./signalr-quickstart-rest-api.md).
+Ha nem rendelkezik alkalmazás-kiszolgálóval, és csak a Signaler Service REST API használja, ez a viselkedés a **tervezés szerint**történik.
+A kiszolgáló nélküli architektúrában az ügyfélkapcsolatok **figyelés** módban vannak, és nem küldenek üzeneteket a jelző szolgáltatásnak.
+További információk: [REST API](./signalr-quickstart-rest-api.md).
 
-Ha az alkalmazáskiszolgálókat, ez a hibaüzenet azt jelenti, hogy nincs alkalmazás kiszolgáló csatlakoztatva van a SignalR Service-példányt.
+Ha az alkalmazás-kiszolgálókkal rendelkezik, ez a hibaüzenet azt jelenti, hogy egyetlen alkalmazáskiszolgáló sincs csatlakoztatva a Signal Service-példányhoz.
 
 A lehetséges okok a következők:
-- Nincs alkalmazás kiszolgáló csatlakoztatva van a SignalR Service. Ellenőrizze a kiszolgáló alkalmazásnaplókat a lehetséges csatlakozási hibákat. Ebben az esetben a rendszer egynél több alkalmazás-kiszolgálók magas rendelkezésre állású Setting ritka.
-- Nincsenek kapcsolódási problémák SignalR Service példányaival. Ez a probléma átmeneti, és automatikusan helyre.
-Ha nem szűnik meg, a több mint egy óráig [nyisson egy problémát a Githubon](https://github.com/Azure/azure-signalr/issues/new) vagy [hozzon létre egy támogatási kérést az Azure-ban](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request).
+- Nem kapcsolódik alkalmazáskiszolgáló a Signaler szolgáltatáshoz. A lehetséges csatlakoztatási hibákért keresse fel az alkalmazáskiszolgáló naplóit. Ez az eset ritka a magas rendelkezésre állási beállításban egynél több alkalmazás-kiszolgálóval.
+- A Signaler szolgáltatás példányaihoz kapcsolódási problémák léptek fel. Ez a probléma átmeneti, és a rendszer automatikusan helyreállítja.
+Ha több mint egy órát tart fenn, nyisson meg [egy problémát a githubon](https://github.com/Azure/azure-signalr/issues/new) , vagy [hozzon létre egy támogatási kérést az Azure-ban](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request).
 
-## <a name="when-there-are-multiple-application-servers-are-client-messages-sent-to-all-servers-or-just-one-of-them"></a>Ha több, ügyfél-üzenetek érkeznek minden kiszolgáló, vagy csak az egyik?
+## <a name="when-there-are-multiple-application-servers-are-client-messages-sent-to-all-servers-or-just-one-of-them"></a>Ha több alkalmazás-kiszolgáló is van, az összes kiszolgálónak vagy csak az egyiknek küldi az üzeneteket?
 
-Egy az egyhez típusú hozzárendelés az ügyfelek és alkalmazáskiszolgálók között. Egy ügyfél mindig üzenetküldés alkalmazás ugyanarra a kiszolgálóra.
+Ez egy-az-egyhez típusú hozzárendelés az ügyfél és az alkalmazáskiszolgáló között. Az egyik ügyfélről érkező üzeneteket a rendszer mindig ugyanarra az alkalmazási kiszolgálóra továbbítja.
 
-Az ügyfelek és alkalmazáskiszolgálók közötti leképezést fenn kell tartani, amíg az ügyfél vagy az alkalmazás kiszolgáló bontja a kapcsolatot.
+Az ügyfél és az alkalmazáskiszolgáló közötti leképezés csak akkor marad fenn, ha az ügyfél vagy az alkalmazáskiszolgáló bontja a kapcsolatot.
 
-## <a name="if-one-of-my-application-servers-is-down-how-can-i-find-it-and-get-notified"></a>Ha az alkalmazás-kiszolgálók egyike le, hogyan keresse meg, és lekérése az értesítés?
+## <a name="if-one-of-my-application-servers-is-down-how-can-i-find-it-and-get-notified"></a>Ha az egyik alkalmazás-kiszolgálóm nem érhető el, Hogyan találhatom meg és kaphatok értesítést?
 
-SignalR Service alkalmazáskiszolgálók érkező szívveréseket figyeli.
-A szívverések nem érkezik a megadott időtartam elteltéig, ha a kiszolgáló offline állapotúnak tekinti. Az alkalmazáskiszolgáló leképezve az összes ügyfélkapcsolatok le lesz választva.
+A signaler szolgáltatás figyeli a szívveréseket az alkalmazás-kiszolgálókról.
+Ha a szívverések nem érkeznek meg egy megadott ideig, az alkalmazáskiszolgáló offline állapotba kerül. A rendszer leválasztja az ehhez az alkalmazáskiszolgáló számára leképezett összes ügyfélkapcsolatot.
 
-## <a name="why-does-my-custom-iuseridprovider-throw-exception-when-switching-from-aspnet-core-signalr--sdk-to-azure-signalr-service-sdk"></a>Miért érdemes a saját egyéni does `IUserIdProvider` throw kivétel, amikor átvált az ASP.NET Core SDK-t a SignalR Azure SignalR Service SDK-t?
+## <a name="why-does-my-custom-iuseridprovider-throw-exception-when-switching-from-aspnet-core-signalr--sdk-to-azure-signalr-service-sdk"></a>Miért van az egyéni `IUserIdProvider` kivétel, ha ASP.NET Core Signal SDK-ról az Azure Signaler Service SDK-ra vált?
 
-A paraméter `HubConnectionContext context` eltér az ASP.NET Core SDK-t a SignalR és az Azure SignalR Service SDK amikor `IUserIdProvider` nevezzük.
+A (z) `HubConnectionContext context` paraméter különbözik a ASP.NET Core Signaler SDK és az Azure Signaler Service SDK között, ha a rendszer a `IUserIdProvider`t hívja meg.
 
-Az ASP.NET Core SignalR `HubConnectionContext context` az összes tulajdonság érvényes értékei a fizikai ügyfél-kapcsolatot a környezet.
+ASP.NET Core-jelzőben a `HubConnectionContext context` a fizikai ügyfélkapcsolat környezete az összes tulajdonság érvényes értékeivel.
 
-Az Azure SignalR Service SDK-t `HubConnectionContext context` a környezet a logikai ügyfélkapcsolat. A fizikai ügyfélkapcsolat csatlakozik a SignalR Service-példányhoz, így csak korlátozott számú tulajdonságok vannak megadva.
+Az Azure Signaler Service SDK-ban `HubConnectionContext context` a logikai ügyfélkapcsolat kontextusa. A fizikai ügyfélkapcsolat a Signaler szolgáltatás példányához van csatlakoztatva, így csak korlátozott számú tulajdonság van megadva.
 
-Egyelőre csak `HubConnectionContext.GetHttpContext()` és `HubConnectionContext.User` hozzáférés érhetők el.
-Ellenőrizheti a forráskód [Itt](https://github.com/Azure/azure-signalr/blob/kevinzha/faq/src/Microsoft.Azure.SignalR/ServiceHubConnectionContext.cs).
+Egyelőre csak `HubConnectionContext.GetHttpContext()` és `HubConnectionContext.User` érhető el a hozzáféréshez.
+[Itt](https://github.com/Azure/azure-signalr/blob/dev/src/Microsoft.Azure.SignalR/HubHost/ServiceHubConnectionContext.cs)megtekintheti a forráskódot.
 
-## <a name="can-i-configure-the-transports-available-in-signalr-service-as-configuring-it-on-server-side-with-aspnet-core-signalr-for-example-disable-websocket-transport"></a>Konfigurálhatom úgy a SignalR Service-ben elérhető átvitelek, konfigurálja úgy a kiszolgálói oldalon az ASP.NET Core SignalR? Például letiltja a WebSocket átviteli?
+## <a name="can-i-configure-the-transports-available-in-signalr-service-as-configuring-it-on-server-side-with-aspnet-core-signalr-for-example-disable-websocket-transport"></a>Konfigurálható a Signaler szolgáltatásban elérhető átvitelek a kiszolgálóoldali ASP.NET Core jelzővel való konfigurálásához? Letilthatja például a WebSocket Transport szolgáltatást?
 
 Nem.
 
-Az Azure SignalR Service minden három szállítások, amely alapértelmezés szerint támogatja az ASP.NET Core SignalR biztosít. Érték nem módosítható. SignalR Service és az összes ügyfél-kapcsolatok átvitel fogja kezelni.
+Az Azure Signaler szolgáltatás mindhárom olyan átvitelt biztosít, amelyet a ASP.NET Core a szignáló alapértelmezés szerint támogat. Nem konfigurálható. A signaler szolgáltatás minden ügyfélkapcsolat esetében kezeli a kapcsolatokat és a szállításokat.
 
-Ügyféloldali átvitelek dokumentált módon konfigurálható [Itt](https://docs.microsoft.com/aspnet/core/signalr/configuration?view=aspnetcore-2.1#configure-allowed-transports).
+Az ügyféloldali átvitelek az [itt](https://docs.microsoft.com/aspnet/core/signalr/configuration?view=aspnetcore-2.1#configure-allowed-transports)dokumentált módon konfigurálhatók.

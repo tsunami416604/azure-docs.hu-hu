@@ -8,12 +8,12 @@ ms.date: 10/11/2019
 ms.author: normesta
 ms.reviewer: jamesbak
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: d843e288297db656cca6e2a07f2e1f3322ebfa89
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 99863f68c20a2f95dfc744e13a977bf3ccbbf639
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72299650"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73580429"
 ---
 # <a name="introduction-to-azure-data-lake-storage-gen2"></a>Bevezetés a Azure Data Lake Storage Gen2ba
 
@@ -43,9 +43,9 @@ A múltban a felhőalapú elemzések a teljesítmény, a felügyelet és a bizto
 
 -   **Költséghatékony**: Data Lake Storage Gen2 alacsony költséghatékonyságú tárolási kapacitást és tranzakciókat biztosít. Mivel az adatváltások teljes életciklusán keresztül történik, a számlázási díjszabás a minimálisan megjelenő beépített funkciókkal (például az [Azure Blob Storage életciklusával](storage-lifecycle-management-concepts.md)) megtartja a költségeket.
 
--   **Optimalizált illesztőprogram**: a ABFS-illesztőprogram kifejezetten Big Data elemzésekhez van [optimalizálva](data-lake-storage-abfs-driver.md) . A megfelelő REST API-k a `dfs.core.windows.net` végponton keresztül vannak felszínen.
+-   **Optimalizált illesztőprogram**: a ABFS-illesztőprogram kifejezetten Big Data elemzésekhez van [optimalizálva](data-lake-storage-abfs-driver.md) . A megfelelő REST API-k a végponton keresztül `dfs.core.windows.net`.
 
-### <a name="scalability"></a>Skálázhatóság
+### <a name="scalability"></a>Méretezhetőség
 
 Az Azure Storage a Data Lake Storage Gen2-vagy blob Storage-felületeken keresztüli hozzáférésének megtervezésével méretezhető. *Számos több exabájt*képes tárolni és kiszolgálni. Ez a tárterület a másodpercenkénti bemeneti/kimeneti műveletek (IOPS) magas szintjein mért Gigabit/másodperc (GB/s) értékkel érhető el. A csak az adatmegőrzési időszakon túl a feldolgozás a szolgáltatás, a fiók és a fájl szintjén mérhető, a kérelmekre vonatkozó késések mellett történik.
 
@@ -64,7 +64,7 @@ A következők az egyenértékű entitások, amelyeket a különböző fogalmak 
 | Fogalom                                | Legfelső szintű szervezet | Alacsonyabb szintű szervezet                                            | Adattároló |
 |----------------------------------------|------------------------|---------------------------------------------------------------------|----------------|
 | Blobok – általános célú objektumok tárolója | Tároló              | Virtuális könyvtár (csak SDK – nem biztosít atomi manipulációt) | Blob           |
-| Azure Data Lake Storage Gen2 – elemzési tár          | Tároló            | Könyvtár                                                           | File           |
+| Azure Data Lake Storage Gen2 – elemzési tár          | Tároló            | Címtár                                                           | Fájl           |
 
 ## <a name="supported-open-source-platforms"></a>Támogatott nyílt forráskódú platformok
 
@@ -83,13 +83,13 @@ Számos nyílt forráskódú platform támogatja a Data Lake Storage Gen2. Ezek 
 
 ## <a name="supported-azure-services"></a>Támogatott Azure-szolgáltatások
 
-Data Lake Storage a Gen2 számos olyan Azure-szolgáltatást támogat, amelyet az adatok betöltésére, elemzések elvégzésére és vizuális ábrázolások létrehozására használhat. A támogatott Azure-szolgáltatások listáját lásd: a [Azure Data Lake Storage integrálása az Azure-szolgáltatásokkal](data-lake-store-integrate-with-azure-services.md).
+Data Lake Storage a Gen2 számos olyan Azure-szolgáltatást támogat, amelyet az adatok betöltésére, elemzések elvégzésére és vizuális ábrázolások létrehozására használhat. A támogatott Azure-szolgáltatások listáját lásd: a [Azure Data Lake Storage integrálása az Azure-szolgáltatásokkal](data-lake-storage-integrate-with-azure-services.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az alábbi cikkek a Data Lake Storage Gen2 főbb fogalmait ismertetik, és részletesen ismertetik, hogyan tárolhatók, érhetők el, kezelhetők és betekintést nyerhetnek az adatokból:
 
 - [Hierarchikus névtér](data-lake-storage-namespace.md)
 - [Tárfiók létrehozása](data-lake-storage-quickstart-create-account.md)
 - [Több protokollos hozzáférés Azure Data Lake Storage](data-lake-storage-multi-protocol-access.md)
-- [Azure Data Lake Storage integrálása az Azure-szolgáltatásokkal](data-lake-store-integrate-with-azure-services.md);
+- [Azure Data Lake Storage integrálása az Azure-szolgáltatásokkal](data-lake-storage-integrate-with-azure-services.md);

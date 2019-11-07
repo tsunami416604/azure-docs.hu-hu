@@ -10,12 +10,12 @@ keywords: Azure Automation, DSC, PowerShell, a kívánt állapot konfigurálása
 ms.date: 08/25/2019
 ms.custom: mvc
 ms.topic: quickstart
-ms.openlocfilehash: b014f6015b3e13a603cf3893062bd0463eb110ee
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 2ae7c8545286baebc83077276e356cd2e41f0dc3
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73501987"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73668681"
 ---
 # <a name="quickstart-connect-machines-to-azure-using-azure-arc-for-servers---portal"></a>Gyors útmutató: számítógépek összekötése az Azure-ban az Azure arc for Servers használatával – portál
 
@@ -27,7 +27,7 @@ Tekintse át a támogatott ügyfeleket és a szükséges hálózati konfiguráci
 
 ## <a name="generate-the-agent-install-script-using-the-azure-portal"></a>Az ügynök telepítési parancsfájljának létrehozása a Azure Portal használatával
 
-1. Indítás [https://aka.ms/hybridmachineportal] [aka_hybridmachineportal]
+1. [https://aka.ms/hybridmachineportal](https://aka.ms/hybridmachineportal) elindítása
 1. Kattintson a **+ Hozzáadás** gombra
 1. Kövesse a varázslót a befejezéshez
 1. Az utolsó oldalon egy parancsfájl lett létrehozva, amelyet másolhat (vagy letöltheti).
@@ -64,6 +64,29 @@ A gépek Azure arc-kiszolgálókról történő leválasztásához két lépést
 
 1. Válassza ki a gépet a [portálon](https://aka.ms/hybridmachineportal), kattintson a három pontra (`...`), majd válassza a **Törlés**lehetőséget.
 1. Távolítsa el az ügynököt a gépről.
+
+   Windows rendszeren az "alkalmazások & szolgáltatások" Vezérlőpult használatával távolíthatja el az ügynököt.
+  
+  ![Alkalmazások & funkciók](./media/quickstart-onboard/apps-and-features.png)
+
+   Ha parancsfájlt szeretne használni az eltávolításhoz, használja a következő példát, amely lekéri a **PackageId** , és eltávolítja az ügynököt `msiexec /X`használatával.
+
+   Keresse meg a `HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Uninstall` beállításkulcsot, és keresse meg a **PackageId**. Ezután eltávolíthatja az ügynököt `msiexec`használatával.
+
+   Az alábbi példa az ügynök eltávolítását mutatja be.
+
+   ```powershell
+   Get-ChildItem -Path HKLM:\Software\Microsoft\Windows\CurrentVersion\Uninstall | `
+   Get-ItemProperty | `
+   Where-Object {$_.DisplayName -eq "Azure Connected Machine Agent"} | `
+   ForEach-Object {MsiExec.exe /Quiet /X "$($_.PsChildName)"}
+   ```
+
+   Linux rendszeren futtassa a következő parancsot az ügynök eltávolításához.
+
+   ```bash
+   sudo apt purge hybridagent
+   ```
 
 ## <a name="next-steps"></a>További lépések
 
