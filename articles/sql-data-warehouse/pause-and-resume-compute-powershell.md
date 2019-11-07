@@ -1,5 +1,5 @@
 ---
-title: 'Gyors útmutató: A számítási feladat szüneteltetése és folytatása a Azure SQL Data Warehouse-PowerShellben | Microsoft Docs'
+title: 'Gyors útmutató: & szüneteltetésének folytatása – PowerShell '
 description: A PowerShell használatával szüneteltetheti a számítást Azure SQL Data Warehouse a költségek megtakarítása érdekében. Ha készen áll az adattárház használatára, folytassa a számítást.
 services: sql-data-warehouse
 author: kevinvngo
@@ -10,20 +10,21 @@ ms.subservice: manage
 ms.date: 03/20/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: da9c3d42919bba6ce04fc54bafc2fb5d245379f5
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.custom: seo-lt-2019
+ms.openlocfilehash: 2ad83e51a11e08373f2132e861ec1c8f3ac20458
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70306094"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73686011"
 ---
-# <a name="quickstart-pause-and-resume-compute-in-azure-sql-data-warehouse-with-azure-powershell"></a>Gyors útmutató: A számítási feladat szüneteltetése és folytatása Azure SQL Data Warehouseban Azure PowerShell
+# <a name="quickstart-pause-and-resume-compute-in-azure-sql-data-warehouse-with-azure-powershell"></a>Gyors útmutató: a számítás szüneteltetése és folytatása Azure SQL Data Warehouseban Azure PowerShell
 
 A PowerShell használatával szüneteltetheti a számítást Azure SQL Data Warehouse a költségek megtakarítása érdekében. Ha készen áll az adattárház használatára, [folytassa a számítást](sql-data-warehouse-manage-compute-overview.md) .
 
 Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány perc alatt létrehozhat egy [ingyenes](https://azure.microsoft.com/free/) fiókot.
 
-## <a name="before-you-begin"></a>Előkészületek
+## <a name="before-you-begin"></a>Előzetes teendők
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -55,7 +56,7 @@ Keresse meg a felfüggeszteni és folytatni tervezett adattárházhoz tartozó a
 
 Keresse meg adattárháza helyinformációit ezekkel lépésekkel.
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
+1. Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
 2. Az Azure Portal bal oldali paneljén kattintson az **SQL-adatbázisok** elemre.
 3. Az **SQL-adatbázisok** lapon jelölje ki a **mySampleDataWarehouse** elemet. Ekkor megnyílik az adattárház.
 

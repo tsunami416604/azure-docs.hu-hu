@@ -1,28 +1,27 @@
 ---
 title: Rövid útmutató – Linux rendszerű virtuális gép létrehozása az Azure Portalon | Microsoft Docs
-description: Ez a rövid útmutató a Linux rendszerű virtuális gépek az Azure Portallal történő létrehozását ismerteti.
+description: Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre Linux rendszerű virtuális gépet a Azure Portal használatával.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: cynthn
 manager: gwallace
 editor: tysonn
 tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.topic: quickstart
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 8/20/2019
+ms.date: 11/05/2019
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 0c05eb59c42700394f755f226405f16a47edc73c
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 8dbe8e43122fb7fa00129dec0d9961bd70e5a784
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70091547"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73693304"
 ---
-# <a name="quickstart-create-a-linux-virtual-machine-in-the-azure-portal"></a>Gyors útmutató: Linuxos virtuális gép létrehozása a Azure Portalban
+# <a name="quickstart-create-a-linux-virtual-machine-in-the-azure-portal"></a>Rövid útmutató: Linux rendszerű virtuális gép létrehozása az Azure Portalon
 
 Az Azure-beli virtuális gépek (VM-ek) létrehozhatók az Azure Portal segítségével. Az Azure Portal egy böngészőalapú felhasználói felület az Azure-erőforrások létrehozásához. Ez a rövid útmutató azt ismerteti, hogyan használható a Azure Portal az Ubuntu 18,04 LTS-t futtató linuxos virtuális gép (VM) üzembe helyezéséhez. A virtuális gép működésének megtekintéséhez hozzon létre SSH-kapcsolatot a virtuális géppel, és telepítse az NGINX-webkiszolgálót.
 
@@ -35,30 +34,29 @@ A rövid útmutató elvégzéséhez egy SSH-kulcspárra lesz szüksége. Ha már
 SSH-kulcspár létrehozásához nyissa meg a Bash-felületet, és használja az [ssh-keygen](https://www.ssh.com/ssh/keygen/) eszközt. Ha nincs Bash-felület a helyi számítógépén, használhatja az [Azure Cloud Shellt](https://shell.azure.com/bash) is.
 
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-1. Az oldal tetején lévő menüben válassza ki a `>_` Cloud Shell megnyitására szolgáló ikont.
+1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
+1. Az oldal tetején lévő menüben válassza a `>_` ikont a Cloud Shell megnyitásához.
 1. Győződjön meg arról, hogy a Cloudshellben a bal felső sarokban található **bash** . Ha a PowerShell-t mondja, a legördülő menüből válassza a **bash** elemet, és válassza a **megerősítés** lehetőséget a bash rendszerhéjra való váltáshoz.
-1. Az `ssh-keygen -t rsa -b 2048` SSH-kulcs létrehozásához írja be a következőt:. 
+1. Az SSH-kulcs létrehozásához írja be a `ssh-keygen -t rsa -b 2048`. 
 1. A rendszer kérni fogja, hogy adjon meg egy fájlt, amelybe menteni szeretné a kulcspárt. Csak nyomja le az **ENTER** billentyűt az alapértelmezett helyen való mentéshez, zárójelek között. 
 1. A rendszer megkéri, hogy adjon meg egy jelszót. Megadhatja az SSH-kulcshoz tartozó jelszót, vagy megnyomhatja az **ENTER** billentyűt a jelszó nélküli folytatáshoz.
-1. A `ssh-keygen` parancs nyilvános és titkos kulcsokat hoz létre a (z `id_rsa` `~/.ssh directory`) alapértelmezett nevével. A parancs visszaadja a nyilvános kulcs teljes útvonalát. A nyilvános kulcs elérési útját használva jelenítse meg a `cat` tartalmát a `cat ~/.ssh/id_rsa.pub`következő beírásával:.
+1. Az `ssh-keygen` parancs nyilvános és titkos kulcsokat hoz létre a `~/.ssh directory``id_rsa` alapértelmezett nevével. A parancs visszaadja a nyilvános kulcs teljes útvonalát. A nyilvános kulcs elérési útját használva jelenítse meg a tartalmát a `cat` `cat ~/.ssh/id_rsa.pub`beírásával.
 1. Másolja ki a parancs kimenetét, és mentse valahova a cikk későbbi részében való használatra. Ez az Ön nyilvános kulcsa, és szüksége lesz rá, amikor konfigurálja a rendszergazdai fiókot a virtuális gépre való bejelentkezéshez.
 
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 
-Ha még nem tette [](https://portal.azure.com) meg, jelentkezzen be a Azure Portalba.
+Ha még nem tette meg, jelentkezzen be a [Azure Portalba](https://portal.azure.com) .
 
 ## <a name="create-virtual-machine"></a>Virtuális gép létrehozása
 
-1. Kattintson az Azure Portal bal felső sarkában az **Erőforrás létrehozása** gombra.
-
-1. A **népszerű**területen válassza az **Ubuntu Server 18,04 LTS**lehetőséget.
-
-1. Az **Alapok** lap **Projektadatok** részén győződjön meg arról, hogy a megfelelő előfizetés van kiválasztva, és válassza az **Új létrehozása** lehetőséget az **Erőforráscsoport** részen. Írja be az *myResourceGroup* nevet az erőforráscsoport neveként, majd kattintson **az OK gombra**. 
+1. Írja be a **virtuális gépeket** a keresésbe.
+1. A **szolgáltatások**területen válassza a **virtuális gépek**lehetőséget.
+1. A **virtuális gépek** lapon válassza a **Hozzáadás**lehetőséget. Megnyílik a **virtuális gép létrehozása** lap.
+1. Az **Alapok** fül **Projektadatok** részén győződjön meg arról, hogy a megfelelő előfizetés van kiválasztva, és válassza az **Új létrehozása** lehetőséget az Erőforráscsoport részen. A név mezőbe írja be a következőt: *myResourceGroup* . *. 
 
     ![Új erőforráscsoport létrehozása virtuális géphez](./media/quick-create-portal/project-details.png)
 
-1. Alatt **Példány részletei** szakaszban írja be a *myVM* nevet a **Virtuális gép neve** mezőbe, és válassza *USA keleti régiója* lehetőséget a **Régió** részen. Hagyja meg a többi alapértelmezett értéket.
+1. A **példány részletei**területen írja be a myVM **nevet a virtuális gép neveként**, válassza az *USA keleti* **régiója**lehetőséget, és válassza az *Ubuntu 18,04 LTS* lehetőséget a **rendszerképhez**. Hagyja meg a többi alapértelmezett értéket.
 
     ![Példány részletei szakasz](./media/quick-create-portal/instance-details.png)
 
@@ -70,7 +68,7 @@ Ha még nem tette [](https://portal.azure.com) meg, jelentkezzen be a Azure Port
 
     ![Az RDP- és a HTTP-portok megnyitása](./media/quick-create-portal/inbound-port-rules.png)
 
-1. Hagyja változatlanul a többi alapértelmezett beállítást, és kattintson a **Áttekintés + létrehozás** gombra a lap alján.
+1. Hagyja meg a többi alapértelmezett beállítást, és kattintson a **Felülvizsgálat + létrehozás** gombra a lap alján.
 
 1. A **Virtuális gép létrehozása** lapon láthatja a létrehozandó virtuális gép részleteit. Ha készen áll, kattintson a **Létrehozás** gombra.
 
@@ -91,7 +89,7 @@ Hozzon léte egy SSH-kapcsolatot a virtuális géppel.
     ssh azureuser@10.111.12.123
     ```
 
-3. Ugyanazzal a bash-rendszerhéjsal, amelyet az SSH-kulcspár létrehozásához használt (újra megnyithatja a Cloud Shell `>_` az újra vagy a https://shell.azure.com/bash) parancs kiválasztásával, illessze be az SSH-kapcsolati parancsot a rendszerhéjba egy SSH-munkamenet létrehozásához.
+3. Ugyanazzal a bash-rendszerhéjsal, amelyet az SSH-kulcspár létrehozásához használt (újra megnyithatja a Cloud Shell a `>_` újbóli kiválasztásával vagy a https://shell.azure.com/bash)ához, illessze be az SSH-kapcsolati parancsot a rendszerhéjba egy SSH-munkamenet létrehozásához.
 
 ## <a name="install-web-server"></a>Webkiszolgáló telepítése
 
@@ -102,10 +100,10 @@ sudo apt-get -y update
 sudo apt-get -y install nginx
 ```
 
-Ha elkészült, az SSH-munkamenetből való kilépéshez írja be a következőt: `exit`.
+Ha elkészült, az SSH-munkamenetből való kilépéshez írja be: `exit`.
 
 
-## <a name="view-the-web-server-in-action"></a>A webkiszolgáló működésének ellenőrzése
+## <a name="view-the-web-server-in-action"></a>A webkiszolgáló megtekintése működés közben
 
 Egy tetszőleges böngésző használatával megtekintheti az alapértelmezett NGINX-kezdőlapot. Adja meg a virtuális gép nyilvános IP-címét a webes címként. A nyilvános IP-cím a virtuális gép áttekintő oldalán található, vagy a korábban használt SSH-kapcsolati sztring részeként.
 

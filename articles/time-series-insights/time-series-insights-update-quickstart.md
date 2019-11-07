@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.workload: big-data
 ms.custom: mvc seodec18
 ms.date: 10/24/2019
-ms.openlocfilehash: da0c4d6cd4b923033761a275e93c5a4d8a184647
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: 25d6d1aa1cf7db0f448ec22ed7b5c84d840af3f5
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72991064"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73579647"
 ---
 # <a name="quickstart-explore-the-azure-time-series-insights-preview-demo-environment"></a>Rövid útmutató: Ismerkedés a Azure Time Series Insights előzetes verziójának bemutató környezetével
 
@@ -30,7 +30,7 @@ Ebből a rövid útmutatóból megtudhatja, hogyan használhatja a Time Series I
 
 ## <a name="explore-the-time-series-insights-explorer-in-a-demo-environment"></a>Ismerkedés a Time Series Insights Explorerrel bemutató környezetben
 
-A Time Series Insights Preview Explorer a korábbi és a kiváltó okok elemzését mutatja be. Első lépések:
+A Time Series Insights Preview Explorer az előzmények és a kiváltó okok elemzését mutatja be. Első lépések:
 
 1. Nyissa meg a [contoso szélerőműpark bemutató](https://insights.timeseries.azure.com/preview/samples) környezetét.  
 
@@ -71,22 +71,22 @@ A Time Series Insights Preview Explorer a korábbi és a kiváltó okok elemzés
 
       [![a korábbi minták megkeresése](media/v2-update-quickstart/quickstart-five.png)](media/v2-update-quickstart/quickstart-five.png#lightbox)
 
-A Time Series Insights és az érzékelő telemetria használatával felderítjük a régi adatokat tartalmazó hosszú távú és problémás trendeket. Az új ismeretekkel a következőket teheti:
+A Time Series Insights és az érzékelő telemetria használatával felderítjük a régi adatokat tartalmazó hosszú távú trendet. Az új ismeretekkel a következőket teheti:
 
 * Magyarázza el, mi történt valójában.
 * Javítsa ki a problémát.
-* Helyezzen üzembe kiváló riasztási értesítési rendszereket.
+* Helyezzen üzembe jobb riasztási értesítési rendszereket.
 
 ## <a name="root-cause-analysis"></a>Kiváltó okok elemzése
 
-1. Egyes forgatókönyvek esetében kifinomult elemzésre van szükség az adatokra vonatkozó apró adatnyomok feltárásához. Válassza ki a szélmalom **W6** a **6/25**. időpontban.
+1. Egyes forgatókönyvek kifinomult elemzést igényelnek az adatokban található nyomok feltárásához. Válassza ki a szélmalom **W6** a **6/25**. időpontban.
 
     1. Módosítsa a nézet tartományát **6/1/17 20:00:00.00 – 7/1/17 20:00:00.00 (UTC) értékre**.
     1. Válassza a **contoso növény 1** > **W6** > **biztonsági** > **VoltageActuatorSwitchWarning**lehetőséget.
 
        [![a nézet tartományának módosítása és a W6 kiválasztása](media/v2-update-quickstart/quickstart-six.png)](media/v2-update-quickstart/quickstart-six.png#lightbox)
 
-1. A figyelmeztetés azt jelzi, hogy a generátor által kimeneti feszültséggel kapcsolatos hiba történt. A generátor teljes teljesítménye az aktuális intervallumban normál paramétereken belül működik. Az intervallum növelésével egy másik minta jön létre. Egyértelmű a kiesés.
+1. A figyelmeztetés a generátortól kapott feszültséggel kapcsolatos hibát jelez. A generátor teljes teljesítménye az aktuális intervallumban található normál paramétereken belül van. Az intervallum növelésével egy másik mintázat jelenik meg. A legördülő lista egyértelmű.
 
     1. Távolítsa el a **VoltageActuatorSwitchWarning** -érzékelőt.
     1. Válassza a **Generator System** > **ActivePower**elemet.
@@ -105,7 +105,7 @@ A Time Series Insights és az érzékelő telemetria használatával felderítj�
     1. Válassza a **Generátorrendszer**lehetőséget, majd válassza ki a három érzékelőt: **GridVoltagePhase1**, **GridVoltagePhase2**és **GridVoltagePhase3**.
     1. Dobjon egy jelölőt a látható terület utolsó adatpontjára.
 
-       [jelölő![eldobása](media/v2-update-quickstart/quickstart-nine.png)](media/v2-update-quickstart/quickstart-nine.png#lightbox)
+       [jelölő ![eldobása](media/v2-update-quickstart/quickstart-nine.png)](media/v2-update-quickstart/quickstart-nine.png#lightbox)
 
     A feszültség-érzékelők közül kettő egyformán működik, a normál paramétereken belül. Úgy tűnik, a **GridVoltagePhase3** -érzékelő a bűnös.
 
@@ -117,19 +117,19 @@ A Time Series Insights és az érzékelő telemetria használatával felderítj�
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Most, hogy elvégezte az oktatóanyagot, törölje a létrehozott erőforrásokat:
+Most, hogy elvégezte a gyors üzembe helyezést, törölje a létrehozott erőforrásokat:
 
-1. A [Azure Portal](https://portal.azure.com)bal oldali menüjében válassza a **minden erőforrás**lehetőséget, keresse meg a Azure Time Series Insights erőforráscsoportot.
+1. A [Azure Portal](https://portal.azure.com)bal oldali menüjében válassza a **minden erőforrás**lehetőséget, és keresse meg a Azure Time Series Insights erőforráscsoportot.
 1. Törölje a teljes erőforráscsoportot (és az abban található összes erőforrást) úgy, hogy kiválasztja az egyes erőforrások **törlését** vagy eltávolítását.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Készen áll saját Time Series Insights előnézeti környezet létrehozására. Kezdés:
 
 > [!div class="nextstepaction"]
 > [A Time Series Insights előzetes verzió környezetének megtervezése](time-series-insights-update-plan.md)
 
-Ismerje meg, hogyan navigálhat a bemutatóban és annak szolgáltatásaiban:
+Ismerje meg a bemutató és funkcióinak használatát:
 
 > [!div class="nextstepaction"]
 > [A Time Series Insights Preview Explorer](time-series-insights-update-explorer.md)

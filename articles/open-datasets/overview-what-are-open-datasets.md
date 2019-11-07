@@ -7,12 +7,12 @@ ms.topic: overview
 author: cjgronlund
 ms.author: cgronlun
 ms.date: 11/04/2019
-ms.openlocfilehash: b8633bd91abc1f336870158f54d75829ed5cf6a0
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: HT
+ms.openlocfilehash: fd5697f9c325dc4ad866c333ce1b20e008ebfa24
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73496614"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73606159"
 ---
 # <a name="what-are-azure-open-datasets-and-how-can-you-use-them"></a>Mik azok az Azure Open-adatkészletek, és hogyan használhatók?
 
@@ -25,7 +25,7 @@ Az adatkészletek olyan nyilvános tartományi adatokat foglalnak magukban, mint
 ## <a name="curated-prepared-datasets"></a>Kurátorok által előkészített adathalmazok
 Az Azure Open-adatkészleteket használó, nyitott nyilvános adatkészletek a gépi tanulási munkafolyamatokban való felhasználásra vannak optimalizálva. 
 
-Az adatszakértők általában az idő nagy részében elköltik az adattisztítást, és előkészítik a speciális elemzéseket. A megnyitott adatkészletek az Azure-felhőbe kerülnek, és a rendszer elődolgozta az idő megtakarítását. A rendszeres időközönként az adatok a forrásokból származnak, például a nemzeti óceáni és a légköri adminisztráció (NOAA) FTP-kapcsolata, strukturált formátumba elemezve, majd a megfelelő módon gazdagított funkciókkal, például a ZIP-kóddal vagy a legközelebbi meteorológiai állomás.
+Az adatszakértők általában az idő nagy részében elköltik az adattisztítást, és előkészítik a speciális elemzéseket. A megnyitott adatkészletek az Azure-felhőbe kerülnek, és a rendszer elődolgozta az idő megtakarítását. A rendszeres időközönként az adatok a forrásokból származnak, például egy FTP-kapcsolattal az országos óceáni és légköri adminisztráció (NOAA) felé. Ezt követően a rendszer strukturált formátumban elemzi az adatelemzéseket, majd a megfelelő funkciókkal gazdagítja a következő funkciókat: ZIP-kód vagy a legközelebbi meteorológiai állomás helye.
 
 Az adatkészletek az Azure felhőalapú számítási feladatokkal vannak ellátva, így egyszerűbbé válik a hozzáférés és a manipuláció.  
 
@@ -57,5 +57,5 @@ Ha nem találja a kívánt adatokat, küldje el nekünk e-mailben, hogy [adatké
 
 ## <a name="next-steps"></a>További lépések
 * [Minta notebook](samples.md)
-* [Oktatóanyag: regressziós modellezés a New York-i taxival](tutorial-opendatasets-automl.md)
+* [Oktatóanyag: regressziós modellezés a New York-i taxival](/azure/machine-learning/service/tutorial-auto-train-models?context=azure/open-datasets/context/open-datasets-context)
 * [Python SDK a nyílt adatkészletekhez](/python/api/azureml-opendatasets/?view=azure-ml-py)
