@@ -1,5 +1,5 @@
 ---
-title: A .NET Core használata az Azure SQL Database lekérdezéséhez | Microsoft Docs
+title: Azure SQL Database lekérdezése a .NET Core használatával
 description: Ebből a témakörből megtudhatja, hogyan használhatja a .NET Core-t olyan program létrehozására, amely egy Azure SQL Databasehoz csatlakozik, és a Transact-SQL-utasítások használatával kérdezi le azokat.
 services: sql-database
 ms.service: sql-database
@@ -11,14 +11,14 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 07/29/2019
-ms.openlocfilehash: 1c6fdc6f6d2e642db8b57745573260c819c6c307
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: e605b4255d61ff0cb6402b40b099449f0fbafa7a
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68640926"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73690989"
 ---
-# <a name="quickstart-use-net-core-c-to-query-an-azure-sql-database"></a>Gyors útmutató: A .NET Core (C#) használata Azure SQL-adatbázisok lekérdezéséhez
+# <a name="quickstart-use-net-core-c-to-query-an-azure-sql-database"></a>Rövid útmutató: A .NET Core (C#) használata Azure SQL-adatbázisok lekérdezéséhez
 
 Ebben a rövid útmutatóban a [.net Core](https://www.microsoft.com/net/) és C# a Code használatával csatlakozhat egy Azure SQL Database-adatbázishoz. Ezután futtasson egy Transact-SQL-utasítást az adatok lekérdezéséhez.
 
@@ -33,7 +33,7 @@ Ebben az oktatóanyagban a következőkre lesz szüksége:
 
   || Önálló adatbázis | Felügyelt példány |
   |:--- |:--- |:---|
-  | Hozzon létre| [Portál](sql-database-single-database-get-started.md) | [Portál](sql-database-managed-instance-get-started.md) |
+  | Létrehozás| [Portál](sql-database-single-database-get-started.md) | [Portál](sql-database-managed-instance-get-started.md) |
   || [Parancssori felület](scripts/sql-database-create-and-configure-database-cli.md) | [Parancssori felület](https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44) |
   || [PowerShell](scripts/sql-database-create-and-configure-database-powershell.md) | [PowerShell](scripts/sql-database-create-configure-managed-instance-powershell.md) |
   | Konfigurálás | [Kiszolgálói szintű IP-tűzfalszabály](sql-database-server-level-firewall-rule.md)| [Kapcsolódás virtuális gépről](sql-database-managed-instance-configure-vm.md)|
@@ -48,13 +48,13 @@ Ebben az oktatóanyagban a következőkre lesz szüksége:
 - [.Net Core az operációs rendszer](https://www.microsoft.com/net/core) telepítéséhez.
 
 > [!NOTE]
-> Ez a rövid útmutató a *mySampleDatabase* -adatbázist használja. Ha másik adatbázist szeretne használni, módosítania kell az adatbázis-hivatkozásokat, és módosítania `SELECT` kell a lekérdezést a C# kódban.
+> Ez a rövid útmutató a *mySampleDatabase* -adatbázist használja. Ha másik adatbázist szeretne használni, módosítania kell az adatbázis-hivatkozásokat, és módosítania kell a `SELECT` lekérdezést a C# kódban.
 
 ## <a name="get-sql-server-connection-information"></a>SQL Server-kapcsolatok adatainak beolvasása
 
 Az Azure SQL Database-adatbázishoz való kapcsolódáshoz szükséges kapcsolati adatok beolvasása. A közelgő eljárásokhoz szüksége lesz a teljes kiszolgálónévre vagy az állomásnévre, az adatbázis nevére és a bejelentkezési adatokra.
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
+1. Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
 
 2. Navigáljon az **SQL-adatbázisok** vagy az **SQL-felügyelt példányok** lapra.
 
@@ -79,7 +79,7 @@ Az Azure SQL Database-adatbázishoz való kapcsolódáshoz szükséges kapcsolat
     ```
     Ez a parancs új alkalmazás-projektfájlok létrehozását hozza létre, C# beleértve egy kezdeti**program.cs**, egy XML-konfigurációs fájlt (**sqltest. csproj**) és a szükséges bináris fájlokat.
 
-2. Egy szövegszerkesztőben nyissa meg a **sqltest. csproj** fájlt, és illessze be a `<Project>` következő XML-kódot a címkék közé. Ez az XML `System.Data.SqlClient` függőségként adja meg.
+2. Egy szövegszerkesztőben nyissa meg a **sqltest. csproj** fájlt, és illessze be a következő XML-kódot a `<Project>` címkék közé. Ez az XML-`System.Data.SqlClient` függőségként adja meg.
 
     ```xml
     <ItemGroup>
@@ -198,5 +198,5 @@ namespace sqltest
 
 - [Bevezetés a .NET Core használatába Windows/Linux/macOS rendszeren a parancssorral](/dotnet/core/tutorials/using-with-xplat-cli).
 - Ismerje meg, hogyan [csatlakozhat egy Azure SQL Database-adatbázishoz, és hogyan kérhet le lekérdezést a .NET-keretrendszer és a Visual Studio használatával](sql-database-connect-query-dotnet-visual-studio.md).  
-- Ismerje meg, hogyan [tervezheti meg első Azure SQL-adatbázisát az SSMS használatával](sql-database-design-first-database.md) , vagy megtervezheti [Az Azure SQL Database-t C# , és kapcsolódhat és ADO.net](sql-database-design-first-database-csharp.md).
+- Ismerje meg, hogyan [tervezheti meg első Azure SQL-adatbázisát az SSMS használatával](sql-database-design-first-database.md) , vagy [megtervezheti az Azure SQL Database-t C# , és kapcsolódhat és ADO.net](sql-database-design-first-database-csharp.md).
 - A .NET-ről a [.NET dokumentációjában](https://docs.microsoft.com/dotnet/) talál további információt.

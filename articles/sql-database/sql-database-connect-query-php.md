@@ -1,5 +1,5 @@
 ---
-title: A PHP használata az Azure SQL Database lekérdezéséhez | Microsoft Docs
+title: A PHP használata az Azure SQL Database lekérdezéséhez
 description: Hogyan használható a PHP egy olyan program létrehozásához, amely egy Azure SQL Database-adatbázishoz csatlakozik, és T-SQL-utasítások használatával kérdezi le.
 services: sql-database
 ms.service: sql-database
@@ -10,12 +10,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: v-masebo
 ms.date: 02/12/2019
-ms.openlocfilehash: a7da65438ffd7db6c43cf2ede7cc52378af056f1
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: c1c576becc0390a2cb0dfb083755be4e7c772c59
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68569214"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73690936"
 ---
 # <a name="quickstart-use-php-to-query-an-azure-sql-database"></a>Gyors útmutató: PHP használata Azure SQL-adatbázis lekérdezéséhez
 
@@ -29,7 +29,7 @@ A minta elvégzéséhez győződjön meg arról, hogy rendelkezik a következő 
 
   || Önálló adatbázis | Felügyelt példány |
   |:--- |:--- |:---|
-  | Hozzon létre| [Portál](sql-database-single-database-get-started.md) | [Portál](sql-database-managed-instance-get-started.md) |
+  | Létrehozás| [Portál](sql-database-single-database-get-started.md) | [Portál](sql-database-managed-instance-get-started.md) |
   || [Parancssori felület](scripts/sql-database-create-and-configure-database-cli.md) | [Parancssori felület](https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44) |
   || [PowerShell](scripts/sql-database-create-and-configure-database-powershell.md) | [PowerShell](scripts/sql-database-create-configure-managed-instance-powershell.md) |
   | Konfigurálás | [Kiszolgálói szintű IP-tűzfalszabály](sql-database-server-level-firewall-rule.md)| [Kapcsolódás virtuális gépről](sql-database-managed-instance-configure-vm.md)|
@@ -53,7 +53,7 @@ A minta elvégzéséhez győződjön meg arról, hogy rendelkezik a következő 
 
 Az Azure SQL Database-adatbázishoz való kapcsolódáshoz szükséges kapcsolati adatok beolvasása. A közelgő eljárásokhoz szüksége lesz a teljes kiszolgálónévre vagy az állomásnévre, az adatbázis nevére és a bejelentkezési adatokra.
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
+1. Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
 
 2. Navigáljon az **SQL-adatbázisok** vagy az **SQL-felügyelt példányok** lapra.
 
@@ -102,10 +102,10 @@ Az Azure SQL Database-adatbázishoz való kapcsolódáshoz szükséges kapcsolat
 
 ## <a name="next-steps"></a>További lépések
 
-- [Az első SQL Database-adatbázis megtervezése](sql-database-design-first-database.md)
+- [Az első Azure SQL-adatbázis megtervezése](sql-database-design-first-database.md)
 
 - [SQL Serverre készült Microsoft PHP-illesztőprogramok](https://github.com/Microsoft/msphpsql/)
 
 - [Problémák jelentése és kérdezés](https://github.com/Microsoft/msphpsql/issues)
 
-- [Újrapróbálkozási logika példája: Rugalmas csatlakozás az SQL-hez a PHP-vel](/sql/connect/php/step-4-connect-resiliently-to-sql-with-php)
+- [Példa az újrapróbálkozási logikára: rugalmas csatlakozás az SQL-hez a PHP-vel](/sql/connect/php/step-4-connect-resiliently-to-sql-with-php)

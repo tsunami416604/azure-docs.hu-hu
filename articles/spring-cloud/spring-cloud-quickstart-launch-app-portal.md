@@ -1,26 +1,23 @@
 ---
-title: Azure Spring Cloud-alkalmazás elindítása a Azure Portal használatával
+title: 'Gyors útmutató: Azure Spring Cloud-alkalmazás elindítása a Azure Portal használatával'
 description: A Azure Portal használatával üzembe helyezhet egy minta-alkalmazást az Azure Spring-felhőben.
-services: spring-cloud
-author: v-vasuke
-manager: jeconnoc
-editor: ''
+author: jpconnock
 ms.service: spring-cloud
 ms.topic: quickstart
-ms.date: 10/04/2019
-ms.author: v-vasuke
-ms.openlocfilehash: 87826b4c898f67873c2ec8188b934abd467c8a5b
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
-ms.translationtype: MT
+ms.date: 11/4/2019
+ms.author: jeconnoc
+ms.openlocfilehash: ab2950ed85d2409cd81ea562ec977c0eee2f6bab
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73162817"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73693135"
 ---
 # <a name="quickstart-launch-an-azure-spring-cloud-application-using-the-azure-portal"></a>Gyors útmutató: Azure Spring Cloud-alkalmazás elindítása a Azure Portal használatával
 
 Az Azure Spring Cloud lehetővé teszi, hogy könnyedén futtasson Spring Cloud-alapú Service-alkalmazásokat az Azure-ban.
 
-Ez a rövid útmutató bemutatja, hogyan helyezhet üzembe egy meglévő Spring Cloud-alkalmazást az Azure-ban. [Itt látható](https://github.com/Azure-Samples/PiggyMetrics) az oktatóanyagban használt minta alkalmazás kódjára mutató hivatkozás. Ha elkészült, a megadott minta alkalmazás elérhető lesz az interneten, és készen áll a Azure Portalon keresztül történő felügyeletre.
+Ez a rövid útmutató bemutatja, hogyan helyezhet üzembe egy meglévő Spring Cloud-alkalmazást az Azure-ban.  A jelen oktatóanyagban használt minta alkalmazás kódját a GitHub-mintákat tartalmazó [tárházban](https://github.com/Azure-Samples/PiggyMetrics)találja. Ha elkészült, a megadott minta alkalmazás elérhető lesz az interneten, és készen áll a Azure Portalon keresztül történő felügyeletre.
 
 Ez a rövid útmutató a következőket ismerteti:
 
@@ -34,7 +31,7 @@ Ez a rövid útmutató a következőket ismerteti:
 ## <a name="prerequisites"></a>Előfeltételek
 
 >[!Note]
-> A rövid útmutató megkezdése előtt győződjön meg arról, hogy az Azure-előfizetése hozzáfér az Azure Spring Cloud-hoz.  Előzetes verziójú szolgáltatásként arra kérünk ügyfeleinket, hogy forduljon hozzánk, hogy fel tudja venni az előfizetését az engedélyezési listára.  Ha szeretné felfedezni az Azure Spring Cloud képességeit, töltse ki és küldje be az [Azure Spring Cloud (privát előzetes verzió) érdeklődési formáját](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR-LA2geqX-ZLhi-Ado1LD3tUNDk2VFpGUzYwVEJNVkhLRlcwNkZFUFZEUS4u). Habár az Azure Spring Cloud előzetes verzióban érhető el, a Microsoft korlátozott támogatást biztosít SLA nélkül.  Az előzetes verziókkal kapcsolatos támogatásról további információt ebben a [támogatási gyikban](https://azure.microsoft.com/support/faq/)találhat.
+> Az Azure Spring Cloud jelenleg nyilvános előzetes verzióként érhető el. A nyilvános előzetes ajánlatok lehetővé teszik, hogy az ügyfelek a hivatalos kiadásuk előtt új funkciókkal kísérletezzenek.  A nyilvános előzetes verzió funkcióit és szolgáltatásait nem éles használatra szánták.  Az előzetes verziókra vonatkozó támogatással kapcsolatos további információkért írjon be egy [support Request](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request).
 
 >[!TIP]
 > Az Azure Cloud Shell egy olyan ingyenes interaktív kezelőfelület, amelyet a jelen cikkben található lépések futtatására használhat.  A közös Azure-eszközök előre telepítve vannak, beleértve a git, a JDK, a Maven és az Azure CLI legújabb verzióit. Ha bejelentkezett az Azure-előfizetésbe, indítsa el a [Azure Cloud shellt](https://shell.azure.com) a shell.Azure.com webhelyről.  A Azure Cloud Shellről a [dokumentáció beolvasásával](../cloud-shell/overview.md) tájékozódhat bővebben
@@ -52,16 +49,14 @@ A gyorsútmutató elvégzéséhez:
 Telepítse az Azure CLI-hez készült Azure Spring Cloud-bővítményt az alábbi paranccsal
 
 ```Azure CLI
-az extension add -y --source https://azureclitemp.blob.core.windows.net/spring-cloud/spring_cloud-0.1.0-py2.py3-none-any.whl
+az extension add --name spring-cloud
 ```
 
 ## <a name="provision-a-service-instance-on-the-azure-portal"></a>Szolgáltatási példány kiépítése a Azure Portal
 
-1. A böngészőben nyissa meg az [Azure Spring Cloud-ra mutató hivatkozást a Azure Portal](https://ms.portal.azure.com/?microsoft_azure_marketplace_ItemHideKey=AppPlatformExtension#blade/Microsoft_Azure_Marketplace/MarketplaceOffersBlade/selectedMenuItemId/home/searchQuery/Azure%20Spring%20Cloud).
+1. A böngészőben nyissa meg az [Azure Spring Cloud-ra mutató hivatkozást a Azure Portal](https://ms.portal.azure.com/#create/Microsoft.AppPlatform).
 
-    ![Képernyőfelvétel az ASC-portálról](media/spring-cloud-quickstart-launch-app-portal/goto-portal.png)
-
-1. Válassza az **Azure Spring Cloud** lehetőséget az Áttekintés oldalra való ugráshoz. Ezután kattintson a **Létrehozás** gombra a kezdéshez.
+1. Válassza az **Azure Spring Cloud** lehetőséget az Áttekintés oldalra való ugráshoz. A kezdéshez kattintson a **Létrehozás** gombra.
 
 1. Töltse ki az űrlapot, figyelembe véve a következő irányelveket:
     - Szolgáltatás neve: adja meg a szolgáltatás példányának nevét.  A névnek 4 – 32 karakter hosszúnak kell lennie, és csak kisbetűket, számokat és kötőjeleket tartalmazhat.  A szolgáltatás nevének első karakterének betűnek kell lennie, és az utolsó karakternek betűnek vagy számnak kell lennie.
@@ -77,26 +72,28 @@ A szolgáltatás üzembe helyezése körülbelül 5 percet vesz igénybe.  A tel
 
 1. Az **alapértelmezett adattár** **szakaszban állítsa be** a "https\://GitHub.com/Azure-Samples/piggymetrics" értéket, állítsa a **címkét** a "config" értékre, majd kattintson az **alkalmaz** gombra a módosítások mentéséhez.
 
-    ![Képernyőfelvétel az ASC-portálról](media/spring-cloud-quickstart-launch-app-portal/portal-config.png)
+    ![Képernyőfelvétel az ASC-portálról](media/spring-cloud-tutorial-config-server/portal-config-server.png)
 
 ## <a name="build-and-deploy-microservice-applications"></a>Service-alkalmazások készítése és üzembe helyezése
 
-1. Nyisson meg egy parancssorablakot, és futtassa a következő parancsot a minta alkalmazás tárházának a helyi gépre történő klónozásához.
+1. Nyisson meg egy [Azure-cloudshellben](https://shell.azure.com) , és klónozása a minta alkalmazás-tárházat a helyi gépre.  Először hozzunk létre egy `source-code` nevű ideiglenes könyvtárat az alkalmazás klónozása előtt.
 
-    ```cli
+    ```azurecli
+    mkdir source-code
+    cd source-code
     git clone https://github.com/Azure-Samples/piggymetrics
     ```
 
-1. Hozza létre a projektet az alábbi parancs futtatásával.
+1. Hozza létre a klónozott csomagot.
 
-    ```cli
-    cd PiggyMetrics
+    ```azurecli
+    cd piggymetrics
     mvn clean package -DskipTests
     ```
 
 1. Jelentkezzen be az Azure CLI-be, és állítsa be az aktív előfizetését.
 
-    ```cli
+    ```azurecli
     # Login to Azure CLI
     az login
 
@@ -123,7 +120,7 @@ A szolgáltatás üzembe helyezése körülbelül 5 percet vesz igénybe.  A tel
 
 1. Ugyanezt a mintát követve hozza létre a `account-service` és a `auth-service` alkalmazást, és telepítse a JAR-fájljait.
 
-    ```cli
+    ```azurecli
     az spring-cloud app create -n account-service
     az spring-cloud app deploy -n account-service --jar-path ./account-service/target/account-service.jar
     az spring-cloud app create -n auth-service
@@ -135,8 +132,10 @@ A szolgáltatás üzembe helyezése körülbelül 5 percet vesz igénybe.  A tel
 ## <a name="assign-a-public-endpoint-to-gateway"></a>Nyilvános végpont társítása az átjáróhoz
 
 1. Nyissa meg a bal oldali menü **alkalmazások** lapját.
-2. Válassza ki a `gateway` alkalmazást az **Áttekintés** lap megjelenítéséhez.
-3. Válassza a **tartomány kiosztása** lehetőséget egy nyilvános végpontnak az átjáróhoz való hozzárendeléséhez. Ez néhány percet is igénybe vehet.
+
+1. Válassza ki a `gateway` alkalmazást az **Áttekintés** lap megjelenítéséhez.
+
+1. Válassza a **tartomány kiosztása** lehetőséget egy nyilvános végpontnak az átjáróhoz való hozzárendeléséhez. Ez néhány percet is igénybe vehet.
 
     ![Képernyőfelvétel az ASC-portálról](media/spring-cloud-quickstart-launch-app-portal/portal-endpoint.png)
 
@@ -145,7 +144,7 @@ A szolgáltatás üzembe helyezése körülbelül 5 percet vesz igénybe.  A tel
     ![Képernyőfelvétel az ASC-portálról](media/spring-cloud-quickstart-launch-app-portal/sample-app.png)
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ennek a rövid útmutatónak a segítségével megtanulta a következőket:
 

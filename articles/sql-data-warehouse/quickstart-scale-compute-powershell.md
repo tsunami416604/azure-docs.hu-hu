@@ -1,5 +1,5 @@
 ---
-title: 'Gyors útmutató: Számítási felskálázás a Azure SQL Data Warehouse-PowerShellben | Microsoft Docs'
+title: 'Gyors útmutató: a számítások méretezése – PowerShell '
 description: Azure SQL Data Warehouse-beli számítási feladatok skálázása a PowerShellben. Felskálázással a számítások teljesítménye növelhető, leskálázással a költségek csökkenthetők.
 services: sql-data-warehouse
 author: Antvgski
@@ -10,20 +10,21 @@ ms.subservice: implement
 ms.date: 04/17/2018
 ms.author: anvang
 ms.reviewer: igorstan
-ms.openlocfilehash: 37b5f0a989bb76a9a40529cd11944de40a164156
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.custom: seo-lt-2019
+ms.openlocfilehash: f4c2087052e4c3b4fac4d27bb4ecdc2ebf8a42f6
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70306228"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73692962"
 ---
-# <a name="quickstart-scale-compute-in-azure-sql-data-warehouse-in-azure-powershell"></a>Gyors útmutató: Számítások méretezése Azure SQL Data Warehouseban Azure PowerShell
+# <a name="quickstart-scale-compute-in-azure-sql-data-warehouse-in-azure-powershell"></a>Gyors útmutató: számítások méretezése Azure SQL Data Warehouseban Azure PowerShell
 
-A számítások méretezése Azure SQL Data Warehouse a Azure PowerShell használatával. [Felskálázással](sql-data-warehouse-manage-compute-overview.md) a számítások teljesítménye növelhető, leskálázással a költségek csökkenthetők.
+A számítások méretezése Azure SQL Data Warehouse a Azure PowerShell használatával. [Bővítéssel](sql-data-warehouse-manage-compute-overview.md) a számítások teljesítménye növelhető, szűkítéssel a költségek csökkenthetők.
 
 Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány perc alatt létrehozhat egy [ingyenes](https://azure.microsoft.com/free/) fiókot.
 
-## <a name="before-you-begin"></a>Előkészületek
+## <a name="before-you-begin"></a>Előzetes teendők
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -55,9 +56,9 @@ Keresse meg a felfüggeszteni és folytatni tervezett adattárházhoz tartozó a
 
 Keresse meg adattárháza helyinformációit ezekkel lépésekkel.
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
+1. Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
 2. Az Azure Portal bal oldali panelén kattintson az **SQL Data Warehouse-adattárházak** elemre.
-3. Az **SQL adattárház** lapon jelölje ki a **mySampleDataWarehouse** elemet. Ezzel megnyílik az adattárház.
+3. Az **SQL-adattárház** lapon jelölje ki a **mySampleDataWarehouse** elemet. Ezzel megnyílik az adattárház.
 
     ![Kiszolgálónév és erőforráscsoport](media/pause-and-resume-compute-powershell/locate-data-warehouse-information.png)
 

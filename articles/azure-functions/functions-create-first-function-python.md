@@ -1,5 +1,5 @@
 ---
-title: HTTP által aktivált függvény létrehozása az Azure-ban
+title: HTTP által aktivált Python-függvény létrehozása az Azure-ban
 description: Ismerje meg, hogyan hozhatja létre az első Python-függvényt az Azure-ban a Azure Functions Core Tools és az Azure CLI használatával.
 author: ggailey777
 ms.author: glenga
@@ -9,14 +9,14 @@ ms.service: azure-functions
 ms.custom: mvc
 ms.devlang: python
 manager: gwallace
-ms.openlocfilehash: f2602e5a13f83090291656e7062c74c245bc6568
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: 791348088d909785b36934c3b9a2ae00fc0acbb7
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72693351"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73622036"
 ---
-# <a name="create-an-http-triggered-function-in-azure"></a>HTTP által aktivált függvény létrehozása az Azure-ban
+# <a name="create-an-http-triggered-python-function-in-azure"></a>HTTP által aktivált Python-függvény létrehozása az Azure-ban
 
 Ez a cikk bemutatja, hogyan hozhat létre olyan Python-projektet, amely Azure Functionsban fut. Létrehozhat egy HTTP-kérelem által aktivált függvényt is. Végezetül közzé kell tenni a projektet, hogy kiszolgáló nélküli [függvényként](functions-scale.md#consumption-plan) fusson az Azure-ban.
 
@@ -38,7 +38,7 @@ A Kezdés előtt a következőket kell tennie:
 
 ## <a name="create-and-activate-a-virtual-environment-optional"></a>Virtuális környezet létrehozása és aktiválása (nem kötelező)
 
-Python-függvények helyi fejlesztéséhez a Python 3.6. x környezetet kell használnia. Futtassa a következő parancsokat egy `.venv` nevű virtuális környezet létrehozásához és aktiválásához.
+Python-függvények helyi fejlesztéséhez a Python 3.6. x környezetet kell használnia. Futtassa a következő parancsokat egy `.venv`nevű virtuális környezet létrehozásához és aktiválásához.
 
 > [!NOTE]
 > Ha a Python nem telepítette a venv-t a Linux-disztribúción, akkor a következő paranccsal telepítheti:
@@ -105,7 +105,7 @@ Ezek a parancsok létrehoznak egy _HttpTrigger_nevű almappát. A következő f�
 
     Minden kötéshez meg kell adni egy irányt, egy típust és egy egyedi nevet. A HTTP-trigger [`httpTrigger`](functions-bindings-http-webhook.md#trigger) típusú, [`http`](functions-bindings-http-webhook.md#output)típusú kimeneti kötést tartalmaz.
 
-* *\_ \_init \_ \_.* file: parancsfájl, amely a http által aktivált függvény. Figyelje meg, hogy ez a parancsfájl alapértelmezett `main()`. A triggerből származó HTTP-adatok a `binding parameter` nevű `req` használatával jutnak el a függvényhez. A function. JSON fájlban definiált `req` az [Azure. functions. HttpRequest osztály](/python/api/azure-functions/azure.functions.httprequest)egy példánya. 
+* *\_\_init\_\_.* file: szkriptet, amely a http által aktivált függvény. Figyelje meg, hogy ez a parancsfájl alapértelmezett `main()`. A triggerből származó HTTP-adatok a `binding parameter`nevű `req` használatával jutnak el a függvényhez. A function. JSON fájlban definiált `req`az [Azure. functions. HttpRequest osztály](/python/api/azure-functions/azure.functions.httprequest)egy példánya. 
 
     A *function. JSON*fájlban `$return`ként definiált visszatérési objektum az [Azure. functions. HttpResponse osztály](/python/api/azure-functions/azure.functions.httpresponse)egy példánya. További információ: [Azure FUNCTIONS http-eseményindítók és-kötések](functions-bindings-http-webhook.md).
 
@@ -217,7 +217,7 @@ Másolhatja a `HttpTrigger` `Invoke url` értékét, és felhasználhatja az Azu
 > [!NOTE]
 > A közzétett Python-alkalmazások közel valós idejű naplófájljainak megtekintéséhez használja a [Application Insights élő metrikastream](functions-monitoring.md#streaming-logs).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Létrehozott egy Python functions-projektet egy HTTP által aktivált függvénnyel, futtatta azt a helyi gépen, és üzembe helyezte az Azure-ban. Most terjessze ki a függvényt...
 

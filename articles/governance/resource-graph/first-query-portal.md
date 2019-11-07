@@ -6,12 +6,12 @@ ms.author: dacoulte
 ms.date: 10/21/2019
 ms.topic: quickstart
 ms.service: resource-graph
-ms.openlocfilehash: abee722e725b55933d7ff1acdcd1e9a2e701502b
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 14615d596c1b673a234ccef541fecfbfce9d5f27
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72752151"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73622608"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-azure-resource-graph-explorer"></a>Rövid útmutató: az első Resource Graph-lekérdezés futtatása az Azure Resource Graph Explorerrel
 
@@ -27,14 +27,14 @@ Az első Resource Graph-lekérdezés futtatásához a következő lépésekkel k
 
 1. Válassza a **minden szolgáltatás** lehetőséget a bal oldali ablaktáblán. Keresse meg és válassza ki a **Resource Graph Explorert**.
 
-1. Az ablak **lekérdezés 1** részében adja meg a `Resources | project name, type | limit 5` lekérdezést, és válassza a **lekérdezés futtatása**lehetőséget.
+1. Az ablak **lekérdezés 1** részében adja meg a lekérdezési `Resources | project name, type | limit 5`, és válassza a **lekérdezés futtatása**lehetőséget.
 
    > [!NOTE]
    > Mivel ez a lekérdezési példa nem tartalmaz olyan rendezési módosítót, mint például a `order by`, a lekérdezés többszöri futtatása valószínűleg különböző erőforrás-készletet eredményez.
 
 1. Tekintse át a lekérdezési választ az **eredmények** lapon. a lekérdezés részleteinek megtekintéséhez válassza az **üzenetek** fület, beleértve az eredmények számát és a lekérdezés időtartamát. A hibák (ha vannak) a lapon jelennek meg.
 
-1. Frissítse a lekérdezést a `order by` **névre a Name (név** ) tulajdonságra: `Resources | project name, type | limit 5 | order by name asc`. Ezután válassza a **lekérdezés futtatása**lehetőséget.
+1. Frissítse a lekérdezést, hogy `order by` a **Name** tulajdonságot: `Resources | project name, type | limit 5 | order by name asc`. Ezután válassza a **lekérdezés futtatása**lehetőséget.
 
    > [!NOTE]
    > Csakúgy, mint az első lekérdezésnél, e lekérdezés többszöri futtatása esetén is valószínűleg minden kéréssel eltérő erőforráslistát fog kapni. Fontos a lekérdezési parancsok sorrendje. Ebben a példában az `order by` a `limit` után következik. Így először korlátozza a lekérdezés eredményeit, majd rendezi őket.
@@ -47,8 +47,8 @@ Ha a végső lekérdezés többször is fut, feltételezve, hogy a környezetéb
 
 A séma böngészője a Resource Graph Explorer bal oldali ablaktábláján található. Ezen erőforrások listája az Azure Resource Graph által támogatott Azure-erőforrások összes olyan _erőforrás-típusát_ megjeleníti, amelyek az Ön számára elérhető bérlőben találhatók. Az erőforrás-típus vagy az altulajdonságok kibővítésével megjelenítheti az erőforrás-gráf-lekérdezések létrehozásához használható alárendelt tulajdonságokat.
 
-Ha kijelöli az erőforrástípus `where type =="<resource type>"` értéket a lekérdezés mezőbe. A gyermek tulajdonságok egyikének kiválasztásakor a `where <propertyName> == "INSERT_VALUE_HERE"` a lekérdezés mezőbe kerül.
-A sémakezelő böngésző nagyszerű lehetőséget nyújt a lekérdezésekben használható tulajdonságok felderítésére. Ügyeljen arra, hogy az _INSERT \_VALUE \_HEREt_ a saját értékére cserélje, a feltételekkel, operátorokkal és függvényekkel módosítsa a lekérdezéseket a kívánt eredmények eléréséhez.
+Válassza ki az erőforrástípus `where type =="<resource type>"` a lekérdezés mezőbe. A gyermek tulajdonságok egyikének kiválasztásakor a `where <propertyName> == "INSERT_VALUE_HERE"` a lekérdezés mezőbe kerül.
+A sémakezelő böngésző nagyszerű lehetőséget nyújt a lekérdezésekben használható tulajdonságok felderítésére. Ügyeljen arra, hogy az _INSERT\_value\_itt_ a saját értékét cserélje le, a feltételekkel, operátorokkal és függvényekkel állítsa be a lekérdezéseket a kívánt eredmények eléréséhez.
 
 ## <a name="create-a-chart-from-the-resource-graph-query"></a>Diagram létrehozása az erőforrás-gráf lekérdezésből
 
@@ -91,11 +91,11 @@ A Resource Graph-lekérdezések példáinak megadásához, valamint arról, hogy
 
 - [Resource Graph Explorer – minta irányítópult #1](https://github.com/Azure-Samples/Governance/blob/master/src/resource-graph/portal-dashboards/sample-1/resourcegraphexplorer-sample-1.json)
 
-  [![Example rendszerkép a minta-irányítópulthoz #1](./media/arge-sample1-small.png)](./media/arge-sample1-large.png#lightbox)
+  [![példa a minta-irányítópultra #1](./media/arge-sample1-small.png)](./media/arge-sample1-large.png#lightbox)
 
 - [Resource Graph Explorer – minta irányítópult #2](https://github.com/Azure-Samples/Governance/blob/master/src/resource-graph/portal-dashboards/sample-2/resourcegraphexplorer-sample-2.json)
 
-  [![Example rendszerkép a minta-irányítópulthoz #2](./media/arge-sample2-small.png)](./media/arge-sample2-large.png#lightbox)
+  [![példa a minta-irányítópultra #2](./media/arge-sample2-small.png)](./media/arge-sample2-large.png#lightbox)
 
 > [!NOTE]
 > A fenti példában az irányítópult képernyőképei az Azure-környezettől függően eltérőek lesznek.
@@ -118,11 +118,11 @@ Ha el szeretné távolítani a minta erőforrás-gráf irányítópultokat a Azu
 
 1. Válassza a **Törlés** lehetőséget az irányítópult tetején található irányítópult menüjében, majd kattintson **az OK gombra** a megerősítéshez.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-- További információ a [lekérdezés nyelvéről](./concepts/query-language.md)
-- Információ az [erőforrások felfedezéséről](./concepts/explore-resources.md)
-- Az első lekérdezés futtatása az [Azure CLI-vel](first-query-azurecli.md)
-- Az [Alapszintű lekérdezések](./samples/starter.md) példáinak megtekintése
-- Tekintse meg a [Speciális lekérdezések](./samples/advanced.md) példáit
-- Visszajelzés küldése a [UserVoice-ról](https://feedback.azure.com/forums/915958-azure-governance)
+- További információ a [lekérdezési nyelvről](./concepts/query-language.md).
+- További információ az [erőforrások feltárásáról](./concepts/explore-resources.md).
+- Futtassa az első lekérdezést az [Azure CLI](first-query-azurecli.md)-vel.
+- Tekintse meg az [alapszintű lekérdezések](./samples/starter.md)mintáit.
+- Lásd a [speciális lekérdezések](./samples/advanced.md)mintáit.
+- Visszajelzés küldése a [UserVoice](https://feedback.azure.com/forums/915958-azure-governance).

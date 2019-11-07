@@ -1,5 +1,5 @@
 ---
-title: A Visual Studio és C# a .net használata a Azure SQL Database lekérdezéséhez | Microsoft Docs
+title: A Visual Studio és a .NET C# használata, valamint a Azure SQL Database lekérdezése
 description: A Visual Studióval olyan C# alkalmazást hozhat létre, amely egy Azure SQL Databasehoz csatlakozik, és a Transact-SQL-utasításokkal kérdezi le azokat.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/25/2019
-ms.openlocfilehash: 3ed11d2b1628cecc0696e4c37135cfc7d2190de5
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 42b7f553d88e130e0958bd38e4e5ff308b74e81f
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72597921"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73690978"
 ---
 # <a name="quickstart-use-net-and-c-in-visual-studio-to-connect-to-and-query-an-azure-sql-database"></a>Rövid útmutató: a .NET C# és a Visual Studio használata Azure SQL Database-adatbázishoz való kapcsolódáshoz és lekérdezéshez
 
@@ -30,7 +30,7 @@ A rövid útmutató elvégzéséhez a következőkre lesz szüksége:
 
   || Önálló adatbázis | Felügyelt példány |
   |:--- |:--- |:---|
-  | Létrehozás| [Portal](sql-database-single-database-get-started.md) | [Portal](sql-database-managed-instance-get-started.md) |
+  | Létrehozás| [Portál](sql-database-single-database-get-started.md) | [Portál](sql-database-managed-instance-get-started.md) |
   || [Parancssori felület](scripts/sql-database-create-and-configure-database-cli.md) | [Parancssori felület](https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44) |
   || [PowerShell](scripts/sql-database-create-and-configure-database-powershell.md) | [PowerShell](scripts/sql-database-create-configure-managed-instance-powershell.md) |
   | Konfigurálás | [Kiszolgálói szintű IP-tűzfalszabály](sql-database-server-level-firewall-rule.md)| [Kapcsolódás virtuális gépről](sql-database-managed-instance-configure-vm.md)|
@@ -56,13 +56,13 @@ Az Azure SQL Database-adatbázishoz való kapcsolódáshoz szükséges kapcsolat
 
 ## <a name="create-code-to-query-the-sql-database"></a>Kód létrehozása az SQL-adatbázis lekérdezéséhez
 
-1. A Visual Studióban válassza a **fájl**  > **új**  > **projekt**lehetőséget. 
+1. A Visual Studióban válassza a **fájl** > **új** > **projekt**lehetőséget. 
    
 1. Az **új projekt** párbeszédpanelen válassza a **vizualizáció C#** lehetőséget, majd válassza a **Console app (.NET-keretrendszer)** lehetőséget.
    
 1. Adja meg a *sqltest* a projekt neveként, majd kattintson **az OK gombra**. Létrejön az új projekt. 
    
-1. Válassza a **projekt**  > **NuGet-csomagok kezelése**lehetőséget. 
+1. Válassza a **projekt** > **NuGet-csomagok kezelése**lehetőséget. 
    
 1. A **NuGet csomagkezelő**lapján válassza a **Tallózás** fület, majd keresse meg és válassza a **System. Form. SqlClient**elemet.
    
@@ -72,7 +72,7 @@ Az Azure SQL Database-adatbázishoz való kapcsolódáshoz szükséges kapcsolat
    
 1. A telepítés befejezésekor lezárhatja a **NuGet csomagkezelő eszközt**. 
    
-1. A Kódszerkesztő eszközben cserélje le a **program.cs** tartalmát a következő kódra. Cserélje le `<server>`, `<username>`, `<password>` és `<database>` értékeit.
+1. A Kódszerkesztő eszközben cserélje le a **program.cs** tartalmát a következő kódra. Cserélje le `<server>`, `<username>`, `<password>`és `<database>`értékeit.
    
    >[!IMPORTANT]
    >Az ebben a példában szereplő kód a minta AdventureWorksLT-adatait használja, amelyeket az adatbázis létrehozásakor választhat forrásként. Ha az adatbázis különböző adatokkal rendelkezik, a SELECT lekérdezésben használja a saját adatbázisában lévő táblákat. 
@@ -133,10 +133,10 @@ Az Azure SQL Database-adatbázishoz való kapcsolódáshoz szükséges kapcsolat
 
 ## <a name="run-the-code"></a>A kód futtatása
 
-1. Az alkalmazás futtatásához válassza a **hibakeresés**  >  a**hibakeresés elindítása**lehetőséget, vagy kattintson az eszköztáron az **Indítás** gombra, vagy nyomja le az **F5**billentyűt.
+1. Az alkalmazás futtatásához válassza a **hibakeresés** > a **hibakeresés elindítása**lehetőséget, vagy kattintson az eszköztáron az **Indítás** gombra, vagy nyomja le az **F5**billentyűt.
 1. Győződjön meg arról, hogy az adatbázisból az első 20 kategória/termék sor van visszaadva, majd az alkalmazás ablakának bezárásához.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Ismerje meg, hogyan [csatlakozhat egy Azure SQL Database-adatbázishoz a .net Core használatával](sql-database-connect-query-dotnet-core.md) Windows/Linux/MacOS rendszeren.  
 - További információ [a .NET Core használatának első lépéseiről Windows/Linux/macOS rendszeren a parancssorral](/dotnet/core/tutorials/using-with-xplat-cli).

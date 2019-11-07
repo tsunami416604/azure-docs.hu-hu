@@ -1,5 +1,5 @@
 ---
-title: 'Gyors útmutató: Azure SQL Data Warehouse létrehozása – Azure PowerShell | Microsoft Docs'
+title: 'Rövid útmutató: Warehouse létrehozása – Azure PowerShell'
 description: Gyorsan létrehozhat egy SQL Database logikai kiszolgálót, a kiszolgálói szintű tűzfalszabályok és az adattárházat Azure PowerShell használatával.
 services: sql-data-warehouse
 author: XiaoyuMSFT
@@ -10,12 +10,13 @@ ms.subservice: development
 ms.date: 4/11/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: f5ee4227b0aeb53be4512dafc91f814468b50c12
-ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
+ms.custom: seo-lt-2019
+ms.openlocfilehash: cfc427b11944cb81d8bc3d12d13668d53be698b7
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69574908"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73693100"
 ---
 # <a name="quickstart-create-and-query-an-azure-sql-data-warehouse-with-azure-powershell"></a>Gyors útmutató: Azure SQL Data Warehouse létrehozása és lekérdezése Azure PowerShell
 
@@ -72,14 +73,14 @@ $databasename = "mySampleDataWarehosue"
 
 ## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
-Hozzon létre egy [Azure-erőforráscsoportot](../azure-resource-manager/resource-group-overview.md) a [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) parancs használatával. Az erőforráscsoport olyan logikai tároló, amelyben a rendszer üzembe helyezi és csoportként kezeli az Azure-erőforrásokat. A következő példában létrehozunk egy `westeurope` nevű erőforráscsoportot a `myResourceGroup` helyen.
+Hozzon létre egy [Azure-erőforráscsoportot](../azure-resource-manager/resource-group-overview.md) a [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) parancs használatával. Az erőforráscsoport olyan logikai tároló, amelyben a rendszer üzembe helyezi és csoportként kezeli az Azure-erőforrásokat. A következő példában létrehozunk egy `myResourceGroup` nevű erőforráscsoportot a `westeurope` helyen.
 
 ```powershell
 New-AzResourceGroup -Name $resourcegroupname -Location $location
 ```
 ## <a name="create-a-logical-server"></a>Hozzon létre egy logikai kiszolgálót
 
-Hozzon létre egy [Azure SQL logikai kiszolgálót](../sql-database/sql-database-logical-servers.md) a [New-AzSqlServer](/powershell/module/az.sql/new-azsqlserver) parancs használatával. A logikai kiszolgálók adatbázisok egy csoportját tartalmazzák, amelyeket a rendszer egy csoportként kezel. Az alábbi példa egy véletlenszerűen megnevezett kiszolgálót hoz létre az erőforráscsoporthoz egy nevű `ServerAdmin` rendszergazdai felhasználóval és egy `ChangeYourAdminPassword1`jelszóval. Igény szerint cserélje le ezeket az előre meghatározott értékeket.
+Hozzon létre egy [Azure SQL logikai kiszolgálót](../sql-database/sql-database-logical-servers.md) a [New-AzSqlServer](/powershell/module/az.sql/new-azsqlserver) parancs használatával. A logikai kiszolgálók adatbázisok egy csoportját tartalmazzák, amelyeket a rendszer egy csoportként kezel. Az alábbi példa egy véletlenszerűen elnevezett kiszolgálót hoz létre az erőforráscsoporthoz egy `ServerAdmin` nevű rendszergazdai felhasználóval és `ChangeYourAdminPassword1`jelszavával. Igény szerint cserélje le ezeket az előre meghatározott értékeket.
 
 ```powershell
 New-AzSqlServer -ResourceGroupName $resourcegroupname `
@@ -119,16 +120,16 @@ New-AzSqlDatabase `
 
 A szükséges paraméterek a következők:
 
-* **RequestedServiceObjectiveName**: A kért adatraktár- [egységek](what-is-a-data-warehouse-unit-dwu-cdwu.md) mennyisége. Az érték növelése növeli a számítási költségeket. A támogatott értékek listáját a [memória és a Egyidejűség korlátai](memory-and-concurrency-limits.md)című részben tekintheti meg.
-* **Databasename**: A létrehozandó SQL Data Warehouse neve.
-* **Kiszolgálónév**: A létrehozáshoz használt kiszolgáló neve.
-* **ResourceGroupName**: Az Ön által használt erőforráscsoport. Az előfizetésben elérhető erőforráscsoportok kereséséhez használja a Get-AzureResource parancsot.
-* **Kiadás**: SQL Data Warehouse létrehozásához "DataWarehouse" értéknek kell lennie.
+* **RequestedServiceObjectiveName**: a kért [adatraktár-egységek](what-is-a-data-warehouse-unit-dwu-cdwu.md) mennyisége. Az érték növelése növeli a számítási költségeket. A támogatott értékek listáját a következő témakörben tekintheti meg: [memória és egyidejűségi korlátok] memória-Egyidejűség-limits.md).
+* **Databasename**: a létrehozandó SQL Data Warehouse neve.
+* **Kiszolgálónév**: a létrehozáshoz használt kiszolgáló neve.
+* **ResourceGroupName**: az Ön által használt erőforráscsoport. Az előfizetésben elérhető erőforráscsoportok kereséséhez használja a Get-AzureResource parancsot.
+* **Edition**: Egy SQL Data Warehouse létrehozásához a „DataWarehouse” értéket kell megadni.
 
 A választható paraméterek a következők:
 
-- **CollationName**: Ha nincs megadva, az alapértelmezett rendezés SQL_Latin1_General_CP1_CI_AS. A rendezés nem módosítható egy adatbázison.
-- **MaxSizeBytes**: Az adatbázis alapértelmezett maximális mérete 240TB. A maximális méret korlátozza a sortárindex létrehozását-adatmennyiséget. Az oszlopos adatmennyiségek korlátlan tárhelyet biztosítanak.
+- **CollationName**: Ha nincs megadva, az alapértelmezett rendezés: SQL_Latin1_General_CP1_CI_AS. A rendezés nem módosítható egy adatbázison.
+- **MaxSizeBytes**: az adatbázis alapértelmezett maximális mérete 240TB. A maximális méret korlátozza a sortárindex létrehozását-adatmennyiséget. Az oszlopos adatmennyiségek korlátlan tárhelyet biztosítanak.
 
 A paraméter beállításairól további információt a [New-AzSqlDatabase](/powershell/module/az.sql/new-azsqldatabase)című témakörben talál.
 

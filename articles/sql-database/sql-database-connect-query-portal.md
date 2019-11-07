@@ -1,5 +1,5 @@
 ---
-title: 'Azure Portal: Az Azure SQL Database lekérdezése a Lekérdezésszerkesztő használatával | Microsoft Docs'
+title: 'Azure Portal: lekérdezés Azure SQL Database a lekérdezési szerkesztő használatával '
 description: Megtudhatja, hogyan csatlakozhat az SQL Database-hez az Azure Portalon az SQL-lekérdezésszerkesztő segítségével. Ezután futtasson Transact-SQL (T-SQL) utasításokat az adatok lekérdezéséhez és szerkesztéséhez.
 keywords: csatlakozás SQL Database-adatbázishoz, Azure Portal, portál, lekérdezésszerkesztő
 services: sql-database
@@ -12,12 +12,12 @@ author: Ninarn
 ms.author: ninarn
 ms.reviewer: carlrab
 ms.date: 10/24/2019
-ms.openlocfilehash: 433f2a190cf24a7e59dcd1d5a5aba0d3aa4e8588
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 75882b13341c7fc373de141ba12f8806cb106906
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73492080"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73690932"
 ---
 # <a name="quickstart-use-the-azure-portals-sql-query-editor-to-connect-and-query-data"></a>Rövid útmutató: a Azure Portal SQL-lekérdezési szerkesztőjével csatlakozhat, és lekérdezheti azokat
 
@@ -42,7 +42,7 @@ Az oktatóanyag elvégzéséhez a következőkre lesz szüksége:
 
 ## <a name="sign-in-the-azure-portal"></a>Jelentkezzen be a Azure Portal
 
-Bejelentkezés az [Azure Portalra](https://portal.azure.com/).
+Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
 
 ## <a name="connect-using-sql-authentication"></a>SQL-hitelesítéssel történő összekapcsolás
 
