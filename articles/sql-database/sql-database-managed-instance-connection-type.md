@@ -1,5 +1,5 @@
 ---
-title: Azure SQL Database felügyelt példányok kapcsolatainak típusai | Microsoft Docs
+title: Azure SQL Database felügyelt példányok kapcsolatainak típusai
 description: Tudnivalók a felügyelt példányok kapcsolatainak típusairól
 services: sql-database
 ms.service: sql-database
@@ -9,12 +9,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: vanto
 ms.date: 10/07/2019
-ms.openlocfilehash: 4ebd81f9c04bd739f1c18f636094040882b5ce36
-ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
+ms.openlocfilehash: c810f1f07587c84a5900460d4a865b0de16ae208
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/07/2019
-ms.locfileid: "72001769"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73688228"
 ---
 # <a name="azure-sql-database-managed-instance-connection-types"></a>Azure SQL Database felügyelt példányok kapcsolatainak típusai
 
@@ -24,7 +24,7 @@ Ez a cikk azt ismerteti, hogyan csatlakozhatnak az ügyfelek Azure SQL Database 
 
 Azure SQL Database felügyelt példány a következő két kapcsolattípus használatát támogatja:
 
-- **Redirect (recommended):** Az ügyfelek közvetlen kapcsolatot létesít az adatbázist futtató csomóponttal. Az átirányítás használatával történő csatlakozás engedélyezéséhez meg kell nyitnia a tűzfalakat és a hálózati biztonsági csoportokat (NSG), hogy engedélyezze a hozzáférést a 1433-es és 11000-11999-es portokon. A csomagok közvetlenül az adatbázisba kerülnek, ezért a proxyn keresztüli átirányítás a késés és az átviteli teljesítmény terén is javul.
+- **Átirányítás (ajánlott):** Az ügyfelek közvetlen kapcsolatot létesít az adatbázist futtató csomóponttal. Az átirányítás használatával történő csatlakozás engedélyezéséhez meg kell nyitnia a tűzfalakat és a hálózati biztonsági csoportokat (NSG), hogy engedélyezze a hozzáférést a 1433-es és 11000-11999-es portokon. A csomagok közvetlenül az adatbázisba kerülnek, ezért a proxyn keresztüli átirányítás a késés és az átviteli teljesítmény terén is javul.
 - **Proxy (alapértelmezett):** Ebben a módban minden kapcsolat egy proxy átjáró összetevőt használ. A kapcsolat engedélyezéséhez csak a 1433-es portot kell megnyitni a magánhálózati és a 3342-es porthoz a nyilvános kapcsolathoz. Ha ezt a módot választja, a számítási feladatok természetétől függően nagyobb késést és alacsonyabb átviteli sebességet eredményezhet. A legalacsonyabb késés és a legmagasabb átviteli sebesség érdekében javasoljuk, hogy a proxy kapcsolati házirendjét átirányítsa az átirányítás kapcsolati házirendre.
 
 ## <a name="redirect-connection-type"></a>A kapcsolattípus átirányítása

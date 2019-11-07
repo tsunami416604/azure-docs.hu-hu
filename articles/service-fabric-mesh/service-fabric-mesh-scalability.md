@@ -1,6 +1,6 @@
 ---
-title: Az Azure Service Fabric méretezhetőségét alkalmazások tervezhetők |} A Microsoft Docs
-description: Ismerje meg a méretezési szolgáltatások az Azure Service Fabric-háló.
+title: Az Azure Service Fabric Mesh-alkalmazások méretezhetősége | Microsoft Docs
+description: Az alkalmazások Service Fabric Meshba való üzembe helyezésének egyik előnye, hogy könnyedén, manuálisan vagy automatikus skálázási szabályzatokkal egyszerűen méretezheti a szolgáltatásokat.
 services: service-fabric-mesh
 keywords: ''
 author: dkkapur
@@ -9,34 +9,34 @@ ms.date: 10/26/2018
 ms.topic: conceptual
 ms.service: service-fabric-mesh
 manager: timlt
-ms.openlocfilehash: 1688cac35ea9de43bac529a4994bd4ea55eb0ab7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 59fdf68ed1ead4665ec8944d67f2d5112d370716
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60811094"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73663000"
 ---
-# <a name="scaling-service-fabric-mesh-applications"></a>Service Fabric-háló alkalmazások méretezése
+# <a name="scaling-service-fabric-mesh-applications"></a>Service Fabric Mesh-alkalmazások méretezése
 
-Az alkalmazások a Service Fabric Meshben való üzembe helyezésének egyik legfőbb előnye, hogy a szolgáltatásokat egyszerűen lehet horizontálisan le- és felskálázni. Ez akkor hasznos, ha változó mértékű terhelés éri a szolgáltatásokat, vagy ha javítani szeretne a rendelkezésre álláson. A szolgáltatások vagy vagy a telepítő az automatikus skálázás házirendek manuálisan méretezhetők.
+Az alkalmazások Service Fabric Meshba való üzembe helyezésének egyik fő előnye, hogy könnyedén méretezheti vagy kibővítheti szolgáltatásait. Ezt a szolgáltatások különböző terhelésének kezelésére, illetve a rendelkezésre állás javítására kell használni. A szolgáltatásokat manuálisan vagy akár ki is méretezheti, vagy beállíthatja az automatikus skálázási házirendeket.
 
-## <a name="manual-scaling-instances"></a>Manuális skálázásához példányok
+## <a name="manual-scaling-instances"></a>Manuális skálázási példányok
 
 Az alkalmazás erőforrásának üzembehelyezési sablonjában mindkét szolgáltatás rendelkezik egy *replicaCount* (replikaszám) tulajdonsággal, amellyel megadhatja, hány példányban szeretné a szolgáltatást üzembe helyezni. Egy alkalmazás több szolgáltatásból is állhat, és minden szolgáltatás egyedi *replicaCount* értékkel rendelkezik. A replikákat a rendszer együtt kezeli és helyezi üzembe. A szolgáltatásreplikák számának módosításához módosítsa minden olyan szolgáltatás *replicaCount* értékét az üzembehelyezési sablonban vagy a paraméterfájlban, amelyet horizontálisan le szeretne skálázni. Ezt követően frissítse az alkalmazást.
 
-A Manuális méretezés services-példányok példákért lásd [manuálisan méretezhető, vagy a szolgáltatások](service-fabric-mesh-tutorial-template-scale-services.md).
+A szolgáltatási példányok manuális skálázására példákat a [szolgáltatások manuális méretezése a vagy a szolgáltatásban](service-fabric-mesh-tutorial-template-scale-services.md)című témakörben talál.
 
-## <a name="autoscaling-service-instances"></a>Az automatikus skálázás szolgáltatáspéldányok
-Automatikus skálázás egy további lehetőség a Service Fabric dinamikusan méretezheti a szolgáltatás-példányok (horizontális skálázás). Automatikus skálázás nagy rugalmasságot biztosít, és lehetővé teszi a kiépítés vagy a CPU és memória-kihasználtság alapján szolgáltatáspéldányok eltávolítása.  Automatikus skálázás lehetővé teszi a megfelelő számú szolgáltatás példányainak a számítási feladatok futtatásához, és optimalizálhatja a költségeket.
+## <a name="autoscaling-service-instances"></a>Szolgáltatás-példányok automatikus skálázása
+Az automatikus skálázás a Service Fabric egy további funkciója, amellyel dinamikusan méretezheti a szolgáltatási példányok számát (horizontális skálázás). Az automatikus skálázás nagy rugalmasságot biztosít, és lehetővé teszi a szolgáltatási példányok kiépítési vagy eltávolítását a CPU vagy a memória kihasználtsága alapján.  Az automatikus skálázás lehetővé teszi, hogy a számítási feladatok megfelelő számú szolgáltatási példányát futtassa, és optimalizálja a költségeket.
 
-Az automatikus skálázási szabályzat szolgáltatásonként a erőforrás fájlban van meghatározva. Minden egyes méretezési szabályzat két részből áll:
+Egy automatikus skálázási házirend van definiálva a szolgáltatás-erőforrás fájlban. Az egyes skálázási házirendek két részből állnak:
 
-- Egy méretezési eseményindító, amely azt ismerteti, amikor a szolgáltatás méretezése történik. Nincsenek mindhárom tényezőt, amelyek meghatározzák, ha a szolgáltatás lesz skálázva. *Alsó betöltési küszöb* érték, amely azt határozza meg, ha a szolgáltatás a program átméretezi a. Ha az átlagos terhelés szoftverpéldányok a partíciók száma nem éri el ezt az értéket, majd a szolgáltatás a program átméretezi a. *Felső betöltési küszöb* érték, amely azt határozza meg, ha a szolgáltatás fogja horizontálisan felskálázott. Ha magasabb, mint ezt az értéket partíció összes példány átlagos terhelés, majd a szolgáltatás fogja terjeszthető ki. *Méretezési időközhöz* határozza meg, hogy milyen gyakran (másodpercben) az eseményindító be van jelölve. Amint az eseményindító be van jelölve, ha szükség van a méretezés a mechanizmus lépnek érvénybe. Ha már nincs szükség a méretezés, semmilyen művelet nem lesz végrehajtva. Mindkét esetben az eseményindító nem kerül sor újra méretezési időközhöz lejárta előtt.
+- Skálázási trigger, amely leírja, hogy a szolgáltatás méretezése mikor történjen. A szolgáltatás skálázásakor három tényezőt kell meghatározni. Az *alacsonyabb terhelési küszöbérték* olyan érték, amely meghatározza, hogy a szolgáltatás hogyan méretezhető. Ha a partíciók összes példányának átlagos terhelése ennél az értéknél kisebb, akkor a szolgáltatás skálázása megtörténik. A *felső terhelés küszöbértéke* egy olyan érték, amely meghatározza, hogy a szolgáltatás Mikor lesz felskálázásra. Ha a partíció összes példányának átlagos terhelése meghaladja ezt az értéket, a rendszer kibővíti a szolgáltatást. A *skálázási időköz* határozza meg, hogy a trigger milyen gyakran (másodpercben) lesz bejelölve. Ha a trigger be van jelölve, a skálázásra van szükség, a rendszer alkalmazza azt. Ha nincs szükség skálázásra, a rendszer nem végez műveletet. A skálázási intervallum lejárata előtt mindkét esetben a trigger nem lesz újra bejelölve.
 
-- Egy méretezési mechanizmust, amely azt ismerteti, hogyan skálázás történik aktiválásakor. *Növekmény méretezése* meghatározza, hogy hány példányt fog hozzáadásának vagy eltávolításának a mechanizmus aktiválásakor. *Példányok maximális száma* határozza meg a felső határ méretezését. Ha a példányok száma eléri a korlátot, majd a szolgáltatás fog nem lehet horizontálisan felskálázott függetlenül a terhelés. *Példányok minimális száma* határozza meg az alsó határ méretezését. Ha a partíció-példányok száma eléri a korlátot, majd szolgáltatás fog nem növelhető a függetlenül a terhelés.
+- Skálázási mechanizmus, amely leírja, hogy a rendszer mikor hajtja végre a skálázást az aktiváláskor. A *skálázási növekmény* meghatározza, hogy a rendszer hány példányt fog hozzáadni vagy eltávolítani a mechanizmus indításakor. A *példányok maximális száma* határozza meg a skálázás felső korlátját. Ha a példányok száma eléri ezt a korlátot, a rendszer a terheléstől függetlenül nem fogja méretezni a szolgáltatást. A *példányok minimális száma* határozza meg a skálázás legalacsonyabb korlátját. Ha a partíció példányainak száma eléri ezt a korlátot, a rendszer a terheléstől függetlenül nem fogja méretezni a szolgáltatást.
 
-A szolgáltatás egy automatikus skálázási szabályának beállításáról, olvassa el [automatikus skálázási szolgáltatások](service-fabric-mesh-howto-auto-scale-services.md).
+Ha szeretné megtudni, hogyan állíthatja be a szolgáltatásra vonatkozó autoskálázási szabályzatot, olvassa el az [autoscale Services](service-fabric-mesh-howto-auto-scale-services.md)című témakört.
 
 ## <a name="next-steps"></a>További lépések
 
-Az alkalmazásmodell kapcsolatos tudnivalókat lásd: [Service Fabric-erőforrások](service-fabric-mesh-service-fabric-resources.md)
+Az alkalmazás modelljével kapcsolatos információkért lásd: [Service Fabric erőforrások](service-fabric-mesh-service-fabric-resources.md)

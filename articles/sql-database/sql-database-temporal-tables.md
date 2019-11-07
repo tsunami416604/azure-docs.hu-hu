@@ -1,5 +1,5 @@
 ---
-title: Első lépések időbeli táblázatokkal a Azure SQL Databaseban | Microsoft Docs
+title: Első lépések időbeli táblázatokkal Azure SQL Database
 description: Megtudhatja, hogyan kezdheti el az ideiglenes táblázatok használatát a Azure SQL Databaseban.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: carlrab
 ms.date: 06/26/2019
-ms.openlocfilehash: 39c19661a71a8b466aa6ff25be9e895189dfbfb3
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 44a5589357301f979bb094579626e1c02e582846
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68566356"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73686983"
 ---
 # <a name="getting-started-with-temporal-tables-in-azure-sql-database"></a>Első lépések időbeli táblázatokkal Azure SQL Database
 
@@ -30,9 +30,9 @@ Az ehhez a forgatókönyvhöz tartozó adatbázis-modell nagyon egyszerű – a 
 
 ![Séma](./media/sql-database-temporal-tables/AzureTemporal1.png)
 
-Szerencsére nem kell semmilyen erőfeszítést megtenni az alkalmazásban a tevékenység adatainak fenntartásához. Az időbeli táblázatokkal ez a folyamat automatizálható, így teljes rugalmasságot biztosít a webhelyek tervezése során, és több időt is igénybe kell vennie az adatok elemzésére. Az egyetlen teendő, hogy gondoskodjon arról, hogy a **WebSiteInfo** -tábla időszakos [](https://msdn.microsoft.com/library/dn935015.aspx#Anchor_0)rendszerverzióként legyen konfigurálva. Az időbeli táblázatok ezen forgatókönyvben való felhasználásának pontos lépései alább olvashatók.
+Szerencsére nem kell semmilyen erőfeszítést megtenni az alkalmazásban a tevékenység adatainak fenntartásához. Az időbeli táblázatokkal ez a folyamat automatizálható, így teljes rugalmasságot biztosít a webhelyek tervezése során, és több időt is igénybe kell vennie az adatok elemzésére. Az egyetlen teendő, hogy gondoskodjon arról, hogy a **WebSiteInfo** -tábla [időszakos rendszerverzióként](https://msdn.microsoft.com/library/dn935015.aspx#Anchor_0)legyen konfigurálva. Az időbeli táblázatok ezen forgatókönyvben való felhasználásának pontos lépései alább olvashatók.
 
-## <a name="step-1-configure-tables-as-temporal"></a>1\. lépés: Táblák beállítása időbeliként
+## <a name="step-1-configure-tables-as-temporal"></a>1\. lépés: a táblák időbeli konfigurálása
 Attól függően, hogy új fejlesztést vagy meglévő alkalmazást frissít, ideiglenes attribútumok hozzáadásával létrehozhat ideiglenes táblákat vagy módosíthatja a meglévőket is. Általánosságban elmondható, hogy a forgatókönyv a két lehetőség kombinációja lehet. Hajtsa végre ezeket a műveleteket a [SQL Server Management Studio](https://msdn.microsoft.com/library/mt238290.aspx) (SSMS), a [SQL Server Data Tools](https://msdn.microsoft.com/library/mt204009.aspx) (SSDT) vagy bármely más Transact-SQL fejlesztői eszköz használatával.
 
 > [!IMPORTANT]
@@ -105,7 +105,7 @@ ON dbo.WebsiteUserInfoHistory
 WITH (DROP_EXISTING = ON); 
 ```
 
-## <a name="step-2-run-your-workload-regularly"></a>2\. lépés: Számítási feladatok rendszeres futtatása
+## <a name="step-2-run-your-workload-regularly"></a>2\. lépés: a számítási feladatok rendszeres futtatása
 Az időbeli táblázatok legfőbb előnye, hogy a változások követéséhez semmilyen módon nem kell módosítania vagy módosítania a webhelyet. A létrehozást követően az ideiglenes táblák transzparens módon megőrzik az előző sorokat, valahányszor módosításokat végez az adatokon. 
 
 Az adott forgatókönyv automatikus változás-követésének kihasználása érdekében csak az oszlop **PagesVisited** frissítése minden alkalommal, amikor egy felhasználó befejezi a munkamenetét a webhelyen:
@@ -119,7 +119,7 @@ Fontos megjegyezni, hogy a frissítési lekérdezésnek nem kell tudnia a tényl
 
 ![TemporalArchitecture](./media/sql-database-temporal-tables/AzureTemporal5.png)
 
-## <a name="step-3-perform-historical-data-analysis"></a>3\. lépés: Korábbi adatok elemzésének végrehajtása
+## <a name="step-3-perform-historical-data-analysis"></a>3\. lépés: a korábbi adatok elemzésének végrehajtása
 Most, hogy az időbeli rendszerverziószámozás engedélyezve van, a korábbi adatok elemzése csak egy lekérdezéssel érhető el. Ebben a cikkben néhány példát ismertetünk, amelyek közös elemzési forgatókönyvekkel foglalkoznak – az összes adat megismerése érdekében Ismerkedjen meg a [for SYSTEM_TIME](https://msdn.microsoft.com/library/dn935015.aspx#Anchor_3) záradékban bemutatott különböző lehetőségekkel.
 
 Ha szeretné megtekinteni az első 10 felhasználót a meglátogatott weblapok száma alapján egy órával ezelőtt, futtassa ezt a lekérdezést:
@@ -196,5 +196,5 @@ A rendszerverzióval ellátott időszakos táblázatok esetében az előzmények
 ## <a name="next-steps"></a>További lépések
 
 - Az időbeli táblázatokkal kapcsolatos további információkért lásd: [ideiglenes táblák](https://docs.microsoft.com/sql/relational-databases/tables/temporal-tables)megtekintése.
-- Látogasson el a Channel 9 csatornára, és tekintse meg a valós [](https://channel9.msdn.com/Shows/Data-Exposed/Temporal-in-SQL-Server-2016)időben zajló, [valós idejű megvalósítási](https://channel9.msdn.com/Blogs/jsturtevant/Azure-SQL-Temporal-Tables-with-RockStep-Solutions) sikertörténetet
+- Látogasson el a Channel 9 csatornára, és tekintse [meg a](https://channel9.msdn.com/Shows/Data-Exposed/Temporal-in-SQL-Server-2016)valós időben zajló, [valós idejű megvalósítási](https://channel9.msdn.com/Blogs/jsturtevant/Azure-SQL-Temporal-Tables-with-RockStep-Solutions) sikertörténetet
 

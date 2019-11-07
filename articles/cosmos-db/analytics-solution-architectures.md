@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.service: cosmos-db
 ms.date: 09/26/2019
 ms.reviewer: sngun
-ms.openlocfilehash: d50b946e67bbcc171850b71021165356011f58e3
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: d0b5042c1401a95cc75f4c01ace843659b6babfe
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72755204"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73681754"
 ---
 # <a name="solutions-using-globally-distributed-analytics-in-azure-cosmos-db"></a>Globálisan elosztott elemzést használó megoldások Azure Cosmos DB
 
@@ -34,12 +34,12 @@ A Azure Cosmos DB Spark-támogatásával valós idejű ajánlásokat és ajánla
 
 Az alábbi képen látható, hogyan használhatók a Azure Cosmos DB Spark-támogatás a díjszabás és a promóciók optimalizálásához:
 
-![Azure Cosmos DB Spark-támogatás a díjszabás és a promóció optimalizálásához](./media/spark-api-introduction/optimize-pricing-and-promotions.png)
+![Azure Cosmos DB Spark-támogatás a díjszabás és a promóció optimalizálásához](./media/analytics-solution-architectures/optimize-pricing-and-promotions.png)
 
 
 Az alábbi képen látható, hogyan használhatók a Azure Cosmos DB Spark-támogatás a valós idejű javaslatok motorjában:
 
-![Azure Cosmos DB Spark-támogatás a valós idejű ajánlási motorban](./media/spark-api-introduction/real-time-recommendation-engine.png)
+![Azure Cosmos DB Spark-támogatás a valós idejű ajánlási motorban](./media/analytics-solution-architectures/real-time-recommendation-engine.png)
 
 ## <a name="manufacturing-and-iot"></a>Gyártási és IoT
 
@@ -49,7 +49,7 @@ Azure Cosmos DB beépített elemzési platformja lehetővé teszi, hogy a IoT-ad
 
 Az alábbi képen látható, hogyan használhatók a Azure Cosmos DB Spark-támogatás a IoT-eszközök metrikáinak olvasásához és az intelligens Grid Analytics alkalmazásához:
 
-![Azure Cosmos DB Spark-támogatás a IoT-eszközök metrikáinak olvasásához](./media/spark-api-introduction/read-metrics-from-iot-devices.png)
+![Azure Cosmos DB Spark-támogatás a IoT-eszközök metrikáinak olvasásához](./media/analytics-solution-architectures/read-metrics-from-iot-devices.png)
 
 ## <a name="predictive-maintenance"></a>Prediktív karbantartás
 
@@ -59,11 +59,11 @@ Az alábbi képen látható, hogyan használhatók a Azure Cosmos DB Spark-támo
 
 Az alábbi képen látható, hogyan használható a Azure Cosmos DB Spark-támogatás a prediktív karbantartási rendszer létrehozásához:
 
-![Azure Cosmos DB Spark-támogatás prediktív karbantartási rendszer létrehozásához](./media/spark-api-introduction/predictive-maintenance-system.png)
+![Azure Cosmos DB Spark-támogatás prediktív karbantartási rendszer létrehozásához](./media/analytics-solution-architectures/predictive-maintenance-system.png)
 
 Az alábbi képen látható, hogyan használható a Azure Cosmos DB Spark-támogatás a valós idejű járművek diagnosztikai rendszerének létrehozásához:
 
-![Azure Cosmos DB Spark-támogatás a valós idejű járművek diagnosztikai rendszerének létrehozásához](./media/spark-api-introduction/real-time-vehicle-diagnostic-system.png)
+![Azure Cosmos DB Spark-támogatás a valós idejű járművek diagnosztikai rendszerének létrehozásához](./media/analytics-solution-architectures/real-time-vehicle-diagnostic-system.png)
 
 ## <a name="gaming"></a>Játékok
 
@@ -75,9 +75,9 @@ Az alábbi képen látható, hogyan használható a Azure Cosmos DB Spark-támog
 
 Az alábbi képen látható, hogyan használják a Azure Cosmos DB Spark-támogatását a Gaming Analyticsben:
 
-![Azure Cosmos DB Spark-támogatás a Gaming Analyticsben](./media/spark-api-introduction/gaming-analytics.png)
+![Azure Cosmos DB Spark-támogatás a Gaming Analyticsben](./media/analytics-solution-architectures/gaming-analytics.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Az Azure Cosmos DB előnyeinek megismeréséhez tekintse meg az [áttekintést](introduction.md) ismertető cikket.
 * [Ismerkedés a MongoDB Azure Cosmos DB API-val](mongodb-introduction.md)

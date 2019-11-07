@@ -1,6 +1,6 @@
 ---
 title: Alkalmazások életciklus-felügyelete
-titleSuffix: Azure Machine Learning Studio (classic)
+titleSuffix: ML Studio (classic) Azure
 description: Az alkalmazás-életciklus kezelésével kapcsolatos ajánlott eljárások alkalmazása a Azure Machine Learning Studio klasszikus verziójában
 services: machine-learning
 ms.service: machine-learning
@@ -9,12 +9,12 @@ ms.topic: conceptual
 author: xiaoharper
 ms.author: amlstudiodocs
 ms.date: 10/27/2016
-ms.openlocfilehash: ce1a398939a65bb47c74f00159b667c3659f5a93
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: d5e2ee72c30933305356cd2a7792d1972fa938da
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73467002"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73684724"
 ---
 # <a name="application-lifecycle-management-in-azure-machine-learning-studio-classic"></a>Az alkalmazások életciklusának kezelése Azure Machine Learning Studio (klasszikus)
 A Azure Machine Learning Studio (klasszikus) az Azure Cloud platformon üzemelő gépi tanulási kísérletek fejlesztésére szolgáló eszköz. Olyan, mint a Visual Studio IDE és a skálázható felhőalapú szolgáltatás egyetlen platformba egyesítve. A standard szintű alkalmazás-életciklus-kezelési (ALM) eljárásokat beépítheti a különböző eszközökről az automatikus végrehajtásra és üzembe helyezésre a Azure Machine Learning Studio klasszikus verziójában. Ez a cikk néhány lehetőséget és megközelítést ismertet.
@@ -96,4 +96,4 @@ A ALM fontos aspektusa, hogy automatizálja az alkalmazás végrehajtási és ü
 ## <a name="next-steps"></a>További lépések
 * Töltse le a [Azure Machine learning Studio (klasszikus) PowerShell](https://aka.ms/amlps) -modult, és kezdje meg a Alm-feladatok automatizálását.
 * Megtudhatja, hogyan [hozhat létre és kezelhet nagy mennyiségű ml-modellt egyetlen kísérlettel](create-models-and-endpoints-with-powershell.md) a PowerShell és az API átképzése segítségével.
-* További információ a [Azure Machine learning webszolgáltatások üzembe helyezéséről](publish-a-machine-learning-web-service.md).
+* További információ a [Azure Machine learning webszolgáltatások üzembe helyezéséről](deploy-a-machine-learning-web-service.md).

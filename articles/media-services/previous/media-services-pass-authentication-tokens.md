@@ -1,11 +1,11 @@
 ---
-title: Hitelesítési jogkivonatok átadása az Azure Media Services |} A Microsoft Docs
-description: Ismerje meg, hogyan lehet elküldeni a hitelesítési tokenek az ügyfél az Azure Media Services kulcstovábbítást
+title: Hitelesítési jogkivonatok átadása Azure Media Servicesba | Microsoft Docs
+description: Megtudhatja, hogyan küldhet hitelesítési jogkivonatokat az ügyfélről a Azure Media Services Key Delivery Service-be
 services: media-services
-keywords: a Content protection, DRM, jogkivonat-hitelesítés
+keywords: tartalomvédelem, DRM, jogkivonat-hitelesítés
 documentationcenter: ''
-author: dbgeorge
-manager: jasonsue
+author: Juliako
+manager: femila
 editor: ''
 ms.assetid: 7c3b35d9-1269-4c83-8c91-490ae65b0817
 ms.service: media-services
@@ -14,26 +14,26 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/19/2019
-ms.author: dwgeo
-ms.openlocfilehash: 71925a1ee67956df45901950b2a59fa4c1b458a7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: juliako
+ms.openlocfilehash: 15d4cbc372f5d5ec0d323170189329152ed436e3
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61463225"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73684940"
 ---
-# <a name="learn-how-clients-pass-tokens-to-the-azure-media-services-key-delivery-service"></a>Ismerje meg, hogyan ügyfelek jogkivonatok átadása az Azure Media Services kulcskézbesítési szolgáltatásba
-Ügyfeleink gyakran kérdezik, hogyan játékos is jogkivonatok átadása ellenőrzése az Azure Media Services kulcskézbesítési szolgáltatáshoz, a Windows Media player szerezheti be a kulcsot. A Media Services a simple web Tokens (SWT) és a JSON webes jogkivonat (JWT) formátumokat támogatja. Jogkivonat-hitelesítés bármilyen típusú kulcsot, függetlenül attól, hogy használja vagy közös Advanced Encryption Standard (AES) boríték-titkosítást a rendszer alkalmazza a rendszer.
+# <a name="learn-how-clients-pass-tokens-to-the-azure-media-services-key-delivery-service"></a>Ismerje meg, hogy az ügyfelek hogyan adják át a jogkivonatokat a Azure Media Services Key Delivery Service-nek
+Az ügyfelek gyakran kérdezik le, hogy egy játékos hogyan adhat jogkivonatokat a Azure Media Services Key Delivery szolgáltatásnak ellenőrzés céljából, hogy a lejátszó beszerezze a kulcsot. Media Services támogatja az egyszerű webes jogkivonat (SWT) és a JSON Web Token (JWT) formátumait. A jogkivonat-hitelesítés bármilyen típusú kulcsra vonatkozik, függetlenül attól, hogy a rendszer közös titkosítási vagy Advanced Encryption Standard (AES) titkosítást használ-e.
 
- Attól függően, a lejátszó és a megcélzott platform adhat át a jogkivonatot a lejátszóval a következő módon:
+ A megcélzott lejátszótól és platformtól függően a tokent a következő módokon adhatja át a lejátszójának:
 
-- – A HTTP-engedélyeztetési fejléc.
+- A HTTP-engedélyezési fejlécen keresztül.
     > [!NOTE]
-    > A "Tulajdonos" előtagot az OAuth 2.0-s specifikációt / várt. A token konfigurációval egy minta player üzemelteti az Azure Media Player [bemutató lapon](https://ampdemo.azureedge.net/). A videó forrása beállításához válassza **AES (JWT-jogkivonat)** vagy **AES (SWT-Token)** . A token via az engedélyezési fejléc lett átadva.
+    > A "tulajdonos" előtagot a OAuth 2,0 specifikációja alapján kell elvárni. A jogkivonat-konfigurációt tartalmazó minta lejátszó a Azure Media Player [demo oldalon](https://ampdemo.azureedge.net/)található. A videó forrásának beállításához válassza az **AES (JWT token)** vagy az **AES (SWT token)** elemet. A jogkivonat az engedélyezési fejlécen keresztül lesz átadva.
 
-- Egy URL-cím hozzáadása keresztül lekérdezési paraméter "token = tokenvalue."  
+- Egy URL-lekérdezési paraméter hozzáadásával "token = tokenvalue".  
     > [!NOTE]
-    > A "Tulajdonos" előtag nem várt. A jogkivonat URL-cím keresztül zajlik, mert a jogkivonat-karakterláncot identitásinformációi kell. Íme egy C# mintakód bemutatja, hogyan teheti meg:
+    > A "tulajdonos" előtag nem várt. Mivel a tokent egy URL-címen keresztül küldik el, a jogkivonat karakterláncát kell megadnia. Az alábbi C# mintakód bemutatja, hogyan teheti meg:
 
     ```csharp
     string armoredAuthToken = System.Web.HttpUtility.UrlEncode(authToken);
@@ -41,8 +41,8 @@ ms.locfileid: "61463225"
     Uri keyDeliveryUrlWithTokenParameter = new Uri(uriWithTokenParameter);
     ```
 
-- Keresztül a CustomData mező.
-Ezt a beállítást csak, a PlayReady licenc beszerzése szolgál, a PlayReady-licenc beszerzési kihívás CustomData mezője révén. Ebben az esetben a token belül kell lennie az XML-dokumentum itt leírtak szerint:
+- A CustomData mezőn keresztül.
+Ez a beállítás csak a PlayReady-licencek beszerzéséhez használható, a PlayReady-licenc beszerzése kihívás CustomData mezőjében. Ebben az esetben a tokennek az XML-dokumentumban kell lennie az itt leírtak szerint:
 
     ```xml
     <?xml version="1.0"?>
@@ -50,9 +50,9 @@ Ezt a beállítást csak, a PlayReady licenc beszerzése szolgál, a PlayReady-l
         <Token></Token> 
     </CustomData>
     ```
-    A hitelesítési jogkivonatot a jogkivonat elem helyezze el.
+    Helyezze a hitelesítési tokent a jogkivonat elembe.
 
-- Keresztül egy másik HTTP Live Streaming (HLS) listát. Ha a jogkivonat-hitelesítés az AES + HLS konfigurálnia kell a lejátszás iOS/Safari böngészőben oly módon, közvetlenül elküldheti a jogkivonat nem áll rendelkezésre. Alternatív a lista a forgatókönyv engedélyezésének módjáról további információkért lásd: Ez [blogbejegyzés](https://azure.microsoft.com/blog/2015/03/06/how-to-make-token-authorized-aes-encrypted-hls-stream-working-in-safari/).
+- Egy alternatív HTTP Live Streaming (HLS) lejátszási listán. Ha az iOS/Safari rendszeren az AES + HLS-lejátszáshoz jogkivonat-hitelesítést kell beállítania, akkor nem lehet közvetlenül elküldeni a tokenbe. Ha további információt szeretne arról, hogy miként lehet ezt az esetet engedélyezni, tekintse meg ezt a [blogbejegyzést](https://azure.microsoft.com/blog/2015/03/06/how-to-make-token-authorized-aes-encrypted-hls-stream-working-in-safari/).
 
 ## <a name="next-steps"></a>További lépések
 

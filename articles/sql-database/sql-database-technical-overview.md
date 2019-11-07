@@ -1,5 +1,5 @@
 ---
-title: Mi az Azure SQL Database szolgáltatás? | Microsoft Docs
+title: Mi az Azure SQL Database szolgáltatás?
 description: 'Ismerkedjen meg SQL Database: a felhőben a Microsoft RDBMS-kezelő rendszer technikai részletei és képességei.'
 keywords: bevezetés az sql-be,az sql bemutatása,mi az sql database
 services: sql-database
@@ -12,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 04/08/2019
-ms.openlocfilehash: e5782ba016cf58335de17cdacabbcca95914f59a
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: d22408904ae21bc7512d4ebe8792666227893337
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71066282"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73687011"
 ---
 # <a name="what-is-the-azure-sql-database-service"></a>Mi az Azure SQL Database szolgáltatás?
 
@@ -99,9 +99,9 @@ A [query Store](sql-database-operate-query-store.md)egy beépített SQL Server f
 
 Az Azure [beépített teljesítmény-figyelési](sql-database-performance.md) és [riasztási](sql-database-insights-alerts-portal.md) eszközöket kínál a teljesítmény-minősítéssel együtt, amely lehetővé teszi több ezer adatbázis állapotának figyelését. Ezeknek az eszközöknek a használatával gyorsan elemezheti a fel-vagy leskálázás hatásait az aktuális vagy tervezett teljesítménybeli igények alapján. Az SQL Database emellett [metrikák és diagnosztikai naplók kibocsátásával](sql-database-metrics-diag-logging.md) is képes megkönnyíteni a felügyeletet. Az SQL Database beállítható az erőforrás-használatra, feldolgozókra és munkamenetekre, valamint kapcsolatokra vonatkozó adatok tárolására a következő Azure-erőforrások valamelyikén:
 
-- **Azure Storage**: Nagy mennyiségű telemetria kis költségű archiválásához.
-- **Azure Event Hubs**: SQL Database telemetria integrálásához az egyéni figyelési megoldással vagy a gyors folyamatokkal.
-- **Naplók Azure monitor**: Beépített figyelési megoldás jelentéskészítési, riasztási és enyhítési képességekkel.
+- **Azure Storage**: Nagy tömegű telemetriai adat alacsony költségű archiválására.
+- **Azure Event Hubs**: SQL Database telemetria integrálása az egyéni figyelési megoldással vagy a gyors folyamatokkal.
+- **Azure monitor naplók**: beépített figyelési megoldás jelentéskészítési, riasztási és kockázatcsökkentő képességekkel.
 
 ![Az Azure monitoring architektúra ábrája](./media/sql-database-metrics-diag-logging/architecture.png)
 
@@ -152,8 +152,8 @@ Számos partnerünk, akik [SaaS több-bérlős alkalmazásokat](sql-database-des
 
 SQL Database két automatikus finomhangolási szempont [érhető el](sql-database-automatic-tuning.md):
 
-- **Automatikus indexelés kezelése**: Azonosítja az adatbázisba felvenni kívánt indexeket, valamint azokat az indexeket, amelyeket el kell távolítani.
-- **Automatikus terv javítása**: Azonosítja a problémás terveket és javítja az SQL-terv teljesítményével kapcsolatos problémákat.
+- **Automatikus indexkezelés**: Azonosítja az adatbázishoz hozzáadandó és az abból eltávolítandó indexeket.
+- **Automatikus terv javítása**: azonosítja a problémás terveket, és javítja az SQL-terv teljesítményével kapcsolatos problémákat.
 
 ### <a name="adaptive-query-processing"></a>Adaptív lekérdezés-feldolgozás
 
@@ -250,11 +250,11 @@ SQL Database az ügyfelek a következő jogokkal rendelkeznek a SQL Server Azure
 
 ## <a name="engage-with-the-sql-server-engineering-team"></a>Kapcsolatfelvétel az SQL Server műszaki csoportjával
 
-- [DBA stack Exchange](https://dba.stackexchange.com/questions/tagged/sql-server): Kérdezze meg az adatbázis adminisztrációs kérdéseit.
-- [Stack overflow](https://stackoverflow.com/questions/tagged/sql-server): Forduljon a fejlesztési kérdésekhez.
-- [MSDN-fórumok](https://social.msdn.microsoft.com/Forums/home?category=sqlserver): Forduljon a technikai kérdésekhez.
-- [Visszajelzés](https://aka.ms/sqlfeedback): Hibajelentések és kérések funkciójának jelentése.
-- [Reddit](https://www.reddit.com/r/SQLServer/): SQL Server megvitatása.
+- [DBA stack Exchange](https://dba.stackexchange.com/questions/tagged/sql-server): kérdezze meg az adatbázis adminisztrációs kérdéseit.
+- [Stack overflow](https://stackoverflow.com/questions/tagged/sql-server): forduljon a fejlesztési kérdésekhez.
+- [MSDN-fórumok](https://social.msdn.microsoft.com/Forums/home?category=sqlserver): technikai kérdéseket tehet fel.
+- [Visszajelzés](https://aka.ms/sqlfeedback): hibajelentések és kérések funkció.
+- [Reddit](https://www.reddit.com/r/SQLServer/): beszéljen SQL Server.
 
 ## <a name="next-steps"></a>További lépések
 

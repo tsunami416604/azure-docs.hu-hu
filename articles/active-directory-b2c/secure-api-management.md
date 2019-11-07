@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/31/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 531f6d86d57be550d0a1147e131d93ae6e298406
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: HT
+ms.openlocfilehash: 942c565c885d59a14d64e7ec06beee0354e7c4ca
+ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73474744"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73641622"
 ---
 # <a name="secure-an-azure-api-management-api-with-azure-ad-b2c"></a>Azure API Management API biztonságossá tétele Azure AD B2C
 
@@ -35,11 +35,11 @@ A cikk lépéseinek folytatása előtt a következő erőforrásokra van szüks�
 
 Ha az Azure-API Managementban található API-t Azure AD B2C használatával védi, több értékre van szüksége a APIM-ben létrehozott [bejövő házirendhez](../api-management/api-management-howto-policies.md) . Először jegyezze fel egy korábban a Azure AD B2C-bérlőben létrehozott alkalmazás AZONOSÍTÓját. Ha az előfeltételekben létrehozott alkalmazást használja, használja a *webbapp1*alkalmazás-azonosítóját.
 
-Az alkalmazás AZONOSÍTÓjának beszerzéséhez használhatja az aktuális **alkalmazások** vagy az új Unified **Alkalmazásregisztrációk (előzetes verzió)** felhasználói felületét. [További információ az előzetes](http://aka.ms/b2cappregintro)verzióról.
+Az alkalmazás AZONOSÍTÓjának beszerzéséhez használhatja az aktuális **alkalmazások** vagy az új Unified **Alkalmazásregisztrációk (előzetes verzió)** felhasználói felületét. [További információ az új felületről](https://aka.ms/b2cappregintro).
 
 #### <a name="applicationstabapplications"></a>[Alkalmazások](#tab/applications/)
 
-1. Bejelentkezés az [Azure Portalra](https://portal.azure.com).
+1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
 1. Válassza ki a **címtár + előfizetés** szűrőt a felső menüben, majd válassza ki azt a könyvtárat, amely a Azure ad B2C bérlőjét tartalmazza.
 1. A bal oldali menüben válassza a **Azure ad B2C**lehetőséget. Vagy válassza a **minden szolgáltatás** lehetőséget, és keresse meg, majd válassza a **Azure ad B2C**lehetőséget.
 1. A **kezelés**területen válassza az **alkalmazások**lehetőséget.
@@ -47,7 +47,7 @@ Az alkalmazás AZONOSÍTÓjának beszerzéséhez használhatja az aktuális **al
 
 #### <a name="app-registrations-previewtabapp-reg-preview"></a>[Alkalmazásregisztrációk (előzetes verzió)](#tab/app-reg-preview/)
 
-1. Bejelentkezés az [Azure Portalra](https://portal.azure.com).
+1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
 1. Válassza ki a **címtár + előfizetés** szűrőt a felső menüben, majd válassza ki azt a könyvtárat, amely a Azure ad B2C bérlőjét tartalmazza.
 1. A bal oldali menüben válassza a **Azure ad B2C**lehetőséget. Vagy válassza a **minden szolgáltatás** lehetőséget, és keresse meg, majd válassza a **Azure ad B2C**lehetőséget.
 1. Válassza a **Alkalmazásregisztrációk (előzetes verzió)** lehetőséget, majd válassza a **birtokolt alkalmazások** fület.
@@ -73,7 +73,7 @@ Ezután szerezze be a jól ismert konfigurációs URL-címet az egyik Azure AD B
 
     Ezt az értéket a következő szakaszban kell használni az API Azure API Management-ban való konfigurálásakor.
 
-Most két, a következő szakaszban való használatra rögzített URL-címet kell megadnia: az OpenID Connect jól ismert konfigurációs végpont URL-címét és a kibocsátó URI-JÁT. Példa:
+Most két, a következő szakaszban való használatra rögzített URL-címet kell megadnia: az OpenID Connect jól ismert konfigurációs végpont URL-címét és a kibocsátó URI-JÁT. Például:
 
 ```
 https://yourb2ctenant.b2clogin.com/yourb2ctenant.onmicrosoft.com/v2.0/.well-known/openid-configuration?p=B2C_1_signupsignin1
@@ -154,7 +154,7 @@ A közzétett API-t meghívó ügyfélalkalmazás (ebben az esetben a posta) ér
 
 Ha a hozzáférési jogkivonat és a APIM-előfizetés kulcsa rögzített, most már készen áll annak tesztelésére, hogy helyesen konfigurálta-e a biztonságos hozzáférést az API-hoz.
 
-1. Hozzon létre egy új `GET` kérelmet a [Poster](https://www.getpostman.com/)-ben. A kérelem URL-címéhez adja meg az előfeltételként közzétett API hangszórók listája végpontját. Példa:
+1. Hozzon létre egy új `GET` kérelmet a [Poster](https://www.getpostman.com/)-ben. A kérelem URL-címéhez adja meg az előfeltételként közzétett API hangszórók listája végpontját. Például:
 
     `https://contosoapim.azure-api.net/conference/speakers`
 

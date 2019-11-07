@@ -1,5 +1,5 @@
 ---
-title: SSIS-áttelepítés Azure SQL Database felügyelt példánnyal az adatbázis-munkaterhelés céljaként | Microsoft Docs
+title: SSIS Migrálás Azure SQL Database felügyelt példánnyal az adatbázis-munkaterhelés céljaként
 description: A SSIS áttelepítése Azure SQL Database felügyelt példánnyal az adatbázis-munkaterhelés céljaként.
 services: data-factory
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 9/12/2019
-ms.openlocfilehash: c1bb056909641ad0b8654e84f35c4fbd5b38db82
-ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
+ms.openlocfilehash: 6ea9134085812b99d59ad64aa2c9ec1b2ff827d9
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70968522"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73684402"
 ---
 # <a name="ssis-migration-with-azure-sql-database-managed-instance-as-the-database-workload-destination"></a>SSIS Migrálás Azure SQL Database felügyelt példánnyal az adatbázis-munkaterhelés céljaként
 
@@ -27,7 +27,7 @@ Ez a cikk a SSIS-katalógusban (SSISDB) tárolt SQL Server Integration Service (
 
 ## <a name="migrate-ssis-catalog-ssisdb"></a>SSIS-katalógus migrálása (SSISDB)
 
-A SSISDB áttelepítését a DMS használatával végezheti el a cikkben leírtak szerint: [SSIS-csomagok migrálása egy Azure SQL Database felügyelt példányra](https://docs.microsoft.com/azure/dms/how-to-migrate-ssis-packages-managed-instance).
+A SSISDB áttelepítését a DMS használatával végezheti el a következő cikkben leírtak szerint: [SSIS-csomagok áttelepítése Azure SQL Database felügyelt példányra](https://docs.microsoft.com/azure/dms/how-to-migrate-ssis-packages-managed-instance).
 
 ## <a name="ssis-jobs-to-azure-sql-database-managed-instance-agent"></a>SSIS feladatok Azure SQL Database felügyelt példány ügynökének
 

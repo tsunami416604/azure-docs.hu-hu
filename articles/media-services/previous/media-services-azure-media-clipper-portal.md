@@ -1,45 +1,45 @@
 ---
-title: Az Azure Media Clipperrel használja a portálon |} A Microsoft Docs
-description: Készíthet az Azure Media Clipperrel az Azure Portal használatával
+title: Az Azure Media Clipper használata a portálon | Microsoft Docs
+description: Klipek létrehozása az Azure Media Clipper használatával az Azure Portalról
 services: media-services
-keywords: clip;subclip;encoding;media
-author: dbgeorge
-manager: jasonsue
-ms.author: dwgeo
+keywords: klip; alklip; kódolás; média
+author: Juliako
+manager: femila
+ms.author: juliako
 ms.date: 03/14/2019
 ms.topic: article
 ms.service: media-services
-ms.openlocfilehash: 8c88caefb0909da55de87116a23fa520c1679cc2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ec43fa469547dcd6481c0c6781c438f42ab4e2bd
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61465847"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73684987"
 ---
-# <a name="create-clips-with-azure-media-clipper-in-the-portal"></a>Az Azure Media Clipperrel klip létrehozása a portálon  
+# <a name="create-clips-with-azure-media-clipper-in-the-portal"></a>Klipek létrehozása az Azure Media Clipper-vel a portálon  
 
-Azure Media Clipperrel a portál segítségével az eszközök a media services-fiókok a készíthet. Első lépésként nyissa meg a portálon a media services-fiók. Ezután válassza ki a **Részklip** fülre.
+A portálon az Azure Media Clipper használatával klipeket hozhat létre a Media Services-fiókok eszközeiből. Első lépésként navigáljon a Media Services-fiókhoz a portálon. Ezután válassza az **alklip** fület.
 
-Az a **Részklip** lap, Ön tudja kezdeni a legjobb pillanatokból összeválogatott összeállítása. A portálon a Clipperrel egyszeres átviteli sebességű MP4-fájlnak, többszörös átviteli sebességű MP4-fájlnak és a egy érvényes a streamelési lokátorok a közzétett élő adásokból tölti be. Közzé nem tett eszközök nem töltődnek be.
+Az **alklip** lapon megkezdheti a klipek szerkesztését. A portálon a Clipper egy érvényes adatfolyam-keresővel közzétett egyszeres sávszélességű MP4, többszörös sávszélességű MP4 és élő archívumokat tölt be. A nem közzétett eszközök nincsenek betöltve.
 
-A Clipperrel jelenleg nyilvános előzetes verzióban érhető el. Az Azure Portalon a Clipperrel eléréséhez nyissa meg a [nyilvános előzetes verziójú szolgáltatásainak weblapján](https://portal.azure.com/?feature.subclipper=true).
+A Clipper jelenleg nyilvános előzetes verzióban érhető el. A Azure Portal lévő Clipper eléréséhez nyissa meg ezt a [nyilvános előnézet lapot](https://portal.azure.com/?feature.subclipper=true).
 
-Az alábbi ábrán a Clipperrel kezdőlapja a media services-fiók: ![Az Azure Portalon az Azure Media Clipperrel](media/media-services-azure-media-clipper-portal/media-services-azure-media-clipper-portal.png)
+Az alábbi ábra a Media Services-fiókban található adattárolók kezdőlapját mutatja be: ![Azure Portal Azure Media Clipper-t](media/media-services-azure-media-clipper-portal/media-services-azure-media-clipper-portal.png)
 
-## <a name="producing-clips"></a>Legjobb pillanatokból összeválogatott előállító
-Klip létrehozása, áthúzása adategység alakzatot a klipek felületet. Ha be van jelölve-szorosa ismertek, manuálisan megadhatja azokat a felületen. Más esetekben az adategység a lejátszás vagy húzza a playhead kívánt jel a Keresés és az idő. Ha be van jelölve a vagy a végpont egyszerre nem áll rendelkezésre, a klipek elejétől kezdődik, vagy továbbra is a bemeneti objektuma végét jelölik.
+## <a name="producing-clips"></a>Klipek készítése
+Klip létrehozásához húzzon egy objektumot a klip felületére. Ha a megjelölési idő ismert, manuálisan is megadhatja azokat a felületre. Ellenkező esetben az eszköz lejátszásával vagy a pozícióhoz húzásával megkeresheti a kívánt jelölési és kijelzési időt. Ha nincs megadva a megjelölési vagy a kijelzési idő, a klip az elejétől kezdődik, vagy a bemeneti eszköz végéig folytatódik.
 
-Keresse meg, keret-pontossága/Képcsoporttal-pontosságú, használja a keret-továbbítás/Képcsoporttal-továbbító vagy keret-visszamenőlegesen/Képcsoporttal-hátra gombokat. A Kivágás adategységek ellen, áthúzása adategységek a klipek felületen az eszköz kiválasztása panel. Válassza ki, és rendezze át a kívánt sorrendben felületen eszközök. Az eszközintelligencia időkiválasztás panel minden eszköz biztosít az objektum időtartamának, típusa és névfeloldási metaadatokat. Adategységek együtt összetűzésének, vegye figyelembe az egyes bemeneti fájlokat a forrás feloldásához. Ha eltérnek a forrás-megoldások, alacsonyabb feloldási bemeneti van upscaled meg a megoldást a legnagyobb felbontást eszköz kielégítése érdekében. A Kivágás feladat kimenetének megtekintéséhez válassza ki a kijelölt mark idők az Előnézet gombra, és a videoklip lejátszása közben.
+A frame-pontossággal/GOP-pontossággal való mozgáshoz használja a frame-Forward/GOP-Forward vagy a frame-visszafelé/GOP-visszafelé gombokat. Több eszköz kivágásához húzza a több objektumot a klip felületére az eszköz kiválasztása panelen. Az adategységeket kiválaszthatja és átrendezheti a kezelőfelületen a kívánt sorrendbe. Az eszköz kiválasztása panel minden eszköz esetében biztosítja az eszköz időtartamát, típusát és feloldási metaadatait. Több eszköz összefűzése esetén vegye figyelembe az egyes bemeneti fájlok forrás-feloldását. Ha a forrás felbontása eltérő, az alacsonyabb felbontású bemenet a legmagasabb megoldási eszköz felbontásának megfelelő. A kivágási feladatok kimenetének megtekintéséhez kattintson a Preview (előnézet) gombra, és a klip a kijelölt jelölési időpontokban játszik le.
 
-## <a name="producing-dynamic-manifest-filters"></a>Előállító dinamikusjegyzék-szűrők
-[Dinamikusjegyzék-szűrők](https://azure.microsoft.com/blog/dynamic-manifest/) jegyzékfájl attribútumok és az eszköz ütemterv alapján szabályok leírására. Ezek a szabályok meghatározzák, hogy a tartalomstreameléshez használt streamvégpont hogyan kezeli a kimenet listának (manifest). A szűrő segítségével módosíthatja, mely szegmensek átvitt lejátszás céljából. A szűrők a Clipperrel által létrehozott helyi szűrők és a forrás-eszközre jellemző. Ellentétben a megjelenített klipek szűrők nem új eszközök, és nem igénylik a kódolási feladatokat előállításához. Gyorsan létrehozhatók keresztül a [.NET SDK-val](https://docs.microsoft.com/azure/media-services/media-services-dotnet-dynamic-manifest) vagy [REST API-val](https://docs.microsoft.com/azure/media-services/media-services-rest-dynamic-manifest), azonban olyan csak Képcsoporttal pontos. Eszközök streameléshez kódolású rendszerint egy Képcsoporttal méretű két másodpercen kell.
+## <a name="producing-dynamic-manifest-filters"></a>Dinamikus jegyzékfájl-szűrők készítése
+A [dinamikus jegyzékfájlok szűrői](https://azure.microsoft.com/blog/dynamic-manifest/) a jegyzékfájlok és az eszközök idővonala alapján határozzák meg a szabályokat. Ezek a szabályok határozzák meg, hogy a folyamatos átviteli végpont hogyan kezelje a kimeneti listát (manifest). A szűrő használatával megváltoztathatja, hogy a rendszer mely szegmenseket továbbítsa a lejátszáshoz. A Clipper által létrehozott szűrők helyi szűrők, és a forrás-eszközre jellemzőek. A megjelenített klipekkel ellentétben a szűrők nem új eszközök, és nem igényelnek kódolási feladatot a létrehozásához. Ezek gyorsan létrehozhatók a [.net SDK](https://docs.microsoft.com/azure/media-services/media-services-dotnet-dynamic-manifest) -val vagy a [REST API](https://docs.microsoft.com/azure/media-services/media-services-rest-dynamic-manifest)használatával, de csak GOP-pontosak. Az adatfolyamként kódolt adategységek általában két másodperces, GOP-os mérettel rendelkeznek.
 
-Hozzon létre egy dinamikusjegyzék-szűrő, lépjen a **eszközök** lapra, és válassza ki a kívánt eszközt. Válassza ki a **Részklip** gombot a felső menüben. Válassza ki a dinamikusjegyzék-szűrő a Speciális beállítások menüből kapcsolást módot. Kövesse ugyanezt az eljárást a megjelenített klip létrehozása a szűrő létrehozásához. Szűrők csak az egyetlen eszköz kell mutatni.
+Dinamikus jegyzékfájl-szűrő létrehozásához navigáljon az **assets (eszközök** ) lapra, és válassza ki a kívánt objektumot. Válassza ki a felső menü **alklip** gombját. A speciális beállítások menüből válassza ki a dinamikus jegyzékfájl szűrése lehetőséget a kivágási mód beállításnál. Ezután ugyanezt a folyamatot követve hozhat létre egy megjelenített klipet a szűrő létrehozásához. Szűrők csak egyetlen eszközből állíthatók elő.
 
-Az alábbi ábrán a Clipperrel dinamikus jegyzékfájl szűrő módban az Azure Portalon: ![A dinamikus jegyzékfájl szűrő mód az Azure Portalon az Azure Media Clipperrel](media/media-services-azure-media-clipper-portal/media-services-azure-media-clipper-filter.PNG)
+Az alábbi ábrán látható, hogy a Azure Portal dinamikus jegyzékfájl szűrési módja a következő képen látható: ![Azure Media Clipper a dinamikus jegyzékfájlok szűrési módjában Azure Portal](media/media-services-azure-media-clipper-portal/media-services-azure-media-clipper-filter.PNG)
 
-## <a name="submitting-clipping-jobs"></a>Klipekkel kapcsolatos feladatok elküldése
-Amikor végzett, a klipek összeállítása, válassza ki a kezdeményezése a küldési feladat gombra, a megfelelő kapcsolást feladat vagy a dinamikus jegyzékfájl hívás.
+## <a name="submitting-clipping-jobs"></a>Levágási feladatok elküldése
+Amikor befejezte a klip megfogalmazását, kattintson a küldési feladatok gombra a megfelelő levágási vagy dinamikus jegyzékfájl hívásának elindításához.
 
 ## <a name="next-steps"></a>További lépések
-Ismerkedés az Azure Media Clipperrel használatával, olvassa el a [bevezetés](media-services-azure-media-clipper-getting-started.md) részleteivel kapcsolatban, hogyan helyezhet üzembe a widget.
+Az Azure Media Clipper használatának megkezdéséhez olvassa el az [első lépések](media-services-azure-media-clipper-getting-started.md) című cikket, amely részletesen ismerteti a widget üzembe helyezésének lépéseit.

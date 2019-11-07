@@ -8,23 +8,23 @@ ms.date: 10/22/2019
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: dineshm
-ms.openlocfilehash: 6680efb89eddcfb1c4fa931993956ef83369b292
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: 78e3f1d4f457e041d386ac7754d089b8b3635b08
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72817044"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73686637"
 ---
 # <a name="transfer-data-with-azcopy-and-blob-storage"></a>Adatok átvitele a AzCopy és a blob Storage szolgáltatással
 
 A AzCopy egy parancssori segédprogram, amellyel az adatok átmásolhatók a, a-ból vagy a Storage-fiókok között. Ez a cikk a blob Storage-hoz használható példaként szolgáló parancsokat tartalmaz.
 
-## <a name="get-started"></a>Az első lépések
+## <a name="get-started"></a>Bevezetés
 
 Tekintse meg az első [lépések a AzCopy](storage-use-azcopy-v10.md) című cikket a AzCopy letöltéséhez és a tárolási szolgáltatás engedélyezési hitelesítő adatainak megadásához szükséges módszerekről.
 
 > [!NOTE]
-> A cikkben szereplő példák azt feltételezik, hogy a `AzCopy login` paranccsal hitelesítette a személyazonosságát. A AzCopy ezután az Azure AD-fiók használatával engedélyezi a blob Storage-beli adathozzáférését.
+> A cikkben szereplő példák azt feltételezik, hogy az `AzCopy login` parancs használatával hitelesítette az identitását. A AzCopy ezután az Azure AD-fiók használatával engedélyezi a blob Storage-beli adathozzáférését.
 >
 > Ha inkább SAS-tokent használ a blob-adathozzáférés engedélyezéséhez, akkor a tokent az erőforrás URL-címéhez is hozzáfűzheti az egyes AzCopy-parancsokban.
 >
@@ -35,7 +35,7 @@ Tekintse meg az első [lépések a AzCopy](storage-use-azcopy-v10.md) című cik
 > [!TIP]
 > Az ebben a szakaszban szereplő példák egyetlen idézőjelekkel (' ') rendelkeznek a Path argumentumokkal. A Windows parancs-rendszerhéj (Cmd. exe) kivételével használjon szimpla idézőjeleket az összes parancs-rendszerhéjban. Ha Windows parancs-rendszerhéjt (Cmd. exe) használ, az idézőjelek ("") helyett idézőjelek ("") közé kell foglalni az elérésiút-argumentumokat.
 
-Tároló létrehozásához használhatja a [azcopy make](storage-ref-azcopy-make.md) parancsot. Az ebben a szakaszban szereplő példák egy `mycontainer` nevű tárolót hoznak létre.
+Tároló létrehozásához használhatja a [azcopy make](storage-ref-azcopy-make.md) parancsot. Az ebben a szakaszban szereplő példák egy `mycontainer`nevű tárolót hoznak létre.
 
 |    |     |
 |--------|-----------|
@@ -70,7 +70,7 @@ A részletes dokumentációt lásd: [azcopy másolás](storage-ref-azcopy-copy.m
 | **Példa** | `azcopy copy 'C:\myDirectory\myTextFile.txt' 'https://mystorageaccount.blob.core.windows.net/mycontainer/myTextFile.txt'` |
 | **Példa** (hierarchikus névtér) | `azcopy copy 'C:\myDirectory\myTextFile.txt' 'https://mystorageaccount.dfs.core.windows.net/mycontainer/myTextFile.txt'` |
 
-A fájl elérési útja vagy fájlneve tetszőleges helyettesítő karakter (*) használatával is feltölthet egy fájlt. Például: `'C:\myDirectory\*.txt'`, vagy `C:\my*\*.txt`.
+A fájl elérési útja vagy fájlneve tetszőleges helyettesítő karakter (*) használatával is feltölthet egy fájlt. Például: `'C:\myDirectory\*.txt'`vagy `C:\my*\*.txt`.
 
 > [!NOTE]
 > A AzCopy alapértelmezés szerint feltölti az adatblokk-blobokat. A fájlok hozzáfűzési Blobként való feltöltéséhez vagy az oldal Blobok a jelzőt használják `--blob-type=[BlockBlob|PageBlob|AppendBlob]`.
@@ -113,7 +113,7 @@ Megadhatja a teljes fájlnevet, vagy használhat részleges neveket helyettesít
 
 #### <a name="specify-multiple-complete-file-names"></a>Több teljes fájlnevet kell megadni
 
-Használja az [azcopy Copy](storage-ref-azcopy-copy.md) parancsot a `--include-path` kapcsolóval. Az egyes fájlneveket pontosvesszővel (`;`) válassza el egymástól.
+Használja az [azcopy Copy](storage-ref-azcopy-copy.md) parancsot a `--include-path` kapcsolóval. Pontosvesszővel (`;`) válassza el az egyes fájlneveket.
 
 |    |     |
 |--------|-----------|
@@ -121,13 +121,13 @@ Használja az [azcopy Copy](storage-ref-azcopy-copy.md) parancsot a `--include-p
 | **Példa** | `azcopy copy 'C:\myDirectory' 'https://mystorageaccount.blob.core.windows.net/mycontainer' --include-path 'photos;documents\myFile.txt' --recursive` |
 | **Példa** (hierarchikus névtér) | `azcopy copy 'C:\myDirectory' 'https://mystorageaccount.dfs.core.windows.net/mycontainer' --include-path 'photos;documents\myFile.txt' --recursive` |
 
-Ebben a példában a AzCopy átviszi a `C:\myDirectory\photos` könyvtárat és a `C:\myDirectory\documents\myFile.txt` fájlt. A `C:\myDirectory\photos` könyvtár összes fájljának átadásához meg kell adnia a `--recursive` kapcsolót.
+Ebben a példában a AzCopy átviszi a `C:\myDirectory\photos` könyvtárat és a `C:\myDirectory\documents\myFile.txt` fájlt. A `C:\myDirectory\photos` könyvtárban lévő összes fájl átviteléhez meg kell adnia a `--recursive` lehetőséget.
 
-A fájlokat a `--exclude-path` kapcsoló használatával is kizárhatja. További információért lásd: [azcopy másolási](storage-ref-azcopy-copy.md) dokumentáció.
+A fájlokat a `--exclude-path` lehetőség használatával is kizárhatja. További információért lásd: [azcopy másolási](storage-ref-azcopy-copy.md) dokumentáció.
 
 #### <a name="use-wildcard-characters"></a>Helyettesítő karakterek használata
 
-Használja az [azcopy Copy](storage-ref-azcopy-copy.md) parancsot a `--include-pattern` kapcsolóval. Adjon meg olyan részleges neveket, amelyek tartalmazzák a helyettesítő karaktereket. A neveket egy semicolin (`;`) használva válassza el. 
+Használja az [azcopy Copy](storage-ref-azcopy-copy.md) parancsot a `--include-pattern` kapcsolóval. Adjon meg olyan részleges neveket, amelyek tartalmazzák a helyettesítő karaktereket. A neveket semicolin (`;`) használva válassza el. 
 
 |    |     |
 |--------|-----------|
@@ -135,9 +135,9 @@ Használja az [azcopy Copy](storage-ref-azcopy-copy.md) parancsot a `--include-p
 | **Példa** | `azcopy copy 'C:\myDirectory' 'https://mystorageaccount.blob.core.windows.net/mycontainer' --include-pattern 'myFile*.txt;*.pdf*'` |
 | **Példa** (hierarchikus névtér) | `azcopy copy 'C:\myDirectory' 'https://mystorageaccount.dfs.core.windows.net/mycontainer' --include-pattern 'myFile*.txt;*.pdf*'` |
 
-A fájlokat a `--exclude-pattern` kapcsoló használatával is kizárhatja. További információért lásd: [azcopy másolási](storage-ref-azcopy-copy.md) dokumentáció.
+A fájlokat a `--exclude-pattern` lehetőség használatával is kizárhatja. További információért lásd: [azcopy másolási](storage-ref-azcopy-copy.md) dokumentáció.
 
-A `--include-pattern` és a `--exclude-pattern` beállítások csak a fájlnevekre érvényesek, az elérési útra nem.  Ha egy könyvtár fájában található összes szövegfájlt szeretné átmásolni, használja a `–recursive` kapcsolót a teljes könyvtár-fa beolvasásához, majd használja a `–include-pattern` parancsot, és adja meg a `*.txt` értéket az összes szövegfájl lekéréséhez.
+A `--include-pattern` és `--exclude-pattern` beállítások csak a fájlnevekre érvényesek, az elérési útra nem.  Ha egy címtár fájában található összes szövegfájlt szeretné átmásolni, használja a `–recursive` kapcsolót a teljes könyvtár faszerkezetének beolvasásához, majd használja a `–include-pattern`, és adja meg `*.txt` az összes szövegfájl beolvasásához.
 
 ## <a name="download-files"></a>Fájlok letöltése
 
@@ -152,7 +152,7 @@ Ez a szakasz a következő példákat tartalmazza:
 > * Adott fájlok letöltése
 
 > [!NOTE]
-> Ha egy blob `Content-md5` tulajdonsága kivonatot tartalmaz, a AzCopy kiszámítja a letöltött adatokat tartalmazó MD5-kivonatot, és ellenőrzi, hogy a blob `Content-md5` tulajdonságában tárolt MD5-kivonat megegyezik-e a számított kivonattal. Ha ezek az értékek nem egyeznek, a letöltés meghiúsul, hacsak nem bírálja felül ezt a viselkedést úgy, hogy `--check-md5=NoCheck` vagy `--check-md5=LogOnly` értéket fűz a másolási parancshoz.
+> Ha egy blob `Content-md5` tulajdonságának értéke kivonatot tartalmaz, a AzCopy kiszámítja a letöltött adatokat tartalmazó MD5-kivonatot, és ellenőrzi, hogy a blob `Content-md5` tulajdonságában tárolt MD5-kivonat megegyezik-e a számított kivonattal. Ha ezek az értékek nem egyeznek, a letöltés meghiúsul, hacsak nem bírálja felül ezt a viselkedést `--check-md5=NoCheck` vagy `--check-md5=LogOnly` a másolási parancshoz való hozzáfűzésével.
 
 A részletes dokumentációt lásd: [azcopy másolás](storage-ref-azcopy-copy.md).
 
@@ -198,7 +198,7 @@ Megadhatja a teljes fájlnevet, vagy használhat részleges neveket helyettesít
 
 #### <a name="specify-multiple-complete-file-names"></a>Több teljes fájlnevet kell megadni
 
-Használja az [azcopy Copy](storage-ref-azcopy-copy.md) parancsot a `--include-path` kapcsolóval. Különálló fájlnevek elkülönítése semicolin használatával (`;`).
+Használja az [azcopy Copy](storage-ref-azcopy-copy.md) parancsot a `--include-path` kapcsolóval. Különálló fájlnevek elkülönítése semicolin (`;`) használatával.
 
 |    |     |
 |--------|-----------|
@@ -206,13 +206,13 @@ Használja az [azcopy Copy](storage-ref-azcopy-copy.md) parancsot a `--include-p
 | **Példa** | `azcopy copy 'https://mystorageaccount.blob.core.windows.net/mycontainer/FileDirectory' 'C:\myDirectory'  --include-path 'photos;documents\myFile.txt' --recursive` |
 | **Példa** (hierarchikus névtér) | `azcopy copy 'https://mystorageaccount.dfs.core.windows.net/mycontainer/FileDirectory' 'C:\myDirectory'  --include-path 'photos;documents\myFile.txt'--recursive` |
 
-Ebben a példában a AzCopy átviszi a `https://mystorageaccount.blob.core.windows.net/mycontainer/FileDirectory/photos` könyvtárat és a `https://mystorageaccount.blob.core.windows.net/mycontainer/FileDirectory/documents/myFile.txt` fájlt. A `https://mystorageaccount.blob.core.windows.net/mycontainer/FileDirectory/photos` könyvtár összes fájljának átadásához meg kell adnia a `--recursive` kapcsolót.
+Ebben a példában a AzCopy átviszi a `https://mystorageaccount.blob.core.windows.net/mycontainer/FileDirectory/photos` könyvtárat és a `https://mystorageaccount.blob.core.windows.net/mycontainer/FileDirectory/documents/myFile.txt` fájlt. A `https://mystorageaccount.blob.core.windows.net/mycontainer/FileDirectory/photos` könyvtárban lévő összes fájl átviteléhez meg kell adnia a `--recursive` lehetőséget.
 
-A fájlokat a `--exclude-path` kapcsoló használatával is kizárhatja. További információért lásd: [azcopy másolási](storage-ref-azcopy-copy.md) dokumentáció.
+A fájlokat a `--exclude-path` lehetőség használatával is kizárhatja. További információért lásd: [azcopy másolási](storage-ref-azcopy-copy.md) dokumentáció.
 
 #### <a name="use-wildcard-characters"></a>Helyettesítő karakterek használata
 
-Használja az [azcopy Copy](storage-ref-azcopy-copy.md) parancsot a `--include-pattern` kapcsolóval. Adjon meg olyan részleges neveket, amelyek tartalmazzák a helyettesítő karaktereket. A neveket egy semicolin (`;`) használva válassza el.
+Használja az [azcopy Copy](storage-ref-azcopy-copy.md) parancsot a `--include-pattern` kapcsolóval. Adjon meg olyan részleges neveket, amelyek tartalmazzák a helyettesítő karaktereket. A neveket semicolin (`;`) használva válassza el.
 
 |    |     |
 |--------|-----------|
@@ -220,9 +220,9 @@ Használja az [azcopy Copy](storage-ref-azcopy-copy.md) parancsot a `--include-p
 | **Példa** | `azcopy copy 'https://mystorageaccount.blob.core.windows.net/mycontainer/FileDirectory' 'C:\myDirectory'  --include-pattern 'myFile*.txt;*.pdf*'` |
 | **Példa** (hierarchikus névtér) | `azcopy copy 'https://mystorageaccount.dfs.core.windows.net/mycontainer/FileDirectory' 'C:\myDirectory'  --include-pattern 'myFile*.txt;*.pdf*'` |
 
-A fájlokat a `--exclude-pattern` kapcsoló használatával is kizárhatja. További információért lásd: [azcopy másolási](storage-ref-azcopy-copy.md) dokumentáció.
+A fájlokat a `--exclude-pattern` lehetőség használatával is kizárhatja. További információért lásd: [azcopy másolási](storage-ref-azcopy-copy.md) dokumentáció.
 
-A `--include-pattern` és a `--exclude-pattern` beállítások csak a fájlnevekre érvényesek, az elérési útra nem.  Ha egy könyvtár fájában található összes szövegfájlt szeretné átmásolni, használja a `–recursive` kapcsolót a teljes könyvtár-fa beolvasásához, majd használja a `–include-pattern` parancsot, és adja meg a `*.txt` értéket az összes szövegfájl lekéréséhez.
+A `--include-pattern` és `--exclude-pattern` beállítások csak a fájlnevekre érvényesek, az elérési útra nem.  Ha egy címtár fájában található összes szövegfájlt szeretné átmásolni, használja a `–recursive` kapcsolót a teljes könyvtár faszerkezetének beolvasásához, majd használja a `–include-pattern`, és adja meg `*.txt` az összes szövegfájl beolvasásához.
 
 ## <a name="copy-blobs-between-storage-accounts"></a>Blobok másolása a Storage-fiókok között
 
@@ -235,7 +235,7 @@ A AzCopy [kiszolgálók](https://docs.microsoft.com/rest/api/storageservices/put
 >
 > - Csak azok a fiókok támogatottak, amelyek nem rendelkeznek hierarchikus névtérrel.
 > - Minden forrás URL-címhez hozzá kell fűzni egy SAS-tokent. Ha Azure Active Directory (AD) hitelesítő adatokat ad meg, kihagyhatja az SAS-tokent csak a cél URL-címről.
->-  A prémium szintű blokk blob Storage-fiókok nem támogatják a hozzáférési szinteket. Hagyja ki a blob hozzáférési rétegét a másolási műveletből úgy, hogy a `s2s-preserve-access-tier` értéket `false` értékre állítja (például: `--s2s-preserve-access-tier=false`).
+>-  A prémium szintű blokk blob Storage-fiókok nem támogatják a hozzáférési szinteket. A másolási műveletből kihagyhatja a blob hozzáférési szintjét úgy, hogy a `s2s-preserve-access-tier` `false`re állítja (például: `--s2s-preserve-access-tier=false`).
 
 Ez a szakasz a következő példákat tartalmazza:
 
@@ -285,9 +285,9 @@ A helyi fájlrendszer tartalmát egy blob-tárolóval szinkronizálhatja. A tár
 > [!NOTE]
 > Ez a forgatókönyv jelenleg csak olyan fiókok esetében támogatott, amelyek nem rendelkeznek hierarchikus névtérrel. A AzCopy jelenlegi kiadása nem szinkronizál más források és célhelyek között (például: file Storage vagy Amazon Web Services (AWS) S3 gyűjtők).
 
-A [szinkronizálási](storage-ref-azcopy-sync.md) parancs összehasonlítja a fájlneveket és az utolsó módosítás időbélyegét. Állítsa a `--delete-destination` választható jelzőt `true` vagy `prompt` értékre a cél könyvtárban lévő fájlok törléséhez, ha ezek a fájlok már nem léteznek a forrás-címtárban.
+A [szinkronizálási](storage-ref-azcopy-sync.md) parancs összehasonlítja a fájlneveket és az utolsó módosítás időbélyegét. Adja meg a `--delete-destination` opcionális jelzőt `true` vagy `prompt` értékre, hogy törölje a fájlokat a célhely könyvtárában, ha ezek a fájlok már nem léteznek a forrás-címtárban.
 
-Ha a `--delete-destination` jelzőt úgy állítja be, hogy `true` AzCopy, a fájlok megadása nélkül törli a fájlokat. Ha azt szeretné, hogy a AzCopy törlése előtt megjelenjen egy üzenet, állítsa a `--delete-destination` jelzőt `prompt` értékre.
+Ha a `--delete-destination` jelzőt úgy állítja be, hogy `true` AzCopy, a fájlok megadása nélkül törölje a fájlokat. Ha azt szeretné, hogy a AzCopy törlése előtt megjelenjen egy üzenet, állítsa a `--delete-destination` jelzőt `prompt`re.
 
 > [!NOTE]
 > A véletlen törlés megelőzése érdekében ügyeljen arra, hogy a `--delete-destination=prompt|true` jelző használata előtt engedélyezze a [Soft delete](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete) funkciót.
@@ -332,9 +332,9 @@ A parancsban megjelenő első könyvtár a forrás. A második a cél.
 |    |     |
 |--------|-----------|
 | **Szintaxis** | `azcopy sync 'https://<source-storage-account-name>.blob.core.windows.net/<container-name>/<directory-name>' 'https://<destination-storage-account-name>.blob.core.windows.net/<container-name>/<directory-name>' --recursive` |
-| **Példa** | `azcopy copy 'https://mysourceaccount.blob.core.windows.net/<container-name>/myDirectory' 'https://mydestinationaccount.blob.core.windows.net/mycontainer/myDirectory' --recursive` |
+| **Példa** | `azcopy sync 'https://mysourceaccount.blob.core.windows.net/<container-name>/myDirectory' 'https://mydestinationaccount.blob.core.windows.net/mycontainer/myDirectory' --recursive` |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További példákat a következő cikkekben talál:
 

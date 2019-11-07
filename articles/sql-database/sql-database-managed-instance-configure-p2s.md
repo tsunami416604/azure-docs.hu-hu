@@ -1,5 +1,5 @@
 ---
-title: A P2S konfigurálása – Azure SQL Database felügyelt példány | Microsoft Docs
+title: 'P2S konfigurálása – Azure SQL Database felügyelt példány '
 description: Kapcsolódjon Azure SQL Database felügyelt példányhoz a SQL Server Management Studio használatával pont – hely kapcsolattal egy helyszíni ügyfélszámítógépről.
 services: sql-database
 ms.service: sql-database
@@ -11,14 +11,14 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, carlrab, bonova, jovanpop
 ms.date: 03/13/2019
-ms.openlocfilehash: 3ba5190050d45385ad17a87f6dce88ffd601e83d
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 3b3a0ce28c4a936e185ac5f07ba3810c93f4c866
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68567686"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73689415"
 ---
-# <a name="quickstart-configure-a-point-to-site-connection-to-an-azure-sql-database-managed-instance-from-on-premises"></a>Gyors útmutató: Pont – hely kapcsolat konfigurálása egy Azure SQL Database felügyelt példányhoz a helyszíni környezetből
+# <a name="quickstart-configure-a-point-to-site-connection-to-an-azure-sql-database-managed-instance-from-on-premises"></a>Gyors útmutató: pont – hely kapcsolat konfigurálása egy Azure SQL Database felügyelt példányhoz a helyszíni környezetből
 
 Ez a rövid útmutató bemutatja, hogyan csatlakozhat egy Azure SQL Database felügyelt példányhoz [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/sql-server-management-studio-ssms) (SSMS) használatával egy helyszíni ügyfélszámítógépről pont – hely kapcsolaton keresztül. További információ a pont – hely kapcsolatokról: [Tudnivalók a pont – hely típusú VPN-ről](../vpn-gateway/point-to-site-about.md)
 
@@ -54,7 +54,7 @@ Ez a rövid útmutató:
      Invoke-Command -ScriptBlock ([Scriptblock]::Create((iwr ($scriptUrlBase+'/attachVPNGateway.ps1?t='+ [DateTime]::Now.Ticks)).Content)) -ArgumentList $parameters, $scriptUrlBase
      ```
 
-3. Illessze be a szkriptet a PowerShell-ablakba, és adja meg a szükséges paramétereket. A `<subscriptionId>` ,`<resourceGroup>`a és`<virtualNetworkName>` a értékének meg kell egyeznie a [felügyelt példány létrehozása](sql-database-managed-instance-get-started.md) rövid útmutatójában használt értékekkel. A értéke `<certificateNamePrefix>` lehet tetszőleges sztring.
+3. Illessze be a szkriptet a PowerShell-ablakba, és adja meg a szükséges paramétereket. `<subscriptionId>`, `<resourceGroup>`és `<virtualNetworkName>` értékének meg kell egyeznie a [felügyelt példány létrehozása](sql-database-managed-instance-get-started.md) rövid útmutatójában használt értékekkel. A `<certificateNamePrefix>` értéke lehet tetszőleges sztring.
 
 4. Futtassa a PowerShell-szkriptet.
 
@@ -63,7 +63,7 @@ Ez a rövid útmutató:
 
 ## <a name="create-a-vpn-connection-to-your-managed-instance"></a>VPN-kapcsolat létrehozása a felügyelt példányhoz
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
+1. Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
 2. Nyissa meg azt az erőforráscsoportot, amelyben létrehozta a virtuális hálózati átjárót, majd nyissa meg a virtuális hálózati átjáró erőforrását.
 3. Válassza a **pont – hely konfiguráció** lehetőséget, majd válassza a **VPN-ügyfél letöltése**lehetőséget.
 
@@ -92,11 +92,11 @@ Ez a rövid útmutató:
 
     ![VPN-kapcsolat](./media/sql-database-managed-instance-configure-p2s/vpn-connection-succeeded.png)  
 
-## <a name="use-ssms-to-connect-to-the-managed-instance"></a>Csatlakozhat a felügyelt példányhoz az SSMS használatával
+## <a name="use-ssms-to-connect-to-the-managed-instance"></a>A SSMS használata a felügyelt példányhoz való kapcsolódáshoz
 
 1. A helyszíni ügyfélszámítógépen nyissa meg SQL Server Management Studio (SSMS).
-2. Az a **kapcsolódás a kiszolgálóhoz** párbeszédpanelen adja meg a teljes **állomásnév** a felügyelt példány a **kiszolgálónév** mezőbe.
-3. Válassza ki **SQL Server-hitelesítés**, és adja meg a felhasználónevét és jelszavát, majd válassza ki **Connect**.
+2. A **Kapcsolódás a kiszolgálóhoz** párbeszédpanelen adja meg a felügyelt példány teljes **állomásnevét** a **kiszolgáló neve** mezőben.
+3. Válassza ki **SQL Server hitelesítést**, adja meg felhasználónevét és jelszavát, majd válassza a **kapcsolat**lehetőséget.
 
     ![ssms connect](./media/sql-database-managed-instance-configure-vm/ssms-connect.png)  
 
@@ -106,4 +106,4 @@ A csatlakozási lehetőség után megtekintheti a rendszer és a felhasználói 
 
 - Az Azure-beli virtuális gépekről történő kapcsolódást bemutató rövid útmutató: [pont – hely kapcsolat konfigurálása](sql-database-managed-instance-configure-p2s.md).
 - Az alkalmazások csatlakozási lehetőségeinek áttekintéséért lásd: [Alkalmazások csatlakoztatása felügyelt példányhoz](sql-database-managed-instance-connect-app.md).
-- Ha egy meglévő SQL Server adatbázist szeretne visszaállítani a helyszíni rendszerből egy felügyelt példányra, az áttelepítéshez használhatja a [Azure Database Migration Service (DMS)](../dms/tutorial-sql-server-to-managed-instance.md) vagy a [T-SQL Restore parancsot](sql-database-managed-instance-get-started-restore.md) az adatbázis biztonságimásolat-fájljából való visszaállításhoz.
+- Ha egy meglévő SQL Server adatbázist szeretne visszaállítani a helyszíni rendszerből egy felügyelt példányra, az [áttelepítéshez használhatja a Azure Database Migration Service (DMS)](../dms/tutorial-sql-server-to-managed-instance.md) vagy a [T-SQL Restore parancsot](sql-database-managed-instance-get-started-restore.md) az adatbázis biztonságimásolat-fájljából való visszaállításhoz.

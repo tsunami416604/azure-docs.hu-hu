@@ -1,6 +1,6 @@
 ---
 title: Helyszíni SQL Server
-titleSuffix: Azure Machine Learning Studio (classic)
+titleSuffix: ML Studio (classic) Azure
 description: Helyszíni SQL Server-adatbázisból származó adatok használatával speciális elemzéseket végezhet Azure Machine Learning Studio klasszikus verziójával.
 services: machine-learning
 ms.service: machine-learning
@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 03/13/2017
-ms.openlocfilehash: 78b50ac5f0c39a38815b01ab7510d17eda941425
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 7f525a2a81d6cda52b363d1fb808327c9d3c1fb1
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73492537"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73622089"
 ---
 # <a name="perform-analytics-with-azure-machine-learning-studio-classic-using-an-on-premises-sql-server-database"></a>Elemzések elvégzése Azure Machine Learning Studio (klasszikus) használatával helyszíni SQL Server-adatbázis segítségével
 
@@ -43,7 +43,7 @@ A Data Factory saját üzemeltetésű Integration Runtime a következő előfelt
 * A Data Factory saját üzemeltetésű integrációja 64 bites operációs rendszert igényel a .NET-keretrendszer 4.6.1-es vagy újabb verziójának használatával.
 * A Windows operációs rendszer támogatott verziói a Windows 10, a Windows Server 2012, a Windows Server 2012 R2, a Windows Server 2016. 
 * Az IR-gép ajánlott konfigurációja legalább 2 GHz-es, 4 magos PROCESSZORral, 8 GB RAM-mal és 80 GB-os lemezzel rendelkezik.
-* Ha a gazdaszámítógép hibernált állapotba kerül, az IR nem válaszol az adatkérésekre. Ezért konfigurálja a megfelelő energiasémát a számítógépen az IR telepítése előtt. Ha a gép hibernált állapotra van állítva, az IR-telepítés üzenet jelenik meg.
+* Ha a gazdagép frissítéséből hibernálás az integrációs modul kérelmek nem fog válaszolni. Ezért konfigurálja a megfelelő energiasémát a számítógépen az IR telepítése előtt. Ha a gép hibernált állapotra van állítva, az IR-telepítés üzenet jelenik meg.
 * Mivel a másolási tevékenység meghatározott gyakorisággal történik, az erőforrás-használat (CPU, memória) a gépen is ugyanazt a mintát követi, mint a csúcs és az üresjárati idő. Az erőforrás-használat az áthelyezett adatok mennyiségétől függ. Ha folyamatban van több másolási feladat, megfigyelheti az erőforrás-használatot csúcsidőben. Habár a fent felsorolt minimális konfiguráció technikailag elegendő, érdemes lehet olyan konfigurációt használni, amely több erőforrással rendelkezik, mint a minimális konfiguráció az adatáthelyezéshez megadott terheléstől függően.
 
 Data Factory saját üzemeltetésű Integration Runtime beállításakor és használatakor vegye figyelembe a következőket:

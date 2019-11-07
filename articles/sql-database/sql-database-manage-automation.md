@@ -1,5 +1,5 @@
 ---
-title: Azure SQL Database-adatbázisok kezelése Azure Automation használatával | Microsoft Docs
+title: Azure SQL Database-adatbázisok kezelése Azure Automation használatával
 description: Ismerje meg, hogyan használható a Azure Automation szolgáltatás az Azure SQL Database-adatbázisok nagy léptékű kezeléséhez.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: juliemsft
 ms.author: jrasnick
 ms.reviewer: carlrab
 ms.date: 03/12/2019
-ms.openlocfilehash: bb195d5809ef0e2af2a4975a263a9739db1cdfa6
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 0e29cd85c63bb2f6e083f9cda9abd48fa6d9975a
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68567740"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73689454"
 ---
 # <a name="managing-azure-sql-databases-using-azure-automation"></a>Azure SQL Database-adatbázisok kezelése Azure Automation használatával
 
@@ -32,7 +32,7 @@ Csökkentse a működési terhelést, és szabadítson fel informatikai/DevOps-s
 
 ## <a name="how-can-azure-automation-help-manage-azure-sql-databases"></a>Hogyan segíthet Azure Automation az Azure SQL Database-adatbázisok kezelésében?
 
-A Azure SQL Database Azure Automation a [Azure PowerShell eszközökben](/powershell/azure/overview)elérhető [Azure SQL Database PowerShell](https://docs.microsoft.com/powershell/module/servicemanagement/azure/#sql) -parancsmagok használatával kezelhetők. Azure Automation ezekkel a Azure SQL Database PowerShell-parancsmagokkal elérhetők a dobozból, így az összes SQL-adatbázis-felügyeleti feladatot elvégezheti a szolgáltatáson belül. Ezeket a parancsmagokat Azure Automation is párosíthatja más Azure-szolgáltatások parancsmagokkal, így összetett feladatokat automatizálhat az Azure-szolgáltatások és a külső rendszerek között.
+A Azure SQL Database Azure Automation a [Azure PowerShell eszközökben](/powershell/azure/overview)elérhető [Azure SQL Database PowerShell-parancsmagok](https://docs.microsoft.com/powershell/module/servicemanagement/azure/#sql) használatával kezelhetők. Azure Automation ezekkel a Azure SQL Database PowerShell-parancsmagokkal elérhetők a dobozból, így az összes SQL-adatbázis-felügyeleti feladatot elvégezheti a szolgáltatáson belül. Ezeket a parancsmagokat Azure Automation is párosíthatja más Azure-szolgáltatások parancsmagokkal, így összetett feladatokat automatizálhat az Azure-szolgáltatások és a külső rendszerek között.
 
 A Azure Automation az SQL-kiszolgálókkal való közvetlen kommunikációt is lehetővé teszi az SQL-parancsok a PowerShell használatával történő kiadásával.
 
@@ -49,4 +49,4 @@ Most, hogy megismerte a Azure Automation alapjait és az Azure SQL Database-adat
 
 - [Azure Automation áttekintése](../automation/automation-intro.md)
 - [Az első runbookom](../automation/automation-first-runbook-graphical.md)
-- [Azure Automation: Az SQL-ügynök a felhőben](https://azure.microsoft.com/blog/20../../azure-automation-your-sql-agent-in-the-cloud/) 
+- [Azure Automation: az SQL-ügynök a felhőben](https://azure.microsoft.com/blog/20../../azure-automation-your-sql-agent-in-the-cloud/) 

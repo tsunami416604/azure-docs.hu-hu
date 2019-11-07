@@ -1,5 +1,5 @@
 ---
-title: Összesített átalakítás Azure Data Factory leképezési adatforgalomban | Microsoft Docs
+title: Összesített átalakítás Azure Data Factory leképezési adatfolyamban
 description: Megtudhatja, hogyan összesítheti a Azure Data Factory méretezési adatokat a leképezési adatfolyam összesített átalakításával.
 author: kromerm
 ms.author: makromer
@@ -7,12 +7,12 @@ ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 10/15/2019
-ms.openlocfilehash: add548a184440c408b8b74e131f2249b4f616ddc
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: 3f21367c36ae31aa2115c109933a581bef464baf
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72514826"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73676918"
 ---
 # <a name="aggregate-transformation-in-mapping-data-flow"></a>Összesített átalakítás a leképezési adatfolyamban 
 
@@ -42,7 +42,7 @@ Minden összesítési kifejezésnek legalább egy összesítő függvényt tarta
 
 Az összesített átalakítások hasonlóak az SQL aggregált választó lekérdezésekhez. A GROUP BY záradékban vagy az összesítő függvények között nem szereplő oszlopok nem áramlanak át az összesített átalakítás kimenetére. Ha más oszlopokat is szeretne szerepeltetni az összesített kimenetben, hajtsa végre az alábbi módszerek egyikét:
 
-* Használja az összesítő függvényt, például `last()` vagy `first()` értéket a további oszlop felvételéhez.
+* Használjon összesítő függvényt, például `last()` vagy `first()` a további oszlopok belefoglalásához.
 * Csatlakoztassa újra az oszlopokat a kimeneti adatfolyamhoz a [saját illesztési minta](https://mssqldude.wordpress.com/2018/12/20/adf-data-flows-self-join/)használatával.
 
 ## <a name="data-flow-script"></a>Adatfolyam-parancsfájl
@@ -68,7 +68,7 @@ Az összesített átalakítások hasonlóak az SQL aggregált választó lekérd
 
 ### <a name="example"></a>Példa
 
-Az alábbi példában egy bejövő stream `MoviesYear`, és az `year` oszlop szerint csoportosítja a sorokat. Az átalakítás egy `avgrating` összesítő oszlopot hoz létre, amely a `Rating` oszlop átlagát értékeli ki. Az összesített átalakítás neve `AvgComedyRatingsByYear`.
+Az alábbi példa egy bejövő stream `MoviesYear` és a groups by Column `year`alapján csoportosítja a sorokat. Az átalakítás létrehoz egy összesített oszlopot `avgrating`, amely a `Rating`oszlop átlagát értékeli ki. Az összesített átalakítás neve `AvgComedyRatingsByYear`.
 
 Az Data Factory UX-ben ez az átalakítás az alábbi képhez hasonlóan néz ki:
 
@@ -85,6 +85,6 @@ MoviesYear aggregate(
             ) ~> AvgComedyRatingByYear
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Ablak alapú összesítés definiálása az ablak- [transzformáció](data-flow-window.md) használatával

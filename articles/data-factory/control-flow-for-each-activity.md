@@ -1,5 +1,5 @@
 ---
-title: ForEach tevékenység a Azure Data Factoryban | Microsoft Docs
+title: ForEach-tevékenység Azure Data Factory
 description: Az minden tevékenység esetében egy ismétlődő vezérlési folyamat van definiálva a folyamatban. Ez a művelet egy gyűjtemény átugrására és meghatározott tevékenységek végrehajtására szolgál.
 services: data-factory
 documentationcenter: ''
@@ -11,18 +11,18 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/23/2019
-ms.openlocfilehash: 319f4e722184ce840d43b8f23e61711851a6d4a0
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: b8f95f22553a3b4639b1aba6576ce844116ae20b
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70142466"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73679877"
 ---
 # <a name="foreach-activity-in-azure-data-factory"></a>ForEach-tevékenység Azure Data Factory
 A ForEach tevékenység a folyamat ismétlődő vezérlési folyamatát határozza meg. Ez a tevékenység egy gyűjtemény megismétlésére, valamint egy megadott ciklustevékenység végrehajtására szolgál. E tevékenység ciklusos megvalósítása hasonló a Foreach ciklusos szerkezetéhez a programozási nyelvek esetében.
 
 ## <a name="syntax"></a>Szintaxis
-A tulajdonságokat a cikk későbbi részében ismertetjük. Az Items tulajdonság a gyűjtemény és a gyűjtemény minden eleme a következő szintaxissal látható `@item()` módon hivatkozik rá:  
+A tulajdonságokat a cikk későbbi részében ismertetjük. Az Items tulajdonság a gyűjtemény és a gyűjtemény minden eleme a `@item()` az alábbi szintaxissal látható módon jelenik meg:  
 
 ```json
 {  
@@ -70,7 +70,7 @@ A tulajdonságokat a cikk későbbi részében ismertetjük. Az Items tulajdons�
 
 Tulajdonság | Leírás | Megengedett értékek | Kötelező
 -------- | ----------- | -------------- | --------
-name | A for-each tevékenység neve. | Sztring | Igen
+név | A for-each tevékenység neve. | Sztring | Igen
 type | **Foreach** értékre kell állítani | Sztring | Igen
 isSequential | Meghatározza, hogy a hurkot egymás után vagy párhuzamosan kell-e végrehajtani.  Egyidejűleg legfeljebb 20 hurok-iteráció hajtható végre. Ha például egy ForEach-tevékenység egy másolási tevékenységhez képest 10 különböző forrás-és fogadó adatkészlettel rendelkezik, és a **isSequential** értéke hamis, akkor az összes másolat egyszerre lesz végrehajtva. Az alapértelmezett érték a false. <br/><br/> Ha a "isSequential" értéke false (hamis), akkor ellenőrizze, hogy van-e megfelelő konfiguráció több végrehajtható fájl futtatásához. Ellenkező esetben ezt a tulajdonságot körültekintően kell használni az írási ütközések elkerülése érdekében. További információ: [párhuzamos végrehajtás](#parallel-execution) szakasz. | Logikai | Nem. Az alapértelmezett érték a false.
 batchCount | A párhuzamos végrehajtások számának szabályozásához használandó kötegek száma (ha a isSequential hamis értékre van állítva). | Egész szám (legfeljebb 50) | Nem. Az alapértelmezett érték 20.
@@ -81,10 +81,10 @@ Tevékenységek | A végrehajtandó tevékenységek. | Tevékenységek listája 
 Ha a **isSequential** hamis értékre van állítva, a tevékenység párhuzamosan, legfeljebb 20 egyidejű ismétléssel közelíthető meg. Ezt a beállítást körültekintően kell használni. Ha az egyidejű ismétlések ugyanarra a mappára, de különböző fájlokra is érvényesek, ez a megközelítés rendben van. Ha az egyidejű ismétlések egyidejű, ugyanazon a fájlon vannak írva, ez a megközelítés valószínűleg hibát okoz. 
 
 ## <a name="iteration-expression-language"></a>Iterációs kifejezés nyelve
-A ForEach tevékenységben adjon meg egy olyan tömböt, amelyet meg kell ismételnia tulajdonság elemeinél. " A `@item()` használatával megismételheti a foreach tevékenység egyetlen enumerálását. Ha például az **elemek** tömb: [1, 2, 3], `@item()` az első iterációban az 1 értéket adja vissza, a második iterációban 2, a harmadik iterációban pedig 3.
+A ForEach tevékenységben adjon meg egy olyan tömböt, amelyet meg kell ismételni a tulajdonság **elemeinél**. " A `@item()` használatával megismételheti a ForEach tevékenység egyetlen enumerálását. Ha például az **elemek** tömb: [1, 2, 3], `@item()` az első iterációban az 1 értéket adja vissza, a második iterációban 2, a harmadik iterációban pedig 3.
 
 ## <a name="iterating-over-a-single-activity"></a>Iteráció egyetlen tevékenységen keresztül
-**Forgatókönyv** Másolja az Azure blobban található ugyanabból a forrásfájl-fájlból az Azure blobban található több célfájlba.
+**Forgatókönyv:** Másolja az Azure blobban található ugyanabból a forrásfájl-fájlból az Azure blobban található több célfájlba.
 
 ### <a name="pipeline-definition"></a>Folyamat definíciója
 
@@ -236,7 +236,7 @@ Több tevékenység is megismételhető (például másolási és webes tevéken
 ```
 
 ### <a name="example"></a>Példa
-**Forgatókönyv** Ismételje meg a InnerPipeline egy ForEach tevékenységen belül a folyamat végrehajtása tevékenységgel. A belső folyamat a séma-definíciók paraméterrel rendelkezik.
+**Forgatókönyv:** Ismételje meg a InnerPipeline egy ForEach tevékenységen belül a folyamat végrehajtása tevékenységgel. A belső folyamat a séma-definíciók paraméterrel rendelkezik.
 
 #### <a name="master-pipeline-definition"></a>Fő folyamat definíciója
 
@@ -473,7 +473,7 @@ Több tevékenység is megismételhető (például másolási és webes tevéken
 
 ## <a name="aggregating-outputs"></a>Kimenetek összesítése
 
-A __foreach__ tevékenység kimenetének összesítéséhez használjon változókat , és adjon _hozzá változó_ tevékenységet.
+A __foreach__ tevékenység kimenetének összesítéséhez használjon _változókat_ , és adjon _hozzá változó_ tevékenységet.
 
 Először deklaráljon egy `array` _változót_ a folyamatban. Ezután hívja meg a _változó hozzáfűzése_ tevékenységet az egyes __foreach__ -ciklusokon belül. Ezt követően lekérheti az összesítést a tömbből.
 
@@ -484,7 +484,7 @@ Először deklaráljon egy `array` _változót_ a folyamatban. Ezután hívja me
 | Korlátozás | Áthidaló megoldás |
 |---|---|
 | Egy ForEach hurok nem ágyazható be egy másik ForEach hurokba (vagy egy ciklusig). | Tervezzen olyan kétszintű folyamatot, amelyben a külső ForEach hurok külső folyamata egy belső folyamaton keresztül ismétli a beágyazott hurkot. |
-| A foreach tevékenység legfeljebb `batchCount` 50 párhuzamos feldolgozásra és legfeljebb 100 000 elemet tartalmaz. | Tervezzen olyan kétszintű folyamatot, amelyben a külső folyamat ForEach tevékenysége egy belső folyamaton keresztül megismétli a folyamatokat. |
+| A ForEach tevékenység maximális `batchCount` 50, párhuzamos feldolgozásra, és legfeljebb 100 000 elemet tartalmaz. | Tervezzen olyan kétszintű folyamatot, amelyben a külső folyamat ForEach tevékenysége egy belső folyamaton keresztül megismétli a folyamatokat. |
 | | |
 
 ## <a name="next-steps"></a>További lépések

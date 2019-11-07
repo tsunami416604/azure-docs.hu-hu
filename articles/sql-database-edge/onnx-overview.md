@@ -4,17 +4,18 @@ description: Az Azure SQL Database Edge előzetes verziójában a Machine learni
 keywords: az SQL Database Edge üzembe helyezése
 services: sql-database-edge
 ms.service: sql-database-edge
+ms.subservice: machine-learning
 ms.topic: conceptual
 author: ronychatterjee
 ms.author: achatter
 ms.reviewer: davidph
 ms.date: 11/04/2019
-ms.openlocfilehash: c4c87f7f6f8735c9a50c61b0e083c77b915e0d98
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 4771db21a0ea5e841dbe12c8ce915b3833a8a30d
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73514016"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73692327"
 ---
 # <a name="machine-learning-and-ai-with-onnx-in-sql-database-edge-preview"></a>Gépi tanulás és AI a ONNX SQL Database Edge előzetes verzióban
 

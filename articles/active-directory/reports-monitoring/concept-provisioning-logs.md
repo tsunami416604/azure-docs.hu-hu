@@ -13,16 +13,16 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 07/29/2019
+ms.date: 11/04/2019
 ms.author: markvi
-ms.reviewer: dhanyahk
+ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3d48aa3ead28ab0b0a22478a0c4183995483058a
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: c6e0c697f9ab9796feade9b4d5c2a64794f3980b
+ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "70983498"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73612803"
 ---
 # <a name="provisioning-reports-in-the-azure-active-directory-portal-preview"></a>Jelentések kiépítési jelentései a Azure Active Directory portálon (előzetes verzió)
 
@@ -30,7 +30,7 @@ A Azure Active Directory (Azure AD) jelentéskészítési architektúrája a kö
 
 - **Tevékenység** 
     - **Bejelentkezések** – információk a felügyelt alkalmazások és a felhasználói bejelentkezési tevékenységek használatáról.
-    - **Naplók**  -  a[naplók](concept-audit-logs.md) rendszertevékenységi információkat biztosítanak a felhasználókról és a csoport kezeléséről, a felügyelt alkalmazásokról és a címtárbeli tevékenységekről.
+    - **Naplók** - a [naplók](concept-audit-logs.md) rendszertevékenységi információkat biztosítanak a felhasználókról és a csoport kezeléséről, a felügyelt alkalmazásokról és a címtárbeli tevékenységekről.
     - **Naplók** kiosztása – rendszertevékenység nyújtása az Azure ad-kiépítési szolgáltatás által kiépített felhasználókkal, csoportokkal és szerepkörökkel kapcsolatban. 
 
 - **Biztonság** 
@@ -85,7 +85,7 @@ További mezőket jeleníthet meg, vagy eltávolíthatja a már megjelenített m
 
 Részletesebb információkhoz jelöljön ki egy elemet a listanézet nézetben.
 
-![Részletes információk](./media/concept-provisioning-logs/steps.png "Szűrő")
+![Részletes információk](./media/concept-provisioning-logs/steps.png "Szűrés")
 
 
 ## <a name="filter-provisioning-activities"></a>Kiépítési tevékenységek szűrése
@@ -100,7 +100,7 @@ A jelentett adat leszűkíthető egy olyan szintre, amely az Ön számára műk�
 - Dátum
 
 
-![Szűrő](./media/concept-provisioning-logs/filter.png "Szűrő")
+![Szűrő](./media/concept-provisioning-logs/filter.png "Szűrés")
 
 Az **Identity** szűrő segítségével megadhatja a nevet vagy az Ön számára fontos identitást. Ez az identitás lehet felhasználó, csoport, szerepkör vagy más objektum. Az objektum neve vagy azonosítója alapján kereshet. Az azonosító forgatókönyv szerint változik. Ha például egy objektumot kiépít az Azure AD-ből a SalesForce-be, a forrás azonosítója az Azure AD-beli felhasználó objektumazonosítóa, míg a TargetID a Salesforce felhasználójának azonosítója. Ha a munkahelyről a Active Directoryre való kiépítés után a forrás azonosítója a munkanap munkavégző alkalmazottjának azonosítója. Vegye figyelembe, hogy a felhasználó neve nem mindig szerepel az Identity oszlopban. Mindig egy azonosító lesz. 
 
@@ -110,7 +110,7 @@ A célként megadott rendszerszűrő segítségével megadhatja, hogy az identit
 
 Az **állapot** szűrő segítségével a következőket választhatja ki:
 
-- Mind
+- Összes
 - Sikeres
 - Hiba
 - Kimarad
@@ -176,7 +176,7 @@ A **lépések** lapon az objektum kiépítéséhez szükséges lépések szerepe
 
 
 
-![Szűrő](./media/concept-provisioning-logs/steps.png "Szűrő")
+![Szűrő](./media/concept-provisioning-logs/steps.png "Szűrés")
 
 
 ### <a name="troubleshoot-and-recommendations"></a>Hibák és javaslatok
@@ -206,7 +206,30 @@ Az **Összefoglalás** lapon áttekintheti, hogy mi történt, és milyen azonos
 
 - Amikor egy alkalmazás környezetében fér hozzá a kiépítési naplókhoz, nem szűri automatikusan az eseményeket az adott alkalmazáshoz a naplók módon.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="error-codes"></a>Hibakódok
+
+Az alábbi táblázat segítségével jobban megismerheti, Hogyan oldhatók meg a kiépítési naplókban esetlegesen felmerülő hibák. A hiányzó hibakódok esetében küldjön visszajelzést az oldal alján található hivatkozás használatával. 
+
+|Hibakód|Leírás|
+|---|---|
+|Ütközés, EntryConflict|Javítsa ki az ütköző attribútum értékeit az Azure AD-ben vagy az alkalmazásban, vagy tekintse át a megfelelő attribútum-konfigurációt, ha az ütköző felhasználói fióknak meg kell egyeznie és át kellene vennie. Az egyeztetési attribútumok konfigurálásával kapcsolatos további információkért tekintse át az alábbi [dokumentációt](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes) .|
+|TooManyRequests|A célalkalmazás elutasította ezt a kísérletet a felhasználó frissítésére, mert túlterhelt, és túl sok kérést fogad. Semmi teendő. A rendszer automatikusan kivonja ezt a kísérletet. A Microsoft értesítette a problémát is.|
+|InternalServerError |A célalkalmazás váratlan hibát adott vissza. Előfordulhat, hogy egy szolgáltatási probléma van a célalkalmazás számára, amely megakadályozza ennek működését. Ez a kísérlet 40 percen belül automatikusan kimarad.|
+|InsufficientRights, MethodNotAllowed, NotPermitted, jogosulatlan| Az Azure AD képes volt hitelesíteni a megcélzott alkalmazást, de nem jogosult a frissítés végrehajtására. Tekintse át a célalkalmazás által biztosított utasításokat, valamint az alkalmazásra vonatkozó [oktatóanyagot](https://docs.microsoft.com/azure/active-directory/saas-apps/tutorial-list).|
+|UnprocessableEntity|A célalkalmazás váratlan választ adott vissza. Lehetséges, hogy a célalkalmazás konfigurációja nem megfelelő, vagy a célalkalmazás olyan szolgáltatási problémával jár, amely megakadályozza ennek működését.|
+|WebExceptionProtocolError |HTTP protokoll hiba történt a célalkalmazáshoz való csatlakozás során. Semmi teendő. Ez a kísérlet 40 percen belül automatikusan kimarad.|
+|InvalidAnchor|Már nem létezik olyan felhasználó, aki korábban létrehozta vagy egyeztette a kiépítési szolgáltatás. Győződjön meg arról, hogy a felhasználó létezik. Az összes felhasználó újraegyezésének kényszerítéséhez az MS Graph API használatával [indítsa újra a feladatot](https://docs.microsoft.com/graph/api/synchronization-synchronizationjob-restart?view=graph-rest-beta&tabs=http). Vegye figyelembe, hogy a kiépítés újraindítása elindítja a kezdeti ciklust, amely időt vehet igénybe. Emellett törli a kiépítési szolgáltatás által a működéshez használt gyorsítótárat is, ami azt jelenti, hogy a bérlő minden felhasználóját és csoportját újra ki kell értékelni, és bizonyos kiépítési eseményeket el lehet dobni.|
+|Nincs implementálva | A célalkalmazás váratlan választ adott vissza. Lehetséges, hogy az alkalmazás konfigurációja nem megfelelő, vagy előfordulhat, hogy probléma van a célalkalmazás szolgáltatással, amely megakadályozza ennek működését. Tekintse át a célalkalmazás által biztosított utasításokat, valamint az alkalmazásra vonatkozó [oktatóanyagot](https://docs.microsoft.com/azure/active-directory/saas-apps/tutorial-list). |
+|MandatoryFieldsMissing, MissingValues |A felhasználó nem hozható létre, mert hiányoznak a szükséges értékek. Javítsa ki a hiányzó attribútum-értékeket a forrás rekordban, vagy tekintse át a megfelelő attribútumok konfigurációját, hogy a kötelező mezők ne legyenek kihagyva. [További](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes) információ a megfeleltetési attribútumok konfigurálásáról.|
+|SchemaAttributeNotFound |A művelet nem hajtható végre, mert egy olyan attribútum lett megadva, amely nem létezik a célalkalmazás alkalmazásban. Tekintse meg az attribútumok testreszabásával kapcsolatos [dokumentációt](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes) , és győződjön meg arról, hogy a konfiguráció helyes.|
+|InternalError |Belső szolgáltatási hiba történt az Azure AD-létesítési szolgáltatásban. Semmi teendő. Ez a kísérlet 40 perc múlva automatikusan újra próbálkozik.|
+|InvalidDomain |A műveletet nem lehetett végrehajtani, mert egy attribútumérték érvénytelen tartománynevet tartalmaz. Frissítse a tartománynevet a felhasználón, vagy adja hozzá azt a célalkalmazás engedélyezett listájához. |
+|időtúllépés |A műveletet nem lehetett befejezni, mert a célalkalmazás túl sokáig tartott a válaszadáshoz. Semmi teendő. Ez a kísérlet 40 perc múlva automatikusan újra próbálkozik.|
+|LicenseLimitExceeded|A felhasználó nem hozható létre a célalkalmazás alkalmazásban, mert nincsenek elérhető licencek ehhez a felhasználóhoz. További licenceket is megadhat a célalkalmazás számára, vagy áttekintheti a felhasználói hozzárendelések és attribútumok leképezésének konfigurációját, hogy a megfelelő felhasználók hozzá legyenek rendelve a megfelelő attribútumokhoz.|
+|DuplicateTargetEntries  |A műveletet nem lehetett befejezni, mert a célalkalmazás több felhasználója található a konfigurált egyező attribútumokkal. Távolítsa el az ismétlődő felhasználót a célalkalmazás alkalmazásból, vagy konfigurálja újra az attribútum-hozzárendeléseket az [itt](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)leírtak szerint.|
+|DuplicateSourceEntries | A műveletet nem lehetett befejezni, mert egynél több felhasználó található a konfigurált egyező attribútumokkal. Távolítsa el az ismétlődő felhasználót, vagy konfigurálja újra az attribútum-hozzárendeléseket az [itt](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)leírtak szerint.|
+
+## <a name="next-steps"></a>További lépések
 
 * [A felhasználó kiépítési állapotának megtekintése](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-when-will-provisioning-finish-specific-user)
 * [Hiba történt a felhasználók Azure AD Gallery-alkalmazásba való konfigurálásának beállításakor](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-config-problem)

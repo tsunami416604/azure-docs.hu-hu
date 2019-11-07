@@ -1,5 +1,5 @@
 ---
-title: Az adatbázis teljesítményének figyelése Intelligent Insights-Azure SQL Databasesal | Microsoft Docs
+title: Az adatbázis teljesítményének figyelése Intelligent Insights-Azure SQL Database
 description: A Azure SQL Database Intelligent Insights a beépített intelligenciával folyamatosan figyeli az adatbázis-használatot mesterséges intelligenciával, és felderíti a gyenge teljesítményt okozó zavaró eseményeket.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 12/19/2018
-ms.openlocfilehash: 70498c5f4c824681ee59b7232e9409235d7f6a93
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: c073b535271ba8f9f11e17ba5203b13e257e211b
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71262164"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73689681"
 ---
 # <a name="intelligent-insights-using-ai-to-monitor-and-troubleshoot-database-performance"></a>Intelligent Insights AI használata az adatbázis teljesítményének figyeléséhez és hibakereséséhez
 
@@ -50,13 +50,13 @@ Azonosított SQL Database a teljesítmény romlását a diagnosztikai naplóban 
 
 | Tulajdonság             | Részletek              |
 | :------------------- | ------------------- |
-| adatbázis-információk | Metaadatok egy olyan adatbázisról, amelyen a rendszer betekintést észlelt, például egy erőforrás-URI-t. |
+| Adatbázis-információk | Metaadatok egy olyan adatbázisról, amelyen a rendszer betekintést észlelt, például egy erőforrás-URI-t. |
 | Megfigyelt időtartam tartománya | Az észlelt elemzés időszakának kezdési és befejezési időpontja. |
 | Érintett mérőszámok | A betekintést kiváltó mérőszámok: <ul><li>A lekérdezés időtartama növekszik [másodperc].</li><li>Túlzott várakozás [másodperc].</li><li>Időtúllépési kérelmek [százalék].</li><li>Hiba miatti kérelmek [százalék].</li></ul>|
 | Hatás értéke | A mért metrika értéke. |
 | Érintett lekérdezések és hibakódok | Lekérdezési kivonat vagy hibakód. Ezek az érintett lekérdezések egyszerű összekapcsolására használhatók. A lekérdezés időtartamának növekedését, a várakozási időt, az időtúllépési számokat vagy a hibakódokat tartalmazó mérőszámok vannak megadva. |
 | Észlelések | Az esemény során azonosított észlelés az adatbázisban. 15 észlelési minta van. További információ: [az adatbázis teljesítményével kapcsolatos hibák elhárítása Intelligent Insights](sql-database-intelligent-insights-troubleshoot-performance.md). |
-| Alapvető okok elemzése | Az ember által olvasható formátumban azonosított probléma okának elemzése. Egyes bepillantások teljesítmény-javító javaslatot is tartalmazhatnak, ahol lehetséges. |
+| Kiváltó okok elemzése | Az ember által olvasható formátumban azonosított probléma okának elemzése. Egyes bepillantások teljesítmény-javító javaslatot is tartalmazhatnak, ahol lehetséges. |
 |||
 
 A Intelligent Insights és a Azure SQL Analytics használatának gyakorlati áttekintéséhez, valamint a tipikus használati forgatókönyvek esetében tekintse meg a beágyazott videót:
@@ -83,7 +83,7 @@ További információ a Intelligent Insights naplózásának engedélyezésérő
 Azure SQL Analytics a megoldás grafikus felhasználói felületet, jelentéskészítési és riasztási képességeket biztosít az adatbázis teljesítményére vonatkozóan, valamint a Intelligent Insights diagnosztikai napló adatait.
 
 > [!TIP]
-> Gyors első lépések: A Intelligent Insights használatával történő használatának legegyszerűbb módja, ha Azure SQL Analytics, amely grafikus felhasználói felületet biztosít az adatbázis teljesítményével kapcsolatos problémákhoz. Vegyen fel Azure SQL Analytics megoldást a piactéren belül, hozzon létre egy munkaterületet ebben a megoldásban, majd minden egyes adatbázishoz, amely számára engedélyezni kívánja a Intelligent Insightsét, konfigurálja az adatbázis diagnosztikai Beállítások paneljén a "SQLInsights Azure SQL Analytics munkaterülete.
+> Gyors üzembe helyezés: a legegyszerűbb módja, ha a Intelligent Insights használatával szeretné kipróbálni a terepet, és Azure SQL Analytics, amely grafikus felhasználói felületet biztosít az adatbázis teljesítményével kapcsolatos problémákhoz. Vegyen fel Azure SQL Analytics megoldást a piactéren belül, hozzon létre egy munkaterületet ebben a megoldásban, majd minden egyes adatbázishoz, amely számára engedélyezni kívánja a Intelligent Insightsét, konfigurálja az adatbázis diagnosztikai Beállítások paneljén a "SQLInsights Azure SQL Analytics munkaterülete.
 >
 
 Az előfeltétel, hogy a piactéren Azure SQL Analytics a Azure Portal irányítópulthoz, és a munkaterület létrehozásához lásd: [Azure SQL Analytics konfigurálása](../azure-monitor/insights/azure-sql.md#configuration)

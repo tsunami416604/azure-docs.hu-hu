@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 10/17/2019
-ms.openlocfilehash: 938511069500c551eb526b6c7238546b85d59dce
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: 5ae043c356559b2e675f05af3eb7eb61973eb170
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72818930"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73621931"
 ---
 #  <a name="manage-application-insights-resources-using-powershell"></a>Application Insights-erőforrások kezelése a PowerShell használatával
 
@@ -235,7 +235,7 @@ Tekintse át a parancsmagok paramétereinek [részletes dokumentációját](http
 
 ## <a name="set-the-data-retention"></a>Az adatok megőrzésének beállítása 
 
-A Application Insights erőforrás aktuális adatmegőrzésének lekéréséhez használhatja az OSS eszközt [ARMClient](https://github.com/projectkudu/ARMClient).  (További információ a cikkek ARMClient: [David Ebbo](http://blog.davidebbo.com/2015/01/azure-resource-manager-client.html) és [Daniel Bowbyes](https://blog.bowbyes.co.nz/2016/11/02/using-armclient-to-directly-access-azure-arm-rest-apis-and-list-arm-policy-details/).)  Íme egy példa a `ARMClient` használatával az aktuális megőrzés beszerzéséhez:
+A Application Insights erőforrás aktuális adatmegőrzésének lekéréséhez használhatja az OSS eszközt [ARMClient](https://github.com/projectkudu/ARMClient).  (További információ a cikkek ARMClient: [David Ebbo](http://blog.davidebbo.com/2015/01/azure-resource-manager-client.html) és [Daniel Bowbyes](https://blog.bowbyes.co.nz/2016/11/02/using-armclient-to-directly-access-azure-arm-rest-apis-and-list-arm-policy-details/).)  Íme egy példa a `ARMClient`használatával az aktuális megőrzés beszerzéséhez:
 
 ```PS
 armclient GET /subscriptions/00000000-0000-0000-0000-00000000000/resourceGroups/MyResourceGroupName/providers/microsoft.insights/components/MyResourceName?api-version=2018-05-01-preview
@@ -250,10 +250,10 @@ armclient PUT /subscriptions/00000000-0000-0000-0000-00000000000/resourceGroups/
 Ha az adatmegőrzést 365 napra szeretné beállítani a fenti sablonnal, futtassa a következőt:
 
 ```PS
-        New-AzResourceGroupDeployment -ResourceGroupName "<resource group>" `
-               -TemplateFile .\template1.json `
-               -retentionInDays 365 `
-               -appName myApp
+New-AzResourceGroupDeployment -ResourceGroupName "<resource group>" `
+       -TemplateFile .\template1.json `
+       -retentionInDays 365 `
+       -appName myApp
 ```
 
 Az adatmegőrzés megváltoztatásához a következő szkript is használható. Másolja ezt a parancsfájlt a Mentés másként `Set-ApplicationInsightsRetention.ps1`.
@@ -546,7 +546,7 @@ Bármilyen más erőforrás létrehozásának automatizálásához hozzon létre
     ![Navigálás Azure Erőforrás-kezelő](./media/powershell/01.png)
    
     Az *összetevők* az alkalmazások megjelenítésének alapszintű Application Insights erőforrásai. A kapcsolódó riasztási szabályokhoz és a rendelkezésre állási webes tesztekhez külön erőforrások tartoznak.
-2. Másolja az összetevő JSON-fájlját a `template1.json` megfelelő helyére.
+2. Másolja az összetevő JSON-fájlját a `template1.json`megfelelő helyére.
 3. Törölje a következő tulajdonságokat:
    
    * `id`
@@ -592,7 +592,7 @@ Az Azure-nak szigorú sorrendben kell beállítania az erőforrásokat. A követ
 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Egyéb Automation-cikkek:
 
 * [Hozzon létre egy Application Insights erőforrás](powershell-script-create-resource.md) -gyors metódust sablon használata nélkül.

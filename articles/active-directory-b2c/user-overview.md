@@ -1,35 +1,38 @@
 ---
-title: A Azure Active Directory B2C felhasználói fiókjainak áttekintése | Microsoft Docs
-description: A Azure Active Directory B2C felhasználói fiókjainak megismerése.
+title: A Azure Active Directory B2C felhasználói fiókjainak áttekintése
+description: Tudnivalók a Azure Active Directory B2C használható felhasználói fiókok típusairól.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 11/30/2018
+ms.date: 11/05/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 0ef4bca3a2b08271b3623a346df6613b5ad16995
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: a627b0eebc3aa4a19b0670f899d3032d8df58da4
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71063140"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73620456"
 ---
 # <a name="overview-of-user-accounts-in-azure-active-directory-b2c"></a>A Azure Active Directory B2C felhasználói fiókjainak áttekintése
 
-Azure Active Directory B2C (Azure AD B2C) esetében különböző típusú fiókokat használhat. Azure Active Directory, Azure Active Directory B2B és Azure Active Directory B2C megosztás a használható felhasználói fiókok típusaiban.
+Azure Active Directory B2C (Azure AD B2C) számos különböző típusú fiókot hozhat létre. Azure Active Directory, Active Directory B2B és Active Directory B2C megosztás a használható felhasználói fiókok típusaiban.
 
 A következő típusú fiókok érhetők el:
 
 - **Munkahelyi fiók** – a munkahelyi fiók hozzáférhet a bérlő erőforrásaihoz, és rendszergazdai szerepkörrel is kezelheti a bérlőket.
 - **Vendégfiók** – a vendég fiók csak olyan Microsoft-fiók vagy Azure Active Directory felhasználó lehet, amely használható az alkalmazások eléréséhez vagy a bérlők kezeléséhez.
-- **Fogyasztói fiók** – a felhasználói fiók létrehozása egy Azure ad B2C alkalmazásban vagy az Azure ad Graph API használatával történik, és az Azure ad B2C-ban regisztrált alkalmazások felhasználói használják.
+- **Fogyasztói fiók** – a Azure ad B2C regisztrált alkalmazások felhasználója használja a fogyasztói fiókot. A felhasználói fiókokat a alábbiakkal hozhatja létre:
+  - A felhasználó egy Azure AD B2C alkalmazásban egy regisztrációs felhasználói folyamaton keresztül zajlik
+  - Az Azure AD Graph API használata
+  - Az Azure Portal használata
 
-## <a name="work-account"></a>munkahelyi fiók
+## <a name="work-account"></a>Munkahelyi fiók
 
-A munkahelyi fiókokat ugyanúgy hozza létre a rendszer az összes bérlő számára az Azure AD-on alapuló módon. Munkahelyi fiók létrehozásához használhatja a gyors útmutatóban található [információkat: Új felhasználók hozzáadása a Azure Active Directoryhoz](../active-directory/fundamentals/add-users-azure-active-directory.md). A munkahelyi fiók az **új felhasználó** választása alapján jön létre a Azure Portal.
+A munkahelyi fiókokat ugyanúgy hozza létre a rendszer az összes bérlő számára az Azure AD-on alapuló módon. Munkahelyi fiók létrehozásához használhatja a gyors útmutató [: új felhasználók hozzáadása Azure Active Directory](../active-directory/fundamentals/add-users-azure-active-directory.md). A munkahelyi fiók az **új felhasználó** választása alapján jön létre a Azure Portal.
 
 Új munkahelyi fiók hozzáadásakor figyelembe kell vennie a következő konfigurációs beállításokat:
 
@@ -63,7 +66,7 @@ A felhasználó jelszavának alaphelyzetbe állításához a következő inform�
 - [Azure Portal](../active-directory/fundamentals/active-directory-users-reset-password-azure-portal.md)
 - [Microsoft Graph](https://docs.microsoft.com/graph/api/user-update?view=graph-rest-1.0)
 
-## <a name="guest-user"></a>Vendégfelhasználó
+## <a name="guest-user"></a>Vendég felhasználó
 
 Meghívhatja a külső felhasználókat a bérlőnek vendég felhasználóként. Egy tipikus példa arra, hogy a vendég felhasználókat meghívja a Azure AD B2C bérlőre, hogy megossza az adminisztrációs feladatokat. A vendég fiók használatára példát a [Azure Active Directory B2B együttműködési felhasználó tulajdonságai](../active-directory/b2b/user-properties.md)című témakörben talál.
 
@@ -73,7 +76,7 @@ Használhatja a [Microsoft Graph API](https://docs.microsoft.com/graph/api/invit
 
 ## <a name="consumer-user"></a>Fogyasztói felhasználó
 
-A felhasználó bejelentkezhet Azure AD B2C által védett alkalmazásokba, de nem fér hozzá az Azure-erőforrásokhoz, például a Azure Portalhoz.  A fogyasztói felhasználó használhat helyi fiókot vagy összevont fiókot, például a Facebookot vagy a Twittert. A felhasználói fiókot a rendszer egy [regisztrációs vagy bejelentkezési felhasználói folyamat](../active-directory-b2c/active-directory-b2c-reference-policies.md)használatával hozza létre.
+A felhasználó bejelentkezhet Azure AD B2C által védett alkalmazásokba, de nem fér hozzá az Azure-erőforrásokhoz, például a Azure Portalhoz. A fogyasztói felhasználó használhat helyi fiókot vagy összevont fiókot, például a Facebookot vagy a Twittert. A felhasználói fiókot a rendszer egy [regisztrációs vagy bejelentkezési felhasználói folyamattal](../active-directory-b2c/active-directory-b2c-reference-policies.md), az Azure ad Graph API vagy a Azure Portal használatával hozza létre.
 
 Megadhatja azokat az adatokat, amelyeket a rendszer akkor gyűjt, amikor egyéni felhasználói attribútumokkal hozza létre a fogyasztói felhasználói fiókot. További információ: [Egyéni attribútumok definiálása a Azure Active Directory B2Cban](../active-directory-b2c/active-directory-b2c-reference-custom-attr.md).
 

@@ -1,6 +1,6 @@
 ---
-title: Az Azure SQL Data Warehouse számítási feladatok fontossági |} A Microsoft Docs
-description: Útmutató az Azure SQL Data Warehouse számára a lekérdezések beállításához.
+title: Számítási feladat fontossága
+description: Útmutatás a Azure SQL Data Warehouse lekérdezések fontosságának beállításához.
 services: sql-data-warehouse
 author: ronortloff
 manager: craigg
@@ -10,59 +10,60 @@ ms.subservice: workload-management
 ms.date: 05/01/2019
 ms.author: rortloff
 ms.reviewer: jrasnick
-ms.openlocfilehash: 2a78f342d7e4b14700224bb63598f41ca95322a5
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.custom: seo-lt-2019
+ms.openlocfilehash: fea35325f11878373db8dd52b9b2bf08a25b81d1
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67595407"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73692362"
 ---
-# <a name="azure-sql-data-warehouse-workload-importance"></a>Az Azure SQL Data Warehouse számítási feladatok fontossági
+# <a name="azure-sql-data-warehouse-workload-importance"></a>Azure SQL Data Warehouse számítási feladatok fontossága
 
-Ez a cikk bemutatja, hogyan befolyásolhatja a számítási feladatok fontossági a SQL Data Warehouse-kérelmek esetén a végrehajtás sorrendje.
+Ez a cikk azt ismerteti, hogyan befolyásolhatja a számítási feladatok fontosságát SQL Data Warehouse kérelmek végrehajtásának sorrendjét.
 
-## <a name="importance"></a>Fontosság
+## <a name="importance"></a>Fontossága
 
 > [!Video https://www.youtube.com/embed/_2rLMljOjw8]
 
-Üzleti igények adatraktározás számítási lennie, mint a többi fontosabb lehet szükség.  Példaként vegyünk egy forgatókönyvet, ahol alapvető fontosságú értékesítési adatok betöltése előtt a pénzügyi időszak lezárása.  Adatok betölti a más forrásokból, például az időjárási adatok szigorú SLA-k nem rendelkezik.   Nagyon fontosként megjelölve értékesítési adatok betöltése a kérés és a kevésbé fontos beállítása betölteni, hogy adatokat biztosítja, hogy az értékesítési adatok betöltése a kérelemre lekérdezi az első erőforrásokhoz való hozzáférést, és befejezi a körülményekre.
+Az üzleti igényeknek az adattárházas számítási feladatoknál nagyobb jelentőséggel kell rendelkezniük, mint mások.  Vegyünk egy olyan forgatókönyvet, amelyben a kritikus értékesítési adat betöltődik a pénzügyi időszak lezárása előtt.  Az egyéb forrásokhoz, például időjárási értékekhez tartozó adatterhelések nem rendelkeznek szigorú SLA-val.   Az értékesítési információk betöltésére irányuló kérések nagy fontosságának beállítása, valamint a kérések alacsony jelentősége, hogy az adatforgalmi adatterhelés az adatforgalomhoz való első hozzáférést kapja az erőforrásokhoz, és gyorsabban befejeződjön.
 
 ## <a name="importance-levels"></a>Fontossági szintek
 
-Nincsenek öt fontossági szintek: alacsony, below_normal, normál, above_normal és nagy.  Kérelmek fontosság nem állít be hozzá vannak rendelve az alapértelmezett szint, a normál.  Fontosság ugyanolyan szintű kérelmek rendelkezik ütemezési viselkedést, hogy létezik még ma.
+Az alacsony, a below_normal, a normál, a above_normal és a magas szinten ötféle fontossággal bír.  Azok a kérések, amelyek nem határozzák meg a fontosságot, a normál alapértelmezett szintet kapják meg.  Az azonos fontossági szintű kérelmek esetében ugyanaz az ütemezési viselkedés, amely ma már létezik.
 
-## <a name="importance-scenarios"></a>Fontosság forgatókönyvek
+## <a name="importance-scenarios"></a>Fontossági helyzetek
 
-Az alapvető fontosságú a forgatókönyvben az értékesítési és időjárási adatokat a fent leírt túli nincsenek egyéb forgatókönyvek, ahol számítási feladatok fontossági segít az adatok feldolgozására és lekérdezési igények felel meg.
+Az értékesítési és időjárási adatokkal kapcsolatos alapvető fontossági forgatókönyvön túl más forgatókönyvek is vannak, amelyekben a számítási feladatok fontossága segíti az adatfeldolgozási és-lekérdezési igények kielégítését.
 
-### <a name="locking"></a>Zárolás
+### <a name="locking"></a>Zárolási
 
-És az írási tevékenység természetes versengés egy területéhez olvasási zárolások való hozzáférést.  Egyes tevékenységek, például [partíció közötti váltás](/azure/sql-data-warehouse/sql-data-warehouse-tables-partition) vagy [átnevezése OBJEKTUMHOZ](/sql/t-sql/statements/rename-transact-sql) emelt szintű zárolások igényelnek.  Az SQL Data Warehouse számítási feladatok fontossági, anélkül optimalizálja a átviteli sebességet.  Optimalizálás az átviteli sebesség azt jelenti, hogy futtatásakor és várólistára került kérelmeket ugyanazon zárolási igényeinek rendelkezik, és erőforrás áll rendelkezésre, a várólistára került kérelmeket elkerülheti a korábban a kérelem-várólistában érkező kérések magasabb zárolás van szüksége.  Számítási feladatok fontossági kérések magasabb zárolás alkalmazását követően szükséges. Az alacsonyabb fontossági magasabb fontossági rendelkező kérelem futtatása előtt kérelmet.
+Az olvasási és írási tevékenységek zárolásának elérése a természetes tartalom egyik területe.  A [partíciók váltását](/azure/sql-data-warehouse/sql-data-warehouse-tables-partition) vagy [átnevezését](/sql/t-sql/statements/rename-transact-sql) igénylő tevékenységek esetében emelt szintű zárolásra van szükség.  A számítási feladatok fontossága nélkül SQL Data Warehouse optimalizálja az átviteli sebességet.  Az adatátviteli teljesítmény optimalizálása azt jelenti, hogy ha a futtatott és a várólistára helyezett kérelmek azonos zárolási igényekkel és erőforrásokkal rendelkeznek, az üzenetsor-kezelési kérelmek megkerülhetik a kérések várólistáján megjelenő, magasabb zárolási igényekkel rendelkező kérelmeket.  Ha a számítási feladatok fontossága nagyobb a zárolási igényeket kielégítő kérelmek esetében. Az alacsonyabb fontosságú kérelem előtt a rendszer a nagyobb jelentőségű kérést fogja futtatni.
 
-Vegye figyelembe az alábbi példában:
+Vegye figyelembe a következő példát:
 
-V1 aktívan fut, és jelölje ki adatokat SalesFact.
-2\. negyedévi várólistára végrehajtásához Q1 Várakozás van állítva.  Ez el lett küldve, 9-kor, és be SalesFact partíció kapcsoló új adatokat próbál.
-3\. negyedévi 9-kor: 01 elküldésekor, és válassza az SalesFact adatok szeretné.
+A Q1 aktívan fut, és kiválasztja az SalesFact-ből származó adatok közül.
+A Q2 várólistára várakozik, amíg a Q1 befejeződik.  A szolgáltatás 9 órakor lett elküldve, és az új adatváltást a SalesFact-be kísérli meg.
+A Q3 a következő címen érhető el: 01am, és szeretné kijelölni a SalesFact adatait.
 
-Ha v2 és a 3. negyedévi rendelkezik ugyanolyan fontosságúként kezeli, és továbbra is végrehajtja az 1., 3. negyedévi megkezdi a végrehajtása. 2\. negyedévi továbbra is a SalesFact kizárólagos zárolást várja.  Ha 2. negyedévi, mint 3. negyedévi magasabb fontossági, 3. negyedévi megvárja, amíg a 2. negyedévi, végrehajtási megkezdése előtt befejeződött.
+Ha a Q2 és a Q3 is ugyanolyan fontossággal bír, és a Q1 még mindig végrehajtja a végrehajtást, akkor a Q3 megkezdődik. A Q2 továbbra is várni fogja a SalesFact kizárólagos zárolását.  Ha a Q2 nagyobb jelentőséggel bír a Q3nál, a Q3 megvárja, amíg a Q2 be nem fejeződik a végrehajtás megkezdése előtt.
 
 ### <a name="non-uniform-requests"></a>Nem egységes kérelmek
 
-Egy másik forgatókönyv, ahol fontos segíthet lekérdezési igények figyelembevételével készült akkor, ha a kérelmek különböző erőforrás-osztályokra való elküldése.  Amint lett korábban már említettük, alatt ugyanolyan fontosságúként kezeli, az SQL Data Warehouse optimalizálja a átviteli sebességet.  Ha vegyes mérete kérések (például smallrc vagy mediumrc) várólistára kerülnek, az SQL Data Warehouse a legkorábbi beérkező kérést, amely a rendelkezésre álló erőforrások elférjen fog választani.  Alkalmazása esetén a számítási feladatok fontossági, ezután a legmagasabb fontosság kérelem van ütemezve.
+Egy másik forgatókönyv, ahol a fontosság segíthet a lekérdezési igények kielégítésében, ha különböző erőforrás-osztályokkal rendelkező kérelmeket küld el.  Ahogy azt korábban említettük, ugyanezen fontossággal SQL Data Warehouse optimalizálja az átviteli sebességet.  Ha a vegyes méretre vonatkozó kérések (például a smallrc vagy a mediumrc) várólistára kerülnek, akkor a SQL Data Warehouse kiválasztja az elérhető erőforrásokon belüli legkorábbi érkező kérést.  Ha a számítási feladatok fontosságát alkalmazza, a rendszer a legnagyobb jelentőségű kérést ütemezi.
   
-Vegye figyelembe az alábbi példa a DW500c:
+Vegye figyelembe a következő példát a DW500c:
 
-1\., 2. negyedévi, 3. negyedévi és 4. kérdés smallrc lekérdezések futnak.
-5\. kérdés a mediumrc erőforrásosztályhoz van elküldött 9-kor.
-6\. kérdés smallrc erőforrásosztályhoz van elküldött 9-kor: 01.
+A Q1, Q2, Q3 és Q4 smallrc-lekérdezéseket futtatnak.
+A (z) Q5 a mediumrc erőforrás-osztállyal van elküldve 9 órakor.
+A K6 a következő címen érhető el: smallrc Resource osztály, 9.01am.
 
-Mivel az 5. kérdés mediumrc, két egyidejű helyet foglalnak le van szükség.  5\. kérdés várnia kell, amíg a futó lekérdezések végrehajtásához két.  Azonban a futó lekérdezések (1., 4) egyik befejeződése után 6. kérdés van ütemezve, azonnal arra az esetre, mert az erőforrások végrehajtsák a lekérdezést.  Ha 5. kérdés magasabb fontossági, mint a 6. kérdés, a 6. kérdés megvárja, amíg a 5. kérdés megkezdheti végrehajtása előtt fut-e.
+Mivel a Q5 mediumrc, két párhuzamossági tárolóhelyre van szükség.  A Q5-nek várnia kell, hogy a futó lekérdezések közül kettő befejeződjön.  Ha azonban az egyik futó lekérdezés (Q1-Q4) befejeződik, a K6 azonnal ütemezve van, mert az erőforrások a lekérdezés végrehajtásához léteznek.  Ha a Q5 nagyobb jelentőséggel bír, mint K6, a K6 addig vár, amíg az Q5 nem fut a végrehajtás megkezdése előtt.
 
 ## <a name="next-steps"></a>További lépések
 
-- Besorolás létrehozásával kapcsolatos további információkért lásd: a [MUNKATERHELÉS OSZTÁLYOZÓ létrehozása (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/statements/create-workload-classifier-transact-sql).  
-- Az SQL Data Warehouse számítási feladatok besorolási kapcsolatos további információkért lásd: [munkaterhelés besorolási](sql-data-warehouse-workload-classification.md).  
-- Tekintse meg a rövid útmutatóban [munkaterhelés-osztályozó létrehozása](quickstart-create-a-workload-classifier-tsql.md) a számítási feladatok besorolás létrehozása.
-- Tekintse meg az útmutatók a [konfigurálása számítási feladatok fontossági](sql-data-warehouse-how-to-configure-workload-importance.md) és annak [kezelése és megfigyelése számítási feladatok kezeléséhez](sql-data-warehouse-how-to-manage-and-monitor-workload-importance.md).
-- Lásd: [sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql) a lekérdezések és a hozzárendelt fontosságát.
+- Az osztályozó létrehozásával kapcsolatos további információkért lásd a [munkaterhelés-osztályozó létrehozása (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/statements/create-workload-classifier-transact-sql)című témakört.  
+- További információ a SQL Data Warehouse munkaterhelés besorolásáról: a [munkaterhelés besorolása](sql-data-warehouse-workload-classification.md).  
+- A számítási feladatok besorolásának létrehozásához tekintse meg a gyors üzembe helyezési adatok [létrehozása](quickstart-create-a-workload-classifier-tsql.md) című témakört.
+- Tekintse meg az útmutatókat a számítási [feladatok fontosságának konfigurálásához](sql-data-warehouse-how-to-configure-workload-importance.md) , valamint a számítási [feladatok felügyeletének kezeléséhez és figyeléséhez](sql-data-warehouse-how-to-manage-and-monitor-workload-importance.md).
+- A lekérdezéseket és a hozzárendelt fontosságot a [sys. DM _pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql) tekintheti meg.

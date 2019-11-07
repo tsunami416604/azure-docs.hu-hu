@@ -1,5 +1,5 @@
 ---
-title: A helyszíni Netezza-kiszolgálóról az Azure-ba történő Migrálás Azure Data Factory használata | Microsoft Docs
+title: A helyszíni Netezza-kiszolgálóról az Azure-ba történő Migrálás Azure Data Factory használata
 description: A Azure Data Factory használatával telepítheti át a helyszíni Netezza-kiszolgálóról az Azure-ba történő adatátvitelt.
 services: data-factory
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 9/03/2019
-ms.openlocfilehash: 9ea8326b10536cb91b9dc67f637664f0fc055e74
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.openlocfilehash: c5b36a04501b417af4e4527968a082da8a061804
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71122828"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73675806"
 ---
 # <a name="use-azure-data-factory-to-migrate-data-from-an-on-premises-netezza-server-to-azure"></a>A helyszíni Netezza-kiszolgálóról az Azure-ba történő Migrálás Azure Data Factory használata 
 
@@ -62,7 +62,7 @@ Ha nem szeretné, hogy a rendszer a nyilvános interneten keresztül továbbíts
 
 A következő szakasz azt ismerteti, hogyan lehet magasabb szintű biztonságot elérni.
 
-## <a name="solution-architecture"></a>Megoldás architektúrája
+## <a name="solution-architecture"></a>Megoldásarchitektúra
 
 Ez a szakasz az adatáttelepítés két módját tárgyalja.
 
@@ -120,7 +120,7 @@ Az előző ábrát a következőképpen lehet értelmezni:
 
 Kis tábláknál (azaz a 100 GB-nál kisebb mennyiségű, illetve az Azure-ba áttelepíthető, két órán belül elérhető) táblákon minden egyes másolási feladatot betöltenek. A nagyobb átviteli sebesség érdekében több Azure Data Factory másolási feladatot is futtathat a különálló táblák egyidejű betöltéséhez. 
 
-Az egyes másolási feladatokon belül a párhuzamos lekérdezések futtatásához és az adatok partíciók szerinti másolásához a [ `parallelCopies` tulajdonság beállítását](https://docs.microsoft.com/azure/data-factory/copy-activity-performance#parallel-copy) a következő adatpartíciós beállítások egyikével is elérheti:
+Az egyes másolási feladatokon belül a párhuzamos lekérdezések futtatásához és az adatok partíciók szerinti másolásához a [`parallelCopies` tulajdonság beállításával](https://docs.microsoft.com/azure/data-factory/copy-activity-performance#parallel-copy) is elérheti a következő adatpartíciós beállítások valamelyikét:
 
 - A nagyobb hatékonyság érdekében javasoljuk, hogy egy adatszeletből induljon el.  Győződjön meg arról, hogy a `parallelCopies` beállításban szereplő érték kisebb, mint az Netezza-kiszolgálón lévő tábla adatszelet partícióinak teljes száma.  
 
@@ -150,13 +150,13 @@ Ha a Netezza-kiszolgálóról az Azure-ba végzi az adatok áttelepítését, f�
 
 A bevált gyakorlat szerint a megvalósíthatósági koncepciót (POC) egy reprezentatív minta adatkészlettel kell elvégeznie, hogy minden egyes másolási tevékenységhez megfelelő partíciós méretet lehessen meghatározni. Javasoljuk, hogy az egyes partíciókat két órán belül töltse be az Azure-ba.  
 
-Egy tábla másolásához kezdjen egyetlen másolási tevékenységgel egyetlen, saját üzemeltetésű IR-géppel. Fokozatosan növelje a `parallelCopies` beállítást a tábla adatszelet-partícióinak száma alapján. Megtudhatja, hogy a teljes tábla betölthető-e két órán belül az Azure-ba a másolási feladatokból származó átviteli sebességnek megfelelően. 
+Egy tábla másolásához kezdjen egyetlen másolási tevékenységgel egyetlen, saját üzemeltetésű IR-géppel. Fokozatosan növelje a `parallelCopies` beállítást a tábla adatszeleti partícióinak száma alapján. Megtudhatja, hogy a teljes tábla betölthető-e két órán belül az Azure-ba a másolási feladatokból származó átviteli sebességnek megfelelően. 
 
 Ha két órán belül nem tölthető be az Azure-ba, és a saját üzemeltetésű IR-csomópont és az adattár kapacitása nincs teljesen használatban, fokozatosan növelje az egyidejű másolási tevékenységek számát, amíg el nem éri a hálózat korlátját vagy az adattár sávszélesség-korlátját. s. 
 
 Tartsa figyelemmel a CPU-és memóriahasználat figyelését a saját üzemeltetésű IR-gépen, és készen áll a gép vertikális felskálázására vagy a több gépre való skálázásra, amikor azt látja, hogy a processzor és a memória teljes mértékben használatban van. 
 
-Ha sávszélesség-szabályozási hibát tapasztal, ahogy azt Azure Data Factory másolási tevékenység jelenti, csökkentse a párhuzamosságot vagy `parallelCopies` a beállítást a Azure Data Factoryban, vagy növelje a sávszélesség vagy a másodpercenkénti I/O műveletek (IOPS) korlátait a hálózaton, és adattárak. 
+Ha sávszélesség-szabályozási hibát tapasztal, ahogy azt Azure Data Factory másolási tevékenység is jelenti, csökkentse a párhuzamosságot vagy a `parallelCopies` beállítást a Azure Data Factory, vagy növelje a hálózat és az adatok sávszélességének vagy I/O-műveleteinek másodpercenkénti (IOPS) korlátait. tárolja. 
 
 
 ### <a name="estimate-your-pricing"></a>A díjszabás becslése 
@@ -173,7 +173,7 @@ Tegyük fel, hogy az alábbi utasítások teljesülnek:
 
 - Az 50 TB-os kötet 500 partícióra van osztva, és mindegyik másolási tevékenység egy partíciót helyez el.
 
-- Minden másolási tevékenység egy saját üzemeltetésű, négy gépen üzemelő IR-vel van konfigurálva, és 20 megabájt/másodperc (MB/s) sebesség elérését éri el. (A másolási tevékenységen `parallelCopies` belül a 4 értékre van állítva, és az adatoknak a táblából való betöltéséhez szükséges minden szál 5 MB/s adatátviteli sebességet érhet el.)
+- Minden másolási tevékenység egy saját üzemeltetésű, négy gépen üzemelő IR-vel van konfigurálva, és 20 megabájt/másodperc (MB/s) sebesség elérését éri el. (Másolási tevékenységen belül a `parallelCopies` 4 értékre van állítva, és az adatok a táblából való betöltéséhez szükséges minden szál 5 MB/s adatátviteli sebességet érhet el.)
 
 - A ForEach Egyidejűség értéke 3, az összesített átviteli sebesség pedig 60 MBps.
 

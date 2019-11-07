@@ -1,5 +1,5 @@
 ---
-title: Azure SQL Database felügyelt példányok összekapcsolására szolgáló alkalmazás | Microsoft Docs
+title: Azure SQL Database felügyelt példányok összekapcsolására szolgáló alkalmazás
 description: Ez a cikk azt ismerteti, hogyan csatlakoztatható az alkalmazás Azure SQL Database felügyelt példányhoz.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, bonova, carlrab, vanto
 ms.date: 11/09/2018
-ms.openlocfilehash: 133110d015ac7a26f18f14f6ff957729a4f079b5
-ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
+ms.openlocfilehash: 5dc287ab58636b4921c14ae71f9a62ab36d9c596
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70060652"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73688244"
 ---
 # <a name="connect-your-application-to-azure-sql-database-managed-instance"></a>Az alkalmazás összekötése Azure SQL Database felügyelt példánnyal
 
@@ -59,22 +59,22 @@ Ha a helyszíni és az Azure közötti kapcsolat sikeresen létrejött, és nem 
 
 ## <a name="connect-an-application-on-the-developers-box"></a>Alkalmazás összekapcsolása a Developers box-ban
 
-A felügyelt példányok csak magánhálózati IP-címeken keresztül érhetők el, így a fejlesztői Box-ból való hozzáféréshez először kapcsolatot kell létesítenie a fejlesztői és a felügyelt példány VNet. Ehhez konfiguráljon egy pont – hely típusú kapcsolatokat egy VNet natív Azure tanúsítványalapú hitelesítés használatával. További információ: [pont – hely kapcsolat konfigurálása Azure SQL Database felügyelt példányhoz a helyszíni számítógépről](sql-database-managed-instance-configure-p2s.md)való kapcsolódáshoz.
+A felügyelt példányok csak magánhálózati IP-címeken keresztül érhetők el, így a fejlesztői Box-ból való hozzáféréshez először kapcsolatot kell létesítenie a fejlesztői és a felügyelt példány VNet. Ehhez konfiguráljon egy pont – hely típusú kapcsolatokat egy VNet natív Azure tanúsítványalapú hitelesítés használatával. További információ: [pont – hely kapcsolat konfigurálása Azure SQL Database felügyelt példányhoz a helyszíni számítógépről való kapcsolódáshoz](sql-database-managed-instance-configure-p2s.md).
 
 ## <a name="connect-from-on-premises-with-vnet-peering"></a>Helyszíni kapcsolat VNet-társítással
 
 Az ügyfelek által megvalósított egy másik forgatókönyv, amelyben a VPN-átjáró egy különálló virtuális hálózatban van telepítve, és egy, a felügyelt példányok egyikének előfizetése. Ezt követően a két virtuális hálózat összevonásra kerül. A következő minta architektúra-diagram bemutatja, hogyan valósítható meg ez a megoldás.
 
-![Társviszony létesítése virtuális hálózatok között](./media/sql-database-managed-instance-connect-app/vnet-peering.png)
+![Virtuális hálózatok közötti társviszony](./media/sql-database-managed-instance-connect-app/vnet-peering.png)
 
 Miután beállította az alapszintű infrastruktúrát, módosítania kell néhány beállítást, hogy a VPN Gateway láthassa a felügyelt példányt futtató virtuális hálózat IP-címeit. Ehhez végezze el a következő nagyon specifikus módosításokat a társítási **Beállítások**alatt.
 
-1. A VPN-átjárót futtató VNet válassza a társítások, majd a felügyelt példányhoz tartozó VNet-kapcsolat lehetőséget, majd kattintson az **átjáró-átvitel engedélyezése**lehetőségre.
-2. A felügyelt példányt futtató VNet válassza a társítások,majd a VPN Gateway társ VNet-kapcsolatot, majd kattintson a **távoli átjárók használata**elemre.
+1. A VPN-átjárót futtató VNet **válassza a társítások, majd**a felügyelt példányhoz tartozó VNet-kapcsolat lehetőséget, majd kattintson az **átjáró-átvitel engedélyezése**lehetőségre.
+2. A felügyelt példányt futtató VNet **válassza a társítások, majd**a VPN Gateway társ VNet-kapcsolatot, majd kattintson a **távoli átjárók használata**elemre.
 
 ## <a name="connect-an-azure-app-service-hosted-application"></a>Azure App Service üzemeltetett alkalmazás összekötése
 
-A felügyelt példányok csak a magánhálózati IP-címeken keresztül érhetők el, így ahhoz, hogy hozzáférhessenek a Azure App Service az alkalmazás és a felügyelt példány VNet közötti kapcsolatot kell létrehoznia. Lásd: [az alkalmazás integrálása Azure](../app-service/web-sites-integrate-with-vnet.md)-Virtual Networkokkal.  
+A felügyelt példányok csak a magánhálózati IP-címeken keresztül érhetők el, így ahhoz, hogy hozzáférhessenek a Azure App Service az alkalmazás és a felügyelt példány VNet közötti kapcsolatot kell létrehoznia. Lásd: [az alkalmazás integrálása Azure-Virtual Networkokkal](../app-service/web-sites-integrate-with-vnet.md).  
 
 Hibaelhárítást a [virtuális hálózatok és az alkalmazások hibaelhárítása](../app-service/web-sites-integrate-with-vnet.md#troubleshooting)című témakörben talál. Ha nem létesíthető kapcsolat, próbálja meg [szinkronizálni a hálózati konfigurációt](sql-database-managed-instance-sync-network-configuration.md).
 
@@ -101,7 +101,7 @@ A kapcsolódási problémák elhárításához tekintse át a következőket:
 
    ![bejövő/kimenő számok](./media/sql-database-managed-instance-connect-app/ingress-egress-numbers.png)
 
-- Győződjön meg arról, hogy az ügyfélszámítógép (amely a VPN-ügyfelet futtatja) útválasztási bejegyzéseket tartalmaz az összes elérni kívánt virtuális hálózatok. Az útvonalak a-ben `%AppData%\ Roaming\Microsoft\Network\Connections\Cm\<GUID>\routes.txt`tárolódnak.
+- Győződjön meg arról, hogy az ügyfélszámítógép (amely a VPN-ügyfelet futtatja) útválasztási bejegyzéseket tartalmaz az összes elérni kívánt virtuális hálózatok. Az útvonalak tárolása `%AppData%\ Roaming\Microsoft\Network\Connections\Cm\<GUID>\routes.txt`történik.
 
    ![Route. txt](./media/sql-database-managed-instance-connect-app/route-txt.png)
 
@@ -137,7 +137,7 @@ A kapcsolódási problémák elhárításához tekintse át a következőket:
 
 Az eszközök és illesztőprogramok következő minimális verziói ajánlottak, ha a felügyelt példányhoz szeretne csatlakozni:
 
-| Illesztőprogram/eszköz | Version |
+| Illesztőprogram/eszköz | Verzió |
 | --- | --- |
 |.NET-keretrendszer | 4.6.1 (vagy .NET Core) |
 |ODBC-illesztő| v17 |

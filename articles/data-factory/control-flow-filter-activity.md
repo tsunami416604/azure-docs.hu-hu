@@ -1,5 +1,5 @@
 ---
-title: Szűrési tevékenység Azure Data Factoryban | Microsoft Docs
+title: Szűrési tevékenység Azure Data Factory
 description: A szűrő tevékenység szűri a bemeneteket.
 services: data-factory
 documentationcenter: ''
@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 05/04/2018
-ms.openlocfilehash: c0f5d3264d953498af61c6e8d36dadee7dd61931
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: 5794a2c754e2082fdf45ad689bdb89ea494541c2
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70915515"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73679857"
 ---
 # <a name="filter-activity-in-azure-data-factory"></a>Szűrési tevékenység Azure Data Factory
 Egy folyamat szűrési tevékenységével szűrő kifejezést alkalmazhat egy bemeneti tömbre. 
@@ -38,14 +38,14 @@ Egy folyamat szűrési tevékenységével szűrő kifejezést alkalmazhat egy be
 
 Tulajdonság | Leírás | Megengedett értékek | Kötelező
 -------- | ----------- | -------------- | --------
-name | A `Filter` tevékenység neve. | Sztring | Igen
-type | Szűrésre kell beállítani. | Sztring | Igen
-condition | A bemenet szűréséhez használandó feltétel. | Kifejezés | Igen
-items | Az a bemeneti tömb, amelyen alkalmazni kell a szűrőt. | Kifejezés | Igen
+név | A `Filter` tevékenység neve. | Sztring | Igen
+type | **Szűrésre**kell beállítani. | Sztring | Igen
+feltétel | A bemenet szűréséhez használandó feltétel. | Kifejezés | Igen
+elemek | Az a bemeneti tömb, amelyen alkalmazni kell a szűrőt. | Kifejezés | Igen
 
 ## <a name="example"></a>Példa
 
-Ebben a példában a folyamat két tevékenységgel rendelkezik: **Szűrő** -és **foreach**. A szűrési tevékenység úgy van konfigurálva, hogy a bemeneti tömböt a 3 értéknél nagyobb értékű elemekre szűrje. A ForEach tevékenység ekkor megismétli a szűrt értékeket, és beállítja a változó **tesztet** az aktuális értékre.
+Ebben a példában a folyamat két tevékenységgel rendelkezik: **Filter** és **foreach**. A szűrési tevékenység úgy van konfigurálva, hogy a bemeneti tömböt a 3 értéknél nagyobb értékű elemekre szűrje. A ForEach tevékenység ekkor megismétli a szűrt értékeket, és beállítja a változó **tesztet** az aktuális értékre.
 
 ```json
 {

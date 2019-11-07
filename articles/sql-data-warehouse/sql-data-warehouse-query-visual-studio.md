@@ -1,6 +1,6 @@
 ---
-title: Csatlakozás az Azure SQL Data Warehouse-hoz – VSTS | Microsoft Docs
-description: Az SQL Data Warehouse lekérdezése a Visual Studióval.
+title: Kapcsolat a VSTS
+description: Azure SQL Data Warehouse lekérdezése a Visual Studióval.
 services: sql-data-warehouse
 author: kevinvngo
 manager: craigg
@@ -10,12 +10,13 @@ ms.subservice: development
 ms.date: 08/15/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: e6c3de1714d363eb1481bcea5f470d04125b96b9
-ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
+ms.custom: seo-lt-2019
+ms.openlocfilehash: e2d37b2d71f605077903197d25b5da2803e34ad3
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69575310"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73685570"
 ---
 # <a name="connect-to-sql-data-warehouse-with-visual-studio-and-ssdt"></a>Csatlakozás a SQL Data Warehouse-hoz a Visual Studio és az SSDT használatával
 > [!div class="op_single_selector"]
@@ -36,7 +37,7 @@ Ehhez az oktatóanyaghoz a következőkre lesz szüksége:
 * SSDT a Visual Studióhoz. Ha rendelkezik a Visual Studióval, akkor valószínűleg már ezzel is. A telepítés menetéről és a beállításokról [Installing Visual Studio and SSDT][Installing Visual Studio and SSDT] című cikkben olvashat bővebben.
 * Az Azure SQL-kiszolgáló teljes neve. Ennek megkeresésével kapcsolatban olvassa el a [Connect to SQL Data Warehouse][Connect to SQL Data Warehouse] (Csatlakozás az SQL Data Warehouse-hoz) című cikket.
 
-## <a name="1-connect-to-your-sql-data-warehouse"></a>1. Csatlakozás az SQL Data Warehouse-hoz
+## <a name="1-connect-to-your-sql-data-warehouse"></a>1. kapcsolódás a SQL Data Warehousehoz
 1. Nyissa meg a Visual Studio 2019 alkalmazást.
 2. Nyissa meg az SQL Server Object Explorert. Ehhez válassza a következőket: **View** (Nézet)  > **SQL Server Object Explorer**.
    
@@ -51,12 +52,12 @@ Ehhez az oktatóanyaghoz a következőkre lesz szüksége:
    * **Kiszolgálónév**. Adja meg a korábban azonosított **kiszolgálónevet**.
    * **Hitelesítés**. Válassza az **SQL Server Authentication** (SQL Server-hitelesítés) vagy az **Active Directory Integrated Authentication** (Active Directory beépített hitelesítés) lehetőséget.
    * **Felhasználónév** és **Jelszó**. Amennyiben az SQL Server-hitelesítést választotta, adja meg felhasználónevét és jelszavát.
-   * Kattintson a **Csatlakozás** gombra.
+   * Kattintson a **Connect** (Csatlakozás) gombra.
 5. A részletes megtekintéshez bontsa ki az Azure SQL-kiszolgálót. Megtekintheti a kiszolgálóhoz társított adatbázisokat. Bontsa ki az AdventureWorksDW elemet a mintaadatbázis tábláinak megtekintéséhez.
    
     ![Az AdventureWorksDW áttekintése][4]
 
-## <a name="2-run-a-sample-query"></a>2. Mintalekérdezés futtatása
+## <a name="2-run-a-sample-query"></a>2. minta lekérdezés futtatása
 Most, hogy létrejött a kapcsolat az adatbázissal, ideje lefuttatni egy lekérdezést.
 
 1. Kattintson a jobb gombbal az adatbázisára az SQL Server Object Explorer alatt.

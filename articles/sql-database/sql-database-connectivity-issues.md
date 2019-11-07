@@ -1,5 +1,5 @@
 ---
-title: Átmeneti hibák használata – Azure SQL Database | Microsoft Docs
+title: Átmeneti hibák használata – Azure SQL Database
 description: Megtudhatja, hogyan lehet elhárítani, diagnosztizálni és megakadályozni egy SQL-kapcsolódási hibát vagy átmeneti hibát a Azure SQL Databaseban.
 keywords: SQL-kapcsolat, kapcsolati karakterlánc, csatlakozási problémák, átmeneti hiba, kapcsolódási hiba
 services: sql-database
@@ -13,12 +13,12 @@ manager: dcscontentpm
 ms.author: ninarn
 ms.reviewer: carlrab
 ms.date: 06/14/2019
-ms.openlocfilehash: aba404842658aaa946a14a3cde03853c2fb3062d
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 0191506cab9a54ad3978bfa7387c9ba1112ae815
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72792573"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73690826"
 ---
 # <a name="working-with-sql-database-connection-issues-and-transient-errors"></a>SQL Database kapcsolati problémák és átmeneti hibák használata
 
@@ -442,7 +442,7 @@ public bool IsTransient(Exception ex)
 }
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Az egyéb gyakori SQL Database kapcsolódási problémák elhárításával kapcsolatos további információkért lásd: a [Azure SQL Database kapcsolódási problémáinak elhárítása](sql-database-troubleshoot-common-connection-issues.md).
 - [SQL Database és SQL Serverhoz tartozó kapcsolatok kódtárai](sql-database-libraries.md)

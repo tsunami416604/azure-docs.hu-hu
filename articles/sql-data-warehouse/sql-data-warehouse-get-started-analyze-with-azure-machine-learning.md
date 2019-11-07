@@ -1,5 +1,5 @@
 ---
-title: Adatok elemzése Azure Machine Learning segítségével | Microsoft Docs
+title: Adatok elemzése Azure Machine Learning segítségével
 description: Az Azure Machine Learning segítségével létrehozhat egy prediktív gépi tanulási modellt, amely az Azure SQL Data Warehouse-ban tárolt adatokon alapul.
 services: sql-data-warehouse
 author: mlee3gsd
@@ -10,12 +10,13 @@ ms.subservice: integration
 ms.date: 03/22/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: cae2acf98f39030f4ff340d32f1911bb2b5763ae
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.custom: seo-lt-2019
+ms.openlocfilehash: f91960eaac92047e76275e63b1feaf471de3bac3
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "65860833"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73692802"
 ---
 # <a name="analyze-data-with-azure-machine-learning"></a>Adatok elemzése Azure Machine Learning segítségével
 > [!div class="op_single_selector"]
@@ -38,12 +39,12 @@ Az oktatóanyag teljesítéséhez a következőkre lesz szüksége:
 
 * Egy SQL Data Warehouse, előre feltöltve az AdventureWorksDW mintaadataival. Ennek létrehozásához olvassa el az [SQL Data Warehouse létrehozása][Create a SQL Data Warehouse] című cikket, és válassza a mintaadatok betöltését. Ha már rendelkezik egy adatraktárral, de nincsenek mintaadatai, [a mintaadatokat manuálisan is betöltheti][load sample data manually].
 
-## <a name="1-get-the-data"></a>1. Az adatok lekérése
+## <a name="1-get-the-data"></a>1. az adatlekérdezés
 Az adatok az AdventureWorksDW adatbázis dbo.vTargetMail nézetében találhatók. Az adatok olvasása:
 
 1. Jelentkezzen be az [Azure Machine Learning Studio][Azure Machine Learning studio] szolgáltatásba, majd kattintson a Saját kísérletek opcióra.
 2. Kattintson a képernyő bal alsó sarkában található **+ új** elemre, majd válassza az **üres kísérlet**lehetőséget.
-3. Adja meg a kísérlet nevét: Célként megadott marketing.
+3. Adjon nevet a Célzott marketing kísérletnek.
 4. Húzza az **adatok importálása** modult a modulok panel **adatbemenet és kimenet** területén a vászonra.
 5. Adja meg az SQL Data Warehouse adatbázis adatait a Tulajdonságok panelen.
 6. Adja meg az adatbázishoz a **lekérdezést** az Önt érdeklő adatok olvasásához.
@@ -74,32 +75,32 @@ Futtassa a kísérletet a kísérlet vászon alatt található**Futtatás** opci
 A kísérlet futtatásának sikeres befejezése után kattintson az Olvasó modul alján található kimeneti portra, és válassza a **Képi megjelenítés** opciót az importált adatok megtekintéséhez.
 ![Importált adatok megtekintése][3]
 
-## <a name="2-clean-the-data"></a>2. Az adatok megtisztítása
+## <a name="2-clean-the-data"></a>2. az adatgyűjtés megtisztítása
 Az adatok megtisztításához el kell vetni néhány, a modell szempontjából érdektelen oszlopot. Ehhez tegye a következőket:
 
-1. Húzza a **Select Columns (oszlopok kiválasztása** ) modult az adatátalakítási **< manipuláció** a vászonra elemre. Kapcsolja össze ezt a modult az Adatimportálási modulhoz.
+1. Húzza a **Select Columns (oszlopok kiválasztása** ) modult az **adatátalakítási < manipuláció** a vászonra elemre. Kapcsolja össze ezt a modult az **adatimportálási** modulhoz.
 2. Kattintson a Tulajdonságok panelen az **Oszlopválasztás indítása** opcióra az elvetni kívánt oszlopok megadásához.
    ![Projektoszlopok][4]
 3. Két oszlop kizárása: CustomerAlternateKey és GeographyKey.
    ![Felesleges oszlopok eltávolítása][5]
 
-## <a name="3-build-the-model"></a>3. A modell létrehozása
-Az 80-20-as adathalmazt fogjuk felosztani: 80% a gépi tanulási modell betanításához és 20%-ban a modell teszteléséhez. A bináris osztályozási problémához "Két osztályú" algoritmusokat használunk.
+## <a name="3-build-the-model"></a>3. a modell összeállítása
+80:20 arányban osztjuk fel az adatokat: az adatok 80 % -át a gépi tanulási modell tanításához, 20 %-át a modell teszteléséhez használjuk. A bináris osztályozási problémához "Két osztályú" algoritmusokat használunk.
 
 1. Húzza a **Felosztás** modult a vászonra.
 2. A Tulajdonságok ablaktáblán adja meg a 0,8 értéket az első kimeneti adatkészletben lévő sorok töredékének megadásához.
    ![Adatok felosztása tanítási és tesztelési adatkészletre][6]
 3. Húzza a **Két osztályú súlyozott döntési fa** modult a vászonra.
-4. Húzza a **betanítási modell** modult a vászonra, és a bemenetek megadásához csatlakoztassa a kétosztályos kibővített **döntési fához** (ml-algoritmushoz) és a **felosztott** (adatokat az algoritmus betanítása) modulokhoz. 
+4. Húzza a **betanítási modell** modult a vászonra, és a bemenetek megadásához csatlakoztassa a **kétosztályos kibővített döntési fához** (ml-algoritmushoz) és a **felosztott** (adatokat az algoritmus betanítása) modulokhoz. 
      ![Csatlakozás a Tanítási modell modulhoz][7]
 5. Majd kattintson a Tulajdonságok panelen az **Oszlopválasztás indítása** opcióra. Válassza ki a **BikeBuyer** oszlopot előrejelzési oszlopként.
    ![Előrejelzési oszlop kiválasztása][8]
 
-## <a name="4-score-the-model"></a>4. A modell pontozása
+## <a name="4-score-the-model"></a>4. a modell pontozása
 Most teszteljük, hogyan kezeli a modell a tesztadatokat. Az általunk választott algoritmust összehasonlítjuk egy másik algoritmussal, hogy megtudjuk, melyik teljesít jobban.
 
-1. Húzza a **pontszám modell** modult a vászonra, és kapcsolja össze a **modell** betanítása és a **felosztott** adatmodulok használatával.
-   ![A modell pontszáma][9]
+1. Húzza a **pontszám modell** modult a vászonra, és kapcsolja össze a **modell betanítása** és a **felosztott** adatmodulok használatával.
+   ![pontszám a modell][9]
 2. Húzza a **két osztályú Bayes pontozó gépet** a kísérlet vászonra. Összehasonlítjuk ennek az algoritmusnak a teljesítményét a Két osztályú súlyozott döntési fa teljesítményével.
 3. Másolja és illessze be a vászonra a Tanítási és Pontszám modelleket.
 4. Húzza a **Modell kiértékelése** modult a vászonra a két algoritmus összehasonlításához.

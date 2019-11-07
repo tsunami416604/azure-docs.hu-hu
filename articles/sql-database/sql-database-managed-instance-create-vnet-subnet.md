@@ -1,5 +1,5 @@
 ---
-title: Virtuális hálózat létrehozása Azure SQL Database felügyelt példányhoz | Microsoft Docs
+title: Virtuális hálózat létrehozása Azure SQL Database felügyelt példányhoz
 description: Ez a cikk azt ismerteti, hogyan hozhat létre olyan virtuális hálózatot, amelyen Azure SQL Database felügyelt példányt telepíthet.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, bonova, carlrab
 ms.date: 09/12/2019
-ms.openlocfilehash: 2fd4055f1a2ec7b5b29d1a303f1c9ac3260f4cca
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: ae18671000a2bfd3bedef7805ba5db964fe0cf95
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70958465"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73688173"
 ---
 # <a name="create-a-virtual-network-for-azure-sql-database-managed-instance"></a>Virtuális hálózat létrehozása Azure SQL Database felügyelt példányhoz
 
@@ -30,7 +30,7 @@ Azure SQL Database felügyelt példányt egy Azure-beli [virtuális hálózaton]
 - Felügyelt példány csatlakoztatása az Azure-erőforrásokhoz  
 
 > [!Note]
-> Az első példány üzembe helyezése előtt meg kell határoznia a [felügyelt példány alhálózatának méretét](sql-database-managed-instance-determine-size-vnet-subnet.md) . Az alhálózatot az erőforrások belső elhelyezése után nem lehet átméretezni.
+> Az első példány üzembe helyezése előtt meg kell [határoznia a felügyelt példány alhálózatának méretét](sql-database-managed-instance-determine-size-vnet-subnet.md) . Az alhálózatot az erőforrások belső elhelyezése után nem lehet átméretezni.
 >
 > Ha meglévő virtuális hálózat használatát tervezi, akkor módosítania kell a hálózati konfigurációt, hogy az megfeleljen a felügyelt példánynak. További információ: [meglévő virtuális hálózat módosítása felügyelt példányhoz](sql-database-managed-instance-configure-vnet-subnet.md).
 >

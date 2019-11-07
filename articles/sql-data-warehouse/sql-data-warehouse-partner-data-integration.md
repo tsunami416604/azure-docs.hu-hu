@@ -1,5 +1,5 @@
 ---
-title: Adatintegrációs partnerek SQL Data Warehouse | Microsoft Docs
+title: Adatintegrációs partnerek
 description: A Azure SQL Data Warehouset támogató adatintegrációs megoldásokkal rendelkező harmadik féltől származó partnerek listája.
 services: sql-data-warehouse
 author: mabasile-MSFT
@@ -10,18 +10,19 @@ ms.subservice: consume
 ms.date: 03/27/2019
 ms.author: mabasile
 ms.reviewer: igorstan
-ms.openlocfilehash: 96ffeb12413f236ca0c131051245306ae16d4288
-ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
+ms.custom: seo-lt-2019
+ms.openlocfilehash: e368894d7036d071285ebc7ba85056676d8d670d
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73045173"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73692641"
 ---
 # <a name="sql-data-warehouse-data-integration-partners"></a>Adatintegrációs partnerek SQL Data Warehouse
 Az adattárház-megoldás létrehozásához válasszon az piacvezető eszközök széles választékával. Ez a cikk a Azure SQL Data Warehouset támogató hivatalos adatintegrációs megoldásokkal rendelkező Microsoft-partneri vállalatokat emeli ki.
 
 ## <a name="data-integration-partners"></a>Adatintegrációs partnerek
-| Partnerek | Leírás | Webhely/termék hivatkozása |
+| Partner | Leírás | Webhely/termék hivatkozása |
 | ------- | ----------- | -------------------- |
 | ![Alooma][7] |**Alooma**<br> A Alooma egy ETL-megoldás, amely lehetővé teszi, hogy az adatcsapatok a különféle adatsilók adatait integrálják, gazdagítsák és továbbítsák SQL Data Warehouse valós időben. |[Termék lap][alooma_website] |
 | ![Alteryx][1] |**Alteryx**<br> A Alteryx Designer egy ismételhető munkafolyamatot biztosít az önkiszolgáló adatelemzéshez, amely több órán keresztül mélyebb elemzéseket eredményez, nem pedig a hagyományos megközelítésekre jellemző heteket! A Alteryx Designer lehetővé teszi az adatelemzők számára az adatelőkészítés, az adatkeverés és az elemzés – prediktív, statisztikai és térbeli – használatát ugyanazzal az intuitív felhasználói felülettel. |[Termék lap][alteryx_designer_website]<br>[Azure Marketplace][alteryx_marketplace]<br>|
@@ -40,7 +41,7 @@ Az adattárház-megoldás létrehozásához válasszon az piacvezető eszközök
 | ![WhereScape][14] |**Wherescape piros**<br> A WhereScape RED egy IDE, amely automatizálási eszközökkel segíti a csapatok számára az ETL-munkafolyamatok egyszerűsítését. Az IDE ajánlott eljárás, optimalizált natív kód a népszerű adatcélokhoz. A WhereScape RED használatával csökkentheti az adatinfrastruktúra fejlesztéséhez, üzembe helyezéséhez és üzemeltetéséhez szükséges időt.|[Termék lap][wherescape_website]<br> [Azure Marketplace][wherescape_marketplace] |
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 A többi partnerrel kapcsolatos további információkért tekintse meg az [üzleti intelligencia-partnerek][bi_partners] és a [adatkezelés partnerek][dm_partners]témakört.
 
 <!--Article links-->

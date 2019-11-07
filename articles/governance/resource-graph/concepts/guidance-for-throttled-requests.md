@@ -6,12 +6,12 @@ ms.author: dacoulte
 ms.date: 10/18/2019
 ms.topic: conceptual
 ms.service: resource-graph
-ms.openlocfilehash: 1bbfd2a64de0b42da19d0a978874d564f1755c59
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 2dea1c160b07ac08075dad3a1ca1f6fc753e3481
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72387629"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73622652"
 ---
 # <a name="guidance-for-throttled-requests-in-azure-resource-graph"></a>Útmutató a szabályozott kérelmekhez az Azure Resource Graph-ban
 
@@ -33,10 +33,10 @@ Az Azure Resource Graph minden lekérdezési válaszban két szabályozási fejl
 - `x-ms-user-quota-remaining` (int): a felhasználó fennmaradó erőforrás-kvótája. Ez az érték leképezi a lekérdezések darabszámát.
 - `x-ms-user-quota-resets-after` (óó: PP: mm): az időtartam, amíg a felhasználó kvótájának felhasználását vissza nem állítja.
 
-A fejlécek működésének szemléltetéséhez nézzük meg a lekérdezési választ, amely a `x-ms-user-quota-remaining: 10` és a `x-ms-user-quota-resets-after: 00:00:03` fejlécét és értékeit tartalmazta.
+A fejlécek működésének szemléltetéséhez nézzük meg az `x-ms-user-quota-remaining: 10` és `x-ms-user-quota-resets-after: 00:00:03`fejlécét és értékeit tartalmazó lekérdezési választ.
 
 - A következő 3 másodpercen belül legfeljebb 10 lekérdezés lehet elküldve a szabályozás nélkül.
-- 3 másodpercen belül a `x-ms-user-quota-remaining` és a `x-ms-user-quota-resets-after` értékek a `15` és a `00:00:05` értékre lesznek visszaállítva.
+- 3 másodperc múlva a `x-ms-user-quota-remaining` és `x-ms-user-quota-resets-after` értékeit a rendszer visszaállítja `15` és `00:00:05`.
 
 Ha szeretné megtekinteni, hogyan használhatja a fejléceket a lekérdezési kérelmek _leállítási_ , tekintse meg [párhuzamosan a lekérdezésben](#query-in-parallel)szereplő mintát.
 
@@ -236,8 +236,8 @@ Adja meg a következő adatokat:
 - Milyen típusú erőforrások érdeklik?
 - Mi a lekérdezési minta? X lekérdezés/Y másodperc stb.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Tekintse meg az [alapszintű lekérdezésekben](../samples/starter.md)használt nyelvet.
 - Lásd: speciális alkalmazások a [speciális lekérdezésekben](../samples/advanced.md).
-- Ismerje meg az [erőforrások feltárását](explore-resources.md).
+- További információ az [erőforrások feltárásáról](explore-resources.md).

@@ -1,5 +1,5 @@
 ---
-title: Rugalmas adatbázis-ügyféloldali kódtár használata a jól öltözött eszközzel | Microsoft Docs
+title: Rugalmas adatbázis-ügyféloldali kódtár használata jól öltözött
 description: Rugalmas adatbázis-ügyféloldali kódtár használata jól öltözött eszközzel.
 services: sql-database
 ms.service: sql-database
@@ -11,24 +11,24 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/04/2018
-ms.openlocfilehash: 1eafb123014effad9daca89dc1b852367d9cbbf1
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 3b1fa6ab046845e2fd95e8d4b5611ca2f5d12562
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68568265"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73690098"
 ---
 # <a name="using-elastic-database-client-library-with-dapper"></a>Rugalmas adatbázis-ügyféloldali kódtár használata jól öltözött
 Ez a dokumentum olyan fejlesztők számára készült, akik a kitalált alkalmazások létrehozására támaszkodnak, de a [rugalmas adatbázis-eszközöket](sql-database-elastic-scale-introduction.md) is szeretnék biztosítani, hogy olyan alkalmazásokat hozzanak létre, amelyek horizontális felskálázást hajtanak végre az adatszinten.  Ez a dokumentum bemutatja a rugalmas adatbázis-eszközökkel való integráláshoz szükséges, jól látható alkalmazások változásait. Célunk, hogy a rugalmas adatbázis-szegmensek kezelését és az Adatfüggő útválasztást takarja. 
 
-**Mintakód**: [Rugalmas adatbázis-eszközök Azure SQL Database által jól öltözött integrációhoz](https://code.msdn.microsoft.com/Elastic-Scale-with-Azure-e19fc77f).
+**Mintakód**: [rugalmas adatbázis-eszközök Azure SQL Database által jól látható integrációhoz](https://code.msdn.microsoft.com/Elastic-Scale-with-Azure-e19fc77f).
 
 A **jól** használható és **DapperExtensions** integrálása a rugalmas adatbázis-ügyféloldali kódtár Azure SQL Database egyszerű. Az alkalmazások az Adatfüggő útválasztást úgy használhatják, hogy megváltoztatják az új [SqlConnection](https://msdn.microsoft.com/library/system.data.sqlclient.sqlconnection.aspx) -objektumok létrehozását és megnyitását, hogy az [OpenConnectionForKey](https://msdn.microsoft.com/library/azure/dn807226.aspx) hívást használják az [ügyfél könyvtárából](https://msdn.microsoft.com/library/azure/dn765902.aspx). Ez korlátozza az alkalmazás változásait, hogy csak az új kapcsolatokat hozza létre és nyissa meg. 
 
 ## <a name="dapper-overview"></a>Takaros áttekintés
-A takart objektum-viszonyítási mapper. A .NET-objektumokat az alkalmazásból egy rokon adatbázisba képezi le (és fordítva). A mintakód első része azt szemlélteti, hogyan integrálható a rugalmas adatbázis ügyféloldali könyvtára a jól használható alkalmazásokkal. A mintakód második része azt szemlélteti, hogyan integrálható a jól látható és a DapperExtensions.  
+A **takart** objektum-viszonyítási mapper. A .NET-objektumokat az alkalmazásból egy rokon adatbázisba képezi le (és fordítva). A mintakód első része azt szemlélteti, hogyan integrálható a rugalmas adatbázis ügyféloldali könyvtára a jól használható alkalmazásokkal. A mintakód második része azt szemlélteti, hogyan integrálható a jól látható és a DapperExtensions.  
 
-Az jól látható Mapper funkció olyan bővítményi metódusokat biztosít az adatbázis-kapcsolatokon, amelyek egyszerűbbé teszik a T-SQL-utasítások elküldését az adatbázis végrehajtásához vagy lekérdezéséhez. A jól öltözött például megkönnyíti a .NET-objektumok és az SQL-utasítások **végrehajtása** a hívások végrehajtásához, vagy az SQL-lekérdezések eredményének a .net-objektumokra való felhasználását a takaros **lekérdezési** hívásokkal. 
+Az jól látható Mapper funkció olyan bővítményi metódusokat biztosít az adatbázis-kapcsolatokon, amelyek egyszerűbbé teszik a T-SQL-utasítások elküldését az adatbázis végrehajtásához vagy lekérdezéséhez. A jól öltözött például megkönnyíti a .NET-objektumok és az SQL-utasítások végrehajtása a hívások **végrehajtásához** , vagy az SQL-lekérdezések eredményének a .net-objektumokra való felhasználását a takaros **lekérdezési** hívásokkal. 
 
 A DapperExtensions használatakor már nem kell megadnia az SQL-utasításokat. A bővítmények módszerei, például a **GetList** vagy az adatbázis-kapcsolat **beillesztése** az SQL-utasításokat a színfalak mögött hozza létre.
 
@@ -37,7 +37,7 @@ A jól öltözött és a DapperExtensions egy másik előnye, hogy az alkalmazá
 A takaros szerelvények lekéréséhez lásd: [takart pont háló](https://www.nuget.org/packages/Dapper/). A jól öltözött bővítmények esetében lásd: [DapperExtensions](https://www.nuget.org/packages/DapperExtensions).
 
 ## <a name="a-quick-look-at-the-elastic-database-client-library"></a>A rugalmas adatbázis-ügyféloldali kódtár gyors áttekintése
-A rugalmas adatbázis-ügyféloldali kódtár segítségével meghatározhatja az alkalmazásadatok *shardletek*nevű partícióit, leképezheti őket az adatbázisokra, és azonosíthatja őket a *kulcsok*horizontális felskálázásával. Annyi adatbázist használhat, amennyit csak szeretne, és terjesztheti a shardletek az adatbázisok között. A skálázási kulcs értékének az adatbázisokra való hozzárendelését a könyvtár API-jai által biztosított szegmenses Térkép tárolja. Ezt a képességetnevezik a szegmenses leképezések felügyeletének. A szegmenses Térkép az adatbázis-kapcsolatok közvetítőjét is szolgálja a horizontális Felskálázási kulcsot tartalmazó kérelmek esetében. Ezt a képességet az **Adatfüggő útválasztásnak**nevezzük.
+A rugalmas adatbázis-ügyféloldali kódtár segítségével meghatározhatja az alkalmazásadatok *shardletek*nevű partícióit, leképezheti őket az adatbázisokra, és azonosíthatja őket a *kulcsok*horizontális felskálázásával. Annyi adatbázist használhat, amennyit csak szeretne, és terjesztheti a shardletek az adatbázisok között. A skálázási kulcs értékének az adatbázisokra való hozzárendelését a könyvtár API-jai által biztosított szegmenses Térkép tárolja. Ezt a képességet nevezik a szegmenses **leképezések felügyeletének**. A szegmenses Térkép az adatbázis-kapcsolatok közvetítőjét is szolgálja a horizontális Felskálázási kulcsot tartalmazó kérelmek esetében. Ezt a képességet az **Adatfüggő útválasztásnak**nevezzük.
 
 ![Szegmens térképek és Adatfüggő Útválasztás][1]
 
@@ -48,9 +48,9 @@ Ahelyett, hogy hagyományos módon hozzon létre kapcsolatokat a takaros kapcsol
 ### <a name="requirements-for-dapper-integration"></a>A jól öltözött integráció követelményei
 Ha a rugalmas adatbázis ügyféloldali függvénytárával és a jól öltözött API-kkal is dolgozik, a következő tulajdonságokat szeretné megőrizni:
 
-* Vertikális felskálázás: Az alkalmazás kapacitási igényeihez szükség szerint fel szeretnénk venni vagy el kell távolítani az adatbázisokat a lépcsőzetes alkalmazás adatszintjéből. 
-* **Konzisztencia**: Mivel az alkalmazás horizontális felskálázással lett kibővítve, az adatoktól függő útválasztást kell végrehajtania. A könyvtár adatkezelési útválasztási funkcióit szeretnénk használni. Különösen fontos, hogy megőrizze az ellenőrzési és a konzisztencia-garanciákat, amelyeket a rendszer a szegmenses Térkép-kezelőn keresztül felügyelt kapcsolatok által biztosított, hogy elkerülje a sérülést vagy a lekérdezés eredményét. Ez biztosítja, hogy az adott shardletbe létesített kapcsolatok elutasításra kerüljenek, vagy le legyenek állítva, ha (például) a shardletbe jelenleg egy másik szegmensbe helyezi át a Split/Merge API-k használatával.
-* **Objektum-hozzárendelés**: Szeretnénk megőrizni a jól öltözött leképezések kényelmét az alkalmazás osztályai és a mögöttes adatbázis-struktúrák lefordításához. 
+* Horizontális **felskálázás**: a többrészes alkalmazás adatszintjéből az alkalmazás kapacitási igényeihez szükséges adatbázisokat szeretnénk hozzáadni vagy eltávolítani. 
+* **Konzisztencia**: mivel az alkalmazás horizontális felskálázással lett kibővítve, az adatoktól függő útválasztást kell végrehajtania. A könyvtár adatkezelési útválasztási funkcióit szeretnénk használni. Különösen fontos, hogy megőrizze az ellenőrzési és a konzisztencia-garanciákat, amelyeket a rendszer a szegmenses Térkép-kezelőn keresztül felügyelt kapcsolatok által biztosított, hogy elkerülje a sérülést vagy a lekérdezés eredményét. Ez biztosítja, hogy az adott shardletbe létesített kapcsolatok elutasításra kerüljenek, vagy le legyenek állítva, ha (például) a shardletbe jelenleg egy másik szegmensbe helyezi át a Split/Merge API-k használatával.
+* **Objektum-hozzárendelés**: szeretnénk megőrizni a jól öltözött leképezések kényelmét az alkalmazás osztályai és a mögöttes adatbázis-struktúrák lefordításához. 
 
 A következő szakasz útmutatást nyújt ezekhez a követelményekhez a **takaros** és **DapperExtensions**alapuló alkalmazásokhoz.
 
@@ -136,7 +136,7 @@ Az alkalmazásban a DapperExtensions használata nem változtatja meg az adatbá
     }
 
 ### <a name="handling-transient-faults"></a>Átmeneti hibák kezelésére
-A Microsoft Patterns & Practices csapata közzétette az [átmeneti hibák kezelésére szolgáló alkalmazás](https://msdn.microsoft.com/library/hh680934.aspx) -blokkot, hogy segítse az alkalmazás-fejlesztőket a felhőben való futás során felmerülő gyakori átmeneti hibák elhárításában. További információkért tekintse [meg a kitartás, az összes diadal titka: Az átmeneti hibák kezelésére szolgáló alkalmazás blokkjának](https://msdn.microsoft.com/library/dn440719.aspx)használata.
+A Microsoft Patterns & Practices csapata közzétette az [átmeneti hibák kezelésére szolgáló alkalmazás-blokkot](https://msdn.microsoft.com/library/hh680934.aspx) , hogy segítse az alkalmazás-fejlesztőket a felhőben való futás során felmerülő gyakori átmeneti hibák elhárításában. További információkért tekintse meg [a kitartás, az összes diadal titka: az átmeneti hiba-kezelő alkalmazás blokk használata](https://msdn.microsoft.com/library/dn440719.aspx)című témakört.
 
 A kód mintája az átmeneti hibák elleni védelemre támaszkodik, 
 

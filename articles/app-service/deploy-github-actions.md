@@ -3,36 +3,34 @@ title: A kód üzembe helyezése CI/CD-folyamatból GitHub-műveletekkel – Azu
 description: Megtudhatja, hogyan használhatja a GitHub-műveleteket a kód App Service való üzembe helyezéséhez
 services: app-service
 documentationcenter: ''
-author: jasonfreeberg
-writer: ''
-manager: ''
-editor: ''
-ms.assetid: ''
+author: cephalin
+manager: gwallace
 ms.service: app-service
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/22/2019
+ms.date: 10/25/2019
 ms.author: jafreebe
-ms.openlocfilehash: b7ec1ae1d04fb1dbe16fd9f4a2640b2b3d9584c2
-ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
+ms.reviewer: ushan
+ms.openlocfilehash: 9842057a590b08f2207a1ea166e0ce0d457e4381
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72809772"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73620516"
 ---
-# <a name="github-actions-for-deploying-to-app-service"></a>A App Service üzembe helyezéséhez szükséges GitHub-műveletek
+# <a name="deploy-to-app-service-using-github-actions"></a>Üzembe helyezés a App Service GitHub-műveletek használatával
 
-A [GitHub-műveletek](https://help.github.com/en/articles/about-github-actions) révén rugalmasan hozhat létre automatizált szoftverfejlesztési életciklus-munkafolyamatot. A GitHub Azure App Service műveleteivel automatizálhatja a munkafolyamatot, hogy az [Azure web Appst](https://azure.microsoft.com/services/app-service/web/) a GitHub-műveletek használatával telepítse.
+A [GitHub-műveletek](https://help.github.com/en/articles/about-github-actions) révén rugalmasan hozhat létre automatizált szoftverfejlesztési életciklus-munkafolyamatot. A GitHub Azure App Service műveleteivel automatizálhatja a munkafolyamatot, hogy a GitHub-műveletek használatával [Azure app Service](overview.md) üzembe helyezését.
 
 > [!IMPORTANT]
 > A GitHub-műveletek jelenleg béta verzióban vannak. Először [regisztrálnia kell, hogy csatlakozzon az előzetes](https://github.com/features/actions) verzióhoz a GitHub-fiók használatával.
 > 
 
-A munkafolyamatot egy YAML-fájl (. YML) határozza meg a tárház `/.github/workflows/` útvonalán. Ez a definíció a munkafolyamatot alkotó különböző lépéseket és paramétereket tartalmazza.
+A munkafolyamatot egy YAML-fájl (. YML) határozza meg a tárházban található `/.github/workflows/` elérési úton. Ez a definíció a munkafolyamatot alkotó különböző lépéseket és paramétereket tartalmazza.
 
-Az Azure-webalkalmazások munkafolyamataihoz a fájl három szakaszt tartalmaz:
+Azure App Service munkafolyamathoz a fájl három szakaszt tartalmaz:
 
 |Section  |Feladatok  |
 |---------|---------|
@@ -42,25 +40,25 @@ Az Azure-webalkalmazások munkafolyamataihoz a fájl három szakaszt tartalmaz:
 
 ## <a name="create-a-service-principal"></a>Egyszerű szolgáltatás létrehozása
 
-[Egyszerű szolgáltatásnév](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals#service-principal-object) létrehozásához használja az az [ad SP Create-for-RBAC](https://docs.microsoft.com/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac) parancsot az [Azure CLI](https://docs.microsoft.com/cli/azure/)-ben. Ezt a parancsot a Azure Portal [Azure Cloud Shell](https://shell.azure.com/) használatával vagy a **kipróbálás** gombra kattintva futtathatja.
+[Egyszerű szolgáltatásnév](../active-directory/develop/app-objects-and-service-principals.md#service-principal-object) létrehozásához használja az az [ad SP Create-for-RBAC](https://docs.microsoft.com/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac) parancsot az [Azure CLI](https://docs.microsoft.com/cli/azure/)-ben. Ezt a parancsot a Azure Portal [Azure Cloud Shell](https://shell.azure.com/) használatával vagy a **kipróbálás** gombra kattintva futtathatja.
 
 ```azurecli-interactive
-az ad sp create-for-rbac --name "myApp" --role contributor --scopes /subscriptions/<SUBSCRIPTION_ID>/resourceGroups/<RESOURCE_GROUP>/providers/Microsoft.Web/sites/<APP_NAME> --sdk-auth
+az ad sp create-for-rbac --name "myApp" --role contributor --scopes /subscriptions/<subscription-id>/resourceGroups/<group-name>/providers/Microsoft.Web/sites/<app-name> --sdk-auth
 ```
 
-Ebben a példában az erőforrásban található helyőrzőket cserélje le az előfizetés-AZONOSÍTÓra, az erőforráscsoport és a webalkalmazás nevére. A kimenet a szerepkör-hozzárendelés hitelesítő adatai, amelyek hozzáférést biztosítanak a webalkalmazáshoz. Másolja ezt a JSON-objektumot, amelyet a GitHubról történő hitelesítéshez használhat.
+Ebben a példában az erőforrásban található helyőrzőket cserélje le az előfizetés-AZONOSÍTÓra, az erőforráscsoport nevére és az alkalmazás nevére. A kimenet a szerepkör-hozzárendelés hitelesítő adatai, amelyek hozzáférést biztosítanak a App Service alkalmazáshoz. Másolja ezt a JSON-objektumot, amelyet a GitHubról történő hitelesítéshez használhat.
 
 > [!NOTE]
 > Nem kell létrehoznia egy egyszerű szolgáltatásnevet, ha úgy dönt, hogy közzétételi profilt használ a hitelesítéshez.
 
 > [!IMPORTANT]
-> Mindig jó gyakorlat a minimális hozzáférés megadására. Ezért az előző példában szereplő hatókör az adott webalkalmazásra korlátozódik, nem a teljes erőforráscsoporthoz.
+> Mindig jó gyakorlat a minimális hozzáférés megadására. Ezért az előző példában szereplő hatókör az adott App Service alkalmazásra korlátozódik, és nem a teljes erőforráscsoporthoz.
 
 ## <a name="configure-the-github-secret"></a>A GitHub-titok konfigurálása
 
 Használhatja az alkalmazás szintű hitelesítő adatokat is, például a közzétételi profilt az üzembe helyezéshez. Kövesse a titkos kód konfigurálásához szükséges lépéseket:
 
-1. Töltse le a webalkalmazás közzétételi profilját a portálról a **közzétételi profil beolvasása** lehetőség használatával.
+1. Töltse le a App Service alkalmazás közzétételi profilját a portálon a **közzétételi profil beolvasása** lehetőség használatával.
 
 2. A [githubon](https://github.com/)tallózzon a tárházban, válassza a **beállítások > titkok > új titok hozzáadása** elemet.
 
@@ -76,11 +74,11 @@ Használhatja az alkalmazás szintű hitelesítő adatokat is, például a közz
             creds: ${{ secrets.azureWebAppPublishProfile }}
     ```
 
-5. A titkot az alább látható módon fogja látni.
+5. A titkos kulcsot az alább látható módon láthatja.
 
     ![titkok](media/app-service-github-actions/app-service-secrets.png)
 
-## <a name="setup-the-environment"></a>A környezet beállítása
+## <a name="set-up-the-environment"></a>A környezet beállítása
 
 A környezet beállítása a telepítési műveletek egyikével végezhető el.
 
@@ -132,7 +130,7 @@ Az alábbi példák a munkafolyamatnak azt a részét mutatják be, amely a kör
 
 ## <a name="build-the-web-app"></a>A webalkalmazás összeállítása
 
-Ez a nyelvtől és az Azure Web Apps által támogatott nyelvektől függ. Ez a szakasz az egyes nyelvek standard Build lépései.
+Ez a Azure App Service által támogatott nyelvtől és nyelvtől függ. a szakasznak az egyes nyelvek standard Build lépéseinek kell lennie.
 
 Az alábbi példák a webalkalmazást a különböző támogatott nyelveken felépítő munkafolyamat részét mutatják be.
 
@@ -189,20 +187,20 @@ Az alábbi példák a webalkalmazást a különböző támogatott nyelveken fel�
     - name: Build with Maven
       run: mvn -B package --file pom.xml
 ```
-## <a name="deploy-the-web-app"></a>A webalkalmazás üzembe helyezése
+## <a name="deploy-to-app-service"></a>Üzembe helyezés az App Service-ben
 
-A kód webalkalmazásba való üzembe helyezéséhez a `Azure/appservice-actions/webapp@master` műveletet kell használnia. Ez a művelet 4 paraméterrel rendelkezik:
+A kód App Service alkalmazásba való üzembe helyezéséhez használja a `azure/webapps-deploy@v1 ` műveletet. A műveletnek négy paramétere van:
 
 | **Paraméter**  | **Magyarázat**  |
 |---------|---------|
-| **alkalmazás neve** | Szükséges Az Azure-webalkalmazás neve | 
+| **alkalmazás neve** | Szükséges A App Service alkalmazás neve | 
 | **közzétételi profil** | Választható Profil fájl tartalmának közzététele a web Deploy Secrets szolgáltatásban |
 | **csomag** | Választható Csomag vagy mappa elérési útja. *. zip, *. War, *. jar vagy üzembe helyezni kívánt mappa |
 | **tárolóhely neve** | Választható Adja meg az üzemi tárolóhelytől eltérő meglévő tárolóhelyet |
 
 ### <a name="deploy-using-publish-profile"></a>Üzembe helyezés a közzétételi profil használatával
 
-Az alábbi példa egy Node. js-Webalkalmazás létrehozása és üzembe helyezése az Azure-ban a közzétételi profil használatával.
+Az alábbi példa a Node. js-alkalmazások Azure-ban való létrehozására és üzembe helyezésére szolgáló minta munkafolyamat a közzétételi profil használatával.
 
 ```yaml
 # File: .github/workflows/workflow.yml
@@ -236,7 +234,7 @@ jobs:
 
 ### <a name="deploy-using-azure-service-principal"></a>Üzembe helyezés az Azure egyszerű szolgáltatásával
 
-Az alábbi példa a Node. js-webalkalmazások Azure-beli Azure-beli használatával történő létrehozásához és üzembe helyezéséhez használható minta munkafolyamat.
+Az alábbi példa a Node. js-alkalmazások Azure-beli egyszerű szolgáltatással történő létrehozásához és üzembe helyezéséhez használható minta munkafolyamat.
 
 ```yaml
 on: [push]
@@ -277,11 +275,13 @@ jobs:
         az logout
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Megtalálhatja a GitHubon különböző adattárakba csoportosított műveleteit, amelyek mindegyike dokumentációt és példákat tartalmaz, amelyek segítséget nyújtanak a GitHub használatához a CI/CD-hez, és az alkalmazások üzembe helyezését az Azure-ban.
 
-- [Azure-bejelentkezés](https://github.com/Azure/actions)
+- [Az Azure-ba telepítendő műveletek munkafolyamata](https://github.com/Azure/actions-workflow-samples)
+
+- [Azure-bejelentkezés](https://github.com/Azure/login)
 
 - [Azure WebApp](https://github.com/Azure/webapps-deploy)
 

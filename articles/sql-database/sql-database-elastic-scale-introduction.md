@@ -1,5 +1,5 @@
 ---
-title: Horizontális felskálázás Azure SQL Databasesal | Microsoft Docs
+title: Scaling out with Azure SQL Database (Horizontális felskálázás az Azure SQL Database segítségével)
 description: A szolgáltatott szoftver (SaaS) fejlesztők könnyedén hozhatnak létre rugalmas, méretezhető adatbázisokat a felhőben ezen eszközök használatával
 services: sql-database
 ms.service: sql-database
@@ -11,21 +11,21 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/25/2019
-ms.openlocfilehash: e5ae56b2050243831f10863bbb4184a9e89f5911
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 56556576dffd4e022f919af89459d92e48c6c895
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68568401"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73690241"
 ---
 # <a name="scaling-out-with-azure-sql-database"></a>Scaling out with Azure SQL Database (Horizontális felskálázás az Azure SQL Database segítségével)
 Az Azure SQL Database-adatbázisok egyszerűen felméretezhetők a **Elastic Database** eszközök használatával. Ezek az eszközök és szolgáltatások lehetővé teszik a **Azure SQL Database** adatbázis-erőforrásainak használatát a tranzakciós számítási feladatokhoz és különösen a szolgáltatott szoftverekhez (SaaS) készült megoldások létrehozásához. Elastic Database szolgáltatások a következőkből állnak:
 
-* [Elastic Database ügyféloldali kódtár](sql-database-elastic-database-client-library.md): Az ügyféloldali kódtár egy olyan szolgáltatás, amely lehetővé teszi a szilánkokra osztott adatbázisok létrehozását és karbantartását.  Lásd: [Elastic Database-eszközök első lépései](sql-database-elastic-scale-get-started.md).
+* [Elastic Database ügyféloldali kódtár](sql-database-elastic-database-client-library.md): az ügyféloldali kódtár olyan szolgáltatás, amely lehetővé teszi a szilánkokra osztott adatbázisok létrehozását és karbantartását.  Lásd: [Elastic Database-eszközök első lépései](sql-database-elastic-scale-get-started.md).
 * [Elastic Database felosztási-egyesítési eszköz](sql-database-elastic-scale-overview-split-and-merge.md): áthelyezi az adatátvitelt a felosztott adatbázisok között. Ez az eszköz akkor hasznos, ha egy több-bérlős adatbázisból egy egybérlős adatbázisba helyezi át az adatáthelyezést (vagy fordítva). Lásd: [rugalmas adatbázis felosztása – egyesítési eszköz oktatóanyaga](sql-database-elastic-scale-configure-deploy-split-and-merge.md).
-* [Rugalmas adatbázis-feladatok](elastic-jobs-overview.md): Feladatok használata nagy számú Azure SQL-adatbázis kezeléséhez. Egyszerűen végezhet olyan adminisztratív műveleteket, mint a séma módosítása, a hitelesítő adatok kezelése, a hivatkozási adatok frissítései, a teljesítményadatok gyűjtése vagy a bérlő (ügyfél) telemetria-gyűjtemény a feladatok használatával.
-* [Elastic Database lekérdezés](sql-database-elastic-query-overview.md) (előzetes verzió): Lehetővé teszi, hogy olyan Transact-SQL-lekérdezést futtasson, amely több adatbázisra is kiterjed. Ez lehetővé teszi, hogy a rendszer olyan jelentéskészítő eszközöket létesítsen, mint például az Excel, a Power BI, a tabló stb.).
-* [Rugalmas tranzakciók](sql-database-elastic-transactions-overview.md): Ez a funkció lehetővé teszi, hogy olyan tranzakciókat futtasson, amelyek a Azure SQL Database több adatbázisára is kiterjednek. A rugalmas adatbázis-tranzakciók az ADO .NET-et használó .NET-alkalmazások számára érhetők el, és az ismerős programozási felülettel integrálhatók a [System. Transaction osztályok](https://msdn.microsoft.com/library/system.transactions.aspx)használatával.
+* [Rugalmas adatbázis-feladatok](elastic-jobs-overview.md): nagy mennyiségű Azure SQL-adatbázis kezelésére szolgáló feladatok használata. Egyszerűen végezhet olyan adminisztratív műveleteket, mint a séma módosítása, a hitelesítő adatok kezelése, a hivatkozási adatok frissítései, a teljesítményadatok gyűjtése vagy a bérlő (ügyfél) telemetria-gyűjtemény a feladatok használatával.
+* [Elastic Database Query](sql-database-elastic-query-overview.md) (előzetes verzió): lehetővé teszi, hogy olyan Transact-SQL-lekérdezést futtasson, amely több adatbázisra is kiterjed. Ez lehetővé teszi, hogy a rendszer olyan jelentéskészítő eszközöket létesítsen, mint például az Excel, a Power BI, a tabló stb.).
+* [Rugalmas tranzakciók](sql-database-elastic-transactions-overview.md): Ez a funkció lehetővé teszi, hogy olyan tranzakciókat futtasson, amelyek Azure SQL Database több adatbázisára is kiterjednek. A rugalmas adatbázis-tranzakciók az ADO .NET-et használó .NET-alkalmazások számára érhetők el, és az ismerős programozási felülettel integrálhatók a [System. Transaction osztályok](https://msdn.microsoft.com/library/system.transactions.aspx)használatával.
 
 Az alábbi ábra egy olyan architektúrát mutat be, amely tartalmazza az adatbázisok gyűjteményéhez kapcsolódó **Elastic Database funkciókat** .
 
@@ -64,7 +64,7 @@ A legtöbb felhőalapú adatbázis-alkalmazás a két stratégia kombinációjá
 * A vertikális skálázás Azure PowerShell parancsmagok segítségével módosítható a szolgáltatási szint módosításához, vagy egy rugalmas készletbe helyezi az adatbázisokat.
 
 ## <a name="sharding"></a>Sharding
-A horizontális skálázás olyan technika, amellyel nagy mennyiségű, egymástól független adatbázisba tartozó strukturált adategység terjeszthető ki. Ez különösen népszerű a felhőalapú fejlesztők számára a végfelhasználók és a vállalkozások számára szolgáltatott szoftver-(SAAS-) ajánlatok létrehozásához. Ezeket a végfelhasználókat gyakran "bérlőknek" nevezzük. A horizontális skálázás tetszőleges számú okból szükséges lehet:  
+A horizontális *skálázás olyan technika* , amellyel nagy mennyiségű, egymástól független adatbázisba tartozó strukturált adategység terjeszthető ki. Ez különösen népszerű a felhőalapú fejlesztők számára a végfelhasználók és a vállalkozások számára szolgáltatott szoftver-(SAAS-) ajánlatok létrehozásához. Ezeket a végfelhasználókat gyakran "bérlőknek" nevezzük. A horizontális skálázás tetszőleges számú okból szükséges lehet:  
 
 * A teljes adatmennyiség túl nagy ahhoz, hogy az egyes adatbázisok korlátain belül elfér
 * A teljes munkaterhelés tranzakciós sebessége meghaladja az egyes adatbázisok képességeit
@@ -88,7 +88,7 @@ SaaS-alkalmazások létrehozásakor jellemző, hogy a leendő ügyfelek számár
 ## <a name="next-steps"></a>További lépések
 Az ügyféloldali függvénytárat bemutató minta alkalmazáshoz lásd: Ismerkedés [a Elastic Database eszközökkel](sql-database-elastic-scale-get-started.md).
 
-Ha a meglévő adatbázisokat az eszközök használatára szeretné átalakítani, tekintse meg a [meglévő adatbázisok](sql-database-elastic-convert-to-use-elastic-tools.md)áttelepítésének felskálázását ismertető témakört.
+Ha a meglévő adatbázisokat az eszközök használatára szeretné átalakítani, tekintse meg a [meglévő adatbázisok áttelepítésének felskálázását](sql-database-elastic-convert-to-use-elastic-tools.md)ismertető témakört.
 
 A rugalmas készletre vonatkozó részletek megtekintéséhez tekintse meg a [rugalmas készlet árának és teljesítményével kapcsolatos szempontokat](sql-database-elastic-pool.md), vagy hozzon létre egy [rugalmas](sql-database-elastic-pool-manage-portal.md)készletekkel rendelkező új készletet.  
 

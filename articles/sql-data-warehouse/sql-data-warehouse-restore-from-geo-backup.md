@@ -1,5 +1,5 @@
 ---
-title: Azure SQL Data Warehouse visszaállítása geo-biztonsági mentésből | Microsoft Docs
+title: Adattárház visszaállítása geo-biztonsági mentésből
 description: Útmutató a Azure SQL Data Warehouse geo-visszaállításához.
 services: sql-data-warehouse
 author: anumjs
@@ -10,22 +10,23 @@ ms.subservice: manage
 ms.date: 07/12/2019
 ms.author: anjangsh
 ms.reviewer: igorstan
-ms.openlocfilehash: 768646522c2589c302fd7a58031d4ebdb7fcdc12
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.custom: seo-lt-2019
+ms.openlocfilehash: 69eb1221686da61868df8b06ed80664ae76d1627
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68426654"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73685505"
 ---
 # <a name="geo-restore-azure-sql-data-warehouse"></a>Geo-visszaállítás Azure SQL Data Warehouse
 
 Ebből a cikkből megtudhatja, hogyan állíthatja vissza az adattárházat a Geo biztonsági mentésből Azure Portal és a PowerShell használatával.
 
-## <a name="before-you-begin"></a>Előkészületek
+## <a name="before-you-begin"></a>Előzetes teendők
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-**Ellenőrizze a DTU kapacitását.** Mindegyik SQL Data Warehouse egy SQL-kiszolgáló (például myserver.database.windows.net) üzemelteti, amely rendelkezik alapértelmezett DTU-kvótával. Ellenőrizze, hogy az SQL-kiszolgáló rendelkezik-e elegendő fennmaradó DTU-kvótával az adatbázis visszaállításához. A szükséges DTU kiszámításához, illetve további DTU igényléséhez lásd: [DTU-kvóta][Request a DTU quota change]megváltoztatásának kérése.
+**Ellenőrizze a DTU kapacitását.** Mindegyik SQL Data Warehouse egy SQL-kiszolgáló (például myserver.database.windows.net) üzemelteti, amely rendelkezik alapértelmezett DTU-kvótával. Ellenőrizze, hogy az SQL-kiszolgáló rendelkezik-e elegendő fennmaradó DTU-kvótával az adatbázis visszaállításához. A szükséges DTU kiszámításához, illetve további DTU igényléséhez lásd: [DTU-kvóta megváltoztatásának kérése][Request a DTU quota change].
 
 ## <a name="restore-from-an-azure-geographical-region-through-powershell"></a>Visszaállítás egy Azure földrajzi régióból a PowerShell használatával
 
@@ -79,7 +80,7 @@ Kövesse az alábbi lépéseket a Azure SQL Data Warehouse geo-biztonsági ment�
 1. Kattintson **az + erőforrás létrehozása** lehetőségre, és keressen rá SQL Data Warehouse és kattintson a **Létrehozás**gombra.
 
     ![Új DW](./media/sql-data-warehouse-restore-from-geo-backup/georestore-new.png)
-1. Adja meg az **alapok** lapon kért információkat, majd kattintson a **tovább gombra: További beállítások**.
+1. Adja meg az **alapok** lapon kért információkat, majd kattintson a **Tovább gombra: további beállítások**.
 
     ![Alapvető beállítások](./media/sql-data-warehouse-restore-from-geo-backup/georestore-dw-1.png)
 1. A **meglévő** Adatparaméter használata esetén válassza a **biztonsági mentés** lehetőséget, és válassza ki a megfelelő biztonsági mentést a görgetési beállítások közül. Kattintson a **felülvizsgálat + létrehozás**gombra.

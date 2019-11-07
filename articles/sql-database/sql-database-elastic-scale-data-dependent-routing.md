@@ -1,5 +1,5 @@
 ---
-title: Adatfüggő útválasztás Azure SQL Databasesal | Microsoft Docs
+title: Adatfüggő útválasztás Azure SQL Database
 description: A ShardMapManager osztály használata a .NET-alkalmazásokban az Adatfüggő útválasztáshoz, a többrétegű adatbázisok szolgáltatásához Azure SQL Database
 services: sql-database
 ms.service: sql-database
@@ -11,16 +11,16 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/25/2019
-ms.openlocfilehash: 3f0ce4f3bdf3159e991bfd72590882dfa7412ee3
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 319f2744cd437aea51a05592cd7a26f8b58fe761
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68568484"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73690277"
 ---
 # <a name="use-data-dependent-routing-to-route-a-query-to-appropriate-database"></a>Lekérdezés továbbítása a megfelelő adatbázishoz az Adatfüggő útválasztás használatával
 
-Az Adatfüggő **Útválasztás** lehetővé teszi, hogy egy lekérdezésben lévő, a kérést a megfelelő adatbázishoz irányítsa. Az adatokon alapuló útválasztás alapvető minta a többrétegű adatbázisok használatakor. A kérelem környezete a kérelem továbbítására is használható, különösen akkor, ha a horizontális Felskálázási kulcs nem része a lekérdezésnek. Egy alkalmazásban az Adatfüggő útválasztást használó minden egyes lekérdezés vagy tranzakció esetében csak egy adatbázis férhet hozzá egy kérelemhez. Az Azure SQL Database rugalmas eszközök esetében ez az Útválasztás a **ShardMapManager** ([Java](/java/api/com.microsoft.azure.elasticdb.shard.mapmanager.shardmapmanager), [.net](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager)) osztály használatával érhető el.
+Az **Adatfüggő útválasztás** lehetővé teszi, hogy egy lekérdezésben lévő, a kérést a megfelelő adatbázishoz irányítsa. Az adatokon alapuló útválasztás alapvető minta a többrétegű adatbázisok használatakor. A kérelem környezete a kérelem továbbítására is használható, különösen akkor, ha a horizontális Felskálázási kulcs nem része a lekérdezésnek. Egy alkalmazásban az Adatfüggő útválasztást használó minden egyes lekérdezés vagy tranzakció esetében csak egy adatbázis férhet hozzá egy kérelemhez. Az Azure SQL Database rugalmas eszközök esetében ez az Útválasztás a **ShardMapManager** ([Java](/java/api/com.microsoft.azure.elasticdb.shard.mapmanager.shardmapmanager), [.net](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager)) osztály használatával érhető el.
 
 Az alkalmazásnak nem kell nyomon követnie a különböző típusú adatszeletekhez társított különböző kapcsolódási karakterláncokat vagy adatbázis-tárolóhelyeket. Ehelyett a szegmenses [Térkép kezelője](sql-database-elastic-scale-shard-map-management.md) szükség esetén nyitja meg a megfelelő adatbázisokhoz való kapcsolódást, és az alkalmazás kérelmének céljaként szolgáló horizontális Felskálázási kulcs értékét. A kulcs általában a *ügyfél*, a *tenant_id*, a *date_key*vagy valamilyen más, az adatbázis-kérelem alapvető paraméterét képező azonosító.
 
@@ -53,7 +53,7 @@ Ha egy alkalmazás nem kezeli magát a szegmenst, a gyári metódusban használt
 
 ## <a name="call-the-openconnectionforkey-method"></a>A OpenConnectionForKey metódus hívása
 
-A **ShardMap. OpenConnectionForKey metódus** ([Java](/java/api/com.microsoft.azure.elasticdb.shard.mapper.listshardmapper.openconnectionforkey), [.net](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmap.openconnectionforkey)) egy olyan kapcsolódási lehetőséget ad vissza, amely készen áll a megfelelő adatbázisra vonatkozó parancsok kiadására a **kulcs** paraméter értéke alapján. A szegmens adatait a **ShardMapManager**gyorsítótárazza az alkalmazásban, ezért ezek a kérelmek általában nem tartalmaznak adatbázis-keresést a **globális** szegmens-hozzárendelési adatbázison.
+A **ShardMap. OpenConnectionForKey metódus** ([Java](/java/api/com.microsoft.azure.elasticdb.shard.mapper.listshardmapper.openconnectionforkey), [.net](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmap.openconnectionforkey)) egy olyan kapcsolódási lehetőséget ad vissza, amely készen áll a megfelelő adatbázisra vonatkozó parancsok kiadására a **kulcs** paraméter értéke alapján. A szegmens adatait a **ShardMapManager**gyorsítótárazza az alkalmazásban, ezért ezek a kérelmek általában nem tartalmaznak adatbázis-keresést a globális szegmens- **hozzárendelési** adatbázison.
 
 ```Java
 // Syntax:
@@ -176,6 +176,6 @@ A tranzakciós tulajdonságok minden, a szegmensen belüli művelet esetében ga
 
 ## <a name="next-steps"></a>További lépések
 
-A szegmensek leválasztásához vagy a szegmensek újbóli csatolásához lásd: [a recoverymanager osztállyal osztály használata](sql-database-elastic-database-recovery-manager.md) a szegmenses Térkép problémák megoldásához
+A szegmensek leválasztásához vagy a szegmensek újbóli csatolásához lásd: [a recoverymanager osztállyal osztály használata a szegmenses Térkép problémák megoldásához](sql-database-elastic-database-recovery-manager.md)
 
 [!INCLUDE [elastic-scale-include](../../includes/elastic-scale-include.md)]

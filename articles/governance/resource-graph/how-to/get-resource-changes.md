@@ -7,16 +7,16 @@ ms.author: dacoulte
 ms.date: 10/09/2019
 ms.topic: conceptual
 ms.service: resource-graph
-ms.openlocfilehash: 4858d803b4fccdc6ae4d5a790721bad60d218313
-ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
+ms.openlocfilehash: 44e7bbde40dbd4b79a6ce3735ab5a1ac81421d3b
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72274200"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73622563"
 ---
 # <a name="get-resource-changes"></a>Erőforrás-módosítások lekérése
 
-Az erőforrások a napi használat, az újrakonfigurálás és még az újratelepítés során változnak.
+Az erőforrások a napi használat során, az újrakonfigurálás, vagy akár az újbóli üzembe helyezés miatt is megváltoznak.
 A módosítás egy egyedi vagy egy automatizált folyamat alapján is elvégezhető. A legtöbb változás a tervezés szerint történik, de néha nem. Az elmúlt 14 napban az Azure Resource Graph a következőket teszi lehetővé:
 
 - A Azure Resource Manager tulajdonság változásainak észlelése
@@ -44,8 +44,8 @@ Az erőforrás változásának első lépése, hogy megkeresse az adott erőforr
 
 A **resourceChanges** végpont a következő paramétereket fogadja el a kérelem törzsében:
 
-- **resourceId** \[required @ no__t-2: az Azure-erőforrás, melyen módosításokat kell keresni.
-- **intervallum** \[required @ no__t-2: egy olyan tulajdonság, amely _kezdő_ és _befejező_ dátummal rendelkezik, hogy mikor érdemes megkeresni egy változási eseményt a **Zulu Time Zone (Z)** használatával.
+- a **resourceId** \[szükséges\]: az Azure-erőforrás, amellyel a módosításokat keresni kell.
+- az **intervallum** \[szükséges\]: egy olyan tulajdonság, amely _kezdő_ és _befejező_ dátummal rendelkezik, hogy mikor érdemes megkeresni egy változási eseményt a **Zulu Time Zone (Z)** használatával.
 - **fetchPropertyChanges** (nem kötelező): logikai tulajdonság, amely meghatározza, hogy a válasz objektum tartalmazza-e a tulajdonságok változásait.
 
 Példa a kérelem törzsére:
@@ -288,8 +288,8 @@ a **beforeSnapshot** és a **afterSnapshot** mindegyike megadja a pillanatkép k
 
 Az eredmények összehasonlításához használja a **resourceChanges** **Changes** tulajdonságát, vagy értékelje ki a **resourceChangeDetails** egyes Pillanatképek **tartalom** részét a különbség megállapításához. Ha összehasonlítja a pillanatképeket, az **időbélyegző** mindig különbséget mutat a vártnál.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Tekintse meg az [alapszintű lekérdezésekben](../samples/starter.md)használt nyelvet.
 - Lásd: speciális alkalmazások a [speciális lekérdezésekben](../samples/advanced.md).
-- Ismerje meg az [erőforrások feltárását](../concepts/explore-resources.md).
+- További információ az [erőforrások feltárásáról](../concepts/explore-resources.md).

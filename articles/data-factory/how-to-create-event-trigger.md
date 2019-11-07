@@ -1,5 +1,5 @@
 ---
-title: Eseményvezérelt eseményindítók létrehozása a Azure Data Factoryban | Microsoft Docs
+title: Eseményvezérelt eseményindítók létrehozása a Azure Data Factoryban
 description: Megtudhatja, hogyan hozhat létre eseményindítót olyan Azure Data Factoryban, amely egy adott eseményre reagálva egy folyamatot futtat.
 services: data-factory
 documentationcenter: ''
@@ -11,12 +11,12 @@ manager: jroth
 ms.reviewer: maghan
 ms.topic: conceptual
 ms.date: 10/18/2018
-ms.openlocfilehash: a2c046d4375b891d17d545edd804d0fa1da6ee75
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 7581831e846e6de835c261d3430a88f1dcee9eb4
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70142359"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73673693"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-in-response-to-an-event"></a>Olyan eseményindító létrehozása, amely egy adott eseményre válaszul futtat egy folyamatot
 
@@ -30,7 +30,7 @@ A szolgáltatás tíz percen belüli bevezetéséhez és bemutatásához tekints
 
 
 > [!NOTE]
-> A cikkben ismertetett integráció a Azure Event Gridtól függ [](https://azure.microsoft.com/services/event-grid/). Győződjön meg arról, hogy az előfizetés regisztrálva van a Event Grid erőforrás-szolgáltatónál. További információ: erőforrás- [szolgáltatók és típusok](../azure-resource-manager/resource-manager-supported-services.md#azure-portal).
+> A cikkben ismertetett integráció a [Azure Event Gridtól](https://azure.microsoft.com/services/event-grid/)függ. Győződjön meg arról, hogy az előfizetés regisztrálva van a Event Grid erőforrás-szolgáltatónál. További információ: erőforrás- [szolgáltatók és típusok](../azure-resource-manager/resource-manager-supported-services.md#azure-portal).
 
 ## <a name="data-factory-ui"></a>A Data Factory felhasználói felülete
 
@@ -38,7 +38,7 @@ Ebből a szakaszból megtudhatja, hogyan hozhat létre egy eseményvezérelt ese
 
 1. Ugrás a **szerzői vászonra**
 
-2. A bal alsó sarokban kattintson az eseményindítók gombra.
+2. A bal alsó sarokban kattintson az **Eseményindítók** gombra.
 
 3. Kattintson az **+ új** elemre, amely megnyitja a trigger oldal létrehozása NAV-t
 
@@ -53,52 +53,52 @@ Ebből a szakaszból megtudhatja, hogyan hozhat létre egy eseményvezérelt ese
 
 6. A **blob** elérési útja és a **blob elérési** útja a tulajdonságok segítségével megadhatja azokat a tárolókat, mappákat és blob-neveket, amelyekhez eseményeket szeretne kapni. Az esemény-eseményindítónak legalább egy ilyen tulajdonságot meg kell határoznia. Különböző mintákat használhat a **blob elérési útjához** , a **blob elérési útja** pedig tulajdonságok használatával végződik, ahogy az ebben a cikkben szereplő példákban is látható.
 
-    * **A blob elérési útja a következőket veszi kezdettel:** A blob elérési útnak a mappa elérési útjával kell kezdődnie. Az érvényes értékek `2018/` a `2018/april/shoes.csv`következők: és. Ez a mező nem választható ki, ha nincs kiválasztva tároló.
-    * **A blob elérési útja az alábbiakkal végződik:** A blob elérési útjának fájlnevet vagy kiterjesztést kell végződnie. Az érvényes értékek `shoes.csv` a `.csv`következők: és. A tároló és a mappa neve nem kötelező, de ha meg van adva, egy `/blobs/` szegmensnek kell elválasztani őket. Egy "Orders" nevű tároló például a következő értékkel `/orders/blobs/2018/april/shoes.csv`rendelkezhet:. Ha bármilyen tárolóban szeretne megadni egy mappát, hagyja ki a kezdő "/" karaktert. Például `april/shoes.csv` egy eseményt indít el bármely `shoes.csv` , a mappában található "April" nevű fájlon bármely tárolóban. 
+    * **A blob elérési útja a következőket veszi kezdettel:** A blob elérési útnak a mappa elérési útjával kell kezdődnie. Az érvényes értékek a következők: `2018/` és `2018/april/shoes.csv`. Ez a mező nem választható ki, ha nincs kiválasztva tároló.
+    * **A blob elérési útja az alábbiakkal végződik:** A blob elérési útjának fájlnevet vagy kiterjesztést kell végződnie. Az érvényes értékek a következők: `shoes.csv` és `.csv`. A tároló és a mappa neve nem kötelező, de ha meg van adva, egy `/blobs/` szegmensnek kell elválasztani őket. Például egy "Orders" nevű tároló értéke `/orders/blobs/2018/april/shoes.csv`lehet. Ha bármilyen tárolóban szeretne megadni egy mappát, hagyja ki a kezdő "/" karaktert. Például a `april/shoes.csv` minden tárolóban elindít egy eseményt az "áprilisi" nevű mappában található bármely `shoes.csv` nevű fájlon. 
 
 7. Válassza ki, hogy az eseményindító válaszol-e a **blob által létrehozott** eseményre, a **blob törölt** eseményére vagy mindkettőre. A megadott tárolási helyen minden esemény elindítja az eseményindítóhoz társított Data Factory folyamatokat.
 
     ![Az eseményindító konfigurálása](media/how-to-create-event-trigger/event-based-trigger-image2.png)
 
-8. Miután konfigurálta az aktiválást, kattintson a **Next (tovább) gombra: Az adatelőnézet**. Ezen a képernyőn láthatók azok a meglévő Blobok, amelyek megfelelnek az esemény-eseményindító konfigurációjának. Győződjön meg arról, hogy adott szűrőket adott meg. A túl széles szűrők konfigurálása nagy számú, létrehozott/törölt fájlhoz is tartozhat, és jelentősen befolyásolhatja a költségeket. A szűrési feltételek ellenőrzése után kattintson a **Befejezés**gombra.
+8. Miután konfigurálta az aktiválást, kattintson a **Next (tovább) gombra: az adatelőnézet**. Ezen a képernyőn láthatók azok a meglévő Blobok, amelyek megfelelnek az esemény-eseményindító konfigurációjának. Győződjön meg arról, hogy adott szűrőket adott meg. A túl széles szűrők konfigurálása nagy számú, létrehozott/törölt fájlhoz is tartozhat, és jelentősen befolyásolhatja a költségeket. A szűrési feltételek ellenőrzése után kattintson a **Befejezés**gombra.
 
     ![Esemény-eseményindító adatelőnézete](media/how-to-create-event-trigger/event-based-trigger-image3.png)
 
-9. Ha csatlakoztatni szeretne egy folyamatot ehhez az triggerhez, lépjen a folyamat vászonra, és kattintson az **trigger hozzáadása** lehetőségre, és válassza az **új/szerkesztés**lehetőséget. Amikor megjelenik az oldalsó NAV, kattintson az **trigger kiválasztása...** legördülő listára, és válassza ki a létrehozott triggert. Kattintson **a Tovább gombra: Az adatok** előnézete a konfiguráció megerősítéséhez, majd az adatelőnézet érvényesítése elem melletti helyes.
+9. Ha csatlakoztatni szeretne egy folyamatot ehhez az triggerhez, lépjen a folyamat vászonra, és kattintson az **trigger hozzáadása** lehetőségre, és válassza az **új/szerkesztés**lehetőséget. Amikor megjelenik az oldalsó NAV, kattintson az **trigger kiválasztása...** legördülő listára, és válassza ki a létrehozott triggert. Kattintson a **Tovább gombra: az adatok előnézete** a konfiguráció megerősítéséhez, majd az adatelőnézet érvényesítése elem **melletti** helyes értékre.
 
-10. Ha a folyamat paraméterekkel rendelkezik, akkor megadhatja őket az trigger futtatási paraméterének navigációs oldalán. Az eseményindító rögzíti a blob mappájának elérési útját és fájlnevét a tulajdonságok `@triggerBody().folderPath` és `@triggerBody().fileName`a között. Ezen tulajdonságok értékének egy folyamaton való használatához a tulajdonságokat a folyamat paramétereinek kell képeznie. Miután a tulajdonságokat hozzárendelte a paraméterekhez, az trigger által rögzített értékeket a folyamat során a `@pipeline().parameters.parameterName` kifejezésen keresztül érheti el. Ha elkészült, kattintson a **Befejezés** gombra.
+10. Ha a folyamat paraméterekkel rendelkezik, akkor megadhatja őket az trigger futtatási paraméterének navigációs oldalán. Az eseményindító rögzíti a blob mappájának elérési útját és fájlnevét a tulajdonságok `@triggerBody().folderPath` és `@triggerBody().fileName`. Ezen tulajdonságok értékének egy folyamaton való használatához a tulajdonságokat a folyamat paramétereinek kell képeznie. A tulajdonságok paraméterekhez való leképezése után a folyamat során a `@pipeline().parameters.parameterName` kifejezésen keresztül érheti el az trigger által rögzített értékeket. Ha elkészült, kattintson a **Befejezés** gombra.
 
     ![Tulajdonságok megfeleltetése a folyamat paramétereinek](media/how-to-create-event-trigger/event-based-trigger-image4.png)
 
-Az előző példában az eseményindító úgy van beállítva, hogy a. csv fájlban végződő blob-elérési út a tárolóban, a Container Sample---ban a mappa esemény-tesztelés területén jön létre. A **folderPath** és a **filename** tulajdonság rögzíti az új blob helyét. Ha például a MoviesDB. csv hozzá van adva az elérési út mintája – az adatelemzési `@triggerBody().folderPath` és az esemény- `sample-data/event-testing` tesztelés `@triggerBody().fileName` , a értéke `moviesDB.csv`és a értéke. Ezek az értékek a példában `sourceFolder` a folyamat paramétereinek megfelelően vannak leképezve, és `sourceFile` a folyamat során a és `@pipeline().parameters.sourceFolder` `@pipeline().parameters.sourceFile` a szolgáltatásban is használhatók.
+Az előző példában az eseményindító úgy van beállítva, hogy a. csv fájlban végződő blob-elérési út a tárolóban, a Container Sample---ban a mappa esemény-tesztelés területén jön létre. A **folderPath** és a **filename** tulajdonság rögzíti az új blob helyét. Ha például a MoviesDB. csv hozzá van adva az elérési út mintája – adat/esemény-teszteléshez, `@triggerBody().folderPath` értéke `sample-data/event-testing`, és a `@triggerBody().fileName` értéke `moviesDB.csv`. Ezek az értékek a példában láthatók a folyamat paramétereinek `sourceFolder` és `sourceFile` amelyek a folyamat során használhatók `@pipeline().parameters.sourceFolder` és `@pipeline().parameters.sourceFile`ként.
 
 ## <a name="json-schema"></a>JSON-séma
 
 Az alábbi táblázat áttekintést nyújt az eseményvezérelt eseményindítókkal kapcsolatos séma-elemekről:
 
-| **JSON-elem** | **Leírás** | **Típus** | **Megengedett értékek** | **Kötelező** |
+| **JSON-elem** | **Leírás** | **Típus** | **Megengedett értékek** | **Szükséges** |
 | ---------------- | --------------- | -------- | ------------------ | ------------ |
 | **hatókör** | A Storage-fiók Azure Resource Manager erőforrás-azonosítója. | Sztring | Azure Resource Manager azonosítója | Igen |
-| **események** | A triggert tüzet kiváltó események típusa. | Array    | Microsoft.Storage.BlobCreated, Microsoft.Storage.BlobDeleted | Igen, az értékek bármely kombinációja. |
-| **blobPathBeginsWith** | A blob elérési útjának a triggerhez megadott mintázattal kell kezdődnie. Például `/records/blobs/december/` csak a `records` tárolóban lévő `december` mappában lévő Blobok eseményindítóját kell kiváltani. | Sztring   | | Meg kell adnia egy értéket a következő tulajdonságok közül legalább egy számára: `blobPathBeginsWith` vagy. `blobPathEndsWith` |
-| **blobPathEndsWith** | A blob elérési útjának a triggerhez megadott mintázattal kell végződnie. Például `december/boxes.csv` csak a `december` mappában `boxes` lévő Blobok eseményindítóját kell kiváltani. | Sztring   | | Meg kell adnia egy értéket a következő tulajdonságok közül legalább egy számára: `blobPathBeginsWith` vagy. `blobPathEndsWith` |
+| **események** | A triggert tüzet kiváltó események típusa. | Tömb    | Microsoft. Storage. BlobCreated, Microsoft. Storage. BlobDeleted | Igen, az értékek bármely kombinációja. |
+| **blobPathBeginsWith** | A blob elérési útjának a triggerhez megadott mintázattal kell kezdődnie. `/records/blobs/december/` például csak a Blobok eseményindítóját a `records` tároló alatti `december` mappában. | Sztring   | | Legalább egy értéket meg kell adnia a következő tulajdonságok közül: `blobPathBeginsWith` vagy `blobPathEndsWith`. |
+| **blobPathEndsWith** | A blob elérési útjának a triggerhez megadott mintázattal kell végződnie. `december/boxes.csv` például csak a `boxes` nevű Blobok eseményindítóját indítja el egy `december` mappában. | Sztring   | | Legalább egy értéket meg kell adnia a következő tulajdonságok közül: `blobPathBeginsWith` vagy `blobPathEndsWith`. |
 
 ## <a name="examples-of-event-based-triggers"></a>Példák eseményvezérelt eseményindítóra
 
 Ez a szakasz az eseményvezérelt eseményindítók beállításait mutatja be.
 
 > [!IMPORTANT]
-> Az elérési út szegmensét az alábbi példákban látható módon kell megadnia, amikor tárolót, mappát, tárolót, fájlt vagy tárolót, mappát és fájlt ad meg. `/blobs/` A **blobPathBeginsWith**esetében a Data Factory felhasználói felület automatikusan hozzáadja `/blobs/` a mappa és a tároló nevét az trigger JSON-ban.
+> Az elérési út `/blobs/` az alábbi példákban látható módon kell megadnia, amikor tárolót, mappát, tárolót, fájlt vagy tárolót, mappát és fájlt ad meg. A **blobPathBeginsWith**esetében a Data Factory felhasználói felület automatikusan hozzáadja `/blobs/` a mappa és a tároló neve között az trigger JSON-ban.
 
 | Tulajdonság | Példa | Leírás |
 |---|---|---|
 | **A blob elérési útja** | `/containername/` | Eseményeket fogad a tárolóban lévő összes blobhoz. |
-| **A blob elérési útja** | `/containername/blobs/foldername/` | Eseményeket fogad a tárolóban és `containername` `foldername` a mappában található összes blobhoz. |
+| **A blob elérési útja** | `/containername/blobs/foldername/` | A `containername` tárolóban és `foldername` mappában található összes blobhoz tartozó eseményeket fogadja. |
 | **A blob elérési útja** | `/containername/blobs/foldername/subfoldername/` | Egy almappára is hivatkozhat. |
-| **A blob elérési útja** | `/containername/blobs/foldername/file.txt` | A `file.txt` `containername` tárolóban lévő `foldername` mappában található blob eseményeinek fogadása. |
-| **A blob elérési útja véget ér** | `file.txt` | A bármely elérési úton megnevezett `file.txt` blob eseményeinek fogadása. |
-| **A blob elérési útja véget ér** | `/containername/blobs/file.txt` | A tárolóban `file.txt` `containername`megnevezett blob eseményeinek fogadása. |
-| **A blob elérési útja véget ér** | `foldername/file.txt` | Eseményeket fogad a mappában `file.txt` lévő `foldername` Blobok bármelyik tárolóban. |
+| **A blob elérési útja** | `/containername/blobs/foldername/file.txt` | Egy `file.txt` nevű blob eseményeinek fogadása az `containername` tároló `foldername` mappájában. |
+| **A blob elérési útja véget ér** | `file.txt` | Egy `file.txt` nevű blob eseményeinek fogadása bármely elérési úton. |
+| **A blob elérési útja véget ér** | `/containername/blobs/file.txt` | Eseményeket fogad egy `file.txt` nevű blobhoz a tároló `containername`alatt. |
+| **A blob elérési útja véget ér** | `foldername/file.txt` | Egy `file.txt` nevű blobhoz tartozó eseményeket fogad `foldername` mappában bármely tárolóban. |
 
 ## <a name="next-steps"></a>További lépések
 Az eseményindítókkal kapcsolatos részletes információkért lásd: [folyamat-végrehajtás és eseményindítók](concepts-pipeline-execution-triggers.md#triggers).

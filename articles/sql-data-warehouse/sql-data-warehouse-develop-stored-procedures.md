@@ -1,5 +1,5 @@
 ---
-title: Tárolt eljárások használata a Azure SQL Data Warehouseban | Microsoft Docs
+title: Tárolt eljárások használata
 description: Tippek a Azure SQL Data Warehouse tárolt eljárások megvalósításához a megoldások fejlesztéséhez.
 services: sql-data-warehouse
 author: XiaoyuMSFT
@@ -10,17 +10,18 @@ ms.subservice: development
 ms.date: 04/02/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: 2c12a679ed5f0a1574deb34df8c0151e737d2d01
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.custom: seo-lt-2019
+ms.openlocfilehash: e6e1144043cbbbc8124785351e1e56a776b84527
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68479591"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73692814"
 ---
 # <a name="using-stored-procedures-in-sql-data-warehouse"></a>Tárolt eljárások használata a SQL Data Warehouseban
 Tippek a Azure SQL Data Warehouse tárolt eljárások megvalósításához a megoldások fejlesztéséhez.
 
-## <a name="what-to-expect"></a>Amire számíthat
+## <a name="what-to-expect"></a>Mi várható?
 
 A SQL Data Warehouse számos olyan T-SQL-funkciót támogat, amelyek a SQL Serverban használatosak. Még ennél is fontosabb, hogy a megoldás teljesítményének maximalizálása érdekében Felskálázási funkciók érhetők el.
 
@@ -63,9 +64,9 @@ GO
 EXEC prc_nesting
 ```
 
-Megjegyzés: SQL Data Warehouse jelenleg nem támogatja a [@@NESTLEVEL](/sql/t-sql/functions/nestlevel-transact-sql)-t. Követnie kell a beágyazási szintet. Nem valószínű, hogy túllépi a nyolcnál nagyobb korlátot, de ha igen, újra kell dolgoznia a kódot, hogy az illeszkedjen a korláton belüli beágyazási szintre.
+Vegye figyelembe, hogy SQL Data Warehouse jelenleg nem támogatja a [@@NESTLEVEL](/sql/t-sql/functions/nestlevel-transact-sql). Követnie kell a beágyazási szintet. Nem valószínű, hogy túllépi a nyolcnál nagyobb korlátot, de ha igen, újra kell dolgoznia a kódot, hogy az illeszkedjen a korláton belüli beágyazási szintre.
 
-## <a name="insertexecute"></a>BESZÚRÁS.. VÉGREHAJTÁSA
+## <a name="insertexecute"></a>Beszúrás.. VÉGREHAJTÁSA
 A SQL Data Warehouse nem teszi lehetővé, hogy egy tárolt eljárás eredmény-készletét egy INSERT utasítással használja. Van azonban egy alternatív megközelítés, amelyet használhat. Példaként tekintse meg az [ideiglenes táblákról](sql-data-warehouse-tables-temporary.md)szóló cikket. 
 
 ## <a name="limitations"></a>Korlátozások

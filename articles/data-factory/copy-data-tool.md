@@ -1,5 +1,5 @@
 ---
-title: Adatok másolása eszköz Azure Data Factory | Microsoft Docs
+title: Adatok másolása eszköz Azure Data Factory
 description: Információt nyújt a Adatok másolása eszközről Azure Data Factory felhasználói felületen
 services: data-factory
 documentationcenter: ''
@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 06/18/2018
 ms.author: yexu
-ms.openlocfilehash: 144a991eb911fa6a337b6711515bd5760456fc10
-ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
+ms.openlocfilehash: b5c93213199cac399487f949a3a8cb04c2d9addb
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69996389"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73678318"
 ---
 # <a name="copy-data-tool-in-azure-data-factory"></a>Adatok másolása eszköz a Azure Data Factory
 A Azure Data Factory Adatok másolása eszköz megkönnyíti és optimalizálja az adatfeldolgozás folyamatát egy adattóba, ami általában egy teljes körű adatintegrációs forgatókönyv első lépése.  Időt takaríthat meg, különösen akkor, ha a Azure Data Factory használatával tölti be az adatforrásból az adatok első alkalommal történő betöltését. Az eszköz használatának néhány előnye:
@@ -44,7 +44,7 @@ Ez az eszköz lehetővé teszi, hogy a különböző forrásokból származó ad
 1. Konfigurálja a **forrás**beállításait.
 2. Adja meg a **célhely**beállításait. 
 3. Konfigurálja a másolási művelet **speciális beállításait** , például az oszlopok leképezését, a teljesítmény beállításait és a hibatűrési beállításokat. 
-4. Az adatok betöltésére szolgáló feladat ütemtervének megadása. 
+4. Az adatok betöltésére szolgáló feladat **ütemtervének** megadása. 
 5. Tekintse át a létrehozandó Data Factory entitások **összegzését** . 
 6. A folyamat **szerkesztésével módosítsa** a másolási tevékenység beállításait igény szerint. 
 

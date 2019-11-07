@@ -1,5 +1,5 @@
 ---
-title: Azure SSIS Integration Runtime csatlakoztatása virtuális hálózathoz | Microsoft Docs
+title: Azure SSIS Integration Runtime csatlakoztatása virtuális hálózathoz
 description: Ismerje meg, hogyan csatlakozhat Azure-SSIS integrációs futtatókörnyezethez egy Azure-beli virtuális hálózathoz.
 services: data-factory
 documentationcenter: ''
@@ -12,12 +12,12 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: 065f69cc98f05fcb19648f190a7dba4b43da1a9a
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: d36900a1ce05eaf022637a6ef6b866fe0d190b17
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72326619"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73672733"
 ---
 # <a name="join-an-azure-ssis-integration-runtime-to-a-virtual-network"></a>Azure SSIS Integration Runtime csatlakoztatása virtuális hálózathoz
 Ha SQL Server Integration Servicest (SSIS) használ a Azure Data Factoryban, akkor a következő esetekben csatlakoztatnia kell az Azure-SSIS Integration Runtime (IR)-t egy Azure-beli virtuális hálózathoz: 
@@ -62,7 +62,7 @@ A következő szakaszokban további részleteket talál.
 
 Állítsa be a virtuális hálózatot a következő követelmények teljesítéséhez: 
 
--   Győződjön meg arról, hogy a `Microsoft.Batch` egy regisztrált szolgáltató a virtuális hálózat alhálózatának azon előfizetése alatt, amely a Azure-SSIS IRt tárolja. Ha klasszikus virtuális hálózatot használ, a virtuális hálózat klasszikus virtuálisgép-közreműködői szerepköréhez is csatlakozhat @no__t – 0. 
+-   Győződjön meg arról, hogy a `Microsoft.Batch` a virtuális hálózati alhálózat előfizetése alá tartozó regisztrált szolgáltató, amely a Azure-SSIS IRt tárolja. Ha klasszikus virtuális hálózatot használ, csatlakoztassa `MicrosoftAzureBatch`t a virtuális hálózat klasszikus virtuálisgép-közreműködői szerepköréhez is. 
 
 -   Győződjön meg arról, hogy rendelkezik a szükséges engedélyekkel. További információ: [set up permissions (engedélyek beállítása](#perms)).
 
@@ -88,7 +88,7 @@ A Azure-SSIS IR létrehozó felhasználónak a következő engedélyekkel kell r
 
 - Ha a SSIS IR-t egy Azure Resource Manager virtuális hálózathoz csatlakoztatja, két lehetőség közül választhat:
 
-  - Használja a beépített hálózati közreműködő szerepkört. Ez a szerepkör a _Microsoft. Network/\*_ engedéllyel rendelkezik, amely sokkal nagyobb hatókört tartalmaz, mint amennyi szükséges.
+  - Használja a beépített hálózati közreműködő szerepkört. Ez a szerepkör a _Microsoft. Network/\*_ engedélyhez tartozik, amely a szükségesnél jóval nagyobb hatókörű.
 
   - Hozzon létre egy egyéni szerepkört, amely csak a szükséges _Microsoft. Network/virtualNetworks/\*/JOIN/Action_ engedélyt tartalmazza. 
 
@@ -105,7 +105,7 @@ Amikor kiválaszt egy alhálózatot:
 -   Ne használjon olyan alhálózatot, amelyet kizárólag más Azure-szolgáltatások foglalnak magukban (például SQL Database felügyelt példány, App Service stb.). 
 
 ### <a name="dns_server"></a>A DNS-kiszolgáló beállítása 
-Ha saját DNS-kiszolgálóját kell használnia a Azure-SSIS IR által csatlakoztatott virtuális hálózatban, győződjön meg arról, hogy képes a globális Azure-állomásnevek (például egy `<your storage account>.blob.core.windows.net` nevű Azure Storage-blob) feloldására. 
+Ha saját DNS-kiszolgálóját kell használnia a Azure-SSIS IR által csatlakoztatott virtuális hálózaton, győződjön meg arról, hogy képes a globális Azure-állomásnevek (például egy `<your storage account>.blob.core.windows.net`nevű Azure Storage-blob) feloldására. 
 
 A következő lépések ajánlottak: 
 
@@ -139,7 +139,7 @@ A következő ugrási típussal rendelkező 0.0.0.0/0 útvonal az Azure ExpressR
 
 Ha aggódik amiatt, hogy elveszti a kimenő internetes forgalom vizsgálatának lehetőségét az adott alhálózatról, meghatározhatja az adott UDR úgy, hogy a forgalmat csak Azure Batch felügyeleti szolgáltatások és a Azure-SSIS IR között a következő ugrási típusú **internetre**irányítsa.
 
-Ha például a Azure-SSIS IR a `UK South` helyen található, akkor a szolgáltatási címke IP-címtartomány [letöltése hivatkozásra kattintva](https://www.microsoft.com/en-us/download/details.aspx?id=56519) vagy a Service [tag felderítési API](https://aka.ms/discoveryapi)-n keresztül a szolgáltatás címkéje `BatchNodeManagement.UKSouth`. Ezután alkalmazza a kapcsolódó IP-címtartomány következő UDR az **Internet**következő ugrási típusával.
+Ha például a Azure-SSIS IR a `UK South`címen található, akkor a szolgáltatási címke IP-címtartomány [letöltése hivatkozásra kattintva](https://www.microsoft.com/en-us/download/details.aspx?id=56519) vagy a Service [tag felderítési API](https://aka.ms/discoveryapi)-n keresztül fog megjelenni az IP-címtartomány `BatchNodeManagement.UKSouth`. Ezután alkalmazza a kapcsolódó IP-címtartomány következő UDR az **Internet**következő ugrási típusával.
 
 ![Azure Batch UDR beállításai](media/join-azure-ssis-integration-runtime-virtual-network/azurebatch-udr-settings.png)
 
@@ -417,7 +417,7 @@ Start-AzDataFactoryV2IntegrationRuntime -ResourceGroupName $ResourceGroupName `
 
 A parancs futása 20 – 30 percet vesz igénybe.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 A Azure-SSIS IRról a következő cikkekben talál további információt: 
 - [Azure-SSIS IR](concepts-integration-runtime.md#azure-ssis-integration-runtime). Ez a cikk az IRs-vel kapcsolatos általános információkat tartalmaz, beleértve a Azure-SSIS IRt is. 
 - [Oktatóanyag: SSIS-csomagok üzembe helyezése az Azure-](tutorial-create-azure-ssis-runtime-portal.md)ban. Ez az oktatóanyag részletes útmutatást nyújt a Azure-SSIS IR létrehozásához. A Azure SQL Database használja az SSIS-katalógus üzemeltetéséhez. 

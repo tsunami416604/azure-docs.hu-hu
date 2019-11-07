@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 11/24/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: fc70e2e6475620bfb8842fc740772e326f8ee8d0
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 76afafb59de762776b7d2614e383320b7d8f79e4
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73480345"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73669405"
 ---
 # <a name="the-team-data-science-process-in-action-using-sql-data-warehouse"></a>A csoportos adatelemzési folyamat működés közben: a SQL Data Warehouse használata
 Ebben az oktatóanyagban bemutatjuk, hogyan hozhat létre és helyezhet üzembe gépi tanulási modellt az SQL Data Warehouse (SQL DW) használatával nyilvánosan elérhető adatkészlethez – a [New York-i taxis](https://www.andresmh.com/nyctaxitrips/) adatkészlethez. A bináris besorolási modell alapján megjósolható, hogy egy adott utazási tipp díjköteles-e, és a többosztályos besorolásra és a regresszióra vonatkozó modelleket is tárgyaljuk, amelyek előre jelezik a kifizetett tip-összegek eloszlását.
@@ -851,7 +851,7 @@ Példa egy bináris besorolási kísérletre, amely közvetlenül az SQL Data Wa
 >
 
 ## <a name="mldeploy"></a>Modellek üzembe helyezése Azure Machine Learning
-Ha a modell elkészült, egyszerűen üzembe helyezheti webszolgáltatásként közvetlenül a kísérletből. Az Azure ML-webszolgáltatások üzembe helyezésével kapcsolatos további információkért lásd: [Azure Machine learning webszolgáltatás üzembe](../studio/publish-a-machine-learning-web-service.md)helyezése.
+Ha a modell elkészült, egyszerűen üzembe helyezheti webszolgáltatásként közvetlenül a kísérletből. Az Azure ML-webszolgáltatások üzembe helyezésével kapcsolatos további információkért lásd: [Azure Machine learning webszolgáltatás üzembe](../studio/deploy-a-machine-learning-web-service.md)helyezése.
 
 Új webszolgáltatás üzembe helyezéséhez a következőket kell tennie:
 

@@ -1,5 +1,5 @@
 ---
-title: Felügyelt példányok biztonságos nyilvános végpontjai – Azure SQL Database felügyelt példány | Microsoft Docs
+title: Felügyelt példányok biztonságos nyilvános végpontjai – Azure SQL Database felügyelt példány
 description: Nyilvános végpontok biztonságos használata az Azure-ban felügyelt példánnyal
 services: sql-database
 ms.service: sql-database
@@ -10,12 +10,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: vanto, carlrab
 ms.date: 05/08/2019
-ms.openlocfilehash: c7f57a636e95bb137dd4285b8f9ce8343b27d2a0
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 3d97eb16ee2a8b3203b187dca7b2a17974473098
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68567374"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73687951"
 ---
 # <a name="use-an-azure-sql-database-managed-instance-securely-with-public-endpoints"></a>Azure SQL Database felügyelt példány biztonságos használata nyilvános végpontokkal
 
@@ -53,4 +53,4 @@ Ha a kapcsolatok az Azure-ból indulnak, javasoljuk, hogy a forgalom egy jól is
 
 ## <a name="next-steps"></a>További lépések
 
-- Megtudhatja, hogyan konfigurálhat nyilvános végpontot a példányok kezeléséhez: [Nyilvános végpont konfigurálása](sql-database-managed-instance-public-endpoint-configure.md)
+- Megtudhatja, hogyan konfigurálhat nyilvános végpontot a következő példányok kezeléséhez: [nyilvános végpont konfigurálása](sql-database-managed-instance-public-endpoint-configure.md)

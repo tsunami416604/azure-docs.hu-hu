@@ -1,5 +1,5 @@
 ---
-title: Séma-hozzárendelés a másolási tevékenységben | Microsoft Docs
+title: Séma-hozzárendelés másolási tevékenységben
 description: Ismerje meg, hogy a másolási tevékenység hogyan Azure Data Factory Maps-sémákban és adattípusokban a forrásadatok között az adatok másolásakor.
 services: data-factory
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 04/29/2019
 ms.author: jingwang
-ms.openlocfilehash: b705123dc6492466c30b3c1ddaf4b330b0d684a1
-ms.sourcegitcommit: a6718e2b0251b50f1228b1e13a42bb65e7bf7ee2
+ms.openlocfilehash: ed0823930b819661baf384d51478547cb2e0eccf
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71272265"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73678144"
 ---
 # <a name="schema-mapping-in-copy-activity"></a>Séma-hozzárendelés másolási tevékenységben
 
@@ -33,7 +33,7 @@ Az oszlop-hozzárendelés akkor érvényes, ha a forrásról a fogadóba másol 
 
 ### <a name="explicit-mapping"></a>Explicit leképezés
 
-A másolási tevékenység – > `translator`  ->  `mappings` tulajdonságban megadhatja a leképezni kívánt oszlopokat. Az alábbi példa egy másolási tevékenységet határoz meg egy folyamaton belül, hogy a tagolt szövegből Azure SQL Databaseba másolja az adatok.
+Megadhatja a másolási tevékenységben leképezni kívánt oszlopokat – > `translator` -> `mappings` tulajdonságot. Az alábbi példa egy másolási tevékenységet határoz meg egy folyamaton belül, hogy a tagolt szövegből Azure SQL Databaseba másolja az adatok.
 
 ```json
 {
@@ -86,26 +86,26 @@ A másolási tevékenység – > `translator`  ->  `mappings` tulajdonságban me
 }
 ```
 
-A (z `translator` ) `source` és  ->  `mappings` a(z)>objektumbanakövetkező`sink`tulajdonságok támogatottak:
+A következő tulajdonságok támogatottak `translator` -> `mappings`-> objektum esetében `source` és `sink`esetén:
 
-| Tulajdonság | Leírás                                                  | Szükséges |
+| Tulajdonság | Leírás                                                  | Kötelező |
 | -------- | ------------------------------------------------------------ | -------- |
-| name     | A forrás vagy a fogadó oszlop neve.                           | Igen      |
-| ordinal  | Oszlop indexe Első lépések: 1. <br>Alkalmazva és kötelező, ha a tagolt szöveg fejléc nélkül van használatban. | Nem       |
-| path     | Az egyes mezőkhöz tartozó JSON-elérésiút-kifejezés kibontása vagy leképezése. Hierarchikus adatokra vonatkozik például MongoDB/REST.<br>A root objektum alatti mezők esetében a JSON-útvonal a root $; karakterrel kezdődik. a `collectionReference` tulajdonság által választott tömbben lévő mezők esetében a JSON-útvonal a tömb elemből indul el. | Nem       |
+| név     | A forrás vagy a fogadó oszlop neve.                           | Igen      |
+| sorszámok  | Oszlop indexe Első lépések: 1. <br>Alkalmazva és kötelező, ha a tagolt szöveg fejléc nélkül van használatban. | Nem       |
+| elérési útja     | Az egyes mezőkhöz tartozó JSON-elérésiút-kifejezés kibontása vagy leképezése. Hierarchikus adatokra vonatkozik például MongoDB/REST.<br>A root objektum alatti mezők esetében a JSON-útvonal a root $; karakterrel kezdődik. `collectionReference` tulajdonság által kiválasztott tömb mezőihez a JSON-útvonal a tömb elemtől indul. | Nem       |
 | type     | Data Factory a forrás vagy a fogadó oszlop közbenső adattípusa. | Nem       |
-| culture  | A forrás vagy a fogadó oszlop kulturális környezete. <br>Akkor alkalmazza, ha `Datetime` a `Datetimeoffset`típus értéke vagy. A mező alapértelmezett értéke: `en-us`. | Nem       |
-| format   | A Type vagy `Datetime` `Datetimeoffset`a típushoz használandó formázó sztring. A DateTime formátumának formázásához tekintse meg az [Egyéni dátum-és időformátumot ismertető karakterláncot](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings) . | Nem       |
+| kulturális környezet  | A forrás vagy a fogadó oszlop kulturális környezete. <br>Akkor alkalmazza, ha a típus `Datetime` vagy `Datetimeoffset`. A mező alapértelmezett értéke: `en-us`. | Nem       |
+| formátumban   | A típus `Datetime` vagy `Datetimeoffset`esetén használandó formázó karakterlánc. A DateTime formátumának formázásához tekintse meg az [Egyéni dátum-és időformátumot ismertető karakterláncot](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings) . | Nem       |
 
-A (z `translator` ) `source` és  ->  `mappings` a(z)objektummellettakövetkező`sink`tulajdonságokat is támogatja:
+A következő tulajdonságok támogatottak `translator` -> `mappings` mellett `source` és `sink`objektumon kívül:
 
-| Tulajdonság            | Leírás                                                  | Szükséges |
+| Tulajdonság            | Leírás                                                  | Kötelező |
 | ------------------- | ------------------------------------------------------------ | -------- |
-| collectionReference | Csak akkor támogatott, ha a hierarchikus adatok például a MongoDB/REST forrása.<br>Ha szeretné megismételni és kinyerni a tömbben lévő objektumokból származó adatmennyiséget ugyanazzal a mintával, és soronként konvertálja az objektumokat, akkor a tömb JSON-elérési útját kell megadnia. | Nem       |
+| collectionReference | Csak akkor támogatott, ha a hierarchikus adatok például a MongoDB/REST forrása.<br>Ha szeretné megismételni és kinyerni a **tömbben** lévő objektumokból származó adatmennyiséget ugyanazzal a mintával, és soronként konvertálja az objektumokat, akkor a tömb JSON-elérési útját kell megadnia. | Nem       |
 
 ### <a name="alternative-column-mapping"></a>Alternatív oszlop-hozzárendelés
 
-Megadhatja a másolási tevékenység `translator` ->  ->  `columnMappings` a táblázatos adatokat a leképezéshez. Ebben az esetben a "Structure" szakasz szükséges a bemeneti és a kimeneti adatkészletekhez is. Az oszlop-hozzárendelés támogatja a "Structure" **forrás-adatkészlet összes oszlopának vagy részhalmazának leképezését a "Structure" fogadó adatkészlet összes oszlopára**. A következő hibák a kivételt eredményezik:
+Megadhatja a másolási tevékenység – > `translator` -> `columnMappings` a táblázatos adatokat. Ebben az esetben a "Structure" szakasz szükséges a bemeneti és a kimeneti adatkészletekhez is. Az oszlop-hozzárendelés támogatja a "Structure" **forrás-adatkészlet összes oszlopának vagy részhalmazának leképezését a "Structure" fogadó adatkészlet összes oszlopára**. A következő hibák a kivételt eredményezik:
 
 * A forrás adattároló lekérdezési eredményének nincs olyan oszlopa, amely meg van adva a (z) "Structure" bemeneti adatkészletben.
 * A fogadó adattár (ha előre definiált sémával rendelkezik) nem rendelkezik olyan oszloppal, amely meg van adva a "Structure" (kimeneti adatkészlet) szakaszban.
@@ -160,7 +160,7 @@ Ebben a példában a kimeneti adatkészlet struktúrát tartalmaz, és egy Sales
 }
 ```
 
-A következő JSON a másolási tevékenységet definiálja egy folyamaton belül. A forrás oszlopai a befogadó oszlopokra vannak leképezve a **Translator** -> **columnMappings** tulajdonság használatával.
+A következő JSON a másolási tevékenységet definiálja egy folyamaton belül. A forrás oszlopai a fogadó -> **columnMappings** tulajdonságának **használatával a fogadó** oszlopokra vannak leképezve.
 
 ```json
 {
@@ -195,17 +195,17 @@ A következő JSON a másolási tevékenységet definiálja egy folyamaton belü
 }
 ```
 
-Ha a szintaxisát `"columnMappings": "UserId: MyUserId, Group: MyGroup, Name: MyName"` használja az oszlopok megfeleltetésének megadásához, akkor továbbra is támogatott.
+Ha a `"columnMappings": "UserId: MyUserId, Group: MyGroup, Name: MyName"` szintaxisát használja az oszlopok megfeleltetésének megadásához, akkor továbbra is támogatott.
 
 ### <a name="alternative-schema-mapping"></a>Alternatív séma-hozzárendelés
 
-Megadhatja a másolási tevékenység `translator` – >  ->  `schemaMapping` a hierarchikus és a táblázatos adatok között, például a MongoDB/Rest-ből a szövegfájlba való másolással és az Oracle-ből a Azure Cosmos db API-ból történő másolásával a MongoDB. A másolási tevékenység `translator` szakaszban a következő tulajdonságok támogatottak:
+Megadhatja a másolási tevékenység – > `translator` -> `schemaMapping` a hierarchikusan formázott adatok és a táblázatos adatok között, például a MongoDB/REST-ből a szövegfájlba való másolást és az Oracle-ből a Azure Cosmos DB API-ra való másolását a MongoDB. A másolási tevékenység `translator` szakaszban a következő tulajdonságok támogatottak:
 
-| Tulajdonság | Leírás | Szükséges |
+| Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
 | type | A másolási tevékenység fordítójának Type tulajdonságát a következőre kell beállítani: **TabularTranslator** | Igen |
-| schemaMapping | Kulcs-érték párok gyűjteménye, amely a **forrás oldalról a fogadó oldalra való**leképezési kapcsolatot jelöli.<br/>- **Key:** forrás jelöli. **Táblázatos forrás**esetén adja meg az oszlop nevét az adatkészlet struktúrájában definiált módon. **hierarchikus forrás**esetén adja meg a JSON-elérésiút-kifejezést az egyes mezők kinyeréséhez és leképezéséhez.<br>- **Value:** fogadó jelöli. **Táblázatos**fogadó esetén adja meg az oszlop nevét az adatkészlet struktúrájában definiált módon. **hierarchikus**fogadó esetén adja meg a JSON-elérésiút-kifejezést az egyes mezők kinyeréséhez és leképezéséhez. <br>Hierarchikus adat esetén a gyökér objektum alatti mezők esetében a JSON-útvonal a root $; karakterrel kezdődik. a `collectionReference` tulajdonság által választott tömbben lévő mezők esetében a JSON-útvonal a tömb elemből indul el.  | Igen |
-| collectionReference | Ha szeretné megismételni és kinyerni a tömbben lévő objektumokból származó adatmennyiséget ugyanazzal a mintával, és soronként konvertálja az objektumokat, akkor a tömb JSON-elérési útját kell megadnia. Ez a tulajdonság csak akkor támogatott, ha a hierarchikus adatforrás a forrás. | Nem |
+| schemaMapping | Kulcs-érték párok gyűjteménye, amely a **forrás oldalról a fogadó oldalra való**leképezési kapcsolatot jelöli.<br/>- **kulcs:** a forrást jelöli. **Táblázatos forrás**esetén adja meg az oszlop nevét az adatkészlet struktúrájában definiált módon. **hierarchikus forrás**esetén adja meg a JSON-elérésiút-kifejezést az egyes mezők kinyeréséhez és leképezéséhez.<br>- **Value:** a fogadót jelöli. **Táblázatos**fogadó esetén adja meg az oszlop nevét az adatkészlet struktúrájában definiált módon. **hierarchikus**fogadó esetén adja meg a JSON-elérésiút-kifejezést az egyes mezők kinyeréséhez és leképezéséhez. <br>Hierarchikus adat esetén a gyökér objektum alatti mezők esetében a JSON-útvonal a root $; karakterrel kezdődik. `collectionReference` tulajdonság által kiválasztott tömb mezőihez a JSON-útvonal a tömb elemtől indul.  | Igen |
+| collectionReference | Ha szeretné megismételni és kinyerni a **tömbben** lévő objektumokból származó adatmennyiséget ugyanazzal a mintával, és soronként konvertálja az objektumokat, akkor a tömb JSON-elérési útját kell megadnia. Ez a tulajdonság csak akkor támogatott, ha a hierarchikus adatforrás a forrás. | Nem |
 
 **Példa: másolás a MongoDB-ből az Oracle-be:**
 
@@ -283,23 +283,23 @@ A natív típus és az átmeneti típus közötti leképezést az egyes összek�
 
 ### <a name="supported-data-types"></a>Támogatott adattípusok
 
-Data Factory a következő átmeneti adattípusokat támogatja: Az alábbi értékeket adhatja meg a típus adatainak konfigurálásakor az [adatkészlet szerkezete](concepts-datasets-linked-services.md#dataset-structure-or-schema) konfigurációjában:
+A Data Factory a következő közbenső adattípusokat támogatja: az [adatkészletek struktúrájának](concepts-datasets-linked-services.md#dataset-structure-or-schema) konfigurálásakor az alábbi értékeket adhatja meg:
 
-* Byte[]
+* Bájt []
 * Logikai
-* Datetime
-* Datetimeoffset
-* Decimal
-* Double
-* Guid
+* datetime
+* DateTimeOffset
+* Decimális
+* duplán
+* GUID
 * Int16
 * Int32
 * Int64
-* Single
+* Önálló
 * Sztring
-* Timespan
+* Időtartomány
 
 ## <a name="next-steps"></a>További lépések
-A másolási tevékenység egyéb cikkekben talál:
+Lásd a másolási tevékenység egyéb cikkeit:
 
-- [Másolási tevékenység áttekintése](copy-activity-overview.md)
+- [Másolási tevékenység – áttekintés](copy-activity-overview.md)

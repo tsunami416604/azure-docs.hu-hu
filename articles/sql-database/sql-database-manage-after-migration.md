@@ -1,5 +1,5 @@
 ---
-title: Az önálló és a készletezett adatbázisok kezelése a Migrálás után – Azure SQL Database | Microsoft Docs
+title: Az önálló és a készletezett adatbázisok kezelése a Migrálás után – Azure SQL Database
 description: Megtudhatja, hogyan kezelheti az adatbázist a Azure SQL Database való áttelepítést követően.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: joesackmsft
 ms.author: josack
 ms.reviewer: sstein
 ms.date: 02/13/2019
-ms.openlocfilehash: 36e48e86ed3cf7138f7ff5efe89d08c07df87f25
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: d92b4b99e6ae6a7a07174e59d7cf3c9766c0eabf
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72028252"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73689539"
 ---
 # <a name="new-dba-in-the-cloud--managing-your-single-and-pooled-databases-in-azure-sql-database"></a>Új DBA a felhőben – az önálló és a készletezett adatbázisok kezelése Azure SQL Database
 
@@ -66,7 +66,7 @@ Nem kell biztonsági mentéseket létrehoznia az Azure SQL DB-ben, ezért nem sz
 
 |Szolgáltatásszint|Megőrzési időszak (nap)|
 |---|:---:|
-|Alapszintű|7|
+|Basic|7|
 |Standard|35|
 |Prémium|35|
 |||
@@ -85,7 +85,7 @@ Ha nincs konfigurálva automatikus feladatátvételi csoport, az alkalmazásnak 
 
 Összefoglalva, a hagyományos helyszíni SQL Server beállításával aktívan felügyelheti a rendelkezésre állást olyan funkciókkal, mint például a feladatátvételi fürtszolgáltatás, az adatbázis-tükrözés, a tranzakciós replikáció vagy a napló szállítása, valamint a biztonsági másolatok karbantartása és kezelése, hogy biztosítható legyen Az üzletmenet folytonossága. A SQL Database segítségével a platform kezeli ezeket az alkalmazásokat, így az adatbázis-alkalmazás fejlesztésére és optimalizálására koncentrálhat, és nem kell aggódnia a katasztrófák kezelésével kapcsolatban. A biztonsági mentési és vész-helyreállítási terveket konfigurálhatja, és csak néhány kattintással dolgozhat a Azure Portalon (vagy a PowerShell API-kat használó néhány paranccsal).
 
-A vész-helyreállítási szolgáltatással kapcsolatos további tudnivalókért tekintse meg a következő témakört: [Azure SQL db vész-helyreállítási 101](https://azure.microsoft.com/blog/azure-sql-databases-disaster-recovery-101/)
+További információ a vész-helyreállítási szolgáltatásról: [Azure SQL db vész-helyreállítási 101](https://azure.microsoft.com/blog/azure-sql-databases-disaster-recovery-101/)
 
 ## <a name="security-and-compliance"></a>Biztonság és megfelelőség
 
@@ -130,7 +130,7 @@ Az Ön rendelkezésére áll több olyan módszer is, amelyekkel optimális kapc
 
 Egy tűzfal nem engedélyezi a hozzáférést a kiszolgálóhoz egy külső entitásból azáltal, hogy csak bizonyos entitások férhetnek hozzá a SQL Database-kiszolgálóhoz. Alapértelmezés szerint a SQL Database-kiszolgálón belüli összes kapcsolat és adatbázis nem engedélyezett, kivéve a más Azure-szolgáltatásokból érkező kapcsolatokat. Tűzfalszabály esetén a számítógép IP-címének a tűzfalon keresztüli engedélyezésével megnyithatja a kiszolgálóhoz való hozzáférést csak olyan entitások (például egy fejlesztői számítógép) számára, amelyeknek jóvá kell hagynia. Azt is lehetővé teszi, hogy olyan IP-címtartományt határozzon meg, amelyet engedélyezni szeretne a SQL Database-kiszolgálóhoz való hozzáféréshez. A szervezet fejlesztői számítógépének IP-címei például a tűzfal beállításai lapon egy tartomány megadásával adhatók hozzá.
 
-A tűzfalszabályok a kiszolgáló szintjén vagy az adatbázis szintjén hozhatók létre. A kiszolgálói szintű IP-tűzfalszabályok a Azure Portal vagy a SSMS használatával hozhatók létre. A kiszolgáló-és adatbázis-szintű tűzfalszabály beállításával kapcsolatos további információkért lásd: [Hozzon létre IP-tűzfalszabályok szabályait a SQL Databaseban](sql-database-security-tutorial.md#create-firewall-rules).
+A tűzfalszabályok a kiszolgáló szintjén vagy az adatbázis szintjén hozhatók létre. A kiszolgálói szintű IP-tűzfalszabályok a Azure Portal vagy a SSMS használatával hozhatók létre. A kiszolgáló-és adatbázis-szintű tűzfalszabály beállításával kapcsolatos további információkért lásd: [IP-tűzfalszabályok létrehozása a SQL Databaseban](sql-database-security-tutorial.md#create-firewall-rules).
 
 #### <a name="service-endpoints"></a>Szolgáltatásvégpontok
 
@@ -138,7 +138,7 @@ Alapértelmezés szerint az SQL-adatbázis úgy van konfigurálva, hogy "engedé
 
 A szolgáltatási végpontok (SE) lehetővé teszik, hogy a kritikus Azure-erőforrásokat csak az Azure saját privát virtuális hálózatára tegye elérhetővé. Ezzel lényegében megszünteti az erőforrásaihoz való nyilvános hozzáférést. Az Azure-beli virtuális hálózat közötti forgalom az Azure gerinc hálózatán marad. Az SE használata nélkül kényszerített bújtatású csomagok útválasztása. A virtuális hálózata kényszeríti az internetes forgalmat a szervezet és az Azure-szolgáltatás forgalmára, hogy ugyanarra az útvonalra lépjen át. A szolgáltatási végpontokkal optimalizálhatja ezt, mivel a csomagok közvetlenül a virtuális hálózatról az Azure gerinces hálózaton lévő szolgáltatásba áramlanak.
 
-![Virtuális hálózati Szolgáltatásvégpontok](./media/sql-database-manage-after-migration/vnet-service-endpoints.png)
+![VNet szolgáltatási végpontok](./media/sql-database-manage-after-migration/vnet-service-endpoints.png)
 
 #### <a name="reserved-ips"></a>Fenntartott IP-címek
 
@@ -156,7 +156,7 @@ A SQL Database bekapcsolhatja a naplózást az adatbázis eseményeinek nyomon k
 
 #### <a name="threat-detection"></a>Fenyegetések észlelése
 
-A [fenyegetések észlelése](sql-database-threat-detection.md)lehetővé teszi, hogy az auditálás által felderített biztonsági vagy szabályzatok megsértésével járjon el. Nem kell biztonsági szakértőnek lennie ahhoz, hogy foglalkozzon a lehetséges fenyegetésekkel vagy a rendszer megsértésével. A veszélyforrások észlelése olyan beépített képességekkel is rendelkezik, mint az SQL-injektálási észlelés. Az SQL-injektálás megkísérli az adatmódosítást vagy az adatsérülést, valamint az adatbázis-alkalmazások általános megtámadását. A veszélyforrások észlelése több olyan algoritmust futtat, amely észleli a potenciális biztonsági réseket és az SQL-injektálási támadásokat, valamint a rendellenes adatbázis-hozzáférési mintákat (például a hozzáférést szokatlan helyről vagy egy ismeretlen résztvevőtől). A biztonsági tisztviselők vagy más kijelölt rendszergazdák e-mailben értesítést kapnak, ha fenyegetést észlelnek az adatbázison. Minden értesítés részletesen ismerteti a gyanús tevékenységeket, és javaslatokat tesz a fenyegetés további kivizsgálására és enyhítésére. A veszélyforrások észlelésének bekapcsolásával kapcsolatos további információkért lásd: A [veszélyforrások észlelésének engedélyezése](sql-database-security-tutorial.md#enable-security-features).
+A [fenyegetések észlelése](sql-database-threat-detection.md)lehetővé teszi, hogy az auditálás által felderített biztonsági vagy szabályzatok megsértésével járjon el. Nem kell biztonsági szakértőnek lennie ahhoz, hogy foglalkozzon a lehetséges fenyegetésekkel vagy a rendszer megsértésével. A veszélyforrások észlelése olyan beépített képességekkel is rendelkezik, mint az SQL-injektálási észlelés. Az SQL-injektálás megkísérli az adatmódosítást vagy az adatsérülést, valamint az adatbázis-alkalmazások általános megtámadását. A veszélyforrások észlelése több olyan algoritmust futtat, amely észleli a potenciális biztonsági réseket és az SQL-injektálási támadásokat, valamint a rendellenes adatbázis-hozzáférési mintákat (például a hozzáférést szokatlan helyről vagy egy ismeretlen résztvevőtől). A biztonsági tisztviselők vagy más kijelölt rendszergazdák e-mailben értesítést kapnak, ha fenyegetést észlelnek az adatbázison. Minden értesítés részletesen ismerteti a gyanús tevékenységeket, és javaslatokat tesz a fenyegetés további kivizsgálására és enyhítésére. A veszélyforrások észlelésének bekapcsolásával kapcsolatos további információkért lásd: a [fenyegetések észlelésének engedélyezése](sql-database-security-tutorial.md#enable-security-features).
 
 ### <a name="how-do-i-protect-my-data-in-general-on-sql-database"></a>Az adataik védelme Hogyan általában SQL Database
 
@@ -181,7 +181,7 @@ A bizalmas adatok repülés közbeni és nyugalmi állapotban való védelme ér
 
 Minden alkalmazásnak van egy bizonyos kis bizalmas adata az adatbázisban, amelyet védeni kell mindenki számára. A szervezeten belül bizonyos munkatársaknak meg kell tekinteniük ezeket az adatfájlokat, azonban mások nem tekinthetik meg ezeket az adatfájlokat. Az egyik példa az alkalmazottak bérét. A feletteseknek azonban hozzá kell férniük a közvetlen jelentésekhez tartozó bér-információhoz, de az egyes csapattagok nem férhetnek hozzá a társaik bér-adataihoz. Egy másik forgatókönyv olyan adatfejlesztő, aki a fejlesztési fázisokban vagy tesztelésben, például az ügyfelek SSNs a bizalmas adatokkal is működhet. Ezt az információt nem kell a fejlesztőnek kitenni. Ilyen esetekben a bizalmas adatokat el kell takarni vagy egyáltalán nem kell kitenni. SQL Database két ilyen megközelítést biztosít annak megakadályozása érdekében, hogy jogosulatlan felhasználók ne tudják megtekinteni a bizalmas adatokat:
 
-A [dinamikus adatmaszkolás](sql-database-dynamic-data-masking-get-started.md) egy adatmaszkolási funkció, amely lehetővé teszi, hogy az alkalmazás rétegében lévő nem Kiemelt felhasználók számára maszkolással korlátozza a bizalmas adatokra való adatvédelmet. Olyan maszkolási szabályt határozhat meg, amely létrehoz egy maszkolási mintát (például hogy csak az utolsó négy számjegyet jelenítse meg az SSN nemzeti AZONOSÍTÓban): XXX-XX-0000, és a legtöbbet XS-ként jelöli meg, és azonosítsa, hogy mely felhasználókat kívánja kizárni a maszkolási szabályból. A maszkolás menet közben történik, és különböző maszkolási funkciók érhetők el különböző adatkategóriákhoz. A dinamikus adatmaszkolás lehetővé teszi, hogy automatikusan azonosítsa a bizalmas adatokat az adatbázisban, és alkalmazza a maszkolást.
+A [dinamikus adatmaszkolás](sql-database-dynamic-data-masking-get-started.md) egy adatmaszkolási funkció, amely lehetővé teszi, hogy az alkalmazás rétegében lévő nem Kiemelt felhasználók számára maszkolással korlátozza a bizalmas adatokra való adatvédelmet. Olyan maszkolási szabályt határozhat meg, amely létrehozhat egy maszkolási mintát (például hogy csak az utolsó négy számjegyet jelenítse meg az SSN: XXX-XX-0000 és a legtöbbt XS-ként megjelölve), és azonosítsa, hogy mely felhasználókat kívánja kizárni a maszkolási szabályból. A maszkolás menet közben történik, és különböző maszkolási funkciók érhetők el különböző adatkategóriákhoz. A dinamikus adatmaszkolás lehetővé teszi, hogy automatikusan azonosítsa a bizalmas adatokat az adatbázisban, és alkalmazza a maszkolást.
 
 A [sorok szintjének biztonsága](/sql/relational-databases/security/row-level-security) lehetővé teszi a hozzáférés vezérlését a sor szintjén. Ez azt jelenti, hogy a lekérdezést végrehajtó felhasználó (csoporttagság vagy végrehajtási környezet) alapján bizonyos sorok rejtettek. A hozzáférési korlátozás az alkalmazási réteg helyett az adatbázis-rétegen történik, így egyszerűbbé válik az alkalmazás logikája. Első lépésként hozzon létre egy szűrő predikátumot, és szűrje ki azokat a sorokat, amelyek nem lesznek elérhetők, és a következő biztonsági házirend határozza meg, hogy ki férhet hozzá ezekhez a sorokhoz. Végül a végfelhasználó futtatja a lekérdezést, és a felhasználó jogosultsága alapján megtekinti ezeket a korlátozott sorokat, vagy egyáltalán nem láthatja őket.
 
@@ -216,9 +216,9 @@ A szervezet és a SQL Database közötti hálózati forgalom általában a nyilv
 
 - [Felhőalapú Exchange közös elhelyezés](../expressroute/expressroute-connectivity-models.md#CloudExchange)
 - [Bármilyen](../expressroute/expressroute-connectivity-models.md#IPVPN)
-- [Point-to-Point](../expressroute/expressroute-connectivity-models.md#Ethernet)
+- [Pont – pont](../expressroute/expressroute-connectivity-models.md#Ethernet)
 
-Az Express Route azt is lehetővé teszi, hogy a megvásárolt sávszélesség legfeljebb 2x-re legyen feldolgozva, felár nélkül. Az expressz útvonal használatával is konfigurálható a régiók közötti kapcsolat. A következő témakörben megtekintheti az ER kapcsolati szolgáltatók listáját: [Express Route-partnerek és-](../expressroute/expressroute-locations.md)összevonási helyszínek. A következő cikkek részletesebben ismertetik az expressz útvonalat:
+Az Express Route azt is lehetővé teszi, hogy a megvásárolt sávszélesség legfeljebb 2x-re legyen feldolgozva, felár nélkül. Az expressz útvonal használatával is konfigurálható a régiók közötti kapcsolat. A következő témakörben megtekintheti az ER kapcsolati szolgáltatók listáját: [Express Route Partners and peering Locations](../expressroute/expressroute-locations.md). A következő cikkek részletesebben ismertetik az expressz útvonalat:
 
 - [Az expressz útvonal bemutatása](../expressroute/expressroute-introduction.md)
 - [Előfeltételek](../expressroute/expressroute-prerequisites.md)
@@ -284,7 +284,7 @@ Lekérdezheti a [sys. DM _db_resource_stats](/sql/relational-databases/system-dy
 
 [Azure monitor naplók](../azure-monitor/insights/azure-sql.md) lehetővé teszik az Azure SQL Database legfontosabb teljesítmény-metrikáinak gyűjtését és megjelenítését, a legfeljebb 150 000 SQL-adatbázis és a 5 000-os SQL rugalmas készletek támogatását munkaterületen. Az értesítések figyelésére és fogadására használható. Több Azure-előfizetéshez és rugalmas készlethez is figyelheti SQL Database és rugalmas készlet mérőszámait, és felhasználhatja az egyes alkalmazási veremben előforduló problémák azonosítására.
 
-### <a name="i-am-noticing-performance-issues-how-does-my-sql-database-troubleshooting-methodology-differ-from-sql-server"></a>Észrevettem a teljesítménnyel kapcsolatos problémákat: Miben különbözik a SQL Database hibaelhárítási módszerei SQL Server
+### <a name="i-am-noticing-performance-issues-how-does-my-sql-database-troubleshooting-methodology-differ-from-sql-server"></a>Észrevettem a teljesítménnyel kapcsolatos problémákat: hogyan különböznek a SQL Database hibaelhárítási módszerei a SQL Server
 
 A lekérdezési és adatbázis-teljesítménnyel kapcsolatos problémák diagnosztizálásához használni kívánt hibaelhárítási technikák jelentős része változatlan marad. Miután az összes SQL Server motor felhatalmazott a felhőre. Az Azure SQL DB platform azonban az "intelligencia"-ben készült. Megkönnyíti a teljesítménnyel kapcsolatos problémák megoldását és diagnosztizálását. Emellett elvégezheti ezeket a javítási műveleteket az Ön nevében, és bizonyos esetekben proaktív módon kijavítani azokat – automatikusan.
 
@@ -294,7 +294,7 @@ A teljesítménnyel kapcsolatos hibaelhárítás során fontos megállapítani, 
 
 Továbbá, ha az adatbázis általános teljesítményében csökkenést tapasztal, figyelheti a [sys. DM _db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) és a [sys. resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) dinamikus felügyeleti nézeteket a CPU, az IO és a memória használatának megismeréséhez. Lehetséges, hogy az Ön teljesítménye hatással van az erőforrásokra. Előfordulhat, hogy módosítania kell a számítási méretet és/vagy a szolgáltatási szintet a növekvő és a csökkenő munkaterhelési igények alapján.
 
-A teljesítménnyel kapcsolatos problémák hangolásával kapcsolatos javaslatok széles körét lásd: [Az adatbázis finomhangolása](sql-database-performance-guidance.md#tune-your-database).
+A teljesítménnyel kapcsolatos problémák hangolásával kapcsolatos javaslatok széles körét lásd: [az adatbázis finomhangolása](sql-database-performance-guidance.md#tune-your-database).
 
 ### <a name="how-do-i-ensure-i-am-using-the-appropriate-service-tier-and-compute-size"></a>Hogyan arról, hogy a megfelelő szolgáltatási szintet és számítási méretet használom
 
@@ -309,7 +309,7 @@ A SQL Database különböző szolgáltatási szinteket kínál alapszintű, stan
 
 A megfelelő számítási méret biztosításához a "Hogyan a SQL Database teljesítményének és erőforrás-kihasználtságának figyelése" című részében felsorolt módszerek egyikén keresztül figyelheti a lekérdezési és az adatbázis-erőforrás-felhasználást. Ha úgy találja, hogy a lekérdezések/adatbázisok folyamatosan futnak a PROCESSZORon vagy a memórián, stb., érdemes lehet nagyobb számítási méretre méretezni. Hasonlóképpen, ha úgy gondolja, hogy a csúcsidőben még nem használja az erőforrásokat, érdemes megfontolni a méretezést az aktuális számítási mérettől.
 
-Ha SaaS-alkalmazási mintát vagy adatbázis-konszolidációs forgatókönyvet használ, érdemes rugalmas készletet használni a Cost Optimization számára. A rugalmas készlet nagyszerű lehetőséget biztosít az adatbázisok összevonására és a költséghatékonyság optimalizálására. Ha többet szeretne megtudni több adatbázis rugalmas készlettel történő kezeléséről, olvassa el a következőt: [Készletek és adatbázisok kezelése](sql-database-elastic-pool-manage.md#azure-portal-manage-elastic-pools-and-pooled-databases).
+Ha SaaS-alkalmazási mintát vagy adatbázis-konszolidációs forgatókönyvet használ, érdemes rugalmas készletet használni a Cost Optimization számára. A rugalmas készlet nagyszerű lehetőséget biztosít az adatbázisok összevonására és a költséghatékonyság optimalizálására. Ha többet szeretne megtudni több adatbázis rugalmas készlettel történő kezeléséről, olvassa el a következő témakört: [készletek és adatbázisok kezelése](sql-database-elastic-pool-manage.md#azure-portal-manage-elastic-pools-and-pooled-databases).
 
 ### <a name="how-often-do-i-need-to-run-database-integrity-checks-for-my-database"></a>Milyen gyakran van szükség az adatbázis-integritási ellenőrzések futtatására az adatbázison
 
@@ -319,11 +319,11 @@ A SQL Database olyan intelligens technikákat használ, amelyek lehetővé teszi
 
 ### <a name="how-do-i-export-and-import-data-as-bacpac-files-from-sql-database"></a>Hogyan az adatok exportálása és importálása BACPAC-fájlként SQL Database
 
-- **Exportálás**: Az Azure SQL Database-t BACPAC fájlként is exportálhatja a Azure Portal
+- **Exportálás**: exportálhatja az Azure SQL Database-t BACPAC-fájlként a Azure Portal
 
    ![Adatbázis-exportálás](./media/sql-database-export/database-export1.png)
 
-- **Importálás**: Az BACPAC-fájlként is importálhat adatfájlt az adatbázisba a Azure Portal használatával.
+- **Importálás**: az BACPAC-fájlként importálhatja az adatfájlokat az adatbázisba a Azure Portal használatával.
 
    ![adatbázis importálása](./media/sql-database-import/import1.png)
 
@@ -332,7 +332,7 @@ A SQL Database olyan intelligens technikákat használ, amelyek lehetővé teszi
 Ezt többféleképpen is elérheti:
 
 - **[Adatszinkronizálás](sql-database-sync-data.md)** – ez a funkció segítséget nyújt a kétirányú adatszinkronizáláshoz több helyszíni SQL Server-adatbázis és-SQL Database között. A helyszíni SQL Server adatbázisaival való szinkronizáláshoz telepítenie és konfigurálnia kell a szinkronizálási ügynököt egy helyi számítógépen, és meg kell nyitnia a 1433-es kimenő TCP-portot.
-- **[Tranzakciós](https://azure.microsoft.com/blog/transactional-replication-to-azure-sql-database-is-now-generally-available/)** replikáció – a tranzakciós replikációval szinkronizálhatja a helyszíni adatokat az Azure SQL db-be a helyszíni környezettel, a kiadóval és az Azure SQL-adatbázissal, amely az előfizető. Egyelőre csak ez a beállítás támogatott. Az adatok helyszíniről Azure SQL-re való áttelepítésének minimális állásidővel kapcsolatos további információkért lásd: [Tranzakciós replikáció használata](sql-database-single-database-migrate.md#method-2-use-transactional-replication)
+- **[Tranzakciós](https://azure.microsoft.com/blog/transactional-replication-to-azure-sql-database-is-now-generally-available/)** replikáció – a tranzakciós replikációval szinkronizálhatja a helyszíni adatokat az Azure SQL db-be a helyszíni környezettel, a kiadóval és az Azure SQL-adatbázissal, amely az előfizető. Egyelőre csak ez a beállítás támogatott. További információ arról, hogyan migrálhatja adatait a helyszínről az Azure SQL-be minimális állásidővel: a [tranzakciós replikáció használata](sql-database-single-database-migrate.md#method-2-use-transactional-replication)
 
 ## <a name="next-steps"></a>További lépések
 

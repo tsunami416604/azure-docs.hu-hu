@@ -1,5 +1,5 @@
 ---
-title: Fájlok áthelyezése a fájl alapú tárhely között Azure Data Factory használatával | Microsoft Docs
+title: Fájlok áthelyezése a fájl alapú tárhely között Azure Data Factory használatával
 description: Megtudhatja, hogyan helyezhet át fájlokat a fájl-alapú tárolók között Azure Data Factory használatával a megoldás sablon használatával.
 services: data-factory
 documentationcenter: ''
@@ -12,16 +12,16 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 7/12/2019
-ms.openlocfilehash: 9eb82a23aac5a98a521976118c1e859d0be253d0
-ms.sourcegitcommit: 1b7b0e1c915f586a906c33d7315a5dc7050a2f34
+ms.openlocfilehash: f6f83917e84a880fb86b5f592c4d51b03462753d
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67881242"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73684089"
 ---
 # <a name="move-files-with-azure-data-factory"></a>Fájlok áthelyezése Azure Data Factory
 
-Ez a cikk egy megoldás-sablont ismertet, amellyel a fájlokat áthelyezheti egyik mappából a másikba a fájl alapú tárolók között. A sablon használatának egyik leggyakoribb forgatókönyve: A fájlok folyamatosan el lesznek dobva a forrás-áruház egy leszállási mappájába. Az ütemezett triggerek létrehozásával az ADF-folyamat rendszeres időközönként áthelyezheti ezeket a fájlokat a forrásról a célhelyre.  Az ADF-folyamat a "fájlok áthelyezése" értékkel éri el a fájlokat a lekérési mappából, és mindegyiket egy másik mappába másolja a célhelyen, majd törli ugyanezeket a fájlokat a forrás-áruházban található kihelyezett mappából.
+Ez a cikk egy megoldás-sablont ismertet, amellyel a fájlokat áthelyezheti egyik mappából a másikba a fájl alapú tárolók között. A sablon használatának egyik leggyakoribb forgatókönyve: a fájlok folyamatosan el lesznek dobva a forrás-áruház egy leszálló mappájába. Az ütemezett triggerek létrehozásával az ADF-folyamat rendszeres időközönként áthelyezheti ezeket a fájlokat a forrásról a célhelyre.  Az ADF-folyamat a "fájlok áthelyezése" értékkel éri el a fájlokat a lekérési mappából, és mindegyiket egy másik mappába másolja a célhelyen, majd törli ugyanezeket a fájlokat a forrás-áruházban található kihelyezett mappából.
 
 > [!NOTE]
 > Vegye figyelembe, hogy a sablon úgy lett kialakítva, hogy a mappák áthelyezése helyett fájlokat helyezzen át.  Ha úgy szeretné áthelyezni a mappát, hogy úgy módosítja az adatkészletet, hogy csak a mappa elérési útját tartalmazza, majd a másolási tevékenység és a törlés tevékenység használatával ugyanarra az adatkészletre hivatkozzon, amely egy mappát jelképez, nagyon Körültekintőnek kell lennie. Ennek az az oka, hogy meg kell győződnie arról, hogy a másolási művelet és a törlési művelet között nem lesznek új fájlok a mappába. Ha a másolási tevékenység csak a másolási művelet befejezése után új fájlok érkeznek, de a törlési tevékenység nem lett kitöltve, lehetséges, hogy a törlési tevékenység törli ezt az új, a DESTINATI nem másolt beérkező fájlt. még a teljes mappa törlésével.

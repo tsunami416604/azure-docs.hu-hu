@@ -1,5 +1,5 @@
 ---
-title: Ismerkedés az adatbázisok közötti lekérdezésekkel (vertikális particionálás) | Microsoft Docs
+title: Ismerkedés az adatbázisok közötti lekérdezésekkel (vertikális particionálás)
 description: rugalmas adatbázis-lekérdezés használata vertikálisan particionált adatbázisokkal
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/25/2019
-ms.openlocfilehash: a6a87f90586dc4392dc1304a83349bc386590ee4
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: b6d9ba0c57850c61626d7b6d99fcb1fffc2d3c25
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68568593"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73690406"
 ---
 # <a name="get-started-with-cross-database-queries-vertical-partitioning-preview"></a>Ismerkedés az adatbázisok közötti lekérdezésekkel (vertikális particionálás) (előzetes verzió)
 
@@ -32,7 +32,7 @@ MINDEN külső ADATFORRÁS-engedély megadása kötelező. Ez az engedély az AL
 
 ## <a name="create-the-sample-databases"></a>A minta-adatbázisok létrehozása
 
-Első lépésként hozzon létre két adatbázist , ügyfelet és **rendelést**ugyanabban vagy a különböző SQL Database-kiszolgálókon.
+Első lépésként hozzon létre két adatbázist, **ügyfelet** és **rendelést**ugyanabban vagy a különböző SQL Database-kiszolgálókon.
 
 Hajtsa végre a következő lekérdezéseket a **Orders** adatbázisban a **OrderInformation** tábla létrehozásához és a mintaadatok beviteléhez.
 
@@ -46,7 +46,7 @@ Hajtsa végre a következő lekérdezéseket a **Orders** adatbázisban a **Orde
     INSERT INTO [dbo].[OrderInformation] ([OrderID], [CustomerID]) VALUES (321, 1)
     INSERT INTO [dbo].[OrderInformation] ([OrderID], [CustomerID]) VALUES (564, 8)
 
-Ezután hajtsa végre a következő lekérdezést a Customers adatbázisban a **CustomerInformation** tábla létrehozásához és a mintaadatok beviteléhez.
+Ezután hajtsa végre a következő lekérdezést a **Customers** adatbázisban a **CustomerInformation** tábla létrehozásához és a mintaadatok beviteléhez.
 
     CREATE TABLE [dbo].[CustomerInformation](
         [CustomerID] [int] NOT NULL,
@@ -104,7 +104,7 @@ Miután meghatározta a külső adatforrást és a külső táblákat, mostantó
     INNER JOIN CustomerInformation
     ON CustomerInformation.CustomerID = OrderInformation.CustomerID
 
-## <a name="cost"></a>Költség
+## <a name="cost"></a>Költségek
 
 A rugalmas adatbázis lekérdezési funkciója jelenleg a Azure SQL Database költségeit tartalmazza.  
 
@@ -113,7 +113,7 @@ A díjszabással kapcsolatos információkért tekintse meg a [SQL Database díj
 ## <a name="next-steps"></a>További lépések
 
 * A rugalmas lekérdezés áttekintését lásd: [rugalmas lekérdezés áttekintése](sql-database-elastic-query-overview.md).
-* A függőlegesen particionált információk szintaxisát és mintáit lásd [](sql-database-elastic-query-vertical-partitioning.md) : függőlegesen particionált adatlekérdezés
+* A függőlegesen particionált információk szintaxisát és mintáit lásd: [függőlegesen particionált adatlekérdezés](sql-database-elastic-query-vertical-partitioning.md)
 * A horizontális particionálással (skálázással) kapcsolatos oktatóanyagért lásd: az [első lépések a rugalmas lekérdezéssel a horizontális particionáláshoz](sql-database-elastic-query-getting-started.md).
-* A horizontálisan particionált információk szintaxisát és mintáit lásd [](sql-database-elastic-query-horizontal-partitioning.md) : vízszintesen particionált adatlekérdezés
-* Lásd [:\_az \_SP távoli futtatása](https://msdn.microsoft.com/library/mt703714) olyan tárolt eljáráshoz, amely Transact-SQL-utasítást hajt végre egyetlen távoli Azure SQL Database vagy egy horizontális particionálási sémában szegmensként szolgáló adatbázis-készleten.
+* A horizontálisan particionált információk szintaxisát és mintáit lásd: [vízszintesen particionált adatlekérdezés](sql-database-elastic-query-horizontal-partitioning.md)
+* Lásd: [sp\_\_távoli végrehajtása](https://msdn.microsoft.com/library/mt703714) egy tárolt eljáráshoz, amely Transact-SQL-utasítást hajt végre egyetlen távoli Azure SQL Database vagy egy horizontális particionálási sémában szegmensként szolgáló adatbázis-készletet.

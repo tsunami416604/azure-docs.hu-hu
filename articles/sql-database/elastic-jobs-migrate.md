@@ -1,5 +1,5 @@
 ---
-title: Migrálás az új Elastic Database feladatokba | Microsoft Docs
+title: 'Migrálás az új Elastic Database feladatokba '
 description: Migrálás az új Elastic Database feladatokba.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: johnpaulkee
 ms.author: joke
 ms.reviewer: sstein
 ms.date: 03/13/2019
-ms.openlocfilehash: 9fa3444244cbd51c3f14abcfef5212a366cadbd2
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 2cba7ecb4be500a8f7007c8da009e03e6f33dfde
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68550556"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73692261"
 ---
 # <a name="migrate-to-the-new-elastic-database-jobs"></a>Migrálás az új rugalmas adatbázis-feladatok
 
@@ -88,11 +88,11 @@ Use-AzureSqlJobConnection -CurrentAzureSubscription -Credential (Get-Credential)
 
 
 
-## <a name="migration"></a>Áttelepítés
+## <a name="migration"></a>Migrálás
 
-Most, hogy a régi és az új rugalmas feladatok parancsmag is inicializálva van, telepítse át a feladat hitelesítő adatait, céljait és feladatait az új *feladat*-adatbázisba.
+Most, hogy a régi és az új rugalmas feladatok parancsmag is inicializálva van, telepítse át a feladat hitelesítő adatait, céljait és feladatait az új *feladat-adatbázisba*.
 
-### <a name="setup"></a>Beállítás
+### <a name="setup"></a>Telepítés
 
 ```powershell
 $ErrorActionPreference = "Stop";
@@ -366,9 +366,9 @@ function Setup-TargetGroup ($tgName, $agent) {
 }
 ```
 
-A célok (kiszolgálók, adatbázisok és egyéni gyűjtemények) az új feladatra történő áttelepítéséhez hajtsa végre az áttelepítési **célcsoportok** parancsmagot a következők elvégzéséhez:
+A célok (kiszolgálók, adatbázisok és egyéni gyűjtemények) az új feladatra történő áttelepítéséhez hajtsa végre az **áttelepítési célcsoportok** parancsmagot a következők elvégzéséhez:
 
-- A kiszolgálók és adatbázisok legfelső szintű célpontjai a\<"(serverName\>, \<databaseName\>)" nevű új célcsoportra lesznek áttelepítve, amely csak a legfelső szintű célt tartalmazza.
+- A kiszolgálók és adatbázisok legfelső szintű célpontjai a "(\<serverName\>, \<databaseName\>)" nevű új célcsoportra lesznek áttelepítve, amely csak a legfelső szintű célt tartalmazza.
 - Az egyéni gyűjtemények az összes alárendelt célt tartalmazó új célcsoportra lesznek áttelepítve.
 
 ```powershell
@@ -562,9 +562,9 @@ function Setup-JobStep ($newJob, $job) {
 }
 ```
 
-Ha át szeretné telepíteni a feladatokat, a feladatok tartalmát, a feladatok eseményindítóit és a feladatok ütemtervét az új rugalmas feladat ügynökének adatbázisára, hajtsa végre az áttelepítési **feladatok** parancsmagot az ügynökön.
+Ha át szeretné telepíteni a feladatokat, a feladatok tartalmát, a feladatok eseményindítóit és a feladatok ütemtervét az új rugalmas feladat ügynökének adatbázisára, hajtsa végre az **áttelepítési feladatok** parancsmagot az ügynökön.
 
-- A különböző ütemtervekkel rendelkező több eseményindítóval rendelkező feladatok több feladatra vannak elkülönítve\<a\> következő\<elnevezési sémával: "jobName (scheduleName\>)".
+- A különböző ütemtervekkel rendelkező több eseményindítóval rendelkező feladatok több feladatra vannak elkülönítve a következő elnevezési sémával: "\<jobName\> (\<scheduleName\>)".
 - A feladatok tartalmának áttelepítésére a rendszer egy JobStep nevű alapértelmezett feladatot ad hozzá a társított parancs szövegével.
 - A feladatok alapértelmezés szerint le vannak tiltva, így az engedélyezése előtt érvényesítheti azokat.
 

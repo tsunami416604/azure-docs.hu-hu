@@ -1,5 +1,5 @@
 ---
-title: Az adatfolyamatok monitorozása és kezelése – Azure | Microsoft Docs
+title: Az adatfolyamatok monitorozása és kezelése – Azure
 description: Ismerje meg, hogyan használható a figyelési és felügyeleti alkalmazás az Azure-beli adatüzemek és-folyamatok figyeléséhez és kezeléséhez.
 services: data-factory
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 052ea99f0489458269adf4dca2c6713535933638
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: de56ba1281d0f20c8be838fa1bc9ebc24905b26c
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70139588"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73666927"
 ---
 # <a name="monitor-and-manage-azure-data-factory-pipelines-by-using-the-monitoring-and-management-app"></a>Azure Data Factory folyamatok monitorozása és kezelése a figyelési és felügyeleti alkalmazás használatával
 > [!div class="op_single_selector"]
@@ -52,21 +52,21 @@ A figyelési és felügyeleti alkalmazást külön ablakban kell megnyitnia.
 
 A középső ablaktáblán a tevékenység Windows listájában megjelenik egy tevékenység ablak a tevékenységek minden egyes futtatásához. Ha például az ütemezve van, hogy az öt órán át óránként fusson, öt, öt adatszelethez társított tevékenység jelenik meg. Ha nem látja a tevékenység ablakait a lenti listában, tegye a következőket:
  
-- Frissítse a **kezdési időt** és a **befejezési** időpontot, hogy az megfeleljen a folyamat kezdési és befejezési idejének, majd kattintson az **alkalmaz** gombra.  
+- Frissítse a **kezdési időt** és a **befejezési időpontot** , hogy az megfeleljen a folyamat kezdési és befejezési idejének, majd kattintson az **alkalmaz** gombra.  
 - A tevékenység Windows-listája nem frissül automatikusan. Kattintson a **refresh (frissítés** ) gombra a **tevékenység Windows** -listájának eszköztárán.  
 
 Ha nem rendelkezik Data Factory alkalmazással a lépések teszteléséhez, tegye az oktatóanyagot: [adatok másolása blob Storageból SQL Database Data Factory használatával](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md).
 
 ## <a name="understand-the-monitoring-and-management-app"></a>A figyelési és felügyeleti alkalmazás megismerése
-A bal oldalon három lap található: **Erőforrás-kezelő**, **figyelési nézetek**és **riasztások**. Alapértelmezés szerint az első lap (**erőforrás-kezelő**) van kiválasztva.
+A bal oldalon három lap található: **erőforrás-kezelő**, **figyelési nézetek**és **riasztások**. Alapértelmezés szerint az első lap (**erőforrás-kezelő**) van kiválasztva.
 
-### <a name="resource-explorer"></a>Erőforrás-kezelő
+### <a name="resource-explorer"></a>erőforrás-kezelő
 A következőket látja:
 
 * A erőforrás-kezelő **fanézet** a bal oldali ablaktáblán.
 * A **diagram nézet** a középső ablaktáblán felül
 * A középső ablaktábla alján található **tevékenység-Windows** lista.
-* A **Tulajdonságok**, a **tevékenység ablak**-kezelője és a **szkript** lapjai a jobb oldali ablaktáblán.
+* A **Tulajdonságok**, a **tevékenység ablak-kezelője**és a **szkript** lapjai a jobb oldali ablaktáblán.
 
 Erőforrás-kezelő az adat-előállító összes erőforrását (folyamatait, adatkészleteit, társított szolgáltatásait) látja fanézetben. Amikor kiválaszt egy objektumot a erőforrás-kezelőban:
 
@@ -75,7 +75,7 @@ Erőforrás-kezelő az adat-előállító összes erőforrását (folyamatait, a
 * A kijelölt objektum tulajdonságai a jobb oldali ablaktábla Tulajdonságok ablak láthatók.
 * A kiválasztott objektum JSON-definíciója látható, ha van ilyen. Például: egy társított szolgáltatás, egy adatkészlet vagy egy folyamat.
 
-![Erőforrás-kezelő](./media/data-factory-monitor-manage-app/ResourceExplorer.png)
+![erőforrás-kezelő](./media/data-factory-monitor-manage-app/ResourceExplorer.png)
 
 Tekintse meg az [ütemezési és végrehajtási](data-factory-scheduling-and-execution.md) cikket, amely részletesen ismerteti a tevékenységekkel kapcsolatos Windows-információkat.
 
@@ -108,7 +108,7 @@ Kattintson a **folyamat megnyitása** lehetőségre a folyamat összes tevékeny
 
 ![Folyamat megnyitása menü](./media/data-factory-monitor-manage-app/OpenPipelineMenu.png)
 
-A megnyitott folyamat nézetben a folyamat összes tevékenysége látható. Ebben a példában csak egy tevékenység van: Másolási tevékenység. 
+A megnyitott folyamat nézetben a folyamat összes tevékenysége látható. Ebben a példában csak egy tevékenység van: másolási tevékenység. 
 
 ![Folyamat megnyitva](./media/data-factory-monitor-manage-app/OpenedPipeline.png)
 
@@ -144,7 +144,7 @@ A tevékenység a Windows előugró ablak és a tevékenység ablakban az előz�
 
 ![Tevékenység ablak-tallózó bal/jobb nyíl](./media/data-factory-monitor-manage-app/ActivityWindowExplorerLeftRightArrows.png)
 
-A diagram nézet alján a következő gombok jelennek meg: Nagyítás, kicsinyítés, nagyítás, méret, nagyítás 100%, zárolási elrendezés. A **zárolási elrendezés** gomb megakadályozza, hogy a diagram nézetben véletlenül áthelyezze a táblákat és a folyamatokat. Alapértelmezés szerint ez a beállítás. Kikapcsolhatja és áthelyezheti az entitásokat a diagramon. Ha kikapcsolja, az utolsó gomb használatával automatikusan elhelyezheti a táblákat és a folyamatokat. Az egér kerekének használatával is nagyíthatja és kicsinyítheti is.
+A diagram nézet alján láthatja a következő gombokat: nagyítás, kicsinyítés, nagyítás a mérethez, nagyítás 100%, zárolási elrendezés. A **zárolási elrendezés** gomb megakadályozza, hogy a diagram nézetben véletlenül áthelyezze a táblákat és a folyamatokat. Alapértelmezés szerint ez a beállítás. Kikapcsolhatja és áthelyezheti az entitásokat a diagramon. Ha kikapcsolja, az utolsó gomb használatával automatikusan elhelyezheti a táblákat és a folyamatokat. Az egér kerekének használatával is nagyíthatja és kicsinyítheti is.
 
 ![Diagram nézet nagyítási parancsai](./media/data-factory-monitor-manage-app/DiagramViewZoomCommands.png)
 
@@ -159,7 +159,7 @@ A tevékenység-Windows a következő állapotok egyike lehet:
 
 <table>
 <tr>
-    <th align="left">State</th><th align="left">Részállapot</th><th align="left">Leírás</th>
+    <th align="left">Állapot</th><th align="left">Részállapot</th><th align="left">Leírás</th>
 </tr>
 <tr>
     <td rowspan="8">Várakozás</td><td>ScheduleTime</td><td>A tevékenység ablak futtatásának ideje.</td>
@@ -180,14 +180,14 @@ A tevékenység-Windows a következő állapotok egyike lehet:
 <td>Retry</td><td>A tevékenység végrehajtásának újrapróbálása folyamatban van.</td>
 </tr>
 <tr>
-<td>Érvényesítés</td><td>Az érvényesítés még nincs elindítva.</td>
+<td>Ellenőrzés</td><td>Az érvényesítés még nincs elindítva.</td>
 </tr>
 <tr>
 <td>ValidationRetry</td><td>Az érvényesítés az újrapróbálkozásra vár.</td>
 </tr>
 <tr>
 <tr>
-<td rowspan="2">InProgress</td><td>Érvényesítés</td><td>Az érvényesítés folyamatban van.</td>
+<td rowspan="2">Folyamatban</td><td>Érvényesítése</td><td>Az érvényesítés folyamatban van.</td>
 </tr>
 <td>-</td>
 <td>A tevékenység ablak feldolgozása folyamatban van.</td>
@@ -199,7 +199,7 @@ A tevékenység-Windows a következő állapotok egyike lehet:
 <td>Megszakítva</td><td>A felhasználói művelet megszakította a tevékenység ablakát.</td>
 </tr>
 <tr>
-<td>Érvényesítés</td><td>Az érvényesítés sikertelen volt.</td>
+<td>Ellenőrzés</td><td>Az érvényesítés sikertelen volt.</td>
 </tr>
 <tr>
 <td>-</td><td>Nem sikerült létrehozni vagy érvényesíteni a tevékenység ablakát.</td>
@@ -207,10 +207,10 @@ A tevékenység-Windows a következő állapotok egyike lehet:
 <td>Kész</td><td>-</td><td>A tevékenység ablak készen áll a felhasználásra.</td>
 </tr>
 <tr>
-<td>Kihagyva</td><td>-</td><td>A tevékenység ablaka nem lett feldolgozva.</td>
+<td>Kimarad</td><td>-</td><td>A tevékenység ablaka nem lett feldolgozva.</td>
 </tr>
 <tr>
-<td>Nincsenek</td><td>-</td><td>Eltérő állapotú, de alaphelyzetbe állított tevékenységi időszak.</td>
+<td>None</td><td>-</td><td>Eltérő állapotú, de alaphelyzetbe állított tevékenységi időszak.</td>
 </tr>
 </table>
 
@@ -238,7 +238,7 @@ A **tevékenység ablak Intéző** ablak a figyelési és felügyeleti alkalmaz�
 
 Az alsó ablaktáblán található eszköztárgombok használatával újra futtathatja a tevékenység ablakát, vagy frissítheti a részleteket a panelen.
 
-### <a name="script"></a>Parancsfájl
+### <a name="script"></a>Szkript
 A **parancsfájl** lapon megtekintheti a kijelölt Data Factory entitás (társított szolgáltatás, adatkészlet vagy folyamat) JSON-definícióját.
 
 ![Parancsfájl lap](./media/data-factory-monitor-manage-app/ScriptTab.png)
@@ -252,7 +252,7 @@ Kattintson rá a bal oldali **figyelési nézetek** lapra.
 
 Jelenleg három rendszernézet támogatott. Válassza ki azt a lehetőséget, hogy megjelenjenek a legutóbbi tevékenységek Windows, sikertelen tevékenység Windows vagy folyamatban lévő tevékenységek Windows a tevékenység Windows-listájában (a középső ablaktábla alján).
 
-Ha a **Legutóbbi tevékenység Windows** lehetőséget választja, a legutóbbi **kísérlet**időpontjának csökkenő sorrendjében láthatja az összes legutóbbi tevékenység-időablakot.
+Ha a **Legutóbbi tevékenység Windows** lehetőséget választja, a legutóbbi **kísérlet időpontjának**csökkenő sorrendjében láthatja az összes legutóbbi tevékenység-időablakot.
 
 A **sikertelen tevékenység Windows** nézet használatával megtekintheti a listában szereplő összes sikertelen tevékenység ablakát. A listából válassza ki a meghibásodott tevékenység ablakát, és tekintse meg a **Tulajdonságok** ablakban vagy a **tevékenység ablak Explorerben**a részleteket. A sikertelen tevékenységek ablakának naplóit is letöltheti.
 
@@ -266,7 +266,7 @@ Módosítsa a parancssáv **indítási** és **befejezési** időpontjának beá
 >
 >
 
-A **tevékenység Windows listán**kattintson az oszlop nevére (például: Állapot).
+A **tevékenység Windows listán**kattintson az oszlop nevére (például: állapot).
 
 ![Tevékenység Windows-lista oszlop menü](./media/data-factory-monitor-manage-app/ActivityWindowsListColumnMenu.png)
 
@@ -286,10 +286,10 @@ A szűrők törléséhez használhatja ugyanezt az előugró ablakot. Ha töröl
 
 ## <a name="perform-batch-actions"></a>Batch-műveletek végrehajtása
 ### <a name="rerun-selected-activity-windows"></a>Kijelölt tevékenységek újrafuttatása Windows
-Válassza ki a tevékenység ablakát, kattintson az első parancssáv gombján látható lefelé mutató nyílra / , és válassza az újrafuttatás az újrafuttatással a**folyamaton**keresztül lehetőséget. Ha kiválasztja az újrafuttatás a **felfelé** a folyamaton lehetőséget, akkor az összes felsőbb rétegbeli tevékenység ablakát is Újrafuttatja.
-    ![Tevékenység ablakának újrafuttatása](./media/data-factory-monitor-manage-app/ReRunSlice.png)
+Válassza ki a tevékenység ablakát, kattintson az első parancssáv gombján látható lefelé mutató nyílra, majd válassza az **újrafuttatás** / az **újrafuttatás a folyamaton**keresztül. Ha kiválasztja az **Újrafuttatás a felfelé a folyamaton** lehetőséget, akkor az összes felsőbb rétegbeli tevékenység ablakát is Újrafuttatja.
+    ![egy tevékenység ablak újrafuttatása](./media/data-factory-monitor-manage-app/ReRunSlice.png)
 
-A listában több tevékenység ablak is kijelölhető, majd újra futtathatja őket. Előfordulhat, hogy az állapot alapján kell szűrnie a tevékenységek ablakait (például: **Sikertelen**) –, majd futtassa újra a meghiúsult tevékenység-időablakokat, miután kijavította a tevékenység Windows-meghibásodását okozó problémát. Tekintse meg a következő szakaszt, amely részletesen ismerteti a listában szereplő tevékenységek Windows rendszerbeli szűrését.  
+A listában több tevékenység ablak is kijelölhető, majd újra futtathatja őket. Előfordulhat, hogy a tevékenység ablakait az állapot alapján kell szűrni (például: **sikertelen**) –, majd újra kell futtatnia a sikertelen tevékenység időpontját, miután kijavította a tevékenység Windows-meghibásodását okozó problémát. Tekintse meg a következő szakaszt, amely részletesen ismerteti a listában szereplő tevékenységek Windows rendszerbeli szűrését.  
 
 ### <a name="pauseresume-multiple-pipelines"></a>Több folyamat szüneteltetése/folytatása
 A CTRL billentyű lenyomásával több folyamat is kijelölhető. Az alábbi képen látható vörös négyszögben a parancssáv gombjait is használhatja a szüneteltetéshez/folytatáshoz.

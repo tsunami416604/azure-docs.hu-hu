@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 06/24/2019
 ms.author: mlearned
-ms.openlocfilehash: eb48afb15e1314dcf670ba04afd9609876dc9539
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: HT
+ms.openlocfilehash: 3790511bf3f71cdeb01853e4051a013719502d9f
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73472831"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73605084"
 ---
 # <a name="create-an-azure-kubernetes-service-aks-cluster-that-uses-availability-zones"></a>Availability Zonest használó Azure Kubernetes-szolgáltatásbeli (ak-beli) fürt létrehozása
 
@@ -72,9 +72,9 @@ A zónák meghibásodása esetén a csomópontok manuálisan vagy a fürt autom�
 
 ## <a name="create-an-aks-cluster-across-availability-zones"></a>AK-fürt létrehozása rendelkezésre állási zónák között
 
-Amikor az az [AK Create][az-aks-create] paranccsal hoz létre fürtöt, a `--zones` paraméter határozza meg, hogy a rendszer mely zónákat telepíti a-ben. A fürthöz tartozó AK vezérlőelem-sík összetevői a lehető legmagasabb rendelkezésre állású zónákban is elterjednek, ha a `--zones` paramétert megadó fürtöt hoz létre.
+Amikor az az [AK Create][az-aks-create] paranccsal hoz létre fürtöt, a `--zones` paraméter határozza meg, hogy a rendszer mely zónákat telepíti a-ben. A fürthöz tartozó AK vezérlőelem-sík összetevői a legmagasabb rendelkezésre állású konfigurációban is elterjednek, ha a `--zones` paramétert a fürt létrehozási ideje határozza meg.
 
-Ha nem ad meg zónát az alapértelmezett ügynök készletéhez, amikor egy AK-fürtöt hoz létre, akkor a fürthöz tartozó AK vezérlőelem-sík összetevői nem fogják használni a rendelkezésre állási zónákat. Hozzáadhat további csomópont-készleteket az [az AK nodepool Add][az-aks-nodepool-add] paranccsal, és megadhatja a `--zones`t az új ügynök-csomópontokhoz, azonban a vezérlési sík összetevői továbbra is rendelkezésre állási zónák ismerete nélkül maradnak. Az üzembe helyezésük után nem módosítható a zóna, illetve a csomópont-vagy az AK-vezérlő sík összetevőinek ismerete.
+Ha nem ad meg zónát az alapértelmezett ügynök készletéhez, amikor egy AK-fürtöt hoz létre, akkor a fürthöz tartozó AK vezérlőelem-sík összetevői nem fogják használni a rendelkezésre állási zónákat. További csomópont-készleteket az [az AK nodepool Add][az-aks-nodepool-add] paranccsal adhat hozzá, és megadhatja az új csomópontok `--zones`ét, azonban a vezérlési sík összetevői továbbra is rendelkezésre állnak a rendelkezésre állási zóna ismerete nélkül. Az üzembe helyezésük után nem módosítható a zóna, illetve a csomópont-vagy az AK-vezérlő sík összetevőinek ismerete.
 
 A következő példában létrehozunk egy *myAKSCluster* nevű AK-fürtöt az *myResourceGroup*nevű erőforráscsoport-csoportban. Összesen *3* csomópont jön létre – egy ügynök az *1*. zónában, egyet *2*-ban, majd egyet *3*-ban. Az AK vezérlőelem-sík összetevői a legmagasabb rendelkezésre állású konfigurációban található zónák között is el vannak osztva, mivel azok a fürt létrehozási folyamatának részeként vannak meghatározva.
 

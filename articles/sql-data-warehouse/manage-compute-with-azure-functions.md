@@ -1,31 +1,32 @@
 ---
-title: 'Oktatóanyag: Az Azure Functions az Azure SQL Data Warehouse számítások kezelése |} A Microsoft Docs'
+title: 'Oktatóanyag: számítások kezelése Azure Functions'
 description: Az Azure Functions használata az adattárház számításainak kezelésére.
 services: sql-data-warehouse
-author: KavithaJonnakuti
+author: julieMSFT
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: consume
 ms.date: 04/27/2018
-ms.author: kavithaj
+ms.author: jrasnick
 ms.reviewer: igorstan
-ms.openlocfilehash: b94e4c6f178119d6205c302cf35a9effaf2aa885
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.custom: seo-lt-2019
+ms.openlocfilehash: bc350ed092c063dcc7eca479f064114be9eb28f5
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61083861"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73693023"
 ---
-# <a name="use-azure-functions-to-manage-compute-resources-in-azure-sql-data-warehouse"></a>Az Azure Functions használatával kezelheti a számítási erőforrásokat az Azure SQL Data Warehouse
+# <a name="use-azure-functions-to-manage-compute-resources-in-azure-sql-data-warehouse"></a>Azure Functions használata a számítási erőforrások kezeléséhez Azure SQL Data Warehouse
 
-Ebben az oktatóanyagban az Azure Functions használatával egy data warehouse-hoz az Azure SQL Data Warehouse a számítási erőforrások felügyeletére.
+Ez az oktatóanyag a Azure Functions használatával kezeli a számítási erőforrásokat a Azure SQL Data Warehouse adattárházához.
 
 Az Azure-függvényalkalmazás és az SQL Data Warehouse együttes használatához létre kell hoznia egy közreműködői hozzáféréssel rendelkező [egyszerű szolgáltatásfiókot](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal) ugyanahhoz az előfizetéshez, amelyhez az adattárház-példány is tartozik. 
 
-## <a name="deploy-timer-based-scaling-with-an-azure-resource-manager-template"></a>Időzítőalapú méretezése egy Azure Resource Manager-sablon telepítése
+## <a name="deploy-timer-based-scaling-with-an-azure-resource-manager-template"></a>Időzítő alapú skálázás üzembe helyezése Azure Resource Manager sablonnal
 
-A sablon üzembe helyezéséhez, szüksége van a következő információkat:
+A sablon üzembe helyezéséhez a következő információk szükségesek:
 
 - Az SQL DW-példányt tartalmazó erőforráscsoport neve
 - Az SQL DW-példányt tartalmazó logikai kiszolgáló neve
@@ -35,25 +36,25 @@ A sablon üzembe helyezéséhez, szüksége van a következő információkat:
 - Egyszerű szolgáltatás alkalmazásazonosítója
 - Egyszerű szolgáltatás titkos kulcsa
 
-Miután a fenti adatokat, ez a sablon üzembe helyezéséhez:
+Ha már rendelkezik a fenti információkkal, telepítse a következő sablont:
 
 <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FMicrosoft%2Fsql-data-warehouse-samples%2Fmaster%2Farm-templates%2FsqlDwTimerScaler%2Fazuredeploy.json" target="_blank">
 <img src="https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.png"/>
 </a>
 
-Miután üzembe helyezte a sablont, három új erőforrást találni: egy ingyenes Azure App Service-csomagot, egy fogyasztásalapú Függvényalkalmazás-csomagot és egy tárfiókot, amelyet a naplózást és a műveletek üzenetsorát kezeli. Olvassa el a többi szakaszt, ha meg szeretné tudni, hogyan módosíthatja az üzembe helyezett függvényeket az igényeinek megfelelően.
+A sablon üzembe helyezésekor három új erőforrást talál: egy ingyenes Azure App Service csomagot, egy fogyasztási alapú függvényalkalmazás tervet, valamint egy olyan Storage-fiókot, amely kezeli a naplózást és a műveleti várólistát. Olvassa el a többi szakaszt, ha meg szeretné tudni, hogyan módosíthatja az üzembe helyezett függvényeket az igényeinek megfelelően.
 
-## <a name="change-the-compute-level"></a>A számítási szintjének módosítása
+## <a name="change-the-compute-level"></a>A számítási szint módosítása
 
 1. Navigáljon a Függvényalkalmazás szolgáltatást. Ha az alapértelmezett értékekkel helyezte üzembe a sablont, a szolgáltatás neve *DWOperations*. A Függvényalkalmazás megnyitása után megfigyelheti, hogy a rendszer öt függvényt helyezett üzembe a Függvényalkalmazás szolgáltatásban. 
 
    ![Sablonnal üzembe helyezett függvények](media/manage-compute-with-azure-functions/five-functions.png)
 
-2. Válassza ki a *DWScaleDownTrigger* vagy a *DWScaleUpTrigger* elemet attól függően, hogy a vertikális fel- vagy leskálázás idejét szeretné módosítani. A legördülő menüben válassza ki az integrálás.
+2. Válassza ki a *DWScaleDownTrigger* vagy a *DWScaleUpTrigger* elemet attól függően, hogy a vertikális fel- vagy leskálázás idejét szeretné módosítani. A legördülő menüben válassza az integrálás lehetőséget.
 
    ![Integrálás kiválasztása a függvényhez](media/manage-compute-with-azure-functions/select-integrate.png)
 
-3. Jelenleg a *%ScaleDownTime%* vagy a *%ScaleUpTime%* értéknek kell megjelennie. Ezek az értékek azt jelzik, hogy az ütemezés az [Alkalmazásbeállításokban][Application Settings] beállított értékeken alapul. Egyelőre hagyja figyelmen kívül ezt az értéket, és módosítsa az ütemezést a kívánt időpontra a következő lépések alapján.
+3. Jelenleg a *%ScaleDownTime%* vagy a *%ScaleUpTime%* értéknek kell megjelennie. Ezek az értékek azt jelzik, hogy az ütemterv az [alkalmazás beállításaiban][Application Settings]meghatározott értékeken alapul. Egyelőre figyelmen kívül hagyhatja ezt az értéket, és a következő lépések alapján módosíthatja az ütemtervet a kívánt időpontra.
 
 4. Az ütemezési területen adja meg az SQL Data Warehouse vertikális felskálázásának gyakoriságát CRON-kifejezésként. 
 
@@ -64,10 +65,10 @@ Miután üzembe helyezte a sablont, három új erőforrást találni: egy ingyen
    {second} {minute} {hour} {day} {month} {day-of-week}
    ```
 
-   Ha például *"0 30 9 ** 1-5"* tükrözné eseményindító minden hétköznap 9:30 -kor. További információért tekintse meg az Azure Functions [ütemezési példákat][schedule examples] ismertető leírását.
+   Például a *"0 30 9 * * * 1-5"* egy-egy triggert tükröz minden hétköznapon 9 órakor. További információért látogasson el Azure Functions [Schedule példákat][schedule examples].
 
 
-## <a name="change-the-time-of-the-scale-operation"></a>A skálázási művelet idő módosítása
+## <a name="change-the-time-of-the-scale-operation"></a>A skálázási művelet időpontjának módosítása
 
 1. Navigáljon a Függvényalkalmazás szolgáltatást. Ha az alapértelmezett értékekkel helyezte üzembe a sablont, a szolgáltatás neve *DWOperations*. A Függvényalkalmazás megnyitása után megfigyelheti, hogy a rendszer öt függvényt helyezett üzembe a Függvényalkalmazás szolgáltatásban. 
 
@@ -75,7 +76,7 @@ Miután üzembe helyezte a sablont, három új erőforrást találni: egy ingyen
 
    ![A függvényhez tartozó eseményindító számítási szintjének módosítása](media/manage-compute-with-azure-functions/index-js.png)
 
-3. Módosítsa a *ServiceLevelObjective* értékét a kívánt szintre, és kattintson a mentés gombra. Ez az érték az adattárház-példányt az integrálás szakaszban meghatározott ütemezés szerint lesz skálázva a számítási szintre.
+3. Módosítsa a *ServiceLevelObjective* értékét a kívánt szintre, és kattintson a mentés gombra. Ez az érték az a számítási szint, amelyet az adatraktár-példány az integráció szakaszban meghatározott ütemterv alapján fog méretezni.
 
 ## <a name="use-pause-or-resume-instead-of-scale"></a>Szüneteltetés vagy folytatás használata méretezés helyett 
 
@@ -92,14 +93,14 @@ Alapértelmezés szerint jelenleg a *DWScaleDownTrigger* és a *DWScaleUpTrigger
 3. Lépjen az adott eseményindító *Integrálás* lapjára az ütemezés módosításához.
 
    > [!NOTE]
-   > A méretezési eseményindítók és a szüneteltethet és folytathat eseményindítók között működési különbség az üzenetet az üzenetsorba küldött. További információkért lásd: [új eseményindító függvény hozzáadása][Add a new trigger function].
+   > A skálázási eseményindítók és a szüneteltetési/folytatási eseményindítók közötti funkcionális különbség a várólistára küldött üzenet. További információkért lásd: [új trigger függvény hozzáadása][Add a new trigger function].
 
 
 ## <a name="add-a-new-trigger-function"></a>Új eseményindító függvény hozzáadása
 
-A sablon jelenleg csak két méretezési függvényt tartalmaz. Ezeknek a függvényeknek a nap folyamán csak skálázhatja leskálázás egyszer, és egyszer leskálázni. Részletesebb vezérléshez, így napi többszöri vertikális leskálázást vagy más skálázási viselkedést a hétvégeken hozzá kell egy eseményindítót.
+A sablon jelenleg csak két méretezési függvényt tartalmaz. Ezekkel a függvényekkel a nap folyamán csak egyszer és egyszer lehet méretezni. Ha részletesebb szabályozásra van szükség, például napi többszöri méretezésre vagy a hétvégén eltérő skálázási viselkedésre van szüksége, újabb triggert kell hozzáadnia.
 
-1. Hozzon létre egy új üres függvényt. Válassza ki a *+* gombot a függvénysablonok ablaktáblájának megjelenítéséhez közeli funkciók.
+1. Hozzon létre egy új üres függvényt. Kattintson a függvények helyéhez közeli *+* gombra a függvény sablon paneljének megjelenítéséhez.
 
    ![Új függvény létrehozása](media/manage-compute-with-azure-functions/create-new-function.png)
 
@@ -115,7 +116,7 @@ A sablon jelenleg csak két méretezési függvényt tartalmaz. Ezeknek a függv
 
    ![Az index.js másolása](media/manage-compute-with-azure-functions/index-js.png)
 
-5. Állítsa be a műveleti változót a kívánt viselkedésre a következőképpen:
+5. Állítsa a műveleti változót a kívánt viselkedésre a következőképpen:
 
    ```javascript
    // Resume the data warehouse instance
@@ -138,7 +139,7 @@ A sablon jelenleg csak két méretezési függvényt tartalmaz. Ezeknek a függv
 
 ## <a name="complex-scheduling"></a>Összetett ütemezés
 
-Ez a szakasz röviden bemutatja, hogy mire szükség összetettebb ütemezéséhez szüneteltetése, folytatása, és skálázhatóságának.
+Ez a szakasz röviden bemutatja, hogy mire van szükség a szüneteltetési, a folytatási és a méretezési funkciók összetettebb ütemezésének megkezdéséhez.
 
 ### <a name="example-1"></a>1\. példa:
 
@@ -151,7 +152,7 @@ Vertikális felskálázás 8:00-kor DW600 értékre, és vertikális leskáláz�
 
 ### <a name="example-2"></a>2\. példa 
 
-Vertikális reggel 8 -kor dw1000 értékre, vertikális leskálázás egyszer DW600,:, és 10-kor DW200 értékre, vertikális leskálázás.
+Napi méretezés 08:00 és DW1000 között, a leskálázás egyszer, kor DW600 16:00-kor, és 10 – DW200.
 
 | Függvény  | Ütemezés     | Művelet                                |
 | :-------- | :----------- | :--------------------------------------- |

@@ -1,5 +1,5 @@
 ---
-title: Változó tevékenység beállítása Azure Data Factoryban | Microsoft Docs
+title: Változó tevékenység beállítása Azure Data Factoryban
 description: Megtudhatja, hogyan állíthatja be egy Data Factory-folyamatban definiált meglévő változó értékét a változó beállítása tevékenység használatával.
 services: data-factory
 documentationcenter: ''
@@ -12,12 +12,12 @@ author: djpmsft
 ms.author: daperlov
 manager: jroth
 ms.reviewer: maghan
-ms.openlocfilehash: cfe6dd63234a7750fe01614d6f1b38bb7cce1adb
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 2589e56d3170b235f31d07f902eb75c749e8573f
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70142445"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73679304"
 ---
 # <a name="set-variable-activity-in-azure-data-factory"></a>Változó tevékenység beállítása Azure Data Factoryban
 
@@ -27,10 +27,10 @@ A változó beállítása tevékenységgel egy Data Factory-folyamatban definiá
 
 Tulajdonság | Leírás | Kötelező
 -------- | ----------- | --------
-name | A tevékenység neve a folyamatban | Igen
-description | A tevékenység működését leíró szöveg | nem
+név | A tevékenység neve a folyamatban | Igen
+leírás | A tevékenység működését leíró szöveg | nem
 type | A tevékenység típusa SetVariable | igen
-value | A megadott változó beállításához használt karakterlánc-literál vagy kifejezés objektum értéke | igen
+érték | A megadott változó beállításához használt karakterlánc-literál vagy kifejezés objektum értéke | igen
 variableName | A tevékenység által beállított változó neve | igen
 
 

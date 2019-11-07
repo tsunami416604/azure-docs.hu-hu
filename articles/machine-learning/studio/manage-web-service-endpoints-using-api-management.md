@@ -1,6 +1,6 @@
 ---
 title: Webszolgáltatások kezelése API Management használatával
-titleSuffix: Azure Machine Learning Studio (classic)
+titleSuffix: ML Studio (classic) Azure
 description: Egy útmutató, amely bemutatja, hogyan kezelhetők a AzureML webszolgáltatások a API Management használatával. A REST API-végpontok kezelése a felhasználói hozzáférés, a használat szabályozásának és az irányítópultok figyelésének definiálásával.
 services: machine-learning
 ms.service: machine-learning
@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 11/03/2017
-ms.openlocfilehash: 60f890912874cfda993ae45f84fa3d1c04503d00
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 227a7205788194cc507dcd9dab7e5cad57abc7f9
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73489264"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73671578"
 ---
 # <a name="manage-azure-machine-learning-studio-classic-web-services-using-api-management"></a>Azure Machine Learning Studio (klasszikus) webszolgáltatások kezelése API Management használatával
 ## <a name="overview"></a>Áttekintés
@@ -29,13 +29,13 @@ Az útmutató elvégzéséhez a következőkre lesz szüksége:
 
 * Egy Azure-fiók.
 * Egy AzureML-fiók.
-* Egy webszolgáltatásként üzembe helyezett AzureML-kísérlet munkaterülete, szolgáltatása és api_key. A AzureML-kísérletek létrehozásával kapcsolatos részletekért tekintse meg a [Studio](create-experiment.md)rövid útmutatóját. A studiók (klasszikus) webszolgáltatásként történő üzembe helyezésével kapcsolatos információkért tekintse meg a [Studio üzembe helyezési útmutatója](publish-a-machine-learning-web-service.md) című témakört, amely azt ismerteti, hogyan lehet webszolgáltatásként üzembe helyezni egy AzureML-kísérletet. Másik lehetőségként az "A" függelék utasításokat tartalmaz egy egyszerű AzureML-kísérlet létrehozásához és teszteléséhez, és webszolgáltatásként való üzembe helyezéséhez.
+* Egy webszolgáltatásként üzembe helyezett AzureML-kísérlet munkaterülete, szolgáltatása és api_key. A AzureML-kísérletek létrehozásával kapcsolatos részletekért tekintse meg a [Studio](create-experiment.md)rövid útmutatóját. A studiók (klasszikus) webszolgáltatásként történő üzembe helyezésével kapcsolatos információkért tekintse meg a [Studio üzembe helyezési útmutatója](deploy-a-machine-learning-web-service.md) című témakört, amely azt ismerteti, hogyan lehet webszolgáltatásként üzembe helyezni egy AzureML-kísérletet. Másik lehetőségként az "A" függelék utasításokat tartalmaz egy egyszerű AzureML-kísérlet létrehozásához és teszteléséhez, és webszolgáltatásként való üzembe helyezéséhez.
 
 ## <a name="create-an-api-management-instance"></a>API Management-példány létrehozása
 
 A Azure Machine Learning webszolgáltatását API Management példánnyal kezelheti.
 
-1. Bejelentkezés az [Azure Portalra](https://portal.azure.com).
+1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
 2. Válassza a **+ Erőforrás létrehozása** lehetőséget.
 3. A keresőmezőbe írja be az "API Management" kifejezést, majd válassza az "API Management" erőforrást.
 4. Kattintson a **Létrehozás** elemre.
@@ -166,7 +166,7 @@ A művelet meghívása után a fejlesztői portál megjeleníti a **kért URL-c�
 
 ## <a name="appendix-a---creating-and-testing-a-simple-azureml-web-service"></a>A függelék – egyszerű AzureML webszolgáltatás létrehozása és tesztelése
 ### <a name="creating-the-experiment"></a>A kísérlet létrehozása
-Az alábbiakban egy egyszerű AzureML-kísérlet létrehozásának és webszolgáltatásként történő üzembe helyezésének lépései láthatók. A webszolgáltatás a tetszőleges szövegű oszlopot adja meg, és az egész számként megjelenített szolgáltatások készletét adja vissza. Példa:
+Az alábbiakban egy egyszerű AzureML-kísérlet létrehozásának és webszolgáltatásként történő üzembe helyezésének lépései láthatók. A webszolgáltatás a tetszőleges szövegű oszlopot adja meg, és az egész számként megjelenített szolgáltatások készletét adja vissza. Például:
 
 | Szöveg | Kivonatos szöveg |
 | --- | --- |

@@ -15,16 +15,16 @@ ms.date: 06/12/2019
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5ff6d9e33e15aa04adfa03705172166492f87e30
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: ef2ce1ce7a754868a1adc2e78b4c0a83fc84f071
+ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72330023"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73641454"
 ---
 # <a name="automate-user-provisioning-and-deprovisioning-to-saas-applications-with-azure-active-directory"></a>A felhasználók üzembe helyezésének automatizálása és az SaaS-alkalmazások kiépítése a Azure Active Directory
 
-Azure Active Directory (Azure AD) segítségével automatizálhatja a felhasználói identitások létrehozását, karbantartását és eltávolítását a Felhőbeli ([SaaS](https://azure.microsoft.com/overview/what-is-saas/)) alkalmazásokban, például a Dropbox, a Salesforce, a ServiceNow és más rendszerekben. Ez az úgynevezett SaaS-alkalmazások automatikus felhasználó-kiépítés.
+Azure Active Directory (Azure AD) segítségével automatizálhatja a felhasználói identitások létrehozását, karbantartását és eltávolítását a Cloud SaaS-alkalmazásokban, például a [Dropbox](https://docs.microsoft.com/azure/active-directory/saas-apps/dropboxforbusiness-provisioning-tutorial), a [Salesforce](https://docs.microsoft.com/azure/active-directory/saas-apps/salesforce-provisioning-tutorial), a [ServiceNow](https://docs.microsoft.com/azure/active-directory/saas-apps/servicenow-provisioning-tutorial)és más rendszerekben. Ez az úgynevezett SaaS-alkalmazások automatikus felhasználó-kiépítés.
 
 > [!VIDEO https://www.youtube.com/embed/_ZjARPpI6NI]
 
@@ -56,11 +56,14 @@ A funkció használatának néhány gyakori indítéka a következők:
 
 Az **Azure ad-kiépítési szolgáltatás** a felhasználókat az SaaS-alkalmazásokhoz és más rendszerekhez is kiépíti az egyes alkalmazások gyártói által biztosított felhasználói felügyeleti API-végpontokhoz való csatlakozással. Ezek a felhasználói felügyeleti API-végpontok lehetővé teszik az Azure AD számára a felhasználók programozott módon történő létrehozását, frissítését és eltávolítását. A kiválasztott alkalmazások esetében a kiépítési szolgáltatás további, identitással kapcsolatos objektumokat, például csoportokat és szerepköröket is létrehozhat, frissíthet és eltávolíthat.
 
-![Azure AD-kiépítési szolgáltatás @ no__t-1 *. ábra: az Azure ad kiépítési szolgáltatása*
+![Azure AD-létesítési szolgáltatás](./media/user-provisioning/provisioning0.PNG)
+*1. ábra: az Azure ad-kiépítési szolgáltatás*
 
-@no__t – 0Outbound-felhasználó kiépítési munkafolyamata @ no__t – 1 *. ábra: "kimenő" felhasználó kiépítési munkafolyamata az Azure ad-ből népszerű SaaS-alkalmazásokhoz*
+![kimenő felhasználó kiépítési munkafolyamata](./media/user-provisioning/provisioning1.PNG)
+*2. ábra: "kimenő" felhasználó kiépítési munkafolyamata az Azure ad-ből a népszerű SaaS-alkalmazásokhoz*
 
-@no__t – 0Inbound-felhasználó kiépítési munkafolyamata @ no__t – 1 *. ábra: "bejövő" felhasználó kiépítési munkafolyamata a népszerű humántőke-felügyeleti (HCM) alkalmazásokból a Azure Active Directory és a Windows Server Active Directory*
+![bejövő felhasználó kiépítési munkafolyamata](./media/user-provisioning/provisioning2.PNG)
+*3. ábra: "bejövő" felhasználó kiépítési munkafolyamata a népszerű humántőke-felügyeleti (HCM) alkalmazásokból a Azure Active Directory és a Windows serverre Active Directory*
 
 ## <a name="what-applications-and-systems-can-i-use-with-azure-ad-automatic-user-provisioning"></a>Milyen alkalmazásokat és rendszereket használhatok az Azure AD automatikus felhasználói üzembe helyezéséhez?
 
@@ -87,11 +90,7 @@ A Azure Active Directory portál használatával konfigurálhatja az Azure AD ki
 
 1. Nyissa meg a **[Azure Active Directory portált](https://aad.portal.azure.com)** .
 1. Válassza a **vállalati alkalmazások** lehetőséget a bal oldali ablaktáblán. Az összes konfigurált alkalmazás listája látható.
-1. Alkalmazás hozzáadásához válassza az **+ új alkalmazás** lehetőséget. Adja hozzá a következők egyikét a forgatókönyvtől függően:
-
-   - A **saját alkalmazás hozzáadása** lehetőség az egyéni fejlesztésű scim-integrációkat támogatja.
-   - A **Hozzáadás**a katalógusból  > **Kiemelt alkalmazások** szakaszban szereplő összes alkalmazás támogatja az automatikus kiépítés használatát. Tekintse meg az [alkalmazás-oktatóanyagokat a felhasználók kiépítési](../saas-apps/tutorial-list.md) feladatait ismertető listában.
-
+1. Alkalmazás hozzáadásához válassza az **+ új alkalmazás** lehetőséget. 
 1. Adja meg a részleteket, és válassza a **Hozzáadás**lehetőséget. A rendszer hozzáadja az új alkalmazást a vállalati alkalmazások listájához, és megnyitja az alkalmazás-kezelés képernyőjét.
 1. A **kiépítés** lehetőség kiválasztásával kezelheti az alkalmazás felhasználói fiókjának kiépítési beállításait.
 
@@ -193,7 +192,7 @@ Az automatikus felhasználó-kiépítés hibaelhárításával kapcsolatos forga
 
 > [!VIDEO https://www.youtube.com/embed/MAy8s5WSe3A]
 
-A kimenő felhasználók egy alkalmazáshoz való kiépítésének lépésenkénti üzembe helyezési tervét a következő témakörben találja: a [felhasználók kiépítésének identitás-telepítési útmutatója](https://aka.ms/userprovisioningdeploymentplan).
+A kimenő felhasználók egy alkalmazáshoz való kiépítésének lépésenkénti üzembe helyezési tervét a következő témakörben találja: a [felhasználók kiépítésének identitás-telepítési útmutatója](https://aka.ms/deploymentplans/userprovisioning).
 
 ## <a name="frequently-asked-questions"></a>Gyakori kérdések
 

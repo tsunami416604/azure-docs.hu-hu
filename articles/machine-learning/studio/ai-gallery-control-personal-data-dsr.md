@@ -1,6 +1,6 @@
 ---
-title: Azure AI Gallery adatok kezelése
-titleSuffix: Azure Machine Learning Studio (classic)
+title: Azure AI Gallery-adatkezelés
+titleSuffix: ML Studio (classic) Azure
 description: A Azure AI Gallery termékben lévő felhasználói adatait exportálhatja és törölheti az interface vagy a AI Gallery Catalog API használatával. Ez a cikk bemutatja, hogyan.
 services: machine-learning
 ms.service: machine-learning
@@ -11,12 +11,12 @@ ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 05/25/2018
 ms.reviewer: jmartens, mldocs
-ms.openlocfilehash: f0b0bd4b01056769d38179597e477ecb164fa9ab
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: b99fa6ae740de4e9c87061b201f2104d6d025e6c
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73493536"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73684886"
 ---
 # <a name="view-and-delete-in-product-user-data-from-azure-ai-gallery"></a>Terméken belüli felhasználói adatok megtekintése és törlése Azure AI Gallery
 
@@ -84,7 +84,7 @@ A közzétett entitások megtekintéséhez látogasson el a következő URL-cím
 
     https://catalog.cortanaanalytics.com/entities?$filter=author/id eq '[AuthorId]'
 
-Példa:
+Például:
 
     https://catalog.cortanaanalytics.com/entities?$filter=author/id eq '99F1F5C6260295F1078187FA179FBE08B618CB62129976F09C6AF0923B02A5BA'
 

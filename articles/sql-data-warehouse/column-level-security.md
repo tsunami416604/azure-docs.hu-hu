@@ -1,30 +1,31 @@
 ---
-title: Az Azure SQL Data Warehouse oszlopszintű biztonsági |} A Microsoft Docs
-description: Oszlopszintű biztonsági (CLS) lehetővé teszi, hogy az ügyfelek számára, hogy ki férhet hozzá a felhasználó a végrehajtási környezet vagy a csoporttagságuk alapuló tábla oszlopokat. CLS leegyszerűsíti a megtervezését és kódolását az alkalmazás. CLS lehetővé teszi korlátozások megvalósítása az oszlop hozzáférést.
+title: Oszlopszintű biztonság
+description: Az oszlop szintű biztonság (CLS) lehetővé teszi az ügyfelek számára, hogy a felhasználó végrehajtási környezete vagy a csoporttagság alapján szabályozzák az adatbázis-táblázat oszlopaihoz való hozzáférést. A CLS leegyszerűsíti az alkalmazás biztonságának megtervezését és kódolását. A CLS lehetővé teszi az oszlopok hozzáférésére vonatkozó korlátozások megvalósítását.
 services: sql-data-warehouse
-author: KavithaJonnakuti
+author: julieMSFT
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: security
 ms.date: 04/02/2019
-ms.author: kavithaj
+ms.author: jrasnick
 ms.reviewer: igorstan, carlrab
-ms.openlocfilehash: aa91bd586e064239d0e05c754427947963c9ee3a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.custom: seo-lt-2019
+ms.openlocfilehash: 605dfadaf4cd1686b124b120151e6a88a43f1a68
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61082814"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73693085"
 ---
-# <a name="column-level-security"></a>Oszlop-biztonság
-Oszlopszintű biztonsági (CLS) lehetővé teszi, hogy az ügyfelek számára, hogy ki férhet hozzá a felhasználó a végrehajtási környezet vagy a csoporttagságuk alapuló tábla oszlopokat.
+# <a name="column-level-security"></a>Oszlop szintű biztonság
+Az oszlop szintű biztonság (CLS) lehetővé teszi az ügyfelek számára, hogy a felhasználó végrehajtási környezete vagy a csoporttagság alapján szabályozzák az adatbázis-táblázat oszlopaihoz való hozzáférést.
 
 > [!VIDEO https://www.youtube.com/embed/OU_ESg0g8r8]
 
-CLS leegyszerűsíti a megtervezését és kódolását az alkalmazás. CLS lehetővé teszi korlátozások megvalósítása az oszlop hozzáféréssel bizalmas adatok védelme érdekében. Például annak biztosítása, hogy adott felhasználó hozzáférhet-e csak bizonyos egy tábla adott oszlopait tanulóinak tárolására. A hozzáférés korlátozási logika található az adatbázisszinten, hanem helyezkedik el az adatokat egy másik alkalmazás szinten. Az adatbázis a hozzáférési korlátozásokat alkalmazza, minden alkalommal, amikor az egyik csomagunkban kísérel meg, hogy adatelérési. Ez a korlátozás lehetővé teszi a biztonsági rendszer megbízhatóbb és robusztus az átfogó biztonsági rendszer felületének csökkentése révén. Emellett CLS is kiküszöböli a nézetek bemutatása a felhasználók hozzáférési korlátozásokat az oszlopok szűréséhez.
+A CLS leegyszerűsíti az alkalmazás biztonságának megtervezését és kódolását. A CLS lehetővé teszi a bizalmas adatok védelme érdekében az oszlopok hozzáférésére vonatkozó korlátozások megvalósítását. Tegyük fel például, hogy egy adott felhasználó csak a saját részlegéhez tartozó táblázat bizonyos oszlopaihoz fér hozzá. A hozzáférés-korlátozási logika az adatbázis-szinten található, nem pedig egy másik alkalmazási szinten lévő adatoktól. Az adatbázis minden olyan alkalommal alkalmazza a hozzáférési korlátozásokat, amikor az adathozzáférés bármely szintjéről megkísérelhető. Ez a korlátozás a biztonsági rendszerek megbízhatóságát és megbízhatóságát teszi lehetővé a teljes biztonsági rendszerek felületének csökkentésével. Emellett a CLS is szükségtelenné teszi a nézetek bevezetését, hogy kiszűrje a hozzáférési korlátozásokat a felhasználók számára.
 
-CLS-implementálhatja a [GRANT](https://docs.microsoft.com/sql/t-sql/statements/grant-transact-sql) T-SQL-utasítással. Ez a mechanizmus az SQL és az Azure Active Directory (AAD) hitelesítés támogatott.
+A CLS-T a [Grant](https://docs.microsoft.com/sql/t-sql/statements/grant-transact-sql) T-SQL-utasítással implementálhatja. Ezzel a mechanizmussal az SQL és a Azure Active Directory (HRE) hitelesítés is támogatott.
 
 ![CLS](./media/column-level-security/cls.png)
 
@@ -47,9 +48,9 @@ GRANT <permission> [ ,...n ] ON
 ```
 
 ## <a name="example"></a>Példa
-Az alábbi példa bemutatja, hogyan fér hozzá a "SSN" oszlop "Tagsági" tábla "TestUser" korlátozhatja, hogy:
+Az alábbi példa bemutatja, hogyan korlátozhatja a "tesztfelhasználó" a "tagság" tábla "SSN" oszlopának elérését:
 
-Társadalombiztosítási számot tárolására szolgáló SSN oszlop "Tagsági" tábla létrehozása:
+A "tagság" tábla létrehozása a társadalombiztosítási számok tárolására szolgáló SSN-oszloppal:
 
 ```sql
 CREATE TABLE Membership
@@ -61,13 +62,13 @@ CREATE TABLE Membership
    Email varchar(100) NULL);
 ```
 
-Lehetővé teszi a "TestUser" SSN oszlop, amely bizalmas adatok kivételével az összes oszlop el:
+A "tesztfelhasználó" engedélyezése az összes oszlop eléréséhez, kivéve az SSN oszlopot, amely bizalmas adatokat tartalmaz:
 
 ```sql
 GRANT SELECT ON Membership(MemberID, FirstName, LastName, Phone, Email) TO TestUser;
 ```
 
-A lekérdezések végre, mert "TestUser" sikertelen lesz, ha a SSN oszlop tartalmazzák:
+A "tesztfelhasználó" művelettel végrehajtott lekérdezések sikertelenek lesznek, ha tartalmazzák a SSN oszlopot:
 
 ```sql
 SELECT * FROM Membership;
@@ -77,6 +78,6 @@ The SELECT permission was denied on the column 'SSN' of the object 'Membership',
 ```
 
 ## <a name="use-cases"></a>Használati példák
-Néhány példa, hogyan CLS használják még ma:
-- A pénzügyi szolgáltatások vállalkozás áttekinthető egyetlen fiók rendelkezik hozzáféréssel az ügyfél társadalombiztosítási szám (SSN), a telefonszámokat, és az egyéb személyes azonosításra alkalmas adatokat (PII).
-- Egészségügyi szolgáltató lehetővé teszi, hogy csak orvosok és nővérek hozzáférjenek a bizalmas orvosi a számlázási részleg tagjai nem téve az adatok megtekintésére.
+Néhány példa arra, hogyan használják a CLS-t a mai napon:
+- A pénzügyi szolgáltatások vállalata csak a fiókok kezelői számára teszi lehetővé, hogy hozzáférjenek az ügyfél társadalombiztosítási számaihoz (SSN), a telefonszámokhoz és az egyéb személyazonosításra alkalmas adatokhoz.
+- Az állapotfigyelő szolgáltató csak az orvosok és ápolók számára teszi lehetővé, hogy hozzáférjenek a bizalmas orvosi adatokhoz, miközben nem engedélyezik a számlázási részleg tagjai számára az adatok megtekintését.

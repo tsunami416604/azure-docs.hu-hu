@@ -1,5 +1,5 @@
 ---
-title: Adatátalakítás egy leképezési adatfolyam használatával Azure Data Factoryban | Microsoft Docs
+title: Adatátalakítás egy leképezési adatfolyam használatával Azure Data Factory
 description: Ez az oktatóanyag részletes útmutatást nyújt a Azure Data Factory használatával történő adatátalakításhoz a leképezési adatfolyammal
 author: djpmsft
 ms.author: daperlov
@@ -7,12 +7,12 @@ ms.reviewer: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 10/07/2019
-ms.openlocfilehash: 5b618798c74393f3e7d89cfc69c67ba831356ce4
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 886e6e659dee2a898167054c5d76bc3977f27e11
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72385556"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73683632"
 ---
 # <a name="transform-data-using-mapping-data-flows"></a>Adatátalakítás a leképezési adatfolyamok használatával
 
@@ -40,7 +40,7 @@ Az oktatóanyagban átalakított fájl MoviesDB. csv, amely [itt](https://raw.gi
 Ebben a lépésben létrehoz egy adatelőállítót, és megnyitja a Data Factory UX-t egy folyamat létrehozásához az adatelőállítóban. 
 
 1. Nyissa meg a **Microsoft Edge** vagy a **Google Chrome böngészőt**. Jelenleg Data Factory felhasználói felület csak a Microsoft Edge és a Google Chrome böngészőben támogatott.
-2. A bal oldali menüben válassza az **erőforrás létrehozása** > **Analitika** > **Data Factory**: 
+2. A bal oldali menüben válassza az **erőforrás létrehozása** > **Analytics** > **Data Factory**: 
   
    ![Data Factory kiválasztása az „Új” ablaktáblán](./media/doc-common-process/new-azure-data-factory-menu.png)
 
@@ -94,13 +94,13 @@ Miután létrehozta az adatfolyamatot, a rendszer automatikusan elküldi az adat
     ![Adatfolyam-vászon](media/tutorial-data-flow/dataflow3.png)
 1. Válassza a **Azure Data Lake Storage Gen2**lehetőséget. Kattintson a Folytatás gombra.
 
-    ![Adathalmaz](media/tutorial-data-flow/dataset1.png)
+    ![Adatkészlet](media/tutorial-data-flow/dataset1.png)
 1. Válassza a **DelimitedText**lehetőséget. Kattintson a Folytatás gombra.
 
-    ![Adathalmaz](media/tutorial-data-flow/dataset2.png)
+    ![Adatkészlet](media/tutorial-data-flow/dataset2.png)
 1. Nevezze el az adatkészlet **MoviesDB**. A társított szolgáltatás legördülő menüben válassza az **új**lehetőséget.
 
-    ![Adathalmaz](media/tutorial-data-flow/dataset3.png)
+    ![Adatkészlet](media/tutorial-data-flow/dataset3.png)
 1. A társított szolgáltatás létrehozása képernyőn nevezze el a ADLS Gen2 társított szolgáltatás **ADLSGen2** , és adja meg a hitelesítési módszert. Ezután adja meg a kapcsolatok hitelesítő adatait. Ebben az oktatóanyagban a fiók kulcsát használjuk a Storage-fiókhoz való kapcsolódáshoz. Kattintson a **Kapcsolódás tesztelése** lehetőségre a hitelesítő adatok helyes beírásának ellenőrzéséhez. Ha elkészült, kattintson a Létrehozás gombra.
 
     ![Társított szolgáltatás](media/tutorial-data-flow/ls1.png)
@@ -115,7 +115,7 @@ Miután létrehozta az adatfolyamatot, a rendszer automatikusan elküldi az adat
     ![Adatfolyam-vászon](media/tutorial-data-flow/dataflow5.png)
 1. Nevezze el a szűrő átalakítási **FilterYears**. Kattintson a **szűrés** elem melletti kifejezés mezőre a Kifejezésszerkesztő megnyitásához. Itt adja meg a szűrési feltételt. 
     
-    ![Szűrő](media/tutorial-data-flow/filter1.png)
+    ![Szűrés](media/tutorial-data-flow/filter1.png)
 1. Az adatfolyam-kifejezés-szerkesztővel interaktív módon hozhat létre kifejezéseket különböző átalakításokban való használatra. A kifejezések tartalmazhatnak beépített függvényeket, a bemeneti sémából származó oszlopokat és a felhasználó által definiált paramétereket. A kifejezések létrehozásával kapcsolatos további információkért lásd: [adatáramlási kifejezés-szerkesztő](concepts-data-flow-expression-builder.md).
     
     Ebben az oktatóanyagban a műfaji komédia azon filmjeit szeretné szűrni, amelyek a 1910-es és a 2000-as évek közötti időszakban jöttek létre. Az év jelenleg karakterlánc, a ```toInteger()``` függvénnyel át kell alakítani egész számra. Használja a nagyobb vagy egyenlő értéket (> =), és kisebb vagy egyenlő, mint a (< =) operátorok az 1910 és a 200 – literális Year értékekkel való összehasonlításhoz. Egyesítse ezeket a kifejezéseket a és (& &) operátorral együtt. A kifejezés a következőképpen érkezik:
@@ -128,13 +128,13 @@ Miután létrehozta az adatfolyamatot, a rendszer automatikusan elküldi az adat
 
     Ha a hibakeresési fürt aktív, a **frissítés** gombra kattintva ellenőrizheti, hogy a kifejezés kimenete a használt bemenetekhez képest látható-e. A logikát az adatáramlás kifejezésének nyelve alapján több, mint egy megfelelő választ kaphat.
     
-    ![Szűrő](media/tutorial-data-flow/filter2.png)
+    ![Szűrés](media/tutorial-data-flow/filter2.png)
 
     Kattintson a **Mentés és Befejezés** gombra, ha elkészült a kifejezéssel.
 
 1. Egy **Adatelőnézet** beolvasása annak ellenőrzéséhez, hogy a szűrő megfelelően működik-e.
     
-    ![Szűrő](media/tutorial-data-flow/filter3.png)
+    ![Szűrés](media/tutorial-data-flow/filter3.png)
 1. A hozzáadni kívánt következő átalakítás a **séma-módosító**alatt létrehozott **összesített** transzformáció.
     
     ![Összesítés](media/tutorial-data-flow/agg1.png)
@@ -144,7 +144,7 @@ Miután létrehozta az adatfolyamatot, a rendszer automatikusan elküldi az adat
 1. Nyissa meg az **összesítések** lapot. A bal oldali szövegmezőben nevezze el az összesítő oszlop **AverageComedyRating**. Kattintson a jobb oldali kifejezés mezőre az összesítő kifejezés megadásához a Expression Builder használatával.
     
     ![Összesítés](media/tutorial-data-flow/agg3.png)
-1. Az oszlop **minősítésének**átlagához használja az ```avg()``` összesítő függvényt. Ha a **minősítés** egy karakterlánc, és a ```avg()``` függvény numerikus bemenetet használ, az értéket egy számra kell konvertálnia a ```toInteger()``` függvénnyel. A kifejezés a következőképpen néz ki:
+1. Az oszlop **minősítésének**átlagához használja a ```avg()``` összesítő függvényt. Mivel a **minősítés** egy karakterlánc, és a ```avg()``` numerikus bemenetet vesz igénybe, az értéket egy számra kell konvertálnia a ```toInteger()``` függvénnyel. A kifejezés a következőképpen néz ki:
 
     ```avg(toInteger(Rating))```
     
@@ -162,10 +162,10 @@ Miután létrehozta az adatfolyamatot, a rendszer automatikusan elküldi az adat
     ![Sink (Fogadó)](media/tutorial-data-flow/sink2.png)
 1. Válassza a **Azure Data Lake Storage Gen2**lehetőséget. Kattintson a Folytatás gombra.
 
-    ![Adathalmaz](media/tutorial-data-flow/dataset1.png)
+    ![Adatkészlet](media/tutorial-data-flow/dataset1.png)
 1. Válassza a **DelimitedText**lehetőséget. Kattintson a Folytatás gombra.
 
-    ![Adathalmaz](media/tutorial-data-flow/dataset2.png)
+    ![Adatkészlet](media/tutorial-data-flow/dataset2.png)
 1. Nevezze el a fogadó adatkészletet **MoviesSink**. A társított szolgáltatás mezőben válassza ki a 6. lépésben létrehozott ADLS Gen2 társított szolgáltatást. Adja meg azt a kimeneti mappát, ahová az adatokat írni kívánja. Ebben az oktatóanyagban a "kimenet" mappába írunk a "Sample-recontainer" tárolóban. A mappának nem kell előre megadnia, és dinamikusan létre lehet hozni. Állítsa az **első sort fejlécként** True (igaz) értékre, és válassza a **nincs lehetőséget** a **séma importálása**lehetőségnél. Kattintson a Befejezés gombra.
     
     ![Sink (Fogadó)](media/tutorial-data-flow/sink3.png)
@@ -184,14 +184,14 @@ A folyamat a közzététel előtt hibakeresést végezhet. Ebben a lépésben az
     ![Folyamat](media/tutorial-data-flow/pipeline2.png)
 1. A figyelés ablaktáblán láthatja az egyes átalakítási lépésekben eltöltött sorok és idő számát.
     
-    ![Monitoring](media/tutorial-data-flow/pipeline3.png)
+    ![Figyelés](media/tutorial-data-flow/pipeline3.png)
 1. A transzformációra kattintva részletes információkat kaphat az oszlopokról és az adatok particionálásáról.
     
-    ![Monitoring](media/tutorial-data-flow/pipeline4.png)
+    ![Figyelés](media/tutorial-data-flow/pipeline4.png)
 
 Ha ezt az oktatóanyagot helyesen követte, a fogadó mappájába írt 83 és 2 oszlopot kell írnia. A blob Storage ellenőrzésével ellenőrizheti, hogy helyesek-e az adatok.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az oktatóanyagban szereplő folyamat egy olyan adatfolyamot futtat, amely összegzi a 1910 és 2000 közötti vígjátékok átlagos minősítését, és az adatokat a ADLS írja. Megismerte, hogyan végezheti el az alábbi műveleteket:
 

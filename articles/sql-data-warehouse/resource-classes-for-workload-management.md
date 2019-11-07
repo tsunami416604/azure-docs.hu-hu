@@ -1,5 +1,5 @@
 ---
-title: Erőforrás-osztályok a számítási feladatok kezeléséhez Azure SQL Data Warehouseban | Microsoft Docs
+title: Erőforrás-osztályok a számítási feladatok kezeléséhez
 description: Útmutató az erőforrás-osztályok használatához a párhuzamosságok és a számítási erőforrások kezeléséhez Azure SQL Data Warehouseban.
 services: sql-data-warehouse
 author: ronortloff
@@ -7,15 +7,16 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: workload-management
-ms.date: 10/04/2019
+ms.date: 11/04/2019
 ms.author: rortloff
 ms.reviewer: jrasnick
-ms.openlocfilehash: 5ef95faf162a6774e42b7cf258515757fdc9c7eb
-ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
+ms.custom: seo-lt-2019
+ms.openlocfilehash: 558a6e3faa207e15000657a17bec99a7b1ac99e4
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72035078"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73685930"
 ---
 # <a name="workload-management-with-resource-classes-in-azure-sql-data-warehouse"></a>Számítási feladatok kezelése erőforrás-osztályokkal Azure SQL Data Warehouse
 
@@ -35,7 +36,7 @@ Két típusú erőforrás-osztály létezik:
 
 Az erőforrás-osztályok a párhuzamossági tárolóhelyek használatával mérik az erőforrások felhasználását.  A [párhuzamossági résidőket](#concurrency-slots) a cikk későbbi részében ismertetjük.
 
-- Az erőforrás-osztályok erőforrás-felhasználásának megtekintéséhez tekintse meg a [memória és a Egyidejűség korlátai](memory-and-concurrency-limits.md#concurrency-maximums)című témakört.
+- Az erőforrás-osztályok erőforrás-felhasználásának megtekintéséhez tekintse meg a következőt: [memória és egyidejűségi korlátok] memória-Egyidejűség-limits.md).
 - Az erőforrás osztályának módosításához egy másik felhasználó alatt futtathatja a lekérdezést, vagy [módosíthatja az aktuális felhasználó erőforrás-osztályának](#change-a-users-resource-class) tagságát.
 
 ### <a name="static-resource-classes"></a>Statikus erőforrás-osztályok
@@ -45,7 +46,7 @@ A statikus erőforrás-osztályok ugyanazt a memóriát foglalják magukban, fü
 A statikus erőforrás-osztályok a következő előre definiált adatbázis-szerepkörökkel vannak implementálva:
 
 - staticrc10
-- staticrc20
+- staticrc20 erőforrásosztályhoz
 - staticrc30
 - staticrc40
 - staticrc50
@@ -68,9 +69,9 @@ Az egyes erőforrás-osztályok memóriájának kiosztása a következő, a **sz
 
 | Erőforrásosztály | Százalékos memória | Egyidejű lekérdezések minimálisra |
 |:--------------:|:-----------------:|:----------------------:|
-| smallrc        | 3%                | 32                     |
+| smallrc        | 3                | 32                     |
 | mediumrc       | 10%               | 10                     |
-| largerc        | 22%               | 4                      |
+| largerc        | 22               | 4                      |
 | xlargerc       | 70%               | 1                      |
 
 ### <a name="default-resource-class"></a>Alapértelmezett erőforrás osztály
@@ -92,7 +93,7 @@ Az erőforrás-osztályok úgy vannak kialakítva, hogy javítsák az adatkezel�
 
 Ezeket a műveleteket az erőforrás-osztályok szabályozzák:
 
-- INSERT-SELECT, UPDATE, DELETE
+- BESZÚRÁS – KIJELÖLÉS, FRISSÍTÉS, TÖRLÉS
 - SELECT (felhasználói táblák lekérdezésekor)
 - ALTER INDEX – Újraépítés vagy átrendezés
 - A TÁBLA ÚJRAÉPÍTÉSÉNEK MÓDOSÍTÁSA
@@ -118,7 +119,7 @@ Az alábbi utasítások mentesülnek az erőforrás-osztályoktól, és mindig a
 - STATISZTIKÁK létrehozása, frissítése vagy eldobása
 - TRUNCATE TABLE
 - MÓDOSÍTÁS ENGEDÉLYEZÉSE
-- CREATE LOGIN
+- BEJELENTKEZÉS LÉTREHOZÁSA
 - FELHASZNÁLÓ létrehozása, módosítása vagy eldobása
 - ELJÁRÁS létrehozása, módosítása vagy eldobása
 - NÉZET létrehozása vagy eldobása
@@ -234,8 +235,8 @@ Szintaxis
 `EXEC dbo.prc_workload_management_by_DWU @DWU VARCHAR(7), @SCHEMA_NAME VARCHAR(128), @TABLE_NAME VARCHAR(128)`
   
 1. @DWU: vagy adjon meg egy NULL paramétert az aktuális DWU kinyeréséhez a DW DB-ből, vagy adja meg a támogatott DWU a következő formában: "DW100c".
-2. @no__t – 0 adja meg a tábla sémájának nevét
-3. @no__t – 0 adja meg a kamat táblázatának nevét
+2. @SCHEMA_NAME: adja meg a tábla sémájának nevét.
+3. @TABLE_NAME: adja meg a kívánt tábla nevét
 
 Példák a tárolt folyamat végrehajtására:
 
@@ -331,7 +332,7 @@ SELECT 'DW100c' AS DWU,4 AS max_queries,4 AS max_slots,1 AS slots_used_
     SELECT 'DW30000c', 128, 1200, 36, 120, 264, 840, 1, 2, 4, 8, 16, 32, 64, 128 
 )
 -- Creating workload mapping to their corresponding slot consumption and default memory grant.
-,map
+,map  
 AS
 (
   SELECT CONVERT(varchar(20), 'SloDWGroupSmall') AS wg_name, slots_used_smallrc AS slots_used FROM alloc WHERE DWU = @DWU
@@ -580,7 +581,7 @@ SELECT  CASE
 GO
 ```
 
-## <a name="next-step"></a>Következő lépés
+## <a name="next-steps"></a>További lépések
 
 Az adatbázis-felhasználók és a biztonság kezelésével kapcsolatos további információkért lásd: [adatbázis biztonságossá tétele SQL Data Warehouseban][Secure a database in SQL Data Warehouse]. További információ arról, hogy a nagyobb erőforrás-osztályok Hogyan javíthatják a fürtözött oszlopcentrikus index minőségét: [a oszlopcentrikus tömörítésének memória-optimalizálása](sql-data-warehouse-memory-optimizations-for-columnstore-compression.md).
 

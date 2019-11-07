@@ -1,5 +1,5 @@
 ---
-title: Ajánlott eljárások az Azure SQL-adatszinkronizáláshoz | Microsoft Docs
+title: 'Ajánlott eljárások az Azure SQL-adatszinkronizálás '
 description: Ismerje meg az Azure-SQL-adatszinkronizálás konfigurálásával és futtatásával kapcsolatos ajánlott eljárásokat.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: allenwux
 ms.author: xiwu
 ms.reviewer: carlrab
 ms.date: 12/20/2018
-ms.openlocfilehash: 01962770c011a0107abd4e035c25d6c0d45fa0a0
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 728ac8ab42573e1cab30eaf12dd38a6d33b97aac
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68569373"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73691079"
 ---
 # <a name="best-practices-for-sql-data-sync"></a>Az SQL Data Synchez ajánlott eljárások 
 
@@ -50,7 +50,7 @@ Azure SQL Database csak a hitelesítő adatok egyetlen készletét támogatja. A
 -   Módosítsa a különböző fázisokhoz tartozó hitelesítő adatokat (például *credentials1* a telepítéshez és a *credentials2* a folyamatban van).  
 -   Módosítsa a hitelesítő adatok engedélyét (azaz módosítsa az engedélyt a szinkronizálás beállítása után).
 
-## <a name="setup"></a>Beállítás
+## <a name="setup"></a>Telepítés
 
 ### <a name="database-considerations-and-constraints"></a>Az adatbázissal kapcsolatos megfontolások és megkötések
 
@@ -116,7 +116,7 @@ A késés csökkentése érdekében a hub-adatbázist közel kell tartani a szin
 
 Alkalmazza az előző irányelveket az összetett szinkronizálási csoport konfigurációkra, például a nagyvállalati Felhőbeli és a felhőből a felhőbe irányuló forgatókönyvek együttes használatára.
 
-## <a name="sync"></a>Szinkronizálás
+## <a name="sync"></a>Sync
 
 ### <a name="avoid-a-slow-and-costly-initial-synchronization"></a>A lassú és költséges kezdeti szinkronizálás elkerülése
 
@@ -166,7 +166,7 @@ A szinkronizálási csoport és az adatbázis állapotának rendszeres figyelés
 
 ### <a name="avoid-out-of-date-databases-and-sync-groups"></a>Elavult adatbázisok és szinkronizálási csoportok elkerülése
 
-A szinkronizálási csoportban lévő szinkronizálási csoport vagy adatbázis elavult lehet. Ha a szinkronizálási csoport állapota elavult **, a**működése leáll. Ha az adatbázis állapota **elavult, az**adatok elveszhetnek. Érdemes elkerülni ezt a forgatókönyvet ahelyett, hogy helyre kellene állítani.
+A szinkronizálási csoportban lévő szinkronizálási csoport vagy adatbázis elavult lehet. Ha a szinkronizálási csoport állapota elavult **, a**működése leáll. Ha **az adatbázis állapota elavult, az**adatok elveszhetnek. Érdemes elkerülni ezt a forgatókönyvet ahelyett, hogy helyre kellene állítani.
 
 #### <a name="avoid-out-of-date-databases"></a>Elavult adatbázisok elkerülése
 
@@ -174,7 +174,7 @@ Az adatbázisok állapota **elavult** , ha 45 vagy több napig offline állapotb
 
 #### <a name="avoid-out-of-date-sync-groups"></a>Elavult szinkronizálási csoportok elkerülése
 
-A szinkronizálási csoport állapota elavult **, ha a** szinkronizálási csoport bármelyik változása nem propagálja a szinkronizálási csoport többi részét 45 napig vagy többet. A szinkronizálási csoport **elavult** állapotának elkerüléséhez rendszeresen tekintse meg a szinkronizálási csoport előzményeinek naplóját. Győződjön meg arról, hogy az összes ütközés fel van oldva, és a módosítások a szinkronizálási csoport adatbázisaiban sikeresen propagálva lettek.
+A szinkronizálási csoport **állapota elavult, ha a** szinkronizálási csoport bármelyik változása nem propagálja a szinkronizálási csoport többi részét 45 napig vagy többet. A szinkronizálási csoport **elavult** állapotának elkerüléséhez rendszeresen tekintse meg a szinkronizálási csoport előzményeinek naplóját. Győződjön meg arról, hogy az összes ütközés fel van oldva, és a módosítások a szinkronizálási csoport adatbázisaiban sikeresen propagálva lettek.
 
 Előfordulhat, hogy egy szinkronizálási csoport nem tud alkalmazni egy módosítást az alábbi okok valamelyike miatt:
 
@@ -198,7 +198,7 @@ Bizonyos esetekben előfordulhat, hogy az ügyfél ügynökkel való regisztrác
 1. Az A szinkronizálási csoport egy SQL Database-példány és egy helyszíni SQL Server-adatbázis használatával lett létrehozva, amely az 1. helyi ügynökhöz van társítva.
 2. Ugyanaz a helyszíni adatbázis regisztrálva van a (z) 2. helyi ügynökkel (ez az ügynök nincs hozzárendelve egyetlen szinkronizálási csoporthoz sem).
 3. A helyszíni adatbázis helyi ügynökből való regisztrációjának törlése eltávolítja a helyszíni adatbázishoz tartozó A szinkronizálási csoport nyomon követését és meta tábláit.
-4. Az A szinkronizálási csoport műveletei sikertelenek, ezzel a hibával: "Az aktuális műveletet nem lehetett befejezni, mert az adatbázis nincs kiépítve szinkronizálásra, vagy Önnek nincs engedélye a szinkronizálási konfigurációs táblákhoz."
+4. A szinkronizálási csoport egy művelete meghiúsul, ezzel a hibával: "az aktuális művelet nem fejeződött be, mert az adatbázis nincs kiépítve szinkronizálásra, vagy Önnek nincs engedélye a szinkronizálási konfigurációs táblákhoz."
 
 #### <a name="solution"></a>Megoldás
 
@@ -223,13 +223,13 @@ További információ a SQL-adatszinkronizálásról:
 
 -   Áttekintés – az [adatszinkronizálás több felhőalapú és helyszíni adatbázis között az Azure SQL-adatszinkronizálás](sql-database-sync-data.md)
 -   Adatszinkronizálás beállítása
-    - A portálon – [oktatóanyag: Az Azure SQL Database és a helyszíni SQL Server közötti adatszinkronizálás SQL-adatszinkronizálás beállítása](sql-database-get-started-sql-data-sync.md)
+    - A portálon – [oktatóanyag: SQL-adatszinkronizálás beállítása az Azure SQL Database és a helyszíni SQL Server közötti adatszinkronizáláshoz](sql-database-get-started-sql-data-sync.md)
     - A PowerShell-lel
-        -  [A PowerShell használata több Azure SQL Database-adatbázis közötti szinkronizáláshoz](scripts/sql-database-sync-data-between-sql-databases.md)
-        -  [A PowerShell használata egy Azure-beli SQL Database-adatbázis és egy helyszíni SQL Server-adatbázis közötti szinkronizáláshoz](scripts/sql-database-sync-data-between-azure-onprem.md)
--   Adatok szinkronizálása az ügynök - [adatok szinkronizálása az Azure SQL Data Sync ügynök](sql-database-data-sync-agent.md)
+        -  [A PowerShell használata több Azure SQL-adatbázis közötti szinkronizáláshoz](scripts/sql-database-sync-data-between-sql-databases.md)
+        -  [A PowerShell használata egy Azure SQL-adatbázis és egy helyszíni SQL Server-adatbázis közötti szinkronizáláshoz](scripts/sql-database-sync-data-between-azure-onprem.md)
+-   Adatszinkronizálási ügynök – [Az Azure SQL-adatszinkronizálás adatszinkronizálási ügynöke](sql-database-data-sync-agent.md)
 -   Figyelő – [SQL-adatszinkronizálás figyelése Azure monitor naplókkal](sql-database-sync-monitor-oms.md)
--   Hibaelhárítás – [Az Azure SQL-adatszinkronizálás](sql-database-troubleshoot-data-sync.md) hibáinak elhárítása
+-   Hibaelhárítás – [Az Azure SQL-adatszinkronizálás hibáinak elhárítása](sql-database-troubleshoot-data-sync.md)
 -   A szinkronizálási séma frissítése
     -   A Transact-SQL- [ben – automatizálja a séma változásainak az Azure-ban való replikálását SQL-adatszinkronizálás](sql-database-update-sync-schema.md)
     -   A PowerShell [használatával – egy meglévő szinkronizálási csoportban lévő szinkronizálási séma frissítéséhez használja a PowerShellt](scripts/sql-database-sync-update-schema.md) .

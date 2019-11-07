@@ -1,5 +1,5 @@
 ---
-title: Helyszíni SSIS számítási feladatok migrálása a Azure Data Factoryba való SSIS | Microsoft Docs
+title: Helyszíni SSIS számítási feladatok migrálása a Azure Data Factory SSIS
 description: Telepítse át a helyszíni SSIS számítási feladatokat az ADF-SSIS.
 services: data-factory
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 9/3/2019
-ms.openlocfilehash: 3bf5ddebd59c95d00d0d3270f0e8e1a2d29b379a
-ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
+ms.openlocfilehash: e75e6bc78740ffb8aba0faa0ef95f4b13a8c56ef
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70968470"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73684411"
 ---
 # <a name="migrate-on-premises-ssis-workloads-to-ssis-in-adf"></a>Helyszíni SSIS számítási feladatok migrálása az ADF-SSIS
 
@@ -27,7 +27,7 @@ Amikor áttelepíti az adatbázis-munkaterheléseket a helyszíni SQL Serverról
 
 A Azure Data Factory (ADF) Azure-SSIS Integration Runtime (IR) támogatja a SSIS-csomagok futtatását. A Azure-SSIS IR kiépítése után a csomagok üzembe helyezéséhez és futtatásához használhatja a jól ismert eszközöket, például a SQL Server Data Tools (SSDT)/SQL Server Management Studio (SSMS) és a parancssori segédeszközöket, például a dtinstall/dtutil/dtexec. További információ: az [Azure SSIS lift-and-SHIFT áttekintése](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-lift-shift-ssis-packages-overview).
 
-Ebből a cikkből megtudhatja, hogy a helyszíni SSIS származó ETL számítási feladatok áttelepítési folyamata az ADF-ben SSIS. Az áttelepítési folyamat két fázisból áll: **Értékelés** és **áttelepítés**.
+Ebből a cikkből megtudhatja, hogy a helyszíni SSIS származó ETL számítási feladatok áttelepítési folyamata az ADF-ben SSIS. Az áttelepítési folyamat két fázisból áll: az **értékelésből** és az **áttelepítésből**.
 
 ## <a name="assessment"></a>Értékelés
 
@@ -35,9 +35,9 @@ A teljes áttelepítési terv létrehozásához alapos értékelés segít azono
 
 A Data Migration Assistant (DMA) egy ingyenesen letölthető eszköz erre a célra, amelyet helyileg lehet telepíteni és végrehajtani. Az **integrációs szolgáltatások** típusú DMA-értékelési projekt hozható létre a kötegekben lévő SSIS-csomagok értékeléséhez, valamint a következő kategóriákban bemutatott kompatibilitási problémák azonosításához:
 
-- Áttelepítési blokkolók: Ezek olyan kompatibilitási problémák, amelyek letiltják az áttelepítési forrás csomagjainak futtatását Azure-SSIS IRon. A DMA útmutatást nyújt a problémák megoldásához.
+- Áttelepítési blokkolók: ezek a kompatibilitási problémák, amelyek letiltják az áttelepítési forrás csomagjainak futtatását Azure-SSIS IRon. A DMA útmutatást nyújt a problémák megoldásához.
 
-- Informatív problémák: Ezek részben támogatott vagy elavult funkciók, amelyek a forrás csomagjaiban használatosak. A DMA a javaslatok átfogó készletét, az Azure-ban elérhető alternatív megközelítéseket és a megoldási lépések enyhítését teszi lehetővé.
+- Informatív problémák: ezek részben támogatott vagy elavult funkciók, amelyek a forrás csomagjaiban használatosak. A DMA a javaslatok átfogó készletét, az Azure-ban elérhető alternatív megközelítéseket és a megoldási lépések enyhítését teszi lehetővé.
 
 ### <a name="four-storage-types-for-ssis-packages"></a>Négy tárolási típus a SSIS-csomagokhoz
 
@@ -52,7 +52,7 @@ A DMA jelenleg támogatja a **fájlrendszerbeli** tárolóban tárolt csomagok k
 
 Szerezze be a [DMA](https://docs.microsoft.com/sql/dma/dma-overview)-t, és [végezze el a csomag értékelését](https://docs.microsoft.com/sql/dma/dma-assess-ssis).
 
-## <a name="migration"></a>Áttelepítés
+## <a name="migration"></a>Migrálás
 
 [A forrás](#four-storage-types-for-ssis-packages) SSIS csomagjainak és az adatbázis-munkaterhelések áttelepítési célhelyének függvényében a **SSIS-csomagok** áttelepítésének lépései, valamint a SSIS-csomagok végrehajtásának elvégzésére szolgáló **SQL Server Agent feladatok** eltérőek lehetnek. Két forgatókönyv létezik:
 

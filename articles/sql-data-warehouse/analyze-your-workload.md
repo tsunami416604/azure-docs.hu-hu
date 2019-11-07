@@ -1,6 +1,6 @@
 ---
-title: Az Azure SQL Data Warehouse a számítási feladatok elemzése |} A Microsoft Docs
-description: A lekérdezés rangsorolási az Azure SQL Data Warehouse a számítási feladatok elemzése technikákat.
+title: A számítási feladatok elemzése
+description: Módszerek a számítási feladatok rangsorolásának elemzéséhez Azure SQL Data Warehouseban.
 services: sql-data-warehouse
 author: ronortloff
 manager: craigg
@@ -10,24 +10,25 @@ ms.subservice: workload-management
 ms.date: 03/13/2019
 ms.author: rortloff
 ms.reviewer: jrasnick
-ms.openlocfilehash: 54652ba573fb2ec2d064b7a85ad5728b73e71db3
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.custom: seo-lt-2019
+ms.openlocfilehash: 14e53c1ebe63fac0f7c8e29f66ee5aa0cb3b9526
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67588750"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73693112"
 ---
-# <a name="analyze-your-workload-in-azure-sql-data-warehouse"></a>Az Azure SQL Data Warehouse a számítási feladatok elemzése
+# <a name="analyze-your-workload-in-azure-sql-data-warehouse"></a>A számítási feladatok elemzése Azure SQL Data Warehouse
 
-Az Azure SQL Data Warehouse a számítási feladatok elemzése technikákat.
+Technikák a számítási feladatok elemzéséhez Azure SQL Data Warehouseban.
 
 ## <a name="resource-classes"></a>Erőforrásosztályok
 
-Az SQL Data warehouse-bA a lekérdezések rendszererőforrások hozzárendelése erőforrásosztályok biztosít.  Erőforrásosztályok további információkért lásd: [erőforrás osztályok és a számítási feladatok kezelése](resource-classes-for-workload-management.md).  Lekérdezések várakozik, ha a lekérdezéshez hozzárendelt erőforrásosztályhoz van szüksége, mint a jelenleg elérhető további források.
+A SQL Data Warehouse erőforrás-osztályokat biztosít a lekérdezésekhez szükséges rendszererőforrások hozzárendeléséhez.  Az erőforrás-osztályokkal kapcsolatos további információkért lásd: [erőforrás-osztályok & munkaterhelés-kezelés](resource-classes-for-workload-management.md).  A lekérdezések megvárhatják, ha a lekérdezéshez hozzárendelt erőforrás-osztálynak több erőforrásra van szüksége, mint amennyi jelenleg elérhető.
 
-## <a name="queued-query-detection-and-other-dmvs"></a>Aszinkron lekérdezés észlelési és más dinamikus felügyeleti nézetek
+## <a name="queued-query-detection-and-other-dmvs"></a>Várólistán lévő lekérdezések észlelése és egyéb DMV
 
-Használhatja a `sys.dm_pdw_exec_requests` DMV feldolgozási sorba váró lekérdezések azonosítása. A párhuzamosság üzembe helyezési pont váró lekérdezések állapotú **felfüggesztve**.
+A `sys.dm_pdw_exec_requests` DMV használatával azonosíthatja a párhuzamossági sorban Várakozó lekérdezéseket. Az egyidejű tárolóhelyre várakozó lekérdezések **felfüggesztve**állapottal rendelkeznek.
 
 ```sql
 SELECT  r.[request_id]                           AS Request_ID
@@ -40,7 +41,7 @@ FROM    sys.dm_pdw_exec_requests r
 ;
 ```
 
-Számítási feladat felügyeleti szerepkörök tekinthet meg a `sys.database_principals`.
+A számítási feladatok felügyeleti szerepkörei `sys.database_principals`megtekinthetők.
 
 ```sql
 SELECT  ro.[name]           AS [db_role_name]
@@ -50,7 +51,7 @@ AND     ro.[is_fixed_role]  = 0
 ;
 ```
 
-A következő lekérdezés jeleníti meg, hogy melyik szerepkör minden felhasználóhoz hozzá van rendelve.
+A következő lekérdezés azt jeleníti meg, hogy az egyes felhasználók melyik szerepkörhöz vannak rendelve.
 
 ```sql
 SELECT  r.name AS role_principal_name
@@ -62,14 +63,14 @@ WHERE   r.name IN ('mediumrc','largerc','xlargerc')
 ;
 ```
 
-Az SQL Data Warehouse a következő típusok várjon rendelkezik:
+SQL Data Warehouse a következő várakozási típusok közül:
 
-* **LocalQueriesConcurrencyResourceType**: Egyidejűségi tárolóhely keretein kívül található lekérdezések. DMV-lekérdezések és a rendszer függvények, mint például `SELECT @@VERSION` példa a helyi lekérdezéseket.
-* **UserConcurrencyResourceType**: Egyidejűségi tárolóhely keretein belül található lekérdezések. A végfelhasználói táblákra mutató lekérdezések példa, amelyek az erőforrástípushoz használna képviseli.
-* **DmsConcurrencyResourceType**: Az adatátviteli műveletek eredő vár.
-* **BackupConcurrencyResourceType**: A Várakozás azt jelzi, hogy egy adatbázis biztonsági mentésének folyamatban van. Az erőforrástípus maximális értéke 1. Ha több biztonsági mentése egy időben, a többi kért várólista. Általában javasoljuk, hogy egy minimális idő 10 perc egymást követő pillanatkép között. 
+* **LocalQueriesConcurrencyResourceType**: az egyidejű tárolóhely-keretrendszeren kívüli lekérdezések. A DMV-lekérdezések és a rendszerfüggvények, például a `SELECT @@VERSION` a helyi lekérdezések példái.
+* **UserConcurrencyResourceType**: az egyidejű tárolóhely-keretrendszerben található lekérdezések. A végfelhasználói táblákra irányuló lekérdezések olyan példákat mutatnak be, amelyek ezt az erőforrástípust használják.
+* **DmsConcurrencyResourceType**: megvárja az adatáthelyezési műveletek eredményét.
+* **BackupConcurrencyResourceType**: Ez a várakozás azt jelzi, hogy egy adatbázis biztonsági mentése folyamatban van. Az erőforrástípus maximális értéke 1. Ha egy időben több biztonsági mentést is kértek, a többi üzenetsor. Általánosságban elmondható, hogy az egymást követő Pillanatképek közül legalább 10 percet ajánlunk. 
 
-A `sys.dm_pdw_waits` DMV Lekérdezéséhez használható kérést arra vár, hogy milyen erőforrásokat.
+A `sys.dm_pdw_waits` DMV használatával megtekintheti, hogy mely erőforrásokra vár kérelmek.
 
 ```sql
 SELECT  w.[wait_id]
@@ -106,7 +107,7 @@ WHERE    w.[session_id] <> SESSION_ID()
 ;
 ```
 
-A `sys.dm_pdw_resource_waits` DMV egy adott lekérdezésre vonatkozó várakozási információit jeleníti meg. Erőforrás várakozási idő mértékekkel az idő, Várakozás erőforrásokra kell adni. Jel várakozási idő az az idő, az alakzatot a Processzor a lekérdezés ütemezése az alapul szolgáló SQL Server szükséges.
+A `sys.dm_pdw_resource_waits` DMV egy adott lekérdezés várakozási adatait jeleníti meg. Az erőforrás-várakozási idő az erőforrások számára várakozási időt méri. A várakozási idő az az idő, ameddig a mögöttes SQL-kiszolgálók a lekérdezéseket a CPU-ra ütemezhetik.
 
 ```sql
 SELECT  [session_id]
@@ -125,7 +126,7 @@ WHERE    [session_id] <> SESSION_ID()
 ;
 ```
 
-Is használhatja a `sys.dm_pdw_resource_waits` DMV kiszámíthatja, hány egyidejű helyet foglalnak le kapott.
+Azt is megteheti, hogy a `sys.dm_pdw_resource_waits` DMV kiszámítja, hogy hány párhuzamossági tárolóhelyet adtak meg.
 
 ```sql
 SELECT  SUM([concurrency_slots_used]) as total_granted_slots
@@ -136,7 +137,7 @@ AND     [session_id]     <> session_id()
 ;
 ```
 
-A `sys.dm_pdw_wait_stats` DMV is használható nagy horderejű tendenciája vár.
+A `sys.dm_pdw_wait_stats` DMV a várakozások történelmi trendek elemzésére használható.
 
 ```sql
 SELECT   w.[pdw_node_id]
@@ -152,4 +153,4 @@ FROM    sys.dm_pdw_wait_stats w
 
 ## <a name="next-steps"></a>További lépések
 
-Adatbázis-felhasználók és biztonsági kezelésével kapcsolatos további információkért lásd: [biztonságossá egy adatbázis az SQL Data Warehouse](sql-data-warehouse-overview-manage-security.md). További információ a módját a nagyobb erőforrásosztályok javíthatja a fürtözött oszlopcentrikus index minőségét, lásd: [szegmens minőségének javítására indexek újraépítése](sql-data-warehouse-tables-index.md#rebuilding-indexes-to-improve-segment-quality).
+Az adatbázis-felhasználók és a biztonság kezelésével kapcsolatos további információkért lásd: [adatbázis biztonságossá tétele SQL Data Warehouseban](sql-data-warehouse-overview-manage-security.md). Ha többet szeretne megtudni arról, hogy a nagyobb erőforrás-osztályok Hogyan javíthatják a fürtözött oszlopcentrikus index minőségét, tekintse meg az [indexek újraépítése a szegmens minőségének javítása érdekében című szakaszt](sql-data-warehouse-tables-index.md#rebuilding-indexes-to-improve-segment-quality).

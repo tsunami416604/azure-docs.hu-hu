@@ -1,5 +1,5 @@
 ---
-title: Azure szinapszis Analytics (korábban SQL DW) – gyakori kérdések | Microsoft Docs
+title: Azure szinapszis Analytics (korábban SQL DW) – gyakori kérdések
 description: Ez a cikk az Azure szinapszis Analytics (korábban SQL DW) ügyfelektől és fejlesztőktől származó gyakori kérdéseit sorolja fel.
 services: sql-data-warehouse
 author: mlee3gsd
@@ -10,12 +10,12 @@ ms.subservice: design
 ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: 4db84ed69979713d613679e94d50cdb73475e2be
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: HT
+ms.openlocfilehash: f7b4f926bb9611d87c67276f754a6b596850b59d
+ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73520856"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73645594"
 ---
 # <a name="azure-synapse-analytics-formerly-sql-dw-frequently-asked-questions"></a>Azure szinapszis Analytics (korábban SQL DW) – gyakori kérdések
 
@@ -47,7 +47,7 @@ A. Tekintse meg a [Microsoft-megfelelőség] oldalát, ahol különböző megfel
 
 K. Csatlakozhatok Power BIhoz?
 
-A. Igen! Habár Power BI támogatja az Azure szinapszis közvetlen lekérdezését, nem nagy számú felhasználó vagy valós idejű adatmennyiség számára készült. A Power BI éles felhasználásához a Power BI használatát javasoljuk Azure Analysis Services vagy Analysis Service-IaaS. 
+A. Igen! Habár Power BI támogatja az Azure szinapszis közvetlen lekérdezését, nem sok felhasználónak vagy valós idejű adatmennyiségnek a célja. A Power BI teljesítményének további optimalizálása érdekében érdemes lehet Power BIt használni a Azure Analysis Services vagy az Analysis Service IaaS.
 
 K. Mik az SQL Analytics kapacitásának korlátai?
 

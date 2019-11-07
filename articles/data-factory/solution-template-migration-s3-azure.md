@@ -1,5 +1,5 @@
 ---
-title: Adatok migrálása az Amazon S3-ból Azure Data Lake Storage Gen2ba Azure Data Factory használatával | Microsoft Docs
+title: Adatok migrálása az Amazon S3-ból Azure Data Lake Storage Gen2ba Azure Data Factory
 description: Megtudhatja, hogyan használhatja a megoldás sablonnal az Amazon S3-ból származó adatok áttelepítését egy külső vezérlési táblázat használatával, amely az AWS S3 és a Azure Data Factory segítségével tárolja a partíciós listákat.
 services: data-factory
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/07/2019
-ms.openlocfilehash: e4567d79b70fc18622e4a5e927031e9849b96e99
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: a8591762bf4e8eccd5e1b7d67538674feed720b9
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71092286"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73684189"
 ---
 # <a name="migrate-data-from-amazon-s3-to-azure-data-lake-storage-gen2"></a>Adatok migrálása az Amazon S3-ból Azure Data Lake Storage Gen2ba
 
@@ -73,7 +73,7 @@ A sablon két paramétert tartalmaz:
 
     > [!NOTE]
     > A tábla neve s3_partition_control_table.
-    > A vezérlő tábla sémája PartitionPrefix és SuccessOrFailure, ahol a PartitionPrefix az S3 előtag-beállítás, amely az Amazon S3-ban lévő mappák és fájlok szűrésére szolgál, a SuccessOrFailure pedig az egyes partíciók másolásának állapota: 0 azt jelenti, hogy ez a partíció nem lett átmásolva az Azure-ba, 1 azt jelenti, hogy ez a partíció az Azure-ba lett másolva.
+    > A vezérlő tábla sémája PartitionPrefix és SuccessOrFailure, ahol a PartitionPrefix az S3 előtag-beállítás, amely a mappák és a fájlok név szerinti szűrésére szolgál az Amazon S3-ban, a SuccessOrFailure pedig az egyes partíciók másolásának állapota: 0 azt jelenti, hogy ez a partíció nem lett átmásolva az Azure-ba, és 1 azt jelenti, hogy ez a partíció sikeresen át lett másolva az Azure-ba.
     > A vezérlő táblában 5 partíció van definiálva, és az egyes partíciók másolásának alapértelmezett állapota 0.
 
     ```sql
@@ -113,7 +113,7 @@ A sablon két paramétert tartalmaz:
 
 4. Válassza **a sablon használata**lehetőséget.
 
-    ![Sablon használata](media/solution-template-migration-s3-azure/historical-migration-s3-azure2.png)
+    ![A sablon használata](media/solution-template-migration-s3-azure/historical-migration-s3-azure2.png)
     
 5. Ekkor megjelenik a két folyamat és 3 adatkészlet, ahogy az a következő példában is látható:
 
@@ -134,7 +134,7 @@ A sablon két paramétert tartalmaz:
 
     > [!NOTE]
     > A tábla neve s3_partition_delta_control_table.
-    > A vezérlő tábla sémája a PartitionPrefix, a JobRunTime és a SuccessOrFailure, ahol a PartitionPrefix az S3 előtag-beállítása az Amazon S3-beli mappák és fájlok szűréséhez név szerint, a JobRunTime a DateTime érték a feladatok futtatásakor, a SuccessOrFailure pedig az egyes partíciók másolásának állapota: 0 azt jelenti, hogy ez a partíció nem lett átmásolva az Azure-ba, 1 azt jelenti, hogy ez a partíció az Azure-ba lett másolva.
+    > A vezérlő tábla sémája a PartitionPrefix, a JobRunTime és a SuccessOrFailure, ahol a PartitionPrefix az S3 előtag-beállítása az Amazon S3-beli mappák és fájlok szűréséhez név szerint, a JobRunTime a DateTime érték a feladatok futtatásakor, a SuccessOrFailure pedig az egyes partíciók másolásának állapota: 0 azt jelenti, hogy ez a partíció nem lett átmásolva az Azure-ba, 1 pedig azt jelenti, hogy ez a partíció az Azure-ba lett másolva.
     > A vezérlő táblában 5 partíció van definiálva. A JobRunTime alapértelmezett értéke lehet az az idő, amikor az egyszeri korábbi adatáttelepítés elindul. Az ADF másolási tevékenysége átmásolja a fájlokat az AWS S3-ra, amelyet a rendszer a legutóbbi módosítás után módosított. Az egyes partíciók másolásának alapértelmezett állapota 1.
 
     ```sql
@@ -176,7 +176,7 @@ A sablon két paramétert tartalmaz:
 
 4. Válassza **a sablon használata**lehetőséget.
 
-    ![Sablon használata](media/solution-template-migration-s3-azure/delta-migration-s3-azure2.png)
+    ![A sablon használata](media/solution-template-migration-s3-azure/delta-migration-s3-azure2.png)
     
 5. Ekkor megjelenik a két folyamat és 3 adatkészlet, ahogy az a következő példában is látható:
 

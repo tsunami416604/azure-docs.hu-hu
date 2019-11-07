@@ -1,21 +1,21 @@
 ---
-title: A Microsoft Azure Data Box Disk áttekintése | Microsoft Docs
-description: Ismerteti az Azure Data Box Disk nevű felhőalapú megoldást, amellyel nagy mennyiségű adat vihető át az Azure-ba
+title: Microsoft Azure Data Box Disk biztonsági funkciók | AdatMicrosoft Docs
+description: A Azure Data Box Disk által megvalósított biztonsági szolgáltatásokat ismerteti, amelyek lehetővé teszik nagy mennyiségű adatok átvitelét az Azure-ba
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: disk
-ms.topic: overview
-ms.date: 01/09/2019
+ms.topic: conceptual
+ms.date: 11/04/2019
 ms.author: alkohli
-ms.openlocfilehash: afb344418f843e54c3172c17d28bde7055e101b4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 5db65ab6f1c96ff816252ecaba2170adf358001c
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60327923"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73606565"
 ---
-# <a name="azure-data-box-disk-security-and-data-protection"></a>Az Azure Data Box-lemezek biztonsági és adatvédelmi
+# <a name="azure-data-box-disk-security-and-data-protection"></a>Biztonság és adatvédelem Azure Data Box Disk
 
 A cikk az Azure Data Box Disk biztonsági szolgáltatásait ismerteti, amelyekkel biztosítható a Data Box megoldás összetevőinek és bennük tárolt adatoknak a védelme. 
 
@@ -92,6 +92,6 @@ További információkért lásd a Microsoft szabályzatát a [biztonsági és a
 
 ## <a name="next-steps"></a>További lépések
 
-- A [Data Box Disk követelményeinek](data-box-disk-system-requirements.md) áttekintése.
+- A [Data Box Disk rendszerkövetelményeinek](data-box-disk-system-requirements.md) áttekintése.
 - A [Data Box Disk korlátainak](data-box-disk-limits.md) megismerése.
 - Az [Azure Data Box Disk](data-box-disk-quickstart-portal.md) gyors üzembe helyezése az Azure Portalon.

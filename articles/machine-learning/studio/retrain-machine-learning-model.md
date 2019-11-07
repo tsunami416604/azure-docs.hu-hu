@@ -1,6 +1,6 @@
 ---
-title: Webszolgáltatás újratanítása és üzembe helyezése
-titleSuffix: Azure Machine Learning Studio (classic)
+title: Webszolgáltatás újbóli betanítása
+titleSuffix: ML Studio (classic) Azure
 description: Ismerje meg, hogyan frissíthet egy webszolgáltatást egy újonnan betanított gépi tanulási modell használatára Azure Machine Learning Studio (klasszikus).
 services: machine-learning
 ms.service: machine-learning
@@ -10,18 +10,18 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 02/14/2019
-ms.openlocfilehash: 55b054ffe55430ea106c72cdd91fdfba3a457cf5
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: e35ab4b3a45edd5a1172bc3a07d7c31abd2135f7
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73482993"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73684770"
 ---
 # <a name="retrain-and-deploy-a-machine-learning-model"></a>Gépi tanulási modell újratanítása és üzembe helyezése
 
 Az átképzés az egyik módszer, amellyel biztosítható, hogy a gépi tanulási modellek pontosak maradjanak, és a rendelkezésre álló legfontosabb információk alapján. Ez a cikk bemutatja, hogyan lehet újratanítani és üzembe helyezni a Machine learning-modelleket új webszolgáltatásként a Studio (klasszikus) szolgáltatásban. Ha egy klasszikus webszolgáltatást szeretné áttanítani, [tekintse meg ezt a útmutató cikket.](retrain-classic-web-service.md)
 
-Ez a cikk azt feltételezi, hogy már van üzembe helyezett prediktív webszolgáltatás. Ha még nem rendelkezik prediktív webszolgáltatással, [megtudhatja, hogyan helyezhet üzembe egy Studio (klasszikus) webszolgáltatást itt.](publish-a-machine-learning-web-service.md)
+Ez a cikk azt feltételezi, hogy már van üzembe helyezett prediktív webszolgáltatás. Ha még nem rendelkezik prediktív webszolgáltatással, [megtudhatja, hogyan helyezhet üzembe egy Studio (klasszikus) webszolgáltatást itt.](deploy-a-machine-learning-web-service.md)
 
 A Machine learning új webszolgáltatás újratanításához és üzembe helyezéséhez kövesse az alábbi lépéseket:
 

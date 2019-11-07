@@ -1,5 +1,5 @@
 ---
-title: Adatfolyamatok létrehozása az Azure .NET SDK használatával | Microsoft Docs
+title: Adatfolyamatok létrehozása az Azure .NET SDK használatával
 description: Ismerje meg, hogyan hozhat létre, figyelheti és kezelheti az Azure-beli adatüzemeket Data Factory SDK használatával.
 services: data-factory
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/22/2018
-ms.openlocfilehash: 11120a84f2796061d76d8d813ba906da073b57c6
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: cabeb6314c16aa5bc37f1139954f8829a37af5bb
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70140217"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73682759"
 ---
 # <a name="create-monitor-and-manage-azure-data-factories-using-azure-data-factory-net-sdk"></a>Azure-beli adatüzemek létrehozása, figyelése és kezelése Azure Data Factory .NET SDK használatával
 > [!NOTE]
@@ -27,14 +27,14 @@ ms.locfileid: "70140217"
 Az Azure-beli adatüzemeket Data Factory .NET SDK-val programozott módon hozhatja létre, figyelheti és kezelheti. Ez a cikk egy olyan bemutatót tartalmaz, amelyből megtudhatja, hogyan hozhat létre egy olyan .NET-konzolos alkalmazást, amely egy adatelőállítót hoz létre és figyeli. 
 
 > [!NOTE]
-> Ez a cikk nem tárgyalja a Data Factory teljes .NET API-ját. A Data Factory .NET API-val kapcsolatos átfogó dokumentációért tekintse meg [Data Factory .NET API](/dotnet/api/index?view=azuremgmtdatafactories-4.12.1) -referenciát. 
+> Ez a cikk nem tárgyalja a Data Factory teljes .NET API-ját. A Data Factory .NET API-val kapcsolatos átfogó dokumentációért tekintse meg [Data Factory .NET API-referenciát](/dotnet/api/index?view=azuremgmtdatafactories-4.12.1) . 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 * Visual Studio 2012, 2013 vagy 2015
-* Töltse le és telepítse [Azure .NET SDK](https://azure.microsoft.com/downloads/).
+* Töltse le és telepítse az [Azure .net SDK](https://azure.microsoft.com/downloads/)-t.
 * Azure PowerShell. Kövesse a [How to install and configure Azure PowerShell](/powershell/azure/overview) (Az Azure PowerShell telepítése és konfigurálása) cikkben foglalt utasításokat az Azure PowerShell telepítéséhez a számítógépre. Az Azure PowerShellt egy Azure Active Directory-alkalmazás létrehozására fogjuk használni.
 
 ### <a name="create-an-application-in-azure-active-directory"></a>Alkalmazás létrehozása az Azure Active Directoryban
@@ -138,7 +138,7 @@ A másolási tevékenység végzi az adatok továbbítását az Azure Data Facto
         </appSettings>
     </configuration>
     ```
-5. Az app. config fájlban frissítse az  **&lt;alkalmazás-azonosító&gt;** ,  **&lt;a jelszó&gt;** ,  **&lt;az előfizetés-azonosító&gt;** és **&lt;a bérlő azonosítójának értékét. a&gt;** saját értékeivel.
+5. Az app. config fájlban frissítse a **&lt;alkalmazás-azonosító&gt;** , **&lt;Password&gt;** , **&lt;előfizetés-azonosító&gt;** és **&lt;bérlői azonosító** értékét a saját értékeivel&gt;.
 6. Adja hozzá a következő **using** utasításokat a projekt **program.cs** fájljához.
 
     ```csharp
@@ -223,7 +223,7 @@ A másolási tevékenység végzi az adatok továbbítását az Azure Data Facto
 
     A bemeneti blob **FolderPath** értéke **adftutorial/** where **adftutorial** a blob Storage tárolójának neve. Ha ez a tároló nem létezik az Azure Blob Storage-tárolóban, hozzon létre egy tárolót a következő névvel: **adftutorial** és töltsön fel egy szövegfájlt a tárolóba.
 
-    A kimeneti blob FolderPath a következőre van beállítva: **adftutorial/apifactoryoutput/{szelet}** , ahol a szeletek dinamikusan számítanak a **SliceStart** értéke alapján (az egyes szeletek kezdő dátum-és időpontjában).
+    A kimeneti blob FolderPath a következőre van beállítva: **adftutorial/apifactoryoutput/{szelet}** , ahol a **szeletek** dinamikusan számítanak a **SliceStart** értéke alapján (az egyes szeletek kezdő dátum-és időpontjában).
 
     ```csharp
     // create input and output datasets
@@ -426,7 +426,7 @@ A másolási tevékenység végzi az adatok továbbítását az Azure Data Facto
     Console.WriteLine("\nPress any key to exit.");
     Console.ReadKey();
     ```
-14. Adja hozzá a **Main** metódushoz szükséges alábbi segédmetódust a **Program** osztályhoz. Ez a metódus egy párbeszédpanelt nyit meg, amely lehetővé teszi, hogy megadja a Azure Portalba való bejelentkezéshez használt felhasználónevet és **jelszót** .
+14. Adja hozzá a **Main** metódushoz szükséges alábbi segédmetódust a **Program** osztályhoz. Ez a metódus egy párbeszédpanelt nyit meg, amely lehetővé teszi, hogy megadja a Azure Portalba való bejelentkezéshez használt **felhasználónevet** és **jelszót** .
 
     ```csharp
     public static async Task<string> GetAuthorizationHeader()
@@ -446,7 +446,7 @@ A másolási tevékenység végzi az adatok továbbítását az Azure Data Facto
     }
     ```
 
-15. A Megoldáskezelő bontsa ki a projektet: **DataFactoryAPITestApp**kattintson a jobb gombbal a **hivatkozások**elemre, majd kattintson a **hivatkozás hozzáadása**elemre. Jelölje be a `System.Configuration` szerelvény jelölőnégyzetét, majd kattintson **az OK**gombra.
+15. A Megoldáskezelő bontsa ki a projektet: **DataFactoryAPITestApp**, kattintson a jobb gombbal a **hivatkozások**elemre, majd kattintson a **hivatkozás hozzáadása**elemre. Jelölje be `System.Configuration` szerelvény jelölőnégyzetét, majd kattintson **az OK**gombra.
 15. Hozza létre a konzolalkalmazást. Kattintson a menü **Fordítás** elemére, majd a **Megoldás fordítása** lehetőségre.
 16. Győződjön meg arról, hogy az Azure Blob Storage-ban legalább egy fájl található az adftutorial-tárolóban. Ha nem, hozzon létre EMP. txt fájlt a Jegyzettömbben a következő tartalommal, és töltse fel a adftutorial-tárolóba.
 
@@ -457,8 +457,8 @@ A másolási tevékenység végzi az adatok továbbítását az Azure Data Facto
 17. Futtassa le a mintát, ehhez kattintson a menü **Hibakeresés** -> **Hibakeresés indítása** elemére. Ha megjelenik a **Getting run details of a data slice** (Adatszelet futtatási adatainak lekérése) felirat, várjon néhány percet, majd nyomja le az **ENTER** billentyűt.
 18. Az Azure Portalon ellenőrizze, hogy az **APITutorialFactory** nevű adat-előállító létrejött-e az alábbi összetevőkkel:
     * Társított szolgáltatás: **AzureStorageLinkedService**
-    * Adatkészlet **DatasetBlobSource** és **DatasetBlobDestination**.
-    * Folyamat **PipelineBlobSample**
+    * Adatkészlet: **DatasetBlobSource** és **DatasetBlobDestination**.
+    * Adatcsatorna: **PipelineBlobSample**
 19. Ellenőrizze, hogy a kimeneti fájl a **adftutorial** tároló **apifactoryoutput** mappájában lett-e létrehozva.
 
 ## <a name="get-a-list-of-failed-data-slices"></a>A sikertelen adatszeletek listájának beolvasása 

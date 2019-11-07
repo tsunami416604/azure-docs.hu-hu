@@ -1,5 +1,5 @@
 ---
-title: Adatok másolása a részletezésből Azure Data Factory használatával | Microsoft Docs
+title: Adatok másolása a részletezésből Azure Data Factory használatával
 description: Bemutatjuk, hogyan másolhatók adatok a furatból a támogatott fogadó adattárakba egy Azure Data Factory folyamat másolási tevékenységének használatával.
 services: data-factory
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 10/25/2019
 ms.author: jingwang
-ms.openlocfilehash: bdbb5742c74ff2b8871b00c7251af03ec8e026ad
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 3d91e8df3f0ecafc133b82dcb0172dbbba966e27
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72931126"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73681031"
 ---
 # <a name="copy-data-from-drill-using-azure-data-factory"></a>Adatok másolása a részletezésből Azure Data Factory használatával
 
@@ -48,7 +48,7 @@ A következő szakaszokban részletesen ismertetjük azokat a tulajdonságokat, 
 
 A társított szolgáltatás részletezése a következő tulajdonságokkal támogatott:
 
-| Tulajdonság | Leírás | Szükséges |
+| Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
 | type | A Type tulajdonságot a következőre kell beállítani: **részletezés** | Igen |
 | connectionString | Egy ODBC-kapcsolati karakterlánc, amely a részletezéshez csatlakozik. <br/>A mező megjelölése SecureString, hogy biztonságosan tárolja Data Factoryban. A jelszót a Azure Key Vaultban is elhelyezheti, és lekérheti a `pwd` konfigurációt a kapcsolatok sztringből. További részletekért tekintse meg a következő mintákat, és [tárolja a hitelesítő adatokat Azure Key Vault](store-credentials-in-key-vault.md) cikkben. | Igen |
@@ -111,11 +111,11 @@ Az adatkészletek definiálásához rendelkezésre álló csoportok és tulajdon
 
 Az adatok részletezésből való másolásához állítsa az adatkészlet Type (típus) tulajdonságát **DrillTable**értékre. A következő tulajdonságok támogatottak:
 
-| Tulajdonság | Leírás | Szükséges |
+| Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
 | type | Az adatkészlet Type tulajdonságát a következőre kell beállítani: **DrillTable** | Igen |
 | Séma | A séma neve. |Nem (ha a "lekérdezés" van megadva a tevékenység forrásában)  |
-| Tábla | A tábla neve. |Nem (ha a "lekérdezés" van megadva a tevékenység forrásában)  |
+| tábla | A tábla neve. |Nem (ha a "lekérdezés" van megadva a tevékenység forrásában)  |
 | tableName | A sémával rendelkező tábla neve. Ez a tulajdonság visszamenőleges kompatibilitás esetén támogatott. Új számítási feladatokhoz használjon `schema` és `table`. | Nem (ha a "lekérdezés" van megadva a tevékenység forrásában) |
 
 **Példa**
@@ -143,7 +143,7 @@ A tevékenységek definiálásához elérhető csoportok és tulajdonságok telj
 
 Az adatok részletezésből való másolásához állítsa a forrás típusát a másolás tevékenység **DrillSource**. A másolási tevékenység **forrása** szakasz a következő tulajdonságokat támogatja:
 
-| Tulajdonság | Leírás | Szükséges |
+| Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
 | type | A másolási tevékenység forrásának Type tulajdonságát a következőre kell beállítani: **DrillSource** | Igen |
 | lekérdezés | Az egyéni SQL-lekérdezés használatával olvassa be az adatolvasást. Például: `"SELECT * FROM MyTable"`. | Nem (ha meg van adva a "táblanév" az adatkészletben) |
@@ -184,5 +184,5 @@ Az adatok részletezésből való másolásához állítsa a forrás típusát a
 
 A tulajdonságok részleteinek megismeréséhez tekintse meg a [keresési tevékenységet](control-flow-lookup-activity.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 A Azure Data Factory a másolási tevékenység által forrásként és nyelőként támogatott adattárak listáját lásd: [támogatott adattárak](copy-activity-overview.md#supported-data-stores-and-formats).

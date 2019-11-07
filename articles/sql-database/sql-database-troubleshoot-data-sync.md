@@ -1,5 +1,5 @@
 ---
-title: Az Azure SQL-adatszinkronizálás hibáinak megoldása | Microsoft Docs
+title: 'Az Azure SQL-adatszinkronizálás hibáinak megoldása '
 description: Ismerje meg, hogy miként lehet elhárítani az Azure SQL-adatszinkronizálás gyakori hibáit.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: allenwux
 ms.author: xiwu
 ms.reviewer: carlrab
 ms.date: 12/20/2018
-ms.openlocfilehash: f1345c7de3ef56473b8ebd16cea20cfe76f0380e
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 31cf2693ba33461f38ea6361bf2ca8b688f177ff
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68566275"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73686901"
 ---
 # <a name="troubleshoot-issues-with-sql-data-sync"></a>A SQL-adatszinkronizálás kapcsolatos problémák elhárítása
 
@@ -39,7 +39,7 @@ Az SQL Data Sync áttekintéséhez tekintse meg a [több felhőalapú és helysz
 
 - [Jelentős romlást látok a teljesítményben](#sync-perf)
 
-- [Ezt az üzenetet látom: "A null értéket nem lehet beszúrni az \<oszlop oszlopba >. Az oszlop nem engedélyezi a null értéket. " Mit jelent ez, és Hogyan javíthatom?](#sync-nulls)
+- [A következő üzenet jelenik meg: "a NULL érték nem szúrható be az oszlopba \<oszlopba >. Az oszlop nem engedélyezi a null értéket. " Mit jelent ez, és Hogyan javíthatom?](#sync-nulls)
 
 - [Hogyan kezeli az adatszinkronizálás a körkörös hivatkozásokat? Ez azt jelenti, hogy ha ugyanazokat az adatfájlokat szinkronizálja több szinkronizálási csoportban, és ennek eredményeként változik?](#sync-circ)
 
@@ -104,7 +104,7 @@ A teljesítmény jelentősen csökken, valószínűleg arra a pontra, ahol még 
 
 - **Megoldás**. A legjobb megoldás a megelőzés. Győződjön meg arról, hogy nincs körkörös hivatkozás a szinkronizálási csoportokban. Az egyik szinkronizálási csoporttal szinkronizált sorokat nem lehet szinkronizálni egy másik szinkronizálási csoport.
 
-### <a name="sync-nulls"></a>Ezt az üzenetet látom: "A null értéket nem lehet beszúrni az \<oszlop oszlopba >. Az oszlop nem engedélyezi a null értéket. " Mit jelent ez, és Hogyan javíthatom? 
+### <a name="sync-nulls"></a>A következő üzenet jelenik meg: "a NULL érték nem szúrható be az oszlopba \<oszlopba >. Az oszlop nem engedélyezi a null értéket. " Mit jelent ez, és Hogyan javíthatom? 
 Ez a hibaüzenet azt jelzi, hogy a következő két probléma egyike történt:
 -  Egy táblához nem tartozik elsődleges kulcs. A probléma megoldásához vegyen fel egy elsődleges kulcsot az összes szinkronizálni kívánt táblába.
 -  Létezik egy WHERE záradék a CREATE INDEX utasításban. Az adatszinkronizálás nem kezeli ezt az állapotot. A probléma megoldásához távolítsa el a WHERE záradékot, vagy manuálisan végezze el a módosításokat az összes adatbázison. 
@@ -138,7 +138,7 @@ Az ügyfél ügynökével kapcsolatos problémák elhárításához lásd: [az a
 
 - **OK**. Előfordulhat, hogy a "lemez elfogyva" üzenet jelenik meg, ha a maradék fájlokat törölni kell. Ennek oka az lehet, hogy a víruskereső szoftver, vagy ha a törlési műveletek során a fájlok meg vannak nyitva.
 
-- **Megoldás**. Törölje kézzel a (z)% Temp% mappában (`del \*sync\* /s`) lévő szinkronizálási fájlokat. Ezután törölje a (z)% Temp% mappában található alkönyvtárakat.
+- **Megoldás**. Törölje kézzel a (z)% Temp% mappában (`del \*sync\* /s`) található szinkronizálási fájlokat. Ezután törölje a (z)% Temp% mappában található alkönyvtárakat.
 
 > [!IMPORTANT]
 > Ne töröljön fájlokat, amíg a szinkronizálás folyamatban van.
@@ -193,7 +193,7 @@ A szinkronizálási csoport törlésére tett kísérlet sikertelen. A következ
 
 - **Megoldás**. A szolgáltatáshoz tartozó bejelentkezési hitelesítő adatok megadása a felhasználói fióknak:
 
-  1. Ugrás a > **Vezérlőpult** **felügyeleti eszközök** **helyi biztonsági házirend** **helyi házirend**felhasználói Rights Management. >  >  >  > 
+  1. Válassza a **Start** > **Vezérlőpult** > **felügyeleti eszközök** > **helyi biztonsági házirend** > **helyi házirend** > **felhasználói Rights Management**.
   1. Válassza a **Bejelentkezés szolgáltatásként**lehetőséget.
   1. A **Tulajdonságok** párbeszédpanelen adja hozzá a felhasználói fiókot.
   1. Válassza az **Apply** (Alkalmaz) lehetőséget, majd kattintson az **OK** gombra.
@@ -201,11 +201,11 @@ A szinkronizálási csoport törlésére tett kísérlet sikertelen. A következ
 
 ### <a name="setup-date"></a>Egy adatbázis "elavult" állapottal rendelkezik
 
-- **OK**. A SQL-adatszinkronizálás eltávolítja azokat az adatbázisokat, amelyek offline állapotban voltak a szolgáltatásból 45 napig vagy többet (az adatbázis offline állapotának időpontjától számítva). Ha egy adatbázis 45 vagy több napig offline állapotú, majd ismét elérhető, az állapota **elavult.**
+- **OK**. A SQL-adatszinkronizálás eltávolítja azokat az adatbázisokat, amelyek offline állapotban voltak a szolgáltatásból 45 napig vagy többet (az adatbázis offline állapotának időpontjától számítva). Ha egy adatbázis 45 vagy több napig offline állapotú, majd ismét elérhető **, az állapota elavult.**
 
 - **Megoldás**. Elkerülheti az **elavult állapotot** azáltal, hogy az adatbázisok egyike sem érhető el 45 vagy több napig.
 
-  Ha az adatbázis állapota **elavult:**
+  Ha **az adatbázis állapota elavult:**
 
   1. Távolítsa el a szinkronizálási csoport **elavult állapotú** adatbázisát.
   1. Adja vissza az adatbázist a szinkronizálási csoportba.
@@ -243,11 +243,11 @@ További információ a SQL-adatszinkronizálásról:
 
 -   Áttekintés – az [adatszinkronizálás több felhőalapú és helyszíni adatbázis között az Azure SQL-adatszinkronizálás](sql-database-sync-data.md)
 -   Adatszinkronizálás beállítása
-    - A portálon – [oktatóanyag: Az Azure SQL Database és a helyszíni SQL Server közötti adatszinkronizálás SQL-adatszinkronizálás beállítása](sql-database-get-started-sql-data-sync.md)
+    - A portálon – [oktatóanyag: SQL-adatszinkronizálás beállítása az Azure SQL Database és a helyszíni SQL Server közötti adatszinkronizáláshoz](sql-database-get-started-sql-data-sync.md)
     - A PowerShell-lel
-        -  [A PowerShell használata több Azure SQL Database-adatbázis közötti szinkronizáláshoz](scripts/sql-database-sync-data-between-sql-databases.md)
-        -  [A PowerShell használata egy Azure-beli SQL Database-adatbázis és egy helyszíni SQL Server-adatbázis közötti szinkronizáláshoz](scripts/sql-database-sync-data-between-azure-onprem.md)
--   Adatok szinkronizálása az ügynök - [adatok szinkronizálása az Azure SQL Data Sync ügynök](sql-database-data-sync-agent.md)
+        -  [A PowerShell használata több Azure SQL-adatbázis közötti szinkronizáláshoz](scripts/sql-database-sync-data-between-sql-databases.md)
+        -  [A PowerShell használata egy Azure SQL-adatbázis és egy helyszíni SQL Server-adatbázis közötti szinkronizáláshoz](scripts/sql-database-sync-data-between-azure-onprem.md)
+-   Adatszinkronizálási ügynök – [Az Azure SQL-adatszinkronizálás adatszinkronizálási ügynöke](sql-database-data-sync-agent.md)
 -   Ajánlott eljárások – [ajánlott eljárások az Azure SQL-adatszinkronizálás](sql-database-best-practices-data-sync.md)
 -   Figyelő – [SQL-adatszinkronizálás figyelése Azure monitor naplókkal](sql-database-sync-monitor-oms.md)
 -   A szinkronizálási séma frissítése

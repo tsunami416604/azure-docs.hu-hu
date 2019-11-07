@@ -1,5 +1,5 @@
 ---
-title: Törölt Azure SQL Data Warehouse visszaállítása | Microsoft Docs
+title: Törölt adattárház visszaállítása
 description: Útmutató a törölt Azure SQL Data Warehouse visszaállításához.
 services: sql-data-warehouse
 author: anumjs
@@ -10,26 +10,27 @@ ms.subservice: manage
 ms.date: 08/29/2018
 ms.author: anjangsh
 ms.reviewer: igorstan
-ms.openlocfilehash: 376a50a79858aee34aa71d172ca5836646a6651d
-ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
+ms.custom: seo-lt-2019
+ms.openlocfilehash: cb09b4808bd6d59d2f70e85d204ab8451d501cee
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68426628"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73692615"
 ---
 # <a name="restore-a-deleted-azure-sql-data-warehouse"></a>Törölt Azure SQL Data Warehouse visszaállítása
 
 Ebből a cikkből megtudhatja, hogyan állíthatja vissza a törölt SQL Data Warehouset a Azure Portal és a PowerShell használatával:
 
-## <a name="before-you-begin"></a>Előkészületek
+## <a name="before-you-begin"></a>Előzetes teendők
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-**Ellenőrizze a DTU kapacitását.** Mindegyik SQL Data Warehouse egy SQL-kiszolgáló (például myserver.database.windows.net) üzemelteti, amely rendelkezik alapértelmezett DTU-kvótával.  Ellenőrizze, hogy az SQL-kiszolgáló rendelkezik-e elegendő fennmaradó DTU-kvótával az adatbázis visszaállításához. A szükséges DTU kiszámításához, illetve további DTU igényléséhez lásd: [DTU-kvóta][Request a DTU quota change]megváltoztatásának kérése.
+**Ellenőrizze a DTU kapacitását.** Mindegyik SQL Data Warehouse egy SQL-kiszolgáló (például myserver.database.windows.net) üzemelteti, amely rendelkezik alapértelmezett DTU-kvótával.  Ellenőrizze, hogy az SQL-kiszolgáló rendelkezik-e elegendő fennmaradó DTU-kvótával az adatbázis visszaállításához. A szükséges DTU kiszámításához, illetve további DTU igényléséhez lásd: [DTU-kvóta megváltoztatásának kérése][Request a DTU quota change].
 
 ## <a name="restore-a-deleted-data-warehouse-through-powershell"></a>Törölt adattárház visszaállítása a PowerShell-lel
 
-Törölt SQL Data Warehouse visszaállításához használja a Restore [-AzSqlDatabase][Restore-AzSqlDatabase] parancsmagot. Ha a megfelelő logikai kiszolgáló törölve lett, az adatraktár nem állítható vissza.
+Törölt SQL Data Warehouse visszaállításához használja a [Restore-AzSqlDatabase][Restore-AzSqlDatabase] parancsmagot. Ha a megfelelő logikai kiszolgáló törölve lett, az adatraktár nem állítható vissza.
 
 1. Mielőtt elkezdené, győződjön meg arról, hogy a [Azure PowerShell telepítését][Install Azure PowerShell]végzi.
 2. Nyissa meg a PowerShellt.
@@ -70,7 +71,7 @@ $RestoredDatabase.status
 
 ## <a name="restore-a-deleted-database-using-the-azure-portal"></a>Törölt adatbázis visszaállítása a Azure Portal használatával
 
-1. Jelentkezzen be az [Azure Portalra][Azure portal].
+1. Jelentkezzen be az [Azure portálra][Azure portal].
 2. Navigáljon ahhoz az SQL Server-kiszolgálóhoz, amelyen a törölt adattárház található.
 3. Válassza a **törölt adatbázisok** ikont a tartalomjegyzékben.
 

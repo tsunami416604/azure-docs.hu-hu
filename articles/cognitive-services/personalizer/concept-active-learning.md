@@ -1,7 +1,7 @@
 ---
 title: Aktív és inaktív események – személyre szabás
 titleSuffix: Azure Cognitive Services
-description: ''
+description: Ez a cikk az aktív és inaktív események, a tanulási beállítások és a testreszabott szolgáltatáson belüli tanulási szabályzatok használatát ismerteti.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -10,51 +10,50 @@ ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 05/30/2019
 ms.author: diberry
-ms.openlocfilehash: 321f12fef44cae43caf53d78b2908e68f9edd0a8
-ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
+ms.openlocfilehash: 1641a1020193395d7d2ddb9c4893bd7bc89cdcd0
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73043903"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73681863"
 ---
 # <a name="active-and-inactive-events"></a>Aktív és inaktív események
 
-Ha az alkalmazás meghívja a Rank API-t, akkor az alkalmazásnak az rewardActionId mezőben megjelenítendő műveletnek kell megjelennie.  Ettől kezdve a személyre szabott jutalom meghívása ugyanazzal a Napszállta történik. A jutalom pontszám a jövőbeli rangsorolási hívásokhoz használt modell betanítására szolgál majd. Ha a Napszállta nem érkezik jutalmazási hívás, a rendszer a defaul jutalmat alkalmazza. Az alapértelmezett jutalmak az Azure Portalon vannak kialakítva.
+Ha az alkalmazás meghívja a Rank API-t, akkor megkapja azt a műveletet, amelyet az alkalmazásnak a **rewardActionId** mezőben kell megjelenítenie.  Ettől kezdve a személyre szabott jutalom olyan hívást vár, amely ugyanazzal a Napszállta rendelkezik. A jutalmazási pontszám a modell jövőbeli rangsorolási hívásokhoz való betanítására szolgál. Ha a Napszállta nem érkezik jutalmazási hívás, a rendszer az alapértelmezett jutalmat alkalmazza. Az alapértelmezett jutalmak a Azure Portal vannak beállítva.
 
-Bizonyos esetekben előfordulhat, hogy az alkalmazásnak meg kell hívnia a rangsort, mielőtt azt is tudja, hogy az eredményt fogja-e használni vagy megjeleníteni a felhasználó számára. Ez olyan helyzetekben fordulhat elő, amikor például a előléptetett tartalom lapja megjelenik egy marketing-kampányban. Ha a rangsorolási hívás eredménye soha nem volt használatban, és a felhasználónak soha nem kellett volna megnéznie, akkor helytelen lenne a betanítása bármilyen jutalommal, nulla vagy egyéb módon.
-Ez általában akkor fordul elő, ha:
+Bizonyos esetekben előfordulhat, hogy az alkalmazásnak meg kell hívnia a rangsort, mielőtt azt is tudja, hogy az eredményt fogja-e használni vagy megjeleníteni a felhasználó számára. Ez olyan helyzetekben fordulhat elő, amikor például a előléptetett tartalom lapjait a marketing-kampány felülírja. Ha a rangsor hívásának eredménye soha nem volt használatban, és a felhasználó soha nem látta, ne küldjön Önnek megfelelő jutalom-hívást.
 
-* Előfordulhat, hogy a felhasználó előre megjelenít néhány felhasználói felületet, amelyet a felhasználónak esetleg nem fog látni. 
-* Előfordulhat, hogy az alkalmazás prediktív megszemélyesítést végez, amelyben a rangsorolási hívások kevésbé valós idejű környezettel történnek, és az alkalmazás nem használja fel a kimenetet. 
+Ezek a forgatókönyvek jellemzően a következő esetekben történnek:
 
-Ezekben az esetekben a személyre szabást úgy használhatja, hogy az eseményt az esemény _inaktívvá_tételét kérő rangsorban hívja meg. A személyre szabott eszköz nem vár jutalmat erre az eseményre, és nem alkalmaz alapértelmezett jutalmat sem. Az üzleti logikában később, ha az alkalmazás a rangsorban található információkat használja, mindössze annyit kell tennie, hogy _aktiválja_ az eseményt. Az esemény aktív állapotában a személyre szabott jutalom várható az eseményhez, vagy ha a jutalom API-ra nem érkezik kifejezett hívás, akkor az alapértelmezett jutalmat kell alkalmaznia.
+* Olyan felhasználói felületet jelenít meg, amelyet a felhasználó esetleg nem lát. 
+* Az alkalmazása prediktív megszemélyesítést végez, amelyben a rangsorolási hívások kis valós idejű kontextusban történnek, és előfordulhat, hogy az alkalmazás nem használja a kimenetet. 
 
-## <a name="get-inactive-events"></a>Inaktív események beolvasása
+Ezekben az esetekben a személyre szabással hívhatja meg a rangot, és az esemény _inaktívvá_tételét kéri. A személyre szabott szolgáltatás nem vár jutalmat erre az eseményre, és nem alkalmaz alapértelmezett jutalmat. Az üzleti logikában később, ha az alkalmazás a rangsor hívásában található információkat használja, csak _aktiválja_ az eseményt. Amint az esemény aktív, a személyre szabási esemény jutalmat vár. Ha a jutalmazási API-ra nem készül explicit hívás, a személyre szabott alapértelmezett jutalom érvényes.
 
-Egy esemény betanításának letiltásához hívja a Rank értéket `learningEnabled = False` értékkel.
+## <a name="inactive-events"></a>Inaktív események
 
-Az inaktív események betanítása implicit módon aktiválódik, ha jutalmat küld a Napszállta, vagy meghívja a `activate` API-t az adott Napszállta.
+Egy esemény betanításának letiltásához hívja meg a rangsort `learningEnabled = False`használatával. Inaktív esemény esetén a tanulás implicit módon aktiválódik, ha jutalmat küld a Napszállta, vagy meghívja az adott Napszállta tartozó `activate` API-t.
 
 ## <a name="learning-settings"></a>Tanulási beállítások
 
-A tanulási beállítások határozzák meg a modell képzésének adott *hiperparaméterek beállítása* . A különböző tanulási beállításokra kitanított két modell ugyanazokat az adattípusokat veszi át.
+A képzési beállítások határozzák meg a *hiperparaméterek beállításaát* . A különböző tanulási beállításokba betanított két modell eltérő lesz.
 
 ### <a name="import-and-export-learning-policies"></a>Képzési szabályzatok importálása és exportálása
 
-A Azure Portalból importálhat és exportálhat tanulási házirend-fájlokat. Ez lehetővé teszi a meglévő szabályzatok mentését, tesztelését, cseréjét és archiválását a forráskód vezérlőelemben a későbbi referenciák és auditálások összetevőiként.
+A Azure Portalból importálhat és exportálhat tanulási-házirend fájlokat. Ezzel a módszerrel mentheti a meglévő szabályzatokat, tesztelheti és lecserélheti őket, és archiválhatja őket a forráskód vezérlőelemben a későbbi referenciák és a naplózás érdekében.
 
-### <a name="learning-policy-settings"></a>Tanulási szabályzat beállításai
+### <a name="understand-learning-policy-settings"></a>A tanulási szabályzat beállításainak megismerése
 
-A **tanulási szabályzat** beállításai nem módosíthatók. Csak akkor módosítsa a beállításokat, ha megérti, hogyan befolyásolják a személyre szabást. Ha az ismeret nélkül módosítja a beállításokat, a rendszer mellékhatásokat okoz, beleértve a személyre szabott modellek érvénytelenítését is.
+A tanulási szabályzat beállításai nem változnak. Csak akkor módosítsa a beállításokat, ha tisztában van azzal, hogyan befolyásolják a személyre szabást. Ezen ismeret nélkül problémákat okozhat, beleértve a személyre szabott modellek érvénytelenítését is.
 
-### <a name="comparing-effectiveness-of-learning-policies"></a>A tanulási szabályzatok hatékonyságának összehasonlítása
+### <a name="compare-learning-policies"></a>Tanulási szabályzatok összehasonlítása
 
-Az [Offline értékelések](concepts-offline-evaluation.md)segítségével összehasonlíthatja, hogy a különböző képzési szabályzatok hogyan lettek elvégezve a személyre szabott naplók korábbi adatainak használatával.
+Összehasonlíthatja, hogy a különböző képzési szabályzatok hogyan végezhetők el a személyre szabott naplók korábbi adatain az [Offline értékelések](concepts-offline-evaluation.md)használatával.
 
-[Töltse fel a saját képzési szabályzatait](how-to-offline-evaluation.md) , és hasonlítsa össze az aktuális képzési szabályzatot.
+[Töltse fel saját képzési szabályzatait](how-to-offline-evaluation.md) , hogy összehasonlítsa őket az aktuális tanulási házirenddel.
 
-### <a name="discovery-of-optimized-learning-policies"></a>Optimalizált tanulási szabályzatok felderítése
+### <a name="optimize-learning-policies"></a>Tanulási szabályzatok optimalizálása
 
-Ha [Offline értékelést](how-to-offline-evaluation.md)végez, a személyre szabott képzési szabályzatot hozhat létre. Egy optimalizált tanulási szabályzat, amely azt mutatja, hogy jobb jutalmak vannak az offline értékelésekben, jobb eredményeket fog eredményezni, amikor online használatban van a személyre Szabásban.
+A személyre szabott képzési szabályzatok egy [Offline próbaverzióban](how-to-offline-evaluation.md)is létrehozhatók. Egy optimalizált tanulási szabályzat, amely jobb jutalmakat tartalmaz az offline értékelésekben, jobb eredményeket fog eredményezni, amikor online használatban van a személyre Szabásban.
 
-Az optimalizált tanulási szabályzat létrehozása után közvetlenül a személyre szabható, így azonnal lecseréli az aktuális szabályzatot, vagy további értékelés céljából mentheti, és a jövőben dönthet arról, hogy később elkerülheti, mentheti vagy alkalmazhatja azt.
+A tanulási szabályzatok optimalizálása után közvetlenül is alkalmazhatja a személyre szabást, hogy azonnal felváltsa az aktuális házirendet. Vagy mentheti az optimalizált szabályzatot a további értékeléshez, és később eldöntheti, hogy elveti, menti vagy alkalmazza.

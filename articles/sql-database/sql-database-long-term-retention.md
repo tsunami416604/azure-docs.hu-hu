@@ -1,5 +1,5 @@
 ---
-title: Tárolja Azure SQL Database biztonsági mentéseit akár 10 évig | Microsoft Docs
+title: Azure SQL Database biztonsági mentések akár 10 évig is tárolhatók
 description: Ismerje meg, hogyan támogatja a Azure SQL Database a teljes adatbázis biztonsági másolatainak tárolását akár 10 évig.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 05/18/2019
-ms.openlocfilehash: b43097dee6a3b4e8ec762e193dc2faf006ec796c
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 5d6f0797802a622ada1916752bc35c1bae2cde9f
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68567758"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73689512"
 ---
 # <a name="store-azure-sql-database-backups-for-up-to-10-years"></a>Azure SQL Database biztonsági mentések akár 10 évig is tárolhatók
 
@@ -36,15 +36,15 @@ Példák a LTR házirendre:
 
    Az egyes évek harmadik teljes biztonsági mentését öt évig őrzi meg a rendszer.
    
-- W=0, M=3, Y=0
+- W = 0, M = 3, Y = 0
 
    Az egyes hónapok első teljes biztonsági mentését három hónapig őrzi meg a rendszer.
 
-- W=12, M=0, Y=0
+- W = 12, M = 0, Y = 0
 
    Minden heti teljes biztonsági mentés 12 hétig lesz tárolva.
 
-- W=6, M=12, Y=10, WeekOfYear=16
+- W = 6, M = 12, Y = 10, WeekOfYear = 16
 
    Minden heti teljes biztonsági mentés hat hétig tart. Minden hónap első teljes biztonsági mentésének kivételével, amelyet 12 hónapig tartanak. Az év 16. hetében készített teljes biztonsági mentés kivételével, amelyet a rendszer 10 évig tart. 
 

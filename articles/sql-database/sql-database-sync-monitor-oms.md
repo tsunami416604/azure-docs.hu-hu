@@ -1,5 +1,5 @@
 ---
-title: Az Azure-SQL-adatszinkronizálás figyelése Azure Monitor naplókkal | Microsoft Docs
+title: 'Az Azure-SQL-adatszinkronizálás figyelése Azure Monitor naplókkal '
 description: Ismerje meg, hogyan figyelhetők meg az Azure SQL-adatszinkronizálás Azure Monitor naplók használatával
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: allenwux
 ms.author: xiwu
 ms.reviewer: carlrab
 ms.date: 12/20/2018
-ms.openlocfilehash: 26dc1ebef1c627ed2b20eb0fda68b2ca2d01b82a
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 9e89ad8e6ac556df87a674efdf2d3bbc2041c38b
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72791760"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73687032"
 ---
 # <a name="monitor-sql-data-sync-with-azure-monitor-logs"></a>SQL-adatszinkronizálás figyelése Azure Monitor naplókkal 
 
@@ -135,7 +135,7 @@ Azure Monitor naplókat használó riasztás létrehozásához tegye a következ
 
 1.  A Azure Portal válassza a **naplóbeli keresés**lehetőséget.
 
-2.  Hozzon létre egy lekérdezést a hibák és figyelmeztetések kiválasztásához a kiválasztott intervallumon belül a szinkronizálási csoport alapján. Példa:
+2.  Hozzon létre egy lekérdezést a hibák és figyelmeztetések kiválasztásához a kiválasztott intervallumon belül a szinkronizálási csoport alapján. Például:
 
     `DataSyncLog_CL | where TimeGenerated > ago(60m) | where LogLevel_s != "Success" | summarize count() by SyncGroupName_s`
 
@@ -197,7 +197,7 @@ Töltse le a cikkben ismertetett kódot a következő helyekről:
 
 -   [Adatszinkronizálási Azure Monitor nézet](https://github.com/Microsoft/sql-server-samples/blob/master/samples/features/sql-data-sync/DataSyncLogOmsView.omsview)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 További információ az SQL Data Syncről:
 
 -   Áttekintés – az [adatszinkronizálás több felhőalapú és helyszíni adatbázis között az Azure SQL-adatszinkronizálás](sql-database-sync-data.md)

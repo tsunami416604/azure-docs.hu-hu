@@ -1,6 +1,6 @@
 ---
-title: Adatok áthelyezése és- tárolókról az Azure Table |} A Microsoft Docs
-description: Ismerje meg, hogyan helyezheti át az adatok Azure Table Storage, Azure Data Factory használatával.
+title: Adatok áthelyezése az Azure-táblába
+description: Megtudhatja, hogyan helyezheti át adatait az Azure Table Storage Azure Data Factory használatával.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -13,106 +13,106 @@ ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 0c4f961dda273c7f3885159818dabf228abced42
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.openlocfilehash: 83f3a34a9b902b3a0e3b3ded34e36c8cbf50ed89
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67839471"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73683078"
 ---
-# <a name="move-data-to-and-from-azure-table-using-azure-data-factory"></a>Adatok importálására és az Azure Data Factory használatával az Azure-tábla
-> [!div class="op_single_selector" title1="Válassza ki a Data Factory szolgáltatás használ:"]
+# <a name="move-data-to-and-from-azure-table-using-azure-data-factory"></a>Adatok áthelyezése az Azure Table-be és onnan az Azure Data Factory használatával
+> [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory-szolgáltatás verzióját:"]
 > * [1-es verzió](data-factory-azure-table-connector.md)
 > * [2-es verzió (aktuális verzió)](../connector-azure-table-storage.md)
 
 > [!NOTE]
-> Ez a cikk a Data Factory 1-es verziójára vonatkozik. Ha a jelenlegi verzió a Data Factory szolgáltatás használ, tekintse meg [a v2-ben az Azure Table Storage-összekötő](../connector-azure-table-storage.md).
+> Ez a cikk a Data Factory 1-es verziójára vonatkozik. Ha a Data Factory szolgáltatás aktuális verzióját használja, tekintse [meg az Azure Table Storage Connector v2-ben](../connector-azure-table-storage.md)című témakört.
 
-Ez a cikk bemutatja, hogyan használhatja a másolási tevékenység az Azure Data Factoryban adatáthelyezést és-tárolókról az Azure Table Storage. Épül a [adattovábbítási tevékenységek](data-factory-data-movement-activities.md) című cikket, amely megadja az adatok áthelyezését a másolási tevékenységgel rendelkező általános áttekintése. 
+Ez a cikk azt ismerteti, hogyan használható a másolási tevékenység a Azure Data Factoryban az adatok Azure-Table Storageba való áthelyezéséhez. Az [adattovábbítási tevékenységekről](data-factory-data-movement-activities.md) szóló cikkre épül, amely általános áttekintést nyújt az adatáthelyezésről a másolási tevékenységgel. 
 
-Másolhatja az adatokat bármely támogatott forrásadattár Azure Table Storage vagy az Azure Table Storage bármely támogatott fogadó adattárba. A másolási tevékenység által források vagy fogadóként támogatott adattárak listáját lásd: a [támogatott adattárak](data-factory-data-movement-activities.md#supported-data-stores-and-formats) tábla. 
+Bármilyen támogatott forrásból származó adattárból átmásolhatja az adatait az Azure Table Storageba vagy az Azure Table Storageból bármely támogatott fogadó adattárba. A másolási tevékenység által forrásként vagy nyelőként támogatott adattárak listáját a [támogatott adattárak](data-factory-data-movement-activities.md#supported-data-stores-and-formats) táblázatban tekintheti meg. 
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-## <a name="getting-started"></a>Első lépések
-Létrehozhat egy folyamatot egy másolási tevékenységgel az adatok és-tárolókról az Azure Table Storage áthelyezéséhez a különböző eszközök/API-k használatával.
+## <a name="getting-started"></a>Bevezetés
+Létrehozhat egy másolási tevékenységgel rendelkező folyamatot, amely az Azure-Table Storage különböző eszközök/API-k használatával helyezi át az adatátvitelt.
 
-A folyamat létrehozásának legegyszerűbb módja az, hogy használja a **másolása varázsló**. Lásd: [oktatóanyag: Hozzon létre egy folyamatot a másolás varázsló használatával](data-factory-copy-data-wizard-tutorial.md) gyors bemutató létrehozása egy folyamatot az adatok másolása varázsló használatával.
+A folyamat létrehozásának legegyszerűbb módja a **Másolás varázsló**használata. Tekintse meg az [oktatóanyag: folyamat létrehozása a másolás varázslóval](data-factory-copy-data-wizard-tutorial.md) című témakört, amely gyors áttekintést nyújt a folyamat létrehozásáról az adatmásolási varázsló használatával.
 
-A következő eszközök használatával hozzon létre egy folyamatot: **A Visual Studio**, **Azure PowerShell-lel**, **Azure Resource Manager-sablon**, **.NET API**, és **REST API-val**. Lásd: [másolási tevékenység oktatóanyagát](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) egy másolási tevékenységgel ellátott adatcsatorna létrehozása a részletes útmutatóját. 
+A következő eszközöket is használhatja a folyamat létrehozásához: **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager template**, **.NET API**és **REST API**. A másolási tevékenységgel rendelkező folyamat létrehozásával kapcsolatos részletes utasításokat a [másolási tevékenységről szóló oktatóanyagban](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) talál. 
 
-Az eszközök vagy az API-kat használja, hogy létrehoz egy folyamatot, amely a helyez át adatokat egy forrásadattárból egy fogadó adattárba a következő lépéseket fogja végrehajtani: 
+Függetlenül attól, hogy az eszközöket vagy API-kat használja, a következő lépések végrehajtásával hozhat létre egy folyamatot, amely egy forrás adattárból egy fogadó adattárba helyezi át az adatait: 
 
-1. Hozzon létre **társított szolgáltatásokat** mutató hivatkozást a bemeneti és kimeneti adatokat tárolja a data factoryjához.
-2. Hozzon létre **adatkészletek** , amely a másolási művelet bemeneti és kimeneti adatokat jelöli. 
-3. Hozzon létre egy **folyamat** egy másolási tevékenységgel, amely egy adatkészletet bemenetként, és a egy adatkészletet pedig kimenetként. 
+1. **Társított szolgáltatások** létrehozása a bemeneti és kimeneti adattáraknak az adat-előállítóhoz való összekapcsolásához.
+2. Hozzon létre **adatkészleteket** a másolási művelet bemeneti és kimeneti adatok ábrázolásához. 
+3. Hozzon **létre egy másolási tevékenységgel rendelkező folyamatot** , amely egy adatkészletet bemenetként és egy adatkészlet kimenetként való elvégzéséhez szükséges. 
 
-A varázsló használatakor a rendszer automatikusan létrehozza a Data Factory-entitásokat (társított szolgáltatások, adatkészletek és folyamat) JSON-definíciói az Ön számára. Eszközök/API-k (kivéve a .NET API) használatakor adja meg a Data Factory-entitások a JSON formátumban. Az adatok másolása és- tárolókról az Azure Table Storage használt Data Factory-entitások JSON-definíciói minták, lásd: [JSON példák](#json-examples) című szakaszát.
+A varázsló használatakor a rendszer automatikusan létrehozza a Data Factory entitások (társított szolgáltatások, adatkészletek és a folyamat) JSON-definícióit. Ha eszközöket/API-kat használ (kivéve a .NET API-t), akkor ezeket a Data Factory entitásokat JSON-formátumban kell megadnia. Az adatok Azure Table Storageba való másolásához használt Data Factory JSON-definíciókkal rendelkező minták esetében lásd a jelen cikk [JSON-példák](#json-examples) című szakaszát.
 
-Az alábbi szakaszok nyújtanak az Azure Table Storage adott Data Factory-entitások definiálásához használt JSON-tulajdonságokkal kapcsolatos részletekért: 
+A következő szakaszokban részletesen ismertetjük az Azure Table Storage-re jellemző Data Factory entitások definiálásához használt JSON-tulajdonságokat: 
 
 ## <a name="linked-service-properties"></a>Társított szolgáltatás tulajdonságai
-Használhatja az Azure blob storage összekapcsolása egy Azure data factory társított szolgáltatásokat két típusa van. Ezek a következők: **AzureStorage** társított szolgáltatást, és **AzureStorageSas** társított szolgáltatást. Az Azure Storage társított szolgáltatás az adat-előállító globális hozzáférést biztosít az Azure Storage. Mivel az Azure Storage SAS (közös hozzáférésű Jogosultságkód) társított szolgáltatás az adat-előállító korlátozott/időhöz kötött hozzáféréssel rendelkező biztosítja az Azure Storage. Nincs más két társított szolgáltatás közötti különbségek vannak. Válassza ki az igényeinek megfelelő társított szolgáltatás. A következő szakaszok további részletekkel szolgálnak ezek két társított szolgáltatást.
+Az Azure Blob Storage egy Azure-beli adatgyárhoz való összekapcsolásához két különböző típusú társított szolgáltatás használható. Ezek a következők: **AzureStorage** társított szolgáltatás és **AzureStorageSas** társított szolgáltatás. Az Azure Storage társított szolgáltatása biztosítja az Azure Storage-hoz való globális hozzáféréssel rendelkező adatelőállítót. Míg az Azure Storage SAS (közös hozzáférésű aláírás) társított szolgáltatás az adat-előállító számára korlátozott/időhöz kötött hozzáférést biztosít az Azure Storage-hoz. A két társított szolgáltatás között nincs más különbség. Válassza ki az igényeinek megfelelő társított szolgáltatást. A következő szakaszokban további részleteket talál a két társított szolgáltatásról.
 
 [!INCLUDE [data-factory-azure-storage-linked-services](../../../includes/data-factory-azure-storage-linked-services.md)]
 
 ## <a name="dataset-properties"></a>Adatkészlet tulajdonságai
-Szakaszok & adatkészletek definiálását tulajdonságainak teljes listáját lásd: a [adatkészletek létrehozása](data-factory-create-datasets.md) cikk. Például a szerkezetet, rendelkezésre állást és szabályzatát adatkészlet JSON szakaszok hasonlóak az összes adatkészlet esetében (az Azure SQL, az Azure blob-, az Azure table-, stb.).
+Az adatkészletek definiálásához rendelkezésre álló & Tulajdonságok teljes listáját az [adatkészletek létrehozása](data-factory-create-datasets.md) című cikkben találja. Az adathalmazok (például a struktúra, a rendelkezésre állás és a szabályzat) minden adatkészlet esetében hasonlóak (például az Azure SQL, az Azure Blob, az Azure Table stb.).
 
-A typeProperties szakasz eltérő az egyes adatkészlet, és az adattárban lévő adatok helyére vonatkozó információkat. A **typeProperties** szakasz az adatkészlet típusa **AzureTable** a következő tulajdonságokkal rendelkezik.
+A typeProperties szakasz különbözik az egyes adatkészletek típusaitól, és információt nyújt az adattárban található adatok helyéről. A **AzureTable** típusú adatkészlet **typeProperties** szakasza a következő tulajdonságokkal rendelkezik.
 
-| Tulajdonság | Leírás | Szükséges |
+| Tulajdonság | Leírás | Kötelező |
 | --- | --- | --- |
-| tableName |Az Azure Table-adatbázispéldányban, amelyek a társított szolgáltatás hivatkozik a tábla neve. |Igen. A tableName egy azureTableSourceQuery nélkül van megadva, a tábla minden rekordját a célhelyre másolódnak. Ha egy azureTableSourceQuery is meg van adva, a cél, amely eleget tesz a lekérdezést a tábla rekordjai lesz másolva. |
+| tableName |Azon tábla neve, amely a társított szolgáltatás által hivatkozott Azure Table Database-példányban található. |Igen. Ha egy Táblanév azureTableSourceQuery nélkül van megadva, a rendszer a táblából származó összes rekordot átmásolja a célhelyre. Ha a azureTableSourceQuery is meg van adva, a rendszer a lekérdezésnek megfelelő rekordokat a célhelyre másolja. |
 
-### <a name="schema-by-data-factory"></a>Adat-előállítók által séma
-A séma nélküli adattárakban, mint az Azure Table a Data Factory szolgáltatás kikövetkezteti a használandó sémát az alábbi módszerek egyikével:
+### <a name="schema-by-data-factory"></a>Séma Data Factory szerint
+A séma nélküli adattárak (például az Azure Table) esetében a Data Factory szolgáltatás a következő módszerek egyikével vezeti le a sémát:
 
-1. Ha az adatok struktúráját használatával adja meg a **struktúra** tulajdonságot az adatkészlet-definícióban, a Data Factory szolgáltatás figyelembe veszi a sémát, ez a struktúra. Ebben az esetben ha egy sort tartalmaz egy oszlop értékét, null értékű biztosítunk azt.
-2. Ha nem adja meg az adatok struktúráját használatával a **struktúra** tulajdonságot az adatkészlet-definícióban, adat-előállító kikövetkezteti a használandó sémát az első sor az adatok használatával. Ebben az esetben ha az első sor nem tartalmazza a teljes séma, egyes oszlopok vannak nem talált a másolási művelet eredményét.
+1. Ha az adatszerkezetet az adatkészlet definíciójának **struktúra** tulajdonságának használatával határozza meg, akkor a Data Factory szolgáltatás sémaként értékeli ezt a struktúrát. Ebben az esetben, ha egy sor nem tartalmaz értéket egy oszlophoz, a rendszer null értéket biztosít.
+2. Ha nem határozza meg az adatszerkezetet az adatkészlet definíciójának **struktúra** tulajdonságával, Data Factory kikövetkezteti a sémát az adat első sorának használatával. Ebben az esetben, ha az első sor nem tartalmazza a teljes sémát, a másolási művelet eredményeképpen egyes oszlopok kimaradnak.
 
-Ezért sémamentes adatforrások esetében az ajánlott eljárás, hogy adja meg az adatok a struktúra a **struktúra** tulajdonság.
+Ezért a séma nélküli adatforrások esetében az ajánlott eljárás az adatszerkezetek meghatározása a **Structure** tulajdonság használatával.
 
 ## <a name="copy-activity-properties"></a>Másolási tevékenység tulajdonságai
-Szakaszok & definiálását tevékenységek tulajdonságainak teljes listáját lásd: a [folyamatok létrehozása](data-factory-create-pipelines.md) cikk. Tulajdonságok, mint például a nevét, leírását, bemeneti és kimeneti adatkészleteket és szabályzatokat minden típusú tevékenységek érhetők el.
+A tevékenységek definiálásához elérhető & Tulajdonságok teljes listáját a [folyamatok létrehozása](data-factory-create-pipelines.md) című cikkben találja. A tulajdonságok, például a név, a leírás, a bemeneti és a kimeneti adatkészletek, valamint a házirendek minden típusú tevékenységhez elérhetők.
 
-A tevékenység a typeProperties szakasz tulajdonságai másrészről tevékenységek minden típusának számától függ. A másolási tevékenységhez azok változhat a forrásként és fogadóként típusú is.
+A tevékenység typeProperties szakaszában elérhető tulajdonságok az egyes tevékenységtípusok esetében eltérőek. Másolási tevékenység esetén a források és a nyelők típusaitól függően változnak.
 
-**AzureTableSource** támogatja a typeProperties szakasz a következő tulajdonságokkal:
+A **AzureTableSource** a következő tulajdonságokat támogatja a typeProperties szakaszban:
 
-| Tulajdonság | Leírás | Megengedett értékek | Szükséges |
+| Tulajdonság | Leírás | Megengedett értékek | Kötelező |
 | --- | --- | --- | --- |
-| azureTableSourceQuery |Az egyéni lekérdezés segítségével olvassa el az adatokat. |Azure-tábla lekérdezési karakterláncot. Példák a következő szakaszban talál. |Nem. A tableName egy azureTableSourceQuery nélkül van megadva, a tábla minden rekordját a célhelyre másolódnak. Ha egy azureTableSourceQuery is meg van adva, a cél, amely eleget tesz a lekérdezést a tábla rekordjai lesz másolva. |
-| azureTableSourceIgnoreTableNotFound |Adja meg, hogy swallow a kivétel a tábla nem létezik. |IGAZ<br/>FALSE |Nem |
+| azureTableSourceQuery |Az egyéni lekérdezés használatával olvashatja el az adatolvasást. |Azure Table lekérdezési karakterlánc. Tekintse meg a példákat a következő szakaszban. |Nem. Ha egy Táblanév azureTableSourceQuery nélkül van megadva, a rendszer a táblából származó összes rekordot átmásolja a célhelyre. Ha a azureTableSourceQuery is meg van adva, a rendszer a lekérdezésnek megfelelő rekordokat a célhelyre másolja. |
+| azureTableSourceIgnoreTableNotFound |Jelezze, hogy nem létezik-e a lenyelés a tábla kivételével. |IGAZ<br/>HAMIS |Nem |
 
-### <a name="azuretablesourcequery-examples"></a>azureTableSourceQuery examples
+### <a name="azuretablesourcequery-examples"></a>azureTableSourceQuery-példák
 Ha az Azure Table oszlop karakterlánc típusú:
 
 ```JSON
 azureTableSourceQuery": "$$Text.Format('PartitionKey ge \\'{0:yyyyMMddHH00_0000}\\' and PartitionKey le \\'{0:yyyyMMddHH00_9999}\\'', SliceStart)"
 ```
 
-Ha az Azure Table oszlop dátum/idő típus:
+Ha az Azure Table oszlop datetime típusú:
 
 ```JSON
 "azureTableSourceQuery": "$$Text.Format('DeploymentEndTime gt datetime\\'{0:yyyy-MM-ddTHH:mm:ssZ}\\' and DeploymentEndTime le datetime\\'{1:yyyy-MM-ddTHH:mm:ssZ}\\'', SliceStart, SliceEnd)"
 ```
 
-**AzureTableSink** támogatja a typeProperties szakasz a következő tulajdonságokkal:
+A **AzureTableSink** a következő tulajdonságokat támogatja a typeProperties szakaszban:
 
-| Tulajdonság | Leírás | Megengedett értékek | Szükséges |
+| Tulajdonság | Leírás | Megengedett értékek | Kötelező |
 | --- | --- | --- | --- |
-| azureTableDefaultPartitionKeyValue |Alapértelmezett partíciós kulcsérték, amely a fogadó által használható. |Egy karakterláncértéket. |Nem |
-| azureTablePartitionKeyName |Adja meg az oszlop, amelynek az értékekkel, partíciókulcsok nevét. Ha nincs megadva, a partíciókulcs AzureTableDefaultPartitionKeyValue lesz. |Egy oszlop neve. |Nem |
-| azureTableRowKeyName |Adja meg az oszlop, amelynek oszlopértékek sor kulcsaként használt nevét. Ha nincs megadva, használjon egy GUID Azonosítót minden egyes sorára. |Egy oszlop neve. |Nem |
-| azureTableInsertType |Adatok beszúrása az Azure-tábla a módot.<br/><br/>Ez a tulajdonság szabja meg, hogy rendelkeznek-e létező sorok egyeztetésével partíció-és a kimeneti tábla cserélni vagy egyesített értékekre. <br/><br/>(Egyesítési és cserélje ki) ezen beállítások működésének kapcsolatos további információkért lásd: [vagy egyesítési entitás beszúrása](https://msdn.microsoft.com/library/azure/hh452241.aspx) és [entitás cseréje vagy beszúrása](https://msdn.microsoft.com/library/azure/hh452242.aspx) témaköröket. <br/><br> Ez a beállítás a sor szintjén, a tábla szintjén nem vonatkozik, és sem a lehetőség törli a kimeneti tábla sorait, amelyek a bemeneti adatok nem léteznek. |Egyesítés (alapértelmezett)<br/>cserélje le |Nem |
-| writeBatchSize |Szúr be az Azure-tábla adatait, ha elérte a writeBatchSize vagy writeBatchTimeout. |Egész szám (sorok száma) |Nem (alapértelmezett: 10000) |
-| writeBatchTimeout |Adatok beszúrása az Azure-tábla, ha elérte a writeBatchSize vagy writeBatchTimeout |TimeSpan<br/><br/>Példa: "00: 20:00" (20 perc) |Nem (az alapértelmezett tároló ügyfél alapértelmezett időtúllépési érték 90 másodperc) |
+| azureTableDefaultPartitionKeyValue |A fogadó által használható alapértelmezett partíciós kulcs értéke. |Egy karakterlánc-érték. |Nem |
+| azureTablePartitionKeyName |Adja meg annak az oszlopnak a nevét, amelynek értékeit partíciós kulcsként használja a rendszer. Ha nincs megadva, a rendszer a AzureTableDefaultPartitionKeyValue használja a partíciós kulcsként. |Egy oszlop neve. |Nem |
+| azureTableRowKeyName |Adja meg annak az oszlopnak a nevét, amelynek az oszlop értékeit a rendszer a sor kulcsaként használja. Ha nincs megadva, használja az egyes sorok GUID azonosítóját. |Egy oszlop neve. |Nem |
+| azureTableInsertType |Az adatgyűjtés módja az Azure Table-be.<br/><br/>Ez a tulajdonság azt szabályozza, hogy a kimeneti táblában található, egyező partícióval és sorokkal rendelkező meglévő sorok felülírják vagy összevonták-e az értékeket. <br/><br/>Ha szeretné megtudni, hogyan működnek ezek a beállítások (egyesítés és csere), tekintse meg az [entitás beszúrása és egyesítése](https://msdn.microsoft.com/library/azure/hh452241.aspx) , illetve az [entitások beszúrása vagy cseréje](https://msdn.microsoft.com/library/azure/hh452242.aspx) témaköröket. <br/><br> Ez a beállítás a sor szintjére vonatkozik, nem a tábla szintjére, és egyik sem törli a bemeneti tábla azon sorait, amelyek nem szerepelnek a bemenetben. |Egyesítés (alapértelmezett)<br/>csere |Nem |
+| writeBatchSize |Beilleszti az adatbevitelt az Azure-táblába, amikor a writeBatchSize vagy a writeBatchTimeout találat. |Egész szám (sorok száma) |Nem (alapértelmezett: 10000) |
+| writeBatchTimeout |Beilleszti az adatbevitelt az Azure-táblába a writeBatchSize vagy a writeBatchTimeout találatakor |TimeSpan<br/><br/>Például: "00:20:00" (20 perc) |Nem (alapértelmezett érték a Storage-ügyfél alapértelmezett időtúllépési értéke 90 mp) |
 
 ### <a name="azuretablepartitionkeyname"></a>azureTablePartitionKeyName
-Képezze le a forrásoszlop translatorral a JSON-tulajdonság előtt a céloszlop használhatja a azureTablePartitionKeyName céloszlop.
+Társítsa a forrás oszlopot a cél oszlophoz a Translator JSON tulajdonság használatával, mielőtt a azureTablePartitionKeyName használja a Destination (cél) oszlopot.
 
-A következő példában a céloszlop forrásoszlop DivisionID van leképezve: DivisionID.  
+Az alábbi példában a forrás oszlop DivisionID a következő cél oszlopra van leképezve: DivisionID.  
 
 ```JSON
 "translator": {
@@ -120,7 +120,7 @@ A következő példában a céloszlop forrásoszlop DivisionID van leképezve: D
     "columnMappings": "DivisionID: DivisionID, FirstName: FirstName, LastName: LastName"
 }
 ```
-A partíciókulcs a DivisionID van megadva.
+A DivisionID a partíciós kulcsként van megadva.
 
 ```JSON
 "sink": {
@@ -131,19 +131,19 @@ A partíciókulcs a DivisionID van megadva.
 }
 ```
 ## <a name="json-examples"></a>JSON-példák
-Az alábbi példák megadják példa JSON-definíciók, amelyek segítségével létrehoz egy folyamatot használatával [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) vagy [Azure PowerShell-lel](data-factory-copy-activity-tutorial-using-powershell.md). Adatok másolása az Azure Table Storage és az Azure Blob-adatbázis mutatnak. Azonban az adatok átmásolhatók **közvetlenül** bármely, bármelyik támogatott forrás fogadók. További információkért lásd: a "támogatott adattárak és formátumok" szakasz a [adatok áthelyezése másolási tevékenységgel](data-factory-data-movement-activities.md).
+Az alábbi példák olyan JSON-definíciókat biztosítanak, amelyek segítségével a [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) vagy a [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md)használatával hozhat létre folyamatokat. Bemutatják, hogyan másolhatók az adatok az Azure Table Storage és az Azure Blob Database-be. Az adatok azonban **közvetlenül** a forrásokból is átmásolhatók bármelyik támogatott mosogatóba. További információ: "támogatott adattárak és-formátumok" című rész, az [adatok áthelyezése másolási tevékenység használatával](data-factory-data-movement-activities.md).
 
-## <a name="example-copy-data-from-azure-table-to-azure-blob"></a>Példa: Adatok másolása az Azure-táblát az Azure Blob
-Az alábbi mintában látható:
+## <a name="example-copy-data-from-azure-table-to-azure-blob"></a>Példa: adatok másolása az Azure Table-ből az Azure Blobba
+A következő minta a következőket mutatja be:
 
-1. A társított szolgáltatás típusa [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties) (tábla- és blob használatos).
-2. Egy bemeneti [adatkészlet](data-factory-create-datasets.md) típusú [AzureTable](#dataset-properties).
-3. Kimenet [adatkészlet](data-factory-create-datasets.md) típusú [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties).
-4. A [folyamat](data-factory-create-pipelines.md) AzureTableSource használó másolási tevékenységgel rendelkező és [BlobSink](data-factory-azure-blob-connector.md#copy-activity-properties).
+1. Egy [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties) típusú társított szolgáltatás (mindkét Table & blob esetében használatos).
+2. [AzureTable](#dataset-properties)típusú bemeneti [adatkészlet](data-factory-create-datasets.md) .
+3. [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties)típusú kimeneti [adatkészlet](data-factory-create-datasets.md) .
+4. A AzureTableSource és [BlobSink](data-factory-azure-blob-connector.md#copy-activity-properties)használó másolási tevékenységgel rendelkező [folyamat](data-factory-create-pipelines.md) .
 
-A minta az alapértelmezett partíció Azure-táblában egy blobhoz tartozó minden órában adatokat másolja. Ezek a minták a használt JSON-tulajdonságokat a minták a következő szakaszok ismertetik.
+A minta egy Azure-táblában lévő alapértelmezett partícióhoz tartozó, óránkénti adatmásolási adatmásolt. Az ezekben a mintákban használt JSON-tulajdonságokat a mintákat követő szakaszokban ismertetjük.
 
-**Az Azure storage társított szolgáltatást:**
+**Azure Storage-beli társított szolgáltatás:**
 
 ```JSON
 {
@@ -156,13 +156,13 @@ A minta az alapértelmezett partíció Azure-táblában egy blobhoz tartozó min
   }
 }
 ```
-Az Azure Data Factory az Azure Storage-beli társított szolgáltatások két típusát támogatja: **AzureStorage** és **AzureStorageSas**. Az első címtárra, adja meg a kapcsolati karakterláncot, amely tartalmazza a kulcsát, és az újabb már, adja meg a közös hozzáférésű Jogosultságkód (SAS) URI-t. Lásd: [társított szolgáltatások](#linked-service-properties) című szakasz részletezi.  
+Azure Data Factory az Azure Storage társított szolgáltatásainak két típusát támogatja: **AzureStorage** és **AzureStorageSas**. Az első beállításnál megadhatja a kapcsolati karakterláncot, amely tartalmazza a fiók kulcsát, és a későbbiekben a közös hozzáférésű aláírás (SAS) URI-ját is megadja. Részletekért lásd a [társított szolgáltatások](#linked-service-properties) szakaszt.  
 
-**Az Azure Table bemeneti adatkészlet:**
+**Azure Table bemeneti adatkészlet:**
 
-A minta azt feltételezi, hogy létrehozott egy "MyTable" táblát az Azure Table.
+A minta feltételezi, hogy létrehozott egy "Sajáttábla" táblát az Azure táblában.
 
-Beállítás az "external": "true" tájékoztatja a Data Factory szolgáltatásban, hogy az adatkészletet a data factory a külső, és nem hozzák az adat-előállító adott tevékenységéhez.
+A "külső": "true" beállítás azt tájékoztatja a Data Factory szolgáltatást, hogy az adatkészlet kívül esik az adat-előállítón, és nem az adat-előállító tevékenysége.
 
 ```JSON
 {
@@ -189,9 +189,9 @@ Beállítás az "external": "true" tájékoztatja a Data Factory szolgáltatásb
 }
 ```
 
-**Azure blobkimeneti adatkészlet:**
+**Azure-Blob kimeneti adatkészlete:**
 
-Adatokat írt egy új blob minden órában (frequency: óra, időköz: 1). A mappa elérési útját a BLOB a feldolgozás alatt álló szelet kezdő időpontja alapján dinamikusan kiértékeli. A mappa elérési útját használja, év, hónap, nap és óra részei a kezdési időpontot.
+A rendszer óránként egy új blobba írja az adatbevitelt (frekvencia: óra, intervallum: 1). A blob mappájának elérési útját a rendszer dinamikusan kiértékeli a feldolgozás alatt álló szelet kezdési időpontja alapján. A mappa elérési útja a kezdési idő év, hónap, nap és óra részét használja.
 
 ```JSON
 {
@@ -249,9 +249,9 @@ Adatokat írt egy új blob minden órában (frequency: óra, időköz: 1). A map
 }
 ```
 
-**Másolási tevékenységgel rendelkező AzureTableSource és BlobSink folyamatot:**
+**Másolási tevékenység AzureTableSource és BlobSink rendelkező folyamatokban:**
 
-A folyamat egy másolási tevékenység, amely a bemeneti és kimeneti adatkészleteket használatára van konfigurálva, és óránként ütemezett tartalmazza. A folyamat JSON-definíciót a **forrás** típusa **AzureTableSource** és **fogadó** típusa **BlobSink**. Az SQL-lekérdezést a megadott **AzureTableSourceQuery** tulajdonság kiválasztja az adatokat az alapértelmezett partíció óránként másolásához.
+A folyamat egy másolási tevékenységet tartalmaz, amely a bemeneti és a kimeneti adatkészletek használatára van konfigurálva, és óránkénti futásra van ütemezve. A folyamat JSON-definíciójában a **forrás** típusa **AzureTableSource** értékre van állítva, a **fogadó típusa** pedig **BlobSink**. A **AzureTableSourceQuery** tulajdonsággal megadott SQL-lekérdezés minden órában kiválasztja az alapértelmezett partíció adatait.
 
 ```JSON
 {
@@ -300,17 +300,17 @@ A folyamat egy másolási tevékenység, amely a bemeneti és kimeneti adatkész
 }
 ```
 
-## <a name="example-copy-data-from-azure-blob-to-azure-table"></a>Példa: Adatok másolása Azure blobból az Azure Table
-Az alábbi mintában látható:
+## <a name="example-copy-data-from-azure-blob-to-azure-table"></a>Példa: adatok másolása az Azure Blobból az Azure Table-be
+A következő minta a következőket mutatja be:
 
-1. A társított szolgáltatás típusa [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties) (tábla- és blob használatos)
-2. Egy bemeneti [adatkészlet](data-factory-create-datasets.md) típusú [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties).
-3. Kimenet [adatkészlet](data-factory-create-datasets.md) típusú [AzureTable](#dataset-properties).
-4. A [folyamat](data-factory-create-pipelines.md) másolási tevékenységgel, amely használja [BlobSource](data-factory-azure-blob-connector.md#copy-activity-properties) és [AzureTableSink](#copy-activity-properties).
+1. [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties) típusú társított szolgáltatás (mindkét tábla & blob esetében használatos)
+2. [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties)típusú bemeneti [adatkészlet](data-factory-create-datasets.md) .
+3. [AzureTable](#dataset-properties)típusú kimeneti [adatkészlet](data-factory-create-datasets.md) .
+4. A [BlobSource](data-factory-azure-blob-connector.md#copy-activity-properties) és [AzureTableSink](#copy-activity-properties)használó másolási tevékenységgel rendelkező [folyamat](data-factory-create-pipelines.md) .
 
-A minta másolatokat idősorozat-adatokat egy Azure blobból az Azure-tábla óránként történik. Ezek a minták a használt JSON-tulajdonságokat a minták a következő szakaszok ismertetik.
+A minta idősorozat-adatok másolását egy Azure-blobból az Azure-táblázatba óránként történik. Az ezekben a mintákban használt JSON-tulajdonságokat a mintákat követő szakaszokban ismertetjük.
 
-**(Az Azure Table és a Blob) az Azure storage társított szolgáltatást:**
+**Azure Storage (az Azure Table & Blobhoz) társított szolgáltatás:**
 
 ```JSON
 {
@@ -324,11 +324,11 @@ A minta másolatokat idősorozat-adatokat egy Azure blobból az Azure-tábla ór
 }
 ```
 
-Az Azure Data Factory az Azure Storage-beli társított szolgáltatások két típusát támogatja: **AzureStorage** és **AzureStorageSas**. Az első címtárra, adja meg a kapcsolati karakterláncot, amely tartalmazza a kulcsát, és az újabb már, adja meg a közös hozzáférésű Jogosultságkód (SAS) URI-t. Lásd: [társított szolgáltatások](#linked-service-properties) című szakasz részletezi.
+Azure Data Factory az Azure Storage társított szolgáltatásainak két típusát támogatja: **AzureStorage** és **AzureStorageSas**. Az első beállításnál megadhatja a kapcsolati karakterláncot, amely tartalmazza a fiók kulcsát, és a későbbiekben a közös hozzáférésű aláírás (SAS) URI-ját is megadja. Részletekért lásd a [társított szolgáltatások](#linked-service-properties) szakaszt.
 
-**Azure blobbemeneti adatkészlet:**
+**Azure Blob bemeneti adatkészlet:**
 
-Adatok felülettől új blob minden órában (frequency: óra, időköz: 1). A mappa elérési útját és nevét a BLOB dinamikusan a feldolgozás alatt álló szelet kezdő időpontja alapján értékeli ki. A mappa elérési útjának év, hónap és nap részét a kezdési időpont és fájlnevet a kezdő időpontja óra részét használja. "external": "true" beállítással, hogy az adatkészletet a data factory a külső, és nem egy adat-előállító tevékenység által előállított arról tájékoztatja a Data Factory szolgáltatásban.
+Az adatok minden órában egy új blobból származnak (frekvencia: óra, intervallum: 1). A blob mappa elérési útját és fájlnevét a feldolgozás alatt álló szelet kezdési időpontja alapján dinamikusan értékeli a rendszer. A mappa elérési útja az év, hónap és nap részeként használja a kezdési időt, és a fájlnév a kezdési időpont óra részét használja. a "külső": "true" beállítás tájékoztatja a Data Factory szolgáltatást arról, hogy az adatkészlet kívül esik az adat-előállítón, és nem az adat-előállító tevékenysége.
 
 ```JSON
 {
@@ -395,9 +395,9 @@ Adatok felülettől új blob minden órában (frequency: óra, időköz: 1). A m
 }
 ```
 
-**Azure-tábla kimeneti adatkészlet:**
+**Azure-tábla kimeneti adatkészlete:**
 
-A minta adatokat másol az Azure Table "MyTable" nevű tábla. Hozzon létre egy Azure-táblát az azonos számú oszlopot tartalmaz a Blob CSV-fájl várt módon. Új sorok hozzáadódnak a tábla minden órában.
+A minta az Azure Table "Sajáttábla" nevű táblájába másolja az adatmásolt fájlokat. Hozzon létre egy olyan Azure-táblázatot, amely azonos számú oszlopot tartalmaz, mint amennyit a blob CSV-fájljának tárolására vár. Minden órában új sor kerül a táblázatba.
 
 ```JSON
 {
@@ -416,9 +416,9 @@ A minta adatokat másol az Azure Table "MyTable" nevű tábla. Hozzon létre egy
 }
 ```
 
-**A BlobSource és AzureTableSink a folyamat másolási tevékenysége:**
+**Másolási tevékenység BlobSource és AzureTableSink rendelkező folyamatokban:**
 
-A folyamat egy másolási tevékenység, amely a bemeneti és kimeneti adatkészleteket használatára van konfigurálva, és óránként ütemezett tartalmazza. A folyamat JSON-definíciót a **forrás** típusa **BlobSource** és **fogadó** típusa **AzureTableSink**.
+A folyamat egy másolási tevékenységet tartalmaz, amely a bemeneti és a kimeneti adatkészletek használatára van konfigurálva, és óránkénti futásra van ütemezve. A folyamat JSON-definíciójában a **forrás** típusa **BlobSource** értékre van állítva, a **fogadó típusa** pedig **AzureTableSink**.
 
 ```JSON
 {
@@ -467,31 +467,31 @@ A folyamat egy másolási tevékenység, amely a bemeneti és kimeneti adatkész
   }
 }
 ```
-## <a name="type-mapping-for-azure-table"></a>Az Azure Table-leképezés típusa
-Ahogy korábban már említettük, az a [adattovábbítási tevékenységek](data-factory-data-movement-activities.md) a cikkben a másolási tevékenység végzi az automatikus típuskonverziók a fogadó-típusokat az alábbi kétlépéses módszer a forrás-típusok közül.
+## <a name="type-mapping-for-azure-table"></a>Típus leképezése az Azure Table-hez
+Ahogy azt az [adattovábbítási tevékenységek](data-factory-data-movement-activities.md) című cikk ismerteti, a másolási tevékenység az alábbi kétlépéses megközelítéssel hajtja végre az automatikus típus-konverziókat a forrás típusairól a fogadó típusokba.
 
-1. A natív forrástípusok átalakítása typ .NET
-2. A .NET-típusból átalakítása natív fogadó típusa
+1. Konvertálás natív forrásokból .NET-típusra
+2. Konvertálás .NET-típusról natív fogadó típusra
 
-Amikor adatok áthelyezése Azure táblából, a következő & [Azure Table Storage-szolgáltatás által definiált leképezések](https://msdn.microsoft.com/library/azure/dd179338.aspx) használt .NET típusát, és ez fordítva is igaz az Azure-tábla OData-típusok közül.
+Amikor az Azure-táblázatból &ba helyezi az adatátvitelt, az Azure- [Table Service által definiált következő leképezések](https://msdn.microsoft.com/library/azure/dd179338.aspx) az Azure Table OData-típusok és a .net-típus között használatosak, és fordítva.
 
-| OData-adatok típusa | .NET Type | Részletek |
+| OData adattípusa | .NET-típus | Részletek |
 | --- | --- | --- |
-| Edm.Binary |byte[] |Bájttömb legfeljebb 64 KB-os. |
-| Edm.Boolean |bool |Logikai érték. |
-| Edm.DateTime |Datetime |Egy 64 bites érték, egyezményes világidő (UTC) szerint kifejezett. A támogatott dátum és idő tartomány kezdődik 12:00 éjféltől. január 1, i 1601. (C.E.,) (UTC). A tartomány vége. December 31-9999. |
-| Edm.Double |double |Egy 64 bites lebegőpontos értéket. |
-| Edm.Guid |Guid |A 128 bites globálisan egyedi azonosítóját. |
-| Edm.Int32 |Int32 |Egy 32 bites egész számot. |
-| Edm.Int64 |Int64 |Egy 64 bites egész számot. |
-| Edm.String |Sztring |UTF-16 kódolású érték. Karakterlánc-értékek legfeljebb 64 KB lehet. |
+| EDM. Binary |bájt [] |Legfeljebb 64 KB méretű bájtok tömbje. |
+| Edm.Boolean |logikai |Logikai érték. |
+| EDM. DateTime |DateTime |64 bites érték, amely egyezményes világidő (UTC) szerint van kifejezve. A támogatott dátum/idő tartomány 12:00 éjféltől kezdődik, január 1-től 1601 A.D. (CE), UTC. A tartomány 9999. december 31-ig ér véget. |
+| Edm.Double |double |64 bites lebegőpontos érték. |
+| EDM. GUID |GUID |Egy 128 bites globálisan egyedi azonosító. |
+| Edm.Int32 |Int32 |32 bites egész szám. |
+| Edm.Int64 |Int64 |64 bites egész szám. |
+| Edm.String |Sztring |Egy UTF-16 kódolású érték. A sztringek értéke legfeljebb 64 KB lehet. |
 
-### <a name="type-conversion-sample"></a>Átalakítás minta
-Az alábbi minta az adatok másolása az Azure-Blobból az Azure Table-típuskonverziók van.
+### <a name="type-conversion-sample"></a>Típus átalakítási minta
+A következő minta az adatok Azure-Blobból Azure-táblázatba való másolását írja elő konverziók használatával.
 
-Tegyük fel, hogy a Blob-adatkészlet CSV formátumban van, és három oszlopot tartalmaz. Ezek közül egyik napja a héten francia rövidített használatával egyéni dátum és idő formátumú dátum-idő oszlop.
+Tegyük fel, hogy a blob-adatkészlet CSV formátumú, és három oszlopot tartalmaz. Ezek egyike egy datetime típusú oszlop, amely egyéni datetime formátumú, és rövidített francia neveket használ a hét napjára.
 
-Adja meg a Blob forrásadatkészlet módon az oszlopok típusdefiníciók együtt.
+Adja meg a blob-forrás adatkészletét az alábbi módon, valamint az oszlopokhoz tartozó definíciókat.
 
 ```JSON
 {
@@ -531,17 +531,17 @@ Adja meg a Blob forrásadatkészlet módon az oszlopok típusdefiníciók együt
     }
 }
 ```
-Adja meg az adattípus-hozzárendelés az Azure-tábla OData-típus .NET típusra, azt határozzák meg a tábla az Azure Table a következő sémával.
+A típusnak az Azure Table OData típusról .NET-típusra való leképezése miatt a táblázatot az alábbi sémával kell megadnia az Azure táblában.
 
-**Az Azure tábla sémája:**
+**Azure Table séma:**
 
-| Oszlop neve | Type |
+| Oszlop neve | Típus |
 | --- | --- |
 | userid |Edm.Int64 |
-| name |Edm.String |
-| lastlogindate |Edm.DateTime |
+| név |Edm.String |
+| lastlogindate |EDM. DateTime |
 
-Ezt követően adja meg az Azure Table adatkészlet a következőképpen. Nem kell megadnia "struktúra" szakasz a típusú adatokkal, mivel a típussal kapcsolatos információk már meg van adva az alapul szolgáló adattár.
+Ezután adja meg az Azure Table-adatkészletet az alábbiak szerint. Nem kell megadnia a "Structure" szakaszt a típus adataival, mivel a típus adatai már meg vannak adva az alapul szolgáló adattárban.
 
 ```JSON
 {
@@ -560,10 +560,10 @@ Ezt követően adja meg az Azure Table adatkészlet a következőképpen. Nem ke
 }
 ```
 
-Ebben az esetben a Data Factory automatikusan írja be az átalakítás Datetime mező például a "fr-fr" kulturális környezet használatával, amikor az adatok áthelyezése a blobból az Azure Table egyéni dátum és idő formátumban.
+Ebben az esetben Data Factory automatikusan beírja a konverziókat, beleértve a DateTime mezőt az egyéni datetime formátummal a "fr-fr" kulturális környezet használatával, amikor a Blobból az Azure-ba helyezi át az adatok áthelyezését.
 
 > [!NOTE]
-> Fogadó-adatkészlet az oszlopok a forrásadatkészlet oszlopok leképezésére, lásd: [az Azure Data Factoryban adatkészletoszlopok leképezése](data-factory-map-columns.md).
+> Ha az oszlopokat a forrás adatkészletből a fogadó adatkészletből származó oszlopokra kívánja leképezni, tekintse meg [Azure Data Factory az adatkészlet oszlopainak](data-factory-map-columns.md)
 
-## <a name="performance-and-tuning"></a>Teljesítmény és finomhangolás
-Az adatáthelyezés (másolási tevékenység) az Azure Data Factory és a különféle módokon optimalizálhatja azt, hogy hatással lehet a teljesítményre legfontosabb tényezők kapcsolatos további információkért lásd: [másolási tevékenységek teljesítményéhez és teljesítményhangolási útmutatóból](data-factory-copy-activity-performance.md).
+## <a name="performance-and-tuning"></a>Teljesítmény és hangolás
+További információ az adatáthelyezés (másolási tevékenység) teljesítményét befolyásoló fő tényezőkről Azure Data Factory és az optimalizálás különböző módjairól: a [másolási tevékenység teljesítményének & finomhangolási útmutatója](data-factory-copy-activity-performance.md).

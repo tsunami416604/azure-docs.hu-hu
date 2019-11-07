@@ -1,5 +1,5 @@
 ---
-title: 'PowerShell: a BYOK TDE engedélyezése – Azure SQL Database felügyelt példány | Microsoft Docs'
+title: 'PowerShell: a BYOK TDE engedélyezése – Azure SQL Database felügyelt példány '
 description: Megtudhatja, hogyan konfigurálhat egy Azure SQL felügyelt példányt úgy, hogy a PowerShell használatával megkezdje a BYOK transzparens adattitkosítás (TDE) használatát a titkosításhoz.
 services: sql-database
 ms.service: sql-database
@@ -10,17 +10,17 @@ ms.topic: conceptual
 author: MladjoA
 ms.author: mlandzic
 ms.reviewer: vanto, carlrab
-ms.date: 11/04/2019
-ms.openlocfilehash: 0413216bc666aff504193d6723d46a6ee26be8ee
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.date: 11/05/2019
+ms.openlocfilehash: ddffda5229c9c0d33c563e3ae7b4a884f0f92dff
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73500058"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73691404"
 ---
 # <a name="manage-transparent-data-encryption-in-a-managed-instance-using-your-own-key-from-azure-key-vault"></a>Felügyelt példányon lévő transzparens adattitkosítás kezelése a saját kulcsának használatával Azure Key Vault
 
-Ez a PowerShell-parancsfájl az Azure SQL felügyelt példányának Bring Your Own Key (előzetes verzió) forgatókönyvében transzparens adattitkosítás (TDE) konfigurációját konfigurálja, amely a Azure Key Vault egyik kulcsát használja. Ha többet szeretne megtudni a TDE Bring Your Own Key (BYOK) támogatásával kapcsolatban, tekintse meg a [TDE bring your own Key az Azure SQL-](../transparent-data-encryption-byok-azure-sql.md)ben című témakört.
+Ez a PowerShell-parancsfájl transzparens adattitkosítás (TDE) konfigurációját konfigurálja a felügyelt Azure SQL-példányhoz az ügyfél által felügyelt kulccsal, Azure Key Vault-kulcs használatával. Ezt gyakran nevezik Bring Your Own Key TDE-forgatókönyvnek. Ha többet szeretne megtudni az ügyfél által felügyelt kulccsal TDE, tekintse meg a [TDE bring your own Key az Azure SQL](../transparent-data-encryption-byok-azure-sql.md)-ben című témakört.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -30,9 +30,9 @@ Ez a PowerShell-parancsfájl az Azure SQL felügyelt példányának Bring Your O
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-A PowerShell helyi vagy Azure Cloud Shell használatával történő használatához AZ PowerShell 1.1.1-Preview vagy egy újabb előzetes verzió szükséges. Ha frissítenie kell, lásd: [Azure PowerShell modul telepítése](/powershell/azure/install-az-ps), vagy futtassa az alábbi minta parancsfájlt a modul telepítéséhez.
+A PowerShell helyi vagy Azure Cloud Shell használatával történő használatához AZ PowerShell 2.3.2 vagy egy újabb verzió szükséges. Ha frissítenie kell, tekintse meg a [Azure PowerShell modul telepítése](/powershell/azure/install-az-ps)című részt, vagy futtassa az alábbi minta parancsfájlt a modul telepítéséhez az aktuális felhasználóhoz:
 
-`Install-Module -Name Az.Sql -RequiredVersion 1.1.1-preview -AllowPrerelease -Force`
+`Install-Module -Name Az -AllowClobber -Scope CurrentUser`
 
 Ha helyileg futtatja a PowerShellt, akkor emellett a `Connect-AzAccount` futtatásával kapcsolatot kell teremtenie az Azure-ral.
 

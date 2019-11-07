@@ -1,5 +1,5 @@
 ---
-title: Azure SQL Data Warehouse tranzakciók optimalizálása | Microsoft Docs
+title: Tranzakciók optimalizálása
 description: Megtudhatja, hogyan optimalizálhatja a tranzakciós kód teljesítményét Azure SQL Data Warehouse, miközben minimalizálja a hosszú visszaállítások kockázatát.
 services: sql-data-warehouse
 author: XiaoyuMSFT
@@ -10,12 +10,13 @@ ms.subservice: development
 ms.date: 04/19/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: 2299c526dd63eb8e8772661ee8fae66153fc36c3
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.custom: seo-lt-2019
+ms.openlocfilehash: b8b8be9467ade870e57355be91b0de329b0f6217
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68479680"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73692855"
 ---
 # <a name="optimizing-transactions-in-azure-sql-data-warehouse"></a>Tranzakciók optimalizálása Azure SQL Data Warehouseban
 Megtudhatja, hogyan optimalizálhatja a tranzakciós kód teljesítményét Azure SQL Data Warehouse, miközben minimalizálja a hosszú visszaállítások kockázatát.
@@ -42,8 +43,8 @@ A tranzakció biztonsági korlátai csak a teljesen naplózott műveletekre érv
 ## <a name="minimally-logged-operations"></a>Minimálisan naplózott műveletek
 A következő műveletek képesek minimálisan naplózni:
 
-* CREATE TABLE A SELECT ([CTAS](sql-data-warehouse-develop-ctas.md))
-* BESZÚRÁS.. VÁLASSZA
+* CREATE TABLE a SELECT ([CTAS](sql-data-warehouse-develop-ctas.md))
+* Beszúrás.. Válassza
 * CREATE INDEX
 * AZ ALTER INDEX ÚJRAÉPÍTÉSE
 * DROP INDEX
@@ -67,12 +68,12 @@ CTAS és Beszúrás... Válassza a tömeges betöltési műveletek lehetőséget
 
 | Elsődleges index | Betöltési forgatókönyv | Naplózási mód |
 | --- | --- | --- |
-| Halommemória |Any |**Minimal** |
-| Fürtözött index |Üres céltábla |**Minimal** |
-| Fürtözött index |A betöltött sorok nem fedik át a cél meglévő lapjait |**Minimal** |
-| Fürtözött index |A betöltött sorok átfedésben vannak a cél meglévő lapjaival |Teljes |
-| Fürtözött Oszlopcentrikus index |Batch-méret > = 102 400/partícióra igazított eloszlás |**Minimal** |
-| Fürtözött Oszlopcentrikus index |Köteg mérete < 102 400/partícióra igazított eloszlás |Teljes |
+| Halommemória |Bármelyik |**Minimális** |
+| Fürtözött index |Üres céltábla |**Minimális** |
+| Fürtözött index |A betöltött sorok nem fedik át a cél meglévő lapjait |**Minimális** |
+| Fürtözött index |A betöltött sorok átfedésben vannak a cél meglévő lapjaival |Korlátlan |
+| Fürtözött Oszlopcentrikus index |Batch-méret > = 102 400/partícióra igazított eloszlás |**Minimális** |
+| Fürtözött Oszlopcentrikus index |Köteg mérete < 102 400/partícióra igazított eloszlás |Korlátlan |
 
 Érdemes megjegyezni, hogy a másodlagos vagy nem fürtözött indexek frissítésére vonatkozó írások mindig teljesen naplózott műveletnek számítanak.
 
@@ -84,7 +85,7 @@ CTAS és Beszúrás... Válassza a tömeges betöltési műveletek lehetőséget
 A fürtözött indexekkel rendelkező, nem üres táblába való betöltés általában a teljesen naplózott és a minimálisan naplózott sorok keverékét is tartalmazhatja. A fürtözött indexek lapok kiegyensúlyozott fastruktúrája (b-Tree). Ha a megírt lap már tartalmaz egy másik tranzakció sorait, akkor ezek az írások teljesen be lesznek jelentkezve. Ha azonban az oldal üres, akkor az adott oldalra való írás a legkevesebb naplóba kerül.
 
 ## <a name="optimizing-deletes"></a>A törlések optimalizálása
-A DELETE egy teljesen naplózott művelet.  Ha egy táblán vagy partíción nagy mennyiségű adattal kell törölnie, gyakran több értelme `SELECT` van a megőrizni kívánt információknak, ami minimálisan naplózott műveletként futtatható.  Az adatválasztáshoz hozzon létre egy új táblát a [CTAS](sql-data-warehouse-develop-ctas.md)használatával.  A létrehozást követően az [Átnevezés](/sql/t-sql/statements/rename-transact-sql) használatával cserélje ki a régi táblát az újonnan létrehozott táblázatra.
+A DELETE egy teljesen naplózott művelet.  Ha egy táblán vagy partíción nagy mennyiségű adattal kell törölnie, gyakran több értelme van `SELECT` a megőrizni kívánt adatmennyiséget, ami minimálisan naplózott műveletként futtatható.  Az adatválasztáshoz hozzon létre egy új táblát a [CTAS](sql-data-warehouse-develop-ctas.md)használatával.  A létrehozást követően az [Átnevezés](/sql/t-sql/statements/rename-transact-sql) használatával cserélje ki a régi táblát az újonnan létrehozott táblázatra.
 
 ```sql
 -- Delete all sales transactions for Promotions except PromotionKey 2.
@@ -407,7 +408,7 @@ END
 Azure SQL Data Warehouse lehetővé teszi az adattárház [szüneteltetését, folytatását és méretezését](sql-data-warehouse-manage-compute-overview.md) igény szerint. A SQL Data Warehouse szüneteltetése vagy méretezése esetén fontos tisztában lennie azzal, hogy a repülés közbeni tranzakciók azonnal megszűnnek; a nyitott tranzakciók visszaállításának visszavonása. Ha a munkaterhelés a szüneteltetési vagy a skálázási művelet előtt hosszú ideig futó és hiányos adatmódosítást adott ki, akkor ennek a munkának vissza kell maradnia. Ezzel a művelettel a Azure SQL Data Warehouse-adatbázis szüneteltetéséhez vagy méretezéséhez szükséges idő is hatással lehet. 
 
 > [!IMPORTANT]
-> Mindkettő `UPDATE` és`DELETE` teljesen naplózott művelet, így ezek a visszavonási/ismétlési műveletek jelentősen hosszabb időt vehetnek igénybe, mint az egyenértékű, minimálisan naplózott műveletek. 
+> Mind a `UPDATE`, mind a `DELETE` teljesen naplózott művelet, így ezek a visszavonás/ismétlési műveletek jóval hosszabb időt vehetnek igénybe, mint az egyenértékű, minimálisan naplózott műveletek. 
 > 
 > 
 
