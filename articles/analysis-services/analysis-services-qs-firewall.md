@@ -1,18 +1,18 @@
 ---
-title: Rövid útmutató – Azure-beli Analysis Services-kiszolgáló tűzfalának konfigurálása | Microsoft Docs
-description: Útmutatás tűzfal konfigurálásához egy Azure-beli Analysis Services-kiszolgálópéldányhoz.
+title: Rövid útmutató – Azure Analysis Services kiszolgáló tűzfalának konfigurálása | Microsoft Docs
+description: Ez a rövid útmutató segítséget nyújt a tűzfal konfigurálásához Azure Analysis Services-kiszolgálóhoz a Azure Portal használatával.
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: quickstart
-ms.date: 07/02/2019
+ms.date: 10/30/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: c3c8de80f90fe203029b38171502e3d4a9b9dd46
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 8a1f774aae071a561bdda2d8c349861d640cb287
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72298528"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73572477"
 ---
 # <a name="quickstart-configure-server-firewall---portal"></a>Rövid útmutató: Kiszolgálótűzfal konfigurálása – Portál
 
@@ -42,7 +42,7 @@ Ez a rövid útmutató segítséget nyújt az Azure Analysis Services-kiszolgál
 
 Ha már nincs rá szükség, törölje az IP-címtartományokat, vagy tiltsa le a tűzfalat.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ebben a rövid útmutatóban megismerte, hogyan konfigurálhat tűzfalat a kiszolgálójához. Most, hogy tűfalas védelmet biztosított a kiszolgáló számára, hozzáadhat egy alapszintű minta adatmodellt a portálról. A mintamodell azért hasznos, mert segít megismerni a modell adatbázis-szerepkörök konfigurálását és az ügyfélkapcsolatok tesztelését. További tudnivalókért folytassa a mintamodell hozzáadását ismertető oktatóanyaggal.
 
 > [!div class="nextstepaction"]

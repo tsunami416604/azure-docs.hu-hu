@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 10/16/2017
 ms.author: glenga
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ad7bdfd3abc4d3b4b672f5471ea826d4cef0f3fc
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 87071b8e1102067110baae70c424aa74a5e0702c
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72596888"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73570830"
 ---
 # <a name="optimize-the-performance-and-reliability-of-azure-functions"></a>Azure Functions teljesítményének és megbízhatóságának optimalizálása
 
@@ -28,7 +28,7 @@ Az alábbiakban az ajánlott eljárások azt ismertetik, hogyan hozhat létre é
 
 A nagyméretű, hosszan futó függvények váratlan időtúllépési problémákhoz vezethetnek. Ha többet szeretne megtudni egy adott üzemeltetési csomag időtúllépéséről, tekintse meg a [Function app timeout időtartamát](functions-scale.md#timeout). 
 
-A függvények sok Node. js-függőség miatt nagy méretűek lehetnek. A függőségek importálása nagyobb betöltési időt is okozhat, ami váratlan időtúllépéseket eredményezhet. A függőségeket explicit módon és implicit módon kell betölteni. A kód által betöltött egyetlen modul a saját további moduljait is betöltheti. 
+A függvények nagy méretűek lehetnek a Node. js-függőségek miatt. A függőségek importálása nagyobb betöltési időt is okozhat, ami váratlan időtúllépéseket eredményezhet. A függőségeket explicit módon és implicit módon kell betölteni. A kód által betöltött egyetlen modul a saját további moduljait is betöltheti. 
 
 Amikor csak lehetséges, a nagyméretű függvények újrabontása kisebb functions-készletekbe, amelyek együtt működnek, és a válaszokat gyorsan adják vissza. Előfordulhat például, hogy egy webhook vagy egy HTTP trigger függvény egy bizonyos időkorláton belül visszaigazolási választ kér. gyakori, hogy a webhookok azonnali választ igényelnek. A HTTP-trigger hasznos adatait átadhatja egy, a várólista-trigger függvény által feldolgozandó várólistába. Ezzel a megközelítéssel késleltetheti a tényleges munkát, és azonnali választ adhat vissza.
 
@@ -37,7 +37,7 @@ Amikor csak lehetséges, a nagyméretű függvények újrabontása kisebb functi
 
 A [Durable functions](durable/durable-functions-overview.md) és a [Azure Logic apps](../logic-apps/logic-apps-overview.md) az állapot-váltások és a több függvény közötti kommunikáció kezelésére készült.
 
-Ha nem használ Durable Functions vagy Logic Apps több függvénybe való integrálásra, általában ajánlott a tárolási várólisták használata a több funkciós kommunikációhoz.  A fő ok a tárolási várólisták olcsóbb és sokkal könnyebben kiépíthető. 
+Ha nem használ Durable Functions vagy Logic Apps több funkcióval való integráláshoz, érdemes a tárolási várólistákat használni a több funkciós kommunikációhoz. Ennek fő oka, hogy a tárolási várólisták olcsóbbak, és sokkal könnyebben használhatók, mint a többi tárolási lehetőség. 
 
 A tárolási várólistán lévő egyes üzenetek mérete 64 KB-ra van korlátozva. Ha nagyobb üzeneteket kell átadnia a függvények között, egy Azure Service Bus üzenetsor használható a standard szinten 256 KB-ig, a prémium szinten legfeljebb 1 MB-ra.
 
@@ -48,7 +48,7 @@ Az Event hubok hasznosak a nagy mennyiségű kommunikáció támogatásához.
 
 ### <a name="write-functions-to-be-stateless"></a>Az írási függvények állapot nélküliek lesznek 
 
-A függvények állapot nélküliek és idempotens, ha lehetséges. Társítson minden szükséges állapotinformációkat az adataihoz. Például egy feldolgozás alatt álló megrendelés valószínűleg társítva van egy `state` taggal. Egy függvény az adott állapot alapján feldolgozhat egy rendelést, miközben maga a függvény állapota változatlan marad. 
+A függvények állapot nélküliek és idempotens, ha lehetséges. Társítson minden szükséges állapotinformációkat az adataihoz. Például egy feldolgozás alatt álló megrendelés valószínűleg társítva lesz egy `state` taggal. Egy függvény az adott állapot alapján feldolgozhat egy rendelést, miközben maga a függvény állapota változatlan marad. 
 
 A idempotens functions használata különösen ajánlott időzítő eseményindítókkal. Ha például olyan dolog van, amely naponta egyszer kell futnia, írja meg, hogy a nap folyamán bármikor fusson ugyanazzal az eredménnyel. A függvény akkor léphet ki, ha egy adott nap nem működik. Ha egy korábbi Futtatás nem fejeződött be, a következő futtatásnak kell megadnia, ahol abbahagyta.
 
@@ -57,12 +57,12 @@ A idempotens functions használata különösen ajánlott időzítő eseményind
 
 Tegyük fel, hogy a függvényt bármikor felmerülhet. Tervezze meg a függvényeket úgy, hogy a következő végrehajtás során egy korábbi sikertelen pontról folytassanak. Vegyünk egy olyan forgatókönyvet, amely a következő műveleteket igényli:
 
-1. Egy adatbázis 10 000-sorainak lekérdezése.
+1. Egy adatbázisban lévő 10 000-sorok lekérdezése.
 2. Hozzon létre egy üzenetsor-üzenetet az egyes sorokhoz a sor további feldolgozásához.
  
 Attól függően, hogy milyen összetett a rendszer, lehetséges, hogy: a kapcsolódó alsóbb szintű szolgáltatások rosszul viselkednek, a hálózati kimaradások, vagy a kvóta korlátai is megszülettek. Ezek mindegyike bármikor hatással lehet a függvényre. Meg kell terveznie a feladatait.
 
-Hogyan reagál a kód, ha hiba lép fel az elemek 5 000-es beszúrását követően a feldolgozáshoz? Egy megadott készlet elemeinek nyomon követése. Ellenkező esetben a következő alkalommal is beszúrhatja őket. Ez komoly hatással lehet a munkahelyi folyamatra. 
+Hogyan reagál a kód, ha hiba lép fel az elemek 5 000-es beszúrását követően a feldolgozáshoz? Egy megadott készlet elemeinek nyomon követése. Ellenkező esetben a következő alkalommal is beszúrhatja őket. Ez a kettős Beszúrás komoly hatással lehet a munkahelyi folyamatra, így [a függvények idempotens](functions-idempotent.md). 
 
 Ha egy üzenetsor-elem már fel lett dolgozva, a függvény nem lehet op.
 
@@ -74,7 +74,7 @@ Számos tényező befolyásolja a Function app-méretezési példányait. A rés
 
 ### <a name="share-and-manage-connections"></a>Kapcsolatok megosztása és kezelése
 
-Ha lehetséges, használja újra a külső erőforrásokhoz való kapcsolódást.  Lásd: [kapcsolatok kezelése Azure Functionsban](./manage-connections.md).
+Ha lehetséges, a külső erőforrásokhoz való kapcsolódást újra fel kell használni.  Lásd: [kapcsolatok kezelése Azure Functionsban](./manage-connections.md).
 
 ### <a name="dont-mix-test-and-production-code-in-the-same-function-app"></a>Ne keverje a tesztet és a termelési kódot ugyanabban a Function alkalmazásban
 
@@ -82,39 +82,31 @@ Functions-megosztási erőforrásokon belüli függvények. A memória például
 
 Ügyeljen arra, hogy milyen terhelést kell betöltenie az üzemi függvények alkalmazásaiba. A memória átlaga az alkalmazás egyes funkciói között.
 
-Ha a megosztott szerelvény több .NET-függvényben is szerepel, akkor egy közös megosztott mappában kell elhelyeznie. Az alábbi példához hasonló utasítással hivatkozhat a szerelvényre, ha C# parancsfájlokat (. CSX) használ: 
+Ha a megosztott szerelvény több .NET-függvényben is szerepel, akkor egy közös megosztott mappában kell elhelyeznie. Ellenkező esetben előfordulhat, hogy véletlenül ugyanazon bináris fájl több verzióját helyezi üzembe, amely eltérően viselkedik a függvények között.
 
-    #r "..\Shared\MyAssembly.dll". 
-
-Ellenkező esetben a függvények közötti eltérő működést biztosító bináris fájlok véletlen üzembe helyezése könnyen elvégezhető.
-
-Ne használja a részletes naplózást az éles kódban. Negatív hatással van a teljesítményre.
+Ne használja a részletes naplózást az éles kódban, amely negatív hatással van a teljesítményre.
 
 ### <a name="use-async-code-but-avoid-blocking-calls"></a>Aszinkron kód használata, de ne blokkolja a hívásokat
 
-Az aszinkron programozás ajánlott eljárás. Azonban mindig ne hivatkozzon a `Result` tulajdonságra, vagy hívja meg a `Wait` metódust egy `Task` példányon. Ez a módszer a szál kimerülését eredményezheti.
+Az aszinkron programozás ajánlott eljárás. Azonban mindig ne hivatkozzon a `Result` tulajdonságra, vagy hívja meg `Wait` metódust egy `Task` példányon. Ez a módszer a szál kimerülését eredményezheti.
 
 [!INCLUDE [HTTP client best practices](../../includes/functions-http-client-best-practices.md)]
 
 ### <a name="receive-messages-in-batch-whenever-possible"></a>Üzenetek fogadása kötegben, amikor csak lehetséges
 
-Egyes eseményindítók, például az Event hub lehetővé teszik egy köteg üzenet fogadását egyetlen meghíváskor.  A kötegelt üzenetek sokkal jobb teljesítményt biztosítanak.  A `host.json` fájlban a maximális batch-méretet a [Host. JSON dokumentációjában](functions-host-json.md) részletesen konfigurálhatja.
+Egyes eseményindítók, például az Event hub lehetővé teszik egy köteg üzenet fogadását egyetlen meghíváskor.  A kötegelt üzenetek sokkal jobb teljesítményt biztosítanak.  A `host.json` fájlban a maximális batch-méretet a [Host. JSON dokumentációjában](functions-host-json.md) részletezve állíthatja be.
 
-A C# függvények esetében a típust erősen gépelt tömbre módosíthatja.  Például ahelyett, hogy `EventData sensorEvent` a metódus aláírását `EventData[] sensorEvent`.  Más nyelvek esetében explicit módon be kell állítania a `function.json` kardinális tulajdonságot a `many` értékre, hogy az [itt látható módon](https://github.com/Azure/azure-webjobs-sdk-templates/blob/df94e19484fea88fc2c68d9f032c9d18d860d5b5/Functions.Templates/Templates/EventHubTrigger-JavaScript/function.json#L10)engedélyezze a kötegelt feldolgozást.
+A C# függvények esetében a típust erősen gépelt tömbre módosíthatja.  Például ahelyett, hogy `EventData sensorEvent` a metódus aláírását `EventData[] sensorEvent`.  Más nyelvek esetében explicit módon be kell állítania a `function.json` kardinális tulajdonságát, hogy `many`, hogy engedélyezze a kötegelt feldolgozást az [itt látható módon](https://github.com/Azure/azure-webjobs-sdk-templates/blob/df94e19484fea88fc2c68d9f032c9d18d860d5b5/Functions.Templates/Templates/EventHubTrigger-JavaScript/function.json#L10).
 
 ### <a name="configure-host-behaviors-to-better-handle-concurrency"></a>A gazdagép viselkedésének konfigurálása a Egyidejűség jobb kezelésére
 
-A Function app `host.json` fájlja lehetővé teszi a gazdagép-futtatókörnyezet és az aktiválási viselkedés konfigurációját.  A Batch-viselkedésen kívül számos eseményindító esetében is kezelheti a párhuzamosságot.  Az ilyen beállításokban szereplő értékek gyakran módosítják az egyes példányok megfelelő méretezését a meghívott függvények igényei szerint.
+A Function alkalmazás `host.json` fájlja lehetővé teszi a gazdagép-futtatókörnyezet és az aktiválási viselkedés konfigurációját.  A Batch-viselkedésen kívül számos eseményindító esetében is kezelheti a párhuzamosságot. Az ilyen beállításokban szereplő értékek gyakran módosítják az egyes példányok megfelelő méretezését a meghívott függvények igényei szerint.
 
-A Hosts fájlban lévő beállítások a függvény *egyetlen példányán* belül az alkalmazáson belüli összes függvényre érvényesek. Ha például 2 HTTP-függvénnyel rendelkező Function-alkalmazással és egyidejű kéréssel 25-re van beállítva, akkor a HTTP-triggerre irányuló kérelem a közös 25 egyidejű kérelemre is beleszámít.  Ha a Function alkalmazás 10 példányra van méretezve, a 2 függvény gyakorlatilag lehetővé teszi a 250 egyidejű kérések használatát (10 példány * 25 egyidejű kérelem/példány).
+A Host. JSON fájlban lévő beállítások a függvény *egyetlen példányán* belül az alkalmazáson belüli összes függvényre érvényesek. Ha például két HTTP-függvényt tartalmazó Function alkalmazást használ, [`maxConcurrentRequests`](functions-bindings-http-webhook.md#hostjson-settings) és a kérelmeket 25 értékre állítja, akkor a http-triggerre irányuló kérelem a közös 25 egyidejű kérések között számít.  Ha a függvény alkalmazása 10 példányra van méretezve, a két függvény hatékonyan engedélyezi az 250 egyidejű kérelmeket (10 példány * 25 egyidejű kérelem/példány). 
 
-**HTTP-egyidejűségi gazdagép beállításai**
+Más gazdagép-konfigurációs beállítások a [Host. JSON konfigurációs cikkben](functions-host-json.md)találhatók.
 
-[!INCLUDE [functions-host-json-http](../../includes/functions-host-json-http.md)]
-
-[A gazdagép konfigurációs dokumentumában](functions-host-json.md)más gazdagép-konfigurációs beállítások is megtalálhatók.
-
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információkért lásd a következőket:
 

@@ -17,12 +17,12 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 49dc3b0542e3f5e24c556ed78c20b16c3a6f1796
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: a8cc02831fa00a3974da1b74b07daf581f50dd22
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72803700"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73569625"
 ---
 # <a name="protected-web-api-code-configuration"></a>Védett webes API: kód konfigurálása
 
@@ -124,9 +124,11 @@ services.Configure<JwtBearerOptions>(AzureADDefaults.JwtBearerAuthenticationSche
     // Instead of using the default validation (validating against a single tenant,
     // as we do in line-of-business apps),
     // we inject our own multitenant validation logic (which even accepts both v1 and v2 tokens).
-    options.TokenValidationParameters.IssuerValidator = AadIssuerValidator.ValidateAadIssuer;
+    options.TokenValidationParameters.IssuerValidator = AadIssuerValidator.GetIssuerValidator(options.Authority).Validate;;
 });
 ```
+
+Ez ASP.NET Core a kódrészlet a [Microsoft. Identity. Web/WebApiServiceCollectionExtensions. cs # L50-L63](https://github.com/Azure-Samples/active-directory-dotnet-native-aspnetcore-v2/blob/154282843da2fc2958fad151e2a11e521e358d42/Microsoft.Identity.Web/WebApiServiceCollectionExtensions.cs#L50-L63)webhelyről származó webes API növekményes oktatóanyagból lett kinyerve. A `AddProtectedWebApi` metódust, amely sokkal több, a Startup.cs van meghívva
 
 ## <a name="token-validation"></a>Jogkivonat ellenőrzése
 
@@ -157,7 +159,7 @@ A következő táblázat ismerteti a validatorokat:
 
 A validatorok a `TokenValidationParameters` osztály tulajdonságaihoz vannak társítva, amelyek a ASP.NET/ASP.NET alapkonfigurációból lettek inicializálva. A legtöbb esetben nem kell módosítania a paramétereket. Egyetlen Bérlővel rendelkező alkalmazások esetében egyetlen kivétel van. (Ez a webalkalmazások, amelyek bármely szervezetből vagy személyes Microsoft-fiókokból fogadnak felhasználókat.) Ebben az esetben a kiállítót érvényesíteni kell.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Hatókörök és alkalmazás-szerepkörök ellenőrzése a kódban](scenario-protected-web-api-verification-scope-app-roles.md)

@@ -13,12 +13,12 @@ ms.date: 10/30/2019
 ms.author: lizross
 ms.custom: user-help
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 70a0e65b3c73e05af08c69fde55542e803691515
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 9fa8bc27f014b794059f30a62d47f298096df2f1
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73178115"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73573802"
 ---
 # <a name="edit-or-revoke-application-permissions-in-the-my-apps-preview-portal"></a>Alkalmazás engedélyeinek szerkesztése vagy visszavonása a saját alkalmazások (előzetes verzió) portálon
 
@@ -43,7 +43,7 @@ Az **engedélyek visszavonása**lehetőség kiválasztásával visszavonhatja a 
 
 Az engedélyek ablak alsó részén látható, hogy a rendszergazda hogyan járult hozzá az Ön nevében. Ez a szakasz nem jelenik meg, ha nincsenek rendszergazdai jogosultságok. Ezek az engedélyek nem vonhatók vissza, mert a rendszergazda beleegyezett nekik, és gyakran szükségesek a szervezet házirendjéhez.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Miután felügyelte az alkalmazás engedélyeit és a mentett fiókokat a **saját alkalmazások** portálján, a következőket teheti:
 
@@ -51,8 +51,8 @@ Miután felügyelte az alkalmazás engedélyeit és a mentett fiókokat a **saj�
 
 ## <a name="related-articles"></a>Kapcsolódó cikkek
 
-- [Frissítse a profilját és a fiókadatok adatait](myprofile-portal-overview.md). Útmutató a **saját profil** (előzetes verzió) portálon megjelenő személyes adatok frissítéséhez.
+- [Frissítse a profilját és a fiókadatok adatait](my-account-portal-overview.md). Útmutató a **saját profil** (előzetes verzió) portálon megjelenő személyes adatok frissítéséhez.
 
-- [Kezelheti szervezeteit](myprofile-portal-organizations-page.md). Útmutatás a szervezettel kapcsolatos információk megtekintéséhez és kezeléséhez a **saját profil** portál **szervezetek** lapján.
+- [Kezelheti szervezeteit](my-account-portal-organizations-page.md). Útmutatás a szervezettel kapcsolatos információk megtekintéséhez és kezeléséhez a **saját profil** portál **szervezetek** lapján.
 
-- [A csatlakoztatott eszközök kezelése](myprofile-portal-devices-page.md). Útmutató a saját munkahelyi vagy iskolai fiókjához csatlakoztatott eszközök kezeléséhez a **saját profil** portál **eszközök** lapján.
+- [A csatlakoztatott eszközök kezelése](my-account-portal-devices-page.md). Útmutató a saját munkahelyi vagy iskolai fiókjához csatlakoztatott eszközök kezeléséhez a **saját profil** portál **eszközök** lapján.

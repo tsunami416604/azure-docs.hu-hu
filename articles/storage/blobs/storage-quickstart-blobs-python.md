@@ -1,226 +1,336 @@
 ---
-title: 'Gyors útmutató: blob létrehozása az Azure Blob Storage-ban Python-vel'
-description: Ebben a rövid útmutatóban egy tárfiókot és egy tárolót hoz létre egy objektumtárban (Blob Storage-fiókban). Majd a Storage Pythonhoz készült ügyféloldali kódtára segítségével feltölt egy blobot az Azure Storage-ba, letölt egy blobot, és kilistázza a tárolóban lévő blobokat.
+title: 'Gyors útmutató: Azure Blob Storage Library V12 – Python'
+description: Ebből a rövid útmutatóból megtudhatja, hogyan használhatja az Azure Blob Storage ügyféloldali kódtárat a Pythonhoz a tárolók és Blobok blob (Object) tárolóban történő létrehozásához. Ezután megtudhatja, hogyan töltheti le a blobot a helyi számítógépére, és hogyan listázhatja ki a tárolóban található összes blobot.
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 09/11/2019
+ms.date: 11/05/2019
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.custom: seo-python-october2019
-ms.openlocfilehash: 8a3f8b5f8944552c92ac5a1c1d5fb2eabffad2c9
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: 0851ee9061fcb01a5e007f0cc4989d6a3febc665
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72430153"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73605158"
 ---
-# <a name="quickstart-upload-download-and-list-blobs-in-azure-blob-storage-with-python"></a>Rövid útmutató: Blobok feltöltése, letöltése és listázása az Azure Blob Storage-ban a Pythonban
+# <a name="quickstart-azure-blob-storage-client-library-v12-for-python"></a>Gyors útmutató: Azure Blob Storage ügyféloldali kódtára a Pythonhoz
 
-Ebben a cikkben a Python használatával tölthet fel, tölthet le és listázhat blokk-blobokat egy tárolóban az Azure Blob Storage-ban. A Blobok egyszerűen olyan objektumok, amelyek nagy mennyiségű szöveges vagy bináris adatok tárolására képesek, beleértve a képeket, a dokumentumokat, a médiafolyamokat és az archiválási adatokhoz. Az Azure Storage-beli Blobok különböznek a fájlmegosztás, a séma nélküli táblák és az üzenetsor-várólistáktól.  További információ: [Az Azure Storage bemutatása](/azure/storage/common/storage-introduction).
+Ismerkedés a Pythonhoz készült Azure Blob Storage ügyféloldali kódtáraval. Az Azure Blob Storage a Microsoft felhőalapú objektumtárolási megoldása. Kövesse a csomag telepítésének lépéseit, és próbálja ki például az alapszintű feladatokhoz tartozó kódot. A Blob Storage nagy mennyiségű strukturálatlan adat tárolására van optimalizálva.
 
-[!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
+> [!NOTE]
+> A korábbi SDK-verzió használatának megkezdéséhez tekintse meg a gyors útmutató [: Azure Blob Storage ügyféloldali kódtára a Pythonhoz](storage-quickstart-blobs-python-legacy.md)című témakört.
+
+Használja az Azure Blob Storage ügyféloldali kódtárat a következőre:
+
+* Tároló létrehozása
+* BLOB feltöltése az Azure Storage-ba
+* Egy tároló összes blobjának listázása
+* A blob letöltése a helyi számítógépre
+* Tároló törlése
+
+[API-referenciák dokumentációja](/python/api/azure-storage-blob) | [könyvtár forráskódja](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-blob) | [csomag (Python-csomag indexe)](https://pypi.org/project/azure-storage-blob/) | [minták](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-blob/samples)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-[!INCLUDE [storage-quickstart-prereq-include](../../../includes/storage-quickstart-prereq-include.md)]
+* Azure-előfizetés – [hozzon létre egyet ingyen](https://azure.microsoft.com/free/)
+* Azure Storage-fiók – [Storage-fiók létrehozása](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)
+* [Python](https://www.python.org/downloads/) az operációs rendszerhez – 2,7, 3,5 vagy újabb
 
-Győződjön meg arról, hogy a következő további előfeltételek vannak telepítve:
+## <a name="setting-up"></a>Beállítás
 
-* [Python](https://www.python.org/downloads/)
+Ez a szakasz végigvezeti a projekt előkészítésének folyamatán a Pythonhoz készült Azure Blob Storage ügyféloldali kódtáraval való együttműködéshez.
 
-* [Pythonhoz készült Azure Storage SDK](https://github.com/Azure/azure-sdk-for-python)
+### <a name="create-the-project"></a>A projekt létrehozása
 
-## <a name="download-the-sample-application"></a>A mintaalkalmazás letöltése
+Hozzon létre egy *blob-Gyorsindítás-V12*nevű Python-alkalmazást.
 
-A rövid útmutatóban használt [mintaalkalmazás](https://github.com/Azure-Samples/storage-blobs-python-quickstart.git) egy egyszerű Python-alkalmazás.  
+1. A konzol ablakban (például cmd, PowerShell vagy bash) hozzon létre egy új könyvtárat a projekthez.
 
-A következő [git](https://git-scm.com/) -paranccsal töltheti le az alkalmazást a fejlesztői környezetbe. 
+    ```console
+    mkdir blob-quickstart-v12
+    ```
 
-```bash
-git clone https://github.com/Azure-Samples/storage-blobs-python-quickstart.git 
+1. Váltson az újonnan létrehozott *blob-Gyorsindítás-V12* könyvtárra.
+
+    ```console
+    cd blob-quickstart-v12
+    ```
+
+1. A *blob-Gyorsindítás-V12* könyvtárban hozzon létre egy másik könyvtárat, amely az *adat*nevű. A blob-adatfájlokat a rendszer létrehozza és tárolja.
+
+    ```console
+    mkdir data
+    ```
+
+### <a name="install-the-package"></a>A csomag telepítése
+
+Miközben még mindig az alkalmazás könyvtárában van, telepítse az Azure Blob Storage ügyféloldali kódtárat a Python-csomaghoz a `pip install` parancs használatával.
+
+```console
+pip install azure-storage-blob
 ```
 
-A Python-program áttekintéséhez nyissa meg a *example.py* fájlt a tárház gyökerében.  
+Ez a parancs telepíti az Azure Blob Storage ügyféloldali kódtárat a Python-csomaghoz, és az összes olyan kódtárat, amelytől függ. Ebben az esetben ez csak a Pythonhoz készült Azure Core Library.
 
-[!INCLUDE [storage-copy-account-key-portal](../../../includes/storage-copy-account-key-portal.md)]
+### <a name="set-up-the-app-framework"></a>Az alkalmazás-keretrendszer beállítása
 
-## <a name="configure-your-storage-connection-string"></a>A tárolási kapcsolati sztring konfigurálása
+A projekt könyvtárából:
 
-Az alkalmazásban adja meg a tárfiók nevét és a fiókkulcsot, hogy létrehozhasson egy `BlockBlobService` objektumot.
+1. Új szövegfájl megnyitása a kódszerkesztő programban
+1. `import` utasítások hozzáadása
+1. A program struktúrájának létrehozása, beleértve a nagyon egyszerű kivételek kezelését
 
-1. Nyissa meg az *example.py* fájlt az IDE Megoldáskezelőjéből.
-
-1. Cserélje le a `accountname` és a `accountkey` értékeket a Storage-fiók nevére és kulcsára:
+    A kód a következő:
 
     ```python
-    block_blob_service = BlockBlobService(
-        account_name='accountname', account_key='accountkey')
+    import os, uuid
+    from azure.storage.blob import BlobServiceClient, BlobClient, ContainerClient
+
+    try:
+        print("Azure Blob storage v12 - Python quickstart sample")
+        # Quick start code goes here
+    except Exception as ex:
+        print('Exception:')
+        print(ex)
     ```
 
-1. Mentse és zárja be a fájlt.
+1. Mentse az új fájlt *blob-Quickstart-v12.py* néven a *blob-Gyorsindítás-V12* könyvtárba.
 
-## <a name="run-the-sample"></a>Minta futtatása
+### <a name="copy-your-credentials-from-the-azure-portal"></a>A hitelesítési adatok másolása az Azure Portalról
 
-A minta program egy tesztoldalt hoz létre a *dokumentumok* mappában, feltölti a fájlt a blob Storage-ba, felsorolja a fájlban lévő blobokat, majd letölti a fájlt egy új névvel.
+Ha a minta alkalmazás az Azure Storage-ba irányuló kérést tesz elérhetővé, akkor azt engedélyezni kell. A kérések engedélyezéséhez adja hozzá a Storage-fiók hitelesítő adatait az alkalmazáshoz kapcsolódási karakterláncként. A tárfiók hitelesítő adatainak megtekintéséhez kövesse az alábbi lépéseket:
 
-1. A függőségek telepítése:
+1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
+2. Keresse meg a Storage-fiókját.
+3. A tárfiók áttekintésének **Beállítások** szakaszában válassza a **Hozzáférési kulcsok** elemet. Itt megtekintheti a fiókhoz tartozó hozzáférési kulcsokat, valamint az egyes kulcsokhoz tartozó teljes kapcsolati sztringeket.
+4. Keresse meg a **Kapcsolati sztring** értéket a **key1** területen, és kattintson a **Másolás** gombra a kapcsolati sztring másolásához. A kapcsolati sztring értékét hozzáadja egy környezeti változóhoz a következő lépés során.
 
-    ```console
-    pip install azure-storage-blob
-    ```
+    ![A kapcsolati sztring az Azure Portalról történő másolását bemutató képernyőkép](../../../includes/media/storage-copy-connection-string-portal/portal-connection-string.png)
 
-1. Nyissa meg a minta alkalmazást:
+### <a name="configure-your-storage-connection-string"></a>A tárolási kapcsolati sztring konfigurálása
 
-    ```console
-    cd storage-blobs-python-quickstart
-    ```
+A kapcsolati sztring másolása után írja azt egy új környezeti változóba az alkalmazást futtató helyi gépen. A környezeti változó megadásához nyisson meg egy konzolablakot, és kövesse az operációs rendszerének megfelelő utasításokat. Cserélje le a `<yourconnectionstring>`t a tényleges kapcsolatok karakterláncára.
 
-1. Minta futtatása:
+#### <a name="windows"></a>Windows
 
-    ```console
-    python example.py
-    ```
-
-    A következő kimenethez hasonló üzenetek jelennek meg:
-  
-    ```output
-    Temp file = C:\Users\azureuser\Documents\QuickStart_9f4ed0f9-22d3-43e1-98d0-8b2c05c01078.txt
-
-    Uploading to Blob storage as blobQuickStart_9f4ed0f9-22d3-43e1-98d0-8b2c05c01078.txt
-
-    List blobs in the container
-             Blob name: QuickStart_9f4ed0f9-22d3-43e1-98d0-8b2c05c01078.txt
-
-    Downloading blob to     C:\Users\azureuser\Documents\QuickStart_9f4ed0f9-22d3-43e1-98d0-8b2c05c01078_DOWNLOADED.txt
-    ```
-
-1. A folytatás előtt lépjen a *dokumentumok* mappájába, és keresse meg a két fájlt.
-
-    * *QuickStart_ @ no__t-1universally-Unique-Identifier @ no__t-2*
-    * *QuickStart_ @ no__t-1universally-Unique-Identifier @ no__t-2_DOWNLOADED*
-
-1. Ha megnyitja őket, láthatja, hogy megegyeznek.
-
-    Használhat olyan eszközt is, mint a [Azure Storage Explorer](https://storageexplorer.com). Érdemes megtekinteni a blob Storage-ban található fájlokat. A Azure Storage Explorer egy ingyenes platformfüggetlen eszköz, amely lehetővé teszi a Storage-fiók adatainak elérését. 
-
-1. Miután megtekintette a fájlokat, nyomja le bármelyik billentyűt a minta befejezéséhez és a tesztüzenetek törléséhez.
-
-## <a name="learn-about-the-sample-code"></a>A mintakód megismerése
-
-Most, hogy tisztában van a minta működésével, nyissa meg az *example.py* fájlt, és tekintse meg a kódot.
-
-### <a name="get-references-to-the-storage-objects"></a>Referenciák beszerzése a tárolóobjektumokhoz
-
-Ebben a szakaszban létre fogja hozni az objektumok példányát és egy új tárolót, majd beállítja annak engedélyeit úgy, hogy a blobok nyilvánosak legyenek. Hívja meg `quickstartblobs` tárolót. 
-
-```python
-# Create the BlockBlockService that the system uses to call the Blob service for the storage account.
-block_blob_service = BlockBlobService(
-    account_name='accountname', account_key='accountkey')
-
-# Create a container called 'quickstartblobs'.
-container_name = 'quickstartblobs'
-block_blob_service.create_container(container_name)
-
-# Set the permission so the blobs are public.
-block_blob_service.set_container_acl(
-    container_name, public_access=PublicAccess.Container)
+```cmd
+setx CONNECT_STR "<yourconnectionstring>"
 ```
 
-Először létre kell hozni a referenciákat a Blob Storage eléréséhez és kezeléséhez használt objektumokhoz. Ezek az objektumok egymásra épülnek, és mindegyiket a listában utánuk következő használja.
+Miután hozzáadta a környezeti változót a Windows rendszerben, el kell indítania a parancssorablak új példányát.
 
-* Hozza létre a **BlockBlobService** objektum példányát, amely a tárfiók Blob szolgáltatására mutat. 
+#### <a name="linux"></a>Linux
 
-* Hozza létre a **CloudBlobContainer** objektum példányát. Ez azt a tárolót jelöli, amelyhez Ön hozzáfér. A rendszer tárolók használatával rendezi a blobokat, például a számítógépeken lévő mappák használatával rendszerezheti a fájlokat.
+```bash
+export CONNECT_STR="<yourconnectionstring>"
+```
 
-A felhőbeli blobtároló létrehozása után hozza létre a **CloudBlockBlob** objektum példányát, amely pontosan arra a blobra mutat, amelyre kíváncsi. Ezután elvégezheti a feltöltési, letöltési, másolási vagy egyéb műveleteket.
+#### <a name="macos"></a>macOS
 
-> [!IMPORTANT]
-> A tárolók nevei csak kisbetűket tartalmazhatnak. A tárolók és a blobok elnevezésével kapcsolatos további információkért tekintse meg a [tárolók, blobok és metaadatok elnevezésével és hivatkozásával](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata) foglalkozó cikket.
+```bash
+export CONNECT_STR="<yourconnectionstring>"
+```
 
-### <a name="upload-blobs-to-the-container"></a>Blobok feltöltése a tárolóba
+#### <a name="restart-programs"></a>Programok újraindítása
 
-A Blob Storage támogatja a blokkblobokat, a hozzáfűző blobokat és a lapblobokat. A blokkblobok legfeljebb 4,7 TB méretűek lehetnek, és az Excel-munkafüzetektől kezdve a nagyméretű videofájlokig bármit tartalmazhatnak. Ha egy fájlba szeretne írni, és további információ hozzáadására van szükség, a Blobok hozzáfűzésével is használhatja a naplózást. Az oldal blobokat elsősorban a virtuális merevlemezek (VHD-k) számára használják, amelyek szolgáltatásként működő virtuális gépek (IaaS VM-EK). A leggyakrabban használt elemek a blokkblobok. Ez a rövid útmutató blokk-blobokat használ.
+A környezeti változó hozzáadását követően indítsa újra a futó programokat, amelyeknek olvasnia kell a környezeti változót. A folytatás előtt indítsa el például a fejlesztési környezetet vagy a szerkesztőt.
 
-Ha szeretne feltölteni egy fájlt a blobba, szüksége lesz a fájl teljes útvonalára, amelyet a helyi meghajtón található könyvtárnév és fájlnév összefűzésével kap meg. Ezt követően feltöltheti a fájlt a megadott útvonalra a `create_blob_from_path` metódus használatával. 
+## <a name="object-model"></a>Objektummodell
 
-A mintakód létrehoz egy helyi fájlt, amelyet a rendszer a feltöltéshez és a letöltéshez használ, tárolja a rendszerfeltöltő fájlokat a *full_path_to_file* és a blob nevével *local_file_name*. Ez a példa feltölti a fájlt a `quickstartblobs` nevű tárolóba:
+Az Azure Blob Storage nagy mennyiségű strukturálatlan adat tárolására van optimalizálva. A strukturálatlan adatok olyan adatok, amelyek nem felelnek meg egy adott adatmodellnek vagy definíciónak, például szöveges vagy bináris adatoknak. A blob Storage háromféle típusú erőforrást kínál:
+
+* A Storage-fiók
+* Egy tároló a Storage-fiókban
+* A tárolóban lévő blob
+
+Az alábbi ábra az ezen erőforrások közötti kapcsolatot mutatja be.
+
+![BLOB Storage-architektúra ábrája](./media/storage-blob-introduction/blob1.png)
+
+A következő Python-osztályok használata az alábbi erőforrásokkal való interakcióhoz:
+
+* [BlobServiceClient](/python/api/azure-storage-blob/azure.storage.blob.blobserviceclient): a `BlobServiceClient` osztály lehetővé teszi az Azure Storage-erőforrások és a blob-tárolók kezelését.
+* [ContainerClient](/python/api/azure-storage-blob/azure.storage.blob.containerclient): a `ContainerClient` osztály lehetővé teszi az Azure Storage-tárolók és a Blobok kezelését.
+* [BlobClient](/python/api/azure-storage-blob/azure.storage.blob.blobclient): a `BlobClient` osztály lehetővé teszi az Azure Storage-Blobok kezelését.
+
+## <a name="code-examples"></a>Példák a kódokra
+
+Az alábbi kódrészletek azt mutatják be, hogyan végezheti el a következőket a Pythonhoz készült Azure Blob Storage ügyféloldali kódtára használatával:
+
+* [A kapcsolatok karakterláncának beolvasása](#get-the-connection-string)
+* [Tároló létrehozása](#create-a-container)
+* [Blobok feltöltése tárolóba](#upload-blobs-to-a-container)
+* [Tárolóban lévő Blobok listázása](#list-the-blobs-in-a-container)
+* [Blobok letöltése](#download-blobs)
+* [Tároló törlése](#delete-a-container)
+
+### <a name="get-the-connection-string"></a>A kapcsolati sztring lekérése
+
+Az alábbi kód a Storage- [kapcsolatok karakterláncának konfigurálása](#configure-your-storage-connection-string) szakaszban létrehozott környezeti változóból kéri le a Storage-fiókhoz tartozó kapcsolatok karakterláncát.
+
+Adja hozzá ezt a kódot a `try` blokkon belül:
 
 ```python
-# Create a file in Documents to test the upload and download.
-local_path = os.path.expanduser("~\Documents")
-local_file_name = "QuickStart_" + str(uuid.uuid4()) + ".txt"
-full_path_to_file = os.path.join(local_path, local_file_name)
+# Retrieve the connection string for use with the application. The storage
+# connection string is stored in an environment variable on the machine
+# running the application called CONNECT_STR. If the environment variable is
+# created after the application is launched in a console or with Visual Studio,
+# the shell or application needs to be closed and reloaded to take the
+# environment variable into account.
+connect_str = os.getenv('CONNECT_STR')
+```
 
-# Write text to the file.
-file = open(full_path_to_file, 'w')
+### <a name="create-a-container"></a>Tároló létrehozása
+
+Döntse el az új tároló nevét. Az alábbi kód egy UUID értéket fűz hozzá a tároló nevéhez, hogy az egyedi legyen.
+
+> [!IMPORTANT]
+> A tárolók nevei csak kisbetűket tartalmazhatnak. A tárolók és blobok elnevezésével kapcsolatos további információkért lásd a [tárolók, blobok és metaadatok elnevezését és hivatkozását](/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata).
+
+Hozza létre a [BlobServiceClient](/python/api/azure-storage-blob/azure.storage.blob.blobserviceclient) osztály egy példányát a [from_connection_string](/python/api/azure-storage-blob/azure.storage.blob.blobserviceclient#from-connection-string-conn-str--credential-none----kwargs-) metódus meghívásával. Ezután hívja meg a [create_container](/python/api/azure-storage-blob/azure.storage.blob.blobserviceclient#create-container-name--metadata-none--public-access-none----kwargs-) metódust, hogy ténylegesen létrehozza a tárolót a Storage-fiókban.
+
+Adja hozzá ezt a kódot a `try` blokk végéhez:
+
+```python
+# Create the BlobServiceClient object which will be used to create a container client
+blob_service_client = BlobServiceClient.from_connection_string(connect_str)
+
+# Create a unique name for the container
+container_name = "quickstart" + str(uuid.uuid4())
+
+# Create the container
+container_client = blob_service_client.create_container(container_name)
+```
+
+### <a name="upload-blobs-to-a-container"></a>Blobok feltöltése tárolóba
+
+A következő kódrészlet:
+
+1. Létrehoz egy szövegfájlt a helyi könyvtárban.
+1. Beolvas egy [BlobClient](/python/api/azure-storage-blob/azure.storage.blob.blobclient) objektumra mutató hivatkozást úgy, hogy meghívja a [get_blob_client](/python/api/azure-storage-blob/azure.storage.blob.containerclient#get-blob-client-blob--snapshot-none-) metódust a [BlobServiceClient](/python/api/azure-storage-blob/azure.storage.blob.blobserviceclient) a [tároló létrehozása](#create-a-container) szakaszban.
+1. A [upload_blob](/python/api/azure-storage-blob/azure.storage.blob.blobclient#upload-blob-data--blob-type--blobtype-blockblob---blockblob----length-none--metadata-none----kwargs-) metódus meghívásával feltölti a helyi szövegfájlt a blobba.
+
+Adja hozzá ezt a kódot a `try` blokk végéhez:
+
+```python
+# Create a file in local Documents directory to upload and download
+local_path = "./data"
+local_file_name = "quickstart" + str(uuid.uuid4()) + ".txt"
+upload_file_path = os.path.join(local_path, local_file_name)
+
+# Write text to the file
+file = open(upload_file_path, 'w')
 file.write("Hello, World!")
 file.close()
 
-print("Temp file = " + full_path_to_file)
-print("\nUploading to Blob storage as blob" + local_file_name)
+# Create a blob client using the local file name as the name for the blob
+blob_client = blob_service_client.get_blob_client(container=container_name, blob=local_file_name)
 
-# Upload the created file, use local_file_name for the blob name.
-block_blob_service.create_blob_from_path(
-    container_name, local_file_name, full_path_to_file)
+print("\nUploading to Azure Storage as blob:\n\t" + local_file_name)
+
+# Upload the created file
+with open(upload_file_path, "rb") as data:
+    blob_client.upload_blob(data)
 ```
-
-A Blob-tárolóval többféle feltöltési módszer használható. Ha például memóriastreamje van, használhatja a `create_blob_from_stream` metódust a `create_blob_from_path` helyett. 
 
 ### <a name="list-the-blobs-in-a-container"></a>A tárolóban lévő blobok listázása
 
-A következő kód egy `generator` értéket hoz létre a `list_blobs` metódushoz. A kód a tárolóban lévő Blobok listáján keresztül hurkot jelenít meg, és kiírja a nevét a konzolra.
+A tárolóban lévő Blobok listázása a [list_blobs](/python/api/azure-storage-blob/azure.storage.blob.containerclient#list-blobs-name-starts-with-none--include-none----kwargs-) metódus meghívásával. Ebben az esetben a tárolóhoz csak egy blob lett hozzáadva, így a listázási művelet csak ezt az egy blobot adja vissza.
+
+Adja hozzá ezt a kódot a `try` blokk végéhez:
 
 ```python
-# List the blobs in the container.
-print("\nList blobs in the container")
-generator = block_blob_service.list_blobs(container_name)
-for blob in generator:
-    print("\t Blob name: " + blob.name)
+print("\nListing blobs...")
+
+# List the blobs in the container
+blob_list = container_client.list_blobs()
+for blob in blob_list:
+    print("\t" + blob.name)
 ```
 
-### <a name="download-the-blobs"></a>A blobok letöltése
+### <a name="download-blobs"></a>Blobok letöltése
 
+Töltse le a korábban létrehozott blobot a [download_blob](/python/api/azure-storage-blob/azure.storage.blob.blobclient#download-blob-offset-none--length-none----kwargs-) metódus meghívásával. A példában szereplő kód a "Letöltés" utótagot adja hozzá a fájl nevéhez, hogy mindkét fájl látható legyen a helyi fájlrendszerben.
 
-A `get_blob_to_path` metódus használatával töltse le a blobokat a helyi lemezre.
-A következő kód letölti a korábban feltöltött blobot. A rendszer hozzáfűzi a *_DOWNLOADED* a blob nevéhez, így mindkét fájlt láthatja a helyi lemezen.
+Adja hozzá ezt a kódot a `try` blokk végéhez:
 
 ```python
-# Download the blob(s).
-# Add '_DOWNLOADED' as prefix to '.txt' so you can see both files in Documents.
-full_path_to_file2 = os.path.join(local_path, local_file_name.replace(
-   '.txt', '_DOWNLOADED.txt'))
-print("\nDownloading blob to " + full_path_to_file2)
-block_blob_service.get_blob_to_path(
-    container_name, local_file_name, full_path_to_file2)
+# Download the blob to a local file
+# Add 'DOWNLOAD' before the .txt extension so you can see both files in Documents
+download_file_path = os.path.join(local_path, str.replace(local_file_name ,'.txt', 'DOWNLOAD.txt'))
+print("\nDownloading blob to \n\t" + download_file_path)
+
+with open(download_file_path, "wb") as download_file:
+    download_file.write(blob_client.download_blob().readall())
 ```
 
-### <a name="clean-up-resources"></a>Az erőforrások eltávolítása
-Ha már nincs szüksége az ebben a rövid útmutatóban feltöltött blobokra, a teljes tárolót törölheti a `delete_container` metódussal. Az egyes fájlok törléséhez használja a `delete_blob` metódust.
+### <a name="delete-a-container"></a>Tároló törlése
+
+A következő kód megtisztítja az alkalmazás által létrehozott erőforrásokat, ha eltávolítja a teljes tárolót a [delete_container](/python/api/azure-storage-blob/azure.storage.blob.containerclient#delete-container---kwargs-) metódussal. Ha szeretné, törölheti a helyi fájlokat is.
+
+Az alkalmazás a `input()` meghívásával szünetelteti a felhasználói bevitelt, mielőtt törli a blobot, a tárolót és a helyi fájlokat. Ez jó eséllyel ellenőrizhető, hogy az erőforrások valóban helyesen lettek-e létrehozva a Törlésük előtt.
+
+Adja hozzá ezt a kódot a `try` blokk végéhez:
 
 ```python
-# Clean up resources. This includes the container and the temp files.
-block_blob_service.delete_container(container_name)
-os.remove(full_path_to_file)
-os.remove(full_path_to_file2)
+# Clean up
+print("\nPress the Enter key to begin clean up")
+input()
+
+print("Deleting blob container...")
+container_client.delete_container()
+
+print("Deleting the local source and downloaded files...")
+os.remove(upload_file_path)
+os.remove(download_file_path)
+
+print("Done")
 ```
 
-## <a name="resources-for-developing-python-applications-with-blobs"></a>Blobokkal rendelkező Python-alkalmazások fejlesztéséhez használható forrásanyagok
+## <a name="run-the-code"></a>A kód futtatása
 
-A Python-fejlesztés és a blob Storage szolgáltatással kapcsolatos további információkért tekintse meg ezeket a további forrásokat:
+Ez az alkalmazás létrehoz egy tesztoldalt a helyi mappában, és feltölti azt a blob Storage-ba. A példa ezután felsorolja a tárolóban lévő blobokat, és letölti a fájlt egy új névvel, hogy össze lehessen hasonlítani a régi és az új fájlokat.
 
-### <a name="binaries-and-source-code"></a>Bináris fájlok és forráskód
+Keresse meg a *blob-Quickstart-v12.py* fájlt tartalmazó könyvtárat, majd hajtsa végre a következő `python` parancsot az alkalmazás futtatásához.
 
-- Az Azure Storage-hoz tartozó [Python ügyféloldali kódtár forráskódját](https://github.com/Azure/azure-storage-python) megtekintheti, letöltheti és telepítheti a GitHubról.
+```console
+python blob-quickstart-v12.py
+```
 
-### <a name="client-library-reference-and-samples"></a>Ügyféloldali kódtár – referencia és minták
+Az alkalmazás kimenete az alábbi példához hasonló:
 
-- További információ a Python-ügyfél könyvtáráról: a [Pythonhoz készült Azure Storage kódtárak](https://docs.microsoft.com/python/api/overview/azure/storage).
-- Tekintse át a Python ügyféloldali kódtár használatával írt [Blob Storage-mintákat](https://azure.microsoft.com/resources/samples/?sort=0&service=storage&platform=python&term=blob).
+```output
+Azure Blob storage v12 - Python quickstart sample
 
-## <a name="next-steps"></a>Következő lépések
- 
-Ennek a rövid útmutatónak a segítségével megtanulta, hogyan vihetők át fájlok egy helyi lemez és az Azure Blob Storage között a Python használatával. 
+Uploading to Azure Storage as blob:
+        quickstartcf275796-2188-4057-b6fb-038352e35038.txt
 
-A Storage Explorer és a Blobokkal kapcsolatos további információkért lásd: az [Azure Blob Storage-erőforrások kezelése Storage Explorerokkal](../../vs-azure-tools-storage-explorer-blobs.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
+Listing blobs...
+        quickstartcf275796-2188-4057-b6fb-038352e35038.txt
+
+Downloading blob to
+        ./data/quickstartcf275796-2188-4057-b6fb-038352e35038DOWNLOAD.txt
+
+Press the Enter key to begin clean up
+
+Deleting blob container...
+Deleting the local source and downloaded files...
+Done
+```
+
+A tisztítási folyamat megkezdése előtt tekintse meg a két fájl *dokumentumok* mappáját. Ha megnyitja őket, láthatja, hogy megegyeznek.
+
+A fájlok ellenőrzése után nyomja le az **ENTER** billentyűt a tesztoldal törléséhez és a bemutató befejezéséhez.
+
+## <a name="next-steps"></a>További lépések
+
+Ebben a rövid útmutatóban megtanulta, hogyan tölthet fel, tölthet le és listázhat blobokat a Python használatával.
+
+A blob Storage-beli minták alkalmazásainak megtekintéséhez folytassa a következőket:
+
+> [!div class="nextstepaction"]
+> [Azure Blob Storage SDK V12 Python-minták](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-blob/samples)
+
+* További információért lásd a [Pythonhoz készült Azure SDK](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-blob/README.md)-t.
+* Az oktatóanyagok, a minták, a gyors üzembe helyezés és az egyéb dokumentációk az Azure-ban, [Python-fejlesztőknek](/azure/python/)című oldalon találhatók.

@@ -7,12 +7,12 @@ ms.author: jenhayes
 ms.date: 07/11/2019
 ms.topic: overview
 manager: carmonm
-ms.openlocfilehash: 8cc75fde348d070a19d1987d1403c63e8e6d2278
-ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
+ms.openlocfilehash: c2aa393f04a8db470dd8b739c0ed003477df0221
+ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72286633"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73615418"
 ---
 # <a name="azure-delegated-resource-management"></a>Az Azure által delegált erőforrás-kezelés
 
@@ -23,7 +23,7 @@ Az Azure-beli delegált erőforrás-kezelés az Azure Lighthouse egyik fő össz
 Az Azure-beli delegált erőforrás-kezelés lehetővé teszi az erőforrások logikai kivetítését az egyik bérlőről egy másik bérlőre. Ez lehetővé teszi, hogy az egy Azure Active Directory (Azure AD) bérlő jogosult felhasználóinak felügyeleti műveleteket hajtsanak végre az ügyfelekhez tartozó különböző Azure AD-bérlők között. A szolgáltatók bejelentkezhetnek a saját Azure AD-bérlőbe, és engedéllyel rendelkeznek a delegált ügyfél-előfizetések és-erőforráscsoportok működéséhez. Ez lehetővé teszi, hogy az ügyfeleik nevében felügyeleti műveleteket végezzenek, anélkül, hogy be kellene jelentkezniük az egyes ügyfelek bérlői számára.
 
 > [!NOTE]
-> Az Azure-beli delegált erőforrás-kezelés olyan vállalaton belül is felhasználható, amely több Azure AD-Bérlővel rendelkezik a bérlők közötti felügyelet egyszerűsítése érdekében.
+> Az Azure-beli delegált erőforrás-kezelés [olyan vállalaton belül is felhasználható, amely több Azure ad-Bérlővel rendelkezik](enterprise.md) a bérlők közötti felügyelet egyszerűsítése érdekében.
 
 Az Azure delegált erőforrás-kezelési szolgáltatással az engedélyezett felhasználók közvetlenül az ügyfél-előfizetés kontextusában dolgozhatnak, anélkül, hogy az ügyfél bérlője fiókjával vagy az ügyfél bérlője társtulajdonosa. Az [összes delegált ügyfél-előfizetést is megtekinthetik és kezelhetik az Azure Portal új **saját ügyfelek** lapján](../how-to/view-manage-customers.md) .
 
@@ -47,7 +47,7 @@ Magas szinten a következőképpen működik az Azure-beli delegált erőforrás
 
 Ha segítségre van szüksége az Azure-beli delegált erőforrás-kezeléshez, egy támogatási kérést is megnyithat a Azure Portal. A **probléma típusa**beállításnál válassza a **technikai**lehetőséget. Válasszon egy előfizetést, majd válassza a **delegált erőforrás-kezelés** lehetőséget (a **figyelés & felügyelet**alatt).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - További információ a [bérlők közötti felügyeleti élményekről](cross-tenant-management-experience.md).
 - Ismerje meg a [felügyelt szolgáltatások ajánlatait az Azure Marketplace-](managed-services-offers.md)en.

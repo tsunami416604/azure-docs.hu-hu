@@ -5,14 +5,14 @@ author: vhorne
 ms.service: firewall-manager
 services: firewall-manager
 ms.topic: overview
-ms.date: 10/30/2019
+ms.date: 11/05/2019
 ms.author: victorh
-ms.openlocfilehash: 3e19a2a45dde8a951e0ae3a4bd3c8d019609a5e1
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: HT
+ms.openlocfilehash: df649eab1f0e2946078f8efd3cdd6ab68c3b7938
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/04/2019
-ms.locfileid: "73502379"
+ms.locfileid: "73580189"
 ---
 # <a name="what-is-azure-firewall-manager-preview"></a>Mi az Azure Firewall Manager előzetes verziója?
 
@@ -20,7 +20,7 @@ ms.locfileid: "73502379"
 
 A Azure Firewall Manager előzetes verziója egy biztonsági felügyeleti szolgáltatás, amely központi biztonsági házirendet és útválasztási felügyeletet biztosít a felhőalapú biztonsági körzetek számára. Az [Azure Virtual WAN hub](../virtual-wan/virtual-wan-about.md#resources), egy Microsoft által felügyelt erőforrás, amellyel könnyedén hozhat létre hub-és küllős architektúrákat. Ha a biztonsági és útválasztási házirendek egy ilyen hubhoz vannak társítva, akkor azt a rendszer *[biztonságos virtuális központként](secured-virtual-hub.md)* említi. 
 
-![tűzfal – kezelő](media/overview/firewall-manager-conceptual.png)
+![tűzfal – kezelő](media/overview/firewallmanagerv3.png)
 
 ## <a name="azure-firewall-manager-preview-features"></a>Azure Firewall Manager előzetes verziójának funkciói
 
@@ -70,7 +70,7 @@ A Azure Firewall Manager előzetes verziója a következő ismert problémákkal
 
 |Probléma  |Leírás  |Kezelés  |
 |---------|---------|---------|
-|A manuálisan létrehozott központi virtuális hálózatok nem támogatottak|A Azure Firewall Manager jelenleg a virtuális Hubokkal létrehozott hálózatokat támogatja. A saját manuálisan létrehozott hub-VNet használata még nem támogatott.|Egyelőre használja a Azure Firewall Managert a virtuális Hubokkal létrehozott központi és küllős hálózatokkal<br>Jelenleg vizsgálja.
+|A manuálisan létrehozott központi virtuális hálózatok nem támogatottak|A Azure Firewall Manager jelenleg a virtuális Hubokkal létrehozott hálózatokat támogatja. A saját manuálisan létrehozott hub-VNet használata még nem támogatott.|Egyelőre használja a Azure Firewall Managert a virtuális Hubokkal létrehozott, központi és küllős hálózatokkal.<br>Jelenleg vizsgálja.
 |Harmadik féltől származó szűrési korlátozások|A V2I külső szolgáltatókkal való kiszűrése nem támogatott a Azure Firewall B2V és a V2V.|Jelenleg vizsgálja.|
 |A forgalom felosztása jelenleg nem támogatott|Az Office 365 és az Azure nyilvános Pásti forgalom felosztása jelenleg nem támogatott. Így például a V2I vagy a B2I harmadik féltől származó szolgáltatójának kiválasztásával az összes Azure nyilvános és az Office 365-alapú forgalmat a partneri szolgáltatáson keresztül küldi el.|Jelenleg vizsgálja a forgalom felosztását a központban.
 |Régiónként egy hub|Régiónként legfeljebb egy hub lehet|Több virtuális WAN-t hozhat létre egy régióban.|

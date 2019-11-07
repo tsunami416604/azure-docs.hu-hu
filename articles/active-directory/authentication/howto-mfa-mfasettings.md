@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dfca7ef1dabb8c6021c9df2e3174d3e208a839b5
-ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
+ms.openlocfilehash: 29ea89af780df72b97fef553cf79b84c4b28da05
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73042097"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73569878"
 ---
 # <a name="configure-azure-multi-factor-authentication-settings"></a>Az Azure Multi-Factor Authentication beállításainak konfigurálása
 
@@ -156,7 +156,7 @@ Ha például csak egy egyéni üzenet van, a német nyelvvel:
 
 Parancsfájlok egyéni üzenetek létrehozásához.
 
-| Üzenet neve | Parancsprogramok használata |
+| Üzenet neve | Szkript |
 | --- | --- |
 | A hitelesítés sikerült | A bejelentkezés ellenőrzése sikerült. viszlát. |
 | Bővítmény kérése | Köszönjük, hogy a Microsoft bejelentkezési ellenőrzési rendszerét használja. A folytatáshoz nyomja le a font billentyűt. |
@@ -298,7 +298,7 @@ Ha a szervezete telepíti a hálózati házirend-kiszolgáló bővítményét, h
 
 | Azure AD-bérlő típusa | Megbízható IP-címek funkciójának beállításai |
 |:--- |:--- |
-| Managed |**IP-címek meghatározott tartománya**: a rendszergazdák olyan IP-címtartományt határoznak meg, amely megkerülheti a vállalati intranetről bejelentkező felhasználók kétlépéses ellenőrzését.|
+| Managed |**IP-címek meghatározott tartománya**: a rendszergazdák olyan IP-címtartományt határoznak meg, amely megkerülheti a vállalati intranetről bejelentkező felhasználók kétlépéses ellenőrzését. Legfeljebb 50 megbízható IP-tartományt lehet konfigurálni.|
 | Összevont |**Minden összevont felhasználó**: a szervezeten belülről bejelentkező összes összevont felhasználó elkerülheti a kétlépéses ellenőrzést. A felhasználók megkerülik az ellenőrzést Active Directory összevonási szolgáltatások (AD FS) (AD FS) által kiállított jogcímek használatával.<br/>**IP-címek meghatározott tartománya**: a rendszergazdák olyan IP-címtartományt határoznak meg, amely megkerülheti a vállalati intranetről bejelentkező felhasználók kétlépéses ellenőrzését. |
 
 A megbízható IP-címek megkerülése csak a vállalati intraneten belülről működik. Ha a **minden összevont felhasználó** lehetőséget választja, és a felhasználó a vállalati intraneten kívülről jelentkezik be, a felhasználónak kétlépéses ellenőrzéssel kell hitelesítenie magát. A folyamat akkor is ugyanaz, ha a felhasználó AD FS jogcímet jelent. 
@@ -423,6 +423,6 @@ A szolgáltatás csökkenti a webes alkalmazások hitelesítésének számát, a
 
 Miután engedélyezte a Megjegyzés Multi-Factor Authentication funkciót, a felhasználók a bejelentkezéskor megbízhatóként jelölhetik meg az eszközöket, ha a **ne Kérdezzen rá ismét**lehetőségre.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [Az Azure AD bejelentkezési oldalának arculatának módosítása](../fundamentals/customize-branding.md)

@@ -13,12 +13,12 @@ ms.date: 10/30/2019
 ms.author: lizross
 ms.custom: user-help
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6d2adb5552a417331ea315b0ed265e35f48ec660
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 3d5e154fb34d66b505989131f091fbac29458c92
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73178108"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73573816"
 ---
 # <a name="what-is-the-my-apps-preview-portal"></a>Mi a My apps (előzetes verzió) portál?
 
@@ -41,8 +41,8 @@ Részletes információkat és útmutatást a **saját alkalmazások** portálj�
 
 ## <a name="related-articles"></a>Kapcsolódó cikkek
 
-- [Frissítse a profilját és a fiókadatok adatait](myprofile-portal-overview.md). Útmutató a **saját profil** (előzetes verzió) portálon megjelenő személyes adatok frissítéséhez.
+- [Frissítse a profilját és a fiókadatok adatait](my-account-portal-overview.md). Útmutató a **saját profil** (előzetes verzió) portálon megjelenő személyes adatok frissítéséhez.
 
-- [Kezelheti szervezeteit](myprofile-portal-organizations-page.md). Útmutatás a szervezettel kapcsolatos információk megtekintéséhez és kezeléséhez a **saját profil** portál **szervezetek** lapján.
+- [Kezelheti szervezeteit](my-account-portal-organizations-page.md). Útmutatás a szervezettel kapcsolatos információk megtekintéséhez és kezeléséhez a **saját profil** portál **szervezetek** lapján.
 
-- [A csatlakoztatott eszközök kezelése](myprofile-portal-devices-page.md). Útmutató a saját munkahelyi vagy iskolai fiókjához csatlakoztatott eszközök kezeléséhez a **saját profil** portál **eszközök** lapján.
+- [A csatlakoztatott eszközök kezelése](my-account-portal-devices-page.md). Útmutató a saját munkahelyi vagy iskolai fiókjához csatlakoztatott eszközök kezeléséhez a **saját profil** portál **eszközök** lapján.

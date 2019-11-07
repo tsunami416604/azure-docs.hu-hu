@@ -6,20 +6,20 @@ keywords: ''
 author: PatAltimore
 ms.author: patricka
 ms.date: 05/02/2019
-ms.topic: article
+ms.topic: conceptual
 ms.service: azure-blockchain
 ms.reviewer: seal
 manager: femila
-ms.openlocfilehash: 00d4911c0f2541ea5c64eccca3ab1b1505e06390
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.openlocfilehash: 63e61844ddb5bd0f0ed52b67e26ea5bf1857fd2b
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68608526"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73579924"
 ---
 # <a name="azure-blockchain-service-security"></a>Az Azure Blockchain szolgáltatás biztonsága
 
-Az Azure Blockchain szolgáltatás számos Azure-funkciót használ az adatai védelméhez és rendelkezésre állásához. Az adatai elkülönítéssel, titkosítással és hitelesítéssel biztonságosak.
+Az Azure Blockchain Service számos Azure-funkció segítségével tartja biztonságban és könnyen elérhetően az adatokat. Az adatbiztonságért az elkülönítés, a titkosítás és a hitelesítés felel.
 
 ## <a name="isolation"></a>Elkülönítés
 
@@ -27,9 +27,9 @@ Az Azure Blockchain szolgáltatás erőforrásai elkülönítettek egy magánhá
 
 ![VNET diagram](./media/data-security/vnet.png)
 
-## <a name="encryption"></a>Encryption
+## <a name="encryption"></a>Titkosítás
 
-A felhasználói adattárolók tárolása az Azure Storage szolgáltatásban történik. A felhasználói adatok titkosítása mozgásban és nyugalmi állapotban a biztonság és a titkosság érdekében történik. További információkért lásd: [Az Azure Storage biztonsági útmutatója](../../storage/common/storage-security-guide.md).
+A felhasználói adattárolók tárolása az Azure Storage szolgáltatásban történik. A felhasználói adatok titkosítása mozgásban és nyugalmi állapotban a biztonság és a titkosság érdekében történik. További információkért lásd: az [Azure Storage biztonsági útmutatója](../../storage/common/storage-security-guide.md).
 
 ## <a name="authentication"></a>Authentication
 
@@ -43,7 +43,7 @@ Az RPC-hozzáféréshez háromféle hitelesítési mód van.
 
 Az egyszerű hitelesítés a felhasználónevet és a jelszót tartalmazó HTTP-hitelesítési fejlécet használ. A Felhasználónév a blockchain csomópont neve. A jelszó beállítása egy tag vagy csomópont kiépítés során történik. A jelszót a Azure Portal vagy a parancssori felület használatával lehet megváltoztatni.
 
-### <a name="access-keys"></a>Elérési kulcsok
+### <a name="access-keys"></a>Elérési kulcs
 
 A hozzáférési kulcsok véletlenszerűen generált karakterláncot használnak a végpont URL-címében. A kulcsok elforgatásának engedélyezése két hozzáférési kulcs segítségével. A kulcsok a Azure Portal és a parancssori felületről is újrahozhatók.
 
@@ -51,7 +51,7 @@ A hozzáférési kulcsok véletlenszerűen generált karakterláncot használnak
 
 Azure Active Directory (Azure AD) egy jogcím-alapú hitelesítési mechanizmust használ, ahol a felhasználó hitelesítése az Azure AD-ben az Azure AD felhasználói hitelesítő adataival történik. Az Azure AD biztosítja a felhőalapú Identitáskezelés használatát, és lehetővé teszi, hogy az ügyfelek egyetlen identitást használjanak a teljes vállalati és a felhőben elérhető alkalmazások számára. Az Azure Blockchain szolgáltatás integrálható az Azure AD-vel, amely lehetővé teszi az AZONOSÍTÓk összevonását, az egyszeri bejelentkezést és a többtényezős hitelesítést. A szervezeten belül felhasználókat, csoportokat és blockchain rendelhet hozzá a tagokhoz és a csomópontokhoz.
 
-Az Azure AD-ügyfél proxyja elérhető [](https://github.com/Microsoft/azure-blockchain-connector/releases)a githubon. Az ügyfél-proxy irányítja a felhasználót az Azure AD bejelentkezési oldalára, és sikeres hitelesítés után beolvas egy tulajdonosi jogkivonatot. Ezt követően a felhasználó egy Ethereum-ügyfélalkalmazás, például a geth vagy a szarvasgomba összekapcsolja az ügyfél proxyjának végpontját. Végül, ha egy tranzakciót küld el, az ügyfél proxyja beadja a tulajdonosi jogkivonatot a HTTP-fejlécben, és a fordított proxy érvényesíti a jogkivonatot a OAuth protokoll használatával.
+Az Azure AD-ügyfél proxyja elérhető a [githubon](https://github.com/Microsoft/azure-blockchain-connector/releases). Az ügyfél-proxy irányítja a felhasználót az Azure AD bejelentkezési oldalára, és sikeres hitelesítés után beolvas egy tulajdonosi jogkivonatot. Ezt követően a felhasználó egy Ethereum-ügyfélalkalmazás, például a geth vagy a szarvasgomba összekapcsolja az ügyfél proxyjának végpontját. Végül, ha egy tranzakciót küld el, az ügyfél proxyja beadja a tulajdonosi jogkivonatot a HTTP-fejlécben, és a fordított proxy érvényesíti a jogkivonatot a OAuth protokoll használatával.
 
 ## <a name="keys-and-ethereum-accounts"></a>Kulcsok és Ethereum fiókok
 

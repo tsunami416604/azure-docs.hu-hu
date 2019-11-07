@@ -9,12 +9,12 @@ ms.topic: overview
 ms.date: 10/22/2019
 ms.author: babanisa
 ms.custom: seodec18
-ms.openlocfilehash: 117c74eac1e234f84af6be2d275637d7b8f4e2a7
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 03cf8eb2036a9670dbc75e3efb55e52a70de5c54
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72794013"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73607270"
 ---
 # <a name="what-is-azure-event-grid"></a>Mi az Azure Event Grid?
 
@@ -41,7 +41,7 @@ Az egyes források képességeire és a kapcsolódó cikkekre vonatkozó részle
 * [IoT Hub](event-sources.md#iot-hub)
 * [Médiaszolgáltatások](event-sources.md#media-services)
 * [Erőforráscsoportok (felügyeleti műveletek)](event-sources.md#resource-groups)
-* [Service Bus](event-sources.md#service-bus)
+* [Szolgáltatásbusz](event-sources.md#service-bus)
 * [Storage-blob](event-sources.md#storage)
 * [Azure Maps](event-sources.md#maps)
 
@@ -56,7 +56,7 @@ Az egyes kezelők képességeire és a kapcsolódó cikkekre vonatkozó részlet
 * [Logic Apps](event-handlers.md#logic-apps)
 * [Microsoft Flow](https://preview.flow.microsoft.com/connectors/shared_azureeventgrid/azure-event-grid/)
 * [Queue Storage](event-handlers.md#queue-storage)
-* [Service Bus](event-handlers.md#service-bus-queue-preview) (előzetes verzió)
+* [Szolgáltatásbusz](event-handlers.md#service-bus-queue)
 * [Webhookok](event-handlers.md#webhooks)
 
 ## <a name="concepts"></a>Alapelvek
@@ -71,7 +71,7 @@ Az Azure Event Grid öt fontos alapfogalma:
 
 További információ ezekről a fogalmakról: [Az Azure Event Grid alapfogalmai](concepts.md).
 
-## <a name="capabilities"></a>Képességek
+## <a name="capabilities"></a>Funkciók
 
 Az Azure Event Grid néhány főbb jellemzője:
 
@@ -90,7 +90,7 @@ Az Event Grid, az Event Hubs és a Service Bus összehasonlítása: [Az üzenetk
 
 Azure Event Grid számos olyan funkciót kínál, amelyek jelentősen javítják a kiszolgáló nélküli, az Ops Automation és az [integrációs](https://azure.com/integration) munkákat: 
 
-### <a name="serverless-application-architectures"></a>Kiszolgáló nélküli alkalmazás-architektúrák
+### <a name="serverless-application-architectures"></a>Kiszolgáló nélküli alkalmazásarchitektúrák
 
 ![Kiszolgáló nélküli alkalmazás architektúrája](./media/overview/serverless_web_app.png)
 
@@ -100,19 +100,19 @@ Az Event Grid összeköti az adatforrásokat az eseménykezelőkkel. Például a
 
 ![Műveletek automatizálása](./media/overview/Ops_automation.png)
 
-Az Event Grid lehetővé teszi az automatizálás felgyorsítását és a szabályzatok érvényesítésének egyszerűsítését. Ha például egy virtuális gépet vagy SQL-adatbázist hoz létre, a Event Grid használatával értesítheti Azure Automationt. Az események használatával automatikusan ellenőrizhető, hogy a szolgáltatás konfigurációja megfelelő-e, a metaadatokat az Operations eszközökre, a virtuális gépek címkézésére vagy a fájl munkaelemeire tegye.
+Az Event Griddel felgyorsíthatja az automatizálást és egyszerűsítheti a szabályzatok kikényszerítését. Ha például egy virtuális gépet vagy SQL-adatbázist hoz létre, a Event Grid használatával értesítheti Azure Automationt. Az események használatával automatikusan ellenőrizhető, hogy a szolgáltatás konfigurációja megfelelő-e, a metaadatokat az Operations eszközökre, a virtuális gépek címkézésére vagy a fájl munkaelemeire tegye.
 
-### <a name="application-integration"></a>Alkalmazásintegrálás
+### <a name="application-integration"></a>Alkalmazásintegráció
 
 ![Alkalmazás-integráció az Azure-nal](./media/overview/app_integration.png)
 
-Az Event Grids más szolgáltatásokkal kapcsolja össze alkalmazását. Létrehozhat például egy egyéni témakört, hogy az alkalmazása eseményadatait az Event Gridbe küldje, és kihasználja az általa kínált megbízható kézbesítést, fejlett átirányítást és a közvetlen Azure-integrációt. Vagy használhatja a Event Gridt is Logic Apps az adatfeldolgozást bárhol, kód írása nélkül. 
+Az Event Grid más szolgáltatásokkal kapcsolja össze alkalmazását. Létrehozhat például egy egyéni témakört, hogy az alkalmazása eseményadatait az Event Gridbe küldje, és kihasználja az általa kínált megbízható kézbesítést, fejlett átirányítást és a közvetlen Azure-integrációt. Vagy használhatja a Event Gridt is Logic Apps az adatfeldolgozást bárhol, kód írása nélkül. 
 
 ## <a name="how-much-does-event-grid-cost"></a>Mennyibe kerül az Event Grid?
 
 Az Azure Event Grid árképzése eseményenkénti fizetésen alapul, tehát a fizetés a használat alapján történik. A havi első 100 000 művelet ingyenes. A műveletek a következőképpen vannak meghatározva: események bejövő forgalma, előfizetési kézbesítési kísérletek, kezelési hívások és tárgyutótag szerinti szűrés. A részleteket lásd az [árképzést ismertető oldalon](https://azure.microsoft.com/pricing/details/event-grid/).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Storage Blob-események útválasztása](../storage/blobs/storage-blob-event-quickstart.md?toc=%2fazure%2fevent-grid%2ftoc.json)  
   Az Event Grid használatával válaszolhat a Storage Blob-eseményekre.

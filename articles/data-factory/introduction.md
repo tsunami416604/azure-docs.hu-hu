@@ -1,5 +1,5 @@
 ---
-title: Bevezetés az Azure Data Factory használatába | Microsoft Docs
+title: Az Azure Data Factory bemutatása
 description: 'A témakör ismerteti, hogy mi is az Azure Data Factory: egy felhőalapú adatintegrációs szolgáltatás, amellyel előkészíthető és automatizálható az adatok továbbítása és átalakítása.'
 services: data-factory
 documentationcenter: ''
@@ -9,12 +9,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: overview
 ms.date: 09/30/2019
-ms.openlocfilehash: 0a81b9b230136a4ac4ed40e3af84859eccadf8d6
-ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
+ms.openlocfilehash: e23268d21b01435aa71d4f471afc6d37ee9e9c1d
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72882275"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73672708"
 ---
 # <a name="what-is-azure-data-factory"></a>Mi az az Azure Data Factory?
 
@@ -104,7 +104,7 @@ A társított szolgáltatások szintén adattárak vagy számítási környezete
 ### <a name="variables"></a>Változók
 A változókat a folyamatokon belül lehet használni az ideiglenes értékek tárolására, és a paraméterekkel együtt használhatók a folyamatok, az adatfolyamatok és az egyéb tevékenységek közötti értékek átadásának engedélyezéséhez.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 A következő, fontos dokumentumok a következők:
 
 - [Adatkészletek és társított szolgáltatások](concepts-datasets-linked-services.md)
