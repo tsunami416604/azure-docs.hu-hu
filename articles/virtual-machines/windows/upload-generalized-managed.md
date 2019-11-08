@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 09/25/2018
 ms.author: cynthn
-ms.openlocfilehash: 6382a39e67805eb9bddb356a7b76205a82f3f7c2
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: ead44c321ffb7afb69295d1bf8c0e1acd26cb9ce
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72553466"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73749075"
 ---
 # <a name="upload-a-generalized-vhd-and-use-it-to-create-new-vms-in-azure"></a>Töltse fel az általános VHD-t, és használja az új virtuális gépek létrehozásához az Azure-ban
 
@@ -27,12 +27,12 @@ Ez a cikk végigvezeti a PowerShell használatával egy általánosított virtu�
 
 A minta parancsfájlt a [virtuális merevlemezek Azure-ba való feltöltéséhez és egy új virtuális gép létrehozásához](../scripts/virtual-machines-windows-powershell-upload-generalized-script.md)című témakörben tekintheti meg.
 
-## <a name="before-you-begin"></a>Előzetes teendők
+## <a name="before-you-begin"></a>Előkészületek
 
 - A virtuális merevlemezek Azure-ba való feltöltése előtt kövesse az Azure-ba való [feltöltéshez szükséges Windows VHD vagy VHDX előkészítését](prepare-for-upload-vhd-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)ismertető témakört.
 - A Migrálás megkezdése előtt tekintse át [a Managed Disks áttelepítésének tervét](on-prem-to-azure.md#plan-for-the-migration-to-managed-disks) [Managed Disks](managed-disks-overview.md).
 
-[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
+ 
 
 
 ## <a name="generalize-the-source-vm-by-using-sysprep"></a>A forrás virtuális gép általánosítása a Sysprep használatával
@@ -110,7 +110,7 @@ New-AzVm `
 ```
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Jelentkezzen be az új virtuális gépre. További információ: [Kapcsolódás és bejelentkezés egy Windows rendszerű Azure-beli virtuális gépre](connect-logon.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). 
 

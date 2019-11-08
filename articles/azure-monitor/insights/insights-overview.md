@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/22/2019
-ms.openlocfilehash: 3abf3d562b9ca4d6fc9907c065dbaf9a52d58c5f
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 81d82ce79130513a2827090a98bfef192c9d7829
+ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72555340"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73795736"
 ---
 # <a name="overview-of-insights-in-azure-monitor"></a>Az információk áttekintése Azure Monitor
 Az egyes alkalmazásokhoz és szolgáltatásokhoz testreszabott figyelési funkciókkal szolgálnak. A [Azure monitor adatplatformban](../platform/data-platform.md) tárolják az adatokat, és más Azure monitor funkciókat is kihasználhatnak az elemzéshez és a riasztásokhoz, azonban további adatokat gyűjthetnek, és egyedi felhasználói élményt biztosíthatnak a Azure Portal. A Azure Portal Azure Monitor menüjének bepillantást **nyerhet a bepillantást az** adatokból.
@@ -26,12 +26,12 @@ Lásd: [Mi az Application Insights?](../app/app-insights-overview.md)
 
 ![Application Insights](media/insights-overview/app-insights.png)
 
-## <a name="azure-monitor-for-containers"></a>Azure Monitor tárolók számára
+## <a name="azure-monitor-for-containers"></a>Azure Monitor tárolókhoz
 A tárolók Azure Monitor figyeli az Azure Kubernetes szolgáltatásban (ak) üzemeltetett Azure Container Instances vagy felügyelt Kubernetes-fürtökön üzembe helyezett tároló-munkaterhelések teljesítményét. A tárolók monitorozása kritikus fontosságú, különösen akkor, ha éles fürtöt futtat, több alkalmazással.
 
 Lásd: [Azure monitor a tárolók áttekintéséhez](../insights/container-insights-overview.md).
 
-![Azure Monitor tárolók számára](media/insights-overview/container-insights.png)
+![Azure Monitor tárolókhoz](media/insights-overview/container-insights.png)
 
 ## <a name="azure-monitor-for-resource-groups-preview"></a>Erőforráscsoportok Azure Monitor (előzetes verzió)
 Az erőforráscsoportok Azure Monitor segíti az egyes erőforrásokkal kapcsolatos problémák osztályozását és diagnosztizálását, miközben az erőforráscsoport állapotára és teljesítményére vonatkozó kontextust kínál.
@@ -47,6 +47,11 @@ Lásd: [Mi az Azure monitor for VMS?](vminsights-overview.md)
 
 ![Azure Monitor virtuális gépekhez](media/insights-overview/vm-insights.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="azure-monitor-for-network-preview"></a>Hálózati Azure Monitor (előzetes verzió)
+A hálózat Azure Monitor a hálózati erőforrások állapotának és metrikáinak átfogó áttekintését nyújtja. A speciális keresési funkció segítségével azonosíthatja az erőforrás-függőségeket, és engedélyezheti az olyan forgatókönyveket, mint például a webhelyet üzemeltető erőforrás azonosítása, egyszerűen csak a webhely nevét keresi.
+
+![Azure Monitor hálózatok számára](media/insights-overview/network-insights.png)
+
+## <a name="next-steps"></a>További lépések
 * További információ az elemzések által kihasználható [Azure monitor adatplatformról](../platform/data-platform.md) .
 * Ismerje meg a [Azure monitor által használt különböző adatforrásokat](../platform/data-sources.md) , valamint az egyes elemzések által gyűjtött különféle adatokat.

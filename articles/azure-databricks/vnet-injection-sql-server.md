@@ -7,13 +7,13 @@ ms.author: mamccrea
 ms.reviewer: jasonh
 ms.service: azure-databricks
 ms.topic: conceptual
-ms.date: 04/02/2019
-ms.openlocfilehash: 773ffe264446e6a4d9ef2e88634e4f2c9b8aeb45
-ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
+ms.date: 11/07/2019
+ms.openlocfilehash: 460079248e6cbd939c36b84f94cac41dce4dda2b
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72273982"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73747663"
 ---
 # <a name="tutorial-query-a-sql-server-linux-docker-container-in-a-virtual-network-from-an-azure-databricks-notebook"></a>Oktatóanyag: SQL Server Linux Docker-tároló lekérdezése egy virtuális hálózaton egy Azure Databricks jegyzetfüzetből
 
@@ -36,13 +36,13 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 * Töltse le az [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-2017) alkalmazást.
 
-## <a name="create-a-linux-virtual-machine"></a>Linuxos virtuális gépek létrehozása
+## <a name="create-a-linux-virtual-machine"></a>Linuxos virtuális gép létrehozása
 
 1. A Azure Portal válassza ki a **Virtual Machines**ikonját. Ezután válassza a **+ Hozzáadás**lehetőséget.
 
     ![Új Azure-beli virtuális gép hozzáadása](./media/vnet-injection-sql-server/add-virtual-machine.png)
 
-2. Az **alapvető beállítások** lapon válassza az Ubuntu Server 16,04 LTS lehetőséget. Módosítsa a virtuális gép méretét B1ms értékre, amely egy VCPU és 2 GB RAM-mal rendelkezik. A Linux SQL Server Docker-tároló minimális követelménye 2 GB. Válasszon ki egy rendszergazdai felhasználónevet és jelszót.
+2. Az **alapok** lapon válassza az Ubuntu Server 18,04 LTS lehetőséget, és módosítsa a virtuális gép méretét B2s értékre. Válasszon ki egy rendszergazdai felhasználónevet és jelszót.
 
     ![Az új virtuális gép konfigurációjának alapjai lap](./media/vnet-injection-sql-server/create-virtual-machine-basics.png)
 
@@ -65,10 +65,10 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
     |Beállítás|Ajánlott érték|Leírás|
     |-------|---------------|-----------|
     |Forrás|IP-címek|Az IP-címek azt határozzák meg, hogy a szabály engedélyezi vagy letiltja a bejövő forgalmat egy adott forrás IP-címről.|
-    |Forrás IP-címek|< a nyilvános IP-cím @ no__t-0|Adja meg a nyilvános IP-címét. A nyilvános IP-cím megkereséséhez keresse fel a [Bing.com](https://www.bing.com/) , és keressen rá a **"saját IP"** kifejezésre.|
+    |Forrás IP-címek|< a nyilvános IP-címet\>|Adja meg a nyilvános IP-címét. A nyilvános IP-cím megkereséséhez keresse fel a [Bing.com](https://www.bing.com/) , és keressen rá a **"saját IP"** kifejezésre.|
     |Forrásporttartományok|*|Bármilyen portról érkező forgalom engedélyezése.|
     |Cél|IP-címek|Az IP-címek azt határozzák meg, hogy a szabály engedélyezi vagy megtagadja a kimenő forgalmat egy adott forrás IP-címhez.|
-    |Cél IP-címei|< a virtuális gép nyilvános IP-címe @ no__t-0|Adja meg a virtuális gép nyilvános IP-címét. Ezt a virtuális gép **Áttekintés** lapján találja.|
+    |Cél IP-címei|< a virtuális gép nyilvános IP-címét\>|Adja meg a virtuális gép nyilvános IP-címét. Ezt a virtuális gép **Áttekintés** lapján találja.|
     |Célporttartományok|22|Nyissa meg a 22-es portot az SSH-hoz.|
     |Prioritás|290|Adja meg a szabályt prioritásként.|
     |Név|SSH-databricks-oktatóanyag – virtuális gép|Adjon nevet a szabálynak.|
@@ -80,11 +80,10 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
     |Beállítás|Ajánlott érték|Leírás|
     |-------|---------------|-----------|
-    |Forrás|IP-címek|Az IP-címek azt határozzák meg, hogy a szabály engedélyezi vagy letiltja a bejövő forgalmat egy adott forrás IP-címről.|
-    |Forrás IP-címek|10.179.0.0/16|Adja meg a virtuális hálózat címtartomány-tartományát.|
+    |Forrás|Bármelyik|A forrás azt adja meg, hogy a szabály engedélyezi vagy letiltja a bejövő forgalmat egy adott forrás IP-címről.|
     |Forrásporttartományok|*|Bármilyen portról érkező forgalom engedélyezése.|
     |Cél|IP-címek|Az IP-címek azt határozzák meg, hogy a szabály engedélyezi vagy megtagadja a kimenő forgalmat egy adott forrás IP-címhez.|
-    |Cél IP-címei|< a virtuális gép nyilvános IP-címe @ no__t-0|Adja meg a virtuális gép nyilvános IP-címét. Ezt a virtuális gép **Áttekintés** lapján találja.|
+    |Cél IP-címei|< a virtuális gép nyilvános IP-címét\>|Adja meg a virtuális gép nyilvános IP-címét. Ezt a virtuális gép **Áttekintés** lapján találja.|
     |Célporttartományok|1433|Nyissa meg SQL Server a 22-es portot.|
     |Prioritás|300|Adja meg a szabályt prioritásként.|
     |Név|SQL-databricks-oktatóanyag – virtuális gép|Adjon nevet a szabálynak.|
@@ -139,7 +138,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 ## <a name="create-a-sql-database"></a>SQL-adatbázis létrehozása
 
-1. Nyissa meg SQL Server Management Studio, és kapcsolódjon a kiszolgálóhoz a kiszolgáló neve és az SQL-hitelesítés használatával. A bejelentkezési Felhasználónév **sa** , és a jelszó a Docker-parancsban beállított jelszó. A példában szereplő parancsban található jelszó `Password1234`.
+1. Nyissa meg SQL Server Management Studio, és kapcsolódjon a kiszolgálóhoz a kiszolgáló neve és az SQL-hitelesítés használatával. A bejelentkezési Felhasználónév **sa** , és a jelszó a Docker-parancsban beállított jelszó. A példa parancsban található jelszó `Password1234`.
 
     ![Kapcsolódás SQL Server a SQL Server Management Studio használatával](./media/vnet-injection-sql-server/ssms-login.png)
 
@@ -201,7 +200,7 @@ Ha már nincs rá szükség, törölje az erőforráscsoportot, a Azure Databric
 
 2. Az erőforráscsoport lapon válassza a **Törlés**lehetőséget, írja be a törölni kívánt erőforrás nevét a szövegmezőbe, majd válassza a **Törlés** lehetőséget.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A következő cikkből megtudhatja, hogyan kinyerheti, átalakíthatja és betöltheti az adatgyűjtést Azure Databricks használatával.
 > [!div class="nextstepaction"]

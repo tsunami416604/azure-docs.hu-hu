@@ -14,22 +14,18 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 03/29/2019
 ms.author: magoedte
-ms.openlocfilehash: b6b1292e4c8874da826740d303cd0de26f9f46ee
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: b2a86ffab0286559cfcce89252c889c530f00871
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70092756"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73750120"
 ---
 # <a name="azure-monitor-dependency-virtual-machine-extension-for-windows"></a>A Windows-függőség virtuálisgép-bővítményének Azure Monitor
 
-Virtuális gépek térkép funkció az Azure Monitor az adatok lekérése a Microsoft Dependency agent. Az Azure-beli virtuális gép függőségi ügynökének a Windows rendszerhez készült virtuálisgép-bővítményét a Microsoft közzétette és támogatja. A bővítmény telepíti a függőségi ügynököt az Azure Virtual Machines szolgáltatásban. Ez a dokumentum részletesen ismerteti a Windows rendszerhez készült Azure-beli virtuális gép függőségi ügynökének támogatott platformokat, konfigurációkat és telepítési lehetőségeit.
+A Azure Monitor for VMs Map szolgáltatás a Microsoft függőségi ügynöktől kapja meg az adatait. Az Azure-beli virtuális gép függőségi ügynökének a Windows rendszerhez készült virtuálisgép-bővítményét a Microsoft közzétette és támogatja. A bővítmény telepíti a függőségi ügynököt az Azure Virtual Machines szolgáltatásban. Ez a dokumentum részletesen ismerteti a Windows rendszerhez készült Azure-beli virtuális gép függőségi ügynökének támogatott platformokat, konfigurációkat és telepítési lehetőségeit.
 
-## <a name="prerequisites"></a>Előfeltételek
-
-[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
-
-### <a name="operating-system"></a>Operációs rendszer
+## <a name="operating-system"></a>Operációs rendszer
 
 A Windows rendszerhez készült Azure-beli virtuálisgép-függőségi ügynök bővítmény a Azure Monitor for VMs telepítési cikk [támogatott operációs rendszerek](../../azure-monitor/insights/vminsights-enable-overview.md#supported-operating-systems) szakaszában felsorolt támogatott operációs rendszereken is futtatható.
 
@@ -73,12 +69,12 @@ A következő JSON az Azure-beli virtuális gép függőségi ügynökének sém
 }
 ```
 
-### <a name="property-values"></a>Tulajdonságok értékei
+### <a name="property-values"></a>Tulajdonságértékek
 
-| Name (Név) | Érték/példa |
+| Név | Érték/példa |
 | ---- | ---- |
 | apiVersion | 2015-01-01 |
-| publisher | Microsoft.Azure.Monitoring.DependencyAgent |
+| Publisher | Microsoft. Azure. monitoring. DependencyAgent |
 | type | DependencyAgentWindows |
 | typeHandlerVersion | 9.5 |
 
@@ -86,9 +82,9 @@ A következő JSON az Azure-beli virtuális gép függőségi ügynökének sém
 
 Az Azure virtuálisgép-bővítményeket Azure Resource Manager-sablonokkal is üzembe helyezheti. Az Azure Resource Manager sablon előző szakaszában részletes JSON-sémát használva futtathatja az Azure-beli virtuális gép függőségi ügynökének bővítményét egy Azure Resource Manager-sablon központi telepítése során.
 
-A virtuálisgép-bővítmények JSON-je beágyazható a virtuális gép erőforrásaiba. Azt is megteheti, hogy egy Resource Manager JSON-sablon gyökerére vagy legfelső szintjére helyezi. A JSON elhelyezése hatással van az erőforrás nevének és típusának értékére. További információkért lásd: [állítsa be a nevét és típusát gyermekerőforrásait](../../azure-resource-manager/child-resource-name-type.md).
+A virtuálisgép-bővítmények JSON-je beágyazható a virtuális gép erőforrásaiba. Azt is megteheti, hogy egy Resource Manager JSON-sablon gyökerére vagy legfelső szintjére helyezi. A JSON elhelyezése hatással van az erőforrás nevének és típusának értékére. További információ: [a gyermek erőforrások nevének és típusának beállítása](../../azure-resource-manager/child-resource-name-type.md).
 
-Az alábbi példa azt feltételezi, hogy a függőségi ügynök bővítménye a virtuális gép erőforrásán belül van beágyazva. A bővítmény erőforrásának beágyazásakor a rendszer a JSON- `"resources": []` t a virtuális gép objektumában helyezi el.
+Az alábbi példa azt feltételezi, hogy a függőségi ügynök bővítménye a virtuális gép erőforrásán belül van beágyazva. A bővítmény erőforrásának beágyazásakor a rendszer a JSON-t a virtuális gép `"resources": []` objektumára helyezi.
 
 
 ```json
@@ -144,7 +140,7 @@ Set-AzVMExtension -ExtensionName "Microsoft.Azure.Monitoring.DependencyAgent" `
     -Location WestUS 
 ```
 
-## <a name="troubleshoot-and-support"></a>Hibaelhárítás és támogatás
+## <a name="troubleshoot-and-support"></a>Hibakeresés és támogatás
 
 ### <a name="troubleshoot"></a>Hibaelhárítás
 
@@ -162,4 +158,4 @@ C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Monitoring.DependencyAgent\
 
 ### <a name="support"></a>Támogatás
 
-Ha ebben a cikkben bármikor további segítségre van szüksége, forduljon az Azure-szakértőket a a [MSDN Azure-ban és a Stack Overflow-fórumok](https://azure.microsoft.com/support/forums/). Vagy egy Azure-támogatási incidenst is betölthet. Nyissa meg az [Azure támogatási](https://azure.microsoft.com/support/options/) webhelyét, és válassza a **támogatás kérése**lehetőséget. További információ az Azure-támogatás használatáról: [Microsoft Azure támogatással kapcsolatos gyakori kérdések](https://azure.microsoft.com/support/faq/).
+Ha a cikk bármely pontján további segítségre van szüksége, vegye fel a kapcsolatot az Azure-szakértőkkel az [MSDN Azure-ban, és stack overflow fórumokat](https://azure.microsoft.com/support/forums/)is. Vagy egy Azure-támogatási incidenst is betölthet. Nyissa meg az [Azure támogatási webhelyét](https://azure.microsoft.com/support/options/) , és válassza a **támogatás kérése**lehetőséget. További információ az Azure-támogatás használatáról: [Microsoft Azure támogatással kapcsolatos gyakori kérdések](https://azure.microsoft.com/support/faq/).

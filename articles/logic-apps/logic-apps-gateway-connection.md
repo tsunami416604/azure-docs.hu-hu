@@ -8,13 +8,13 @@ author: ecfan
 ms.author: estfan
 ms.reviewer: arthii, LADocs
 ms.topic: article
-ms.date: 10/18/2019
-ms.openlocfilehash: 49ed6eedf55a8a3c0faa2fa1ff60b9894af78285
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.date: 11/06/2019
+ms.openlocfilehash: e0354f96036cce968e6b6909a18f97ff48347eda
+ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73580857"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73796253"
 ---
 # <a name="connect-to-on-premises-data-sources-from-azure-logic-apps"></a>Helyi adatforrásokhoz való kapcsolódás Azure Logic Apps
 
@@ -57,7 +57,7 @@ Azure Logic Apps támogatja az olvasási és írási műveleteket az adatátjár
 
 * Már [telepítette a helyszíni adatátjárót egy helyi számítógépen](../logic-apps/logic-apps-gateway-install.md).
 
-* [Ugyanazzal az Azure-fiókkal és-előfizetéssel](../logic-apps/logic-apps-gateway-install.md#requirements) rendelkezik, amelyet az adatátjáró telepítésekor használt.
+* [Ugyanazt az Azure-fiókot és-előfizetést](../logic-apps/logic-apps-gateway-install.md#requirements) használja, amelyet az adatátjáró telepítésekor használt. Az Azure-fióknak egyetlen [Azure Active Directory (Azure ad) bérlőhöz vagy címtárhoz](../active-directory/fundamentals/active-directory-whatis.md#terminology)kell tartoznia.
 
 * Az átjáró telepítése még nincs regisztrálva, és egy másik Azure Gateway-erőforrás igényli.
 
@@ -87,7 +87,7 @@ Miután telepítette az átjárót egy helyi számítógépre, hozza létre az A
    | **Előfizetés** | Válassza ki az átjáró telepítéséhez használt Azure-fiókhoz tartozó Azure-előfizetést. Az alapértelmezett előfizetés a bejelentkezéshez használt Azure-fiókon alapul. |
    | **Erőforráscsoport** | A használni kívánt [Azure-erőforráscsoport](../azure-resource-manager/resource-group-overview.md) |
    | **Hely** | Ugyanaz a régió vagy hely, amely az átjáró Cloud Service-hez lett kiválasztva az [átjáró telepítésekor](../logic-apps/logic-apps-gateway-install.md). Ellenkező esetben az átjáró telepítése nem jelenik meg a **telepítési név** listában. A logikai alkalmazás helye eltérő lehet az átjáró erőforrásának helyétől. |
-   | **Telepítési név** | Válasszon ki egy átjáró-telepítést, amely csak akkor jelenik meg a listában, ha teljesülnek ezek a feltételek: <p><p>-Ugyanabban a régióban található, mint a létrehozni kívánt átjáró-erőforrás <br>– Leválasztás egy másik Azure Gateway-erőforráshoz <br>– Ugyanahhoz az Azure-fiókhoz kapcsolódik, amelyet az átjáró erőforrásának létrehozásához használ. <p><p>További információt a [Gyakori kérdések](#faq) című szakaszban talál. |
+   | **Telepítési név** | Válasszon ki egy átjáró-telepítést, amely csak akkor jelenik meg a listában, ha teljesülnek ezek a feltételek: <p><p>– Az átjáró telepítése ugyanazt a régiót használja, mint a létrehozni kívánt átjáró-erőforrás. <br>– Az átjáró telepítése nem kapcsolódik egy másik Azure Gateway-erőforráshoz. <br>– Az átjáró telepítése ugyanahhoz az Azure-fiókhoz van csatolva, amelyet az átjáró erőforrásának létrehozásához használ. <br>– Az Azure-fiókja egyetlen [Azure Active Directory (Azure ad) bérlőhöz vagy címtárhoz](../active-directory/fundamentals/active-directory-whatis.md#terminology) tartozik, és ugyanaz a fiók, amelyet az átjáró telepítésekor használt. <p><p>További információt a [Gyakori kérdések](#faq) című szakaszban talál. |
    |||
 
    Az alábbi példa egy olyan átjáró telepítését mutatja be, amely ugyanabban a régióban található, mint az átjáró-erőforrás, és ugyanahhoz az Azure-fiókhoz van társítva:
@@ -96,7 +96,7 @@ Miután telepítette az átjárót egy helyi számítógépre, hozza létre az A
 
 <a name="connect-logic-app-gateway"></a>
 
-## <a name="connect-to-on-premises-data"></a>Helyileg tárolt adatok elérése
+## <a name="connect-to-on-premises-data"></a>Csatlakozás helyszíni adatokhoz
 
 Miután létrehozta az átjáró-erőforrást, és társítja az Azure-előfizetést ehhez az erőforráshoz, mostantól létrehozhat egy kapcsolatot a logikai alkalmazás és a helyszíni adatforrás között az átjáró használatával.
 
@@ -164,7 +164,7 @@ Egy másik átjáró-erőforrás létrehozásához csatolja az átjáró telepí
 **K**: Miért nem jelenik meg az átjáróm telepítése, amikor létrehozom az átjáró-erőforrást az Azure-ban? <br/>
 **A**: Ez a probléma a következő okok miatt fordulhat elő:
 
-* Az Azure-fióknak ugyanazt a fiókot kell használnia, amely a helyi számítógép átjárójának telepítéséhez van társítva. Győződjön meg arról, hogy bejelentkezett a Azure Portalba ugyanazzal az identitással, amely az átjáró telepítéséhez van társítva.
+* Az Azure-fióknak egyeznie kell azzal a fiókkal, amely a helyi számítógépen található átjáróhoz van csatolva. Győződjön meg arról, hogy bejelentkezett a Azure Portalba ugyanazzal az identitással, amely az átjáró telepítéséhez van társítva. Győződjön meg arról is, hogy az Azure-fiókja egyetlen [Azure ad-bérlőhöz vagy-címtárhoz](../active-directory/fundamentals/active-directory-whatis.md#terminology) tartozik, és ugyanarra az Azure ad-bérlőre vagy könyvtárra van beállítva, amelyet az átjáró telepítésekor használt.
 
 * Az átjáró erőforrásának és az átjáró telepítésének ugyanazt a régiót kell használnia. Azonban a logikai alkalmazás helye eltérő lehet az átjáró erőforrásának helyétől.
 

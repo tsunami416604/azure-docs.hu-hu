@@ -1,7 +1,7 @@
 ---
 title: Felülvizsgálatok, munkafolyamatok és feladatok – fogalmak Content Moderator
 titleSuffix: Azure Cognitive Services
-description: További információ a felülvizsgálatokról, munkafolyamatokról és feladatokról
+description: Ebből a cikkből megismerheti a felülvizsgálati eszköz alapvető fogalmait; felülvizsgálatok, munkafolyamatok és feladatok.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 03/14/2019
 ms.author: pafarley
-ms.openlocfilehash: 917636c8ae339e06321c169979611f74276ca523
-ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
+ms.openlocfilehash: 1aba86efb9ea76fbf060e80b47f9f2f6cdf8ee71
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73044004"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73744425"
 ---
 # <a name="content-moderation-reviews-workflows-and-jobs"></a>Tartalom-moderálási felülvizsgálatok, munkafolyamatok és feladatok
 
@@ -72,7 +72,7 @@ A moderálási feladatok egyfajta burkolóként szolgálnak a tartalom moderál�
 
 A feladatok használatának megkezdéséhez tekintse meg a [REST API útmutatót](./try-review-api-job.md) .
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Tesztelje a [feladatok API-konzolját](try-review-api-job.md), és használja a REST API-kód mintáit. Ha már ismeri a Visual studiót és C#a-t, tekintse meg a [Jobs .net](moderation-jobs-quickstart-dotnet.md)gyors útmutatóját is. 
 * Felülvizsgálatok esetén Ismerkedjen meg a [felülvizsgálati API-konzollal](try-review-api-review.md), és használja a REST API-kód mintáit. Ezután tekintse meg a [.net](dotnet-sdk-quickstart.md)gyors útmutatójának értékelések szakaszát.

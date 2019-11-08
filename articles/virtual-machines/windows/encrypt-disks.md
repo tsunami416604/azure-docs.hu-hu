@@ -14,17 +14,17 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/30/2018
 ms.author: cynthn
-ms.openlocfilehash: 87777d3a6abfeaeac74fd69126cc3e71e11be825
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 73f38760153a6e1db5621801282c71216b3e8560
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72597858"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73749440"
 ---
 # <a name="encrypt-virtual-disks-on-a-windows-vm"></a>Virtuális lemezek titkosítása egy Windows rendszerű virtuális GÉPEN
 A virtuális gépek (VM) biztonsága és megfelelősége érdekében az Azure-ban található virtuális lemezek titkosíthatók. A lemezek titkosítása egy Azure Key Vault védett titkosítási kulcsok használatával történik. Ezeket a titkosítási kulcsokat szabályozhatja, és naplózhatja a használatukat. Ez a cikk azt ismerteti, hogyan titkosíthatja a virtuális lemezeket egy Windows rendszerű virtuális GÉPEN Azure PowerShell használatával. Linux rendszerű [virtuális gépek titkosítása](../linux/disk-encryption-overview.md)is végezhető.
 
-[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
+ 
 
 ## <a name="overview-of-disk-encryption"></a>A lemezek titkosításának áttekintése
 A Windows rendszerű virtuális gépeken futó virtuális lemezek a BitLocker használatával titkosítva vannak. A virtuális lemezek titkosítása az Azure-ban díjmentes. A titkosítási kulcsokat a szoftveres védelem Azure Key Vault tárolja, vagy importálhatja vagy létrehozhatja a kulcsokat az FIPS 140-2 2. szintű standard minősítésű hardveres biztonsági modulokban (HSM). A titkosítási kulcsok a virtuális GÉPHEZ csatolt virtuális lemezek titkosítására és visszafejtésére szolgálnak. Ezeket a titkosítási kulcsokat továbbra is felügyelheti, és naplózhatja a használatukat. 
@@ -144,6 +144,6 @@ OsVolumeEncryptionSettings : Microsoft.Azure.Management.Compute.Models.DiskEncry
 ProgressMessage            : OsVolume: Encrypted, DataVolumes: Encrypted
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * Az Azure Key Vault kezelésével kapcsolatos további információkért lásd: [Key Vault beállítása virtuális gépekhez](key-vault-setup.md).
 * További információ a lemezek titkosításáról, például egy titkosított egyéni virtuális gép Azure-ba való feltöltésének előkészítéséről: [Azure Disk Encryption](../../security/fundamentals/encryption-overview.md).

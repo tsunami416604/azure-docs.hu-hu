@@ -1,7 +1,7 @@
 ---
 title: Videóátirata-felülvizsgálatok létrehozása a .NET-Content Moderator használatával
 titleSuffix: Azure Cognitive Services
-description: Videóátirata-felülvizsgálatok létrehozása a .NET-hez készült Content Moderator SDK-val
+description: Megtudhatja, hogyan hozhat létre videóátirata-felülvizsgálatokat a .NET-hez készült Azure Cognitive Services Content Moderator SDK-val.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 10/24/2019
 ms.author: pafarley
-ms.openlocfilehash: ea1b8af69402aade370725f3a4dfdee4b5595ce6
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: b2d763454b86570b57a16fb9ae2107a2a2bcd23d
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72931657"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73744390"
 ---
 # <a name="create-video-transcript-reviews-using-net"></a>Videóátirata-felülvizsgálatok létrehozása a .NET használatával
 
@@ -144,7 +144,7 @@ Hozzon létre egy videó-áttekintést a **ContentModeratorClient. Reviews. Crea
 A **CreateVideoReviews** a következő szükséges paraméterekkel rendelkezik:
 1. Egy MIME-típust tartalmazó karakterlánc, amelynek "Application/JSON" típusúnak kell lennie. 
 1. Az Content Moderator-csoport neve.
-1. Egy **IList \<CreateVideoReviewsBodyItem >** objektumot. Minden **CreateVideoReviewsBodyItem** -objektum egy videó-áttekintést képvisel. Ez a rövid útmutató egyszerre egy felülvizsgálatot hoz létre.
+1. Egy **IList\<CreateVideoReviewsBodyItem >** objektumot. Minden **CreateVideoReviewsBodyItem** -objektum egy videó-áttekintést képvisel. Ez a rövid útmutató egyszerre egy felülvizsgálatot hoz létre.
 
 A **CreateVideoReviewsBodyItem** több tulajdonsággal rendelkezik. Legalább a következő tulajdonságokat kell beállítania:
 - **Tartalom**. Az áttekinteni kívánt videó URL-címe.
@@ -152,7 +152,7 @@ A **CreateVideoReviewsBodyItem** több tulajdonsággal rendelkezik. Legalább a 
 - **Állapot**. Állítsa az értéket "közzététel előtt" értékre. Ha nem állítja be, a rendszer alapértelmezés szerint "függőben" állapotba kerül, ami azt jelenti, hogy a videó felülvizsgálata közzé van téve, és az emberi felülvizsgálat függőben van. A videó felülvizsgálatának közzététele után már nem adhat hozzá képkockákat, átiratokat vagy átiratok moderálási eredményét.
 
 > [!NOTE]
-> A **CreateVideoReviews** egy IList \<string > ad vissza. Ezen karakterláncok mindegyike tartalmaz egy videó-felülvizsgálati azonosítót. Ezek az azonosítók GUID-azonosítók, és nem egyeznek meg a **ContentId** tulajdonság értékével.
+> A **CreateVideoReviews** egy IList\<karakterláncot > ad vissza. Ezen karakterláncok mindegyike tartalmaz egy videó-felülvizsgálati azonosítót. Ezek az azonosítók GUID-azonosítók, és nem egyeznek meg a **ContentId** tulajdonság értékével.
 
 Adja hozzá a következő metódus-definíciót a Namespace VideoReviews, a Class programhoz.
 
@@ -192,7 +192,7 @@ private static string CreateReview(ContentModeratorClient client, string id, str
 > [!NOTE]
 > A Content Moderator szolgáltatáskulcs egy másodpercenkénti kérelmekre (RPS-re) vonatkozó korláttal rendelkezik. Ha túllépi ezt a korlátot, az SDK 429-es hibakódú kivételt jelez.
 >
-> Az ingyenes szint kulcsai egy RPS-korláttal bírnak.
+> Az ingyenes szint kulcsának a sebességkorlátja egy RPS.
 
 ## <a name="add-transcript-to-video-review"></a>Átiratok hozzáadása a videó felülvizsgálatához
 
@@ -366,7 +366,7 @@ Press any key to close the application.
 
 ## <a name="navigate-to-your-video-transcript-review"></a>Navigáljon a videó átiratának áttekintéséhez
 
-Az **áttekintés**>**videó**>**átirat** képernyőjén tekintse meg az Content moderator felülvizsgálati eszköz videó átiratának áttekintése című lépését.
+Nyissa meg a videó átiratának áttekintését az Content Moderator felülvizsgálati eszköz **áttekintés**>**videó**>**átirat** képernyőjén.
 
 A következő funkciók jelennek meg:
 - A hozzáadott átirat két sora
@@ -375,7 +375,7 @@ A következő funkciók jelennek meg:
 
 ![Az emberi moderátorok videós átiratának áttekintése](images/ams-video-transcript-review.PNG)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Szerezze be a [Content moderator .net SDK](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) -t és a [Visual Studio-megoldást](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/ContentModerator) ehhez és egyéb Content moderator a .net-hez készült gyors útmutatóhoz.
 

@@ -6,19 +6,19 @@ ms.author: kirillg
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 3e2d9b892ad42563b481a0b1fe6a468daefad672
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
-ms.translationtype: HT
+ms.openlocfilehash: e0c3c88119c3d064326442881854920b411f5ed4
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73606440"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73748384"
 ---
 # <a name="create-azure-cosmos-containers-and-databases-in-autopilot-mode-preview"></a>Azure Cosmos-tárolók és-adatbázisok létrehozása Autopilot módban (előzetes verzió)
 
 Azure Cosmos DB lehetővé teszi az átviteli sebesség manuális vagy Autopilot módban való kiépítését a tárolókban. Ez a cikk az Autopilot mód előnyeit és használati eseteit ismerteti.
 
 > [!NOTE]
-> Az Autopilot mód jelenleg nyilvános előzetes verzióban érhető el.
+> Az Autopilot mód jelenleg nyilvános előzetes verzióban érhető el. Az Autopilot funkció Azure Cosmos-fiókhoz való engedélyezéséhez tekintse meg a jelen cikk [Autopilot engedélyezése](#enable-autopilot) című szakaszát. Az Autopilot csak új adatbázisok és tárolók számára engedélyezhető, és a meglévő tárolók és adatbázisok esetében nem érhető el.
 
 Az átviteli sebesség manuális kiépítés mellett mostantól az Azure Cosmos-tárolókat is konfigurálhatja Autopilot módban. Az Autopilot módban konfigurált Azure Cosmos-tárolók és-adatbázisok **automatikusan és azonnal méretezhetik a kiépített átviteli sebességet az alkalmazás igényeinek megfelelően anélkül, hogy veszélyeztetné a SLA-kat.**
 
@@ -68,7 +68,7 @@ Az előző problémák megoldásához nem csupán nagy mennyiségű időt kell i
 | **Díjszabás** | Manuálisan kiépített RU/s óránként. | Az egyszeri írási régió fiókjai esetében óradíjat használ a robotpilóta (RU/s) óránkénti díjszabása alapján. <br/><br/>A több írási régióval rendelkező fiókok esetében nem számítunk fel külön díjat a robotpilóta számára. Az óránkénti átviteli sebességért kell fizetnie, ugyanazzal a több főkiszolgálós RU/s-díj használatával. |
 | **Legmegfelelőbb a számítási feladatok típusaihoz** |  Kiszámítható és stabil számítási feladatok|   Kiszámíthatatlan és változó számítási feladatok  |
 
-## <a name="enable-autopilot-from-azure-portal"></a>Az Autopilot engedélyezése Azure Portal
+## <a name="a-idenable-autopilot-enable-autopilot-from-azure-portal"></a><a id="enable-autopilot"> az Autopilot engedélyezése Azure Portal
 
 Kipróbálhatja az Autopilot-t az Azure Cosmos-fiókokban, ha engedélyezi a alkalmazást a Azure Portalról. Az Autopilot beállítás engedélyezéséhez kövesse az alábbi lépéseket:
 

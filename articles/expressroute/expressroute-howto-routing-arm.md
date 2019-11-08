@@ -8,19 +8,19 @@ ms.topic: conceptual
 ms.date: 04/24/2019
 ms.author: jaredro
 ms.custom: seodec18
-ms.openlocfilehash: 3f2c768fe7998cc166e3102619e7183c96d1ccbb
-ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
+ms.openlocfilehash: 813263442bc82254d0cb5ea9e9f7e8a265de5b4a
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72965366"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73748211"
 ---
 # <a name="create-and-modify-peering-for-an-expressroute-circuit-using-powershell"></a>ExpressRoute-áramkör társításának létrehozása és módosítása a PowerShell használatával
 
 Ebből a cikkből megtudhatja, hogyan hozhat létre és kezelhet útválasztási konfigurációt egy ExpressRoute-áramkörhöz a Resource Manager-alapú üzemi modellben a PowerShell használatával. A ExpressRoute-áramkör állapota, frissítése vagy törlése és megszüntetése is ellenőrizhető. Ha más módszert szeretne használni az áramkörrel való munkavégzéshez, válasszon egy cikket a következő listából:
 
 > [!div class="op_single_selector"]
-> * [Azure Portalra](expressroute-howto-routing-portal-resource-manager.md)
+> * [Azure Portal](expressroute-howto-routing-portal-resource-manager.md)
 > * [PowerShell](expressroute-howto-routing-arm.md)
 > * [Azure CLI](howto-routing-cli.md)
 > * [Videó – privát peering](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-set-up-azure-private-peering-for-your-expressroute-circuit)
@@ -46,7 +46,7 @@ Egy, két vagy akár mindhárom társviszony-létesítést (Azure privát, Azure
 
 ### <a name="working-with-azure-powershell"></a>A Azure PowerShell használata
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+[!INCLUDE [updated-for-az](../../includes/hybrid-az-ps.md)]
 
 [!INCLUDE [expressroute-cloudshell](../../includes/expressroute-cloudshell-powershell-about.md)]
 
@@ -440,7 +440,7 @@ Remove-AzExpressRouteCircuitPeeringConfig -Name "AzurePublicPeering" -ExpressRou
 Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A következő lépés egy [VNet csatlakoztatása egy ExpressRoute-kapcsolatcsoporthoz](expressroute-howto-linkvnet-arm.md).
 

@@ -1,6 +1,6 @@
 ---
 title: Rendszerállapot biztonsági mentésének hibáinak megoldása Azure Backup
-description: A rendszerállapot biztonsági mentésével kapcsolatos problémák elhárítása.
+description: Ebből a cikkből megtudhatja, hogyan lehet elhárítani a rendszerállapot biztonsági mentésével kapcsolatos problémákat a helyszíni Windows-kiszolgálókon.
 ms.reviewer: srinathv
 author: dcurwin
 manager: carmonm
@@ -9,18 +9,19 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 07/22/2019
 ms.author: dacurwin
-ms.openlocfilehash: 26ba811eba1a25dacddd04814f8e0d2805360920
-ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
+ms.openlocfilehash: 71a2b73ab3570539a566f708ea8b1a41963d4e81
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69018781"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73747299"
 ---
 # <a name="troubleshoot-system-state-backup"></a>Rendszerállapot biztonsági mentésének hibáinak megoldása
 
 Ez a cikk a rendszerállapot biztonsági mentésének használata során felmerülő problémák megoldásait ismerteti.
 
 ## <a name="basic-troubleshooting"></a>Alapszintű hibaelhárítás
+
 Javasoljuk, hogy a rendszerállapot biztonsági mentésének megkezdése előtt végezze el az alábbi érvényesítést:
 
 - [Győződjön meg arról, Microsoft Azure Recovery Services (MARS) ügynök naprakész](https://go.microsoft.com/fwlink/?linkid=229525&clcid=0x409)
@@ -40,6 +41,7 @@ Javasoljuk, hogy a rendszerállapot biztonsági mentésének megkezdése előtt 
 - [A biztonsági mentési ügynök Azure-beli virtuális gépen való futtatásakor megfontolandó szempontok](https://aka.ms/AB-AA4dwtr)
 
 ### <a name="limitation"></a>Korlátozás
+
 - A Microsoft nem javasolja, hogy más hardverre próbáljon helyreállítást végezni a rendszerállapot-helyreállítással
 - A rendszerállapot biztonsági mentése jelenleg a "helyszíni" Windows-kiszolgálókat támogatja, ez a funkció nem érhető el az Azure-beli virtuális gépekhez.
 
@@ -54,9 +56,10 @@ Győződjön meg arról, hogy a Windows Server biztonsági másolat telepítve v
  ```powershell
 Get-WindowsFeature Windows-Server-Backup
  ```
+
 Ha a kimenet a telepítési **állapotot** **elérhetőként**jeleníti meg, akkor az azt jelenti, hogy a Windows Server biztonsági másolat szolgáltatás elérhető a telepítéshez, de nincs telepítve a kiszolgálón. Ha azonban Windows Server biztonsági másolat nincs telepítve, a telepítéshez használja az alábbi módszerek egyikét.
 
-**1. módszer: Windows Server biztonsági másolat telepítése a PowerShell használatával**
+#### <a name="method-1-install-windows-server-backup-using-powershell"></a>1\. módszer: Windows Server biztonsági másolat telepítése a PowerShell használatával
 
 Windows Server biztonsági másolat a PowerShell használatával történő telepítéséhez futtassa az alábbi parancsot:
 
@@ -64,7 +67,7 @@ Windows Server biztonsági másolat a PowerShell használatával történő tele
   Install-WindowsFeature -Name Windows-Server-Backup
   ```
 
-**2. módszer: Windows Server biztonsági másolat telepítése a Kiszolgálókezelő használatával**
+#### <a name="method-2-install-windows-server-backup-using-server-manager"></a>2\. módszer: Windows Server biztonsági másolat telepítése a Kiszolgálókezelő használatával
 
 Windows Server biztonsági másolat telepítéséhez a Kiszolgálókezelő használatával hajtsa végre az alábbi lépéseket:
 
@@ -84,8 +87,7 @@ Windows Server biztonsági másolat telepítéséhez a Kiszolgálókezelő haszn
 5. A **megerősítés** lapon kattintson a **telepítés** gombra a telepítési folyamat elindításához.
 6. A **Results (eredmények** ) lapon megjelenik a Windows Server biztonsági másolat funkció a Windows Serverre való telepítése sikeres volt.
 
-    ![Eredmény](./media/backup-azure-system-state-troubleshoot/results.jpg)
-
+    ![találat](./media/backup-azure-system-state-troubleshoot/results.jpg)
 
 ### <a name="system-volume-information-permission"></a>Rendszerkötet információi engedély
 
@@ -100,31 +102,31 @@ Győződjön meg arról, hogy az alábbi szolgáltatások fut állapotban vannak
 Távoli eljáráshívás (RPC) | Automatikus
 COM+ Event System (EventSystem) | Automatikus
 Rendszeresemény-értesítési szolgáltatás (SENS) | Automatikus
-Kötet árnyékmásolata (VSS) | Manuális
-Microsoft szoftver árnyékmásolata szolgáltató (SWPRV) | Manuális
+Kötet árnyékmásolata (VSS) | Kézi
+Microsoft szoftver árnyékmásolata szolgáltató (SWPRV) | Kézi
 
 ### <a name="validate-windows-server-backup-status"></a>Windows Server biztonsági másolat állapotának ellenőrzése
 
-Windows Server biztonsági másolat állapotának ellenőrzéséhez hajtsa végre az alábbi műveleteket:
+Windows Server biztonsági másolat állapotának ellenőrzéséhez hajtsa végre az alábbi lépéseket:
 
-  * Győződjön meg arról, hogy a WSB PowerShell fut
+- Győződjön meg arról, hogy a WSB PowerShell fut
 
-    -   Futtassa `Get-WBJob` a parancsot egy emelt szintű PowerShell-lel, és győződjön meg arról, hogy az nem adja vissza a következő hibát:
+  - Futtassa `Get-WBJob` egy emelt szintű PowerShell-lel, és győződjön meg róla, hogy nem adja vissza a következő hibát:
 
     > [!WARNING]
-    > Get-WBJob: A "Get-WBJob" kifejezés nem ismerhető fel parancsmag, függvény, parancsfájl vagy működőképes program neveként. Ellenőrizze a név helyesírását, vagy ha egy elérési utat tartalmaz, ellenőrizze, hogy helyes-e az elérési út, és próbálkozzon újra.
+    > Get-WBJob: a "Get-WBJob" kifejezés nem ismerhető fel parancsmag, függvény, parancsfájl vagy működőképes program neveként. Ellenőrizze a név helyesírását, vagy ha egy elérési utat tartalmaz, ellenőrizze, hogy helyes-e az elérési út, és próbálkozzon újra.
 
-    -   Ha ez a hiba meghiúsul, akkor telepítse újra a Windows Server biztonsági másolat szolgáltatást a kiszolgálói gépen az 1. lépés előfeltételeiben leírtak szerint.
+    - Ha ez a hiba meghiúsul, akkor telepítse újra a Windows Server biztonsági másolat szolgáltatást a kiszolgálói gépen az 1. lépés előfeltételeiben leírtak szerint.
 
-  * Győződjön meg arról, hogy a WSB biztonsági mentése megfelelően működik, és futtassa az alábbi parancsot a rendszergazda jogú parancssorból:
+  - Győződjön meg arról, hogy a WSB biztonsági mentése megfelelően működik, és futtassa az alábbi parancsot a rendszergazda jogú parancssorból:
 
       `wbadmin start systemstatebackup -backuptarget:X: -quiet`
 
       > [!NOTE]
       >Az X helyére írja be annak a kötetnek a betűjelét, amelyben a rendszerállapot biztonsági másolatát szeretné tárolni.
 
-    - A feladatok állapotának rendszeres ellenőrzéséhez futtassa `Get-WBJob` a parancsot a rendszergazda jogú powershellből        
-    - A biztonsági mentési feladatok befejezése után a parancs futtatásával `Get-WBJob -Previous 1` vizsgálja meg a feladatok végső állapotát.
+    - A feladatok állapotának rendszeres ellenőrzéséhez futtassa `Get-WBJob` parancsot a rendszergazda jogú PowerShellből
+    - A biztonsági mentési feladatok befejezése után `Get-WBJob -Previous 1` parancs futtatásával vizsgálja meg a feladatok végső állapotát.
 
 Ha a feladat meghiúsul, egy WSB-problémát jelez, amely a MARS-ügynök rendszerállapot-biztonsági Mentéseinak meghibásodását eredményezné.
 
@@ -132,24 +134,21 @@ Ha a feladat meghiúsul, egy WSB-problémát jelez, amely a MARS-ügynök rendsz
 
 ### <a name="vss-writer-timeout-error"></a>VSS-író időtúllépési hibája
 
-| Jelenség | Ok | Megoldás:
+| Hibajelenség | Ok | Megoldás:
 | -- | -- | --
-| -A MARS-ügynök a következő hibaüzenettel meghiúsul: "A WSB-feladatok VSS-hibákkal meghiúsultak. A hiba elhárításához keresse meg a VSS-eseménynaplókat.<br/><br/> – A következő hibanapló szerepel a VSS-alkalmazás eseménynaplójában: "A VSS-író visszautasított egy hiba 0x800423f2 eseményt, az író időtúllépése lejárt a befagyasztási és a felolvasztási események között."| A VSS-író nem tud időben befejezni a számítógép processzor-és memória-erőforrásainak hiánya miatt. <br/><br/> Egy másik biztonsági mentési szoftver már használja a VSS-írót, mert nem sikerült befejezni a biztonsági mentés eredményének pillanatkép-műveletét | Várjon, amíg a CPU/memória fel lesz szabadítva a rendszerre, vagy szakítsa meg a folyamatokat túl sok memóriát vagy PROCESSZORt, majd próbálja megismételni a műveletet. <br/><br/>  Várjon, amíg a folyamatban lévő biztonsági mentés befejeződik, majd próbálja megismételni a műveletet, amikor a gépen nem fut biztonsági másolat.
-
+| -A MARS-ügynök a következő hibaüzenettel meghiúsul: "a WSB-feladatban hiba történt VSS-hibákkal. A hiba elhárításához keresse meg a VSS-eseménynaplókat.<br/><br/> -A VSS-alkalmazás eseménynaplójában a következő hibanapló szerepel: "A VSS-író elutasította az eseményt hibás 0x800423f2, az író időtúllépése lejárt a befagyasztási és felolvasztási események között."| A VSS-író nem tud időben befejezni a számítógép processzor-és memória-erőforrásainak hiánya miatt. <br/><br/> Egy másik biztonsági mentési szoftver már használja a VSS-írót, mert nem sikerült befejezni a biztonsági mentés eredményének pillanatkép-műveletét | Várjon, amíg a CPU/memória fel lesz szabadítva a rendszerre, vagy szakítsa meg a folyamatokat túl sok memóriát vagy PROCESSZORt, majd próbálja megismételni a műveletet. <br/><br/>  Várjon, amíg a folyamatban lévő biztonsági mentés befejeződik, majd próbálja megismételni a műveletet, amikor a gépen nem fut biztonsági másolat.
 
 ### <a name="insufficient-disk-space-to-grow-shadow-copies"></a>Nincs elegendő lemezterület az árnyékmásolatok növeléséhez
 
-| Jelenség | Megoldás:
+| Hibajelenség | Megoldás:
 | -- | --
-| -A MARS-ügynök a következő hibaüzenettel meghiúsul: A biztonsági mentés nem sikerült, mert az árnyékmásolat-kötet nem nő, mert nincs elég szabad lemezterület a rendszerfájlokat tartalmazó köteteken <br/><br/> -A VolSnap rendszeresemény-naplókban a következő hiba/figyelmeztető napló szerepel: "Nincs elég szabad lemezterület a C köteten: Ha az árnyékmásolat-tárolót növelni szeretné a C árnyékmásolatok számára, a hiba oka, hogy a C kötet összes árnyékmásolat-másolata törlődik a következő helyen:" | – Szabadítson fel lemezterületet a kijelölt köteten az eseménynaplóban, hogy elegendő lemezterület álljon rendelkezésre az árnyékmásolatok növekedéséhez, miközben a biztonsági mentés folyamatban van. <br/><br/> – Az árnyékmásolat-terület konfigurálásával korlátozható az árnyékmásolat-használathoz felhasznált terület mennyisége. További információkért tekintse meg ezt a [cikket](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-r2-and-2012/cc788050(v=ws.11)#syntax)
-
+| -A MARS-ügynök a következő hibaüzenettel meghiúsul: a biztonsági mentés nem sikerült, mert az árnyékmásolat-kötet nem tudott növekedni, mert nincs elég szabad lemezterület a rendszerfájlokat tartalmazó köteteken. <br/><br/> -A következő hiba/figyelmeztetési napló szerepel a VolSnap rendszeresemény-naplóiban: "nincs elég szabad lemezterület a C köteten: az árnyékmásolat-tároló növelése a C-beli árnyékmásolatok esetében – ennek a hibának a hatására a c kötet összes árnyékmásolatai-példánya törlődik:" | – Szabadítson fel lemezterületet a kijelölt köteten az eseménynaplóban, hogy elegendő lemezterület álljon rendelkezésre az árnyékmásolatok növekedéséhez, miközben a biztonsági mentés folyamatban van. <br/><br/> – Az árnyékmásolat-terület konfigurálásával korlátozható az árnyékmásolat-használathoz felhasznált terület mennyisége. További információkért tekintse meg ezt a [cikket](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-r2-and-2012/cc788050(v=ws.11)#syntax)
 
 ### <a name="efi-partition-locked"></a>EFI-partíció zárolva
 
-| Jelenség | Megoldás:
+| Hibajelenség | Megoldás:
 | -- | --
-| A MARS-ügynök a következő hibaüzenettel meghiúsul: "A rendszerállapot biztonsági mentése nem sikerült, mert az EFI rendszerpartíció zárolva van. Ezt az okozhatja, hogy a rendszerpartíciók a harmadik féltől származó biztonsági vagy biztonsági mentési szoftverhez férnek hozzá. | – Ha a problémát egy külső gyártótól származó biztonsági szoftver okozza, akkor kapcsolatba kell lépnie a víruskereső gyártójával, hogy engedélyezze a MARS-ügynököt <br/><br/> – Ha fut egy külső gyártótól származó biztonsági mentési szoftver, várjon, amíg befejeződik, majd próbálkozzon újra a biztonsági mentéssel
-
+| A MARS-ügynök a következő hibaüzenettel meghiúsul: "a rendszerállapot biztonsági mentése nem sikerült, mert az EFI rendszerpartíció zárolva van. Ezt az okozhatja, hogy a rendszerpartíciók a harmadik féltől származó biztonsági vagy biztonsági mentési szoftverhez férnek hozzá. | – Ha a problémát egy külső gyártótól származó biztonsági szoftver okozza, akkor kapcsolatba kell lépnie a víruskereső gyártójával, hogy engedélyezze a MARS-ügynököt <br/><br/> – Ha fut egy külső gyártótól származó biztonsági mentési szoftver, várjon, amíg befejeződik, majd próbálkozzon újra a biztonsági mentéssel
 
 ## <a name="next-steps"></a>További lépések
 

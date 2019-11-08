@@ -9,12 +9,12 @@ ms.service: service-bus-messaging
 ms.topic: article
 ms.date: 01/23/2019
 ms.author: aschhab
-ms.openlocfilehash: 80809afc9f2a8e8da2f6adecfe916141c4cd3e45
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: 8a2a704f39aa678be819a7297b30f8926e414e56
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68278342"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73748444"
 ---
 # <a name="service-bus-faq"></a>Service Bus – GYIK
 
@@ -51,7 +51,7 @@ Az üzenetek küldéséhez és fogadásához a következő protokollokat haszná
 
 Az alábbi táblázat tartalmazza azokat a kimenő portokat, amelyeket meg kell nyitni a protokollok Azure Event Hubs-vel való kommunikációhoz való használatához. 
 
-| Protocol | Portok | Részletek | 
+| Protokoll | Portok | Részletek | 
 | -------- | ----- | ------- | 
 | AMQP | 5671 és 5672 | Lásd: [AMQP protokoll – útmutató](service-bus-amqp-protocol-guide.md) | 
 | SBMP | 9350 – 9354 | Lásd: [kapcsolati mód](/dotnet/api/microsoft.servicebus.connectivitymode?view=azure-dotnet) |
@@ -65,7 +65,7 @@ Az alábbi lépéseket követve megkeresheti a megfelelő IP-címeket a kapcsola
     ```
     nslookup <YourNamespaceName>.servicebus.windows.net
     ```
-2. Jegyezze fel `Non-authoritative answer`a visszaadott IP-címet. Ez az IP-cím statikus. Ha a névteret egy másik fürtre állítja vissza, az egyetlen olyan időpontot kell megváltoztatnia, amelyik megváltozhat.
+2. Jegyezze fel a `Non-authoritative answer`ban visszaadott IP-címet. Ez az IP-cím statikus. Ha a névteret egy másik fürtre állítja vissza, az egyetlen olyan időpontot kell megváltoztatnia, amelyik megváltozhat.
 
 Ha a zóna redundanciát használja a névtérhez, néhány további lépést is végre kell hajtania: 
 
@@ -112,6 +112,13 @@ Az adott Azure-régión belüli adatforgalom díjmentesen, valamint a bejövő a
 ### <a name="does-service-bus-charge-for-storage"></a>Service Bus díjat a tárterületért?
 Nem, Service Bus a tárterületért nem számítunk fel díjat. Van azonban egy kvóta, amely korlátozza a várólistára vagy témakörre vonatkozó maximálisan megőrzött adatmennyiséget. Tekintse meg a következő gyakori kérdéseket.
 
+### <a name="i-have-a-service-bus-standard-namespace-why-do-i-see-charges-under-resource-group-system"></a>Service Bus standard névtérrel rendelkezem. Miért jelenik meg a díjak a (z) $system erőforráscsoport alatt?
+Azure Service Bus nemrég frissítettük a számlázási összetevőket. Ennek következtében, ha Service Bus standard szintű névtérrel rendelkezik, akkor a "/Subscriptions/< azure_subscription_id >/resourceGroups/$system/providers/Microsoft.ServiceBus/namespaces/$system" erőforráscsoport "$ System ".
+
+Ezek a díjak az Azure-előfizetések által Service Bus standard névteret kiépített alapdíj alapján jelennek meg. 
+
+Fontos megjegyezni, hogy ezek nem új díjak, azaz az előző számlázási modellben is léteztek. Az egyetlen változás, hogy most már a "$system" alatt vannak felsorolva. Ez az új számlázási rendszer contraints miatt történik, amely az előfizetési szint díjait, nem egy adott erőforráshoz, a "$system" erőforrás-azonosító alatt csoportosítja.
+
 ## <a name="quotas"></a>Kvóták
 
 Service Bus korlátok és kvóták listáját a [Service Bus kvóták áttekintésében][Quotas overview]találhatja meg.
@@ -121,10 +128,10 @@ Alapértelmezés szerint bármely felhőalapú szolgáltatás esetében a Micros
 
 Míg a Microsoft fenntartja a jogot arra, hogy letiltsa a használati kvótákat egy adott hónapban, a rendszer elküldje az e-mailes értesítéseket, és a művelet végrehajtása előtt több kísérletet Kérjen a felhasználótól. Az ezen kvótákat meghaladó ügyfelek továbbra is felelősek a kvótákat túllépő díjakért.
 
-Az Azure-ban más szolgáltatásokhoz hasonlóan a Service Bus meghatározott kvótákat kényszerít ki annak biztosítására, hogy az erőforrások valós kihasználtsága legyen. Ezekről a kvótákkal kapcsolatban a [Service Bus][Quotas overview]-kvóták áttekintésében talál további információt.
+Az Azure-ban más szolgáltatásokhoz hasonlóan a Service Bus meghatározott kvótákat kényszerít ki annak biztosítására, hogy az erőforrások valós kihasználtsága legyen. Ezekről a kvótákkal kapcsolatban a [Service Bus-kvóták áttekintésében][Quotas overview]talál további információt.
 
 ### <a name="how-to-handle-messages-of-size--1-mb"></a>1 MB méretű üzenetek kezelése >
-Service Bus Messaging Services (várólisták és témakörök/előfizetések) lehetővé teszik, hogy az alkalmazás legfeljebb 256 KB-os (standard szintű) vagy 1 MB (prémium szint) méretű üzeneteket küldjön. Ha 1 MB-nál nagyobb méretű üzeneteket használ, használja az [ebben](https://www.serverless360.com/blog/deal-with-large-service-bus-messages-using-claim-check-pattern)a blogbejegyzésben leírt jogcím-ellenőrzési mintát.
+Service Bus Messaging Services (várólisták és témakörök/előfizetések) lehetővé teszik, hogy az alkalmazás legfeljebb 256 KB-os (standard szintű) vagy 1 MB (prémium szint) méretű üzeneteket küldjön. Ha 1 MB-nál nagyobb méretű üzeneteket használ, használja az [ebben a blogbejegyzésben](https://www.serverless360.com/blog/deal-with-large-service-bus-messages-using-claim-check-pattern)leírt jogcím-ellenőrzési mintát.
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
 ### <a name="why-am-i-not-able-to-create-a-namespace-after-deleting-it-from-another-subscription"></a>Miért nem lehet névteret létrehozni egy másik előfizetésből való törlés után? 

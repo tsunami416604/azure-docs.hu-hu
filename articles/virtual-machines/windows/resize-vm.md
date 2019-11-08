@@ -14,22 +14,22 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 05/30/2018
 ms.author: cynthn
-ms.openlocfilehash: 9537744787df7fc6c470bc1ee6862ad3f2991ae9
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 1f5f8f3a315b894ab8bc972d36008b5bce85d8e7
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70088725"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73749244"
 ---
 # <a name="resize-a-windows-vm"></a>Windows rendszerű virtuális gép átméretezése
 
-Ez a cikk bemutatja, hogyan helyezhet át egy virtuális gépet egy [](sizes.md) másik virtuálisgép-méretre az Azure PowerShell használatával.
+Ez a cikk bemutatja, hogyan helyezhet át egy virtuális gépet egy másik virtuálisgép- [méretre](sizes.md) az Azure PowerShell használatával.
 
 Miután létrehozta a virtuális gépet (VM), a virtuálisgép-méret módosításával felfelé vagy lefelé méretezheti a virtuális gépet. Bizonyos esetekben először fel kell szabadítania a virtuális gépet. Ez akkor fordulhat elő, ha az új méret nem érhető el azon a hardveres fürtön, amely jelenleg a virtuális gépet üzemelteti.
 
-Ha a virtuális gép Premium Storaget használ, győződjön meg arról, hogy a Premium Storage támogatásához a méret egyik verzióját kell választania. Válassza például a Standard_E4**s**_v3 elemet a standard E4 v3 helyett.
+Ha a virtuális gép Premium Storaget használ, győződjön meg arról, hogy a Premium Storage támogatásához **a méret egyik verzióját kell** választania. Válassza például a Standard_E4**s**_v3 elemet a standard E4 v3 helyett.
 
-[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
+ 
 
 ## <a name="resize-a-windows-vm-not-in-an-availability-set"></a>Rendelkezésre állási csoportba nem tartozó Windows rendszerű virtuális gép átméretezése
 
@@ -54,7 +54,7 @@ $vm.HardwareProfile.VmSize = "<newVMsize>"
 Update-AzVM -VM $vm -ResourceGroupName $resourceGroup
 ```
 
-Ha a kívánt méret nem szerepel a felsorolásban, futtassa a következő parancsokat a virtuális gép felszabadításához, méretezze át, majd indítsa újra a virtuális gépet. Cserélje le  **\<a newVMsize >** a kívánt méretre.
+Ha a kívánt méret nem szerepel a felsorolásban, futtassa a következő parancsokat a virtuális gép felszabadításához, méretezze át, majd indítsa újra a virtuális gépet. Cserélje le **\<newVMsize >** a kívánt méretre.
    
 ```powershell
 Stop-AzVM -ResourceGroupName $resourceGroup -Name $vmName -Force

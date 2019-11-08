@@ -6,12 +6,12 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/24/2019
-ms.openlocfilehash: 55e802aa1f7bdf0d67d1a9c3f020d255afdc8130
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 4291db0bb1edbc366c42febed992a7c27d46eb15
+ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71261909"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73796754"
 ---
 # <a name="migrate-your-postgresql-database-using-dump-and-restore"></a>A PostgreSQL-adatbázis migrálása a dump és a Restore használatával
 A [pg_dump](https://www.postgresql.org/docs/current/static/app-pgdump.html) használatával kinyerheti a PostgreSQL-adatbázist egy memóriaképfájl-fájlba, és [pg_restore](https://www.postgresql.org/docs/current/static/app-pgrestore.html) visszaállíthatja a PostgreSQL-adatbázist egy pg_dump által létrehozott archív fájlból.
@@ -34,7 +34,7 @@ pg_dump -Fc -v --host=localhost --username=masterlogin --dbname=testdb -f testdb
 ```
 
 
-## <a name="restore-the-data-into-the-target-azure-database-for-postrgesql-using-pg_restore"></a>Az adatvisszaállítás a cél Azure-adatbázisba PostrgeSQL a pg_restore használatával
+## <a name="restore-the-data-into-the-target-azure-database-for-postgresql-using-pg_restore"></a>Az adatvisszaállítás a cél Azure Database for PostgreSQL a pg_restore használatával
 A céladatbázis létrehozása után a pg_restore parancs és a-d,--dbname paraméter használatával visszaállíthatja az adatait a célként megadott adatbázisba a memóriakép fájlból.
 ```bash
 pg_restore -v --no-owner --host=<server name> --port=<port> --username=<user@servername> --dbname=<target database name> <database>.dump
@@ -42,9 +42,9 @@ pg_restore -v --no-owner --host=<server name> --port=<port> --username=<user@ser
 A--No-Owner paraméterrel együtt a visszaállítás során létrehozott összes objektum tulajdonosa lesz a--username értékkel megadott felhasználó tulajdonában. További információkért tekintse meg a [pg_restore](https://www.postgresql.org/docs/9.6/static/app-pgrestore.html)hivatalos PostgreSQL-dokumentációját.
 
 > [!NOTE]
-> Ha a PostgreSQL-kiszolgáló SSL-kapcsolatokat igényel (alapértelmezés szerint Azure Database for PostgreSQL-kiszolgálókon), állítson `PGSSLMODE=require` be egy környezeti változót, hogy a pg_restore eszköz csatlakozzon az SSL-hez. SSL nélkül előfordulhat, hogy a hiba olvasható`FATAL:  SSL connection is required. Please specify SSL options and retry.`
+> Ha a PostgreSQL-kiszolgáló SSL-kapcsolatokat igényel (alapértelmezés szerint Azure Database for PostgreSQL-kiszolgálókon), állítson be egy környezeti változót `PGSSLMODE=require`, hogy a pg_restore eszköz csatlakozzon az SSL-hez. SSL nélkül előfordulhat, hogy a hiba beolvasható `FATAL:  SSL connection is required. Please specify SSL options and retry.`
 >
-> A Windows-parancssorban futtassa a parancsot `SET PGSSLMODE=require` a pg_restore parancs futtatása előtt. A Linux vagy a bash futtatása előtt `export PGSSLMODE=require` futtassa a parancsot a pg_restore parancs futtatása előtt.
+> A Windows-parancssorban futtassa a parancsot `SET PGSSLMODE=require` a pg_restore parancs futtatása előtt. Linux vagy bash esetén futtassa a parancsot `export PGSSLMODE=require` a pg_restore parancs futtatása előtt.
 >
 
 Ebben a példában a **testdb. dump** fájlból származó adatok visszaállítását a célkiszolgáló **mydemoserver.postgres.database.Azure.com**adatbázis- **mypgsqldb** . 
@@ -61,7 +61,7 @@ A meglévő PostgreSQL-adatbázis Azure Database for PostgreSQL szolgáltatásba
 >
 
 ### <a name="for-the-backup"></a>A biztonsági mentéshez
-- A biztonsági mentést a-FC kapcsolóval hajtsa végre, így a visszaállítás párhuzamosan is elvégezhető. Példa:
+- A biztonsági mentést a-FC kapcsolóval hajtsa végre, így a visszaállítás párhuzamosan is elvégezhető. Például:
 
     ```
     pg_dump -h MySourceServerName -U MySourceUserName -Fc -d MySourceDatabaseName -f Z:\Data\Backups\MyDatabaseBackup.dump
@@ -72,7 +72,7 @@ A meglévő PostgreSQL-adatbázis Azure Database for PostgreSQL szolgáltatásba
 
 - Alapértelmezés szerint már el kell végeznie, de meg kell nyitnia a memóriaképet annak ellenőrzéséhez, hogy a Create index utasítások az adatokat szúrják-e be. Ha nem ez a helyzet, helyezze át a Create index utasítást az adatbeszúrás után.
 
-- Restore with the switchs-FC és *#* -j kapcsolóval integrálással a visszaállítást. *#* a célkiszolgálón lévő magok száma. Azt is megteheti *#* , hogy a beállítás megadásával kétszer is megpróbálkozik a célkiszolgáló magok számával, hogy a hatás megjelenjen. Példa:
+- Állítsa vissza a kapcsolókat – FC és-j *#* a visszaállítás integrálással. *#* a célkiszolgálón lévő magok száma. Azt is megteheti, hogy *#* beállítja a célkiszolgáló magok számának kétszeri megadását a hatás megjelenítéséhez. Például:
 
     ```
     pg_restore -h MyTargetServer.postgres.database.azure.com -U MyAzurePostgreSQLUserName -Fc -j 4 -d MyTargetDatabase Z:\Data\Backups\MyDatabaseBackup.dump
@@ -83,7 +83,7 @@ A meglévő PostgreSQL-adatbázis Azure Database for PostgreSQL szolgáltatásba
 - A cél Azure Database for PostgreSQL kiszolgálón a visszaállítás előtt vegye figyelembe a következőket:
     - A lekérdezési teljesítmény nyomon követésének kikapcsolása, mivel ezek a statisztikák nem szükségesek az áttelepítés során. Ezt úgy teheti meg, hogy a pg_stat_statements. Track, a pg_qs. query_capture_mode és a pgms_wait_sampling. query_capture_mode beállítást a NONE értékre állítja.
 
-    - A Migrálás felgyorsításához használjon nagy számítási és magas memória-SKU-t, például 32 virtuális mag memóriát. A visszaállítás befejezése után egyszerűen méretezheti vissza az előnyben részesített SKU-ra. Minél nagyobb a SKU, annál több párhuzamosságot érhet el a pg_restore parancs megfelelő `-j` paraméterének növelésével. 
+    - A Migrálás felgyorsításához használjon nagy számítási és magas memória-SKU-t, például 32 virtuális mag memóriát. A visszaállítás befejezése után egyszerűen méretezheti vissza az előnyben részesített SKU-ra. Minél nagyobb a SKU, annál több párhuzamosságot érhet el, ha növeli a megfelelő `-j` paramétert a pg_restore parancsban. 
 
     - A célkiszolgáló további IOPS javíthatják a visszaállítási teljesítményt. A kiszolgáló tárolási méretének növelésével több IOPS is kiépítheti. Ez a beállítás nem vonható vissza, azonban érdemes megfontolni, hogy egy magasabb IOPS a jövőben is hasznát veheti-e a tényleges munkaterhelésnek.
 

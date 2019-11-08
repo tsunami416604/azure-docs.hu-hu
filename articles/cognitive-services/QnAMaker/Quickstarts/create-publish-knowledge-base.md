@@ -10,12 +10,12 @@ ms.subservice: qna-maker
 ms.topic: quickstart
 ms.date: 10/14/2019
 ms.author: diberry
-ms.openlocfilehash: 5d807f185a8cdb181093d37dac35ee2e467fdba9
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 8ce35156cd772487c4787f2f5fb99feb1225826f
+ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72328088"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73794204"
 ---
 # <a name="quickstart-create-train-and-publish-your-qna-maker-knowledge-base"></a>Rövid útmutató: a QnA Maker Tudásbázis létrehozása, betanítása és közzététele
 
@@ -67,11 +67,11 @@ Egy Chit-Chat-személyiséggel is elvégezheti a tudását, így jobban megtarth
 
 1. Adja hozzá a _Markdown_formázott választ:
 
-    ` * Azure QnA Maker service\n* Azure Search\n* Azure web app\n* Azure app plan`
+    ` * Azure QnA Maker service\n* Azure Cognitive Search\n* Azure web app\n* Azure app plan`
 
     ![ Adja hozzá a kérdést szövegként és a Markdown formázott választ.](../media/qnamaker-create-publish-knowledge-base/add-question-and-answer.png)
 
-    A Markdown szimbólum (`*`) a felsorolásjeles pontokhoz használatos. A `\n` egy új sorhoz használatos.  
+    A Markdown szimbólum (`*`) a felsorolásjeles pontokhoz használható. A `\n` egy új sorhoz van használatban.  
 
     A **Szerkesztés** oldalon látható a Markdown. Amikor később a **tesztelési** panelt használja, látni fogja, hogy a Markdown megfelelően jelenik-e meg. 
 
@@ -94,7 +94,7 @@ Kattintson a jobb felső sarokban a **Save and train** (Mentés és betanítás)
 
 ## <a name="publish-the-knowledge-base"></a>A tudásbázis közzététele
 
-A Tudásbázis közzétételekor a Tudásbázis tartalma a `test` indexből egy `prod` indexbe kerül az Azure Search-ben.
+Ha közzétesz egy tudásbázist, a Tudásbázis tartalma a `test` indexből egy `prod` indexbe kerül az Azure Search-ben.
 
 ![Képernyőkép a Tudásbázis tartalmának áthelyezéséről](../media/qnamaker-how-to-publish-kb/publish-prod-test.png)
 
@@ -138,9 +138,9 @@ Ha módosítja a tudásbázist, és újból közzéteszi, nem kell további műv
 
 Törölje a QnA Maker és a bot Framework erőforrásait a Azure Portalban. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-További információ:
+További információk:
 
 * [Markdown-formátum a válaszokban](../concepts/data-sources-supported.md)
 * [A Markdown tesztelése](../concepts/data-sources-supported.md#testing-your-markdown)

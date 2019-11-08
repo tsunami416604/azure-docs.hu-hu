@@ -4,20 +4,23 @@ description: Azure Active Directory B2B-együttműködés gyakori problémáinak
 services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 05/25/2017
+tags: active-directory
 ms.author: mimart
 author: v-miegge
-manager: celestedg
+manager: dcscontentpm
 ms.reviewer: mal
-ms.custom: it-pro, seo-update-azuread-jan
+ms.custom:
+- it-pro
+- seo-update-azuread-jan"
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f91ddee8668316df69c98ed14fbcabcb06b6da82
-ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
+ms.openlocfilehash: 6449644f98280d75363f737be11f8e8b824cab36
+ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70983394"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73795183"
 ---
 # <a name="troubleshooting-azure-active-directory-b2b-collaboration"></a>Azure Active Directory B2B-együttműködés hibaelhárítása
 
@@ -57,9 +60,9 @@ Ha összevonási hitelesítést használ, és a felhasználó még nem létezik 
 
 A probléma megoldásához a külső felhasználó rendszergazdájának szinkronizálnia kell a felhasználó fiókját a Azure Active Directory.
 
-## <a name="how-does--which-is-not-normally-a-valid-character-sync-with-azure-ad"></a>Hogyan működik a\#"", amely nem általában érvényes karakter, szinkronizáljon az Azure ad-vel?
+## <a name="how-does--which-is-not-normally-a-valid-character-sync-with-azure-ad"></a>Hogyan működik a "\#", amely nem általában érvényes karakter, szinkronizáljon az Azure AD-vel?
 
-a\#(z) "" az Azure ad B2B Collaboration vagy a külső felhasználók számára az UPN-ben foglalt karakter, mert a meghívott@fabrikam.onmicrosoft.comfiók user@contoso.com user_contoso válik. com # ext #. \# Ezért a helyszíni UPN-ből érkező egyszerű felhasználónevek nem jelentkezhetnek be a Azure Portalba. 
+a "\#" az Azure AD B2B Collaboration vagy külső felhasználók számára fenntartott karakter az UPN-ben, mivel a meghívott fiók user@contoso.com user_contoso. com # EXT #@fabrikam.onmicrosoft.comválik. Ezért \# a helyi környezetből érkező egyszerű felhasználónevek nem jelentkezhetnek be a Azure Portalba. 
 
 ## <a name="i-receive-an-error-when-adding-external-users-to-a-synchronized-group"></a>Hibaüzenet jelenik meg, amikor külső felhasználókat veszek fel egy szinkronizált csoportba
 
@@ -67,7 +70,7 @@ A külső felhasználók csak a "hozzárendelt" vagy "biztonsági" csoportokba v
 
 ## <a name="my-external-user-did-not-receive-an-email-to-redeem"></a>A külső felhasználó nem kapott e-mailt a beváltáshoz
 
-A meghívás az INTERNETSZOLGÁLTATÓval vagy a levélszemét szűrővel ellenőrizze, hogy a következő címek engedélyezettek-e:Invites@microsoft.com
+A meghívás az INTERNETSZOLGÁLTATÓval vagy a levélszemét szűrővel ellenőrizze, hogy a következő címek engedélyezettek-e: Invites@microsoft.com
 
 ## <a name="i-notice-that-the-custom-message-does-not-get-included-with-invitation-messages-at-times"></a>Megfigyelhető, hogy az egyéni üzenet nem jelenik meg a Meghívási üzenetekben időnként
 

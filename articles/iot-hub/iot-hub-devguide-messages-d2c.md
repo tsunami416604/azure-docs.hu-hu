@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 05/15/2019
 ms.author: asrastog
-ms.openlocfilehash: e4f1797d600a226eb152a464efe4da8ddbdb6207
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
-ms.translationtype: HT
+ms.openlocfilehash: ff50d972ad9590fb70dbcf67e21f8b5dc8c32fad
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73606221"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73748059"
 ---
 # <a name="use-iot-hub-message-routing-to-send-device-to-cloud-messages-to-different-endpoints"></a>Eszközről a felhőbe irányuló üzenetek küldése különböző végpontokra IoT Hub üzenet-útválasztás használatával
 
@@ -57,7 +57,7 @@ IoT Hub a kötegek üzeneteit, és az adatot a tárolóba írja, amikor a köteg
 
 Bármilyen fájl elnevezési konvenciót használhat, azonban az összes felsorolt tokent kell használnia. A IoT Hub egy üres blobba ír, ha nincs írási adatként.
 
-Javasoljuk, hogy a tárolók beolvasását és az azokhoz való iterációt is javasolja, hogy a rendszer minden tárolót beolvasson a partíciós feltételezések elkészítése nélkül. A partíció tartománya esetleg változhat a [Microsoft által kezdeményezett feladatátvétel](iot-hub-ha-dr.md#microsoft-initiated-failover) vagy IoT hub [manuális feladatátvétel](iot-hub-ha-dr.md#manual-failover)során. A Blobok [listájának](https://docs.microsoft.com/rest/api/storageservices/list-blobs) enumerálásához használhatja a Blobok listázása API-t. Tekintse át a következő mintát útmutatásként.
+Javasoljuk, hogy a Blobok vagy fájlok felsorolását, majd azok ismételt megismétlését, hogy minden blobot vagy fájlt beolvasson a partíciós feltételezések elkészítése nélkül. A partíció tartománya esetleg változhat a [Microsoft által kezdeményezett feladatátvétel](iot-hub-ha-dr.md#microsoft-initiated-failover) vagy IoT hub [manuális feladatátvétel](iot-hub-ha-dr.md#manual-failover)során. A [Blobok listázása API](https://docs.microsoft.com/rest/api/storageservices/list-blobs) -val enumerálhatja a Blobok listáját vagy a lista [ADLS Gen2 API](https://docs.microsoft.com/rest/api/storageservices/datalakestoragegen2/path/list) -ját a fájlok listájához. Tekintse át a következő mintát útmutatásként.
 
 ```csharp
 public void ListBlobsInContainer(string containerName, string iothub)

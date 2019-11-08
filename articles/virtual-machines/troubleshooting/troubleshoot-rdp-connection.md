@@ -15,19 +15,19 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 03/23/2018
 ms.author: akjosh
-ms.openlocfilehash: 0a88c1e4d357f2919635e36a223e79b0407c0b8b
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: d3ad0e6d88ed849074989dc36698c01209921449
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71168751"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73749684"
 ---
 # <a name="troubleshoot-remote-desktop-connections-to-an-azure-virtual-machine"></a>Azure-beli virtuális géphez Távoli asztal kapcsolatok hibáinak megoldása
 A Windows-alapú Azure-beli virtuális gépek (VM) RDP protokollon alapuló kapcsolata több okból is meghiúsulhat. A kapcsolat hiányában nem tudja elérni a virtuális gépet. A probléma forrása lehet a virtuális gép távoli asztali szolgáltatása, a hálózati kapcsolat vagy a gazdaszámítógép távoli asztali ügyfele. Ez a cikk végigvezeti Önt az RDP-kapcsolatok problémáinak megoldásához leggyakrabban használt módszereken. 
 
-Ha a cikk bármely pontján további segítségre van szüksége, vegye fel a kapcsolatot az Azure-szakértőkkel [az MSDN Azure-ban, és stack overflow fórumokat](https://azure.microsoft.com/support/forums/)is. Másik lehetőségként a egy Azure-támogatási esemény is fájl. Nyissa meg az [Azure támogatási webhelyét](https://azure.microsoft.com/support/options/) , és válassza a **támogatás kérése**lehetőséget.
+Ha a cikk bármely pontján további segítségre van szüksége, vegye fel a kapcsolatot az Azure-szakértőkkel [az MSDN Azure-ban, és stack overflow fórumokat](https://azure.microsoft.com/support/forums/)is. Másik lehetőségként egy Azure-támogatási incidenst is megadhat. Nyissa meg az [Azure támogatási webhelyét](https://azure.microsoft.com/support/options/) , és válassza a **támogatás kérése**lehetőséget.
 
-[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
+ 
 
 <a id="quickfixrdp"></a>
 
@@ -86,7 +86,7 @@ Az egyes hibaelhárítási lépések után próbálkozzon újra a virtuális gé
     ![A felhasználó hitelesítő adatainak alaphelyzetbe állítása a Azure Portalban](./media/troubleshoot-rdp-connection/reset-password.png)
 7. **Indítsa újra a virtuális gépet**. Ez a hibaelhárítási lépés bármilyen mögöttes problémát kijavítani tud, amely maga a virtuális gép.
    
-    Válassza ki a virtuális gépet a Azure Portalon, majd kattintson az **Áttekintés** fülre. Kattintson az **Újraindítás** gombra:
+    Válassza ki a virtuális gépet a Azure Portalon, majd kattintson az **Áttekintés** fülre. kattintson az **Újraindítás** gombra:
    
     ![Indítsa újra a virtuális gépet a Azure Portal](./media/troubleshoot-rdp-connection/restart-vm.png)
 8. **Telepítse újra a virtuális gépet**. Ez a hibaelhárítási lépés újratelepíti a virtuális gépet egy másik gazdagépre az Azure-ban, hogy javítsa az összes mögöttes platformot vagy hálózati problémát.
@@ -106,16 +106,16 @@ Ha továbbra is RDP-problémákba ütközik, [Nyisson meg egy támogatási kér�
 ## <a name="troubleshoot-using-azure-powershell"></a>Hibakeresés a Azure PowerShell használatával
 Ha még nem tette meg, [telepítse és konfigurálja a legújabb Azure PowerShell](/powershell/azure/overview).
 
-Az alábbi példák olyan `myResourceGroup`változókat használnak, mint a, `myVM`a és `myVMAccessExtension`a. Cserélje le ezeket a változók nevét és helyét a saját értékeire.
+Az alábbi példák olyan változókat használnak, mint például a `myResourceGroup`, a `myVM`és a `myVMAccessExtension`. Cserélje le ezeket a változók nevét és helyét a saját értékeire.
 
 > [!NOTE]
-> A felhasználói hitelesítő adatok és az RDP-konfiguráció alaphelyzetbe állítása a [set-AzVMAccessExtension PowerShell-](https://docs.microsoft.com/powershell/module/az.compute/set-azvmaccessextension) parancsmag használatával végezhető el. Az alábbi példákban `myVMAccessExtension` a folyamat részeként megadott nevet adja meg. Ha korábban már használta a VMAccessAgent, a segítségével megtekintheti a meglévő bővítmény nevét a használatával `Get-AzVM -ResourceGroupName "myResourceGroup" -Name "myVM"` a virtuális gép tulajdonságainak ellenőrzéséhez. A név megtekintéséhez tekintse meg a kimenet "Extensions" (bővítmények) szakaszát.
+> A felhasználói hitelesítő adatok és az RDP-konfiguráció alaphelyzetbe állítása a [set-AzVMAccessExtension PowerShell-](https://docs.microsoft.com/powershell/module/az.compute/set-azvmaccessextension) parancsmag használatával végezhető el. Az alábbi példákban `myVMAccessExtension` a folyamat részeként megadott nevet. Ha korábban már dolgozott a VMAccessAgent, a meglévő bővítmény nevét a `Get-AzVM -ResourceGroupName "myResourceGroup" -Name "myVM"` használatával szerezheti be a virtuális gép tulajdonságainak ellenőrzéséhez. A név megtekintéséhez tekintse meg a kimenet "Extensions" (bővítmények) szakaszát.
 
 Az egyes hibaelhárítási lépések után próbálkozzon újra a virtuális géphez való csatlakozással. Ha továbbra sem tud kapcsolatot létesíteni, próbálkozzon a következő lépéssel.
 
 1. **Az RDP-kapcsolat alaphelyzetbe állítása**. Ez a hibaelhárítási lépés alaphelyzetbe állítja az RDP-konfigurációt, ha a távoli kapcsolatok le vannak tiltva, vagy a Windows tűzfal szabályai blokkolja az RDP-t, például.
    
-    Az alábbi példa az RDP-kapcsolat alaphelyzetbe állítása `myVM` egy nevű `WestUS` virtuális gépen a következő nevű `myResourceGroup`erőforráscsoporthoz:
+    A következő példa visszaállítja az RDP-kapcsolatokat egy `myVM` nevű virtuális gépen a `WestUS` helyen és az `myResourceGroup`nevű erőforráscsoporthoz:
    
     ```powershell
     Set-AzVMAccessExtension -ResourceGroupName "myResourceGroup" `
@@ -123,7 +123,7 @@ Az egyes hibaelhárítási lépések után próbálkozzon újra a virtuális gé
     ```
 2. **Ellenőrizze a hálózati biztonsági csoport szabályait**. Ez a hibaelhárítási lépés azt ellenőrzi, hogy a hálózati biztonsági csoportban van-e egy olyan szabály, amely engedélyezi az RDP-forgalmat. Az RDP-hez tartozó alapértelmezett port a 3389-es TCP-port. A virtuális gép létrehozásakor nem lehet automatikusan létrehozni egy olyan szabályt, amely engedélyezi az RDP-forgalmat.
    
-    Először rendelje hozzá a hálózati biztonsági csoport összes konfigurációs adatait a `$rules` változóhoz. Az alábbi példa a nevű `myNetworkSecurityGroup` `myResourceGroup`erőforráscsoport nevű hálózati biztonsági csoport adatait kérdezi le:
+    Először rendelje hozzá a hálózati biztonsági csoport összes konfigurációs adatait a `$rules` változóhoz. Az alábbi példa az `myResourceGroup`nevű erőforráscsoport `myNetworkSecurityGroup` nevű hálózati biztonsági csoport adatait kérdezi le:
    
     ```powershell
     $rules = Get-AzNetworkSecurityGroup -ResourceGroupName "myResourceGroup" `
@@ -136,7 +136,7 @@ Az egyes hibaelhárítási lépések után próbálkozzon újra a virtuális gé
     $rules.SecurityRules
     ```
    
-    Az alábbi példa egy érvényes biztonsági szabályt mutat be, amely engedélyezi az RDP-forgalmat. A (z),, és `Direction` helyesen vannak konfigurálva: `Protocol` `DestinationPortRange` `Access`
+    Az alábbi példa egy érvényes biztonsági szabályt mutat be, amely engedélyezi az RDP-forgalmat. Megtekintheti a `Protocol`, `DestinationPortRange`, `Access`és `Direction` konfigurálását:
    
     ```powershell
     Name                     : default-allow-rdp
@@ -157,13 +157,13 @@ Az egyes hibaelhárítási lépések után próbálkozzon újra a virtuális gé
     Ha nem rendelkezik olyan szabállyal, amely engedélyezi az RDP-forgalmat, [hozzon létre egy hálózati biztonsági csoportra vonatkozó szabályt](../windows/nsg-quickstart-powershell.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). Engedélyezze a 3389-es TCP-portot.
 3. **Felhasználói hitelesítő adatok alaphelyzetbe állítása**. Ez a hibaelhárítási lépés alaphelyzetbe állítja a jelszót a helyi rendszergazdai fiókon, amelyet akkor ad meg, ha nem tudja, vagy elfelejtette a hitelesítő adatokat.
    
-    Először adja meg a felhasználónevet és az új jelszót úgy, hogy a következő módon `$cred` rendeli hozzá a hitelesítő adatokat a változóhoz:
+    Először adja meg a felhasználónevet és az új jelszót úgy, hogy a következő módon rendeli hozzá a hitelesítő adatokat a `$cred` változóhoz:
    
     ```powershell
     $cred=Get-Credential
     ```
    
-    Most frissítse a hitelesítő adatokat a virtuális gépen. A következő példa frissíti a hitelesítő adatokat egy nevű `myVM` virtuális gépen a `WestUS` (z) nevű helyen és az erőforráscsoport neve `myResourceGroup`alatt:
+    Most frissítse a hitelesítő adatokat a virtuális gépen. A következő példa egy `myVM` nevű virtuális gép hitelesítő adatait frissíti a `WestUS` helyen és az `myResourceGroup`nevű erőforráscsoport-csoporton:
    
     ```powershell
     Set-AzVMAccessExtension -ResourceGroupName "myResourceGroup" `
@@ -173,14 +173,14 @@ Az egyes hibaelhárítási lépések után próbálkozzon újra a virtuális gé
     ```
 4. **Indítsa újra a virtuális gépet**. Ez a hibaelhárítási lépés bármilyen mögöttes problémát kijavítani tud, amely maga a virtuális gép.
    
-    A következő példa újraindítja a nevű virtuális gépet `myVM` a nevű `myResourceGroup`erőforráscsoporthoz:
+    A következő példa újraindítja `myVM` nevű virtuális gépet az `myResourceGroup`nevű erőforráscsoporthoz:
    
     ```powershell
     Restart-AzVM -ResourceGroup "myResourceGroup" -Name "myVM"
     ```
 5. **Telepítse újra a virtuális gépet**. Ez a hibaelhárítási lépés újratelepíti a virtuális gépet egy másik gazdagépre az Azure-ban, hogy javítsa az összes mögöttes platformot vagy hálózati problémát.
    
-    A következő példa újratelepíti a nevű `myVM` virtuális gépet a `WestUS` (z) nevű és az erőforráscsoport neve `myResourceGroup`:
+    A következő példa újratelepíti a `myVM` nevű virtuális gépet a `WestUS` helyen és az `myResourceGroup`nevű erőforráscsoport-csoportba:
    
     ```powershell
     Set-AzVM -Redeploy -ResourceGroupName "myResourceGroup" -Name "myVM"
@@ -224,7 +224,7 @@ Az egyes hibaelhárítási lépések után próbálkozzon újra a virtuális gé
     ![A felhasználó hitelesítő adatainak alaphelyzetbe állítása a Azure Portalban](./media/troubleshoot-rdp-connection/classic-reset-password.png)
 6. **Indítsa újra a virtuális gépet**. Ez a hibaelhárítási lépés bármilyen mögöttes problémát kijavítani tud, amely maga a virtuális gép.
    
-    Válassza ki a virtuális gépet a Azure Portalon, majd kattintson az **Áttekintés** fülre. Kattintson az **Újraindítás** gombra:
+    Válassza ki a virtuális gépet a Azure Portalon, majd kattintson az **Áttekintés** fülre. kattintson az **Újraindítás** gombra:
    
     ![Indítsa újra a virtuális gépet a Azure Portal](./media/troubleshoot-rdp-connection/classic-restart-vm.png)
 
@@ -237,8 +237,8 @@ Előfordulhat, hogy egy adott hibaüzenet jelenik meg, amikor RDP-kapcsolaton ke
 
 * [A távoli munkamenet le lett választva, mert nincs elérhető távoli asztal licenckiszolgálóra a licenc biztosításához](troubleshoot-specific-rdp-errors.md#rdplicense).
 * [Távoli asztal nem találja a "Name" nevű számítógépet](troubleshoot-specific-rdp-errors.md#rdpname).
-* [Hitelesítési hiba történt. Nem lehet felvenni a kapcsolatot](troubleshoot-specific-rdp-errors.md#rdpauth)a helyi biztonsági szolgáltatóval.
-* [Windows biztonsági hiba: A hitelesítő adatai nem működnek](troubleshoot-specific-rdp-errors.md#wincred).
+* [Hitelesítési hiba történt. Nem lehet felvenni a kapcsolatot a helyi biztonsági szolgáltatóval](troubleshoot-specific-rdp-errors.md#rdpauth).
+* [Windows biztonsági hiba: a hitelesítő adatai nem működnek](troubleshoot-specific-rdp-errors.md#wincred).
 * [Ez a számítógép nem tud kapcsolódni a távoli számítógéphez](troubleshoot-specific-rdp-errors.md#rdpconnect).
 
 ## <a name="additional-resources"></a>További források

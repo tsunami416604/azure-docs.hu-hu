@@ -13,26 +13,26 @@ ms.topic: tutorial
 ms.date: 12/05/2018
 ms.author: tomfitz
 ms.custom: mvc
-ms.openlocfilehash: cb0050f79f2f6a38b9cd58ee87aa88899f0f5a15
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: 3a0821885361fa4781c75b0ed4caa71f9fda37a1
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71674991"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73749126"
 ---
-# <a name="tutorial-learn-about-windows-virtual-machine-management-with-azure-powershell"></a>Oktatóanyag: A Windows rendszerű virtuális gépek felügyeletének megismerése Azure PowerShell
+# <a name="tutorial-learn-about-windows-virtual-machine-management-with-azure-powershell"></a>Oktatóanyag: a Windows rendszerű virtuális gépek felügyeletének megismerése Azure PowerShell
 
 [!INCLUDE [Resource Manager governance introduction](../../../includes/resource-manager-governance-intro.md)]
 
 ## <a name="launch-azure-cloud-shell"></a>Az Azure Cloud Shell indítása
 
-[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+ 
 
 Az Azure Cloud Shell egy olyan ingyenes interaktív kezelőfelület, amelyet a jelen cikkben található lépések futtatására használhat. A fiókjával való használat érdekében a gyakran használt Azure-eszközök már előre telepítve és konfigurálva vannak rajta. 
 
-A Cloud Shell megnyitásához válassza a **Kipróbálás** lehetőséget egy kódblokk jobb felső sarkában. A Cloud Shellt egy külön böngészőlapon is elindíthatja a [https://shell.azure.com/powershell](https://shell.azure.com/powershell) cím megnyitásával. A **Másolás** kiválasztásával másolja és illessze be a kódrészleteket a Cloud Shellbe, majd nyomja le az Enter billentyűt a futtatáshoz.
+A Cloud Shell megnyitásához válassza a **Kipróbálás** lehetőséget egy kódblokk jobb felső sarkában. A Cloud Shellt egy külön böngészőlapon is elindíthatja a [https://shell.azure.com/powershell](https://shell.azure.com/powershell) cím megnyitásával. A **Copy** (másolás) gombra kattintva másolja és illessze be a kódot a Cloud Shellbe, majd nyomja le az Enter billentyűt a futtatáshoz.
 
-## <a name="understand-scope"></a>A hatókör megismerése
+## <a name="understand-scope"></a>A hatókör bemutatása
 
 [!INCLUDE [Resource Manager governance scope](../../../includes/resource-manager-governance-scope.md)]
 
@@ -70,7 +70,7 @@ New-AzRoleAssignment -ObjectId $adgroup.id `
   -RoleDefinitionName "Virtual Machine Contributor"
 ```
 
-Ha olyan hibaüzenetet kap, amely **@no__t 1guid > nem létezik a címtárban**, az új csoport nem lett propagálva az egész Azure Active Directory. Próbálja meg ismét futtatni a parancsot.
+Ha olyan hibaüzenetet kap, amely **\<GUID-> nem létezik a címtárban**, az új csoport nem lett propagálva az egész Azure Active Directory. Próbálja meg ismét futtatni a parancsot.
 
 A folyamatot általában a *Hálózati közreműködő* és a *Tárfiók-közreműködő* szerepkörön is végre kell hajtani, hogy a felhasználók megkapják az üzembe helyezett erőforrások kezeléséhez szükséges jogosultságokat. Ebben a cikkben kihagyhatja ezeket a lépéseket.
 

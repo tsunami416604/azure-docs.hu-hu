@@ -1,7 +1,7 @@
 ---
-title: Felhasználói bemutató példák a szövegelemzési API
+title: Példa a Text Analytics API felhasználói forgatókönyvei
 titleSuffix: Azure Cognitive Services
-description: Ez a cikk segítségével megtekintheti a szövegelemzési API integrálása a szolgáltatások és -folyamatok számára néhány gyakori forgatókönyvet.
+description: Ebből a cikkből megtudhatja, hogyan integrálhatja a Text Analytics APIt a szolgáltatásaiba és folyamataiba.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,42 +10,42 @@ ms.subservice: text-analytics
 ms.topic: overview
 ms.date: 04/04/2019
 ms.author: aahi
-ms.openlocfilehash: d8d2aed16b5af60c44501e6d72332783a164ff91
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: 19421788eea59ea250efbaa656266da49dc3b42f
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67478388"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73742730"
 ---
-# <a name="example-user-scenarios-for-the-text-analytics-api"></a>Felhasználói bemutató példák a szövegelemzési API
+# <a name="example-user-scenarios-for-the-text-analytics-api"></a>Példa a Text Analytics API felhasználói forgatókönyvei
 
-A Text Analytics API egy felhőalapú szolgáltatás, amely fejlett, természetes nyelvi feldolgozás szöveg felett. Ez a cikk ismerteti az egyes használati példák esetében az API-t integrálása az üzleti megoldásokat és folyamatokat. 
+A Text Analytics API egy felhőalapú szolgáltatás, amely fejlett természetes nyelvi feldolgozást biztosít szövegen keresztül. Ez a cikk néhány példát mutat be arra, hogyan integrálhatja az API-t üzleti megoldásaiba és folyamataiba. 
 
-## <a name="analyze-survey-results"></a>Elemezheti a felmérés eredménye
+## <a name="analyze-survey-results"></a>Felmérés eredményeinek elemzése
 
-Hasznos információkhoz juthat az ügyfelek és alkalmazottak bizalmas felmérés eredménye a nyers szöveg válaszok API használatával Hangulatelemzés feldolgozásával. Összesítés a csapatával az eredményeket elemzéshez, nyomon követése, és a vezetési bevonására.
+Elemzéseket készíthet az ügyfelek és az alkalmazottak felmérési eredményeiről azáltal, hogy a nyers szöveges válaszokat a Hangulatelemzés használatával dolgozza fel. Összesítheti az elemzés, a nyomon követés és a bevezetések eredményeit.
 
-![Kép arról, hogyan hangulatelemzés az ügyfelek és alkalmazottak bizalmas felmérések végrehajtásához.](media/use-cases/survey-results.svg)
+![Egy rendszerkép, amely leírja, hogyan végezheti el az ügyfelek és az alkalmazottak felméréseit.](media/use-cases/survey-results.svg)
 
 ## <a name="analyze-recorded-inbound-customer-calls"></a>Rögzített bejövő ügyfelek hívásainak elemzése
 
-Elemzési adatokat nyerhet ki a vásárlói szolgáltatások szöveg-beszéd átalakítás, Hangulatelemzés és Kulcskifejezések kulcs használatával. Az eredmények megjelenítése a Power BI-irányítópultra vagy jobban megismerheti ügyfelei, jelölje ki a vásárlói szolgáltatás trendeket és a meghajtó customer engagement portálon. Küldje el API-kérések egy kötegelt jelentéskészítéshez vagy a valós idejű beavatkozás. Lásd: [mintakód](https://github.com/rlagh2/callcenteranalytics).
+Text to Speech, Hangulatelemzés és Kulcsszókeresés használatával kinyerheti az ügyfelek által kezdeményezett bepillantást. Jelenítse meg az eredményeket Power BI irányítópulton vagy egy portálon az ügyfelek jobb megismeréséhez, az ügyfélszolgálat trendjeinek kiemeléséhez és az ügyfelek bevonásához. API-kéréseket küldhet a jelentéskészítési kötegként, vagy valós időben a beavatkozáshoz. Lásd: [mintakód](https://github.com/rlagh2/callcenteranalytics).
 
-![Egy képet arról, hogyan automatizálhatja származó ügyfélszolgálati hívások hangulatelemzés használatával](media/use-cases/azure-inbound.svg)
+![Egy rendszerkép, amely leírja, hogyan automatizálható az ügyfélszolgálati hívások beszerzése az adatelemzések használatával](media/use-cases/azure-inbound.svg)
 
-## <a name="process-and-categorize-support-incidents"></a>Dolgozza fel, és a támogatási incidensek kategorizálása
+## <a name="process-and-categorize-support-incidents"></a>Támogatási incidensek feldolgozása és kategorizálása
 
-Kulcs kulcsszókeresés és entitások felismerése használatával elküldött strukturálatlan szöveges formátum támogatási kérelmeket. A kibontott mondatokat és entitások használatával kategorizálása a kérelem erőforrás tervezési és trendelemzés céljából.
+Az Kulcsszókeresés és az entitások felismerésével feldolgozhatja a strukturálatlan szöveges formátumban küldött támogatási kérelmeket. A kinyert kifejezésekkel és entitásokkal kategorizálhatja az erőforrás-tervezésre és a trend elemzésére vonatkozó kéréseket.
 
-![Kép: az incidensekkel kapcsolatos jelentéseket és a trendek csoportosítására a kulcsfontosságú kifejezések kinyerése és egyéb entitások felismerése használata](media/use-cases/support-incidents.svg)
+![Egy rendszerkép, amely leírja, hogyan használható a Key kifejezés kinyerése és az entitások felismerése az incidensek jelentéseinek és trendjeinek kategorizálásához](media/use-cases/support-incidents.svg)
 
-## <a name="monitor-your-products-social-media-feeds"></a>A termék, közösségi hírcsatornákról figyelése
+## <a name="monitor-your-products-social-media-feeds"></a>A termék közösségi média-hírcsatornáinak monitorozása
 
-Felhasználói visszajelzés a termék twitter vagy Facebook-oldalon figyelheti. Új termék világpiaci felé az ügyfelek hangulatának elemzéséhez, kinyerheti a kulcsfontosságú kifejezéseket, szolgáltatásokat és a funkciókérések vagy a cím felhasználói panaszok, ahogy azok az adatok használatával.
+Felhasználói termékkel kapcsolatos visszajelzések figyelése a termék Twitter-vagy Facebook-oldalán. Az adatok segítségével elemezheti az ügyfelek hangulatát az új termékek bevezetésekor, kinyerheti a funkciókkal és szolgáltatásokkal kapcsolatos fontos kifejezéseket, vagy megtekintheti az ügyfelekre vonatkozó panaszokat.
 
-![Egy képet arról, hogyan figyelheti a termék- és visszajelzés a közösségi média kulcsszókeresést használatával](media/use-cases/social-feed.svg)
+![Egy rendszerkép, amely leírja, hogyan figyelheti meg a termékeit és a vállalati visszajelzéseket a közösségi médián a kulcsfontosságú kifejezés kibontásával](media/use-cases/social-feed.svg)
 
 ## <a name="next-steps"></a>További lépések
 
-* [Mi az a szövegelemzési API-t?](overview.md)
-* [A Text Analytics API használatával egy kérelem küldéseC#](quickstarts/csharp.md)
+* [Mi a Text Analytics API?](overview.md)
+* [Kérelem küldése a Text Analytics APInak az ügyféloldali kódtár használatával](quickstarts/text-analytics-sdk.md)

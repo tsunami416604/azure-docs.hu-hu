@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/05/2019
 ms.author: memildin
-ms.openlocfilehash: d705174f46ba38f37ae8cce9839c2d1f63ab6bf8
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
-ms.translationtype: HT
+ms.openlocfilehash: 6b6acb0ae1452795fe02906779b920e4b41f9a55
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73664273"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73748396"
 ---
 # <a name="threat-detection-for-cloud-native-computing-in-azure-security-center"></a>Fenyegetések észlelése a Felhőbeli natív számítástechnika Azure Security Center
 
@@ -66,7 +66,7 @@ A fenyegetéseket különböző szinteken észleljük:
     >[!NOTE]
     > Ha úgy dönt, hogy nem telepíti az ügynököket a gazdagépekre, csak a veszélyforrások észlelésével járó előnyök és riasztások egy részhalmazát fogja kapni. A hálózati elemzéssel és a rosszindulatú kiszolgálókkal folytatott kommunikációval kapcsolatos riasztásokat továbbra is megkapja.
 
-* **AK-fürt szintjén**a Kubernetes-naplózási elemzések alapján észlelt fenyegetések észlelése. Az **ügynök** nélküli figyelés engedélyezéséhez adja hozzá az előfizetéshez a Kubernetes lehetőséget a **díjszabási & beállítások** lapon (lásd a [díjszabást](security-center-pricing.md)). A riasztások ezen a szinten történő létrehozásához Security Center figyeli az AK által felügyelt szolgáltatásokat az AK által beolvasott naplók használatával. Az ezen a szinten található események közé tartoznak például az elérhető Kubernetes-irányítópultok, a magas jogosultsági szintű szerepkörök létrehozása és a bizalmas csatlakoztatások létrehozása. 
+* **AK-fürt szintjén**a Kubernetes-naplózási elemzések alapján észlelt fenyegetések észlelése. Az **ügynök** nélküli figyelés engedélyezéséhez adja hozzá az előfizetéshez a Kubernetes lehetőséget a **díjszabási & beállítások** lapon (lásd a [díjszabást](security-center-pricing.md)). A riasztások ezen a szinten történő létrehozásához Security Center figyeli az AK által felügyelt szolgáltatásokat az AK által beolvasott naplók használatával. Az ezen a szinten található események közé tartoznak például az elérhető Kubernetes-irányítópultok, a magas jogosultsági szintű szerepkörök létrehozása és a bizalmas csatlakoztatások létrehozása.
 
     >[!NOTE]
     > A Security Center észlelési riasztásokat hoz létre az Azure Kubernetes szolgáltatás műveleteihez és központi telepítések esetén, miután a Kubernetes beállítás engedélyezve van az előfizetési beállításokban. 

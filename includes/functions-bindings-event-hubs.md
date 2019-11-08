@@ -4,12 +4,12 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 03/05/2019
 ms.author: cshoe
-ms.openlocfilehash: ef3dc13bd7d36e11f3109ef96a6f453b59afe145
-ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
+ms.openlocfilehash: 0f94c89a52de138b261796cbef25c0acb57622c4
+ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72809340"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73799882"
 ---
 ## <a name="trigger"></a>Eseményindító
 
@@ -385,13 +385,13 @@ Az alábbi táblázat a *function. JSON* fájlban és a `EventHubTrigger` attrib
 
 |function. JSON-tulajdonság | Attribútum tulajdonsága |Leírás|
 |---------|---------|----------------------|
-|**type** | – | `eventHubTrigger`értékre kell állítani. Ez a tulajdonság automatikusan be van állítva, amikor létrehozza az triggert a Azure Portalban.|
-|**direction** | – | `in`értékre kell állítani. Ez a tulajdonság automatikusan be van állítva, amikor létrehozza az triggert a Azure Portalban. |
-|**név** | – | Annak a változónak a neve, amely a függvény kódjában szereplő Event tételt jelöli. |
+|**type** | n/a | `eventHubTrigger`értékre kell állítani. Ez a tulajdonság automatikusan be van állítva, amikor létrehozza az triggert a Azure Portalban.|
+|**direction** | n/a | `in`értékre kell állítani. Ez a tulajdonság automatikusan be van állítva, amikor létrehozza az triggert a Azure Portalban. |
+|**név** | n/a | Annak a változónak a neve, amely a függvény kódjában szereplő Event tételt jelöli. |
 |**elérési útja** |**EventHubName** | Csak 1. x függvények. Az Event hub neve. Ha az Event hub neve szerepel a kapcsolati sztringben is, ez az érték felülbírálja ezt a tulajdonságot futásidőben. |
 |**eventHubName** |**EventHubName** | Csak 2. x funkció. Az Event hub neve. Ha az Event hub neve szerepel a kapcsolati sztringben is, ez az érték felülbírálja ezt a tulajdonságot futásidőben. |
 |**consumerGroup** |**ConsumerGroup** | Egy opcionális tulajdonság, amely a központban lévő eseményekre való előfizetéshez használt [fogyasztói csoportot](../articles/event-hubs/event-hubs-features.md#event-consumers) állítja be. Ha nincs megadva, a rendszer a `$Default` fogyasztói csoportot használja. |
-|**számosság** | – | A Javascripthez. A kötegelt feldolgozás engedélyezéséhez állítsa `many` értékre.  Ha nincs megadva vagy `one`értékre van állítva, a rendszer a függvénynek átadott üzenetet küld. |
+|**számosság** | n/a | A Javascripthez. A kötegelt feldolgozás engedélyezéséhez állítsa `many` értékre.  Ha nincs megadva vagy `one`értékre van állítva, a rendszer a függvénynek átadott üzenetet küld. |
 |**kapcsolat** |**Kapcsolat** | Az Event hub névteréhez tartozó kapcsolati sztringet tartalmazó Alkalmazásbeállítás neve. Másolja ezt a kapcsolati karakterláncot a [névtér](../articles/event-hubs/event-hubs-create.md#create-an-event-hubs-namespace) **kapcsolati adatok** gombjára kattintva, nem az Event hub-t. A kapcsolódási karakterláncnak legalább olvasási engedéllyel kell rendelkeznie az trigger aktiválásához.|
 |**elérési útja**|**EventHubName**|Az Event hub neve. Az alkalmazás beállításain keresztül lehet hivatkozni `%eventHubName%`|
 
@@ -401,7 +401,7 @@ Az alábbi táblázat a *function. JSON* fájlban és a `EventHubTrigger` attrib
 
 A Event Hubs trigger számos [metaadat-tulajdonságot](../articles/azure-functions/./functions-bindings-expressions-patterns.md)biztosít. Ezek a tulajdonságok a más kötésekben lévő kötési kifejezések vagy a kódban szereplő paraméterek részeként is használhatók. Ezek a [EventData](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.eventdata) osztály tulajdonságai.
 
-|Tulajdonság|Type (Típus)|Leírás|
+|Tulajdonság|Típus|Leírás|
 |--------|----|-----------|
 |`PartitionContext`|[PartitionContext](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.partitioncontext)|A `PartitionContext` példány.|
 |`EnqueuedTimeUtc`|`DateTime`|A várólistán lévő idő UTC szerint.|
@@ -643,7 +643,7 @@ def main(timer: func.TimerRequest) -> str:
 Az alábbi példa egy Java-függvényt mutat be, amely az aktuális időponthoz tartozó üzenetet ír egy Event hub-ba.
 
 ```java
-@}FunctionName("sendTime")
+@FunctionName("sendTime")
 @EventHubOutput(name = "event", eventHubName = "samples-workitems", connection = "AzureEventHubConnection")
 public String sendTime(
    @TimerTrigger(name = "sendTimeTrigger", schedule = "0 *&#47;5 * * * *") String timerInfo)  {
@@ -676,9 +676,9 @@ Az alábbi táblázat a *function. JSON* fájlban és a `EventHub` attribútumba
 
 |function. JSON-tulajdonság | Attribútum tulajdonsága |Leírás|
 |---------|---------|----------------------|
-|**type** | – | "EventHub" értékre kell állítani. |
-|**direction** | – | "Out" értékre kell állítani. Ez a paraméter automatikusan be van állítva, amikor létrehozza a kötést a Azure Portalban. |
-|**név** | – | Az eseményt jelölő függvény kódjában használt változó neve. |
+|**type** | n/a | "EventHub" értékre kell állítani. |
+|**direction** | n/a | "Out" értékre kell állítani. Ez a paraméter automatikusan be van állítva, amikor létrehozza a kötést a Azure Portalban. |
+|**név** | n/a | Az eseményt jelölő függvény kódjában használt változó neve. |
 |**elérési útja** |**EventHubName** | Csak 1. x függvények. Az Event hub neve. Ha az Event hub neve szerepel a kapcsolati sztringben is, ez az érték felülbírálja ezt a tulajdonságot futásidőben. |
 |**eventHubName** |**EventHubName** | Csak 2. x funkció. Az Event hub neve. Ha az Event hub neve szerepel a kapcsolati sztringben is, ez az érték felülbírálja ezt a tulajdonságot futásidőben. |
 |**kapcsolat** |**Kapcsolat** | Az Event hub névteréhez tartozó kapcsolati sztringet tartalmazó Alkalmazásbeállítás neve. Másolja ezt a kapcsolati karakterláncot a *névtér* **kapcsolati adatok** gombjára kattintva, nem az Event hub-t. Ez a kapcsolati karakterláncnak küldési engedéllyel kell rendelkeznie az üzenet küldéséhez az esemény-adatfolyamba.|
@@ -687,15 +687,15 @@ Az alábbi táblázat a *function. JSON* fájlban és a `EventHub` attribútumba
 
 ## <a name="output---usage"></a>Kimenet – használat
 
-A C# és C# a szkriptben az üzenetek küldését metódus-paraméter (például`out string paramName`) használatával küldheti el. A C# szkriptben `paramName` a *function. JSON*`name` tulajdonságában megadott érték. Több üzenet írásához `ICollector<string>` vagy `IAsyncCollector<string>`t is használhat `out string`helyett.
+A C# és C# a szkriptben az üzenetek küldését metódus-paraméter (például `out string paramName`) használatával küldheti el. A C# szkriptben `paramName` a *function. JSON*`name` tulajdonságában megadott érték. Több üzenet írásához `ICollector<string>` vagy `IAsyncCollector<string>`t is használhat `out string`helyett.
 
 A JavaScriptben `context.bindings.<name>`használatával férhet hozzá a kimeneti eseményhez. `<name>` a *function. json*`name` tulajdonságában megadott érték.
 
 ## <a name="exceptions-and-return-codes"></a>Kivételek és visszatérési kódok
 
-| Kötés | Leírások |
+| Kötés | Referencia |
 |---|---|
-| Event Hubs-eseményközpontok | [Üzemeltetési útmutató](https://docs.microsoft.com/rest/api/eventhub/publisher-policy-operations) |
+| Eseményközpont | [Üzemeltetési útmutató](https://docs.microsoft.com/rest/api/eventhub/publisher-policy-operations) |
 
 <a name="host-json"></a>  
 
@@ -724,5 +724,5 @@ Ez a szakasz a kötéshez elérhető globális konfigurációs beállításokat 
 |Tulajdonság  |Alapértelmezett | Leírás |
 |---------|---------|---------|
 |maxBatchSize|64|A fogadott események száma fogadási hurokban.|
-|prefetchCount|–|Az alapul szolgáló EventProcessorHost által használt alapértelmezett PrefetchCount.|
+|prefetchCount|n/a|Az alapul szolgáló EventProcessorHost által használt alapértelmezett PrefetchCount.|
 |batchCheckpointFrequency|1|Az EventHub kurzor ellenőrzőpontjának létrehozása előtt feldolgozandó eseményvezérelt kötegek száma.|

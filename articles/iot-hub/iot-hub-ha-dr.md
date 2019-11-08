@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/21/2019
 ms.author: philmea
-ms.openlocfilehash: 533a199f75baa5a27ed06698f22d4d046be45507
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
-ms.translationtype: HT
+ms.openlocfilehash: 173be8207df2f0128dfc9ae3c36aa3c3dc392bee
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73607875"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73748567"
 ---
 # <a name="iot-hub-high-availability-and-disaster-recovery"></a>Magas rendelkezésre állás és vész-helyreállítás IoT Hub
 
@@ -62,7 +62,7 @@ Miután az IoT hub feladatátvételi művelete befejeződött, az eszközről é
 > [!CAUTION]
 > - A IoT Hub beépített események végpontjának az Event hub-kompatibilis neve és végpontja módosult a feladatátvétel után. Ha az Event hub-ügyfél vagy az esemény-feldolgozó gazdagép használatával fogad telemetria üzeneteket a beépített végpontról, az [IoT hub kapcsolati karakterláncát kell használnia](iot-hub-devguide-messages-read-builtin.md#read-from-the-built-in-endpoint) a kapcsolat létrehozásához. Ez biztosítja, hogy a háttérbeli alkalmazások a feladatátvétel utáni manuális beavatkozás nélkül is működjenek. Ha az Event hub-kompatibilis nevet és végpontot használja közvetlenül a háttérbeli alkalmazásban, újra kell konfigurálnia az alkalmazást úgy, hogy a feladatátvételt követően [beolvassa az új Event hub-kompatibilis nevet és végpontot](iot-hub-devguide-messages-read-builtin.md#read-from-the-built-in-endpoint) a műveletek folytatásához.
 >
-> - A Storage szolgáltatásba történő útválasztás esetén ajánlott bejelentkezni a tárolóba, majd megismételni őket, hogy minden tárolót beolvasson a partíciós feltételezések nélkül. A partíció tartománya esetleg változhat a Microsoft által kezdeményezett feladatátvétel vagy manuális feladatátvétel során. A Blobok listájának enumerálásával kapcsolatos információkért lásd: az [Azure Storage-ba történő útválasztás](iot-hub-devguide-messages-d2c.md#azure-storage).
+> - A tárolóba való útválasztás esetén ajánlott a Blobok vagy fájlok listázása, majd az azokhoz való iteráció, hogy a rendszer minden blobot vagy fájlt beolvasson a partíciós feltételezések elkészítése nélkül. A partíció tartománya esetleg változhat a Microsoft által kezdeményezett feladatátvétel vagy manuális feladatátvétel során. A [Blobok listázása API](https://docs.microsoft.com/rest/api/storageservices/list-blobs) -val enumerálhatja a Blobok listáját vagy a lista [ADLS Gen2 API](https://docs.microsoft.com/rest/api/storageservices/datalakestoragegen2/path/list) -ját a fájlok listájához. 
 
 ## <a name="microsoft-initiated-failover"></a>Microsoft által kezdeményezett feladatátvétel
 

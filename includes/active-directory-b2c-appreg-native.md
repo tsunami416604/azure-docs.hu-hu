@@ -5,18 +5,18 @@ ms.subservice: B2C
 ms.topic: include
 ms.date: 10/16/2019
 ms.author: marsma
-ms.openlocfilehash: bdc9c8f5a782704ec7f8cbaa31dd4cc27ed376cc
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 0b5c5fdddeea961858a2c3b8cd69c365bb28f26e
+ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73468964"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73799879"
 ---
-Az alkalmazások Azure AD B2C-bérlőben való regisztrálásához használhatja a jelenlegi **alkalmazásokat** , vagy az új, egyesített **Alkalmazásregisztrációk (előzetes verzió)** élményt. [További információ az előzetes](https://aka.ms/b2cappregintro)verzióról.
+Az alkalmazások Azure AD B2C-bérlőben való regisztrálásához használhatja a jelenlegi **alkalmazásokat** , vagy az új, egyesített **Alkalmazásregisztrációk (előzetes verzió)** élményt. [További információ az új felületről](https://aka.ms/b2cappregintro).
 
 #### <a name="applicationstabapplications"></a>[Alkalmazások](#tab/applications/)
 
-1. Bejelentkezés az [Azure Portalra](https://portal.azure.com).
+1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
 1. Válassza ki a **címtár + előfizetés** szűrőt a felső menüben, majd válassza ki azt a könyvtárat, amely a Azure ad B2C bérlőjét tartalmazza.
 1. A bal oldali menüben válassza a **Azure ad B2C**lehetőséget. Vagy válassza a **minden szolgáltatás** lehetőséget, és keresse meg, majd válassza a **Azure ad B2C**lehetőséget.
 1. Válassza az **alkalmazások**lehetőséget, majd válassza a **Hozzáadás**lehetőséget.
@@ -29,7 +29,7 @@ Az alkalmazások Azure AD B2C-bérlőben való regisztrálásához használhatja
 
 #### <a name="app-registrations-previewtabapp-reg-preview"></a>[Alkalmazásregisztrációk (előzetes verzió)](#tab/app-reg-preview/)
 
-1. Bejelentkezés az [Azure Portalra](https://portal.azure.com).
+1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
 1. Válassza ki a **címtár + előfizetés** szűrőt a felső menüben, majd válassza ki azt a könyvtárat, amely a Azure ad B2C bérlőjét tartalmazza.
 1. A bal oldali menüben válassza a **Azure ad B2C**lehetőséget. Vagy válassza a **minden szolgáltatás** lehetőséget, és keresse meg, majd válassza a **Azure ad B2C**lehetőséget.
 1. Válassza a **Alkalmazásregisztrációk (előzetes verzió)** lehetőséget, majd válassza az **új regisztráció**lehetőséget.

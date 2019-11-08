@@ -1,7 +1,7 @@
 ---
 title: Kódminták – Content Moderator, .NET
 titleSuffix: Azure Cognitive Services
-description: Az SDK-n keresztül használhatja a .NET-alkalmazások Content Moderator.
+description: Ismerje meg, hogyan használható az Azure Cognitive Services Content Moderator a .NET-alkalmazásokban az SDK-n keresztül.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: sample
 ms.date: 01/10/2019
 ms.author: pafarley
-ms.openlocfilehash: 5a8deed7fa12688ee0d252ef0707be7a6b633e50
-ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
+ms.openlocfilehash: 930571c841146e0b12efbf7325915ba2b23a7efa
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73043989"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73744330"
 ---
 # <a name="content-moderator-net-sdk-samples"></a>.NET SDK-minták Content Moderator
 

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: a15d450d033c04c59f6981a887689f1fc08919f1
-ms.sourcegitcommit: 7868d1c40f6feb1abcafbffcddca952438a3472d
+ms.openlocfilehash: 42c674e236d769d48f6f17fc43494ac006219a8a
+ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71958855"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73795697"
 ---
 # <a name="azure-storage-encryption-for-data-at-rest"></a>Azure Storage-titkosítás a REST-adatokhoz
 
@@ -26,7 +26,7 @@ A Storage-fiókok titkosítása a teljesítmény szintjétől (standard vagy pr�
 
 A titkosítás nem befolyásolja az Azure Storage teljesítményét. Az Azure Storage-titkosításhoz nem jár további díj.
 
-További információ az Azure Storage-titkosítás alapjául szolgáló titkosítási modulokról: [Cryptography API: Következő generációs @ no__t-0.
+További információ az Azure Storage-titkosítás alapjául szolgáló kriptográfiai modulokról [: a kriptográfiai API: Next Generation](https://docs.microsoft.com/windows/desktop/seccng/cng-portal).
 
 ## <a name="about-encryption-key-management"></a>A titkosítási kulcsok kezelése
 
@@ -74,7 +74,7 @@ Az alábbi lista a diagram számozott lépéseit ismerteti:
 
 Az ügyfél által felügyelt kulcsokhoz való hozzáférés visszavonásához a Storage-fiókban tekintse meg a [Azure Key Vault PowerShell](https://docs.microsoft.com/powershell/module/azurerm.keyvault/) és [Azure Key Vault parancssori](https://docs.microsoft.com/cli/azure/keyvault)felület című témakört. A hozzáférés visszavonása hatékonyan blokkolja a Storage-fiókban lévő összes adattal való hozzáférést, mivel a titkosítási kulcs nem érhető el az Azure Storage-ban.
 
-Az [Azure Managed Disks](../../virtual-machines/windows/managed-disks-overview.md)nem támogatja az ügyfél által felügyelt kulcsok használatát.
+Az ügyfél által felügyelt kulcsok nyilvános előzetesként is elérhetők az Azure Managed Disks szolgáltatásban, az ügyfél által felügyelt kulcsok egy kicsit másképp működnek a felügyelt lemezeken, mint a többi tárterület. Részletekért tekintse [meg a témával kapcsolatos cikket](../../virtual-machines/linux/disk-encryption.md#customer-managed-keys-public-preview).
 
 Az ügyfél által felügyelt kulcsok Azure Storage-ban való használatáról a következő cikkekből tájékozódhat:
 
@@ -117,7 +117,7 @@ A kérelemben szereplő titkosítási kulcsok megadása nem kötelező. Ha azonb
 
 A blob Storage következő műveletei támogatják az ügyfél által biztosított titkosítási kulcsok küldését egy kérelemre:
 
-- [Put Blob](/rest/api/storageservices/put-blob)
+- [BLOB elhelyezése](/rest/api/storageservices/put-blob)
 - [Tiltási lista](/rest/api/storageservices/put-block-list)
 - [Put blokk](/rest/api/storageservices/put-block)
 - [Blokk elhelyezése URL-címről](/rest/api/storageservices/put-block-from-url)
@@ -140,11 +140,11 @@ A kérelemben átadott titkosítási kulcs elforgatásához töltse le a blobot,
 >
 > Ügyeljen arra, hogy a blob Storage-ba irányuló kérelemben megadott titkosítási kulcsot a Azure Key Vault. Ha a titkosítási kulcs nélküli tárolón vagy blobon próbálkozik írási művelettel, a művelet sikertelen lesz, és nem fog tudni hozzáférni az objektumhoz.
 
-### <a name="example-use-a-customer-provided-key-to-upload-a-blob-in-net"></a>Példa: A .NET-beli Blobok feltöltéséhez használja a felhasználó által megadott kulcsot
+### <a name="example-use-a-customer-provided-key-to-upload-a-blob-in-net"></a>Példa: felhasználó által megadott kulcs használata blob feltöltéséhez a .NET-ben
 
 Az alábbi példa egy ügyfél által megadott kulcsot hoz létre, és ezt a kulcsot használja a Blobok feltöltéséhez. A kód feltölt egy blokkot, majd véglegesíti a blokkok listáját, hogy a blobot az Azure Storage-ba írja. A kulcs a [BlobRequestOptions](/dotnet/api/microsoft.azure.storage.blob.blobrequestoptions) objektumban van megadva a [CustomerProvidedKey](/dotnet/api/microsoft.azure.storage.blob.blobrequestoptions.customerprovidedkey) tulajdonság beállításával.
 
-A kulcs a [AesCryptoServiceProvider](/dotnet/api/system.security.cryptography.aescryptoserviceprovider) osztálysal jön létre. Ha az osztály egy példányát szeretné létrehozni a kódban, adjon hozzá egy `using` utasítást, amely hivatkozik a `System.Security.Cryptography` névtérre:
+A kulcs a [AesCryptoServiceProvider](/dotnet/api/system.security.cryptography.aescryptoserviceprovider) osztálysal jön létre. Ha az osztály egy példányát szeretné létrehozni a kódban, adjon hozzá egy `using` utasítást, amely a `System.Security.Cryptography` névtérre hivatkozik:
 
 ```csharp
 public static void UploadBlobWithClientKey(CloudBlobContainer container)

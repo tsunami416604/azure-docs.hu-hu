@@ -1,6 +1,6 @@
 ---
 title: 'Azure Backup: fájlok és mappák helyreállítása az Azure virtuális gép biztonsági másolatából'
-description: Fájlok helyreállítása Azure-beli virtuális gépek helyreállítási pontjából
+description: Ebből a cikkből megtudhatja, hogyan állíthatja helyre a fájlokat és mappákat egy Azure-beli virtuális gép helyreállítási pontjából.
 ms.reviewer: pullabhk
 author: dcurwin
 manager: carmonm
@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 03/01/2019
 ms.author: dacurwin
-ms.openlocfilehash: df8e309ecb2a81205684c60076015f79ac8c4c8f
-ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
+ms.openlocfilehash: c6b49e794011d915f8cd7b29e6317e80391f2675
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72968490"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73747374"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>Fájlok helyreállítása az Azure-beli virtuális gépek biztonsági másolatából
 
@@ -189,7 +189,7 @@ A következő táblázat a kiszolgáló és a számítógép operációs rendsze
 | Windows Server 2016    | Windows 10 |
 | Windows Server 2012 R2 | Windows 8.1 |
 | Windows Server 2012    | Windows 8  |
-| Windows Server 2008 R2 | Windows 7 rendszeren   |
+| Windows Server 2008 R2 | Windows 7   |
 
 ### <a name="for-linux-os"></a>Linux operációs rendszer esetén
 
@@ -212,7 +212,7 @@ A Linux rendszerben a fájlok visszaállítására használt számítógép oper
 
 A parancsfájlnak a Python és a bash összetevők futtatására is szükség van, és biztonságosan csatlakozhat a helyreállítási ponthoz.
 
-|Component (Összetevő) | Verzió  |
+|Összetevő | Verzió  |
 | --------------- | ---- |
 | bash | 4 és újabb verziók |
 | python | 2.6.6 és újabb verziók  |
@@ -222,7 +222,7 @@ A parancsfájlnak a Python és a bash összetevők futtatására is szükség va
 
 Ez a szakasz azt ismerteti, hogyan hajtható végre a fájlok helyreállítása az Azure-beli virtuális gépekről, amelyek száma > 16, és az egyes lemezek mérete > 4 TB.
 
-Mivel a fájl-helyreállítási folyamat az összes lemezt csatlakoztatja a biztonsági másolatból, nagy számú lemez (> 16) vagy nagy méretű lemez (> 4 TB) esetén a következő műveleti pontok ajánlottak.
+Mivel a fájl-helyreállítási folyamat az összes lemezt csatlakoztatja a biztonsági mentésből, amikor nagy számú lemez (> 16) vagy nagyméretű lemez (> 4 TB) van használatban, a következő műveleti pontok ajánlottak:
 
 - A fájlok helyreállításához külön helyreállítási kiszolgálót (Azure VM D2v3 virtuális gépeket) kell megőrizni. Ezt a fájlt csak akkor használhatja, ha nem szükséges, majd leállítja. Az eredeti gépen való visszaállítás nem ajánlott, mert jelentős hatással lesz a virtuális gépre.
 - Ezután futtassa egyszer a parancsfájlt annak vizsgálatához, hogy a fájl-helyreállítási művelet sikeres-e.
@@ -244,10 +244,10 @@ Mivel a fájl-helyreállítási folyamat az összes lemezt csatlakoztatja a bizt
   - A fájl/etc/iSCSI/iscsid.conf módosítsa a beállítást a következőről:
     - Node. Conn [0]. Timeo. noop_out_timeout = 5 – Node. Conn [0]. Timeo. noop_out_timeout = 30
 - A következő művelet végrehajtása után futtassa újra a parancsfájlt. Ezekkel a változásokkal nagyon valószínű, hogy a fájl helyreállítása sikeres.
-- Minden alkalommal, amikor a felhasználó letölt egy parancsfájlt, Azure Backup kezdeményezi a letöltéshez a helyreállítási pont előkészítésének folyamatát. Nagyméretű lemezek esetén ez jelentős időt vesz igénybe. Ha egymást követő kérések fordultak elő, a cél-előkészítés egy letöltés spirálba kerül. Ezért javasoljuk, hogy töltsön le egy parancsfájlt a portálról, a Powershellből vagy a CLI-ből, várjon 20-30 percre (egy heurisztikus), majd futtassa azt. Ez idő alatt a cél várhatóan készen áll a parancsfájlból való kapcsolódásra.
+- Minden alkalommal, amikor a felhasználó letölt egy parancsfájlt, Azure Backup kezdeményezi a letöltéshez a helyreállítási pont előkészítésének folyamatát. A nagyméretű lemezek esetében ez jelentős időt vesz igénybe. Ha egymást követő kérések fordultak elő, a cél-előkészítés egy letöltés spirálba kerül. Ezért javasoljuk, hogy töltsön le egy parancsfájlt a portálról, a Powershellből vagy a CLI-ből, várjon 20-30 percre (egy heurisztikus), majd futtassa azt. Ez idő alatt a cél várhatóan készen áll a parancsfájlból való kapcsolódásra.
 - A fájlok helyreállítása után lépjen vissza a portálra, és kattintson a "lemezek leválasztása" elemre olyan helyreállítási pontok esetén, amelyeken nem sikerült csatlakoztatni a köteteket. Ez a lépés lényegében törli a meglévő folyamatokat/munkameneteket, és növeli a helyreállítás esélyét.
 
-## <a name="troubleshooting"></a>Hibakeresés
+## <a name="troubleshooting"></a>Hibaelhárítás
 
 Ha problémák merülnek fel a virtuális gépek fájljainak helyreállítása közben, további információkért tekintse meg a következő táblázatot.
 

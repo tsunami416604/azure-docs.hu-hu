@@ -7,50 +7,81 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: load-data
-ms.date: 07/28/2019
+ms.date: 11/07/2019
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: a23b785d7699022f8508d3ca90d0ff0f60d6a5c7
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
-ms.translationtype: HT
+ms.openlocfilehash: 9220bf0cf94eaae6ddc945e83deac2a6041158d2
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73686135"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73748511"
 ---
-# <a name="designing-a-polybase-data-loading-strategy-for-azure-sql-data-warehouse"></a>Alapszintű betöltési stratégia tervezése Azure SQL Data Warehouse számára
+# <a name="data-loading-strategies-for-azure-sql-data-warehouse"></a>Betöltési stratégiák a Azure SQL Data Warehouse
 
-A hagyományos SMP-adattárházak kinyerési, átalakítási és betöltési (ETL) folyamatot használnak az adatok betöltéséhez. Azure SQL Data Warehouse egy nagymértékben párhuzamos feldolgozási (MPP) architektúra, amely kihasználja a számítási és tárolási erőforrások méretezhetőségét és rugalmasságát. A kinyerési, betöltési és átalakítási (ELT) folyamat használatával kihasználhatja az MPP előnyeit, és kiszűrheti az adatoknak a betöltés előtt való átalakításához szükséges erőforrásokat. Míg a SQL Data Warehouse számos betöltési módszert támogat, többek között a nem alapszintű beállításokat, például a BCP-t és az SQL bulkcopy objektum céloszlopa API-t, a leggyorsabban és leginkább méretezhető módon a betöltési idő a következő  A Base egy olyan technológia, amely az Azure Blob Storage-ban vagy Azure Data Lake Storeban tárolt külső adatokhoz fér hozzá a T-SQL nyelv használatával.
+A hagyományos SMP-adattárházak kinyerési, átalakítási és betöltési (ETL) folyamatot használnak az adatok betöltéséhez. Azure SQL Data Warehouse egy nagymértékben párhuzamos feldolgozási (MPP) architektúra, amely kihasználja a számítási és tárolási erőforrások méretezhetőségét és rugalmasságát. A kinyerési, betöltési és átalakítási (ELT) folyamat használatával kihasználhatja az MPP előnyeit, és kiszűrheti az adatoknak a betöltés előtt való átalakításához szükséges erőforrásokat. A SQL Data Warehouse számos betöltési módszert támogat, többek között a népszerű SQL Server lehetőségeket, például a BCP-t és az SQL bulkcopy objektum céloszlopa API-t, az adatok betöltésének leggyorsabb és leginkább méretezhető módja a külső táblák és a [másolási utasítás](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest) (előzetes verzió).  A Base és a COPY utasítás használatával az Azure Blob Storage-ban vagy Azure Data Lake Storeban tárolt külső adatokhoz a T-SQL nyelv használatával férhet hozzá. A SQL Data Warehouseba való betöltés legrugalmasabban a COPY utasítás használatával ajánlott. 
 
+> [!NOTE]  
+> A COPY utasítás jelenleg nyilvános előzetes verzióban érhető el. Ha visszajelzést szeretne küldeni, küldjön e-mailt a következő terjesztési listára: sqldwcopypreview@service.microsoft.com.
+>
+        
+ 
 > [!VIDEO https://www.youtube.com/embed/l9-wP7OdhDk]
 
 
 ## <a name="what-is-elt"></a>Mi az a ELT?
 
-A kinyerési, betöltési és átalakítási (ELT) folyamat során a rendszer egy adattárházba tölti ki az adatok kinyerését, majd átalakítja azokat. 
+A kinyerési, betöltési és átalakítási (ELT) folyamat során a rendszer kinyeri az adatforrásrendszer adatait, betölti azokat egy adattárházba, majd átalakítja azokat. 
 
-A SQL Data Warehouse-alapú ELT megvalósításának alapvető lépései a következők:
+A SQL Data Warehouse ELT megvalósításának alapvető lépései a következők:
 
 1. A forrásadatok szövegfájlba való kinyerése.
 2. Az Azure Blob Storage-ba vagy Azure Data Lake Storeba helyezheti az adatterületet.
 3. Az adatgyűjtés előkészítése a betöltéshez.
-4. Az adatok betöltése a SQL Data Warehouse-előkészítési táblákba a Base használatával. 
+4. Az adatok betöltése SQL Data Warehouse előkészítési táblákba, a Base vagy a COPY paranccsal. 
 5. Alakítsa át az adathalmazt.
 6. Szúrja be az adatbevitelt az éles táblákba.
 
 
-Betöltési oktatóanyagért lásd: az [Azure Blob Storage-ból való adatok betöltésének használata a Azure SQL Data Warehouseba](load-data-from-azure-blob-storage-using-polybase.md).
+A Base betöltésével kapcsolatos oktatóanyagért lásd: az [adatok Azure Blob Storage-ból Azure SQL Data Warehouseba való betöltésének használata](load-data-from-azure-blob-storage-using-polybase.md).
 
 További információ: [minták betöltése blog](https://blogs.msdn.microsoft.com/sqlcat/20../../azure-sql-data-warehouse-loading-patterns-and-strategies/). 
 
 
 ## <a name="1-extract-the-source-data-into-text-files"></a>1. a forrásadatok kibontása szövegfájlba
 
-A forrásrendszer adatokból való beolvasása a tárterület helyétől függ.  A cél az, hogy az adatok a következőre legyenek áthelyezve: Base támogatott tagolt szövegfájlok. 
+A forrásrendszer adatokból való beolvasása a tárterület helyétől függ.  A cél az adatok alapszintű és a másolás támogatott tagolt szöveg-vagy CSV-fájlokba való áthelyezése. 
 
-### <a name="polybase-external-file-formats"></a>Alapszintű külső fájlformátumok
+### <a name="polybase-and-copy-external-file-formats"></a>Kiinduló és külső fájlformátumok másolása
 
-A kiinduló adatok az UTF-8 és az UTF-16 kódolású, tagolt szövegfájlokból is betöltődik. A tagolt szövegfájlok mellett az RC-fájlból, az ORKből és a Parkettaből is betöltődik a Hadoop fájlformátum. A rendszer a gzip és a Snappy tömörített fájlok adatait is képes betölteni. A Base jelenleg nem támogatja a bővített ASCII, a rögzített szélességű formátumot és a beágyazott formátumokat, például a WinZip, a JSON és az XML formátumot. Ha SQL Serverból exportál, a [BCP parancssori eszköz](/sql/tools/bcp-utility) használatával tagolt szövegfájlba exportálhatja az adatok mennyiségét. A Parquet és az SQL DW adattípusának megfeleltetése a következő:
+A Base és a COPY utasítás használatával az adatok az UTF-8 és az UTF-16 kódolású tagolt szövegből vagy CSV-fájlokból tölthetők be. A tagolt szöveg-vagy CSV-fájlok mellett a Hadoop-fájlformátumokból, például az ORKből és a Parkettaből is betöltődik. A Base és a COPY utasítás a gzip és a Snappy tömörített fájlok adatait is képes betölteni. A bővített ASCII, a rögzített szélességű formátum és a beágyazott formátumok (például a WinZip vagy az XML) nem támogatottak. Ha SQL Serverból exportál, a [BCP parancssori eszköz](/sql/tools/bcp-utility?view=azure-sqldw-latest) használatával tagolt szövegfájlba exportálhatja az adatok mennyiségét. 
+
+## <a name="2-land-the-data-into-azure-blob-storage-or-azure-data-lake-store"></a>2. az adatgyűjtés az Azure Blob Storage-ba vagy Azure Data Lake Store
+
+Az Azure Storage-ban tárolt adatterületek áthelyezéséhez áthelyezheti azt az [Azure Blob Storage](../storage/blobs/storage-blobs-introduction.md) -ba vagy [Azure Data Lake Store Gen2](../data-lake-store/data-lake-store-overview.md). Mindkét helyen az adatfájlokat szövegfájlokban kell tárolni. A Base és a COPY utasítás bármelyik helyről tölthető be.
+
+Az Azure Storage-ba történő adatáthelyezéshez használható eszközök és szolgáltatások:
+
+- Az [Azure ExpressRoute](../expressroute/expressroute-introduction.md) szolgáltatás javítja a hálózat teljesítményét, a teljesítményt és a kiszámíthatóságot. A ExpressRoute egy olyan szolgáltatás, amely az Azure-hoz való dedikált privát kapcsolatban továbbítja az adatait. A ExpressRoute-kapcsolatok nem a nyilvános interneten keresztül irányítják az adattovábbítást. A kapcsolatok nagyobb megbízhatóságot, gyorsabb sebességet, kisebb késést és nagyobb biztonságot biztosítanak, mint a szokásos kapcsolatok a nyilvános interneten.
+- A [AZCopy segédprogram](../storage/common/storage-moving-data.md) az Azure Storage-ba helyezi át az adatátvitelt a nyilvános interneten keresztül. Ez akkor működik, ha az adatméretek 10 TB-nál kisebbek. A AZCopy rendszeres betöltéséhez tesztelje a hálózati sebességet, és ellenőrizze, hogy elfogadható-e. 
+- [Azure Data Factory (ADF)](../data-factory/introduction.md) olyan átjáróval rendelkezik, amelyet telepíthet a helyi kiszolgálóra. Ezután létrehozhat egy folyamatot, amely a helyi kiszolgálóról az Azure Storage-ba helyezi át az adatok áthelyezését. Ha a Data Factoryt SQL Data Warehouse használatával szeretné használni, olvassa el a következő témakört: [az Adatterhelés a SQL Data Warehouse](/azure/data-factory/load-azure-sql-data-warehouse).
+
+
+## <a name="3-prepare-the-data-for-loading"></a>3. az adatgyűjtés előkészítése a betöltéshez
+
+Előfordulhat, hogy az SQL Data Warehouseba való betöltés előtt elő kell készítenie és meg kell tisztítania a Storage-fiókban tárolt adatait. Az adatelőkészítés elvégezhető, miközben az adatai a forrásban vannak, miközben az adatait szövegfájlba exportálja, vagy az Azure Storage-ban tárolt adatai.  A lehető leghamarabb dolgozhat az adatkezelési folyamatokkal.  
+
+### <a name="define-external-tables"></a>Külső táblák definiálása
+
+Ha a Base-t használja, a betöltés előtt meg kell határoznia a külső táblákat az adattárházban. A COPY utasítás nem igényli a külső táblákat. A Base külső táblákat használ az Azure Storage-ban tárolt adatok definiálásához és eléréséhez. Egy külső tábla hasonlít egy adatbázis-nézethez. A külső tábla tartalmazza a tábla sémáját, és az adatraktáron kívül tárolt adatértékekre mutat. 
+
+A külső táblák meghatározása magában foglalja az adatforrás megadását, a szövegfájlok formátumát és a tábla definícióit. A T-SQL szintaxisához szükséges témakörök a következők:
+- [KÜLSŐ ADATFORRÁS LÉTREHOZÁSA](/sql/t-sql/statements/create-external-data-source-transact-sql?view=azure-sqldw-latest)
+- [CREATE EXTERNAL FILE FORMAT](/sql/t-sql/statements/create-external-file-format-transact-sql?view=azure-sqldw-latest)
+- [KÜLSŐ TÁBLA LÉTREHOZÁSA](/sql/t-sql/statements/create-external-table-transact-sql?view=azure-sqldw-latest)
+
+A parketta betöltésekor az adattípusok az SQL DW-vel való hozzárendelése a következő:
 
 | **Parketta adattípusa** |                      **SQL-adattípus**                       |
 | :-------------------: | :----------------------------------------------------------: |
@@ -77,35 +108,11 @@ A kiinduló adatok az UTF-8 és az UTF-16 kódolású, tagolt szövegfájlokból
 |       dátum            |                             dátum                             |
 |        tizedes tört        |                            tizedes tört                           |
 
-## <a name="2-land-the-data-into-azure-blob-storage-or-azure-data-lake-store"></a>2. az adatgyűjtés az Azure Blob Storage-ba vagy Azure Data Lake Store
-
-Az Azure Storage-ban tárolt adatterületek áthelyezéséhez áthelyezheti azt az [Azure Blob Storage](../storage/blobs/storage-blobs-introduction.md) -ba vagy [Azure Data Lake Storeba](../data-lake-store/data-lake-store-overview.md). Mindkét helyen az adatfájlokat szövegfájlokban kell tárolni. A Base bármelyik helyről betölthető.
-
-Az Azure Storage-ba történő adatáthelyezéshez használható eszközök és szolgáltatások:
-
-- Az [Azure ExpressRoute](../expressroute/expressroute-introduction.md) szolgáltatás javítja a hálózat teljesítményét, a teljesítményt és a kiszámíthatóságot. A ExpressRoute egy olyan szolgáltatás, amely az Azure-hoz való dedikált privát kapcsolatban továbbítja az adatait. A ExpressRoute-kapcsolatok nem a nyilvános interneten keresztül irányítják az adattovábbítást. A kapcsolatok nagyobb megbízhatóságot, gyorsabb sebességet, kisebb késést és nagyobb biztonságot biztosítanak, mint a szokásos kapcsolatok a nyilvános interneten.
-- A [AZCopy segédprogram](../storage/common/storage-moving-data.md) az Azure Storage-ba helyezi át az adatátvitelt a nyilvános interneten keresztül. Ez akkor működik, ha az adatméretek 10 TB-nál kisebbek. A AZCopy rendszeres betöltéséhez tesztelje a hálózati sebességet, és ellenőrizze, hogy elfogadható-e. 
-- [Azure Data Factory (ADF)](../data-factory/introduction.md) olyan átjáróval rendelkezik, amelyet telepíthet a helyi kiszolgálóra. Ezután létrehozhat egy folyamatot, amely a helyi kiszolgálóról az Azure Storage-ba helyezi át az adatok áthelyezését. Ha a Data Factoryt SQL Data Warehouse használatával szeretné használni, olvassa el a következő témakört: [az Adatterhelés a SQL Data Warehouse](/azure/data-factory/load-azure-sql-data-warehouse).
-
-
-## <a name="3-prepare-the-data-for-loading"></a>3. az adatgyűjtés előkészítése a betöltéshez
-
-Előfordulhat, hogy az SQL Data Warehouseba való betöltés előtt elő kell készítenie és meg kell tisztítania a Storage-fiókban tárolt adatait. Az adatelőkészítés elvégezhető, miközben az adatai a forrásban vannak, miközben az adatait szövegfájlba exportálja, vagy az Azure Storage-ban tárolt adatai.  A lehető leghamarabb dolgozhat az adatkezelési folyamatokkal.  
-
-### <a name="define-external-tables"></a>Külső táblák definiálása
-
-Az adatbetöltése előtt meg kell határoznia a külső táblákat az adattárházban. A Base külső táblákat használ az Azure Storage-ban tárolt adatok definiálásához és eléréséhez. Egy külső tábla hasonlít egy adatbázis-nézethez. A külső tábla tartalmazza a tábla sémáját, és az adatraktáron kívül tárolt adatértékekre mutat. 
-
-A külső táblák meghatározása magában foglalja az adatforrás megadását, a szövegfájlok formátumát és a tábla definícióit. Ezek a T-SQL szintaxissal kapcsolatos témakörök, amelyekre szüksége lesz:
-- [KÜLSŐ ADATFORRÁS LÉTREHOZÁSA](/sql/t-sql/statements/create-external-data-source-transact-sql)
-- [CREATE EXTERNAL FILE FORMAT](/sql/t-sql/statements/create-external-file-format-transact-sql)
-- [KÜLSŐ TÁBLA LÉTREHOZÁSA](/sql/t-sql/statements/create-external-table-transact-sql)
-
 A külső objektumok létrehozásának példáját a betöltési útmutató [külső táblák létrehozása](load-data-from-azure-blob-storage-using-polybase.md#create-external-tables-for-the-sample-data) lépésében tekintheti meg.
 
 ### <a name="format-text-files"></a>Szövegfájlok formázása
 
-A külső objektumok meghatározása után a szövegfájl sorait a külső tábla és a fájlformátum definíciója szerint kell összehangolni. A szövegfájl egyes soraiban lévő összes értéknek a tábla definícióját kell igazítania.
+Ha a Base-t használja, a külső objektumoknak meg kell igazítaniuk a szövegfájl sorait a külső tábla és a fájlformátum definíciója szerint. A szövegfájl egyes soraiban lévő összes értéknek a tábla definícióját kell igazítania.
 A szövegfájlok formázása:
 
 - Ha az adatok nem összehasonlítható forrásból származnak, át kell alakítania azokat sorokra és oszlopokra. Függetlenül attól, hogy az adatok egy rokon vagy nem rokon forrásból származnak-e, az adatoknak át kell alakítani a táblázat azon oszlopainak definícióját, amelybe az adatok betöltését tervezi. 
@@ -113,22 +120,22 @@ A szövegfájlok formázása:
 - Külön mezők a szövegfájlban egy lezáró fájllal.  Ügyeljen arra, hogy olyan karaktert vagy karaktert használjon, amely nem található a forrásadatok között. Használja a [külső fájlformátum létrehozásakor](/sql/t-sql/statements/create-external-file-format-transact-sql)megadott lezárót.
 
 
-## <a name="4-load-the-data-into-sql-data-warehouse-staging-tables-using-polybase"></a>4. az adatok betöltése a SQL Data Warehouse-előkészítési táblákba a Base használatával
+## <a name="4-load-the-data-into-sql-data-warehouse-staging-tables-using-polybase-or-the-copy-statement"></a>4. az adatok betöltése SQL Data Warehouse előkészítési táblákba a Base vagy a COPY utasítás használatával
 
-Az ajánlott eljárás az, ha az adatgyűjtést egy előkészítési táblába tölti be. Az előkészítési táblázatok lehetővé teszik a hibák kezelését az éles táblákkal való beavatkozás nélkül. Az előkészítési táblázat lehetővé teszi, hogy az adatátalakításhoz SQL Data Warehouse MPP-t használjon, mielőtt beilleszti az adatfeldolgozási táblákba.
+Az ajánlott eljárás az, ha az adatgyűjtést egy előkészítési táblába tölti be. Az előkészítési táblázatok lehetővé teszik a hibák kezelését az éles táblákkal való beavatkozás nélkül. Az előkészítési táblázat lehetővé teszi, hogy az adatátalakításhoz SQL Data Warehouse MPP-t használjon, mielőtt beilleszti az adatfeldolgozási táblákba. A táblázatot előre létre kell hozni a MÁSOLÁSt végző előkészítési táblába való betöltéskor.
 
-### <a name="options-for-loading-with-polybase"></a>A-alapú betöltés lehetőségei
+### <a name="options-for-loading-with-polybase-and-copy-statement"></a>A Base és a COPY utasítás betöltésének lehetőségei
 
 Az adatok alapszintű betöltéséhez használhatja a következő betöltési lehetőségeket:
 
 - A [T-SQL-](load-data-from-azure-blob-storage-using-polybase.md) sel jól használható, ha az adatok Azure Blob Storage-ban vagy Azure Data Lake Storeban vannak. A leghatékonyabban szabályozhatja a betöltési folyamatot, de külső adatobjektumokat is meg kell határoznia. A többi módszer ezeket az objektumokat a háttérben úgy definiálja, ahogy a forrástábla táblázatokra van leképezve.  A T-SQL-terhelések összehangolása érdekében Azure Data Factory, SSIS vagy Azure functions-T használhat. 
 - A [SSIS](/sql/integration-services/load-data-to-sql-data-warehouse) jól működik, ha a forrásadatok SQL Server, vagy SQL Server a helyszínen vagy a felhőben. A SSIS meghatározza a forrást a céltábla leképezéséhez, és összehangolja a terhelést is. Ha már rendelkezik SSIS-csomagokkal, a csomagokat módosíthatja úgy, hogy az új adattárház-célhelyen működjenek. 
-- [A Azure Data Factory (ADF) használatával egy másik összehangoló](sql-data-warehouse-load-with-data-factory.md) eszköz van.  Meghatározza a folyamatokat és az ütemezett feladatokat. 
+- [A Base és a copy utasítás Azure Data Factory (ADF) egy másik összehangoló](sql-data-warehouse-load-with-data-factory.md) eszköz.  Meghatározza a folyamatokat és az ütemezett feladatokat. 
 - A [Azure Databricks](../azure-databricks/databricks-extract-load-sql-data-warehouse.md) a SQL Data Warehouse táblák adatait egy Databricks dataframe továbbítja, és/vagy egy Databricks-dataframe származó adatot ír egy SQL Data Warehouse táblába, a Base használatával.
 
-### <a name="non-polybase-loading-options"></a>Nem albase betöltési beállítások
+### <a name="other-loading-options"></a>Egyéb betöltési beállítások
 
-Ha az adatok nem kompatibilisek a SQLBulkCopy, használhatja a [BCP](/sql/tools/bcp-utility) -t vagy a [API](https://msdn.microsoft.com/library/system.data.sqlclient.sqlbulkcopy.aspx)-t. a BCP közvetlenül az Azure Blob Storage-ba való SQL Data Warehouse nélkül töltődik be, és kizárólag kis terhelésekhez készült. Vegye figyelembe, hogy ezeknek a beállításoknak a betöltési teljesítménye jóval lassabb, mint a kiinduló. 
+A Base és a COPY utasítás mellett a [BCP](/sql/tools/bcp-utility?view=azure-sqldw-latest) vagy a [SQLBulkCopy API](https://msdn.microsoft.com/library/system.data.sqlclient.sqlbulkcopy.aspx)is használható. a BCP közvetlenül az Azure Blob Storage-ba való SQL Data Warehouse nélkül töltődik be, és kizárólag kis terhelésekhez készült. Vegye figyelembe, hogy ezeknek a beállításoknak a betöltési teljesítménye lassabb, mint a "Base" és a "COPY" utasítás. 
 
 
 ## <a name="5-transform-the-data"></a>5. az adatátalakítás

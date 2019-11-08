@@ -5,14 +5,14 @@ services: application-gateway
 author: caya
 ms.service: application-gateway
 ms.topic: article
-ms.date: 10/11/2019
+ms.date: 11/4/2019
 ms.author: caya
-ms.openlocfilehash: 79ddfe6b536dcdd7e930960c51854849b94df1bd
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 9635798720667e38a767f26fc2e5f5374e420059
+ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73513353"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73795539"
 ---
 # <a name="what-is-application-gateway-ingress-controller"></a>Mi az Application Gateway beáramló vezérlő?
 A Application Gateway beáramlási vezérlő (AGIC) egy Kubernetes-alkalmazás, amely lehetővé teszi az [Azure Kubernetes Service (ak)](https://azure.microsoft.com/services/kubernetes-service/) ügyfelei számára az azure natív [Application Gateway](https://azure.microsoft.com/services/application-gateway/) L7 Load-Balancer használatát a felhőalapú szoftverek elérhetővé tételéhez az Internet. A AGIC figyeli az üzemeltetett Kubernetes-fürtöt, és folyamatosan frissíti egy Application Gateway, hogy a kiválasztott szolgáltatások elérhetők legyenek az internethez.
@@ -38,7 +38,7 @@ A AGIC a Kubernetes beáramlási [erőforrással](http://kubernetes.io/docs/user
 
 A AGIC több névteret képes kezelni, és ProhibitedTargets rendelkezik, ami azt jelenti, hogy a AGIC a többi meglévő háttérrendszer módosítása nélkül is konfigurálhatja a Application Gatewayt az AK-fürtökhöz. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [**Zöldmezős üzembe helyezés**](ingress-controller-install-new.md): a AGIC, az AK és a Application Gateway telepítésére vonatkozó utasítások az üres-pala infrastruktúrán.
 - [**Rozsdaövezetek rehabilitálása-telepítés**](ingress-controller-install-existing.md): telepítse a AGIC-t egy meglévő AK-ra és Application Gatewayra.

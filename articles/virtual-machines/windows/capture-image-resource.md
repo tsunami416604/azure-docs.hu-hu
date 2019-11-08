@@ -14,18 +14,18 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 09/27/2018
 ms.author: cynthn
-ms.openlocfilehash: fd2b3a8a09ce69c07cc7d4715a4aaeacf64f0817
-ms.sourcegitcommit: fa5ce8924930f56bcac17f6c2a359c1a5b9660c9
+ms.openlocfilehash: 54743b191b0334c92c63f374d38870a7dbfd9a38
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73200648"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73749614"
 ---
 # <a name="create-a-managed-image-of-a-generalized-vm-in-azure"></a>Általánosított virtuális gép felügyelt rendszerképének létrehozása az Azure-ban
 
 A felügyelt lemezképek erőforrásai olyan általánosított virtuális gépről (VM) hozhatók létre, amely felügyelt lemezként vagy nem felügyelt lemezként van tárolva egy Storage-fiókban. A rendszerkép ezután több virtuális gép létrehozására is használható. További információ a felügyelt lemezképek számlázásáról: [Managed Disks díjszabása](https://azure.microsoft.com/pricing/details/managed-disks/). 
 
-[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
+ 
 
 ## <a name="generalize-the-windows-vm-using-sysprep"></a>Windows rendszerű virtuális gép általánosítása a Sysprep használatával
 
@@ -70,7 +70,7 @@ A Windows rendszerű virtuális gép általánosításához kövesse az alábbi 
 
 ## <a name="create-a-managed-image-in-the-portal"></a>Felügyelt rendszerkép létrehozása a portálon 
 
-1. Nyissa meg az [Azure Portal](https://portal.azure.com).
+1. Nyissa meg az [Azure portált](https://portal.azure.com).
 
 2. A bal oldali menüben válassza a **virtuális gépek** lehetőséget, majd válassza ki a virtuális gépet a listából.
 
@@ -94,7 +94,7 @@ A Windows rendszerű virtuális gép általánosításához kövesse az alábbi 
 
 ## <a name="create-an-image-of-a-vm-using-powershell"></a>Virtuális gép rendszerképének létrehozása a PowerShell használatával
 
-[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+ 
 
 A rendszerkép közvetlenül a virtuális gépről való létrehozása biztosítja, hogy a lemezkép tartalmazza a virtuális géphez társított összes lemezt, beleértve az operációsrendszer-lemezt és az adatlemezeket. Ebből a példából megtudhatja, hogyan hozhat létre felügyelt rendszerképeket egy felügyelt lemezeket használó virtuális gépről.
 
@@ -250,6 +250,6 @@ Ha olyan virtuális gépről szeretne felügyelt rendszerképet létrehozni, ame
     ```
 
     
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 - [Hozzon létre egy virtuális gépet egy felügyelt rendszerképből](create-vm-generalized-managed.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).    
 

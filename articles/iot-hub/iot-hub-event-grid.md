@@ -8,18 +8,18 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: kgremban
-ms.openlocfilehash: f411771fbf39a99642506253fc025d6b29840423
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 7d5a232d92c37a94ff427a3bf203f6f20764060e
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69648642"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73748584"
 ---
 # <a name="react-to-iot-hub-events-by-using-event-grid-to-trigger-actions"></a>IoT Hub eseményekre való reagálás Event Grid használatával a műveletek elindításához
 
 Az Azure IoT Hub integrálható Azure Event Gridekkel, így értesítéseket küldhet más szolgáltatásoknak, és alsóbb rétegbeli folyamatokat indíthat. Konfigurálja üzleti alkalmazásait IoT Hub események figyelésére, hogy megbízható, skálázható és biztonságos módon reagáljon a kritikus eseményekre. Létrehozhat például egy adatbázist frissítő alkalmazást, létrehoz egy munkahelyi jegyet, és minden alkalommal elküld egy e-mail-értesítést, amikor új IoT-eszköz regisztrálva van az IoT hub-ban.
 
-A [Azure Event Grid](../event-grid/overview.md) egy teljes körűen felügyelt esemény-útválasztási szolgáltatás, amely egy közzétételi és előfizetési modellt használ. Event Grid beépített támogatást biztosít az Azure-szolgáltatásokhoz, [](../azure-functions/functions-overview.md) például a Azure Functionshoz és a [Azure Logic Appshoz](../logic-apps/logic-apps-what-are-logic-apps.md), és az események riasztásait a nem Azure-szolgáltatásokhoz webhookok használatával lehet kézbesíteni. A Event Grid által támogatott eseménykezelők teljes listájáért tekintse [meg a Azure Event Grid bemutatása](../event-grid/overview.md)című témakört.
+A [Azure Event Grid](../event-grid/overview.md) egy teljes körűen felügyelt esemény-útválasztási szolgáltatás, amely egy közzétételi és előfizetési modellt használ. Event Grid beépített támogatást biztosít az Azure-szolgáltatásokhoz, például a [Azure Functionshoz](../azure-functions/functions-overview.md) és a [Azure Logic Appshoz](../logic-apps/logic-apps-what-are-logic-apps.md), és az események riasztásait a nem Azure-szolgáltatásokhoz webhookok használatával lehet kézbesíteni. A Event Grid által támogatott eseménykezelők teljes listájáért tekintse [meg a Azure Event Grid bemutatása](../event-grid/overview.md)című témakört.
 
 ![Azure Event Grid architektúra](./media/iot-hub-event-grid/event-grid-functional-model.png)
 
@@ -33,11 +33,11 @@ IoT Hub közzéteszi a következő eseménytípus-típusokat:
 
 | Esemény típusa | Leírás |
 | ---------- | ----------- |
-| Microsoft.Devices.DeviceCreated | Közzétett, ha egy eszköz regisztrálva van egy IoT-hubhoz. |
-| Microsoft.Devices.DeviceDeleted | Közzétételre kerül, ha egy eszközt törölnek egy IoT-hubhoz. |
-| Microsoft.Devices.DeviceConnected | Akkor jelenik meg, amikor egy eszköz IoT-hubhoz csatlakozik. |
-| Microsoft.Devices.DeviceDisconnected | Akkor jelenik meg, ha egy eszköz le van választva egy IoT hubhoz. |
-| Microsoft.Devices.DeviceTelemetry | Közzétételre kerül, amikor egy eszköz telemetria üzenetet küld egy IoT-hubhoz |
+| Microsoft. Devices. DeviceCreated | Közzétett, ha egy eszköz regisztrálva van egy IoT-hubhoz. |
+| Microsoft. Devices. DeviceDeleted | Közzétételre kerül, ha egy eszközt törölnek egy IoT-hubhoz. |
+| Microsoft. Devices. DeviceConnected | Akkor jelenik meg, amikor egy eszköz IoT-hubhoz csatlakozik. |
+| Microsoft. Devices. DeviceDisconnected | Akkor jelenik meg, ha egy eszköz le van választva egy IoT hubhoz. |
+| Microsoft. Devices. DeviceTelemetry | Közzétételre kerül, amikor egy eszköz telemetria üzenetet küld egy IoT-hubhoz |
 
 A Azure Portal vagy az Azure CLI használatával konfigurálhatja, hogy mely eseményeket kell közzétenni az egyes IoT-központokból. Például próbálja ki az oktatóanyagot az [Azure IoT hub eseményekkel kapcsolatos e-mail-értesítések küldéséhez Logic Apps használatával](../event-grid/publish-iot-hub-events-to-logic-apps.md).
 
@@ -72,7 +72,7 @@ Az alábbi példa egy csatlakoztatott eszköz sémáját mutatja be:
 
 ### <a name="device-telemetry-schema"></a>Eszköz telemetria sémája
 
-Az eszköz telemetria érvényes JSON formátumúnak kell lennie, és a contentType az **Application/JSON** és a contentEncoding értékre kell állítani az üzenetrendszer [tulajdonságai](iot-hub-devguide-routing-query-syntax.md#system-properties)között. Mindkét tulajdonság nem megkülönbözteti a kis-és nagybetűket. Ha nincs beállítva a tartalom kódolása, akkor a IoT Hub az üzeneteket az alap 64 kódolású formátumban fogja írni.
+Az eszköz telemetria érvényes JSON formátumúnak kell lennie, és a contentType az **Application/JSON** és a contentEncoding értékre kell állítani az üzenetrendszer [tulajdonságai](iot-hub-devguide-routing-query-syntax.md#system-properties) **között.** Mindkét tulajdonság nem megkülönbözteti a kis-és nagybetűket. Ha nincs beállítva a tartalom kódolása, akkor a IoT Hub az üzeneteket az alap 64 kódolású formátumban fogja írni.
 
 Az eszközök telemetria az Event Grid közzétételük előtt bővítheti, ha a végpontot Event Gridként kiválasztja. További információ: üzenet- [gazdagítás áttekintése](iot-hub-message-enrichments-overview.md).
 
@@ -166,7 +166,7 @@ Az egyes tulajdonságok részletes ismertetését lásd: [Azure Event Grid Event
 
 IoT Hub esemény-előfizetések szűrhetik az eseményeket az esemény típusa, az adattartalom és a tárgy alapján, amely az eszköz neve.
 
-Event Grid lehetővé [](../event-grid/event-filtering.md) teszi az események, a témák és az adattartalom szűrését. A Event Grid előfizetés létrehozásakor választhat, hogy előfizet a kiválasztott IoT-eseményekre. A Event Grid-munkafolyamatban található tulajdonosi szűrők a (előtag) és **az** (utótag) egyezések alapján **kezdődnek** . A szűrő egy `AND` operátort használ, így az előtagot és utótagot is megegyező tárgyú események az előfizető számára lesznek továbbítva.
+Event Grid lehetővé teszi az események, a témák és az adattartalom [szűrését](../event-grid/event-filtering.md) . A Event Grid előfizetés létrehozásakor választhat, hogy előfizet a kiválasztott IoT-eseményekre. A Event Grid-munkafolyamatban található tulajdonosi szűrők a (előtag) és **az** (utótag) egyezések alapján **kezdődnek** . A szűrő egy `AND` operátort használ, így azok az események, amelyek megfelelnek az előtagnak és az utótagnak, az előfizetőnek is.
 
 A IoT-események tárgya a formátumot használja:
 
@@ -176,7 +176,7 @@ devices/{deviceId}
 
 A Event Grid az egyes események attribútumain is lehetővé teszi a szűrést, beleértve az adattartalmat is. Így kiválaszthatja, hogy milyen események érkeznek a telemetria üzenet alapján. A példák megtekintéséhez tekintse meg a [speciális szűrést](../event-grid/event-filtering.md#advanced-filtering) ismertető témakört. A telemetria **-** üzenet törzsének szűréséhez a ContentType az **Application/JSON** és a contentEncoding értékre kell állítani az üzenetrendszer [tulajdonságai](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-routing-query-syntax#system-properties)között. Mindkét tulajdonság nem megkülönbözteti a kis-és nagybetűket.
 
-A nem telemetria események, például a DeviceConnected, a DeviceDisconnected, a DeviceCreated és a DeviceDeleted esetében az előfizetés létrehozásakor az Event Grid szűrés használható. A telemetria-események esetében a Event Grid szűrésén kívül a felhasználók az üzenet-útválasztási lekérdezésen keresztül is szűrhetik az eszközön az ikreket, az üzenet tulajdonságait és a törzsét. Egy alapértelmezett [útvonalat](iot-hub-devguide-messages-d2c.md) hozunk létre IoT hub, az eszköz telemetria Event Grid-előfizetése alapján. Ez az egyetlen útvonal képes kezelni az összes Event Grid-előfizetését. Az üzenetek telemetria az adatküldés előtt frissítheti az [útválasztási lekérdezést](iot-hub-devguide-routing-query-syntax.md). Vegye figyelembe, hogy az útválasztási lekérdezés csak akkor alkalmazható az üzenet törzsére, ha a törzs JSON. Az contentType az **Application/JSON** és a contentEncoding értékre kell állítania az üzenetrendszer [tulajdonságai](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-routing-query-syntax#system-properties)között.
+A nem telemetria események, például a DeviceConnected, a DeviceDisconnected, a DeviceCreated és a DeviceDeleted esetében az előfizetés létrehozásakor az Event Grid szűrés használható. A telemetria-események esetében a Event Grid szűrésén kívül a felhasználók az üzenet-útválasztási lekérdezésen keresztül is szűrhetik az eszközön az ikreket, az üzenet tulajdonságait és a törzsét. Egy alapértelmezett [útvonalat](iot-hub-devguide-messages-d2c.md) hozunk létre IoT hub, az eszköz telemetria Event Grid-előfizetése alapján. Ez az egyetlen útvonal képes kezelni az összes Event Grid-előfizetését. Az üzenetek telemetria az adatküldés előtt frissítheti az [útválasztási lekérdezést](iot-hub-devguide-routing-query-syntax.md). Vegye figyelembe, hogy az útválasztási lekérdezés csak akkor alkalmazható az üzenet törzsére, ha a törzs JSON. Az contentType az **Application/JSON** és a **contentEncoding értékre** kell állítania az üzenetrendszer [tulajdonságai](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-routing-query-syntax#system-properties)között.
 
 ## <a name="limitations-for-device-connected-and-device-disconnected-events"></a>Az eszköz csatlakoztatott és leválasztott eseményeinek korlátai
 
@@ -204,4 +204,4 @@ Az IoT Hub eseményeket kezelő alkalmazásoknak a következő ajánlott eljár�
 
 * [Az Útválasztás IoT Hub események és üzenetek közötti különbségek összehasonlítása](iot-hub-event-grid-routing-comparison.md)
 
-* [Ismerje meg, hogyan használhatók a IoT telemetria-események a IoT térbeli elemzések megvalósításához Azure Maps használatával (és IoT Hub üzenet-útválasztással)](../azure-maps/tutorial-iot-hub-maps.md#filter-events-using-iot-hub-message-routing)
+* [Ismerje meg, hogyan használhatók a IoT telemetria-események a IoT térbeli elemzések megvalósításához a Azure Maps használatával](../azure-maps/tutorial-iot-hub-maps.md#create-an-azure-function-and-add-an-event-grid-subscription)

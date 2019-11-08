@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 10/31/2019
 ms.author: apimpm
-ms.openlocfilehash: bfb012116f74e451f9479c8c65057e5c8405bbb4
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: fc7e0f7e4e0e80a030a437bc4f0f13360595f32e
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73513782"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73747702"
 ---
 # <a name="deploy-an-azure-api-management-self-hosted-gateway-to-docker"></a>Azure API Management saját üzemeltetésű átjáró üzembe helyezése a Docker-ben
 
@@ -31,6 +31,9 @@ Ez a cikk a saját üzemeltetésű Azure API Management-átjárók Docker-körny
 - Végezze el a következő rövid útmutatót: [Azure API Management-példány létrehozása](get-started-create-service-instance.md)
 - Hozzon létre egy Docker-környezetet. Az [asztali Docker](https://www.docker.com/products/docker-desktop) jó megoldás fejlesztési és értékelési célokra. A Docker-kiadásokról, azok szolgáltatásairól és a Docker-ről szóló átfogó dokumentációról a [Docker dokumentációjában](https://docs.docker.com) talál további információt.
 - [Átjáró-erőforrás kiépítése a API Management-példányban](api-management-howto-provision-self-hosted-gateway.md)
+
+> [!NOTE]
+> A saját üzemeltetésű átjáró Linux-alapú Docker-tárolóként van csomagolva.
 
 ## <a name="deploy-the-self-hosted-gateway-to-docker"></a>A saját üzemeltetésű átjáró üzembe helyezése a Docker-ben
 
@@ -63,4 +66,5 @@ CONTAINER ID        IMAGE                                                 COMMAN
 
 ## <a name="next-steps"></a>További lépések
 
-* További információ a saját üzemeltetésű átjáróról: [Azure API Management saját üzemeltetésű átjáró – áttekintés](self-hosted-gateway-overview.md)
+* További információ a saját üzemeltetésű átjáróról: az [Azure API Management saját üzemeltetésű átjárójának áttekintése](self-hosted-gateway-overview.md).
+* [Konfigurálja az egyéni tartománynevet a saját üzemeltetésű átjáróhoz](api-management-howto-configure-custom-domain-gateway.md).

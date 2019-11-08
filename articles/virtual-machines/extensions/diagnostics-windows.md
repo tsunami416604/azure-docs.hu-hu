@@ -13,18 +13,18 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 12/15/2015
 ms.author: saurabh
-ms.openlocfilehash: 771064774371e71c0664918790b296c156ed1c1f
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 547de4862081b56bf627c3a00564ce6564f2ad09
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70084791"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73750103"
 ---
 # <a name="use-powershell-to-enable-azure-diagnostics-in-a-virtual-machine-running-windows"></a>Az Azure Diagnostics használatának engedélyezése a PowerShell-lel virtual windowsos virtuális gépen
 
 A Azure Diagnostics az Azure-on belüli képesség, amely lehetővé teszi a diagnosztikai adatgyűjtést egy telepített alkalmazáson. A diagnosztika bővítmény használatával diagnosztikai adatokat gyűjthet, például az alkalmazás naplóit vagy a teljesítményszámlálók egy Windows rendszert futtató Azure-beli virtuális gépről (VM). 
 
-[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
+ 
 
 ## <a name="enable-the-diagnostics-extension-if-you-use-the-resource-manager-deployment-model"></a>A diagnosztikai bővítmény engedélyezése, ha a Resource Manager-alapú üzemi modellt használja
 A diagnosztikai bővítményt engedélyezheti a Windows rendszerű virtuális gépek a Azure Resource Manager üzemi modellel való létrehozásakor, ha hozzáadja a bővítmény konfigurációját a Resource Manager-sablonhoz. Lásd: [Windows rendszerű virtuális gép létrehozása figyelési és diagnosztikai szolgáltatásokkal a Azure Resource Manager sablonnal](diagnostics-template.md).

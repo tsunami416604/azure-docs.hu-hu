@@ -1,6 +1,6 @@
 ---
 title: Azure PowerShell szkript minta – Azure-beli virtuális gép biztonsági mentése
-description: Azure PowerShell szkript minta – Azure-beli virtuális gép biztonsági mentése
+description: Ebből a cikkből megtudhatja, hogyan használhat Azure PowerShell parancsfájl-mintát egy Azure-beli virtuális gép biztonsági mentésére.
 author: dcurwin
 manager: carmonm
 ms.service: backup
@@ -8,12 +8,12 @@ ms.topic: sample
 ms.date: 03/05/2019
 ms.author: dacurwin
 ms.custom: mvc
-ms.openlocfilehash: 1e5e705d7e9ca6587c9836603db05978d7f04d4d
-ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
+ms.openlocfilehash: fe2fa6d77f7ec59ef73ac0e8779dcfbd660c0680
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72968831"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73747123"
 ---
 # <a name="back-up-an-encrypted-azure-virtual-machine-with-powershell"></a>Titkosított Azure-beli virtuális gép biztonsági mentése a PowerShell-lel
 
@@ -54,6 +54,6 @@ A szkript a következő parancsokat használja az üzemelő példány létrehoz�
 | [Várakozás – AzRecoveryServicesBackupJob](https://docs.microsoft.com/powershell/module/az.recoveryservices/wait-azrecoveryservicesbackupjob) | Egy Azure Backup-feladatokra vár. |
 | [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | Eltávolít egy erőforráscsoportot és az összes abban található erőforrást. |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az Azure PowerShell modullal kapcsolatos további információért lásd az [Azure PowerShell dokumentációját](https://docs.microsoft.com/powershell/azure/new-azureps-module-az).

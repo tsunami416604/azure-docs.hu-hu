@@ -8,18 +8,18 @@ ms.author: robreed
 ms.date: 04/26/2019
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: bbe236bd4575ffb849b6f4739fc3a27c09aa5e47
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: fa7f72989d47499127714eddfa6b5e98aa80178c
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72595149"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73749228"
 ---
 # <a name="run-powershell-scripts-in-your-windows-vm-by-using-run-command"></a>PowerShell-parancsfájlok futtatása a Windows rendszerű virtuális gépen a Futtatás parancs használatával
 
 A futtatási parancs funkció a virtuális gép (VM) ügynököt használja PowerShell-parancsfájlok futtatására egy Azure Windows rendszerű virtuális gépen. Ezeket a parancsfájlokat használhatja az általános gépekhez vagy az alkalmazások kezeléséhez. Segítségükkel gyorsan diagnosztizálhatja és elháríthatja a virtuális gépek hozzáférési és hálózati problémáit, és visszaállíthatja a virtuális gépet jó állapotba.
 
-[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
+ 
 
 ## <a name="benefits"></a>Előnyök
 
@@ -61,7 +61,7 @@ The entity was not found in this Azure location
 |**ResetRDPCert**|Az RDP-figyelőhöz kötött SSL-tanúsítvány eltávolítása és az RDP-figyelő biztonsági mentése az alapértelmezett értékre. Akkor használja ezt a parancsfájlt, ha a tanúsítvánnyal kapcsolatos problémákat tapasztal.|
 |**SetRDPPort**|Beállítja Távoli asztal kapcsolatok alapértelmezett vagy felhasználó által megadott portszámát. Engedélyezi a tűzfalszabályok bejövő hozzáférését a porthoz.|
 
-## <a name="azure-cli"></a>Azure parancssori felület (CLI)
+## <a name="azure-cli"></a>Azure CLI
 
 Az alábbi példa az az [VM Run-Command](/cli/azure/vm/run-command?view=azure-cli-latest#az-vm-run-command-invoke) parancs használatával futtat egy rendszerhéj-parancsfájlt egy Azure Windows rendszerű virtuális gépen.
 
@@ -108,6 +108,6 @@ A parancs futtatásához a `Microsoft.Compute/virtualMachines/runCommand/action`
 
 Használhatja a [beépített szerepkörök](../../role-based-access-control/built-in-roles.md) egyikét, vagy létrehozhat egy [Egyéni szerepkört](../../role-based-access-control/custom-roles.md) a futtatási parancs használatához.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ha többet szeretne megtudni a parancsfájlok és parancsok távoli virtuális gépen való futtatásának egyéb módjairól, olvassa el a [parancsfájlok futtatása a Windows rendszerű virtuális gépen](run-scripts-in-vm.md)című témakört.

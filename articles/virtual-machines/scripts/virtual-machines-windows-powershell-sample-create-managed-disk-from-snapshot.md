@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 06/05/2017
 ms.author: ramankum
-ms.openlocfilehash: a15074b8da7017c0c2848385624b598ddab1410c
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 5ccff2a503994a4c1001148c371a007c63b13106
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72300731"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73748756"
 ---
 # <a name="create-a-managed-disk-from-a-snapshot-with-powershell"></a>Felügyelt lemez létrehozása pillanatképből a PowerShell használatával
 
@@ -27,7 +27,7 @@ Ez a szkript egy felügyelt lemezt hoz létre egy pillanatképből. A használat
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
+ 
 
 ## <a name="sample-script"></a>Példaszkript
 
@@ -45,7 +45,7 @@ A szkript a következő parancsokat használja arra, hogy létrehozzon egy felü
 | [Új – AzDisk](https://docs.microsoft.com/powershell/module/az.compute/New-AzDisk) | Létrehoz egy lemezt a paraméterként megadott lemezkonfiguráció, lemeznév és erőforráscsoport-név alapján. |
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [Virtuális gép létrehozása felügyelt lemezből](./virtual-machines-windows-powershell-sample-create-vm-from-managed-os-disks.md?toc=%2fpowershell%2fmodule%2ftoc.json)
 

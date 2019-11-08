@@ -4,14 +4,14 @@ description: Azokat az Azure-erőforrásokat sorolja fel, amelyek több mint 800
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 10/09/2019
+ms.date: 11/07/2019
 ms.author: tomfitz
-ms.openlocfilehash: 0f9db618b69ff692350f333b8a4a4354f4980169
-ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
+ms.openlocfilehash: c08b80a841199ed2737f6fe8d7f2b76943c5b269
+ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72249122"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73795654"
 ---
 # <a name="resources-not-limited-to-800-instances-per-resource-group"></a>Az erőforrások nem korlátozódnak 800 példányra az erőforráscsoport esetében
 
@@ -74,8 +74,18 @@ Egyes erőforrástípusok esetében kapcsolatba kell lépnie az ügyfélszolgál
 
 * services
 
+## <a name="microsofteventhub"></a>Microsoft. EventHub
+
+* fürtök
+* névterek
+
+## <a name="microsoftexperimentation"></a>Microsoft. kísérletezés
+
+* experimentWorkspaces
+
 ## <a name="microsoftguestconfiguration"></a>Microsoft. GuestConfiguration
 
+* configurationProfileAssignments
 * guestConfigurationAssignments
 * szoftver
 * softwareUpdateProfile
@@ -141,13 +151,21 @@ Egyes erőforrástípusok esetében kapcsolatba kell lépnie az ügyfélszolgál
 
 * workspaceCollections – alapértelmezés szerint 800 példányra korlátozódik. Ezt a korlátot a támogatási szolgálattal növelheti.
 
+## <a name="microsoftrelay"></a>Microsoft. Relay
+
+* névterek
+
 ## <a name="microsoftscheduler"></a>Microsoft. Scheduler
 
 * feladatgyűjtemények
 
+## <a name="microsoftservicebus"></a>Microsoft.ServiceBus
+
+* névterek
+
 ## <a name="microsoftservicefabricmesh"></a>Microsoft. ServiceFabricMesh
 
-* alkalmazás
+* alkalmazások
 * containerGroups
 * átjárók
 * hálózatok
@@ -163,6 +181,6 @@ Egyes erőforrástípusok esetében kapcsolatba kell lépnie az ügyfélszolgál
 * apiManagementAccounts/API-k
 * helyek
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A kvóták és korlátok teljes listáját az Azure- [előfizetés és a szolgáltatás korlátai, kvótái és megkötései](../azure-subscription-service-limits.md)című témakörben tekintheti meg.

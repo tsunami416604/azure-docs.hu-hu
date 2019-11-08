@@ -1,6 +1,6 @@
 ---
 title: Azure-beli virtuális gépek nagy léptékű biztonsági mentése
-description: Egyszerre több virtuális gép biztonsági mentése az Azure-ba
+description: Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre Recovery Services-tárolót, hogyan határozhat meg biztonsági mentési házirendet, és hogyan készíthet egyszerre több virtuális gép biztonsági mentését.
 keywords: virtuális gép biztonsági mentése; vm biztonsági mentése; Azure-beli virtuális gép biztonsági mentése; biztonsági mentés és vészhelyreállítás
 author: dcurwin
 manager: carmonm
@@ -9,26 +9,27 @@ ms.date: 01/31/2019
 ms.topic: tutorial
 ms.service: backup
 ms.custom: mvc
-ms.openlocfilehash: fa9f13bf4f4e06973f7b9125897366ad53d06857
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: 99a842704325e38cbf1ab9203a56a25bc2273827
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68688433"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73747017"
 ---
 # <a name="use-azure-portal-to-back-up-multiple-virtual-machines"></a>Több virtuális gép biztonsági mentése az Azure Portalon
 
-Amikor adatok biztonsági mentését végzi az Azure-ban, egy Recovery Services-tároló nevű Azure-erőforrásban tárolja a másolatokat. A helyreállításitár-erőforrás a legtöbb Azure-szolgáltatás Beállítások menüjéből elérhető. Az Azure-szolgáltatások Beállítások menüjébe integrált helyreállítási tár előnye, hogy könnyen lehet biztonsági másolatot készíteni az adatokról. A cég vagy intézmény adatbázisainak vagy virtuális gépeinek egyenkénti kezelése azonban fárasztó feladat. Mi történik, ha egy részleg vagy egy helyszín összes virtuális gépének adatairól szeretne biztonsági mentést készíteni? Könnyedén elvégezheti egyszerre több virtuális gép biztonsági mentését, ha létrehoz egy, az érintett virtuális gépekre vonatkozó biztonsági mentési szabályzatot. Ez az oktatóanyag a következőket ismerteti:
+Amikor adatok biztonsági mentését végzi az Azure-ban, egy Recovery Services-tároló nevű Azure-erőforrásban tárolja a másolatokat. A helyreállításitár-erőforrás a legtöbb Azure-szolgáltatás Beállítások menüjéből elérhető. A legtöbb Azure-szolgáltatás beállítások menüjébe integrált Recovery Services-tár előnyeit kihasználva egyszerűen készíthet biztonsági mentést az adatvédelemről. A cég vagy intézmény adatbázisainak vagy virtuális gépeinek egyenkénti kezelése azonban fárasztó feladat. Mi történik, ha egy részleg vagy egy helyszín összes virtuális gépének adatairól szeretne biztonsági mentést készíteni? Könnyedén elvégezheti egyszerre több virtuális gép biztonsági mentését, ha létrehoz egy, az érintett virtuális gépekre vonatkozó biztonsági mentési szabályzatot. Ez az oktatóanyag a következőket ismerteti:
 
 > [!div class="checklist"]
+>
 > * Recovery Services-tároló létrehozása
 > * Biztonsági mentési szabályzat meghatározása
 > * A biztonsági mentési szabályzat alkalmazása több virtuális gép védelme érdekében
 > * A védett virtuális gépek biztonsági mentési feladatának manuális aktiválása
 
-## <a name="log-in-to-the-azure-portal"></a>Bejelentkezés az Azure Portalra
+## <a name="sign-in-to-the-azure-portal"></a>Jelentkezzen be az Azure Portalra
 
-Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
+Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
 
 ## <a name="create-a-recovery-services-vault"></a>Recovery Services-tároló létrehozása
 
@@ -44,11 +45,11 @@ A helyreállítási tár tartalmazza a biztonsági mentési adatokat és a véde
 
 3. A helyreállítási tár menüjében:
 
-    - Írja be a *myRecoveryServicesVault* értéket a **Név** mezőbe.
-    - Megjelenik az aktuális előfizetési azonosító az **Előfizetés** mezőben. Ha több előfizetéssel is rendelkezik, egy másik előfizetést is választhat az új tárolóhoz.
-    - Az **Erőforráscsoport** mezőben válassza a **Meglévő használata** és a *myResourceGroup* elemet. Ha a *myResourceGroup* nem létezik, válassza ki az **Új létrehozása** elemet, és írja be a *myResourceGroup* kifejezést.
-    - A **Hely** legördülő menüből válassza a *Nyugat-Európa* elemet.
-    - Kattintson a **Létrehozás** gombra a helyreállítási tár létrehozásához.
+    * Írja be a *myRecoveryServicesVault* értéket a **Név** mezőbe.
+    * Megjelenik az aktuális előfizetési azonosító az **Előfizetés** mezőben. Ha több előfizetéssel is rendelkezik, egy másik előfizetést is választhat az új tárolóhoz.
+    * Az **Erőforráscsoport** mezőben válassza a **Meglévő használata** és a *myResourceGroup* elemet. Ha a *myResourceGroup* nem létezik, válassza ki az **Új létrehozása** elemet, és írja be a *myResourceGroup* kifejezést.
+    * A **Hely** legördülő menüből válassza a *Nyugat-Európa* elemet.
+    * Kattintson a **Létrehozás** gombra a helyreállítási tár létrehozásához.
 
 A helyreállítási tárnak ugyanazon a helyen kell lennie, mint a virtuális gépeknek, amelyeknek védelmet biztosít. Ha több régióban rendelkezik virtuális gépekkel, minden régióban hozzon létre egy Recovery Services-tárolót. Ebben az oktatóanyagban *Nyugat-Európában* hozzuk létre a helyreállítási tárat, mert itt jött létre a *myVM* (a rövid útmutatóban létrehozott virtuális gép).
 
@@ -58,7 +59,7 @@ A létrehozott helyreállítási tárak alapértelmezés szerint georedundáns t
 
 ## <a name="set-backup-policy-to-protect-vms"></a>Biztonsági mentési szabályzat beállítása a virtuális gépek védelme érdekében
 
-A helyreállítási tár létrehozása után a következő lépés a tároló konfigurálása a használt adattípushoz, illetve a biztonsági mentési szabályzat beállítása. A biztonsági mentési szabályzat adja meg a helyreállítási pontok gyakoriságának és elhelyezési idejének menetrendjét. A házirend emellett tartalmazza a helyreállítási pontok megőrzési tartományát. Az oktatóanyag céljából feltételezzük, hogy az Ön vállalkozása egy sportkomplexum szállodával, stadionnal, éttermekkel és koncessziókkal, és Önnek kell gondoskodni a virtuális gépeken lévő adatok védelméről. Az alábbi lépésekkel a pénzügyi adatokra vonatkozó biztonsági mentési szabályzatot hozhat létre.
+A helyreállítási tár létrehozása után a következő lépés a tároló konfigurálása a használt adattípushoz, illetve a biztonsági mentési szabályzat beállítása. A biztonsági mentési szabályzat adja meg a helyreállítási pontok gyakoriságának és elhelyezési idejének menetrendjét. A házirend emellett tartalmazza a helyreállítási pontok megőrzési tartományát. Ebben az oktatóanyagban feltételezzük, hogy üzleti tevékenysége egy szállodai, stadionbeli és éttermeivel és koncessziókkal rendelkező sport komplexum, és a virtuális gépeken lévő adatok védelme. Az alábbi lépésekkel a pénzügyi adatokra vonatkozó biztonsági mentési szabályzatot hozhat létre.
 
 1. A helyreállítási tárak listájából válassza a **myRecoveryServicesVault** tárolót az irányítópult megnyitásához.
 
@@ -77,18 +78,18 @@ A helyreállítási tár létrehozása után a következő lépés a tároló ko
     ![Számítási feladat kiválasztása](./media/tutorial-backup-vm-at-scale/create-new-policy.png)
 
 5. A **Biztonsági mentési szabályzat** menü **Szabályzat neve** mezőjébe írja be a *Pénzügyi* kifejezést. Adja meg a következő értékeket a biztonsági mentési szabályzathoz:
-   - A **Biztonsági mentés gyakorisága** mezőben állítsa be az *amerikai középidő* időzónáját. Mivel a sportkomplexum Texasban van, a tulajdonos helyi időt szeretne használni. Hagyja a biztonsági mentés gyakoriságát a napi 3:30 értéken.
-   - **A napi biztonsági mentési pontok megőrzése** mezőben állítson be 90 napos időszakot.
-   - **A heti biztonsági mentési pontok megőrzése** mezőben használja a *Hétfő* visszaállítási pontot, és adjon meg egy 52 hetes megőrzési periódust.
-   - **A h biztonsági mentési pontok megőrzése** mezőben használja a hónap első vasárnapját visszaállítási pontként, és adjon meg egy 36 hónapos megőrzési periódust.
-   - Törölje **Az éves biztonsági mentési pontok megőrzése** kijelölését. A pénzügyi vezető nem szeretné 36 hónapnál hosszabb ideig megőrizni az adatokat.
-   - A biztonsági mentési szabályzat létrehozásához kattintson az **OK** gombra.
+   * A **Biztonsági mentés gyakorisága** mezőben állítsa be az *amerikai középidő* időzónáját. Mivel a sportkomplexum Texasban van, a tulajdonos helyi időt szeretne használni. Hagyja a biztonsági mentés gyakoriságát a napi 3:30 értéken.
+   * **A napi biztonsági mentési pontok megőrzése** mezőben állítson be 90 napos időszakot.
+   * **A heti biztonsági mentési pontok megőrzése** mezőben használja a *Hétfő* visszaállítási pontot, és adjon meg egy 52 hetes megőrzési periódust.
+   * **A h biztonsági mentési pontok megőrzése** mezőben használja a hónap első vasárnapját visszaállítási pontként, és adjon meg egy 36 hónapos megőrzési periódust.
+   * Törölje **Az éves biztonsági mentési pontok megőrzése** kijelölését. A pénzügyi vezető nem szeretné 36 hónapnál hosszabb ideig megőrizni az adatokat.
+   * A biztonsági mentési szabályzat létrehozásához kattintson az **OK** gombra.
 
      ![Számítási feladat kiválasztása](./media/tutorial-backup-vm-at-scale/set-new-policy.png)
 
      A biztonsági mentési szabályzat létrehozása után társítsa a szabályzatot a virtuális gépekkel.
 
-6. A **Virtuális gépek kijelölése** párbeszédpanelen válassza a *myVM* elemet, és kattintson az **OK** gombra, hogy a biztonsági mentési szabályzatot üzembe helyezze a virtuális gépeken.
+6. A **virtuális gépek kiválasztása** párbeszédpanelen válassza a *myVM* lehetőséget, majd kattintson az **OK** gombra a biztonsági mentési szabályzatnak a virtuális gépekre történő telepítéséhez.
 
     Megjelenik minden, egy helyen található virtuális gép, amelyhez még nincs biztonsági mentési szabályzat rendelve. A *myVMH1* és a *myVMR1* van kiválasztva, mint a *Pénzügy* szabályzattal társítandó virtuális gép.
 
@@ -142,7 +143,6 @@ Ha azt tervezi, hogy az ezt követő oktatóanyagokkal dolgozik tovább, akkor n
 
     ![Beállítások ikon](./media/tutorial-backup-vm-at-scale/tutorial-vm-back-up-now.png)
 
-
 2. A **Biztonsági másolati elemek** menüben kattintson az **Azure-beli virtuális gép** elemre a tárolóhoz rendelt virtuális gépek listájának megnyitásához.
 
     ![Beállítások ikon](./media/tutorial-backup-vm-at-scale/three-virtual-machines.png)
@@ -153,7 +153,7 @@ Ha azt tervezi, hogy az ezt követő oktatóanyagokkal dolgozik tovább, akkor n
 
     ![Beállítások ikon](./media/tutorial-backup-vm-at-scale/context-menu-to-delete-vm.png)
 
-4. A helyi menüben válassza ki a **Biztonsági mentés leállítása** elemet a Biztonsági mentés leállítása menü megnyitásához.
+4. A helyi menüben válassza a **biztonsági mentés leállítása** lehetőséget a biztonsági mentés leállítása menü megnyitásához.
 
     ![Beállítások ikon](./media/tutorial-backup-vm-at-scale/context-menu-for-delete.png)
 
@@ -161,7 +161,7 @@ Ha azt tervezi, hogy az ezt követő oktatóanyagokkal dolgozik tovább, akkor n
 
 6. A **biztonságimásolat-elem nevének megadására** szolgáló mezőbe írja be a *myVM* nevet.
 
-7. A biztonságimásolat-elem ellenőrzése után (egy pipa jelenik meg) aktiválódik a **Biztonsági mentés leállítása** gomb. Kattintson a **Biztonsági mentés leállítása** gombra a szabályzat leállításához és a visszaállítási pontok törléséhez.
+7. Ha a biztonsági mentési elem ellenőrzése megtörtént (megjelenik egy pipa), a **biztonsági mentés leállítása** gomb engedélyezve van. Kattintson a **Biztonsági mentés leállítása** gombra a szabályzat leállításához és a visszaállítási pontok törléséhez.
 
     ![Kattintás a Biztonsági mentés leállítása gombra a tároló törléséhez](./media/tutorial-backup-vm-at-scale/provide-reason-for-delete.png)
 
@@ -171,12 +171,12 @@ Ha azt tervezi, hogy az ezt követő oktatóanyagokkal dolgozik tovább, akkor n
 
     A tároló törlése után újra a helyreállítási tárak listája jelenik meg.
 
-
 ## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban a következőket végezte el az Azure Portalon:
 
 > [!div class="checklist"]
+>
 > * Recovery Services-tároló létrehozása
 > * A tároló beállítása a virtuális gépek védelméhez
 > * Egyéni biztonsági mentési és adatmegőrzési szabályzat létrehozása

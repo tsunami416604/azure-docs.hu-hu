@@ -13,18 +13,18 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 09/18/2018
 ms.author: delhan
-ms.openlocfilehash: 4263afe33caa4d6471848c8e7dbf9bc1eeec4bee
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: da45e24898bc3b5aead250077af69a61bdb33bab
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72332524"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73749643"
 ---
 # <a name="vm-startup-is-stuck-on-getting-windows-ready-dont-turn-off-your-computer-in-azure"></a>A virtuális gép indítása beragadt a Windows rendszerre kész állapotba. A számítógép kikapcsolása az Azure-ban
 
 Ez a cikk a Windows rendszerű virtuális gépek (VM-EK) Microsoft Azure való indításakor felmerülő "felkészülést" és "Windows Ready" képernyőket ismerteti. Ez a témakör segítséget nyújt a támogatási jegy adatainak gyűjtéséhez.
 
-[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
+ 
 
 ## <a name="symptoms"></a>Probléma
 
@@ -100,7 +100,7 @@ A memóriakép és a soros konzol engedélyezéséhez futtassa az alábbi szkrip
 3. [Válassza le az operációsrendszer-lemezt, majd csatlakoztassa újra az operációsrendszer-lemezt az érintett virtuális géphez](../windows/troubleshoot-recovery-disks-portal.md).
 4. Indítsa el a virtuális gépet, és nyissa meg a soros konzolt.
 5. A memóriakép kiváltásához válassza a **nem maszkolt megszakítás (NMI) küldése** lehetőséget.
-    @no__t – 0the-rendszerkép arról, hova kell elküldeni a nem maszkolt megszakítást @ no__t-1
+    ![a képet arról, hogy hová küldjön nem maszkolt megszakítást](./media/troubleshoot-vm-configure-update-boot/run-nmi.png)
 6. Csatlakoztassa újra az operációsrendszer-lemezt egy helyreállítási virtuális géphez, és Gyűjtse össze a memóriaképet tartalmazó fájlt.
 
 ## <a name="contact-microsoft-support"></a>Kapcsolatfelvétel a Microsoft ügyfélszolgálatával
