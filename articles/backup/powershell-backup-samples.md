@@ -1,6 +1,6 @@
 ---
 title: Azure Backup PowerShell-minták
-description: Azure Backup PowerShell-minták
+description: Ez a cikk olyan PowerShell-parancsfájlokra mutató hivatkozásokat tartalmaz, amelyek Azure Backupt használnak az adatbiztonsági mentéshez és visszaállításhoz.
 author: dcurwin
 manager: carmonm
 ms.service: backup
@@ -8,12 +8,12 @@ ms.topic: sample
 ms.date: 01/31/2019
 ms.author: dacurwin
 ms.custom: mvc
-ms.openlocfilehash: af21ee3aa807228c5a6f0e70e22442bc15b59ddf
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 4283871d17f01a3b70884e898397794ae7e4eb84
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68639456"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73747102"
 ---
 # <a name="azure-backup-powershell-samples"></a>Azure Backup PowerShell-minták
 
@@ -24,4 +24,3 @@ Az alábbi táblázat az Azure Backupot adatok biztonsági mentésére és helyr
 |**Virtuális gépek biztonsági mentése**||
 | [Titkosított virtuális gépek biztonsági mentése az Azure-ba](./scripts/backup-powershell-sample-backup-encrypted-vm.md) | A titkosított virtuális gép összes adatának biztonsági mentése.|
 | | |
-

@@ -12,26 +12,26 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 08/23/2019
 ms.author: genli
-ms.openlocfilehash: b0b8528a8eaf5cab22bb2482bd60e760d8bf5e3d
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: 80fd91106530c0150a85d508b24041b2263da925
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71058106"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73749669"
 ---
 # <a name="bitlocker-boot-errors-on-an-azure-vm"></a>BitLocker rendszerindítási hibák egy Azure-beli virtuális gépen
 
  Ez a cikk azokat a BitLocker-hibákat ismerteti, amelyek akkor jelentkezhetnek, ha a Windows rendszerű virtuális gépet (VM) elindítja Microsoft Azureban.
 
-[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
+ 
 
-## <a name="symptom"></a>Jelenség
+## <a name="symptom"></a>Hibajelenség
 
  Egy Windows rendszerű virtuális gép nem indul el. Amikor bejelöli a képernyőképeket a [rendszerindítási diagnosztika](../windows/boot-diagnostics.md) ablakban, a következő hibaüzenetek egyike jelenik meg:
 
 - Csatlakoztassa a BitLocker-kulcsot tartalmazó USB-illesztőprogramot
 
-- Ki van zárva! Adja meg a helyreállítási kulcsot a kezdéshez (billentyűzetkiosztás: NEKÜNK) a helytelen bejelentkezési adatok túl sokszor lettek megadva, ezért a számítógép zárolva van az adatvédelem védelme érdekében. A helyreállítási kulcs lekéréséhez ugorjon https://windows.microsoft.com/recoverykeyfaq egy másik számítógép vagy mobil eszközről. Ha szüksége van rá, a kulcs azonosítója XXXXXXX. Vagy alaphelyzetbe állíthatja a számítógépet.
+- Ki van zárva! Adja meg a helyreállítási kulcsot a kezdéshez (billentyűzetkiosztás: US) a helytelen bejelentkezési adatok túl sokszor lettek megadva, így a számítógép zárolva van az adatok védelme érdekében. A helyreállítási kulcs lekéréséhez lépjen a https://windows.microsoft.com/recoverykeyfaq egy másik SZÁMÍTÓGÉPRŐL vagy mobileszközön. Ha szüksége van rá, a kulcs azonosítója XXXXXXX. Vagy alaphelyzetbe állíthatja a számítógépet.
 
 - Adja meg a meghajtó zárolásának feloldásához szükséges jelszót [] a beíráskor nyomja le az INSERT billentyűt a jelszó megjelenítéséhez.
 - Adja meg a helyreállítási kulcs betöltését egy USB-eszközről.
@@ -46,8 +46,8 @@ A probléma megoldásához állítsa le és szabadítsa fel a virtuális gépet,
 
 Ha ez a módszer nem oldja meg a problémát, kövesse az alábbi lépéseket a BEK-fájl manuális visszaállításához:
 
-1. Készítsen pillanatképet az érintett virtuális gép rendszerlemezéről biztonsági másolatként. További információkért lásd: [lemez pillanatképének elkészítése](../windows/snapshot-copy-managed-disk.md).
-2. [A rendszer lemez csatolása egy helyreállítási virtuális Géphez](troubleshoot-recovery-disks-portal-windows.md). A 7. lépésben a [manage-bde](https://docs.microsoft.com/windows-server/administration/windows-commands/manage-bde) parancs futtatásához a **BitLocker meghajtótitkosítás** funkciót engedélyeznie kell a helyreállítási virtuális gépen.
+1. Készítsen pillanatképet az érintett virtuális gép rendszerlemezéről biztonsági másolatként. További információ: [lemez pillanatképe](../windows/snapshot-copy-managed-disk.md).
+2. [Csatlakoztassa a rendszerlemezt egy helyreállítási virtuális géphez](troubleshoot-recovery-disks-portal-windows.md). A 7. lépésben a [manage-bde](https://docs.microsoft.com/windows-server/administration/windows-commands/manage-bde) parancs futtatásához a **BitLocker meghajtótitkosítás** funkciót engedélyeznie kell a helyreállítási virtuális gépen.
 
     Felügyelt lemez csatlakoztatásakor előfordulhat, hogy a "titkosítási beállításokat tartalmaz, ezért nem használható adatlemezként" hibaüzenet jelenik meg. Ebben az esetben futtassa a következő parancsfájlt a lemez csatlakoztatásához:
 
@@ -107,7 +107,7 @@ Ha ez a módszer nem oldja meg a problémát, kövesse az alábbi lépéseket a 
 
     Most, hogy már rendelkezik a meghajtóhoz tartozó BEK-fájl nevével, létre kell hoznia a titkos fájl nevét. BEK-fájl a meghajtó zárolásának feloldásához.
 
-6.  Töltse le a BEK-fájlt a helyreállítási lemezre. A következő minta menti a BEK-fájlt a C:\BEK mappába. Győződjön meg arról, `C:\BEK\` hogy az elérési út létezik a parancsfájlok futtatása előtt.
+6.  Töltse le a BEK-fájlt a helyreállítási lemezre. A következő minta menti a BEK-fájlt a C:\BEK mappába. A parancsfájlok futtatása előtt győződjön meg arról, hogy a `C:\BEK\` elérési útja létezik.
 
     ```powershell
     $vault = "myKeyVault"
@@ -137,7 +137,7 @@ Ha ez a módszer nem oldja meg a problémát, kövesse az alábbi lépéseket a 
 
                     manage-bde -protectors -disable F: -rc 0
            
-    - Teljes mértékben visszafejtheti a meghajtót. Ehhez futtassa a következő parancsot:
+    - Teljes mértékben visszafejtheti a meghajtót. Ehhez futtassa az alábbi parancsot:
 
                     manage-bde -off F:
 
@@ -266,20 +266,20 @@ A kulcs titkosítási kulcsainak forgatókönyvéhez kövesse az alábbi lépés
 
              manage-bde -protectors -disable F: -rc 0
            
-    - Teljes mértékben visszafejtheti a meghajtót. Ehhez futtassa a következő parancsot:
+    - Teljes mértékben visszafejtheti a meghajtót. Ehhez futtassa az alábbi parancsot:
 
                     manage-bde -off F:
 ## <a name="script-troubleshooting"></a>Parancsfájlok hibaelhárítása
 
-**Hiba: Nem tölthető be a fájl vagy szerelvény**
+**Hiba: nem sikerült betölteni a fájlt vagy a szerelvényt**
 
-Ez a hiba azért fordul elő, mert a ADAL-szerelvények elérési útjai helytelenek. Ha az az modul csak az aktuális felhasználóhoz van telepítve, akkor a ADAL szerelvények a következő helyen `C:\Users\<username>\Documents\WindowsPowerShell\Modules\Az.Accounts\<version>`találhatók:.
+Ez a hiba azért fordul elő, mert a ADAL-szerelvények elérési útjai helytelenek. Ha az az modul csak az aktuális felhasználóhoz van telepítve, akkor a ADAL szerelvények `C:\Users\<username>\Documents\WindowsPowerShell\Modules\Az.Accounts\<version>`találhatók.
 
-A megfelelő elérési utat `Az.Accounts` a mappa keresésével is megkeresheti.
+A helyes elérési utat a `Az.Accounts` mappában is keresheti.
 
-**Hiba: A Get-AzKeyVaultSecret vagy a Get-AzKeyVaultSecret nem ismerhető fel a parancsmag neveként**
+**Hiba: a Get-AzKeyVaultSecret vagy a Get-AzKeyVaultSecret nem ismerhető fel a parancsmag neveként**
 
-Ha a régi az PowerShell-modult használja, a `Get-AzureKeyVaultSecret` és `Get-AzureKeyVaultSecret`a két parancsot kell módosítania.
+Ha a régi AZ PowerShell-modult használja, módosítania kell a két parancsot `Get-AzureKeyVaultSecret` és `Get-AzureKeyVaultSecret`.
 
 **Paraméterek mintái**
 

@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 05/10/2017
 ms.author: ramankum
 ms.custom: mvc
-ms.openlocfilehash: 2c9833c6ac2427a4821d52854018eec60031c479
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 42152b2f469aa4b642f9ca0f0858377a8b8b7657
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70080878"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73749772"
 ---
 # <a name="create-a-virtual-machine-from-a-snapshot-with-powershell"></a>Virtuális gép létrehozása pillanatképből a PowerShell használatával
 
@@ -28,7 +28,7 @@ Ez a szkript létrehoz egy virtuális gépet egy operációsrendszer-lemez pilla
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
+ 
 
 ## <a name="sample-script"></a>Példaszkript
 
@@ -49,12 +49,12 @@ Ez a szkript a következő parancsokat használja a pillanatkép-tulajdonságok 
 | Parancs | Megjegyzések |
 |---|---|
 | [Get-AzSnapshot](https://docs.microsoft.com/powershell/module/az.compute/get-azsnapshot) | A pillanatkép-név használatával beolvassa a pillanatképet. |
-| [New-AzDiskConfig](https://docs.microsoft.com/powershell/module/az.compute/new-azdiskconfig) | Létrehoz egy lemez-konfigurációt. Ezt a konfigurációt a lemez létrehozási folyamata használja. |
-| [New-AzDisk](https://docs.microsoft.com/powershell/module/az.compute/new-azdisk) | Létrehoz egy felügyelt lemezt. |
-| [New-AzVMConfig](https://docs.microsoft.com/powershell/module/az.compute/new-azvmconfig) | Egy virtuálisgép-konfigurációt hoz létre. Ebben a konfigurációban olyan információk szerepelnek, mint a virtuális gép neve, az operációs rendszer és a rendszergazdai hitelesítő adatok. A rendszer a virtuális gépek létrehozása során használja ezt a konfigurációt. |
+| [Új – AzDiskConfig](https://docs.microsoft.com/powershell/module/az.compute/new-azdiskconfig) | Létrehoz egy lemez-konfigurációt. Ezt a konfigurációt a lemez létrehozási folyamata használja. |
+| [Új – AzDisk](https://docs.microsoft.com/powershell/module/az.compute/new-azdisk) | Létrehoz egy felügyelt lemezt. |
+| [Új – AzVMConfig](https://docs.microsoft.com/powershell/module/az.compute/new-azvmconfig) | Egy virtuálisgép-konfigurációt hoz létre. Ebben a konfigurációban olyan információk szerepelnek, mint a virtuális gép neve, az operációs rendszer és a rendszergazdai hitelesítő adatok. A rendszer a virtuális gépek létrehozása során használja ezt a konfigurációt. |
 | [Set-AzVMOSDisk](https://docs.microsoft.com/powershell/module/az.compute/set-azvmosdisk) | A felügyelt lemezt operációsrendszer-lemezként csatolja a virtuális géphez |
-| [New-AzPublicIpAddress](https://docs.microsoft.com/powershell/module/az.network/new-azpublicipaddress) | Egy nyilvános IP-címet hoz létre. |
-| [New-AzNetworkInterface](https://docs.microsoft.com/powershell/module/az.network/new-aznetworkinterface) | Hálózati adaptert hoz létre. |
+| [Új – AzPublicIpAddress](https://docs.microsoft.com/powershell/module/az.network/new-azpublicipaddress) | Egy nyilvános IP-címet hoz létre. |
+| [Új – AzNetworkInterface](https://docs.microsoft.com/powershell/module/az.network/new-aznetworkinterface) | Hálózati adaptert hoz létre. |
 | [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) | Létrehoz egy virtuális gépet. |
 |[Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | Eltávolít egy erőforráscsoportot és az összes abban található erőforrást. |
 

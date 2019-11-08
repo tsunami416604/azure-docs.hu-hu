@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 12/12/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: a72584cfe2b113fdf9eef9323dae6b0096e3f192
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 0c8893336182ef3446bc654315396fb6dfa8ca13
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70090593"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73748682"
 ---
 # <a name="create-an-iis-vm-with-powershell"></a>IIS-es virtuális gép létrehozása a PowerShell-lel
 
@@ -28,7 +28,7 @@ Ez a szkript egy Windows Server 2016-ot futtató Azure-beli virtuális gépet ho
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
+ 
 
 ## <a name="sample-script"></a>Példaszkript
 

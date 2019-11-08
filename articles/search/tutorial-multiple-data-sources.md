@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 3b94e3e352f4d6b5cd7da41feb9660be2ffed2bd
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 69b18cdd4d0bb8e3d13bbacd5d21764004308786
+ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72786482"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73795644"
 ---
 # <a name="c-tutorial-combine-data-from-multiple-data-sources-in-one-azure-cognitive-search-index"></a>C#Oktatóanyag: több adatforrásból származó adatok egyesítése egy Azure Cognitive Search indexben
 
@@ -36,7 +36,7 @@ Ebben a rövid útmutatóban a következő szolgáltatásokat, eszközöket és 
 
 - [Hozzon létre egy Azure Cognitive Search szolgáltatást](search-create-service-portal.md) , vagy [keressen egy meglévő szolgáltatást](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) a jelenlegi előfizetése alatt. Ehhez az oktatóanyaghoz használhatja az ingyenes szolgáltatást.
 
-- [Hozzon létre egy Azure Cosmos db fiókot](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account) a minta szállodai adattárolók tárolásához.
+- [Hozzon létre egy Azure Cosmos db fiókot](https://docs.microsoft.com/azure/cosmos-db/create-cosmosdb-resources-portal) a minta szállodai adattárolók tárolásához.
 
 - [Hozzon létre egy Azure Storage-fiókot](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account) a minta JSON-blob-adattárolók tárolásához.
 
@@ -58,7 +58,7 @@ Az Azure Cognitive Search szolgáltatással való kommunikációhoz szükség va
 
 1. [Jelentkezzen be a Azure Portalba](https://portal.azure.com/), és a keresési szolgáltatás **Áttekintés** lapján töltse le az URL-címet. A végpontok például a következőképpen nézhetnek ki: `https://mydemo.search.windows.net`.
 
-1. A **beállítások** > **kulcsok**területen szerezze be a szolgáltatásra vonatkozó teljes körű jogosultságokat. Az üzletmenet folytonossága érdekében két, egymással megváltoztathatatlan rendszergazdai kulcs áll rendelkezésre. Az objektumok hozzáadására, módosítására és törlésére vonatkozó kérésekhez használhatja az elsődleges vagy a másodlagos kulcsot is.
+1. A **beállítások** > **kulcsok**területen kérjen meg egy rendszergazdai kulcsot a szolgáltatásra vonatkozó összes jogosultsághoz. Az üzletmenet folytonossága érdekében két, egymással megváltoztathatatlan rendszergazdai kulcs áll rendelkezésre. Az objektumok hozzáadására, módosítására és törlésére vonatkozó kérésekhez használhatja az elsődleges vagy a másodlagos kulcsot is.
 
 ![HTTP-végpont és elérési kulcs beszerzése](media/search-get-started-postman/get-url-key.png "HTTP-végpont és elérési kulcs beszerzése")
 
@@ -121,13 +121,13 @@ A keresési szolgáltatás és az adatforrások elérhetőségi adatai a megold�
 }
 ```
 
-Az első két bejegyzés az Azure Cognitive Search szolgáltatás URL-címét és rendszergazdai kulcsait használja. @No__t_0 egy végpontja, például a megadni kívánt szolgáltatásnév `mydemo`.
+Az első két bejegyzés az Azure Cognitive Search szolgáltatás URL-címét és rendszergazdai kulcsait használja. `https://mydemo.search.windows.net`egy végpontja, például a megadni kívánt szolgáltatásnév `mydemo`.
 
 A következő bejegyzések megadják az Azure Blob Storage és Azure Cosmos DB adatforrások fiókjának nevét és a kapcsolatok karakterláncának adatait.
 
 ### <a name="identify-the-document-key"></a>A dokumentum kulcsának azonosítása
 
-Az Azure Cognitive Searchban a Key mező egyedileg azonosítja az indexben szereplő összes dokumentumot. Minden keresési indexnek pontosan egy `Edm.String` típusú kulcsfontosságú mezővel kell rendelkeznie. A kulcs mezőnek jelen kell lennie az indexhez hozzáadott adatforrásban lévő minden dokumentumhoz. (Valójában ez az egyetlen kötelező mező.)
+Az Azure Cognitive Searchban a Key mező egyedileg azonosítja az indexben szereplő összes dokumentumot. Minden keresési indexnek pontosan egy `Edm.String`típusú kulcsfontosságú mezővel kell rendelkeznie. A kulcs mezőnek jelen kell lennie az indexhez hozzáadott adatforrásban lévő minden dokumentumhoz. (Valójában ez az egyetlen kötelező mező.)
 
 Ha több adatforrásból indexeli az adatok indexelését, az egyes adatforrások kulcsának értékének ugyanahhoz a Key mezőhöz kell tartoznia a kombinált indexben. Gyakran igényel némi kezdeti megtervezést az index értelmes dokumentum-kulcsainak azonosításához, és győződjön meg arról, hogy az minden adatforrásban létezik.
 
@@ -344,7 +344,7 @@ Kattintson a Hotel-Rooms-Sample index elemre a listában. Ekkor megjelenik az in
 
 Az oktatóanyag után a leggyorsabb megoldás az Azure Cognitive Search szolgáltatást tartalmazó erőforráscsoport törlésével. Most törölheti az erőforráscsoportot, amivel véglegesen eltávolíthatja a teljes tartalmát. A portálon az erőforráscsoport neve az Azure Cognitive Search szolgáltatás áttekintés lapján található.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A JSON-Blobok indexeléséhez több módszer és több lehetőség is van. Ha a forrásadatok JSON-tartalmat tartalmaznak, áttekintheti ezeket a beállításokat, hogy megtudja, mi a legmegfelelőbb a forgatókönyvhöz.
 

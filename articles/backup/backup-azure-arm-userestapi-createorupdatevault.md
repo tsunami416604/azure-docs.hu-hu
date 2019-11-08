@@ -1,6 +1,6 @@
 ---
-title: 'Azure Backup: Recovery Services-tárolók létrehozása REST API használatával'
-description: Azure-beli virtuális gépek biztonsági mentési és visszaállítási műveleteinek kezelése REST API használatával
+title: 'Azure Backup: Recovery Services-tárolók létrehozása a REST API használatával'
+description: Ebből a cikkből megtudhatja, hogyan kezelheti az Azure-beli virtuális gépek biztonsági mentési és visszaállítási műveleteit REST API használatával.
 ms.reviewer: pullabhk
 author: dcurwin
 manager: carmonm
@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/21/2018
 ms.author: dacurwin
 ms.assetid: e54750b4-4518-4262-8f23-ca2f0c7c0439
-ms.openlocfilehash: f60a675b87d989f12ac3e6181f580b8acffa640b
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: 7c9d165f623367d1c888b90f76e96ce8fa2e8f89
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68688713"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73747565"
 ---
 # <a name="create-azure-recovery-services-vault-using-rest-api"></a>Azure Recovery Services-tároló létrehozása REST API használatával
 
@@ -27,16 +27,16 @@ Azure Recovery Services-tároló létrehozásához vagy frissítéséhez haszná
 PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}?api-version=2016-06-01
 ```
 
-## <a name="create-a-request"></a>Kérés létrehozása
+## <a name="create-a-request"></a>Kérelem létrehozása
 
-A *put* kérelem létrehozásához a `{subscription-id}` paraméter megadása kötelező. Ha több előfizetéssel rendelkezik, tekintse meg [a több előfizetés használata](/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest)című témakört. Megadhatja a `{vaultName}` `api-version` és a erőforrásait, valamint a paramétert. `{resourceGroupName}` Ez a cikk `api-version=2016-06-01`a következőt használja:.
+Az *put* -kérelem létrehozásához a `{subscription-id}` paraméter szükséges. Ha több előfizetéssel rendelkezik, tekintse meg [a több előfizetés használata](/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest)című témakört. Az erőforrásokhoz `{resourceGroupName}` és `{vaultName}` adhat meg, a `api-version` paraméterrel együtt. Ez a cikk `api-version=2016-06-01`t használ.
 
-A következő fejlécek szükségesek:
+A következő fejlécek megadása kötelező:
 
 | Kérelem fejléce   | Leírás |
 |------------------|-----------------|
-| *Content-Type:*  | Kötelező. Állítsa a `application/json`következőre:. |
-| *Authorization:* | Kötelező. Érvényes `Bearer` [hozzáférési](https://docs.microsoft.com/rest/api/azure/#authorization-code-grant-interactive-clients)jogkivonatra van beállítva. |
+| *Content-Type* (Tartalomtípus):  | Kötelező. Állítsa `application/json` értékre. |
+| *Authorization* (Engedélyezés): | Kötelező. Állítsa egy érvényes `Bearer` [hozzáférési jogkivonatra](https://docs.microsoft.com/rest/api/azure/#authorization-code-grant-interactive-clients). |
 
 További információ a kérelem létrehozásáról: [REST API kérelem/válasz összetevői](/rest/api/azure/#components-of-a-rest-api-requestresponse).
 
@@ -44,13 +44,13 @@ További információ a kérelem létrehozásáról: [REST API kérelem/válasz 
 
 A kérelem törzsének létrehozásához a következő általános definíciók használhatók:
 
-|Name (Név)  |Kötelező  |Típus  |Leírás  |
+|Név  |Kötelező  |Típus  |Leírás  |
 |---------|---------|---------|---------|
 |eTag     |         |   Sztring      |  Opcionális eTag       |
-|location     |  true       |Sztring         |   Erőforrás helye      |
+|location     |  igaz       |Sztring         |   Erőforrás helye      |
 |properties     |         | [VaultProperties](https://docs.microsoft.com/rest/api/recoveryservices/vaults/createorupdate#vaultproperties)        |  A tár tulajdonságai       |
-|sku     |         |  [Termékváltozat](https://docs.microsoft.com/rest/api/recoveryservices/vaults/createorupdate#sku)       |    Az egyes Azure-erőforrások egyedi rendszerazonosítójának azonosítása     |
-|címkék     |         | Object        |     Erőforráscímkék    |
+|SKU     |         |  [Termékváltozat](https://docs.microsoft.com/rest/api/recoveryservices/vaults/createorupdate#sku)       |    Az egyes Azure-erőforrások egyedi rendszerazonosítójának azonosítása     |
+|címkét     |         | Objektum        |     Erőforráscímkék    |
 
 Vegye figyelembe, hogy a tár neve és az erőforráscsoport neve a PUT URI-ban van megadva. A kérelem törzse határozza meg a helyet.
 
@@ -68,11 +68,11 @@ A következő példában egy tárolót hoz létre a "West US"-ben. Itt adhatja m
 }
 ```
 
-## <a name="responses"></a>Responses
+## <a name="responses"></a>Válaszok
 
 Két sikeres válasz van a művelethez egy Recovery Services-tároló létrehozásához vagy frissítéséhez:
 
-|Name (Név)  |Típus  |Leírás  |
+|Név  |Típus  |Leírás  |
 |---------|---------|---------|
 |200 OK     |   [Tároló](https://docs.microsoft.com/rest/api/recoveryservices/vaults/createorupdate#vault)      | OK        |
 |201 létrehozva     | [Tároló](https://docs.microsoft.com/rest/api/recoveryservices/vaults/createorupdate#vault)        |   Létrehozva      |
@@ -100,9 +100,9 @@ Az előző példában szereplő kérelem törzsében létrehozott, sűrített *2
 
 ## <a name="next-steps"></a>További lépések
 
-[Hozzon létre egy biztonsági mentési szabályzatot egy Azure-beli virtuális gép biztonsági mentéséhez ebben](backup-azure-arm-userestapi-createorupdatepolicy.md)a tárolóban.
+[Hozzon létre egy biztonsági mentési szabályzatot egy Azure-beli virtuális gép biztonsági mentéséhez ebben a tárolóban](backup-azure-arm-userestapi-createorupdatepolicy.md).
 
 Az Azure REST API-kkal kapcsolatos további információkért tekintse meg a következő dokumentumokat:
 
 - [Azure Recovery Services-szolgáltató REST API](/rest/api/recoveryservices/)
-- [Ismerkedés az Azure REST API](/rest/api/azure/)
+- [Bevezetés az Azure REST API használatába](/rest/api/azure/)

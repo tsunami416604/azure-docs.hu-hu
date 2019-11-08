@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 03/23/2018
 ms.author: akjosh
 ms.reviewer: cynthn
-ms.openlocfilehash: e096982c7bbf4f06b96ef4e3918ca1caa9d481a0
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: 599417131f228c95168641c54ffbb947e3682f7b
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71169083"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73750013"
 ---
 # <a name="use-azure-policy-to-restrict-extensions-installation-on-windows-vms"></a>A bővítmények Windows rendszerű virtuális gépeken való telepítésének korlátozása Azure Policy használatával
 
@@ -26,7 +26,7 @@ Ha meg szeretné akadályozni bizonyos bővítmények használatát vagy telepí
 
 Ez az oktatóanyag Azure PowerShellt használ a Cloud Shellon belül, amely folyamatosan frissül a legújabb verzióra. 
 
-[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
+ 
 
 ## <a name="create-a-rules-file"></a>Szabály létrehozása fájl
 
@@ -141,7 +141,7 @@ $assignment
 
 ## <a name="test-the-policy"></a>A szabályzat tesztelése
 
-A szabályzat teszteléséhez próbálja meg használni a virtuális gép elérési bővítményét. A következő üzenetnek sikertelennek kell lennie a "set-AzVMAccessExtension: A szabályzat nem engedélyezte a (z) "myVMAccess" erőforrást. "
+A szabályzat teszteléséhez próbálja meg használni a virtuális gép elérési bővítményét. A következőnek sikertelennek kell lennie, ha a házirend nem engedélyezte a "set-AzVMAccessExtension: Resource" myVMAccess "üzenetet."
 
 ```azurepowershell-interactive
 Set-AzVMAccessExtension `
@@ -151,7 +151,7 @@ Set-AzVMAccessExtension `
    -Location EastUS 
 ```
 
-A portálon a jelszó módosításának sikertelennek kell lennie a "a sablon központi telepítése sikertelen volt a szabályzat megsértése miatt." üzenetet.
+A portálon a jelszó módosításának sikertelennek kell lennie a "a sablon központi telepítése sikertelen volt a szabályzat megsértése miatt." Üzenetet.
 
 ## <a name="remove-the-assignment"></a>A hozzárendelés eltávolítása
 

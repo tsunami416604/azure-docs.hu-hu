@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: jeffya
-ms.openlocfilehash: b7d2e1b08653cb8023ef6a5190ab53ecc3d568a6
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: de394a98f78b0bdb7cdf090de5c052cc761aa92d
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72951509"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73748619"
 ---
 # <a name="connect-an-mxchip-iot-devkit-device-to-your-azure-iot-central-application"></a>MXChip-IoT fejlesztői készlet-eszköz csatlakoztatása az Azure IoT Central-alkalmazáshoz
 
@@ -29,12 +29,12 @@ Ebben a útmutatóban a következőket kell tennie:
 
 A cikkben szereplő lépések végrehajtásához a következő erőforrásokra van szükség:
 
-1. Egy [fejlesztői készlet-eszköz](https://aka.ms/iot-devkit-purchase).
-1. Az **előnézeti alkalmazás** sablonjában létrehozott IoT Central alkalmazás. Követheti a [IoT Plug and Play alkalmazás létrehozása](./quick-deploy-iot-central-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json)című témakör lépéseit.
+- Egy [fejlesztői készlet-eszköz](https://aka.ms/iot-devkit-purchase).
+- Az **előnézeti alkalmazás** sablonjában létrehozott IoT Central alkalmazás. Követheti a [IoT Plug and Play alkalmazás létrehozása](./quick-deploy-iot-central-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json)című témakör lépéseit.
 
 ## <a name="get-device-connection-details"></a>Eszköz kapcsolati adatainak beolvasása
 
-Az Azure IoT Central alkalmazásban válassza az **Adminisztráció** fület, és válassza az **eszköz csatlakoztatása**lehetőséget. Jegyezze fel az **azonosító hatókörét** és az **elsődleges kulcsot**.
+Az Azure IoT Central alkalmazásban válassza az **Adminisztráció** fület, és válassza az **eszköz csatlakoztatása**lehetőséget. Jegyezze fel a hatókör- **azonosítót** és az **elsődleges kulcsot** (a **kulcsok megtekintése** hivatkozásnál). Ellenőrizze, hogy engedélyezve van-e az **automatikus jóváhagyás** .
 
 ![Eszközcsoport kapcsolatának részletei](media/howto-connect-devkit-pnp/device-group-connection-details.png)
 
@@ -53,7 +53,7 @@ Az Azure IoT Central alkalmazásban válassza az **Adminisztráció** fület, é
 
 1. A számítógépen vagy a táblaszámítógépen kapcsolódjon az eszköz képernyőjén megjelenő WiFi-hálózathoz. A Wi-Fi-hálózat az **az-** és a MAC-címe után kezdődik. Ha csatlakozik ehhez a hálózathoz, nem rendelkezik internet-hozzáféréssel. Ez az állapot várható, és az eszköz konfigurálásakor csak rövid idő alatt csatlakozhat ehhez a hálózathoz.
 
-1. Nyissa meg a webböngészőt, és navigáljon a [http://192.168.0.1/](http://192.168.0.1/)címre. A következő weblap jelenik meg:
+1. Nyissa meg a webböngészőt, és navigáljon [http://192.168.0.1/](http://192.168.0.1/). A következő weblap jelenik meg:
 
     ![Konfiguráció felhasználói felülete](media/howto-connect-devkit-pnp/config-ui.png)
 
@@ -61,7 +61,7 @@ Az Azure IoT Central alkalmazásban válassza az **Adminisztráció** fület, é
 
     - A WiFi-hálózat (SSID) neve.
     - A WiFi hálózati jelszava.
-    - A kapcsolat részletei: az **eszköz azonosítója** , amelyet saját maga is választhat, valamint az **azonosító hatókörét** és a **csoport sas elsődleges kulcsát** , amelyet korábban jegyzett készített.
+    - A kapcsolat részletei: az **eszköz azonosítója** , amelyet saját maga választhat ki, valamint a **hatókör-azonosítót** és a **csoport sas elsődleges kulcsát** , amelyet korábban jegyzett készített.
 
     > [!NOTE]
     > Jelenleg a IoT fejlesztői készlet csak a 2,4 GHz-es Wi-Fi-hez tud csatlakozni, az 5 GHz-es hardveres korlátozások miatt nem támogatott.
@@ -82,12 +82,12 @@ Ebben a lépésben megtekinti a telemetria az Azure IoT Central alkalmazásban.
 
 A IoT Central alkalmazásban válassza az **eszközök** fület, és válassza ki a hozzáadott eszközt. Az **Áttekintés** lapon a telemetria a fejlesztői készlet eszközről tekintheti meg:
 
-   ![IoT Central eszköz áttekintése](media/howto-connect-devkit-pnp/mxchip-overview-page.png)
+![IoT Central eszköz áttekintése](media/howto-connect-devkit-pnp/mxchip-overview-page.png)
 
 ## <a name="review-the-code"></a>A kód áttekintése
 
-A kód áttekintéséhez vagy módosításához és fordításához nyissa meg a [kód mintáit](https://docs.microsoft.com/samples/azure-samples/mxchip-iot-devkit-pnp/sample/).
+A kód áttekintéséhez vagy módosításához és fordításához nyissa meg a [MXChip IoT fejlesztői készlet-mintakód GitHub-tárházát](https://github.com/MXCHIP/IoTDevKit/tree/master/pnp).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Most, hogy megismerte, hogyan csatlakoztatható egy fejlesztői készlet-eszköz az Azure IoT Central-alkalmazáshoz, a javasolt következő lépés annak megismerése, hogyan [állítható be egy egyéni eszköz-sablon](./howto-set-up-template-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json) a saját IoT-eszközhöz.

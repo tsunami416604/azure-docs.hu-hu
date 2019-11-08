@@ -1,6 +1,6 @@
 ---
-title: 'Azure Backup: Azure Backup védett munkaterhelések figyelése'
-description: Azure Backup munkaterhelések figyelése Azure Portal használatával
+title: 'Azure Backup: a Azure Backup védett munkaterhelések figyelése'
+description: Ebből a cikkből megtudhatja, hogyan használhatók a Azure Backup munkaterhelések figyelési és értesítési képességei a Azure Portal használatával.
 ms.reviewer: pullabhk
 author: dcurwin
 manager: carmonm
@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 03/05/2019
 ms.author: dacurwin
 ms.assetid: 86ebeb03-f5fa-4794-8a5f-aa5cbbf68a81
-ms.openlocfilehash: bae05e890ef76ada9f775293c673cb8baa82c8bf
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: f1dc1c7fe6aa5e8d20504427679052f68612f65e
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68954588"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73747354"
 ---
 # <a name="monitoring-azure-backup-workloads"></a>Azure Backup munkaterhelések figyelése
 
@@ -31,10 +31,10 @@ A feladatok akkor jönnek létre, ha olyan műveleteket végeznek, mint példáu
 
 Az alábbi Azure Backup-megoldásokból származó feladatok itt láthatók:
 
-  - Azure-beli virtuális gép biztonsági mentése
-  - Azure-fájlok biztonsági mentése
-  - Azure munkaterhelés biztonsági mentés, például SQL
-  - Azure Backup ügynök (MAB)
+- Azure-beli virtuális gép biztonsági mentése
+- Azure-fájlok biztonsági mentése
+- Azure munkaterhelés biztonsági mentés, például SQL
+- Azure Backup ügynök (MAB)
 
 A System Center Data Protection Manager (SC-DPM), Microsoft Azure Backup Server (MABS) feladatok nem jelennek meg.
 
@@ -46,37 +46,40 @@ A System Center Data Protection Manager (SC-DPM), Microsoft Azure Backup Server 
 A riasztások elsődlegesen olyan helyzetek, amikor a felhasználók értesítést kapnak, hogy el tudják végezni a megfelelő lépéseket. A **biztonsági mentési riasztások** szakasz a Azure Backup szolgáltatás által generált riasztásokat jeleníti meg. Ezeket a riasztásokat a szolgáltatás definiálja, és a felhasználó nem tud egyéni riasztást létrehozni.
 
 ### <a name="alert-scenarios"></a>Riasztási forgatókönyvek
+
 A szolgáltatás a következő forgatókönyveket figyelmeztethető forgatókönyvként határozza meg.
 
-  - Biztonsági mentési/visszaállítási hibák
-  - A biztonsági mentés sikeresen befejeződött az Azure Backup ügynök (MAB) esetében, de figyelmeztetésekkel
-  - A védelem leállítása és a védelem leállítása az adattörlési szolgáltatással
+- Biztonsági mentési/visszaállítási hibák
+- A biztonsági mentés sikeresen befejeződött az Azure Backup ügynök (MAB) esetében, de figyelmeztetésekkel
+- A védelem leállítása és a védelem leállítása az adattörlési szolgáltatással
 
 ### <a name="exceptions-when-an-alert-is-not-raised"></a>Kivételek, ha a riasztás nem merült fel
+
 A riasztások nem jelennek meg a hibák miatt, ezért a következő kivételek állnak fenn:
 
-  - A felhasználó explicit módon megszakította a futó feladatot.
-  - A feladatot nem sikerült végrehajtani, mert folyamatban van egy másik biztonsági mentési művelet (semmi köze itt, mert csak meg kell várni, amíg az előző feladatnak befejeződik)
-  - A virtuális gép biztonsági mentési feladata meghiúsul, mert a biztonsági másolattal rendelkező Azure-beli virtuális gép már nem létezik
+- A felhasználó explicit módon megszakította a futó feladatot.
+- A feladatot nem sikerült végrehajtani, mert folyamatban van egy másik biztonsági mentési művelet (semmi köze itt, mert csak meg kell várni, amíg az előző feladatnak befejeződik)
+- A virtuális gép biztonsági mentési feladata meghiúsul, mert a biztonsági másolattal rendelkező Azure-beli virtuális gép már nem létezik
 
 A fenti kivételek úgy lettek kialakítva, hogy a műveletek eredménye (elsősorban a felhasználó által aktivált) azonnal megjelenik a portálon/PS/CLI-ügyfeleken. Ezért a felhasználó azonnal tisztában van, és nem igényel értesítést.
 
 ### <a name="alerts-from-the-following-azure-backup-solutions-are-shown-here"></a>Az alábbi Azure Backup-megoldások riasztásai itt láthatók:
 
-  - Azure-beli virtuális gép biztonsági mentései
-  - Azure File biztonsági mentései
-  - Azure számítási feladatok biztonsági mentései, például SQL
-  - Azure Backup ügynök (MAB)
+- Azure-beli virtuális gép biztonsági mentései
+- Azure File biztonsági mentései
+- Azure számítási feladatok biztonsági mentései, például SQL
+- Azure Backup ügynök (MAB)
 
 > [!NOTE]
 > A System Center Data Protection Manager (SC-DPM), Microsoft Azure Backup Server (MABS) riasztásai itt nem jelennek meg.
 
 ### <a name="alert-types"></a>Riasztástípusok
+
 A riasztás súlyossága alapján a riasztásokat háromféle típusban lehet meghatározni:
 
-  - **Kritikus**: Elvileg a biztonsági mentési vagy helyreállítási hibák (ütemezett vagy felhasználó által aktivált) a riasztások generálásához vezethetnek, és kritikus riasztásként, valamint olyan romboló műveletekkel is megjelenhetnek, mint például a biztonsági mentés törlése.
-  - **Figyelmeztetés**: Ha a biztonsági mentési művelet sikeres, de néhány figyelmeztetéssel rendelkezik, a rendszer figyelmeztető riasztásként sorolja fel őket.
-  - **Tájékoztatás**: A mai naptól kezdve a Azure Backup szolgáltatás nem hoz létre tájékoztató riasztást.
+- **Kritikus**: elvileg a biztonsági mentési vagy helyreállítási hibák (ütemezett vagy felhasználó által aktivált) a riasztások generálásához vezetnek, és kritikus riasztásként, valamint olyan romboló műveletekkel is rendelkeznek, mint például a biztonsági mentés törlése.
+- **Figyelmeztetés**: Ha a biztonsági mentési művelet sikeres, de néhány figyelmeztetéssel rendelkezik, a rendszer figyelmeztető riasztásként sorolja fel őket.
+- **Tájékoztatás**: a mai naptól kezdve a Azure Backup szolgáltatás nem hoz létre tájékoztató riasztást.
 
 ## <a name="notification-for-backup-alerts"></a>Értesítés a biztonsági mentési riasztásokról
 
@@ -96,16 +99,14 @@ Ha a gyakoriság egy óránkénti kivonatoló értékre lett beállítva, és eg
 
 > [!NOTE]
 >
-> * Ha olyan roncsolásos műveletet végez, mint például a **védelem leállítása a törlési adatokkal** , akkor a rendszer riasztást küld, és e-mailt küld az előfizetés-tulajdonosoknak, a rendszergazdáknak és a társ-rendszergazdáknak akkor is, ha az értesítések nincsenek konfigurálva a helyreállítási tárolóhoz.
-> * A sikeres feladatok értesítésének konfigurálásához használja a [log Analytics](backup-azure-monitoring-use-azuremonitor.md#using-log-analytics-workspace).
+> - Ha olyan roncsolásos műveletet végez, mint például a **védelem leállítása a törlési adatokkal** , akkor a rendszer riasztást küld, és e-mailt küld az előfizetés-tulajdonosoknak, a rendszergazdáknak és a társ-rendszergazdáknak akkor is, ha az értesítések nincsenek konfigurálva a helyreállítási tárolóhoz.
+> - A sikeres feladatok értesítésének konfigurálásához használja a [log Analytics](backup-azure-monitoring-use-azuremonitor.md#using-log-analytics-workspace).
 
 ## <a name="inactivating-alerts"></a>Riasztások inaktiválása
 
-Aktív riasztás inaktiválásához/feloldásához kattintson az inaktiválni kívánt riasztáshoz tartozó listaelemre. Ekkor megnyílik egy képernyő, amely részletes információkat jelenít meg a riasztásról, és a felül található "inaktiválás" gombra kattint. Erre a gombra kattintva megváltoztathatja a riasztás állapotát az "inaktív" értékre. Inaktiválhat egy riasztást, ha egyszerűen rákattint a jobb gombbal az adott riasztáshoz tartozó listaelemre, és kiválasztja az inactivate (inaktiválás) elemet.
+Aktív riasztás inaktiválásához/feloldásához kattintson az inaktiválni kívánt riasztáshoz tartozó listaelemre. Ekkor megnyílik egy képernyő, amely részletes információkat jelenít meg a riasztásról, és a felül található "inaktiválás" gombra kattint. Erre a gombra kattintva megváltoztathatja a riasztás állapotát az "inaktív" értékre. Inaktiválhat egy riasztást úgy is, hogy a jobb gombbal rákattint a riasztáshoz tartozó listaelemre, és kiválasztja az "inaktiválás" elemet.
 
 ![RS Vault-riasztás inaktiválása](media/backup-azure-monitoring-laworkspace/vault-alert-inactivation.png)
-
-
 
 ## <a name="next-steps"></a>További lépések
 

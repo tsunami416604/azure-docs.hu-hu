@@ -1,7 +1,7 @@
 ---
-title: Arcfelismerés és attribútumok fogalmak
+title: Arcfelismerés és attribútumok – fogalmak
 titleSuffix: Azure Cognitive Services
-description: Ismerje meg az arcfelismerés és arctulajdonságok kapcsolatos alapvető fogalmakat.
+description: Az Arcfelismerés az a művelet, amellyel az emberi arcok megkereshetők egy képben, és opcionálisan különböző típusú adatokkal térnek vissza.
 services: cognitive-services
 author: PatrickFarley
 manager: nitime
@@ -10,74 +10,74 @@ ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 04/26/2019
 ms.author: pafarley
-ms.openlocfilehash: e61048eeab9d7061c18f3237db22fc87ca52f526
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 15e39eb9f5b8dd3556ea9ff8240bc2c9d252cd31
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65891145"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73743051"
 ---
 # <a name="face-detection-and-attributes"></a>Arcfelismerés és attribútumok
 
-Ez a cikk ismerteti az arcfelismerés és a face attribútumadatok visszaadásához. Arcfelismerés a emberi arcok megkeresése a képet, és igény szerint a különböző típusú face kapcsolatos adatokat visszaadó művelet.
+Ez a cikk az arcfelismerés és a Face attribútum-adatelemzési fogalmakat ismerteti. Az Arcfelismerés az a művelet, amellyel az emberi arcok megkereshetők egy képben, és opcionálisan különböző típusú adatokkal térnek vissza.
 
-Használja a [arc - észlelése](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) arcfelismerés képen egy művelet. Minimális minden észlelt face faceRectangle kitölteni a válaszban felel meg. A bal oldalon, felül, szélességét és magasságát képpontban koordináták készletét a található face megjelölni. Használja ezeket a koordinátákat, beszerezheti az arcfelismerés és annak méretét. Az API-válasz az arcok mérete sorrend a legnagyobbtól a legkisebbig láthatók.
+Az [Arcfelismerés](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) művelettel azonosíthatja a képekben lévő arcokat. Minden észlelt arc legalább egy faceRectangle-mezőnek felel meg a válaszban. Ez a képpontok koordinátái a bal, a felső, a szélesség és a magasság megjelölése mellett láthatók. A koordináták használatával lekérheti az arc helyét és méretét. Az API-válaszban az arcok a legnagyobb és a legkisebb közötti méret sorrend szerint vannak felsorolva.
 
 ## <a name="face-id"></a>Arc azonosítója
 
-A face ID: minden észlelt lap a képen egyedi azonosító karakterlánc. Kérheti a face ID, az a [arc - észlelése](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) API-hívás.
+A Face azonosító egy egyedi azonosító sztring minden észlelt képpel kapcsolatban. Az arc [-észlelési API-](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) hívásban kérheti a Face ID-t.
 
 ## <a name="face-landmarks"></a>Arcrészek
 
-Arcrészek olyan, könnyen megtalálható pontok a egy oldallal, például a tanulók vagy az én csúcsa. Alapértelmezés szerint 27 előre meghatározott arcpont van. A következő ábrán látható összes 27 pont:
+Az arc tereptárgyak könnyen megtalált pontok, például a tanulók és az orr hegye. Alapértelmezés szerint 27 előre meghatározott arcpont van. Az alábbi ábrán az összes 27 pont látható:
 
-![A címkével ellátott összes 27 arcrész face diagram](../Images/landmarks.1.jpg)
+![Egy, az összes 27 tereptárgy címkével ellátott arc diagram](../Images/landmarks.1.jpg)
 
-A pontok koordinátáit adja vissza képpontban megadva.
+A pontok koordinátáit képpontban adja vissza.
 
 ## <a name="attributes"></a>Attribútumok
 
-Attribútumok olyan szolgáltatások készlete, amelyek igény szerint által észlelt a [arc - észlelése](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) API-t. A következő attribútumok észlelése:
+Az attribútumok olyan funkciók összessége, amelyek a [Face-Detect API-](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) val opcionálisan észlelhetők. A következő attribútumok észlelhetők:
 
-* **Kor**. Egy adott arc éves becsült kora.
-* **Elmossa**. Az az ábrán a face blurriness. Ez az attribútum értéke egy nulla és a egy és a egy informális minősítése alacsony, közepes vagy magas.
-* **Érzelemfelismerési**. Az észlelési magabiztosan az adott személyt az érzelmek listája. Megbízhatósági pontszámok van normalizálva, és az összes érzelmek között pontszámok hozzá akár egy. A visszaadott érzelmek boldogság, szomorúság, semleges, düh, megvetés, undor, meglepő és lehetőségének.
-* **Kitettség**. Az arcok a képen vannak kitéve. Ez az attribútum nulla és a egy és a egy informális minősítése alulexponál, goodExposure vagy túlexponálás beállításával közötti értéket ad vissza.
-* **Arcfelismerési haj**. A becsült arcfelismerési haj jelenléte és a hossza az adott személyt.
-* **A nemek**. Becsült tartalmazzák az adott személyt. Lehetséges értékek: férfi női és genderless.
-* **Szemüveg**. Van-e az adott személyt szemüveg. Lehetséges értékek: NoGlasses, ReadingGlasses, napszemüvegeket és Úszóklub védõszemüveg.
-* **Haj**. A face haj típusa. Ez az attribútum a haj e látható, hogy baldness észlelt, és milyen haj színek észlelt jeleníti meg.
-* **A fő jelentenek**. A face tájolás a 3D terület. Ez az attribútum a terv lényegét, visszaállítási és kitérése szögek fokban írja le. A értéktartományú rendre olyan-90 fokkal 90 fokos, - 180 fokos 180 fokkal, illetve -90 fokos, és 90 fok. Az alábbi ábrában szög leképezések:
+* **Életkor**. Egy adott arc becsült kora (év).
+* **Életlenítés**. A képen látható arc homályos. Ez az attribútum a nulla és az egy érték közötti értéket adja vissza, valamint az alacsony, közepes vagy magas informális minősítést.
+* **Érzelem**. Az adott arc észlelési megbízhatóságával kapcsolatos érzelmek listája. A megbízhatósági pontszámok normalizálva vannak, és az összes érzelem pontszáma akár eggyel is kiegészíthető. A visszaadott érzelmek a boldogság, a szomorúság, a semleges, a düh, a megvetés, az undor, a meglepetés és a félelem.
+* **Expozíció**. A képen látható arc expozíciója. Ez az attribútum a nulla és az egy érték közötti értéket adja vissza, valamint az expozíció, a goodExposure vagy a túlzott expozíció informális minősítését.
+* **Arc szőr**. A becsült arc-haj és az adott arc hossza.
+* Nem. Az adott arc becsült neme. A lehetséges értékek a következők: férfi, női és nemi.
+* **Szemüveg**. Azt jelzi, hogy a megadott arc szemüveggel rendelkezik-e. A lehetséges értékek: nem üvegek, ReadingGlasses, napszemüvegek és úszási szemüvegek.
+* **Haj**. Az arc szőrének típusa Ez az attribútum azt mutatja, hogy látható-e a haj, hogy a rendszer a kopaszodás észlelését és a haj színét észleli-e.
+* **Head**. Az arc tájolása 3D térben. Ezt az attribútumot a Pitch, a roll és a kitérés szögek írják le fokban. Az érték tartománya-90 fok, 90 fok,-180 fok és 180 fok, illetve – 90 fok – 90 fok. Tekintse meg a következő diagramot a szög-hozzárendelésekhez:
 
-    ![Egy fő, a térköz-visszaállítás, és yaw tengelyek címkével](../Images/headpose.1.jpg)
-* **Makeup**. Van-e a face makeup. Ez az attribútum a eyeMakeup és lipMakeup egy logikai értéket ad vissza.
-* **Zaj**. A vizuális zaj észlelt az arcfelismerés képen. Ez az attribútum értéke egy nulla és a egy és a egy informális minősítése alacsony, közepes vagy magas.
-* **Hangelnyelés**. Vannak-e objektumok a face blokkoló részeit. Ez az attribútum a eyeOccluded, foreheadOccluded és mouthOccluded egy logikai értéket ad vissza.
-* **Mosolyogjon**. Az adott személyt mosoly kifejezés. Ez az érték nem mosoly nulla és a egy egyértelmű mosoly között van.
+    ![A Pitch, a roll és a kitérés tengelysel jelölt fej](../Images/headpose.1.jpg)
+* **Smink**. Azt jelzi, hogy az arc rendelkezik-e sminktel. Ez az attribútum a eyeMakeup és a lipMakeup logikai értékét adja vissza.
+* **Zaj**. Az arcképben észlelt vizuális zaj Ez az attribútum a nulla és az egy érték közötti értéket adja vissza, valamint az alacsony, közepes vagy magas informális minősítést.
+* **Elzáródás**. Azt határozza meg, hogy vannak-e olyan objektumok, amelyek blokkolja az arc részeit. Ez az attribútum a eyeOccluded, a foreheadOccluded és a mouthOccluded logikai értékét adja vissza.
+* **Mosoly**. Az adott arc mosoly kifejezése Ez az érték nulla, és nem mosolyog, egyet pedig tiszta mosolyra.
 
 > [!IMPORTANT]
-> Olyan tulajdonságok vannak előre jelzett statisztikai algoritmusokkal. Ezek mindig nem pontos. Legyen körültekintő, amikor attribútum adatokon alapuló döntések.
+> A Face attribútumok a statisztikai algoritmusok használatával lesznek előre jelezve. Előfordulhat, hogy nem mindig pontosak. Körültekintően járjon el, ha az attribútum adatain alapuló döntéseket tesz.
 
 ## <a name="input-data"></a>Bemeneti adatok
 
-Az alábbi tippek segítségével győződjön meg arról, hogy a bemeneti képekhez adnak a legpontosabb észlelésének eredménye:
+A következő tippek segítségével győződjön meg arról, hogy a bemeneti képek a legpontosabb észlelési eredményeket adják meg:
 
-* A bemeneti formátum támogatott JPEG, PNG, GIF és BMP első keret.
-* A kép fájlmérete kell nem lehet nagyobb, mint 4 MB.
-* Az észlelhető oldallal mérete tartománya 36 x 36, 4096 x 4096 képpont. Arcok a tartományon kívül nem észlelhető.
-* Néhány arcok előfordulhat, hogy észlelhető kihívások miatt. Szélsőséges face szög (fő testtartás) vagy a face hangelnyelés (például napszemüvegeket vagy teljes letiltása a face része, objektumok) hatással lehet az észlelés. Elülső és a közel-elülső arcok adja a legjobb eredmények elérése érdekében.
+* A támogatott bemeneti képformátumok a következők: JPEG, PNG, GIF az első képkockához és a BMP-hez.
+* A képfájl mérete nem lehet nagyobb 4 MB-nál.
+* A észlelhető arc mérete 36 x 36 és 4096 x 4096 képpont közé esik. A tartományon kívüli arcok nem észlelhetők.
+* Előfordulhat, hogy a technikai kihívások miatt egyes arcok nem észlelhetők. A szélsőséges Face Angles (Head póz) vagy az arc elzáródás (objektumok, például napszemüvegek vagy az arc részét letiltó kezek) befolyásolhatják az észlelést. Az elülső és a közel-elülső arcok a legjobb eredményeket adják.
 
-Csatorna videoklipet arcokat feltárásának előfordulhat, egyes a kamerát a beállítások hangolását a teljesítmény javítása érdekében:
+Ha egy videó-hírcsatornából észlel arcokat, akkor a videó kamerájának bizonyos beállításainak módosításával növelheti a teljesítményt:
 
-* **Simítás**: Számos videokamera élsimítási effektus alkalmazása. Célszerű kikapcsolni ez Ha lehetséges, mert egy életlenítés keretek között hoz létre, és csökkenti az egyértelműség érdekében.
-* **Zár sebesség**: Zár gyorsabb csökkenti a mozgásban lévő adatoknak egyaránt keretek között, és lehetővé teszi az egyes világosabb keretet. Azt javasoljuk, hogy 1/60 másodperc vagy annál gyorsabb zár megbízhatóbbak.
-* **Szög zár**: Egyes kamerák zár szög zár sebessége helyett adja meg. Egy kisebb zár szög lemezrendszert használjon. Egyértelműbb videókban eredményez.
+* **Simítás**: számos videokamera alkalmaz simítási hatást. Ezt ki kell kapcsolni, ha azért van, mert a keretek között elmosódottan jön létre, és csökkenti az érthetőséget.
+* **Zársebesség**: a gyorsabb zársebesség csökkenti a keretek közötti mozgás mértékét, és az egyes képkockák tisztább méretét teszi lehetővé. Javasoljuk, hogy a zársebesség 1/60 másodperc vagy annál gyorsabb legyen.
+* **Redőny szöge**: egyes kamerák a zársebesség helyett a zársebességet határozzák meg. Ha lehetséges, használjon alacsonyabb zársebesség-látószöget. Ez tisztább képkockákat eredményez.
 
     >[!NOTE]
-    > Így a lemezkép sötétebb kamerával rendelkező egy kisebb zár szög kevesebb világos fog kapni az egyes keretek. Határozza meg a megfelelő szintű használni kell.
+    > Az alsó zársebességtel rendelkező kamera kevesebb fényt fog kapni az egyes keretekben, így a kép sötétebb lesz. Meg kell határoznia a használandó megfelelő szintet.
 
 ## <a name="next-steps"></a>További lépések
 
-Most, hogy már ismeri, a face észlelési fogalmak, megtudhatja, hogyan írható olyan szkript, amely a megadott lemezkép arcokat észleli.
+Most, hogy már ismeri az Arcfelismerés fogalmait, megtudhatja, hogyan írhat olyan parancsfájlt, amely észleli az arcokat egy adott képen.
 
-* [A kép arcok észlelése](../Face-API-How-to-Topics/HowtoDetectFacesinImage.md)
+* [Képeken lévő arcok észlelése](../Face-API-How-to-Topics/HowtoDetectFacesinImage.md)

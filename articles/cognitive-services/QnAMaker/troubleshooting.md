@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 09/26/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: 51d21dca1d8a5223e67cb7ea8489800989cff55c
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 7e98fd089ce8ec1285232840a40bb42ac5b81446
+ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72026028"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73795445"
 ---
 # <a name="troubleshooting-for-qna-maker"></a>QnA Maker hibaelhárítása
 
@@ -28,13 +28,13 @@ A QnA Maker szolgáltatással kapcsolatos leggyakrabban felmerülő kérdések v
 
 A QnAMaker szolgáltatás végpontja hibakeresési célokra használható, amikor kapcsolatba lép a QnAMaker támogatási szolgálatával vagy a UserVoice. A végpont egy URL-cím ebben az űrlapban: https://your-resource-name.azurewebsites.net.
     
-1. Keresse meg a QnAMaker szolgáltatást (erőforráscsoport) a [Azure Portalon](https://portal.azure.com)
+1. Lépjen a QnAMaker szolgáltatásra (erőforráscsoport) a [Azure Portal](https://portal.azure.com)
 
-    ![QnAMaker Azure-erőforráscsoportot az Azure Portalon](./media/qnamaker-how-to-troubleshoot/qnamaker-azure-resourcegroup.png)
+    ![QnAMaker Azure-erőforráscsoport Azure Portal](./media/qnamaker-how-to-troubleshoot/qnamaker-azure-resourcegroup.png)
 
 1. Válassza ki a QnA Maker erőforráshoz társított App Service. A nevek általában azonosak.
 
-     ![Válassza ki a QnAMaker App Service-ben](./media/qnamaker-how-to-troubleshoot/qnamaker-azure-appservice.png)
+     ![QnAMaker kiválasztása App Service](./media/qnamaker-how-to-troubleshoot/qnamaker-azure-appservice.png)
 
 1. A végpont URL-címe az Áttekintés szakaszban érhető el
 
@@ -49,95 +49,95 @@ A **QnA Maker segítséget nyújt** a QnA Maker portálon a segítségére. A S�
 
 ## <a name="manage-the-knowledge-base"></a>A Tudásbázis kezelése
 
-### <a name="i-accidentally-deleted-a-part-of-my-qna-maker-what-should-i-do"></a>A QnA Maker egy részét véletlenül törölt, Mit tegyek? 
+### <a name="i-accidentally-deleted-a-part-of-my-qna-maker-what-should-i-do"></a>Véletlenül töröltem a QnA Maker egy részét, mit tegyek? 
 
 Ne törölje a létrehozott Azure-szolgáltatásokat a QnA Maker erőforrással, például a Search vagy a Web App szolgáltatással együtt. Ezek a QnA Maker működéséhez szükségesek, ha törli az egyiket, QnA Maker nem fog megfelelően működni.
 
-Összes törlése végleges, beleértve a kérdés és válasz párt, fájlok, URL-címek, egyéni kérdéseket és válaszokat, tudásbázisok vagy Azure-erőforrások. Ellenőrizze, hogy a Tudásbázis a exportálja a **beállítások** oldalhoz, mielőtt bármelyik részét a Tudásbázis törlése. 
+Az összes törlés végleges, beleértve a kérdés-és a választ, a fájlokat, az URL-eket, az egyéni kérdéseket és válaszokat, a tudásbázisokat vagy az Azure-erőforrásokat. A Tudásbázis bármely részének törlése előtt győződjön meg arról, hogy a tudásbázist a **Beállítások** lapról exportálja. 
 
-### <a name="why-is-my-urlsfiles-not-extracting-question-answer-pairs"></a>Miért van saját URL-címe / fájl (ok) nem kinyerésekor kérdés-válasz párt?
+### <a name="why-is-my-urlsfiles-not-extracting-question-answer-pairs"></a>Miért nem/file a kérdés-válasz párokat az URL-ek (k)?
 
-Akkor lehet, hogy a QnA Maker nem válaszokat automatikusan kinyerni néhány kérdést és választ (kérdés-válasz) tartalom érvényes GYIK URL-címekről. Ezekben az esetekben egy .txt fájlban illessze be a szövegét, és tekintse meg, ha az eszköz betöltheti azt. Azt is megteheti, besorolást hozzáadhat tartalmat a Tudásbázis keretében a [QnA Maker portal](https://qnamaker.ai).
+Lehetséges, hogy QnA Maker nem tud automatikusan kinyerni néhány kérdés-válasz (QnA) tartalmat az érvényes GYIK URL-címekről. Ilyen esetekben beillesztheti a QnA tartalmát egy. txt fájlba, és megtudhatja, hogy az eszköz képes-e a betöltésre. Másik lehetőségként a [QnA Maker portálon](https://qnamaker.ai)is hozzáadhat tartalmat a tudásbázishoz.
 
 ### <a name="how-large-a-knowledge-base-can-i-create"></a>Milyen méretű lehet a létrehozott tudásbázis?
 
-A Tudásbázis mérete attól függ, hogy a Termékváltozat az Azure search úgy dönt, hogy a QnA Maker szolgáltatás létrehozásakor. Olvasási [Itt](./Tutorials/choosing-capacity-qnamaker-deployment.md) további részletekért.
+A Tudásbázis mérete az QnA Maker szolgáltatás létrehozásakor választott Azure Search SKU-ból függ. További [részletekért olvassa el](./Tutorials/choosing-capacity-qnamaker-deployment.md) a következőt:.
 
-### <a name="why-cant-i-see-anything-in-the-drop-down-when-i-try-to-create-a-new-knowledge-base"></a>Miért nem látom semmit a legördülő menü jelenik meg, hozzon létre egy új Tudásbázis?
+### <a name="why-cant-i-see-anything-in-the-drop-down-when-i-try-to-create-a-new-knowledge-base"></a>Miért nem látok semmit a legördülő listából, amikor megpróbálok új tudásbázist létrehozni?
 
-Még nem hozott létre egyetlen QnA Maker szolgáltatást az Azure-ban még. Olvasási [Itt](./How-To/set-up-qnamaker-service-azure.md) megtudhatja, hogyan valósítható meg.
+Még nem hozott létre QnA Maker szolgáltatásokat az Azure-ban. Ennek [megismeréséhez olvassa el](./How-To/set-up-qnamaker-service-azure.md) a következőt:.
 
-### <a name="how-do-i-share-a-knowledge-base-with-others"></a>Hogyan oszthatom meg a Tudásbázis másokkal?
+### <a name="how-do-i-share-a-knowledge-base-with-others"></a>Hogyan megoszthat tudásbázist másokkal?
 
-Megosztása a QnA Maker szolgáltatás szintjén működik, vagyis a szolgáltatásban az összes tudásbázisok meg lesz osztva. Olvasási [Itt](./How-To/collaborate-knowledge-base.md) hogyan működhet a Tudásbázis.
+A megosztás a QnA Maker szolgáltatás szintjén működik, azaz a szolgáltatásban található összes Tudásbázis meg lesz osztva. [Itt](./How-To/collaborate-knowledge-base.md) olvashat arról, hogyan lehet együttműködni a Tudásbázisban.
 
-### <a name="can-you-share-a-knowledge-base-with-a-contributor-that-is-not-in-the-same-aad-tenant-to-modify-a-knowledge-base"></a>Megoszthat-e, amely nem szerepel az azonos AAD-bérlő módosítása Tudásbázis közreműködő Tudásbázis? 
+### <a name="can-you-share-a-knowledge-base-with-a-contributor-that-is-not-in-the-same-aad-tenant-to-modify-a-knowledge-base"></a>Megoszthat egy tudásbázist olyan közreműködővel, amely nem ugyanabban az HRE-bérlőben található, a Tudásbázis módosításához? 
 
-Megosztás Azure szerepköralapú hozzáférés-vezérlés (RBAC) alapul. Ha megoszthatja _bármely_ erőforrás egy másik felhasználó az Azure-ban is megoszthatja a QnA Maker.
+A megosztás az Azure szerepköralapú hozzáférés-vezérlés (RBAC) alapján történik. Ha egy másik felhasználóval is megoszthat _bármilyen_ erőforrást az Azure-ban, megoszthatja QnA Maker.
 
-### <a name="if-you-have-an-app-service-plan-with-5-qnamaker-knowledge-bases-can-you-assign-readwrite-rights-to-5-different-users-so-each-of-them-can-access-only-1-qnamaker-knowledge-base"></a>Ha egy App Service-csomag az 5 QnAMaker tudásbázisok. Is jogosultságokat rendelhet hozzá olvasási/írási 5 különböző felhasználók így azok férhetnek csak 1 QnAMaker Tudásbázis?
+### <a name="if-you-have-an-app-service-plan-with-5-qnamaker-knowledge-bases-can-you-assign-readwrite-rights-to-5-different-users-so-each-of-them-can-access-only-1-qnamaker-knowledge-base"></a>Ha van App Service csomag 5 QnAMaker tudásbázissal. Az olvasási/írási jogosultság 5 különböző felhasználóhoz rendelhető, így mindegyikhez csak 1 QnAMaker-alapú Tudásbázis férhet hozzá?
 
-Egy teljes QnAMaker szolgáltatással, nem az egyéni tudásbázisok megoszthatja.
+Megoszthat egy teljes QnAMaker szolgáltatást, nem pedig egyedi tudásbázisokat.
 
-### <a name="how-can-i-change-the-default-message-when-no-good-match-is-found"></a>Hogyan válthatok az alapértelmezett üzenetet, ha nem jó talál egyezést?
+### <a name="how-can-i-change-the-default-message-when-no-good-match-is-found"></a>Hogyan változtathatom meg az alapértelmezett üzenetet, ha nem találok megfelelő egyezést?
 
-Az alapértelmezett üzenetet a beállításokat az App service része.
-- Nyissa meg az Azure Portalon, az App service erőforrás
+Az alapértelmezett üzenet az App Service beállításainak részét képezi.
+- Nyissa meg az App Service-erőforrást a Azure Portal
 
-![az App Service qnamaker](./media/qnamaker-faq/qnamaker-resource-list-appservice.png)
-- Kattintson a **beállítások** lehetőség
+![qnamaker appservice](./media/qnamaker-faq/qnamaker-resource-list-appservice.png)
+- Kattintson a **Beállítások** lehetőségre.
 
-![qnamaker az App Service-beállítások](./media/qnamaker-faq/qnamaker-appservice-settings.png)
-- Módosítsa a **DefaultAnswer** beállítás
-- Indítsa újra az App service
+![qnamaker appservice beállításai](./media/qnamaker-faq/qnamaker-appservice-settings.png)
+- **DefaultAnswer** -beállítás értékének módosítása
+- Indítsa újra az App Service-t
 
-![qnamaker az App Service-újraindítás](./media/qnamaker-faq/qnamaker-appservice-restart.png)
+![qnamaker appservice újraindítása](./media/qnamaker-faq/qnamaker-appservice-restart.png)
 
-### <a name="why-is-my-sharepoint-link-not-getting-extracted"></a>Miért érdemes a SharePoint-hivatkozás nem első ki kell olvasni?
+### <a name="why-is-my-sharepoint-link-not-getting-extracted"></a>Miért nem kapok kibontásban a SharePoint-hivatkozást?
 
-Lásd: [adatforrás-helyek](./Concepts/data-sources-supported.md#data-source-locations) további információt.
+További információ: [adatforrás helyei](./Concepts/data-sources-supported.md#data-source-locations) .
 
-### <a name="the-updates-that-i-made-to-my-knowledge-base-are-not-reflected-on-publish-why-not"></a>A Tudásbázisban végzett frissítések nem fognak megjelenni közzététele. Mi ennek az oka?
+### <a name="the-updates-that-i-made-to-my-knowledge-base-are-not-reflected-on-publish-why-not"></a>A Tudásbázisban létrehozott frissítések nem jelennek meg a közzététel során. Mi ennek az oka?
 
-Minden szerkesztési művelet az egy tábla frissítése, tesztelési vagy beállítás kell megnyitása előtt közzé lehet tenni. Ügyeljen rá, hogy minden szerkesztési művelet után kattintson a **Mentés és a betanítás** gombra.
+Minden szerkesztési műveletet, legyen szó a tábla frissítéséről, teszteléséről vagy beállításáról, a közzététel előtt menteni kell. Ügyeljen rá, hogy minden szerkesztési művelet után kattintson a **Mentés és a betanítás** gombra.
 
-### <a name="does-the-knowledge-base-support-rich-data-or-multimedia"></a>A Tudásbázis támogatja a részletes adattartalmat vagy multimédiás nem?
+### <a name="does-the-knowledge-base-support-rich-data-or-multimedia"></a>Támogatja a Tudásbázis a gazdag és a multimédiás adatok használatát?
 
-A tudásbázis támogatja a Markdown-formátumot. Azonban az URL-címek automatikus – kibontási korlátozott HTML-Markdown átalakítási képességek. Ha azt szeretné, teljes értékű Markdown használata, a tartalmat közvetlenül a tábla módosítása, vagy töltse fel a Tudásbázis a részletes tartalommal.
+A tudásbázis támogatja a Markdown-formátumot. Az URL-címek automatikus kibontása azonban korlátozott HTML-Markdown átalakítási képességgel rendelkezik. Ha teljes körű Markdown szeretne használni, a tartalmat közvetlenül a táblázatban módosíthatja, vagy feltölthet egy tudásbázist a gazdag tartalommal.
 
-Multimédia, például a képek és videók, jelenleg nem támogatott.
+A multimédia, például a képek és a videók jelenleg nem támogatottak.
 
-### <a name="does-qna-maker-support-non-english-languages"></a>A QnA Maker támogatja a nem angol nyelvű?
+### <a name="does-qna-maker-support-non-english-languages"></a>Az angolon kívül támogat a QnA Maker más nyelveket is?
 
-További részletekre kíváncsi [támogatott nyelvek](./Overview/languages-supported.md).
+További információ a [támogatott nyelvekről](./Overview/languages-supported.md).
 
-Ha több nyelven elérhető tartalmait, mindenképpen hozzon létre egy külön szolgáltatás, az egyes nyelvekhez.
+Ha több nyelven is vannak tartalmai, ügyeljen rá, hogy minden nyelvhez külön-külön szolgáltatást hozzon létre.
 
 ## <a name="manage-service"></a>Szolgáltatás kezelése
 
-### <a name="when-should-i-restart-my-app-service"></a>Mikor kell újraindítani az app Service-ben? 
+### <a name="when-should-i-restart-my-app-service"></a>Mikor kell újraindítani az App Service-t? 
 
-Az app service frissítése, ha a figyelmeztetés ikon mellett a Tudásbázis következő, a verzió értékét a **végpont kulcsok** tábla a **felhasználói beállítások** [oldal](https://www.qnamaker.ai/UserSettings).
+Frissítse az App Service-t, ha a **felhasználói beállítások** [lap](https://www.qnamaker.ai/UserSettings) **Endpoint Keys (végponti kulcsok** ) táblájában a tudásbázishoz tartozó verzió értéke mellett a figyelmeztetés ikon található.
 
 ### <a name="i-deleted-my-existing-search-service-how-can-i-fix-this"></a>Törölte a meglévő keresési szolgáltatást. Hogyan javíthatom ezt?
 
-Ha töröl egy Azure Search indexet, a művelet végleges, és az index nem állítható helyre. 
+Ha töröl egy Azure Cognitive Search indexet, a művelet végleges, és az index nem állítható helyre. 
 
 ### <a name="i-deleted-my-testkb-index-in-my-search-service-how-can-i-fix-this"></a>Törölte a `testkb` indexet a keresési szolgáltatásban. Hogyan javíthatom ezt? 
 
 A régi adatait nem lehet helyreállítani. Hozzon létre egy új QnA Maker-erőforrást, és hozza létre újra a tudásbázist.
 
-### <a name="when-should-i-refresh-my-endpoint-keys"></a>Mikor kell frissíteni a végpont kulcsaim?
+### <a name="when-should-i-refresh-my-endpoint-keys"></a>Mikor kell frissíteni a végponti kulcsokat?
 
-Frissítse a végpont kulcsokat, ha azt gyanítja, hogy azok biztonsága sérült.
+Frissítse a végpont kulcsait, ha azt gyanítja, hogy sérült a biztonsága.
 
-### <a name="can-i-use-the-same-azure-search-resource-for-knowledge-bases-using-multiple-languages"></a>Használhatom ugyanazt az Azure Search erőforrást tudásbázisok több nyelv használatával?
+### <a name="can-i-use-the-same-azure-cognitive-search-resource-for-knowledge-bases-using-multiple-languages"></a>Használhatom ugyanazt az Azure Cognitive Search-erőforrást a tudásbázisok számára több nyelv használatával?
 
-Több nyelv és több tudásbázisok szeretné használni, a felhasználók számára, az egyes nyelvekhez tartozó QnA Maker erőforrás létrehozásához. Ez egy külön Azure Search-szolgáltatást hoz létre a nyelv alapján. Ettől eltérő nyelv tudásbázisok egy egyetlen az Azure search szolgáltatásban keverése csökkentett teljesítményű, az eredmények relevancia eredményez.
+Ha több nyelvet és több tudásbázist szeretne használni, a felhasználónak minden nyelvhez létre kell hoznia egy QnA Maker erőforrást. Ez egy külön Azure Search-szolgáltatást hoz létre a nyelv alapján. A különböző nyelvi tudásbázisok egyetlen Azure Search-szolgáltatásban való keverése a találatok teljesítményének romlásához vezet.
 
-### <a name="how-can-i-change-the-name-of-the-azure-search-resource-used-by-qna-maker"></a>Hogyan módosíthatom a QnA Maker által használt Azure Search-erőforrás neve?
+### <a name="how-can-i-change-the-name-of-the-azure-cognitive-search-resource-used-by-qna-maker"></a>Hogyan változtathatom meg a QnA Maker által használt Azure Cognitive Search-erőforrás nevét?
 
-Az Azure Search-erőforrás neve a QnA Maker erőforrásnév bizonyos betűk hozzáfűzi a végén a rendszer. Így nehéz különbséget tenni a QnA Maker több keresési erőforrások között. Hozzon létre egy külön Azure Search-szolgáltatás (elnevezési azt a kívánt módon), és csatlakoztassa a kérdések és válaszok szolgáltatást. A lépések hasonlóak az [Azure Search verziófrissítéséhez](How-To/set-up-qnamaker-service-azure.md#upgrade-the-azure-search-service)szükséges lépésekhez.
+Az Azure Cognitive Search erőforrás neve a QnA Maker-erőforrás neve, és néhány véletlenszerűen fűzött betűvel egészül ki. Így nehéz megkülönböztetni QnA Maker több keresési erőforrását. Hozzon létre egy külön keresési szolgáltatást (nevezze el a kívánt módon), és kapcsolódjon a QnA szolgáltatáshoz. A lépések hasonlóak az [Azure Search verziófrissítéséhez](How-To/set-up-qnamaker-service-azure.md#upgrade-the-azure-cognitive-search-service)szükséges lépésekhez.
 
 ### <a name="when-qna-maker-returns-runtime-core-is-not-initialized-how-do-i-fix-it"></a>Ha a QnA Maker a `Runtime core is not initialized,` értéket adja vissza, Hogyan javíthatom?
 
@@ -159,22 +159,22 @@ Lehet, hogy az App Service lemezterülete megtelt. A lemezterület kijavításá
 1. A tudásbázishoz férhet hozzá, hogy ellenőrizze, működik-e most. 
 
 
-## <a name="integrate-with-other-services-including-bots"></a>Integráció más szolgáltatásokkal, beleértve a robotok
+## <a name="integrate-with-other-services-including-bots"></a>Integrálás más szolgáltatásokkal, többek között a botokkal
 
 ### <a name="do-i-need-to-use-bot-framework-in-order-to-use-qna-maker"></a>Szükséges a Bot Framework használata a QnA Maker használatához?
 
-Nem, a [bot Framework](https://github.com/Microsoft/botbuilder-dotnet) -t nem kell használnia a QnA Maker. QnA Maker azonban a [Azure bot Service](https://docs.microsoft.com/azure/bot-service/?view=azure-bot-service-4.0)számos sablonjának egyikét kínálja. Bot Service lehetővé teszi, hogy a gyors intelligens robotfejlesztést keresztül a Microsoft Bot Framework, és hogy fut egy kiszolgáló nélküli környezetben.
+Nem, a [bot Framework](https://github.com/Microsoft/botbuilder-dotnet) -t nem kell használnia a QnA Maker. QnA Maker azonban a [Azure bot Service](https://docs.microsoft.com/azure/bot-service/?view=azure-bot-service-4.0)számos sablonjának egyikét kínálja. A bot Service lehetővé teszi a gyors intelligens robot-fejlesztést a Microsoft bot Framework segítségével, és egy kiszolgáló nélküli környezetben fut.
 
 ### <a name="how-can-i-create-a-new-bot-with-qna-maker"></a>Hogyan hozhatok létre egy új robotot a QnA Maker használatával?
 
-Kövesse a [ez](./Tutorials/create-qna-bot.md) Robotjait létrehozása az Azure Bot Service dokumentációjában.
+A [jelen](./Tutorials/create-qna-bot.md) dokumentáció utasításait követve hozza létre a robotot Azure bot Service használatával.
 
 ### <a name="how-do-i-use-a-different-knowledge-base-with-an-existing-azure-bot-service"></a>Hogyan használhat egy másik tudásbázist egy meglévő Azure bot Service-szel?
 
 Az alábbi információkra van szüksége a Tudásbázisról:
 
 * Tudásbázis-azonosító.
-* A Tudásbázis közzétett végpontjának egyéni altartományának neve, a közzététel után a **Beállítások** lapon található `host` néven.
+* A Tudásbázis közzétett végpontjának egyéni altartományának neve (`host`) a közzététel után a **Beállítások** lapon található.
 * A Tudásbázis közzétett végponti kulcsa – a **Beállítások** lapon, a közzététel után. 
 
 Ezekkel az információkkal a Azure Portal a robot app Service-t. A **Beállítások – > konfiguráció – > Alkalmazásbeállítások**területen módosítsa ezeket az értékeket.  
@@ -187,13 +187,13 @@ Igen, a Tudásbázis tetszőleges számú ügyféltől kérdezhető le. Ha úgy 
 
 ### <a name="how-do-i-embed-the-qna-maker-service-in-my-website"></a>Hogyan ágyazhatom be a QnA Maker szolgáltatást a honlapomba?
 
-Kövesse az alábbi lépéseket a QnA Maker szolgáltatást webes csevegési vezérlőként beágyazása a webhely:
+Az alábbi lépéseket követve ágyazhatja be a QnA Maker szolgáltatást webes csevegéses vezérlőként a webhelyén:
 
-1. Hozzon létre a gyakori kérdések robot utasításait követve [Itt](./Tutorials/create-qna-bot.md).
-2. A webes csevegési engedélyezése a lépéseket követve [Itt](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-webchat)
+1. A GYIK-robot létrehozásához kövesse az [itt](./Tutorials/create-qna-bot.md)található utasításokat.
+2. Az [itt](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-webchat) leírt lépéseket követve engedélyezze a webes csevegést
 
 ## <a name="data-storage"></a>Adattárolás
 
-### <a name="what-data-is-stored-and-where-is-it-stored"></a>Milyen adatokat tárolja, és azt tárolására? 
+### <a name="what-data-is-stored-and-where-is-it-stored"></a>Milyen adattárolási és tárolási helye van? 
 
-A QnA Maker szolgáltatás létrehozásakor kiválasztott egy Azure-régióban. A tudásbázisok és a naplófájlok ebben a régióban vannak tárolva. 
+A QnA Maker szolgáltatás létrehozásakor egy Azure-régiót választott ki. A tudásbázisok és a naplófájlok ebben a régióban tárolódnak. 

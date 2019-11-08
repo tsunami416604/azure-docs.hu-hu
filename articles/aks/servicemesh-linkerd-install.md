@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 10/09/2019
 ms.author: pabouwer
 zone_pivot_groups: client-operating-system
-ms.openlocfilehash: ec8250f6cdb44af3c99c1d34d1f14fbd2209aac0
-ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
+ms.openlocfilehash: f70052a62152a20f808c1e491a663d1406fbd407
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72530094"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73747712"
 ---
 # <a name="install-linkerd-in-azure-kubernetes-service-aks"></a>A Linkerd telepítése az Azure Kubernetes szolgáltatásban (ak)
 
@@ -34,7 +34,7 @@ Ebben a cikkben az alábbiakkal ismerkedhet meg:
 > * Az irányítópult elérése
 > * Linkerd eltávolítása az AK-ból
 
-## <a name="before-you-begin"></a>Előzetes teendők
+## <a name="before-you-begin"></a>Előkészületek
 
 A cikkben részletesen ismertetett lépések azt feltételezik, hogy létrehozott egy AK-fürtöt (Kubernetes `1.13` és újabb rendszerű, RBAC engedélyezve), és létrehozta a fürttel létesített `kubectl`-kapcsolatokat. Ha segítségre van szüksége ezen elemek bármelyikével kapcsolatban, tekintse meg az [AK][aks-quickstart]gyors üzembe helyezését ismertető cikket.
 
@@ -248,7 +248,7 @@ Opening Linkerd dashboard in the default browser
 > [!WARNING]
 > A Linkerd egy futó rendszerből való törlése a szolgáltatások közötti forgalomhoz vezethet. A folytatás előtt győződjön meg arról, hogy rendelkezik a rendszer megfelelő működéséhez szükséges Linkerd nélkül.
 
-Először el kell távolítania az adatsík-proxykat. Távolítsa el a számítási feladatok névtereit tartalmazó automatikus proxy-injektálási [megjegyzéseket][linkerd-automatic-proxy-injection] , és állítsa be a számítási feladatok központi telepítését. A munkaterhelések nem rendelkezhetnek többé társított adatsík-összetevőkkel.
+Először el kell távolítania az adatsík-proxykat. Távolítsa el az automatikus proxy-injektálási [megjegyzéseket][linkerd-automatic-proxy-injection] a számítási feladatok névterei közül, és állítsa be a számítási feladatok központi telepítését. A munkaterhelések nem rendelkezhetnek többé társított adatsík-összetevőkkel.
 
 Végül távolítsa el a vezérlő síkot a következőképpen:
 
@@ -256,7 +256,7 @@ Végül távolítsa el a vezérlő síkot a következőképpen:
 linkerd install --ignore-cluster | kubectl delete -f -
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A Linkerd további telepítési és konfigurációs lehetőségeinek megismeréséhez tekintse meg a következő hivatalos Linkerd útmutatót:
 

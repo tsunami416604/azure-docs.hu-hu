@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/16/2018
 ms.author: sedusch
-ms.openlocfilehash: fd5014de622c37950c15006c2cc4dcbbb27ef8e1
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 2ae9a1419232cca051f7cab4e9bd8c70f885df73
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70101124"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73749046"
 ---
 # <a name="glusterfs-on-azure-vms-on-red-hat-enterprise-linux-for-sap-netweaver"></a>Red Hat Enterprise Linuxon futó Azure-beli virtuális gépeken üzemelő GlusterFS SAP NetWeaverhez
 
@@ -98,37 +98,37 @@ Az összes szükséges erőforrás üzembe helyezéséhez használhatja a github
    4. Rendszergazdai Felhasználónév, rendszergazdai jelszó vagy SSH-kulcs  
       Létrejön egy új felhasználó, amely használható a gépre való bejelentkezéshez.
    5. Alhálózat azonosítója  
-      Ha a virtuális gépet egy olyan meglévő VNet szeretné telepíteni, amelyben a virtuális gépet definiáló alhálózat van, akkor nevezze el az adott alhálózat AZONOSÍTÓját. Az azonosító általában úgy néz ki, mint az/Subscriptions/ **&lt;előfizetés-azonosítója&gt;** /resourceGroups/ **&lt;erőforráscsoport-neve&gt;** /Providers/Microsoft.Network/virtualNetworks/ **&lt; virtuális hálózat neve&gt;** /Subnets/ **&lt;alhálózati&gt; neve**
+      Ha a virtuális gépet egy olyan meglévő VNet szeretné telepíteni, amelyben a virtuális gépet definiáló alhálózat van, akkor nevezze el az adott alhálózat AZONOSÍTÓját. Az azonosító általában úgy néz ki, mint a/Subscriptions/ **&lt;előfizetés-azonosító&gt;** /resourceGroups/ **&lt;erőforráscsoport neve&gt;** /Providers/Microsoft.Network/virtualNetworks/ **&lt;virtuális hálózat neve&gt;** /subnets/ **&lt;alhálózat neve&gt;**
 
 ### <a name="deploy-linux-manually-via-azure-portal"></a>A Linux telepítése manuálisan Azure Portal használatával
 
-Először létre kell hoznia a fürthöz tartozó virtuális gépeket. Ezt követően hozzon létre egy terheléselosztó-t, és használja a virtuális gépeket a háttér-készletekben.
+Először létre kell hoznia a fürthöz tartozó virtuális gépeket. Ezt követően hozzon létre egy terheléselosztó-t, és használja a virtuális gépeket a háttér-készletekben. A [standard Load Balancer](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-overview)használatát javasoljuk.  
 
 1. Erőforráscsoport létrehozása
 1. Virtual Network létrehozása
 1. Rendelkezésre állási csoport létrehozása  
    Maximális frissítési tartomány beállítása
 1. 1\. virtuális gép létrehozása  
-   Használjon legalább RHEL 7, ebben a példában a Red Hat Enterprise Linux 7,4 rendszerképet<https://portal.azure.com/#create/RedHat.RedHatEnterpriseLinux74-ARM>  
+   Használjon legalább RHEL 7, ebben a példában a Red Hat Enterprise Linux 7,4 rendszerképet <https://portal.azure.com/#create/RedHat.RedHatEnterpriseLinux74-ARM>  
    Válassza ki a korábban létrehozott rendelkezésre állási készletet  
 1. 2\. virtuális gép létrehozása  
-   Használjon legalább RHEL 7, ebben a példában a Red Hat Enterprise Linux 7,4 rendszerképet<https://portal.azure.com/#create/RedHat.RedHatEnterpriseLinux74-ARM>  
+   Használjon legalább RHEL 7, ebben a példában a Red Hat Enterprise Linux 7,4 rendszerképet <https://portal.azure.com/#create/RedHat.RedHatEnterpriseLinux74-ARM>  
    Válassza ki a korábban létrehozott rendelkezésre állási készletet  
 1. Mindegyik SAP-rendszerhez adjon hozzá egy adatlemezt mindkét virtuális géphez.
 
 ### <a name="configure-glusterfs"></a>GlusterFS konfigurálása
 
-A következő elemek előtaggal vannak ellátva a **[a]** típussal – az összes csomópontra érvényes, **[1]** – csak az 1., **[2]** csomópontra vonatkozik – csak a 3. csomópontra alkalmazható.
+A következő elemek előtaggal vannak ellátva a **[a]** típussal – az összes csomópontra érvényes, **[1]** – csak az 1 **.,** **[2]** csomópontra vonatkozik – csak a 3. csomópontra alkalmazható.
 
-1. **[A]**  Állomásnév-feloldás beállítása
+1. **[A]** telepítési állomásnév feloldása
 
-   DNS-kiszolgálót használjon, vagy módosítsa a Hosts az összes csomópontra. Ez a példa bemutatja, hogyan használhatja a Hosts fájlt.
+   Használhat DNS-kiszolgálót, vagy módosíthatja a/etc/hosts az összes csomóponton. Ez a példa a/etc/hosts fájl használatát mutatja be.
    Cserélje le az IP-címet és a gazdagépet a következő parancsokra
 
    <pre><code>sudo vi /etc/hosts
    </code></pre>
 
-   Helyezze be a következő sorokat Hosts. Módosítsa az IP-cím és a környezet megfelelő állomásnév
+   Szúrja be a következő sorokat a/etc/hosts. Az IP-cím és az állomásnév módosítása a környezetnek megfelelően
 
    <pre><code># IP addresses of the Gluster nodes
    <b>10.0.0.40 glust-0</b>

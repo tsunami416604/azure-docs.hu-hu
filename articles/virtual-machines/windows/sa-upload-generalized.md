@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 05/18/2017
 ms.author: cynthn
 ROBOTS: NOINDEX
-ms.openlocfilehash: ac1572a75a3310afb9d0e0a34c6751ed12d839f9
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 24ed7b75dfa8cb09c530a3f4a896aa9ff9aa92b5
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70102435"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73749175"
 ---
 # <a name="upload-a-generalized-vhd-to-azure-to-create-a-new-vm"></a>Általános VHD feltöltése az Azure-ba új virtuális gép létrehozásához
 
@@ -30,7 +30,7 @@ Ha virtuális merevlemezt szeretne létrehozni egy Storage-fiókban található 
 
 Ez a témakör a Storage-fiókok használatát mutatja be, de javasoljuk, hogy az ügyfelek a Managed Disks használatát használják helyette. A felügyelt lemezeket használó új virtuális gépek előkészítésének, feltöltésének és létrehozásának teljes körű ismertetését az [új virtuális gép létrehozása az Azure-ba a Managed Disks használatával feltöltött általánosított virtuális merevlemezről](upload-generalized-managed.md)című témakörben tekintheti meg.
 
-[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
+ 
 
 ## <a name="prepare-the-vm"></a>A virtuális gép előkészítése
 
@@ -40,17 +40,17 @@ Az általános VHD-k az összes személyes fiókadatok el lettek távolítva a S
   * A virtuális gép általánosítása a Sysprep használatával
 
 ### <a name="generalize-a-windows-virtual-machine-using-sysprep"></a>Windows rendszerű virtuális gép általánosítása a Sysprep használatával
-Ez a szakasz bemutatja, hogyan általánosíthatja a Windows rendszerű virtuális gépet képként való használatra. A Sysprep többek között minden személyes fiókadatot eltávolít, a gépet pedig előkészíti rendszerképként való használatra. Ha további információra van szüksége a Sysprepről, tekintse meg [A Sysprep használata: Bevezetés](https://technet.microsoft.com/library/bb457073.aspx).
+Ez a szakasz bemutatja, hogyan általánosíthatja a Windows rendszerű virtuális gépet képként való használatra. A Sysprep többek között minden személyes fiókadatot eltávolít, a gépet pedig előkészíti rendszerképként való használatra. További információ a Sysprepről: [A Sysprep használata: Bevezetés](https://technet.microsoft.com/library/bb457073.aspx).
 
 Győződjön meg arról, hogy a Sysprep támogatja a számítógépen futó kiszolgálói szerepköröket. További információ: a [Sysprep-támogatás a kiszolgálói szerepkörökhöz](https://msdn.microsoft.com/windows/hardware/commercialize/manufacture/desktop/sysprep-support-for-server-roles)
 
 > [!IMPORTANT]
-> Ha a Sysprept először a virtuális merevlemez Azure-ba való feltöltése előtt futtatja, győződjön meg arról, hogy előkészítette [a virtuális gépet](prepare-for-upload-vhd-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) a Sysprep futtatása előtt. 
+> Ha a Sysprept először a virtuális merevlemez Azure-ba való feltöltése előtt futtatja, győződjön meg arról, hogy [előkészítette a virtuális gépet](prepare-for-upload-vhd-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) a Sysprep futtatása előtt. 
 > 
 > 
 
 1. Jelentkezzen be a Windows rendszerű virtuális gépre.
-2. Nyissa meg a parancsablakot rendszergazdaként. Módosítsa a könyvtárat a **%WINDIR%\system32\sysprep**értékre, majd `sysprep.exe`futtassa a parancsot.
+2. Nyissa meg a parancsablakot rendszergazdaként. Módosítsa a könyvtárat a **%WINDIR%\system32\sysprep**értékre, majd futtassa a `sysprep.exe`.
 3. A **Rendszer-előkészítő eszköz** párbeszédpanelen válassza **A kezdőélmény indítása** lehetőséget, és győződjön meg róla, hogy be van-e jelölve az **Általánosítás** jelölőnégyzet.
 4. A **leállítási beállítások**területen válassza a **Leállítás**lehetőséget.
 5. Kattintson az **OK** gombra.
@@ -69,7 +69,7 @@ Győződjön meg arról, hogy a Sysprep támogatja a számítógépen futó kisz
 Töltse fel a VHD-t egy Azure Storage-fiókba.
 
 ### <a name="log-in-to-azure"></a>Jelentkezzen be az Azure-ba
-Ha még nincs telepítve a PowerShell 1,4-es vagy újabb verziója, olvassa el [a Azure PowerShell telepítése és konfigurálása](/powershell/azure/overview)című témakört.
+Ha még nincs telepítve a PowerShell 1,4-es vagy újabb verziója, olvassa el [a Azure PowerShell telepítése és konfigurálása című témakört](/powershell/azure/overview).
 
 1. Nyissa meg Azure PowerShell, és jelentkezzen be az Azure-fiókjába. Megnyílik egy előugró ablak, amelyen megadhatja az Azure-fiókja hitelesítő adatait.
    
@@ -81,7 +81,7 @@ Ha még nincs telepítve a PowerShell 1,4-es vagy újabb verziója, olvassa el [
     ```powershell
     Get-AzSubscription
     ```
-3. Állítsa be a megfelelő előfizetést az előfizetés-azonosító használatával. A `<subscriptionID>` helyére írja be a megfelelő előfizetés azonosítóját.
+3. Állítsa be a megfelelő előfizetést az előfizetés-azonosító használatával. Cserélje le a `<subscriptionID>`t a megfelelő előfizetés azonosítójával.
    
     ```powershell
     Select-AzSubscription -SubscriptionId "<subscriptionID>"
@@ -121,7 +121,7 @@ Ha létre kell hoznia egy Storage-fiókot, kövesse az alábbi lépéseket:
  
 ### <a name="start-the-upload"></a>A feltöltés elindítása 
 
-Az [Add-AzVhd](https://docs.microsoft.com/powershell/module/az.compute/add-azvhd) parancsmag használatával töltse fel a rendszerképet a Storage-fiókjában található tárolóba. Ez a példa feltölti a **myVHD. vhd** `"C:\Users\Public\Documents\Virtual hard disks\"` fájlt egy **mystorageaccount** nevű Storage-fiókba a **myResourceGroup** -erőforráscsoporthoz. A fájl a **mycontainer** nevű tárolóba kerül, és az új fájlnév **myUploadedVHD. vhd**lesz.
+Az [Add-AzVhd](https://docs.microsoft.com/powershell/module/az.compute/add-azvhd) parancsmag használatával töltse fel a rendszerképet a Storage-fiókjában található tárolóba. Ez a példa feltölti a **myVHD. vhd** fájlt a `"C:\Users\Public\Documents\Virtual hard disks\"`ról egy **mystorageaccount** nevű Storage-fiókba a **myResourceGroup** erőforráscsoporthoz. A fájl a **mycontainer** nevű tárolóba kerül, és az új fájlnév **myUploadedVHD. vhd**lesz.
 
 ```powershell
 $rgName = "myResourceGroup"
@@ -148,13 +148,13 @@ C:\Users\Public\Doc...  https://mystorageaccount.blob.core.windows.net/mycontain
 A hálózati kapcsolatban és a VHD-fájl méretétől függően ez a parancs hosszabb időt is igénybe vehet.
 
 
-## <a name="create-a-new-vm"></a>Új virtuális gép létrehozása 
+## <a name="create-a-new-vm"></a>Hozzon létre egy új virtuális gépet 
 
 Most már használhatja a feltöltött VHD-t egy új virtuális gép létrehozásához. 
 
 ### <a name="set-the-uri-of-the-vhd"></a>A VHD URI-azonosítójának beállítása
 
-A használni kívánt virtuális merevlemez URI-ja a következő formátumban van: https://**mystorageaccount**. blob.Core.Windows.net/**mycontainer**/**MyVhdName**. vhd. Ebben a példában a **myVHD** nevű virtuális merevlemez a tároló **mycontainer**található **mystorageaccount** van.
+A használni kívánt virtuális merevlemez URI-ja a következő formátumban van: https://**mystorageaccount**. blob.core.windows.net/**mycontainer**/**MyVhdName**. vhd. Ebben a példában a **myVHD** nevű virtuális merevlemez a tároló **mycontainer**található **mystorageaccount** van.
 
 ```powershell
 $imageURI = "https://mystorageaccount.blob.core.windows.net/mycontainer/myVhd.vhd"
@@ -282,7 +282,7 @@ A következő PowerShell-szkript bemutatja, hogyan állíthatja be a virtuálisg
 ```
 
 ## <a name="verify-that-the-vm-was-created"></a>Annak ellenőrzése, hogy a virtuális gép létrejött-e
-Ha elkészült, az újonnan létrehozott virtuális gépet a**virtuális gépek** **böngészése** > vagy a következő PowerShell-parancsok használatával tekintheti meg a [Azure Portalban](https://portal.azure.com) :
+Ha elkészült, az újonnan létrehozott virtuális gépet a [Azure Portal](https://portal.azure.com) **Tallózás** > **virtuális gépek**alatt, vagy a következő PowerShell-parancsok használatával tekintheti meg:
 
 ```powershell
     $vmList = Get-AzVM -ResourceGroupName $rgName

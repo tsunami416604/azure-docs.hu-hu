@@ -1,5 +1,5 @@
 ---
-title: Hibakeresés Azure Data Factory
+title: A Azure Data Factory hibáinak megoldása | Microsoft Docs
 description: Megtudhatja, hogyan lehet elhárítani a Azure Data Factory külső vezérlési tevékenységeit.
 services: data-factory
 author: nabhishek
@@ -8,12 +8,12 @@ ms.topic: troubleshooting
 ms.date: 8/26/2019
 ms.author: abnarain
 ms.reviewer: craigg
-ms.openlocfilehash: 66590e40ff2440a166310ec3d57026f5a2cdbd1d
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
-ms.translationtype: HT
+ms.openlocfilehash: 0026aa377a58f6b766a400860692a35440deb962
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73676849"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73748363"
 ---
 # <a name="troubleshoot-azure-data-factory"></a>Hibakeresés Azure Data Factory
 
@@ -22,6 +22,7 @@ Ez a cikk a Azure Data Factory külső ellenőrzési tevékenységeinek gyakori 
 ## <a name="connector-and-copy-activity"></a>Összekötő és másolási tevékenység
 
 Összekötői problémák esetén, például a másolási tevékenység használatával kapcsolatos hiba esetén tekintse át az [Azure Data Factory összekötők hibaelhárítása](connector-troubleshoot-guide.md)című témakört.
+  
 
 ## <a name="azure-databricks"></a>Azure Databricks
 
@@ -42,15 +43,15 @@ Ez a cikk a Azure Data Factory külső ellenőrzési tevékenységeinek gyakori 
 
 - **Javaslat**: a jegyzetfüzet elérési útjának megadása a Databricks tevékenységben.
 
-<br/>
-
+<br/>    
+              
 - **Üzenet**: `Cluster   ... does not exist.`
 
 - **OK**: `Authoring error: Databricks cluster does not exist or has been deleted.`
 
 - **Javaslat**: Ellenőrizze, hogy létezik-e a Databricks-fürt.
 
-<br/>
+<br/>  
 
 - **Üzenet**: `Invalid Python file URI.... Please visit Databricks user guide for supported URI schemes.`
 
@@ -58,7 +59,7 @@ Ez a cikk a Azure Data Factory külső ellenőrzési tevékenységeinek gyakori 
 
 - **Javaslat**: adjon meg abszolút elérési utat a munkaterület-címzési sémák számára, vagy `dbfs:/folder/subfolder/foo.py` a Databricks-fájlrendszerben tárolt fájlokhoz.
 
-<br/>
+<br/>  
 
 - **Üzenet**: `{0} LinkedService should have domain and accessToken as required properties.`
 
@@ -66,7 +67,7 @@ Ez a cikk a Azure Data Factory külső ellenőrzési tevékenységeinek gyakori 
 
 - **Javaslat**: Ellenőrizze a [társított szolgáltatás definícióját](compute-linked-services.md#azure-databricks-linked-service).
 
-<br/>
+<br/>  
 
 - **Üzenet**: `{0} LinkedService should specify either existing cluster ID or new cluster information for creation.`
 
@@ -74,13 +75,13 @@ Ez a cikk a Azure Data Factory külső ellenőrzési tevékenységeinek gyakori 
 
 - **Javaslat**: Ellenőrizze a [társított szolgáltatás definícióját](compute-linked-services.md#azure-databricks-linked-service).
 
-<br/>
+<br/>  
 
 - **Üzenet**: `Node type Standard_D16S_v3 is not supported. Supported node types:   Standard_DS3_v2, Standard_DS4_v2, Standard_DS5_v2, Standard_D8s_v3,   Standard_D16s_v3, Standard_D32s_v3, Standard_D64s_v3, Standard_D3_v2,   Standard_D8_v3, Standard_D16_v3, Standard_D32_v3, Standard_D64_v3,   Standard_D12_v2, Standard_D13_v2, Standard_D14_v2, Standard_D15_v2,   Standard_DS12_v2, Standard_DS13_v2, Standard_DS14_v2, Standard_DS15_v2,   Standard_E8s_v3, Standard_E16s_v3, Standard_E32s_v3, Standard_E64s_v3,   Standard_L4s, Standard_L8s, Standard_L16s, Standard_L32s, Standard_F4s,   Standard_F8s, Standard_F16s, Standard_H16, Standard_F4s_v2, Standard_F8s_v2,   Standard_F16s_v2, Standard_F32s_v2, Standard_F64s_v2, Standard_F72s_v2,   Standard_NC12, Standard_NC24, Standard_NC6s_v3, Standard_NC12s_v3,   Standard_NC24s_v3, Standard_L8s_v2, Standard_L16s_v2, Standard_L32s_v2,   Standard_L64s_v2, Standard_L80s_v2.`
 
 - **OK**: `Bad authoring.`
 
-- **Javaslat**: Tekintse meg a hibaüzenetet. 
+- **Javaslat**: Tekintse meg a hibaüzenetet.
 
 <br/>
 
@@ -92,7 +93,7 @@ Ez a cikk a Azure Data Factory külső ellenőrzési tevékenységeinek gyakori 
 
 - **Javaslat**: a Databricks-munkaterületet használó összes folyamat kiértékelése a feladatok létrehozási arányára.  Ha a folyamatok túl sok Databricks-t futtatnak összesítésben, telepítsen át bizonyos folyamatokat egy új munkaterületre.
 
-<br/>
+<br/>  
 
 - **Üzenet**: `Could not parse request object: Expected 'key' and 'value' to be set for JSON map field base_parameters, got 'key: "..."' instead.`
 
@@ -100,7 +101,7 @@ Ez a cikk a Azure Data Factory külső ellenőrzési tevékenységeinek gyakori 
 
 - **Javaslat**: vizsgálja meg a folyamat JSON-fájlját, és győződjön meg arról, hogy a baseParameters-jegyzetfüzet összes paramétere nem üres értéket ad meg.
 
-<br/>
+<br/>  
 
 - **Üzenet**: `User: `SimpleUserContext {userId =..., név =user@company.com, orgId =...}` is not   authorized to access cluster.`
 
@@ -122,16 +123,15 @@ Ez a cikk a Azure Data Factory külső ellenőrzési tevékenységeinek gyakori 
 
 - **Üzenet**: `Job execution failed.`
 
-- **OK**: a hibaüzenetek különböző problémákat jeleznek, például egy váratlan fürt állapotát vagy egy adott tevékenységet. Leggyakrabban egyetlen hibaüzenet sem jelenik meg. 
+- **OK**: a hibaüzenetek különböző problémákat jeleznek, például egy váratlan fürt állapotát vagy egy adott tevékenységet. Leggyakrabban egyetlen hibaüzenet sem jelenik meg.
 
 - **Javaslat**: N/A
-
+            
 
 ## <a name="azure-data-lake-analytics"></a>Azure Data Lake Analytics
 
 A következő táblázat az U-SQL-re vonatkozik.
-
-
+      
 ### <a name="error-code--2709"></a>Hibakód: 2709
 
 - **Üzenet**: `The access token is from the wrong tenant.`
@@ -148,18 +148,18 @@ A következő táblázat az U-SQL-re vonatkozik.
 
 - **Javaslat**: csökkentse Data Lake Analytics elküldött feladatok számát a tevékenységek Data Factory eseményindítók és egyidejűségi beállítások módosításával. Vagy növelje Data Lake Analytics korlátozásait.
 
-<br/>
+<br/>  
 
 - **Üzenet**: `This job was rejected because it requires 24 AUs. This account's administrator-defined policy prevents a job from using more than 5 AUs.`
 
-- **OK**: ezt a hibát a Data Lake Analytics szabályozása okozza. 
+- **OK**: ezt a hibát a Data Lake Analytics szabályozása okozza.
 
 - **Javaslat**: csökkentse Data Lake Analytics elküldött feladatok számát a tevékenységek Data Factory eseményindítók és egyidejűségi beállítások módosításával. Vagy növelje Data Lake Analytics korlátozásait.
 
 
 ### <a name="error-code--2705"></a>Hibakód: 2705
 
-- **Üzenet**: `Forbidden. ACL verification failed. Either the resource does not exist or the user is not authorized to perform the requested operation.<br/><br/>User is   not able to access Data Lake Store.  <br/><br/>User is  not authorized to use Data Lake Analytics.`
+- **Üzenet**: `Forbidden. ACL verification failed. Either the resource does not exist or the user is not authorized to perform the requested operation.<br/>  <br/>  User is   not able to access Data Lake Store.  <br/>  <br/>  User is  not authorized to use Data Lake Analytics.`
 
 - **OK**: az egyszerű szolgáltatásnév vagy tanúsítvány nem fér hozzá a fájlhoz a tárolóban.
 
@@ -168,13 +168,13 @@ A következő táblázat az U-SQL-re vonatkozik.
 
 ### <a name="error-code--2711"></a>Hibakód: 2711
 
-- **Üzenet**: `Forbidden. ACL verification failed. Either the resource does not exist or the user is not authorized to perform the requested operation.<br/><br/>User is   not able to access Data Lake Store.  <br/><br/>User is  not authorized to use Data Lake Analytics.`
+- **Üzenet**: `Forbidden. ACL verification failed. Either the resource does not exist or the user is not authorized to perform the requested operation.<br/>  <br/>  User is   not able to access Data Lake Store.  <br/>  <br/>  User is  not authorized to use Data Lake Analytics.`
 
 - **OK**: az egyszerű szolgáltatásnév vagy tanúsítvány nem fér hozzá a fájlhoz a tárolóban.
 
 - **Javaslat**: gondoskodjon arról, hogy a felhasználó által Data Lake Analytics feladatokhoz megadott szolgáltatásnév vagy tanúsítvány hozzáférhessen az Data Lake Analytics fiókhoz és a gyökérmappa alapértelmezett Data Lake Storage példányához.
 
-<br/>
+<br/>  
 
 - **Üzenet**: `Cannot find the 'Azure Data Lake Store' file or folder.`
 
@@ -185,7 +185,7 @@ A következő táblázat az U-SQL-re vonatkozik.
 
 ### <a name="error-code--2704"></a>Hibakód: 2704
 
-- **Üzenet**: `Forbidden. ACL verification failed. Either the resource does not exist or the user is not authorized to perform the requested operation.<br/><br/>User is   not able to access Data Lake Store.  <br/><br/>User is  not authorized to use Data Lake Analytics.`
+- **Üzenet**: `Forbidden. ACL verification failed. Either the resource does not exist or the user is not authorized to perform the requested operation.<br/>  <br/>  User is   not able to access Data Lake Store.  <br/>  <br/>  User is  not authorized to use Data Lake Analytics.`
 
 - **OK**: az egyszerű szolgáltatásnév vagy tanúsítvány nem fér hozzá a fájlhoz a tárolóban.
 
@@ -205,37 +205,36 @@ A következő táblázat az U-SQL-re vonatkozik.
 
 - **Üzenet**: `Error Id: E_CQO_SYSTEM_INTERNAL_ERROR (or any error that starts with "Error   Id:").`
 
-- **OK**: a hiba Data Lake Analytics. 
+- **OK**: a hiba Data Lake Analytics.
 
 - **Javaslat**: a példában szereplő hiba például azt jelenti, hogy a feladatot elküldték Data Lake Analyticsba, és a parancsfájl sikertelen volt. Data Lake Analytics vizsgálata. A portálon lépjen a Data Lake Analytics fiókra, és keresse meg a feladatot a Data Factory tevékenység futtatási AZONOSÍTÓjának használatával (nem a folyamat futtatási AZONOSÍTÓját). A feladattal kapcsolatban további információ található a hibával kapcsolatban, és segítséget nyújt a hibák megoldásához. Ha a megoldás nem egyértelmű, lépjen kapcsolatba a Data Lake Analytics támogatási csapatával, és adja meg a feladatokhoz tartozó URL-címet, amely tartalmazza a fiók nevét és a AZONOSÍTÓJÚ feladatot.
-
-
+          
 
 ## <a name="azure-functions"></a>Azure Functions
 
 ### <a name="error-code--3602"></a>Hibakód: 3602
 
-- **Üzenet**: `Invalid HttpMethod: {method}.`
+- **Üzenet**: `Invalid HttpMethod: '%method;'.`
 
-- **OK**: az Azure Function tevékenység nem támogatja a tevékenységhez tartozó adattartalomban megadott http-metódust. 
+- **OK**: az Azure Function tevékenység nem támogatja a tevékenységhez tartozó adattartalomban megadott http-metódust.
 
 - **Javaslat**: a támogatott http-metódusok az Put, a post, a Get, a DELETE, a Options, a Head és a trace.
 
 
 ### <a name="error-code--3603"></a>Hibakód: 3603
 
-- **Üzenet**: `Response content is not a valid JObject.`
+- **Üzenet**: `Response Content is not a valid JObject.`
 
-- **OK**: a hívott Azure-függvény nem adott vissza JSON-adattartalmat a válaszban. Az Data Factory Azure functions tevékenység csak a JSON-válaszok tartalmát támogatja. 
+- **OK**: a hívott Azure-függvény nem adott vissza JSON-adattartalmat a válaszban. Az ADF Azure Function tevékenység csak a JSON-válaszok tartalmát támogatja.
 
-- **Javaslat**: frissítse az Azure-függvényt egy érvényes JSON-adattartalom visszaküldéséhez. Egy C# függvény például visszaadhatja `(ActionResult)new<OkObjectResult("{`\"azonosítóját\":\"123\"`}");`.
+- **Javaslat**: frissítse az Azure-függvényt egy érvényes JSON-adattartalom C# visszaküldéséhez, például egy függvény visszatérhet (ActionResult) új OkObjectResult ("{\"Id\":\"123\"}");
 
 
 ### <a name="error-code--3606"></a>Hibakód: 3606
 
-- **Üzenet**: `Azure function activity missing function key.`
+- **Üzenet**: az Azure Function tevékenysége hiányzik a funkcióbillentyű.
 
-- **OK**: az Azure Function tevékenység-definíciója nem fejeződött be. 
+- **OK**: az Azure Function tevékenység-definíciója nem fejeződött be.
 
 - **Javaslat**: Ellenőrizze, hogy a bemeneti AZUREFUNCTION tevékenység JSON-definíciója rendelkezik-e "functionKey" nevű tulajdonsággal.
 
@@ -244,25 +243,25 @@ A következő táblázat az U-SQL-re vonatkozik.
 
 - **Üzenet**: `Azure function activity missing function name.`
 
-- **OK**: az Azure Function tevékenység-definíciója nem fejeződött be. 
+- **OK**: az Azure Function tevékenység-definíciója nem fejeződött be.
 
 - **Javaslat**: Ellenőrizze, hogy a bemeneti AZUREFUNCTION tevékenység JSON-definíciója "függvénynév" nevű tulajdonsággal rendelkezik-e.
 
 
 ### <a name="error-code--3608"></a>Hibakód: 3608
 
-- **Üzenet**: `Call to provided Azure function '{FunctionName}' failed with status-'{statusCode}' and message - '{message}'.` 
+- **Üzenet**: `Call to provided Azure function '%FunctionName;' failed with status-'%statusCode;' and message - '%message;'.`
 
-- **OK**: az Azure-függvény részletei a tevékenység-definícióban helytelenek lehetnek. 
+- **OK**: az Azure-függvény részletei a tevékenység-definícióban helytelenek lehetnek.
 
 - **Javaslat**: javítsa ki az Azure-függvény adatait, és próbálkozzon újra.
 
 
 ### <a name="error-code--3609"></a>Hibakód: 3609
 
-- **Üzenet**: `Azure function activity missing functionAppUrl.` 
+- **Üzenet**: `Azure function activity missing functionAppUrl.`
 
-- **OK**: az Azure Function tevékenység-definíciója nem fejeződött be. 
+- **OK**: az Azure Function tevékenység-definíciója nem fejeződött be.
 
 - **Javaslat**: Ellenőrizze, hogy a bemeneti AZUREFUNCTION tevékenység JSON-definíciója rendelkezik-e "functionAppUrl" nevű tulajdonsággal.
 
@@ -278,7 +277,7 @@ A következő táblázat az U-SQL-re vonatkozik.
 
 ### <a name="error-code--3611"></a>Hibakód: 3611
 
-- **Üzenet**: `Azure function activity missing Method in JSON.` 
+- **Üzenet**: `Azure function activity missing Method in JSON.`
 
 - **OK**: az Azure Function tevékenység-definíciója nem fejeződött be.
 
@@ -289,26 +288,26 @@ A következő táblázat az U-SQL-re vonatkozik.
 
 - **Üzenet**: `Azure function activity missing LinkedService definition in JSON.`
 
-- **OK**: Előfordulhat, hogy az Azure Function tevékenység definíciója nem fejeződött be.
+- **OK**: az Azure Function tevékenység-definíciója nem fejeződött be.
 
 - **Javaslat**: Ellenőrizze, hogy a bemeneti AZUREFUNCTION tevékenység JSON-definíciója rendelkezik-e társított szolgáltatás részleteivel.
 
 
-## <a name="azure-machine-learning"></a>Azure Machine Learning
 
+## <a name="azure-machine-learning"></a>Azure Machine Learning
 
 ### <a name="error-code--4101"></a>Hibakód: 4101
 
 - **Üzenet**: `AzureMLExecutePipeline activity '%activityName;' has invalid value for property '%propertyName;'.`
 
-- **OK**: a tulajdonság helytelen formátumú vagy hiányzó definíciója.
+- **OK**: helytelen formátumú vagy hiányzó definíció a (z)% propertyName; tulajdonsághoz.
 
-- **Javaslat**: Ellenőrizze, hogy a tevékenység a megfelelő adatokkal van-e definiálva.
+- **Javaslat**: Ellenőrizze, hogy a (z)% activityName; tevékenység megfelelő adatokkal van-e megadva a (z)% propertyName; tulajdonsággal.
 
 
 ### <a name="error-code--4110"></a>Hibakód: 4110
 
-- **Üzenet**: a AzureMLExecutePipeline-tevékenység LinkedService-definíciója hiányzik a JSON-ben.
+- **Üzenet**: `AzureMLExecutePipeline activity missing LinkedService definition in JSON.`
 
 - **OK**: a AzureMLExecutePipeline tevékenység definíciója nem fejeződött be.
 
@@ -328,14 +327,14 @@ A következő táblázat az U-SQL-re vonatkozik.
 
 - **Üzenet**: `AzureMLService linked service has invalid value for property '%propertyName;'.`
 
-- **OK**: a tulajdonság helytelen formátumú vagy hiányzó definíciója.
+- **OK**: helytelen formátumú vagy hiányzó definíció a (z)% propertyName; tulajdonsághoz.
 
-- **Javaslat**: Ellenőrizze, hogy a társított szolgáltatás definíciója megfelelő adatokkal rendelkezik-e.
+- **Javaslat**: Ellenőrizze, hogy a társított szolgáltatás megfelelő adatokkal van-e megadva a (z)% propertyName; tulajdonsággal.
 
 
 ### <a name="error-code--4121"></a>Hibakód: 4121
 
-- **Üzenet**: `Request sent to AzureML Service for operation '%operation;' failed with http status code '%statusCode;'. Error message from AzureML Service: '%externalMessage;'.`
+- **Üzenet**: `Request sent to Azure ML Service for operation '%operation;' failed with http status code '%statusCode;'. Error message from Azure ML Service: '%externalMessage;'.`
 
 - **OK**: az Azure ml szolgáltatás elérésére használt hitelesítő adatok lejártak.
 
@@ -344,16 +343,16 @@ A következő táblázat az U-SQL-re vonatkozik.
 
 ### <a name="error-code--4122"></a>Hibakód: 4122
 
-- **Üzenet**: `Request sent to AzureML Service for operation '%operation;' failed with http status code '%statusCode;'. Error message from AzureML Service: '%externalMessage;'.`
+- **Üzenet**: `Request sent to Azure ML Service for operation '%operation;' failed with http status code '%statusCode;'. Error message from Azure ML Service: '%externalMessage;'.`
 
-- **OK**: a AzureML szolgáltatáshoz társított szolgáltatásban megadott hitelesítő adat érvénytelen vagy nem rendelkezik engedéllyel a művelethez.
+- **OK**: az Azure ml szolgáltatáshoz társított szolgáltatásban megadott hitelesítő adat érvénytelen vagy nem rendelkezik engedéllyel a művelethez.
 
-- **Javaslat**: Ellenőrizze, hogy érvényes-e a hitelesítő adatok a társított szolgáltatásban, és jogosult-e a AzureML szolgáltatás elérésére.
+- **Javaslat**: Ellenőrizze, hogy érvényes-e a hitelesítő adatok a társított szolgáltatásban, és jogosult-e az Azure ml szolgáltatás elérésére.
 
 
 ### <a name="error-code--4123"></a>Hibakód: 4123
 
-- **Üzenet**: `Request sent to AzureML Service for operation '%operation;' failed with http status code '%statusCode;'. Error message from AzureML Service: '%externalMessage;'.`
+- **Üzenet**: `Request sent to Azure ML Service for operation '%operation;' failed with http status code '%statusCode;'. Error message from Azure ML Service: '%externalMessage;'.`
 
 - **OK**: `Properties of the activity such as pipelineParamters are invalid for the Azure ML pipeline.`
 
@@ -362,7 +361,7 @@ A következő táblázat az U-SQL-re vonatkozik.
 
 ### <a name="error-code--4124"></a>Hibakód: 4124
 
-- **Üzenet**: `Request sent to AzureML Service for operation '%operation;' failed with http status code '%statusCode;'. Error message from AzureML Service: '%externalMessage;'.`
+- **Üzenet**: `Request sent to Azure ML Service for operation '%operation;' failed with http status code '%statusCode;'. Error message from Azure ML Service: '%externalMessage;'.`
 
 - **OK**: a közzétett Azure ml-folyamat végpontja nem létezik.
 
@@ -371,7 +370,7 @@ A következő táblázat az U-SQL-re vonatkozik.
 
 ### <a name="error-code--4125"></a>Hibakód: 4125
 
-- **Üzenet**: `Request sent to AzureML Service for operation '%operation;' failed with http status code '%statusCode;'. Error message from AzureML Service: '%externalMessage;'.`
+- **Üzenet**: `Request sent to Azure ML Service for operation '%operation;' failed with http status code '%statusCode;'. Error message from Azure ML Service: '%externalMessage;'.`
 
 - **OK**: kiszolgálói hiba az Azure ml szolgáltatásban.
 
@@ -380,18 +379,102 @@ A következő táblázat az U-SQL-re vonatkozik.
 
 ### <a name="error-code--4126"></a>Hibakód: 4126
 
-- **Üzenet**: `AzureML pipeline run failed with status: '%amlPipelineRunStatus;'. Azure ML pipeline run Id: '%amlPipelineRunId;'. Please check in AzureMLService for more error loggings.`
+- **Üzenet**: `Azure ML pipeline run failed with status: '%amlPipelineRunStatus;'. Azure ML pipeline run Id: '%amlPipelineRunId;'. Please check in Azure ML Service for more error logs.`
 
-- **OK**: a AzureML folyamat futtatása nem sikerült.
+- **OK**: az Azure ml-folyamat futtatása nem sikerült.
 
-- **Javaslat**: Ellenőrizze a AzureMLService a további hibák naplózása és a ml-folyamat javítása érdekében.
+- **Javaslat**: Ellenőrizze, hogy az Azure ml szolgáltatásban további hibák jelentkeznek-e, és javítsa ki a ml-folyamatot
+
+
+
+## <a name="common"></a>Közös
+
+### <a name="error-code--2103"></a>Hibakód: 2103
+
+- **Üzenet**: `Please provide value for the required property '%propertyName;'.`
+
+- **OK**: a tulajdonság értéke nem lett megadva, azonban a forgatókönyvben kötelező megadni.
+
+- **Javaslat**: adja meg az értéket az üzenetből, és próbálkozzon újra.
+
+
+### <a name="error-code--2104"></a>Hibakód: 2104
+
+- **Üzenet**: `The type of the property '%propertyName;' is incorrect.`
+
+- **OK**: a megadott tulajdonság típusa nem a várt érték.
+
+- **Javaslat**: javítsa ki a tulajdonság típusát, és próbálkozzon újra.
+
+
+### <a name="error-code--2105"></a>Hibakód: 2105
+
+- **Üzenet**: `An invalid json is provided for property '%propertyName;'. Encountered an error while trying to parse: '%message;'.`
+
+- **OK**: a tulajdonság értéke érvénytelen, vagy nem rendelkezik a várt formátummal.
+
+- **Javaslat**: keresse meg a tulajdonság dokumentációját, és győződjön meg arról, hogy a megadott érték formátuma és típusa várható.
+
+
+### <a name="error-code--2106"></a>Hibakód: 2106
+
+- **Üzenet**: `The storage connection string is invalid. %errorMessage;`
+
+- **OK**: a tárolóhoz tartozó kapcsolatok karakterlánca érvénytelen vagy helytelen formátumú.
+
+- **Javaslat**: lépjen az Azure Portalra, keresse meg a tárhelyét, másolja a kapcsolati karakterláncot, és illessze be a társított szolgáltatásba, majd próbálkozzon újra.
+
+
+### <a name="error-code--2108"></a>Hibakód: 2108
+
+- **Üzenet**: `Error calling the endpoint '%url;'. Response status code: '%code;'`
+
+- **OK**: a kérelem végrehajtása egy mögöttes probléma miatt meghiúsult, például a hálózati kapcsolat, a DNS-hiba, a kiszolgálói tanúsítvány érvényesítése vagy időtúllépés.
+
+- **Javaslat**: a Hegedűs/Poster használatával ellenőrizze a kérést.
+
+
+### <a name="error-code--2110"></a>Hibakód: 2110
+
+- **Üzenet**: `The linked service type '%linkedServiceType;' is not supported for '%executorType;' activities.`
+
+- **OK**: a tevékenységben megadott társított szolgáltatás helytelen.
+
+- **Javaslat**: Ellenőrizze, hogy a társított szolgáltatás típusa a tevékenység által támogatott típusok egyike-e. Például a HDI-tevékenységekhez a társított szolgáltatás típusa lehet HDInsight vagy HDInsightOnDemand.
+
+
+### <a name="error-code--2111"></a>Hibakód: 2111
+
+- **Üzenet**: `The type of the property '%propertyName;' is incorrect. The expected type is %expectedType;.`
+
+- **OK**: a megadott tulajdonság típusa nem a várt érték.
+
+- **Javaslat**: javítsa ki a tulajdonság típusát, és próbálkozzon újra.
+
+
+### <a name="error-code--2112"></a>Hibakód: 2112
+
+- **Üzenet**: `The cloud type is unsupported or could not be determined for storage from the EndpointSuffix '%endpointSuffix;'.`
+
+- **OK**: a felhő típusa nem támogatott, vagy nem határozható meg a tárolóhoz a EndpointSuffix.
+
+- **Javaslat**: használjon egy másik Felhőbeli tárolót, és próbálkozzon újra.
+
+
+### <a name="error-code--2128"></a>Hibakód: 2128
+
+- **Üzenet**: `No response from the endpoint. Possible causes: network connectivity, DNS failure, server certificate validation or timeout.`
+
+- **OK**: hálózati kapcsolat, DNS-hiba, kiszolgálói tanúsítvány ellenőrzése vagy időtúllépés.
+
+- **Javaslat**: Ellenőrizze, hogy a elérni kívánt végpont válaszol-e a kérelmekre. Használhat olyan eszközöket is, mint a Hegedűs vagy a Poster.
+
 
 
 ## <a name="custom"></a>Egyéni
 
 A következő táblázat a Azure Batchra vonatkozik.
-
-
+      
 ### <a name="error-code--2500"></a>Hibakód: 2500
 
 - **Üzenet**: `Hit unexpected exception and execution failed.`
@@ -421,7 +504,7 @@ A következő táblázat a Azure Batchra vonatkozik.
 
 ### <a name="error-code--2504"></a>Hibakód: 2504
 
-- **Üzenet**: `Operation returned an invalid status code 'BadRequest'.` 
+- **Üzenet**: `Operation returned an invalid status code 'BadRequest'.`
 
 - **OK**: túl sok fájl van az egyéni tevékenység folderPath. A resourceFiles teljes mérete nem lehet hosszabb 32 768 karakternél.
 
@@ -457,7 +540,7 @@ A következő táblázat a Azure Batchra vonatkozik.
 
 ### <a name="error-code--2509"></a>Hibakód: 2509
 
-- **Üzenet**: `Batch   url ... is invalid; it must be in Uri format.` 
+- **Üzenet**: `Batch   url ... is invalid; it must be in Uri format.`
 
 - **OK**: a Batch URL-címeinek a `https://mybatchaccount.eastus.batch.azure.com`hoz hasonlónak kell lenniük
 
@@ -468,225 +551,474 @@ A következő táblázat a Azure Batchra vonatkozik.
 
 - **Üzenet**: `An   error occurred while sending the request.`
 
-- **OK**: a Batch URL-címe érvénytelen. 
+- **OK**: a Batch URL-címe érvénytelen.
 
 - **Javaslat**: Ellenőrizze a Batch URL-címét.
-
+            
 
 ## <a name="hdinsight"></a>HDInsight
 
-A következő táblázat a Spark, a kaptár, a MapReduce, a Pig és a Hadoop streaming rendszerre vonatkozik.
+### <a name="error-code--200"></a>Hibakód: 200
+
+- **Üzenet**: `Unexpected error happened: '%error;'.`
+
+- **OK**: belső szolgáltatási probléma van.
+
+- **Javaslat**: további segítségért forduljon az ADF-támogatáshoz.
+
+
+### <a name="error-code--201"></a>Hibakód: 201
+
+- **Üzenet**: `JobType %jobType; is not found.`
+
+- **OK**: Az ADF nem támogatja az új feladattípust.
+
+- **Javaslat**: további segítségért forduljon az ADF támogatási csapatához.
+
+
+### <a name="error-code--202"></a>Hibakód: 202
+
+- **Üzenet**: `Failed to create on demand HDI cluster. Cluster name or linked service name: '%clusterName;', error: '%message;'`
+
+- **OK**: a hibaüzenetből megtudhatja, hogy mi volt a hiba.
+
+- **Javaslat**: a hibaüzenetnek segítenie kell a probléma megoldásában. Ha nincs elegendő információ, további segítségért forduljon az ADF-támogatáshoz.
+
+
+### <a name="error-code--203"></a>Hibakód: 203
+
+- **Üzenet**: `Failed to delete on demand HDI cluster. Cluster name or linked service name: '%clusterName;', error: '%message;'`
+
+- **OK**: a hibaüzenetből megtudhatja, hogy mi volt a hiba.
+
+- **Javaslat**: a hibaüzenetnek segítenie kell a probléma megoldásában. Ha nincs elegendő információ, további segítségért forduljon az ADF-támogatáshoz.
+
+
+### <a name="error-code--204"></a>Hibakód: 204
+
+- **Üzenet**: `The resumption token is missing for runId '%runId;'.`
+
+- **OK**: belső szolgáltatási probléma van.
+
+- **Javaslat**: további segítségért forduljon az ADF-támogatáshoz.
+
+
+### <a name="error-code--205"></a>Hibakód: 205
+
+- **Üzenet**: `Failed to prepare cluster for LinkedService '%linkedServiceName;', the current resource status is '%status;'.`
+
+- **OK**: hiba történt a HDI igény szerinti fürt létrehozásakor.
+
+- **Javaslat**: további segítségért forduljon az ADF-támogatáshoz.
+
+
+### <a name="error-code--206"></a>Hibakód: 206
+
+- **Üzenet**: `The batch ID for Spark job is invalid. Please retry your job, and if the problem persists, contact the ADF support for further assistance.`
+
+- **OK**: belső probléma történt az ezt kiváltó szolgáltatással.
+
+- **Javaslat**: ez lehet átmeneti probléma. Próbálkozzon újra a feladatokkal, és ha a probléma továbbra is fennáll, további segítségért forduljon az ADF-támogatáshoz.
+
+
+### <a name="error-code--207"></a>Hibakód: 207
+
+- **Üzenet**: `Could not determine the region from the provided storage account. Please try using another primary storage account for the on demand HDI or contact ADF support team and provide the activity run ID.`
+
+- **OK**: belső hiba történt a régió elsődleges Storage-fiókból való megállapítására tett kísérlet során.
+
+- **Javaslat**: próbálkozzon egy másik tárolóval. Ha ez nem elfogadható megoldás, további segítségért forduljon az ADF támogatási csapatához.
+
+
+### <a name="error-code--208"></a>Hibakód: 208
+
+- **Üzenet**: `Service Principal or the MSI authenticator are not instantiated. Please consider providing a Service Principal in the HDI on demand linked service which has permissions to create an HDInsight cluster in the provided subscription and try again. In case if this is not an acceptable solution, contact ADF support team for further assistance.`
+
+- **OK**: belső hiba történt a szolgáltatásnév beolvasására tett kísérlet során vagy az MSI-hitelesítés példányának létrehozásakor.
+
+- **Javaslat**: érdemes megfontolni egy egyszerű szolgáltatás megadását, amely rendelkezik egy HDInsight-fürt létrehozásához szükséges engedélyekkel a megadott előfizetésben, majd próbálkozzon újra. Ha ez nem elfogadható megoldás, további segítségért forduljon az ADF támogatási csapatához.
 
 
 ### <a name="error-code--2300"></a>Hibakód: 2300
 
-- **Üzenet**: `Hadoop job submission failed. Error: The remote name could not be resolved. <br/><br/>The cluster is not found.`
+- **Üzenet**: `Failed to submit the job '%jobId;' to the cluster '%cluster;'. Error: %errorMessage;.`
 
-- **OK**: a megadott fürt URI azonosítója érvénytelen. 
+<br>
 
-- **Javaslat**: Győződjön meg arról, hogy a fürt nem lett törölve, és hogy a megadott URI helyes. Amikor megnyitja az URI-t egy böngészőben, megjelenik a Ambari felhasználói felülete. Ha a fürt virtuális hálózatban található, az URI-nak a privát URI-nak kell lennie. A megnyitásához használjon egy azonos virtuális hálózat részét képező virtuális GÉPET. További információ: [közvetlen kapcsolódás Apache Hadoop szolgáltatásokhoz](https://docs.microsoft.com/azure/hdinsight/hdinsight-extend-hadoop-virtual-network#directly-connect-to-apache-hadoop-services).
+- **OK**: Ha a hibaüzenetben a "a távoli név nem oldható fel." üzenet jelenik meg, akkor ez azt jelentheti, hogy a megadott fürt URI-ja érvénytelen.
 
-<br/>
 
-- **Üzenet**: `Hadoop job submission failed. Job: …, Cluster: …/. Error: A task was canceled.`
+- **Javaslat**: Győződjön meg arról, hogy a fürt nem lett törölve, és hogy a megadott URI helyes. Amikor megnyitja az URI-t egy böngészőben, megjelenik a Ambari felhasználói felülete. Ha a fürt virtuális hálózatban található, az URI-nak a privát URI-nak kell lennie. A megnyitásához használjon egy azonos virtuális hálózat részét képező virtuális GÉPET. [További információ:.](https://docs.microsoft.com/azure/hdinsight/hdinsight-plan-virtual-network-deployment#directly-connect-to-apache-hadoop-services)
+                  
 
-- **OK**: a feladatok beküldése időtúllépés miatt megvolt. 
+<br>
+
+- **OK**: Ha a hibaüzenet olyan üzenetet tartalmaz, amely az "a feladat megszakítva" üzenethez hasonlít. Ez azt jelenti, hogy a feladat elküldése túllépte az időkorlátot.
 
 - **Javaslat**: a probléma lehet általános HDInsight-kapcsolat vagy hálózati kapcsolat. Először ellenőrizze, hogy a HDInsight Ambari felhasználói felülete elérhető-e bármely böngészőből. Ellenőrizze, hogy a hitelesítő adatai még érvényesek-e. Ha saját üzemeltetésű integrált futtatókörnyezetet (IR) használ, ügyeljen arra, hogy azt a virtuális gépet vagy gépet használja, ahol a saját üzemeltetésű integrációs modul telepítve van. Ezután próbálja meg újra elküldeni a feladatot Data Factory újra. Ha továbbra sem sikerül, forduljon a Data Factory csapatához.
 
+<br>
 
-- **Üzenet**: `Unauthorized: Ambari user name or password is incorrect  <br/><br/>Unauthorized: User admin is locked out in Ambari.   <br/><br/>403 - Forbidden: Access is denied.`
-
-- **OK**: a HDInsight hitelesítő adatai helytelenek vagy lejártak.
+- **OK**: Ha a hibaüzenet olyan üzenetet tartalmaz, amely a "felhasználói rendszergazda számára ki van zárva a Ambari" vagy a "jogosulatlan: Ambari Felhasználónév vagy jelszó helytelen", ez azt jelenti, hogy a HDInsight hitelesítő adatai helytelenek vagy lejártak.
 
 - **Javaslat**: javítsa ki a hitelesítő adatokat, és telepítse újra a társított szolgáltatást. Először győződjön meg arról, hogy a hitelesítő adatok HDInsight működnek a fürt URI-ja megnyitásával bármely böngészőben, és próbáljon bejelentkezni. Ha a hitelesítő adatok nem működnek, alaphelyzetbe állíthatja azokat a Azure Portal.
 
-<br/>
+<br>
 
-- **Üzenet**: `502 - Web server received an invalid response while acting as a gateway or proxy server. <br/>Bad gateway.`
+- **OK**: Ha a hibaüzenet olyan üzenetet tartalmaz, amely a "502 – webkiszolgáló számára érvénytelen választ kapott az átjáróként vagy proxykiszolgálóként való működés közben", ezt a hibát a HDInsight szolgáltatás adja vissza.
 
-- **OK**: Ez a hiba a HDInsight.
 
-- **Javaslat**: Ez a hiba a HDInsight-fürtből származik. További információ: [Ambari felhasználói felület 502 hiba](https://hdinsight.github.io/ambari/ambari-ui-502-error.html), [502 hiba a Spark](https://hdinsight.github.io/spark/spark-thriftserver-errors.html)-beli szolgáltatáshoz való csatlakozáshoz, [502-hibák a Spark-hoz való csatlakozáshoz](https://hdinsight.github.io/spark/spark-thriftserver-errors.html)és [a Application Gateway hibás átjárókkal kapcsolatos hibák elhárítása](https://docs.microsoft.com/azure/application-gateway/application-gateway-troubleshooting-502).
+- **Javaslat**: Tekintse át az Azure HDInsight hibaelhárítási dokumentációját, például https://hdinsight.github.io/ambari/ambari-ui-502-error.html, https://hdinsight.github.io/spark/spark-thriftserver-errors.html, https://docs.microsoft.com/azure/application-gateway/application-gateway-troubleshooting-502.
+                  
 
-<br/>
+<br>
 
-- **Üzenet**: `Hadoop job submission failed. Job: …, Cluster: ... Error:   {\"error\":\"Unable to service the submit job request as   templeton service is busy with too many submit job requests. Please wait for some time before retrying the operation. Please refer to the config   templeton.parallellism.job.submit to configure concurrent requests. <br/><br/>Hadoop job submission failed. Job: xx, Cluster: name.   Error: {\"error\":\"java.io.IOException:   org.apache.hadoop.yarn.exceptions.YarnException: Failed to submit   application_1561147195099_3730 to YARN :   org.apache.hadoop.security.AccessControlException: Queue root.joblauncher already has 500 applications, cannot accept submission of application:   application_1561147195099_3730\`
+- **OK**: Ha a hibaüzenetben egy hasonló üzenet jelenik meg, amely a "nem tudja kiszolgálni a küldési feladattípust, mert a Templeton szolgáltatás túl sok küldési feladattípust vagy várólista gyökerét tartalmaz. a joblauncher már rendelkezik a 500-es alkalmazásokkal, nem fogadhat el az alkalmazás ", ez azt jelenti, hogy túl sok feladat van elküldve a HDInsight egyszerre.
 
-- **OK**: túl sok feladat van elküldve a HDInsight egyszerre.
+- **Javaslat**: érdemes lehet korlátozni a HDInsight küldött egyidejű feladatok számát. Ha ugyanaz a tevékenység küldi el a feladatokat, tekintse meg Data Factory tevékenység egyidejűségét. Módosítsa az eseményindítókat úgy, hogy az egyidejű folyamat-futtatások egyszerre legyenek kiosztva. Tekintse át a HDInsight dokumentációját a Templeton. parallellism. job. Submit utasításhoz a hiba javaslata alapján.
 
-- **Javaslat**: érdemes lehet korlátozni a HDInsight küldött egyidejű feladatok számát. Ha ugyanaz a tevékenység küldi el a feladatokat, tekintse meg Data Factory tevékenység egyidejűségét. Módosítsa az eseményindítókat úgy, hogy az egyidejű folyamat-futtatások egyszerre legyenek kiosztva. Tekintse át a HDInsight dokumentációját, hogy a hiba esetén a `templeton.parallellism.job.submit` módosítsa.
+
+### <a name="error-code--2301"></a>Hibakód: 2301
+
+- **Üzenet**: `Could not get the status of the application '%physicalJobId;' from the HDInsight service. Received the following error: %message;. Please refer to HDInsight troubleshooting documentation or contact their support for further assistance.`
+
+- **OK**: a HDInsight-fürt vagy-szolgáltatás problémái vannak.
+
+
+- **Javaslat**: Ez a hiba akkor fordul elő, ha az ADF nem válaszol a HDInsight-fürttől a futó feladatokhoz tartozó állapot beolvasására tett kísérlet során. Előfordulhat, hogy a fürtön problémák merülhetnek fel, vagy ha a HDInsight szolgáltatás leállás miatt leáll. További segítségért tekintse meg a HDInsight hibaelhárítási dokumentációját https://docs.microsoft.com/azure/hdinsight/hdinsight-troubleshoot-guidecímen, vagy forduljon a támogatási szolgálathoz.
+                
+
+
+### <a name="error-code--2302"></a>Hibakód: 2302
+
+- **Üzenet**: `Hadoop job failed with exit code '%exitCode;'. See '%logPath;/stderr' for more details. Alternatively, open the Ambari UI on the HDI cluster and find the logs for the job '%jobId;'. Contact HDInsight team for further support.`
+
+- **OK**: a feladatot elküldték a HDI-fürtnek, és ott nem sikerült.
+
+- **Javaslat**: kövesse a fonál naplók hivatkozását a tevékenység futtatása kimenetben, és keresse meg a HDI kimenetben előforduló hibákat. Ha szükséges, forduljon a HDInsight csapatához.
 
 
 ### <a name="error-code--2303"></a>Hibakód: 2303
 
-- **Üzenet**: `Hadoop job failed with exit code '5'. See   'wasbs://adfjobs@xx.blob.core.windows.net/StreamingJobs/da4afc6d-7836-444e-bbd5-635fce315997/18_06_2019_05_36_05_050/stderr' for more details. <br/><br/>Hive execution failed with error code 'UserErrorHiveOdbcCommandExecutionFailure'.   See 'wasbs://adfjobs@xx.blob.core.windows.net/HiveQueryJobs/16439742-edd5-4efe-adf6-9b8ff5770beb/18_06_2019_07_37_50_477/Status/hive.out' for more details.`
+- **Üzenet**: `Hadoop job failed with transient exit code '%exitCode;'. See '%logPath;/stderr' for more details. Alternatively, open the Ambari UI on the HDI cluster and find the logs for the job '%jobId;'. Try again or contact HDInsight team for further support.`
 
-- **OK**: a rendszer elküldte a feladatot a HDInsight, és a HDInsight-on meghiúsult.
+- **OK**: a feladatot elküldték a HDI-fürtnek, és ott nem sikerült.
 
-- **Javaslat**: a feladatot sikeresen elküldte a HDInsight. Sikertelen volt a fürtön. Nyissa meg a feladatot és a naplókat a HDInsight Ambari felhasználói felületén, vagy nyissa meg a fájlt a tárolóból, ha a hibaüzenetet javasolja. A fájl a hiba részleteit jeleníti meg.
+- **Javaslat**: kövesse a fonál naplók hivatkozását a tevékenység futtatása kimenetben, és keresse meg a HDI kimenetben előforduló hibákat. Ha szükséges, próbálkozzon újra, vagy forduljon a HDInsight csapatához.
+
+
+### <a name="error-code--2304"></a>Hibakód: 2304
+
+- **Üzenet**: `MSI authentication is not supported on storages for HDI activities.`
+
+- **OK**: a HDI társított szolgáltatásban vagy a HDI-tevékenységben használt Storage társított szolgáltatás (ok) MSI-hitelesítéssel vannak konfigurálva, ami nem támogatott.
+
+- **Javaslat**: adjon meg teljes kapcsolati karakterláncokat a HDI társított szolgáltatásban vagy a HDI-tevékenységben használt Storage-fiókok számára.
+
+
+### <a name="error-code--2305"></a>Hibakód: 2305
+
+- **Üzenet**: `Failed to initialize the HDInsight client for the cluster '%cluster;'. Error: '%message;'`
+
+- **OK**: a HDI-fürthöz tartozó kapcsolati információk helytelenek, a megadott felhasználónak nincs engedélye a szükséges művelet végrehajtására, vagy a HDInsight szolgáltatás az ADF-től érkező kérésekre válaszol.
+
+- **Javaslat**: Ügyeljen arra, hogy a felhasználói adatok helyesek legyenek. Azt is ellenőrizze, hogy a HDI-fürt Ambari felhasználói felülete megnyitható-e egy böngészőben a virtuális gépen, ahol az IR a saját üzemeltetésű integrációs modul esetében van telepítve, vagy ha Azure IR, akkor bármelyik gépről megnyithatja.
+
+
+### <a name="error-code--2306"></a>Hibakód: 2306
+
+- **Üzenet**: `An invalid json is provided for script action '%scriptActionName;'. Error: '%message;'`
+
+- **OK**: a parancsfájl műveletéhez megadott JSON érvénytelen.
+
+
+- **Javaslat**: a hibaüzenetnek segítséget kell nyújtania a probléma azonosításához. Javítsa ki a JSON-konfigurációt, és próbálkozzon újra. További információért látogasson https://docs.microsoft.com/azure/data-factory/compute-linked-services#azure-hdinsight-on-demand-linked-service.
+                
 
 
 ### <a name="error-code--2310"></a>Hibakód: 2310
 
-- **Üzenet**: `Hadoop job submission failed. Error: The remote name could not be resolved. <br/><br/>The cluster is not found.`
+- **Üzenet**: `Failed to submit Spark job. Error: '%message;'`
 
-- **OK**: a megadott fürt URI azonosítója érvénytelen. 
+- **OK**: Az ADF megpróbált létrehozni egy köteget egy Spark-fürtön a Livy API (Livy/batch) használatával, de hibaüzenetet kapott.
 
-- **Javaslat**: Győződjön meg arról, hogy a fürt nem lett törölve, és hogy a megadott URI helyes. Amikor megnyitja az URI-t egy böngészőben, megjelenik a Ambari felhasználói felülete. Ha a fürt virtuális hálózatban található, az URI-nak a privát URI-nak kell lennie. A megnyitásához használjon egy azonos virtuális hálózat részét képező virtuális GÉPET. További információ: [közvetlen kapcsolódás Apache Hadoop szolgáltatásokhoz](https://docs.microsoft.com/azure/hdinsight/hdinsight-extend-hadoop-virtual-network#directly-connect-to-apache-hadoop-services).
-
-<br/>
-
-- **Üzenet**: `502 - Web server received an invalid response while acting as a gateway or proxy server. <br/>Bad gateway.`
-
-- **OK**: Ez a hiba a HDInsight.
-
-- **Javaslat**: Ez a hiba a HDInsight-fürtből származik. További információ: [Ambari felhasználói felület 502 hiba](https://hdinsight.github.io/ambari/ambari-ui-502-error.html), [502 hiba a Spark](https://hdinsight.github.io/spark/spark-thriftserver-errors.html)-beli szolgáltatáshoz való csatlakozáshoz, [502-hibák a Spark-hoz való csatlakozáshoz](https://hdinsight.github.io/spark/spark-thriftserver-errors.html)és [a Application Gateway hibás átjárókkal kapcsolatos hibák elhárítása](https://docs.microsoft.com/azure/application-gateway/application-gateway-troubleshooting-502).
-
-<br/>
-
-- **Üzenet**: `java.lang.NullPointerException`
-
-- **OK**: Ez a hiba akkor fordul elő, ha a feladatot egy Spark-fürtbe küldi a rendszer. 
-
-- **Javaslat**: Ez a kivétel a HDInsight származik. Elrejti a tényleges problémát. Segítségért forduljon a HDInsight csapatához. Adja meg a fürt nevét és a tevékenység futtatási időtartományát.
+- **Javaslat**: a probléma megoldásához kövesse a hibaüzenetet. Ha nem áll rendelkezésre elegendő információ a megoldás megszerzéséhez, lépjen kapcsolatba az HDI csapatával, és adja meg nekik a Batch-azonosítót és a feladatot, amely a tevékenység futtatása kimenete ADF-figyelés oldalon található.
 
 
-### <a name="error-code--2347"></a>Hibakód: 2347
+### <a name="error-code--2312"></a>Hibakód: 2312
 
-- **Üzenet**: `Hadoop job failed with exit code '5'. See 'wasbs://adfjobs@xx.blob.core.windows.net/StreamingJobs/da4afc6d-7836-444e-bbd5-635fce315997/18_06_2019_05_36_05_050/stderr' for more details. <br/><br/>Hive execution failed with error code 'UserErrorHiveOdbcCommandExecutionFailure'.   See 'wasbs://adfjobs@xx.blob.core.windows.net/HiveQueryJobs/16439742-edd5-4efe-adf6-9b8ff5770beb/18_06_2019_07_37_50_477/Status/hive.out' for more details.`
+- **Üzenet**: `Spark job failed, batch id:%batchId;. Please follow the links in the activity run Output from ADF Monitoring page to troubleshoot the run on HDInsight Spark cluster. Please contact HDInsight support team for further assistance.`
 
-- **OK**: a rendszer elküldte a feladatot a HDInsight, és a HDInsight-on meghiúsult.
+- **OK**: a HDInsight Spark-fürtön a feladatok sikertelenek voltak.
 
-- **Javaslat**: a feladatot sikeresen elküldte a HDInsight. Sikertelen volt a fürtön. Nyissa meg a feladatot és a naplókat a HDInsight Ambari felhasználói felületén, vagy nyissa meg a fájlt a tárolóból, ha a hibaüzenetet javasolja. A fájl a hiba részleteit jeleníti meg.
+- **Javaslat**: a HDInsight Spark-fürtön futtatott futtatási hibák megoldásához kövesse a tevékenység futtatása kimenetben az ADF figyelése oldalon található hivatkozásokat. További segítségért forduljon a HDInsight támogatási csapatához.
+
+
+### <a name="error-code--2313"></a>Hibakód: 2313
+
+- **Üzenet**: `The batch with ID '%batchId;' was not found on Spark cluster. Open the Spark History UI and try to find it there. Contact HDInsight support for further assistance.`
+
+- **OK**: a köteg törölve lett a HDInsight Spark-fürtön.
+
+- **Javaslat**: kötegek hibakeresése a HDInsight Spark-fürtön. További segítségért forduljon a HDInsight támogatási szolgálatához. 
 
 
 ### <a name="error-code--2328"></a>Hibakód: 2328
 
-- **Üzenet**: `Internal server error occurred while processing the request. Please retry the request or contact support. `
+- **Üzenet**: `Failed to create the on demand HDI cluster. Cluster or linked service name: '%clusterName;', error: '%message;'`
 
-- **OK**: Ez a hiba az igény szerinti HDInsight történik.
+- **OK**: `The error message should show the details of what went wrong.`
 
-- **Javaslat**: Ez a hiba a HDInsight szolgáltatásból származik, amikor a HDInsight kiépítés sikertelen. Forduljon a HDInsight csapathoz, és adja meg az igény szerinti fürt nevét.
+- **Javaslat**: a hibaüzenetnek segítenie kell a probléma megoldásában.
+
+
+### <a name="error-code--2329"></a>Hibakód: 2329
+
+- **Üzenet**: `Failed to delete the on demand HDI cluster. Cluster or linked service name: '%clusterName;', error: '%message;'`
+
+- **OK**: a hibaüzenetből megtudhatja, hogy mi volt a hiba.
+
+- **Javaslat**: a hibaüzenetnek segítenie kell a probléma megoldásában.
+
+
+### <a name="error-code--2331"></a>Hibakód: 2331
+
+- **Üzenet**: `The file path should not be null or empty.`
+
+- **OK**: a megadott fájl elérési útja üres.
+
+- **Javaslat**: adjon meg egy elérési utat a létező fájlhoz.
+
+
+### <a name="error-code--2340"></a>Hibakód: 2340
+
+- **Üzenet**: `HDInsightOnDemand linked service does not support execution via SelfHosted IR. Your IR name is '%IRName;'. Please select an Azure IR instead.`
+
+- **OK**: a HDInsightOnDemand társított szolgáltatás nem támogatja a végrehajtást a SelfHosted IR-n keresztül.
+
+- **Javaslat**: válasszon ki egy Azure IR, majd próbálkozzon újra.
+
+
+### <a name="error-code--2341"></a>Hibakód: 2341
+
+- **Üzenet**: `HDInsight cluster URL '%clusterUrl;' is incorrect, it must be in URI format and the scheme must be 'https'.`
+
+- **OK**: a megadott URL-cím nem megfelelő formátumú.
+
+- **Javaslat**: javítsa ki a fürt URL-címét, és próbálkozzon újra.
+
+
+### <a name="error-code--2342"></a>Hibakód: 2342
+
+- **Üzenet**: `Failed to connect to HDInsight cluster: '%errorMessage;'.`
+
+- **OK**: a megadott hitelesítő adatok nem megfelelőek a fürthöz, vagy hálózati konfiguráció vagy kapcsolódási probléma lépett fel, vagy az IR problémákba ütközik a fürthöz való csatlakozás során.
+
+- **Javaslat**:  
+      1. Ellenőrizze, hogy a hitelesítő adatok helyesek-e. Ehhez nyissa meg a HDInsight-fürt Ambari felhasználói felületét egy böngészőben.
+      2. Ha a fürt VNet és saját üzemeltetésű IR használatban van, a HDI URL-címnek a virtuális hálózatok privát URL-címének kell lennie, ami azt jelenti, hogy a fürt neve után "-int" értékűnek kell lennie. A (z) "https://mycluster.azurehdinsight.net/" például "https://mycluster-int.azurehdinsight.net/" értékre kell változtatni.
+      2. Ha a fürt VNet található, a rendszer saját üzemeltetésű IR-t használ, és a magánhálózati URL-címet használta, és a kapcsolat továbbra is meghiúsult, akkor az a virtuális gép, amelyen az IR telepítve volt, problémák léptek fel a HDI-hez való csatlakozás során. Kapcsolódjon ahhoz a virtuális géphez, amelyen az IR telepítve van, és nyissa meg a Ambari felhasználói felületét egy böngészőben. Használja a fürt magánhálózati URL-címét. A hálózatnak a böngészőben kell működnie. Ha nem, további segítségért lépjen kapcsolatba a HDInsight támogatási csapatával.
+      3. Ha a saját üzemeltetésű integrációs modult nem használja, akkor a HDI-fürtnek nyilvánosan elérhetőnek kell lennie. Nyissa meg a Ambari felhasználói felületét egy böngészőben, és győződjön meg róla, hogy megnyílik. Ha problémák merülnek fel a fürttel vagy a szolgáltatásokkal kapcsolatban, kérjen segítséget a HDInsight támogatási csapattól.
+      Így általában az ADF-hez társított szolgáltatásban használt HDI-fürt URL-címének elérhetőnek kell lennie az ADF-hez (helyi vagy Azure), hogy a kapcsolaton keresztüli teszt és a futtatások működjenek. Ezt egyszerűen ellenőrizheti, ha megnyitja az URL-címet egy böngészőből a virtuális gépen vagy bármely nyilvános gépről.
+    
+
+
+### <a name="error-code--2343"></a>Hibakód: 2343
+
+- **Üzenet**: `User name and password cannot be null or empty to connect to the HDInsight cluster.`
+
+- **OK**: a Felhasználónév vagy a jelszó üres.
+
+- **Javaslat**: adjon meg megfelelő hitelesítő adatokat a HDI-hez való kapcsolódáshoz, és próbálkozzon újra.
+
+
+### <a name="error-code--2345"></a>Hibakód: 2345
+
+- **Üzenet**: `Failed to read the content of the hive script. Error: '%message;'`
+
+- **OK**: a parancsfájl nem létezik, vagy az ADF nem tudott kapcsolódni a parancsfájl helyéhez.
+
+- **Javaslat**: Ellenőrizze, hogy létezik-e a parancsfájl, és hogy a társított társított szolgáltatás rendelkezik-e megfelelő hitelesítő adatokkal a kapcsolathoz.
+
+
+### <a name="error-code--2346"></a>Hibakód: 2346
+
+- **Üzenet**: `Failed to create ODBC connection to the HDI cluster with error message '%message;'.`
+
+- **OK**: Az ADF megpróbált létrehozni egy ODBC-kapcsolatot a HDI-fürthöz, és hiba miatt meghiúsult.
+
+- **Javaslat**: a hibaüzenet és a hibakód segítséget nyújt az ODBC-kapcsolatok hibáinak elhárításában. Ha nem elég a probléma megoldásához, kérjen segítséget az Azure HDInsight csapatának.
+
+
+### <a name="error-code--2347"></a>Hibakód: 2347
+
+- **Üzenet**: `Hive execution through ODBC failed with error message '%message;'.`
+
+- **OK**: Az ADF elküldte a kaptár-szkriptet a HDI-fürthöz való végrehajtáshoz az ODBC-kapcsolatok segítségével, a parancsfájl pedig nem sikerült a HDI-n.
+
+- **Javaslat**: a kaptár-parancsfájl végrehajtása nem sikerült a HDI-fürtön, és hibaüzenetet kap, és a hibakód segítséget nyújt a hibaelhárításban. Ha nem elég a probléma megoldásához, kérjen segítséget az Azure HDInsight csapatának.
+
+
+### <a name="error-code--2348"></a>Hibakód: 2348
+
+- **Üzenet**: `The main storage has not been initialized. Please check the properties of the storage linked service in the HDI linked service.`
+
+- **OK**: a Storage társított szolgáltatás tulajdonságai nincsenek megfelelően beállítva.
+
+- **Javaslat**: csak a teljes kapcsolati karakterláncok támogatottak a fő tárolóhoz társított szolgáltatásban a HDI-tevékenységekhez. Győződjön meg arról, hogy nem használ MSI-hitelesítést vagy-alkalmazásokat.
+
+
+### <a name="error-code--2350"></a>Hibakód: 2350
+
+- **Üzenet**: `Failed to prepare the files for the run '%jobId;'. HDI cluster: '%cluster;', Error: '%errorMessage;'`
+
+- **OK**: a megadott hitelesítő adatok nem megfelelőek ahhoz a tárolóhoz, ahol a fájlok találhatók, vagy a fájlok nem léteznek.
+
+- **Javaslat**: Ez a hiba akkor fordul elő, ha az ADF a HDI-tevékenységek előkészítési lépéseit végzi. Megpróbál fájlokat másolni a fő tárolóba, mielőtt elküldené a feladatot a HDI-nek. Győződjön meg arról, hogy a fájl létezik a megadott helyen, a tárolási kapcsolatok helyesek. Az ADF HDI-tevékenységek nem támogatják az MSI-hitelesítést a HDI-tevékenységekhez kapcsolódó tárolási fiókoknál, ezért győződjön meg arról, hogy ezek a társított szolgáltatások teljes kulccsal rendelkeznek, vagy a Azure Key Vault használják.
+
+
+### <a name="error-code--2351"></a>Hibakód: 2351
+
+- **Üzenet**: `Could not open the file '%filePath;' in container/fileSystem '%container;'.`
+
+- **OK**: a fájl nem létezik a megadott elérési úton.
+
+- **Javaslat**: Ellenőrizze, hogy a fájl valóban létezik-e, és a társított szolgáltatás a fájlra mutató kapcsolódási információkkal rendelkezik-e a megfelelő hitelesítő adatokkal.
+
+
+### <a name="error-code--2352"></a>Hibakód: 2352
+
+- **Üzenet**: `The file storage has not been initialized. Please check the properties of the file storage linked service in the HDI activity.`
+
+- **OK**: a file Storage társított szolgáltatás tulajdonságai nincsenek megfelelően beállítva.
+
+- **Javaslat**: Ellenőrizze, hogy a file Storage társított szolgáltatásának tulajdonságai megfelelően vannak-e konfigurálva.
+
+
+### <a name="error-code--2353"></a>Hibakód: 2353
+
+- **Üzenet**: `The script storage has not been initialized. Please check the properties of the script storage linked service in the HDI activity.`
+
+- **OK**: a parancsfájl-tárolási társított szolgáltatás tulajdonságai nincsenek megfelelően beállítva.
+
+- **Javaslat**: Ellenőrizze, hogy a parancsfájl-tárolási társított szolgáltatás tulajdonságai megfelelően vannak-e konfigurálva.
+
+
+### <a name="error-code--2354"></a>Hibakód: 2354
+
+- **Üzenet**: `The storage linked service type '%linkedServiceType;' is not supported for '%executorType;' activities for property '%linkedServicePropertyName;'.`
+
+- **OK**: a tevékenység nem támogatja a Storage-beli társított szolgáltatás típusát.
+
+- **Javaslat**: Ellenőrizze, hogy a kiválasztott társított szolgáltatás rendelkezik-e a tevékenység támogatott típusaival. A HDI-tevékenységek támogatják a AzureBlobStorage és a AzureBlobFSStorage társított szolgáltatásokat.
+
+
+### <a name="error-code--2355"></a>Hibakód: 2355
+
+- **Üzenet**: `The '%value' provided for commandEnvironment is incorrect. The expected value should be an array of strings where each string has the format CmdEnvVarName=CmdEnvVarValue.`
+
+- **OK**: a commandEnvironment megadott értéke helytelen.
+
+- **Javaslat**:  
+      Győződjön meg arról, hogy a megadott érték a következőhöz hasonló: \"commandEnvironment\": [\"variableName = variableValue\"], és mindegyik változó csak egyszer jelenik meg a listában.
+    
+
+
+### <a name="error-code--2356"></a>Hibakód: 2356
+
+- **Üzenet**: `The commandEnvironment already contains a variable named '%variableName;'.`
+
+- **OK**: a változót kétszer adták meg a commandEnvironment.
+
+- **Javaslat**:  
+      Győződjön meg arról, hogy a megadott érték a következőhöz hasonló: \"commandEnvironment\": [\"variableName = variableValue\"], és mindegyik változó csak egyszer jelenik meg a listában.
+    
+
+
+### <a name="error-code--2357"></a>Hibakód: 2357
+
+- **Üzenet**: `The certificate or password is wrong for ADLS Gen 1 storage.`
+
+- **OK**: a megadott hitelesítő adatok helytelenek.
+
+- **Javaslat**: Ellenőrizze a kapcsolati adatokat a ADLS Gen 1 társított szolgáltatásban, és győződjön meg arról, hogy a kapcsolat tesztelése sikeres volt.
+
+
+### <a name="error-code--2358"></a>Hibakód: 2358
+
+- **Üzenet**: `The value '%value;' for the required property 'TimeToLive' in the on demand HDInsight linked service '%linkedServiceName;' has invalid format. It should be a timespan between '00:05:00' and '24:00:00'.`
+
+- **OK**: a szükséges "TimeToLive" tulajdonsághoz megadott érték formátuma érvénytelen. 
+
+- **Javaslat**: frissítse az értéket a javasolt tartományba, és próbálkozzon újra.
+
+
+### <a name="error-code--2359"></a>Hibakód: 2359
+
+- **Üzenet**: `The value '%value;' for the property 'roles' is invalid. Expected types are 'zookeeper', 'headnode', and 'workernode'.`
+
+- **OK**: a "roles" tulajdonság megadott értéke érvénytelen.
+
+- **Javaslat**: frissítse az értéket úgy, hogy az egyik javaslat legyen, és próbálkozzon újra.
+
+
+### <a name="error-code--2360"></a>Hibakód: 2360
+
+- **Üzenet**: `The connection string in HCatalogLinkedService is invalid. Encountered an error while trying to parse: '%message;'.`
+
+- **OK**: a megadott HCatalogLinkedService-karakterlánc érvénytelen.
+
+- **Javaslat**: frissítse az értéket egy megfelelő Azure SQL-kapcsolódási sztringre, és próbálkozzon újra.
+
+
+### <a name="error-code--2361"></a>Hibakód: 2361
+
+- **Üzenet**: `Failed to create on demand HDI cluster. Cluster name is '%clusterName;'.`
+
+- **OK**: a fürt létrehozása nem sikerült, és az ADF nem adott vissza hibát a HDInsight szolgáltatástól.
+
+- **Javaslat**: Nyissa meg az Azure Portalt, és próbálja meg megkeresni a megadott névvel rendelkező HDI-erőforrást, és ellenőrizze a kiépítési állapotot. További segítségért forduljon a HDInsight támogatási csapatához.
+
+
+### <a name="error-code--2362"></a>Hibakód: 2362
+
+- **Üzenet**: `Only Azure Blob storage accounts are supported as additional storages for HDInsight on demand linked service.`
+
+- **OK**: a megadott további tárterület nem Azure Blob Storage.
+
+- **Javaslat**: adja meg az Azure Blob Storage-fiókot további tárolóként az igény szerinti társított szolgáltatás HDInsight.
 
 
 
 ## <a name="web-activity"></a>Webes tevékenység
 
-### <a name="error-code--2108"></a>Hibakód: 2108
-
-- **Üzenet**: `Invalid HttpMethod: '...'.`
-
-- **OK**: a webes tevékenység nem támogatja a tevékenység adattartalmaban megadott http-metódust.
-
-- **Javaslat**: a támogatott http-módszerek a Put, a post, a Get és a DELETE.
-
-<br/>
-
-- **Üzenet**: `Invalid Server Error 500.`
-
-- **OK**: belső hiba a végponton.
-
-- **Javaslat**: a Hegedűs vagy a Poster használatával keresse meg a funkciót az URL-címen.
-
-<br/>
-
-- **Üzenet**: `Unauthorized 401.`
-
-- **OK**: hiányzó érvényes hitelesítés a kérelemben.
-
-- **Javaslat**: lehetséges, hogy a jogkivonat lejárt. Adjon meg egy érvényes hitelesítési módszert. A Hegedűs vagy a Poster használatával keresse meg a funkciót az URL-címen.
-
-<br/>
-
-- **Üzenet**: `Forbidden 403.`
-
-- **OK**: hiányzó szükséges engedélyek.
-
-- **Javaslat**: a hozzáférési erőforrás felhasználói engedélyeinek megtekintése. A Hegedűs vagy a Poster használatával keresse meg a funkciót az URL-címen.
-
-<br/>
-
-- **Üzenet**: `Bad Request 400.`
-
-- **OK**: érvénytelen HTTP-kérelem.
-
-- **Javaslat**: keresse meg a kérelem URL-címét, műveletét és törzsét. A kérelem érvényesítéséhez a Hegedűs vagy a Poster használatával.
-
-<br/>
-
-- **Üzenet**: `Not found 404.` 
-
-- **OK**: az erőforrás nem található.   
-
-- **Javaslat**: a Hegedűs vagy a Poster használatával ellenőrizze a kérést.
-
-<br/>
-
-- **Üzenet**: `Service unavailable.`
-
-- **OK**: a szolgáltatás nem érhető el.
-
-- **Javaslat**: a Hegedűs vagy a Poster használatával ellenőrizze a kérést.
-
-<br/>
-
-- **Üzenet**: `Unsupported Media Type.`
-
-- **OK**: a tartalom típusa nem egyezik a webes tevékenység Törzsével.
-
-- **Javaslat**: adja meg a hasznos adatok formátumának megfelelő tartalomtípust. A kérelem érvényesítéséhez a Hegedűs vagy a Poster használatával.
-
-<br/>
-
-- **Üzenet**: `The resource you are looking for has been removed, has had its name changed, or is temporarily unavailable.`
-
-- **OK**: az erőforrás nem érhető el. 
-
-- **Javaslat**: Hegedűs vagy Poster használatával keresse meg a végpontot.
-
-<br/>
-
-- **Üzenet**: `The page you are looking for cannot be displayed because an invalid method (HTTP verb) is being used.`
-
-- **OK**: helytelen webes tevékenységi metódus lett megadva a kérelemben.
-
-- **Javaslat**: Hegedűs vagy Poster használatával keresse meg a végpontot.
-
-<br/>
-
-- **Üzenet**: `invalid_payload`
-
-- **OK**: a webes tevékenység törzse helytelen.
-
-- **Javaslat**: Hegedűs vagy Poster használatával keresse meg a végpontot.
-
-
-### <a name="error-code--2208"></a>Hibakód: 2208
-
-- **Üzenet**: `Invoking Web Activity failed with HttpStatusCode - {0}.`
-
-- **OK**: a célhely sikertelen állapotot adott vissza.
-
-- **Javaslat**: a Hegedűs/Poster használatával ellenőrizze a kérést.
-
-
-### <a name="error-code--2308"></a>Hibakód: 2308
+### <a name="error-code--2128"></a>Hibakód: 2128
 
 - **Üzenet**: `No response from the endpoint. Possible causes: network connectivity, DNS failure, server certificate validation or timeout.`
 
-- **OK**: több oka is lehet ennek a hibának, például a hálózati kapcsolatnak, a DNS-meghibásodásnak, a kiszolgálói tanúsítvány ellenőrzésének vagy időtúllépésének.
+- **OK**: hálózati kapcsolat, DNS-hiba, kiszolgálói tanúsítvány ellenőrzése vagy időtúllépés.
+
+- **Javaslat**: Ellenőrizze, hogy a elérni kívánt végpont válaszol-e a kérelmekre. Használhat olyan eszközöket is, mint a Hegedűs vagy a Poster.
+
+
+### <a name="error-code--2108"></a>Hibakód: 2108
+
+- **Üzenet**: `Error calling the endpoint '%url;'. Response status code: '%code;'`
+
+- **OK**: a kérelem végrehajtása egy mögöttes probléma miatt meghiúsult, például a hálózati kapcsolat, a DNS-hiba, a kiszolgálói tanúsítvány érvényesítése vagy időtúllépés.
 
 - **Javaslat**: a Hegedűs/Poster használatával ellenőrizze a kérést.
+<br>
 
 
+#### <a name="more-details"></a>További részletek
 A Hegedűs használata a figyelt webalkalmazás HTTP-munkamenetének létrehozásához:
 
 1. A [Hegedűs](https://www.telerik.com/download/fiddler)letöltése, telepítése és megnyitása.
 
-1. Ha a webalkalmazás HTTPS protokollt használ, lépjen az **eszközök** > a **Hegedűs beállításai** > **https**elemre. Válassza a HTTPS-forgalom **összekapcsolása** és a **https-forgalom visszafejtése**lehetőséget. 
-   
-   ![Hegedűs beállításai](media/data-factory-troubleshoot-guide/fiddler-options.png)
+1. Ha a webalkalmazás HTTPS protokollt használ, lépjen az **eszközök** > a **Hegedűs beállításai** > **https**elemre. Válassza a HTTPS-forgalom **összekapcsolása** és a **https-forgalom visszafejtése**lehetőséget.
+
+![Hegedűs beállításai](media/data-factory-troubleshoot-guide/fiddler-options.png)
 
 1. Ha az alkalmazás SSL-tanúsítványokat használ, adja hozzá a Hegedűs tanúsítványát az eszközhöz. Nyissa meg az **eszközök** > a **Hegedűs beállításai** > **https** > **műveleteket** > **a főtanúsítvány exportálása az asztalra**lehetőséget.
 
@@ -694,15 +1026,15 @@ A Hegedűs használata a figyelt webalkalmazás HTTP-munkamenetének létrehozá
 
 1. Törölje a böngésző gyorsítótárát úgy, hogy minden gyorsítótárazott elem el legyen távolítva, és újra le kell tölteni.
 
-1. Kérelem létrehozása: 
+1. Kérelem létrehozása:
 
-   a. Válassza a **zeneszerző** fület.
+a. Válassza a **zeneszerző** fület.
 
-   b. Állítsa be a HTTP-metódust és az URL-címet.
+b. Állítsa be a HTTP-metódust és az URL-címet.
 
-   c. Ha szükséges, adjon hozzá fejléceket és egy kérés törzsét.
+c. Ha szükséges, adjon hozzá fejléceket és egy kérés törzsét.
 
-   d. Válassza a **Végrehajtás** lehetőséget.
+d. Válassza a **Végrehajtás** lehetőséget.
 
 9. Kapcsolja be újra a forgalom rögzítését, és fejezze be a problémás tranzakciót az oldalon.
 
@@ -722,4 +1054,4 @@ További hibaelhárítási segítségért próbálja ki ezeket az erőforrásoka
 *  [Twitter-információk a Data Factory](https://twitter.com/hashtag/DataFactory)
 
 
-
+            

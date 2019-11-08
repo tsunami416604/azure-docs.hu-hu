@@ -1,7 +1,7 @@
 ---
 title: QnA Maker szolgáltatás beállítása – QnA Maker
 titleSuffix: Azure Cognitive Services
-description: Mielőtt bármilyen QnA Maker tudásbázisok hozhat létre, először be kell állítania a QnA Maker szolgáltatást az Azure-ban. Az új erőforrásokat hozhatnak létre egy előfizetésben engedélyezésével bárki is beállíthatja a QnA Maker szolgáltatást.
+description: Mielőtt bármilyen QnA Maker tudásbázist létrehozni, először be kell állítania egy QnA Maker szolgáltatást az Azure-ban. Az előfizetésben lévő új erőforrások létrehozásához szükséges engedélyekkel rendelkező bárki beállíthat QnA Maker szolgáltatást.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -11,16 +11,16 @@ ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: a2b467eed010edbb842d536bd8f6e3f4107fcea8
-ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
+ms.openlocfilehash: 6d52062561e3f08a214f3e191706583edc844786
+ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70984362"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73794215"
 ---
 # <a name="manage-qna-maker-resources"></a>QnA Maker erőforrások kezelése
 
-Mielőtt bármilyen QnA Maker tudásbázisok hozhat létre, először be kell állítania a QnA Maker szolgáltatást az Azure-ban. Az új erőforrásokat hozhatnak létre egy előfizetésben engedélyezésével bárki is beállíthatja a QnA Maker szolgáltatást.
+Mielőtt bármilyen QnA Maker tudásbázist létrehozni, először be kell állítania egy QnA Maker szolgáltatást az Azure-ban. Az előfizetésben lévő új erőforrások létrehozásához szükséges engedélyekkel rendelkező bárki beállíthat QnA Maker szolgáltatást.
 
 ## <a name="types-of-keys-in-qna-maker"></a>A QnA Makerban található kulcsok típusai
 
@@ -28,12 +28,12 @@ A QnA Maker szolgáltatás két típusú kulccsal foglalkozik: az **előfizetés
 
 ![Kulcskezelés](../media/qnamaker-how-to-key-management/key-management.png)
 
-|Name (Név)|Location|Cél|
+|Név|Hely|Cél|
 |--|--|--|
 |Előfizetői azonosító|[Azure Portal](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)|Ezek a kulcsok a [QnA Maker Management szolgáltatás API-jai](https://go.microsoft.com/fwlink/?linkid=2092179)elérésére szolgálnak. Ezek az API-k lehetővé teszik a tudásbázisban található kérdések és válaszok szerkesztését, valamint a Tudásbázis közzétételét. Ezek a kulcsok akkor jönnek létre, amikor új QnA Maker szolgáltatást hoz létre.<br><br>Keresse meg ezeket a kulcsokat a **kulcsok** oldalon található **Cognitive Services** erőforrásban.|
-|Végponti kulcs|[QnA Maker portál](http://www.qnamaker.ai)|Ezek a kulcsok a közzétett Tudásbázis-végpont elérésére szolgálnak, így választ kaphat a felhasználó kérdéseire. Ezt a végpontot általában a csevegési robotjában vagy a QnA Maker szolgáltatáshoz csatlakozó ügyfélalkalmazás kódjában használja. Ezek a kulcsok akkor jönnek létre, amikor közzéteszi a QnA Maker tudásbázist.<br><br>Keresse meg ezeket a kulcsokat a **szolgáltatás beállításai** lapon. Keresse meg ezt a lapot a legördülő menüben található oldal jobb felső sarkában található felhasználó menüjében.|
+|Végpont kulcsa|[QnA Maker portál](http://www.qnamaker.ai)|Ezek a kulcsok a közzétett Tudásbázis-végpont elérésére szolgálnak, így választ kaphat a felhasználó kérdéseire. Ezt a végpontot általában a csevegési robotjában vagy a QnA Maker szolgáltatáshoz csatlakozó ügyfélalkalmazás kódjában használja. Ezek a kulcsok akkor jönnek létre, amikor közzéteszi a QnA Maker tudásbázist.<br><br>Keresse meg ezeket a kulcsokat a **szolgáltatás beállításai** lapon. Keresse meg ezt a lapot a legördülő menüben található oldal jobb felső sarkában található felhasználó menüjében.|
 
-## <a name="create-a-new-qna-maker-service"></a>Hozzon létre egy új QnA Maker szolgáltatást
+## <a name="create-a-new-qna-maker-service"></a>Új QnA Maker szolgáltatás létrehozása
 
 Ez az eljárás létrehozza a Tudásbázis tartalmának kezeléséhez szükséges Azure-erőforrásokat. A lépések elvégzése után megtalálhatja az _előfizetési_ kulcsokat a Azure Portal erőforrás **kulcsok** lapján.
 
@@ -41,27 +41,27 @@ Ez az eljárás létrehozza a Tudásbázis tartalmának kezeléséhez szüksége
 
 1. Válassza a **Létrehozás** lehetőséget a használati feltételek elolvasása után:
 
-    ![Hozzon létre egy új QnA Maker szolgáltatást](../media/qnamaker-how-to-setup-service/create-new-resource-button.png)
+    ![Új QnA Maker szolgáltatás létrehozása](../media/qnamaker-how-to-setup-service/create-new-resource-button.png)
 
 1. A **QnA Maker**területen válassza ki a megfelelő szintet és régiókat:
 
-    ![Hozzon létre egy új QnA Maker – tarifacsomag és régiók](../media/qnamaker-how-to-setup-service/enter-qnamaker-info.png)
+    ![Új QnA Maker szolgáltatás létrehozása – árképzési réteg és régiók](../media/qnamaker-how-to-setup-service/enter-qnamaker-info.png)
 
     * A **név** mezőben adjon meg egy egyedi nevet a QnA Maker szolgáltatás azonosításához. Ez a név azonosítja azt a QnA Maker végpontot is, amelyhez a Tudásbázis társítva lesz.
     * Válassza ki azt az **előfizetést** , amely alatt a QnA Maker erőforrást telepíteni fogja.
     * Válassza ki a QnA Maker felügyeleti szolgáltatások (portál és felügyeleti API-k) **díjszabási szintjét** . [További részletek a SKU díjszabásáról](https://aka.ms/qnamaker-pricing).
     * Hozzon létre egy új **erőforráscsoportot** (ajánlott), vagy használjon egy meglévőt, amelyben a QnA Maker-erőforrást szeretné telepíteni. QnA Maker több Azure-erőforrást hoz létre. Amikor létrehoz egy erőforráscsoportot az erőforrások tárolásához, egyszerűen megkeresheti, kezelheti és törölheti ezeket az erőforrásokat az erőforráscsoport neve alapján.
     * Válassza ki az **erőforráscsoport helyét**.
-    * Válassza ki a **tarifacsomag keresési** az Azure Search szolgáltatás. Ha az ingyenes csomag lehetőség nem érhető el (szürkén jelenik meg), az azt jelenti, hogy már rendelkezik az előfizetésen keresztül üzembe helyezett ingyenes Azure Search-csomaggal. Ebben az esetben az alapszintű Azure Search szinttel kell kezdődnie. Lásd: [Azure Search díjszabása](https://azure.microsoft.com/pricing/details/search/).
-    * Válassza ki azt a **keresési helyet** , ahová Azure Search szeretné telepíteni az adatközpontot. Az ügyféladatok tárolási helyétől való korlátozásával meghatározható a Azure Search kiválasztott hely.
+    * Válassza ki az Azure Cognitive Search szolgáltatás **keresési díjszabási szintjét** . Ha az ingyenes csomag lehetőség nem érhető el (szürkén jelenik meg), az azt jelenti, hogy már rendelkezik az előfizetésen keresztül üzembe helyezett ingyenes szolgáltatással. Ebben az esetben az alapszintű csomaggal kell kezdődnie. Tekintse meg az [Azure Cognitive Search díjszabását](https://azure.microsoft.com/pricing/details/search/).
+    * Válassza ki azt a **keresési helyet** , ahová telepíteni szeretné az Azure Cognitive Search indexeit. Az ügyféladatok tárolási helyétől való korlátozásával meghatározhatja az Azure Cognitive Search számára kiválasztott helyet.
     * Az **alkalmazás neve** mezőben adja meg Azure app Service példányának nevét.
-    * Alapértelmezés szerint App Service alapértelmezett érték a standard (S1) szint. Létrehozása után módosíthatja a tervet. További információ a [app Service díjszabásáról](https://azure.microsoft.com/pricing/details/app-service/).
+    * Alapértelmezés szerint App Service alapértelmezett érték a standard (S1) szint. A tervet a létrehozás után is módosíthatja. További információ a [app Service díjszabásáról](https://azure.microsoft.com/pricing/details/app-service/).
     * Válassza ki a **webhely helyét** , ahol a app Service telepíteni fogja.
 
         > [!NOTE]
         > A **Keresés helye** eltérő lehet a **webhely helyétől**.
 
-    * Adja meg, hogy szeretné-e engedélyezni **Application Insights**. Ha **Application Insights** van engedélyezve, QnA Maker telemetriát gyűjt a forgalom, a csevegési naplók és a hibákat.
+    * Adja meg, hogy szeretné-e engedélyezni **Application Insights**. Ha a **Application Insights** engedélyezve van, QnA Maker gyűjti a telemetria a forgalom, a csevegési naplók és a hibák alapján.
     * Válassza ki azt az **alkalmazás-bepillantást** , ahol a Application Insights erőforrást telepíteni fogja.
     * A költségmegtakarítási mértékek esetében [megoszthat](#share-existing-services-with-qna-maker) néhányat, de nem minden QnA Makerhoz létrehozott Azure-erőforrást. 
 
@@ -69,7 +69,7 @@ Ez az eljárás létrehozza a Tudásbázis tartalmának kezeléséhez szüksége
 
 1. Az üzembe helyezés befejezése után az előfizetésében létrehozott alábbi erőforrások jelennek meg:
 
-   ![Létrehozott egy új QnA Maker szolgáltatás-erőforrást](../media/qnamaker-how-to-setup-service/resources-created.png)
+   ![Az erőforrás új QnA Maker szolgáltatást hozott létre](../media/qnamaker-how-to-setup-service/resources-created.png)
 
     Az _Cognitive Services_ típusú erőforrás rendelkezik az _előfizetési_ kulcsokkal.
 
@@ -79,7 +79,7 @@ Az előfizetési kulcsokat megtekintheti és alaphelyzetbe állíthatja a Azure 
 
 1. Nyissa meg a Azure Portal QnA Maker erőforrását, és válassza ki a _Cognitive Services_ típust tartalmazó erőforrást:
 
-    ![Rendszererőforrás-lista a QnA Maker](../media/qnamaker-how-to-key-management/qnamaker-resource-list.png)
+    ![QnA Maker erőforráslista](../media/qnamaker-how-to-key-management/qnamaker-resource-list.png)
 
 2. Ugrás a **kulcsok**:
 
@@ -89,11 +89,11 @@ Az előfizetési kulcsokat megtekintheti és alaphelyzetbe állíthatja a Azure 
 
 A végpont ugyanabban a régióban található, mint az erőforrás, mert a végponti kulcsok használatával hívható meg a Tudásbázis.
 
-Végpont kulcsok kezelhető a [QnA Maker portal](https://qnamaker.ai).
+A végponti kulcsok kezelhetők a [QnA Maker portálról](https://qnamaker.ai).
 
 1. Jelentkezzen be a [QnA Maker portálra](https://qnamaker.ai), nyissa meg a profilt, majd válassza a **szolgáltatás beállításai**:
 
-    ![Végponti kulcs](../media/qnamaker-how-to-key-management/Endpoint-keys.png)
+    ![Végpont kulcsa](../media/qnamaker-how-to-key-management/Endpoint-keys.png)
 
 2. A kulcsok megtekintése és alaphelyzetbe állítása:
 
@@ -106,13 +106,13 @@ Végpont kulcsok kezelhető a [QnA Maker portal](https://qnamaker.ai).
 
 QnA Maker több Azure-erőforrást hoz létre. A felügyelet és a költségmegosztás előnyeinek csökkentése érdekében az alábbi táblázat segítségével megismerheti, hogy mit tehet és nem oszthat meg:
 
-|Szolgáltatás|Megosztás|Reason|
+|Szolgáltatás|Megosztás|Ok|
 |--|--|--|
 |Cognitive Services|X|Nem lehetséges a kialakítás|
 |App Service-csomag|✔|App Service csomag számára lefoglalt rögzített lemezterület. Ha az azonos App Service-csomaggal rendelkező más alkalmazások jelentős lemezterületet használnak, akkor a QnAMaker App Service példánya problémákba ütközik.|
 |App Service|X|Nem lehetséges a kialakítás|
 |Application Insights|✔|Megosztható|
-|Keresési szolgáltatás|✔|1. `testkb` a QnAMaker szolgáltatás számára fenntartott név, amelyet mások nem használhatnak.<br>2. A név `synonym-map` szerint a QnAMaker szolgáltatás számára van fenntartva a szinonimák leképezése.<br>3. A közzétett tudásbázisok számát a keresési szolgáltatás szintje korlátozza. Ha ingyenes indexek állnak rendelkezésre, más szolgáltatások is használhatják őket.|
+|Keresési szolgáltatás|✔|1. `testkb` a QnAMaker szolgáltatás számára fenntartott név; mások nem használhatják.<br>2. a QnAMaker szolgáltatás számára fenntartott `synonym-map` név szerinti szinonimák leképezése.<br>3. a közzétett tudásbázisok számát a Search szolgáltatási szintje korlátozza. Ha ingyenes indexek állnak rendelkezésre, más szolgáltatások is használhatják őket.|
 
 További információ az [app Service](../../../app-service/index.yml) és a [Search szolgáltatásról](../../../search/index.yml).
 
@@ -124,11 +124,11 @@ Ha Azure Resource Manager sablonokon keresztül hoz létre QnA szolgáltatást, 
 
 ## <a name="upgrade-qna-maker"></a>QnA Maker frissítése
 
-|Frissítés|Reason|
+|Frissítés|Ok|
 |--|--|
 |[Frissítés](#upgrade-qna-maker-sku) QnA Maker felügyeleti SKU|További kérdésekkel és válaszokkal szeretne rendelkezni a Tudásbázisban.|
 |[Frissítés](#upgrade-app-service) App Service SKU|A Tudásbázisnak több kérést kell kiszolgálnia az ügyfélalkalmazástól, például egy csevegési robottól.|
-|[Frissítés](#upgrade-the-azure-search-service) Azure Search szolgáltatás|Számos tudásbázist tervez.|
+|[Frissítés](#upgrade-the-azure-cognitive-search-service) Azure Cognitive Search szolgáltatás|Számos tudásbázist tervez.|
 
 
 ### <a name="upgrade-qna-maker-sku"></a>QnA Maker SKU frissítése
@@ -145,7 +145,7 @@ A QnA Maker felügyeleti SKU frissítése:
 
     ![Díjszabás QnA Maker](../media/qnamaker-how-to-upgrade-qnamaker/qnamaker-pricing-page.png)
 
-### <a name="upgrade-app-service"></a>Az App Service frissítése
+### <a name="upgrade-app-service"></a>App Service frissítése
 
  Ha a Tudásbázisnak több kérést kell kiszolgálnia az ügyfélalkalmazás számára, frissítse a App Service díjszabási szintjét.
 
@@ -155,9 +155,9 @@ Nyissa **meg a Azure Portal** app Service erőforrását, és szükség szerint 
 
 ![QnA Maker App Service skálázás](../media/qnamaker-how-to-upgrade-qnamaker/qnamaker-appservice-scale.png)
 
-### <a name="upgrade-the-azure-search-service"></a>A Azure Search szolgáltatás frissítése
+### <a name="upgrade-the-azure-cognitive-search-service"></a>Az Azure Cognitive Search szolgáltatás frissítése
 
-Ha sok tudásbázist tervez, frissítse a Azure Search Service díjszabási szintjét.
+Ha sok tudásbázist tervez, frissítse az Azure Cognitive Search Service díjszabási szintjét.
 
 Jelenleg nem végezhető el az Azure Search SKU helyben történő frissítése. Létrehozhat azonban egy új Azure Search-erőforrást a kívánt SKU-val, visszaállíthatja az új erőforrást, majd csatolhatja azt a QnA Maker veremhez. Ehhez kövesse az alábbi lépéseket:
 
@@ -185,9 +185,9 @@ Jelenleg nem végezhető el az Azure Search SKU helyben történő frissítése.
 
 ## <a name="get-the-latest-runtime-updates"></a>A legújabb futtatókörnyezet-frissítések beszerzése
 
-Az QnAMaker Runtime a Azure App Service példány része, amelyet akkor telepítenek, amikor [létrehoz egy QnAMaker szolgáltatást](./set-up-qnamaker-service-azure.md) a Azure Portal. A futtatókörnyezet rendszeres időközönként végrehajtott frissítéseket. A QnA Maker App Service példánya automatikus frissítési módban van az április 2019-es hely kiterjesztésének kiadása után (5. verzió +). Ez a frissítés úgy lett kialakítva, hogy a frissítések során ne legyenek nulla állásidő.
+Az QnAMaker Runtime a Azure App Service példány része, amelyet akkor telepítenek, amikor [létrehoz egy QnAMaker szolgáltatást](./set-up-qnamaker-service-azure.md) a Azure Portal. A rendszer rendszeresen frissíti a frissítéseket a futtatókörnyezetben. A QnA Maker App Service példánya automatikus frissítési módban van az április 2019-es hely kiterjesztésének kiadása után (5. verzió +). Ez a frissítés úgy lett kialakítva, hogy a frissítések során ne legyenek nulla állásidő.
 
-A jelenlegi verzióját a következő címen tekintheti meg: https://www.qnamaker.ai/UserSettings. Ha a verziószáma 5. x verziónál régebbi, a legújabb frissítések alkalmazásához újra kell indítania App Servicet:
+Az aktuális verziót https://www.qnamaker.ai/UserSettingscímen tekintheti meg. Ha a verziószáma 5. x verziónál régebbi, a legújabb frissítések alkalmazásához újra kell indítania App Servicet:
 
 1. Lépjen a QnAMaker szolgáltatásra (erőforráscsoport) a [Azure Portal](https://portal.azure.com).
 
@@ -210,4 +210,4 @@ QnA Maker felügyeleti szolgáltatása csak a QnA Maker portál és a kezdeti ad
 További információ az [app Service](../../../app-service/index.yml) és a [Search szolgáltatásról](../../../search/index.yml).
 
 > [!div class="nextstepaction"]
-> [Hozzon létre és Tudásbázis közzététele](../Quickstarts/create-publish-knowledge-base.md)
+> [Tudásbázis létrehozása és közzététele](../Quickstarts/create-publish-knowledge-base.md)

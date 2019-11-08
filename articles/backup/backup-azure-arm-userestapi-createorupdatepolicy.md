@@ -1,6 +1,6 @@
 ---
 title: 'Azure Backup: biztonsági mentési szabályzatok létrehozása a REST API használatával'
-description: Biztonsági mentési szabályzatok (ütemterv és megőrzés) kezelése REST API használatával
+description: Ebből a cikkből megtudhatja, hogyan hozhat létre és kezelhet biztonsági mentési házirendeket a REST API használatával.
 ms.reviewer: pullabhk
 author: dcurwin
 manager: carmonm
@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/21/2018
 ms.author: dacurwin
 ms.assetid: 5ffc4115-0ae5-4b85-a18c-8a942f6d4870
-ms.openlocfilehash: 50cc327c69529e420837571fdd60c1b2a1364b10
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
-ms.translationtype: HT
+ms.openlocfilehash: 7d44f99a9f2a5bfb3d3a04fe5355f7b1dc13c404
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73670144"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73747592"
 ---
 # <a name="create-azure-recovery-services-backup-policies-using-rest-api"></a>Azure Recovery Services biztonsági mentési szabályzatok létrehozása REST API használatával
 
@@ -50,7 +50,7 @@ A `{policyName}` és a `{vaultName}` az URI-ban található. A kérés törzséb
 
 Ha például az Azure virtuális gép biztonsági mentésére vonatkozó szabályzatot szeretne létrehozni, az alábbiakban a kérelem törzsének összetevői láthatók.
 
-|Name (Név)  |Kötelező  |Típus  |Leírás  |
+|Név  |Kötelező  |Típus  |Leírás  |
 |---------|---------|---------|---------|
 |properties     |   True (Igaz)      |  ProtectionPolicy:[AzureIaaSVMProtectionPolicy](https://docs.microsoft.com/rest/api/backup/protectionpolicies(2019-05-13)/createorupdate#azureiaasvmprotectionpolicy)      | ProtectionPolicyResource tulajdonságai        |
 |címkét     |         | Objektum        |  Erőforráscímkék       |
@@ -158,7 +158,7 @@ A biztonsági mentési szabályzat létrehozása/frissítése [aszinkron művele
 
 Két választ ad vissza: 202 (elfogadva) egy másik művelet létrehozásakor, majd 200 (OK), amikor a művelet befejeződik.
 
-|Name (Név)  |Típus  |Leírás  |
+|Név  |Típus  |Leírás  |
 |---------|---------|---------|
 |200 OK     |    [Védelem PolicyResource](https://docs.microsoft.com/rest/api/backup/protectionpolicies(2019-05-13)/createorupdate#protectionpolicyresource)     |  OK       |
 |202 elfogadva     |         |     Elfogadott    |

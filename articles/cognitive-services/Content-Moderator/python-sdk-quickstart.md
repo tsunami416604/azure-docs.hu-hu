@@ -1,7 +1,7 @@
 ---
 title: 'Rövid útmutató: a Pythonhoz készült ügyféloldali kódtár Content Moderator | Microsoft Docs'
 titleSuffix: Azure Cognitive Services
-description: Ismerkedés a Content Moderator a Pythonhoz készült ügyféloldali kódtáraval.
+description: Ismerje meg, hogyan kezdheti el az Azure Cognitive Services Content Moderator a Pythonhoz készült ügyféloldali kódtárat.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: quickstart
 ms.date: 10/25/2019
 ms.author: pafarley
-ms.openlocfilehash: 28c70e7d226e8f4b2458234e1f14754cdbb1825c
-ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
+ms.openlocfilehash: 3978b4ec302bf4dd2390f2390c967ca6e12e67d5
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73044038"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73744412"
 ---
 # <a name="quickstart-content-moderator-client-library-for-python"></a>Rövid útmutató: Content Moderator a Pythonhoz készült ügyféloldali kódtár
 
@@ -29,7 +29,7 @@ A Pythonhoz készült Content Moderator ügyféloldali kódtára a következőre
 * [Egyéni rendszerkép-lista használata](#use-a-custom-image-list)
 * [Felülvizsgálat létrehozása](#create-a-review)
 
-[Dokumentáció](https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/contentmoderator?view=azure-python)  | [könyvtár forráskódja](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-vision-contentmoderator)  | [csomag (PiPy)](https://pypi.org/project/azure-cognitiveservices-vision-contentmoderator/)  | [minták](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples)
+[Dokumentáció](https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/contentmoderator?view=azure-python) | [könyvtár forráskódja](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-vision-contentmoderator) | [csomag (PiPy)](https://pypi.org/project/azure-cognitiveservices-vision-contentmoderator/) | [minták](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -335,7 +335,7 @@ Ha ebben a forgatókönyvben visszahívási végpontot használt, akkor a követ
 
 ## <a name="run-the-application"></a>Az alkalmazás futtatása
 
-Futtassa az alkalmazást a `python` paranccsal a gyors üzembe helyezési fájlban.
+Futtassa az alkalmazást a gyors üzembe helyezési fájlban lévő `python` paranccsal.
 
 ```console
 python quickstart-file.py
@@ -345,10 +345,10 @@ python quickstart-file.py
 
 Ha Cognitive Services-előfizetést szeretne törölni, törölheti az erőforrást vagy az erőforráscsoportot. Az erőforráscsoport törlésével a hozzá társított egyéb erőforrások is törlődnek.
 
-* [Portal](../cognitive-services-apis-create-account.md#clean-up-resources)
+* [Portál](../cognitive-services-apis-create-account.md#clean-up-resources)
 * [Azure CLI](../cognitive-services-apis-create-account-cli.md#clean-up-resources)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a rövid útmutatóban megtanulta, hogyan használhatja a Content Moderator Python-függvénytárat moderálási feladatokra. Következő lépésként tekintse meg a képek vagy más média moderálását egy elméleti útmutató elolvasásával.
 

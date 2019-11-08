@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 09/26/2017
 ms.author: cynthn
-ms.openlocfilehash: d10844a52505331418e3bc4e9b36d00a5a7e7b6f
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: f7f4e65253e0fc160da4d343115e9115abfab808
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70102613"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73749312"
 ---
 # <a name="create-and-manage-a-windows-virtual-machine-that-has-multiple-nics"></a>Több hálózati adapterrel rendelkező Windows rendszerű virtuális gép létrehozása és kezelése
 Az Azure-ban a virtuális gépek (VM-EK) több virtuális hálózati adapterrel (NIC) is rendelkezhetnek hozzájuk. Gyakori forgatókönyv, hogy különböző alhálózatokat kell létrehozni az előtér-és háttér-kapcsolathoz. Több hálózati adaptert is hozzárendelhet egy virtuális GÉPHEZ több alhálózathoz, de ezek az alhálózatok mind ugyanabban a virtuális hálózatban (vNet) találhatók. Ez a cikk részletesen ismerteti, hogyan hozható létre több hálózati adapterrel rendelkező virtuális gép. Azt is megtudhatja, hogyan adhat hozzá vagy távolíthat el hálózati adaptereket egy meglévő virtuális gépről. A különböző virtuálisgép- [méretek](sizes.md) eltérő számú hálózati adaptert támogatnak, ezért a virtuális gépet ennek megfelelően kell méretezni.
@@ -27,7 +27,7 @@ Az Azure-ban a virtuális gépek (VM-EK) több virtuális hálózati adapterrel 
 
 Az alábbi példákban cserélje le a példában szereplő paraméterek nevét a saját értékeire. A paraméterek nevei például a következők: *myResourceGroup*, *myVnet*és *myVM*.
 
-[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
+ 
 
 ## <a name="create-a-vm-with-multiple-nics"></a>Több hálózati adapterrel rendelkező virtuális gép létrehozása
 Először hozzon létre egy erőforráscsoportot. A következő példában létrehozunk egy *myResourceGroup* nevű erőforráscsoportot a *EastUs* helyen:
@@ -76,12 +76,12 @@ $myNic2 = New-AzNetworkInterface -ResourceGroupName "myResourceGroup" `
     -SubnetId $backEnd.Id
 ```
 
-Általában egy [hálózati biztonsági csoportot](../../virtual-network/security-overview.md) is létrehoz a virtuális gépre irányuló hálózati forgalom szűrésére, [](../../load-balancer/load-balancer-overview.md) valamint a terheléselosztást a több virtuális gép közötti forgalom elosztására.
+Általában egy [hálózati biztonsági csoportot](../../virtual-network/security-overview.md) is létrehoz a virtuális gépre irányuló hálózati forgalom szűrésére, valamint a [terheléselosztást](../../load-balancer/load-balancer-overview.md) a több virtuális gép közötti forgalom elosztására.
 
 ### <a name="create-the-virtual-machine"></a>A virtuális gép létrehozása
-Most kezdje el létrehozni a virtuális gép konfigurációját. Minden virtuálisgép-mérethez tartozik egy korlát a virtuális géphez adható hálózati adapterek teljes számára. További információ: Windowsos [virtuális gépek méretei](sizes.md).
+Most kezdje el létrehozni a virtuális gép konfigurációját. Minden virtuálisgép-mérethez tartozik egy korlát a virtuális géphez adható hálózati adapterek teljes számára. További információ: [Windowsos virtuális gépek méretei](sizes.md).
 
-1. Állítsa a virtuális gép hitelesítő adatait `$cred` a változóra a következőképpen:
+1. Állítsa be a virtuális gép hitelesítő adatait a `$cred` változóra a következőképpen:
 
     ```powershell
     $cred = Get-Credential
@@ -125,7 +125,7 @@ Most kezdje el létrehozni a virtuális gép konfigurációját. Minden virtuál
 6. Adja hozzá az útvonalakat a másodlagos hálózati adapterekhez az operációs [rendszer konfigurálása több hálózati adapterhez](#configure-guest-os-for-multiple-nics)című rész lépéseit követve.
 
 ## <a name="add-a-nic-to-an-existing-vm"></a>Hálózati adapter hozzáadása meglévő virtuális géphez
-Ha virtuális NIC-t szeretne hozzáadni egy meglévő virtuális GÉPHEZ, szabadítsa fel a virtuális GÉPET, adja hozzá a virtuális hálózati adaptert, majd indítsa el a virtuális GÉPET. A különböző virtuálisgép- [méretek](sizes.md) eltérő számú hálózati adaptert támogatnak, ezért a virtuális gépet ennek megfelelően kell méretezni. Ha szükséges, átméretezheti [a virtuális gépet](resize-vm.md).
+Ha virtuális NIC-t szeretne hozzáadni egy meglévő virtuális GÉPHEZ, szabadítsa fel a virtuális GÉPET, adja hozzá a virtuális hálózati adaptert, majd indítsa el a virtuális GÉPET. A különböző virtuálisgép- [méretek](sizes.md) eltérő számú hálózati adaptert támogatnak, ezért a virtuális gépet ennek megfelelően kell méretezni. Ha szükséges, [átméretezheti a virtuális gépet](resize-vm.md).
 
 1. Szabadítsa fel a virtuális gépet a [stop-AzVM](https://docs.microsoft.com/powershell/module/az.compute/stop-azvm). Az alábbi példa felszabadítja a *myVM* nevű virtuális gépet a *myResourceGroup*-ben:
 
@@ -158,7 +158,7 @@ Ha virtuális NIC-t szeretne hozzáadni egy meglévő virtuális GÉPHEZ, szabad
     ```
 
     ### <a name="primary-virtual-nics"></a>Elsődleges virtuális hálózati adapterek
-    Egy több hálózati adapterrel rendelkező virtuális gép egyik hálózati adapterének elsődlegesnek kell lennie. Ha a virtuális gép egyik meglévő virtuális hálózati adaptere már elsődlegesként van beállítva, akkor kihagyhatja ezt a lépést. Az alábbi példa azt feltételezi, hogy két virtuális hálózati adapter van jelen a virtuális gépen, és az első hálózati adaptert`[0]`() elsődlegesként szeretné hozzáadni:
+    Egy több hálózati adapterrel rendelkező virtuális gép egyik hálózati adapterének elsődlegesnek kell lennie. Ha a virtuális gép egyik meglévő virtuális hálózati adaptere már elsődlegesként van beállítva, akkor kihagyhatja ezt a lépést. Az alábbi példa azt feltételezi, hogy két virtuális hálózati adapter van jelen a virtuális gépen, és az első hálózati adaptert (`[0]`) elsődlegesként szeretné hozzáadni:
         
     ```powershell
     # List existing NICs on the VM and find which one is primary
@@ -204,7 +204,7 @@ Ha egy virtuális hálózati adaptert szeretne eltávolítani egy meglévő virt
     $nicId = (Get-AzNetworkInterface -ResourceGroupName "myResourceGroup" -Name "myNic3").Id   
     ```
 
-4. Távolítsa el a hálózati adaptert a [Remove-AzVMNetworkInterface](https://docs.microsoft.com/powershell/module/az.compute/remove-azvmnetworkinterface) , majd frissítse a virtuális gépet a [Update-AzVm](https://docs.microsoft.com/powershell/module/az.compute/update-azvm). Az alábbi példa eltávolítja a *myNic3* az előző `$nicId` lépésben kapott módon:
+4. Távolítsa el a hálózati adaptert a [Remove-AzVMNetworkInterface](https://docs.microsoft.com/powershell/module/az.compute/remove-azvmnetworkinterface) , majd frissítse a virtuális gépet a [Update-AzVm](https://docs.microsoft.com/powershell/module/az.compute/update-azvm). Az alábbi példa az előző lépésben `$nicId` által beszerzett *myNic3* távolítja el:
 
     ```powershell
     Remove-AzVMNetworkInterface -VM $vm -NetworkInterfaceIDs $nicId | `
@@ -229,7 +229,7 @@ Azure Resource Manager-sablonok segítségével az erőforrások több példány
 
 További információ: [több példány létrehozása a *copy*paranccsal](../../resource-group-create-multiple.md). 
 
-A `copyIndex()` segítségével egy számot is csatolhat egy erőforrás nevéhez. Ezután létrehozhat *myNic1*, *MyNic2* és így tovább. Az alábbi kód egy példát mutat be az index értékének hozzáfűzésére:
+A `copyIndex()` használatával egy számot is csatolhat egy erőforrás nevéhez. Ezután létrehozhat *myNic1*, *MyNic2* és így tovább. Az alábbi kód egy példát mutat be az index értékének hozzáfűzésére:
 
 ```json
 "name": "[concat('myNic', copyIndex())]", 
@@ -281,7 +281,7 @@ Az Azure egy alapértelmezett átjárót rendel hozzá a virtuális géphez csat
       netsh advfirewall firewall add rule name=Allow-ping protocol=icmpv4 dir=in action=allow
       ```
   
-5. Ha ellenőrizni szeretné, hogy a hozzáadott útvonal szerepel-e az útválasztási `route print` táblában, írja be a parancsot, amely az alábbi szöveghez hasonló kimenetet ad vissza:
+5. Ha ellenőrizni szeretné, hogy a hozzáadott útvonal szerepel-e az útválasztási táblában, írja be a `route print` parancsot, amely az alábbi szöveghez hasonló kimenetet ad vissza:
 
     ```
     ===========================================================================

@@ -1,6 +1,6 @@
 ---
 title: Azure-beli fájlok helyreállítása Windows Serverre
-description: Ez az oktatóanyag az Azure-beli fájlok Windows Serverre történő helyreállításának részletes bemutatását tartalmazza.
+description: Ebből az oktatóanyagból megtudhatja, hogyan használhatja a Microsoft Azure Recovery Services Agent (MARS) ügynököt az Azure-beli elemek Windows Serverre történő helyreállításához.
 author: dcurwin
 manager: carmonm
 ms.service: backup
@@ -8,27 +8,28 @@ ms.topic: tutorial
 ms.date: 02/14/2018
 ms.author: dacurwin
 ms.custom: mvc
-ms.openlocfilehash: e03c085a9671ba84d3af63da658f749f09ebcdef
-ms.sourcegitcommit: d470d4e295bf29a4acf7836ece2f10dabe8e6db2
+ms.openlocfilehash: a0945c70b271d5213e8eb5b6adbd768ec390f40b
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/02/2019
-ms.locfileid: "70210086"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73746935"
 ---
 # <a name="recover-files-from-azure-to-a-windows-server"></a>Azure-beli fájlok helyreállítása Windows Serverre
 
 Az Azure Backup lehetővé teszi kiválasztott elemek helyreállítását a Windows Server biztonsági másolataiból. Az egyes fájlok visszaállítása akkor hasznos megoldás, ha gyorsan szeretné visszaállítani a véletlenül törölt fájlokat. Ez az oktatóanyag bemutatja, hogyan használhatja a Microsoft Azure Recovery Services- (MARS-) ügynököt egyes elemek helyreállítására az Azure-ban készített biztonsági másolatokból. Ezen oktatóanyag segítségével megtanulhatja a következőket:
 
 > [!div class="checklist"]
-> * Csak egyes elemek helyreállításának indítása 
-> * Helyreállítási pont kiválasztása 
+>
+> * Csak egyes elemek helyreállításának indítása
+> * Helyreállítási pont kiválasztása
 > * Elemek visszaállítása a helyreállítási pontból
 
 Ez az oktatóanyag azt feltételezi, hogy már elvégezte a [Windows Serverről az Azure-ba történő biztonsági mentés](backup-configure-vault.md) lépéseit, és van legalább egy biztonsági másolata a Windows Server-fájlokról az Azure-ban.
 
 ## <a name="initiate-recovery-of-individual-items"></a>Csak egyes elemek helyreállításának indítása
 
-A Microsoft Azure Recovery Services- (MARS-) ügynökkel együtt egy Microsoft Azure Backup nevű hasznos felhasználói felületi varázsló is települ. A Microsoft Azure Backup varázsló együttműködik a Microsoft Azure Recovery Services- (MARS-) ügynökkel az Azure-ban tárolt helyreállítási pontok biztonsági másolataiban lévő adatok lekérésén. A Microsoft Azure Backup varázslóval azonosíthatja azokat a fájlokat vagy mappákat, amelyeket vissza kíván állítani a Windows Serverre. 
+A Microsoft Azure Recovery Services- (MARS-) ügynökkel együtt egy Microsoft Azure Backup nevű hasznos felhasználói felületi varázsló is települ. A Microsoft Azure Backup varázsló együttműködik a Microsoft Azure Recovery Services- (MARS-) ügynökkel az Azure-ban tárolt helyreállítási pontok biztonsági másolataiban lévő adatok lekérésén. A Microsoft Azure Backup varázslóval azonosíthatja azokat a fájlokat vagy mappákat, amelyeket vissza kíván állítani a Windows Serverre.
 
 1. Nyissa meg a **Microsoft Azure Backup** beépülő modult. A megkereséséhez keressen rá a gépen a **Microsoft Azure Backup** kifejezésre.
 
@@ -41,16 +42,16 @@ A Microsoft Azure Recovery Services- (MARS-) ügynökkel együtt egy Microsoft A
 3. A **Kezdeti lépések** oldalon válassza az **Ez a kiszolgáló (kiszolgáló neve)** lehetőséget, és kattintson a **Tovább** gombra.
 
 4. A **Helyreállítási mód kiválasztása** lapon válassza az **Egyes fájlok és mappák** lehetőséget, majd kattintson a **Tovább** gombra a helyreállítási pont kiválasztásának megkezdéséhez.
- 
+
 5. A **Kötet és dátum kiválasztása** oldalon válassza ki a visszaállítani kívánt fájlokat vagy mappákat tartalmazó kötetet, és kattintson a **Csatlakoztatás** elemre. Válassza ki a dátumot, és válassza ki a helyreállítási pontnak megfelelő időpontot a legördülő menüből. A **félkövérrel** szedett dátumok azt jelzik, hogy legalább egy helyreállítási pont áll rendelkezésre az adott napon.
 
     ![Biztonsági mentés függőben](./media/tutorial-backup-restore-files-windows-server/mars-select-date.png)
- 
+
     Ha a **Csatlakoztatás** gombra kattint, az Azure Backup elérhetővé teszi a helyreállítási pontot lemezként. Keresse meg a fájlokat a lemezen, és végezze el a helyreállítást.
 
 ## <a name="restore-items-from-a-recovery-point"></a>Elemek visszaállítása a helyreállítási pontból
 
-1. Ha a helyreállítási kötet csatlakoztatva van, kattintson a **Tallózás** gombra a Windows Explorer megnyitásához, és keresse meg a helyreállítani kívánt fájlokat és mappákat. 
+1. Ha a helyreállítási kötet csatlakoztatva van, kattintson a **Tallózás** gombra a Windows Explorer megnyitásához, és keresse meg a helyreállítani kívánt fájlokat és mappákat.
 
     ![Biztonsági mentés függőben](./media/tutorial-backup-restore-files-windows-server/mars-browse-recover.png)
 
@@ -60,11 +61,11 @@ A Microsoft Azure Recovery Services- (MARS-) ügynökkel együtt egy Microsoft A
 
     ![Biztonsági mentés függőben](./media/tutorial-backup-restore-files-windows-server/mars-final.png)
 
-3. Ha befejezte a fájlok és/vagy mappák visszaállítását, az **Adatok helyreállítása** varázsló **Fájlok tallózása és visszaállítása** oldalán kattintson a **Leválasztás** elemre. 
+3. Ha befejezte a fájlok és/vagy mappák visszaállítását, az **Adatok helyreállítása** varázsló **Fájlok tallózása és visszaállítása** oldalán kattintson a **Leválasztás** elemre.
 
     ![Biztonsági mentés függőben](./media/tutorial-backup-restore-files-windows-server/unmount-and-confirm.png)
 
-4.  Kattintson az **Igen** gombra, annak megerősítéséhez, hogy le kívánja választani a kötetet.
+4. Kattintson az **Igen** gombra, annak megerősítéséhez, hogy le kívánja választani a kötetet.
 
     A pillanatkép leválasztása után az ügynökkonzol **Feladatok** ablaktábláján a **Feladat befejezve** üzenet jelenik meg.
 

@@ -1,6 +1,7 @@
 ---
-title: 'Rövid útmutató: Content Moderator ügyféloldali kódtár a Javához | Microsoft Docs'
-description: Ismerkedjen meg a Javához készült Content Moderator-ügyfél függvénytárával.
+title: 'Gyors útmutató: Content Moderator a Javához készült ügyféloldali kódtár'
+titleSuffix: Azure Cognitive Services
+description: Ismerje meg, hogyan kezdheti el az Azure Cognitive Services Content Moderator Javához készült ügyféloldali kódtárat.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -9,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: quickstart
 ms.date: 10/25/2019
 ms.author: pafarley
-ms.openlocfilehash: 9f31d54314c6d6bd7a7f9ae2d134c1281bfe9294
-ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
+ms.openlocfilehash: edc51be93ba209a1c60970e6fa1b47fca75048c6
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73044094"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73744437"
 ---
 # <a name="quickstart-content-moderator-client-library-for-java"></a>Gyors útmutató: Content Moderator a Javához készült ügyféloldali kódtár
 
@@ -193,10 +194,10 @@ Ezután keresse meg a *src/Main/Resources/ModerationOutput. JSON* fájlt, és te
 
 Ha Cognitive Services-előfizetést szeretne törölni, törölheti az erőforrást vagy az erőforráscsoportot. Az erőforráscsoport törlésével a hozzá társított egyéb erőforrások is törlődnek.
 
-* [Portal](../cognitive-services-apis-create-account.md#clean-up-resources)
+* [Portál](../cognitive-services-apis-create-account.md#clean-up-resources)
 * [Azure CLI](../cognitive-services-apis-create-account-cli.md#clean-up-resources)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebből a rövid útmutatóból megtudhatta, hogyan használhatja a Content Moderator Java-függvénytárat moderálási feladatok végrehajtásához. Következő lépésként tekintse meg a képek vagy más média moderálását egy elméleti útmutató elolvasásával.
 

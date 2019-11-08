@@ -1,6 +1,6 @@
 ---
-title: 'Sikertelen kapcsolatcsoport - ExpressRoute visszaállítása: PowerShell: Azure | Microsoft Docs'
-description: Ez a cikk segít a sikertelen állapotú ExpressRoute-kapcsolatcsoport alaphelyzetbe állítása.
+title: 'Sikertelen áramkör alaphelyzetbe állítása – ExpressRoute: PowerShell: Azure | Microsoft Docs'
+description: Ez a cikk segítséget nyújt egy hibás állapotú ExpressRoute-áramkör alaphelyzetbe állításához.
 services: expressroute
 author: anzaman
 ms.service: expressroute
@@ -8,20 +8,20 @@ ms.topic: article
 ms.date: 11/28/2018
 ms.author: anzaman
 ms.custom: seodec18
-ms.openlocfilehash: f6fd8e5f0e5730e55fa5bbe13f74be796dd6a4cb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: deeb1c65cae7e3a5b42230dbda1ad8efa717ba0b
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66115838"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73748110"
 ---
-# <a name="reset-a-failed-expressroute-circuit"></a>Sikertelen az ExpressRoute-kapcsolatcsoport alaphelyzetbe állítása
+# <a name="reset-a-failed-expressroute-circuit"></a>Sikertelen ExpressRoute áramkör alaphelyzetbe állítása
 
-Egy ExpressRoute-kapcsolatcsoport művelet sikeres, ha a kapcsolatcsoport "sikertelen" állapotba előfordulhat, hogy lépjen. Ez a cikk segít sikertelen Azure ExpressRoute-kapcsolatcsoport alaphelyzetbe állítása.
+Ha egy ExpressRoute-áramkörön végzett művelet nem fejeződik be sikeresen, az áramkör "sikertelen" állapotba kerülhet. Ez a cikk segítséget nyújt egy sikertelen Azure ExpressRoute-áramkör alaphelyzetbe állításához.
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+[!INCLUDE [updated-for-az](../../includes/hybrid-az-ps.md)]
 
-## <a name="reset-a-circuit"></a>Kapcsolatcsoport alaphelyzetbe állítása
+## <a name="reset-a-circuit"></a>Áramkör alaphelyzetbe állítása
 
 1. Telepítse az Azure Resource Manager PowerShell-parancsmagjainak legújabb verzióját. További információk: [Az Azure PowerShell telepítése és konfigurálása](/powershell/azure/install-az-ps).
 
@@ -40,7 +40,7 @@ Egy ExpressRoute-kapcsolatcsoport művelet sikeres, ha a kapcsolatcsoport "siker
    ```azurepowershell-interactive
    Select-AzSubscription -SubscriptionName "Replace_with_your_subscription_name"
    ```
-5. Futtassa a következő parancsokat, amelyek állapota sikertelen kapcsolatcsoport alaphelyzetbe állítása:
+5. Futtassa a következő parancsokat egy hibás állapotú áramkör alaphelyzetbe állításához:
 
    ```azurepowershell-interactive
    $ckt = Get-AzExpressRouteCircuit -Name "ExpressRouteARMCircuit" -ResourceGroupName "ExpressRouteResourceGroup"
@@ -48,8 +48,8 @@ Egy ExpressRoute-kapcsolatcsoport művelet sikeres, ha a kapcsolatcsoport "siker
    Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt
    ```
 
-A kapcsolatcsoport most kifogástalan állapotban kell lennie. Nyisson meg egy támogatási jegyet a [a Microsoft támogatási](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) , ha a kapcsolatcsoport még mindig sikertelen állapotban van.
+Az áramkörnek most kifogástalannak kell lennie. Nyisson meg egy támogatási jegyet a [Microsoft támogatási](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) szolgálatával, ha az áramkör még sikertelen állapotban van.
 
 ## <a name="next-steps"></a>További lépések
 
-Nyisson meg egy támogatási jegyet a [a Microsoft támogatási](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) Ha továbbra is problémákat tapasztal.
+Ha továbbra is problémákat tapasztal, nyisson meg egy támogatási jegyet a [Microsoft ügyfélszolgálatával](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) .

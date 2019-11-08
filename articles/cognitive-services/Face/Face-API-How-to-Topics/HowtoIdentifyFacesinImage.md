@@ -1,7 +1,7 @@
 ---
-title: 'Példa: Arcok azonosítása képekben – Face API'
+title: 'Példa: Arcok azonosítása a képeken – Face API'
 titleSuffix: Azure Cognitive Services
-description: A Face API használatával arcokat azonosíthat a képeken.
+description: Ez az útmutató bemutatja, hogyan azonosíthatók az ismeretlen arcok a PersonGroup-objektumok használatával, amelyek előre ismert személyekből jönnek létre.
 services: cognitive-services
 author: SteveMSFT
 manager: nitinme
@@ -10,14 +10,14 @@ ms.subservice: face-api
 ms.topic: sample
 ms.date: 04/10/2019
 ms.author: sbowles
-ms.openlocfilehash: c21647e3fbbc38e905a6d6ec116551004da20d5c
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: 10ab11669569b16293ccf9b8777190cf271e5795
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71300529"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73744323"
 ---
-# <a name="example-identify-faces-in-images"></a>Példa: Képeken lévő arcok azonosítása
+# <a name="example-identify-faces-in-images"></a>Példa: arcok felismerése képeken
 
 Ez az útmutató bemutatja, hogyan azonosíthatók az ismeretlen arcok a PersonGroup-objektumok használatával, amelyek előre ismert személyekből jönnek létre. A mintákat az Azure Cognitive Services C# Face API ügyféloldali kódtár használatával kell beírni.
 
@@ -33,7 +33,7 @@ A minta bemutatásának elvégzéséhez készítse elő a következőket:
 - Néhány kép az illető arcáról. Töltse le a Anna, a Bill és a Clare [minta fotóit](https://github.com/Microsoft/Cognitive-Face-Windows/tree/master/Data) .
 - Tesztelési fényképek sorozata. Előfordulhat, hogy a fényképek nem tartalmazzák Anna, Bill vagy Clare arcát. Ezek az azonosítás tesztelésére szolgálnak. Válassza ki az előző hivatkozáshoz tartozó mintaképeket is.
 
-## <a name="step-1-authorize-the-api-call"></a>1\. lépés: Az API-hívás engedélyezése
+## <a name="step-1-authorize-the-api-call"></a>1\. lépés: API-hívás engedélyezése
 
 A Face API minden meghívásához előfizetési kulcs szükséges. Ezt a kulcsot átadhatja egy lekérdezési karakterlánc paraméternek, vagy megadható a kérelem fejlécében. Az előfizetési kulcs lekérdezési karakterláncon keresztüli átadásához tekintse meg az [arc-észlelési](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) kérelem URL-címét példaként:
 ```
@@ -41,8 +41,8 @@ https://westus.api.cognitive.microsoft.com/face/v1.0/detect[?returnFaceId][&retu
 &subscription-key=<Subscription key>
 ```
 
-Alternatív megoldásként írja be az előfizetési kulcsot a HTTP-kérelem **fejlécében OCP-APIM-Subscription-Key: &lt;Előfizetési&gt;kulcs**.
-Ha ügyféloldali kódtárat használ, az előfizetési kulcsot a FaceClient osztály konstruktorán keresztül adja át a rendszer. Példa:
+Alternatív megoldásként írja be az előfizetési kulcsot a HTTP-kérelem fejlécében **OCP-APIM-Subscription-Key: &lt;előfizetési kulcs&gt;** .
+Ha ügyféloldali kódtárat használ, az előfizetési kulcsot a FaceClient osztály konstruktorán keresztül adja át a rendszer. Például:
  
 ```csharp 
 private readonly IFaceClient faceClient = new FaceClient(
@@ -52,13 +52,13 @@ private readonly IFaceClient faceClient = new FaceClient(
  
 Az előfizetési kulcs beszerzéséhez nyissa meg az Azure Marketplace-t a Azure Portal. További információ: [előfizetések](https://azure.microsoft.com/try/cognitive-services/).
 
-## <a name="step-2-create-the-persongroup"></a>2\. lépés: A PersonGroup létrehozása
+## <a name="step-2-create-the-persongroup"></a>2\. lépés: PersonGroup létrehozása
 
 Ebben a lépésben egy "MyFriends" nevű PersonGroup Anna, Bill és Clare nevet tartalmaz. Mindegyikükhöz több arcot jegyeztünk be. Az arcokat a képekből kell észlelni. Minden lépés elvégzése után, a kapott PersonGroup az alábbi ábrához hasonló:
 
 ![MyFriends](../Images/group.image.1.jpg)
 
-### <a name="step-21-define-people-for-the-persongroup"></a>2,1. lépés: Személyek definiálása a PersonGroup
+### <a name="step-21-define-people-for-the-persongroup"></a>2,1. lépés: személyek definiálása a PersonGroup
 A személy az identitás alapegysége. Egy személyhez tartozhat egy vagy több ismert arc is. A PersonGroup emberek gyűjteménye. Mindegyik személy egy adott PersonGroup belül van definiálva. Az azonosítás egy PersonGroup történik. A feladat egy PersonGroup létrehozása, majd a benne lévő személyek létrehozása, például Anna, Bill és Clare.
 
 Először hozzon létre egy új PersonGroup a [PersonGroup-Create](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395244) API használatával. A megfelelő ügyféloldali függvénytár API a FaceClient osztály CreatePersonGroupAsync metódusa. A csoport létrehozásához megadott csoportazonosító minden előfizetés esetében egyedi. A PersonGroups más PersonGroup API-kkal is beolvashatja, frissítheti vagy törölheti. 
@@ -80,7 +80,7 @@ CreatePersonResult friend1 = await faceClient.PersonGroupPerson.CreateAsync(
  
 // Define Bill and Clare in the same way
 ```
-### <a name="step2-2"></a>2,2. lépés: Arcok észlelése és a megfelelő személyhez való regisztrálása
+### <a name="step2-2"></a>2,2. lépés: az arcok észlelése és a megfelelő személyhez való regisztrálása
 Az észleléshez „POST” webkérést küldünk a [Face – Detect](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) API-nak, a képfájlt a HTTP-kérés törzsébe tesszük. Az ügyféloldali kódtár használatakor az Arcfelismerés az észlelés egyikén keresztül történik. A FaceClient osztály aszinkron metódusai.
 
 Minden észlelt arc esetében hívja a [PersonGroup személyt – adjon hozzá egy arcot](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523b) a megfelelő személyhez való hozzáadásához.
@@ -104,7 +104,7 @@ foreach (string imagePath in Directory.GetFiles(friend1ImageDir, "*.jpg"))
 ``` 
 Ha a képen egynél több arc található, csak a legnagyobb arcot adja hozzá a rendszer. Más arcokat is hozzáadhat a személyhez. Adjon át egy karakterláncot "targetFace = Left, Top, Width, height" formátumban a [PersonGroup person – Face](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523b) API targetFace lekérdezési paramétereként. A AddPersonFaceAsync metódus targetFace opcionális paramétere is felhasználható más arcok hozzáadására. A személyhez hozzáadott minden arc egyedi, megőrzött arc-azonosítót kap. Ezt az azonosítót [PersonGroup személy – az arc](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523e) és az arc törlése [– azonosíthatja](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395239).
 
-## <a name="step-3-train-the-persongroup"></a>3\. lépés: A PersonGroup betanítása
+## <a name="step-3-train-the-persongroup"></a>3\. lépés: PersonGroup betanítása
 
 A PersonGroup meg kell tanítani az azonosítás elvégzéséhez a használatával. A PersonGroup egy személy hozzáadása vagy eltávolítása, illetve egy személy regisztrált arca szerkesztését követően kell újra betanítani. A betanítást a [PersonGroup – Train](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395249) API használatával végezzük. Az ügyféloldali kódtár használatakor ez a TrainPersonGroupAsync metódus hívása:
  
@@ -129,7 +129,7 @@ while(true)
 } 
 ``` 
 
-## <a name="step-4-identify-a-face-against-a-defined-persongroup"></a>4\. lépés: Arc azonosítása meghatározott PersonGroup
+## <a name="step-4-identify-a-face-against-a-defined-persongroup"></a>4\. lépés: Arc azonosítása definiált PersonGroup alapján
 
 Ha a Face API elvégzi az azonosítást, a rendszer kiszámítja a tesztek hasonlóságát egy csoporton belüli összes arc között. A tesztelési felületen a leginkább összehasonlítható személyeket adja vissza. Ezt a folyamatot a [Face-IDENTIFY API-](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395239) n vagy az ügyféloldali kódtár IdentifyAsync metódusán keresztül végezheti el.
 
@@ -168,12 +168,12 @@ A lépések befejezése után próbálkozzon a különböző arcok azonosítás�
 
 ![Különböző arcok azonosítása](../Images/identificationResult.1.jpg )
 
-## <a name="step-5-request-for-large-scale"></a>5\. lépés: Nagy léptékű kérelem
+## <a name="step-5-request-for-large-scale"></a>5\. lépés: nagy léptékű kérelem
 
 A PersonGroup az előző tervezési korlátozás alapján akár 10 000 személyt is megtarthatnak.
 További információ az akár milliós esetekről: [A nagy méretű szolgáltatás használata](how-to-use-large-scale.md).
 
-## <a name="summary"></a>Összegzés
+## <a name="summary"></a>Összefoglalás
 
 Ebben az útmutatóban megtanulta, hogyan hozhat létre egy PersonGroup, és hogyan azonosítható egy személy. A következő funkciókat ismertetjük és mutatták be:
 

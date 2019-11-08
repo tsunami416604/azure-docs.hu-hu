@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 10/08/2018
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 76110fa04441540875e65c8bc056fc21555c5db6
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 74ef55fe9a0a6603bd43d68b6b8557dce1bca921
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70102283"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73749142"
 ---
 # <a name="create-a-snapshot"></a>Pillanatkép létrehozása
 
@@ -29,8 +29,8 @@ Ha az új virtuális gép létrehozásához a pillanatképet fogja használni, j
 
 ## <a name="use-the-azure-portal"></a>Az Azure Portal használata 
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-2. A bal oldali menüben válassza az **erőforrás létrehozása**lehetőséget, majd keresse meg és válassza kia pillanatképet.
+1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
+2. A bal oldali menüben válassza az **erőforrás létrehozása**lehetőséget, majd keresse meg és válassza ki a **pillanatképet**.
 3. A **Pillanatkép** ablakban válassza a **Létrehozás**elemet. Megjelenik a **pillanatkép létrehozása** ablak.
 4. Adja meg a pillanatkép **nevét** .
 5. Válasszon ki egy meglévő [erőforráscsoportot](../../azure-resource-manager/resource-group-overview.md#resource-groups) , vagy adja meg egy új nevet. 
@@ -43,7 +43,7 @@ Ha az új virtuális gép létrehozásához a pillanatképet fogja használni, j
 
 A következő lépések bemutatják, hogyan másolhatók a VHD-lemezek, hogyan hozhatók létre a pillanatkép-konfiguráció, és hogy a [New-AzSnapshot](https://docs.microsoft.com/powershell/module/az.compute/new-azsnapshot) parancsmaggal készítsen pillanatképet a lemezről. 
 
-[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
+ 
 
 1. Néhány paraméter beállítása: 
 

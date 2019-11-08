@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: d3ea0adb4adf88e557ca360799836555cb90078e
-ms.sourcegitcommit: 3f8017692169bd75483eefa96c225d45cd497f06
+ms.openlocfilehash: 709ac3a9f5e7cf0bd13a6e387f0b80caf2608fe0
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73520939"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73748466"
 ---
 # <a name="alert-validation-eicar-test-file-in-azure-security-center"></a>Riasztás érvényesítése (EICAR-teszt fájl) Azure Security Center
 A dokumentum ismerteti, hogyan ellenőrizheti, hogy a rendszere megfelelően konfigurálva van-e az Azure Security Center riasztásaihoz.
@@ -33,7 +33,7 @@ További információ: [biztonsági riasztások a Security Centerban](security-c
 * [Linux](#validate-linux)
 * [Kubernetes](#validate-kubernetes)
 
-## Riasztások ellenőrzése Windows rendszerű virtuális gépen<a name="validate-windows"></a>
+## Riasztások ellenőrzése Windows rendszerű virtuális gépeken<a name="validate-windows"></a>
 
 Miután telepítette Security Center ügynököt a számítógépre, hajtsa végre az alábbi lépéseket azon a számítógépen, amelyen a riasztás megtámadott erőforrását szeretné használni:
 
@@ -46,7 +46,7 @@ Miután telepítette Security Center ügynököt a számítógépre, hajtsa vég
 >
 >```reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\policies\system\Audit" /f /v "ProcessCreationIncludeCmdLine_Enabled"```
 
-## Riasztások ellenőrzése Linux rendszerű virtuális gépen<a name="validate-linux"></a>
+## Riasztások ellenőrzése Linux rendszerű virtuális gépeken<a name="validate-linux"></a>
 
 Miután telepítette Security Center ügynököt a számítógépre, hajtsa végre az alábbi lépéseket azon a számítógépen, amelyen a riasztás megtámadott erőforrását szeretné használni:
 1. Másolja a végrehajtható fájlt egy kényelmes helyre, és nevezze át a **./asc_alerttest_662jfi039n**névre, például:

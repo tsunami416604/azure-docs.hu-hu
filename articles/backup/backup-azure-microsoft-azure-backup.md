@@ -1,6 +1,6 @@
 ---
 title: A számítási feladatok biztonsági mentésének Azure Backup Server használata az Azure-ba
-description: A munkaterhelések Azure Portal való ellátásához használja a Azure Backup Server.
+description: Ebből a cikkből megtudhatja, hogyan készítheti elő a környezetet a munkaterhelések Microsoft Azure Backup kiszolgáló (MABS) használatával történő védeleméhez és biztonsági mentéséhez.
 ms.reviewer: kasinh
 author: dcurwin
 manager: carmonm
@@ -8,16 +8,17 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: dacurwin
-ms.openlocfilehash: 7a0f1f7dd79be250370fa97096a0cbf6dfc7f637
-ms.sourcegitcommit: 387da88b8262368c1b67fffea58fe881308db1c2
+ms.openlocfilehash: 789cc1d835024babb2482b2601503dbaf7247fc2
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/07/2019
-ms.locfileid: "71982855"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73747427"
 ---
 # <a name="install-and-upgrade-azure-backup-server"></a>Azure Backup Server telepítése és frissítése
 
 > [!div class="op_single_selector"]
+>
 > * [Azure Backup Server](backup-azure-microsoft-azure-backup.md)
 > * [SCDPM](backup-azure-dpm-introduction.md)
 >
@@ -47,7 +48,7 @@ A Azure Backup Server működésének első lépése a Windows Server beállít�
 
 ### <a name="using-a-server-in-azure"></a>Kiszolgáló használata az Azure-ban
 
-Azure Backup Server futtatására szolgáló kiszolgáló kiválasztásakor javasoljuk, hogy a Windows Server 2016 Datacenter vagy a Windows Server 2019 Datacenter katalógusával kezdjen. Az [első Windows rendszerű virtuális gép létrehozása a Azure Portalban](../virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)című cikk útmutatást nyújt az Azure-ban javasolt virtuális gép használatának megkezdéséhez, még akkor is, ha korábban még nem használta az Azure-t. A kiszolgáló virtuális géphez (VM) ajánlott minimális követelmény a következő: Standard_A4_v2 négy maggal és 8 GB RAM-mal.
+Azure Backup Server futtatására szolgáló kiszolgáló kiválasztásakor javasoljuk, hogy a Windows Server 2016 Datacenter vagy a Windows Server 2019 Datacenter katalógusával kezdjen. Az [első Windows rendszerű virtuális gép létrehozása a Azure Portalban](../virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)című cikk útmutatást nyújt az Azure-ban javasolt virtuális gép használatának megkezdéséhez, még akkor is, ha korábban még nem használta az Azure-t. A kiszolgáló virtuális gépnek ajánlott minimális követelményei: Standard_A4_v2 négy maggal és 8 GB RAM-mal.
 
 A munkaterhelések Azure Backup Serversal való védelme számos árnyalattal rendelkezik. A cikk a [DPM Azure-beli virtuális gépként való telepítésével](https://technet.microsoft.com/library/jj852163.aspx)segít megmagyarázni ezeket az árnyalatokat. A gép üzembe helyezése előtt olvassa el ezt a cikket teljesen.
 
@@ -57,19 +58,19 @@ Ha nem szeretné futtatni az alapkiszolgálót az Azure-ban, akkor futtathatja a
 
 | Operációs rendszer | Platform | SKU |
 |:--- | --- |:--- |
-| A Windows Server 2019 |64 bit |Standard, Datacenter, Essentials |
+| Windows Server 2019 |64 bit |Standard, Datacenter, Essentials |
 | Windows Server 2016 és legújabb SPs |64 bit |Standard, Datacenter, Essentials  |
-
 
 A DPM-tárolót a Windows Server deduplikálása használatával lehet deduplikálni. További információ arról, hogyan működik együtt a [DPM és a deduplikálás](https://technet.microsoft.com/library/dn891438.aspx) a Hyper-V virtuális gépeken való üzembe helyezés során.
 
 > [!NOTE]
 > Azure Backup Server úgy lett kialakítva, hogy dedikált, egycélú kiszolgálón fusson. A Azure Backup Server nem telepíthető a következőre:
-> - Tartományvezérlőként futó számítógépre
-> - Olyan számítógépre, amelyen telepítve van az Alkalmazáskiszolgáló szerepkör
-> - Olyan számítógépre, amely System Center Operations Manager felügyeleti kiszolgálóként működik
-> - Olyan számítógépre, amelyen az Exchange Server fut
-> - Olyan számítógépre, amely fürtcsomópontként működik
+>
+> * Tartományvezérlőként futó számítógépre
+> * Olyan számítógépre, amelyen telepítve van az Alkalmazáskiszolgáló szerepkör
+> * Olyan számítógépre, amely System Center Operations Manager felügyeleti kiszolgálóként működik
+> * Olyan számítógépre, amelyen az Exchange Server fut
+> * Olyan számítógépre, amely fürtcsomópontként működik
 
 Mindig csatlakozzon Azure Backup Server tartományhoz. Ha azt tervezi, hogy másik tartományba helyezi át a kiszolgálót, először telepítse Azure Backup Server, majd csatlakoztassa a kiszolgálót az új tartományhoz. Meglévő Azure Backup Server gép áthelyezése új tartományba az üzembe helyezés után *nem támogatott*.
 
@@ -94,7 +95,7 @@ A tárreplikációs beállítás szerkesztése:
 
 ### <a name="downloading-the-software-package"></a>A szoftvercsomag letöltése
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
+1. Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
 2. Ha már meg van nyitva egy Recovery Services-tároló, folytassa a 3. lépéssel. Ha nincs megnyitva Recovery Services tároló, de a Azure Portal, a főmenüben kattintson a **Tallózás**gombra.
 
    * Az erőforrások listájába írja be a következőt: **Recovery Services**.
@@ -117,7 +118,7 @@ A tárreplikációs beállítás szerkesztése:
 
     A megnyíló **első lépések a Backup (biztonsági mentés** ) paneljén a **biztonsági mentési célok** automatikusan ki lesznek választva.
 
-    ![Backup-goals-default-opened](./media/backup-azure-microsoft-azure-backup/getting-started.png)
+    ![Backup-goals-default-Opened](./media/backup-azure-microsoft-azure-backup/getting-started.png)
 
 5. A **biztonsági mentés célja** panelen, a **Hol van a számítási feladatok futtatása** menü, válassza **a**helyszíni lehetőséget.
 
@@ -182,11 +183,11 @@ Ha a kinyerési folyamat befejeződött, jelölje be a jelölőnégyzetet, hogy 
 
     Ha az SQL 2017 saját példányát használja, manuálisan kell konfigurálnia az SSRS-t. Az SSRS konfigurálása után ellenőrizze, hogy az SSRS *IsInitialized* tulajdonsága *true*értékre van-e állítva. Ha igaz értékre van állítva, a MABS feltételezi, hogy az SSRS már konfigurálva van, és kihagyja az SSRS-konfigurációt.
 
-    Az SSRS konfigurálásához használja a következő értékeket: 
-    - Szolgáltatásfiók: A "beépített fiók használata" hálózati szolgáltatásnak kell lennie
-    - Webszolgáltatás URL-címe: A "virtuális könyvtár" legyen ReportServer_ @ no__t-0
-    - Adatbázis A DatabaseName reportserver $ <SQLInstanceName> értéknek kell lennie
-    - Webes portál URL-címe: A "virtuális könyvtár" legyen Reports_ @ no__t-0
+    Az SSRS konfigurálásához használja a következő értékeket:
+    * Szolgáltatásfiók: a "beépített fiók használata" hálózati szolgáltatásnak kell lennie
+    * Webszolgáltatás URL-címe: a virtuális könyvtárnak ReportServer_ kell lennie<SQLInstanceName>
+    * Adatbázis: a DatabaseName reportserver $<SQLInstanceName>
+    * Webportál URL-címe: a virtuális könyvtárnak Reports_ kell lennie<SQLInstanceName>
 
     [További](https://docs.microsoft.com/sql/reporting-services/report-server/configure-and-administer-a-report-server-ssrs-native-mode?view=sql-server-2017) információ az SSRS-konfigurációról.
 
@@ -257,10 +258,10 @@ Az alábbi szakaszok azt ismertetik, hogyan lehet frissíteni az ügyfélszámí
 
 Az alábbi lépéseket követve kell áthelyeznie a MABS egy új kiszolgálóra, miközben meg kell őriznie a tárolót. Ezt csak akkor teheti meg, ha az összes adattal modern biztonsági másolati tárhely van.
 
-
   > [!IMPORTANT]
-  > - Az új kiszolgálónévnek meg kell egyeznie az eredeti Azure Backup Server példány nevével. Az új Azure Backup Server példány neve nem módosítható, ha az előző tárolási készletet és a MABS-adatbázist (DPMDB) szeretné használni a helyreállítási pontok megőrzése érdekében.
-  > - Rendelkeznie kell biztonsági másolattal a MABS-adatbázisról (DPMDB). Vissza kell állítania az adatbázist.
+  >
+  > * Az új kiszolgálónévnek meg kell egyeznie az eredeti Azure Backup Server példány nevével. Az új Azure Backup Server példány neve nem módosítható, ha az előző tárolási készletet és a MABS-adatbázist (DPMDB) szeretné használni a helyreállítási pontok megőrzése érdekében.
+  > * Rendelkeznie kell biztonsági másolattal a MABS-adatbázisról (DPMDB). Vissza kell állítania az adatbázist.
 
 1. A Megjelenítés ablaktáblán válassza ki azokat az ügyfélszámítógépeket, amelyeknek frissíteni kívánja a védelmi ügynököt.
 2. Állítsa le az eredeti Azure Backup-kiszolgálót, vagy kapcsolja ki a vezetéket.
@@ -273,7 +274,7 @@ Az alábbi lépéseket követve kell áthelyeznie a MABS egy új kiszolgálóra,
 9. Az SQL visszaállítása a DPMDB
 10. A felügyeleti parancssorból az új kiszolgáló CD-ről Microsoft Azure Backup a telepítési hely és a bin mappa
 
-    Elérési út példája: C:\windows\system32>cd "c:\Program Files\Microsoft Azure Backup\DPM\DPM\bin\"
+    Elérésiút-példa: CWindowsSystem32 > CD "c:\Program Files\Microsoft Azure Backup\DPM\DPM\bin\"
 
 11. Az Azure Backup szolgáltatásban futtassa a DPMSYNC-SYNC parancsot
 
@@ -290,10 +291,10 @@ Ha már ismeri az Azure-kapcsolat állapotát és az Azure-előfizetést, az al�
 | Kapcsolat állapota | Azure-előfizetés | Biztonsági mentés az Azure-ba | Biztonsági mentés lemezre | Visszaállítás az Azure-ból | Visszaállítás lemezről |
 | --- | --- | --- | --- | --- | --- |
 | Csatlakozva |Aktív |Engedélyezett |Engedélyezett |Engedélyezett |Engedélyezett |
-| Csatlakozva |Elévült |Leállítva |Leállítva |Engedélyezett |Engedélyezett |
+| Csatlakozva |Lejárt |Leállítva |Leállítva |Engedélyezett |Engedélyezett |
 | Csatlakozva |Felfüggesztést |Leállítva |Leállítva |Leállított és Azure helyreállítási pontok törölve |Leállítva |
 | Elveszett kapcsolat > 15 nap |Aktív |Leállítva |Leállítva |Engedélyezett |Engedélyezett |
-| Elveszett kapcsolat > 15 nap |Elévült |Leállítva |Leállítva |Engedélyezett |Engedélyezett |
+| Elveszett kapcsolat > 15 nap |Lejárt |Leállítva |Leállítva |Engedélyezett |Engedélyezett |
 | Elveszett kapcsolat > 15 nap |Felfüggesztést |Leállítva |Leállítva |Leállított és Azure helyreállítási pontok törölve |Leállítva |
 
 ### <a name="recovering-from-loss-of-connectivity"></a>Helyreállítás a kapcsolat elvesztése miatt
@@ -345,7 +346,7 @@ A MABS frissítéséhez kövesse az alábbi lépéseket:
 
 3. Frissítse a védelmi ügynököket a védett kiszolgálókon.
 4. A biztonsági mentéseket az üzemi kiszolgálók újraindítása nélkül kell folytatni.
-5. Most már megkezdheti az adatok védelmét. Ha modern biztonsági másolati tárhelyre frissít, a védelem alatt kiválaszthatja azokat a köteteket, amelyeken a biztonsági másolatokat tárolni kívánja, és a kiépített terület területen is megkeresheti. [További információk](backup-mabs-add-storage.md).
+5. Most már megkezdheti az adatok védelmét. Ha modern biztonsági másolati tárhelyre frissít, a védelem alatt kiválaszthatja azokat a köteteket, amelyeken a biztonsági másolatokat tárolni kívánja, és a kiépített terület területen is megkeresheti. [Részletek](backup-mabs-add-storage.md).
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
 

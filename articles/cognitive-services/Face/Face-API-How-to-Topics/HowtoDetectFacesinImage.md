@@ -1,7 +1,7 @@
 ---
 title: Arcok észlelése egy képen – Face API
 titleSuffix: Azure Cognitive Services
-description: Megtudhatja, hogyan használhatja a Arcfelismerés funkció által visszaadott különféle információkat.
+description: Ez az útmutató bemutatja, hogyan használható a Arcfelismerés olyan attribútumok kinyeréséhez, mint a nemek, az életkor vagy az adott rendszerképből származó adatok.
 services: cognitive-services
 author: SteveMSFT
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 04/18/2019
 ms.author: sbowles
-ms.openlocfilehash: 07089def3290d6d64919ad2551de7584646cc681
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: 9b66231d995ffb6980ce36852115c571cd102681
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70306636"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73744277"
 ---
 # <a name="get-face-detection-data"></a>Arcfelismerés-adatlekérdezés
 
@@ -27,9 +27,9 @@ Ez az útmutató a következőket mutatja be:
 - Különböző arc-tereptárgyak (például tanulók, orr és száj) helyeinek beszerzése egy képben.
 - Kitalálhatja az észlelt arc nemet, korát, érzelemét és egyéb attribútumait.
 
-## <a name="setup"></a>Beállítás
+## <a name="setup"></a>Telepítés
 
-Ez az útmutató feltételezi, hogy már létrehozta a nevű `faceClient` [FaceClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceclient?view=azure-dotnet) -objektumot egy Face előfizetési kulccsal és egy végpont URL-címmel. Innen a Arcfelismerés funkciót az útmutatóban vagy a [DetectWithStreamAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceoperationsextensions.detectwithstreamasync?view=azure-dotnet)használt [DetectWithUrlAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceoperationsextensions.detectwithurlasync?view=azure-dotnet)meghívásával is használhatja. A szolgáltatás beállításával kapcsolatos utasításokért kövesse az egyik rövid útmutatót.
+Ez az útmutató feltételezi, hogy már létrehozott egy `faceClient`nevű [FaceClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceclient?view=azure-dotnet) objektumot egy Face előfizetési kulccsal és egy végpont URL-címmel. Innen a Arcfelismerés funkciót az útmutatóban vagy a [DetectWithStreamAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceoperationsextensions.detectwithstreamasync?view=azure-dotnet)használt [DetectWithUrlAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceoperationsextensions.detectwithurlasync?view=azure-dotnet)meghívásával is használhatja. A szolgáltatás beállításával kapcsolatos utasításokért kövesse az egyik rövid útmutatót.
 
 Ez az útmutató az észlelési hívás sajátosságait mutatja be, például azt, hogy milyen argumentumokat adhat át, és hogy mit tehet a visszaadott adatmennyiséggel. Javasoljuk, hogy csak a szükséges szolgáltatásokat kérdezze le. Az egyes műveletek végrehajtása további időt vesz igénybe.
 
@@ -144,7 +144,7 @@ Ha többet szeretne megtudni az egyes attribútumokról, tekintse meg a [arcfeli
 
 Ebben az útmutatóban megtanulta, hogyan használhatja a Arcfelismerés különböző funkcióit. Ezután integrálja ezeket a funkciókat az alkalmazásba egy részletes oktatóanyag követésével.
 
-- [Oktatóanyag: Egy WPF-alkalmazás létrehozása egy Rendszerképbeli Arcfelismerés megjelenítéséhez](../Tutorials/FaceAPIinCSharpTutorial.md)
+- [Oktatóanyag: WPF-alkalmazás létrehozása az Arcfelismerés képeken való megjelenítéséhez](../Tutorials/FaceAPIinCSharpTutorial.md)
 - [Oktatóanyag: Android-alkalmazás létrehozása az arcok észleléséhez és a képek keretének megjelenítéséhez](../Tutorials/FaceAPIinJavaForAndroidTutorial.md)
 
 ## <a name="related-topics"></a>Kapcsolódó témakörök

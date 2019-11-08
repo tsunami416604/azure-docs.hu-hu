@@ -1,6 +1,6 @@
 ---
-title: 'Útválasztási szűrők konfigurálása a Microsoft társ-ExpressRoute számára: PowerShell: Azure | Microsoft Docs'
-description: Ez a cikk ismerteti a PowerShell használatával a Microsoft Peering útvonalszűrők konfigurálása
+title: 'A Microsoft társközi útvonal-szűrőinek konfigurálása – ExpressRoute: PowerShell: Azure | Microsoft Docs'
+description: Ez a cikk bemutatja, hogyan konfigurálhat útválasztási szűrőket a Microsoft-partnerek számára a PowerShell használatával
 services: expressroute
 author: ganesr
 ms.service: expressroute
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 02/25/2019
 ms.author: ganesr
 ms.custom: seodec18
-ms.openlocfilehash: c5a5ca4949ca223e9123d59c9578a2628dacd351
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.openlocfilehash: 7a830b01bb66f807972b642ad46d54d124d16d8d
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71123405"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73748142"
 ---
 # <a name="configure-route-filters-for-microsoft-peering-powershell"></a>Útválasztási szűrők konfigurálása a Microsoft-partnerek számára: PowerShell
 > [!div class="op_single_selector"]
@@ -22,60 +22,60 @@ ms.locfileid: "71123405"
 > * [Azure CLI](how-to-routefilter-cli.md)
 > 
 
-Az útvonalszűrők lehetővé teszik a támogatott szolgáltatások egy részének felhasználását Microsoft-társviszony-létesítésen keresztül. A jelen cikkben ismertetett lépések segítségével konfigurálhatja és kezelheti az ExpressRoute-Kapcsolatcsoportok útvonalszűrőinek.
+Az útvonalszűrők lehetővé teszik a támogatott szolgáltatások egy részének felhasználását Microsoft-társviszony-létesítésen keresztül. Az ebben a cikkben ismertetett lépések segítséget nyújtanak a ExpressRoute-áramkörök útválasztási szűrőinek konfigurálásához és kezeléséhez.
 
-Az Office 365-szolgáltatások, például az Exchange Online, a SharePoint Online és a Skype vállalati verzió, valamint az Azure nyilvános szolgáltatásai, például a Storage és az SQL Database, a Microsoft-partneri kapcsolaton keresztül érhetők el. Nyilvános Azure-szolgáltatások régió per alapon választható és nyilvános szolgáltatásonként nem definiálható.
+Az Office 365-szolgáltatások, például az Exchange Online, a SharePoint Online és a Skype vállalati verzió, valamint az Azure nyilvános szolgáltatásai, például a Storage és az SQL Database, a Microsoft-partneri kapcsolaton keresztül érhetők el. Az Azure-beli nyilvános szolgáltatások régiónként választhatók, és nem definiálhatók nyilvános szolgáltatáson belül.
 
-Az ExpressRoute-kapcsolatcsoport Microsoft társviszony-létesítésre van konfigurálva, és a egy útvonalszűrőhöz van csatolva, amikor ezen szolgáltatások kiválasztott összes előtag keresztül létesített BGP-munkamenetek hirdesse meg. Minden előtaghoz egy BGP-közösségérték van csatolva, amely azonosítja az előtag keretében nyújtott szolgáltatást. A BGP-Közösség értékét, és a szolgáltatások leképezik a listáját lásd: [BGP-Közösségek](expressroute-routing.md#bgp).
+Ha a Microsoft-társítás egy ExpressRoute-áramkörön van konfigurálva, és egy útvonal-szűrő van csatlakoztatva, a szolgáltatásokhoz kiválasztott összes előtag a létrehozott BGP-munkameneteken keresztül kerül meghirdetésre. Minden előtaghoz egy BGP-közösségérték van csatolva, amely azonosítja az előtag keretében nyújtott szolgáltatást. A BGP közösségi értékek és a hozzájuk kapcsolódó szolgáltatások listáját itt tekintheti meg: [BGP-Közösségek](expressroute-routing.md#bgp).
 
-Minden szolgáltatásokhoz való kapcsolódás van szükség, ha az előtagok sok BGP-n keresztüli hirdesse meg. Ez jelentősen növeli az útválasztási táblázatokat a hálózaton belüli útválasztók által fenntartott méretét. Ha azt tervezi, a Microsoft társviszony-létesítés keresztül felajánlott szolgáltatásokhoz csak egy részhalmazát felhasználását, csökkentheti az útválasztási táblázatban kétféleképpen méretét. A következőket teheti:
+Ha minden szolgáltatáshoz csatlakoznia kell, nagy számú előtagokat a BGP-n keresztül hirdetünk meg. Ez jelentősen növeli a hálózaton belüli útválasztók által karbantartott útválasztási táblázatok méretét. Ha azt tervezi, hogy csak a Microsoft-partnerek által kínált szolgáltatások egy részhalmazát szeretné használni, az útválasztási táblázatok méretét kétféleképpen csökkentheti. A következőket teheti:
 
-- A BGP-Közösségek útvonalszűrők alkalmazásával szűrése nemkívánatos előtagokat ki. Ez egy szabványos hálózatkezelési eljárás és belül túl sok hálózathoz gyakran használják.
+- Kiszűri a nemkívánatos előtagokat az útválasztási szűrők alkalmazásával a BGP-közösségeken. Ez egy szabványos hálózatkezelési gyakorlat, és általában számos hálózaton belül használatos.
 
-- Útvonal szűrőket határozhat meg, és az ExpressRoute-kapcsolatcsoport alkalmazza őket. Egy útvonalszűrőhöz egy új erőforrást, amely lehetővé teszi szolgáltatások tervez használni a Microsoft társviszony-létesítésen keresztül listájában válassza ki. Csak az ExpressRoute útválasztók továbbítják az útvonalszűrőt szerepelt a szolgáltatásokhoz tartozó előtaglistát.
+- Adja meg az útvonal-szűrőket, és alkalmazza őket a ExpressRoute-áramkörre. Az útválasztási szűrő egy új erőforrás, amellyel kiválaszthatja a Microsoft-társon keresztül használni kívánt szolgáltatások listáját. A ExpressRoute-útválasztók csak az útválasztási szűrőben azonosított szolgáltatásokhoz tartozó előtagok listáját küldik el.
 
-### <a name="about"></a>Útvonalszűrők kapcsolatban
+### <a name="about"></a>Az útválasztási szűrők ismertetése
 
-Ha az ExpressRoute-kapcsolatcsoport Microsoft társviszony-létesítés van konfigurálva, a Microsoft peremhálózati útválasztói létesíteni két BGP-munkamenetet a peremhálózati útválasztóhoz (Öné vagy a kapcsolatszolgáltató). Nincsenek útvonalak meghirdetve a hálózatán. Ha engedélyezni szeretné az útvonalhirdetéseket a hálózaton, társítania kell egy útvonalszűrőt.
+Ha a Microsoft-társak konfigurálva vannak a ExpressRoute-áramkörön, a Microsoft hálózati peremhálózati útválasztók egy pár BGP-munkamenetet létesítenek a peremhálózati útválasztókkal (a tiéd vagy a kapcsolat szolgáltatója). Nincsenek útvonalak meghirdetve a hálózatán. Ha engedélyezni szeretné az útvonalhirdetéseket a hálózaton, társítania kell egy útvonalszűrőt.
 
-Az útvonalszűrőkkel azonosíthatja az ExpressRoute-kapcsolatcsoport Microsoft társviszony-létesítésén keresztül használni kívánt szolgáltatásokat. Ez tulajdonképpen az összes BGP-közösségérték engedélyezési listája. Miután meghatározott és egy ExpressRoute-kapcsolatcsoporthoz csatolt egy útvonalszűrő erőforrást, a BGP-közösségértékekhez rendelt összes előtag meg van hirdetve a hálózaton.
+Az útvonalszűrőkkel azonosíthatja az ExpressRoute-kapcsolatcsoport Microsoft társviszony-létesítésén keresztül használni kívánt szolgáltatásokat. Ez lényegében egy engedélyezési lista az összes BGP közösségi értékről. Miután meghatározott és egy ExpressRoute-kapcsolatcsoporthoz csatolt egy útvonalszűrő erőforrást, a BGP-közösségértékekhez rendelt összes előtag meg van hirdetve a hálózaton.
 
-Rendeljen hozzá útvonalszűrőket az Office 365-szolgáltatások rajtuk legyen, engedélyezési felhasználásához az Office 365 szolgáltatás expressroute-on keresztül kell rendelkeznie. Ha nem jogosult az Office 365 szolgáltatás expressroute-on keresztül felhasználásához, rendeljen hozzá útvonalszűrőket a művelet sikertelen lesz. Az engedélyezési folyamat kapcsolatos további információkért lásd: [Office 365-höz készült Azure ExpressRoute](https://support.office.com/article/Azure-ExpressRoute-for-Office-365-6d2534a2-c19c-4a99-be5e-33a0cee5d3bd).
+Ahhoz, hogy az Office 365-szolgáltatásokkal csatolja az útválasztási szűrőket, rendelkeznie kell az Office 365-szolgáltatások ExpressRoute-en keresztüli használatára vonatkozó engedéllyel. Ha nincs engedélye arra, hogy az Office 365-szolgáltatásokat ExpressRoute-en keresztül használja, az útválasztási szűrők csatlakoztatásának művelete meghiúsul. Az engedélyezési folyamattal kapcsolatos további információkért lásd: [Azure ExpressRoute for Office 365](https://support.office.com/article/Azure-ExpressRoute-for-Office-365-6d2534a2-c19c-4a99-be5e-33a0cee5d3bd).
 
 > [!IMPORTANT]
-> Microsoft társviszony-létesítés voltak beállítva a 2017. augusztus 1. ExpressRoute-Kapcsolatcsoportok az összes szolgáltatás előtagkészletet hirdeti meg a Microsoft társviszony-létesítéshez, akkor is, ha nincsenek meghatározva útvonalszűrők fog rendelkezni. Microsoft társviszony-létesítésre vannak konfigurálva, vagy 2017. augusztus 1. után az ExpressRoute-Kapcsolatcsoportok, nem rendelkezik minden olyan előtagok mindaddig, amíg egy útvonalszűrőhöz csatolva van a kapcsolatcsoport hirdetve.
+> Az 2017. augusztus 1. előtt konfigurált ExpressRoute-áramkörök Microsoft-összevonása a Microsoft-társon keresztül meghirdetett összes szolgáltatás előtagja lesz, még akkor is, ha az útvonal-szűrők nincsenek meghatározva. A 2017 augusztus 1-jén vagy azt követően konfigurált ExpressRoute-áramkörök Microsoft-társítása nem rendelkezik olyan előtagokkal, amelyek csak akkor lesznek meghirdetve, ha az áramkörhöz hozzá van rendelve egy útvonal-szűrő.
 > 
 > 
 
-### <a name="workflow"></a>A munkafolyamat
+### <a name="workflow"></a>Munkafolyamat
 
-Az, hogy sikeresen csatlakozni a Microsoft társviszony-létesítés keresztül, az alábbi konfigurációs lépéseket kell elvégeznie:
+Ahhoz, hogy sikeresen tudjon csatlakozni a szolgáltatásokhoz a Microsoft-társon keresztül, el kell végeznie az alábbi konfigurációs lépéseket:
 
-- Aktív ExpressRoute-kapcsolatcsoport Microsoft társviszony-létesítést kiépített rendelkező kell rendelkeznie. Az alábbi utasítások segítségével a fenti feladatok elvégzéséhez:
-  - [ExpressRoute-kapcsolatcsoport létrehozása](expressroute-howto-circuit-arm.md) , és engedélyeztesse a kapcsolatcsoportot kapcsolatszolgáltatójával, mielőtt a folytatáshoz. Az ExpressRoute-kapcsolatcsoport kiosztott és engedélyezett állapotban kell lennie.
-  - [A Microsoft társviszony-létesítés](expressroute-circuit-peerings.md) kezeléséhez közvetlenül a BGP-munkamenetben. Vagy a kapcsolatszolgáltató kell kiépíteni a Microsoft társviszony-létesítést a kapcsolatcsoporthoz.
+- Rendelkeznie kell egy aktív ExpressRoute-áramkörrel, amelyhez Microsoft-társítás van kiépítve. A következő utasításokat követve hajthatja végre ezeket a feladatokat:
+  - A folytatás előtt [hozzon létre egy ExpressRoute áramkört](expressroute-howto-circuit-arm.md) , és engedélyezze az áramkört a kapcsolat szolgáltatója számára. A ExpressRoute áramkörnek kiépített és engedélyezett állapotban kell lennie.
+  - [Hozzon létre Microsoft-társat](expressroute-circuit-peerings.md) , ha közvetlenül a BGP-munkamenetet kezeli. Vagy a kapcsolat szolgáltatója kiépíti a Microsoft-társat az áramkörhöz.
 
--  Hozzon létre és egy útvonalszűrőhöz konfigurálnia kell.
-    - A szolgáltatás azonosítására, és felhasználásához a Microsoft társviszony-létesítésen keresztül
-    - Azonosítsa a BGP-Közösség értékét vett szolgáltatások listája
-    - Hozzon létre egy szabályt, hogy az előtagok listáját a BGP-Közösség értékét megfelelő
+-  Létre kell hoznia és konfigurálnia kell egy útvonal-szűrőt.
+    - Azonosítsa a Microsoft-társon keresztül használni kívánt szolgáltatásokat
+    - A szolgáltatásokhoz társított BGP-közösségi értékek listájának azonosítása
+    - Szabály létrehozása a BGP-közösségi értékeknek megfelelő előtag-lista engedélyezéséhez
 
--  Az ExpressRoute-kapcsolatcsoport az útvonalszűrőt kell csatolnia.
+-  Az ExpressRoute áramkörhöz csatolni kell az útvonal-szűrőt.
 
 ## <a name="before-you-begin"></a>Előkészületek
 
-A konfigurálás elkezdése előtt ellenőrizze a következő feltételeknek:
+A konfigurálás megkezdése előtt győződjön meg arról, hogy megfelel a következő feltételeknek:
 
- - Tekintse át a [Előfeltételek](expressroute-prerequisites.md) és [munkafolyamatok](expressroute-workflows.md) konfigurálás megkezdése előtt.
+ - A konfigurálás megkezdése előtt tekintse át az [előfeltételeket](expressroute-prerequisites.md) és a [munkafolyamatokat](expressroute-workflows.md) .
 
- - Egy aktív ExpressRoute-kapcsolatcsoportra lesz szüksége. Kövesse az [ExpressRoute-kapcsolatcsoport létrehozása](expressroute-howto-circuit-arm.md) részben foglalt lépéseket, és engedélyeztesse a kapcsolatcsoportot kapcsolatszolgáltatójával, mielőtt továbblépne. Az ExpressRoute-kapcsolatcsoport kiosztott és engedélyezett állapotban kell lennie.
+ - Egy aktív ExpressRoute-kapcsolatcsoportra lesz szüksége. Kövesse az [ExpressRoute-kapcsolatcsoport létrehozása](expressroute-howto-circuit-arm.md) részben foglalt lépéseket, és engedélyeztesse a kapcsolatcsoportot kapcsolatszolgáltatójával, mielőtt továbblépne. A ExpressRoute áramkörnek kiépített és engedélyezett állapotban kell lennie.
 
- - Rendelkeznie kell egy aktív Microsoft társviszony-létesítés. Kövesse az utasításokat a [létrehozása és módosítása a társviszony-létesítési konfigurációjának](expressroute-circuit-peerings.md) cikk.
+ - Aktív Microsoft-társat kell biztosítania. Kövesse a társítási [konfiguráció létrehozása és módosítása](expressroute-circuit-peerings.md) című cikk utasításait.
 
 
-### <a name="working-with-azure-powershell"></a>Az Azure PowerShell használata
+### <a name="working-with-azure-powershell"></a>A Azure PowerShell használata
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+[!INCLUDE [updated-for-az](../../includes/hybrid-az-ps.md)]
 
 [!INCLUDE [expressroute-cloudshell](../../includes/expressroute-cloudshell-powershell-about.md)]
 
@@ -83,7 +83,7 @@ A konfigurálás elkezdése előtt ellenőrizze a következő feltételeknek:
 
 Mielőtt hozzálát a művelethez, be kell jelentkeznie az Azure-fiókjába. A parancsmag kéri az Azure-fiók bejelentkezési hitelesítő adatait. A bejelentkezés után letölti a fiók beállításait, hogy elérhetők legyenek az Azure PowerShell számára.
 
-Nyissa meg emelt szintű jogosultságokkal a PowerShell konzolt, és csatlakozzon a fiókjához. Az alábbi példa használatával segít a kapcsolódásban. Azure Cloud Shellt használja, ha nincs szüksége a parancsmag futtatásához, automatikusan belépteti.
+Nyissa meg emelt szintű jogosultságokkal a PowerShell konzolt, és csatlakozzon a fiókjához. Az alábbi példa segítséget nyújt a kapcsolódáshoz. Ha Azure Cloud Shell használ, nem kell futtatnia ezt a parancsmagot, mivel a rendszer automatikusan bejelentkezik.
 
 ```azurepowershell
 Connect-AzAccount
@@ -101,42 +101,42 @@ Válassza ki a használni kívánt előfizetést.
 Select-AzSubscription -SubscriptionName "Replace_with_your_subscription_name"
 ```
 
-## <a name="prefixes"></a>1. lépés: Az előtagok és a BGP közösségi értékek listájának beolvasása
+## <a name="prefixes"></a>1. lépés: az előtagok és a BGP közösségi értékek listájának lekérése
 
-### <a name="1-get-a-list-of-bgp-community-values"></a>1. A BGP-Közösség értékét tartalmazó lista beolvasása
+### <a name="1-get-a-list-of-bgp-community-values"></a>1. a BGP-közösségi értékek listájának beolvasása
 
-A BGP-Közösség értékét társított szolgáltatások, a Microsoft társviszony-létesítésekhez listáját, és a hozzájuk társított előtaglistát beolvasásához használja a következő parancsmagot:
+A következő parancsmaggal kérheti le a Microsoft-társon keresztül elérhető szolgáltatásokhoz kapcsolódó BGP-közösségi értékek listáját, valamint a hozzájuk rendelt előtagok listáját:
 
 ```azurepowershell-interactive
 Get-AzBgpServiceCommunity
 ```
-### <a name="2-make-a-list-of-the-values-that-you-want-to-use"></a>2. Győződjön meg a használni kívánt értékek listáját
+### <a name="2-make-a-list-of-the-values-that-you-want-to-use"></a>2. a használni kívánt értékek listájának létrehozása
 
-Ellenőrizze a BGP-Közösség értékét az útvonalszűrőt használni kívánt listáját.
+Készítse el az útválasztási szűrőben használni kívánt BGP-közösségi értékek listáját.
 
-## <a name="filter"></a>2. lépés: Útvonal-szűrő és egy szűrési szabály létrehozása
+## <a name="filter"></a>2. lépés: útvonal-szűrő és szűrő-szabály létrehozása
 
-Egy útvonalszűrőhöz lehet csak egy szabályt, és a szabály "Engedélyezés" típusúnak kell lennie. Ez a szabály is van egy listája azokról a BGP-Közösség értékét társítva.
+Egy útvonal-szűrőnek csak egy szabálya lehet, és a szabálynak "Allow" típusúnak kell lennie. Ez a szabály tartalmazhatja a BGP-közösségi értékek listáját.
 
-### <a name="1-create-a-route-filter"></a>1. Hozzon létre egy útvonalszűrőhöz
+### <a name="1-create-a-route-filter"></a>1. útvonal-szűrő létrehozása
 
-Először hozza létre az útvonalszűrőt. A "New-AzRouteFilter" parancs csak útvonal-szűrő erőforrást hoz létre. Az erőforrás létrehozása után kell majd hozzon létre egy szabályt és csatlakoztassa azt az útvonalat szűrő objektum. Futtassa a következő parancsot egy útvonal-szűrő erőforrás létrehozásához:
+Először hozza létre az útvonal-szűrőt. A "New-AzRouteFilter" parancs csak útvonal-szűrő erőforrást hoz létre. Az erőforrás létrehozása után létre kell hoznia egy szabályt, és csatolni kell az útválasztási szűrő objektumhoz. Futtassa az alábbi parancsot egy útvonal-szűrő erőforrás létrehozásához:
 
 ```azurepowershell-interactive
 New-AzRouteFilter -Name "MyRouteFilter" -ResourceGroupName "MyResourceGroup" -Location "West US"
 ```
 
-### <a name="2-create-a-filter-rule"></a>2. Szűrési szabály létrehozása
+### <a name="2-create-a-filter-rule"></a>2. szűrési szabály létrehozása
 
-Megadhatja egy BGP-Közösségek készlete egy vesszővel tagolt lista formájában, a példában látható módon. Futtassa a következő parancsot egy új szabály létrehozása:
+A BGP-Közösségek készletét vesszővel tagolt listaként is megadhatja, ahogy az a példában látható. Új szabály létrehozásához futtassa a következő parancsot:
  
 ```azurepowershell-interactive
 $rule = New-AzRouteFilterRuleConfig -Name "Allow-EXO-D365" -Access Allow -RouteFilterRuleType Community -CommunityList 12076:5010,12076:5040
 ```
 
-### <a name="3-add-the-rule-to-the-route-filter"></a>3. Adja hozzá a szabályt az útvonalszűrőt
+### <a name="3-add-the-rule-to-the-route-filter"></a>3. adja hozzá a szabályt az útvonal-szűrőhöz
 
-Futtassa a következő parancsot a szűrési szabály hozzáadása az útvonalszűrőt:
+Futtassa a következő parancsot a szűrési szabály az útvonal-szűrőhöz való hozzáadásához:
  
 ```azurepowershell-interactive
 $routefilter = Get-AzRouteFilter -Name "RouteFilterName" -ResourceGroupName "ExpressRouteResourceGroupName"
@@ -144,9 +144,9 @@ $routefilter.Rules.Add($rule)
 Set-AzRouteFilter -RouteFilter $routefilter
 ```
 
-## <a name="attach"></a>3. lépés: Az útvonal-szűrő csatolása ExpressRoute-áramkörhöz
+## <a name="attach"></a>3. lépés: az útvonal-szűrő csatolása egy ExpressRoute-áramkörhöz
 
-Futtassa a következő parancsot az útvonalszűrőt csatolása az ExpressRoute-kapcsolatcsoporthoz, feltéve, hogy csak a Microsoft társviszony-létesítés rendelkezik:
+Futtassa a következő parancsot az útvonal-szűrő ExpressRoute-áramkörhöz való csatolásához, feltéve, hogy csak a Microsoft-partneri kapcsolattal rendelkezik:
 
 ```azurepowershell-interactive
 $ckt = Get-AzExpressRouteCircuit -Name "ExpressRouteARMCircuit" -ResourceGroupName "ExpressRouteResourceGroup"
@@ -156,25 +156,25 @@ Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt
 
 ## <a name="tasks"></a>Gyakori feladatok
 
-### <a name="getproperties"></a>Hogy egy útvonalszűrőhöz tulajdonságainak beolvasása
+### <a name="getproperties"></a>Egy útvonal szűrő tulajdonságainak beolvasása
 
-Egy útvonalszűrőhöz tulajdonságainak lekéréséhez használja az alábbi lépéseket:
+Az útválasztási szűrők tulajdonságainak beszerzéséhez kövesse az alábbi lépéseket:
 
-1. A következő parancsot az útvonal szűrő erőforrás lekérése:
+1. Futtassa a következő parancsot az útvonal-szűrő erőforrás lekéréséhez:
 
    ```azurepowershell-interactive
    $routefilter = Get-AzRouteFilter -Name "RouteFilterName" -ResourceGroupName "ExpressRouteResourceGroupName"
    ```
-2. Az útvonal Állapotszűrő-szabályok a route-filter erőforrás beolvasása a következő parancs futtatásával:
+2. A következő parancs futtatásával szerezze be az útvonal-szűrő erőforrás útválasztási szabályait:
 
    ```azurepowershell-interactive
    $routefilter = Get-AzRouteFilter -Name "RouteFilterName" -ResourceGroupName "ExpressRouteResourceGroupName"
    $rule = $routefilter.Rules[0]
    ```
 
-### <a name="updateproperties"></a>Egy útvonalszűrőhöz tulajdonságainak frissítése
+### <a name="updateproperties"></a>Egy útvonal szűrő tulajdonságainak frissítése
 
-Az útvonalszűrőt már csatolva van egy kapcsolatcsoporthoz, ha a BGP-Közösség listához frissítések automatikusan propagálása a létesített BGP-munkamenetek a megfelelő előtaggal hirdetmény változásoknak. A BGP közösségi listája az útvonalszűrőt, a következő paranccsal frissítheti:
+Ha az útválasztási szűrő már csatolva van egy áramkörhöz, a BGP-közösségi lista frissítései automatikusan propagálják a megfelelő előtag-hirdetményeket a létrejött BGP-munkameneteken keresztül. A következő paranccsal frissítheti az útválasztási szűrő BGP közösségi listáját:
 
 ```azurepowershell-interactive
 $routefilter = Get-AzRouteFilter -Name "RouteFilterName" -ResourceGroupName "ExpressRouteResourceGroupName"
@@ -182,23 +182,23 @@ $routefilter.rules[0].Communities = "12076:5030", "12076:5040"
 Set-AzRouteFilter -RouteFilter $routefilter
 ```
 
-### <a name="detach"></a>Egy útvonalszűrőhöz az ExpressRoute-kapcsolatcsoport leválasztása
+### <a name="detach"></a>Útvonal-szűrő leválasztása egy ExpressRoute-áramkörből
 
-Miután egy útvonalszűrőhöz az ExpressRoute-kapcsolatcsoport le van választva, nincs előtagokat hirdet meg a BGP-munkameneten keresztül. Az ExpressRoute-kapcsolatcsoport a következő parancsot egy útvonalszűrőhöz leválaszthatja:
+Ha egy útvonal-szűrőt leválasztanak a ExpressRoute áramkörről, a BGP-munkameneten belül nem történik meg az előtagok meghirdetése. A következő parancs használatával leválaszthat egy ExpressRoute áramkörből:
   
 ```azurepowershell-interactive
 $ckt.Peerings[0].RouteFilter = $null
 Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt
 ```
 
-### <a name="delete"></a>Egy útvonalszűrőhöz törlése
+### <a name="delete"></a>Útvonal-szűrő törlése
 
-Egy útvonalszűrőhöz csak törölheti, ha bármely kapcsolatcsoporthoz nincs csatolva. Győződjön meg arról, hogy az útvonalszűrőt nincs csatolva bármely kapcsolatcsoport azt törlése megkísérlése előtt. Egy útvonalszűrőhöz, a következő paranccsal törölheti:
+Csak akkor törölhet egy útvonal-szűrőt, ha az nincs csatlakoztatva egyetlen áramkörhöz sem. A törlés megkísérlése előtt gondoskodjon arról, hogy az útválasztási szűrő ne legyen csatlakoztatva egyetlen áramkörhöz sem. Az útvonal-szűrőt a következő paranccsal törölheti:
 
 ```azurepowershell-interactive
 Remove-AzRouteFilter -Name "MyRouteFilter" -ResourceGroupName "MyResourceGroup"
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ az ExpressRoute-tal kapcsolatban: [ExpressRoute – Gyakori kérdések](expressroute-faqs.md).
