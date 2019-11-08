@@ -8,14 +8,14 @@ author: ecfan
 ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: conceptual
-ms.date: 07/05/2019
+ms.date: 11/01/2019
 tags: connectors
-ms.openlocfilehash: 663ef16511269dd61a6567d6570f3445b7da6447
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: 030401623a61e7fcff40187f522309255482647f
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72804236"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73824824"
 ---
 # <a name="call-rest-endpoints-by-using-azure-logic-apps"></a>REST-végpontok hívása Azure Logic Apps használatával
 
@@ -25,7 +25,7 @@ A [Azure Logic apps](../logic-apps/logic-apps-overview.md) és a beépített htt
 
 * Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, [regisztráljon egy ingyenes Azure-fiókra](https://azure.microsoft.com/free/).
 
-* A célként megadott REST-végpontot leíró hencegő fájl URL-címe
+* A cél REST-végpontot leíró hencegő (nem OpenAPI) fájl URL-címe
 
   Általában a REST-végpontnak teljesítenie kell ezt a feltételt az összekötő működéséhez:
 
@@ -125,7 +125,7 @@ Hivatkozhat olyan hencegő fájlra, amely nem üzemeltetett, vagy nem felel meg 
 
 1. Most engedélyezze a CORS a blobhoz. A Storage-fiók menüjében válassza a **CORS**lehetőséget. A **blob Service** lapon adja meg ezeket az értékeket, majd kattintson a **Mentés**gombra.
 
-   | Tulajdonság | Value (Díj) |
+   | Tulajdonság | Érték |
    |----------|-------|
    | **Engedélyezett eredetek** | `*` |
    | **Engedélyezett metódusok** | `GET`, `HEAD`, `PUT` |
@@ -148,7 +148,7 @@ Hivatkozhat olyan hencegő fájlra, amely nem üzemeltetett, vagy nem felel meg 
 
 Itt talál további információt a HTTP + hencegő triggerből vagy műveletből származó kimenetekről. A HTTP + hencegés hívása ezt az információt adja vissza:
 
-| Tulajdonság neve | Type (Típus) | Leírás |
+| Tulajdonság neve | Típus | Leírás |
 |---------------|------|-------------|
 | fejlécek | objektum | A kérelemben szereplő fejlécek |
 | törzse | objektum | JSON-objektum | A kérelem szövegtörzsét tartalmazó objektum |
@@ -166,6 +166,6 @@ Itt talál további információt a HTTP + hencegő triggerből vagy műveletbő
 | 500 | Belső kiszolgálóhiba. Ismeretlen hiba történt. |
 |||
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * További Logic Apps- [Összekötők](../connectors/apis-list.md) megismerése

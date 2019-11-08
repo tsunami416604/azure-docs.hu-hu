@@ -1,74 +1,75 @@
 ---
-title: Az Azure Application ajánlat kipróbálása |} Az Azure Marketplace-en
-description: Hogyan konfigurálása az Azure-alkalmazás az ajánlat kipróbálása az Azure Marketplace-en.
+title: Azure-alkalmazás ajánlata Test Drive | Azure piactér
+description: Az Azure Marketplace-en futó tesztelési meghajtó konfigurálása az Azure-beli alkalmazásokhoz.
 services: Azure, Marketplace, Cloud Partner Portal,
 author: dan-wesley
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: pabutler
-ms.openlocfilehash: 42e533cdcedfb47a46934f77714d61a640a8d7d1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3855c600fe35c37ac15783995551a769e00532be
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64942864"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73826122"
 ---
-# <a name="azure-applications-test-drive-tab"></a>Az Azure-alkalmazások Test Drive lap
+# <a name="azure-applications-test-drive-tab"></a>Azure-alkalmazások tesztelési meghajtó lapja
 
-A Test Drive lap segítségével egy kipróbálására nyújt lehetőséget biztosítanak az ügyfelek számára.
+A test Drive (tesztelési meghajtó) lapon megadhatja az ügyfelei számára a próbaverziót.
 
-## <a name="test-drive-benefits"></a>Test Drive előnyei
+## <a name="test-drive-benefits"></a>A test Drive előnyei
 
-Egy próbaverziós megoldást vezet be az ügyfelek számára az ajánlott eljárás az, győződjön meg, hogy az általuk is megvásárolható magabiztosan. Próbaverziós lehetőségekről Test Drive az Érdeklődők generálása kiváló minőségű, a leghatékonyabb, és ezek nagyobb átalakítás vezet.
+A próbaverzió létrehozása az ügyfelek számára ajánlott eljárás annak biztosítására, hogy nyugodtan vásárolhatnak. Az elérhető próbaverziós lehetőségek közül a test Drive a leghatékonyabb megoldás, amely kiváló minőségű érdeklődőket generál, és növeli az érdeklődők átalakítását.
 
-A termék főbb funkciók és előnyök, mutatja be egy való életből vett megvalósítási forgatókönyv gyakorlati, önálló irányítású próbaverzió ügyfelek biztosít.
+Lehetővé teszi az ügyfelek számára, hogy a termék legfontosabb funkcióit és előnyeit gyakorlati, önállóan, valós implementációs forgatókönyvben mutassa be.
 
-## <a name="how-a-test-drive-works"></a>Próbálja ki az működése
+## <a name="how-a-test-drive-works"></a>A test Drive működése
 
-A potenciális ügyfelek keres, és felderíti az alkalmazás a Marketplace-en. Az ügyfél jelentkezik be, és elfogadja a használati feltételeket. Ezen a ponton az ügyfél megkapja az előre konfigurált környezet rögzített számú óra, próbálja ki a szerepeltetendő magas minősített érdeklődő kap közben. További információkért lásd: [Mi a Test Drive?](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/what-is-test-drive)
+A potenciális ügyfelek megkeresik és felfedik az alkalmazást a piactéren. Az ügyfél bejelentkezik, és elfogadja a használati feltételeket. Ezen a ponton az ügyfél megkapja az előre konfigurált környezetet, hogy rögzített számú órát próbáljon megállapítani, miközben nagy teljesítményű vezetőt kap a követéshez. További információ: [Mi az a test Drive?](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/what-is-test-drive)
 
-## <a name="setting-up-a-test-drive"></a>A test drive beállítása
+## <a name="setting-up-a-test-drive"></a>Tesztelési meghajtó beállítása
 
-A következő lépések segítségével engedélyezheti és konfigurálhatja a tesztverziós.
+A következő lépésekkel engedélyezheti és konfigurálhatja a tesztelési meghajtót.
 
-### <a name="to-enable-a-test-drive"></a>Próbálja ki az engedélyezése:
+### <a name="to-enable-a-test-drive"></a>Tesztelési meghajtó engedélyezése:
 
-1. A **új ajánlat**, jelölje be a **Test Drive** fülre.
-2. A **Test Drive**válassza **Igen** a **engedélyezése egy Test Drive**.
+1. Az **új ajánlat**területen válassza a **Test Drive (tesztelési meghajtó** ) fület.
+2. A **Test Drive (tesztelési meghajtó**) területen válassza az **Igen** lehetőséget a **tesztvezetés engedélyezéséhez**.
 
-   ![Egy teszt meghajtó engedélyezése](./media/managed-app-enable-testdrive.png)
+   ![Tesztelési meghajtó engedélyezése](./media/managed-app-enable-testdrive.png)
 
-### <a name="to-configure-a-test-drive"></a>A test drive konfigurálása:
+### <a name="to-configure-a-test-drive"></a>A tesztelési meghajtó konfigurálása:
 
-Miután engedélyezte a tesztverziós, meg fogjuk adja meg a test drive beállítása a következő űrlapok:
+Miután engedélyezte a tesztelési meghajtót, a következő űrlapokat kell kitöltenie a tesztelési meghajtó beállításához:
   
  - Részletek
  - Technikai konfiguráció
- - Tesztelés üzembe helyezési előfizetés részletei
+ - Tesztelési meghajtó üzembe helyezésének előfizetése – részletek
 
-A következő képernyőfelvétel-készítés a Test Drive-képernyők jeleníti meg. Egy csillag (*) hozzáfűzi a mező nevét jelzi, hogy ez szükséges. 
+A következő képernyőfelvételen a test Drive összes űrlapja látható. A mezőhöz hozzáfűzni kívánt csillag (*) azt jelzi, hogy a név megadása kötelező. 
 
-![A test drive konfigurálása](./media/managed-app-configure-testdrive.png)
+![Tesztelési meghajtó konfigurálása](./media/managed-app-configure-testdrive.png)
 
-A következő táblázat ismerteti a felügyelt alkalmazás a test drive beállításához szükséges mezőket.  Kiegészítve a csillag a mező kitöltése kötelező.
+A következő táblázat ismerteti a felügyelt alkalmazáshoz tartozó tesztelési meghajtó beállításához szükséges mezőket.  A csillaggal hozzáfűzött mezők megadása kötelező.
 
 |      Mező         |  Leírás      |
 |  ---------------   |  ---------------  |
-| **Leírás\***  |  Ismerteti, mi a Test Drive teheti. Alapszintű HTML-címkék használatával formázhatja a leírás. Ha például &lt;p&gt;, &lt;em&gt;, &lt;ul&gt;, &lt;li&gt;, &lt;ol&gt;, és fejlécben.                |
-| **Felhasználói kézikönyv\***  |  Töltse fel, hogy az ügyfelek segítségével megtudhatja, hogyan Test Drive felhasználói manuális. Ez a dokumentum .pdf fájlnak kell lennie.    |
-| **Test Drive – bemutató videó** |  Egy nem kötelező videó bemutatója a Test Drive. Egy ügyfél is ebben a videóban előtt kipróbálás azokat. Adja meg a Videó URL-CÍMÉT a YouTube vagy Vimeo. Ha **+ hozzáadni a videót**, kérni fogja a következő információkat biztosítja:<ul><li>Name (Név)</li><li>URL-cím</li><li>Miniatűr (PNG formátumban, 533 x 324 képpont)</li></ul>  |
-| **példányok\***      | Hány példányt szeretne konfigurálni, milyen régió(k), és milyen gyors az ügyfelek beszerezheti a Test Drive. További információkért lásd: [közzététele egy Test Drive](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/azure-resource-manager-test-drive#how-to-publish-a-test-drive).           |
-| **Tesztelje a meghajtó időtartama (óra)\*** | Azon órák számát adja meg egy egész számot. Az engedélyezett tartomány pedig 1 és 999 közötti. |
-| **Teszt meghajtó ARM-sablon\***     | Töltse fel az Azure Resource Manager-sablonok az alkalmazás egy tömörített (.zip) fájlt. További információkért lásd: [Azure Resource Manager Test Drive](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/azure-resource-manager-test-drive). |
-| **Hozzáférési információk\***          | Adja meg a hozzáférési adatokat, miután az ügyfél lekéri a Test Drive. Ha például egy URL-címet a test drive elérni, és jelentkezzen az adatokat. . Alapszintű HTML-címkék használatával formázhatja a leírás. Ha például &lt;p&gt;, &lt;em&gt;, &lt;ul&gt;, &lt;li&gt;, &lt;ol&gt;, és fejlécben. |
-| **Azure Subscription Id\***       | Ez hozzáférést biztosít az Azure-szolgáltatások és az Azure Portalon. Az előfizetés, ahol az erőforrás-használat jelentett, és services díjszabása. Ha már nincs külön Azure-előfizetés a Tesztverzió csak, hozzon létre egy előfizetést.  |
-| **Az Azure AD-bérlő azonosítója\***          | Adjon meg egy meglévő bérlőt az Azure Active Directoryban, vagy hozzon létre egy test drive bérlőt.  |
-| **Azure AD App Id\***             | Létrehozhat és regisztrálhat egy új alkalmazást. A Microsoft ezt az alkalmazást a Test Drive-példány műveletek végrehajtásához használja.  |
-| **Az Azure AD alkalmazás-kulcs\***            | Az alkalmazás hitelesítési kulcs létrehozásához, és illessze be ezt a mezőt.   |
+| **Leírás\***  |  Írja le, hogy mit tehet a tesztelési meghajtón. Az alapszintű HTML-címkék használatával formázhatja a leírást. Például &lt;p&gt;, &lt;em&gt;, &lt;ul&gt;, &lt;Li&gt;, &lt;ol&gt;és fejlécek.                |
+| **Felhasználói manuális\***  |  Töltse fel a felhasználói kézikönyvet, amelyet az ügyfelek használhatnak a test Drive-élmény átjárásához. A dokumentumnak. pdf formátumúnak kell lennie.    |
+| **A test Drive bemutató videója** |  A tesztvezetés választható videós útmutatója. Az ügyfél megtekintheti ezt a videót, mielőtt elkezdené a tesztelési meghajtót. Adja meg a YouTube vagy a Vimeo Videójának URL-címét. Ha a **+ videó hozzáadása**lehetőséget választja, a rendszer a következő információk megadását kéri:<ul><li>Név</li><li>URL-cím</li><li>Miniatűr (PNG formátumban, 533 x 324 képpont)</li></ul>  |
+| **Példányok\***      | Konfigurálhatja, hogy hány példányt szeretne, milyen régió (k), és hogy az ügyfelek milyen gyorsan kapják meg a tesztelési meghajtót. További információkért lásd: [a tesztelési meghajtó közzététele](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/azure-resource-manager-test-drive#how-to-publish-a-test-drive).           |
+| **Tesztvezetés időtartama (óra)\*** | Adjon meg egy egész számot az órák számaként. Az engedélyezett tartomány 1 és 999 között van. |
+| **Test Drive ARM-sablon\***     | Töltsön fel egy tömörített (. zip) fájlt, amely a Azure Resource Manager-sablonjaival rendelkezik az alkalmazáshoz. További információ: [Azure Resource Manager Test Drive](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/azure-resource-manager-test-drive). |
+| **Hozzáférési információk\***          | Adja meg a hozzáférési adatokat, miután az ügyfél lekéri a tesztet. Például egy URL-cím a tesztvezetés eléréséhez és az adatok aláírásához. . Az alapszintű HTML-címkék használatával formázhatja a leírást. Például &lt;p&gt;, &lt;em&gt;, &lt;ul&gt;, &lt;Li&gt;, &lt;ol&gt;és fejlécek. |
+| **Azure-előfizetési azonosító\***       | Ez hozzáférést biztosít az Azure-szolgáltatásokhoz és a Azure Portalhoz. Az előfizetés az erőforrás-használat jelentését jelenti, és a szolgáltatások számlázása történik. Ha még nem rendelkezik külön Azure-előfizetéssel kizárólag tesztelési meghajtókhoz, hozzon létre egy előfizetést.  |
+| **Azure AD-bérlő azonosítója\***          | Adjon meg egy meglévő bérlőt Azure Active Directory, vagy hozzon létre egy bérlőt ehhez a tesztelési meghajtóhoz.  |
+| **Azure AD alkalmazás azonosítója\***             | Új alkalmazás létrehozása és regisztrálása. A Microsoft ezt az alkalmazást használja a tesztelési meghajtó példányán végzett műveletek végrehajtásához.  |
+| **Azure AD alkalmazás kulcs\***            | Hozzon létre egy hitelesítési kulcsot az alkalmazáshoz, és illessze be ebbe a mezőbe.   |
 |  |  |
 
-Miután megadta a szükséges adatokat, válassza ki a **mentése** a test drive beállításának befejezéséhez.
+Miután megadta az összes szükséges információt, válassza a **Save (Mentés** ) lehetőséget a tesztelési meghajtó beállításának befejezéséhez.
 
 
 ## <a name="next-steps"></a>További lépések

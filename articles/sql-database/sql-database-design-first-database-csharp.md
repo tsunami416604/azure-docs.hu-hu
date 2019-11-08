@@ -1,22 +1,23 @@
 ---
-title: Tervezze meg az első rokon adatbázisát – C# Azure SQL Database | Microsoft Docs
+title: Az első viszonyítási adatbázis megtervezéseC#
 description: Megtudhatja, hogyan tervezheti meg első, egyazon adatbázisát Azure SQL Database C# a ADO.NET használatával.
 services: sql-database
 ms.service: sql-database
 ms.subservice: development
+ms.custom: seo-lt-2019
 ms.topic: tutorial
 author: MightyPen
 ms.author: genemi
 ms.reviewer: carlrab
 ms.date: 07/29/2019
-ms.openlocfilehash: 3359c39b21edad72ce0b9d7feb35d442c842f002
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 201f90ae1ee7309f0271d046f341729c79749421
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68640109"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73825187"
 ---
-# <a name="tutorial-design-a-relational-database-in-a-single-database-within-azure-sql-database-cx23-and-adonet"></a>Oktatóanyag: A Azure SQL Database C&#x23; és a ADO.net egyetlen adatbázisában tervezze meg a kapcsolódó adatbázist
+# <a name="tutorial-design-a-relational-database-in-a-single-database-within-azure-sql-database-cx23-and-adonet"></a>Oktatóanyag: a Azure SQL Database C&#x23; és a ADO.net egyetlen adatbázisában megtervezheti a viszonyítási adatbázist
 
 A Azure SQL Database a Microsoft Cloud (Azure) szolgáltatásban a DBaaS (). Ez az oktatóanyag bemutatja, hogyan végezheti el a következőket az Azure Portal, valamint az ADO.NET és a Visual Studio használatával:
 
@@ -31,7 +32,7 @@ A Azure SQL Database a Microsoft Cloud (Azure) szolgáltatásban a DBaaS (). Ez 
 \* Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) .
 
 > [!TIP]
-> A következő Microsoft Learn modul segít megtanulni az ingyenes ASP.NET- [alkalmazások fejlesztését és konfigurálását, amely](https://docs.microsoft.com/learn/modules/develop-app-that-queries-azure-sql/)lekérdezi a Azure SQL Database, beleértve egy egyszerű adatbázis létrehozását is.
+> A következő Microsoft Learn modul segít megtanulni az ingyenes ASP.NET- [alkalmazások fejlesztését és konfigurálását, amely lekérdezi a Azure SQL Database](https://docs.microsoft.com/learn/modules/develop-app-that-queries-azure-sql/), beleértve egy egyszerű adatbázis létrehozását is.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -52,7 +53,7 @@ Az alábbi lépéseket követve hozzon létre egy üres önálló adatbázist.
 
     | Beállítás       | Ajánlott érték | Leírás |
     | ------------ | ------------------ | ------------------------------------------------- |
-    | **Adatbázis neve** | *yourDatabase* | Az érvényes adatbázis-nevekkel kapcsolatban lásd: [adatbázis](/sql/relational-databases/databases/database-identifiers)-azonosítók. |
+    | **Adatbázis neve** | *yourDatabase* | Az érvényes adatbázis-nevekkel kapcsolatban lásd: [adatbázis-azonosítók](/sql/relational-databases/databases/database-identifiers). |
     | **Előfizetés** | *yourSubscription*  | Az előfizetései részleteivel kapcsolatban lásd az [előfizetéseket](https://account.windowsazure.com/Subscriptions) ismertető cikket. |
     | **Erőforráscsoport** | *yourResourceGroup* | Az érvényes erőforráscsoport-nevekkel kapcsolatban lásd az [elnevezési szabályokat és korlátozásokat](/azure/architecture/best-practices/naming-conventions) ismertető cikket. |
     | **Forrás kiválasztása** | Üres adatbázis | Meghatározza, hogy egy üres adatbázist kell létrehozni. |
@@ -62,9 +63,9 @@ Az alábbi lépéseket követve hozzon létre egy üres önálló adatbázist.
     | Beállítás       | Ajánlott érték | Leírás |
     | ------------ | ------------------ | ------------------------------------------------- |
     | **Kiszolgálónév** | Bármely globálisan egyedi név | Az érvényes kiszolgálónevekkel kapcsolatban lásd az [elnevezési szabályokat és korlátozásokat](/azure/architecture/best-practices/naming-conventions) ismertető cikket. |
-    | **Kiszolgálói rendszergazdai bejelentkezés** | Bármely érvényes név | Az érvényes bejelentkezési nevekért lásd: [adatbázis](/sql/relational-databases/databases/database-identifiers)-azonosítók. |
+    | **Kiszolgálói rendszergazdai bejelentkezés** | Bármely érvényes név | Az érvényes bejelentkezési nevekért lásd: [adatbázis-azonosítók](/sql/relational-databases/databases/database-identifiers). |
     | **Jelszó** | Bármely érvényes jelszó | A jelszónak legalább nyolc karakterből kell állnia, és tartalmaznia kell karaktereket a következő kategóriák közül legalább háromból: nagybetűs karakterek, kisbetűk, számok és nem alfanumerikus karakterek. |
-    | **Location** | Bármely érvényes hely | A régiókkal kapcsolatos információkért lásd [az Azure régióit](https://azure.microsoft.com/regions/) ismertető cikket. |
+    | **Hely** | Bármely érvényes hely | A régiókkal kapcsolatos információkért lásd [az Azure régióit](https://azure.microsoft.com/regions/) ismertető cikket. |
 
     ![adatbázis-kiszolgáló létrehozása](./media/sql-database-design-first-database/create-database-server.png)
 
@@ -73,7 +74,7 @@ Az alábbi lépéseket követve hozzon létre egy üres önálló adatbázist.
 
     Miután kiválasztotta a szolgáltatási szintet, a DTU vagy a virtuális mag számát, valamint a tárterület méretét, kattintson az **alkalmaz**gombra.
 
-7. Adja meg az üres adatbázis rendezését (ebben az oktatóanyagban használja az alapértelmezett értéket). A rendezésekkel kapcsolatos további információkért lásd: [Rendezések](/sql/t-sql/statements/collations)
+7. Adja meg az üres adatbázis **rendezését** (ebben az oktatóanyagban használja az alapértelmezett értéket). A rendezésekkel kapcsolatos további információkért lásd: [Rendezések](/sql/t-sql/statements/collations)
 
 8. Most, hogy végrehajtotta a **SQL Database** űrlapot, kattintson a **Létrehozás** gombra az önálló adatbázis kiépítéséhez. Ez a lépés néhány percet is igénybe vehet.
 
@@ -119,7 +120,7 @@ Ebben az oktatóanyagban megismerte az adatbázis alapvető feladatait, példáu
 > * Adatbázis létrehozása
 > * Tűzfalszabály beállítása
 > * Csatlakozás az adatbázishoz a [Visual Studio és a C#](sql-database-connect-query-dotnet-visual-studio.md) használatával
-> * Táblák létrehozása
+> * Táblázatok létrehozása
 > * Az adatbeszúrási, frissítési, törlési és lekérdezési művelet
 
 Folytassa a következő oktatóanyaggal, amely az adatáttelepítés megismerését mutatja be.

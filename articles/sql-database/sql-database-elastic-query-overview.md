@@ -1,5 +1,5 @@
 ---
-title: Azure SQL Database rugalmas lekérdezés áttekintése
+title: Rugalmas lekérdezés áttekintése
 description: A rugalmas lekérdezés lehetővé teszi a több adatbázisra kiterjedő Transact-SQL-lekérdezés futtatását.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: MladjoA
 ms.author: mlandzic
 ms.reviewer: sstein
 ms.date: 07/01/2019
-ms.openlocfilehash: 08c191742425c448618db255491c709130df33a1
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 9566ac7169144d984f9200734c99eb10368b3142
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73690367"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73823740"
 ---
 # <a name="azure-sql-database-elastic-query-overview-preview"></a>Azure SQL Database rugalmas lekérdezés áttekintése (előzetes verzió)
 
@@ -110,7 +110,7 @@ A következő lépésekkel rugalmas adatbázis-lekérdezéseket konfigurálhat o
 * [Főkulcs Mymasterkey létrehozása](https://docs.microsoft.com/sql/t-sql/statements/create-master-key-transact-sql)
 * [Adatbázis-hatókörű hitelesítő adatok Mycredential létrehozása](https://docs.microsoft.com/sql/t-sql/statements/create-database-scoped-credential-transact-sql)
 * Hozzon létre egy szegmenses [térképet](sql-database-elastic-scale-shard-map-management.md) , amely az adatréteget jelképezi a rugalmas adatbázis ügyféloldali kódtár használatával.
-* **SHARD_MAP_MANAGER** típusú [külső adatforrás létrehozása/eldobása](https://docs.microsoft.com/sql/t-sql/statements/create-external-data-source-transact-sql) mydatasource
+* [Külső adatforrás létrehozása/ELdobása](https://docs.microsoft.com/sql/t-sql/statements/create-external-data-source-transact-sql) **SHARD_MAP_MANAGER** típusú mydatasource
 * [Külső tábla Sajáttábla létrehozása/ELdobása](https://docs.microsoft.com/sql/t-sql/statements/create-external-table-transact-sql)
 
 Miután végrehajtotta ezeket a lépéseket, elérheti a "sajáttábla" horizontálisan particionált táblát, mintha egy helyi tábla lenne. Azure SQL Database automatikusan több párhuzamos kapcsolatot nyit meg azokkal a távoli adatbázisokkal, ahol a táblák fizikailag vannak tárolva, feldolgozza a kéréseket a távoli adatbázisokon, és visszaadja az eredményeket.
@@ -138,7 +138,7 @@ A rugalmas lekérdezés a Azure SQL Database adatbázisok díjait tartalmazza. V
 * Az első rugalmas lekérdezés futtatása akár néhány percet is igénybe vehet a standard szintű szolgáltatási szinten. Ez az idő szükséges a rugalmas lekérdezési funkció betöltéséhez; a teljesítmény betöltése nagyobb a szolgáltatási szintek és a számítási méretek tekintetében.
 * A külső adatforrások vagy a SSMS vagy SSDT külső tábláinak parancsfájlkezelése még nem támogatott.
 * Az SQL-adatbázis importálása/exportálása még nem támogatja a külső adatforrásokat és a külső táblákat. Ha importálás/exportálást kell használnia, dobja el ezeket az objektumokat az exportálás előtt, majd hozza létre újra az importálás után.
-* A rugalmas lekérdezés jelenleg csak olvasási hozzáférést biztosít a külső táblákhoz. Használhatja azonban a teljes T-SQL-funkciót azon az adatbázison, ahol a külső tábla definiálva van. Ez hasznos lehet, például az ideiglenes eredmények megtartása a használatával, például kiválaszthatja < column_list > a < local_table >ba, vagy megadhatja a tárolt eljárásokat a külső táblákra hivatkozó rugalmas lekérdezési adatbázison.
+* A rugalmas lekérdezés jelenleg csak olvasási hozzáférést biztosít a külső táblákhoz. Használhatja azonban a teljes T-SQL-funkciót azon az adatbázison, ahol a külső tábla definiálva van. Ez hasznos lehet például az ideiglenes eredmények megtartása, például a < column_list > bejelölése < local_table >, vagy a tárolt eljárások definiálása a rugalmas lekérdezési adatbázison, amely külső táblákra hivatkozik.
 * A nvarchar (max) kivételével a LOB-típusok (beleértve a térbeli típusokat is) nem támogatottak a külső táblák definíciójában. Megkerülő megoldásként létrehozhat egy nézetet a távoli adatbázison, amely a LOB-típust a nvarchar (max), az alaptábla helyett a nézetben definiálja a külső táblát, majd visszahelyezi azt az eredeti LOB-típusba a lekérdezésekben.
 * Az eredményhalmaz nvarchar (max) adattípusának oszlopai letiltják a rugalmas lekérdezési implementációban használt speciális kötegelt feldolgozást, és befolyásolhatják a lekérdezés teljesítményét a nem kanonikus használati esetekben, vagy akár két nagyságrenddel is, ha nagy mennyiségű a nem összesített adatokat a rendszer a lekérdezés eredményeképpen továbbítja.
 * A külső táblákon lévő oszlopok statisztikái jelenleg nem támogatottak. A tábla statisztikái támogatottak, de manuálisan kell létrehozni.

@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/03/2019
-ms.openlocfilehash: 3243c8dfcfa83129f57bcd3ea7969fb4f8b07156
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 4043fd374a314735173a1f07f46c8394592b81e2
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73690349"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73823714"
 ---
 # <a name="adding-a-shard-using-elastic-database-tools"></a>Szegmens hozzáadása Elastic Database eszközök használatával
 
@@ -28,7 +28,7 @@ Ha a kulcsok új tartománya már nem része egy meglévő leképezésnek, egysz
 
 ### <a name="example--adding-a-shard-and-its-range-to-an-existing-shard-map"></a>Példa: szegmens és a hozzá tartozó tartomány hozzáadása egy meglévő felosztási térképhez
 
-Ez a példa a TryGetShard ([Java](/java/api/com.microsoft.azure.elasticdb.shard.map.shardmap.trygetshard), [.net](https://docs.microsoft.com/previous-versions/azure/dn823929(v=azure.100))) használja a CreateShard ([Java](/java/api/com.microsoft.azure.elasticdb.shard.map.shardmap.createshard), [.net](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmap.createshard)), a CreateRangeMapping ([Java](/java/api/com.microsoft.azure.elasticdb.shard.map.rangeshardmap.createrangemapping), [.net](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.rangeshardmap-1) metódusokat), és létrehozza a ShardLocation egy példányát ([Java](/java/api/com.microsoft.azure.elasticdb.shard.base.shardlocation), [.net](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardlocation)). osztály. Az alábbi példában egy **sample_shard_2** nevű adatbázis és a benne található összes szükséges séma objektum létrejött a (z) [300, 400) tartományhoz.  
+Ez a példa a TryGetShard ([Java](/java/api/com.microsoft.azure.elasticdb.shard.map.shardmap.trygetshard), [.net](https://docs.microsoft.com/previous-versions/azure/dn823929(v=azure.100))) használja a CreateShard ([Java](/java/api/com.microsoft.azure.elasticdb.shard.map.shardmap.createshard), [.net](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmap.createshard)), a CreateRangeMapping ([Java](/java/api/com.microsoft.azure.elasticdb.shard.map.rangeshardmap.createrangemapping), [.net](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.rangeshardmap-1) metódusokat), és létrehozza a ShardLocation egy példányát ([Java](/java/api/com.microsoft.azure.elasticdb.shard.base.shardlocation), [.net](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardlocation)). osztály. Az alábbi példában egy **sample_shard_2** nevű adatbázis és a benne található összes szükséges séma objektum a (z) [300, 400) tartományhoz lett létrehozva.  
 
 ```csharp
 // sm is a RangeShardMap object.

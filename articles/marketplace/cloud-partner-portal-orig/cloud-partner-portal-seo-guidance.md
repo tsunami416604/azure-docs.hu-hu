@@ -1,44 +1,45 @@
 ---
-title: Az Azure Marketplace-en keresőmotor-Optimalizálást útmutató
-description: Keresés keresőmotor-optimalizálás (SEO) jelentős nyújt útmutatást.
+title: Az Azure Marketplace SEO-útmutatója
+description: Útmutatást nyújt a keresőmotor-optimalizálás maximalizálásához (SEO).
 services: Azure, Marketplace, Cloud Partner Portal,
 author: v-miclar
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/09/2019
 ms.author: pabutler
-ms.openlocfilehash: f5b956ed1197e3898c9536bda3a93a41e8ee35c0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7115798faadc3209413d22a384433417ec0ddff0
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64935122"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73819588"
 ---
-# <a name="azure-marketplace-seo-guidance"></a>Az Azure Marketplace-en keresőmotor-Optimalizálást útmutató
+# <a name="azure-marketplace-seo-guidance"></a>Az Azure Marketplace SEO-útmutatója
 
-Ez a cikk azt ismerteti, hogyan maximalizálhatja az ajánlat felderíthetőség keresztül a keresési funkciókat a [Azure Marketplace-en](https://azuremarketplace.microsoft.com) és [AppSource](https://appsource.microsoft.com). 
+Ez a cikk azt ismerteti, hogyan maximalizálható az ajánlata az [Azure Marketplace](https://azuremarketplace.microsoft.com) -en és a [AppSource](https://appsource.microsoft.com)található keresési funkciókon keresztül. 
 
 
-## <a name="general-explanation-of-algorithm"></a>Algoritmus általános magyarázata
+## <a name="general-explanation-of-algorithm"></a>Az algoritmus általános magyarázata
 
-A piactér a Microsoft Azure Search szolgáltatást a webhely keresési képességekkel tárolóház használatára. Az algoritmus alapul kifejezés gyakorisága – inverz dokumentum gyakorisága ([TF-IDF](https://en.wikipedia.org/wiki/Tf–idf)). A standard [Lucene-elemzőt](https://lucene.apache.org/core/) szolgál.
+A Microsoft piactérek az Azure Cognitive Searcht használják a hely keresési képességeinek bekapcsolására. Az algoritmus a kifejezés gyakorisága – inverz dokumentum gyakorisága ([TF-IDF](https://en.wikipedia.org/wiki/Tf–idf)) alapján történik. A standard [Lucene Analyzer](https://lucene.apache.org/core/) használatos.
 
-Általában a teljes szöveg mezők, kategóriák és iparágak és bekerült a weightage a relevancia. Speciális feltételeket, a ritkán használt alkalmazások azonban gyakran az alkalmazásban való kereséssel egyezés magasabb pontszámot hoz létre. Így többek között például a "Virtuális gép" használati kis benefit járna, mivel a "Az Azure search" speciális sokkal lenne.
-Az alábbiakban a leginkább megfelelő mezőket kell figyelembe venni.
+Általánosságban elmondható, hogy minden szövegmezőt, kategóriát és iparágat tartalmaz, és tartalmazza a relevancia súlyozását. Azok a speciális kifejezések, amelyeket ritkán használnak az alkalmazások, de gyakran az alkalmazásban magasabb pontszámot eredményeznek a kereséssel. A "virtuális gép" kifejezéseket is beleértve, például az "Azure Search" sokkal fejlettebb lenne.
+Az alábbiakban a legfontosabb mezőket érdemes figyelembe venni.
 
  
-|  Mező                   | Fontosság | Útmutatás                                                                                            |
+|  Mező                   | Fontossága | Útmutatás                                                                                            |
 |  --------------------    | ----------                   | ---------------                                                                   |
-| Csomag neve               |  Magas      | A pontos vagy közel teljes egyezését a keresési lekérdezés magas prioritás előállításához.                       |
-| Közzétevő neve           |  Magas      | A pontos vagy közel teljes egyezését a keresési lekérdezés magas prioritás előállításához.                       |
-| Rövid leírás        |  Közepes    | Az alkalmazások és a közzétevő elnevezési megadott nevek szinte garantálja a nagy rangsoroló, nem lehet a dolgokat. Ebben az esetben egy rövid leírást, kritikus fontosságú. Tartsa meg a szöveg, rövid és lényegre törő. Kulcsszavak és várt keresési kifejezéseket is tartalmaznia kell a legjobb eredmény.  Kevésbé hatékony, mint például "Ez az a legjobb kiskereskedelmi POS-ra épülő teljes Dynamics 365" a "kiskereskedelmi POS (értékesítési pont), a Dynamics 365".  | 
-| Hosszú leírás         |  Alacsony       | Leírás egy megoldást találhat javaslatokat kínál. A leghatékonyabb leírások ésszerű származnak, és a kulcsszavak szolgálnak.  Egy-az-ponthoz leírások kulcsszavakat használó több mint hosszú hosszú szöveges előnyeit. Győződjön meg arról, hogy a legfontosabb kifejezések, például az "IoT", a leírásban találhatók.  |
-| Termékkategória       | Közepes     |  Termékkategóriák közzétevő lehetőségeket és a Microsoft kombinációja határozza meg. Válassza ki ezen kategóriák megfelelően, hogy a felhasználók könnyen megtalálhatják az alkalmazások a megfelelő kategóriában. |
+| Offer Name               |  Magas      | A keresési lekérdezés teljes egyezésének pontos vagy záró értéke magas prioritást eredményez.                       |
+| Publisher Name           |  Magas      | A keresési lekérdezés teljes egyezésének pontos vagy záró értéke magas prioritást eredményez.                       |
+| Rövid leírás        |  Közepes    | Az alkalmazások és a közzétevők neveinek adott elnevezése szinte magas rangot garantál, nem lehet a legfontosabb. Ebben az esetben a rövid leírás kritikus fontosságú. A szöveg tömör és lényegretörő maradjon. A legjobb eredménynek a kulcsszavakat és a várt keresési kifejezéseket kell tartalmaznia.  Például: "Ez a Dynamics 365-re épülő legjobb kiskereskedelmi POS, amely kevésbé hatékony, mint a Dynamics 365-hez készült" kiskereskedelmi POS (értékesítési pont) ".  | 
+| Hosszú leírás         |  Alacsony       | A leírással részletesebben is eljuthat. A leghatékonyabb leírások ésszerű hosszúságú, és a kulcsszavak is érvényesek.  A kulcsszavakat használó a to-the-Point leírások hosszabb és hosszadalmas szöveg esetén is hasznosak lehetnek. Győződjön meg arról, hogy a feltételek (például "IoT") szerepelnek a leírásban.  |
+| Termékkategória       | Közepes     |  A termékkategóriák a kiadói döntések és a Microsoft kombinációja alapján vannak meghatározva. Válassza ki ezeket a kategóriákat, hogy a felhasználók könnyedén megtalálják a megfelelő kategóriába tartozó alkalmazásokat. |
 |  |  |  |
 
 
 ## <a name="other-tips"></a>További tippek
 
--   Keresés beolvasása (nagy erőforrásigényű) felhasználói tevékenység javasol. Alkalmazás név vagy közzétevő egyezések értékelésénél azokat. Rövid leírás esetében a Ha a keresett kifejezés nem egyezik pontosan azzal a közzétevő neve/kulcsmező válik.
--   Letölthető dokumentumok keresési weightage nem szerepelnek.
--   Az alkalmazások tényleges beszerzési és használatát keresési rangsorolás is befolyásolja. Például két azonos alkalmazásokat, ahol technológiáikkal nagymértékben több felhasználó rendelkezik-e egy magasabb prioritást kap.
+-   A keresés nagy mennyiségű felhasználói tevékenységet javasol. Rangsorolja az alkalmazás neve/közzétevője egyezéseit. A rövid leírás lesz a kulcsmező, ha a keresési kifejezés nem pontosan egyezik a közzétevő/alkalmazás nevével.
+-   A letölthető dokumentumok nem szerepelnek a keresési súlyozásban.
+-   Az alkalmazások tényleges beszerzése és használata hatással lesz a keresési rangsorolásra is. Például két egyenértékű alkalmazás, amelyben az egyik jelentősen több felhasználóval rendelkezik, magasabb rangot kap.

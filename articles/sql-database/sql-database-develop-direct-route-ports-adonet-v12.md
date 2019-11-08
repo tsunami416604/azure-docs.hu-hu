@@ -1,5 +1,5 @@
 ---
-title: 1433-nál nem nagyobb portok SQL Database
+title: 1433-nál nagyobb portok
 description: A ADO.NET és a Azure SQL Database közötti ügyfélkapcsolatok megkerülhetik a proxyt, és közvetlenül a 1433-es portokon keresztül kommunikálnak az adatbázissal.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: MightyPen
 ms.author: genemi
 ms.reviewer: sstein
 ms.date: 04/03/2019
-ms.openlocfilehash: 38ab3b6b0c64ad17311d15fd12e7625e8aa728ce
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: c0012b61cf43d01afd5e7f5f52948310b5eb8420
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73690686"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73828061"
 ---
 # <a name="ports-beyond-1433-for-adonet-45"></a>1433-nál nem nagyobb portok ADO.NET 4,5
 

@@ -5,14 +5,15 @@ author: qianw211
 manager: evansma
 ms.author: v-qiwe
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 10/04/2019
-ms.openlocfilehash: da6fee7158344d331c6c2a68f0fab1b13cc3a291
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 9eb283f538759f9591add4b04462de151f2cb014
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72934101"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73825553"
 ---
 # <a name="create-a-new-saas-offer"></a>Új SaaS-ajánlat létrehozása
 
@@ -57,9 +58,9 @@ Az **ajánlat áttekintése** oldalon a következők szerepelnek:
 - A **közzétételi állapot** megjeleníti az ajánlat közzétételéhez szükséges lépések vizuális megjelenítését, valamint azt, hogy az egyes lépések mennyi ideig tartanak. Hiányos közzétételi lépések ikonjai szürkén jelennek meg. 
 
 - Az **ajánlat áttekintő** menüjében az ajánlaton végrehajtott műveletekre mutató hivatkozásokat tartalmazó lista szerepel. A műveletek listája az ajánlathoz választott kiválasztási alapján változik.  
-    - Ha az ajánlat Piszkozat – delete Piszkozat 
-    - Ha az ajánlat élőben van – eladási ajánlat leállítása 
-    - Ha az ajánlat előzetes verzióban érhető el – Go-Live 
+    - Ha az ajánlat Piszkozat törlése 
+    - Ha az ajánlat élő leállású ajánlat eladása 
+    - Ha az ajánlat előzetes verzióban érhető el 
     - Ha még nem fejezte be a közzétevő kijelentkezését – közzététel megszakítása
 
 ## <a name="offer-setup"></a>Ajánlat beállítása
@@ -237,7 +238,7 @@ Az érték kiosztásának alapvető összetevőinek a következő információka
 
 Annak érdekében, hogy az ajánlat leírása jobban megtörténjen, HTML-címkék használatával formázhatja a leírást. 
 
-1. Ha bekezdéseket szeretne létrehozni, adja hozzá a `<p>` parancsot a szöveg megadásához, és adja hozzá a `</p>` értéket a végén.
+1. Ha bekezdéseket szeretne létrehozni, vegye fel `<p>` a szöveg megadásával, és adja hozzá a `</p>`t a végén.
 
     **Példa**: 
 
@@ -249,7 +250,7 @@ Annak érdekében, hogy az ajánlat leírása jobban megtörténjen, HTML-címk�
     <p> Ez az első bekezdés. </p>
     <p> Ez a második bekezdés. </p>
 
-1. Ha **listajeles listát kíván hozzáadni az elemek listájához**, helyezze a szöveget az alábbi `<li>` címkén belül. A `<ul>` és a `</ul>` címkén belül több listajeles elemet (a `<li>` és a `</li>` címke közötti elemeket) másolhat és illeszthet be. Ügyeljen arra, hogy hozzáadja a `<ul></ul>` értéket. 
+1. Ha **listajeles listát kíván hozzáadni az elemek listájához**, helyezze a szöveget az alábbi `<li>` címkékbe. A `<ul>` és a `</ul>` címkén belül több listajeles elemet (a `<li>` és a `</li>` címkék között található elemeket) másolhat és beilleszthet. Ügyeljen arra, hogy hozzáadja a `<ul></ul>`. 
 
     **Példa**:
 
@@ -268,7 +269,7 @@ Annak érdekében, hogy az ajánlat leírása jobban megtörténjen, HTML-címk�
         <li> Ide írja be a szöveget </li> 
     </ul> 
 
-1. **Félkövér** tartalom hozzáadásához vegye fel `<b>` betűt a félkövérre állítani kívánt szöveg elejére, és vegye fel `</b>` szöveget a félkövérre szedett szöveg végén. 
+1. **Félkövér** tartalom hozzáadásához vegyen fel `<b>`t a félkövérre állítani kívánt szöveg elejére, és vegye fel `</b>` a félkövérre állítani kívánt szöveg végén. 
 
     **Példa**: `<b>` ingyenes próbaverzió `</b>`
     
@@ -276,7 +277,7 @@ Annak érdekében, hogy az ajánlat leírása jobban megtörténjen, HTML-címk�
 
     **INGYENES PRÓBAVERZIÓ**
 
-1. Ha sortörést szeretne hozzáadni a tartalomhoz, adja hozzá a `<br>` **parancsot** az új sorban elindítani kívánt tartalomhoz. Ha helyet szeretne hagyni, és gondoskodjon arról, hogy a tartalom új sorban induljon el, adja hozzá a `<br><br>` értéket a tartalom előtt. 
+1. Ha **sortörést szeretne hozzáadni a** tartalomhoz, adja hozzá a `<br>`t az új sorban elindítani kívánt tartalomhoz. Ha helyet szeretne hagyni, és gondoskodjon arról, hogy a tartalom új sorban induljon el, adja hozzá a `<br><br>`t a tartalom előtt. 
 
     **Példa**:
 
@@ -351,7 +352,7 @@ A **technikai konfiguráció** lap az ajánlathoz való kapcsolódáshoz haszná
 
 - Kezdőlap **URL-címe** (kötelező): adja meg a webhely URL-címét, amelyet az ügyfelek az ajánlatnak a piactéren való beszerzése után fognak leszállni. Ez az URL-cím lesz a végpont, amely megkapja a jogkivonatot, amikor az ügyfél az oldalra irányítja. Ez a jogkivonat a teljesítési API-k feloldási funkciójával kicserélhető a kiépítési adatokra. Ezek az adatok és a gyűjtött egyéb információk a regisztráció befejezéséhez és a vásárlás aktiválásához használható, a felhasználó által interaktív weblap részeként.
 
-- **Kapcsolati webhook** (kötelező): a Microsoft által az ügyfél nevében küldendő összes aszinkron eseményhez (példa: az SaaS-előfizetés érvénytelennek bizonyult) a kapcsolat webhookot kell megadnia. Ha még nem rendelkezik webhook-rendszerrel, a legegyszerűbb konfiguráció egy olyan HTTP-végpont logikai alkalmazás, amely figyeli a neki küldött összes eseményt, majd megfelelően kezeli őket (például https: \//Prod-1westus. Logic. Azure. com: 443/Work ). További információk: [munkafolyamatok hívása, elindítása vagy beágyazása http-végpontokkal a Logic Appsben](https://docs.microsoft.com/azure/logic-apps/logic-apps-http-endpoint).
+- **Kapcsolati webhook** (kötelező): a Microsoft által az ügyfél nevében küldendő összes aszinkron eseményhez (példa: az SaaS-előfizetés érvénytelennek bizonyult) a kapcsolat webhookot kell megadnia. Ha még nem rendelkezik webhook-rendszerrel, a legegyszerűbb konfiguráció egy olyan HTTP-végpont logikai alkalmazás, amely figyeli a neki küldött összes eseményt, majd megfelelően kezeli őket (például https:\//prod-1westus.logic.azure.com:443/work). További információk: [munkafolyamatok hívása, elindítása vagy beágyazása http-végpontokkal a Logic Appsben](https://docs.microsoft.com/azure/logic-apps/logic-apps-http-endpoint).
 
 - **Azure ad-bérlő azonosítója** (kötelező): Azure Portalon belül [létre kell hoznia egy Azure Active Directory (ad) alkalmazást](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal) , hogy a két szolgáltatás közötti kapcsolat ellenőrizhető legyen egy hitelesített kommunikáció mögött. A [bérlő azonosítójának](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in)megkereséséhez lépjen a Azure Active Directoryra, és válassza a **Tulajdonságok**lehetőséget, majd keresse meg a megjelenő **címtár-azonosító** számát (például 50c464d3-4930-494c-963c-1e951d15360e).
 
@@ -367,8 +368,8 @@ A létrehozást követően megtekintheti a csomag neveit, azonosítóit, díjsza
 
 A **terv áttekintésében** elérhető **műveletek** a csomag aktuális állapotától függően változnak, és a következők lehetnek:
 
-- Ha a terv állapota **draft** – Piszkozat törlése
-- Ha a csomag állapota **élő** – eladási csomag leállítása vagy privát célközönség szinkronizálása
+- Ha a terv állapota **Piszkozat** -delete Piszkozat
+- Ha a terv állapota **Live** -stop eladási terv vagy privát célközönség szinkronizálása
 
 **Új csomag létrehozása** (legalább egy csomag a Microsofton keresztüli értékesítésre kiválasztott felhasználók számára)
 
@@ -437,7 +438,7 @@ Válassza ki azt a gyakoriságot, amellyel az ügyfeleknek meg kell fizetniük a
 - **Díj**: USD/hó vagy USD/év
 
 A helyi pénznemben (USD = Egyesült Államok dollár) beállított díjak az összes kiválasztott piac helyi pénznemére lesznek átalakítva a telepítés során elérhető aktuális árfolyamok használatával. A közzététel előtt érvényesítse ezeket az árakat a díjszabási táblázat exportálásával, és tekintse át az egyes piacokon érvényes díjakat. Ha egyéni árakat szeretne beállítani egyedi piacon, módosítsa és importálja a díjszabási táblázatot. A jelen díjszabás és a saját beállítások ellenőrzése a felelős.
-*\*a díjszabási módosítások exportálásának engedélyezéséhez először mentenie kell a díjszabási módosításokat.*
+*\*Először mentenie kell a díjszabási módosításokat, hogy engedélyezze a díjszabási adatai exportálását.*
 
 A közzététel előtt körültekintően tekintse át az árakat, mivel bizonyos korlátozások vonatkoznak a csomag közzététele után megjelenő változásokra:
 
@@ -459,7 +460,7 @@ Jelölje be ezt a jelölőnégyzetet, ha azt szeretné, hogy a terv magánjelleg
 
 Rendelje hozzá azt a célközönséget, amely hozzáfér ehhez a privát csomaghoz. A hozzáférés hozzá van rendelve a bérlői azonosítók használatával, hogy tartalmazza a hozzájuk rendelt összes bérlői azonosító leírását. . Csv számolótábla-fájl importálásakor legfeljebb 10 bérlői azonosító adható hozzá, vagy 20 000 ügyfél bérlői azonosítóját.
 
-A bérlő egy szervezet képviselete, amelynek azonosítója GUID (globálisan egyedi azonosító, az erőforrások azonosítására szolgáló 128 bites egész szám). Az Azure AD egy dedikált példánya, amelyet a szervezetek vagy alkalmazásfejlesztők kapnak, amikor kapcsolatot hoznak létre a Microsofttal, például regisztrálnak az Azure, a Microsoft Intune vagy a Microsoft 365 szolgáltatásra. Mindegyik Azure AD-bérlő önálló, és elkülönül a többi Azure AD-bérlőtől. A bérlő vizsgálatához jelentkezzen be a Azure Portalba az alkalmazás kezeléséhez használni kívánt fiókkal. Ha rendelkezik bérlővel, automatikusan bejelentkezik, és közvetlenül a fióknév alatt láthatja a bérlő nevét. Ha a fiókja neve fölé helyezi a kurzort az Azure Portal jobb felső részén, megjelenik a neve, e-mail-címe, címtár-/bérlőazonosítója (egy GUID), valamint a tartománya. Ha a fiók több bérlővel van társítva, a fiók nevének kiválasztásával megnyithat egy menüt, ahol válthat a bérlők között. Minden bérlő saját bérlőazonosítóval rendelkezik. A szervezet bérlői AZONOSÍTÓját a következő helyen található tartománynév URL-címével is megkeresheti: [https://www.whatismytenantid.com](https://www.whatismytenantid.com).
+A bérlő egy szervezet képviselete, amelynek azonosítója GUID (globálisan egyedi azonosító, az erőforrások azonosítására szolgáló 128 bites egész szám). Az Azure AD egy dedikált példánya, amelyet a szervezetek vagy alkalmazásfejlesztők kapnak, amikor kapcsolatot hoznak létre a Microsofttal, például regisztrálnak az Azure, a Microsoft Intune vagy a Microsoft 365 szolgáltatásra. Mindegyik Azure AD-bérlő önálló, és elkülönül a többi Azure AD-bérlőtől. A bérlő vizsgálatához jelentkezzen be a Azure Portalba az alkalmazás kezeléséhez használni kívánt fiókkal. Ha rendelkezik bérlővel, automatikusan bejelentkezik, és közvetlenül a fióknév alatt láthatja a bérlő nevét. Ha a fiókja neve fölé helyezi a kurzort az Azure Portal jobb felső részén, megjelenik a neve, e-mail-címe, címtár-/bérlőazonosítója (egy GUID), valamint a tartománya. Ha a fiók több bérlővel van társítva, a fiók nevének kiválasztásával megnyithat egy menüt, ahol válthat a bérlők között. Minden bérlő saját bérlőazonosítóval rendelkezik. A szervezet bérlői AZONOSÍTÓját a következő helyen található tartománynév URL-cím használatával is megkeresheti: [https://www.whatismytenantid.com](https://www.whatismytenantid.com).
 
 Míg a SaaS a bérlői azonosítókat használja a privát célközönség definiálásához, az egyéb ajánlati típusok az Azure-előfizetési azonosítókat (amelyek GUID-ként is jelölik) használhatják.
 
@@ -484,11 +485,11 @@ Ha első alkalommal teszi közzé ezt az ajánlatot, a következőket teheti:
 
 - Tekintse meg az ajánlat egyes szakaszainak befejezési állapotát.
     - *Nincs elindítva* – azt jelenti, hogy a szakasz nem lett megérintve, és el kell végezni.
-    - *Hiányos* – ez azt jelenti, hogy a szakasznak meg kell oldania a hibákat, vagy további információra van szüksége. Lépjen vissza a szakasz (ok) ra, és frissítse azt.
-    - *Complete (kész* ) – azt jelenti, hogy a szakasz elkészült, minden szükséges adattal rendelkezik, és nincsenek hibák. Az ajánlat minden részének teljes állapotban kell lennie ahhoz, hogy el tudja küldeni az ajánlatot.
+    - *Hiányos* – azt jelenti, hogy a szakasznak meg kell oldania a hibákat, vagy további információkat kell megadni. Lépjen vissza a szakasz (ok) ra, és frissítse azt.
+    - *Complete (Befejezés* ) – azt jelenti, hogy a szakasz elkészült, minden szükséges adattal rendelkezik, és nincsenek hibák. Az ajánlat minden részének teljes állapotban kell lennie ahhoz, hogy el tudja küldeni az ajánlatot.
 - Adjon meg tesztelési útmutatást a minősítési csapatnak, hogy az alkalmazás megfelelően legyen tesztelve, valamint az alkalmazás megértéséhez hasznos kiegészítő megjegyzések mellett.
 - Küldje el az ajánlatot közzétételre a **Submit (Küldés**) gombra kattintva. Küldünk Önnek egy e-mailt, amelyből megtudhatja, hogy az ajánlat előzetes verziója elérhető-e a felülvizsgálathoz és jóváhagyáshoz. Vissza kell térnie a partneri központba, és válassza a **Go-Live** lehetőséget az ajánlat közzétételéhez a nyilvános (vagy ha egy privát ajánlat, a privát közönség) számára.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Meglévő ajánlat frissítése a kereskedelmi piactéren](./update-existing-offer.md)

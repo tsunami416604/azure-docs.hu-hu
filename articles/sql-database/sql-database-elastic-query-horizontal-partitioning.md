@@ -11,12 +11,12 @@ author: MladjoA
 ms.author: mlandzic
 ms.reviewer: sstein
 ms.date: 01/03/2019
-ms.openlocfilehash: 37b19cd86cd13dd2bdc8b3a38abf61898b81d01b
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 79abaade22fc107fa4c848607ff48232eeeb58ad
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73690381"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73823761"
 ---
 # <a name="reporting-across-scaled-out-cloud-databases-preview"></a>A kibővített felhőalapú adatbázisok (előzetes verzió) közötti jelentéskészítés
 
@@ -175,14 +175,14 @@ A következő lekérdezés háromféleképpen csatlakozik a raktárak, a megrend
     group by w_id, o_c_id
 ```
 
-## <a name="stored-procedure-for-remote-t-sql-execution-sp_execute_remote"></a>Tárolt eljárás távoli T-SQL-végrehajtáshoz: SP\_execute_remote
+## <a name="stored-procedure-for-remote-t-sql-execution-sp_execute_remote"></a>A távoli T-SQL végrehajtásának tárolt eljárása: SP\_execute_remote
 
 A rugalmas lekérdezés egy tárolt eljárást is bevezet, amely közvetlen hozzáférést biztosít a szegmensekhez. A tárolt eljárás neve [sp\_végrehajtás \_távoli](https://msdn.microsoft.com/library/mt703714) , és használható távoli tárolt eljárások vagy t-SQL-kód végrehajtásához a távoli adatbázisokon. A következő paramétereket veszi figyelembe:
 
 * Adatforrás neve (nvarchar): a RDBMS típusú külső adatforrás neve.
 * Query (nvarchar): az egyes szegmenseken végrehajtandó T-SQL-lekérdezés.
-* Paraméter deklarációja (nvarchar) – nem kötelező: a lekérdezési paraméterben használt paraméterek (például a Sp_executesql) adattípus-definíciókkal rendelkező karakterlánca.
-* Paraméter értékének listája – nem kötelező: a paraméterek értékeinek vesszővel tagolt listája (például Sp_executesql).
+* Paraméter deklarációja (nvarchar) – nem kötelező: karakterlánc a lekérdezési paraméterben használt paraméterekhez (például sp_executesql) tartozó adattípus-definíciókkal.
+* Paraméter értékének listája – nem kötelező: a paraméterek értékeinek vesszővel tagolt listája (például sp_executesql).
 
 Az SP\_Execute\_távoli a Meghívási paraméterekben megadott külső adatforrást használja a távoli adatbázisokon a megadott T-SQL-utasítás végrehajtásához. A külső adatforrás hitelesítő adatait használja a shardmap-kezelő adatbázisához és a távoli adatbázisokhoz való kapcsolódáshoz.  
 

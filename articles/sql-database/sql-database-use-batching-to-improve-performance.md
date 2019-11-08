@@ -1,5 +1,5 @@
 ---
-title: A Batch használata az alkalmazások teljesítményének javítására Azure SQL Database
+title: A Batch használata az alkalmazások teljesítményének növeléséhez
 description: A témakörből megtudhatja, hogy az adatbázis-műveletek feldolgozása nagy mértékben javítja a Azure SQL Database alkalmazások sebességét és méretezhetőségét. Habár ezek a Batch-eljárások bármilyen SQL Server-adatbázishoz működnek, a cikk középpontjában az Azure-ban olvashat.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: genemi
 ms.date: 01/25/2019
-ms.openlocfilehash: 3d18f5b77d08a55bd06656a72cbc02c040b6f127
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 175ba6b4e65b4a6e276dbfb586e210027a6cd9b3
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68566250"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73822423"
 ---
 # <a name="how-to-use-batching-to-improve-sql-database-application-performance"></a>A Batch használata az alkalmazások teljesítményének javítására SQL Database
 
@@ -41,7 +41,7 @@ A tanulmány első része a SQL Databaset használó .NET-alkalmazásokra vonatk
 ### <a name="note-about-timing-results-in-this-article"></a>Megjegyzés a cikk időzítési eredményeiről
 
 > [!NOTE]
-> Az eredmények nem teljesítménytesztek, hanem a **relatív teljesítmény**megjelenítésére szolgálnak. Az időzítések átlagosan legalább 10 teszt futtatásán alapulnak. A műveletek egy üres táblába szúrnak be. Ezeket a teszteket előzetesen Megmértük, és nem feltétlenül felelnek meg a V12-es adatbázisban az új [DTU szolgáltatási rétegekkel](sql-database-service-tiers-dtu.md) vagy [virtuális mag](sql-database-service-tiers-vcore.md)-szolgáltatásokkal megtapasztalható átviteli sebességnek. A batching technika relatív előnye hasonló lehet.
+> Az eredmények nem teljesítménytesztek, hanem a **relatív teljesítmény**megjelenítésére szolgálnak. Az időzítések átlagosan legalább 10 teszt futtatásán alapulnak. A műveletek egy üres táblába szúrnak be. Ezeket a teszteket előzetesen Megmértük, és nem feltétlenül felelnek meg a V12-es adatbázisban az új [DTU szolgáltatási rétegekkel](sql-database-service-tiers-dtu.md) vagy [virtuális mag-szolgáltatásokkal](sql-database-service-tiers-vcore.md)megtapasztalható átviteli sebességnek. A batching technika relatív előnye hasonló lehet.
 
 ### <a name="transactions"></a>Tranzakciók
 
@@ -118,13 +118,13 @@ Az alábbi táblázat néhány alkalmi tesztelési eredményt mutat be. A teszte
 
 A korábbi tesztek eredményei alapján a tranzakciók egyetlen műveletének becsomagolása ténylegesen csökkenti a teljesítményt. Az egyetlen tranzakción belüli műveletek számának növelésével azonban a teljesítmény növelése nagyobb lesz. A teljesítménybeli különbség akkor is észrevehető, ha az Microsoft Azure adatközponton belül minden művelet bekövetkezik. A SQL Database az Microsoft Azure adatközponton kívülről való használatának nagyobb késése a tranzakciók használatának teljesítménybeli nyereségét is felhasználja.
 
-Bár a tranzakciók használata növelheti a teljesítményt, továbbra is megfigyelheti a [tranzakciók és a kapcsolatok ajánlott eljárásait](https://msdn.microsoft.com/library/ms187484.aspx). Tartsa a tranzakciót a lehető legrövidebb időn belül, és zárja be az adatbázis-kapcsolatokat a munka befejeződése után. Az előző példában szereplő using utasítás biztosítja, hogy a rendszer lezárja a kapcsolódást, amikor a következő kódrészlet befejeződik.
+Bár a tranzakciók használata növelheti a teljesítményt, továbbra is [megfigyelheti a tranzakciók és a kapcsolatok ajánlott eljárásait](https://msdn.microsoft.com/library/ms187484.aspx). Tartsa a tranzakciót a lehető legrövidebb időn belül, és zárja be az adatbázis-kapcsolatokat a munka befejeződése után. Az előző példában szereplő using utasítás biztosítja, hogy a rendszer lezárja a kapcsolódást, amikor a következő kódrészlet befejeződik.
 
 Az előző példa azt mutatja be, hogy egy helyi tranzakciót is hozzáadhat a két sorral rendelkező ADO.NET-kódokhoz. A tranzakciók gyors módszert kínálnak a szekvenciális beszúrási, frissítési és törlési műveletet végző kód teljesítményének javítására. A leggyorsabb teljesítmény érdekében azonban érdemes lehet a kódot tovább módosítani, hogy kihasználhassa az ügyféloldali kötegeket, például a táblázat értékű paramétereket.
 
 További információ a ADO.NET-beli tranzakciókról: [helyi tranzakciók a ADO.net-ben](https://docs.microsoft.com/dotnet/framework/data/adonet/local-transactions).
 
-### <a name="table-valued-parameters"></a>Tábla értékű paraméterek
+### <a name="table-valued-parameters"></a>tábla értékű paraméterek
 
 A tábla értékű paraméterek a felhasználó által definiált táblázat típusú paramétereket támogatják a Transact-SQL-utasításokban, tárolt eljárásokban és függvényekben. Ez az ügyféloldali batch-eljárás lehetővé teszi több sornyi adat küldését a tábla értékű paraméteren belül. Ha táblázat értékű paramétereket szeretne használni, először adjon meg egy táblát. A következő Transact-SQL-utasítás egy **MyTableType**nevű táblát hoz létre.
 
@@ -167,7 +167,7 @@ using (SqlConnection connection = new SqlConnection(CloudConfigurationManager.Ge
 }
 ```
 
-Az előző példában a **SqlCommand** objektum sorokat szúr be egy tábla értékű paraméterből,  **\@a TestTvp**. A korábban létrehozott **DataTable** objektum hozzá van rendelve ehhez a paraméterhez a **SqlCommand. Parameters. Add** metódussal. A beszúrások az egyik hívásban történő kötegelt feldolgozása jelentősen növeli a teljesítményt a szekvenciális lapkákon.
+Az előző példában a **SqlCommand** objektum sorokat szúr be egy tábla értékű paraméterből, **\@TestTvp**. A korábban létrehozott **DataTable** objektum hozzá van rendelve ehhez a paraméterhez a **SqlCommand. Parameters. Add** metódussal. A beszúrások az egyik hívásban történő kötegelt feldolgozása jelentősen növeli a teljesítményt a szekvenciális lapkákon.
 
 Az előző példa további javítása érdekében használjon egy tárolt eljárást szöveges parancs helyett. A következő Transact-SQL parancs egy tárolt eljárást hoz létre, amely a **SimpleTestTableType** tábla értékű paramétert veszi fel.
 
@@ -484,7 +484,7 @@ A pufferelési osztály használatához az alkalmazás létrehoz egy statikus Na
 
 ### <a name="master-detail"></a>Fő részletek
 
-A tábla értékű paraméterek egyszerű BESZÚRÁSi forgatókönyvekhez hasznosak. Azonban nagyobb kihívást jelenthet a kötegelt beszúrások, amelyek egynél több táblát érintenek. A "Master/detail" forgatókönyv jó példa. A fő tábla azonosítja az elsődleges entitást. Egy vagy több részletes táblázat az entitással kapcsolatos további adatokat tárolja. Ebben a forgatókönyvben a idegenkulcs-kapcsolatok kikényszerítik a részletek egy egyedi fő entitáshoz való viszonyát. Vegye fontolóra a PurchaseOrder-tábla és a hozzá tartozó OrderDetail-táblázat egyszerűsített verzióját. A következő Transact-SQL létrehozza a PurchaseOrder táblát négy oszloppal: Rendeléskód, rendelve, Vevőkód és status.
+A tábla értékű paraméterek egyszerű BESZÚRÁSi forgatókönyvekhez hasznosak. Azonban nagyobb kihívást jelenthet a kötegelt beszúrások, amelyek egynél több táblát érintenek. A "Master/detail" forgatókönyv jó példa. A fő tábla azonosítja az elsődleges entitást. Egy vagy több részletes táblázat az entitással kapcsolatos további adatokat tárolja. Ebben a forgatókönyvben a idegenkulcs-kapcsolatok kikényszerítik a részletek egy egyedi fő entitáshoz való viszonyát. Vegye fontolóra a PurchaseOrder-tábla és a hozzá tartozó OrderDetail-táblázat egyszerűsített verzióját. A következő Transact-SQL a PurchaseOrder táblázatot hozza létre négy oszloppal: Rendeléskód, rendelve, Vevőkód és status.
 
 ```sql
 CREATE TABLE [dbo].[PurchaseOrder](
@@ -496,7 +496,7 @@ CONSTRAINT [PrimaryKey_PurchaseOrder]
 PRIMARY KEY CLUSTERED ( [OrderID] ASC ))
 ```
 
-Minden megrendelés egy vagy több terméket tartalmaz. Ezek az adatok a PurchaseOrderDetail táblában vannak rögzítve. A következő Transact-SQL létrehozza a PurchaseOrderDetail táblát öt oszloppal: Rendeléskód, OrderDetailID, termékkód, egységár és OrderQty.
+Minden megrendelés egy vagy több terméket tartalmaz. Ezek az adatok a PurchaseOrderDetail táblában vannak rögzítve. A következő Transact-SQL a PurchaseOrderDetail táblát hozza létre öt oszloppal: Rendeléskód, OrderDetailID, termékkód, egységár és OrderQty.
 
 ```sql
 CREATE TABLE [dbo].[PurchaseOrderDetail](
@@ -580,7 +580,7 @@ JOIN @IdentityLink L ON L.SubmittedKey = D.OrderID;
 GO
 ```
 
-Ebben a példában a helyileg definiált @IdentityLink táblázat az újonnan beszúrt sorok tényleges Rendeléskód értékeit tárolja. Ezek a sorrend-azonosítók eltérnek a és @orders @details a tábla értékű paraméterekben lévő ideiglenes Rendeléskód értékektől. Emiatt a @IdentityLink tábla ezután összekapcsolja a Rendeléskód értékeket @orders a paraméterből a PurchaseOrder tábla új sorainak valódi Rendeléskód értékeivel. A lépés elvégzése @IdentityLink után a tábla megkönnyítheti a megrendelési adatok beszúrását a Foreign Key korlátozásnak eleget tevő tényleges Rendeléskód értékkel.
+Ebben a példában a helyileg definiált @IdentityLink tábla az újonnan beszúrt sorok tényleges Rendeléskód értékeit tárolja. Ezek a sorrend-azonosítók eltérnek a @orders ideiglenes Rendeléskód értékeitől, és @details tábla értékű paramétereket. Emiatt a @IdentityLink tábla ezt követően összekapcsolja a Rendeléskód értékeket a @orders paraméterből a PurchaseOrder tábla új sorainak valódi Rendeléskód értékeivel. A lépés elvégzése után a @IdentityLink tábla megkönnyítheti a megrendelési adatok beszúrását a Foreign Key korlátozásnak eleget tevő tényleges Rendeléskód értékkel.
 
 Ez a tárolt eljárás kód vagy más Transact-SQL-hívásokból is használható. Tekintse meg a jelen dokumentum táblázat értékű paraméterek szakaszát egy példaként. A következő Transact-SQL azt mutatja be, hogyan hívhatja meg a sp_InsertOrdersBatch.
 
@@ -635,7 +635,7 @@ CREATE TYPE EmployeeTableType AS TABLE
 GO
 ```
 
-Ezután hozzon létre egy tárolt eljárást, vagy írjon be egy olyan kódot, amely a MERGE utasítás használatával hajtja végre a frissítést és a beszúrást. A következő példa a Merge utasítást használja egy tábla értékű paraméter @employees(EmployeeTableType típusú). A @employees tábla tartalma itt nem jelenik meg.
+Ezután hozzon létre egy tárolt eljárást, vagy írjon be egy olyan kódot, amely a MERGE utasítás használatával hajtja végre a frissítést és a beszúrást. A következő példa a MERGE utasítást használja egy tábla értékű paraméternél, @employeesEmployeeTableType típusú. A @employees tábla tartalma itt nem jelenik meg.
 
 ```sql
 MERGE Employee AS target

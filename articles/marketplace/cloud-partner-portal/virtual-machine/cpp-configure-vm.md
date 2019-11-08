@@ -4,15 +4,16 @@ description: Ismerteti, hogyan lehet méretezni, frissíteni és általánosíta
 services: Azure, Marketplace, Cloud Partner Portal,
 author: v-miclar
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 10/19/2018
 ms.author: pabutler
-ms.openlocfilehash: 1270dff0bcb8de117247a454ab9c144250cfb17c
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: ce7fe49b07dc250a9f56ff73229e347b997f0cc0
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68880361"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73824496"
 ---
 # <a name="configure-the-azure-hosted-vm"></a>Az Azure által üzemeltetett virtuális gép konfigurálása
 
@@ -43,7 +44,7 @@ A Linux-disztribúciók esetében a frissítések általában egy parancssori es
 
 ## <a name="perform-additional-security-checks"></a>További biztonsági ellenőrzések végrehajtása
 
-Az Azure Marketplace-en magas szintű biztonságot kell biztosítania a megoldási lemezképek számára.  A következő cikk az ebben a célkitűzésben segítséget nyújtó biztonsági konfigurációkról és eljárásokról tartalmaz feladatlistát: [Biztonsági javaslatok az Azure Marketplace](https://docs.microsoft.com/azure/security/security-recommendations-azure-marketplace-images)-lemezképekhez.  A javaslatok némelyike a Linux-alapú rendszerképekre jellemző, de a legtöbb esetben a virtuálisgép-lemezképekre is érvényes. 
+Az Azure Marketplace-en magas szintű biztonságot kell biztosítania a megoldási lemezképek számára.  A következő cikk az ebben a célkitűzésben segítséget nyújtó biztonsági konfigurációkról és eljárásokról tartalmaz feladatlistát: [biztonsági javaslatok az Azure Marketplace-lemezképekhez](https://docs.microsoft.com/azure/security/security-recommendations-azure-marketplace-images).  A javaslatok némelyike a Linux-alapú rendszerképekre jellemző, de a legtöbb esetben a virtuálisgép-lemezképekre is érvényes. 
 
 
 ## <a name="perform-custom-configuration-and-scheduled-tasks"></a>Egyéni konfiguráció és ütemezett feladatok végrehajtása
@@ -57,7 +58,7 @@ A Linux testreszabásával kapcsolatos további információkért lásd: [virtu�
 
 ## <a name="generalize-the-image"></a>A lemezkép általánossá tétele
 
-Az Azure Marketplace-en lévő összes lemezképet általános módon újrafelhasználhatónak kell lennie. Ennek a felhasználhatóságnak az elvégzéséhez általánosítva kelllennie az operációs rendszer virtuális merevlemezének, egy művelettel, amely eltávolítja az összes példány-specifikus azonosítót és a szoftver ILLESZTŐPROGRAMJAIT egy virtuális gépről.
+Az Azure Marketplace-en lévő összes lemezképet általános módon újrafelhasználhatónak kell lennie. Ennek a felhasználhatóságnak az elvégzéséhez *általánosítva*kell lennie az operációs rendszer virtuális merevlemezének, egy művelettel, amely eltávolítja az összes példány-specifikus azonosítót és a szoftver ILLESZTŐPROGRAMJAIT egy virtuális gépről.
 
 ### <a name="windows"></a>Windows
 
@@ -76,8 +77,8 @@ A következő kétlépéses folyamat általánosít egy Linux rendszerű virtuá
 1.  Csatlakozhat a linuxos virtuális géphez egy SSH-ügyfél használatával.
 2.  Az SSH ablakban írja be a következő parancsot: <br/>
     `sudo waagent -deprovision+user`
-3.  A `y` folytatáshoz írja be a következőt:. (A `-force` paramétert hozzáadhatja az előző parancshoz, így elkerülheti ezt a megerősítő lépést.)
-4.  A parancs befejezése után írja be `exit` a parancsot az SSH-ügyfél bezárásához.
+3.  A folytatáshoz írja be `y` a következőt:. (Az `-force` paramétert hozzáadhatja az előző parancshoz, ezzel megerősítő lépést elkerülve.)
+4.  A parancs végrehajtása után a `exit` beírásával zárhatja be az SSH-ügyfelet.
 
 <!-- TD: I need to add meat and/or references to the following steps -->
 #### <a name="capture-the-image"></a>A rendszerkép rögzítése
@@ -89,8 +90,8 @@ A következő kétlépéses folyamat általánosít egy Linux rendszerű virtuá
 
 A virtuális gép példányainak létrehozása gyakran hasznos a biztonsági mentés, a tesztelés, a testreszabott feladatátvétel vagy a terheléselosztás számára, hogy különböző konfigurációkat nyújtson a megoldásokhoz, és így tovább. A nem felügyelt klónok megkettőzéséről és letöltéséről további információt a következő témakörben talál:
 
-- Linuxos virtuális gép: [Linuxos virtuális merevlemez letöltése az Azure-ból](../../../virtual-machines/linux/download-vhd.md)
-- Windows rendszerű virtuális gép: [Windows rendszerű virtuális merevlemez letöltése az Azure-ból](../../../virtual-machines/windows/download-vhd.md)
+- Linuxos virtuális gép: [linuxos virtuális merevlemez letöltése az Azure-ból](../../../virtual-machines/linux/download-vhd.md)
+- Windows rendszerű virtuális gép: [Windows virtuális merevlemez letöltése az Azure-ból](../../../virtual-machines/windows/download-vhd.md)
 
 
 ## <a name="next-steps"></a>További lépések

@@ -5,14 +5,15 @@ author: qianw211
 manager: evansma
 ms.author: v-qiwe
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 07/11/2019
-ms.openlocfilehash: 35e6c61a8e8537035d70323c85dfc7a76f87cbcd
-ms.sourcegitcommit: 10251d2a134c37c00f0ec10e0da4a3dffa436fb3
+ms.openlocfilehash: 36ca95191e0e6422bd93360b98243393acad8147
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/13/2019
-ms.locfileid: "67869559"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73825479"
 ---
 # <a name="marketplace-metering-service-apis"></a>Marketplace metering service API-k
 
@@ -20,7 +21,7 @@ A használati esemény API lehetővé teszi használati események kibocsátás�
 
 ## <a name="usage-event"></a>Használati esemény
 
-**POST**:`https://marketplaceapi.microsoft.com/api/usageEvent?api-version=<ApiVersion>`
+**Post**: `https://marketplaceapi.microsoft.com/api/usageEvent?api-version=<ApiVersion>`
 
 *Lekérdezési paraméterek:*
 
@@ -34,7 +35,7 @@ A használati esemény API lehetővé teszi használati események kibocsátás�
 | ------------------ | ---------------------------- |
 | `x-ms-requestid`     | Egyedi karakterlánc-érték az ügyféltől érkező kérelem nyomon követéséhez, lehetőleg egy GUID-azonosító. Ha ez az érték nincs megadva, a rendszer létrehoz egy értéket, és megadja a válasz fejléceit. |
 | `x-ms-correlationid` | Egyedi karakterlánc-érték a művelethez az ügyfélen. Ez a paraméter a kiszolgálói oldalon található eseményekkel összekapcsolja az ügyfél-művelet összes eseményét. Ha ez az érték nincs megadva, a rendszer létrehoz egy értéket, és megadja a válasz fejléceit. |
-| `authorization`   | [A JSON webes jogkivonat (JWT) tulajdonosi jogkivonatának beolvasása.](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-registration#get-a-token-based-on-the-azure-ad-app) Megjegyzés: A HTTP-kérelem elkészítésekor `Bearer` a hivatkozott hivatkozásból beszerzett jogkivonat előtagja. |
+| `authorization`   | [A JSON webes jogkivonat (JWT) tulajdonosi jogkivonatának beolvasása.](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-registration#get-a-token-based-on-the-azure-ad-app) Megjegyzés: a HTTP-kérelem elkészítésekor az előtag `Bearer` a hivatkozott hivatkozásból beszerzett jogkivonatra. |
 
 *Kérelem*
 
@@ -48,9 +49,9 @@ A használati esemény API lehetővé teszi használati események kibocsátás�
 }
 ```
 
-### <a name="responses"></a>Responses
+### <a name="responses"></a>Válaszok
 
-Kód 200<br>
+Kód: 200<br>
 OK 
 
 ```json
@@ -66,7 +67,7 @@ OK
 }
 ```
 
-Kód 400 <br>
+Kód: 400 <br>
 Hibás kérés, hiányzó vagy érvénytelen az adott vagy lejárt adatmennyiség
 
 ```json
@@ -84,7 +85,7 @@ Hibás kérés, hiányzó vagy érvénytelen az adott vagy lejárt adatmennyisé
 }
 ```
 
-Kód 403<br>
+Kód: 403<br>
 Hibás kérés, hiányzó vagy érvénytelen az adott vagy lejárt adatmennyiség
 
 ```json
@@ -94,8 +95,8 @@ Hibás kérés, hiányzó vagy érvénytelen az adott vagy lejárt adatmennyisé
 }
 ```
 
-Kód 409<br>
-Ütközés, ha a használati erőforrás-azonosító használati hívását, valamint a már létező érvényes használati adatokat fogadjuk. A válasz tartalmazni `additionalInfo` fog egy mezőt, amely az elfogadott üzenettel kapcsolatos információkat tartalmaz.
+Kód: 409<br>
+Ütközés, ha a használati erőforrás-azonosító használati hívását, valamint a már létező érvényes használati adatokat fogadjuk. A válasz `additionalInfo` mezőt tartalmaz, amely az elfogadott üzenet információit tartalmazza.
 
 ```json
 {
@@ -120,7 +121,7 @@ A Batch-használati esemény API lehetővé teszi, hogy egyszerre több megvás�
 >[!Note]
 >Több SaaS-ajánlatot is regisztrálhat a Microsoft kereskedelmi piactéren. Minden regisztrált SaaS-ajánlathoz tartozik egy egyedi Azure AD-alkalmazás, amely hitelesítési és engedélyezési célból van regisztrálva. A Batch szolgáltatásban kibocsátott eseményeknek ugyanahhoz az Azure AD-alkalmazáshoz tartozó ajánlatokhoz kell tartozniuk az ajánlat regisztrálásakor.
 
-**POST:** `https://marketplaceapi.microsoft.com/api/batchUsageEvent?api-version=<ApiVersion>`
+**Post:** `https://marketplaceapi.microsoft.com/api/batchUsageEvent?api-version=<ApiVersion>`
 
 *Lekérdezési paraméterek:*
 
@@ -134,7 +135,7 @@ A Batch-használati esemény API lehetővé teszi, hogy egyszerre több megvás�
 | ------------------ | ------ |
 | `x-ms-requestid`     | Egyedi karakterlánc-érték az ügyféltől érkező kérelem nyomon követéséhez, lehetőleg egy GUID-azonosító. Ha ez az érték nincs megadva, a rendszer létrehoz egy értéket, és megadja a válasz fejléceit. |
 | `x-ms-correlationid` | Egyedi karakterlánc-érték a művelethez az ügyfélen. Ez a paraméter a kiszolgálói oldalon található eseményekkel összekapcsolja az ügyfél-művelet összes eseményét. Ha ez az érték nincs megadva, a rendszer létrehoz egy értéket, és megadja a válasz fejléceit. |
-| `authorization`      | [A JSON webes jogkivonat (JWT) tulajdonosi jogkivonatának beolvasása.](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-registration#get-a-token-based-on-the-azure-ad-app) Megjegyzés: A HTTP-kérelem elkészítésekor `Bearer` a hivatkozott hivatkozásból beszerzett jogkivonat előtagja.  |
+| `authorization`      | [A JSON webes jogkivonat (JWT) tulajdonosi jogkivonatának beolvasása.](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-registration#get-a-token-based-on-the-azure-ad-app) Megjegyzés: a HTTP-kérelem elkészítésekor az előtag `Bearer` a hivatkozott hivatkozásból beszerzett jogkivonatra.  |
 
 *Kérelem*
 ```json
@@ -157,9 +158,9 @@ A Batch-használati esemény API lehetővé teszi, hogy egyszerre több megvás�
   ]
 }
 ```
-### <a name="responses"></a>Responses
+### <a name="responses"></a>Válaszok
 
-Kód 200<br>
+Kód: 200<br>
 OK
 
 ```json
@@ -192,7 +193,7 @@ OK
 }
 ```
 
-Az API- `BatchUsageEvent` válaszban hivatkozott állapotkód leírása:
+`BatchUsageEvent` API-válaszban hivatkozott állapotkód leírása:
 
 | Állapotkód  | Leírás |
 | ---------- | -------------------- |
@@ -206,7 +207,7 @@ Az API- `BatchUsageEvent` válaszban hivatkozott állapotkód leírása:
 | `InvalidQuantity` | Az átadott mennyiség < 0. |
 | `BadArgument` | A bemenet hiányzik vagy helytelen formátumú. |
 
-Kód 400<br>
+Kód: 400<br>
 Hibás kérés, hiányzó vagy érvénytelen az adott vagy lejárt adatmennyiség
 
 ```json
@@ -223,7 +224,7 @@ Hibás kérés, hiányzó vagy érvénytelen az adott vagy lejárt adatmennyisé
   "code": "BadArgument"
 }
 ```
-Kód 403<br>
+Kód: 403<br>
 A felhasználó jogosulatlanul teszi ezt a hívást
 
 ```json

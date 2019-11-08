@@ -1,40 +1,41 @@
 ---
-title: Próbálja ki a Marketing gyakorlati tanácsok |} Az Azure Marketplace-en
-description: Próbálja ki a közzétevők marketing-ajánlott eljárások
+title: A test Drive marketing ajánlott eljárásai | Azure piactér
+description: Tesztelési célú marketing – ajánlott eljárások a közzétevők számára
 services: Azure, Marketplace, Cloud Partner Portal,
 author: pbutlerm
 manager: Ricardo.Villalobos
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pabutler
-ms.openlocfilehash: 02b2715c813f7814cf8bf5d23414bc14d5ff5a30
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 177b4bd804ad878c8f983eefcd54399d1a72ba19
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64939982"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73824545"
 ---
-<a name="test-drive-marketing-and-best-practices"></a>Test Drive Marketing és ajánlott eljárások
+<a name="test-drive-marketing-and-best-practices"></a>A test Drive marketing és az ajánlott eljárások
 =======================================
 
-Az Azure Marketplace-en Test Drive egy remek eszköz a forgalmazók, és azt javasoljuk, be kell építeni a piaci megjelenést erőfeszítések elindításakor. Többféle ajánlott, javasoljuk, hogy nagy mértékben támogatási létrehozása több vezet a Test Drive közzététele után azonnal van:
+Az Azure Marketplace Test Drive egy nagyszerű eszköz a marketingesek számára, ezért javasoljuk, hogy a rendszer bevezetésekor a piaci megjelenéssel kapcsolatos erőfeszítéseit is beépítse. Számos ajánlott eljárással rendelkezünk, amelyeket akkor érdemes azonnal végrehajtani, ha közzéteszi, amely nagy mértékben támogatja a test Drive-ból származó további érdeklődőket:
 
-- **Átirányítási oldal**: Egy oldalon tegye a ki webes jelenlétét, amely ismerteti az összes Azure vizsgálati meghajtóval, és több hivatkozási kapcsolat irányítja a forgalmat a test Drive-bA közzététele
-- **Közösségi média**: Ahol közzéteheti a közösségi csatornákat az információ a test drive rendszeres ütemezés létrehozása
-- **Blogok**: Írjon egy blogbejegyzés tudnivalók az Azure kipróbálása. Jelölje ki a funkciók és előnyök, a felhasználó kap díjmentesen és a nagyon rövid ideig ingyenes tapasztalhat. Győződjön meg arról, az Azure vizsgálati meghajtó oldalát a blog másolás több helyen mutató hivatkozást. Íme egy minta Azure tesztverziós kapcsolatos blog-bejegyzésre mutató hivatkozást. Még jobb? A blogbejegyzés mutató hivatkozások küldése a közösségi csatornákat.
-- **E-mailek gondozásának biztosításáig**: Tájékoztassa az érdeklődők, amely rendelkezik foglalkozom a más csatornákon keresztül a márka e-mailben tájékoztatja őket a test drive, és ösztönzés ingyenes kipróbálására.
-- **Értékesítési képzési lehetőségek és eszközök**: Állítsa be az értékesítési csoport bemutató a test drive élményt és kapja meg néhány lehetőség az azonnali vesznek az érdeklődőket és a vele ügyfelek képzési munkamenetet. Értékesítési azok számára is beállítása egy bemutatót egy vállalat több kapcsolattartókat, majd küldje el azok a hivatkozást a test Drive ezt követően, hogy maguk is.
-- **Kereskedelmi mutat be és konferenciákon**: Itt van egy érzékelőadatainak fog kell részt vevő leendő ügyfelek iparági rendezvényen? Néhány laptopok, a érzékelőadatainak beállításához és a futnak, így az ügyfelek is igénybe vehet a test drive, a érzékelőadatainak, hogy kommunikálhassanak azokat a termékkel kapcsolatos során és azt követően szerzett tesztverziók!
+- **Hivatkozó lap**: a webes jelenléttel foglalkozó oldal közzététele, amely az Azure Test Drive összes információját tárgyalja, és több hivatkozó hivatkozást tesz közzé a tesztelési meghajtóra irányuló forgalom irányításával
+- **Közösségi média**: hozzon létre egy olyan ütemtervet, amelyben rendszeresen közzéteszi a közösségi média csatornáit
+- **Blogok**: Blogbejegyzés írása az Azure Test Drive-ról. Emelje ki azokat a funkciókat és előnyöket, amelyekkel a felhasználó díjmentesen és nagyon kevés időt vesz igénybe. Ügyeljen arra, hogy az Azure Test Drive oldalát több helyen is összekapcsolja a blogbejegyzésben. Az alábbi hivatkozás egy minta blogbejegyzésre mutat az Azure Test Drive-ról. Még jobb? A blogbejegyzésre mutató hivatkozások közzététele a közösségi média-csatornákon.
+- **E-mailek ápolása**: tájékoztassa az olyan érdeklődőket, akik más csatornákon keresztül foglalkoznak a márkával, hogy tájékoztassák őket a tesztelési meghajtóról, és javasoljuk, hogy ingyenesen kipróbálják.
+- **Értékesítési tréningek és eszközök**: képzéseket állíthat be az értékesítési csapatokkal, hogy bevezesse a tesztvezetés élményét, és néhány módon elsajátítsa az érdeklődőket és az ügyfeleket. A Sales emberek több partnerrel rendelkező bemutatót állíthatnak be egy vállalatnál, majd elküldhetik őket a tesztelési meghajtóra mutató hivatkozással, hogy maguk is elvégezzék.
+- **Kiállítások és konferenciák**: van egy standja egy iparági eseményen, amelyet a leendő ügyfelek fognak részt venni? Állítson be néhány laptopot a fülkében, és hajtsa végre a tesztelési meghajtókat, hogy az ügyfelek el tudják végezni a tesztelési meghajtót a standján, majd beszéljenek velük a termékről a felhasználói élmény során és után.
 
-<a name="lead-management"></a>Felügyeleti vezethet
+<a name="lead-management"></a>Érdeklődők kezelése
 ---------------
 
-Most, hogy magasan képzett érdeklődők elkészítése a test Drive-ról, érdemes érdeklődők válaszaránya kell építeni az értékesítési és marketing csatornák, és vegye fel a kapcsolatot a potenciális vevők az ügyfelek és a szolgáltatások biztosításához. Az alábbiakban néhány ajánlott eljárásokat az értékesítési tartózkodnak érdeklődők vezetési tartományállapot:
+Most, hogy a test Drive-ból származó, magasan minősített érdeklődőket generál, érdemes meggyőződnie arról, hogy az értékesítési és marketing csatornákon is beépíti ezeket az ügyfeleket, és a kilátások alapján bekapcsolja őket fizető ügyfeleknek. Íme néhány ajánlott eljárás, amely az értékesítési cikluson keresztüli vezetést illeti:
 
-- Győződjön meg arról, lépjen kapcsolatba az érdeklődőhöz őket a test drive véve 24 órán belül. Megjelenik a választott azonnal CRM-ben az érdeklődő után az ügyfél telepíti a test drive – ügyeljen arra, hogy egy e-mailt küldjön az első 24 órán belül, amíg azok továbbra is meleg. Kérelem ütemezés telefonhívás segít jobban megérteni, milyen problémák megoldásához, és ha a termék segítségére lehet elérni vele.
-- Néhány alkalommal nyomon követése, de nem bombard őket. Azt javasoljuk, e-mail-e érdeklődő néhány alkalommal, mielőtt zárja ki azokat, de ne adja az első próbálkozás után. Ne feledje: ezeket az ügyfeleket közvetlenül folytatnak a termékkel és időt az ingyenes próbaverzióra.
-- Azok a vevőket nagyszerű!
-- Ha, zárja be üzletet a test drive érdeklődő ügyeljen arra, hogy regisztrálja a partneri értékesítési csatlakozhat. Is – Örülnénk, az ügyfél wins, ahol a tesztverziós szerepet játszott Figyelem!
+- A tesztvezetés megkezdése után 24 órán belül kapcsolatba kell lépnie az érdeklődővel. Ha az ügyfél üzembe helyezése után azonnal elérhetővé válik a CRM-ben, akkor az első 24 órában küldjön e-mailt, amíg azok még mindig melegek. Kérje a telefonhívások ütemezését, hogy jobban megértsék, hogy milyen problémákkal próbálkoznak, és hogy a termék segíthet-e.
+- Kövessen néhány alkalommal, de ne bombázza őket. Javasoljuk, hogy e-mailt küldjön néhány alkalommal, mielőtt lezárta őket, de ne adja meg az első kísérlet után. Ne feledje, hogy ezek az ügyfelek közvetlenül a termékkel foglalkoznak, és időt vesznek igénybe az ingyenes próbaverzióban.
+- Nagyszerű kilátások!
+- Ha lezárta az ügyletet egy tesztelési meghajtóval, akkor a partner Sales kapcsolódási szolgáltatásban regisztrálnia kell. Azt is szeretnénk hallani az ügyfél-WINS-ben, ahol a test Drive egy szerepkört játszott!
 
-Itt megtalálható a meghajtó – gyakori kérdések: <https://github.com/Azure/AzureTestDrive/wiki/Test-Drive-Best-Practices>
+A tesztelési meghajtóval kapcsolatos gyakori kérdések itt találhatók: <https://github.com/Azure/AzureTestDrive/wiki/Test-Drive-Best-Practices>

@@ -12,12 +12,12 @@ ms.custom:
 - seodec18
 - seo-javascript-september2019
 - seo-python-october2019
-ms.openlocfilehash: 92175e3b9776f90bd50e356a700b2a2d475c8a85
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 82426c0093550864b421d7acc35780c4173895a8
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73602462"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73824732"
 ---
 # <a name="quickstart-build-a-python-application-using-an-azure-cosmos-db-sql-api-account"></a>Gyors útmutató: Python-alkalmazás létrehozása Azure Cosmos DB SQL API-fiók használatával
 
@@ -39,7 +39,7 @@ Ez a rövid útmutató a [PYTHON SDK](https://pypi.org/project/azure-cosmos/#his
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* [Python 3,6](https://www.python.org/downloads/), `python` végrehajtható fájl elérhető a `PATH`.
+* [Python 3.6 +](https://www.python.org/downloads/), `python` végrehajtható fájl elérhető a `PATH`.
 * [Visual Studio Code](https://code.visualstudio.com/)
 * [Python-bővítmény a Visual Studio Code-hoz](https://marketplace.visualstudio.com/items?itemName=ms-python.python#overview)
 
@@ -154,7 +154,7 @@ Az alábbi kódrészletek mind a `cosmos_get_started.py` fájlból származnak.
 5. Futtassa az alábbi parancsot az azure-cosmos csomag telepítéséhez. 
 
     ```python
-    pip3 install azure-cosmos==4.0.0b5
+    pip install --pre azure-cosmos
     ```
 
     Ha az azure-cosmos csomag telepítésekor „hozzáférés megtagadva” hibaüzenetet kap, akkor [rendszergazdaként kell futtatnia a VS Code alkalmazást](https://stackoverflow.com/questions/37700536/visual-studio-code-terminal-how-to-run-a-command-with-administrator-rights).

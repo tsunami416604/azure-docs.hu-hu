@@ -13,18 +13,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/20/2019
 ms.author: juliako
-ms.openlocfilehash: 2b8553c4c4b27e70eb5e4aeff447da9526c4ed1e
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: d38b11b8fc4351c6b074ccfdf47df06a71e0a0a4
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72598300"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73823972"
 ---
 # <a name="migrate-from-media-indexer-and-media-indexer-2-to-video-indexer"></a>Migrálás Media Indexer és Media Indexer 2 – Video Indexer
 
 A [Azure Media Indexer](media-services-index-content.md) adathordozó-processzor a 2020-es október 1-én megszűnik. A [Azure Media Indexer 2 előnézeti](media-services-process-content-with-indexer2.md) adathordozó processzora 2020 január 1-től megszűnik.  A [Azure Media Services video Indexer](https://docs.microsoft.com/azure/media-services/video-indexer/) ezeket a régi adathordozó-processzorokat váltja fel.
 
-A Azure Media Services Video Indexer Azure Media Analytics, Azure Search, Cognitive Servicesra épül (például a Face API, a Microsoft Translator, a Computer Vision API és Custom Speech Service). Lehetővé teszi, hogy megállapításokat nyerjen ki a videóiból a Video Indexer hang- és videómodelljeivel. Ha szeretné megtekinteni, hogy milyen forgatókönyvek Video Indexer használhatók a alkalmazásban, milyen funkciókat kínál, és hogyan kezdheti el az első lépéseket, tekintse meg [video Indexer videó-és hangmodelleket](../video-indexer/video-indexer-overview.md). 
+A Azure Media Services Video Indexer Azure Media Analytics, Azure Cognitive Search, Cognitive Servicesra épül (például a Face API, a Microsoft Translator, a Computer Vision API és Custom Speech Service). Lehetővé teszi, hogy megállapításokat nyerjen ki a videóiból a Video Indexer hang- és videómodelljeivel. Ha szeretné megtekinteni, hogy milyen forgatókönyvek Video Indexer használhatók a alkalmazásban, milyen funkciókat kínál, és hogyan kezdheti el az első lépéseket, tekintse meg [video Indexer videó-és hangmodelleket](../video-indexer/video-indexer-overview.md). 
 
 A videó-és hangfájlokból kinyerheti az elemzéseket az [Azure Media Services v3 Analyzer-előállítók](../latest/analyzing-video-audio-files-concept.md) használatával, vagy közvetlenül a [video Indexer API](https://api-portal.videoindexer.ai/)-k használatával. Jelenleg a Video Indexer API-k és a Media Services V3 API-k által kínált funkciók átfedésben vannak.
 
@@ -50,7 +50,7 @@ A Azure Media Services V3 API lehetővé teszi, hogy kinyerje a videóból és h
 
 A **AudioAnalyzerPreset** lehetővé teszi több hang-elemzés kinyerését hang-vagy videofájl használatával. A kimenet tartalmaz egy VTT vagy TTML-fájlt a hangátirathoz és egy JSON-fájlhoz (az összes további hangelemzéssel). A hangelemzések közé tartoznak a kulcsszavak, a hangszórók indexelése és a beszéd hangulatának elemzése. A AudioAnalyzerPreset az egyes nyelvekhez is támogatja a nyelvfelismerés használatát. Részletes információk: [átalakítások](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#audioanalyzerpreset).
 
-### <a name="get-started"></a>Az első lépések
+### <a name="get-started"></a>Bevezetés
 
 Első lépésként tekintse meg a következőt:
 
@@ -77,11 +77,11 @@ Néhány ismert különbség:
 * A hangindexelési blob (AIB) fájljai többé nem lesznek támogatottak. Ez a funkció az indexelő 1 technológiára volt jellemző, és már nem érhető el.  
 * Cognitive Services Speech Services nem támogatja a kulcsszavak kinyerését. A Video Indexer és a Media Services v3 AudioAnalyzerPreset azonban a kulcsszavakat a JSON-fájlformátumban is hatékonyabban kínálja. 
 
-## <a name="need-help"></a>Segítség
+## <a name="need-help"></a>Segítségre van szüksége?
 
 A támogatási jegy megnyitásához lépjen az [új támogatási kérelemre](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest) .
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Örökölt összetevők](legacy-components.md)
 * [Díjszabási oldal](https://azure.microsoft.com/pricing/details/media-services/#encoding)

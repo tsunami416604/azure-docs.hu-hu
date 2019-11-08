@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/18/2019
 ms.author: yegu
-ms.openlocfilehash: d6bf0f788f7c71a55a4c3667023d8b1d9f571baf
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: 4f577e6497e853d9b75f81b5da4f7121064a9d07
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72820984"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73826341"
 ---
 # <a name="troubleshoot-azure-cache-for-redis-timeouts"></a>Az Azure cache Redis-időtúllépésekkel kapcsolatos hibáinak megoldása
 
@@ -34,7 +34,7 @@ Ez a szakasz azokat a hibaelhárítási időtúllépési problémákat ismerteti
 
 ## <a name="redis-server-patching"></a>Redis-kiszolgáló javítása
 
-A Redis készült Azure cache rendszeresen frissíti a kiszolgáló szoftverét az általa felügyelt szolgáltatás funkciójának részeként. Ez a [javítási](cache-failover.md) tevékenység nagyrészt a jelenet mögött zajlik. A feladatátvétel során a Redis-kiszolgáló csomópontjainak javításakor előfordulhat, hogy az ezekhez a csomópontokhoz csatlakozó Redis-ügyfelek átmeneti időtúllépéseket tapasztalnak, mivel ezek a csomópontok közötti kapcsolatok váltanak át. Tekintse meg, [hogyan befolyásolja a feladatátvétel az ügyfélalkalmazás](cache-failover.md#how-does-a-failover-impact-my-client-application) működését, ha további információra van szüksége arról, hogy milyen mellékhatásokkal lehet javítani az alkalmazáson, és hogyan javíthatja a javítási események kezelését.
+A Redis készült Azure cache rendszeresen frissíti a kiszolgáló szoftverét az általa felügyelt szolgáltatás funkciójának részeként. Ez a [javítási](cache-failover.md) tevékenység nagyrészt a jelenet mögött zajlik. A feladatátvétel során a Redis-kiszolgáló csomópontjainak javításakor előfordulhat, hogy az ezekhez a csomópontokhoz csatlakozó Redis-ügyfelek átmeneti időtúllépéseket tapasztalnak, mivel ezek a csomópontok közötti kapcsolatok váltanak át. További információ arról, [hogy a feladatátvétel milyen hatással van az ügyfélalkalmazás alkalmazására](cache-failover.md#how-does-a-failover-affect-my-client-application) , és hogy miként javítható a javítási események kezelésének lehetősége.
 
 ## <a name="stackexchangeredis-timeout-exceptions"></a>StackExchange. Redis időtúllépési kivételek
 
@@ -94,7 +94,7 @@ A lehetséges kiváltó okok kivizsgálásához a következő lépéseket haszn�
 1. A magas Redis-kiszolgáló terhelése időtúllépéseket eredményezhet. A kiszolgáló terhelését a `Redis Server Load` [gyorsítótár teljesítményének metrikájának](cache-how-to-monitor.md#available-metrics-and-reporting-intervals)figyelésével figyelheti. A kiszolgálói terhelés 100 (maximális érték) azt jelzi, hogy a Redis-kiszolgáló foglalt, üresjárati idő nélkül, feldolgozási kérések. Ha szeretné megtekinteni, hogy bizonyos kérelmek elvesznek-e az összes kiszolgálói képességgel, futtassa a Slowlog parancs kimenetét parancsot az előző bekezdésben leírtak szerint. További információ: magas CPU-használat/-kiszolgáló terhelése.
 1. Történt-e olyan esemény az ügyféloldali oldalon, amely a hálózati visszavertség okozta volna? Gyakori események: az ügyfél-példányok számának felfelé vagy lefelé skálázása, az ügyfél új verziójának üzembe helyezése vagy az automatikus méretezés engedélyezve van. A tesztelés során azt találtuk, hogy az automatikus méretezés vagy a felfelé/lefelé méretezés a kimenő hálózati kapcsolat elvesztését okozhatja néhány másodpercig. Az StackExchange. Redis kód ellenáll az ilyen eseményeknek, és újracsatlakozik. Az újrakapcsolódás során a várólistán lévő összes kérelem időtúllépést okozhat.
 1. Volt egy nagy kérés, amely korábban több kisebb kérést adott a gyorsítótárnak, amely túllépte az időkorlátot? A hibaüzenetben `qs` paraméterrel megtudhatja, hány kérést küldött az ügyféltől a kiszolgálónak, de nem feldolgozott választ. Ez az érték továbbra is növekszik, mert a StackExchange. Redis egyetlen TCP-kapcsolatban használ, és egyszerre csak egy választ tud olvasni. Annak ellenére, hogy az első művelet időtúllépést okozott, nem állítja le a kiszolgálóról vagy a kiszolgálóra küldött több adatmennyiséget. A rendszer letiltja a további kérelmeket, amíg a nagyméretű kérelem be nem fejeződik, és időtúllépést okozhat. Az egyik megoldás az időtúllépések valószínűségének csökkentése azáltal, hogy a gyorsítótár elég nagy méretű a számítási feladatokhoz és a nagyméretű értékek kisebb adattömbökbe való felosztásához. Egy másik lehetséges megoldás a `ConnectionMultiplexer` objektumok készletének használata az ügyfélen, és az új kérés küldésekor válassza ki a legkevésbé betöltött `ConnectionMultiplexer`. A több kapcsolati objektumba való betöltésnek meg kell akadályoznia, hogy a többi kérelem is időtúllépést okozzon.
-1. Ha `RedisSessionStateProvider` használ, győződjön meg róla, hogy az újrapróbálkozások időtúllépését helyesen állította be. `retryTimeoutInMilliseconds` nagyobbnak kell lennie, mint `operationTimeoutInMilliseconds`, ellenkező esetben nem történik újrapróbálkozás. A következő példában `retryTimeoutInMilliseconds` a 3000 értékre van állítva. További információ: [ASP.NET munkamenet-szolgáltató az Azure cache for Redis](cache-aspnet-session-state-provider.md) , valamint [a munkamenet-állapot szolgáltatójának és a kimeneti gyorsítótár-szolgáltató konfigurációs paramétereinek használata](https://github.com/Azure/aspnet-redis-providers/wiki/Configuration).
+1. Ha `RedisSessionStateProvider`használ, győződjön meg róla, hogy az újrapróbálkozások időtúllépését helyesen állította be. `retryTimeoutInMilliseconds` nagyobbnak kell lennie, mint `operationTimeoutInMilliseconds`, ellenkező esetben nem történik újrapróbálkozás. A következő példában `retryTimeoutInMilliseconds` a 3000 értékre van állítva. További információ: [ASP.NET munkamenet-szolgáltató az Azure cache for Redis](cache-aspnet-session-state-provider.md) , valamint [a munkamenet-állapot szolgáltatójának és a kimeneti gyorsítótár-szolgáltató konfigurációs paramétereinek használata](https://github.com/Azure/aspnet-redis-providers/wiki/Configuration).
 
     ```xml
     <add
@@ -111,7 +111,7 @@ A lehetséges kiváltó okok kivizsgálásához a következő lépéseket haszn�
       retryTimeoutInMilliseconds="3000" />
     ```
 
-1. A Redis-kiszolgálóhoz tartozó Azure gyorsítótárban található memóriahasználat ellenőrzése `Used Memory RSS` és `Used Memory` [figyelésével](cache-how-to-monitor.md#available-metrics-and-reporting-intervals) . Ha egy kizárási házirend van érvényben, a Redis megkezdi a kulcsok kizárását, amikor `Used_Memory` eléri a gyorsítótár méretét. Ideális esetben `Used Memory RSS` csak valamivel nagyobbnak kell lennie, mint `Used memory`. A nagy különbség azt jelenti, hogy a memória töredezettsége (belső vagy külső). Ha `Used Memory RSS` kisebb, mint `Used Memory`, akkor a gyorsítótár memóriájának egy részét az operációs rendszer felcserélte. Ha ez a csere történik, bizonyos jelentős késések várhatók. Mivel a Redis nem szabályozhatja, hogy a foglalások hogyan legyenek leképezve a memória oldalaira, a magas `Used Memory RSS` gyakran a memória használatának egy csúcsát eredményezi. Ha a Redis-kiszolgáló memóriát szabadít fel, a lefoglaló veszi át a memóriát, de előfordulhat, hogy nem adja vissza a memóriát a rendszernek. Az operációs rendszer által jelentett `Used Memory` érték és a memória-felhasználás között eltérés tapasztalható. Lehetséges, hogy a memóriát a Redis használta és bocsátotta ki, de nem adta vissza a rendszernek. A memóriával kapcsolatos problémák enyhítése érdekében hajtsa végre a következő lépéseket:
+1. A Redis-kiszolgálóhoz tartozó Azure gyorsítótárban található memóriahasználat ellenőrzése `Used Memory RSS` és `Used Memory`[figyelésével](cache-how-to-monitor.md#available-metrics-and-reporting-intervals) . Ha egy kizárási házirend van érvényben, a Redis megkezdi a kulcsok kizárását, amikor `Used_Memory` eléri a gyorsítótár méretét. Ideális esetben `Used Memory RSS` csak valamivel nagyobbnak kell lennie, mint `Used memory`. A nagy különbség azt jelenti, hogy a memória töredezettsége (belső vagy külső). Ha `Used Memory RSS` kisebb, mint `Used Memory`, akkor a gyorsítótár memóriájának egy részét az operációs rendszer felcserélte. Ha ez a csere történik, bizonyos jelentős késések várhatók. Mivel a Redis nem szabályozhatja, hogy a foglalások hogyan legyenek leképezve a memória oldalaira, a magas `Used Memory RSS` gyakran a memória használatának egy csúcsát eredményezi. Ha a Redis-kiszolgáló memóriát szabadít fel, a lefoglaló veszi át a memóriát, de előfordulhat, hogy nem adja vissza a memóriát a rendszernek. Az operációs rendszer által jelentett `Used Memory` érték és a memória-felhasználás között eltérés tapasztalható. Lehetséges, hogy a memóriát a Redis használta és bocsátotta ki, de nem adta vissza a rendszernek. A memóriával kapcsolatos problémák enyhítése érdekében hajtsa végre a következő lépéseket:
 
    - Frissítse a gyorsítótárat nagyobb méretűre, hogy a rendszer ne fusson a memóriára vonatkozó korlátozásokkal.
    - Állítsa be a kulcs lejárati idejét úgy, hogy a régebbi értékeket proaktív módon kizárja a rendszer.
@@ -119,7 +119,7 @@ A lehetséges kiváltó okok kivizsgálásához a következő lépéseket haszn�
 
    További információ: [a Redis-kiszolgáló memória-nyomása](cache-troubleshoot-server.md#memory-pressure-on-redis-server).
 
-## <a name="additional-information"></a>További információk
+## <a name="additional-information"></a>További információ
 
 - [Az Azure cache hibaelhárítása Redis ügyféloldali problémák esetén](cache-troubleshoot-client.md)
 - [Az Azure cache hibaelhárítása a Redis-kiszolgálókkal kapcsolatos problémák esetén](cache-troubleshoot-server.md)

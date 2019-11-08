@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: rboucher
 ms.author: robb
 ms.date: 03/14/2019
-ms.openlocfilehash: d4a16fc3d4c29b1e270fa088af75d287a81180c0
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 04dcdbe6854a386f7edaa04aa9c2912789122a31
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72552064"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73827458"
 ---
 # <a name="azure-monitor-partner-integrations"></a>Azure Monitor partner-integrációk
 
@@ -69,7 +69,7 @@ A Circonus egy helyszíni vagy SaaS-alapú üzembe helyezéshez készült, a Ser
 
 A felhőt egyesítheti és automatizálhatja egy olyan platformmal, amely időt és pénzt takarít meg. A CloudHealth láthatóságot, intuitív optimalizálást és sziklaszilárd irányítási eljárásokat biztosít a felhőalapú felügyelethez. A CloudHealth platform lehetővé teszi a vállalatok és a MSP számára, hogy maximalizálják a Felhőbeli beruházások megtérülését. A költségeket, a használatot, a teljesítményt és a biztonságot érintő döntéseket hozhat.
 
-[tudj meg többet.][cloudhealth-doc]
+[További információ.][cloudhealth-doc]
 
 ## <a name="cloudmonix"></a>CloudMonix
 
@@ -232,7 +232,7 @@ A Turbonomic hibrid felhőkhöz biztosítja a számítási feladatok automatizá
 
 [Részletek][turbonomic-doc]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 - [További információ a Azure Monitor](../../azure-monitor/overview.md)
 - [Metrikák elérése a REST API használatával](rest-api-walkthrough.md)
 - [A tevékenység naplójának továbbítása nem Microsoft-szolgáltatásba](../../azure-monitor/platform/activity-logs-stream-event-hubs.md)
@@ -267,5 +267,5 @@ A Turbonomic hibrid felhőkhöz biztosítja a számítási feladatok automatizá
 [solarwinds-doc]: https://www.solarwinds.com/topics/azure-monitoring "A SolarWinds dokumentációja."
 [splunk-doc]: https://github.com/Microsoft/AzureMonitorAddonForSplunk/wiki/Azure-Monitor-Addon-For-Splunk "A splunk dokumentációja."
 [sumologic-doc]: https://www.sumologic.com/azure "A SumoLogic dokumentációja."
-[turbonomic-doc]: https://turbonomic.com/solutions/technologies/azure-cloud/ "Turbonomic-bevezetés."
+[turbonomic-doc]: https://turbonomic.com/ "Turbonomic-bevezetés."
 

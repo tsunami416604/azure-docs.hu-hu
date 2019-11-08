@@ -1,60 +1,61 @@
 ---
-title: Cloud Partner Portalon támogatása |} Az Azure Marketplace-en
-description: A Cloud Partner portálra támogatást kaphat.
+title: A Cloud Partner Portal támogatása | Azure piactér
+description: Támogatás kérése a Cloud Partner Portal.
 services: Azure, Marketplace, Cloud Partner Portal,
 author: dan-wesley
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/17/2018
 ms.author: pabutler
-ms.openlocfilehash: 35a5a4c4cfdbfa26ea00f0f4d76f91f9f76a1ca5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 30fc0ea4a8baba4f0677c9cceb12a7887d205f21
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64935372"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73827676"
 ---
-# <a name="get-support-for-cloud-partner-portal"></a>Támogatás a Cloud Partner portálra
+# <a name="get-support-for-cloud-partner-portal"></a>Támogatás kérése Cloud Partner Portal
 
-A Microsoft-termékek és szolgáltatások széles támogatást biztosít.
-Annak biztosítása, hogy a lekérdezés talál-e a megfelelő támogatási csapat fontos arról, hogy egy időben, és megfelelő választ. Vegye figyelembe a következő forgatókönyveket, amelyek segítséget nyújtanak a lekérdezés átirányítása a megfelelő csoportnak:
+A Microsoft számos termék és szolgáltatás támogatását biztosítja.
+Győződjön meg arról, hogy a lekérdezés megtalálta a megfelelő támogatási csapatot, így biztosítva a megfelelő és kellő időben történő válaszadást. Vegye figyelembe a következő forgatókönyveket, amelyek segítenek a lekérdezés átirányításában a megfelelő csapatnak:
 
--   Ha Ön a közzétevő és egy ügyfél kérdése van, kérje meg a ügyfelének, hogy a támogatási hivatkozásokkal, támogatást kérhet [az Azure Portalon](https://portal.azure.com/)
+-   Ha Ön kiadó, és kérdése van egy ügyféltől, kérje meg az ügyfelet, hogy kérjen támogatást az [Azure Portal](https://portal.azure.com/) támogatási hivatkozásainak használatával.
 
--   Ha Ön a közzétevő és az alkalmazás vagy szolgáltatás kapcsolatos kérdése van, tekintse át az alábbi lépéseket egy támogatási jegy megnyitása.
+-   Ha Ön kiadó, és az alkalmazásával vagy szolgáltatásával kapcsolatos kérdése van, tekintse át a következő lépéseket a támogatási jegy megnyitásához.
 
 ## <a name="to-open-a-support-ticket"></a>Támogatási jegy megnyitása
 
-1. Lépjen a [Cloud Partner Portalon](https://cloudpartner.azure.com/) , és jelentkezzen be munkahelyi vagy iskolai fiókjával.
+1. Lépjen [Cloud Partner Portal](https://cloudpartner.azure.com/) , és jelentkezzen be munkahelyi vagy iskolai fiókjával.
 
-2. Az oldal jobb oldalán a felső menüben válassza ki a **súgó** ikonra, majd válassza **támogatási**.
+2. A lap jobb oldalán a felső menüben válassza a **Súgó** ikon, majd a **támogatás**lehetőséget.
 
 ![support1](./media/cloud-partner-portal-support-for-cloud-partner-portal/support1.png)
 
 
-1. A **incidens létrehozása**, azonosíthatja a **Problématípus** és **kategória**.
+1. Az **incidens létrehozásakor**azonosítsa a **probléma típusát** és **kategóriáját**.
 
 
 ![support2](./media/cloud-partner-portal-support-for-cloud-partner-portal/support2.png)
 
 
-1. Válassza ki **indítási kérést**.
+1. Válassza a **kezdési kérelem**lehetőséget.
 
-1. Adja meg a kapcsolattartási adatokat, és a probléma leírását. Teljesen is a probléma leírását. Adja meg azokat a fájlokat (például a képernyőképek rögzítését, hiba leírása vagy hálózati nyomkövetés), akkor lehet hasznos, a megoldásban.
+1. Adja meg a kapcsolattartási adatokat, és írja le a problémát. A probléma teljes körű leírása. Adjon meg olyan fájlokat (például képernyőfelvételeket, hibák leírását vagy hálózati nyomkövetéseket), amelyek hasznosak lehetnek a probléma megoldásához.
 
-![support3](./media/cloud-partner-portal-support-for-cloud-partner-portal/support3.png)
+![– támogatás3](./media/cloud-partner-portal-support-for-cloud-partner-portal/support3.png)
 
-1. Válassza ki **küldés** a jegy létrehozása.
+1. A jegy létrehozásához válassza a **Submit (Küldés** ) lehetőséget.
 
-### <a name="support-followup"></a>Követési támogatása
+### <a name="support-followup"></a>Támogatás követése
 
-Azt fogjuk 24 órán belül a jegy igazolhatom, és rendelje hozzá a problémát, a prioritás és súlyosság. A támogatási szakértők dedikált csapatunk segíti annak hozzásegíthetik a szolgáltatásiszint-szerződés válaszideje alapján. 
+A jegy kézhezvételét 24 órán belül visszaigazoljuk, és a probléma prioritást és súlyosságot kell kiosztania. A támogatási mérnökök dedikált csapata a szolgáltatói szerződés válaszideje alapján segít a megoldásban. 
 
-A következő képernyőfelvétel-készítés, amely a Microsoft ügyfélszolgálata megerősítésként kap incidens információit jeleníti meg.
+A következő képernyőfelvételen a Microsoft támogatási szolgálatának megerősítéseként kapott incidensekre vonatkozó információk láthatók.
 
 ![support4](./media/cloud-partner-portal-support-for-cloud-partner-portal/support4.png)
 
 
--   Kapcsolatfelvétel a problémával kapcsolatban van szüksége, ha válaszolni az e-mailt támogatási alkalommal kapott, és azt is ütemezheti való kommunikációhoz, idő.
+-   Ha a probléma megoldására van szüksége, válaszoljon a támogatási időhöz kapott e-mailre, és beütemezhetjük az időt, hogy beszéljen Önnel.
 
--   Megtekintheti a folyamat állapotát a probléma megoldásához bármelyik idő szerint kiválasztva a **nézet incidens online** előző képernyőfelvételen látható hivatkozásra.
+-   A probléma előrehaladását bármikor megtekintheti az előző képernyőfelvételen látható, az **incidens online megtekintése** hivatkozásra kattintva.

@@ -1,22 +1,22 @@
 ---
-title: 'Gyors útmutató: Azure Blob Storage ügyféloldali kódtár Java SDK V8-hoz'
-description: Létre fog hozni egy tárfiókot és egy tárolót egy objektumtárban (Blobtárban). Ezután használja az Azure Storage ügyféloldali kódtárat a Java SDK V8-hoz a Blobok Azure Storage-ba való feltöltéséhez, egy blob letöltéséhez és a tárolóban lévő Blobok listázásához.
+title: 'Gyors útmutató: Azure Blob Storage ügyféloldali kódtára a Javához'
+description: Létre fog hozni egy tárfiókot és egy tárolót egy objektumtárban (Blobtárban). Ezután használja az Azure Storage ügyféloldali kódtárat a Javához, és töltsön fel egy blobot az Azure Storage-ba, letölt egy blobot, és kilistázza a tárolóban lévő blobokat.
 author: mhopkins-msft
 ms.author: mhopkins
 ms.date: 10/05/2019
 ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
-ms.openlocfilehash: 404599ade960d43ef2cb86777fb41701ce96e11b
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: a6c4380e44d705e551bc96746a809c57aa02ac5b
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73609124"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73825373"
 ---
-# <a name="quickstart-azure-blob-storage-client-library-for-java-sdk-v8"></a>Gyors útmutató: Azure Blob Storage ügyféloldali kódtár Java SDK V8-hoz
+# <a name="quickstart-azure-blob-storage-client-library-v8-for-java"></a>Gyors útmutató: Azure Blob Storage ügyféloldali kódtára a Javához
 
-Ismerkedjen meg a Javához készült Azure Blob Storage ügyféloldali kódtáraval. Az Azure Blob Storage a Microsoft objektum-tárolási megoldás a felhőhöz. Kövesse a csomag telepítésének lépéseit, és próbálja ki például az alapszintű feladatokhoz tartozó kódot. A Blob Storage nagy mennyiségű strukturálatlan adat tárolására van optimalizálva.
+Ismerkedjen meg a Javához készült Azure Blob Storage ügyféloldali kódtár V8-as használatába. Az Azure Blob Storage a Microsoft objektum-tárolási megoldás a felhőhöz. Kövesse a csomag telepítésének lépéseit, és próbálja ki például az alapszintű feladatokhoz tartozó kódot. A Blob Storage nagy mennyiségű strukturálatlan adat tárolására van optimalizálva.
 
 A Javához készült Azure Blob Storage ügyféloldali kódtár a következőhöz használható:
 

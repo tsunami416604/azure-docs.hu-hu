@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: tutorial
 ms.date: 11/05/2019
 ms.author: diberry
-ms.openlocfilehash: 0241af88d30d47233d972bcb3e7c58ef8de12d6e
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: 1e39126324de486d118f808b37672c9fd08af711
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73648250"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73822760"
 ---
 # <a name="tutorial-build-luis-app-to-determine-user-intentions"></a>Oktatóanyag: a felhasználói szándékok meghatározására szolgáló LUIS-alkalmazás létrehozása
 
@@ -205,4 +205,4 @@ Miután a LUIS visszaadja a JSON-választ, a LUIS nem foglalkozik tovább a kér
 Ez az oktatóanyag létrehozta a LUIS-alkalmazást, létrehozta a leképezéseket, felvette például az egyes szándékok hosszúságú kimondott szöveg, felvettük egy példát a hosszúságú kimondott szöveg, a kitanított, közzétett és tesztelt végponton. Ezek a LUIS-modellek létrehozásának alapvető lépései. 
 
 > [!div class="nextstepaction"]
-> [Előre összeállított szándékok és entitások hozzáadása ehhez az alkalmazáshoz](luis-tutorial-prebuilt-intents-entities.md)
+> [Előre összeállított szándékok és entitások hozzáadása ehhez az alkalmazáshoz](tutorial-machine-learned-entity.md)

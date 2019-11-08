@@ -1,6 +1,6 @@
 ---
-title: Az Azure Service Fabric biztonsági másolat visszaállítása |} A Microsoft Docs
-description: A rendszeres biztonsági mentését, és állítsa vissza a szolgáltatás a Service Fabric-adatok biztonsági másolatából az alkalmazásadatok visszaállításához.
+title: Biztonsági mentés visszaállítása az Azure Service Fabricban | Microsoft Docs
+description: Használja az Service Fabric rendszeres biztonsági mentési és visszaállítási funkcióját az alkalmazásadatok biztonsági másolatából származó adatok visszaállításához.
 services: service-fabric
 documentationcenter: .net
 author: aagup
@@ -14,36 +14,36 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/30/2018
 ms.author: aagup
-ms.openlocfilehash: e4ada412547360f97e869d3312b65d869fa3df48
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ff705eabde111b5ebac1e2d714e3ece221c36e90
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65413715"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73819321"
 ---
-# <a name="restoring-backup-in-azure-service-fabric"></a>Az Azure Service Fabric biztonsági másolat visszaállítása
+# <a name="restoring-backup-in-azure-service-fabric"></a>Biztonsági mentés visszaállítása az Azure-ban Service Fabric
 
-Az Azure Service Fabric Reliable Stateful services és Reliable Actors fenntarthat egy változtatható, mérvadó állapotot a kérések és válaszok tranzakció befejezése után. Az állapotalapú szolgáltatások előfordulhat, hogy hosszú ideig leáll vagy katasztrófa miatt adat elvész. Ha ez történik, a szolgáltatást kell kell biztonsági mentésből a legújabb elfogadható, hogy a munka folytatásához is.
+Az Azure Service Fabric a megbízható állapot-nyilvántartó szolgáltatások és a Reliable Actors a kérések és válaszok tranzakciójának befejeződése után megváltoztathatatlan, mérvadó állapotot tarthatnak fenn. Előfordulhat, hogy egy állapot-nyilvántartó szolgáltatás egy katasztrófa miatt hosszabb ideig leáll, vagy elveszíti az információkat. Ha ez történik, a szolgáltatást a legújabb elfogadható biztonsági mentésből kell visszaállítani, hogy továbbra is működőképes legyen.
 
-Ha például egy szolgáltatást, hogy a következő esetekben elleni védelem érdekében az adatok biztonsági mentését is konfigurálhat:
+Beállíthat például egy szolgáltatást úgy, hogy biztonsági másolatot készít az adatairól a következő helyzetekben történő védelem érdekében:
 
-- **Kis-és vész-helyreállítási**: Egy egész Service Fabric-fürt végleges adatvesztést.
-- **Kis-és az adatvesztést**: A replikák szolgáltatás partíció többsége végleges adatvesztést.
-- **Kis-és az adatvesztést**: Véletlen törlés és adatsérülések a szolgáltatás. A rendszergazda például megtekintővel törli a szolgáltatást.
-- **Kis-és adatsérülés**: Hibák a szolgáltatás adatsérülést okozhat. Adatsérülés például csak akkor fordulhat elő, amikor a kód frissítése hibás adatokat ír egy megbízható gyűjteményben. Ebben az esetben előfordulhat, mind a kódot, és az adatok visszaállítása egy korábbi állapotba.
+- Vész- **helyreállítási eset**: egy teljes Service Fabric fürt végleges elvesztése.
+- **Adatvesztés esetén**: a szolgáltatás-partíció replikáinak végleges elvesztése.
+- **Adatvesztés esetén**: véletlen törlés vagy a szolgáltatás sérülése. A rendszergazda például hibásan törli a szolgáltatást.
+- **Adatsérülés esetén**: a szolgáltatás hibái adatsérülést okozhatnak. Például előfordulhat, hogy az adatsérülés akkor fordul elő, amikor a szolgáltatási kód frissítése hibás adatot ír egy megbízható gyűjteménybe. Ebben az esetben előfordulhat, hogy a kódot és az adathalmazt is vissza kell állítania egy korábbi állapotba.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- A visszaállítás elindítása a _Hibaelemzési szolgáltatás (FAS)_ engedélyezni kell a fürt számára.
-- A _biztonsági másolat visszaállítása szolgáltatás (BRS)_ létrehozott biztonsági másolat.
-- A visszaállítás csak egy partíciót, aktiválható.
-- Telepítse a Microsoft.ServiceFabric.Powershell.Http modul [az előzetes verzió] konfigurációs hívások.
+- A visszaállítás elindításához engedélyezni kell a _hiba-elemzési szolgáltatást (FAS)_ a fürtön.
+- A Backup _Restore szolgáltatás (BRS)_ létrehozta a biztonsági mentést.
+- A RESTORE utasítás csak partíción indítható el.
+- A konfigurációs hívások készítéséhez telepítse a Microsoft. ServiceFabric. PowerShell. http modult [előzetes verzióban].
 
 ```powershell
     Install-Module -Name Microsoft.ServiceFabric.Powershell.Http -AllowPrerelease
 ```
 
-- Győződjön meg arról, hogy a fürt csatlakoztatva van-e használatával, a `Connect-SFCluster` parancs bármilyen konfigurációs kérést Microsoft.ServiceFabric.Powershell.Http modul elvégzése előtt.
+- Győződjön meg arról, hogy a fürt a `Connect-SFCluster` parancs használatával van csatlakoztatva, mielőtt a Microsoft. ServiceFabric. PowerShell. http modul használatával bármilyen konfigurációs kérelmet hozna.
 
 ```powershell
 
@@ -52,29 +52,29 @@ Ha például egy szolgáltatást, hogy a következő esetekben elleni védelem �
 ```
 
 
-## <a name="triggered-restore"></a>Aktivált visszaállítása
+## <a name="triggered-restore"></a>Aktivált visszaállítás
 
-A visszaállítás aktiválhatja az az alábbi esetekben:
+A visszaállítás a következő esetekben indítható el:
 
-- Az adatok visszaállítás _vész-helyreállítási_.
-- Az adatok visszaállítás _sérülés vagy adatvesztés_.
+- Adatvisszaállítás a vész- _helyreállításhoz_.
+- _Adatsérülés/adatvesztés_.
 
-### <a name="data-restore-in-the-case-of-disaster-recovery"></a>Vészhelyreállítás esetén adatok visszaállítása
+### <a name="data-restore-in-the-case-of-disaster-recovery"></a>Adatvisszaállítás vész-helyreállítás esetén
 
-Ha egy egész Service Fabric-fürt elveszett, helyreállíthatja az adatokat a partíciók a megbízható állapotalapú szolgáltatás és a Reliable Actors. A kívánt biztonsági mentés választható ki a listából, használatakor [biztonsági mentési tár adatokkal GetBackupAPI](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-getbackupsfrombackuplocation). A biztonsági mentési enumerálás egy alkalmazás, szolgáltatás vagy partíció is lehet.
+Ha egy teljes Service Fabric-fürt elvész, helyreállíthatja az adatokat a megbízható állapot-nyilvántartó szolgáltatás partíciói számára, és Reliable Actors. A kívánt biztonsági mentést kiválaszthatja a listából, ha [GetBackupAPI használ a biztonsági mentési tár részleteivel](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-getbackupsfrombackuplocation). A biztonsági mentés enumerálása lehet egy alkalmazás, szolgáltatás vagy partíció.
 
-A következő példában a tegyük fel, hogy elvesznek a fürt ugyanazon a fürtön, amely az említett [rendszeres biztonsági megbízható állapotalapú szolgáltatás és a Reliable Actors](service-fabric-backuprestoreservice-quickstart-azurecluster.md#enabling-periodic-backup-for-reliable-stateful-service-and-reliable-actors). Ebben az esetben `SampleApp` üzemel, a biztonsági mentési szabályzat engedélyezve van, és a biztonsági másolatokat az Azure Storage vannak konfigurálva.
+A következő példában feltételezzük, hogy az elveszett fürt ugyanaz a fürt, amely a [megbízható állapot-nyilvántartó szolgáltatás és a Reliable Actors rendszeres biztonsági mentésének engedélyezése](service-fabric-backuprestoreservice-quickstart-azurecluster.md#enabling-periodic-backup-for-reliable-stateful-service-and-reliable-actors)című részében szerepel. Ebben az esetben `SampleApp` a biztonsági mentési szabályzattal van telepítve, és a biztonsági másolatok az Azure Storage-ba vannak konfigurálva.
 
-#### <a name="powershell-using-microsoftservicefabricpowershellhttp-module"></a>Microsoft.ServiceFabric.Powershell.Http modult használó PowerShell
+#### <a name="powershell-using-microsoftservicefabricpowershellhttp-module"></a>PowerShell a Microsoft. ServiceFabric. PowerShell. http modul használatával
 
 ```powershell
 Get-SFBackupsFromBackupLocation -Application -ApplicationName 'fabric:/SampleApp' -AzureBlobStore -ConnectionString 'DefaultEndpointsProtocol=https;AccountName=<account-name>;AccountKey=<account-key>;EndpointSuffix=core.windows.net' -ContainerName 'backup-container'
 
 ```
 
-#### <a name="rest-call-using-powershell"></a>REST-hívást Powershell-lel
+#### <a name="rest-call-using-powershell"></a>Rest-hívás a PowerShell használatával
 
-A REST API használatával az összes partíciók belül létrehozott biztonsági mentéseket listáját adja vissza egy PowerShell-parancsprogram végrehajtása a `SampleApp` alkalmazás. Az API-t a biztonsági mentési tár információkat listázhatja az elérhető biztonsági másolatok van szükség.
+Hajtson végre egy PowerShell-szkriptet a REST API használatára a `SampleApp` alkalmazásban található összes partícióhoz létrehozott biztonsági másolatok listájának visszaküldéséhez. Az API-nak szüksége van a biztonsági mentési tár adataira az elérhető biztonsági másolatok listázásához.
 
 ```powershell
 $StorageInfo = @{
@@ -101,7 +101,7 @@ $BackupPoints = (ConvertFrom-Json $response.Content)
 $BackupPoints.Items
 ```
 
-Futtassa a fenti kimeneti példa:
+A fenti Futtatás mintájának kimenete:
 
 ```
 BackupId                : b9577400-1131-4f88-b309-2bb1e943322c
@@ -141,7 +141,7 @@ CreationTimeUtc         : 2018-04-06T21:25:36Z
 FailureError            :
 ```
 
-A visszaállítás elindítása, jelölje ki a biztonsági mentéseket. Az aktuális biztonsági vész-helyreállítási lehet például a következő biztonsági mentés:
+A visszaállítás elindításához válassza ki az egyik biztonsági mentést. A vész-helyreállítási aktuális biztonsági mentés például a következő biztonsági mentés lehet:
 
 ```
 BackupId                : b0035075-b327-41a5-a58f-3ea94b68faa4
@@ -157,15 +157,15 @@ CreationTimeUtc         : 2018-04-06T21:10:27Z
 FailureError            :
 ```
 
-A visszaállítási API-t, meg kell adnia a _biztonsági mentés azonosítója:_ és _BackupLocation_ részleteit.
+A Restore API esetében meg kell adnia a _biztonsági másolat azonosítója_ és a _BackupLocation_ adatait.
 
-Is kell választania a célpartíción leírt módon a másodlagos fürtben a [partícióséma](service-fabric-concepts-partitioning.md#get-started-with-partitioning). A fürt másik biztonsági mentés a partícióra az eredeti elveszett fürthöz partícióséma megadott helyreáll.
+A [partíciós sémában](service-fabric-concepts-partitioning.md#get-started-with-partitioning)részletezett módon ki kell választania egy célként megadott partíciót is a másodlagos fürtben. A másodlagos fürt biztonsági mentését a rendszer visszaállítja a partíciós sémában megadott partícióra az eredeti elveszett fürtből.
 
-Ha másik fürtön a Partícióazonosító `1c42c47f-439e-4e09-98b9-88b8f60800c6`, leképezheti a fürt eredeti Partícióazonosító `974bd92a-b395-4631-8a7f-53bd4ae9cf22` összehasonlítja a magas és alacsony kulcsot _előre particionálás (UniformInt64Partition)_ .
+Ha a másik fürtön található partíció-azonosító `1c42c47f-439e-4e09-98b9-88b8f60800c6`, akkor az eredeti fürtözött partíció-AZONOSÍTÓhoz rendelhető, `974bd92a-b395-4631-8a7f-53bd4ae9cf22` a nagy kulcs és az alacsony kulcs összevetésével _(UniformInt64Partition)_ .
 
-A _nevű particionálás_, a név-érték a rendszer összehasonlítja a célpartíción alternatív fürt azonosításához.
+A _nevesített particionáláshoz_a név értékét a rendszer összehasonlítja a másodlagos fürtben található cél partíció azonosításához.
 
-#### <a name="powershell-using-microsoftservicefabricpowershellhttp-module"></a>Microsoft.ServiceFabric.Powershell.Http modult használó PowerShell
+#### <a name="powershell-using-microsoftservicefabricpowershellhttp-module"></a>PowerShell a Microsoft. ServiceFabric. PowerShell. http modul használatával
 
 ```powershell
 
@@ -173,9 +173,9 @@ Restore-SFPartition  -PartitionId '1c42c47f-439e-4e09-98b9-88b8f60800c6' -Backup
 
 ```
 
-#### <a name="rest-call-using-powershell"></a>REST-hívást Powershell-lel
+#### <a name="rest-call-using-powershell"></a>Rest-hívás a PowerShell használatával
 
-A visszaállítás a biztonsági mentési fürt partíció szemben az alábbi kér [visszaállítási API](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-restorepartition):
+A visszaállítást a biztonsági mentési fürt partícióján a következő [visszaállítási API](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-restorepartition)használatával kérheti le:
 
 ```powershell
 
@@ -197,17 +197,28 @@ $url = "https://mysfcluster.southcentralus.cloudapp.azure.com:19080/Partitions/1
 Invoke-WebRequest -Uri $url -Method Post -Body $body -ContentType 'application/json' -CertificateThumbprint '1b7ebe2174649c45474a4819dafae956712c31d3'
 ```
 
-Egy visszaállítási TrackRestoreProgress az előrehaladását nyomon követheti.
+A visszaállítások állapotát nyomon követheti a TrackRestoreProgress használatával.
 
-### <a name="data-restore-for-data-corruptiondata-loss"></a>Az adatok visszaállítás _adatsérülés_/_adatvesztés_
+### <a name="using-service-fabric-explorer"></a>Service Fabric Explorer használata
+Service Fabric Explorerről is indíthat visszaállítást. Győződjön meg arról, hogy engedélyezve van-e a speciális mód a Service Fabric Explorer beállításokban.
+1. Válassza ki a kívánt partíciókat, majd kattintson a műveletek elemre. 
+2. Válassza a partíció visszaállítása lehetőséget, és adja meg az Azure-beli adatokat:
 
-A _adatvesztés_ vagy _adatsérülés_, megbízható állapotalapú szolgáltatás készül a partíciók és a Reliable actors – partíciók sem a választott biztonsági másolatok visszaállíthatók.
+    ![Partíció visszaállításának triggere][2]
 
-Az alábbi példa folytatása [rendszeres biztonsági megbízható állapotalapú szolgáltatás és a Reliable Actors](service-fabric-backuprestoreservice-quickstart-azurecluster.md#enabling-periodic-backup-for-reliable-stateful-service-and-reliable-actors). Ebben a példában egy biztonsági mentési szabályzat engedélyezve van a partíció, és a szolgáltatás biztonsági mentések készítése az Azure Storage-ban a kívánt gyakorisággal.
+    vagy fájlmegosztás:
 
-Biztonsági másolat kiválasztása kimenetéből származó [GetBackupAPI](service-fabric-backuprestoreservice-quickstart-azurecluster.md#list-backups). Ebben a forgatókönyvben a biztonsági mentés ugyanazon a fürtön, mielőtt alapján jön létre.
+    ![Partíció-visszaállítási fájlmegosztás][3]
 
-A visszaállítás elindítása, válassza ki a listából egy biztonsági mentés. Az aktuális _adatvesztés_/_adatsérülés_, válassza ki a következő biztonsági mentés:
+### <a name="data-restore-for-_data-corruption__data-loss_"></a>Adatsérülés/ _adatvesztés_ miatti adatvisszaállítás
+
+_Adatvesztés_ vagy _adatsérülés_esetén a megbízható állapot-nyilvántartó szolgáltatáshoz és Reliable Actors partícióhoz tartozó biztonsági másolatok visszaállíthatók a kiválasztott biztonsági másolatokra.
+
+A következő példa a [megbízható állapot-nyilvántartó szolgáltatás és a Reliable Actors rendszeres biztonsági mentésének engedélyezése](service-fabric-backuprestoreservice-quickstart-azurecluster.md#enabling-periodic-backup-for-reliable-stateful-service-and-reliable-actors). Ebben a példában egy biztonsági mentési szabályzat van engedélyezve a partícióhoz, és a szolgáltatás biztonsági mentést készít a kívánt gyakorisággal az Azure Storage-ban.
+
+Válasszon ki egy biztonsági másolatot a [GetBackupAPI](service-fabric-backuprestoreservice-quickstart-azurecluster.md#list-backups)kimenetéről. Ebben a forgatókönyvben a biztonsági mentés ugyanabból a fürtből jön létre, mint korábban.
+
+A visszaállítás elindításához válasszon ki egy biztonsági másolatot a listából. A jelenlegi _adatvesztés_/_adatsérülés_esetén válassza ki a következő biztonsági mentést:
 
 ```
 BackupId                : b0035075-b327-41a5-a58f-3ea94b68faa4
@@ -223,17 +234,17 @@ CreationTimeUtc         : 2018-04-06T21:10:27Z
 FailureError            :
 ```
 
-A visszaállítási API-hoz, adja meg a _biztonsági mentés azonosítója:_ és _BackupLocation_ részleteit. A fürt rendelkezik a biztonsági mentés engedélyezve van, a Service Fabric _biztonsági másolat visszaállítása szolgáltatás (BRS)_ azonosítja a megfelelő tárolási helyét, a társított biztonsági mentési szabályzat.
+A Restore API esetében adja meg a _biztonsági másolat azonosítója_ és a _BackupLocation_ adatait. A fürtön engedélyezve van a biztonsági mentés, így a Service Fabric _Backup Restore Service (BRS)_ a megfelelő tárolási helyet azonosítja a társított biztonsági mentési szabályzatból.
 
 
-#### <a name="powershell-using-microsoftservicefabricpowershellhttp-module"></a>Microsoft.ServiceFabric.Powershell.Http modult használó PowerShell
+#### <a name="powershell-using-microsoftservicefabricpowershellhttp-module"></a>PowerShell a Microsoft. ServiceFabric. PowerShell. http modul használatával
 
 ```powershell
 Restore-SFPartition  -PartitionId '974bd92a-b395-4631-8a7f-53bd4ae9cf22' -BackupId 'b0035075-b327-41a5-a58f-3ea94b68faa4' -BackupLocation 'SampleApp\MyStatefulService\974bd92a-b395-4631-8a7f-53bd4ae9cf22\2018-04-06 21.10.27.zip'
 
 ```
 
-#### <a name="rest-call-using-powershell"></a>REST-hívást Powershell-lel
+#### <a name="rest-call-using-powershell"></a>Rest-hívás a PowerShell használatával
 
 ```powershell
 $RestorePartitionReference = @{
@@ -247,19 +258,19 @@ $url = "https://mysfcluster.southcentralus.cloudapp.azure.com:19080/Partitions/9
 Invoke-WebRequest -Uri $url -Method Post -Body $body -ContentType 'application/json' -CertificateThumbprint '1b7ebe2174649c45474a4819dafae956712c31d3'
 ```
 
-A visszaállítási folyamat TrackRestoreProgress használatával követheti nyomon.
+A visszaállítási folyamat nyomon követhető a TrackRestoreProgress használatával.
 
-## <a name="track-restore-progress"></a>Visszaállítás folyamatban nyomon követése
+## <a name="track-restore-progress"></a>Visszaállítási folyamat nyomon követése
 
-Egy megbízható állapotalapú szolgáltatás vagy a Reliable Actor partíciójának egyszerre csak egy visszaállítási kérést fogad. Az aktuális visszaállítási kérés befejezése után a partíció csak egy újabb kérelmet fogad el. Több visszaállítási kérés is elindítható a különböző partíciók egy időben.
+Egy megbízható állapot-nyilvántartó szolgáltatás vagy megbízható szereplő particionálása egyszerre csak egy visszaállítási kérelmet fogad el. Egy partíció csak az aktuális visszaállítási kérelem befejeződése után fogad el egy másik kérést. Egyszerre több visszaállítási kérelem is aktiválható különböző partíciókon.
 
-#### <a name="powershell-using-microsoftservicefabricpowershellhttp-module"></a>Microsoft.ServiceFabric.Powershell.Http modult használó PowerShell
+#### <a name="powershell-using-microsoftservicefabricpowershellhttp-module"></a>PowerShell a Microsoft. ServiceFabric. PowerShell. http modul használatával
 
 ```powershell
     Get-SFPartitionRestoreProgress -PartitionId '974bd92a-b395-4631-8a7f-53bd4ae9cf22'
 ```
 
-#### <a name="rest-call-using-powershell"></a>REST-hívást Powershell-lel
+#### <a name="rest-call-using-powershell"></a>Rest-hívás a PowerShell használatával
 
 ```powershell
 $url = "https://mysfcluster-backup.southcentralus.cloudapp.azure.com:19080/Partitions/974bd92a-b395-4631-8a7f-53bd4ae9cf22/$/GetRestoreProgress?api-version=6.4"
@@ -270,16 +281,16 @@ $restoreResponse = (ConvertFrom-Json $response.Content)
 $restoreResponse | Format-List
 ```
 
-A visszaállítási kérelem különböző fázisokon halad a következő sorrendben:
+A visszaállítási kérelem a következő sorrendben halad:
 
-1. **Elfogadott**: Egy _elfogadva_ állapot visszaállítása, az azt jelzi, hogy a kért partíció elindult-e a megfelelő kérést paraméterekkel.
+1. **Elfogadva**: egy _elfogadott_ visszaállítási állapot azt jelzi, hogy a kért partíció helyes kérési paraméterekkel lett aktiválva.
     ```
     RestoreState  : Accepted
     TimeStampUtc  : 0001-01-01T00:00:00Z
     RestoredEpoch : @{DataLossNumber=131675205859825409; ConfigurationNumber=8589934592}
     RestoredLsn   : 3552
     ```
-2. **InProgress**: Egy _InProgress_ visszaállítási állapot azt jelzi, hogy a visszaállítás történik a partíció a kérelemben szereplő említett biztonsági. A partíció-jelentéseket a _dataloss_ állapota.
+2. **Inprogress**: egy _Inprogress_ visszaállítási állapot azt jelzi, hogy a partícióban található visszaállítás a kérelemben említett biztonsági másolattal történik. A partíció a _dataloss_ állapotot jelenti.
     ```
     RestoreState  : RestoreInProgress
     TimeStampUtc  : 0001-01-01T00:00:00Z
@@ -287,8 +298,8 @@ A visszaállítási kérelem különböző fázisokon halad a következő sorren
     RestoredLsn   : 3552
     ```
     
-3. **Sikeres**, **hiba**, vagy **időtúllépési**: A kért visszaállítása a következő állapotok valamelyikében lévő elvégezhető. Van az egyes a következő jelentősége, és a válasz részletei:
-    - **Sikeres**: A _sikeres_ állapot visszaállítása egy partíció helyreállt állapotát jelzi. A partíció jelentések _RestoredEpoch_ és _RestoredLSN_ állapotok a időpontja (UTC) együtt.
+3. **Sikeres**, **sikertelen**vagy **időtúllépés**: a kért visszaállítás a következő állapotok bármelyikében elvégezhető. Az egyes állapotok a következő jelentőségű és válasz részletekkel bírnak:
+    - **Sikeres**: a _sikeres_ visszaállítási állapot visszanyert partíciós állapotot jelez. A partíció a _RestoredEpoch_ és a _RestoredLSN_ állapotot az UTC időponttal együtt jelenti.
 
         ```
         RestoreState  : Success
@@ -296,7 +307,7 @@ A visszaállítási kérelem különböző fázisokon halad a következő sorren
         RestoredEpoch : @{DataLossNumber=131675205859825409; ConfigurationNumber=8589934592}
         RestoredLsn   : 3552
         ```        
-    - **Hiba**: A _hiba_ visszaállítási állapot azt jelzi, hogy a visszaállítási kérelem sikertelen. A sikertelenség okát, a rendszer jelenti.
+    - **Hiba**: _sikertelen_ visszaállítási állapot a visszaállítási kérelem hibáját jelzi. A hiba oka jelentett.
 
         ```
         RestoreState  : Failure
@@ -304,7 +315,7 @@ A visszaállítási kérelem különböző fázisokon halad a következő sorren
         RestoredEpoch : 
         RestoredLsn   : 0
         ```
-    - **Időtúllépés**: A _időtúllépési_ állapot visszaállítása, az azt jelzi, hogy rendelkezik-e a kérés időtúllépés. Az új visszaállítási kérelem létrehozása nagyobb [RestoreTimeout](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-backuppartition#backuptimeout). Az alapértelmezett időtúllépési érték 10 perc. Győződjön meg arról, hogy a partíció nem adatok elvesztése állapotú visszaállítási újra kérelmezése előtt.
+    - **Időtúllépés**: az _időkorlát_ -visszaállítási állapot azt jelzi, hogy a kérelem időtúllépést jelez. Hozzon létre egy új visszaállítási kérést nagyobb [RestoreTimeout](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-backuppartition#backuptimeout). Az alapértelmezett időkorlát 10 perc. Győződjön meg arról, hogy a partíció nem adatvesztési állapotban van, mielőtt újra kéri a visszaállítást.
      
         ```
         RestoreState  : Timeout
@@ -315,12 +326,15 @@ A visszaállítási kérelem különböző fázisokon halad a következő sorren
 
 ## <a name="automatic-restore"></a>Automatikus visszaállítás
 
-Konfigurálhatja a megbízható állapotalapú szolgáltatás és a fürthöz a Service Fabric Reliable Actors partíciók _automatikus visszaállítási_. Állítsa be a biztonsági mentési szabályzat `AutoRestore` való _igaz_. Engedélyezés _automatikus visszaállítási_ adatokat automatikusan visszaállítja a legutóbbi partíció biztonsági adatvesztés jelentésekor. További információkért lásd:
+A Service Fabric-fürtben megbízható állapot-nyilvántartó szolgáltatás és Reliable Actors partíciók állíthatók be az _automatikus visszaállításhoz_. A biztonsági mentési szabályzatban `AutoRestore` értéke _true (igaz_). Az _automatikus visszaállítás_ engedélyezése automatikusan visszaállítja az adatok biztonsági mentését a legutóbbi partícióról az adatvesztés jelentésekor. További információkért lásd:
 
-- [Automatikus visszaállítás engedélyezése a biztonsági mentési szabályzat](service-fabric-backuprestoreservice-configure-periodic-backup.md#auto-restore-on-data-loss)
-- [RestorePartition API-referencia](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-restorepartition)
-- [GetPartitionRestoreProgress API-referencia](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-getpartitionrestoreprogress)
+- [Automatikus visszaállítás engedélyezése a biztonsági mentési házirendben](service-fabric-backuprestoreservice-configure-periodic-backup.md#auto-restore-on-data-loss)
+- [RestorePartition API-referenciák](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-restorepartition)
+- [GetPartitionRestoreProgress API-referenciák](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-getpartitionrestoreprogress)
 
 ## <a name="next-steps"></a>További lépések
-- [Rendszeres biztonsági mentési konfiguráció ismertetése](./service-fabric-backuprestoreservice-configure-periodic-backup.md)
-- [Biztonsági másolat visszaállítása – REST API-referencia](https://docs.microsoft.com/rest/api/servicefabric/sfclient-index-backuprestore)
+- [Az időszakos biztonsági mentési konfiguráció ismertetése](./service-fabric-backuprestoreservice-configure-periodic-backup.md)
+- [Biztonsági mentés visszaállítása REST API referenciája](https://docs.microsoft.com/rest/api/servicefabric/sfclient-index-backuprestore)
+
+[2]: ./media/service-fabric-backuprestoreservice/restore-partition-backup.png
+[3]: ./media/service-fabric-backuprestoreservice/restore-partition-fileshare.png

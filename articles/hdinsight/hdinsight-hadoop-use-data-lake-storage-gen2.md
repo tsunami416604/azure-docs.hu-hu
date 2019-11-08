@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 08/27/2019
-ms.openlocfilehash: f6bee53268ea99e99d79e218eaf7a5ae9fcb1d05
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: d8e23188aa07b1b271c3adc7c5550b18c0c60977
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71104466"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73827689"
 ---
 # <a name="use-azure-data-lake-storage-gen2-with-azure-hdinsight-clusters"></a>Azure Data Lake Storage Gen2 használata az Azure HDInsight-fürtökkel
 
@@ -36,7 +36,7 @@ Data Lake Storage Gen2 for Storage-t használó HDInsight-fürt létrehozásáho
 
 Hozzon létre egy felhasználó által hozzárendelt felügyelt identitást, ha még nem rendelkezik ilyennel. 
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
+1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
 1. A bal felső sarokban kattintson az **erőforrás létrehozása**elemre.
 1. A keresőmezőbe írja be a **felhasználó által hozzárendelt** értéket, és kattintson a **felhasználóhoz rendelt felügyelt identitás**elemre.
 1. Kattintson a **Create** (Létrehozás) gombra.
@@ -51,19 +51,19 @@ További információ arról, hogyan működnek a felügyelt identitások az Azu
 
 Hozzon létre egy Azure Data Lake Storage Gen2 Storage-fiókot. 
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
+1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
 1. A bal felső sarokban kattintson az **erőforrás létrehozása**elemre.
 1. A keresőmezőbe írja be a **Storage** kifejezést, majd kattintson a **Storage-fiók**elemre.
 1. Kattintson a **Create** (Létrehozás) gombra.
 1. A **Storage-fiók létrehozása** képernyőn:
     1. Válassza ki a megfelelő előfizetést és erőforráscsoportot.
-    1. Adja meg a Data Lake Storage Gen2-fiók nevét. A Storage-fiókok elnevezési konvenciókkal kapcsolatos további információkért lásd: [Az Azure-erőforrások elnevezési konvenciói](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions#storage).
+    1. Adja meg a Data Lake Storage Gen2-fiók nevét. A Storage-fiókok elnevezési konvenciókkal kapcsolatos további információkért lásd: [Az Azure-erőforrások elnevezési konvenciói](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging#storage).
     1. Kattintson a **speciális** fülre.
     1. Kattintson a **Data Lake Storage Gen2**alatt található **hierarchikus névtér** melletti **engedélyezve** lehetőségre.
     1. Kattintson az **Áttekintés + létrehozás** elemre.
-    1. Kattintson a **Létrehozás** gombra.
+    1. Kattintson a  **Create** (Létrehozás) gombra
 
-A Storage-fiók létrehozása során felmerülő egyéb lehetőségekről [további információt a gyors útmutató: Hozzon létre egy Azure Data Lake Storage Gen2](../storage/blobs/data-lake-storage-quickstart-create-account.md)Storage-fiókot.
+További információ a Storage-fiók létrehozása során felmerülő egyéb lehetőségekről: gyors útmutató [: Azure Data Lake Storage Gen2 Storage-fiók létrehozása](../storage/blobs/data-lake-storage-quickstart-create-account.md).
 
 ![A Storage-fiók létrehozását bemutató képernyőkép a Azure Portal](./media/hdinsight-hadoop-use-data-lake-storage-gen2/azure-data-lake-storage-account-create-advanced.png)
 
@@ -116,7 +116,7 @@ Az alábbi kódrészlet a következő kezdeti lépéseket hajtja végre:
 1. Létrehoz egy új erőforráscsoportot az új központi telepítési tevékenységekhez. 
 1. Felhasználó által hozzárendelt felügyelt identitást hoz létre.
 1. Bővítmény hozzáadását az Azure CLI-hez a Data Lake Storage Gen2 szolgáltatásainak használatához.
-1. Létrehoz egy új Data Lake Storage Gen2 fiókot a `--hierarchical-namespace true` jelző használatával. 
+1. Új Data Lake Storage Gen2 fiókot hoz létre a `--hierarchical-namespace true` jelző használatával. 
 
 ```azurecli
 az login

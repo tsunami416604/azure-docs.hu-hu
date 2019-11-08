@@ -4,15 +4,16 @@ description: Az érdeklődők felügyeletének konfigurálása az Azure Table St
 services: Azure, Marketplace, Cloud Partner Portal,
 author: v-miclar
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 05/22/2019
 ms.author: pabutler
-ms.openlocfilehash: a53ed93813215655c4a165faa0bce36d9249e8e6
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.openlocfilehash: 21105d72ccd288faf0fed58019e67afe2e1c9d01
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68227905"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73825271"
 ---
 # <a name="lead-management-instructions-for-table-storage"></a>A Table Storage szolgáltatással kapcsolatos érdeklődői kezelési utasítások
 
@@ -27,11 +28,11 @@ Ez a cikk bemutatja, hogyan konfigurálhatja az Azure Table Storage-t az érték
     1. Az **új** panelen válassza a **Storage**lehetőséget. A jobb oldalon megnyílik egy **Kiemelt** lista.
     1. Válassza a **Storage-fiók**lehetőséget. Ezután kövesse a [Storage-fiók létrehozása](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account?tabs=azure-portal)című témakör utasításait.
 
-    ![Azure-tárfiók létrehozása](./media/cloud-partner-portal-lead-management-instructions-azure-table/azurestoragecreate.png)
+    ![Azure Storage-fiók létrehozása](./media/cloud-partner-portal-lead-management-instructions-azure-table/azurestoragecreate.png)
 
     További információ a Storage-fiókokról: gyors [útmutató oktatóanyagok](https://docs.microsoft.com/azure/storage/). A díjszabással kapcsolatos információkért lásd: az [Azure Storage díjszabása](https://azure.microsoft.com/pricing/details/storage/).
 
-1. Várjon, amíg megtörténik a Storage-fiók üzembe helyezése, ami általában néhány percet vesz igénybe. Ezután nyissa meg a fiókot a Azure Portal kezdőlapján: Válassza az **összes erőforrás** vagy az **összes erőforrás** megjelenítése lehetőséget a navigációs ablaktáblán.
+1. Várjon, amíg megtörténik a Storage-fiók üzembe helyezése, ami általában néhány percet vesz igénybe. Ezután nyissa meg a fiókot a Azure Portal kezdőlapján: válassza az **összes erőforrás** vagy az összes **erőforrás** megjelenítése lehetőséget a navigációs ablaktáblán.
 
     ![Hozzáférés az Azure Storage-fiókhoz](./media/cloud-partner-portal-lead-management-instructions-azure-table/azure-storage-access.png)
 
@@ -63,7 +64,7 @@ Ebből a példából megtudhatja, hogyan hozhat létre egy alapszintű folyamato
 
    ![Új folyamat létrehozása üresből](./media/cloud-partner-portal-lead-management-instructions-azure-table/msflow-create-from-blank.png)
 
-1. Az összekötők és eseményindítók keresése lapon válassza az eseményindítók lehetőséget.
+1. Az összekötők és eseményindítók keresése lapon válassza az **Eseményindítók**lehetőséget.
 1. Az **Eseményindítók**területen válassza az **Ismétlődés**lehetőséget.
 1. Az **ismétlődési** ablakban tartsa meg az alapértelmezett **1** értéket az **intervallum**értéknél. A **frekvencia** legördülő listából válassza az **óra**lehetőséget.
 
@@ -73,30 +74,30 @@ Ebből a példából megtudhatja, hogyan hozhat létre egy alapszintű folyamato
    ![1 órás gyakoriság beállítása ismétlődéshez](./media/cloud-partner-portal-lead-management-instructions-azure-table/msflow-recurrence-dropdown.png)
 
 1. Válassza az **+ új lépés**lehetőséget.
-1. Keresse meg a beolvasási **időt**, majd kattintson **a művelet kiválasztása lehetőségre**a **múltbeli időpont** beolvasása elemre.
+1. Keresse meg a **beolvasási időt**, majd kattintson **a művelet kiválasztása lehetőségre**a **múltbeli időpont beolvasása** elemre.
 
     ![A "múltbeli idő lekérése" művelet megkeresése és kiválasztása](./media/cloud-partner-portal-lead-management-instructions-azure-table/msflow-search-getpasttime.png)
 
-1. A beolvasás **ideje** ablakban állítsa az **intervallumot** **1-re**.  Az **időegység** legördülő listából válassza az **óra**lehetőséget.
+1. A **beolvasás ideje** ablakban állítsa az **intervallumot** **1-re**.  Az **időegység** legördülő listából válassza az **óra**lehetőséget.
     >[!IMPORTANT] 
-    >Győződjön meg arról, hogy az **intervallum** és az időegység megegyezik az ismétlődéshez konfigurált intervallummal és gyakorisággal (8. lépés).
+    >Győződjön meg arról, hogy az **intervallum** és az **időegység** megegyezik az ismétlődéshez konfigurált intervallummal és gyakorisággal (8. lépés).
 
     ![A múltbeli idő lekérése időintervallum beállítása](./media/cloud-partner-portal-lead-management-instructions-azure-table/msflow-getpast-time.png)
 
     >[!TIP] 
-    >Bármikor ellenőrizheti, hogy az egyes lépések helyesen vannak-e konfigurálva: Válassza a folyamat- **ellenőrzési** lehetőséget a folyamat menüsorán.
+    >Bármikor ellenőrizheti, hogy az egyes lépések megfelelően vannak-e konfigurálva: válassza a flow- **ellenőrző** lehetőséget a folyamat menüsorán.
 
 A következő lépésben csatlakozik a Storage-táblához, és beállítja a feldolgozási logikát az új érdeklődők kezelésére.
 
-1. A beolvasás **időpontja** lépés után válassza az **+ új lépés**lehetőséget, majd keressen az entitások beolvasása lehetőségre.
-1. A **műveletek**területen válassza az entitások beolvasása, majd a **Speciális beállítások megjelenítése**lehetőséget.
-1. Az **entitások** beolvasása ablakban töltse ki a következő mezőket:
+1. A **beolvasás időpontja** lépés után válassza az **+ új lépés**lehetőséget, majd keressen az **entitások beolvasása**lehetőségre.
+1. A **műveletek**területen válassza az **entitások beolvasása**, majd a **Speciális beállítások megjelenítése**lehetőséget.
+1. Az **entitások beolvasása** ablakban töltse ki a következő mezőket:
 
    - **Tábla**: a tábla tárterületének neve. Az alábbi képen a "MarketPlaceLeads" látható:
 
      ![Egyéni érték választása az Azure-tábla neveként](./media/cloud-partner-portal-lead-management-instructions-azure-table/msflow-getentities-table-name.png)
 
-   - **Lekérdezés szűrése**: Ha ezt a mezőt választja, a **beolvasás időpontja** ikon megjelenik egy előugró ablakban. Ha a lekérdezés szűréséhez időbélyegként szeretné használni ezt az értéket, válassza az **elmúlt idő** lehetőséget. A következő függvényt is beillesztheti a mezőbe:
+   - **Szűrő lekérdezése**: Ha bejelöli ezt a mezőt, a **beolvasás időpontja** ikon megjelenik egy előugró ablakban. Ha a lekérdezés szűréséhez időbélyegként szeretné használni ezt az értéket, válassza az **elmúlt idő** lehetőséget. A következő függvényt is beillesztheti a mezőbe:
    
       `CreatedTime Timestamp gt datetime'@{body('Get_past_time')}'` 
 
@@ -111,7 +112,7 @@ A következő lépésben csatlakozik a Storage-táblához, és beállítja a fel
      ![Feltétel vezérlőelem hozzáadása](./media/cloud-partner-portal-lead-management-instructions-azure-table/msflow-action-condition-control.png)
 
 1. A **feltétel** ablakban válassza az **érték kiválasztása**lehetőséget, majd az előugró ablakban válassza a **kifejezés** lehetőséget.
-1. Illessze `length(body('Get_entities')?['value'])` be az ***FX*** mezőt. A függvény hozzáadásához kattintson **az OK gombra** . 
+1. Illessze be `length(body('Get_entities')?['value'])` az ***FX*** mezőbe. A függvény hozzáadásához kattintson **az OK gombra** . 
 
 
 
@@ -132,8 +133,8 @@ A következő lépésben csatlakozik a Storage-táblához, és beállítja a fel
    1. Az **E-mail küldése** ablakban adja meg az adatokat a következő mezőkben:
 
       - **To**: e-mail-cím mindenkinek, aki megkapja az értesítést.
-      - **Tárgy**: az e-mailek tárgya. Példa: *Új érdeklődők!*
-      - **Törzs**: az egyes e-mailekben szerepeltetni kívánt szöveg (nem kötelező). Az `body('Get_entities')?['value']` érdeklődői adatok beszúrásához is beillesztheti a függvényt.
+      - **Tárgy**: az e-mailek tárgya. Például: *új érdeklődők!*
+      - **Törzs**: az egyes e-mailekben szerepeltetni kívánt szöveg (nem kötelező). Illessze be a `body('Get_entities')?['value']` az érdeklődői adatok beszúrására szolgáló függvényként is.
 
         >[!NOTE] 
         >Az e-mail törzsébe további statikus vagy dinamikus adatpontokat is beszúrhat.
@@ -144,9 +145,9 @@ A következő lépésben csatlakozik a Storage-táblához, és beállítja a fel
 
     Az alábbi képen látható egy példa arra, hogy a végső folyamatnak hogyan kell kinéznie.
 
-    [![Végső flow-sorozatot](./media/cloud-partner-portal-lead-management-instructions-azure-table/msflow-end-to-end-thmb.png)](./media/cloud-partner-portal-lead-management-instructions-azure-table/msflow-end-to-end.png)
+    [![végső folyamat](./media/cloud-partner-portal-lead-management-instructions-azure-table/msflow-end-to-end-thmb.png)](./media/cloud-partner-portal-lead-management-instructions-azure-table/msflow-end-to-end.png)
 
-    (*Válassza ki a*képre a nagyításhoz.)
+    (*Válassza ki a képre a nagyításhoz.* )
 
 ### <a name="manage-your-flow"></a>A folyamat kezelése
 

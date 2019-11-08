@@ -1,22 +1,22 @@
 ---
-title: 'SaaS-alkalmazások: Azure SQL Database geo-redundáns biztonsági mentések a vész-helyreállításhoz '
+title: 'SaaS-alkalmazások: a vész-helyreállítási geo-redundáns biztonsági mentések'
 description: Megtudhatja, hogyan használhat Azure SQL Database geo-redundáns biztonsági mentést egy több-bérlős SaaS-alkalmazás helyreállításához leállás esetén
 services: sql-database
 ms.service: sql-database
 ms.subservice: scenario
-ms.custom: ''
+ms.custom: seo-lt-2019
 ms.devlang: ''
 ms.topic: conceptual
 author: AyoOlubeko
 ms.author: craigg
 ms.reviewer: sstein
 ms.date: 01/14/2019
-ms.openlocfilehash: 2f058a5cd20fff845a1feafe42b66beb1afef766
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 270fc157fa14efa19ed30d35b614fb769804b72e
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73692198"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73826460"
 ---
 # <a name="use-geo-restore-to-recover-a-multitenant-saas-application-from-database-backups"></a>Geo-visszaállítás használata több-bérlős SaaS-alkalmazás helyreállításához az adatbázis biztonsági másolatainak használatával
 

@@ -1,5 +1,5 @@
 ---
-title: Azure SQL Database metrikák és diagnosztikai naplózás
+title: Metrikák és diagnosztikai naplózás
 description: Megtudhatja, hogyan engedélyezheti a diagnosztika használatát a Azure SQL Databaseban az erőforrás-felhasználással és a lekérdezés-végrehajtási statisztikákkal kapcsolatos információk tárolásához.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 05/21/2019
-ms.openlocfilehash: 6c2040a223b7ec33b05ee3c8b3c65bad031aa3c2
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: d51acaff89c2a8589b6b524c112c11f9c4f18220
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73687794"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73821776"
 ---
 # <a name="azure-sql-database-metrics-and-diagnostics-logging"></a>Azure SQL Database metrikák és diagnosztikai naplózás
 
@@ -261,7 +261,7 @@ Adja meg a munkaterület erőforrás-AZONOSÍTÓját \<$WSID\> paraméterként a
     PS C:\> .\Enable-AzureRMDiagnostics.ps1 -WSID $WSID
     ```
 
-   Cserélje le \<subID\> az előfizetés-AZONOSÍTÓval, \<RG_NAME\> az erőforráscsoport nevével, és \<WS_NAME\> a munkaterület nevével.
+   Cserélje le \<subID\>re az előfizetés-AZONOSÍTÓval, \<RG_NAME\> az erőforráscsoport nevével, és \<WS_NAME\> a munkaterület nevével.
 
 ### <a name="azure-cli"></a>Azure CLI
 

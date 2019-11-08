@@ -1,5 +1,5 @@
 ---
-title: Azure SQL Database-adatbázis másolása
+title: Adatbázis másolása
 description: Hozzon létre tranzakciós szempontból konzisztens másolatot egy meglévő Azure SQL Database-adatbázisról ugyanazon a kiszolgálón vagy egy másik kiszolgálón.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sashan
 ms.reviewer: carlrab
 ms.date: 09/04/2019
-ms.openlocfilehash: d49896d8088ae1352cb2785d061cde6c8647cb89
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: ebf63d14a8fb883158d1ac3e0a8f3d6658920aa7
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73690800"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73826659"
 ---
 # <a name="copy-a-transactionally-consistent-copy-of-an-azure-sql-database"></a>Azure SQL Database-adatbázis tranzakciós szempontból konzisztens másolatának másolása
 
@@ -137,9 +137,9 @@ Az előző szakaszban ismertetett lépéseket követve másolhatja az adatbázis
 
 ### <a name="monitor-the-progress-of-the-copying-operation"></a>A másolási művelet állapotának figyelése
 
-Figyelje a másolási folyamatot a sys. Databases és a sys. DM _database_copies nézetek lekérdezésével. Amíg a másolás folyamatban van, az új adatbázis sys. Databases nézetének **state_desc** oszlopa **másolásra**van beállítva.
+Figyelje a másolási folyamatot a sys. Databases és a sys. dm_database_copies nézetek lekérdezésével. A másolás folyamatban van, az új adatbázis sys. Databases nézetének **state_desc** oszlopa **másolásra**van beállítva.
 
-* Ha a másolás meghiúsul, az új adatbázis sys. Databases nézetének **state_desc** oszlopa a **gyanús**értékre van állítva. Hajtsa végre a DROP utasítást az új adatbázison, majd próbálkozzon újra később.
+* Ha a másolás meghiúsul, az új adatbázis sys. Databases nézetének **state_desc** oszlopa **gyanúsnak**van beállítva. Hajtsa végre a DROP utasítást az új adatbázison, majd próbálkozzon újra később.
 * Ha a másolás sikeres, az új adatbázis sys. Databases nézetének **state_desc** oszlopa **online**értékre van állítva. A másolás befejeződött, és az új adatbázis egy normál adatbázis, amely a forrás-adatbázistól függetlenül módosítható.
 
 > [!NOTE]

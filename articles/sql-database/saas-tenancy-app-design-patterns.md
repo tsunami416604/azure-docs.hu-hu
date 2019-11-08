@@ -1,5 +1,5 @@
 ---
-title: 'Több-bérlős SaaS-minták – Azure SQL Database '
+title: Több-bérlős SaaS-minták
 description: Ismerje meg az Azure Cloud Environment szolgáltatásban futó több-bérlős szoftverek (SaaS) adatbázis-alkalmazásai követelményeit és közös adatarchitektúra-mintáit.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: MightyPen
 ms.author: genemi
 ms.reviewer: billgib, sstein
 ms.date: 01/25/2019
-ms.openlocfilehash: ecbcf2cdfea2714e46d0c9cff4066befabddeeb8
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: ad7bd660ee685b490fb79c7e63fd3c5fce557977
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73691925"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73822063"
 ---
 # <a name="multi-tenant-saas-database-tenancy-patterns"></a>Több-bérlős SaaS-adatbázisok bérletének mintái
 
@@ -135,7 +135,7 @@ Egy másik elérhető minta egy több-bérlős adatbázisban található bérlő
 
 A több-bérlős adatbázis-modell két változatát tárgyaljuk a következőkben, a több-bérlős, több-bérlős modell pedig a legrugalmasabb és skálázható.
 
-## <a name="f-multi-tenant-app-with-a-single-multi-tenant-database"></a>f. Több-bérlős alkalmazás egyetlen több-bérlős adatbázissal
+## <a name="f-multi-tenant-app-with-a-single-multi-tenant-database"></a>F. Több-bérlős alkalmazás egyetlen több-bérlős adatbázissal
 
 A legegyszerűbb több-bérlős adatbázis-minta egyetlen adatbázist használ az összes bérlőre vonatkozó adattároláshoz.  Ahogy egyre több bérlő lett hozzáadva, az adatbázis nagyobb tárolási és számítási erőforrásokkal bővült.  Lehetséges, hogy ez a vertikális felskálázás szükséges, bár mindig van egy végső méretezési korlát.  Azonban a korlát megkezdése előtt az adatbázis nem lesz kezelhető.
 

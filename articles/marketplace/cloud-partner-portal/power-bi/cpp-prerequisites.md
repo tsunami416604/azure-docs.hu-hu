@@ -1,44 +1,45 @@
 ---
-title: Power BI alkalmazás ajánlat Előfeltételek |} Az Azure Marketplace-en
-description: Itt a Power BI-alkalmazás közzététele az appsource-ban előfeltételeit.
+title: Az alkalmazás előfeltételeinek Power BIa | Azure piactér
+description: A Power BI-alkalmazások AppSource való közzétételének előfeltételeit adja meg.
 services: Azure, AppSource, Marketplace, Cloud Partner Portal, Power BI
 author: v-miclar
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 03/13/2019
 ms.author: pabutler
-ms.openlocfilehash: c436522bd5f1a9d52b71d85b7b47ac9a089c0b25
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 486a1b9ca213828b5a26571de7bc34d06f56d434
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66258170"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73826024"
 ---
-# <a name="power-bi-app-offer-prerequisites"></a>Power BI alkalmazás ajánlat Előfeltételek
+# <a name="power-bi-app-offer-prerequisites"></a>Az alkalmazás előfeltételeinek Power BI
 
-Ez a cikk ismerteti a műszaki és üzleti követelményeknek, amelyek csak szüksége lehet a Power BI-alkalmazás közzététele előtt elérhetővé teheti az AppSource piactérről a.  Ha még nem tette meg, tekintse át a [Office 365-höz, a Dynamics 365, a PowerApps és a Power BI ajánlat közzétételi útmutató](../../appsource-offer-publishing-guide.md).
+Ez a cikk azokat a technikai és üzleti követelményeket ismerteti, amelyeket meg kell felelnie ahhoz, hogy közzé lehessen tenni egy Power BI alkalmazás-ajánlatot a AppSource piactéren.  Ha még nem tette meg, tekintse át az [Office 365, a Dynamics 365, a PowerApps és az Power bi ajánlat-közzétételi útmutatót](../../appsource-offer-publishing-guide.md).
 
 
 ## <a name="technical-requirements"></a>Technikai követelmények
 
-A fő műszaki eszköz esetében ez az ajánlat típus szüksége lesz egy [Power BI alkalmazás](https://go.microsoft.com/fwlink/?linkid=2028636). További információkért lásd: [létrehozása a Power BI technikai eszközök](./cpp-create-technical-assets.md).
+Az ajánlat típusához szükséges fő technikai eszköz egy [Power bi alkalmazás](https://go.microsoft.com/fwlink/?linkid=2028636). További információ: [Power bi technikai eszközök létrehozása](./cpp-create-technical-assets.md).
 
-Miután service-alkalmazás létrehozása és tesztelése a Power bi-ban, mentse az alkalmazás telepítési URL-cím, amely a Power BI-hoz létre. Szüksége lesz rá, hogy [hozzon létre egy Power BI alkalmazás ajánlatot](./cpp-create-offer.md).
+Miután létrehozta és tesztelte a szolgáltatásalkalmazás Power BI, mentse a Power BI által generált alkalmazás-telepítési URL-címet. Szüksége lesz rá [Power bi alkalmazás-ajánlat létrehozásához](./cpp-create-offer.md).
 
 ## <a name="business-requirements"></a>Üzleti feltételek
 
-Az üzleti követelmények eljárási szerződéses és jogi kötelezettségek tartalmazza.  Tegye a következőket:
+Az üzleti követelmények közé tartoznak az eljárási, szerződéses és jogi kötelezettségek.  A következőket kell tennie:
 
-- A regisztrált felhőre marketplace kiadókra lehet. Ha nincs regisztrálva, kövesse a [válnak a Felhőbeli piactér kiadói](https://docs.microsoft.com/azure/marketplace/become-publisher).
+- Regisztrált Felhőbeli piactér-közzétevő. Ha nincs regisztrálva, kövesse a [felhőalapú Piactéri közzétevővé válás](https://docs.microsoft.com/azure/marketplace/become-publisher)lépéseit.
 
     > [!NOTE] 
-    > Ugyanaz a Microsoft Developer Center regisztrációs fiók használatával jelentkezzen be a [Cloud Partner Portalon](https://cloudpartner.azure.com). Az AppSource-i ajánlatainak közzétételéhez egyetlen Microsoft-fiókkal kell rendelkeznie. Fiókok egyes szolgáltatásokat vagy az ajánlatok nem lehet.
+    > Használja ugyanazt a Microsoft Developer Center regisztrációs fiókot, hogy bejelentkezzen a [Cloud Partner Portalba](https://cloudpartner.azure.com). A AppSource ajánlatokhoz csak egy Microsoft-fiók tartozhat. A fiókok nem lehetnek egyediek az egyes szolgáltatásokra vagy ajánlatokra.
  
 - Műszaki támogatást kell biztosítania az ügyfelek számára üzleti szempontból észszerű módon.
-- Adja meg a tartalmat, amely megfelel az appsource-ban szerepel az ajánlat feltételeit. További információkért lásd: [rendelkezik egy alkalmazást a listában az appsource-on? Íme, miként](https://appsource.microsoft.com/blogs/have-an-app-to-list-on-appsource-here-s-how).
-- Kompatibilis a [a Microsoft adatvédelmi nyilatkozata](https://privacy.microsoft.com/privacystatement).
+- Olyan tartalmat adjon meg, amely megfelel az ajánlat AppSource-on való listázásának feltételeinek. További információkért lásd: [alkalmazás listázása a AppSource-on? A következőképpen](https://appsource.microsoft.com/blogs/have-an-app-to-list-on-appsource-here-s-how).
+- A [Microsoft adatvédelmi nyilatkozatának](https://privacy.microsoft.com/privacystatement)betartása.
 
 
 ## <a name="next-steps"></a>További lépések
 
-Miután teljesítette az követelményeinek, már készen áll [hozzon létre egy Power BI alkalmazás ajánlatot](./cpp-create-offer.md) az a Cloud Partner portálra.
+Miután teljesítette az összes követelményt, készen áll arra, hogy [létrehozzon egy Power bi alkalmazás-ajánlatot](./cpp-create-offer.md) a Cloud Partner Portal.

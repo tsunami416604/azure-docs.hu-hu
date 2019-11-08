@@ -1,57 +1,58 @@
 ---
-title: AppSource az ajánlat közzétételi útmutató az AppsSource kirakat |} Az Azure Marketplace-en
-description: Részletes útmutató és az alkalmazások közzététele az appsource-ban kirakat az Office 365, Dynamics 365, Power BI és Power Apps közzétételi Ellenőrzőlisták
+title: A AppsSource-kirakat AppSource ajánlatának közzétételi útmutatója | Azure piactér
+description: Részletes útmutató és közzétételi ellenőrzőlista alkalmazások közzétételéhez az Office 365, a Dynamics 365, a Power BI és a Power apps AppSource-kirakatában
 services: Marketplace, Compute, Storage, Networking, Blockchain, Security, SaaS
 author: ellacroi
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 07/09/2018
 ms.author: ellacroi
-ms.openlocfilehash: 38175bd2365ee9ab7246f0d967c364912efda37d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4a5d61d9434a73556d81010da7c7b3e96139a9e4
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64935689"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73824328"
 ---
-# <a name="office-365-dynamics-365-power-apps-and-power-bi-offer-publishing-guide"></a>Az Office 365, Dynamics 365, a Power Apps és a Power BI-ajánlat közzétételi útmutató
+# <a name="office-365-dynamics-365-power-apps-and-power-bi-offer-publishing-guide"></a>Office 365, Dynamics 365, Power apps és Power BI ajánlat-közzétételi útmutató
 
-Az appsource-ban kirakat tartalmaz, amely létrehozása vagy bővítése a Dynamics 365, az Office 365, a Power bi-ban és a Power Apps ajánlatok. Az adott termék rendelkezik adott dokumentáció segít Önnek a közzétételi folyamat. Lásd az alábbi hivatkozások további részletek az egyes ajánlat. 
+A AppSource-kirakat olyan ajánlatokat tartalmaz, amelyek a Dynamics 365, az Office 365, a Power BI és a Power apps szolgáltatásra épülnek vagy bővíthetők. Ezen termékek mindegyike rendelkezik egy adott dokumentációval, amely végigvezeti Önt a közzétételi folyamaton. Az egyes ajánlatok típusával kapcsolatos további részletekért tekintse meg az alábbi témaköröket. 
 
-Appsource-ban rendelkezik lista és próba ajánlatok esetében a hívással művelet "Contact Me" vagy "Kipróbálás." Az appsource-ban jelenleg nem tranzakciós funkció sem.
+A AppSource tartalmazza a "Kapcsolatfelvétel" vagy a "kipróbálás most" műveletet. Jelenleg nincs tranzakciós funkció a AppSource-ben.
 
-## <a name="product-specific-guides"></a>Termékkel kapcsolatos útmutatók
+## <a name="product-specific-guides"></a>Termékspecifikus útmutatók
 
 ### <a name="office-365"></a>Office 365
 
-Tekintse át a [közzétételi folyamata és irányelvek](https://docs.microsoft.com/office/dev/store/submit-to-the-office-store)
+A [közzétételi folyamat és az irányelvek](https://docs.microsoft.com/office/dev/store/submit-to-the-office-store) áttekintése
 
-### <a name="power-apps"></a>A Power Apps
+### <a name="power-apps"></a>Power Apps
 
-Ismerje meg hogyan ügyfelek is [kipróbálására az appsource-ban az alkalmazás.](https://powerapps.microsoft.com/blog/appsource-test-drive/)
+Ismerje meg, hogy az ügyfelek hogyan tudják [tesztelni az alkalmazást a AppSource-on.](https://powerapps.microsoft.com/blog/appsource-test-drive/)
 
 ### <a name="power-bi"></a>Power BI
 
-Tekintse át a [közzétételi folyamat, és útmutatást.](https://docs.microsoft.com/power-bi/developer/office-store)
+Tekintse át a [közzétételi folyamatot és az irányelveket.](https://docs.microsoft.com/power-bi/developer/office-store)
 
 ### <a name="dynamics-365"></a>Dynamics 365
 
-#### <a name="dynamics-365-for-finance-and-operations"></a>Dynamics 365 for Finance and Operations
-Létrehozását, Enterprise Edition, tekintse át a [közzétételi folyamata és irányelvek](https://docs.microsoft.com/dynamics365/unified-operations/dev-itpro/lcs-solutions/lcs-solutions-app-source)
+#### <a name="dynamics-365-for-finance-and-operations"></a>Dynamics 365 pénzügyi és üzemeltetési műveletekhez
+A vállalati kiadás létrehozásakor tekintse át a [közzétételi folyamatot és az irányelveket](https://docs.microsoft.com/dynamics365/unified-operations/dev-itpro/lcs-solutions/lcs-solutions-app-source)
 
-Lásd: [Dynamics 365 for Finance and Operations ajánlat](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cpp-dynamics-365-operations-offer) az ajánlat közzététele a Cloud Partner portálra.
+Lásd: [Dynamics 365 for Finance and Operations ajánlat](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cpp-dynamics-365-operations-offer) , amely bemutatja az ajánlat közzétételét Cloud Partner Portalban.
 
 ### <a name="dynamics-365-for-customer-engagement"></a>Dynamics 365 for Customer Engagement
-Tekintse át a [közzétételi folyamata és irányelveket](https://docs.microsoft.com/dynamics365/customer-engagement/developer/publish-app-appsource).
+Tekintse át a [közzétételi folyamatot és az irányelveket](https://docs.microsoft.com/dynamics365/customer-engagement/developer/publish-app-appsource).
 
-Lásd: [Dynamics 365 Customer Engagement ajánlat](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cpp-customer-engagement-offer) az ajánlat közzététele a Cloud Partner portálra.
+Az ajánlat közzétételének Cloud Partner Portal a Dynamics 365-as verziójában tájékozódhat a [Customer engagement](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cpp-customer-engagement-offer) szolgáltatásról.
 
 ## <a name="next-steps"></a>További lépések
 
-Ha ezt még nem tette meg, 
+Ha még nem tette meg, 
 
-- [Regisztráljon](https://azuremarketplace.microsoft.com/sell) a Marketplace-en.
+- [Regisztráljon](https://azuremarketplace.microsoft.com/sell) a piactéren.
 
-Ha Ön regisztrálva van és működik-e a Cloud Partner portálra, 
+Ha regisztrálva van és dolgozik Cloud Partner Portalban, 
 
-- [Jelentkezzen be a Cloud Partner portálra](https://cloudpartner.azure.com) létrehozni, vagy végezze el az ajánlatot.
+- Az ajánlat létrehozásához vagy befejezéséhez [Jelentkezzen be a Cloud Partner Portalba](https://cloudpartner.azure.com) .

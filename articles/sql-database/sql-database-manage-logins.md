@@ -1,5 +1,5 @@
 ---
-title: Azure SQL-bejelentkezések és-felhasználók
+title: Bejelentkezések és felhasználók
 description: Ismerje meg a SQL Database és SQL Data Warehouse biztonsági felügyeletet, pontosabban hogyan kezelheti az adatbázis-hozzáférést és a bejelentkezési biztonságot a kiszolgálói szintű rendszerbiztonsági fiók használatával.
 keywords: sql database biztonság,adatbázis biztonságának felügyelete,bejelentkezési biztonság,adatbázis biztonsága,adatbázis-hozzáférés
 services: sql-database
@@ -12,12 +12,12 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: carlrab
 ms.date: 03/26/2019
-ms.openlocfilehash: 501df95b80bd651020fa044970f6bc701959a6a5
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: a33c653199ae21b551acadfb4503eae029ddc5e4
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73689476"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73822831"
 ---
 # <a name="controlling-and-granting-database-access-to-sql-database-and-sql-data-warehouse"></a>Adatbázis-hozzáférés szabályozása és biztosítása SQL Database és SQL Data Warehouse számára
 
@@ -140,7 +140,7 @@ A kezdetekben csak a rendszergazdák vagy az adatbázis tulajdonosa hozhat létr
 GRANT ALTER ANY USER TO Mary;
 ```
 
-Annak érdekében, hogy a további felhasználók teljes körűen vezérelve legyenek az adatbázis, a **db_owner** rögzített adatbázis-szerepkörbe kell tartoznia.
+Ha további felhasználóknak kívánja teljes hozzáférést biztosítani az adatbázishoz, akkor a **db_owner** rögzített adatbázis-szerepkör tagjának kell lennie.
 
 Azure SQL Database használja a `ALTER ROLE` utasítást.
 
@@ -148,7 +148,7 @@ Azure SQL Database használja a `ALTER ROLE` utasítást.
 ALTER ROLE db_owner ADD MEMBER Mary;
 ```
 
-Azure SQL Data Warehouse használja az [exec sp_addrolemember](/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql).
+Azure SQL Data Warehouse használja az [EXEC sp_addrolemember](/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql).
 ```sql
 EXEC sp_addrolemember 'db_owner', 'Mary';
 ```

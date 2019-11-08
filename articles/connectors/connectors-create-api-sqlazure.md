@@ -10,13 +10,13 @@ ms.reviewer: klam; LADocs
 manager: carmonm
 ms.topic: conceptual
 tags: connectors
-ms.date: 11/06/2019
-ms.openlocfilehash: ed30ba305ec990256625052cb92f1b7524c826e2
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.date: 11/08/2019
+ms.openlocfilehash: a6367e5897e9bd548550b099c0bd2e6186845d6d
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73720959"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73826334"
 ---
 # <a name="automate-workflows-for-sql-server-or-azure-sql-database-by-using-azure-logic-apps"></a>SQL Server vagy Azure SQL Database munkafolyamatainak automatizálása Azure Logic Apps használatával
 
@@ -44,10 +44,11 @@ Ha most ismerkedik a Logic apps szolgáltatással, tekintse át a [Mi az Azure L
 
     `Server=tcp:{your-server-name}.database.windows.net,1433;Initial Catalog={your-database-name};Persist Security Info=False;User ID={your-user-name};Password={your-password};MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;`
 
-* Ahhoz, hogy a logikai alkalmazásokat a helyszíni rendszerekhez, például a SQL Serverhoz lehessen kapcsolni, [be kell állítania egy helyszíni adatátjárót](../logic-apps/logic-apps-gateway-install.md). Így kiválaszthatja az átjárót a logikai alkalmazáshoz tartozó SQL-kapcsolatok létrehozásakor.
+* A helyi számítógépre telepített helyszíni [adatátjáró](../logic-apps/logic-apps-gateway-install.md) és egy [Azure-beli adatátjáró-erőforrás, amelyet a Azure Portal](../logic-apps/logic-apps-gateway-connection.md) a következő forgatókönyvek esetében hozott létre:
 
-  > [!IMPORTANT]
-  > Ha a Windows-hitelesítést ezzel az összekötővel szeretné használni, a helyszíni adatátjárót kell használnia. Ez az összekötő nem támogatja a Windows-hitelesítést egy [integrációs szolgáltatási környezetben (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)lévő logikai alkalmazáshoz.
+  * A logikai alkalmazások nem futnak [integrációs szolgáltatási környezetben (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md).
+
+  * A *logikai alkalmazások egy* integrációs szolgáltatási környezetben futnak, de Windows-hitelesítést kell használnia a SQL Server-kapcsolatban. Ebben az esetben használja a SQL Server Connector nem ISE verzióját az adatátjáróval együtt, mert az ISE verziója nem támogatja a Windows-hitelesítést.
 
 * Az a logikai alkalmazás, amelyben hozzá kell férnie az SQL-adatbázishoz. A logikai alkalmazás SQL-triggerrel való elindításához [üres logikai alkalmazásra](../logic-apps/quickstart-create-first-logic-app-workflow.md)van szükség.
 

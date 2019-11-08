@@ -1,51 +1,52 @@
 ---
-title: A Power BI alkalmazás-ajánlat |} Az Azure Marketplace-en
-description: Tudnivalók a Power BI alkalmazás közzététele a Microsoft AppSource piactérről.
+title: Power BI alkalmazás ajánlata | Azure piactér
+description: Power BI alkalmazás közzététele a Microsoft AppSource piactéren.
 services: Azure, AppSource, Marketplace, Cloud Partner Portal, Power BI
 author: v-miclar
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 03/27/2019
 ms.author: pabutler
-ms.openlocfilehash: 72de873b773f174499b0cdc7225b344ea30a137f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d1974133562c0bb8b8006ea2ef323e6797643b67
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64943038"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73826075"
 ---
 # <a name="power-bi-app-offer"></a>Power BI-alkalmazásajánlat
 
 |              |                                |
 |--------------|--------------------------------|
-| Ez a cikk ismerteti a Power BI-alkalmazás közzététele a Microsoft [az AppSource piactérről](https://appsource.microsoft.com/).  A Power BI alkalmazás testre szabható Power BI-tartalmakat, beleértve az adatkészleteket, jelentéseket és irányítópultokat csomagok. Ezután az alkalmazás üzembe helyezése az appsource-ból más Power BI-bérlők, hajtsa végre, a korrekciók és a fejlesztő által engedélyezett testreszabások és csatlakoztassa a saját adataihoz. | ![A Power BI ikon](./media/powerbi-icon.png) |
+| Ez a cikk azt ismerteti, hogyan tehet közzé egy Power BI alkalmazást a Microsoft [AppSource piactéren](https://appsource.microsoft.com/).  A Power BIi alkalmazáscsomag testreszabható Power BI tartalmakat, például adatkészleteket, jelentéseket és irányítópultokat. Ezután központilag telepítheti az alkalmazást más Power BI bérlők számára a AppSource-on keresztül, végrehajthatja a fejlesztő által engedélyezett módosításokat és testreszabásokat, és összekapcsolhatók a saját adataival. | ![Power BI ikon](./media/powerbi-icon.png) |
 
 
-Ez a cikk három fő részre oszlik:
+Ez a cikk három fő részből áll:
 
--   [Előfeltételek](./cpp-prerequisites.md). Ajánlat létrehozása és a egy Power BI-alkalmazás közzététele a műszaki és üzleti igényeinek.
--   [Hozzon létre egy Power BI alkalmazás ajánlatot](./cpp-create-offer.md). Használatával a Power BI alkalmazás ajánlat bejegyzés létrehozása a [Cloud Partner Portalon](https://cloudpartner.azure.com).
--   [A Power BI alkalmazás-ajánlat közzététele](./cpp-publish-offer.md). Hogyan lehet elküldeni az appsource-on egy új ajánlat közzététele, és a egy létező ajánlat frissítése.
+-   [Előfeltételek](./cpp-prerequisites.md). A Power BI-alkalmazások létrehozásának és közzétételének technikai és üzleti követelményei.
+-   [Hozzon létre egy Power bi alkalmazás-ajánlatot](./cpp-create-offer.md). Power BI app Offer-bejegyzés létrehozása a [Cloud Partner Portal](https://cloudpartner.azure.com)használatával.
+-   [Power bi alkalmazás-ajánlat közzététele](./cpp-publish-offer.md). Új ajánlat beküldése a AppSource közzétételre, valamint egy meglévő ajánlat frissítése.
 
 
-## <a name="publishing-steps"></a>Közzétételi lépéseket
+## <a name="publishing-steps"></a>Közzétételi lépések
 
-A Power BI alkalmazás-ajánlat közzétételéhez magas szintű lépései a következők:
+A Power BI alkalmazás-ajánlat közzétételének magas szintű lépései:
 
-![Power BI alkalmazás ajánlat közzétételi lépéseket](media/publishing-steps.png)
+![Power BI alkalmazás-ajánlat közzétételi lépései](media/publishing-steps.png)
 
-Itt látható a Power BI-alkalmazás az ajánlat közzétételi folyamat:
+Itt látható a Power BI alkalmazás-ajánlat közzétételi folyamata:
 
-1. A sablon-alkalmazás létrehozása a Power bi-ban. Ez a művelet létrehoz egy csomag telepítési URL-CÍMÉT, az ajánlat az elsődleges műszaki objektumot képviselő. Jelenleg is támogatják a vizsgálati csomag üzem előtti. További információkért lásd: [Mik azok a Power bi-ban sablon alkalmazások?](https://docs.microsoft.com/power-bi/service-template-apps-overview). 
-2. Adatokat gyűjthet, illetve az ajánlat olyan marketinganyagokat, beleértve a létrehozása: hivatalos név, leírás, emblémák, stb. 
-3. Gyűjtése és a támogatási dokumentumok és az ajánlat jogi létrehozása: *használati feltételeket tartalmazó fájl*, *adatvédelmi szabályzat*, *támogatási házirend*, felhasználóknak szóló segítséget és így tovább.
-4. Az ajánlat létrehozásához: használja a Cloud Partner Portalon konfigurálhatja az ajánlat az ajánlat leírása, marketing-anyagok, a jogi információk, a támogatási információkat és az adategység-specifikációi többek között az adatokat.  Miután az ajánlat teljes mértékben meg van adva, küldje el a közzétételre.
-5. A Cloud Partner portálra a közzétételi folyamat figyelése  Ezzel a lépéssel az appsource-ban a bevezetési csapat teszteli, ellenőrzi és tanúsítja az alkalmazás. 
-6. Miután az alkalmazás sikeresen megkapta a minősítést, tekintse át azt a tesztkörnyezetben, majd engedje el. 
-7. A Power BI alkalmazást az appsource-ban (hogy "élő goes") szerepel.
-8. A Power bi-ban az éles üzem előtti csomagot támogatják. További információkért lásd: [kezelheti az alkalmazás Szolgáltatássablon kiadása](https://docs.microsoft.com/power-bi/service-template-apps-create#manage-the-template-app-release).
+1. Sablonbeli alkalmazás létrehozása Power BIban. Ez a művelet létrehoz egy csomag-telepítési URL-címet, amely az ajánlat elsődleges technikai eszközét jelöli. Jelenleg is népszerűsíti a tesztelési csomagot az üzem előtti időszakban. További információ: [Mi a Power bi template apps?](https://docs.microsoft.com/power-bi/service-template-apps-overview). 
+2. Gyűjtse össze vagy hozza létre az ajánlat marketing-anyagát, beleértve a következőket: hivatalos név, leírás, emblémák stb. 
+3. Gyűjtse össze vagy hozza létre az ajánlat jogi és támogatási dokumentumait: használati *feltételek*, *adatvédelmi szabályzat*, *támogatási szabályzat*, felhasználói súgó stb.
+4. Ajánlat létrehozása: a Cloud Partner Portal használatával konfigurálhatja az ajánlat részleteit, beleértve az ajánlat leírását, a marketing-anyagokat, a jogi információkat, a támogatási információkat és az eszközök specifikációit.  Az ajánlat teljes megadása után küldje el közzétételre.
+5. Figyelje a közzétételi folyamatot a Cloud Partner Portalban.  Ebben a lépésben a AppSource bevezetési csapata teszteli, ellenőrzi és tanúsítja az alkalmazást. 
+6. Az alkalmazás sikeres minősítése után ellenőrizze azt a tesztkörnyezetben, és szabadítsa fel. 
+7. A Power BI alkalmazás szerepel a AppSource (IT "élő").
+8. Power BI az éles üzem előtti csomagot az üzemi környezetbe előléptetheti. További információ: [a sablon alkalmazás kiadásának kezelése](https://docs.microsoft.com/power-bi/service-template-apps-create#manage-the-template-app-release).
 
 
 ## <a name="next-steps"></a>További lépések
 
-Mielőtt a Power BI alkalmazás ajánlat létrehozása, és tegye közzé az appsource-ban, meg kell felelnie a [követelmények](./cpp-prerequisites.md) egy Power BI alkalmazás-közzététel az appsource-ban.
+Mielőtt létrehozza a Power BI-alkalmazás ajánlatát, és közzéteszi a AppSource-ben, meg kell felelnie a Power BI alkalmazás AppSource való közzétételének [követelményeinek](./cpp-prerequisites.md) .

@@ -1,5 +1,5 @@
 ---
-title: Felügyeleti API-referenciák Azure SQL Database felügyelt példányhoz
+title: Felügyeleti API-referenciák felügyelt példányhoz
 description: Tudnivalók Azure SQL Database felügyelt példányok létrehozásáról és kezeléséről.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 03/12/2019
-ms.openlocfilehash: bdc17dd11269bafa271f69ec001f8dcad484b7b8
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 713217a933c646cc4d04759f5697bbc0312827ce
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73688189"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73823408"
 ---
 # <a name="managed-api-reference-for-azure-sql-database-managed-instances"></a>Felügyelt API-referenciák Azure SQL Database felügyelt példányokhoz
 

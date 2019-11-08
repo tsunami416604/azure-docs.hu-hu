@@ -1,7 +1,7 @@
 ---
-title: 'Gyors útmutató: beszédfelismerési szolgáltatás szintézise'
+title: 'Gyors útmutató: beszéd készítése a beszélők számára – beszédfelismerési szolgáltatás'
 titleSuffix: Azure Cognitive Services
-description: Ebben a rövid útmutatóban a Speech SDK használatával alakítja át a szöveget a szintetizált beszédbe.
+description: Ebben a rövid útmutatóban a Speech SDK segítségével konvertálja a szöveget a szintetizált beszédbe, és játssza le a kimenetet egy beszélőn.
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -11,14 +11,14 @@ ms.topic: quickstart
 ms.date: 11/04/2019
 ms.author: erhopf
 zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: c080723c30b05e0fe8f3818b684fd47131223601
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 960e87860f004d8f9f2002b8125ecf26ee55237d
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73681972"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73826859"
 ---
-# <a name="quickstart-synthesize-speech-by-using-the-speech-sdk"></a>Rövid útmutató: beszédfelismerési útmutató a Speech SDK használatával
+# <a name="quickstart-synthesize-speech-to-a-speaker"></a>Gyors útmutató: beszéd hangszintézise egy beszélő számára
 
 ::: zone pivot="programming-language-csharp"
 [!INCLUDE [Header](../includes/quickstarts/tts/header.md)]

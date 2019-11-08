@@ -13,12 +13,12 @@ ms.workload: identity
 ms.date: 09/25/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 6360c7ea5bfdfb2d348cc843288655ed904e6c74
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: ca9b0289fbc8dd01427de38e0e7b30eec266bb12
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73580791"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73818590"
 ---
 # <a name="azure-resource-manager-resource-provider-operations"></a>Erőforrás-szolgáltatói műveletek Azure Resource Manager
 
@@ -4778,8 +4778,8 @@ Az erőforrás-szolgáltatói műveletek folyamatosan fejlődnek. A legújabb m�
 > | Műveletek | Microsoft. Search/searchServices/delete | A keresési szolgáltatás törlése. |
 > | Műveletek | Microsoft. Search/searchServices/deleteQueryKey/delete | Törli a lekérdezési kulcsot. |
 > | Műveletek | Microsoft. Search/searchServices/listAdminKeys/művelet | A rendszergazdai kulcsok beolvasása. |
-> | Műveletek | Microsoft. Search/searchServices/listQueryKeys/művelet | Az adott Azure Search szolgáltatáshoz tartozó lekérdezési API-kulcsok listáját adja vissza. |
-> | Műveletek | Microsoft. Search/searchServices/listQueryKeys/READ | Az adott Azure Search szolgáltatáshoz tartozó lekérdezési API-kulcsok listáját adja vissza. |
+> | Műveletek | Microsoft. Search/searchServices/listQueryKeys/művelet | Az adott Azure Cognitive Search szolgáltatáshoz tartozó lekérdezési API-kulcsok listáját adja vissza. |
+> | Műveletek | Microsoft. Search/searchServices/listQueryKeys/READ | Az adott Azure Cognitive Search szolgáltatáshoz tartozó lekérdezési API-kulcsok listáját adja vissza. |
 > | Műveletek | Microsoft. Search/searchServices/READ | A keresési szolgáltatás beolvasása. |
 > | Műveletek | Microsoft. Search/searchServices/regenerateAdminKey/művelet | Újra létrehozza a felügyeleti kulcsot. |
 > | Műveletek | Microsoft. Search/searchServices/Start/művelet | Elindítja a keresési szolgáltatást. |

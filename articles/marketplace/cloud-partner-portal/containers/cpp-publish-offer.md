@@ -1,43 +1,44 @@
 ---
-title: Tárolók az Azure lemezkép-ajánlat közzététele |} Az Azure Marketplace-en
-description: Az Azure container ajánlat közzétételének módját.
+title: Azure-tárolók rendszerkép-ajánlatának közzététele | Azure piactér
+description: Azure Container-ajánlat közzététele.
 services: Azure, Marketplace, Cloud Partner Portal,
 author: dan-wesley
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/01/2018
 ms.author: pabutler
-ms.openlocfilehash: 9433673e464beb2df74eb4f49851e960d2e7f99c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: cf422e3d77fa0722fe10a52073cf89ab2a76dcc0
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64942637"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73823175"
 ---
 # <a name="publish-container-offer"></a>Tárolóajánlat közzététele
 
- Miután létrehozott egy új ajánlat az a **új ajánlat** lapon teheti közzé az ajánlatot. Válassza ki **közzététel** a közzétételi folyamat elindításához.
+ Miután létrehozta az új ajánlatot az **új ajánlat** oldal használatával, közzéteheti az ajánlatot. A közzétételi folyamat elindításához válassza a **Közzététel** lehetőséget.
 
-Az alábbi ábrán látható a fő lépések egy "az élő esemény indításra" ajánlat a közzétételi folyamat.
+A következő ábra a közzétételi folyamat fő lépéseit mutatja be, amelyekkel az ajánlat "Go Live".
 
-![A tároló az ajánlat közzétételi lépéseket](./media/offer-publishing-steps.png)
+![A tároló ajánlat közzétételi lépései](./media/offer-publishing-steps.png)
 
-## <a name="detailed-description-of-publishing-steps"></a>Közzétételi lépések részletes leírása
+## <a name="detailed-description-of-publishing-steps"></a>A közzétételi lépések részletes leírása
 
-A következő táblázat ismerteti az egyes közzétételi lépések. Az egyes lépések befejezés becsült idejét is kapnak.
+Az alábbi táblázat az egyes közzétételi lépéseket ismerteti. Az egyes lépések befejezésének becsült ideje is meg van adva.
 
 
-|  **Közzétételi lépés**           | **idő**    | **Leírás**                                                            |
+|  **Közzétételi lépés**           | **Idő**    | **Leírás**                                                            |
 |  -------------------           | --------    | ---------------                                                            |
-| Előfeltételek ellenőrzése         | 15 perc   | Információt kínálnak, és kínálnak a rendszer érvényesíti a beállításokat.                        |
-| Tanúsítvány                  | 1 hét | Az ajánlat az Azure hitelesítő csapata által elemzett. Az ajánlat a vírusok, kártevő szoftverek, biztonsági, megfelelőségi és biztonsági problémákat vizsgálja. Az ajánlat be van jelölve, hogy megfelel-e az összes megfelelőségi feltételeket megtekintéséhez. További információkért lásd: [Előfeltételek](./cpp-prerequisites.md) és [a technikai eszközök előkészítése](./cpp-create-technical-assets.md). Visszajelzés a megadott, ha problémát talál. |
-| Csomagolás | 1 óra  | Ajánlat technikai eszközök ügyfél használatra vannak csomagolva, és az érdeklődő rendszerek vannak konfigurálva, és beállítása. |
-|  Közzétevő jóváhagyás             |  -        | Végső közzétevő áttekintése és az ajánlat élesíti előtt megerősítést. Az ajánlat (az ajánlat információk lépések) a kijelölt előfizetésekben telepíthet, hogy megfelelnek-e a szükséges összes követelmény.  Válassza ki **élő** , az ajánlat helyezheti át a következő lépéssel. |
-| Csomagolás                 | 1 óra | A Befejezett ajánlat marketplace éles rendszerekre és régióban replikálja a rendszer. | 
-| Élő                           | 4 nap |Az ajánlat, amely a, a szükséges régiók replikálja, és nyilvánosan elérhetővé. |
+| Előfeltételek ellenőrzése         | 15 perc   | Az ajánlatra vonatkozó információk és az ajánlat beállításainak ellenőrzése.                        |
+| Tanúsítvány                  | 1 hét | Az ajánlatot az Azure minősítési csapat elemzi. Az ajánlat vírusok, kártevő szoftverek, biztonsági megfelelőségi és biztonsági problémák vizsgálatára szolgál. A rendszer ellenőrzi, hogy az ajánlat megfelel-e az összes jogosultsági feltételnek. További információ: [Előfeltételek](./cpp-prerequisites.md) és [a technikai eszközök előkészítése](./cpp-create-technical-assets.md). A visszajelzések megtalálhatók, ha probléma merül fel. |
+| Csomagolás | 1 óra  | Az ajánlat technikai eszközei az ügyfelek általi használatra vannak csomagolva, és a vezető rendszerek konfigurálva vannak és konfigurálhatók. |
+|  Közzétevő kijelentkezése             |  -        | A kiadó végleges felülvizsgálata és megerősítése az ajánlat életbe lépését megelőzően. Az ajánlatot a kiválasztott előfizetésekben is üzembe helyezheti (az ajánlati információk lépéseiben) annak ellenőrzéséhez, hogy az megfelel-e az összes követelménynek.  Válassza az **élő indítás** lehetőséget, hogy ajánlata a következő lépésre léphet. |
+| Csomagolás                 | 1 óra | A kész ajánlatot a piactér éles rendszereiben és régióiban replikálja a rendszer. | 
+| Élő                           | 4 nap |Az ajánlat megjelent, replikálva van a szükséges régiókban, és elérhetővé válik a nyilvánosság számára. |
 
-A közzétételi folyamat befejezéséhez legfeljebb 10 munkanapon teszi lehetővé, és akkor szabadul fel, az ajánlat. Miután elvégezte a közzétételi folyamat, a tároló ajánlat jelenik meg a [a Microsoft Azure Marketplace-en](https://azuremarketplace.microsoft.com/marketplace/apps/category/internet-of-things?page=1&subcategories=iot-edge-modules).
+A közzétételi folyamat befejezésére és az ajánlat felszabadítására legfeljebb 10 munkanapot engedélyezhet. A közzétételi folyamat befejezése után a tároló ajánlata megjelenik a [Microsoft Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/category/internet-of-things?page=1&subcategories=iot-edge-modules).
 
 ## <a name="next-steps"></a>További lépések
 
-[Azure Marketplace-en meglévő tároló ajánlat frissítése](./cpp-update-existing-offer.md)
+[Meglévő Container-ajánlat frissítése az Azure Marketplace-en](./cpp-update-existing-offer.md)

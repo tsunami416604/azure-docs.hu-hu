@@ -1,42 +1,43 @@
 ---
-title: Kapcsolatba lép az adatokat a Power BI alkalmazás-ajánlat |} Az Azure Marketplace-en
-description: A Power BI alkalmazás-ajánlat partnerek mezők konfigurálása a Microsoft AppSource Marketplace.
+title: Kapcsolattartási adatok Power BI alkalmazás ajánlatához | Azure piactér
+description: A Microsoft AppSource piactérhez tartozó Power BI-alkalmazáshoz tartozó névjegyek konfigurálása.
 services: Azure, AppSource, Marketplace, Cloud Partner Portal, Power BI
 author: v-miclar
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/24/2019
 ms.author: pabutler
-ms.openlocfilehash: f659ad2f75f9dad390c37f0e1736af5991a32dfc
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ec1ed23b253f705e1830c1c014492fe52b2133f0
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64943244"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73826539"
 ---
-# <a name="power-bi-app-contacts-tab"></a>A Power BI alkalmazás ügyfelek lap
+# <a name="power-bi-app-contacts-tab"></a>Power BI alkalmazás névjegyek lapja
 
-Használja a **névjegyek** lapján a **új ajánlat** lapot, hogy biztosítsa a műszaki és felhasználói erőforrások támogatása az ajánlatot. Két szakaszra osztottuk: **Mérnöki** és **ügyfél-támogatási**.
+Az **új ajánlat** oldal **névjegyek** lapján megadhatja az ajánlatának technikai és felhasználói támogatási forrásait. Két szakaszra oszlik: **mérnöki** és **ügyfélszolgálati támogatás**.
 
 ![Névjegyek lap](media/contacts-tab.png)
 
 
-## <a name="contacts-fields"></a>Kapcsolatba lép a mezők 
+## <a name="contacts-fields"></a>Névjegyek mezői 
 
-A következő táblázat ismerteti az egyes mezők a célja.  Kötelező mezőt csillag (*) rendszer feltehetően. 
+A következő táblázat ismerteti az egyes mezők célját.  A kötelező mezőket csillag (*) alapján vádoljuk. 
 
 |   Mező               |   Leírás                                                            |
 |-----------------------|--------------------------------------------------------------------------|
-| *Engineering Contact* | Appsource-ban és a szervezet között műszaki ügyfélként szolgál.    |
-| **Név\***              | Személy vagy csoport, amely technikai vagy műszaki támogatási neve. |
-| **e-mailben\***             | A technikai kapcsolattartó e-mail-címét.                                  |
-| **Telefonszám\***             | A technikai támogatási telefonszáma.                                       |
-| *Támogatási kapcsolattartó*     | Fogadja az appsource-on belüli ügyfelek által megnyitott támogatási jegyeket.            |
-| **Név\***              | Személy vagy csoport, amely ügyfél-támogatási neve.              |
-| **e-mailben\***             | Ügyfél-támogatási e-mail-címét.                                        |
+| *Mérnöki kapcsolattartó* | Technikai kapcsolattartóként szolgál a AppSource és a szervezet között.    |
+| **Név\***              | Annak a személynek vagy csoportnak a neve, amely technikai vagy mérnöki támogatásként szolgál. |
+| **E-mail\***             | A technikai partner e-mail-címe.                                  |
+| **Telefonos\***             | A technikai támogatás telefonszáma.                                       |
+| *Támogatási kapcsolattartó*     | A AppSource-en belüli ügyfelek által megnyitott támogatási jegyek fogadása.            |
+| **Név\***              | Az ügyfél-támogatási szolgálatként szolgáló személy vagy csoport neve.              |
+| **E-mail\***             | Az ügyfélszolgálat e-mail-címe.                                        |
 |   |   |
 
 
 ## <a name="next-steps"></a>További lépések
 
-Miután végrehajtotta a Power BI alkalmazás-ajánlat, erősítse meg, hogy létrehozott összes a társított [technikai eszközök](./cpp-create-technical-assets.md) az ajánlatra.
+Miután elvégezte a Power BI alkalmazás ajánlatát, erősítse meg, hogy létrehozta az ajánlathoz tartozó összes [technikai eszközt](./cpp-create-technical-assets.md) .

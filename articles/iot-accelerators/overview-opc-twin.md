@@ -1,6 +1,6 @@
 ---
 title: Mi az OPC Twin – Azure | Microsoft Docs
-description: Az OPC Twin áttekintése
+description: Ez a cikk áttekintést nyújt az OPC Twin-ről. Az OPC Twin a REST API-kon keresztül biztosítja az ipari eszközök felderítését, regisztrálását és távvezérlését.
 author: dominicbetts
 ms.author: dobett
 ms.date: 11/26/2018
@@ -8,12 +8,12 @@ ms.topic: overview
 ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: c0d824e23a98aa14081fbd21bd6a9fbec5d583e0
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: 91448f55f0ebb88ba6c685b960ece9d91cb98e25
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68815940"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73826227"
 ---
 # <a name="what-is-opc-twin"></a>Mi az OPC Twin?
 

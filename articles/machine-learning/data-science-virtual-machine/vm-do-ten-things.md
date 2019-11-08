@@ -9,12 +9,12 @@ author: vijetajo
 ms.author: vijetaj
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 75a685dc90db9133ee9bc5d52d046246270ea32a
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: dc8a870d692108f3a33b89a1c3826d421dfd1f63
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73497607"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73824384"
 ---
 # <a name="ten-things-you-can-do-on-the-windows-data-science-virtual-machine"></a>Tíz dolog, amit elvégezhet a Windows Data Science Virtual Machine
 
@@ -441,7 +441,7 @@ Miután elküldte a lekérdezést a kiszolgálónak, a diagram megjeleníti a fe
 
 Az adatkészletnek a Azure Data Lakeba való betöltését követően a [U-SQL nyelv](../../data-lake-analytics/data-lake-analytics-u-sql-get-started.md) használatával kérdezheti le és vizsgálhatja meg az adatokat. Az U-SQL nyelv a T-SQL-hez hasonló, de néhány funkciót C# kombinál, hogy a felhasználók egyéni modulokat és felhasználó által definiált függvényeket tudjanak írni. A szkripteket az előző lépésben használhatja.
 
-Miután elküldte a lekérdezést a kiszolgálónak, a tripdata_summary. A CSV a Azure Data Lake Explorerben jelenik meg. Az adatmegjelenítést úgy is megtekintheti, hogy a jobb gombbal a fájlra kattint.
+Miután elküldte a lekérdezést a kiszolgálónak, tripdata_summary. A CSV a Azure Data Lake Explorerben jelenik meg. Az adatmegjelenítést úgy is megtekintheti, hogy a jobb gombbal a fájlra kattint.
 
 ![Képernyőfelvétel a CSV-fájlról Data Lake Explorerben](./media/vm-do-ten-things/USQL_create_summary.png)
 
@@ -826,7 +826,7 @@ A következő előfeltételek végrehajtásával érheti el Azure Cosmos DB a DS
 
 1. A Azure Cosmos DB Python SDK már telepítve van a DSVM. A frissítéshez futtassa ```pip install pydocumentdb --upgrade``` parancsot a parancssorból.
 2. Hozzon létre egy Azure Cosmos DB fiókot és adatbázist a [Azure Portal](https://portal.azure.com).
-3. Töltse le a Azure Cosmos DB adatáttelepítési eszközt a [Microsoft letöltőközpontból](https://www.microsoft.com/downloads/details.aspx?FamilyID=cda7703a-2774-4c07-adcc-ad02ddc1a44d) , és bontsa ki a kívánt könyvtárat.
+3. Töltse le a Azure Cosmos DB adatáttelepítési eszközt a [Microsoft letöltőközpontból](https://www.microsoft.com/download/details.aspx?id=53595) , és bontsa ki a kívánt könyvtárat.
 4. Egy [nyilvános blobban](https://cahandson.blob.core.windows.net/samples/volcano.json) tárolt JSON-adatok (vulkáni adatok) importálása Azure Cosmos DBba az áttelepítési eszközhöz a következő parancs-paraméterekkel. (Használja a dtui. exe fájlt abban a könyvtárban, ahol a Azure Cosmos DB adatáttelepítési eszközt telepítette.) Adja meg a forrás és a cél helyét a következő paraméterekkel:
    
     `/s:JsonFile /s.Files:https://cahandson.blob.core.windows.net/samples/volcano.json /t:DocumentDBBulk /t.ConnectionString:AccountEndpoint=https://[DocDBAccountName].documents.azure.com:443/;AccountKey=[[KEY];Database=volcano /t.Collection:volcano1`

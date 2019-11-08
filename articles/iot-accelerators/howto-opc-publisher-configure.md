@@ -1,6 +1,6 @@
 ---
-title: Konfigurálja az OPC-közzétevő – Azure |} A Microsoft Docs
-description: Az OPC-közzétevő konfigurálása
+title: OPC-közzétevő konfigurálása – Azure | Microsoft Docs
+description: Ez a cikk azt ismerteti, hogyan konfigurálhatja az OPC-közzétevőt az OPC UA-csomópont-adatváltozások, az OPC UA-események közzétételére és a telemetria formátum megadására.
 author: dominicbetts
 ms.author: dobett
 ms.date: 06/10/2019
@@ -8,34 +8,34 @@ ms.topic: overview
 ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: bccab4dde5e17ec30a0b8c5e36dd78bdd1bdff93
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 0db00f670dfcc526d3fc34d41ce731df4c6573ec
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67605724"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73824148"
 ---
 # <a name="configure-opc-publisher"></a>Az OPC Publisher konfigurálása
 
-Adja meg, hogy az OPC-közzétevő konfigurálhatja:
+Az OPC-közzétevőt az alábbiak megadására állíthatja be:
 
-- Csomópont közzététele adatokat az OPC UA megváltozik.
-- Az OPC UA események közzététele.
-- A telemetriai adatok formátuma.
+- Az OPC UA-csomópont adatváltozása közzétételre változik.
+- Az OPC UA-események közzététele.
+- A telemetria formátuma.
 
-Konfigurálhatja az OPC-közzétevő konfigurációs fájlokat, vagy pedig metódust hívja.
+Az OPC-közzétevőt konfigurációs fájlokkal vagy metódus-hívásokkal is konfigurálhatja.
 
 ## <a name="use-configuration-files"></a>Konfigurációs fájlok használata
 
-Ez a szakasz ismerteti a beállítások konfigurálásához az OPC UA-csomópont közzététele a konfigurációs fájlok.
+Ez a szakasz az OPC UA csomópont-közzététel konfigurációs fájlokkal történő konfigurálásának lehetőségeit ismerteti.
 
-### <a name="use-a-configuration-file-to-configure-publishing-data-changes"></a>Egy konfigurációs fájl segítségével konfigurálhatja az adatok módosítások közzététele
+### <a name="use-a-configuration-file-to-configure-publishing-data-changes"></a>Konfigurációs fájl használata a közzétételi adatváltozások konfigurálásához
 
-A legegyszerűbben úgy konfigurálja az OPC UA-csomópontokon történő közzététele egy konfigurációs fájllal van. A konfigurációs fájl formátuma leírása itt található [publishednodes.json](https://github.com/Azure/iot-edge-opc-publisher/blob/master/opcpublisher/publishednodes.json) a tárházban.
+Az OPC UA-csomópontok közzétételre való konfigurálásának legegyszerűbb módja egy konfigurációs fájl. A konfigurációs fájl formátuma dokumentálva van a [publishednodes. JSON](https://github.com/Azure/iot-edge-opc-publisher/blob/master/opcpublisher/publishednodes.json) fájlban a tárházban.
 
-Konfigurációs fájl szintaxisával idővel megváltozott. Továbbra is az OPC-közzétevő beolvassa a régi formátumot, de a legújabb formátumba konvertálja azokat, ha ez a konfiguráció továbbra is fennáll.
+A konfigurációs fájl szintaxisa módosult az idő múlásával. Az OPC-közzétevő továbbra is beolvassa a régi formátumokat, de a konfiguráció megőrzése után a legújabb formátumra alakítja őket.
 
-Az alábbi példa bemutatja a konfigurációs fájl formátuma:
+A következő példa a konfigurációs fájl formátumát mutatja be:
 
 ```json
 [
@@ -54,11 +54,11 @@ Az alábbi példa bemutatja a konfigurációs fájl formátuma:
 ]
 ```
 
-### <a name="use-a-configuration-file-to-configure-publishing-events"></a>Egy konfigurációs fájl segítségével közzétételi események konfigurálása
+### <a name="use-a-configuration-file-to-configure-publishing-events"></a>Konfigurációs fájl használata a közzétételi események konfigurálásához
 
-OPC UA-események közzétételére, mint az adatok változásának ugyanazt a konfigurációs fájlt használja.
+OPC UA-események közzétételéhez ugyanazt a konfigurációs fájlt használja, mint az adatváltozások esetében.
 
-A következő példa bemutatja, hogyan által előállított, a közzétételhez konfigurálása a [SimpleEvents kiszolgáló](https://github.com/OPCFoundation/UA-.NETStandard/tree/master/SampleApplications/Workshop/SimpleEvents/Server). A SimpleEvents kiszolgálón található a [OPC Foundation tárház](https://github.com/OPCFoundation/UA-.NETStandard) van:
+Az alábbi példa bemutatja, hogyan konfigurálhatja a [SimpleEvents-kiszolgáló](https://github.com/OPCFoundation/UA-.NETStandard/tree/master/SampleApplications/Workshop/SimpleEvents/Server)által generált események közzétételét. A SimpleEvents-kiszolgáló az [OPC Foundation adattárában](https://github.com/OPCFoundation/UA-.NETStandard) található:
 
 ```json
 [
@@ -110,24 +110,24 @@ A következő példa bemutatja, hogyan által előállított, a közzétételhez
 ]
 ```
 
-## <a name="use-method-calls"></a>Metódushívások használata
+## <a name="use-method-calls"></a>Metódus-hívások használata
 
-Ez a szakasz ismerteti a segítségével konfigurálhatja az OPC-közzétevő metódust hívja.
+Ez a szakasz az OPC-közzétevő konfigurálásához használható metódusi hívásokat ismerteti.
 
-### <a name="configure-using-opc-ua-method-calls"></a>Az OPC UA-metódust hívja használatával konfigurálása
+### <a name="configure-using-opc-ua-method-calls"></a>Konfigurálás OPC UA-metódusok használatával
 
-Az OPC-közzétevő magában foglalja az OPC UA-kiszolgáló, amely 62222 porton érhető el. Ha az állomásnév **közzétevő**, majd a végpont URI-ja: `opc.tcp://publisher:62222/UA/Publisher`.
+Az OPC-közzétevő tartalmaz egy OPC UA-kiszolgálót, amely a 62222-es porton érhető el. Ha az állomásnév **közzétevő**, akkor a végpont URI azonosítója: `opc.tcp://publisher:62222/UA/Publisher`.
 
-Ennek a végpontnak az alábbi négy módszert mutatja:
+Ez a végpont a következő négy módszert teszi elérhetővé:
 
 - PublishNode
 - UnpublishNode
 - GetPublishedNodes
 - IoT HubDirectMethod
 
-### <a name="configure-using-iot-hub-direct-method-calls"></a>Az IoT Hub közvetlen metódust hívja használatával konfigurálja
+### <a name="configure-using-iot-hub-direct-method-calls"></a>Konfigurálás IoT Hub közvetlen metódus-hívások használatával
 
-Az OPC-közzétevő valósít meg a következő IoT Hub közvetlen metódust hívja:
+Az OPC-közzétevő a következő IoT Hub közvetlen metódus-hívásokat valósítja meg:
 
 - PublishNodes
 - UnpublishNodes
@@ -140,13 +140,13 @@ Az OPC-közzétevő valósít meg a következő IoT Hub közvetlen metódust hí
 - ExitApplication
 - GetInfo
 
-A metódus kérelmek és válaszok hasznos JSON formátumban definiált [opcpublisher/HubMethodModel.cs](https://github.com/Azure/iot-edge-opc-publisher/blob/master/opcpublisher/HubMethodModel.cs).
+A metódus-kérelem és a válaszok JSON-tartalmának formátuma a [opcpublisher/HubMethodModel. cs](https://github.com/Azure/iot-edge-opc-publisher/blob/master/opcpublisher/HubMethodModel.cs)fájlban van definiálva.
 
-Ha egy ismeretlen metódust hívja meg a modulban, válaszol egy karakterlánccal, amely szerint a metódus nincs implementálva. Egy ismeretlen módszer arra, hogy a modul pingelni hívása.
+Ha ismeretlen metódust hív meg a modulban, az egy olyan karakterlánccal válaszol, amely szerint a metódus nincs implementálva. Ismeretlen metódust hívhat meg a modul pingelésének módjaként.
 
-### <a name="configure-username-and-password-for-authentication"></a>Felhasználónév és jelszó-hitelesítés konfigurálása
+### <a name="configure-username-and-password-for-authentication"></a>Felhasználónév és jelszó konfigurálása hitelesítéshez
 
-A hitelesítési mód állíthatja be az IoT Hub közvetlen metódust hívja. A hasznos adatokat kell tartalmaznia a tulajdonság **OpcAuthenticationMode** és a felhasználónevet és jelszót:
+A hitelesítési mód beállítható egy IoT Hub közvetlen metódus hívásával. Az adattartalomnak tartalmaznia kell a **OpcAuthenticationMode** tulajdonságot és a felhasználónevet és a jelszót:
 
 ```csharp
 {
@@ -158,7 +158,7 @@ A hitelesítési mód állíthatja be az IoT Hub közvetlen metódust hívja. A 
 }
 ```
 
-A jelszó titkosítja az IoT Hub munkaterhelés ügyfél, és tárolja a közzétevő konfigurálása. Vissza a névtelen hitelesítés módosításához használja a következő hasznos módszer:
+A jelszót a IoT Hub munkaterhelés-ügyfél titkosítja, és a közzétevő konfigurációjában tárolja. A hitelesítés névtelenre való visszaállításához használja a metódust a következő hasznos tartalommal:
 
 ```csharp
 {
@@ -168,23 +168,23 @@ A jelszó titkosítja az IoT Hub munkaterhelés ügyfél, és tárolja a közzé
 }
 ```
 
-Ha a **OpcAuthenticationMode** tulajdonság nincs beállítva az adattartalomban szereplő, a hitelesítési beállítások nem változnak a konfigurációban.
+Ha a **OpcAuthenticationMode** tulajdonság nincs beállítva a hasznos adatok között, a hitelesítési beállítások változatlanok maradnak a konfigurációban.
 
-## <a name="configure-telemetry-publishing"></a>Telemetriai adatok közzétételének konfigurálása
+## <a name="configure-telemetry-publishing"></a>Telemetria-közzététel konfigurálása
 
-Az OPC-közzétevő közzétett csomópont egy értékre módosul, értesítést kap, amikor egy JSON formátumú üzenetet az IoT hubnak küldött állít elő.
+Ha az OPC-közzétevő értesítést kap egy közzétett csomópontban lévő érték változásáról, akkor a IoT Hubba küldött JSON formátumú üzenetet hoz létre.
 
-A JSON konfigurációs fájl használatával formázott üzenet tartalma is beállíthatja. Ha nincsenek konfigurációs fájl meg van adva a `--tc` , egy alapértelmezett konfigurációs beállítással, amely kompatibilis a [csatlakoztatott gyár megoldásgyorsító](https://github.com/Azure/azure-iot-connected-factory).
+A JSON formátumú üzenet tartalmát konfigurációs fájllal is konfigurálhatja. Ha nincs megadva konfigurációs fájl a `--tc` kapcsolóval, a rendszer egy alapértelmezett konfigurációt használ, amely kompatibilis a [csatlakoztatott Factory megoldás-gyorsító](https://github.com/Azure/azure-iot-connected-factory)használatával.
 
-Ha az OPC-közzétevő kötegelt üzenetek van konfigurálva, majd azok éppen küldi el a egy érvényes JSON-tömböt.
+Ha az OPC-közzétevő batch-üzenetekre van konfigurálva, akkor azok érvényes JSON-tömbként lesznek elküldve.
 
-A következő forrásokból származó telemetria származtatott:
+A telemetria a következő forrásokból származik:
 
-- A csomópontra az OPC-közzétevő csomópont-konfiguráció
-- A **MonitoredItem** , amelynek az OPC-közzétevő értesítést kapott OPC UA-verem objektumához.
-- Az értesítések, amelyek részletesen az adatmódosítás értéket az argumentumot.
+- A csomópont OPC közzétevő csomópontjának konfigurációja
+- Az OPC UA-verem **MonitoredItem** -objektuma, amelyhez az OPC-közzétevő értesítést kapott.
+- Az értesítésnek átadott argumentum, amely részletesen ismerteti az adatérték változását.
 
-A telemetriai adatokból, hogy a JSON-formázott üzenet a rendszer elhelyezi egy kijelölt ezek az objektumok tulajdonságait fontos. Ha további tulajdonságok van szüksége, az OPC-közzétevő kódbázis módosítani szeretné.
+A JSON formátumú üzenetbe helyezett telemetria az objektumok fontos tulajdonságai közül választhat. Ha további tulajdonságokra van szüksége, módosítania kell az OPC közzétevő kódjának alapját.
 
 A konfigurációs fájl szintaxisa a következő:
 
@@ -380,4 +380,4 @@ A konfigurációs fájl szintaxisa a következő:
 
 ## <a name="next-steps"></a>További lépések
 
-Most már megtanulta, hogyan konfigurálhatja az OPC-közzétevő,-e a javasolt következő lépésre megtudhatja, hogyan [futtassa az OPC-közzétevő](howto-opc-publisher-run.md).
+Most, hogy megismerte az OPC-közzétevő konfigurálását, a javasolt következő lépés az [OPC-közzétevő futtatásának](howto-opc-publisher-run.md)megismerése.

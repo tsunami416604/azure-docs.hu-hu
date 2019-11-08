@@ -4,15 +4,16 @@ description: Az Azure Marketplace-fiókok Cloud Partner Portalon való kezelés�
 services: Azure, Marketplace, Cloud Partner Portal,
 author: v-miclar
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/01/2019
 ms.author: pabutler
-ms.openlocfilehash: 09bf8479921c9bd55b98e835a19ea995fa37e20b
-ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
+ms.openlocfilehash: b0a9f312ba78e148a573064b81ff1f52fbd85c03
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71720071"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73826666"
 ---
 # <a name="prerequisites-for-managing-accounts-on-the-cloud-partner-portal"></a>A Cloud Partner Portal fiókok kezelésének előfeltételei 
 
@@ -33,14 +34,14 @@ A következő táblázat felsorolja a Microsoft Cloud publisherként való telje
 
 |                   Lépés                   |  Eredményül kapott regisztráció vagy erőforrás                     |
 |                  ------                  |  -----------------------------------                    |
-| 1. Regisztráció Microsoft Partner Network |  A szervezet Microsoft Partner Network azonosítója |
-| 2. Microsoft-fiók létrehozása *           |  Ellenőrzött Microsoft-fiók @outlook.com @live.com,, stb. |
-| 3. A piactér regisztrációs űrlapjának elküldése | Egy kiadói fiók a Cloud Partner Portal      |
-| 4. Bejelentkezés Cloud Partner Portal        | Ajánlatokat hozhat létre és tehet közzé, felhasználókat kezelhet, Piactéri mérőszámokat gyűjthet stb. |
-| 5. Regisztráció a Microsoft fejlesztői központban * | Egy ellenőrzött fejlesztői központ fiók; Marketplace-tranzakciókat végrehajtó szolgáltató  |
+| 1. Regisztráljon Microsoft Partner Network |  A szervezet Microsoft Partner Network azonosítója |
+| 2. hozzon létre egy Microsoft-fiók *           |  Ellenőrzött Microsoft-fiók @outlook.com, @live.comstb.). |
+| 3. a piactér regisztrációs űrlapjának beküldése | Egy kiadói fiók a Cloud Partner Portal      |
+| 4. Jelentkezzen be Cloud Partner Portal        | Ajánlatokat hozhat létre és tehet közzé, felhasználókat kezelhet, Piactéri mérőszámokat gyűjthet stb. |
+| 5. Regisztráljon a Microsoft fejlesztői központban * | Egy ellenőrzött fejlesztői központ fiók; Marketplace-tranzakciókat végrehajtó szolgáltató  |
 |   |   |
 
-\*Ezek a lépések az Azure Marketplace Transact-ajánlatok esetében szükségesek, de az összes ajánlathoz kifejezetten ajánlott.  Ha létrehoz egy Microsoft-fiók, és Microsoft-fejlesztőként regisztrál, hozzáférhet további Microsoft ügyfél-és fejlesztői erőforrásokhoz, valamint választható partneri ajánlatokhoz is.  
+\* ezek a lépések szükségesek az Azure Marketplace Transact-ajánlatokhoz, de az összes ajánlathoz kifejezetten ajánlott.  Ha létrehoz egy Microsoft-fiók, és Microsoft-fejlesztőként regisztrál, hozzáférhet további Microsoft ügyfél-és fejlesztői erőforrásokhoz, valamint választható partneri ajánlatokhoz is.  
 
 
 ## <a name="next-steps"></a>További lépések

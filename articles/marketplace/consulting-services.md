@@ -4,20 +4,21 @@ description: Ez a cikk az Azure Marketplace-en elérhető új tanácsadási ajá
 services: Marketplace, Compute, Storage, Networking, Blockchain, Security
 author: yijenj
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 10/29/2018
 ms.author: pabutler
-ms.openlocfilehash: e23a83ab3a5b110f74ab4ac203dfc020e8920c24
-ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
+ms.openlocfilehash: d56b83c8bd9a71ac30112f9e77a97ed8ab61a137
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72285982"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73825972"
 ---
 # <a name="consulting-services-for-azure-marketplace-and-appsource"></a>Az Azure Marketplace és a AppSource tanácsadói szolgáltatásai
 Az Azure Marketplace-en és a AppSource-ben elérhető tanácsadói szolgáltatások lehetővé teszi a Microsoft partnerei számára, hogy összekapcsolják az ügyfeleket a szolgáltatásokkal az Azure és az üzleti célok támogatásához és bővítéséhez 
 
-Az Azure Marketplace és a AppSource támogatja a Microsoft rendszerintegrátor (SI) partnerei által kínált tanácsadói szolgáltatások listáját. a cél az, hogy minőségi tanácsadói szolgáltatásokat nyújtson, amelyekkel az ügyfelek csatlakozhatnak a szükséges szakértői szolgáltatásokhoz. Segítheti az ügyfeleket a megfelelő megoldások és megvalósítások értékelésében, értékelésében és üzembe helyezésében, amelyek segítik az üzleti célokat és a célokat.  
+Az Azure Marketplace és a AppSource támogatja a Microsoft rendszerintegrátor (SI) partnerei által kínált tanácsadói szolgáltatások listáját. a cél az, hogy minőségi tanácsadói szolgáltatásokat nyújtsanak, amelyek lehetővé teszik, hogy az ügyfelek csatlakozzanak a szükséges szakértői szolgáltatásokhoz. Segítheti az ügyfeleket a megfelelő megoldások és megvalósítások értékelésében, értékelésében és üzembe helyezésében, amelyek segítik az üzleti célokat és a célokat.  
 
 Ezek a tanácsadás – a szolgáltatási ajánlatok az ügyfél-specifikus bevonások. A kiadók meghatározhatják a tőzsdei típust, a rögzített hatókört és időtartamot, vagy rögzített árú vagy ingyenes, valamint az ügyfélhez tartozó, meghatározott napirendet. Az érdeklődők a partner CRM rendszerének értesítésén keresztül érkeznek, és 48 órán belül válaszolnak az ügyfelekre. 
 
@@ -76,7 +77,7 @@ A partnereknek **Silver vagy Gold kompetenciára** van szükségük a szolgálta
 |Ausztrália |Franciaország  |     Mexikó          |Spanyolország       |
 |Belgium   |Németország |     Hollandia     |Svédország       |
 |Kanada    |India   |     Új-Zéland     |Egyesült Királyság  |
-|Dánia   |Olaszország   |     Norvégia          |Amerikai Egyesült Államok |
+|Dánia   |Olaszország   |     Norvégia          |Egyesült Államok |
 |Finnország   |Japán   |     Lengyelország          
 
 
@@ -150,7 +151,7 @@ Példák:
 
 Az ajánlatok leírásának és az ajánlatok összegzésének áttekintésekor a csapat a következő feltételeket fogja alkalmazni:
 
-|Csomag típusa  |Szükséges |Ajánlott  |
+|Csomag típusa  |Kötelező |Ajánlott  |
 |---------|---------|---------|
 |**Értékelés**    |   Részletes menetrendet tartalmaz a többnapos vagy a többhetes értékelésekhez, és megfogalmazhatja, hogy az ügyfél milyen kihasználható      |    Az ajánlat összefoglalásának optimalizálása a legnépszerűbb keresőmotor-optimalizálási kulcsszavakkal     |
 |**Eligazítás**    |   Az ügyfél által várhatóan felhasználható adatok kihangsúlyozása. A tájékoztatót személyesen kell megadnia. Ha virtuális szolgáltatást biztosít, válasszon másik ajánlatot.    |  Az ajánlat összefoglalásának optimalizálása a legnépszerűbb keresőmotor-optimalizálási kulcsszavakkal       |
@@ -170,7 +171,7 @@ Cloud Partner Portalon belül a [Markdown](https://docs.microsoft.com/contribute
 * \* Dőlt betűssé tétele ajánlat összegzése
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ha még nem tette meg, 
 

@@ -1,145 +1,146 @@
 ---
-title: A Dynamics CRM |} Az Azure Marketplace-en
-description: Állítsa be a Dynamics CRM lead felügyelet.
+title: Dynamics CRM | Azure piactér
+description: Állítsa be a Dynamics CRM-beli érdeklődők felügyeletét.
 services: Azure, Marketplace, Cloud Partner Portal,
 author: dan-wesley
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/14/2018
 ms.author: pabutler
-ms.openlocfilehash: 6fdab26bb5a4da5402a3a0a895a7c8835ef22c2f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4ccc8b85e72a4da3b0e640abcc70d24b7cdc54af
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64935800"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73825263"
 ---
-# <a name="configure-lead-management-for-dynamics-crm-online"></a>Konfigurálható a érdeklődő a Dynamics CRM online
+# <a name="configure-lead-management-for-dynamics-crm-online"></a>A Dynamics CRM Online-hoz készült érdeklődői felügyelet konfigurálása
 
-Ez a cikk ismerteti, hogyan állítható be a Dynamics CRM Online értékesítési érdeklődők feldolgozásához.
+Ez a cikk bemutatja, hogyan állíthatja be a Dynamics CRM Online-t az értékesítési érdeklődők feldolgozásához.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A következő felhasználói engedélyekkel szükség ebben a cikkben ismertetett lépéseket követve:
-- A Dynamics CRM Online-példány megoldás telepítése az rendszergazdájának lennie kell.
-- Meg kell lennie a bérlői rendszergazda hozhat létre egy új érdeklődő service szolgáltatásfiókot.
+A cikkben szereplő lépések végrehajtásához a következő felhasználói engedélyek szükségesek:
+- A megoldás telepítéséhez rendszergazdának kell lennie a Dynamics CRM Online-példányon.
+- Ahhoz, hogy új szolgáltatásfiókot hozzon létre az érdeklődő szolgáltatáshoz, bérlői rendszergazdának kell lennie.
 
 <a name="install-the-solution"></a>A megoldás telepítése
 --------------------
 
-1.  Töltse le a [a Microsoft Marketplace vezethet író megoldás](https://mpsapiprodwus.blob.core.windows.net/documentation/MicrosoftMarketplacesLeadIntegrationSolution_1_0_0_0_target_CRM_6.1_managed.zip) , és mentse helyileg.
+1.  Töltse le a [Microsoft Marketplace vezető író megoldását](https://mpsapiprodwus.blob.core.windows.net/documentation/MicrosoftMarketplacesLeadIntegrationSolution_1_0_0_0_target_CRM_6.1_managed.zip) , és mentse helyileg.
 
-2.  Nyissa meg a Dynamics CRM Online-hoz, és nyissa meg a beállításokat.
+2.  Nyissa meg a Dynamics CRM Online-t, és lépjen a beállítások menüpontra.
     >[!NOTE]
-    >Ha nem látja a következő képernyőfelvételen a beállításokat, majd, nem rendelkezik a szükséges engedélyekkel.
+    >Ha nem látja a beállításokat a következő képernyőfelvételen, akkor nem rendelkezik a szükséges engedélyekkel.
  
-       ![Dynamics-beállítás megtekintése](./media/cloud-partner-portal-lead-management-instructions-dynamics/crmonline1.png)
+       ![Dynamics telepítési nézet](./media/cloud-partner-portal-lead-management-instructions-dynamics/crmonline1.png)
 
-3.  Válassza ki **importálás**, majd válassza ki a letöltött megoldást az 1. lépésben.
+3.  Válassza az **Importálás**lehetőséget, majd válassza ki az 1. lépésben letöltött megoldást.
  
-    ![Dynamics-importálási beállítás](./media/cloud-partner-portal-lead-management-instructions-dynamics/crmonline2.png)
+    ![Dynamics importálási beállítás](./media/cloud-partner-portal-lead-management-instructions-dynamics/crmonline2.png)
 
-4.  A megoldás telepítésének befejezéséhez.
+4.  Fejezze be a megoldás telepítését.
 
 ## <a name="configure-user-permissions"></a>Felhasználói engedélyek konfigurálása
 
-Írhat érdeklődőket a Dynamics CRM-példányon megoszthatja velünk a kapcsolatot a szolgáltatásfiók és-engedélyek konfigurálása.
+Ha a Dynamics CRM-példányba szeretne érdeklődőket írni, meg kell osztania egy szolgáltatásfiókot az USA-ban, és konfigurálnia kell a fiók engedélyeit.
 
-A következő lépések használatával létrehozni a szolgáltatásfiókot, és az engedélyeket. Használhat **Azure Active Directory** vagy **Office 365**.
+A szolgáltatásfiók létrehozásához és az engedélyek hozzárendeléséhez kövesse az alábbi lépéseket. **Azure Active Directory** vagy **Office 365**-et is használhat.
 
 ### <a name="azure-active-directory"></a>Azure Active Directory
 
-Ajánlott ezt a lehetőséget, mivel a felhasználónév/jelszó frissítése annak érdekében, hogy továbbra is megkapja az érdeklődők soha nem kellene a további előnnyel kap. Használja az Azure Active Directory lehetőséget, adja meg az alkalmazás azonosítója, az Alkalmazáskulcs és a címtár-azonosító az Active Directory-alkalmazás.
+Javasoljuk, hogy ezt a beállítást használja, mivel a további előnyöket nem kell frissítenie a felhasználónevének/jelszavának a beszerzése érdekében. A Azure Active Directory beállítás használatához adja meg az alkalmazás azonosítóját, az alkalmazás kulcsát és a könyvtár azonosítóját a Active Directory alkalmazásból.
 
-Az alábbi lépések segítségével az Azure Active Directory konfigurálása a Dynamics CRM.
+A Dynamics CRM Azure Active Directory konfigurálásához kövesse az alábbi lépéseket.
 
-1.  Jelentkezzen be a [az Azure portal](https://portal.azure.com/) majd válassza ki az Azure Active Directory szolgáltatást.
+1.  Jelentkezzen be [Azure Portal](https://portal.azure.com/) , majd válassza ki a Azure Active Directory szolgáltatást.
 
-2.  Válassza ki **tulajdonságok** , majd másolja a **címtár-azonosító**. Ez az a bérlő azonosítója, amely a Cloud Partner portálra használni kell.
+2.  Válassza a **Tulajdonságok** lehetőséget, majd másolja a **címtár-azonosítót**. Ezt a bérlői fiók azonosítását kell használni a Cloud Partner Portalban.
 
-    ![Címtár-azonosító beszerzése](./media/cloud-partner-portal-lead-management-instructions-dynamics/directoryid.png)
+    ![Könyvtár AZONOSÍTÓjának beolvasása](./media/cloud-partner-portal-lead-management-instructions-dynamics/directoryid.png)
 
-3.  Válassza ki **alkalmazásregisztrációk**, majd válassza ki **új alkalmazásregisztráció**.
+3.  Válassza a **Alkalmazásregisztrációk**lehetőséget, majd válassza az **új alkalmazás regisztrálása**lehetőséget.
 4.  Adja meg az alkalmazás nevét.
-5.  Típus, válassza ki a **webalkalmazás / API**.
-6.  Adjon meg egy URL-címet. Ez a mező nem szükséges, az érdeklődők, de szükség az alkalmazás létrehozása.
+5.  A típus mezőben válassza a **Web App/API**lehetőséget.
+6.  Adjon meg egy URL-címet. Ez a mező nem szükséges az érdeklődők számára, de az alkalmazás létrehozásához szükséges.
 7. Kattintson a **Létrehozás** gombra.
-8.  Most, hogy az alkalmazás regisztrálva lesz, válassza ki a **tulajdonságok** majd **az alkalmazásazonosító másolása**. A Cloud Partner portálra a kapcsolat ezt az információt fogja használni.
-9.  A Tulajdonságok állítja be az alkalmazás több-bérlős, és válassza ki **mentése**.
+8.  Most, hogy regisztrálta az alkalmazást, válassza a **Tulajdonságok** lehetőséget, majd válassza **az alkalmazás azonosítójának másolása**lehetőséget. Ezt a kapcsolatfelvételi információt a Cloud Partner Portal fogja használni.
+9.  A tulajdonságok területen állítsa az alkalmazást több-bérlős értékre, majd válassza a **Mentés**lehetőséget.
 
-10. Válassza ki **kulcsok** , és hozzon létre egy új kulcsot időtartamú *soha nem jár le*. Válassza ki **mentése** a kulcs létrehozásához. 
-11. Válassza a kulcsok menü **kulcsérték mentése.** Mentse ezt az értéket másolatát, mert lesz szüksége a Cloud Partner portálra.
+10. Válassza a **kulcsok** lehetőséget, és hozzon létre egy új kulcsot, amelynek időtartamát *soha nem jár le*. A kulcs létrehozásához válassza a **Mentés** lehetőséget. 
+11. A kulcsok menüben válassza **a kulcs értékének másolása lehetőséget.** Mentse az érték másolatát, mert szüksége lesz rá a Cloud Partner Portal.
     
-    ![Dynamics regisztrált kulcs lekérése](./media/cloud-partner-portal-lead-management-instructions-dynamics/registerkeys.png)
+    ![A Dynamics beolvassa a regisztrált kulcsot](./media/cloud-partner-portal-lead-management-instructions-dynamics/registerkeys.png)
     
-12. Válassza ki **szükséges engedélyek** majd **Hozzáadás**. 
-13. Válassza ki **Dynamics CRM Online** az új API-ként, és ellenőrizze a szülőmappára vonatkozóan *hozzáférés CRM Online céges felhasználóként*.
+12. Válassza a **szükséges engedélyek** lehetőséget, majd válassza a **Hozzáadás**lehetőséget. 
+13. Válassza ki a **Dynamics CRM Online** -t az új API-ként, és tekintse meg a *vállalati felhasználók hozzáférésének engedélyezése a CRM Online*-hoz lehetőséget.
 
-14. A Dynamics CRM, a felhasználók területen, és válassza ki a váltva a "Engedélyezett felhasználók" legördülő **alkalmazás felhasználóinak**.
+14. A Dynamics CRM-ben lépjen a felhasználók elemre, és válassza az "engedélyezett felhasználók" legördülő menüt az **alkalmazás felhasználóinak**való átváltáshoz.
     
-    ![Alkalmazás felhasználói számára](./media/cloud-partner-portal-lead-management-instructions-dynamics/applicationuserfirst.PNG)
+    ![Alkalmazás felhasználói](./media/cloud-partner-portal-lead-management-instructions-dynamics/applicationuserfirst.PNG)
 
-15. Válassza ki **új** egy új felhasználó létrehozásához. Válassza ki a **felhasználói: ALKALMAZÁS felhasználói** legördülő listából.
+15. Új felhasználó létrehozásához válassza az **új** lehetőséget. Válassza ki a **felhasználót: alkalmazás felhasználó** legördülő menüje.
     
-    ![Új alkalmazás-felhasználó hozzáadása](./media/cloud-partner-portal-lead-management-instructions-dynamics/applicationuser.PNG)
+    ![Új alkalmazás felhasználójának hozzáadása](./media/cloud-partner-portal-lead-management-instructions-dynamics/applicationuser.PNG)
 
-16. A **új felhasználó**, adja meg a nevét, és ehhez a kapcsolathoz használni kívánt e-mail. Illessze be a **alkalmazásazonosító** az alkalmazás az Azure Portalon létrehozott.
+16. Az **új felhasználó**mezőben adja meg a kapcsolódáshoz használni kívánt nevet és e-mail-címet. Illessze be a Azure Portalban létrehozott alkalmazás **azonosítóját** .
 
      ![Új felhasználó konfigurálása](./media/cloud-partner-portal-lead-management-instructions-dynamics/leadgencreateuser.PNG)
 
-17. Nyissa meg a "Biztonsági beállítások" Ez a cikk a kapcsolatot a felhasználó konfigurálásának befejezéséhez.
+17. A jelen cikk "biztonsági beállítások" részében találja a felhasználóhoz való kapcsolódás konfigurálásának befejezését.
 
 ### <a name="office-365"></a>Office 365
 
-Ha nem szeretné használni az Azure Active Directory, regisztrálhatja az új felhasználót a *Microsoft 365 felügyeleti központban*. Kötelező frissítéséhez a felhasználónév/jelszó 90 naponként továbbra is megkaphatja az érdeklődők fogja.
+Ha nem kívánja használni a Azure Active Directoryt, regisztrálhat egy új felhasználót a *Microsoft 365 felügyeleti központban*. Az érdeklődők folytatásához 90 naponta frissítenie kell a felhasználónevét/jelszavát.
 
-A következő lépések segítségével konfigurálhatja a Office 365-höz a Dynamics CRM.
+A Dynamics CRM-hez készült Office 365 konfigurálásához kövesse az alábbi lépéseket.
 
-1. Jelentkezzen be a [Microsoft 365 felügyeleti központban](https://admin.microsoft.com).
+1. Jelentkezzen be a [Microsoft 365 felügyeleti központba](https://admin.microsoft.com).
 
-2. Válassza ki a **rendszergazdai** csempére.
+2. Válassza a **rendszergazda** csempét.
 
-    ![Office Online Admin](./media/cloud-partner-portal-lead-management-instructions-dynamics/crmonline3.png)
+    ![Office Online-rendszergazda](./media/cloud-partner-portal-lead-management-instructions-dynamics/crmonline3.png)
 
-3. Válassza ki **felhasználó hozzáadása**.
+3. Válassza **a felhasználó hozzáadása**elemet.
 
     ![Felhasználó hozzáadása](./media/cloud-partner-portal-lead-management-instructions-dynamics/crmonline4.png)
 
-4. Hozzon létre egy új felhasználót a az érdeklődő-író szolgáltatást. A következő beállításokat:
+4. Hozzon létre egy új felhasználót az ólom-író szolgáltatáshoz. Adja meg a következő beállításokat:
 
-    -   Adjon meg egy jelszót, és a "Ellenőrizze a felhasználó első bejelentkezéskor jelszómódosításra" jelet.
-    -   Válassza ki a "Felhasználó (nincs rendszergazdai hozzáférése)" a felhasználó az a szerepkörként.
-    -   Válassza ki azt a terméklicencet, a következő képernyőfelvételen látható. Ön úgy dönt, a licenc kell fizetnie. A megoldás is a Dynamics CRM Online alapszintű licenc fog működni.
+    -   Adja meg a jelszót, és törölje a jelet a "felhasználói jelszó módosítása az első bejelentkezéskor" lehetőségre.
+    -   A felhasználó szerepköre válassza a "felhasználó (nincs rendszergazdai hozzáférés)" lehetőséget.
+    -   Válassza ki a következő képernyőfelvételen látható termék licencét. A választott licencért díjat számítunk fel. A megoldás a Dynamics CRM Online alapszintű licenccel is együttműködik.
     
-    ![Felhasználói engedélyek és a licenc konfigurálása](./media/cloud-partner-portal-lead-management-instructions-dynamics/crmonline5.png)
+    ![Felhasználói engedélyek és licencek konfigurálása](./media/cloud-partner-portal-lead-management-instructions-dynamics/crmonline5.png)
 
 ## <a name="security-settings"></a>Biztonsági beállítások
 
-Az utolsó lépés, hogy a felhasználó írhat az érdeklődők létrehozott.
+Az utolsó lépés az, hogy lehetővé teszi a létrehozott felhasználó számára az érdeklődők írását.
 
-1.  Bejelentkezés a Dynamics CRM Online-bA.
-2.  A **beállítások**válassza **biztonsági**.
+1.  Jelentkezzen be a Dynamics CRM Online-ba.
+2.  A **Beállítások**területen válassza a **Biztonság**elemet.
     
     ![Biztonsági beállítások](./media/cloud-partner-portal-lead-management-instructions-dynamics/crmonline6.png)
 
-3.  Válassza ki a felhasználót, amelyet **felhasználói engedélyek**, majd válassza ki **felhasználói szerepkörök kezelése**. Ellenőrizze **a Microsoft Marketplace vezethet író** a szerepkör hozzárendelése.
+3.  Válassza ki a felhasználói **engedélyekben**létrehozott felhasználót, majd válassza a **felhasználói szerepkörök kezelése**lehetőséget. A szerepkör hozzárendeléséhez keresse meg **Microsoft Marketplace vezető írójat** .
 
-    ![Felhasználói szerepkör hozzárendelése](./media/cloud-partner-portal-lead-management-instructions-dynamics/crmonline7.png)\
+    ![Felhasználói szerepkör kiosztása](./media/cloud-partner-portal-lead-management-instructions-dynamics/crmonline7.png)\
 
     >[!NOTE]
-    >Ez a szerepkör jön létre a megoldással, hogy az importált, és csak jogosult írni az érdeklődőket és a megoldás verzióra való kompatibilitás érdekében nyomon követéséhez.
+    >Ezt a szerepkört az importált megoldás hozza létre, és csak a megfelelő jogosultsággal rendelkezik az érdeklődők írásához és a megoldás verziójának nyomon követéséhez, hogy biztosítsa a kompatibilitást.
 
-4.  A biztonság, válassza ki **biztonsági szerepkörök** , és keresse meg a szerepkört a Microsoft Marketplace vezethet író.
+4.  A biztonság területen válassza a **biztonsági szerepkörök** lehetőséget, és keresse meg Microsoft Marketplace érdeklődő-író szerepkörét.
     
     ![Biztonsági vezető író konfigurálása](./media/cloud-partner-portal-lead-management-instructions-dynamics/crmonline10.jpg)\
 
-5. Válassza ki a **fő rekordok** fülre. A felhasználó típusú entitás felhasználói felület létrehozása/olvasási/írási engedélyezése.
+5. Válassza az **alaprekordok** fület. engedélyezze a felhasználói entitás felhasználói felületének létrehozás/olvasás/írás funkcióját.
 
-    ![Hozzon létre/olvasási/írási felhasználó engedélyezése](./media/cloud-partner-portal-lead-management-instructions-dynamics/crmonline11.jpg)\
+    ![Létrehozás/olvasás/írás engedélyezése a felhasználó számára](./media/cloud-partner-portal-lead-management-instructions-dynamics/crmonline11.jpg)\
 
-## <a name="wrap-up"></a>Belefoglalni
+## <a name="wrap-up"></a>Becsomagolás
 
-Fejezze be a Dynamics CRM lead felügyelet konfigurálása a Cloud Partner portálra ad hozzá a létrehozott fiók adatait. Példa:
+Fejezze be a Dynamics CRM-beli érdeklődők felügyeletének konfigurálását úgy, hogy hozzáadja a létrehozott fiók adatait a Cloud Partner Portalhoz. Például:
 
--   **Az Azure Active Directory** - **alkalmazásazonosító** (Példa: *23456052-AAAA-bbbb-8662-1234df56788f*), **címtár-azonosító** (Példa: *12345678-8af1-4asf-1234-12234d01db47*), és **Alkalmazáskulcsot** (Példa: *1234ABCDEDFRZ/G/FdY0aUABCEDcqhbLn/ST122345nBc=* ).
--   **Az Office 365** - **URL-cím** (Példa: *https://contoso.crm4.dynamics.com* ), **felhasználónév** (Példa: *contoso\@ contoso.onmicrosoft.com*), és **jelszó** (Példa: *P\@ ssw0rd*).
+-   **Azure Active Directory** - **alkalmazás azonosítója** (például: *23456052-AAAA-bbbb-8662-1234Df56788f*), **könyvtár-azonosító** (példa: *12345678-8af1-4Asf-1234-12234d01db47*), és az **alkalmazás kulcsa** ( például: *1234ABCDEDFRZ/G/FdY0aUABCEDcqhbLn/ST122345nBc =* ).
+-   **Office 365** - **URL-cím** (példa: *https://contoso.crm4.dynamics.com* ), **Felhasználónév** (példa: *contoso\@contoso.onmicrosoft.com*) és **jelszó** (példa: *P\@ssw0rd*).

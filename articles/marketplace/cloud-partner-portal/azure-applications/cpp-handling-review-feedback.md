@@ -1,76 +1,77 @@
 ---
-title: Az Azure application felülvizsgálati visszajelzés kezelése |} Az Azure Marketplace-en
-description: Azt ismerteti, hogyan használható az Azure DevOps Azure-alkalmazásokat, amelyek felülvizsgálati visszajelzés kezelése az Azure Marketplace-en.
+title: Az Azure-alkalmazások felülvizsgálati visszajelzésének feldolgozása | Azure piactér
+description: Ez a cikk azt ismerteti, hogyan használható az Azure DevOps az Azure Marketplace-re vonatkozó Azure-alkalmazási ajánlatok felülvizsgálati visszajelzésének kezeléséhez.
 services: Azure, Marketplace, Cloud Partner Portal,
 author: v-miclar
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 02/05/2019
 ms.author: pabutler
-ms.openlocfilehash: 1a45af2cb5eed8daa4b50bb6f0b504f9653c827a
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: ef4aff57948034fb369bd74564306b7b8674b377
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67068943"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73827590"
 ---
 # <a name="handling-review-feedback"></a>Értékelési visszajelzések kezelése
 
-Ez a cikk bemutatja, hogyan érhető el az Azure DevOps-környezetben használja a Microsoft Azure Marketplace-en csapatától.  Ha az Azure-alkalmazás ajánlatban alatt található kritikus fontosságú problémáit a **Microsoft felülvizsgálati** lépésben is jelentkezik be a rendszer az ezekkel kapcsolatos részletes információkért, (tekintse át a visszajelzés).  Után ezek a problémák elhárításához, újból el kell küldenie az ajánlat az Azure piactéren közzéteheti a folytatáshoz.  A következő ábra szemlélteti, hogyan viszonyul a visszajelzés folyamat a közzétételi folyamat.
+Ez a cikk azt ismerteti, hogyan érheti el az Microsoft Azure Marketplace felülvizsgálati csapat által használt Azure DevOps-környezetet.  Ha a **Microsoft felülvizsgálati** lépése során kritikus problémák léptek fel az Azure-alkalmazás ajánlatában, bejelentkezhet a rendszerbe a problémák részletes adatainak megtekintéséhez (visszajelzés megtekintése).  Az összes probléma kijavítása után újból el kell küldenie az ajánlatát, hogy továbbra is közzé lehessen tenni az Azure piactéren.  A következő ábra azt szemlélteti, hogy a visszajelzési folyamat hogyan kapcsolódik a közzétételi folyamathoz.
 
-![Közzétételi lépéseket az Azure DevOps-visszajelzés](./media/pub-flow-vsts-access.png)
+![Közzétételi lépések az Azure DevOps-visszajelzéssel](./media/pub-flow-vsts-access.png)
 
-Felülvizsgálat problémák általában, a lekéréses kérelmet (PR) hivatkozott.  Minden egyes lekéréses kérelem kapcsolódik egy online [Azure DevOps](https://azure.microsoft.com/services/devops/) (korábbi nevén Visual Studio Team Services (VSTS)) elemet, amely tartalmazza a probléma részleteit.  Az alábbi képen látható a Pull-kérelem felülvizsgálati hivatkozást egy példát.  Összetett helyzetekben a felülvizsgálat és támogatási csapatok előfordulhat, hogy is e-mailben. 
+A felülvizsgálati problémák jellemzően lekéréses kérelemként (PR) vannak hivatkozva.  Mindegyik PR egy online [Azure-DevOps](https://azure.microsoft.com/services/devops/) (korábban a Visual Studio Team Services (vsts) nevű) elemhez van társítva, amely a probléma részleteit tartalmazza.  Az alábbi ábrán egy példa látható a felülvizsgálati PR-referenciára.  Összetett helyzetekben a felülvizsgálati és támogatási csapat is elküldheti e-mailben. 
 
-![Tekintse át visszajelzés megjelenítésének állapota lap](./media/status-tab-ms-review.png)
+![A felülvizsgálati visszajelzéseket megjelenítő állapot lap](./media/status-tab-ms-review.png)
 
 
-## <a name="azure-devops-access"></a>Az Azure DevOps-hozzáférés
+## <a name="azure-devops-access"></a>Azure DevOps-hozzáférés
 
-Felülvizsgálat visszajelzés hivatkozott PR elemek megtekintéséhez, közzétevők először biztosítani kell megfelelő jogosultságokkal.  Ellenkező esetben az új közzétevők kap egy `401 - Not Authorized` válasz lapon megtekintheti a lekéréses kérelmek tett kísérlet során.  Kérjen hozzáférést az Azure DevOps-tárházba, hajtsa végre az alábbi lépéseket:
+Ha meg szeretné tekinteni a felülvizsgálati visszajelzésben hivatkozott PR-elemeket, a közzétevőnek először megfelelő jogosultságot kell biztosítania.  Ellenkező esetben az új közzétevők `401 - Not Authorized` válasz lapot kapnak, amikor a rendszer megpróbálja megtekinteni a következőt:.  Ha hozzáférést szeretne kérni ehhez az Azure DevOps-tárházhoz, hajtsa végre a következő lépéseket:
 
 1. Gyűjtse össze a következő információkat:
     - A közzétevő neve és azonosítója
-    - Csomag típusa (Azure-alkalmazás), a neve, és az SKU-azonosítója
-    - A lekéréses kérelem mutató hivatkozást, például: `https://solutiontemplates.visualstudio.com/marketplacesolutions/_git/contoso/pullrequest/<number>`  Az URL-cím az értesítési üzenet vagy a 401-es választ lap címe lekérhetők.
-    - A közzétételi szervezet szeretne hozzáférést biztosítani, hogy a felhasználók e-mail-címeit.  A listában szerepelnie kell a tulajdonos cím közzétevőként a Cloud Partner portálra a regisztráció során megadott.
-2. Hozzon létre egy támogatási eseményt.  A címsorban látható, a Cloud Partner portálra, válassza ki a **súgó** gombra, majd válassza a **támogatási** a menüből.  Alapértelmezett web browser kell indítsa el, és nyissa meg a Microsoft új támogatási incidens lapot.  (Előfordulhat, hogy kell jelentkeznie.)
-3. Adja meg a **Problem type** , **marketplace bevezetési** és **kategória** , **hozzáférési probléma**, majd válassza ki **indítása kérelem**.
+    - Ajánlat típusa (Azure-alkalmazás), ajánlat neve és SKU-azonosítója
+    - A pull-kérelem hivatkozása, például: `https://solutiontemplates.visualstudio.com/marketplacesolutions/_git/contoso/pullrequest/<number>` ez az URL-cím az értesítési üzenetből vagy az 401-válasz oldal címéből kérhető le.
+    - A közzétételi szervezet azon tagjainak e-mail-címe (i), akik számára hozzáférést kíván biztosítani.  Ennek a listának tartalmaznia kell a tulajdonosi címeket, amelyeket a Cloud Partner Portal közzétevőként való regisztrálásakor adott meg.
+2. Hozzon létre egy támogatási eseményt.  A Cloud Partner Portal címsorában válassza a **Súgó** gombot, majd a menüben válassza a **támogatás** lehetőséget.  Az alapértelmezett webböngészőnek el kell indítania a programot, és meg kell keresnie a Microsoft új támogatási incidens oldalát.  (Előfordulhat, hogy először be kell jelentkeznie.)
+3. A **probléma típusaként** adja meg a **piactér** bevezetését és a **kategóriát** **hozzáférési problémaként**, majd válassza a **kérelem indítása**lehetőséget.
 
-    ![Támogatási jegy kategória](./media/support-incident1.png)
+    ![Támogatási jegy kategóriája](./media/support-incident1.png)
 
-4. A **1 / 2. lépés** lapon adja meg a kapcsolattartási adatokat, és válassza **Folytatás**.
-5. A **2. lépés 2** csoportjában adja meg az incidens címe (például `Request Azure DevOps access`), és adja meg az első (feljebb) lépésben az összegyűjtött információkat.  Olvassa el és fogadja el a szerződést, majd válassza ki **küldés**.
+4. Az **1. lépés 2. lépése** lapon adja meg a kapcsolattartási adatait, és válassza a **Folytatás**lehetőséget.
+5. A **2. lépésben** válassza ki az incidens címét (például `Request Azure DevOps access`), és adja meg az első lépésben összegyűjtött adatokat (fentiekben).  Olvassa el és fogadja el a szerződést, majd válassza a **Submit (Küldés**) lehetőséget.
 
-Ha az incidens létrehozása sikeres volt, egy megerősítő oldal jelenik meg.  Mentse a megerősítő információkat referenciaként ezen az oldalon.  A Microsoft támogatási csapata néhány munkanapon belül kell válaszolnia a hozzáférési kérelem.
+Ha az incidens létrehozása sikeres volt, egy megerősítést kérő lap jelenik meg.  Mentse a megerősítő információkat ezen az oldalon a hivatkozáshoz.  A Microsoft ügyfélszolgálata csapatnak néhány munkanapon belül válaszolnia kell a hozzáférési kérelmére.
 
 
 ## <a name="reviewing-the-pull-request"></a>A lekéréses kérelem áttekintése 
 
-Az alábbi eljárás segítségével áttekintheti a lekéréses kérelemben szereplő hibákat.
+A következő eljárással ellenőrizheti a lekéréses kérelemben dokumentált problémákat.
 
-1. Az a **Microsoft felülvizsgálati** szakaszában **közzétételi lépéseket** alkotnak, indítsa el a böngészőt, és keresse meg a lekéréses kérelem hivatkozásra a **áttekintése** ezen tartalomcsapat (kezdőlap) lapján  Az alábbi képen egy példa kritikus probléma kezdőlapja a Contoso minta app ajánlat mutatja be.  Ezen a lapon található az Azure-alkalmazást a felülvizsgálati problémák hasznos összegző információit tartalmazza.  
+1. A **közzétételi lépések** űrlap **Microsoft felülvizsgálati** szakaszában kattintson egy PR-hivatkozásra a böngésző elindításához, és keresse meg a PR **Áttekintés** (Kezdőlap) lapját.  Az alábbi ábrán egy példa kritikus probléma kezdőlapja látható a contoso minta alkalmazás ajánlatához.  Ez az oldal hasznos összegző információkat tartalmaz az Azure-alkalmazásban található felülvizsgálati problémákról.  
 
-    [![A lekéréses kérelem kezdőlapja](./media/pr-home-page-thumb.png)](./media/pr-home-page.png)
-    <br/> *Kattintson a képre kattintva bontsa ki.*
+    [![pull-kérelem kezdőlapja](./media/pr-home-page-thumb.png)](./media/pr-home-page.png)
+    <br/> *Kattintson a képre a kibontáshoz.*
     
-2. (Nem kötelező) A szakaszban, az ablak jobb oldalán **házirendek**, kattintson a probléma üzenet (ebben a példában: **Házirend érvényesítése nem sikerült**) a probléma, beleértve a kapcsolódó naplófájlok a kevésbé fontos részletek vizsgálatára.  A naplófájlok alján általában jelenik meg hibaüzenet.
+2. Választható Az ablak jobb oldalán, a **szabályzatok**szakaszban kattintson a probléma üzenetre (ebben a példában a **házirend ellenőrzése nem sikerült**) a probléma alacsony szintű részleteinek vizsgálatához, beleértve a kapcsolódó naplófájlokat is.  A hibák általában a naplófájlok alján jelennek meg.
 
-3. Válassza a bal oldali a kezdőlap menüben **fájlok** megjelenítése alkotó ezt az ajánlatot a technikai eszközök fájlok listázása.  A Microsoft megtekinteni a felderített kritikus fontosságú problémáit leíró megjegyzések kell hozzáadni.  A következő példában két problémát észlelt. 
+3. A Kezdőlap bal oldali menüjében válassza a **fájlok** lehetőséget, hogy megjelenjenek az ajánlat technikai eszközeiből álló fájlok.  A Microsoft felülvizsgálók számára a felderített kritikus problémák leírását ismertető megjegyzésekkel kell rendelkeznie.  A következő példában két probléma merült fel. 
 
-    [![A lekéréses kérelem kezdőlapja](./media/pr-files-page-thumb.png)](./media/pr-files-page.png)
-    <br/> *Kattintson a képre kattintva bontsa ki.*
+    [![pull-kérelem kezdőlapja](./media/pr-files-page-thumb.png)](./media/pr-files-page.png)
+    <br/> *Kattintson a képre a kibontáshoz.*
 
-4. Kattintson a bal oldali fában, keresse meg a megjegyzést a környezetben a környező kód minden megjegyzést csomópontján.  Javítsa ki a forráskódot a csapatprojektben leírtak szerint a megjegyzést a probléma.
+4. Kattintson a bal oldali fában található minden Megjegyzés csomópontra a környező kód kontextusában található megjegyzéshez.  Javítsa ki a forráskódját a csapat projektjeiben a megjegyzésben leírt probléma kijavításához.
 
 > [!Note]
-> Az ajánlat technikai eszközök a felülvizsgálati csapat Azure DevOps-környezetben már nem szerkesztheti.  A kiadók Ez az egy csak olvasható környezetben a tartalmazott forráskódja számára.  Azonban a megjegyzéseket, a Microsoft csapatától innovációval-válaszok hagyhatja.
+> Az ajánlat technikai eszközei nem szerkeszthetők a felülvizsgálati csapat Azure DevOps-környezetében.  A kiadók esetében ez egy írásvédett környezet a foglalt forráskódhoz.  A válaszokat azonban a Microsoft felülvizsgálati csapatának javára is elhagyhatja a megjegyzésekben.
 
-   A következő példában a közzétevő rendelkezik vizsgálni, javítani és válaszolt az első kiadás.
+   A következő példában a közzétevő áttekintette, kijavította és megválaszolta az első problémát.
 
-   ![Javítás és a megjegyzés első válasz](./media/first-comment-reply.png)
+   ![Első javítás és Megjegyzés válasza](./media/first-comment-reply.png)
 
 
 ## <a name="next-steps"></a>További lépések
 
-Miután a kritikus fontosságú problémáit, a felülvizsgálat PR(s) dokumentálva, kell [újbóli közzététele az Azure-alkalmazás ajánlat](./cpp-publish-offer.md).
+Miután javította a PR (k) felülvizsgálatával kapcsolatos kritikus problémákat, újra közzé kell tennie az [Azure-alkalmazás ajánlatát](./cpp-publish-offer.md).

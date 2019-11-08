@@ -1,5 +1,5 @@
 ---
-title: Azure SQL Database lekérdezése a Java használatával
+title: A Java használata a lekérdezéshez
 description: Bemutatja, hogyan használható a Java olyan program létrehozásához, amely egy Azure SQL Database-adatbázishoz csatlakozik, és T-SQL-utasítások használatával kérdezi le azokat.
 services: sql-database
 ms.service: sql-database
@@ -11,14 +11,14 @@ ms.author: andrela
 ms.reviewer: v-masebo
 ms.date: 03/25/2019
 ms.custom: seo-java-july2019. seo-java-august2019
-ms.openlocfilehash: 8940e13dcc6d6287984ba1cc7c7510768b4e232f
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: 6d4d9353e29a29b0cd6db7575e49a00a213355d3
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69624081"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73827046"
 ---
-# <a name="quickstart-use-java-to-connect-to-and-query-an-azure-sql-database"></a>Gyors útmutató: A Java használata egy Azure SQL Database-adatbázishoz való kapcsolódáshoz és lekérdezéshez
+# <a name="quickstart-use-java-to-connect-to-and-query-an-azure-sql-database"></a>Rövid útmutató: Azure SQL Database-adatbázishoz való kapcsolódás és lekérdezés a Java használatával
 
 Ez a cikk bemutatja, hogyan használható a [Java](/sql/connect/jdbc/microsoft-jdbc-driver-for-sql-server) egy Azure SQL Database-adatbázishoz való kapcsolódáshoz. Ezután a T-SQL-utasítások segítségével adatokat lehet lekérdezni.
 
@@ -30,7 +30,7 @@ A minta elvégzéséhez győződjön meg arról, hogy rendelkezik a következő 
 
   || Önálló adatbázis | Felügyelt példány |
   |:--- |:--- |:---|
-  | Hozzon létre| [Portál](sql-database-single-database-get-started.md) | [Portál](sql-database-managed-instance-get-started.md) |
+  | Létrehozás| [Portál](sql-database-single-database-get-started.md) | [Portál](sql-database-managed-instance-get-started.md) |
   || [Parancssori felület](scripts/sql-database-create-and-configure-database-cli.md) | [Parancssori felület](https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44) |
   || [PowerShell](scripts/sql-database-create-and-configure-database-powershell.md) | [PowerShell](scripts/sql-database-create-configure-managed-instance-powershell.md) |
   | Konfigurálás | [Kiszolgálói szintű IP-tűzfalszabály](sql-database-server-level-firewall-rule.md)| [Kapcsolódás virtuális gépről](sql-database-managed-instance-configure-vm.md)|
@@ -53,7 +53,7 @@ A minta elvégzéséhez győződjön meg arról, hogy rendelkezik a következő 
 
 Az Azure SQL Database-adatbázishoz való kapcsolódáshoz szükséges kapcsolati adatok beolvasása. A közelgő eljárásokhoz szüksége lesz a teljes kiszolgálónévre vagy az állomásnévre, az adatbázis nevére és a bejelentkezési adatokra.
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
+1. Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
 
 2. Válassza az **SQL-adatbázisok** lehetőséget, vagy nyissa meg az **SQL felügyelt példányok** lapot.
 
@@ -92,7 +92,7 @@ Az Azure SQL Database-adatbázishoz való kapcsolódáshoz szükséges kapcsolat
 
 1. A Maven-projektben már van egy *app. Java* nevű fájl, amely a következő helyen található:
 
-   *..\sqltest\src\main\java\com\sqldbsamples\App.java*
+   *.. \sqltest\src\main\java\com\sqldbsamples\App.java*
 
 1. Nyissa meg a fájlt, és cserélje le a tartalmát a következő kódra. Ezután adja hozzá a kiszolgáló, az adatbázis, a felhasználó és a jelszó megfelelő értékeit.
 
@@ -167,8 +167,8 @@ Az Azure SQL Database-adatbázishoz való kapcsolódáshoz szükséges kapcsolat
 
 ## <a name="next-steps"></a>További lépések
 
-- [Az első SQL Database-adatbázis megtervezése](sql-database-design-first-database.md)  
+- [Az első Azure SQL-adatbázis megtervezése](sql-database-design-first-database.md)  
 
 - [Microsoft JDBC-illesztőprogram SQL Serverhez](https://github.com/microsoft/mssql-jdbc)  
 
-- [Problémák jelentése/kérdések](https://github.com/microsoft/mssql-jdbc/issues)  
+- [Hibák jelentése/kérdések felvetése](https://github.com/microsoft/mssql-jdbc/issues)  

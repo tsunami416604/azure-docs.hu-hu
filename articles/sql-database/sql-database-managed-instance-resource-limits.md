@@ -1,5 +1,5 @@
 ---
-title: Erőforrás-korlátok Azure SQL Database – felügyelt példány
+title: Erőforrás-korlátok – felügyelt példány
 description: Ez a cikk áttekintést nyújt a felügyelt példányok Azure SQL Database erőforrásának korlátairól.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: carlrab, jovanpop, sachinp, sstein
 ms.date: 10/02/2019
-ms.openlocfilehash: 723704b6b81aacf086ff42b02c32259d0e2f1c6d
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 08e378c4b5f6d8e17ac67a80401edf69611c0a13
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73687911"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73823334"
 ---
 # <a name="overview-azure-sql-database-managed-instance-resource-limits"></a>A felügyelt példányok erőforrás-korlátainak áttekintése Azure SQL Database
 
@@ -84,7 +84,7 @@ A felügyelt példány két szolgáltatási szintet tartalmaz: [általános cél
 
 > [!NOTE]
 > - A **jelenleg elérhető példányok tárolási mérete** a fenntartott példányok méretének és a felhasznált tárolóhelynek a különbsége.
-> - A felhasználói és a rendszeradatbázisokban lévő adatfájlok és a naplófájlok mérete is szerepel a tárolók maximális méretével összehasonlítva. A <a href="https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-master-files-transact-sql">sys. master_files</a> rendszernézet használatával határozza meg az adatbázisok által felhasznált teljes területet. A hibanapló nem marad meg, és nem szerepel a méretben. A tárolók mérete nem tartalmazza a biztonsági mentéseket.
+> - A felhasználói és a rendszeradatbázisokban lévő adatfájlok és a naplófájlok mérete is szerepel a tárolók maximális méretével összehasonlítva. A <a href="https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-master-files-transact-sql">sys. master_files</a> rendszernézet használatával határozza meg az adatbázisok teljes felhasznált területét. A hibanapló nem marad meg, és nem szerepel a méretben. A tárolók mérete nem tartalmazza a biztonsági mentéseket.
 > - Az átviteli sebesség és a IOPS általános célú szinten a felügyelt példányok által kifejezetten nem korlátozott [fájlméretet](#file-io-characteristics-in-general-purpose-tier) is függ.
 > - Az automatikus feladatátvételi csoportok használatával egy másik Azure-régióban is létrehozhat egy olvasható replikát.
 > - A példányok maximális IOPS a fájlok elrendezésével és a számítási feladatok eloszlásával függ. Ha például 7 x GB-nyi fájlt hoz létre, amely Max 5K IOPS-val rendelkezik, minden egyes és 7 kis fájl (128 GB-nál kisebb) és 500 IOPS mindegyike 38500, akkor a számítási feladatok az összes fájlt igénybe vehetik (7x5000 + 7x500). Vegye figyelembe, hogy az automatikus biztonsági mentések esetében bizonyos mennyiségű IOPS is használatban van.
@@ -178,7 +178,7 @@ Nagyobb kvóta beszerzési folyamatának kezdeményezése:
 
 5. Kattintson a **Tovább** gombra.
 6. Az új támogatási kérelem kapcsolattartási adatok lapján adja meg az előnyben részesített kapcsolattartási módszert (e-mail vagy telefon) és a kapcsolattartási adatokat.
-7. Kattintson a **Létrehozás** elemre.
+7. Kattintson a **Create** (Létrehozás) gombra.
 
 ## <a name="next-steps"></a>További lépések
 

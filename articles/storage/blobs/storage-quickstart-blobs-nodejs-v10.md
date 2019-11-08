@@ -1,20 +1,20 @@
 ---
-title: Blobok feltöltése, letöltése, listázása és törlése a JavaScripthez készült Azure Storage v10 SDK-val
-description: Blobok és tárolók létrehozása, feltöltése és törlése a Node.js-ben az Azure Storage használatával
+title: 'Gyors útmutató: Azure Blob Storage ügyféloldali kódtár v10 a JavaScripthez'
+description: Blobok és tárolók létrehozása, feltöltése és törlése a Node. js-ben az Azure Storage ügyféloldali kódtár v10 a JavaScripthez
 author: mhopkins-msft
 ms.author: mhopkins
 ms.date: 09/24/2019
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: f8c7de63f2bd4b7329e8ae6a53123c9c1ea035af
-ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
+ms.openlocfilehash: b909da5da0d7352d4086222fe0411ac37668bd92
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71240439"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73825325"
 ---
-# <a name="quickstart-upload-download-list-and-delete-blobs-using-azure-storage-v10-sdk-for-javascript"></a>Gyors útmutató: Blobok feltöltése, letöltése, listázása és törlése a JavaScripthez készült Azure Storage v10 SDK-val
+# <a name="quickstart-azure-blob-storage-client-library-v10-for-javascript"></a>Gyors útmutató: Azure Blob Storage ügyféloldali kódtár v10 a JavaScripthez
 
 Ebből a rövid útmutatóból megtudhatja, hogyan lehet a [JavaScripthez készült Azure Storage SDK 10-es verziójának](https://github.com/Azure/azure-sdk-for-js) használatával a Node.js-ben a blobokat fel- és letölteni, listázni és törölni, valamint a tárolókat kezelni.
 
@@ -151,9 +151,9 @@ async function execute() {
 execute().then(() => console.log("Done")).catch((e) => console.log(e));
 ```
 
-A teljes alábbi kód az execute függvényen belül fut, amelybe a `// commands...` megjegyzés kerül.
+Az alábbi összes kód az execute függvényen belül fut, ahová a `// commands...` megjegyzés kerül.
 
-Első lépésként a releváns változókat deklaráljuk a nevek és mintatartalmak hozzárendeléséhez, valamint a Blob Storage-be feltölteni kívánt helyi fájl kijelöléséhez.
+Első lépésként a releváns változók úgy vannak deklarálva, hogy neveket és mintatartalmakat rendeljenek hozzá, valamint, hogy a Blobtárolóba feltölteni kívánt helyi fájlra mutassanak.
 
 ```javascript
 const containerName = "demo";
@@ -203,7 +203,7 @@ Ahogy a tároló, úgy még a blokkblob sem létezik. A *blockBlobURL* változó
 
 ### <a name="using-the-aborter-class"></a>Az Aborter osztály használata
 
-Beállítható, hogy az API-kérelmek egy adott időtartam után időtúllépésbe kerüljenek. Az *Aborter* osztály feladata a kérelmek időtúllépésének kezelése. Az alábbi kód egy környezetet hoz létre, amelyben kérelmek egy adott csoportjának 30 perce van a lefutásra.
+Beállítható, hogy az API-kérelmek egy adott időtartam után időtúllépésbe kerüljenek. A *megszakítási* osztály feladata a kérelmek időkorlátjának kezelése. A következő kód egy olyan környezetet hoz létre, amelyben a kérelmek halmaza 30 percet vesz igénybe.
 
 ```javascript
 const aborter = Aborter.timeout(30 * ONE_MINUTE);

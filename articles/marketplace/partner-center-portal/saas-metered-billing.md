@@ -5,14 +5,15 @@ author: qianw211
 manager: evansma
 ms.author: v-qiwe
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 07/10/2019
-ms.openlocfilehash: a244e4f7ac406fecd4c053b39a5e9a9cb6ecab2c
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: 54b59cfecbbba6b71cf301aa4872892825d4b675
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71105493"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73827932"
 ---
 # <a name="metered-billing-using-the-marketplace-metering-service"></a>Mért számlázás a Marketplace-mérési szolgáltatás használatával
 
@@ -72,13 +73,13 @@ A számlázási dimenziók az ajánlat minden csomagjában meg vannak osztva.  E
 
 A dimenziót definiáló attribútumok az ajánlat minden csomagjában meg vannak osztva.  Mielőtt közzéteszi az ajánlatot, az ezen attribútumok bármely csomag kontextusában történt módosítása hatással lesz az összes csomag dimenziójának meghatározására.  Miután közzétette az ajánlatot, ezek az attribútumok többé nem lesznek szerkeszthetve.  Ezek az attribútumok a következők:
 
-* azonosító
-* Name (Név)
+* Azonosító
+* Név
 * Mértékegység
 
 A dimenziók egyéb attribútumai az egyes csomagokra jellemzőek, és a tervtől eltérő értékekkel rendelkezhetnek.  A terv közzététele előtt módosíthatja ezeket az értékeket, és csak ezt a csomagot fogja érinteni.  Miután közzétette a csomagot, ezek az attribútumok többé nem lesznek szerkeszthetve.  Ezek az attribútumok a következők:
 
-* Ár / egység
+* Ár (egységenként)
 * A havi ügyfelek belefoglalt mennyisége 
 * Befoglalt mennyiség az éves ügyfelek számára 
 
@@ -90,7 +91,7 @@ A méretek két speciális fogalmat is tartalmazhatnak, amelyek "engedélyezve" 
 >[!Note] 
 >A következő forgatókönyvek explicit módon támogatottak: <br> – Új dimenziót adhat hozzá egy új tervhez.  Az új dimenzió nem lesz engedélyezve a már közzétett csomagok esetében. <br> – Bármilyen dimenzió nélkül közzétehet egy **átalánydíjas** csomagot, majd hozzáadhat egy új tervet, és konfigurálhat egy új dimenziót az adott tervhez. Az új dimenzió nem lesz engedélyezve a már közzétett tervekhez.
 
-## <a name="constraints"></a>Megkötések
+## <a name="constraints"></a>Korlátozások
 
 ### <a name="trial-behavior"></a>Próbaverziós viselkedés
 
@@ -102,13 +103,13 @@ Mivel a piactér-mérési szolgáltatáshoz használt dimenzió azt jelenti, hog
   
 Ha egy ajánlatot közzétesznek egy dimenzióval, az adott dimenzióra vonatkozó ajánlati szintű adatok már nem módosíthatók:
 
-* azonosító
-* Name (Név)
+* Azonosító
+* Név
 * Mértékegység
 
 A csomag közzététele után a terv szintű részletek már nem módosíthatók:
 
-* Ár / egység
+* Ár (egységenként)
 * Belefoglalt mennyiség a havi időszakra
 * Belefoglalt mennyiség az éves időszakra
 * Azt határozza meg, hogy a dimenzió engedélyezve van-e a csomaghoz
@@ -127,7 +128,7 @@ Ha rendelkezik a következők valamelyikével, nyisson meg egy támogatási jegy
 
 A támogatási jegy beküldéséhez kövesse az alábbi lépéseket:
 
-1. Nyissa meg a [támogatási lapot](https://support.microsoft.com/supportforbusiness/productselection?sapId=48734891-ee9a-5d77-bf29-82bf8d8111ff). Az első néhány legördülő menüt automatikusan kitölti a rendszer. A piactér támogatásához azonosítsa a termékcsaládot **felhő-és online szolgáltatásként**, a termékként a **piactér**-közzétevőként.  Ne módosítsa a legördülő menü előre megadott beállításait.
+1. Nyissa meg a [támogatási lapot](https://support.microsoft.com/supportforbusiness/productselection?sapId=48734891-ee9a-5d77-bf29-82bf8d8111ff). Az első néhány legördülő menüt automatikusan kitölti a rendszer. A piactér támogatásához azonosítsa a termékcsaládot **felhő-és online szolgáltatásként**, a termékként a **piactér-közzétevőként**.  Ne módosítsa a legördülő menü előre megadott beállításait.
 2. A "termék verziójának kiválasztása" területen válassza az **élő ajánlat kezelése**lehetőséget.
 3. A "válasszon ki egy kategóriát, amely a legjobban leírja a problémát" területen válassza az **SaaS-alkalmazások**lehetőséget.
 4. A "probléma leírása, amely a legjobban leírja a problémát" területen válassza a **mért számlázás**lehetőséget.

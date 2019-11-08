@@ -7,16 +7,16 @@ ms.date: 07/20/2019
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: 0433f3faf0a62a4cf4fb103aaad1b810c623e9d8
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: ee95ccd30d0f2eddcca7327dc4e5b60a3efe7e64
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73608756"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73825407"
 ---
-# <a name="quickstart-azure-blob-storage-client-library-for-net"></a>Gyors útmutató: Azure Blob Storage ügyféloldali kódtára a .NET-hez
+# <a name="quickstart-azure-blob-storage-client-library-v11-for-net"></a>Gyors útmutató: Azure Blob Storage ügyféloldali kódtár v11 a .NET-hez
 
-Ismerkedés az Azure Blob Storage .NET-hez készült ügyféloldali kódtáraval. Az Azure Blob Storage a Microsoft objektum-tárolási megoldás a felhőhöz. Kövesse a csomag telepítésének lépéseit, és próbálja ki például az alapszintű feladatokhoz tartozó kódot. A Blob Storage nagy mennyiségű strukturálatlan adat tárolására van optimalizálva.
+Ismerkedés az Azure Blob Storage .NET-hez készült ügyféloldali kódtár-v11. Az Azure Blob Storage a Microsoft objektum-tárolási megoldás a felhőhöz. Kövesse a csomag telepítésének lépéseit, és próbálja ki például az alapszintű feladatokhoz tartozó kódot. A Blob Storage nagy mennyiségű strukturálatlan adat tárolására van optimalizálva.
 
 Használja az Azure Blob Storage .NET-hez készült ügyféloldali kódtárat a következőhöz:
 
@@ -314,7 +314,7 @@ do
 
 ### <a name="download-blobs"></a>Blobok letöltése
 
-Töltse le a korábban létrehozott blobot a helyi fájlrendszerbe a [DownloadToFileAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblob.downloadtofileasync) metódus használatával. A példában szereplő kód hozzáadja a "_DOWNLOADED" utótagot a blob nevéhez, hogy mindkét fájl látható legyen a helyi fájlrendszerben.
+Töltse le a korábban létrehozott blobot a helyi fájlrendszerbe a [DownloadToFileAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblob.downloadtofileasync) metódus használatával. A példában szereplő kód hozzáadja a "_DOWNLOADED" utótagot a blob nevéhez, hogy mindkét fájl megjelenjen a helyi fájlrendszerben.
 
 ```csharp
 // Download the blob to a local file, using the reference created earlier.

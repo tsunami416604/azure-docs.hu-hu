@@ -1,70 +1,71 @@
 ---
-title: Mi a Tesztverzió? | Az Azure Marketplace-en
-description: Marketplace-en Test Drive funkció ismertetése
+title: Mi a Tesztverzió? | Azure piactér
+description: A Marketplace Test Drive funkció magyarázata
 services: Azure, Marketplace, Cloud Partner Portal,
 author: pbutlerm
 manager: Ricardo.Villalobos
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pabutler
-ms.openlocfilehash: 5b23a5e93dcbb9c13243240bda760a16d108d731
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a6826657a4af74276e363acd585e80d101cc1459
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64938459"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73828143"
 ---
 <a name="what-is-test-drive"></a>Mi a Tesztverzió?
 ===================
 
-Test Drive kiválóan alkalmas lehetőségét, így az Ön ajánlatát a lehetséges ügyfelek bemutatására \'vásárlás előtt próbálja\', ez pedig nagyobb konverziós és magasan képzett érdeklődők generációja.
+A test Drive nagyszerű lehetőséget nyújt arra, hogy ajánlatot nyújtson a potenciális ügyfeleknek, mivel lehetővé teszi számukra, hogy a\'megvásárlása előtt \'próbálkozzon, ami nagyobb átalakítást és magas minősítésű érdeklődők létrehozását eredményezi.
 
-Miután megadta a kapcsolatfelvételi adatait, ügyfelek elérhetik az előre elkészített Test Drive felhasználói élményt: gyakorlati, önálló irányítású próbaverzió a termék\'s főbb funkcióiról és megvalósítási valós forgatókönyvekben a bemutatott előnyöket.
+A kapcsolattartási adatok megadása után az ügyfelek hozzáférhetnek az előre elkészített tesztelési élményhez: a termék gyakorlati, saját irányítású próbaverziója\'s legfontosabb funkciói, valamint a valós megvalósítási forgatókönyvben bemutatott előnyök.
 
-Test Drive életre telepítheti a termékeket és magasan képzett felkeltésére a folyamat lehetővé teszi.
+A test Drive lehetővé teszi a termék életbe lépését, és a folyamat során kiválóan minősített érdeklődőket hozhat.
 
-<a name="how-does-a-test-drive-work"></a>Hogyan működik a Test Drive?
+<a name="how-does-a-test-drive-work"></a>Hogyan működik a test Drive?
 ---------------------------
 
-A potenciális ügyfelek felderíti az alkalmazás a Marketplace-en, bejelentkezik, és elfogadja a használati feltételeket. Ezen a ponton az ügyfél megkapja az előre konfigurált környezet rögzített számú óra, próbálja ki a szerepeltetendő magas minősített érdeklődő kap közben.
+Egy potenciális ügyfél felfedi az alkalmazást a piactéren, bejelentkezik, és elfogadja a használati feltételeket. Ezen a ponton az ügyfél megkapja az előre konfigurált környezetet, hogy rögzített számú órát próbáljon megállapítani, miközben nagy teljesítményű vezetőt kap a követéshez.
 
-![Első lépés. Megjelenik a Piactéri ajánlat](./media/what-is-test-drive/step1.png)
+![Első lépés. Marketplace-ajánlat megjelenítve](./media/what-is-test-drive/step1.png)
 
-![Két lépést. Piactéri ajánlat bejelentkezési képernyő](./media/what-is-test-drive/step1andahalf.png)
+![Második lépés. Piactéri ajánlat bejelentkezési képernyője](./media/what-is-test-drive/step1andahalf.png)
 
-![Három lépésben. Piactéri ajánlat kiadói szerződés képernyő](./media/what-is-test-drive/step2.png)
+![Harmadik lépés. Marketplace ajánlat kiadói szerződés képernyője](./media/what-is-test-drive/step2.png)
 
-![Négy lépést. Test Drive beállítása képernyőre](./media/what-is-test-drive/step3.png)
+![Negyedik lépés Tesztelési meghajtó beállítása képernyő](./media/what-is-test-drive/step3.png)
 
-És az alábbi Íme egy példa, hogyan néz ki egy ajánlatot a üzembe helyezéséhez szükséges időt, ha:
+Alább látható egy példa arra, hogyan néz ki egy ajánlat, amikor az üzembe helyezés ideje szükséges:
 
-![Telepített Marketplace-ajánlat](./media/what-is-test-drive/step4.png)
+![Marketplace-ajánlat üzembe helyezése](./media/what-is-test-drive/step4.png)
 
-![Marketplace-en Tesztverzió készen képernyő](./media/what-is-test-drive/step5.png)
+![Marketplace Test Drive – kész képernyő](./media/what-is-test-drive/step5.png)
 
-![Marketplace-en Test Drive befejeződött képernyő](./media/what-is-test-drive/step6.png)
+![Piactér Test Drive – teljes képernyő](./media/what-is-test-drive/step6.png)
 
-Függetlenül attól, hogy bonyolult az alkalmazás a Microsoft Test Drive segít a termék keltse életre az ügyfél számára. Ma a Tesztverzió alapján a termék, a forgatókönyv és a piactér három különböző típusú biztosítunk.
+Függetlenül attól, hogy mennyire összetett az alkalmazása, a Microsoft Test Drive segít a termék életbe juttatásában az ügyfél számára. Jelenleg három különböző típusú tesztelési meghajtót kínálunk a termék, a forgatókönyv és a piactér típusától függően.
 
-- **[Az Azure Resource Manager](./azure-resource-manager-test-drive.md)** : Egy Azure Resource Manager Test Drive egy központi telepítési sablont, amely tartalmazza az összes Azure-erőforrást, amely tartalmazza a megoldás a közzétevő létrehozása folyamatban. Ebben a forgatókönyvben igazodó termékek, amelyekről csak Azure-erőforrások használatához.
-- **[Logikai alkalmazás](./logic-app-test-drive.md)** : Egy logikai alkalmazás Tesztverziós, amelynek szinkronban kell foglalnia az összes összetett megoldások létrehozására szolgáló architektúrák központi telepítési sablont. Az összes Dynamics-alkalmazások vagy egyéni termékek Test Drive az ilyen típusú kell használnia.
-- **Power BI**: A Power bi-ban próbálja ki az egyéni kialakítású irányítópulton egyszerűen egy beágyazott kapcsolat. Minden olyan terméket, amely egyszerűbb egy interaktív Power BI vizuális kell használnia a Test Drive az ilyen típusú megoldást szeretne.
-    Fel kell töltenie az itt csak a Power BI embedded URL-CÍMÉT.
+- **[Azure Resource Manager](./azure-resource-manager-test-drive.md)** : a Azure Resource Manager Test Drive egy központi telepítési sablon, amely tartalmazza az összes olyan Azure-erőforrást, amely a közzétevő által létrehozott megoldást tartalmaz. A forgatókönyvnek megfelelő termékek csak az Azure-erőforrásokat használják.
+- **[Logikai alkalmazás](./logic-app-test-drive.md)** : a Logic app Test Drive egy központi telepítési sablon, amely az összes összetett megoldási architektúrát magában foglalja. Az összes Dynamics-alkalmazásnak vagy egyéni terméknek ilyen típusú tesztelési meghajtót kell használnia.
+- **Power bi**: a Power bi Test Drive egyszerűen egy egyéni beépített irányítópultra mutató beágyazott hivatkozás. Minden olyan termék, amely egy interaktív Power BI vizualizációt szeretne bemutatni, ezt a típusú tesztelési meghajtót kell használnia.
+    Itt a beágyazott Power BI URL-címére kell feltöltenie.
 
-<a name="what-goes-on-in-the-background"></a>Mi hová kerül a háttérben?
+<a name="what-goes-on-in-the-background"></a>Mi kerül a háttérben?
 -------------------------------
 
-A Test Drive szolgáltatás folyamatosan támogatja, és az ügyfelek szolgálnak anélkül, hogy bármely, manuális beavatkozást való használatra készült. Közzétevő kezeléséhez és a Test Drive theCloud Partneráttekintés beállításokat konfigurálni a feladat nem, és ezután ennek a beállításnak közvetlenül lesz elérhető az ügyfelek számára.
+A test Drive szolgáltatás úgy van felépítve, hogy folyamatosan támogassa és szolgálja ügyfelei segítségét anélkül, hogy manuális beavatkozásra lenne szükség. Közzétevőként a feladata, hogy felügyelje és konfigurálja a tesztvezetés beállításait a theCloud partner portálról, majd ezt a beállítást közvetlenül az ügyfelei számára is elérhetővé teszi.
 
-Ennek oka az, miután beállította a konfigurációkat a Test Drive esetében, minden egyes Test Drive a felügyelt példány az azt kérő ügyfelek igény szerinti üzembe helyezendő válik. Egy Test Drive-példány van hozzárendelve, miután a Test Drive érhető el a beállított időn számára, és majd törli az egy másik ügyfél felszabadításához.
+Ennek az az oka, hogy a tesztelési meghajtó konfigurációjának beállítása után mindegyik tesztvezetés olyan felügyelt példány lesz, amely igény szerint lesz telepítve az ügyfél számára. Miután hozzárendelte a test Drive-példányt, a rendszer elérhetővé teszi a tesztelési meghajtót a beállított időtartamra, majd törli, hogy helyet hozzon létre egy másik ügyfél számára.
 
 <a name="next-steps"></a>További lépések
 ----------
 
-Most, hogy tudja, milyen egy Test Drive lényege, lépjen látogasson el a Test Drive típusát, amely szeretne belépni, mindent megtudhat a kötelező mezőket közzététele szükséges.
+Most, hogy már tudja, mi az a tesztvezetés, látogasson el arra a konkrét tesztvezetés-típusra, amelyet közzé szeretne tenni, és ismerkedjen meg a szükséges mezőkkel.
 
-- **[Az Azure Resource Manager](./azure-resource-manager-test-drive.md)**
-- **[Logic App](./logic-app-test-drive.md)**
+- **[Azure Resource Manager](./azure-resource-manager-test-drive.md)**
+- **[Logikai alkalmazás](./logic-app-test-drive.md)**
 
-Ha további kérdése van, hibaelhárítási tanácsokat keres, vagy kívánja-e a Test Drive sokkal sikeresebb lenne, nyissa meg [– gyakori kérdések, hibaelhárítási és ajánlott eljárások](./marketing-and-best-practices.md).
+Ha további kérdései vannak, hibaelhárítási tanácsokat talál, vagy ha szeretné, hogy a tesztvezetés sikeres legyen, tekintse meg a [Gyakori kérdések, hibaelhárítás és & ajánlott eljárásokat](./marketing-and-best-practices.md).

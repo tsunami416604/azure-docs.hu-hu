@@ -5,14 +5,15 @@ author: qianw211
 manager: evansma
 ms.author: v-qiwe
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 07/11/2019
-ms.openlocfilehash: b324d3b9dca710dca6f5f99ad50ce4d973a42d2a
-ms.sourcegitcommit: 10251d2a134c37c00f0ec10e0da4a3dffa436fb3
+ms.openlocfilehash: 2f8aa41604ac176181252fb7b30cdeb2f039d10f
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/13/2019
-ms.locfileid: "67869546"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73822878"
 ---
 # <a name="saas-fulfillment-apis---faq"></a>SaaS Fulfillment API-k – GYIK
 
@@ -50,7 +51,7 @@ Tekintse meg a [SaaS-teljesítési API](https://docs.microsoft.com/azure/marketp
 
 ### <a name="how-do-you-know-the-saas-offer-to-which-the-user-subscribes-in-azure"></a>Honnan tudhatja meg, hogy a felhasználó milyen SaaS-előfizetést kínál az Azure-ban?
 
-Az `Resolve` API-ra adott válasz az SaaS-előfizetéshez kapcsolódó ajánlatot és megtervezési információkat tartalmazza.
+A `Resolve` API-ra adott válasz az SaaS-előfizetéshez kapcsolódó ajánlatot és megtervezési információkat tartalmazza.
 
 ### <a name="how-can-the-azure-user-change-the-plan-associated-with-this-azure-subscription"></a>Hogyan változtatható meg az Azure-felhasználó az ehhez az Azure-előfizetéshez társított terv?
 

@@ -1,5 +1,5 @@
 ---
-title: Nyilvános végpont konfigurálása – felügyelt példány Azure SQL Database
+title: Nyilvános végpont által felügyelt példány konfigurálása
 description: Megtudhatja, hogyan konfigurálhat nyilvános végpontot felügyelt példányhoz
 services: sql-database
 ms.service: sql-database
@@ -10,12 +10,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: vanto, carlrab
 ms.date: 05/07/2019
-ms.openlocfilehash: 6f953e4c549619a30564bdb061e98761474174c3
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: a35176770a3100a288ad3da52cd89870e0110f63
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73687959"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73828031"
 ---
 # <a name="configure-public-endpoint-in-azure-sql-database-managed-instance"></a>Nyilvános végpont konfigurálása Azure SQL Database felügyelt példányban
 
@@ -90,7 +90,7 @@ Set-AzSqlInstance -PublicDataEndpointEnabled $false -force
 
 1. Lépjen vissza a felügyelt példányt tartalmazó erőforráscsoporthoz. Ekkor meg kell jelennie a **hálózati biztonsági csoport** fent említett nevének. Válassza ki a hálózati biztonsági csoport konfigurációs lapjára felvenni kívánt nevet.
 
-1. Válassza a **bejövő biztonsági szabályok** fület, és **adjon hozzá** egy olyan szabályt, amely magasabb prioritással rendelkezik, mint a **deny_all_inbound** szabály a következő beállításokkal: </br> </br>
+1. Válassza a **bejövő biztonsági szabályok** lapot, és **adjon hozzá** egy olyan szabályt, amely magasabb prioritású, mint a **deny_all_inbound** szabály a következő beállításokkal: </br> </br>
 
     |Beállítás  |Ajánlott érték  |Leírás  |
     |---------|---------|---------|

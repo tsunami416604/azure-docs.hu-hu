@@ -1,5 +1,5 @@
 ---
-title: Komplex veszélyforrások elleni védelem konfigurálása – Azure SQL Database
+title: Komplex veszélyforrások elleni védelem konfigurálása
 description: A komplex veszélyforrások elleni védelem rendellenes adatbázis-tevékenységeket észlel, amelyekkel az adatbázis potenciális biztonsági fenyegetéseket jelenthet egyetlen adatbázisban vagy rugalmas készletben.
 services: sql-database
 ms.service: sql-database
@@ -10,12 +10,12 @@ author: rmatchoro
 ms.author: ronmat
 ms.reviewer: vanto, carlrab
 ms.date: 08/05/2019
-ms.openlocfilehash: 8a6d40f37dec3488009a702d52d6437cd345717b
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 8eb8e4fccc17fe31def671cf6e8edb19d867b244
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73686944"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73822507"
 ---
 # <a name="azure-sql-database-advanced-threat-protection-for-single-or-pooled-databases"></a>Azure SQL Database komplex veszélyforrások elleni védelem egyetlen vagy készletezett adatbázisokhoz
 

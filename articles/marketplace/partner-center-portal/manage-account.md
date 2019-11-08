@@ -5,14 +5,15 @@ author: ChJenk
 manager: evansma
 ms.author: parthp
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 08/30/2019
-ms.openlocfilehash: c28469e15841e2675c20868b74cf044159c4e9ca
-ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
+ms.openlocfilehash: 2962f6c5032ba317f9eb8f10c2abddb566aad904
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70259193"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73825508"
 ---
 # <a name="how-to-manage-your-commercial-marketplace-account-in-partner-center"></a>A kereskedelmi piactér-fiók kezelése a partner Centerben 
 
@@ -48,12 +49,12 @@ A Fiókbeállítások a [kereskedelmi piactér irányítópultjának](https://pa
 ![Fiókbeállítások menü a partner Centerben](./media/dashboard-developer-settings.png)
 
 A **fiók beállításain**belül megtekintheti a következőket:
-- **Fiók adatai**: Fiók típusa és fiók állapota
-- **Közzétevői azonosítók**: Eladó azonosítója, felhasználói azonosító, közzétevő azonosítója, Azure AD-bérlők stb.
-- **Kapcsolattartási adatok**: Közzétevő megjelenítendő neve, értékesítő kapcsolattartási neve, e-mail címe, telefonszáma és címe
-- **Pénzügyi részletek**: Kifizetési fiók, adózási profil és kifizetési Hold állapota
-- **Eszközök**: A fiókhoz társított összes tesztelési eszköz
-- **Követési GUID azonosítók**: A fiókkal társított követési GUID azonosítók
+- **Fiók adatai**: fióktípus és fiók állapota
+- **Közzétevői azonosítók**: eladó azonosítója, felhasználói azonosító, közzétevő azonosítója, Azure ad-bérlők stb.
+- **Kapcsolattartási adatok**: közzétevő megjelenítendő neve, eladó kapcsolattartási neve, e-mail címe, telefonszáma és címe
+- **Pénzügyi részletek**: kifizetési fiók, adózási profil és kifizetés tartási állapota
+- **Eszközök**: a fiókhoz társított összes tesztelési eszköz
+- **Követési GUID azonosítók**: a fiókhoz társított követési GUID azonosítók
 
 ### <a name="account-details"></a>Fiók adatai
 
@@ -83,8 +84,8 @@ A kifizetési fiók beállításához hozzá kell **rendelnie a Microsoft-fiókj
 3. A kifizetési fiók beállításának befejezéséhez jelentkezzen be a partner Center szolgáltatásból, majd jelentkezzen be újra a Microsoft-fiókjával (nem a munkahelyi fiókjával). 
 
 Most, hogy a Microsoft-fiókja társítva van, a kifizetési fiók hozzáadásához a következőkre lesz szüksége:
-- **Válasszon fizetési módot**: Bankszámla vagy PayPal
-- **Fizetési adatok hozzáadása**: Ilyen lehet például a fiók típusának kiválasztása (ellenőrzés vagy megtakarítás), a fiók tulajdonosának neve, a számlaszám és az útválasztási szám, a számlázási cím, a telefonszám vagy a PayPal e-mail-címe. \* Ha többet szeretne megtudni a PayPal használatáról a fiók fizetési módjaként, és annak megállapításához, hogy az támogatott-e a piaci régióban, tekintse meg a [PayPal](https://docs.microsoft.com/windows/uwp/publish/setting-up-your-payout-account-and-tax-forms#paypal-info)-információkat.
+- **Fizetési mód kiválasztása**: bankszámla vagy PayPal
+- **Fizetési adatok hozzáadása**: Ez magában foglalhatja a fiók típusának (ellenőrzés vagy megtakarítás), a fiók tulajdonosának nevét, a fiók számát, valamint az útválasztási számot, a számlázási címet, a telefonszámot vagy a PayPal e-mail-címét. \* Ha többet szeretne megtudni a PayPal használatáról a fiók fizetési módjaként, és annak megállapításához, hogy az támogatott-e a piaci régióban, tekintse meg a [PayPal](https://docs.microsoft.com/windows/uwp/publish/setting-up-your-payout-account-and-tax-forms#paypal-info)-információkat.
 
 > [!IMPORTANT]
 > A kifizetési fiók módosítása akár egy fizetési ciklusban is késleltetheti a befizetését. Ez a késleltetés azért fordul elő, mert ellenőrizni kell a fiók változását, ugyanúgy, mint a kifizetési fiók első beállításakor. A fiók ellenőrzése után továbbra is a teljes összegért kell fizetnie. a rendszer a jelenlegi fizetési ciklus miatt esedékes összes kifizetést hozzáadja a következőhöz.  
@@ -124,7 +125,7 @@ Miután beállította a kifizetési állapotot **a be**értékre, a rendszer min
 
 ### <a name="devices"></a>Eszközök
 
-Az eszközkezelés beállításai csak a UWP-közzétételre érvényesek. [További információk](https://docs.microsoft.com/windows/uwp/publish/manage-account-settings-and-profile#additional-settings-and-info).
+Az eszközkezelés beállításai csak a UWP-közzétételre érvényesek. [Részletek](https://docs.microsoft.com/windows/uwp/publish/manage-account-settings-and-profile#additional-settings-and-info).
 
 ### <a name="tracking-guids"></a>Követési GUID-azonosítók
 
@@ -339,9 +340,9 @@ Ha a társítás sikeres, akkor készen áll a fiók felhasználóinak hozzáad�
 
 1.  A **bérlők** lapon (a **Fiókbeállítások**alatt) válassza az **új Azure ad-bérlő létrehozása**lehetőséget.
 2. Adja meg az új Azure AD-címtár adatait:
-    - **Tartománynév**: Az Azure AD-tartományhoz és a ". onmicrosoft.com" névvel együtt használt egyedi név. Ha például a "példa" kifejezést adta meg, az Azure AD-tartománya "example.onmicrosoft.com" lesz.
-    - **Kapcsolattartási e-mail cím**: E-mail-cím, ahol szükség esetén felveheti a kapcsolatot a fiókjával.
-    - **Globális rendszergazdai felhasználói fiók adatai**: Az új globális rendszergazdai fiókhoz használni kívánt keresztnév, vezetéknév, Felhasználónév és jelszó.
+    - **Tartománynév**: az Azure ad-tartományhoz használni kívánt egyedi név, a ". onmicrosoft.com" névvel együtt. Ha például a "példa" kifejezést adta meg, az Azure AD-tartománya "example.onmicrosoft.com" lesz.
+    - **Kapcsolattartó e-mail**címe: e-mail-cím, ahol szükség esetén felveheti a kapcsolatot a fiókjával.
+    - **Globális rendszergazdai felhasználói fiók adatai**: az új globális rendszergazdai fiókhoz használni kívánt keresztnév, vezetéknév, Felhasználónév és jelszó.
 3. A **Létrehozás** gombra kattintva erősítse meg az új tartomány és fiókadatok adatait.
 4. A [felhasználók hozzáadásának és kezelésének](#manage-users)megkezdéséhez jelentkezzen be az új Azure ad globális rendszergazdai felhasználónevével és jelszavával.
 
@@ -357,7 +358,7 @@ Ha eltávolít egy bérlőt, az adott bérlőtől a partner Center-fiókba felve
 > Nem távolíthat el bérlőt, ha a partner központba van bejelentkezve ugyanazzal a Bérlővel. Bérlő eltávolításához be kell jelentkeznie a partner központba **egy másik** , a fiókhoz társított bérlőhöz. Ha a fiókhoz csak egy bérlő van társítva, akkor a bérlő csak a fiókot megnyitó Microsoft-fiók való bejelentkezés után távolítható el.
 
 
-## <a name="agreements"></a>Szerződések
+## <a name="agreements"></a>Egyezmények
 
 A partner Center **szerződések** szakasza (a **Fiókbeállítások**részben) megtekintheti az Ön által jóváhagyott közzétételi szerződések listáját. Ezek a szerződések neve és verziószáma szerint vannak felsorolva, beleértve az elfogadott dátumot és a szerződést elfogadó felhasználó nevét. 
 

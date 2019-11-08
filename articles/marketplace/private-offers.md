@@ -5,15 +5,16 @@ services: Azure, Marketplace, Compute
 author: qianw211
 manager: pabutler
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 11/1/2018
 ms.author: pabutler
-ms.openlocfilehash: cd61a30ccc9de08c3f0950d811d0d10ec5cd842a
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 16903d4f9b1bad8a588b1a234ac84bc9c0150c4a
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72598377"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73827840"
 ---
 # <a name="private-offers"></a>Privát ajánlatok
 
@@ -53,6 +54,6 @@ A privát ajánlatok is megjelennek a keresési eredmények között. Csak tekin
 >[!Note]
 >A nyilvános ajánlatok nem támogatottak a Cloud Solution Provider program (CSP) viszonteladóján keresztül létesített előfizetésekkel.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A privát ajánlatok használatának megkezdéséhez kövesse a [Private SKU-és csomagok](./cloud-partner-portal-orig/cloud-partner-portal-azure-private-skus.md) útmutatójának lépéseit.

@@ -1,5 +1,5 @@
 ---
-title: Felügyelt példányok SQL Database – gyakori kérdések
+title: Felügyelt példány – gyakori kérdések
 description: SQL Database felügyelt példányok gyakran ismételt kérdései (GYIK)
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, carlrab
 ms.date: 07/16/2019
-ms.openlocfilehash: 214b35cf5b56dcfc268ee26e8ca892b7814c2547
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 34ffcd63879920c3c744deb4cf0b28684081dc25
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73688109"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73825732"
 ---
 # <a name="sql-database-managed-instance-frequently-asked-questions-faq"></a>SQL Database felügyelt példányok gyakran ismételt kérdései (GYIK)
 

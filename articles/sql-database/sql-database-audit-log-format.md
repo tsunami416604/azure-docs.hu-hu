@@ -1,5 +1,5 @@
 ---
-title: SQL Database napló formátuma
+title: Auditnapló formátuma
 description: Megtudhatja, hogyan épülnek fel SQL Database naplózási naplók.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: barmichal
 ms.author: mibar
 ms.reviewer: vanto
 ms.date: 01/03/2019
-ms.openlocfilehash: 5befd15beba6a5c8071a6f5a01e34dc109fd118a
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 389404f59b5a0cba1acd7aa097ddd3dd929d8082
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73691217"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73821996"
 ---
 # <a name="sql-database-audit-log-format"></a>SQL Database napló formátuma
 
@@ -55,7 +55,7 @@ A naplózási események a naplózási konfiguráció során megadott Log Analyt
 | client_ip | client_ip_s | Az ügyfélalkalmazás forrás IP-címe | nvarchar (128) | sztring |
 | connection_id | N/A | A kiszolgálón belüli kapcsolatok azonosítója | GUID | N/A |
 | data_sensitivity_information | data_sensitivity_information_s | A naplózott lekérdezés által visszaadott adattípusok és érzékenységi címkék az adatbázis minősített oszlopai alapján. További információ a [Azure SQL Database az adatfelderítésről és a besorolásról](sql-database-data-discovery-and-classification.md) | nvarchar (4000) | sztring |
-| adatbázisnév | database_name_s | Az adatbázis-környezet, amelyben a művelet bekövetkezett | rendszerneve | sztring |
+| database_name | database_name_s | Az adatbázis-környezet, amelyben a művelet bekövetkezett | rendszerneve | sztring |
 | database_principal_id | database_principal_id_d | Azon adatbázis-felhasználói környezet azonosítója, amelyet a művelet elvégez | int | int |
 | database_principal_name | database_principal_name_s | Azon adatbázis-felhasználói környezet neve, amelyben a művelet el van hajtva | rendszerneve | sztring |
 | duration_milliseconds | duration_milliseconds_d | Lekérdezés végrehajtásának időtartama (ezredmásodpercben) | bigint | int |
@@ -63,12 +63,12 @@ A naplózási események a naplózási konfiguráció során megadott Log Analyt
 | host_name | N/A | Ügyfél állomásneve | sztring | N/A |
 | is_column_permission | is_column_permission_s | Jelző, amely azt jelzi, hogy ez egy oszlop szintű engedély. 1 = igaz, 0 = hamis | bites | sztring |
 | N/A | is_server_level_audit_s | Jelző, amely azt jelzi, hogy a naplózás kiszolgálói szinten van-e | N/A | sztring |
-| OBJECT_-azonosító | object_id_d | Annak az entitásnak az azonosítója, amelyen a naplózás történt. Ide tartoznak a következők: kiszolgálói objektumok, adatbázisok, adatbázis-objektumok és séma-objektumok. 0, ha az entitás maga a kiszolgáló, vagy ha a naplózás nem egy objektum szintjén történik | int | int |
+| object_ azonosítója | object_id_d | Annak az entitásnak az azonosítója, amelyen a naplózás történt. Ide tartoznak a következők: kiszolgálói objektumok, adatbázisok, adatbázis-objektumok és séma-objektumok. 0, ha az entitás maga a kiszolgáló, vagy ha a naplózás nem egy objektum szintjén történik | int | int |
 | object_name | object_name_s | Annak az entitásnak a neve, amelyen a naplózás történt. Ide tartoznak a következők: kiszolgálói objektumok, adatbázisok, adatbázis-objektumok és séma-objektumok. 0, ha az entitás maga a kiszolgáló, vagy ha a naplózás nem egy objektum szintjén történik | rendszerneve | sztring |
 | permission_bitmask | permission_bitmask_s | Ha alkalmazható, megjeleníti a megadott, megtagadott vagy visszavont engedélyeket. | varbinary (16) | sztring |
 | response_rows | response_rows_d | Az eredményhalmazban visszaadott sorok száma | bigint | int |
 | schema_name | schema_name_s | Az a séma-környezet, amelyben a művelet bekövetkezett. NULL a sémán kívül előforduló naplózáshoz | rendszerneve | sztring |
-| N/A | securable_class_type_s | A naplózni kívánt class_type leképező biztonságos objektum | N/A | sztring |
+| N/A | securable_class_type_s | Biztonságos objektum, amely leképezi a naplózott class_type | N/A | sztring |
 | sequence_group_id | sequence_group_id_g | Egyedi azonosító | varbinary | GUID |
 | sequence_number | sequence_number_d | Egy olyan naplózási rekordban lévő rekordok sorozatot követi nyomon, amely túl nagy volt ahhoz, hogy az írási pufferben a naplózáshoz illeszkedjen | int | int |
 | server_instance_name | server_instance_name_s | Azon kiszolgálópéldány neve, ahol a naplózás történt | rendszerneve | sztring |
@@ -85,9 +85,9 @@ A naplózási események a naplózási konfiguráció során megadott Log Analyt
 | target_server_principal_name | target_server_principal_name_s | A művelet célhelyének bejelentkeznie. NULL, ha nem alkalmazható | rendszerneve | sztring |
 | target_server_principal_sid | target_server_principal_sid_s | A célként megadott bejelentkezési azonosító. NULL, ha nem alkalmazható | varbinary | sztring |
 | transaction_id | transaction_id_d | Csak SQL Server (Kezdés: 2016) – 0 az Azure SQL DB-hez | bigint | int |
-| user_defined_event_id | user_defined_event_id_d | A felhasználó által megadott eseményazonosító argumentumként lett átadva a sp_audit_write. A rendszeresemények esetében NULL (alapértelmezett), a felhasználó által definiált esemény esetében nem nulla. További információ: [sp_audit_write (Transact-SQL)](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-audit-write-transact-sql) | smallint | int |
-| user_defined_information | user_defined_information_s | A felhasználó által megadott adatok a sp_audit_write argumentumként lettek átadva. A rendszeresemények esetében NULL (alapértelmezett), a felhasználó által definiált esemény esetében nem nulla. További információ: [sp_audit_write (Transact-SQL)](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-audit-write-transact-sql) | nvarchar (4000) | sztring |
+| user_defined_event_id | user_defined_event_id_d | A felhasználó által definiált eseményazonosító a sp_audit_write argumentumként lett átadva. A rendszeresemények esetében NULL (alapértelmezett), a felhasználó által definiált esemény esetében nem nulla. További információ: [sp_audit_write (Transact-SQL)](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-audit-write-transact-sql) | smallint | int |
+| user_defined_information | user_defined_information_s | A felhasználó által megadott adatok sp_audit_write argumentumként lettek átadva. A rendszeresemények esetében NULL (alapértelmezett), a felhasználó által definiált esemény esetében nem nulla. További információ: [sp_audit_write (Transact-SQL)](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-audit-write-transact-sql) | nvarchar (4000) | sztring |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a [Azure SQL Database naplózásról](sql-database-auditing.md).

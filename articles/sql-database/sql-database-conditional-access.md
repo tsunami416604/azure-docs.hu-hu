@@ -1,5 +1,5 @@
 ---
-title: Feltételes hozzáférés – Azure SQL Database és adattárház | Microsoft doc
+title: Feltételes hozzáférés
 description: Megtudhatja, hogyan konfigurálhatja a Azure SQL Database és az adatraktár feltételes hozzáférését.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto
 ms.date: 03/29/2019
-ms.openlocfilehash: 1b7000138c4dfc42b774969c1b971d969064b78f
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 9b8c0dbe03e47d32d8194408663973f07a07b1b9
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68569302"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73827166"
 ---
 # <a name="conditional-access-mfa-with-azure-sql-database-and-data-warehouse"></a>Feltételes hozzáférés (MFA) a Azure SQL Database és az adatraktárral  
 
@@ -33,25 +33,25 @@ A következő lépések bemutatják, hogyan konfigurálhatja a SQL Databaset a f
 
 ## <a name="configure-ca-for-azure-sql-dbdw"></a>HITELESÍTÉSSZOLGÁLTATÓ konfigurálása az Azure SQL DB/DW számára  
 1. Jelentkezzen be a portálra, válassza a **Azure Active Directory**lehetőséget, majd válassza a **feltételes hozzáférés**lehetőséget. További információ: [Azure Active Directory feltételes hozzáférés technikai útmutatója](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-technical-reference).  
-   ![Feltételes hozzáférés panel](./media/sql-database-conditional-access/conditional-access-blade.png) 
+   ![feltételes hozzáférés panel](./media/sql-database-conditional-access/conditional-access-blade.png) 
      
 2. A **feltételes hozzáférés – szabályzatok** panelen kattintson az **új házirend**elemre, adjon meg egy nevet, majd kattintson a **szabályok konfigurálása**elemre.  
-3. A **hozzárendelések**területen válassza a **felhasználók és csoportok**, majd a **felhasználók és csoportok kiválasztása**lehetőséget, majd a feltételes hozzáféréshez válassza ki a felhasználót vagy a csoportot. Kattintson a kiválasztás elemre **, majd**kattintson a **kész** gombra a kijelölés elfogadásához.  
-   ![felhasználók és csoportok kiválasztása](./media/sql-database-conditional-access/select-users-and-groups.png)  
+3. A **hozzárendelések**területen válassza a **felhasználók és csoportok**, majd a **felhasználók és csoportok kiválasztása**lehetőséget, majd a feltételes hozzáféréshez válassza ki a felhasználót vagy a csoportot. Kattintson a **kiválasztás elemre, majd**kattintson a **kész** gombra a kijelölés elfogadásához.  
+   ![válassza a felhasználók és csoportok lehetőséget](./media/sql-database-conditional-access/select-users-and-groups.png)  
 
 4. Válassza a **Cloud apps**lehetőséget, majd kattintson az **alkalmazások kiválasztása**lehetőségre. A feltételes hozzáféréshez elérhető összes alkalmazás megjelenik. Válassza a **Azure SQL Database**lehetőséget, alul kattintson a **kiválasztás**elemre, majd kattintson a **kész**gombra.  
-   ![select SQL Database](./media/sql-database-conditional-access/select-sql-database.png)  
+   ![válassza ki a SQL Database](./media/sql-database-conditional-access/select-sql-database.png)  
    Ha nem találja az alábbi harmadik képernyőképen felsorolt **Azure SQL Database** , hajtsa végre a következő lépéseket:   
    - Jelentkezzen be az Azure SQL DB/DW-példányba a SSMS használatával egy HRE-rendszergazdai fiókkal.  
-   - Végrehajtás `CREATE USER [user@yourtenant.com] FROM EXTERNAL PROVIDER`.  
+   - `CREATE USER [user@yourtenant.com] FROM EXTERNAL PROVIDER`végrehajtása.  
    - Jelentkezzen be a HRE-be, és ellenőrizze, hogy a Azure SQL Database és az adatraktár szerepel-e az alkalmazásokban a saját HRE.  
 
-5. Válassza a **hozzáférés-vezérlés**lehetőséget, válassza a **támogatás**lehetőséget, majd jelölje ki az alkalmazni kívánt szabályzatot. Ebben a példában a többtényezős **hitelesítés**megkövetelése lehetőséget választjuk.  
-   ![Válassza a hozzáférés engedélyezése lehetőséget](./media/sql-database-conditional-access/grant-access.png)  
+5. Válassza a **hozzáférés-vezérlés**lehetőséget, válassza a **támogatás**lehetőséget, majd jelölje ki az alkalmazni kívánt szabályzatot. Ebben a példában a **többtényezős hitelesítés megkövetelése**lehetőséget választjuk.  
+   ![válassza a hozzáférés engedélyezése](./media/sql-database-conditional-access/grant-access.png)  
 
-## <a name="summary"></a>Összegzés  
+## <a name="summary"></a>Összefoglalás  
 A kiválasztott alkalmazás (Azure SQL Database), amely lehetővé teszi az Azure SQL DB/DW-hez való kapcsolódást a prémium szintű Azure AD használatával, most már kikényszeríti a kiválasztott feltételes hozzáférési szabályzatot, a **szükséges multi-Factor Authentication hitelesítést.**  
-A többtényezős hitelesítéssel kapcsolatos Azure SQL Database és adattárház kérdéseivel kapcsolatban MFAforSQLDB@microsoft.comvegye fel a kapcsolatot a következővel:.  
+A többtényezős hitelesítéssel kapcsolatos Azure SQL Database és adattárház kérdéseivel kapcsolatban forduljon a MFAforSQLDB@microsoft.comhoz.  
 
 ## <a name="next-steps"></a>További lépések  
 

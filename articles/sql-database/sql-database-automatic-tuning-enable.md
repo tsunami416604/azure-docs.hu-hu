@@ -1,5 +1,5 @@
 ---
-title: Azure SQL Database automatikus hangolásának engedélyezése
+title: Automatikus hangolás engedélyezése
 description: Egyszerűen engedélyezheti a Azure SQL Database automatikus finomhangolását.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 01/25/2019
-ms.openlocfilehash: 52e3dd01446a6292c3404f14bd8ebfb32aa00dd6
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 0abf4bb015be52a10178423a566433b87127a167
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73691127"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73821916"
 ---
 # <a name="enable-automatic-tuning-to-monitor-queries-and-improve-workload-performance"></a>Automatikus hangolás engedélyezése a lekérdezések figyeléséhez és a munkaterhelés teljesítményének növeléséhez
 
@@ -32,7 +32,7 @@ Az automatikus hangolás a kiszolgálón vagy az adatbázis szintjén engedélye
 
 ## <a name="enable-automatic-tuning-on-server"></a>Automatikus hangolás engedélyezése a kiszolgálón
 
-A kiszolgáló szintjén dönthet úgy, hogy az "Azure Defaults" értékről örökli az Automatikus hangolási konfigurációt, vagy nem örökli a konfigurációt. Az Azure alapértelmezett értékei a FORCE_LAST_GOOD_PLAN engedélyezve vannak, a CREATE_INDEX engedélyezve van, és a DROP_INDEX le van tiltva.
+A kiszolgáló szintjén dönthet úgy, hogy az "Azure Defaults" értékről örökli az Automatikus hangolási konfigurációt, vagy nem örökli a konfigurációt. Az Azure alapértelmezett beállításai FORCE_LAST_GOOD_PLAN engedélyezve vannak, CREATE_INDEX engedélyezve van, és a DROP_INDEX le van tiltva.
 
 ### <a name="azure-portal"></a>Azure Portal
 
@@ -41,7 +41,7 @@ Ha engedélyezni szeretné az automatikus hangolást Azure SQL Database logikai 
 ![Kiszolgáló](./media/sql-database-automatic-tuning-enable/server.png)
 
 > [!NOTE]
-> Vegye figyelembe, hogy a **DROP_INDEX** beállítás jelenleg nem kompatibilis a partíciós váltást és az indexelési tippeket használó alkalmazásokkal, és ezeket az eseteket nem szabad engedélyezni. A nem használt indexek nem támogatottak a prémium és üzletileg kritikus szolgáltatási szinteken.
+> Vegye figyelembe, hogy az **DROP_INDEX** lehetőség jelenleg nem kompatibilis a partíciós váltást és az indexeket használó alkalmazásokkal, és ezeket az eseteket nem szabad engedélyezni. A nem használt indexek nem támogatottak a prémium és üzletileg kritikus szolgáltatási szinteken.
 >
 
 Válassza ki az engedélyezni kívánt Automatikus hangolási beállításokat, és kattintson az **alkalmaz**gombra.
@@ -54,7 +54,7 @@ További információ a kiszolgálók automatikus hangolásának engedélyezés�
 
 ## <a name="enable-automatic-tuning-on-an-individual-database"></a>Automatikus hangolás engedélyezése egy adott adatbázison
 
-A Azure SQL Database lehetővé teszi az egyes adatbázisok Automatikus hangolási konfigurációjának egyedi megadását. Az adatbázis szintjén dönthet úgy, hogy örökli az Automatikus hangolási konfigurációt a szülő kiszolgálóról, az "Azure Defaults" vagy a konfiguráció öröklése nélkül. Az Azure alapértelmezett értékei a FORCE_LAST_GOOD_PLAN beállítás engedélyezve van, a CREATE_INDEX engedélyezve van, és a DROP_INDEX le van tiltva.
+A Azure SQL Database lehetővé teszi az egyes adatbázisok Automatikus hangolási konfigurációjának egyedi megadását. Az adatbázis szintjén dönthet úgy, hogy örökli az Automatikus hangolási konfigurációt a szülő kiszolgálóról, az "Azure Defaults" vagy a konfiguráció öröklése nélkül. Az Azure alapértelmezett beállításai FORCE_LAST_GOOD_PLAN engedélyezve, CREATE_INDEX engedélyezve van, és a DROP_INDEX le van tiltva.
 
 > [!TIP]
 > Az általános javaslat az Automatikus hangolási konfiguráció kezelése a **kiszolgáló szintjén** , így ugyanazokat a konfigurációs beállításokat lehet minden adatbázison automatikusan alkalmazni. Az automatikus hangolást csak akkor konfigurálja egy adott adatbázison, ha az adatbázisnak eltérő beállításokkal kell rendelkeznie, mint mások, mint a beállítások öröklése ugyanarról a kiszolgálóról.
@@ -68,7 +68,7 @@ Az egyes adatbázisokhoz külön konfigurálható az automatikus finomhangolási
 
 ![Adatbázis](./media/sql-database-automatic-tuning-enable/database.png)
 
-Vegye figyelembe, hogy a DROP_INDEX beállítás jelenleg nem kompatibilis a partíciós váltást és az indexelési tippeket használó alkalmazásokkal, és ezeket az eseteket nem szabad engedélyezni.
+Vegye figyelembe, hogy az DROP_INDEX lehetőség jelenleg nem kompatibilis a partíciós váltást és az indexeket használó alkalmazásokkal, és ezeket az eseteket nem szabad engedélyezni.
 
 Miután kiválasztotta a kívánt konfigurációt, kattintson az **alkalmaz**gombra.
 

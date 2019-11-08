@@ -1,5 +1,5 @@
 ---
-title: Aktív geo-replikálás – Azure SQL Database
+title: Aktív georeplikáció
 description: Az aktív földrajzi replikálás használatával az egyes adatbázisokból olvasható másodlagos adatbázisok hozhatók létre ugyanazon vagy más adatközpontban (régió).
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 07/09/2019
-ms.openlocfilehash: 74cbb9fa5a00b287746afd92fe74f50bfa19110b
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 33697fd8d3b0c6faea423026e1462834c6b1ef4c
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73691315"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73822660"
 ---
 # <a name="creating-and-using-active-geo-replication"></a>Aktív geo-replikáció létrehozása és használata
 
@@ -48,7 +48,7 @@ Az aktív geo-replikálás kihasználja SQL Server [mindig](https://docs.microso
 > [!NOTE]
 > Ha a két régió között hálózati hiba történik, a kapcsolatok újbóli létrehozásához 10 másodpercenként próbálkozunk.
 > [!IMPORTANT]
-> Annak biztosításához, hogy a feladatátvétel előtt a rendszer replikálja az elsődleges adatbázis kritikus módosításait, kényszerítse a szinkronizálást, hogy biztosítsa a kritikus módosítások (például a jelszavak frissítései) replikálását. A kényszerített szinkronizálás hatással van a teljesítményre, mert blokkolja a hívó szálat, amíg az összes véglegesített tranzakció replikálódik. Részletekért lásd: [sp_wait_for_database_copy_sync](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/active-geo-replication-sp-wait-for-database-copy-sync). Az elsődleges adatbázis és a Geo-másodlagos közötti replikációs késés figyeléséhez tekintse meg a [sys. DM _geo_replication_link_status](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-geo-replication-link-status-azure-sql-database).
+> Annak biztosításához, hogy a feladatátvétel előtt a rendszer replikálja az elsődleges adatbázis kritikus módosításait, kényszerítse a szinkronizálást, hogy biztosítsa a kritikus módosítások (például a jelszavak frissítései) replikálását. A kényszerített szinkronizálás hatással van a teljesítményre, mert blokkolja a hívó szálat, amíg az összes véglegesített tranzakció replikálódik. Részletekért lásd: [sp_wait_for_database_copy_sync](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/active-geo-replication-sp-wait-for-database-copy-sync). Az elsődleges adatbázis és a Geo-másodlagos közötti replikációs késés figyeléséhez tekintse meg a következőt: [sys. dm_geo_replication_link_status](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-geo-replication-link-status-azure-sql-database).
 
 Az alábbi ábra egy olyan aktív geo-replikálási példát mutat be, amely az Egyesült Államok északi középső régiójában, az USA déli középső régiójában, a másodlagos régióban található.
 
@@ -120,7 +120,7 @@ Mind az elsődleges, mind a másodlagos adatbázisnak azonos szolgáltatási szi
 > A közzétett RPO = 5 MP nem garantálható, ha a másodlagos adatbázis ugyanazzal a számítási mérettel van konfigurálva, mint az elsődleges. 
 
 
-Ha úgy dönt, hogy az alacsonyabb számítási mérettel hozza létre a másodlagos értéket, a log IO százalékos diagramja Azure Portal jó módszert kínál a replikálási terhelés fenntartásához szükséges másodlagos minimális számítási méret becslésére. Ha például az elsődleges adatbázisa P6 (1000 DTU), és a log IO százalék értéke 50%, a másodlagosnak legalább P4 (500 DTU) értékkel kell rendelkeznie. A log IO-adatai a [sys. resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) vagy a [sys. DM _db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) adatbázis-nézetek használatával is lekérhető.  A szabályozás HADR_THROTTLE_LOG_RATE_MISMATCHED_SLO várakozási állapotként van jelenteni a [sys. DM _exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql) és a [sys. DM _os_wait_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-os-wait-stats-transact-sql) adatbázis-nézeteiben. 
+Ha úgy dönt, hogy az alacsonyabb számítási mérettel hozza létre a másodlagos értéket, a log IO százalékos diagramja Azure Portal jó módszert kínál a replikálási terhelés fenntartásához szükséges másodlagos minimális számítási méret becslésére. Ha például az elsődleges adatbázisa P6 (1000 DTU), és a log IO százalék értéke 50%, a másodlagosnak legalább P4 (500 DTU) értékkel kell rendelkeznie. A log IO-adatai a [sys. resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) vagy a [sys. dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) adatbázis-nézetek használatával is lekérhető.  A szabályozás HADR_THROTTLE_LOG_RATE_MISMATCHED_SLO várakozási állapotként szerepel a [sys. dm_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql) és a [sys. dm_os_wait_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-os-wait-stats-transact-sql) adatbázis-nézetekben. 
 
 A SQL Database számítási méretekkel kapcsolatos további információkért lásd: [Mi a SQL Database szolgáltatási szintek](sql-database-purchase-models.md).
 
@@ -143,19 +143,19 @@ A másodlagos adatbázisok leválasztása nélkül frissítheti vagy visszaminő
 
 ## <a name="preventing-the-loss-of-critical-data"></a>A kritikus fontosságú adatmennyiség elvesztésének megakadályozása
 
-A nagyméretű hálózatok nagy késése miatt a folyamatos másolás aszinkron replikációs mechanizmust használ. Az aszinkron replikáció során az adatvesztés elkerülhető, ha hiba történik. Előfordulhat azonban, hogy egyes alkalmazások nem igényelnek adatvesztést. A kritikus frissítések elleni védelem érdekében az alkalmazás fejlesztői a tranzakció véglegesítése után azonnal meghívhatják a [sp_wait_for_database_copy_sync](/sql/relational-databases/system-stored-procedures/active-geo-replication-sp-wait-for-database-copy-sync) rendszereljárást. A **sp_wait_for_database_copy_sync** meghívásával a rendszer addig blokkolja a hívó szálat, amíg az utolsó véglegesített tranzakció át nem lett továbbítva a másodlagos adatbázisba. Azonban nem várja meg, amíg a továbbított tranzakciók újra le lesznek játszva és véglegesítve lettek a másodlagoson. a **sp_wait_for_database_copy_sync** hatóköre egy adott folytonos másolási hivatkozásra terjed ki. Minden olyan felhasználó, aki az elsődleges adatbázishoz kapcsolódási jogokkal rendelkezik, meghívhatja ezt az eljárást.
+A nagyméretű hálózatok nagy késése miatt a folyamatos másolás aszinkron replikációs mechanizmust használ. Az aszinkron replikáció során az adatvesztés elkerülhető, ha hiba történik. Előfordulhat azonban, hogy egyes alkalmazások nem igényelnek adatvesztést. A kritikus frissítések elleni védelem érdekében az alkalmazás fejlesztője a tranzakció véglegesítése után azonnal meghívhatja a [sp_wait_for_database_copy_sync](/sql/relational-databases/system-stored-procedures/active-geo-replication-sp-wait-for-database-copy-sync) rendszereljárást. A hívás **sp_wait_for_database_copy_sync** blokkolja a hívó szálat, amíg az utolsó véglegesített tranzakció át nem lett továbbítva a másodlagos adatbázisba. Azonban nem várja meg, amíg a továbbított tranzakciók újra le lesznek játszva és véglegesítve lettek a másodlagoson. **sp_wait_for_database_copy_sync** hatóköre egy adott folyamatos másolási hivatkozásra vonatkozik. Minden olyan felhasználó, aki az elsődleges adatbázishoz kapcsolódási jogokkal rendelkezik, meghívhatja ezt az eljárást.
 
 > [!NOTE]
-> a **sp_wait_for_database_copy_sync** megakadályozza az adatvesztést a feladatátvétel után, de nem garantálja a teljes szinkronizálást az olvasási hozzáféréshez. A **sp_wait_for_database_copy_sync** eljárás hívása által okozott késleltetés jelentős lehet, és a tranzakciós napló méretétől függ a hívás időpontjában.
+> **sp_wait_for_database_copy_sync** megakadályozza az adatvesztést a feladatátvétel után, de nem garantálja a teljes szinkronizálást az olvasási hozzáféréshez. A **sp_wait_for_database_copy_synci** eljárás hívása által okozott késleltetés jelentős lehet, és a tranzakciós napló méretétől függ a hívás időpontjában.
 
 ## <a name="monitoring-geo-replication-lag"></a>Földrajzi replikációs késés figyelése
 
-A RPO vonatkozó késés figyeléséhez használja a [sys. DM _geo_replication_link_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-geo-replication-link-status-azure-sql-database) *replication_lag_sec* oszlopát az elsődleges adatbázison. Másodpercek alatt az elsődleges és a másodlagoson megőrzött tranzakciók közötti késést jeleníti meg. Például Ha a késés értéke 1 másodperc, akkor az azt jelenti, hogy ha az elsődlegest egy kimaradás okozta, és a feladatátvételt kezdeményezték, a legutóbbi átmenetek közül 1 másodperc nem lesz mentve. 
+A RPO vonatkozó késés figyeléséhez használja a [sys. dm_geo_replication_link_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-geo-replication-link-status-azure-sql-database) *replication_lag_sec* oszlopát az elsődleges adatbázison. Másodpercek alatt az elsődleges és a másodlagoson megőrzött tranzakciók közötti késést jeleníti meg. Például Ha a késés értéke 1 másodperc, akkor az azt jelenti, hogy ha az elsődlegest egy kimaradás okozta, és a feladatátvételt kezdeményezték, a legutóbbi átmenetek közül 1 másodperc nem lesz mentve. 
 
-Annak érdekében, hogy az elsődleges adatbázison végrehajtott, a másodlagosnál alkalmazott változásokkal kapcsolatos késés mértékét, azaz a másodlagosról való olvasásra elérhető legyen, hasonlítsa össze a másodlagos adatbázis *last_commit* idejét ugyanazzal az értékkel az elsődleges adatbázison.
+Annak érdekében, hogy az elsődleges adatbázison végrehajtott, a másodlagosnál alkalmazott változásokkal kapcsolatos késés mértékét, azaz a másodlagosról való olvasásra elérhető legyen, hasonlítsa össze *last_commit* időt a másodlagos adatbázison ugyanazzal az értékkel az elsődleges adatbázison.
 
 > [!NOTE]
-> Előfordulhat, hogy az elsődleges adatbázis *replication_lag_sec* értéke null, ami azt jelenti, hogy az elsődleges nem tudja, hogy meddig tart a másodlagos.   Ez általában a folyamat újraindítása után történik, és átmeneti feltételnek kell lennie. Vegye fontolóra az alkalmazás riasztását, ha a *replication_lag_sec* hosszabb ideig null értéket ad vissza. Ez azt jelzi, hogy a másodlagos adatbázis nem tud kommunikálni az elsődlegesvel állandó csatlakozási hiba miatt. Olyan feltételek is fennállnak, amelyek a másodlagos és az elsődleges adatbázis *last_commit* ideje közötti különbséget okozhatják. Például Ha az elsődleges végrehajtás hosszú időn belül nem változik, a különbség egy nagy értékre ugrik, mielőtt a rendszer gyorsan visszatér 0-ra. Vegye figyelembe, hogy a hiba feltétele, ha a két érték közötti különbség hosszú ideig nagy marad.
+> Az elsődleges adatbázis *replication_lag_sec* néha NULL értékkel rendelkezik, ami azt jelenti, hogy az elsődleges nem tudja, hogy meddig van a másodlagos.   Ez általában a folyamat újraindítása után történik, és átmeneti feltételnek kell lennie. Vegye fontolóra az alkalmazás riasztását, ha a *replication_lag_sec* hosszabb ideig null értéket ad vissza. Ez azt jelzi, hogy a másodlagos adatbázis nem tud kommunikálni az elsődlegesvel állandó csatlakozási hiba miatt. Olyan feltételek is fennállnak, amelyek a másodlagos és az elsődleges adatbázis *last_commit* ideje közötti különbséget okozhatják. Például Ha az elsődleges végrehajtás hosszú időn belül nem változik, a különbség egy nagy értékre ugrik, mielőtt a rendszer gyorsan visszatér 0-ra. Vegye figyelembe, hogy a hiba feltétele, ha a két érték közötti különbség hosszú ideig nagy marad.
 
 
 ## <a name="programmatically-managing-active-geo-replication"></a>Az aktív földrajzi replikáció programozott kezelése
@@ -170,11 +170,11 @@ Amint azt korábban már említettük, az aktív geo-replikáció programozott m
 | Parancs | Leírás |
 | --- | --- |
 | [ALTER DATABASE](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current) |Másodlagos adatbázis hozzáadása egy meglévő adatbázishoz, és az adatreplikálás elindításához használja a másodlagos kiszolgáló hozzáadása argumentumot. |
-| [ALTER DATABASE](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current) |Feladatátvétel vagy FORCE_FAILOVER_ALLOW_DATA_LOSS használatával válthat másodlagos adatbázist elsődlegesként a feladatátvétel elindításához |
+| [ALTER DATABASE](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current) |Feladatátvétel vagy FORCE_FAILOVER_ALLOW_DATA_LOSS használatával váltson át másodlagos adatbázist elsődlegesre a feladatátvétel indításához |
 | [ALTER DATABASE](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current) |Használja a másodlagos eltávolítása a kiszolgálón lehetőséget a SQL Database és a megadott másodlagos adatbázis közötti adatreplikáció megszakításához. |
-| [sys. Geo _replication_links](/sql/relational-databases/system-dynamic-management-views/sys-geo-replication-links-azure-sql-database) |A Azure SQL Database-kiszolgálón található egyes adatbázisok összes meglévő replikációs hivatkozására vonatkozó információt adja vissza. |
-| [sys. DM _geo_replication_link_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-geo-replication-link-status-azure-sql-database) |Lekérdezi a legutóbbi replikálási időt, a legutóbbi replikálási késést és az adott SQL-adatbázis replikációs hivatkozásával kapcsolatos egyéb információkat. |
-| [sys. DM _operation_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database) |Megjeleníti az összes adatbázis-művelet állapotát, beleértve a replikációs hivatkozások állapotát is. |
+| [sys. geo_replication_links](/sql/relational-databases/system-dynamic-management-views/sys-geo-replication-links-azure-sql-database) |A Azure SQL Database-kiszolgálón található egyes adatbázisok összes meglévő replikációs hivatkozására vonatkozó információt adja vissza. |
+| [sys. dm_geo_replication_link_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-geo-replication-link-status-azure-sql-database) |Lekérdezi a legutóbbi replikálási időt, a legutóbbi replikálási késést és az adott SQL-adatbázis replikációs hivatkozásával kapcsolatos egyéb információkat. |
+| [sys. dm_operation_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database) |Megjeleníti az összes adatbázis-művelet állapotát, beleértve a replikációs hivatkozások állapotát is. |
 | [sp_wait_for_database_copy_sync](/sql/relational-databases/system-stored-procedures/active-geo-replication-sp-wait-for-database-copy-sync) |azt eredményezi, hogy az alkalmazás megvárja az összes véglegesített tranzakció replikálását és az aktív másodlagos adatbázis által történő elfogadását. |
 |  | |
 
@@ -204,8 +204,8 @@ Amint azt korábban már említettük, az aktív geo-replikáció programozott m
 | [Adatbázis-létrehozási vagy-frissítési állapot beolvasása](https://docs.microsoft.com/rest/api/sql/databases/createorupdate) |Az állapotot adja vissza egy létrehozási művelet során. |
 | [Másodlagos adatbázis beállítása elsődlegesként (tervezett feladatátvétel)](https://docs.microsoft.com/rest/api/sql/replicationlinks/failover) |Meghatározza, hogy melyik másodlagos adatbázis legyen elsődleges, ha az aktuális elsődleges adatbázisból feladatátvételt hajt végre. **Ez a beállítás felügyelt példány esetén nem támogatott.**|
 | [Másodlagos adatbázis beállítása elsődlegesként (nem tervezett feladatátvétel)](https://docs.microsoft.com/rest/api/sql/replicationlinks/failoverallowdataloss) |Meghatározza, hogy melyik másodlagos adatbázis legyen elsődleges, ha az aktuális elsődleges adatbázisból feladatátvételt hajt végre. A művelet adatvesztéshez vezethet. **Ez a beállítás felügyelt példány esetén nem támogatott.**|
-| [Replikációs hivatkozás beolvasása](https://docs.microsoft.com/rest/api/sql/replicationlinks/get) |Egy adott SQL-adatbázis adott replikációs hivatkozásának beolvasása egy földrajzi replikálási partnerségben. Lekéri a sys. Geo _replication_links katalógus nézetben látható információkat. **Ez a beállítás felügyelt példány esetén nem támogatott.**|
-| [Replikációs hivatkozások – lista adatbázis szerint](https://docs.microsoft.com/rest/api/sql/replicationlinks/listbydatabase) | Egy adott SQL-adatbázis összes replikációs hivatkozásának beolvasása egy földrajzi replikálási partnerségben. Lekéri a sys. Geo _replication_links katalógus nézetben látható információkat. |
+| [Replikációs hivatkozás beolvasása](https://docs.microsoft.com/rest/api/sql/replicationlinks/get) |Egy adott SQL-adatbázis adott replikációs hivatkozásának beolvasása egy földrajzi replikálási partnerségben. Lekéri a sys. geo_replication_links Catalog nézetben látható adatokat. **Ez a beállítás felügyelt példány esetén nem támogatott.**|
+| [Replikációs hivatkozások – lista adatbázis szerint](https://docs.microsoft.com/rest/api/sql/replicationlinks/listbydatabase) | Egy adott SQL-adatbázis összes replikációs hivatkozásának beolvasása egy földrajzi replikálási partnerségben. Lekéri a sys. geo_replication_links Catalog nézetben látható adatokat. |
 | [Replikációs hivatkozás törlése](https://docs.microsoft.com/rest/api/sql/replicationlinks/delete) | Töröl egy adatbázis-replikációs hivatkozást. Feladatátvétel közben nem végezhető el. |
 |  | |
 

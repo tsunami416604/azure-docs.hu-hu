@@ -1,35 +1,36 @@
 ---
-title: Az összes közzétevők oldal az Azure Marketplace-en
-description: Az Azure Marketplace-en, a Cloud Partner portálra a minden gyártó áttekintése.
+title: Az Azure Marketplace összes közzétevő lapja
+description: Az Azure Marketplace Cloud Partner Portal összes közzétevője – áttekintés.
 services: Azure, Marketplace, Cloud Partner Portal,
 author: v-miclar
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: pabutler
-ms.openlocfilehash: ab42757d91244c0661a6acd02e4e5ebe891929a0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c713beaafb47b2e6481ef9358b206dbc2b2e2cf1
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64942004"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73821566"
 ---
 # <a name="all-publishers-page"></a>Minden közzétevő oldal
 
-A [ **minden gyártó** ](https://cloudpartner.azure.com/#publishers) lap megjeleníti az összes regisztrált a Microsoft cloud közzétevők listájának, beleértve azok közzétevő egyedi nevét és megjelenítendő nevét. Az eredmények Rendezés oszlop, vagy adjon meg egy sztringet, az eredmények szűréséhez.  Ezen a lapon is megjelenít egy **hozzáadása közzétevő** gomb, de ez a gomb csak akkor engedélyezett portál rendszergazdák számára.  Közzétevő kiválasztása ebben a listában jelenik meg a profil a közzétevőhöz.  További információkért lásd: [közzétevő profil kezelése](./../../cloud-partner-portal-orig/cloud-partner-portal-manage-publisher-profile.md).
+A [**minden közzétevő**](https://cloudpartner.azure.com/#publishers) lap megjeleníti az összes regisztrált Microsoft felhőalapú közzétevő listáját, beleértve a közzétevő egyedi nevét és megjelenítendő nevét. Az eredményeket oszlop szerint rendezheti, vagy megadhat egy karakterláncot az eredmények szűréséhez.  Ezen a lapon a **közzétevő hozzáadása** gomb is látható, de ez a gomb csak a portál rendszergazdái számára engedélyezett.  Ha kijelöl egy közzétevőt ebben a listában, az adott közzétevő profilja jelenik meg.  További információ: a [közzétevői profil kezelése](./../../cloud-partner-portal-orig/cloud-partner-portal-manage-publisher-profile.md).
 
 
-## <a name="example-page"></a>(Példa)
+## <a name="example-page"></a>Példa oldal
 
-Az alábbi képen látható, hogy a közzétevő, listázás, a karakterlánc contoso szűrve ".  
+Az alábbi képen látható, hogy a közzétevő a contoso nevű karakterláncban szűrt listán szerepel.  
 
 ![Minden közzétevő oldal](./media/all-publishers-page1.png)
 
-Kattintson az első bejegyzés a Contoso jelenik meg a profil lapra.  Csak a saját közzétevő profil szerkesztheti.
+Ha az első bejegyzésre kattint, megjelenik a contoso profil lapja.  Csak a saját közzétevői profilját lehet szerkeszteni.
 
-![Contoso közzétevő profil oldalához](./media/all-publishers-page2.png)
+![Contoso-közzétevő profil lapja](./media/all-publishers-page2.png)
 
 
 ## <a name="next-steps"></a>További lépések
 
-A következő navigációs menüsávon elemet jeleníti meg egy [felhasználók lap](./cpp-users-page.md), amely felsorolja az összes regisztrált felhasználók. 
+A következő navigációs menüsor elem megjeleníti a [felhasználók lapot](./cpp-users-page.md), amely felsorolja az összes regisztrált felhasználót. 

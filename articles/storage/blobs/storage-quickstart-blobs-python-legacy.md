@@ -1,6 +1,6 @@
 ---
-title: 'Gyors útmutató: blob létrehozása az Azure Blob Storage-ban Python-vel'
-description: Ebben a rövid útmutatóban egy tárfiókot és egy tárolót hoz létre egy objektumtárban (Blob Storage-fiókban). Majd a Storage Pythonhoz készült ügyféloldali kódtára segítségével feltölt egy blobot az Azure Storage-ba, letölt egy blobot, és kilistázza a tárolóban lévő blobokat.
+title: 'Gyors útmutató: Azure Blob Storage ügyféloldali kódtár v 2.1 a Pythonhoz'
+description: Ebben a rövid útmutatóban egy tárfiókot és egy tárolót hoz létre egy objektumtárban (Blob Storage-fiókban). Ezután a Storage ügyféloldali kódtár 2.0-s verziójának használatával feltölt egy blobot az Azure Storage-ba, letölt egy blobot, és kilistázza a tárolóban lévő blobokat.
 author: mhopkins-msft
 ms.author: mhopkins
 ms.date: 09/11/2019
@@ -8,14 +8,14 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
 ms.custom: seo-python-october2019
-ms.openlocfilehash: 8a3f8b5f8944552c92ac5a1c1d5fb2eabffad2c9
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 606c7d1fd012052a22afeef906bbe9df4c63a76b
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73608742"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73825297"
 ---
-# <a name="quickstart-upload-download-and-list-blobs-in-azure-blob-storage-with-python"></a>Rövid útmutató: Blobok feltöltése, letöltése és listázása az Azure Blob Storage-ban a Pythonban
+# <a name="quickstart-azure-blob-storage-client-library-v21-for-python"></a>Gyors útmutató: Azure Blob Storage ügyféloldali kódtár v 2.1 a Pythonhoz
 
 Ebben a cikkben a Python használatával tölthet fel, tölthet le és listázhat blokk-blobokat egy tárolóban az Azure Blob Storage-ban. A Blobok egyszerűen olyan objektumok, amelyek nagy mennyiségű szöveges vagy bináris adatok tárolására képesek, beleértve a képeket, a dokumentumokat, a médiafolyamokat és az archiválási adatokhoz. Az Azure Storage-beli Blobok különböznek a fájlmegosztás, a séma nélküli táblák és az üzenetsor-várólistáktól.  További információ: [Az Azure Storage bemutatása](/azure/storage/common/storage-introduction).
 
@@ -98,7 +98,7 @@ A minta program egy tesztoldalt hoz létre a *dokumentumok* mappában, feltölti
 1. A folytatás előtt lépjen a *dokumentumok* mappájába, és keresse meg a két fájlt.
 
     * *QuickStart_\<univerzálisan egyedi azonosító\>*
-    * *QuickStart_\<univerzálisan egyedi azonosító\>_DOWNLOADED*
+    * *QuickStart_\<univerzálisan egyedi azonosítóval\>_DOWNLOADED*
 
 1. Ha megnyitja őket, láthatja, hogy megegyeznek.
 
@@ -145,7 +145,7 @@ A Blob Storage támogatja a blokkblobokat, a hozzáfűző blobokat és a lapblob
 
 Ha szeretne feltölteni egy fájlt a blobba, szüksége lesz a fájl teljes útvonalára, amelyet a helyi meghajtón található könyvtárnév és fájlnév összefűzésével kap meg. Ezt követően feltöltheti a fájlt a megadott útvonalra a `create_blob_from_path` metódus használatával. 
 
-A mintakód létrehoz egy helyi fájlt, amelyet a rendszer a feltöltéshez és a letöltéshez használ, tárolja a rendszerfeltöltő fájlokat a *full_path_to_file* és a blob nevével *local_file_name*. Ez a példa feltölti a fájlt a `quickstartblobs`nevű tárolóba:
+A mintakód létrehoz egy helyi fájlt, amelyet a rendszer a feltöltéshez és a letöltéshez használ, tárolja a rendszerfeltöltő fájlokat *full_path_to_fileként* és a blob nevét *local_file_nameként*. Ez a példa feltölti a fájlt a `quickstartblobs`nevű tárolóba:
 
 ```python
 # Create a file in Documents to test the upload and download.
@@ -184,7 +184,7 @@ for blob in generator:
 
 
 A `get_blob_to_path` metódus használatával töltse le a blobokat a helyi lemezre.
-A következő kód letölti a korábban feltöltött blobot. A rendszer hozzáfűzi a *_DOWNLOADED* a blob nevéhez, így mindkét fájlt láthatja a helyi lemezen.
+A következő kód letölti a korábban feltöltött blobot. A rendszer hozzáfűzi *_DOWNLOADED* a blob nevéhez, hogy mindkét fájlt látni tudja a helyi lemezen.
 
 ```python
 # Download the blob(s).

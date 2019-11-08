@@ -4,15 +4,16 @@ description: Az Azure Marketplace és az alkalmazások és szolgáltatások köz
 services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
 author: ellacroi
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 06/05/2018
 ms.author: ellacroi
-ms.openlocfilehash: cd6b09a1130e50fae7bd83579a0f176af0b5b9cd
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: fba9c481ad9b3da1eb0dd5d8a4ff2499240a8cfa
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70962619"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73826479"
 ---
 # <a name="azure-marketplace-and-appsource-publishing-guide"></a>Azure Marketplace és AppSource közzétételi útmutató
 
@@ -30,7 +31,7 @@ Ez az útmutató a következő témákat tárgyalja:
 
 Ez az útmutató technikai és üzleti információkat is tartalmaz az alkalmazások és szolgáltatások listázásához szükséges lépésekről. A tartalomjegyzék segítségével az útmutató különböző részeire léphet, és közvetlenül a legfontosabb témakörökbe léphet.
 
-Ha kérdése van az Azure Marketplace-ről és a AppSource, küldjön nekünk > egy üzenetet a**Marketplace**bevezetését ismertető szakaszban.  A Marketplace kiadó bevezetési csapata örömmel segít! 
+Ha kérdése van az Azure Marketplace-ről és a AppSource, küldjön nekünk egy üzenetet a **probléma típusa** > **Marketplace**bevezetéséhez.  A Marketplace kiadó bevezetési csapata örömmel segít! 
 
 ## <a name="benefits-of-participating-in-the-marketplace"></a>A piactéren való részvétel előnyei 
 
@@ -56,11 +57,11 @@ A piactéren elérhető elemzések és elemzések segítségével bepillantást 
 
 A piactéren elérhető új listák számos ingyenes előnyt kínálnak, amelyek segítenek a partnereknek üzleti szempontból növekedni a piactéren. Ezek az előnyök a következő kategóriákba sorolhatók: 
 
-*   Technikai Minden, amire szüksége lehet, hogy az alkalmazás készen álljon az indításra. A technikai támogatástól, az alkalmazások kialakításával és az architektúra kialakításával az Azure-kreditek fejlesztéshez és teszteléshez. 
+*   Technikai: minden, ami szükséges ahhoz, hogy az alkalmazás készen álljon az indításra. A technikai támogatástól, az alkalmazások kialakításával és az architektúra kialakításával az Azure-kreditek fejlesztéshez és teszteléshez. 
 
-*   Közös marketing: Minden, amire szüksége lehet az ajánlat elindításához. Elérhetővé teheti a Microsoft piaci megjelenést segítő alapismereteket, amelyek segítségével elindíthatja és népszerűsítheti megoldását. Emellett jogosult lehet a Microsoft marketing-kampány további bevonására is, és elérhetővé kell tennie a piactéren kínált lehetőségeket.
+*   Közös marketing: minden, amire szüksége lehet az ajánlat elindításához. Elérhetővé teheti a Microsoft piaci megjelenést segítő alapismereteket, amelyek segítségével elindíthatja és népszerűsítheti megoldását. Emellett jogosult lehet a Microsoft marketing-kampány további bevonására is, és elérhetővé kell tennie a piactéren kínált lehetőségeket.
 
-*   Közös értékesítés: Megkezdheti vagy felgyorsíthatja a Microsofttal való értékesítést a piactéren. Programok és támogatás a Microsoft Teams közös értékesítésének megvezetéséhez.
+*   Közös értékesítés: megkezdheti vagy felgyorsíthatja a Microsofttal való értékesítést a piactéren. Programok és támogatás a Microsoft Teams közös értékesítésének megvezetéséhez.
 
 Miután [elküldte megoldását](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/azureisv) a piactéren, a bevezetési csapat felveszi Önnel a kapcsolatot a közzétételi élmény támogatásához.  További információt a [partner Center-fiók létrehozása](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account) című témakörben talál.
 

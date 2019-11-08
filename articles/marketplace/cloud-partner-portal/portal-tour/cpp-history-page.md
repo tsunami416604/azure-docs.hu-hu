@@ -1,31 +1,32 @@
 ---
-title: Naplózási előzmények lapon az Azure Marketplace-en
-description: A naplózási Előzmények lapon a Cloud Partner portálra, az Azure Marketplace-en áttekintése.
+title: Az Azure Marketplace naplózási előzményeinek lapja
+description: Az Azure Marketplace Cloud Partner Portal korábbi naplózási oldalának áttekintése.
 services: Azure, Marketplace, Cloud Partner Portal,
 author: v-miclar
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: pabutler
-ms.openlocfilehash: a579008aa0954507a130bef65dc60254f9e12c03
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a09eca891c434a6bd836269908c3e2cf37fbd3f5
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64943471"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73821558"
 ---
 # <a name="audit-history-page"></a>Naplózási előzmények oldal
 
-A [ **naplózási előzmények** ](https://cloudpartner.azure.com/#history) lap minden marketplace-ajánlat közzététele eseményeihez listáját jeleníti meg.  Az oszlopokat tartalmazzák, eseménytípus, előfordulás dátum és idő, ajánlat nevét, kiadóját, és kezdeményezte a felhasználó.  Az eredmények lehet oszlop szerint rendezve vagy a megadott karakterlánc szűrve.  Ezen a lapon is lehetővé teszi a felhasználó az aktuális naplózási listaelem vesszővel tagolt (.csv) fájlok letöltéséhez.
+A [**Naplózási előzmények**](https://cloudpartner.azure.com/#history) lap megjeleníti az összes Piactéri ajánlat közzétételi eseményeinek listáját.  Az oszlopok közé tartozik az esemény típusa, az előfordulás dátuma, az ajánlat neve, a közzétevő és a műveletet kezdeményező felhasználó.  Az eredmények oszlop szerint rendelhetők, vagy egy megadott sztring alapján szűrhetők.  Ezen a lapon a felhasználó letölthet egy vesszővel tagolt (. csv) fájlt az aktuális naplózási listáról.
 
 
-## <a name="example-page"></a>(Példa)
+## <a name="example-page"></a>Példa oldal
 
-Az alábbi képen látható a **naplózási előzmények** oldal szűrve: a karakterlánc `contoso`.
+Az alábbi képen a **Naplózási előzmények** lap látható, amely a `contoso`sztringre van szűrve.
 
-![Naplózási előzmények lapon](./media/audit-history-page1.png)
+![Naplózási Előzmények lap](./media/audit-history-page1.png)
 
 
 ## <a name="next-steps"></a>További lépések
 
-A következő navigációs menüsávon elem fér hozzá a [értékesítői Insights](./cpp-insights-page.md) a Cloud Partner portálra, a marketplace-ajánlat, testre szabható irányítópultokkal részhalmazához biztosító képességét.
+A következő navigációs menüsor elem hozzáfér a Cloud Partner Portal [eladói betekintési](./cpp-insights-page.md) képességeihez, amely testreszabható irányítópultokat biztosít a Piactéri ajánlatokhoz.

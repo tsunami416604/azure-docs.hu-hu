@@ -1,38 +1,39 @@
 ---
-title: Kezelheti az Azure és az AppSource piactérről kínál |} Az Azure Marketplace-en
-description: Ajánlatok az Azure-ra és az appsource-ban Piacterein kezelése
+title: Azure-és AppSource-Piactéri ajánlatok kezelése | Azure piactér
+description: Ajánlatok kezelése az Azure-ban és a AppSource piactéren
 services: Azure, AppSource, Marketplace, Cloud Partner Portal,
 author: v-miclar
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 01/09/2019
 ms.author: pabutler
-ms.openlocfilehash: 8a03ce94971d704aa38c1be5d7cfbb3c24bd2f82
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9bbbad0434cf0e3b27d985b10bd0552d1fb4315a
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64943358"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73826752"
 ---
-# <a name="manage-azure-and-appsource-marketplace-offers"></a>Az Azure és az AppSource piactérről ajánlatokat kezelése
+# <a name="manage-azure-and-appsource-marketplace-offers"></a>Azure-és AppSource Marketplace-ajánlatok kezelése
 
-Ez a szakasz bemutatja a ajánlatok kezelhetők az Azure és az AppSource-piactér általános műveleteiről.  Ha például azt ismerteti, hogyan a [Cloud Partner Portalon](https://cloudpartner.azure.com/) hozhat létre, és a egy marketplace-ajánlat közzététele.  Ez a szakasz is ismerteti, amelyek közösek a leggyakrabban az ajánlat típusú, például a technikai problémák szöveges és eszközök kép.
+Ez a szakasz bemutatja az Azure-és AppSource-Piactéri ajánlatok kezeléséhez használt általános műveleteket.  Ez például azt ismerteti, hogyan használható a [Cloud Partner Portal](https://cloudpartner.azure.com/) egy Piactéri ajánlat létrehozásához és közzétételéhez.  Ez a szakasz azokat a technikai problémákat ismerteti, amelyek gyakran előfordulnak az ajánlati típusok többségében, például a szöveges és a képi eszközökön.
 
 
-## <a name="standard-offer-operations"></a>Standard ajánlat műveletek
+## <a name="standard-offer-operations"></a>Standard szintű ajánlati műveletek
 
-A Cloud Partner portálra lehetővé teszi, hogy a közzétevő, ajánlat az alábbi alapszintű műveletek végrehajtásához.
+A Cloud Partner Portal lehetővé teszi, hogy a közzétevő a következő alapvető műveleteket hajtsa végre egy ajánlaton.
 
 |     Művelet      |  Leírás                                           |
 |     ---------      |  -----------                                           |
-| [Ajánlat létrehozása](./cpp-create-offer.md)   | Egy függőben lévő ajánlat bejegyzést hoz létre bevezetési adattárban, de nem automatikusan közzétenni, a Microsoft Marketplace-en | 
-| [Ajánlat állapotának megtekintése](./cpp-view-status-offer.md)   | Az ajánlat közzétételi állapotának tartalmazza.  Nincsenek a portálon több helyen, ahol megjelenik a állapotadatait. |
-| [Ajánlat közzététele](./cpp-publish-offer.md) | Ellenőrzi, majd közzéteszi egy Befejezett ajánlat bejegyzést a megfelelő Microsoft-piactéren.  Az ajánlat összekapcsolja kell *élő*. |
-| [Ajánlat frissítése](./cpp-update-offer.md)   | Lehetővé teszi bizonyos meglévő ajánlat jellemzői módosítását.  Függőben lévő és a közzétett ajánlatok vonatkozik. |
-| [Ajánlat törlése](./cpp-delete-offer.md)   | Függőben lévő meglévő vagy élő ajánlat törlése.  | 
+| [Ajánlat létrehozása](./cpp-create-offer.md)   | Egy függőben lévő ajánlat bejegyzést hoz létre a bevezetési adattárban, de nem teszi közzé automatikusan a Microsoft piactéren | 
+| [Ajánlat állapotának megtekintése](./cpp-view-status-offer.md)   | Egy ajánlat közzétételi állapotát adja meg.  A portálon több hely található, ahol az állapotadatok megjelennek. |
+| [Ajánlat közzététele](./cpp-publish-offer.md) | Ellenőrzi, majd befejezte az ajánlat bejegyzését a megfelelő Microsoft piactéren.  Ezt követően az ajánlat *élőben*is megjelenik. |
+| [Ajánlat frissítése](./cpp-update-offer.md)   | Egy meglévő ajánlat bizonyos jellemzőinek módosítását teszi lehetővé.  A függőben lévő és a közzétett ajánlatokra is érvényes. |
+| [Ajánlat törlése](./cpp-delete-offer.md)   | Töröl egy meglévő függőben lévő vagy élő ajánlatot.  | 
 |  |  |
   
 
 ## <a name="next-steps"></a>További lépések
 
-Ha ismeri, a képességek és a felhasználói felület a Cloud Partner portálra, tekintse meg a szakasz [Cloud Partner Portal bemutató](../portal-tour/cpp-portal-tour.md).  Ezt követően tudjon meg többet [ajánlat létrehozása](./cpp-create-offer.md).
+Ha nem ismeri a Cloud Partner Portal képességeit és felhasználói felületét, tekintse meg a [Cloud Partner Portal Tour](../portal-tour/cpp-portal-tour.md)című szakaszt.  Ezt követően további információ az [ajánlat létrehozásáról](./cpp-create-offer.md).

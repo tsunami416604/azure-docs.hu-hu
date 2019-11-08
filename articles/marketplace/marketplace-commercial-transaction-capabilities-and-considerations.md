@@ -5,15 +5,16 @@ services: Azure, Marketplace, Compute, Storage, Networking, Transact Offer Type
 author: yijenj
 manager: nuno costa
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 10/29/2018
 ms.author: pabutler
-ms.openlocfilehash: f6f409c42c7ffa5639315e71ff565f9c672e227c
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: 9aa41e63c275737874d57ba016e297a64f3eb124
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70279744"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73823021"
 ---
 # <a name="commercial-marketplace-transaction-capabilities-and-considerations"></a>Kereskedelmi piactér tranzakciós képességei és szempontjai
 
@@ -59,15 +60,15 @@ SaaS-alkalmazások esetén a közzétevőnek az Azure-infrastruktúra használat
 
 A használt tranzakciós lehetőségtől függően a közzétevő szoftverlicenc-díja a következőképpen jelenik meg:  
 
-* Ingyenes: Szoftveres licencek díjmentesek. 
+* Ingyenes: szoftveres licencek díjmentesek. 
 
-* Saját licenc használata (BYOL): A szoftveres licencekre vonatkozó díjak közvetlenül a közzétevő és az ügyfél között kezelhetők. A Microsoft csak az Azure-infrastruktúra használati díjain halad át. (Csak Virtual Machines és Azure-alkalmazások.)
+* Saját licenc használata (BYOL): a szoftveres licencekre vonatkozó bármilyen díj közvetlenül a közzétevő és az ügyfél között van kezelve. A Microsoft csak az Azure-infrastruktúra használati díjain halad át. (Csak Virtual Machines és Azure-alkalmazások.)
 
-* Utólagos elszámolás: A szoftverlicenc-díjak a felhasznált Azure-infrastruktúra alapján óránkénti (vCPU) díjszabás szerint jelennek meg. Ez csak Virtual Machines és Azure-alkalmazásokra vonatkozik.
+* Utólagos elszámolás: a szoftveres licencelési díjak a felhasznált Azure-infrastruktúra alapján óránkénti (vCPU) díjszabás szerint jelennek meg. Ez csak Virtual Machines és Azure-alkalmazásokra vonatkozik.
 
-* • Előfizetés díjszabása: A szoftverlicenc-díj a havi vagy éves, ismétlődő díj, amely átalányként vagy-munkaállomásonkéntiként van feltüntetve. Ez csak az SaaS-alkalmazásokra és az Azure-alkalmazások – felügyelt alkalmazásokra vonatkozik.
+* • Előfizetés díjszabása: a szoftverlicenc-díj a havi vagy éves, ismétlődő díj, amely átalányként vagy munkaállomásonkéntiként van feltüntetve. Ez csak az SaaS-alkalmazásokra és az Azure-alkalmazások által felügyelt alkalmazásokra vonatkozik.
 
-* Ingyenes szoftver próbaverziója: A szoftveres licencek díja 30 vagy 90 nap.
+* Ingyenes szoftver próbaverziója: a szoftveres licencek díjmentesek, 30 vagy 90 napig.
 
 ### <a name="free-and-bring-your-own-license-byol-pricing"></a>Ingyenes és saját licencek (BYOL) díjszabása
 
@@ -84,7 +85,7 @@ A Microsoft lehetővé teszi, hogy az ügyfelek a Microsoft kereskedelmi piacté
 
 A Transact Publishing forgatókönyvek esetében a közzétevő 30 napig vagy 90 napig ingyenesen elérhetővé teheti a szoftverlicenc-t. Ez a diszkont képesség nem tartalmazza az Azure-infrastruktúra használatának költségeit, amelyet a partneri megoldás használata vezérel.
 
-### <a name="private-offers"></a>Saját ajánlatok
+### <a name="private-offers"></a>Privát ajánlatok
 
 Az ajánlatok típusai és a számlázási modellek használata mellett a kiadók egy privát ajánlatot is igényelhetnek, az egyeztetett, az alku-specifikus díjszabással vagy az egyéni konfigurációkkal együtt. A 3 Transact-közzétételi lehetőség mind a privát ajánlatokat támogatja.
 
@@ -93,7 +94,7 @@ Ez a lehetőség nagyobb vagy alacsonyabb díjszabást tesz lehetővé, mint a n
 
 ### <a name="examples"></a>Példák
 
-**Pay-As-You-Go** 
+**Használatalapú fizetés** 
 
 * Ha engedélyezi az utólagos elszámolású lehetőséget, akkor a következő Cost-szerkezettel rendelkezik.
 
@@ -141,8 +142,8 @@ Ezt a beállítást úgy kell beállítani, hogy a Microsofton keresztül érté
 
 |Microsoft-számlák  | $100,00/hó  |
 |---------|---------|
-|A Microsoft a licencelési díj 80%-ában fizet <br> \*A Microsoft a licencelési díj 90%-át fizet minden minősített SaaS-alkalmazáshoz   |   $80,00/hó <br> \*$90,00/hó    |
-|A Microsoft a licencelési díj 20%-át megtartja <br> \*A Microsoft minden minősített SaaS-alkalmazás esetében megőrzi a licencek költségeit.  |  $20,00/hó <br> \*$10,00     |
+|A Microsoft a licencelési díj 80%-ában fizet <br> \* a Microsoft a licencelési díj 90%-át fizet minden minősített SaaS-alkalmazáshoz   |   $80,00/hó <br> \* $90,00/hó    |
+|A Microsoft a licencelési díj 20%-át megtartja <br> \* a Microsoft megtartja a licencek díjainak 10%-át minden minősített SaaS-alkalmazás esetében.  |  $20,00/hó <br> \* $10,00     |
 
 * **Csökkentett Piactéri szolgáltatási díj:** A kereskedelmi piactéren közzétett egyes SaaS-termékek esetében a Microsoft a piactér szolgáltatási díját 20%-kal csökkenti (a Microsoft kiadói szerződésben leírtak szerint) 10%-ra.  Ahhoz, hogy a termék megfelelő legyen, legalább az egyik terméket meg kell jelölnie a Microsoft számára az IP-címek közös értékesítésének vagy az IP-címek közös értékesítésének megfelelően. A csökkentett Piactéri szolgáltatási díj a hónapra való fogadásához a jogosultságnak legalább öt (5) munkanapon belül meg kell felelnie az előző naptári hónap vége előtt. A Marketplace szolgáltatási díja nem vonatkozik a kereskedelmi Piactéren keresztül elérhető virtuális gépekre, felügyelt alkalmazásokra vagy más termékekre.  Ez a csökkentett Piactéri szolgáltatási díj a Microsoft által a 2019 és a 2020. május 1. és a. június 30. között gyűjtött licencek díjai alapján lesz elérhető.  Ezt követően a Piactéri szolgáltatási díj visszaáll a normál mennyiségre.
 
@@ -162,7 +163,7 @@ Az ügyfelek bankkártyával és havi számlával is fizethetnek. Ebben az esetb
 
 Ha például az ügyfél bankkártyát használ:
 
-|Leírás    |    Date  |
+|Leírás    |    Dátum  |
 |----------|----------|
 |Rendelési időszak   | Augusztus 15., 2018-augusztus 30., 2018 |
 |Befejezési időszak (hónap)   | Augusztus 30, 2018 |
@@ -176,7 +177,7 @@ Ha például az ügyfél bankkártyát használ:
 
 Ha az ügyfél Nagyvállalati Szerződés használatával vásárol:
 
-| Leírás |    Date  |
+| Leírás |    Dátum  |
 |----------|----------|
 |Rendelési időszak | Augusztus 15., 2018-augusztus 30., 2018 |
 |Befejezési időszak (negyedév) | Szeptember 30., 2018 |
@@ -233,11 +234,11 @@ A Transact Publishing beállítás csak a következő Piactéri ajánlatok eset�
 
 Válassza az ingyenes, a saját licences vagy az utólagos elszámolású modelleket, valamint az ajánlat szintjén meghatározott SKU-t. Az ügyfél Azure-számláján a Microsoft a mögöttes Azure-infrastruktúra díjaitól függetlenül bemutatja a kiadói szoftverlicenc-díjat. Az Azure-infrastruktúra díjait a közzétevő szoftver használja.
 
-**Azure-alkalmazások: Megoldás sablonja vagy felügyelt alkalmazás** 
+**Azure-alkalmazások: megoldási sablon vagy felügyelt alkalmazás** 
 
 Egy vagy több virtuális gépet kell kiépíteni, és a virtuális gép díjszabásának összegével kell lekérnie. Egyetlen csomagban felügyelt alkalmazások esetén a virtuális gépek díjszabása helyett egy átalánydíjas havi előfizetés is kiválasztható a díjszabási modellként. Bizonyos esetekben az Azure-infrastruktúra használati díjait a rendszer külön adja át az ügyfélnek a szoftverlicenc-díjaktól, de ugyanarra a számlázási utasításra. Ha azonban a felügyelt alkalmazáshoz az ISV-infrastruktúra díjait konfigurálja, az Azure-erőforrások számlázása a kiadóra történik, és az ügyfél egy átalánydíjas díjat kap, amely magában foglalja az infrastruktúra, a szoftverlicenc és a felügyeleti szolgáltatások költségeit.
 
 ## <a name="next-steps"></a>További lépések
 
-* Tekintse át a jogosult-e a kijelölés és a konfiguráció az Ön ajánlatát véglegesítéséhez ajánlat típushoz című által a közzétételi beállítások.
-* Tekintse át a közzétételi minták storefront-példák hogyan megoldását képez le egy ajánlat típusát és a konfiguráció alapján.
+* Az ajánlat kiválasztásának és konfigurálásának véglegesítéséhez tekintse át a támogathatósági követelményeket a közzétételi beállítások az ajánlat típusa szerint szakaszban.
+* Tekintse át a közzétételi mintákat a kirakati példákkal, hogy a megoldás hogyan térképezi fel az ajánlat típusát és konfigurációját.

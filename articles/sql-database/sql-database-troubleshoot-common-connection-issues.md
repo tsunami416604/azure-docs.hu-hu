@@ -1,5 +1,5 @@
 ---
-title: Az Azure SQL Database gyakori csatlakozási problémáinak hibaelhárítása
+title: Gyakori kapcsolatok problémáinak elhárítása
 description: A Azure SQL Database gyakori kapcsolódási hibáinak azonosítására és elhárítására szolgáló lépések.
 services: sql-database
 ms.service: sql-database
@@ -12,12 +12,12 @@ manager: dcscontentpm
 ms.author: daleche
 ms.reviewer: jrasnik
 ms.date: 01/25/2019
-ms.openlocfilehash: cd0ab6d89d88c594d283dc0718c0f58ebb98bf43
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: dc58e495256bff9521eb6567736700f5ffcd6e4f
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71090797"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73822478"
 ---
 # <a name="troubleshoot-connection-issues-to-azure-sql-database"></a>A Azure SQL Database kapcsolódási problémáinak elhárítása
 

@@ -4,15 +4,16 @@ description: Ez a cikk a virtuális gépekkel kapcsolatos ajánlatok díjszabás
 services: Azure, Marketplace, Cloud Partner Portal,
 author: v-miclar
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pabutler
-ms.openlocfilehash: e398b43e679fb6420c2256e77d34359ae537ac1c
-ms.sourcegitcommit: 10251d2a134c37c00f0ec10e0da4a3dffa436fb3
+ms.openlocfilehash: c7ea5afeb46c30837c2ae53e871bb64f5d8cf292
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/13/2019
-ms.locfileid: "67868748"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73827338"
 ---
 <a name="pricing-for-virtual-machine-offers"></a>Virtuálisgép-ajánlatok díjszabása
 ==================================
@@ -106,12 +107,12 @@ A közzétevő a díjszabási táblázatot is feltöltheti egy ideiglenes tárol
 Az új Azure-beli virtuálisgép-méretek (a magok száma alapján) új díjszabást kapott a VM-közzétevők 2019. július 2-án.  Az új árak a következő alapméretekre vonatkoznak: 10, 44, 48, 60, 120, 208 és 416.  A meglévő virtuális gépek esetében a magok méretének új díjait a jelenlegi árak alapján automatikusan kiszámítjuk.  A kiadók 2019 augusztus 1-ig megtekintik a további árakat, és elvégzik a kívánt módosításokat.  Ezt a dátumot követően, ha a közzétevő még nem tette közzé újra, az új alapvető méretek automatikusan kiszámított árai érvénybe lépnek.
 
 
-<a name="regions"></a>Regions
+<a name="regions"></a>Régiók
 -------
 
 A következő táblázat azokat a különböző régiókat mutatja be, amelyeket megadhat a testreszabott alapdíjszabáshoz, valamint a hozzájuk tartozó pénznemkóddal.
 
-| **Régió** | **Name**             | **Pénznemkód** |
+| **Régió** | **Name (Név)**             | **Pénznemkód** |
 |------------|----------------------|-------------------|
 | DZ         | Algéria              | DZD               |
 | AR         | Argentína            | ARS               |
@@ -141,10 +142,10 @@ A következő táblázat azokat a különböző régiókat mutatja be, amelyeket
 | GR         | Görögország               | EUR               |
 | GT         | Guatemala            | GTQ               |
 | HK         | Hongkong (KKT)        | HKD               |
-| HU         | Magyarország              | FT               |
+| HU         | Magyarország              | Ft               |
 | IS         | Izland              | ISK               |
 | IN         | India                | INR               |
-| id         | Indonézia            | IDR               |
+| ID (Azonosító)         | Indonézia            | IDR               |
 | IE         | Írország              | EUR               |
 | IL         | Izrael               | ILS               |
 | IT         | Olaszország                | EUR               |
@@ -162,8 +163,8 @@ A következő táblázat azokat a különböző régiókat mutatja be, amelyeket
 | MY         | Malajzia             | MYR               |
 | MT         | Málta                | EUR               |
 | MX         | Mexikó               | MXN               |
-| ME         | Montenegró           | EUR               |
-| MA         | Marokkó              | MAD               |
+| Nekem         | Montenegró           | EUR               |
+| MA         | Marokkó              | ŐRÜLT               |
 | NL         | Hollandia          | EUR               |
 | NZ         | Új-Zéland          | NZD               |
 | NG         | Nigéria              | NGN               |

@@ -1,35 +1,36 @@
 ---
-title: Gyakori hitelesítési hibák elhárítása |} Az Azure Marketplace-en
-description: A gyakori hitelesítési hibák segítségnyújtást kínál a Cloud Partner Portal API-k használata esetén.
+title: Gyakori hitelesítési hibák elhárítása | Azure piactér
+description: A Cloud Partner Portal API-k használatakor a gyakori hitelesítési hibákkal kapcsolatos segítséget nyújt.
 services: Azure, Marketplace, Cloud Partner Portal,
 author: v-miclar
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pabutler
-ms.openlocfilehash: ddf3c9ce26a1538d91f1e6d6bcc04fd0d18e7936
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0990e9aedf17f6d4ad01e4911e47efd60001f3d7
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64935805"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73827371"
 ---
 # <a name="troubleshooting-common-authentication-errors"></a>Gyakori hitelesítési hibák elhárítása
 
-Ez a cikk nyújt segítséget a gyakori hitelesítési hibák, a Cloud Partner Portal API-k használata esetén.
+Ez a cikk a Cloud Partner Portal API-k használatakor a gyakori hitelesítési hibákkal kapcsolatos segítséget nyújt.
 
 ## <a name="unauthorized-error"></a>Jogosulatlan hiba
 
-Ha rendszeresen kap `401 unauthorized` hibát, ellenőrizze, hogy rendelkezik-e egy érvényes hozzáférési jogkivonatot.  Ha még nem tette meg, hozzon létre egy alapszintű Azure Active Directory (Azure AD-) alkalmazás és a egy egyszerű szolgáltatást leírtak szerint [egy Azure Active Directory-alkalmazás és -erőforrásokeléréséhezszolgáltatásnévlétrehozásaaportálon](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal). Ezután használja az alkalmazás vagy egy egyszerű HTTP POST-kérelmet a hozzáférés ellenőrzéséhez.  Akkor tartalmazza a bérlő Azonosítóját, Alkalmazásazonosítót, objektumazonosító: és a titkos kulcs a hozzáférési jogkivonat beszerzése az alábbi képen látható módon:
+Ha folyamatosan `401 unauthorized` hibákat kap, ellenőrizze, hogy rendelkezik-e érvényes hozzáférési jogkivonattal.  Ha még nem tette meg, hozzon létre egy alapszintű Azure Active Directory (Azure AD) alkalmazást és egy egyszerű szolgáltatásnevet a következő témakörben ismertetett módon: a [portál használatával hozzon létre egy Azure Active Directory alkalmazást és egy egyszerű szolgáltatásnevet, amely hozzáférhet az erőforrásokhoz](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal). Ezután használja az alkalmazást vagy egy egyszerű HTTP POST-kérelmet a hozzáférés ellenőrzéséhez.  A hozzáférési jogkivonat beszerzéséhez a bérlő AZONOSÍTÓját, az alkalmazás AZONOSÍTÓját, az objektumazonosító és a titkos kulcsot kell megadnia, ahogy az a következő képen látható:
 
-![A 401-es hiba elhárítása](./media/cloud-partner-portal-api-troubleshooting-authentication-errors/troubleshooting-401-error.jpg)
+![Az 401-es hiba elhárítása](./media/cloud-partner-portal-api-troubleshooting-authentication-errors/troubleshooting-401-error.jpg)
 
 
-## <a name="forbidden-error"></a>Forbidden error
+## <a name="forbidden-error"></a>Tiltott hiba
 
-Ha egy `403 forbidden` hiba, győződjön meg arról, hogy a megfelelő szolgáltatásnévhez hozzáadta-e a Cloud Partner portálra a kiadói fiókjában.
-Kövesse a [Előfeltételek](./cloud-partner-portal-api-prerequisites.md) lapot, az egyszerű szolgáltatást a portálra.
+Ha `403 forbidden` hibát kap, győződjön meg arról, hogy a megfelelő egyszerű szolgáltatásnév hozzá lett adva a közzétevő fiókjához a Cloud Partner Portal.
+Az [Előfeltételek](./cloud-partner-portal-api-prerequisites.md) lapon szereplő lépések végrehajtásával adja hozzá a szolgáltatásnevet a portálhoz.
 
-Ha hozzá lett adva a megfelelő szolgáltatásnévhez, majd ellenőrizze az egyéb információkat. Az Objektumazonosító elolvassa az utólagos adta meg a portálon. Az Azure Active Directory alkalmazásregisztrációs oldalán találhatók két objektum-azonosító, és kell használni a helyi objektum azonosítóját. Annak a megfelelő értéket a a **alkalmazásregisztrációk** lapja az alkalmazás, és kattintson az alkalmazás neve mellett a **felügyelt alkalmazás a helyi címtárban**. Ekkor megjelenik az alkalmazás, ahol megtalálhatja a helyes Objektumazonosítóját a helyi tulajdonságai a **tulajdonságok** lapon, az alábbi ábrán látható módon. Is győződjön meg arról, hogy a megfelelő közzétevő-azonosító hozzáadása a szolgáltatásnévhez, és állítsa be az API-hívás.
+Ha a megfelelő szolgáltatásnevet adta hozzá, akkor ellenőrizze az összes többi információt. Ügyeljen arra, hogy a portálon megjelenő objektumazonosító kiemelten legyen. A Azure Active Directory-alkalmazás regisztrációja lapon két objektumazonosító szerepel, és a helyi objektumazonosítót kell használnia. Az alkalmazás **Alkalmazásregisztrációk** lapjára kattintva megtalálhatja a megfelelő értéket, és az alkalmazás nevére kattinthat a **helyi címtárban található felügyelt alkalmazás**területen. Ekkor megjelenik az alkalmazás helyi tulajdonságai, ahol az alábbi ábrán látható módon megtalálhatja a megfelelő objektumazonosítót a **Tulajdonságok** lapon. Továbbá győződjön meg arról, hogy a megfelelő közzétevő AZONOSÍTÓját használja az egyszerű szolgáltatás hozzáadásakor, és az API-hívást.
 
-![A 403-as hiba elhárítása](./media/cloud-partner-portal-api-troubleshooting-authentication-errors/troubleshooting-403-error.jpg)
+![Az 403-es hiba elhárítása](./media/cloud-partner-portal-api-troubleshooting-authentication-errors/troubleshooting-403-error.jpg)

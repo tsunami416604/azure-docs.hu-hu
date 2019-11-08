@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 10/01/2018
-ms.openlocfilehash: dc8b2a00882abc2e88b357d5778eaf96ec71b1bd
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 763a45446771f7b13178e22b0f7a35bd68bfc8bd
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73687571"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73821283"
 ---
 # <a name="public-data-sets-for-testing-and-prototyping"></a>Nyilvános adatkészletek teszteléshez és prototípusokhoz
 
@@ -42,7 +42,7 @@ Tallózással keresse meg a nyilvános adatkészletek azon listáját, amely has
 | [New York-i taxi-adatgyűjtés](http://www.nyc.gov/html/tlc/html/about/trip_record_data.shtml) | "A taxiban nyilvántartott rekordok közé tartoznak a pick-up és a lemorzsolódási dátum/idő, a pick-up és a lemorzsolódási Locations, az utazási távolságok, a részletezett viteldíjak, a díjszabási típusok, a fizetési típusok és a járművezető által jelentett utasok száma." | Az adatkészletek havonta CSV-fájlokban vannak. |
 | [Microsoft kutatási adatkészletek – "adatelemzés kutatási célokra"](https://www.microsoft.com/research/academic-program/data-science-microsoft-research/) | Több adathalmaz, amely az emberi számítógépekkel való interakciót, hang/videó, adatbányászat/információ beolvasását, földrajzi elhelyezkedését, a természetes nyelvi feldolgozást, valamint a robotika/számítógép jövőképét fedi le. | Az adathalmazok formátuma különböző formátumú, a tömörített fájlok letölthetők. |
 | [Nyilvános genom-adatszolgáltatások](https://www.completegenomics.com/public-data/) | "A teljes emberi genomok változatos adathalmaza szabadon elérhető nyilvános használatra a genomikai tanulmányok fejlesztése érdekében..." A szolgáltató, a teljes genomika, egy privát nonprofit cég. | Az adatkészletek a kinyerést követően UNIX Text formátumban vannak. Az elemzési eszközök is elérhetők. |
-| [A Science Cloud-adatfelhőbeli adatfeldolgozás megnyitása](https://www.opensciencedatacloud.org/) | "A nyílt tudományos adatfelhő biztosítja a tudományos közösség számára a terabájt és petabyte szintű tudományos adatkészletek tárolásához, megosztásához és elemzéséhez szükséges erőforrásokat."| Az adatkészletek különböző formátumokban vannak. |
+| [A Science Cloud-adatfelhőbeli adatfeldolgozás megnyitása](https://www.opensciencedatacloud.org/projects/) | "A nyílt tudományos adatfelhő biztosítja a tudományos közösség számára a terabájt és petabyte szintű tudományos adatkészletek tárolásához, megosztásához és elemzéséhez szükséges erőforrásokat."| Az adatkészletek különböző formátumokban vannak. |
 | [Globális klíma-WorldClim](https://worldclim.org/) | "A WorldClim a globális éghajlati rétegek (kockás Climate-adathalmazok) készlete, amelynek térbeli felbontása körülbelül 1 km2. Ezek az adatleképezések és a térbeli modellezések is használhatók. " | Ezek a fájlok térinformatikai adatkészletet tartalmaznak. További információ: [adatformátum](https://worldclim.org/formats1). |
 | [Az emberi társadalommal kapcsolatos információk – a GDELT projekt](https://www.gdeltproject.org/data.html) | "A GDELT projekt az emberi társadalom legnagyobb, legátfogóbb és legnagyobb felbontású nyílt adatbázisa, amelyet valaha hoztak létre." | A nyers adatfájlok CSV formátumúak. |
 | [Reklám – a Criteo származó gépi tanulásra vonatkozó előrejelzési adatok](https://labs.criteo.com/2013/12/download-terabyte-click-logs/) | "A legnagyobb valaha nyilvánosan kiadott ML-adatkészlet." További információ: [Criteo 1 TB Click Jóslás DataSet](https://blogs.technet.microsoft.com/machinelearning/20../../now-available-on-azure-ml-criteos-1tb-click-prediction-dataset/). | |

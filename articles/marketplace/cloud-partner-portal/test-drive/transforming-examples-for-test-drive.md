@@ -1,38 +1,39 @@
 ---
-title: A Test Drive példák átalakítása |} Az Azure Marketplace-en
-description: A Test Drive megvalósítása példáinak felsorolását.
+title: Példák átalakítása tesztelési meghajtóra | Azure piactér
+description: A test Drive megvalósításának módjára vonatkozó példák listája.
 services: Azure, Marketplace, Cloud Partner Portal,
 author: pbutlerm
 manager: Ricardo.Villalobos
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pabutler
-ms.openlocfilehash: 727028611c52a8d03026e5d3fa67b2e0ee7e2053
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2680ef04a2136c36e307dc5b119df3e8053c2597
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64938478"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73824528"
 ---
-<a name="transforming-examples-for-test-drive"></a>A Test Drive alkalmazásán át a példákat
+<a name="transforming-examples-for-test-drive"></a>Példák átalakítása tesztelési meghajtóra
 ====================================
 
-A folyamat ne tudják bekapcsolni az architektúra az erőforrások egy Test Drive logikai alkalmazást, vagy a Resource Manager-sablon ijesztőnek tűnhet. Segítse a folyamat megkönnyítése, hogy\'ve végzett három példák hogyan legjobb átalakítja a jelenlegi architektúrák:
+Az erőforrások architektúrájának egy tesztvezetés logikai alkalmazásba vagy Resource Manager-sablonba való bekapcsolásának folyamata ijesztő lehet. Ennek a folyamatnak a egyszerűbbé tétele érdekében\'készítettünk három példát a jelenlegi architektúrák legjobb átalakítására:
 
-<a name="transform-website-template-into-test-drive"></a>Alakítsa át webhely sablon kipróbálása
+<a name="transform-website-template-into-test-drive"></a>Webhely sablonjának átalakítása a test Drive-ba
 ------------------------------------------
 
 <https://github.com/Azure/AzureTestDrive/wiki/Transforming-Website-Deployment-Template-for-Test-Drive>
 
-<a name="transform-virtual-machine-template-into-test-drive"></a>Alakítsa át virtuálisgép-sablon kipróbálása
+<a name="transform-virtual-machine-template-into-test-drive"></a>Virtuálisgép-sablon átalakítása tesztelési meghajtóra
 --------------------------------------------------
 
 <https://github.com/Azure/AzureTestDrive/wiki/Transforming-Virtual-Machine-Deployment-Template-for-Test-Drive>
 
-<a name="transform-existing-resource-manager-templates-into-test-drive"></a>Alakítsa át meglévő Resource Manager-sablonok kipróbálása
+<a name="transform-existing-resource-manager-templates-into-test-drive"></a>Meglévő Resource Manager-sablonok átalakítása a test Drive-ba
 ------------------------------------------------
 
 <https://github.com/Azure/AzureTestDrive/wiki/Deploying-Existing-Solutions>
 
-Ha további kérdése van, hibaelhárítási tanácsokat keres, vagy kívánja-e a Test Drive sokkal sikeresebb lenne, nyissa meg [Test Drive Marketing és ajánlott eljárások](./marketing-and-best-practices.md).
+Ha további kérdései vannak, a hibaelhárítási tanácsokat keres, vagy ha szeretné, hogy a tesztvezetés sikeres legyen, látogasson el a [Test Drive marketing és az ajánlott eljárások](./marketing-and-best-practices.md)elemre.

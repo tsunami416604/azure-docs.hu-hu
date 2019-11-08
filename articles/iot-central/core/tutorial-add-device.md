@@ -1,6 +1,6 @@
 ---
 title: Valós eszköz hozzáadása Azure IoT Central-alkalmazáshoz | Microsoft Docs
-description: Operátorként valós eszközt adhat az Azure IoT Central-alkalmazáshoz.
+description: Ismerje meg, hogyan adhat hozzá és konfigurálhat egy valós eszközt az Azure IoT Central alkalmazásban. Azt is megtudhatja, hogyan használható a kód a valódi eszközön.
 author: sandeeppujar
 ms.author: sandeepu
 ms.date: 08/23/2019
@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: peterpr
-ms.openlocfilehash: 1f7afde7a5c4f3553cde40e4b179d056b8caee9b
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: fce5be4d059d7b3698f1e76a4ec6ff46c4ce3c0b
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72956207"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73824611"
 ---
 # <a name="tutorial-add-a-real-device-to-your-azure-iot-central-application"></a>Oktatóanyag: Valós eszköz hozzáadása az Azure IoT Central-alkalmazáshoz
 
@@ -44,7 +44,7 @@ Telepítse a [Node. js](https://nodejs.org/) -verziót 8.0.0 vagy újabb verzió
 
 ## <a name="add-a-real-device"></a>Valós eszköz hozzáadása
 
-Ha valós eszközt szeretne hozzáadni az alkalmazáshoz, használja az [Új eszköztípus definiálása](tutorial-define-device-type.md) című oktatóanyagban létrehozott **Csatlakoztatott légkondicionáló** eszközsablont.
+Ha valós eszközt szeretne hozzáadni az alkalmazáshoz, használja az **Új eszköztípus definiálása** című oktatóanyagban létrehozott [Csatlakoztatott légkondicionáló](tutorial-define-device-type.md) eszközsablont.
 
 1. Új eszköz hozzáadása operátorként a bal oldali ablaktáblában válassza az **eszközök** elemet:
 
@@ -342,7 +342,7 @@ Most futtathatja az ügyfélszoftvert, és megtekintheti, hogyan működik együ
 
     ![A hőmérséklet-telemetria most nagyobb](media/tutorial-add-device/highertemperature.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 

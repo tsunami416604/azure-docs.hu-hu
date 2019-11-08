@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 03/15/2019
 ms.author: sedusch
-ms.openlocfilehash: 771a20ccf1c34958308d58dafb6fb01e36bb408a
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
-ms.translationtype: HT
+ms.openlocfilehash: c20fc2142718d3cc49d4b80c6a5e22e26a350335
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73749021"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73824864"
 ---
 # <a name="high-availability-for-nfs-on-azure-vms-on-suse-linux-enterprise-server"></a>Magas rendelkezésre állás az NFS-en SUSE Linux Enterprise Server Azure-beli virtuális gépeken
 
@@ -94,7 +94,7 @@ Az NFS-kiszolgáló egy dedikált virtuális gazdagépet és virtuális IP-címe
 * Mintavételi port
   * A NW1 61000-es portja
   * A NW2 61001-es portja
-* Terheléselosztás-szabályok (alapszintű Load Balancer használata esetén)
+* Terheléselosztási szabályok (ha alapszintű Load balancert használ)
   * 2049 TCP a NW1
   * 2049 UDP a NW1
   * 2049 TCP a NW2
@@ -114,7 +114,7 @@ Az összes szükséges erőforrás üzembe helyezéséhez használhatja a GitHub
    1. Erőforrás-előtag  
       Adja meg a használni kívánt előtagot. Az értéket a rendszer az üzembe helyezett erőforrások előtagjaként használja.
    2. SAP-rendszerek száma  
-      Adja meg, hogy hány SAP-rendszer fogja használni ezt a kiszolgálót. Ekkor a rendszer telepíti a szükséges méretű előtér-konfigurációkat, a terheléselosztási szabályokat, a mintavételi portokat, a lemezeket stb.
+      Adja meg, hogy hány SAP-rendszer fogja használni ezt a kiszolgálót. Ezzel a beállítással a szükséges méretű előtér-konfigurációk, terheléselosztási szabályok, mintavételi portok, lemezek stb. telepíthetők.
    3. Operációs rendszer típusa  
       Válassza ki a Linux-disztribúciók egyikét. Ebben a példában válassza a 12. SLES
    4. Rendszergazdai Felhasználónév és rendszergazdai jelszó  
@@ -164,8 +164,8 @@ Először létre kell hoznia a virtuális gépeket ehhez az NFS-fürthöz. Ezt k
             1. Kattintson az OK gombra
          1. A NW2 61001-es portja
             * A fenti lépések megismétlésével hozzon létre egy állapot-mintavételt a NW2
-      1. Terheléselosztás-szabályok
-         1. Nyissa meg a terheléselosztó-t, válassza a terheléselosztási szabályok lehetőséget, majd kattintson a Hozzáadás gombra.
+      1. Terheléselosztási szabályok
+         1. Nyissa meg a Load balancert, válassza a terheléselosztási szabályok elemet, majd kattintson a Hozzáadás gombra.
          1. Adja meg az új Load Balancer-szabály nevét (például **NW1-LB**)
          1. Válassza ki a korábban létrehozott előtérbeli IP-címet, a háttér-készletet és az állapot-mintavételt (például **NW1-frontend**). **NW1-háttér** és **NW1-HP**)
          1. Válassza a **hektár portok**lehetőséget.
@@ -200,7 +200,7 @@ Először létre kell hoznia a virtuális gépeket ehhez az NFS-fürthöz. Ezt k
             1. Kattintson az OK gombra
          1. A NW2 61001-es portja
             * A fenti lépések megismétlésével hozzon létre egy állapot-mintavételt a NW2
-      1. Terheléselosztás-szabályok
+      1. Terheléselosztási szabályok
          1. 2049 TCP a NW1
             1. Nyissa meg a terheléselosztó-t, válassza a terheléselosztási szabályok lehetőséget, majd kattintson a Hozzáadás gombra.
             1. Adja meg az új terheléselosztó-szabály nevét (például **NW1-LB-2049**)
@@ -216,8 +216,11 @@ Először létre kell hoznia a virtuális gépeket ehhez az NFS-fürthöz. Ezt k
          1. 2049 UDP a NW2
             * Ismételje meg a fenti lépéseket a 2049-es és a NW2-es porton.
 
+> [!Note]
+> Ha a nyilvános IP-címek nélküli virtuális gépek a belső (nincs nyilvános IP-cím) standard Azure Load Balancer háttér-készletbe kerülnek, nem lesz kimenő internetkapcsolat, kivéve, ha további konfigurálást végeznek a nyilvános végpontok útválasztásának engedélyezéséhez. A kimenő kapcsolatok elérésével kapcsolatos részletekért lásd: [nyilvános végpontú kapcsolat Virtual Machines az Azure standard Load Balancer használata az SAP magas rendelkezésre állási helyzetekben](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-standard-load-balancer-outbound-connections).  
+
 > [!IMPORTANT]
-> Ne engedélyezze a TCP-időbélyegeket a Azure Load Balancer mögött elhelyezett Azure-beli virtuális gépeken. A TCP-időbélyegek engedélyezése az állapot-mintavételek meghibásodását eredményezi. Állítsa a **net. IPv4. TCP** paramétert **0-ra**_timestamps. Részletekért lásd: [Load Balancer Health](https://docs.microsoft.com/azure/load-balancer/load-balancer-custom-probe-overview)-tesztek.
+> Ne engedélyezze a TCP-időbélyegeket a Azure Load Balancer mögött elhelyezett Azure-beli virtuális gépeken. A TCP-időbélyegek engedélyezése az állapot-mintavételek meghibásodását eredményezi. Állítsa a **net. IPv4. tcp_timestamps** paramétert **0-ra**. Részletekért lásd: [Load Balancer Health](https://docs.microsoft.com/azure/load-balancer/load-balancer-custom-probe-overview)-tesztek.
 
 ### <a name="create-pacemaker-cluster"></a>Pacemaker-fürt létrehozása
 

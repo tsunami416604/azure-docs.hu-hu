@@ -5,14 +5,15 @@ author: qianw211
 manager: evansma
 ms.author: v-qiwe
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 07/11/2019
-ms.openlocfilehash: ccab7e59eaa925df4ba46447cef458111dc7e60a
-ms.sourcegitcommit: 10251d2a134c37c00f0ec10e0da4a3dffa436fb3
+ms.openlocfilehash: c4f51adbcaa5e5b750169f53a1333544365fd4f3
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/13/2019
-ms.locfileid: "67869572"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73825495"
 ---
 # <a name="marketplace-metering-service-apis---faq"></a>Marketplace metering service API-k – GYIK
 
@@ -47,7 +48,7 @@ A Piactéri platformra kibocsátott használati események nem lesznek elfogadva
 
 ### <a name="can-you-get-a-list-of-all-saas-subscriptions-including-active-and-unsubscribed-subscriptions"></a>Lekérheti az összes SaaS-előfizetés listáját, beleértve az aktív és a leiratkozott előfizetéseket is?
 
-Igen, ha meghívja az `GET /saas/subscriptions` API-t, az tartalmazza az összes SaaS-előfizetés listáját. Az egyes SaaS-előfizetések válaszában az állapot mező rögzíti, hogy az előfizetés aktív vagy leiratkozott állapotban van-e. Az előfizetések listázására irányuló hívás legfeljebb 100 előfizetést ad vissza.
+Igen, ha meghívja a `GET /saas/subscriptions` API-t, az tartalmazza az összes SaaS-előfizetés listáját. Az egyes SaaS-előfizetések válaszában az állapot mező rögzíti, hogy az előfizetés aktív vagy leiratkozott állapotban van-e. Az előfizetések listázására irányuló hívás legfeljebb 100 előfizetést ad vissza.
 
 ## <a name="next-steps"></a>További lépések
 

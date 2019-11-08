@@ -1,5 +1,5 @@
 ---
-title: Tranzakciós replikáció Azure SQL Database "
+title: Tranzakciós replikáció
 description: Ismerje meg, hogyan használhatja SQL Server tranzakciós replikációt egyetlen, készletezett és példány-adatbázissal Azure SQL Databaseokban.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: carlrab
 ms.date: 02/08/2019
-ms.openlocfilehash: 016b4f2ee191443cf608af18d1be6a94b6d53a39
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: a57d1c85384204c26e75f7138b9514f2b3297bef
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73687833"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73823298"
 ---
 # <a name="transactional-replication-with-single-pooled-and-instance-databases-in-azure-sql-database"></a>Tranzakciós replikáció egyetlen, készletezett és példány-adatbázissal Azure SQL Database
 
@@ -74,7 +74,7 @@ A replikáció különböző [típusú](https://docs.microsoft.com/sql/relationa
 | &nbsp; | &nbsp; | &nbsp; |
 
   >[!NOTE]
-  > - Ha a replikálást egy régebbi verzióval kísérli meg konfigurálni, a MSSQL_REPL20084 hibakódot eredményezhet (a folyamat nem tudott csatlakozni az előfizetőhöz.) és a MSSQ_REPL40532 (a kiszolgáló \<neve nem nyitható meg a bejelentkezés által kért >. A bejelentkezés sikertelen.)
+  > - Ha a replikálást egy régebbi verzióval kísérli meg konfigurálni, a MSSQL_REPL20084 hibaszám lehet (a folyamat nem tudott csatlakozni az előfizetőhöz.) és a MSSQ_REPL40532 (nem nyitható meg a kiszolgáló \<neve > a bejelentkezés által kért név. A bejelentkezés sikertelen.)
   > - A Azure SQL Database összes funkciójának használatához a [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) és a [SQL Server Data Tools (SSDT)](https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt)legújabb verzióját kell használnia.
   
   ### <a name="supportability-matrix-for-instance-databases-and-on-premises-systems"></a>Támogatási mátrix a példány-adatbázisok és a helyszíni rendszerek számára

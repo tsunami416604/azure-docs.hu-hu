@@ -12,14 +12,14 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 06/14/2019
+ms.date: 11/07/2019
 ms.author: radeltch
-ms.openlocfilehash: 98a12e6892ac8710ae2195cd2c29df43b4c65aba
-ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
+ms.openlocfilehash: 333bc12c475cedbd98480e3b596bcc7ad4e30ecc
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71706297"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73824914"
 ---
 # <a name="azure-virtual-machines-high-availability-for-sap-netweaver-on-red-hat-enterprise-linux-with-azure-netapp-files-for-sap-applications"></a>Az Azure Virtual Machines magas rendelkezésre állása az SAP NetWeaver számára a Red Hat Enterprise Linux SAP-alkalmazásokhoz Azure NetApp Files
 
@@ -95,24 +95,25 @@ Most már lehetséges, hogy az SAP NetWeaver HA-t megosztott tároló használat
 
 ![SAP NetWeaver – magas rendelkezésre állás – áttekintés](./media/high-availability-guide-rhel/high-availability-guide-rhel-anf.png)
 
-Az SAP NetWeaver ASCS, az SAP NetWeaver SCS, az SAP NetWeaver ERS és a SAP HANA adatbázis virtuális gazdagépeket és virtuális IP-címeket használ. Az Azure-ban a virtuális IP-címek használatához terheléselosztó szükséges. A következő lista a terheléselosztó konfigurációját mutatja be a (A) SCS és ERS különálló előtér-IP-címeivel.
+Az SAP NetWeaver ASCS, az SAP NetWeaver SCS, az SAP NetWeaver ERS és a SAP HANA adatbázis virtuális gazdagépeket és virtuális IP-címeket használ. Az Azure-ban a virtuális IP-címek használatához terheléselosztó szükséges. A [standard Load Balancer](https://docs.microsoft.com/azure/load-balancer/quickstart-load-balancer-standard-public-portal)használatát javasoljuk. A következő lista a terheléselosztó konfigurációját mutatja be a (A) SCS és ERS különálló előtér-IP-címeivel.
 
 > [!IMPORTANT]
 > Az SAP ASCS/ERS és a Red Hat Linux rendszerű, az Azure-beli virtuális gépeken futó vendég operációs rendszerek többszörös SID-fürtszolgáltatása **nem támogatott**. A többszörös SID-fürtszolgáltatás több SAP ASCS/ERS példány telepítését ismerteti különböző SID-kiszolgálókkal egy pacemaker-fürtben.
 
-### <a name="ascs"></a>(A)SCS
+### <a name="ascs"></a>Egy SCS
 
 * Előtér-konfiguráció
   * IP-192.168.14.9
 * Háttér-konfiguráció
   * Az (A) SCS/ERS-fürt részét képező összes virtuális gép elsődleges hálózati adapteréhez csatlakozik
 * Mintavételi port
-  * Port 620<strong>&lt;Nr&gt;</strong>
+  * 620-es port<strong>&lt;nr&gt;</strong>
 * Terheléselosztási szabályok
-  * <strong>32&lt;nr&gt;</strong>  TCP
-  * <strong>36&lt;nr&gt;</strong>  TCP
-  * <strong>39&lt;nr&gt;</strong>  TCP
-  * <strong>81&lt;nr&gt;</strong>  TCP
+  * Ha standard Load Balancer használ, válassza a **hektár portok** elemet.
+  * 32<strong>&lt;nr&gt;</strong> TCP
+  * 36<strong>&lt;nr&gt;</strong> TCP
+  * 39<strong>&lt;nr&gt;</strong> TCP
+  * 81<strong>&lt;nr&gt;</strong> TCP
   * 5<strong>&lt;nr&gt;</strong>13 TCP
   * 5<strong>&lt;nr&gt;</strong>14 TCP
   * 5<strong>&lt;nr&gt;</strong>16 TCP
@@ -124,17 +125,18 @@ Az SAP NetWeaver ASCS, az SAP NetWeaver SCS, az SAP NetWeaver ERS és a SAP HANA
 * Háttér-konfiguráció
   * Az (A) SCS/ERS-fürt részét képező összes virtuális gép elsődleges hálózati adapteréhez csatlakozik
 * Mintavételi port
-  * Port 621<strong>&lt;Nr&gt;</strong>
+  * 621-es port<strong>&lt;nr&gt;</strong>
 * Terheléselosztási szabályok
-  * <strong>32&lt;nr&gt;</strong>  TCP
-  * <strong>33&lt;nr&gt;</strong>  TCP
+  * Ha standard Load Balancer használ, válassza a **hektár portok** elemet.
+  * 32<strong>&lt;nr&gt;</strong> TCP
+  * 33<strong>&lt;nr&gt;</strong> TCP
   * 5<strong>&lt;nr&gt;</strong>13 TCP
   * 5<strong>&lt;nr&gt;</strong>14 TCP
   * 5<strong>&lt;nr&gt;</strong>16 TCP
 
 ## <a name="setting-up-the-azure-netapp-files-infrastructure"></a>A Azure NetApp Files-infrastruktúra beállítása 
 
-Az SAP NetWeaver megosztott tárterületet igényel az átvitelhez és a profilhoz.  Mielőtt folytatná az Azure NetApp-fájlok infrastruktúrájának telepítését, ismerkedjen meg az [Azure NetApp Files dokumentációval][anf-azure-doc]. Ellenőrizze, hogy a kiválasztott Azure-régió kínál-e Azure NetApp Files. A következő hivatkozás az Azure-régió Azure NetApp Files rendelkezésre állását jeleníti meg: [Az Azure-régió Azure NetApp Files rendelkezésre állását][anf-avail-matrix].
+Az SAP NetWeaver megosztott tárterületet igényel az átvitelhez és a profilhoz.  Mielőtt folytatná az Azure NetApp-fájlok infrastruktúrájának telepítését, ismerkedjen meg az [Azure NetApp Files dokumentációval][anf-azure-doc]. Ellenőrizze, hogy a kiválasztott Azure-régió kínál-e Azure NetApp Files. A következő hivatkozás az Azure-régió Azure NetApp Files rendelkezésre állását mutatja: az [Azure-régió Azure NetApp Files rendelkezésre állása][anf-avail-matrix].
 
 Az Azure NetApp-fájlok több [Azure-régióban](https://azure.microsoft.com/global-infrastructure/services/?products=netapp)is elérhetők. Azure NetApp Files üzembe helyezése előtt a bevezetést a Azure NetApp Filesra kell kérnie, az [Azure NetApp-fájlok regisztrálásával kapcsolatos utasításokat][anf-register]követve. 
 
@@ -180,7 +182,42 @@ Ebben a példában az erőforrásokat manuálisan telepítették a [Azure Portal
 
 Először létre kell hoznia a Azure NetApp Files köteteket. Telepítse a virtuális gépeket. Ezt követően hozzon létre egy terheléselosztó-t, és használja a virtuális gépeket a háttér-készletekben.
 
-1. Load Balancer létrehozása (belső)  
+1. Load Balancer létrehozása (belső, standard):  
+   1. Az előtérbeli IP-címek létrehozása
+      1. A ASCS IP-192.168.14.9
+         1. Nyissa meg a terheléselosztó-t, válassza a előtéri IP-készlet lehetőséget, majd kattintson a Hozzáadás gombra.
+         1. Adja meg az új előtér-IP-készlet nevét (például a **frontend. QAS. ASCS**)
+         1. Állítsa a hozzárendelést statikus értékre, és adja meg az IP-címet (például **192.168.14.9**).
+         1. Kattintson az OK gombra
+      1. A ASCS IP-192.168.14.10
+         * Ismételje meg a fenti lépéseket az "a" alatt, és hozzon létre egy IP-címet az ERS számára (például **192.168.14.10** és **frontend. QAS. ERS**)
+   1. A háttér-készletek létrehozása
+      1. Háttérbeli készlet létrehozása a ASCS
+         1. Nyissa meg a Load balancert, válassza a háttérbeli készletek elemet, majd kattintson a Hozzáadás gombra.
+         1. Adja meg az új háttér-készlet nevét (például **háttér. QAS**)
+         1. Kattintson a virtuális gép hozzáadása elemre.
+         1. Válassza a virtuális gép lehetőséget. 
+         1. Válassza ki az (A) SCS-fürthöz tartozó virtuális gépeket és azok IP-címeit.
+         1. Kattintson az Add (Hozzáadás) parancsra
+   1. Az állapot-mintavételek létrehozása
+      1. A ASCS 620**00** portja
+         1. Nyissa meg a terheléselosztó-t, válassza az állapot-tesztek elemet, majd kattintson a Hozzáadás gombra.
+         1. Adja meg az új állapotadatok (például az **állapot) nevét. QAS. ASCS**)
+         1. Válassza a TCP protokollt, a 620**00**portot, az 5. időközt és a nem megfelelő állapotú küszöbértéket 2
+         1. Kattintson az OK gombra
+      1. Port 621**01** ASCS-eseknél
+            * A "c" alatt a fenti lépések megismétlésével hozzon létre egy állapot-mintavételt a ERS számára (például 621**01** és **Health. QAS. ERS**)
+   1. Terheléselosztási szabályok
+      1. Terheléselosztási szabályok ASCS
+         1. Nyissa meg a Load balancert, válassza a terheléselosztási szabályok elemet, majd kattintson a Hozzáadás gombra.
+         1. Adja meg az új terheléselosztó szabály nevét (például **LB. QAS. ASCS**)
+         1. Válassza ki a korábban létrehozott ASCS, háttér-készlet és állapot-mintavételi felület IP-címét (például a **frontendet). QAS. ASCS**, **háttérrendszer. QAS** és- **állapot. QAS. ASCS**)
+         1. **Ha portok** kiválasztása
+         1. Üresjárati időkorlát 30 percre növelve
+         1. **Ügyeljen arra, hogy a lebegő IP-címet engedélyezze**
+         1. Kattintson az OK gombra
+         * A fenti lépések megismétlésével hozzon létre terheléselosztási szabályokat az ERS számára (például **LB). QAS. ERS**)
+1. Ha a forgatókönyvben alapszintű terheléselosztó (belső) szükséges, kövesse az alábbi lépéseket:  
    1. Az előtérbeli IP-címek létrehozása
       1. A ASCS IP-192.168.14.9
          1. Nyissa meg a terheléselosztó-t, válassza a előtéri IP-készlet lehetőséget, majd kattintson a Hozzáadás gombra.
@@ -219,9 +256,11 @@ Először létre kell hoznia a Azure NetApp Files köteteket. Telepítse a virtu
       1. További portok a ASCS-ESEK számára
          * Ismételje meg a fenti lépéseket a "d" alatt a 32**01**, 33**01**, 5**01**13, 5**01**14, 5**01**16 és TCP ASCS-eseknél.
 
+> [!Note]
+> Ha a nyilvános IP-címek nélküli virtuális gépek a belső (nincs nyilvános IP-cím) standard Azure Load Balancer háttér-készletbe kerülnek, nem lesz kimenő internetkapcsolat, kivéve, ha további konfigurálást végeznek a nyilvános végpontok útválasztásának engedélyezéséhez. A kimenő kapcsolatok elérésével kapcsolatos részletekért lásd: [nyilvános végpontú kapcsolat Virtual Machines az Azure standard Load Balancer használata az SAP magas rendelkezésre állási helyzetekben](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-standard-load-balancer-outbound-connections).  
 
 > [!IMPORTANT]
-> Ne engedélyezze a TCP-időbélyegeket a Azure Load Balancer mögött elhelyezett Azure-beli virtuális gépeken. A TCP-időbélyegek engedélyezése az állapot-mintavételek meghibásodását eredményezi. Állítsa a **net. IPv4. TCP** paramétert **0-ra**_timestamps. Részletekért lásd: [Load Balancer Health](https://docs.microsoft.com/azure/load-balancer/load-balancer-custom-probe-overview)-tesztek.
+> Ne engedélyezze a TCP-időbélyegeket a Azure Load Balancer mögött elhelyezett Azure-beli virtuális gépeken. A TCP-időbélyegek engedélyezése az állapot-mintavételek meghibásodását eredményezi. Állítsa a **net. IPv4. tcp_timestamps** paramétert **0-ra**. Részletekért lásd: [Load Balancer Health](https://docs.microsoft.com/azure/load-balancer/load-balancer-custom-probe-overview)-tesztek.
 
 ### <a name="create-pacemaker-cluster"></a>Pacemaker-fürt létrehozása
 
@@ -229,18 +268,18 @@ Kövesse a [pacemaker beállítása Red Hat Enterprise Linux az Azure-ban](high-
 
 ### <a name="prepare-for-sap-netweaver-installation"></a>Felkészülés az SAP NetWeaver telepítésére
 
-A következő elemek van fűzve előtagként vagy **[A]** – az összes csomópont alkalmazandó **[1]** – 1. csomópont csak érvényes vagy **: [2]** – 2. csomópont csak érvényes.
+A következő elemek a **[a]** előtaggal vannak ellátva, amelyek az összes csomópontra érvényesek, **[1]** – csak az 1. vagy **[2]** csomópontra érvényesek, csak a 2. csomópontra.
 
-1. **[A]**  Állomásnév-feloldás beállítása
+1. **[A]** telepítési állomásnév feloldása
 
-   DNS-kiszolgálót használjon, vagy módosítsa a Hosts az összes csomópontra. Ez a példa bemutatja, hogyan használhatja a Hosts fájlt.
+   Használhat DNS-kiszolgálót, vagy módosíthatja a/etc/hosts az összes csomóponton. Ez a példa a/etc/hosts fájl használatát mutatja be.
    Cserélje le az IP-címet és a gazdagépet a következő parancsokra
 
     ```
     sudo vi /etc/hosts
     ```
 
-   Helyezze be a következő sorokat Hosts. Módosítsa az IP-cím és a környezet megfelelő állomásnév
+   Szúrja be a következő sorokat a/etc/hosts. Az IP-cím és az állomásnév módosítása a környezetnek megfelelően
 
     ```
     # IP address of cluster node 1
@@ -403,7 +442,7 @@ A következő elemek van fűzve előtagként vagy **[A]** – az összes csomóp
 
    Telepítse az SAP NetWeaver ASCS root-ként az első csomóponton egy olyan virtuális állomásnév használatával, amely a ASCS terheléselosztó-felületi konfigurációjának IP-címét képezi le, például a <b>anftstsapvh</b>, a <b>192.168.14.9</b> és a által használt példány számát. a terheléselosztó mintavétele, például <b>00</b>.
 
-   A sapinst paraméter SAPINST_REMOTE_ACCESS_USER lehetővé teszi, hogy a nem root felhasználó csatlakozhasson a sapinst.
+   A sapinst paraméterrel SAPINST_REMOTE_ACCESS_USER engedélyezheti, hogy a nem root felhasználó csatlakozhasson a sapinst.
 
    ```
    # Allow access to SWPM. This rule is not permanent. If you reboot the machine, you have to run the command again.
@@ -462,7 +501,7 @@ A következő elemek van fűzve előtagként vagy **[A]** – az összes csomóp
 
    Telepítse az SAP NetWeaver-ket root-ként a második csomóponton egy olyan virtuális állomásnév használatával, amely a hálózati terheléselosztási felület konfigurációjának IP-címét képezi le az ERS számára, például <b>anftstsapers</b>, <b>192.168.14.10</b> és a a Load Balancer mintavétele, például <b>01</b>.
 
-   A sapinst paraméter SAPINST_REMOTE_ACCESS_USER lehetővé teszi, hogy a nem root felhasználó csatlakozhasson a sapinst.
+   A sapinst paraméterrel SAPINST_REMOTE_ACCESS_USER engedélyezheti, hogy a nem root felhasználó csatlakozhasson a sapinst.
 
    ```
    # Allow access to SWPM. This rule is not permanent. If you reboot the machine, you have to run the command again.
@@ -559,7 +598,7 @@ A következő elemek van fűzve előtagként vagy **[A]** – az összes csomóp
     ```
 
    Az SAP bevezette a 2. sorba helyezni-kiszolgáló, beleértve a replikálást, az SAP NW 7,52-támogatását. A ABAP platform 1809-től kezdődően a sorba helyezni Server 2 alapértelmezés szerint telepítve van. Lásd: SAP-Megjegyzés [2630416](https://launchpad.support.sap.com/#/notes/2630416) a sorba helyezni Server 2 támogatásához.
-   Ha a sorba helyezni Server 2 architektúráját ([ENSA2](https://help.sap.com/viewer/cff8531bc1d9416d91bb6781e628d4e0/1709%20001/en-US/6d655c383abf4c129b0e5c8683e7ecd8.html)) használja, telepítse a Resource Agent Resource-Agents-SAP-4.1.1 -12. el7. x86_64 vagy újabb verzióját, és az alábbi módon adja meg az erőforrásokat:
+   Ha a sorba helyezni Server 2 architektúráját ([ENSA2](https://help.sap.com/viewer/cff8531bc1d9416d91bb6781e628d4e0/1709%20001/en-US/6d655c383abf4c129b0e5c8683e7ecd8.html)) használja, telepítse a Resource Agent Resource-Agents-SAP-4.1.1 -12. el7. x86_64 vagy újabb verzióját, és adja meg az erőforrásokat az alábbiak szerint:
 
     ```
     sudo pcs property set maintenance-mode=true
@@ -646,14 +685,14 @@ A következő elemek van fűzve előtagként vagy **[A]** – az összes csomóp
 
    A (z) **[a]** előtaggal rendelkező következő elemek a Pas és az AAS esetében egyaránt érvényesek **[P]** – csak a Pas vagy **[S]** esetében érvényesek.  
 
-1. **[A]** a telepítési állomásnév feloldása esetén használhat DNS-kiszolgálót, vagy módosíthatja a/etc/hosts az összes csomóponton. Ez a példa bemutatja, hogyan használhatja a Hosts fájlt.
+1. **[A]** a telepítési állomásnév feloldása esetén használhat DNS-kiszolgálót, vagy módosíthatja a/etc/hosts az összes csomóponton. Ez a példa a/etc/hosts fájl használatát mutatja be.
    Cserélje le az IP-címet és a gazdagépet a következő parancsokra:  
 
    ```
    sudo vi /etc/hosts
    ```
 
-   Helyezze be a következő sorokat Hosts. Módosítsa az IP-címet és a gazdagépet úgy, hogy az megfeleljen a környezetének.
+   Szúrja be a következő sorokat a/etc/hosts. Módosítsa az IP-címet és a gazdagépet úgy, hogy az megfeleljen a környezetének.
 
    ```
    # IP address of the load balancer frontend configuration for SAP NetWeaver ASCS
@@ -747,13 +786,13 @@ A következő elemek van fűzve előtagként vagy **[A]** – az összes csomóp
 
 ## <a name="install-database"></a>Adatbázis telepítése
 
-Ebben a példában az SAP NetWeaver SAP HANAra van telepítve. A telepítéshez minden támogatott adatbázist használhat. A SAP HANA Azure-ban való telepítésével kapcsolatos további információkért lásd: [Az Azure-beli virtuális gépek magas rendelkezésre állása SAP HANA Red Hat Enterprise Linux][sap-hana-ha]. For a list of supported databases, see [SAP Note 1928533][1928533].
+Ebben a példában az SAP NetWeaver SAP HANAra van telepítve. A telepítéshez minden támogatott adatbázist használhat. A SAP HANA Azure-ban való telepítésével kapcsolatos további információkért lásd: [SAP HANA magas rendelkezésre állása Azure-beli virtuális gépeken Red Hat Enterprise Linux][sap-hana-ha]. For a list of supported databases, see [SAP Note 1928533][1928533].
 
 1. Az SAP Database-példány telepítésének futtatása
 
    Telepítse az SAP NetWeaver Database-példányt root-ként egy olyan virtuális állomásnév használatával, amely az adatbázishoz tartozó terheléselosztó előtér-konfigurációjának IP-címére van leképezve.
 
-   A sapinst paraméter SAPINST_REMOTE_ACCESS_USER lehetővé teszi, hogy a nem root felhasználó csatlakozhasson a sapinst.
+   A sapinst paraméterrel SAPINST_REMOTE_ACCESS_USER engedélyezheti, hogy a nem root felhasználó csatlakozhasson a sapinst.
 
    ```
    sudo <swpm>/sapinst SAPINST_REMOTE_ACCESS_USER=sapadmin
@@ -771,7 +810,7 @@ Az SAP-alkalmazáskiszolgáló telepítéséhez kövesse az alábbi lépéseket.
 
    Telepítsen egy elsődleges vagy további SAP NetWeaver Application Servert.
 
-   A sapinst paraméter SAPINST_REMOTE_ACCESS_USER lehetővé teszi, hogy a nem root felhasználó csatlakozhasson a sapinst.
+   A sapinst paraméterrel SAPINST_REMOTE_ACCESS_USER engedélyezheti, hogy a nem root felhasználó csatlakozhasson a sapinst.
 
    ```
    sudo <swpm>/sapinst SAPINST_REMOTE_ACCESS_USER=sapadmin
@@ -945,7 +984,7 @@ Az SAP-alkalmazáskiszolgáló telepítéséhez kövesse az alábbi lépéseket.
    [root@anftstsapcl1 ~]# pgrep ms.sapQAS | xargs kill -9
    ```
 
-   Ha csak egyszer megöli az üzenetet a kiszolgálón, a `sapstart` lesz újraindítva. Ha elég gyakran megölni, a pacemaker végül áthelyezi a ASCS-példányt a másik csomópontra. A teszt után futtassa a következő parancsokat root-ként a ASCS és az ERS-példány erőforrás-állapotának tisztításához.
+   Ha csak egyszer fogja megölni az üzenetet kiszolgálóját, a `sapstart`újraindítja. Ha elég gyakran megölni, a pacemaker végül áthelyezi a ASCS-példányt a másik csomópontra. A teszt után futtassa a következő parancsokat root-ként a ASCS és az ERS-példány erőforrás-állapotának tisztításához.
 
    ```
    [root@anftstsapcl1 ~]# pcs resource cleanup rsc_sap_QAS_ASCS00
@@ -1039,7 +1078,7 @@ Az SAP-alkalmazáskiszolgáló telepítéséhez kövesse az alábbi lépéseket.
    [root@anftstsapcl2 ~]# pgrep er.sapQAS | xargs kill -9
    ```
 
-   Ha csak egyszer futtatja a parancsot, `sapstart` a automatikusan újraindítja a folyamatot. Ha elég gyakran fut, a nem `sapstart` indítja újra a folyamatot, és az erőforrás leállított állapotba kerül. A teszt után futtassa a következő parancsokat root-ként az ERS-példány erőforrás-állapotának tisztításához.
+   Ha csak egyszer futtatja a parancsot, `sapstart` újraindítja a folyamatot. Ha elég gyakran fut, `sapstart` nem indítja újra a folyamatot, és az erőforrás leállított állapotba kerül. A teszt után futtassa a következő parancsokat root-ként az ERS-példány erőforrás-állapotának tisztításához.
 
    ```
    [root@anftstsapcl2 ~]# pcs resource cleanup rsc_sap_QAS_ERS01

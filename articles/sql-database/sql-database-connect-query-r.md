@@ -1,5 +1,5 @@
 ---
-title: Az R használata Machine Learning Services lekérdezése Azure SQL Database
+title: Az R használata Machine Learning Services lekérdezéséhez
 titleSuffix: Azure SQL Database Machine Learning Services (preview)
 description: Ebből a cikkből megtudhatja, hogyan használhatja az R-szkripteket Azure SQL Database Machine Learning Services egy Azure SQL Database-adatbázishoz való kapcsolódáshoz és a Transact-SQL-utasítások használatával történő lekérdezéséhez.
 services: sql-database
@@ -13,14 +13,14 @@ ms.author: garye
 ms.reviewer: davidph, carlrab
 manager: cgronlun
 ms.date: 05/29/2019
-ms.openlocfilehash: ff38346a9b3bd14db51383c116240b030d3ee42a
-ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
+ms.openlocfilehash: a54b538247f81ea3bb0ea70a2af374158bd9e2ff
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68514859"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73826972"
 ---
-# <a name="quickstart-use-r-with-machine-learning-services-to-query-an-azure-sql-database-preview"></a>Gyors útmutató: Az R és a Machine Learning Services használata Azure SQL Database-adatbázisok lekérdezéséhez (előzetes verzió)
+# <a name="quickstart-use-r-with-machine-learning-services-to-query-an-azure-sql-database-preview"></a>Rövid útmutató: az R és a Machine Learning Services használata Azure SQL Database-adatbázisok lekérdezéséhez (előzetes verzió)
 
 Ez a rövid útmutató bemutatja, hogyan használható az [R](https://www.r-project.org/) és a Machine learning Services egy Azure SQL Database-adatbázishoz való kapcsolódáshoz, és hogyan lehet Transact-SQL-utasítások használatával adatokat lekérdezni. A Machine Learning Services az adatbázis-alapú R-parancsfájlok végrehajtásához használt Azure SQL Database szolgáltatása. További információ: [Azure SQL Database Machine learning Services az R (előzetes verzió)](sql-database-machine-learning-services-overview.md)szolgáltatással.
 
@@ -47,7 +47,7 @@ A rövid útmutató elvégzéséhez győződjön meg arról, hogy rendelkezik az
 
   || Önálló adatbázis |
   |:--- |:--- |
-  | Hozzon létre| [Portál](sql-database-single-database-get-started.md) |
+  | Létrehozás| [Portál](sql-database-single-database-get-started.md) |
   || [Parancssori felület](scripts/sql-database-create-and-configure-database-cli.md) |
   || [PowerShell](scripts/sql-database-create-and-configure-database-powershell.md) |
   | Konfigurálás | [Kiszolgálói szintű IP-tűzfalszabály](sql-database-server-level-firewall-rule.md) |
@@ -70,7 +70,7 @@ A rövid útmutató elvégzéséhez győződjön meg arról, hogy rendelkezik az
 
 Az Azure SQL Database-adatbázishoz való kapcsolódáshoz szükséges kapcsolati adatok beolvasása. A közelgő eljárásokhoz szüksége lesz a teljes kiszolgálónévre vagy az állomásnévre, az adatbázis nevére és a bejelentkezési adatokra.
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
+1. Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
 
 2. Navigáljon az **SQL-adatbázisok** vagy az **SQL-felügyelt példányok** lapra.
 
@@ -80,11 +80,11 @@ Az Azure SQL Database-adatbázishoz való kapcsolódáshoz szükséges kapcsolat
 
 1. Nyissa meg az **SQL Server Management Studiót**, és csatlakozzon az SQL-adatbázishoz.
 
-   Ha segítségre van szüksége a csatlakozáshoz, tekintse [meg a gyors útmutató: Az Azure SQL Database-adatbázisok](sql-database-connect-query-ssms.md)összekapcsolásához és lekérdezéséhez használja a SQL Server Management Studio.
+   Ha segítségre van szüksége a csatlakozáshoz, tekintse meg [Az Azure SQL Database-adatbázisok csatlakoztatásához és lekérdezéséhez SQL Server Management Studio használata](sql-database-connect-query-ssms.md)című témakört.
 
-1. Adja át a teljes R-parancsfájlt a [sp_execute_external_script](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-execute-external-script-transact-sql) tárolt eljárásnak.
+1. Adja át a teljes R-szkriptet a [sp_execute_external_script](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-execute-external-script-transact-sql) tárolt eljárásnak.
 
-   A szkript áthalad az `@script` argumentumon. Az `@script` argumentumon belül minden elemnek érvényes R-kódnak kell lennie.
+   A parancsfájl a `@script` argumentummal halad át. A `@script` argumentumban szereplő összes értéknek érvényes R-kódnak kell lennie.
    
    >[!IMPORTANT]
    >Az ebben a példában szereplő kód a minta AdventureWorksLT-adatait használja, amelyeket az adatbázis létrehozásakor választhat forrásként. Ha az adatbázis különböző adatokkal rendelkezik, a SELECT lekérdezésben használja a saját adatbázisában lévő táblákat. 
@@ -97,17 +97,17 @@ Az Azure SQL Database-adatbázishoz való kapcsolódáshoz szükséges kapcsolat
     ```
 
    > [!NOTE]
-   > Ha hibába ütközik, előfordulhat, hogy a Machine Learning Services (with R) nyilvános előzetes verziója nincs engedélyezve az SQL-adatbázishoz. Lásd [](#prerequisites) a fenti előfeltételeket.
+   > Ha hibába ütközik, előfordulhat, hogy a Machine Learning Services (with R) nyilvános előzetes verziója nincs engedélyezve az SQL-adatbázishoz. Lásd a fenti [előfeltételeket](#prerequisites) .
 
 ## <a name="run-the-code"></a>A kód futtatása
 
-1. Hajtsa végre a [sp_execute_external_script](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-execute-external-script-transact-sql) tárolt eljárást.
+1. Hajtsa végre az [sp_execute_external_script](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-execute-external-script-transact-sql) tárolt eljárást.
 
 1. Győződjön meg arról, hogy az **üzenetek** ablakban a 20 legfontosabb kategória/termék sorok lesznek visszaadva.
 
 ## <a name="next-steps"></a>További lépések
 
-- [Az első SQL Database-adatbázis megtervezése](sql-database-design-first-database.md)
+- [Az első Azure SQL-adatbázis megtervezése](sql-database-design-first-database.md)
 - [Azure SQL Database Machine Learning Services (R)](sql-database-machine-learning-services-overview.md)
 - [Egyszerű R-parancsfájlok létrehozása és futtatása Azure SQL Database Machine Learning Servicesban (előzetes verzió)](sql-database-quickstart-r-create-script.md)
 - [Speciális R függvények írása a Azure SQL Database Machine Learning Services használatával (előzetes verzió)](sql-database-machine-learning-services-functions.md)

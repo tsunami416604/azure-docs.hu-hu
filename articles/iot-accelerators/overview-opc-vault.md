@@ -1,6 +1,6 @@
 ---
 title: Mi az OPC-tár – Azure | Microsoft Docs
-description: Az OPC-tároló áttekintése
+description: Ez a cikk az OPC-tároló áttekintését tartalmazza. Az OPC UA-alkalmazások számára a felhőben konfigurálhatja, regisztrálhatja és kezelheti a tanúsítványok életciklusát.
 author: dominicbetts
 ms.author: dobett
 ms.date: 11/26/2018
@@ -8,18 +8,18 @@ ms.topic: overview
 ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: 44315790116545dd888aed533731bbf01abe801d
-ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
+ms.openlocfilehash: 66a322d4f60d9553a68207136ae609c1f9b50dbc
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69997307"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73826203"
 ---
 # <a name="what-is-opc-vault"></a>Mi az az OPC Vault?
 
 Az OPC-tár egy olyan szolgáltatás, amely a tanúsítványok életciklusát konfigurálhatja, regisztrálhatja és kezelheti a felhőben lévő OPC UA-kiszolgáló és ügyfélalkalmazások számára. Ez a cikk az OPC-tár egyszerű felhasználási eseteit ismerteti.
 
-## <a name="certificate-management"></a>Tanúsítványok kezelése
+## <a name="certificate-management"></a>Tanúsítványkezelés
 
 Egy gyártó vállalatnak például csatlakoznia kell az OPC UA-kiszolgáló számítógépéhez az újonnan létrehozott ügyfélalkalmazás számára. Ha a gyártó a kiszolgáló első hozzáférését végzi, az OPC UA-kiszolgáló alkalmazásban egy hibaüzenet jelenik meg, amely jelzi, hogy az ügyfélalkalmazás nem biztonságos. Ez a mechanizmus az OPC UA-kiszolgáló számítógépén található, hogy megakadályozza a jogosulatlan hozzáférések elérését, ami megakadályozza a gonosz hackelést az üzemi emeleten.
 

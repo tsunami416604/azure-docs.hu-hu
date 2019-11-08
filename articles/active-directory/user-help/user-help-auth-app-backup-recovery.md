@@ -1,5 +1,5 @@
 ---
-title: Biztonsági mentés és helyreállítás Microsoft Authenticator app-Azure Active Directorysal | Microsoft Docs
+title: Biztonsági mentés és helyreállítás a Microsoft Authenticator alkalmazással – Azure AD
 description: Útmutató a fiók hitelesítő adatainak biztonsági mentéséhez és helyreállításához a Microsoft Authenticator alkalmazás használatával.
 services: active-directory
 author: eross-msft
@@ -12,12 +12,12 @@ ms.date: 08/22/2019
 ms.author: lizross
 ms.reviewer: olhaun
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4b4e45fbe6533832765e90e5cf244f0dcbcf0b72
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: 2404dd443c1e3ede1d3ad5a81888e9f805edb810
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70035129"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73820264"
 ---
 # <a name="backup-and-recover-account-credentials-with-the-microsoft-authenticator-app"></a>Fiók hitelesítő adatainak biztonsági mentése és helyreállítása a Microsoft Authenticator alkalmazással
 
@@ -40,7 +40,7 @@ A hitelesítő adatok biztonsági mentése előtt a következőket kell tennie:
 
 - Személyes [Microsoft-fiók](https://account.microsoft.com/account) , amely helyreállítási fiókként működik.
 
-- **Csak iOS esetén** a tényleges tárolási helynek [iCloud](https://www.icloud.com/) -fiókkal kell rendelkeznie.
+- **Csak iOS esetén** a tényleges tárolási helynek [iCloud-fiókkal](https://www.icloud.com/) kell rendelkeznie.
 
 ### <a name="to-turn-on-cloud-backup-for-ios-devices"></a>A Felhőbeli biztonsági mentés bekapcsolása iOS-eszközökön
 
@@ -86,7 +86,7 @@ Személyes Microsoft-fiókok esetén a jelszó megadásával, valamint egy máso
 
     ![Microsoft Authenticator alkalmazás, amely az elérhető fiókokat jeleníti meg a hozzájuk tartozó legördülő nyilakkal](./media/user-help-auth-app-backup-recovery/backup-and-recovery-arrow.png)
 
-2. A helyreállításhoz válassza a **Bejelentkezés**lehetőséget, írja be a jelszót, majd erősítse meg az e-mail-címet vagy a telefonszámot további ellenőrzésként.
+2. A **helyreállításhoz**válassza a bejelentkezés lehetőséget, írja be a jelszót, majd erősítse meg az e-mail-címet vagy a telefonszámot további ellenőrzésként.
 
     ![Microsoft Authenticator alkalmazás, amely lehetővé teszi a bejelentkezési adatok megadását](./media/user-help-auth-app-backup-recovery/backup-and-recovery-sign-in.png)
 

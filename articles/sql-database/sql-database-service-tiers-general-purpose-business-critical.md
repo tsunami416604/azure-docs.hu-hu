@@ -1,5 +1,5 @@
 ---
-title: 'Azure SQL Database – általános célú és üzleti szempontból kritikus fontosságú '
+title: Ggeneral célja és üzleti szempontból kritikus fontosságú
 description: A cikk a virtuális mag-alapú vásárlási modell általános célú és üzleti szempontból kritikus szolgáltatási rétegeit tárgyalja.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: sashan, moslake, carlrab
 ms.date: 10/01/2019
-ms.openlocfilehash: c6af083c4b3d16fa695da0ccc968c90b5480b6c4
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 85b610969f9e5e85d014f89b90cfd862731aaf0c
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73687267"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73821084"
 ---
 # <a name="azure-sql-database-service-tiers"></a>Azure SQL Database szolgáltatási szintek
 
@@ -78,7 +78,7 @@ Az alábbi tényezők befolyásolják az adatokhoz és a naplófájlokhoz haszn�
 > [!IMPORTANT]
 > Az MDF-és az LDF-fájlokhoz lefoglalt teljes tárterületért kell fizetnie.
 
-Az MDF-és az LDF-fájlok aktuális teljes méretének figyeléséhez használja a [sp_spaceused](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-spaceused-transact-sql). Az egyes MDF-és LDF-fájlok aktuális méretének figyeléséhez használja a [sys. database_files](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-database-files-transact-sql).
+Az MDF-és az LDF-fájlok aktuális teljes méretének figyeléséhez használja a [sp_spaceused](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-spaceused-transact-sql). Az egyes MDF-és LDF-fájlok aktuális méretének figyeléséhez használja a következőt: [sys. database_files](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-database-files-transact-sql).
 
 > [!IMPORTANT]
 > Bizonyos körülmények között előfordulhat, hogy az adatbázist fel kell zsugorodnia a fel nem használt területek visszaigényléséhez. További információ: [a tárterület kezelése Azure SQL Databaseban](sql-database-file-space-management.md).

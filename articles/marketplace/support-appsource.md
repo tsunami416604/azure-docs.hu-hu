@@ -1,31 +1,32 @@
 ---
-title: Appsource-ban támogatása |} Az Azure
-description: Támogatási információk és hivatkozások az appsource-ban.
+title: A AppSource támogatása | Azure
+description: Támogatási információk és hivatkozások a AppSource.
 services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
 author: ellacroi
 manager: nunoc
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 07/02/2018
 ms.author: ellacroi
-ms.openlocfilehash: 788a50b85b47b104f12c22ea3d4c39627c412cc2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2b150f48e0eab0d83ec50a269f171a0bbfa4ed80
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64937550"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73827730"
 ---
-# <a name="support-for-appsource"></a>Appsource-ban támogatása  
-A támogatási lehetőségeket az appsource-ban.  
+# <a name="support-for-appsource"></a>A AppSource támogatása  
+A AppSource támogatási lehetőségei.  
 
 ## <a name="technical"></a>Technikai  
 
-| Támogatási csatornán keresztül | Leírás |  
+| Támogatási csatorna | Leírás |  
 |:--- |:--- |  
-| MSDN fórumok: Az Azure Active Directoryban található [social.msdn.microsoft.com/Forums/azure/home?forum=WindowsAzureAD](https://social.msdn.microsoft.com/Forums/azure/home?forum=WindowsAzureAD "Azure AD-t az MSDN-fórumok") | A Microsoft Developer Network fórum. |  
-| StackOverflow: Az Azure Active Directoryban található [stackoverflow.com/questions/tagged/azure-active-directory](https://stackoverflow.com/questions/tagged/azure-active-directory "stackoverflow Azure ad-ben") | Stack Overflow környezet megoldásokat, és az Azure Active Directory (Azure AD) kapcsolódó összes elemet kapcsolatos kérdések feltevése. |  
+| MSDN-fórumok: a [Social.msdn.microsoft.com/forums/Azure/Home?Forum=WindowsAzureAD](https://social.msdn.microsoft.com/Forums/azure/home?forum=WindowsAzureAD "Azure AD az MSDN fórumokban") címen található Azure Active Directory | Microsoft Developer Network fórum. |  
+| StackOverflow: Azure Active Directory található a következő helyen: [StackOverflow.com/questions/Tagged/Azure-Active-Directory](https://stackoverflow.com/questions/tagged/azure-active-directory "Azure AD a StackOverflow") | Stack Overflow a környezetet, hogy megoldásokat kapjon, és kérdéseket tegyen fel a Azure Active Directory (Azure AD) szolgáltatással kapcsolatos összes adatról. |  
 
 ## <a name="next-steps"></a>További lépések
-Látogasson el a [Azure Marketplace és AppSource útmutató Közzétevőknek](./marketplace-publishers-guide.md) lapot.  
+Látogasson el az [Azure Marketplace és a AppSource kiadói útmutató](./marketplace-publishers-guide.md) oldalára.  
  
 ---

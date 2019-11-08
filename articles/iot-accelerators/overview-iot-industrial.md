@@ -1,6 +1,6 @@
 ---
-title: Az Azure ipari IoT áttekintése |} A Microsoft Docs
-description: Az ipari IoT áttekintése
+title: Az Azure Industrial IoT áttekintése | Microsoft Docs
+description: Ez a cikk az ipari IoT áttekintését tartalmazza. Ismerteti a csatlakoztatott gyárat, a gyári padlót és a biztonsági összetevőket a IIoT-ben.
 author: dominicbetts
 ms.author: dobett
 ms.date: 11/26/2018
@@ -8,46 +8,46 @@ ms.topic: overview
 ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: 3c3a54d469d3dcbe04c11aa049906b551d68022f
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: c5d70e5a8784e88d3f2906d500768735dced1ee0
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67606203"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73828123"
 ---
-# <a name="what-is-industrial-iot-iiot"></a>Mi az ipari IoT (IIoT)
+# <a name="what-is-industrial-iot-iiot"></a>Mi az ipari IoT (IIoT)?
 
-IIoT az ipari eszközök internetes hálózata. IIoT fokozza a ipari növelhető a hatékonyság a gyártás IOT az alkalmazáson keresztül. 
+A IIoT az ipari eszközök internetes hálózata. A IIoT az ipari hatékonyságot a IoT alkalmazásával fokozza a feldolgozóipari iparágban. 
 
-## <a name="improve-industrial-efficiencies"></a>Ipari növelhető a hatékonyság növelése
+## <a name="improve-industrial-efficiencies"></a>Az ipari hatékonyság javítása
 
-Növelje működtetési hatékonyságát és jövedelmezőségét a csatlakoztatott gyár megoldásgyorsító. Ipari felszereléseit és eszközeit – többek között a már működő gyári gépeket is – a felhőben csatlakoztathatja és figyelheti. IoT-adatainak elemzésével értékes információkhoz juthat, amelyek a teljes gyártás teljesítményét is kedvezően befolyásolhatják.
+Növelje működési termelékenységét és jövedelmezőségét egy csatlakoztatott gyári megoldás-gyorsító révén. Ipari felszereléseit és eszközeit – többek között a már működő gyári gépeket is – a felhőben csatlakoztathatja és figyelheti. IoT-adatainak elemzésével értékes információkhoz juthat, amelyek a teljes gyártás teljesítményét is kedvezően befolyásolhatják.
 
-Csökkentheti a férnek hozzá a gyári emelet gépek OPC Ikereszköz időigényes folyamat, és a hangsúly a idő IIoT megoldások. Egyszerűsíthetők a Tanúsítványkezelő és ipari eszközök integrációja az OPC-tárolóval, és a benne, hogy biztonságos-e az eszközintelligencia-kapcsolat. Ilyen mikroszolgáltatásokból adjon meg egy hasonló REST API-t a [ipari IoT Azure-összetevők](https://github.com/Azure/azure-iiot-opc-ua). A szolgáltatás API-t biztosít edge-modul funkciók irányítását. 
+Csökkentse a Factory Floor Machines és az OPC Twin szolgáltatásokhoz való hozzáférés időigényes folyamatát, és a IIoT-megoldások kiépítésének idejére koncentráljon. Egyszerűsítheti a Tanúsítványkezelőt és az iparági eszközök integrációját az OPC-tárolóval, és bízik benne, hogy az adategység-kapcsolat biztonságos. Ezek a szolgáltatások egy REST-szerű API-t biztosítanak az [Azure Industrial IoT összetevőihez](https://github.com/Azure/azure-iiot-opc-ua). A Service API lehetővé teszi az Edge-modul funkcióinak vezérlését. 
 
 ![Ipari IoT – áttekintés](media/overview-iot-industrial/overview.png)
 
 > [!NOTE]
-> Ipari IoT Azure-szolgáltatásokkal kapcsolatos további információkért tekintse meg a GitHub [tárház](https://github.com/Azure/azure-iiot-services).
-Ha még nem ismeri az Azure IoT Edge-modulok működéséről, kezdődik a következő cikkeket:
+> Az Azure Industrial IoT szolgáltatásaival kapcsolatos további információkért lásd a GitHub- [tárházat](https://github.com/Azure/azure-iiot-services).
+Ha nem ismeri a Azure IoT Edge moduljainak működését, kezdje a következő cikkekkel:
 - [Tudnivalók az Azure IoT Edge-ről](../iot-edge/about-iot-edge.md)
-- [Az Azure IoT Edge-modulok](../iot-edge/iot-edge-modules.md)
+- [Azure IoT Edge modulok](../iot-edge/iot-edge-modules.md)
 
 ## <a name="connected-factory"></a>Csatlakoztatott gyár
 
-[A csatlakoztatott gyári](../iot-accelerators/iot-accelerators-connected-factory-features.md) implementálhat a Microsoft Azure ipari IoT referenciaarchitektúra testre szabható adott üzleti szükségletek kielégítése céljából. A teljes megoldás kódja nyílt forráskódú és elérhető a csatlakoztatott gyár megoldás gyorsító GitHub-adattárban. Használhatja kereskedelmi termék kiindulásaként is, és percek alatt üzembe helyezhet egy előre elkészített megoldást az Azure-előfizetésében. 
+A [csatlakoztatott gyár](../iot-accelerators/iot-accelerators-connected-factory-features.md) a Microsoft Azure Industrial IoT-referenciájának olyan implementációja, amely testreszabható az adott üzleti igények kielégítése érdekében. A teljes megoldás kódja nyílt forráskódú, és elérhető a csatlakoztatott Factory Solution Accelerator GitHub-tárházban. Használhatja kereskedelmi termék kiindulásaként is, és percek alatt üzembe helyezhet egy előre elkészített megoldást az Azure-előfizetésében. 
 
-## <a name="factory-floor-connectivity"></a>Gyári emelet kapcsolat
+## <a name="factory-floor-connectivity"></a>Gyári padló kapcsolat
 
-Az OPC-Twin-e egy IIoT összetevő, amely automatizálja az eszköz felderítése és regisztrálása, és lehetővé teszi a távoli ipari eszközök REST API-kon keresztül. OPC Ikereszköz, használja az Azure IoT Edge és IoT Hub a felhőben és a gyári hálózathoz csatlakozni. Az OPC-Twin szolgáltatással IIoT IIoT alkalmazások készítésére is biztonságosan hozzáférhessenek a helyszíni gépek hogyan bajlódnia.
+Az OPC Twin egy IIoT-összetevő, amely automatizálja az eszközök felderítését és regisztrálását, és a REST API-kon keresztül biztosítja az ipari eszközök távvezérlését. Az OPC Twin, Azure IoT Edge és IoT Hub használatával csatlakozik a felhőhöz és a gyári hálózathoz. Az OPC Twin lehetővé teszi a IIoT-fejlesztők számára, hogy a helyszíni gépek biztonságos elérésével kapcsolatos gondok nélkül összpontosítsanak a IIoT-alkalmazások létrehozására.
 
 ## <a name="security"></a>Biztonság
 
-Az OPC-tároló az OPC UA globális felderítési kiszolgáló (GDS), konfigurálása, regisztrálja, és az OPC UA-kiszolgáló és az ügyfélalkalmazások számára a felhőben a tanúsítvány életciklusának kezelése implementációja. Az OPC-tároló az implementálási vagy a kapcsolat biztonságos objektum az ipari terület karbantartási egyszerűbbé teszi. Tanúsítványkezelés automatizálásával OPC-tároló a kapcsolat és tanúsítványkezelés társított manuális és az összetett folyamat gyári operátorainak szabadít fel.
+Az OPC-tár az OPC ua Global Discovery Server (GDS) implementációja, amely konfigurálhatja, regisztrálhatja és kezelheti a tanúsítványok életciklusát az OPC UA-kiszolgáló és az ügyfélalkalmazások számára a felhőben. Az OPC-tároló leegyszerűsíti a biztonságos eszközök kapcsolatának megvalósítását és karbantartását az ipari térben. A Tanúsítványkezelő automatizálásával az OPC-tároló felszabadítja a gyári operátorokat a kapcsolat-és tanúsítványkezelőhöz kapcsolódó manuális és összetett folyamatokkal.
 
 ## <a name="next-steps"></a>További lépések
 
-Most, hogy a bemutató ipari IoT és annak összetevői már rendelkezett, Íme a javasolt következő lépésre:
+Most, hogy már bevezette az iparági IoT és annak összetevőit, itt látható a következő lépés:
 
 > [!div class="nextstepaction"]
-> [Mi az OPC-Twin](overview-opc-twin.md)
+> [Mi az OPC Twin](overview-opc-twin.md)

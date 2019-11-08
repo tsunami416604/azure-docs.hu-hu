@@ -1,5 +1,5 @@
 ---
-title: JSON-adatkezelési műveletek Azure SQL Database
+title: JSON-adatok használata
 description: Azure SQL Database lehetővé teszi az adatelemzést, lekérdezéseket és formázást JavaScript Object Notation (JSON) jelöléssel.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: ''
 ms.date: 01/15/2019
-ms.openlocfilehash: 2fe760e3792b5540b18946fd9dbcc5d571b50ee9
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 958d937ad85fd62249c7ce3f0e0ab2f8cc1d1b80
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73689648"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73819939"
 ---
 # <a name="getting-started-with-json-features-in-azure-sql-database"></a>Bevezetés a JSON-funkciók használatába Azure SQL Database
 Azure SQL Database lehetővé teszi a JavaScript Object Notation [(JSON)](https://www.json.org/) formátumban ábrázolt adatelemzést és lekérdezéseket, és a rokoni adatait JSON-szövegként exportálja. A következő JSON-forgatókönyvek érhetők el a Azure SQL Databaseban:
@@ -143,9 +143,9 @@ where Id = 1
 
 A JSON_VALUE függvény Kinyer egy értéket az adat oszlopban tárolt JSON-szövegből. Ez a függvény egy JavaScript-hez hasonló útvonalat használ a kinyerni kívánt JSON-szövegben lévő értékre való hivatkozáshoz. A kinyert érték az SQL-lekérdezés bármely részén használható.
 
-A JSON_QUERY függvény a JSON_VALUE hasonló. A JSON_VALUE-től eltérően ez a függvény összetett alobjektumokat, például a JSON-szövegbe helyezett tömböket vagy objektumokat is kibontja.
+A JSON_QUERY függvény hasonló a JSON_VALUEhoz. A JSON_VALUEtól eltérően ez a függvény összetett alobjektumokat, például a JSON-szövegbe helyezett tömböket vagy objektumokat is kibontja.
 
-A JSON_MODIFY függvény segítségével megadhatja a JSON-szövegben szereplő érték elérési útját, valamint egy új értéket, amely felülírja a régit. Így egyszerűen frissítheti a JSON-szöveget a teljes struktúra újraelemzése nélkül.
+A JSON_MODIFY függvény segítségével megadhatja a JSON-szövegben szereplő érték elérési útját, valamint egy új értéket, amely felül fogja írni a régit. Így egyszerűen frissítheti a JSON-szöveget a teljes struktúra újraelemzése nélkül.
 
 Mivel a JSON szabványos szövegben van tárolva, nincs garancia arra, hogy a szöveges oszlopokban tárolt értékek megfelelően vannak formázva. Ellenőrizze, hogy a JSON oszlopban tárolt szöveg megfelelően formázott-e a szabványos Azure SQL Database ellenőrzési megkötések és a ISJSON függvény használatával:
 

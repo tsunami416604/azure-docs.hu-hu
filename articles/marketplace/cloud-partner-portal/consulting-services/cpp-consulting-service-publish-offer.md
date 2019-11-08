@@ -1,36 +1,37 @@
 ---
-title: Az Azure és Dynamics 365 tanácsadási szoltátatás ajánlat közzététele |} Az Azure Marketplace-en
-description: A Cloud Partner portálra egy Azure-ban vagy a Dynamics 365 tanácsadási szolgáltatási ajánlat közzéteheti az Azure Marketplace piactéren vagy az appsource-ban.
+title: Az Azure és a Dynamics 365 Consulting Service ajánlat közzététele | Azure piactér
+description: Azure-vagy Dynamics 365 Consulting Service-ajánlat közzététele az Azure Marketplace-en vagy a AppSource-ban Cloud Partner Portal.
 services: Azure, Marketplace, Cloud Partner Portal,
 author: qianw211
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: pabutler
-ms.openlocfilehash: 44fe7f11d365761c351e488d834a63392ea9cac1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3d2daf68bae5e24dd8ec3501befd186a50c2cb16
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64942792"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73818104"
 ---
-# <a name="publish-a-consulting-service-offer"></a>A tanácsadási szolgáltatási ajánlat közzététele
+# <a name="publish-a-consulting-service-offer"></a>Tanácsadási szolgáltatási ajánlat közzététele
 
-Befejezése után **ajánlat beállítások**, **kirakat részletek**, és **névjegyek**, jelölje be **közzététel** , és adjon meg egy e-mail címet. Ha készen áll az ajánlat közzététele a Microsoft, kap egy e-mailt az előzetes verzióra, mielőtt élő kerül. A portálon ellenőrizheti az állapotot az Ön ajánlatát bármikor visszatérhet.
+Az **ajánlatok beállításainak**, **kirakat részleteinek**és **névjegyek**befejezését követően válassza a **Közzététel** lehetőséget, és adjon meg egy e-mail-címet. Ha a Microsoft készen áll az ajánlat közzétételére, egy e-mailt kap az előzetes verzió megkezdése előtt. Bármikor visszatérhet a portálra az ajánlat állapotának megtekintéséhez.
 
-Ajánlatok jelenhet meg a "Közzététel megszakítva" vagy "Közzététel sikertelen" állapotot a közzétételi folyamat során. Ezek megjelöléseket a folyamat normál részét képezik, és lehetővé teszi, hogy a módosítások az ajánlatra a Microsoft. Ha az ajánlat "Közzététel megszakítva" jelenik meg, hagyja meg ez az állapot.
+Előfordulhat, hogy az ajánlatok a közzétételi folyamat során "a közzététel megszakítva" vagy "sikertelen közzététel" állapotban jelennek meg. Ezek a megjelölések a folyamat normális részét képezik, és lehetővé teszik, hogy a Microsoft szerkessze az ajánlatát. Ha az ajánlat "közzététel megszakítva" formában jelenik meg, akkor hagyja ezt az állapotot.
 
-## <a name="lead-destination"></a>Cél vezethet
+## <a name="lead-destination"></a>Érdeklődő célhelye
 
-Kiválaszthat egy CRM-rendszerrel, az érdeklődők adatait tároló. A CRM-rendszerrel, itt, ahol a felhasználók, akik kipróbálják az alkalmazását az appsource-on információ írunk.
+Kiválaszthat egy CRM-rendszert, amelyen a rendszer az érdeklődő adatait tárolja. Az itt kiválasztott CRM-rendszerből megtudhatja, hogy mi történik az alkalmazás AppSource-on való kipróbálására szolgáló felhasználókkal kapcsolatos információk írásakor.
 
-A megfelelő URL-cím alapján úgy dönt, a CRM-rendszerrel, válassza ki a részleteiért töltse ki a következő mezőket az alábbi listából.
+A kiválasztott CRM-rendszer alapján válassza ki a megfelelő URL-címet a következő listából a következő mezők kitöltésének módjával kapcsolatban.
 
-Válassza ki [Azure Table](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-azure-table) Ha rendelkezik ilyennel, a következő CRM rendszereket:  
+Ha a következő CRM-rendszerek valamelyikével rendelkezik, válassza az [Azure Table](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-azure-table) lehetőséget:  
 * [Marketo](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-marketo)
 * [Microsoft Dynamics CRM](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-dynamics)
 * [Salesforce](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-salesforce)
 
 ## <a name="next-steps"></a>További lépések
 
-Továbbra is a megtudhatja, hogyan teheti közzé az ajánlatot.
+További információ: az ajánlat közzétételének megismerése.

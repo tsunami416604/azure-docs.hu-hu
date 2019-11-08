@@ -1,112 +1,113 @@
 ---
-title: HTTPS-végpont |} Az Azure Marketplace-en
-description: HTTPS-végpont érdeklődő felügyeletének konfigurálásához.
+title: HTTPS-végpont | Azure piactér
+description: Az érdeklődők felügyeletének beállítása egy HTTPS-végponthoz.
 services: Azure, Marketplace, Cloud Partner Portal,
 author: dan-wesley
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 12/24/2018
 ms.author: pabutler
-ms.openlocfilehash: 058ab30358811cb66ae033fb464974639569ae18
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 817e431f5386b10345d414190e8bda0954ef2aca
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64935259"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73825231"
 ---
-# <a name="configure-lead-management-using-an-https-endpoint"></a>HTTPS-végpont használatával lead felügyelet konfigurálása
+# <a name="configure-lead-management-using-an-https-endpoint"></a>Az érdeklődők felügyeletének konfigurálása HTTPS-végpont használatával
 
-HTTPS-végpont használatával kezeli az Azure Marketplace-en, és az appsource-ban vezet. Érdeklődők válaszaránya szolgáltatásba lehet írni, amely írt egy ügyfél kapcsolat felügyeleti (CRM) rendszerhez, vagy e-mailben értesítést küldeni. Ez a cikk azt ismerteti, érdeklődő felügyeleti történő konfigurálása a [Microsoft Flow](https://powerapps.microsoft.com/automate-processes/) automation szolgáltatást.
+Az Azure Marketplace és a AppSource-érdeklődők kezelésére HTTPS-végpontot használhat. Ezek az érdeklődők megírhatók, hogy megírhatók legyenek az Ügyfélkapcsolat-kezelési (CRM) rendszerbe, vagy e-mail-értesítésként legyenek elküldve. Ez a cikk bemutatja, hogyan konfigurálhatja az ólom-kezelést a [Microsoft flow](https://powerapps.microsoft.com/automate-processes/) Automation szolgáltatással.
 
-## <a name="create-a-flow-using-microsoft-flow"></a>Hozzon létre egy folyamatot, Microsoft Flow használatával
+## <a name="create-a-flow-using-microsoft-flow"></a>Folyamat létrehozása Microsoft Flow használatával
 
-1. Nyissa meg a [Flow](https://flow.microsoft.com/) weblapon. Válassza ki **jelentkezzen be a** , vagy válasszon **ingyenes regisztráció** ingyenes Flow-fiók létrehozásához.
+1. Nyissa meg a [folyamat](https://flow.microsoft.com/) weboldalát. Válassza a **Bejelentkezés** lehetőséget, vagy válassza a **regisztráció ingyenes** lehetőséget egy ingyenes flow-fiók létrehozásához.
 
-2. Jelentkezzen be, és válassza ki **saját folyamatok** a menüsávon.
+2. Jelentkezzen be, majd a menüsávon válassza a **saját folyamatok** lehetőséget.
 
     ![Saját folyamatok](./media/cloud-partner-portal-lead-management-instructions-https/https-myflows.png)
 
-3. Válassza ki **+ üres folyamat létrehozása**.
+3. Válassza **a + létrehozás üresből**lehetőséget.
 
-    ![Üres folyamat létrehozása](./media/cloud-partner-portal-lead-management-instructions-https/https-myflows-create-fromblank.png)
+    ![létrehozás üresből](./media/cloud-partner-portal-lead-management-instructions-https/https-myflows-create-fromblank.png)
 
-4. Válassza ki **üres folyamat létrehozása**.
+4. Válassza **a létrehozás üresből**lehetőséget.
 
-    ![Üres folyamat létrehozása](./media/cloud-partner-portal-lead-management-instructions-https/https-myflows-create-fromblank2.png)
+    ![létrehozás üresből](./media/cloud-partner-portal-lead-management-instructions-https/https-myflows-create-fromblank2.png)
 
-5. Az a **összekötő és trigger között keresés** mezőbe írja be a "request" a kérelem-összekötő található.
-6. A **eseményindítók**válassza **amikor egy HTTP-kérés érkezik**. 
+5. Az **Összekötők és eseményindítók keresése** mezőben írja be a "kérelem" kifejezést a kérelem-összekötő megkereséséhez.
+6. Az **Eseményindítók**területen válassza ki **a HTTP-kérelem fogadásának**időpontját. 
 
-    ![A HTTP-kérelem érkezett a trigger kiválasztása](./media/cloud-partner-portal-lead-management-instructions-https/https-myflows-pick-request-trigger.png)
+    ![Válassza ki a kapott HTTP-kérelem triggerét](./media/cloud-partner-portal-lead-management-instructions-https/https-myflows-pick-request-trigger.png)
 
-7. Konfigurálásához használja az alábbi lépések egyikét a **kérelem Kéréstörzs JSON-sémája**:
+7. A **kérelem törzse JSON-séma**konfigurálásához kövesse az alábbi lépések egyikét:
 
-   - Másolás a [JSON-sémája](#json-schema) , ez a cikk végén található a **kérelem Kéréstörzs JSON-sémája** szövegmezőben.
-   - Válassza a **Séma létrehozása hasznosadat-minta használatával** lehetőséget. Az a **írja vagy illessze be a JSON hasznosadat-minta** szövegbeviteli mezőben illessze be a [példa JSON](#json-example). Válassza ki **kész** , létre kell hozni a sémát.
+   - Másolja a cikk végén található [JSON-sémát](#json-schema) a **kérelem törzse JSON-séma** szövegmezőbe.
+   - Válassza a **Séma létrehozása hasznosadat-minta használatával** lehetőséget. Az **írja be vagy illessze be a minta JSON-adattartalom** szövegmezőbe illessze be a [JSON-példát](#json-example). Válassza a **kész** lehetőséget a séma létrehozásához.
 
    >[!Note]
-   >Ezen a ponton a folyamat kapcsolódni egy CRM-rendszerrel, vagy egy e-mail-értesítések konfigurálása.
+   >A folyamat ezen pontján csatlakozhat egy CRM rendszerhez, vagy konfigurálhat egy e-mailes értesítést.
 
-### <a name="to-connect-to-a-crm-system"></a>Egy CRM-rendszerekhez való kapcsolódáshoz
+### <a name="to-connect-to-a-crm-system"></a>Kapcsolódás CRM rendszerhez
 
-1. Válassza ki **+ új lépés**.
-2. Válassza ki a CRM-rendszerrel, a választott a művelettel egy új rekord létrehozásához. Az alábbi képernyőn látható rögzítése **Dynamics 365 – új rekord létrehozása** példaként.
+1. Válassza az **+ új lépés**lehetőséget.
+2. Válassza ki az Ön által választott CRM-rendszert, és hozzon létre egy új rekordot a művelettel. Az alábbi képernyőfelvételen a **Dynamics 365 – új rekord létrehozása** példaként.
 
     ![Új rekord létrehozása](./media/cloud-partner-portal-lead-management-instructions-https/https-image009.png)
 
-3. Adja meg a **szervezetnevet** Ez az összekötő a kapcsolat bemenetei között. Válassza ki **érdeklődők** származó a **entitás neve** legördülő listából.
+3. Adja meg a **szervezet nevét** , amely az összekötőhöz tartozó csatlakozási bemenet. Az **entitás neve** legördülő listából válassza az **érdeklődők** lehetőséget.
 
-    ![Válassza ki az érdeklődők](./media/cloud-partner-portal-lead-management-instructions-https/https-image011.png)
+    ![Érdeklődők kiválasztása](./media/cloud-partner-portal-lead-management-instructions-https/https-image011.png)
 
-4. A folyamat egy képernyő, amelyek biztosítják az érdeklődők adatait jeleníti meg. Válassza ki a dinamikus tartalom hozzáadása a bemeneti kérelem elemek leképezheti. Az alábbi képernyőn látható rögzítése **OfferTitle** példaként.
+4. A flow egy űrlapot jelenít meg az érdeklődői adatok biztosításához. A bemeneti kérelem elemeit leképezheti a dinamikus tartalom hozzáadására szolgáló lehetőség választásával. Az alábbi képernyőfelvételen a **OfferTitle** látható példa.
 
     ![Dinamikus tartalom hozzáadása](./media/cloud-partner-portal-lead-management-instructions-https/https-image013.png)
 
-5. Szeretné, és válassza ki a mezők leképezése **mentése** annak mentéséhez.
+5. Képezze le a kívánt mezőket, majd válassza a **Mentés** lehetőséget a folyamat mentéséhez.
 
-6. Egy HTTP POST URL-címe a kérelemben szereplő jön létre. Másolja az URL-címet, és szeretné használni a HTTPS-végpont.
+6. A kérelemben létrejön egy HTTP POST URL-cím. Másolja ezt az URL-címet, és használja HTTPS-végpontként.
 
-    ![HTTP Post URL-címe](./media/cloud-partner-portal-lead-management-instructions-https/https-myflows-get-post-url.png)
+    ![HTTP Post URL-cím](./media/cloud-partner-portal-lead-management-instructions-https/https-myflows-get-post-url.png)
 
-### <a name="to-set-up-email-notification"></a>E-mail-értesítések beállítása
+### <a name="to-set-up-email-notification"></a>E-mail értesítések beállítása
 
-1. Válassza ki **+ új lépés**.
-2. A **válasszon ki egy műveletet**válassza **műveletek**.
+1. Válassza az **+ új lépés**lehetőséget.
+2. A **válasszon műveletet**területen válassza a **műveletek**lehetőséget.
 3. A **Műveletek** területen válassza az **E-mal küldése** lehetőséget.
 
-    ![E-mail-művelet hozzáadása](./media/cloud-partner-portal-lead-management-instructions-https/https-myflows-add-email-action.png)
+    ![E-mail művelet hozzáadása](./media/cloud-partner-portal-lead-management-instructions-https/https-myflows-add-email-action.png)
 
-4. A **e-mail küldése**, konfigurálja a következő kötelező mezőket:
+4. Az **E-mail küldése**területen adja meg a következő kötelező mezőket:
 
-   - **A** – legalább egy érvényes e-mail címet adjon meg.
-   - **Tulajdonos** -folyamat teszi lehetővé, például a dinamikus tartalom hozzáadása **LeadSource** az alábbi képernyőfelvételen.
+   - Adjon meg legalább egy érvényes **e-mail-címet** .
+   - A **tulajdonosi** folyamat lehetővé teszi, hogy dinamikus tartalmat (például **LeadSource** ) adjon hozzá a következő képernyőfelvételen.
 
-     ![E-mail-művelet használatával dinamikus tartalom hozzáadása](./media/cloud-partner-portal-lead-management-instructions-https/https-myflows-configure-email-dynamic-content.png)
+     ![E-mail művelet hozzáadása dinamikus tartalom használatával](./media/cloud-partner-portal-lead-management-instructions-https/https-myflows-configure-email-dynamic-content.png)
 
-   - **Törzs** – a dinamikus tartalmú listából az e-mail törzsében található adatokat, adja hozzá. Ha például utónév, Vezetéknév, E-mail, és a céges.
+   - **Törzs** – a dinamikus tartalmak listájában adja meg a kívánt adatokat az e-mail törzsében. Például: LastName, FirstName, email és Company.
 
-   Ha elkészült, az e-mail-értesítés beállítása, az alábbi képernyőfelvételen példához hasonlóan fog kinézni.
+   Ha végzett az e-mail-értesítések beállításával, az a következő képernyőfelvételen látható példához hasonlóan fog kinézni.
 
-   ![E-mail-művelet hozzáadása](./media/cloud-partner-portal-lead-management-instructions-https/https-myflows-configure-email-action.png)
+   ![E-mail művelet hozzáadása](./media/cloud-partner-portal-lead-management-instructions-https/https-myflows-configure-email-action.png)
 
-5. Válassza ki **mentése** a folyamat befejezéséhez.
-6. Egy HTTP POST URL-címe a kérelemben szereplő jön létre. Másolja az URL-címet, és szeretné használni a HTTPS-végpont.
+5. A folyamat befejezéséhez kattintson a **Mentés** gombra.
+6. A kérelemben létrejön egy HTTP POST URL-cím. Másolja ezt az URL-címet, és használja HTTPS-végpontként.
 
-    ![HTTP Post URL-címe](./media/cloud-partner-portal-lead-management-instructions-https/https-myflows-get-post-url.png)
+    ![HTTP Post URL-cím](./media/cloud-partner-portal-lead-management-instructions-https/https-myflows-get-post-url.png)
 
-## <a name="configure-your-offer-to-send-leads-to-the-https-endpoint"></a>Az ajánlat az érdeklődők küldeni a HTTPS-végpont konfigurálása
+## <a name="configure-your-offer-to-send-leads-to-the-https-endpoint"></a>Az ajánlat beállítása a HTTPS-végpontnak küldött érdeklődők küldésére
 
-Az érdeklődők felügyeleti adatait az ajánlatban konfigurálásakor válassza ki a **HTTPS-végpont** a a **vezethet cél** , és illessze be az előző lépésben kimásolt HTTP POST URL-címben.  
+Ha az ajánlat érdeklődő-felügyeleti információit konfigurálja, válassza a **https-végpont** lehetőséget az **érdeklődő céljához** , és illessze be az előző lépésben másolt http post URL-címet.  
 
 ![Dinamikus tartalom hozzáadása](./media/cloud-partner-portal-lead-management-instructions-https/https-image017.png)
 
-Érdeklődők jönnek létre, a Microsoft a folyamatot, amely a CRM rendszert vagy az e-mail címet, amelyet a van irányítva az érdeklődők küld.
+Az érdeklődők létrehozásakor a Microsoft elküldi az érdeklődőket a folyamatnak, amely a beállított CRM rendszerre vagy e-mail-címre irányítja át.
 
-## <a name="json-schema-and-example"></a>Példa és JSON-sémája
+## <a name="json-schema-and-example"></a>JSON-séma és példa
 
-A JSON teszt példában a következő mintát követik:
+A JSON-teszt példája a következő sémát használja:
 
-### <a name="json-schema"></a>JSON-sémája
+### <a name="json-schema"></a>JSON-séma
 
 ``` json
 {
@@ -165,9 +166,9 @@ A JSON teszt példában a következő mintát követik:
 }
 ```
 
-Másolja, és szerkessze a következő JSON-példa egy teszt, az MS Flow-ban használandó.
+A következő JSON-példát másolhatja és szerkesztheti, ha tesztként kívánja használni az MS flow-ban.
 
-### <a name="json-example"></a>Példa JSON
+### <a name="json-example"></a>JSON-példa
 
 ```json
 {
@@ -187,4 +188,4 @@ Másolja, és szerkessze a következő JSON-példa egy teszt, az MS Flow-ban has
 
 ## <a name="next-steps"></a>További lépések
 
-Ha ezt még nem tette meg, konfigurálja az ügyfél [érdeklődők](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-get-customer-leads) az a Cloud Partner portálra.
+Ha még nem tette meg, konfigurálja az ügyfél- [érdeklődőket](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-get-customer-leads) a Cloud Partner Portalban.

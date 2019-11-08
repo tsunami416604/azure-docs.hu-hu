@@ -1,5 +1,5 @@
 ---
-title: Hozzon létre egy eseményközpont rögzítés engedélyezve – Azure Event Hubs |} A Microsoft Docs
+title: Event hub létrehozása az engedélyezve rögzítéssel – Azure Event Hubs | Microsoft Docs
 description: Azure Event Hubs-névtér létrehozása egy eseményközponttal és a Rögzítés funkció engedélyezése az Azure Resource Manager sablonjának használatával
 services: event-hubs
 documentationcenter: .net
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: dotnet
 ms.workload: na
 ms.date: 02/06/2019
 ms.author: shvija
-ms.openlocfilehash: 804ef04f0066a8b8dd9df82aef03fcfc32d7cb43
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 5d980cefa5aa953a3fb9683adb589bf202e73250
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60343748"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73826296"
 ---
 # <a name="create-a-namespace-with-event-hub-and-enable-capture-using-a-template"></a>Névtér létrehozása egy eseményközponttal és a Rögzítés funkció engedélyezése sablon használatával
 
@@ -27,17 +27,17 @@ Ez a cikk ismerteti egy olyan Azure Resource Manager-sablon használatát, amely
 
 Ez a cikk azt is bemutatja, hogyan adhatja meg, hogy a rendszer az Azure Storage-blobokban vagy egy Azure Data Lake Store-ban rögzítse az eseményeket, az Ön által kiválasztott célhely alapján.
 
-A sablonok létrehozásáról további információkat az [Authoring Azure Resource Manager templates][Authoring Azure Resource Manager templates] (Azure Resource Manager-sablonok készítése) című témakörben talál. A JSON-szintaxist és a egy sablonban használandó tulajdonságokat: [hátralékának erőforrástípusok](/azure/templates/microsoft.eventhub/allversions).
+További információ a sablonok létrehozásáról: [Azure Resource Manager-sablonok][Authoring Azure Resource Manager templates]készítése. A sablonban használandó JSON-szintaxis és-tulajdonságok megtekintéséhez lásd: [Microsoft. EventHub-erőforrástípusok](/azure/templates/microsoft.eventhub/allversions).
 
-További információk az Azure-erőforrások elnevezési szabályainak mintáiról és gyakorlati megoldásairól: [Az Azure-erőforrások elnevezési szabályai][Azure Resources naming conventions].
+További információ az Azure-erőforrások elnevezési konvencióinak mintáit és gyakorlatáról: az [Azure-erőforrások elnevezési konvenciói][Azure Resources naming conventions].
 
 Az összes sablon eléréséhez kattintson az alábbi GitHub-hivatkozásokra:
 
-- [Eseményközpont és a Rögzítés tárolóban sablon engedélyezése][Event Hub and enable Capture to Storage template] 
-- [Eseményközpont és a Rögzítés Azure Data Lake Store-ban sablon engedélyezése][Event Hub and enable Capture to Azure Data Lake Store template]
+- [Event hub és a rögzítés engedélyezése a Storage-sablonba][Event Hub and enable Capture to Storage template] 
+- [Event hub és a rögzítés engedélyezése Azure Data Lake Store sablonhoz][Event Hub and enable Capture to Azure Data Lake Store template]
 
 > [!NOTE]
-> A legújabb sablonokért keresse fel az [Azure-gyorssablonok][Azure Quickstart Templates] gyűjteményt, és keressen az Event Hubs kifejezésre.
+> A legújabb sablonok kereséséhez látogasson el az [Azure Gyorsindítás sablonok][Azure Quickstart Templates] galériába, és keressen rá Event Hubs.
 > 
 > 
 
@@ -387,7 +387,7 @@ Létrehoz egy **EventHub** típusú névteret egy eseményközponttal, valamint 
 ```
 
 > [!NOTE]
-> Engedélyezi vagy letiltja a kibocsátó üres fájlok nincsenek események előfordulásakor a rögzítési időszakban használatával is a **skipEmptyArchives** tulajdonság. 
+> Engedélyezheti vagy letilthatja az üres fájlok kibocsátását, ha a rögzítési időszak során nem történik esemény a **skipEmptyArchives** tulajdonság használatával. 
 
 ## <a name="commands-to-run-deployment"></a>Az üzembe helyezést futtató parancsok
 
@@ -439,6 +439,6 @@ Az alábbi webhelyeken további információt talál az Event Hubsról:
 
 [Authoring Azure Resource Manager templates]: ../azure-resource-manager/resource-group-authoring-templates.md
 [Azure Quickstart Templates]:  https://azure.microsoft.com/documentation/templates/?term=event+hubs
-[Azure Resources naming conventions]: https://azure.microsoft.com/documentation/articles/guidance-naming-conventions/
+[Azure Resources naming conventions]: /azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging
 [Event hub and enable Capture to Storage template]: https://github.com/Azure/azure-quickstart-templates/tree/master/201-eventhubs-create-namespace-and-enable-capture
 [Event hub and enable Capture to Azure Data Lake Store template]: https://github.com/Azure/azure-quickstart-templates/tree/master/201-eventhubs-create-namespace-and-enable-capture-for-adls

@@ -1,5 +1,5 @@
 ---
-title: 'Azure Portal: lekérdezés Azure SQL Database a lekérdezési szerkesztő használatával '
+title: 'Azure Portal: lekérdezés a lekérdezés-szerkesztő használatával'
 description: Megtudhatja, hogyan csatlakozhat az SQL Database-hez az Azure Portalon az SQL-lekérdezésszerkesztő segítségével. Ezután futtasson Transact-SQL (T-SQL) utasításokat az adatok lekérdezéséhez és szerkesztéséhez.
 keywords: csatlakozás SQL Database-adatbázishoz, Azure Portal, portál, lekérdezésszerkesztő
 services: sql-database
@@ -12,12 +12,12 @@ author: Ninarn
 ms.author: ninarn
 ms.reviewer: carlrab
 ms.date: 10/24/2019
-ms.openlocfilehash: 75882b13341c7fc373de141ba12f8806cb106906
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 3990d7ec63c312d38168fe76269e1a920f1a6817
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73690932"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73827112"
 ---
 # <a name="quickstart-use-the-azure-portals-sql-query-editor-to-connect-and-query-data"></a>Rövid útmutató: a Azure Portal SQL-lekérdezési szerkesztőjével csatlakozhat, és lekérdezheti azokat
 

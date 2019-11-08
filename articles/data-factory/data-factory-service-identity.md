@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 04/08/2019
 ms.author: jingwang
-ms.openlocfilehash: 437d1e13bfb0831bb3ece26f761cef4f5e2e0c6f
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: d8f65bef669e21af96ffe86319602ca5d1eea2c1
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73676992"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73822731"
 ---
 # <a name="managed-identity-for-data-factory"></a>Felügyelt identitás Data Factoryhoz
 
@@ -26,7 +26,7 @@ Ez a cikk segítséget nyújt a Data Factory felügyelt identitásának (korább
 
 ## <a name="overview"></a>Áttekintés
 
-Az adatok előállítójának létrehozásakor a rendszer felügyelt identitást hozhat létre a gyári létrehozással együtt. A felügyelt identitás egy felügyelt alkalmazás, amely az Azure-tevékenység címtárában van regisztrálva, és az adott adatelőállítót jelöli.
+Az adatok előállítójának létrehozásakor a rendszer felügyelt identitást hozhat létre a gyári létrehozással együtt. A felügyelt identitás egy Azure Active Directory számára regisztrált felügyelt alkalmazás, amely az adott adatelőállítót jelöli.
 
 A Data Factory felügyelt identitása a következő funkciókat nyújtja:
 

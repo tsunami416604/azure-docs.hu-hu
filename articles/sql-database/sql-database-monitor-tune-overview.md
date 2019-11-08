@@ -1,5 +1,5 @@
 ---
-title: Monitorozás és teljesítmény finombeállítása – Azure SQL Database
+title: Monitorozás és teljesítmény-finomhangolás
 description: Tippek a teljesítmény finomhangolásához Azure SQL Database a kiértékelés és fejlesztés révén.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: jrasnick, carlrab
 ms.date: 01/25/2019
-ms.openlocfilehash: c11112963ec82a0e53df156048495e7b5141bcb7
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: e77af00dc3352af3265da90685e58b34c96bee81
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73687765"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73825163"
 ---
 # <a name="monitoring-and-performance-tuning"></a>Monitorozás és teljesítmény-finomhangolás
 
@@ -34,7 +34,7 @@ A következő lépésekkel biztosíthatja, hogy egy adatbázis probléma nélkü
 
 Az Azure-beli SQL-adatbázisok teljesítményének figyeléséhez először figyelje a választott adatbázis-teljesítmény szintjéhez képest felhasznált erőforrásokat. A következő erőforrások figyelése:
  - **CPU-használat**: Ellenőrizze, hogy az adatbázis hosszabb ideig eléri-e a CPU-használat 100 százalékát. A magas CPU-használat azt jelezheti, hogy azonosítania és hangolnia kell a legtöbb számítási teljesítményt használó lekérdezéseket. A magas CPU-használat azt is jelezheti, hogy az adatbázist vagy a példányt magasabb szolgáltatási szintre kell frissíteni. 
- - **Várakozási statisztika**: a [sys. DM _os_wait_stats (Transact-SQL)](/sql/relational-databases/system-dynamic-management-views/sys-dm-os-wait-stats-transact-sql) használatával határozhatja meg, hogy a lekérdezések mennyi ideig várnak. A lekérdezések erőforrásokra, várakozási sorokra vagy külső várakozásokra is várnak. 
+ - **Várakozási statisztika**: a [sys. dm_os_wait_stats (Transact-SQL)](/sql/relational-databases/system-dynamic-management-views/sys-dm-os-wait-stats-transact-sql) használatával határozza meg, hogy mennyi ideig várakozik a lekérdezések. A lekérdezések erőforrásokra, várakozási sorokra vagy külső várakozásokra is várnak. 
  - **I/o-használat**: Ellenőrizze, hogy az adatbázis eléri-e a mögöttes tároló IO-korlátait.
  - **Memóriahasználat**: az adatbázishoz vagy példányhoz rendelkezésre álló memória mennyisége arányos a virtuális mag számával. Győződjön meg arról, hogy a memória elég a munkaterheléshez. A lap várható élettartama azon paraméterek egyike, amelyek azt jelezhetik, hogy a rendszer milyen gyorsan távolítja el a lapokat a memóriából.
 
@@ -91,11 +91,11 @@ Ha egy futó teljesítménnyel kapcsolatos problémát tapasztal, a cél a ponto
 - A [Azure Portal](sql-database-manage-after-migration.md#monitor-databases-using-the-azure-portal) használatával figyelheti a CPU-kihasználtság százalékos arányát.
 - Használja a következő [DMV](sql-database-monitoring-with-dmvs.md):
 
-  - A [sys. DM _db_resource_stats](sql-database-monitoring-with-dmvs.md#monitor-resource-use) DMV egy SQL-adatbázis CPU-, I/O-és memória-felhasználását adja vissza. Egy sor minden 15 másodperces intervallumban létezik, még akkor is, ha nincs tevékenység az adatbázisban. A korábbi adatait egy óráig őrzi meg a rendszer.
+  - A [sys. dm_db_resource_stats](sql-database-monitoring-with-dmvs.md#monitor-resource-use) DMV egy SQL-adatbázis CPU-, I/O-és memória-felhasználását adja vissza. Egy sor minden 15 másodperces intervallumban létezik, még akkor is, ha nincs tevékenység az adatbázisban. A korábbi adatait egy óráig őrzi meg a rendszer.
   - A [sys. resource_stats](sql-database-monitoring-with-dmvs.md#monitor-resource-use) DMV visszaadja a CPU-használati és adattárolási adatokat Azure SQL Database számára. Az adatok gyűjtése és összesítése öt percenként történik.
 
 > [!IMPORTANT]
-> A sys. DM _db_resource_stats és a sys. resource_stats DMV használó T-SQL-lekérdezések CPU-használati problémáinak elhárításához tekintse meg a [CPU-teljesítménnyel kapcsolatos problémák azonosítása](sql-database-monitoring-with-dmvs.md#identify-cpu-performance-issues)című témakört.
+> A sys. dm_db_resource_stats és sys. resource_stats DMV használó T-SQL-lekérdezések CPU-használati problémáinak elhárításához tekintse meg a [CPU-teljesítménnyel kapcsolatos problémák azonosítása](sql-database-monitoring-with-dmvs.md#identify-cpu-performance-issues)című témakört.
 
 ### <a name="ParamSniffing"></a>PSP-problémákkal rendelkező lekérdezések
 
@@ -108,7 +108,7 @@ Több megkerülő megoldás is csökkentheti a PSP-problémákat. Minden megker�
 - A lekérdezés végrehajtásához használja az [ÚJRAfordítási](https://docs.microsoft.com/sql/t-sql/queries/hints-transact-sql-query) lekérdezési célzást. Ez a megkerülő megoldás a minőség javítása érdekében a fordítási időt és a CPU-t növeli. A `RECOMPILE` beállítás használata gyakran nem lehetséges a nagy átviteli sebességet igénylő munkaterhelések esetében.
 - Használja a [(z) (optimalizálás a...)](https://docs.microsoft.com/sql/t-sql/queries/hints-transact-sql-query) lekérdezési mutatót a tényleges paraméterérték felülbírálására egy jellemző paraméter értékkel, amely egy olyan tervet hoz létre, amely elég jó a legtöbb paraméter-érték lehetőséghez. Ehhez a beállításhoz jól ismerni kell az optimális paramétereket és a társított terv jellemzőit.
 - A [(z) (ismeretlen)](https://docs.microsoft.com/sql/t-sql/queries/hints-transact-sql-query) lekérdezési mutatóval felülbírálhatja a tényleges paraméter értékét, és Ehelyett használhatja a sűrűség vektor átlagát. Ezt úgy is megteheti, hogy beírja a bejövő paraméterek értékét a helyi változók között, majd a predikátumok helyi változóit használja a paraméterek használata helyett. Ennél a javításnál az átlagos sűrűségnek *elég jónak*kell lennie.
-- Tiltsa le a paraméterek teljes elemzését a [DISABLE_PARAMETER_SNIFFING](https://docs.microsoft.com/sql/t-sql/queries/hints-transact-sql-query) -lekérdezési mutató használatával.
+- Tiltsa le a paraméterek teljes elemzését a [DISABLE_PARAMETER_SNIFFING](https://docs.microsoft.com/sql/t-sql/queries/hints-transact-sql-query) lekérdezési mutató használatával.
 - A gyorsítótárban lévő újrafordítások elkerülése érdekében használja a [KEEPFIXEDPLAN](https://docs.microsoft.com/sql/t-sql/queries/hints-transact-sql-query) lekérdezési mutatóját. Ez a megkerülő megoldás azt feltételezi, hogy a megfelelő közös csomag már a gyorsítótárban van. Az automatikus statisztikákat is letilthatja, hogy csökkentse a jó terv kizárásának esélyét, és egy új, rossz tervet fog lefordítani.
 - A tervet úgy kényszerítheti, hogy explicit módon a [használati terv](https://docs.microsoft.com/sql/t-sql/queries/hints-transact-sql-query) lekérdezése célzást használja a lekérdezés újraírásával és a lekérdezés szövegének hozzáadásával. Vagy állítson be egy adott csomagot a Query Store használatával vagy az [automatikus hangolás](sql-database-automatic-tuning.md)engedélyezésével.
 - Cserélje le az egyetlen eljárást egy beágyazott eljárásokra, amelyek mindegyike felhasználható a feltételes logika és a hozzá tartozó paraméterek értékei alapján.
@@ -181,7 +181,7 @@ Az újrafordítás (vagy a gyorsítótár kiürítése utáni friss fordítás) 
 
 - **Különböző statisztikák**: a hivatkozott objektumokhoz társított statisztikák változhattak, vagy az eredeti rendszer statisztikái lényegesen eltérőek lehetnek.  Ha a statisztikai változás és az újrafordítás történik, a lekérdezés-optimalizáló a változástól kezdődő statisztikát használja. Az átdolgozott statisztikai adatok eloszlása és gyakorisága eltérő lehet az eredeti fordítástól.  Ezek a változások a kardinális becslések létrehozásához használatosak. (A*kardinális becslések* a logikai lekérdezési fában áthaladó sorok száma.) A kardinális becslések változásai a különböző fizikai operátorok és a hozzájuk tartozó műveletek elvégzésére is kiválaszthatók.  A statisztikában még kisebb változások is megváltoztathatják a lekérdezés végrehajtási tervét.
 
-- **Módosult az adatbázis-kompatibilitási szint vagy a Cardinals-kalkulátor verziója**: az adatbázis kompatibilitási szintjének módosítása lehetővé teszi, hogy az új stratégiák és szolgáltatások egy másik lekérdezés-végrehajtási tervet eredményeznek.  Az adatbázis-kompatibilitási szinten kívül a letiltott vagy engedélyezett nyomkövetési jelző 4199 vagy az adatbázis-hatókörű konfigurációs QUERY_OPTIMIZER_HOTFIXES módosult állapota is befolyásolhatja a lekérdezés végrehajtási tervének választási lehetőségeit a fordítás ideje alatt.  A nyomkövetési jelzők 9481 (örökölt CE) és 2312 (az alapértelmezett CE kényszerített) a tervet is érintik. 
+- **Módosult az adatbázis-kompatibilitási szint vagy a Cardinals-kalkulátor verziója**: az adatbázis kompatibilitási szintjének módosítása lehetővé teszi, hogy az új stratégiák és szolgáltatások egy másik lekérdezés-végrehajtási tervet eredményeznek.  Az adatbázis-kompatibilitási szinten kívül a letiltott vagy engedélyezett nyomkövetési jelző 4199 vagy az adatbázis hatókörű QUERY_OPTIMIZER_HOTFIXES konfigurációjának módosult állapota is befolyásolhatja a lekérdezés végrehajtási tervének választási lehetőségeit a fordítás ideje alatt.  A nyomkövetési jelzők 9481 (örökölt CE) és 2312 (az alapértelmezett CE kényszerített) a tervet is érintik. 
 
 ### <a name="resolve-problem-queries-or-provide-more-resources"></a>Probléma-lekérdezések feloldása vagy további erőforrások biztosítása
 
@@ -215,16 +215,16 @@ Ha biztos abban, hogy a teljesítménnyel kapcsolatos probléma nem kapcsolódik
 
 Ezeket a metódusokat általában a várakozási típusok leggyakoribb kategóriáinak megjelenítésére használják:
 
-- A [lekérdezési tároló](https://docs.microsoft.com/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store) használatával megkeresheti az egyes lekérdezések várakozási statisztikáit az idő múlásával. A lekérdezési tárolóban a várakozási típusok a várakozási kategóriákba vannak összevonva. A várakozási kategóriák leképezése a [sys. query_store_wait_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-query-store-wait-stats-transact-sql#wait-categories-mapping-table).
-- A [sys. DM _db_wait_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-wait-stats-azure-sql-database) a művelet során végrehajtott szálak által észlelt összes várakozással kapcsolatos információt ad vissza. Ennek az összesített nézetnek a segítségével diagnosztizálhatja a teljesítménnyel kapcsolatos problémákat Azure SQL Database, valamint adott lekérdezésekkel és kötegekkel is.
-- A [sys. DM _os_waiting_tasks](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-os-waiting-tasks-transact-sql) használatával adatokat adhat vissza az egyes erőforrásokra várakozó feladatok várólistáján.
+- A [lekérdezési tároló](https://docs.microsoft.com/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store) használatával megkeresheti az egyes lekérdezések várakozási statisztikáit az idő múlásával. A lekérdezési tárolóban a várakozási típusok a várakozási kategóriákba vannak összevonva. A várakozási kategóriák hozzárendelését a [sys. query_store_wait_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-query-store-wait-stats-transact-sql#wait-categories-mapping-table)várakozási típusok között találja.
+- A [sys. dm_db_wait_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-wait-stats-azure-sql-database) használatával a művelet során végrehajtott szálak által észlelt összes várakozásról információt adhat vissza. Ennek az összesített nézetnek a segítségével diagnosztizálhatja a teljesítménnyel kapcsolatos problémákat Azure SQL Database, valamint adott lekérdezésekkel és kötegekkel is.
+- A [sys. dm_os_waiting_tasks](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-os-waiting-tasks-transact-sql) használatával információt adhat vissza az egyes erőforrásokra várakozó feladatok várólistáján.
 
 A nagy CPU-forgatókönyvek esetében előfordulhat, hogy a Query Store és a wait statisztikája nem tükrözi a CPU-használatot, ha:
 
 - A nagy CPU-fogyasztású lekérdezések végrehajtása még folyamatban van.
 - A nagy CPU-fogyasztásra felhasználható lekérdezések akkor futnak, amikor feladatátvétel történt.
 
-A lekérdezési tárolót nyomon követő DMV és a várakozási statisztikának csak a sikeresen befejezett és időkorlátú lekérdezések eredményei láthatók. Nem jelenítenek meg adatokat a jelenleg végrehajtás alatt álló utasításokhoz, amíg az utasítások befejeződik. A dinamikus felügyeleti nézet [sys. DM _exec_requests](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql) nyomon követheti a jelenleg végrehajtás alatt álló lekérdezéseket és a kapcsolódó munkavégző időt.
+A lekérdezési tárolót nyomon követő DMV és a várakozási statisztikának csak a sikeresen befejezett és időkorlátú lekérdezések eredményei láthatók. Nem jelenítenek meg adatokat a jelenleg végrehajtás alatt álló utasításokhoz, amíg az utasítások befejeződik. A dinamikus felügyeleti nézet [sys. dm_exec_requests](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql) használatával követheti nyomon a jelenleg végrehajtás alatt álló lekérdezéseket és a kapcsolódó munkavégző időt.
 
 A cikk elején található diagram azt mutatja, hogy a leggyakoribb várakozások a következők:
 

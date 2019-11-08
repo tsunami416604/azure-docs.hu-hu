@@ -4,16 +4,17 @@ description: A VHD-létrehozással és a kapcsolódó problémákkal kapcsolatos
 services: Azure Marketplace
 author: HannibalSII
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 10/02/2018
 ms.author: hascipio
 ms.reviewer: v-divte; v-miclar
-ms.openlocfilehash: bb7e62138dbefdd8ff4933ef10602986a5da2bf6
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: 1d4224d8f1f735ecef3d4551e3032b916e81dc3c
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67875001"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73826619"
 ---
 # <a name="common-issues-during-vhd-creation-faq"></a>Gyakori problémák a VHD létrehozásakor (GYIK)
 
@@ -44,7 +45,7 @@ A következő cikkek elmagyarázzák, hogyan végezhető el a Windows-és Linux-
 
 ## <a name="how-do-you-generate-new-ssh-certificates"></a>Hogyan hozhatók új SSH-tanúsítványok?
 
-A tanúsítványok előállítását a cikk a virtuálisgép- [rendszerkép megosztott hozzáférés-aláírási URI-ja](./cpp-get-sas-uri.md) beszerzése című szakaszában ismertetett szakasza [technikai eszközöket hoz létre](./cpp-create-technical-assets.md)a virtuálisgép-ajánlathoz.
+A tanúsítványok előállítását a cikk a virtuálisgép- [rendszerkép megosztott hozzáférés-aláírási URI-ja beszerzése](./cpp-get-sas-uri.md) című szakaszában ismertetett szakasza [technikai eszközöket hoz létre](./cpp-create-technical-assets.md)a virtuálisgép-ajánlathoz.
 
 
 ## <a name="how-do-you-configure-a-virtual-private-network-vpn-to-work-with-my-vms"></a>Hogyan konfigurálhat virtuális magánhálózati (VPN) hálózatot a virtuális gépekkel való együttműködéshez?
@@ -67,12 +68,12 @@ Igen, ha az Azure-ban üzemelteti.  Az Azure egy egyedi azonosítót rendel hozz
 
 ## <a name="in-a-vm-how-do-you-manage-the-custom-script-extension-in-the-startup-task"></a>Egy virtuális gépen hogyan kezelheti az egyéni szkriptek bővítményét az indítási feladatban?
 
-A következő cikk részletesen ismerteti, hogyan használható az egyéni szkriptek bővítmény a Azure PowerShell modullal, Azure Resource Manager sablonokkal és a Windows rendszerekre vonatkozó hibaelhárítási lépésekkel: [Egyéni parancsfájl-bővítmény a Windowshoz](https://azure.microsoft.com/documentation/articles/virtual-machines-windows-extensions-customscript/)
+A következő cikk részletesen ismerteti, hogyan használhatók az egyéni szkriptek bővítménye a Azure PowerShell modullal, Azure Resource Manager sablonokkal és a Windows rendszereken végzett hibaelhárítási lépésekkel: [egyéni parancsfájl-bővítmény Windows](https://azure.microsoft.com/documentation/articles/virtual-machines-windows-extensions-customscript/) rendszeren
 
 
 ## <a name="are-32-bit-applications-or-services-supported-in-the-azure-marketplace"></a>Támogatottak-e a 32 bites alkalmazások vagy szolgáltatások az Azure piactéren?
 
-Általánosságban nem.  Az Azure-beli virtuális gépekhez támogatott operációs rendszerek és standard szolgáltatások mind 64 bitesek.  Technikai szempontból azonban a legtöbb 64 bites operációs rendszer támogatja a visszamenőleges kompatibilitás érdekében az alkalmazások 32 bites verzióinak futtatását.  A virtuálisgép-megoldás részeként azonban a 32 bites alkalmazások használata nem támogatott, ezért nem ajánlott.  Ehelyett fordítsa újra az alkalmazást 64 bites projektként.
+Általánosságban nem.  Az Azure-beli virtuális gépekhez támogatott operációs rendszerek és standard szolgáltatások mind 64 bitesek.  Technikai szempontból azonban a legtöbb 64 bites operációs rendszer támogatja a visszamenőleges kompatibilitás érdekében az alkalmazások 32 bites verzióinak futtatását.  A virtuálisgép-megoldás részeként azonban a 32 bites alkalmazások használata nem támogatott, *ezért nem ajánlott.*  Ehelyett fordítsa újra az alkalmazást 64 bites projektként.
 
 További információkért tekintse át a következő cikkeket:
 - [32 bites alkalmazások futtatása](https://docs.microsoft.com/windows/desktop/WinProg64/running-32-bit-applications)
@@ -80,7 +81,7 @@ További információkért tekintse át a következő cikkeket:
 - [Microsoft kiszolgálószoftveres támogatás a Microsoft Azure Virtual Machines szolgáltatáshoz](https://support.microsoft.com/help/2721672/microsoft-server-software-support-for-microsoft-azure-virtual-machines)
 
 
-## <a name="every-time-i-try-to-create-an-image-from-my-vhds-i-get-the-error-vhd-is-already-registered-with-image-repository-as-the-resource-in-powershell-i-did-not-create-any-image-before-nor-did-i-find-any-image-with-this-name-in-azure-how-do-i-resolve-this-issue"></a>Minden alkalommal, amikor megpróbálok létrehozni egy rendszerképet a virtuális merevlemezekről, hibaüzenetet `.VHD is already registered with image repository as the resource` kapok a PowerShellben. Még nem hozott létre képeket, és nem találtam ilyen nevű képet az Azure-ban. Hogyan a probléma megoldásához?
+## <a name="every-time-i-try-to-create-an-image-from-my-vhds-i-get-the-error-vhd-is-already-registered-with-image-repository-as-the-resource-in-powershell-i-did-not-create-any-image-before-nor-did-i-find-any-image-with-this-name-in-azure-how-do-i-resolve-this-issue"></a>Minden alkalommal, amikor megpróbálok létrehozni egy rendszerképet a virtuális merevlemezekről, a következő hibaüzenet jelenik meg: `.VHD is already registered with image repository as the resource` a PowerShellben. Még nem hozott létre képeket, és nem találtam ilyen nevű képet az Azure-ban. Hogyan a probléma megoldásához?
 
 Ez a probléma általában akkor fordul elő, ha a felhasználó olyan virtuális merevlemezről telepített egy virtuális gépet, amely zárolva van.  Győződjön meg arról, hogy nincs lefoglalva virtuális gép a virtuális merevlemezről, majd próbálja megismételni a műveletet.  Ha a probléma továbbra is fennáll, nyisson meg egy támogatási jegyet, ahogy azt a [Cloud Partner Portal támogatása](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-support-for-cloud-partner-portal)című témakör ismerteti. 
 

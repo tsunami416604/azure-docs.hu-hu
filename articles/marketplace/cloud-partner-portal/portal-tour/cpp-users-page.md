@@ -1,33 +1,34 @@
 ---
-title: Felhasználók oldal az Azure Marketplace-en
-description: A felhasználók oldal az Azure Marketplace-en, a Cloud Partner portálra áttekintése.
+title: Az Azure Marketplace felhasználói lapja
+description: Az Azure Marketplace Cloud Partner Portal felhasználók lapjának áttekintése.
 services: Azure, Marketplace, Cloud Partner Portal,
 author: v-miclar
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: pabutler
-ms.openlocfilehash: 1c420a275efa4bb45ba952a04faafe25e30d64ef
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b5ba95f139963dcf10f7c97ed614ec8f4cf899d2
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64943410"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73821458"
 ---
 # <a name="users-page"></a>Felhasználók oldal
 
-A [ **felhasználók** ](https://cloudpartner.azure.com/#users) lap a Cloud Partner portálra, az összes regisztrált felhasználók listáját jeleníti meg.  Az oszlopok minden egyes felhasználói e-mail cím, webportál szerepkört, ajánlattípusra és kiadó szervezet tartalmazza. Az eredmények lehet oszlop szerint rendezve vagy a megadott karakterlánc szűrve.  
+A [**felhasználók**](https://cloudpartner.azure.com/#users) lap megjeleníti a Cloud Partner Portal összes regisztrált felhasználójának listáját.  Az oszlopok tartalmazzák az egyes felhasználók e-mail-címét, a portál szerepkört, az ajánlat típusát és a közzétételi szervezetet. Az eredmények oszlop szerint rendelhetők, vagy egy megadott sztring alapján szűrhetők.  
 
-Ez a lap is megjelenik egy **felhasználó hozzáadása** , hogyan adhat hozzá felhasználókat a közzétételi szervezet gombra.  További információkért lásd: [kezelése a Cloud Partner Portal felhasználójához](./../../cloud-partner-portal-orig/cloud-partner-portal-manage-users.md).
+Ezen a lapon a **felhasználó hozzáadása** gomb is megjelenik a közzétételi szervezethez való hozzáadáshoz.  További információ: [felhasználók kezelése a Cloud Partner Portalon](./../../cloud-partner-portal-orig/cloud-partner-portal-manage-users.md).
 
 
-## <a name="example-page"></a>(Példa)
+## <a name="example-page"></a>Példa oldal
 
-Az alábbi képen látható a **felhasználók** oldal szűrve: a karakterlánc `contoso`.
+Az alábbi képen a **felhasználók** lap szűrve jelenik meg a `contoso`sztringen.
 
 ![Felhasználók oldal](./media/users-page1.png)
 
 
 ## <a name="next-steps"></a>További lépések
 
-A következő navigációs menüsávon elemet jeleníti meg egy [naplózási Előzmények lapon](./cpp-history-page.md), az minden olyan ajánlat közzétételi események listája látható. 
+A következő navigációs menüsor elem megjeleníti a [Naplózási előzmények lapot](./cpp-history-page.md), amely felsorolja az összes ajánlat közzétételi eseményeit. 
