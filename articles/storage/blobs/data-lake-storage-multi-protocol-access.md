@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/01/2019
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: f3e852d178a6720f8d567f4ecb042f0b83bcd56c
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: f782c5abe611086baae5d2ad71bc38516039a231
+ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73583145"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73796054"
 ---
 # <a name="multi-protocol-access-on-azure-data-lake-storage"></a>Több protokollos hozzáférés Azure Data Lake Storage
 
@@ -79,7 +79,7 @@ Akárcsak a támogatott blob Storage-funkciók listája, az ebben a táblázatba
 |[Azure Stream Analytics](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-quick-create-portal)|Általánosan elérhető|
 |[IoT Hub](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-d2c)|Általánosan elérhető|
 |[Logikai alkalmazások](https://azure.microsoft.com/services/logic-apps/)|Általánosan elérhető|
-|[Azure Search](https://docs.microsoft.com/azure/search/search-blob-storage-integration)|Előzetes verzió|
+|[Azure-Cognitive Search](https://docs.microsoft.com/azure/search/search-howto-index-azure-data-lake-storage)|Előzetes verzió|
 
 Az Data Lake Storage Gen2 Azure ökoszisztéma-támogatásának teljes listájáért lásd: a [Azure Data Lake Storage integrálása az Azure-szolgáltatásokkal](data-lake-storage-integrate-with-azure-services.md).
 

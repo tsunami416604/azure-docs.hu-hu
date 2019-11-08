@@ -5,14 +5,14 @@ services: application-gateway
 author: caya
 ms.service: application-gateway
 ms.topic: article
-ms.date: 10/22/2019
+ms.date: 11/4/2019
 ms.author: caya
-ms.openlocfilehash: 045fb54956e78e826b06dc1c56c29e1c7bd430bd
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: dec43a4d7eb5a9546fcd77cce972b93542ea3b10
+ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73513418"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73795956"
 ---
 # <a name="install-an-application-gateway-ingress-controller-agic-using-an-existing-application-gateway"></a>Application Gateway beáramlási vezérlő (AGIC) telepítése meglévő Application Gateway használatával
 
@@ -91,7 +91,7 @@ A [Cloud Shell](https://shell.azure.com/) használatával futtassa az alábbi pa
     az identity show -g <resourcegroup> -n <identity-name>
     ```
 
-1. Adja meg az identitáshoz `Contributor` hozzáférést Application Gateway. Ehhez a Application Gateway AZONOSÍTÓjának kell kinéznie, amely a következőhöz hasonló lesz: `/subscriptions/A/resourceGroups/B/providers/Microsoft.Network/applicationGateways/C`
+1. Adja meg az identitásnak `Contributor` hozzáférést a Application Gatewayhoz. Ehhez a Application Gateway AZONOSÍTÓjának kell kinéznie, amely a következőhöz hasonló lesz: `/subscriptions/A/resourceGroups/B/providers/Microsoft.Network/applicationGateways/C`
 
     Az előfizetésben található Application Gateway-azonosítók listájának lekérése a: `az network application-gateway list --query '[].id'`
 
@@ -128,7 +128,7 @@ armAuth:
 ```
 
 ## <a name="install-ingress-controller-as-a-helm-chart"></a>A bejövő vezérlő telepítése Helm-diagramként
-Az első néhány lépésben telepítjük a Helm-t a Kubernetes-fürtön. A AGIC Helm-csomag telepítéséhez használja a [Cloud shellt](https://shell.azure.com/) :
+Az első néhány lépésben a Helm-t a Kubernetes-fürtön telepítjük. A AGIC Helm-csomag telepítéséhez használja a [Cloud shellt](https://shell.azure.com/) :
 
 1. Adja hozzá a `application-gateway-kubernetes-ingress` Helm-tárházat, és hajtson végre egy Helm-frissítést
 
@@ -244,9 +244,9 @@ A beállítás engedélyezése előtt __készítsen biztonsági másolatot a App
 A letöltött zip-fájl JSON-sablonokat, bash-és PowerShell-parancsfájlokat tartalmaz, amelyeket a Application Gateway visszaállítására használhat.
 
 ### <a name="example-scenario"></a>Példaforgatókönyv
-Nézzük meg a két webhely forgalmát kezelő képzeletbeli Application Gateway:
+Tekintsük át a két webhely forgalmát kezelő képzeletbeli Application Gateway:
   - `dev.contoso.com` – egy új AK-ban üzemeltetve, Application Gateway és AGIC használatával
-  - `prod.contoso.com` – Azure-beli [virtuálisgép-méretezési csoporton](https://azure.microsoft.com/services/virtual-machine-scale-sets/) üzemeltetett
+  - `prod.contoso.com` – [Azure virtuálisgép-méretezési csoporton](https://azure.microsoft.com/services/virtual-machine-scale-sets/) futtatva
 
 Az alapértelmezett beállításokkal a AGIC 100%-os tulajdonjogot feltételez a Application Gateway számára. A AGIC felülírja az összes app Gateway konfigurációját. Ha a `prod.contoso.com` (Application Gateway) szolgáltatásban manuálisan hozunk létre figyelőt, anélkül, hogy az a Kubernetes-ba kerül, a AGIC másodpercek alatt törli a `prod.contoso.com`-konfigurációt.
 
@@ -323,7 +323,7 @@ AGIC engedélyek kiterjesztése a rel:
     ```
 
 ### <a name="enable-for-an-existing-agic-installation"></a>Meglévő AGIC-telepítés engedélyezése
-Tegyük fel, hogy már van egy működő AK-beli, Application Gateway és konfigurált AGIC a fürtben. A `prod.contosor.com` és az AK-ból érkező adatforgalom sikeresen szolgál. Szeretnénk `staging.contoso.com` hozzáadni a meglévő Application Gatewayhoz, de [virtuális gépen](https://azure.microsoft.com/services/virtual-machines/)kell üzemeltetni. Újra fogjuk használni a meglévő Application Gateway, és manuálisan konfiguráljuk a figyelőt és a háttér-készleteket a `staging.contoso.com`hoz. De a Application Gateway konfiguráció manuális csípése (a [portálon](https://portal.azure.com), az [ARM API](https://docs.microsoft.com/rest/api/resources/) -kon vagy a [Terraform](https://www.terraform.io/)-on keresztül) ütközne a teljes tulajdonú AGIC. Röviddel a módosítások alkalmazása után a AGIC felülírja vagy törli őket.
+Tegyük fel, hogy már van egy működő AK-beli, Application Gateway és konfigurált AGIC a fürtben. A `prod.contosor.com` és az AK-ból érkező adatforgalom sikeresen szolgál. Szeretnénk `staging.contoso.com` hozzáadni a meglévő Application Gatewayhoz, de [virtuális gépen](https://azure.microsoft.com/services/virtual-machines/)kell üzemeltetni. Újra felhasználjuk a meglévő Application Gateway, és manuálisan konfiguráljuk a figyelőt és a háttér-készleteket a `staging.contoso.com`hoz. De a Application Gateway konfiguráció manuális csípése (a [portálon](https://portal.azure.com), az [ARM API](https://docs.microsoft.com/rest/api/resources/) -kon vagy a [Terraform](https://www.terraform.io/)-on keresztül) ütközne a teljes tulajdonú AGIC. Röviddel a módosítások alkalmazása után a AGIC felülírja vagy törli őket.
 
 A AGIC megtilthatja, hogy a konfiguráció egy részhalmaza módosítható legyen.
 
