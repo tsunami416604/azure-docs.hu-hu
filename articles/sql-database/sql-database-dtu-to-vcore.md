@@ -1,5 +1,5 @@
 ---
-title: Azure SQL Database – áttelepítés DTU-ről virtuális mag-re
+title: Migrálás a DTU-ből a virtuális mag-be
 description: Migrálás a DTU modellből a virtuális mag modellbe. A virtuális mag-re való Migrálás hasonló a standard és a prémium szint közötti verziófrissítéshez vagy visszalépéshez.
 services: sql-database
 ms.service: sql-database
@@ -9,12 +9,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: sashan, moslake, carlrab
 ms.date: 10/08/2019
-ms.openlocfilehash: 73803ed6c583b8f40daa569a75806f54f6f4be45
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: f34439b7750ca1858e71d4a36121eb65001fff50
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73690570"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73811273"
 ---
 # <a name="migrate-from-the-dtu-based-model-to-the-vcore-based-model"></a>Migrálás a DTU-alapú modellből a virtuális mag-alapú modellbe
 

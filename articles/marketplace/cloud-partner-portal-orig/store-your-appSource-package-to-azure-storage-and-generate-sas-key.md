@@ -1,59 +1,60 @@
 ---
-title: Az AppSource-csomag az Azure storage-Store és a egy URL-cím létrehozhat egy SAS-kulcs
-description: Töltse fel, és tegye biztonságossá az AppSource-csomag szükséges lépéseket részletezi.
+title: AppSource-csomag tárolása az Azure Storage-ban és egy URL-cím létrehozása SAS-kulccsal
+description: Részletesen ismerteti a AppSource-csomagok feltöltéséhez és védelméhez szükséges lépéseket.
 services: Azure, Marketplace, Cloud Partner Portal,
 author: v-miclar
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/18/2018
 ms.author: pabutler
-ms.openlocfilehash: ac77767aee2dcde33f4266e1d2d09c49dcf5f8a3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5f1a09244697a6771ad1b499f3d7c36eb7297067
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64943285"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73827647"
 ---
-<a name="store-your-appsource-package-to-azure-storage-and-generate-a-url-with-sas-key"></a>Az AppSource-csomag az Azure storage-Store és a egy URL-cím létrehozhat egy SAS-kulcs
+<a name="store-your-appsource-package-to-azure-storage-and-generate-a-url-with-sas-key"></a>AppSource-csomag tárolása az Azure Storage-ban és egy URL-cím létrehozása SAS-kulccsal
 =============================================================================
 
-A fájlok biztonságának fenntartása minden partnerek kell az appsource-ban alkalmazáscsomag-fájl tárolása egy Azure blob storage-fiókot, és ossza meg a SAS-kulcs használatával. Mi az alkalmazáscsomag-fájl lekérése az Azure storage-tárolójába minősítésre és az appsource-ban próbaverziókhoz használandó.
+A fájlok biztonságának fenntartása érdekében minden partnernek egy Azure Blob Storage-fiókban kell tárolnia a AppSource-csomagot, és a megosztáshoz SAS-kulcsot kell használnia. Az Azure Storage-beli tárolási helyről beolvasjuk a csomagfájl minősítését, és azt AppSource-próbák esetén használni fogjuk.
 
-Az alábbi lépések segítségével a csomag feltöltése a blob storage:
+A következő lépésekkel töltheti fel a csomagot a blob Storage-ba:
 
-1. Lépjen a <https://azure.microsoft.com> és a egy próbaverziós vagy számlázott ingyenes fiók létrehozása.
+1. Lépjen <https://azure.microsoft.com>, és hozzon létre egy ingyenes próbaverziót vagy egy számlázott fiókot.
 
-2. Jelentkezzen be az [Azure Portal](https://portal.azure.com/).
+2. Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
 
-3. Hozzon létre egy új Tárfiókot kattintva **+ új** és a **adatok + tárolás** fiókot.
+3. Hozzon létre egy új Storage-fiókot az **+ új** lehetőségre kattintva, majd lépjen az **adattároló** -fiókra.
 
-   ![Adatok + tárolás panel a Microsoft Azure Portalon](media/CRMScreenShot7.png)
+   ![Adattárolási panel az Microsoft Azure portálon](media/CRMScreenShot7.png)
 
-4. Adjon meg egy **neve** és **erőforráscsoport** nevet, és kattintson a **létrehozása** gombra.
+4. Adja meg a **név** és az **erőforráscsoport** nevét, majd kattintson a **Létrehozás** gombra.
 
-   ![Storage-fiók létrehozása a Microsoft Azure Portalon](media/CRMScreenShot8.png)
+   ![Storage-fiók létrehozása Microsoft Azure portálon](media/CRMScreenShot8.png)
 
-5. Keresse meg az újonnan létrehozott erőforráscsoportot, és hozzon létre egy új blobtárolót.
+5. Navigáljon az újonnan létrehozott erőforráscsoporthoz, és hozzon létre egy új BLOB-tárolót.
 
-   ![A Microsoft Azure Portallal blob csomag feltöltése](media/CRMScreenShot9.png)
+   ![Csomag feltöltése blobként Microsoft Azure portál használatával](media/CRMScreenShot9.png)
 
-6. Ha még nem tette meg, töltse le és telepítse a Microsoft [Azure Storage Explorer](https://storageexplorer.com/).
+6. Ha még nem tette meg, töltse le és telepítse a Microsoft [Azure Storage Explorert](https://storageexplorer.com/).
 
-7. Nyissa meg a Storage Explorert, és az ikon segítségével csatlakozhat az Azure storage-fiók.
+7. Nyissa meg Storage Explorer és az ikon használatával kapcsolódjon az Azure Storage-fiókjához.
 
-8. Keresse meg a létrehozott blob-tárolóba, és kattintson a **feltöltése** felvenni a csomag zip fájlt.
+8. Navigáljon a létrehozott blob-tárolóhoz, és kattintson a **feltöltés** gombra a csomag zip-fájljának hozzáadásához.
 
-   ![A Microsoft Storage Explorer használatával csomag feltöltése.](media/CRMScreenShot10.png)
+   ![Csomag feltöltése a Microsoft Storage Explorer használatával](media/CRMScreenShot10.png)
 
-9. A jobb gombbal a fájlt, és válassza a **közös hozzáférési jogosultságkód igénylése**.
+9. Kattintson a jobb gombbal a fájlra, és válassza a **közös hozzáférési aláírás beolvasása**elemet.
 
-   ![Az Azure-fájl a közös hozzáférésű jogosultságkód igénylése](media/CRMScreenShot11.png)
+   ![Azure-fájl közös hozzáférésű aláírásának beolvasása](media/CRMScreenShot11.png)
 
-10. Módosítsa a **lejárati idő** ahhoz, hogy a SAS aktív egy hónapig, majd kattintson a **létrehozás**.
+10. Módosítsa a **lejárati időt** , hogy az SAS aktív legyen egy hónapig, majd kattintson a **Létrehozás**gombra.
 
-    ![Az Azure file SAS lejárati idejének módosítása](media/CRMScreenShot12.png)
+    ![Azure-fájl SAS-lejárati dátumának módosítása](media/CRMScreenShot12.png)
 
-11. Másolja az URL-cím mezőben, és mentse későbbi használatra. Adja meg az URL-címet, a kapcsolódó ajánlat létrehozásakor kell. 
+11. Másolja az URL-címet a mezőbe, és mentse később. A társított ajánlat létrehozásakor meg kell adnia ezt az URL-címet. 
 
-    ![Az SAS URL-cím az Azure-fájl másolása](media/CRMScreenShot13.png)
+    ![Azure-fájl SAS URL-címének másolása](media/CRMScreenShot13.png)
 

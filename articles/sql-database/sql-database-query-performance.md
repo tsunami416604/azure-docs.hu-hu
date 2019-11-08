@@ -1,5 +1,5 @@
 ---
-title: Azure SQL Database Lekérdezési terheléselemző
+title: Lekérdezési terheléselemző
 description: A lekérdezés teljesítményének figyelése az Azure SQL Database-adatbázisok leggyakrabban felhasználható lekérdezéseit azonosítja.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 01/03/2019
-ms.openlocfilehash: eb6827669829dc7aeeb6758a07218a29955b3682
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 56daca0aa817d03298bad971506402739d71482e
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73687591"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73821241"
 ---
 # <a name="query-performance-insight-for-azure-sql-database"></a>Azure SQL Database Lekérdezési terheléselemző
 

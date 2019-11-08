@@ -1,60 +1,61 @@
 ---
-title: Az Azure application ajánlat közzététele |} Az Azure Marketplace-en
-description: A folyamat és az Azure Marketplace-en az Azure application ajánlat közzétételének lépéseit ismerteti.
+title: Azure-alkalmazás ajánlatának közzététele | Azure piactér
+description: Útmutató Azure-alkalmazások Azure Marketplace-en való közzétételének folyamatához és lépéseihez.
 services: Azure, Marketplace, Cloud Partner Portal,
 author: dan-wesley
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 01/25/2019
 ms.author: pabutler
-ms.openlocfilehash: 2326ce1a591d1276dbaf9c7f3238f7214e5134ab
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0005760a16f5109ca3555df5c5c5137facc84c40
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64942911"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73826166"
 ---
 # <a name="publish-azure-application-offer"></a>Azure-alkalmazásajánlat közzététele
 
-Az adatokat azáltal, hogy az ajánlat létrehozása után a **új ajánlat** lap, közzéteheti az ajánlatot. Válassza ki **közzététel** a közzétételi folyamat elindításához.
+Miután létrehozta az ajánlatot az **új ajánlat** oldalon található információk megadásával, közzéteheti az ajánlatot. A közzétételi folyamat elindításához válassza a **Közzététel** lehetőséget.
 
-Az alábbi ábrán látható a fő lépések egy "az élő esemény indításra" ajánlat a közzétételi folyamat.
+A következő ábra a közzétételi folyamat fő lépéseit mutatja be, amelyekkel az ajánlat "Go Live".
 
-![Az ajánlat közzétételi lépéseket](./media/offer-publishing-steps.png)
+![Ajánlat-közzétételi lépések](./media/offer-publishing-steps.png)
 
 
-## <a name="detailed-description-of-publishing-steps"></a>Közzétételi lépések részletes leírása
+## <a name="detailed-description-of-publishing-steps"></a>A közzétételi lépések részletes leírása
 
-A következő táblázat sorolja fel és közzétételi lépésre ismerteti, és egy becsült minden egyes időtartam biztosít.  Időpontokban becslése a "days" munkanapon belül vannak meghatározva, amely zárja ki a hétvégéket és a munkaszüneti napokat.
+Az alábbi táblázat felsorolja és leírja az egyes közzétételi lépéseket, és az egyes lépések befejezésének időpontját jeleníti meg.  A "Days" időszakra vonatkozó becslések munkanapokként vannak meghatározva, ami hétvégi és ünnepnapokat is kizár.
 
-|  **Közzétételi lépés**           | **idő**    | **Leírás**                                                            |
+|  **Közzétételi lépés**           | **Idő**    | **Leírás**                                                            |
 |  -------------------           | --------    | ---------------                                                            |
-| Előfeltételek ellenőrzése         | < 15 perc    | Információt kínálnak, és kínálnak a rendszer érvényesíti a beállításokat.                        |
-| Befolyásolt bevétel beállítások érvényesítése | < 15 perc  | Az ajánlat Azure-Erőforrás kihasználtsága attribution be van jelölve.             |
-| Tanúsítvány                  | < 1 nap     | Az ajánlat az Azure hitelesítő csapata által elemzett. Az ajánlat a vírusok, kártevő szoftverek, biztonsági, megfelelőségi és biztonsági problémákat vizsgálja. Az ajánlat be van jelölve, hogy megfelel-e az összes megfelelőségi feltételeket megtekintéséhez. További információkért lásd: [Előfeltételek](./cpp-prerequisites.md). Ha problémát talál, visszajelzés érkezett. |
-| Teszt meghajtó ellenőrzése          | < 2 óra   | (Nem kötelező) Ha jelen egy Test Drive, a Microsoft ellenőrzi, hogy azt telepíthető és replikálja.  |
-| Formátumokat támogató csomagolási és Érdeklődők generálása regisztráció | < 1 óra  | Ajánlat technikai eszközök ügyfél használatra vannak csomagolva, és az átfutási rendszerek konfigurált és telepített. |
-|  Közzétevő jóváhagyás             |  Manuális    | Végső közzétevő áttekintése és az ajánlat élesíti előtt megerősítést. Az ajánlat már elérhető előzetes verzióban.  Az ajánlat (az ajánlat információk lépések) a kijelölt előfizetésekben telepíthet, hogy megfelelnek-e a szükséges összes követelmény.  Miután ellenőrizte az ajánlatot, válassza ki a **élő** , az ajánlat helyezheti át a következő lépéssel. |
-| A Microsoft áttekintése                | 7 – 14 nap | A Microsoft azok alkalmazásfüggőségeit áttekinti az Azure-alkalmazásokat, és e-mailt küld, ha problémák.  Ebben a lépésben hossza attól függ, hogy az alkalmazást, a felderített hibák, és hogyan azonnal reagálhat rájuk bonyolultságát.  |
-| Élő                           | < 1 nap | Az ajánlat nyilvánosan, a megadott régióban replikálja, és nyilvánosan elérhetővé. |
+| Előfeltételek ellenőrzése         | < 15 perc    | Az ajánlatra vonatkozó információk és az ajánlat beállításainak ellenőrzése.                        |
+| Befolyásolt bevételi beállítások ellenőrzése | < 15 perc  | Az ajánlathoz tartozó Azure-Erőforrás-használati jóváírás be van jelölve.             |
+| Tanúsítvány                  | < 1 nap     | Az ajánlatot az Azure minősítési csapat elemzi. Az ajánlat vírusok, kártevő szoftverek, biztonsági megfelelőségi és biztonsági problémák vizsgálatára szolgál. A rendszer ellenőrzi, hogy az ajánlat megfelel-e az összes jogosultsági feltételnek. További információ: [Előfeltételek](./cpp-prerequisites.md). A rendszer visszajelzést küld, ha problémát talál. |
+| Tesztelési meghajtó ellenőrzése          | < 2 óra   | Választható Ha van elérhető tesztvezetés, a Microsoft ellenőrzi, hogy telepíthető és replikálható-e.  |
+| Csomagolás és vezető generáció regisztrációja | < 1 óra  | Az ajánlat technikai eszközei az ügyfelek általi használatra vannak csomagolva, és a vezető rendszerek konfigurálva és üzembe vannak állítva. |
+|  Közzétevő kijelentkezése             |  Kézi    | A kiadó végleges felülvizsgálata és megerősítése az ajánlat életbe lépését megelőzően. Az ajánlat már elérhető előzetes verzióra.  Az ajánlatot a kiválasztott előfizetésekben is üzembe helyezheti (az ajánlati információk lépéseiben) annak ellenőrzéséhez, hogy az megfelel-e az összes követelménynek.  Az ajánlat ellenőrzése után válassza az **élő indítás** lehetőséget, hogy ajánlata a következő lépésre léphet. |
+| Microsoft-áttekintés                | 7-14 nap | A Microsoft holisztikusan áttekinti az Azure-alkalmazást és e-maileket, ha problémák merülnek fel.  Ennek a lépésnek a hossza az alkalmazás összetettsége, a feltárt problémák és a rájuk vonatkozó azonnali reagálás függvénye.  |
+| Élő                           | < 1 nap | Az ajánlat megjelent, replikálva van a megadott régiókban, és elérhetővé válik a nyilvánosság számára. |
 |   |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|   |
 
-Figyelheti a közzétételi folyamat a **állapot** az ajánlatra, a Cloud Partner portálra a lap.
+A közzétételi folyamatot a Cloud Partner Portal az ajánlat **állapot** lapján figyelheti.
 
-![Az Azure-alkalmazás ajánlat állapota lap](./media/offer-status-tab.png)
+![Az Azure app-ajánlat állapot lapja](./media/offer-status-tab.png)
 
-Miután elvégezte a közzétételi folyamat, az ajánlat jelenik meg a [Microsoft Azure Marketplace-alkalmazás kategóriához](https://azuremarketplace.microsoft.com/marketplace/apps/).
+A közzétételi folyamat befejezése után az ajánlat a [Microsoft Azure Marketplace alkalmazás kategóriában](https://azuremarketplace.microsoft.com/marketplace/apps/)jelenik meg.
 
 >[!Note]
->Cloud Solution Providers (CSP) partner csatorna vehetnek részt már elérhető.  Lásd: [Cloud Solution Providers](../../cloud-solution-providers.md) további tájékoztatást a marketing, az ajánlat keretében a Microsoft CSP partner-csatornákon.
+>A Cloud Solution Providers (CSP) Partner Channel opt-in mostantól elérhető.  Az ajánlat Microsoft CSP-partneri csatornákon keresztüli forgalmazásával kapcsolatos további információkért tekintse meg a [Cloud Solution Providers](../../cloud-solution-providers.md) című témakört.
 
-## <a name="errors-and-review-feedback"></a>Hibák és a felülvizsgálati visszajelzés
+## <a name="errors-and-review-feedback"></a>Hibák és visszajelzések áttekintése
 
-Az ajánlat közzétételi állapotának megjelenítése mellett az **állapot** lapon megjelenik a hibaüzenetek és visszajelzései olyan közzétételi lépéseket, ahol a rendszer észlelt egy problémát.  Ha a probléma fontos, majd közzététele megszakítva.  Kell majd javítsa ki a jelentett hiba/hibák meghatározásához, és tegye közzé újra az ajánlatot.  Mivel a **Microsoft felülvizsgálati** lépés egy kiterjedt át kell tekinteni az ajánlat és a kapcsolódó technikai eszközökre (különösen az Azure Resource Manager-sablon) jelöli, a problémák általában bemutatják, a lekéréses kérelmet (PR) hivatkozásokat.  Megtekintése, és ezek a lekéréses kérelmek megválaszolásához magyarázatát lásd [kezelésének áttekintése visszajelzés](./cpp-handling-review-feedback.md).
+Az ajánlat közzétételi állapotának megjelenítése mellett az **állapot** lap a hibaüzeneteket és a visszajelzéseket is megjeleníti minden olyan közzétételi lépésnél, ahol probléma merült fel.  Ha a probléma kritikus, akkor a közzététel megszakad.  Ezután ki kell javítania a jelentett problémát (ka) t, majd újra közzé kell tennie az ajánlatot.  Mivel a **Microsoft felülvizsgálati** lépése az ajánlat és a hozzá kapcsolódó technikai eszközök (különösen a Azure Resource Manager sablon) átfogó áttekintését jelenti, a problémák általában lekéréses kérelmek (PR) hivatkozásaiként jelennek meg.  A következő témakörből megtudhatja, hogyan tekintheti meg és válaszolhatja meg ezeket a jogcímeket: [felülvizsgálati visszajelzések feldolgozása](./cpp-handling-review-feedback.md).
 
 
 ## <a name="next-steps"></a>További lépések
 
-Egy vagy több közzétételi lépéseket, hibát, ha kell, javítsa ki azokat, és közzé az ajánlatot még.  Ha a kritikus fontosságú problémáit a program hibát a **áttekintése a Microsoft** lépésben kell [kezelni a felülvizsgálati visszajelzés](./cpp-handling-review-feedback.md) elérése a Microsoft által tekintse át az Azure DevOps-tárház csapata.
+Ha a közzétételi lépések közül egy vagy több hibát észlelt, ki kell javítania őket, és újra közzé kell tennie az ajánlatot.  Ha a **Microsoft felülvizsgálati** lépésben kritikus problémák léptek fel, [a felülvizsgálati visszajelzést](./cpp-handling-review-feedback.md) a Microsoft felülvizsgálati csapat Azure DevOps-tárházának elérésével kell kezelnie.
 
-Miután egy Azure-alkalmazáshoz sikeresen közzé lett téve, akkor is [a létező ajánlat frissítése](./cpp-update-existing-offer.md) megfelelően a változó üzleti vagy technikai követelményeket. 
+Az Azure-alkalmazások sikeres közzétételekor [frissítheti a meglévő ajánlatot](./cpp-update-existing-offer.md) , hogy tükrözze az üzleti vagy műszaki követelmények módosítását. 

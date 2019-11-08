@@ -1,22 +1,22 @@
 ---
-title: 'Elemzési lekérdezések futtatása a bérlői adatbázisokon Azure SQL Data Warehouse '
+title: Elemzési lekérdezések futtatása a bérlői adatbázisokon
 description: Több-bérlős elemzési lekérdezések Azure SQL Database, SQL Data Warehouse, Azure Data Factory vagy Power BIból kinyert adatok használatával.
 services: sql-database
 ms.service: sql-database
 ms.subservice: scenario
-ms.custom: ''
+ms.custom: seo-lt-2019
 ms.devlang: ''
 ms.topic: conceptual
 author: anumjs
 ms.author: anjangsh
 ms.reviewer: MightyPen, sstein
 ms.date: 12/18/2018
-ms.openlocfilehash: f4a89029d7ed90f1a2406dcf0f8046a1c651353f
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 4791cd3a6b6f72c5d9ee4ca828d66b0d361f356c
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73691880"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73816767"
 ---
 # <a name="explore-saas-analytics-with-azure-sql-database-sql-data-warehouse-data-factory-and-power-bi"></a>Ismerje meg a SaaS Analytics Azure SQL Database, SQL Data Warehouse, Data Factory és Power BI
 
@@ -103,9 +103,9 @@ A Object Explorerban:
 1. Bontsa ki az adatbázisok csomópontot, és tekintse meg a bérlői adatbázisok listáját.
 1. Bontsa ki a *Catalog-DPT-&lt;felhasználói&gt;-* kiszolgálót.
 1. Ellenőrizze, hogy megjelenik-e a következő objektumokat tartalmazó elemzési tároló:
-    1. A **raw_Tickets**, a **raw_Customers**, a **raw_Events** és a **raw_Venues** táblák a bérlői adatbázisokból származó nyers kinyert adatokkal rendelkeznek.
+    1. A táblák **raw_Tickets**, **raw_Customers**, **raw_Events** és a **raw_Venues** a bérlői adatbázisokból származó nyers kinyert adatokkal rendelkeznek.
     1. A Star-Schema táblák a következők: **fact_Tickets**, **dim_Customers**, **dim_Venues**, **dim_Events**és **dim_Dates**.
-    1. A tárolt eljárás, a **sp_transformExtractedData** az adatátalakításra és a Star-Schema táblákba való betöltésére szolgál.
+    1. A tárolt eljárás, **sp_transformExtractedData** az adatátalakításra és a Star-Schema táblákba való betöltésére szolgál.
 
 ![DWtables](media/saas-tenancy-tenant-analytics/DWtables.JPG)
 
@@ -129,7 +129,7 @@ Ez a szakasz a létrehozott adatelőállítót vizsgálja. Az alábbi lépéseke
 2. Kattintson a **szerző & figyelés** csempére, hogy elindítsa a Data Factory designert egy külön lapon. 
 
 ## <a name="extract-load-and-transform-data"></a>Adatok kinyerése, betöltése és átalakítása
-Azure Data Factory a rendszer az kinyerési, betöltési és átalakítási folyamatokat használja. Ebben az oktatóanyagban négy különböző SQL-nézetből származó adatok kinyerése az egyes bérlői adatbázisokból: **rawTickets**, **rawCustomers**, **rawEvents**és **rawVenues**. Ezek a nézetek tartalmazzák a helyszín azonosítóját, így az adattárház egyes helyein lévő adatok megkülönböztetését is elvégezheti. A rendszer az adatraktár megfelelő előkészítési tábláiba tölti be az adatmennyiséget: **raw_Tickets**, **raw_customers**, **raw_Events** és **raw_Venue**. A tárolt eljárások ezután átalakítja a nyers adatokat, és feltölti a csillag-séma táblákat: **fact_Tickets**, **dim_Customers**, **dim_Venues**, **dim_Events**és **dim_Dates**.
+Azure Data Factory a rendszer az kinyerési, betöltési és átalakítási folyamatokat használja. Ebben az oktatóanyagban négy különböző SQL-nézetből származó adatok kinyerése az egyes bérlői adatbázisokból: **rawTickets**, **rawCustomers**, **rawEvents**és **rawVenues**. Ezek a nézetek tartalmazzák a helyszín azonosítóját, így az adattárház egyes helyein lévő adatok megkülönböztetését is elvégezheti. A rendszer az adatraktár megfelelő előkészítési tábláiba tölti be az adatmennyiséget: **raw_Tickets**, **raw_customers**, **raw_Events** és **raw_Venue**. A tárolt eljárás ezután átalakítja a nyers adatokat, és feltölti a csillag-séma táblákat: **fact_Tickets**, **dim_Customers**, **dim_Venues**, **dim_Events**és **dim_Dates**.
 
 Az előző szakaszban üzembe helyezte és inicializálta a szükséges Azure-erőforrásokat, beleértve az adatelőállítót is. A központilag telepített adat-előállító a bérlői adatok kinyeréséhez, betöltéséhez és átalakításához szükséges folyamatokat, adatkészleteket, társított szolgáltatásokat stb. tartalmazza. Ismerkedjen meg ezekkel az objektumokkal, majd aktiválja a folyamatot, hogy a bérlői adatbázisok adatait az adattárházba helyezze át.
 
@@ -158,7 +158,7 @@ A három társított szolgáltatásnak megfelelő három olyan adathalmaz van, a
 ### <a name="data-warehouse-pattern-overview"></a>Az adatraktár-minta áttekintése
 A SQL Data Warehouse a bérlői adatok összesítésének elvégzésére szolgáló elemzési tárolóként szolgál. Ebben a példában a rendszer az adatoknak az SQL-adattárházba való betöltésére használatos. A nyers adatok betöltődik olyan átmeneti táblákba, amelyek rendelkeznek egy azonosító oszloppal, hogy nyomon kövessék a Star-Schema táblákba átalakított sorokat. Az alábbi képen a betöltési minta látható: ![loadingpattern](media/saas-tenancy-tenant-analytics/loadingpattern.JPG)
 
-Ebben a példában a lassan változó dimenzió (. SCD) Type 1 dimenziós táblázatok használatosak. Minden dimenzióhoz tartozik egy azonosító oszlop használatával meghatározott helyettes kulcs. Az ajánlott eljárás szerint a dátum dimenzió tábla előre ki van töltve, hogy időt takarítson meg. A többi dimenzió tábláinál a CREATE TABLE válassza ki a következőt:... (CTAS) utasítás egy ideiglenes tábla létrehozására szolgál, amely tartalmazza a meglévő módosított és nem módosított sorokat, valamint a helyettesítő kulcsokat. Ez a következővel történik: IDENTITY_INSERT = ON. Ezután a rendszer beszúrja az új sorokat a táblába a IDENTITY_INSERT = OFF beállítással. Az egyszerű visszaállításhoz a rendszer átnevezi a meglévő dimenzió táblát, és az ideiglenes táblát átnevezi, hogy az új dimenzió táblázat legyen. Az egyes futtatások előtt a régi dimenzió táblát törli a rendszer.
+Ebben a példában a lassan változó dimenzió (. SCD) Type 1 dimenziós táblázatok használatosak. Minden dimenzióhoz tartozik egy azonosító oszlop használatával meghatározott helyettes kulcs. Az ajánlott eljárás szerint a dátum dimenzió tábla előre ki van töltve, hogy időt takarítson meg. A többi dimenzió tábláinál a CREATE TABLE válassza ki a következőt:... (CTAS) utasítás egy ideiglenes tábla létrehozására szolgál, amely tartalmazza a meglévő módosított és nem módosított sorokat, valamint a helyettesítő kulcsokat. Ez a következővel történik: IDENTITY_INSERT = ON. Ekkor a rendszer beszúrja az új sorokat a táblába IDENTITY_INSERT = OFF. Az egyszerű visszaállításhoz a rendszer átnevezi a meglévő dimenzió táblát, és az ideiglenes táblát átnevezi, hogy az új dimenzió táblázat legyen. Az egyes futtatások előtt a régi dimenzió táblát törli a rendszer.
 
 A dimenzió táblák betöltődik a egyedkapcsolat tábla előtt. Ez az előkészítés biztosítja, hogy minden egyes beérkező tény esetében az összes hivatkozott dimenzió már létezik. Mivel a rendszer betölti a tényeket, a rendszer az összes kapcsolódó dimenzióhoz tartozó üzleti kulcsot egyezteti, és az egyes tényekhez hozzáadja a megfelelő helyettesítő kulcsokat.
 
@@ -228,7 +228,7 @@ Ez a mintaterület a contoso Concert hallban az egyes eseményekhez tartozó ös
 
 A jegyek értékesítési mintáinak betekintése Wingtip jegyeket eredményezhet üzleti modelljének optimalizálásához. Az összes bérlő egyforma kitöltése helyett előfordulhat, hogy a Wingtip különböző számítási méretekkel kell bevezetni a szolgáltatási szinteket. A naponta több jegyet értékesítő nagyobb helyszínek magasabb szintű szolgáltatói szerződéssel (SLA) is elérhetők. Ezeknek a helyszíneknek az adatbázisai a készletbe helyezhetők, és az adatbázison belüli erőforrások korlátai magasabbak. Az egyes szolgáltatási szintek óránkénti értékesítési kiosztással rendelkezhetnek, és a foglalást meghaladó költségekkel számoljuk el. Az időszakos értékesítési lehetőségekkel rendelkező nagyobb helyszínek a magasabb szinteken is hasznosak lehetnek, és a Wingtip jegyek hatékonyabban növelhetik a szolgáltatást.
 
-Néhány Wingtip-jegy arra is panaszkodik, hogy az ügyfelek nem tudnak elegendő jegyet értékesíteni, hogy igazolják a szolgáltatás költségeit. Előfordulhat, hogy ezekben az adatokban lehetősége van arra, hogy növelje a jegyek értékesítését az elvégezhető helyszíneken. A magasabb eladások növelhetik a szolgáltatás észlelt értékét. Kattintson jobb gombbal a fact_Tickets elemre, és válassza az **új mérték**lehetőséget. Adja meg a következő kifejezést a **AverageTicketsSold**nevű új mértékhez:
+Néhány Wingtip-jegy arra is panaszkodik, hogy az ügyfelek nem tudnak elegendő jegyet értékesíteni, hogy igazolják a szolgáltatás költségeit. Előfordulhat, hogy ezekben az adatokban lehetősége van arra, hogy növelje a jegyek értékesítését az elvégezhető helyszíneken. A magasabb eladások növelhetik a szolgáltatás észlelt értékét. Kattintson a jobb gombbal fact_Tickets és válassza az **új mérték**lehetőséget. Adja meg a következő kifejezést a **AverageTicketsSold**nevű új mértékhez:
 
 ```
 AverageTicketsSold = DIVIDE(DIVIDE(COUNTROWS(fact_Tickets),DISTINCT(dim_Venues[VenueCapacity]))*100, COUNTROWS(dim_Events))
