@@ -10,12 +10,12 @@ ms.service: billing
 ms.topic: article
 ms.date: 05/30/2019
 ms.author: byvinyal
-ms.openlocfilehash: 71e4b62ddcb3f144b49b99e6ba95a47971d3f4bb
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: MT
+ms.openlocfilehash: 12e9367ca9e330806af4c7cc5db626edddff5c25
+ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73476950"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73795255"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Az Azure-előfizetésekre és -szolgáltatásokra vonatkozó korlátozások, kvóták és megkötések
 Ez a dokumentum felsorolja a leggyakoribb Microsoft Azure-korlátozásokat, amelyeket más néven kvótának is nevezünk. Ez a dokumentum jelenleg nem vonatkozik az összes Azure-szolgáltatásra. Az idő múlásával a listát kibontjuk és frissítik, hogy több szolgáltatásra is kiterjedjen.
@@ -48,6 +48,7 @@ A következő korlátok listájában az új táblázat a Azure Resource Manager 
 * [Automatizálás](#automation-limits)
 * [Azure Cache for Redis](#azure-cache-for-redis-limits)
 * [Azure Cloud Services](#azure-cloud-services-limits)
+* [Azure-Cognitive Search](#azure-cognitive-search-limits)
 * [Azure Cognitive Services](#azure-cognitive-services-limits)
 * [Azure Cosmos DB](#azure-cosmos-db-limits)
 * [Azure Database for MySQL](#azure-database-for-mysql)
@@ -60,7 +61,6 @@ A következő korlátok listájában az új táblázat a Azure Resource Manager 
 * [Azure Maps](#azure-maps-limits)
 * [Azure Monitor](#azure-monitor-limits)
 * [Azure Policy](#azure-policy-limits)
-* [Azure Search](#azure-search-limits)
 * [Azure Signaler szolgáltatás](#azure-signalr-service-limits)
 * [Biztonsági mentés](#backup-limits)
 * [Batch](#batch-limits)
@@ -100,7 +100,7 @@ A következő korlátok listájában az új táblázat a Azure Resource Manager 
 * [Erőforráscsoport](#resource-group-limits)
 * [Szerepköralapú hozzáférés-vezérlés](#role-based-access-control-limits)
 * [Scheduler](#scheduler-limits)
-* [Service Bus](#service-bus-limits)
+* [Szolgáltatásbusz](#service-bus-limits)
 * [Site Recovery](#site-recovery-limits)
 * [SQL Database](#sql-database-limits)
 * [SQL Data Warehouse](#sql-data-warehouse-limits)
@@ -264,13 +264,13 @@ Az alábbi táblázat az Azure BizTalk Services korlátozásait mutatja be.
 ### <a name="azure-cosmos-db-limits"></a>Azure Cosmos DB korlátok
 Azure Cosmos DB korlátok esetében lásd: [korlátok a Azure Cosmos DBban](cosmos-db/concepts-limits.md).
 
-### <a name="azure-database-for-mysql"></a>A MySQL-hez készült Azure Database
+### <a name="azure-database-for-mysql"></a>Azure Database for MySQL
 Azure Database for MySQL korlátokat a [Azure Database for MySQL korlátozásai](mysql/concepts-limits.md)című témakörben talál.
 
 ### <a name="azure-database-for-postgresql"></a>Azure Database for PostgreSQL
 Azure Database for PostgreSQL korlátokat a [Azure Database for PostgreSQL korlátozásai](postgresql/concepts-limits.md)című témakörben talál.
 
-### <a name="azure-search-limits"></a>Azure Search korlátok
+### <a name="azure-cognitive-search-limits"></a>Az Azure Cognitive Search korlátai
 A díjszabási szintek határozzák meg a keresési szolgáltatás kapacitását és korlátait. A rétegek a következők:
 
 * Az **ingyenes** több-bérlős szolgáltatás, amelyet más Azure-előfizetők is megosztanak, kiértékelésre és kisméretű fejlesztési projektekre tervezték.
@@ -285,7 +285,7 @@ A díjszabási szintek határozzák meg a keresési szolgáltatás kapacitását
 
 [!INCLUDE [azure-search-limits-per-service](../includes/azure-search-limits-per-service.md)]
 
-Ha többet szeretne megtudni a további részletességgel kapcsolatos korlátozásokról, például a dokumentumok méretéről, a másodpercenkénti lekérdezésekről, a kulcsokról, a kérésekről és a válaszokról, tekintse meg [a szolgáltatási korlátokat Azure Search](search/search-limits-quotas-capacity.md).
+Ha részletesebben szeretne tájékozódni a határértékekről, például a dokumentumok méretéről, a másodpercenkénti lekérdezésekről, a kulcsokról, a kérésekről és a válaszokról, tekintse meg a [szolgáltatási korlátokat az Azure Cognitive Searchban](search/search-limits-quotas-capacity.md).
 
 ### <a name="media-services-limits"></a>Media Services korlátok
 [!INCLUDE [azure-mediaservices-limits](../includes/azure-mediaservices-limits.md)]
@@ -402,7 +402,7 @@ SQL Database korlátok esetében tekintse meg az [önálló adatbázisok SQL Dat
 ### <a name="sql-data-warehouse-limits"></a>SQL Data Warehouse korlátok
 SQL Data Warehouse korlátok esetében lásd: [SQL Data Warehouse erőforrás-korlátok](sql-data-warehouse/sql-data-warehouse-service-capacity-limits.md).
 
-## <a name="see-also"></a>Lásd még
+## <a name="see-also"></a>Lásd még:
 - [Az Azure korlátainak és növekedésének megismerése](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/)
 - [Virtuális gépek és felhőalapú szolgáltatások mérete az Azure-ban](virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 - [Az Azure Cloud Services mérete](cloud-services/cloud-services-sizes-specs.md)

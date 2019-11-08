@@ -10,12 +10,12 @@ ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
 ms.date: 10/25/2019
-ms.openlocfilehash: 2559a3cbd786c737b316a860e9c75434c6c719a4
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: e5dee838df2a60bf2038f2c7d2b1cc5958354d29
+ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73576574"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73796770"
 ---
 # <a name="secure-azure-ml-experimentation-and-inference-jobs-within-an-azure-virtual-network"></a>Egy Azure-Virtual Networkon belül biztonságossá teheti az Azure ML-kísérletezést és a feladatok következtetéseit
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -63,7 +63,7 @@ Ha Azure Storage-fiókot szeretne használni a virtuális hálózatban lévő mu
     - A __virtuális hálózatok__területen válassza a __meglévő virtuális hálózati kapcsolat hozzáadása__ elemet. Ez a művelet hozzáadja azt a virtuális hálózatot, ahol a számítás található (lásd: 1. lépés).
 
         > [!IMPORTANT]
-        > A Storage-fióknak ugyanabban a virtuális hálózatban kell lennie, mint a betanításhoz vagy következtetéshez használt notebook-VM-nek vagy-fürtöknek.
+        > A Storage-fióknak ugyanabban a virtuális hálózatban kell lennie, mint a betanításhoz vagy következtetéshez használt fürtök.
 
     - Jelölje be a __megbízható Microsoft-szolgáltatások számára a Storage-fiók elérésének engedélyezése__ jelölőnégyzetet.
 
@@ -108,7 +108,7 @@ Ha Azure Machine Learning kísérletezési képességeket szeretne használni a 
 
 ## <a name="use-a-machine-learning-compute"></a>Machine Learning Compute használata
 
-Ha egy virtuális hálózatban Azure Machine Learning notebookot vagy számítási fürtöt szeretne használni, a következő hálózati követelményeknek kell teljesülniük:
+Ha egy virtuális hálózatban Azure Machine Learning számítási fürtöt szeretne használni, a következő hálózati követelményeknek kell teljesülniük:
 
 > [!div class="checklist"]
 > * A virtuális hálózatnak ugyanabban az előfizetésben és régióban kell lennie, mint a Azure Machine Learning munkaterületnek.
@@ -246,27 +246,6 @@ A létrehozási folyamat befejeződése után a modellt egy kísérletben a für
 
 <a id="vmorhdi"></a>
 
-### <a name="create-a-compute-instance-in-a-virtual-network"></a>Számítási példány létrehozása egy virtuális hálózaton
-
-Hozzon létre egy Azure Machine Learning számítási példányt egy virtuális hálózaton. Számítási példány létrehozásához tegye a következőket:
-
-1. A munkaterület Studióban kattintson a **számítás** elemre a bal oldali ablaktáblán.
-
-1. A számítási példányok lapon válassza az **új** lehetőséget az új számítási példány létrehozásának megkezdéséhez.
-
-1. Állítsa be a számítási név és a virtuálisgép-méret mezőket, és engedélyezze vagy tiltsa le az SSH-hozzáférést.
-
-1. A számítási példány virtuális hálózat használatára való konfigurálásához tegye a következőket:
-
-    a. Válassza a **Speciális beállítások**lehetőséget.
-
-    b. Az **erőforráscsoport** legördülő listából válassza ki a virtuális hálózatot tartalmazó erőforráscsoportot.
-
-    c. A **virtuális hálózat** legördülő listában válassza ki azt a virtuális hálózatot, amely az alhálózatot tartalmazza.
-
-    d. Az **alhálózat** legördülő listában válassza ki a használni kívánt alhálózatot.
-
-1. A **Létrehozás** gombra kattintva kiépítheti a számítási példányt egy virtuális hálózaton belül.
 
 ## <a name="use-a-virtual-machine-or-hdinsight-cluster"></a>Virtuális gép vagy HDInsight-fürt használata
 

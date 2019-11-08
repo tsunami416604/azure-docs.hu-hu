@@ -10,12 +10,12 @@ author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
 ms.date: 11/04/2019
-ms.openlocfilehash: d5a8ada7be99cfbd541b9ac58db2eba094536fc0
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: ccd29952693ecbc1db5927d5deabae874b6e9933
+ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73580514"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73796693"
 ---
 # <a name="build--use-an-azure-machine-learning-pipeline-for-batch-scoring"></a>Build & a Batch-pontozási Azure Machine Learning folyamatának használata
 
@@ -480,7 +480,7 @@ A folyamat REST-végpontból való futtatásához szüksége van egy OAuth2-tula
 
 Az egyszerű szolgáltatás hitelesítése magában foglalja az *alkalmazás regisztrációjának* létrehozását *Azure Active Directory*-ben. Először létrehoz egy ügyfél-titkos kulcsot, majd megadja a szolgáltatás elsődleges *szerepkörének hozzáférését* a Machine learning-munkaterülethez. A hitelesítési folyamat kezeléséhez használja a [`ServicePrincipalAuthentication`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.authentication.serviceprincipalauthentication?view=azure-ml-py) osztályt. 
 
-Mindkét `InteractiveLoginAuthentication` és `ServicePrincipalAuthentication` öröklése `AbstractAuthentication`. Mindkét esetben használja a `get_authentication_header()` függvényt ugyanúgy, ahogy beolvassa a fejlécet:
+Mindkét [`InteractiveLoginAuthentication`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.authentication.interactiveloginauthentication?view=azure-ml-py) és `ServicePrincipalAuthentication` öröklése `AbstractAuthentication`. Mindkét esetben használja a [`get_authentication_header()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.authentication.abstractauthentication?view=azure-ml-py#get-authentication-header--) függvényt ugyanúgy, ahogy beolvassa a fejlécet:
 
 ```python
 from azureml.core.authentication import InteractiveLoginAuthentication

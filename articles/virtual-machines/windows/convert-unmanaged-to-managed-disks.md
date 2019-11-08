@@ -6,18 +6,18 @@ ms.service: virtual-machines-windows
 ms.topic: conceptual
 ms.date: 07/12/2018
 ms.author: rogarana
-ms.openlocfilehash: d43ad941fe68707bca873fa969fbc27806ba96a5
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 64ff47f1dc4b06d1407497adf41981c670ea9064
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68698812"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73749530"
 ---
 # <a name="convert-a-windows-virtual-machine-from-unmanaged-disks-to-managed-disks"></a>Windows rendszerű virtuális gép konvertálása nem felügyelt lemezekről felügyelt lemezekre
 
 Ha már van olyan Windows rendszerű virtuális gép (VM), amely nem felügyelt lemezeket használ, a virtuális gépeket átalakíthatja felügyelt lemezek használatára az [Azure Managed Disks](managed-disks-overview.md) szolgáltatáson keresztül. Ez a folyamat az operációsrendszer-lemezt és a csatlakoztatott adatlemezeket is átalakítja.
 
-[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
+ 
 
 ## <a name="before-you-begin"></a>Előkészületek
 
@@ -34,7 +34,7 @@ Ha már van olyan Windows rendszerű virtuális gép (VM), amely nem felügyelt 
 ## <a name="convert-single-instance-vms"></a>Egypéldányos virtuális gépek konvertálása
 Ez a szakasz bemutatja, hogyan alakíthatja át a nem felügyelt lemezekről származó egypéldányos Azure-beli virtuális gépeket a felügyelt lemezekre. (Ha a virtuális gépek rendelkezésre állási csoportban találhatók, tekintse meg a következő szakaszt.) 
 
-1. Szabadítsa fel a virtuális gépet a [stop-AzVM](https://docs.microsoft.com/powershell/module/az.compute/stop-azvm) parancsmag használatával. A következő példa felszabadítja a nevű virtuális gépet `myVM` a nevű `myResourceGroup`erőforráscsoporthoz: 
+1. Szabadítsa fel a virtuális gépet a [stop-AzVM](https://docs.microsoft.com/powershell/module/az.compute/stop-azvm) parancsmag használatával. Az alábbi példa a `myVM` nevű virtuális gépet felszabadítja az `myResourceGroup`nevű erőforráscsoport-csoportból: 
 
    ```azurepowershell-interactive
    $rgName = "myResourceGroup"
@@ -54,7 +54,7 @@ Ez a szakasz bemutatja, hogyan alakíthatja át a nem felügyelt lemezekről sz�
 
 Ha a felügyelt lemezekre átalakítani kívánt virtuális gépek rendelkezésre állási csoportba kerülnek, először át kell alakítania a rendelkezésre állási készletet egy felügyelt rendelkezésre állási csoportba.
 
-1. Alakítsa át a rendelkezésre állási készletet az [Update-AzAvailabilitySet](https://docs.microsoft.com/powershell/module/az.compute/update-azavailabilityset) parancsmag használatával. Az alábbi példa frissíti a nevű erőforráscsoport `myAvailabilitySet` -beli rendelkezésre állási `myResourceGroup`csoportot:
+1. Alakítsa át a rendelkezésre állási készletet az [Update-AzAvailabilitySet](https://docs.microsoft.com/powershell/module/az.compute/update-azavailabilityset) parancsmag használatával. Az alábbi példa frissíti a `myResourceGroup`nevű erőforráscsoport `myAvailabilitySet` nevű rendelkezésre állási csoportját:
 
    ```azurepowershell-interactive
    $rgName = 'myResourceGroup'
@@ -64,7 +64,7 @@ Ha a felügyelt lemezekre átalakítani kívánt virtuális gépek rendelkezésr
    Update-AzAvailabilitySet -AvailabilitySet $avSet -Sku Aligned 
    ```
 
-   Ha az a régió, ahol a rendelkezésre állási csoport található, csak 2 felügyelt tartalék tartománnyal rendelkezik, de a nem felügyelt tartalék tartományok száma 3, ez a parancs a következőhöz hasonló hibaüzenetet jelenít meg: "a megadott tartalék tartomány 3. számának az 1 és 2 közötti tartományba kell esnie." A hiba elhárításához frissítse a tartalék tartományt 2-re, és `Sku` frissítse `Aligned` a következőre:
+   Ha az a régió, ahol a rendelkezésre állási csoport található, csak 2 felügyelt tartalék tartománnyal rendelkezik, de a nem felügyelt tartalék tartományok száma 3, ez a parancs a következőhöz hasonló hibaüzenetet jelenít meg: "a megadott tartalék tartomány 3. számának az 1 és 2 közötti tartományba kell esnie." A hiba elhárításához frissítse a tartalék tartományt 2 értékre, és frissítse `Sku` a `Aligned` a következőképpen:
 
    ```azurepowershell-interactive
    $avSet.PlatformFaultDomainCount = 2
@@ -87,14 +87,14 @@ Ha a felügyelt lemezekre átalakítani kívánt virtuális gépek rendelkezésr
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
 
-Ha az átalakítás során hiba történt, vagy ha egy virtuális gép egy korábbi konverzióval kapcsolatos probléma miatt sikertelen állapotban van, futtassa újra a `ConvertTo-AzVMManagedDisk` parancsmagot. Egy egyszerű újrapróbálkozás általában feloldja a helyzetet.
+Ha az átalakítás során hiba történt, vagy ha egy virtuális gép egy korábbi konverzióval kapcsolatos probléma miatt sikertelen állapotú, futtassa újra a `ConvertTo-AzVMManagedDisk` parancsmagot. Egy egyszerű újrapróbálkozás általában feloldja a helyzetet.
 A konvertálás előtt győződjön meg arról, hogy az összes virtuálisgép-bővítmény a "kiépítés sikeres" állapotban van, vagy a konverzió sikertelen lesz a 409-es hibakód miatt.
 
 ## <a name="convert-using-the-azure-portal"></a>Konvertálás a Azure Portal használatával
 
 A nem felügyelt lemezeket a Azure Portal használatával is konvertálhatja a felügyelt lemezekre.
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
+1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
 2. Válassza ki a virtuális gépet a portálon lévő virtuális gépek listájából.
 3. A virtuális gép paneljén válassza a menü **lemezek** elemét.
 4. A **lemezek** panel tetején válassza az **áttelepítés felügyelt lemezekre**lehetőséget.
@@ -106,5 +106,5 @@ A rendszer a Migrálás befejezése után leállítja és újraindítja a virtu�
 
 [Standard szintű felügyelt lemezek átalakítása prémium szintre](convert-disk-storage.md)
 
-Pillanatképek használatával készítsen egy virtuális gép írásvédett másolatát. [](snapshot-copy-managed-disk.md)
+[Pillanatképek](snapshot-copy-managed-disk.md)használatával készítsen egy virtuális gép írásvédett másolatát.
 

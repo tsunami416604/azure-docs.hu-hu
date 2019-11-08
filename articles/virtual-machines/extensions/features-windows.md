@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 03/30/2018
 ms.author: akjosh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 4e8543f1f6ef2cdf1695340b07dcbc51365a01a5
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: 8d73a2dcd0aab3b972a3e0a9237e53d05d4a9a53
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72438135"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73750021"
 ---
 # <a name="virtual-machine-extensions-and-features-for-windows"></a>Virtuálisgép-bővítmények és-szolgáltatások a Windows rendszerhez
 
@@ -28,7 +28,7 @@ Az Azure virtuálisgép-bővítmények olyan kisméretű alkalmazások, amelyek 
 
 Ez a cikk áttekintést nyújt a virtuálisgép-bővítményekről, az Azure virtuálisgép-bővítmények használatára vonatkozó előfeltételekről, valamint útmutatást nyújt a virtuálisgép-bővítmények észleléséhez, kezeléséhez és eltávolításához. Ez a cikk általánosított információkat nyújt, mivel számos virtuálisgép-bővítmény elérhető, amelyek mindegyike potenciálisan egyedi konfigurációval rendelkezik. A bővítményekre vonatkozó részletek az egyes bővítményekre jellemző minden dokumentumban találhatók.
 
-[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+ 
 
 ## <a name="use-cases-and-samples"></a>Használati esetek és minták
 
@@ -351,7 +351,7 @@ Az alábbi hibaelhárítási lépések minden virtuálisgép-bővítményre érv
 
 1. A Windows vendég ügynök naplójának vizsgálatához tekintse meg a tevékenységet, amikor a bővítményt kiépítte a *C:\WindowsAzure\Logs\WaAppAgent.txt* -ben
 
-2. A *C:\WindowsAzure\Logs\Plugins @ no__t-1extensionName >ban* található további részletekért olvassa el a tényleges kiterjesztési naplókat.
+2. További részletekért olvassa el a *C:\WindowsAzure\Logs\Plugins\<extensionName >*
 
 3. Tekintse meg a bővítmények specifikus dokumentációjának hibaelhárítási szakaszt a hibakódok, ismert problémák stb. esetében.
 
@@ -424,6 +424,6 @@ A bővítményeket a következőképpen is eltávolíthatja a Azure Portalban:
 | Azure Diagnostics bővítmény |Azure Diagnostics kezelése |[Azure Diagnostics bővítmény](https://azure.microsoft.com/blog/windows-azure-virtual-machine-monitoring-with-wad-extension/) |
 | Azure VM-hozzáférési bővítmény |Felhasználók és hitelesítő adatok kezelése |[VM-hozzáférési bővítmény Linux rendszerhez](https://azure.microsoft.com/blog/using-vmaccess-extension-to-reset-login-credentials-for-linux-vm/) |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ a virtuálisgép-bővítményekről: [Azure-beli virtuális gépek bővítményei és funkcióinak áttekintése](overview.md).

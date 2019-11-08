@@ -1,69 +1,69 @@
 ---
-title: Az Azure SignalR Service rugalmasság és a katasztrófa utáni helyreállítás
-description: Áttekintés arról, hogyan állítható be több SignalR-szolgáltatáspéldány rugalmasság és a vészhelyreállítás érdekében
+title: Rugalmasság és vész-helyreállítás az Azure Signaler szolgáltatásban
+description: A többszörös szignáló szolgáltatási példányok beállításának áttekintése a rugalmasság és a katasztrófa utáni helyreállítás érdekében
 author: chenkennt
 ms.service: signalr
 ms.topic: conceptual
 ms.date: 03/01/2019
 ms.author: kenchen
-ms.openlocfilehash: eb70e65db4a086afc60e91cadf55a8844b102591
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: cf0f345b0fbf9fea2512f72c1996c9a1597cc0cd
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61402132"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73747651"
 ---
 # <a name="resiliency-and-disaster-recovery"></a>Rugalmasság és vészhelyreállítás
 
-Rugalmasság és a vészhelyreállítás online rendszerek közös szüksége. Az Azure SignalR Service már garantálja a 99,9 %-os rendelkezésre állást, de továbbra is egy regionális szolgáltatás.
-A service-példányt egy adott régióban mindig fut-e, és nem feladatátvételt egy másik régióban egy régióra kiterjedő szolgáltatáskimaradás esetén.
+A rugalmasság és a vész-helyreállítás gyakran szükséges az online rendszerekhez. Az Azure Signaler szolgáltatás már garantálja a 99,9%-os rendelkezésre állást, de továbbra is regionális szolgáltatás.
+A szolgáltatási példány mindig egy régióban fut, és nem lesz feladatátvétel egy másik régióba, ha az egész régióra kiterjedő leállás van.
 
-Ehelyett az SDK szolgáltatás támogatja a több SignalR-szolgáltatáspéldány, és automatikusan átvált a többi példány, ha ezek közül néhány nem áll rendelkezésre a funkcionalitást biztosít.
-Ezzel a funkcióval helyreállíthatja, ha katasztrófa történik, de a megfelelő topológia beállítása saját magának kell kell lennie. Ennek módját a jelen dokumentum megtudhatja.
+A Service SDK Ehelyett a több szignáló szolgáltatás példányainak támogatását teszi lehetővé, és automatikusan átvált más példányokra, ha ezek némelyike nem érhető el.
+Ezzel a szolgáltatással helyreállíthatja a vészhelyzetek időpontját, de saját maga is be kell állítania a megfelelő rendszertopológiát. Ebből a dokumentumból megtudhatja, hogyan teheti meg ezt a dokumentumot.
 
-## <a name="high-available-architecture-for-signalr-service"></a>A SignalR service magas rendelkezésre álló architektúra
+## <a name="high-available-architecture-for-signalr-service"></a>Magas rendelkezésre állású architektúra a Signaler szolgáltatáshoz
 
-Rendelkezik a régiók közötti rugalmasság a SignalR service, különböző régiókban lévő több szolgáltatáspéldány beállítása kell. Így ha egy adott régióban nem működik, a többi használható biztonsági.
-Több szolgáltatáspéldány alkalmazás kiszolgálóhoz való csatlakozáshoz, két szerepkörök tartoznak, az elsődleges és másodlagos.
-Egy példányt, akik online forgalmat tart az elsődleges és másodlagos egy teljesen működőképes, de biztonsági mentési példány elsődleges.
-SDK megvalósítása fog egyeztetni csak így normális esetben az ügyfelek csak csatlakozni elsődleges végpontok elsődleges végpontok adja vissza.
-Azonban az elsődleges példány nem működik, ha fog egyeztetni másodlagos végpontok adja vissza, hogy a ügyfél továbbra is kapcsolatok.
-Elsődleges példány és az alkalmazáskiszolgáló normál kiszolgáló kapcsolatokon keresztül csatlakoznak, de a másodlagos példány és az alkalmazáskiszolgáló össze egy speciális típusú kapcsolat gyenge kapcsolatnak nevezik.
-A gyenge kapcsolat fő különbség az, hogy nem fogadni ügyfél kapcsolat útválasztás, mert a másodlagos példány egy másik régióban található. Egy ügyfél egy másik régióba az Útválasztás nem egy optimális választás (növeli a késés).
+Ha régiók közötti rugalmasságot szeretne biztosítani a Signaler szolgáltatáshoz, több szolgáltatási példányt kell beállítania különböző régiókban. Tehát ha az egyik régió nem érhető el, a többiek biztonsági mentésként is használhatók.
+Ha több szolgáltatási példányt csatlakoztat az App Serverhez, két szerepkör van, az elsődleges és a másodlagos.
+Az elsődleges az a példány, amely online forgalomban van, és a másodlagos egy teljesen működőképes, de elsődleges biztonsági mentési példány.
+Az SDK implementációjában az egyeztetés csak az elsődleges végpontokat fogja visszaadni, így a normál esetben az ügyfelek csak az elsődleges végpontokhoz csatlakoznak.
+Ha azonban az elsődleges példány nem áll le, az egyeztetés a másodlagos végpontokat fogja visszaadni, hogy az ügyfél továbbra is kapcsolatokat hozzon.
+Az elsődleges példány és az alkalmazáskiszolgáló normál kiszolgálói kapcsolatokon keresztül csatlakozik, de a másodlagos példány és az alkalmazáskiszolgáló a gyenge kapcsolat nevű speciális kapcsolaton keresztül csatlakoznak.
+A gyenge kapcsolatok fő különbsége az, hogy nem fogadja el az Ügyfélkapcsolat-útválasztást, mert a másodlagos példány egy másik régióban található. Az ügyfél útválasztása egy másik régióba nem optimális választás (a késés növelése).
 
-Egy szolgáltatáspéldány különböző szerepkörökkel rendelkezhetnek, több alkalmazás-kiszolgálóhoz való csatlakozáskor.
-Több régióban a forgatókönyvben egy szokásos telepítése, hogy két (vagy több) pár SignalR service-példányt és alkalmazások kiszolgálói.
-Minden egyes pár alkalmazáson belül kiszolgáló és a SignalR service találhatók ugyanabban a régióban, és a SignalR service van csatlakoztatva, egészen az alkalmazáskiszolgálóig elsődleges szerepkör.
-Minden egyes párok alkalmazás közötti kiszolgáló és a SignalR service is csatlakoztatva vannak, de a SignalR válik egy másodlagos kiszolgáló egy másik régióban való csatlakozáskor.
+Az egyik szolgáltatási példány különböző szerepkörökkel rendelkezhet, ha több alkalmazáshoz csatlakozik.
+A régiók közötti forgatókönyvek egyik tipikus beállítása, hogy két (vagy több) jel a Signaler Service instances és az App Server.
+A pair app Serveren és a Signaler szolgáltatáson belül ugyanabban a régióban találhatók, a Signaler-szolgáltatás pedig elsődleges szerepkörként csatlakozik az alkalmazás-kiszolgálóhoz.
+Az egyes párok az App Server és a Signaler szolgáltatás között is csatlakoztatva vannak, de a jelző másodlagos lesz, ha másik régióban lévő kiszolgálóhoz csatlakozik.
 
-Ebben a topológiában az egyik kiszolgálóról is továbbra is lehet elküldeni az üzenetet, minden ügyfélnek az összes alkalmazás-kiszolgálóként, és a SignalR szolgáltatáspéldányok vannak összekapcsolva.
-De amikor egy ügyfél kapcsolódik, akkor mindig egészen az alkalmazáskiszolgálóig optimális hálózati késés elérése ugyanabban a régióban legyen irányítva.
+Ezzel a topológiával az egyik kiszolgálóról érkező üzenet továbbra is továbbítható minden ügyfélnek, mivel az összes App-kiszolgáló és a Signaler szolgáltatás példányai összekapcsolódnak egymással.
+Ha azonban az ügyfél csatlakoztatva van, az optimális hálózati késés érdekében mindig az azonos régióban található app Serverre irányítja a rendszer.
 
-Az alábbi, egy diagram, amely az ilyen topológiát mutatja be:
+Alább látható egy diagram, amely a következő topológiát szemlélteti:
 
 ![topology](media/signalr-concept-disaster-recovery/topology.png)
 
-## <a name="configure-app-servers-with-multiple-signalr-service-instances"></a>Több SignalR-szolgáltatáspéldány az alkalmazás-kiszolgálók konfigurálása
+## <a name="configure-app-servers-with-multiple-signalr-service-instances"></a>Az alkalmazások kiszolgálóinak konfigurálása több Signaler szolgáltatás-példányokkal
 
-Miután az egyes régiókban létrehozott SignalR service és az alkalmazás kiszolgálók, az összes SignalR service-példányokhoz való csatlakozáshoz, az alkalmazáskiszolgálók is beállíthatja.
+Miután az egyes régiókban létrehozta a Signaler szolgáltatást és az alkalmazás-kiszolgálókat, beállíthatja, hogy az alkalmazás-kiszolgálók az összes Signaler szolgáltatás példányaihoz csatlakozzanak.
 
-Ezt megteheti két módja van:
+Kétféle módon teheti meg:
 
-### <a name="through-config"></a>Config keresztül
+### <a name="through-config"></a>Konfiguráción keresztül
 
-Érdemes beállítása a SignalR service kapcsolati karakterlánc környezeti változók és alkalmazástelepítés settings/web.cofig keresztül egy konfigurációs bejegyzés nevű keresztül ismert `Azure:SignalR:ConnectionString`.
-Ha több végpontot, állítsa be őket a több konfigurációs bejegyzéseket, minden, a következő formátumban:
+A Signal Service-kapcsolati karakterláncot a környezeti változók/Alkalmazásbeállítások/web. cofig használatával kell beállítania egy `Azure:SignalR:ConnectionString`nevű konfigurációs bejegyzésben.
+Ha több végponttal rendelkezik, a következő formátumban állíthatja be őket több konfigurációs bejegyzésbe:
 
 ```
-Azure:SignalR:Connection:<name>:<role>
+Azure:SignalR:ConnectionString:<name>:<role>
 ```
 
-Itt `<name>` a végpont neve és `<role>` van a szerepkör (elsődleges vagy másodlagos).
-Név megadása nem kötelező, de lesz hasznos, ha szeretne további testreszabási több végpontok között az útválasztási viselkedés.
+Itt `<name>` a végpont neve, és `<role>` a szerepköre (elsődleges vagy másodlagos).
+A név nem kötelező, de akkor is hasznos, ha tovább szeretné testreszabni az útválasztási viselkedést több végpont között.
 
-### <a name="through-code"></a>Kódok segítségével
+### <a name="through-code"></a>Kód használatával
 
-Ha inkább a kapcsolati karakterlánc valahol máshol tárolhatja, is a kódban, annak olvasása és hívásakor használja őket paraméterekként `AddAzureSignalR()` (az ASP.NET Core) vagy `MapAzureSignalR()` (az ASP.NET-ben).
+Ha a kapcsolódási karakterláncokat inkább valahol máshol szeretné tárolni, akkor a kódban is elolvashatja őket, és paraméterekként használhatja őket `AddAzureSignalR()` (ASP.NET Core) vagy `MapAzureSignalR()` (ASP.NET) meghívásakor.
 
 A mintakód a következő:
 
@@ -88,46 +88,51 @@ app.MapAzureSignalR(GetType().FullName, hub,  options => options.Endpoints = new
     };
 ```
 
-## <a name="failover-sequence-and-best-practice"></a>Feladatátvétel és az ajánlott eljárás
+Több elsődleges vagy másodlagos példányt is beállíthat. Ha több elsődleges és/vagy másodlagos példány is van, akkor az egyeztetés a következő sorrendben ad vissza egy végpontot:
 
-Most már rendelkezik a megfelelő system topológia telepítése. Minden alkalommal, amikor egy SignalR-szolgáltatáspéldány nem működik, online forgalmat továbbítja a többi példány.
-Íme, mi történik, ha az elsődleges példányhoz nem működik (és némi várakozás után állítja helyre):
+1. Ha legalább egy elsődleges példány online állapotban van, egy véletlenszerű elsődleges online példányt ad vissza.
+2. Ha az összes elsődleges példány nem érhető el, egy véletlenszerű másodlagos online példányt ad vissza.
 
-1. Elsődleges service-példány nem működik, az összes kiszolgáló kapcsolatokat ezen a példányon a rendszer eldobja.
-2. Ehhez a példányhoz kapcsolódó összes kiszolgáló megjelölése offline állapotban van, és fog egyeztetni visszaadó Ez a végpont leállítása és elindítása a másodlagos végpont visszaadása.
-3. Minden olyan ügyfélkapcsolatot ezen a példányon is lezárul, az ügyfelek csatlakozik újra. Kiszolgálók másodlagos végpont visszatérve, mivel az ügyfelek másodlagos példány fog csatlakozni.
-4. Most már a másodlagos példány összes online forgalmat vesz igénybe. Összes üzenet-kiszolgálóról az ügyfeleknek továbbra is letöltéséhez másodlagos összes alkalmazás-kiszolgáló csatlakozik. De az ügyfél és kiszolgáló üzeneteket a rendszer csak irányítja az app-kiszolgáló ugyanabban a régióban.
-5. Miután az elsődleges példány helyreállított és online állapotba, alkalmazás kiszolgáló helyreállítani a kapcsolatot, és jelölje meg az online. Az egyeztetés lesz most visszatérési elsődleges végpont újra vissza az elsődleges így az új ügyfelek csatlakoznak. De a meglévő ügyfeleket nem dobható el, és továbbra is mindaddig, amíg azok leválasztása magukat a másodlagos csatlakoztatott.
+## <a name="failover-sequence-and-best-practice"></a>Feladatátvételi folyamat és ajánlott eljárás
 
-Alábbi ábrák bemutatják, hogyan feladatátvételi SignalR service-ben történik:
+Most már rendelkezik a megfelelő rendszertopológia-beállítással. Ha az egyik szignáló szolgáltatási példánya nem érhető el, az online forgalom más példányokra lesz irányítva.
+A következő történik, ha egy elsődleges példány leáll (és néhány idő elteltével helyreállítja őket):
 
-Feladatátvétel Fig.1 előtt ![feladatátvétel előtt](media/signalr-concept-disaster-recovery/before-failover.png)
+1. Az elsődleges szolgáltatás példánya nem érhető el, az ezen a példányon lévő összes kiszolgálói kapcsolat el lesz dobva.
+2. Az ehhez a példányhoz csatlakoztatott összes kiszolgáló offline állapotba kerül, és az egyeztetés leállítja a végpont visszaadását, és megkezdi a másodlagos végpont visszaküldését.
+3. Az összes ügyfélkapcsolat ezen a példányon is be lesz zárva, az ügyfelek újra fognak csatlakozni. Mivel az alkalmazás-kiszolgálók most másodlagos végpontot adnak vissza, az ügyfelek a másodlagos példányhoz fognak csatlakozni.
+4. A másodlagos példány most az összes online forgalmat elvégzi. A kiszolgálóról az ügyfelekre irányuló összes üzenet továbbra is továbbítható, mert a másodlagos kapcsolat az összes app Serverhez csatlakozik. Az ügyfél és a kiszolgáló közötti üzenetküldés azonban csak az azonos régióban található app Serverre irányítja.
+5. Az elsődleges példány visszaállítása és online állapotba állítása után az App Server újra létrehozza a kapcsolatokat, és megjelöli azt online állapotba. Az egyeztetés most újra visszaküldi az elsődleges végpontot, így az új ügyfelek visszaállnak az elsődleges rendszerbe. A meglévő ügyfelek azonban nem lesznek elvetve, és a rendszer továbbra is a másodlagosra irányítja, amíg le nem bontja őket.
 
-Feladatátvétel Fig.2 után ![feladatátvétel után](media/signalr-concept-disaster-recovery/after-failover.png)
+Az alábbi diagramok azt szemléltetik, hogyan történik a feladatátvétel a Signaler szolgáltatásban:
 
-Fig.3 rövid idő után elsődleges helyreáll ![rövid idő után elsődleges helyreállítása](media/signalr-concept-disaster-recovery/after-recover.png)
+1\. ábra a feladatátvételi ![előtt a feladatátvétel](media/signalr-concept-disaster-recovery/before-failover.png)
 
-Normál esetben csak az elsődleges alkalmazás kiszolgáló látható, és a SignalR service rendelkezik online forgalmat (kék).
-A feladatátvételt követően másodlagos alkalmazások kiszolgálói és a SignalR service is aktívvá válik.
-Miután az elsődleges SignalR service újra online állapotba kerül, új ügyfeleket az elsődleges SignalR fog csatlakozni. De a meglévő ügyfelek továbbra is csatlakoznak másodlagos így példány is a forgalom.
-Amikor az összes meglévő ügyfelek kapcsolat bontása, a rendszer vissza a normál értékre (Fig.1) lesz.
+2\. ábra a feladatátvételi ![után a feladatátvétel](media/signalr-concept-disaster-recovery/after-failover.png)
 
-Nincsenek a régiók közötti magas rendelkezésre álló architektúra megvalósítása a két fő minta:
+3\. ábra: az elsődleges helyreállítások utáni rövid idő ![rövid idő elteltével az elsődleges helyreállítások](media/signalr-concept-disaster-recovery/after-recover.png)
 
-1. Az elsőt az, hogy az alkalmazás-kiszolgáló és a SignalR service-példány összes online forgalmat véve párjai van, és egy másik pár biztonsági (aktív/passzív nevű, ahogyan Fig.1). 
-2. A másik egy egyik alkalmazás kiszolgálók és a SignalR szolgáltatáspéldányok két (vagy több) párok, az online forgalmat és szolgál egy véve irányító biztonsági más párokhoz (aktív/aktív, Fig.3 hasonló nevű).
+Normál esetben a csak az elsődleges app Server és a Signaler szolgáltatás rendelkezik online forgalommal (kék színnel).
+A feladatátvétel után a másodlagos app Server és a Signaler szolgáltatás is aktívvá válik.
+Miután az elsődleges jelző szolgáltatás ismét online állapotba került, az új ügyfelek csatlakozni fognak az elsődleges jelzőhöz. A meglévő ügyfelek azonban még mindig másodlagos kapcsolattal csatlakoznak, így mindkét példány rendelkezik forgalommal.
+Az összes meglévő ügyfél leválasztása után a rendszer visszatér a normális kerékvágásba (1. ábra).
 
-SignalR service támogathatja mind a mintákat, a fő különbség hogyan valósítható meg az alkalmazások kiszolgálói.
-Ha alkalmazás-kiszolgálók aktív/passzív, SignalR service is aktív/passzív (amint az elsődleges alkalmazás server csak a elsődleges SignalR service példányát adja vissza).
-Ha alkalmazás-kiszolgálók aktív-aktív, SignalR service is aktív/aktív (az összes alkalmazás-kiszolgálók a saját elsődleges SignalR-példányok ad vissza, így ezek mindegyike forgalom).
+A régiók közötti magas rendelkezésre állású architektúrák megvalósításának két fő mintája létezik:
 
-Megjegyzendő, függetlenül attól, milyen minták használatát választja, meg kell kiszolgálóhoz való csatlakozáshoz minden SignalR szolgáltatáspéldány egy alkalmazás elsődlegesként.
+1. Az első az, hogy az App Server és a Signaler szolgáltatás egy pár példánya az összes online forgalomra vonatkozik, és van egy másik párja (aktív/passzív, amely az 1. ábrán látható). 
+2. A másik az, hogy két (vagy több) pár app Servert és a Signaler szolgáltatás példányát kell használnia, amelyek mindegyike az online forgalom részét képezi, és biztonsági mentésként szolgál más pároknak (az aktív/aktív, a 3. ábrához hasonlóan).
 
-Is (Ez a hosszú kapcsolat) SignalR kapcsolat jellege miatt az ügyfelek fog tapasztalni kapcsolat csepp Ha katasztrófa és feladatátvételi kerül sor.
-Ügyfél oldalán, hogy az átlátható legyen a végfelhasználókat az ilyen esetek kezeléséhez szükséges. Ha például újból kapcsolat bezárása után.
+A signaler szolgáltatás mindkét mintát támogathatja, a fő különbség az, hogy hogyan valósítja meg az alkalmazás-kiszolgálókat.
+Ha az alkalmazás-kiszolgálók aktívak/passzívak, a Signaler szolgáltatás aktív/passzív lesz (mivel az elsődleges alkalmazás-kiszolgáló csak az elsődleges jelző szolgáltatás példányát adja vissza).
+Ha az App Servers aktív/aktív, a Signaler szolgáltatás aktív/aktív lesz (mivel az összes alkalmazás-kiszolgáló visszaküldi a saját elsődleges jelző példányait, így ezek mindegyike lekérheti a forgalmat).
+
+Ha a használni kívánt mintákat nem számítja ki, akkor az egyes szignáló szolgáltatás-példányokat elsődlegesként kell összekötnie egy alkalmazás-kiszolgálóval.
+
+A Signaler-kapcsolatok jellegéből adódóan (ez egy hosszú csatlakozás), az ügyfelek a kapcsolódást akkor fogják tapasztalni, ha katasztrófa és feladatátvétel történik.
+Ezeket az eseteket az ügyféloldali oldalon kell kezelnie ahhoz, hogy transzparensek legyenek a végfelhasználók számára. Tegyük fel például, hogy újracsatlakozik a kapcsolat lezárása után.
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben a cikkben megtanulta, hogyan rugalmasság a SignalR service-alkalmazás konfigurálása rendelkezik. Szeretné megtudni, kiszolgáló vagy ügyfél-csatlakozási és a SignalR service-ben útválasztási kapcsolat kapcsolatos további részletekért, beolvashatja [Ez a cikk](signalr-concept-internals.md) a SignalR service belső elemei.
+Ebben a cikkben megtanulta, hogyan konfigurálhatja az alkalmazást, hogy rugalmasságot biztosítson a Signaler szolgáltatás számára. Ha többet szeretne megtudni a kiszolgálóról/az ügyfél kapcsolatáról és a kapcsolati útválasztásról a Signaler szolgáltatásban, olvassa el [ezt a cikket](signalr-concept-internals.md) a signaler szolgáltatás belső szolgáltatásaihoz.
 
-Skálázás forgatókönyvek például a horizontális skálázás, több példány üzemeltetéséhez együtt nagy számú kapcsolatok kezelésére, olvassa el a [méretezése több példány](signalr-howto-scale-multi-instances.md)?
+Olyan méretezési forgatókönyvek esetében, mint például a horizontális skálázás, amely több példányt használ a nagy számú kapcsolat kezelésére, olvassa el [a több példány skálázása című témakört](signalr-howto-scale-multi-instances.md).

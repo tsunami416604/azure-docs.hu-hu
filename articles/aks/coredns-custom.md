@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 03/15/2019
 ms.author: jenoller
-ms.openlocfilehash: b4c771b406d635410c22db5c1c4687a34a2e6eb0
-ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
+ms.openlocfilehash: 4f2e1a6f18a83d1e6c691f3fbcb0d85c7afd1575
+ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71130014"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73795096"
 ---
 # <a name="customize-coredns-with-azure-kubernetes-service"></a>A CoreDNS testreszabása az Azure Kubernetes szolgáltatással
 
@@ -23,7 +23,7 @@ Mivel az AK felügyelt szolgáltatás, nem módosíthatja a CoreDNS (a *alapfáj
 Ebből a cikkből megtudhatja, hogyan használhatja a ConfigMaps-t az CoreDNS alapszintű, az AK-ban található testreszabási lehetőségei Ez a megközelítés különbözik a CoreDNS más kontextusokban való konfigurálásának, például a alapfájl használatával. Ellenőrizze, hogy a futtatott CoreDNS verziója módosul-e a verziók között.
 
 > [!NOTE]
-> `kube-dns`a Kubernetes konfigurációs térképén keresztül különböző [testreszabási lehetőségek][kubednsblog] is elérhetők. A CoreDNS visszafelé **nem** kompatibilis a Kube-DNS szolgáltatással. A korábban használt testreszabásokat frissíteni kell a CoreDNS-mel való használatra.
+> a `kube-dns` különböző [testreszabási lehetőségeket][kubednsblog] kínál a Kubernetes konfigurációs térképén keresztül. A CoreDNS visszafelé **nem** kompatibilis a Kube-DNS szolgáltatással. A korábban használt testreszabásokat frissíteni kell a CoreDNS-mel való használatra.
 
 ## <a name="before-you-begin"></a>Előkészületek
 
@@ -35,7 +35,7 @@ A beépített CoreDNS beépülő modulok támogatottak. A bővítmények és a h
 
 ## <a name="rewrite-dns"></a>DNS újraírása
 
-Az egyik forgatókönyv az, ha az on-the-fly DNS-név újraírását végzi. A következő példában cserélje le `<domain to be written>` a nevet a saját teljes tartománynevére. Hozzon létre egy `corednsms.yaml` nevű fájlt, és illessze be a következő példát:
+Az egyik forgatókönyv az, ha az on-the-fly DNS-név újraírását végzi. Az alábbi példában cserélje le a `<domain to be written>`t a saját teljes tartománynevére. Hozzon létre egy `corednsms.yaml` nevű fájlt, és illessze be a következő példa konfigurációt:
 
 ```yaml
 apiVersion: v1
@@ -49,7 +49,7 @@ data:
         errors
         cache 30
         rewrite name substring <domain to be rewritten>.com default.svc.cluster.local
-        proxy .  /etc/resolv.conf # you can redirect this to a specific DNS server such as 10.0.0.10
+        forward .  /etc/resolv.conf # you can redirect this to a specific DNS server such as 10.0.0.10
     }
 ```
 
@@ -65,18 +65,18 @@ A testreszabások alkalmazásának ellenőrzéséhez használja a [kubectl Get c
 kubectl get configmaps --namespace=kube-system coredns-custom -o yaml
 ```
 
-Most kényszerítse a CoreDNS a ConfigMap újratöltését. A [kubectl delete Pod][kubectl delete] parancs nem ártalmas, és nem okoz leállási időt. A `kube-dns` hüvelyek törlődnek, a Kubernetes ütemező pedig újra létrehozza őket. Ezek az új hüvelyek a TTL-érték változását tartalmazzák.
+Most kényszerítse a CoreDNS a ConfigMap újratöltését. A [kubectl delete Pod][kubectl delete] parancs nem ártalmas, és nem okoz leállási időt. A `kube-dns` hüvelyek törlődnek, és a Kubernetes Scheduler ezután újra létrehozza őket. Ezek az új hüvelyek a TTL-érték változását tartalmazzák.
 
 ```console
 kubectl delete pod --namespace kube-system -l k8s-app=kube-dns
 ```
 
 > [!Note]
-> A fenti parancs helyes. A váltás `coredns`közben a telepítés a **Kube-DNS-** név alatt található.
+> A fenti parancs helyes. A `coredns`módosítása közben az üzemelő példány a **Kube-DNS-** név alatt található.
 
-## <a name="custom-proxy-server"></a>Egyéni proxykiszolgáló
+## <a name="custom-forward-server"></a>Egyéni továbbító kiszolgáló
 
-Ha proxykiszolgálót kell megadnia a hálózati forgalomhoz, létrehozhat egy ConfigMap a DNS testreszabásához. A következő példában frissítse a `proxy` nevet és a internetcímet a saját környezete értékeivel. Hozzon létre egy `corednsms.yaml` nevű fájlt, és illessze be a következő példát:
+Ha meg kell adnia egy továbbító kiszolgálót a hálózati forgalomhoz, létrehozhat egy ConfigMap a DNS testreszabásához. A következő példában frissítse a `forward` nevét és a címeit a saját környezetének értékeivel. Hozzon létre egy `corednsms.yaml` nevű fájlt, és illessze be a következő példa konfigurációt:
 
 ```yaml
 apiVersion: v1
@@ -87,7 +87,7 @@ metadata:
 data:
   test.server: | # you may select any name here, but it must end with the .server file extension
     <domain to be rewritten>.com:53 {
-        proxy foo.com 1.1.1.1
+        forward foo.com 1.1.1.1
     }
 ```
 
@@ -95,14 +95,14 @@ Ahogy az előző példákban is, hozza létre a ConfigMap a [kubectl Apply Confi
 
 ```console
 kubectl apply -f corednsms.yaml
-kubectl delete pod --namespace kube-system --label k8s-app=kube-dns
+kubectl delete pod --namespace kube-system --selector k8s-app=kube-dns
 ```
 
 ## <a name="use-custom-domains"></a>Egyéni tartományok használata
 
 Előfordulhat, hogy olyan egyéni tartományokat szeretne konfigurálni, amelyek csak belsőleg oldhatók fel. Előfordulhat például, hogy fel szeretné oldani a *puglife. local*egyéni tartományt, amely nem érvényes legfelső szintű tartomány. Egyéni tartományi ConfigMap nélkül az AK-fürt nem tudja feloldani a címeket.
 
-Az alábbi példában frissítse az egyéni tartományt és az IP-címet, hogy a forgalmat a saját környezetéhez tartozó értékekre irányítsa. Hozzon létre egy `corednsms.yaml` nevű fájlt, és illessze be a következő példát:
+Az alábbi példában frissítse az egyéni tartományt és az IP-címet, hogy a forgalmat a saját környezetéhez tartozó értékekre irányítsa. Hozzon létre egy `corednsms.yaml` nevű fájlt, és illessze be a következő példa konfigurációt:
 
 ```yaml
 apiVersion: v1
@@ -115,7 +115,7 @@ data:
     puglife.local:53 {
         errors
         cache 30
-        proxy . 192.11.0.1  # this is my test/dev DNS server
+        forward . 192.11.0.1  # this is my test/dev DNS server
     }
 ```
 
@@ -123,12 +123,12 @@ Ahogy az előző példákban is, hozza létre a ConfigMap a [kubectl Apply Confi
 
 ```console
 kubectl apply -f corednsms.yaml
-kubectl delete pod --namespace kube-system --label k8s-app=kube-dns
+kubectl delete pod --namespace kube-system --selector k8s-app=kube-dns
 ```
 
 ## <a name="stub-domains"></a>Helyettes tartományok
 
-A CoreDNS a helyettes tartományok konfigurálására is használható. Az alábbi példában frissítse az egyéni tartományokat és IP-címeket a saját környezete értékeivel. Hozzon létre egy `corednsms.yaml` nevű fájlt, és illessze be a következő példát:
+A CoreDNS a helyettes tartományok konfigurálására is használható. Az alábbi példában frissítse az egyéni tartományokat és IP-címeket a saját környezete értékeivel. Hozzon létre egy `corednsms.yaml` nevű fájlt, és illessze be a következő példa konfigurációt:
 
 ```yaml
 apiVersion: v1
@@ -141,12 +141,12 @@ data:
     abc.com:53 {
         errors
         cache 30
-        proxy . 1.2.3.4
+        forward . 1.2.3.4
     }
     my.cluster.local:53 {
         errors
         cache 30
-        proxy . 2.3.4.5
+        forward . 2.3.4.5
     }
 
 ```
@@ -155,7 +155,7 @@ Ahogy az előző példákban is, hozza létre a ConfigMap a [kubectl Apply Confi
 
 ```console
 kubectl apply -f corednsms.yaml
-kubectl delete pod --namespace kube-system --label k8s-app=kube-dns
+kubectl delete pod --namespace kube-system --selector k8s-app=kube-dns
 ```
 
 ## <a name="hosts-plugin"></a>Gazdagépek beépülő modul
@@ -187,8 +187,6 @@ Az alapvető hálózati fogalmakkal kapcsolatos további tudnivalókért tekints
 [coredns]: https://coredns.io/
 [corednsk8s]: https://kubernetes.io/docs/tasks/administer-cluster/dns-custom-nameservers/#coredns
 [dnscache]: https://coredns.io/plugins/cache/
-[aks-quickstart-cli]: https://docs.microsoft.com/en-us/azure/aks/kubernetes-walkthrough
-[aks-quickstart-portal]: https://docs.microsoft.com/en-us/azure/aks/kubernetes-walkthrough-portal
 [kubectl-apply]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#apply
 [kubectl-get]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get
 [kubectl delete]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#delete

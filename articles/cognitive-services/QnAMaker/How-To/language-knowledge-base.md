@@ -10,12 +10,12 @@ ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 09/24/2019
 ms.author: diberry
-ms.openlocfilehash: 849c919950c57a1df3b0fb76021de6e10254c7b4
-ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
+ms.openlocfilehash: a818d84bf3df712190ccc6c1721c26933a9fbcdb
+ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72286373"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73793942"
 ---
 # <a name="language-support-of-knowledge-base-content-for-qna-maker"></a>A QnA Maker Tudásbázis-tartalmának nyelvi támogatása
 
@@ -38,9 +38,9 @@ A nyelv kiválasztása egy erőforrás első tudásbázisának létrehozásához
 ![QnA Maker portál képernyőképe az első Tudásbázis nyelvének kiválasztásához](../media/language-support/select-language-when-creating-knowledge-base.png)
 
 ## <a name="query-matching-and-relevance"></a>Lekérdezés megfeleltetése és relevanciája
-Az QnA Maker a [Azure Search nyelvi elemzői](https://docs.microsoft.com/rest/api/searchservice/language-support) függ az eredmények biztosításához. 
+A QnA Maker az [Azure Cognitive Search Language Analyzers](https://docs.microsoft.com/rest/api/searchservice/language-support) szolgáltatástól függ az eredmények biztosításához. 
 
-Habár a Azure Search képességek a támogatott nyelveken vannak, QnA Maker egy további, az Azure Search eredményein felül található Ranger-val rendelkezik. Ebben a Ranger-modellben néhány speciális szemantikai és Word-alapú funkciót használunk a következő nyelveken. 
+Habár az Azure Cognitive Search képességei támogatott nyelveken is elérhetők, QnA Maker rendelkezik egy további, az Azure keresési eredményein felül található rangsorsal. Ebben a Ranger-modellben néhány speciális szemantikai és Word-alapú funkciót használunk a következő nyelveken. 
 
 |Nyelvek további rangsorsal|
 |--|
@@ -68,7 +68,7 @@ A QnA Maker-erőforrás nyelvét a QnA Maker szolgáltatás beállításai lapj�
 ![QnA Maker portál képernyőképe a Service Settings lapról](../media/language-support/language-knowledge-base.png) 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [QnA-robot létrehozása Azure Bot Service](../Tutorials/create-qna-bot.md)

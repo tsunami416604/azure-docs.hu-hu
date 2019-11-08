@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2148d6ea869a87571008c1f84c5b1000d4030bbb
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 845ffda22cae9464870786cc5997b9f5521c03e1
+ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73175947"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73795630"
 ---
 # <a name="enable-remote-access-to-power-bi-mobile-with-azure-ad-application-proxy"></a>Távoli hozzáférés engedélyezése Power BI Mobile Azure-AD Application Proxy
 
@@ -82,7 +82,7 @@ További információ: [Kerberos által korlátozott delegálás az alkalmazáso
 Most már készen áll az Azure AD Application Proxy konfigurálására.
 
 1. Jelentéskészítési szolgáltatások közzététele az Application proxyn keresztül a következő beállításokkal. Az alkalmazások alkalmazásproxy használatával történő közzétételének részletes ismertetését lásd: [alkalmazások közzététele az Azure ad Application proxy segítségével](application-proxy-add-on-premises-application.md#add-an-on-premises-app-to-azure-ad).
-   - **Belső URL-cím**: adja meg annak a jelentéskészítő kiszolgálónak az URL-címét, amelyet az összekötő elérhet a vállalati hálózaton. Győződjön meg arról, hogy ez az URL-cím elérhető azon a kiszolgálón, amelyen az összekötő telepítve van. Az ajánlott eljárás a legfelső szintű tartomány, például a `https://servername/` használata, hogy elkerülje a nem az alkalmazásproxy használatával közzétett alelérési (például `https://servername/reports/` és `https://servername/reportserver/`) problémák elkerülését.
+   - **Belső URL-cím**: adja meg annak a jelentéskészítő kiszolgálónak az URL-címét, amelyet az összekötő elérhet a vállalati hálózaton. Győződjön meg arról, hogy ez az URL-cím elérhető azon a kiszolgálón, amelyen az összekötő telepítve van. Az ajánlott eljárás egy legfelső szintű tartomány, például a `https://servername/` használata az alkalmazásproxy használatával közzétett alelérési utakkal kapcsolatos problémák elkerüléséhez. Használjon például `https://servername/`, és ne `https://servername/reports/` vagy `https://servername/reportserver/`.
      > [!NOTE]
      > A jelentéskészítő kiszolgálóhoz biztonságos HTTPS-kapcsolat használatát javasoljuk. További információ: az [SSL-kapcsolatok konfigurálása natív módú jelentéskészítő kiszolgálón](https://docs.microsoft.com/sql/reporting-services/security/configure-ssl-connections-on-a-native-mode-report-server?view=sql-server-2017) .
    - **Külső URL-cím**: adja meg a nyilvános URL-címet, amelyhez a Power bi Mobile alkalmazás csatlakozni fog. Előfordulhat például, hogy `https://reports.contoso.com`, ha egyéni tartományt használ. Ha egyéni tartományt szeretne használni, töltsön fel egy tanúsítványt a tartományhoz, és mutasson egy DNS-rekordot az alkalmazás alapértelmezett msappproxy.net-tartományára. Részletes lépések: [Egyéni tartományok használata az Azure ad Application proxyban](application-proxy-configure-custom-domain.md).
@@ -153,11 +153,11 @@ A Microsoft Intune segítségével kezelheti a vállalat munkaerő által haszn�
 7. Kattintson a **rendszergazdai jóváhagyás megadása** lehetőségre az alkalmazáshoz való hozzáférés engedélyezéséhez.
 8. Konfigurálja a kívánt Intune- [szabályzatot az alkalmazás-védelmi házirendek létrehozásához és hozzárendeléséhez](https://docs.microsoft.com/intune/app-protection-policies).
 
-## <a name="troubleshooting"></a>Hibakeresés
+## <a name="troubleshooting"></a>Hibaelhárítás
 
 Ha az alkalmazás a jelentés több percnél hosszabb betöltésére tett kísérlet után egy hibaüzenetet ad vissza, előfordulhat, hogy módosítania kell az időtúllépési beállítást. Alapértelmezés szerint az alkalmazásproxy olyan alkalmazásokat támogat, amelyek akár 85 másodpercet is igénybe vesznek a kérelmek megválaszolására. A beállítás 180 másodpercre való meghosszabbításához válassza ki az alkalmazáshoz **tartozó alkalmazásproxy** -beállítások lapon a háttérbeli időtúllépést. A gyors és megbízható jelentések létrehozásával kapcsolatos tippekért tekintse meg [Power bi jelentések – ajánlott eljárások](https://docs.microsoft.com/power-bi/power-bi-reports-performance)című témakört.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Natív ügyfélalkalmazások engedélyezése a proxy alkalmazásokkal való kommunikációhoz](application-proxy-configure-native-client-application.md)
 - [A helyszíni jelentéskészítő kiszolgáló jelentéseinek és KPI-k megtekintése a Power BI Mobile apps szolgáltatásban](https://docs.microsoft.com/power-bi/consumer/mobile/mobile-app-ssrs-kpis-mobile-on-premises-reports)

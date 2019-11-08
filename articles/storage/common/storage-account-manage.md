@@ -5,14 +5,14 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 06/20/2019
+ms.date: 11/06/2019
 ms.author: tamram
-ms.openlocfilehash: 60104496006e790887dd9c4b3e4c3196e0ef6444
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.openlocfilehash: 3c01cc870b20c8256b215eb700548e6cd69ad0d5
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2019
-ms.locfileid: "71671370"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73748987"
 ---
 # <a name="manage-storage-account-settings-in-the-azure-portal"></a>A Storage-fiók beállításainak kezelése a Azure Portal
 
@@ -24,7 +24,7 @@ Az Azure Storage a szerepköralapú hozzáférés-vezérlés (RBAC) használatá
 
 A Azure Portal **hozzáférés-vezérlési** beállításai egyszerű módszert biztosítanak a felhasználókhoz, csoportokhoz, RBAC és felügyelt identitásokhoz tartozó szerepkörök hozzárendelésére. A RBAC szerepköreinek hozzárendelésével kapcsolatos további információkért lásd: [hozzáférési jogosultságok kezelése a blob-és üzenetsor-adatokhoz a RBAC használatával](storage-auth-aad-rbac.md).
 
-## <a name="tags"></a>Tags
+## <a name="tags"></a>Címkék
 
 Az Azure Storage támogatja Azure Resource Manager címkék használatát az Azure-erőforrások testreszabott besorolással való rendszerezéséhez. Címkéket alkalmazhat a Storage-fiókjaihoz, így logikai módon csoportosíthatja őket az előfizetésben.
 
@@ -32,7 +32,7 @@ A Storage-fiókok esetében a címke neve 128 karakterre van korlátozva, és a 
 
 További információ: [címkék használata az Azure-erőforrások rendszerezéséhez](../../azure-resource-manager/resource-group-using-tags.md).
 
-## <a name="access-keys"></a>Elérési kulcsok
+## <a name="access-keys"></a>Elérési kulcs
 
 A Storage-fiók létrehozásakor az Azure 2 512 bites Storage-fiókhoz tartozó hozzáférési kulcsokat hoz létre. Ezekkel a kulcsokkal engedélyezheti a Storage-fiókhoz való hozzáférést a megosztott kulcs használatával. Az alkalmazások megszakítása nélkül elforgathatja és újragenerálhatja a kulcsokat, és a Microsoft azt javasolja, hogy ezt rendszeresen végezze el.
 

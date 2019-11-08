@@ -13,18 +13,18 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 12/20/2018
 ms.author: genli
-ms.openlocfilehash: d554629c4a03b81ee3c04d27f6365c1a8734c952
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: 47ff8870df7c89ee2ab3e48e064e31aa581f65f0
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71058198"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73748638"
 ---
 # <a name="windows-activation-fails-in-forced-tunneling-scenario"></a>A Windows aktiválása sikertelen a kényszerített bújtatási forgatókönyvben
 
 Ez a cikk azt ismerteti, hogyan oldható meg a KMS-aktiválási probléma, amely akkor fordulhat elő, ha engedélyezi a kényszerített bújtatást a helyek közötti VPN-kapcsolaton vagy ExpressRoute forgatókönyvekben.
 
-## <a name="symptom"></a>Jelenség
+## <a name="symptom"></a>Hibajelenség
 
 A [kényszerített bújtatást](../../vpn-gateway/vpn-gateway-forced-tunneling-rm.md) az Azure-beli virtuális hálózati alhálózatokon engedélyezheti, hogy az összes internetes forgalmat visszairányítsa a helyszíni hálózatra. Ebben az esetben a Windowst futtató Azure-beli virtuális gépek (VM-EK) nem aktiválják a Windowst.
 
@@ -36,9 +36,9 @@ Az Azure Windows rendszerű virtuális gépeknek csatlakozniuk kell az Azure KMS
 
 A probléma megoldásához használja az Azure egyéni útvonalát az aktiválási forgalom Azure KMS-kiszolgálóra történő átirányításához.
 
-Az Azure globális felhőhöz tartozó KMS-kiszolgáló IP-címe 23.102.135.246. Its DNS name is kms.core.windows.net. Ha más Azure-platformokat, például az Azure Germany-t használja, akkor a megfelelő KMS-kiszolgáló IP-címét kell használnia. További információkért tekintse meg a következő táblázatot:
+Az Azure globális felhőhöz tartozó KMS-kiszolgáló IP-címe 23.102.135.246. A DNS-neve kms.core.windows.net. Ha más Azure-platformokat, például az Azure Germany-t használja, akkor a megfelelő KMS-kiszolgáló IP-címét kell használnia. További információkért tekintse meg a következő táblázatot:
 
-|Platform| KMS DNS|KMS IP|
+|Platform| KMS DNS|KMS IP-CÍM|
 |------|-------|-------|
 |Azure globális|kms.core.windows.net|23.102.135.246|
 |Azure Germany|kms.core.cloudapi.de|51.4.143.248|
@@ -50,7 +50,7 @@ Az egyéni útvonal hozzáadásához kövesse az alábbi lépéseket:
 
 ### <a name="for-resource-manager-vms"></a>Resource Manager-alapú virtuális gépek esetén
 
-[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
+ 
 
 > [!NOTE] 
 > Az aktiválás nyilvános IP-címeket használ, és egy szabványos SKU Load Balancer konfiguráció fogja érinteni. A követelmények megismeréséhez körültekintően tekintse át a [kimenő kapcsolatokat az Azure-ban](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections) .

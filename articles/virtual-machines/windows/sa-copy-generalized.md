@@ -15,36 +15,36 @@ ms.topic: article
 ms.date: 05/23/2017
 ms.author: cynthn
 ROBOTS: NOINDEX
-ms.openlocfilehash: 45c59ccdd45a0c00635c3e0a3919248f33e2919a
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: b0277e07f67b3f9124dc0e27b20e3d49e0d2f6e9
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70102450"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73749210"
 ---
 # <a name="how-to-create-an-unmanaged-vm-image-from-an-azure-vm"></a>Nem felügyelt virtuális gép rendszerképének létrehozása Azure-beli virtuális gépről
 
-Ez a cikk a Storage-fiókok használatát ismerteti. Azt javasoljuk, hogy Storage-fiók helyett felügyelt lemezeket és felügyelt lemezképeket használjon. További információ: általánosított [virtuális gép felügyelt rendszerképének rögzítése az Azure-ban](capture-image-resource.md).
+Ez a cikk a Storage-fiókok használatát ismerteti. Azt javasoljuk, hogy Storage-fiók helyett felügyelt lemezeket és felügyelt lemezképeket használjon. További információ: [általánosított virtuális gép felügyelt rendszerképének rögzítése az Azure-ban](capture-image-resource.md).
 
 Ez a cikk bemutatja, hogyan hozhat létre egy általános Azure-beli virtuális gép rendszerképét egy Storage-fiók használatával a Azure PowerShell használatával. Ezután egy másik virtuális gép létrehozására használhatja a rendszerképet. A rendszerkép tartalmazza az operációsrendszer-lemezt és a virtuális géphez csatolt adatlemezeket. A rendszerkép nem tartalmazza a virtuális hálózati erőforrásokat, ezért be kell állítania ezeket az erőforrásokat az új virtuális gép létrehozásakor. 
 
-[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
+ 
 
 ## <a name="generalize-the-vm"></a>A virtuális gép általánosítása 
-Ez a szakasz bemutatja, hogyan általánosíthatja a Windows rendszerű virtuális gépet képként való használatra. A virtuális gépek általánosítása eltávolítja az összes személyes fiók adatait, többek között, és előkészíti a gépet képként való használatra. Ha további információra van szüksége a Sysprepről, tekintse meg [A Sysprep használata: Bevezetés](https://technet.microsoft.com/library/bb457073.aspx).
+Ez a szakasz bemutatja, hogyan általánosíthatja a Windows rendszerű virtuális gépet képként való használatra. A virtuális gépek általánosítása eltávolítja az összes személyes fiók adatait, többek között, és előkészíti a gépet képként való használatra. További információ a Sysprepről: [A Sysprep használata: Bevezetés](https://technet.microsoft.com/library/bb457073.aspx).
 
 Győződjön meg arról, hogy a Sysprep támogatja a számítógépen futó kiszolgálói szerepköröket. További információ: a [Sysprep-támogatás a kiszolgálói szerepkörökhöz](https://msdn.microsoft.com/windows/hardware/commercialize/manufacture/desktop/sysprep-support-for-server-roles)
 
 > [!IMPORTANT]
-> Ha első alkalommal tölti fel a VHD-t az Azure-ba, győződjön meg arról, hogy előkészítette [a virtuális gépet](prepare-for-upload-vhd-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) a Sysprep futtatása előtt. 
+> Ha első alkalommal tölti fel a VHD-t az Azure-ba, győződjön meg arról, hogy [előkészítette a virtuális gépet](prepare-for-upload-vhd-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) a Sysprep futtatása előtt. 
 > 
 > 
 
-A Linux rendszerű virtuális gépeket a használatával `sudo waagent -deprovision+user` is általánosíthatja, majd a PowerShell használatával rögzítheti a virtuális gépet. További információ a virtuális gép rögzítéséről a CLI használatával: Linux rendszerű [virtuális gép általánosítása és rögzítése az Azure CLI használatával](../linux/capture-image.md).
+A Linux rendszerű virtuális gépeket a `sudo waagent -deprovision+user` használatával is általánosíthatja, majd a PowerShell használatával rögzítheti a virtuális gépet. További információ a virtuális gép rögzítéséről a CLI használatával: Linux rendszerű [virtuális gép általánosítása és rögzítése az Azure CLI használatával](../linux/capture-image.md).
 
 
 1. Jelentkezzen be a Windows rendszerű virtuális gépre.
-2. Nyissa meg a parancsablakot rendszergazdaként. Módosítsa a könyvtárat a **%WINDIR%\system32\sysprep**értékre, majd `sysprep.exe`futtassa a parancsot.
+2. Nyissa meg a parancsablakot rendszergazdaként. Módosítsa a könyvtárat a **%WINDIR%\system32\sysprep**értékre, majd futtassa a `sysprep.exe`.
 3. A **Rendszer-előkészítő eszköz** párbeszédpanelen válassza **A kezdőélmény indítása** lehetőséget, és győződjön meg róla, hogy be van-e jelölve az **Általánosítás** jelölőnégyzet.
 4. A **leállítási beállítások**területen válassza a **Leállítás**lehetőséget.
 5. Kattintson az **OK** gombra.
@@ -88,7 +88,7 @@ A Linux rendszerű virtuális gépeket a használatával `sudo waagent -deprovis
     Stop-AzVM -ResourceGroupName <resourceGroup> -Name <vmName>
     ```
    
-    A Azure Portalban a virtuális gép állapota leállítva ( leállítva **)** állapotra módosult.
+    A Azure Portalban a virtuális gép állapota **Leállítva** **(leállítva)** *állapotra* módosult.
 2. Állítsa a virtuális gép állapotát **általánosítva**értékre. 
    
     ```powershell
@@ -111,7 +111,7 @@ Save-AzVMImage -ResourceGroupName <resourceGroupName> -Name <vmName> `
     -Path <C:\local\Filepath\Filename.json>
 ```
    
-A rendszerkép URL-címét a JSON-sablonfájl használatával szerezheti be. A rendszerkép teljes > elérési útjához nyissa meg a Resources**storageProfile** > **osDisk** > -**rendszerkép** > **URI** szakaszát. A rendszerkép URL-címe a következőképpen néz `https://<storageAccountName>.blob.core.windows.net/system/Microsoft.Compute/Images/<imagesContainer>/<templatePrefix-osDisk>.xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx.vhd`ki:.
+A rendszerkép URL-címét a JSON-sablonfájl használatával szerezheti be. Nyissa meg az **erőforrások** > **storageProfile** > **osDisk** > **rendszerkép** > **URI** szakaszt a rendszerkép teljes elérési útjához. A rendszerkép URL-címe a következőképpen néz ki: `https://<storageAccountName>.blob.core.windows.net/system/Microsoft.Compute/Images/<imagesContainer>/<templatePrefix-osDisk>.xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx.vhd`.
    
 Az URI-t a portálon is ellenőrizheti. A rendszer átmásolja a rendszerképet egy **System** nevű tárolóba a Storage-fiókban. 
 
@@ -121,7 +121,7 @@ Most létrehozhat egy vagy több virtuális gépet a nem felügyelt rendszerkép
 
 ### <a name="set-the-uri-of-the-vhd"></a>A VHD URI-azonosítójának beállítása
 
-A használni kívánt virtuális merevlemez URI-ja a következő formátumban van: https://**mystorageaccount**. blob.Core.Windows.net/**mycontainer**/**MyVhdName**. vhd. Ebben a példában a **myVHD** nevű virtuális merevlemez a tároló **mycontainer**található **mystorageaccount** van.
+A használni kívánt virtuális merevlemez URI-ja a következő formátumban van: https://**mystorageaccount**. blob.core.windows.net/**mycontainer**/**MyVhdName**. vhd. Ebben a példában a **myVHD** nevű virtuális merevlemez a tároló **mycontainer**található **mystorageaccount** van.
 
 ```powershell
 $imageURI = "https://mystorageaccount.blob.core.windows.net/mycontainer/myVhd.vhd"
@@ -249,7 +249,7 @@ A következő PowerShell befejezi a virtuálisgép-konfigurációkat, és a nem 
 ```
 
 ### <a name="verify-that-the-vm-was-created"></a>Annak ellenőrzése, hogy a virtuális gép létrejött-e
-Ha elkészült, az újonnan létrehozott virtuális gépet a**virtuális gépek** **böngészése** > vagy a következő PowerShell-parancsok használatával tekintheti meg a [Azure Portalban](https://portal.azure.com) :
+Ha elkészült, az újonnan létrehozott virtuális gépet a [Azure Portal](https://portal.azure.com) **Tallózás** > **virtuális gépek**alatt, vagy a következő PowerShell-parancsok használatával tekintheti meg:
 
 ```powershell
     $vmList = Get-AzVM -ResourceGroupName $rgName

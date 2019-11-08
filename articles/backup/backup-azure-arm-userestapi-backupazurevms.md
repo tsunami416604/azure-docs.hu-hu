@@ -1,6 +1,6 @@
 ---
 title: 'Azure Backup: Azure-beli virtuális gépek biztonsági mentése REST API használatával'
-description: Azure-beli virtuális gépek biztonsági mentési műveleteinek kezelése REST API használatával
+description: Ebből a cikkből megtudhatja, hogyan konfigurálhatja, kezdeményezheti és kezelheti az Azure-beli virtuális gépek biztonsági mentési műveleteit REST API használatával.
 ms.reviewer: pullabhk
 author: dcurwin
 manager: carmonm
@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/03/2018
 ms.author: dacurwin
 ms.assetid: b80b3a41-87bf-49ca-8ef2-68e43c04c1a3
-ms.openlocfilehash: 837401256aa264a527e2323b055713f4bd8e8d1c
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
-ms.translationtype: HT
+ms.openlocfilehash: 901ae66281e1d68474304a4f5456a0163fcb6f2a
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73671686"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73747611"
 ---
 # <a name="back-up-an-azure-vm-using-azure-backup-via-rest-api"></a>Azure-beli virtuális gép biztonsági mentése Azure Backup használatával REST API
 
@@ -47,7 +47,7 @@ A "refresh" művelet egy [aszinkron művelet](https://docs.microsoft.com/azure/a
 
 Két választ ad vissza: 202 (elfogadva), ha egy másik művelet jön létre, majd 200 (OK), amikor a művelet befejeződik.
 
-|Name (Név)  |Típus  |Leírás  |
+|Név  |Típus  |Leírás  |
 |---------|---------|---------|
 |204 nincs tartalom     |         |  Nem visszaadott tartalommal rendelkező OK      |
 |202 elfogadva     |         |     Elfogadott    |
@@ -108,13 +108,13 @@ GET https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{
 
 A *Get* URI az összes szükséges paraméterrel rendelkezik. Nincs szükség további kérelem törzsére.
 
-##### <a name="responses-1"></a>Válaszok
+#### <a name="responses-1"></a>Válaszok
 
-|Name (Név)  |Típus  |Leírás  |
+|Név  |Típus  |Leírás  |
 |---------|---------|---------|
 |200 OK     | [WorkloadProtectableItemResourceList](https://docs.microsoft.com/rest/api/backup/backupprotectableitems/list#workloadprotectableitemresourcelist)        |       OK |
 
-##### <a name="example-responses-1"></a>Válaszok – példa
+#### <a name="example-responses-1"></a>Válaszok – példa
 
 A *Get* kérelem elküldése után a rendszer egy 200 (ok) választ ad vissza.
 
@@ -186,7 +186,7 @@ PUT https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000
 
 Védett elem létrehozásához kövesse a kérelem törzsének összetevőit.
 
-|Name (Név)  |Típus  |Leírás  |
+|Név  |Típus  |Leírás  |
 |---------|---------|---------|
 |properties     | AzureIaaSVMProtectedItem        |ProtectedItem erőforrás tulajdonságai         |
 
@@ -214,7 +214,7 @@ A védett elemek létrehozása egy [aszinkron művelet](https://docs.microsoft.c
 
 Két választ ad vissza: 202 (elfogadva), ha egy másik művelet jön létre, majd 200 (OK), amikor a művelet befejeződik.
 
-|Name (Név)  |Típus  |Leírás  |
+|Név  |Típus  |Leírás  |
 |---------|---------|---------|
 |200 OK     |    [ProtectedItemResource](https://docs.microsoft.com/rest/api/backup/protecteditemoperationresults/get#protecteditemresource)     |  OK       |
 |202 elfogadva     |         |     Elfogadott    |
@@ -300,7 +300,7 @@ POST https://management.azure.com/Subscriptions/00000000-0000-0000-0000-00000000
 
 Az igény szerinti biztonsági mentés elindításához kövesse a kérelem törzsének összetevőit.
 
-|Name (Név)  |Típus  |Leírás  |
+|Név  |Típus  |Leírás  |
 |---------|---------|---------|
 |properties     | [IaaSVMBackupRequest](https://docs.microsoft.com/rest/api/backup/backups/trigger#iaasvmbackuprequest)        |BackupRequestResource tulajdonságai         |
 
@@ -325,11 +325,11 @@ Az igény szerinti biztonsági mentés indítása [aszinkron művelet](https://d
 
 Két választ ad vissza: 202 (elfogadva), ha egy másik művelet jön létre, majd 200 (OK), amikor a művelet befejeződik.
 
-|Name (Név)  |Típus  |Leírás  |
+|Név  |Típus  |Leírás  |
 |---------|---------|---------|
 |202 elfogadva     |         |     Elfogadott    |
 
-##### <a name="example-responses-3"></a>Válaszok – példa
+#### <a name="example-responses-3"></a>Válaszok – példa
 
 Miután elküldte a *post* -kérést egy igény szerinti biztonsági mentéshez, a kezdeti válasz 202 (elfogadva), egy Location fejlécet vagy egy Azure-aszinkron-fejlécet tartalmaz.
 
@@ -445,7 +445,7 @@ A védelem *törlése* [aszinkron művelet](https://docs.microsoft.com/azure/azu
 
 Két választ ad vissza: 202 (elfogadva), ha egy másik művelet jön létre, majd 204 (nincs tartalom), amikor a művelet befejeződik.
 
-|Name (Név)  |Típus  |Leírás  |
+|Név  |Típus  |Leírás  |
 |---------|---------|---------|
 |204 tartalom     |         |  Nincs tartalom       |
 |202 elfogadva     |         |     Elfogadott    |

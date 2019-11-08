@@ -13,23 +13,23 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 09/17/2018
 ms.author: cynthn
-ms.openlocfilehash: 30e5a7e5953c56ff452b992370e8225ca103abba
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 016b53660499b86de13855cfa994c84d6d9bc702
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70079694"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73749500"
 ---
 # <a name="create-a-vm-from-a-managed-image"></a>Virtuális gép létrehozása felügyelt rendszerképből
 
 A Azure Portal vagy a PowerShell használatával több virtuális gépet (VM) is létrehozhat egy Azure által felügyelt virtuálisgép-rendszerképből. A felügyelt virtuálisgép-rendszerkép tartalmazza a virtuális gép létrehozásához szükséges információkat, beleértve az operációs rendszert és az adatlemezeket. A lemezképet alkotó virtuális merevlemezeket (VHD-ket), beleértve az operációsrendszer-lemezeket és az adatlemezeket is, felügyelt lemezként tárolja a rendszer. 
 
-Új virtuális gép létrehozása előtt [létre kell hoznia egy felügyelt](capture-image-resource.md) virtuálisgép-rendszerképet, amelyet a forrás képként kíván használni, és olvasási hozzáférést kell adnia a rendszerképhez minden olyan felhasználónak, akinek hozzáféréssel kell rendelkeznie a képhez. 
+Új virtuális gép létrehozása előtt [létre kell hoznia egy felügyelt virtuálisgép-rendszerképet](capture-image-resource.md) , amelyet a forrás képként kíván használni, és olvasási hozzáférést kell adnia a rendszerképhez minden olyan felhasználónak, akinek hozzáféréssel kell rendelkeznie a képhez. 
 
 
 ## <a name="use-the-portal"></a>A portál használata
 
-1. Nyissa meg az [Azure Portalt](https://portal.azure.com).
+1. Nyissa meg az [Azure portált](https://portal.azure.com).
 2. A bal oldali menüben válassza a **minden erőforrás**elemet. Az erőforrásokat **típus** szerint rendezheti, így könnyen megtalálhatja a lemezképeket.
 3. Válassza ki a listából a használni kívánt rendszerképet. Megnyílik a rendszerkép **áttekintése** oldal.
 4. Válassza a **virtuális gép létrehozása** lehetőséget a menüből.
@@ -43,7 +43,7 @@ A Azure Portal vagy a PowerShell használatával több virtuális gépet (VM) is
 
 A PowerShell használatával létrehozhat egy virtuális gépet egy rendszerképből a [New-AzVm](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) parancsmag egyszerűsített paraméterének használatával. A rendszerképnek ugyanabban az erőforráscsoporthoz kell lennie, ahol létre szeretné hozni a virtuális gépet.
 
-[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
+ 
 
 A [New-AzVm](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) egyszerűsített paraméterének csak azt kell megadnia, hogy a virtuális gép rendszerképből való létrehozásához meg kell adnia egy nevet, egy erőforráscsoportot és egy rendszerkép nevét. A New-AzVm a **-Name** paraméter értékét fogja használni az összes automatikusan létrehozott erőforrás neveként. Ebben a példában részletesebb nevet adunk az egyes erőforrásokhoz, de a parancsmag automatikusan létrehozza azokat. Előre is létrehozhat erőforrásokat, például a virtuális hálózatot, és átadhatja az erőforrás nevét a parancsmagnak. A New-AzVm a meglévő erőforrásokat fogja használni, ha azok nevük alapján megtalálják őket.
 
