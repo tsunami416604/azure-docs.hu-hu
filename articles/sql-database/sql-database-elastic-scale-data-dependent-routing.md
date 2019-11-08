@@ -1,5 +1,5 @@
 ---
-title: Adatfüggő útválasztás Azure SQL Database
+title: Adatfüggő Útválasztás
 description: A ShardMapManager osztály használata a .NET-alkalmazásokban az Adatfüggő útválasztáshoz, a többrétegű adatbázisok szolgáltatásához Azure SQL Database
 services: sql-database
 ms.service: sql-database
@@ -11,18 +11,18 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/25/2019
-ms.openlocfilehash: 319f2744cd437aea51a05592cd7a26f8b58fe761
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: e5212ba7ed349f3596047fc0c027829b8667ddc5
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73690277"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73823682"
 ---
 # <a name="use-data-dependent-routing-to-route-a-query-to-appropriate-database"></a>Lekérdezés továbbítása a megfelelő adatbázishoz az Adatfüggő útválasztás használatával
 
 Az **Adatfüggő útválasztás** lehetővé teszi, hogy egy lekérdezésben lévő, a kérést a megfelelő adatbázishoz irányítsa. Az adatokon alapuló útválasztás alapvető minta a többrétegű adatbázisok használatakor. A kérelem környezete a kérelem továbbítására is használható, különösen akkor, ha a horizontális Felskálázási kulcs nem része a lekérdezésnek. Egy alkalmazásban az Adatfüggő útválasztást használó minden egyes lekérdezés vagy tranzakció esetében csak egy adatbázis férhet hozzá egy kérelemhez. Az Azure SQL Database rugalmas eszközök esetében ez az Útválasztás a **ShardMapManager** ([Java](/java/api/com.microsoft.azure.elasticdb.shard.mapmanager.shardmapmanager), [.net](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager)) osztály használatával érhető el.
 
-Az alkalmazásnak nem kell nyomon követnie a különböző típusú adatszeletekhez társított különböző kapcsolódási karakterláncokat vagy adatbázis-tárolóhelyeket. Ehelyett a szegmenses [Térkép kezelője](sql-database-elastic-scale-shard-map-management.md) szükség esetén nyitja meg a megfelelő adatbázisokhoz való kapcsolódást, és az alkalmazás kérelmének céljaként szolgáló horizontális Felskálázási kulcs értékét. A kulcs általában a *ügyfél*, a *tenant_id*, a *date_key*vagy valamilyen más, az adatbázis-kérelem alapvető paraméterét képező azonosító.
+Az alkalmazásnak nem kell nyomon követnie a különböző típusú adatszeletekhez társított különböző kapcsolódási karakterláncokat vagy adatbázis-tárolóhelyeket. Ehelyett a szegmenses [Térkép kezelője](sql-database-elastic-scale-shard-map-management.md) szükség esetén nyitja meg a megfelelő adatbázisokhoz való kapcsolódást, és az alkalmazás kérelmének céljaként szolgáló horizontális Felskálázási kulcs értékét. A kulcs általában a *customer_id*, *tenant_id*, *date_key*vagy valamilyen más, az adatbázis-kérelem alapvető paraméterének megfelelő azonosító.
 
 További információ: SQL Server horizontális [Felskálázása az adatoktól függő útválasztással](https://technet.microsoft.com/library/cc966448.aspx).
 

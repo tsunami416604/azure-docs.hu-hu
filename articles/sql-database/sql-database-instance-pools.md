@@ -1,5 +1,5 @@
 ---
-title: Azure SQL Database példány-készletek (előzetes verzió)
+title: Példány-készletek (előzetes verzió)
 description: Ez a cikk Azure SQL Database példányok készleteit (előzetes verzió) ismerteti.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: sstein, carlrab
 ms.date: 09/05/2019
-ms.openlocfilehash: 7d8c316d5c78cfe09bcf134b5a5c513e1c007d74
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 8738d1ad54d3ab63d8d2efc939aa9daacbe91c13
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73689764"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73810395"
 ---
 # <a name="what-are-sql-database-instance-pools-preview"></a>Mik azok a SQL Database példány-készletek (előzetes verzió)?
 

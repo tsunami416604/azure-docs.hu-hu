@@ -7,12 +7,12 @@ ms.date: 11/05/2019
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: 0851ee9061fcb01a5e007f0cc4989d6a3febc665
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 397464a70164ef06642a991fb8470ddfa2922647
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73605158"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73809921"
 ---
 # <a name="quickstart-azure-blob-storage-client-library-v12-for-python"></a>Gyors útmutató: Azure Blob Storage ügyféloldali kódtára a Pythonhoz
 
@@ -30,6 +30,8 @@ Használja az Azure Blob Storage ügyféloldali kódtárat a következőre:
 * Tároló törlése
 
 [API-referenciák dokumentációja](/python/api/azure-storage-blob) | [könyvtár forráskódja](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-blob) | [csomag (Python-csomag indexe)](https://pypi.org/project/azure-storage-blob/) | [minták](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-blob/samples)
+
+[!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
 
 ## <a name="prerequisites"></a>Előfeltételek
 

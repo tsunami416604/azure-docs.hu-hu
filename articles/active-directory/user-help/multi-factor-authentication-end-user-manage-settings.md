@@ -1,5 +1,5 @@
 ---
-title: Kétfaktoros ellenőrzési beállítások kezelése – Azure Active Directory | Microsoft Docs
+title: A kétfaktoros ellenőrzési beállítások kezelése – Azure AD
 description: Megtudhatja, hogyan módosíthatja a biztonsági ellenőrzési módszer részleteit, mivel ez a kétfaktoros ellenőrzéshez kapcsolódik.
 services: active-directory
 author: eross-msft
@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 08/06/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9ed7d812a9c1cba356277a4454234531ce8d41ef
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 4c402e0992a3a04d674477bc9dd19e0181fd6775
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69616148"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73805266"
 ---
 # <a name="manage-your-two-factor-verification-method-settings"></a>A kétfaktoros ellenőrzési módszer beállításainak kezelése
 
@@ -54,7 +54,7 @@ Ha a szervezete a kétfaktoros ellenőrzés bekapcsolásának és kezelésének 
         ![Saját alkalmazások hivatkozás a további biztonsági ellenőrzés oldalára](./media/multi-factor-authentication-end-user-manage-settings/mfa-myapps-link.png)
 
 >[!Note]
->További információ a **további biztonsági ellenőrzés** lap **alkalmazások jelszavai** szakaszának használatáról: [alkalmazások jelszavainak kezelése](multi-factor-authentication-end-user-app-passwords.md)kétfaktoros ellenőrzéshez. Az alkalmazás jelszavait csak olyan alkalmazásokhoz szabad használni, amelyek még nem támogatják a kétfaktoros ellenőrzést.
+>További információ a **további biztonsági ellenőrzés** lap **alkalmazások jelszavai** szakaszának használatáról: [alkalmazások jelszavainak kezelése kétfaktoros ellenőrzéshez](multi-factor-authentication-end-user-app-passwords.md). Az alkalmazás jelszavait csak olyan alkalmazásokhoz szabad használni, amelyek még nem támogatják a kétfaktoros ellenőrzést.
 
 ## <a name="change-your-default-security-verification-method"></a>Az alapértelmezett biztonsági ellenőrzési módszer módosítása
 
@@ -129,7 +129,7 @@ A szervezeti beállításoktól függően előfordulhat, hogy egy jelölőnégyz
 
 ### <a name="to-turn-two-factor-verification-prompts-back-on-for-your-devices"></a>A kétfaktoros ellenőrzés bekapcsolásának visszahívása az eszközökön
 
-- A **további biztonsági ellenőrzés** lapon válassza a többtényezős **hitelesítés visszaállítása korábban megbízható eszközökön**lehetőséget.
+- A **további biztonsági ellenőrzés** lapon válassza a **többtényezős hitelesítés visszaállítása korábban megbízható eszközökön**lehetőséget.
 
     Amikor legközelebb bejelentkezik bármelyik eszközre, a rendszer a kétfaktoros ellenőrzés elvégzésére kéri.
 
@@ -137,7 +137,7 @@ A szervezeti beállításoktól függően előfordulhat, hogy egy jelölőnégyz
 
 A kétfaktoros ellenőrzési beállítások hozzáadása vagy frissítése után kezelheti az alkalmazás jelszavait, bejelentkezhet, vagy segítséget kérhet a kétfaktoros ellenőrzésekkel kapcsolatos gyakori problémákról.
 
-- Az [alkalmazás jelszavainak kezelése](multi-factor-authentication-end-user-app-passwords.md) kétfaktoros ellenőrzéshez minden olyan alkalmazás esetében, amely nem támogatja a kétfaktoros ellenőrzést.
+- Az [alkalmazás jelszavainak kezelése kétfaktoros ellenőrzéshez](multi-factor-authentication-end-user-app-passwords.md) minden olyan alkalmazás esetében, amely nem támogatja a kétfaktoros ellenőrzést.
 
 - [Bejelentkezés kétfaktoros ellenőrzés használatával](multi-factor-authentication-end-user-signin.md)
 

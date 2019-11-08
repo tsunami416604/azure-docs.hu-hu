@@ -1,5 +1,5 @@
 ---
-title: Töltse le és telepítse a Microsoft Authenticator app-Azure Active Directory | Microsoft Docs
+title: Töltse le és telepítse a Microsoft Authenticator alkalmazást – Azure AD
 description: A kétfaktoros ellenőrzés Microsoft Authenticator alkalmazásának letöltése, telepítése és használata.
 services: active-directory
 author: eross-msft
@@ -13,12 +13,12 @@ ms.date: 01/24/2019
 ms.author: lizross
 ms.reviewer: olhaun
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 15ecdf0feb0d8e5307eac9916748e0bacdf51620
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: ebe80d44d52ffa348413e51cd5e82e8468537479
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69616045"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73820228"
 ---
 # <a name="download-and-install-the-microsoft-authenticator-app"></a>Töltse le és telepítse a Microsoft Authenticator alkalmazást
 
@@ -41,7 +41,7 @@ A Microsoft Authenticator alkalmazást többféleképpen is használhatja, több
 > Előfordulhat, hogy a szervezete hitelesítő alkalmazást használ a bejelentkezéshez, és hozzáfér a szervezeti adataihoz és dokumentumaihoz. Bár a Felhasználónév megjelenhet az alkalmazásban, a fiók valójában nem úgy van beállítva, hogy ellenőrzési módszerként működjön, amíg el nem végzi a regisztrációs folyamatot. További információkért lásd: [munkahelyi vagy iskolai fiók hozzáadása](user-help-auth-app-add-work-school-account.md).
 > 
 > [!NOTE]
-> Ha problémába ütközik a fiókjába való bejelentkezéssel, akkor a következő témakörben talál segítséget: [Ha nem tud bejelentkezni](https://support.microsoft.com/help/12429) a Microsoft-fiókba.  További információ arról, hogy mi a teendő, ha ["a Microsoft-fiók nem létezik"](https://support.microsoft.com/help/13811) üzenet jelenik meg, amikor megpróbál bejelentkezni a Microsoft-fiókba.
+> Ha problémába ütközik a fiókjába való bejelentkezéssel, akkor a következő témakörben talál segítséget: [Ha nem tud bejelentkezni a Microsoft-fiókba](https://support.microsoft.com/help/12429) .  További információ arról, hogy mi a teendő, ha ["a Microsoft-fiók nem létezik"](https://support.microsoft.com/help/13811) üzenet jelenik meg, amikor megpróbál bejelentkezni a Microsoft-fiókba.
 
 ## <a name="download-and-install-the-app"></a>Az alkalmazás letöltése és telepítése
 
@@ -52,7 +52,7 @@ Telepítse a Microsoft Authenticator alkalmazás legújabb verzióját az operá
 - **Apple iOS.** Az Apple iOS-eszközön nyissa meg az App Store-t a [Microsoft Authenticator alkalmazás letöltéséhez és telepítéséhez](https://app.adjust.com/e3rxkc_7lfdtm?fallback=https%3A%2F%2Fitunes.apple.com%2Fus%2Fapp%2Fmicrosoft-authenticator%2Fid983156458).
 
 >[!Important]
->Ha jelenleg nem a mobileszközön található, akkor továbbra is letöltheti a Microsoft Authenticator alkalmazást a [Microsoft Authenticator oldaláról](https://www.microsoft.com/account/authenticator).
+>Ha jelenleg nem a mobileszközön található, akkor továbbra is letöltheti a Microsoft Authenticator alkalmazást a [Microsoft Authenticator oldaláról](https://www.microsoft.com/en-us/account/authenticator).
 
 ## <a name="next-steps"></a>További lépések
 

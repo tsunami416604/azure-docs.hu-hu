@@ -1,23 +1,24 @@
 ---
-title: Ajánlat közzétételének |} Az Azure Marketplace-en
-description: API-t az adott ajánlat közzététele.
+title: Ajánlat közzététele | Azure piactér
+description: API a megadott ajánlat közzétételéhez.
 services: Azure, Marketplace, Cloud Partner Portal,
 author: v-miclar
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
 ms.date: 09/13/2018
 ms.author: pabutler
-ms.openlocfilehash: 117a4e5e238e754524ff813ce25ebc1105e2153c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b7ad8086c417cf1f14d9116fa4abcb0a88030922
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64934979"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73819645"
 ---
 <a name="publish-an-offer"></a>Ajánlat közzététele
 ================
 
-A megadott ajánlat a közzétételi folyamat elindul. Ez a hívás egy olyan hosszú ideig futó művelet.
+Elindítja a közzétételi folyamatot a megadott ajánlathoz. Ez a hívás hosszú ideig futó művelet.
 
   `POST  https://cloudpartner.azure.com/api/publishers/<publisherId>/offers/<offerId>/publish?api-version=2017-10-31`
 
@@ -26,9 +27,9 @@ A megadott ajánlat a közzétételi folyamat elindul. Ez a hívás egy olyan ho
 
 |  **Name (Név)**      |    **Leírás**                               |  **Adattípus** |
 |  ------------- |  ------------------------------------            |   -----------  |
-|  publisherId   | Például a közzétevő azonosítója `contoso`      |   String       |
-|  offerId       | Ajánlat azonosítója                                 |   String       |
-|  api-version   | Az API legújabb verziója                        |   Dátum         |
+|  publisherId   | Közzétevő azonosítója, például `contoso`      |   Sztring       |
+|  OfferId       | Ajánlat azonosítója                                 |   Sztring       |
+|  API-Version   | Az API legújabb verziója                        |   Dátum         |
 |  |  |
 
 
@@ -42,7 +43,7 @@ A megadott ajánlat a közzétételi folyamat elindul. Ez a hívás egy olyan ho
 |  |  |
 
 
-<a name="body-example"></a>Törzs példa
+<a name="body-example"></a>Példa szövegtörzsre
 ------------
 
 ### <a name="request"></a>Kérés
@@ -56,11 +57,11 @@ A megadott ajánlat a közzétételi folyamat elindul. Ez a hívás egy olyan ho
   }
 ```
 
-### <a name="request-body-properties"></a>Kérelem törzse tulajdonságai
+### <a name="request-body-properties"></a>Kérelem törzsének tulajdonságai
 
 |  **Name (Név)**               |   **Leírás**                                                                                 |
 |  ---------------------  | ------------------------------------------------------------------------------------------------- |
-|  Értesítés-e-mailek    | A közzétételi művelet előrehaladását értesítést e-mail-címeket vesszővel tagolt listája. |
+|  értesítés – e-mailek    | Az e-mail-címek vesszővel tagolt listája, amelyekről értesíteni kell a közzétételi művelet állapotát. |
 |  |  |
 
 
@@ -73,16 +74,16 @@ A megadott ajánlat a közzétételi folyamat elindul. Ez a hívás egy olyan ho
 
 |  **Name (Név)**             |    **Érték**                                                                 |
 |  -------------------- | ---------------------------------------------------------------------------- |
-| A művelet-helye    | URL-címe, hogy lekérdezhetők legyenek a művelet aktuális állapotának meghatározásához.    |
+| Művelet – hely    | A művelet aktuális állapotának meghatározására szolgáló URL-cím.    |
 |  |  |
 
 
-### <a name="response-status-codes"></a>Állapotkódok
+### <a name="response-status-codes"></a>Válasz-állapotkódok
 
 | **Kód** |  **Leírás**                                                                                                                           |
 | ------   |  ----------------------------------------------------------------------------------------------------------------------------------------- |
-| 202   | `Accepted` – A kérelem sikeresen elfogadva. A válasz tartalmaz olyan helyre, amely segítségével nyomon követheti, amely elindítja a műveletet. |
-| 400   | `Bad/Malformed request` -A hiba-válasz törzsében több információt tartalmaznak.                                                               |
-| 422   | `Un-processable entity` – Azt jelzi, hogy közzé kell tenni az entitás sikertelen ellenőrzés.                                                        |
-| 404   | `Not found` – Az ügyfél által megadott entitás nem létezik.                                                                              |
+| 202   | `Accepted` – a kérés elfogadása sikeres volt. A válasz olyan helyet tartalmaz, amely az elindított művelet nyomon követésére használható. |
+| 400   | `Bad/Malformed request` – a hiba-válasz törzse további információkat is biztosíthat.                                                               |
+| 422   | `Un-processable entity` – azt jelzi, hogy a közzétenni kívánt entitás ellenőrzése sikertelen volt.                                                        |
+| 404   | `Not found` – az ügyfél által megadott entitás nem létezik.                                                                              |
 |  |  |

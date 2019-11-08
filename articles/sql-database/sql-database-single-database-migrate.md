@@ -1,5 +1,5 @@
 ---
-title: SQL Server adatbázis áttelepítése egyetlen/készletezett adatbázisba Azure SQL Database
+title: Adatbázis áttelepítése egyetlen/készletezett adatbázisba SQL Server
 description: Ismerje meg, hogyan SQL Server adatbázis-áttelepítést egy önálló adatbázisba vagy egy rugalmas készletbe Azure SQL Database-ben.
 keywords: adatbázis-áttelepítés,sql server-adatbázis áttelepítése,adatbázis-áttelepítési eszközök,adatbázis áttelepítése,sql database áttelepítése
 services: sql-database
@@ -12,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 02/11/2019
-ms.openlocfilehash: 67030d14670ccc51c89a04863f8b39ab6a9bb183
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: df1ef21da43bc74809bd9fd71b5dde3906cdb343
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73687182"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73820982"
 ---
 # <a name="sql-server-database-migration-to-azure-sql-database"></a>SQL Server adatbázis áttelepítése Azure SQL Databasere
 

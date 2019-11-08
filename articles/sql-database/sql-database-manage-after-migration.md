@@ -1,5 +1,5 @@
 ---
-title: Az önálló és a készletezett adatbázisok kezelése a Migrálás után – Azure SQL Database
+title: Önálló és készletezett adatbázisok kezelése az áttelepítés után
 description: Megtudhatja, hogyan kezelheti az adatbázist a Azure SQL Database való áttelepítést követően.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: joesackmsft
 ms.author: josack
 ms.reviewer: sstein
 ms.date: 02/13/2019
-ms.openlocfilehash: d92b4b99e6ae6a7a07174e59d7cf3c9766c0eabf
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 16855bb218ba3ae4d221cb1329410c7848aab2c5
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73689539"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73818964"
 ---
 # <a name="new-dba-in-the-cloud--managing-your-single-and-pooled-databases-in-azure-sql-database"></a>Új DBA a felhőben – az önálló és a készletezett adatbázisok kezelése Azure SQL Database
 
@@ -272,7 +272,7 @@ Ebből a diagramból erőforrás alapján is konfigurálhatja a riasztásokat. E
 
 #### <a name="dynamic-management-views"></a>Dinamikus felügyeleti nézetek
 
-Lekérdezheti a [sys. DM _db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) dinamikus felügyeleti nézetét, hogy az elmúlt egy órában és a [sys. resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) Rendszerkatalógus nézetből visszaállítsa az elmúlt 14 napban az előzményeket.
+Lekérdezheti a [sys. dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) dinamikus felügyeleti nézetet, hogy az elmúlt egy órában és a [sys. resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) Rendszerkatalógus nézetből visszaállítsa az elmúlt 14 napban az erőforrás-felhasználási statisztikák előzményeit.
 
 #### <a name="query-performance-insight"></a>Lekérdezési terheléselemző
 
@@ -292,7 +292,7 @@ A teljesítménnyel kapcsolatos problémák megoldásának megközelítése jele
 
 A teljesítménnyel kapcsolatos hibaelhárítás során fontos megállapítani, hogy csak az alkalmazás vagy az adatbázis biztonsági mentése van-e hatással az alkalmazás teljesítményére. A teljesítménnyel kapcsolatos probléma gyakran az alkalmazás rétegében rejlik. Ez lehet az architektúra vagy az adatelérési minta. Tegyük fel például, hogy egy olyan csevegési alkalmazás van, amely érzékeny a hálózati késésre. Ebben az esetben az alkalmazás az alkalmazás és a kiszolgáló, illetve egy zsúfolt hálózat között sok rövid kérelem ("beszédes") miatt válik elérhetővé, és a szolgáltatás gyorsan felveszi a kapcsolatot. Ebben az esetben a teljesítmény javítása érdekében [kötegelt lekérdezéseket](sql-database-performance-guidance.md#batch-queries)használhat. A batchs használatával rendkívül nagy mértékben biztosíthatja, hogy a kérések feldolgozása egy kötegben történjen. így segítve az adatelérési idő csökkentését és az alkalmazások teljesítményének növelését.
 
-Továbbá, ha az adatbázis általános teljesítményében csökkenést tapasztal, figyelheti a [sys. DM _db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) és a [sys. resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) dinamikus felügyeleti nézeteket a CPU, az IO és a memória használatának megismeréséhez. Lehetséges, hogy az Ön teljesítménye hatással van az erőforrásokra. Előfordulhat, hogy módosítania kell a számítási méretet és/vagy a szolgáltatási szintet a növekvő és a csökkenő munkaterhelési igények alapján.
+Továbbá, ha az adatbázis általános teljesítményében romlást tapasztal, figyelheti a [sys. dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) és a [sys. resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) dinamikus felügyeleti nézeteket a CPU, az IO és a memória használatának megismeréséhez. Lehetséges, hogy az Ön teljesítménye hatással van az erőforrásokra. Előfordulhat, hogy módosítania kell a számítási méretet és/vagy a szolgáltatási szintet a növekvő és a csökkenő munkaterhelési igények alapján.
 
 A teljesítménnyel kapcsolatos problémák hangolásával kapcsolatos javaslatok széles körét lásd: [az adatbázis finomhangolása](sql-database-performance-guidance.md#tune-your-database).
 

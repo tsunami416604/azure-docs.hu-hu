@@ -1,5 +1,5 @@
 ---
-title: Átmeneti hibák használata – Azure SQL Database
+title: Átmeneti hibák használata
 description: Megtudhatja, hogyan lehet elhárítani, diagnosztizálni és megakadályozni egy SQL-kapcsolódási hibát vagy átmeneti hibát a Azure SQL Databaseban.
 keywords: SQL-kapcsolat, kapcsolati karakterlánc, csatlakozási problémák, átmeneti hiba, kapcsolódási hiba
 services: sql-database
@@ -13,12 +13,12 @@ manager: dcscontentpm
 ms.author: ninarn
 ms.reviewer: carlrab
 ms.date: 06/14/2019
-ms.openlocfilehash: 0191506cab9a54ad3978bfa7387c9ba1112ae815
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: a943ade4bfc46083fe84274640d979928357a492
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73690826"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73826799"
 ---
 # <a name="working-with-sql-database-connection-issues-and-transient-errors"></a>SQL Database kapcsolati problémák és átmeneti hibák használata
 
@@ -109,14 +109,14 @@ A teszt gyakorlati elvégzéséhez a program elindítása előtt húzza ki a sz�
 A program szándékosan helytelenül betűzheti a felhasználónevet az első kapcsolódási kísérlet előtt. A hiba a következő:
 
 - **SqlException. Number** = 18456
-- Üzenet: "a bejelentkezés nem sikerült a (z)" WRONG_MyUserName "felhasználó számára."
+- Üzenet: "a (z)" WRONG_MyUserName "felhasználó bejelentkezése sikertelen."
 
 Az első újrapróbálkozási kísérlet részeként a program képes kijavítani a hibát, majd megpróbál csatlakozni.
 
 A teszt gyakorlati elvégzéséhez a program felismeri a futásidejű paramétereket, amelynek hatására a program a következőket eredményezi:
 
 - Ideiglenesen adja hozzá a 18456-et a hibák listájához, amelyeket átmenetinek kell tekinteni.
-- Adja hozzá a "WRONG_" nevet a felhasználónévhez.
+- A felhasználónévhez szándékosan adja hozzá a "WRONG_" nevet.
 - A hiba észlelése után távolítsa el a 18456-et a listából.
 - Távolítsa el a "WRONG_" nevet a felhasználónévből.
 - Próbálja megismételni a kapcsolódást, és várta a sikerességet.
@@ -277,7 +277,7 @@ Az Enterprise Library 6 (EntLib60) .NET által felügyelt osztályokat kínál a
 
 | Napló lekérdezése | Leírás |
 |:--- |:--- |
-| `SELECT e.*`<br/>`FROM sys.event_log AS e`<br/>`WHERE e.database_name = 'myDbName'`<br/>`AND e.event_category = 'connectivity'`<br/>`AND 2 >= DateDiff`<br/>&nbsp;&nbsp;`(hour, e.end_time, GetUtcDate())`<br/>`ORDER BY e.event_category,`<br/>&nbsp;&nbsp;`e.event_type, e.end_time;` |A [sys. event_log](https://msdn.microsoft.com/library/dn270018.aspx) nézet az egyes eseményekkel kapcsolatos információkat tartalmaz, amelyekben átmeneti hibák vagy csatlakozási hibák okozhatnak.<br/><br/>Ideális esetben a **start_time** -vagy **end_time** -értékeket összekapcsolhatja, ha az ügyfélprogram problémát észlelt.<br/><br/>A lekérdezés futtatásához csatlakoznia kell a *Master* adatbázishoz. |
+| `SELECT e.*`<br/>`FROM sys.event_log AS e`<br/>`WHERE e.database_name = 'myDbName'`<br/>`AND e.event_category = 'connectivity'`<br/>`AND 2 >= DateDiff`<br/>&nbsp;&nbsp;`(hour, e.end_time, GetUtcDate())`<br/>`ORDER BY e.event_category,`<br/>&nbsp;&nbsp;`e.event_type, e.end_time;` |A [sys. event_log](https://msdn.microsoft.com/library/dn270018.aspx) nézet az egyes eseményekről nyújt információkat, amelyek között lehetnek átmeneti hibák vagy csatlakozási hibák.<br/><br/>Ideális esetben összekapcsolhatja a **start_time** vagy **end_time** értékeket, ha az ügyfélprogram problémát észlelt.<br/><br/>A lekérdezés futtatásához csatlakoznia kell a *Master* adatbázishoz. |
 | `SELECT c.*`<br/>`FROM sys.database_connection_stats AS c`<br/>`WHERE c.database_name = 'myDbName'`<br/>`AND 24 >= DateDiff`<br/>&nbsp;&nbsp;`(hour, c.end_time, GetUtcDate())`<br/>`ORDER BY c.end_time;` |A [sys. database_connection_stats](https://msdn.microsoft.com/library/dn269986.aspx) nézet a további diagnosztikai események összesített számát kínálja.<br/><br/>A lekérdezés futtatásához csatlakoznia kell a *Master* adatbázishoz. |
 
 <a id="d-search-for-problem-events-in-the-sql-database-log" name="d-search-for-problem-events-in-the-sql-database-log"></a>

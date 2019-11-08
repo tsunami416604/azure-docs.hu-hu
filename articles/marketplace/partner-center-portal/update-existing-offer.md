@@ -5,14 +5,15 @@ author: ChJenk
 manager: evansma
 ms.author: v-chjen
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 05/30/2019
-ms.openlocfilehash: 9cefdc9354560ac5b7f3789cde2408a4c255c186
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: f2cb1907557c2440a5a94c0f4799eac95a8cf507
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70191764"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73827855"
 ---
 # <a name="update-an-existing-offer-in-the-commercial-marketplace"></a>Meglévő ajánlat frissítése a kereskedelmi piactéren
 
@@ -20,8 +21,8 @@ A meglévő ajánlatokat a partner Center [kereskedelmi piactér portáljának](
 
 Meglévő, jelenleg a piactéren élő ajánlat frissítése: 
 
-1. Válassza ki a frissíteni kívánt ajánlat nevét. Az ajánlat állapota élőként, **Közzététel folyamatban**,piszkozatként, figyelemmel vagy **a piactéren való értékesítés nélkül** (ha korábban már kiválasztotta az ajánlat értékesítésének leállítását). A kiválasztást követően megnyílik az ajánlat **Áttekintés** lapja az ajánlathoz.
-2. Válassza a **frissítés** lehetőséget az áttekintő kártyáról vagy a bal oldali navigációs menüből a frissíteni kívánt területen. Előfordulhat, hogy frissíteni kívánja **az ajánlat telepítését**, a **tulajdonságokat**, az **ajánlatok listáját**, az **előzetes**verziót, a **technikai konfigurációt**, a **terv áttekintését**vagy a tesztelési **meghajtót**. 
+1. Válassza ki a frissíteni kívánt ajánlat nevét. Az ajánlat állapota **élőként**, **Közzététel folyamatban**, **piszkozatként**, **figyelemmel**vagy **a piactéren való értékesítés nélkül** (ha korábban már kiválasztotta az ajánlat értékesítésének leállítását). A kiválasztást követően megnyílik az ajánlat **Áttekintés** lapja az ajánlathoz.
+2. Válassza a **frissítés** lehetőséget az áttekintő kártyáról vagy a bal oldali navigációs menüből a frissíteni kívánt területen. Előfordulhat, hogy frissíteni kívánja az **ajánlat telepítését**, a **tulajdonságokat**, az **ajánlatok listáját**, az **előzetes**verziót, a **technikai konfigurációt**, a **terv áttekintését**vagy a **tesztelési meghajtót**. 
 3. Végezze el a módosításokat, majd kattintson a **Mentés**gombra. Ismételje meg a folyamatot, amíg az összes módosítás be nem fejeződik.
 
 ## <a name="review-and-publish-an-updated-offer"></a>Frissített ajánlat áttekintése és közzététele
@@ -30,12 +31,12 @@ Ha készen áll a frissített ajánlat közzétételére, válassza a **Közzét
 
 
 - Tekintse meg a frissített ajánlat fejezeteinek befejezési állapotát: 
-    - **Közzé nem tett módosítások**: A szakasz frissítve lett, és befejeződött. Minden szükséges információ meg lett adta, és a frissítésekben nem történt hiba.
-    - **Hiányos**: A szakasz frissítései rögzített hibákat észleltek, vagy további információkat kell megadni.
+    - Nem **közzétett módosítások**: a szakasz frissítve lett, és befejeződött. Minden szükséges információ meg lett adta, és a frissítésekben nem történt hiba.
+    - **Hiányos**: a szakasz azon frissítései, amelyeket meg kell oldani, vagy amelyekhez további információkra van szükség.
 - Adjon meg további információkat a minősítési teszt csapatának, hogy a tesztelés zökkenőmentes legyen.
 - Küldje el a frissített ajánlatot közzétételre a **Submit (Küldés**) lehetőség kiválasztásával.  E-mailben küldünk Önnek, ha a frissített ajánlat előzetes verziója elérhető az áttekintéshez és a kijelentkezéshez.
 
-**FONTOS**: Tekintse át az ajánlat előzetes verzióját, miután elérhetővé vált, és válassza a **Go-Live** lehetőséget a frissített ajánlat közzétételéhez a célközönség (nyilvános vagy magánjellegű) számára.
+**Fontos**: Tekintse át az ajánlat előzetes verzióját, miután elérhetővé vált, és válassza a **Go-Live** lehetőséget a frissített ajánlat közzétételéhez a célközönség (nyilvános vagy magánjellegű) számára.
 
 ## <a name="update-a-plan-within-an-existing-offer"></a>Csomag frissítése egy meglévő ajánlaton belül
 
@@ -62,7 +63,7 @@ Miután megerősítette, hogy törölni kívánja a terv tervezetét, a terv tö
 
 Ajánlat megszakítása a **Közzététel folyamatban** állapotában:
 
-- Válassza ki az ajánlat nevét az **ajánlat** áttekintő oldalának megnyitásához. 
+- Válassza ki az ajánlat nevét az **ajánlat áttekintő** oldalának megnyitásához. 
 - Válassza a **Közzététel megszakítása** elemet a lap jobb felső sarkában.
 - Erősítse meg, hogy le kívánja állítani az ajánlat közzétételét. 
 

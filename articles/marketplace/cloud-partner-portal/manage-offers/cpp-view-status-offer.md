@@ -1,49 +1,50 @@
 ---
-title: Marketplace-ajánlat állapotának megtekintése |} Az Azure Marketplace-en
-description: Az Azure és az AppSource-piactér használatával a Cloud Partner portálra szóló ajánlatok állapotának megtekintése
+title: A Piactéri ajánlatok állapotának megtekintése | Azure piactér
+description: Az Azure-és AppSource-piactéren elérhető ajánlatok állapotának megtekintése a Cloud Partner Portal használatával
 services: Azure, AppSource, Marketplace, Cloud Partner Portal,
 author: v-miclar
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 01/11/2019
 ms.author: pabutler
-ms.openlocfilehash: fff89dd8a17aaf6d45462edeaa22f1d2efc8d02b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: e58670d37e01bb6e453b73e42a87e42e890d10d8
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67064306"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73826707"
 ---
-# <a name="view-the-publishing-status-of-azure-marketplace-and-appsource-offers"></a>Az Azure Marketplace és AppSource ajánlatokat közzétételi állapotának megtekintése
+# <a name="view-the-publishing-status-of-azure-marketplace-and-appsource-offers"></a>Az Azure Marketplace-és AppSource-ajánlatok közzétételi állapotának megtekintése
 
-Miután létrehozott egy ajánlatra, és különösen a közzétételi folyamat során, az ajánlat állapotát megtekintheti a Cloud Partner portálra.  A teljes közzétételi állapot érhető el a [ **összes kínál** ](../portal-tour/cpp-all-offers-page.md) és [ **jóváhagyások** ](../portal-tour/cpp-approvals-page.md) a portál oldalain.  Az alábbi Állapotjelzők egyik ajánlatok üzenet.  
+Miután létrehozott egy ajánlatot, és különösen a közzétételi folyamat során, megtekintheti az ajánlat állapotát a Cloud Partner Portalban.  A teljes közzététel állapota a portál [**összes ajánlat**](../portal-tour/cpp-all-offers-page.md) és [**jóváhagyás**](../portal-tour/cpp-approvals-page.md) lapján érhető el.  Az egyes ajánlatokhoz a következő állapotmutatók egyikét kell megjeleníteni.  
 
-|            Állapot              |   Leírás                                                           |
+|            status              |   Leírás                                                           |
 |            ------              |   -----------                                                           |
-| **-**                          | Az ajánlat létre lett hozva, de a közzétételi folyamat még nem kezdődött meg.            |
-| **A közzététel folyamatban**        | Az ajánlat a közzétételi folyamat lépéseit korongot működik.   |
-| **Sikertelen közzététel**             | Egy kritikus problémát a Microsoft által felderített érvényesítési vagy felülvizsgálat alatt. |
-| **Közzététele megszakítva**           | A közzétevő megszakította az ajánlat közzétételi folyamat.  Ebben az állapotban nem jegyzékből egy meglévő ajánlatot a piactéren. | 
-| **Várakozás a publisher jelentkezzen ki** | Az ajánlat Microsoft felülvizsgálták, és most várja a végső ellenőrzés a közzétevő. |
-| **Delisted**                   | A korábban közzétett ajánlatot a piactéren el lett távolítva.      | 
+| **-**                          | Az ajánlat létrejött, de a közzétételi folyamat nem indult el.            |
+| **Közzététel folyamatban**        | Az ajánlat a közzétételi folyamat lépésein dolgozik.   |
+| **Sikertelen közzététel**             | Az ellenőrzés során kritikus probléma merült fel, vagy a Microsoft felülvizsgálta azt. |
+| **Közzététel megszakítva**           | A közzétevő megszakította az ajánlat-közzétételi folyamatot.  Ez az állapot nem sorolja fel egy meglévő ajánlatot a piactéren. | 
+| **A közzétevő kijelentkezése vár** | Az ajánlatot a Microsoft felülvizsgálta, és most a közzétevő végső ellenőrzését várja. |
+| **Törölték**                   | A piactéren korábban közzétett ajánlat el lett távolítva.      | 
 |  |  |
 
 
 ## <a name="publishing-status-details"></a>Közzétételi állapot részletei 
 
-Részletesebb információkat tartalmaznak az ajánlat állapota a közzétételi folyamat előrehaladtával megtalálható a **állapot** lapján a **új ajánlat** lapot.  Ezen a lapon találhatók a közzétételi lépéseket az adott ajánlat típusát.  *Vegye figyelembe, hogy száma és különleges lépések gyakran eltérő típusú között.*  Ezen a lapon is azt jelzi, hogy bármely szálankénti függőben lévő problémák váltotta ki a Microsoft ellenőrzési és felülvizsgálati lépéseket, amelyek gyakran igényelnek a közzétevő művelet, a közzétételi folyamat folytatásához.  Ha például az alábbi képen a **állapot** fülre egy új virtuálisgép-ajánlat. 
+Az ajánlat állapotával kapcsolatos további részletek az **új ajánlat** oldal **állapot** lapján találhatók a közzétételi folyamat során.  Ezen a lapon az adott ajánlat típusához tartozó összes közzétételi lépés szerepel.  *Vegye figyelembe, hogy a szám és a konkrét lépések gyakran eltérnek az ajánlatok típusai között.*  Ezen a lapon a Microsoft érvényesítési és felülvizsgálati lépéseiben felmerülő esetleges problémák is megadhatók, amelyek gyakran a közzétevő beavatkozását igénylik a közzétételi folyamat folytatásához.  Az alábbi képen például egy új virtuálisgép-ajánlat **állapotjelző** lapja látható. 
 
-![A Virtuálisgép-ajánlat állapota lap](./media/vm-offer-pub-steps1.png)
+![A VM-ajánlat állapot lapja](./media/vm-offer-pub-steps1.png)
 
-A következő példában **állapot** a tanácsadási szolgáltatást, és a jelentett hiba megjelenítése az érdeklődő beállítások lapján.  Mivel a szükséges tanácsadási szolgáltatások lead felügyelet, ez a hiba ki kell javítani, közzététel folytatása előtt.
+A tanácsadási szolgáltatás következő példájának **állapotjelző** lapja, amely egy jelentett hibát jelez a vezető felügyeleti beállításokban.  Mivel a tanácsadási szolgáltatásokhoz az ólom-felügyelet szükséges, ezt a hibát a közzététel folytatása előtt ki kell javítani.
 
-![A tanácsadási szolgáltatást bemutató hiba állapota lap](./media/consulting-service-error.png)
+![A tanácsadási szolgáltatás állapot lapja hibaüzenetet jelenít meg](./media/consulting-service-error.png)
 
-Az Azure-alkalmazások utolsó példában állapotánál egy kritikus fontosságú Microsoft tekintse át a probléma.  Az Azure DevOps-elem, tekintse át a problémával kapcsolatos részletes információkat tartalmaz a gyakori elérésű hivatkozást tartalmaz.  További információkért lásd: [közzététele az Azure application ajánlat](cpp-publish-offer.md).
+Egy Azure-alkalmazás utolsó példájának állapota kritikus Microsoft-felülvizsgálati problémát mutat be.  Egy olyan, az Azure DevOps elemre mutató gyors hivatkozást tartalmaz, amely részletes információkat tartalmaz erről a felülvizsgálati hibáról.  További információ: Azure- [alkalmazás ajánlatának közzététele](cpp-publish-offer.md).
 
-![Tekintse át a probléma megjelenítő Azure-alkalmazáshoz lapja](../azure-applications/media/status-tab-ms-review.png)
+![A felülvizsgálati problémát mutató Azure-alkalmazás állapotjelző lapja](../azure-applications/media/status-tab-ms-review.png)
 
 
 ## <a name="next-steps"></a>További lépések
 
-Javítsa ki a szálankénti függőben lévő problémák vagy az ajánlat beállításainak frissítése, kell [frissíteni az ajánlatot](./cpp-update-offer.md). 
+A függőben lévő problémák kijavítani vagy az ajánlati beállítások frissítéséhez [frissítenie kell egy ajánlatot](./cpp-update-offer.md). 

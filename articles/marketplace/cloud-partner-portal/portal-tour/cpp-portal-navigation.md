@@ -1,91 +1,92 @@
 ---
-title: Cloud Partner Portalon navigációs Azure Marketplace-en
-description: A navigációs Azure Marketplace-en belül a Felhőpartnerportál ismertetése.
+title: Cloud Partner Portal navigáció az Azure Marketplace-en
+description: Az Azure Marketplace Cloud Partner Portalon belüli Navigálás magyarázata.
 services: Azure, Marketplace, Cloud Partner Portal,
 author: v-miclar
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/09/2018
 ms.author: pabutler
-ms.openlocfilehash: ef329bfef9dc4f98dfd975a33c190f0b1825df4e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 57ccc7fb738dc23956e56e70c68405cc995a9a99
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64942093"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73821476"
 ---
-# <a name="cloud-partner-portal-navigation"></a>Cloud Partner Portalon navigáció
+# <a name="cloud-partner-portal-navigation"></a>Cloud Partner Portal navigáció
 
-Nincsenek a két elsődleges felhasználói felületének (UI) mechanizmusok az navigálni a [Cloud Partner Portalon](https://cloudpartner.azure.com): a felső menüsávon, és a bal oldali navigációs ablaktáblán.  Ezen felhasználói felületi elemek a következők: állandó, elérhető, függetlenül attól, hogy mely lap, keresse meg a portálon.
+Két elsődleges felhasználói felületi (UI) mechanizmus található a [Cloud Partner Portal](https://cloudpartner.azure.com): a felső menüsor és a bal oldali navigációs ablaktábla között.  Ezek a felhasználói felületi elemek Invariant típusúak, nem számít, hogy a portálon melyik oldalon navigál.
 
 
-## <a name="menu-bar"></a>A menüsávon
+## <a name="menu-bar"></a>Menüsor
 
-A menüsávon fut, a portál tetején.  A következő négy aktív területeken rendelkezik:
+A menüsáv a portál felső részén fut.  A következő négy aktív területtel rendelkezik:
 
-![A menüsávon](./media/top-menubar1.png)
+![Menüsor](./media/top-menubar1.png)
 
-Kattintson a területek eredmények a következő műveleteket:
+Ha ezekre a területekre kattint, az a következő műveleteket eredményezi:
 
-1. Cím terület – a portál kezdőlapján navigál.
-2. **Súgó** gomb – megjeleníti a Súgó menü erőforrásokat biztosít a felhasználó, akinek támogatást nyújtanak.
-3. **Visszajelzés** gomb – megjeleníti a **küldjön visszajelzést** űrlap.
-4. **Közzétevő** gomb –, amely lehetővé teszi a felhasználó a saját profil kezelése menüt jelenít meg.
+1. Cím terület – a portál kezdőlapjára navigál.
+2. **Súgó** gomb – megjeleníti a Súgó menüt, amely a felhasználó segítésére szolgáló erőforrásokat biztosít.
+3. **Visszajelzés** gomb – megjeleníti az **USA-beli visszajelzés küldése** űrlapot.
+4. **Közzétevő** gomb – megjelenít egy menüt, amely lehetővé teszi a felhasználó számára a profil felügyeletét.
 
-Ezek a menük és űrlapok az alábbiakban ismertetjük.
+A következő menük és űrlapok vannak leírva.
 
 ### <a name="help-menu"></a>Súgó menü
 
-A **súgó** menü biztosít, amelyek segítik a felhasználót a Cloud Partner portálra az erőforrásokat.
+A **Súgó** menü olyan erőforrásokat biztosít, amelyek segítséget nyújtanak a felhasználónak a Cloud Partner Portal.
 
-![Felső menüsáv](./media/top-menubar2.png)
+![Felső menüsor](./media/top-menubar2.png)
 
 A Súgó menü a következő elemeket tartalmazza:
 
-- **Dokumentáció** – elindul egy új lapot a böngészőben, és a Cloud Partner Portal dokumentációja kezdőlapjára lép. 
-- **Fórum** – elindul egy új lapon, és az appsource-ban és az Azure piactér a partneri Közösség a dokumentáció kezdőlapjára lép.
-- **Támogatja a** – elindul egy új lapon, és a támogatási oldal lép a Marketplace közzétételi, ahol létrehozhat egy incidens jelentést.  Hogy osztályozhatja, és tekintse át a visszajelzéseket, és azt fogjuk mindig veszik figyelembe az adatvédelmi. Csak jelentkezünk Ha kérelem, vagy kérje meg további információt.
+- **Dokumentáció** – új lapot indít a böngészőben, és a Cloud Partner Portal dokumentációjának kezdőlapjára navigál. 
+- **Fórum** – új lapot indít el, és a AppSource és az Azure piactéren a partner Közösség dokumentációs lapjára navigál.
+- **Támogatás** – elindítja az új lapot, és megnyitja a piactér-közzététel támogatási lapját, ahol az incidensekről szóló jelentést hozhat létre.  A rendszer kiértékeli és áttekinti az összes visszajelzést, és mindig tiszteletben tartjuk az Ön személyes adatait. Csak akkor fogjuk felvenni Önnel a kapcsolatot, ha kér vagy további információt kér.
 
 
-### <a name="send-us-feedback-form"></a>Küldjön nekünk visszajelzési űrlap
+### <a name="send-us-feedback-form"></a>Visszajelzési űrlap küldése
 
-A **küldjön visszajelzést** űrlap visszajelzést ad a Marketplace-kiadó bevezetési csapat a közvetlen metódus biztosít.  Csak jelentkezünk további információ Ha ellenőrizte a **Önnel a kapcsolatot a Visszajelzésével kapcsolatos OK** jelölőnégyzetet.
+A **Send US feedback (visszajelzés küldése** ) űrlap közvetlen módszert biztosít a Marketplace Publisher bevezetési csapatának küldött visszajelzésekhez.  Ha bejelölte az **OK gombot a visszajelzés** jelölőnégyzet bejelölésével, akkor a rendszer csak a további információért forduljon Önnel.
 
 ![Visszajelzési űrlap](./media/feedback-form.png)
 
 > [!TIP]
-> Ha egy adott oldalra a Cloud Partner portálra szóló kapcsolatos visszajelzését, nyissa meg az oldal előtt kattint a **visszajelzés** gombra.  Ellenőrizze, hogy a **képernyőfelvétel** jelölőnégyzet be van jelölve, hogy a felhasználói felület munkamenetállapot rögzíthetők a visszajelzés elküldése előtt. 
+> Ha a visszajelzés egy adott oldalról szól a Cloud Partner Portalon, akkor a **visszajelzés** gombra való kattintás előtt navigáljon a laphoz.  A visszajelzés elküldése előtt ellenőrizze, hogy a **Belefoglalás képernyőfelvétel** jelölőnégyzet be van-e jelölve, hogy a munkamenet felhasználói felületének állapota rögzíthető legyen. 
 
 
 ### <a name="publisher-menu"></a>Közzétevő menü
 
-Ebben a menüben lehetővé teszi, hogy a profil és a munkamenet kezelését: közvetlen hozzáférés a közzétevő profil lapot, megtekintheti a Microsoft Kiadókra vonatkozó szerződése vagy jelentkezzen ki az aktuális munkamenet. 
+Ezzel a menüvel kezelheti a profilt és a munkamenetet: közvetlen hozzáférés a közzétevői profilhoz oldal, megtekintheti a Microsoft kiadói szerződést, vagy kijelentkezhet az aktuális munkamenetből. 
 
 ![Közzétevő menü](./media/publisher-menu.png)
 
 
-## <a name="left-navigation-pane"></a>Bal oldali navigációs panelen
+## <a name="left-navigation-pane"></a>Bal oldali navigációs ablaktábla
 
-Egy összecsukható navigációs foglal el a portál bal oldalán.  A menüsávon a következő elemek, amelyek lehetővé teszik a partnereket, hogy az tartalmazza:
+Az összecsukható navigációs ablaktábla a portál bal oldalán található.  Tartalmaz egy menüsort a következő elemekkel, amelyek lehetővé teszik a partnerek számára a következőket:
 
 
 |    **Menüelem**     |      **Leírás**                       |
 |    -------------     |      ---------------                       |
-| ![Új ajánlat elem](./media/left-navbar1.png) | [Új ajánlat menü](./cpp-new-offer-menu.md) a megadott típusú új ajánlat létrehozása. |
-| ![Az összes ajánlatok elem](./media/left-navbar2.png) | [Minden ajánlat](./cpp-all-offers-page.md) lapon megtekintheti az összes elküldött kínál, és az elsődleges előrejelzéséhez. |
-| ![Jóváhagyások elem](./media/left-navbar3.png) | [Jóváhagyások](./cpp-approvals-page.md) lap használatával jeleníthetők meg az összes jelenleg jóváhagyott ajánlatait. |
-| ![A kiadók az összes elem](./media/left-navbar4.png) | [Minden gyártó](./cpp-all-publishers-page.md) lap felsorolja az összes a regisztrált felhőre partner kiadók. |
-| ![Felhasználók elem](./media/left-navbar5.png) | [Felhasználók](./cpp-users-page.md) lap felsorolja az összes jelenlegi felhasználói fiók regisztrált felhőbeli szolgáltatásokat kínáló társított. |
-| ![Előzmények](./media/left-navbar6.png) | [Előzmények](./cpp-history-page.md) lap felsorolja az ajánlat közzétételi és módosításának események minden gyártó esetében. |
-| ![Insights-elem](./media/left-navbar7.png) | [insights](./cpp-insights-page.md) lap tartalmaz a különféle irányítópultok alkotó a *értékesítői Insights* ezen a portálon funkcióját. |
-| ![Dokumentáció elem](./media/left-navbar8.png) | Az új a dokumentációs Kezdőlap lapon elindítja a Cloud Partner Portal (ismétlődések bejegyzést a **súgó** menüben). |
-| ![Fórum elem](./media/left-navbar9.png)  | Az új a dokumentációs Kezdőlap lapon indít a partneri Közösség, az appsource-ban és az Azure piactér (ismétlődések bejegyzést a **súgó** menüben). |
+| ![Új ajánlati tétel](./media/left-navbar1.png) | [Új ajánlat menü](./cpp-new-offer-menu.md) a megadott típusú új ajánlatok létrehozásához. |
+| ![Összes ajánlati tétel](./media/left-navbar2.png) | Az [összes ajánlat](./cpp-all-offers-page.md) oldalon megtekintheti az összes elküldött ajánlatot és azok egyes elsődleges jellemzőit. |
+| ![Jóváhagyások eleme](./media/left-navbar3.png) | [Jóváhagyások](./cpp-approvals-page.md) lap az összes jelenleg jóváhagyott ajánlat megtekintéséhez. |
+| ![Összes közzétevő eleme](./media/left-navbar4.png) | A [minden közzétevő](./cpp-all-publishers-page.md) lap felsorolja az aktuális regisztrált felhőalapú partner-közzétevőket. |
+| ![Felhasználói elemek](./media/left-navbar5.png) | A [felhasználók](./cpp-users-page.md) lap felsorolja a regisztrált felhőalapú partnerekhez társított összes aktuális felhasználói fiókot. |
+| ![Előzmények eleme](./media/left-navbar6.png) | Az [Előzmények](./cpp-history-page.md) lap felsorolja az ajánlat közzétételi és módosítási eseményeit az összes közzétevőnél. |
+| ![Bepillantási elemek](./media/left-navbar7.png) | a [bepillantást](./cpp-insights-page.md) tartalmazó oldal a portál *eladói bepillantást* vevő szolgáltatását alkotó különböző irányítópultokat tartalmazza. |
+| ![Dokumentációs tétel](./media/left-navbar8.png) | Új lapot indít a Cloud Partner Portal dokumentációjának kezdőlapjára (a **Súgó** menü duplikált bejegyzése). |
+| ![Fórum eleme](./media/left-navbar9.png)  | Új lapot indít a AppSource és az Azure piactéren a partneri Közösség dokumentációs kezdőlapjára (a **Súgó** menü duplikált bejegyzése). |
 |  |  |
 
 > [!NOTE]
-> A menüsávon a portál új szolgáltatások megfelelően rendszeres időközönként frissítik, mert az elemek, előfordulhat, hogy nem pontosan megegyeznek a fenti táblázatban.
+> Mivel ez a menüsáv rendszeresen frissül, hogy tükrözze a portál új funkcióit, előfordulhat, hogy a megjelenő elemek nem egyeznek pontosan a fenti táblázatban szereplő adatokkal.
 
 
 ## <a name="next-steps"></a>További lépések
 
-A következő cikkben, [menü Új ajánlat](./cpp-new-offer-menu.md), hozhat létre ajánlattípusokat felsorolja a **új ajánlat** menü.
+A következő cikk, [új ajánlat menü](./cpp-new-offer-menu.md), felsorolja az **új ajánlat** menüvel létrehozható ajánlatok típusait.

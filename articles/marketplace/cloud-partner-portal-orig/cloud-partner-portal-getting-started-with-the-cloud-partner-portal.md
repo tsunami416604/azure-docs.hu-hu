@@ -1,59 +1,60 @@
 ---
-title: Első lépések |} Az Azure Marketplace-en
-description: Ismerkedés a Cloud Partner portálra.
+title: Első lépések | Azure piactér
+description: A Cloud Partner Portal első lépései.
 services: Azure, Marketplace, Cloud Partner Portal,
 author: dan-wesley
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/14/2018
 ms.author: pabutler
-ms.openlocfilehash: 9d2c64479f65995c0eca756b86bd0a96a752867d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6065f0485b03a53fa55ae700831869998d9453cc
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64935734"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73818374"
 ---
-# <a name="getting-started-with-the-cloud-partner-portal"></a>A Cloud Partner portálra – első lépések
+# <a name="getting-started-with-the-cloud-partner-portal"></a>A Cloud Partner Portal első lépései
 
-Ez a cikk végigvezet a Cloud Partner portálra. Ismerje meg, mi mindenre képes használatával a Cloud Partner portálra ajánlatok dolgozhat [Azure Marketplace-en](https://azuremarketplace.microsoft.com/) és a [AppSource](https://appsource.microsoft.com/).
+Ez a cikk végigvezeti a Cloud Partner Portal. Ismerje meg, hogy mit tehet a Cloud Partner Portal használatával az [Azure Marketplace](https://azuremarketplace.microsoft.com/) -en és a [AppSource](https://appsource.microsoft.com/)-on található ajánlatokkal való együttműködéshez.
 
-<a name="portal-tour"></a>Portál bemutatása
+<a name="portal-tour"></a>Portál bemutatója
 -----------
 
-A Cloud Partner portálra ajánlat és a egy sikeres, a felhő üzleti mindent tartalmaz. Íme a részeit, amelyek valószínűleg a leggyakrabban fogja használni a webhely rövid áttekintése.
+A Cloud Partner Portal mindent tartalmaz, amire szüksége lehet a felhőben működő sikeres üzleti tevékenységhez. Íme egy gyors áttekintés a webhely azon részeiről, amelyeket valószínűleg a leggyakrabban fog használni.
 
-### <a name="left-navigation-bar"></a>Bal oldali navigációs sávon
+### <a name="left-navigation-bar"></a>Bal oldali navigációs sáv
 
-Amikor először megnyitja a portálon, megtekintheti a összecsukható navigációs sávban. Ez a léphet, ahol menüelemek között.
+Amikor először landol a portálon, megjelenik az összecsukható navigációs sáv. Itt lehet navigálni a menüelemek között.
 
 ![Felhőpartnerportál](./media/cloud-partner-portal-getting-started-with-the-cloud-partner-portal/cloud-partner-portal-page.png)
 
-A menüsávon részletes tájékoztatást nyújt a következő elemeket használja:
+A menüsáv segítségével további információkat kaphat a következő elemekről:
 
-- **Új ajánlat** -elindít egy új ajánlat.
-- **Minden ajánlat** -az állapot, illetve az aktuális csomagajánlatok állapotát.
-- **Felhasználók** - [kezelése és hozzáférés a vállalati](./cloud-partner-portal-manage-users.md).
-- **Ismerje meg,** – gyorsan elindíthatja a tanulás, és naprakész maradhat a Partnerportálon újdonságai.
-- **Insights** – az Insights portáljának felkeresésével insights és a termékek és az ügyfelek használati adatait találja.
+- **Új ajánlat** – kezdjen el egy új ajánlatot itt.
+- **Összes ajánlat** – az összes aktuális ajánlat állapotának és állapotának ellenőrzését.
+- A felhasználók [a vállalat hozzáférését - kezelhetik és vezérelhetik](./cloud-partner-portal-manage-users.md).
+- **Ismerkedjen** meg a tanulással – kezdje meg a tanulást, és naprakész maradhat a partner portál újdonságai között.
+- Információk a termékekkel és az ügyfelekkel kapcsolatos információkkal és adatokkal kapcsolatban a betekintő portálon.
 
-### <a name="offer-page"></a>Az ajánlat lap
+### <a name="offer-page"></a>Ajánlat lapja
 
-Egy új ajánlatot, vagy térjen vissza az ajánlat szerkesztése után a Folytatás a bemutatót, rengeteg munkát az ajánlat oldalon kell végeznie. Ez az összes beállítás konfigurálása az ajánlatban és ellenőrizze a állapotát.
+Ha folytatja a túrát, az új ajánlat megkezdése vagy az ajánlat szerkesztésére való visszatérés után sok munka lesz az ajánlat oldalon. Itt konfigurálhatja az ajánlat összes beállítását, és megtekintheti annak állapotát.
 
-![Az ajánlat lap](./media/cloud-partner-portal-getting-started-with-the-cloud-partner-portal/offer-page.png)
+![Ajánlat lapja](./media/cloud-partner-portal-getting-started-with-the-cloud-partner-portal/offer-page.png)
 
-Az ajánlat lapján a következőket teheti:
-- Tartalom hozzáadása, vagy az ajánlat állapotának átállításával két legfelső szintű módok között: **Editor** és **állapot**.
-- Használja a **Műveletsáv** explicit módon kezelheti az ajánlat módosítások mentése és a bemeneti elvetése.
-- Keresse meg a szükséges közötti **űrlapok** ajánlatok, az ajánlat beállításainak módosítása.
+Az ajánlat oldalon a következőket teheti:
+- Vegyen fel tartalmat, vagy az ajánlat állapotát a két legfelső szintű mód: **szerkesztő** és **állapot**közötti váltással végezheti el.
+- A **műveleti sáv** használatával explicit módon kezelheti az ajánlat módosításait, ha menti és elveti a bemenetet.
+- Az ajánlat beállításainak módosításakor navigáljon az egyes ajánlatok szükséges **űrlapjai** között.
 
-### <a name="menu-bar"></a>A menüsávon
+### <a name="menu-bar"></a>Menüsor
 
-Végül a képernyő felső részén, mindig képes lesz keresse meg a felső menüsávon. Ebben a menüben a támogatás és visszajelzés interaktív műveleteket tartalmaz. A kiadói fiók adatait is elérhető.
+Végül a képernyő felső részén mindig a felső menüsorban lehet navigálni. Ez a menü a támogatás és a visszajelzés interaktív műveleteit tartalmazza. Az összes közzétevői fiók adatait is elérheti.
 
-![A menüsávon](./media/cloud-partner-portal-getting-started-with-the-cloud-partner-portal/menu-bar.png)
+![Menüsor](./media/cloud-partner-portal-getting-started-with-the-cloud-partner-portal/menu-bar.png)
 
--   **Segítségre van szüksége?** – Ha még soha összetéveszteni őket, és segítségre van szüksége, hozzon létre egy támogatási kérést, és a dokumentációra mutató hivatkozásokat talál.
--   **Visszajelzés** –, hogy tegyük fel, hogy szeretne? Tudassa velünk, itt. A Microsoft az Azure piactéren, az appsource-ban közzétételi folyamat és a teljes cloud partner portálra, valamint egyszerű, intuitív, amennyire csak lehetséges élményt szeretne. Hogy osztályozhatja, és tekintse át a visszajelzéseket, és azt fogjuk mindig veszik figyelembe az adatvédelmi. A Microsoft csak kapcsolatba Önnel, amikor Ön feltesz további információt.
-- **Kiadói fiók** – az első látogasson el a portálon, látni fogja a kiadói szerződés elfogadására alapjairól szerződést kötöttek. Ettől kezdve az Ez az, ahol módosíthatja a közzétevő profil is, vagy nyissa meg újra a szerződést. Ez akkor is, ha csatlakozik a fejlesztői központban lévő fiókjához tudják, hogy az ajánlatok.
+-   **Segítségre van szüksége?** – Ha még nem tévesztendő össze, és segítségre van szüksége, hozzon létre egy támogatási kérést, és keresse meg a dokumentációra mutató hivatkozásokat.
+-   **Visszajelzés** – van valami, amit szeretne mondani? Tudassa velünk itt. A Microsoft szeretné, hogy az Azure Marketplace, a AppSource Publishing folyamata és a felhőalapú partneri portál általános élménye minél egyszerűbb és intuitív legyen. A rendszer kiértékeli és áttekinti az összes visszajelzést, és mindig tiszteletben tartjuk az Ön személyes adatait. Csak akkor vesszük fel Önnel a kapcsolatot, ha további információkat kér.
+- **Kiadói fiók** – amikor először felkeresi a portált, megjelenik a kiadói szerződésben, hogy elfogadja a közzétevőt. Ettől kezdve Itt szerkesztheti a közzétevői profilját, vagy megtekintheti a szerződést. Emellett a Fejlesztői központ fiókjának összekapcsolásával is elvégezheti az ajánlatok értékesítését.

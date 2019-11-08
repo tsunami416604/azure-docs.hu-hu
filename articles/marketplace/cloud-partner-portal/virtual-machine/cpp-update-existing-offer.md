@@ -1,173 +1,174 @@
 ---
-title: Az Azure Marketplace egy meglévő Virtuálisgép-ajánlat frissítése
-description: Azt ismerteti, hogyan frissíthető egy meglévő Virtuálisgép-ajánlat az Azure Marketplace-en.
+title: Meglévő VM-ajánlat frissítése az Azure Marketplace-en
+description: Ismerteti, hogyan lehet frissíteni egy meglévő virtuálisgép-ajánlatot az Azure Marketplace-en.
 services: Azure, Marketplace, Cloud Partner Portal,
 author: v-miclar
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 08/27/2018
 ms.author: ansud
-ms.openlocfilehash: e6099caf949d93abf8c665f61cd9b91d545dd0f4
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 5cbee909b4bd6353ad8fbe9fcbc126dc4a245012
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67612542"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73823991"
 ---
-# <a name="update-an-existing-vm-offer-on-azure-marketplace"></a>Az Azure Marketplace-en egy meglévő Virtuálisgép-ajánlat frissítése
+# <a name="update-an-existing-vm-offer-on-azure-marketplace"></a>Meglévő VM-ajánlat frissítése az Azure Marketplace-en
 
-Ez a cikk végigvezeti a frissítése a virtuális gép (VM) az ajánlat a különböző aspektusait a [Cloud Partner Portalon](https://cloudpartner.azure.com/) és majd újbóli közzététele az ajánlatot. 
+Ez a cikk végigvezeti a virtuális gép (VM) ajánlatának a [Cloud Partner Portalban](https://cloudpartner.azure.com/) való frissítésének különböző szempontjain, majd újból közzéteszi az ajánlatot. 
 
-Nincsenek számos gyakori oka, hogy frissíteni az ajánlatot, többek között:
+Az ajánlat frissítésének számos általános oka van, többek között a következők:
 
--  Adjon hozzá egy új Virtuálisgép-lemezkép verziója meglévő termékváltozatokra
--  A Termékváltozat módosítása régiókban érhető el
--  Adja hozzá az új termékváltozatokra
--  Frissítés a Marketplace-en metaadatait az ajánlat vagy egyes termékváltozatok
--  Frissítse a csomagok esetén, amelyek díjszabása
+-  Új virtuálisgép-rendszerkép verziójának hozzáadása meglévő SKU-hoz
+-  Az SKU-ban elérhető régiók módosítása
+-  Új SKU-i hozzáadása
+-  A piactér metaadatainak frissítése az ajánlathoz vagy az egyedi SKU-hoz
+-  Az utólagos elszámolású ajánlatok díjszabásának frissítése
 
-A portál kínál segítséget nyújt a ezeket a módosításokat, a **összehasonlítása** és **előzmények** funkciókat.  
+A fenti módosításokkal kapcsolatban a portál az **összehasonlítási** és **előzményi** funkciókat kínálja.  
 
 >[!Note]
->Cloud Solution Providers (CSP) partner csatorna vehetnek részt már elérhető.  Lásd: [Cloud Solution Providers](../../cloud-solution-providers.md) további tájékoztatást a marketing, az ajánlat keretében a Microsoft CSP partner-csatornákon.
+>A Cloud Solution Providers (CSP) Partner Channel opt-in mostantól elérhető.  Az ajánlat Microsoft CSP-partneri csatornákon keresztüli forgalmazásával kapcsolatos további információkért tekintse meg a [Cloud Solution Providers](../../cloud-solution-providers.md) című témakört.
 
-## <a name="unpermitted-changes-to-vm-offer-or-sku"></a>Virtuálisgép-ajánlat és az SKU engedett módosítása
+## <a name="unpermitted-changes-to-vm-offer-or-sku"></a>A VM-ajánlat vagy SKU nem engedélyezett módosításai
 
-Van néhány olyan Virtuálisgép-ajánlat vagy Termékváltozat, amely nem módosítható, ha az ajánlat élő az Azure Marketplace-en, főleg attribútumai:
+A virtuálisgép-ajánlat vagy SKU néhány attribútuma nem módosítható, ha az ajánlat az Azure piactéren érhető el, főként:
 
--  **Ajánlat azonosítója** és **közzétevő-azonosító** az ajánlat
--  **SKU-azonosítója** a meglévő termékváltozatok
--  Adatlemez meglévő SKU-k száma
--  Számlázási és licencelési modell módosítja a meglévő termékváltozatok
--  Egy közzétett termékváltozatra növeli ár
+-  Az ajánlat **azonosítója** és **közzétevő-azonosítója**
+-  Meglévő SKU-i **SKU-azonosító**
+-  Meglévő SKU-i adatlemezek száma
+-  Számlázási/licencelési modell módosítása a meglévő SKU-ra
+-  A közzétett SKU árának növekedése
 
 
 ## <a name="common-update-operations"></a>Gyakori frissítési műveletek
 
-Habár számos különféle jellemzőit, módosíthatja a Virtuálisgép-ajánlat, a következő műveletek gyakoriak.
+Bár a virtuális gépekre vonatkozó ajánlatokban számos különféle jellemzőt módosíthat, a következő műveletek gyakoriak.
 
-### <a name="update-the-vm-image-version-for-a-sku"></a>A Termékváltozat a Virtuálisgép-lemezkép verziója frissítés
+### <a name="update-the-vm-image-version-for-a-sku"></a>SKU-beli virtuálisgép-rendszerkép verziójának frissítése
 
-Szokás Virtuálisgép-lemezkép rendszeresen frissíteni kell a biztonsági javítások, további funkciók és így tovább.  Ilyen esetekben alatt szeretné frissíteni a Virtuálisgép-rendszerképet, amely a Termékváltozat hivatkozik az alábbi lépések segítségével:
+Gyakori, hogy a virtuálisgép-lemezképek rendszeres időközönként frissülnek a biztonsági javításokkal, a további funkciókkal és így tovább.  Ilyen esetekben az alábbi lépések végrehajtásával szeretné frissíteni az SKU-ra hivatkozó virtuálisgép-rendszerképet:
 
-1.  Jelentkezzen be a [Cloud Partner Portalon](https://cloudpartner.azure.com/).
+1.  Jelentkezzen be a [Cloud Partner Portalba](https://cloudpartner.azure.com/).
 
-2.  A **minden ajánlat**, keresse meg a frissítésére vonatkozó ajánlatot.
+2.  Az **összes ajánlat**területen keresse meg a frissítendő ajánlatot.
 
-3.  Az a **termékváltozatok** lapra, majd frissíteni a Virtuálisgép-lemezkép társított termékváltozat.
+3.  A **SKU** -i lapon kattintson a frissíteni kívánt virtuálisgép-rendszerképhez társított SKU-ra.
 
-4.  A **lemez verziója**, kattintson a **+ új lemez verziója** egy új Virtuálisgép-lemezkép hozzáadása.
+4.  Az új virtuálisgép-lemezkép hozzáadásához a **lemez verziója**területen kattintson az **+ új lemez verziója** elemre.
 
-5.  Adja meg az új Virtuálisgép-rendszerképek **lemez verziója**. A lemez verziója szükséges a [sémantická verze](https://semver.org/) formátumban. Verziók az űrlap X.Y.Z, ha X, Y és Z egész számoknak kell lenniük. Ellenőrizze, hogy megadta az új verzió nagyobb, mint a korábbi verziók; Ellenkező esetben újbóli közzététele után az új verzió nem jelennek meg a portálon vagy az Azure piactéren.
+5.  Adja meg az új VM-lemezképek **lemezének verzióját**. A lemez verziójának a [szemantikai verzió](https://semver.org/) formátumát kell követnie. A verziónak X. Y. Z formátumúnak kell lennie, ahol az X, az Y és a Z egész számok. Ellenőrizze, hogy a megadott új verzió nagyobb-e az összes korábbi verziónál. Ellenkező esetben az új verzió ismételt közzététele nem jelenik meg a portálon vagy az Azure Marketplace-en.
 
-6.  A **OS VHD URL-cím**, adja meg a [közös hozzáférésű jogosultságkód (SAS) URI](./cpp-get-sas-uri.md) az operációs rendszer virtuális Merevlemeze számára létrehozott. 
+6.  Az operációs rendszer **VHD URL-címe**mezőbe írja be az operációs rendszer virtuális merevlemezéhez létrehozott [megosztott elérési aláírás (SAS) URI azonosítóját](./cpp-get-sas-uri.md) . 
 
     > [!WARNING] 
-    > Az adatlemezek száma a Termékváltozat különböző verziói között nem lehet módosítani. Ha a korábbi verziók adatlemezek konfigurálva volt, az új verzió is rendelkeznie kell azonos számú adatlemezeket.
+    > Az adatlemezek száma nem változtatható meg az SKU különböző verziói között. Ha az előző verziókban adatlemezek lettek konfigurálva, akkor az új verziónak azonos számú adatlemezzel kell rendelkeznie.
 
-7.  Kattintson a **közzététel** az új virtuális gép verzió közzététele az Azure piactér a munkafolyamat elindításához.
-
-
-### <a name="change-region-availability-of-a-sku"></a>Régiónkénti elérhetőség, a Termékváltozat módosítása
-
-Idővel előfordulhat, hogy szeretné az ajánlat/SKU több régióban elérhetővé.  Azt is megteheti érdemes leállítani az ajánlat/SKU támogatása egy adott régióban.
-Rendelkezésre állási módosításához használja az alábbi lépéseket:
-
-1.  Jelentkezzen be a [Cloud Partner Portalon](https://cloudpartner.azure.com/).
-
-2.  A **minden ajánlat** keresse meg az ajánlat, amelyet szeretne frissíteni.
-
-3.  Az a **termékváltozatok** lapra, majd a termékváltozat, amely a rendelkezésre állási módosítani szeretne.
-
-4.  Kattintson a a **kiválasztása országok** gomb alatt a **ország/régió rendelkezésre állási** mező.
-
-5.  Az előugró régiónkénti elérhetőség régiók hozzáadása vagy eltávolítása a Ez a termékváltozat.
-
-6.  Kattintson a **közzététel** frissíteni az SKU-régiók rendelkezésre állása a közzététel munkafolyamat elindításához.
-
-A Termékváltozat egy új régióban elérhetővé van folyamatban, létre kell keresztül adott régió díjszabás megadásának lehetőségét a **díjszabási adatok exportálása** funkciót. Egy régiót vissza után előtt ad hozzá, ha nem lehet frissíteni, a díjszabás, mert a díjszabási nem engedélyezettek.
+7.  A **Közzététel** gombra kattintva elindíthatja a munkafolyamatot az új virtuálisgép-verzió Azure Marketplace-en való közzétételéhez.
 
 
-### <a name="add-a-new-sku"></a>Adjon hozzá egy új Termékváltozatot
+### <a name="change-region-availability-of-a-sku"></a>SKU-régió elérhetőségének módosítása
 
-Használja az alábbi lépéseket, hogy egy új Termékváltozatban érhető el a létező ajánlat: 
+Idővel előfordulhat, hogy az ajánlatot/SKU-t több régióban is elérhetővé kívánja tenni.  Azt is megteheti, hogy le szeretné állítani az ajánlat/SKU támogatását egy adott régióban.
+A rendelkezésre állás módosításához kövesse az alábbi lépéseket:
 
-1.  Jelentkezzen be a [Cloud Partner Portalon](https://cloudpartner.azure.com/).
+1.  Jelentkezzen be a [Cloud Partner Portalba](https://cloudpartner.azure.com/).
 
-2.  A **minden ajánlat** keresse meg az ajánlat, amelyet szeretne frissíteni.
+2.  Az **összes ajánlat** területen keresse meg a frissíteni kívánt ajánlatot.
 
-3.  Alatt a **termékváltozatok** fülre, kattintson a **adja hozzá az új Termékváltozat** , és adja meg egy **SKU-azonosítója** az előugró.
+3.  A **SKU** -i lapon kattintson arra az SKU-ra, amelyen módosítani szeretné a rendelkezésre állását.
 
-4.  Tegye közzé újra a virtuális Gépet, a cikkben leírt módon [közzététele egy virtuális gépet az Azure piactéren](./cpp-publish-offer.md).
+4.  Az **ország/régió rendelkezésre állása** mezőben kattintson az **országok kiválasztása** gombra.
 
-5.  Kattintson a **közzététel** közzététele az új Termékváltozat a munkafolyamat elindításához.
+5.  A régió rendelkezésre állása előugró ablakában adja hozzá vagy távolítsa el az adott SKU régióit.
 
+6.  Kattintson a **Közzététel** gombra a közzétételi munkafolyamat elindításához a SKU-régió rendelkezésre állásának frissítéséhez.
 
-### <a name="update-offer-marketplace-metadata"></a>Az ajánlat marketplace metaadatok frissítése
-
-Kövesse az alábbi lépéseket a Marketplace-en metaadatok frissítése – cég neve, emblémák, stb. – a kötelezettségvállaláshoz kapcsolódó: 
-
-1.  Jelentkezzen be a [Cloud Partner Portalon](https://cloudpartner.azure.com/).
-
-2.  A **minden ajánlat** keresse meg az ajánlat, amelyet szeretne frissíteni.
-
-3.  Ugrás a **Marketplace** lapfülre, majd kövesse a cikk a [közzététele egy virtuális gépet az Azure piactéren](./cpp-publish-offer.md) metaadatok módosításokat.
-
-4.  Kattintson a **közzététel** a módosítások közzétételéhez a munkafolyamat elindításához.
+Ha egy SKU-t egy új régióban kíván elérhetővé tenni, az **exportálási díjszabási** funkció segítségével megadhatja az adott régió díjszabását. Ha olyan régiót ad hozzá, amely korábban már elérhető volt, nem fogja tudni frissíteni a díjszabását, mert az árképzési változások nem engedélyezettek.
 
 
-### <a name="update-pricing-on-published-offers"></a>Frissítse a közzétett ajánlatok díjszabása
+### <a name="add-a-new-sku"></a>Új SKU hozzáadása
 
-Miután közzétette az utólagos számlázású, nem közvetlenül növelhető a Termékváltozat díjszabása.  (Azonban hozzon létre egy új Termékváltozatban ugyanazt az ajánlatnak, törölje a régi Termékváltozat, és az ajánlat az új ügyfelek majd újbóli.)  Ezzel szemben a csökkenthető az ár egy közzétett ajánlat az alábbi lépéseket követve:
+A következő lépésekkel hozhatja elérhetővé egy új SKU-t a meglévő ajánlathoz: 
 
-1.  Jelentkezzen be a [Cloud Partner Portalon](https://cloudpartner.azure.com/).
+1.  Jelentkezzen be a [Cloud Partner Portalba](https://cloudpartner.azure.com/).
 
-2.  A **minden ajánlat**, keresse meg a frissítésére vonatkozó ajánlatot.
+2.  Az **összes ajánlat** területen keresse meg a frissíteni kívánt ajánlatot.
 
-3.  Kattintson az SKU-t, amelynek díjszabása csökkentése érdekében.
+3.  A **SKU** -i lapon kattintson az **új SKU hozzáadása** elemre, és adjon meg egy **SKU azonosítót** az előugró ablakban.
 
-4.  Ha megadta, 1 x 1 díjszabását grafikus felhasználói Felülettel, az ár közvetlenül a felhasználói felületen módosíthatja. Ha beállította az importálási/exportálási számolótábla keresztül díjszabás, csak csökkentheti az árak az importálási/exportálási funkciójával.
+4.  Tegye közzé újra a virtuális gépet a [virtuális gépek Azure Marketplace-en való közzétételével foglalkozó](./cpp-publish-offer.md)cikkben részletezett módon.
+
+5.  Kattintson a **Közzététel** gombra a munkafolyamat elindításához az új SKU közzétételéhez.
+
+
+### <a name="update-offer-marketplace-metadata"></a>Ajánlat Marketplace-metaadatok frissítése
+
+A következő lépésekkel frissítheti a piactér metaadatait – a vállalat nevét, emblémáit stb. – az ajánlathoz társítva: 
+
+1.  Jelentkezzen be a [Cloud Partner Portalba](https://cloudpartner.azure.com/).
+
+2.  Az **összes ajánlat** területen keresse meg a frissíteni kívánt ajánlatot.
+
+3.  Goto a **piactér** lapon kövesse a [virtuális gép közzététele az Azure Marketplace](./cpp-publish-offer.md) -en a metaadatok módosításait ismertető cikk utasításait.
+
+4.  Kattintson a **Közzététel** gombra a munkafolyamat elindításához a módosítások közzétételéhez.
+
+
+### <a name="update-pricing-on-published-offers"></a>A közzétett ajánlatok díjszabásának frissítése
+
+Az utólagos elszámolású ajánlat közzététele után nem növelheti közvetlenül az SKU díjszabását.  (Ugyanakkor létrehozhat egy új SKU-t ugyanabban az ajánlatban, törölheti a régi SKU-t, majd újból közzéteheti az ajánlatot az új ügyfelek számára.)  Ezzel szemben a közzétett ajánlatok árát a következő lépések segítségével csökkentheti:
+
+1.  Jelentkezzen be a [Cloud Partner Portalba](https://cloudpartner.azure.com/).
+
+2.  Az **összes ajánlat**területen keresse meg a frissítendő ajánlatot.
+
+3.  Kattintson arra az SKU-ra, amelynek a díjszabását csökkenteni kívánja.
+
+4.  Ha a díjszabást a 1x1 grafikus felhasználói felületén állította be, akkor az árat közvetlenül a felhasználói felületen módosíthatja. Ha a díjszabást Importálás/exportálás táblázaton keresztül állítja be, csak az importálási/exportálási funkció használatával csökkentheti az árakat.
 
 3.  Kattintson a **Save** (Mentés) gombra.
 
-4.  Kattintson a **közzététel** a módosítások közzétételéhez a munkafolyamat elindításához.
+4.  Kattintson a **Közzététel** gombra a munkafolyamat elindításához a módosítások közzétételéhez.
 
-Az új csökkent díjszabás az új ügyfelek számára látható lesz, ha a webhelyen.  Ez az új ár az ügyfeleket érinti, a következő módon:
+Az új csökkentett díjszabás az új ügyfelek számára jelenik meg, ha a webhelyen él.  Ez az új díj az alábbi módokon befolyásolja az ügyfeleket:
 
-- Új ügyfeleket az új arány számítjuk. 
-- A meglévő ügyfelek az árcsökkenést meg fognak jelenni visszamenőlegesen a Start a számlázási ciklus során, ami az árcsökkenést hatékony vált.
-Ha rendelkezik már lett számlázásra a ciklus során, ami árcsökkenés történt, visszatérítés kapja meg, hogy biztosítsák a csökkent díj a következő elszámolási időszakban.
+- Az új ügyfelek díját az új díjszabás alapján számítjuk fel. 
+- A meglévő ügyfelek esetében az árak csökkenése visszamenőlegesen jelenik meg a számlázási ciklus elején, amely alatt a csökkenés érvénybe lép.
+Ha már felszámolták azt a ciklust, amely alatt az árak csökkenése megtörtént, akkor a következő elszámolási időszakban visszatérítést kapnak, hogy lefedje a csökkentett árat.
 
 
 <!-- TD: This has been implemented, need to change the SKU Tab topic to reflect and move this section there. -->
-### <a name="simplified-currency-pricing"></a>Egyszerűsített pénznem díjszabása
+### <a name="simplified-currency-pricing"></a>Egyszerűsített pénznemek díjszabása
 
-2018 szeptember 1-től kezdődően új szakasz nevű **pénznem díjszabás egyszerűsített** megjelenik a portálon. A Microsoft Azure Marketplace-en üzleti van egyszerűsítésével világszerte több kiszámítható díjszabás és a gyűjtemény ügyfelei engedélyezésével. Ez egyszerűsítheti tartalmazza az ügyfelek feléjük azt pénznemek számának csökkentése.
+Szeptember 1 2018-ától kezdődően a portálon megjelenik egy **egyszerűsített valuta díjszabását** tartalmazó új szakasz. A Microsoft egyszerűsíti az Azure Marketplace üzletágat azáltal, hogy lehetővé teszi, hogy több kiszámítható díjszabást és gyűjteményt biztosítson ügyfeleinek szerte a világon. Ez a egyszerűsítés magában foglalja a pénznemek számának csökkentését, amelyekben ügyfeleinket számlázjuk.
 
-Az új szakasz ezen új pénznemekben díjszabás vesz igénybe. Után minden ügyfél ezen új elszámolási pénznemekben át lettek telepítve, az eredeti díjszabási szakaszban kivonjuk a forgalomból, és csak a pénznem díjszabás egyszerűsített szakasz marad.
+Az új szakasz díjszabása ezekben az új pénznemekben történik. Miután az összes ügyfelet áttelepítette az új kiegyenlítési pénznemekre, az eredeti díjszabási szakasz kivonásra kerül, és csak az egyszerűsített pénznem díjszabása marad.
 
-Amíg nem módosul a 2018. November 1. viselkedésmintáit beállítása egy új ár régiókra vonatkozó elszámolás pénznem kell. Nem lehet növelheti a régiók viselkedésmintáit nem módosul az elszámolás pénznem díja.
+2018 november 1-ig az új árat kell megállapítania azon régiók esetében, amelyekben az elszámolás pénzneme módosul. Nem fogja tudni megemelni az olyan régiók árát, amelyekben az elszámolás pénzneme nem változik.
 
 > [!NOTE] 
-> API-k használatával az ajánlat közzététele, egy új szakaszt az ajánlat JSON belül jelenhet meg. Ez akkor lehet feliratozva `virtualMachinePricingV2` vagy `monthlyPricingV2`ajánlat típusától függően. 
+> Ha API-kat használ az ajánlat közzétételéhez, új szakaszt láthat az ajánlat JSON-fájlján belül. Ezt az ajánlat típusától függően `virtualMachinePricingV2`ként vagy `monthlyPricingV2`ként kell megadnia. 
 
-Ha ez a változás kapcsolatban bármilyen kérdése van, lépjen kapcsolatba [Azure piactér támogatási](../../support-azure-marketplace.md).
-
-
-## <a name="compare-feature"></a>A szolgáltatás összehasonlítása
-
-Ha módosítja a már közzétett ajánlat, használhatja a **összehasonlítása** naplózása a módosításokat, hogy történtek-e a szolgáltatás. Ez a funkció használatához:
-
-1.  A szerkesztési folyamat bármely mozzanata, kattintson a **összehasonlítása** gomb az ajánlatban.
-
-    ![Hasonlítsa össze a szolgáltatás gomb](./media/publishvm_037.png)
+Ha bármilyen kérdése van a változással kapcsolatban, forduljon az [Azure Marketplace támogatási szolgálatához](../../support-azure-marketplace.md).
 
 
-2.  Marketing eszközök és metaadatok verzióinak egymás mellett tekintheti meg.
+## <a name="compare-feature"></a>Szolgáltatás összehasonlítása
+
+Ha módosításokat végez egy már közzétett ajánlaton, kihasználhatja az **összehasonlítás** funkciót az elvégzett módosítások naplózásához. A szolgáltatás használata:
+
+1.  A szerkesztési folyamat bármely pontján kattintson az ajánlat **összehasonlítás** gombjára.
+
+    ![Funkció összehasonlítása gomb](./media/publishvm_037.png)
+
+
+2.  Megtekintheti a marketing-eszközök és-metaadatok egymás melletti verzióit.
 
 
 ## <a name="history-of-publishing-actions"></a>Közzétételi műveletek előzményei
 
-Közzétételi tevékenységi előzményeket megtekintéséhez kattintson a a **előzmények** elemét a bal oldali menüsáv a Cloud Partner portálra. Itt lesz, amely az Azure Marketplace-ajánlat teljes élettartama során került sor időbélyegzővel műveletek megtekintéséhez.  
+A korábbi közzétételi tevékenységek megtekintéséhez kattintson az **Előzmények** elemre a Cloud Partner Portal bal oldali navigációs sávján. Itt megtekintheti az Azure Marketplace-ajánlatok élettartama során elvégzett időbélyeges műveleteket.  
 <!-- TD: Add after section authored: For more information, see [History page](../portal-tour/cpp-history-page.md). -->
 

@@ -1,66 +1,67 @@
 ---
-title: Alkalmazás Azure-ajánlat |} Az Azure Marketplace-en
-description: A közzétételi folyamat áttekintése az Azure-alkalmazások az Azure Marketplace-en kínálnak.
+title: Azure-alkalmazás ajánlat | Azure piactér
+description: Azure-alkalmazási ajánlat Azure Marketplace-en való közzétételének folyamata – áttekintés.
 services: Azure, Marketplace, Cloud Partner Portal,
 author: dan-wesley
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 02/06/2019
 ms.author: pabutler
-ms.openlocfilehash: 3691664ee6212f838e7a9b95089893e4b52c689f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9125b5c71b63b27c58ea72b7bfd49f730854b33d
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64943013"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73818795"
 ---
 # <a name="azure-application-offer"></a>Azure-alkalmazásajánlat
 
 |    |    |
 |-----------------------------------------------------------------|------------------------------------------|
-| <div class="body"> Ez a szakasz ismerteti, hogyan tehet közzé egy új Azure-alkalmazás ajánlattal a [Azure Marketplace-en](https://azuremarketplace.microsoft.com).  Minden egyes Azure-alkalmazás az Azure Resource Manager-sablon, amely meghatározza az alkalmazás, amely általában tartalmaz egy vagy több virtuális gépet és egyéb támogató Azure - vagy Web-alapú szolgáltatások által használt összes műszaki eszközöket tartalmazza. Minden Azure-alkalmazás ajánlat engedélyeznie kell a hozzáférés-biztonságot keresztül [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/).  </div> | ![Az Azure apps ikon](./media/azureapp-icon1.png)  |
+| <div class="body"> Ez a szakasz azt ismerteti, hogyan tehet közzé egy új Azure-alkalmazást az [Azure Marketplace](https://azuremarketplace.microsoft.com)-en.  Minden Azure-alkalmazás tartalmaz egy Azure Resource Manager sablont, amely meghatározza az alkalmazás által használt összes technikai eszközt, amely általában egy vagy több virtuális gépet és más, Azure-vagy webalapú szolgáltatásokat támogató szolgáltatást tartalmaz. Az Azure app-ajánlatoknak [Azure Active Directoryon](https://docs.microsoft.com/azure/active-directory/)keresztül kell engedélyeznie a hozzáférési biztonságot.  </div> | ![Azure-alkalmazások ikon](./media/azureapp-icon1.png)  |
 
-## <a name="publishing-overview"></a>Közzétételi áttekintése
+## <a name="publishing-overview"></a>Közzététel áttekintése
 
-Az alábbi videó [létrehozása Megoldássablonokkal, és a felügyelt alkalmazások az Azure Marketplace-en](https://channel9.msdn.com/Events/Build/2018/BRK3603), bemutatja az: Mit kínálnak típus érhető el technikai eszközök Mik szükséges, hogyan hozhat létre egy Azure Resource Manager sablon, fejlesztés és tesztelés az alkalmazás felhasználói felületén, hogyan teheti közzé az alkalmazást az ajánlat és az alkalmazás elbírálási folyamata.
+Az alábbi videó, az Azure Marketplace-hez készült [megoldási sablonok és a felügyelt alkalmazások](https://channel9.msdn.com/Events/Build/2018/BRK3603)bemutatása: a rendelkezésre álló ajánlati típusok, a szükséges technikai eszközök, a Azure Resource Manager-sablonok létrehozása, a fejlesztés az alkalmazás felhasználói felületének tesztelése, az alkalmazás-ajánlat közzététele és az alkalmazás-felülvizsgálati folyamat tesztelése.
 
 >[!VIDEO https://channel9.msdn.com/Events/Build/2018/BRK3603/player]
 
 
-## <a name="types-of-azure-applications"></a>Az Azure-alkalmazások típusai
+## <a name="types-of-azure-applications"></a>Azure-alkalmazások típusai
 
-Két fajtája van az Azure-alkalmazások: a felügyelt alkalmazások és megoldássablonok. 
+Kétféle Azure-alkalmazás létezik: felügyelt alkalmazások és megoldási sablonok. 
 
-- Megoldássablonok a fő módon lehet a megoldás a piactéren közzétett tartoznak. Ez az ajánlat típusát a megoldáshoz szükséges további üzembe helyezési és konfigurációs automation túl egyetlen virtuális gép (VM) használt. Egynél több virtuális gép, megoldássablon használatával biztosító automatizálható. Ezt az automatizálást magában foglalja a hálózati és tárolási erőforrások összetett IaaS-megoldások kiépítése. Megoldás sablon követelményeinek és a számlázási modell áttekintését lásd: [Azure-alkalmazások: megoldássablonok](https://docs.microsoft.com/azure/marketplace/marketplace-solution-templates).
+- A megoldási sablonok az egyik fő módszer a megoldás közzétételére a piactéren. Ezt az ajánlatot akkor kell használni, ha a megoldás további üzembe helyezést és konfigurációs automatizálást igényel egy virtuális gépen (VM) túl. A megoldási sablonnal több virtuális gép is automatizálható. Ez az automatizálás a hálózatkezelési és tárolási erőforrások kiépítését foglalja magában összetett IaaS-megoldások biztosításához. A megoldási sablonra vonatkozó követelmények és a számlázási modell áttekintését az [Azure-alkalmazások: megoldás-sablonok](https://docs.microsoft.com/azure/marketplace/marketplace-solution-templates)című részben találja.
 
-- Felügyelt alkalmazások hasonlóak megoldássablonokkal, egy fő különbséggel. A felügyelt alkalmazások esetében az erőforrások üzembe helyezése egy erőforráscsoportban történik, amelyet az alkalmazás közzétevője felügyel. Az erőforráscsoport az ügyfél előfizetésében található meg, de a közzétevő bérlőjének egy identitása rendelkezik hozzáféréssel az erőforráscsoporthoz. A megoldás folyamatos támogatásának költségeit a közzétevő határozza meg. Az Azure által felügyelt alkalmazások használatával könnyedén hozhat létre és nyújthat ügyfeleinek teljes körűen felügyelt, kulcsrakész alkalmazásokat.
+- A felügyelt alkalmazások hasonlók a megoldási sablonokhoz, és egyetlen kulcsfontosságú különbséggel rendelkeznek. A felügyelt alkalmazások esetében az erőforrások üzembe helyezése egy erőforráscsoportban történik, amelyet az alkalmazás közzétevője felügyel. Az erőforráscsoport az ügyfél előfizetésében található meg, de a közzétevő bérlőjének egy identitása rendelkezik hozzáféréssel az erőforráscsoporthoz. A megoldás folyamatos támogatásának költségeit a közzétevő határozza meg. Az Azure Managed Applications használatával egyszerűen hozhat létre és biztosíthat teljes körűen felügyelt, kulcsrakész alkalmazásokat ügyfelei számára.
 
-Az Azure piactéren kívül szolgáltatáskatalógus a felügyelt alkalmazások is rendelkeznek. A szolgáltatáskatalógus egy belső katalógus azokról a megoldásokról, amelyeket egy vállalat jóváhagy a felhasználói számára. A katalógus használatával szervezeti szabványoknak megfelelő megoldások olyan szervezeti csoportok garantál. Az alkalmazottak a katalógussal könnyen felfedezhetik az informatikai részleg által jóváhagyott és ajánlott alkalmazásokat.
+Az Azure piactéren kívül felügyelt alkalmazásokat is biztosíthat a szolgáltatás-katalógusban. A szolgáltatáskatalógus egy belső katalógus azokról a megoldásokról, amelyeket egy vállalat jóváhagy a felhasználói számára. A katalógus segítségével teljesítheti a szervezeti szabványokat, és megoldásokat kínálhat a szervezetek csoportjaihoz. Az alkalmazottak a katalógussal könnyen felfedezhetik az informatikai részleg által jóváhagyott és ajánlott alkalmazásokat.
 
 >[!Note]
->Cloud Solution Providers (CSP) partner csatorna vehetnek részt már elérhető.  Lásd: [Cloud Solution Providers](../../cloud-solution-providers.md) további tájékoztatást a marketing, az ajánlat keretében a Microsoft CSP partner-csatornákon.
+>A Cloud Solution Providers (CSP) Partner Channel opt-in mostantól elérhető.  Az ajánlat Microsoft CSP-partneri csatornákon keresztüli forgalmazásával kapcsolatos további információkért tekintse meg a [Cloud Solution Providers](../../cloud-solution-providers.md) című témakört.
 
-Milyen előnyökkel és a felügyelt alkalmazások további információkért lásd: a [Azure managed applications áttekintése](https://docs.microsoft.com/azure/managed-applications/overview).
+További információ a felügyelt alkalmazások előnyeiről és típusairól: az [Azure által felügyelt alkalmazások áttekintése](https://docs.microsoft.com/azure/managed-applications/overview).
 
 
-## <a name="publishing-process-workflow"></a>Közzétételi folyamat munkafolyamat
+## <a name="publishing-process-workflow"></a>Közzétételi folyamat munkafolyamata
 
-Az alábbi ábrán egy Azure-alkalmazás az ajánlat közzétételi magas szintű folyamata látható.
+Az alábbi ábra az Azure-alkalmazások ajánlatának közzétételének magas szintű folyamatát mutatja be.
 
-![Az ajánlat közzétételi munkafolyamata](./media/new-offer-process.png)
+![Az ajánlat közzétételének munkafolyamata](./media/new-offer-process.png)
 
-Az Azure-alkalmazás-ajánlat közzétételéhez a magas szintű lépései a következők:
+Az Azure-alkalmazások ajánlatának közzétételéhez szükséges magas szintű lépések a következők:
 
-1. Megfelel a [Előfeltételek](./cpp-prerequisites.md) (nem látható) – Győződjön meg arról, hogy teljesül-e az üzleti és technikai követelmények, egy Azure-alkalmazáshoz az Azure piactéren való közzétételéhez. 
+1. Teljesítse az [előfeltételeket](./cpp-prerequisites.md) – (nem látható) ellenőrizze, hogy megfelelt-e az Azure-alkalmazások Azure Marketplace-en való közzétételének üzleti és technikai követelményeinek. 
 
-1. [Az ajánlat létrehozásához](./cpp-create-offer.md) – az ajánlat részletes információkat tartalmaznak. Ezen információk közé tartozik: az ajánlat leírása, marketing-adategység-specifikációi, anyagokat és támogatási információk.
+1. [Ajánlat létrehozása](./cpp-create-offer.md) – részletes információkat nyújt az ajánlatról. Ezek az adatok a következők: az ajánlat leírása, a marketing-anyagok, a támogatási információk és az eszközök specifikációja.
 
-1. [Hozzon létre vagy meglévő üzleti és technikai eszközök gyűjtése](./cpp-create-technical-assets.md) – az üzleti eszközök (jogi dokumentumok és marketinganyagokat) és a kapcsolódó megoldás technikai eszközök létrehozása.
+1. [Meglévő üzleti és technikai eszközök létrehozása vagy összegyűjtése](./cpp-create-technical-assets.md) – a kapcsolódó megoldáshoz hozzon létre üzleti eszközöket (jogi dokumentumok és marketing anyagok) és technikai eszközöket.
 
-1. [A Termékváltozat létrehozása](./cpp-skus-tab.md) – a termékváltozat(ok) társított az ajánlat létrehozása. Egy egyedi Termékváltozat megadása kötelező az egyes lemezképek szeretné közzétenni.
+1. [Hozza létre a SKU](./cpp-skus-tab.md) -t – hozza létre az ajánlathoz társított SKU (ka) t. Minden közzétenni kívánt rendszerképhez egyedi SKU szükséges.
 
-1. Igazolja és [az ajánlat közzététele](./cpp-publish-offer.md) – az ajánlat és a technikai eszközök befejezése után az ajánlatot küldhet. Az elküldés során először a közzétételi folyamat. Ez a folyamat során a megoldás vizsgálják, érvényesíti, minősített, majd "élesíti" az Azure Marketplace-en.
+1. Az ajánlat tanúsítása és [közzététele](./cpp-publish-offer.md) – az ajánlat és a technikai eszközök befejezése után elküldheti az ajánlatot. Ez a Küldés elindítja a közzétételi folyamatot. A folyamat során a megoldás tesztelése, ellenőrzése, minősítése, majd az Azure piactéren az "élő" állapot érhető el.
 
 ## <a name="next-steps"></a>További lépések
 
-Mielőtt ezeket a lépéseket, meg kell felelnie a [műszaki és üzleti igényeinek](./cpp-prerequisites.md) egy felügyelt alkalmazást a Microsoft Azure piactéren való közzétételéhez.
+Mielőtt figyelembe veszi ezeket a lépéseket, meg kell felelnie a felügyelt alkalmazások Microsoft Azure Marketplace való közzétételének [technikai és üzleti követelményeinek](./cpp-prerequisites.md) .

@@ -4,15 +4,16 @@ description: Azure-és AppSource-Piactéri ajánlatok létrehozása és kezelés
 services: Azure, AppSource, Marketplace, Cloud Partner Portal,
 author: v-miclar
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 03/27/2019
 ms.author: pabutler
-ms.openlocfilehash: 746b1b51d593b21bdf85bca4eeb75c135196093a
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: f1e561e84daed6c24ca0d9b7832af3d975082e25
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70962856"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73818762"
 ---
 # <a name="azure-and-appsource-marketplace-offers"></a>Azure-és AppSource Marketplace-ajánlatok
 
@@ -32,9 +33,9 @@ További információ ezekről a piactérekről: az [Azure Marketplace és az Ap
 Az új ajánlat létrehozásának folyamata nagy mértékben különbözik az ajánlati típusoktól, például egy [Azure-alkalmazás ajánlata](./azure-applications/cpp-azure-app-offer.md) és egy [tanácsadói szolgáltatás ajánlata](./consulting-services/cloud-partner-portal-consulting-services-publishing-offer.md)között.  Ezzel szemben a [Cloud Partner Portal](https://cloudpartner.azure.com) egy ajánlatán végrehajtott egyéb műveletek többsége meglehetősen szabványosított az ajánlati típusok között.  Ezek a gyakori műveletek – beleértve a közzétételt, a megtekintési állapotot, a frissítést és a törlést – az [ajánlatok kezelése](./manage-offers/cpp-manage-offers.md) részben szerepelnek.
 
 
-## <a name="test-drive"></a>Kipróbálás
+## <a name="test-drive"></a>Tesztverzió
 
-A *Test Drive* egy Piactéri szolgáltatás, amely a "kipróbálás előtt" lehetőséget nyújt az ügyfeleknek az egyes ajánlatokhoz.  A test Drive funkció a következő típusú ajánlatokra korlátozódik: [Azure-alkalmazások](./azure-applications/cpp-azure-app-offer.md), [Dynamics 365 Business Central](../cloud-partner-portal-orig/cpp-business-central-offer.md), [Dynamics 365 a Customer engagement](./dyn365ce/cpp-customer-engagement-offer.md), a [Dynamics 365 for Finance és Operations](../cloud-partner-portal-orig/cpp-dynamics-365-operations-offer.md), [SaaS-alkalmazások](./saas-app/cpp-saas-offer.md)és [virtuális gépek](./virtual-machine/cpp-virtual-machine-offer.md).  Ehhez a funkcióhoz a közzétevőnek létre kell hoznia egy, az ajánlatához testreszabott tesztelési meghajtó-sablont.  További információt a [Test Drive](./test-drive/what-is-test-drive.md)című szakaszban talál.
+A *Test Drive* egy Piactéri szolgáltatás, amely a "kipróbálás előtt" lehetőséget nyújt az ügyfeleknek az egyes ajánlatokhoz.  A test Drive funkció a következő típusú ajánlatokra korlátozódik: [Azure Applications](./azure-applications/cpp-azure-app-offer.md), [Dynamics 365 Business Central](../cloud-partner-portal-orig/cpp-business-central-offer.md), [Dynamics 365 for Customer engagement](./dyn365ce/cpp-customer-engagement-offer.md), [Dynamics 365 for Finance and Operations](../cloud-partner-portal-orig/cpp-dynamics-365-operations-offer.md), [Saas alkalmazások](./saas-app/cpp-saas-offer.md)és [virtuális gépek](./virtual-machine/cpp-virtual-machine-offer.md).  Ehhez a funkcióhoz a közzétevőnek létre kell hoznia egy, az ajánlatához testreszabott tesztelési meghajtó-sablont.  További információt a [Test Drive](./test-drive/what-is-test-drive.md)című szakaszban talál.
 
 A test Drive- [szűrők](https://azuremarketplace.microsoft.com/marketplace/apps?filters=test-drive)alkalmazásával tallózhat a meglévő Piactéri ajánlatokban. 
 

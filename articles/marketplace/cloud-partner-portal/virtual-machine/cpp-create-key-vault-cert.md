@@ -4,15 +4,16 @@ description: A cikk azt ismerteti, hogyan regisztrálhat egy virtuális gépet e
 services: Azure, Marketplace, Cloud Partner Portal,
 author: v-miclar
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 11/29/2018
 ms.author: pabutler
-ms.openlocfilehash: c27605d2f9b87a9d4ba3d2326c0ce7ad437d3441
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+ms.openlocfilehash: 4adc6f716050e2d792e0a5c022972e4340d2846a
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70240982"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73823112"
 ---
 # <a name="create-certificates-for-azure-key-vault"></a>Azure Key Vault tanúsítványok létrehozása
 
@@ -32,7 +33,7 @@ Ehhez a munkához egy új vagy egy meglévő Azure-erőforráscsoportot is haszn
 
 Szerkessze és futtassa a következő Azure PowerShell-parancsfájlt a tanúsítványfájl (. pfx) helyi mappában való létrehozásához.  A következő paraméterek értékeit kell lecserélnie:
 
-|  **A paraméter**        |   **Leírás**                                                               |
+|  **Paraméter**        |   **Leírás**                                                               |
 |  -------------        |   ---------------                                                               |
 | `$certroopath` | Helyi mappa, ahová menteni szeretné a. pfx-fájlt  |
 | `$location`    | Az Azure standard földrajzi helyeinek egyike  |
@@ -78,7 +79,7 @@ Szerkessze és futtassa a következő Azure PowerShell-parancsfájlt a tanúsít
 
 Másolja a [Key Vault telepítési sablon](./cpp-key-vault-deploy-template.md) tartalmát a helyi számítógép egyik fájljába. (az alábbi parancsfájlban ez az erőforrás `C:\certLocation\keyvault.json`.)  Szerkessze és futtassa az alábbi Azure PowerShell-szkriptet Azure Key Vault-példány és a társított erőforráscsoport létrehozásához.  A következő paraméterek értékeit kell lecserélnie:
 
-|  **A paraméter**        |   **Leírás**                                                               |
+|  **Paraméter**        |   **Leírás**                                                               |
 |  -------------        |   ---------------                                                               |
 | `$postfix`            | A központi telepítési azonosítóhoz fűzött tetszőleges numerikus karakterlánc                     |
 | `$rgName`             | Létrehozandó Azure-erőforráscsoport (RG) neve                                        |
@@ -205,7 +206,7 @@ A következő szkript futtatásával a. pfx fájlban található tanúsítványo
             echo $certpassword
             $jsonObjectBytes = [System.Text.Encoding]::UTF8.GetBytes($jsonObject)
             $jsonEncoded = [System.Convert]::ToBase64String($jsonObjectBytes)
-            $secret = ConvertTo-SecureString -String $jsonEncoded -AsPlainText –Force
+            $secret = ConvertTo-SecureString -String $jsonEncoded -AsPlainText -Force
             $objAzureKeyVaultSecret=Set-AzureKeyVaultSecret -VaultName $kvname -Name "ISVSecret$postfix" -SecretValue $secret
             echo $objAzureKeyVaultSecret.Id 
     

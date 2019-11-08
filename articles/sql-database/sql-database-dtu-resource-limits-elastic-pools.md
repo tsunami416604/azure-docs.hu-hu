@@ -1,22 +1,22 @@
 ---
-title: Azure SQL Database DTU-erőforrás korlátozza a rugalmas készleteket | Microsoft Docs
+title: DTU erőforrás-korlátok rugalmas készletek
 description: Ez az oldal néhány gyakori DTU-erőforrás-korlátot ismertet a rugalmas készletek Azure SQL Databaseban.
 services: sql-database
 ms.service: sql-database
 ms.subservice: elastic-pools
-ms.custom: ''
+ms.custom: seo-lt-2019
 ms.devlang: ''
 ms.topic: conceptual
 author: sachinpMSFT
 ms.author: sachinp
 ms.reviewer: carlrab
 ms.date: 03/14/2019
-ms.openlocfilehash: 08e6c27b359e8fcf48caed6faf21c0aed8fad224
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 8b5d87d62f1db5e7d472af4cc2153d8841be6241
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73521022"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73826547"
 ---
 # <a name="resources-limits-for-elastic-pools-using-the-dtu-purchasing-model"></a>A rugalmas készletek DTU beszerzési modell használatával történő korlátozása
 
@@ -39,7 +39,7 @@ SQL Database rugalmas készletek esetében az alábbi táblázatok az egyes szol
 |:---|---:|---:|---:| ---: | ---: | ---: | ---: | ---: |
 | Foglalt tárterület/készlet (GB) | 5 | 10 | 20 | 29 | 39 | 78 | 117 | 156 |
 | Tárolási lehetőségek maximális száma (GB) | 5 | 10 | 20 | 29 | 39 | 78 | 117 | 156 |
-| Memóriában tárolt OLTP-tárolók maximális száma (GB) | – | – | – | – | – | – | – | – |
+| Memóriában tárolt OLTP-tárolók maximális száma (GB) | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A |
 | Adatbázisok maximális száma készletenként | 100 | 200 | 500 | 500 | 500 | 500 | 500 | 500 |
 | Egyidejű feldolgozók (kérelmek) maximális száma készletenként | 100 | 200 | 400 | 600 | 800 | 1600 | 2400 | 3200 |
 | Egyidejű munkamenetek maximális száma készletenként | 30000 | 30000 | 30000 | 30000 |30000 | 30000 | 30000 | 30000 |
@@ -54,7 +54,7 @@ SQL Database rugalmas készletek esetében az alábbi táblázatok az egyes szol
 |:---|---:|---:|---:| ---: | ---: | ---: |
 | Foglalt tárterület/készlet (GB) | 50 | 100 | 200 | 300 | 400 | 800 |
 | Tárolási lehetőségek maximális száma (GB) | 50, 250, 500 | 100, 250, 500, 750 | 200, 250, 500, 750, 1024 | 300, 500, 750, 1024, 1280 | 400, 500, 750, 1024, 1280, 1536 | 800, 1024, 1280, 1536, 1792, 2048 |
-| Memóriában tárolt OLTP-tárolók maximális száma (GB) | – | – | – | – | – | – |
+| Memóriában tárolt OLTP-tárolók maximális száma (GB) | N/A | N/A | N/A | N/A | N/A | N/A |
 | Adatbázisok maximális száma készletenként | 100 | 200 | 500 | 500 | 500 | 500 |
 | Egyidejű feldolgozók (kérelmek) maximális száma készletenként | 100 | 200 | 400 | 600 | 800 | 1600 |
 | Egyidejű munkamenetek maximális száma készletenként | 30000 | 30000 | 30000 | 30000 | 30000 | 30000 |
@@ -69,7 +69,7 @@ SQL Database rugalmas készletek esetében az alábbi táblázatok az egyes szol
 |:---|---:|---:|---:| ---: | ---: |
 | Foglalt tárterület/készlet (GB) | 1200 | 1600 | 2000 | 2500 | 3000 |
 | Tárolási lehetőségek maximális száma (GB) | 1200, 1280, 1536, 1792, 2048, 2304, 2560 | 1600, 1792, 2048, 2304, 2560, 2816, 3072 | 2000, 2048, 2304, 2560, 2816, 3072, 3328, 3584 | 2500, 2560, 2816, 3072, 3328, 3584, 3840, 4096 | 3000, 3072, 3328, 3584, 3840, 4096 |
-| Memóriában tárolt OLTP-tárolók maximális száma (GB) | – | – | – | – | – |
+| Memóriában tárolt OLTP-tárolók maximális száma (GB) | N/A | N/A | N/A | N/A | N/A |
 | Adatbázisok maximális száma készletenként | 500 | 500 | 500 | 500 | 500 |
 | Egyidejű feldolgozók (kérelmek) maximális száma készletenként | 2400 | 3200 | 4000 | 5000 | 6000 |
 | Egyidejű munkamenetek maximális száma készletenként | 30000 | 30000 | 30000 | 30000 | 30000 |

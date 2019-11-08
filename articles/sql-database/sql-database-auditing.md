@@ -1,5 +1,5 @@
 ---
-title: Ismerkedés az Azure SQL Database naplózási szolgáltatásával
+title: Ismerkedés a naplózással
 description: Az Azure SQL Database naplózási szolgáltatásával követheti nyomon az adatbázis-eseményeket egy naplóban.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: barmichal
 ms.author: mibar
 ms.reviewer: vanto
 ms.date: 08/22/2019
-ms.openlocfilehash: 9a154e677a7308553bbef16837efae39006d3dae
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 65d092b36ed0e339a77bb423f24079caae38ab84
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73691194"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73821974"
 ---
 # <a name="get-started-with-sql-database-auditing"></a>Ismerkedés az SQL-adatbázis naplózási szolgáltatásával
 
@@ -167,7 +167,7 @@ Ha úgy döntött, hogy naplózza a naplókat egy Azure Storage-fiókba, a napl�
 
        ![Navigációs ablaktábla][8]
 
-- A System Function **sys. fn_get_audit_file** (T-SQL) használatával táblázatos formátumban visszaküldheti a naplózási adatokat. További információ a függvény használatáról: [sys. fn_get_audit_file](https://docs.microsoft.com/sql/relational-databases/system-functions/sys-fn-get-audit-file-transact-sql).
+- Használja a System Function **sys. fn_get_audit_file** (T-SQL) függvényt a naplózott adat táblázatos formátumban való visszaküldéséhez. További információ a függvény használatáról: [sys. fn_get_audit_file](https://docs.microsoft.com/sql/relational-databases/system-functions/sys-fn-get-audit-file-transact-sql).
 
 - A **naplófájlok egyesítése** SQL Server Management Studio (a SSMS 17-től kezdődően):
     1. A SSMS menüben válassza a **fájl** ** > a** naplófájlok **egyesítése** > a naplófájlok egyesítése lehetőséget.
@@ -225,7 +225,7 @@ A földrajzilag replikált adatbázisok esetében, ha engedélyezi a naplózást
 - A naplózási formátumra, a tárolási mappa hierarchiájának és az elnevezési konvenciók részleteiért tekintse meg a [blob naplózási napló formátumának referenciáját](https://go.microsoft.com/fwlink/?linkid=829599).
 
     > [!IMPORTANT]
-    > Azure SQL Database naplózási szolgáltatás 4000 karakterből álló karaktert tárol egy naplózási rekordban. Ha egy auditálható művelet által visszaadott **utasítás** vagy **data_sensitivity_information** -érték több mint 4000 karaktert tartalmaz, a rendszer az első 4000 karakternél nagyobb értéket **csonkít, és nem naplózza**.
+    > Azure SQL Database naplózási szolgáltatás 4000 karakterből álló karaktert tárol egy naplózási rekordban. Ha egy auditálható művelet által visszaadott **utasítás** vagy **data_sensitivity_information** értéke több mint 4000 karakterből áll, az első 4000 karakternél hosszabb adatok csonkítva lesznek, **és nem lesznek naplózva**.
 
 - A naplók az Azure-előfizetéshez tartozó Azure Blob-tárolóban lévő **Blobok hozzáfűzésére** vannak írva:
   - A hozzáfűzési Blobok jelenleg **nem támogatják** a **Premium Storage** .

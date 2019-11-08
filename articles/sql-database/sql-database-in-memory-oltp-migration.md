@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: MightyPen
 ms.date: 11/07/2018
-ms.openlocfilehash: 82b24b51a103d31bf20bbb7a9fc304095be523d5
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 0f10936867c101c07cc8d29d68dc45021bfad1b3
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73689840"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73810291"
 ---
 # <a name="use-in-memory-oltp-to-improve-your-application-performance-in-sql-database"></a>A memóriában tárolt OLTP használatával javíthatja az alkalmazások teljesítményét SQL Database
 
@@ -96,7 +96,7 @@ Az áttelepítési lehetőség használata:
    * Kattintson a **parancsfájl-táblázat** > Létrehozás elemre **az** **új lekérdezési ablak** > éhez.
 3. A parancsfájl ablakban adja hozzá a (MEMORY_OPTIMIZED = ON) parancsot a CREATE TABLE utasításhoz.
 4. FÜRTÖZÖTT index esetén módosítsa azt nem FÜRTÖZÖTT értékre.
-5. Nevezze át a meglévő táblázatot a SP_RENAME használatával.
+5. Nevezze át a meglévő táblát SP_RENAME használatával.
 6. Hozza létre a tábla új, memóriára optimalizált példányát a szerkesztett CREATE TABLE szkript futtatásával.
 7. Másolja az adatait a memóriára optimalizált táblába INSERT... VÁLASSZA KI A * ELEMET:
 
@@ -147,7 +147,7 @@ Az áttelepítési lépések a következők:
 3. Győződjön meg arról, hogy a T-SQL-kód tárolt eljárása olyan funkciókat használ, amelyek nem támogatottak a natív módon lefordított tárolt eljárásokhoz. Szükség esetén hajtsa végre a megkerülő megoldásokat.
    
    * Részletekért lásd: [a natív módon lefordított tárolt eljárások áttelepítési problémái](https://msdn.microsoft.com/library/dn296678.aspx).
-4. Nevezze át a régi tárolt eljárást a SP_RENAME használatával. Vagy egyszerűen dobja el.
+4. Nevezze át a régi tárolt eljárást SP_RENAME használatával. Vagy egyszerűen dobja el.
 5. Futtassa a szerkesztett CREATE PROCEDURE T-SQL-szkriptet.
 
 ## <a name="step-6-run-your-workload-in-test"></a>6\. lépés: a számítási feladatok futtatása a tesztben

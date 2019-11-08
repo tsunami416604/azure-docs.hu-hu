@@ -1,5 +1,5 @@
 ---
-title: Azure SQL Database virtuális mag költségeinek megtakarítása
+title: Költségek megtakarítása
 description: Megtudhatja, hogyan vásárolhat Azure SQL Database fenntartott kapacitást a számítási költségek mentéséhez.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: sstein, carlrab
 ms.date: 08/29/2019
-ms.openlocfilehash: 70e274d765b409d4024155f8553ba92200598394
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 52a3665da99ca9885c57db1a2779dc6ce4dbec21
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73687519"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73821178"
 ---
 # <a name="save-costs-for-sql-database-compute-resources-with-azure-sql-database-reserved-capacity"></a>SQL Database számítási erőforrások költségeinek megtakarítása Azure SQL Database fenntartott kapacitással
 
@@ -75,7 +75,7 @@ a virtuális mag méretének rugalmassága segít a teljesítmény-és a régió
 
 Nem foglalhat le DTU-alapú (alapszintű, standard vagy prémium) SQL-adatbázisokat.
 
-## <a name="need-help-contact-us"></a>Segítség Kapcsolat
+## <a name="need-help-contact-us"></a>Segítségre van szüksége? Kapcsolat
 
 Ha kérdése van vagy segítségre van szüksége, [hozzon létre egy támogatási kérést](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
 

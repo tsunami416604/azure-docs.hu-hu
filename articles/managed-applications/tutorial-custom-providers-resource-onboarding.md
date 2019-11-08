@@ -7,29 +7,29 @@ ms.topic: tutorial
 ms.author: jobreen
 author: jjbfour
 ms.date: 09/17/2019
-ms.openlocfilehash: c722b4dc3219f76f8c7c571af3613996fec9e69c
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 45086987d5ba3a619028ced798712f2870c6d487
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73608679"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73826785"
 ---
 # <a name="tutorial-resource-onboarding-with-azure-custom-providers"></a>Oktatóanyag: erőforrás-előkészítés az Azure egyéni szolgáltatókkal
 
-Ez az oktatóanyag egy egyéni erőforrás-szolgáltatót helyez üzembe az Azure-ban, amely kiterjeszti a Azure Resource Manager API-t a "Microsoft. CustomProviders/Associations" erőforrás-típussal. Ez a minta azt mutatja be, hogyan terjeszthető ki az erőforráscsoport azon erőforrásain kívüli meglévő erőforrások, amelyeken az egyéni szolgáltató példánya él. Ebben a példában az egyéni erőforrás-szolgáltatót egy Azure logikai alkalmazás működteti, de a nyilvános API-végpontok is használhatók.
+Ebben az oktatóanyagban egy egyéni erőforrás-szolgáltatót helyez üzembe az Azure-ban, amely kibővíti a Azure Resource Manager API-t a Microsoft. CustomProviders/társítások erőforrás-típussal. Az oktatóanyag bemutatja, hogyan terjeszthető ki az erőforráscsoport azon erőforrásain kívüli meglévő erőforrások, amelyeken az egyéni szolgáltatói példány található. Ebben az oktatóanyagban az egyéni erőforrás-szolgáltatót egy Azure logikai alkalmazás működteti, de bármilyen nyilvános API-végpontot használhat.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 Az oktatóanyag elvégzéséhez ismernie kell a következőket:
 
-* Az [Azure egyéni szolgáltatói](custom-providers-overview.md) képességei.
-* [Erőforrás-előkészítés egyéni szolgáltatókkal](concepts-custom-providers-resourceonboarding.md).
+* Az [Egyéni Azure-szolgáltatók](custom-providers-overview.md)képességei.
+* Alapszintű információk az erőforrás-előkészítés [Egyéni szolgáltatókkal való](concepts-custom-providers-resourceonboarding.md)bevezetéséről.
 
-## <a name="getting-started-with-resource-onboarding"></a>Az erőforrás-előkészítés első lépései
+## <a name="get-started-with-resource-onboarding"></a>Ismerkedés az erőforrás-előkészítéssel
 
-Ebben a példában két darabot kell telepíteni: az egyéni szolgáltatót és a társítást. A minta leegyszerűsítése érdekében egyetlen sablon is van, amely egyszerre telepíthető.
+Ebben az oktatóanyagban két darabot kell telepíteni: az egyéni szolgáltatót és a társítást. A folyamat megkönnyítése érdekében igény szerint egyetlen sablont is használhat, amely mindkettőt üzembe helyezi.
 
-A sablon a következő erőforrások használatát teszi elérhetővé:
+A sablon ezeket az erőforrásokat fogja használni:
 
 * Microsoft. CustomProviders/resourceProviders
 * Microsoft. Logic/munkafolyamatok
@@ -207,89 +207,87 @@ A sablon a következő erőforrások használatát teszi elérhetővé:
 
 ### <a name="deploy-the-custom-provider-infrastructure"></a>Az egyéni szolgáltatói infrastruktúra üzembe helyezése
 
-A sablon első része az egyéni szolgáltatói infrastruktúra üzembe helyezése. Ez az infrastruktúra határozza meg a "társítások" erőforrás hatását. Ha nem ismeri az egyéni szolgáltatókat, tekintse meg az [egyéni szolgáltató alapjai](custom-providers-overview.md)című témakört.
+A sablon első része az egyéni szolgáltatói infrastruktúrát telepíti. Ez az infrastruktúra határozza meg a társítások erőforrásának hatását. Ha még nem ismeri az egyéni szolgáltatókat, tekintse meg az [egyéni szolgáltató alapjai](custom-providers-overview.md)című témakört.
 
-Üzembe helyezheti az egyéni szolgáltatói infrastruktúrát, vagy másolhatja, mentheti és telepítheti a fenti sablont, vagy követheti és telepítheti a Azure Portal.
+Üzembe helyezzük az egyéni szolgáltatói infrastruktúrát. Másolja, mentse és telepítse az előző sablont, vagy kövesse az infrastruktúra következő lépéseit, és telepítse az infrastruktúrát a Azure Portal használatával.
 
-1. Nyissa meg a Azure Portalt https://portal.azure.com.
+1. Nyissa meg az [Azure Portal](https://portal.azure.com).
 
-2. Keressen rá a "sablonok" kifejezésre `All Services` vagy a középső keresősáv. 
+2. A **sablonok** keresése az **összes szolgáltatásban** vagy a fő keresőmező használatával:
 
-![Sablon keresése](media/custom-providers-resource-onboarding/templates.png)
+   ![Sablonok keresése](media/custom-providers-resource-onboarding/templates.png)
 
-3. A "sablonok" panel bal felső részén kattintson a `+ Add` gombra.
+3. Válassza a **Hozzáadás** lehetőséget a **sablonok** ablaktáblán:
 
-![Sablon hozzáadása új](media/custom-providers-resource-onboarding/templatesadd.png)
+   ![Hozzáadás kiválasztása](media/custom-providers-resource-onboarding/templatesadd.png)
 
-4. Töltse ki a "Name" és a "Description" mezőket az "általános" területen az új sablonhoz.
+4. Az **általános**területen adja meg az új sablon **nevét** és **leírását** :
 
-![Sablon neve és leírása](media/custom-providers-resource-onboarding/templatesdescription.png)
+   ![Sablon neve és leírása](media/custom-providers-resource-onboarding/templatesdescription.png)
 
-5. A Resource Manager-sablon kitöltéséhez másolja a JSON-sablont az "első lépések az erőforrás-előkészítéssel" című részből.
+5. Hozzon létre egy Resource Manager-sablont a jelen cikk "az erőforrások bevezetésének első lépései" című szakaszának JSON-sablonban történő másolásával:
 
-![Töltse ki a Resource Manager-sablont](media/custom-providers-resource-onboarding/templatesarmtemplate.png)
+   ![Resource Manager-sablon létrehozása](media/custom-providers-resource-onboarding/templatesarmtemplate.png)
 
-6. Új sablon létrehozásához nyomja meg a `Add` gombot. Ha az új sablon nem jelenik meg, nyomja meg `Refresh`.
+6. A sablon létrehozásához válassza a **Hozzáadás** lehetőséget. Ha az új sablon nem jelenik meg, válassza a **frissítés**lehetőséget.
 
-7. Válassza ki az újonnan létrehozott sablont, és nyomja le a `Deploy` gombot.
+7. Válassza ki az újonnan létrehozott sablont, majd válassza a **telepítés**lehetőséget:
 
-![Az újonnan létrehozott sablon kiválasztása és üzembe helyezése](media/custom-providers-resource-onboarding/templateselectspecific.png)
+   ![Válassza ki az új sablont, majd válassza a telepítés lehetőséget.](media/custom-providers-resource-onboarding/templateselectspecific.png)
 
-8. Adja meg a kötelező mezők beállítási paramétereit, és válassza ki az előfizetést és az erőforráscsoportot. Az "egyéni erőforrás-szolgáltató azonosítója" nem maradhat üresen.
+8. Adja meg a kötelező mezők beállításait, majd válassza ki az előfizetést és az erőforráscsoportot. Az **egyéni erőforrás-szolgáltató azonosítója** mezőt üresen hagyhatja.
 
-| Beállítás neve | Kötelező | Leírás |
-| ------------ | -------- | ----------- |
-| Hely | *igen* | A sablon erőforrásainak helye. |
-| Logikai alkalmazás neve | *nem* | A logikai alkalmazás neve. |
-| Egyéni erőforrás-szolgáltató neve | *nem* | Az egyéni erőforrás-szolgáltató neve. |
-| Egyéni erőforrás-szolgáltató azonosítója | *nem* | Egy meglévő egyéni erőforrás-szolgáltató, amely támogatja a "társítás" erőforrást. A beállítás megadásával kihagyja a logikai alkalmazást és az egyéni szolgáltató telepítését. |
-| Társítás neve | *nem* | A társítási erőforrás neve. |
+   | Beállítás neve | Kötelező? | Leírás |
+   | ------------ | -------- | ----------- |
+   | Hely | Igen | A sablon erőforrásainak helye. |
+   | Logikai alkalmazás neve | Nem | A logikai alkalmazás neve. |
+   | Egyéni erőforrás-szolgáltató neve | Nem | Az egyéni erőforrás-szolgáltató neve. |
+   | Egyéni erőforrás-szolgáltató azonosítója | Nem | Egy meglévő egyéni erőforrás-szolgáltató, amely támogatja a társítási erőforrást. Ha itt értéket ad meg, a rendszer kihagyja a logikai alkalmazást és az egyéni szolgáltató üzembe helyezését. |
+   | Társítás neve | Nem | A társítási erőforrás neve. |
 
-Minta paramétereinek:
+   Minta paramétereinek:
 
-![Bemeneti sablon paraméterei](media/custom-providers-resource-onboarding/templatescustomprovider.png)
+   ![Adja meg a sablon paramétereit](media/custom-providers-resource-onboarding/templatescustomprovider.png)
 
-9. Navigáljon a központi telepítéshez, és várjon, amíg befejeződik. A sikeres megjelenítésnek és az új "társítás" erőforrás kimenetének kell megjelennie.
+9. Nyissa meg a központi telepítést, és várjon, amíg befejeződik. A következő képernyőképhez hasonlóan kell megjelennie. Az új társítási erőforrásnak kimenetként kell megjelennie:
 
-Sikeres üzembe helyezés:
+   ![Sikeres üzembe helyezés](media/custom-providers-resource-onboarding/customproviderdeployment.png)
 
-![Egyéni szolgáltató üzembe helyezése](media/custom-providers-resource-onboarding/customproviderdeployment.png)
+   Itt található az erőforráscsoport, a **rejtett típusok megjelenítése** beállítással:
 
-Erőforráscsoport "rejtett típusok megjelenítése":
+   ![Egyéni szolgáltató üzembe helyezése](media/custom-providers-resource-onboarding/showhidden.png)
 
-![Egyéni szolgáltató üzembe helyezése](media/custom-providers-resource-onboarding/showhidden.png)
+10. Fedezze fel a logikai alkalmazás **futtatási előzményei** lapot, ahol megtekintheti a társítások létrehozásához szükséges hívásokat:
 
-10. A "társítás" létrehozásával kapcsolatban tekintse meg a logikai alkalmazás "futtatási előzmények" lapját.
-
-![Logikai alkalmazás futtatási előzményei](media/custom-providers-resource-onboarding/logicapprun.png)
+    ![A Logic app-futtatások előzményei](media/custom-providers-resource-onboarding/logicapprun.png)
 
 ## <a name="deploy-additional-associations"></a>További társítások telepítése
 
-Az egyéni szolgáltatói infrastruktúra beállítása után egyszerűen üzembe helyezhetők a további "társítások". A további "társítások" erőforráscsoport esetében nem kell megegyeznie az egyéni szolgáltatói infrastruktúra üzembe helyezéséhez használt erőforrás-csoporttal. Társítás létrehozásához a "Microsoft. CustomProviders/resourceproviders/Write" engedélyekre van szükség a megadott "egyéni erőforrás-szolgáltató azonosítója" esetén.
+Miután beállította az egyéni szolgáltatói infrastruktúrát, egyszerűen üzembe helyezhet több társítást. A további társítások erőforráscsoporthoz nem kell megegyeznie az egyéni szolgáltatói infrastruktúrát üzembe helyező erőforráscsoporthoz. Társítás létrehozásához Microsoft. CustomProviders/resourceproviders/Write engedélyekkel kell rendelkeznie a megadott egyéni erőforrás-szolgáltatói AZONOSÍTÓhoz.
 
-1. Navigáljon a "Microsoft. CustomProviders/resourceProviders" egyéni szolgáltatói erőforráshoz az előző üzemelő példány erőforráscsoporthoz. A "rejtett típusok megjelenítése" jelölőnégyzetet ki kell jelölni.
+1. Nyissa meg a **Microsoft. CustomProviders/resourceProviders** erőforrást az előző üzemelő példány erőforráscsoporthoz. Be kell jelölnie a **rejtett típusok megjelenítése** jelölőnégyzetet:
 
-![Egyéni szolgáltató üzembe helyezése](media/custom-providers-resource-onboarding/showhidden.png)
+   ![Ugrás az erőforráshoz](media/custom-providers-resource-onboarding/showhidden.png)
 
-2. Másolja az egyéni szolgáltató "erőforrás-azonosító" tulajdonságát.
+2. Másolja az egyéni szolgáltató erőforrás-azonosító tulajdonságát.
 
-3. Keressen rá a "sablonok" kifejezésre `All Services` vagy a középső keresősáv. 
+3. A **sablonok** keresése az **összes szolgáltatásban** vagy a fő keresőmező használatával:
 
-![Sablon keresése](media/custom-providers-resource-onboarding/templates.png)
+   ![Sablonok keresése](media/custom-providers-resource-onboarding/templates.png)
 
-4. Válassza ki a korábban létrehozott sablont, és nyomja le a `Deploy` gombot.
+4. Válassza ki a korábban létrehozott sablont, majd válassza a **telepítés**lehetőséget:
 
-![A korábban létrehozott sablon kiválasztása és üzembe helyezése](media/custom-providers-resource-onboarding/templateselectspecific.png)
+   ![Válassza ki a korábban létrehozott sablont, majd válassza a telepítés lehetőséget.](media/custom-providers-resource-onboarding/templateselectspecific.png)
 
-5. Adja meg a kötelező mezők beállítási paramétereit, és válassza ki az előfizetést és egy másik erőforráscsoportot. Az "egyéni erőforrás-szolgáltató azonosítója" beállításnál adja meg a korábban telepített egyéni szolgáltató "erőforrás-AZONOSÍTÓját".
+5. Adja meg a kötelező mezők beállításait, majd válassza ki az előfizetést és egy másik erőforráscsoportot. Az **egyéni erőforrás-szolgáltató azonosítója** beállításnál adja meg azt az erőforrás-azonosítót, amelyet a korábban telepített egyéni szolgáltatótól másolt.
 
-6. Navigáljon a központi telepítéshez, és várjon, amíg befejeződik. Most csak az új "társítások" erőforrást kell üzembe helyezni.
+6. Nyissa meg a központi telepítést, és várjon, amíg befejeződik. Most csak az új társítási erőforrást kell telepítenie:
 
-![Létrehozott társítás](media/custom-providers-resource-onboarding/createdassociationresource.png)
+   ![Új társítások erőforrás](media/custom-providers-resource-onboarding/createdassociationresource.png)
 
-Igény szerint visszatérhet a logikai alkalmazás "futtatási előzmények" lapjára, és láthatja, hogy a logikai alkalmazásnak egy másik hívása történt. A logikai alkalmazás frissíthető az egyes létrehozott társítások további funkcióinak bővítéséhez.
+Ha szeretné, térjen vissza a logikai alkalmazás **futtatási előzményeihez** , és tekintse meg, hogy a logikai alkalmazásnak van-e másik hívása. A logikai alkalmazás frissítésével további funkciókat is kibővítheti az egyes létrehozott társításokhoz.
 
-## <a name="looking-for-help"></a>Segítség keresése
+## <a name="getting-help"></a>Segítség kérése
 
-Ha kérdése van az egyéni Azure-szolgáltatókkal kapcsolatban, próbálja meg megkérdezni [stack overflow](http://stackoverflow.com/questions/tagged/azure-custom-providers). Előfordulhat, hogy egy hasonló kérdést már megtettek és megválaszoltak, ezért először A feladás előtt érdemes megnézni. A címke `azure-custom-providers` hozzáadásával gyorsan választ kaphat!
+Ha kérdése van az egyéni Azure-szolgáltatókkal kapcsolatban, próbálja meg megkérdezni őket [stack Overflowon](http://stackoverflow.com/questions/tagged/azure-custom-providers). Egy hasonló kérdés megválaszolása már megtörtént, ezért először A feladás előtt érdemes megnéznie. A címke `azure-custom-providers` hozzáadásával gyorsan választ kaphat!
 

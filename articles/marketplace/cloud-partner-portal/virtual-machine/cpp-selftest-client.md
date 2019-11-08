@@ -4,15 +4,16 @@ description: Önteszt ügyfél létrehozása az Azure Marketplace-hez készült 
 services: Azure, Marketplace, Cloud Partner Portal, Virtual Machine
 author: dan-wesley
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 01/23/2018
 ms.author: pabutler
-ms.openlocfilehash: 46923ecd33a054a36aa6900a415d0b563e5afff0
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: fc62875873f38630e592c79aebd6a138665ed6e4
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73163256"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73809215"
 ---
 # <a name="create-a-self-test-client-to-pre-validate-an-azure-virtual-machine-image"></a>Önteszt ügyfél létrehozása Azure-beli virtuális gépek rendszerképének előzetes érvényesítéséhez
 
@@ -99,7 +100,7 @@ $Body = @{
     "CompanyName" = "ABCD"
 
 } | ConvertTo-Json
-$res = Invoke-WebRequest -Method "Post" -Uri $uri -Body $Body -ContentType "application/json" –Headers $headers;
+$res = Invoke-WebRequest -Method "Post" -Uri $uri -Body $Body -ContentType "application/json" -Headers $headers;
 $Content = $res | ConvertFrom-Json
 ```
 Az alábbi képernyőfelvételen egy példa látható az API PowerShellben való meghívására.
@@ -109,7 +110,7 @@ Az alábbi képernyőfelvételen egy példa látható az API PowerShellben való
 Az előző példa használatával lekérheti a JSON-t, és elemezheti a következő részletek beszerzéséhez:
 
 ```powershell
-$testresult = ConvertFrom-Json –InputObject (ConvertFrom-Json –InputObject $res)
+$testresult = ConvertFrom-Json -InputObject (ConvertFrom-Json -InputObject $res)
 
   Write-Host "OSName: $($testresult.OSName)"
   Write-Host "OSVersion: $($testresult.OSVersion)"
@@ -144,7 +145,7 @@ Az API PowerShellben való meghívásához kövesse az alábbi lépéseket:
 Az alábbi kódrészlet egy PowerShell-hívást mutat be az API-nak.
 
 ```powershell
-$accesstoken = “Get token for your Client AAD App”
+$accesstoken = "Get token for your Client AAD App"
 $headers = New-Object "System.Collections.Generic.Dictionary[[String],[String]]"
 $headers.Add("Authorization", "Bearer $accesstoken")
 $Body = @{
@@ -156,7 +157,7 @@ $Body = @{
     "CompanyName" = "ABCD"
 
 } | ConvertTo-Json
-$res = Invoke-WebRequest -Method "Post" -Uri $uri -Body $Body -ContentType "application/json" –Headers $headers;
+$res = Invoke-WebRequest -Method "Post" -Uri $uri -Body $Body -ContentType "application/json" -Headers $headers;
 $Content = $res | ConvertFrom-Json
 ```
 
@@ -167,7 +168,7 @@ Az alábbi képernyőfelvételen egy példa látható az API PowerShellben való
 Az előző példa használatával lekérheti a JSON-t, és elemezheti a következő részletek beszerzéséhez:
 
 ```powershell
-$testresult = ConvertFrom-Json –InputObject (ConvertFrom-Json –InputObject $res)
+$testresult = ConvertFrom-Json -InputObject (ConvertFrom-Json -InputObject $res)
 
   Write-Host "OSName: $($testresult.OSName)"
   Write-Host "OSVersion: $($testresult.OSVersion)"
@@ -245,9 +246,9 @@ Az ügyfélalkalmazás regisztrálásához kövesse az alábbi lépéseket.
 2. A **Alkalmazásregisztrációk**területen válassza az **+ új alkalmazás regisztrálása**lehetőséget.
 3. A **Létrehozás**területen adja meg a következő mezőkhöz szükséges adatokat:
 
-   - **Név** – adjon meg egy felhasználóbarát nevet az alkalmazásnak. Például: "SelfTestClient".
-   - **Alkalmazás típusa** – a **Web App/API** kiválasztása
-   - **Bejelentkezési URL-cím** – típus: "https:\//isvapp.azurewebsites.net/selftest-VM"
+   - **Név** – adjon meg egy rövid nevet az alkalmazás számára. Például: "SelfTestClient".
+   - **Alkalmazás típusa** – **Web App/API** kiválasztása
+   - **Bejelentkezési URL-cím** – "https:\//isvapp.azurewebsites.net/selftest-VM"
 
 4. Kattintson a **Létrehozás** gombra.
 5. Az **Alkalmazásregisztrációk** vagy a **regisztrált alkalmazás**területen másolja az **alkalmazás azonosítóját**.
@@ -377,7 +378,7 @@ Ahhoz, hogy Auth0 kérdezzen a jogkivonatok bármelyikének a jogosult alkalmaz�
 
 ```powershell
 $clientId = "Application Id of AD Client APP";
-$clientSecret = "Secret Key of AD Client APP “
+$clientSecret = "Secret Key of AD Client APP "
 $audience = "https://management.core.windows.net";
 $authority = "https://login.microsoftonline.com/common/oauth2/token"
 $grantType = "client_credentials";
@@ -397,8 +398,8 @@ $token.AccessToken
 Adja át a jogkivonatot az önteszt API-nak az alábbi kód használatával az engedélyezési fejlécben:
 
 ```powershell
-$redirectUri = ‘https://isvapp.azurewebsites.net/selftest-vm’
-$accesstoken = ‘place your token here’
+$redirectUri = 'https://isvapp.azurewebsites.net/selftest-vm'
+$accesstoken = 'place your token here'
 
 $headers = New-Object "System.Collections.Generic.Dictionary[[String],[String]]"
 $headers.Add("Authorization", "Bearer $accesstoken")
@@ -507,6 +508,6 @@ A következő kódrészletek a teszt eredményét JSON formátumban jelenítik m
     },
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az Azure-beli virtuális gép sikeres tesztelése után közzé teheti [az ajánlatot](./cpp-publish-offer.md).

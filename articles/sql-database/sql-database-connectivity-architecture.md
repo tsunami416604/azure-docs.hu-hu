@@ -1,22 +1,23 @@
 ---
-title: Azure SQL Database és SQL Data Warehouse kapcsolati architektúra
+title: Kapcsolati architektúra
 description: Ez a dokumentum ismerteti az Azure SQL-kapcsolati architektúráját az Azure-on belüli vagy az Azure-on kívüli adatbázis-kapcsolatokhoz.
 services: sql-database
 ms.service: sql-database
 ms.subservice: development
 ms.custom: fasttrack-edit
+titleSuffix: Azure SQL Database and SQL Data Warehouse
 ms.devlang: ''
 ms.topic: conceptual
 author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: carlrab, vanto
 ms.date: 07/02/2019
-ms.openlocfilehash: d414276e081407af8ea21ebcbd96909d34455a22
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 2140216a27d9c903495da4f7b43f6fdfda62591e
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73690865"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73826911"
 ---
 # <a name="azure-sql-connectivity-architecture"></a>Azure SQL-kapcsolat architektúrája
 
@@ -96,12 +97,12 @@ A forgalom áttelepítésének részletei az egyes régiókban lévő új átjá
 | Délkelet-Ázsia      | 104.43.15.0, 23.100.117.95, 40.78.232.3   | 
 | Egyesült Arab Emírségek középső régiója          | 20.37.72.64        |
 | Egyesült Arab Emírségek északi régiója            | 65.52.248.0        |
-| Egyesült Királyság déli régiója             | 51.140.184.11      |
+| Az Egyesült Királyság déli régiója             | 51.140.184.11      |
 | Az Egyesült Királyság nyugati régiója              | 51.141.8.11        |
 | USA nyugati középső régiója      | 13.78.145.25       |
 | Nyugat-Európa          | 40.68.37.158, 191.237.232.75, 104.40.168.105  |
 | USA nyugati régiója              | 104.42.238.205, 23.99.34.75, 13.86.216.196   |
-| USA 2. nyugati régiója            | 13.66.226.202      |
+| USA nyugati régiója, 2.            | 13.66.226.202      |
 |                      |                    |
 
 ## <a name="change-azure-sql-database-connection-policy"></a>Azure SQL Databasei kapcsolatok házirendjének módosítása

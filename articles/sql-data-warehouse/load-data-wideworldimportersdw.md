@@ -11,12 +11,12 @@ ms.date: 07/17/2019
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: c59c5ba4e5447d01bb66b9f0ed2edcb948d34d40
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 5ae6844cf11ffa095f56c429e17b9c39ad0c76aa
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73693061"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73822918"
 ---
 # <a name="tutorial-load-data-to-azure-sql-data-warehouse"></a>Oktatóanyag: Adatok betöltése az Azure SQL Data Warehouse-ba
 
@@ -35,7 +35,7 @@ Ez az oktatóanyag a PolyBase segítségével tölti be a WideWorldImportersDW a
 
 Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
 
-## <a name="before-you-begin"></a>Előzetes teendők
+## <a name="before-you-begin"></a>Előkészületek
 
 Az oktatóanyag megkezdése előtt töltse le és telepítse az [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) (SSMS) legújabb verzióját.
 
@@ -61,7 +61,7 @@ Az alábbi lépéseket követve hozzon létre egy üres SQL Data Warehouse.
    | ------- | --------------- | ----------- | 
    | **Adatbázis neve** | SampleDW | Az érvényes adatbázisnevekkel kapcsolatban lásd az [adatbázis-azonosítókat](/sql/relational-databases/databases/database-identifiers) ismertető cikket. | 
    | **Előfizetés** | Az Ön előfizetése  | Az előfizetései részleteivel kapcsolatban lásd az [előfizetéseket](https://account.windowsazure.com/Subscriptions) ismertető cikket. |
-   | **Erőforráscsoport** | SampleRG | Az érvényes erőforráscsoport-nevekkel kapcsolatban lásd az [elnevezési szabályokat és korlátozásokat](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions) ismertető cikket. |
+   | **Erőforráscsoport** | SampleRG | Az érvényes erőforráscsoport-nevekkel kapcsolatban lásd az [elnevezési szabályokat és korlátozásokat](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging) ismertető cikket. |
    | **Forrás kiválasztása** | Üres adatbázis | Megköveteli egy üres adatbázis létrehozását. Megjegyzés: Az adattárház az adatbázisok egy típusa.|
 
     ![adattárház létrehozása](media/load-data-wideworldimportersdw/create-data-warehouse.png)
@@ -70,7 +70,7 @@ Az alábbi lépéseket követve hozzon létre egy üres SQL Data Warehouse.
 
     | Beállítás | Ajánlott érték | Leírás | 
     | ------- | --------------- | ----------- |
-    | **Kiszolgálónév** | Bármely globálisan egyedi név | Az érvényes kiszolgálónevekkel kapcsolatban lásd az [elnevezési szabályokat és korlátozásokat](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions) ismertető cikket. | 
+    | **Kiszolgálónév** | Bármely globálisan egyedi név | Az érvényes kiszolgálónevekkel kapcsolatban lásd az [elnevezési szabályokat és korlátozásokat](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging) ismertető cikket. | 
     | **Kiszolgálói rendszergazdai bejelentkezés** | Bármely érvényes név | Az érvényes bejelentkezési nevekkel kapcsolatban lásd az [adatbázis-azonosítókat](https://docs.microsoft.com/sql/relational-databases/databases/database-identifiers) ismertető cikket.|
     | **Jelszó** | Bármely érvényes jelszó | A jelszónak legalább nyolc karakter hosszúságúnak kell lennie, és tartalmaznia kell karaktereket a következő kategóriák közül legalább háromból: nagybetűs karakterek, kisbetűs karakterek, számjegyek és nem alfanumerikus karakterek. |
     | **Hely** | Bármely érvényes hely | A régiókkal kapcsolatos információkért lásd [az Azure régióit](https://azure.microsoft.com/regions/) ismertető cikket. |
@@ -751,7 +751,7 @@ Ez a parancsfájl nem tölti be az adatbevitelt az első világháború. dimensi
 
 ## <a name="create-tables-and-procedures-to-generate-the-date-and-sales-tables"></a>Táblák és eljárások létrehozása a Date és Sales táblák létrehozásához
 
-Ez a szakasz létrehozza az első világháború. dimension_Date és az első világháború. fact_Sale táblákat. Emellett olyan tárolt eljárásokat is létrehoz, amelyek több millió sort hozhatnak létre az első világháború. dimension_Date és az első világháború. fact_Sale tábláiban.
+Ez a szakasz létrehozza az első világháború. dimension_Date és az első világháború. fact_Sale táblákat. Emellett olyan tárolt eljárásokat is létrehoz, amelyek több millió sort hozhatnak létre az első világháború. dimension_Date és az első világháború. fact_Sale táblákban.
 
 1. Hozza létre a dimension_Date és a fact_Sale táblát.  
 
@@ -950,7 +950,7 @@ Ez a szakasz létrehozza az első világháború. dimension_Date és az első vi
     ```
 
 ## <a name="generate-millions-of-rows"></a>Sorok millióinak előállítása
-A létrehozott tárolt eljárások segítségével több millió sort hozhat létre az első világháború. fact_Sale táblában, valamint az első világháború. dimension_Date táblában található megfelelő adatmennyiséget. 
+A létrehozott tárolt eljárások segítségével több millió sort hozhat létre az első világháború. fact_Sale táblázatban, valamint az első világháború. dimension_Date táblában található megfelelő értékekkel. 
 
 
 1. Futtassa ezt az eljárást, hogy a [wwi].[seed_Sale] további sorokkal töltődjön fel.
@@ -959,7 +959,7 @@ A létrehozott tárolt eljárások segítségével több millió sort hozhat lé
     EXEC [wwi].[InitialSalesDataPopulation]
     ```
 
-2. Futtassa ezt az eljárást az első lépések megtételéhez a 100 000-as számú, a 2000-es év minden napján napi sorral.
+2. Futtassa ezt az eljárást az fact_Sale első lépések elvégzéséhez a 100 000-as számú napon belül, a 2000-as év minden napján.
 
     ```sql
     EXEC [wwi].[Configuration_PopulateLargeSaleTable] 100000, 2000

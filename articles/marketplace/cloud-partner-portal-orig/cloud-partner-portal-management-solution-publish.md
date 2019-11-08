@@ -1,22 +1,23 @@
 ---
-title: Az Azure piactéren közzétehető egy Azure-kezelési megoldást
-description: Az Azure piactéren közzétehető egy Azure-kezelési megoldást
+title: Azure-beli felügyeleti megoldás közzététele az Azure Marketplace-en
+description: Azure-beli felügyeleti megoldás közzététele az Azure Marketplace-en
 services: Azure, Marketplace, Cloud Partner Portal,
 author: qianw211
 manager: pbutlerm
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pabutler
-ms.openlocfilehash: e8ed19d9e90aa0551d8996ddc9a4cba3bc338056
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0d1ba2c95a4f7babe0aca2bda82658e8ada1d983
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64935082"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73819567"
 ---
-<a name="publish-an-azure-management-solution-to-azure-marketplace"></a>Az Azure piactéren közzétehető egy Azure-kezelési megoldást 
+<a name="publish-an-azure-management-solution-to-azure-marketplace"></a>Azure-beli felügyeleti megoldás közzététele az Azure Marketplace-en 
 ========================================================
 
 > [!IMPORTANT]
-> Ez a Termékváltozat-beállítás jelenleg előzetes verzióban érhető el, és még nem érhető el általános használatra. Ne használjon, ha már irányított a Microsoft által.
+> Ez az SKU-lehetőség jelenleg előzetes verzióban érhető el, és az általános használatra még nem használható. Csak akkor használja, ha a Microsoft nem utasította el.

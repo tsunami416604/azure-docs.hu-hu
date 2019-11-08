@@ -1,5 +1,5 @@
 ---
-title: Felügyelt példányok biztonságának Azure SQL Databasee az Azure AD-kiszolgáló rendszerbiztonsági feladataival (bejelentkezések)
+title: Felügyelt példányok biztonsága az Azure AD-kiszolgáló rendszerbiztonsági azonosítójával (bejelentkezések)
 description: Ismerje meg a Azure SQL Database felügyelt példányainak biztonságossá tételéhez szükséges technikákat és szolgáltatásokat, valamint az Azure AD Server-rendszerbiztonsági tag (bejelentkezések) használatát
 services: sql-database
 ms.service: sql-database
@@ -9,12 +9,12 @@ author: GitHubMirek
 ms.author: mireks
 ms.reviewer: vanto
 ms.date: 11/06/2019
-ms.openlocfilehash: 4816b59c56f10a20f74777ad1badc11b59a599d1
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: bd65a21c2aa21643c76966410931949db7d17ad6
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73689455"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73822785"
 ---
 # <a name="tutorial-managed-instance-security-in-azure-sql-database-using-azure-ad-server-principals-logins"></a>Oktatóanyag: felügyelt példányok biztonsága Azure SQL Database az Azure AD-kiszolgáló résztvevői (bejelentkezések) használatával
 
@@ -258,7 +258,7 @@ További információ az adatbázis-engedélyek megadásáról: [első lépések
     A **mygroup** -hez tartozó összes felhasználó hozzáférhet a **MyMITestDB** -adatbázishoz.
 
     > [!IMPORTANT]
-    > Amikor létrehoz egy felhasználót egy Azure AD-kiszolgálói rendszerbiztonsági tag (login) alapján, a **felhasználónévvel** azonos login_name kell megadnia a **bejelentkezéshez**.
+    > Amikor egy **felhasználót** egy Azure ad-kiszolgáló rendszerbiztonsági tagja (login) alapján hoz létre, a **bejelentkezéshez**ugyanazt a login_name kell megadnia a user_name.
 
     További információt a [felhasználó létrehozása](/sql/t-sql/statements/create-user-transact-sql?view=azuresqldb-mi-current)című témakörben talál.
 

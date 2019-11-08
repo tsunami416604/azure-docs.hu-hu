@@ -1,5 +1,5 @@
 ---
-title: Biztonsági adatok (előzetes verzió) beállítása a bejelentkezési parancssorból – Azure Active Directory | Microsoft Docs
+title: Biztonsági adatok (előzetes verzió) beállítása bejelentkezési kérésből – Azure AD
 description: A munkahelyi vagy iskolai fiók biztonsági adatainak beállítása, ha a rendszer kéri a szervezet bejelentkezési oldaláról.
 services: active-directory
 author: eross-msft
@@ -12,12 +12,12 @@ ms.topic: overview
 ms.date: 08/05/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e05515c2fd118c21f891be86fae6423affab0324
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 3ae1856c7934c658bd244445306b4bb78c666e38
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73160894"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73820286"
 ---
 # <a name="set-up-your-security-info-preview-from-the-sign-in-page-prompt"></a>A biztonsági adatok (előzetes verzió) beállítása a bejelentkezési oldal parancssorában
 
@@ -136,7 +136,7 @@ Az alkalmazások jelszavainak használatakor fontos megjegyezni:
 
     ![Alkalmazás jelszava lap, a befejezési megjegyzéssel](media/security-info/app-password-complete.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - A biztonsági adatok alapértelmezett módszereinek módosításához, törléséhez vagy frissítéséhez lásd:
 

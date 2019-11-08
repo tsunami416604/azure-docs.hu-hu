@@ -1,39 +1,40 @@
 ---
-title: Technikai információ a Power BI alkalmazás-ajánlat |} Az Azure Marketplace-en
-description: A Power BI alkalmazás ajánlat technikai információ mezők konfigurálása a Microsoft AppSource Marketplace.
+title: Power BI alkalmazás ajánlatának technikai információi | Azure piactér
+description: A Microsoft AppSource Marketplace Power BI alkalmazásra vonatkozó technikai információ mezőinek konfigurálása.
 services: Azure, AppSource, Marketplace, Cloud Partner Portal, Power BI
 author: v-miclar
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/24/2019
 ms.author: pabutler
-ms.openlocfilehash: 15f4e2a76724a70c15411dea767cc9bc433e4d4a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 02c98e38f26fff73d02dc4c2b838ad3428cd2996
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64943215"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73819028"
 ---
-# <a name="power-bi-apps-technical-info-tab"></a>A Power BI alkalmazások technikai információ lap
+# <a name="power-bi-apps-technical-info-tab"></a>Power BI alkalmazások technikai információi lap
 
-Az a **új ajánlat** oldalon a **technikai információ** fülre, és adja meg a Power BI-telepítő csomag URL-CÍMÉT és egyéb információkat, hogy szeretne-e az új ajánlat ellenőrzése.  A kezdeti kiadás minden Power BI alkalmazás ingyenesek, és az appsource-ból letölthető. Emiatt a készletkezelési egységek (SKU) ajánlat típus nem lehet definiálni.
+Az **új ajánlat** oldalon a **technikai információk** lapon megadhatja a Power bi telepítőcsomag URL-címét és az új ajánlat érvényesítéséhez szükséges egyéb információkat.  A kezdeti kiadás esetében az összes Power BI alkalmazás ingyenes, és letölthető a AppSource webhelyről. Ezért nem határozhatja meg az ajánlat típusához tartozó készletezési egységeket (SKU-ket).
 
 ![A technikai információ lap](./media/technical-info-tab.png)
 
 
-## <a name="technical-info-fields"></a>Technikai információ mezők 
+## <a name="technical-info-fields"></a>Technikai információk mezői 
 
-Az a **technikai információ** fülre, töltse ki a mezőket a következő táblázat ismerteti. Egy csillag (*) mező címke végén található, az azt jelenti, hogy a mező kitöltése kötelező.
+A **technikai információk** lapon végezze el az alábbi táblázatban leírt mezőket. A mező feliratának végén található csillag (*) érték azt jelenti, hogy a mező megadása kötelező.
 
 |        Mező          |  Leírás                                                                 |
 |    ---------------    |  ----------------------------------------------------------------------------|
-| **Telepítő URL-címe\***     | A Power BI az URL-címet állít elő, amikor éles környezetbe való előléptetése és tegye közzé az alkalmazást.  További információkért lásd: [alkalmazások közzététele az irányítópultokat és jelentéseket a Power bi-ban](https://docs.microsoft.com/power-bi/service-create-distribute-apps).  |
-|  **Ellenőrzési utasítások**  |  Ha azt szeretné, adja hozzá a Microsoft ellenőrzési csoportja konfigurálása, csatlakozás és az alkalmazás teszteléséhez útmutatást (3000 karakter). Például a tipikus konfigurációs beállítások, fiókok, paraméter vagy egyéb információkat, amelyek a csatlakozás beállítás teszteléséhez használható. Ez az információ csak az ellenőrzési csoportja látható-e, és azt csak ellenőrzési célokat szolgál.  |
-| **Ez az alkalmazás a program létrehoz egy Power BI-tartalomcsomag?** | Jelenleg a mező csak belső használatra szolgál. Ne módosítsa az alapértelmezett, **nem**. Ha módosítja a beállításokat, hogy **Igen**, meg tudta leállítani a közzétételi folyamat.  |  
+| **Telepítő URL-címe\***     | Power BI létrehozza ezt az URL-címet az alkalmazás közzétételekor és az éles környezetbe való előléptetése során.  További információ: [alkalmazások közzététele irányítópultokkal és jelentésekkel Power BIban](https://docs.microsoft.com/power-bi/service-create-distribute-apps).  |
+|  **Érvényesítési utasítások**  |  Ha szeretné, adja meg a Microsoft ellenőrzési csapatának az alkalmazás konfigurálásához, összekapcsolásához és teszteléséhez szükséges utasításokat (legfeljebb 3 000 karakter). Az adatok összekapcsolásának tesztelésére szolgáló jellemző konfigurációs beállításokat, fiókokat, paramétereket és egyéb információkat is megadhat. Ezek az információk csak az ellenőrzési csapat számára láthatók, és csak ellenőrzési célokra használhatók.  |
+| **Az alkalmazás Power BI tartalomkezelő csomagként lett létrehozva?** | Ez a mező jelenleg csak belsőleg használatos. Hagyja meg a **nem**érték alapértelmezett beállítását. Ha az **Igen**értékre módosítja a beállítást, leállíthatja a közzétételi folyamatot.  |  
 |  |  |
 
 
 ## <a name="next-steps"></a>További lépések
 
-Az a [kirakat részletek](./cpp-storefront-details-tab.md) lapra, adja meg az alkalmazás a marketing és jogi információit.
+A [kirakat részletei](./cpp-storefront-details-tab.md) lapon adja meg az alkalmazás marketing-és jogi információit.
 

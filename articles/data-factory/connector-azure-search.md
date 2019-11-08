@@ -12,44 +12,44 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: jingwang
-ms.openlocfilehash: f4e9e9f66d9bf1fecd4565d5eb469703e7a83d0d
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: ffdde571bbd2ae967003c520b09349ea9dcff414
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73681191"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73806088"
 ---
-# <a name="copy-data-to-an-azure-search-index-using-azure-data-factory"></a>Adatmásolás Azure Search-indexbe Azure Data Factory használatával
+# <a name="copy-data-to-an-azure-cognitive-search-index-using-azure-data-factory"></a>Adatmásolás Azure Cognitive Search-indexbe Azure Data Factory használatával
 
 > [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory-szolgáltatás verzióját:"]
 > * [1-es verzió](v1/data-factory-azure-search-connector.md)
 > * [Aktuális verzió](connector-azure-search.md)
 
-Ez a cikk azt ismerteti, hogyan használható a másolási tevékenység a Azure Data Factoryban az Adatmásolás Azure Search indexbe. A másolási [tevékenység áttekintő](copy-activity-overview.md) cikkében található, amely a másolási tevékenység általános áttekintését jeleníti meg.
+Ez a cikk azt ismerteti, hogyan használható a másolási tevékenység a Azure Data Factoryban az adatmásoláshoz az Azure Cognitive Search indexbe. A másolási [tevékenység áttekintő](copy-activity-overview.md) cikkében található, amely a másolási tevékenység általános áttekintését jeleníti meg.
 
 ## <a name="supported-capabilities"></a>Támogatott képességek
 
-A Azure Search indexbe bármilyen támogatott forrás-adattárból másolhat adatok. A másolási tevékenység által a forrásként/mosogatóként támogatott adattárak listáját a [támogatott adattárak](copy-activity-overview.md#supported-data-stores-and-formats) táblázatban tekintheti meg.
+A keresési indexbe bármilyen támogatott forrás-adattárból másolhat adatok. A másolási tevékenység által a forrásként/mosogatóként támogatott adattárak listáját a [támogatott adattárak](copy-activity-overview.md#supported-data-stores-and-formats) táblázatban tekintheti meg.
 
 ## <a name="getting-started"></a>Bevezetés
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
-A következő szakaszokban részletesen ismertetjük azokat a tulajdonságokat, amelyek Data Factory Azure Search-összekötőhöz tartozó entitások definiálásához használatosak.
+A következő szakaszokban részletesen ismertetjük az Azure Cognitive Search connectorhoz tartozó Data Factory entitások definiálásához használt tulajdonságokat.
 
 ## <a name="linked-service-properties"></a>Társított szolgáltatás tulajdonságai
 
-Azure Search társított szolgáltatás a következő tulajdonságokat támogatja:
+Az Azure Cognitive Search társított szolgáltatás a következő tulajdonságokat támogatja:
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
 | type | A Type tulajdonságot a következőre kell beállítani: **AzureSearch** | Igen |
-| url | A Azure Search szolgáltatás URL-címe. | Igen |
-| kulcs | A Azure Search szolgáltatáshoz tartozó rendszergazdai kulcs. Megjelöli ezt a mezőt SecureString, hogy biztonságosan tárolja Data Factoryban, vagy [hivatkozjon a Azure Key Vault tárolt titkos kulcsra](store-credentials-in-key-vault.md). | Igen |
+| url | A keresési szolgáltatás URL-címe. | Igen |
+| kulcs | A keresési szolgáltatáshoz tartozó rendszergazdai kulcs. Megjelöli ezt a mezőt SecureString, hogy biztonságosan tárolja Data Factoryban, vagy [hivatkozjon a Azure Key Vault tárolt titkos kulcsra](store-credentials-in-key-vault.md). | Igen |
 | Connectvia tulajdonsággal | Az adattárhoz való kapcsolódáshoz használt [Integration Runtime](concepts-integration-runtime.md) . Használhat Azure Integration Runtime vagy saját üzemeltetésű Integration Runtime (ha az adattár a magánhálózaton található). Ha nincs megadva, az alapértelmezett Azure Integration Runtime használja. |Nem |
 
 > [!IMPORTANT]
-> Ha egy felhőalapú adattárból Azure Search indexbe másol adatokból, Azure Search társított szolgáltatásban, akkor a connactVia-ben egy explicit régióval rendelkező Azure Integration Runtime kell hivatkoznia. Állítsa be a régiót, amely a Azure Search található. További információ: [Azure Integration Runtime](concepts-integration-runtime.md#azure-integration-runtime).
+> Amikor az Azure Cognitive Search társított szolgáltatásban az adatok Felhőbeli adattárból történő másolását végzi, a connactVia-ben egy explicit régióval rendelkező Azure Integration Runtime kell hivatkoznia. Állítsa be a régiót, ahol a keresési szolgáltatás található. További információ: [Azure Integration Runtime](concepts-integration-runtime.md#azure-integration-runtime).
 
 **Példa**
 
@@ -75,14 +75,14 @@ Azure Search társított szolgáltatás a következő tulajdonságokat támogatj
 
 ## <a name="dataset-properties"></a>Adatkészlet tulajdonságai
 
-Az adatkészletek definiálásához rendelkezésre álló csoportok és tulajdonságok teljes listáját az [adatkészletek](concepts-datasets-linked-services.md) című cikkben találja. Ez a szakasz a Azure Search adatkészlet által támogatott tulajdonságok listáját tartalmazza.
+Az adatkészletek definiálásához rendelkezésre álló csoportok és tulajdonságok teljes listáját az [adatkészletek](concepts-datasets-linked-services.md) című cikkben találja. Ez a szakasz az Azure Cognitive Search adatkészlet által támogatott tulajdonságok listáját tartalmazza.
 
-Az adatAzure Searchba való másolásához a következő tulajdonságok támogatottak:
+Az Azure Cognitive Searchba való másoláshoz a következő tulajdonságok támogatottak:
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
 | type | Az adatkészlet Type tulajdonságát a következőre kell beállítani: **AzureSearchIndex** | Igen |
-| indexName | A Azure Search index neve. Data Factory nem hozza létre az indexet. Az indexnek léteznie kell a Azure Searchban. | Igen |
+| indexName | A keresési index neve. Data Factory nem hozza létre az indexet. Az indexnek léteznie kell az Azure Cognitive Searchban. | Igen |
 
 **Példa**
 
@@ -96,7 +96,7 @@ Az adatAzure Searchba való másolásához a következő tulajdonságok támogat
         },
         "schema": [],
         "linkedServiceName": {
-            "referenceName": "<Azure Search linked service name>",
+            "referenceName": "<Azure Cognitive Search linked service name>",
             "type": "LinkedServiceReference"
         }
    }
@@ -105,21 +105,21 @@ Az adatAzure Searchba való másolásához a következő tulajdonságok támogat
 
 ## <a name="copy-activity-properties"></a>Másolási tevékenység tulajdonságai
 
-A tevékenységek definiálásához elérhető csoportok és tulajdonságok teljes listáját a [folyamatok](concepts-pipelines-activities.md) című cikkben találja. Ez a szakasz a Azure Search forrás által támogatott tulajdonságok listáját tartalmazza.
+A tevékenységek definiálásához elérhető csoportok és tulajdonságok teljes listáját a [folyamatok](concepts-pipelines-activities.md) című cikkben találja. Ez a szakasz az Azure Cognitive Search Source által támogatott tulajdonságok listáját tartalmazza.
 
-### <a name="azure-search-as-sink"></a>Azure Search fogadóként
+### <a name="azure-cognitive-search-as-sink"></a>Azure-Cognitive Search fogadóként
 
-Az adatAzure Searchba való másolásához állítsa a forrás típusát a másolás tevékenység **AzureSearchIndexSink**. A másolási tevékenység fogadója szakasz a következő tulajdonságokat támogatja:
+Az Azure Cognitive Searchba való másoláshoz állítsa a forrás típusát a másolás tevékenység **AzureSearchIndexSink**. A másolási tevékenység fogadója szakasz a következő tulajdonságokat támogatja:
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
 | type | A másolási tevékenység forrásának Type tulajdonságát a következőre kell beállítani: **AzureSearchIndexSink** | Igen |
 | WriteBehavior | Meghatározza, hogy a rendszer egyesítse vagy lecserélje, ha már létezik dokumentum az indexben. Tekintse meg a [WriteBehavior tulajdonságot](#writebehavior-property).<br/><br/>Az engedélyezett értékek: **merge** (default) és **upload**. | Nem |
-| writeBatchSize | Adatok feltöltése a Azure Search indexbe, ha a puffer mérete eléri a writeBatchSize. A részletekért tekintse meg a [WriteBatchSize tulajdonságot](#writebatchsize-property) .<br/><br/>Az engedélyezett értékek: integer 1 – 1 000; az alapértelmezett érték a 1000. | Nem |
+| writeBatchSize | Adatok feltöltése a keresési indexbe, ha a puffer mérete eléri a writeBatchSize. A részletekért tekintse meg a [WriteBatchSize tulajdonságot](#writebatchsize-property) .<br/><br/>Az engedélyezett értékek: integer 1 – 1 000; az alapértelmezett érték a 1000. | Nem |
 
 ### <a name="writebehavior-property"></a>WriteBehavior tulajdonság
 
-AzureSearchSink upsert az adatírás során. Más szóval, ha a dokumentum írásakor a dokumentum kulcsa már létezik a Azure Search indexben, Azure Search a meglévő dokumentumot frissíti, nem pedig ütközést okozó kivételt.
+AzureSearchSink upsert az adatírás során. Más szóval, amikor egy dokumentum írásakor a dokumentum kulcsa már létezik a keresési indexben, az Azure Cognitive Search frissíti a meglévő dokumentumot ahelyett, hogy ütközést kellene eldobnia.
 
 A AzureSearchSink a következő két upsert-viselkedést biztosítja (a AzureSearch SDK használatával):
 
@@ -130,7 +130,7 @@ Az alapértelmezett viselkedés az **Egyesítés**.
 
 ### <a name="writebatchsize-property"></a>WriteBatchSize tulajdonság
 
-A Azure Search szolgáltatás támogatja a dokumentumok kötegként való írását. Egy köteg 1 – 1 000 műveletet tartalmazhat. Egy művelet kezeli az egyik dokumentumot a feltöltési/egyesítési művelet végrehajtásához.
+Az Azure Cognitive Search szolgáltatás támogatja a dokumentumok kötegként való írását. Egy köteg 1 – 1 000 műveletet tartalmazhat. Egy művelet kezeli az egyik dokumentumot a feltöltési/egyesítési művelet végrehajtásához.
 
 **Példa**
 
@@ -147,7 +147,7 @@ A Azure Search szolgáltatás támogatja a dokumentumok kötegként való írás
         ],
         "outputs": [
             {
-                "referenceName": "<Azure Search output dataset name>",
+                "referenceName": "<Azure Cognitive Search output dataset name>",
                 "type": "DatasetReference"
             }
         ],
@@ -166,9 +166,9 @@ A Azure Search szolgáltatás támogatja a dokumentumok kötegként való írás
 
 ## <a name="data-type-support"></a>Adattípusok támogatása
 
-A következő táblázat meghatározza, hogy támogatott-e Azure Search adattípusa.
+A következő táblázat meghatározza, hogy az Azure Cognitive Search adattípusa támogatott-e vagy sem.
 
-| Azure Search adattípus | Azure Search fogadóban támogatott |
+| Az Azure Cognitive Search adattípusa | Az Azure Cognitive Search fogadóban támogatott |
 | ---------------------- | ------------------------------ |
 | Sztring | I |
 | Int32 | I |
@@ -179,7 +179,7 @@ A következő táblázat meghatározza, hogy támogatott-e Azure Search adattíp
 | Karakterlánc-tömb | N |
 | Geographypoint adattípuson | N |
 
-Jelenleg más adattípusok, például a ComplexType nem támogatottak. A Azure Search támogatott adattípusok teljes listáját lásd: [támogatott adattípusok (Azure Search)](https://docs.microsoft.com/rest/api/searchservice/supported-data-types).
+Jelenleg más adattípusok, például a ComplexType nem támogatottak. Az Azure Cognitive Search támogatott adattípusok teljes listájáért lásd: [támogatott adattípusok (azure Cognitive Search)](https://docs.microsoft.com/rest/api/searchservice/supported-data-types).
 
 ## <a name="next-steps"></a>További lépések
 A Azure Data Factory a másolási tevékenység által forrásként és nyelőként támogatott adattárak listáját lásd: [támogatott adattárak](copy-activity-overview.md##supported-data-stores-and-formats).

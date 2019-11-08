@@ -4,15 +4,16 @@ description: Ügyfél-érdeklődők konfigurálása kereskedelmi piactéren.
 services: Azure, Marketplace, commercial marketplace, Partner Center
 author: qianw211
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 08/01/2019
 ms.author: evansma
-ms.openlocfilehash: 31dcc8c1e35b627b231dbe2a62998c8514d05a20
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: 7ead8dee12d4376e6e1058b84a25b91c021a937c
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69902649"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73812654"
 ---
 # <a name="customer-leads-from-your-marketplace-offer"></a>Érdeklődők a Piactéri ajánlatból
 
@@ -48,13 +49,13 @@ Az alábbi helyeken jönnek létre az érdeklődők:
 
 ## <a name="understand-lead-data"></a>Az érdeklődők megismerése
 
-Az ügyfél beszerzési folyamata során kapott összes érdeklődő meghatározott mezőkben lévő adattal rendelkezik. Az első kikeresni kívánt mező az `LeadSource` a mező, amely a következő formátumot követi: **Forrás-művelet** | **ajánlat**.
+Az ügyfél beszerzési folyamata során kapott összes érdeklődő meghatározott mezőkben lévő adattal rendelkezik. A kikeresni kívánt első mező a `LeadSource` mező, amely a következő formátumot követi: **forrás-művelet** | **ajánlat**.
 
-**Források**: A mező értékét a rendszer az érdeklődőt létrehozó piactér alapján tölti fel. `"AppSource (SPZA)"`A `"AzureMarketplace"` lehetségesértékek`"AzurePortal"`:, és.
+**Források**: a mező értékét a rendszer az érdeklődőt létrehozó piactér alapján tölti fel. A lehetséges értékek a következők: `"AzureMarketplace"`, `"AzurePortal"`és `"AppSource (SPZA)"`.
 
-**Műveletek**: Ennek a mezőnek az értékét a rendszer az ügyfél által a piactéren vett művelet alapján tölti fel, amely létrehozta az érdeklődőt. 
+**Műveletek**: a mező értéke az ügyfél által a piactéren, az érdeklődőt generáló művelet alapján történt. 
 
-Lehetséges értékek a következők:
+Lehetséges értékek:
 
 - "INS" – telepítés. Ez a művelet az Azure Marketplace-en vagy a AppSource, amikor az ügyfél megvásárolja a terméket.
 - "PLT" – a partner által vezetett próbaverziót jelenti. Ez a művelet a AppSource, ha az ügyfél a kapcsolatfelvételi lehetőséget használja.
@@ -62,9 +63,9 @@ Lehetséges értékek a következők:
 - "Létrehozás" – Ez a művelet csak a Azure Portal belül történik, és akkor jön létre, amikor egy ügyfél megvásárolja az ajánlatot a fiókjába.
 - "StartTestDrive" – Ez a művelet csak tesztelési meghajtók esetében használható, és akkor jön létre, amikor egy ügyfél elindítja a tesztelési meghajtót.
 
-**Ajánlatok**: A piactéren több ajánlat is lehet. A mező értékét a rendszer az érdeklődőt létrehozó ajánlat alapján tölti fel. A közzétevő AZONOSÍTÓját és az ajánlat AZONOSÍTÓját is elküldjük ebben a mezőben, és azokat az értékeket, amelyeket az ajánlatnak a piactéren való közzétételekor adott meg.
+**Ajánlatok**: több ajánlat is lehet a piactéren. A mező értékét a rendszer az érdeklődőt létrehozó ajánlat alapján tölti fel. A közzétevő AZONOSÍTÓját és az ajánlat AZONOSÍTÓját is elküldjük ebben a mezőben, és azokat az értékeket, amelyeket az ajánlatnak a piactéren való közzétételekor adott meg.
 
-Az alábbi példák a várt formátumban `publisherid.offerid`jelenítik meg a példában szereplő értékeket: 
+Az alábbi példák a várt formátumú értékeket mutatják `publisherid.offerid`: 
 
 1. `checkpoint.check-point-r77-10sg-byol`
 1. `bitnami.openedxcypress`
@@ -74,13 +75,13 @@ Az alábbi példák a várt formátumban `publisherid.offerid`jelenítik meg a p
 
 Az ügyfél adatait több mezőn keresztül küldik el. A következő példában az érdeklődő ügyfél-információi láthatók.
 
-- FirstName John
-- LastName Smith
-- E-mail: jsmith\@Microsoft.com
-- Phone 1234567890
-- Ország/régió: USA
-- Vállalati Microsoft
-- Cím CTO
+- FirstName: John
+- LastName: Smith
+- E-mail: jsmith\@microsoft.com
+- Telefon: 1234567890
+- Ország: Egyesült Államok
+- Vállalat: Microsoft
+- Cím: műszaki igazgató
 
 >[!Note]
 >Az előző példában szereplő összes érték mindig elérhető az egyes érdeklődők számára. Mivel az ügyfél-érdeklődők szakaszban említettek szerint több lépésből áll, az érdeklődők kezelésének legjobb módja a rekordok visszavonása és a követő ablakok személyre szabása. Így minden ügyfél megfelelő üzenetet kap, és egyedi kapcsolatot hoz létre.
@@ -104,7 +105,7 @@ A válasz a közzétett ajánlat típusától függ. A SaaS és a Dynamics 365 f
 
 ### <a name="how-can-i-find-the-test-lead"></a>Hogyan találhatom meg a tesztelési érdeklődőt?
 
-`“MSFT_TEST”` Keresse meg az érdeklődői célhelyen, íme egy példa a Microsoft által használt tesztre:
+Keressen `"MSFT_TEST"`t a vezető célhelyen, íme egy minta-teszt a Microsofttól:
 
 ```
 company = MSFT_TEST_636573304831318844
@@ -141,7 +142,7 @@ Az Azure-táblában tárolt érdeklődői adatok az Azure Portalon érhetők el,
 
 ### <a name="i-have-configured-azure-table-as-my-lead-destination-can-i-get-notified-whenever-a-new-lead-is-sent-by-marketplace"></a>Az Azure-táblázatot vezető célként konfiguráltam, értesítést kaphatok arról, ha új érdeklődőt küld a piactér?
 
-Igen, kövesse az utasításokat, és állítson be egy Microsoft flow-t, amely e-mailt küld, ha a dokumentációban egy [](./commercial-marketplace-lead-management-instructions-azure-table.md)érdeklődőt adnak hozzá az Azure-táblához.
+Igen, kövesse az utasításokat, és állítson be egy Microsoft flow-t, amely e-mailt küld, ha [a dokumentációban](./commercial-marketplace-lead-management-instructions-azure-table.md)egy érdeklődőt adnak hozzá az Azure-táblához.
 
 ### <a name="i-have-configured-salesforce-as-my-lead-destination-why-cant-i-find-the-leads"></a>Úgy konfiguráltam a Salesforce, hogy az érdeklődői célként miért nem találom az érdeklődőket?
 
@@ -159,4 +160,4 @@ Ha a kérdés még nem válaszol, forduljon az ügyfélszolgálathoz a aka.ms/ma
 
 ## <a name="next-steps"></a>További lépések
 
-A technikai beállítás bevezetését követően ezeket az érdeklődőket be kell építenie a jelenlegi értékesítési & Marketing stratégiába és működési folyamataiba. Fontos, hogy jobban megértsük a teljes értékesítési folyamatot, és szeretne szorosan együttműködni Önnel, hogy kiváló minőségű érdeklődőket és elegendő adatmennyiséget biztosítson a siker érdekében. Örömmel vesszük visszajelzését arról, hogy miként optimalizálható és növelhető az érdeklődők számára elérhető további információk, amelyek segítenek az ügyfelek sikerességében. Tudassa velünk, ha szeretne [visszajelzést](mailto:AzureMarketOnboard@microsoft.com) küldeni, és javaslatokat tesz arra, hogy az értékesítési csapata még nagyobb sikert biztosítson a piactéren.
+A technikai beállítás bevezetését követően ezeket az érdeklődőket be kell építenie a jelenlegi értékesítési & Marketing stratégiába és működési folyamataiba. Fontos, hogy jobban megértsük a teljes értékesítési folyamatot, és szeretne szorosan együttműködni Önnel, hogy kiváló minőségű érdeklődőket és elegendő adatmennyiséget biztosítson a siker érdekében. Örömmel vesszük visszajelzését arról, hogy miként optimalizálható és növelhető az érdeklődők számára elérhető további információk, amelyek segítenek az ügyfelek sikerességében. Tudassa velünk, ha szeretne visszajelzést küldeni, és javaslatokat tesz arra, hogy az értékesítési csapata még nagyobb sikert [biztosítson](mailto:AzureMarketOnboard@microsoft.com) a piactéren.

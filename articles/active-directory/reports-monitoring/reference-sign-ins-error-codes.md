@@ -17,12 +17,12 @@ ms.date: 08/08/2019
 ms.author: chadam
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 931f2fbe5798966c41378d9b401dcd59cafc5cca
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: 9bb7114611ce5c7eabb8124ad11db64d50e12946
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72820878"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73809822"
 ---
 # <a name="sign-in-activity-report-error-codes"></a>Bejelentkezési tevékenység jelentésének hibakódja 
 
@@ -127,6 +127,7 @@ A [jelentéskészítési API](concept-reporting-api.md)használatával programoz
 |50177|A külső kihívás áteresztő felhasználók számára nem támogatott.|
 |50178|A munkamenet-vezérlő továbbító felhasználók számára nem támogatott.|
 |50180|Integrált Windows-hitelesítés szükséges. Engedélyezze a Seamless SSO-t a bérlőn.|
+|50181|Az OTP-hez kapcsolódó hiba a bejelentkezés során. |
 |50201|Ez az üzenet jelenik meg a felhasználó bejelentkezésekor, amikor további információt kell megadni a felhasználónak.|
 |51001|A tartományi útmutató nem található a helyszíni biztonsági azonosító – helyszíni egyszerű felhasználónév szolgáltatással.|
 |51004|A felhasználói fiók nem létezik a címtárban.|
@@ -187,10 +188,10 @@ A [jelentéskészítési API](concept-reporting-api.md)használatával programoz
 |530032|Biztonsági házirend tiltja.| 
 |700016|A (z) {appIdentifier} azonosítójú alkalmazás nem található a (z) {tenantName} címtárban. Ez akkor fordulhat elő, ha az alkalmazást nem a bérlő rendszergazdája telepítette, vagy a bérlő bármelyik felhasználója beleegyezett. Lehetséges, hogy nem megfelelő bérlőnek küldi el a hitelesítési kérést.|
 |900432|A bizalmas ügyfél nem támogatott a felhőalapú kérelemben.|
-|7000218|A kérelem törzsének tartalmaznia kell a következő paramétert: "client_assertion" vagy "client_secret".|
+|7000218|A kérelem törzsének a következő paramétert kell tartalmaznia: "client_assertion" vagy "client_secret".|
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [A bejelentkezések jelentéseinek áttekintése](concept-sign-ins.md)
 * [Programozott hozzáférés az Azure AD-jelentésekhez](concept-reporting-api.md)

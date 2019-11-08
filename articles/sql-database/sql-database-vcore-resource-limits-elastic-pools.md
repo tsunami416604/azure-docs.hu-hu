@@ -1,5 +1,5 @@
 ---
-title: Azure SQL Database virtuális mag erőforrás-korlátok – rugalmas készletek | Microsoft Docs
+title: Virtuális mag erőforrás-korlátok – rugalmas készletek
 description: Ez az oldal néhány gyakori virtuális mag-erőforrás-korlátot ismertet a rugalmas készletek Azure SQL Databaseban.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: oslake
 ms.author: moslake
 ms.reviewer: carlrab, sstein
 ms.date: 11/04/2019
-ms.openlocfilehash: 65c2bfe4d79f5b7d468999143524b96b60f0efaf
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: f356b9d248ac9c5f0bcfaaeeb37b43d958eaa528
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73495994"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73822361"
 ---
 # <a name="resource-limits-for-elastic-pools-using-the-vcore-purchasing-model"></a>Rugalmas készletek erőforrás-korlátai a virtuális mag beszerzési modell használatával
 
@@ -47,7 +47,7 @@ A szolgáltatási szintet, a számítási méretet és a tárterületet a [Azure
 |Memória (GB)|7|14|21|28|35|42|
 |Adatbázisok maximális száma készletenként|100|200|500|500|500|500|
 |Oszlopcentrikus-támogatás|Igen|Igen|Igen|Igen|Igen|Igen|
-|Memóriában tárolt OLTP-tároló (GB)|–|–|–|–|–|–|
+|Memóriában tárolt OLTP-tároló (GB)|N/A|N/A|N/A|N/A|N/A|N/A|
 |Maximális adatméret (GB)|512|756|756|1536|1536|1536|
 |Napló maximális mérete|154|227|227|461|461|461|
 |TempDB mérete (GB)|32|64|96|128|160|192|
@@ -60,8 +60,8 @@ A szolgáltatási szintet, a számítási méretet és a tárterületet a [Azure
 |Engedélyezett maximális munkamenetek|30000|30000|30000|30000|30000|30000|
 |Rugalmas készlet minimális/maximális virtuális mag-választéka adatbázis szerint|0, 0,25, 0,5, 1|0, 0,25, 0,5, 1, 2|0, 0,25, 0,5, 1... 3|0, 0,25, 0,5, 1... 4|0, 0,25, 0,5, 1... 5|0, 0,25, 0,5, 1... 6|
 |Replikák száma|1|1|1|1|1|1|
-|Több – AZ|–|–|–|–|–|–|
-|Felskálázás|–|–|–|–|–|–|
+|Több – AZ|N/A|N/A|N/A|N/A|N/A|N/A|
+|Felskálázás|N/A|N/A|N/A|N/A|N/A|N/A|
 |Mellékelt biztonsági mentési tár|1X DB méret|1X DB méret|1X DB méret|1X DB méret|1X DB méret|1X DB méret|
 
 \* az egyidejű feldolgozók (kérelmek) maximális száma az egyes adatbázisokhoz: [önálló adatbázis-erőforrás korlátai](sql-database-vcore-resource-limits-single-databases.md). Ha például a rugalmas készlet a Gen5-t használja, és az adatbázis maximális virtuális mag-értéke 2, akkor az egyidejű feldolgozók maximális száma 200.  Ha az adatbázis max. virtuális mag értéke 0,5, akkor az egyidejű feldolgozók maximális száma 50, mivel a Gen5-ben legfeljebb 100 egyidejű dolgozó van virtuális mag.  Ha az adatbázis más maximális virtuális mag-beállításai kevesebb, mint 1 virtuális mag vagy kevesebb, az egyidejű feldolgozók maximális száma hasonlóan átméretezhető.
@@ -76,7 +76,7 @@ A szolgáltatási szintet, a számítási méretet és a tárterületet a [Azure
 |Memória (GB)|49|56|63|70|112|168|
 |Adatbázisok maximális száma készletenként|500|500|500|500|500|500|
 |Oszlopcentrikus-támogatás|Igen|Igen|Igen|Igen|Igen|Igen|
-|Memóriában tárolt OLTP-tároló (GB)|–|–|–|–|–|–|
+|Memóriában tárolt OLTP-tároló (GB)|N/A|N/A|N/A|N/A|N/A|N/A|
 |Maximális adatméret (GB)|1536|2048|2048|2048|3584|4096|
 |Napló maximális mérete (GB)|461|614|614|614|1075|1229|
 |TempDB mérete (GB)|224|256|288|320|384|384|
@@ -89,8 +89,8 @@ A szolgáltatási szintet, a számítási méretet és a tárterületet a [Azure
 |Engedélyezett maximális munkamenetek|30000|30000|30000|30000|30000|30000|
 |Rugalmas készlet minimális/maximális virtuális mag-választéka adatbázis szerint|0, 0,25, 0,5, 1... 7|0, 0,25, 0,5, 1... 8|0, 0,25, 0,5, 1... 9|0, 0,25, 0,5, 1... 10|0, 0,25, 0,5, 1... 10, 16|0, 0,25, 0,5, 1... 10, 16, 24|
 |Replikák száma|1|1|1|1|1|1|
-|Több – AZ|–|–|–|–|–|–|
-|Felskálázás|–|–|–|–|–|–|
+|Több – AZ|N/A|N/A|N/A|N/A|N/A|N/A|
+|Felskálázás|N/A|N/A|N/A|N/A|N/A|N/A|
 |Mellékelt biztonsági mentési tár|1X DB méret|1X DB méret|1X DB méret|1X DB méret|1X DB méret|1X DB méret|
 
 \* az egyidejű feldolgozók (kérelmek) maximális száma az egyes adatbázisokhoz: [önálló adatbázis-erőforrás korlátai](sql-database-vcore-resource-limits-single-databases.md). Ha például a rugalmas készlet a Gen5-t használja, és az adatbázis maximális virtuális mag-értéke 2, akkor az egyidejű feldolgozók maximális száma 200.  Ha az adatbázis max. virtuális mag értéke 0,5, akkor az egyidejű feldolgozók maximális száma 50, mivel a Gen5-ben legfeljebb 100 egyidejű dolgozó van virtuális mag.  Ha az adatbázis más maximális virtuális mag-beállításai kevesebb, mint 1 virtuális mag vagy kevesebb, az egyidejű feldolgozók maximális száma hasonlóan átméretezhető.
@@ -107,7 +107,7 @@ A szolgáltatási szintet, a számítási méretet és a tárterületet a [Azure
 |Memória (GB)|10.2|20,4|30,6|40,8|51|61,2|71,4|
 |Adatbázisok maximális száma készletenként|100|200|500|500|500|500|500|
 |Oszlopcentrikus-támogatás|Igen|Igen|Igen|Igen|Igen|Igen|Igen|
-|Memóriában tárolt OLTP-tároló (GB)|–|–|–|–|–|–|–|
+|Memóriában tárolt OLTP-tároló (GB)|N/A|N/A|N/A|N/A|N/A|N/A|N/A|
 |Maximális adatméret (GB)|512|756|756|1536|1536|1536|
 |Napló maximális mérete (GB)|154|227|227|461|461|461|461|
 |TempDB mérete (GB)|64|128|192|256|320|384|384|
@@ -120,8 +120,8 @@ A szolgáltatási szintet, a számítási méretet és a tárterületet a [Azure
 |Engedélyezett maximális munkamenetek|30000|30000|30000|30000|30000|30000|30000|
 |Rugalmas készlet minimális/maximális virtuális mag-választéka adatbázis szerint|0, 0,25, 0,5, 1, 2|0, 0,25, 0,5, 1... 4|0, 0,25, 0,5, 1... 6|0, 0,25, 0,5, 1... 8|0, 0,25, 0,5, 1... 10|0, 0,25, 0,5, 1... 12|0, 0,25, 0,5, 1... 14|
 |Replikák száma|1|1|1|1|1|1|1|
-|Több – AZ|–|–|–|–|–|–|–|
-|Felskálázás|–|–|–|–|–|–|–|
+|Több – AZ|N/A|N/A|N/A|N/A|N/A|N/A|N/A|
+|Felskálázás|N/A|N/A|N/A|N/A|N/A|N/A|N/A|
 |Mellékelt biztonsági mentési tár|1X DB méret|1X DB méret|1X DB méret|1X DB méret|1X DB méret|1X DB méret|1X DB méret|
 
 \* az egyidejű feldolgozók (kérelmek) maximális száma az egyes adatbázisokhoz: [önálló adatbázis-erőforrás korlátai](sql-database-vcore-resource-limits-single-databases.md). Ha például a rugalmas készlet a Gen5-t használja, és az adatbázis maximális virtuális mag-értéke 2, akkor az egyidejű feldolgozók maximális száma 200.  Ha az adatbázis max. virtuális mag értéke 0,5, akkor az egyidejű feldolgozók maximális száma 50, mivel a Gen5-ben legfeljebb 100 egyidejű dolgozó van virtuális mag.  Ha az adatbázis más maximális virtuális mag-beállításai kevesebb, mint 1 virtuális mag vagy kevesebb, az egyidejű feldolgozók maximális száma hasonlóan átméretezhető.
@@ -135,7 +135,7 @@ A szolgáltatási szintet, a számítási méretet és a tárterületet a [Azure
 |Memória (GB)|81,6|91,8|102|122,4|163,2|204|408|
 |Adatbázisok maximális száma készletenként|500|500|500|500|500|500|500|
 |Oszlopcentrikus-támogatás|Igen|Igen|Igen|Igen|Igen|Igen|Igen|
-|Memóriában tárolt OLTP-tároló (GB)|–|–|–|–|–|–|–|
+|Memóriában tárolt OLTP-tároló (GB)|N/A|N/A|N/A|N/A|N/A|N/A|N/A|
 |Maximális adatméret (GB)|2048|2048|3072|3072|4096|4096|4096|
 |Napló maximális mérete (GB)|614|614|922|922|1229|1229|1229|
 |TempDB mérete (GB)|384|384|384|384|384|384|384|
@@ -147,8 +147,8 @@ A szolgáltatási szintet, a számítási méretet és a tárterületet a [Azure
 |Egyidejű bejelentkezések maximális száma (kérelmek) *|1680|1890|2100|2520|3360|4200|8400|
 |Rugalmas készlet minimális/maximális virtuális mag-választéka adatbázis szerint|0, 0,25, 0,5, 1... 16|0, 0,25, 0,5, 1... 18|0, 0,25, 0,5, 1... 20|0, 0,25, 0,5, 1... 20, 24|0, 0,25, 0,5, 1... 20, 24, 32|0, 0,25, 0,5, 1... 16, 24, 32, 40|0, 0,25, 0,5, 1... 16, 24, 32, 40, 80|
 |Replikák száma|1|1|1|1|1|1|1|
-|Több – AZ|–|–|–|–|–|–|–|
-|Felskálázás|–|–|–|–|–|–|–|
+|Több – AZ|N/A|N/A|N/A|N/A|N/A|N/A|N/A|
+|Felskálázás|N/A|N/A|N/A|N/A|N/A|N/A|N/A|
 |Mellékelt biztonsági mentési tár|1X DB méret|1X DB méret|1X DB méret|1X DB méret|1X DB méret|1X DB méret|1X DB méret|
 
 ## <a name="general-purpose---provisioned-compute---fsv2-series"></a>Általános célú kiépített számítás – Fsv2 sorozat
@@ -162,7 +162,7 @@ A szolgáltatási szintet, a számítási méretet és a tárterületet a [Azure
 |Memória (GB)|136|
 |Adatbázisok maximális száma készletenként|500|
 |Oszlopcentrikus-támogatás|Igen|
-|Memóriában tárolt OLTP-tároló (GB)|–|
+|Memóriában tárolt OLTP-tároló (GB)|N/A|
 |Maximális adatméret (GB)|4096|
 |Napló maximális mérete (GB)|1024|
 |TempDB maximális adatméret (GB)|333|
@@ -174,8 +174,8 @@ A szolgáltatási szintet, a számítási méretet és a tárterületet a [Azure
 |Egyidejű bejelentkezések maximális száma (kérelmek) *|1680|
 |Rugalmas készlet minimális/maximális virtuális mag-választéka adatbázis szerint|0-72|
 |Replikák száma|1|
-|Több – AZ|–|
-|Felskálázás|–|
+|Több – AZ|N/A|
+|Felskálázás|N/A|
 |Mellékelt biztonsági mentési tár|1X DB méret|
 
 
@@ -209,7 +209,7 @@ A szolgáltatási szintet, a számítási méretet és a tárterületet a [Azure
 |Egyidejű feldolgozók maximális száma (kérelmek) *|210|420|630|840|1050|1260|
 |Egyidejű bejelentkezések maximális száma (kérelmek) *|210|420|630|840|1050|1260|
 |Engedélyezett maximális munkamenetek|30000|30000|30000|30000|30000|30000|
-|Rugalmas készlet minimális/maximális virtuális mag-választéka adatbázis szerint|–|0, 0,25, 0,5, 1, 2|0, 0,25, 0,5, 1... 3|0, 0,25, 0,5, 1... 4|0, 0,25, 0,5, 1... 5|0, 0,25, 0,5, 1... 6|
+|Rugalmas készlet minimális/maximális virtuális mag-választéka adatbázis szerint|N/A|0, 0,25, 0,5, 1, 2|0, 0,25, 0,5, 1... 3|0, 0,25, 0,5, 1... 4|0, 0,25, 0,5, 1... 5|0, 0,25, 0,5, 1... 6|
 |Replikák száma|4|4|4|4|4|4|
 |Több – AZ|Igen|Igen|Igen|Igen|Igen|Igen|
 |Felskálázás|Igen|Igen|Igen|Igen|Igen|Igen|
@@ -225,8 +225,8 @@ A szolgáltatási szintet, a számítási méretet és a tárterületet a [Azure
 |Virtuális mag|7|8|9|10|16|24|
 |Memória (GB)|81,6|91,8|102|122,4|163,2|204|
 |Adatbázisok maximális száma készletenként|100|100|100|100|100|100|
-|Oszlopcentrikus-támogatás|–|–|–|–|–|–|
-|Memóriában tárolt OLTP-tároló (GB)|7|8|9,5|11|20|36|
+|Oszlopcentrikus-támogatás|N/A|N/A|N/A|N/A|N/A|N/A|
+|Memóriában tárolt OLTP-tároló (GB)|7|8|9.5|11|20|36|
 |Tárolási típus|Helyi SSD|Helyi SSD|Helyi SSD|Helyi SSD|Helyi SSD|Helyi SSD|
 |Maximális adatméret (GB)|650|650|650|650|1024|1024|
 |Napló maximális mérete (GB)|195|195|195|195|307|307|
@@ -267,7 +267,7 @@ A szolgáltatási szintet, a számítási méretet és a tárterületet a [Azure
 |Egyidejű feldolgozók maximális száma (kérelmek) *|210|420|630|840|1050|1260|1470|
 |Egyidejű bejelentkezések maximális száma (kérelmek) *|210|420|630|840|1050|1260|1470|
 |Engedélyezett maximális munkamenetek|30000|30000|30000|30000|30000|30000|30000|
-|Rugalmas készlet minimális/maximális virtuális mag-választéka adatbázis szerint|–|0, 0,25, 0,5, 1... 4|0, 0,25, 0,5, 1... 6|0, 0,25, 0,5, 1... 8|0, 0,25, 0,5, 1... 10|0, 0,25, 0,5, 1... 12|0, 0,25, 0,5, 1... 14|
+|Rugalmas készlet minimális/maximális virtuális mag-választéka adatbázis szerint|N/A|0, 0,25, 0,5, 1... 4|0, 0,25, 0,5, 1... 6|0, 0,25, 0,5, 1... 8|0, 0,25, 0,5, 1... 10|0, 0,25, 0,5, 1... 12|0, 0,25, 0,5, 1... 14|
 |Replikák száma|4|4|4|4|4|4|4|
 |Több – AZ|Igen|Igen|Igen|Igen|Igen|Igen|
 |Felskálázás|Igen|Igen|Igen|Igen|Igen|Igen|Igen|
@@ -340,7 +340,7 @@ Ha a rugalmas készlet összes virtuális mag foglalt, akkor a készletben lév�
 A következő táblázat a készletezett adatbázisok tulajdonságait ismerteti.
 
 > [!NOTE]
-> A rugalmas készletekben található különálló adatbázisok erőforrás-korlátai általában ugyanazok, mint a készleteken kívüli önálló adatbázisok esetében, amelyek ugyanazzal a számítási mérettel rendelkeznek. Például az GP_Gen4_1-adatbázisok maximális egyidejű feldolgozói 200-es feldolgozók. Így a GP_Gen4_1-készletben lévő adatbázisok maximálisan egyidejű feldolgozói a 200-es feldolgozók is. Vegye figyelembe, hogy a GP_Gen4_1-készletben egyidejűleg feldolgozók száma összesen 210.
+> A rugalmas készletekben található különálló adatbázisok erőforrás-korlátai általában ugyanazok, mint a készleteken kívüli önálló adatbázisok esetében, amelyek ugyanazzal a számítási mérettel rendelkeznek. Például az GP_Gen4_1-adatbázisok maximális egyidejű feldolgozói 200 feldolgozók. Így a GP_Gen4_1-készletben lévő adatbázisok maximálisan egyidejű feldolgozói is 200 feldolgozók. Vegye figyelembe, hogy GP_Gen4_1 készletben lévő egyidejű feldolgozók száma összesen 210.
 
 | Tulajdonság | Leírás |
 |:--- |:--- |

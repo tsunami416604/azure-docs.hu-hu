@@ -1,41 +1,42 @@
 ---
-title: Cloud Partner Portal felügyeleti |} Az Azure Marketplace-en
-description: A Cloud Partner Portal fiókok kezelése az Azure Marketplace-en elérhető műveleteket ismerteti.
+title: Cloud Partner Portal-kezelés | Azure piactér
+description: Ismerteti az Azure piactér Cloud Partner Portal fiókjainak kezeléséhez elérhető műveletek típusait.
 services: Azure, Marketplace, Cloud Partner Portal,
 author: v-miclar
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/01/2019
 ms.author: pabutler
-ms.openlocfilehash: 58451dd225a4f0625a6922bde672a6928ea50943
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 012af63f7374093e08cca2b8458d862b900f3981
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66257492"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73819135"
 ---
-# <a name="cloud-partner-portal-management"></a>Cloud Partner Portalon kezelése
+# <a name="cloud-partner-portal-management"></a>Cloud Partner Portal-kezelés
 
-Ez a szakasz azt ismerteti, milyen műveleteket kell használnia a fiókok létrehozásához és kezeléséhez elérhető a [Cloud Partner Portalon](https://cloudpartner.azure.com).  Ezek a fiókok szükségesek a [Azure Marketplace-en](https://azuremarketplace.microsoft.com) és [AppSource](https://appsource.microsoft.com).  
+Ez a szakasz a [Cloud Partner Portal](https://cloudpartner.azure.com)használatához szükséges fiókok létrehozásához és kezeléséhez elérhető műveletek típusait ismerteti.  Ezek a fiókok az [Azure Marketplace](https://azuremarketplace.microsoft.com) -hez és a [AppSource](https://appsource.microsoft.com)szükségesek.  
 
 
 ## <a name="background-information"></a>Háttér-információk
 
-Használata előtt a Cloud Partner portálra, akkor érdemes megismerkednie az alábbi cikkeket:
+A Cloud Partner Portal használata előtt Ismerkedjen meg a következő cikkekkel:
 
-- [Az Azure piactér szabályzata és feltételeket](../../policies-terms.md) felsorolja a különböző jogi és technikai követelményeket és szabályokat, amelyek a alkalmazni a felhasználói és a kiadók a [Azure Marketplace-en](https://azuremarketplace.microsoft.com) és [AppSource](https://appsource.microsoft.com).
-- [Legyen a Felhőbeli piactér kiadói](https://docs.microsoft.com/azure/marketplace/become-publisher) válik egy hivatalos Microsoft-felhő közzétevő szükséges összes lépést áttekintést nyújt.
+- Az [Azure Marketplace-szabályzatok és-feltételek](../../policies-terms.md) felsorolja azokat a különböző jogi és műszaki követelményeket és szabályokat, amelyek az [Azure piactéren](https://azuremarketplace.microsoft.com) és a [AppSource](https://appsource.microsoft.com)a felhasználókra és a közzétevőre vonatkoznak.
+- [Legyen a Cloud Marketplace Publisher](https://docs.microsoft.com/azure/marketplace/become-publisher) , amely áttekintést nyújt a hivatalos Microsoft felhőalapú közzétevővé váláshoz szükséges lépésekről.
 
 
-## <a name="account-creation-and-management"></a>A fiók létrehozása és kezelése
+## <a name="account-creation-and-management"></a>Fiókok létrehozása és kezelése
 
-Ebben a szakaszban a következő cikket tartalmaz, amelyek bemutatják, hogyan marketplace publisher fiókokat szeretne kezelni.
+Ez a szakasz a piactér-közzétevői fiókok kezelésével kapcsolatos alábbi cikkeket ismerteti.
 
-- [Fiókok felügyeletének előfeltételeit](./cpp-manage-prerequisites.md) azt ismerteti, hogyan válhat a regisztrált felhőre publisher használatával a CLoud Partner portálra vonatkozó követelmény.
-- [Az Azure Marketplace és AppSource közzétevő profil kezelése](./cpp-manage-publisher-profile.md) azt ismerteti, hogyan használhatja a Cloud Partner portálra megtekintése és kezelése a Microsoft marketplace kiadói profilját. 
-- [A Cloud Partner portálra a felhasználók felügyeletének](./cpp-manage-users.md) felhasználók hozzáadása a szervezete felhőjében közzétételi fiókot, és hogyan kezelheti a hozzáférésüket, az azonos ajánlatokat működéséhez több ember számára teszi lehetővé.
+- A [fiókok kezelésének előfeltételei](./cpp-manage-prerequisites.md) azt ismertetik, hogyan lehet regisztrálni a felhőalapú közzétevőt, ami a Felhőbeli partneri portál használatának követelménye.
+- Az [Azure Marketplace és a AppSource-közzétevői profil kezelése](./cpp-manage-publisher-profile.md) című cikk azt ismerteti, hogyan használható a Cloud Partner Portal a Microsoft Marketplace-közzétevő profiljának megtekintéséhez és kezeléséhez. 
+- [Felhasználók kezelése a Cloud Partner Portal](./cpp-manage-users.md) felhasználók hozzáadása a szervezet felhőalapú közzétételi fiókjához, valamint a hozzáférésük kezelése, hogy több személy is dolgozhat ugyanazon az ajánlaton.
 
 
 ## <a name="next-steps"></a>További lépések
 
-Meg kell felelnie a [fiókok felügyeletének előfeltételeit](./cpp-manage-prerequisites.md) a folytatás előtt.  Ezt követően meg kell vennie a [Cloud Partner Portal bemutató](../portal-tour/cpp-portal-tour.md) való ismerkedésre a portál felhasználói felülete.
+A folytatás előtt meg kell felelnie a [fiókok kezelésének előfeltételeinek](./cpp-manage-prerequisites.md) .  Ezt követően a [Cloud Partner Portal turnén](../portal-tour/cpp-portal-tour.md) is megismerkedjen a portál felhasználói felületével.

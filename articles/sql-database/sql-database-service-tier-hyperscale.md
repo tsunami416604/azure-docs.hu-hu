@@ -1,5 +1,5 @@
 ---
-title: Azure SQL Database nagy kapacitású áttekintése
+title: A nagy kapacitású áttekintése
 description: Ez a cikk ismerteti a nagy kapacitású szolgáltatási rétegét a Azure SQL Database virtuális mag-alapú vásárlási modellben, és elmagyarázza, hogy miben különbözik a általános célú és a üzletileg kritikus szolgáltatási rétegtől.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: dimitri-furman
 ms.author: dfurman
 ms.reviewer: ''
 ms.date: 10/01/2019
-ms.openlocfilehash: 38402d6ccf5c5582fff878ad60bf1c9fd4a07118
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 3a448147390ff2dd6a8049e8338a4cbf2bd94ce3
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73687318"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73821106"
 ---
 # <a name="hyperscale-service-tier"></a>Rugalmas skálázás szolgáltatási szint
 
@@ -186,11 +186,11 @@ A Azure SQL Database nagy kapacitású szintje jelenleg a következő régiókba
 - Dél-Afrika északi régiója
 - USA déli középső régiója
 - Délkelet-Ázsia
-- Egyesült Királyság déli régiója
+- Az Egyesült Királyság déli régiója
 - Az Egyesült Királyság nyugati régiója
 - Nyugat-Európa
 - USA nyugati régiója
-- USA 2. nyugati régiója
+- USA nyugati régiója, 2.
 
 Ha olyan régióban szeretné létrehozni a nagy kapacitású-adatbázist, amely nem támogatottként van felsorolva, Azure Portal használatával küldhet bevezetési kérést. Dolgozunk a támogatott régiók listájának kibontásán, ezért kérjük, térjen vissza a legutóbbi régiók listájára.
 

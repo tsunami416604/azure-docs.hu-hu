@@ -1,5 +1,5 @@
 ---
-title: R-csomag hozzáadása Azure SQL Database Machine Learning Services (előzetes verzió)
+title: R-csomag hozzáadása a Machine Learning Serviceshoz (előzetes verzió)
 titleSuffix: Azure SQL Database Machine Learning Services (preview)
 description: Ez a cikk azt ismerteti, hogyan telepíthet olyan R-csomagot, amely még nincs telepítve Azure SQL Database Machine Learning Servicesban (előzetes verzió).
 services: sql-database
@@ -13,12 +13,12 @@ ms.author: garye
 ms.reviewer: davidph
 manager: cgronlun
 ms.date: 04/29/2019
-ms.openlocfilehash: f82408a6aaa7cf3a492f3036a6db5d8666b6f160
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: ce85f45d823df42e70af53824e175968439621d3
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68598050"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73819870"
 ---
 # <a name="add-an-r-package-to-azure-sql-database-machine-learning-services-preview"></a>R-csomag hozzáadása Azure SQL Database Machine Learning Services (előzetes verzió)
 
@@ -33,7 +33,7 @@ Ez a cikk azt ismerteti, hogyan adhat hozzá R-csomagokat Azure SQL Database Mac
 - Ez a cikk például [Azure Data Studio](https://docs.microsoft.com/sql/azure-data-studio/what-is) vagy [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/sql-server-management-studio-ssms) (SSMS) használatával futtatja az R-szkriptet Azure SQL Databaseban. Az R-szkripteket más adatbázis-kezelő vagy lekérdezési eszközökkel is futtathatja, de ez a példa Azure Data Studio vagy SSMS feltételezi.
    
 > [!NOTE]
-> Nem telepíthet csomagot olyan R-szkript futtatásával, Azure Data Studio vagy SSMS **sp_execute_external_script** használatával. A csomagokat csak az R parancssor és a RStudio használatával telepítheti és távolíthatja el, a jelen cikkben leírtak szerint. A csomag telepítése után a **sp_execute_external_script**használatával elérheti egy R-szkriptben a Package functions funkciót.
+> A csomagok nem telepíthetők olyan R-szkript futtatásával, Azure Data Studio vagy SSMS **sp_execute_external_script** használatával. A csomagokat csak az R parancssor és a RStudio használatával telepítheti és távolíthatja el, a jelen cikkben leírtak szerint. A csomag telepítése után egy R-szkriptben elérheti a Package functions funkciót **sp_execute_external_script**használatával.
 
 ## <a name="list-r-packages"></a>R-csomagok listázása
 
@@ -42,7 +42,7 @@ A telepített R-csomagok listáját a következő parancs futtatásával Azure D
 
 1. Nyissa meg Azure Data Studio vagy SSMS, és kapcsolódjon a Azure SQL Databasehoz.
 
-1. Futtassa a következő parancsot:
+1. Futtassa az alábbi parancsot:
 
 ```sql
 EXECUTE sp_execute_external_script @language = N'R'
@@ -70,9 +70,9 @@ A következő példában a karakterláncok formázására és interpolációra k
 
 ### <a name="install-sqlmlutils"></a>A **sqlmlutils** telepítése
 
-1. Töltse le a legújabb **sqlmlutils** zip- https://github.com/Microsoft/sqlmlutils/tree/master/R/dist fájlt a számítógépről a helyi számítógépre. Nem kell kibontani a fájlt.
+1. Töltse le a legújabb **sqlmlutils** zip-fájlt https://github.com/Microsoft/sqlmlutils/tree/master/R/distról a helyi számítógépre. Nem kell kibontani a fájlt.
 
-1. Nyisson meg  egy parancssort, és futtassa a következő parancsokat a **RODBCext** és a **sqlmlutils** telepítéséhez a helyi számítógépen. Helyettesítse be a letöltött **sqlmlutils** zip-fájl teljes elérési útját (a példa feltételezi, hogy a fájl a dokumentumok mappában található).
+1. Nyisson meg egy **parancssort** , és futtassa a következő parancsokat a **RODBCext** és a **sqlmlutils** telepítéséhez a helyi számítógépen. Helyettesítse be a letöltött **sqlmlutils** zip-fájl teljes elérési útját (a példa feltételezi, hogy a fájl a dokumentumok mappában található).
     
     ```console
     R -e "install.packages('RODBCext', repos='https://cran.microsoft.com')"
@@ -92,7 +92,7 @@ A következő példában a karakterláncok formázására és interpolációra k
 
 ### <a name="add-the-package"></a>A csomag hozzáadása
 
-1. Nyisson meg egy RStudio, és hozzon létre egy új **R** -parancsfájlt. 
+1. Nyisson meg egy RStudio, és hozzon létre egy új **R-parancsfájlt** . 
 
 1. A következő R-kód használatával telepítse a **ragasztó** csomagot a **sqlmlutils**használatával. Helyettesítse be a saját Azure SQL Database a kapcsolatok adatait.
 
@@ -112,7 +112,7 @@ A következő példában a karakterláncok formázására és interpolációra k
 
 ### <a name="verify-the-package"></a>A csomag ellenőrzése
 
-A következő R  -szkript futtatásával ellenőrizze, hogy a RStudio telepítve van-e a kapcsolási csomag. Használja ugyanazt a **kapcsolatokat** , amelyet az előző lépésben adott meg.
+A következő R-szkript futtatásával ellenőrizze, hogy a RStudio telepítve van-e a **kapcsolási** csomag. Használja ugyanazt a **kapcsolatokat** , amelyet az előző lépésben adott meg.
 
 ```R
 r<-sql_installed.packages(connectionString = connection, fields=c("Package", "Version", "Depends", "License"))
@@ -125,11 +125,11 @@ View(r)
 
 ### <a name="use-the-package"></a>A csomag használata
 
-A csomag telepítése után egy R-szkriptben használhatja azt a **sp_execute_external_script**-on keresztül.
+A csomag telepítése után a **sp_execute_external_script**használatával R-szkriptben is használhatja.
 
 1. Nyissa meg Azure Data Studio vagy SSMS, és kapcsolódjon a Azure SQL Databasehoz.
 
-1. Futtassa a következő parancsot:
+1. Futtassa az alábbi parancsot:
 
     ```sql
     EXECUTE sp_execute_external_script @language = N'R'

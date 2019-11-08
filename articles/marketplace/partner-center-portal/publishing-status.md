@@ -5,14 +5,15 @@ author: ChJenk
 manager: evansma
 ms.author: v-chjen
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 05/30/2019
-ms.openlocfilehash: 84e8f1d7b723bb86b31abb1ff60bce5351d7d996
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 14290e000d5c6251216a6b0a0fc68c8a0897210a
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72750157"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73824032"
 ---
 # <a name="check-the-publishing-status-of-your-commercial-marketplace-offer"></a>A kereskedelmi piactér ajánlat közzétételi állapotának megtekintése
 
@@ -50,7 +51,7 @@ Ebben a lépésben az előző lépésben a tesztelési meghajtó adatai és funk
 
 Ebben a lépésben megerősítjük, hogy a vezető felügyeleti rendszer az ajánlat beállítása során megadott adatok alapján fogadja az ügyfeleket. Ez a lépés csak az érdeklődők felügyeletét engedélyező ajánlatokra alkalmazható.
 
-## <a name="certification"></a>Minősítés
+## <a name="certification"></a>Tanúsítvány
 
 Közzététel előtt a partner Centerben a kereskedelmi Piactérnek küldött ajánlatokat hitelesíteni kell. Az elküldött ajánlatok szigorú tesztelésen mennek keresztül, néhány automatizált és egyéb kézikönyvtel, beleértve az [Azure Marketplace minősítési szabályzatok](https://docs.microsoft.com/legal/marketplace/general-policies)ellenőrzését is. A közzétételi folyamat következő lépésének megkezdése előtt meg kell jelölni az ajánlati beadványok minősítését.
 
@@ -144,6 +145,6 @@ Ebben a lépésben biztosítjuk, hogy az ajánlat nyilvánosan elérhetővé vá
 
 Ha módosítani szeretné egy már közzétett ajánlatot, először frissítenie kell a meglévő ajánlatot, majd újra közzé kell tennie.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Meglévő ajánlat frissítése a kereskedelmi piactéren](./update-existing-offer.md)

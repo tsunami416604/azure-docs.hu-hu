@@ -1,40 +1,41 @@
 ---
-title: Egy virtuálisgép-ajánlat közzététele az Azure Marketplace-en
-description: Listák közzététele egy meglévő virtuális gép szükséges lépéseket az Azure Marketplace-en az alakzatot kínálnak.
+title: Virtuálisgép-ajánlat közzététele az Azure Marketplace-en
+description: Felsorolja azokat a lépéseket, amelyek szükségesek egy meglévő virtuálisgép-ajánlat közzétételéhez az Azure Marketplace-en.
 services: Azure, Marketplace, Cloud Partner Portal,
 author: v-miclar
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 08/17/2018
 ms.author: pabutler
-ms.openlocfilehash: 6796c2871cf8a5928beed2ab557cefdfe8ecaae9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1b07f3f3edab47f8f75835dffd4cc3f89f17ab63
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64938601"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73824406"
 ---
-# <a name="publish-a-virtual-machine-offer"></a>Egy virtuálisgép-ajánlat közzététele
+# <a name="publish-a-virtual-machine-offer"></a>Virtuálisgép-ajánlat közzététele
 
- Az utolsó lépés az ajánlat meghatározott a portálon és a kapcsolódó technikai eszközök létrehozása után, hogy küldje el az ajánlatot a közzétételre. A következő ábra szemlélteti a közzétételi folyamat "az élő esemény indításra" a fő lépést:
+ Az utolsó lépés, miután meghatározta az ajánlatot a portálon, és létrehozta a kapcsolódó technikai eszközöket, a közzétételhez küldje el az ajánlatot. A következő ábra a közzétételi folyamat fő lépéseit ábrázolja a "Go Live" kifejezésre:
 
-![Virtuális gép közzétételi lépéseket kínálnak.](./media/publishvm_013.png)
+![A virtuális gép ajánlatának közzétételi lépései](./media/publishvm_013.png)
 
-Az alábbi táblázat ismerteti ezeket a lépéseket, és biztosít megszakíthat egy becsült maximális időtartam:
+A következő táblázat ismerteti ezeket a lépéseket, és a befejezésük maximális becsült idejét biztosítja:
 <!-- we need to tell them that if an offer seems stuck in a step, to know that they should file a support ticket (link to support ticket doc) -->
 
 
-|  **Közzétételi lépés**           | **idő**    | **Leírás**                                                            |
+|  **Közzétételi lépés**           | **Idő**    | **Leírás**                                                            |
 |  -------------------           | --------    | ---------------                                                            |
-| Előfeltételek ellenőrzése         | 15 perc   | Információt kínálnak, és kínálnak a rendszer érvényesíti a beállításokat.                        |
-| Tesztelje a meghajtó érvényesítési (nem kötelező) | 2 óra | Ha be van jelölve a Test Drive engedélyezése, a Microsoft ellenőrzi, a Test Drive-konfiguráció, a központi telepítés és a kiválasztott régiók közötti replikáció. |
-| Tanúsítvány                  | 3 nap | Az ajánlat az Azure hitelesítő csapata által elemzett. Ebben a lépésben elvégzi a vizsgálat a vírusok, kártevő szoftverek, biztonsági, megfelelőségi és biztonsági problémákat. Ha problémát talál, visszajelzés érkezett. |
-| Kiépítés                   | 4 nap   | Virtuálisgép-ajánlat a Marketplace-en éles rendszerek replikálja a rendszer.               |
-| Formátumokat támogató csomagolási és Érdeklődők generálása regisztráció | \< 1 óra  | Ajánlat technikai eszközök ügyfél használatra vannak csomagolva, és az érdeklődő rendszerek vannak konfigurálva, és beállítása. |
-|  Közzétevő jóváhagyás             |  -        | Végső közzétevő áttekintése és az ajánlat élesíti előtt megerősítést. Az ajánlat (az ajánlat információk lépések) a kijelölt előfizetésekben telepíthet, hogy megfelelnek-e a szükséges összes követelmény.  |
-| Kiépítés                   | 4 nap | Véglegesített Virtuálisgép-ajánlat marketplace éles rendszerekre és régióban replikálja a rendszer. | 
-| Élő                           | 4 nap | Virtuálisgép-ajánlat, amely a, a szükséges régiók replikálja, és nyilvánosan elérhetővé. |
+| Előfeltételek ellenőrzése         | 15 perc   | Az ajánlatra vonatkozó információk és az ajánlat beállításainak ellenőrzése.                        |
+| Tesztelési meghajtó ellenőrzése (nem kötelező) | 2 óra | Ha a tesztvezetés engedélyezését választotta, a Microsoft ellenőrzi a tesztelési meghajtó konfigurációját, a telepítést és a replikálást a kiválasztott régiókban. |
+| Tanúsítvány                  | 3 nap | Az ajánlatot az Azure minősítési csapat elemzi. Ez a lépés a vírusok, a kártevők, a biztonsági megfelelőség és a biztonsági problémák vizsgálatát végzi. A rendszer visszajelzést küld, ha problémát talál. |
+| Kiépítés                   | 4 nap   | A virtuálisgép-ajánlat a piactér éles rendszereiben van replikálva.               |
+| Csomagolás és vezető generáció regisztrációja | \< 1 óra  | Az ajánlat technikai eszközei az ügyfelek általi használatra vannak csomagolva, és a vezető rendszerek konfigurálva vannak és konfigurálhatók. |
+|  Közzétevő PM             |  -        | A kiadó végleges felülvizsgálata és megerősítése az ajánlat életbe lépését megelőzően. Az ajánlatot a kiválasztott előfizetésekben is üzembe helyezheti (az ajánlati információk lépéseiben) annak ellenőrzéséhez, hogy az megfelel-e az összes követelménynek.  |
+| Kiépítés                   | 4 nap | A véglegesített virtuálisgép-ajánlat a piactér éles rendszereiben és régióiban replikálódik. | 
+| Élő                           | 4 nap | A VM-ajánlat megjelent, replikálva van a szükséges régiókban, és elérhetővé válik a nyilvánosság számára. |
 |  |  |
 
-Lehetővé teszi a folyamat befejezéséhez legfeljebb 16 napon.  Nyissa meg a fenti közzétételi lépéseket, miután a Virtuálisgép-ajánlat jelenik meg a [a Microsoft Azure Marketplace-en](https://azuremarketplace.microsoft.com/marketplace/). 
+A folyamat befejezéséhez legfeljebb 16 napig engedélyezze a műveletet.  A közzétételi lépések elvégzése után a virtuálisgép-ajánlat megjelenik a [Microsoft Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/). 
 

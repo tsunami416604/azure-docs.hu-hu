@@ -1,5 +1,5 @@
 ---
-title: A Intelligent Insights teljesítményével kapcsolatos hibák elhárítása Azure SQL Database
+title: Teljesítménnyel kapcsolatos problémák elhárítása Intelligent Insights
 description: A Intelligent Insights segítségével elháríthatja Azure SQL Database teljesítménnyel kapcsolatos problémákat.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 01/25/2019
-ms.openlocfilehash: fef1ed386dbf3acccc09b9bba743b6b33492da0e
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: b6ec1952d730b6515032572def65806a1ccbc0b2
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73689720"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73810368"
 ---
 # <a name="troubleshoot-azure-sql-database-performance-issues-with-intelligent-insights"></a>A Intelligent Insights teljesítményével kapcsolatos hibák elhárítása Azure SQL Database
 
@@ -280,7 +280,7 @@ További információ: [how SQL Server meggátolja a terv-regressziók megtervez
 
 Ez a észlelhető teljesítményi minta azt a feltételt jelzi, hogy az adatbázis hatókörű konfigurációjának változása a teljesítmény-regressziót okozza, amelyet a rendszer az elmúlt hét napos adatbázis-munkaterhelési viselkedéshez képest észlelt. Ez a minta azt jelzi, hogy az adatbázis-hatókörű konfigurációban történt legutóbbi módosítás nem hasznosnak tűnik az adatbázis teljesítményére nézve.
 
-Az adatbázis-hatókörű konfiguráció módosításait minden egyes adatbázishoz be lehet állítani. Ezt a konfigurációt eseti alapon kell használni az adatbázis egyedi teljesítményének optimalizálása érdekében. Az egyes adatbázisokhoz a következő beállításokat lehet konfigurálni: MAXDOP, LEGACY_CARDINALITY_ESTIMATION, PARAMETER_SNIFFING, QUERY_OPTIMIZER_HOTFIXES és CLEAR PROCEDURE_CACHE.
+Az adatbázis-hatókörű konfiguráció módosításait minden egyes adatbázishoz be lehet állítani. Ezt a konfigurációt eseti alapon kell használni az adatbázis egyedi teljesítményének optimalizálása érdekében. Az egyes adatbázisokhoz a következő beállítások konfigurálhatók: MAXDOP, LEGACY_CARDINALITY_ESTIMATION, PARAMETER_SNIFFING, QUERY_OPTIMIZER_HOTFIXES és CLEAR PROCEDURE_CACHE.
 
 ### <a name="troubleshooting"></a>Hibaelhárítás
 

@@ -1,5 +1,5 @@
 ---
-title: SQL Database XEvent
+title: XEvent gyűrűs puffer kódja
 description: Egy Transact-SQL-kódrészletet biztosít, amely egyszerűen és gyorsan használható a gyűrűs puffer céljának használatával Azure SQL Databaseban.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: MightyPen
 ms.author: genemi
 ms.reviewer: jrasnik
 ms.date: 12/19/2018
-ms.openlocfilehash: 8fd04cac394f05a9db18e84117a8647c1a17ba30
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 7adffac045ddb2ba369993b1b805e3ce2304fb38
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73686806"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73822317"
 ---
 # <a name="ring-buffer-target-code-for-extended-events-in-sql-database"></a>A kibővített eseményekhez tartozó gyűrűs pufferek SQL Database
 
@@ -27,15 +27,15 @@ A tesztelés során egy teljes kódrészletet szeretne használni a kibővített
 Ez a témakör egy Transact-SQL-kód mintát mutat be, amely a következőket tartalmazza:
 
 1. Létrehoz egy táblázatot, amely a következővel szemlélteti az-t:.
-2. Munkamenetet hoz létre egy meglévő kiterjesztett eseményhez, azaz a **SQLServer. SQL _statement_starting**.
+2. Munkamenetet hoz létre egy meglévő kiterjesztett eseményhez, nevezetesen: **SQLServer. sql_statement_starting**.
    
    * Az esemény olyan SQL-utasításokra korlátozódik, amelyek egy adott frissítési karakterláncot tartalmaznak: a **(z) "% Update tabEmployee%" utasítást**.
-   * Úgy dönt, hogy az esemény kimenetét egy gyűrűs pufferbe, azaz **package0. ring_buffer**típusú célpontba küldi.
+   * Úgy dönt, hogy elküldi az esemény kimenetét egy gyűrűs puffer típusú célhoz, azaz **package0. ring_buffer**.
 3. Elindítja az esemény-munkamenetet.
 4. Néhány egyszerű SQL UPDATE-utasítást is kiad.
 5. Egy SQL SELECT utasítás kiírása az esemény kimenetének a gyűrűs pufferből való lekéréséhez.
    
-   * a **sys. DM _xe_database_session_targets** és más dinamikus felügyeleti nézetek (DMV-EK) vannak csatlakoztatva.
+   * a **sys. dm_xe_database_session_targets** és más dinamikus felügyeleti nézetek (DMV-EK) vannak csatlakoztatva.
 6. Leállítja az esemény-munkamenetet.
 7. Eldobja a gyűrűs puffer célját, hogy felszabadítsa az erőforrásait.
 8. Eldobja az esemény-munkamenetet és a bemutató táblát.
@@ -54,10 +54,10 @@ Ez a témakör egy Transact-SQL-kód mintát mutat be, amely a következőket ta
 
 ## <a name="code-sample"></a>Kódminta
 
-Nagyon kicsi módosítás esetén a következő gyűrűs puffer kód Azure SQL Database vagy Microsoft SQL Server is futtatható. A különbség a "_database" csomópont jelenléte a (z) 5. lépésben a FROM záradékban használt dinamikus felügyeleti nézetek (DMV) nevében. Például:
+Nagyon kicsi módosítás esetén a következő gyűrűs puffer kód Azure SQL Database vagy Microsoft SQL Server is futtatható. A különbség a (z) "_database" csomópont jelenléte a (z) 5. lépésben a FROM záradékban használt dinamikus felügyeleti nézetek (DMV) nevében. Például:
 
-* sys. DM _xe<strong>_database</strong>_session_targets
-* sys. DM _xe_session_targets
+* sys. dm_xe<strong>_database</strong>_session_targets
+* sys. dm_xe_session_targets
 
 &nbsp;
 
@@ -218,9 +218,9 @@ GO
 
 A SSMS. exe fájlt használtuk a mintakód futtatásához.
 
-Az eredmények megtekintéséhez a **target_data_XML**oszlop fejlécére kattintott a cellára.
+Az eredmények megtekintéséhez a **target_data_XML**oszlop fejléc alatti cellára kattintott.
 
-Ezután az eredmények ablaktáblán a cellára kattintott az oszlop fejlécének **target_data_XML**. Ehhez kattintson a létrehozott egy másik fájl fülre a SSMS. exe fájlban, amelyben az eredmény cellájának tartalma XML-ként jelenik meg.
+Ezután az eredmények ablaktáblán rákattintott a cellára **target_data_XML**oszlop fejlécében. Ehhez kattintson a létrehozott egy másik fájl fülre a SSMS. exe fájlban, amelyben az eredmény cellájának tartalma XML-ként jelenik meg.
 
 A kimenet az alábbi blokkban látható. Úgy néz ki, hogy hosszú, de csak két **\<event >** elemet.
 

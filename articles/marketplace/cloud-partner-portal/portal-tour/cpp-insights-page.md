@@ -1,43 +1,44 @@
 ---
-title: Azure Marketplace-en oldalán
-description: Az Insights oldalon, a Cloud Partner portálra, az Azure Marketplace-en áttekintése.
+title: Az Azure Marketplace-ről szóló áttekintések lapja
+description: Az Azure Marketplace Cloud Partner Portal betekintési oldalának áttekintése.
 services: Azure, Marketplace, Cloud Partner Portal,
 author: v-miclar
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/14/2018
 ms.author: pabutler
-ms.openlocfilehash: 2cbe3b790197c3f71305e4cb21d0f37fe0404511
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b1b8d716beec17b7da82968ede8d24ced348e04a
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64943487"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73821526"
 ---
 # <a name="insights-page"></a>Megállapítások oldal
 
-A [ **Insights** ](https://cloudpartner.azure.com/#insights) oldal tartalmaz a következő eljárások egyikét az irányítópultokat a megértése és a lehető legnagyobb értékesítés a marketplace-ajánlat.  Minden irányítópult egy fülre az oldal tetején az azonos nevű keresztül érhető el.
+Az [**Áttekintés oldalon a**](https://cloudpartner.azure.com/#insights) következő irányítópultok érhetők el, amelyekkel megismerheti és maximalizálhatja a Piactéri ajánlatok értékesítését.  Az irányítópultok az oldal tetején található azonos nevű lapon érhetők el.
 
 
 |  **Irányítópult**    |  **Megjelenített tartalom**               |
 |  -------------    |  ---------------------               |
-| **összegzés**       | gráfok, trendeket és összesített adatokat, amely összefoglalja a Marketplace-beli tevékenység a kiadó ajánlatok értékét |
-| **Küldenie jóváhagyásra cége kifizetési**        | kifizetések és a kapcsolódó grafikus és a letölthető tranzakciók |
-| **Rendelések létrehozása és használata** | rendelések és használati adatok grafikus és letölthető formátumban |
-| **Ügyfél**      | ügyfél-információkat, többek között azok beszerzési profil |
-| **Üzembe helyezés**    | üzembe helyezés sikeres és sikertelen információt grafikus és esemény-szintű formátumban |
-| **Letöltések**     | az elmúlt 30 napra vonatkozóan a letöltési kérelmek listája |
-| **Elemzés**     | webes elemzés és Kampányteljesítmény elemzése |
+| **Összefoglalás**       | a kiadói ajánlatokhoz kapcsolódó Piactéri tevékenységet összefoglaló összesített adatok diagramjai, trendjei és értékei |
+| **Kifizetési**        | kifizetések és kapcsolódó tranzakciók grafikus és letölthető formátumokban |
+| **Rendelések & használat** | megrendelések és használati információk grafikus és letölthető formátumokban |
+| **Ügyfél**      | vásárlói adatok, beleértve a beszerzési profilt |
+| **Üzembe helyezés**    | sikeres üzembe helyezési és meghibásodási információk grafikus és eseményvezérelt formátumokban |
+| **Letölti**     | az elmúlt 30 napban letöltött kérelmek listája |
+| **Elemzés**     | a webes elemzések összefoglalása és a kampány teljesítményének elemzése |
 |  |  |
 
 
-## <a name="summary-dashboard"></a>Összegzési irányítópult
-A Hálózatösszegzés irányítópult az első lapra, és az alapértelmezett lapon jelenik meg, nyissa meg a Insights lapot.  Ez a szándékos tervezés jeleníti meg, hogy az irányítópult áttekintést nyújt a kiadók a legszélesebb körű ajánlatait értékesítési tevékenységét.  A normalizált használati trend; grafikus ábrázolását biztosítja havi használat; a földrajzi piaci, ajánlat és ügyfél; felkapott használat és a küldenie jóváhagyásra cége kifizetési trendjét.  A kimenet a kezdő és záró dátuma, amíg az elemzés megadásával testre szabható.  Az alábbi képen egy példa Hálózatösszegzés irányítópult Contoso a június 2018 augusztus keresztül.
+## <a name="summary-dashboard"></a>Összefoglaló irányítópult
+Az összegzési irányítópult az első lap, amely az Alapértelmezések lapon jelenik meg, amikor megnyitja az adatkeresések lapot.  Ez a szándékos kialakítás azt tükrözi, hogy ez az irányítópult a kiadók számára az ajánlatok értékesítési tevékenységének legszélesebb áttekintését biztosítja.  A normalizált használati trend grafikus ábrázolásait biztosítja. havi használat; a földrajzi piac, az ajánlat és az ügyfél általi használat tendenciája; és a kifizetési trend.  A kimenet testreszabható az elemzés kezdő és záró dátumának megadásával.  Az alábbi képen egy példa a contoso összefoglaló irányítópultja a 2018-es év júniusára.
 
-![Hálózatösszegzés irányítópult értékesítői Insights lap](./media/insights-page1.png)
+![Az értékesítői információk összefoglaló lapja](./media/insights-page1.png)
 
 
 ## <a name="next-steps"></a>További lépések
 
-Optimalizálja az értékesítését az értékesítői Insights használatával kapcsolatos további információkért lásd: a szakasz [értékesítői Insights – első lépések](./../../cloud-partner-portal-orig/si-getting-started.md).
+További információ az értékesítési információk értékesítésének optimalizálásáról: [első lépések az eladói](./../../cloud-partner-portal-orig/si-getting-started.md)információk című részben.
 

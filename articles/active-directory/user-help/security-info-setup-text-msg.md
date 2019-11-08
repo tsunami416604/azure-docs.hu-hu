@@ -1,5 +1,5 @@
 ---
-title: Biztonsági adatok (előzetes verzió) beállítása szöveges üzenetküldés használatához – Azure Active Directory | Microsoft Docs
+title: A biztonsági adatok (előzetes verzió) beállítása szöveges üzenetekhez – Azure AD
 description: A biztonsági adatok beállítása az identitás szöveges üzenetküldéssel és a mobileszköz használatával történő ellenőrzéséhez.
 services: active-directory
 author: eross-msft
@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 02/13/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f3544094da72c1c0f854f3d02a34f8540ad2f784
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 5a4be99a84964b7a55448692385d027262ecfec3
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73160885"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73803838"
 ---
 # <a name="set-up-security-info-preview-to-use-text-messaging"></a>A biztonsági adatok (előzetes verzió) beállítása szöveges üzenetküldés használatához
 
@@ -90,11 +90,11 @@ Ha azt szeretné, hogy a szöveges üzenetkezelés alapértelmezett módszer leg
 
     ![Az alapértelmezett bejelentkezési módszer hivatkozásának módosítása](media/security-info/securityinfo-myprofile-phonetext-defaultchange.png)
 
-2. Válassza a **telefon-szöveg ( *_your_phone_number_* )** lehetőséget az elérhető módszerek legördülő listájában, majd válassza a **Confirm (megerősítés**) lehetőséget.
+2. Válassza a **telefonos szöveg ( *_your_phone_number_* )** lehetőséget az elérhető módszerek legördülő listájában, majd válassza a **Confirm (megerősítés**) lehetőséget.
 
     ![Válassza ki a metódust az alapértelmezett bejelentkezéshez](media/security-info/securityinfo-myprofile-phonetext-changeddefault.png)
 
-    A bejelentkezéshez használt alapértelmezett módszer a **telefonos szövegben ( *_your_phone_number_* )** .
+    A bejelentkezéshez használt alapértelmezett módszer a **telefonos szöveg ( *_your_phone_number_* )** módosításaihoz.
 
 ## <a name="additional-security-info-methods"></a>További biztonsági információs módszerek
 
@@ -113,7 +113,7 @@ További beállításokkal is megtudhatja, hogy a szervezet hogyan forduljon a s
     >[!Note]
     >Ha a lehetőségek némelyike hiányzik, valószínűleg azért, mert a szervezet nem engedélyezi ezeket a metódusokat. Ebben az esetben ki kell választania egy elérhető módszert, vagy kapcsolatba kell lépnie a rendszergazdával további segítségért.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Ha elvesztette vagy elfelejtette a jelszavát, állítsa vissza a jelszót a [jelszó-visszaállítási portálról](https://passwordreset.microsoftonline.com/) , vagy kövesse a [munkahelyi vagy iskolai jelszó alaphelyzetbe állítása](active-directory-passwords-update-your-own-password.md) című cikk lépéseit.
 

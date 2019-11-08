@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/24/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 698702e24f1f6dfc6b94b75de77c08156832e566
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: e1f7aeb5615c1a22c1970f118c24c996ac936870
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73177842"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73826825"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>Az Azure File Sync üzembe helyezésének megtervezése
 A Azure File Sync segítségével központilag kezelheti a szervezete fájlmegosztást Azure Filesban, miközben megőrizheti a helyszíni fájlkiszolgáló rugalmasságát, teljesítményét és kompatibilitását. Az Azure File Sync a Windows Servert az Azure-fájlmegosztás gyors gyorsítótárává alakítja át. A Windows Serveren elérhető bármely protokoll használatával helyileg férhet hozzá az adataihoz, beleértve az SMB-t, az NFS-t és a FTPS is. Tetszőleges számú gyorsítótárral rendelkezhet a világ minden tájáról.
@@ -143,7 +143,7 @@ Az eredmények CSV-ben való megjelenítéséhez:
 |-|-|
 | Desktop. ini | A rendszerfájlra vonatkozó fájl |
 | ethumbs. db $ | Ideiglenes fájl a miniatűrökhöz |
-| ~$ \*. \* | Ideiglenes Office-fájl |
+| ~$\*.\* | Ideiglenes Office-fájl |
 | \*. tmp | Ideiglenes fájl |
 | \*. laccdb | ADATBÁZIS-zárolási fájl elérése|
 | 635D02A9D91C401B97884B82B3BCDAEA.* | Belső szinkronizáló fájl|
@@ -158,7 +158,7 @@ A Windows Server feladatátvételi fürtszolgáltatást Azure File Sync támogat
 > A Azure File Sync ügynöknek telepítve kell lennie a feladatátvevő fürt minden csomópontján a szinkronizálás megfelelő működéséhez.
 
 ### <a name="data-deduplication"></a>Az deduplikálás
-**Ügynök verziója 5.0.2.0 vagy újabb**   
+**Windows server 2016 és Windows server 2019**   
 Az deduplikálás olyan köteteken támogatott, amelyeken engedélyezve van a felhőalapú rétegek használata a Windows Server 2016 rendszeren. Ha engedélyezi az deduplikálás szolgáltatást egy olyan köteten, amelyen engedélyezve van a felhőalapú réteg, a további tárhelyek kiépítésének hiányában további fájlokat is gyorsítótárazhat a helyszínen. 
 
 Ha az adatok deduplikálása engedélyezve van egy olyan köteten, amelyen engedélyezve van a felhőalapú rétegek használata, a deduplikáció optimalizált fájlokat a rendszer a felhőre vonatkozó házirend-beállítások alapján a normál fájlhoz hasonló módon fogja összeállítani. Ha a deduplikáció optimalizált fájlok lettek kiválasztva, az adatok deduplikálása adatgyűjtési feladatsor automatikusan lefuttatja a lemezterület felszabadítását a köteten lévő más fájlok által már nem hivatkozott felesleges adattömbök eltávolításával.
@@ -168,8 +168,8 @@ Vegye figyelembe, hogy a mennyiségi megtakarítás csak a kiszolgálón érvén
 > [!Note]  
 > Az deduplikálás és a felhőalapú rétegek jelenleg nem támogatottak ugyanazon a köteten a 2019-as kiszolgálón, mert egy jövőbeli frissítésben kijavított hiba történik.
 
-**Windows Server 2012 R2 vagy régebbi verziójú ügynök**  
-Azoknál a köteteknél, amelyeken nincs engedélyezve a felhőalapú rétegek használata, Azure File Sync támogatja a Windows Server-alapú Adatmásolást a köteten.
+**Windows Server 2012 R2**  
+A Azure file Sync nem támogatja az deduplikálás és a felhőalapú rétegek használatát ugyanazon a köteten. Ha egy köteten engedélyezve van az deduplikálás, a Felhőbeli rétegek letiltását le kell tiltani. 
 
 **Megjegyzések**
 - Ha a Azure file Sync ügynök telepítése előtt telepíti az deduplikálás szolgáltatást, a rendszer újraindítást igényel az deduplikálás és a felhőalapú rétegek egyazon köteten történő támogatásához.
@@ -211,7 +211,7 @@ Nem támogatott a Sysprep használata olyan kiszolgálón, amelyen a Azure File 
 Ha a felhő-rétegek engedélyezve vannak egy kiszolgálói végponton, a rendszer kihagyja a többszintes fájlokat, és nem indexeli a Windows Search. A nem rétegű fájlok indexelése megfelelő.
 
 ### <a name="antivirus-solutions"></a>Vírusvédelmi megoldások
-Mivel a víruskereső úgy működik, hogy a fájlokat az ismert kártékony kódok vizsgálatával végzi, a víruskereső termék a többplatformos fájlok visszahívását okozhatja. A Azure File Sync ügynök 4,0-es és újabb verzióiban a többplatformos fájlok a biztonságos Windows-attribútum FILE_ATTRIBUTE_RECALL_ON_DATA_ACCESS vannak beállítva. Javasoljuk, hogy a szoftver gyártójával való tanácsadással megtudja, hogyan konfigurálhatja a megoldását úgy, hogy kihagyja a fájlok olvasását ezzel az attribútummal (sok minden automatikusan). 
+Mivel a víruskereső úgy működik, hogy a fájlokat az ismert kártékony kódok vizsgálatával végzi, a víruskereső termék a többplatformos fájlok visszahívását okozhatja. A Azure File Sync ügynök 4,0-es és újabb verzióiban a többplatformos fájlok a biztonságos Windows-attribútumot FILE_ATTRIBUTE_RECALL_ON_DATA_ACCESS beállítani. Javasoljuk, hogy a szoftver gyártójával való tanácsadással megtudja, hogyan konfigurálhatja a megoldását úgy, hogy kihagyja a fájlok olvasását ezzel az attribútummal (sok minden automatikusan). 
 
 A Microsoft belső vírusvédelmi megoldásai, a Windows Defender és a System Center Endpoint Protection (SCEP) egyaránt automatikusan kihagyják az ezzel az attribútummal rendelkező fájlok olvasását. Teszteltük őket, és azonosított egy kisebb problémát: amikor hozzáad egy kiszolgálót egy meglévő szinkronizálási csoporthoz, a 800 bájtnál kisebb fájlokat a rendszer visszahívja (letölti) az új kiszolgálón. Ezek a fájlok az új kiszolgálón maradnak, és nem lesznek feldolgozva, mivel nem felelnek meg a rétegek méretére vonatkozó követelménynek (> 64 kb).
 
@@ -247,13 +247,13 @@ Nem kell más HSM-megoldásokat használni a Azure File Synchoz.
 ## <a name="region-availability"></a>Régiónkénti elérhetőség
 Azure File Sync csak a következő régiókban érhető el:
 
-| Region (Régió) | Adatközpont helye |
+| Régió | Adatközpont helye |
 |--------|---------------------|
-| Ausztrália keleti régiója | Új-Dél-Wales |
+| Kelet-Ausztrália | Új-Dél-Wales |
 | Délkelet-Ausztrália | Victoria |
 | Dél-Brazília | Sao Paulo állam |
 | Közép-Kanada | Toronto |
-| Kelet-Kanada | Quebec City |
+| Kelet-Kanada | Quebec város |
 | Közép-India | Pune |
 | USA középső régiója | Iowa |
 | Kelet-Ázsia | Hongkong (KKT) |
@@ -262,7 +262,7 @@ Azure File Sync csak a következő régiókban érhető el:
 | Közép-Franciaország | Párizs |
 | Dél-Franciaország * | Marseille |
 | Korea középső régiója | Szöul |
-| Dél-Korea | Puszan |
+| Korea déli régiója | Busan |
 | Kelet-Japán | Tokió, Szaitama |
 | Nyugat-Japán | Oszaka |
 | USA északi középső régiója | Illinois |
@@ -272,17 +272,17 @@ Azure File Sync csak a következő régiókban érhető el:
 | USA déli középső régiója | Texas |
 | Dél-India | Csennai |
 | Délkelet-Ázsia | Szingapúr |
-| Egyesült Királyság déli régiója | London |
-| Egyesült Királyság nyugati régiója | Cardiff |
-| US Gov Arizona | Arizona |
-| US Gov Texas | Texas |
-| US Gov Virginia | Virginia |
+| Az Egyesült Királyság déli régiója | London |
+| Az Egyesült Királyság nyugati régiója | Cardiff |
+| USA-beli államigazgatás – Arizona | Arizona |
+| USA-beli államigazgatás – Texas | Texas |
+| USA-beli államigazgatás – Virginia | Virginia |
 | Egyesült Arab Emírségek északi régiója | Dubai |
 | Az Egyesült Arab Emírségek középső régiója * | Abu Dzabi |
 | Nyugat-Európa | Hollandia |
 | USA nyugati középső régiója | Wyoming |
 | USA nyugati régiója | Kalifornia |
-| USA 2. nyugati régiója | Washington |
+| USA nyugati régiója, 2. | Washington |
 
 A Azure File Sync csak olyan Azure-fájlmegosztás szinkronizálását támogatja, amely ugyanabban a régióban található, mint a Storage Sync szolgáltatás.
 
@@ -298,8 +298,8 @@ A földrajzi redundáns tárolás és a Azure File Sync közötti feladatátvét
 
 | Elsődleges régió      | Párosított régió      |
 |---------------------|--------------------|
-| Ausztrália keleti régiója      | Délkelet-Ausztrália|
-| Délkelet-Ausztrália | Ausztrália keleti régiója     |
+| Kelet-Ausztrália      | Délkelet-Ausztrália|
+| Délkelet-Ausztrália | Kelet-Ausztrália     |
 | Dél-Brazília        | USA déli középső régiója   |
 | Közép-Kanada      | Kelet-Kanada        |
 | Kelet-Kanada         | Közép-Kanada     |
@@ -312,8 +312,8 @@ A földrajzi redundáns tárolás és a Azure File Sync közötti feladatátvét
 | Dél-Franciaország        | Közép-Franciaország     |
 | Kelet-Japán          | Nyugat-Japán         |
 | Nyugat-Japán          | Kelet-Japán         |
-| Korea középső régiója       | Dél-Korea        |
-| Dél-Korea         | Korea középső régiója      |
+| Korea középső régiója       | Korea déli régiója        |
+| Korea déli régiója         | Korea középső régiója      |
 | Észak-Európa        | Nyugat-Európa        |
 | USA északi középső régiója    | USA déli középső régiója   |
 | Dél-Afrika északi régiója  | Dél-Afrika nyugati régiója  |
@@ -321,20 +321,20 @@ A földrajzi redundáns tárolás és a Azure File Sync közötti feladatátvét
 | USA déli középső régiója    | USA északi középső régiója   |
 | Dél-India         | Közép-India      |
 | Délkelet-Ázsia      | Kelet-Ázsia          |
-| Egyesült Királyság déli régiója            | Egyesült Királyság nyugati régiója            |
-| Egyesült Királyság nyugati régiója             | Egyesült Királyság déli régiója           |
-| US Gov Arizona      | US Gov Texas       |
-| US Gov Iowa         | US Gov Virginia    |
-| US Gov Virginia      | US Gov Texas       |
+| Az Egyesült Királyság déli régiója            | Az Egyesült Királyság nyugati régiója            |
+| Az Egyesült Királyság nyugati régiója             | Az Egyesült Királyság déli régiója           |
+| USA-beli államigazgatás – Arizona      | USA-beli államigazgatás – Texas       |
+| US Gov Iowa         | USA-beli államigazgatás – Virginia    |
+| USA-beli államigazgatás – Virginia      | USA-beli államigazgatás – Texas       |
 | Nyugat-Európa         | Észak-Európa       |
-| USA nyugati középső régiója     | USA 2. nyugati régiója          |
+| USA nyugati középső régiója     | USA nyugati régiója, 2.          |
 | USA nyugati régiója             | USA keleti régiója            |
-| USA 2. nyugati régiója           | USA nyugati középső régiója    |
+| USA nyugati régiója, 2.           | USA nyugati középső régiója    |
 
 ## <a name="azure-file-sync-agent-update-policy"></a>Az Azure File Sync ügynökének frissítési szabályzata
 [!INCLUDE [storage-sync-files-agent-update-policy](../../../includes/storage-sync-files-agent-update-policy.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [A tűzfal és a proxy beállításainak megfontolása](storage-sync-files-firewall-and-proxy.md)
 * [Az Azure Files üzembe helyezésének megtervezése](storage-files-planning.md)
 * [Azure Files üzembe helyezése](storage-files-deployment-guide.md)

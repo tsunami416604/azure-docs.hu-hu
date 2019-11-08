@@ -1,5 +1,5 @@
 ---
-title: Földrajzilag elosztott Azure SQL Database-megoldás implementálása | Microsoft Docs
+title: Földrajzilag elosztott megoldás implementálása
 description: Ismerje meg, hogyan konfigurálhatja az Azure SQL-adatbázist és-alkalmazást a feladatátvételhez egy replikált adatbázison, és tesztelheti a feladatátvételt.
 services: sql-database
 ms.service: sql-database
@@ -11,21 +11,21 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 03/12/2019
-ms.openlocfilehash: 4a21fe3ed15d1dc2550f6863611b27d2b36c5c51
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 51380d312c778380602c64cac766b050511cf994
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68568100"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73810929"
 ---
-# <a name="tutorial-implement-a-geo-distributed-database"></a>Oktatóanyag: Földrajzilag elosztott adatbázis implementálása
+# <a name="tutorial-implement-a-geo-distributed-database"></a>Oktatóanyag: földrajzilag elosztott adatbázis implementálása
 
 Konfiguráljon egy Azure SQL Database-adatbázist és-alkalmazást a feladatátvételhez egy távoli régióba, és tesztelje a feladatátvételi tervet. Az alábbiak végrehajtásának módját ismerheti meg:
 
 > [!div class="checklist"]
-> - Feladatátvételi [csoport](sql-database-auto-failover-group.md) létrehozása
+> - [Feladatátvételi csoport](sql-database-auto-failover-group.md) létrehozása
 > - Java-alkalmazás futtatása Azure SQL Database-adatbázis lekérdezéséhez
-> - Feladatátvételi teszt
+> - Feladatátvétel tesztelése
 
 Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
 
@@ -101,7 +101,7 @@ Feladatátvételi csoport létrehozásához futtassa a következő parancsfájlt
        -FailoverGroupName $myfailovergroupname
    ```
 
-A Geo-replikálási beállítások a Azure Portalban is megváltoztathatók, ha kiválasztja az adatbázist, majd a **Beállítások** > **geo-replikálás**lehetőséget.
+A Geo-replikálási beállítások a Azure Portalban is megváltoztathatók, ha kijelöli az adatbázist, majd a **beállítások** > a **földrajzi replikálást**.
 
 ![Geo-replikálási beállítások](./media/sql-database-implement-geo-distributed-database/geo-replication.png)
 
@@ -123,7 +123,7 @@ A Geo-replikálási beállítások a Azure Portalban is megváltoztathatók, ha 
 
 1. A kedvenc szerkesztője segítségével nyissa meg a *Pom. XML* fájlt a Project mappában.
 
-1. A következő `dependency` szakasz hozzáadásával adja hozzá a Microsoft JDBC-illesztőprogramot SQL Server-függőséghez. A függőséget a nagyobb `dependencies` szakaszba kell beilleszteni.
+1. A következő `dependency` szakasz hozzáadásával adja hozzá a SQL Server-függőséghez tartozó Microsoft JDBC-illesztőprogramot. A függőséget be kell illeszteni a nagyobb `dependencies` szakaszba.
 
    ```xml
    <dependency>
@@ -133,7 +133,7 @@ A Geo-replikálási beállítások a Azure Portalban is megváltoztathatók, ha 
    </dependency>
    ```
 
-1. Adja meg a Java verzióját a szakasz `properties` `dependencies` utáni szakasz hozzáadásával:
+1. Adja meg a Java-verziót a `properties` szakasznak a `dependencies` szakasz után való hozzáadásával:
 
    ```xml
    <properties>
@@ -142,7 +142,7 @@ A Geo-replikálási beállítások a Azure Portalban is megváltoztathatók, ha 
    </properties>
    ```
 
-1. A jegyzékfájlok támogatásához adja `build` hozzá a szakaszt `properties` a szakasz után:
+1. A jegyzékfájlok támogatásához adja hozzá a `build` szakaszt a `properties` szakasz után:
 
    ```xml
    <build>
@@ -296,7 +296,7 @@ A Geo-replikálási beállítások a Azure Portalban is megváltoztathatók, ha 
    ...
    ```
 
-## <a name="test-failover"></a>Feladatátvételi teszt
+## <a name="test-failover"></a>Feladatátvétel tesztelése
 
 Futtassa a következő parancsfájlokat a feladatátvétel szimulálásához, és figyelje meg az alkalmazás eredményét. Figyelje meg, hogy egyes lapkák és kiválasztások sikertelenek lesznek az adatbázis áttelepítése során.
 
@@ -336,7 +336,7 @@ Ebben az oktatóanyagban egy Azure SQL Database-adatbázist és-alkalmazást kon
 > [!div class="checklist"]
 > - Georeplikációs feladatátvételi csoport létrehozása
 > - Java-alkalmazás futtatása Azure SQL Database-adatbázis lekérdezéséhez
-> - Feladatátvételi teszt
+> - Feladatátvétel tesztelése
 
 Folytassa a következő oktatóanyaggal, amely bemutatja, hogyan migrálhat a DMS használatával.
 

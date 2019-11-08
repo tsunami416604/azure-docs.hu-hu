@@ -1,5 +1,5 @@
 ---
-title: Felügyelt példányok naplózása Azure SQL Database
+title: Felügyelt példány naplózása
 description: Megtudhatja, hogyan kezdheti meg Azure SQL Database felügyelt példányok naplózását a T-SQL használatával
 services: sql-database
 ms.service: sql-database
@@ -13,12 +13,12 @@ author: barmichal
 ms.author: mibar
 ms.reviewer: vanto
 ms.date: 04/08/2019
-ms.openlocfilehash: 915d804cd3ae67848b4b9aa2f50fb5f1b4f1f092
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 41d632b145a7187dd0aeaab740cd8546a3955e7f
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73689426"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73818994"
 ---
 # <a name="get-started-with-azure-sql-database-managed-instance-auditing"></a>Ismerkedés a Azure SQL Database felügyelt példányok naplózásával
 
@@ -202,7 +202,7 @@ A felügyelt példányokból származó naplókat még hubokba vagy Azure Monito
 
 Több módszer is használható a blob-naplózási naplók megtekintésére.
 
-- A rendszerfunkció `sys.fn_get_audit_file` (T-SQL) segítségével táblázatos formátumban visszaküldheti a naplózási adatokat. A függvény használatával kapcsolatos további információkért tekintse meg a [sys. fn_get_audit_file dokumentációját](https://docs.microsoft.com/sql/relational-databases/system-functions/sys-fn-get-audit-file-transact-sql).
+- A rendszerfunkció `sys.fn_get_audit_file` (T-SQL) segítségével táblázatos formátumban visszaküldheti a naplózási adatokat. A függvény használatáról további információt a [sys. fn_get_audit_file dokumentációjában](https://docs.microsoft.com/sql/relational-databases/system-functions/sys-fn-get-audit-file-transact-sql)talál.
 
 - A naplókat a [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/)eszközzel is megismerheti. Az Azure Storage-ban a naplózási naplók a naplófájlok tárolására megadott tárolóban lévő blob-fájlok gyűjteményében lesznek mentve. A tárolási mappa hierarchiájának, az elnevezési konvencióknak és a napló formátumának további részleteiért tekintse meg a [blob naplózási napló formátumának referenciáját](https://go.microsoft.com/fwlink/?linkid=829599).
 
@@ -229,7 +229,7 @@ A Azure SQL Database és a SQL Server adatbázisaiban található adatbázisok n
 
 A felügyelt példány XEvent-naplózása támogatja az Azure Blob Storage-célokat. A fájl-és Windows-naplók **nem támogatottak**.
 
-Az Azure Blob Storage-ba történő naplózás `CREATE AUDIT` szintaxisának főbb eltérései a következők:
+Az Azure Blob Storage-ba való naplózás `CREATE AUDIT` szintaxisának főbb eltérései a következők:
 
 - A rendszer új szintaxist `TO URL` biztosít, és lehetővé teszi az Azure Blob Storage-tároló URL-címének megadását, ahol a `.xel` fájlok vannak elhelyezve.
 - A rendszer új szintaxist `TO EXTERNAL MONITOR` biztosít ahhoz, hogy még a hub és a Azure Monitor naplózza a naplózási célokat.

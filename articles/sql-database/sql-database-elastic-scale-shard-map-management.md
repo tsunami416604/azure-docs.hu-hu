@@ -1,5 +1,5 @@
 ---
-title: Azure SQL Database-adatbázis felskálázása
+title: Adatbázis felskálázása
 description: A ShardMapManager és a rugalmas adatbázis-ügyféloldali kódtár használata
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/25/2019
-ms.openlocfilehash: d704e22dcd9ce4442ed16ae901c9c447fc025ebd
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 8175563d8c1c2ec59b4195b2ede06f6e1dbf8556
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73690158"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73823561"
 ---
 # <a name="scale-out-databases-with-the-shard-map-manager"></a>Adatbázisok horizontális felskálázása a szegmenses Térkép kezelőjével
 
@@ -69,7 +69,7 @@ A rugalmas méretezés a következő típusokat támogatja a horizontális Felsk
 
 A szegmensek **shardletek** **tartalmaznak,** és a shardletek a szegmensekre való hozzárendelését egy szegmenses Térkép tartja karban. A szegmensek **listájának leképezése** a shardletek és a szegmensként szolgáló adatbázisok azonosítására szolgáló egyedi kulcs értékeinek társítása.  A **lista-hozzárendelések** explicitek, és a különböző kulcs típusú értékeket ugyanahhoz az adatbázishoz lehet hozzárendelni. Például a Key Value 1 az A adatbázisra, A 3. és a 6. kulcs pedig a B adatbázisra mutat.
 
-| Jelmagyarázat | Szegmens helye |
+| Kulcs | Szegmens helye |
 | --- | --- |
 | 1 |Database_A |
 | 3 |Database_B |
@@ -83,7 +83,7 @@ A **tartományon belüli szegmensek leképezésében**a kulcs tartományát egy 
 
 Például a **[0, 100)** az összes olyan egész számot tartalmazza, amely nagyobb vagy egyenlő, mint 0, és kisebb, mint 100. Vegye figyelembe, hogy több tartomány ugyanarra az adatbázisra mutathat, és a különálló tartományok (például a [100 200) és a [400 600) egyaránt a C adatbázisra mutatnak a következő példában.)
 
-| Jelmagyarázat | Szegmens helye |
+| Kulcs | Szegmens helye |
 | --- | --- |
 | [1, 50) |Database_A |
 | [50 100) |Database_B |
@@ -98,7 +98,7 @@ A fent látható táblák mindegyike egy **ShardMap** objektum fogalmi példája
 Az ügyféloldali függvénytárban a szegmens Térkép-kezelő a szegmens térképek gyűjteménye. A **ShardMapManager** -példány által kezelt adat három helyen tart:
 
 1. **Globális szegmenses Térkép (GSM)** : megadhat egy adatbázist, amely az összes szegmensének térképéhez és leképezéséhez tartozó tárházként szolgál. A speciális táblák és tárolt eljárások automatikusan létrejönnek az adatok kezeléséhez. Ez általában egy kisméretű adatbázis, és nem használható az alkalmazás más igényeihez. A táblák egy **__ShardManagement**nevű speciális sémában találhatók.
-2. **Helyi szegmenses Térkép (LSM)** : minden olyan adatbázis, amelyet szegmensként határoz meg, úgy módosul, hogy több kisméretű táblázatot és speciális tárolt eljárásokat tartalmazzon, amelyek az adott szegmensre vonatkozó, a szegmensekre vonatkozó térképi információkat tartalmaznak és felügyelnek. Ezek az információk redundánsak a GSM-vel kapcsolatos információkkal, és lehetővé teszik az alkalmazás számára a gyorsítótárazott szegmensek leképezési adatainak érvényesítését anélkül, hogy terhelést kellene elhelyezni a GSM-ben. az alkalmazás a LSM használatával határozza meg, hogy a gyorsítótárazott hozzárendelések továbbra is érvényesek-e. Az egyes szegmensek LSM megfelelő táblák a séma **__ShardManagement**is tartoznak.
+2. **Helyi szegmenses Térkép (LSM)** : minden olyan adatbázis, amelyet szegmensként határoz meg, úgy módosul, hogy több kisméretű táblázatot és speciális tárolt eljárásokat tartalmazzon, amelyek az adott szegmensre vonatkozó, a szegmensekre vonatkozó térképi információkat tartalmaznak és felügyelnek. Ezek az információk redundánsak a GSM-vel kapcsolatos információkkal, és lehetővé teszik az alkalmazás számára a gyorsítótárazott szegmensek leképezési adatainak érvényesítését anélkül, hogy terhelést kellene elhelyezni a GSM-ben. az alkalmazás a LSM használatával határozza meg, hogy a gyorsítótárazott hozzárendelések továbbra is érvényesek-e. Az egyes szegmensek LSM megfelelő táblázatok a séma **__ShardManagement**is.
 3. **Alkalmazás-gyorsítótár**: a **ShardMapManager** -objektumhoz hozzáférő egyes alkalmazás-példányok a leképezések helyi memóriában tárolt gyorsítótárát kezelik. A nemrég lekért útválasztási adatokat tárolja.
 
 ## <a name="constructing-a-shardmapmanager"></a>ShardMapManager építése

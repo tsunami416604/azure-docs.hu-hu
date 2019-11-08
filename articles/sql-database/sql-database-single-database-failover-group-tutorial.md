@@ -1,5 +1,5 @@
 ---
-title: 'Oktatóanyag: Azure SQL Database önálló adatbázis hozzáadása feladatátvételi csoporthoz '
+title: 'Oktatóanyag: egyetlen adatbázis hozzáadása egy feladatátvételi csoporthoz'
 description: A Azure Portal, a PowerShell vagy az Azure CLI használatával vegyen fel egy Azure SQL Database önálló adatbázist egy feladatátvételi csoportba.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: sstein, carlrab
 ms.date: 06/19/2019
-ms.openlocfilehash: 022faa04db6f9699d5d80918087c62c69b0fb5fe
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 6e3b4be836699cc200d30168c14462f81136646b
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73687280"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73821098"
 ---
 # <a name="tutorial-add-an-azure-sql-database-single-database-to-a-failover-group"></a>Oktatóanyag: Azure SQL Database önálló adatbázis hozzáadása feladatátvételi csoporthoz
 

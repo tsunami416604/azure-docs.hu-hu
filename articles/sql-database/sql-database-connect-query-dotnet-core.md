@@ -1,5 +1,5 @@
 ---
-title: Azure SQL Database lekérdezése a .NET Core használatával
+title: A .NET Core használata a lekérdezéshez
 description: Ebből a témakörből megtudhatja, hogyan használhatja a .NET Core-t olyan program létrehozására, amely egy Azure SQL Databasehoz csatlakozik, és a Transact-SQL-utasítások használatával kérdezi le azokat.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 07/29/2019
-ms.openlocfilehash: e605b4255d61ff0cb6402b40b099449f0fbafa7a
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 369c708fd3181076c6deb9d7ac9134c57a18f819
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73690989"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73827094"
 ---
 # <a name="quickstart-use-net-core-c-to-query-an-azure-sql-database"></a>Rövid útmutató: A .NET Core (C#) használata Azure SQL-adatbázisok lekérdezéséhez
 

@@ -1,5 +1,5 @@
 ---
-title: Automatikus, Geo-redundáns biztonsági mentések Azure SQL Database
+title: automatikus, Geo-redundáns biztonsági másolatok
 description: A SQL Database néhány percenként automatikusan létrehoz egy helyi adatbázis biztonsági mentését, és az Azure olvasási hozzáférésű geo-redundáns tárterületet használja a Geo-redundancia érdekében.
 services: sql-database
 ms.service: sql-database
@@ -12,12 +12,12 @@ ms.author: sashan
 ms.reviewer: mathoma, carlrab, danil
 manager: craigg
 ms.date: 09/26/2019
-ms.openlocfilehash: 5dd2cb8d266fcb2a17c50a2213509b968894737e
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 114a5bbfd71fc0847c2b1bc65a8ba0bfa0df1add
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73691177"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73821945"
 ---
 # <a name="automated-backups"></a>Automatikus biztonsági mentések
 
@@ -142,7 +142,7 @@ Set-AzSqlDatabaseBackupShortTermRetentionPolicy -ResourceGroupName resourceGroup
 
 ### <a name="change-pitr-retention-period-using-rest-api"></a>PITR megőrzési időszakának módosítása REST API használatával
 
-#### <a name="sample-request"></a>Mintakérelem
+#### <a name="sample-request"></a>Kérésminta
 
 ```http
 PUT https://management.azure.com/subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/resourceGroup/providers/Microsoft.Sql/servers/testserver/databases/testDatabase/backupShortTermRetentionPolicies/default?api-version=2017-10-01-preview

@@ -1,5 +1,5 @@
 ---
-title: Teljesítménnyel kapcsolatos javaslatok – Azure SQL Database
+title: Teljesítménnyel kapcsolatos javaslatok
 description: Azure SQL Database javaslatokat nyújt az SQL-adatbázisokhoz, amelyek javíthatják az aktuális lekérdezési teljesítményt.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik
 ms.date: 12/19/2018
-ms.openlocfilehash: de6ddd8886f8cadafa57724a5d5e33a3ba4e3c74
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: fb7ba90724a98a34adf4aa279eefc8e3d7a63bf3
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73691245"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73811383"
 ---
 # <a name="performance-recommendations-for-sql-database"></a>Teljesítménnyel kapcsolatos javaslatok a SQL Database
 

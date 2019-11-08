@@ -1,37 +1,38 @@
 ---
-title: Egyidejűség-vezérlés |} Az Azure Marketplace-en
-description: Egyidejűségi vezérlő stratégiák közzé API-kat, a Cloud Partner portálra.
+title: Egyidejűség-vezérlés | Azure piactér
+description: A Cloud Partner Portal közzétételi API-k Egyidejűség-vezérlési stratégiái.
 services: Azure, Marketplace, Cloud Partner Portal,
 author: v-miclar
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pabutler
-ms.openlocfilehash: 8cdcfd84a2f3bd4f920b97392255237db173cbf9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6e2f8922d42e40d14338f06be983d3913b20859d
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64935597"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73819747"
 ---
 # <a name="concurrency-control"></a>Egyidejűség-vezérlés
 
-A Cloud Partner portálra közzététele az API-k minden meghívásához explicit módon meg kell adnia milyen egyidejűségi vezérlő stratégiát kíván használni. Adja meg a hiba a **If-Match** fejléc egy HTTP 400-as számú hibaüzenetet eredményez. Egyidejűség-vezérlés két stratégiák biztosítunk.
+A Cloud Partner Portal közzétételi API-k minden hívásának explicit módon meg kell határoznia, hogy melyik Egyidejűség-vezérlési stratégiát kell használni. Az **IF-Match** fejléc megadása sikertelen lesz a http 400-es hiba miatt. Két stratégiát biztosítunk a Egyidejűség-vezérléshez.
 
--   **Az optimista** – a frissítés elvégzése az ügyfél ellenőrzi, hogy ha az adatok változtak-e az adatok utolsó olvasása óta.
--   **Az elmúlt egy wins** – az ügyfél közvetlenül frissíti az adatokat, függetlenül attól, hogy egy másik alkalmazás módosította az utolsó olvasás idő óta.
+-   **Optimista** – a frissítést végrehajtó ügyfél ellenőrzi, hogy az adatok módosultak-e az adatok utolsó beolvasása óta.
+-   **Utolsó egy WINS** – az ügyfél közvetlenül frissíti az adatmennyiséget, függetlenül attól, hogy egy másik alkalmazás módosította-e a legutóbbi olvasási idő óta.
 
-<a name="optimistic-concurrency-workflow"></a>Optimista párhuzamosság munkafolyamat
+<a name="optimistic-concurrency-workflow"></a>Optimista egyidejűségi munkafolyamat
 -------------------------------
 
-Azt javasoljuk, hogy garantálja, hogy az erőforrások nem váratlan módosításokat végzett használatával a következő munkafolyamattal az optimista párhuzamossági stratégiát.
+Javasoljuk, hogy az optimista egyidejűségi stratégiát a következő munkafolyamattal használva garantálni lehessen, hogy az erőforrásokon nem történt váratlan módosítás.
 
-1.  Kérje le egy entitást, az API-k használatával. A válasz egy ETag-érték, amely azonosítja a jelenleg tárolt verzió az entitás (időben válasz) tartalmazza.
-2.  A frissítés idején közé tartozik a azonos ETag-érték a kötelező **If-Match** kérés fejlécéhez.
-3.  Az API-t az ETag-érték, az a entitás egy atomi tranzakció jelenlegi ETag-érték a kérésben kapott hasonlítja össze.
-    *   Ha az ETag-érték nem egyezik, az API-t adja vissza egy `412 Precondition Failed` HTTP-választ. Ez a hiba azt jelzi, hogy vagy egy másik folyamat frissítette az entitást, az ügyfél utolsó lekérése óta, vagy az, hogy a kérelemben megadott ETag-érték nem megfelelő.
-    *  Ha az ETag-érték azonos, vagy a **If-Match** fejléc csillag helyettesítő karaktert tartalmaz (`*`), az API-t elvégzi a kért műveletet. Az API-művelet frissíti az entitás tárolt ETag-érték is.
+1.  Entitás beolvasása az API-k használatával. A válasz tartalmaz egy ETag értéket, amely az entitás jelenleg tárolt verzióját azonosítja (a válasz időpontjában).
+2.  A frissítés időpontjában ugyanazt a ETag értéket adja meg a kötelező **IF-Match** kérelem fejlécében.
+3.  Az API összehasonlítja a kérelemben kapott ETag értéket egy atomi tranzakcióban lévő entitás aktuális ETag értékével.
+    *   Ha a ETag értékei eltérnek, az API egy `412 Precondition Failed` HTTP-választ ad vissza. Ez a hiba azt jelzi, hogy egy másik folyamat frissítette az entitást, mivel az ügyfél utoljára lekérte, vagy hogy a kérelemben megadott ETag érték helytelen.
+    *  Ha a ETag értékei megegyeznek, vagy az **IF-Match** fejléc tartalmazza a helyettesítő karakteres csillag karaktert (`*`), az API végrehajtja a kért műveletet. Az API-művelet az entitás tárolt ETag értékét is frissíti.
 
 
 > [!NOTE]
-> A helyettesítő karakter (*) megadásáról a **If-Match** fejléc eredményezi, az API-t a wins-utolsó-egy párhuzamossági stratégiát. Ebben az esetben az ETag összehasonlítás nem történik meg, és az erőforrás minden ellenőrzés nélkül frissül. 
+> A helyettesítő karakter (*) megadása a **IF-Match** fejlécben az API-t az utolsó-egy WINS egyidejűségi stratégia használatával eredményezi. Ebben az esetben a ETag összehasonlítása nem történik meg, és az erőforrás ellenőrzés nélkül frissül. 

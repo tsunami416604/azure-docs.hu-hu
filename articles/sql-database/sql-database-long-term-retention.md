@@ -1,5 +1,5 @@
 ---
-title: Azure SQL Database biztonsági mentések akár 10 évig is tárolhatók
+title: Biztonsági másolatok tárolása akár 10 évig
 description: Ismerje meg, hogyan támogatja a Azure SQL Database a teljes adatbázis biztonsági másolatainak tárolását akár 10 évig.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 05/18/2019
-ms.openlocfilehash: 5d6f0797802a622ada1916752bc35c1bae2cde9f
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 0cd4c45403d59819bf7ba729ea99de76ccf967ca
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73689512"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73819910"
 ---
 # <a name="store-azure-sql-database-backups-for-up-to-10-years"></a>Azure SQL Database biztonsági mentések akár 10 évig is tárolhatók
 

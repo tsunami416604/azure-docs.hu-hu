@@ -1,5 +1,5 @@
 ---
-title: Azure SQL Database séma kezelése több-bérlős alkalmazásokban
+title: Séma kezelése több-bérlős alkalmazásokban
 description: Több bérlő sémájának kezelése Azure SQL Database-t használó több-bérlős alkalmazásban
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: MightyPen
 ms.author: genemi
 ms.reviewer: billgib, sstein
 ms.date: 12/18/2018
-ms.openlocfilehash: a4838e571c6dc678fba470ef7f1026388f55d444
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 6f660426c41b37dd27438c28cbf603bdbf1e58b3
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73691982"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73822110"
 ---
 # <a name="manage-schema-in-a-saas-application-that-uses-sharded-multi-tenant-sql-databases"></a>Séma kezelése egy több-bérlős SQL-adatbázist használó SaaS-alkalmazásban
 

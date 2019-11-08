@@ -8,12 +8,12 @@ ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
 ms.date: 10/27/2019
-ms.openlocfilehash: 5df8bb0ba0323692bddf94ae2888e8fcf1ad24a9
-ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
+ms.openlocfilehash: b0c3d72085e008524811f479ccbdeec013e26c4c
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73063271"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73822251"
 ---
 # <a name="how-to-use-azure-digital-twins-management-apis"></a>Az Azure digitális Twins felügyeleti API-k használata
 
@@ -110,10 +110,10 @@ Az alábbi lista számos, érvényes OData szintaxissal rendelkező lekérdezés
 - `YOUR_MANAGEMENT_API_URL/users?$top=4&$filter=endswith(LastName,'k')&$orderby=LastName`
 - `YOUR_MANAGEMENT_API_URL/spaces?$orderby=Name desc&$top=3&$filter=substringof('Floor',Name)`
  
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az API-lekérdezések gyakori mintáinak megismeréséhez olvassa el [Az Azure Digital Twins API-k lekérdezése gyakori feladatokhoz című témakört](./how-to-query-common-apis.md).
 
 Ha többet szeretne megtudni az API-végpontokról, olvassa el a [digitális Twins hencegés használatát](./how-to-use-swagger.md)ismertető témakört.
 
-A OData szintaxisának és az elérhető összehasonlító operátorok áttekintéséhez olvassa el [a OData-összehasonlító operátorokat a Azure Search](../search/search-query-odata-comparison-operators.md).
+A OData szintaxis és a rendelkezésre álló összehasonlító operátorok áttekintéséhez olvassa el [a OData-összehasonlító operátorokat az Azure Cognitive Searchban](../search/search-query-odata-comparison-operators.md).

@@ -2,19 +2,19 @@
 title: Válassza ki a megfelelő hitelesítési módszert az Azure AD Hybrid Identity megoldáshoz | Microsoft Docs
 description: Ez az útmutató segítséget nyújt az ügyvezetők, a informatikai igazgatók, a CISOs, a vezető identitás-építészek, a vállalati építészek és a biztonsági és informatikai döntéshozók számára, hogy az Azure AD Hybrid Identity megoldáshoz használt hitelesítési módszert használják közepes és nagy szervezetekben.
 keywords: ''
-author: TerryLanfear
-ms.author: terrylan
+author: martincoetzer
+ms.author: martinco
 ms.date: 10/30/2019
 ms.topic: article
 ms.service: security
 ms.subservice: security-fundamentals
 ms.workload: identity
-ms.openlocfilehash: 564175141a8076d2ac4324b0dccf02cc250a613c
-ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
+ms.openlocfilehash: 71b4a8abc641a3ab11d6b17bbc8de3b42b61c34c
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73621181"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73820542"
 ---
 # <a name="choose-the-right-authentication-method-for-your-azure-active-directory-hybrid-identity-solution"></a>Válassza ki a megfelelő hitelesítési módszert a Azure Active Directory Hybrid Identity megoldáshoz
 

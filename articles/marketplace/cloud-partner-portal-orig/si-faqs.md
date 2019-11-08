@@ -4,15 +4,16 @@ description: Gyakori kérdések a Cloud Partner Portal eladói bepillantást vev
 services: Azure, Marketplace, Cloud Partner Portal,
 author: v-miclar
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/14/2018
 ms.author: pabutler
-ms.openlocfilehash: 059ec175a48cdcdec6214a6581452ec0536bf566
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: b015d21005448d24d24923ba424a10a4af0d47b1
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72030451"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73821605"
 ---
 <a name="seller-insights-faq"></a>Az értékesítői ismeretek – GYIK
 ===================
@@ -29,7 +30,7 @@ A tranzakciós fájlban szereplő metrikai értékek definíciói a cikk [eladó
 <a name="see-customer-details-of-transactions-for-which-ive-been-paid"></a>Megtekintheti a megfizetett tranzakciók vásárlói adatait
 -------------------------------------------------------------
 
-Miután letöltötte a tranzakciókat a kifizetési modulból, keresse meg a **kifizetési állapot**feliratú oszlopot, és alkalmazza a szűrőt úgy, hogy csak a "kifizetve" értéket jelenítse meg. Az ügyfél adatait tartalmazó következő oszlopok jelennek meg: A **Vállalat neve**, az **ügyfél e-mail-címe**, az ügyfél **országa**, az **ügyfél**és az **ügyfél postai**irányítószáma.
+Miután letöltötte a tranzakciókat a kifizetési modulból, keresse meg a **kifizetési állapot**feliratú oszlopot, és alkalmazza a szűrőt úgy, hogy csak a "kifizetve" értéket jelenítse meg. A következő oszlopok jelennek meg, amelyek az ügyfél adatait tartalmazzák: **Cégnév**, **vásárlói E-mail**, **ügyfél országa**, **vásárlói állapot**és **ügyfél postai irányítószáma**.
 
 
 <a name="calculate-my-open-accounts-receivable"></a>Saját nyitott fiókok számítása

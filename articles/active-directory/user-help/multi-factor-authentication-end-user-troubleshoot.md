@@ -1,5 +1,5 @@
 ---
-title: A kétfaktoros ellenőrzési problémák gyakori elhárítása – Azure Active Directory | Microsoft Docs
+title: A kétfaktoros ellenőrzési problémák gyakori elhárítása – Azure AD
 description: Ismerje meg a leggyakoribb kétfaktoros ellenőrzési problémák lehetséges megoldásait.
 services: active-directory
 author: eross-msft
@@ -13,12 +13,12 @@ ms.date: 10/28/2019
 ms.author: lizross
 ms.reviewer: kexia
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bb510755e7cc163af8ff0cb2c8699e1d2dd04d7f
-ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
+ms.openlocfilehash: f8d226d61f4b67541a6991fef3a435b4cfff500f
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73043221"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73805303"
 ---
 # <a name="troubleshoot-common-two-factor-verification-problems"></a>A kétfaktoros ellenőrzés gyakori problémáinak elhárítása
 

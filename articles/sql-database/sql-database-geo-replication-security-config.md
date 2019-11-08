@@ -1,5 +1,5 @@
 ---
-title: Azure SQL Database Biztonság beállítása a vész-helyreállításhoz
+title: Biztonsági beállítások konfigurálása a vész-helyreállításhoz
 description: Megtudhatja, hogyan konfigurálhatja és kezelheti a biztonsági szempontokat egy adatbázis-visszaállítás vagy egy másodlagos kiszolgáló feladatátvétele után.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 12/18/2018
-ms.openlocfilehash: 3c08ba1a37d7b0d16042d6496c27e0de8d070b75
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 9d628583168883276e67d9e2f2fcafdce292769e
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73689970"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73807501"
 ---
 # <a name="configure-and-manage-azure-sql-database-security-for-geo-restore-or-failover"></a>Azure SQL Database biztonsági beállítások konfigurálása és kezelése geo-visszaállításhoz vagy feladatátvételhez
 
@@ -58,7 +58,7 @@ Csak a kiszolgáló rendszergazdája vagy a **loginmanager szerepkörhöz adhatj
     FROM [sys].[sql_logins]
     WHERE [type_desc] = 'SQL_Login'
 
-Csak a db_owner adatbázis-szerepkör, a dbo-felhasználó vagy a kiszolgáló rendszergazdája határozható meg az összes adatbázis-felhasználói tag az elsődleges adatbázisban.
+Csak a db_owner adatbázis-szerepkör, a dbo-felhasználó vagy a kiszolgáló rendszergazdája tagjai határozzák meg az összes adatbázis-felhasználói rendszerbiztonsági tagot az elsődleges adatbázisban.
 
     SELECT [name], [sid]
     FROM [sys].[database_principals]
@@ -68,14 +68,14 @@ Csak a db_owner adatbázis-szerepkör, a dbo-felhasználó vagy a kiszolgáló r
 
 Az előző szakaszban található lekérdezések kimenetének és a biztonsági azonosítók megfeleltetésének összehasonlításával leképezheti a kiszolgáló bejelentkezési adatait az adatbázis felhasználójának. A megfelelő biztonsági azonosítóval rendelkező adatbázis-felhasználóval rendelkező bejelentkezések felhasználói hozzáféréssel rendelkeznek az adatbázishoz, mint az adatbázis felhasználói rendszerbiztonsági tag.
 
-A következő lekérdezéssel megtekintheti az összes felhasználói résztvevőt és azok SID-fájljait egy adatbázisban. Ezt a lekérdezést csak a db_owner adatbázis-szerepkör vagy a kiszolgáló rendszergazdája futtathatja.
+A következő lekérdezéssel megtekintheti az összes felhasználói résztvevőt és azok SID-fájljait egy adatbázisban. A lekérdezés csak a db_owner adatbázis-szerepkör vagy a kiszolgáló-rendszergazda tagja lehet.
 
     SELECT [name], [sid]
     FROM [sys].[database_principals]
     WHERE [type_desc] = 'SQL_USER'
 
 > [!NOTE]
-> A **entitástulajdonos** és a **sys** felhasználók *Null* SID azonosítóval rendelkeznek, a **vendég** SID pedig **kell lennie 0x00**. A **dbo** SID a *0x01060000000001648000000000048454*-vel kezdődhet, ha az adatbázis létrehozója a kiszolgáló rendszergazdája volt a **DbManager**tagja helyett.
+> A **INFORMATION_SCHEMA** és a **sys** felhasználók *Null* SID azonosítóval rendelkeznek, és a **vendég** SID **kell lennie 0x00**. A **dbo** SID a *0x01060000000001648000000000048454*-vel kezdődhet, ha az adatbázis létrehozója a kiszolgáló rendszergazdája volt a **DbManager**tagja helyett.
 
 #### <a name="3-create-the-logins-on-the-target-server"></a>3. a bejelentkezések létrehozása a célkiszolgálón
 

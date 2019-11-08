@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 863d38f6ea0f071a1c1a6678d025ec5b37a306dc
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 127354e55a81e379825b41759f2b6150ba554a12
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73466425"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73818539"
 ---
 # <a name="indexing-blobs-to-produce-multiple-search-documents"></a>Blobok indexelése több keresési dokumentum létrehozásához
 Alapértelmezés szerint a blob indexelő egyetlen keresési dokumentumként fogja kezelni a blob tartalmát. Bizonyos **parsingMode** -értékek olyan forgatókönyveket támogatnak, amelyekben egy adott blob több keresési dokumentumot is eredményezhet. A különböző típusú **parsingMode** , amelyek lehetővé teszik, hogy az indexelő több keresési dokumentumot is kinyerjen a blobból:
@@ -99,7 +99,7 @@ Ha explicit mező-hozzárendelést szeretne beállítani, győződjön meg arró
 
 ## <a name="next-steps"></a>További lépések
 
-Ha még nem ismeri a blob-indexelés alapszintű szerkezetét és munkafolyamatát, először tekintse át az [Azure Blob Storage indexelését Azure Search](search-howto-index-json-blobs.md) első lépéseit. A különböző blob-tartalomtípusok elemzési módjaival kapcsolatos további információkért tekintse át a következő cikkeket.
+Ha még nem ismeri a blob-indexelés alapszintű szerkezetét és munkafolyamatát, először tekintse át az Azure [blob Storage indexelését az azure Cognitive Search](search-howto-index-json-blobs.md) . A különböző blob-tartalomtípusok elemzési módjaival kapcsolatos további információkért tekintse át a következő cikkeket.
 
 > [!div class="nextstepaction"]
 > [CSV-Blobok indexelése](search-howto-index-csv-blobs.md)

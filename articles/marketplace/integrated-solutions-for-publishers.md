@@ -4,15 +4,16 @@ description: Integrált megoldások az Azure Marketplace-en és Microsoft AppSou
 services: Azure, Marketplace, Compute, Storage, Networking
 author: qianw211
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 08/15/2019
 ms.author: v-qiwe
-ms.openlocfilehash: 8bffb2c71f5e07499338ea32e0c064392af81684
-ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
+ms.openlocfilehash: eaba5612221e712ad5b14f10876e083729970fde
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71706311"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73818562"
 ---
 # <a name="publish-an-integrated-solution"></a>Integrált megoldás közzététele
 
@@ -61,12 +62,12 @@ Ha jóváhagyta a jelölést, a csatolt program erőforrásaival fejlesztheti az
 1. A megoldás és az integráció megközelítésének meghatározásához az üzleti és műszaki megbeszéléseket a workshop formátumában végezheti el. 
 
     A megoldással kapcsolatos vitája a következő szempontokat foglalja magában:
-    * Scope
+    * Hatókör
     * Ügyfelek megcélzása
     * Értékajánlat
     * Díjszabás
-    * Licencelés
-    * használati feltételei
+    * Licencek
+    * Feltételek és kikötések
     * Támogatási megközelítés
     * Marketing tevékenységek
     * Értékesítési folyamat
@@ -74,7 +75,7 @@ Ha jóváhagyta a jelölést, a csatolt program erőforrásaival fejlesztheti az
 
     Az integrációs megközelítéssel kapcsolatos vitájában a következő szempontokat kell figyelembe venni: 
     * Integrációs pontok
-    * Megoldás architektúrája
+    * Megoldásarchitektúra
     * Authentication
     * Felhasználói felület
     * Figyelés
@@ -86,7 +87,7 @@ Ha jóváhagyta a jelölést, a csatolt program erőforrásaival fejlesztheti az
 
     * [Üzleti döntési workshop – vitafórum](https://aka.ms/AA5qicx)
     * [Útmutató a technikai döntési workshophoz](https://aka.ms/AA5qid1)
-    * @no__t – 0Quickstart videó: Üzleti és műszaki workshopok @ no__t-0
+    * [Rövid útmutató: üzleti és műszaki workshopok](https://aka.ms/AA5qos9)
 
 1. Azonosítson egy partneri projektmenedzsert, amely az üzleti és műszaki workshopokon fejlesztett projekt-tervet és idővonalat irányítja.
 

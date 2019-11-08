@@ -1,5 +1,5 @@
 ---
-title: Kiszolgálói szintű tűzfalszabály létrehozása – Azure SQL Database | Microsoft Docs
+title: Kiszolgálószintű tűzfalszabály létrehozása
 description: SQL Database kiszolgálói szintű tűzfalszabály létrehozása egyetlen és készletezett adatbázisokhoz
 services: sql-database
 ms.service: sql-database
@@ -11,14 +11,14 @@ author: sachinpMSFT
 ms.author: sachinp
 ms.reviewer: vanto, carlrab
 ms.date: 02/11/2019
-ms.openlocfilehash: 27b554159fca2043fbd0c853e260a66294c10387
-ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
+ms.openlocfilehash: ff2508952b75bad88ff8ff92388c20ba52f50f42
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71162308"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73818259"
 ---
-# <a name="quickstart-create-a-server-level-firewall-rule-for-single-and-pooled-databases-using-the-azure-portal"></a>Gyors útmutató: Kiszolgáló szintű tűzfalszabály létrehozása az önálló és a készletezett adatbázisokhoz a Azure Portal használatával
+# <a name="quickstart-create-a-server-level-firewall-rule-for-single-and-pooled-databases-using-the-azure-portal"></a>Rövid útmutató: kiszolgálói szintű tűzfalszabály létrehozása az önálló és a készletezett adatbázisokhoz a Azure Portal használatával
 
 Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre egy [kiszolgálói szintű tűzfalszabály](sql-database-firewall-configure.md) a Azure SQL Database az önálló és a készletezett adatbázisokhoz a Azure Portal segítségével, amely lehetővé teszi az adatbázis-kiszolgálókhoz, önálló adatbázisokhoz és rugalmas készletekhez és azok adatbázisaihoz való kapcsolódást. A más Azure-erőforrásokból és a helyszíni erőforrásokból való kapcsolódáshoz tűzfalszabály szükséges.
 
@@ -28,14 +28,14 @@ Ez a rövid útmutató az [önálló adatbázis létrehozása a Azure Portal a](
 
 ## <a name="sign-in-to-the-azure-portal"></a>Jelentkezzen be az Azure Portalra
 
-Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
+Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
 
 ## <a name="create-a-server-level-ip-firewall-rule"></a>Kiszolgálói szintű IP-tűzfalszabály létrehozása
 
 A SQL Database szolgáltatás egy tűzfalat hoz létre az adatbázis-kiszolgáló szintjén az önálló és a készletezett adatbázisokhoz. Ez a tűzfal megakadályozza, hogy az ügyfélalkalmazások csatlakozzanak a kiszolgálóhoz vagy az önálló vagy készletezett adatbázisokhoz, kivéve, ha a tűzfal megnyitásához létrehoz egy IP-tűzfalszabály-szabályt. Az Azure-on kívüli IP-címről létesített kapcsolathoz hozzon létre egy tűzfalszabály egy adott IP-cím vagy címtartomány számára, amelyhez csatlakozni szeretne. A kiszolgálói szintű és az adatbázis szintű IP-tűzfalszabályok részletes ismertetését lásd: [SQL Database kiszolgálói szintű és adatbázis-szintű IP-tűzfalszabályok](sql-database-firewall-configure.md).
 
 > [!NOTE]
-> Az SQL Database az 1433-as porton kommunikál. Ha vállalati hálózaton belülről próbál csatlakozni, előfordulhat, hogy a hálózati tűzfal nem engedélyezi a kimenő forgalmat az 1433-as porton keresztül. Ha igen, nem tud csatlakozni a Azure SQL Database-kiszolgálóhoz, ha az informatikai részleg nem nyitja meg a 1433-es portot.
+> Az SQL Database az 1433-as porton kommunikál. Ha vállalati hálózaton belülről próbál csatlakozni, elképzelhető, hogy a hálózati tűzfal nem engedélyezi a kimenő forgalmat az 1433-as porton keresztül. Ha igen, nem tud csatlakozni a Azure SQL Database-kiszolgálóhoz, ha az informatikai részleg nem nyitja meg a 1433-es portot.
 > [!IMPORTANT]
 > A 0.0.0.0 tűzfalszabály lehetővé teszi, hogy az összes Azure-szolgáltatás áthaladjon a kiszolgálói szintű tűzfalszabályok között, és megpróbáljon csatlakozni egyetlen vagy készletezett adatbázishoz a kiszolgálón keresztül. 
 

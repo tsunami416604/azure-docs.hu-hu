@@ -4,15 +4,16 @@ description: Piaci megjelenést segítő szolgáltatások – ebben a szakaszban
 services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security, Partner Center
 author: qianw211
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 09/10/2019
 ms.author: v-qiwe
-ms.openlocfilehash: 6ae761b9558a0d6c1b663c1202bc560382c7b0b6
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 7b563cd90ec3e46dfd2d4420b728cd6f69df40eb
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72752347"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73818646"
 ---
 # <a name="your-commercial-marketplace-benefits"></a>A kereskedelmi piactér előnyei
 
@@ -44,7 +45,7 @@ A kezdéshez szükséges lépések egyszerűek:
 2. A csapat eléri a "tulajdonos" vagy az "elsődleges kapcsolat" Piactéri ajánlatot. Az ajánlott eljárás az, ha az Ön által rendszeresen ellenőrzött egyéni vagy aliast adja meg: az aliasoknak küldött üzenetek, például a info@company.com gyakran elvesznek.
 
 >[!Note]
->Ha az ajánlata több mint négy hetet tartalmaz, és nem kapott üzenetet, ellenőrizze a szervezeten belül, hogy a kérdéses ajánlat tulajdonosa-e, vagy Cloud Partner Portal vagy a partner Centerben. A kommunikációhoz és a következő lépésekhez kell tartoznia. <br> <br> Ha nem tudja megállapítani a tulajdonost, vagy ha a tulajdonos elhagyta a vállalatot, támogatási jegyet is létrehozhat https://aka.ms/marketplacepublishersupport címen.
+>Ha az ajánlata több mint négy hetet tartalmaz, és nem kapott üzenetet, ellenőrizze a szervezeten belül, hogy a kérdéses ajánlat tulajdonosa-e, vagy Cloud Partner Portal vagy a partner Centerben. A kommunikációhoz és a következő lépésekhez kell tartoznia. <br> <br> Ha nem tudja megállapítani a tulajdonost, vagy ha a tulajdonos elhagyta a vállalatot, támogatási jegyet is létrehozhat https://aka.ms/marketplacepublishersupportcímen.
 
 Az Ön számára elérhető tevékenységek köre a piactéren kibővíthető ajánlatokkal bővül. Az összes lista az optimalizálási javaslatok és a promóció alapszintű, az erőforrások és az ajánlott eljárások önkiszolgáló e-mail-címének részeként jelenik meg.
 
@@ -104,7 +105,7 @@ Ezt az ajánlatot angol nyelven, az Azure Marketplace-en vagy Microsoft AppSourc
 
 A megtévesztőnek bizonyuló tranzakciók nem számítanak bele a kiadó által [számlázott értékesítési program szintjébe](https://aka.ms/marketplacepublisherrewards), ahogy azt a [listában, a próbaverzióban, a Consulting](#list-trial-and-consulting-benefits) szakaszban, a [Transact partner előnyei](#marketplace-rewards-for-transact-partners) részben és a [részletes program fedélzetén említik. ](https://aka.ms/marketplacepublisherrewards). A csalás eltávolítását követően a Microsoft kiosztja a partnereket a jogosultsági szintek szerint a tényleges számlázott értékesítések alapján. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ha az ajánlatot a [Cloud Partner Portalban](https://cloudpartner.azure.com)hozta létre, jelentkezzen be az ajánlat létrehozásához vagy konfigurálásához.
 

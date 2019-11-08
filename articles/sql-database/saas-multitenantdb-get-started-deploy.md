@@ -1,5 +1,5 @@
 ---
-title: 'Helyezzen üzembe egy több-bérlős adatbázis SaaS-alkalmazást, amely Azure SQL Databaset használ '
+title: Több-bérlős adatbázis SaaS-alkalmazás üzembe helyezése
 description: Üzembe helyezheti és felfedezheti a több-bérlős SaaS-alapú Wingtip-jegyeket, amelyek Azure SQL Database használatával mutatják be az SaaS-mintákat.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: MightyPen
 ms.author: genemi
 ms.reviewer: billgib, stein
 ms.date: 10/16/2018
-ms.openlocfilehash: aa61c9af2e8fbfbe1caeaffb6231afe5b8be6f3c
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 3277318e01362df8fc21ff7ca769aaeb8006abc6
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73692042"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73827994"
 ---
 # <a name="deploy-and-explore-a-sharded-multi-tenant-application"></a>Horizontálisan több-bérlős alkalmazás üzembe helyezése és megismerése
 

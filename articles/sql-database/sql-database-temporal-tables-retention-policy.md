@@ -1,5 +1,5 @@
 ---
-title: A múltbeli adatok kezelése adatmegőrzési házirenddel rendelkező időbeli táblákban
+title: Korábbi adattáblák kezelése
 description: Megtudhatja, hogyan használhatja az időszakos adatmegőrzési szabályzatot a vezérlőben lévő korábbi adatok megőrzése érdekében.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: carlrab
 ms.date: 09/25/2018
-ms.openlocfilehash: 2568f3be96604856d5353f7f5f94926162880bfd
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 3c2460c6f5e0905f45106148ecc3e8a949cf221f
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73687000"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73820690"
 ---
 # <a name="manage-historical-data-in-temporal-tables-with-retention-policy"></a>A múltbeli adatok kezelése adatmegőrzési házirenddel rendelkező időbeli táblákban
 
@@ -30,7 +30,7 @@ Az adatmegőrzési házirend meghatározása után Azure SQL Database rendszeres
 ValidTo < DATEADD (MONTH, -6, SYSUTCDATETIME())
 ```
 
-Az előző példában feltételezzük, hogy a **validto tulajdonságnak** oszlop megfelel a SYSTEM_TIME időszak végének.
+Az előző példában feltételezzük, hogy a **validto tulajdonságnak** oszlop SYSTEM_TIME időszak végéhez tartozik.
 
 ## <a name="how-to-configure-retention-policy"></a>Adatmegőrzési szabály konfigurálása
 
@@ -41,7 +41,7 @@ SELECT is_temporal_history_retention_enabled, name
 FROM sys.databases
 ```
 
-Az adatbázis-jelző **is_temporal_history_retention_enabled** alapértelmezés szerint be van kapcsolva, de a felhasználók módosíthatják az Alter Database utasítással. A [visszaállítási](sql-database-recovery-using-backups.md) művelet után is automatikusan ki lesz kapcsolva. Az adatbázis időbeli megőrzésének megőrzése érdekében hajtsa végre a következő utasítást:
+Az adatbázis-jelölő **is_temporal_history_retention_enabled** alapértelmezés szerint be van kapcsolva, de a felhasználók módosíthatják az Alter Database utasítással. A [visszaállítási](sql-database-recovery-using-backups.md) művelet után is automatikusan ki lesz kapcsolva. Az adatbázis időbeli megőrzésének megőrzése érdekében hajtsa végre a következő utasítást:
 
 ```sql
 ALTER DATABASE <myDB>
@@ -49,9 +49,9 @@ SET TEMPORAL_HISTORY_RETENTION  ON
 ```
 
 > [!IMPORTANT]
-> Az időbeli táblák megőrzését akkor is konfigurálhatja, ha a **is_temporal_history_retention_enabled** ki van kapcsolva, de az elavult sorok automatikus tisztítása nem aktiválódik ebben az esetben.
+> Az időbeli táblák megőrzését akkor is konfigurálhatja, ha **is_temporal_history_retention_enabled** ki van kapcsolva, de az elavult sorok automatikus tisztítása nem aktiválódik ebben az esetben.
 
-Az adatmegőrzési szabályzat a tábla létrehozásakor van konfigurálva a HISTORY_RETENTION_PERIOD paraméter értékének megadásával:
+Az adatmegőrzési házirend a tábla létrehozásakor van konfigurálva a HISTORY_RETENTION_PERIOD paraméter értékének megadásával:
 
 ```sql
 CREATE TABLE dbo.WebsiteUserInfo
@@ -73,7 +73,7 @@ CREATE TABLE dbo.WebsiteUserInfo
  );
 ```
 
-Azure SQL Database lehetővé teszi a megőrzési időszak megadását különböző időegységek használatával: nap, hét, hónap és év. Ha a HISTORY_RETENTION_PERIOD nincs megadva, a rendszer a végtelen megőrzést feltételezi. A végtelen kulcsszót explicit módon is használhatja.
+Azure SQL Database lehetővé teszi a megőrzési időszak megadását különböző időegységek használatával: nap, hét, hónap és év. Ha HISTORY_RETENTION_PERIOD van megadva, a rendszer a végtelen megőrzést feltételezi. A végtelen kulcsszót explicit módon is használhatja.
 
 Bizonyos esetekben előfordulhat, hogy az adatmegőrzést a tábla létrehozása után vagy a korábban konfigurált érték módosításával szeretné konfigurálni. Ebben az esetben használja az ALTER TABLE utasítást:
 
@@ -83,7 +83,7 @@ SET (SYSTEM_VERSIONING = ON (HISTORY_RETENTION_PERIOD = 9 MONTHS));
 ```
 
 > [!IMPORTANT]
-> A SYSTEM_VERSIONING kikapcsolva értékre állítása *nem őrzi* meg a megőrzési időszak értékét. A SYSTEM_VERSIONING beállítása a (z) HISTORY_RETENTION_PERIOD nélkül beállítás megadása explicit módon a végtelen megőrzési időszakot eredményezi.
+> A SYSTEM_VERSIONING kikapcsolásának beállítása *nem őrzi* meg a megőrzési időszak értékét. A SYSTEM_VERSIONING beállítása a (z) értékre HISTORY_RETENTION_PERIOD megadása nélkül explicit módon a végtelen megőrzési időszakot eredményezi.
 
 Az adatmegőrzési szabály aktuális állapotának áttekintéséhez használja a következő lekérdezést, amely az adatbázis szintjén, az egyes táblák megőrzési időtartamával összekapcsolja az időbeli megőrzési engedélyezési jelzőt:
 
@@ -114,15 +114,15 @@ A kiváló adattömörítés és a hatékony megőrzési idő révén a fürtöz
 
 ## <a name="index-considerations"></a>Az index szempontjai
 
-A sortárindex létrehozását fürtözött indextel rendelkező táblák törlési feladatának indexre van szüksége ahhoz, hogy a SYSTEM_TIME időszak végének megfelelő oszlop kezdődjön. Ha az ilyen index nem létezik, nem konfigurálhat véges megőrzési időszakot:
+A sortárindex létrehozását fürtözött indextel rendelkező táblák törlési feladatához index szükséges ahhoz, hogy az oszlop a SYSTEM_TIME időszak végének megfelelő oszloppal kezdődjön. Ha az ilyen index nem létezik, nem konfigurálhat véges megőrzési időszakot:
 
 *Msg 13765, 16. szint, 1. állapot <br></br> a véges megőrzési időszak beállítása sikertelen a rendszerverzióval ellátott "temporalstagetestdb. dbo. WebsiteUserInfo" Időtábla esetében, mert a (z) "temporalstagetestdb. dbo. WebsiteUserInfoHistory" History tábla nem kötelező fürtözött indexet tartalmaz. Hozzon létre egy fürtözött oszlopcentrikus vagy B-Tree indexet a SYSTEM_TIME időszak végét megegyező oszlop alapján az előzmények táblázatban.*
 
 Fontos megjegyezni, hogy Azure SQL Database által létrehozott alapértelmezett előzményi tábla már rendelkezik fürtözött indexszel, amely megfelel az adatmegőrzési házirendnek. Ha véges megőrzési időtartamon belül megpróbálja eltávolítani az adott indexet egy táblán, a művelet a következő hibával meghiúsul:
 
-*Msg 13766, 16. szint, 1. állapot <br></br> nem tudja eldobni a (z) "WebsiteUserInfoHistory. IX_WebsiteUserInfoHistory" fürtözött indexet, mert az elavult adatmennyiség automatikus tisztítására használatos. Ha el szeretné dobni ezt az indexet, érdemes lehet a HISTORY_RETENTION_PERIOD-t a megfelelő rendszerverzióval ellátott ideiglenes táblázatra beállítani.*
+*Msg 13766, 16. szint, 1. állapot <br></br> nem tudja eldobni a (z) "WebsiteUserInfoHistory. IX_WebsiteUserInfoHistory" fürtözött indexet, mert az elavult Adattisztításra van használatban. Ha el szeretné dobni ezt az indexet, érdemes megfontolnia, hogy a rendszer a megfelelő rendszerverzióval ellátott ideiglenes táblázaton HISTORY_RETENTION_PERIOD a végtelen értékre.*
 
-A fürtözött oszlopcentrikus index tisztítása optimálisan működik, ha a korábbi sorok bekerülnek a növekvő sorrendbe (az időszak végéig elrendezett oszlop szerint rendezve), ami mindig igaz, ha az előzmények táblát kizárólag a SYSTEM_VERSIONIOING mechanizmus tölti fel. Ha az előzmények tábla sorait nem az időszak vége oszlop szerint rendezi a rendszer (ez lehet az eset, ha áttelepítette a meglévő korábbi adatmennyiségeket), akkor az optimális elérés érdekében újra létre kell hoznia egy fürtözött oszlopcentrikus indexet a B-Tree sortárindex létrehozását indexen felül. teljesítmény.
+A fürtözött oszlopcentrikus index tisztítása optimálisan működik, ha a korábbi sorok bekerülnek a növekvő sorrendbe (az időszak végéig elrendezett oszlop szerint rendezve), ami mindig az a helyzet, amikor az előzmények táblát kizárólag a SYSTEM_VERSIONIOING mechanizmus tölti fel. Ha az előzmények tábla sorait nem az időszak vége oszlop szerint rendezi a rendszer (ez lehet az eset, ha áttelepítette a meglévő korábbi adatmennyiségeket), akkor az optimális elérés érdekében újra létre kell hoznia egy fürtözött oszlopcentrikus indexet a B-Tree sortárindex létrehozását indexen felül. teljesítmény.
 
 Kerülje a fürtözött oszlopcentrikus indexek újrafordítását az előzmények táblán a véges megőrzési időtartammal, mert a sorrendet a rendszerverziószámozási művelet által természetes módon kiszabva változhat. Ha újra létre kell hoznia egy fürtözött oszlopcentrikus indexet az előzmények táblán, akkor a megfelelő B-fa indexhez való újbóli létrehozásával, a normál adattisztításhoz szükséges sorcsoportokba való tömörítéséhez megőrzi a rendelést. Ugyanezt a megközelítést kell alkalmazni, ha olyan ideiglenes táblázatot hoz létre, amely már rendelkezik egy fürtözött oszlop indextel rendelkező, garantált adatsorrend nélküli, meglévő History táblázattal:
 
@@ -164,11 +164,11 @@ Ha azonban közvetlenül kérdezi le a History (előzmények) táblázatot, akko
 
 ![Előzmények lekérdezése adatmegőrzési szűrő nélkül](./media/sql-database-temporal-tables-retention-policy/queryexecplanhistorytable.png)
 
-Ne bízza az üzleti logikát a megőrzési időszakon túli olvasási előzmények táblára, mert inkonzisztens vagy váratlan eredményekhez vezethet. Javasoljuk, hogy időbeli lekérdezéseket használjon a FOR SYSTEM_TIME záradékhoz az időbeli táblákban lévő adatok elemzéséhez.
+Ne bízza az üzleti logikát a megőrzési időszakon túli olvasási előzmények táblára, mert inkonzisztens vagy váratlan eredményekhez vezethet. Javasoljuk, hogy a FOR SYSTEM_TIME záradék időbeli lekérdezéseit használja az időbeli táblákban lévő adatok elemzéséhez.
 
 ## <a name="point-in-time-restore-considerations"></a>Időponthoz való visszaállítás szempontjai
 
-Amikor új adatbázist [hoz létre egy meglévő adatbázis egy adott időpontra való visszaállításával](sql-database-recovery-using-backups.md), az adatbázis szintjén le van tiltva az időbeli megőrzés. (a**is_temporal_history_retention_enabled** jelző értéke kikapcsolva értékre van állítva). Ez a funkció lehetővé teszi a visszaállítás során az összes korábbi sor vizsgálatát anélkül, hogy a lekérdezés előtt el kellene távolítani az elavult sorokat. Ezzel a *beállítással megvizsgálhatja a konfigurált megőrzési időtartamon túli korábbi adatok vizsgálatát*is.
+Amikor új adatbázist [hoz létre egy meglévő adatbázis egy adott időpontra való visszaállításával](sql-database-recovery-using-backups.md), az adatbázis szintjén le van tiltva az időbeli megőrzés. (**is_temporal_history_retention_enabled** jelző BEÁLLÍTVA kikapcsolva). Ez a funkció lehetővé teszi a visszaállítás során az összes korábbi sor vizsgálatát anélkül, hogy a lekérdezés előtt el kellene távolítani az elavult sorokat. Ezzel a *beállítással megvizsgálhatja a konfigurált megőrzési időtartamon túli korábbi adatok vizsgálatát*is.
 
 Tegyük fel, hogy egy időbeli táblának van meghatározott egy hónapos megőrzési időtartama. Ha az adatbázis prémium szintű szolgáltatási szinten lett létrehozva, akkor a múltban akár 35 napig is létrehozhat adatbázis-másolatot az adatbázis-állapottal. Ez gyakorlatilag azt teszi lehetővé, hogy a korábbi sorokat akár 65 naposra elemezze az előzmények tábla közvetlen lekérdezésével.
 

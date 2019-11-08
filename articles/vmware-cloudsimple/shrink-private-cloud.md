@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 00d0067fe51efef8efffe31860e16f4530adf3ac
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: 1ae2f87a3719853f4a91cb8ba801be6d578597d3
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69972368"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73825687"
 ---
 # <a name="shrink-a-cloudsimple-private-cloud"></a>CloudSimple privát felhő zsugorítása
 
@@ -30,7 +30,7 @@ A privát felhő zsugorodása után a következő feltételeknek kell teljesüln
 
 Jelentkezzen be az Azure Portalra a [https://portal.azure.com](https://portal.azure.com) webhelyen.
 
-## <a name="shrink-a-private-cloud"></a>Privát felhő zsugorítása
+## <a name="shrink-a-private-cloud"></a>Magánfelhő zsugorítása
 
 1. [Nyissa meg a CloudSimple portált](access-cloudsimple-portal.md).
 
@@ -53,6 +53,10 @@ Jelentkezzen be az Azure Portalra a [https://portal.azure.com](https://portal.az
 8. Kattintson a **Submit (Küldés** ) gombra a privát felhő összezsugorodása érdekében.
 
 A privát felhő zsugorodása megkezdődik.  Nyomon követheti a feladatok előrehaladását.  A zsugorodó folyamat néhány órát is igénybe vehet az adattól függően, amelyet újra kell szinkronizálni a vSAN-on.
+
+> [!NOTE]
+> Ha az adatközpontban az utolsó vagy az egyetlen fürt törlésével csökkenti a privát felhőt, az adatközpont nem lesz törölve.  
+
 
 ## <a name="next-steps"></a>További lépések
 

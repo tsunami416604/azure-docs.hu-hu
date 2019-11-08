@@ -5,15 +5,16 @@ services: Azure, AppSource, Marketplace, Compute, Storage, Networking, Blockchai
 author: qianw211
 manager: pabutler
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 09/12/2018
 ms.author: pabutler
-ms.openlocfilehash: 0b68687a2bbaa817f2776757ccab9571638c0fd5
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: 9423263270313659017b16a5e34511e7ef385af5
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67876007"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73825895"
 ---
 # <a name="enable-an-appsource-and-marketplace-listing-by-using-azure-active-directory"></a>AppSource- és Marketplace-termékoldal engedélyezése az Azure Active Directory használatával
 
@@ -35,12 +36,12 @@ A AppSource és az Azure Marketplace különböző [listázási lehetőségei é
 | **Ajánlat típusa**    | **Azure AD SSO szükséges?**  |  |   |  |
 | :------------------- | :-------------------|:-------------------|:-------------------|:-------------------|
 |  | Kapcsolatfelvétel | Próbaverzió | Tesztverzió | Tranzakció |
-| Virtuális gép | – | Nem | Nem | Nem |
-| Azure-alkalmazások (megoldás-sablon)  | – | N/A | N/A | – |
-| Felügyelt alkalmazások  | – | N/A | – | Nem |
+| Virtuális gép | N/A | Nem | Nem | Nem |
+| Azure-alkalmazások (megoldás-sablon)  | N/A | N/A | N/A | N/A |
+| Felügyelt alkalmazások  | N/A | N/A | N/A | Nem |
 | SaaS  | Nem | Igen | Igen | Igen |
-| Containers  | – | N/A | – | Nem |
-| Tanácsadási szolgáltatások  | Nem | – | N/A | – |
+| Tárolók  | N/A | N/A | N/A | Nem |
+| Tanácsadási szolgáltatások  | Nem | N/A | N/A | N/A |
 
 További információ a SaaS-technikai követelményekről: [SaaS-alkalmazások ajánlat közzétételi útmutatója](https://docs.microsoft.com/azure/marketplace/marketplace-saas-applications-technical-publishing-guide).
 
@@ -88,5 +89,5 @@ Az Azure AD használata a következő műveletek egyikének támogatásához has
 
 ## <a name="next-steps"></a>További lépések
 
-- Győződjön meg róla, hogy regisztrálva van [Az Azure Marketplace-](https://azuremarketplace.microsoft.com/sell)en.
+- Győződjön meg róla, hogy [regisztrálva van az Azure Marketplace-](https://azuremarketplace.microsoft.com/sell)en.
 - Az ajánlat létrehozásával vagy végrehajtásával kapcsolatos további információkért tekintse meg [a partner Center-fiók létrehozása](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account) című témakört.

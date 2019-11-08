@@ -1,129 +1,130 @@
 ---
-title: Frissítse a marketplace-ajánlat |} Az Azure Marketplace-en
-description: Frissítés kínál az Azure-ra és az AppSource-piactér használatával a Cloud Partner portálra
+title: Piactéri ajánlatok frissítése | Azure piactér
+description: Az Azure-és AppSource-piactéren elérhető frissítési ajánlatok a Cloud Partner Portal használatával
 services: Azure, AppSource, Marketplace, Cloud Partner Portal,
 author: v-miclar
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 01/11/2019
 ms.author: pabutler
-ms.openlocfilehash: 73e2812c678dca7e21089ee9cc091db756d7e25a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b3f579dbdc943b2380c9de3dde6b2ebf4754d4d1
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64942346"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73826715"
 ---
-# <a name="update-azure-marketplace-and-appsource-offers"></a>Az Azure Marketplace és AppSource ajánlatokat frissítése
+# <a name="update-azure-marketplace-and-appsource-offers"></a>Azure Marketplace-és AppSource-ajánlatok frissítése
 
-Számos különböző típusú frissítéseket alkalmazhat az ajánlatot, hogy közzététele után.  A [Cloud Partner Portalon](https://cloudpartner.azure.com/) segítséget megfelelően módosítja az attribútumokat, egy ajánlatot, többek között:
+A közzétételt követően különböző típusú frissítések is alkalmazhatók az ajánlatra.  A [Cloud Partner Portal](https://cloudpartner.azure.com/) segítséget nyújt az ajánlat attribútumainak megfelelő módosításához, beleértve a következőket:
 
--  Új virtuális gép (VM) rendszerképet vagy csomagot verzió hozzáadása egy meglévő Termékváltozat
--  Régiókban érhető el a Termékváltozat módosítása
--  Hozzáadás, új termékváltozatok
--  Marketplace-en metaadatainak a ajánlatok és termékváltozatok frissítése 
--  Kínál az utólagos elszámolású díjszabás frissítése
+-  Új virtuális gép (VM) vagy csomag verziójának hozzáadása meglévő SKU-hoz
+-  Megváltoztathatja az SKU-ban elérhető régiókat
+-  Új SKU-i hozzáadása
+-  A Piactéri metaadatok frissítése az ajánlatokhoz vagy az SKU-hoz 
+-  Az utólagos elszámolású ajánlatok díjszabásának frissítése
 
-A portál is tartalmaz a szolgáltatások, például lehetővé teszi szolgáltatások összehasonlítása és a egy ajánlatot, amely segítséget nyújt a módosításával funkciói előzményeinek megtekintése.  Az ajánlat vagy a Termékváltozat módosítása után azt kell újra közzé mielőtt a módosítások "élő".  Ez a cikk végigvezeti a különböző aspektusait a marketplace-ajánlat frissítése.
+A portál olyan funkciókkal is rendelkezik, mint például a funkciók összehasonlítása, valamint az ajánlatok előzményeinek megtekintése, amely segítséget nyújt a módosítások kezelésében.  Egy ajánlat vagy SKU módosítása után újból közzé kell tenni a módosításokat, mielőtt a módosítások "élő" állapotba kerülnek.  Ez a cikk végigvezeti a Piactéri ajánlat frissítésének különböző szempontjain.
 
-## <a name="unpermitted-changes-to-an-offersku"></a>Egy ajánlat/SKU engedett módosításai
+## <a name="unpermitted-changes-to-an-offersku"></a>Egy ajánlat/SKU nem engedélyezett módosításai
 
-Vannak bizonyos attribútumainak ajánlat, amely nem módosítható, miután sikeresen közzétette a Marketplace-en.  A megfelelő mezőket le vannak tiltva a **szerkesztő** lapján a portálon, például:  
+Egy ajánlat vagy SKU néhány attribútuma nem módosítható, ha közzé lett téve a piactéren.  A megfelelő mezők le vannak tiltva a portál **szerkesztő** lapján, például:  
 
-- Ajánlat azonosítója és a Gyártóazonosítóval
-- SKU-AZONOSÍTÓJA 
-- Adatlemez meglévő SKU-k száma
-- Számlázás/licenc adatmodell változásainak a meglévő termékváltozatok
-- Verzió címkék, például: `1.0.1`
+- Ajánlat azonosítója és közzétevő azonosítója
+- SKU-AZONOSÍTÓ 
+- Meglévő SKU-i adatlemezek száma
+- A meglévő SKU-i számlázási/licencelési modell változásai
+- Verziók címkéi, például: `1.0.1`
 
 
 ## <a name="common-update-operations"></a>Gyakori frissítési műveletek
 
-Az alábbi szakaszok azt ismertetik, hogyan hajtsa végre a legtöbb frissítési műveleteket.  Minden ajánlat esetében ezek a műveletek nem érhetők el.  Be kell jelentkeznie a Cloud Partner portálra, indítsa el ezeket a műveleteket.
+A következő szakasz ismerteti, hogyan végezheti el a legtöbb frissítési műveletet.  Ezek a műveletek nem érhetők el az összes ajánlat típusához.  A műveletek elindításához be kell jelentkeznie a Cloud Partner Portalba.
 
 
-### <a name="update-offer-contacts"></a>Az ajánlat ügyfelek frissítése
+### <a name="update-offer-contacts"></a>Ajánlati névjegyek frissítése
 
-A következő lépések segítségével frissítse a támogatási kapcsolatba lép az ajánlatban.
-1. Az a **összes kínál** lapra, jelölje be az ajánlat.
-2. Válassza ki a **névjegyek** fülre. Frissítse a névjegyeket.
+Az alábbi lépésekkel frissítheti az ajánlat támogatási partnereit.
+1. A **minden ajánlat** lapon válassza ki az ajánlatot.
+2. Válassza a **névjegyek** lapot. frissítse a névjegyeket.
 3. Válassza ki a **Mentés** gombot.
-4. Válassza ki **közzététel** a közzétételi folyamat elindításához.
+4. A közzétételi folyamat elindításához válassza a **Közzététel** lehetőséget.
 
 
-### <a name="change-regions-an-offer-or-sku-is-available-in"></a>Az ajánlat vagy Termékváltozat érhető el a régiók módosítása
+### <a name="change-regions-an-offer-or-sku-is-available-in"></a>Megváltoztathatja a régiókban elérhető ajánlatot vagy SKU-t
 
-Idővel előfordulhat, hogy szeretné az ajánlat/SKU több régióban elérhetővé.
-Azt is megteheti érdemes leállítani az ajánlat/SKU támogatása egy adott régióban.
-Ezek a módosítások végrehajtásához kövesse az alábbi lépéseket.
+Idővel előfordulhat, hogy az ajánlatot/SKU-t több régióban is elérhetővé kívánja tenni.
+Azt is megteheti, hogy le szeretné állítani az ajánlat/SKU támogatását egy adott régióban.
+A módosítások végrehajtásához kövesse az alábbi lépéseket.
 
-1. Az a **minden ajánlat** lapon, keresse meg az ajánlat, amelyet szeretne frissíteni.
+1. A **minden ajánlat** oldalon keresse meg a frissíteni kívánt ajánlatot.
 
-Az Azure Marketplace-ajánlatok:
+Azure Marketplace-ajánlatok:
 
-1. Válassza ki a **termékváltozatok** fülre.  Válassza ki a Termékváltozat módosítása.
-1. Kattintson a **kiválasztása országok/régiók** gomb alatt a **ország/régió rendelkezésre állási** mező.
-1. A régió rendelkezésre állási párbeszédpanelen régiók hozzáadása vagy eltávolítása a Ez a termékváltozat.
+1. Válassza a **SKUs** fület.  Válassza ki a módosítandó SKU-t.
+1. Az **ország/régió rendelkezésre állása** mezőben kattintson az **országok kiválasztása** gombra.
+1. A régió elérhetősége párbeszédpanelen adja hozzá vagy távolítsa el az adott SKU régióit.
 
-Az appsource-ban a következőket kínálja:
+AppSource-ajánlatok:
 
-1. Válassza ki a **kirakat részletek** fülre.
-1. Mellett a **támogatott országok/régiók** címkézését, kattintson a **támogatott országok/régiók**. 
-1. Támogatott országok/régiók párbeszédpanelen régiók hozzáadása vagy eltávolítása a ezt az ajánlatot.
+1. Válassza ki a **kirakat részletei** lapot.
+1. A **támogatott országok/régiók** felirat mellett kattintson a **támogatott országok/régiók**elemre. 
+1. A támogatott országok/régiók párbeszédpanelen adja hozzá vagy távolítsa el az ajánlathoz tartozó régiókat.
 
-Mindkét Marketplace-en:
+Bármelyik piactér esetében:
 
-1. Kattintson a **közzététel** a közzétételi folyamat elindításához. 
+1. A közzétételi folyamat elindításához kattintson a **Közzététel** gombra. 
 
-A Termékváltozat egy új régióban elérhetővé van folyamatban, ha rendelkezik keresztül adott régió díjszabás megadásának lehetőségét a **díjszabási adatok exportálása** funkciót. Vissza egy régióban, amely korábban ad hozzá, ha nem tudja frissíteni a díjszabás, mert a díjszabási nem engedélyezettek.
-
-
-### <a name="add-a-new-sku"></a>Adjon hozzá egy új Termékváltozatot 
-
-Ahhoz, hogy egy új Termékváltozatban érhető el egy meglévő ajánlatot, használja az alábbi lépéseket:
-
-1. Az a **minden ajánlat** lapon, keresse meg az ajánlat.
-3. Alatt a **termékváltozatok** alkotnak, kattintson a **adja hozzá az új Termékváltozat** , és adja meg egy **SKU-azonosítója** az előugró.
-4. Kövesse a részletes lépések a többi [egy virtuálisgép-ajánlat közzététele](../virtual-machine/cpp-publish-offer.md).
-5. Kattintson a **közzététel** a közzétételi folyamat elindításához.
+Ha egy SKU-t egy új régióban kíván elérhetővé tenni, lehetősége van az adott régió díjszabásának megadására az **exportálási díjszabási adatok** funkcióján keresztül. Ha korábban már elérhető régiót ad hozzá, a díjszabás nem frissíthető, mert az árképzési változások nem engedélyezettek.
 
 
-### <a name="update-offer-marketplace-assets"></a>Az ajánlat marketplace eszközök frissítése
+### <a name="add-a-new-sku"></a>Új SKU hozzáadása 
 
-Előfordulhat, hogy a forgatókönyvek, ahol frissítenie a piactéren, szöveges és lemezkép eszközök, például a vállalati emblémát ajánlat leírása, és így tovább. Ezek az eszközök frissítésére használni az alábbi lépéseket.
+Ha új SKU-t szeretne elérhetővé tenni egy meglévő ajánlathoz, kövesse az alábbi lépéseket:
 
-1. Az a **minden ajánlat** lapon, keresse meg az ajánlat. 
-2. Válassza ki a **Marketplace** lapra, és kövesse az utasításokat az ajánlatban *piactér lapján* témakör.
-3. Kattintson a **közzététel** a közzétételi folyamat elindításához.
+1. A **minden ajánlat** oldalon keresse meg az ajánlatot.
+3. Az **SKU** -i űrlap alatt kattintson az **új SKU hozzáadása** elemre, és adjon meg egy **SKU azonosítót** az előugró ablakban.
+4. Kövesse a [virtuális gépekre vonatkozó ajánlat közzétételének](../virtual-machine/cpp-publish-offer.md)részletes lépéseit.
+5. A közzétételi folyamat elindításához kattintson a **Közzététel** gombra.
 
 
-### <a name="update-pricing-on-published-offers"></a>Frissítse a közzétett ajánlatok díjszabása
+### <a name="update-offer-marketplace-assets"></a>Frissítési ajánlat Marketplace-eszközök
 
-Az utólagos számlázású közzététele után egy meglévő Termékváltozat ára nem növelhető.  Ehelyett az ugyanazon az ajánlatnak a Termékváltozat létrehozása, törölje a régi Termékváltozat és majd közzé az ajánlatot még. A díjak a már közzétett ajánlatok csökkenthető. Csökkentheti az ajánlat ár:
+Lehetnek olyan helyzetek, amikor frissítenie kell a piactér szöveg-és képobjektumait, például a céges emblémákat, az ajánlat leírását stb. Az alábbi lépéseket követve frissítheti ezeket az eszközöket.
 
-1. Válassza ki az SKU-t, amelynek díjszabása csökkentése érdekében.
-2. Az alacsonyabb díj ellenében a regisztráláshoz használt eredeti ugyanazt a mechanizmust kell állítani: közvetlenül a portál felhasználói Felületét vagy az importálási/exportálási táblázatkezelő.
+1. A **minden ajánlat** oldalon keresse meg az ajánlatát. 
+2. Válassza a **piactér** fület, és kövesse az ajánlat *Marketplace lapján* található útmutatást.
+3. A közzétételi folyamat elindításához kattintson a **Közzététel** gombra.
+
+
+### <a name="update-pricing-on-published-offers"></a>A közzétett ajánlatok díjszabásának frissítése
+
+Az utólagos elszámolású ajánlat közzététele után nem növelheti egy meglévő SKU árát.  Ehelyett hozzon létre egy SKU-t ugyanabban az ajánlatban, törölje a régi SKU-t, majd tegye közzé újból az ajánlatot. Csökkentheti a korábban közzétett ajánlatok árát. Az ajánlat árának csökkentése:
+
+1. Válassza ki azt az SKU-t, amelynek a díjszabását csökkenteni kívánja.
+2. Az alacsonyabb árat ugyanazt a mechanizmust kell megadnia, amelyet eredetileg használt: vagy közvetlenül a portál felhasználói felületén vagy az import/export táblázattal.
 3. Kattintson a **Save** (Mentés) gombra.
-4. Kattintson a **közzététel** a közzétételi folyamat elindításához.
+4. A közzétételi folyamat elindításához kattintson a **Közzététel** gombra.
 
-A díjszabás akkor látható, az új ügyfelek számára, élő a marketplace-en, és új ügyfelek lesz majd kezdem meg új csökkent.  A meglévő ügyfelek az árcsökkenést tükrözi visszamenőlegesen a Start a számlázási ciklus során, ami az árcsökkenést hatékony vált.  Ha rendelkezik már lett számlázásra a ciklus során, ami árcsökkenés történt, visszatérítés kapja meg, hogy biztosítsák a csökkent díj a következő elszámolási időszakban.
+A díjszabás az új ügyfelek számára látható, ha a piactéren él, és minden új ügyfél az új, csökkentett árat fogja kifizetni.  A meglévő ügyfelek esetében az árak csökkenése visszamenőlegesen jelenik meg a számlázási ciklus elején, amely alatt a csökkenés érvénybe lép.  Ha már felszámolták azt a ciklust, amely alatt az árak csökkenése megtörtént, akkor a következő elszámolási időszakban visszatérítést kapnak, hogy lefedje a csökkentett árat.
 
 
-## <a name="compare-feature"></a>A szolgáltatás összehasonlítása
+## <a name="compare-feature"></a>Szolgáltatás összehasonlítása
 
-Ha módosít egy közzétett kínálnak, használhatja a *összehasonlítása* funkció a módosítások naplózását. Ez a funkció használatához:
+Ha módosításokat hajt végre egy közzétett ajánlaton, az *összehasonlítás* funkció használatával naplózhatja a módosításokat. A funkció kihasználása:
 
-1. A szerkesztési folyamat bármely mozzanata, kattintson a **összehasonlítása** gombra a **szerkesztő** az ajánlatban fülre.
-2. Összehasonlító ablak a mentett módosítások verzióinak egymás mellett, mint a korábban megszokott a marketplace-ajánlat az ajánlat jeleníti meg. 
+1. A szerkesztési folyamat bármely pontján az ajánlat **szerkesztő** lapján az **összehasonlítás** gombra kattinthat.
+2. Az összehasonlítási ablak a Piactéri ajánlathoz képest a mentett módosítások párhuzamos verzióit jeleníti meg az ajánlatban. 
 
-![Az ajánlat gombot szerkesztő lapon összehasonlítása](./media/offer-compare-button.png)
+![Az ajánlat összehasonlítása gomb a szerkesztő lapon](./media/offer-compare-button.png)
 
 
 ## <a name="history-of-publishing-actions"></a>Közzétételi műveletek előzményei
 
-Közzétételi végzett tevékenység előzményeit megtekintéséhez jelölje ki a **előzmények** a Cloud Partner portálra, a bal oldali függőleges menüsávon lapján.  Az Előzmények lapon több jellemzők alapján történő szűrést rugalmas és oszlopok rendezése is támogat.  Minden közzétételi esemény időbélyegzővel.  További információkért lásd: [naplózási Előzmények lapon](../portal-tour/cpp-history-page.md).
+A korábbi közzétételi tevékenységek megtekintéséhez válassza a Cloud Partner Portal bal oldali függőleges menüsorának **Előzmények** lapját.  Az Előzmények oldalon számos jellemző rugalmas szűrést tesz lehetővé, és támogatja az oszlopok rendezését.  Az egyes közzétételi események időbélyegzővel vannak ellátottak.  További információ: [naplózási Előzmények lap](../portal-tour/cpp-history-page.md).
 
 
 ## <a name="next-steps"></a>További lépések
 
-Használhatja a Cloud Partner portálra való [közzétett Termékváltozat törlése vagy ajánlat](./cpp-delete-offer.md).
+A Cloud Partner Portal [egy közzétett SKU vagy ajánlat törlésére](./cpp-delete-offer.md)is használhatja.

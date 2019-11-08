@@ -1,22 +1,23 @@
 ---
-title: Az Azure virtuális merevlemez központi telepítési sablont |} Az Azure Marketplace-en
-description: Felsorolja az Azure Resource Manager-sablon egy felhasználói virtuális merevlemezről új Azure virtuális gép telepítéséhez szükséges.
+title: Azure VHD telepítési sablon | Azure piactér
+description: Az új Azure-beli virtuális gép felhasználói virtuális merevlemezről való üzembe helyezéséhez szükséges Azure Resource Manager sablon felsorolása.
 services: Azure, Marketplace, Cloud Partner Portal,
 author: v-miclar
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 11/29/2018
 ms.author: pabutler
-ms.openlocfilehash: 73f53f72d4db88bc0487999165d25fc952cf4a20
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ddaf9213980e666ea69c700ad26b9db52886c9cb
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64938275"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73821414"
 ---
-# <a name="virtual-hard-disk-deployment-template"></a>Virtuális merevlemez központi telepítési sablon 
+# <a name="virtual-hard-disk-deployment-template"></a>Virtuális merevlemez központi telepítési sablonja 
 
-Az alábbi Azure Resource Manager-sablont egy új Azure virtuális gép (VM)-példányt, a helyi virtuális merevlemezről (VHD) létrehozott határozza meg.  Ez a sablon a cikkben használt [üzembe helyezése egy Azure virtuális gép VHD-t felhasználói](./cpp-deploy-vm-user-image.md). 
+A következő Azure Resource Manager sablon a helyi virtuális merevlemezről (VHD) létrehozott új Azure-beli virtuális gép (VM) példányát határozza meg.  Ez a sablon az [Azure virtuális gép üzembe helyezése felhasználói VHD-ről című](./cpp-deploy-vm-user-image.md)cikkben található. 
 
 ```json
 {

@@ -1,5 +1,5 @@
 ---
-title: Azure SQL Database memóriában tárolt minta
+title: Memóriában tárolt minta
 description: Próbálja ki Azure SQL Database memóriában lévő technológiákat a OLTP és a oszlopcentrikus mintával.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: ''
 ms.date: 12/18/2018
-ms.openlocfilehash: 8526236afdb0a312879cb3c1635a7fd85985278f
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: e7e7fc44d5f8b46a66c698d3a33ceeab5b8625c4
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73689819"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73810328"
 ---
 # <a name="in-memory-sample"></a>Memóriában tárolt minta
 
@@ -100,7 +100,7 @@ SELECT is_memory_optimized, name, type_desc, durability_desc
 ```
 
 
-**Natív módon lefordított tárolt eljárás**: a SalesLT. USP _insertsalesorder_inmem megvizsgálhatja a katalógus nézet lekérdezésével:
+**Natív módon lefordított tárolt eljárás**: megvizsgálhatja a SalesLT. usp_InsertSalesOrder_inmem a katalógus nézet lekérdezésével:
 
 
 ```sql
@@ -168,7 +168,7 @@ end
 ```
 
 
-A ostress. exe előző T-SQL-parancsfájljának *_ondisk* -verziójának lecserélése a *_inmem* alsztring mindkét előfordulását helyettesíti a *_ondisk*. Ezek a cserék a táblák és a tárolt eljárások nevét érintik.
+Ha a ostress. exe előző T-SQL-parancsfájljának *_ondisk* verzióját szeretné megtenni, akkor a *_inmem* alsztring mindkét előfordulását a *_ondisk*értékre kell cserélni. Ezek a cserék a táblák és a tárolt eljárások nevét érintik.
 
 
 ### <a name="install-rml-utilities-and-ostress"></a>A RML segédprogramok és `ostress` telepítése
@@ -198,7 +198,7 @@ whereas for SQL 2016+
 
 
 
-### <a name="run-the-_inmem-stress-workload-first"></a>Először futtassa a *_inmem* Stress munkaterhelés-t
+### <a name="run-the-_inmem-stress-workload-first"></a>Először futtassa az *_inmem* Stress munkaterhelés-t
 
 
 A ostress. exe parancssorának futtatásához használhatja a *RML* parancssori ablakát. A parancssori paraméterek közvetlen `ostress` a következőre:
@@ -236,7 +236,7 @@ A fenti ostress. exe parancssor futtatása:
 `11/12/15 00:35:00.873 [0x000030A8] OSTRESS exiting normally, elapsed time: 00:01:31.867`
 
 
-#### <a name="reset-edit-for-_ondisk-then-rerun"></a>Alaphelyzetbe állítás, szerkesztés a *_ondisk*, majd futtassa újra
+#### <a name="reset-edit-for-_ondisk-then-rerun"></a>Alaphelyzetbe állítás, szerkesztés *_ondisk*, majd újrafuttatás
 
 
 Miután elvégezte a *_inmem* futtatásának eredményét, hajtsa végre a következő lépéseket a *_ondisk* futtatásához:
@@ -247,7 +247,7 @@ Miután elvégezte a *_inmem* futtatásának eredményét, hajtsa végre a köve
    EXECUTE Demo.usp_DemoReset;
    ```
 
-2. Szerkessze a ostress. exe parancssort az összes *_inmem* az *_ondisk*-vel való lecseréléséhez.
+2. Szerkessze a ostress. exe parancssort, hogy az összes *_inmem* lecserélje a *_ondisk*.
 
 3. Futtassa újra a ostress. exe fájlt a második alkalommal, és rögzítse az időtartam eredményét.
 
@@ -294,9 +294,9 @@ A OLTP számítási feladatokhoz a valós idejű elemzések esetében általába
 #### <a name="key-tables-and-columnstore-indexes"></a>Legfontosabb táblák és oszlopcentrikus indexek
 
 
-- dbo. A FactResellerSalesXL_CCI olyan tábla, amely egy fürtözött oszlopcentrikus indextel rendelkezik, amely az *adatszinten speciális* tömörítést tartalmaz.
+- dbo. FactResellerSalesXL_CCI olyan tábla, amely egy fürtözött oszlopcentrikus indextel rendelkezik, *amely az adatszinten speciális* tömörítést tartalmaz.
 
-- dbo. A FactResellerSalesXL_PageCompressed olyan tábla, amely egyenértékű normál fürtözött indexszel rendelkezik, amely csak az *oldal* szintjén tömörítve van.
+- dbo. FactResellerSalesXL_PageCompressed egy olyan tábla, amely egyenértékű normál fürtözött indextel rendelkezik, amely csak az *oldal* szintjén tömörítve van.
 
 
 #### <a name="key-queries-to-compare-the-columnstore-index"></a>A oszlopcentrikus index összehasonlítására szolgáló legfontosabb lekérdezések

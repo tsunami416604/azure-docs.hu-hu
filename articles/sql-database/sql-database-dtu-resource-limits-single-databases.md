@@ -1,22 +1,22 @@
 ---
-title: Azure SQL Database DTU erőforrás-korlátozás önálló adatbázisokra | Microsoft Docs
+title: DTU erőforrás-korlátok önálló adatbázisok
 description: Ez a lap a Azure SQL Database önálló adatbázisaihoz tartozó általános DTU-erőforrás-korlátokat ismerteti.
 services: sql-database
 ms.service: sql-database
 ms.subservice: single-database
-ms.custom: ''
+ms.custom: seo-lt-2019
 ms.devlang: ''
 ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/20/2019
-ms.openlocfilehash: 37cda6dec3f98a195e704808244656f3182b4c2a
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 3fb021c06369d1f37dad83b3f9b27e039ddf8b5e
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73520997"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73811283"
 ---
 # <a name="resource-limits-for-single-databases-using-the-dtu-purchasing-model"></a>Az DTU beszerzési modellt használó önálló adatbázisok erőforrás-korlátai
 
@@ -38,19 +38,19 @@ A következő táblázatok az egyes szolgáltatási rétegekben és számítási
 | DTU-k maximális száma | 5 |
 | Belefoglalt tárterület (GB) | 2 |
 | Maximális tárolási lehetőségek (GB) | 2 |
-| Memóriában tárolt OLTP-k maximális tárterülete (GB) |– |
+| Memóriában tárolt OLTP-k maximális tárterülete (GB) |N/A |
 | Egyidejű feldolgozók maximális száma (kérelem) | 30 |
 | Egyidejű munkamenetek maximális száma | 300 |
 |||
 
-### <a name="standard-service-tier"></a>Standard szintű szolgáltatáscsomag
+### <a name="standard-service-tier"></a>Standard szolgáltatási szint
 
 | **Számítási méret** | **S0** | **S1** | **S2** | **S3** |
 | :--- |---:| ---:|---:|---:|
 | DTU-k maximális száma | 10 | 20 | 50 | 100 |
 | Belefoglalt tárterület (GB) | 250 | 250 | 250 | 250 |
 | Maximális tárolási lehetőségek (GB) | 250 | 250 | 250 | 250, 500, 750, 1024 |
-| Memóriában tárolt OLTP-k maximális tárterülete (GB) | – | – | – | – |
+| Memóriában tárolt OLTP-k maximális tárterülete (GB) | N/A | N/A | N/A | N/A |
 | Egyidejű feldolgozók maximális száma (kérelem)| 60 | 90 | 120 | 200 |
 | Egyidejű munkamenetek maximális száma |600 | 900 | 1200 | 2400 |
 ||||||
@@ -62,7 +62,7 @@ A következő táblázatok az egyes szolgáltatási rétegekben és számítási
 | DTU-k maximális száma | 200 | 400 | 800 | 1600 | 3000 |
 | Belefoglalt tárterület (GB) | 250 | 250 | 250 | 250 | 250 |
 | Maximális tárolási lehetőségek (GB) | 250, 500, 750, 1024 | 250, 500, 750, 1024 | 250, 500, 750, 1024 | 250, 500, 750, 1024 | 250, 500, 750, 1024 |
-| Memóriában tárolt OLTP-k maximális tárterülete (GB) | – | – | – | – |– |
+| Memóriában tárolt OLTP-k maximális tárterülete (GB) | N/A | N/A | N/A | N/A |N/A |
 | Egyidejű feldolgozók maximális száma (kérelem)| 400 | 800 | 1600 | 3200 |6000 |
 | Egyidejű munkamenetek maximális száma |4800 | 9600 | 19200 | 30000 |30000 |
 |||||||

@@ -1,5 +1,5 @@
 ---
-title: Teljesítmény-finomhangolási útmutató Azure SQL Database
+title: Teljesítmény-finomhangolási útmutató
 description: Útmutató a Azure SQL Database lekérdezési teljesítmény manuális finomhangolásához.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: juliemsft
 ms.author: jrasnick
 ms.reviewer: carlrab
 ms.date: 01/25/2019
-ms.openlocfilehash: 971b35838f370f31d6e2d2da06dfdbced2fafb02
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 6e42911d05f387ea47b56b913e9a1868100c1b3c
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73687680"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73821358"
 ---
 # <a name="manual-tune-query-performance-in-azure-sql-database"></a>A lekérdezés teljesítményének manuális finomhangolása Azure SQL Database
 
@@ -120,7 +120,7 @@ A létrehozást követően ugyanez a SELECT utasítás egy másik tervet is vál
 
 ![A javított indexekkel rendelkező lekérdezési terv](./media/sql-database-performance-guidance/query_plan_corrected_indexes.png)
 
-A legfontosabb az, hogy a megosztott, a nyersanyag-rendszerek i/o-kapacitása korlátozottabb, mint egy dedikált kiszolgáló-gép esetén. A felesleges i/o-k minimálisra csökkentése a rendszer maximális kihasználása érdekében a Azure SQL Database szolgáltatási szintjeinek minden számítási méretének DTU. A megfelelő fizikai adatbázis-kialakítási lehetőségek jelentős mértékben javítják az egyes lekérdezések késését, javítják a méretezési egység által kezelt egyidejű kérelmek átviteli sebességét, és minimálisra csökkenthetik a lekérdezés teljesítéséhez szükséges költségeket. A hiányzó index DMV kapcsolatos további információkért lásd: [sys. DM _db_missing_index_details](https://msdn.microsoft.com/library/ms345434.aspx).
+A legfontosabb az, hogy a megosztott, a nyersanyag-rendszerek i/o-kapacitása korlátozottabb, mint egy dedikált kiszolgáló-gép esetén. A felesleges i/o-k minimálisra csökkentése a rendszer maximális kihasználása érdekében a Azure SQL Database szolgáltatási szintjeinek minden számítási méretének DTU. A megfelelő fizikai adatbázis-kialakítási lehetőségek jelentős mértékben javítják az egyes lekérdezések késését, javítják a méretezési egység által kezelt egyidejű kérelmek átviteli sebességét, és minimálisra csökkenthetik a lekérdezés teljesítéséhez szükséges költségeket. A hiányzó index DMV kapcsolatos további információkért lásd: [sys. dm_db_missing_index_details](https://msdn.microsoft.com/library/ms345434.aspx).
 
 ### <a name="query-tuning-and-hinting"></a>Lekérdezések finomhangolása és célzása
 
@@ -214,7 +214,7 @@ A példa második része egy lekérdezési mutató használatával közli, hogy 
 
 ![Lekérdezés finomhangolása lekérdezési javaslat használatával](./media/sql-database-performance-guidance/query_tuning_3.png)
 
-Megtekintheti a **sys. resource_stats** tábla hatását (a teszt végrehajtásának idejétől, valamint az adatoknak a tábla kitöltésének időpontjától számítva). Ebben a példában az 1. rész a 22:25:00-es időintervallumban, a 2. rész pedig a 22:35:00-es időpontban fut. A korábbi időablak több erőforrást használt az adott időtartományban, mint a későbbi (a tervezés hatékonyságának javítása miatt).
+Megtekintheti a **sys. resource_stats** tábla hatásait (a teszt végrehajtásának idejétől, valamint az adatoknak a táblával való feltöltésének időpontjában). Ebben a példában az 1. rész a 22:25:00-es időintervallumban, a 2. rész pedig a 22:35:00-es időpontban fut. A korábbi időablak több erőforrást használt az adott időtartományban, mint a későbbi (a tervezés hatékonyságának javítása miatt).
 
 ```sql
 SELECT TOP 1000 *

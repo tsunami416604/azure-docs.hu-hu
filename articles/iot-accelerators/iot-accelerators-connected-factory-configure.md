@@ -1,6 +1,6 @@
 ---
-title: A csatlakoztatott gyár topológiát – Azure |} A Microsoft Docs
-description: Hogyan konfigurálható egy Okosgyár-megoldásgyorsító topológiája.
+title: A csatlakoztatott gyári topológia konfigurálása – Azure | Microsoft Docs
+description: Ez a cikk azt ismerteti, hogyan konfigurálható a csatlakoztatott gyári megoldás-gyorsító a topológiával együtt.
 author: dominicbetts
 manager: timlt
 ms.service: iot-accelerators
@@ -8,64 +8,64 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 12/12/2017
 ms.author: dobett
-ms.openlocfilehash: 3ddbf5832424cdafad2c29254f51754203c7f079
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 5fa3d4d4fdfa0dd81cd8ab8772ffb3903dda289f
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67428323"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73820121"
 ---
-# <a name="configure-the-connected-factory-solution-accelerator"></a>Az Okosgyár-megoldásgyorsító konfigurálása
+# <a name="configure-the-connected-factory-solution-accelerator"></a>A csatlakoztatott gyári megoldás-gyorsító konfigurálása
 
-Az Okosgyár-megoldásgyorsító a szimulált irányítópult egy kitalált, Contoso vállalat mutatja be. A vállalat globálisan rendelkezik előállítók számos globális helyeken.
+A csatlakoztatott Factory megoldás-gyorsító egy szimulált irányítópultot mutat egy kitalált vállalati contoso számára. Ez a vállalat számos globális helyen rendelkezik gyárakkal világszerte.
 
-Ez a cikk ismerteti, hogyan konfigurálhatja a topológiát a csatlakoztatott gyár megoldás a Contoso használja példaként.
+Ez a cikk a contoso példáját használja példaként, amely leírja, hogyan konfigurálható egy csatlakoztatott gyári megoldás topológiája.
 
-## <a name="simulated-factories-configuration"></a>Szimulált előállítók konfiguráció
+## <a name="simulated-factories-configuration"></a>Szimulált gyárak konfigurálása
 
-Minden egyes Contoso factoryban három állomások álló gyártósorok rendelkezik. Minden állomás egy adott szerepkörrel valós OPC UA-kiszolgáló:
+Minden contoso-gyár rendelkezik olyan üzemi vonalakkal, amelyek mindegyike három állomásból áll. Minden állomás egy adott szerepkörrel rendelkező valódi OPC UA-kiszolgáló.
 
-* Összeszerelő állomásból
-* Tesztelő állomásból
-* Csomagoló állomásból
+* Szerelvény-állomás
+* Tesztelési állomás
+* Csomagoló állomás
 
-Ezek az OPC UA-kiszolgálók rendelkeznek OPC UA-csomópontok és [az OPC-közzétevő](overview-opc-publisher.md) ezek a csomópontok értékeit küld a csatlakoztatott gyár. Az érintett műveletek közé tartoznak az alábbiak:
+Ezek az OPC UA-kiszolgálók OPC UA-csomópontokkal rendelkeznek, és az [OPC-közzétevő](overview-opc-publisher.md) elküldi a csomópontok értékeit a csatlakoztatott gyárnak. Az érintett műveletek közé tartoznak az alábbiak:
 
-* Például az aktuális energiafogyasztás aktuális működési állapotát.
-* Előállított éles adatokat, például a termékek száma.
+* Aktuális működési állapot, például aktuális energiafogyasztás.
+* Termelési információk, például az előállított termékek száma.
 
-Az Irányítópult segítségével feltárni a Contoso gyári topológia lefelé az állomásszintű nézetig globális nézetben. Lehetővé teszi a csatlakoztatott gyári irányítópultot:
+Az irányítópult használatával a globális nézetből megtekintheti a contoso gyári topológiáját egy állomás szintű nézetre. A csatlakoztatott gyári irányítópult a következőket teszi lehetővé:
 
-* A Vizualizáció a topológiában az egyes rétegekhez végén OEE és KPI-t.
-* A Vizualizáció az OPC UA-csomópontok állomásokon aktuális értékek.
-* A globális szinten, az állomás szintről OEE és KPI adatok összesítését.
-* A Vizualizáció, riasztások és az értékek eléri a megadott küszöbértékek végrehajtandó műveleteket.
+* Az OEE és KPI-számok vizualizációja a topológia minden rétegéhez.
+* Az OPC UA-csomópontok aktuális értékeinek vizualizációja az állomásokon.
+* Az OEE-és KPI-számok összesítése az állomás szintjéről a globális szintre.
+* A riasztások és a végrehajtandó műveletek megjelenítése, ha az értékek meghatározott küszöbértékeket érnek el.
 
-## <a name="connected-factory-topology"></a>Csatlakoztatott Factory-topológia
+## <a name="connected-factory-topology"></a>Csatlakoztatott gyári topológia
 
-A topológia gyárak, gyártósorok és állomások hierarchikus:
+A gyárak, a termelési vonalak és az állomások topológiája hierarchikus:
 
-* A globális szinten feldolgozó csomópont gyermekeként rendelkezik.
-* Az előállítók gyártósor csomóponttal rendelkezik gyermekeként.
-* A gyártósorok állomás csomópont gyermekeként rendelkezik.
-* Az állomások (OPC UA-kiszolgálók) OPC UA-csomópont gyermekeként rendelkezik.
+* A globális szinten a gyári csomópontok gyermekekként vannak elmentve.
+* A gyárak a termelési vonal csomópontjait gyermekeik.
+* Az éles vonalakban az állomás-csomópontok gyermekeik.
+* Az állomások (OPC UA-kiszolgálók) gyermekekként OPC UA-csomópontokkal rendelkeznek.
 
-A topológia összes csomópontjában tartozik egy közös meghatározó tulajdonságok:
+A topológia minden csomópontja a tulajdonságok közös készletét határozza meg, amelyek a következőket határozzák meg:
 
-* A topológia csomópont egyedi azonosítója.
+* A topológia csomópontjának egyedi azonosítója.
 * Egy név.
-* Leírása.
-* Kép.
-* A topológia csomópont gyermekeinek.
-* Minimális, cél és maximális értékeket OEE és KPI-értékek és a riasztási műveletek végrehajtásához.
+* Egy leírás.
+* Egy rendszerkép.
+* A topológiai csomópont gyermekei.
+* Az OEE-és KPI-számok minimális, célként megadott és maximális értékei, valamint a végrehajtandó riasztási műveletek.
 
-## <a name="topology-configuration-file"></a>Topológia konfigurációs fájl
+## <a name="topology-configuration-file"></a>Topológia konfigurációs fájlja
 
-Az előző szakaszban felsorolt tulajdonságok konfigurálása, a csatlakoztatott gyár megoldás nevű konfigurációs fájlt használ [ContosoTopologyDescription.json](https://github.com/Azure/azure-iot-connected-factory/blob/master/WebApp/Contoso/Topology/ContosoTopologyDescription.json).
+Az előző szakaszban felsorolt tulajdonságok konfigurálásához a csatlakoztatott Factory megoldás egy [ContosoTopologyDescription. JSON](https://github.com/Azure/azure-iot-connected-factory/blob/master/WebApp/Contoso/Topology/ContosoTopologyDescription.json)nevű konfigurációs fájlt használ.
 
-Ez a fájl találhatja meg a megoldás forráskódját a `WebApp/Contoso/Topology` mappát.
+Ezt a fájlt a `WebApp/Contoso/Topology` mappában található megoldás forráskódjában találja.
 
-Az alábbi kódrészlet vázlatát mutatja be a `ContosoTopologyDescription.json` konfigurációs fájlban:
+Az alábbi kódrészlet a `ContosoTopologyDescription.json` konfigurációs fájl vázlatát mutatja be:
 
 ```json
 {
@@ -85,237 +85,237 @@ Az alábbi kódrészlet vázlatát mutatja be a `ContosoTopologyDescription.json
 }
 ```
 
-Általános tulajdonságainak `<global_configuration>`, `<factory_configuration>`, `<production_line_configuration>`, és `<station_configuration>` vannak:
+ `<global_configuration>`, `<factory_configuration>`, `<production_line_configuration>`és `<station_configuration>` általános tulajdonságai:
 
-* **Név** (írja be a karakterláncot.)
+* **Név** (Type string)
 
-  Határozza meg egy leíró nevet, és az irányítópulton megjeleníthető a topológia csomópont csak egy szót kell lennie.
+  Definiál egy leíró nevet, amelynek csak egyetlen szava lehet, hogy a topológiai csomópont megjelenjen az irányítópulton.
 
-* **Leírás** (írja be a karakterláncot.)
+* **Leírás** (Type string)
 
-  A topológia csomópont részletesebben ismerteti.
+  Részletesebben ismerteti a topológia csomópontját.
 
-* **Kép** (írja be a karakterláncot.)
+* **Rendszerkép** (Type string)
 
-  A WebApp megoldás megjelenítése, ha a topológia csomópont információ az irányítópulton látható-e a lemezkép elérési útja.
+  A WebApp-megoldás rendszerképének elérési útja, amely megjeleníti, hogy mikor jelenjen meg a topológia csomópontjának információja az irányítópulton.
 
-* **OeeOverall**, **OeePerformance**, **OeeAvailability**, **OeeQuality**, **Kpi1**, **Kpi2** (írja be `<performance_definition>`)
+* **OeeOverall**, **OeePerformance**, **OeeAvailability**, **OeeQuality**, **Kpi1**, **Kpi2** (típus `<performance_definition>`)
 
-  Ezek a tulajdonságok definiálása minimális, cél, és maximális értékeket, a üzemeltetési. ábra – riasztások létrehozásához használt. Ezek a tulajdonságok is megadhatók a műveletek végrehajtásához, ha egy riasztás észlelhető.
+  Ezek a tulajdonságok határozzák meg a riasztások létrehozásához használt működési számadat minimális, célként megadott és maximális értékét. Ezek a tulajdonságok meghatározzák a riasztás észlelésekor végrehajtandó műveleteket is.
 
-A `<factory_configuration>` és `<production_line_configuration>` elemek tulajdonság rendelkezik:
+A `<factory_configuration>` és `<production_line_configuration>` elemek tulajdonsága:
 
-* **GUID** (írja be a karakterláncot.)
+* **GUID** (Type string)
 
-  A topológia csomópont egyedileg azonosítja.
+  Egyedileg azonosítja a topológia csomópontját.
 
-`<factory_configuration>` tulajdonsággal rendelkezik:
+a `<factory_configuration>` tulajdonsága:
 
-* **Hely** (típus `<location_definition>`)
+* **Hely** (`<location_definition>`)
 
-  Itt adhatja meg, ahol az előállító megtalálható.
+  Megadja, hogy a gyár hol található.
 
-`<station_configuration>` tulajdonságokkal rendelkezik:
+`<station_configuration>` tulajdonságai:
 
-* **OpcUri** (írja be a karakterláncot.)
+* **OpcUri** (Type string)
 
-  Az OPC UA URI-ja az OPC UA-kiszolgáló állítsa ezt a tulajdonságot.
-  Az OPC UA-specifikáció szerint globálisan egyedinek kell lennie, mert ez a tulajdonság az állomás topológia csomópont azonosítására szolgál.
+  Ezt a tulajdonságot az OPC UA-kiszolgáló OPC UA-alkalmazás URI-ja értékre kell beállítani.
+  Mivel az OPC UA-specifikációnak globálisan egyedinek kell lennie, ez a tulajdonság az állomás-topológiai csomópont azonosítására szolgál.
 
-* **OpcNodes**, melyek OPC UA-csomópontokon tömbje (típus `<opc_node_description>`)
+* **OpcNodes**, amely OPC ua-csomópontok tömbje (`<opc_node_description>`)
 
-`<location_definition>` tulajdonságokkal rendelkezik:
+`<location_definition>` tulajdonságai:
 
-* **Város** (írja be a karakterláncot.)
+* **Város** (Type string)
 
-  A hely legközelebb eső város
+  A helyhez legközelebb eső város neve
 
-* **Ország** (írja be a karakterláncot.)
+* **Ország** (Type string)
 
-  Ország, ahol a hely
+  A hely országa
 
-* **Szélesség** (double típusa)
+* **Szélesség** (dupla típus)
 
-  A hely földrajzi szélesség
+  A hely földrajzi szélessége
 
-* **Hosszúsági** (double típusa)
+* **Hosszúság** (dupla típus)
 
-  A hely földrajzi hosszúság
+  A hely földrajzi hosszúsága
 
-`<performance_definition>` tulajdonságokkal rendelkezik:
+`<performance_definition>` tulajdonságai:
 
-* **Minimális** (double típusa)
+* **Minimum** (dupla típus)
 
-  Alsó küszöb értékét is elérheti. Az aktuális értéke a küszöbérték alá, ha riasztás jön létre.
+  Az érték alacsonyabb küszöbértéket érhet el. Ha az aktuális érték a küszöbérték alá esik, a rendszer riasztást generál.
 
-* **Cél** (double típusa)
+* **Cél** (dupla típus)
 
-  Ideális célértéket.
+  Ideális célként megadott érték.
 
-* **Maximális** (double típusa)
+* **Maximum** (dupla típus)
 
-  Felső küszöbérték az érték érhető el. Az aktuális értéke a küszöbérték fölött, ha riasztás jön létre.
+  Az érték felső küszöbértéke elérhető. Ha az aktuális érték meghaladja ezt a küszöbértéket, a rendszer riasztást generál.
 
 * **MinimumAlertActions** (típus `<alert_action>`)
 
-  Határozza meg, műveletek, amelyeket elvégezhet egy minimális riasztásra válaszként.
+  Meghatározza a műveletek készletét, amely a minimális riasztásra adott válaszként lehet.
 
 * **MaximumAlertActions** (típus `<alert_action>`)
 
-  Határozza meg, műveletek, amelyeket elvégezhet a maximális riasztásra válaszként.
+  Meghatározza a műveletek készletét, amely a maximális riasztásra adott válaszként lehet.
 
-`<alert_action`> tulajdonságokkal rendelkezik:
+`<alert_action`> tulajdonságai:
 
-* **Típus** (írja be a karakterláncot.)
+* **Típus** (Type string)
 
-  A riasztási művelet típusa. A következő típusú ismert:
+  A riasztási művelet típusa. A következő típusok ismertek:
 
-  * **AcknowledgeAlert**: a riasztás állapotának a nyugtázott kell módosítani.
-  * **CloseAlert**: az összes korábbi értesítés azonos típusú kell már nem jelennek meg az irányítópultot.
-  * **CallOpcMethod**: egy OPC UA-metódust kell hívni.
-  * **OpenWebPage**: egy böngészőablakban további környezeti információkat megjelenítő kell megnyitni.
+  * **AcknowledgeAlert**: a riasztás állapotának nyugtázott értékre kell váltania.
+  * **CloseAlert**: az azonos típusú régebbi riasztások már nem jelennek meg az irányítópulton.
+  * **CallOpcMethod**: egy OPC ua-metódust kell meghívni.
+  * **OpenWebPage**: meg kell nyitni egy böngészőablakot, amely további környezetfüggő információkat mutat be.
 
-* **Leírás** (írja be a karakterláncot.)
+* **Leírás** (Type string)
 
-  Az irányítópulton látható művelet leírása.
+  Az irányítópulton megjelenített művelet leírása.
 
-* **A paraméter** (írja be a karakterláncot.)
+* **Paraméter** (Type string)
 
-  A művelet végrehajtásához szükséges paramétereket. Az érték a művelet típusától függ.
+  A művelet végrehajtásához szükséges paraméterek. Az érték a Művelettípus típusától függ.
 
-  * **AcknowledgeAlert**: nem kötelező paraméter.
-  * **CloseAlert**: nem kötelező paraméter.
-  * **CallOpcMethod**: a csomópont-információk és a paraméterek, az OPC UA-metódust hívja meg a formátum "NodeId szülőcsomópont NodeId metódus meghívásához, URI-ját az OPC UA-kiszolgálóval."
-  * **OpenWebPage**: az URL-cím megjelenítéséhez a böngészőablakban.
+  * **AcknowledgeAlert**: nincs szükség paraméterre.
+  * **CloseAlert**: nincs szükség paraméterre.
+  * **CallOpcMethod**: az OPC ua metódus csomópont-információi és paraméterei "a NodeId, a NodeId, az OPC ua-kiszolgáló URI-ja" formátumban hívható meg.
+  * **OpenWebPage**: a böngészőablakban megjelenítendő URL-cím.
 
-`<opc_node_description>` OPC UA-csomópontok egy állomáson (OPC UA-kiszolgáló) kapcsolatos információt tartalmazza. Nincsenek meglévő OPC UA-csomópontok jelöl, hanem a számítási logika, a csatlakoztatott gyár tárolóként használt csomópontok is érvényesek. A következő tulajdonságokkal rendelkezik:
+`<opc_node_description>` információt tartalmaz egy állomás OPC UA-csomópontjairól (OPC UA-kiszolgáló). Azok a csomópontok, amelyek nem rendelkeznek meglévő OPC UA-csomópontokkal, de a csatlakoztatott gyár számítási logikájában tárolóként használatosak, szintén érvényesek. A következő tulajdonságokkal rendelkezik:
 
-* **NodeId** (írja be a karakterláncot.)
+* **NodeId** (Type string)
 
-  Az OPC UA címtér az állomáson (OPC UA-kiszolgáló a) csomópont-címe. Szintaxist kell lennie az OPC UA-specifikációt a NodeId megadottak szerint.
+  Az OPC UA-csomópont címe az állomás (OPC UA-kiszolgáló) címterület számára. A szintaxisnak a NodeId OPC UA-specifikációjában megadott módon kell megadnia.
 
-* **Melynek** (írja be a karakterláncot.)
+* **SymbolicName** (Type string)
 
-  Esetén az OPC UA-csomópont értéke látható az irányítópulton megjelenítendő neve.
+  Az irányítópulton megjelenítendő név, ha megjelenik az OPC UA-csomópont értéke.
 
-* **Relevancia alapján végzett** (írja be a karakterlánc tömbje)
+* **Relevancia** (karakterlánc típusú tömb)
 
-  Azt jelzi, amelynek számítási OEE és KPI-t az OPC UA-csomópont értéke megfelelő. Egyes tömbelemeken a következő értékek egyike lehet:
+  Azt jelzi, hogy mely OEE-vagy KPI-számításokhoz szükséges az OPC UA-csomópont értéke. Minden tömb elem a következő értékek egyike lehet:
 
-  * **OeeAvailability_Running**: vonatkozó OEE rendelkezésre állási számítási értéke.
-  * **OeeAvailability_Fault**: vonatkozó OEE rendelkezésre állási számítási értéke.
-  * **OeePerformance_Ideal**: az érték szükséges számítási teljesítmény oee-mutatója Túllépte, és általában egy állandó értéket.
-  * **OeePerformance_Actual**: a számítási teljesítmény oee-mutatója Túllépte a vonatkozó értéke.
-  * **OeeQuality_Good**: számítás, a minőség oee-mutatója Túllépte a megfelelő érték.
-  * **OeeQuality_Bad**: számítás, a minőség oee-mutatója Túllépte a megfelelő érték.
-  * **Kpi1**: KPI1 számítási megfelelő érték.
-  * **Kpi2**: KPI2 számítási megfelelő érték.
+  * **OeeAvailability_Running**: az érték az OEE rendelkezésre állásának kiszámításához szükséges.
+  * **OeeAvailability_Fault**: az érték az OEE rendelkezésre állásának kiszámításához szükséges.
+  * **OeePerformance_Ideal**: az érték az OEE-teljesítmény kiszámításához szükséges, és általában állandó érték.
+  * **OeePerformance_Actual**: az érték az OEE-teljesítmény kiszámításához szükséges.
+  * **OeeQuality_Good**: az érték az OEE-minőség kiszámításához szükséges.
+  * **OeeQuality_Bad**: az érték az OEE-minőség kiszámításához szükséges.
+  * **Kpi1**: az érték a Kpi1 számításához szükséges.
+  * **Kpi2**: az érték a Kpi2 számításához szükséges.
 
-* **Feladatkategóriát** (írja be a karakterláncot.)
+* **Műveleti kód** (Type string)
 
-  Azt jelzi, hogy az OPC UA-csomópont értékének kezelésének módját a Time Series Insight-lekérdezésekben és OEE/KPI számításokat. Minden egyes Time Series Insight-lekérdezés célozza meg benne egy adott időtartam, a lekérdezési paraméter, és továbbítja egy eredményt. A Feladatkategóriát azt szabályozza, hogyan az eredmény számított, és a következő értékek egyike lehet:
+  Azt jelzi, hogy az OPC UA-csomópont értékét hogyan kezelje a Time Series Insight-lekérdezések és az OEE/KPI-számítások. Minden idősorozat-betekintési lekérdezés egy adott TimeSpan céloz meg, amely a lekérdezés paramétere, és eredményként szolgál. A műveleti kód vezérli az eredmény kiszámításának módját, és az alábbi értékek egyike lehet:
 
-  * **A diff**: az időtartam az utolsó és az első érték különbsége.
-  * **Átlagos**: az időtartam az összes érték átlagát.
-  * **Sum**: az időtartam minden értékek összegét.
+  * **Diff**: a TimeSpan utolsó és első értéke közötti különbség.
+  * **Átlag: a**TimeSpan összes értékének átlaga.
+  * **Sum**: a TimeSpan összes értékének összege.
   * **Utolsó**: jelenleg nincs használatban.
-  * **Száma**: az időtartam értékeinek száma.
-  * **Maximális**: a timespan maximális értékét.
-  * **Min**: az időtartam minimális értéke.
-  * **Konstanta**: az eredmény érték ConstValue tulajdonságban megadott egységben.
-  * **SubMaxMin**: a maximálisan és a minimális érték közötti különbséget.
-  * **Időtartomány**: az időtartam.
+  * **Darabszám**: a TimeSpan értékeinek száma.
+  * **Max**: a TimeSpan maximális értéke.
+  * **Min**: a TimeSpan minimális értéke.
+  * **CONST**: az eredmény a ConstValue tulajdonság által megadott érték.
+  * **SubMaxMin**: a maximális és a minimális érték közötti különbség.
+  * **TimeSpan**: a TimeSpan.
 
-* **Egységek** (írja be a karakterláncot.)
+* **Egységek** (Type string)
 
-  Az irányítópult egy egységet, a megjelenítendő érték határozza meg.
+  Meghatározza az irányítópulton megjelenítendő érték egységét.
 
-* **Látható** (írja be a logikai változó)
+* **Látható** (logikai típus)
 
-  Vezérlők, ha az érték megjelenjen az irányítópulton.
+  Meghatározza, hogy az érték megjelenjen-e az irányítópulton.
 
-* **ConstValue** (double típusa)
+* **ConstValue** (dupla típus)
 
-  Ha a **Feladatkategóriát** van **Const**, akkor ez a tulajdonság értéke a csomópont.
+  Ha a **műveleti kód** **CONST**, akkor ez a tulajdonság a csomópont értéke.
 
-* **Minimális** (double típusa)
+* **Minimum** (dupla típus)
 
-  Ha a jelenlegi érték ezen érték alá csökken, majd egy minimális riasztást generál.
+  Ha az aktuális érték alá esik az érték, akkor a rendszer minimális riasztást generál.
 
-* **Maximális** (double típusa)
+* **Maximum** (dupla típus)
 
-  Ha a jelenlegi érték kiváltja meghaladja ezt az értéket, majd egy maximális riasztás akkor jön létre.
+  Ha az aktuális érték meghaladja ezt az értéket, a rendszer maximális riasztást generál.
 
 * **MinimumAlertActions** (típus `<alert_action>`)
 
-  Határozza meg, műveletek, amelyeket elvégezhet egy minimális riasztásra válaszként.
+  Meghatározza a műveletek készletét, amely a minimális riasztásra adott válaszként lehet.
 
 * **MaximumAlertActions** (típus `<alert_action>`)
 
-  Határozza meg, műveletek, amelyeket elvégezhet a maximális riasztásra válaszként.
+  Meghatározza a műveletek készletét, amely a maximális riasztásra adott válaszként lehet.
 
-Az állomás szintjén is megjelenik **szimuláció** objektumokat. Ezek az objektumok csak a csatlakoztatott gyár szimuláció konfigurálásához használt, és nem használható egy valódi topológiát.
+Az állomás szintjén a **szimulációs** objektumok is láthatók. Ezek az objektumok csak a csatlakoztatott gyári szimuláció konfigurálására szolgálnak, és nem használhatók valódi Topológia konfigurálására.
 
-## <a name="how-the-configuration-data-is-used-at-runtime"></a>A konfigurációs adatok futásidőben használatáról
+## <a name="how-the-configuration-data-is-used-at-runtime"></a>A konfigurációs információ használata futásidőben
 
-A konfigurációs fájlban használt összes tulajdonságok attól függően, hogyan használhatók ezek különböző kategóriákba csoportosíthatók. Ezekben a kategóriákban a következők:
+A konfigurációs fájlban használt összes tulajdonság különböző kategóriákba csoportosítható attól függően, hogy milyen módon használják őket. Ezek a kategóriák a következők:
 
 ### <a name="visual-appearance"></a>Vizuális megjelenés
 
-Ebbe a kategóriába tartozó tulajdonságok határozzák meg, annak vizuális megjelenését, a csatlakoztatott gyári irányítópultot. Példák erre vonatkozóan:
+A kategória tulajdonságai a csatlakoztatott gyári irányítópult vizualizációs megjelenését határozzák meg. Példák erre vonatkozóan:
 
-* Name (Név)
+* Név
 * Leírás
-* Image
-* Location
+* Image (Kép)
+* Hely
 * Egység
 * Látható
 
-### <a name="internal-topology-tree-addressing"></a>Belső topológia fa-címzés
+### <a name="internal-topology-tree-addressing"></a>Belső topológia faszerkezetének kezelése
 
-A WebApp megőrzi az adatokat az összes topológia csomópontot tartalmazó belső adatkönyvtár. A Tulajdonságok **Guid** és **OpcUri** kulcsokként tento slovník eléréséhez használt, és egyedinek kell lennie kell.
+A WebApp egy belső adatszótárt tart fenn, amely az összes topológiai csomópontról tartalmaz információkat. A tulajdonságok **GUID azonosítóját** és **OpcUri** a rendszer kulcsként használja a szótár eléréséhez, és egyedinek kell lennie.
 
-### <a name="oeekpi-computation"></a>OEE/KPI-számítások
+### <a name="oeekpi-computation"></a>OEE/KPI-számítás
 
-A csatlakoztatott gyár szimuláció OEE/KPI adatok paraméterezni vannak:
+A csatlakoztatott gyári szimulációhoz tartozó OEE/KPI-számadatok paraméterei a következők:
 
-* OPC UA csomópont értékek kiszámítása szerepelnek.
-* Hogyan ábra számított a telemetriai adatok értékek közül.
+* A számításban szerepeltetni kívánt OPC UA-csomópontok értékei.
+* Az ábra kiszámítása a telemetria értékei alapján.
 
-Csatlakoztatott gyár használja az oee-mutatója Túllépte a képletek által közzétett a [ http://www.oeefoundation.org ](http://www.oeefoundation.org).
+A csatlakoztatott gyár a [http://www.oeefoundation.org](http://www.oeefoundation.org)által közzétett OEE-képleteket használja.
 
-Az állomás OPC UA objektumok engedélyezze a használat az OEE/KPI számítási címkézést. A **relevancia alapján végzett** a tulajdonság azt jelzi, hogy mely OEE/KPI. ábra az OPC UA-csomópont értéket kell használni. A **Feladatkategóriát** tulajdonság határozza meg, hogyan a számítás értékét tartalmazza.
+A állomások OPC UA Node objektumai lehetővé teszik a címkézést az OEE/KPI-számításokban való használathoz. A **relevancia** tulajdonság azt jelzi, hogy melyik OEE/KPI-nek az OPC ua-csomópont értékét kell használnia. A **műveleti kód** tulajdonság határozza meg, hogy az érték hogyan szerepeljen a számításban.
 
 ### <a name="alert-handling"></a>Riasztások kezelése
 
-Csatlakoztatott gyár támogatja-e egyszerű minimális/maximális, küszöbalapú riasztások előállítását. Nincsenek egy adott riasztás konfigurálhatja előre definiált műveletek száma. A következő tulajdonságok ezt a mechanizmust szabályozhatja:
+A csatlakoztatott gyár egy egyszerű minimális/maximális küszöbérték-alapú riasztás-létrehozási mechanizmust támogat. A riasztásokra adott válaszban számos előre definiált művelet is konfigurálható. A következő tulajdonságok vezérlik ezt a mechanizmust:
 
 * Maximum
 * Minimális
 * MaximumAlertActions
 * MinimumAlertActions
 
-## <a name="correlating-to-telemetry-data"></a>A telemetriai adatok használatával történik
+## <a name="correlating-to-telemetry-data"></a>Korreláció a telemetria-adatbázisokhoz
 
-Az egyes műveletek, például a Time Series Insight-lekérdezések létrehozása vagy az utolsó olyan értéket jelenítenek meg a WebApp a betöltött telemetriai adatokat egy címzési séma van szüksége. A csatlakoztatott gyár küldött telemetriát is mappájába kell menteni a belső adatszerkezetek. Ezek a műveletek engedélyezése a két tulajdonság állomás (OPC UA-kiszolgáló) és OPC UA-csomópont szintjén vannak:
+Bizonyos műveletekhez, például az utolsó érték megjelenítéséhez vagy a Time Series Insight-lekérdezések létrehozásához a WebAppnak címzési sémára van szüksége a betöltött telemetria-adatokhoz. A csatlakoztatott gyárnak elküldett telemetria is belső adatstruktúrákban kell tárolni. A műveletek engedélyezésének két tulajdonsága az állomáson (OPC UA-kiszolgáló) és az OPC UA-csomópont szintjén történik:
 
 * **OpcUri**
 
-  Azonosító (globálisan egyedi) OPC UA-kiszolgáló a telemetriai adatok származnak. A feldolgozott üzenetek, ez a tulajdonság legyen elküldve, **ApplicationUri**.
+  A (globálisan egyedi) azonosítja azt az OPC UA-kiszolgálót, amelyből a telemetria származik. A betöltött üzenetekben ez a tulajdonság **ApplicationUri**lesz elküldve.
 
 * **NodeId**
 
-  Az OPC UA-kiszolgálóval csomópont értéke azonosítja. A tulajdonság a formátumnak kell lennie az OPC UA-specifikáció megadottak szerint. A feldolgozott üzenetek, ez a tulajdonság legyen elküldve, **NodeId**.
+  A csomópont értékét azonosítja az OPC UA-kiszolgálón. A tulajdonság formátumának az OPC UA-specifikációban megadott formátumban kell lennie. A betöltött üzenetekben ez a tulajdonság **NodeId**lesz elküldve.
 
-Lásd: [Mi az az OPC-közzétevő](overview-opc-publisher.md) hogyan lett töltve a telemetriai adatokat a csatlakoztatott gyár további tájékoztatást.
+A telemetria-adatok csatlakoztatott gyárba való betöltésével kapcsolatos további információkért lásd: [Mi az OPC-közzétevő](overview-opc-publisher.md) .
 
-## <a name="example-how-kpi1-is-calculated"></a>Példa: Hogyan kerül kiszámításra KPI1
+## <a name="example-how-kpi1-is-calculated"></a>Példa: a KPI1 kiszámítása
 
-A konfigurációt a `ContosoTopologyDescription.json` fájl szabályozza, hogy hogyan OEE/KPI-értékek kiszámítása. Az alábbi példa bemutatja, hogyan szabályozhatja az tulajdonságai ebben a fájlban a KPI1 elkészítése.
+A `ContosoTopologyDescription.json` fájlban lévő konfiguráció azt szabályozza, hogyan számítja ki az OEE/KPI-számokat. Az alábbi példa azt szemlélteti, hogy a fájlban lévő tulajdonságok hogyan szabályozzák a KPI1 számítását.
 
-A csatlakoztatott gyári KPI1 mérésére szolgál sikeresen gyártott termékek száma az elmúlt órában. Minden állomáshoz (OPC UA-kiszolgáló) található a csatlakoztatott gyár szimuláció biztosít az OPC UA-csomópont (`NodeId: "ns=2;i=385"`), amely biztosítja, hogy a telemetriát a KPI kiszámításához.
+A csatlakoztatott gyár KPI1 az elmúlt órában sikeresen előállított termékek számának mérésére szolgál. A csatlakoztatott gyári szimulációban minden állomás (OPC UA-kiszolgáló) egy OPC UA-csomópontot (`NodeId: "ns=2;i=385"`) biztosít, amely a KPI kiszámításához biztosít telemetria.
 
-Az OPC UA-csomópont konfigurációjának az alábbi kódrészlethez hasonlóan néz ki:
+Az OPC UA-csomópont konfigurációja a következő kódrészlethez hasonlít:
 
 ```json
 {
@@ -326,18 +326,18 @@ Az OPC UA-csomópont konfigurációjának az alábbi kódrészlethez hasonlóan 
 },
 ```
 
-Ez a konfiguráció lehetővé teszi a telemetriai adatok értékei közül ez a csomópont a Time Series Insights használatával lekérdezése. A Time Series Insights-lekérdezés kéri le:
+Ez a konfiguráció lehetővé teszi a csomópont telemetria értékeinek lekérdezését Time Series Insights használatával. A Time Series Insights lekérdezés a következőket kérdezi le:
 
-* Értékek száma.
+* Az értékek száma.
 * A minimális érték.
 * A maximális érték.
-* Az összes érték átlagát.
-* Az összes összes értékek összegét egyedi **OpcUri** (**ApplicationUri**), **NodeId** párok az egy adott időtartam.
+* Az összes érték átlaga.
+* Az összes egyedi **OpcUri** (**ApplicationUri**), az adott TimeSpan lévő **NodeId** -párok összes értékének összege.
 
-Egy jellemző a **NumberOfManufactureredProducts** értéke csomópontra, hogy csak növeli. Csatlakoztatott gyár használja az az időtartam gyártott termékek számának kiszámítása a **Feladatkategóriát** **SubMaxMin**. A számítás a minimális érték elején. az időtartam és a maximális értéket az időtartam végén kérdezi le.
+A **NumberOfManufactureredProducts** csomópont értékének egyik jellemzője, hogy az csak a növekedésre nő. A TimeSpan előállított termékek számának kiszámításához a csatlakoztatott gyár a **műveleti kód** **SubMaxMin**használja. A számítás a TimeSpan elején lévő minimális értéket és a TimeSpan végén található maximális értéket kérdezi le.
 
-A **Feladatkategóriát** a konfiguráció konfigurálja a számítási logika az eredmény a maximális és minimális érték különbség kiszámítása. Ezután az eredmények állnak, amikor a gyökérszintű (globális) legfeljebb alsó és az irányítópult látható.
+A konfigurációban lévő **műveleti kód** úgy konfigurálja a számítási logikát, hogy kiszámítsa a maximális és a minimális érték különbözetének eredményét. Ezeket az eredményeket a rendszer a legfelső szintű (globális) szintre összesíti, és az irányítópulton jelenik meg.
 
 ## <a name="next-steps"></a>További lépések
 
-A javasolt következő lépésre az, hogy ismerje meg, hogyan [testre szabhatja a csatlakoztatott gyár megoldás](iot-accelerators-connected-factory-customize.md).
+Egy javasolt következő lépés a [csatlakoztatott gyári megoldás testreszabásának](iot-accelerators-connected-factory-customize.md)megismerése.

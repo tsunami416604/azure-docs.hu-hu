@@ -8,12 +8,12 @@ ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
 ms.date: 10/02/2019
-ms.openlocfilehash: e7516fffb4aa8806062655e39c591e4691e779b1
-ms.sourcegitcommit: 7868d1c40f6feb1abcafbffcddca952438a3472d
+ms.openlocfilehash: 9a5e060d6248d3144720930fe960e0a371a73d6e
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71959119"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73822273"
 ---
 # <a name="egress-and-endpoints"></a>Kimenő és végpontok
 
@@ -23,7 +23,7 @@ Az eseményeket a rendszer az előre meghatározott útválasztási beállítás
 
 Ha többet szeretne megtudni az eseményekről, az útválasztásról és az eseményekről, tekintse meg az [útválasztási eseményeket és üzeneteket az Azure digitális Twins](./concepts-events-routing.md)szolgáltatásban.
 
-## <a name="events"></a>Events
+## <a name="events"></a>Események
 
 Az eseményeket IoT-objektumok (például eszközök és érzékelők) küldik el az Azure-üzenet és az esemény-közvetítők általi feldolgozáshoz. Az eseményeket a következő Azure Event Grid az [esemény sémájának hivatkozása](../event-grid/event-schema.md)határozza meg.
 
@@ -47,23 +47,23 @@ Az eseményeket IoT-objektumok (például eszközök és érzékelők) küldik e
 }
 ```
 
-| Attribútum | Type | Leírás |
+| Attribútum | Típus | Leírás |
 | --- | --- | --- |
-| id | string | Az esemény egyedi azonosítója. |
-| subject | string | Közzétevő által megadott elérési út az esemény tárgya számára. |
-| data | object | Az erőforrás-szolgáltatóhoz tartozó esemény-adatértékek. |
-| eventType | string | Az eseményforrás egyik regisztrált eseménytípus. |
-| eventTime | string | Az esemény a szolgáltató UTC-ideje alapján történő létrehozásakor. |
-| dataVersion | string | Az adatobjektum séma-verziója. A közzétevő határozza meg a séma verzióját. |
-| metadataVersion | string | Az esemény metaadatainak séma-verziója. Event Grid a legfelső szintű tulajdonságok sémáját határozza meg. Event Grid megadja ezt az értéket. |
-| topic | string | Az eseményforrás teljes erőforrás-elérési útja. Ez a mező nem írható. Event Grid megadja ezt az értéket. |
+| id | sztring | Az esemény egyedi azonosítója. |
+| tulajdonos | sztring | Közzétevő által megadott elérési út az esemény tárgya számára. |
+| adatok | objektum | Az erőforrás-szolgáltatóhoz tartozó esemény-adatértékek. |
+| EventType | sztring | Az eseményforrás egyik regisztrált eseménytípus. |
+| eventTime | sztring | Az esemény a szolgáltató UTC-ideje alapján történő létrehozásakor. |
+| dataVersion | sztring | Az adatobjektum séma-verziója. A közzétevő határozza meg a séma verzióját. |
+| metadataVersion | sztring | Az esemény metaadatainak séma-verziója. Event Grid a legfelső szintű tulajdonságok sémáját határozza meg. Event Grid megadja ezt az értéket. |
+| témakör | sztring | Az eseményforrás teljes erőforrás-elérési útja. Ez a mező nem írható. Event Grid megadja ezt az értéket. |
 
 További információ a Event Grid esemény sémával kapcsolatban:
 
 - Tekintse át a [Azure Event Grid esemény sémájának referenciáját](../event-grid/event-schema.md).
-- Olvassa el az [Azure EventGrid Node. js SDK EventGridEvent-referenciáját](https://docs.microsoft.com/javascript/api/azure-eventgrid/eventgridevent?view=azure-node-latest).
+- Olvassa el az [Azure EventGrid Node. js SDK EventGridEvent-referenciáját](https://docs.microsoft.com/javascript/api/@azure/eventgrid/eventgridevent?view=azure-node-latest).
 
-## <a name="event-types"></a>Eseménytípusok
+## <a name="event-types"></a>Események típusai
 
 Az események típusai osztályozzák az esemény természetét, és a **EventType** mezőben vannak beállítva. Az elérhető eseménytípus a következő lista szerint adható meg:
 
@@ -90,7 +90,7 @@ A **TopologyOperation** a diagram módosításaira vonatkozik. A **tulajdonos** 
 - Érzékelő
 - SensorBlobMetadata
 - SensorExtendedProperty
-- Szóköz
+- Űr
 - SpaceBlobMetadata
 - SpaceExtendedProperty
 - SpaceResource
@@ -122,7 +122,7 @@ A **TopologyOperation** a diagram módosításaira vonatkozik. A **tulajdonos** 
 }
 ```
 
-| Value | Csere erre |
+| Érték | Csere erre |
 | --- | --- |
 | YOUR_TOPIC_NAME | A testreszabott témakör neve |
 
@@ -153,7 +153,7 @@ A **UdfCustom** egy felhasználó által definiált függvény (UDF) által elju
 }
 ```
 
-| Value | Csere erre |
+| Érték | Csere erre |
 | --- | --- |
 | YOUR_TOPIC_NAME | A testreszabott témakör neve |
 
@@ -188,7 +188,7 @@ A **SensorChange** az érzékelők állapotának frissítése a telemetria vált
 }
 ```
 
-| Value | Csere erre |
+| Érték | Csere erre |
 | --- | --- |
 | YOUR_TOPIC_NAME | A testreszabott témakör neve |
 
@@ -223,7 +223,7 @@ A **SpaceChange** a telemetria változásai alapján frissíti a terület állap
 }
 ```
 
-| Value | Csere erre |
+| Érték | Csere erre |
 | --- | --- |
 | YOUR_TOPIC_NAME | A testreszabott témakör neve |
 
@@ -268,7 +268,7 @@ YOUR_MANAGEMENT_API_URL/endpoints
   }
   ```
 
-    | Value | Csere erre |
+    | Érték | Csere erre |
     | --- | --- |
     | YOUR_NAMESPACE | A végpont névtere |
     | YOUR_PRIMARY_KEY | A hitelesítéshez használt elsődleges kapcsolódási sztring |
@@ -291,7 +291,7 @@ YOUR_MANAGEMENT_API_URL/endpoints
   }
   ```
 
-    | Value | Csere erre |
+    | Érték | Csere erre |
     | --- | --- |
     | YOUR_PRIMARY_KEY | A hitelesítéshez használt elsődleges kapcsolódási sztring|
     | YOUR_SECONDARY_KEY | A hitelesítéshez használt másodlagos kapcsolódási sztring |
@@ -313,7 +313,7 @@ YOUR_MANAGEMENT_API_URL/endpoints
   }
   ```
 
-    | Value | Csere erre |
+    | Érték | Csere erre |
     | --- | --- |
     | YOUR_NAMESPACE | A végpont névtere |
     | YOUR_PRIMARY_KEY | A hitelesítéshez használt elsődleges kapcsolódási sztring |
@@ -334,7 +334,7 @@ YOUR_MANAGEMENT_API_URL/endpoints
   }
   ```
 
-    | Value | Csere erre |
+    | Érték | Csere erre |
     | --- | --- |
     | YOUR_NAMESPACE | A végpont névtere |
     | YOUR_PRIMARY_KEY | A hitelesítéshez használt elsődleges kapcsolódási sztring |

@@ -1,6 +1,6 @@
 ---
-title: Mi az az OPC-közzétevő – Azure |} A Microsoft Docs
-description: Az OPC-közzétevő áttekintése
+title: Mi az az OPC-közzétevő – Azure | Microsoft Docs
+description: Ez a cikk az OPC-közzétevő funkcióinak áttekintését tartalmazza. Lehetővé teszi kódolt JSON-telemetria adatok közzétételét JSON-adattartalommal az Azure IoT Hubba.
 author: dominicbetts
 ms.author: dobett
 ms.date: 06/10/2019
@@ -8,39 +8,39 @@ ms.topic: overview
 ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: c738e927a352373d7f5a4aeb5697e07134a98cba
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 2310a81d3cfaeff203134af9968bc2d5caea3e9c
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67603670"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73824776"
 ---
-# <a name="what-is-opc-publisher"></a>Mi az az OPC-közzétevő?
+# <a name="what-is-opc-publisher"></a>Mi az OPC-közzétevő?
 
-Az OPC-közzétevő egy referenciaimplementációt, amely bemutatja, hogyan lehet:
+Az OPC-közzétevő egy olyan hivatkozás, amely a következőket mutatja be:
 
-- Csatlakozás meglévő OPC UA-kiszolgálók.
-- Tegye közzé az OPC UA-kiszolgálók küldött telemetriai adatok JSON-kódolású OPC UA Pub/Sub formátumban, egy JSON-adattartalom, az Azure IoT Hub használatával.
+- Kapcsolódjon meglévő OPC UA-kiszolgálókhoz.
+- Az OPC UA-kiszolgálókról származó, a JSON-ban kódolt telemetria adatok közzététele a JSON-adattartalom használatával, az Azure IoT Hub.
 
-Az átviteli protokollokat, amely támogatja az Azure IoT Hub ügyfél SDK-t használhatja: HTTPS, az AMQP és mqtt-ről.
+Az Azure IoT Hub Client SDK által támogatott átviteli protokollok bármelyike használható: HTTPS, AMQP és MQTT.
 
-A referenciaimplementáció tartalmazza:
+A hivatkozás implementációja az alábbiakat tartalmazza:
 
-- Az OPC UA *ügyfél* meglévő OPC UA-kiszolgálók a hálózaton való kapcsolódáshoz.
-- Az OPC UA *kiszolgáló* porton, amelyek segítségével kezelheti a mi közzé van téve, és az IoT Hub kínál 62222 közvetlen módszerek használatával Ugyanezt megteheti.
+- OPC UA- *ügyfél* a hálózaton lévő meglévő OPC ua-kiszolgálókhoz való csatlakozáshoz.
+- Egy OPC UA- *kiszolgáló* a 62222-as porton, amely a közzétett és IoT hub közvetlen metódusok használatával felügyelhető.
 
-Letöltheti a [OPC-közzétevő referenciamegvalósítása](https://github.com/Azure/iot-edge-opc-publisher) a Githubról.
+Az [OPC-közzétevői referenciát](https://github.com/Azure/iot-edge-opc-publisher) letöltheti a githubról.
 
-Az alkalmazás a .NET Core-technológia segítségével van megvalósítva, és a .NET Core által támogatott bármilyen platformon futtatható.
+Az alkalmazás a .NET Core Technology használatával valósul meg, és a .NET Core által támogatott bármely platformon futtatható.
 
-Az OPC-közzétevő újrapróbálkozási logika, amely nem bizonyos számú életben tartási kérelem megválaszolásához-végpontokra irányuló kapcsolatokat implementál. Ha például az OPC UA-kiszolgáló nem válaszol, áramkimaradás miatt.
+Az OPC-közzétevő az újrapróbálkozási logikát implementálja olyan végpontok kapcsolatainak létrehozásához, amelyek nem válaszolnak bizonyos számú életben tartási kérelemre. Ha például egy OPC UA-kiszolgáló áramszünet miatt nem válaszol.
 
-Az egyes különböző közzétételi intervallum OPC UA-kiszolgáló, az alkalmazás létrehoz egy különálló előfizetést, amelyen mind a csomóponton a közzétételi intervallumát frissülnek.
+Az alkalmazás minden egyes különböző közzétételi intervallum esetében egy OPC UA-kiszolgálóhoz hoz létre egy külön előfizetést, amely felett az adott közzétételi időközt tartalmazó összes csomópont frissül.
 
-Az OPC-közzétevő támogatja a hálózati terhelés csökkentése érdekében az IoT hubnak küldött adatok kötegelés. A kötegelés csomagot küld az IoT Hub, csak akkor, ha a beállított csomag méretet.
+Az OPC-közzétevő támogatja a hálózati terhelés csökkentése érdekében IoT Hub elküldett adatfeldolgozást. Ez a kötegelt feldolgozás csak akkor küld IoT Hub csomagot, ha elérte a beállított csomagméret méretét.
 
-Ez az alkalmazás NuGet-csomagok az OPC Foundation OPC UA hálózatireferencia-veremben használja. Lásd: [ https://opcfoundation.org/license/redistributables/1.3/ ](https://opcfoundation.org/license/redistributables/1.3/) a licencfeltételeket.
+Ez az alkalmazás az OPC Foundation OPC UA Reference stacket használja NuGet-csomagként. Lásd: [https://opcfoundation.org/license/redistributables/1.3/](https://opcfoundation.org/license/redistributables/1.3/) a licencelési feltételekhez.
 
 ### <a name="next-steps"></a>További lépések
 
-Most már megtanulta, mi az az OPC-közzétevő,-e a javasolt következő lépésre megtudhatja, hogyan [konfigurálása az OPC-közzétevő](howto-opc-publisher-configure.md).
+Most, hogy megismerte az OPC-közzétevőt, a javasolt következő lépés az [OPC-közzétevő konfigurálásának](howto-opc-publisher-configure.md)ismertetése.

@@ -1,6 +1,6 @@
 ---
-title: Az OPC-Twin-architektúra – Azure |} A Microsoft Docs
-description: Az OPC-Twin-architektúra
+title: OPC Twin Architecture – Azure | Microsoft Docs
+description: Ez a cikk áttekintést nyújt az OPC Twin architektúráról. Ismerteti a kiszolgáló felderítését, aktiválását, böngészését és figyelését.
 author: dominicbetts
 ms.author: dobett
 ms.date: 11/26/2018
@@ -8,33 +8,33 @@ ms.topic: overview
 ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: 6ce9394f3d454bda5ead51f2c77a47db137a5136
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: b8d4424c92ff24c36650e34a5d050bdc5f0f9091
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67606175"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73819855"
 ---
-# <a name="opc-twin-architecture"></a>Az OPC-Twin-architektúra
+# <a name="opc-twin-architecture"></a>OPC Twin architektúra
 
-Az alábbi ábrák bemutatják az OPC-Twin-architektúra.
+Az alábbi ábrák az OPC Twin architektúrát szemléltetik.
 
-## <a name="discover-and-activate"></a>Fedezze fel és aktiválása
+## <a name="discover-and-activate"></a>Felderítés és aktiválás
 
-1. A kezelő lehetővé teszi, hogy a modul a hálózatvizsgálati, vagy egy felderítési URL-címet használó felderítés egyszeri felderítés lehetővé teszi. A felderített végpontok és az alkalmazással kapcsolatos adatok érkeznek keresztül telemetriai adatokat a bevezetési ügynök feldolgozásra.  Az OPC UA-eszköz bevezetési ügynök OPC UA-kiszolgáló felderítési eseményeit, felderítési vagy vizsgálat módban, amely OPC Ikereszköz IoT Edge-modul által küldött dolgozza fel. A felderítési események eredmény az alkalmazás regisztrálása és az OPC UA-jegyzékben lévő frissítéseket.
+1. A kezelő lehetővé teszi a hálózati vizsgálat használatát a modulon, vagy egy felderítési URL-cím használatával egyszeri felderítést végez. A felderített végpontokat és az alkalmazással kapcsolatos információkat a rendszer a telemetria-on keresztül küldi el feldolgozásra.  Az OPC UA-eszköz bevezetési ügynöke az OPC UA-kiszolgáló felderítési eseményeit dolgozza fel a felderítési vagy beolvasási módban, ha az OPC Twin IoT Edge modulja. A felderítési események az OPC UA-eszköz beállításjegyzékében az alkalmazások regisztrálását és frissítését eredményezik.
 
-   ![Az OPC-Twin működése](media/overview-opc-twin-architecture/opc-twin1.png)
+   ![Az OPC Twin működése](media/overview-opc-twin-architecture/opc-twin1.png)
 
-1. Az operátor megvizsgálja a tanúsítványt a felderített végpont, és aktiválja a regisztrált végpont iker, a hozzáféréshez. 
+1. Az operátor megvizsgálja a felderített végpont tanúsítványát, és aktiválja a regisztrált végpontot a hozzáféréshez. 
 
-   ![Az OPC-Twin működése](media/overview-opc-twin-architecture/opc-twin2.png)
+   ![Az OPC Twin működése](media/overview-opc-twin-architecture/opc-twin2.png)
 
-## <a name="browse-and-monitor"></a>Tallózással keresse meg és monitorozása
+## <a name="browse-and-monitor"></a>Tallózás és figyelés
 
-1. Aktiválta, miután az üzemeltető használatával az Ikereszköz-szolgáltatás REST API keresse meg vagy megvizsgálhatja a kiszolgálómodellt adatokat, olvasási/írási objektum változók és metódusok meghívása.  A felhasználó egy egyszerűsített OPC UA API HTTP vagy JSON teljes kifejezett használ.
+1. Az aktiválást követően az operátor használhatja a Twin szolgáltatás REST API a kiszolgálói információs modell tallózására és vizsgálatára, az objektum-változók olvasására és írására, valamint a hívási metódusokra.  A felhasználó egy egyszerűsített OPC UA API-t használ, amely teljes mértékben a HTTP és a JSON nyelven van kifejezve.
 
-   ![Az OPC-Twin működése](media/overview-opc-twin-architecture/opc-twin3.png)
+   ![Az OPC Twin működése](media/overview-opc-twin-architecture/opc-twin3.png)
 
-1. Az ikereszköz szolgáltatás REST-felület is használható az OPC-közzétevő figyelt elemek és -előfizetések létrehozására. Az OPC-közzétevő lehetővé teszi, hogy a telemetria OPC UA-kiszolgálórendszerekkel küldését az IoT hubnak. Az OPC-közzétevő kapcsolatos további információkért lásd: [Mi az az OPC-közzétevő](overview-opc-publisher.md).
+1. A két szolgáltatás REST-felülete a figyelt elemek és előfizetések létrehozására is használható az OPC-közzétevőben. Az OPC-közzétevő lehetővé teszi, hogy a telemetria az OPC UA-kiszolgáló rendszerekből IoT Hub. További információ az OPC-közzétevőről: [Mi az OPC-közzétevő](overview-opc-publisher.md).
 
-   ![Az OPC-Twin működése](media/overview-opc-twin-architecture/opc-twin4.png)
+   ![Az OPC Twin működése](media/overview-opc-twin-architecture/opc-twin4.png)

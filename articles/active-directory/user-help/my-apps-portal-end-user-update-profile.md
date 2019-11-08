@@ -1,5 +1,5 @@
 ---
-title: A profil és a fiókadatok frissítése a saját alkalmazások portálján – Azure Active Directory | Microsoft Docs
+title: Profil és fiók frissítése a saját alkalmazások portálon – Azure AD
 description: Megtudhatja, hogyan frissítheti a profilját és munkahelyi vagy iskolai fiókjának adatait, beleértve a jelszó módosítását, a jelszó-visszaállítás bekapcsolását, a biztonsági ellenőrzési módszerek frissítését, a szervezet használati feltételeinek megállapítását, és kijelentkezését bárhol bejelentkezett munkahelyi vagy iskolai fiókjával.
 services: active-directory
 author: eross-msft
@@ -13,14 +13,14 @@ ms.author: lizross
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 40cf8e16e08db67c36009435758db36797518d96
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 4416b35d2e2204cec2a9ffe2f50e92983d6204c0
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73160766"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73820382"
 ---
-# <a name="update-your-profile-and-account-info-from-the-my-apps-portal"></a>A profil és a fiókadatok frissítése a saját alkalmazások portálján
+# <a name="update-your-profile-and-account-info-on-the-my-apps-portal"></a>A profil és a fiókadatok frissítése a saját alkalmazások portálján
 
 Használhatja munkahelyi vagy iskolai fiókját a webalapú **saját alkalmazások** portálján, hogy megtekintse és elindítsa a szervezete felhőalapú alkalmazásait, hogy frissítse a profilját és a fiókadatok adatait, és megtekintse a **csoportok** adatait, és elvégezze a következő műveleteket **: alkalmazások és csoportok hozzáférési felülvizsgálatai** . Ha nincs hozzáférése a **saját alkalmazások** portálhoz, akkor engedélyt kell adnia az ügyfélszolgálatnak.
 
@@ -132,7 +132,7 @@ Dönthet úgy is, hogy kijelentkezik a saját munkahelyi vagy iskolai fiókjáva
 
 2. A **kijelentkezés bárhová** megerősítő mezőben válassza az **Igen** lehetőséget annak megerősítéséhez, hogy ki szeretné jelentkezni az összes munkamenetből és eszközről. Ha meggondolja magát, válassza a **nem** lehetőséget.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Miután befejezte a frissítéseket a **profil** lapon, a következőket teheti:
 

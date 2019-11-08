@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 11/04/2019
+ms.date: 11/07/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: 5a65ee27d5175887b7bf0d9146afa025e665657c
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 0654916b344cf47cf9942b883d62d392c0552979
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73488417"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73818939"
 ---
 # <a name="boundaries-for-your-luis-model-and-keys"></a>A LUIS-modell és-kulcsok határai
 LUIS több határt is tartalmaz. Az első a [modell határa](#model-boundaries), amely a Luis szándékait, entitásait és szolgáltatásait vezérli. A második régió a kulcs típusa alapján [korlátozza a kvótákat](#key-limits) . A határ harmadik területe a LUIS webhely vezérlésére szolgáló [billentyűkombináció](#keyboard-controls) . A negyedik terület az a [régió](luis-reference-regions.md) , amely a Luis authoring webhelye és a Luis [Endpoint](luis-glossary.md#endpoint) API-k között van. 
@@ -35,7 +35,7 @@ Ha az alkalmazása meghaladja a LUIS-modell korlátait és határait, érdemes l
 | Külső entitások | Nincs korlát |
 | [Leképezések][intents]|500/alkalmazás: 499 egyéni szándék, és a szükséges _none_ szándék.<br>A [küldő-alapú](https://aka.ms/dispatch-tool) alkalmazás megfelelő 500 elküldési forrással rendelkezik.|
 | [Entitások listázása](./luis-concept-entity-types.md) | Szülő: 50, gyermek: 20 000 elem. A Canonical neve * alapértelmezett karakter max. A szinonimák értékeinek hossza nem korlátozza a korlátot. |
-| [Gépi megtanult entitások + szerepkörök](./luis-concept-entity-types.md):<br> összetett<br>egyszerű<br>entitás szerepköre|Legfeljebb 100 szülő entitás vagy 330 entitás, amely a felhasználó által elsőként megjelenő korlátot korlátozza. A szerepkör entitásként számít a határ szempontjából. Ilyen például egy egyszerű entitást tartalmazó kompozit, amely 2 szerepkörrel rendelkezik: 1 kompozit + 1 egyszerű + 2 szerepkör = 4 az 330 entitások közül.|
+| [Gépi megtanult entitások + szerepkörök](./luis-concept-entity-types.md):<br> összetett<br>egyszerű<br>entitás szerepköre|Legfeljebb 100 szülő entitás vagy 330 entitás, amely a felhasználó által elsőként megjelenő korlátot korlátozza. A szerepkör entitásként számít a határ szempontjából. Ilyen például egy egyszerű entitást tartalmazó kompozit, amely 2 szerepkörrel rendelkezik: 1 kompozit + 1 egyszerű + 2 szerepkör = 4 az 330 entitások közül.<br>Az alösszetevők akár 5 szintre is ágyazhatók.|
 |Modell szolgáltatásként| Egy adott modellhez a leíróként (funkcióként) használható modellek maximális száma 10 modell. Egy adott modellhez tartozó leíróként (funkcióként) használt kifejezések maximális száma 10 kifejezés típusú listának.|
 | [Előnézet – dinamikus lista entitásai](https://aka.ms/luis-api-v3-doc#dynamic-lists-passed-in-at-prediction-time)|2 a ~ 1k/Query előrejelzési végpontra vonatkozó kérelem listája|
 | [Minták](luis-concept-patterns.md)|500 minta alkalmazásként.<br>A minta maximális hossza 400 karakter.<br>3 minta. minden entitás/minta<br>Legfeljebb 2 beágyazott opcionális szöveg a mintában|
@@ -61,7 +61,7 @@ A következőnek egyedinek kell lennie a LUIS-alkalmazásban:
 
 * Verzió neve
 * szándék
-* Entitás
+* entitás
 * roles
 
 A következőnek egyedinek kell lennie az alkalmazott hatókörön belül:
@@ -74,7 +74,7 @@ Ne használja az alábbi karaktereket a következő nevekben.
 
 |Objektum|Karakterek kizárása|
 |--|--|
-|Cél, entitás és szerepkör neve|`:`<br>`$`|
+|Cél, entitás és szerepkör neve|`:`<br>`$` <br> `&`|
 |Verzió neve|`\`<br> `/`<br> `:`<br> `?`<br> `&`<br> `=`<br> `*`<br> `+`<br> `(`<br> `)`<br> `%`<br> `@`<br> `$`<br> `~`<br> `!`<br> `#`|
 
 ## <a name="key-usage"></a>Kulcshasználat
@@ -89,7 +89,7 @@ Az erőforrás-kulcsok különböző korlátozásokkal rendelkeznek a szerzői �
 
 * 500 alkalmazás/Azure authoring Resource 
 
-|Jelmagyarázat|Tartalomkészítés|Végpont|Cél|
+|Kulcs|Tartalomkészítés|Végpont|Cél|
 |--|--|--|--|
 |Kezdő|1 millió/hónap, 5/másodperc|1 ezer/hónap, 5/másodperc|A LUIS-alkalmazás készítése|
 |F0 – ingyenes réteg |1 millió/hónap, 5/másodperc|10 ezer/hónap, 5/másodperc|A LUIS-végpont lekérdezése|

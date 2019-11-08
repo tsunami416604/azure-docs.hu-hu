@@ -1,24 +1,25 @@
 ---
-title: Szakítsa meg a műveletet API |} Az Azure Marketplace-en
-description: Művelet megszakítása
+title: Műveleti API megszakítása | Azure piactér
+description: Művelet megszakítása.
 services: Azure, Marketplace, Cloud Partner Portal,
 author: v-miclar
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
 ms.date: 09/13/2018
 ms.author: pabutler
-ms.openlocfilehash: 70ffd13be4ba934b423e3bb5344eea0a9c36886c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 374425dbd2abacb2114b5792d7476bc341fa353a
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64935551"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73819787"
 ---
-# <a name="cancel-operation"></a>A művelet megszakítása 
+# <a name="cancel-operation"></a>Művelet megszakítása 
 
-Ez az API megszakítja az ajánlatot a folyamatban lévő művelet. Használja a [beolvasni a műveleti API](./cloud-partner-portal-api-retrieve-operations.md) beolvasni egy `operationId` átadása az API-t. Megszakítás általában a egy szinkronizált művelet, azonban néhány összetett helyzetekben egy új művelet szükség lehet egy meglévő megszakítása. Ebben az esetben a HTTP-válasz törzsében tartalmaz állapotának lekérdezéséhez használt helyet a műveletet.
+Ez az API megszakítja az ajánlaton jelenleg folyamatban lévő műveletet. A [lekérési műveletek API](./cloud-partner-portal-api-retrieve-operations.md) -val beolvashatja az API-nak átadandó `operationId`. A megszakítás általában egy szinkron művelet, azonban bizonyos összetett forgatókönyvek esetén új műveletre lehet szükség a meglévő megszakítása érdekében. Ebben az esetben a HTTP-válasz törzse tartalmazza a művelet azon helyét, amelyet az állapot lekérdezéséhez kell használni.
 
-A kérelem hozzá lehet adni e-mail címeket vesszővel tagolt listáját, és az API-t értesíteni fogjuk ezeket a címeket, a művelet haladásával kapcsolatos.
+Megadhatja a kérelemmel ellátott e-mail-címek vesszővel tagolt listáját, és az API értesíti ezeket a címeket a művelet előrehaladásáról.
 
   `POST https://cloudpartner.azure.com/api/publishers/<publisherId>/offers/<offerId>/cancel?api-version=2017-10-31`
 
@@ -27,9 +28,9 @@ A kérelem hozzá lehet adni e-mail címeket vesszővel tagolt listáját, és a
 
 |  **Name (Név)**    |      **Leírás**                                  |    **Adattípus**  |
 | ------------ |     ----------------                                  |     -----------   |
-| publisherId  |  Közzétevő azonosítója, például `contoso`         |   String          |
-| offerId      |  Ajánlat azonosítója                                     |   String          |
-| api-version  |  API jelenlegi verziója                               |    Dátum           |
+| publisherId  |  Közzétevő azonosítója, például `contoso`         |   Sztring          |
+| OfferId      |  Ajánlat azonosítója                                     |   Sztring          |
+| API-Version  |  Az API jelenlegi verziója                               |    Dátum           |
 |  |  |  |
 
 
@@ -39,11 +40,11 @@ A kérelem hozzá lehet adni e-mail címeket vesszővel tagolt listáját, és a
 |  **Name (Név)**              |  **Érték**         |
 |  ---------             |  ----------        |
 |  Content-Type          |  application/json  |
-|  Engedélyezés         |  Tulajdonosi a JOGKIVONAT |
+|  Engedélyezés         |  A TOKEN birtokosa |
 |  |  |
 
 
-<a name="body-example"></a>Törzs példa
+<a name="body-example"></a>Példa szövegtörzsre
 ------------
 
 ### <a name="request"></a>Kérés
@@ -56,11 +57,11 @@ A kérelem hozzá lehet adni e-mail címeket vesszővel tagolt listáját, és a
 }     
 ```
 
-### <a name="request-body-properties"></a>Kérelem törzse tulajdonságai
+### <a name="request-body-properties"></a>Kérelem törzsének tulajdonságai
 
 |  **Name (Név)**                |  **Leírás**                                               |
 |  --------                |  ---------------                                               |
-|  Értesítés-e-mailek     | Vesszővel tagolt e-mailben értesíti a közzétételi művelet előrehaladását a azonosítóinak listája. |
+|  értesítés – e-mailek     | Az e-mail-azonosítók vesszővel tagolt listája, amelyekről értesíteni kell a közzétételi művelet állapotát. |
 |  |  |
 
 
@@ -73,17 +74,17 @@ A kérelem hozzá lehet adni e-mail címeket vesszővel tagolt listáját, és a
 
 |  **Name (Név)**             |    **Érték**                       |
 |  ---------            |    ----------                      |
-| A művelet-helye    | URL-cím, amely lekérdezhetők, a művelet aktuális állapotának meghatározásához. |
+| Művelet – hely    | URL-cím, amely a művelet aktuális állapotának meghatározására kérdezhető le. |
 |  |  |
 
 
-### <a name="response-status-codes"></a>Állapotkódok
+### <a name="response-status-codes"></a>Válasz-állapotkódok
 
 | **Kód**  |  **Leírás**                                                                       |
 |  ------   |  ------------------------------------------------------------------------               |
-|  200      | oké. A kérés feldolgozása sikeresen megtörtént, és a művelet megszakadt, szinkron módon történik. |
-|  202      | Elfogadva. A kérés feldolgozása sikeresen megtörtént, és a művelet folyamatban megszakítása folyamatban van. A válasz fejléce a megszakítási művelet helyét adja vissza. |
-|  400      | Rossz vagy Excel-hibásan létrehozott kérelem. A hiba-válasz törzsében sikerült adhat meg további információt.  |
-|  403      | Access Forbidden. Az ügyfél nem rendelkezik hozzáféréssel a kérésben megadott névtérrel. |
+|  200      | oké. A rendszer sikeresen feldolgozta a kérést, és a művelet szinkron módon megszakítva. |
+|  202      | Elfogadott. A rendszer sikeresen feldolgozta a kérést, és a művelet megszakítása folyamatban van. A visszavonási művelet helye a válasz fejlécében lesz visszaadva. |
+|  400      | Helytelen vagy helytelenül formázott kérelem. A hiba-válasz törzse további információkat biztosíthat.  |
+|  403      | Hozzáférés megtiltva. Az ügyfél nem fér hozzá a kérelemben megadott névtérhez. |
 |  404      | Nem található. A megadott entitás nem létezik. |
 |  |  |

@@ -1,5 +1,5 @@
 ---
-title: A teljesítmény monitorozása és javítása – Azure SQL Database
+title: A teljesítmény monitorozása és javítása
 description: A Azure SQL Database olyan teljesítmény-eszközöket biztosít, amelyek segítségével azonosíthatja azokat a területeket, amelyek javíthatják az aktuális lekérdezési teljesítményt.
 ms.service: sql-database
 ms.subservice: performance
@@ -10,12 +10,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 01/25/2019
-ms.openlocfilehash: 483cd9f185cfa626d21fe0a5b86ba782ebb2f612
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: f7e5f698a822cd68d8319102e1b8bddbbfa8ad70
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73687663"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73821328"
 ---
 # <a name="monitor-and-improve-performance"></a>A teljesítmény monitorozása és javítása
 

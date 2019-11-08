@@ -1,5 +1,5 @@
 ---
-title: Azure SQL Database szolgáltatásra vonatkozó korlátozások
+title: Szolgáltatásokra vonatkozó korlátozások
 description: Azure SQL Database a szolgáltatásra vonatkozó korlátozások javítják az adatbázis biztonságát azáltal, hogy korlátozza az adatbázis azon funkcióit, amelyeket a támadók a bennük lévő információk elérésére használhatnak.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: barmichal
 ms.author: mibar
 ms.reviewer: vanto
 ms.date: 03/22/2019
-ms.openlocfilehash: e9518065b2240d72698ed75f2fa8a7aed343b7bf
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: ce10daca23299f838e4086426fa89d9cade314ea
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73690060"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73823433"
 ---
 # <a name="azure-sql-database-feature-restrictions"></a>Azure SQL Database szolgáltatásra vonatkozó korlátozások
 
@@ -67,7 +67,7 @@ A `sys.sql_feature_restrictions` nézet az adatbázis jelenleg definiált szolg�
 |-------------|-----------|-------------|
 | Osztály       | nvarchar (128) | Azon objektum osztálya, amelyre a korlátozás vonatkozik |
 | objektum      | nvarchar (256) | Annak az objektumnak a neve, amelyre a korlátozás vonatkozik |
-| Vonás     | nvarchar (128) | Korlátozott funkció |
+| vonás     | nvarchar (128) | Korlátozott funkció |
 
 ## <a name="feature-restrictions"></a>Szolgáltatásokra vonatkozó korlátozások
 

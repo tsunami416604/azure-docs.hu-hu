@@ -1,5 +1,5 @@
 ---
-title: 'PowerShell a VNet-végpontokhoz és az önálló és készletezett adatbázisokra vonatkozó szabályok az Azure SQL-ben '
+title: PowerShell a VNet-végpontok és az önálló és készletezett adatbázisok szabályaihoz
 description: PowerShell-parancsfájlokat biztosít a Azure SQL Database és SQL Data Warehouse virtuális szolgáltatási végpontjának létrehozásához és kezeléséhez.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: genemi, vanto
 ms.date: 03/12/2019
-ms.openlocfilehash: 0f3c44d705cb3d8b6ff2d855686394d9e9f1575e
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 5c8f46c9066ad4ef0caac0fb19645b6e4b1cf846
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73686842"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73822401"
 ---
 # <a name="powershell--create-a-virtual-service-endpoint-and-vnet-rule-for-sql"></a>PowerShell: virtuális szolgáltatási végpont és VNet-szabály létrehozása az SQL-hez
 

@@ -5,14 +5,15 @@ author: ChJenk
 manager: evansma
 ms.author: jamwall
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 05/17/2019
-ms.openlocfilehash: c0f3fba389f9cb6f55ac5bf7bb81475fa8244cbf
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: 53d6b5b43a028d552c95c58aebf7268353621759
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70195251"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73827885"
 ---
 # <a name="support-for-the-commercial-marketplace-program-in-partner-center"></a>A kereskedelmi piactér program támogatása a partner Centerben
 
@@ -34,7 +35,7 @@ A Microsoft számos termék és szolgáltatás támogatását biztosítja. A meg
  
    ![Támogatás legördülő menü](./media/commercial-marketplace-support-pane.png)
 
-1. Válassza **[](../index.md)** ki a dokumentációt a kérdésekre és erőforrásokra vonatkozó átfogó válaszok áttekintéséhez. 
+1. Válassza ki a **[dokumentációt](../index.md)** a kérdésekre és erőforrásokra vonatkozó átfogó válaszok áttekintéséhez. 
 
 1. Válassza ki a **[Piactéri partnerek közösségi fórumát](https://www.microsoftpartnercommunity.com/t5/Azure-Marketplace-and-AppSource/bd-p/2222)** , hogy válaszoljon a kérdéseire más Microsoft-közzétevők ismeretének kihasználásával. 
 
@@ -42,11 +43,11 @@ A Microsoft számos termék és szolgáltatás támogatását biztosítja. A meg
 
 ## <a name="how-to-open-a-support-ticket"></a>Támogatási jegy megnyitása
 
-Ha **további segítségre** van szüksége a partner Center kereskedelmi piactér támogatás menüjében, akkor a Microsoft ügyfélszolgálata for Business (vállalati portál) oldalára irányítjuk. Több legördülő menü jelenik meg. Az első néhány legördülő menüt automatikusan kitölti a rendszer. A piactér támogatásához azonosítsa a termékcsaládot **felhő-és online szolgáltatásként**, a termékként a **piactér**-közzétevőként, valamint a termék verziószámát **piactér**-közzétételként. Ezeket az előre megadott legördülő menüket ne módosítsa. 
+Ha **további segítségre** van szüksége a partner Center kereskedelmi piactér támogatás menüjében, akkor a Microsoft ügyfélszolgálata for Business (vállalati portál) oldalára irányítjuk. Több legördülő menü jelenik meg. Az első néhány legördülő menüt automatikusan kitölti a rendszer. A piactér támogatásához azonosítsa a termékcsaládot **felhő-és online szolgáltatásként**, a termékként a **piactér-közzétevőként**, valamint a termék verziószámát **piactér-közzétételként**. Ezeket az előre megadott legördülő menüket ne módosítsa. 
 
-- **Válasszon ki egy kategóriát, amely a legjobban leírja a problémát**: Válassza ki azt a kategóriát, amely a legjobban igazodik a kérdéshez vagy a problémához. Egy kategória kiválasztásakor egy további legördülő menü jelenik meg, amely arra kéri, hogy válassza ki a problémát legjobban leíró problémát.
+- **Válasszon ki egy kategóriát, amely a legjobban leírja a problémát**: válassza ki azt a kategóriát, amely a legjobban megfelel a kérdésének vagy problémájának. Egy kategória kiválasztásakor egy további legördülő menü jelenik meg, amely arra kéri, hogy válassza ki a problémát legjobban leíró problémát.
 
-- **Válasszon olyan problémát, amely a legjobban leírja a problémát**: Válassza ki a problémát a felsorolt beállítások közül, amelyek a legjobban illeszkednek a problémához. A problémától függően egy új szakasz jelenhet meg, amely a problémával kapcsolatos hivatkozásokat tartalmaz. A **következő** gomb megnyomása előtt tekintse át ezeket a hivatkozásokat, és ellenőrizze, hogy megtörtént-e a kérdés vagy probléma megoldása.
+- **Válasszon olyan problémát, amely a legjobban leírja a**problémát: válassza ki a problémát a felsorolt lehetőségek közül, amelyek a legjobban illeszkednek a problémához. A problémától függően egy új szakasz jelenhet meg, amely a problémával kapcsolatos hivatkozásokat tartalmaz. A **következő** gomb megnyomása előtt tekintse át ezeket a hivatkozásokat, és ellenőrizze, hogy megtörtént-e a kérdés vagy probléma megoldása.
 
 A Next ( **tovább** ) gomb kiválasztásával a rendszer átirányítja a **probléma részletei** lapra. 
 

@@ -1,5 +1,5 @@
 ---
-title: Felügyelt példány kapcsolati architektúrája Azure SQL Database
+title: Felügyelt példány kapcsolati architektúrája
 description: Ismerkedjen meg Azure SQL Database felügyelt példányok kommunikációs és kapcsolati architektúrával, valamint arról, hogy az összetevők hogyan irányítsák át a felügyelt példányra.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, bonova, carlrab
 ms.date: 04/16/2019
-ms.openlocfilehash: 881f116988ae0c9a6a33c8454cd1e4012580bfab
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 0c21271eb19a8fd69cb42e30c6a45bd3af9a5600
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73688207"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73820478"
 ---
 # <a name="connectivity-architecture-for-a-managed-instance-in-azure-sql-database"></a>Felügyelt példány kapcsolati architektúrája Azure SQL Database
 
@@ -96,7 +96,7 @@ Felügyelt példány üzembe helyezése egy dedikált alhálózaton a virtuális
 
 ### <a name="mandatory-inbound-security-rules"></a>Kötelező bejövő biztonsági szabályok
 
-| Name (Név)       |Port                        |Protokoll|Forrás           |Cél|Műveletek|
+| Név       |Port                        |Protokoll|Forrás           |Cél|Műveletek|
 |------------|----------------------------|--------|-----------------|-----------|------|
 |felügyelet  |9000, 9003, 1438, 1440, 1452|TCP     |Bármelyik              |MI ALHÁLÓZAT  |Engedélyezés |
 |mi_subnet   |Bármelyik                         |Bármelyik     |MI ALHÁLÓZAT        |MI ALHÁLÓZAT  |Engedélyezés |
@@ -104,7 +104,7 @@ Felügyelt példány üzembe helyezése egy dedikált alhálózaton a virtuális
 
 ### <a name="mandatory-outbound-security-rules"></a>Kötelező kimenő biztonsági szabályok
 
-| Name (Név)       |Port          |Protokoll|Forrás           |Cél|Műveletek|
+| Név       |Port          |Protokoll|Forrás           |Cél|Műveletek|
 |------------|--------------|--------|-----------------|-----------|------|
 |felügyelet  |443, 12000    |TCP     |MI ALHÁLÓZAT        |AzureCloud |Engedélyezés |
 |mi_subnet   |Bármelyik           |Bármelyik     |MI ALHÁLÓZAT        |MI ALHÁLÓZAT  |Engedélyezés |
@@ -121,7 +121,7 @@ Felügyelt példány üzembe helyezése egy dedikált alhálózaton a virtuális
 
 ### <a name="user-defined-routes"></a>Felhasználó által megadott útvonalak
 
-|Name (Név)|Címelőtag|Következő ugrás|
+|Név|Címelőtag|Következő ugrás|
 |----|--------------|-------|
 |subnet_to_vnetlocal|MI ALHÁLÓZAT|Virtuális hálózat|
 |Mi-13-64-11-nexthop-Internet|13.64.0.0/11|Internet|
@@ -251,7 +251,7 @@ Felügyelt példány üzembe helyezése egy dedikált alhálózaton a virtuális
 
 ### <a name="mandatory-inbound-security-rules-with-service-aided-subnet-configuration"></a>Kötelező bejövő biztonsági szabályok a szolgáltatással segített alhálózat konfigurációjával 
 
-| Name (Név)       |Port                        |Protokoll|Forrás           |Cél|Műveletek|
+| Név       |Port                        |Protokoll|Forrás           |Cél|Műveletek|
 |------------|----------------------------|--------|-----------------|-----------|------|
 |felügyelet  |9000, 9003, 1438, 1440, 1452|TCP     |SqlManagement    |MI ALHÁLÓZAT  |Engedélyezés |
 |            |9000, 9003                  |TCP     |CorpnetSaw       |MI ALHÁLÓZAT  |Engedélyezés |
@@ -261,14 +261,14 @@ Felügyelt példány üzembe helyezése egy dedikált alhálózaton a virtuális
 
 ### <a name="mandatory-outbound-security-rules-with-service-aided-subnet-configuration"></a>Kötelező kimenő biztonsági szabályok a szolgáltatással segített alhálózat konfigurációjával 
 
-| Name (Név)       |Port          |Protokoll|Forrás           |Cél|Műveletek|
+| Név       |Port          |Protokoll|Forrás           |Cél|Műveletek|
 |------------|--------------|--------|-----------------|-----------|------|
 |felügyelet  |443, 12000    |TCP     |MI ALHÁLÓZAT        |AzureCloud |Engedélyezés |
 |mi_subnet   |Bármelyik           |Bármelyik     |MI ALHÁLÓZAT        |MI ALHÁLÓZAT  |Engedélyezés |
 
 ### <a name="user-defined-routes-with-service-aided-subnet-configuration"></a>A felhasználó által megadott útvonalak a szolgáltatással segített alhálózat konfigurációjával 
 
-|Name (Név)|Címelőtag|Következő ugrás|
+|Név|Címelőtag|Következő ugrás|
 |----|--------------|-------|
 |alhálózat – vnetlocal|MI ALHÁLÓZAT|Virtuális hálózat|
 |Mi-13-64-11-nexthop-Internet|13.64.0.0/11|Internet|

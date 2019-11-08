@@ -6,18 +6,18 @@ manager: philmea
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 05/11/2019
+ms.date: 10/02/2019
 ms.author: robinsh
-ms.openlocfilehash: 32c7a2a79c8d6a35008255b3c117f20d04ad7749
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 3b498911999e224003710eced8e0c34989672800
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72927417"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73809197"
 ---
 # <a name="import-and-export-iot-hub-device-identities-in-bulk"></a>IoT Hub eszköz-identitások tömeges importálása és exportálása
 
-Minden IoT hub rendelkezik egy azonosító beállításjegyzékkel, amellyel eszközönkénti erőforrásokat hozhat létre a szolgáltatásban. Az Identity Registry Emellett lehetővé teszi az eszközre irányuló végpontokhoz való hozzáférés szabályozását. Ez a cikk azt ismerteti, hogyan importálhat és exportálhat eszköz-identitásokat egy identitás-beállításjegyzékből és-ból.
+Minden IoT hub rendelkezik egy azonosító beállításjegyzékkel, amellyel eszközönkénti erőforrásokat hozhat létre a szolgáltatásban. Az Identity Registry Emellett lehetővé teszi az eszközre irányuló végpontokhoz való hozzáférés szabályozását. Ez a cikk azt ismerteti, hogyan importálhat és exportálhat eszköz-identitásokat egy identitás-beállításjegyzékből és-ból. Ha szeretne megtekinteni egy C# működő mintát a alkalmazásban, és megtudhatja, hogyan használhatja ezt a képességet, ha egy másik régióba klónozást végez, tekintse meg [az IoT hub klónozását](iot-hub-how-to-clone.md)ismertető témakört.
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
@@ -419,9 +419,13 @@ static string GetContainerSasUri(CloudBlobContainer container)
 }
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Ebből a cikkből megtudhatta, hogyan végezheti el a tömeges műveleteket egy IoT hub azonosító-beállításjegyzékében. Az alábbi hivatkozásokat követve további információkat tudhat meg az Azure IoT Hub kezeléséről:
+Ebből a cikkből megtudhatta, hogyan végezheti el a tömeges műveleteket egy IoT hub azonosító-beállításjegyzékében. Számos művelet, többek között az eszközök egyik központból a másikba való áthelyezésének módja, a [IoT hub-ban regisztrált eszközökön található, a IoT hub klónozásának módja](iot-hub-how-to-clone.md#managing-the-devices-registered-to-the-iot-hub). 
+
+A klónozási cikknek van egy működő mintája, amely a IoT C# -mintákban található az oldalon: az [Azure IoT-minták C# ](https://azure.microsoft.com/resources/samples/azure-iot-samples-csharp/)a-ben, a projekt pedig ImportExportDevicesSample. Letöltheti a mintát, és kipróbálhatja; az IoT Hub-cikkek [klónozása](iot-hub-how-to-clone.md) című cikkben talál útmutatást.
+
+Az Azure IoT Hub kezelésével kapcsolatos további tudnivalókért tekintse meg a következő cikkeket:
 
 * [IoT Hub metrikák](iot-hub-metrics.md)
 * [Naplók IoT Hub](iot-hub-monitor-resource-health.md)

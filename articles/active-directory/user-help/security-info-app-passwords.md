@@ -1,5 +1,5 @@
 ---
-title: Alkalmazás jelszavának beállítása a biztonsági adatok (előzetes verzió) lapon – Azure Active Directory | Microsoft Docs
+title: Alkalmazás jelszavának létrehozása a biztonsági adatokban (előzetes verzió) – Azure AD
 description: Állítson be automatikusan generált jelszavakat (alkalmazás-jelszavakat) a böngészőn kívüli alkalmazásokhoz, illetve bármely olyan alkalmazáshoz, amely nem támogatja a kétfaktoros ellenőrzést a szervezetében. Ez az alkalmazás jelszava különálló a normál jelszótól, és a biztonsági adatok lapról állítható be.
 services: active-directory
 author: eross-msft
@@ -12,14 +12,14 @@ ms.topic: conceptual
 ms.date: 02/13/2018
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9638893c707757cb520acdf18e8e89a6cdf13f08
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: eb26d90772fc9e3e3e506946363c76cf02e6b2ef
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70915982"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73820321"
 ---
-# <a name="manage-app-passwords-from-your-security-info-preview-page"></a>Alkalmazások jelszavainak kezelése a biztonsági adatok (előzetes verzió) lapján
+# <a name="create-app-passwords-from-your-security-info-preview-page"></a>Alkalmazás jelszavának létrehozása a biztonsági adatok (előzetes verzió) lapról
 
 Bizonyos alkalmazások, például az Outlook 2010, nem támogatják a kétlépéses ellenőrzést. Ez a támogatás hiánya azt jelenti, hogy ha kétlépéses ellenőrzést használ a szervezetében, az alkalmazás nem fog működni. A probléma megkerüléséhez létrehozhat egy automatikusan generált jelszót, amelyet az egyes nem böngésző alkalmazásokhoz használhat, a normál jelszótól eltérő módon.
 
@@ -46,7 +46,7 @@ Ha kétlépéses ellenőrzést használ a munkahelyi vagy iskolai fiókjával, �
 
 ### <a name="to-create-a-new-app-password"></a>Új alkalmazás jelszavának létrehozása
 
-1. Jelentkezzen be a munkahelyi vagy iskolai fiókjába, majd lépjen a https://myprofile.microsoft.com/ lapra.
+1. Jelentkezzen be a munkahelyi vagy iskolai fiókjába, majd lépjen a https://myprofile.microsoft.com/ oldalra.
 
     ![Saját profil oldal, kiemelt biztonsági információs hivatkozások megjelenítése](media/security-info/securityinfo-myprofile-page.png)
 

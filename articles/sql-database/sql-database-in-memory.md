@@ -1,5 +1,5 @@
 ---
-title: Azure SQL Database memóriában lévő technológiák
+title: Memóriában tárolt technológiák
 description: Azure SQL Database memóriában lévő technológiák nagy mértékben javítják a tranzakciós és elemzési számítási feladatok teljesítményét.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/19/2019
-ms.openlocfilehash: 7ee643c10c61368ee91692cbddf326ba488f81e6
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: de60712451d4c2e8a7d931f7a09352f55be05694
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73689793"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73810266"
 ---
 # <a name="optimize-performance-by-using-in-memory-technologies-in-sql-database"></a>A teljesítmény optimalizálása a SQL Database memóriában lévő technológiáinak használatával
 
@@ -82,7 +82,7 @@ A memóriában tárolt OLTP technológia rendkívül gyors adatelérési művele
 
 - A **memóriára optimalizált sortárindex létrehozását** formátuma, ahol minden sor külön memória-objektum. Ez egy klasszikus memóriabeli OLTP formátum, amely nagy teljesítményű OLTP számítási feladatokhoz van optimalizálva. A memóriára optimalizált sortárindex létrehozását-formátumokban kétféle memória-optimalizált táblázat használható:
   - *Tartós táblák* (SCHEMA_AND_DATA), ahol a memóriába helyezett sorok megmaradnak a kiszolgáló újraindítása után. Az ilyen típusú táblák úgy viselkednek, mint egy hagyományos sortárindex létrehozását tábla, amely a memórián belüli optimalizálások további előnyeit is tartalmazza.
-  - *Nem tartós táblák* (SCHEMA_ONLY), ahol a sorok nem őrződnek meg az újraindítás után. Ez a típusú tábla ideiglenes (például Temp Tables) vagy olyan táblákat tartalmaz, amelyekben gyorsan be kell töltenie az adatmennyiséget, mielőtt áthelyezi azt valamilyen megőrzött táblába (úgynevezett átmeneti táblákba).
+  - *Nem tartós táblák* (SCHEMA_ONLY), amelyek esetében a sorok nem őrződnek meg az újraindítás után. Ez a típusú tábla ideiglenes (például Temp Tables) vagy olyan táblákat tartalmaz, amelyekben gyorsan be kell töltenie az adatmennyiséget, mielőtt áthelyezi azt valamilyen megőrzött táblába (úgynevezett átmeneti táblákba).
 - **Memória-optimalizált oszlopcentrikus** formátum, amelyben az adatok oszlopos formátumban vannak rendezve. Ez a struktúra olyan HTAP-forgatókönyvekhez készült, ahol analitikai lekérdezéseket kell futtatnia ugyanarra az adatszerkezetre, ahol a OLTP-munkaterhelés fut.
 
 > [!Note]

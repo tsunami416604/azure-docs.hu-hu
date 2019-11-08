@@ -1,6 +1,6 @@
 ---
 title: Személyes beállítások kezelése IoT Centralon | Microsoft Docs
-description: Személyes alkalmazás-beállítások kezelése IoT Central
+description: A személyes alkalmazás-beállítások kezelése, például a nyelv és a téma módosítása a IoT Central alkalmazásban.
 author: lmasieri
 ms.author: lmasieri
 ms.date: 07/10/2019
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 154ac608d9d6174ca981f3c358bff1e8272182f8
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 6bfc70ada906f5c444ace5cd7bb96555700586db
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72950079"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73806161"
 ---
 # <a name="manage-your-personal-application-preferences"></a>A személyes alkalmazás beállításainak kezelése
 
@@ -34,7 +34,7 @@ A sötét téma és a világos téma is támogatott. Bár a világos téma az al
 > [!NOTE]
 > A világos és a sötét témák közötti választás nem érhető el, ha a rendszergazda egyéni témát konfigurált az alkalmazáshoz.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Most, hogy megismerte, hogyan kezelheti a profilját az Azure IoT Centralban, itt látható a következő lépés:
 

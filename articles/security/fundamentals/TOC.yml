@@ -140,78 +140,20 @@
   items:
     - name: AU ÁLTAL VÉDETT
       displayName: 'blueprint, privacy, certifications'
-      items:
-        - name: IaaS-webalkalmazás
-          href: ../blueprints/au-protected-iaaswa-overview.md
-        - name: PaaS webalkalmazás
-          href: ../blueprints/au-protected-paaswa-overview.md
     - name: FedRAMP
       displayName: 'blueprint, privacy, certifications'
-      items:
-        - name: Adatelemzés
-          href: ../blueprints/fedramp-analytics-overview.md
-        - name: Adattárház
-          href: ../blueprints/fedramp-datawarehouse-overview.md
-        - name: IaaS-webalkalmazás
-          href: ../blueprints/fedramp-iaaswa-overview.md
-        - name: PaaS webalkalmazás
-          href: ../blueprints/fedramp-paaswa-overview.md
     - name: FFIEC
       displayName: 'blueprint, privacy, certifications'
-      items:
-        - name: Adatelemzés
-          href: ../blueprints/ffiec-analytics-overview.md
-        - name: Adattárház
-          href: ../blueprints/ffiec-dw-overview.md
-        - name: IaaS-webalkalmazás
-          href: ../blueprints/ffiec-iaaswa-overview.md
-        - name: PaaS webalkalmazás
-          href: ../blueprints/ffiec-paaswa-overview.md
     - name: HIPAA/HITRUST
       displayName: 'blueprint, privacy, certifications'
-      items:
-        - name: Állapotadatok és mesterséges intelligencia
-          href: ../blueprints/azure-health.md
     - name: NIST SP 800-171
       displayName: 'blueprint, privacy, certifications'
-      items:
-        - name: Adatelemzés
-          href: ../blueprints/nist171-analytics-overview.md
-        - name: Adattárház
-          href: ../blueprints/nist171-datawarehouse-overview.md
-        - name: IaaS-webalkalmazás
-          href: ../blueprints/nist171-iaaswa-overview.md
-        - name: PaaS webalkalmazás
-          href: ../blueprints/nist171-paaswa-overview.md
     - name: PCI DSS
       displayName: 'blueprint, privacy, certifications'
-      items:
-        - name: Adatelemzés
-          href: ../blueprints/pcidss-analytics-overview.md
-        - name: Adattárház
-          href: ../blueprints/pcidss-dw-overview.md
-        - name: IaaS-webalkalmazás
-          href: ../blueprints/pcidss-iaaswa-overview.md
-        - name: PaaS webalkalmazás
-          href: ../blueprints/pcidss-paaswa-overview.md
     - name: Az Egyesült Királyság Nemzeti Egészségügyi Szolgálata
       displayName: 'blueprint, privacy, certifications'
-      items:
-        - name: Adatelemzés
-          href: ../blueprints/uknhs-analytics-overview.md
-        - name: Adattárház
-          href: ../blueprints/uknhs-datawarehouse-overview.md
-        - name: IaaS-webalkalmazás
-          href: ../blueprints/uknhs-iaaswa-overview.md
-        - name: PaaS webalkalmazás
-          href: ../blueprints/uknhs-paaswa-overview.md
     - name: UK OFFICIAL
       displayName: 'blueprint, privacy, certifications'
-      items:
-        - name: IaaS-webalkalmazás
-          href: ../blueprints/ukofficial-iaaswa-overview.md
-        - name: PaaS webalkalmazás
-          href: ../blueprints/ukofficial-paaswa-overview.md
 - name: Biztonsági tanulmányok
   href: 'https://azure.microsoft.com/resources/whitepapers/search/?term=security&type=WhitePaperResource'
 - name: Azure biztonsági szolgáltatások

@@ -1,47 +1,48 @@
 ---
-title: Az Azure piactéren virtuálisgép-ajánlat
-description: Az Azure piactér-Virtuálisgép-ajánlat közzétételéhez folyamatának áttekintése.
+title: Virtuálisgép-ajánlat az Azure piactéren
+description: A virtuálisgép-ajánlat Azure Marketplace-en való közzétételének folyamatát ismertető cikk áttekintése.
 services: Azure, Marketplace, Cloud Partner Portal
 author: v-miclar
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 12/04/2018
 ms.author: pabutler
-ms.openlocfilehash: fed0f47c963edf40883c432f5476bd7fe5720abb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0313c4f2581615e1d1a3a57fc191db7d7cc6e825
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64938063"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73808560"
 ---
 # <a name="virtual-machine-offer"></a>Virtuálisgép-ajánlat
 
 |    |    |
 |-----------------------------------------------------------------|------------------------------------------|
-| Ez a szakasz ismerteti, hogyan tehet közzé egy új virtuális gép ajánlattal a [Azure Marketplace-en](https://azuremarketplace.microsoft.com). Mind a Windows-alapú és Linux-alapú virtuális gépek, egy operációs rendszer virtuális merevlemezről (VHD) és a nulla vagy több adatokat VHD-ket tartalmazó biztosítunk támogatást. | ![virtuális gép ikonja](./media/virtual-machine-icon.png)  |
+| Ez a szakasz azt ismerteti, hogyan tehet közzé új virtuálisgép-ajánlatot az [Azure Marketplace](https://azuremarketplace.microsoft.com)-en. A támogatást a Windows-alapú és a Linux-alapú virtuális gépek is támogatják, amelyek az operációs rendszer virtuális merevlemezét (VHD) és nulla vagy több adatvhd-t tartalmaznak. | ![virtuális gép ikonja](./media/virtual-machine-icon.png)  |
 
 
-## <a name="publishing-overview"></a>Közzétételi áttekintése
+## <a name="publishing-overview"></a>Közzététel áttekintése
 
-Az alábbi videó [optimalizálása az Azure Marketplace-en ajánlat](https://channel9.msdn.com/Events/Build/2017/P4026?ocid=player), megadja az alkalmazásukhoz az Azure piactéren, beleértve a felhasználói élmény optimalizálása (egy virtuális gép megoldás használatával), a marketplace-en közzététele a termék oldalát és választható Test Drive felhasználói élményt hogyan felhasználói érdeklődők jönnek létre, és hogyan lehet felhasználni azokat, és optimalizálhatja a customer engagement.
+Az alábbi videó, az [Azure Marketplace-ajánlat optimalizálása](https://channel9.msdn.com/Events/Build/2017/P4026?ocid=player), átfogó áttekintést nyújt az Azure Marketplace-ről, beleértve a piactéren való közzétételt (virtuálisgép-megoldás használatával), a felhasználói élmény optimalizálását a termék oldalán és az opcionális tesztelési meghajtó, a felhasználói érdeklődők generálása és a használatuk módja, valamint az ügyfelek bevonásának optimalizálása.
 
 > [!VIDEO https://channel9.msdn.com/Events/Build/2017/P4026/player]
 
 
-## <a name="vm-publishing-process-flow"></a>Virtuális gép közzétételi folyamata
+## <a name="vm-publishing-process-flow"></a>VIRTUÁLIS gépek közzétételi folyamata
 
-A következő ábra szemlélteti a magas szintű lépéseket egy Virtuálisgép-ajánlat közzététele. 
+A következő ábra a virtuálisgép-ajánlat közzétételének magas szintű lépéseit mutatja be. 
 
-![Virtuális gép közzétételi folyamata](./media/publishvm_001.png)
+![VM-közzétételi folyamat](./media/publishvm_001.png)
 
-1. Az ajánlat – minden létrehozásához, és az ajánlat információ van konfigurálva, beleértve a marketing anyagok, a jogi, a támogatási információkat és az eszközintelligencia specifikációk ajánlat leírása.
+1. Ajánlat létrehozása – a szolgáltatással kapcsolatos összes adat és információ konfigurálva van, beleértve az ajánlat leírását, a marketing-anyagokat, a jogi, a támogatási információkat és az eszközök specifikációit.
 
-2. Hozzon létre az üzleti és technikai eszközök – az üzleti eszközök (jogi dokumentumok és marketinganyagokat) és a technikai eszközök (itt, a virtuális gépek és a csatlakoztatott lemezek) kapcsolódó megoldás létrehozásához. 
+2. Üzleti és technikai eszközök létrehozása – a kapcsolódó megoldáshoz (itt, a virtuális gépekhez és a csatlakoztatott lemezekhez) tartozó üzleti eszközök (jogi dokumentumok és marketing-anyagok) és technikai eszközök létrehozása. 
 
-3. A Termékváltozat létrehozása – hozzon létre a társított termékváltozat(ok) az ajánlathoz kapcsolódó, és küldje el őket.  Egy egyedi Termékváltozat megadása kötelező az egyes lemezképek kíván közzétenni. 
+3. Hozza létre az SKU-t – hozza létre az ajánlathoz társított SKU (ka) t, és küldje el azokat.  Minden közzétenni kívánt rendszerképhez egyedi SKU szükséges. 
  
-4. Igazolom, és tegye közzé az ajánlat – az ajánlat és a technikai eszközök befejezése után az ajánlatot küldhet. Benyújtás elindul a közzétételi folyamat, amelyben a megoldás szolgáltatás tesztelése, érvényesítve, megkapta a minősítést, majd "élesíti" a marketplace-en.  
+4. Az ajánlat hitelesítése és közzététele – az ajánlat és a technikai eszközök befejezése után elküldheti az ajánlatot. Ez a beküldés elindítja a közzétételi folyamatot, amelyben a megoldás tesztelése, ellenőrzése, minősítése, majd a piactéren folytatott "élő adás" lép életbe.  
 
 ## <a name="next-steps"></a>További lépések
 
-Mielőtt ezeket a lépéseket, meg kell felelnie a [műszaki és üzleti igényeinek](./cpp-prerequisites.md) egy virtuális Gépet a Microsoft Azure piactéren való közzétételéhez. 
+Mielőtt figyelembe veszi ezeket a lépéseket, meg kell felelnie a virtuális gép Microsoft Azure Marketplace való közzétételének [technikai és üzleti követelményeinek](./cpp-prerequisites.md) . 

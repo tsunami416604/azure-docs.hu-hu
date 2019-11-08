@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 8f06d3f033a2bf5907dc2ee324359bef0eb247d0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 41689b7596c9da350a9e0fec619e49d332a36d5b
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60953526"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73826197"
 ---
 # <a name="configure-cloud-resources-for-device-provisioning-with-the-iot-hub-device-provisioning-service"></a>Felhőalapú erőforrások konfigurálása az IoT Hub Device Provisioning Service használatával történő eszközkiépítéshez
 
@@ -30,7 +30,7 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 ## <a name="sign-in-to-the-azure-portal"></a>Jelentkezzen be az Azure Portalra
 
-Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
+Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
 
 ## <a name="create-a-device-provisioning-service-instance-and-get-the-id-scope"></a>Device Provisioning Service-példány létrehozása és az azonosító hatókörének lekérése
 
@@ -48,7 +48,7 @@ Kövesse az alábbi lépéseket egy új Device Provisioning Service-példány l�
    | ------------ | ------------------ | ------------------------------------------------- | 
    | **Name (Név)** | Bármely egyedi név | -- | 
    | **Előfizetés** | Az Ön előfizetése  | Az előfizetései részleteivel kapcsolatban lásd az [előfizetéseket](https://account.windowsazure.com/Subscriptions) ismertető cikket. |
-   | **Erőforráscsoport** | myResourceGroup | Az érvényes erőforráscsoport-nevekkel kapcsolatban lásd az [elnevezési szabályokat és korlátozásokat](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions) ismertető cikket. |
+   | **Erőforráscsoport** | myResourceGroup | Az érvényes erőforráscsoport-nevekkel kapcsolatban lásd az [elnevezési szabályokat és korlátozásokat](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging) ismertető cikket. |
    | **Hely** | Bármely érvényes hely | A régiókkal kapcsolatos információkért lásd [az Azure régióit](https://azure.microsoft.com/regions/) ismertető cikket. |   
 
    ![Írja be a Device Provisioning Service-szolgáltatás alapvető adatait a portálon](./media/tutorial-set-up-cloud/create-iot-dps-portal.png)
@@ -63,7 +63,7 @@ Kövesse az alábbi lépéseket egy új Device Provisioning Service-példány l�
 
 [!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 
-### <a name="retrieve-connection-string-for-iot-hub"></a>Az IoT hub kapcsolati karakterlánc
+### <a name="retrieve-connection-string-for-iot-hub"></a>IoT hub-hoz tartozó kapcsolatok karakterláncának beolvasása
 
 [!INCLUDE [iot-hub-include-find-connection-string](../../includes/iot-hub-include-find-connection-string.md)]
 
@@ -77,27 +77,27 @@ A következő lépés a Device Provisioning Service és az IoT-központ összeka
 
 2. A Device Provisioning Service lapján kattintson a **Csatolt IoT-központok** lehetőségre.
 
-3. Kattintson a **Hozzáadás** parancsra.
+3. Kattintson az **Add** (Hozzáadás) parancsra.
 
 4. A **Hivatkozás hozzáadása IoT hubhoz** lapon adja meg az alábbi adatokat, majd kattintson a **Mentés**gombra:
 
-    * **Előfizetés:** Ellenőrizze, hogy az előfizetés, amely tartalmazza az IoT hub van kiválasztva. Másik előfizetésben található IoT hubot is csatlakoztathat.
+    * **Előfizetés:** Győződjön meg arról, hogy az IoT hubot tartalmazó szolgáltatás van kiválasztva. Másik előfizetésben található IoT hubot is csatlakoztathat.
 
-    * **Az IoT hub:** Válassza ki az IoT hub csatolása a Device Provisioning Service-példányt a kívánt nevét.
+    * **IoT hub:** Válassza ki a Device Provisioning Service-példányhoz csatlakoztatni kívánt IoT hub nevét.
 
-    * **Hozzáférési szabályzat:** Válassza ki **iothubowner** , a hivatkozásra kattintva az IoT hub létrehozásához szükséges használandó hitelesítő adatok.
+    * **Hozzáférési szabályzat:** Válassza az **iothubowner** hitelesítő adatait az IoT Hubra mutató kapcsolat kiépítésének használatához.
 
    ![A központ nevének csatolása a Device Provisioning Service-szolgáltatáshoz a portálon](./media/tutorial-set-up-cloud/link-iot-hub-to-dps-portal.png)
 
 ## <a name="set-the-allocation-policy-on-the-device-provisioning-service"></a>A Device Provisioning Service kiosztási szabályzatának beállítása
 
-A kiosztási szabályzat egy IoT Hub Device Provisioning Service-beállítás határozza meg, hogyan eszközök vannak rendelve egy IoT hubra. Három támogatott kiosztási szabályzat létezik: 
+A foglalási szabályzat egy IoT Hub Device Provisioning Service-beállítás, amely meghatározza, hogy az eszközök hogyan legyenek hozzárendelve az IoT hubhoz. Három támogatott kiosztási szabályzat létezik: 
 
-1. **Legkisebb késés**: Eszközök kiosztása egy IoT hubra a legkisebb mértékű késleltetéssel rendelkezik az eszközt a hubon alapján.
+1. **Legkisebb mértékű késleltetés**: Az eszközök abban az IoT-központban lesznek kiépítve, amely a legkisebb mértékű késleltetéssel rendelkezik az adott eszköz irányába.
 
-2. **Egyenletesen súlyozott elosztás** (alapértelmezett): Összekapcsolt IoT-központok várhatóan egyaránt rendelkezik kiosztott eszközökkel. Ez az alapértelmezett beállítás. Akkor érdemes megtartani, ha csak egy IoT-központban épít ki eszközöket. 
+2. **Egyenletesen súlyozott elosztás** (alapértelmezett): Az eszközök egyforma valószínűséggel lesznek kiépítve a csatolt IoT-központokban. Ez az alapértelmezett beállítás. Akkor érdemes megtartani, ha csak egy IoT-központban épít ki eszközöket. 
 
-3. **A regisztrációs listán keresztül statikus konfiguráció**: A regisztrációs listában meghatározott IoT-központ specifikace prioritást élvez a Device Provisioning Service-szintű kiosztási szabályzattal keresztül.
+3. **Statikus konfigurálás a regisztrációs listán keresztül**: A regisztrációs listában meghatározott IoT-központ elsőbbséget élvez a Device Provisioning Service-szintű kiosztási szabályzattal szemben.
 
 A kiosztási szabályzat beállításához kattintson a **Kiosztási szabályzat kezelése** lehetőségre a Device Provisioning Service lapján. Győződjön meg arról, hogy a kiosztási házirend **Egyenletesen súlyozott elosztás** értékre van állítva (ez az alapértelmezett). A módosítások elvégzése után kattintson a **Mentés** gombra.
 

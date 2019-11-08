@@ -1,59 +1,60 @@
 ---
-title: A Power BI alkalmazás-ajánlat közzététele |} Az Azure Marketplace-en
-description: Tegye közzé a Power BI-alkalmazás az ajánlat a Microsoft AppSource marketplace-en.
+title: Power BI alkalmazás-ajánlat közzététele | Azure piactér
+description: Power BI alkalmazás-ajánlat közzététele a Microsoft AppSource piactéren.
 services: Azure, AppSource, Marketplace, Cloud Partner Portal, Power BI
 author: v-miclar
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 01/31/2019
 ms.author: pabutler
-ms.openlocfilehash: aae23feaf1cc5887de061414af985ef16070546b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 324be960bd2d22623763ca3e24b99be92ff04174
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64943184"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73826037"
 ---
-# <a name="publish-a-power-bi-app-offer"></a>A Power BI alkalmazás-ajánlat közzététele
+# <a name="publish-a-power-bi-app-offer"></a>Power BI alkalmazás-ajánlat közzététele
 
-Az utolsó lépés egy ajánlatot meghatározott a Cloud Partner portálra és a kapcsolódó technikai eszközök létrehozása után, hogy küldje el az ajánlat közzététele. Ez a folyamat elindításához a bal oldali panelen, a **új ajánlat** ablakban válassza **közzététel**. További információkért lásd: [ajánlatok közzététele az Azure Marketplace és AppSource](../manage-offers/cpp-publish-offer.md).
+Az utolsó lépés, miután meghatározta az ajánlatot a Cloud Partner Portalban, és létrehozta a kapcsolódó technikai eszközöket, a közzétételhez küldje el az ajánlatot. A folyamat elindításához az **új ajánlat** ablak bal oldali ablaktábláján válassza a **Közzététel**lehetőséget. További információkért lásd: [Azure Marketplace-és AppSource-ajánlatok közzététele](../manage-offers/cpp-publish-offer.md).
 
 
-## <a name="publishing-steps"></a>Közzétételi lépéseket
+## <a name="publishing-steps"></a>Közzétételi lépések
 
-A közzétételi folyamat során a fő lépések a következők:
+A közzétételi folyamat fő lépései:
 
-![A Power BI-alkalmazáshoz a közzétételi folyamat lépéseinek ajánlat](./media/publishing-process-steps.png)
+![Power BI app-ajánlathoz tartozó folyamat lépéseinek közzététele](./media/publishing-process-steps.png)
 
-Ez a táblázat ismerteti az egyes lépések, és biztosítja a becsült befejezési idő:
+Ez a táblázat az egyes lépéseket ismerteti, és a becsült befejezési időt biztosítja:
 
 |   Közzétételi lépés            |   Time     |   Leírás                                                                  |
 | --------------------         |------------| ----------------                                                               |
-| Előfeltételek ellenőrzése       | 15 perc     | Információt kínálnak, és kínálnak a rendszer érvényesíti a beállításokat.                            |
-| Tanúsítvány                | 1 – 7 nap   | A Power BI hitelesítő csapata elemzi az ajánlatot. A csapat a Power BI alkalmazás manuális ellenőrzési tesztet keresztül telepíti az alkalmazást a megadott telepítési URL-CÍMEN keresztül futtatja. Elsődleges ellenőrzés (később a jelen dokumentumban ismertetett) az alkalmazástanúsítási folyamat részeként történik.         |
-| Csomagolás                    | \< 1 óra  | Az ajánlat technikai eszközök ügyfél használatra vannak csomagolva.                        |
-| Érdeklődők generálása regisztráció | \< 1 óra  | Elégtelen rendszerek konfigurált és telepített.                                      |
-| Közzétevő jóváhagyás            | \-         | Mielőtt az ajánlat élesíti a végső áttekintésre és a megerősítő végzett. Most is rendelkezni fog egy hivatkozást az előzetes verzióra az ajánlathoz. Miután elégedett az előzetes verzió megjelenése, válassza ki **élő** a a **állapot** fülre. Ez egy kérést küld a bevezetési csapattal a közzé alkalmazását az appsource-ban.    |
-| Élő                         | \< 3 óra | Az ajánlat nyilvánosan megjelenik ("élő") az appsource-on, és az ügyfelek az alkalmazás megtekintéséhez és üzembe helyezni a Power BI megszűnni. Is kap egy megerősítő e-mailt. A jobb oldali oszlopban lévő a **minden ajánlat** lapon láthatja minden ajánlat állapotát. Az a **állapot** lapon láthatja a részletes közzétételi folyamat állapota az ajánlatban. |
+| Előfeltételek ellenőrzése       | 15 perc     | Az ajánlatra vonatkozó információk és az ajánlat beállításainak ellenőrzése.                            |
+| Tanúsítvány                | 1-7 nap   | Az Power BI minősítési csapat elemzi az ajánlatot. A csapat kézi ellenőrzési teszten keresztül futtatja a Power BI alkalmazást, ha telepíti az alkalmazást a megadott telepítési URL-címen keresztül. Az elsődleges érvényesítések az alkalmazás-minősítési folyamat részeként történnek (a jelen dokumentum későbbi részében leírtak szerint).         |
+| Csomagolás                    | \< 1 óra  | Az ajánlat technikai eszközei az ügyfelek általi használatra vannak csomagolva.                        |
+| Ólom-létrehozási regisztráció | \< 1 óra  | Az érdeklődő rendszerek konfigurálva és telepítve vannak.                                      |
+| Közzétevő PM            | \-         | Az ajánlat életbe lépéséhez végre kell hajtania egy végleges felülvizsgálatot és megerősítést. Most már rendelkezik egy hivatkozással is az ajánlat előzetes verziójának megtekintéséhez. Miután elégedett az előzetes verzió megjelenésével, válassza az **élő indítás** lehetőséget az **állapot** lapon. Ez egy kérelmet küld a bevezetési csapatnak az alkalmazás AppSource való listázásához.    |
+| Élő                         | \< 3 óra | Ajánlata mostantól nyilvánosan szerepel a AppSource, és az ügyfelek megtekinthetik az alkalmazást, és üzembe helyezhetik azokat Power BI előfizetésében. Egy megerősítő e-mailt is kap. A **minden ajánlat** lapon a jobb oldali oszlopban láthatja az összes ajánlat állapotát. Az **állapot** lapon megtekintheti az ajánlat részletes közzétételi folyamatának állapotát. |
 |   |   |
 
-Ez a folyamat befejezéséhez legfeljebb 8 nap engedélyezése. Nyissa meg a fenti közzétételi lépéseket, miután a Power BI alkalmazás ajánlat jelenik meg a [AppSource](https://appsource.microsoft.com/marketplace/apps?product=power-bi%20) Power BI alkalmazások szakasz.
+Akár nyolc napig is eltarthat, amíg a folyamat befejeződik. Miután elvégezte ezeket a közzétételi lépéseket, a Power BI alkalmazás ajánlata a [AppSource](https://appsource.microsoft.com/marketplace/apps?product=power-bi%20) Power bi alkalmazások szakaszban jelenik meg.
 
 
-### <a name="app-certification-process"></a>Alkalmazástanúsítási folyamat
+### <a name="app-certification-process"></a>Alkalmazás-minősítési folyamat
 
-A Microsoft bevezetési csapata használja ezt a folyamatot a Power BI alkalmazás ajánlat beküldött ellenőrzése:
+A Microsoft bevezetési csapata ezt a folyamatot használja a Power BI alkalmazás-ajánlatok küldésének ellenőrzésére:
 
-1. Tekintse át a jogi dokumentumok és a Súgó hivatkozásokat.
-2. Ellenőrizze a támogatási kapcsolattartási adatokat.
-3. A telepítő URL-cím használatával megfelelő telepítésének ellenőrzése.
-4. Az alkalmazás a kártevő szoftverek és más kártékony tartalom vizsgálata.
-5. Győződjön meg arról, hogy a megjelenített tartalom egyezik-e az alkalmazás leírása.
-6. Győződjön meg arról, hogy a műveletek alkalmazáshoz kapcsolódó Power BI-ban várt módon működik-e. A csapat nyitja meg a jelentéseket és irányítópultokat mintaadatokkal, egyéni adatforrásokhoz kapcsolódik, frissíti az adatokat, és így tovább.
+1. Tekintse át a jogi dokumentumokat és a Súgó hivatkozásait.
+2. A támogatási kapcsolattartási adatok ellenőrzése.
+3. A megfelelő telepítés ellenőrzéséhez használja a telepítő URL-címét.
+4. Vizsgálja meg az alkalmazást kártevők és egyéb kártékony tartalmak számára.
+5. Ellenőrizze, hogy a megjelenített tartalom megfelel-e az alkalmazás leírásának.
+6. Ellenőrizze, hogy az alkalmazással kapcsolatos műveletek a várt módon működnek-e Power BIben. A csoport a mintaadatok használatával nyitja meg a jelentéseket és az irányítópultokat, összekapcsolja az egyéni adatforrásokat, frissíti az adatforrásokat stb.
 
-A minősítési csapatának visszajelzést biztosítanak, ha bármilyen hibát észlel.  A Power BI alkalmazás követelményeivel kapcsolatos további információkért lásd: a [Power BI alkalmazás dokumentációja](https://go.microsoft.com/fwlink/?linkid=2028636).
+A minősítési csapat visszajelzést küld, ha problémát talál.  Power BI alkalmazásra vonatkozó követelményekkel kapcsolatos további információkért tekintse meg a [Power bi alkalmazás dokumentációját](https://go.microsoft.com/fwlink/?linkid=2028636).
 
 
 ## <a name="next-steps"></a>További lépések
 
-Javasoljuk, hogy az alkalmazás rendszeresen figyelje a [az AppSource piactérről](https://appsource.microsoft.com).  Használja a [értékesítői Insights](../../cloud-partner-portal-orig/si-getting-started.md) funkcióját a [Cloud Partner Portalon](https://cloudpartner.azure.com/#insights) kaphat elemzési információkat a marketplace ügyfelei és az alkalmazások használatát. Végül [frissíteni az ajánlatot](./cpp-update-existing-offer.md).
+Javasoljuk, hogy rendszeresen figyelje az alkalmazást a [AppSource piactéren](https://appsource.microsoft.com).  A [Cloud Partner Portal](https://cloudpartner.azure.com/#insights) [eladói](../../cloud-partner-portal-orig/si-getting-started.md) betekintő funkciójának használatával bepillantást nyerhet a piactér-ügyfelekre és az alkalmazások használatára. Végezetül pedig [frissítheti az ajánlatot](./cpp-update-existing-offer.md).
