@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 11/05/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: eadfc4e302f4445e8e0d5105aeac4361328cb259
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 8b1e716e482c49ceba0c600aaba30fe276bdb74d
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/07/2019
-ms.locfileid: "73715452"
+ms.locfileid: "73748001"
 ---
 # <a name="about-azure-migrate"></a>Az Azure Migrate bemutatása
 
@@ -44,16 +44,16 @@ A natív Azure-eszközökön kívül a Azure Migrate számos ISV-ajánlattal is 
 
 **ISV** | **Funkció**
 --- | ---
-[Carbonite](https://www.carbonite.com/globalassets/files/datasheets/carb-migrate4azure-microsoft-ds.pdf) | Migrate (Áttelepítés)
-[Cloudamize](https://www.cloudamize.com/platform) | Kiértékelés 
-[A kölcsönzés technológiája](https://www.corenttech.com/AzureMigrate/) | Értékelés és Migrálás
-[Eszköz 42](https://docs.device42.com/) | Kiértékelés
-[Tóparti](https://go.microsoft.com/fwlink/?linkid=2104908) | Kiértékelés
-[RackWare](https://go.microsoft.com/fwlink/?linkid=2102735) | Migrate (Áttelepítés)
-[Turbonomic](https://learn.turbonomic.com/azure-migrate-portal-free-trial) | Kiértékelés
-[UnifyCloud](https://www.cloudatlasinc.com/cloudrecon/) | Kiértékelés
+[Carbonite](https://www.carbonite.com/globalassets/files/datasheets/carb-migrate4azure-microsoft-ds.pdf) | Kiszolgálók migrálása
+[Cloudamize](https://www.cloudamize.com/platform) | Kiszolgálók értékelése
+[A kölcsönzés technológiája](https://www.corenttech.com/AzureMigrate/) | Kiszolgálók értékelése és migrálása
+[Eszköz 42](https://docs.device42.com/) | Kiszolgálók értékelése
+[Tóparti](https://go.microsoft.com/fwlink/?linkid=2104908) | VDI értékelése
+[RackWare](https://go.microsoft.com/fwlink/?linkid=2102735) | Kiszolgálók migrálása
+[Turbonomic](https://learn.turbonomic.com/azure-migrate-portal-free-trial) | Kiszolgálók értékelése
+[UnifyCloud](https://www.cloudatlasinc.com/cloudrecon/) | Kiszolgálók és adatbázisok értékelése
 
-## <a name="tool-integration"></a>Eszköz-integráció
+## <a name="azure-tool-integration"></a>Azure-eszközök integrációja
 
 A táblázat összefoglalja a Azure Migrateba integrált egyéb eszközöket.
 
@@ -112,7 +112,7 @@ A Azure Migrate a Azure Database Migration Service (DMS) szolgáltatással integ
 ## <a name="movere"></a>Movere
 
  
-A mozgató egy SaaS-platform, amely az üzleti intelligencia növelésével teszi biztonságosabbá a teljes informatikai környezeteket egyetlen nap alatt. Ahogy a szervezet fejleszti, megváltoztatja és digitálisan optimalizálja a megoldást, a megoldás biztosítja a vállalatok számára, hogy a platformtól, az alkalmazástól és a földrajztól függetlenül a környezet láthatóságával és ellenőrzésével rendelkezzenek. A [beszerzést](https:/azure.microsoft.com/blog/microsoft-acquires-movere-to-help-customers-unlock-cloud-innovation-with-seamless-migration-tools) a Microsoft szerezte be, és már nem önálló ajánlatként árusítjuk.  A mozgató szolgáltatás a Microsoft Solution Assessment és a Cloud Economics programon keresztül érhető el. [További](https://www.movere.io) információ a mozgató szolgáltatásról. Ha kérdése van, küldje el a következőt: movereq@microsoft.com vagy forduljon a Microsoft képviselőjéhez.
+A mozgató egy SaaS-platform, amely az üzleti intelligencia növelésével teszi biztonságosabbá a teljes informatikai környezeteket egyetlen nap alatt. Ahogy a szervezet fejleszti, megváltoztatja és digitálisan optimalizálja a megoldást, a megoldás biztosítja a vállalatok számára, hogy a platformtól, az alkalmazástól és a földrajztól függetlenül a környezet láthatóságával és ellenőrzésével rendelkezzenek. A [beszerzést](https://azure.microsoft.com/blog/microsoft-acquires-movere-to-help-customers-unlock-cloud-innovation-with-seamless-migration-tools/) a Microsoft szerezte be, és már nem önálló ajánlatként árusítjuk.  A mozgató szolgáltatás a Microsoft Solution Assessment és a Cloud Economics programon keresztül érhető el. [További](https://www.movere.io) információ a mozgató szolgáltatásról. Ha kérdése van, küldje el a következőt: movereq@microsoft.com vagy forduljon a Microsoft képviselőjéhez.
 
 Javasoljuk, hogy tekintse meg a Azure Migrate, a beépített áttelepítési szolgáltatást is. Azure Migrate egy központi központot biztosít a felhőbe való Migrálás egyszerűbbé tételéhez. A Központ átfogó támogatást nyújt a különböző számítási feladatokhoz, beleértve a fizikai és virtuális kiszolgálókat, az adatbázisokat és az alkalmazásokat. A teljes körű láthatósággal könnyen nyomon követhető a felderítés, az értékelés és az áttelepítés folyamata. A beépített Azure-és partner ISV-eszközökkel Azure Migrate is számos funkcióval rendelkezik, beleértve a virtuális és a fizikai kiszolgálók felderítését, a teljesítmény-alapú megfelelő méretezést, a költségmegtakarítást, az importálási alapú értékeléseket és az ügynök nélküli alkalmazást függőség elemzése. Ha szakértői segítségre van szüksége az első lépésekhez, a Microsoft az [Azure szakértői által felügyelt](https://azure.microsoft.com/partners) szolgáltatót is felhasználva végigvezeti Önt az utazáson. Tekintse meg a [Azure Migrate webhelyét](https://azure.microsoft.com/services/azure-migrate/). 
  
@@ -130,7 +130,7 @@ A Azure Migrate a Azure App Service Migration Assistant integrálódik. Az Azure
 
 ## <a name="offline-data-migration"></a>Offline adatáttelepítés
 
-A Azure Data Box termékek használatával a nagy mennyiségű adatmennyiséget az Azure-ba helyezheti át. [További információ](https://docs.microsoft.com/azure/databox/)
+A Azure Data Box termékek használatával a nagy mennyiségű adatmennyiséget az Azure-ba helyezheti át. [Részletek](https://docs.microsoft.com/azure/databox/)
 
 ## <a name="next-steps"></a>További lépések
 
