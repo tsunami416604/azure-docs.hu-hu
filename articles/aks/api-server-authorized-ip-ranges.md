@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 11/05/2019
 ms.author: mlearned
-ms.openlocfilehash: 558c04be77f911f40be9e8880950d1670a3c169e
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
-ms.translationtype: HT
+ms.openlocfilehash: aa0cf1ef3f758d7aba4639d779bde90249d039cb
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73747752"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73815667"
 ---
 # <a name="secure-access-to-the-api-server-using-authorized-ip-address-ranges-in-azure-kubernetes-service-aks"></a>Biztonságos hozzáférés az API-kiszolgálóhoz a jogosult IP-címtartományok használatával az Azure Kubernetes szolgáltatásban (ak)
 
@@ -25,17 +25,9 @@ Ebből a cikkből megtudhatja, hogyan használható az API-kiszolgáló által e
 
 ## <a name="before-you-begin"></a>Előkészületek
 
-Ez a cikk azt feltételezi, hogy a [kubenet][kubenet]-t használó fürtökkel dolgozik.  Az [Azure Container Network Interface (CNI)][cni-networking] alapú fürtök esetében nem lesz szükség a hozzáférés biztosításához szükséges útválasztási táblázatra.  Az útválasztási táblázatot manuálisan kell létrehoznia.  Az útválasztási táblák kezelésével kapcsolatos további információkért lásd: [útválasztási táblázat létrehozása, módosítása vagy törlése][route-tables].
-
 Az API-kiszolgáló által jóváhagyott IP-címtartományok csak a létrehozott új AK-fürtök esetében működnek. Ez a cikk bemutatja, hogyan hozhat létre egy AK-fürtöt az Azure CLI használatával.
 
 Szüksége lesz az Azure CLI-verzió 2.0.76 vagy újabb verziójára, és konfigurálva van. A verzió megkereséséhez futtassa a `az --version`. Ha telepíteni vagy frissíteni szeretne, tekintse meg az [Azure CLI telepítését][install-azure-cli]ismertető témakört.
-
-## <a name="limitations"></a>Korlátozások
-
-Az API-kiszolgáló által jóváhagyott IP-címtartományok konfigurálásakor a következő korlátozások érvényesek:
-
-* Jelenleg nem használható az Azure dev Spaces, mert az API-kiszolgálóval folytatott kommunikáció is le van tiltva.
 
 ## <a name="overview-of-api-server-authorized-ip-ranges"></a>Az API-kiszolgáló által jóváhagyott IP-címtartományok áttekintése
 
@@ -69,6 +61,7 @@ az aks create \
 > Adja hozzá ezeket a tartományokat egy engedélyezési listához:
 > - A tűzfal nyilvános IP-címe
 > - Bármely tartomány, amely azokat a hálózatokat képviseli, amelyekről a fürtöt felügyelni szeretné
+> - Ha az AK-fürtön az Azure dev Spaces szolgáltatást használja, akkor a [régión alapuló további tartományokat][dev-spaces-ranges]is engedélyeznie kell.
 
 ### <a name="specify-the-outbound-ips-for-the-standard-sku-load-balancer"></a>A standard SKU Load Balancer kimenő IP-címeinek megadása
 
@@ -141,6 +134,7 @@ További információ: az [AK-ban található alkalmazásokhoz és fürtökhöz 
 
 <!-- LINKS - external -->
 [cni-networking]: https://github.com/Azure/azure-container-networking/blob/master/docs/cni.md
+[dev-spaces-ranges]: https://github.com/Azure/dev-spaces/tree/master/public-ips
 [kubenet]: https://kubernetes.io/docs/concepts/extend-kubernetes/compute-storage-net/network-plugins/#kubenet
 
 <!-- LINKS - internal -->

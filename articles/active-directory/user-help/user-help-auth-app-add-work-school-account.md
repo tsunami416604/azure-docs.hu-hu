@@ -1,5 +1,5 @@
 ---
-title: Adja hozzá munkahelyi vagy iskolai fiókját a Microsoft Authenticator app-Azure Active Directoryhoz | Microsoft Docs
+title: Munkahelyi vagy iskolai fiók hozzáadása egy hitelesítő alkalmazáshoz – Azure AD
 description: Munkahelyi vagy iskolai fiók hozzáadása a Microsoft Authenticator alkalmazáshoz kétfaktoros ellenőrzéshez.
 services: active-directory
 author: eross-msft
@@ -12,12 +12,12 @@ ms.date: 01/24/2019
 ms.author: lizross
 ms.reviewer: olhaun
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3be2ee662a061cdcb6acc58e47eda5feda3b9eee
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: c7c9fa41a1278f0e1e54a06c3930e3bbc3d3d3ae
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68880799"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73803736"
 ---
 # <a name="add-your-work-or-school-account"></a>Munkahelyi vagy iskolai fiók hozzáadása
 
@@ -33,7 +33,7 @@ Ha a szervezet kétfaktoros ellenőrzést használ, beállíthatja a munkahelyi 
     >[!Note]
     >Ha nem látja a **további biztonsági ellenőrzés** oldalt, lehetséges, hogy a rendszergazda bekapcsolta a biztonsági adatok (előzetes verzió) szolgáltatást. Ha ez a helyzet, kövesse a [biztonsági adatok beállítása a hitelesítő alkalmazás használatára](security-info-setup-auth-app.md) című szakasz utasításait. Ha ez nem így van, segítségért forduljon a szervezet ügyfélszolgálatához. További információ a biztonsági adatokról: [biztonsági adatok (előzetes verzió) – áttekintés](user-help-security-info-overview.md).
 
-2. Jelölje be a hitelesítő **alkalmazás**melletti jelölőnégyzetet, majd válassza a **Konfigurálás**lehetőséget.
+2. Jelölje be a **hitelesítő alkalmazás**melletti jelölőnégyzetet, majd válassza a **Konfigurálás**lehetőséget.
 
     Megjelenik a **Mobile App konfigurálása** oldal.
 

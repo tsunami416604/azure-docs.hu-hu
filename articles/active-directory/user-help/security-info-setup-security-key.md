@@ -1,5 +1,5 @@
 ---
-title: Biztonsági adatok beállítása biztonsági kulcs használatára (előzetes verzió) – Azure Active Directory | Microsoft Docs
+title: Biztonsági adatok (előzetes verzió) beállítása biztonsági kulcshoz – Azure AD
 description: A biztonsági adatok beállítása, hogy az identitást a Fast Identity online (FIDO2) biztonsági kulcs használatával ellenőrizze.
 services: active-directory
 author: eross-msft
@@ -12,14 +12,14 @@ ms.topic: conceptual
 ms.date: 07/18/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 47ae7de87efd787b7d3cba14a33688c4b29637e6
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: a9d86d594f0918e6a9ffed49142a81a0f7834e86
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73160704"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73803788"
 ---
-# <a name="set-up-security-info-to-use-a-security-key-preview"></a>Biztonsági adatok beállítása biztonsági kulcs használatára (előzetes verzió)
+# <a name="set-up-security-info-preview-for-a-security-key"></a>Biztonsági adatok (előzetes verzió) beállítása biztonsági kulcshoz
 
 A biztonsági kulcsokat jelszó nélküli bejelentkezési módszerként is használhatja a szervezeten belül. A biztonsági kulcs egy olyan fizikai eszköz, amelyet egyedi PIN-kóddal használ a munkahelyi vagy iskolai fiókjába való bejelentkezéshez. Mivel a biztonsági kulcsok megkövetelik, hogy a fizikai eszköz és a szükséges elemek közül csak egy erősebb hitelesítési módszer legyen, mint a Felhasználónév és a jelszó.
 
@@ -37,7 +37,7 @@ A rendszergazda vagy a szervezete biztonsági kulcsot fog biztosítani, ha a mun
 > [!Note]
 > Ha nem tud FIDO2 biztonsági kulcsot használni, más jelszó nélküli hitelesítési módszereket is használhat, például a Microsoft Authenticator alkalmazást vagy a Windows Hello-t. További információ a Microsoft Authenticator alkalmazásról: [Mi a Microsoft Authenticator alkalmazás?](user-help-auth-app-overview.md). A Windows Hello szolgáltatással kapcsolatos további információkért lásd: a [Windows Hello áttekintése](https://www.microsoft.com/windows/windows-hello).
 
-## <a name="before-you-begin"></a>Előzetes teendők
+## <a name="before-you-begin"></a>Előkészületek
 
 A biztonsági kulcs regisztrálásának megkezdése előtt az alábbiaknak igaznak kell lenniük:
 
@@ -148,7 +148,7 @@ Létrehozhat egy új biztonsági kulcsot tartalmazó PIN-kódot a biztonsági ku
 
 Egy biztonsági kulcs regisztrálásához legalább egy további, a biztonsági ellenőrzési módszer regisztrálása szükséges. További információért tekintse meg az [Áttekintés szakaszt](security-info-add-update-methods-overview.md) . 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - További információ a jelszóval nem rendelkező hitelesítési módszerekről: a [Microsoft Azure ad megkezdi a FIDO2 biztonsági kulcsai nyilvános előzetes verziójának használatát, a jelszavakat engedélyező bejelentkezések](https://www.onmsft.com/news/microsofts-azure-ad-begins-public-preview-of-fido2-security-keys-enabling-passwordless-logins) blogját, vagy a [Mi az Microsoft Authenticator alkalmazás](user-help-auth-app-overview.md) beolvasását? [ Windows Hello – áttekintő](https://www.microsoft.com/windows/windows-hello) cikkek.
 

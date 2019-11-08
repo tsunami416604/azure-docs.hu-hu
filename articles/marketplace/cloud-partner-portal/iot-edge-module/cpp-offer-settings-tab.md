@@ -1,41 +1,42 @@
 ---
-title: Ajánlat beállításai az Azure IoT Edge-modul létrehozása |} Az Azure Marketplace-en
-description: Az IoT Edge-modul az ajánlat beállításainak konfigurálása.
+title: Az Azure IoT Edge modul beállításainak megadása | Azure piactér
+description: Adja meg az ajánlat beállításait egy IoT Edge modulhoz.
 services: Azure, Marketplace, Cloud Partner Portal,
 author: dan-wesley
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/24/2019
 ms.author: pabutler
-ms.openlocfilehash: 75781f09f4ca1eb2c3dbd176508fb233036e6776
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1043f467a7363bc0e3eedba40fd2246015592276
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64942254"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73814091"
 ---
-# <a name="iot-edge-module-offer-settings-tab"></a>IoT Edge-modul ajánlat beállítások lap
+# <a name="iot-edge-module-offer-settings-tab"></a>IoT Edge modul ajánlat beállításai lap
 
-A **IoT Edge-modulok > Új ajánlat** oldal megnyílik az aktuális az a **ajánlat beállítások** fülre. 
+Megnyílik az **IoT Edge-modulok > új ajánlat** oldal, amely a fókuszt az **ajánlat beállításai** lapon jelenik meg. 
 
-![Új ajánlat lap az IoT Edge-modulok](./media/iot-edge-module-offer-settings-tab.png)
+![IoT Edge-modulok új ajánlatának lapja](./media/iot-edge-module-offer-settings-tab.png)
 
 
-## <a name="offer-identity-settings"></a>Az ajánlat nastavení Identity
+## <a name="offer-identity-settings"></a>Az ajánlat identitásának beállításai
 
-A **ajánlat identitás**, meg kell adnia a mezők kitöltése a következő táblázat ismerteti. Egy csillag (*) hozzáfűzi a mező nevét jelzi, hogy ez szükséges. 
+Az **ajánlat identitása**területen meg kell adnia az alábbi táblázatban ismertetett mezőkre vonatkozó információkat. A mezőhöz hozzáfűzni kívánt csillag (*) azt jelzi, hogy a név megadása kötelező. 
 
 |  **Mező**       |     **Leírás**                                                          |
 |  ---------       |     ---------------                                                          |
-| **Ajánlat azonosítója\***       | Az ajánlat egyedi azonosítóját (a közzétevő profil) belül. Ez az azonosító a termék URL-címek és insights jelentésekben látható lesz. Maximális hossza legfeljebb 50 karakter hosszúságú, és a kisbetűs alfanumerikus karaktereket és kötőjeleket (-). (Az azonosító nem végződhet kötőjellel.) **Megjegyzés:** Ez a mező nem módosítható, miután ajánlat élesíti. <br> Például, ha a Contoso tesz közzé egy ajánlatot az ajánlat azonosítója **minta-iot-edge-modul**, az Azure Marketplace-en URL-cím által megadott `https://azuremarketplace.microsoft.com/marketplace/apps/contoso.sample-iot-edge-module?tab=Overview`. |
-| **Publisher\***     | A szervezet egyedi azonosítója az Azure piactéren. Az ajánlatokat társítható a közzétevő-azonosítót. Ez az érték nem lehet módosítani, az ajánlat mentése után. |
-| **Név\***          | Az ajánlat megjelenített neve. Ez a név jelenik meg az Azure piactéren, és a Cloud Partner portálra. Legfeljebb 50 karakterből állhat. A termék egy könnyen felismerhető névre márkanév használatát javasoljuk. A szervezet neve ne tartalmazza, kivéve, ha ezt hogyan a forgalmazás. Ha ez az ajánlat egyéb webhelyeken és kiadványok vannak marketing, győződjön meg arról, hogy a név pontosan azonos között az összes olyan. |
+| **Ajánlat azonosítója\***       | Az ajánlathoz tartozó egyedi azonosító (közzétevői profilon belül). Ez az azonosító a termék URL-címeiben és az információkat tartalmazó jelentésekben jelenik meg. Legfeljebb 50 karakterből állhat, és használhat kisbetűket alfanumerikus karaktereket és kötőjeleket (-). (Az azonosító nem végződhet kötőjeltel.) **Megjegyzés:** Ez a mező nem módosítható, miután egy ajánlat élőben üzemel. <br> Ha például a contoso a **IOT-Edge-Module**azonosítójú ajánlatot tesz közzé, az Azure Marketplace URL-címéhez `https://azuremarketplace.microsoft.com/marketplace/apps/contoso.sample-iot-edge-module?tab=Overview`van rendelve. |
+| **Közzétevő\***     | A szervezet egyedi azonosítója az Azure piactéren. Az összes ajánlathoz társítva kell lennie a közzétevő AZONOSÍTÓjának. Ez az érték nem módosítható az ajánlat mentése után. |
+| **Név\***          | Az ajánlat megjelenítendő neve. Ez a név jelenik meg az Azure Marketplace-en és a Cloud Partner Portal. Legfeljebb 50 karakterből állhat. Javasoljuk, hogy a termék felismerhető márkáját használja. Ne adja meg a szervezet nevét, kivéve, ha ez a termék forgalmazása. Ha más webhelyeken és kiadványokban is ezt az ajánlatot látja, ügyeljen arra, hogy a név pontosan ugyanaz legyen az összes kiadványban. |
 |  |  |
 
 
-Válassza ki **mentése** az ajánlat beállításainak mentése.
+Válassza a **Mentés** lehetőséget az ajánlat beállításainak mentéséhez.
 
 
 ## <a name="next-steps"></a>További lépések
 
-Használja a [termékváltozatok](./cpp-skus-tab.md) lap segítségével konfigurálhatja a termékváltozatok az ajánlatban.
+Az [SKUs](./cpp-skus-tab.md) lapon konfigurálhatja az ajánlathoz tartozó SKU-ket.

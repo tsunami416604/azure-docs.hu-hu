@@ -11,12 +11,12 @@ author: MladjoA
 ms.author: mlandzic
 ms.reviewer: sstein
 ms.date: 01/25/2019
-ms.openlocfilehash: 998513c942cf1b6ceae861160abfe3dc6dac7792
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: d5983d25685242a696300f293231bbf987e8442d
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73690333"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73823733"
 ---
 # <a name="query-across-cloud-databases-with-different-schemas-preview"></a>Különböző sémákkal rendelkező felhőalapú adatbázisok lekérdezése (előzetes verzió)
 
@@ -131,9 +131,9 @@ A rugalmas lekérdezés kiterjeszti a meglévő külső tábla szintaxisát, hog
 
 Az előző szakaszban ismertetett külső adatforrás használatával a külső táblák létrehozására szolgáló szintaxis a következő: 
 
-A DATA_SOURCE záradék a külső táblához használt külső adatforrást (azaz a vertikális particionálás esetén a távoli adatbázist) határozza meg.  
+A DATA_SOURCE záradék azt a külső adatforrást határozza meg, amely a külső táblához használatos (vertikális particionálás esetén a távoli adatbázis).  
 
-A SCHEMA_NAME és a OBJECT_NAME záradék lehetővé teszi, hogy a külső tábla definícióját a távoli adatbázis egy másik sémájába vagy más névvel rendelkező táblára képezze. Ez akkor lehet hasznos, ha külső táblát kíván definiálni a katalógus vagy a DMV számára a távoli adatbázison – vagy bármilyen más olyan helyzetben, ahol a távoli tábla neve már helyileg is megtörtént.  
+A SCHEMA_NAME és OBJECT_NAME záradékok lehetővé teszik a külső tábla definíciójának leképezését a távoli adatbázis egy másik sémájában lévő táblára, vagy egy másik nevű táblára. Ez akkor lehet hasznos, ha külső táblát kíván definiálni a katalógus vagy a DMV számára a távoli adatbázison – vagy bármilyen más olyan helyzetben, ahol a távoli tábla neve már helyileg is megtörtént.  
 
 A következő DDL-utasítás elveszít egy meglévő külső tábla definícióját a helyi katalógusból. Ez nem befolyásolja a távoli adatbázist. 
 
@@ -165,14 +165,14 @@ A következő lekérdezés egyirányú összekapcsolást végez a két helyi tá
     WHERE c_id = 100
 ```
 
-## <a name="stored-procedure-for-remote-t-sql-execution-sp_execute_remote"></a>Tárolt eljárás távoli T-SQL-végrehajtáshoz: SP\_execute_remote
+## <a name="stored-procedure-for-remote-t-sql-execution-sp_execute_remote"></a>A távoli T-SQL végrehajtásának tárolt eljárása: SP\_execute_remote
 
 A rugalmas lekérdezés egy tárolt eljárást is bevezet, amely közvetlen hozzáférést biztosít a távoli adatbázishoz. A tárolt eljárás neve [sp\_végrehajtás \_távoli](https://msdn.microsoft.com/library/mt703714) , és használható távoli tárolt eljárások vagy t-SQL-kód végrehajtásához a távoli adatbázisban. A következő paramétereket veszi figyelembe: 
 
 * Adatforrás neve (nvarchar): a RDBMS típusú külső adatforrás neve. 
 * Query (nvarchar): a távoli adatbázison végrehajtandó T-SQL-lekérdezés. 
-* Paraméter deklarációja (nvarchar) – nem kötelező: a lekérdezési paraméterben használt paraméterek (például a Sp_executesql) adattípus-definíciókkal rendelkező karakterlánca. 
-* Paraméter értékének listája – nem kötelező: a paraméterek értékeinek vesszővel tagolt listája (például Sp_executesql).
+* Paraméter deklarációja (nvarchar) – nem kötelező: karakterlánc a lekérdezési paraméterben használt paraméterekhez (például sp_executesql) tartozó adattípus-definíciókkal. 
+* Paraméter értékének listája – nem kötelező: a paraméterek értékeinek vesszővel tagolt listája (például sp_executesql).
 
 Az SP\_Execute\_távoli a Meghívási paraméterekben megadott külső adatforrást használja a távoli adatbázis megadott T-SQL-utasításának végrehajtásához. A távoli adatbázishoz való kapcsolódáshoz a külső adatforrás hitelesítő adatait használja.  
 

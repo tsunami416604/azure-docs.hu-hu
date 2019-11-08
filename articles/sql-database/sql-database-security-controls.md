@@ -1,5 +1,5 @@
 ---
-title: A Azure SQL Database biztonsági vezérlői
+title: Biztonsági vezérlők
 description: A Azure SQL Database értékelésére szolgáló biztonsági vezérlők ellenőrzőlistája
 services: sql-database
 author: msmbaldwin
@@ -8,12 +8,12 @@ ms.service: load-balancer
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 77ff55389bac53d8719d86b4ac77f281415af49f
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: 58070cab1221b9d9585784d82cf1a48afcedb8af
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70886645"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73802832"
 ---
 # <a name="security-controls-for-azure-sql-database"></a>A Azure SQL Database biztonsági vezérlői
 
@@ -36,7 +36,7 @@ SQL Database magában foglalja az [önálló adatbázist](sql-database-single-in
 
 | Biztonsági ellenőrzés | Igen/nem | Megjegyzések|
 |---|---|--|
-| Azure monitoring-támogatás, például Log Analytics vagy Application Insights| Igen | A SecureSphere, a inperverztől származó SIEM-megoldás az [Azure Event Hubs](../event-hubs/index.yml) -integráción keresztül is támogatott az [SQL](sql-database-auditing.md)-naplózással. |
+| Azure monitoring-támogatás, például Log Analytics vagy Application Insights| Igen | A SecureSphere, a inperverztől származó SIEM-megoldás az [Azure Event Hubs](../event-hubs/index.yml) -integráción keresztül is támogatott az [SQL-naplózással](sql-database-auditing.md). |
 | Vezérlés – sík és felügyelet – a sík naplózása és naplózása| Igen | Igen, csak néhány eseménynél |
 | Adatsíkok naplózása és naplózása | Igen | [SQL auditon](sql-database-auditing.md) keresztül |
 
@@ -45,15 +45,15 @@ SQL Database magában foglalja az [önálló adatbázist](sql-database-single-in
 | Biztonsági ellenőrzés | Igen/nem | Megjegyzések|
 |---|---|--|
 | Authentication| Igen | Azure Active Directory (Azure AD) |
-| Authorization| Igen | Nincsenek |
+| Engedélyezés| Igen | None |
 
 ## <a name="data-protection"></a>Adatvédelem
 
 | Biztonsági ellenőrzés | Igen/nem | Megjegyzések |
 |---|---|--|
-| Kiszolgálóoldali titkosítás nyugalmi állapotban: Microsoft által felügyelt kulcsok | Igen | A "titkosítás használaton kívül" kifejezést a [Always encrypted](sql-database-always-encrypted.md)című cikkben leírtak szerint kell elnevezni. A kiszolgálóoldali titkosítás [transzparens](transparent-data-encryption-azure-sql.md)adattitkosítást használ.|
+| Kiszolgálóoldali titkosítás nyugalmi állapotban: Microsoft által felügyelt kulcsok | Igen | A "titkosítás használaton kívül" kifejezést a [Always encrypted](sql-database-always-encrypted.md)című cikkben leírtak szerint kell elnevezni. A kiszolgálóoldali titkosítás [transzparens adattitkosítást](transparent-data-encryption-azure-sql.md)használ.|
 | Titkosítás az átvitel során:<ul><li>Azure ExpressRoute-titkosítás</li><li>Titkosítás egy virtuális hálózaton</li><li>Titkosítás a virtuális hálózatok között</ul>| Igen | HTTPS használatával. |
-| Titkosítás – kulcsok kezelését, például CMK vagy BYOK| Igen | A szolgáltatással felügyelt és az ügyfél által felügyelt kulcsok kezelése egyaránt elérhető. Az utóbbit Azure Key Vaulton [](../key-vault/index.yml)keresztül kínáljuk. |
+| Titkosítás – kulcsok kezelését, például CMK vagy BYOK| Igen | A szolgáltatással felügyelt és az ügyfél által felügyelt kulcsok kezelése egyaránt elérhető. Az utóbbit [Azure Key Vaulton](../key-vault/index.yml)keresztül kínáljuk. |
 | Az Azure-adatszolgáltatások által biztosított oszlop szintű titkosítás| Igen | [Always Encryptedon](sql-database-always-encrypted.md)keresztül. |
 | Titkosított API-hívások| Igen | HTTPS/SSL használatával. |
 
@@ -61,7 +61,7 @@ SQL Database magában foglalja az [önálló adatbázist](sql-database-single-in
 
 | Biztonsági ellenőrzés | Igen/nem | Megjegyzések|
 |---|---|--|
-| Konfiguráció-felügyeleti támogatás, például a konfiguráció verziószámozása| Nem  | Nincsenek |
+| Konfiguráció-felügyeleti támogatás, például a konfiguráció verziószámozása| Nem  | None |
 
 ## <a name="additional-security-controls-for-sql-database"></a>További biztonsági vezérlők SQL Database
 

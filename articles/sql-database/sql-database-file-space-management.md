@@ -1,5 +1,5 @@
 ---
-title: Egy-vagy készletezett adatbázis-fájlmegosztás Azure SQL Database | Microsoft Docs
+title: Önálló/készletezett adatbázisok – tárterület-kezelés
 description: Ez a lap leírja, hogyan kezelheti a tárhelyet a Azure SQL Database önálló és készletezett adatbázisaival, és Hogyan határozható meg, hogy miként lehet egy vagy több készletezett adatbázist összezsugorodni, valamint hogyan kell egy adatbázis-zsugorodó műveletet végrehajtani.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: oslake
 ms.author: moslake
 ms.reviewer: jrasnick, carlrab
 ms.date: 03/12/2019
-ms.openlocfilehash: c92ffb6aa6db9c77a859661115d54ff63ea02401
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: a8fe58313bce6e9a21b07aa095672ec35ce572d2
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68568202"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73803059"
 ---
 # <a name="manage-file-space-for-single-and-pooled-databases-in-azure-sql-database"></a>A tárterület kezelése az önálló és a készletezett adatbázisok esetében Azure SQL Database
 
@@ -44,16 +44,16 @@ A következő esetekben szükség lehet a fájlterület használatának monitoro
 A Azure Portalban megjelenő legtöbb tárolóhely-metrika és a következő API-k csak a felhasznált adatlapok méretét mérik:
 
 - Azure Resource Manager alapú mérőszámok API-k, beleértve a PowerShell [Get-metrikákat](https://docs.microsoft.com/powershell/module/az.monitor/get-azmetric)
-- T-SQL: [sys.dm_db_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database)
+- T-SQL: [sys. dm_db_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database)
 
 A következő API-k ugyanakkor az adatbázisokhoz és rugalmas készletekhez lefoglalt terület méretét is mérik:
 
-- T-SQL:  [sys.resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database)
-- T-SQL: [sys.elastic_pool_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-elastic-pool-resource-stats-azure-sql-database)
+- T-SQL: [sys. resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database)
+- T-SQL: [sys. elastic_pool_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-elastic-pool-resource-stats-azure-sql-database)
 
 ### <a name="shrinking-data-files"></a>Az adatfájlok zsugorítása
 
-A SQL Database szolgáltatás nem csökkenti automatikusan az adatfájlokat a fel nem használt lefoglalt terület visszaigényléséhez, mert az adatbázis teljesítményének lehetséges következményei vannak.  Az ügyfelek azonban az önkiszolgáló szolgáltatással is csökkenthetik az adatfájlokat az adott időpontban, a használaton kívüli [lefoglalt terület](#reclaim-unused-allocated-space)visszaigénylése című cikkben ismertetett lépéseket követve.
+A SQL Database szolgáltatás nem csökkenti automatikusan az adatfájlokat a fel nem használt lefoglalt terület visszaigényléséhez, mert az adatbázis teljesítményének lehetséges következményei vannak.  Az ügyfelek azonban az önkiszolgáló szolgáltatással is csökkenthetik az adatfájlokat az adott időpontban, a [használaton kívüli lefoglalt terület visszaigénylése](#reclaim-unused-allocated-space)című cikkben ismertetett lépéseket követve.
 
 > [!NOTE]
 > Az adatfájlok eltérően a SQL Database szolgáltatás automatikusan csökkenti a naplófájlokat, mivel az adott művelet nem befolyásolja az adatbázis teljesítményét. 
@@ -234,7 +234,7 @@ További információ erről a parancsról: [SHRINKDATABASE](https://docs.micros
 
 ### <a name="auto-shrink"></a>Automatikus zsugorodás
 
-Másik lehetőségként az automatikus zsugorodás is engedélyezhető az adatbázishoz.  Az automatikus zsugorodás csökkenti a fájlkezelési bonyolultságot, és kevésbé befolyásolja az adatbázis teljesítményét `SHRINKDATABASE` , `SHRINKFILE`mint a vagy a.  Az automatikus zsugorodás különösen hasznos lehet a sok adatbázissal rendelkező rugalmas készletek kezeléséhez.  Az automatikus zsugorodás azonban kevésbé hatékony lehet a fájlméret `SHRINKDATABASE` `SHRINKFILE`visszaigénylése során.
+Másik lehetőségként az automatikus zsugorodás is engedélyezhető az adatbázishoz.  Az automatikus zsugorodás csökkenti a fájlkezelési bonyolultságot, és kevésbé befolyásolja az adatbázis teljesítményét, mint `SHRINKDATABASE` vagy `SHRINKFILE`.  Az automatikus zsugorodás különösen hasznos lehet a sok adatbázissal rendelkező rugalmas készletek kezeléséhez.  Az automatikus zsugorodás azonban kevésbé hatékony lehet a lemezterület visszaigénylésében, mint a `SHRINKDATABASE` és a `SHRINKFILE`.
 Az automatikus zsugorodás engedélyezéséhez módosítsa az adatbázis nevét a következő parancsban.
 
 
@@ -247,7 +247,7 @@ További információ erről a parancsról: [adatbázis-beállítási](https://d
 
 ### <a name="rebuild-indexes"></a>Indexek újraépítése
 
-Az adatbázis-adatfájlok összezsugorodása után az indexek töredezettek lehetnek, és elveszítik a teljesítmény optimalizálásának hatékonyságát. Ha a teljesítmény romlása történik, érdemes megfontolnia az adatbázis-indexek újjáépítését. Az indexek töredezettségével és újraépítésével kapcsolatos további információkért lásd: az indexek újrarendezése [és újraépítése](https://docs.microsoft.com/sql/relational-databases/indexes/reorganize-and-rebuild-indexes).
+Az adatbázis-adatfájlok összezsugorodása után az indexek töredezettek lehetnek, és elveszítik a teljesítmény optimalizálásának hatékonyságát. Ha a teljesítmény romlása történik, érdemes megfontolnia az adatbázis-indexek újjáépítését. Az indexek töredezettségével és újraépítésével kapcsolatos további információkért lásd: az [indexek újrarendezése és újraépítése](https://docs.microsoft.com/sql/relational-databases/indexes/reorganize-and-rebuild-indexes).
 
 ## <a name="next-steps"></a>További lépések
 
@@ -257,4 +257,4 @@ Az adatbázis-adatfájlok összezsugorodása után az indexek töredezettek lehe
   - [Azure SQL Database virtuális mag-alapú beszerzési modell korlátai rugalmas készletekhez](sql-database-vcore-resource-limits-elastic-pools.md)
   - [A rugalmas készletek erőforrásokra vonatkozó korlátai a DTU-alapú vásárlási modell használatával](sql-database-dtu-resource-limits-elastic-pools.md)
 - További információ a `SHRINKDATABASE` parancsról: [SHRINKDATABASE](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-shrinkdatabase-transact-sql). 
-- Az indexek töredezettségével és újraépítésével kapcsolatos további információkért lásd: az indexek újrarendezése [és újraépítése](https://docs.microsoft.com/sql/relational-databases/indexes/reorganize-and-rebuild-indexes).
+- Az indexek töredezettségével és újraépítésével kapcsolatos további információkért lásd: az [indexek újrarendezése és újraépítése](https://docs.microsoft.com/sql/relational-databases/indexes/reorganize-and-rebuild-indexes).

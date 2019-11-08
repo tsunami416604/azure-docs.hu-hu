@@ -1,6 +1,6 @@
 ---
-title: A biztonsági adatok (előzetes verzió) módszereinek és információinak módosítása – Azure Active Directory | Microsoft Docs
-description: A kétfaktoros ellenőrzés és az önkiszolgáló jelszó-visszaállítás biztonsági adatainak hozzáadásával, frissítésével és törlésével kapcsolatos információk áttekintése.
+title: A biztonsági adatok módosításának áttekintése (előzetes verzió) – Azure AD
+description: A kétfaktoros ellenőrzéshez és az önkiszolgáló jelszó-visszaállításhoz szükséges biztonsági adatokkal kapcsolatos módszerek hozzáadásáról, frissítéséről és törléséről szóló cikkekre mutató hivatkozások.
 services: active-directory
 author: eross-msft
 manager: daveba
@@ -12,12 +12,12 @@ ms.topic: overview
 ms.date: 02/13/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3bcef64c8bf8c2b52e5cc5d954de933d830ba4c1
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 3b781cd30bc5f63199ef9bff45670fa618e2ca17
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68382882"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73803821"
 ---
 # <a name="overview-about-changing-your-security-info-preview-methods-and-information"></a>A biztonsági adatok (előzetes verzió) módszereinek és információinak módosítása – áttekintés
 

@@ -4,15 +4,16 @@ description: Az Azure Marketplace-en és a AppSource-on közzétett ajánlatokka
 services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
 author: yijenj
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 10/05/2018
 ms.author: pabutler
-ms.openlocfilehash: a89921d4b5ec25bc0c924646d3bd41aecf3e8d9c
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: 047ffd983cecd9f9bd971ee3f97e15734d14ce66
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67870931"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73813277"
 ---
 # <a name="lead-management-for-cloud-marketplace"></a>A Felhőbeli piactér vezető kezelése
 
@@ -32,15 +33,15 @@ Az érdeklődők beszerzésének megkezdéséhez az ólom-felügyeleti összekö
 
 Az alábbiakban részletes útmutatást talál az egyes lehetséges érdeklődői célok összekapcsolásáról:
 
-**Dynamics CRM Online** - ide[kattintva](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-dynamics) megtekintheti, hogyan konfigurálhatja a Dynamics CRM Online-t az érdeklődők beszerzéséhez.
+**Dynamics CRM online** - [ide kattintva](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-dynamics) megtekintheti a Dynamics CRM Online konfigurálásához szükséges utasításokat az érdeklődők beszerzéséhez.
 
-Marketo - ide[kattintva](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-marketo) megtekintheti a Marketo vezető konfigurációjának beállításához szükséges utasításokat az érdeklődők beszerzéséhez.
+**Marketo** - [ide kattintva](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-marketo) megtudhatja, hogyan állíthatja be a Marketo érdeklődő konfigurációját az érdeklődők beolvasásához.
 
-Salesforce - [kattintson ide](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-salesforce) a Salesforce-példány beállításához az érdeklődők beszerzéséhez.
+**Salesforce** - [ide kattintva](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-salesforce) megtudhatja, hogyan állíthatja be a Salesforce-példányt az érdeklődők beszerzéséhez.
 
-**Azure Table** – [ide kattintva](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-azure-table) megtudhatja, hogyan állíthatja be Azure Storage-fiókját az érdeklődők Azure-táblázatba való beszerzéséhez.
+**Azure table** - [ide kattintva](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-azure-table) megtudhatja, hogyan állíthatja be az Azure Storage-fiókját az érdeklődők Azure-táblázatba való beszerzéséhez.
 
-**Https-végpont** – ide [kattintva](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-https) kérheti le a https-végpont beállításához szükséges utasításokat az érdeklődők beszerzéséhez.
+**Https-végpont** - [ide kattintva](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-https) kérheti le a https-végpont beállításához szükséges utasításokat az érdeklődők beszerzéséhez.
 
 Miután megfelelően konfigurálta az érdeklődői célhelyet, és az ajánlaton közzétette a találatot, a rendszer érvényesíti a kapcsolatokat, és elküld egy tesztelési érdeklődőt. Ha az ajánlat megtekintése előtt megtekinti az ajánlatot, akkor tesztelheti az érdeklődői kapcsolatokat is, ha az előnézeti környezetben próbálja meg saját maga is beszerezni az ajánlatot. Fontos, hogy az érdeklődői beállítások naprakészek maradjanak, hogy ne veszítse el az érdeklődőket, ezért ügyeljen arra, hogy frissítse ezeket a kapcsolatokat, ha valami módosult a végén.
 
@@ -53,7 +54,7 @@ Ha a technikai beállítás be van állítva, ezeket az érdeklődőket be kell 
 
 ## <a name="common-lead-configuration-errors-during-publishing-on-cloud-partner-portal"></a>Gyakori vezető konfigurációs hibák a Cloud Partner portálon való közzététel során 
 
-**Nem lehetett menteni a vezetőt a Dynamics CRM-be. Keresse meg a Dynamics CRM-fiók beállításait. LastCRMError: Nem lehet bejelentkezni a Dynamics CRM-be, LastCRMException:** 
+**Nem lehetett menteni a vezetőt a Dynamics CRM-be. Keresse meg a Dynamics CRM-fiók beállításait. LastCRMError: nem lehet bejelentkezni a Dynamics CRM-be, LastCRMException:** 
 
 > Ha a O365-hitelesítés be van jelölve, ellenőrizze, hogy érvényes-e a felhasználói fiók és a jelszó. Ha a HRE ki van jelölve, ellenőrizze, hogy a bérlő azonosítója, az alkalmazás azonosítója és az alkalmazás titkos kulcsa megegyezik-e a HRE beállított értékkel. Kövesse az [alábbi utasításokat.](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-dynamics) Ha a fiók felhasználóneve/jelszava érvényes, ellenőrizze, hogy rendelkezik-e hozzáféréssel a Dynamics 365-hez, és van-e hozzárendelve licence (11-15. lépés, ha az Office-felhasználó használata esetén Azure Active Directory vagy biztonsági beállításokat használ). 
 
@@ -62,29 +63,29 @@ Ha a technikai beállítás be van állítva, ezeket az érdeklődőket be kell 
 
 > Az alkalmazás/felhasználó hiányzó biztonsági szerepkör (ek) Microsoft Marketplace vezető író számára. Kövesse az 11-15-es lépéseket, ha Azure Active Directory vagy biztonsági beállításokat használ, ha itt az Office-felhasználó [van](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-dynamics)használatban.
 
-**Nem lehetett menteni a vezetőt a Dynamics CRM-be a HRE használatával. Kivétel:: A bérlő nem található. Ez a példány akkor fordulhat elő, ha a bérlőhöz nem tartoznak aktív előfizetések.**  
+**Nem lehetett menteni a vezetőt a Dynamics CRM-be a HRE használatával. Kivétel:: a bérlő nem található. Ez a példány akkor fordulhat elő, ha a bérlőhöz nem tartoznak aktív előfizetések.**  
 
 > A vezető felügyeleti szakaszban megadott címtár-azonosító nem érvényes könyvtár. Szerezze be a címtár-azonosítót a 2. lépés (Azure Active Directory [alatt található)](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-dynamics) utasításai alapján 
 
 **Nem lehetett menteni a vezetőt a Dynamics CRM-be. LastCRMError: SecLib:: a RetrievePrivilegeForUser sikertelen – egyetlen szerepkör sincs hozzárendelve a felhasználóhoz.**  
 
-> Megoldás: Rendeljen biztonsági szerepkört Microsoft Marketplace vezető írója számára. Kövesse az [itt](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-dynamics) található utasításokat a biztonsági beállítások területen. 
+> Megoldás: rendeljen biztonsági szerepkört Microsoft Marketplace vezető írója számára. Kövesse az [itt](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-dynamics) található utasításokat a biztonsági beállítások területen. 
 
-**Nem lehetett menteni a vezetőt a Dynamics CRM-be a HRE használatával. Kivétel:: Az azonosítóval rendelkező alkalmazás nem található a címtárban.** 
+**Nem lehetett menteni a vezetőt a Dynamics CRM-be a HRE használatával. Kivétel:: az azonosítójú alkalmazás nem található a címtárban.** 
 
 > A vezető felügyeleti szakaszban megadott alkalmazás-azonosító nem érvényes könyvtár. Szerezze be a [címtár-azonosítót](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-dynamics)a 8. lépés (Azure Active Directory alatt) utasításai alapján. 
 
-**Nem lehetett menteni a vezetőt a Dynamics CRM-be a HRE használatával. Kivétel:: A kért bérlői azonosító érvénytelen, és nem érvényes külső tartomány formátuma** 
+**Nem lehetett menteni a vezetőt a Dynamics CRM-be a HRE használatával. Kivétel:: a kért bérlői azonosító érvénytelen, és nem érvényes külső tartomány formátuma** 
 
 > A vezető felügyeleti szakaszban megadott címtár-azonosító nem érvényes könyvtár. Szerezze be a [címtár-azonosítót](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-dynamics)a 2. lépés (Azure Active Directory alatt) utasításai alapján. 
 
-**Nem lehetett menteni a vezetőt a Dynamics CRM-be a HRE használatával. Kivétel:: Hiba történt a hitelesítő adatok érvényesítésekor.: Érvénytelen ügyfél-titkos kulcs van megadva.** 
+**Nem lehetett menteni a vezetőt a Dynamics CRM-be a HRE használatával. Kivétel:: hiba történt a hitelesítő adatok érvényesítésekor.: Érvénytelen az ügyfél titkos kulcsa.** 
 
-> Megoldás: Jelentkezzen be az Azure Portalra, és ellenőrizze, hogy az alkalmazás kulcsa egyezik-e a Cloud Partner Portal. Adja meg a jelszót a 10. lépésben megadott utasítás alapján (Azure Active Directory). [](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-dynamics) 
+> Megoldás: Jelentkezzen be az Azure Portalra, és ellenőrizze, hogy az alkalmazás kulcsa egyezik-e a Cloud Partner Portal. Adja meg a jelszót a 10. lépésben megadott utasítás alapján ( [Azure Active Directory).](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-dynamics) 
 
-**Nem lehetett menteni a vezetőt a Dynamics CRM-be. LastCRMError: A kérelem csatornájának időkorlátja lejárt, miközben a 00:02:00 utáni választ várt. Növelje meg a híváshoz átadott időtúllépési értéket a kérelemhez, vagy növelje a SendTimeout értékét a kötésben. Előfordulhat, hogy a művelethez megadott idő egy hosszú időtúllépés részét képezi.**  
+**Nem lehetett menteni a vezetőt a Dynamics CRM-be. LastCRMError: a kérelem csatornájának időkorlátja lejárt, miközben a 00:02:00 utáni választ várt. Növelje meg a híváshoz átadott időtúllépési értéket a kérelemhez, vagy növelje a SendTimeout értékét a kötésben. Előfordulhat, hogy a művelethez megadott idő egy hosszú időtúllépés részét képezi.**  
 
-> Megoldás: Jelentkezzen be Cloud Partner Portalba, ellenőrizze a kirakat részleteit > > érdeklődő célhelyét > > URL-címet, ellenőrizze, hogy érvényes-e a dinamikus CRM-példány.
+> Megoldás: Jelentkezzen be Cloud Partner Portalba, ellenőrizze a kirakat részleteit > > érdeklődő célhelyét > > URL-címet, ellenőrizze, hogy érvényes-e a dinamikus CRM-példány
 
 ## <a name="frequently-asked-questions"></a>Gyakori kérdések
 
@@ -95,7 +96,7 @@ Az érdeklődők olyan ügyfelek, akik a piactéren telepítik termékeiket. Fü
 
 **Hol kaphatok segítséget az érdeklődői cél beállításakor?** 
 
-A dokumentációt itt találja: [Szerezze](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-get-customer-leads) be a vásárlói érdeklődőket, vagy nyújtson be egy támogatási jegyet a aka.MS/marketplacepublishersupport válassza az ajánlat típusa és az érdeklődő kezelése lehetőséget. 
+A dokumentációt itt találja: [ügyfél-érdeklődők beszerzése](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-get-customer-leads) vagy támogatási jegy beküldése a aka.MS/marketplacepublishersupport-on az ajánlat típusa és az érdeklődő kezelése lehetőségre. 
 
 
 
@@ -115,13 +116,13 @@ Az ajánlat beállítása és az érdeklődő céljának közzététele után te
 
 Keressen rá a "MSFT_TEST" kifejezésre a vezető célhelyen, íme egy példa a teszt érdeklődői adataira: 
 
-company = MSFT_TEST_636573304831318844 
+Vállalat = MSFT_TEST_636573304831318844 
 
 ország = USA 
 
-description = MSFT_TEST_636573304831318844 
+Leírás = MSFT_TEST_636573304831318844 
 
-e-mail =MSFT_TEST_636573304831318844@test.com
+e-mail = MSFT_TEST_636573304831318844@test.com
 
 kódolás = UTF-8 
 
@@ -131,9 +132,9 @@ first_name = MSFT_TEST_636573304831318844
 
 last_name = MSFT_TEST_636573304831318844 
 
-lead_source = MSFT_TEST_636573304831318844 – MSFT_TEST_636573304831318844 | \<Ajánlat neve > 
+lead_source = MSFT_TEST_636573304831318844-MSFT_TEST_636573304831318844 |\<ajánlat neve > 
 
-oid = 00Do0000000ZHog 
+OID = 00Do0000000ZHog 
 
 telefon = 1234567890 
 
@@ -143,32 +144,32 @@ title = MSFT_TEST_636573304831318844
 
 **Élő ajánlatom van, de nem látok semmilyen érdeklődőt?**
 
-Minden érdeklődő a kiválasztott érdeklődői célhely mezőibe átadott adatba kerül, az érdeklődők formátuma a következő: **Source-Action|Offer** 
+Az egyes érdeklődők a kiválasztott érdeklődői célhely mezőiben átadott adattal rendelkeznek, az érdeklődők ebben a formátumban fognak megjelenni: **forrásoldali művelet | Ajánlat** 
 
   *Adatforrások*
 
-    “AzureMarketplace”, 
-    “AzurePortal”, 
-    “TestDrive”,  
-    “SPZA” (acronym for AppSource) 
+    "AzureMarketplace", 
+    "AzurePortal", 
+    "TestDrive",  
+    "SPZA" (acronym for AppSource) 
 
   *Műveletek*
 
-    “INS” – Stands for Installation. This is on Azure Marketplace or AppSource whenever a customer hits the button to acquire your product. 
-    “PLT” – Stands for Partner Led Trial. This is on AppSource whenever a customer hits the Contact me button. 
+    "INS" - Stands for Installation. This is on Azure Marketplace or AppSource whenever a customer hits the button to acquire your product. 
+    "PLT" - Stands for Partner Led Trial. This is on AppSource whenever a customer hits the Contact me button. 
 
-    “DNC” – Stands for Do Not Contact. This is on AppSource whenever a Partner who was cross listed on your app page gets requested to be contacted. We are sharing the heads up that this customer was cross listed on your app, but they do not need to be contacted. 
+    "DNC" - Stands for Do Not Contact. This is on AppSource whenever a Partner who was cross listed on your app page gets requested to be contacted. We are sharing the heads up that this customer was cross listed on your app, but they do not need to be contacted. 
 
-    “Create” – This is inside Azure Portal only and is whenever a customer purchases your offer to their account. 
+    "Create" - This is inside Azure Portal only and is whenever a customer purchases your offer to their account. 
 
-    “StartTestDrive” – This is for Test Drives only and is whenever a customer starts their test drive. 
+    "StartTestDrive" - This is for Test Drives only and is whenever a customer starts their test drive. 
 
 
   *Kínál*
 
-    “checkpoint.check-point-r77-10sg-byol”, 
-    “bitnami.openedxcypress”, 
-    “docusign.3701c77e-1cfa-4c56-91e6-3ed0b622145a” 
+    "checkpoint.check-point-r77-10sg-byol", 
+    "bitnami.openedxcypress", 
+    "docusign.3701c77e-1cfa-4c56-91e6-3ed0b622145a" 
 
  
 

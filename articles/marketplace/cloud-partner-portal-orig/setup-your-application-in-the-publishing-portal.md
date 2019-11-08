@@ -1,190 +1,191 @@
 ---
-title: Az alkalmazás a közzétételi portál beállítása
-description: Hogyan állíthatja be az alkalmazás a felhő közzétételi portál utasításait.
+title: Az alkalmazás beállítása a közzétételi portálon
+description: Útmutatás az alkalmazás beállításához a Cloud Publishing Portalon.
 services: Azure, Marketplace, Cloud Partner Portal,
 author: pbutlerm
 manager: Ricardo.Villalobos
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pabutler
-ms.openlocfilehash: 6da80bd3b5fe487a44400f4f3c21e8fa49da75d4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1bf89f94d91e0d809428cf8098db0fb37afdb47a
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64943558"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73814686"
 ---
-# <a name="setup-your-application-in-the-publishing-portal"></a>Az alkalmazás a közzétételi portál beállítása
+# <a name="setup-your-application-in-the-publishing-portal"></a>Az alkalmazás beállítása a közzétételi portálon
 
-Most már készen áll az alkalmazás a közzétételi portál beállítása.
+Most már készen áll az alkalmazás beállítására a közzétételi portálon.
 
-## <a name="login-and-create-a-new-offer"></a>Bejelentkezés és a egy új ajánlat létrehozása
+## <a name="login-and-create-a-new-offer"></a>Jelentkezzen be, és hozzon létre egy új ajánlatot
 
-1. Jelentkezzen be a [Cloud Partner Portalon](https://cloudpartner.azure.com/).
-2. A bal oldali navigációs sávban kattintson a "+ új ajánlat", és válassza ki a "Dynamics 365 for Customer Engagement."
+1. Jelentkezzen be a [Cloud Partner Portalba](https://cloudpartner.azure.com/).
+2. A bal oldali navigációs sávon kattintson az "+ új ajánlat" lehetőségre, és válassza a "Dynamics 365 for Customer engagement" lehetőséget.
 
-![Egy új ajánlat kiválasztása](./media/CRMScreenShot14.png)
+![Új ajánlat kiválasztása](./media/CRMScreenShot14.png)
 
-1. Egy új ajánlat "Szerkesztő" nézet most megnyílik az Ön számára, és szerzői készen vagyunk.
+1. Most már megnyílik egy új "szerkesztő"-ajánlat, amely készen áll a szerzői műveletek elindítására.
 
 ![Új ajánlat képernyő](./media/CRMScreenShot15.png)
 
-1. A "űrlapok" igénylő ki kell tölteni a bal oldalon a "Szerkesztő" nézetben láthatók. Minden egyes "form" automatikusan kitölti a mezőket egy készlete áll. Szükséges, piros csillaggal jelölt mezők (\*).
+1. A kitöltendő "űrlapok" a "szerkesztő" nézetben láthatók a bal oldalon. Mindegyik "Form" a kitöltendő mezők halmazát tartalmazza. A kötelező mezők piros csillaggal (\*) vannak megjelölve.
 
-Nincsenek a négy fő űrlapok egy Dynamics 365 Customer Engagement-ajánlat készítése
+Négy fő űrlap létezik a Dynamics 365 for Customer engagement-ajánlat létrehozásához
 
 * Ajánlat beállításai
 * Technikai információ
-* Storefront részletei
+* Kirakat részletei
 * Kapcsolatok
 
-## <a name="fill-out-the-offer-settings-form"></a>Töltse ki az ajánlat beállítások képernyő
+## <a name="fill-out-the-offer-settings-form"></a>Adja meg az ajánlati beállítások űrlapot
 
-Az ajánlat beállítások képernyő művelet egy alapszintű az ajánlat beállításainak megadásához. A különböző mezők az alábbiakban tekintheti át.
+Az ajánlat beállításai űrlap egy alapszintű űrlap az ajánlat beállításainak megadásához. A különböző mezők az alábbiakban olvashatók.
 
 ### <a name="offer-id"></a>Ajánlat azonosítója
 
-Ez a közzétevő-profilon belül az ajánlat egyedi azonosítója. Ezt az Azonosítót meg fognak jelenni a termék URL-címeket. Csak kisbetűs alfanumerikus karakterekből és kötőjelekből (-) állhat. Az azonosító nem végződhet kötőjellel, és legfeljebb 50 karakter hosszú lehet. Ez a mező után egy ajánlatot élesíti zárolva van.
+Ez az ajánlat egyedi azonosítója a közzétevői profilon belül. Ez az azonosító a termék URL-címeiben jelenik meg. Csak kisbetűs alfanumerikus karakterekből és kötőjelekből (-) állhat. Az azonosító nem végződhet kötőjelre, és legfeljebb 50 karakterből állhat. Ez a mező csak akkor érhető el, ha egy ajánlat élő állapotba kerül.
 
-például, ha a kiadó **"contoso"** közzétevők ajánlatot hoz létre Ajánlatazonosítót **"minta-WebApp"** , ez fog megjelenni az appsource-ban, mint "https:\//appsource.microsoft.com/marketplace/apps/contoso.sample-WebApp?tab=Overview"
+Ha például a " **contoso"** közzétevő közzétevője egy **"Sample-WebApp"** azonosítójú ajánlatot hoz létre, akkor az a "https:\//appsource.microsoft.com/Marketplace/apps/contoso.Sample-WebApp?Tab=Overview" AppSource fog megjelenni.
 
 ### <a name="publisher-id"></a>Közzétevő azonosítója
 
-A legördülő listából válassza ki ezt az ajánlatot a közzétenni kívánt közzétevő profilt teszi lehetővé. Ez a mező után egy ajánlatot élesíti zárolva van.
+Ez a legördülő lista lehetővé teszi, hogy kiválassza azt a közzétevői profilt, amelyen közzé kívánja tenni az ajánlatot. Ez a mező csak akkor érhető el, ha egy ajánlat élő állapotba kerül.
 
-### <a name="name"></a>Name (Név)
+### <a name="name"></a>Név
 
-Ez az ajánlat megjelenített neve. Ez a név fog megjelenni a [AppSource](https://appsource.microsoft.com/). Legfeljebb 50 karakterből állhat.
+Ez az ajánlat megjelenítendő neve. Ez a név jelenik meg a [AppSource](https://appsource.microsoft.com/). Legfeljebb 50 karakterből állhat.
 
-Kattintson a "Mentés" gombra az előrehaladást. Következő lépés az ajánlatban technikai információ hozzáadása lenne.
+A folyamat mentéséhez kattintson a Save (Mentés) gombra. A következő lépés az ajánlat technikai adatainak hozzáadása.
 
-## <a name="fill-out-the-technical-info-form"></a>Töltse ki a technikai információ képernyő
+## <a name="fill-out-the-technical-info-form"></a>Adja meg a technikai adatok űrlapot
 
 
-A műszaki adatok képernyő az, ahol fog kitölti konkrét információk, a Dynamics 365 Customer Engagement megoldás. A rendszer felett, további információt jelenthet. Lásd az alábbi példát.
+A technikai információ űrlapja a Dynamics 365-hez tartozó ügyfél-engagement megoldásra vonatkozó adatokat adja meg. Ha a fölé viszi, további információkat talál. Lásd az alábbi példát.
 
-![Technikai információkat képernyőre](./media/CRMScreenShot16.png)
+![Technikai információk képernyő](./media/CRMScreenShot16.png)
 
-### <a name="application-info"></a>Informace aplikace
+### <a name="application-info"></a>Alkalmazás adatai
 
-A legtöbb közzétevők hagyja ezeket az alapértelmezett értékeket, a felhasználó, rendelkező mezők nem, nem, és a egy üres alkalmazás konfigurációs URL-címe a fenti képernyőképen megfelelően.
+A legtöbb közzétevő elhagyja ezeket a mezőket az alapértelmezett értékekkel, a felhasználóval, a nem, a nem és egy üres alkalmazás-konfigurációs URL-címmel, a fenti képernyőképen.
 
 ### <a name="crm-package"></a>CRM-csomag
 
 ![CRM-csomag adatai](./media/CRMScreenShot17.png)
 
-A következő magyarázatot ezeket a mezőket:
+Itt látható a következő mezők magyarázata:
 
-* A csomag neve: A fájl nevét a fenti lépésben létrehozott esetén a zip-fájl létrehozása, amely a CRM AppSource csomag. A fenti példában, a "Microsoft\_SamplePackage.zip".
-* A csomaghely URL-címe: Ez az URL-CÍMÉT az Azure Storage-fiókot, amely tartalmazza a fent megadott fájl nevét. 9\. lépés a fenti szakaszban létrehozott URL-címe.
-* Van több crm-csomagot a csomag fájlban: Válassza az Igen **csak** Ha crm, a különböző csomagok több verzióját támogatja. A legtöbb partnerek számára ez lesz a "No". Ha az Igen lehetőséget választja, meg kell AppSource csomagok létrehozása a megoldás minden egyes verziója. _Megjegyzés: Ez azt nem kéri, ha azok több **zip** fájlokat. Ha több solution.zip fájlt, de csak egyetlen verziója, továbbra is választhat "nem" található. A csomagolás eszköz fog hozzák ezek automatikusan._
+* A csomag fájlneve: a CRM AppSource-csomagot tartalmazó Zip-fájl létrehozásakor a fenti lépésben létrehozott fájlnév. A fenti példában a "Microsoft\_SamplePackage. zip".
+* A csomag helyének URL-címe: ez az az Azure Storage-fiók URL-címe, amely a fent megadott csomagfájl nevét tartalmazza. Ez a fenti szakasz 9. lépésében létrehozott URL-cím.
+* A csomagfájl több CRM-csomagot is használhat: válassza az Igen lehetőséget, **Ha a** CRM több verzióját is támogatja különböző csomagokkal. A legtöbb partner esetében ez a következő lesz: "nem". Ha az Igen lehetőséget választja, a megoldás egyes verzióihoz létre kell hoznia AppSource-csomagokat. _Megjegyzés: ez nem kérdezi le, hogy van-e több **zip** -fájlja. Ha több Solution. zip fájllal rendelkezik, de csak egy verziót használ, a "nem" lehetőséget kell választania. A csomagoló eszköz automatikusan együtt fog működni._
 
-### <a name="crm-package-availability"></a>CRM-csomag rendelkezésre állása
+### <a name="crm-package-availability"></a>CRM-csomag elérhetősége
 
-Ebben a szakaszban válassza ki, milyen régiók CRM, a csomag számára elérhető lesz. Melyik CRM a régiók szolgálnak, amelyek információt országok/régiók, tekintse meg a hivatkozást: [https://o365datacentermap.azurewebsites.net/](https://o365datacentermap.azurewebsites.net/)
+Ebben a szakaszban kiválaszthatja, hogy a CRM mely régióit fogja elérhetővé tenni a csomag számára. Arról, hogy mely CRM-régiók mely országokat/régiókat szolgálják ki, tekintse meg a következő hivatkozást: [https://o365datacentermap.azurewebsites.net/](https://o365datacentermap.azurewebsites.net/)
 
-Megjegyzés: Németország való üzembe helyezés "Szuverén és Egyesült Államokbeli kormányzati felhő" szuverén REQUIRES speciális engedélyek és az érvényesítés során a hitelesítésszolgáltató
+Megjegyzés: a németországi "szuverén és US Gov felhő" szuverén telepítése a minősítés során speciális engedélyeket és ÉRVÉNYESÍTÉSt igényel
 
-## <a name="storefront-details"></a>Storefront részletei
+## <a name="storefront-details"></a>Kirakat részletei
 
-### <a name="offer-summary"></a>Ajánlat-összefoglaló
+### <a name="offer-summary"></a>Ajánlat összegzése
 
-Ez az az ajánlat értékajánlat összegzését. Az ajánlat keresés lapon fog megjelenni. Legfeljebb 100 karakterből kell lennie.
+Ez az ajánlat értékének összefoglalása. Ekkor megjelenik az ajánlat keresési oldalán. Legfeljebb 100 karakter hosszú lehet.
 
-### <a name="offer-description"></a>Az ajánlat leírása
+### <a name="offer-description"></a>Ajánlat leírása
 
-Ez az a leírást, amely megjelenik az alkalmazás részletei lapon. Engedélyezett maximális hossza 1300 karaktert
+Ezt a leírást fogja megjelenni az alkalmazás részletei oldalon. A maximális engedélyezett érték 1300 karakter
 
 ### <a name="industries"></a>Ágazatok
 
-Válassza ki az iparág legjobb igazított az alkalmazást. Ha az alkalmazás vonatkozik több iparágban is ezt üresen hagyja.
+Válassza ki azt az iparágat, amelyhez az alkalmazás a legjobban igazodik. Ha az alkalmazás több iparágra is vonatkozik, ezt a mezőt üresen hagyhatja.
 
-### <a name="categories"></a>Categories
+### <a name="categories"></a>Kategóriák
 
-Válassza ki, amely az alkalmazás a kategóriák. Válasszon legfeljebb 3.
+Válassza ki az alkalmazáshoz kapcsolódó kategóriákat. Legfeljebb 3 értéket válasszon ki.
 
 ### <a name="app-type"></a>Alkalmazás típusa
 
-Válassza ki a próbaverziót, amely az alkalmazás lehetővé teszi az appsource-ban. "Ingyenes" azt jelenti, hogy az alkalmazás ingyenes. "Próbaverzió" azt jelenti, hogy ügyfeleink próbálhatja ki az alkalmazást az appsource-ban rövid idő. 'A próbaverzió kérése' Dynamics 365 for Customer Engagement alkalmazásokat nem támogatott. Válassza ezt a beállítást.
+Válassza ki azt a próbaverziót, amelyet az alkalmazás engedélyezni fog a AppSource. Az "ingyenes" kifejezés azt jelenti, hogy az alkalmazás ingyenes. A "próbaverzió" kifejezés azt jelenti, hogy az ügyfelek rövid időn belül kipróbálhatják az alkalmazást a AppSource. A "próbaverzióra vonatkozó kérelem" nem támogatott a Dynamics 365 for Customer engagement-alkalmazások esetében. Ne jelölje be ezt a beállítást.
 
-### <a name="help-link-for-your-app"></a>Az alkalmazáshoz Súgó hivatkozásra
+### <a name="help-link-for-your-app"></a>Súgó hivatkozás az alkalmazáshoz
 
-Egy oldal, amely rendelkezik az alkalmazáshoz kapcsolódó információk súgó URL-CÍMÉT adja meg.
+Adja meg az alkalmazáshoz kapcsolódó információkat tartalmazó oldal URL-címét.
 
 ### <a name="supported-countriesregions"></a>Támogatott országok/régiók
 
-Ez a mező határozza meg, amelyben az ajánlat lesz elérhető, próba országok vagy régiók.
+Ez a mező határozza meg azokat az országokat/régiókat, amelyekben az ajánlat próbaverzióhoz elérhető lesz.
 
 ### <a name="supported-languages"></a>Támogatott nyelvek
 
-Válassza ki a nyelvet, amely az alkalmazás támogatja-e. Ha az alkalmazás támogatja a további nyelveket, amelyek nem látható a listában, továbbra is az ajánlat közzététele és e-mail-minket: [ appsource@microsoft.com ](mailto:appsource@microsoft.com) , hogy jelezze nekünk.
+Válassza ki az alkalmazás által támogatott nyelveket. Ha az alkalmazása olyan további nyelveket is támogat, amelyek nem szerepelnek ezen a listán, folytassa az ajánlat közzétételével, és küldje el nekünk a következő címen: [appsource@microsoft.com](mailto:appsource@microsoft.com) , hogy tudassa velünk.
 
 ### <a name="app-version"></a>Az alkalmazás verziója
 
-Adja meg a verziószám az alkalmazás
+Adja meg az alkalmazás verziószámát
 
-### <a name="app-release-date"></a>Alkalmazás kiadási dátum
+### <a name="app-release-date"></a>Alkalmazás kiadásának dátuma
 
-Adja meg az alkalmazás a kiadási dátum
+Adja meg az alkalmazás kiadási dátumát
 
-### <a name="products-your-app-works-with-max-3"></a>Az alkalmazás működik együtt (max. 3) termékek
+### <a name="products-your-app-works-with-max-3"></a>Az alkalmazás által használható termékek (max. 3)
 
-Működik az alkalmazás-specifikus-termékek. Legfeljebb három termék listázhatja. Termék listázásához, kattintson a a melletti plusz jelre (új), és a egy új nyílt szövegmező jön létre egy terméket, amely együttműködik az alkalmazás nevét adhatja meg.
+Az alkalmazás által használható listára vonatkozó termékek. Legfeljebb három terméket listázhat fel. Egy termék listázásához kattintson a pluszjelre (az új mellett), és egy új nyílt szövegmezőt fog létrehozni az alkalmazás által használt termék nevének megadásához.
 
-### <a name="search-keywords-max-3"></a>A keresési kulcsszavak (max. 3)
+### <a name="search-keywords-max-3"></a>Keresési kulcsszavak (max. 3)
 
-Appsource-ban lehetővé teszi, hogy az ügyfél alapján kulcsszavak keresése. A kulcsszavak, amelynek az alkalmazás nem jelenik meg az ügyfelek halmaza is megadhatja.
+A AppSource lehetővé teszi, hogy az ügyfél kulcsszavak alapján végezzen keresést. Megadhatja azokat a kulcsszavakat, amelyekhez az alkalmazás megjelenik az ügyfelek számára.
 
-Például ha az alkalmazás "Saját érdemes felkeresni szolgáltatás" e-maileket, levelezés, levelezési szolgáltatás lehet, hogy bizonyos kulcsszavakat. Válassza ki a szavak, amelyek a felhasználók valószínűleg használatával keres az alkalmazás az appsource-ban keresőmezőbe.
+Például ha az alkalmazás "e-mail-szolgáltatás" e-mail-címe, e-mail-cím, levelezési szolgáltatás lehet néhány kulcsszó. Válassza ki azokat a szavakat, amelyeket a felhasználók valószínűleg az alkalmazás keresésére fognak használni a AppSource keresési mezőjében.
 
 ### <a name="hide-key"></a>Kulcs elrejtése
 
-Ez az egy kulcsot, az ajánlat előnézeti URL-cím a nyilvánosság elől való elrejtéséhez értékkel egyesítve jön létre. Akkor sem a jelszót. Bármilyen karakterlánc itt is megadhatja.
+Ez egy olyan kulcs, amely az ajánlat előzetes URL-címével együtt elrejti a nyilvános nézetből. Nem jelszó. Itt megadhat bármilyen karakterláncot.
 
-### <a name="offer-logo-png-format-48x48"></a>Az ajánlat embléma (png formátumú, 48 x 48)
+### <a name="offer-logo-png-format-48x48"></a>Ajánlat emblémája (PNG-formátum, 48x48)
 
-Ez az alkalmazás keresési oldalon fog megjelenni. **Csak png formátumú használata engedélyezett.** 48PX felbontású png-kép feltöltése\*48PX
+Ekkor megjelenik az alkalmazás keresési oldalán. **Csak a PNG formátum engedélyezett.** PNG-kép feltöltése a 48PX\*48PX megoldásával
 
-### <a name="offer-logo-png-format-216x216"></a>Az ajánlat embléma (png formátumú, 216 x 216)
+### <a name="offer-logo-png-format-216x216"></a>Ajánlat emblémája (PNG-formátum, 216x216)
 
-Ez az alkalmazás részletei lapon fog megjelenni. **Csak png formátumú használata engedélyezett.** 216PX felbontású png-kép feltöltése\*216PX
+Ez az alkalmazás részleteit tartalmazó oldalon fog megjelenni. **Csak a PNG formátum engedélyezett.** PNG-kép feltöltése a 216PX\*216PX megoldásával
 
 ### <a name="videos"></a>Videók
 
-Legfeljebb négy videókat tölthet fel. Minden videó szeretne feltölteni adja meg a videó neve, URL-címe (YouTube vagy Vimeo csak) és a miniatűr videó társítani kell. Miniatűr png formátumúnak kell lennie, és lehet 1280PX\*720PX. Új video(s) hozzáadásához kattintson a plusz jelre. Videók thumbnail(s) lesz az alkalmazás részletei lap jelenik meg.
+Legfeljebb négy videó tölthető fel. Minden feltölteni kívánt videóhoz ki kell töltenie a videó nevét, URL-címét (csak YouTube vagy Vimeo) és a miniatűrt a videóhoz való hozzárendeléshez. A miniatűrnek PNG formátumban kell lennie, és 1280PX\*720PX kell lennie. Új videó (k) hozzáadásához kattintson a plusz jelre. A videók miniatűrje az alkalmazás részleteit tartalmazó oldalon fog megjelenni.
 
 ### <a name="documents"></a>Dokumentumok
 
-Legfeljebb három, a PDF formátumú dokumentumok tölthet fel. A feltölteni kívánt minden egyes dokumentumhoz kell a dokumentum nevét adja meg, és töltse fel a dokumentumot. A dokumentum pdf formátumban kell lennie.
+PDF-formátumban legfeljebb három dokumentum tölthető fel. Minden feltölteni kívánt dokumentumhoz ki kell töltenie a dokumentum nevét, és fel kell töltenie a dokumentumot. A dokumentumnak PDF formátumúnak kell lennie.
 
-Új dokumentum hozzáadásához kattintson a plusz jelre.
+Új dokumentum (ok) hozzáadásához kattintson a plusz jelre.
 
 ### <a name="screenshots"></a>Képernyőképek
 
-Ezek a képernyőképeket, amely az appsource-ban az alkalmazás részletek lapon fog megjelenni.
+Ezek a képernyőképek az alkalmazás AppSource részletek lapján jelennek meg.
 
 ### <a name="privacy-policy"></a>Adatvédelmi szabályzat
 
-Adja meg az alkalmazás adatvédelmi szabályzat URL-címe
+Adja meg az alkalmazás adatvédelmi szabályzatának URL-címét
 
 ### <a name="terms-of-use"></a>Használati feltételek
 
-Adja meg a használati feltételeket az alkalmazás. Appsource-on ügyfelei elfogadja ezeket a feltételeket, mielőtt az alkalmazás próbálkozhatnak van szükség.
+Adja meg az alkalmazás használati feltételeit. Az AppSource ügyfeleknek el kell fogadniuk ezeket a feltételeket az alkalmazás kipróbálása előtt
 
-### <a name="support-url"></a>Adresa URL
+### <a name="support-url"></a>Támogatási URL-cím
 
-Adja meg az alkalmazás a támogatási URL-CÍMÉT.
+Adja meg az alkalmazás támogatási URL-címét.
 
-### <a name="lead-destination"></a>Lead Destination
+### <a name="lead-destination"></a>Érdeklődő célhelye
 
-Válassza ki a CRM-rendszerrel, ahol vezető rendszer tárolja. Ha rendelkezik ilyennel, a következő CRM rendszereket, válassza ki itt "Azure Table": A Salesforce, a Marketo, a Microsoft Dynamics CRM. A CRM-rendszerrel, itt, ahol írunk a végfelhasználók számára, hogy kipróbálják az alkalmazását az appsource-ban (érdeklődők) részleteit. Attól függően, a CRM-rendszerrel választja kattintson a megfelelő URL-címet, végezze el a következő mezők információt
+Válassza ki azt a CRM-rendszert, amelybe a kívánt érdeklődőt tárolni fogja. Válassza az "Azure Table" lehetőséget, ha a következő CRM-rendszerek valamelyikét tartalmazza: Salesforce, Marketo, Microsoft Dynamics CRM. Az itt kiválasztott CRM-rendszer azon végfelhasználók adatait írja le, akik a AppSource (leads) alkalmazásban próbálják meg az alkalmazást. A kiválasztott CRM-rendszertől függően kattintson az alábbi megfelelő URL-címre a következő mezők kitöltéséhez:
 
 * [Azure-tábla](./cloud-partner-portal-lead-management-instructions-azure-table.md)
 * [Marketo](./cloud-partner-portal-lead-management-instructions-marketo.md)
 * [Microsoft Dynamics CRM](./cloud-partner-portal-lead-management-instructions-dynamics.md)
 * [Salesforce](./cloud-partner-portal-lead-management-instructions-salesforce.md)
 
-## <a name="storefront-details"></a>Storefront részletei
+## <a name="storefront-details"></a>Kirakat részletei
 
-A kapcsolattartási adatait csak a partner és a Microsoft belső kommunikációra szolgálnak. Megjegyzés: Fontos ezeket a mezőket a figyelt e-mail címet használ. E-mailt a kommunikálni Önnel a folyamat állapotát a közzététel az appsource-ban a használjuk. Csak a támogatási URL-CÍMÉT az ügyfelek számára látható lesz.
+A kapcsolattartási adatok a partner és a Microsoft közötti belső kommunikációhoz használatosak. Megjegyzés: fontos, hogy az ezekben a mezőkben figyelt e-mail-címet használja. Ezt az e-mailt fogjuk használni a AppSource való közzététel előrehaladásával kapcsolatos kommunikációhoz. Csak a támogatási URL-cím jelenik meg az ügyfelek számára.

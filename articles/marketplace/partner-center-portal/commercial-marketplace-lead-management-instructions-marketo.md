@@ -4,15 +4,16 @@ description: Az Azure Marketplace-ügyfelek Marketo vezető felügyeletének kon
 services: Azure, Marketplace, commercial marketplace, Partner Center
 author: qianw211
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 08/01/2019
 ms.author: evansma
-ms.openlocfilehash: 9470a593f5db564689a0b26601a201874c215aa2
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: 8d13e8c3aeabf6d3fdea80ffddbae47b80adc139
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69902090"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73812139"
 ---
 # <a name="configure-lead-management-in-marketo"></a>Az érdeklődők felügyeletének konfigurálása a Marketo-ben
 
@@ -25,13 +26,13 @@ Ez a cikk azt ismerteti, hogyan állíthat be Marketo CRM-rendszert a Piactéri 
     ![Marketo Design Studio](./media/commercial-marketplace-lead-management-instructions-marketo/marketo-1.png)
 
 3.  Válassza az **új űrlap**lehetőséget.
-    ![Új Marketo űrlap](./media/commercial-marketplace-lead-management-instructions-marketo/marketo-2.png)
+    ![Marketo új űrlap](./media/commercial-marketplace-lead-management-instructions-marketo/marketo-2.png)
 
 4.  Töltse ki a kötelező mezőket az új űrlapon, majd válassza a **Létrehozás**lehetőséget.
-    ![Új űrlap létrehozása a Marketo](./media/commercial-marketplace-lead-management-instructions-marketo/marketo-3.png)
+    ![Marketo új űrlap létrehozása](./media/commercial-marketplace-lead-management-instructions-marketo/marketo-3.png)
 
 5.  A mező részletei lapon válassza a **Befejezés**lehetőséget.
-    ![Marketo befejezési űrlapja](./media/commercial-marketplace-lead-management-instructions-marketo/marketo-4.png)
+    ![Marketo befejezési formája](./media/commercial-marketplace-lead-management-instructions-marketo/marketo-4.png)
 
 6.  Jóváhagyás és bezárás.
 
@@ -54,7 +55,7 @@ Ez a cikk azt ismerteti, hogyan állíthat be Marketo CRM-rendszert a Piactéri 
 
     **Ezen értékek megállapításának másik módja**
 
-    - A kiszolgáló-azonosító a Marketo-példány URL-címében található, például:`serverID.marketo.com`"".
+    - A kiszolgáló-azonosító a Marketo-példány URL-címében található, például: "`serverID.marketo.com`".
     - Az előfizetés csámcsogó AZONOSÍTÓjának beszerzéséhez nyissa meg a rendszergazda > Munchkin menüt a "Munchkin-fiók azonosítója" mezőben, vagy a Marketo első részében REST API gazdagép altartománya: `https://{Munchkin ID}.mktorest.com`.
     - Az űrlap-azonosító a 7. lépésben létrehozott beágyazási kód űrlap azonosítója, amely az érdeklődőket a piactérről irányítja át.
 

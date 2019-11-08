@@ -1,5 +1,5 @@
 ---
-title: Többmodelles képességek Azure SQL Database
+title: Többmodelles képességek
 description: Azure SQL Database lehetővé teszi több adatmodell használatát ugyanabban az adatbázisban.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: ''
 ms.date: 12/17/2018
-ms.openlocfilehash: 0d59db65e940cab12dccaeeacc9083eb7fbba20e
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
-ms.translationtype: HT
+ms.openlocfilehash: 2e8519fa8d96b7fe016b9da4ba84ce481a57d94e
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73795766"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73802810"
 ---
 # <a name="multi-model-capabilities-of-azure-sql-database"></a>Azure SQL Database több modellből álló képességei
 
@@ -74,7 +74,7 @@ Azure SQL Database lehetővé teszi, hogy könnyen működjön a JSON-adataival,
 
 ![JSON-függvények](./media/sql-database-json-features/image_1.png)
 
-Ha JSON-szöveggel rendelkezik, kinyerheti az adatait a JSON-ból, vagy ellenőrizheti, hogy a JSON formátuma megfelelően formázott-e a beépített függvények [JSON_VALUE](https://msdn.microsoft.com/library/dn921898.aspx), [JSON_QUERY](https://msdn.microsoft.com/library/dn921884.aspx)és [ISJSON](https://msdn.microsoft.com/library/dn921896.aspx). A [JSON_MODIFY](https://msdn.microsoft.com/library/dn921892.aspx) függvény lehetővé teszi az érték JSON-szövegen belüli frissítését. A speciális lekérdezés és elemzés érdekében a [openjson utasítással](https://msdn.microsoft.com/library/dn921885.aspx) függvény JSON-objektumok tömbjét is át tudja alakítani sorok halmazára. Bármely SQL-lekérdezés végrehajtható a visszaadott eredményhalmaz alapján. Végezetül van egy [for JSON](https://msdn.microsoft.com/library/dn921882.aspx) záradék, amely lehetővé teszi, hogy a rokon táblákban tárolt adatait JSON-szövegként formázza.
+Ha JSON-szöveggel rendelkezik, kinyerheti az adatait a JSON-ból, vagy ellenőrizheti, hogy a JSON formátuma megfelelően formázott-e a beépített függvények [JSON_VALUE](https://msdn.microsoft.com/library/dn921898.aspx), [JSON_QUERY](https://msdn.microsoft.com/library/dn921884.aspx)és [ISJSON](https://msdn.microsoft.com/library/dn921896.aspx)használatával. A [JSON_MODIFY](https://msdn.microsoft.com/library/dn921892.aspx) függvény lehetővé teszi az érték JSON-szövegen belüli frissítését. A speciális lekérdezés és elemzés érdekében a [openjson utasítással](https://msdn.microsoft.com/library/dn921885.aspx) függvény JSON-objektumok tömbjét is át tudja alakítani sorok halmazára. Bármely SQL-lekérdezés végrehajtható a visszaadott eredményhalmaz alapján. Végezetül van egy [for JSON](https://msdn.microsoft.com/library/dn921882.aspx) záradék, amely lehetővé teszi, hogy a rokon táblákban tárolt adatait JSON-szövegként formázza.
 
 További információkért lásd: [JSON-adatok használata az Azure-ban SQL Database](sql-database-json-features.md).
 A [JSON](https://docs.microsoft.com/sql/relational-databases/json/json-data-sql-server) a Core SQL Server adatbázismotor szolgáltatás, így további információ található a JSON szolgáltatásról.

@@ -14,22 +14,22 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/16/2018
 ms.author: kumud
-ms.openlocfilehash: f7f45e479ad21b27832573b73a5e09e8da1b37b1
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 47da2524f719e53edcbd89686a1a0b76fa6e79cd
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72756113"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73802713"
 ---
-# <a name="plan-virtual-networks"></a>Virtuális hálózatok megtervezése
+# <a name="plan-virtual-networks"></a>Virtuális hálózatok tervezése
 
 A virtuális hálózatnak a kísérletezéshez való létrehozása elég egyszerű, de előfordulhat, hogy több virtuális hálózatot helyez üzembe az idő múlásával, hogy támogassa a szervezet termelési igényeit. Bizonyos tervezési lehetőséggel virtuális hálózatokat telepíthet, és hatékonyabban csatlakozhat a szükséges erőforrásokhoz. A cikkben szereplő információk akkor hasznosak, ha már ismeri a virtuális hálózatokat, és némi tapasztalattal rendelkezik velük kapcsolatban. Ha nem ismeri a virtuális hálózatokat, javasoljuk, hogy olvassa el a [virtuális hálózatok áttekintése című témakört](virtual-networks-overview.md).
 
 ## <a name="naming"></a>Elnevezés
 
-Minden Azure-erőforrásnak van neve. A névnek egyedinek kell lennie egy hatókörön belül, amely az egyes erőforrástípusok esetében eltérő lehet. Például egy virtuális hálózat nevének egyedinek kell lennie egy [erőforráscsoporthoz](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#resource-group)belül, de az [előfizetésben](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#subscription) vagy az Azure- [régióban](https://azure.microsoft.com/regions/#services)is duplikálható. Olyan elnevezési konvenció meghatározása, amely következetesen használható, ha az erőforrások elnevezése hasznos, amikor több hálózati erőforrást kezel egyszerre. Javaslatokért lásd: [elnevezési konvenciók](/azure/cloud-adoption-framework/ready/considerations/naming-and-tagging#virtual-networking).
+Minden Azure-erőforrásnak van neve. A névnek egyedinek kell lennie egy hatókörön belül, amely az egyes erőforrástípusok esetében eltérő lehet. Például egy virtuális hálózat nevének egyedinek kell lennie egy [erőforráscsoporthoz](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#resource-group)belül, de az [előfizetésben](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#subscription) vagy az Azure- [régióban](https://azure.microsoft.com/regions/#services)is duplikálható. Olyan elnevezési konvenció meghatározása, amely következetesen használható, ha az erőforrások elnevezése hasznos, amikor több hálózati erőforrást kezel egyszerre. Javaslatokért lásd: [elnevezési konvenciók](/azure/architecture/best-practices/resource-naming#networking).
 
-## <a name="regions"></a>Térségek
+## <a name="regions"></a>Régiók
 
 Az összes Azure-erőforrás egy Azure-régióban és-előfizetésben jön létre. Egy erőforrás csak olyan virtuális hálózatban hozható létre, amely ugyanabban a régióban és előfizetésben található, mint az erőforrás. Azonban a különböző előfizetésekben és régiókban található virtuális hálózatokat is összekapcsolhatjuk. További információ: [kapcsolat](#connectivity). Annak eldöntése során, hogy mely régió (k) hoz üzembe erőforrásokat a alkalmazásban, gondolja át, hogy az erőforrások felhasználóinak fizikailag hol találhatók:
 
@@ -87,7 +87,7 @@ Az Azure több alapértelmezett útvonalat hoz létre a kimenő forgalomhoz egy 
 
 Ha egyéni útválasztást kell megvalósítani, javasoljuk, hogy ismerkedjen meg az [Azure-beli útválasztással](virtual-networks-udr-overview.md).
 
-## <a name="connectivity"></a>Kapcsolódás
+## <a name="connectivity"></a>Kapcsolatok
 
 Az Azure VPN Gateway használatával virtuális hálózatokat is összekapcsolhat más virtuális hálózatokkal vagy a helyszíni hálózattal.
 
@@ -115,6 +115,6 @@ Azure Policy lehetővé teszi a szabályzat-definíciók létrehozását, hozzá
 
 A házirendek a következő hierarchiára lesznek alkalmazva: felügyeleti csoport, előfizetés és erőforráscsoport. Tudjon meg többet az [Azure-szabályzatról](../governance/policy/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) , vagy telepítsen néhány virtuális hálózati [házirend-sablon](policy-samples.md) mintáját.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ismerje meg a [virtuális hálózat](manage-virtual-network.md), az [alhálózat és a szolgáltatás végpontjának](virtual-network-manage-subnet.md), a [hálózati adapter](virtual-network-network-interface.md) [, a társítás, a](virtual-network-manage-peering.md) [hálózat és az alkalmazás biztonsági csoportjának](manage-network-security-group.md), illetve az [útválasztási táblázatnak](manage-route-table.md)a feladatait, beállításait és lehetőségeit.

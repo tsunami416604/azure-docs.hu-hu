@@ -4,22 +4,23 @@ description: A cikk azt ismerteti, hogyan hozhat létre egy virtuálisgép-aján
 services: Azure, Marketplace, Cloud Partner Portal,
 author: pbutlerm
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 08/20/2018
 ms.author: pabutler
-ms.openlocfilehash: c1ef00f846dfad76629b0603ab79fba17249417c
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 45d0ff5b7b3fea1566b13b61bd01cc17da61e4b3
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "71224529"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73824515"
 ---
 # <a name="create-technical-assets-for-a-virtual-machine-offer"></a>Technikai eszközök létrehozása virtuálisgép-ajánlathoz
 
 Ez a szakasz végigvezeti az Azure Marketplace-hez készült virtuálisgép-(VM-) ajánlat technikai eszközeinek létrehozásán és konfigurálásán.  A virtuális gép két összetevőt tartalmaz: a megoldás virtuális merevlemezét (VHD) és opcionálisan kapcsolódó adatlemezeket.  
 
 - A *virtuális merevlemezek (VHD-k)* , amely tartalmazza az operációs rendszert és a megoldást, amelyet az Azure Marketplace-ajánlatával fog üzembe helyezni. A VHD előkészítési folyamata attól függően eltérő, hogy Linux-alapú, Windows-alapú vagy egyéni virtuális gép-e.
-- Az adatlemezek dedikált, állandó tárterületet jelentenek a virtuális gépek számára. Ne használja a megoldás VHD-jét (például a `C:` meghajtót) az állandó információk tárolásához.
+- Az *adatlemezek* dedikált, állandó tárterületet jelentenek a virtuális gépek számára. Ne *használja a* megoldás VHD-jét (például a `C:` meghajtót) az állandó információk tárolásához.
 
 A virtuálisgép-lemezképek egy operációsrendszer-lemezt és nulla vagy több adatlemezt tartalmaznak. Lemezenként egy virtuális merevlemezre van szükség. Még az üres adatlemezek létrehozásához virtuális merevlemez szükséges.
 Konfigurálnia kell a virtuális gép operációs rendszerét, a virtuális gép méretét, a megnyitni kívánt portokat és legfeljebb 15 csatlakoztatott adatlemezt.
@@ -52,9 +53,9 @@ Emellett javasoljuk a következő eszközök hozzáadását a fejlesztői körny
 
 -   [Azure Storage Explorer](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer)
 -   [Visual Studio Code](https://code.visualstudio.com/)
-    *   Kiterjesztés [Eszközök Azure Resource Manager](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools)
-    *   Kiterjesztés [Szépít](https://marketplace.visualstudio.com/items?itemName=HookyQR.beautify)
-    *   Kiterjesztés [Szépít JSON](https://marketplace.visualstudio.com/items?itemName=mohsen1.prettify-json)
+    *   Kiterjesztés: [Azure Resource Manager eszközök](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools)
+    *   Kiterjesztés: [szépít](https://marketplace.visualstudio.com/items?itemName=HookyQR.beautify)
+    *   Kiterjesztés: [SZÉPÍT JSON](https://marketplace.visualstudio.com/items?itemName=mohsen1.prettify-json)
 
 Javasoljuk továbbá, hogy tekintse át az [Azure fejlesztői eszközök](https://azure.microsoft.com/tools/) oldalon elérhető eszközöket, és ha a Visual studiót használja, a [Visual Studio Marketplace](https://marketplace.visualstudio.com/)-en.
 

@@ -1,76 +1,77 @@
 ---
-title: Egy Azure-tárolói rendszerképpel termékváltozatok |} Az Azure Marketplace-en
-description: SKU-k konfigurálása egy Azure-tárolóhoz.
+title: SKU egy Azure containers-rendszerképhez | Azure piactér
+description: Adja meg az SKU-t egy Azure-tárolóhoz.
 services: Azure, Marketplace, Cloud Partner Portal,
 author: dan-wesley
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/24/2019
 ms.author: pabutler
-ms.openlocfilehash: 6953329bfabe99fc4bb28f2494cb412ba9cbbba0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5b69eea8ad7fd4c62925b50434b653118890e280
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64942902"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73823146"
 ---
-# <a name="container-skus-tab"></a>Tároló termékváltozatok lap
+# <a name="container-skus-tab"></a>Tároló SKU-i lapja
 
-A **termékváltozatok** lapján a **új ajánlat** lap lehetővé teszi, hogy hozzon létre egy vagy több termékváltozatok és rendelheti őket hozzá az új ajánlat.  Különböző SKU-k segítségével különbséget tenni egy megoldás szolgáltatáskészleteket, számlázási modellek vagy egyéb jellemzők alapján.
+Az **új ajánlat** oldal **SKU** -i lapján létrehozhat egy vagy több SKU-t, és hozzárendelheti őket az új ajánlathoz.  Különböző SKU-ket használhat a megoldások a szolgáltatások, a számlázási modellek vagy más jellemzők megkülönböztetésére.
 
-## <a name="sku-settings"></a>Termékváltozat-beállítások
+## <a name="sku-settings"></a>SKU-beállítások
 
-Amikor egy új ajánlat létrehozása, nincsenek bármely a tartozó termékváltozatokat. Hozzon létre egy új Termékváltozatban, kövesse az alábbi lépéseket:
+Új ajánlat létrehozásának megkezdése esetén nincs az ajánlathoz társított SKU. Új SKU létrehozásához kövesse az alábbi lépéseket:
 
-1. Az SKU-k lapon válassza ki a **új Termékváltozat**
+1. A SKU-i lapon válassza az **új SKU** elemet.
 
-   ![Új Termékváltozat kérése](./media/containers-sku-settings.png)
+   ![Új SKU-kérés](./media/containers-sku-settings.png)
 
-2. Adja meg a Termékváltozat és a tároló szükséges információkat. Minden SKU felel meg egy tárolórendszerképet. A Termékváltozat két részből áll:
+2. Adja meg a szükséges SKU-és tároló-információkat. Az egyes SKU-azonosítók egy tároló-rendszerképnek felelnek meg. Az SKU két részből áll:
 
-    -   Termékváltozat-metaadatok
-    -   Container metadata
-
-
-### <a name="sku-metadata"></a>Termékváltozat-metaadatok
-
-A Termékváltozat-metaadatokat tároló listáján kirakat megjelenített információkat tartalmaz.
-
-![Termékváltozat-metaadatok](./media/containers-sku-details.png)
+    -   SKU-metaadatok
+    -   Tároló metaadatai
 
 
-### <a name="container-metadata"></a>Container metadata
+### <a name="sku-metadata"></a>SKU-metaadatok
 
-A tároló metaadatait az adattár részletei belül az Azure Container Registry (ACR)-hivatkozási információi rendelkezik. Az Azure Marketplace-en másolja át a lemezkép egy Marketplace-specifikus, nyilvános regisztrációs adatbázisba, és majd elérhetővé teszi a lemezkép az ügyfelek hitelesítő után. Érkező kérések az Azure felhasználói az Azure Marketplace-en tárolórendszerképet fel a szolgáltatás a nyilvános beállításjegyzék a Marketplace-en, nem ACR szolgálja ki.
+Az SKU-metaadatok a tárolók listájának kirakati információit tartalmazzák.
 
-![Container metadata](./media/containers-image-repository.png)
+![SKU-metaadatok](./media/containers-sku-details.png)
+
+
+### <a name="container-metadata"></a>Tároló metaadatai
+
+A tároló metaadatai a rendszerképek tárházának részletes információit Azure Container Registry (ACR) belül. Az Azure Marketplace ezt a rendszerképet egy Marketplace-specifikus, nyilvános beállításjegyzékbe másolja, majd a minősítés után elérhetővé teszi a rendszerképet az ügyfeleknek. Az Azure-beli felhasználók által az Azure Marketplace-tárolók használatával kapcsolatos összes kérést a piactér nyilvános beállításjegyzékében kell kiszolgálni, nem az ACR-t.
+
+![Tároló metaadatai](./media/containers-image-repository.png)
     
-A **adattár részletei** az előző képernyőn rögzítése a következő mezőket tartalmazzák.  Kötelező mezőt csillag (*) rendszer feltehetően.
+A **kép tárházának részletei** az előző képernyőfelvételen a következő mezőket tartalmazzák.  A kötelező mezőket csillag (*) alapján vádoljuk.
 
--   **Előfizetés-azonosító\***  – ahol az ACR-REL megtalálható az Azure előfizetés-azonosító.
--   **Erőforráscsoport neve\***  – az ACR-REL, az erőforráscsoport nevét.
--   **Beállításjegyzék neve\***  – az ACR-név.
--   **Adattár neve\***  -adattár neve. Ez a név beállítása után ez az érték nem lehet módosítani. Használjon egy egyedi nevet a fiókjában ajánlatokkal való ütközés elkerülése érdekében.
--   **Felhasználónév\***  – az ACR-lemezképhez tartozó felhasználónév (rendszergazdai felhasználónév).
--   **Jelszó\***  – az ACR-lemezképéhez tartozó jelszót.
+-   **Előfizetés-azonosító\*** – az ACR-t tartalmazó Azure-előfizetés azonosítója.
+-   **Erőforráscsoport neve\*** – az ACR erőforráscsoport-neve.
+-   **Beállításjegyzék neve\*** – az ACR neve.
+-   **Adattár neve\*** – a tárház neve. A név beállítása után ez az érték nem módosítható. Egy egyedi név használatával elkerülhető, hogy ütközik a fiókjában lévő egyéb ajánlatokkal.
+-   **Username\*** – az ACR-képhez társított Felhasználónév (rendszergazdai Felhasználónév).
+-   **Password\*** – az ACR-képhez társított jelszó.
 
     >[!NOTE]
-    >A felhasználónév és jelszó szükségesek győződjön meg arról, hogy partnereink férhetnek hozzá az ACR-REL már említettük, a közzétételi folyamat.
+    >A felhasználónévnek és a jelszónak meg kell győződnie arról, hogy a partnerek hozzáférhetnek a közzétételi folyamatban említett ACR-hez.
 
 
 ### <a name="image-version"></a>Rendszerképverzió
 
-Amikor tesz közzé egy tárolórendszerképet, megadhat egy vagy több lemezképet címkét, és SHA digests.
+A tárolók rendszerképének közzétételekor egy vagy több képcímkét és SHA-kivonatot is megadhat.
 
-**Image Tag\* vagy kivonatoló hitelesítés**
+**Képcímke\* vagy kivonatoló**
  
-- A címke- vagy tartalmaznia kell egy `latest` címke és a egy verzió címkéje (például kezdve `xx.xx.xx-` ahol xx számos). Lehetnek [címkék manifest](https://github.com/estesp/manifest-tool) , amelyekre több platformon. Jegyzékfájl címke által hivatkozott összes címkék is hozzá kell adni úgy is fel őket. 
-- A címkék használatával több verzióját is hozzáadhat. Az összes manifest címkék (kivéve `latest`) kell kezdődnie vagy `X.Y-` vagy `X.Y.Z-` Z X, Y, amelyeknél egész számok. <br/> Például ha egy `latest` pontok megjelölése `1.0.1-linux-x64`, `1.0.1-linux-arm32`, és `1.0.1-windows-arm32`, ezekkel a címkékkel kell hozzá.
+- A címkének vagy a kivonatnak tartalmaznia kell egy `latest` címkét és egy Version címkét (például `xx.xx.xx-`, ahol XX egy szám). A több platform megcélzásához meg kell jelennie a [címkéknek](https://github.com/estesp/manifest-tool) . A jegyzékfájl által hivatkozott összes címkét is fel kell venni, hogy fel lehessen tölteni őket. 
+- Címkék használatával több tároló-verziót is hozzáadhat. Az összes manifest-címkének (kivéve `latest`) `X.Y-` vagy `X.Y.Z-` kell kezdődnie, ahol az X, az Y, a Z egész számok. <br/> Ha például egy `latest` címke `1.0.1-linux-x64`ra, `1.0.1-linux-arm32`ra és `1.0.1-windows-arm32`re mutat, ezeket a címkéket hozzá kell adni.
 
 >[!NOTE]
->Ne felejtse el hozzáadni a **teszt címke** a lemezképre, így azonosíthatja a rendszerkép tesztelése során.
+>Ne feledje, hogy adjon hozzá egy **teszt címkét** a képhez, hogy a tesztelés során azonosítható legyen a rendszerkép.
 
 
 ## <a name="next-steps"></a>További lépések
 
-Használja a [piactér lapján](./cpp-marketplace-tab.md) hozhat létre a piactéren az ajánlat leírását. 
+A [piactér lapon](./cpp-marketplace-tab.md) létrehozhat egy piactér-leírást az ajánlathoz. 

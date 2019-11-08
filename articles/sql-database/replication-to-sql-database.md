@@ -1,22 +1,22 @@
 ---
-title: Replikálás Azure SQL Database "
+title: Replikáció
 description: Tudnivalók a SQL Server replikáció használatáról Azure SQL Database önálló adatbázisok és adatbázisok rugalmas készletekben való használatával
 services: sql-database
 ms.service: sql-database
 ms.subservice: data-movement
-ms.custom: ''
+ms.custom: seo-lt-2019
 ms.devlang: ''
 ms.topic: conceptual
 author: allenwux
 ms.author: xiwu
 ms.reviewer: mathoma
 ms.date: 01/25/2019
-ms.openlocfilehash: ae564a98b77b1ac564fa9aae152b27c491187d0c
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: ac198ed8eac6221831fbb280129b76e5fa4e3413
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73692219"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73815769"
 ---
 # <a name="replication-to-sql-database-single-and-pooled-databases"></a>Replikálás egyetlen és készletezett adatbázis SQL Database
 
@@ -38,7 +38,7 @@ SQL Server replikáció konfigurálható egyetlen és készletezett adatbázisra
 - SQL Server 2014 (12. x) SP1 CU3
 - SQL Server 2014 (12. x) RTM CU10
 - SQL Server 2012 (11. x) SP2 CU8 vagy SP3
-- Ha a replikálást egy régebbi verzióval kísérli meg konfigurálni, a MSSQL_REPL20084 hibakódot eredményezhet (a folyamat nem tudott csatlakozni az előfizetőhöz.) és a MSSQL_REPL40532 (a kiszolgáló \<neve nem nyitható meg a bejelentkezés által kért >. A bejelentkezés sikertelen.)  
+- Ha a replikálást egy régebbi verzióval kísérli meg konfigurálni, a MSSQL_REPL20084 hibaszám lehet (a folyamat nem tudott csatlakozni az előfizetőhöz.) és a MSSQL_REPL40532 (nem nyitható meg a kiszolgáló \<neve > a bejelentkezés által kért név. A bejelentkezés sikertelen.)  
 - A Azure SQL Database összes funkciójának használatához a [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) és a [SQL Server Data Tools](https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt)legújabb verzióit kell használnia.  
   
 ## <a name="remarks"></a>Megjegyzések
@@ -51,7 +51,7 @@ SQL Server replikáció konfigurálható egyetlen és készletezett adatbázisra
 - SQL Server egyetlen kiadványa képes támogatni Azure SQL Database és SQL Server (helyszíni és SQL Server Azure-beli virtuális gépeken) előfizetők számára.  
 - A replikációs felügyeletet, a figyelést és a hibaelhárítást a helyszíni SQL Server kell végrehajtania.  
 - Csak a Azure SQL Database leküldéses előfizetések támogatottak.  
-- SQL Database esetében csak `@subscriber_type = 0` támogatott a **sp_addsubscription** .  
+- SQL Database esetében csak `@subscriber_type = 0` támogatott **sp_addsubscription** .  
 - A Azure SQL Database nem támogatja a kétirányú, azonnali, frissíthető vagy egyenrangú replikálást.
 
 ## <a name="replication-architecture"></a>Replikációs architektúra  

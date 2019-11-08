@@ -4,15 +4,16 @@ description: A Dynamics 365-hez készült érdeklődők felügyeletének konfigu
 services: Azure, Marketplace, commercial marketplace, Partner Center
 author: qianw211
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 07/30/2019
 ms.author: evansma
-ms.openlocfilehash: 181a3f3a8d3cabb2fdf6caf79cef16201fab0c68
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: 37cf613b6e0bd2ec9910dd3e7431c0feaa02431c
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72177807"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73812306"
 ---
 # <a name="configure-lead-management-for-dynamics-365-for-customer-engagement"></a>Az érdeklődők felügyeletének konfigurálása a Dynamics 365-hez ügyfél-engagement esetén
 
@@ -93,7 +94,7 @@ Az alábbi lépésekkel konfigurálhatja a Dynamics 365-hez készült Azure Acti
 10. Az ügyfél titkos kulcsának sikeres létrehozása után másolja ki **az ügyfél titkos értékét**. Az értéket nem fogja tudni lekérni az oldalról való elmozdulás után. Mentse ezt az értéket, mivel az *ügyfél titkos* értéke, amelyet a közzétételi portálon kell megadnia, hogy fogadja az érdeklődőket a Piactéri ajánlathoz. 
 11. Válassza az **API-engedélyek** lehetőséget az alkalmazások bal oldali navigációs sávján, majd válassza az **engedély hozzáadása**lehetőséget.
 12. Válassza a Microsoft API-k lehetőséget, majd válassza a **Dynamics CRM** lehetőséget API-ként.
-13. Az *alkalmazás által igényelt engedélyek típusa*beállításnál ellenőrizze, hogy a **delegált engedélyek** van-e kiválasztva. Győződjön meg arról, hogy a **user_impersonation** *hozzáférési Common Data Service szervezeti felhasználóként*van engedélyezve. Válassza az **engedélyek hozzáadása**lehetőséget.
+13. Az *alkalmazás által igényelt engedélyek típusa*beállításnál ellenőrizze, hogy a **delegált engedélyek** van-e kiválasztva. Győződjön meg arról, hogy **user_impersonation** *hozzáférés-Common Data Service a szervezet felhasználója*engedélyekkel rendelkezik. Válassza az **engedélyek hozzáadása**lehetőséget.
 
     ![Engedélyek hozzáadása](./media/commercial-marketplace-lead-management-instructions-dynamics/api-permissions.png)
 

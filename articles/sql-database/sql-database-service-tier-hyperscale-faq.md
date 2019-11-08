@@ -1,5 +1,5 @@
 ---
-title: Azure SQL Database nagy kapacitású – gyakori kérdések
+title: Rugalmas skálázással kapcsolatos gyakori kérdések
 description: Válaszok a gyakori kérdésekre az ügyfelek a nagy kapacitású szolgáltatási rétegében – általában nagy kapacitású-adatbázis néven – egy Azure SQL Database-adatbázist kérnek.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: dimitri-furman
 ms.author: dfurman
 ms.reviewer: ''
 ms.date: 10/12/2019
-ms.openlocfilehash: c7960ca4e2dc2e676bc8668981108ce0f8589c0d
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 89316811f39b4cab918b913b45ae5945686e6b15
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73687334"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73818212"
 ---
 # <a name="azure-sql-database-hyperscale-faq"></a>Azure SQL Database nagy kapacitású – gyakori kérdések
 
@@ -385,6 +385,6 @@ Nem. A nagy kapacitású-adatbázisok megosztott tárolóval rendelkeznek, ami a
 
 Attól függően, hogy mikor véglegesítik a tranzakciót az elsődlegesen, a napló aktuális generálási arányának megfelelően lehet pillanatnyi vagy alacsony ezredmásodpercben.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a nagy kapacitású szolgáltatási szintjéről: [nagy kapacitású szolgáltatási szintje](sql-database-service-tier-hyperscale.md).
