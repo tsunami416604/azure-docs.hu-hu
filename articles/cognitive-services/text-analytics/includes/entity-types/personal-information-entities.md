@@ -8,33 +8,14 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 10/21/2019
 ms.author: aahi
-ms.openlocfilehash: 6e46d58b3f1ef33902ab44043e954d9718d865af
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 3aa4da9a9cf3d1d4b664e81f1fd18f2b225d731d
+ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73508044"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73799906"
 ---
 ## <a name="personal-information-entity-types"></a>Személyes információ típusú entitások típusai:
-
-### <a name="person"></a>Személy
-Felismert nevek és más személyek a szövegben.
-Nyelvek
-* Nyilvános előzetes verzió: `English`
-
-| Altípus neve | Leírás             |
-|--------------|-------------------------|
-| –          | Felismert nevek, például `Bill Gates`, `Marie Curie` |
-
-### <a name="organization"></a>Szervezet  
-
-Elismert szervezetek, vállalatok, ügynökségek és más csoportok. Például: vállalatok, politikai csoportok, zenei zenekarok, sport klubok, kormányzati szervek és nyilvános szervezetek. A nemzetiségek és a vallások nem szerepelnek ebben az entitás-típusban. Nyelvek 
-
-* Nyilvános előzetes verzió: `English`
-
-| Altípus neve | Leírás                                                                                      |
-|--------------|--------------------------------------------------------------------------------------------------|
-| –          | szervezetek, például `Microsoft`, `NASA` `National Oceanic and Atmospheric Administration` |
 
 ### <a name="phone-number"></a>Telefonszám
 
@@ -46,7 +27,7 @@ Nyelvek
 
 | Altípus neve           | Leírás                                           |
 |------------------------|-------------------------------------------------------|
-| –                    | Telefonszámok, például `+1 123-123-123`.          |
+| N/A                    | Telefonszámok, például `+1 123-123-123`.          |
 | EU-telefonszám        | Az Európai Unióra jellemző telefonszámok.         |
 | EU mobil telefonszáma | Az Európai Unióra jellemző mobiltelefon-telefonszámok. |
 
@@ -60,7 +41,7 @@ Nyelvek
 
 | Altípus neve | Leírás                               |
 |--------------|-------------------------------------------|
-| –          | GPS-koordináták az Európai Unión belül |
+| N/A          | GPS-koordináták az Európai Unión belül |
 
 ### <a name="azure-information"></a>Azure-információk
 

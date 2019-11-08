@@ -11,14 +11,14 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 06/26/2019
+ms.date: 11/06/2019
 ms.author: apimpm
-ms.openlocfilehash: 0bf52b45bc315874c58be50bccbffa49090d554d
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 88ef235d47a548ce426eaa2e8a8a56fb9dcb01d2
+ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72294337"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73796035"
 ---
 # <a name="api-import-restrictions-and-known-issues"></a>API-importálási korlátozások és ismert problémák
 
@@ -33,13 +33,15 @@ Ha hibaüzenetet kap a OpenAPI-dokumentum importálásakor, győződjön meg ró
 ### <a name="open-api-general"> </a>Általános
 
 -   Az elérési út és a lekérdezés kötelező paramétereinek egyedi névvel kell rendelkezniük. (A OpenAPI csak egyedinek kell lennie egy helyen belül, például elérési út, lekérdezés, fejléc. API Management azonban lehetővé tesszük, hogy a műveletek a két útvonal és a lekérdezési paraméterek (amelyek nem támogatják a OpenAPI) megkülönböztetését. Ezért a paraméterek neveinek egyedinek kell lenniük a teljes URL-sablonon belül.)
--   **@no__t – a 1ref-** mutatók nem hivatkozhatnak külső fájlokra.
+-   **\$ref** -mutatók nem hivatkozhatnak külső fájlokra.
 -   az **x-MS-paths** és az **x-Server** az egyetlen támogatott bővítmény.
 -   Az egyéni bővítményeket a rendszer figyelmen kívül hagyja az importálás során, és nem menti vagy nem őrzi meg az exportálást.
 -   **Rekurzív** – API Management nem támogatja a rekurzív módon definiált definíciókat (például a magukra hivatkozó sémák).
 -   A forrásfájl URL-címe (ha elérhető) a relatív kiszolgálói URL-címekre lesz alkalmazva.
 -   A biztonsági definíciók figyelmen kívül lesznek hagyva.
 -   Az API-műveletekhez tartozó beágyazott séma-definíciók nem támogatottak. A séma-definíciók az API-hatókörben vannak meghatározva, és az API-műveleti kérelemben vagy a válasz hatókörében is szerepelhetnek.
+-   Egy meghatározott URL-paraméternek az URL-sablon részét kell képeznie.
+-   A **létrehoz** egy kulcsszót, amely LEÍRJA az API által visszaadott MIME-típusokat, és nem támogatott. 
 
 ### <a name="open-api-v2"> </a>OpenAPI 2. verzió
 

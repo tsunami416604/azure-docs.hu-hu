@@ -6,7 +6,7 @@ documentationcenter: ''
 author: v-miegge
 manager: dcscontentpm
 editor: ''
-tags: ''
+tags: virtual-machines
 ms.service: virtual-machines
 ms.topic: troubleshooting
 ms.workload: infrastructure-services
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: azurecli
 ms.date: 09/10/2019
 ms.author: v-miegge
-ms.openlocfilehash: d942f3861eb2fcc4e096248d495b2db2d8119ea1
-ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
+ms.openlocfilehash: 6bda8cb831e84a56c889ed40109954551a34c113
+ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71132103"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73796179"
 ---
-# <a name="repair-a-windows-vm-by-using-the-azure-virtual-machine-repair-commands"></a>Windows rendszerű virtuális gép javítása az Azure-beli virtuálisgép-javítási parancsok használatával
+# <a name="repair-a-windows-vm-by-using-the-azure-virtual-machine-repair-commands"></a>Windows rendszerű virtuális gép javítása az Azure-beli virtuális gép javítási parancsaival
 
 Ha az Azure-beli Windows rendszerű virtuális gép (VM) rendszerindítási vagy lemezhiba miatt fordul elő, előfordulhat, hogy maga a lemezen is el kell végeznie a csökkentést. Gyakori példa egy sikertelen alkalmazás frissítése, amely megakadályozza, hogy a virtuális gép sikeresen elinduljon. Ez a cikk részletesen ismerteti, hogyan használható az Azure-beli virtuális gépek javítási parancsai a lemez egy másik Windowsos virtuális géphez való összekapcsolásához a hibák elhárításához, majd az eredeti virtuális gép újraépítéséhez.
 
@@ -54,7 +54,7 @@ További dokumentációt és útmutatást az [az VM Repair](https://docs.microso
 
    Az Azure Cloud Shell egy olyan ingyenes interaktív kezelőfelület, amelyet a jelen cikkben található lépések futtatására használhat. Az előtelepített és a fiókkal való használatra konfigurált általános Azure-eszközöket tartalmaz.
 
-   A Cloud Shell megnyitásához válassza a **kipróbálás** lehetőséget a kódrészlet jobb felső sarkában. Emellett megnyithatja a Cloud Shellt egy külön böngészőablakban [https://shell.azure.com](https://shell.azure.com).
+   A Cloud Shell megnyitásához válassza a **kipróbálás** lehetőséget a kódrészlet jobb felső sarkában. A Cloud Shell egy külön böngészőablakban is megnyithatja a [https://shell.azure.com](https://shell.azure.com)meglátogatásával.
 
    Válassza a **Másolás** elemet a kód blokkjának másolásához, majd illessze be a kódot a Cloud Shellba, majd a futtatásához válassza az **ENTER billentyűt** .
 
@@ -66,7 +66,7 @@ További dokumentációt és útmutatást az [az VM Repair](https://docs.microso
    az extension add -n vm-repair
    ```
 
-   Ha korábban már használta a `az vm repair` parancsokat, alkalmazza a frissítéseket a virtuálisgép-javító bővítményre.
+   Ha korábban már használta a `az vm repair` parancsokat, alkalmazza a virtuális gép javítási bővítményének frissítéseit.
 
    ```azurepowershell-interactive
    az extension update -n vm-repair
@@ -92,7 +92,7 @@ További dokumentációt és útmutatást az [az VM Repair](https://docs.microso
 
 ## <a name="verify-and-enable-boot-diagnostics"></a>Rendszerindítási diagnosztika ellenőrzése és engedélyezése
 
-A következő példa engedélyezi a diagnosztikai bővítményt a nevű ``myVMDeployed`` ``myResourceGroup``erőforráscsoport-beli virtuális gépen:
+A következő példa engedélyezi a diagnosztikai bővítményt a ``myVMDeployed`` nevű virtuális gépen a ``myResourceGroup``nevű erőforráscsoporthoz:
 
 Azure CLI
 

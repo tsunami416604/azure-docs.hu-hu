@@ -1,6 +1,6 @@
 ---
-title: A Microsoft Azure StorSimple Data Manager felhasználói felületén |} A Microsoft Docs
-description: A StorSimple Data Manager szolgáltatás felhasználói felületének használata
+title: Microsoft Azure StorSimple Data Manager felhasználói felülete | Microsoft Docs
+description: Útmutató StorSimple Data Manager szolgáltatás felhasználói felületének használatához
 services: storsimple
 documentationcenter: NA
 author: alkohli
@@ -14,152 +14,152 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 01/16/2018
 ms.author: alkohli
-ms.openlocfilehash: fa897b4b77f7f5869eab2ba2e7db9afbd84febfa
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 3a87b4c07d2e961d9876fb44c6584f37ad9246df
+ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60631420"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73796647"
 ---
-# <a name="manage-the-storsimple-data-manager-service-in-azure-portal"></a>Az Azure Portalon a StorSimple Data Manager szolgáltatás kezelése
+# <a name="manage-the-storsimple-data-manager-service-in-azure-portal"></a>A StorSimple Data Manager szolgáltatás kezelése Azure Portal
 
-Ez a cikk bemutatja, hogyan használhatja a StorSimple Data Manager felhasználói felületén a StorSimple 8000 sorozatú eszközök levő adatok átalakításához. Az átalakított adatok ezután más Azure-szolgáltatások például az Azure Media Services, Azure HDInsight, Azure Machine Learning és az Azure Search képes használni.
+Ez a cikk azt ismerteti, hogyan használhatja a StorSimple Data Manager felhasználói felületét a StorSimple 8000 Series-eszközökön tárolt adatátalakításhoz. Az átalakított adatmennyiségeket más Azure-szolgáltatások, például az Azure Media Services, az Azure HDInsight, az Azure Machine Learning és az Azure Cognitive Search is felhasználhatják.
 
 
-## <a name="use-storsimple-data-transformation"></a>A StorSimple Data átalakítást
+## <a name="use-storsimple-data-transformation"></a>Az StorSimple-adatátalakítás használata
 
-A StorSimple Data Manager, hogy az erőforrás belül mely adatok átalakítása példányosítása. Az Adatátalakítási szolgáltatás alakíthat át adatokat a StorSimple-formátumból, natív formátumban, a blobok vagy az Azure Files lehetővé teszi. A StorSimple natív formátumban adatok átalakítása, adja meg a részletes adatait a StorSimple 8000 sorozatú eszköz és az Önt érdeklő átalakítása kívánt adatok kell.
+A StorSimple Data Manager az az erőforrás, amelyen belül az adatátalakítás példánya található. Az Adatátalakítási szolgáltatás lehetővé teszi az adatok StorSimple formátumból natív formátumba való átalakítását blobokban vagy Azure Filesban. A StorSimple natív formátumának átalakításához meg kell adnia a StorSimple 8000 sorozatú eszköz adatait és az átalakítandó érdeklődési adatokat.
 
-### <a name="create-a-storsimple-data-manager-service"></a>A StorSimple Data Manager szolgáltatás létrehozása
+### <a name="create-a-storsimple-data-manager-service"></a>StorSimple Data Manager szolgáltatás létrehozása
 
-A következő lépésekkel hozzon létre egy StorSimple Data Manager szolgáltatást.
+StorSimple Data Manager szolgáltatás létrehozásához hajtsa végre az alábbi lépéseket.
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/) a Microsoft-fiók hitelesítő adataival.
 
-2. Kattintson a **+ erőforrás létrehozása** , és keresse a StorSimple Data Manager.
+2. Kattintson **az + erőforrás létrehozása** lehetőségre, és keressen rá StorSimple Data Manager.
 
-    ![Hozzon létre egy StorSimple Data Manager szolgáltatás 1](./media/storsimple-data-manager-ui/create-service-1.png)
+    ![StorSimple Data Manager szolgáltatás létrehozása 1](./media/storsimple-data-manager-ui/create-service-1.png)
 
-3. A StorSimple Data Manager elemre majd **létrehozás**.
+3. Kattintson a StorSimple Data Manager, majd a **Létrehozás**gombra.
     
-    ![Hozzon létre egy StorSimple Data Manager szolgáltatás 2](./media/storsimple-data-manager-ui/create-service-3.png)
+    ![StorSimple Data Manager szolgáltatás létrehozása 2](./media/storsimple-data-manager-ui/create-service-3.png)
 
-3. Az új szolgáltatás adja meg a következőket:
+3. Az új szolgáltatás esetében a következőt kell megadnia:
 
-   1. Adjon meg egy egyedi **szolgáltatásnév** a StorSimple Data Manager. Ez a szolgáltatás azonosítására szolgáló rövid név. A névnek 3-24 karakter hosszúságúnak kell lennie, és csak betűket, számokat és kötőjelet tartalmazhat. A névnek betűvel vagy számmal kell kezdődnie és végződnie.
+   1. Adjon egyedi **szolgáltatásnevet** a StorSimple Data Manager számára. Ez a szolgáltatás azonosítására szolgáló rövid név. A névnek 3-24 karakter hosszúságúnak kell lennie, és csak betűket, számokat és kötőjelet tartalmazhat. A névnek betűvel vagy számmal kell kezdődnie és végződnie.
 
-   2. Válasszon egy **előfizetés** a legördülő listából. Az előfizetés az Ön számlázási fiókjához lesz társítva. A mező automatikusan ki van töltve (és nem választható) Ha csak egy előfizetéssel rendelkezik.
+   2. Válasszon egy **előfizetést** a legördülő listából. Az előfizetés az Ön számlázási fiókjához lesz társítva. Ez a mező automatikusan ki van töltve (és nem választható), ha csak egy előfizetéssel rendelkezik.
 
    3. Válasszon ki egy meglévő erőforráscsoportot, vagy hozzon létre egy új csoportot. További információk: [Azure-erőforráscsoportok](https://azure.microsoft.com/documentation/articles/virtual-machines-windows-infrastructure-resource-groups-guidelines/).
 
-   4. Adja meg a **hely** környezetet tároló, a storage-fiókok és a StorSimple Data Manager szolgáltatás a szolgáltatás. A StorSimple-Eszközkezelő szolgáltatás Data Manager szolgáltatás és a társított storage-fiókban kell lenniük a támogatott régióban.
+   4. Adja meg a Storage-fiókokat és a StorSimple Data Manager szolgáltatást tároló szolgáltatás **helyét** . A StorSimple Eszközkezelő szolgáltatásra, Data Manager szolgáltatásra és a társított Storage-fiókra a támogatott régiókban kell lennie.
     
-   5. Ez a szolgáltatás hivatkozás beszerzése az irányítópulton, válassza a **rögzítés az irányítópulton**.
+   5. Ha a szolgáltatásra mutató hivatkozást szeretne kapni az irányítópulton, válassza a **rögzítés az irányítópulton**lehetőséget.
     
-   6. Kattintson a **Create** (Létrehozás) gombra.
+   6. Kattintson a **Létrehozás** elemre.
 
-      ![3\. a StorSimple Data Manager szolgáltatás létrehozása](./media/storsimple-data-manager-ui/create-service-4.png)
+      ![StorSimple Data Manager szolgáltatás létrehozása 3](./media/storsimple-data-manager-ui/create-service-4.png)
 
-A szolgáltatás létrehozása eltarthat néhány percig. A szolgáltatás sikeres létrehozása, és megjelenik az új szolgáltatás után megjelenik egy értesítés.
+A szolgáltatás létrehozása eltarthat néhány percig. Ekkor megjelenik egy értesítés a szolgáltatás sikeres létrehozása után, és megjelenik az új szolgáltatás.
 
-### <a name="create-a-data-transformation-job-definition"></a>Adatok átalakítása feladat definíciójának létrehozása
+### <a name="create-a-data-transformation-job-definition"></a>Adatátalakítási feladatok definíciójának létrehozása
 
-Egy StorSimple Data Manager szolgáltatásban szeretne létrehozni egy adatok átalakítási feladat definíciója. Feladatdefiníció Megadja, hogy az Önt érdeklő áthelyezése a storage-fiókra a natív formátumban, a StorSimple adatok részleteit. Miután létrehozta a feladatdefiníciók, majd a feladat ismét futtathatja a különböző futásidejű beállításokat.
+Egy StorSimple Data Manager szolgáltatáson belül létre kell hoznia egy Adatátalakítási feladatsort. A feladatdefiníció adja meg azokat a StorSimple adatokat, amelyeket a Storage-fiók natív formátumban való áthelyezése érdekli. A feladatdefiníció létrehozása után a feladatot újra futtathatja a különböző futtatókörnyezet-beállításokkal.
 
-A következő lépésekkel hozzon létre egy feladat definíciója.
+A feladatdefiníció létrehozásához hajtsa végre az alábbi lépéseket.
 
-1. Keresse meg a létrehozott szolgáltatásra. Lépjen a **felügyeleti > Feladatdefiníciók**.
+1. Navigáljon a létrehozott szolgáltatáshoz. Lépjen a **felügyeleti > feladatok definíciói**között.
 
-2. Kattintson a **+ feladat definíciójának**.
+2. Kattintson a **+ feladatdefiníció**elemre.
 
-    ![Kattintson a kívánt feladat definíciója](./media/storsimple-data-manager-ui/create-job-definition-1.png)
+    ![Kattintson a + feladatdefiníció](./media/storsimple-data-manager-ui/create-job-definition-1.png)
 
-3. Adjon meg egy nevet a feladatdefiníció. A név 3 és 63 karakter közötti lehet. Neve a kis-és nagybetűket, számokat és kötőjeleket tartalmazhat.
+3. Adja meg a feladatdefiníció nevét. A név 3 – 63 karakter hosszúságú lehet. A név kis-és nagybetűket, számokat és kötőjeleket is tartalmazhat.
 
-4. Adjon meg egy helyet, ahol a feladat fut-e. Ezen a helyen, mint a hely, ahol a szolgáltatás üzembe helyezése eltérő lehet.
+4. Adja meg a feladatot futtató helyet. Ez a hely eltérő lehet a szolgáltatás központi telepítésének helyétől.
 
-5. Kattintson a **forrás** forrás adattár megadásához.
+5. A forrás-adattár megadásához kattintson a **forrás** lehetőségre.
 
-    ![Forrás adatainak adattár konfigurálása](./media/storsimple-data-manager-ui/create-job-definition-2.png)
+    ![Forrásoldali adattárház konfigurálása](./media/storsimple-data-manager-ui/create-job-definition-2.png)
 
-6. Mivel ez egy új Data Manager szolgáltatás, sem az adattárak vannak konfigurálva. A **konfigurálása adatforrás**, adja meg a StorSimple 8000 sorozatú eszköz részleteit és az Önt érdeklő adatok.
+6. Mivel ez egy új Data Manager szolgáltatás, az adattárak nincsenek konfigurálva. Az **adatforrás konfigurálása**lapon adja meg a StorSimple 8000 sorozatú eszköz és az érintett adatok részleteit.
 
-   A StorSimple-Eszközkezelő, adattár hozzáadásához kattintson **új hozzáadása** az adatok tárház legördülő listából, majd kattintson a **adattár hozzáadása**.
+   Ha a StorSimple Eszközkezelő adattárházként szeretné felvenni, kattintson az **új hozzáadása** lehetőségre az adattár legördülő menüben, majd kattintson az **adattárház hozzáadása**lehetőségre.
 
-    ![Új adat-adattár hozzáadása](./media/storsimple-data-manager-ui/create-job-definition-3.png)
+    ![Új adattárház hozzáadása](./media/storsimple-data-manager-ui/create-job-definition-3.png)
   
-   1. Válasszon **a StorSimple 8000 sorozat Manager** a tárház adattípusú értékként.
+   1. Az adattárház típusaként válassza a **StorSimple 8000 Series Manager** elemet.
     
-   2. Adjon meg egy rövid nevet a forrás adattár.
+   2. Adjon meg egy rövid nevet a forrás adattár számára.
     
-   3. A legördülő listából válasszon egy előfizetést, a StorSimple-Eszközkezelő szolgáltatással kapcsolatos.
+   3. A legördülő listából válassza ki a StorSimple Eszközkezelő szolgáltatáshoz társított előfizetést.
     
-   4. Adja meg a nevét, a StorSimple Device Manager számára a **erőforrás**.
+   4. Adja meg az **erőforráshoz**Eszközkezelő StorSimple nevét.
 
-   5. Adja meg a **szolgáltatásadat-titkosítási** kulcsfontosságú a StorSimple-Eszközkezelő szolgáltatáshoz. 
+   5. Adja meg a **szolgáltatási adattitkosítási** kulcsot a StorSimple Eszközkezelő szolgáltatáshoz. 
 
-      ![Forrás adatainak tárház 1 konfigurálása](./media/storsimple-data-manager-ui/create-job-definition-4.png)
+      ![Forrásoldali adattárház konfigurálása 1](./media/storsimple-data-manager-ui/create-job-definition-4.png)
 
-      Kattintson a **OK** végeztével. Ez menti az adattárat. A StorSimple-Eszközkezelő más definíciók újból ezeket a paramétereket újbóli megadása nélkül. Kattintás után néhány másodpercet vesz igénybe **OK** a legördülő listában jelenik meg az újonnan létrehozott forrás adattár számára.
+      Ha elkészült, kattintson **az OK gombra** . Ezzel menti az adattárt. A StorSimple újrafelhasználása Eszközkezelő más feladatokban anélkül, hogy újra be kellene írni ezeket a paramétereket. Néhány másodperc elteltével az újonnan létrehozott forrás adattárházhoz tartozó **OK** gombra kattinthat a legördülő menüben.
 
-7. A legördülő listából a **adattár**, válassza ki a létrehozott adattár. 
+7. Az **adattár**legördülő listájában válassza ki a létrehozott adattárházat. 
 
-   1. Adja meg a StorSimple 8000 sorozatú eszköz, amely tartalmazza az Önt érdeklő adatok nevét.
+   1. Adja meg az StorSimple 8000 sorozatú eszköz nevét, amely tartalmazza a fontos adatmennyiséget.
 
-   2. Adja meg, amely rendelkezik az Önt érdeklő adatok StorSimple eszközön levő kötet nevével.
+   2. Adja meg annak a kötetnek a nevét, amely a StorSimple-eszközön található.
 
-   3. Az a **szűrő** alszakaszt, adja meg a gyökérkönyvtárban, amely tartalmazza a az Önt érdeklő adatok _\MyRootDirectory\Data_ formátumban. Meghajtó-betűjelek, például _\C:\Data_ nem támogatottak. Bármely fájlszűrők is hozzáadhat.
+   3. A **Filter** alszakaszban adja meg azt a gyökérkönyvtárat, amely a _\MyRootDirectory\Data_ formátumban tartalmazza az Ön számára fontos adatait. Meghajtóbetűjelek, például a _\C: a \Data_ nem támogatottak. Itt is hozzáadhat szűrőket.
 
-   4. A data transformation szolgáltatás működik, az adatokat az Azure-ban közzétett, a pillanatképek keresztül. Ez a feladat futtatásakor lehet váltani, készítsen biztonsági mentést, minden alkalommal, amikor a feladat fut (a legfrissebb adatokat dolgozhat) vagy a felhőben használja a legutóbbi meglévő biztonsági mentés (ha dolgozik, az archivált adatokat).
+   4. Az Adatátalakítási szolgáltatás a pillanatképeken keresztül az Azure-ba küldött összes adattal működik. Ha futtatja ezt a feladatot, dönthet úgy, hogy biztonsági másolatot készít a feladatok futtatásakor (a legfrissebb adatok működéséhez), vagy használja a felhőben az utolsó meglévő biztonsági mentést (ha egyes archivált adatokon dolgozik).
 
    5. Kattintson az **OK** gombra.
 
-      ![Forrás adatainak tárház 2 konfigurálása](./media/storsimple-data-manager-ui/create-job-definition-8.png)
+      ![Forrásoldali adattárház konfigurálása 2](./media/storsimple-data-manager-ui/create-job-definition-8.png)
 
-8. Ezután a céladatbázisban adatokat kell megadni. Válassza ki az adott fiókban blobokba helyezi a fájlokat a storage-fiókok. A legördülő listában válassza ki a **új hozzáadása** , majd **beállításainak konfigurálása**.
+8. Ezután meg kell adni a célként megadott adattárat. Válassza ki a Storage-fiókok lehetőséget, hogy a fájlokat a fiókba helyezze a blobba. A legördülő menüben válassza az **új hozzáadása** , majd a **beállítások konfigurálása**lehetőséget.
 
-9. Válassza ki a hozzáadni kívánt cél-tárházat és az adattár társítva a többi paraméter típusát.
+9. Válassza ki a hozzáadni kívánt cél tárház típusát és az adattárhoz társított egyéb paramétereket.
 
-    Ha a tárolási fiók céljának választja, megadhatja egy rövid nevet, az előfizetés (Válasszon azonos-e a szolgáltatás, vagy más), és a egy storage-fiókot.
-        ![Konfigurálja a céladattárban 1](./media/storsimple-data-manager-ui/create-job-definition-10.png)
+    Ha kijelöl egy tárolási fióktípus célját, megadhat egy rövid nevet, egy előfizetést (válassza a szolgáltatás vagy más) és egy Storage-fiók nevét.
+        ![a célként megadott adattárház konfigurálása 1](./media/storsimple-data-manager-ui/create-job-definition-10.png)
 
-    A feladat futtatásakor jön létre egy tárolási sorba. A sorba az átalakított blobokkal kapcsolatos üzenetek kerülnek, amint a blobok elkészültek. A sor neve megegyezik a feladatdefiníció nevével.
+    A rendszer a feladatok futtatásakor létrehoz egy tárolási várólistát. A sorba az átalakított blobokkal kapcsolatos üzenetek kerülnek, amint a blobok elkészültek. A sor neve megegyezik a feladatdefiníció nevével.
     
-10. Miután hozzáadta az adattár, várjon néhány percig.
+10. Az adattár hozzáadása után várjon néhány percet.
     
-    1. Válassza ki a létrehozott adattárat a legördülő listából a célként a **célfiók neve**.
+    1. Válassza ki a célként létrehozott tárházat a **cél fiók neve**legördülő listából.
 
-    2. Válassza ki az storage BLOB vagy-fájlokat. Adja meg a nevét, a storage-tároló, ahol az átalakított adatok találhatók. Kattintson az **OK** gombra.
+    2. Válassza ki a tároló típusát blobként vagy fájlként. Adja meg annak a tárolási tárolónak a nevét, ahol az átalakított adat található. Kattintson az **OK** gombra.
 
-        ![Adatok tárház céltárfiók konfigurálása](./media/storsimple-data-manager-ui/create-job-definition-16.png)
+        ![A TARGET adattárház Storage-fiókjának konfigurálása](./media/storsimple-data-manager-ui/create-job-definition-16.png)
 
-11. Feladat időtartama a feladat futtatása előtt becslést jelentenek lehetőséget is ellenőrizheti. Kattintson a **OK** a feladatdefiníció létrehozása. A feladat definíciója már befejeződött. Ezt a feladatdefiníciót, a felhasználói felületen keresztül többször is használhatja a különböző futásidejű beállításokat.
+11. Azt is megteheti, hogy a feladatok futtatása előtt a feladatok időtartamára vonatkozó becslést is megtekintheti. Kattintson az **OK** gombra a feladatdefiníció létrehozásához. A feladatdefiníció már befejeződött. Ezt a feladatdefiníció többször is használhatja a felhasználói felületen a különböző futtatókörnyezeti beállításokkal.
 
-    ![Teljes feladat definíciója](./media/storsimple-data-manager-ui/create-job-definition-13.png)
+    ![Feladatdefiníció befejezése](./media/storsimple-data-manager-ui/create-job-definition-13.png)
 
-    Az újonnan létrehozott feladatdefiníció hozzáadódik ehhez a szolgáltatáshoz a feladatdefiníciók listáját.
+    Az újonnan létrehozott feladatdefiníció hozzá lett adva a szolgáltatáshoz tartozó feladatdefiníciók listájához.
 
-### <a name="run-the-job-definition"></a>A feladatfuttatási definíció
+### <a name="run-the-job-definition"></a>A feladatdefiníció futtatása
 
-Adatok áthelyezése a storage-fiókba, a feladat-definícióban megadott StorSimple van szüksége, akkor kell futtatnia. Futásidőben néhány paraméter eltérően adható meg. A lépések a következők:
+Ha az StorSimple-ből a feladatdefiníció által megadott Storage-fiókba kell áthelyeznie az adatait, futtatnia kell azt. Futásidőben egyes paramétereket különbözőképpen lehet megadni. A lépések a következők:
 
-1. Válassza ki a StorSimple Data Manager szolgáltatást, és nyissa meg **felügyeleti > Feladatdefiníciók**. Válassza ki, majd kattintson a futtatni kívánt feladat definíciója.
+1. Válassza ki a StorSimple Data Manager szolgáltatást, és lépjen a **felügyeleti > feladatok definíciói**között. Jelölje ki, majd kattintson a futtatni kívánt feladatdefiníció elemre.
      
-     ![Futtatás 1 feladat indítása](./media/storsimple-data-manager-ui/start-job-run1.png)
+     ![Indítsa el az 1. feladatot](./media/storsimple-data-manager-ui/start-job-run1.png)
 
-2. Kattintson a **Futtatás most**.
+2. Kattintson a **Futtatás most**lehetőségre.
      
-     ![Futtassa a 2 feladat indítása](./media/storsimple-data-manager-ui/start-job-run2.png)
+     ![Indítsa el a 2. feladatot](./media/storsimple-data-manager-ui/start-job-run2.png)
 
-3. Kattintson a **futtatási beállítások** módosíthatja azokat a beállításokat, előfordulhat, hogy módosítani szeretné a feladat futtatásához. Kattintson a **OK** majd **futtatása** a feladat elindításához.
+3. Kattintson a **Beállítások futtatása** lehetőségre a feladatok futtatásához módosítani kívánt beállítások módosításához. Kattintson **az OK** gombra, majd kattintson a **Futtatás** gombra a feladatok elindításához.
 
-    ![Indítsa el a feladatok futtatásához 3](./media/storsimple-data-manager-ui/start-job-run3.png)
+    ![Indítsa el a 3. futtatási feladatot](./media/storsimple-data-manager-ui/start-job-run3.png)
 
-4. Ez a feladat figyeléséhez nyissa meg **feladatok** a StorSimple Data Manager. A megfigyelési funkciókon túl a **feladatok** panelen is hallgathatja meg a tárolási üzenetsort, amikor egy üzenet bekerül minden alkalommal, amikor egy fájl átkerül a StorSimple-ből a storage-fiókot.
+4. A feladat figyeléséhez lépjen a StorSimple Data Manager **feladatok** elemére. A **feladatok** panelen a figyelés mellett azt is megfigyelheti, hogy a tárolási várólistán hol jelenik meg egy üzenet, amikor egy fájlt áthelyeznek a StorSimple a Storage-fiókba.
 
-    ![Indítsa el a feladatok futtatásához 4](./media/storsimple-data-manager-ui/start-job-run4.png)
+    ![A 4. futtatási hely elindítása](./media/storsimple-data-manager-ui/start-job-run4.png)
 
 
 ## <a name="next-steps"></a>További lépések
 
-[.NET SDK használatával indítsa el a StorSimple Data Manager-feladatok](storsimple-data-manager-dotnet-jobs.md).
+[StorSimple Data Manager feladatok elindításához használja a .net SDK-t](storsimple-data-manager-dotnet-jobs.md).

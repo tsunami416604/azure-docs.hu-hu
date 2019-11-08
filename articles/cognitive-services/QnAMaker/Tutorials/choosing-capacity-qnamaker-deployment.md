@@ -1,7 +1,7 @@
 ---
-title: Üzembe helyezés – QnA Maker erőforrás-kapacitást
+title: Erőforrás-kapacitás az üzembe helyezéshez – QnA Maker
 titleSuffix: Azure Cognitive Services
-description: A QnA Maker szolgáltatást hoz létre, mielőtt, meg kell határoznia, melyik szint a fenti szolgáltatások az Ön számára megfelelő.
+description: A QnA Maker szolgáltatás létrehozása előtt el kell döntenie, hogy a fenti szolgáltatások melyik szintje legyen megfelelő az Ön számára.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -11,43 +11,43 @@ ms.topic: article
 ms.date: 08/30/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: 2d8f0fce3cb8f1cd8fdb596cb4e238a79d6cee4c
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: 5cbdb6fcf9fcdf12b54ff1db4b577bb975517131
+ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70193501"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73793950"
 ---
-# <a name="choosing-capacity-for-your-qna-maker-deployment"></a>A QnA Maker telepítés kapacitás kiválasztása
+# <a name="choosing-capacity-for-your-qna-maker-deployment"></a>A QnA Maker üzemelő példány kapacitásának kiválasztása
 
-A QnA Maker szolgáltatást függőséget vesz fel három Azure-erőforrások:
-1.  App Service (a a modul)
-2.  Azure Search (QnAs tárolásához és kereséséhez)
-3.  Az App Insights (nem kötelező, csevegési naplók és a telemetriai adatok tárolása)
+A QnA Maker szolgáltatás három Azure-erőforrás függőségét veszi igénybe:
+1.  App Service (a futtatókörnyezethez)
+2.  Azure Cognitive Search (QnAs tárolásához és kereséséhez)
+3.  Alkalmazás-elemzések (nem kötelező, csevegési naplók és telemetria tárolásához)
 
-A QnA Maker szolgáltatást hoz létre, mielőtt, meg kell határoznia, melyik szint a fenti szolgáltatások az Ön számára megfelelő. 
+A QnA Maker szolgáltatás létrehozása előtt el kell döntenie, hogy a fenti szolgáltatások melyik szintje legyen megfelelő az Ön számára. 
 
-Nincsenek általában három olyan paraméterek, figyelembe kell vennie:
+Általában három paramétert kell figyelembe vennie:
 
-1. **A szolgáltatás által igényelt átviteli sebesség**: Az igényeinek megfelelően válassza ki az App Service-hez megfelelő alkalmazáscsomag- [csomagot](https://azure.microsoft.com/pricing/details/app-service/plans/) . Is [vertikális felskálázás](https://docs.microsoft.com/azure/app-service/manage-scale-up) vagy le az alkalmazást. Ez is befolyásolja-e az Azure Search termékváltozat, további részletekért lásd: [Itt](https://docs.microsoft.com/azure/search/search-sku-tier).
+1. **A szolgáltatás által igényelt átviteli sebesség**: válassza ki a [megfelelő alkalmazáscsomag az App](https://azure.microsoft.com/pricing/details/app-service/plans/) Service-hez az igényei alapján. Az alkalmazás vertikális fel-és [leskálázásra](https://docs.microsoft.com/azure/app-service/manage-scale-up) is használható. Ez az Azure Cognitive Search SKU kiválasztását is befolyásolhatja, további részletek [itt](https://docs.microsoft.com/azure/search/search-sku-tier)találhatók.
 
-1. **A Tudásbázis mérete és száma**: Válassza ki a megfelelő [Azure Search SKU](https://azure.microsoft.com/pricing/details/search/) -t a forgatókönyvhöz. Egy adott szintre, ahol N az indexek maximális száma a csomagban engedélyezett N-1 tudásbázisok teheti közzé. A maximális méret és engedélyezett / csomag dokumentumok számát is ellenőrizheti.
+1. A **Tudásbázis mérete és száma**: válassza ki a megfelelő [Azure Search SKU](https://azure.microsoft.com/pricing/details/search/) -t a forgatókönyvhöz. Az N-1 tudásbázist egy adott rétegben teheti közzé, ahol N a rétegben engedélyezett maximális indexek. Tekintse meg a maximális méretet és a másodpercenként engedélyezett dokumentumok számát is.
 
     Ha például a réteg 15 engedélyezett indextel rendelkezik, a közzétett Tudásbázisban 14 tudásbázist (1 indexet) tehet közzé. A tizenötödik index a szerzői műveletek és a tesztelés összes tudásbázisához használatos. 
 
-1. **Dokumentumok száma forrásként**: A QnA Maker felügyeleti szolgáltatás ingyenes SKU-jának korlátozása a Portálon és az API-kon keresztül felügyelhető dokumentumok számát (egyenként 1 MB-os méret). A standard Termékváltozat már kezelheti a dokumentumok száma nincs korlátozva. További részletek [Itt](https://aka.ms/qnamaker-pricing).
+1. **Dokumentumok száma forrásként**: a QnA Maker felügyeleti szolgáltatás ingyenes SKU-jának a Portálon és az API-kon keresztül kezelhető dokumentumok számát korlátozza (egyenként 1 MB méretűre). A standard SKU nem korlátozza a felügyelhető dokumentumok számát. További részletek [itt](https://aka.ms/qnamaker-pricing)találhatók.
 
-Az alábbi táblázat néhány általános útmutatást biztosít.
+A következő táblázat néhány magas szintű útmutatást nyújt.
 
-|                        | A QnA Maker kezelése | App Service | Azure Search | Korlátozások                      |
+|                        | QnA Maker-kezelés | App Service | Azure Cognitive Search | Korlátozások                      |
 | ---------------------- | -------------------- | ----------- | ------------ | -------------------------------- |
-| Kísérletezés        | Ingyenes Termékváltozat             | Ingyenes szint   | Ingyenes szint    | Legfeljebb 2 Tudásbázis, 50 MB-os méret közzététele  |
-| Fejlesztési-tesztelési környezet   | Standard termékváltozat         | Közös      | Alapszintű        | Akár 14 Tudásbázis, 2 GB méretű közzététele    |
-| Éles környezetben | Standard termékváltozat         | Alapszintű       | Standard     | Akár 49 Tudásbázis, 25 GB méretű közzététele |
+| Kísérletezés        | Ingyenes SKU             | Ingyenes szint   | Ingyenes szint    | Legfeljebb 2 Tudásbázis közzététele, 50 MB méretű  |
+| Fejlesztési/tesztelési környezet   | Standard termékváltozat         | Megosztott      | Basic        | Legfeljebb 14 Tudásbázis közzététele, 2 GB méretű méret    |
+| Éles környezet | Standard termékváltozat         | Basic       | Standard     | Közzététel akár 49 Tudásbázis, 25 GB méretű |
 
-A QnA Maker stack frissítése, lásd: [frissítse a QnA Maker szolgáltatást](../How-To/set-up-qnamaker-service-azure.md#upgrade-qna-maker).
+A QnA Maker stack frissítését lásd: [a QnA Maker szolgáltatás frissítése](../How-To/set-up-qnamaker-service-azure.md#upgrade-qna-maker).
 
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [A QnA Maker szolgáltatás frissítése](../How-To/set-up-qnamaker-service-azure.md#upgrade-qna-maker)
+> [QnA Maker szolgáltatás frissítése](../How-To/set-up-qnamaker-service-azure.md#upgrade-qna-maker)

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 06/12/2018
 ms.author: robreed
-ms.openlocfilehash: e2faf444aa411f0e60f1b5c7b1f811abc2f6b63a
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: 1825f9f0f5d525c0129341d800ca5949136ae633
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72176686"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73750072"
 ---
 # <a name="dsc-extension-for-linux-microsoftostcextensionsdscforlinux"></a>DSC-bővítmény Linuxra (Microsoft. OSTCExtensions. DSCForLinux)
 
@@ -35,7 +35,7 @@ A DSCForLinux bővítményt a Microsoft közzétette és támogatja. A bővítm�
 - Egyéni DSC-modulok telepítése Linux rendszerű virtuális gépre (ExtensionAction telepítése)
 - Egyéni DSC-modulok eltávolítása a Linux rendszerű virtuális gépre (ExtensionAction eltávolítása)
 
-[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
+ 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -43,7 +43,7 @@ A DSCForLinux bővítményt a Microsoft közzétette és támogatja. A bővítm�
 
 A DSC Linux-bővítmény támogatja az [Azure-ban támogatott összes Linux-disztribúciót](/azure/virtual-machines/linux/endorsed-distros) , kivéve a következőket:
 
-| Terjesztés | Verzió |
+| Disztribúció | Verzió |
 |---|---|
 | Debian | minden verzió |
 | Ubuntu| 18,04 |
@@ -58,11 +58,11 @@ A DSCForLinux-bővítmény megköveteli, hogy a célként megadott virtuális g�
 
 Az összes támogatott nyilvános konfigurációs paraméter:
 
-* `FileUri`: (opcionális, karakterlánc) a MOF-fájl/meta MOF-fájl/egyéni erőforrás ZIP-fájljának URI-ja.
-* `ResourceName`: (opcionális, karakterlánc) az egyéni erőforrás-modul neve
+* `FileUri`: (nem kötelező, karakterlánc) a MOF-fájl/meta MOF-fájl/egyéni erőforrás ZIP-fájljának URI-ja.
+* `ResourceName`: (nem kötelező, karakterlánc) az egyéni erőforrás-modul neve
 * `ExtensionAction`: (nem kötelező, karakterlánc) megadja a bővítményt. érvényes értékek: regisztrálás, leküldés, lekérés, telepítés, eltávolítás. Ha nincs megadva, a rendszer alapértelmezés szerint leküldéses műveletnek tekinti.
 * `NodeConfigurationName`: (nem kötelező, karakterlánc) az alkalmazandó csomópont-konfiguráció neve.
-* `RefreshFrequencyMins`: (opcionális, int) Megadja, hogy a DSC milyen gyakran próbálja megszerezni a konfigurációt a lekérési kiszolgálóról. 
+* `RefreshFrequencyMins`: (nem kötelező, int) Megadja, hogy a DSC milyen gyakran próbálja megszerezni a konfigurációt a lekérési kiszolgálóról. 
        Ha a lekérési kiszolgálón a konfiguráció eltér az aktuálistól, a rendszer átmásolja a függőben lévő tárolóba, és alkalmazza azokat.
 * `ConfigurationMode`: (nem kötelező, karakterlánc) Megadja, hogy a DSC hogyan alkalmazza a konfigurációt. Az érvényes értékek a következők: ApplyOnly, ApplyAndMonitor, ApplyAndAutoCorrect.
 * `ConfigurationModeFrequencyMins`: (opcionális, int) Megadja, hogy milyen gyakran (percben) a DSC biztosítja, hogy a konfiguráció a kívánt állapotban legyen.
@@ -76,12 +76,12 @@ Az összes támogatott nyilvános konfigurációs paraméter:
 A támogatott védett konfigurációs paraméterek a következők:
 
 * `StorageAccountName`: (nem kötelező, karakterlánc) a fájlt tartalmazó Storage-fiók neve
-* `StorageAccountKey`: (opcionális, karakterlánc) a fájlt tartalmazó Storage-fiók kulcsa
+* `StorageAccountKey`: (nem kötelező, karakterlánc) a fájlt tartalmazó Storage-fiók kulcsa
 * `RegistrationUrl`: (nem kötelező, karakterlánc) a Azure Automation-fiók URL-címe
-* `RegistrationKey`: (nem kötelező, karakterlánc) a Azure Automation fiók hozzáférési kulcsa
+* `RegistrationKey`: (nem kötelező, karakterlánc) a Azure Automation fiók elérési kulcsa
 
 
-## <a name="scenarios"></a>Alkalmazási helyzetek
+## <a name="scenarios"></a>Forgatókönyvek
 
 ### <a name="register-to-azure-automation-account"></a>Regisztrálás Azure Automation fiókba
 védett. JSON
@@ -286,9 +286,9 @@ Azure Resource Manager sablonnal kapcsolatos további információkért látogas
 ## <a name="azure-cli-deployment"></a>Azure CLI üzembe helyezése
 
 ### <a name="21-using-azure-cliazure-cli"></a>2,1. Az [**Azure CLI**] használata [Azure-CLI]
-A DSCForLinux-bővítmény telepítése előtt konfigurálnia kell a `public.json` és a `protected.json` értéket a 3. szakasz különböző forgatókönyvei alapján.
+A DSCForLinux-bővítmény telepítése előtt konfigurálnia kell a `public.json` és `protected.json`a 3. szakaszban szereplő különböző forgatókönyvek szerint.
 
-#### <a name="211-classic"></a>2.1.1. Hagyományos
+#### <a name="211-classic"></a>2.1.1. Klasszikus
 A klasszikus módot Azure Service Management üzemmódnak is nevezik. A következő futtatásával válthat:
 ```
 $ azure config mode asm
@@ -305,7 +305,7 @@ Az elérhető legújabb bővítmény-verzió megismeréséhez futtassa a követk
 $ azure vm extension list
 ```
 
-#### <a name="212-resource-manager"></a>2.1.2. Erőforrás-kezelő
+#### <a name="212-resource-manager"></a>2.1.2. Resource Manager
 A Azure Resource Manager módba való váltáshoz futtassa a következőt:
 ```
 $ azure config mode arm
@@ -318,7 +318,7 @@ DSCForLinux Microsoft.OSTCExtensions <version> \
 --private-config-path protected.json --public-config-path public.json
 ```
 > [!NOTE]
-> Azure Resource Manager módban a `azure vm extension list` most nem érhető el.
+> Azure Resource Manager módban a `azure vm extension list` jelenleg nem érhető el.
 >
 
 ### <a name="22-using-azure-powershellazure-powershell"></a>2,2. A [**Azure PowerShell**] [Azure-PowerShell] használata
@@ -429,5 +429,5 @@ Bizonyos esetekben a DSC linuxos bővítmény nem tudja telepíteni a következ�
 
 Ha a cikk bármely pontján további segítségre van szüksége, vegye fel a kapcsolatot az Azure-szakértőkkel az [MSDN Azure-ban, és stack overflow fórumokat](https://azure.microsoft.com/support/community/)is. Másik lehetőségként egy Azure-támogatási incidenst is megadhat. Nyissa meg az [Azure támogatási webhelyét](https://azure.microsoft.com/support/options/) , és válassza a támogatás kérése lehetőséget. További információ az Azure-támogatás használatáról: [Microsoft Azure támogatással kapcsolatos gyakori kérdések](https://azure.microsoft.com/support/faq/).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 További információ a bővítményekről: [virtuálisgép-bővítmények és-szolgáltatások Linux rendszerhez](features-linux.md).

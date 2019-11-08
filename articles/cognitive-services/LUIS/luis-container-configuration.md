@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 11/04/2019
+ms.date: 11/07/2019
 ms.author: dapine
-ms.openlocfilehash: 163fe24c941f779a2160ee5ef50f9d4dfcea1022
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: a30fcd0ec7e53c78876596baf787639e81c638db
+ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73486734"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73795013"
 ---
 # <a name="configure-language-understanding-docker-containers"></a>Language Understanding Docker-tárolók konfigurálása 
 
@@ -35,7 +35,7 @@ Ez a tároló a következő konfigurációs beállításokat tartalmaz:
 |Nem|[Fluentd](#fluentd-settings)|Írási napló és opcionálisan metrikus adatok egy Fluent-kiszolgáló számára.|
 |Nem|[Http-proxy](#http-proxy-credentials-settings)|HTTP-proxy konfigurálása kimenő kérések készítéséhez.|
 |Nem|[Naplózás](#logging-settings)|ASP.NET Core naplózási támogatást biztosít a tárolóhoz. |
-|Igen|[Tartók](#mount-settings)|Adatok olvasása és írása a gazdagépről a tárolóba és a tárolóból a gazdagépre.|
+|Igen|[Csatlakoztatja](#mount-settings)|Adatok olvasása és írása a gazdagépről a tárolóba és a tárolóból a gazdagépre.|
 
 > [!IMPORTANT]
 > A [`ApiKey`](#apikey-setting), [`Billing`](#billing-setting)és [`Eula`](#eula-setting) beállításokat a rendszer együtt használja, és mindhárom esetben érvényes értékeket kell megadnia. Ellenkező esetben a tároló nem indul el. A tárolók létrehozásához szükséges konfigurációs beállításokkal kapcsolatos további információkért lásd: [számlázás](luis-container-howto.md#billing).
@@ -64,9 +64,9 @@ Ez a beállítás a következő helyeken érhető el:
 * Azure Portal: **Cognitive Services** áttekintés, címkézett `Endpoint`
 * LUIS Portal: **kulcsok és végponti beállítások** lap a végpont URI részeként.
 
-| Kötelező | Name (Név) | Data type | Leírás |
+| Kötelező | Név | Data type | Leírás |
 |----------|------|-----------|-------------|
-| Igen      | `Billing` | sztring | Számlázási végpont URI-ja. |
+| Igen      | `Billing` | sztring | Számlázási végpont URI-ja. A számlázási URI beszerzésével kapcsolatos további információkért lásd: a [szükséges paraméterek összegyűjtése](luis-container-howto.md#gathering-required-parameters). További információk és a regionális végpontok teljes listája: [Cognitive Services egyéni altartománynevei nevei](../cognitive-services-custom-subdomains.md). |
 
 ## <a name="eula-setting"></a>Végfelhasználói licencszerződés beállítása
 
@@ -94,7 +94,7 @@ A gazdagép csatlakoztatási helyének pontos szintaxisa a gazda operációs ren
 
 A következő táblázat a támogatott beállításokat ismerteti.
 
-|Kötelező| Name (Név) | Data type | Leírás |
+|Kötelező| Név | Data type | Leírás |
 |-------|------|-----------|-------------|
 |Igen| `Input` | Sztring | A bemeneti csatlakoztatás célja. Az alapértelmezett érték `/input`. Ez a LUIS-csomag fájljainak helye. <br><br>Példa:<br>`--mount type=bind,src=c:\input,target=/input`|
 |Nem| `Output` | Sztring | A kimeneti csatlakoztatás célja. Az alapértelmezett érték `/output`. Ez a naplók helye. Ide tartozik a LUIS-lekérdezési naplók és a tároló-naplók. <br><br>Példa:<br>`--mount type=bind,src=c:\output,target=/output`|

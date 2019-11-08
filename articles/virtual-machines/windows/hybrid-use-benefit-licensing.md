@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 4/22/2018
 ms.author: xujing
-ms.openlocfilehash: e3928d865178d0afc3d814ae0d7794f981f49d47
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 1c16ebe1f0b07e5ee5ef73dc3dd4781161f934b6
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70079413"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73749379"
 ---
 # <a name="azure-hybrid-benefit-for-windows-server"></a>Azure Hybrid Benefit Windows Serverhez
 A frissítési garanciával rendelkező ügyfelek számára a Windows Server Azure Hybrid Benefit lehetővé teszi a helyszíni Windows Server-licencek használatát, és a Windows rendszerű virtuális gépek futtatását az Azure-ban csökkentett költségek mellett. A Windows Server Azure Hybrid Benefit használatával telepíthet új virtuális gépeket Windows operációs rendszerre. Ez a cikk áttekinti az új virtuális gépek Windows Serverre Azure Hybrid Benefit való üzembe helyezésének lépéseit, valamint azt, hogy miként frissítheti a meglévő futó virtuális gépeket. A Windows Server licenceléssel és a költségmegtakarítással Azure Hybrid Benefitával kapcsolatos további információkért tekintse meg a [Azure Hybrid Benefit a Windows Server licencelése lapon](https://azure.microsoft.com/pricing/hybrid-use-benefit/).
@@ -35,7 +35,7 @@ A frissítési garanciával rendelkező ügyfelek számára a Windows Server Azu
 > A klasszikus virtuális gépek esetében csak az új virtuális gép üzembe helyezése a helyszíni egyéni lemezképekben támogatott. A cikkben támogatott képességek kihasználásához először át kell telepítenie a klasszikus virtuális gépeket a Resource Manager-modellbe.
 >
 
-[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
+ 
 
 ## <a name="ways-to-use-azure-hybrid-benefit-for-windows-server"></a>A Windows Server Azure Hybrid Benefit használatának módjai
 A Windows rendszerű virtuális gépeket többféleképpen is használhatja a Azure Hybrid Benefit:
@@ -74,7 +74,7 @@ az vm create \
 ```
 
 ### <a name="template"></a>Sablon
-A Resource Manager-sablonokon belül meg kell `licenseType` adni egy további paramétert. További információ a [Azure Resource Manager sablonok létrehozásáról](../../resource-group-authoring-templates.md)
+A Resource Manager-sablonokon belül egy további paramétert is meg kell adni `licenseType`. További információ a [Azure Resource Manager sablonok létrehozásáról](../../resource-group-authoring-templates.md)
 ```json
 "properties": {
     "licenseType": "Windows_Server",
@@ -170,7 +170,7 @@ az vm list --query "[?licenseType=='Windows_Server']" -o table
 ```
 
 ## <a name="deploy-a-virtual-machine-scale-set-with-azure-hybrid-benefit-for-windows-server"></a>Virtuálisgép-méretezési csoport üzembe helyezése Azure Hybrid Benefit a Windows Serverhez
-A virtuálisgép-méretezési csoport Resource Manager-sablonjain belül egy `licenseType` további paramétert is meg kell adni a VirtualMachineProfile tulajdonságban. Ezt a méretezési csoport létrehozása vagy frissítése során a ARM-sablon, a PowerShell, az Azure CLI vagy a REST használatával teheti meg.
+A virtuálisgép-méretezési csoport Resource Manager-sablonjain belül további paramétereket kell megadnia `licenseType` a VirtualMachineProfile tulajdonságban. Ezt a méretezési csoport létrehozása vagy frissítése során a ARM-sablon, a PowerShell, az Azure CLI vagy a REST használatával teheti meg.
 
 Az alábbi példa egy ARM-sablont használ egy Windows Server 2016 Datacenter-lemezképpel:
 ```json
@@ -193,12 +193,12 @@ Az alábbi példa egy ARM-sablont használ egy Windows Server 2016 Datacenter-le
             "adminPassword": "[parameters('adminPassword')]"
     }
 ```
-Azt is megtudhatja, hogyan [módosíthatja a virtuálisgép](../../virtual-machine-scale-sets/virtual-machine-scale-sets-upgrade-scale-set.md) -méretezési csoportokat a méretezési csoport frissítésének további módjaira.
+Azt is megtudhatja, hogyan [módosíthatja a virtuálisgép-méretezési csoportokat](../../virtual-machine-scale-sets/virtual-machine-scale-sets-upgrade-scale-set.md) a méretezési csoport frissítésének további módjaira.
 
 ## <a name="next-steps"></a>További lépések
 - További információ arról, [Hogyan lehet pénzt megtakarítani a Azure Hybrid Benefit](https://azure.microsoft.com/pricing/hybrid-use-benefit/)
 - További információ a [Azure Hybrid Benefit gyakori kérdéseiről](https://azure.microsoft.com/pricing/hybrid-use-benefit/faq/)
 - További információ a [Windows Server licencelésének részletes útmutatója Azure Hybrid Benefit](https://docs.microsoft.com/windows-server/get-started/azure-hybrid-benefit)
 - Tudjon meg többet a [Windows Server Azure Hybrid Benefitéről, és Azure site Recovery az alkalmazások áttelepítése az Azure-ba még](https://azure.microsoft.com/blog/hybrid-use-benefit-migration-with-asr/) költséghatékonyabb
-- További információ az [Azure-beli Windows 10](https://docs.microsoft.com/azure/virtual-machines/windows/windows-desktop-multitenant-hosting-deployment) -ről a több-bérlős üzemeltetési jogosultsággal
+- További információ az Azure-beli Windows 10-ről a több- [bérlős üzemeltetési jogosultsággal](https://docs.microsoft.com/azure/virtual-machines/windows/windows-desktop-multitenant-hosting-deployment)
 - További információ a [Resource Manager-sablonok használatáról](../../azure-resource-manager/resource-group-overview.md)

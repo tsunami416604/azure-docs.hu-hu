@@ -15,18 +15,18 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: na
 ms.date: 05/02/2018
 ms.author: robreed
-ms.openlocfilehash: b0625e3ac14e28cb4d43313bf1d9bc8b7afa08b1
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: f7edbd0fd8791829a2d9ffaa4e7c0ee0e561cc5d
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72176693"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73748974"
 ---
 # <a name="pass-credentials-to-the-azure-dscextension-handler"></a>Hitelesítő adatok továbbítása az Azure DSCExtension-kezelőhöz
 
 Ez a cikk az Azure kívánt State Configuration (DSC) bővítményét ismerteti. A DSC bővítmény kezelőjének áttekintését lásd: [Az Azure desired State Configuration Extension kezelő bemutatása](dsc-overview.md).
 
-[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
+ 
 
 ## <a name="pass-in-credentials"></a>Hitelesítő adatok továbbítása
 
@@ -85,7 +85,7 @@ A kód futtatása hitelesítő adatokat kér. A hitelesítő adatok megadása ut
 
 Ez a folyamat eltér [a bővítmény-kezelő nélküli biztonságos konfigurációk használatával](/powershell/scripting/dsc/pull-server/securemof). Az Azure-környezet lehetővé teszi, hogy biztonságos módon továbbítsa a konfigurációs adatokat a tanúsítványokon keresztül. A DSC-bővítmény kezelőjének használatakor nem kell megadnia **$CertificatePath** vagy **$CertificateID**/  **$thumbprint** bejegyzést a **ConfigurationData**-ben.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Bevezetés az [Azure DSC bővítmény kezelőjébe](dsc-overview.md).
 - Vizsgálja [meg a DSC-bővítmény Azure Resource Manager sablonját](dsc-template.md).

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/08/2019
 ms.author: memildin
-ms.openlocfilehash: dad8c6173495d11abd6c9f5babb4ef8bc789e4ce
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
-ms.translationtype: HT
+ms.openlocfilehash: 140361b7ba3a6a618d4c416447525f8a73690b81
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73686414"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73748430"
 ---
 # <a name="endpoint-protection-assessment-and-recommendations-in-azure-security-center"></a>Endpoint Protection-Értékelés és javaslatok a Azure Security Center
 
@@ -84,7 +84,7 @@ A Azure Security Center az Endpoint Protection-megoldások [támogatott](https:/
 * Security Center javasolja az **Endpoint Protection-megoldások telepítését a virtuális gépen** , ha a következő ellenőrzések bármelyike nem teljesül:
     * **HKLM: \ SOFTWARE\TrendMicro\Deep biztonsági ügynök** létezik
     * **HKLM: \ SOFTWARE\TrendMicro\Deep biztonsági Agent\InstallationFolder** létezik
-    * A **dsq_query. cmd** fájl a telepítési mappában található.
+    * A **dsa_query. cmd** fájl a telepítési mappában található.
     * A **dsa_query. cmd** eredményének futtatása az **Component. am. Mode: on-Trend Micro Deep Security Agent észlelve**
 
 ## <a name="symantec-endpoint-protection"></a>Symantec Endpoint Protection

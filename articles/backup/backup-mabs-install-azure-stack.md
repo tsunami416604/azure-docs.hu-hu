@@ -1,6 +1,6 @@
 ---
 title: A Azure Backup Server telepítése Azure Stackon | Microsoft Docs
-description: A munkaterhelések Azure Stack-ben való ellátásához Azure Backup Server használhat.
+description: Ebből a cikkből megtudhatja, hogyan használhatja a Azure Backup Servert a munkaterhelések védeleméhez vagy biztonsági mentéséhez Azure Stackban.
 author: dcurwin
 manager: carmonm
 ms.service: backup
@@ -9,12 +9,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/31/2019
 ms.author: dacurwin
-ms.openlocfilehash: da941d0234fe78791f9a1c2f2a7d01122247534c
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: bdcd7cbd24ca7023070585df46aa8cea7bdc70eb
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68639859"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73747287"
 ---
 # <a name="install-azure-backup-server-on-azure-stack"></a>Azure Backup Server telepítése az Azure Stacken
 
@@ -25,6 +25,7 @@ Ez a cikk azt ismerteti, hogyan telepítheti a Azure Backup Servert Azure Stack.
 >
 
 ## <a name="azure-backup-server-protection-matrix"></a>Az Azure Backup Server védelmi mátrixa
+
 A Azure Backup Server a következő Azure Stack virtuális gépek munkaterheléseit védi.
 
 | Védett adatforrás | Védelem és helyreállítás |
@@ -46,20 +47,26 @@ A Azure Backup Server a következő Azure Stack virtuális gépek munkaterhelés
 Vegye figyelembe az ebben a részben ismertetett ajánlásokat, amikor a Azure Stack környezetben telepíti Azure Backup Server. A Azure Backup Server-telepítő ellenőrzi, hogy a környezet rendelkezik-e a szükséges előfeltételekkel, de a telepítés előtt időt takaríthat meg.
 
 ### <a name="determining-size-of-virtual-machine"></a>A virtuális gép méretének meghatározása
+
 A Azure Backup Server Azure Stack virtuális gépen való futtatásához használja az A2-es vagy nagyobb méretet. A virtuális gép méretének kiválasztásával kapcsolatos segítségért töltse le a [Azure stack VM méretének számológépét](https://www.microsoft.com/download/details.aspx?id=56832).
 
 ### <a name="virtual-networks-on-azure-stack-virtual-machines"></a>Virtuális hálózatok Azure Stack virtuális gépeken
+
 Egy Azure Stack munkaterhelésben használt összes virtuális gépnek ugyanahhoz az Azure-beli virtuális hálózathoz és Azure-előfizetéshez kell tartoznia.
 
 ### <a name="azure-backup-server-vm-performance"></a>Azure Backup Server VM-teljesítmény
+
 Ha más virtuális gépekkel közösen van megosztva, a Storage-fiók mérete és a IOPS-korlát befolyásolja Azure Backup Server virtuális gép teljesítményét. Emiatt külön Storage-fiókot kell használnia a Azure Backup Server virtuális géphez. A Azure Backup Server futó Azure Backup ügynöknek ideiglenes tárterületre van szüksége a következőhöz:
+
 - saját használatra (gyorsítótár helye),
 - a felhőből visszaállított adatok (helyi átmeneti terület)
 
 ### <a name="configuring-azure-backup-temporary-disk-storage"></a>Azure Backup ideiglenes lemezes tárolásának konfigurálása
-Minden Azure Stack virtuális gép ideiglenes lemezes tárterülettel rendelkezik, amely kötetként `D:\`érhető el a felhasználó számára. A Azure Backup által igényelt helyi átmeneti területen konfigurálható `D:\`a (z `C:\`), és a gyorsítótár helye is elhelyezhető. Így nem kell a tárterületet a Azure Backup Server virtuális géphez csatolt adatlemezekről kifaragni.
+
+Minden Azure Stack virtuális gép ideiglenes lemezes tárterülettel rendelkezik, amely a felhasználó számára mennyiségi `D:\`ként érhető el. A Azure Backup által igényelt helyi átmeneti környezet beállítható úgy, hogy `D:\`, és a gyorsítótár helye `C:\`helyezhető el. Így nem kell a tárterületet a Azure Backup Server virtuális géphez csatolt adatlemezekről kifaragni.
 
 ### <a name="storing-backup-data-on-local-disk-and-in-azure"></a>A biztonsági mentési adattárolók tárolása a helyi lemezen és az Azure-ban
+
 A Azure Backup Server a virtuális géphez csatolt Azure-lemezeken tárolt biztonsági mentési adatkészleteket tárolja az operatív helyreállításhoz. Ha a lemezek és a tárolóhelyek a virtuális géphez vannak csatlakoztatva, Azure Backup Server kezeli a tárolót. A biztonsági mentési adattárolás mennyisége az egyes [Azure stack virtuális gépekhez](/azure-stack/user/azure-stack-storage-overview)csatolt lemezek számától és méretétől függ. Azure Stack virtuális gép minden méretének van egy maximális száma, amely csatlakoztatható a virtuális géphez. Az a2 például négy lemez. Az a3 nyolc lemez. Az A4 16 lemez. A lemezek mérete és száma is meghatározza a biztonsági mentési tár teljes készletét.
 
 > [!IMPORTANT]
@@ -68,13 +75,15 @@ A Azure Backup Server a virtuális géphez csatolt Azure-lemezeken tárolt bizto
 
 A biztonsági mentési adattárolók tárolása az Azure-ban a Azure Stack biztonsági mentési infrastruktúráját is csökkenti. Ha az adattábla öt napnál régebbi, azt az Azure-ban kell tárolni.
 
-A biztonsági mentési adattárolók Azure-ban való tárolásához hozzon létre vagy használjon Recovery Services-tárolót. A Azure Backup Server munkaterhelés biztonsági mentésének előkészítésekor konfigurálnia kell [a Recovery Services](backup-azure-microsoft-azure-backup.md#create-a-recovery-services-vault)-tárolót. A konfigurálást követően a biztonsági mentési feladatok minden futtatásakor létrejön egy helyreállítási pont a tárolóban. Minden Recovery Services-tár legfeljebb 9999 helyreállítási pontot tart. A létrehozott helyreállítási pontok számától és a megőrzött mennyiségtől függően sok évig megőrizheti a biztonsági másolatok mennyiségét. Létrehozhat például havi helyreállítási pontokat, és öt évig megtarthatja őket.
- 
+A biztonsági mentési adattárolók Azure-ban való tárolásához hozzon létre vagy használjon Recovery Services-tárolót. A Azure Backup Server munkaterhelés biztonsági mentésének előkészítésekor [konfigurálnia kell a Recovery Services](backup-azure-microsoft-azure-backup.md#create-a-recovery-services-vault)-tárolót. A konfigurálást követően a biztonsági mentési feladatok minden futtatásakor létrejön egy helyreállítási pont a tárolóban. Minden Recovery Services-tár legfeljebb 9999 helyreállítási pontot tart. A létrehozott helyreállítási pontok számától és a megőrzött mennyiségtől függően sok évig megőrizheti a biztonsági másolatok mennyiségét. Létrehozhat például havi helyreállítási pontokat, és öt évig megtarthatja őket.
+
 ### <a name="scaling-deployment"></a>Központi telepítés skálázása
+
 Ha szeretné méretezni az üzemelő példányt, a következő lehetőségek közül választhat:
-  - Vertikális felskálázás – növelje a Azure Backup Server virtuális gép méretét sorozatról D sorozatra, és [a Azure stack virtuális gép utasításai szerint](/azure-stack/user/azure-stack-manage-vm-disks)növelje a helyi tárterületet.
-  - Adat-kiszervezés – a régebbi típusú adatküldés az Azure-ba, és csak a legújabb adat marad a Azure Backup Serverhoz csatolt tárolóban.
-  - Vertikális felskálázás – további Azure Backup-kiszolgálókat adhat hozzá a munkaterhelések elleni védelemhez.
+
+- Vertikális felskálázás – növelje a Azure Backup Server virtuális gép méretét sorozatról D sorozatra, és [a Azure stack virtuális gép utasításai szerint](/azure-stack/user/azure-stack-manage-vm-disks)növelje a helyi tárterületet.
+- Adat-kiszervezés – a régebbi típusú adatküldés az Azure-ba, és csak a legújabb adat marad a Azure Backup Serverhoz csatolt tárolóban.
+- Vertikális felskálázás – további Azure Backup-kiszolgálókat adhat hozzá a munkaterhelések elleni védelemhez.
 
 ### <a name="net-framework"></a>.NET-keretrendszer
 
@@ -86,12 +95,13 @@ A Azure Backup Server virtuális gépnek csatlakoznia kell egy tartományhoz. A 
 
 ## <a name="using-an-iaas-vm-in-azure-stack"></a>IaaS virtuális gép használata Azure Stack
 
-Azure Backup Server kiszolgáló kiválasztásakor Kezdje a Windows Server 2012 R2 Datacenter vagy a Windows Server 2016 Datacenter Gallery rendszerképével. Az [első Windows rendszerű virtuális gép létrehozása a Azure Portalben](../virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)című cikk útmutatást nyújt a javasolt virtuális gép használatába. A kiszolgáló virtuális géphez (VM) ajánlott minimális követelmény a következő: A2 standard két maggal és 3,5 GB RAM-mal.
+Azure Backup Server kiszolgáló kiválasztásakor Kezdje a Windows Server 2012 R2 Datacenter vagy a Windows Server 2016 Datacenter Gallery rendszerképével. Az [első Windows rendszerű virtuális gép létrehozása a Azure Portalben](../virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)című cikk útmutatást nyújt a javasolt virtuális gép használatába. A kiszolgáló virtuális gépnek ajánlott minimális követelményei a következőek: a2 standard két maggal és 3,5 GB RAM-mal.
 
-A munkaterhelések Azure Backup Serversal való védelme számos árnyalattal rendelkezik. A cikk a [DPM Azure](https://technet.microsoft.com/library/jj852163.aspx)-beli virtuális gépként való telepítésével segít megmagyarázni ezeket az árnyalatokat. A gép üzembe helyezése előtt olvassa el ezt a cikket teljesen.
+A munkaterhelések Azure Backup Serversal való védelme számos árnyalattal rendelkezik. A cikk a [DPM Azure-beli virtuális gépként való telepítésével](https://technet.microsoft.com/library/jj852163.aspx)segít megmagyarázni ezeket az árnyalatokat. A gép üzembe helyezése előtt olvassa el ezt a cikket teljesen.
 
 > [!NOTE]
 > Azure Backup Server úgy lett kialakítva, hogy egy dedikált, egyetlen célra készült virtuális gépen fusson. A Azure Backup Server nem telepíthető a következőre:
+>
 > - Tartományvezérlőként futó számítógépre
 > - Olyan számítógépre, amelyen telepítve van az Alkalmazáskiszolgáló szerepkör
 > - Olyan számítógépre, amelyen az Exchange Server fut
@@ -108,7 +118,7 @@ A Recovery Services tároló tárolási replikációs lehetőséggel választhat
 A tárreplikációs beállítás szerkesztése:
 
 1. Válassza ki a tárolót a tároló irányítópultjának és a beállítások menü megnyitásához. Ha a **Beállítások** menü nem nyílik meg, kattintson az **összes beállítás** elemre a tároló irányítópultján.
-2. A **Beállítások** menüben kattintson a biztonsági mentési **infrastruktúra** > **biztonsági mentése konfiguráció** elemre a **biztonsági mentési konfiguráció** menü megnyitásához. A **biztonsági mentés konfigurálása** menüben válassza a tároló replikációja lehetőséget.
+2. A **Beállítások** menüben kattintson a biztonsági mentési **infrastruktúra** > **biztonsági mentési konfiguráció** elemre a **biztonsági mentési konfiguráció** menü megnyitásához. A **biztonsági mentés konfigurálása** menüben válassza a tároló replikációja lehetőséget.
 
     ![A Backup-tárolók listája](./media/backup-azure-vms-first-look-arm/choose-storage-configuration-rs-vault.png)
 
@@ -116,7 +126,7 @@ A tárreplikációs beállítás szerkesztése:
 
 Az Azure Backup Server telepítőt kétféleképpen töltheti le. A Azure Backup Server-telepítőt a [Microsoft letöltőközpontból](https://www.microsoft.com/en-us/download/details.aspx?id=55269)töltheti le. Azure Backup Server telepítőt Recovery Services-tároló konfigurálásakor is letöltheti. A következő lépések végigvezetik a telepítő letöltésének lépésein a Azure Portal egy Recovery Services-tároló konfigurálása során.
 
-1. A Azure Stack virtuális gépről jelentkezzen be az Azure-előfizetésbe [a Azure Portal](https://portal.azure.com/).
+1. A Azure Stack virtuális gépről [Jelentkezzen be az Azure-előfizetésbe a Azure Portal](https://portal.azure.com/).
 2. A bal oldali menüben válassza a **minden szolgáltatás**lehetőséget.
 
     ![Válassza a minden szolgáltatás lehetőséget a főmenüben](./media/backup-mabs-install-azure-stack/click-all-services.png)
@@ -137,7 +147,7 @@ Az Azure Backup Server telepítőt kétféleképpen töltheti le. A Azure Backup
 
     Megnyílik a biztonsági mentés menü.
 
-    ![Backup-goals-default-opened](./media/backup-mabs-install-azure-stack/getting-started-menu.png)
+    ![Backup-goals-default-Opened](./media/backup-mabs-install-azure-stack/getting-started-menu.png)
 
 6. A biztonsági mentés menüben, a **Hol van a** számítási feladat fut menüben válassza **a**helyszíni lehetőséget. A **Miről szeretne biztonsági másolatot készíteni?** legördülő menüből válassza ki a védelemmel ellátni kívánt munkaterheléseket Azure Backup Server használatával. Ha nem tudja biztosan, hogy melyik számítási feladatot szeretné kiválasztani, válassza a **Hyper-V Virtual Machines** , majd az **infrastruktúra előkészítése**lehetőséget.
 
@@ -155,11 +165,11 @@ Az Azure Backup Server telepítőt kétféleképpen töltheti le. A Azure Backup
 
     ![Megnyílik a letöltőközpontban](./media/backup-mabs-install-azure-stack/mabs-download-center-page.png)
 
-9. A Azure Backup Server-telepítő nyolc fájlból áll – egy telepítőből és hét. bin fájlból. Jelölje ki a fájlnevet az összes szükséges fájl kiválasztásához, majd kattintson a **tovább**gombra. Töltse le az összes fájlt ugyanabba a mappába.
+9. A Azure Backup Server-telepítő nyolc fájlból áll – egy telepítőből és hét. bin fájlból. Jelölje ki a **fájlnevet** az összes szükséges fájl kiválasztásához, majd kattintson a **tovább**gombra. Töltse le az összes fájlt ugyanabba a mappába.
 
     ![1\. letöltőközpont](./media/backup-mabs-install-azure-stack/download-center-selected-files.png)
 
-    Az összes telepítési fájl letöltési mérete nagyobb, mint 3 GB. 10 Mbps letöltési hivatkozás esetén az összes telepítési fájl letöltése akár 60 percet is igénybe vehet. A fájlok a megadott letöltési helyre tölthetők le.
+    Az összes telepítési fájl letöltési mérete meghaladja a 3 GB-ot. 10 Mbps letöltési hivatkozás esetén az összes telepítési fájl letöltése akár 60 percet is igénybe vehet. A fájlok a megadott letöltési helyre tölthetők le.
 
 ## <a name="extract-azure-backup-server-install-files"></a>Azure Backup Server telepítési fájlok kinyerése
 
@@ -181,7 +191,7 @@ Miután letöltötte az összes fájlt a Azure Stack virtuális gépre, lépjen 
 
    ![Microsoft Azure Backup telepítővarázslója](./media/backup-mabs-install-azure-stack/mabs-install-wizard-select-destination-1.png)
 
-4. Ellenőrizze a kinyerési helyet,majd kattintson a Kibontás elemre.
+4. Ellenőrizze a kinyerési helyet, majd kattintson a **Kibontás**elemre.
 
    ![Microsoft Azure Backup telepítővarázslója](./media/backup-mabs-install-azure-stack/mabs-install-wizard-extract-2.png)
 
@@ -314,7 +324,7 @@ Az első biztonsági másolat a Azure Backup Server géphez csatolt tárterület
 
 ## <a name="network-connectivity"></a>Hálózati kapcsolat
 
-Azure Backup Server a termék sikeres működéséhez kapcsolódnia kell a Azure Backup szolgáltatáshoz. Annak ellenőrzéséhez, hogy a számítógép rendelkezik-e az Azure- ```Get-DPMCloudConnection``` kapcsolattal, használja a parancsmagot a Azure Backup Server PowerShell-konzolon. Ha a parancsmag kimenete igaz, akkor a kapcsolat létezik, máskülönben nincs kapcsolat.
+Azure Backup Server a termék sikeres működéséhez kapcsolódnia kell a Azure Backup szolgáltatáshoz. Annak ellenőrzéséhez, hogy a számítógép rendelkezik-e az Azure-kapcsolattal, használja a ```Get-DPMCloudConnection``` parancsmagot a Azure Backup Server PowerShell-konzolon. Ha a parancsmag kimenete igaz, akkor a kapcsolat létezik, máskülönben nincs kapcsolat.
 
 Ugyanakkor az Azure-előfizetésnek kifogástalan állapotban kell lennie. Az előfizetés állapotának megállapításához és a kezeléséhez jelentkezzen be az [előfizetési portálra](https://ms.portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade).
 
@@ -323,15 +333,15 @@ Ha már ismeri az Azure-kapcsolat állapotát és az Azure-előfizetést, az al�
 | Kapcsolat állapota | Azure-előfizetés | Biztonsági mentés az Azure-ba | Biztonsági mentés lemezre | Visszaállítás az Azure-ból | Visszaállítás lemezről |
 | --- | --- | --- | --- | --- | --- |
 | Csatlakozva |Aktív |Engedélyezett |Engedélyezett |Engedélyezett |Engedélyezett |
-| Csatlakozva |Elévült |Leállítva |Leállítva |Engedélyezett |Engedélyezett |
+| Csatlakozva |Lejárt |Leállítva |Leállítva |Engedélyezett |Engedélyezett |
 | Csatlakozva |Felfüggesztést |Leállítva |Leállítva |Leállított és Azure helyreállítási pontok törölve |Leállítva |
 | Elveszett kapcsolat > 15 nap |Aktív |Leállítva |Leállítva |Engedélyezett |Engedélyezett |
-| Elveszett kapcsolat > 15 nap |Elévült |Leállítva |Leállítva |Engedélyezett |Engedélyezett |
+| Elveszett kapcsolat > 15 nap |Lejárt |Leállítva |Leállítva |Engedélyezett |Engedélyezett |
 | Elveszett kapcsolat > 15 nap |Felfüggesztést |Leállítva |Leállítva |Leállított és Azure helyreállítási pontok törölve |Leállítva |
 
 ### <a name="recovering-from-loss-of-connectivity"></a>Helyreállítás a kapcsolat elvesztése miatt
 
-Ha a tűzfal vagy a proxy megakadályozza a hozzáférést az Azure-hoz, az alábbi tartományi címeket a tűzfal/proxy profilban:
+Ha egy tűzfal vagy egy proxy megakadályozza az Azure-hoz való hozzáférést, adja hozzá a következő tartományi címeket a tűzfal/proxy profil engedélyezési listájában:
 
 - `http://www.msftncsi.com/ncsi.txt`
 - \*.Microsoft.com
@@ -343,9 +353,9 @@ Ha az Azure-hoz való kapcsolódást visszaállítja a Azure Backup Server, az A
 
 ### <a name="handling-subscription-states"></a>Előfizetési állapotok kezelésére
 
-Lehetséges, hogy az Azure-előfizetést *lejárt* vagy kiépített állapotról *aktív* állapotra szeretné módosítani. Az előfizetés állapota nem *aktív*:
+Lehetséges, hogy az Azure-előfizetést *lejárt* vagy *kiépített* állapotról *aktív* állapotra szeretné módosítani. Az előfizetés állapota nem *aktív*:
 
-- Az előfizetés megszüntetése közbenelveszíti a funkciót. Az előfizetés aktívravaló visszaállítása a biztonsági mentési/visszaállítási funkciót újítja meg. Ha a helyi lemezen lévő biztonsági mentési adatok tárolása elég nagy, a biztonsági mentési adatok lekérése megmaradt. Az Azure-beli biztonsági mentési adatgyűjtés azonban visszavonhatatlanul elvész, ha az előfizetés a kiépített állapotba kerül.
+- *Az előfizetés*megszüntetése közben elveszíti a funkciót. Az előfizetés *aktívra*való visszaállítása a biztonsági mentési/visszaállítási funkciót újítja meg. Ha a helyi lemezen lévő biztonsági mentési adatok tárolása elég nagy, a biztonsági mentési adatok lekérése megmaradt. Az Azure-beli biztonsági mentési adatgyűjtés azonban visszavonhatatlanul elvész, ha az előfizetés a *kiépített* állapotba kerül.
 - Amíg egy előfizetés *lejárt*, elveszíti a funkciót. Az ütemezett biztonsági mentések nem futnak, amíg egy előfizetés *lejár*.
 
 ## <a name="troubleshooting"></a>Hibaelhárítás

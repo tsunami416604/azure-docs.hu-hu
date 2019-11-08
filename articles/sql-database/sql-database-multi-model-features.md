@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: ''
 ms.date: 12/17/2018
-ms.openlocfilehash: 7156b9923c9cb98ae3dde143c98eb32a6eb11a9c
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
-ms.translationtype: MT
+ms.openlocfilehash: 0d59db65e940cab12dccaeeacc9083eb7fbba20e
+ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73687730"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73795766"
 ---
 # <a name="multi-model-capabilities-of-azure-sql-database"></a>Azure SQL Database több modellből álló képességei
 
@@ -29,7 +29,7 @@ A következő esetekben érdemes megfontolni a Azure SQL Database többmodelles 
 - Olyan információkkal vagy struktúrákkal rendelkezik, amelyek jobban illeszkednek a NoSQL-modellekhez, és nem szeretne külön NoSQL-adatbázist használni.
 - Az adatai többsége megfelelő a rokon modellekhez, és az adatai egyes részeit NoSQL stílusban kell modellezni.
 - Széles körű Transact-SQL nyelvet szeretne használni a NoSQL-és adatelemzési lekérdezések lekérdezéséhez és elemzéséhez, valamint az SQL nyelvet használó különféle eszközök és alkalmazások integrálásához.
-- Olyan adatbázis-funkciókat kíván alkalmazni, mint [a memórián belüli technológiák](sql-database-in-memory.md) a NoSQL-adatstrucutres elemzésének vagy feldolgozásának javítása érdekében, [tranzakciós replikálás](sql-database-managed-instance-transactional-replication.md) vagy [olvasható replikák](sql-database-read-scale-out.md) használatával készítsen másolatot az adatairól a másik helyet és a kiszervezést végez néhány analitikus számítási feladatot az elsődleges adatbázisból.
+- Olyan adatbázis-funkciókat kíván alkalmazni, mint [a memórián belüli technológiák](sql-database-in-memory.md) a NoSQL-adatstruktúrák elemzésének vagy feldolgozásának javítása érdekében, [tranzakciós replikálás](sql-database-managed-instance-transactional-replication.md) vagy [olvasható replikák](sql-database-read-scale-out.md) használatával készítsen másolatot az adatairól a másik helyet és a kiszervezést végez néhány analitikus számítási feladatot az elsődleges adatbázisból.
 
 ## <a name="overview"></a>Áttekintés
 
@@ -38,7 +38,7 @@ Az Azure SQL a következő többmodelles funkciókat biztosítja:
 - A [JSON-funkciók](#json-features) lehetővé teszik a JSON-dokumentumok táblázatokba való behelyezését, a kapcsolódó adattípusok a JSON-dokumentumokra való átalakítását és fordítva. A normál Transact-SQL nyelvet a JSON-függvények használatával a dokumentumok elemzéséhez használhatja, a nem fürtözött indexeket, a oszlopcentrikus indexeket és a memóriára optimalizált táblákat pedig a lekérdezések optimalizálására használhatja.
 - A [térbeli funkciók](#spatial-features) lehetővé teszik a földrajzi és a geometriai adattárolást, a térbeli indexekkel való indexelést, valamint a térbeli lekérdezések használatával történő lekérését.
 - Az [XML-funkciók](#xml-features) lehetővé teszik az XML-adatok tárolását és indexelését az adatbázisban, és natív XQuery/XPath műveleteket használhatnak az XML-adatokkal való munkavégzéshez. Az Azure SQL Database speciális beépített XML-lekérdezési motorral rendelkezik, amely XML-adatfeldolgozást dolgoz fel.
-- A [kulcs-érték párok](#key-value-pairs) explicit módon nem támogatottak, mert a Key-Value Párizs natív módon kétoszlopos táblákként is modellezhető.
+- A [kulcs-érték párok](#key-value-pairs) nincsenek kifejezetten támogatva speciális funkciókként, mivel a kulcs-érték párok natív módon, kétoszlopos táblákként vannak modellezve.
 
   > [!Note]
   > Ugyanazzal a Transact-SQL-lekérdezéssel a JSON Path kifejezés, a XQuery/XPath kifejezések, a térbeli függvények és a Graph-lekérdezés kifejezéseket használhatja az adatbázisban tárolt adatok eléréséhez. Emellett a Transact-SQL-lekérdezéseket végrehajtó bármely eszköz vagy programozási nyelv is használhatja a lekérdezési felületet a többmodelles adattípusokhoz való hozzáféréshez. Ez a különbség a többmodelles adatbázisok, például a különböző adatmodellek speciális API-ját biztosító [Azure Cosmos db](/azure/cosmos-db/) összehasonlítva.
@@ -68,7 +68,7 @@ A Graph-adatbázis nem érhető el, mert nem érhető el a viszonyítási adatb�
 
 Azure SQL Database lehetővé teszi a JavaScript Object Notation [(JSON)](https://www.json.org/) formátumban ábrázolt adatelemzést és lekérdezéseket, és a rokoni adatait JSON-szövegként exportálja.
 
-A JSON a modern webes és mobil alkalmazások adatcseréjéhez használt népszerű adatformátum. A JSON-t a részben strukturált, a naplófájlokban vagy NoSQL-adatbázisokban (például [Azure Cosmos db](https://azure.microsoft.com/services/cosmos-db/)) tárolt fájlok tárolására is használják. Számos REST-webszolgáltatásnak az eredményeket JSON-szövegként kell megadnia, vagy JSON-ként formázott adatokhoz kell fogadnia. A legtöbb Azure-szolgáltatás, például az [Azure Search](https://azure.microsoft.com/services/search/), az [Azure Storage](https://azure.microsoft.com/services/storage/)és a [Azure Cosmos db](https://azure.microsoft.com/services/cosmos-db/) olyan Rest-végpontokkal rendelkezik, amelyek JSON-t adnak vissza vagy használnak.
+A JSON a modern webes és mobil alkalmazások adatcseréjéhez használt népszerű adatformátum. A JSON-t a részben strukturált, a naplófájlokban vagy NoSQL-adatbázisokban (például [Azure Cosmos db](https://azure.microsoft.com/services/cosmos-db/)) tárolt fájlok tárolására is használják. Számos REST-webszolgáltatásnak az eredményeket JSON-szövegként kell megadnia, vagy JSON-ként formázott adatokhoz kell fogadnia. A legtöbb Azure-szolgáltatás, például az [azure Cognitive Search](https://azure.microsoft.com/services/search/), az [Azure Storage](https://azure.microsoft.com/services/storage/)és a [Azure Cosmos db](https://azure.microsoft.com/services/cosmos-db/) olyan Rest-végpontokkal rendelkezik, amelyek JSON-t adnak vissza vagy használnak fel.
 
 Azure SQL Database lehetővé teszi, hogy könnyen működjön a JSON-adataival, és integrálja az adatbázist a modern szolgáltatásokkal. A Azure SQL Database a következő funkciókat biztosítja a JSON-adatok használatához:
 

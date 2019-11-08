@@ -7,12 +7,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: 0a1515144f340938cddfd5ca9f2ac4803bcb3f77
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: 2e7646d2f84696d0b04183d8d06b96405909de87
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72174717"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73750039"
 ---
 # <a name="azure-disk-encryption-scenarios-on-linux-vms"></a>Azure Disk Encryption forgatókönyvek Linux rendszerű virtuális gépeken
 
@@ -38,11 +38,11 @@ Minden esetben készítsen [pillanatképet](snapshot-copy-managed-disk.md) és/v
 
 Azure Disk Encryption engedélyezhető és felügyelhető az [Azure CLI](/cli/azure) -n és [Azure PowerShellon](/powershell/azure/new-azureps-module-az)keresztül. Ehhez telepítenie kell az eszközöket helyileg, és csatlakoznia kell az Azure-előfizetéséhez.
 
-### <a name="azure-cli"></a>Azure parancssori felület (CLI)
+### <a name="azure-cli"></a>Azure CLI
 
 Az [Azure CLI 2,0](/cli/azure) egy parancssori eszköz az Azure-erőforrások kezeléséhez. A CLI rugalmas lekérdezési adatokra lett tervezve, támogatja a hosszan futó műveleteket a nem blokkoló folyamatokban, és megkönnyíti a parancsfájlok futtatását. Az [Azure CLI telepítése](/cli/azure/install-azure-cli?view=azure-cli-latest)című témakör lépéseit követve helyileg is telepítheti.
 
-[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+ 
 
 Ha be [szeretné jelentkezni az Azure-fiókjába az Azure CLI-vel](/cli/azure/authenticate-azure-cli), használja az az [login](/cli/azure/reference-index?view=azure-cli-latest#az-login) parancsot.
 
@@ -196,7 +196,7 @@ Az alábbi táblázat a meglévő vagy futó virtuális gépek Resource Manager-
 | Paraméter | Leírás |
 | --- | --- |
 | vmName | A titkosítási műveletet futtató virtuális gép neve. |
-| keyVaultName | Annak a kulcstárolónak a neve, amelyre a titkosítási kulcsot fel kell tölteni. A `(Get-AzKeyVault -ResourceGroupName <MyKeyVaultResourceGroupName>). Vaultname` parancsmaggal vagy az Azure CLI-parancs `az keyvault list --resource-group "MyKeyVaultResourceGroupName"` paranccsal kérheti le.|
+| keyVaultName | Annak a kulcstárolónak a neve, amelyre a titkosítási kulcsot fel kell tölteni. Ezt a parancsmag `(Get-AzKeyVault -ResourceGroupName <MyKeyVaultResourceGroupName>). Vaultname` vagy az Azure CLI-parancs `az keyvault list --resource-group "MyKeyVaultResourceGroupName"`használatával kérheti le.|
 | keyVaultResourceGroup | A kulcstárolót tartalmazó erőforráscsoport neve. |
 |  keyEncryptionKeyURL | A titkosítási kulcs titkosításához használt kulcs titkosítási kulcsának URL-címe. Ez a paraméter nem kötelező, ha a UseExistingKek legördülő listában a **nokek** lehetőséget választja. Ha a UseExistingKek legördülő listában a **KEK** elemet választja, meg kell adnia a _keyEncryptionKeyURL_ értéket. |
 | volumeType | A titkosítási művelet végrehajtásához használt kötet típusa. Az érvényes értékek az _operációs rendszer_, _az adatok_és _az összes_. 
@@ -382,7 +382,7 @@ A titkosítást a Azure PowerShell, az Azure CLI vagy egy Resource Manager-sablo
      az vm encryption disable --name "MySecureVM" --resource-group "MyVirtualMachineResourceGroup" --volume-type [ALL, DATA, OS]
      ```
 - **A titkosítás letiltása Resource Manager-sablonnal:** A titkosítás letiltásához használja a [Linux rendszerű virtuális gép titkosításának letiltására](https://github.com/Azure/azure-quickstart-templates/tree/master/201-decrypt-running-linux-vm-without-aad) szolgáló sablont.
-     1. Kattintson az **Üzembe helyezés az Azure-ban** lehetőségre.
+     1. Kattintson a **Deploy to Azure** (Üzembe helyezés az Azure-ban) elemre.
      2. Válassza ki az előfizetést, az erőforráscsoportot, a helyet, a virtuális gépet, a jogi feltételeket és a szerződést.
 
 ## <a name="unsupported-scenarios"></a>Nem támogatott forgatókönyvek
@@ -400,8 +400,8 @@ A Azure Disk Encryption a következő Linux-forgatókönyvek, funkciók és tech
 - Ideiglenes operációsrendszer-lemezek.
 - Megosztott/elosztott fájlrendszerek titkosítása, például (de nem kizárólag): DFS, GFS, DRDB és CephFS.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Azure Disk Encryption áttekintése](disk-encryption-overview.md)
-- [Azure Disk Encryption minta parancsfájlok](disk-encryption-sample-scripts.md)
-- [Hibaelhárítás Azure Disk Encryption](disk-encryption-troubleshooting.md)
+- [Azure Disk Encryption – mintaszkriptek](disk-encryption-sample-scripts.md)
+- [Azure Disk Encryption – hibaelhárítás](disk-encryption-troubleshooting.md)

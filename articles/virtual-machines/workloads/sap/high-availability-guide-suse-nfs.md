@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 03/15/2019
 ms.author: sedusch
-ms.openlocfilehash: 0e4daaa3417ce349111fbc811be36a4615058c76
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
-ms.translationtype: MT
+ms.openlocfilehash: 771a20ccf1c34958308d58dafb6fb01e36bb408a
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72791725"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73749021"
 ---
 # <a name="high-availability-for-nfs-on-azure-vms-on-suse-linux-enterprise-server"></a>Magas rendelkezésre állás az NFS-en SUSE Linux Enterprise Server Azure-beli virtuális gépeken
 
@@ -94,7 +94,7 @@ Az NFS-kiszolgáló egy dedikált virtuális gazdagépet és virtuális IP-címe
 * Mintavételi port
   * A NW1 61000-es portja
   * A NW2 61001-es portja
-* Terheléselosztás-szabályok
+* Terheléselosztás-szabályok (alapszintű Load Balancer használata esetén)
   * 2049 TCP a NW1
   * 2049 UDP a NW1
   * 2049 TCP a NW2
@@ -136,48 +136,85 @@ Először létre kell hoznia a virtuális gépeket ehhez az NFS-fürthöz. Ezt k
    SLES for SAP Applications for 12 SP3 (BYOS) használata  
    Válassza ki a korábban létrehozott rendelkezésre állási készletet  
 1. Mindegyik SAP-rendszerhez adjon hozzá egy adatlemezt mindkét virtuális géphez.
-1. Load Balancer létrehozása (belső)  
-   1. Az előtérbeli IP-címek létrehozása
-      1. NW1 IP-10.0.0.4
-         1. Nyissa meg a terheléselosztó-t, válassza a előtéri IP-készlet lehetőséget, majd kattintson a Hozzáadás gombra.
-         1. Adja meg az új előtér-IP-készlet nevét (például **NW1-frontend**)
-         1. Állítsa a hozzárendelést statikus értékre, és adja meg az IP-címet (például **10.0.0.4**).
-         1. Kattintson az OK gombra
-      1. NW2 IP-10.0.0.5
-         * Ismételje meg a fenti lépéseket a NW2
-   1. A háttér-készletek létrehozása
-      1. A NW1 NFS-fürt részét képező összes virtuális gép elsődleges hálózati adapteréhez csatlakozik
-         1. Nyissa meg a Load balancert, válassza a háttérbeli készletek elemet, majd kattintson a Hozzáadás gombra.
-         1. Adja meg az új háttérbeli készlet nevét (például **NW1-backend**)
-         1. Kattintson a virtuális gép hozzáadása elemre.
-         1. Válassza ki a korábban létrehozott rendelkezésre állási készletet
-         1. Az NFS-fürt virtuális gépei kiválasztása
-         1. Kattintson az OK gombra
-      1. A NW2 NFS-fürt részét képező összes virtuális gép elsődleges hálózati adapteréhez csatlakozik
-         * A fenti lépések megismétlésével hozzon létre egy háttér-készletet a NW2 számára
-   1. Az állapot-mintavételek létrehozása
-      1. A NW1 61000-es portja
-         1. Nyissa meg a terheléselosztó-t, válassza az állapot-tesztek elemet, majd kattintson a Hozzáadás gombra.
-         1. Adja meg az új állapot-mintavétel nevét (például **NW1-HP**)
-         1. Válassza a TCP protokollt, a 610**00**portot, az 5. időközt és a nem megfelelő állapotú küszöbértéket 2
-         1. Kattintson az OK gombra
-      1. A NW2 61001-es portja
-         * A fenti lépések megismétlésével hozzon létre egy állapot-mintavételt a NW2
-   1. Terheléselosztás-szabályok
-      1. 2049 TCP a NW1
+1. Hozzon létre egy Load Balancer (belső). A [standard Load Balancer](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-overview)használatát javasoljuk.  
+   1. A standard Load Balancer létrehozásához kövesse az alábbi utasításokat:
+      1. Az előtérbeli IP-címek létrehozása
+         1. NW1 IP-10.0.0.4
+            1. Nyissa meg a terheléselosztó-t, válassza a előtéri IP-készlet lehetőséget, majd kattintson a Hozzáadás gombra.
+            1. Adja meg az új előtér-IP-készlet nevét (például **NW1-frontend**)
+            1. Állítsa a hozzárendelést statikus értékre, és adja meg az IP-címet (például **10.0.0.4**).
+            1. Kattintson az OK gombra
+         1. NW2 IP-10.0.0.5
+            * Ismételje meg a fenti lépéseket a NW2
+      1. A háttér-készletek létrehozása
+         1. A NW1 NFS-fürt részét képező összes virtuális gép elsődleges hálózati adapteréhez csatlakozik
+            1. Nyissa meg a Load balancert, válassza a háttérbeli készletek elemet, majd kattintson a Hozzáadás gombra.
+            1. Adja meg az új háttérbeli készlet nevét (például **NW1-backend**)
+            1. Virtual Network kiválasztása
+            1. Kattintson a virtuális gép hozzáadása elemre.
+            1. Válassza ki az NFS-fürthöz tartozó virtuális gépeket és azok IP-címeit.
+            1. Kattintson az Add (Hozzáadás) parancsra.
+         1. A NW2 NFS-fürt részét képező összes virtuális gép elsődleges hálózati adapteréhez csatlakozik
+            * A fenti lépések megismétlésével hozzon létre egy háttér-készletet a NW2 számára
+      1. Az állapot-mintavételek létrehozása
+         1. A NW1 61000-es portja
+            1. Nyissa meg a terheléselosztó-t, válassza az állapot-tesztek elemet, majd kattintson a Hozzáadás gombra.
+            1. Adja meg az új állapot-mintavétel nevét (például **NW1-HP**)
+            1. Válassza a TCP protokollt, a 610**00**portot, az 5. időközt és a nem megfelelő állapotú küszöbértéket 2
+            1. Kattintson az OK gombra
+         1. A NW2 61001-es portja
+            * A fenti lépések megismétlésével hozzon létre egy állapot-mintavételt a NW2
+      1. Terheléselosztás-szabályok
          1. Nyissa meg a terheléselosztó-t, válassza a terheléselosztási szabályok lehetőséget, majd kattintson a Hozzáadás gombra.
-         1. Adja meg az új terheléselosztó-szabály nevét (például **NW1-LB-2049**)
-         1. Válassza ki a korábban létrehozott előtérbeli IP-címet, a háttér-készletet és az állapot-mintavételt (például **NW1-frontend**)
-         1. Tartsa meg a protokoll **TCP**-t, írja be a **2049** portot
+         1. Adja meg az új Load Balancer-szabály nevét (például **NW1-LB**)
+         1. Válassza ki a korábban létrehozott előtérbeli IP-címet, a háttér-készletet és az állapot-mintavételt (például **NW1-frontend**). **NW1-háttér** és **NW1-HP**)
+         1. Válassza a **hektár portok**lehetőséget.
          1. Üresjárati időkorlát 30 percre növelve
          1. **Ügyeljen arra, hogy a lebegő IP-címet engedélyezze**
          1. Kattintson az OK gombra
-      1. 2049 UDP a NW1
-         * Ismételje meg a fenti lépéseket a 2049-es és a NW1-es porton.
-      1. 2049 TCP a NW2
-         * Ismételje meg a fenti lépéseket a 2049-es és a TCP-es porton a NW2
-      1. 2049 UDP a NW2
-         * Ismételje meg a fenti lépéseket a 2049-es és a NW2-es porton.
+         * A fenti lépések megismétlésével hozzon létre terheléselosztási szabályt a NW2
+   1. Ha a forgatókönyv alapszintű Load balancert igényel, kövesse az alábbi utasításokat:
+      1. Az előtérbeli IP-címek létrehozása
+         1. NW1 IP-10.0.0.4
+            1. Nyissa meg a terheléselosztó-t, válassza a előtéri IP-készlet lehetőséget, majd kattintson a Hozzáadás gombra.
+            1. Adja meg az új előtér-IP-készlet nevét (például **NW1-frontend**)
+            1. Állítsa a hozzárendelést statikus értékre, és adja meg az IP-címet (például **10.0.0.4**).
+            1. Kattintson az OK gombra
+         1. NW2 IP-10.0.0.5
+            * Ismételje meg a fenti lépéseket a NW2
+      1. A háttér-készletek létrehozása
+         1. A NW1 NFS-fürt részét képező összes virtuális gép elsődleges hálózati adapteréhez csatlakozik
+            1. Nyissa meg a Load balancert, válassza a háttérbeli készletek elemet, majd kattintson a Hozzáadás gombra.
+            1. Adja meg az új háttérbeli készlet nevét (például **NW1-backend**)
+            1. Kattintson a virtuális gép hozzáadása elemre.
+            1. Válassza ki a korábban létrehozott rendelkezésre állási készletet
+            1. Az NFS-fürt virtuális gépei kiválasztása
+            1. Kattintson az OK gombra
+         1. A NW2 NFS-fürt részét képező összes virtuális gép elsődleges hálózati adapteréhez csatlakozik
+            * A fenti lépések megismétlésével hozzon létre egy háttér-készletet a NW2 számára
+      1. Az állapot-mintavételek létrehozása
+         1. A NW1 61000-es portja
+            1. Nyissa meg a terheléselosztó-t, válassza az állapot-tesztek elemet, majd kattintson a Hozzáadás gombra.
+            1. Adja meg az új állapot-mintavétel nevét (például **NW1-HP**)
+            1. Válassza a TCP protokollt, a 610**00**portot, az 5. időközt és a nem megfelelő állapotú küszöbértéket 2
+            1. Kattintson az OK gombra
+         1. A NW2 61001-es portja
+            * A fenti lépések megismétlésével hozzon létre egy állapot-mintavételt a NW2
+      1. Terheléselosztás-szabályok
+         1. 2049 TCP a NW1
+            1. Nyissa meg a terheléselosztó-t, válassza a terheléselosztási szabályok lehetőséget, majd kattintson a Hozzáadás gombra.
+            1. Adja meg az új terheléselosztó-szabály nevét (például **NW1-LB-2049**)
+            1. Válassza ki a korábban létrehozott előtérbeli IP-címet, a háttér-készletet és az állapot-mintavételt (például **NW1-frontend**)
+            1. Tartsa meg a protokoll **TCP**-t, írja be a **2049** portot
+            1. Üresjárati időkorlát 30 percre növelve
+            1. **Ügyeljen arra, hogy a lebegő IP-címet engedélyezze**
+            1. Kattintson az OK gombra
+         1. 2049 UDP a NW1
+            * Ismételje meg a fenti lépéseket a 2049-es és a NW1-es porton.
+         1. 2049 TCP a NW2
+            * Ismételje meg a fenti lépéseket a 2049-es és a TCP-es porton a NW2
+         1. 2049 UDP a NW2
+            * Ismételje meg a fenti lépéseket a 2049-es és a NW2-es porton.
 
 > [!IMPORTANT]
 > Ne engedélyezze a TCP-időbélyegeket a Azure Load Balancer mögött elhelyezett Azure-beli virtuális gépeken. A TCP-időbélyegek engedélyezése az állapot-mintavételek meghibásodását eredményezi. Állítsa a **net. IPv4. TCP** paramétert **0-ra**_timestamps. Részletekért lásd: [Load Balancer Health](https://docs.microsoft.com/azure/load-balancer/load-balancer-custom-probe-overview)-tesztek.
@@ -539,7 +576,7 @@ A következő elemek a **[a]** előtaggal vannak ellátva, amelyek az összes cs
    <pre><code>sudo crm configure property maintenance-mode=false
    </code></pre>
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Az SAP-ASCS és-adatbázis telepítése](high-availability-guide-suse.md)
 * [Azure Virtual Machines az SAP tervezéséhez és megvalósításához][planning-guide]

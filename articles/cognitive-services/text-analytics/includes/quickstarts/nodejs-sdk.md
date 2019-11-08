@@ -1,0 +1,183 @@
+---
+author: aahill
+ms.service: cognitive-services
+ms.topic: include
+ms.date: 10/28/2019
+ms.author: aahi
+ms.openlocfilehash: 5c5c2ed6b7806095dada40cc921a773d28421424
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73750231"
+---
+<a name="HOLTop"></a>
+
+[Dokumentáció](https://docs.microsoft.com/javascript/api/azure-cognitiveservices-textanalytics) | [könyvtár forráskódja](https://github.com/Azure/azure-sdk-for-node/tree/master/lib/services/cognitiveServicesTextAnalytics) | [csomag (NPM)](https://www.npmjs.com/package/azure-cognitiveservices-textanalytics) | [minták](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples/)
+
+## <a name="prerequisites"></a>Előfeltételek
+
+* Azure-előfizetés – [hozzon létre egyet ingyen](https://azure.microsoft.com/free/)
+* A [Node. js](https://nodejs.org/)jelenlegi verziója.
+
+## <a name="setting-up"></a>Beállítás
+
+### <a name="create-a-text-analytics-azure-resource"></a>Text Analytics Azure-erőforrás létrehozása
+
+[!INCLUDE [text-analytics-resource-creation](resource-creation.md)]
+
+### <a name="create-a-new-nodejs-application"></a>Új Node.js-alkalmazás létrehozása
+
+Egy konzolablak (például a cmd, a PowerShell vagy a bash) ablakban hozzon létre egy új könyvtárat az alkalmazáshoz, és navigáljon hozzá. 
+
+```console
+mkdir myapp && cd myapp
+```
+
+A `npm init` parancs futtatásával hozzon létre egy csomópont-alkalmazást egy `package.json`-fájllal. 
+
+```console
+npm init
+```
+
+Hozzon létre egy `index.js` nevű fájlt, és adja hozzá a következő könyvtárakat:
+
+[!code-javascript[Const statements](~/cognitive-services-node-sdk-samples/Samples/textAnalytics.js?name=constStatements)]
+
+Hozzon létre változókat az erőforrás Azure-végpontjának és előfizetési kulcsának létrehozásához. Szerezze be ezeket az értékeket a környezeti változók `TEXT_ANALYTICS_SUBSCRIPTION_KEY` és `TEXT_ANALYTICS_ENDPOINT`. Ha ezeket a környezeti változókat az alkalmazás szerkesztésének megkezdése után hozta létre, akkor be kell állítania és újra meg kell nyitnia azt a szerkesztőt, IDE vagy rendszerhéjt, amelyet a változók eléréséhez használ.
+
+[!INCLUDE [text-analytics-find-resource-information](../find-azure-resource-info.md)]
+
+[!code-javascript[Key and endpoint vars](~/cognitive-services-node-sdk-samples/Samples/textAnalytics.js?name=keyVars)]
+
+### <a name="install-the-client-library"></a>Az ügyféloldali kódtár telepítése
+
+Telepítse a `@azure/ms-rest-js` és `@azure/cognitiveservices-textanalytics` NPM csomagokat:
+
+```console
+npm install @azure/cognitiveservices-textanalytics @azure/ms-rest-js
+```
+
+Az alkalmazás `package.json` fájlja a függőségekkel lesz frissítve.
+
+## <a name="object-model"></a>Objektummodell
+
+Az Text Analytics-ügyfél egy [TextAnalyticsClient](https://docs.microsoft.com/javascript/api/azure-cognitiveservices-textanalytics/textanalyticsclient?view=azure-node-latest) objektum, amely az Azure-ban hitelesíti magát a kulcs használatával. Az ügyfél számos módszert biztosít a szöveg elemzéséhez, egyetlen sztringként vagy kötegként.
+
+A rendszer elküldi a szöveget az API-nak `documents`-listaként, amely a használt módszertől függően `id`, `text`és `language` attribútumok kombinációját tartalmazó objektumokat `dictionary`. A `text` attribútum tárolja a forrás `language`elemezni kívánt szöveget, és a `id` értéke lehet. 
+
+A válasz objektum az egyes dokumentumok elemzési információit tartalmazó lista. 
+
+## <a name="code-examples"></a>Példák a kódokra
+
+* [Az ügyfél hitelesítése](#authenticate-the-client)
+* [Hangulatelemzés](#sentiment-analysis)
+* [Nyelvfelismerés](#language-detection)
+* [Entitások felismerése](#entity-recognition)
+* [Fő kifejezés kibontása](#key-phrase-extraction)
+
+
+## <a name="authenticate-the-client"></a>Az ügyfél hitelesítése
+
+Hozzon létre egy új [TextAnalyticsClient](https://docs.microsoft.com/javascript/api/azure-cognitiveservices-textanalytics/textanalyticsclient?view=azure-node-latest) objektumot `credentials` és `endpoint` paraméterként.
+
+[!code-javascript[Authentication and client creation](~/cognitive-services-node-sdk-samples/Samples/textAnalytics.js?name=authentication)]
+
+
+## <a name="sentiment-analysis"></a>Hangulatelemzés
+
+Hozzon létre egy listát az elemezni kívánt dokumentumokat tartalmazó szótár-objektumok listájáról. Hívja meg az ügyfél [hangulati ()](https://docs.microsoft.com/javascript/api/azure-cognitiveservices-textanalytics/textanalyticsclient?view=azure-node-latest#sentiment-object-) metódusát, és szerezze be a visszaadott [SentimentBatchResult](https://docs.microsoft.com/javascript/api/azure-cognitiveservices-textanalytics/sentimentbatchresult?view=azure-node-latest). Ismételje meg az eredmények listáját, és nyomtassa ki az egyes dokumentumok AZONOSÍTÓit és hangulati pontszámát. Ha a pontszám közelebb van a 0 értékhez, a negatív érzést jelez, míg az 1. számú pontszám pozitív hangulatot jelez.
+
+[!code-javascript[Sentiment analysis](~/cognitive-services-node-sdk-samples/Samples/textAnalytics.js?name=sentimentAnalysis)]
+
+Futtassa a kódot `node index.js` a konzol ablakában.
+
+### <a name="output"></a>Kimenet
+
+```console
+[ { id: '1', score: 0.87 } ]
+[ { id: '2', score: 0.11 } ]
+[ { id: '3', score: 0.44 } ]
+[ { id: '4', score: 1.00 } ]
+```
+
+## <a name="language-detection"></a>Nyelvfelismerés
+
+Hozzon létre egy listát a dokumentumokat tartalmazó szótár-objektumokról. Hívja meg az ügyfél [detectLanguage ()](https://docs.microsoft.com/javascript/api/azure-cognitiveservices-textanalytics/textanalyticsclient?view=azure-node-latest#detectlanguage-object-) metódusát, és szerezze be a visszaadott [LanguageBatchResult](https://docs.microsoft.com/javascript/api/azure-cognitiveservices-textanalytics/languagebatchresult?view=azure-node-latest). Ezután ismételje meg az eredményeket, és nyomtassa ki az egyes dokumentumok AZONOSÍTÓit és nyelvét.
+
+[!code-javascript[Language detection](~/cognitive-services-node-sdk-samples/Samples/textAnalytics.js?name=languageDetection)]
+
+Futtassa a kódot `node index.js` a konzol ablakában.
+
+### <a name="output"></a>Kimenet
+
+```console
+Document ID: 1 , Language: English
+Document ID: 2 , Language: Spanish
+Document ID: 3 , Language: Chinese_Simplified
+```
+
+## <a name="entity-recognition"></a>Entitások felismerése
+
+Hozza létre a dokumentumokat tartalmazó objektumok listáját. Hívja meg az ügyfél [entitások ()](https://docs.microsoft.com/javascript/api/azure-cognitiveservices-textanalytics/textanalyticsclient?view=azure-node-latest#entities-object-) metódusát, és kérje le a [EntitiesBatchResult](https://docs.microsoft.com/javascript/api/azure-cognitiveservices-textanalytics/entitiesbatchresult?view=azure-node-latest) objektumot. Ismételje meg az eredmények listáját, és nyomtassa ki az egyes dokumentumok AZONOSÍTÓit. Minden észlelt entitás esetében nyomtassa ki a wikipedia nevét, típusát és altípusait (ha van), valamint az eredeti szöveg helyét.
+
+[!code-javascript[Entity recognition](~/cognitive-services-node-sdk-samples/Samples/textAnalytics.js?name=entityRecognition)]
+
+Futtassa a kódot `node index.js` a konzol ablakában.
+
+### <a name="output"></a>Kimenet
+
+```console
+Document ID: 1
+    Name: Microsoft,        Type: Organization,     Sub-Type: N/A
+    Offset: 0, Length: 9,   Score: 1.0
+    Name: Bill Gates,       Type: Person,   Sub-Type: N/A
+    Offset: 25, Length: 10, Score: 0.999847412109375
+    Name: Paul Allen,       Type: Person,   Sub-Type: N/A
+    Offset: 40, Length: 10, Score: 0.9988409876823425
+    Name: April 4,  Type: Other,    Sub-Type: N/A
+    Offset: 54, Length: 7,  Score: 0.8
+    Name: April 4, 1975,    Type: DateTime, Sub-Type: Date
+    Offset: 54, Length: 13, Score: 0.8
+    Name: BASIC,    Type: Other,    Sub-Type: N/A
+    Offset: 89, Length: 5,  Score: 0.8
+    Name: Altair 8800,      Type: Other,    Sub-Type: N/A
+    Offset: 116, Length: 11,        Score: 0.8
+
+Document ID: 2
+    Name: Microsoft,        Type: Organization,     Sub-Type: N/A
+    Offset: 21, Length: 9,  Score: 0.999755859375
+    Name: Redmond (Washington),     Type: Location, Sub-Type: N/A
+    Offset: 60, Length: 7,  Score: 0.9911284446716309
+    Name: 21 kilómetros,    Type: Quantity, Sub-Type: Dimension
+    Offset: 71, Length: 13, Score: 0.8
+    Name: Seattle,  Type: Location, Sub-Type: N/A
+    Offset: 88, Length: 7,  Score: 0.9998779296875
+```
+
+## <a name="key-phrase-extraction"></a>Kulcskifejezések kinyerése
+
+Hozza létre a dokumentumokat tartalmazó objektumok listáját. Hívja meg az ügyfél [()](https://docs.microsoft.com/javascript/api/azure-cognitiveservices-textanalytics/textanalyticsclient?view=azure-node-latest#keyphrases-object-) metódusát, és kérje le a visszaadott [KeyPhraseBatchResult](https://docs.microsoft.com/javascript/api/azure-cognitiveservices-textanalytics/keyphrasebatchresult?view=azure-node-latest) objektumot. Ismételje meg az eredményeket, és nyomtassa ki az egyes dokumentumok AZONOSÍTÓit, valamint az észlelt legfontosabb kifejezéseket.
+
+[!code-javascript[Key phrase extraction](~/cognitive-services-node-sdk-samples/Samples/textAnalytics.js?name=keyPhraseExtraction)]
+
+Futtassa a kódot `node index.js` a konzol ablakában.
+
+### <a name="output"></a>Kimenet
+
+```console
+[
+    { id: '1', keyPhrases: [ '幸せ' ] }
+    { id: '2', keyPhrases: [ 'Stuttgart', "hotel", "Fahrt", "Fu" ] }
+    { id: '3', keyPhrases: [ 'cat', 'veterinarian' ] }
+    { id: '3', keyPhrases: [ 'fútbol' ] }
+]
+```
+
+## <a name="run-the-application"></a>Az alkalmazás futtatása
+
+Futtassa az alkalmazást a gyors üzembe helyezési fájlban lévő `node` paranccsal.
+
+```console
+node index.js
+```

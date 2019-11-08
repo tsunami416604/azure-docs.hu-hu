@@ -9,12 +9,12 @@ ms.topic: include
 ms.date: 05/25/2019
 ms.author: glenga
 ms.custom: include file
-ms.openlocfilehash: 5dc200a59b6316b19b75e2ee1cb6169100a9bc22
-ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
-ms.translationtype: HT
+ms.openlocfilehash: 37ed5b93bdbed1352c1ffff7282bd0c593bc4435
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73633680"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73799896"
 ---
 |Nyelv                                 |1. x         |2. x| 3. x<sup>1</sup> |
 |-----------------------------------------|------------|---| --- |
@@ -22,7 +22,7 @@ ms.locfileid: "73633680"
 |[JavaScript](../articles/azure-functions/functions-reference-node.md)|GA (6. csomópont)|GA (csomópont 8 & 10)| Előnézet (csomópont 8 & 10) |
 |[F#](../articles/azure-functions/functions-reference-fsharp.md)|GA (.NET-keretrendszer 4,7)|GA (.NET Core 2,2)| Előzetes verzió (.NET Core 3. x) |
 |[Java](../articles/azure-functions/functions-reference-java.md)|N/A|GA (Java 8)| Előzetes verzió (Java 8)|
-|[PowerShell](../articles/azure-functions/functions-reference-powershell.md) |Kísérleti|GA (PowerShell mag 6)| GA (PowerShell mag 6)|
+|[PowerShell](../articles/azure-functions/functions-reference-powershell.md) |Kísérleti|GA (PowerShell mag 6)| Előzetes verzió (PowerShell Core 6)|
 |[Python](../articles/azure-functions/functions-reference-python.md)|Kísérleti|GA (Python 3.7. x)| Előzetes verzió (Python 3.7. x)|
 |[TypeScript](../articles/azure-functions/functions-reference-node.md#typescript) |Kísérleti|<sup>2</sup> . ga| <sup>2</sup> . előnézet |
 |Bash                |Kísérleti|N/A|N/A|

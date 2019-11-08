@@ -8,12 +8,12 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 10/31/2019
 ms.author: danlep
-ms.openlocfilehash: dbfadea9bc05614108333ef5a046e11b5280cc68
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
-ms.translationtype: HT
+ms.openlocfilehash: 7b9d220ac7e507513458eab6b55276b3aa434739
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73588433"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73742745"
 ---
 # <a name="repository-scoped-permissions-in-azure-container-registry"></a>Tárház – hatókörön belüli engedélyek Azure Container Registry 
 
@@ -28,9 +28,8 @@ A jelen cikk későbbi, a jogkivonat-fogalmakkal és-forgatókönyvekkel kapcsol
 
 ## <a name="preview-limitations"></a>Előzetes verzió korlátozásai
 
-* Ez a funkció csak a **Premium** Container registryben érhető el. További információ a beállításjegyzék szolgáltatási szintjeiről: [Azure Container Registry SKU](container-registry-skus.md)-ban.
+* Ez a funkció csak a **Premium** Container registryben érhető el. További információ a beállításjegyzék szolgáltatási szintjeiről és korlátairól: [Azure Container Registry SKU](container-registry-skus.md)-i.
 * Jelenleg nem rendelhet tárház-hatókörű engedélyeket egy Azure Active Directory objektumhoz, például egy egyszerű szolgáltatásnév vagy egy felügyelt identitáshoz.
-* A beállításjegyzék legfeljebb 20 000 hatókörű térképet és 20 000 tokent tesz lehetővé.
 
 ## <a name="prerequisites"></a>Előfeltételek
 

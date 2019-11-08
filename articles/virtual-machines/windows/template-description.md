@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 01/03/2019
 ms.author: cynthn
-ms.openlocfilehash: 23519edb61df23c97dfd2162d6cabea6b7fa5d38
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: afbf77014ece981568d4123db7820a2fa0a8f60d
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70101773"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73749114"
 ---
 # <a name="virtual-machines-in-an-azure-resource-manager-template"></a>Azure Resource Manager sablonban található virtuális gépek
 
@@ -27,7 +27,7 @@ Ez a cikk egy Azure Resource Manager sablonnak a virtuális gépekre vonatkozó 
 
 A katalógusban sok olyan [sablon található](https://azure.microsoft.com/documentation/templates/?term=VM) , amely tartalmazza a virtuális gép erőforrását. A sablonban nem szereplő összes elem leírását itt találja.
 
-[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
+ 
 
 Ebben a példában egy sablon egy tipikus erőforrás szakasza látható egy adott számú virtuális gép létrehozásához:
 
@@ -164,7 +164,7 @@ A sablonban megadott API-verzió befolyásolja a sablonban megadható tulajdons�
 A legújabb API-verziók beszerzéséhez használja a következő lehetőségeket:
 
 - REST API – [az összes erőforrás-szolgáltató listázása](https://docs.microsoft.com/rest/api/resources/providers)
-- PowerShell - [Get-AzResourceProvider](https://docs.microsoft.com/powershell/module/az.resources/get-azresourceprovider)
+- PowerShell – [Get-AzResourceProvider](https://docs.microsoft.com/powershell/module/az.resources/get-azresourceprovider)
 - Azure CLI – [az Provider show](https://docs.microsoft.com/cli/azure/provider)
 
 
@@ -281,7 +281,7 @@ A tulajdonság beállításához a hálózati adapternek léteznie kell. Ezért 
 
 A virtuális gépek erőforrásának definiálásakor több profil elemet is használ a rendszer. Néhány szükséges, néhányat pedig nem kötelező megadni. Például a hardwareProfile, a osProfile, a storageProfile és a networkProfile elem megadása kötelező, de a diagnosticsProfile megadása nem kötelező. Ezek a profilok olyan beállításokat határoznak meg, mint például:
    
-- [size](sizes.md)
+- [méret](sizes.md)
 - [név](/azure/architecture/best-practices/naming-conventions) és hitelesítő adatok
 - lemez-és [operációsrendszer-beállítások](cli-ps-findimage.md)
 - [hálózati adapter](../../virtual-network/virtual-network-deploy-multinic-classic-ps.md) 
@@ -315,7 +315,7 @@ Ha Linux operációs rendszert szeretne létrehozni, akkor használhatja ezt a d
 },
 ```
 
-Az operációs rendszer lemezének konfigurációs beállításai a osDisk elemmel vannak társítva. A példa egy új felügyelt lemezt határoz meg a gyorsítótárazási móddal, amely **READWRITE** van beállítva, és hogy a lemez egy [platform](cli-ps-findimage.md)-rendszerképből jön létre:
+Az operációs rendszer lemezének konfigurációs beállításai a osDisk elemmel vannak társítva. A példa egy új felügyelt lemezt határoz meg a gyorsítótárazási móddal, amely **READWRITE** van beállítva, és hogy a lemez egy [platform-rendszerképből](cli-ps-findimage.md)jön létre:
 
 ```
 "osDisk": { 
@@ -376,7 +376,7 @@ Szükség esetén adatlemezeket is hozzáadhat a virtuális gépekhez. A [lemeze
 
 ## <a name="extensions"></a>Bővítmények
 
-Bár [](extensions-features.md) a bővítmények különálló erőforrások, a virtuális gépekhez szorosan kötődnek. A bővítmények a virtuális gép alárendelt erőforrásaiként vagy külön erőforrásként vehetők fel. A példa a virtuális gépekhez hozzáadott [diagnosztikai bővítményt](extensions-diagnostics-template.md) mutatja be:
+Bár a [bővítmények](extensions-features.md) különálló erőforrások, a virtuális gépekhez szorosan kötődnek. A bővítmények a virtuális gép alárendelt erőforrásaiként vagy külön erőforrásként vehetők fel. A példa a virtuális gépekhez hozzáadott [diagnosztikai bővítményt](extensions-diagnostics-template.md) mutatja be:
 
 ```
 { 
@@ -444,9 +444,9 @@ A telepített bővítmények állapotát a portál bővítmények beállításai
 
 ![Bővítmény állapotának beolvasása](./media/template-description/virtual-machines-show-extensions.png)
 
-A bővítmény információit a **Get-AzVMExtension** PowerShell-paranccsal, a virtuálisgép- **BŐVÍTMÉNY Get** Azure CLI-paranccsal vagy a **bővítmény információinak** beolvasása REST API is lekérheti.
+A bővítmény információit a **Get-AzVMExtension** PowerShell-paranccsal, a virtuálisgép- **BŐVÍTMÉNY Get** Azure CLI-paranccsal vagy a **bővítmény információinak beolvasása** REST API is lekérheti.
 
-## <a name="deployments"></a>Üzemelő példányok
+## <a name="deployments"></a>Központi telepítés
 
 A sablonok központi telepítésekor az Azure nyomon követi a csoportként telepített erőforrásokat, és automatikusan hozzárendel egy nevet ehhez a telepített csoporthoz. A központi telepítés neve megegyezik a sablon nevével.
 
@@ -454,11 +454,11 @@ Ha kíváncsi a telepítésben lévő erőforrások állapotára, tekintse meg a
 
 ![Üzembe helyezési információk beolvasása](./media/template-description/virtual-machines-deployment-info.png)
     
-Nem probléma, hogy ugyanazt a sablont használja az erőforrások létrehozásához vagy a meglévő erőforrások frissítéséhez. Amikor parancsokat használ a sablonok üzembe helyezéséhez, lehetősége van megmondani, hogy melyik [módot](../../resource-group-template-deploy.md) kívánja használni. A mód beállítható **teljes** vagy **növekményes**értékre is. Az alapértelmezett érték a növekményes frissítések használata. Ügyeljen arra, hogy a **teljes** módot használja, mert véletlenül törölheti az erőforrásokat. Ha a módot a befejezésreállítja, a Resource Manager törli a sablonban nem szereplő összes erőforrást.
+Nem probléma, hogy ugyanazt a sablont használja az erőforrások létrehozásához vagy a meglévő erőforrások frissítéséhez. Amikor parancsokat használ a sablonok üzembe helyezéséhez, lehetősége van megmondani, hogy melyik [módot](../../resource-group-template-deploy.md) kívánja használni. A mód beállítható **teljes** vagy **növekményes**értékre is. Az alapértelmezett érték a növekményes frissítések használata. Ügyeljen arra, hogy a **teljes** módot használja, mert véletlenül törölheti az erőforrásokat. Ha a módot a **befejezésre**állítja, a Resource Manager törli a sablonban nem szereplő összes erőforrást.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Hozzon létre saját sablont a [szerzői Azure Resource Manager sablonok](../../resource-group-authoring-templates.md)használatával.
-- Telepítse a létrehozott sablont a [Windows rendszerű virtuális gép Resource Manager-sablonnal](ps-template.md)történő létrehozásával.
+- Telepítse a létrehozott sablont a [Windows rendszerű virtuális gép Resource Manager-sablonnal történő létrehozásával](ps-template.md).
 - Megtudhatja, hogyan kezelheti a létrehozott virtuális gépeket a [Windows rendszerű virtuális gépek létrehozása és kezelése a Azure PowerShell modullal](tutorial-manage-vm.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)című témakör áttekintésével.
 - A sablonokban található erőforrástípusok JSON-szintaxisához és tulajdonságaihoz lásd: [Azure Resource Manager sablon referenciája](/azure/templates/).

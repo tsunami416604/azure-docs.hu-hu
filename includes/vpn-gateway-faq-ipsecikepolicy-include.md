@@ -5,18 +5,18 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 11/04/2019
+ms.date: 11/06/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 57e8905fd9722d5b8a8b0ab76dbcea5b91c6d30a
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 6fa1912e80a98c98f058931708e191d0fff5bc66
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73495830"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73799895"
 ---
 ### <a name="is-custom-ipsecike-policy-supported-on-all-azure-vpn-gateway-skus"></a>Minden Azure VPN-átjáróhoz tartozó termékváltozat támogatja az egyéni IPsec/IKE-házirendet?
-Az Egyéni IPsec/IKE-házirendet **az alapszintű SKU kivételével az összes Azure**-beli SKU támogatja.
+Az egyéni IPsec/IKE-házirendet az Azure **VpnGw1, VpnGw2, VpnGw3, Standard** és a **Nagy teljesítményű** VPN-átjárók támogatják. Az **alapszintű** SKU **nem** támogatott.
 
 ### <a name="how-many-policies-can-i-specify-on-a-connection"></a>Hány házirendeket adhatok meg egy kapcsolathoz?
 Egy adott kapcsolathoz csak ***egy*** házirendet adhat meg.
@@ -27,22 +27,22 @@ Nem, minden algoritmust és paramétert meg kell adnia mind az IKE (Elsődleges 
 ### <a name="what-are-the-algorithms-and-key-strengths-supported-in-the-custom-policy"></a>Milyen algoritmusokat és milyen erősségű kulcsokat támogat az egyéni házirend?
 Az alábbi táblázatban megtekintheti az ügyfelek által konfigurálható, támogatott titkosítási algoritmusokat és kulcserősségeket. Minden mezőhöz választania kell egy lehetőséget.
 
-| **IPsec/IKEv2**  | **Beállítások**                                                                   |
-| ---              | ---                                                                           |
-| IKEv2-titkosítás | AES256, AES192, AES128, DES3, DES                                             |
-| IKEv2-integritás  | SHA384, MD5, SHA1, SHA256                                                     |
-| DH-csoport         | DHGroup24, ECP384, ECP256, DHGroup14 (DHGroup2048), DHGroup2, DHGroup1, Nincs |
-| IPsec-titkosítás | GCMAES256, GCMAES192, GCMAES128, AES256, AES192, AES128, DES3, DES, Nincs      |
-| IPsec-integritás  | GCMAES256, GCMAES192, GCMAES128, SHA-256, SHA1, MD5                            |
-| PFS-csoport        | PFS24, ECP384, ECP256, PFS2048, PFS2, PFS1, Nincs                              |
-| Gyorsmódú biztonsági társítás élettartama   | Másodperc (egész szám; **min. 300**/alapértelmezett érték: 27000 másodperc)<br>KB (egész szám; **min. 1024**/alapértelmezett érték: 102400000 KB)           |
-| Forgalomválasztó | UsePolicyBasedTrafficSelectors ($True/$False; alapértelmezett: $False)                 |
-|                  |                                                                               |
+| **IPsec/IKEv1, IKEv2**  | **Beállítások**                                                                   |
+| ---                     | ---                                                                           |
+| IKEv1, IKEv2 titkosítás | AES256, AES192, AES128, DES3, DES                                             |
+| IKEv1, IKEv2 integritás  | SHA384, MD5, SHA1, SHA256                                                     |
+| DH-csoport                | DHGroup24, ECP384, ECP256, DHGroup14 (DHGroup2048), DHGroup2, DHGroup1, Nincs  |
+| IPsec-titkosítás        | GCMAES256, GCMAES192, GCMAES128, AES256, AES192, AES128, DES3, DES, Nincs      |
+| IPsec-integritás         | GCMAES256, GCMAES192, GCMAES128, SHA-256, SHA1, MD5                            |
+| PFS-csoport               | PFS24, ECP384, ECP256, PFS2048, PFS2, PFS1, Nincs                              |
+| Gyorsmódú biztonsági társítás élettartama          | Másodperc (egész szám; **min. 300**/alapértelmezett érték: 27000 másodperc)<br>KB (egész szám; **min. 1024**/alapértelmezett érték: 102400000 KB) |
+| Forgalomválasztó        | UsePolicyBasedTrafficSelectors ($True/$False; alapértelmezett: $False)                 |
+|                         |                                                                               |
 
 > [!IMPORTANT]
 > 1. A DHGroup2048 és PFS2048 megegyeznek az IKE és IPsec PFS **14-es** Diffie-Hellman csoportjával. A teljes leképezések megtekintéséhez lásd: [Diffie-Hellman csoport](#DH).
 > 2. GCMAES-algoritmusok esetében ugyanazt a GCMAES-algoritmust és kulcshosszt kell megadnia az IPsec-titkosítás és -integritás esetében.
-> 3. Az IKEv2 fő módú biztonsági hozzárendelés élettartama 28 800 másodpercen van rögzítve az Azure VPN-átjárókon
+> 3. A IKEv1 és a IKEv2 fő módú SA élettartama 28 800 másodpercen belül megoldódott az Azure VPN-átjárók esetében.
 > 4. A gyorsmódú biztonsági társítás élettartama paraméter megadása opcionális. Ha nem ad meg értéket, a rendszer az alapértelmezett értékeket használja: 27 000 másodperc (7,5 óra) és 102 400 000 kB (102 GB).
 > 5. A UsePolicyBasedTrafficSelector a kapcsolat egy opcionális paramétere. Tekintse meg a „UsePolicyBasedTrafficSelectors” paraméterre vonatkozó következő GYIK elemet
 
@@ -102,6 +102,18 @@ Igen. A virtuális hálózatok közötti alagút két kapcsolati erőforrásból
 
 ### <a name="does-custom-ipsecike-policy-work-on-expressroute-connection"></a>Működik az egyéni IPsec/IKE-házirend az ExpressRoute-kapcsolatokkal?
 Nem. Az IPsec/IKE-házirend csak az S2S VPN- és a virtuális hálózatok közötti kapcsolatokkal, az Azure VPN-átjárókon keresztül működik.
+
+### <a name="how-do-i-create-connections-with-ikev1-or-ikev2-protocol-type"></a>Hogyan kapcsolatok létrehozása IKEv1 vagy IKEv2 protokoll-típussal?
+Az IKEv1-kapcsolatok az alapszintű SKU kivételével minden Útvonalalapú VPN-típusban létrehozhatók. Kapcsolatok létrehozásakor megadhatja a IKEv1 vagy a IKEv2 kapcsolati protokoll típusát is. Ha nem adja meg a kapcsolati protokoll típusát, a rendszer a IKEv2 alapértelmezett beállításként használja, ahol alkalmazható. További információt a [PowerShell-parancsmag](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetworkgatewayconnection?) dokumentációjában talál. Az SKU-típusok és a IKEv1/IKEv2 támogatásával kapcsolatban lásd: [átjárók csatlakoztatása házirend alapú VPN-eszközökhöz](../articles/vpn-gateway/vpn-gateway-connect-multiple-policybased-rm-ps.md).
+
+### <a name="is-transit-between-between-ikev1-and-ikev2-connections-allowed"></a>Engedélyezett a IKEv1 és a IKEv2 közötti kapcsolatok közötti átvitel?
+Igen. A IKEv1 és a IKEv2 kapcsolatok közötti átvitel támogatott.
+
+### <a name="can-i-have-ikev1-site-to-site-connections-on-basic-skus-of-routebased-vpn-type"></a>Használhatok IKEv1 helyek közötti kapcsolatokat a Útvonalalapú VPN-típusának alapszintű SKU-ban?
+Nem. Az összes Útvonalalapú VPN-SKU, kivéve az Útválasztás-alapú VPN-típus Alapszintű SKU-IKEv1-kapcsolatait a helyek közötti kapcsolathoz.
+
+### <a name="can-i-change-the-connection-protocol-type-after-the-connection-is-created-ikev1-to-ikev2-and-vice-versa"></a>Módosíthatom a kapcsolati protokoll típusát a kapcsolat létrehozása után (IKEv1 a IKEv2 és fordítva)?
+Nem. A létrehozást követően a IKEv1/IKEv2 protokollok nem módosíthatók. Törölje, majd hozza létre újra a kívánt protokolltípus új kapcsolatát.
 
 ### <a name="where-can-i-find-more-configuration-information-for-ipsec"></a>Hol találhatok további konfigurációs adatokat az IPsec szolgáltatáshoz?
 Lásd: [IPSec/IKE-szabályzat konfigurálása S2S vagy VNet – VNet kapcsolatok számára](../articles/vpn-gateway/vpn-gateway-ipsecikepolicy-rm-powershell.md)

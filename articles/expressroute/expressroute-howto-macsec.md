@@ -7,18 +7,18 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 10/22/2019
 ms.author: cherylmc
-ms.openlocfilehash: 36cd1bfebe4e5379a1c8cfc551c8e003459ebf5c
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 081c448ff09148668dbe5e244e80421a47d77152
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73162441"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73748268"
 ---
 # <a name="configure-macsec-on-expressroute-direct-ports"></a>MACsec konfigurálása a ExpressRoute Direct portokon
 
 Ez a cikk segítséget nyújt a MACsec konfigurálásához a peremhálózati útválasztók és a Microsoft peremhálózati útválasztói közötti kapcsolatok biztonságossá tételéhez a PowerShell használatával.
 
-## <a name="before-you-begin"></a>Előzetes teendők
+## <a name="before-you-begin"></a>Előkészületek
 
 A konfigurálás megkezdése előtt erősítse meg a következőket:
 
@@ -28,7 +28,7 @@ A konfigurálás megkezdése előtt erősítse meg a következőket:
 
 ### <a name="working-with-azure-powershell"></a>A Azure PowerShell használata
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+[!INCLUDE [updated-for-az](../../includes/hybrid-az-ps.md)]
 
 [!INCLUDE [expressroute-cloudshell](../../includes/expressroute-cloudshell-powershell-about.md)]
 
@@ -47,7 +47,7 @@ A konfiguráció elindításához jelentkezzen be az Azure-fiókjába, és vála
     $keyVault = New-AzKeyVault -Name "your_key_vault_name" -ResourceGroupName "your_resource_group" -Location "resource_location" -EnableSoftDelete 
     ```
 
-    Ha már rendelkezik kulcstartóval vagy erőforráscsoporthoz, újra felhasználhatja őket. Azonban fontos, hogy engedélyezze a [ **Soft-delete** funkciót](https://docs.microsoft.com/en-us/azure/key-vault/key-vault-ovw-soft-delete) a meglévő kulcstartóban. Ha a Soft-delete nincs engedélyezve, a következő parancsokkal engedélyezheti a használatát:
+    Ha már rendelkezik kulcstartóval vagy erőforráscsoporthoz, újra felhasználhatja őket. Azonban fontos, hogy engedélyezze a [ **Soft-delete** funkciót](../key-vault/key-vault-ovw-soft-delete.md) a meglévő kulcstartóban. Ha a Soft-delete nincs engedélyezve, a következő parancsokkal engedélyezheti a használatát:
 
     ```azurepowershell-interactive
     ($resource = Get-AzResource -ResourceId (Get-AzKeyVault -VaultName "your_existing_keyvault").ResourceId).Properties | Add-Member -MemberType "NoteProperty" -Name "enableSoftDelete" -Value "true"
@@ -134,7 +134,7 @@ Ezen a ponton a MACsec le van tiltva a ExpressRoute Direct-portok között a Mic
 ### <a name="test-connectivity"></a>Kapcsolat tesztelése
 Miután konfigurálta a MACsec (beleértve a MACsec kulcs frissítését) a ExpressRoute Direct-portok esetében, [ellenőrizze](expressroute-troubleshooting-expressroute-overview.md) , hogy az áramkör BGP-munkamenetei futnak-e. Ha még nem rendelkezik a portok egyetlen áramkörével sem, hozzon létre egyet először, és állítsa be az Azure-beli privát társat vagy a Microsoft-partnert. Ha a MACsec helytelenül van konfigurálva, beleértve a MACsec, a hálózati eszközök és a Microsoft hálózati eszközei között, a 3. rétegben nem jelenik meg az ARP-feloldás a 2. rétegben és a BGP-ben. Ha minden megfelelően van konfigurálva, akkor a BGP-útvonalakat a megfelelő módon kell meghirdetni mindkét irányban és az alkalmazás adatfolyamatában, ennek megfelelően a ExpressRoute.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 1. [ExpressRoute-kör létrehozása a ExpressRoute Direct-on](expressroute-howto-erdirect.md)
 2. [ExpressRoute-áramkör összekapcsolása egy Azure-beli virtuális hálózattal](expressroute-howto-linkvnet-arm.md)
 3. [ExpressRoute-kapcsolat ellenőrzése](expressroute-troubleshooting-expressroute-overview.md)

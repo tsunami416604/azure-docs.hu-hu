@@ -6,6 +6,7 @@ documentationcenter: na
 author: v-miegge
 manager: dcscontentpm
 editor: ''
+tags: virtual-network
 ms.assetid: 1a3d1e84-f793-41b4-aa04-774a7e8f7719
 ms.service: virtual-network
 ms.devlang: na
@@ -14,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/28/2019
 ms.author: kaushika
-ms.openlocfilehash: 0898a65323957cbab4c2ab5278e9970cf0c16a90
-ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
+ms.openlocfilehash: 1fddbe908ccebc1384dcccde0810366f1a6d5da7
+ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71219237"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73796231"
 ---
 # <a name="troubleshoot-virtual-network-peering-issues"></a>Virtuális hálózatok közötti társviszony-létesítési problémák hibaelhárítása
 
@@ -66,11 +67,11 @@ Ha a virtuális hálózatokat különböző előfizetésekben vagy Active Direct
 
 ### <a name="for-a-site-to-site-connection-or-an-expressroute-connection"></a>Helyek közötti kapcsolathoz vagy ExpressRoute-kapcsolathoz
 
-Kövesse a következő témakörben ismertetett lépéseket: [Konfigurálja a VPN Gateway-átvitelt a virtuális hálózati](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-peering-gateway-transit?toc=/azure/virtual-network/toc.json)társításokhoz.
+Kövesse a következő témakörben ismertetett lépéseket: [VPN Gateway tranzit beállítása virtuális hálózatokhoz](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-peering-gateway-transit?toc=/azure/virtual-network/toc.json).
 
 ### <a name="for-point-to-site-connections"></a>Pont – hely kapcsolatok esetén
 
-1. Kövesse a következő témakörben ismertetett lépéseket: [Konfigurálja a VPN Gateway-átvitelt a virtuális hálózati](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-peering-gateway-transit?toc=/azure/virtual-network/toc.json)társításokhoz.
+1. Kövesse a következő témakörben ismertetett lépéseket: [VPN Gateway tranzit beállítása virtuális hálózatokhoz](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-peering-gateway-transit?toc=/azure/virtual-network/toc.json).
 2. A virtuális hálózati társítás létrehozása vagy módosítása után töltse le és telepítse újra a pont – hely típusú csomagokat, hogy a pont – hely ügyfelek megkapják a frissített útvonalakat a küllős virtuális hálózatnak.
 
 ## <a name="configure-virtual-network-peering-with-hub-spoke-topology-virtual-network"></a>Virtuális hálózati társítás konfigurálása sugaras topológiai virtuális hálózattal
@@ -126,7 +127,7 @@ A probléma megoldásához:
    1. Indítsa el a hálózati nyomkövetést a cél virtuális gépen. A Windows rendszerben a **netsh**használható. Linux esetén használja a **TCPDump**-t.
    2. Futtassa a **TcpPing** vagy a **PsPing** a FORRÁSRÓL a cél IP-címhez.
 
-      Ez egy példa egy **TcpPing** -parancsra:`tcping64.exe -t <destination VM address> 3389`
+      Ez egy példa egy **TcpPing** -parancsra: `tcping64.exe -t <destination VM address> 3389`
 
    3. A **TcpPing** befejezése után állítsa le a hálózati nyomkövetést a célhelyen.
    4. Ha a csomagok érkeznek a forrásból, nincs hálózati probléma. Vizsgálja meg a virtuálisgép-tűzfalat és a portot figyelő alkalmazást a konfigurációs probléma megkereséséhez.
@@ -222,11 +223,11 @@ További információkért tekintse át a következő cikkeket:
 
 ## <a name="troubleshoot-a-virtual-network-peering-configuration-error-message"></a>Virtuális hálózati társ-beállítási konfigurációs hibaüzenet hibáinak megoldása 
 
-### <a name="current-tenant-tenant-id-isnt-authorized-to-access-linked-subscription"></a>A jelenlegi `<TENANT ID>` bérlő nem jogosult a csatolt előfizetés elérésére
+### <a name="current-tenant-tenant-id-isnt-authorized-to-access-linked-subscription"></a>A jelenlegi bérlői `<TENANT ID>` nem jogosult a csatolt előfizetés elérésére
 
 A probléma megoldásához tekintse meg a [peering-Azure CLI létrehozása](https://docs.microsoft.com/azure/virtual-network/create-peering-different-subscriptions#cli)című témakört.
 
-### <a name="not-connected"></a>Nincs csatlakoztatva
+### <a name="not-connected"></a>Nincs kapcsolat
 
 A probléma megoldásához törölje a társítást mindkét virtuális hálózatról, majd hozza létre újra.
 

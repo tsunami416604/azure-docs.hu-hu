@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 07/05/2018
 ms.author: kirpas
 ms.subservice: disks
-ms.openlocfilehash: 692046070ffc04942a5d8a73825f6cb59e462f8b
-ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
+ms.openlocfilehash: 12fa8cb09a9864b49c9368462ae3d5ca1d88f2c9
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71147210"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73749411"
 ---
 # <a name="how-to-expand-the-os-drive-of-a-virtual-machine"></a>Virtuális gép operációsrendszer-meghajtójának kibontása
 
@@ -37,7 +37,7 @@ Amikor új virtuális gépet (VM) hoz létre egy erőforráscsoporthoz egy rends
 > 
 
 
-[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
+ 
 
 
 ## <a name="resize-a-managed-disk"></a>Felügyelt lemez átméretezése
@@ -166,7 +166,7 @@ Start-AzVM -ResourceGroupName $rgName -Name $vmName
 
 ## <a name="resizing-data-disks"></a>Adatlemezek átméretezése
 
-Ez a cikk elsősorban a virtuális gép operációsrendszer-lemezének kibővítésére összpontosít, de a szkript használható a virtuális géphez csatlakoztatott adatlemezek bővítésére is. A virtuális géphez csatolt első adatlemez bővítéséhez például cserélje ki a `StorageProfile` `OSDisk` objektumát a `DataDisks` tömbre, és egy numerikus indexszel szerezzen be az első csatolt adatlemezre mutató hivatkozást az alább látható módon:
+Ez a cikk elsősorban a virtuális gép operációsrendszer-lemezének kibővítésére összpontosít, de a szkript használható a virtuális géphez csatlakoztatott adatlemezek bővítésére is. A virtuális géphez csatolt első adatlemez bővítéséhez például cserélje ki a `OSDisk` `StorageProfile` objektumát a `DataDisks` tömbre, és egy numerikus indexszel szerezzen be az első csatolt adatlemezre mutató hivatkozást az alább látható módon:
 
 **Felügyelt lemez**
 
@@ -207,11 +207,11 @@ Miután kibontotta a virtuális gép lemezét, be kell lépnie az operációs re
 
 2.  Nyisson meg egy parancssort, és írja be a **DiskPart**parancsot.
 
-2.  A **DiskPart** parancssorba írja be `list volume`a következőt:. Jegyezze fel a kiterjeszteni kívánt kötetet.
+2.  A **DiskPart** parancssorba írja be a következőt: `list volume`. Jegyezze fel a kiterjeszteni kívánt kötetet.
 
-3.  A **DiskPart** parancssorba írja be `select volume <volumenumber>`a következőt:. Itt választhatja ki, hogy milyen kötetre kívánja kiterjeszteni a *kötetszám* , hanem az ugyanazon a lemezen lévő üres helyet.
+3.  A **DiskPart** parancssorba írja be a következőt: `select volume <volumenumber>`. Itt választhatja ki, hogy milyen kötetre kívánja kiterjeszteni a *kötetszám* , hanem az ugyanazon a lemezen lévő üres helyet.
 
-4.  A **DiskPart** parancssorba írja be `extend [size=<size>]`a következőt:. Ez kibővíti a kijelölt kötetet megabájtban (MB).
+4.  A **DiskPart** parancssorba írja be a következőt: `extend [size=<size>]`. Ez kibővíti a kijelölt kötetet megabájtban (MB).
 
 
 ## <a name="next-steps"></a>További lépések

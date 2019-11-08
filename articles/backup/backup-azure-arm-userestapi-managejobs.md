@@ -1,6 +1,6 @@
 ---
-title: 'Azure Backup: Biztonsági mentési feladatok kezelése REST API használatával'
-description: Azure Backup biztonsági mentési és visszaállítási feladatainak kezelése REST API használatával
+title: 'Azure Backup: biztonsági mentési feladatok kezelése REST API használatával'
+description: Ebből a cikkből megtudhatja, hogyan nyomon követheti és kezelheti Azure Backup biztonsági mentési és visszaállítási feladatait REST API használatával.
 ms.reviewer: pullabhk
 author: dcurwin
 manager: carmonm
@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/03/2018
 ms.author: dacurwin
 ms.assetid: b234533e-ac51-4482-9452-d97444f98b38
-ms.openlocfilehash: b10283c2946d01101b941d53b6bf03be3a12e99e
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: c0ce79c68b9d9cf11ea20c2d6469f4240fb38a95
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68954918"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73747543"
 ---
 # <a name="track-backup-and-restore-jobs-using-rest-api"></a>Biztonsági mentési és visszaállítási feladatok nyomon követése REST API használatával
 
@@ -23,7 +23,7 @@ Azure Backup szolgáltatás olyan feladatokat indít el, amelyek a háttérben f
 
 ## <a name="fetch-job-information-from-operations"></a>Feladatok adatainak beolvasása a műveletből
 
-Egy művelet, például a biztonsági mentés elindítása mindig jobID ad vissza. Példa: A [trigger biztonsági mentési REST API műveletének](backup-azure-arm-userestapi-backupazurevms.md#example-responses-3) utolsó válasza a következő:
+Egy művelet, például a biztonsági mentés elindítása mindig jobID ad vissza. Például: a [trigger biztonsági mentési REST API műveletének](backup-azure-arm-userestapi-backupazurevms.md#example-responses-3) végső válasza a következő:
 
 ```http
 {
@@ -51,7 +51,7 @@ A `{jobName}` a fent említett "jobId". A válasz mindig 200 OK az "állapot" me
 
 ### <a name="response"></a>Válasz
 
-|Name (Név)  |Típus  |Leírás  |
+|Név  |Típus  |Leírás  |
 |---------|---------|---------|
 |200 OK     | [JobResource](https://docs.microsoft.com/rest/api/backup/jobdetails/get#jobresource)        | OK        |
 

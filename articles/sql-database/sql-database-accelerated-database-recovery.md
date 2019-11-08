@@ -10,12 +10,12 @@ author: mashamsft
 ms.author: mathoma
 ms.reviewer: carlrab
 ms.date: 01/25/2019
-ms.openlocfilehash: e66b3e6563d796cc7b59e82233bd1b22bc906c6e
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
-ms.translationtype: MT
+ms.openlocfilehash: cff481c7c2e09da1dc8c8e2f971d9adb164d54da
+ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73691358"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73796120"
 ---
 # <a name="accelerated-database-recovery"></a>Gyorsított adatbázis-helyreállítás
 
@@ -99,11 +99,11 @@ Az ADR négy fő összetevője a következők:
 
 - **Logikai visszaállítása**
 
-  A logikai visszaállítás az aszinkron folyamat, amely az összes verziószámmal ellátott művelet visszavonásának és visszavonásának elvégzéséhez felelős.
+  A logikai visszaállítás az aszinkron folyamat, amely az összes verziószámmal ellátott művelet visszavonásának és visszavonásának elvégzéséhez felelős. A logikai visszavertség a következőket hajtja végre:
 
-  - Nyomon követi az összes megszakított tranzakciót
-  - A PVS használatával végez visszaállítást az összes felhasználói tranzakcióhoz
-  - Minden zárolás kiadása a tranzakció megszakítása után azonnal
+  - Nyomon követheti az összes megszakított tranzakciót, és láthatatlanként megjelölheti azokat más tranzakciókra. 
+  - A visszaállítást a PVS használatával végezheti el az összes felhasználói tranzakcióhoz, nem pedig fizikailag ellenőrzi a tranzakciós naplót, és nem végezheti el a módosításokat.
+  - A tranzakciók megszakítása után azonnal felszabadítja az összes zárolást. Mivel a megszakítás egyszerűen megjelöli a memória változásait, a folyamat nagyon hatékony, ezért a zárolásokat nem kell hosszú ideig tárolni.
 
 - **Üt**
 
