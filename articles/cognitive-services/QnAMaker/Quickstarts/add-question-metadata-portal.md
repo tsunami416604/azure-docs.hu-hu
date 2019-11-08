@@ -1,5 +1,5 @@
 ---
-title: 'Gyors útmutató: Kérdések és válaszok hozzáadása QnA Maker portálon'
+title: 'Gyors útmutató: kérdések és válaszok hozzáadása QnA Maker portálon'
 titleSuffix: Azure Cognitive Services
 description: ''
 services: cognitive-services
@@ -10,14 +10,14 @@ ms.subservice: qna-maker
 ms.topic: quickstart
 ms.date: 10/01/2019
 ms.author: diberry
-ms.openlocfilehash: ed50e6adbcca7cbb4935400c7850c37dc2ed389f
-ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
+ms.openlocfilehash: 92735d8982fb1364d5ebfe0494f5ee51f4302469
+ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71803527"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73794004"
 ---
-# <a name="quickstart-add-questions-and-answer-with-qna-maker-portal"></a>Gyors útmutató: Kérdések és válaszok hozzáadása QnA Maker portálon
+# <a name="quickstart-add-questions-and-answer-with-qna-maker-portal"></a>Gyors útmutató: kérdések és válaszok felvétele QnA Maker portálra
 
 Miután létrehozta a tudásbázist, adjon hozzá metaadatokat tartalmazó kérdéseket és válaszokat, hogy a felhasználók megtalálják a megfelelő választ a kérdésére.
 
@@ -31,7 +31,7 @@ Az alábbi táblázatban szereplő kérdések például az Azure szolgáltatási
 |Beállítás|Kérdések|Válasz|Metaadatok|
 |--|--|--|--|
 |#1|`How large a knowledge base can I create?`<br><br>`What is the max size of a knowledge base?`<br><br>`How many GB of data can a knowledge base hold?` |`The size of the knowledge base depends on the SKU of Azure search you choose when creating the QnA Maker service. Read [here](https://docs.microsoft.com/azure/cognitive-services/qnamaker/tutorials/choosing-capacity-qnamaker-deployment) for more details.`|`service=qna_maker`<br>`link_in_answer=true`|
-|#2|`How many knowledge bases can I have for my QnA Maker service?`<br><br>`I selected a Azure Search tier that holds 15 knowledge bases, but I can only create 14 - what is going on?`<br><br>`What is the connection between the number of knowledge bases in my QnA Maker service and the Azure Search service size?` |`Each knowledge base uses 1 index, and all the knowledge bases share a test index. You can have N-1 knowledge bases where N is the number of indexes your Azure Search tier supports.`|`service=search`<br>`link_in_answer=false`|
+|#2|`How many knowledge bases can I have for my QnA Maker service?`<br><br>`I selected a Azure Cognitive Search tier that holds 15 knowledge bases, but I can only create 14 - what is going on?`<br><br>`What is the connection between the number of knowledge bases in my QnA Maker service and the Azure Cognitive Search service size?` |`Each knowledge base uses 1 index, and all the knowledge bases share a test index. You can have N-1 knowledge bases where N is the number of indexes your Azure Cognitive Search tier supports.`|`service=search`<br>`link_in_answer=false`|
 
 Miután hozzáadta a metaadatokat egy kérdés-válasz készlethez, az ügyfélalkalmazás a következőket teheti:
 
@@ -61,7 +61,7 @@ Az URL-cím importálása után csak egy kérdés lett létrehozva.
 
 Ebben az eljárásban további kérdéseket is megadhat.
 
-1. A **Szerkesztés** lapon a kérdés-és Levelesláda fölötti keresési szövegmezőben keresse meg a következő kérdést: `How large a knowledge base can I create?`
+1. A **Szerkesztés** lapon használja a kérdés-és Levelesláda fölötti keresési szövegmezőt a kérdés megkereséséhez `How large a knowledge base can I create?`
 
 1. A **kérdés** oszlopban válassza az **+ alternatív megfogalmazás hozzáadása** lehetőséget, majd adja hozzá a következő táblázatban megadott összes új megfogalmazást.
 
@@ -92,9 +92,9 @@ Ha metaadatokat ad hozzá egy kérdéshez és a válaszhoz, akkor az ügyfélalk
 
 1. Válassza a **megtekintési beállítások**, majd a **metaadatok megjelenítése**lehetőséget. 
 
-1. Az imént hozzáadott kérdés és válasz esetében válassza a **metaadatok hozzáadása**elemet, majd adja hozzá a `service` és a `search`, `service:search` érték nevét.
+1. Az imént hozzáadott kérdéshez és válaszhoz válassza a **metaadatok hozzáadása**lehetőséget, majd adja hozzá a `service` nevét és `search``service:search`értékét.
 
-1. Adjon hozzá egy másik metaadat-címkét, amelynek neve `link_in_answer`, `false`, `link_in_answer:false` értékkel.
+1. Adjon hozzá egy másik metaadat-címkét, amelynek a neve `link_in_answer` és értéke `false`, `link_in_answer:false`.
 
 1. Keresse meg az első választ a táblázatban, `How large a knowledge base can I create?`. 
 1. Metaadat-párok hozzáadása ugyanahhoz a két metaadat-címkéhez:
@@ -121,7 +121,7 @@ Ha metaadatokat ad hozzá egy kérdéshez és a válaszhoz, akkor az ügyfélalk
     curl -X POST https://your-resource-name.azurewebsites.net/qnamaker/knowledgebases/your-knowledge-base-id/generateAnswer -H "Authorization: EndpointKey your-endpoint-key" -H "Content-type: application/json" -d "{'top':30, 'question':'size','strictFilters': [{'name':'service','value':'qna_maker'}]}"
     ```
 
-    Figyelje meg, hogy a kérdés csak egyetlen szó, `size`, amely a kérdést és a válaszadási készletet is visszaadja. A `strictFilters` tömb arra utasítja a választ, hogy csak a `qna_maker` válaszokat csökkentse. 
+    Figyelje meg, hogy a kérdés csak egyetlen szó, `size`, amely a kérdést és a válaszadási készletet is visszaadja. A `strictFilters` Array azt jelzi, hogy a válasz csak a `qna_maker` válaszokra van korlátozva. 
 
     [!INCLUDE [Tip for debug property to JSON request](../includes/tip-debug-json.md)]
 
@@ -162,7 +162,7 @@ Ha metaadatokat ad hozzá egy kérdéshez és a válaszhoz, akkor az ügyfélalk
     }
     ```
 
-    Ha van olyan kérdés-és Levelesláda, amely nem felelt meg a keresési kifejezésnek, de megfelel a szűrőnek, akkor a rendszer nem adja vissza. Ehelyett a `No good match found in KB.` általános választ adja vissza.
+    Ha van olyan kérdés-és Levelesláda, amely nem felelt meg a keresési kifejezésnek, de megfelel a szűrőnek, akkor a rendszer nem adja vissza. Ehelyett a rendszer az általános válasz `No good match found in KB.` adja vissza.
 
     Ügyeljen rá, hogy a metaadatok neve és értéke párokat a szükséges korlátok között tartsa. 
 

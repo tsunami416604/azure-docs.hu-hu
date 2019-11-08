@@ -1,219 +1,220 @@
 ---
-title: A Microsoft Developer-fiók létrehozása |} Az Azure Marketplace-en
-description: Követelmények és lépések a Microsoft Developer-fiók létrehozása.
+title: Microsoft Developer-fiók létrehozása | Azure piactér
+description: A Microsoft fejlesztői fiók létrehozásához szükséges követelmények és lépések.
 services: Azure, Marketplace, Cloud Partner Portal,
 author: v-miclar
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pabutler
-ms.openlocfilehash: 4fde5d81fb97bec23fdb46ff53b05874c88d9d67
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 522caa53123ad5ccb8076839d2dfa7dc1236b022
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64935865"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73818429"
 ---
-<a name="create-a-microsoft-developer-account"></a>A Microsoft Developer-fiók létrehozása
+<a name="create-a-microsoft-developer-account"></a>Microsoft fejlesztői fiók létrehozása
 ====================================
 
-Ez a cikk azt ismerteti, hogyan válhat Azure piactér közzétételre egy engedélyezett Microsoft Developer.
+Ez a cikk azt ismerteti, hogy miként lehet jóváhagyni az Azure Marketplace-közzététel jóváhagyott Microsoft Developer szolgáltatását.
 
-## <a name="create-a-microsoft-account"></a>Microsoft-fiók regisztrálása
+## <a name="create-a-microsoft-account"></a>Microsoft-fiók létrehozása
 
-A közzétételi folyamat indításához kell végezze el a **Microsoft Developer Center** regisztráció. Használja ugyanazt a regisztrált fiókot lévő a **[Cloud Partner Portalon](https://cloudpartner.azure.com/)** a közzétételi folyamat elindításához.
+A közzétételi folyamat elindításához el kell végeznie a **Microsoft fejlesztői központ** regisztrációját. Ugyanazt a regisztrált fiókot fogja használni a **[Cloud Partner Portal](https://cloudpartner.azure.com/)** a közzétételi folyamat elindításához.
 
-### <a name="general-account-guidelines"></a>A fiók általános irányelvek
+### <a name="general-account-guidelines"></a>Általános fiókra vonatkozó irányelvek
 
-Azt javasoljuk, hogy Ön egy Microsoft-fiókkal rendelkeznie az Azure piactér-i ajánlatainak közzétételéhez. Ez a fiók nem lehet adott szolgáltatások vagy ajánlatokat.
+Javasoljuk, hogy az Azure Marketplace-ajánlatokhoz csak egy Microsoft-fiók rendelkezzen. Ez a fiók nem lehet konkrét a szolgáltatásokra vagy ajánlatokra.
 
-A felhasználó nevét a cím a tartományban kell lennie, és az informatikai csapat által vezérelt. Ezzel a fiókkal minden közzétételi kapcsolódó tevékenységeket kell elvégezni.
+A felhasználónevet képező címnek a tartományon kell lennie, és az informatikai csapatnak kell ellenőriznie. Az összes közzétételi kapcsolódó tevékenység ezen a fiókon keresztül valósítható meg.
 
 >[!WARNING]
->Például az "Azure" és "Microsoft" szót a Microsoft-fiók regisztrálása nem támogatottak. Kerülje azokat a szavakat a fiók létrehozása és a regisztrációs folyamat végrehajtásához.
+>Az "Azure" és a "Microsoft" szavak nem támogatottak Microsoft-fiók regisztrációhoz. Ne használja ezeket a szavakat a fiók létrehozási és regisztrációs folyamatának elvégzéséhez.
 
-### <a name="company-account-guidelines"></a>Céges fiók irányelvek
+### <a name="company-account-guidelines"></a>A vállalati fiókra vonatkozó irányelvek
 
-Kövesse ezeket az irányelveket, ha egynél több személynek kell a Microsoft-fiókjával, amely a fiók megnyitva a fiókja eléréséhez.
-
->[!IMPORTANT]
->Ahhoz, hogy több felhasználó hozzáférjen a fejlesztői központ-fiókjához, javasoljuk, egyéni szerepkörök hozzárendelése az Azure Active Directory használatával. Bejelentkezés után az egyes eléréséhez a fióknak az Azure AD hitelesítő adatait. További információkért lásd: [fiókfelhasználók kezelése](https://docs.microsoft.com/windows/uwp/publish/manage-account-users).
-
--   Tartozik, a vállalati e-mail-címmel a Microsoft-fiók létrehozása\'s tartományhoz, de nem egy egyetlen személy. Ha például windowsapps\@fabrikam.com.
--   A Microsoft-fiókot a lehető legkevesebb fejlesztők való hozzáférés korlátozásához.
--   Állítsa be a vállalati e-mailek terjesztési lista, amely tartalmazza az mindenki, aki hozzáféréssel kell rendelkeznie a fejlesztői fiókhoz, és adja hozzá ezt az e-mail címet biztonsági adatait. Ez lehetővé teszi az összes alkalmazott számára a listán megkapni a biztonsági kódokat, ha szükséges, és kezelheti a Microsoft-fiók biztonsági adatait. Egy terjesztési lista beállítása nem megvalósítható, ha az egyéni e-mail fiók tulajdonosának kell lennie a elérhető hozzáférni és megosztani azokat a biztonsági kódot, amikor a rendszer kéri, (például ha az új biztonsági adatok hozzáadni a fiókhoz, vagy ha azt kell érhetők el az új eszköz.)
--   Nincs szükség a bővítmény és key csapat tagjai számára elérhető vállalati telefonszám megadása.
--   Jelentkezzen be a vállalati fejlesztői fiók a megbízható eszközök segítségével a fejlesztők általában rendelkeznek. Az összes fő csapat tagjai a megbízható eszközökhöz való hozzáféréssel kell rendelkeznie. Ez csökkenti a biztonsági kódokat a fiók elérésekor küldendő szükségességét.
--   Ha engedélyezi a hozzáférést a fiók nem megbízható számítógépről kell, a férjenek hozzá az legfeljebb öt fejlesztők számára. Ideális esetben fejlesztőket hozzá kell férnie a fiók, amely azonos földrajzi és a hálózati hely gépekről.
--   Gyakran tekintse át a [vállalati biztonsági adatok](https://account.live.com/proofs/Manage) , hogy az naprakész legyen.
+Kövesse az alábbi irányelveket, ha több személynek is hozzá kell férnie a fiókhoz a fiókot megnyitó Microsoft-fiók való bejelentkezéssel.
 
 >[!IMPORTANT]
->Fejlesztői fiók nyitása elsősorban megbízható számítógépeket kell elérhető. Ez azért fontos, mert létrehozott hetente fiókonkénti kódok száma korlátozva van. Azt is lehetővé teszi, hogy a legtöbb zökkenőmentes bejelentkezési élmény.
+>Ahhoz, hogy több felhasználó hozzáférhessen a Fejlesztői központ fiókjához, javasoljuk, hogy az Azure Active Directory használatával rendeljen hozzá szerepköröket az egyes felhasználókhoz. Az egyes Azure AD-beli hitelesítő adataikkal való bejelentkezéssel hozzáférhetnek a fiókhoz. További információ: [fiókok felhasználóinak kezelése](https://docs.microsoft.com/windows/uwp/publish/manage-account-users).
+
+-   Hozza létre a Microsoft-fiók a vállalati\'s tartományhoz tartozó e-mail-címmel, de egyetlen személynek sem. Például windowsapps\@fabrikam.com.
+-   Korlátozza a hozzáférést ehhez a Microsoft-fiók a lehető legkisebb számú fejlesztőhöz.
+-   Állítson be egy vállalati e-mail-terjesztési listát, amely tartalmazza mindazokat, akik hozzáférnek a fejlesztői fiókhoz, és hozzá kell adni ezt az e-mail-címet a biztonsági adataihoz. Ez lehetővé teszi, hogy a listán szereplő összes alkalmazott biztonsági kódokat kapjon, amikor szükséges, és felügyelje Microsoft-fiók biztonsági adatait. Ha a terjesztési lista beállítása nem lehetséges, akkor az egyéni e-mail-fiók tulajdonosának elérhetőnek kell lennie az eléréséhez és a biztonsági kód megosztásához, amikor a rendszer kéri (például ha új biztonsági adatokat ad hozzá a fiókhoz, vagy ha egy új eszközről kell elérnie.)
+-   Adjon hozzá egy olyan vállalati telefonszámot, amelyhez nincs szükség bővítményre, és elérhető a legfontosabb csapattagok számára.
+-   Általánosságban elmondható, hogy a fejlesztők megbízható eszközöket használnak a vállalat fejlesztői fiókjába való bejelentkezéshez. Az összes kulcsfontosságú csapat tagjának hozzáféréssel kell rendelkeznie ezekhez a megbízható eszközökhöz. Ez csökkenti a fiókhoz való hozzáféréskor a biztonsági kódok elküldéseinak szükségességét.
+-   Ha nem megbízható SZÁMÍTÓGÉPRŐL szeretné engedélyezni a fiók elérését, korlátozza a hozzáférést legfeljebb öt fejlesztőhöz. Ideális esetben ezeknek a fejlesztőknek el kell érniük a fiókot azokról a gépekről, amelyek ugyanazt a földrajzi és hálózati helyet használják.
+-   Gyakran tekintse át a [vállalat biztonsági adatait](https://account.live.com/proofs/Manage) , és győződjön meg róla, hogy az aktuális.
+
+>[!IMPORTANT]
+>A fejlesztői fiókjának elsődlegesen megbízható számítógépekről kell elérhetőnek lennie. Ez azért fontos, mert a felhasználónként generált kódok száma hetente van korlátozva. Emellett a legzökkenőmentesebb bejelentkezési élményt is lehetővé teszi.
 >
->További információkért lásd: [további fejlesztői fiók irányelvek és biztonsági](https://msdn.microsoft.com/windows/uwp/publish/opening-a-developer-account#additional-guidelines-for-company-accounts).
+>További információ: [további fejlesztői fiókokra vonatkozó irányelvek és biztonság](https://msdn.microsoft.com/windows/uwp/publish/opening-a-developer-account#additional-guidelines-for-company-accounts).
 
-### <a name="to-create-a-microsoft-account"></a>A Microsoft-fiók létrehozása
+### <a name="to-create-a-microsoft-account"></a>Microsoft-fiók létrehozása
 
-1.  Nyisson meg egy új Inkognitó Chrome vagy Internet Explorer InPrivate-böngészési munkamenet, győződjön meg arról, hogy Ön nincs bejelentkezve a meglévő fiók.
-2.  Regisztrálja az e-mailt (az előző irányelvek segítségével), amely a Microsoft-fiók segítségével [hivatkozás](https://signup.live.com/signup.aspx). Hajtsa végre a következő regisztrációs utasításokat:
+1.  Nyisson meg egy új Chrome inkognitóban vagy Internet Explorer InPrivate-böngészési munkamenetet, és győződjön meg arról, hogy nincs bejelentkezve egy meglévő fiókba.
+2.  A [hivatkozás](https://signup.live.com/signup.aspx)használatával regisztrálja az e-mailt (az előző irányelvek használatával) Microsoft-fiók. Hajtsa végre a következő regisztrációs utasításokat:
 
-    - A fiók, amely a Microsoft-fiók regisztrálásakor meg kell adnia egy érvényes telefonszámot adjon a rendszer arra, hogy egy fiók ellenőrző kódot szöveges üzenetben vagy egy automata fel fogja hívni.
-    - A fiók, amely a Microsoft-fiók regisztrálásakor meg kell adnia egy érvényes e-mail-azonosítót a fiók ellenőrzése az automatikus e-mail fogadása.
-    - Ellenőrizze az e-mail címet a terjesztési listához küldeni.
+    - A fiók Microsoft-fiókként való regisztrálásakor meg kell adnia egy érvényes telefonszámot a rendszer számára, hogy szöveges üzenetként vagy automatikus hívásként küldjön Önnek egy fiókot ellenőrző kódot.
+    - A fiók Microsoft-fiókként való regisztrálásakor érvényes e-mail-azonosítót kell megadnia a fiók-ellenőrzés automatikus e-mail-címének fogadásához.
+    - Ellenőrizze a DL számára küldött e-mail-címet.
 
-    Most már készen áll az új Microsoft-fiók használata a Microsoft Developer Centerben.
+    Most már készen áll az új Microsoft-fiók használatára a Microsoft fejlesztői központban.
 
-## <a name="register-your-account-in-microsoft-developer-center"></a>Regisztrálja a fiókot a Microsoft Developer Centerben
+## <a name="register-your-account-in-microsoft-developer-center"></a>Fiók regisztrálása a Microsoft fejlesztői központban
 
-A Microsoft Developer Center egyszer a vállalati adatok regisztrálásához használatos. A regisztráló kell lennie a vállalat érvényes képviselője, és saját identitás ellenőrzése, hogy személyes adatokat kell megadnia. A személy regisztrálása kell használnia a Microsoft-fiók, amelyet a vállalat **és ugyanazt a fiókot kell használni a Cloud Partner portálra.** Ellenőrizze, hogy a vállalat még nem rendelkezik a Microsoft Developer Center fiók előtt hozzon létre egyet. A folyamat során a céges címadatok, banki információt, beszedjük és adózási adatait. Ezek az adatok általában megtalálhatók a pénzügyi vagy üzleti kapcsolattartói adatok között.
+A Microsoft fejlesztői központ a vállalati adatok egyszeri regisztrálására szolgál. A regisztrálónak a vállalat érvényes képviselőjének kell lennie, és meg kell adnia személyes adatait az identitásuk érvényesítéséhez. A regisztrálni kívánt személynek a vállalatnál megosztott Microsoft-fiók kell használnia, és ugyanazt a fiókot kell használnia **a Cloud Partner Portalban.** Győződjön meg arról, hogy a vállalat még nem rendelkezik Microsoft Developer Center-fiókkal, mielőtt megpróbál létrehozni egyet. A folyamat során a rendszer begyűjti a vállalati címadatok adatait, a bankszámla adatait és az adózási adatokat. Ezek az adatok általában megtalálhatók a pénzügyi vagy üzleti kapcsolattartói adatok között.
 
 >[!IMPORTANT]
->Annak érdekében, hogy az ajánlat létrehozásának és üzembe helyezésének különböző fázisait halad, el kell végeznie az alábbi fejlesztői profil összetevőket.
+>A következő fejlesztői profilok összetevőit kell végrehajtania ahhoz, hogy az ajánlat létrehozásának és üzembe helyezésének különböző fázisain haladjon át.
 
-| Fejlesztői profil     | Vázlat indítása    | Előkészítés       | Ingyenes közzététele és megoldássablon   | Kereskedelmi közzététele   |
+| Fejlesztői profil     | Piszkozat elindítása    | Előkészítés       | Ingyenes és megoldási sablon közzététele   | Kereskedelmi közzététel   |
 |---------------------- |----------------   |-----------    |-------------------------------------  |---------------------  |
-| Céges regisztráció  | Rendelkeznie kell         | Rendelkeznie kell     | Rendelkeznie kell                             | Rendelkeznie kell             |
+| Vállalati regisztráció  | Rendelkeznie kell         | Rendelkeznie kell     | Rendelkeznie kell                             | Rendelkeznie kell             |
 | Adózási profil azonosítója        | Optional          | Optional      | Optional                              | Rendelkeznie kell             |
-| Fiók létrehozása          | Optional          | Optional      | Optional                              | Rendelkeznie kell             |
+| Bankszámla          | Optional          | Optional      | Optional                              | Rendelkeznie kell             |
 
 >[!NOTE]
->Használata a saját licences (BYOL) csak a támogatott virtuális gépek és a egy ingyenes ajánlat számít.
+>A saját licenc használata (BYOL) csak a virtuális gépek esetében támogatott, és ingyenes ajánlatnak minősül.
 
-### <a name="register-your-company-account"></a>A vállalati fiók regisztrálása
+### <a name="register-your-company-account"></a>Vállalati fiók regisztrálása
 
-1. Nyisson meg egy új Internet Explorer InPrivate vagy Chrome Inkognitó böngészési munkamenet, győződjön meg arról, hogy Ön nincs bejelentkezve a személyes fiókkal.
+1. Nyisson meg egy új Internet Explorer InPrivate-vagy Chrome inkognitóban-böngészési munkamenetet, és győződjön meg arról, hogy nincs bejelentkezve személyes fiókba.
 
-2. Nyissa meg a [Windows Dev Center](https://dev.windows.com/registration?accountprogram=azure) eladó el. Folytatás előtt olvassa el az alábbi fontos megjegyzést.
+2. Nyissa meg a [Windows fejlesztői központot](https://dev.windows.com/registration?accountprogram=azure) , és regisztrálja magát eladóként. A folytatás előtt olvassa el a következő fontos megjegyzést.
 
-   ![A Microsoft-fiók ellenőrzése](./media/cloud-partner-portal-create-dev-center-registration/seller-dashboard-verify.jpg)
+   ![Microsoft-fiók ellenőrzése](./media/cloud-partner-portal-create-dev-center-registration/seller-dashboard-verify.jpg)
 
     >[!IMPORTANT]
-    >Ellenőrizze, hogy a e-mail azonosító vagy a terjesztési listát (egy terjesztési lista ajánlott függőség eltávolítása egyéni felhasználók számára), a fejlesztői központban regisztrálásához fog használni először egy Microsoft-fiókjával regisztrált. Ha nem, majd regisztrálja ezen hivatkozás használatával. Emellett minden olyan e-mail-azonosítót a Microsoft vállalati tartomány fejlesztői központ-regisztráció nem használható. "
+    >Győződjön meg arról, hogy az e-mail-azonosító vagy a terjesztési lista (az egyes személyektől származó függőségek eltávolítására javasolt terjesztési lista), amelyet a rendszer a fejlesztői központban való regisztráláshoz használ, először Microsoft-fiókként lesz regisztrálva. Ha nem, akkor regisztrálja ezt a hivatkozást. Emellett a Microsoft vállalati tartományában található e-mail-azonosítók nem használhatók a Fejlesztői központ regisztrálásához.
 
-   ![Dev center bejelentkezés](./media/cloud-partner-portal-create-dev-center-registration/seller-dashboard-login.jpg)
+   ![Fejlesztői központ bejelentkezés](./media/cloud-partner-portal-create-dev-center-registration/seller-dashboard-login.jpg)
 
-3. Futtassa a "Segítse fiókja védelmét" varázslót a személyazonosságát, egy telefonszám vagy e-mail-cím használatával.
+3. Futtassa a "Segítség a fiók védelméhez" varázslót, hogy igazolja személyazonosságát telefonszám vagy e-mail-cím használatával.
 
-4. A regisztrációs fiókadatok, válassza ki a **számla ország/régió** a legördülő listából, és válassza ki a **tovább**.
+4. A regisztrációs fiók adatai területen válassza ki a **fiók országát/régióját** a legördülő listából, majd kattintson a **tovább**gombra.
 
-   ![Válassza ki az országot/régiót](./media/cloud-partner-portal-create-dev-center-registration/imgRegisterCo_04.png)
+   ![Ország/régió kiválasztása](./media/cloud-partner-portal-create-dev-center-registration/imgRegisterCo_04.png)
 
     >[!WARNING]
-    >"Sell-from" Countries/Regions: Annak érdekében, hogy a szolgáltatások az Azure piactéren értékesítheti, a regisztrált entitás van szükség egy jóváhagyott "értékesítői" országok vagy régiók jelennek meg a legördülő listában. Ez a korlátozás küldenie jóváhagyásra cége kifizetési és adózási okból is. További információkért tekintse meg a piactér részvételi szabályzatának megfelelően.
+    >"Viszonteladó" országok/régiók: a szolgáltatások Azure Marketplace-en való értékesítéséhez a regisztrált entitásnak a legördülő listában látható egyik jóváhagyott "értékesítő" országból/régióból kell származnia. Ez a korlátozás kifizetési és adózási okokból szükséges. További információ: Marketplace részvételi szabályzatok.
 
-5. Válassza ki **vállalati** , a "Fiók típusa", majd **tovább**.
+5. Válassza a **vállalat** lehetőséget a fiók típusaként, majd kattintson a **tovább**gombra.
 
     >[!IMPORTANT]
-    >Fióktípus esetében jobb rálátással eldönteni, melyik vizsgán kíván részt venni, hogy a lap fióktípus esetében, a helyek és a díjak a következő képernyőfelvételen látható megtekintése.
+    >A fióktípus jobb megismeréséhez és annak eldöntéséhez, hogy melyik típus a legmegfelelőbb az Ön számára, tekintse meg az oldal fiókjának típusát, helyét és díját a következő képernyőfelvételen.
 
-    ![Az eladók fiókok típusai](./media/cloud-partner-portal-create-dev-center-registration/imgRegisterCo_05.png)
+    ![Az értékesítők fiókjának típusai](./media/cloud-partner-portal-create-dev-center-registration/imgRegisterCo_05.png)
 
-6. Adja meg a **közzétevő megjelenített név**. Ez általában a vállalata nevére.
+6. Adja meg a **közzétevő megjelenítendő nevét**. Ez általában a vállalat neve.
 
     >[!NOTE]
-    >A fejlesztői központban a megadott közzétevő megjelenített név szerepel az ajánlat az Azure Marketplace-en nem jelenik meg. De ezek az információk szükségesek a regisztrációs folyamat befejezéséhez.
+    >Az ajánlat listázása után a fejlesztői központban megadott közzétevő megjelenítendő neve nem jelenik meg az Azure piactéren. Ezek az információk azonban a regisztrációs folyamat befejezéséhez szükségesek.
 
-7. Adja meg a **kapcsolattartási adatok** fiók ellenőrzése.
+7. Adja meg a fiók ellenőrzéséhez tartozó **kapcsolattartási adatokat** .
 
     >[!IMPORTANT]
-    >Meg kell adnia pontos kapcsolattartási információinak biztosítása, mert azt fogja az ellenőrzési folyamat a vállalat számára a jóvá kell hagyni a fejlesztői központban. "
+    >Pontos kapcsolattartási adatokat kell megadnia, mivel azt az ellenőrzési folyamat során fogjuk használni a fejlesztői központban.
 
-8. Adja meg a kapcsolattartási adatait a **vállalati jóváhagyó**. A vállalati jóváhagyó az a személy, aki ellenőrizheti, hogy jogosult-fiók létrehozása a fejlesztői központban a szervezet nevében. Miután megadta ezeket az információkat, válassza ki a **tovább** szeretne váltani a **fizetési szakasz**.
+8. Adja meg a **vállalati jóváhagyó**kapcsolattartási adatait. A vállalati jóváhagyó az a személy, aki ellenőrizheti, hogy jogosult-e fiók létrehozására a fejlesztői központban a szervezet nevében. Miután megadta ezeket az adatokat, kattintson a **tovább** gombra a **fizetés szakaszra**való áttéréshez.
 
-    ![Vállalati jóváhagyó azonosítása](./media/cloud-partner-portal-create-dev-center-registration/imgRegisterCo_08.png)
+    ![A vállalat jóváhagyójának azonosítása](./media/cloud-partner-portal-create-dev-center-registration/imgRegisterCo_08.png)
 
-9. Adja meg a fiókhoz tartozó fizetési adatokat. Ha egy promóciós kódot, amely lefedi a regisztrációs költségét, megadhatja, hogy itt. Ellenkező esetben adja meg a hitelkártya adatai (vagy a támogatott piac PayPal). Válassza ki **tovább** szeretne váltani a végső **felülvizsgálati**.
+9. Adja meg a fiókjához tartozó fizetési adatokat. Ha olyan promóciós kóddal rendelkezik, amely fedezi a regisztráció költségeit, Itt megadhatja a következőt:. Egyéb esetben adja meg a bankkártya adatait (vagy a PayPal-t a támogatott piacokon). A **Next (tovább** ) gombra kattintva lépjen be a végső **felülvizsgálatba**.
 
    ![Fizetési regisztráció](./media/cloud-partner-portal-create-dev-center-registration/imgRegisterCo_09.png)
 
-10. Tekintse át a fiók adatait, és győződjön meg arról, hogy minden rendben. Olvassa el és fogadja el a feltételeket és kikötéseket, a [a Microsoft Azure Marketplace kiadói szerződésében](https://go.microsoft.com/fwlink/?LinkID=699560). A jelölőnégyzet bejelölésével jelezze elolvasta és elfogadja ezeket a feltételeket.
+10. Tekintse át a fiókadatok adatait, és győződjön meg róla, hogy minden helyes. Olvassa el és fogadja el a [Microsoft Azure Marketplace kiadói szerződés](https://go.microsoft.com/fwlink/?LinkID=699560)feltételeit. Jelölje be a jelölőnégyzetet, és jelezze, hogy elolvasta és elfogadta a jelen feltételeket.
 
-11. Válassza ki **Befejezés** a regisztráció megerősítéséhez. Egy megerősítő üzenetet küld az e-mail-címre.
+11. A regisztráció megerősítéséhez válassza a **Befejezés** lehetőséget. A rendszer megerősítő üzenetet küld az e-mail-címére.
 
-12. Ha csak az ingyenes ajánlatok közzététele, válassza ki a [nyissa meg a Cloud Partner portálra](https://cloudpartner.azure.com/) és a skip "Regisztrálni a fiók a cloud partner portálra a" Ebben a cikkben.
+12. Ha úgy tervezi, hogy csak az ingyenes ajánlatokat teszi közzé, válassza [az Ugrás a Cloud Partner Portal](https://cloudpartner.azure.com/) lehetőséget, és ugorjon a "fiók regisztrálása a Felhőbeli partner portálon" lehetőségre ebben a cikkben.
 
 ### <a name="commercial-offers"></a>Kereskedelmi ajánlatok
 
-Ha kereskedelmi ajánlatokat, például a számlázási modell, óránkénti használatával virtuálisgép-ajánlat közzétételéhez meg kell adnia a adózási és banki információt. Ez, jelentkezzen be a fejlesztői központban lévő fiókjához, és válassza ki **a fiókadatok frissítése**. Kövesse a következő szakaszban a "Hozzáadás banki és adó-információ oldalt".
+Ha olyan kereskedelmi ajánlatokat kíván közzétenni, mint például a virtuálisgép-ajánlat egy óradíjas számlázási modell használatával, meg kell adnia az adó-és banki adatokat. Ehhez jelentkezzen be a Fejlesztői központ fiókjába, és válassza **a fiók adatainak frissítése**lehetőséget. Kövesse a következő, "banki és adóügyi információk hozzáadása" című szakaszban található utasításokat.
 
 >[!IMPORTANT]
->Egy kereskedelmi ajánlattal leküldést az éles környezetben anélkül, hogy a fiók létrehozása és adózási adatait nem.
+>Nem fog tudni leküldeni egy kereskedelmi ajánlatot az éles környezetbe bankszámla-és adózási adatok megadása nélkül.
 
-Ha inkább a banki és adózási adatait később, majd továbbléphet a "Regisztrálni a fiókot, a cloud partner portálra a" Ebben a cikkben.
+Ha később szeretné frissíteni a banki és adózási információkat, a jelen cikk "a fiók regisztrálása a felhőalapú partner portálon" lehetőségre kattintva léphet tovább.
 
 >[!NOTE]
->Azt javasoljuk, hogy a fiók létrehozása és a lehető leghamarabb adózási adatait, mivel némi időre adózási adatok érvényesítéséhez.
+>Javasoljuk, hogy a lehető legrövidebb időn belül adja meg a bankszámla-és adózási adatokat, mert időt vesz igénybe az adózási adatok érvényesítése.
 
-### <a name="add-banking-and-tax-information"></a>Adja hozzá a banki és adózási adatait
+### <a name="add-banking-and-tax-information"></a>Banki és adózási információk hozzáadása
 
-Beszerzési kereskedelmi ajánlatokat a közzétételhez meg kell hozzáadása küldenie jóváhagyásra cége kifizetési és adózási adatait, és el a fejlesztői központban.
+Ha kereskedelmi ajánlatokat szeretne közzétenni a vásárláshoz, hozzá kell adnia a kifizetési és adózási adatokat, és el kell küldenie az ellenőrzéshez a fejlesztői központban.
 
-**Banki információk**
+**Banki adatok megadása**
 
-1.  Jelentkezzen be a [Microsoft Developer Center](https://dev.windows.com/registration?accountprogram=azure) Microsoft-fiókjával.
-2.  Válassza ki **küldenie jóváhagyásra cége kifizetési fiók** bal oldali menüben lévő alatt **fizetési módszer**, jelölje be **bankszámla** vagy **PayPal**.
+1.  Jelentkezzen be a [Microsoft fejlesztői központjába](https://dev.windows.com/registration?accountprogram=azure) a Microsoft-fiók.
+2.  Válassza a bal oldali menüben a **kifizetési fiók** kiválasztásalehetőséget, és válassza a **Bankszámla** vagy a **PayPal**lehetőséget.
 
     >[!NOTE]
-    >Ha kereskedelmi ajánlatokat a piactéren vásárló ügyfeleknek, ez az a fiók ahol küldenie jóváhagyásra cége kifizetési ezeket vásárlásokra fog kapni.
-3.  Adja meg a fizetési adatokat, és válassza ki **mentése**.
+    >Ha olyan kereskedelmi ajánlatokkal rendelkezik, amelyeket az ügyfelek vásárolnak a piactéren, akkor ez az a fiók, amelyben a vásárlások után kap kifizetést.
+3.  Adja meg a fizetési adatokat, majd kattintson a **Mentés**gombra.
 
     >[!IMPORTANT]
-    >Kell küldenie jóváhagyásra cége kifizetési fiókját módosítani, ha kövesse az előző lépések az aktuális adatai helyett új információkkal.
+    >Ha frissíteni vagy módosítania kell a kifizetési fiókját, az előző lépésekkel cserélje le az aktuális információt az új adatokra.
     >
-    >A küldenie jóváhagyásra cége kifizetési fiók módosítása késleltetheti-e a fizetések fel egy fizetési ciklus szerint. Ez a késleltetés az oka, hogy ellenőriznünk kell a fiók módosítás hasonlóan a küldenie jóváhagyásra cége kifizetési fiók első beállításakor. Meg fogjuk továbbra is lekérése fizetett a teljes összeget után a fiókját ellenőriztük; minden kifizetés miatt a jelenlegi fizetési ciklus a következő parancsot kell felvenni.
+    >A kifizetési fiók módosítása akár egy fizetési ciklusban is késleltetheti a befizetését. Ez a késleltetés azért fordul elő, mert ellenőrizni kell a fiók változását, ugyanúgy, ahogy a kifizetési fiók első beállításakor. A fiók ellenőrzése után továbbra is a teljes összegért kell fizetnie. a rendszer a jelenlegi fizetési ciklus miatt esedékes összes kifizetést hozzáadja a következőhöz.
 
 4.  Kattintson a **Tovább** gombra.
 
-**Adózási információk**
+**Adózási adatok megadása**
 
-1.  Jelentkezzen be a [Microsoft Developer Center](https://dev.windows.com/registration?accountprogram=azure) Microsoft-fiókjával (ha szükséges).
-2.  A bal oldali menüben válassza ki a **profil adó**.
-3.  Az a **állítsa be a kitöltésére** oldalon:
-    - Válassza ki az országot vagy régiót, ahol az állandó helyével rendelkezik.
-    - Válassza ki az országot vagy régiót, ahol elsődleges polgárságról kis türelmet.
+1.  Jelentkezzen be a [Microsoft fejlesztői központba](https://dev.windows.com/registration?accountprogram=azure) a Microsoft-fiók (ha szükséges).
+2.  A bal oldali menüben válassza az **adózási profil**lehetőséget.
+3.  Az **adózási űrlap beállítása** oldalon:
+    - Válassza ki azt az országot vagy régiót, ahol állandó tartózkodási helye van.
+    - Válassza ki azt az országot vagy régiót, ahol az elsődleges állampolgárságot tartja.
     - Kattintson a **Tovább** gombra.
-4.  Adja meg a adózási adatait, és válassza ki **tovább**.
+4.  Adja meg az adó adatait, majd kattintson a **tovább**gombra.
 
 >[!WARNING]
->A kereskedelmi ajánlatokat az éles környezetben anélkül, hogy a fiók létrehozása és adózási adatait a Microsoft Developer Center fiókjában lemezképekét fogunk.
+>Nem lehet leküldeni a kereskedelmi ajánlatait éles környezetbe anélkül, hogy bankszámla-és adózási adatokat kellene benyújtania a Microsoft Developer Center-fiókjában.
 
-### <a name="developer-center-registration-issues"></a>Fejlesztői központ regisztrációjával kapcsolatos problémák
+### <a name="developer-center-registration-issues"></a>Fejlesztői központ regisztrációs problémái
 
-Ha problémába ütközik a fejlesztői központ-regisztráció, a következő lépések segítségével hozzon létre egy támogatási jegyet.
+Ha problémák merülnek fel a Fejlesztői központ regisztrálásával kapcsolatban, kövesse az alábbi lépéseket egy támogatási jegy megnyitásához.
 
-1.  Nyissa meg a [támogatási hivatkozás](https://developer.microsoft.com/windows/support).
-2.  A **lépjen velünk kapcsolatba**válassza **beküldhet**.
-    ![Hozzon létre egy jegyet](./media/cloud-partner-portal-create-dev-center-registration/imgAddTax_02.png)
-3.  A **Problématípus**, válassza ki a "Súgó-fejlesztői központ" és a **kategória**, jelölje be "közzététel és kezeli az alkalmazásokat". Válassza ki **indítsa el az e-mailek**.
+1.  Nyissa meg a [támogatási hivatkozást](https://developer.microsoft.com/windows/support).
+2.  A **kapcsolatfelvételi**területen válassza **az incidens küldése**lehetőséget.
+    ![jegy megnyitása](./media/cloud-partner-portal-create-dev-center-registration/imgAddTax_02.png)
+3.  A **probléma típusa**beállításnál válassza a "Súgó a fejlesztői központhoz" lehetőséget, és a **Kategória**beállításnál válassza a "alkalmazások közzététele és kezelése" lehetőséget. Válassza az **E-mail indítása**lehetőséget.
 
-    ![probléma azonosítása](./media/cloud-partner-portal-create-dev-center-registration/imgAddTax_03.png)
+    ![a probléma típusának azonosítása](./media/cloud-partner-portal-create-dev-center-registration/imgAddTax_03.png)
 
-4.  Fog a bejelentkezési oldalon kell megadni. Bármilyen Microsoft-fiók használatával jelentkezzen be. Ha Microsoft-fiók nem rendelkezik majd [hozzon létre egyet](https://signup.live.com/signup?uaid=0089f09ccae94043a0f07c2aaf928831&lic=1). \
+4.  Ekkor megjelenik a bejelentkezési oldal. A bejelentkezéshez használjon bármilyen Microsoft-fiók. Ha nem rendelkezik Microsoft-fiók, [hozzon létre egyet](https://signup.live.com/signup?uaid=0089f09ccae94043a0f07c2aaf928831&lic=1). \
 
-5.  Adja meg a problémát, majd válassza a részletes információkat **küldés** a jegy küldéséhez.
+5.  Adja meg a probléma részletes adatait, és válassza a **Küldés** lehetőséget a jegy elküldéséhez.
 
-    ![egy a jegy küldése](./media/cloud-partner-portal-create-dev-center-registration/imgAddTax_05.png)
+    ![jegy elküldése](./media/cloud-partner-portal-create-dev-center-registration/imgAddTax_05.png)
 
-## <a name="register-your-account-in-the-cloud-partner-portal"></a>A fiók regisztrálásához a cloud partner portálra
+## <a name="register-your-account-in-the-cloud-partner-portal"></a>Fiók regisztrálása a felhőalapú partner portálon
 
-Használja a [Cloud Partner Portalon](https://cloudpartner.azure.com/) tehet közzé és felügyelhet a esetében.
+Az ajánlat (ok) közzétételéhez és kezeléséhez használja a [Cloud Partner Portal](https://cloudpartner.azure.com/) .
 
-1.  Nyisson meg egy új Inkognitó Chrome vagy Internet Explorer InPrivate-böngészési munkamenet, győződjön meg arról, hogy Ön nincs bejelentkezve, egy személyes fiók.
-2.  Lépjen a [Cloud Partner Portalon](https://cloudpartner.azure.com/).
-3.  Ha Ön új felhasználó, és bejelentkezik a [Cloud Partner Portalon](https://cloudpartner.azure.com/) először, majd be kell jelentkeznie a fejlesztői központban lévő fiókjához regisztrált azonos e-mail-azonosító használatával. Ez biztosítja, hogy a fejlesztői központban lévő fiókjához, és a cloud partner portal fiók kapcsolódik egymáshoz.
+1.  Nyisson meg egy új Chrome inkognitóban vagy Internet Explorer InPrivate-böngészési munkamenetet, és győződjön meg arról, hogy nincs bejelentkezve személyes fiókba.
+2.  Lépjen [Cloud Partner Portal](https://cloudpartner.azure.com/).
+3.  Ha Ön új felhasználó, és első alkalommal jelentkezik be a [Cloud Partner Portalba](https://cloudpartner.azure.com/) , akkor a Fejlesztői központ fiókjához regisztrált e-mail-azonosítóval kell bejelentkeznie. Ez biztosítja, hogy a Fejlesztői központ fiókja és a felhőalapú partner portál-fiók egymáshoz legyen társítva.
 
-Más tagjaival a vállalat az alkalmazáson dolgozó később is hozzáadhat. Exportálhatja a közreműködők vagy a cloud partner portálra a tulajdonosok a következő rész lépéseit követve.
+Később felveheti az alkalmazáson dolgozó vállalat többi tagját is. A következő szakaszban ismertetett lépések végrehajtásával a Felhőbeli partner portálon közreműködőként vagy tulajdonosként használhatja őket.
 
-Ha hozzáadott egy közreműködői vagy tulajdonosa, a cloud partner portal portál van, majd bejelentkezhet az Ön fiókja.
+Ha a Cloud Partner portál portálon közreműködőként vagy tulajdonosként van hozzáadva, akkor a saját fiókjával is bejelentkezhet.
 
 >[!TIP]
->A részvételi szabályzatának ismerteti az Azure webhelyén.
+>A részvételi szabályzatok ismertetését az Azure webhelyén találja.
 
-## <a name="manage-users-as-owners-or-contributors-in-the-cloud-partner-portal"></a>Tulajdonos vagy a cloud partner portálra a közreműködők felhasználók kezelése
+## <a name="manage-users-as-owners-or-contributors-in-the-cloud-partner-portal"></a>Felhasználók kezelése tulajdonosként vagy közreműködőként a felhőalapú partner portálon
 
-[Cloud partner portálra a felhasználók felügyeletének lépései](./cloud-partner-portal-manage-users.md)
+[A felhőalapú partner portál felhasználóinak kezeléséhez szükséges lépések](./cloud-partner-portal-manage-users.md)
 
 
 ## <a name="next-steps"></a>További lépések
 
-Most, hogy a fiók létrejön, és regisztrálva, elkezdheti az Azure marketplace közzétételi folyamat.
+Most, hogy létrehozta és regisztrálta a fiókját, elindíthatja az Azure Marketplace közzétételi folyamatát.

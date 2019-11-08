@@ -1,5 +1,5 @@
 ---
-title: 'Elemzési lekérdezések futtatása az Azure SQL Database-adatbázisokkal '
+title: Elemzési lekérdezések futtatása
 description: Több-bérlős alkalmazások több Azure SQL Database adatbázisaiból kinyert adatok használatával több-bérlős elemzési lekérdezések.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: anjangsh,billgib,genemi
 ms.date: 09/19/2018
-ms.openlocfilehash: 2044e72697526a1c757fa13aeffb85260a9b821e
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 067afd09f942b8062825553a3cf90f715e8d3938
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73691998"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73822149"
 ---
 # <a name="cross-tenant-analytics-using-extracted-data---multi-tenant-app"></a>Több-bérlős elemzés a kinyert adatszolgáltatások használatával – több-bérlős alkalmazás
  
@@ -108,7 +108,7 @@ Az elemzési tár csomópontjának kibontásával tekintse meg a SSMS Object Exp
 
 - A táblák **TicketsRawData** és **EventsRawData** a bérlői adatbázisokból származó nyers kinyert adatokkal rendelkeznek.
 - A Star-Schema táblák a következők: **fact_Tickets**, **dim_Customers**, **dim_Venues**, **dim_Events**és **dim_Dates**.
-- A **sp_ShredRawExtractedData** tárolt eljárás használatával lehet feltölteni a Star-Schema táblákat a nyers adattáblákból.
+- A **sp_ShredRawExtractedData** tárolt eljárás a Star-Schema tábláknak a nyers adattáblákból való feltöltésére szolgál.
 
 ![tenantAnalytics](media/saas-multitenantdb-tenant-analytics/tenantAnalytics.png)
 
@@ -154,9 +154,9 @@ Az oktatóanyag ezen szakaszában definiálhat és futtathat egy olyan feladatot
 
 1. A SSMS-ben kapcsolódjon a **jobaccount** -adatbázishoz a Catalog-mt-\<felhasználói\>.
 2. A SSMS-ben nyissa meg a *. ..\Learning Modules\Operational Analytics\Tenant Analytics\ShredRawExtractedData.SQL*.
-3. Nyomja le az **F5** billentyűt a szkript futtatásához egy olyan feladat definiálásához, amely meghívja az sp_ShredRawExtractedData tárolt eljárást az Analytics-tárolóban.
+3. Nyomja le az **F5** billentyűt a szkript futtatásához egy olyan feladat definiálásához, amely meghívja az sp_ShredRawExtractedData tárolt eljárást az elemzési tárolóban.
 4. A feladatok sikeres futtatásának engedélyezése elég idő.
-    - Tekintse meg a Jobs. jobs_execution tábla **életciklus** oszlopát a feladat állapotához. A folytatás előtt győződjön meg arról, hogy a művelet **sikeres** volt. A sikeres Futtatás az alábbi diagramhoz hasonló adattípust jelenít meg:
+    - Tekintse át a feladatok **életciklus** -oszlopát. jobs_execution a feladat állapotához tartozó táblázatot. A folytatás előtt győződjön meg arról, hogy a művelet **sikeres** volt. A sikeres Futtatás az alábbi diagramhoz hasonló adattípust jelenít meg:
 
 ![shreddingJob](media/saas-multitenantdb-tenant-analytics/shreddingJob.PNG)
 
@@ -179,7 +179,7 @@ A következő lépésekkel csatlakozhat a Power BIhoz, és importálhatja a kor�
 
     ![DatabaseSignIn](media/saas-multitenantdb-tenant-analytics/databaseSignIn.PNG)
 
-6. A **navigátor** ablaktábla elemzési adatbázis területén válassza ki a csillag-séma táblákat: Fact_Tickets, Dim_Events, Dim_Venues, Dim_Customers és dim_Dates. Ezután válassza a **Betöltés**lehetőséget. 
+6. A **navigátor** ablaktábla elemzési adatbázis területén válassza ki a csillag-séma táblákat: fact_Tickets, dim_Events, dim_Venues, dim_Customers és dim_Dates. Ezután válassza a **Betöltés**lehetőséget. 
 
 Gratulálunk! Sikeresen betöltötte az adatPower BIba. Most már megkezdheti az érdekes vizualizációk megismerését, hogy könnyebben betekintést nyerjen a bérlők felé. A következő lépésekkel megtudhatja, hogyan teheti lehetővé az adatvezérelt ajánlásokat a Wingtip tickets Business csapat számára. A javaslatok segítségével optimalizálható az üzleti modell és a felhasználói élmény.
 
@@ -209,7 +209,7 @@ A contoso Concert Hall előző ábrázolása azt mutatja, hogy a Mad Rush nem mi
 
 A jegyek értékesítési mintáinak betekintése Wingtip jegyeket eredményezhet üzleti modelljének optimalizálásához. Az összes bérlő egyforma kitöltése helyett előfordulhat, hogy a Wingtip különböző számítási méretekkel kell bevezetni a szolgáltatási szinteket. A naponta több jegyet értékesítő nagyobb helyszínek magasabb szintű szolgáltatói szerződéssel (SLA) is elérhetők. Ezeknek a helyszíneknek az adatbázisai a készletbe helyezhetők, és az adatbázison belüli erőforrások korlátai magasabbak. Az egyes szolgáltatási szintek óránkénti értékesítési kiosztással rendelkezhetnek, és a foglalást meghaladó költségekkel számoljuk el. Az időszakos értékesítési lehetőségekkel rendelkező nagyobb helyszínek a magasabb szinteken is hasznosak lehetnek, és a Wingtip jegyek hatékonyabban növelhetik a szolgáltatást.
 
-Néhány Wingtip-jegy arra is panaszkodik, hogy az ügyfelek nem tudnak elegendő jegyet értékesíteni, hogy igazolják a szolgáltatás költségeit. Előfordulhat, hogy ezekben az elemzésekben lehetőség van a jegyek értékesítésének növelésére a helyszíneken. A magasabb eladások növelhetik a szolgáltatás észlelt értékét. Kattintson jobb gombbal a fact_Tickets elemre, és válassza az **új mérték**lehetőséget. Adja meg a következő kifejezést a **AverageTicketsSold**nevű új mértékhez:
+Néhány Wingtip-jegy arra is panaszkodik, hogy az ügyfelek nem tudnak elegendő jegyet értékesíteni, hogy igazolják a szolgáltatás költségeit. Előfordulhat, hogy ezekben az elemzésekben lehetőség van a jegyek értékesítésének növelésére a helyszíneken. A magasabb eladások növelhetik a szolgáltatás észlelt értékét. Kattintson a jobb gombbal fact_Tickets és válassza az **új mérték**lehetőséget. Adja meg a következő kifejezést a **AverageTicketsSold**nevű új mértékhez:
 
 ```
 AverageTicketsSold = DIVIDE(DIVIDE(COUNTROWS(fact_Tickets),DISTINCT(dim_Venues[VenueCapacity]))*100, COUNTROWS(dim_Events))

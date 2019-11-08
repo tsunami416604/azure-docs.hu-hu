@@ -1,5 +1,5 @@
 ---
-title: Teljesítményre vonatkozó javaslatok alkalmazása – Azure SQL Database
+title: Teljesítménnyel kapcsolatos javaslatok alkalmazása
 description: A Azure Portal használatával olyan teljesítménnyel kapcsolatos javaslatokat találhat, amelyek optimalizálják a Azure SQL Database teljesítményét.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 12/19/2018
-ms.openlocfilehash: 24a590a80e768bba2e9b102bdf200e0cd96858f8
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 5462a03accb3420b3f0fcec4624734c8f6d68859
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73691289"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73811598"
 ---
 # <a name="find-and-apply-performance-recommendations"></a>Teljesítményre vonatkozó javaslatok keresése és alkalmazása
 
@@ -105,7 +105,7 @@ A Azure SQL Databaset beállíthatja úgy, hogy automatikusan végrehajtsa az aj
     ![Ajánlott indexek](./media/sql-database-automatic-tuning-enable/server.png)
 
 > [!NOTE]
-> Vegye figyelembe, hogy a **DROP_INDEX** beállítás jelenleg nem kompatibilis a partíciós váltást és az indexelési tippeket használó alkalmazásokkal. 
+> Vegye figyelembe, hogy **DROP_INDEX** lehetőség jelenleg nem kompatibilis a partíciós váltást és az indexelési tippeket használó alkalmazásokkal. 
 >
 
 Miután kiválasztotta a kívánt konfigurációt, kattintson az Alkalmaz gombra.
@@ -127,7 +127,7 @@ A **függőben lévő**, **érvényesítési**vagy **sikerességi** állapotú j
 
 Előfordulhat, hogy egy javaslat alkalmazása nem történik meg azonnal. A portál a javaslatok állapotával kapcsolatos részleteket tartalmaz. Az alábbi lehetséges állapotok lehetnek az indexek:
 
-| Állapot | Leírás |
+| status | Leírás |
 |:--- |:--- |
 | Függőben |A javaslat alkalmazása parancs beérkezett, és végrehajtásra van ütemezve. |
 | Végrehajtása |A javaslat alkalmazása folyamatban van. |

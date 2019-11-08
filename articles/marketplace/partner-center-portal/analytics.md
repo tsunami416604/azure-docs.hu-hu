@@ -5,14 +5,15 @@ author: ChJenk
 manager: evansma
 ms.author: v-chjen
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 10/14/2019
-ms.openlocfilehash: 593d43339961ab4576081aaa18a8d68716e40e9b
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 2b1d3167828f2c2c49bb22580222fbd0e54d31d8
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72332091"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73813194"
 ---
 # <a name="analytics-for-the-commercial-marketplace-in-partner-center"></a>A partner Center kereskedelmi Piactérének elemzései
 
@@ -23,7 +24,7 @@ A partner Center Analytics eszközeinek eléréséhez nyissa meg az **[elemzés]
 |**Irányítópult**|**Megjelenített tartalom**|
 |:---|:---|
 |[Összefoglalás](#summary-dashboard)|Diagramok, trendek és az összesített adatok azon értékei, amelyek összegzik a Piactéri tevékenységet az ajánlatokhoz|
-|[Megrendelések](#orders-dashboard)|A megrendelésekkel kapcsolatos információk grafikus és letölthető formátumban|
+|[Rendelések](#orders-dashboard)|A megrendelésekkel kapcsolatos információk grafikus és letölthető formátumban|
 |[Ügyfelek](#customer-dashboard)|Az ügyfelekkel kapcsolatos információk, beleértve a növekedési trendeket, amelyek grafikus és letölthető formátumban jelennek meg|
 |[Letölti](#downloads-dashboard)|A letöltési kérelmek listája az elmúlt 30 napban|
 |[Értékelések és értékelések](#ratings-and-reviews)| Információk a minősítésekről és az ügyfelek által beszerzett ajánlatokról.
@@ -263,7 +264,7 @@ Egy előugró értesítést és e-mailt fog kapni, amely tartalmazza a **letölt
 | Marketplace-licenc típusa: ingyenes| Rendelés| Az ajánlat úgy van konfigurálva, hogy az összes felhasználó számára szabadon legyen. A Microsoft nem számláz az ügyfeleknek az ajánlat használatáért.||
 | Marketplace-licenc típusa: Microsoft as viszonteladó  | Rendelés| A Microsoft a piactér-ajánlat viszonteladója.|  |
 | Piactér-előfizetés azonosítója | Ügyfél, megrendelés | Az Azure-előfizetéshez társított egyedi azonosító, amelyet az ügyfél a Piactéri ajánlat megvásárlásához használt. Az azonosító korábban az Azure-előfizetés GUID-azonosítója volt.||
-| Csomag neve  | Rendelés| A Piactéri ajánlat neve.|| |
+| Offer Name  | Rendelés| A Piactéri ajánlat neve.|| |
 | Csomag típusa  | Rendelés| Az Microsoft Marketplace ajánlat típusa.|||
 | Ajánlat típusa: felügyelt alkalmazás  | Sorrendben | Használja az Azure-alkalmazást: felügyelt alkalmazási ajánlat típusa a következő feltételek teljesülése esetén: egy vagy több virtuális gép vagy egy teljes IaaS-alapú megoldás használatával telepítheti az ügyfél előfizetéses megoldását. Ön vagy az ügyfele megköveteli, hogy a megoldást egy partnernek kell kezelnie. |
 | Ajánlat típusa: Azure-alkalmazás| Sorrendben | Használja az Azure-alkalmazás megoldás-sablonjának ajánlat típusát, ha a megoldáshoz egy egyszerű virtuális gépen kívül további üzembe helyezési és konfigurálási automatizálásra van szükség.||
@@ -277,14 +278,14 @@ Egy előugró értesítést és e-mailt fog kapni, amely tartalmazza a **letölt
 | Ajánlat típusa: virtuális gép | Rendelés| Ha virtuális berendezést telepít az ügyfélhez társított előfizetésre, használja a virtuális gép ajánlatának típusát.||
 | Ajánlat típusa: Visual Studio Marketplace bővítmény  | Rendelés| Az ajánlat típusa korábban elérhető az Azure DevOps bővítmény fejlesztői számára. Az Azure DevOps Extension fejlesztőinek továbbítják a bővítményt közvetlenül az ügyfeleknek. A bővítmények a kifizetett vagy próbaverzióval is konfigurálhatók. |
 | Megrendelés megszakításának dátuma| Rendelés| A Piactéri rendelés megszakításának dátuma.||
-| Order ID (Rendelésazonosító)| Rendelés| A Piactéri szolgáltatáshoz tartozó ügyfél-rendelés egyedi azonosítója. A virtuális gépek használaton alapuló ajánlatai nincsenek rendeléshez társítva.| |
+| Rendelésazonosító| Rendelés| A Piactéri szolgáltatáshoz tartozó ügyfél-rendelés egyedi azonosítója. A virtuális gépek használaton alapuló ajánlatai nincsenek rendeléshez társítva.| |
 | Megrendelés vásárlásának dátuma| Rendelés| A Piactéri rendelés létrehozásának dátuma.|||
 | Megrendelés állapota| Rendelés| A Piactéri megrendelés állapota az utolsó frissítés alkalmával.|     |
 | Megrendelés állapota: aktív  | Rendelés| Az ügyfél megvásárolt egy rendelést, és nem szakította meg a rendelését.|         |
 | Megrendelés állapota: megszakítva | Rendelés| Az ügyfél korábban megvásárolt egy rendelést, és később megszakította a rendelését.||
 | Szolgáltatói E-mail cím| Ügyfél| A Microsoft és a végfelhasználó közötti kapcsolatban részt vevő szolgáltató e-mail-címe. Ha az ügyfél a viszonteladón keresztüli vállalat, akkor ez lesz a viszonteladó. Ha egy felhőalapú megoldás-szolgáltató (CSP) is részt vesz, ez lesz a CSP.|
 | Szolgáltató neve| Ügyfél| A Microsoft és a végfelhasználó közötti kapcsolatban részt vevő szolgáltató neve. Ha az ügyfél a viszonteladón keresztüli vállalat, akkor ez lesz a viszonteladó. Ha egy felhőalapú megoldás-szolgáltató (CSP) is részt vesz, ez lesz a CSP.|
-| SKU (Cikkszám)| Rendelés| A közzététel során definiált SKU-név. Egy ajánlat több SKU-val is rendelkezhet, de egy SKU csak egyetlen ajánlattal társítható.||
+| SKU| Rendelés| A közzététel során definiált SKU-név. Egy ajánlat több SKU-val is rendelkezhet, de egy SKU csak egyetlen ajánlattal társítható.||
 | Próbaverzió befejezési dátuma| Rendelés| Az a dátum, ameddig a rendelés próbaidőszaka lejár vagy véget ér.||
 
 ## <a name="ratings-and-reviews"></a>Értékelések és értékelések

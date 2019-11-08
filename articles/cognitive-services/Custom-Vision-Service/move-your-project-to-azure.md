@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 02/19/2019
 ms.author: anroth
-ms.openlocfilehash: 5c583270428a459f500ae0e220592805fd1bf454
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 0a2b48a6c046150f6e685ecda0c0d765342e0194
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73718907"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73818948"
 ---
 # <a name="how-to-move-your-limited-trial-project-to-azure"></a>A korlátozott próbaverziós projekt áthelyezése az Azure-ba
 
@@ -46,7 +46,7 @@ Több projekt is társítható egyetlen erőforráshoz. További részletek a [d
 
 ## <a name="find-your-limited-trial-project-information"></a>A korlátozott próbaverziós projekt adatainak megkeresése
 
-A projekt áthelyezéséhez szüksége lesz az áttelepíteni kívánt projekthez tartozó _projekt-azonosítóra_ és _betanítási kulcsra_ . Ha nem rendelkezik ezekkel az információkkal, látogasson el [https://limitedtrial.customvision.ai/projectsra](https://limitedtrial.customvision.ai/projects) az egyes projektek azonosítójának és kulcsának beszerzéséhez. 
+A projekt áthelyezéséhez szüksége lesz az áttelepíteni kívánt projekthez tartozó _projekt-azonosítóra_ és _betanítási kulcsra_ . Ha nem rendelkezik ezekkel az információkkal, látogasson el [https://www.customvision.ai/projectsra](https://www.customvision.ai/projects) az egyes projektek azonosítójának és kulcsának beszerzéséhez. 
 
 ## <a name="use-the-python-sample-code-to-copy-your-project-to-azure"></a>A projekt másolása az Azure-ba a Python-mintakód használatával
 

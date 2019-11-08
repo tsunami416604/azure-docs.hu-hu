@@ -4,19 +4,20 @@ description: Az érdeklődők felügyeletének beállítása egy HTTPS-végponth
 services: Azure, Marketplace, commercial marketplace, Partner Center
 author: qianw211
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 07/31/2019
 ms.author: evansma
-ms.openlocfilehash: 6a34bdcab5a13af682515bbae96e9a1800ccc37f
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: 83efb9cfd1ee7464a334ebc4064dbfaa20ab30de
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69902194"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73812291"
 ---
 # <a name="configure-lead-management-using-an-https-endpoint"></a>Az érdeklődők felügyeletének konfigurálása HTTPS-végpont használatával
 
-Ha az Ügyfélkapcsolat-kezelési (CRM) rendszer nincs kifejezetten támogatva a partner Centerben az Azure Marketplace és a AppSource-érdeklődők fogadásához, akkor az MS flow-ban HTTPS-végpontot használhat ezen érdeklődők kezelésére. A HTTPS-végpontok esetében ezek az érdeklődők e-mail-értesítésként küldhetők el, vagy írhatók az MS flow által támogatott ügyfélkapcsolat-kezelési (CRM) rendszerbe. Az ebben a cikkben található utasítások végigvezetik az új folyamat létrehozásán Microsoft Flow használatával, amely a HTTP POST URL-címet fogja létrehozni, amelyet a közzétételi portálon fog megadni az ólom-felügyeleti > **https-végpont URL-címe** mezőben. Emellett a befoglalt utasítások arról, hogyan tesztelheti a folyamatot egy Poster nevű eszköz használatával [](https://www.getpostman.com/downloads/) , amely online állapotú.
+Ha az Ügyfélkapcsolat-kezelési (CRM) rendszer nincs kifejezetten támogatva a partner Centerben az Azure Marketplace és a AppSource-érdeklődők fogadásához, akkor az MS flow-ban HTTPS-végpontot használhat ezen érdeklődők kezelésére. A HTTPS-végpontok esetében ezek az érdeklődők e-mail-értesítésként küldhetők el, vagy írhatók az MS flow által támogatott ügyfélkapcsolat-kezelési (CRM) rendszerbe. Az ebben a cikkben található utasítások végigvezetik az új folyamat létrehozásán Microsoft Flow használatával, amely a HTTP POST URL-címet fogja létrehozni, amelyet a közzétételi portálon fog megadni az ólom-felügyeleti > **https-végpont URL-címe** mezőben. Emellett a befoglalt utasítások arról, hogyan tesztelheti a folyamatot egy [Poster](https://www.getpostman.com/downloads/) nevű eszköz használatával, amely online állapotú.
 
 ## <a name="create-a-flow-using-microsoft-flow"></a>Folyamat létrehozása Microsoft Flow használatával
 
@@ -24,7 +25,7 @@ Ha az Ügyfélkapcsolat-kezelési (CRM) rendszer nincs kifejezetten támogatva a
 
 2. Jelentkezzen be, majd a menüsávon válassza a **saját folyamatok** lehetőséget.
 
-3. Válassza **az + automatizált – üres**lehetőséget.
+3. Válassza **a + automatikus lehetőséget – üresen**.
 
     ![Saját folyamatok + automatizált – üresről](./media/commercial-marketplace-lead-management-instructions-https/my-flows-automated.png)
 
@@ -110,7 +111,7 @@ Ha az Ügyfélkapcsolat-kezelési (CRM) rendszer nincs kifejezetten támogatva a
 
     ![Új rekord létrehozása](./media/commercial-marketplace-lead-management-instructions-https/create-new-record.png)
 
-3. Adja meg a CRM rendszerhez társított **szervezet nevét** . Az **entitás neve** legördülő listából válassza az érdeklődők lehetőséget.
+3. Adja meg a CRM rendszerhez társított **szervezet nevét** . Az **entitás neve** legördülő listából válassza az **érdeklődők** lehetőséget.
 
     ![Érdeklődők kiválasztása](./media/commercial-marketplace-lead-management-instructions-https/select-leads.png)
 
@@ -118,7 +119,7 @@ Ha az Ügyfélkapcsolat-kezelési (CRM) rendszer nincs kifejezetten támogatva a
 
     ![Dinamikus tartalom hozzáadása](./media/commercial-marketplace-lead-management-instructions-https/add-dynamic-content.png)
 
-5. Képezze le a kívánt mezőket, majd válassza a **Mentés** lehetőséget a folyamat mentéséhez. A rendszer létrehoz egy HTTP POST URL-címet, és elérhetővé válik a *http-kérelem fogadása* ablakban. Másolja ezt az URL-t a HTTP POST URL-cím jobb oldalán található másolási vezérlő használatával. Ez azért fontos, hogy ne hagyjon el véletlenül a teljes URL-cím egy részét. Mentse ezt az URL-címet, mert szüksége lesz rá, amikor a közzétételi portálon konfigurálja az érdeklődők felügyeletét.
+5. Képezze le a kívánt mezőket, majd válassza a **Mentés** lehetőséget a folyamat mentéséhez. A rendszer létrehoz egy HTTP POST URL-címet, és elérhetővé válik a *http-kérelem fogadása* ablakban. Másolja ezt az URL-t a HTTP POST URL-cím jobb oldalán található másolási vezérlő használatával – ez azért fontos, hogy ne hagyjon el véletlenül a teljes URL-cím egy részét. Mentse ezt az URL-címet, mert szüksége lesz rá, amikor a közzétételi portálon konfigurálja az érdeklődők felügyeletét.
 
     ![HTTP-kérelem fogadásakor.](./media/commercial-marketplace-lead-management-instructions-https/when-http-request-received.png)
 
@@ -135,8 +136,8 @@ Ha az Ügyfélkapcsolat-kezelési (CRM) rendszer nincs kifejezetten támogatva a
 
 4. Az **E-mail küldése** ablakban adja meg a következő kötelező mezőket:
 
-   - Adjon meg legalább egy érvényes e-mail-címet, ahol a rendszer elküldi az érdeklődőket.
-   - A tulajdonosi folyamat lehetővé teszi, hogy dinamikus tartalmat (például **LeadSource** ) adjon hozzá a következő képernyőfelvételen. Először írja be a mező nevét, majd a felugró ablakban kattintson a dinamikus tartalom kiválasztása listára. 
+   - Adjon meg legalább egy érvényes e-mail-címet, ahol **a rendszer elküldi** az érdeklődőket.
+   - A **tulajdonosi** folyamat lehetővé teszi, hogy dinamikus tartalmat (például **LeadSource** ) adjon hozzá a következő képernyőfelvételen. Először írja be a mező nevét, majd a felugró ablakban kattintson a dinamikus tartalom kiválasztása listára. 
 
         >[!Note] 
         > A mezőnevek hozzáadásakor követheti a ":" értéket, majd megadhatja az új sor létrehozásához. Miután hozzáadta a mezőneveket, hozzáadhatja az egyes társított paramétereket a dinamikus kivételezések listájából.
@@ -148,15 +149,15 @@ Ha az Ügyfélkapcsolat-kezelési (CRM) rendszer nincs kifejezetten támogatva a
 
        ![E-mail művelet hozzáadása](./media/commercial-marketplace-lead-management-instructions-https/send-an-email.png)
 
-5. A folyamat befejezéséhez kattintson a **Mentés** gombra. A rendszer létrehoz egy HTTP POST URL-címet, és elérhetővé válik a *http-kérelem fogadása* ablakban. Másolja ezt az URL-t a HTTP POST URL-cím jobb oldalán található másolási vezérlő használatával. Ez azért fontos, hogy ne hagyjon el véletlenül a teljes URL-cím egy részét. Mentse ezt az URL-címet, mert szüksége lesz rá, amikor a közzétételi portálon konfigurálja az érdeklődők felügyeletét.
+5. A folyamat befejezéséhez kattintson a **Mentés** gombra. A rendszer létrehoz egy HTTP POST URL-címet, és elérhetővé válik a *http-kérelem fogadása* ablakban. Másolja ezt az URL-t a HTTP POST URL-cím jobb oldalán található másolási vezérlő használatával – ez azért fontos, hogy ne hagyjon el véletlenül a teljes URL-cím egy részét. Mentse ezt az URL-címet, mert szüksége lesz rá, amikor a közzétételi portálon konfigurálja az érdeklődők felügyeletét.
 
-   ![HTTP POST URL-címe ](./media/commercial-marketplace-lead-management-instructions-https/http-post-url.png)
+   ![HTTP POST URL-CÍM ](./media/commercial-marketplace-lead-management-instructions-https/http-post-url.png)
 
 ### <a name="testing"></a>Tesztelés
 
 A következő lépések végrehajtásával ellenőrizheti, hogy minden a várt módon működik-e a [Poster](https://app.getpostman.com/app/download/win64)nevű eszköz használatával, amely online letölthető. Ez a Windowshoz érhető el. 
 
-1. Indítsa el a Poster alkalmazást, és válassza az **új** > **kérelem** lehetőséget a tesztelési eszköz beállításához. 
+1. Indítsa el a Poster alkalmazást, és válassza az **új** > **kérés** lehetőséget a tesztelési eszköz beállításához. 
 
    ![A tesztelési eszköz beállításához szükséges kérelem](./media/commercial-marketplace-lead-management-instructions-https/postman-request.png)
 
@@ -172,7 +173,7 @@ A következő lépések végrehajtásával ellenőrizheti, hogy minden a várt m
 
    ![A HTTP POST URL-cím beillesztése](./media/commercial-marketplace-lead-management-instructions-https/paste-http-post-url.png)
 
-5. Lépjen vissza a [flow](https://flow.microsoft.com/) -ba, és keresse meg az érdeklődők küldéséhez létrehozott folyamatot a folyamat menüsávján.  Válassza a folyamat neve melletti 3 pontot, és válassza a **Szerkesztés**lehetőséget.
+5. Lépjen vissza a [flow](https://flow.microsoft.com/) -ba, és keresse meg az érdeklődők küldéséhez létrehozott folyamatot **a folyamat** menüsávján.  Válassza a folyamat neve melletti 3 pontot, és válassza a **Szerkesztés**lehetőséget.
 
    ![Saját folyamatok – szerkesztés](./media/commercial-marketplace-lead-management-instructions-https/my-flows-edit.png)
 
@@ -211,7 +212,7 @@ Az érdeklődők létrehozásakor a Microsoft elküldi az érdeklődőket a foly
 
 ![Vezető felügyelet – kapcsolat](./media/commercial-marketplace-lead-management-instructions-https/lead-management-connect.png)
 
-![Kapcsolat részletei](./media/commercial-marketplace-lead-management-instructions-https/connection-details.png)
+![Kapcsolat adatai](./media/commercial-marketplace-lead-management-instructions-https/connection-details.png)
 
-![Kapcsolat részletei](./media/commercial-marketplace-lead-management-instructions-https/connection-details-1.png)
+![Kapcsolat adatai](./media/commercial-marketplace-lead-management-instructions-https/connection-details-1.png)
 

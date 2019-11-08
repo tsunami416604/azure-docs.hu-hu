@@ -10,12 +10,12 @@ ms.service: billing
 ms.topic: article
 ms.date: 05/30/2019
 ms.author: byvinyal
-ms.openlocfilehash: 12e9367ca9e330806af4c7cc5db626edddff5c25
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
-ms.translationtype: HT
+ms.openlocfilehash: f9fe540611b1b773867e1f92439e13df91ad4bd3
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73795255"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73818357"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Az Azure-előfizetésekre és -szolgáltatásokra vonatkozó korlátozások, kvóták és megkötések
 Ez a dokumentum felsorolja a leggyakoribb Microsoft Azure-korlátozásokat, amelyeket más néven kvótának is nevezünk. Ez a dokumentum jelenleg nem vonatkozik az összes Azure-szolgáltatásra. Az idő múlásával a listát kibontjuk és frissítik, hogy több szolgáltatásra is kiterjedjen.
@@ -130,7 +130,7 @@ További információ a Resource Manager API olvasási és írási korlátairól
 [!INCLUDE [azure-virtual-machines-limits](../includes/azure-virtual-machines-limits.md)]
 
 #### <a name="virtual-machines-limits---azure-resource-manager"></a>Virtual Machines korlátok – Azure Resource Manager
-Azure Resource Manager és Azure-erőforráscsoportok használatakor a következő korlátozások érvényesek. A Azure Resource Manager nem módosított korlátok nincsenek felsorolva. Ezeket a korlátokat az előző táblázatban tekintheti meg.
+Azure Resource Manager és Azure-erőforráscsoportok használatakor a következő korlátozások érvényesek.
 
 [!INCLUDE [azure-virtual-machines-limits-azure-resource-manager](../includes/azure-virtual-machines-limits-azure-resource-manager.md)]
 

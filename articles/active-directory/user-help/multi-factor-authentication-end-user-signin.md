@@ -1,7 +1,6 @@
 ---
-title: Az Azure MFA jelentkezzen be a kétlépéses ellenőrzés – Azure Active Directory |} A Microsoft Docs
-description: Ezen a lapon, útmutatást nyújtanak a, hogy hová lépjen a különböző bejelentkezési módszerekről elérhető az Azure MFA megtekintéséhez.
-keywords: felhasználói hitelesítés, a bejelentkezési élmény, jelentkezzen be a mobiltelefon, jelentkezzen be az irodai telefonomra
+title: Bejelentkezés kétfaktoros ellenőrzés használatával – Azure AD
+description: Ismerje meg, hogyan jelentkezhet be a munkahelyi vagy iskolai fiókjába a különböző kétfaktoros ellenőrzési módszerek használatával.
 services: active-directory
 author: eross-msft
 manager: daveba
@@ -15,77 +14,78 @@ ms.author: lizross
 ms.reviewer: librown
 ms.custom: end-user, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1350b2d86e18f213d99f1c27d64e371451f5f9b7
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: de080a613c69dd6f48f548c4ba89b2728e8c5e1d
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60334443"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73820431"
 ---
-# <a name="the-sign-in-experience-with-azure-multi-factor-authentication"></a>Az Azure multi-factor Authentication a bejelentkezési élmény
+# <a name="sign-in-to-your-work-or-school-account-using-two-factor-verification"></a>Jelentkezzen be a munkahelyi vagy iskolai fiókjába kétfaktoros ellenőrzés használatával
+
 > [!NOTE]
-> Ez a cikk célja egy szokásos bejelentkezési élmény bemutatására. Bejelentkezés, vagy a problémák elhárításához lásd [problémája van az Azure multi-factor Authentication](multi-factor-authentication-end-user-troubleshoot.md).
+> Ennek a cikknek a célja egy tipikus bejelentkezési felület bejárása. Ha segítségre van szüksége a bejelentkezéshez vagy a problémák elhárításához, tekintse meg az [Azure multi-Factor Authenticationával](multi-factor-authentication-end-user-troubleshoot.md)kapcsolatos problémákat.
 
 ## <a name="what-will-your-sign-in-experience-be"></a>Mi lesz a bejelentkezési élmény?
-A bejelentkezési felület használatához a második tényezőként beállításoktól függően eltérő: a telefonhívás, a hitelesítési alkalmazás vagy a szövegek. Válassza ki a legjobban a mi végeznek:
+A bejelentkezési élmény attól függően különbözik, hogy mit választ a második tényezőként való használatra: telefonhívás, hitelesítési alkalmazás vagy szövegek. Válassza ki azt a lehetőséget, amely a legjobban leírja, hogy mit csinál:
 
-| Hogyan meg bejelentkezni? |
+| Hogyan jelentkezhet be? |
 | --- |
-| [A telefonon hívja fel a mobil- vagy office telefonomra](#signing-in-with-a-phone-call) |
-| [Az SMS-t kérek a mobiltelefonomra](#signing-in-with-a-text-message)
-| [Az értesítések a Microsoft Authenticator alkalmazásból](#to-sign-in-with-a-notification-from-the-microsoft-authenticator-app) |
-| Az ellenőrző kódok kezelésére a Microsoft Authenticator alkalmazásból |
-| [Az alternatív módszert mert jelenleg nem használható az előnyben részesített módszere](#signing-in-with-an-alternate-method) |
+| [A mobil-vagy irodai telefon hívásával](#signing-in-with-a-phone-call) |
+| [Egy szöveggel a mobil telefonom](#signing-in-with-a-text-message)
+| [A Microsoft Authenticator alkalmazás értesítéseivel](#to-sign-in-with-a-notification-from-the-microsoft-authenticator-app) |
+| Ellenőrző kódokkal a Microsoft Authenticator alkalmazásból |
+| [Alternatív módszer esetén, mert most nem tudom használni az előnyben részesített módszert](#signing-in-with-an-alternate-method) |
 
-## <a name="signing-in-with-a-phone-call"></a>Bejelentkezés a telefonhívás
-A következő információkat a mobil- vagy office telefonjára hívás a kétlépéses ellenőrzés élményt ismerteti.
+## <a name="signing-in-with-a-phone-call"></a>Bejelentkezés telefonos hívással
+A következő információk ismertetik a kétlépéses ellenőrzési élményt a mobil vagy irodai telefon hívásával.
 
-1. Jelentkezzen be egy alkalmazás vagy szolgáltatás, például az Office 365-be a felhasználónevét és jelszavát.  
-2. A Microsoft hív meg.  
-3. Fogadja a hívást, és nyomja le a # billentyűt.  
+1. Jelentkezzen be egy alkalmazásba vagy szolgáltatásba, például az Office 365-be a felhasználónevével és jelszavával.  
+2. A Microsoft meghívja Önt.  
+3. Válaszolja meg a telefont, és nyomja meg a # billentyűt.  
 
-## <a name="signing-in-with-a-text-message"></a>Bejelentkezés az SMS-ben
-A következő információkat a mobiltelefonjára szöveges üzenetben a kétlépéses ellenőrzés élményt ismerteti:
+## <a name="signing-in-with-a-text-message"></a>Bejelentkezés szöveges üzenettel
+A következő információk ismertetik a mobiltelefonra küldött szöveges üzenetekkel kapcsolatos kétlépéses ellenőrzési élményt:
 
-1. Jelentkezzen be egy alkalmazás vagy szolgáltatás, például az Office 365-be a felhasználónevét és jelszavát.
-2. A Microsoft egy kódot tartalmazó szöveges üzenetet küld.
-3. A bejelentkezési oldalon a megfelelő mezőbe írja be a kódot.
+1. Jelentkezzen be egy alkalmazásba vagy szolgáltatásba, például az Office 365-be a felhasználónevével és jelszavával.
+2. A Microsoft szöveges üzenetet küld Önnek, amely egy számsorozatot tartalmaz.
+3. Írja be a kódot a bejelentkezési oldalon megadott mezőbe.
 
-## <a name="signing-in-with-the-microsoft-authenticator-app"></a>Bejelentkezés a Microsoft Authenticator alkalmazás
-A következő információkat ismerteti a Microsoft Authenticator alkalmazás használatát a kétlépéses ellenőrzést. Használhatják az alkalmazást két különböző módja van. Fogadhat leküldéses értesítéseket az eszközén, vagy megnyithatja az ellenőrző kód kérése az alkalmazás.
+## <a name="signing-in-with-the-microsoft-authenticator-app"></a>Bejelentkezés a Microsoft Authenticator alkalmazással
+Az alábbi információk az Microsoft Authenticator alkalmazás kétlépéses ellenőrzésekhez való használatának élményét ismertetik. Az alkalmazás két különböző módon használható. Leküldéses értesítéseket fogadhat az eszközén, vagy megnyithatja az alkalmazást egy ellenőrző kód beszerzéséhez.
 
-### <a name="to-sign-in-with-a-notification-from-the-microsoft-authenticator-app"></a>A Microsoft Authenticator alkalmazásból értesítést felhasználóval való bejelentkezéshez
-1. Jelentkezzen be egy alkalmazás vagy szolgáltatás, például az Office 365-be a felhasználónevét és jelszavát.
-2. A Microsoft értesítést küld a Microsoft Authenticator alkalmazást az eszközön.
+### <a name="to-sign-in-with-a-notification-from-the-microsoft-authenticator-app"></a>Bejelentkezés értesítéssel a Microsoft Authenticator alkalmazásból
+1. Jelentkezzen be egy alkalmazásba vagy szolgáltatásba, például az Office 365-be a felhasználónevével és jelszavával.
+2. A Microsoft értesítést küld a Microsoft Authenticator alkalmazásnak az eszközön.
 
    ![A Microsoft értesítést küld](./media/multi-factor-authentication-end-user-signin/notify.png)
 
-3. Nyissa meg az értesítést a telefonján és válassza ki a **ellenőrizze** kulcsot. Ha a munkahelyi PIN-kód szükséges, itt adhatja meg.
-4. Meg kell a bejelentkezés megtörtént.
+3. Nyissa meg az értesítést a telefonján, és válassza az **ellenőrzés** kulcsot. Ha a vállalata PIN-kódot igényel, adja meg itt.
+4. Most be kell jelentkeznie.
 
-### <a name="to-sign-in-using-a-verification-code-with-the-microsoft-authenticator-app"></a>Jelentkezzen be egy ellenőrző kódot, a Microsoft Authenticator alkalmazás
+### <a name="to-sign-in-using-a-verification-code-with-the-microsoft-authenticator-app"></a>Bejelentkezés ellenőrző kóddal a Microsoft Authenticator alkalmazással
 
-Ha a Microsoft Authenticator alkalmazás használatával ellenőrző kódok beolvasása, majd az alkalmazás megnyitásakor megjelenik egy számot a fiók neve alatt. Ez a szám 30 másodpercenként úgy módosítja, az azonos számú kétszer nem használja. Ha kéri a rendszer az ellenőrző kódot, nyissa meg az alkalmazást, és szám látható használja.
+Ha az Microsoft Authenticator alkalmazást használja az ellenőrző kódok beolvasásához, akkor az alkalmazás megnyitásakor a fiók neve alatt egy szám jelenik meg. Ez a szám 30 másodpercenként változik, hogy ne használja ugyanazt a számot kétszer. Amikor a rendszer megkérdezi az ellenőrző kódot, nyissa meg az alkalmazást, és használja az aktuálisan megjelenő számot.
 
-1. Jelentkezzen be egy alkalmazás vagy szolgáltatás, például az Office 365-be a felhasználónevét és jelszavát.
+1. Jelentkezzen be egy alkalmazásba vagy szolgáltatásba, például az Office 365-be a felhasználónevével és jelszavával.
 2. A Microsoft egy ellenőrző kódot kér.
 
-   ![Adja meg az ellenőrző kód](./media/multi-factor-authentication-end-user-signin/verify3.png)
+   ![Adja meg az ellenőrző kódot](./media/multi-factor-authentication-end-user-signin/verify3.png)
 
-3. Nyissa meg a Microsoft Authenticator alkalmazást a telefonra, és írja be a kódot a mezőbe, ahol most jelentkezik be.
+3. Nyissa meg a Microsoft Authenticator alkalmazást a telefonján, és írja be a kódot abban a mezőben, ahová bejelentkezik.
 
-## <a name="signing-in-with-an-alternate-method"></a>Bejelentkezik egy alternatív módszert
-Néha nem rendelkezik a telefon vagy eszközt, akkor állíthatja be az előnyben részesített ellenőrzési módszert. Ez a helyzet van, ezért azt javasoljuk, hogy beállította a biztonsági mentési módszerek a fiókjához. A következő szakasz bemutatja, hogyan kattintva jelentkezhet be alternatív módszert, ha az elsődleges módszer nem érhető el.
+## <a name="signing-in-with-an-alternate-method"></a>Bejelentkezés másik módszerrel
+Előfordulhat, hogy nem rendelkezik az előnyben részesített ellenőrzési módszerként beállított telefonnal vagy eszközzel. Ezért javasoljuk, hogy állítsa be a fiókja biztonsági mentési módszereit. A következő szakasz bemutatja, hogyan jelentkezhet be másik módszerrel, ha az elsődleges metódus nem érhető el.
 
-1. Jelentkezzen be egy alkalmazás vagy szolgáltatás, például az Office 365-be a felhasználónevét és jelszavát.
-2. Válassza ki **másik ellenőrzési lehetőség használata**. Láthatja, hogy másik ellenőrzési lehetőség, hogy hány rendelkezik a telepítő-alapú.
-3. Válasszon egy másik módszert, és jelentkezzen be.
+1. Jelentkezzen be egy alkalmazásba vagy szolgáltatásba, például az Office 365-be a felhasználónevével és jelszavával.
+2. Válassza **a másik ellenőrzési lehetőség használata lehetőséget**. A beállítástól függően különböző ellenőrzési lehetőségek jelennek meg.
+3. Válasszon másik módszert, és jelentkezzen be.
 
-   ![Alternatív módszer](./media/multi-factor-authentication-end-user-signin/alt.png)
+   ![Alternatív módszer használata](./media/multi-factor-authentication-end-user-signin/alt.png)
 
 ## <a name="next-steps"></a>További lépések
-- Ha problémába ütközik a kétlépéses ellenőrzés jelentkezik, részletes tájékoztatást: [problémája van az Azure multi-factor Authentication](multi-factor-authentication-end-user-troubleshoot.md).
+- Ha problémák merülnek fel a kétlépéses ellenőrzéssel való bejelentkezés során, további információhoz juthat az [Azure multi-Factor Authenticationával](multi-factor-authentication-end-user-troubleshoot.md)kapcsolatban.
 
-- Ismerje meg, hogyan [a kétlépéses ellenőrzés beállításait kezelheti](multi-factor-authentication-end-user-manage-settings.md).
+- Ismerje meg, hogyan [kezelheti a kétlépéses ellenőrzési beállításokat](multi-factor-authentication-end-user-manage-settings.md).
 
-- Megtudhatja, hogyan [Ismerkedés a Microsoft Authenticator alkalmazás](user-help-auth-app-download-install.md) , hogy az értesítések segítségével jelentkezzen be, a szövegek és a telefonhívások helyett.
+- Megtudhatja, hogyan kezdheti el [a Microsoft Authenticator alkalmazást](user-help-auth-app-download-install.md) , hogy a szövegek és telefonhívások helyett értesítéseket tudjon használni a bejelentkezéshez.

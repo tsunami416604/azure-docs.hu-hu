@@ -2,19 +2,19 @@
 title: A jelszavak nélküli világ megismerése Azure Active Directoryokkal | Microsoft Docs
 description: Ez az útmutató segítséget nyújt az ügyvezetők, a informatikai igazgatók, a CISOs, az identitás-építészek, a vállalati építészek, valamint a biztonsági és informatikai döntéshozók számára, akik a jelszóval nem rendelkező hitelesítési módszer kiválasztásához felelősek a Azure Active Directory megvalósításához.
 keywords: jelszóval nem rendelkező, azuread
-author: TerryLanfear
-ms.author: terrylan
+author: martincoetzer
+ms.author: martinco
 ms.date: 07/09/2019
 ms.topic: article
 ms.service: security
 ms.subservice: security-fundamentals
 ms.workload: identity
-ms.openlocfilehash: a24195dcf8f384db8d78d39ac7100e487f6c9272
-ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
+ms.openlocfilehash: 0fbd8404e326ecc6fabef8c89991009809b1448b
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73621284"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73820511"
 ---
 # <a name="a-world-without-passwords-with-azure-active-directory"></a>Jelszavak nélküli globális Azure Active Directory
 

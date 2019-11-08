@@ -1,5 +1,5 @@
 ---
-title: 'Oktatóanyag: az első, Azure SQL Database a SSMS-t használó, összehasonlítható adatbázis megtervezése '
+title: 'Oktatóanyag: az első kapcsolódó adatbázis megtervezése a SSMS használatával'
 description: Megtudhatja, hogyan tervezheti meg első, Azure SQL Database egy adatbázisában található, SQL Server Management Studio használatával.
 services: sql-database
 ms.service: sql-database
@@ -9,12 +9,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: v-masebo
 ms.date: 07/29/2019
-ms.openlocfilehash: 1ea8bcd353311d0e6f666a0086f8f2f3b24b55d2
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 97e603e6daa64bb70edefe06b52a7c45f90787f3
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73690741"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73818306"
 ---
 # <a name="tutorial-design-a-relational-database-in-a-single-database-within-azure-sql-database-using-ssms"></a>Oktatóanyag: a SSMS-t használó, Azure SQL Databaseban található, egyetlen adatbázisban lévő viszonyítási adatbázis tervezése
 

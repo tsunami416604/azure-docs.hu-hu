@@ -1,5 +1,5 @@
 ---
-title: A biztonsági adatok (előzetes verzió) beállítása telefonhívások használatához – Azure Active Directory | Microsoft Docs
+title: Biztonsági adatok (előzetes verzió) beállítása telefonhívásokhoz – Azure AD
 description: A biztonsági adatok beállítása az identitás telefonos hívásokkal való ellenőrzéséhez.
 services: active-directory
 author: eross-msft
@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 02/13/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b28330f8e81efbb496fb30a14e8ae10415ded27f
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: a5dc5ec06e60112e69a31d1ce4c69e698576609f
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73160751"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73803801"
 ---
 # <a name="set-up-security-info-preview-to-use-phone-calls"></a>A biztonsági adatok (előzetes verzió) beállítása telefonhívások használatához
 
@@ -94,7 +94,7 @@ Ha azt szeretné, hogy a telefonhívások alapértelmezett módszerként legyene
 
     ![Válassza ki a metódust az alapértelmezett bejelentkezéshez](media/security-info/securityinfo-myprofile-phonecall-changeddefault.png)
 
-    A bejelentkezéshez használt alapértelmezett módszer a **telefonos híváshoz ( *_your_phone_number_* )** .
+    A bejelentkezéshez használt alapértelmezett módszer a **telefonos hívás ( *_your_phone_number_* )** .
 
 ## <a name="additional-security-info-methods"></a>További biztonsági információs módszerek
 
@@ -113,7 +113,7 @@ További beállításokkal is megtudhatja, hogy a szervezet hogyan forduljon a s
     >[!Note]
     >Ha a lehetőségek némelyike hiányzik, valószínűleg azért, mert a szervezet nem engedélyezi ezeket a metódusokat. Ebben az esetben ki kell választania egy elérhető módszert, vagy kapcsolatba kell lépnie a rendszergazdával további segítségért.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Ha elvesztette vagy elfelejtette a jelszavát, állítsa vissza a jelszót a [jelszó-visszaállítási portálról](https://passwordreset.microsoftonline.com/) , vagy kövesse a [munkahelyi vagy iskolai jelszó alaphelyzetbe állítása](active-directory-passwords-update-your-own-password.md) című cikk lépéseit.
 

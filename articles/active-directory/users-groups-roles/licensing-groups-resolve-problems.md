@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5dfe5b886ff389cf2d0f01d402990929c0ef5628
-ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
+ms.openlocfilehash: 247dee2cfbb00b185e941fde05c2198459a05e20
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72033969"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73815740"
 ---
 # <a name="identify-and-resolve-license-assignment-problems-for-a-group-in-azure-active-directory"></a>Egy csoport licenc-hozzárendelési problémáinak azonosítása és megoldása Azure Active Directory
 
@@ -29,6 +29,11 @@ A Azure Active Directory (Azure AD) csoport alapú licencelése a licencelési h
 Ha a licenceket közvetlenül az egyes felhasználókhoz rendeli, a csoport alapú licencelés használata nélkül, a hozzárendelési művelet sikertelen lehet. Ha például a (z) `Set-MsolUserLicense` PowerShell-parancsmagot egy felhasználói rendszeren hajtja végre, a parancsmag számos, az üzleti logikával kapcsolatos okból sikertelen lehet. Előfordulhat például, hogy nem áll rendelkezésre elegendő számú licenc, vagy a két szolgáltatási csomag közötti ütközés, amely nem rendelhető hozzá egyszerre. A probléma azonnal vissza lesz jelentve.
 
 Ha csoportos licencelést használ, ugyanazok a hibák fordulhatnak elő, de a háttérben történnek, miközben az Azure AD szolgáltatás licenceket rendel hozzá. Emiatt a hibákat nem lehet azonnal tájékoztatni. Ehelyett a rendszer rögzíti a felhasználói objektumot, majd a felügyeleti portálon keresztül jelentést készít. A felhasználó számára a licenc eredeti szándéka soha nem vész el, de a jövőbeli vizsgálat és megoldás érdekében hiba állapotban van rögzítve.
+
+## <a name="licenseassignmentattributeconcurrencyexception-in-audit-logs"></a>LicenseAssignmentAttributeConcurrencyException a naplókban
+
+**Probléma:** A felhasználó rendelkezik a LicenseAssignmentAttributeConcurrencyException a naplózási naplókban.
+Ha a csoportos licencelés megkísérli feldolgozni ugyanazon licenc egy felhasználóhoz való egyidejű licenc-hozzárendelését, a rendszer ezt a kivételt rögzíti a felhasználónál. Ez általában akkor fordul elő, ha egy felhasználó több, azonos hozzárendelt licenccel rendelkező csoport tagja. Az AZure AD megkísérli a felhasználói licenc feldolgozását, és elhárítja a problémát. A probléma megoldásához nem szükséges művelet az ügyféltől.
 
 ## <a name="find-license-assignment-errors"></a>Licenc-hozzárendelési hibák keresése
 
@@ -56,7 +61,7 @@ A következő részekben ismertetjük az egyes lehetséges problémák leírás�
 
 **Probléma:** Nincs elég elérhető licenc a csoportban megadott egyik termékhez sem. További licenceket kell vásárolnia a termékhez, vagy fel kell vennie a nem használt licenceket más felhasználóktól vagy csoportokból.
 
-Ha szeretné megtekinteni, hogy hány licenc áll rendelkezésre, látogasson el **Azure Active Directory** > **licencre** > **minden termékhez**.
+Ha szeretné megtekinteni, hogy hány licenc áll rendelkezésre, lépjen **Azure Active Directory** > **licencek** > **minden termék**elemre.
 
 Ha szeretné megtekinteni, hogy mely felhasználók és csoportok használják a licenceket, válasszon ki egy terméket. A **licenccel rendelkező felhasználók**területen megtekintheti az összes olyan felhasználó listáját, akik közvetlenül vagy egy vagy több csoporton keresztül rendeltek hozzá licenceket. A **licencelt csoportok**területen láthatja az összes olyan csoportot, amelyhez a termékek hozzá lettek rendelve.
 
@@ -77,7 +82,7 @@ Az ütköző licencek feloldásával kapcsolatos döntés mindig a rendszergazd�
 
 **PowerShell:** A PowerShell-parancsmagok ezt a hibát jelentik a _MutuallyExclusiveViolation_.
 
-## <a name="other-products-depend-on-this-license"></a>Más termékek függenek ettől a licenctől
+## <a name="other-products-depend-on-this-license"></a>Más termékek ettől a licenctől függenek
 
 **Probléma:** A csoportban megadott termékek egyike egy olyan szervizcsomagot tartalmaz, amelyet egy másik Service-csomaghoz kell engedélyezni egy másik termékben a működéshez. Ez a hiba akkor fordul elő, amikor az Azure AD megkísérli eltávolítani az alapul szolgáló szolgáltatási csomagot. Ez például akkor fordulhat elő, ha eltávolítja a felhasználót a csoportból.
 
@@ -175,6 +180,6 @@ Ha többet szeretne megtudni a licencek csoportokon keresztüli kezelésével ka
 * [Mi a Azure Active Directory csoportos licencelése?](../fundamentals/active-directory-licensing-whatis-azure-portal.md)
 * [Licencek hozzárendelése egy csoporthoz az Azure Active Directoryban](licensing-groups-assign.md)
 * [Egyéni, licenccel rendelkező felhasználók migrálása csoportalapú licencelésre az Azure Active Directoryban](licensing-groups-migrate-users.md)
-* [Felhasználók az Azure Active Directoryban Csoportalapú licencelést használ terméklicencek közötti migrálása](licensing-groups-change-licenses.md)
+* [Felhasználók áttelepítése licencek között a csoport alapú licencelés használatával Azure Active Directory](licensing-groups-change-licenses.md)
 * [Az Azure Active Directory csoportalapú licencelésének további forgatókönyvei](licensing-group-advanced.md)
-* [PowerShell forgatókönyvek Csoportalapú licenceléshez az Azure Active Directoryban](licensing-ps-examples.md)
+* [PowerShell-példák csoportházirend-alapú licenceléshez Azure Active Directory](licensing-ps-examples.md)

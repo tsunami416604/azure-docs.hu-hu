@@ -1,5 +1,5 @@
 ---
-title: Globálisan elérhető szolgáltatások tervezése Azure SQL Database használatával
+title: Globálisan elérhető szolgáltatások tervezése
 description: Ismerkedjen meg az alkalmazások kialakításával a Azure SQL Database használó, magasan elérhető szolgáltatásokhoz.
 keywords: Felhőbeli vész-helyreállítási, vész-helyreállítási megoldások, alkalmazásadatok biztonsági mentése, Geo-replikáció, üzletmenet-folytonossági tervezés
 services: sql-database
@@ -12,12 +12,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: carlrab
 ms.date: 12/04/2018
-ms.openlocfilehash: 034d696fd8c9aae826d0bbc7e4d028cefad09840
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 8eb115497427338599db08e8c7bbdd55c5a158fc
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73690720"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73807951"
 ---
 # <a name="designing-globally-available-services-using-azure-sql-database"></a>Globálisan elérhető szolgáltatások tervezése Azure SQL Database használatával
 

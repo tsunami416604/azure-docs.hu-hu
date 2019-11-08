@@ -1,66 +1,66 @@
 ---
-title: Biztonságos hozzáférés az Azure Cosmos DB-fiókot az Azure virtuális hálózati szolgáltatásvégpont
-description: Ez a dokumentum ismerteti a virtuális hálózati és alhálózati hozzáférés-vezérlés az Azure Cosmos-fiók.
+title: Biztonságos hozzáférés egy Azure Cosmos DB-fiókhoz az Azure Virtual Network szolgáltatás végpontjának használatával
+description: Ez a dokumentum az Azure Cosmos-fiók virtuális hálózati és alhálózati hozzáférés-vezérlését ismerteti.
 author: kanshiG
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: dfc3ebc0274c87466d6dc27c93880483df023085
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 791821fbfe5854c27b7e3e6927a56a66ac1f1dc2
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66242472"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73819083"
 ---
-# <a name="access-azure-cosmos-db-from-virtual-networks-vnet"></a>Hozzáférés az Azure Cosmos DB a virtuális hálózatok (VNet)
+# <a name="access-azure-cosmos-db-from-virtual-networks-vnet"></a>Hozzáférési Azure Cosmos DB a Virtual Networks (VNet) szolgáltatásból
 
-Beállíthatja, hogy engedélyezze a hozzáférést csak a megadott alhálózat virtuális hálózat (VNet) az Azure Cosmos fiókot. Engedélyezésével [szolgáltatásvégpont](../virtual-network/virtual-network-service-endpoints-overview.md) elérni az Azure Cosmos DB az alhálózat egy virtuális hálózaton belül, az adott alhálózatról származó forgalmat el kell küldeni Azure Cosmos DB és az alhálózat és virtuális hálózat azonosítóját. Az Azure Cosmos DB-szolgáltatásvégpont engedélyezése után az Azure Cosmos-fiók hozzáadásával korlátozhatja az alhálózathoz való hozzáférés.
+Az Azure Cosmos-fiókot úgy is beállíthatja, hogy csak a virtuális hálózat (VNet) egy adott alhálózatáról engedélyezze a hozzáférést. A [szolgáltatás végpontjának](../virtual-network/virtual-network-service-endpoints-overview.md) a virtuális hálózaton belüli alhálózathoz Azure Cosmos db való hozzáférésének engedélyezésével az adott alhálózatról érkező forgalmat a rendszer a Azure Cosmos db az alhálózat és a Virtual Network identitásával küldi el. Ha a Azure Cosmos DB szolgáltatás végpontja engedélyezve van, az alhálózathoz való hozzáférést az Azure Cosmos-fiókjához hozzáadva korlátozhatja.
 
-Alapértelmezés szerint az Azure Cosmos-fiók érhető el bármilyen forrásból származó ha érvényes engedélyezési jogkivonat a kérelemben. Amikor hozzáad egy vagy több Vnetek alhálózatainak, csak érkező kérések ezekhez az alhálózatokhoz érvényes választ fog kapni. Bármilyen más forrásból érkező kérelmek esetén kapnak a 403-as (tiltott) választ. 
+Alapértelmezés szerint az Azure Cosmos-fiók bármely forrásból elérhető, ha a kérést érvényes engedélyezési jogkivonat kíséri. Ha egy vagy több alhálózatot ad hozzá a virtuális hálózatok-n belül, csak ezekből az alhálózatokból származó kérelmek érvényes választ kapnak. A más forrásból származó kérelmek 403 (tiltott) választ kapnak. 
 
 ## <a name="frequently-asked-questions"></a>Gyakori kérdések
 
-Az alábbiakban néhány gyakori kérdés a virtuális hálózatok hozzáférés beállításával kapcsolatban:
+Íme néhány gyakori kérdés a virtuális hálózatok hozzáférésének konfigurálásáról:
 
-### <a name="can-i-specify-both-virtual-network-service-endpoint-and-ip-access-control-policy-on-an-azure-cosmos-account"></a>Meghatározható, hogy mind a virtuális hálózati szolgáltatásvégpont IP hozzáférés-vezérlési szabályzat az Azure Cosmos-fiókkal? 
+### <a name="can-i-specify-both-virtual-network-service-endpoint-and-ip-access-control-policy-on-an-azure-cosmos-account"></a>Megadhatom a virtuális hálózati szolgáltatás végpontját és az IP-hozzáférés-vezérlési házirendet egy Azure Cosmos-fiókon? 
 
-Engedélyezheti a virtuális hálózati szolgáltatásvégpont és a egy IP hozzáférés-vezérlési házirend (más néven tűzfal) a Azure Cosmos-fiókjában. Ezen két funkció egymást egészítik ki, és együttesen biztosítása elkülönítési és biztonsági az Azure Cosmos-fiók. IP használata tűzfal biztosítja, hogy statikus IP-címek is elérni a fiókját. 
+A virtuális hálózati szolgáltatás végpontját és egy IP-hozzáférés-vezérlési házirendet (aka tűzfal) is engedélyezhet az Azure Cosmos-fiókban. Ez a két funkció kiegészíti és együttesen biztosítja az Azure Cosmos-fiók elkülönítését és biztonságát. Az IP-tűzfal használatával biztosíthatja, hogy a statikus IP-címek hozzáférhessenek a fiókjához. 
 
-### <a name="how-do-i-limit-access-to-subnet-within-a-virtual-network"></a>Hogyan korlátozza a hozzáférést egy virtuális hálózatban lévő alhálózat? 
+### <a name="how-do-i-limit-access-to-subnet-within-a-virtual-network"></a>Hogyan korlátozza a virtuális hálózaton belüli alhálózat elérését? 
 
-Egy alhálózatról korlátozható az Azure Cosmos-fiókjához való hozzáférés szükséges két lépésből áll. Először az alhálózat és virtuális hálózati azonosságát az Azure Cosmos DB alhálózatból érkező forgalmat engedélyezi. Szolgáltatásvégpont engedélyezése az Azure Cosmos DB az alhálózat végzi. Ezután a szabály hozzáadása az Azure Cosmos-fiókban adja meg ezt az alhálózatot, amelyből a fiókhoz elérhető lesz forrásként.
+Két lépés szükséges az Azure Cosmos-fiókhoz való hozzáférés korlátozásához egy alhálózaton. Először is engedélyezheti az alhálózatról érkező adatforgalmat, hogy az alhálózatot és a virtuális hálózati identitást Azure Cosmos DBba vigye. Ezt úgy teheti meg, hogy engedélyezi a szolgáltatási végpontot Azure Cosmos DB az alhálózaton. A következő lépés egy olyan szabály hozzáadása az Azure Cosmos-fiókban, amely ezt az alhálózatot adja meg forrásként, amelyből a fiók elérhető.
 
-### <a name="will-virtual-network-acls-and-ip-firewall-reject-requests-or-connections"></a>Elutasítják virtuális hálózati hozzáférés-vezérlési listák és IP-tűzfalon, kérések vagy a kapcsolatot? 
+### <a name="will-virtual-network-acls-and-ip-firewall-reject-requests-or-connections"></a>A virtuális hálózati ACL-ek és az IP-tűzfal elutasítja a kérelmeket és a kapcsolatokat? 
 
-IP-tűzfal vagy a virtuális hálózati hozzáférési szabályok bővül, csak az engedélyezett források get adható érvényes válaszok érkező kérelmeket. Más kérelmeket a rendszer elutasítja a 403 (tiltott). Fontos megkülönböztetni a tűzfal az Azure Cosmos-fiók egy kapcsolat adatbázisszintű tűzfalszabály. A forrás továbbra is lehet kapcsolódni a szolgáltatáshoz, és maguk a kapcsolatok nem elutasították.
+Az IP-tűzfal vagy a virtuális hálózati hozzáférési szabályok hozzáadásakor a rendszer csak az engedélyezett forrásokból érkező kérelmeket fogadja el érvényes válaszként. A többi kérelem elutasítása 403 (tiltott). Fontos, hogy megkülönböztetni az Azure Cosmos-fiók tűzfalát a kapcsolódási szintű tűzfallal. A forrás továbbra is csatlakozhat a szolgáltatáshoz, és maga a kapcsolat nem kerül elutasításra.
 
-### <a name="my-requests-started-getting-blocked-when-i-enabled-service-endpoint-to-azure-cosmos-db-on-the-subnet-what-happened"></a>Saját kérések a blokkolja a I engedélyezésekor az alhálózaton az Azure Cosmos DB-service-végpont elindult. Mi történt?
+### <a name="my-requests-started-getting-blocked-when-i-enabled-service-endpoint-to-azure-cosmos-db-on-the-subnet-what-happened"></a>A rendszer megkezdte a kérések letiltását, amikor Engedélyeztem a szolgáltatási végpontot az alhálózaton való Azure Cosmos DB. Mi történt?
 
-Miután az Azure Cosmos DB a szolgáltatásvégpont engedélyezve van a alhálózat, a éri el a fiókot a forgalom forrását a nyilvános IP-címről vált, amennyiben az virtuális hálózatot és alhálózatot. Ha az Azure Cosmos-fiók nem rendelkezik IP-alapú tűzfal csak szolgáltatást engedélyező alhálózatról származó forgalmat már nem megfelelő IP-tűzfalszabályainak, és ezért elutasítja. Nyissa meg a lépéseket áttelepíthetik a tűzfal IP-alapú virtuális hálózat-alapú hozzáférés-vezérlés keresztül.
+Ha a Azure Cosmos DB szolgáltatás végpontja engedélyezve van az alhálózaton, akkor a fiók a nyilvános IP-címről a virtuális hálózatra és az alhálózatra irányuló forgalom forrása. Ha az Azure Cosmos-fiók csak IP-alapú tűzfallal rendelkezik, akkor a szolgáltatással kompatibilis alhálózatról érkező forgalom már nem felel meg az IP-tűzfalszabályok feltételeinek, ezért a rendszer elutasítja. Ugorjon át az IP-alapú tűzfalról a virtuális hálózati hozzáférés-vezérlésre való zökkenőmentes Migrálás lépéseire.
 
-### <a name="do-the-peered-virtual-networks-also-have-access-to-azure-cosmos-account"></a>A virtuális társhálózatok is rendelkezik hozzáféréssel az Azure Cosmos-fiók? 
-Csak a virtuális hálózat és az Azure Cosmos-fiókhoz hozzáadott alhálózatok hozzáféréssel rendelkezik. A virtuális társhálózatba tartozó virtuális hálózatok nem tudja elérni a fiókját, a társviszonyban lévő virtuális hálózatokban lévő alhálózatok a fiók felvételének befejezéséig.
+### <a name="do-the-peered-virtual-networks-also-have-access-to-azure-cosmos-account"></a>Az elérhető virtuális hálózatok hozzáférhetnek az Azure Cosmos-fiókhoz is? 
+Csak a virtuális hálózat és az Azure Cosmos-fiókhoz hozzáadott alhálózatok férnek hozzá. A társ virtuális hálózatok nem férhetnek hozzá a fiókhoz, amíg a virtuális hálózatok alhálózatai hozzá nem kerülnek a fiókhoz.
 
-### <a name="what-is-the-maximum-number-of-subnets-allowed-to-access-a-single-cosmos-account"></a>Alhálózatok maximális számának engedélyezett egyetlen Cosmos-fiókja eléréséhez? 
-Jelenleg az Azure Cosmos-fiók számára engedélyezett legfeljebb 64 alhálózatokat is rendelkezhet.
+### <a name="what-is-the-maximum-number-of-subnets-allowed-to-access-a-single-cosmos-account"></a>Legfeljebb hány alhálózat fér hozzá egyetlen Cosmos-fiókhoz? 
+Jelenleg legfeljebb 64 alhálózat lehet egy Azure Cosmos-fiókhoz.
 
-### <a name="can-i-enable-access-from-vpn-and-express-route"></a>Engedélyezheti a hozzáférést a VPN és Expressroute? 
-Az Azure Cosmos-fiók eléréséhez feletti Express route a helyszínen, kell engedélyezni a Microsoft társviszony-létesítés. Ha IP-tűzfal vagy a virtuális hálózati hozzáférési szabályok, a Microsoft társviszony-létesítéshez az Azure Cosmos fiók IP-tűzfalon, hogy az Azure Cosmos-fiók a helyi szolgáltatások hozzáférést használt nyilvános IP-címeket is hozzáadhat. 
+### <a name="can-i-enable-access-from-vpn-and-express-route"></a>Engedélyezhető a hozzáférés a VPN-ről és az expressz útvonalról? 
+Ahhoz, hogy az Azure Cosmos-fiókot a helyszíni expressz útvonalon keresztül lehessen elérni, engedélyeznie kell a Microsoft-partneri kapcsolatot. Az IP-tűzfal vagy a virtuális hálózat hozzáférési szabályainak megadása után hozzáadhatja a Microsoft-társhoz használt nyilvános IP-címeket az Azure Cosmos-fiók IP-tűzfalán, hogy engedélyezze a helyszíni szolgáltatások hozzáférését az Azure Cosmos-fiókhoz. 
 
-### <a name="do-i-need-to-update-the-network-security-groups-nsg-rules"></a>Kell frissíteni a hálózati biztonsági csoportok (NSG) szabályai? 
-NSG-szabályok és a egy alhálózatot a virtuális hálózati kapcsolat korlátozására használhatók. Hozzáadásakor szolgáltatásvégpontot az Azure Cosmos DB az alhálózathoz, van, a nem szükséges, a kimenő kapcsolat megnyitása az NSG-t az Azure Cosmos-fiók. 
+### <a name="do-i-need-to-update-the-network-security-groups-nsg-rules"></a>Frissíteni kell a hálózati biztonsági csoportok (NSG) szabályait? 
+A NSG szabályok a virtuális hálózattal rendelkező alhálózatok és azok közötti kapcsolatok korlátozására szolgálnak. Amikor szolgáltatási végpontot ad hozzá Azure Cosmos DBhoz az alhálózathoz, nincs szükség a kimenő kapcsolat megnyitására az Azure Cosmos-fiók NSG. 
 
-### <a name="are-service-endpoints-available-for-all-vnets"></a>A Szolgáltatásvégpontok mindegyik virtuális hálózat érhető el?
-Nem, csak az Azure Resource Managerbeli virtuális hálózat lehet a szolgáltatásvégpont engedélyezve van. A klasszikus virtuális hálózatok nem támogatják a Szolgáltatásvégpontok.
+### <a name="are-service-endpoints-available-for-all-vnets"></a>Elérhetőek-e a szolgáltatási végpontok az összes virtuális hálózatok?
+Nem, csak Azure Resource Manager virtuális hálózatokon engedélyezhető a szolgáltatás végpontja. A klasszikus virtuális hálózatok nem támogatják a szolgáltatási végpontokat.
 
-### <a name="can-i-accept-connections-from-within-public-azure-datacenters-when-service-endpoint-access-is-enabled-for-azure-cosmos-db"></a>Is szeretnék "Accept-kapcsolatok a nyilvános Azure-adatközpontok belül" Ha a szolgáltatás-végponti hozzáférés engedélyezve van az Azure Cosmos DB?  
-Erre azért szükség, ha azt szeretné, hogy az Azure Cosmos DB-fiók, Azure első felet elérésének services, Azure Data factory, az Azure Search vagy bármely szolgáltatás, amely csak a megadott Azure-régióban üzemel.
+### <a name="can-i-accept-connections-from-within-public-azure-datacenters-when-service-endpoint-access-is-enabled-for-azure-cosmos-db"></a>"Elfogadom a kapcsolatokat a nyilvános Azure-adatközpontokban", ha a szolgáltatás-végponti hozzáférés engedélyezve van a Azure Cosmos DBhoz?  
+Erre csak akkor van szükség, ha azt szeretné, hogy a Azure Cosmos DB-fiókját más Azure-szolgáltatások, például az Azure-beli adat-előállító, az Azure Cognitive Search vagy bármely, az adott Azure-régióban üzembe helyezett szolgáltatás hozzáférhessen.
 
 
 ## <a name="next-steps"></a>További lépések
 
-* [Hogyan lehet Azure Cosmos fiók férjenek hozzá az alhálózat virtuális hálózatokon belül](how-to-configure-vnet-service-endpoint.md)
-* [Az Azure Cosmos-fiókhoz tartozó IP-tűzfal konfigurálása](how-to-configure-firewall.md)
+* [Azure Cosmos-fiók hozzáférésének korlátozása virtuális hálózatokon belüli alhálózatokhoz](how-to-configure-vnet-service-endpoint.md)
+* [Az IP-tűzfal konfigurálása az Azure Cosmos-fiókhoz](how-to-configure-firewall.md)
 

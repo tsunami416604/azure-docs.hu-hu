@@ -1,5 +1,5 @@
 ---
-title: Az Azure automatizált ML-felületének használata & üzembe helyezési modelljeinek betanításához
+title: Build & automatikus ML-modellek üzembe helyezése
 titleSuffix: Azure Machine Learning
 description: Gépi tanulási kísérletek létrehozása, kezelése és üzembe helyezése Azure Machine Learning Studióban.
 services: machine-learning
@@ -11,12 +11,12 @@ author: tsikiksr
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 11/04/2019
-ms.openlocfilehash: e1bb84c142fb24086cf6c11a7b1070bdd29ae3f2
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 25e775cf7bfd415768144b28ab2ca6989f360edd
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73581280"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73818490"
 ---
 # <a name="create-explore-and-deploy-automated-machine-learning-experiments-with-azure-machine-learning-studio"></a>Gépi tanulási kísérletek létrehozása, megismerése és üzembe helyezése Azure Machine Learning Studióval
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-enterprise-sku.md)]
@@ -141,7 +141,7 @@ Típus eloszlása| Az oszlopokban lévő típusok soron belüli értékeinek sz�
 Típus|Az oszlop késleltetett típusa. A lehetséges értékek a következők: karakterláncok, logikai értékek, dátumok és tizedesjegyek.
 Min| Az oszlop minimális értéke. Az üres bejegyzések olyan szolgáltatások esetében jelennek meg, amelyeknek a típusa nem rendelkezik a bennük rejlő sorrendtel (például logikai értékekkel).
 Max| Az oszlop maximális értéke. 
-Mennyiség| Az oszlop hiányzó és nem hiányzó bejegyzéseinek száma.
+Darabszám| Az oszlop hiányzó és nem hiányzó bejegyzéseinek száma.
 Hiányzó darabszám| A hiányzó oszlop bejegyzéseinek száma. Az üres karakterláncok és hibák értékekként vannak kezelve, így nem járulnak hozzá a "nem hiányzó darabszám" értékhez.
 Quantiles| Az egyes quantile megközelített értékek biztosítják az adatok terjesztésének érzékét.
 Értem| Az oszlop számtani középértéke vagy átlaga.
@@ -205,17 +205,17 @@ Az automatikus ML a kód írása nélkül segíti a modell üzembe helyezését:
 
     Mező| Érték
     ----|----
-    Name (Név)| Adja meg a központi telepítés egyedi nevét.
+    Név| Adja meg a központi telepítés egyedi nevét.
     Leírás| Adja meg a leírását, hogy jobban azonosítható legyen a központi telepítés.
     Számítási típus| Válassza ki a telepíteni kívánt végpont típusát: *Azure Kubernetes Service (ak)* vagy *Azure Container instance (ACI)* .
-    Name (Név)| *Csak ak-ra vonatkozik:* Válassza ki a telepíteni kívánt AK-fürt nevét.
+    Név| *Csak ak-ra vonatkozik:* Válassza ki a telepíteni kívánt AK-fürt nevét.
     Hitelesítés engedélyezése | Ezzel a beállítással engedélyezheti a jogkivonat-alapú vagy a kulcs alapú hitelesítést.
     Egyéni központi telepítési eszközök használata| Engedélyezze ezt a funkciót, ha fel szeretné tölteni a saját pontozási parancsfájlját és a környezeti fájlját. [További információ a pontozási parancsfájlokról](how-to-deploy-and-where.md#script).
 
     >[!Important]
     > A fájlneveknek 32 karakternél rövidebbnek kell lenniük, és betűkkel kell kezdődnie és végződnie. Kötőjeleket, aláhúzásokat, pontokat és alfanumerikus elemeket tartalmazhat. Szóközök használata nem engedélyezett.
 
-    A *speciális* menü az alapértelmezett központi telepítési funkciókat kínálja, például az adatgyűjtés és az erőforrás-kihasználtság beállításait. Ha ezeket az alapértelmezett értékeket szeretné felülbírálni ebben a menüben.
+    A *speciális* menü olyan alapértelmezett központi telepítési funkciókat kínál, mint például [az adatgyűjtés](how-to-enable-app-insights.md) és az erőforrás-kihasználtsági beállítások. Ha ezeket az alapértelmezett értékeket szeretné felülbírálni ebben a menüben.
 
 1. Válassza az **Üzembe helyezés** lehetőséget. Az üzembe helyezés körülbelül 20 percet vesz igénybe.
 

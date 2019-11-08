@@ -1,5 +1,5 @@
 ---
-title: Egyetlen vagy készletezett adatbázis védelme Azure SQL Database
+title: Egyetlen vagy készletezett adatbázis védelme
 description: Egy oktatóanyag, amely bemutatja, hogyan biztosítható a Azure SQL Databaseban található egyetlen vagy készletezett adatbázis biztonságossá tételére szolgáló technikák és szolgáltatások.
 services: sql-database
 ms.service: sql-database
@@ -10,12 +10,12 @@ ms.author: vanto
 ms.reviewer: carlrab
 ms.date: 09/03/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 44fd49c391f4c6cddf24e3fddd7fa85a0d5ea4f2
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 05ea21f7b3221425e5b052797d79e629fdfe3ba5
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73687420"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73818041"
 ---
 # <a name="tutorial-secure-a-single-or-pooled-database"></a>Oktatóanyag: egyetlen vagy készletezett adatbázis biztonságossá tétele
 
@@ -107,7 +107,7 @@ Adatbázis szintű tűzfalszabály beállítása:
 1. Az eszköztáron kattintson az **Execute (végrehajtás** ) elemre a tűzfalszabály létrehozásához.
 
 > [!NOTE]
-> A [sp_set_firewall_rule](/sql/relational-databases/system-stored-procedures/sp-set-firewall-rule-azure-sql-database?view=azuresqldb-current) paranccsal is létrehozhat egy kiszolgálói szintű TŰZFALSZABÁLYOK a SSMS-ben, de a *Master* adatbázishoz kell csatlakoznia.
+> A SSMS-ben a [sp_set_firewall_rule](/sql/relational-databases/system-stored-procedures/sp-set-firewall-rule-azure-sql-database?view=azuresqldb-current) parancs használatával is létrehozhat egy kiszolgálói szintű tűzfalszabály-szabályt, de a *Master* adatbázishoz kell csatlakoznia.
 
 ## <a name="create-an-azure-ad-admin"></a>Azure AD-rendszergazda létrehozása
 
@@ -334,7 +334,7 @@ A titkosítás engedélyezése vagy ellenőrzése:
     ![Transzparens adattitkosítás](./media/sql-database-security-tutorial/encryption-settings.png)
 
 > [!NOTE]
-> A titkosítási állapot megtekintéséhez kapcsolódjon az adatbázishoz az [SSMS](./sql-database-connect-query-ssms.md) használatával, és kérdezze le a [sys. dm _database_encryption_keys](/sql/relational-databases/system-dynamic-management-views/sys-dm-database-encryption-keys-transact-sql) nézet `encryption_state` oszlopát. `3` állapota azt jelzi, hogy az adatbázis titkosítva van.
+> A titkosítási állapot megtekintéséhez kapcsolódjon az adatbázishoz az [SSMS](./sql-database-connect-query-ssms.md) használatával, és kérdezze le a [sys. dm_database_encryption_keys](/sql/relational-databases/system-dynamic-management-views/sys-dm-database-encryption-keys-transact-sql) nézet `encryption_state` oszlopát. `3` állapota azt jelzi, hogy az adatbázis titkosítva van.
 
 ## <a name="next-steps"></a>További lépések
 

@@ -1,41 +1,42 @@
 ---
-title: Windows távoli felügyeleti-HTTPS-kapcsolaton keresztül az Azure-hoz |} Az Azure Marketplace-en
-description: Ismerteti, hogyan konfigurálhatja egy Azure-ban üzemeltetett, a Windows-alapú virtuális Gépet úgy, hogy a PowerShell használatával távolról felügyelhetők.
+title: Rendszerfelügyeleti webszolgáltatások HTTPS protokollon keresztül az Azure-hoz | Azure piactér
+description: Ez a cikk azt ismerteti, hogyan konfigurálható egy Azure-ban üzemeltetett, Windows-alapú virtuális gép, hogy távolról felügyelhető legyen a PowerShell használatával.
 services: Azure, Marketplace, Cloud Partner Portal,
 author: v-miclar
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/26/2018
 ms.author: pabutler
-ms.openlocfilehash: fb661a2705d437d1f40ceebcad7e759c2a78540f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6e159bd9b57b26c99afd590d6a9f2153dba2a205
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64938230"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73808428"
 ---
-# <a name="windows-remote-management-over-https"></a>Windows Rendszerfelügyeleti webszolgáltatások HTTPS protokollon
+# <a name="windows-remote-management-over-https"></a>Rendszerfelügyeleti webszolgáltatások HTTPS protokollon keresztül
 
-Ez a szakasz ismerteti, hogyan konfigurálhatja egy Azure-ban üzemeltetett, a Windows-alapú virtuális gép, úgy, hogy, kezelhető és a PowerShell használatával távolról üzembe helyezve.  PowerShell távoli eljáráshívás engedélyezéséhez a cél virtuális Gépen a Windows Rendszerfelügyeleti (webszolgáltatások WinRM) HTTPS-végpontokat kell közzétennie.  PowerShell-táveléréssel kapcsolatos további információkért lásd: [távoli parancsok futtatása](https://docs.microsoft.com/powershell/scripting/core-powershell/running-remote-commands?view=powershell-6).  Winrm szolgáltatásokkal kapcsolatos további információkért lásd: [Windows távoli felügyeleti](https://docs.microsoft.com/windows/desktop/WinRM/portal).
+Ez a szakasz azt ismerteti, hogyan konfigurálható egy Azure-ban üzemeltetett, Windows-alapú virtuális gép, hogy a PowerShell használatával távolról felügyelhető és telepíthető legyen.  A PowerShell távelérésének engedélyezéséhez a célként megadott virtuális gépnek elérhetőnek kell lennie a Rendszerfelügyeleti webszolgáltatások (WinRM) HTTPS-végpontjának.  További információ a PowerShell táveléréséről: [távoli parancsok futtatása](https://docs.microsoft.com/powershell/scripting/core-powershell/running-remote-commands?view=powershell-6).  A WinRM szolgáltatással kapcsolatos további információkért [lásd: Rendszerfelügyeleti](https://docs.microsoft.com/windows/desktop/WinRM/portal)webszolgáltatások.
 
-Ha létrehozott egy virtuális Gépet, a "klasszikus" Azure megközelítések egyikének használatával – az Azure Service Manager portál vagy az elavult [Azure Service Management API](https://docs.microsoft.com/previous-versions/azure/ee460799(v=azure.100))–, majd automatikusan van konfigurálva a WinRM-végponthoz.  Azonban egy virtuális Gépet hoz létre "modern" Azure megközelíti a következő használatával, akkor a virtuális gép fog *nem* konfigurálni a winrm HTTPS-kapcsolaton keresztül.  
+Ha létrehozott egy virtuális gépet a "klasszikus" Azure-megközelítések egyikével – vagy az Azure Service Manager-portálon vagy az elavult [Azure-Service Management API](https://docs.microsoft.com/previous-versions/azure/ee460799(v=azure.100)), akkor automatikusan egy WinRM-végponttal lesz konfigurálva.  Ha azonban a következő "modern" Azure-megközelítések bármelyikével létrehoz egy virtuális gépet, akkor a virtuális gép *nem* lesz konfigurálva a WinRM HTTPS protokollon keresztül.  
 
-- Használatával a [az Azure portal](https://portal.azure.com/), általában egy jóváhagyott alap, a szakaszban leírtak szerint a [hozzon létre egy Azure-kompatibilis virtuális Merevlemezt.](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/virtual-machine/cpp-create-vhd)
-- [Az Azure Resource Manager-sablonok használatával](https://docs.microsoft.com/azure/virtual-machines/windows/ps-template)
-- Az Azure PowerShell vagy az Azure parancssori felület parancs-rendszerhéj használata.  Példák: [a rövid útmutató: Windows virtuális gép létrehozása az Azure-ban a PowerShell-lel](https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-powershell) és [a rövid útmutató: Linux rendszerű virtuális gép létrehozása az Azure CLI-vel](https://docs.microsoft.com/azure/virtual-machines/linux/quick-create-cli).
+- Az [Azure-kompatibilis virtuális merevlemez létrehozása](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/virtual-machine/cpp-create-vhd) című szakaszban leírtaknak megfelelően a [Azure Portal](https://portal.azure.com/)használata, jellemzően egy jóváhagyott alapból
+- [A Azure Resource Manager-sablonok használata](https://docs.microsoft.com/azure/virtual-machines/windows/ps-template)
+- A Azure PowerShell vagy az Azure CLI parancs-rendszerhéj használatával.  Példa: gyors útmutató [: Windows rendszerű virtuális gép létrehozása az Azure-ban a PowerShell](https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-powershell) -lel és a gyors üzembe helyezéssel [: linuxos virtuális gép létrehozása az Azure CLI-vel](https://docs.microsoft.com/azure/virtual-machines/linux/quick-create-cli).
 
-A WinRM-végpont is futtatásához szükséges a hitelesítő eszköz kit bevezetése a virtuális gép leírtak szerint [igazolja, a Virtuálisgép-lemezkép](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/virtual-machine/cpp-certify-vm).
+Ezt a WinRM-végpontot a virtuálisgép- [rendszerkép](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/virtual-machine/cpp-certify-vm)tanúsítása című témakörben leírtak szerint is futtatni kell a Certificate Tool Kit a virtuális gép előkészítéséhez.
 
-Ezzel szemben a általában Linux rendszerű virtuális gépek távolról felügyelt segítségével [Azure CLI-vel](https://docs.microsoft.com/cli/azure) vagy Linux-parancsok egy SSH-konzolról.  Az Azure emellett több alternatív módszert nyújt [szkriptek futtatása a Linux rendszerű virtuális gép](https://docs.microsoft.com/azure/virtual-machines/linux/run-scripts-in-vm).  Az összetettebb esetekhez tartozó számos automatizálási és integrációs megoldásokat Windows - vagy Linux-alapú virtuális gépeken érhető el.
+Ezzel szemben általában a Linux rendszerű virtuális gépek távolról felügyelhetők az SSH-konzolról származó [Azure CLI](https://docs.microsoft.com/cli/azure) -vagy Linux-parancsok használatával.  Az Azure számos alternatív módszert is biztosít a [parancsfájlok Linux rendszerű virtuális gépen való futtatásához](https://docs.microsoft.com/azure/virtual-machines/linux/run-scripts-in-vm).  Összetettebb forgatókönyvek esetén számos automatizálási és integrációs megoldás érhető el Windows-vagy Linux-alapú virtuális gépekhez.
 
 
-## <a name="configure-and-deploy-with-winrm"></a>Konfigurálhatja és telepítheti a WinRM-mel
+## <a name="configure-and-deploy-with-winrm"></a>Konfigurálás és üzembe helyezés a WinRM szolgáltatással
 
-A WinRM-végpont egy windows-alapú virtuális gép két különböző szakaszaiban a fejlesztés során konfigurálhatók:
+A Windows-alapú virtuális gépek WinRM-végpontja a fejlesztés két különböző fázisában konfigurálható:
 
-- Létrehozásakor – a meglévő virtuális Merevlemezek, virtuális gépek üzembe helyezése során.  Ez az új ajánlatokról az előnyben részesített módszere.  E módszerhez szükség van egy Azure-tanúsítvánnyal, a megadott Azure Resource Manager-sablonok használatával létrehozását, és futó testre PowerShell-parancsfájlokat. 
-- Miután üzembe helyezés – az Azure-ban tárolt meglévő virtuális Géphez.  Ezt a megközelítést akkor használja, ha már rendelkezik egy Azure-ban üzembe helyezett Virtuálisgép-megoldás, és ablak távoli felügyelet engedélyezéséhez hozzá kell.  Ez a megközelítés szükséges az Azure Portalon és a cél virtuális Gépen a parancsfájl végrehajtása manuális módosítások. 
+- A létrehozás során – egy virtuális gép egy meglévő virtuális merevlemezre történő telepítése során.  Ez az új ajánlatok előnyben részesített megközelítése.  Ennek a megközelítésnek szüksége van egy Azure-tanúsítvány létrehozására, amelyet a megadott Azure Resource Manager sablonok használatával és a testreszabott PowerShell-parancsfájlok futtatásával kell létrehozni. 
+- Üzembe helyezés után – az Azure-ban üzemeltetett meglévő virtuális gépen.  Akkor használja ezt a módszert, ha már van üzembe helyezett virtuálisgép-megoldás az Azure-ban, és engedélyeznie kell az ablak távoli felügyeletét.  Ehhez a megközelítéshez manuális módosításokat kell végrehajtani a Azure Portalban, valamint egy parancsfájl végrehajtását a célként megadott virtuális gépen. 
 
 
 ## <a name="next-steps"></a>További lépések
-Új virtuális gép létrehozásakor, engedélyezheti a Rendszerfelügyeleti webszolgáltatások során [a VHD-ből a virtuális gép üzembe helyezési](./cpp-deploy-vm-vhd.md).  Ellenkező esetben a Rendszerfelügyeleti webszolgáltatások is engedélyezhető a meglévő virtuális gép  
+Ha új virtuális gépet hoz létre, akkor [a virtuális gép virtuális merevlemezről történő üzembe helyezése](./cpp-deploy-vm-vhd.md)során engedélyezheti a WinRM szolgáltatást.  Ellenkező esetben a WinRM egy meglévő virtuális gépen is engedélyezhető  

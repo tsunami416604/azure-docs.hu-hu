@@ -1,61 +1,62 @@
 ---
-title: A cloud partner Portalon felhasználók kezelése |} Az Azure Marketplace-en
-description: A cloud partner Portalon felhasználók kezelése
+title: Felhasználók kezelése a felhőalapú partner portálon | Azure piactér
+description: Felhasználók kezelése a felhőalapú partner portálon
 services: Azure, Marketplace, Cloud Partner Portal,
 author: qianw211
 manager: pbutlerm
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pabutler
-ms.openlocfilehash: 5a3724729f85b7917b1559ce2ac3d859881e0de8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b14d40e9b3a2aa1ca71335b60e97f15b3782698f
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64935143"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73823265"
 ---
-<a name="managing-users-on-cloud-partner-portal"></a>A cloud partner Portalon felhasználók kezelése
+<a name="managing-users-on-cloud-partner-portal"></a>Felhasználók kezelése a felhőalapú partner portálon
 ======================================
 
-A Cloud Partner portálra szerepköralapú hozzáféréssel rendelkező felhasználók hozzáadása a virtuális gép ajánlatok teszi lehetővé. Segít a hozzáférés és engedélyek kezeléséhez, közben több ember dolgozik ajánlatokat.
+A Cloud Partner Portal lehetővé teszi, hogy a felhasználók szerepkör-alapú hozzáféréssel bővítsék a virtuális gépek ajánlatait. Segít a hozzáférés és az engedélyek kezelésében, miközben több ember dolgozik az ajánlatokon.
 
-A **felhasználók hozzáadása és szerepkörök hozzárendelése** ajánlat közzététele, kövesse az alábbi lépéseket:
+A **felhasználók hozzáadásához és szerepkörök hozzárendeléséhez** az ajánlat közzétételéhez kövesse az alábbi lépéseket:
 
-<a name="step-1-to-add-users-and-assign-roles-click-the-users-tab-on-the-left-side-navigation-pane"></a>1\.lépés Felhasználók hozzáadása és a szerepkörök hozzárendelésére, kattintson a felhasználók lapon a bal oldali navigációs ablaktáblán.
+<a name="step-1-to-add-users-and-assign-roles-click-the-users-tab-on-the-left-side-navigation-pane"></a>1\. lépés A felhasználók hozzáadásához és a szerepkörök hozzárendeléséhez kattintson a bal oldali navigációs ablaktábla felhasználók fülére.
 --------------------------------------------------------------------------------------------
 
-![Felhasználók lapra](./media/cloud-partner-portal-how-to-manage-users/userstab.png)
+![Felhasználók lap](./media/cloud-partner-portal-how-to-manage-users/userstab.png)
 
-<a name="step-2-click-add-user"></a>2\.lépés Kattintson a felhasználó hozzáadása.
+<a name="step-2-click-add-user"></a>2\. lépés Kattintson a felhasználó hozzáadása elemre.
 -----------------------
 
-![Felhasználó hozzáadása kiválasztása](./media/cloud-partner-portal-how-to-manage-users/adduser.png)
+![Válassza a felhasználó hozzáadása elemet.](./media/cloud-partner-portal-how-to-manage-users/adduser.png)
 
-<a name="step-3-type-email-address-and-select-a-role-assignment"></a>3\. lépés. Írja be az e-mail címet, és válassza ki a szerepkör-hozzárendelés.
+<a name="step-3-type-email-address-and-select-a-role-assignment"></a>3\. lépés Írja be az e-mail címet, és válassza ki a szerepkör-hozzárendelést.
 --------------------------------------------------------
 
-A "tulajdonos" vagy "közreműködői" új felhasználót is hozzáadhat.
+Az új felhasználót "tulajdonos" vagy "közreműködő"ként adhatja hozzá.
 
-**e-mailek**: Adja hozzá az e-mail-címeket, akik dolgozunk az ajánlat közzétételi csapattársai. Microsoft-fiókok (Outlook, Hotmail és élő) és a szervezeti azonosítók használata támogatott.
+**E-mail-** cím: adja meg az ajánlat közzétételén dolgozó csapattársak e-mail-címeit. A Microsoft-fiókok (Outlook, Hotmail és Live) és a szervezeti azonosítók támogatottak.
 
-o "csapat/e-mail alias vagy biztonsági csoport hozzáadása" abban az esetben az egyes dolgozunk az ajánlat a elhagyja a szervezetet.
+o adja hozzá a "csapat/csoport e-mail alias/biztonsági csoport" lehetőséget abban az esetben, ha az ajánlaton dolgozó személy elhagyja a szervezetet.
 
-o győződjön meg arról, hogy az e-mail a Cloud Partner portálra szóló azonosítók kell figyelni a bármely Microsoft-kommunikációt.
+o győződjön meg arról, hogy a Cloud Partner Portalon megadott e-mail-azonosítókat a Microsofttól érkező bármilyen kommunikációhoz figyeli.
 
-**Szerepkör**: Tekintse meg a megfelelő felhasználói szerepkör azonosítja az alábbi táblázat.
+**Szerepkör**: a megfelelő felhasználói szerepkör típusának azonosításához tekintse meg az alábbi táblázatot.
 
-![Szerepkör hozzárendelése](./media/cloud-partner-portal-how-to-manage-users/assignrole.png)
-![szerepkörök szint](./media/cloud-partner-portal-how-to-manage-users/roleaccesslevel.png)
+![szerepkör](./media/cloud-partner-portal-how-to-manage-users/assignrole.png)
+![szerepkörök szintjének kiosztása](./media/cloud-partner-portal-how-to-manage-users/roleaccesslevel.png)
 
-Jelenleg csak a tulajdonosok az Insights lapjait Azure kifizetések és az Azure-ügyfelek hozzáférhetnek.
+Jelenleg csak a tulajdonosok férhetnek hozzá az Azure-beli kifizetésekhez és az Azure-ügyfelek lapjaihoz az információkban.
 
-<a name="step-4-select-the-publisher-name-you-want-to-add-to-the-new-user-then-click-add-to-complete-user-addition"></a>4\. lépés. Válassza ki a közzétevő neve szeretné hozzáadni az új felhasználót, majd a Hozzáadás gombra kattintva fejezze be a felhasználó hozzáadása.
+<a name="step-4-select-the-publisher-name-you-want-to-add-to-the-new-user-then-click-add-to-complete-user-addition"></a>4\. lépés Válassza ki a közzétevő nevét, amelyet hozzá szeretne adni az új felhasználóhoz, majd kattintson a Hozzáadás gombra a felhasználó hozzáadásának befejezéséhez.
 ----------------------------------------------------------------------------------------------------------------------------
 
 > [!NOTE]
-> A "kiadónevet, amelynek az e-mailben kerülnek be a tulajdonosi vagy közreműködői jelennek meg a legördülő listában közzétevő lehet kiválasztani."
+> A közzétevő neve, amelyhez az e-mail-címe tulajdonosként vagy közreműködőként jelenik meg a kiválasztható kiadó legördülő listájában.
 
-![Szerepkör - válassza ki a publisher hozzárendelése](./media/cloud-partner-portal-how-to-manage-users/assignselectpublisher.png)
+![Szerepkör kiosztása – közzétevő kiválasztása](./media/cloud-partner-portal-how-to-manage-users/assignselectpublisher.png)
 
-Ha eltávolít egy felhasználót, amely hozzá van adva van szüksége, kell tennie csak keresse meg az e-mailjeikhez a felhasználók lapon, majd nyomja le a Törlés gombra a jobb oldalon.
+Ha el kell távolítania egy hozzáadott felhasználót, mindössze annyit kell tennie, hogy megkeresi az e-maileket a felhasználók lapon, majd a jobb oldalon kattintson a Törlés gombra.

@@ -4,15 +4,16 @@ description: Az Azure Blobhoz tartozó érdeklődői felügyelet konfigurálása
 services: Azure, Marketplace, commercial marketplace, Partner Center
 author: qianw211
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 7/30/2019
 ms.author: evansma
-ms.openlocfilehash: c67855422808f5ec4c81242edcece4e447f2f44f
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: 5da4e0ab315b3f66a477b816f6fc5d27de7aa339
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69902363"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73812365"
 ---
 # <a name="lead-management-instructions-for-azure-blob"></a>Az Azure Blob vezető felügyeleti utasításai
 
@@ -25,7 +26,7 @@ Ha az Ügyfélkapcsolat-kezelési (CRM) rendszer nincs kifejezetten támogatva a
 ## <a name="how-to-configure-azure-blob"></a>Az Azure Blob konfigurálása
 
 1. Ha nem rendelkezik Azure-fiókkal, [létrehozhat egy ingyenes próbaverziós fiókot](https://azure.microsoft.com/pricing/free-trial/).
-1. Ha az Azure-fiókja aktív, jelentkezzen be [](https://portal.azure.com)a Azure Portalba.
+1. Ha az Azure-fiókja aktív, jelentkezzen be a [Azure Portalba](https://portal.azure.com).
 1. A Azure Portal a következő eljárással hozzon létre egy Storage-fiókot.  
     1. Válassza az **+ erőforrás létrehozása** lehetőséget a bal oldali menüsorban.  Ekkor megjelenik az **új** ablaktábla (panel) a jobb oldalon.
     2. Válassza a **tároló** lehetőséget az **új** ablaktáblán.  Egy **Kiemelt** lista jelenik meg a jobb oldalon.
@@ -35,7 +36,7 @@ Ha az Ügyfélkapcsolat-kezelési (CRM) rendszer nincs kifejezetten támogatva a
 
     A Storage-fiókokkal kapcsolatos további információkért válassza a gyors üzembe helyezési [oktatóanyag](https://docs.microsoft.com/azure/storage/)elemet.  További információ a Storage díjszabásáról: [Storage díjszabása](https://azure.microsoft.com/pricing/details/storage/).
 
-4. Várjon, amíg megtörténik a Storage-fiók üzembe helyezése, egy folyamat, amely általában néhány percet vesz igénybe.  Ezután nyissa meg a Storage- fiókját a Azure Portal kezdőlapján az **összes erőforrás** megjelenítése lehetőség kiválasztásával, vagy a Azure Portal bal oldali navigációs sávján található **összes erőforrás** kiválasztásával.
+4. Várjon, amíg megtörténik a Storage-fiók üzembe helyezése, egy folyamat, amely általában néhány percet vesz igénybe.  Ezután nyissa meg a Storage-fiókját a Azure Portal **kezdőlapján** az **összes erőforrás** megjelenítése lehetőség kiválasztásával, vagy a Azure Portal bal oldali navigációs sávján található **összes erőforrás** kiválasztásával.
 
     ![Hozzáférés az Azure Storage-fiókhoz](./media/commercial-marketplace-lead-management-instructions-azure-blob/azure-storage-access.png)
 
@@ -59,7 +60,7 @@ Ha az Ügyfélkapcsolat-kezelési (CRM) rendszer nincs kifejezetten támogatva a
 
     Mentse ezt az értéket, mivel ez a *tároló neve* érték, amelyet a közzétételi portálon kell megadnia, hogy fogadja az érdeklődőket a Piactéri ajánlathoz.
 
-9. Adja meg a tároló nyilvános hozzáférésének szintjét magánjellegűként **(névtelen hozzáférés nélkül)** .
+9. Adja meg a tároló nyilvános hozzáférésének szintjét **magánjellegűként (névtelen hozzáférés nélkül)** .
 
 10. A tároló létrehozásához válassza az **OK** gombot.
 
@@ -80,8 +81,8 @@ Ha készen áll az ajánlathoz tartozó érdeklődői felügyeleti információk
 
 4. Adja meg a **tároló nevét** és a Storage-fiókhoz tartozó, a következő utasításokat követve kapott **hálózati karakterláncot** .
 
-    * Példa a tároló nevére:`marketplaceleadcontainer`
-    * A Storage-fiókhoz tartozó kapcsolatok karakterláncának példája: `DefaultEndpointsProtocol=https;AccountName=myAccountName;AccountKey=myAccountKey;EndpointSuffix=core.windows.net`![A kapcsolatok részletei](./media/commercial-marketplace-lead-management-instructions-azure-blob/connection-details.png) 
+    * Tároló neve példa: `marketplaceleadcontainer`
+    * A Storage-fiók kapcsolatok karakterláncának példája: `DefaultEndpointsProtocol=https;AccountName=myAccountName;AccountKey=myAccountKey;EndpointSuffix=core.windows.net` ![a kapcsolatok részletei](./media/commercial-marketplace-lead-management-instructions-azure-blob/connection-details.png) 
 
 5. Kattintson a **Mentés** gombra.
 

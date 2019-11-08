@@ -1,57 +1,58 @@
 ---
-title: Enable érdeklődő megosztása az Azure Marketplace-en |} Az Azure
-description: Ismerje meg, hogyan engedélyezheti az alkalmazás és szolgáltatás-kiadók az Azure Marketplace és appsource-ban, megosztó érdeklődő.
+title: Az érdeklődők megosztásának engedélyezése az Azure Marketplace-en | Azure
+description: Megtudhatja, hogyan engedélyezheti az érdeklődők megosztását az Azure Marketplace-en és a AppSource az alkalmazások és szolgáltatások közzétevői számára.
 services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
 author: jm-aditi-ms
 manager: pabutler
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 06/05/2018
 ms.author: ellacroi
-ms.openlocfilehash: 9aecef81547131e6f843fdd55db259d2c4299c9c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4475f6aecb0fe80cd20138eb885b79b6e7e82208
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64938678"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73818684"
 ---
 # <a name="enable-lead-sharing"></a>Érdeklődő megosztásának engedélyezése
-Annak biztosítása, hogy lead felügyelet engedélyezve van a nyilvántartásba vételre a [Azure Marketplace-en](https://azuremarketplace.microsoft.com) vagy [Microsoft AppSource](https://appsource.microsoft.com) kap kapcsolattartási adatokat a következő célcsoportok számára nyújt segítséget:
+Annak biztosítása, hogy az érdeklődői felügyelet engedélyezve legyen az [Azure piactéren](https://azuremarketplace.microsoft.com) való listázáshoz, vagy [Microsoft AppSource](https://appsource.microsoft.com) segítséget nyújthat a következő célközönségek elérhetőségi adatainak fogadásához:
 
 | Storefront | Célközönség |
 |:--- |:--- |
-| AppSource | Üzleti ügyfeleink |
+| AppSource | Üzleti ügyfelek |
 | Azure Piactér | Minden ügyfél |
 
-Az érdeklődők hasznosság alapját adja meg a kapcsolódó értékesítési mozdulatok a mező értékesítési munkatársak számára az alábbi táblázatban felsorolt kampányt, és további információ az alkalmazás vagy az ajánlat hajt végre:
+Az érdeklődők az alábbi táblázatban felsorolt kampányok elérhetőségét biztosítják, a mező értékesítési munkatársai által végzett kapcsolódó értékesítési mozgások alapján, valamint az alkalmazás vagy ajánlat végrehajtásával kapcsolatos információk:
 
 | Storefront | Kampány |
 |:--- |:--- |
-| AppSource | Kapcsolattartási |
-| Azure Piactér | Igény szerinti generálása |
+| AppSource | Ápolják |
+| Azure Piactér | Igény szerinti létrehozás |
 
-Az érdeklődők használja a következő eljárásokat:
-*   Az érdeklődők minősítése, és az értékesítési lehetőségek az érdeklődők pontozása.
-*   Adjon meg egy értékesítési folyamatot, az érdeklődők nurture.
-*   Az általános kampány marketingstratégia munkája igazítása
+A következő gyakorlatokat használhatja az érdeklődők számára:
+*   Az érdeklődők minősítése és az érdeklődők értékesítési lehetőségekként való kinyerése.
+*   Az érdeklődők kinevelése az értékesítési folyamat megadásához.
+*   Az erőfeszítések összhangba hozása a marketing kampány általános stratégiájával.
 
-Az érdeklődők bemutatásához ügyfél érdekeltséget a következő beállításokat:
+Az érdeklődők a következő listákban mutatják be az ügyfelek érdeklődését:
 
-| Storefront | Listaelem |
+| Storefront | Listázása |
 |:--- |:--- |
 | AppSource | <table> <tr><td>Alkalmazás</td></tr> <tr><td>Tanácsadási szolgáltatások</td></tr> </table> |
 | Azure Piactér | <table> <tr><td>Ajánlat</td></tr> <tr><td>Technológia</td></tr> </table> |
 
-Teljesülnek az alábbi táblázatban leírtak szerint, a potenciális követéséhez rendelkeznie kell egy folyamatot:
+A következő táblázatban leírtak szerint egy folyamattal kell nyomon követnie az érdeklődőket:
 
-| Storefront | Érdeklődők |
+| Storefront | Vezet |
 |:--- |:--- |
-| AppSource | <table> <tr><td>A CRM</td></tr> <tr><td>Microsoft field seller CRM</td></tr> </table> |
-| Azure Piactér | <table> <tr><td>Azure Piactér</td></tr> <tr><td>Microsoft field seller CRM</td></tr> </table> |
+| AppSource | <table> <tr><td>A CRM</td></tr> <tr><td>Microsoft Field értékesítő CRM</td></tr> </table> |
+| Azure Piactér | <table> <tr><td>Azure Piactér</td></tr> <tr><td>Microsoft Field értékesítő CRM</td></tr> </table> |
 
-Az érdeklődők kirakattípus a Marketplace-en a Microsoft értékesítői minősített érdeklődőket, érhetők el a közös értékesítési programunkhoz különböznek.
+A piactéren található kirakatokban lévő érdeklődők nem egyeznek a közös értékesítési program egyik funkciójaként használt Microsoft-értékesítők.
 
-A közös értékesítési programunkhoz elérésével kapcsolatos további információkért lásd: [népszerűsítse cégét a Microsoft](./promote-your-business-with-microsoft.md).
+További információ a közös értékesítési program eléréséről: [az üzlet előléptetése a Microsofttal](./promote-your-business-with-microsoft.md).
 
 ## <a name="next-steps"></a>További lépések
-Tekintse át a [közzétételi útmutató az Azure Marketplace és AppSource](./marketplace-publishers-guide.md).
+Tekintse át az [Azure Marketplace és az AppSource közzétételi útmutatóját](./marketplace-publishers-guide.md).

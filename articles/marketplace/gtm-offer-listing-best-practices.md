@@ -4,15 +4,16 @@ description: Piaci megjelenéssel kapcsolatos szolgáltatások – ez a szakasz 
 services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
 author: qianw211
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 12/21/2018
 ms.author: ellacroi
-ms.openlocfilehash: 9f55abf85803adf0f52bbfa445b9f3e489c9448b
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: 439617c07b8059860c6d412cc60d56d4ac8c36a5
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72821053"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73818668"
 ---
 # <a name="offer-listing-best-practices"></a>Ajánlatlistákra vonatkozó ajánlott eljárások
 
@@ -21,7 +22,7 @@ Az ebben a szakaszban található táblázatok a Piactéri ajánlatok létrehoz�
 ## <a name="storefront-offer-details"></a>A kirakati ajánlat részletei
 | Kirakati beállítás | Ajánlott eljárás |
 |:--- |:--- |  
-| Csomag neve | Adjon meg egy erős címet:<br> <ul> <li> Az alkalmazás nevének kommunikálnia kell az ügyfelek alapvető értékével. </li> <li> Az alkalmazás címében szereplő keresési kulcsszavakkal magasabb rangot kaphat a keresőmotor eredményei között. </li> </ul> A tanácsadási szolgáltatás listázásához kövesse a set title formátumot:<br>[Ajánlat neve: [időtartam] [ajánlat típusa] (például *contoso: 2 hetes implementáció*) <br><br> Kövesse a Brand-irányelveket:<br>A Microsoft védjegyekre és a Microsoft-szoftverek,-termékek és-szolgáltatások nevére a Microsoft védjegyekre és a [márkákra vonatkozó irányelvek](https://www.microsoft.com/en-us/legal/intellectualproperty/trademarks/usage/general.aspx) és egyéb releváns, termékspecifikus irányelvek követésével tájékozódhat. |
+| Offer Name | Adjon meg egy erős címet:<br> <ul> <li> Az alkalmazás nevének kommunikálnia kell az ügyfelek alapvető értékével. </li> <li> Az alkalmazás címében szereplő keresési kulcsszavakkal magasabb rangot kaphat a keresőmotor eredményei között. </li> </ul> A tanácsadási szolgáltatás listázásához kövesse a set title formátumot:<br>[Ajánlat neve: [időtartam] [ajánlat típusa] (például *contoso: 2 hetes implementáció*) <br><br> Kövesse a Brand-irányelveket:<br>A Microsoft védjegyekre és a Microsoft-szoftverek,-termékek és-szolgáltatások nevére a Microsoft védjegyekre és a [márkákra vonatkozó irányelvek](https://www.microsoft.com/en-us/legal/intellectualproperty/trademarks/usage/general.aspx) és egyéb releváns, termékspecifikus irányelvek követésével tájékozódhat. |
 | Ajánlat leírása | Adja meg az ajánlat egyértelmű leírását:<br> <ul> <li> A Leírás első néhány mondatában egyértelműen ismertesse ajánlata értékét. </li> <li> Ne feledje, hogy az első néhány mondat a keresőmotor eredményei között jelenhet meg. </li> <li> Ne használja a szolgáltatásait és funkcióit a termék értékesítéséhez. Ehelyett a megadott értékre kell összpontosítania. </li> <li> A lehető legnagyobb mértékben használja az iparági specifikus szókincset vagy a juttatás-alapú szövegezést.</li> <li> Emellett a tanácsadási szolgáltatások listáinak egyértelműen meg kell adniuk az Ön által megadott professzionális szolgáltatást. </li></ul> Az érték kiosztásának alapvető összetevőinek a következő információkat kell tartalmazniuk:<ul><li>A termék leírása.</li><li>A termékből származó előnyöket biztosító felhasználó típusa.</li><li>Az ügyfélnek szüksége van a termék címére vagy a fájdalomra.</li></ul> |
 
 ## <a name="storefront-listing-details"></a>Kirakati lista részletei
@@ -42,10 +43,10 @@ Akár két kategóriát és két alkategóriát is kijelölhet egy ajánlathoz. 
 | :------------------- | :-------------------|
 | \* Autóipar     | \* Autóipar |
 | Mezőgazdaság     | \* Egyéb – nem szegmentált |
-| Terjesztés    | \* Nagykereskedelmi <br> \* Parcella & csomag szállítása |
-| Oktatás     | \* Felsőoktatás <br> \* Elsődleges & középfokú oktatás/K-12 <br> \* Könyvtárak & múzeumok |
+| Disztribúció    | \* Nagykereskedelmi <br> \* Parcella & csomag szállítása |
+| Education     | \* Felsőoktatás <br> \* Elsődleges & középfokú oktatás/K-12 <br> \* Könyvtárak & múzeumok |
 | Pénzügyi szolgáltatások     | \* Banki & tőkepiacok <br> \* Biztosítás |
-| Közigazgatás    | \* Defense & Intelligence (az ún. nemzeti és nyilvános biztonság) <br> \* Közbiztonság & igazságszolgáltatás <br> \* Polgári kormányzat |
+| Government    | \* Defense & Intelligence (az ún. nemzeti és nyilvános biztonság) <br> \* Közbiztonság & igazságszolgáltatás <br> \* Polgári kormányzat |
 | Egészségügyi ellátás (ún. állapot)   | \* Állapot költségviselő <br> \* Állapot szolgáltatója <br> \* Gyógyszeripar |
 | Gyártási & erőforrások (a gyártás meghívásához használatos)   | \* Kémiai & Agrokémiai <br> \* Diszkrét gyártás <br> \* Energia |
 | Lakossági & fogyasztási cikkek (a kereskedelmi elnevezéshez használatos)  | \* Fogyasztási cikkek <br> \* Kiskereskedők |
@@ -75,7 +76,7 @@ A következő példában szereplő URL-cím tartalmazza az előző lekérdezési
 
 A paramétereknek a AppSource URL-címhez való hozzáadásával áttekintheti a kampány hatékonyságát a [Cloud Partner portál](https://cloudpartner.azure.com/#insights)elemzési irányítópultján.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ a [kereskedelmi piactér előnyeiről](https://docs.microsoft.com/azure/marketplace/gtm-your-marketplace-benefits).
 

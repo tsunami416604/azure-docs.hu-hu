@@ -8,13 +8,13 @@ author: ecfan
 ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
-ms.date: 11/06/2019
-ms.openlocfilehash: adb89c04a83bbfbd5bddd5c23b0fa88019a88991
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.date: 11/08/2019
+ms.openlocfilehash: da68cfe504332ed6641c52322f0df0d2efd95997
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73721386"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73820668"
 ---
 # <a name="access-to-azure-virtual-network-resources-from-azure-logic-apps-by-using-integration-service-environments-ises"></a>Hozzáférés az Azure Virtual Network-erőforrásokhoz a Azure Logic Apps integrációs szolgáltatási környezetek (ISEs) használatával
 
@@ -108,8 +108,8 @@ Az Azure-beli virtuális hálózathoz csatlakozó helyszíni rendszerek esetébe
 
 * ISE – címkézett összekötő az adott rendszerhez
 
-  > [!IMPORTANT]
-  > Ha Windows-hitelesítést kíván használni a SQL Server-összekötővel, a helyszíni [adatátjárót](../logic-apps/logic-apps-gateway-install.md)kell használnia. Az SQL Server-összekötő nem támogatja a Windows-hitelesítést egy ISE-beli logikai alkalmazáshoz.
+  > [!NOTE]
+  > Ha Windows-hitelesítést kíván használni az SQL Server-összekötővel egy [integrációs szolgáltatási környezetben (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md), használja az összekötő nem ISE verzióját a helyszíni [adatátjáróval](../logic-apps/logic-apps-gateway-install.md). Az ISE-címkével ellátott verzió nem támogatja a Windows-hitelesítést.
 
 * Egyéni összekötő
 

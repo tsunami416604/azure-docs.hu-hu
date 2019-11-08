@@ -4,29 +4,30 @@ description: A következőkben bemutatjuk a Business Applications ISV kapcsolód
 services: Azure Marketplace, Cloud Partner Portal
 author: qianw211
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 7/12/2019
 ms.author: evansma
-ms.openlocfilehash: 349998b53378d00b6524f94578aa11642321d691
-ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+ms.openlocfilehash: 4a47886176b704cc3bc36cc9fa85d1d3faee4c58
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70182559"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73819153"
 ---
 # <a name="microsoft-business-applications-independent-software-vendor-isv-connect-program-onboarding-guide"></a>Microsoft Business Applications Independent szoftvergyártó (ISV) összekapcsolási útmutató a programhoz
 
 A [Business Applications ISV csatlakozási program](https://partner.microsoft.com/solutions/business-applications/isv-overview) célja, hogy felgyorsítsa a modern, felhőalapú, üzletági (LOB) megoldások fejlesztését és általános sikerességét a *Dynamics 365 Customer engagement és PowerApps* ("Dynamics CE ajánlatok") vagy *Dynamics 365 Finance and Operations* ("Dynamics Ops-ajánlatok"). A következő lépésekkel lehet részt venni.
 
 > [!IMPORTANT]
-> Meglévő ISV-partnerek a *dynamics 365 Customer engagement*, a *Dynamics 365 for Finance és a Operations*szolgáltatáshoz, és a *PowerApps* -alkalmazásoknak a **2019. október 15.** előtt végre kell hajtaniuk az összes előkészítési lépést, hogy ne kelljen a meglévő ajánlatok el [](https://appsource.microsoft.com)lettek távolítva a Microsoft AppSourceból.
+> Meglévő ISV-partnerek a *dynamics 365 Customer engagement*, a *Dynamics 365 for Finance és a Operations*szolgáltatáshoz, és a *PowerApps* -alkalmazásoknak a **2019. október 15.** előtt végre kell hajtaniuk az összes előkészítési lépést, hogy ne kelljen a meglévő ajánlatok el lettek távolítva a [Microsoft AppSourceból](https://appsource.microsoft.com).
 
-A Business Applications ISV-összekötő program összes [technikai, marketing és értékesítési](https://partner.microsoft.com/solutions/business-applications/isv-overview) funkciós előnyének beléptetéséhez és kihasználása érdekében a meglévő ISV-partnereket (a *Dynamics CE* és az *Ops* -ajánlatokat) arra kérjük, hogy végezze el a következő lépések:
+A Business Applications ISV-összekötő program összes [technikai, marketing és értékesítési funkciós előnyének](https://partner.microsoft.com/solutions/business-applications/isv-overview) beléptetéséhez és kihasználása érdekében a meglévő ISV-partnereket (a *Dynamics CE* és az *Ops* -ajánlatokat) arra kérjük, hogy végezze el a következő lépések:
 
-- [Állítsa be a Microsoft partner Center](#set-up-your-microsoft-partner-center-account)-fiókját.
+- [Állítsa be a Microsoft partner Center-fiókját](#set-up-your-microsoft-partner-center-account).
 - [Fogadja el a Business Applications kiegészítést](#accept-the-business-applications-isv-program-addendum).
 - [Adja meg a számlázási adatokat](#set-up-your-billing-information).
-- [Az alkalmazás](#recertify-your-application)újbóli hitelesítése.
+- [Az alkalmazás újbóli hitelesítése](#recertify-your-application).
 
 > [!IMPORTANT]
 > A meglévő ajánlat módosításainak közzététele előtt végre kell hajtania a fenti lépéseket.
@@ -43,18 +44,18 @@ Ha már közzétette a Dynamics CE-vagy a Dynamics Ops-ajánlatokat, valószín�
 1. Jelentkezzen be [Cloud Partner Portal](https://cloudpartner.azure.com/) **közzétevői profil** lapjára.
 2. Ha megjelenik egy szalagcím, amely azt mutatja, hogy a Fiókbeállítások át lettek telepítve a partner központba, folytassa a következő szakasszal. Ellenkező esetben válassza a megjelenő szalagcímet, hogy aktiválja a partner Center-fiókját.
 
-További információ: [fiók áttelepítése Cloud Partner Portalról a partneri](https://docs.microsoft.com/azure/marketplace/partner-center-portal/account-migration-from-cpp-to-pc)központba.
+További információ: [fiók áttelepítése Cloud Partner Portalról a partneri központba](https://docs.microsoft.com/azure/marketplace/partner-center-portal/account-migration-from-cpp-to-pc).
 
 ## <a name="accept-the-business-applications-isv-program-addendum"></a>A Business Applications ISV program kiegészítésének elfogadása
 
 A programban való részvételhez meg kell vizsgálnia és el kell fogadnia a *Business Applications kiegészítést*.
 
 > [!NOTE]
-> Ehhez a lépéshez a fiókhoz tartozó tulajdonosi vagy *felettesi* szerepkörre van szükség a jogi szerződések aláírásához. Ha az előző lépésben aktiválta a Cloud Partner Portal [](#set-up-your-microsoft-partner-center-account) fiók áttelepítését, az engedélyei a partner központba is áttelepültek.
+> Ehhez a lépéshez a fiókhoz tartozó *tulajdonosi* vagy *felettesi* szerepkörre van szükség a jogi szerződések aláírásához. Ha az előző lépésben [aktiválta](#set-up-your-microsoft-partner-center-account) a Cloud Partner Portal fiók áttelepítését, az engedélyei a partner központba is áttelepültek.
 
 1. Lépjen [a partner Center irányítópultra](https://partner.microsoft.com/dashboard/account/agreements) , és jelentkezzen be a partner Centerbe a rákérdezéskor.
 
-2. A **kereskedelmi piactér**fejléc alatt keresse meg a **Microsoft Business Applications ISV**-kiegészítést.
+2. A **kereskedelmi piactér**fejléc alatt keresse meg a **Microsoft Business Applications ISV-kiegészítést**.
 
 3. Válassza ki a verzió hivatkozást, és tekintse meg a szerződést.
 
@@ -65,9 +66,9 @@ A programban való részvételhez meg kell vizsgálnia és el kell fogadnia a *B
 Ezután állítsa be a Business Applications ISV csatlakozási program számlázási adatait.
 
 > [!NOTE]
-> Ehhez a lépéshez a fiókhoz tartozó tulajdonosi vagy *felettesi* szerepkör szükséges a számlázási információk frissítéséhez.
+> Ehhez a lépéshez a fiókhoz tartozó *tulajdonosi* vagy *felettesi* szerepkör szükséges a számlázási információk frissítéséhez.
 
-1. Jelentkezzen be a [partner](https://partner.microsoft.com/dashboard)központba.
+1. Jelentkezzen be a [partner központba](https://partner.microsoft.com/dashboard).
 
 2. Válassza a *Beállítások* (fogaskerék) ikont, és válassza a **fejlesztői beállítások**lehetőséget.
 
@@ -77,9 +78,9 @@ Ezután állítsa be a Business Applications ISV csatlakozási program számláz
 
 5. Adja meg az adó-azonosító/ÁFA-azonosító beállításait, ha vannak ilyenek.
 
-6. Válassza ki **mentése** a módosítások mentéséhez.
+6. A módosítások mentéséhez kattintson a **Save (Mentés** ) gombra.
 
-A számlázási profilt bármikor frissítheti, a *Vállalat neve* és a számlázási cím országa azonban később nem módosítható.
+A számlázási profilt bármikor frissítheti, a *Vállalat neve* és a számlázási cím *országa* azonban később nem módosítható.
 
 ## <a name="recertify-your-application"></a>Az alkalmazás újbóli hitelesítése
 

@@ -9,18 +9,18 @@ ms.custom: vs-azure
 ms.topic: conceptual
 ms.date: 08/07/2019
 ms.author: ghogen
-ms.openlocfilehash: 27c21171c2a53cb739215dcae070b94c8610a490
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 9331f13bd85d9df0d47f8fa9d0964974764691f7
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68880936"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73815103"
 ---
 # <a name="add-key-vault-to-your-web-application-by-using-visual-studio-connected-services"></a>Key Vault hozzáadása a webalkalmazáshoz a Visual Studio csatlakoztatott szolgáltatásainak használatával
 
 Ebből az oktatóanyagból megtudhatja, hogyan hozhatja létre a webes projektekhez szükséges titkokat a Visual Studióban, akár ASP.NET Core, akár bármilyen ASP.NET-projektet használ, hogy könnyen hozzá tudjon adni mindent, amire szüksége van a Azure Key Vault használatának megkezdéséhez. A Visual Studio csatlakoztatott szolgáltatások funkciójának használatával a Visual Studio automatikusan felveheti az összes olyan NuGet-csomagot és konfigurációs beállítást, amelyhez csatlakoznia kell az Azure-beli Key Vaulthoz.
 
-A csatlakoztatott szolgáltatások által a projektben a Key Vault engedélyezéséhez szükséges módosítások részleteiért lásd: [Key Vault csatlakoztatott szolgáltatás – mi történt a ASP.net 4.7.1 Project](#how-your-aspnet-framework-project-is-modified) vagy [Key Vault Connected Service szolgáltatással – mi](#how-your-aspnet-core-project-is-modified)történt a ASP.net Core projekttel.
+A csatlakoztatott szolgáltatások által a projektben a Key Vault engedélyezéséhez szükséges módosítások részleteiért lásd: [Key Vault csatlakoztatott szolgáltatás – mi történt a ASP.net 4.7.1 Project](#how-your-aspnet-framework-project-is-modified) vagy [Key Vault Connected Service szolgáltatással – mi történt a ASP.net Core projekttel](#how-your-aspnet-core-project-is-modified).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -33,7 +33,7 @@ A csatlakoztatott szolgáltatások által a projektben a Key Vault engedélyezé
 
 Mielőtt elkezdené, győződjön meg róla, hogy be van jelentkezve a Visual studióba. Jelentkezzen be ugyanazzal a fiókkal, amelyet az Azure-előfizetéséhez használ. Ezután nyisson meg egy ASP.NET 4.7.1 vagy újabb verziót, vagy ASP.NET Core 2,0 webes projektet, és hajtsa végre a következő lépéseket:
 
-1. A **Megoldáskezelőben** válassza az **Add** > **Connected Service** (Hozzáadás, Csatlakoztatott szolgáltatás) lehetőséget.
+1. **Megoldáskezelőban**kattintson a jobb gombbal arra a projektre, amelyhez hozzá szeretné adni a Key Vault-támogatást, majd válassza a > **csatlakoztatott szolgáltatás** **hozzáadása** lehetőséget.
    Megjelenik a Connected Service (Csatlakoztatott szolgáltatás) lap a projekthez adható szolgáltatásokkal.
 1. Az elérhető szolgáltatások menüben válassza a **biztonságos titkok Azure Key Vault**lehetőséget.
 
@@ -57,7 +57,7 @@ Mielőtt elkezdené, győződjön meg róla, hogy be van jelentkezve a Visual st
 
 1. Adjon meg egy titkos kulcsot (például *keresési kifejezésként* ), és adjon meg egy karakterlánc-értéket tesztként, majd kattintson a **Létrehozás** gombra.
 
-   ![Titkos kód létrehozása](media/vs-key-vault-add-connected-service/azure-create-a-secret.png)
+   ![Titkos kulcs létrehozása](media/vs-key-vault-add-connected-service/azure-create-a-secret.png)
 
 1. választható Adjon meg egy másik titkot, de ezúttal egy kategóriába helyezi az IT *Secrets--keresési kifejezésként*elnevezéssel. Ez a szintaxis olyan "Secrets" kategóriát határoz meg, amely titkos "keresési kifejezésként" tartalmaz.
 
@@ -67,7 +67,7 @@ A titkokat most már a kódban is elérheti. A következő lépések eltérnek a
 
 1. Megoldáskezelő kattintson a jobb gombbal a projektre, és válassza a **NuGet-csomagok kezelése**lehetőséget. A **Tallózás** lapon keresse meg és telepítse a következő két NuGet-csomagot: [Microsoft. Azure. Services. AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication) és [Microsoft. Azure.](https://www.nuget.org/packages/Microsoft.Azure.KeyVault)kulcstartó.
 
-1. Válassza ki `Program.cs` a fület, és cserélje le a program osztályt a következő kódra:
+1. Válassza a `Program.cs` fület, és cserélje le a program osztályt a következő kódra:
 
    ```csharp
     public class Program
@@ -99,8 +99,8 @@ A titkokat most már a kódban is elérheti. A következő lépések eltérnek a
     }
    ```
 
-1. Ezután nyissa meg `About.cshtml.cs` a fájlt, és írja be a következő kódot:
-   1. Adjon meg `Microsoft.Extensions.Configuration` egy hivatkozást a következő utasítás használatával:
+1. Ezután nyissa meg `About.cshtml.cs` fájlt, és írja be a következő kódot:
+   1. Vegyen fel egy hivatkozást `Microsoft.Extensions.Configuration`re a következő utasítás használatával:
 
        ```csharp
        using Microsoft.Extensions.Configuration
@@ -143,17 +143,17 @@ Ez a szakasz egy ASP.NET-projekt pontos módosításait mutatja be, amikor hozz�
 
 A Project file .NET-referenciákat és a NuGet-csomagok hivatkozásait érinti.
 
-| Type | Hivatkozás |
+| Típus | Referencia |
 | --- | --- |
-| NuGet | Microsoft.AspNetCore.AzureKeyVault.HostingStartup |
+| NuGet | Microsoft. AspNetCore. AzureKeyVault. HostingStartup |
 
 ### <a name="added-files-for-aspnet-core"></a>Hozzáadott fájlok ASP.NET Core
 
-- `ConnectedService.json`hozzáadva, amely a csatlakoztatott szolgáltatóval, a verzióval és a dokumentáció hivatkozásával kapcsolatos információkat rögzíti.
+- `ConnectedService.json` hozzáadva, amely a csatlakoztatott szolgáltató, a verzió és a dokumentáció hivatkozásával kapcsolatos információkat rögzíti.
 
 ### <a name="project-file-changes-for-aspnet-core"></a>A Project fájl módosításai ASP.NET Core
 
-- Hozzáadta a csatlakoztatott szolgáltatások ItemGroup `ConnectedServices.json` és fájlját.
+- Hozzáadta a csatlakoztatott szolgáltatások ItemGroup és `ConnectedServices.json` fájlt.
 
 ### <a name="launchsettingsjson-changes-for-aspnet-core"></a>a ASP.NET Core launchsettings. JSON módosításai
 
@@ -177,18 +177,18 @@ Ez a szakasz egy ASP.NET-projekt pontos módosításait mutatja be, amikor hozz�
 
 ### <a name="added-references-for-aspnet-framework"></a>A ASP.NET-keretrendszerhez hozzáadott referenciák
 
-A Project file .net-referenciákat `packages.config` és a (NuGet-hivatkozásokat) érinti.
+A Project file .NET-referenciákat és `packages.config` (NuGet-hivatkozásokat) érinti.
 
-| Type | Hivatkozás |
+| Típus | Referencia |
 | --- | --- |
-| NET NuGet | Microsoft.Azure.KeyVault |
-| NET NuGet | Microsoft.Azure.KeyVault.WebKey |
+| NET NuGet | Microsoft. Azure. kulcstartó |
+| NET NuGet | Microsoft. Azure. kulcstartó. WebKey |
 | NET NuGet | Microsoft.Rest.ClientRuntime |
 | NET NuGet | Microsoft.Rest.ClientRuntime.Azure |
 
 ### <a name="added-files-for-aspnet-framework"></a>Hozzáadott fájlok a ASP.NET-keretrendszerhez
 
-- `ConnectedService.json`hozzáadva, amely a csatlakoztatott szolgáltatóval, verziójával és a dokumentációra mutató hivatkozással kapcsolatos adatokat rögzíti.
+- `ConnectedService.json` hozzáadva, amely a csatlakoztatott szolgáltatóval, verziójával és a dokumentációra mutató hivatkozással kapcsolatos adatokat rögzíti.
 
 ### <a name="project-file-changes-for-aspnet-framework"></a>A Project fájl változásai a ASP.NET-keretrendszerben
 

@@ -4,15 +4,16 @@ description: Az Azure Marketplace-en a virtuálisgép-ajánlat létrehozásához
 services: Azure, Marketplace, Cloud Partner Portal, virtual machine
 author: v-miclar
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 04/25/2019
 ms.author: pabutler
-ms.openlocfilehash: dceb82af73061b91676ffb7061c7495995e76667
-ms.sourcegitcommit: 10251d2a134c37c00f0ec10e0da4a3dffa436fb3
+ms.openlocfilehash: 101f928e296d0b48b4e077676393772829aa76ab
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/13/2019
-ms.locfileid: "67868705"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73808968"
 ---
 # <a name="virtual-machine-skus-tab"></a>Virtuális gépek SKU-i lapja
 
@@ -40,13 +41,13 @@ A következő táblázat a mezők célját, tartalmát és formázását ismerte
 |  **Mező**       |     **Leírás**                                                          |
 |  ---------       |     ---------------                                                          |
 |  *SKU-beállítások*   |    |
-| **SKU-AZONOSÍTÓ\***       | Az SKU azonosítója.  Ez a név legfeljebb 50 karakterből állhat, amely kisbetűs alfanumerikus karaktereket vagy kötőjelet (-) tartalmaz, de nem végződhet kötőjeltel.  Az ajánlat közzététele után nem módosítható.  |
+| **SKU-azonosító\***       | Az SKU azonosítója.  Ez a név legfeljebb 50 karakterből állhat, amely kisbetűs alfanumerikus karaktereket vagy kötőjelet (-) tartalmaz, de nem végződhet kötőjeltel.  Az ajánlat közzététele után nem módosítható.  |
 |  *SKU részletei*   |  |
 | **Cím\***        | A piactéren megjelenítendő ajánlat rövid neve. Legfeljebb 50 karakter hosszú lehet. |
-| **Összegzése\***      | A piactéren megjelenítendő ajánlat tömör leírása. Legfeljebb 100 karakter hosszú lehet. |
+| **Összefoglalás\***      | A piactéren megjelenítendő ajánlat tömör leírása. Legfeljebb 100 karakter hosszú lehet. |
 | **Leírás\***  | Leírás szövege, amely részletesebb magyarázatot nyújt az ajánlatról.  <!-- TD: max len/guidance? 3k characters -->  |
-| **SKU elrejtése\*** | Azt jelzi, hogy az SKU látható legyen-e a piactéren az ügyfeleknek.  Előfordulhat, hogy el szeretné rejteni az SKU-t, ha csak megoldási sablonokkal szeretné elérni, és nem külön vásárolja meg.  Hasznos lehet a kezdeti teszteléshez, illetve ideiglenes vagy szezonális ajánlatokhoz is. |
-| **Felhőbeli rendelkezésre állás\*** | Meghatározza, hogy az SKU milyen felhők számára legyen elérhető.  Az alapértelmezett érték az Azure nyilvános verziója.  A Microsoft Azure Government az Egyesült Államok szövetségi, állami, helyi vagy törzsi kormányzati szerveinek, valamint azok tanúsított partnereinek szabályozott hozzáféréssel rendelkező kormányzati közösségi felhő.  A kormányzati felhővel kapcsolatos további információkért lásd: [Üdvözöljük a Azure Government](https://docs.microsoft.com/azure/azure-government/documentation-government-welcome). |
+| **Az SKU elrejtése\*** | Azt jelzi, hogy az SKU látható legyen-e a piactéren az ügyfeleknek.  Előfordulhat, hogy el szeretné rejteni az SKU-t, ha csak megoldási sablonokkal szeretné elérni, és nem külön vásárolja meg.  Hasznos lehet a kezdeti teszteléshez, illetve ideiglenes vagy szezonális ajánlatokhoz is. |
+| **Felhő rendelkezésre állása\*** | Meghatározza, hogy az SKU milyen felhők számára legyen elérhető.  Az alapértelmezett érték az Azure nyilvános verziója.  A Microsoft Azure Government az Egyesült Államok szövetségi, állami, helyi vagy törzsi kormányzati szerveinek, valamint azok tanúsított partnereinek szabályozott hozzáféréssel rendelkező kormányzati közösségi felhő.  A kormányzati felhővel kapcsolatos további információkért lásd: [Üdvözöljük a Azure Government](https://docs.microsoft.com/azure/azure-government/documentation-government-welcome). |
 | **Ez egy privát SKU?\*** | Azt jelzi, hogy az SKU magán-vagy nyilvános. Az alapértelmezett érték **nem** (nyilvános).  További információ: [nyilvános és privát SKU](../../cloud-partner-portal-orig/cloud-partner-portal-azure-private-skus.md)-i. |
 | **Ország/régió elérhetősége\*** | Meghatározza, hogy az SKU mely országokban és régiókban lesz megvásárolható. Válasszon ki legalább egy régiót/országot. <!-- TD: Is this parameter an AMP visibility control or a contractual one, or both? --> |  
 |  *Díjszabás*   |  |
@@ -54,10 +55,10 @@ A következő táblázat a mezők célját, tartalmát és formázását ismerte
 |  *VM-lemezképek*   |  |
 | **Operációs rendszer családja\*** | Azt jelzi, hogy a megoldás virtuális gépe Windows-vagy Linux-alapú-e. |
 | **Operációs rendszer típusának kiválasztása** | A megadott operációs rendszer adott gyártója vagy kiadása. |
-| **Operációs rendszer rövid neve\*** | Az ügyfél számára megjelenítendő operációs rendszer neve.  |
+| **Operációs rendszer felhasználóbarát neve\*** | Az ügyfél számára megjelenítendő operációs rendszer neve.  |
 | **Ajánlott virtuálisgép-méretek\*** | Egy szabványosított listából legfeljebb hat ajánlott virtuálisgép-méret kiválasztását teszi lehetővé.  A lista a Azure Portal és a Microsoft piactéren is elérhető.  A lista első virtuálisgép-mérete (az ügyfél-előfizetéshez, a régióhoz, a zónához stb.) alapértelmezett értékként van beállítva a potenciális ügyfél számára.  A felhasználó módosíthatja ezt a méretet a megoldás rendszerképével kompatibilisek között. | 
-| **Portok megnyitása**| Az SKU támogatásához szükséges portok a megnyitáshoz és a protokollhoz.  Ezeknek a konfigurációknak meg kell egyezniük a megoldás virtuális gépe hálózatához konfigurált virtuális hálózattal. Ezek a beállítások a virtuális gépek üzembe helyezése során lépnek életbe. A portbeállítások azonban a SKU közzététele után módosíthatók. További információkért lásd: [portok megnyitása virtuális géphez a Azure Portal használatával](https://docs.microsoft.com/azure/virtual-machines/windows/nsg-quickstart-portal). <br/>A következő alapértelmezett hálózati hozzárendelések lesznek hozzáadva az összes virtuális géphez. &emsp;Windows 3389 – > 3389 TCP, 5986-> 5986 TCP; &emsp; Linux: 22 – > 22, TCP (SSH). |
-| **Lemez verziója**  | Társított megoldás virtuális gép, amely a lemez verziószáma és a lemez URL-címe alapján van megadva. A lemez verziószámának szemantikai [](https://semver.org/) formátumúnak kell lennie: `<major>.<minor>.<patch>`.  Az URL-cím az operációs rendszer virtuális merevlemezéhez létrehozott közös hozzáférési aláírás URI-ja.  Bár az SKU-ban legfeljebb nyolc lemez adható hozzá, az Azure Marketplace-en csak az SKU legmagasabb lemezének verziószáma jelenik meg. A többi verzió csak API-kon keresztül jelenik meg.  <!--TD: Add more specific link to API --> <br/> Az **új adatlemez** -tangóharmonika szakasz lehetővé teszi, hogy legfeljebb 15 adatlemezt csatoljon a virtuális géphez.  Miután közzétett egy SKU-t egy adott VM-verzióval és a kapcsolódó adatlemezekkel, ez a konfiguráció nem módosítható.  Ha további virtuálisgép-verziók válnak elérhetővé az SKU-hoz, akkor ugyanazon számú adatlemezt is támogatnia kell. <br/> Ha nem hozta létre az Azure-alapú virtuálisgép-rendszerképeket, később is hozzáadhatja ezt a mezőt.  A társított virtuálisgép-erőforrás létrehozásával kapcsolatos információkért lásd a [virtuális gépek technikai eszközeinek létrehozása](./cpp-create-technical-assets.md)című szakaszt.  
+| **Portok megnyitása**| Az SKU támogatásához szükséges portok a megnyitáshoz és a protokollhoz.  Ezeknek a konfigurációknak meg kell egyezniük a megoldás virtuális gépe hálózatához konfigurált virtuális hálózattal. Ezek a beállítások a virtuális gépek üzembe helyezése során lépnek életbe. A portbeállítások azonban a SKU közzététele után módosíthatók. További információkért lásd: [portok megnyitása virtuális géphez a Azure Portal használatával](https://docs.microsoft.com/azure/virtual-machines/windows/nsg-quickstart-portal). <br/>A következő alapértelmezett hálózati hozzárendelések lesznek hozzáadva az összes virtuális géphez. &emsp; Windows: 3389-> 3389 TCP, 5986-> 5986 TCP; &emsp; Linux: 22-> 22, TCP (SSH). |
+| **Lemez verziója**  | Társított megoldás virtuális gép, amely a lemez verziószáma és a lemez URL-címe alapján van megadva. A lemez verziószámának [szemantikai](https://semver.org/) formátumúnak kell lennie: `<major>.<minor>.<patch>`.  Az URL-cím az operációs rendszer virtuális merevlemezéhez létrehozott közös hozzáférési aláírás URI-ja.  Bár az SKU-ban legfeljebb nyolc lemez adható hozzá, az Azure Marketplace-en csak az SKU legmagasabb lemezének verziószáma jelenik meg. A többi verzió csak API-kon keresztül jelenik meg.  <!--TD: Add more specific link to API --> <br/> Az **új adatlemez** -tangóharmonika szakasz lehetővé teszi, hogy legfeljebb 15 adatlemezt csatoljon a virtuális géphez.  Miután közzétett egy SKU-t egy adott VM-verzióval és a kapcsolódó adatlemezekkel, ez a konfiguráció nem módosítható.  Ha további virtuálisgép-verziók válnak elérhetővé az SKU-hoz, akkor ugyanazon számú adatlemezt is támogatnia kell. <br/> Ha nem hozta létre az Azure-alapú virtuálisgép-rendszerképeket, később is hozzáadhatja ezt a mezőt.  A társított virtuálisgép-erőforrás létrehozásával kapcsolatos információkért lásd a [virtuális gépek technikai eszközeinek létrehozása](./cpp-create-technical-assets.md)című szakaszt.  
 |  |  |
 
 <!-- TD: The CPP UX warning msg indicates that underscores are also supported in these SKU IDs. I suspect this might be true for other identifiers. --> 

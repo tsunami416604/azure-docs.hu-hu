@@ -5,14 +5,15 @@ author: ChJenk
 manager: evansma
 ms.author: parthp
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 05/30/2019
-ms.openlocfilehash: 744b4e4975c5d4cec5c705e639e9cc8d252a7dd6
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: 4783d3ac8ef78929621179d87f9c8948f6dd079c
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70194274"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73812002"
 ---
 # <a name="company-work-accounts-and-partner-center"></a>Vállalati munkahelyi fiókok és partner központ
 
@@ -23,7 +24,7 @@ A partner Center vállalati munkahelyi fiókokat, más néven Azure Active Direc
 Ha vállalata előfizetett egy Microsoft Cloud Service-szolgáltatásra (például Azure, Microsoft Intune vagy Office 365), akkor már rendelkezik egy munkahelyi e-mail-fiókkal (más néven Azure Active Directory Bérlővel), amelyet a partner centerrel együtt használhat.
 
 A következő lépésekkel ellenőrizheti:
-1. Jelentkezzen be az Azure felügyeleti portálján a https://portal.azure.com következő címen:.
+1. Jelentkezzen be az Azure felügyeleti portálján https://portal.azure.comcímen.
 2. Válassza a bal oldali navigációs menü **Azure Active Directory** elemét, majd válassza az **Egyéni tartománynevek**lehetőséget.
 3. Ha már rendelkezik munkahelyi fiókkal, a rendszer a tartománynevet fogja listázni.
 
@@ -38,7 +39,7 @@ Mielőtt megkezdené a munkahelyi fiók használatát, gondolja át, hogy a munk
 Ha új munkahelyi fiókot szeretne létrehozni a vállalat számára, kövesse az alábbi lépéseket. Előfordulhat, hogy segítségre van szüksége a vállalat Microsoft Azure fiókjához tartozó rendszergazdai engedélyekkel.
 
 1. Jelentkezzen be a [Microsoft Azure Portalra](https://portal.azure.com).
-2. A bal oldali navigációs menüben válassza ki a **Azure Active Directory** -> **felhasználókat**.
+2. A bal oldali navigációs menüben válassza ki a **Azure Active Directory** -> **felhasználók**lehetőséget.
 3. Válassza az **új felhasználó** lehetőséget, és hozzon létre egy új Azure Work-fiókot a név és az e-mail cím megadásával. Győződjön meg arról, hogy a **címtárbeli szerepkör** a **felhasználó** értékre van állítva, és a lenti **jelszó megjelenítése** jelölőnégyzet bejelölésével megtekintheti és megjelenítheti az automatikusan generált jelszót.
 4. Válassza a **Létrehozás** lehetőséget az új felhasználó mentéséhez.
 

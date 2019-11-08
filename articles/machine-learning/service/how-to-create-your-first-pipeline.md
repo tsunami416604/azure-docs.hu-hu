@@ -11,12 +11,12 @@ ms.author: sanpil
 author: sanpil
 ms.date: 08/09/2019
 ms.custom: seodec18
-ms.openlocfilehash: a092647f9772aafdf610ee9a5ba85ded17d50def
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 3dc439c352bb3e6e56fae4b83d783da94720bfe1
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73577703"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73818401"
 ---
 # <a name="create-and-run-machine-learning-pipelines-with-azure-machine-learning-sdk"></a>Gépi tanulási folyamatokat hozhat létre és futtathat Azure Machine Learning SDK-val
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -166,7 +166,7 @@ Azure Databricks számítási célként való csatolásához adja meg a követke
 
 * __Databricks számítási név__: a számítási erőforráshoz hozzárendelni kívánt név.
 * __Databricks-munkaterület neve__: az Azure Databricks munkaterület neve.
-* __Databricks hozzáférési jogkivonat__: a Azure Databricks hitelesítéséhez használt hozzáférési jogkivonat. Hozzáférési jogkivonat létrehozásához tekintse meg a [hitelesítési](https://docs.azuredatabricks.net/api/latest/authentication.html) dokumentumot.
+* __Databricks hozzáférési jogkivonat__: a Azure Databricks hitelesítéséhez használt hozzáférési jogkivonat. Hozzáférési jogkivonat létrehozásához tekintse meg a [hitelesítési](https://docs.azuredatabricks.net/dev-tools/api/latest/authentication.html) dokumentumot.
 
 A következő kód bemutatja, hogyan csatolhatja Azure Databricks számítási célként a Azure Machine Learning SDK-val:
 
@@ -279,7 +279,7 @@ trainStep = PythonScriptStep(
 )
 ```
 
-A korábbi eredmények (`allow_reuse`) újbóli használata akkor fontos, ha a folyamatokat együttműködésen alapuló környezetben használják, mivel a szükségtelen ismétlések kiiktatása rugalmasságot biztosít. Ha a script_name, a bemenetek és a lépések paraméterei változatlanok maradnak, az újrafelhasználás az alapértelmezett viselkedés. A lépés kimenetének újrafelhasználásakor a rendszer nem küldi el a feladatot a számításhoz, hanem az előző Futtatás eredményei azonnal elérhetők lesznek a következő lépés futtatásához. Ha `allow_reuse` hamis értékre van állítva, akkor a folyamat végrehajtása során mindig létrejön egy új Futtatás a művelethez. 
+A korábbi eredmények (`allow_reuse`) újbóli használata akkor fontos, ha a folyamatokat együttműködésen alapuló környezetben használják, mivel a szükségtelen ismétlések kiiktatása rugalmasságot biztosít. Az újrafelhasználás az alapértelmezett viselkedés, ha a script_name, a bemenetek és a lépés paramétereinek változatlanok maradnak. A lépés kimenetének újrafelhasználásakor a rendszer nem küldi el a feladatot a számításhoz, hanem az előző Futtatás eredményei azonnal elérhetők lesznek a következő lépés futtatásához. Ha `allow_reuse` hamis értékre van állítva, akkor a folyamat végrehajtása során mindig létrejön egy új Futtatás a művelethez. 
 
 A lépések meghatározása után a folyamatokat a fenti lépések némelyikével vagy mindegyikével kell felépíteni.
 
@@ -437,7 +437,7 @@ p.disable()
 
 A folyamatok működésének optimalizálásához és testreszabásához hajtson végre néhány dolgot a gyorsítótárazás és az újbóli használat érdekében. Például a következőket teheti:
 + **Állítsa le a kimenet futtatásának alapértelmezett újrafelhasználását** úgy, hogy `allow_reuse=False` a [Step definition művelet](https://docs.microsoft.com/python/api/azureml-pipeline-steps/?view=azure-ml-py)során. Az újrafelhasználás a kulcs, ha a folyamatokat együttműködésen alapuló környezetben használja, mivel a szükségtelen futtatások kiiktatása rugalmasságot biztosít. Azonban letilthatja az ismételt használatot.
-+ **Kiterjesztheti a kivonatot a szkripten túl**, hogy a forráskönyvtár abszolút elérési utat vagy relatív elérési utakat is tartalmazzon más fájlokhoz és könyvtárakhoz a `hash_paths=['<file or directory']` használatával. 
++ **Kiterjesztheti a kivonatot a szkripten túl**, hogy a source_directory abszolút elérési utat vagy relatív elérési utakat is tartalmazzon más fájlokhoz és könyvtárakhoz a `hash_paths=['<file or directory']` használatával 
 + **A kimenet újragenerálásának kényszerítése a `pipeline_run = exp.submit(pipeline, regenerate_outputs=False)` futtatott Futtatás lépéseiben**
 
 Alapértelmezés szerint a `allow_reuse` for Steps engedélyezve van, és csak a fő parancsfájl kivonata. Ha tehát egy adott lépés parancsfájlja ugyanaz marad (`script_name`, bemenetek és a paraméterek), az előző lépés futtatásának kimenete újra felhasználható, a rendszer nem küldi el a feladatot a számításnak, és az előző Futtatás eredményei azonnal elérhetők lesznek a következő lépéshez.  

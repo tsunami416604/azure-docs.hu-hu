@@ -1,5 +1,5 @@
 ---
-title: Azure-SQL-adatszinkronizálás
+title: Adatszinkronizálás
 description: Ez az áttekintés bemutatja az Azure SQL-adatszinkronizálás
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: allenwux
 ms.author: xiwu
 ms.reviewer: carlrab
 ms.date: 08/20/2019
-ms.openlocfilehash: 925977edf267510399dc631f0d0efe5fc1941803
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: d69378b2e791732fb478a66f226c6269e2c515f3
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73687049"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73820822"
 ---
 # <a name="sync-data-across-multiple-cloud-and-on-premises-databases-with-sql-data-sync"></a>Az adatszinkronizálás több Felhőbeli és helyszíni adatbázis között SQL-adatszinkronizálás
 
@@ -67,7 +67,7 @@ A szinkronizálási csoport a következő tulajdonságokkal rendelkezik:
 
 ## <a name="how-does-data-sync-work"></a>Hogyan működik az adatszinkronizálás?
 
-- **Az adatváltozások nyomon követése:** Az adatszinkronizálás nyomon követi a módosításokat INSERT, Update és DELETE eseményindítók használatával. A módosításokat a rendszer a felhasználói adatbázis egyik oldalsó táblájába rögzíti. Vegye figyelembe, hogy BULK INSERT alapértelmezés szerint nem indít el tüzet. Ha a FIRE_TRIGGERS nincs megadva, a rendszer nem hajt végre beszúrt eseményindítókat. Adja hozzá a FIRE_TRIGGERS beállítást, hogy az adatszinkronizálás nyomon követhesse ezeket a lapkákat. 
+- **Az adatváltozások nyomon követése:** Az adatszinkronizálás nyomon követi a módosításokat INSERT, Update és DELETE eseményindítók használatával. A módosításokat a rendszer a felhasználói adatbázis egyik oldalsó táblájába rögzíti. Vegye figyelembe, hogy BULK INSERT alapértelmezés szerint nem indít el tüzet. Ha FIRE_TRIGGERS nincs megadva, a rendszer nem hajt végre beszúrt eseményindítókat. Adja hozzá a FIRE_TRIGGERS lehetőséget, hogy az adatszinkronizálás nyomon tudja követni ezeket a lapkákat. 
 - **Az adatszinkronizálás:** Az adatszinkronizálást egy sugaras modellben tervezték. A központ egyenként szinkronizálja az egyes tagokat. A rendszer letölti a központból a tag felé irányuló módosításokat, majd feltölti a tagot a központba.
 - **Ütközések feloldása:** Az adatszinkronizálás két lehetőséget kínál az ütközés feloldására, a *hub WINS* vagy a *tag WINS*használatára.
   - Ha a *hub WINS*lehetőséget választja, a hub módosításai mindig felülírják a tag módosításait.
@@ -129,7 +129,7 @@ A szinkronizálási csoport létrehozása, frissítése és törlése során a k
 ### <a name="general-limitations"></a>Általános korlátozások
 
 - Egy táblának nem lehet olyan azonosító oszlopa, amely nem az elsődleges kulcs.
-- Az elsődleges kulcs nem rendelkezhet a következő adattípusokkal: sql_variant, Binary, varbinary, képfájl, XML. 
+- Az elsődleges kulcs nem rendelkezhet a következő adattípusokkal: sql_variant, Binary, varbinary, képet, XML. 
 - Legyen óvatos, ha a következő adattípusokat használja elsődleges kulcsként, mert a támogatott pontosság csak a második: Time, datetime, datetime2, DateTimeOffset.
 - Az objektumok (adatbázisok, táblák és oszlopok) nevei nem tartalmazhatják a nyomtatható karaktereket (.), a bal oldali szögletes zárójelet ([) vagy a jobb oldali szögletes zárójelet (]).
 - Azure Active Directory hitelesítés nem támogatott.

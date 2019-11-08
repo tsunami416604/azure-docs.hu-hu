@@ -4,15 +4,16 @@ description: A cikk azt ismerteti, hogyan kérhető le a virtuálisgép-rendszer
 services: Azure, Marketplace, Cloud Partner Portal,
 author: pbutlerm
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 10/19/2018
 ms.author: pabutler
-ms.openlocfilehash: c242fbcd19187abb608ca80a49d04dae195bd7c6
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: dda074d81857247a922eb7a179b33aa2593e5bf8
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72374372"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73824474"
 ---
 # <a name="get-shared-access-signature-uri-for-your-vm-image"></a>A virtuálisgép-rendszerkép közös hozzáférésű aláírási URI-azonosítójának beolvasása
 
@@ -21,7 +22,7 @@ A közzétételi folyamat során meg kell adnia egy egységes erőforrás-azonos
 Ha SAS URI-ket hoz létre a virtuális merevlemezekhez, a következő követelményeknek kell megfelelnie:
 
 - Csak a nem felügyelt virtuális merevlemezek támogatottak.
-- a `List` és a `Read` engedélyek elegendőek. Ne *adjon meg* `Write` vagy `Delete` hozzáférést.
+- `List` és `Read`engedélyek elegendőek. Ne *adjon meg* `Write` vagy `Delete` hozzáférést.
 - A hozzáférés időtartamának (*lejárati dátum*) legalább három héttel a sas URI létrehozása után kell lennie.
 - Az UTC-időeltérések elleni védelem érdekében állítsa be a kezdési dátumot az aktuális dátum előtt egy nappal. Ha például az aktuális dátum október 6., 2014, válassza a 10/5/2014 elemet.
 
@@ -33,7 +34,7 @@ A SAS URL-cím kétféleképpen hozható létre a következő eszközök haszná
 -   Microsoft Azure CLI – nem Windows rendszerű OSs-hez, illetve automatizált vagy folyamatos integrációs környezetekhez ajánlott
 
 
-### <a name="azure-cli"></a>Azure parancssori felület (CLI)
+### <a name="azure-cli"></a>Azure CLI
 
 Az alábbi lépéseket követve hozhatja elő az SAS URI-t az Azure CLI használatával.
 
@@ -45,11 +46,11 @@ Az alábbi lépéseket követve hozhatja elő az SAS URI-t az Azure CLI használ
    ```
     
 3. Szerkessze a fájlt, és adja meg a következő paramétereket.  A dátumokat UTC datetime formátumban kell megadni, például `2016-10-25T00:00:00Z`.
-   - @no__t – 0 – Azure Storage-fiókjának neve
+   - `<account-name>` – az Azure Storage-fiók neve
    - `<account-key>` – Azure Storage-fiókjának kulcsa
-   - @no__t – 0 – a VHD-név
-   - @no__t – 0 – a VHD-hozzáférés engedélyének kezdő dátuma. Adja meg a dátumot egy nappal az aktuális dátum előtt. 
-   - @no__t – 0 – a VHD-hozzáférés engedélyének lejárati dátuma.  Adjon meg legalább három héttel az aktuális dátumon túli dátumot. 
+   - `<vhd-name>` – a VHD-neve
+   - `<start-date>` – a VHD-hozzáférés engedélyének kezdő dátuma. Adja meg a dátumot egy nappal az aktuális dátum előtt. 
+   - `<expiry-date>` – a VHD-hozzáférés engedélyének lejárati dátuma.  Adjon meg legalább három héttel az aktuális dátumon túli dátumot. 
  
    Az alábbi példa a megfelelő paramétereket mutatja be (az írás időpontjában).
 
@@ -108,7 +109,7 @@ A következő lépésekkel hozhatja elő a SAS URI-t a Microsoft Azure Storage E
 
     Ez a generált SAS URL-cím a tároló szintű hozzáféréshez szükséges.  Ennek érdekében hozzá kell adni a társított VHD-nevet.
 
-9. Szerkessze a szövegfájlt. Szúrja be a VHD-nevet az SAS URL-cím `vhds` karakterlánca után (a kezdő perjelet is beleértve).  A végső SAS URI formátumának a következőket kell tartalmaznia:
+9. Szerkessze a szövegfájlt. Szúrja be a VHD-nevet az SAS URL-címében lévő `vhds` sztring után (a kezdő perjelet is beleértve).  A végső SAS URI formátumának a következőket kell tartalmaznia:
 
     `<blob-service-endpoint-url>` + `/vhds/` + `<vhd-name>?` + `<sas-connection-string>`
 
@@ -122,13 +123,13 @@ Ismételje meg ezeket a lépéseket a közzétenni kívánt SKU-k minden virtuá
 ## <a name="verify-the-sas-uri"></a>Az SAS URI ellenőrzése
 
 Tekintse át és ellenőrizze az összes generált SAS URI-t az alábbi ellenőrzőlista használatával.  Ellenőrizze, hogy:
-- Az URI formátuma: `<blob-service-endpoint-url>` + `/vhds/` + `<vhd-name>?` + `<sas-connection-string>`
+- Az URI a következőket képezi: `<blob-service-endpoint-url>` + `/vhds/` + `<vhd-name>?` + `<sas-connection-string>`
 - Az URI tartalmazza a VHD-rendszerkép fájlnevét, beleértve a ". vhd" fájlnevet.
 - Az URI közepe felé `sp=rl` jelenik meg. Ez a karakterlánc azt jelzi, hogy `Read` és `List` hozzáférés van megadva.
 - Ekkor `sr=c` is megjelenik. Ez a karakterlánc azt jelzi, hogy a tároló szintű hozzáférés meg van adva.
 - Másolja és illessze be az URI-t egy böngészőben a társított blob letöltésének megkezdéséhez.  (A letöltés befejezése előtt megszakíthatja a műveletet.)
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ha problémába ütközik az SAS URI létrehozásakor, tekintse meg az [általános sas URL-címekkel kapcsolatos problémákat](./cpp-common-sas-url-issues.md).  Ellenkező esetben mentse a SAS URI-JÁT biztonságos helyre a későbbi használat érdekében. A virtuálisgép- [ajánlat közzétételére](./cpp-publish-offer.md) a Cloud Partner Portal lesz szükség.

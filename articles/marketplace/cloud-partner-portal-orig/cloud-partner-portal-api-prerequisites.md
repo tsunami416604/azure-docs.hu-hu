@@ -1,71 +1,72 @@
 ---
-title: API-Előfeltételek |} Az Azure Marketplace-en
-description: Az Előfeltételek felhasználóról a Cloud Partner Portal API-k használatával.
+title: API-előfeltételek | Azure piactér
+description: A Cloud Partner Portal API-k használatának előfeltételei.
 services: Azure, Marketplace, Cloud Partner Portal,
 author: v-miclar
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pabutler
-ms.openlocfilehash: a973ab0a406168756af61900fd35947c8be6d03b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d3c2d89d3c3561e86047529e5b284e4481fc1652
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64935384"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73819707"
 ---
-<a name="api-prerequisites"></a>API-Előfeltételek
+<a name="api-prerequisites"></a>API-előfeltételek
 ================
 
-Nincsenek két szükséges programozási objektumokat, amelyekre szüksége van a Cloud Partner Portal API-k használata: szolgáltatásnév és a egy Azure Active Directory (Azure AD) hozzáférési tokent.
+A Cloud Partner Portal API-k (egy egyszerű szolgáltatásnév és egy Azure Active Directory (Azure AD) hozzáférési token használatához két szükséges programozott eszközre van szükség.
 
 
-<a name="create-a-service-principal-in-your-azure-active-directory-tenant"></a>Egyszerű szolgáltatás létrehozása az Azure Active Directory-bérlőben
+<a name="create-a-service-principal-in-your-azure-active-directory-tenant"></a>Egyszerű szolgáltatásnév létrehozása a Azure Active Directory-bérlőben
 ----------------------------------------------------------------
 
-Először az egyszerű szolgáltatás létrehozása az Azure AD-bérlőben. Ezt a bérlőt a Cloud Partner portálra a saját engedélykészletet lesz hozzárendelve. A kód fogja hívni az API-kat használja, mint a bérlő helyett a saját hitelesítő adataival.  Szolgáltatásnév létrehozása teljes ismertetése, lásd: [egy Azure Active Directory-alkalmazás és -erőforrások eléréséhez szolgáltatásnév létrehozása a portálon](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal).
+Először létre kell hoznia egy egyszerű szolgáltatásnevet az Azure AD-bérlőben. Ez a bérlő a Cloud Partner Portalban a saját engedélyeit kapja meg. A kód a saját hitelesítő adatai helyett a bérlőt használó API-kat hívja meg.  Az egyszerű szolgáltatásnév létrehozásával kapcsolatos teljes körű magyarázatért lásd: a [portál használata egy Azure Active Directory alkalmazás és szolgáltatásnév létrehozásához, amely hozzáférhet az erőforrásokhoz](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal).
 
 
-<a name="add-the-service-principal-to-your-account"></a>A szolgáltatásnév hozzáadása a fiókhoz
+<a name="add-the-service-principal-to-your-account"></a>Adja hozzá a szolgáltatásnevet a fiókjához
 -----------------------------------------
 
-Most, hogy létrehozta a szolgáltatás egyszerű, a bérlőben, ezt hozzáadhatja felhasználói Cloud Partner Portalon fiókjába. Csakúgy, mint a felhasználó az egyszerű szolgáltatás tulajdonosa vagy közreműködője, a portálon is lehet.
+Most, hogy létrehozta a szolgáltatásnevet a bérlőben, felveheti felhasználóként a Cloud Partner Portal-fiókjába. A felhasználóhoz hasonlóan az egyszerű szolgáltatásnév a portál tulajdonosa vagy közreműködői is lehet.
 
-Az alábbi lépések segítségével hozzáadása a szolgáltatásnévhez:
+A szolgáltatásnév hozzáadásához kövesse az alábbi lépéseket:
 
-1. A Cloud Partner portálra való bejelentkezéshez. 
-2. Kattintson a **felhasználók** a bal oldali menüsáv a majd **felhasználó hozzáadása**.
+1. Jelentkezzen be a Cloud Partner Portalba. 
+2. Kattintson a bal oldali menüsorban található **felhasználók** elemre, majd válassza a **felhasználó hozzáadása**elemet.
 
-   ![Felhasználó hozzáadása a portálon](./media/cloud-partner-portal-api-prerequisites/add-user.jpg)
+   ![Felhasználó hozzáadása a portálhoz](./media/cloud-partner-portal-api-prerequisites/add-user.jpg)
 
-3. Az a **típus** legördülő menüben válassza **szolgáltatásnév** , és adja hozzá a következő adatokat:
+3. A **típus** legördülő listából válassza ki az **egyszerű szolgáltatásnév** elemet, és adja hozzá a következő adatokat:
 
--   A **rövid név** szolgáltatásnév számára, például `spAccount`.
--   A **Alkalmazásazonosító**. Ez az azonosító megkereséséhez nyissa meg a [az Azure Portal](https://portal.azure.com), kattintson a **Azure Active Directory**, válassza a **alkalmazásregisztrációk**, majd kattintson az alkalmazás a.
--   A **Bérlőazonosító**, más néven a **címtár-azonosító**, az Azure AD-bérlője számára. Ez az azonosító az Azure Active Directory oldalon találhatja a [az Azure portal](https://portal.azure.com)alatt **tulajdonságok**.
--   A **Objektumazonosító** a szolgáltatásnév-objektum számára. Ez az azonosító az Azure Portalról kaphat. Lépjen a **Azure Active Directory**, válassza a **alkalmazásregisztrációk**, kattintson az alkalmazás, és kattintson az alkalmazás neve mellett a **felügyelt alkalmazás a helyi címtárban**. Ezután nyissa meg a **tulajdonságok** lapon található az objektum azonosítóját. Ellenőrizze, hogy nem külső körvonalak, hogy az alkalmazás, hanem az Objektumazonosító, a felügyelt alkalmazás, kezdeti Objektumazonosítóját.
--   A **szerepkör** jelzi az RBAC a fiókhoz tartozó.
+-   Az egyszerű szolgáltatásnév (például `spAccount`) **rövid neve** .
+-   Az **alkalmazás azonosítója**. Az azonosító megkereséséhez nyissa meg az [Azure Portalt](https://portal.azure.com), kattintson a **Azure Active Directory**elemre, válassza a **Alkalmazásregisztrációk**lehetőséget, majd kattintson az alkalmazásra.
+-   Az Azure AD-bérlőhöz tartozó **bérlői azonosító**, más néven **címtár-azonosító**. Ez az azonosító a [Azure Portal](https://portal.azure.com)Azure Active Directory oldalán, a **Tulajdonságok**területen található.
+-   Az egyszerű szolgáltatásnév objektumának **azonosítója** . Ezt az azonosítót a Azure Portal kérheti le. Lépjen a **Azure Active Directoryra**, válassza a **Alkalmazásregisztrációk**lehetőséget, majd kattintson az alkalmazásra, majd kattintson az alkalmazás nevére a **helyi könyvtár felügyelt alkalmazás**területén. Ezután nyissa meg a **Tulajdonságok** lapot az objektumazonosító megkereséséhez. Győződjön meg arról, hogy nem az alkalmazáson belüli kezdeti objektumazonosító, hanem a felügyelt alkalmazásban található objektumazonosító.
+-   A fiókhoz társított **szerepkör** , amelyet a rendszer a RBAC fog használni.
 
-     ![Adjon hozzá egy felügyelt alkalmazást a portálra](./media/cloud-partner-portal-api-prerequisites/managedapp.png)
+     ![Felügyelt alkalmazás hozzáadása a portálhoz](./media/cloud-partner-portal-api-prerequisites/managedapp.png)
 
-1. Kattintson a **Hozzáadás** az egyszerű szolgáltatás hozzáadása a fiókjához.
+1. Kattintson a **Hozzáadás** gombra az egyszerű szolgáltatás fiókhoz való hozzáadásához.
 
-   ![Szolgáltatásnév hozzáadása](./media/cloud-partner-portal-api-prerequisites/add-service-principal.jpg)
+   ![Egyszerű szolgáltatásnév hozzáadása](./media/cloud-partner-portal-api-prerequisites/add-service-principal.jpg)
 
 
-<a name="get-an-azure-ad-access-token"></a>Az Azure AD hozzáférési token beszerzése
+<a name="get-an-azure-ad-access-token"></a>Azure AD hozzáférési jogkivonat beszerzése
 ----------------------------
 
-A Cloud Partner Portal API-k hitelesítés során a következő eszközöket és protokollokat használja:
+A Cloud Partner Portal API-k a következő eszközöket és protokollokat használják a hitelesítés során:
 
-- A JSON webes jogkivonat (JWT) tulajdonosi jogkivonat erőforrásokhoz való hozzáférés igénylése
-- A [OpenID Connect](https://openid.net/connect/) (OIDC) protokoll személyazonosságát
-- [Az Azure Active Directory (Azure AD)](https://docs.microsoft.com/azure/active-directory/active-directory-whatis) az identitás-szolgáltatóként
+- Egy JSON Web Token (JWT) tulajdonosi jogkivonat, amely hozzáférést kér az erőforrásokhoz
+- Az [OpenID Connect](https://openid.net/connect/) (OIDC) protokoll az identitás ellenőrzéséhez
+- [Azure Active Directory (Azure ad) identitás-](https://docs.microsoft.com/azure/active-directory/active-directory-whatis) szolgáltatóként
 
-Nincsenek alapvetően két módszer a JWT-token beszerzése a programozott módon:
+A JWT-token programozott beszerzésének két elve van:
 
-- A Microsoft-hitelesítési tár használata a .NET-hez ([MSAL.NET](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet)).  Ez magasabb szintű .NET-fejlesztők számára akkor ajánlott. 
-- Győződjön meg arról, egy **HTTP POST** kérést az Azure AD oauth **token** végpont, amely nyilvánul meg:
+- A .NET-hez készült Microsoft Authentication Library ([MSAL.net](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet)) használata.  Ez a magasabb szintű megközelítés a .NET-fejlesztők számára ajánlott. 
+- Tegyen **közzé egy HTTP Post** -kérést az Azure ad OAuth **jogkivonat** -végpontján, amely a következő űrlapot veszi igénybe:
 
 ``` HTTP
 POST https://login.microsoftonline.com/<tenant-id>/oauth2/token
@@ -75,7 +76,7 @@ POST https://login.microsoftonline.com/<tenant-id>/oauth2/token
     resource: https://cloudpartner.azure.com
 ```
 
-Most ezt a jogkivonatot továbbíthatja az engedélyezési fejléc, az API-kérelmek részeként.
+Most átadhatja ezt a jogkivonatot az API-kérések engedélyezési fejlécének részeként.
 
 ``` HTTP
 GET https://cloudpartner.azure.com/api/offerTypes?api-version=2016-08-01-preview 
@@ -83,6 +84,6 @@ GET https://cloudpartner.azure.com/api/offerTypes?api-version=2016-08-01-preview
     Authorization: Bearer <access-token>
 ```
 > [!NOTE]
-> Ez az útmutató minden az API az engedélyezési fejléc mindig feltételezzük átadott, így nem explicit módon említett.
+> Az ebben a hivatkozásban található összes API esetében az engedélyezési fejlécet a rendszer mindig átadja, ezért azt explicit módon nem említi.
 
-Ha hitelesítési hibák a kérelemből, lásd: [hitelesítéssel kapcsolatos hibák elhárítása](./cloud-partner-portal-api-troubleshooting-authentication-errors.md).
+Ha hitelesítési hibákba ütközik a kérelmében, olvassa el a [hitelesítési hibák elhárítása](./cloud-partner-portal-api-troubleshooting-authentication-errors.md)című témakört.

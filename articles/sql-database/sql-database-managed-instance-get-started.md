@@ -1,5 +1,5 @@
 ---
-title: 'Azure Portal: SQL Database felügyelt példány létrehozása '
+title: 'Azure Portal: felügyelt példány létrehozása'
 description: Hozzon létre egy SQL Database felügyelt példányt, hálózati környezetet és ügyfél virtuális gépet a hozzáféréshez.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: sstein, carlrab
 ms.date: 09/26/2019
-ms.openlocfilehash: a1d5873d826f513d92a421f84e3b66a55262d906
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 578ab250d0759aa7216327124417019f2e5f1fc7
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73688087"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73825462"
 ---
 # <a name="quickstart-create-an-azure-sql-database-managed-instance"></a>Gyors útmutató: Azure SQL Database felügyelt példány létrehozása
 
@@ -54,10 +54,10 @@ A következő lépések bemutatják, hogyan hozhat létre felügyelt példányt:
    | Beállítás| Ajánlott érték | Leírás |
    | ------ | --------------- | ----------- |
    | **Előfizetés** | Az előfizetése. | Olyan előfizetés, amely engedélyt ad új erőforrások létrehozására. |
-   | **Erőforráscsoport** | Új vagy meglévő erőforráscsoport.|Az érvényes erőforráscsoport-nevekkel kapcsolatban lásd az [elnevezési szabályokat és korlátozásokat](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions) ismertető cikket.|
-   | **Felügyelt példány neve** | Bármely érvényes név.|Az érvényes nevekkel kapcsolatban lásd az [elnevezési szabályokat és korlátozásokat](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions) ismertető cikket.|
+   | **Erőforráscsoport** | Új vagy meglévő erőforráscsoport.|Az érvényes erőforráscsoport-nevekkel kapcsolatban lásd az [elnevezési szabályokat és korlátozásokat](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging) ismertető cikket.|
+   | **Felügyelt példány neve** | Bármely érvényes név.|Az érvényes nevekkel kapcsolatban lásd az [elnevezési szabályokat és korlátozásokat](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging) ismertető cikket.|
    | **Régió** |Az a régió, amelyben létre kívánja hozni a felügyelt példányt.|További információ a régiókkal kapcsolatban: [Azure-régiók](https://azure.microsoft.com/regions/).|
-   | **Felügyelt példány rendszergazdai bejelentkezési neve** | Bármilyen érvényes Felhasználónév. | Az érvényes nevekkel kapcsolatban lásd az [elnevezési szabályokat és korlátozásokat](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions) ismertető cikket. Ne használja a "ServerAdmin" kulcsszót, mert ez egy fenntartott kiszolgálói szintű szerepkör.|
+   | **Felügyelt példány rendszergazdai bejelentkezési neve** | Bármilyen érvényes Felhasználónév. | Az érvényes nevekkel kapcsolatban lásd az [elnevezési szabályokat és korlátozásokat](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging) ismertető cikket. Ne használja a "ServerAdmin" kulcsszót, mert ez egy fenntartott kiszolgálói szintű szerepkör.|
    | **Jelszó** | Bármilyen érvényes jelszó.| A jelszónak legalább 16 karakter hosszúságúnak kell lennie, és teljesítenie kell [a meghatározott összetettségi követelményeket](../virtual-machines/windows/faq.md#what-are-the-password-requirements-when-creating-a-vm).|
 
 - Válassza a **felügyelt példány beállítása** lehetőséget a számítási és tárolási erőforrások méretének és a díjszabási szintek áttekintéséhez. A csúszkák vagy a szövegmezők segítségével adja meg a tárterület méretét és a virtuális magok számát. Ha elkészült, kattintson az **alkalmaz** gombra a kijelölés mentéséhez. 
@@ -171,7 +171,7 @@ A felügyelt példányhoz való kapcsolódáshoz kövesse az alábbi lépéseket
 
    ![Állomásnév](./media/sql-database-managed-instance-get-started/host-name.png)
 
-   A másolt érték a felügyelt példányhoz való kapcsolódáshoz használható teljes tartománynevet (FQDN) jelöli. A következőhöz hasonló, például: *your_host_name. a1b2c3d4e5f6. database. Windows. net*.
+   A másolt érték a felügyelt példányhoz való kapcsolódáshoz használható teljes tartománynevet (FQDN) jelöli. A következőhöz hasonló példa: *your_host_name. a1b2c3d4e5f6. database. Windows. net*.
 
 ## <a name="next-steps"></a>További lépések
 

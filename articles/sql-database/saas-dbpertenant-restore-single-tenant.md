@@ -1,22 +1,22 @@
 ---
-title: Azure SQL Database-adatbázis visszaállítása több-bérlős SaaS-alkalmazásban
+title: Adatbázis visszaállítása több-bérlős SaaS-alkalmazásokban
 description: Megtudhatja, hogyan állíthatja vissza egyetlen bérlő SQL-adatbázisát az adattörlést követően
 services: sql-database
 ms.service: sql-database
 ms.subservice: scenario
-ms.custom: ''
+ms.custom: seo-lt-2019
 ms.devlang: ''
 ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: billgib
 ms.date: 12/04/2018
-ms.openlocfilehash: 0719fc5482e583218d42e808a4d94045a497f33c
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: a54e8e5629f6f8ad688b6fe11bbf50fc038095bf
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73692103"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73818526"
 ---
 # <a name="restore-a-single-tenant-with-a-database-per-tenant-saas-application"></a>Egyetlen bérlő visszaállítása adatbázis-bérlői SaaS-alkalmazással
 
@@ -99,7 +99,7 @@ Ez a gyakorlat visszaállítja a contoso Concert Hall-adatbázist az esemény t�
 
 A parancsfájl visszaállítja a bérlői adatbázist egy adott időpontra, mielőtt törölné az eseményt. A rendszer visszaállítja az adatbázist egy _ContosoConcertHall\_Old_nevű új adatbázisba. A visszaállított adatbázisban található katalógus-metaadatok törlődnek, majd az adatbázis a katalógusba kerül a *ContosoConcertHall\_régi* név alapján létrehozott kulccsal.
 
-A bemutató parancsfájl az új bérlői adatbázis eseményeinek lapját nyitja meg a böngészőben. Vegye figyelembe, hogy az URL-```http://events.wingtip-dpt.&lt;user&gt;.trafficmanager.net/contosoconcerthall_old``` az oldalon a visszaállított adatbázisból származó adatok láthatók, ahol a *_old* hozzá lett adva a névhez.
+A bemutató parancsfájl az új bérlői adatbázis eseményeinek lapját nyitja meg a böngészőben. Jegyezze meg az URL-```http://events.wingtip-dpt.&lt;user&gt;.trafficmanager.net/contosoconcerthall_old```, hogy az oldal a visszaállított adatbázisból származó adatokból jeleníti meg a *vissza_oldt* , ahol a név hozzá van adva.
 
 A böngészőben megjelenő események görgetésével ellenőrizze, hogy az előző szakaszban törölt esemény vissza lett-e állítva.
 

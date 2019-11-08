@@ -1,5 +1,5 @@
 ---
-title: Bővített események SQL Database
+title: Bővített események
 description: Ismerteti a Azure SQL Database kiterjesztett eseményeit (Xevent típusú eseményekhez), valamint azt, hogy az esemény-munkamenetek hogyan térnek el kis mértékben a Microsoft SQL Server esemény-munkameneteitől.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: MightyPen
 ms.author: genemi
 ms.reviewer: jrasnik
 ms.date: 12/19/2018
-ms.openlocfilehash: 64cfcd9451416a6eb35301268b285bd00cf0cad4
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: cab5b5baf318eb9eadc398ce525e0de716d0df2d
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73686781"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73822295"
 ---
 # <a name="extended-events-in-sql-database"></a>Bővített események SQL Database
 [!INCLUDE [sql-database-xevents-selectors-1-include](../../includes/sql-database-xevents-selectors-1-include.md)]
@@ -74,7 +74,7 @@ A kapcsolódó témakörök két mintakód-mintát biztosítanak:
 - A **on Database** záradék az [Alter Event-munkamenetre](https://msdn.microsoft.com/library/bb630368.aspx) és a [drop Event Session](https://msdn.microsoft.com/library/bb630257.aspx) Transact-SQL parancsokra is vonatkozik.
 
 
-- Az ajánlott eljárás a **STARTUP_STATE = on** esemény-munkamenet-beállítás belefoglalása az **esemény-munkamenet létrehozása** vagy az **esemény-munkamenet** -utasítások módosítása.
+- Az ajánlott eljárás az, hogy tartalmazza a **STARTUP_STATE =** esemény-munkamenetet az **esemény-munkamenet létrehozásakor** , vagy az esemény-munkamenet-utasítások **megváltoztatásával** .
     - A **= on** érték a feladatátvétel miatti automatikus újraindítást is támogatja a logikai adatbázis újrakonfigurálása után.
 
 ## <a name="new-catalog-views"></a>Új katalógus nézetei
@@ -97,23 +97,23 @@ A Azure SQL Database [dinamikus felügyeleti nézetekkel (DMV) rendelkeznek](htt
 
 | DMV neve | Leírás |
 |:--- |:--- |
-| **sys. DM _xe_database_session_event_actions** |Az esemény-munkamenet műveletekkel kapcsolatos adatokat adja vissza. |
-| **sys. DM _xe_database_session_events** |A munkamenet-eseményekre vonatkozó adatokat adja vissza. |
-| **sys. DM _xe_database_session_object_columns** |Megjeleníti a munkamenethez kötött objektumok konfigurációs értékeit. |
-| **sys. DM _xe_database_session_targets** |A munkamenet-célokkal kapcsolatos adatokat adja vissza. |
-| **sys. DM _xe_database_sessions** |Az aktuális adatbázisra hatókörben lévő minden esemény-munkamenet sorát adja vissza. |
+| **sys. dm_xe_database_session_event_actions** |Az esemény-munkamenet műveletekkel kapcsolatos adatokat adja vissza. |
+| **sys. dm_xe_database_session_events** |A munkamenet-eseményekre vonatkozó adatokat adja vissza. |
+| **sys. dm_xe_database_session_object_columns** |Megjeleníti a munkamenethez kötött objektumok konfigurációs értékeit. |
+| **sys. dm_xe_database_session_targets** |A munkamenet-célokkal kapcsolatos adatokat adja vissza. |
+| **sys. dm_xe_database_sessions** |Az aktuális adatbázisra hatókörben lévő minden esemény-munkamenet sorát adja vissza. |
 
 A Microsoft SQL Server hasonló katalógus-nézetek neve nem a név *\_adatbázis* része, például:
 
-- **sys. DM _xe_sessions**, név helyett<br/>**sys. DM _xe_database_sessions**.
+- **sys. dm_xe_sessions**, név helyett<br/>**sys. dm_xe_database_sessions**.
 
 ### <a name="dmvs-common-to-both"></a>DMV közös
 A kiterjesztett eseményeknél további DMV is léteznek, amelyek a Azure SQL Database és Microsoft SQL Server egyaránt közösek:
 
-- **sys. DM _xe_map_values**
-- **sys. DM _xe_object_columns**
-- **sys. DM _xe_objects**
-- **sys. DM _xe_packages**
+- **sys. dm_xe_map_values**
+- **sys. dm_xe_object_columns**
+- **sys. dm_xe_objects**
+- **sys. dm_xe_packages**
 
   <a name="sqlfindseventsactionstargets" id="sqlfindseventsactionstargets"></a>
 
@@ -186,7 +186,7 @@ Ha olyan hibaüzenetet kap, amely szerint a rendszer maximálisan kikényszerít
 
 Az **eseményvezérelt fájl** célja hálózati késést vagy hibát tapasztalhat, miközben az Azure Storage-Blobok számára is megőrzi az adatait. Előfordulhat, hogy a SQL Database egyéb eseményei késleltetve vannak, amíg a hálózati kommunikáció befejezésére várnak. Ez a késleltetés csökkentheti a számítási feladatokat.
 
-- Ennek a teljesítménynek a mérséklése érdekében ne állítsa be a **EVENT_RETENTION_MODE** beállítást, hogy **NO_EVENT_LOSS** az esemény-munkamenet-definíciókban.
+- Ennek a teljesítménynek a mérsékléséhez ne állítsa be a **EVENT_RETENTION_MODE** lehetőséget az esemény-munkamenet-definíciókban való **NO_EVENT_LOSS** .
 
 ## <a name="related-links"></a>Kapcsolódó hivatkozások
 

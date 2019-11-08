@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 09/25/2019
 ms.author: abpati
 ms.custom: aaddev
-ms.openlocfilehash: 254a1fd8644015de33855e13f78ab122d28f1e35
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: d9349391ad9af1a4ec1c84b586f825f3f7632ff8
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72817110"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73815757"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-a-python-web-app"></a>Gyors útmutató: bejelentkezés felvétele a Microsofttal egy Python-webalkalmazásba
 
@@ -66,7 +66,7 @@ A minta futtatásához a következőkre lesz szüksége:
 > 1. Amikor megjelenik az **Alkalmazás regisztrálása** lap, adja meg az alkalmazás regisztrációs adatait:
 >      - A **Név** szakaszban adja meg az alkalmazás felhasználói számára megjelenített, jelentéssel bíró alkalmazásnevet (például `python-webapp`).
 >      - A **támogatott fiókok típusai**területen válassza a **fiókok lehetőséget bármely szervezeti címtárban és személyes Microsoft-fiókban**.
->      - Az **átirányítási URI** szakasz legördülő listájában válassza ki a webplatformot, majd állítsa be az értéket a **következőre** : `http://localhost:5000/getAToken`.
+>      - Az **átirányítási URI** szakasz legördülő listájában válassza ki a **webplatformot** , majd állítsa `http://localhost:5000/getAToken`értékre.
 >      - Kattintson a **Register** (Regisztrálás) elemre. Az alkalmazás **áttekintése** lapon jegyezze fel az **alkalmazás (ügyfél) azonosítójának** értékét későbbi használatra.
 > 1. A bal oldali menüben válassza a **tanúsítványok & Secrets** elemet, majd kattintson az **új ügyfél titkára** az **ügyfél titkai** szakaszban:
 >
@@ -74,6 +74,13 @@ A minta futtatásához a következőkre lesz szüksége:
 >      - Adja **meg az 1 év**kulcsának időtartamát.
 >      - Ha a **Hozzáadás**gombra kattint, megjelenik a kulcs értéke.
 >      - Másolja a kulcs értékét. Erre később még szüksége lesz.
+> 1. Válassza ki az **API-engedélyek** szakaszt
+>
+>      - Kattintson az **engedély hozzáadása** gombra, majd
+>      - Győződjön meg arról, hogy a **Microsoft API** -k lap van kiválasztva
+>      - A *gyakran használt Microsoft API* -k szakaszban kattintson **Microsoft Graph**
+>      - A **delegált engedélyek** szakaszban győződjön meg arról, hogy a megfelelő engedélyek be vannak jelölve: **User. ReadBasic. All**. Ha szükséges, használja a keresőmezőt.
+>      - Válassza az **engedélyek hozzáadása** gombot
 >
 > [!div class="sxs-lookup" renderon="portal"]
 >
@@ -81,11 +88,12 @@ A minta futtatásához a következőkre lesz szüksége:
 >
 > Ahhoz, hogy a rövid útmutatóhoz tartozó mintakód működjön, a következőket kell tennie:
 >
-> 1. Adjon hozzá egy válasz URL-címet `http://localhost:5000/getAToken` értékként.
+> 1. Adjon hozzá egy válasz URL-címet `http://localhost:5000/getAToken`ként.
 > 1. Hozzon létre egy ügyfél titkot.
+> 1. Adja hozzá Microsoft Graph API user. ReadBasic. All delegált engedélyét.
 >
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
-> > [A módosítás alkalmazása]()
+> > [A módosítások elvégzése]()
 > > [!div id="appconfigured" class="alert alert-info"]
 > > ![Már konfigurált](media/quickstart-v2-aspnet-webapp/green-check.png) Az alkalmazása már konfigurálva van ezzel az attribútummal
 
@@ -97,7 +105,7 @@ A minta futtatásához a következőkre lesz szüksége:
 
 1. Csomagolja ki a zip-fájlt egy helyi mappába a gyökérmappa közelében (például: **C:\Azure-Samples**)
 1. Ha integrált fejlesztési környezetet használ, nyissa meg a mintát a kedvenc IDE (opcionális).
-1. Nyissa meg a **app_config.** file fájlt, amely megtalálható a gyökérkönyvtárban, és cserélje le a következő kódrészletre:
+1. Nyissa meg a **app_config.** a fájlt, amely megtalálható a gyökérkönyvtárban, és cserélje le a következő kódrészletre:
 
 ```python
 CLIENT_ID = "Enter_the_Application_Id_here"
@@ -106,7 +114,7 @@ AUTHORITY = "https://login.microsoftonline.com/Enter_the_Tenant_Name_Here"
 ```
 
 > [!div renderon="docs"]
-> Helyszín:
+> Az elemek magyarázata:
 >
 > - `Enter_the_Application_Id_here` – ez a regisztrált alkalmazás alkalmazásazonosítója.
 > - `Enter_the_Client_Secret_Here` – a **tanúsítványok & Secrets** szolgáltatásban a regisztrált alkalmazáshoz létrehozott **titkos ügyfél** .
@@ -126,26 +134,26 @@ AUTHORITY = "https://login.microsoftonline.com/Enter_the_Tenant_Name_Here"
    python app.py
    ```
    > [!IMPORTANT]
-   > Ez a rövid útmutató alkalmazás egy ügyfél titkos kulcsát használja, amely bizalmas ügyfélként azonosítja magát. Mivel az ügyfél titkos kulcsát egyszerű szövegként adja hozzá a Project-fájlokhoz, biztonsági okokból javasolt a tanúsítvány használata az ügyfél titkos kulcsa helyett, mielőtt az alkalmazást éles alkalmazásként venné fontolóra. A tanúsítványok használatáról a következő [utasításokban](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-certificate-credentials)talál további információt.
+   > Ez a rövid útmutató alkalmazás egy ügyfél titkos kulcsát használja, amely bizalmas ügyfélként azonosítja magát. Mivel az ügyfél titkos kulcsát egyszerű szövegként adja hozzá a Project-fájlokhoz, biztonsági okokból javasolt a tanúsítvány használata az ügyfél titkos kulcsa helyett, mielőtt az alkalmazást éles alkalmazásként venné fontolóra. A tanúsítványok használatáról a következő [utasításokban](https://docs.microsoft.com/azure/active-directory/develop/active-directory-certificate-credentials)talál további információt.
 
-   ## <a name="more-information"></a>További információ
+## <a name="more-information"></a>További információ
 
-   ### <a name="getting-msal"></a>MSAL beolvasása
-   A MSAL az a könyvtár, amellyel a felhasználók bejelentkezhetnek, és a Microsoft Identity platform által védett API eléréséhez használt jogkivonatokat kérhetnek.
-   A pip használatával hozzáadhat MSAL Pythont az alkalmazáshoz.
+### <a name="getting-msal"></a>MSAL beolvasása
+A MSAL az a könyvtár, amellyel a felhasználók bejelentkezhetnek, és a Microsoft Identity platform által védett API eléréséhez használt jogkivonatokat kérhetnek.
+A pip használatával hozzáadhat MSAL Pythont az alkalmazáshoz.
 
-   ```Shell
-   pip install msal
-   ```
+```Shell
+pip install msal
+```
 
-   ### <a name="msal-initialization"></a>Az MSAL inicializálása
-   A MSAL Pythonra mutató hivatkozást úgy adhatja hozzá, hogy hozzáadja a következő kódot a fájl elejéhez, ahol a MSAL fogja használni:
+### <a name="msal-initialization"></a>Az MSAL inicializálása
+A MSAL Pythonra mutató hivatkozást úgy adhatja hozzá, hogy hozzáadja a következő kódot a fájl elejéhez, ahol a MSAL fogja használni:
 
-   ```Python
-   import msal
-   ```
+```Python
+import msal
+```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ a felhasználókat bejelentkező webalkalmazásokról, majd a webes API-k meghívásáról:
 

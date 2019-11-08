@@ -1,102 +1,103 @@
 ---
-title: Az Azure IoT Edge-modul Marketplace leírását |} Az Azure Marketplace-en
-description: Hozzon létre egy IoT Edge-modul marketplace leírása.
+title: A piactér leírása Azure IoT Edge modulhoz | Azure piactér
+description: Hozza létre a piactér leírását egy IoT Edge modulhoz.
 services: Azure, Marketplace, Cloud Partner Portal,
 author: dan-wesley
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/24/2019
 ms.author: pabutler
-ms.openlocfilehash: aa0c908e18233926965d8dc3cd1b474f876b8dda
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 57bae42eb44c174657e59fa8b017da2931ae681b
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64942431"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73814605"
 ---
-# <a name="iot-edge-module-marketplace-tab"></a>IoT Edge-modul piactér lapján
+# <a name="iot-edge-module-marketplace-tab"></a>IoT Edge modul Marketplace lapja
 
-A **Marketplace** lapján a **új ajánlat** lap lehetővé teszi, hogy adja meg a leendő ügyfelek-szerződések marketinges, értékesítési és jogi információk és származó érdeklődők kezeléséhez a Marketplace-en. A hosszú űrlap négy szakaszokból áll: **Áttekintés**, **Marketing-összetevők**, **felügyeleti vezethet**, és **jogi**.
+Az **új ajánlat** oldal **piactér** lapján megadhatja a potenciális ügyfeleket marketing-, értékesítési és jogi információkkal és szerződésekkel, és kezelheti a piactéren generált érdeklődőket. Ez a hosszú űrlap négy szakaszra oszlik: **Áttekintés**, **marketing**-összetevők, **vezető felügyelet**és **jogi**.
 
 
 ## <a name="overview"></a>Áttekintés
 
-Ebben a szakaszban, az Azure Marketplace-ajánlat kapcsolatos általános információkat adja meg.  Egy csillag (*) hozzáfűzi a mező nevét jelzi, hogy ez szükséges.
+Ebben a szakaszban az Azure Marketplace-ajánlat általános adatait adja meg.  A mezőhöz hozzáfűzni kívánt csillag (*) azt jelzi, hogy a név megadása kötelező.
 
-![Áttekintés szakaszban a Marketplace-en lap az új ajánlat űrlapon az IoT Edge-modulok](./media/iot-edge-module-marketplace-tab-overview.png)
+![A IoT Edge-modulok új ajánlat űrlapjának piactér lapjának áttekintés szakasza](./media/iot-edge-module-marketplace-tab-overview.png)
 
-A következő táblázat ismerteti a cél és ezek a mezők tartalmát. Kötelező mezőt csillag (*) rendszer feltehetően.
+A következő táblázat a mezők célját és tartalmát ismerteti. A kötelező mezőket csillag (*) alapján vádoljuk.
 
 |  **Mező**                |     **Leírás**                                                          |
 |  ---------                |     ---------------                                                          |
-| **Cím\***                 | Az ajánlat címe. Megjelenik ezzel a beállítással hangsúlyosan a Marketplace-en.  Legfeljebb 50 karakter hosszúságú. <!--ADD PICTURE IN ACTION-->|
-| **Összefoglalás\***               | Az ajánlat rövid összefoglalása. A hosszabb 100 karakternél. <!--ADD PICTURE IN ACTION-->|
-| **Hosszú összegzése\***          | Az ajánlat már összefoglaló (bár ez lehet ugyanaz, mint a **összefoglaló**).  Legfeljebb 256 karakter hosszúságú. <!--ADD PICTURE IN ACTION-->|
-| **Leírás\***           | Az ajánlat leírása.  Legfeljebb 3000 karakter hosszúságú támogatja az egyszerű HTML-formázás.<br/> Tartalmaznia kell egy *hardverre vonatkozó minimális* bekezdés alján. Példa: <br/> <p><u>Minimális hardverkövetelmények:</u> Linux x64 és arm32 OS, 1 GB RAM, 500 MB-os tárhelyet</p>
-| **Marketing-azonosító\***  | Egyedi URL-címet rendelni ehhez az ajánlathoz, jellemzően a szervezet és a megoldás nevét, legfeljebb 50 karakter hosszú lehet.  Példa: <br/> `https://azuremarketplace.microsoft.com/marketplace/apps/contoso.sampleIoTEdgeModule`  |
-| **Előfizetés azonosítókat előzetes verzió** | Adjon hozzá egy és 100 közötti előfizetési azonosítók a dokumentummegjelenítők. Ezek fehér felsorolt előfizetéssel hozzáfér az ajánlatra való közzététel után, mielőtt élő kerül. |
-| **Hasznos hivatkozások**          | Lehet, hogy az üzleti és technikai kategóriák kínáló többszörös kijelölés legjobb társítva.  Legfeljebb 10 engedélyezett. Ügyeljen arra, hogy legalább egy hivatkozást a dokumentációban és a egy hivatkozást a kompatibilis IoT Edge-eszközök hozzáadása az [Azure IoT-eszközök katalógusának](https://catalog.azureiotsolutions.com/). |
-| **Javasolt kategóriák\*** | Válasszon legfeljebb öt kategóriába. Azok fog megjelenni a termék részletes információját. A Tallózás lapon minden IoT Edge-modulok alatt látható a *IOT- \> IoT Edge-modul* kategória.|
+| **Cím\***                 | Az ajánlat címe. Ez kiemelten jelenik meg a piactéren.  Legfeljebb 50 karakter hosszú lehet. <!--ADD PICTURE IN ACTION-->|
+| **Összefoglalás\***               | Az ajánlat rövid összefoglalása. Legfeljebb 100 karakter hosszú lehet. <!--ADD PICTURE IN ACTION-->|
+| **Hosszú összefoglalás\***          | Az ajánlat összefoglalása (bár lehet, hogy megegyezik az **összegzéssel**).  Legfeljebb 256 karakter hosszú lehet. <!--ADD PICTURE IN ACTION-->|
+| **Leírás\***           | Az ajánlat leírása.  Legfeljebb 3000 karakter hosszú lehet, és támogatja az egyszerű HTML-formázást.<br/> Tartalmaznia kell a *minimális hardverkövetelmények* bekezdést az alján. például: <br/> <p><u>Minimális hardverkövetelmények:</u> Linux x64 és arm32 OS, 1 GB RAM, 500 MB tárterület</p>
+| **Marketing-azonosító\***  | Az ajánlathoz társítandó egyedi URL-cím, amely jellemzően a szervezet és a megoldás nevét, a maximális hossz 50 karaktert tartalmazza.  Például: <br/> `https://azuremarketplace.microsoft.com/marketplace/apps/contoso.sampleIoTEdgeModule`  |
+| **Előfizetési azonosítók előnézete** | Adja hozzá az előnézetek egy 100 előfizetés-azonosítóját. Ezek a felsorolt előfizetések a közzétételük előtt hozzáférhetnek az ajánlathoz, mielőtt a szolgáltatás elérhetővé válik. |
+| **Hasznos hivatkozások**          | Többek között az üzleti és technikai kategóriák közül választhat, melyeket a legjobban társíthat.  Legfeljebb 10 engedélyezett. Ügyeljen arra, hogy legalább egy hivatkozást adjon hozzá a dokumentációhoz, és egy hivatkozást az [Azure IoT-eszköz](https://catalog.azureiotsolutions.com/)kompatibilis IoT Edge eszközeire. |
+| **Javasolt kategóriák\*** | Válasszon legfeljebb öt kategóriát. A termék részletei lapon jelennek meg. A Tallózás lapokon az összes IoT Edge modul a *eszközök internetes hálózata \> IoT Edge modul* kategóriában látható.|
 |  |  |
 
 
-### <a name="offer-example"></a>Az ajánlat példa
+### <a name="offer-example"></a>Példa ajánlatra
 
- Az alábbi példák mutatják hogyan az ajánlat **cím**, **összefoglalás**, **leírás**, **emblémák**, és **képernyőképek** mező jelenik meg a különböző nézeteket.
+ Az alábbi példák bemutatják, hogyan jelennek meg az ajánlat **címe**, **összegzése**, **leírása**, **emblémája**és **képernyőképei** mezők különböző nézetekben.
 
  
 #### <a name="on-the-azure-marketplace-website"></a>Az Azure Marketplace webhelyén:
 
-- Ajánlatok böngészésekor:
+- Böngészési ajánlatok:
 
-    ![Hogyan marketplace-ajánlat jelennek meg az Azure piactér webhelyén – tallózása](./media/iot-edge-module-ampdotcom-card.png)
+    ![Hogyan jelennek meg a piactéren elérhető ajánlatok az Azure Marketplace webhelyén – Tallózás](./media/iot-edge-module-ampdotcom-card.png)
 
-- Ha megnézzük az ajánlat részletei:
+- Az ajánlat részleteit itt tekintheti meg:
 
-    ![Hogyan IoT Edge-modul megjelenik-e, amikor a jövőt láthatja a termékek részleteit a webhely](./media/iot-edge-module-ampdotcom-pdp.png)
+    ![Hogyan jelenik meg IoT Edge modul a termék részleteinek a webhelyen való megkeresése során](./media/iot-edge-module-ampdotcom-pdp.png)
 
 
-#### <a name="on-the-azure-portal-website"></a>Az Azure portal webhelyén:
+#### <a name="on-the-azure-portal-website"></a>A Azure Portal webhelyén:
 
-- Ajánlatok böngészésekor:
+- Böngészési ajánlatok:
 
-    ![Hogyan IoT Edge-modul megjelenik-e az Azure Portalon #1 böngészésekor](./media/iot-edge-module-portal-browse.png)
+    ![Hogyan jelenik meg IoT Edge modul a Azure Portal böngészése során #1](./media/iot-edge-module-portal-browse.png)
 
-    ![Hogyan IoT Edge-modul megjelenik-e az Azure Portalon #2 böngészésekor](./media/iot-edge-module-portal-product-picker.png)
+    ![Hogyan jelenik meg IoT Edge modul a Azure Portal böngészése során #2](./media/iot-edge-module-portal-product-picker.png)
 
-- Az ajánlat keresésekor:
+- Ajánlat keresésekor:
 
-    ![Hogyan IoT Edge-modul megjelenik-e az Azure Portalon keresésekor](./media/iot-edge-module-portal-search.png)
+    ![Hogyan jelenik meg IoT Edge modul a Azure Portal keresésekor](./media/iot-edge-module-portal-search.png)
 
-- Ha megnézzük az ajánlat részletei:
+- Az ajánlat részleteit itt tekintheti meg:
 
-    ![Hogyan IoT Edge-modul megjelenik-e ha a termék adatait a portálon](./media/iot-edge-module-portal-pdp.png)
+    ![Hogyan jeleníti meg IoT Edge modul a termék részleteit a portálon](./media/iot-edge-module-portal-pdp.png)
 
 
 ## <a name="marketing-artifacts"></a>Marketing-összetevők
 
-Ez a szakasz a következő alszakaszokat rendelkezik: **Emblémák**, **képernyőkép**, és **videók**. 
+Ez a szakasz a következő alszakaszokat tartalmazza: **logók**, **képernyőfelvétel**és **videók**. 
 
 >[!Note]
->Emblémák az egyetlen szükséges összetevőket, marketing, azonban az összes ajánlott ügyfél jogorvoslati erősen ajánlott.
+>A logók az egyetlen szükséges marketing-összetevők, azonban a legjobb ügyfelek számára ajánlott.
 
-![A piactér lapján a virtuális gépek az új ajánlat űrlap összetevők szakaszában marketing](./media/publishvm_009.png)
+![Marketing-összetevők szakasz a piactér lap új ajánlat űrlapján a virtuális gépekhez](./media/publishvm_009.png)
 
 |  **Mező**                |     **Leírás**                                                          |
 |  ---------                |     ---------------                                                          |
-| *Emblémát*  | Tekintse meg az előző képernyőre megtekintheti, hol és hogyan használható a emblémák rögzíti.  |
-| **Kis\***                 | 40 x 40 képpontos PNG formátum                                                     |
-| **Közepes\***                | 90 x 90 képpontos PNG formátum                                                     |
-| **Nagy méretű\***                 | 115 x 115 képpontos PNG formátum                                                  |
-| **Széles körű\***                  | 255 x 115 képpontos PNG formátum                                                   |
-| **Fő kép**                  | 815 x 290 képpontos PNG formátumú.  Nem kötelező, azonban egyszer feltöltött a hero ikon nem lehet törölni. |
-| *Képernyőképek*  | Képernyőképek jelenik meg a termék részletes információját. Azok a jó módszer annak szemléltetésére, az IoT Edge-modul célja, és hogyan működik. Architektúra-diagramok megjelenítése, vagy kis illusztrációk példányhoz használja. Nem kötelező, de legfeljebb öt képernyőképek kiszolgálónként Termékváltozat. |
-| **Name (Név)**                  | Neve vagy címe. A hosszabb 100 karakternél.                             |
-| **Rendszerkép**                 | Képernyő lemezképet, 533 x 324 képpontos PNG formátum                               |
-| *Videók*  | Videók a termék részletező lapján jelennek meg. Azok a jó módszer annak szemléltetésére, az IoT Edge-modul célja, és hogyan működik. |
-| **Name (Név)**                  | Neve vagy címe. A hosszabb 100 karakternél.                             |
-| **Hivatkozás**                  | Videó URL-címe, YouTube vagy Vimeo tárolt                                        |
-| **Miniatűr**             | 533 x 324 képpontos PNG formátum                                                     |
+| *Logók*  | Tekintse meg az előző képernyőfelvételeket, ahol megtekintheti, hogyan és hol fogja használni a logókat.  |
+| **Kis\***                 | 40x40cm képpont PNG formátum                                                     |
+| **Közepes\***                | 90x90 képpont PNG formátum                                                     |
+| **Nagyméretű\***                 | 115x115 képpont PNG formátum                                                  |
+| **Széles\***                  | 255x115 képpont PNG formátum                                                   |
+| **Hero**                  | 815x290 képpont PNG formátuma  Nem kötelező, de feltöltés után a Hero ikon nem törölhető. |
+| *Képernyőképek*  | A Képernyőképek a termék részletei lapon jelennek meg. Jól szemléltetik a IoT Edge-modul működését és működésének módját. Megtekintheti az architektúrához tartozó diagramokat, vagy használhat példákat az esettanulmányok használatára. Nem kötelező, de SKU-onként legfeljebb öt képernyőkép. |
+| **Name (Név)**                  | Név vagy cím. Legfeljebb 100 karakter hosszú lehet.                             |
+| **Rendszerkép**                 | Képernyőfelvétel kép, 533x324 képpont PNG formátum                               |
+| *Videók*  | A videók a termék részletei lapon jelennek meg. Jól szemléltetik a IoT Edge-modul működését és működésének módját. |
+| **Name (Név)**                  | Név vagy cím. Legfeljebb 100 karakter hosszú lehet.                             |
+| **Hivatkozás**                  | Videó URL-címe, amelyet a YouTube vagy a Vimeo tárol                                        |
+| **Miniatűr**             | 533x324 képpont PNG formátum                                                     |
 |  |  |
 
 
@@ -105,28 +106,28 @@ Ez a szakasz a következő alszakaszokat rendelkezik: **Emblémák**, **képerny
 <!-- It seems like this section could be better located in some common area, maybe an AMP Marketing/Design section 
 +1 this should all be in a common area and referenced from here to that location.-->
 
-A Cloud Partner portálra feltöltött összes emblémák útmutatást követik:
+A Cloud Partner Portal feltöltött összes emblémának a következő irányelveket kell követnie:
 
-*  Az Azure arculata egyszerű színpalettát használ. Tartsa számát az elsődleges és másodlagos színt az embléma alacsony.
-*  Az Azure Portal a témák színei fehér, és fekete. Kerülje a színek használata az emblémát, a háttér színe. Használjon színt, amellyel a emblémák neves az Azure Portalon. Javasoljuk az egyszerű alapszínek használatát. Ha áttetsző háttérrel használ, győződjön meg róla, hogy a emblémák szöveg nem fehér, fekete, vagy a kék.
-*  Az embléma háttér átmenetének nem használja.
-*  Elkerüli a szöveg – a vállalat vagy a márkanév még – az embléma a. Az embléma megjelenését és működését "egyszerű" kell lennie, és kerülje átmenetekhez.
-*  Az embléma nem stretch.
+*  Az Azure arculata egyszerű színpalettát használ. Tartsa meg az elsődleges és a másodlagos színek számát a logón.
+*  Az Azure Portal téma színei fehérek és feketeok. Ne használja ezeket a színeket a logók háttérszínéhez. Használjon olyan színt, amely a Azure Portalban Kiemelt emblémát tesz elérhetővé. Javasoljuk az egyszerű alapszínek használatát. Ha transzparens hátteret használ, ügyeljen arra, hogy a logók/szöveg ne legyen fehér, fekete vagy kék.
+*  Ne használjon színátmenetes hátteret az emblémán.
+*  A logón ne helyezzen el szöveget – még a vállalat vagy a márka nevét is –. Az embléma megjelenésének és működésének "Flat" típusúnak kell lennie, és el kell kerülnie a színátmeneteket.
+*  Ne nyújtsa be az emblémát.
 
 
 #### <a name="hero-logo"></a>Főképembléma
 
-A Hero embléma megadása nem kötelező.
+A Hero embléma nem kötelező.
 
 >[!Important]
->Miután feltöltötte a Hero embléma, nem lehet törölni.
+>A Hero embléma feltöltése után nem törölhető.
 
-Hero emblémát a következőkre használhatja: 
+Kövesse az alábbi irányelveket a Hero emblémához: 
 
-*  Fekete, a fehér és áttetsző háttérrel nem engedélyezett.
-*  Ne használja a bármely világos szín, a háttérben az emblémát.  A közzétevő megjelenített név, cím és az ajánlat hosszú összegzése fehér betűszínt jelennek meg, és a háttér előtt kell kiemelkedik csomagot.
-*  Ne használja a legtöbb szöveg, amikor az identitásfelügyelet az embléma. A közzétevő neve, csomag cím, az ajánlat hosszú összegzése és a Létrehozás gombra programozott módon vannak ágyazva az embléma esetén az ajánlatot. 
-* Tartalmazza a hero embléma a jobb oldalon egy nem használt négyszögletes területet. Az üres helyet 415 x 100 képpont, de eltolás a balról és 370 képpont.  
+*  A fekete, fehér és transzparens hátterek nem engedélyezettek.
+*  Ne használjon világos színt az embléma háttereként.  A közzétevő megjelenítendő neve, a terv címe és az ajánlat hosszú összegzése fehér színű betűtípussal jelenik meg, és a háttérben kell állnia.
+*  Ne használja a legtöbb szöveget a logó tervezésekor. A közzétevő neve, a csomag címe, az ajánlat hosszú összegzése és a létrehozás gomb programozott módon van beágyazva az emblémán belül, ha az ajánlat fel van sorolva. 
+* Vegyen fel egy nem használt téglalap alakú helyet a hős emblémájának jobb oldalán. Ez az üres terület 415x100 képpont, a bal oldali eltolás pedig 370 képpont.  
 
 <!-- P2: woudl be nice to also have an picture int he context of iot edge of the hero image
 As an example, the following hero icon is for the Azure Container Service.
@@ -137,19 +138,19 @@ As an example, the following hero icon is for the Azure Container Service.
 
 ## <a name="lead-management"></a>Érdeklődők kezelése
 
-Ez a szakasz lehetővé teszi, hogy beállította az ügyfél gyűjtésére vonatkozó beállítások az Azure Marketplace-ajánlat a generált vezet. A következő tárolási lehetőségeket egy legördülő lista közül választhat.
+Ez a szakasz lehetővé teszi az Azure Marketplace-ajánlatokból előállított ügyfelek-érdeklődők összegyűjtési lehetőségeinek beállítását. A következő tárolási lehetőségek közül választhat legördülő listából.
 
-* **Nincs** – az alapértelmezett, az érdeklődők adatait nem gyűjtötte a program.
-* Azure Table - kapcsolati karakterlánc által meghatározott Azure-tábla írása.
-* Dynamics CRM Online - írni a [Microsoft Dynamics 365 Online](https://dynamics.microsoft.com/) példányhoz egy URL-cím és a hitelesítést a hitelesítő adatokat a megadott.
-* HTTPS-végpont - írása JSON-adatként megadott HTTPS-végpontokat.
-* Marketo - írni a megadott [Marketo](https://www.marketo.com/) példány, a kiszolgáló-Azonosítót, a munchkin azonosítója és a képernyő azonosítója. által megadott
-* Salesforce - írt egy [Salesforce](https://www.salesforce.com/) adatbázis, az objektum azonosítója által megadott.
+* **Nincs** – az alapértékek nem lesznek begyűjtve.
+* Azure Table – a kapcsolódási karakterlánc által megadott Azure-táblába írva.
+* Dynamics CRM Online – az URL-cím és a hitelesítő adatok által megadott [Microsoft Dynamics 365 online](https://dynamics.microsoft.com/) példányra íródott.
+* HTTPS-végpont – a megadott HTTPS-végpontba írt JSON-adattartalomként.
+* Marketo – a megadott [Marketo](https://www.marketo.com/) -példányra íródik, amely a kiszolgáló azonosítója, a Munchkin azonosítója és az űrlap azonosítója alapján van megadva.
+* Salesforce – egy objektumazonosító által megadott [Salesforce](https://www.salesforce.com/) -adatbázisba írt.
 
-Után az ajánlat közzététele sikeresen megtörtént, az érdeklődő kapcsolat ellenőrzése, és a egy teszt érdeklődő automatikusan elküldi a célra konfigurált. 
+Az ajánlat sikeres közzététele után a rendszer ellenőrzi az érdeklődői kapcsolatokat, és automatikusan elvégzi a tesztelési érdeklődők küldését a konfigurált célhelyre. 
 
 >[!Note]
->Elégtelen információk folyamatosan kell kezelni, és ezek a beállítások azonnal frissíteni kell, amikor az ügyfél architektúra végrehajtott módosítások.
+>Az érdeklődői adatokat folyamatosan kell felügyelni, és ezeket a beállításokat azonnal frissíteni kell, amikor módosításokat végeznek az ügyfél-felügyeleti architektúrán.
 
 <!-- there is missing some marketing imagess
 1. inside azure portal the wide logo/regular logo
@@ -160,16 +161,16 @@ Után az ajánlat közzététele sikeresen megtörtént, az érdeklődő kapcsol
 
 ## <a name="legal"></a>Jogi tudnivalók
 
-Ebben a szakaszban adja meg a két jogi dokumentumok, amelyek szükségesek az egyes ajánlatok teszi lehetővé: Adatvédelmi szabályzat és a használati feltételeket.
+Ebben a szakaszban megadhatja az egyes ajánlatokhoz szükséges két jogi dokumentumot: az adatvédelmi szabályzatot és a használati feltételeket.
 
 |  **Mező**                    |     **Leírás**                                                          |
 |  ---------                    |     ---------------                                                          |
 | **Adatvédelmi szabályzat URL-címe\***      | A közzétett adatvédelmi szabályzat URL-címe                                            |
-| **Standard szintű Constract használata\***  | -E a Microsoft szabványos szerződéses sablon használatához.  További információkért lásd: [általános szerződési](https://docs.microsoft.com/azure/marketplace/standard-contract).   |
-| **Használati feltételek\***            | *Használati feltételek* beágyazott, egyszerű HTML vagy a feladott használati használata lap hivatkozása     |
+| **Szabványos Constract használata\***  | Azt határozza meg, hogy a Microsoft szabványos szerződési sablonját használja-e.  További információ: [standard szintű szerződés](https://docs.microsoft.com/azure/marketplace/standard-contract).   |
+| **Használati feltételek\***            | *Használati feltételek* a beágyazott egyszerű HTML-ként, vagy a használati feltételek oldalára mutató hivatkozás     |
 |  |  |
 
 
 ## <a name="next-steps"></a>További lépések
 
-Használja a [támogatja](./cpp-support-tab.md) fülre, és adja meg a technikai és felhasználói erőforrások támogatása az ajánlatot.
+A [támogatás](./cpp-support-tab.md) lapon megadhatja az ajánlat technikai és felhasználói támogatási erőforrásait.

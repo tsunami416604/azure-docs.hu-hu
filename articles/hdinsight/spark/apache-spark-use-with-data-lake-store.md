@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/13/2019
-ms.openlocfilehash: 7c60fdfd4d8e579c24da3c43501e4437806becc6
-ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
+ms.openlocfilehash: f7a6ab954aff1bcc2e3dae3fc035db4b136ccbbe
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73241713"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73818166"
 ---
 # <a name="use-hdinsight-spark-cluster-to-analyze-data-in-data-lake-storage-gen1"></a>Az HDInsight Spark-fürt használata Data Lake Storage Gen1ban lévő adatelemzéshez
 
@@ -30,7 +30,7 @@ Ebben a cikkben a HDInsight Spark-fürtökkel elérhető [Jupyter Notebookeket](
 > [!NOTE]  
 > Ezt a lépést nem kell végrehajtania, ha a HDInsight-fürtöt Data Lake Storage alapértelmezett tárolóként hozta létre. A fürt létrehozási folyamata felvesz néhány mintaadatok a fürt létrehozásakor megadott Data Lake Storage fiókba. Ugorjon a HDInsight Spark-fürt használata Data Lake Storage használatával című szakaszra.
 
-Ha olyan HDInsight-fürtöt hozott létre, amely Data Lake Storage további tárterületként, és Azure Storage Blob alapértelmezett tárolóként, akkor először másolja át néhány mintaadatok a Data Lake Storage-fiókba. A mintaadatok a HDInsight-fürthöz társított Azure Storage Blob alapján használhatók. Ehhez a [ADLCopy eszközt](https://aka.ms/downloadadlcopy) használhatja. Töltse le és telepítse az eszközt a hivatkozásból.
+Ha olyan HDInsight-fürtöt hozott létre, amely Data Lake Storage további tárterületként, és Azure Storage Blob alapértelmezett tárolóként, akkor először másolja át néhány mintaadatok a Data Lake Storage-fiókba. A mintaadatok a HDInsight-fürthöz társított Azure Storage Blob alapján használhatók. Ehhez a [ADLCopy eszközt](https://www.microsoft.com/download/details.aspx?id=50358) használhatja. Töltse le és telepítse az eszközt a hivatkozásból.
 
 1. Nyisson meg egy parancssort, és navigáljon ahhoz a könyvtárhoz, ahol a AdlCopy telepítve van, jellemzően `%HOMEPATH%\Documents\adlcopy`.
 
@@ -124,7 +124,7 @@ Ha olyan HDInsight-fürtöt hozott létre, amely Data Lake Storage további tár
 8. Az alkalmazás futtatását követően állítsa le a notebookot az erőforrások felszabadítása érdekében. Ehhez a notebook **File** (Fájl) menüjében kattintson a **Close and Halt** (Bezárás és leállítás) elemre. Ezzel leállítja és bezárja a notebookot.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Önálló Scala-alkalmazás létrehozása Apache Spark fürtön való futtatáshoz](apache-spark-create-standalone-application.md)
 * [HDInsight-eszközök használata a Azure Toolkit for IntelliJban Apache Spark alkalmazások létrehozásához a HDInsight Spark Linux-fürthöz](apache-spark-intellij-tool-plugin.md)

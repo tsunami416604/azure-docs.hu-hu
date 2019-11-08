@@ -11,14 +11,14 @@ author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 09/25/2019
-ms.openlocfilehash: 53a190a611af42f0eaca8d4348d1d066d3d4f9e4
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: f95798241084efdb91993a5add52f84a8a6dc1ec
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73584417"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73814803"
 ---
-# <a name="train-with-datasets-preview-in-azure-machine-learning"></a>Az adatkészletek (előzetes verzió) betanítása Azure Machine Learning
+# <a name="train-with-datasets-in-azure-machine-learning"></a>Betanítás Azure Machine Learning-adatkészletekkel
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 Ebből a cikkből megtudhatja, hogyan használhatja fel [Azure Machine learning adatkészleteket](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset%28class%29?view=azure-ml-py) a távoli kísérletek képzésében, és nem kell aggódnia a kapcsolódási karakterláncok vagy az adatelérési utak miatt.
@@ -40,7 +40,7 @@ Az adatkészletek létrehozásához és betanításához a következők szüksé
 * A [Azure Machine learning SDK for Python telepítve](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py), amely tartalmazza a azureml-adatkészletek csomagot.
 
 > [!Note]
-> Egyes adatkészlet-osztályok (előzetes verzió) függőségei vannak a [azureml-adatelőkészítés](https://docs.microsoft.com/python/api/azureml-dataprep/?view=azure-ml-py) csomagon. A Linux-felhasználók esetében ezek az osztályok csak a következő disztribúciókban támogatottak: Red Hat Enterprise Linux, Ubuntu, Fedora és CentOS.
+> Egyes adatkészlet-osztályok függőségei vannak a [azureml-adatelőkészítés](https://docs.microsoft.com/python/api/azureml-dataprep/?view=azure-ml-py) csomagon. A Linux-felhasználók esetében ezek az osztályok csak a következő disztribúciókban támogatottak: Red Hat Enterprise Linux, Ubuntu, Fedora és CentOS.
 
 ## <a name="option-1-use-datasets-directly-in-training-scripts"></a>1\. lehetőség: adatkészletek használata közvetlenül a betanítási szkriptekben
 
@@ -82,7 +82,7 @@ A kísérlet futtatásának elküldéséhez egy [kalkulátor](https://docs.micro
 Ez a kód egy általános kalkulátor-objektumot hoz létre, `est`, amely megadja a
 
 * A parancsfájlok parancsfájl-könyvtára. Az ebben a könyvtárban található összes fájl fel lesz töltve a fürtcsomópontokra végrehajtás céljából.
-* A *train_titanic.* a betanítási szkript.
+* A betanítási parancsfájl, *train_titanic.*
 * A betanításhoz használt bemeneti adatkészlet `titanic`.
 * A kísérlet számítási célja.
 * A kísérlet környezeti definíciója.

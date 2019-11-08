@@ -1,52 +1,53 @@
 ---
-title: Teljesítési SaaS API-k v1 |} Az Azure Marketplace-en
-description: Ismerteti, hogyan hozhat létre és kezelhet egy SaaS-ajánlat az Azure piactéren, a társított teljesítése v1 API-k használatával.
+title: SaaS-teljesítési API-k v1 | Azure piactér
+description: A cikk azt ismerteti, hogyan hozhat létre és kezelhet SaaS-ajánlatokat az Azure Marketplace-en a társított teljesítési v1 API-k használatával.
 services: Azure, Marketplace, Cloud Partner Portal,
 author: v-miclar
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
 ms.date: 05/23/2019
 ms.author: evansma
 ROBOTS: NOINDEX
-ms.openlocfilehash: 78162983601e9126bd34cb737e74783df982bacb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 99dd6db7003e0358ddde2438f6897cd767932227
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66258939"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73816568"
 ---
-# <a name="saas-fulfillment-apis-version-1-deprecated"></a>SaaS teljesítése API-k (elavult) az 1. verzió
+# <a name="saas-fulfillment-apis-version-1-deprecated"></a>SaaS-teljesítési API-k 1-es verziója (elavult)
 
-Ez a cikk bemutatja, hogyan hozhat létre egy SaaS-ajánlatok API-kkal. Az API-k, a REST-módszerek és a végpontok, ha a kiválasztott Azure-on keresztül kell árul, amely lehetővé teszi, hogy az SaaS-ajánlat előfizetéseinek szükségesek.  
+Ez a cikk bemutatja, hogyan hozhat létre SaaS-ajánlatokat API-kkal. A REST metódusokból és végpontokból álló API-k azért szükségesek, hogy engedélyezze az előfizetéseket az SaaS-ajánlathoz, ha az Azure-t választotta.  
 
 > [!WARNING]
-> A kezdeti SaaS teljesítése API-verzió elavult; Ehelyett használjon [SaaS teljesítése API V2](./pc-saas-fulfillment-api-v2.md).  A kezdeti API-verzió jelenleg tartják fenn csak a létező gyártók kiszolgálása érdekében. 
+> A SaaS-teljesítési API ezen kezdeti verziója elavult; Ehelyett használja a [SaaS-beteljesülés API v2](./pc-saas-fulfillment-api-v2.md)-t.  Az API ezen kezdeti-verziója jelenleg csak a meglévő közzétevők kiszolgálására van fenntartva. 
 
-A következő API-kat a SaaS-szolgáltatás integrációját az Azure-ral áll rendelkezésre:
+A következő API-k segítenek a SaaS-szolgáltatás Azure-beli integrálásában:
 
 -   Feloldás
 -   Feliratkozás
 -   Konvertálás
--   előfizetés lemondása
+-   Leiratkozás
 
 
-## <a name="api-methods-and-endpoints"></a>API-metódusai és végpontok
+## <a name="api-methods-and-endpoints"></a>API-metódusok és-végpontok
 
-A következő szakaszok ismertetik az API-metódusai és a egy SaaS-ajánlat előfizetéseinek engedélyezése végpontok.
-
-
-### <a name="marketplace-api-endpoint-and-api-version"></a>Piactér API végpontot és API-verzió
-
-Az Azure Marketplace-en API-végpont `https://marketplaceapi.microsoft.com`.
-
-Az API-verzió `api-version=2017-04-15`.
+A következő szakaszok ismertetik a SaaS-ajánlat előfizetésének engedélyezéséhez elérhető API-metódusokat és-végpontokat.
 
 
-### <a name="resolve-subscription"></a>Oldja meg az előfizetés
+### <a name="marketplace-api-endpoint-and-api-version"></a>Marketplace API-végpont és API-verzió
 
-A POST művelet oldja meg a végpont lehetővé teszi a felhasználóknak a Marketplace-en jogkivonat feloldani egy állandó erőforrás-azonosítója.  Az erőforrás-azonosítója a SAAS-előfizetéshez tartozó egyedi azonosítója. 
+Az Azure Marketplace API végpontja `https://marketplaceapi.microsoft.com`.
 
-Független Szoftverszállító webhelyre a rendszer átirányítja a felhasználót, ha az URL-címet tartalmaz egy jogkivonatot a lekérdezési paraméterek. A független Szoftvergyártók várhatóan használja ezt a jogkivonatot, és kérheti oldható meg. A válasz egyedi SAAS előfizetés-azonosító, nevét, Ajánlatazonosító, és az erőforrás tervezése tartalmaz. Ez a token érvényességét csak egy óránál.
+A jelenlegi API-verzió a `api-version=2017-04-15`.
+
+
+### <a name="resolve-subscription"></a>Előfizetés feloldása
+
+A feloldási végponton végrehajtandó művelet lehetővé teszi a felhasználók számára, hogy egy állandó erőforrás-AZONOSÍTÓval oldják fel a Piactéri jogkivonatot.  Az erőforrás-azonosító az SAAS-előfizetés egyedi azonosítója. 
+
+Amikor egy felhasználó átirányítja egy ISV webhelyére, az URL-cím tartalmaz egy tokent a lekérdezési paraméterekben. Az ISV-nak ezt a tokent kell használnia, és el kell végeznie a feloldási kérést. A válasz tartalmazza az egyedi SAAS-előfizetés AZONOSÍTÓját, nevét, ajánlatának AZONOSÍTÓját, és megtervezi az erőforrást. Ez a jogkivonat csak egy órára érvényes.
 
 *Kérés*
 
@@ -56,23 +57,23 @@ Független Szoftverszállító webhelyre a rendszer átirányítja a felhasznál
 
 |  **Paraméter neve** |     **Leírás**                                      |
 |  ------------------ |     ---------------------------------------------------- |
-|  api-version        |  A művelet ehhez a kérelemhez használt verziója.   |
+|  API-Version        |  A kérelemhez használni kívánt művelet verziója.   |
 |  |  |
 
 
 *Fejlécek*
 
-| **Fejléc kulcs**     | **Kötelező** | **Leírás**                                                                                                                                                                                                                  |
+| **Fejléc kulcsa**     | **Szükséges** | **Leírás**                                                                                                                                                                                                                  |
 |--------------------|--------------|-----------------------------------------------------------|
-| x-ms-requestid     | Nem           | A kérelem követési az ügyfélről, lehetőleg a GUID egyedi karakterlánc-érték. Ha ez az érték nincs megadva, az egyik létrehozott és a válaszfejlécek megadott.  |
-| x-ms-correlationid | Nem           | A műveletet az ügyfél egyedi karakterlánc-érték. Ez a mező utal. a kiszolgálói oldalon eseményekkel rendelkező ügyfél művelet összes eseménye. Ha ez az érték nincs megadva, az egyik létrehozott és a válaszfejlécek megadott. |
-| Content-type       | Igen          | `application/json`                                        |
-| authorization      | Igen          | A JSON webes jogkivonat (JWT) tulajdonosi jogkivonatot.                    |
-| x-ms-marketplace-token| Igen| A token lekérdezési paraméter, amikor a felhasználó az Azure-ból SaaS ISV webhelyre átirányítási URL-címét. **Megjegyzés:** Ez a token csak a érvényes 1 óra. Ezenkívül URL-CÍMÉT a böngészőben a token értékét használat előtt dekódol.|
+| x-MS-kérelemazonosító     | Nem           | Egyedi karakterlánc-érték, amely a kérésnek az ügyféltől való nyomon követésére szolgál, lehetőleg egy GUID-azonosítóval. Ha ez az érték nincs megadva, a rendszer létrehoz egy értéket, és megadja a válasz fejléceit.  |
+| x-MS-correlationId | Nem           | Egyedi karakterlánc-érték a művelethez az ügyfélen. Ez a mező az ügyfél-művelet összes eseményét korrelálja a kiszolgálóoldali eseményekkel. Ha ez az érték nincs megadva, a rendszer létrehoz egy értéket, és megadja a válasz fejléceit. |
+| Content-Type       | Igen          | `application/json`                                        |
+| engedély      | Igen          | A JSON webes jogkivonat (JWT) tulajdonosi jogkivonata.                    |
+| x-MS-Marketplace-token| Igen| Az URL-cím jogkivonat-lekérdezési paramétere, ha a felhasználó az Azure-ból származó SaaS ISV-webhelyre van átirányítva. **Megjegyzés:** Ez a jogkivonat csak 1 órára érvényes. Emellett az URL-cím dekódolja a jogkivonat értékét a böngészőből a használat előtt.|
 |  |  |  |
   
 
-*Választörzs*
+*Válasz törzse*
 
 ``` json
 {
@@ -85,60 +86,60 @@ Független Szoftverszállító webhelyre a rendszer átirányítja a felhasznál
 
 | **Paraméter neve** | **Adattípus** | **Leírás**                       |
 |--------------------|---------------|---------------------------------------|
-| id                 | String        | Az SaaS-előfizetés azonosítója.          |
-| subscriptionName| String| Az SaaS-előfizetés beállítása az Azure-ban a felhasználó a SaaS-szolgáltatásra előfizető neve.|
-| OfferId            | String        | Ajánlat azonosítója, amelyre a felhasználó előfizetett. |
-| planId             | String        | Tervezze meg, hogy a felhasználó előfizetett azonosítója.  |
+| id                 | Sztring        | Az SaaS-előfizetés azonosítója.          |
+| subscriptionName| Sztring| Az Azure-beli felhasználó által az SaaS-szolgáltatásra való feliratkozáskor beállított SaaS-előfizetés neve.|
+| OfferId            | Sztring        | Az ajánlat azonosítója, amelyhez a felhasználó előfizetett. |
+| planId             | Sztring        | A felhasználó által előfizetett csomag azonosítója.  |
 |  |  |  |
 
 
-*Válaszkódok*
+*Reagálási kódok*
 
-| **HTTP-állapotkód** | **Hibakód:**     | **Leírás**                                                                         |
+| **HTTP-állapotkód** | **Hibakód**     | **Leírás**                                                                         |
 |----------------------|--------------------| --------------------------------------------------------------------------------------- |
-| 200                  | `OK`                 | A jogkivonat sikeresen feloldva.                                                            |
-| 400                  | `BadRequest`         | Vagy kötelező fejléc hiányzik, vagy a megadott api-verziója érvénytelen. Nem sikerült feloldani a jogkivonatot, mert helytelen formátumúak vagy lejártak vagy a token (a token érvényességét csak 1 órán keresztül létrehozott). |
-| 403                  | `Forbidden`          | A hívónak nincs engedélye e művelet elvégzéséhez.                                 |
-| 429                  | `RequestThrottleId`  | Szolgáltatás egy foglalt feldolgozási kérelmek, próbálkozzon újra később.                                |
-| 503                  | `ServiceUnavailable` | Szolgáltatás van lefelé átmenetileg, próbálkozzon újra később.                                        |
+| 200                  | `OK`                 | A jogkivonat feloldása sikerült.                                                            |
+| 400                  | `BadRequest`         | A kötelező fejlécek hiányoznak vagy a megadott API-verzió érvénytelen. Nem sikerült feloldani a tokent, mert vagy a jogkivonat helytelen formátumú vagy lejárt (a jogkivonat csak 1 órára érvényes.) |
+| 403                  | `Forbidden`          | A hívó nem jogosult a művelet végrehajtására.                                 |
+| 429                  | `RequestThrottleId`  | A szolgáltatás foglalt feldolgozási kérelmeket használ, később próbálkozzon újra.                                |
+| 503                  | `ServiceUnavailable` | A szolgáltatás átmenetileg nem érhető el, próbálkozzon újra később.                                        |
 |  |  |  |
 
 
-*Válaszfejlécek*
+*Válasz fejlécei*
 
-| **Fejléc kulcs**     | **Kötelező** | **Leírás**                                                                                        |
+| **Fejléc kulcsa**     | **Szükséges** | **Leírás**                                                                                        |
 |--------------------|--------------|--------------------------------------------------------------------------------------------------------|
-| x-ms-requestid     | Igen          | Kérés azonosítója, az ügyféltől kapott.                                                                   |
-| x-ms-correlationid | Igen          | Korrelációs Azonosítót, ha az ügyfél által átadott ellenkező esetben ezt az értéket, a korrelációs azonosítóját.                   |
-| x-ms-activityid    | Igen          | A szolgáltatás a kérelem követési egyedi karakterlánc-érték. Ez az azonosító bármelyik egyeztetések szolgál. |
-| Retry-After        | Nem           | Ez az érték csak egy 429 válaszra van beállítva.                                                                   |
+| x-MS-kérelemazonosító     | Igen          | Az ügyféltől érkezett kérelem-azonosító.                                                                   |
+| x-MS-correlationId | Igen          | A korrelációs azonosító, ha az ügyfél átadja, ellenkező esetben ez az érték a kiszolgálói korrelációs azonosító.                   |
+| x-MS-tevékenységazonosító    | Igen          | Egyedi karakterlánc-érték a kérésnek a szolgáltatásból való nyomon követéséhez. Ezt az azonosítót használja a rendszer bármilyen egyeztetéshez. |
+| Újrapróbálkozás ennyivel        | Nem           | Ez az érték csak 429-válaszra van beállítva.                                                                   |
 |  |  |  |
 
 
 ### <a name="subscribe"></a>Feliratkozás
 
-Az előfizetési végpont lehetővé teszi, hogy a felhasználók számára egy egy SaaS-szolgáltatás egy adott csomag előfizetésének indítása és engedélyezése a számlázás a kereskedelmi rendszerben.
+Az előfizetés-végpont lehetővé teszi a felhasználók számára, hogy egy adott csomag esetében egy SaaS-szolgáltatáshoz indítsanak előfizetést, és lehetővé tegyék a számlázást a kereskedelmi rendszeren.
 
 **PUT**
 
-**https://marketplaceapi.microsoft.com/api/saas/subscriptions/ *{subscriptionId}* ?api-version=2017-04-15**
+**https://marketplaceapi.microsoft.com/api/saas/subscriptions/ *{subscriptionId}* ? API-Version = 2017-04-15**
 
 | **Paraméter neve**  | **Leírás**                                       |
 |---------------------|-------------------------------------------------------|
-| subscriptionId      | Egyedi azonosítója az SaaS-előfizetés, hogy a jogkivonat feloldása API-n keresztül megoldása után.                              |
-| api-version         | A művelet ehhez a kérelemhez használt verziója. |
+| subscriptionId      | Az SaaS-előfizetés egyedi azonosítója, amelyet a rendszer a jogkivonat feloldása után szerez be az API-n keresztül.                              |
+| API-Version         | A kérelemhez használni kívánt művelet verziója. |
 |  |  |
 
 *Fejlécek*
 
-|  **Fejléc kulcs**        | **Kötelező** |  **Leírás**                                                  |
+|  **Fejléc kulcsa**        | **Szükséges** |  **Leírás**                                                  |
 | ------------------     | ------------ | --------------------------------------------------------------------------------------- |
-| x-ms-requestid         |   Nem         | A kérelem követési az ügyfélről, lehetőleg a GUID egyedi karakterlánc-érték. Ha nincs megadva, az egyik létrehozott és a válaszfejlécek megadott. |
-| x-ms-correlationid     |   Nem         | A műveletet az ügyfél egyedi karakterlánc-érték. Ez az érték használatával történik a kiszolgálói oldalon eseményekkel rendelkező ügyfél művelet összes eseménye van. Ha nincs megadva, az egyik létrehozott és a válaszfejlécek megadott. |
-| If-Match/If-None-Match |   Nem         |   Erős érvényesítő ETag-érték.                                                          |
-| content-type           |   Igen        |    `application/json`                                                                   |
-|  authorization         |   Igen        |    A JSON webes jogkivonat (JWT) tulajdonosi jogkivonatot.                                               |
-| x-ms-marketplace-session-mode| Nem | Ez a jelző azt tesztfuttatás módban ahhoz, hogy egy SaaS-ajánlat feliratkozás során. Ha a beállítása, az előfizetés nem számítunk fel. Ez akkor hasznos, ISV-k olyan forgatókönyvek tesztelése esetében. Állítsa be azt **"tesztfuttatási hiba:**|
+| x-MS-kérelemazonosító         |   Nem         | Egyedi karakterlánc-érték, amely a kérésnek az ügyféltől való nyomon követésére szolgál, lehetőleg egy GUID-azonosítóval. Ha ez nincs megadva, a rendszer létrehoz egy-t, és megadja a válasz fejléceit. |
+| x-MS-correlationId     |   Nem         | Egyedi karakterlánc-érték a művelethez az ügyfélen. Ez az érték az ügyfél-művelet összes eseményének korrelációja a kiszolgálói oldalon lévő eseményekkel. Ha ez nincs megadva, a rendszer létrehoz egy-t, és megadja a válasz fejléceit. |
+| If-Match/If-None-Match |   Nem         |   Erős érvényesítő ETag értéke.                                                          |
+| Content-Type           |   Igen        |    `application/json`                                                                   |
+|  engedély         |   Igen        |    A JSON webes jogkivonat (JWT) tulajdonosi jogkivonata.                                               |
+| x-MS-Marketplace-Session-Mode| Nem | A száraz futtatási mód engedélyezése a SaaS-ajánlatra való feliratkozáskor. Ha be van állítva, a rendszer nem számítja fel az előfizetést. Ez az ISV-tesztelési forgatókönyvek esetében hasznos. Állítsa be a **"tesztfuttatási"** értékre.|
 |  |  |  |
 
 *Törzs*
@@ -151,58 +152,58 @@ Az előfizetési végpont lehetővé teszi, hogy a felhasználók számára egy 
 
 | **Elem neve** | **Adattípus** | **Leírás**                      |
 |------------------|---------------|--------------------------------------|
-| planId           | (Kötelező) Karakterlánc        | Tervezze meg a SaaS-szolgáltatás felhasználói előfizetés azonosítója.  |
+| planId           | Szükséges Karakterlánc        | Az SaaS-szolgáltatás felhasználójának megtervezése az előfizetés.  |
 |  |  |  |
 
-*Válaszkódok*
+*Reagálási kódok*
 
-| **HTTP-állapotkód** | **Hibakód:**     | **Leírás**                                                           |
+| **HTTP-állapotkód** | **Hibakód**     | **Leírás**                                                           |
 |----------------------|--------------------|---------------------------------------------------------------------------|
-| 202                  | `Accepted`           | SaaS-előfizetés aktiválási egy adott csomag érkezett.                   |
-| 400                  | `BadRequest`         | Vagy kötelező fejléc hiányzik, vagy a JSON törzsében helytelen formátumú. |
-| 403                  | `Forbidden`          | A hívónak nincs engedélye e művelet elvégzéséhez.                   |
-| 404                  | `NotFound`           | Nem található a megadott azonosítójú előfizetés                                  |
-| 409                  | `Conflict`           | Egy másik művelet van folyamatban van az előfizetésben.                     |
-| 429                  | `RequestThrottleId`  | Szolgáltatás egy foglalt feldolgozási kérelmek, próbálkozzon újra később.                  |
-| 503                  | `ServiceUnavailable` | Szolgáltatás van lefelé átmenetileg, próbálkozzon újra később.                          |
+| 202                  | `Accepted`           | Az SaaS-előfizetés aktiválása egy adott csomagra vonatkozóan érkezett.                   |
+| 400                  | `BadRequest`         | A kötelező fejlécek hiányoznak, vagy a JSON törzse helytelen formátumú. |
+| 403                  | `Forbidden`          | A hívó nem jogosult a művelet végrehajtására.                   |
+| 404                  | `NotFound`           | Az előfizetés nem található a megadott AZONOSÍTÓval                                  |
+| 409                  | `Conflict`           | Egy másik művelet van folyamatban az előfizetésben.                     |
+| 429                  | `RequestThrottleId`  | A szolgáltatás foglalt feldolgozási kérelmeket használ, később próbálkozzon újra.                  |
+| 503                  | `ServiceUnavailable` | A szolgáltatás átmenetileg nem érhető el, próbálkozzon újra később.                          |
 |  |  |  |
 
-202-es választ nyomon követheti a kért művelet állapotát az "A művelet-location" fejléc. A hitelesítés megegyezik más Marketplace API-k formájában.
+202-válasz esetén kövesse a kérési művelet állapotát a művelet – hely fejlécben. A hitelesítés ugyanaz, mint a piactér más API-jai.
 
-*Válaszfejlécek*
+*Válasz fejlécei*
 
-| **Fejléc kulcs**     | **Kötelező** | **Leírás**                                                                                        |
+| **Fejléc kulcsa**     | **Szükséges** | **Leírás**                                                                                        |
 |--------------------|--------------|--------------------------------------------------------------------------------------------------------|
-| x-ms-requestid     | Igen          | Kérés azonosítója, az ügyféltől kapott.                                                                   |
-| x-ms-correlationid | Igen          | Korrelációs Azonosítót, ha az ügyfél által átadott ellenkező esetben ezt az értéket, a korrelációs azonosítóját.                   |
-| x-ms-activityid    | Igen          | A szolgáltatás a kérelem követési egyedi karakterlánc-érték. Ez az érték minden egyeztetések szolgál. |
-| Retry-After        | Igen          | Melyik ügyfél időköz ellenőrizheti.                                                       |
-| A művelet-helye | Igen          | Hivatkozás az erőforrás műveleti állapotának beolvasása.                                                        |
+| x-MS-kérelemazonosító     | Igen          | Az ügyféltől érkezett kérelem-azonosító.                                                                   |
+| x-MS-correlationId | Igen          | A korrelációs azonosító, ha az ügyfél átadja, ellenkező esetben ez az érték a kiszolgálói korrelációs azonosító.                   |
+| x-MS-tevékenységazonosító    | Igen          | Egyedi karakterlánc-érték a kérésnek a szolgáltatásból való nyomon követéséhez. A rendszer ezt az értéket használja bármilyen egyeztetéshez. |
+| Újrapróbálkozás ennyivel        | Igen          | Az az időtartam, amellyel az ügyfél megtekintheti az állapotát.                                                       |
+| Művelet – hely | Igen          | Egy erőforrásra mutató hivatkozás a művelet állapotának lekéréséhez.                                                        |
 |  |  |  |
 
-### <a name="change-plan-endpoint"></a>Módosítás terv végpont
+### <a name="change-plan-endpoint"></a>Terv módosítása végpont
 
-A módosítás végpont lehetővé teszi, hogy a felhasználó az aktuálisan előfizetett csomag átalakítása egy új tervet.
+A módosítási végpont lehetővé teszi a felhasználó számára, hogy a jelenleg előfizetett tervet egy új csomagra alakítsa át.
 
-**PATCH**
+**JAVÍTÁS**
 
-**https://marketplaceapi.microsoft.com/api/saas/subscriptions/ *{subscriptionId}* ?api-version=2017-04-15**
+**https://marketplaceapi.microsoft.com/api/saas/subscriptions/ *{subscriptionId}* ? API-Version = 2017-04-15**
 
 | **Paraméter neve**  | **Leírás**                                       |
 |---------------------|-------------------------------------------------------|
-| subscriptionId      | ID az SaaS-előfizetés.                              |
-| api-version         | A művelet ehhez a kérelemhez használt verziója. |
+| subscriptionId      | SaaS-előfizetés azonosítója.                              |
+| API-Version         | A kérelemhez használni kívánt művelet verziója. |
 |  |  |
 
 *Fejlécek*
 
-| **Fejléc kulcs**          | **Kötelező** | **Leírás**                                                                                                                                                                                                                  |
+| **Fejléc kulcsa**          | **Szükséges** | **Leírás**                                                                                                                                                                                                                  |
 |-------------------------|--------------|---------------------------------------------------------------------------------------------------------------------|
-| x-ms-requestid          | Nem           | Az ügyfél a kérés követési egyedi karakterlánc-érték. Javasoljuk, egy GUID Azonosítót. Ha nincs megadva, az egyik létrehozott és a válaszfejlécek megadott.   |
-| x-ms-correlationid      | Nem           | A műveletet az ügyfél egyedi karakterlánc-érték. Ez az érték használatával történik a kiszolgálói oldalon eseményekkel rendelkező ügyfél művelet összes eseménye van. Ha nincs megadva, az egyik létrehozott és a válaszfejlécek megadott. |
-| If-Match /If-None-Match | Nem           | Erős érvényesítő ETag-érték.                              |
-| content-type            | Igen          | `application/json`                                        |
-| authorization           | Igen          | A JSON webes jogkivonat (JWT) tulajdonosi jogkivonatot.                    |
+| x-MS-kérelemazonosító          | Nem           | Egyedi karakterlánc-érték az ügyféltől érkező kérés nyomon követéséhez. GUID-azonosítók ajánlása. Ha ez nincs megadva, a rendszer létrehoz egy-t, és megadja a válasz fejléceit.   |
+| x-MS-correlationId      | Nem           | Egyedi karakterlánc-érték a művelethez az ügyfélen. Ez az érték az ügyfél-művelet összes eseményének korrelációja a kiszolgálói oldalon lévő eseményekkel. Ha ez nincs megadva, a rendszer létrehoz egy-t, és megadja a válasz fejléceit. |
+| If-Match/If-None-Match | Nem           | Erős érvényesítő ETag értéke.                              |
+| Content-Type            | Igen          | `application/json`                                        |
+| engedély           | Igen          | A JSON webes jogkivonat (JWT) tulajdonosi jogkivonata.                    |
 |  |  |  |
 
 *Törzs*
@@ -215,109 +216,109 @@ A módosítás végpont lehetővé teszi, hogy a felhasználó az aktuálisan el
 
 |  **Elem neve** |  **Adattípus**  | **Leírás**                              |
 |  ---------------- | -------------   | --------------------------------------       |
-|  planId           |  (Kötelező) Karakterlánc         | Tervezze meg a SaaS-szolgáltatás felhasználói előfizetés azonosítója.          |
+|  planId           |  Szükséges Karakterlánc         | Az SaaS-szolgáltatás felhasználójának megtervezése az előfizetés.          |
 |  |  |  |
 
-*Válaszkódok*
+*Reagálási kódok*
 
-| **HTTP-állapotkód** | **Hibakód:**     | **Leírás**                                                           |
+| **HTTP-állapotkód** | **Hibakód**     | **Leírás**                                                           |
 |----------------------|--------------------|---------------------------------------------------------------------------|
-| 202                  | `Accepted`           | SaaS-előfizetés aktiválási egy adott csomag érkezett.                   |
-| 400                  | `BadRequest`         | Vagy kötelező fejléc hiányzik, vagy a JSON törzsében helytelen formátumú. |
-| 403                  | `Forbidden`          | A hívónak nincs engedélye e művelet elvégzéséhez.                   |
-| 404                  | `NotFound`           | Nem található a megadott azonosítójú előfizetés                                  |
-| 409                  | `Conflict`           | Egy másik művelet van folyamatban van az előfizetésben.                     |
-| 429                  | `RequestThrottleId`  | Szolgáltatás egy foglalt feldolgozási kérelmek, próbálkozzon újra később.                  |
-| 503                  | `ServiceUnavailable` | Szolgáltatás van lefelé átmenetileg, próbálkozzon újra később.                          |
+| 202                  | `Accepted`           | Az SaaS-előfizetés aktiválása egy adott csomagra vonatkozóan érkezett.                   |
+| 400                  | `BadRequest`         | A kötelező fejlécek hiányoznak, vagy a JSON törzse helytelen formátumú. |
+| 403                  | `Forbidden`          | A hívó nem jogosult a művelet végrehajtására.                   |
+| 404                  | `NotFound`           | Az előfizetés nem található a megadott AZONOSÍTÓval                                  |
+| 409                  | `Conflict`           | Egy másik művelet van folyamatban az előfizetésben.                     |
+| 429                  | `RequestThrottleId`  | A szolgáltatás foglalt feldolgozási kérelmeket használ, később próbálkozzon újra.                  |
+| 503                  | `ServiceUnavailable` | A szolgáltatás átmenetileg nem érhető el, próbálkozzon újra később.                          |
 |  |  |  |
 
-*Válaszfejlécek*
+*Válasz fejlécei*
 
-| **Fejléc kulcs**     | **Kötelező** | **Leírás**                                                                                        |
+| **Fejléc kulcsa**     | **Szükséges** | **Leírás**                                                                                        |
 |--------------------|--------------|--------------------------------------------------------------------------------------------------------|
-| x-ms-requestid     | Igen          | Kérés azonosítója, az ügyféltől kapott.                                                                   |
-| x-ms-correlationid | Igen          | Korrelációs Azonosítót, ha az ügyfél által átadott ellenkező esetben ezt az értéket, a korrelációs azonosítóját.                   |
-| x-ms-activityid    | Igen          | A szolgáltatás a kérelem követési egyedi karakterlánc-érték. Ez az érték minden egyeztetések szolgál. |
-| Retry-After        | Igen          | Melyik ügyfél időköz ellenőrizheti.                                                       |
-| A művelet-helye | Igen          | Hivatkozás az erőforrás műveleti állapotának beolvasása.                                                        |
+| x-MS-kérelemazonosító     | Igen          | Az ügyféltől érkezett kérelem-azonosító.                                                                   |
+| x-MS-correlationId | Igen          | A korrelációs azonosító, ha az ügyfél átadja, ellenkező esetben ez az érték a kiszolgálói korrelációs azonosító.                   |
+| x-MS-tevékenységazonosító    | Igen          | Egyedi karakterlánc-érték a kérésnek a szolgáltatásból való nyomon követéséhez. A rendszer ezt az értéket használja bármilyen egyeztetéshez. |
+| Újrapróbálkozás ennyivel        | Igen          | Az az időtartam, amellyel az ügyfél megtekintheti az állapotát.                                                       |
+| Művelet – hely | Igen          | Egy erőforrásra mutató hivatkozás a művelet állapotának lekéréséhez.                                                        |
 |  |  |  |
 
 ### <a name="delete-subscription"></a>Előfizetés törlése
 
-Az előfizetési végpont a törlési művelet lehetővé teszi, hogy a felhasználó töröl egy előfizetést a megadott azonosítót.
+A feliratkozási végpont törlés művelete lehetővé teszi a felhasználó számára egy adott AZONOSÍTÓJÚ előfizetés törlését.
 
 *Kérés*
 
 **DELETE**
 
-**https://marketplaceapi.microsoft.com/api/saas/subscriptions/ *{subscriptionId}* ?api-version=2017-04-15**
+**https://marketplaceapi.microsoft.com/api/saas/subscriptions/ *{subscriptionId}* ? API-Version = 2017-04-15**
 
 | **Paraméter neve**  | **Leírás**                                       |
 |---------------------|-------------------------------------------------------|
-| subscriptionId      | ID az SaaS-előfizetés.                              |
-| api-version         | A művelet ehhez a kérelemhez használt verziója. |
+| subscriptionId      | SaaS-előfizetés azonosítója.                              |
+| API-Version         | A kérelemhez használni kívánt művelet verziója. |
 |  |  |
 
 *Fejlécek*
 
-| **Fejléc kulcs**     | **Kötelező** | **Leírás**                                                                                                                                                                                                                  |
+| **Fejléc kulcsa**     | **Szükséges** | **Leírás**                                                                                                                                                                                                                  |
 |--------------------|--------------| ----------------------------------------------------------|
-| x-ms-requestid     | Nem           | Az ügyfél a kérés követési egyedi karakterlánc-érték. Javasoljuk, egy GUID Azonosítót. Ha ez az érték nincs megadva, az egyik létrehozott és a válaszfejlécek megadott.                                                           |
-| x-ms-correlationid | Nem           | A műveletet az ügyfél egyedi karakterlánc-érték. Ez az érték használatával történik a kiszolgálói oldalon eseményekkel rendelkező ügyfél művelet összes eseménye van. Ha nincs megadva, az egyik létrehozott és a válaszfejlécek megadott. |
-| authorization      | Igen          | A JSON webes jogkivonat (JWT) tulajdonosi jogkivonatot.                    |
+| x-MS-kérelemazonosító     | Nem           | Egyedi karakterlánc-érték az ügyféltől érkező kérés nyomon követéséhez. GUID-azonosítók ajánlása. Ha ez az érték nincs megadva, a rendszer létrehoz egy értéket, és megadja a válasz fejléceit.                                                           |
+| x-MS-correlationId | Nem           | Egyedi karakterlánc-érték a művelethez az ügyfélen. Ez az érték az ügyfél-művelet összes eseményének korrelációja a kiszolgálói oldalon lévő eseményekkel. Ha ez nincs megadva, a rendszer létrehoz egy-t, és megadja a válasz fejléceit. |
+| engedély      | Igen          | A JSON webes jogkivonat (JWT) tulajdonosi jogkivonata.                    |
 |  |  |  |
 
-*Válaszkódok*
+*Reagálási kódok*
 
-| **HTTP-állapotkód** | **Hibakód:**     | **Leírás**                                                           |
+| **HTTP-állapotkód** | **Hibakód**     | **Leírás**                                                           |
 |----------------------|--------------------|---------------------------------------------------------------------------|
-| 202                  | `Accepted`           | SaaS-előfizetés aktiválási egy adott csomag érkezett.                   |
-| 400                  | `BadRequest`         | Vagy kötelező fejléc hiányzik, vagy a JSON törzsében helytelen formátumú. |
-| 403                  | `Forbidden`          | A hívónak nincs engedélye e művelet elvégzéséhez.                   |
-| 404                  | `NotFound`           | Nem található a megadott azonosítójú előfizetés                                  |
-| 429                  | `RequestThrottleId`  | Service foglalt feldolgozási kérelmek, próbálkozzon újra később.                  |
-| 503                  | `ServiceUnavailable` | Szolgáltatás ideiglenesen nem működik. Próbálkozzon újra később.                          |
+| 202                  | `Accepted`           | Az SaaS-előfizetés aktiválása egy adott csomagra vonatkozóan érkezett.                   |
+| 400                  | `BadRequest`         | A kötelező fejlécek hiányoznak, vagy a JSON törzse helytelen formátumú. |
+| 403                  | `Forbidden`          | A hívó nem jogosult a művelet végrehajtására.                   |
+| 404                  | `NotFound`           | Az előfizetés nem található a megadott AZONOSÍTÓval                                  |
+| 429                  | `RequestThrottleId`  | A szolgáltatás foglalt feldolgozási kérelmeket használ, próbálkozzon újra később.                  |
+| 503                  | `ServiceUnavailable` | A szolgáltatás átmenetileg nem érhető el. Próbálkozzon újra később.                          |
 |  |  |  |
 
-202-es választ nyomon követheti a kért művelet állapotát az "A művelet-location" fejléc. A hitelesítés megegyezik más Marketplace API-k formájában.
+202-válasz esetén kövesse a kérési művelet állapotát a művelet – hely fejlécben. A hitelesítés ugyanaz, mint a piactér más API-jai.
 
-*Válaszfejlécek*
+*Válasz fejlécei*
 
-| **Fejléc kulcs**     | **Kötelező** | **Leírás**                                                                                        |
+| **Fejléc kulcsa**     | **Szükséges** | **Leírás**                                                                                        |
 |--------------------|--------------|--------------------------------------------------------------------------------------------------------|
-| x-ms-requestid     | Igen          | Kérés azonosítója, az ügyféltől kapott.                                                                   |
-| x-ms-correlationid | Igen          | Korrelációs azonosító által átadott az ügyfelet, egyébként ez-e a korrelációs azonosítóját.                   |
-| x-ms-activityid    | Igen          | A szolgáltatás a kérelem követési egyedi karakterlánc-érték. Bármely egyeztetések szolgál. |
-| Retry-After        | Igen          | Melyik ügyfél időköz ellenőrizheti.                                                       |
-| A művelet-helye | Igen          | Hivatkozás az erőforrás műveleti állapotának beolvasása.                                                        |
+| x-MS-kérelemazonosító     | Igen          | Az ügyféltől érkezett kérelem-azonosító.                                                                   |
+| x-MS-correlationId | Igen          | A korrelációs azonosító, ha az ügyfél továbbítja, ellenkező esetben ez a kiszolgálói korrelációs azonosító.                   |
+| x-MS-tevékenységazonosító    | Igen          | Egyedi karakterlánc-érték a kérésnek a szolgáltatásból való nyomon követéséhez. Ez minden egyeztetéshez használatos. |
+| Újrapróbálkozás ennyivel        | Igen          | Az az időtartam, amellyel az ügyfél megtekintheti az állapotát.                                                       |
+| Művelet – hely | Igen          | Egy erőforrásra mutató hivatkozás a művelet állapotának lekéréséhez.                                                        |
 |   |  |  |
 
-### <a name="get-operation-status"></a>Műveleti állapotának beolvasása
+### <a name="get-operation-status"></a>Művelet állapotának beolvasása
 
-Ez a végpont lehetővé teszi a felhasználó egy aktivált aszinkron művelet (az előfizetés/Unsubscribe/csomag módosítása) állapotának nyomon követését.
+Ez a végpont lehetővé teszi, hogy a felhasználó nyomon követhesse az aktivált aszinkron művelet állapotát (előfizetés/leiratkozás/módosítási terv).
 
 *Kérés*
 
 **GET**
 
-**https://marketplaceapi.microsoft.com/api/saas/operations/ *{operationId}* ?api-version=2017-04-15**
+**https://marketplaceapi.microsoft.com/api/saas/operations/ *{operationId}* ? API-Version = 2017-04-15**
 
 | **Paraméter neve**  | **Leírás**                                       |
 |---------------------|-------------------------------------------------------|
-| operationId         | A művelet által aktivált egyedi azonosítója.                |
-| api-version         | A művelet ehhez a kérelemhez használt verziója. |
+| operationId         | Az aktivált művelet egyedi azonosítója.                |
+| API-Version         | A kérelemhez használni kívánt művelet verziója. |
 |  |  |
 
 *Fejlécek*
 
-| **Fejléc kulcs**     | **Kötelező** | **Leírás**                                                                                                                                                                                                                  |
+| **Fejléc kulcsa**     | **Szükséges** | **Leírás**                                                                                                                                                                                                                  |
 |--------------------|--------------|--------------------------------------------------------------------------------------------------------------------------|
-| x-ms-requestid     | Nem           | Az ügyfél a kérés követési egyedi karakterlánc-érték. Javasoljuk, egy GUID Azonosítót. Ha ez az érték nincs megadva, az egyik létrehozott és a válaszfejlécek megadott.   |
-| x-ms-correlationid | Nem           | A műveletet az ügyfél egyedi karakterlánc-érték. Ez az érték használatával történik a kiszolgálói oldalon eseményekkel rendelkező ügyfél művelet összes eseménye van. Ha ez az érték nincs megadva, az egyik létrehozott és a válaszfejlécek megadott.  |
-| authorization      | Igen          | A JSON webes jogkivonat (JWT) tulajdonosi jogkivonatot.                    |
+| x-MS-kérelemazonosító     | Nem           | Egyedi karakterlánc-érték az ügyféltől érkező kérés nyomon követéséhez. GUID-azonosítók ajánlása. Ha ez az érték nincs megadva, a rendszer létrehoz egy értéket, és megadja a válasz fejléceit.   |
+| x-MS-correlationId | Nem           | Egyedi karakterlánc-érték a művelethez az ügyfélen. Ez az érték az ügyfél-művelet összes eseményének korrelációja a kiszolgálói oldalon lévő eseményekkel. Ha ez az érték nincs megadva, a rendszer létrehoz egy értéket, és megadja a válasz fejléceit.  |
+| engedély      | Igen          | A JSON webes jogkivonat (JWT) tulajdonosi jogkivonata.                    |
 |  |  |  | 
 
-*Választörzs*
+*Válasz törzse*
 
 ```json
 {
@@ -331,61 +332,61 @@ Ez a végpont lehetővé teszi a felhasználó egy aktivált aszinkron művelet 
 
 | **Paraméter neve** | **Adattípus** | **Leírás**                                                                                                                                               |
 |--------------------|---------------|-------------------------------------------------------------------------------------------|
-| id                 | String        | A művelet azonosítója.                                                                      |
-| status             | Enum          | A művelet állapotát, a következők egyikét: `In Progress`, `Succeeded`, vagy `Failed`.          |
-| resourceLocation   | String        | Az előfizetést, amelyhez a létrehozott vagy módosított mutató hivatkozás. Ez segít az ügyfél megszerezni a frissítve állapotot post műveletet. Ez az érték nincs beállítva `Unsubscribe` műveleteket. |
-| Létrehozva            | DateTime      | A művelet létrehozásának időpontja (UTC).                                                           |
-| módosítás dátuma       | DateTime      | Utolsó frissítése (UTC), a műveletet.                                                      |
+| id                 | Sztring        | A művelet azonosítója.                                                                      |
+| status             | Felsorolás          | A művelet állapota, a következők egyike: `In Progress`, `Succeeded`vagy `Failed`.          |
+| resourceLocation   | Sztring        | A létrehozott vagy módosított előfizetésre mutató hivatkozás. Ez segíti az ügyfelet a frissített állapot utáni művelet megszerzésében. Ez az érték nincs beállítva `Unsubscribe` műveletekhez. |
+| létrehozott            | DateTime      | Művelet létrehozásának időpontja (UTC).                                                           |
+| lastModified       | DateTime      | A művelet utolsó frissítése UTC szerint.                                                      |
 |  |  |  |
 
-*Válaszkódok*
+*Reagálási kódok*
 
-| **HTTP-állapotkód** | **Hibakód:**     | **Leírás**                                                              |
+| **HTTP-állapotkód** | **Hibakód**     | **Leírás**                                                              |
 |----------------------|--------------------|------------------------------------------------------------------------------|
-| 200                  | `OK`                 | A get-kérés sikeresen feloldva, és a válasz törzsében.    |
-| 400                  | `BadRequest`         | Vagy kötelező fejléc hiányzik, vagy egy érvénytelen api-Version paraméter lett megadva. |
-| 403                  | `Forbidden`          | A hívónak nincs engedélye e művelet elvégzéséhez.                      |
-| 404                  | `NotFound`           | Előfizetés nem található a megadott azonosítóval.                                     |
-| 429                  | `RequestThrottleId`  | Szolgáltatás egy foglalt feldolgozási kérelmek, próbálkozzon újra később.                     |
-| 503                  | `ServiceUnavailable` | Szolgáltatás van lefelé átmenetileg, próbálkozzon újra később.                             |
+| 200                  | `OK`                 | A Get kérelem sikeresen megoldódott, és a törzs tartalmazza a választ.    |
+| 400                  | `BadRequest`         | A kötelező fejlécek hiányoznak, vagy a megadott API-verzió érvénytelen. |
+| 403                  | `Forbidden`          | A hívó nem jogosult a művelet végrehajtására.                      |
+| 404                  | `NotFound`           | Az előfizetés nem található a megadott AZONOSÍTÓval.                                     |
+| 429                  | `RequestThrottleId`  | A szolgáltatás foglalt feldolgozási kérelmeket használ, később próbálkozzon újra.                     |
+| 503                  | `ServiceUnavailable` | A szolgáltatás átmenetileg nem érhető el, próbálkozzon újra később.                             |
 |  |  |  |
 
-*Válaszfejlécek*
+*Válasz fejlécei*
 
-| **Fejléc kulcs**     | **Kötelező** | **Leírás**                                                                                        |
+| **Fejléc kulcsa**     | **Szükséges** | **Leírás**                                                                                        |
 |--------------------|--------------|--------------------------------------------------------------------------------------------------------|
-| x-ms-requestid     | Igen          | Kérés azonosítója, az ügyféltől kapott.                                                                   |
-| x-ms-correlationid | Igen          | Korrelációs azonosító által átadott az ügyfelet, egyébként ez-e a korrelációs azonosítóját.                   |
-| x-ms-activityid    | Igen          | A szolgáltatás a kérelem követési egyedi karakterlánc-érték. Bármely egyeztetések szolgál. |
-| Retry-After        | Igen          | Melyik ügyfél időköz ellenőrizheti.                                                       |
+| x-MS-kérelemazonosító     | Igen          | Az ügyféltől érkezett kérelem-azonosító.                                                                   |
+| x-MS-correlationId | Igen          | A korrelációs azonosító, ha az ügyfél továbbítja, ellenkező esetben ez a kiszolgálói korrelációs azonosító.                   |
+| x-MS-tevékenységazonosító    | Igen          | Egyedi karakterlánc-érték a kérésnek a szolgáltatásból való nyomon követéséhez. Ez minden egyeztetéshez használatos. |
+| Újrapróbálkozás ennyivel        | Igen          | Az az időtartam, amellyel az ügyfél megtekintheti az állapotát.                                                       |
 |  |  |  |
 
-### <a name="get-subscription"></a>Előfizetés beszerzése
+### <a name="get-subscription"></a>Előfizetés lekérése
 
-A Get műveletet az előfizetési végpont lehetővé teszi, hogy egy felhasználó egy adott erőforrás-azonosítójú előfizetés lekéréséhez.
+A Get művelet az előfizetés-végponton lehetővé teszi, hogy a felhasználó egy adott erőforrás-azonosítóval lekérje az előfizetést.
 
 *Kérés*
 
 **GET**
 
-**https://marketplaceapi.microsoft.com/api/saas/subscriptions/ *{subscriptionId}* ?api-version=2017-04-15**
+**https://marketplaceapi.microsoft.com/api/saas/subscriptions/ *{subscriptionId}* ? API-Version = 2017-04-15**
 
 | **Paraméter neve**  | **Leírás**                                       |
 |---------------------|-------------------------------------------------------|
-| subscriptionId      | ID az SaaS-előfizetés.                              |
-| api-version         | A művelet ehhez a kérelemhez használt verziója. |
+| subscriptionId      | SaaS-előfizetés azonosítója.                              |
+| API-Version         | A kérelemhez használni kívánt művelet verziója. |
 |  |  |
 
 *Fejlécek*
 
-| **Fejléc kulcs**     | **Kötelező** | **Leírás**                                                                                           |
+| **Fejléc kulcsa**     | **Szükséges** | **Leírás**                                                                                           |
 |--------------------|--------------|-----------------------------------------------------------------------------------------------------------|
-| x-ms-requestid     | Nem           | A kérelem követési az ügyfélről, lehetőleg a GUID egyedi karakterlánc-érték. Ha ez az érték nincs megadva, az egyik létrehozott és a válaszfejlécek megadott.                                                           |
-| x-ms-correlationid | Nem           | A műveletet az ügyfél egyedi karakterlánc-érték. Ez az érték használatával történik a kiszolgálói oldalon eseményekkel rendelkező ügyfél művelet összes eseménye van. Ha ez az érték nincs megadva, az egyik létrehozott és a válaszfejlécek megadott. |
-| authorization      | Igen          | A JSON webes jogkivonat (JWT) tulajdonosi jogkivonatot.                                                                    |
+| x-MS-kérelemazonosító     | Nem           | Egyedi karakterlánc-érték, amely a kérésnek az ügyféltől való nyomon követésére szolgál, lehetőleg egy GUID-azonosítóval. Ha ez az érték nincs megadva, a rendszer létrehoz egy értéket, és megadja a válasz fejléceit.                                                           |
+| x-MS-correlationId | Nem           | Egyedi karakterlánc-érték a művelethez az ügyfélen. Ez az érték az ügyfél-művelet összes eseményének korrelációja a kiszolgálói oldalon lévő eseményekkel. Ha ez az érték nincs megadva, a rendszer létrehoz egy értéket, és megadja a válasz fejléceit. |
+| engedély      | Igen          | A JSON webes jogkivonat (JWT) tulajdonosi jogkivonata.                                                                    |
 |  |  |  |
 
-*Választörzs*
+*Válasz törzse*
 
 ```json
 {
@@ -401,41 +402,41 @@ A Get műveletet az előfizetési végpont lehetővé teszi, hogy egy felhaszná
 
 | **Paraméter neve**     | **Adattípus** | **Leírás**                               |
 |------------------------|---------------|-----------------------------------------------|
-| id                     | String        | Előfizetés erőforrás azonosítója, SaaS az Azure-ban.    |
-| offerId                | String        | Ajánlat azonosítója, amelyre a felhasználó előfizetett.         |
-| planId                 | String        | Tervezze meg, hogy a felhasználó előfizetett azonosítója.          |
-| saasSubscriptionName   | String        | Az SaaS-előfizetés neve.                |
-| saasSubscriptionStatus | Enum          | A művelet állapotát.  A következők egyikét:  <br/> - `Subscribed`: Előfizetés az aktív.  <br/> - `Pending`: Felhasználó létrehozása az erőforrás, de nem aktiválódik, a független szoftvergyártó.   <br/> - `Unsubscribed`: Felhasználó leiratkoztatva rendelkezik.   <br/> - `Suspended`: Felhasználó felfüggesztette az előfizetést.   <br/> - `Deactivated`:  Azure-előfizetés fel van függesztve.  |
-| Létrehozva                | DateTime      | Előfizetés létrehozása időbélyeg értékét (UTC). |
-| módosítás dátuma           | DateTime      | Előfizetés módosítása időbélyegző-érték (UTC). |
+| id                     | Sztring        | SaaS-előfizetési erőforrás azonosítója az Azure-ban.    |
+| OfferId                | Sztring        | Az ajánlat azonosítója, amelyhez a felhasználó előfizetett.         |
+| planId                 | Sztring        | A felhasználó által előfizetett csomag azonosítója.          |
+| saasSubscriptionName   | Sztring        | Az SaaS-előfizetés neve.                |
+| saasSubscriptionStatus | Felsorolás          | Művelet állapota.  A következők egyike:  <br/> - `Subscribed`: az előfizetés aktív.  <br/> - `Pending`: a felhasználó hozza létre az erőforrást, de az ISV nem aktiválja.   <br/> - `Unsubscribed`: a felhasználó leiratkozott.   <br/> - `Suspended`: a felhasználó felfüggesztette az előfizetést.   <br/> - `Deactivated`: az Azure-előfizetés fel van függesztve.  |
+| létrehozott                | DateTime      | Előfizetés-létrehozási időbélyeg értéke UTC szerint. |
+| lastModified           | DateTime      | Az előfizetés módosított időbélyeg-értéke UTC szerint. |
 |  |  |  |
 
-*Válaszkódok*
+*Reagálási kódok*
 
-| **HTTP-állapotkód** | **Hibakód:**     | **Leírás**                                                              |
+| **HTTP-állapotkód** | **Hibakód**     | **Leírás**                                                              |
 |----------------------|--------------------|------------------------------------------------------------------------------|
-| 200                  | `OK`                 | A get-kérés sikeresen feloldva, és a válasz törzsében.    |
-| 400                  | `BadRequest`         | Vagy kötelező fejléc hiányzik, vagy egy érvénytelen api-Version paraméter lett megadva. |
-| 403                  | `Forbidden`          | A hívónak nincs engedélye e művelet elvégzéséhez.                      |
-| 404                  | `NotFound`           | Nem található a megadott azonosítójú előfizetés                                     |
-| 429                  | `RequestThrottleId`  | Szolgáltatás egy foglalt feldolgozási kérelmek, próbálkozzon újra később.                     |
-| 503                  | `ServiceUnavailable` | Szolgáltatás van lefelé átmenetileg, próbálkozzon újra később.                             |
+| 200                  | `OK`                 | A Get kérelem sikeresen megoldódott, és a törzs tartalmazza a választ.    |
+| 400                  | `BadRequest`         | A kötelező fejlécek hiányoznak, vagy a megadott API-verzió érvénytelen. |
+| 403                  | `Forbidden`          | A hívó nem jogosult a művelet végrehajtására.                      |
+| 404                  | `NotFound`           | Az előfizetés nem található a megadott AZONOSÍTÓval                                     |
+| 429                  | `RequestThrottleId`  | A szolgáltatás foglalt feldolgozási kérelmeket használ, később próbálkozzon újra.                     |
+| 503                  | `ServiceUnavailable` | A szolgáltatás átmenetileg nem érhető el, próbálkozzon újra később.                             |
 |  |  |  |
 
-*Válaszfejlécek*
+*Válasz fejlécei*
 
-| **Fejléc kulcs**     | **Kötelező** | **Leírás**                                                                                        |
+| **Fejléc kulcsa**     | **Szükséges** | **Leírás**                                                                                        |
 |--------------------|--------------|--------------------------------------------------------------------------------------------------------|
-| x-ms-requestid     | Igen          | Kérés azonosítója, az ügyféltől kapott.                                                                   |
-| x-ms-correlationid | Igen          | Korrelációs azonosító által átadott az ügyfelet, egyébként ez-e a korrelációs azonosítóját.                   |
-| x-ms-activityid    | Igen          | A szolgáltatás a kérelem követési egyedi karakterlánc-érték. Bármely egyeztetések szolgál. |
-| Retry-After        | Nem           | Melyik ügyfél időköz ellenőrizheti.                                                       |
-| eTag               | Igen          | Hivatkozás az erőforrás műveleti állapotának beolvasása.                                                        |
+| x-MS-kérelemazonosító     | Igen          | Az ügyféltől érkezett kérelem-azonosító.                                                                   |
+| x-MS-correlationId | Igen          | A korrelációs azonosító, ha az ügyfél továbbítja, ellenkező esetben ez a kiszolgálói korrelációs azonosító.                   |
+| x-MS-tevékenységazonosító    | Igen          | Egyedi karakterlánc-érték a kérésnek a szolgáltatásból való nyomon követéséhez. Ez minden egyeztetéshez használatos. |
+| Újrapróbálkozás ennyivel        | Nem           | Az az időtartam, amellyel az ügyfél megtekintheti az állapotát.                                                       |
+| eTag               | Igen          | Egy erőforrásra mutató hivatkozás a művelet állapotának lekéréséhez.                                                        |
 |  |  |  |
 
-### <a name="get-subscriptions"></a>Az előfizetések beolvasása
+### <a name="get-subscriptions"></a>Előfizetések beolvasása
 
-A Get műveletet előfizetések végponton lehetővé teszi, hogy egy felhasználó összes előfizetés összes ajánlatok lekérése az ISV-k.
+A Get művelet az előfizetések végponton lehetővé teszi, hogy a felhasználó lekérje az összes ajánlat összes előfizetését az ISV-ból.
 
 *Kérés*
 
@@ -445,19 +446,19 @@ A Get műveletet előfizetések végponton lehetővé teszi, hogy egy felhaszná
 
 | **Paraméter neve**  | **Leírás**                                       |
 |---------------------|-------------------------------------------------------|
-| api-version         | A művelet ehhez a kérelemhez használt verziója. |
+| API-Version         | A kérelemhez használni kívánt művelet verziója. |
 |  |  |
 
 *Fejlécek*
 
-| **Fejléc kulcs**     | **Kötelező** | **Leírás**                                           |
+| **Fejléc kulcsa**     | **Szükséges** | **Leírás**                                           |
 |--------------------|--------------|-----------------------------------------------------------|
-| x-ms-requestid     | Nem           | Az ügyfél a kérés követési egyedi karakterlánc-érték. Javasoljuk, egy GUID Azonosítót. Ha ez az érték nincs megadva, az egyik létrehozott és a válaszfejlécek megadott.             |
-| x-ms-correlationid | Nem           | A műveletet az ügyfél egyedi karakterlánc-érték. Ez az érték használatával történik a kiszolgálói oldalon eseményekkel rendelkező ügyfél művelet összes eseménye van. Ha ez az érték nincs megadva, az egyik létrehozott és a válaszfejlécek megadott. |
-| authorization      | Igen          | A JSON webes jogkivonat (JWT) tulajdonosi jogkivonatot.                    |
+| x-MS-kérelemazonosító     | Nem           | Egyedi karakterlánc-érték az ügyféltől érkező kérés nyomon követéséhez. GUID-azonosítók ajánlása. Ha ez az érték nincs megadva, a rendszer létrehoz egy értéket, és megadja a válasz fejléceit.             |
+| x-MS-correlationId | Nem           | Egyedi karakterlánc-érték a művelethez az ügyfélen. Ez az érték az ügyfél-művelet összes eseményének korrelációja a kiszolgálói oldalon lévő eseményekkel. Ha ez az érték nincs megadva, a rendszer létrehoz egy értéket, és megadja a válasz fejléceit. |
+| engedély      | Igen          | A JSON webes jogkivonat (JWT) tulajdonosi jogkivonata.                    |
 |  |  |  |
 
-*Választörzs*
+*Válasz törzse*
 
 ```json
 {
@@ -473,40 +474,40 @@ A Get műveletet előfizetések végponton lehetővé teszi, hogy egy felhaszná
 
 | **Paraméter neve**     | **Adattípus** | **Leírás**                               |
 |------------------------|---------------|-----------------------------------------------|
-| id                     | String        | Előfizetés-erőforráscsoport azonosítója, SaaS az Azure-ban    |
-| offerId                | String        | Ajánlat azonosítója, amelyre a felhasználó előfizetett         |
-| planId                 | String        | A felhasználó előfizetett csomagazonosító          |
-| saasSubscriptionName   | String        | Az SaaS-előfizetés neve                |
-| saasSubscriptionStatus | Enum          | A művelet állapotát.  A következők egyikét:  <br/> - `Subscribed`: Előfizetés az aktív.  <br/> - `Pending`: Felhasználó létrehozása az erőforrás, de nem aktiválódik, a független szoftvergyártó.   <br/> - `Unsubscribed`: Felhasználó leiratkoztatva rendelkezik.   <br/> - `Suspended`: Felhasználó felfüggesztette az előfizetést.   <br/> - `Deactivated`:  Azure-előfizetés fel van függesztve.  |
-| Létrehozva                | DateTime      | Előfizetés létrehozása időbélyeg értékét UTC szerint |
-| módosítás dátuma           | DateTime      | Előfizetés módosított időbélyegző-érték (UTC) |
+| id                     | Sztring        | SaaS-előfizetési erőforrás azonosítója az Azure-ban    |
+| OfferId                | Sztring        | A felhasználó által előfizetett ajánlat azonosítója         |
+| planId                 | Sztring        | A felhasználó által előfizetett csomag azonosítója          |
+| saasSubscriptionName   | Sztring        | Az SaaS-előfizetés neve                |
+| saasSubscriptionStatus | Felsorolás          | Művelet állapota.  A következők egyike:  <br/> - `Subscribed`: az előfizetés aktív.  <br/> - `Pending`: a felhasználó hozza létre az erőforrást, de az ISV nem aktiválja.   <br/> - `Unsubscribed`: a felhasználó leiratkozott.   <br/> - `Suspended`: a felhasználó felfüggesztette az előfizetést.   <br/> - `Deactivated`: az Azure-előfizetés fel van függesztve.  |
+| létrehozott                | DateTime      | Előfizetés-létrehozási időbélyeg értéke UTC szerint |
+| lastModified           | DateTime      | Előfizetés módosított időbélyeg-értéke UTC szerint |
 |  |  |  |
 
-*Válaszkódok*
+*Reagálási kódok*
 
-| **HTTP-állapotkód** | **Hibakód:**     | **Leírás**                                                              |
+| **HTTP-állapotkód** | **Hibakód**     | **Leírás**                                                              |
 |----------------------|--------------------|------------------------------------------------------------------------------|
-| 200                  | `OK`                 | A get-kérés sikeresen feloldva, és a válasz törzsében.    |
-| 400                  | `BadRequest`         | Vagy kötelező fejléc hiányzik, vagy egy érvénytelen api-Version paraméter lett megadva. |
-| 403                  | `Forbidden`          | A hívónak nincs engedélye e művelet elvégzéséhez.                      |
-| 404                  | `NotFound`           | Nem található a megadott azonosítójú előfizetés                                     |
-| 429                  | `RequestThrottleId`  | Service foglalt feldolgozási kérelmek, próbálkozzon újra később.                     |
-| 503                  | `ServiceUnavailable` | Szolgáltatás ideiglenesen nem működik. Próbálkozzon újra később.                             |
+| 200                  | `OK`                 | A Get kérelem sikeresen megoldódott, és a törzs tartalmazza a választ.    |
+| 400                  | `BadRequest`         | A kötelező fejlécek hiányoznak, vagy a megadott API-verzió érvénytelen. |
+| 403                  | `Forbidden`          | A hívó nem jogosult a művelet végrehajtására.                      |
+| 404                  | `NotFound`           | Az előfizetés nem található a megadott AZONOSÍTÓval                                     |
+| 429                  | `RequestThrottleId`  | A szolgáltatás foglalt feldolgozási kérelmeket használ, próbálkozzon újra később.                     |
+| 503                  | `ServiceUnavailable` | A szolgáltatás átmenetileg nem érhető el. Próbálkozzon újra később.                             |
 |  |  |  |
 
-*Válaszfejlécek*
+*Válasz fejlécei*
 
-| **Fejléc kulcs**     | **Kötelező** | **Leírás**                                                                                        |
+| **Fejléc kulcsa**     | **Szükséges** | **Leírás**                                                                                        |
 |--------------------|--------------|--------------------------------------------------------------------------------------------------------|
-| x-ms-requestid     | Igen          | Kérés azonosítója, az ügyféltől kapott.                                                                   |
-| x-ms-correlationid | Igen          | Korrelációs azonosító által átadott az ügyfelet, egyébként ez-e a korrelációs azonosítóját.                   |
-| x-ms-activityid    | Igen          | A szolgáltatás a kérelem követési egyedi karakterlánc-érték. Bármely egyeztetések szolgál. |
-| Retry-After        | Nem           | Melyik ügyfél időköz ellenőrizheti.                                                       |
+| x-MS-kérelemazonosító     | Igen          | Az ügyféltől érkezett kérelem-azonosító.                                                                   |
+| x-MS-correlationId | Igen          | A korrelációs azonosító, ha az ügyfél továbbítja, ellenkező esetben ez a kiszolgálói korrelációs azonosító.                   |
+| x-MS-tevékenységazonosító    | Igen          | Egyedi karakterlánc-érték a kérésnek a szolgáltatásból való nyomon követéséhez. Ez minden egyeztetéshez használatos. |
+| Újrapróbálkozás ennyivel        | Nem           | Az az időtartam, amellyel az ügyfél megtekintheti az állapotát.                                                       |
 |  |  |  |
 
-### <a name="saas-webhook"></a>SaaS Webhook
+### <a name="saas-webhook"></a>SaaS-webhook
 
-Egy SaaS-webhook proaktív módon a SaaS-szolgáltatás módosításait értesítésére szolgál. A bejegyzés API kell lennie a nem hitelesített, és a Microsoft szolgáltatás fogja meghívni. Az SaaS-szolgáltatás várhatóan az műveletek érvényesítéséhez, és engedélyezze a webhook értesítésre műveletek végrehajtása előtti API meghívása. 
+SaaS-webhookot használ a változások proaktív módon történő értesítésére az SaaS szolgáltatáshoz. A POST API-nak nem hitelesítettnek kell lennie, és a Microsoft szolgáltatása fogja meghívni. Az SaaS szolgáltatásnak az operatív API-t kell meghívnia az ellenőrzéshez és az engedélyezéshez, mielőtt lépéseket hozna a webhook-értesítésen. 
 
 *Törzs*
 
@@ -523,17 +524,17 @@ Egy SaaS-webhook proaktív módon a SaaS-szolgáltatás módosításait értesí
 
 | **Paraméter neve**     | **Adattípus** | **Leírás**                               |
 |------------------------|---------------|-----------------------------------------------|
-| id  | String       | A művelet által aktivált egyedi azonosítója.                |
-| Tevékenységazonosító   | String        | A szolgáltatás a kérelem követési egyedi karakterlánc-érték. Bármely egyeztetések szolgál.               |
-| subscriptionId                     | String        | Előfizetés erőforrás azonosítója, SaaS az Azure-ban.    |
-| offerId                | String        | Ajánlat azonosítója, amelyre a felhasználó előfizetett. Csak a "Frissítés" művelet megadott.        |
-| publisherId                | String        | Az SaaS-ajánlat a Gyártóazonosítóval         |
-| planId                 | String        | Tervezze meg, hogy a felhasználó előfizetett azonosítója. Csak a "Frissítés" művelet megadott.          |
-| action                 | String        | A művelet, amely ezt az értesítést kezdeményezi. A lehetséges értékek - aktiválása, töröl, a felfüggesztés, visszaállítása, frissítés          |
-| timeStamp                 | String        | Időbélyeg értékét UTC formátumban, amikor az értesítés lett elindítva.          |
+| id  | Sztring       | Az aktivált művelet egyedi azonosítója.                |
+| Tevékenységazonosító   | Sztring        | Egyedi karakterlánc-érték a kérésnek a szolgáltatásból való nyomon követéséhez. Ez minden egyeztetéshez használatos.               |
+| subscriptionId                     | Sztring        | SaaS-előfizetési erőforrás azonosítója az Azure-ban.    |
+| OfferId                | Sztring        | Az ajánlat azonosítója, amelyhez a felhasználó előfizetett. Csak a "frissítés" művelettel biztosítva.        |
+| publisherId                | Sztring        | Az SaaS-ajánlat közzétevő-azonosítója         |
+| planId                 | Sztring        | A felhasználó által előfizetett csomag azonosítója. Csak a "frissítés" művelettel biztosítva.          |
+| action                 | Sztring        | Az értesítést kiváltó művelet. Lehetséges értékek – aktiválás, törlés, felfüggesztés, visszaállítása, frissítés          |
+| Időbélyeg                 | Sztring        | Az értesítés aktiválásakor az időbélyeg értéke UTC szerint.          |
 |  |  |  |
 
 
 ## <a name="next-steps"></a>További lépések
 
-Szoftveresen is lekérheti a fejlesztők és a számítási feladatok, az ajánlatok és a közzétevő adatkezelési profilok használatával a [Cloud Partner Portal REST API-k](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-api-overview).
+A fejlesztők a [Cloud Partner Portal REST API](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-api-overview)-k használatával programozott módon is lekérhetik és módosíthatják a munkaterheléseket, az ajánlatokat és a közzétevői profilokat.

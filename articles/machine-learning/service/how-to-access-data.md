@@ -11,12 +11,12 @@ author: MayMSFT
 ms.reviewer: nibaccam
 ms.date: 11/04/2019
 ms.custom: seodec18
-ms.openlocfilehash: 08094469da87a6aae31acac599f8422487c10d28
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 2b76d8f25cfb8bd1dfda43c8383a538f8cf9769b
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73580741"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73818463"
 ---
 # <a name="access-data-in-azure-storage-services"></a>Az Azure Storage-szolgáltatásokban tárolt adathozzáférés
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -56,7 +56,7 @@ Ha az Azure Storage-megoldást adattárként regisztrálja, automatikusan létre
 
 ### <a name="using-the-python-sdk"></a>A Python SDK használata
 
-Az összes regisztrálási módszer a [`Datastore`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore(class)?view=azure-ml-py) osztályban található, és a következő formát register_azure_ *.
+Az összes regisztrálási módszer a [`Datastore`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore(class)?view=azure-ml-py) osztályban található, és a Form register_azure_ *.
 
 A Register () metódus feltöltéséhez szükséges adatok [Azure Machine learning studión](https://ml.azure.com)keresztül is megtalálhatók. Válassza ki a **Storage-fiókok** elemet a bal oldali ablaktáblán, és válassza ki a regisztrálni kívánt Storage-fiókot. Az **áttekintő** oldal olyan információkat tartalmaz, mint például a fiók neve, a tároló vagy a fájlmegosztás neve. A hitelesítési adatokhoz (például a fiók kulcsa vagy az SAS-tokenhez) a bal oldali **Beállítások** ablaktáblában navigáljon a **fiók kulcsaihoz** . 
 
@@ -183,7 +183,7 @@ A `target_path` paraméter annak a helyi könyvtárnak a helye, ahová le szeret
 ## <a name="access-your-data-during-training"></a>Az adatai elérése a betanítás során
 
 > [!IMPORTANT]
-> A [Azure Machine learning adatkészletek (előzetes verzió)](how-to-create-register-datasets.md) használata az új ajánlott módszer az adathoz való hozzáféréshez a képzésben. Az adatkészletek olyan függvényeket biztosítanak, amelyek a táblázatos adatokat a pandák vagy a Spark DataFrame töltik be, valamint lehetővé teszik bármilyen formátumú fájlok letöltését vagy csatlakoztatását az Azure Blobból, az Azure file-ból, a Azure Data Lake 1., Azure Data Lake Gen 2, Azure SQL, Azure PostgreSQL További információ az [adatkészletek betanításáról](how-to-train-with-datasets.md).
+> A [Azure Machine learning adatkészletek](how-to-create-register-datasets.md) használata az új ajánlott módszer az adathoz való hozzáféréshez a képzésben. Az adatkészletek olyan függvényeket biztosítanak, amelyek a táblázatos adatokat a pandák vagy a Spark DataFrame töltik be, valamint lehetővé teszik bármilyen formátumú fájlok letöltését vagy csatlakoztatását az Azure Blobból, az Azure file-ból, a Azure Data Lake 1., Azure Data Lake Gen 2, Azure SQL, Azure PostgreSQL További információ az [adatkészletek betanításáról](how-to-train-with-datasets.md).
 
 A következő táblázat felsorolja azokat a módszereket, amelyekkel a számítási cél az adattárolók futtatás közbeni használatának módját ismerteti. 
 
@@ -209,7 +209,7 @@ datastore.path('./bar').as_download()
 
 Az alábbi példák a [`Estimator`](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.estimator.estimator?view=azure-ml-py) osztályra vonatkoznak az adatok betanítás közbeni eléréséhez. 
 
-`script_params` egy olyan szótár, amely paramétereket tartalmaz a entry_script. Ezzel a művelettel továbbíthatja az adattárolót, és leírhatja, hogyan történik az adatok elérhetővé tétele a számítási célra. További információt a teljes körű [oktatóanyagban](tutorial-train-models-with-aml.md)olvashat.
+`script_params` a entry_script paramétereket tartalmazó szótár. Ezzel a művelettel továbbíthatja az adattárolót, és leírhatja, hogyan történik az adatok elérhetővé tétele a számítási célra. További információt a teljes körű [oktatóanyagban](tutorial-train-models-with-aml.md)olvashat.
 
 ```Python
 from azureml.train.estimator import Estimator

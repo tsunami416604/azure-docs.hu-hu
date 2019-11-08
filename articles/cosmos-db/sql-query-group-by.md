@@ -6,20 +6,20 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/11/2019
 ms.author: tisande
-ms.openlocfilehash: d92e24836a0eb5757de9bbdb516be290456deb7f
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: e41e81457421bfe27e3c0313fc06e39e6df4cdce
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72333260"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73819107"
 ---
 # <a name="group-by-clause-in-azure-cosmos-db"></a>GROUP BY záradék Azure Cosmos DB
 
 A GROUP BY záradék a lekérdezés eredményét egy vagy több megadott tulajdonság értékei alapján osztja el.
 
 > [!NOTE]
-> A Azure Cosmos DB jelenleg a [.net SDK 3,3](https://www.nuget.org/packages/Microsoft.Azure.Cosmos/3.3.0) -as vagy újabb verziójában támogatja a csoportosítást.
-> A más nyelvi SDK-k és az Azure Portal támogatása jelenleg nem érhető el, de tervezték.
+> A Azure Cosmos DB jelenleg a .NET SDK 3,3-es vagy újabb verziójában, valamint a JavaScript SDK 3,4-es vagy újabb verziójában támogatja a GROUP BY használatát.
+> A más nyelvi SDK-k támogatása jelenleg nem érhető el, de tervbe van véve.
 
 ## <a name="syntax"></a>Szintaxis
 
@@ -171,7 +171,7 @@ Az eredmények a következők:
 }]
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Első lépések](sql-query-getting-started.md)
 - [SELECT záradék](sql-query-select.md)

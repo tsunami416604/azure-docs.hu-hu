@@ -4,19 +4,20 @@ description: Részletes útmutató és közzétételi ellenőrzőlista az SaaS-a
 services: Marketplace, Compute, Storage, Networking, Blockchain, Security, SaaS
 author: keithcharlie
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 07/09/2018
 ms.author: kevidal
-ms.openlocfilehash: f9ff6e19a0f0091cb5b831279eee90727bbb89fd
-ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
+ms.openlocfilehash: c213bbcb3c7859aa4718916aafab970b3ffd4613
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68742255"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73813030"
 ---
 # <a name="saas-applications-offer-publishing-guide"></a>SaaS-alkalmazások ajánlat-közzétételi útmutató
 
-Az SaaS-alkalmazások közzétételét a piactéren három különböző művelettel hívhatja: "Kapcsolatfelvétel", "kipróbálás" és "Letöltés most". Ez az útmutató a három lehetőséget ismerteti, beleértve az egyes követelmények követelményeit is. 
+Az SaaS-alkalmazások közzétehető a piactéren három különböző hívással: "Kapcsolatfelvétel", "kipróbálás" és "Letöltés most". Ez az útmutató a három lehetőséget ismerteti, beleértve az egyes követelmények követelményeit is. 
 
 ## <a name="offer-overview"></a>Ajánlat áttekintése  
 
@@ -25,15 +26,15 @@ Az SaaS-alkalmazások az Azure kirakatokban is elérhetők. az alábbi tábláza
 | Kirakat lehetőség | Listázása | Próbaverzió/Transact |  
 | --- | --- | --- |  
 | AppSource | Igen (Kapcsolatfelvétel) | Igen (PowerBI/Dynamics) |
-| Azure Marketplace | Nem | Igen (SaaS-alkalmazások) |   
+| Azure Piactér | Nem | Igen (SaaS-alkalmazások) |   
 
-**Listáját**  A tőzsdei közzétételi lehetőség egy kapcsolatfelvételi ajánlat típusát tartalmazza, és akkor használható, ha a próbaverziós vagy tranzakciós szintű részvétel nem valósítható meg. Ennek a megközelítésnek az az előnye, hogy lehetővé teszi a kiadók számára, hogy a piacon elérhető megoldással azonnal elkezdhetik a vállalkozása növekedéséhez szükséges érdeklődők fogadását.  
+**Lista:**  A tőzsdei közzétételi lehetőség egy kapcsolatfelvételi ajánlat típusát tartalmazza, és akkor használható, ha a próbaverziós vagy tranzakciós szintű részvétel nem valósítható meg. Ennek a megközelítésnek az az előnye, hogy lehetővé teszi a kiadók számára, hogy a piacon elérhető megoldással azonnal elkezdhetik a vállalkozása növekedéséhez szükséges érdeklődők fogadását.  
 **Próbaverzió/tranzakció:**  Az ügyfél lehetősége van arra, hogy közvetlenül vásároljon vagy kérjen próbaverziót a megoldásához. A próbaverziós szolgáltatás megadásával növelheti az ügyfelek számára felkínált engagement szintet, és a vásárlás előtt lehetővé teszi az ügyfeleknek a megoldás megismerését. A próbaverziós szolgáltatással jobb eséllyel népszerűsítheti a kirakatokat, és több és gazdagabb érdeklődőket kell várnia az ügyfelek bevonásával. A próbaverzióknak legalább a próbaidőszak időtartama alatt ingyenes támogatást kell tartalmazniuk.  
 
 | SaaS-alkalmazások ajánlata | Üzleti feltételek | Technikai követelmények |  
 | --- | --- | --- |  
 | **Kapcsolatfelvétel** | Igen | Nem |  
-| **PowerBI / Dynamics** | Igen | Igen (Azure AD-integráció) |  
+| **PowerBI/Dynamics** | Igen | Igen (Azure AD-integráció) |  
 | **SaaS-alkalmazások**| Igen | Igen (Azure AD-integráció) |     
 
 ## <a name="saas-list"></a>SaaS-lista
@@ -87,7 +88,7 @@ Videós oktatóanyagok esetében tekintse át a következőket:
 * [Active Directoryre összpontosító Microsoft Azure videók](https://azure.microsoft.com/resources/videos/index/?services=active-directory)
 
 Az ingyenes Azure Active Directory képzés a következő címen érhető el:  
-* [Microsoft Azure informatikai szakemberek számára: Azure Active Directory](https://mva.microsoft.com/training-courses/microsoft-azure-for-it-pros-content-series-azure-active-directory-16754?l=N0e23wtxC_2106218965)
+* [Microsoft Azure informatikai szakembereknek szóló tartalmi sorozatban: Azure Active Directory](https://mva.microsoft.com/training-courses/microsoft-azure-for-it-pros-content-series-azure-active-directory-16754?l=N0e23wtxC_2106218965)
 
 Emellett Azure Active Directory biztosít a szolgáltatás frissítéseinek keresésére szolgáló helyet.   
 * [Azure AD-szolgáltatások frissítései](https://azure.microsoft.com/updates/?product=active-directory)
@@ -147,5 +148,5 @@ Ha még nem tette meg,
 
 Ha regisztrálva van, és új ajánlatot hoz létre, vagy dolgozik egy meglévőn,
 
-- [](https://cloudpartner.azure.com) Az ajánlat létrehozásához vagy befejezéséhez jelentkezzen be a Cloud Partner Portalba.
+- Az ajánlat létrehozásához vagy befejezéséhez [Jelentkezzen be a Cloud Partner Portalba](https://cloudpartner.azure.com) .
 - További információért lásd az [Azure SaaS-alkalmazás ajánlatát](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-saas-offer) .

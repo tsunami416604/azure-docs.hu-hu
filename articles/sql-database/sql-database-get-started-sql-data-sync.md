@@ -1,5 +1,5 @@
 ---
-title: Az Azure SQL Data Sync beállítása
+title: Adatszinkronizálás beállítása
 description: Ez az oktatóanyag bemutatja, hogyan állíthatja be az Azure SQL-adatszinkronizálás
 services: sql-database
 ms.service: sql-database
@@ -7,16 +7,16 @@ ms.subservice: data-movement
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: allenwux
-ms.author: xiwu
+author: stevestein
+ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 01/14/2019
-ms.openlocfilehash: 082721ef1436d0b6668016aca29870016038af86
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 315d65b635f34847d0310e6b6adf03e20f2afd45
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73689995"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73807528"
 ---
 # <a name="tutorial-set-up-sql-data-sync-between-azure-sql-database-and-sql-server-on-premises"></a>Oktatóanyag: SQL-adatszinkronizálás beállítása Azure SQL Database és a helyszíni SQL Server között
 
@@ -124,7 +124,7 @@ A **tag adatbázisa** szakaszban opcionálisan hozzáadhat egy helyszíni SQL Se
         ![Adja meg az ügynök kulcsát és a kiszolgáló hitelesítő adatait](media/sql-database-get-started-sql-data-sync/datasync-preview-agent-enterkey.png)
 
         > [!NOTE]
-        > Ha tűzfal-hibaüzenetet kap, hozzon létre egy tűzfalszabály az Azure-ban, hogy engedélyezze a SQL Server számítógépről érkező forgalmat. A szabályt manuálisan is létrehozhatja a portálon vagy SQL Server Management Studioban (SSMS). A SSMS-ben kapcsolódjon az Azure-beli hub-adatbázishoz, és írja be a nevét < hub_database_name >. database. Windows. net néven.
+        > Ha tűzfal-hibaüzenetet kap, hozzon létre egy tűzfalszabály az Azure-ban, hogy engedélyezze a SQL Server számítógépről érkező forgalmat. A szabályt manuálisan is létrehozhatja a portálon vagy SQL Server Management Studioban (SSMS). A SSMS-ben kapcsolódjon az Azure-beli hub-adatbázishoz úgy, hogy a nevét < hub_database_name >. database. Windows. net névre írja be.
 
     1. A **regisztráció** gombra kattintva regisztrálhat egy SQL Server adatbázist az ügynökkel. Megnyílik a **SQL Server konfigurálása** párbeszédpanel.
 
@@ -145,7 +145,7 @@ A **tag adatbázisa** szakaszban opcionálisan hozzáadhat egy helyszíni SQL Se
 1. Az **adatbázis kiválasztása** lap bezárásához kattintson **az OK gombra** . Ezután kattintson az **OK** gombra a helyszíni **Konfigurálás** lap bezárásához és az új szinkronizálási tag létrehozásához és üzembe helyezéséhez. Végül kattintson az **OK** gombra a **szinkronizálási tagok kiválasztása** oldal bezárásához.
 
 > [!NOTE]
-> A SQL-adatszinkronizálás és a helyi ügynökhöz való kapcsolódáshoz adja hozzá a felhasználónevét a szerepkör *DataSync_Executor*. Az adatszinkronizálás létrehozza ezt a szerepkört a SQL Server példányon.
+> A SQL-adatszinkronizálás és a helyi ügynökhöz való kapcsolódáshoz adja hozzá a felhasználónevét a szerepkör- *DataSync_Executorhoz*. Az adatszinkronizálás létrehozza ezt a szerepkört a SQL Server példányon.
 
 ## <a name="configure-sync-group"></a>Szinkronizálási csoport konfigurálása
 

@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: thweiss
-ms.openlocfilehash: 6602a47a9d1d34b04f37c6b65a3c3f84cd60c845
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
-ms.translationtype: HT
+ms.openlocfilehash: 34b54459629560ba80e6a38d10edbab32ea44778
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73796089"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73820154"
 ---
 # <a name="configure-azure-private-link-for-an-azure-cosmos-account-preview"></a>Azure Private-hivatkozás konfigurálása Azure Cosmos-fiókhoz (előzetes verzió)
 
@@ -330,9 +330,9 @@ A sablon üzembe helyezése után a magánhálózati IP-címek az alhálózaton 
 
 ## <a name="configure-custom-dns"></a>Egyéni DNS konfigurálása
 
-A privát hivatkozás előnézete alatt egy privát DNS-t kell használnia azon az alhálózaton belül, ahol a magánhálózati végpont létrejött. És konfigurálja a végpontokat úgy, hogy a magánhálózati IP-címek mindegyike egy DNS-bejegyzésre legyen leképezve (lásd a fent látható válasz "fqdns" tulajdonságát).
+Használjon egy privát DNS-t azon az alhálózaton belül, ahol a magánhálózati végpont létrejött. És konfigurálja a végpontokat úgy, hogy a magánhálózati IP-címek mindegyike egy DNS-bejegyzésre legyen leképezve (lásd a fent látható válasz "fqdns" tulajdonságát).
 
-A privát végpont létrehozásakor integrálhatja azt az Azure-beli privát DNS-zónával. Ha úgy dönt, hogy nem integrálja a privát végpontot az Azure-beli magánhálózati DNS-zónával, hanem egyéni DNS-t használ, úgy kell konfigurálnia a DNS-t, hogy új DNS-rekordot adjon hozzá az új régiónak megfelelő magánhálózati IP-címhez.
+A privát végpont létrehozásakor integrálhatja azt az Azure-beli privát DNS-zónával. Ha úgy dönt, hogy nem integrálja a privát végpontot az Azure-beli magánhálózati DNS-zónával, hanem egyéni DNS-t használ, úgy kell konfigurálnia a DNS-t, hogy a magánhálózati végpont számára fenntartott összes magánhálózati IP-címhez hozzáadja a DNS-rekordokat.
 
 ## <a name="firewall-configuration-with-private-link"></a>Tűzfal-konfiguráció magánhálózati kapcsolattal
 
@@ -374,19 +374,19 @@ A magánhálózati DNS-zónában lévő DNS-rekordokat a rendszer nem távolítj
 
 Az alábbi korlátozások érvényesek a privát hivatkozás Azure Cosmos-fiókkal való használata esetén:
 
+* Az Azure Cosmos-fiókok és a virtuális hálózatok privát kapcsolatának támogatása csak meghatározott régiókban érhető el. A támogatott régiók listájáért tekintse meg a privát hivatkozás [elérhető régiók](../private-link/private-link-overview.md#availability) című szakaszát. A **VNET és az Azure Cosmos-fióknak a támogatott régiókban kell lennie ahhoz, hogy létre lehessen hozni egy privát végpontot**.
+
 * Ha közvetlen módú kapcsolattal használ privát hivatkozásokat az Azure Cosmos-fiókkal, akkor csak a TCP protokollt használhatja. A HTTP protokoll még nem támogatott
 
 * Ha a MongoDB-fiókok Azure Cosmos DB API-ját használja, a magánhálózati végpont csak a 3,6-es verziójú kiszolgálókon használható (azaz a végpontot a (z) `*.mongo.cosmos.azure.com`formátumban). A magánhálózati hivatkozás nem támogatott a (z) 3,2-es verziójú kiszolgálókon lévő fiókok esetében (azaz a végpontot használó fiókok a következő formátumban: `*.documents.azure.com`). A privát hivatkozás használatához át kell telepítenie a régi fiókokat az új verzióra.
 
 * Ha a Azure Cosmos DB API-ját privát kapcsolattal rendelkező MongoDB-fiókokhoz használja, nem használhat olyan eszközöket, mint például a Robo 3T, a Studio 3T, a mongúz stb. A végpont csak akkor rendelkezhet privát hivatkozásokkal, ha meg van adva a appName =<account name> paraméter. Például: replicaSet = globaldb & appName = mydbaccountname. Mivel ezek az eszközök nem adják át az alkalmazás nevét a kapcsolati sztringben a szolgáltatáshoz, így nem használhat privát hivatkozást. Ezeket a fiókokat azonban továbbra is elérheti az SDK-illesztőprogramok 3,6-es verziójával.
 
-* Az Azure Cosmos-fiókok és a virtuális hálózatok privát kapcsolatának támogatása csak meghatározott régiókban érhető el. A támogatott régiók listájáért tekintse meg a privát hivatkozás [elérhető régiók](../private-link/private-link-overview.md#availability) című szakaszát. A **VNET és az Azure Cosmos-fióknak a támogatott régiókban kell lennie ahhoz, hogy létre lehessen hozni egy privát végpontot**.
-
 * Egy virtuális hálózat nem helyezhető át vagy törölhető, ha privát hivatkozást tartalmaz.
 
 * Egy Azure Cosmos-fiók nem törölhető, ha privát végponthoz van csatolva.
 
-* Egy Azure Cosmos-fiókot nem lehet átadni olyan régióhoz, amely nincs hozzárendelve az összes hozzá csatolt privát végponthoz. További információ: régiók hozzáadása vagy eltávolítása az előző szakaszban.
+* Egy Azure Cosmos-fiókot nem lehet átadni olyan régióhoz, amely nincs hozzárendelve a fiókhoz csatolt összes privát végponthoz. További információ: régiók hozzáadása vagy eltávolítása az előző szakaszban.
 
 * A rendszergazdának meg kell adni legalább a "*/PrivateEndpointConnectionsApproval" engedélyt az Azure Cosmos-fiók hatókörében a rendszergazda által automatikusan jóváhagyott privát végpontok létrehozásához.
 

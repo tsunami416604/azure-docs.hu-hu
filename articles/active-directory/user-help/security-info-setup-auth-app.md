@@ -1,5 +1,5 @@
 ---
-title: Biztonsági adatok (előzetes verzió) beállítása hitelesítő alkalmazás használatára – Azure Active Directory | Microsoft Docs
+title: Biztonsági adatok (előzetes verzió) beállítása hitelesítési alkalmazáshoz – Azure AD
 description: A biztonsági adatok beállítása az identitás igazolására az Microsoft Authenticator alkalmazás használatával.
 services: active-directory
 author: eross-msft
@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 02/13/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 101d478d37055a08a5ced9113e070bf826613bd3
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 19f44f4df9e3c17c376830c6a404a21e8a5d67b2
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73160771"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73805086"
 ---
 # <a name="set-up-security-info-preview-to-use-an-authenticator-app"></a>A biztonsági adatok (előzetes verzió) beállítása a hitelesítő alkalmazás használatára
 
@@ -144,7 +144,7 @@ További beállításokkal is megtudhatja, hogy a szervezet hogyan forduljon a s
     >[!Note]
     >Ha a lehetőségek némelyike hiányzik, valószínűleg azért, mert a szervezet nem engedélyezi ezeket a metódusokat. Ebben az esetben ki kell választania egy elérhető módszert, vagy kapcsolatba kell lépnie a rendszergazdával további segítségért.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Jelentkezzen be a Microsoft Authenticator alkalmazással, a [Bejelentkezés kétlépéses ellenőrzés vagy biztonsági információ használatával](security-info-setup-signin.md) című szakaszának lépéseit követve.
 

@@ -5,14 +5,15 @@ author: JnHs
 manager: evansma
 ms.author: jenhayes
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 10/04/2019
-ms.openlocfilehash: f3b2a976dc6b2b9e91f046a7f69e3057a7af7d0e
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: 4708f2e0d6d4aadba228b82cf07e0a7f58b8f68a
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72816985"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73825605"
 ---
 # <a name="create-a-new-dynamics-365-for-operations-offer"></a>Hozzon létre egy új Dynamics 365 for Operations ajánlatot
 
@@ -32,7 +33,7 @@ Válassza az **+ új ajánlat** gombot, majd válassza ki a **Dynamics 365 for O
 
 ### <a name="offer-id-and-alias"></a>Ajánlat azonosítója és alias
 
-- **Ajánlat azonosítója**: egyedi azonosító a fiókban található összes ajánlathoz. Ez az azonosító látható lesz az ügyfelek számára a Piactéri ajánlat URL-címében, és Azure Resource Manager sablonokat (ha vannak ilyenek). Az ajánlat AZONOSÍTÓjának kisbetűs alfanumerikus karakternek kell lennie (beleértve a kötőjeleket és az aláhúzásokat, de nincs szóköz). Ez 50 karakterre van korlátozva, és a **Létrehozás**gombra kattintva nem módosítható.  Ha például a *test-Offer-1* értéket adja meg, az ajánlat URL-címe a következő lesz: `https://azuremarketplace.microsoft.com/marketplace/../test-offer-1`.
+- **Ajánlat azonosítója**: egyedi azonosító a fiókban található összes ajánlathoz. Ez az azonosító látható lesz az ügyfelek számára a Piactéri ajánlat URL-címében, és Azure Resource Manager sablonokat (ha vannak ilyenek). Az ajánlat AZONOSÍTÓjának kisbetűs alfanumerikus karakternek kell lennie (beleértve a kötőjeleket és az aláhúzásokat, de nincs szóköz). Ez 50 karakterre van korlátozva, és a **Létrehozás**gombra kattintva nem módosítható.  Ha például a *test-Offer-1* értéket adja meg, az ajánlat URL-címe `https://azuremarketplace.microsoft.com/marketplace/../test-offer-1`lesz.
 
 - **Ajánlat aliasa**: az ajánlatnak a partner Centerben való hivatkozásához használt név. Ez a név nem lesz használatban a piactéren, és nem egyezik meg az ajánlat nevével és más értékekkel, amelyek megjelennek az ügyfeleknek. Ez az érték nem módosítható a **Létrehozás**gombra kattintva.
 
@@ -114,7 +115,7 @@ Az ügyfelek beszerzési folyamatának leegyszerűsítése és a szoftvergyárt�
 
 Az egyéni használati feltételek és kikötések elvégzése helyett dönthet úgy, hogy a standard szintű szerződés keretében kínálja a szoftverét, amelyet csak egyszer kell kiadnia, és csak egyszer kell elfogadni.
 
-A standard szintű szerződés itt található: https://go.microsoft.com/fwlink/?linkid=2041178
+A standard szintű szerződés a következő címen érhető el: https://go.microsoft.com/fwlink/?linkid=2041178
 
 A standard szintű szerződés használatához jelölje be a **standard szintű szerződés használata** jelölőnégyzetet.
 
@@ -208,7 +209,7 @@ Opcionálisan akár négy videót is hozzáadhat az ajánlat bemutatásához. Ez
 
 - [Ajánlott eljárások a piactér ajánlati listáihoz](https://docs.microsoft.com/azure/marketplace/gtm-offer-listing-best-practices)
 
-## <a name="availability"></a>Elérhetőség
+## <a name="availability"></a>Rendelkezésre állás
 
 A **rendelkezésre állás** lapon megadhatja, hol és hogyan teheti elérhetővé az ajánlatát.
 
@@ -284,9 +285,9 @@ A Microsoft el tudja távolítani a tesztelési meghajtó beállításának öss
 
 - **Tesztelési meghajtó időtartama** (kötelező): adja meg, hogy mennyi ideig maradjon aktív a tesztvezetés az órák számának meghatározásával. Ennyi óra elteltével a munkamenet véget ért, és már nem fogja használni az egyik licencét. Az ajánlat bonyolultsága alapján 2-24 óra értékű értéket ajánlunk. Ezt az időtartamot csak egész számú órával lehet beállítani (például "2" óra, "1,5" nem érvényes).  Ha elfogynak az idő, a felhasználó új munkamenetet igényelhet, és újra el szeretné érni a teszt meghajtót.
 
-- **Példány URL-címe** (kötelező): az az URL-cím, amelyben az ügyfél el fogja kezdeni a tesztelési meghajtót. Általában a Dynamics 365-példány URL-címe, amely az alkalmazást futtatja a mintaadatok telepítésével (például https://testdrive.crm.dynamics.com).
+- **Példány URL-címe** (kötelező): az az URL-cím, amelyben az ügyfél el fogja kezdeni a tesztelési meghajtót. Általában a Dynamics 365-példány URL-címe, amely az alkalmazást az alkalmazással együtt futtatja, és a mintaadatok telepítve vannak (például https://testdrive.crm.dynamics.com).
 
-- **Példány webes API URL-címe** (kötelező): kérje le a Dynamics 365-példány webes API URL-címét úgy, hogy bejelentkezik a Microsoft 365-fiókjába, és navigáljon a **Beállítások** \&gt; **Testreszabási** \&gt; **Fejlesztői erőforrások** \&gt; **Példány webes API-ját (szolgáltatás gyökerének URL-címe)** másolja az itt található URL-címet (például:  https://testdrive.crm.dynamics.com/api/data/v9.0).
+- **Példány webes API URL-címe** (kötelező): a Dynamics 365-példány webes API URL-címének lekéréséhez jelentkezzen be a Microsoft 365-fiókjába, és navigáljon a **Beállítások** \&gt; **Testreszabás** \&gt; **Fejlesztői erőforrások** \&gt; A **példány webes API-ját (szolgáltatás gyökerének URL-címe)** másolja az itt található URL-címet (például https://testdrive.crm.dynamics.com/api/data/v9.0).
 
 - **Szerepkör neve** (kötelező): adja meg az egyéni Dynamics 365-tesztelési meghajtóban definiált biztonsági szerepkör nevét. Ezt a rendszer a tesztelési meghajtó (például a test-Drive-role) során rendeli hozzá a felhasználóhoz.
 
@@ -369,11 +370,11 @@ Ha első alkalommal teszi közzé ezt az ajánlatot, a következőket teheti:
 
 - Tekintse meg az ajánlat egyes szakaszainak befejezési állapotát.
     - *Nincs elindítva* – azt jelenti, hogy a szakasz nem lett megérintve, és el kell végezni.
-    - *Hiányos* – ez azt jelenti, hogy a szakasznak meg kell oldania a hibákat, vagy további információra van szüksége. Lépjen vissza a szakasz (ok) ra, és frissítse azt.
-    - *Complete (kész* ) – azt jelenti, hogy a szakasz elkészült, minden szükséges adattal rendelkezik, és nincsenek hibák. Az ajánlat minden részének teljes állapotban kell lennie ahhoz, hogy el tudja küldeni az ajánlatot.
+    - *Hiányos* – azt jelenti, hogy a szakasznak meg kell oldania a hibákat, vagy további információkat kell megadni. Lépjen vissza a szakasz (ok) ra, és frissítse azt.
+    - *Complete (Befejezés* ) – azt jelenti, hogy a szakasz elkészült, minden szükséges adattal rendelkezik, és nincsenek hibák. Az ajánlat minden részének teljes állapotban kell lennie ahhoz, hogy el tudja küldeni az ajánlatot.
 - A **minősítési megjegyzések** szakaszban adja meg a minősítési csoport tesztelési utasításait, hogy az alkalmazás megfelelően legyen tesztelve, valamint az alkalmazás megértéséhez szükséges kiegészítő megjegyzések mellett.
 - Küldje el az ajánlatot közzétételre a **Submit (Küldés**) gombra kattintva. Küldünk Önnek egy e-mailt, amelyből megtudhatja, hogy az ajánlat előzetes verziója elérhető-e a felülvizsgálathoz és jóváhagyáshoz. Vissza kell térnie a partneri központba, és válassza a **Go-Live** lehetőséget az ajánlat közzétételéhez a nyilvános (vagy ha egy privát ajánlat, a privát közönség) számára.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Meglévő ajánlat frissítése a kereskedelmi piactéren](./update-existing-offer.md)

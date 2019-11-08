@@ -12,12 +12,12 @@ ms.topic: article
 ms.date: 10/21/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 574b1591669cc32ce30677cad5158e13b944486f
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 0c263e1353a07ca388ea9a7fb48ebcf99be07fc1
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72750204"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73820642"
 ---
 # <a name="developing-with-media-services-v3-apis"></a>Fejlesztés Media Services V3 API-kkal
 
@@ -59,7 +59,7 @@ A következő ábrán a számok kronológiai sorrendben jelenítik meg a kérelm
 4. A középső szintű kérelem küldése az Azure Media REST API az Azure AD-jogkivonattal.
 5. A középső szinten a Media Services származó adatok kerülnek vissza.
 
-### <a name="samples"></a>Minták
+### <a name="samples"></a>Példák
 
 Tekintse meg a következő mintákat, amelyek bemutatják, hogyan csatlakozhat az Azure AD egyszerű szolgáltatásához:
 
@@ -75,7 +75,7 @@ Az Azure Media Services v3 erőforrásneveire is (pl. Adategység, Feladatok, Á
 
 A Media Services-erőforrás neve nem tartalmazhatja a következőket: "<", ">", "%", "&", ': ','&#92;','?', '/', "*", "+",".", szimpla idézőjel vagy bármely egyéb vezérlőkarakter. Minden egyéb karakter engedélyezett. Az erőforrásnév maximális hossza 260 karakter. 
 
-Az Azure Resource Manager elnevezéseire vonatkozó további információért tekintse meg az [Elnevezési követelmények](https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/resource-api-reference.md#arguments-for-crud-on-resource) és az [Elnevezési konvenciók](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions) című részeket.
+Az Azure Resource Manager elnevezéseire vonatkozó további információért tekintse meg az [Elnevezési követelmények](https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/resource-api-reference.md#arguments-for-crud-on-resource) és az [Elnevezési konvenciók](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging) című részeket.
 
 ### <a name="names-of-filesblobs-within-an-asset"></a>Egy eszközön belüli fájlok/Blobok nevei
 
@@ -95,7 +95,7 @@ Media Services a következő hosszan futó műveletekkel rendelkezik:
 * [Élő esemény indítása](https://docs.microsoft.com/rest/api/media/liveevents/start)
 * [LiveEvent leállítása](https://docs.microsoft.com/rest/api/media/liveevents/stop)
 
-  A `removeOutputsOnStop` paraméter használatával törölheti az összes társított élő kimenetet az esemény leállításakor.  
+  Az `removeOutputsOnStop` paraméter használatával törölheti az összes kapcsolódó élő kimenetet az esemény leállításakor.  
 * [LiveEvent alaphelyzetbe állítása](https://docs.microsoft.com/rest/api/media/liveevents/reset)
 * [LiveOutput létrehozása](https://docs.microsoft.com/rest/api/media/liveevents/create)
 * [LiveOutput törlése](https://docs.microsoft.com/rest/api/media/liveevents/delete)
@@ -117,7 +117,7 @@ Egy adott élő esemény vagy bármely hozzá tartozó élő kimenet esetében c
 > [!NOTE]
 > A Azure Media Services v3 SDK-k nem garantáltak, hogy a szál biztonságos. Többszálas alkalmazások fejlesztésekor saját szál-szinkronizálási logikát kell hozzáadnia az ügyfél védeleméhez, vagy a szálon egy új AzureMediaServicesClient objektumot kell használnia. Ügyeljen arra, hogy a kód által az ügyfélnek (például egy .NET-HttpClient-példány) származó opcionális objektumok által bevezetett többszálas problémák is körültekintőek legyenek.
 
-|SDK|Leírások|
+|SDK|Referencia|
 |---|---|
 |[.NET SDK](https://aka.ms/ams-v3-dotnet-sdk)|[.NET-referencia](https://aka.ms/ams-v3-dotnet-ref)|
 |[Java SDK](https://aka.ms/ams-v3-java-sdk)|[Java-referencia](https://aka.ms/ams-v3-java-ref)|
@@ -135,7 +135,7 @@ Egy adott élő esemény vagy bármely hozzá tartozó élő kimenet esetében c
 
 A [Azure Media Services Explorer](https://github.com/Azure/Azure-Media-Services-Explorer) (AMSE) a Windows-ügyfelek számára elérhető eszköz, akik a Media Servicesről szeretnének többet megtudni. A AMSE egy WinForms/C# alkalmazás, amely feltölti, letölti, kódolja, TOVÁBBÍTJA a VOD-t és az élő tartalmakat Media Services. A AMSE eszköz olyan ügyfelek számára készült, akik kód írása nélkül szeretnék tesztelni Media Services. A AMSE-kód olyan ügyfelek számára biztosít erőforrásként, akik Media Serviceskal szeretnének fejleszteni.
 
-A AMSE egy nyílt forráskódú projekt, amelyet a Közösség nyújt (a probléma https://github.com/Azure/Azure-Media-Services-Explorer/issues). A projekt a Microsoft nyílt forráskódú projekteket szabályozó etikai kódexe, a [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/) hatálya alá esik. További információkért tekintse meg a [viselkedési szabályzatot](https://opensource.microsoft.com/codeofconduct/faq/) , vagy lépjen kapcsolatba opencode@microsoft.com további kérdésekkel vagy megjegyzésekkel.
+A AMSE egy nyílt forráskódú projekt, amelyet a Közösség nyújt (a problémát a https://github.com/Azure/Azure-Media-Services-Explorer/issues) értékkel lehet jelenteni. Ez a projekt elfogadta a [Microsoft Nyílt forráskóddal kapcsolatos viselkedési szabályzatát](https://opensource.microsoft.com/codeofconduct/). További információkért tekintse meg a [viselkedési szabályzatot](https://opensource.microsoft.com/codeofconduct/faq/) , vagy lépjen kapcsolatba opencode@microsoft.com további kérdésekkel vagy megjegyzésekkel.
 
 ## <a name="filtering-ordering-paging-of-media-services-entities"></a>Media Services entitások szűrése, rendezése és lapozása
 
@@ -149,7 +149,7 @@ Tekintse meg a [Azure Media Services közösségi](media-services-community.md) 
 
 [Azure CLI](https://docs.microsoft.com/cli/azure/ams?view=azure-cli-latest)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Kapcsolódás Media Services Javával](configure-connect-java-howto.md)
 * [Kapcsolódás Media Services a .NET-tel](configure-connect-dotnet-howto.md)

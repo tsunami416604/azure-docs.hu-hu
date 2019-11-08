@@ -48,16 +48,6 @@
       href: front-door-url-rewrite.md
     - name: URL-átirányítás
       href: front-door-url-redirect.md
-    - name: WAF
-      items:
-        - name: Áttekintés
-          href: waf-overview.md
-        - name: Egyéni szabályok
-          href: waf-front-door-custom-rules.md
-        - name: Szabályzatbeállítások
-          href: waf-front-door-policy-settings.md
-        - name: Monitorozás és naplózás
-          href: waf-front-door-monitor.md
 - name: Útmutatók
   items:
     - name: Forgalom átirányítása
@@ -74,26 +64,10 @@
           href: front-door-troubleshoot-routing.md
         - name: Engedélyezett hitelesítésszolgáltatók
           href: front-door-troubleshoot-allowed-ca.md
-    - name: A WAF konfigurálása
-      items:
-        - name: WAF-szabályzat konfigurálása – portál
-          href: waf-front-door-create-portal.md
-        - name: WAF-szabályzat konfigurálása – Azure PowerShell
-          href: waf-front-door-custom-rules-powershell.md
-        - name: Robotvédelem konfigurálása
-          href: waf-front-door-policy-configure-bot-protection.md
-        - name: Egyéni válaszkód konfigurálása
-          href: waf-front-door-configure-custom-response-code.md
-        - name: IP-korlátozások konfigurálása
-          href: waf-front-door-configure-ip-restriction.md
-        - name: Sebességkorlát konfigurálása – Azure PowerShell
-          href: waf-front-door-rate-limit-powershell.md
 - name: GYIK
   items:
     - name: Front Door – GYIK
       href: front-door-faq.md
-    - name: WAF – GYIK
-      href: waf-faq.md
 - name: Referencia
   items:
     - name: Azure CLI

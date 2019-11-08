@@ -1,46 +1,47 @@
 ---
-title: Üzembe helyezése egy Azure virtuális gép VHD-t felhasználói |} Az Azure Marketplace-en
-description: Azt ismerteti, hogyan helyezhet üzembe egy Azure-beli Virtuálisgép-példány létrehozása egy felhasználó VHD-rendszerképet.
+title: Azure-beli virtuális gép üzembe helyezése felhasználói VHD-ről | Azure piactér
+description: A cikk azt ismerteti, hogyan helyezhet üzembe egy felhasználói VHD-rendszerképet egy Azure virtuálisgép-példány létrehozásához.
 services: Azure, Marketplace, Cloud Partner Portal,
 author: v-miclar
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 11/29/2018
 ms.author: pabutler
-ms.openlocfilehash: e4da523fa54a513fe77fda037aea0a5fd530250b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8421e9b7b7e2b7d13054e977da83be044b4e6af7
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64938241"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73816645"
 ---
-# <a name="deploy-an-azure-vm-from-a-user-vhd"></a>Egy Azure virtuális gép VHD-t felhasználói üzembe helyezése
+# <a name="deploy-an-azure-vm-from-a-user-vhd"></a>Azure-beli virtuális gép üzembe helyezése felhasználói VHD-ből
 
-Ez a cikk bemutatja, hogyan hozhat létre egy új Azure-beli Virtuálisgép-erőforrást, a megadott Azure Resource Manager-sablon és az Azure PowerShell-szkript használatával általánosított virtuális merevlemez-lemezképek telepíthetők.
+Ez a cikk azt ismerteti, hogyan helyezhet üzembe egy általánosított VHD-rendszerképet új Azure-beli virtuálisgép-erőforrások létrehozásához a megadott Azure Resource Manager sablonnal és Azure PowerShell parancsfájl használatával.
 
 [!INCLUDE [updated-for-az](../../../../includes/updated-for-az.md)]
 
-## <a name="vhd-deployment-template"></a>Virtuális merevlemez központi telepítési sablon
+## <a name="vhd-deployment-template"></a>VHD központi telepítési sablon
 
-Másolja ki az Azure Resource Manager-sablonja [VHD-t üzembe helyezési](cpp-deploy-json-template.md) nevű helyi fájlba `VHDtoImage.json`.  Módosítsa ezt a fájlt a következő paraméterek értékének megadására. 
+Másolja a [VHD-telepítés](cpp-deploy-json-template.md) Azure Resource Manager sablonját egy `VHDtoImage.json`nevű helyi fájlba.  Szerkessze a fájlt a következő paraméterek értékeinek megadásához. 
 
-|  **A paraméter**             |   **Leírás**                                                              |
+|  **Paraméter**             |   **Leírás**                                                              |
 |  -------------             |   ---------------                                                              |
-| ResourceGroupName          | Meglévő Azure-erőforrás neve.  Általában az ugyanahhoz az Entitáshoz társított kulcstartó használata  |
+| ResourceGroupName          | Meglévő Azure-erőforráscsoport neve.  Általában ugyanazt a RG-t használja, mint amelyet a kulcstartóhoz társít  |
 | TemplateFile               | A fájl teljes elérési útja `VHDtoImage.json`                                    |
-| userStorageAccountName     | A tárfiók neve                                                    |
-| sNameForPublicIP           | A nyilvános IP-cím DNS-neve. Kisbetűnek kell lennie                                  |
-| subscriptionId             | Az Azure előfizetés-azonosító                                                  |
-| Location egység                   | Standard szintű Azure földrajzi helye az erőforráscsoport                       |
+| userStorageAccountName     | A Storage-fiók neve                                                    |
+| sNameForPublicIP           | A nyilvános IP-cím DNS-neve. Kisbetűsnek kell lennie                                  |
+| subscriptionId             | Azure-előfizetés azonosítója                                                  |
+| Hely                   | Az erőforráscsoport szabványos Azure-beli földrajzi helye                       |
 | vmName                     | A virtuális gép neve                                                    |
-| VaultName                  | A kulcstároló nevét                                                          |
-| vaultResourceGroup         | A kulcstároló erőforráscsoport
-| certificateUrl             | A tanúsítvány, ideértve például a key vaultban tárolt verzió URL-címe:  `https://testault.vault.azure.net/secrets/testcert/b621es1db241e56a72d037479xab1r7` |
+| vaultName                  | A Key Vault neve                                                          |
+| vaultResourceGroup         | A Key Vault erőforráscsoport
+| certificateUrl             | A tanúsítvány URL-címe, beleértve a Key vaultban tárolt verziót, például: `https://testault.vault.azure.net/secrets/testcert/b621es1db241e56a72d037479xab1r7` |
 | vhdUrl                     | A virtuális merevlemez URL-címe                                                   |
-| vmSize                     | A virtuálisgép-példány mérete                                           |
+| vmSize                     | Virtuálisgép-példány mérete                                           |
 | publicIPAddressName        | A nyilvános IP-cím neve                                                  |
 | virtualNetworkName         | A virtuális hálózat neve                                                    |
-| nicName                    | A hálózati kártyát a virtuális hálózat neve                     |
+| nicName                    | A virtuális hálózat hálózati kártyájának neve                     |
 | adminUserName              | A rendszergazdai fiók felhasználóneve                                          |
 | adminPassword              | Rendszergazdai jelszó                                                          |
 |  |  |
@@ -48,7 +49,7 @@ Másolja ki az Azure Resource Manager-sablonja [VHD-t üzembe helyezési](cpp-de
 
 ## <a name="powershell-script"></a>PowerShell-parancsfájl
 
-Másoljon és szerkesszen értéket ad meg a következő szkriptet a `$storageaccount` és `$vhdUrl` változókat.  Hajtsa végre, hogy a meglévő általánosított virtuális merevlemezből az Azure-beli Virtuálisgép-erőforrás létrehozásához.
+Másolja és szerkessze a következő parancsfájlt, hogy megadja a `$storageaccount` és a `$vhdUrl` változók értékeit.  Futtassa azt egy Azure-beli virtuálisgép-erőforrás létrehozásához a meglévő általánosított VHD-ről.
 
 ```powershell
 # storage account of existing generalized VHD 
@@ -66,4 +67,4 @@ New-AzResourceGroupDeployment -Name "dplisvvm$postfix" -ResourceGroupName "$rgNa
 
 ## <a name="next-steps"></a>További lépések
 
-A virtuális gép üzembe helyezését követően készen áll [igazolja, a Virtuálisgép-lemezkép](./cpp-certify-vm.md).
+A virtuális gép üzembe helyezése után készen áll a virtuálisgép- [lemezkép tanúsítására](./cpp-certify-vm.md).

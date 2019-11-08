@@ -1,23 +1,24 @@
 ---
-title: Lekérése ajánlatok API |} Az Azure Marketplace-en
-description: API összefoglaló listája alapján közzétevő névtér kérdezi le.
+title: Ajánlatok beolvasása API | Azure piactér
+description: Az API lekérdezi az ajánlatok összegzett listáját a közzétevői névtérben.
 services: Azure, Marketplace, Cloud Partner Portal,
 author: v-miclar
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
 ms.date: 09/13/2018
 ms.author: pabutler
-ms.openlocfilehash: 67109c3605ea96123ff41cb88d5ac328a09991e6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5c94c03a63936be2b086085a1e52064dedf214b0
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64935332"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73819614"
 ---
 <a name="retrieve-offers"></a>Ajánlatok lekérése
 ===============
 
-A közzétevő névtérben ajánlatok összesített listájának beolvasása.
+Az ajánlatok összefoglaló listájának beolvasása a közzétevői névtérben.
 
  `GET https://cloudpartner.azure.com/api/publishers/<publisherId>/offers?api-version=2017-10-31`
 
@@ -27,8 +28,8 @@ A közzétevő névtérben ajánlatok összesített listájának beolvasása.
 
 | **Name (Név)**         |  **Leírás**                         |  **Adattípus** |
 | -------------    |  ------------------------------------    |  -----------   |
-|  publisherId     | Például a közzétevő azonosítója `contoso` |   String    |
-|  api-version     | API legújabb verziója                    |    Dátum        |
+|  publisherId     | Közzétevő azonosítója, például `contoso` |   Sztring    |
+|  API-Version     | Az API legújabb verziója                    |    Dátum        |
 |  |  |
 
 
@@ -42,7 +43,7 @@ A közzétevő névtérben ajánlatok összesített listájának beolvasása.
 |  |  |
 
 
-<a name="body-example"></a>Törzs példa
+<a name="body-example"></a>Példa szövegtörzsre
 ------------
 
 ### <a name="response"></a>Válasz
@@ -64,40 +65,40 @@ A közzétevő névtérben ajánlatok összesített listájának beolvasása.
   ]
 ```
 
-### <a name="response-body-properties"></a>Válasz törzsében tulajdonságai
+### <a name="response-body-properties"></a>Válasz törzsének tulajdonságai
 
 |  **Name (Név)**       |       **Leírás**                                                                                                  |
 |  -------------  |      --------------------------------------------------------------------------------------------------------------    |
-|  offerTypeId    | Az ajánlat típusát jelöli                                                                                           |
-|  publisherId    | Amely egyedileg azonosítja a közzétevő azonosítója                                                                      |
-|  status         | Az ajánlat állapotát. A lehetséges értékek listáját lásd: [stav Nabídky](#offer-status) alatt.                         |
-|  id             | GUID azonosítója, amely egyedileg azonosítja az ajánlatot a kiadó névtérben.                                                    |
-|  version        | Az ajánlat jelenlegi verziójával. A verzió tulajdonság nem lehet módosítani az ügyfél által. Azt minden egyes közzététel után. |
-|  Definíció     | A számítási feladatok tényleges definíciója összefoglaló nézetét tartalmazza. A részletes definíció lekéréséhez használja a [olvashatók be az adott ajánlat](./cloud-partner-portal-api-retrieve-specific-offer.md) API-t. |
-|  changedTime    | Az ajánlat utolsó módosításának időpontja (UTC)                                                                              |
+|  offerTypeId    | Az ajánlat típusát azonosítja.                                                                                           |
+|  publisherId    | A közzétevőt egyedileg azonosító azonosító                                                                      |
+|  status         | Az ajánlat állapota. A lehetséges értékek listájáért lásd az [ajánlat állapota](#offer-status) alább.                         |
+|  id             | GUID, amely egyedileg azonosítja az ajánlatot a közzétevő névterében.                                                    |
+|  version        | Az ajánlat aktuális verziója. Az ügyfél nem tudja módosítani a Version tulajdonságot. Minden közzététel után növekszik. |
+|  Definition     | A munkaterhelés tényleges definíciójának összefoglaló nézetét tartalmazza. A részletes definíciók beszerzéséhez használja az [adott ajánlat beolvasása](./cloud-partner-portal-api-retrieve-specific-offer.md) API-t. |
+|  changedTime    | Az ajánlat utolsó módosításának UTC-ideje                                                                              |
 |  |  |
 
 
-### <a name="response-status-codes"></a>Állapotkódok
+### <a name="response-status-codes"></a>Válasz-állapotkódok
 
 | **Kód**  |  **Leírás**                                                                                                   |
 | -------   |  ----------------------------------------------------------------------------------------------------------------- |
-|  200      | `OK` -A kérés feldolgozása sikeresen megtörtént, és a közzétevő alapján az ajánlatok az ügyfélnek visszaadott.  |
-|  400      | `Bad/Malformed request` – A hiba választörzs tartalmazhat további információkat.                                    |
-|  403      | `Forbidden` – Az ügyfél nem rendelkezik hozzáféréssel a megadott névtér.                                          |
-|  404      | `Not found` – A megadott entitás nem létezik.                                                                 |
+|  200      | `OK` – a kérés feldolgozása sikeres volt, és a közzétevő alatt lévő összes ajánlat vissza lett küldve az ügyfélnek.  |
+|  400      | `Bad/Malformed request` – a hiba-válasz törzse több információt is tartalmazhat.                                    |
+|  403      | `Forbidden` – az ügyfél nem fér hozzá a megadott névtérhez.                                          |
+|  404      | `Not found` – a megadott entitás nem létezik.                                                                 |
 |  |  |
 
 
-### <a name="offer-status"></a>Stav nabídky
+### <a name="offer-status"></a>Ajánlat állapota
 
 |  **Name (Név)**                    | **Leírás**                                  |
 |  ------------------------    | -----------------------------------------------  |
-|  NeverPublished              | Az ajánlat soha nem lett közzétéve.                  |
+|  NeverPublished              | Az ajánlatot még soha nem tették közzé.                  |
 |  NotStarted                  | Az ajánlat új, de nem indult el.                 |
-|  WaitingForPublisherReview   | Ajánlat közzétevője jóváhagyásra vár.         |
-|  Fut                     | Az ajánlat küldésének feldolgozása folyamatban van.             |
-|  Sikeres                   | Az ajánlat küldésének feldolgozása befejeződött.       |
-|  Megszakítva                    | Az ajánlat küldésének meg lett szakítva.                   |
-|  Meghiúsult                      | Az ajánlat elküldés meghiúsult.                         |
+|  WaitingForPublisherReview   | Az ajánlat a közzétevő jóváhagyására vár.         |
+|  Fut                     | Az ajánlatok beküldése folyamatban van.             |
+|  Sikeres                   | Az ajánlat küldése befejeződött a feldolgozás során.       |
+|  Megszakítva                    | Az ajánlat beküldését megszakították.                   |
+|  Meghiúsult                      | Az ajánlat küldése nem sikerült.                         |
 |  |  |

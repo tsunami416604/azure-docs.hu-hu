@@ -1,5 +1,5 @@
 ---
-title: 'Azure SQL Database vásárlási modellek '
+title: Vásárlási modellek
 description: Ismerje meg a Azure SQL Database számára elérhető vásárlási modelleket.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 04/26/2019
-ms.openlocfilehash: 48537ec4c62410565d32350b1e3a11bbc7a2ca6e
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: be223245c634b8e38dc5e4c89df4c265c22c0b57
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73687556"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73821268"
 ---
 # <a name="choose-between-the-vcore-and-the-dtu-purchasing-models"></a>A virtuális mag és a DTU beszerzési modelljei közül választhat
 
@@ -125,7 +125,7 @@ Hozzáadhat további Edtu az adatbázis-leállás nélküli meglévő készletek
 
 ### <a name="determine-the-number-of-dtus-needed-by-a-workload"></a>A munkaterhelés által igényelt DTU számának meghatározása
 
-Ha meglévő helyszíni vagy SQL Server virtuális gépek munkaterhelését szeretné áttelepíteni Azure SQL Databasere, a [DTU-kalkulátor](https://dtucalculator.azurewebsites.net/) használatával közelítse meg a szükséges DTU számát. Meglévő Azure SQL Database számítási feladatokhoz használja a [lekérdezési teljesítménnyel](sql-database-query-performance.md) kapcsolatos elemzéseket az adatbázis-erőforrás-felhasználás (DTU) megismeréséhez, és mélyebb elemzéseket kaphat a számítási feladatok optimalizálásához. A [sys. DM _db_ resource_stats](https://msdn.microsoft.com/library/dn800981.aspx) dinamikus felügyeleti nézet (DMV) lehetővé teszi az elmúlt órában az erőforrás-felhasználás megtekintését. A [sys. resource_stats](https://msdn.microsoft.com/library/dn269979.aspx) Catalog nézet az elmúlt 14 napban az erőforrás-felhasználást jeleníti meg, de az átlagosan öt percenkénti átlagban jelenik meg.
+Ha meglévő helyszíni vagy SQL Server virtuális gépek munkaterhelését szeretné áttelepíteni Azure SQL Databasere, a [DTU-kalkulátor](https://dtucalculator.azurewebsites.net/) használatával közelítse meg a szükséges DTU számát. Meglévő Azure SQL Database számítási feladatokhoz használja a [lekérdezési teljesítménnyel](sql-database-query-performance.md) kapcsolatos elemzéseket az adatbázis-erőforrás-felhasználás (DTU) megismeréséhez, és mélyebb elemzéseket kaphat a számítási feladatok optimalizálásához. A [sys. dm_db_ resource_stats](https://msdn.microsoft.com/library/dn800981.aspx) a dinamikus felügyeleti nézet (DMV) lehetővé teszi az elmúlt órában az erőforrás-felhasználás megtekintését. A [sys. resource_stats](https://msdn.microsoft.com/library/dn269979.aspx) katalógus nézet az elmúlt 14 napban az erőforrás-felhasználást jeleníti meg, de az átlagosan öt percenként.
 
 ### <a name="workloads-that-benefit-from-an-elastic-pool-of-resources"></a>Rugalmas készletből kihasználható munkaterhelések
 

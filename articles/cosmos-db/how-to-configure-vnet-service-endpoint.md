@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/28/2019
 ms.author: mjbrown
-ms.openlocfilehash: 1c81045408a948820c8b9fef56e2c7d69cd39e08
-ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
+ms.openlocfilehash: c399bed803145659bae1863e9e0b919f33254627
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71811918"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73820204"
 ---
 # <a name="configure-access-from-virtual-networks-vnet"></a>Virtuális hálózatok (VNet) elérésének konfigurálása
 
@@ -50,9 +50,9 @@ A következő szakaszok azt ismertetik, hogyan konfigurálható egy virtuális h
 
 > [!NOTE]
 > A virtuális hálózati szolgáltatás végpontok engedélyezéséhez a következő előfizetési engedélyek szükségesek:
->   * Előfizetés virtuális hálózattal: Hálózati közreműködő
+>   * Előfizetés virtuális hálózattal: hálózati közreműködő
 >   * Előfizetés Azure Cosmos DB fiókkal: DocumentDB-fiók közreműködői
->   * Ha a virtuális hálózat és a Azure Cosmos DB fiók különböző előfizetésekben található, győződjön meg arról, hogy a virtuális hálózattal rendelkező előfizetéshez `Microsoft.DocumentDB` erőforrás-szolgáltató is regisztrálva van. Erőforrás-szolgáltató regisztrálásához tekintse meg az [Azure Resource Providers és types](../azure-resource-manager/resource-manager-supported-services.md) című cikket.
+>   * Ha a virtuális hálózat és a Azure Cosmos DB fiók különböző előfizetésekben található, győződjön meg arról, hogy a virtuális hálózattal rendelkező előfizetéshez `Microsoft.DocumentDB` erőforrás-szolgáltató is van regisztrálva. Erőforrás-szolgáltató regisztrálásához tekintse meg az [Azure Resource Providers és types](../azure-resource-manager/resource-manager-supported-services.md) című cikket.
 
 Az előfizetés erőforrás-szolgáltatóval való regisztrálásának útmutatója.
 
@@ -68,7 +68,7 @@ Az előfizetés erőforrás-szolgáltatóval való regisztrálásának útmutat�
 
    ![Válasszon ki egy virtuális hálózatot és alhálózatot egy új virtuális hálózat számára](./media/how-to-configure-vnet-service-endpoint/choose-subnet-and-vnet-new-vnet.png)
 
-Ha a Azure Cosmos DB-fiókot más Azure-szolgáltatások, például a Azure Search vagy a stream Analytics vagy a Power BI használatával érik el, akkor a hozzáférést a **globális Azure-adatközpontokban lévő kapcsolatok fogadása**lehetőség választásával engedélyezheti.
+Ha a Azure Cosmos DB-fiókot más Azure-szolgáltatások, például az Azure Cognitive Search vagy a stream Analytics vagy a Power BI használatával érik el, akkor a hozzáférést a **globális Azure-adatközpontokban lévő kapcsolatok fogadása**lehetőség választásával engedélyezheti.
 
 Annak biztosítása érdekében, hogy a portálon Azure Cosmos DB metrikák hozzáférhessenek, engedélyeznie kell a **hozzáférést a Azure Portal** lehetőségek közül. Ha többet szeretne megtudni ezekről a lehetőségekről, tekintse meg az [IP-tűzfal konfigurálása](how-to-configure-firewall.md) című cikket. A hozzáférés engedélyezése után válassza a **Mentés** lehetőséget a beállítások mentéséhez.
 
@@ -310,7 +310,7 @@ Miután egy Azure Cosmos DB-fiókhoz tartozó szolgáltatási végpont be van ka
      -Name $acctName
    ```
 
-1. Inicializálja a változókat, hogy később használhassák őket. Állítsa be az összes változót a meglévő fiók definíciójában. Adja hozzá a virtuális hálózati ACL-t az alhálózatról `ignoreMissingVNetServiceEndpoint` jelölővel elért összes Azure Cosmos DB fiókhoz.
+1. Inicializálja a változókat, hogy később használhassák őket. Állítsa be az összes változót a meglévő fiók definíciójában. Adja hozzá a virtuális hálózati ACL-t az alhálózatról `ignoreMissingVNetServiceEndpoint` jelzővel elért összes Azure Cosmos DB fiókhoz.
 
    ```powershell
    $locations = @()

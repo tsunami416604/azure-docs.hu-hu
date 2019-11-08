@@ -1,42 +1,43 @@
 ---
-title: AppSource Package Preparation | Azure Marketplace
-description: A hogyan készítheti elő és az appsource-ban csomagok Explanaion.
+title: AppSource csomag előkészítése | Azure piactér
+description: Explanaion a AppSource-csomagok előkészítéséhez és létrehozásához.
 services: Azure, Marketplace, Cloud Partner Portal,
 author: pbutlerm
 manager: Ricardo.Villalobos
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pabutler
-ms.openlocfilehash: ff822e87bfec5daa161172c0d47975eb06cc2808
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2c6b78e62afb43562910c872d31e2c9f564040da
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64935644"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73806097"
 ---
-# <a name="appsource-package-preparation"></a>AppSource Package Preparation
+# <a name="appsource-package-preparation"></a>AppSource csomag előkészítése
 
-Egy solution.zip fájl mellett szüksége lesz egy **AppSource csomag**. Ez az egy .zip fájlt, amely tartalmazza az összes olyan eszköz, a megoldás üzembe helyezése az ügyfelek CRM a környezetre, a folyamat automatizálásához szükséges. A **AppSource csomag** a következő összetevőket tartalmazza
+A Solution. zip fájl mellett egy **AppSource-csomagra**is szüksége lesz. Ez egy. zip-fájl, amely tartalmazza az összes olyan eszközt, amely a megoldásnak az ügyfelek CRM-környezetbe való üzembe helyezésének automatizálásához szükséges. A **AppSource csomag** a következő összetevőket tartalmaz
 
-* A Package deployerhez csomag
-* **Content_Types.xml** fájlt az eszközöket használhatja
-* XML-fájlt az alkalmazás-specifikus adatokkal
-* jelenítse meg a felügyeleti központban a listaelem 32 x 32-embléma
-* A licencfeltételeket, adatvédelmi szabályzat
+* Csomag telepítője
+* **Content_Types. XML** fájl, amely a használt eszközöket használja
+* XML-fájl az alkalmazás-specifikus adataival
+* 32x32-embléma, amely a felügyeleti központban megjelenik a listával
+* Licencfeltételek, adatvédelmi szabályzat
 
-Az alábbi lépéseket követve létrehozhat az AppSource-csomagot.
+Az alábbi lépések segítséget nyújtanak a AppSource-csomag létrehozásában.
 
-## <a name="a-create-a-package-for-the-package-deployer"></a>a. Hozzon létre egy csomagot a Package deployerhez
+## <a name="a-create-a-package-for-the-package-deployer"></a>a. Csomag létrehozása a csomag-telepítőhöz
 
-A csomag, a Package deployerhez az AppSource-csomag egy részét képezi.
+A csomag-telepítő csomagja a AppSource csomag egyik része.
 
-A Package deployerhez csomagot hozhat létre, kövesse az alábbi utasításokat: [ https://msdn.microsoft.com/library/dn688182.aspx ](https://msdn.microsoft.com/library/dn688182.aspx). Amikor végzett, a csomagot az alábbi eszközök állnak:
+A csomag-telepítő csomagjának létrehozásához kövesse az alábbi utasításokat: [https://msdn.microsoft.com/library/dn688182.aspx](https://msdn.microsoft.com/library/dn688182.aspx). Ha elkészült, a csomag az alábbi eszközökből áll:
 
-1. Kódcsomag mappája: tartalmazza az összes megoldáshoz, konfigurációs adatokat, egybesimított fájlok és a csomag tartalmát. _Megjegyzés: A következő példában indulunk ki a csomag mappájából "PkgFolder" nevezzük._
-2. DLL-je: A szerelvény tartalmazza a csomaghoz tartozó egyéni kódot. _Megjegyzés: A következő példában indulunk ki a fájl neve "MicrosoftSample.dll."_
+1. Csomag mappája: a csomag összes megoldását, konfigurációs adatait, egyszerű fájlját és tartalmát tartalmazza. _Megjegyzés: az alábbi példában feltételezzük, hogy a csomag mappájának neve "PkgFolder"._
+2. DLL: a szerelvény tartalmazza a csomaghoz tartozó egyéni kódot. _Megjegyzés: az alábbi példában feltételezzük, hogy a fájl neve "MicrosoftSample. dll" lesz._
 
-Most hozzon létre egy nevű fájlt kell "**Content_Types.xml**" Ez a fájl minden, a csomag részét képező eszközök bővítmény listázza. A következő példakód a fájlt.
+Most létre kell hoznia egy "**Content_Types. XML**" nevű fájlt, amely tartalmazza a csomag részét képező összes eszköz-bővítményt. Íme a fájlhoz tartozó példa kódja.
 
     <?xml version="1.0" encoding="utf-8"?>
         <Types xmlns="http://schemas.openxmlformats.org/package/2006/content-types">
@@ -53,36 +54,36 @@ Most hozzon létre egy nevű fájlt kell "**Content_Types.xml**" Ez a fájl mind
         <Default Extension="css" ContentType="application/octet-stream" />
     </Types>
 
-A végső lépés a zip-fájl a fájlban a következő szolgál. Meghívására **package.zip**. Tartalmazni fog
+Az utolsó lépés az, hogy a következőt egy fájlba zip-fájlként. Hívja meg a **Package. zip fájlt**. Ez tartalmazni fogja
 
-1. PkgFolder (beleértve a mappán belül minden)
-2. DLL-fájl
-3. **Content_Types.xml**
+1. PkgFolder (beleértve a mappában található összeset)
+2. DLL
+3. **Content_Types. XML**
 
-Package.zip létrehozásához szükséges lépéseket:
+A Package. zip létrehozásának lépései:
 
-1. A csomag mappáját, és helyezze **Content_Types.xml** fájlt, és a egy könyvtárba PackageName.dll.
+1. Helyezze a Package mappát, **Content_Types. XML** fájlt és a PackageName. dll fájlt egy könyvtárba.
 
 ![CRMScreenShot2](media/CRMScreenShot2.png)
 
-1. Válassza ki az összes elem a mappában, kattintson a jobb gombbal, és küldjön a tömörített (zip) mappa kiválasztása
+1. Válassza ki az összes elemet a mappában, kattintson a jobb gombbal, és válassza a Küldés tömörített (zip) mappába lehetőséget.
 
 ![CRMScreenShot3](media/CRMScreenShot3.png)
 
-1. Módosítsa a nevét package.zip
+1. A név módosítása a Package. zip névre
 
 ![CRMScreenShot4](media/CRMScreenShot4.png)
 
-## <a name="b-create-an-appsource-package"></a>b. Az AppSource-csomag létrehozása
+## <a name="b-create-an-appsource-package"></a>b. AppSource-csomag létrehozása
 
-Az appsource-ban csomaghoz szükséges néhány további fájlokat.
+A AppSource-csomaghoz néhány további fájl szükséges.
 
-1. JPG (32 x 32 megoldás)
+1. jpg (32x32-feloldás)
 2. HTML (HTML formátumú fájl)
-3. **Content_Types.xml** (ugyanaz, mint fent)
+3. **Content_Types. XML** (megegyezik a fentivel)
 4. xml
 
-Itt látható példa kód input.xml. A definíciók lásd az alábbi táblázatban.
+Az alábbi példa a input. xml fájl kódját írja le. Lásd az alábbi táblázatban szereplő definíciókat.
 
     <PvsPackageData>
         <ProviderName>Microsoft</ProviderName>
@@ -102,35 +103,35 @@ Itt látható példa kód input.xml. A definíciók lásd az alábbi táblázatb
         </Locales>
     </PvsPackageData>
  
-**Ahol:**
+**Ahol**
 
 |Mező|Részletek|
 |---|---|
-|ProviderName|A megoldás érkező ki. Ha a Microsoft csapata Microsoft kell lennie.|
-|PackageFile |Csomag és a egy tartalom zip Deployer eszközök\_types.xml fájlt. A zip-fájlt tartalmaznia kell a package deployer szerelvényt és a mappa package deployer eszközökre. Vagyis package.zip|
-|SolutionAnchorName |A megoldás a package deployerhez a megjelenített nevét és leírását a megoldás eszközök szolgálja ki a zip-fájl neve.|
-| Kezdődátum| Ez az a dátum, amelyen a megoldáscsomag válnak elérhetővé. A formátuma nem hh/nn/éééé|
-|EndDate|Ez az a dátum, hogy a megoldás csomag le fog állni legyenek elérhetők. A formátuma nem hh/nn/éééé |
-|SupportedCountries |Ez az országok/régiók, amelyek ezt a csomagot kell megjelennie egy vesszővel tagolt listája. Lépjen kapcsolatba az online szolgáltatások összes aktuális országkódok listáját. Amikor oktatóanyag összeállításakor a lista a következő volt: AL AE, AM, AO, AR, AT, AUSZTRÁLIA, AZ, BA, BB, BD, LEHET, BG, BH, BM, BN, BO, BRAZÍLIA, KANADA, CH, CI, CL, CM, CO, CR, CV, TÉNYLEGES SÚLY, CY, CZ, DE, DK, DO, DZ, EC, EE, SZERINT MŰKÖDTEK AZ ADATBÁZISOK, ES, FI, FR, GB, A GE, GH, GR, GT, HK , HN, HR, HU, AZONOSÍTÓJÁT, INTERNET EXPLORER, IL, IN, IQ,, AZT, JM, JO, JP, KE, KG, KN, KOREA, KW, KY, KZ, LB, LK, LT, LU, LV, LY, MA, MINŐSÍTÉSSEL, MC, MD, NEKEM, MK, MN, HÓNAP, FŐ CÉLKISZOLGÁLÓ, MU, MX, SAJÁT, NG, NI, NL, NO, NZ, OM, PA, PE, PH , PK, PL, PULL-KÉRELEM, PS, CSENDES-ÓCEÁNI IDŐ, PY, QA, RO, RS, RU, RW, SA, KI, SG, SI, SK, SN, SV, TH, TM, TN, TR, TT, TW, UA, EGYESÜLT ÁLLAMOK, UY, UZ, VE, VI, VN, ZA, ZW |
-|LearnMoreLink | A további-információs oldalt a csomag URL-címe. |
-|Területi beállítások|Ebben a csomópontban az előnyben részesített megoldás UX a támogatni kívánt UX nyelvenként egy példánya Ez a csomópont tartalmazza, amelyek ismertetik a területi beállítás, a embléma és az egyes nyelvekhez gyermekek|
-|Területi beállítások: PackageLocale.Code|Ebben a csomópontban a nyelv LCID. Példa: Amerikai angol érték 1033|
-|Területi beállítások: PackageLocale.IsDefault|Azt jelzi, hogy ez az alapértelmezett nyelvet. Ez csökkenése használatos biztonsági nyelv, ha az ügyfél által választott UX nyelve nem érhető el.|
-|Területi beállítások: embléma|Ez Ha az embléma szeretné a csomaghoz használni. Ikon mérete 32 x 32. Engedélyezett formátumok a következők PNG és JPG|
-|Locales:Terms: PackageTerm.File|Ez a fájl nevét a HTML-dokumentumot, amely tartalmazza a licencfeltételeket.|
+|ProviderName|Kitől érkezik a megoldás. Ha egy Microsoft-csapat, akkor a Microsoftnak kell lennie.|
+|PackageFile |A csomag-üzembe helyezési eszközök kitömörítettek egy Content\_types. xml fájllal együtt. A zip-fájlnak tartalmaznia kell a csomag-telepítő szerelvényt, valamint a csomagot, amely tartalmazza a csomag-üzembe helyezési eszközöket. Ez a csomag. zip|
+|SolutionAnchorName |A megoldás zip-fájljának neve a csomag-telepítőben, amelyet a rendszer a megoldási eszközök megjelenítendő nevére és leírására használ.|
+| StartDate| Ez az a dátum, amikor a megoldási csomag elérhetővé válik. A formátum HH/NN/ÉÉÉÉ.|
+|EndDate|Ez az a dátum, ameddig a megoldási csomag elérhetővé válik. A formátum HH/NN/ÉÉÉÉ. |
+|SupportedCountries |Ez egy vesszővel tagolt lista azon országok/régiók számára, amelyeknek ezt a csomagot látniuk kell. Az aktuális országkódok listájáért forduljon a online szolgáltatásokhoz. A lista írásának időpontjában a következő volt: AE, AL, AM, AO, AR, AT, AU, AZ, BA, BB, BD, BE, BG, BH, BM, BN, BO, BR, BY, CA, CH, CI, CL, CM, CO, CR, CV, CW, CY, CZ, DE, DK, DO, DZ, EC, EE , ES, FI, FR, GB, GE, GH, GR, GT, HK, HN, HR, HU, AZONOSÍTÓ, IE, IL, IN, IQ, IS, IT, JM, JO, JP, KE, KG, KN, KR, KW, KY, KZ, LB, LK, LT, LU, LV, LY, MA, MC, MD, I, MK, MN, MO, MT, MU, MX, MY , NG, NI, NL, NEM, NZ, OM, PA, PE, PH, PK, PL, PR, PS, PT, UY, QA, RO, RS, RU, RW, SA, SE, SG, SI, SK, SN, SV, TH, TM, TN, TR, TT, TW, UA, USA,, UZ, VE, VI, VN, ZA, ZW |
+|LearnMoreLink | A csomag további információ oldalának URL-címe. |
+|Helyszíneken|A csomópont egy példánya az előnyben részesített megoldásban támogatni kívánt összes UX nyelvhez. Ez a csomópont olyan gyermekeket tartalmaz, amelyek leírják az egyes nyelvek területi beállítását, emblémáját és kifejezéseit.|
+|Területi beállítások: PackageLocale. code|A csomópont nyelvének LCID-je. Példa: amerikai angol, 1033|
+|Területi beállítások: PackageLocale. IsDefault|Azt jelzi, hogy ez az alapértelmezett nyelv. Ezt használja a rendszer visszaesési nyelvként, ha az ügyfél által választott UX nyelv nem érhető el.|
+|Területi beállítások: embléma|Ez a csomaghoz használni kívánt embléma. Az ikon mérete 32x32. Az engedélyezett formátumok a PNG és a JPG|
+|Területi beállítások: feltételek: PackageTerm. file|Ez a licencszerződést tartalmazó HTML-dokumentum fájlneve.|
 
-Itt látható, ahol megjelenik a portálon:
+Itt látható a logó:
 
 ![CRMScreenShot5](media/CRMScreenShot5.png)
 
-A végső lépés a zip-fájl a fájlban a következő szolgál.
+Az utolsó lépés az, hogy a következőt egy fájlba zip-fájlként.
 
-1. a zip (létrehozott)
-2. **Content_Types.xml**
+1. zip (korábban létrehozva)
+2. **Content_Types. XML**
 3. xml
-4. PNG
+4. png
 5. html
 
 ![CRMScreenShot6](media/CRMScreenShot6.png)
 
-Nevezze át a fájlt az alkalmazás megfelelően. Mi inkább, hogy tartalmazzák a cég nevét és az alkalmazás neve. Például: **_Microsoft_SamplePackage.zip**.
+Nevezze át a fájlt az alkalmazásának megfelelőre. Javasoljuk, hogy adja meg a vállalat nevét és az alkalmazás nevét. Például: **_Microsoft_SamplePackage. zip**.

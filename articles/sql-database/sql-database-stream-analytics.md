@@ -1,5 +1,5 @@
 ---
-title: Adatfolyam-adatátvitel Azure SQL Database Stream Analytics Integration (előzetes verzió) használatával
+title: Adatfolyam-adatátvitel Stream Analytics integrációval (előzetes verzió)
 description: A Azure Stream Analytics használatával továbbíthatja az adatstreameket egy Azure SQL Database-adatbázisba.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: ajetasin
 ms.author: ajetasi
 ms.reviewer: sstein
 ms.date: 11/04/2019
-ms.openlocfilehash: fb889f14c3370e1297f98110903c64e93e09c946
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: d233d3c98cc495e4b9e84142781f5eb9faa7eec8
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73687061"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73820844"
 ---
 # <a name="stream-data-by-using-azure-sql-database-stream-analytics-integration-preview"></a>Adatfolyam-adatátvitel Azure SQL Database Stream Analytics Integration (előzetes verzió) használatával
 

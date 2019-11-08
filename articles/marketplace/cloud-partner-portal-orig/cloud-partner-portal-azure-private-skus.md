@@ -4,15 +4,16 @@ description: Saját SKU-ket használhat az ajánlat rendelkezésre állásának 
 services: Azure, Marketplace, Cloud Partner Portal,
 author: dan-wesley
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 08/15/2019
 ms.author: pabutler
-ms.openlocfilehash: 940b50cf4a04abacd4d7be2104dd97fb8b3db736
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: eb6eac5eafaeea239bfaf9cf2aface3db659dd57
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70883119"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73818837"
 ---
 <a name="private-skus-and-plans"></a>Privát SKU-i és csomagok
 ============
@@ -44,7 +45,7 @@ Ha az SKU privátként van megjelölve, és az ajánlat más SKU-ket tartalmaz �
 >[!NOTE]
 >Közzététel után a nyilvános SKU-t nem lehet magánjellegűvé tenni.
 
-<a name="select-an-image"></a>Kép kiválasztása
+<a name="select-an-image"></a>Rendszerkép kiválasztása
 ------------------
 
 Megadhat új lemezeket a privát SKU-hoz, vagy felhasználhatja a másik SKU-ban már megadott lemezeket, csak a díjszabást vagy a leírást. Ha újra szeretné használni a lemezeket, válassza az **Igen** lehetőséget válaszként a következőre: "ezt az SKU-t használja fel egy nyilvános SKU-ból".
@@ -53,7 +54,7 @@ Megadhat új lemezeket a privát SKU-hoz, vagy felhasználhatja a másik SKU-ban
 
 Miután megerősítette, hogy az SKU újra felhasználja a rendszerképeket, válassza ki a lemezkép forrását vagy *Alap* SKU-jának a következőt:
 
-![Kép kiválasztása](./media/cloud-partner-portal-publish-virtual-machine/selectimage2.png)
+![Rendszerkép kiválasztása](./media/cloud-partner-portal-publish-virtual-machine/selectimage2.png)
 
 Amikor közzéteszi az ajánlatot, a kiválasztott SKU-ról származó lemezképek elérhetővé válnak a privát SKU-AZONOSÍTÓban az egyéni díjak/feltételek alapján. A privát SKU csak a célközönség számára látható.
 
@@ -98,7 +99,7 @@ Ha az API-t használja, és nem szeretne CSV-fájlt fenntartani, a célközöns�
 
 ###  <a name="managing-subscriptions-with-the-api"></a>Előfizetések kezelése az API-val
 
-Az API-val feltölthet egy CSV-fájlt, vagy közvetlenül is kezelheti a célközönségét (CSV használata nélkül). Általánosságban elmondható, hogy egyszerűen le kell kérnie az ajánlatot `restrictedAudience` , frissítenie kell az objektumot, majd ezeket a módosításokat vissza kell küldenie az ajánlatba, hogy hozzá lehessen adni vagy el lehessen távolítani a célközönség tagjait.
+Az API-val feltölthet egy CSV-fájlt, vagy közvetlenül is kezelheti a célközönségét (CSV használata nélkül). Általánosságban elmondható, hogy egyszerűen le kell kérnie az ajánlatát, frissítenie kell a `restrictedAudience` objektumot, majd az ajánlatba be kell küldenie ezeket a módosításokat, hogy hozzá lehessen adni vagy el lehessen távolítani a célközönség tagjait.
 
 A célközönségek listájának programozott frissítése a következőképpen történik:
 
@@ -126,7 +127,7 @@ A célközönségek listájának programozott frissítése a következőképpen 
 
     Minden korlátozott célközönség objektum esetében:
 
-    a. Töltse le a tartalmát `restrictedAudience.uploadedCsvUri`. A tartalom egyszerűen egy fejléceket tartalmazó CSV-fájl. Példa:
+    a. `restrictedAudience.uploadedCsvUri`tartalmának letöltése. A tartalom egyszerűen egy fejléceket tartalmazó CSV-fájl. Például:
 
         type,id,description
         subscriptionId,541a269f-3df2-486e-8fe3-c8f9dcf28205,sub1
@@ -156,7 +157,7 @@ A célközönségek listájának programozott frissítése a következőképpen 
         ]}
     ```
 
-    a. Minden korlátozott célközönség objektum esetében szükség szerint adjon hozzá vagy töröljön bejegyzéseket `restrictedAudience.manualEntries` a listában.
+    a. Minden korlátozott célközönség objektum esetében szükség szerint adjon hozzá vagy töröljön bejegyzéseket a `restrictedAudience.manualEntries` listában.
 
 4. Ha befejezte a privát ajánlat egyes SKU- *restrictedAudience* összes objektumának frissítését, [frissítse az ajánlatot](cloud-partner-portal-api-creating-offer.md):
 

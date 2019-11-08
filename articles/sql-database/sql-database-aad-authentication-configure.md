@@ -1,5 +1,5 @@
 ---
-title: Azure Active Directory hitelesítés konfigurálása – SQL
+title: Az Azure Active Directory-fiókon alapuló hitelesítés konfigurálása
 description: Megtudhatja, hogyan csatlakozhat SQL Databasehoz, felügyelt példányhoz és SQL Data Warehousehoz Azure Active Directory hitelesítéssel – az Azure AD konfigurálása után.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto, carlrab
 ms.date: 11/06/2019
-ms.openlocfilehash: d23fcb781f5eddd71d5ddce9344d988d2e323611
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 48334d8ce266ddcc92e4d2b27634db3d8c9f1bc9
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73691382"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73816800"
 ---
 # <a name="configure-and-manage-azure-active-directory-authentication-with-sql"></a>Azure Active Directory hitelesítés konfigurálása és kezelése SQL-sel
 
@@ -279,7 +279,7 @@ Az egyes parancsokra vonatkozó további információk megtekintéséhez haszná
 
 ### <a name="powershell-examples-for-azure-sql-database-and-azure-sql-data-warehouse"></a>PowerShell-példák Azure SQL Database és Azure SQL Data Warehouse
 
-A következő parancsfájl egy **Group-23**nevű erőforráscsoport **DBA_GROUP** (Object ID `40b79501-b343-44ed-9ce7-da4c8cc7353f`) nevű Azure ad-beli rendszergazdai csoportját is kiépíti a **demo_server** -kiszolgálóhoz:
+A következő parancsfájl a **Group-23**nevű erőforráscsoport **DBA_Group** (objektumazonosító `40b79501-b343-44ed-9ce7-da4c8cc7353f`) nevű Azure ad-rendszergazdai csoportját is kiépíti a **demo_server** -kiszolgálóhoz:
 
 ```powershell
 Set-AzSqlServerActiveDirectoryAdministrator -ResourceGroupName "Group-23"
@@ -361,7 +361,7 @@ Ha olyan Azure AD-alapú tárolt adatbázis-felhasználót szeretne létrehozni 
 CREATE USER <Azure_AD_principal_name> FROM EXTERNAL PROVIDER;
 ```
 
-A *Azure_AD_principal_name* lehet egy Azure ad-felhasználó egyszerű felhasználóneve vagy egy Azure ad-csoport megjelenített neve.
+*Azure_AD_principal_name* lehet egy Azure ad-felhasználó egyszerű felhasználóneve vagy egy Azure ad-csoport megjelenített neve.
 
 **Példák:** Az Azure AD összevont vagy felügyelt tartományi felhasználót képviselő tárolt adatbázis-felhasználó létrehozása:
 
@@ -399,7 +399,7 @@ Amikor létrehoz egy adatbázis-felhasználót, a felhasználó megkapja a **kap
 A felügyelt tartományba külső felhasználóként importált összevont tartományi felhasználói fióknak a felügyelt tartományi identitást kell használnia.
 
 > [!NOTE]
-> Az Azure AD-felhasználók az E (EXTERNAL_USER) típusú adatbázis-metaadatokban, illetve az X típusú (EXTERNAL_GROUPS) csoportokban vannak megjelölve. További információ: [sys. database_principals](https://msdn.microsoft.com/library/ms187328.aspx).
+> Az Azure AD-felhasználók az E (EXTERNAL_USER) típusú adatbázis-metaadatokban vannak megjelölve, az X típusú csoportok esetében (EXTERNAL_GROUPS). További információ: [sys. database_principals](https://msdn.microsoft.com/library/ms187328.aspx).
 >
 
 ## <a name="connect-to-the-user-database-or-data-warehouse-by-using-ssms-or-ssdt"></a>Kapcsolódás a felhasználói adatbázishoz vagy az adatraktárhoz a SSMS vagy a SSDT használatával  

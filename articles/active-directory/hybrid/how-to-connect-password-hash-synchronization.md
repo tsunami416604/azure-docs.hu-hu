@@ -15,12 +15,12 @@ ms.author: billmath
 search.appverid:
 - MET150
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1d8caafe312c123a9d572e9a5f4c5cf64a05f7ea
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: ac1b75536e092203490a390860a1cead7ac333b7
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73721045"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73817978"
 ---
 # <a name="implement-password-hash-synchronization-with-azure-ad-connect-sync"></a>Jelszó-kivonatolási szinkronizálás implementálása Azure AD Connect szinkronizálással
 Ez a cikk azokat az információkat tartalmazza, amelyekkel szinkronizálhatja a felhasználói jelszavakat egy helyszíni Active Directory-példányról egy felhőalapú Azure Active Directory-(Azure AD-) példányra.
@@ -100,7 +100,7 @@ Ha a *EnforceCloudPasswordPolicyForPasswordSyncedUsers* le van tiltva (ez az ala
 
 A EnforceCloudPasswordPolicyForPasswordSyncedUsers funkció engedélyezéséhez futtassa a következő parancsot a MSOnline PowerShell-modul használatával:
 
-`Set-MsolDirSyncFeature -Feature EnforceCloudPasswordPolicyForPasswordSyncedUsers  $true`
+`Set-MsolDirSyncFeature -Feature EnforceCloudPasswordPolicyForPasswordSyncedUsers -Enable $true`
 
 Ha engedélyezve van, az Azure AD nem az egyes szinkronizált felhasználókra lép, hogy eltávolítsa a `DisablePasswordExpiration` értéket a PasswordPolicies attribútumból. Ehelyett az érték `None` a következő jelszó-szinkronizálás során az egyes felhasználóknál, amikor legközelebb megváltoztatják a jelszavukat a helyszíni AD-ben.  
 

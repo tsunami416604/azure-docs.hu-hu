@@ -1,19 +1,20 @@
 ---
-title: A Microsoft Azure SQL Database kapcsolódási problémáinak elhárítása | Microsoft Docs
+title: Kapcsolódási problémák elhárítása
 description: Ismerteti, hogyan lehet elhárítani a Azure SQL Database kapcsolódási problémáit.
 services: sql-database
 ms.service: sql-database
 ms.topic: troubleshooting
+ms.custom: seo-lt-2019
 author: v-miegge
 ms.author: ramakoni
 ms.reviewer: ''
 ms.date: 09/27/2019
-ms.openlocfilehash: 9de6d85e1fc54d60f999cfa18665067b3998a432
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 20988296b5eac7152c53abd6d238043288feacc8
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72390660"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73807271"
 ---
 # <a name="troubleshooting-connectivity-issues-with-microsoft-azure-sql-database"></a>A Microsoft Azure SQL Database kapcsolódási problémáinak elhárítása
 
@@ -28,9 +29,9 @@ Hibaüzeneteket kap, amikor meghiúsul az Azure SQL Database-hez való kapcsoló
 A probléma megoldása:
 
 1. Győződjön meg arról, hogy az összes ismert leálláshoz a [Microsoft Azure szolgáltatás irányítópultja](https://status.azure.com/status) van. 
-2. Ha nincsenek ismert kimaradások, lépjen a [Microsoft Azure támogatási webhelyére](http://azure.microsoft.com/support/options) , és nyisson meg egy támogatási esetet.
+2. Ha nincsenek ismert kimaradások, lépjen a [Microsoft Azure támogatási webhelyére](https://azure.microsoft.com/support/options) , és nyisson meg egy támogatási esetet.
 
-További információ: ["a kiszolgáló adatbázisa jelenleg nem érhető el" hibaüzenettel kapcsolatos hiba](https://docs.microsoft.com/azure/sql-database/sql-database-troubleshoot-common-connection-issues#troubleshoot-transient-errors).
+További információ: ["a kiszolgáló adatbázisa jelenleg nem érhető el" hibaüzenettel kapcsolatos hiba](sql-database-troubleshoot-common-connection-issues.md#troubleshoot-transient-errors).
 
 ## <a name="a-network-related-or-instance-specific-error-occurred-while-establishing-a-connection-to-sql-server"></a>Hálózattal kapcsolatos vagy példányra jellemző hiba történt a SQL Server kapcsolatának létrehozásakor
 
@@ -62,7 +63,7 @@ Ezek a hibák azért fordulnak elő, mert az alkalmazás nem tud csatlakozni a k
 
 A probléma megoldásához próbálja meg a [gyakori kapcsolódási problémák elhárítása](#steps-to-fix-common-connection-issues) című szakaszban ismertetett lépéseket (a sorrend szerint).
 
-## <a name="cannot-connect-to-servername-due-to-firewall-issues"></a>Tűzfallal kapcsolatos problémák miatt nem lehet csatlakozni a <servername>-hoz
+## <a name="cannot-connect-to-servername-due-to-firewall-issues"></a>Tűzfallal kapcsolatos problémák miatt nem lehet csatlakozni a <servername>hoz
 
 ### <a name="error-40615-cannot-connect-to--servername-"></a>40615-es hiba: nem lehet csatlakozni < servername >
 
@@ -129,7 +130,7 @@ A szolgáltatás rendszergazdája általában a következő lépésekkel adhatja
    ```
    
    > [!NOTE]
-   > A `sp_addrolemember` segítségével adott felhasználókat adott adatbázis-szerepkörökhöz is leképezheti.
+   > A `sp_addrolemember` segítségével adott felhasználók képezhetők le adott adatbázis-szerepkörökre.
 
 További információ: [adatbázisok és bejelentkezések kezelése Azure SQL Databaseban](https://docs.microsoft.com/azure/sql-database/sql-database-manage-logins).
 
@@ -188,7 +189,7 @@ A probléma megkerüléséhez próbálkozzon az alábbi módszerek egyikével:
   > [!NOTE]
   > Ez egy minimalista megközelítés, amely esetleg nem oldja meg a problémát.
 
-  1. Futtassa a következő SQL-lekérdezést, hogy ellenőrizze a [sys. DM _exec_requests](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql) nézetét, hogy megjelenjenek-e a blokkoló kérelmek:
+  1. Futtassa a következő SQL-lekérdezést, hogy ellenőrizze a [sys. dm_exec_requests](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql) nézetet a blokkoló kérelmek megtekintéséhez:
 
              ```
              SELECT * FROM dm_exec_requests
@@ -197,7 +198,7 @@ A probléma megkerüléséhez próbálkozzon az alábbi módszerek egyikével:
   2. A fej-blokkoló **bemeneti pufferének** meghatározása.
   3. A fej-blokkoló lekérdezésének hangolása.
 
-    Részletes hibaelhárítási eljárás: a [lekérdezés a felhőben fut?](http://blogs.msdn.com/b/sqlblog/archive/2013/11/01/is-my-query-running-fine-in-the-cloud.aspx).
+    Részletes hibaelhárítási eljárás: a [lekérdezés a felhőben fut?](https://blogs.msdn.com/b/sqlblog/archive/2013/11/01/is-my-query-running-fine-in-the-cloud.aspx).
 
 * Ha az adatbázis folyamatosan eléri a korlátot a blokkoló és a hosszan futó lekérdezések kezelése előtt, érdemes lehet frissíteni az új előzetes verzióra (például a [standard vagy a Premium kiadásra](https://azure.microsoft.com/pricing/details/sql-database/)).
 
@@ -265,7 +266,7 @@ A következő lépések segíthetnek a probléma megkerülésében vagy további
 
 Ha többször is megtapasztalja ezt a hibát, próbálja meg elhárítani a problémát a következő lépésekkel: 
 
-1. Ellenőrizze a sys. DM _exec_requests nézetet, hogy megjelenjenek-e a total_elapsed_time oszlop magas értékkel rendelkező nyitott munkamenetei. A következő SQL-szkript futtatásával végezze el az ellenőrzés végrehajtását:
+1. Ellenőrizze a sys. dm_exec_requests nézetet, hogy megjelenjenek-e a total_elapsed_time oszlop magas értékkel rendelkező nyitott munkamenetei. A következő SQL-szkript futtatásával végezze el az ellenőrzés végrehajtását:
 
    ```
    SELECT * FROM dm_exec_requests
@@ -275,7 +276,7 @@ Ha többször is megtapasztalja ezt a hibát, próbálja meg elhárítani a prob
 
 A lekérdezések kötegelt feldolgozását is érdemes figyelembe venni. A kötegelt feldolgozással kapcsolatos további információkért lásd: [a Batch használata az SQL Database alkalmazások teljesítményének javításához](https://docs.microsoft.com/azure/sql-database/sql-database-use-batching-to-improve-performance).
 
-Részletes hibaelhárítási eljárás: a [lekérdezés a felhőben fut?](http://blogs.msdn.com/b/sqlblog/archive/2013/11/01/is-my-query-running-fine-in-the-cloud.aspx).
+Részletes hibaelhárítási eljárás: a [lekérdezés a felhőben fut?](https://blogs.msdn.com/b/sqlblog/archive/2013/11/01/is-my-query-running-fine-in-the-cloud.aspx).
 
 ### <a name="error-40551-the-session-has-been-terminated-because-of-excessive-tempdb-usage"></a>40551-es hiba: a munkamenet túlzott TEMPDB-használat miatt megszakadt
 
@@ -311,7 +312,7 @@ A hiba elhárításához próbálkozzon a következő módszerekkel:
 
 A probléma megkerüléséhez próbálja meg optimalizálni a lekérdezést.
 
-Részletes hibaelhárítási eljárás: a [lekérdezés a felhőben fut?](http://blogs.msdn.com/b/sqlblog/archive/2013/11/01/is-my-query-running-fine-in-the-cloud.aspx).
+Részletes hibaelhárítási eljárás: a [lekérdezés a felhőben fut?](https://blogs.msdn.com/b/sqlblog/archive/2013/11/01/is-my-query-running-fine-in-the-cloud.aspx).
 
 
 ### <a name="cannot-open-database-master-requested-by-the-login-the-login-failed"></a>A bejelentkezés által kért "Master" adatbázis nem nyitható meg. A bejelentkezés sikertelen.
@@ -336,7 +337,7 @@ System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
 ClientConnectionId:<Client connection ID>
 ```
 
-Ha a kivételt a lekérdezési problémák váltották ki, az alábbihoz hasonló hívási verem jelenik meg (jegyezze fel a **SqlCommand** osztályra mutató hivatkozást). Ebben a helyzetben [a lekérdezések finomhangolása](http://blogs.msdn.com/b/sqlblog/archive/2013/11/01/is-my-query-running-fine-in-the-cloud.aspx).
+Ha a kivételt a lekérdezési problémák váltották ki, az alábbihoz hasonló hívási verem jelenik meg (jegyezze fel a **SqlCommand** osztályra mutató hivatkozást). Ebben a helyzetben [a lekérdezések finomhangolása](https://blogs.msdn.com/b/sqlblog/archive/2013/11/01/is-my-query-running-fine-in-the-cloud.aspx).
 
 ```
   at System.Data.SqlClient.SqlCommand.ExecuteReader()
@@ -364,7 +365,7 @@ Lásd: [SQL Server-kapcsolatok adatainak beolvasása](https://docs.microsoft.com
 
 5. Ajánlott eljárásként győződjön meg arról, hogy az újrapróbálkozási logika van érvényben. Az újrapróbálkozási logikával kapcsolatos további információkért lásd: [átmeneti hibák és kapcsolódási hibák elhárítása SQL Database](https://docs.microsoft.com/azure/sql-database/sql-database-connectivity-issues).
 
-Ha ezek a lépések nem oldják meg a problémát, próbálkozzon a további adatok gyűjtésével, majd forduljon az ügyfélszolgálathoz. Ha az alkalmazás egy felhőalapú szolgáltatás, engedélyezze a naplózást. Ez a lépés a hiba UTC időbélyegzőjét adja vissza. Emellett a SQL Azure visszaadja a nyomkövetési azonosítót. A [Microsoft ügyfél-támogatási szolgálata](http://azure.microsoft.com/support/options/) ezeket az információkat használhatja. 
+Ha ezek a lépések nem oldják meg a problémát, próbálkozzon a további adatok gyűjtésével, majd forduljon az ügyfélszolgálathoz. Ha az alkalmazás egy felhőalapú szolgáltatás, engedélyezze a naplózást. Ez a lépés a hiba UTC időbélyegzőjét adja vissza. Emellett a SQL Azure visszaadja a nyomkövetési azonosítót. A [Microsoft ügyfél-támogatási szolgálata](https://azure.microsoft.com/support/options/) ezeket az információkat használhatja. 
 
 A naplózás engedélyezésével kapcsolatos további információkért lásd: a [diagnosztikai naplózás engedélyezése a Azure app Service alkalmazásokban](https://azure.microsoft.com/documentation/articles/web-sites-enable-diagnostic-log/).
 

@@ -1,110 +1,111 @@
 ---
-title: Adja meg annak részleteit kirakat consulting ajánlatot |} Az Azure Marketplace-en
-description: Adja meg a Cloud Partner portálra az Azure-ban vagy a Dynamics 365 tanácsadási szolgáltatási ajánlat kirakat részleteit.
+title: Adja meg a tanácsadási ajánlat kirakati adatait | Azure piactér
+description: Adja meg a kirakat részleteit egy Azure-beli vagy Dynamics 365 Consulting Service-ajánlatban a Cloud Partner Portalban.
 services: Azure, Marketplace, Cloud Partner Portal,
 author: qianw211
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: pabutler
-ms.openlocfilehash: 1b028fe016d6ae3df8c1dfce548fc0c11479d5a6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3d741361cdeb25d6fc063f95da7bc301178f31fc
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64942718"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73818084"
 ---
 # <a name="storefront-details-tab"></a>Áruház részletei lap
 
-Ez a cikk bemutatja, hogyan adja meg, hogy az áruház oldala. A **kirakat részletek** lapon áll, az alábbi szakaszokból áll:
+Ez a cikk azt ismerteti, hogyan adhatja meg a kirakat részleteit. A **kirakat részletei** lap a következő szakaszokból áll:
 
--   **Az ajánlat részletei**
--   **Közzétevői adatokkal**
--   **Lista részletei**
+-   **Ajánlat részletei**
+-   **Közzétevő adatai**
+-   **Részletek listázása**
 -   **Marketing-összetevők**
 
-![Új tanácsadási szolgáltatási ajánlat létrehozása – kirakat részletei lapon](media/consultingoffer-storefront-details.png)
+![Új tanácsadói szolgáltatási ajánlat – kirakat részletei lap](media/consultingoffer-storefront-details.png)
 
 
 ## <a name="offer-details"></a>Az ajánlat részletei
 
-A **ajánlat részletei** szakasz tartalmazza a következő mezőket:
+Az **ajánlat részletei** szakasz a következő mezőket tartalmazza:
 
--   **Ajánlat-összefoglaló\***
--   **Az ajánlat leírása\***
+-   **Ajánlat összegzése\***
+-   **Ajánlat leírása\***
 
 
-### <a name="offer-summary"></a>Ajánlat-összefoglaló\*
+### <a name="offer-summary"></a>Ajánlat összegzése\*
 
-Az ajánlat összefoglalásának, amely alatt az ajánlat neve jelenik meg az ajánlat rövid leírása. Egyszerű szöveges használatával adja meg az ajánlat-összefoglaló, anélkül, hogy minden sortörést. A következő példák olyan jó ajánlat összegzéseket és azok megfelelő ajánlat nevét.
+Az ajánlat összefoglalása az ajánlat rövid leírása, amely közvetlenül az ajánlat neve alatt jelenik meg. Egyszerű szöveg használata az ajánlat összegzésének megadásához Sortörés nélkül. Az alábbi példák a megfelelő ajánlatok összefoglalóit és a hozzájuk tartozó ajánlati nevüket mutatják be.
 
 *1. példa*
 
--   **Ajánlat neve**: Felhőbeli elemzési: 3 napos Workshop
--   **Összefoglalás ajánlat**: A Microsoft Azure és a Power BI, a jelenlegi környezet és a mini POC értékelése áttekintése.
+-   **Ajánlat neve**: Cloud Analytics: 3 napos workshop
+-   **Ajánlat összegzése**: a Microsoft Azure és a Power bi áttekintése, a jelenlegi környezet és a mini POC értékelése.
 
 *2. példa*
 
--   **Ajánlat neve**: Az Azure IoT ipari: 30 napos a koncepció igazolása
--   **Összefoglalás ajánlat**: Hozzon létre egy ipari csatlakozó termék próbaüzem való biztonságos csatlakozáshoz berendezések a mezőben egy Azure IoT Hub-megoldás az irányítópultok, jelentések és értesítések.
+-   **Ajánlat neve**: Industrial Azure IoT: 30 napos koncepció
+-   **Ajánlat összegzése**: hozzon létre egy ipari csatlakozású termék-előfizetést, amellyel biztonságosan csatlakoztathatja a mezőket egy Azure IoT hub-megoldáshoz irányítópultok, jelentések és értesítések használatával.
 
 *3. példa*
 
--   **Ajánlat neve**: Professzionális szolgáltatások: 1 – hr Briefing
--   **Összefoglalás ajánlat**: Áttekintés és bemutató, előre konfigurált, kiterjesztett Dynamics 365 for Operations megoldást kínál a projektek, a számlázással és az erőforrások továbbfejlesztett kezelési professzionális szolgáltatások.
+-   **Ajánlat neve**: Professional Services: 1 – HR-tájékoztató
+-   **Ajánlat összegzése**: előre konfigurált, bővített Dynamics 365 for Operations megoldás áttekintése és bemutatója, amely a projektek, a számlázás és a professzionális szolgáltatások erőforrásainak fokozott felügyeletét teszi lehetővé.
 
 *4. példa*
 
--   **Ajánlat neve**: A világon a Power bi-ban: 4 – hr Workshop
--   **Összefoglalás ajánlat**: Megkezdheti az első irányítópultját, és ajánlott eljárások megismerése. Legfeljebb 12 diákoknak végzett helyszíni.
+-   **Ajánlat neve**: Power bi a világon: 4 – HR workshop
+-   **Ajánlat összegzése**: megkezdheti az első irányítópultot, és megismerheti az ajánlott eljárásokat. Akár 12 tanuló esetében, a helyszínen végezhető.
 
 *5. példa*
 
--   **Ajánlat neve**: A Dynamics és projektek: Értékelés 3 napos
--   **Összefoglalás ajánlat**: Adatgyűjtési követelmények és professzionális szolgáltatásokat nyújtó cégek és vállalatok projekt adatvezérelt ERP megoldás.
+-   **Ajánlat neve**: Dynamics and projects: 3 napos Értékelés
+-   **Ajánlat összegzése**: a követelmények összegyűjtése és értékelése a professzionális szolgáltatásokat nyújtó cégeknek és a projekten alapuló vállalkozásoknak szánt ERP-megoldásokhoz.
 
 
-### <a name="offer-description"></a>Az ajánlat leírása\*
+### <a name="offer-description"></a>Ajánlat leírása\*
 
-Adja meg a tanácsadó ajánlat leírása a **ajánlat leírása** mezőbe. Egy jó ajánlat leírása az engagement néz ki és az ügyfél a termék teljes pontos részleteit ismerteti. Megismerheti, mit kapnak az ügyfélnek egyértelműen segítenie kell. Például hogyan viszonyul az ajánlat a Microsoft-terméket, amelyhez Ön által kínált tanácsadási szolgáltatásokat.
+Adja meg a tanácsadási szolgáltatás ajánlatának leírását az **ajánlat leírása** mezőben. A jó ajánlat leírása részletesen ismerteti, hogy milyen módon néz ki az összevonás, és hogy az ügyfél mennyivel szabadítható fel. Az ügyfélnek egyértelműen segítenie kell az ügyfelek megismerését. Adja meg az ajánlat azon Microsoft-termékhez való viszonyát, amelyhez tanácsadási szolgáltatásokat kínál.
 
-Az e-mail-címet vagy telefonszámot számot ne tartalmazza az ajánlat leírása. A **kapcsolatfelvételi** gomb megtalálható az ajánlat az érdeklődők feltöltése a érdeklődő felügyeleti cél, amely azonosítja az ajánlatban.
+Ne adja meg az e-mail-címét vagy telefonszámát az ajánlat leírásában. A **Contact me (Kapcsolatfelvétel** ) gomb szerepel a feltöltési ajánlatban, amely az Ön ajánlatához azonosított vezető felügyeleti célra vezet.
 
-Markdown formátumban adja meg az ajánlat leírása. Ha még nem ismeri a Markdown vagy a HTML-formázását, [Markdown használata docs-tartalmak írásához](https://docs.microsoft.com/contribute/how-to-write-use-markdown).
+Adja meg az ajánlat leírását Markdown formátumban. Ha még nem ismeri a Markdown vagy a HTML-formázást, olvassa el a [Markdown használata a docs írásához](https://docs.microsoft.com/contribute/how-to-write-use-markdown)című témakört.
 
-Ezek a formátumok használatával ellenőrizze, hogy az ajánlat könnyen olvasható az ügyfelek számára.
+Ezekkel a formátumokkal biztosíthatja, hogy ajánlata könnyen olvasható legyen az ügyfelek számára.
 
-Az ajánlat leírása rövid tartani, és a maximális karakterszámot csatlakozhat, mert a felhasználók nem szeretne hosszú szöveg. Emellett feltölthet marketing brosúrák, adatlapok és egyéb dokumentumokat, amelyek az ajánlat mélyebb részletesen ismertetik.
+Adja meg az ajánlat rövid leírását, és tartsa be a karakteres korlátot, mivel a felhasználók nem szeretnék hosszú szöveget olvasni. Emellett a marketing-brosúrákat, az adatlapokat és az ajánlat részletes ismertetését ismertető dokumentumokat is fel lehet tölteni.
 
-A következő példa bemutatja egy jól szintből ajánlat leírása és a kapcsolódó neve és összegzése:
+Az alábbi példa egy jól összeállított ajánlat leírását, valamint annak kapcsolódó nevét és összegzését szemlélteti:
 
-**Ajánlat neve**: Felhőbeli elemzési: 3 napos Workshop
+**Ajánlat neve**: Cloud Analytics: 3 napos workshop
 
-**Összefoglalás ajánlat**: A Microsoft Azure és a Power BI, a jelenlegi környezet és a mini POC értékelése áttekintése.
+**Ajánlat összegzése**: a Microsoft Azure és a Power bi áttekintése, a jelenlegi környezet és a mini POC értékelése.
 
-**Ajánlat leírása**: A 3 napos workshop technikai és üzleti vezetők és az ügyfél létesítményben helyszíni tárolt.
+**Ajánlat leírása**: Ez a 3 napos workshop a technikai és üzleti vezetők számára készült, és a helyszínen, az ügyfél létesítményében kerül megrendezésre.
 
 Program
 
-1\. napi
+1\. nap
 
--   Biztonságos, méretezhető, és az Azure Data Lake, az Azure HDInsight vagy Azure SQL Data Warehouse használatával jellemzők szerint rendezik az adatokat a Microsoft cloud összpontosít.
+-   Az Azure Data Lake, az Azure HDInsight vagy a Azure SQL Data Warehouse használatával a Microsoft-felhőben tárolt adatai biztonságossá tételét, méretezését és rendszerezését összpontosíthatja.
 
-2\. napon
+2\. nap
 
--   Bemutatja, hogyan konfigurálhatja és telepítheti a Microsoft R és az Azure Machine Learning a fejlett elemzési megoldásokat.
+-   Bemutatja, hogyan konfigurálhatja és telepítheti a Microsoft R és Azure Machine Learning fejlett elemzési megoldásait.
 
-3 nap
+3\. nap
 
--   Bemutatja, hogyan rajzolhat gyakorlatban hasznosítható elemzéseket nyújt, és üzembe helyezése elemzés a Power bi-ban, és tartalmazza a Power BI-irányítópult cobuild együttműködő munkamenetet.
+-   Bemutatja, hogyan rajzolhatja meg a gyakorlatban hasznosítható elemzéseket és működővé tenni a Power BIokkal, és együttműködési munkamenetet tartalmaz egy Power BI irányítópult összeépítéséhez.
 
 Termékek
 
-A workshop végén az ügyfél definiálhat magas szintű tervének és a egy megvalósítási terv data és analitikai megoldások a Microsoft-felhőben.
+A workshop végére az ügyfél megadhat egy magas szintű tervet és egy megvalósítási ütemtervet a Microsoft Cloud adatkezelési és elemzési megoldásaihoz.
 
-A következő Markdown-mintafájlt az előző ajánlat van:
+A következő minta Markdown-fájl az előző ajánlatra vonatkozik:
 
-    This 3-day workshop is for technical and business leaders and is held on-site at the client’s facility.
+    This 3-day workshop is for technical and business leaders and is held on-site at the client's facility.
 
       ### Agenda
 
@@ -125,87 +126,87 @@ A következő Markdown-mintafájlt az előző ajánlat van:
       By the end of the workshop, the client will be able to define a high-level plan and an implementation roadmap for data and analytics solutions in the Microsoft cloud.
 
 
-## <a name="publisher-information"></a>Közzétevői adatokkal
+## <a name="publisher-information"></a>Kibocsátó adatai
 
 **MPN-AZONOSÍTÓ**
 
-Adja meg a kilenc számjegyű Microsoft Partner Network (MPN) azonosítóját. Ha nem rendelkezik az MPN-azonosító, beszerezheti a Microsoft Partner Centeren egyenként.
+Adja meg a kilenc számjegyű Microsoft Partner Network (MPN) AZONOSÍTÓját. Ha nem rendelkezik MPN-AZONOSÍTÓval, beszerezhet egyet a Microsoft partner Centerben.
 
-**Partnerközpont azonosítója**
+**Partneri központ azonosítója**
 
-Adja meg az új Partner Center-azonosító, ha rendelkezik ilyennel.
+Adja meg az új partneri központ AZONOSÍTÓját, ha rendelkezik ilyennel.
 
 **MPN-AZONOSÍTÓ**
 
-Adjon meg egy titkos kulcsot az appsource-ban az ajánlat kipróbálásához, mielőtt élő kerül.
-Ez az azonosító nem egy jelszót.
+Adjon meg egy titkos kulcsot az ajánlat AppSource való előzetes megtekintéséhez.
+Ez az azonosító nem jelszó.
 
 
-## <a name="listing-details"></a>Lista részletei
+## <a name="listing-details"></a>Részletek listázása
 
 **Tanácsadási szolgáltatás típusa**
 
-A Microsoft megoldásai kizárólag a rögzített hatókörét, a rögzített időtartama, becsült vagy rögzített ár (vagy ingyenes), és elsősorban vásárlás előtti-orientált tanácsadási szolgáltatási ajánlatok egyetlen ügyfél számára. A szolgáltatások típusok a következők: értékelés, briefing, megvalósítás, megvalósíthatósági fogalom, és a helyszíni vagy virtuálisan végzett workshop ajánlatok. Tanácsadási szolgáltatások Piactéri nem támogatja a listaelemek az appsource-ban felügyelt és előfizetési szolgáltatások.
+A Microsoft kizárólag rögzített hatókörű, rögzített időtartamú, becsült vagy rögzített díjszabású (vagy ingyenes), valamint elsődlegesen előfizetéses tanácsadási szolgáltatást kínál egyetlen ügyfél számára. A szolgáltatások típusai az értékelés, a tájékoztatás, a megvalósítás, a koncepciók bizonyítása, valamint a workshopok helyszíni vagy virtuális üzemeltetésű ajánlatok. A AppSource Consulting Services piactér nem támogatja a felügyelt vagy előfizetési szolgáltatások listáját.
 
 >[!Note]
->Appsource-ban tanácsadási szolgáltatások nem a megfelelő előfizetést, vagy igény szerinti betanítások piactéren.
+>A AppSource Consulting Services nem a megfelelő piactér az előfizetéshez vagy igény szerinti képzésekhez.
 
-A következő öt típusú ajánlatok foglalja magában:
+A következő öt típusú ajánlat található:
 
--   **Értékelés**: Alkalmazhatósági megoldások meghatározása és becsült költségek és az időzítési ügyfél környezet értékelése.
--   **Tájékoztatásának**: A megoldás vagy a felhasználói érdeklődés megrajzolásához keretrendszereket, bemutatók és példák ügyfelektől tanácsadási szolgáltatás bemutatása. Helyszíni tájékoztatói kell végrehajtani.
--   **Megvalósítás**: A telepítés befejezéséhez, amely egy teljes mértékben működő megoldást eredményez. A próbaüzem a Microsoft azt javasolja, korlátozza az megoldásokat, amelyekkel egy hét múlva megvalósított vagy kevesebb is lehet.
--   **A koncepció igazolása**: A korlátozott hatókörű megvalósítás meghatározni, ha a megoldás megfelel-e az ügyfél követelményeknek.
--   **Workshop**: Egy interaktív engagement ügyfél helyi képzés, tájékoztatói, értékelések vagy bemutatók a vásárlói adatok vagy a környezetben létrehozott tartalmazni képes elvégezni.
+-   **Értékelés**: az ügyfél környezetének kiértékelése egy megoldás alkalmazhatóságának meghatározásához, valamint a költséghatékony és az időzítési becslés megadásához.
+-   **Tájékoztatás**: egy megoldás vagy egy tanácsadói szolgáltatás bevezetése, amely az ügyfelek érdeklődését keretrendszerek, bemutatók és felhasználói példák használatával hívja meg. A tájékoztatókat a helyszínen kell elvégezni.
+-   **Implementáció**: teljes telepítés, amely teljesen működőképes megoldást eredményez. Ehhez a próbaverzióhoz a Microsoft azt javasolja, hogy korlátozza azokat a megoldásokat, amelyek egy vagy kevesebb héten valósíthatók meg.
+-   A **koncepció igazolása**: egy korlátozott hatókörű implementáció annak megállapítására, hogy egy megoldás megfelel-e az ügyfél követelményeinek.
+-   **Workshop**: egy olyan interaktív előadás, amely egy ügyfél telephelyén zajlik, amely magában foglalhatja az ügyfél által tárolt adatgyűjtésre vagy környezetre épülő tanfolyamokat, tájékoztatókat, felméréseket és bemutatókat.
 
-**Elérhetőség ország/régió**
+**Ország/régió elérhetősége**
 
-Válassza ki a országban és régióban, ahol az tanácsadási szolgáltatási ajánlat érhető el. Egyetlen ajánlat több országban vagy régióban nem tehetők közzé. Minden ország vagy régió egy új ajánlatot kell létrehozni.
+Válassza ki azt az országot és régiót, ahol ez a tanácsadó szolgáltatás elérhető. Egyetlen ajánlat nem tehető közzé több országban vagy régióban. Minden országhoz vagy régióhoz új ajánlatot kell létrehozni.
 
 >[!Note]
->AppSource tanácsadási szolgáltatásokat az Egyesült Államok, Egyesült Királyság és Kanadában jelenleg az élő rendszer. Egy adott ország/régió még nem élő vonatkozó ajánlatot küldhet, és a rendszer kell vizsgálni és az élő esemény indításra kész. Nyissa meg egy új országban vagy régióban, ezért javasolt, ajánlatok, amelyek nem élő országok és régiók az élő esemény indításra kész ajánlatok minimális számú van szükség.
+>A AppSource Consulting Services jelenleg a Egyesült Államok, az Egyesült Királyság és Kanada területén él. Olyan ország/régió számára is küldhet ajánlatot, amely még nem érhető el, és a rendszer áttekinti és készen áll a működésre. Egy új ország/régió megnyitásához azonnal elérhetővé kell tenni az ajánlatokat, ezért a nem élő országok/régiók számára is ajánlott.
 
 **Ágazatok**
 
-Válassza ki, hogy a tanácsadási szolgáltatást kínál, akkor alkalmazható, az iparágban.
+Válassza ki azokat az iparágakat, amelyekre a tanácsadási szolgáltatás ajánlata vonatkozik.
 
-**Időtartam**
+**Időtartama**
 
-Jelölje be egy számot (például 3-as vagy 4) alatt **időtartama**, majd válassza ki **óra**, **nap**, vagy **hét**.
+Válasszon ki egy számot (például 3 vagy 4) az **időtartam**alatt, majd válassza az **óra**, **nap**vagy **hét**lehetőséget.
 
-**Az elsődleges termékek**
+**Elsődleges termékek**
 
-Válassza ki az Azure piactéren való közzétételéhez **Azure** elsődleges termékkel. Válassza ki a megfelelő **megoldási területek**.
+Az Azure Marketplace-en való közzétételhez válassza az **Azure** lehetőséget elsődleges termékként. Ezután válassza ki a megfelelő **megoldási területeket**.
 
-Közzététele az appsource-ba, válassza ki a **Dynamics 365**, **Power BI**, vagy **PowerApps** az elsődleges üzemel. Is választhat más releváns **vonatkozó termék**. A tanácsadási szolgáltatási ajánlat majd ezeket a termékeket, az appsource-on társított listaelemek mutatja.
+A AppSource való közzétételhez válassza a **Dynamics 365**, **Power bi**vagy **PowerApps** elemet az elsődleges termékként. Kiválaszthat más kapcsolódó **termékeket**is. Ezt követően a tanácsadási szolgáltatás ajánlata a AppSource-on található egyes termékekhez társított listákat jeleníti meg.
 
-**Releváns kompetenciák**
+**Kapcsolódó kompetenciák**
 
-Válassza ki a megfelelő, azok mellett az ajánlat részleteit is megjelenik ez az ajánlat kompetenciák.
+Válassza ki az ajánlathoz kapcsolódó kompetenciákat, hogy azok megjelenjenek az ajánlat részleteivel együtt.
 
 ## <a name="marketing-artifacts"></a>Marketing-összetevők
 
-**Vállalati emblémát (.png formátumú, 48 x 48 képpont)**
+**Vállalati embléma (. png formátum, 48 x 48 képpont)**
 
-Az ajánlat az ajánlat katalógus nézet lapon az csempéjén megjelenő kép feltöltése A lemezkép-48 x 48 képpont felbontású .png képnek kell lennie.
+Töltsön fel egy olyan képet, amely megjelenik az ajánlat csempén az ajánlat katalógus nézet lapján. A képnek. png-képként kell lennie, 48 x 48 képpont felbontással.
 
-**Vállalati emblémát (.png formátumú, 216 x 216 képpont)**
+**Vállalati embléma (. png formátum, 216 x 216 képpont)**
 
-Töltse fel a képet, amely az Ön ajánlatát a Részletek oldalon jelenik meg. A kép 216 x 216 képpont felbontású rendelkező .png képnek kell lennie.
+Töltsön fel egy képet, amely megjelenik az ajánlat részletek oldalán. A képnek. png-képként kell lennie, 216 x 216 képpont felbontással.
 
 **Videók (legfeljebb négy)**
 
-Legfeljebb négy ügyfél esettanulmány videók vagy ügyfél hivatkozási videók feltöltését. Ha nem rendelkezik ilyennel, amely ismerteti a vállalat szakértői az ajánlathoz kapcsolódó videó feltöltése. Ha egy Power bi-ban vagy a PowerApps bemutatónkban, töltse fel a bemutató videót itt. Hivatkozások videó YouTube vagy Vimeo kell lennie.
+Töltse fel akár négy ügyfél-esettanulmányi videót vagy az ügyfél-referenciát. Ha nem rendelkezik a szolgáltatással, töltsön fel egy videót, amely ismerteti a vállalat az ajánlathoz kapcsolódó szakértelmét. Ha Power BI vagy PowerApps-megoldás bemutatásával rendelkezik, töltse fel itt a bemutató videót. A videó hivatkozásokat a YouTube vagy a Vimeo számára kell megadni.
 
-**A dokumentumok (legfeljebb három)**
+**Dokumentumok (legfeljebb három)**
 
-Töltse fel a marketing ismertetőben, hogy a tanácsadási szolgáltatási ajánlat részletesen ismerteti. Is feltöltheti a vállalati áttekintése, adatlapok vagy esettanulmányok. Győződjön meg arról, hogy a dokumentumok aktuális kiemelt termékek neveit használja, és nem a Microsoft termékeinek funkció.
+Töltse fel a tanácsadási szolgáltatással kapcsolatban részletesen ismertetett marketing-brosúrát. Emellett feltölthet egy céges áttekintést, egy ténybeli lapot vagy esettanulmányokat is. Győződjön meg arról, hogy a dokumentumok a Kiemelt termékek aktuális nevét használják, és nem a Microsoft versengő termékek funkcióit.
 
-**Képernyőképek (legfeljebb ötöt)**
+**Képernyőképek (legfeljebb öt)**
 
-Töltse fel az ajánlatot, termékei vagy a vállalat további információt adhat meg legfeljebb öt lemezképbe. -Kódrészlettel, amely a marketing ismertetőben, bemutató, vagy egy vállalati hír vagy szakértőnek bemutató kép megfelelő dia bemutatunk néhány példát.
+Töltsön fel akár öt képet, amely további információkat nyújt az ajánlatáról, a termékeiről és a vállalatáról. Néhány példa a marketing-brosúra, a bemutatóból származó releváns dia, vagy egy, a vállalat lendületét vagy szakértelmét ábrázoló képre.
 
 
 ## <a name="next-steps"></a>További lépések
 
-Most már készen áll a [közzététel tanácsadási szolgáltatásokat a](./cpp-consulting-service-publish-offer.md) kínálnak.
+Most már készen áll a [tanácsadási szolgáltatások ajánlatának közzétételére](./cpp-consulting-service-publish-offer.md) .

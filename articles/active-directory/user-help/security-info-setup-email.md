@@ -1,5 +1,5 @@
 ---
-title: Biztonsági adatok (előzetes verzió) beállítása az e-mail-cím használatára – Azure Active Directory | Microsoft Docs
+title: Biztonsági adatok (előzetes verzió) beállítása e-mailek használatára – Azure AD
 description: A biztonsági adatok beállítása a személyazonosságának ellenőrzéséhez az e-mail-cím használatával.
 services: active-directory
 author: eross-msft
@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 02/13/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c8f5590cb528082a73cbdf92850218993a1a6b95
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: a025005065174d5a6ca5fca27ee06ebb036b7b1d
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73161020"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73820348"
 ---
 # <a name="set-up-security-info-preview-to-use-your-email-address"></a>A biztonsági adatok (előzetes verzió) beállítása az e-mail-cím használatára
 
@@ -93,7 +93,7 @@ További beállításokkal is megtudhatja, hogy a szervezet hogyan forduljon a s
     >[!Note]
     >Ha a lehetőségek némelyike hiányzik, valószínűleg azért, mert a szervezet nem engedélyezi ezeket a metódusokat. Ebben az esetben ki kell választania egy elérhető módszert, vagy kapcsolatba kell lépnie a rendszergazdával további segítségért.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Ha elvesztette vagy elfelejtette a jelszavát, állítsa vissza a jelszót a [jelszó-visszaállítási portálról](https://passwordreset.microsoftonline.com/) , vagy kövesse a [munkahelyi vagy iskolai jelszó alaphelyzetbe állítása](active-directory-passwords-update-your-own-password.md) című cikk lépéseit.
 

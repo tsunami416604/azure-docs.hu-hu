@@ -1,5 +1,5 @@
 ---
-title: Kiszolgáló nélküli Azure SQL Database
+title: Kiszolgáló nélküli
 description: Ez a cikk az új kiszolgáló nélküli számítási szintet ismerteti, és összehasonlítja a meglévő kiépített számítási szintjével.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: moslake
 ms.author: moslake
 ms.reviewer: sstein, carlrab
 ms.date: 11/04/2019
-ms.openlocfilehash: fcd79182e046d94f9e67acecebd5cf6a45f2706f
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: fecc394080f54f023529ed2da8c9690c38c1da08
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73687386"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73818278"
 ---
 # <a name="azure-sql-database-serverless"></a>Kiszolgáló nélküli Azure SQL Database
 
@@ -141,7 +141,7 @@ Az autofolytatás a következő esetekben aktiválódik, ha az alábbi feltétel
 
 Az automatikusan folytatott művelet az egyes szolgáltatási frissítések központi telepítése során is aktiválódik, amelyekhez az adatbázisnak online állapotra van szüksége.
 
-### <a name="connectivity"></a>Kapcsolódás
+### <a name="connectivity"></a>Kapcsolatok
 
 Ha egy kiszolgáló nélküli adatbázis szüneteltetve van, akkor az első bejelentkezés folytatja az adatbázist, és egy hibaüzenetet ad vissza, amely azt jelzi, hogy az adatbázis nem érhető el a 40613-as hibakódú kóddal. Az adatbázis újraindítása után a bejelentkezést újra meg kell próbálni a kapcsolat létrehozásához. A kapcsolódási újrapróbálkozási logikával rendelkező adatbázis-ügyfeleket nem szükséges módosítani.
 

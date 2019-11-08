@@ -1,5 +1,5 @@
 ---
-title: 'P2S konfigurálása – Azure SQL Database felügyelt példány '
+title: P2S által felügyelt példány konfigurálása
 description: Kapcsolódjon Azure SQL Database felügyelt példányhoz a SQL Server Management Studio használatával pont – hely kapcsolattal egy helyszíni ügyfélszámítógépről.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, carlrab, bonova, jovanpop
 ms.date: 03/13/2019
-ms.openlocfilehash: 3b3a0ce28c4a936e185ac5f07ba3810c93f4c866
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 30b2ba92174996ea2bae34e7553a3258d8ebee27
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73689415"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73818914"
 ---
 # <a name="quickstart-configure-a-point-to-site-connection-to-an-azure-sql-database-managed-instance-from-on-premises"></a>Gyors útmutató: pont – hely kapcsolat konfigurálása egy Azure SQL Database felügyelt példányhoz a helyszíni környezetből
 

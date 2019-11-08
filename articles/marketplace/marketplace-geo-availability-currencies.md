@@ -4,21 +4,22 @@ description: Földrajzi elérhetőség az Azure Marketplace-en és a AppSource-b
 services: Azure, Marketplace, Compute, Storage, Networking
 author: qianw211
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 02/28/2019
 ms.author: ellacroi
-ms.openlocfilehash: 344479a270119137a256620304d88f139d0b0322
-ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
+ms.openlocfilehash: 0b12e122cef3a05af7a09918ba434d103e33a1a2
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68619969"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73822938"
 ---
 # <a name="geographic-availability-and-currency-support"></a>Földrajzi Elérhetőség és pénznemek támogatása
 
 Az Azure Marketplace-és AppSource-ajánlatokat az ügyfél számlázási címe által meghatározott 141 földrajzi régiókban lehet megvásárolni, a tranzakciók pedig 17 pénznemben végezhetők el. Az alábbi táblázat felsorolja az egyes támogatott földrajzi helyeket, az [ISO 3166 2 számjegyű alfa-kódot](https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes)és a hozzárendelt pénznemet.
 
-|   Ország/régió neve               |   ISO-2   |   Currency   |
+|   Ország/régió neve               |   ISO-2   |   Currency (Pénznem)   |
 |-------------------------------------|-----------|--------------|
 | Afganisztán                         | AF        | USD          |
 | Albánia                             | AL        | USD          |
@@ -26,7 +27,7 @@ Az Azure Marketplace-és AppSource-ajánlatokat az ügyfél számlázási címe 
 | Andorra                             | AD        | EUR          |
 | Angola                              | AO        | USD          |
 | Argentína                           | AR        | USD          |
-| Örményország                             | de.        | USD          |
+| Örményország                             | AM        | USD          |
 | Ausztrália                           | AU        | AUD          |
 | Ausztria                             | AT        | EUR          |
 | Azerbajdzsán                          | AZ        | USD          |
@@ -50,19 +51,19 @@ Az Azure Marketplace-és AppSource-ajánlatokat az ügyfél számlázási címe 
 | Chile                               | CL        | USD          |
 | Kolumbia                            | CO        | USD          |
 | Costa Rica                          | CR        | USD          |
-| Côte d'Ivoire                       | CI        | USD          |
+| Côte d’Ivoire                       | CI        | USD          |
 | Horvátország                             | HR        | EUR          |
 | Curaçao                             | CW        | USD          |
 | Ciprus                              | CY        | EUR          |
-| Csehország                      | CZ        | EUR          |
+| Cseh Köztársaság                      | CZ        | EUR          |
 | Dánia                             | DK        | DKK          |
 | Dominikai Köztársaság                  | DO        | USD          |
 | Ecuador                             | EC        | USD          |
 | Egyiptom                               | EG        | USD          |
-| El Salvador                         | SV        | USD          |
+| Salvador                         | SV        | USD          |
 | Észtország                             | EE        | EUR          |
 | Etiópia                            | ET        | USD          |
-| Feröer szigetek                       | UTCÁN        | DKK          |
+| Feröer-szigetek                       | UTCÁN        | DKK          |
 | Fidzsi                                | FJ        | AUD          |
 | Finnország                             | FI        | EUR          |
 | Franciaország                              | JK        | EUR          |
@@ -76,7 +77,7 @@ Az Azure Marketplace-és AppSource-ajánlatokat az ügyfél számlázási címe 
 | Magyarország                             | HU        | EUR          |
 | Izland                             | IS        | EUR          |
 | India                               | IN        | INR          |
-| Indonézia                           | id        | USD          |
+| Indonézia                           | ID (Azonosító)        | USD          |
 | Irak                                | IQ        | USD          |
 | Írország                             | IE        | EUR          |
 | Izrael                              | IL        | USD          |
@@ -95,7 +96,7 @@ Az Azure Marketplace-és AppSource-ajánlatokat az ügyfél számlázási címe 
 | Liechtenstein                       | LI        | EUR          |
 | Litvánia                           | LT        | EUR          |
 | Luxemburg                          | LU        | EUR          |
-| Makaó (KKT)                           | MO        | USD          |
+| Makaó KKT                           | MO        | USD          |
 | Észak-Macedónia                     | MK        | USD          |
 | Malajzia                            | MY        | USD          |
 | Málta                               | MT        | EUR          |
@@ -104,7 +105,7 @@ Az Azure Marketplace-és AppSource-ajánlatokat az ügyfél számlázási címe 
 | Moldova                             | MD        | USD          |
 | Monaco                              | MC        | EUR          |
 | Mongólia                            | MN        | USD          |
-| Montenegró                          | ME        | USD          |
+| Montenegró                          | Nekem        | USD          |
 | Marokkó                             | MA        | USD          |
 | Namíbia                             | NA        | USD          |
 | Nepál                               | NP        | USD          |
@@ -163,4 +164,4 @@ Az Azure Marketplace-és AppSource-ajánlatokat az ügyfél számlázási címe 
 | Zimbabwe                            | ZW        | USD          |
 |   |   |   |
 
-\*Brazíliában a felhőalapú megoldások szolgáltatói (CSP) használatával a piactér USD-t használ.
+a Brazíliában található ügyfelek \* USD-t használnak a Cloud Solution Providers (CSP) által használt piactéren.

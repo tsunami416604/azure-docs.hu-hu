@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: d70812779d392cc4555c91599fad37c2d2c68ba5
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: d5d621ec9eccca56c4e4e9075b6e9cca75c05c98
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72793580"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73818584"
 ---
 # <a name="service-limits-in-azure-cognitive-search"></a>Szolgáltatási korlátozások az Azure Cognitive Search
 
@@ -51,13 +51,15 @@ A tárterületre, a munkaterhelésekre és az indexek, dokumentumok és egyéb o
 | Indexek maximális száma |3 |5 vagy 15 |50 |200 |200 |1000 partíciónként vagy 3000 szolgáltatásonként |10 |10 |
 | Egyszerű mezők maximális száma index szerint |1000 |100 |1000 |1000 |1000 |1000 |1000 |1000 |
 | Összetett gyűjtemény mezőinek maximális száma index szerint |40 |40 |40 |40 |40 |40 |40 |40 |
-| Az összes összetett gyűjteményen belüli elemek maximális száma dokumentum szerint |3000 |3000 |3000 |3000 |3000 |3000 |3000 |3000 |
+| Az összes összetett gyűjteményen belüli elemek maximális száma dokumentum&nbsp;<sup>2</sup> |3000 |3000 |3000 |3000 |3000 |3000 |3000 |3000 |
 | Összetett mezők maximális mélysége |10 |10 |10 |10 |10 |10 |10 |10 |
 | Mutatók maximális száma index [alapján](https://docs.microsoft.com/rest/api/searchservice/suggesters) |1 |1 |1 |1 |1 |1 |1 |1 |
 | [Pontozási profilok](https://docs.microsoft.com/rest/api/searchservice/add-scoring-profiles-to-a-search-index) maximális száma index szerint |100 |100 |100 |100 |100 |100 |100 |100 |
 | Függvények maximális száma profilban |8 |8 |8 |8 |8 |8 |8 |8 |
 
 <sup>1</sup> a december 2017-ig létrehozott alapszintű szolgáltatások alacsonyabb korláttal rendelkeznek (15 helyett 5) az indexeken. Az alapszintű csomag az egyetlen olyan SKU, amelynek alsó korlátja a 100 mező/index.
+
+<sup>2</sup> a nagy számú, összetett gyűjteményekbe tartozó elem jelenleg magas tárterület-kihasználtságot okoz. Ez egy ismert probléma. Addig is az 3000-os korlát minden szolgáltatási szinten biztonságos felső határ. Ez a korlát csak olyan indexelési műveletekre van kikényszerítve, amely a legkorábbi általánosan elérhető (GA) API-verziót használja, amely a komplex típusú mezőket (`2019-05-06`) támogatja. Ha nem szeretné megszakítani a korábbi előzetes verziójú API-verziókat használó ügyfeleket (amelyek támogatják az összetett típusú mezőket), a rendszer nem érvényesíti ezt a korlátot az előzetes verziójú API-verziókat használó indexelési műveletekhez. Vegye figyelembe, hogy az előzetes verziójú API-verziók nem használhatók éles környezetekben való használatra, ezért javasoljuk, hogy az ügyfelek a legújabb GA API-verzióra lépjenek.
 
 <a name="document-limits"></a>
 
@@ -75,7 +77,7 @@ Annak megállapításához, hogy a szolgáltatás rendelkezik-e dokumentum-korl�
 
 Ha a portálon a dokumentum korlátja látható, akkor a szolgáltatás a 2017-es késői időpontig jött létre, vagy egy adatközpontban lett létrehozva az Azure Cognitive Search szolgáltatásainak üzemeltetéséhez szükséges alacsonyabb kapacitású fürtök használatával:
 
-+ Ausztrália keleti régiója
++ Kelet-Ausztrália
 + Kelet-Ázsia
 + Közép-India
 + Nyugat-Japán
@@ -85,7 +87,7 @@ A dokumentumok korlátja alá eső szolgáltatások esetében a következő maxi
 
 |  Ingyenes | Basic | S1 | S2 | S3 | S3&nbsp;HD |
 |-------|-------|----|----|----|-------|
-|  10,000 |1 @ no__t_0_ millió |15 millió partíciónként vagy 180 millió szolgáltatásonként |60 millió partíciónként vagy 720 millió szolgáltatásonként |120 millió partíciónként vagy 1,4 milliárd szolgáltatásonként |1 millió indexenként vagy 200 millió partíciónként |
+|  10,000 |1&nbsp;millió |15 millió partíciónként vagy 180 millió szolgáltatásonként |60 millió partíciónként vagy 720 millió szolgáltatásonként |120 millió partíciónként vagy 1,4 milliárd szolgáltatásonként |1 millió indexenként vagy 200 millió partíciónként |
 
 Ha a szolgáltatás korlátozásokat blokkol, hozzon létre egy új szolgáltatást, majd tegye közzé újra az összes tartalmat a szolgáltatásban. Nincs olyan mechanizmus, amellyel zökkenőmentesen újra kiépítheti a szolgáltatást a színfalak mögötti új hardverre.
 
@@ -108,15 +110,15 @@ A maximális futási idő a szolgáltatás egészére vonatkozó egyensúlyt és
 
 | Erőforrás | Ingyenes&nbsp;<sup>1</sup> | Alapszintű&nbsp;<sup>2</sup>| S1 | S2 | S3 | S3&nbsp;HD&nbsp;<sup>3</sup>|L1 |L2 |
 | -------- | ----------------- | ----------------- | --- | --- | --- | --- | --- | --- |
-| Indexelők maximális száma |3 |5 vagy 15|50 |200 |200 |– |10 |10 |
-| Adatforrások maximális száma |3 |5 vagy 15 |50 |200 |200 |– |10 |10 |
-| Maximális szakértelmével <sup>4</sup> |3 |5 vagy 15 |50 |200 |200 |– |10 |10 |
-| Az indexelési terhelés maximális száma hívás közben |10 000 dokumentum |Csak a dokumentumok maximális száma korlátozza |Csak a dokumentumok maximális száma korlátozza |Csak a dokumentumok maximális száma korlátozza |Csak a dokumentumok maximális száma korlátozza |– |Korlátlan |Korlátlan |
+| Indexelők maximális száma |3 |5 vagy 15|50 |200 |200 |N/A |10 |10 |
+| Adatforrások maximális száma |3 |5 vagy 15 |50 |200 |200 |N/A |10 |10 |
+| Maximális szakértelmével <sup>4</sup> |3 |5 vagy 15 |50 |200 |200 |N/A |10 |10 |
+| Az indexelési terhelés maximális száma hívás közben |10 000 dokumentum |Csak a dokumentumok maximális száma korlátozza |Csak a dokumentumok maximális száma korlátozza |Csak a dokumentumok maximális száma korlátozza |Csak a dokumentumok maximális száma korlátozza |N/A |Korlátlan |Korlátlan |
 | Minimális ütemterv | 5 perc |5 perc |5 perc |5 perc |5 perc |5 perc |5 perc | 5 perc |
-| Maximális futási idő <sup>5</sup> | 1-3 perc |24 óra |24 óra |24 óra |24 óra |–  |24 óra |24 óra |
-| A kognitív keresési szakértelmével vagy a blob-indexelés maximális futási ideje képanalízissel <sup>5</sup> | 3-10 perc |2 óra |2 óra |2 óra |2 óra |–  |2 óra |2 óra |
-| BLOB indexelő: blob maximális mérete (MB) |16 |16 |128 |256 |256 |–  |256 |256 |
-| BLOB indexelő: blobból kinyert tartalom maximális száma |32 000 |64 000 |4 @ no__t_0_ millió |4 @ no__t_0_ millió |4 @ no__t_0_ millió |– |4 @ no__t_0_ millió |4 @ no__t_0_ millió |
+| Maximális futási idő <sup>5</sup> | 1-3 perc |24 óra |24 óra |24 óra |24 óra |N/A  |24 óra |24 óra |
+| A kognitív keresési szakértelmével vagy a blob-indexelés maximális futási ideje képanalízissel <sup>5</sup> | 3-10 perc |2 óra |2 óra |2 óra |2 óra |N/A  |2 óra |2 óra |
+| BLOB indexelő: blob maximális mérete (MB) |16 |16 |128 |256 |256 |N/A  |256 |256 |
+| BLOB indexelő: blobból kinyert tartalom maximális száma |32 000 |64 000 |4&nbsp;millió |4&nbsp;millió |4&nbsp;millió |N/A |4&nbsp;millió |4&nbsp;millió |
 
 <sup>1</sup> az ingyenes szolgáltatások esetében az indexelő maximális végrehajtási ideje 3 perc a blob-forrásokhoz és 1 perc az összes többi adatforráshoz. A Cognitive Servicesba beérkező AI-indexelés esetén az ingyenes szolgáltatások napi 20 ingyenes tranzakcióra korlátozódnak, ahol a tranzakciót olyan dokumentumként határozzák meg, amely sikeresen áthalad a dúsítási folyamaton.
 
@@ -127,6 +129,9 @@ A maximális futási idő a szolgáltatás egészére vonatkozó egyensúlyt és
 <sup>4</sup> készségkészlet legfeljebb 30 ismeret.
 
 <sup>5</sup> a kognitív keresési munkaterhelések és az Azure-Blobok indexelésének képelemzése rövidebb ideig tart, mint a normál szöveges indexelés. A képek elemzése és a természetes nyelvi feldolgozás számítási igényű, és aránytalanul nagy mennyiségű rendelkezésre álló feldolgozási kapacitást igényel. A futási idő csökkentve lett, hogy a várólistán lévő többi feladat fusson.  
+
+> [!NOTE]
+> Ahogy az [index korlátaiban](#index-limits)is említettük, az indexek az összes összetett gyűjteménynél a legújabb GA API-verziótól kezdődően a felső 3000 korlátot is kikényszerítik, amely az összetett típusokat (`2019-05-06`) is támogatja. Ez azt jelenti, hogy ha az indexelő korábbi API-verzióval hozta létre, a korlát nem vonatkozik rá. A maximális kompatibilitás megőrzése érdekében egy korábbi API-verzióval létrehozott indexelő, majd `2019-05-06` vagy újabb API-verzióval frissített, továbbra is ki lesz **zárva** a korlátok közül. Az ügyfeleknek tisztában kell lenniük azzal, hogy milyen negatív hatással vannak a nagyon nagy összetett gyűjtemények (a korábban említettek szerint), és javasoljuk, hogy hozzon létre minden új indexelő a legújabb GA API-verzióval.
 
 ## <a name="synonym-limits"></a>Szinonimák korlátai
 

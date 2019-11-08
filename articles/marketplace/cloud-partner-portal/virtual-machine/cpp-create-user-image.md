@@ -1,42 +1,43 @@
 ---
-title: Felhasználói Virtuálisgép-lemezkép létrehozása az Azure Marketplace-en
-description: A lépéseket és a egy felhasználói Virtuálisgép-lemezkép létrehozásához szükséges hivatkozásokat sorolja fel.
+title: Felhasználói virtuálisgép-rendszerkép létrehozása az Azure Marketplace-en
+description: A felhasználói virtuálisgép-rendszerkép létrehozásához szükséges lépéseket és hivatkozásokat sorolja fel.
 services: Azure, Marketplace, Cloud Partner Portal,
 author: v-miclar
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 11/29/2018
 ms.author: pabutler
-ms.openlocfilehash: 0005ab517d38903b87889b67449569495e396265
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e63f09dc538c5e66b244826cf3b5f92ac388b6a9
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64938333"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73818699"
 ---
 # <a name="create-a-user-vm-image"></a>Felhasználói virtuális gép rendszerképének létrehozása
 
-Ez a cikk ismerteti a két, nem felügyelt rendszerkép létrehozása általános virtuális merevlemezből szükséges általános lépéseket.  Végigvezeti az egyes lépések biztosított hivatkozások: a lemezképet rögzítené és a lemezkép általánossá tétele.
+Ez a cikk a nem felügyelt rendszerképek általánosított virtuális merevlemezről történő létrehozásához szükséges két általános lépést ismerteti.  A hivatkozásokat a következő lépésekben találja: rögzítse a lemezképet, és általánosítsa a lemezképet.
 
 
-## <a name="capture-the-vm-image"></a>A virtuális gép lemezképének rögzítése
+## <a name="capture-the-vm-image"></a>A virtuális gép rendszerképének rögzítése
 
-A rögzítés a virtuális gép, amely megfelel a hozzáférési módszer a következő cikkben szereplő útmutatások segítségével:
+Az alábbi cikk utasításait követve rögzítheti a virtuális gépet, amely megfelel a hozzáférési módszernek:
 
--  PowerShell: [Egy nem felügyelt Virtuálisgép-rendszerkép létrehozása Azure virtuális gépből](../../../virtual-machines/windows/capture-image-resource.md)
--  Azure CLI: [Hogyan hozhat létre virtuális gépet vagy virtuális merevlemez képe](../../../virtual-machines/linux/capture-image.md)
--  API: [Virtuális gépek – rögzítése](https://docs.microsoft.com/rest/api/compute/virtualmachines/capture)
+-  PowerShell: nem [felügyelt virtuális gép rendszerképének létrehozása Azure-beli virtuális](../../../virtual-machines/windows/capture-image-resource.md) gépről
+-  Azure CLI: [virtuális gép vagy VHD rendszerképének létrehozása](../../../virtual-machines/linux/capture-image.md)
+-  API: [Virtual Machines – rögzítés](https://docs.microsoft.com/rest/api/compute/virtualmachines/capture)
 
 
-## <a name="generalize-the-vm-image"></a>A Virtuálisgép-lemezkép általánossá tétele
+## <a name="generalize-the-vm-image"></a>A virtuálisgép-rendszerkép általánosítása
 
-A felhasználói lemezkép korábban általános virtuális merevlemezből hozott létre, mert azt kell is általánosítva van.  Újra válassza ki a következő cikkben, amely megfelel a hozzáférés-mechanizmus.  (, Előfordulhat, hogy rendelkezik már általánosítva a lemezt rögzített, amikor.)
+Mivel egy korábban általánosított VHD-fájlból generálta a felhasználói képet, azt is általánosítva kell megadnia.  Ezután válassza ki a következő cikket, amely megfelel az Ön hozzáférési mechanizmusának.  (Lehetséges, hogy már elvégezte a lemez általános beolvasását.)
 
--  PowerShell: [A virtuális gép általánosítása](https://docs.microsoft.com/azure/virtual-machines/windows/sa-copy-generalized#generalize-the-vm)
--  Azure CLI: [2. lépés: Virtuális gép rendszerképének létrehozása](https://docs.microsoft.com/azure/virtual-machines/linux/capture-image#step-2-create-vm-image)
--  API: [Virtuális gépek – Generalize](https://docs.microsoft.com/rest/api/compute/virtualmachines/generalize)
+-  PowerShell: [a virtuális gép általánosítása](https://docs.microsoft.com/azure/virtual-machines/windows/sa-copy-generalized#generalize-the-vm)
+-  Azure CLI: [2. lépés: virtuális gép rendszerképének létrehozása](https://docs.microsoft.com/azure/virtual-machines/linux/capture-image#step-2-create-vm-image)
+-  API: [Virtual Machines – általánosítás](https://docs.microsoft.com/rest/api/compute/virtualmachines/generalize)
 
 
 ## <a name="next-steps"></a>További lépések
 
-A rendszer ezután [hozzon létre egy tanúsítványt](cpp-create-key-vault-cert.md) és a egy új Azure Key Vaultban tárolhatók.  Ez a tanúsítvány szükség a Rendszerfelügyeleti webszolgáltatások biztonságos kapcsolatot a virtuális géphez.
+Ezután létre fog [hozni egy tanúsítványt](cpp-create-key-vault-cert.md) , és azt egy új Azure Key Vault tárolja.  Ez a tanúsítvány szükséges a virtuális géphez való biztonságos WinRM-kapcsolatok létrehozásához.

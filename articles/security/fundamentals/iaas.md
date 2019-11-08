@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: barclayn
-ms.openlocfilehash: fc72c59721a6f244806bf229ebded1e66341a04d
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 7558ad2e5a4404db140daff89171af92c6072ef6
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73177692"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73805978"
 ---
 # <a name="security-best-practices-for-iaas-workloads-in-azure"></a>Ajánlott biztonsági eljárások IaaS számítási feladatokhoz az Azure-ban
 Ez a cikk a virtuális gépek és operációs rendszerek ajánlott biztonsági eljárásait ismerteti.
@@ -68,7 +68,7 @@ Ha a virtuális gép olyan kritikus fontosságú alkalmazásokat futtat, amelyek
 A rendelkezésre állási csoport olyan logikai csoportosítás, amelyet az Azure-ban használhat, így biztosíthatja, hogy a benne található virtuálisgép-erőforrások elkülönítve legyenek egymástól, amikor egy Azure-adatközpontban üzembe vannak helyezve. Az Azure biztosítja, hogy a rendelkezésre állási csoportba helyezett virtuális gépek több fizikai kiszolgálón, számítási állványokon, tárolási egységeken és hálózati kapcsolókon fussanak. Ha hardveres vagy Azure-beli szoftveres hiba lép fel, a rendszer csak a virtuális gépek egy részhalmazát érinti, és a teljes alkalmazás továbbra is elérhető lesz az ügyfelek számára. A rendelkezésre állási csoportok nélkülözhetetlen képességgel rendelkeznek, ha megbízható felhőalapú megoldásokat szeretne létrehozni.
 
 ## <a name="protect-against-malware"></a>Védelem a kártevők ellen
-A kártevők elleni védelmet a vírusok, kémprogramok és más kártevő szoftverek azonosításához és eltávolításához kell telepíteni. Telepítheti a [Microsoft antimalware](antimalware.md) -t vagy egy Microsoft-partner Endpoint Protection-megoldását ([Trend Micro](https://help.deepsecurity.trendmicro.com/azure-marketplace-getting-started-with-deep-security.html), [Symantec](https://www.symantec.com/products), [McAfee](https://www.mcafee.com/us/products.aspx), [Windows Defender](https://www.microsoft.com/en-us/search?q=Windows+defender+endpoint+protection&rtc=1)és [System Center Endpoint Protection](https://www.microsoft.com/en-us/search?q=System+Center+endpoint+protection&rtc=1)).
+A kártevők elleni védelmet a vírusok, kémprogramok és más kártevő szoftverek azonosításához és eltávolításához kell telepíteni. Telepítheti a [Microsoft antimalware](antimalware.md) -t vagy egy Microsoft-partner Endpoint Protection-megoldását ([Trend Micro](https://help.deepsecurity.trendmicro.com/azure-marketplace-getting-started-with-deep-security.html), [Symantec](https://www.symantec.com/products), [McAfee](https://www.mcafee.com/us/products.aspx), [Windows Defender](https://www.microsoft.com/windows/comprehensive-security)és [System Center Endpoint Protection](/configmgr/protect/deploy-use/endpoint-protection)).
 
 A Microsoft antimalware olyan funkciókat tartalmaz, mint a valós idejű védelem, az ütemezett vizsgálat, a kártevők szervizelése, az aláírások frissítése, a motor frissítései, a minták jelentéskészítés és a kizárási események gyűjteménye. Az éles környezettől függetlenül üzemeltetett környezetekben a virtuális gépek és a Cloud Services elleni védelem érdekében antimalware-bővítményt használhat.
 
@@ -180,7 +180,7 @@ A virtuális gép közvetlen internetkapcsolatának figyelése és korlátozása
 **Ajánlott eljárás**: a felügyeleti portok korlátozása (RDP, SSH).   
 **Részletek**: az igény szerinti [(JIT)](../../security-center/security-center-just-in-time.md) virtuálisgép-hozzáférés lehetővé teszi az Azure-beli virtuális gépek bejövő forgalmának zárolását, így csökkentve a támadásoknak való kitettséget, miközben könnyű hozzáférést biztosít a virtuális gépekhez való csatlakozáshoz, ha szükséges. Ha a JIT engedélyezve van, Security Center a hálózati biztonsági csoport szabályának létrehozásával zárolja az Azure-beli virtuális gépek felé irányuló bejövő forgalmat. Válassza ki a virtuális gépen azokat a portokat, amelyeken a bejövő forgalom le lesz zárva. Ezeket a portokat a JIT-megoldás vezérli.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Az Azure-beli felhőalapú megoldások tervezésekor, üzembe helyezése és kezelése során ajánlott biztonsági eljárásokat az [Azure biztonsági eljárásaival és modelljeivel](best-practices-and-patterns.md) foglalkozó témakörben talál.
 
 Az Azure-biztonsággal és a kapcsolódó Microsoft-szolgáltatásokkal kapcsolatos általános információk az alábbi forrásokból érhetők el:

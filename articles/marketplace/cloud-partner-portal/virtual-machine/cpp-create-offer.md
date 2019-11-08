@@ -1,50 +1,51 @@
 ---
 title: Virtuálisgép-ajánlat létrehozása az Azure Marketplace-en
-description: Listák hozzon létre egy új virtuális gépet (VM) szükséges lépéseket kínálnak az Azure Marketplace-en.
+description: Az új virtuálisgép-(VM-) ajánlat Azure Marketplace-hez való létrehozásához szükséges lépéseket sorolja fel.
 services: Azure, Marketplace, Cloud Partner Portal,
 author: v-miclar
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 10/19/2018
 ms.author: pabutler
-ms.openlocfilehash: 4cd635c6f664a5260b79e62ea72bbb86fc4e1e4f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1e10bd22b91b51fb811601e49fad06d8f8b30127
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64938357"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73817101"
 ---
 # <a name="create-virtual-machine-offer"></a>Virtuálisgép-ajánlat létrehozása
 
-Ebben a szakaszban egy új virtuális gép (VM) az ajánlat kérelmet az Azure Marketplace-en létrehozásához szükséges lépéseket tartalmazza.  Minden ajánlat jelenik meg a saját entitás az Azure Marketplace-en, és a egy vagy több termékváltozatok társított.  Egy Virtuálisgép-ajánlat a következő eszközök és a támogató szolgáltatások csoportosítását tevődik össze: 
+Ez a szakasz azokat a lépéseket sorolja fel, amelyek szükségesek az új virtuálisgép-ajánlati kérelem létrehozásához az Azure Marketplace-en.  Minden ajánlat saját entitásként jelenik meg az Azure Marketplace-en, és egy vagy több SKU-hoz van társítva.  A virtuálisgép-ajánlat a következő, az eszközök és a támogató szolgáltatások csoportjaiból áll: 
 
-![Egy Virtuálisgép-ajánlat eszközök](./media/publishvm_002.png)
+![VIRTUÁLIS gépekre vonatkozó ajánlat eszközei](./media/publishvm_002.png)
 
-Ahol:
+ahol
 
 |  **Eszközcsoport**   |  **Leírás**  |
 |  ---------------   |  ---------------  |
-|    SKU-k            |  A legkisebb megvásárolható egysége egy ajánlatot. (A termék osztály) egyetlen ajánlatba rendelhető hozzá több termékváltozatok különbséget tenni a támogatott szolgáltatások, a Virtuálisgép-lemezképek típusai és a számlázási modellek között lehet. |
-|  Piactér       | Marketing, jogi és elégtelen felügyeleti eszközök és előírásokat tartalmazza.  <ul><li> Marketing eszközök tartalmazzák az ajánlat nevét, leírását és emblémák</li> <li> Jogi eszközök közé tartozik egy adatvédelmi szabályzatát, használati feltételeit és egyéb jogi dokumentáció</li>  <li> Elégtelen felügyeleti házirend lehetővé teszi, hogy adja meg, hogyan kezelje az Azure Marketplace-en a végfelhasználói portálon vezet.</li> </ul> |
-| Támogatás            | Támogatási kapcsolattartó és házirend információkat tartalmaz |
-| Tesztverzió         | Határozza meg, amelyek lehetővé teszik a végfelhasználók számára, hogy tesztelje ajánlatát, mielőtt azok a vásárláskor eszközök |
+|    SKUs            |  Egy ajánlat legkisebb megvásárolható egysége. Egyetlen ajánlatnak (termékkategória) több SKU-t is hozzá lehet rendelni, hogy megkülönböztethető legyen a támogatott funkciók, a virtuálisgép-rendszerképek típusai és a számlázási modellek. |
+|  Piactér       | Marketing, jogi és vezető felügyeleti eszközöket és specifikációkat tartalmaz.  <ul><li> A marketing-eszközök közé tartozik az ajánlat neve, leírása és emblémája</li> <li> A jogi eszközök közé tartozik az adatvédelmi szabályzat, a használati feltételek és egyéb jogi dokumentáció</li>  <li> Az érdeklődői felügyeleti szabályzat segítségével megadhatja, hogyan kezelheti az érdeklődőket az Azure Marketplace végfelhasználói portálon.</li> </ul> |
+| Támogatás            | A kapcsolattartási és a házirend-információkat tartalmazza |
+| Tesztverzió         | Azokat az eszközöket határozza meg, amelyek lehetővé teszik a végfelhasználók számára az ajánlat tesztelését a vásárlás előtt |
 |  |  |
 
 
-## <a name="new-offer-form"></a>Új ajánlat űrlap
+## <a name="new-offer-form"></a>Új ajánlat űrlapja
 
-Egyszer a jelentkezzen be a [Cloud Partner Portalon](https://cloudpartner.azure.com/), kattintson a **+ új ajánlat** elemet a bal oldali menüsáv. Az eredményül kapott menüben kattintson a **virtuális gépek** megjelenítéséhez a **új ajánlat** képezik, és egy új Virtuálisgép-ajánlat eszközök meghatározása folyamatának elindításához. 
+Miután bejelentkezett a [Cloud Partner Portalba](https://cloudpartner.azure.com/), kattintson az **+ új ajánlat** elemre a bal oldali menüsorban. Az eredményül kapott menüben kattintson a **Virtual Machines** elemre az **új ajánlat** űrlapjának megjelenítéséhez, és az új virtuálisgép-ajánlathoz tartozó eszközök definiálási folyamatának megkezdéséhez. 
 <!-- not all publishers see corevm or azure apps test, you need to be whitelisted to see them. we should hide those in these images. -->
 
 ![Új virtuális gép ajánlat felhasználói felület kiválasztása](./media/publishvm_003.png)
 
 > [!WARNING]
-> Ha a **virtuális gépek** beállítás nem jelenik meg, vagy nincs engedélyezve, akkor a fiók nincs engedélye ezen ajánlat típus létrehozásához.  Ellenőrizze, hogy teljesül-e az összes a [Előfeltételek](./cpp-prerequisites.md) ajánlat típus, beleértve a fejlesztői fiókot regisztrálni.
+> Ha a **Virtual Machines** lehetőség nem látható vagy nincs engedélyezve, akkor a fióknak nincs engedélye az ajánlat típusának létrehozásához.  Ellenőrizze, hogy teljesítette-e az ajánlat típusának összes [előfeltételét](./cpp-prerequisites.md) , beleértve a fejlesztői fiók regisztrálását is.
 
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben a szakaszban a következő témakörök lapjait tükrözik a **új ajánlat** (a virtuális gép ajánlattípusra) lapot.  Minden egyes cikk leírja, hogyan használatához a társított lapon adható meg az eszközintelligencia-csoportok és az új Virtuálisgép-ajánlat segítő szolgáltatás.
+Az ebben a szakaszban szereplő témakörök az **új ajánlat** oldalának lapfüleit tükrözik (virtuálisgép-ajánlat típusa esetén).  Minden cikk azt ismerteti, hogyan használható a társított lap az új virtuálisgép-ajánlathoz tartozó eszközcsoport-csoportok és támogató szolgáltatások definiálásához.
 
 - [Ajánlatbeállítási lap](./cpp-offer-settings-tab.md)
 - [Termékváltozatok lap](./cpp-skus-tab.md)

@@ -1,5 +1,5 @@
 ---
-title: Hozzáférési felülvizsgálat végrehajtása a saját alkalmazások portálján – Azure Active Directory | Microsoft Docs
+title: Hozzáférési felülvizsgálat végrehajtása a saját alkalmazások portálján – Azure AD
 description: Megtudhatja, hogyan tekintheti meg és kezelheti a szervezet alkalmazásai és csoportjai biztonsági hozzáférését.
 services: active-directory
 author: eross-msft
@@ -13,16 +13,16 @@ ms.author: lizross
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6681720fc7c0fe04c99bf7957be14865c663dd67
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: bf803027aac7c62ea500d1af104ae3234fadf8b5
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68383150"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73804050"
 ---
 # <a name="perform-an-access-review-from-the-my-apps-portal"></a>Hozzáférési felülvizsgálat végrehajtása a saját alkalmazások portálján
 
-Használhatja munkahelyi vagy iskolai fiókját a webalapú **saját alkalmazások** portálján, hogy megtekintse és elindítsa a szervezete felhőalapú alkalmazásait, hogy frissítse a profilját és a fiókadatok adatait, és megtekintse a **csoportok** adatait, és elvégezze a következő műveleteket **:** alkalmazások és csoportok hozzáférési felülvizsgálatai. Ha nincs hozzáférése a **saját alkalmazások** portálhoz, akkor engedélyt kell adnia az ügyfélszolgálatnak.
+Használhatja munkahelyi vagy iskolai fiókját a webalapú **saját alkalmazások** portálján, hogy megtekintse és elindítsa a szervezete felhőalapú alkalmazásait, hogy frissítse a profilját és a fiókadatok adatait, és megtekintse a **csoportok** adatait, és elvégezze a következő műveleteket **: alkalmazások és csoportok hozzáférési felülvizsgálatai** . Ha nincs hozzáférése a **saját alkalmazások** portálhoz, akkor engedélyt kell adnia az ügyfélszolgálatnak.
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-end-user-my-apps-portal.md)]
 
@@ -40,7 +40,7 @@ Ha a rendszergazda engedélyezte a saját hozzáférési felülvizsgálatok elv�
 
 1. Jelentkezzen be a munkahelyi vagy iskolai fiókjába.
 
-2. Nyissa meg a webböngészőjét https://myapps.microsoft.com, és lépjen a webhelyre, vagy használja a szervezete által biztosított hivatkozást. Előfordulhat például, hogy a szervezete testreszabott lapjára irányítja át, például https://myapps.microsoft.com/contoso.com:.
+2. Nyissa meg a webböngészőt, és lépjen a https://myapps.microsoft.comra, vagy használja a szervezete által biztosított hivatkozást. Előfordulhat például, hogy a szervezete testreszabott lapjára irányítja át, például https://myapps.microsoft.com/contoso.com.
 
     Megjelenik az **alkalmazások** lap, amely megjeleníti a szervezete tulajdonában lévő összes felhőalapú alkalmazást, és elérhető a használatra.
 
@@ -50,7 +50,7 @@ Ha a rendszergazda engedélyezte a saját hozzáférési felülvizsgálatok elv�
 
     ![Hozzáférési felülvizsgálatok lap a szervezetre vonatkozó függőben lévő hozzáférési felülvizsgálatokkal](media/my-apps-portal/my-apps-portal-access-reviews-page.png)
 
-4. A hozzáférési felülvizsgálat elindításához válassza az **Áttekintés** megkezdése lehetőséget.
+4. A hozzáférési felülvizsgálat elindításához válassza az **Áttekintés megkezdése** lehetőséget.
 
 5. Tekintse át a hozzáférését, és döntse el, hogy továbbra is szükséges-e.
 
@@ -65,7 +65,7 @@ Ha a rendszergazda engedélyezte a saját hozzáférési felülvizsgálatok elv�
 
     ![Hozzáférési felülvizsgálati oldal, amely az OK mezőt mutatja a minta szöveggel](media/my-apps-portal/my-apps-portal-perform-access-reviews-reason-box.png)
 
-7. Válassza ki **elküldése**.
+7. Válassza a **Küldés**lehetőséget.
 
     A hozzáférési felülvizsgálat elkészült, és visszatér a **saját alkalmazások** portálra.
 

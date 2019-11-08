@@ -1,6 +1,6 @@
 ---
-title: A fiókok Microsoft Authenticator alkalmazáshoz való hozzáadásának áttekintése – Azure Active Directory | Microsoft Docs
-description: A munkahelyi és a személyes fiókok Microsoft Authenticator alkalmazásba való felvételének áttekintése kétfaktoros ellenőrzéshez.
+title: A fiókok a hitelesítő alkalmazásba való felvételének áttekintése – Azure AD
+description: A két faktoros ellenőrzéshez kapcsolódó munkahelyi és személyes fiókjainak a Microsoft Authenticator alkalmazásba való felvételével kapcsolatos tartalmakra mutató hivatkozások.
 services: active-directory
 author: eross-msft
 manager: daveba
@@ -12,12 +12,12 @@ ms.topic: overview
 ms.date: 01/24/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d16699729e62953cb2369f39ecfe759aab663caf
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 16244be7dee9faaa15105f9dc0ac6c074230d243
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68382647"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73820280"
 ---
 # <a name="overview-about-adding-accounts-to-the-microsoft-authenticator-app"></a>A fiókok Microsoft Authenticator alkalmazásba való felvételének áttekintése
 
@@ -38,12 +38,12 @@ A Microsoft Authenticator alkalmazást többféleképpen is használhatja, több
 
 A kétfaktoros ellenőrzés bekapcsolható sok olyan fiók esetében, amelyet naponta használ, beleértve a következőket:
 
-| Fióktípus | Leírás |
+| Fiók típusa | Leírás |
 | ------------ | ----------- |
-| Munkahelyi vagy iskolai fiókok | Az a fiók, amelyet a munkahelyi vagy iskolai szervezete adott alain@contoso.commeg, például:. |
+| Munkahelyi vagy iskolai fiókok | Az a fiók, amelyet a munkahelyi vagy iskolai szervezete adott meg, például alain@contoso.com. |
 | Személyes fiókok | A saját maga által megnyitott Microsoft-és nem Microsoft-fiókok, például a Outlook.com, az Xbox LIVE, a Google, a Facebook és egyebek. |
 
-## <a name="in-this-section"></a>Ebben a szakaszban
+## <a name="articles-about-how-to-add-different-accounts"></a>Különböző fiókok hozzáadásával kapcsolatos cikkek
 
 | Cikk |Leírás |
 | ------|------------|

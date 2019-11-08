@@ -14,25 +14,24 @@ ms.tgt_pltfrm: mobile-ios
 ms.devlang: objective-c
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 05/21/2019
+ms.date: 11/07/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 05/21/2019
-ms.openlocfilehash: 0335f5c71f99e6c7a90ce920c25e6bb7e9b4a08f
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: 452ccfc796fcd2a390c7380f4c6b2ced2057dc3b
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71211946"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73822355"
 ---
-# <a name="tutorial-push-notifications-to-ios-apps-using-azure-notification-hubs"></a>Oktatóanyag: Leküldéses értesítések iOS-alkalmazásokba az Azure Notification Hubs
+# <a name="tutorial-push-notifications-to-ios-apps-using-azure-notification-hubs"></a>Oktatóanyag: Leküldéses értesítések küldése iOS-alkalmazásokba az Azure Notification Hubs használatával
 
 > [!div class="op_single_selector"]
 > * [Objective-C](notification-hubs-ios-apple-push-notification-apns-get-started.md)
 > * [Swift](notification-hubs-ios-push-notifications-swift-apps-get-started.md)
 
-
-Ebben az oktatóanyagban az Azure Notification Hubs használatával küld leküldéses értesítéseket egy iOS-alkalmazásba. Létre fog hozni egy üres iOS-alkalmazást, amely leküldéses értesítéseket fogad az [Apple Push Notification szolgáltatás (APNs)](https://developer.apple.com/library/content/documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/APNSOverview.html#//apple_ref/doc/uid/TP40008194-CH8-SW1) használatával.
+Ebben az oktatóanyagban az Azure Notification Hubs használatával leküldéses értesítéseket küld egy iOS-alkalmazásnak. Létre fog hozni egy üres iOS-alkalmazást, amely leküldéses értesítéseket fogad az [Apple Push Notification szolgáltatás (APNs)](https://developer.apple.com/library/content/documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/APNSOverview.html#//apple_ref/doc/uid/TP40008194-CH8-SW1) használatával.
 
 Ebben az oktatóanyagban a következő lépéseket hajtja végre:
 
@@ -45,14 +44,16 @@ Ebben az oktatóanyagban a következő lépéseket hajtja végre:
 > * Teszt leküldéses értesítések küldése
 > * Annak ellenőrzése, hogy az alkalmazás fogad-e értesítéseket
 
-Az oktatóanyag teljes kódja megtalálható a [GitHubon](https://github.com/Azure/azure-notificationhubs-ios/tree/master/Samples). 
+Az oktatóanyag teljes kódja [a githubon](https://github.com/Azure/azure-notificationhubs-ios/tree/master/Samples)érhető el.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Aktív Azure-fiók. Ha nem rendelkezik fiókkal, mindössze néhány perc alatt [létrehozhat egy ingyenes Azure-fiókot](https://azure.microsoft.com/free) .
+Az oktatóanyag teljesítéséhez a következő előfeltételekre lesz szüksége:
+
+* Aktív Azure-fiók. Ha nincs fiókja, [létrehozhat egy ingyenes Azure-fiókot](https://azure.microsoft.com/free).
 * [Microsoft Azure üzenetkezelési keretrendszer]
 * Az [Xcode] legújabb verziója
-* Az iOS 10-zel (vagy újabb verzióval) kompatibilis eszköz
+* IOS 10-es verzió (vagy újabb)-kompatibilis eszköz
 * Tagság az [Apple fejlesztői programjában](https://developer.apple.com/programs/).
   
   > [!NOTE]
@@ -88,20 +89,20 @@ Ennek az oktatóanyagnak az elvégzése előfeltétel minden további, iOS-alkal
 
    - Integráció a Cocoapods-on keresztül
 
-     Adja hozzá az alábbi függőségeket `podfile` a alkalmazáshoz, hogy tartalmazza az Azure Notification Hubs SDK-t az alkalmazásba.
+     Adja hozzá az alábbi függőségeket a `podfile`hoz, hogy az Azure Notification Hubs SDK-t az alkalmazásba foglalja.
 
      ```ruby
      pod 'AzureNotificationHubs-iOS'
      ```
 
-     Futtassa `pod install` az parancsot az újonnan definiált Pod telepítéséhez, `.xcworkspace`és nyissa meg a következőt:.
+     Futtassa `pod install` az újonnan definiált Pod telepítéséhez, és nyissa meg a `.xcworkspace`.
 
      > [!NOTE]
-     > Ha ```[!] Unable to find a specification for `AzureNotificationHubs-iOS` ``` a futás `pod install`közben hiba jelenik meg, futtassa a parancsot `pod repo update` a Cocoapods-adattár legújabb hüvelyének lekéréséhez, majd `pod install`futtassa a parancsot.
+     > Ha a következő hibaüzenetet látja: **[!] Nem található a AzureNotificationHubs-iOS-hez tartozó specifikáció** , `pod install`futtatása közben, futtassa `pod repo update`, hogy a Cocoapods-tárházból beolvassa a legújabb hüvelyeket, majd futtassa `pod install`.
 
    - Integráció a Carthage használatával
 
-     Adja hozzá az alábbi függőségeket `Cartfile` a alkalmazáshoz, hogy tartalmazza az Azure Notification Hubs SDK-t az alkalmazásba.
+     Adja hozzá az alábbi függőségeket a `Cartfile`hoz, hogy az Azure Notification Hubs SDK-t az alkalmazásba foglalja.
 
      ```ruby
      github "Azure/azure-notificationhubs-ios"
@@ -129,8 +130,8 @@ Ennek az oktatóanyagnak az elvégzése előfeltétel minden további, iOS-alkal
     #ifndef HubInfo_h
     #define HubInfo_h
 
-        #define HUBNAME @"<Enter the name of your hub>"
-        #define HUBLISTENACCESS @"<Enter your DefaultListenSharedAccess connection string"
+    #define HUBNAME @"<Enter the name of your hub>"
+    #define HUBLISTENACCESS @"<Enter your DefaultListenSharedAccess connection string"
 
     #endif /* HubInfo_h */
     ```
@@ -142,11 +143,11 @@ Ennek az oktatóanyagnak az elvégzése előfeltétel minden további, iOS-alkal
     #import <UserNotifications/UserNotifications.h>
     #import "HubInfo.h"
     ```
-8. A fájlban adja hozzá a következő kódot `didFinishLaunchingWithOptions` a metódushoz az iOS-verzió alapján. `AppDelegate.m` Ez a kód regisztrálja az eszközleíróját az APNs szolgáltatással:
+
+8. A `AppDelegate.m` fájlban adja hozzá a következő kódot a `didFinishLaunchingWithOptions` metódushoz az iOS-verzió alapján. Ez a kód regisztrálja az eszközleíróját az APNs szolgáltatással:
 
     ```objc
-    UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeSound |
-        UIUserNotificationTypeAlert | UIUserNotificationTypeBadge categories:nil];
+    UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeSound | UIUserNotificationTypeAlert | UIUserNotificationTypeBadge categories:nil];
 
     [[UIApplication sharedApplication] registerUserNotificationSettings:settings];
     [[UIApplication sharedApplication] registerForRemoteNotifications];
@@ -155,21 +156,21 @@ Ennek az oktatóanyagnak az elvégzése előfeltétel minden további, iOS-alkal
 9. Ugyanebben a fájlban adja hozzá a következő metódusokat:
 
     ```objc
-        - (void) application:(UIApplication *) application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *) deviceToken {
-        SBNotificationHub* hub = [[SBNotificationHub alloc] initWithConnectionString:HUBLISTENACCESS
-                                    notificationHubPath:HUBNAME];
+    (void) application:(UIApplication *) application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *) deviceToken {
+     SBNotificationHub* hub = [[SBNotificationHub alloc] initWithConnectionString:HUBLISTENACCESS
+                                 notificationHubPath:HUBNAME];
 
-        [hub registerNativeWithDeviceToken:deviceToken tags:nil completion:^(NSError* error) {
-            if (error != nil) {
-                NSLog(@"Error registering for notifications: %@", error);
-            }
-            else {
-                [self MessageBox:@"Registration Status" message:@"Registered"];
-            }
-        }];
-        }
+     [hub registerNativeWithDeviceToken:deviceToken tags:nil completion:^(NSError* error) {
+         if (error != nil) {
+             NSLog(@"Error registering for notifications: %@", error);
+         }
+         else {
+             [self MessageBox:@"Registration Status" message:@"Registered"];
+         }
+     }];
+     }
 
-    -(void)MessageBox:(NSString *) title message:(NSString *)messageText
+    (void)MessageBox:(NSString *) title message:(NSString *)messageText
     {
         UIAlertController *alert = [UIAlertController alertControllerWithTitle:title message:messageText preferredStyle:UIAlertControllerStyleAlert];
         UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
@@ -183,9 +184,9 @@ Ennek az oktatóanyagnak az elvégzése előfeltétel minden további, iOS-alkal
 10. Ugyanebben a fájlban adja hozzá a következő metódust egy **UIAlert** megjelenítéséhez, ha értesítés érkezik, amikor az alkalmazás aktív:
 
     ```objc
-    - (void)application:(UIApplication *)application didReceiveRemoteNotification: (NSDictionary *)userInfo {
-        NSLog(@"%@", userInfo);
-        [self MessageBox:@"Notification" message:[[userInfo objectForKey:@"aps"] valueForKey:@"alert"]];
+    (void)application:(UIApplication *)application didReceiveRemoteNotification: (NSDictionary *)userInfo {
+      NSLog(@"%@", userInfo);
+      [self MessageBox:@"Notification" message:[[userInfo objectForKey:@"aps"] valueForKey:@"alert"]];
     }
     ```
 
@@ -193,7 +194,7 @@ Ennek az oktatóanyagnak az elvégzése előfeltétel minden további, iOS-alkal
 
 ## <a name="send-test-push-notifications"></a>Teszt leküldéses értesítések küldése
 
-Az [Azure Portal] *Tesztküldés* lehetőségével tesztelheti az alkalmazásban az értesítések fogadását. A parancs egy leküldéses tesztértesítést küld az eszközre.
+Az *Azure Portal* [Azure Portal] lehetőségével tesztelheti az alkalmazásban az értesítések fogadását. A parancs egy leküldéses tesztértesítést küld az eszközre.
 
 ![Azure Portal – Küldés tesztelése][30]
 

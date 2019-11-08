@@ -1,5 +1,5 @@
 ---
-title: Első lépések időbeli táblázatokkal Azure SQL Database
+title: Első lépések időbeli táblázatokkal
 description: Megtudhatja, hogyan kezdheti el az ideiglenes táblázatok használatát a Azure SQL Databaseban.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: carlrab
 ms.date: 06/26/2019
-ms.openlocfilehash: 44a5589357301f979bb094579626e1c02e582846
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 98fd2658f3fbcb0e7e29114d29f8dc6ed39eedf2
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73686983"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73820727"
 ---
 # <a name="getting-started-with-temporal-tables-in-azure-sql-database"></a>Első lépések időbeli táblázatokkal Azure SQL Database
 
@@ -49,7 +49,7 @@ A SSDT elemnél válassza az "ideiglenes tábla (rendszerverzióval ellátott)" 
 
 ![SSDTNewTable](./media/sql-database-temporal-tables/AzureTemporal3.png)
 
-A Transact-SQL-utasítások közvetlen megadásával is létrehozhat ideiglenes táblázatot, ahogy az alábbi példában is látható. Vegye figyelembe, hogy minden időbeli táblázat kötelező elemei az időszak-definíciók és a SYSTEM_VERSIONING záradék, amely egy másik felhasználói táblára hivatkozik, amely a korábbi sorok verzióját fogja tárolni:
+A Transact-SQL-utasítások közvetlen megadásával is létrehozhat ideiglenes táblázatot, ahogy az alábbi példában is látható. Vegye figyelembe, hogy minden időbeli táblázat kötelező elemei az időszak meghatározása és a SYSTEM_VERSIONING záradék, amely egy másik felhasználói táblára hivatkozik, amely a korábbi sorok verzióját fogja tárolni:
 
 ```
 CREATE TABLE WebsiteUserInfo 
@@ -120,7 +120,7 @@ Fontos megjegyezni, hogy a frissítési lekérdezésnek nem kell tudnia a tényl
 ![TemporalArchitecture](./media/sql-database-temporal-tables/AzureTemporal5.png)
 
 ## <a name="step-3-perform-historical-data-analysis"></a>3\. lépés: a korábbi adatok elemzésének végrehajtása
-Most, hogy az időbeli rendszerverziószámozás engedélyezve van, a korábbi adatok elemzése csak egy lekérdezéssel érhető el. Ebben a cikkben néhány példát ismertetünk, amelyek közös elemzési forgatókönyvekkel foglalkoznak – az összes adat megismerése érdekében Ismerkedjen meg a [for SYSTEM_TIME](https://msdn.microsoft.com/library/dn935015.aspx#Anchor_3) záradékban bemutatott különböző lehetőségekkel.
+Most, hogy az időbeli rendszerverziószámozás engedélyezve van, a korábbi adatok elemzése csak egy lekérdezéssel érhető el. Ebben a cikkben néhány példát ismertetünk, amelyek közös elemzési forgatókönyvekkel foglalkoznak – az összes adat megismerése érdekében Ismerkedjen meg a [FOR SYSTEM_TIME](https://msdn.microsoft.com/library/dn935015.aspx#Anchor_3) záradékban bemutatott különböző lehetőségekkel.
 
 Ha szeretné megtekinteni az első 10 felhasználót a meglátogatott weblapok száma alapján egy órával ezelőtt, futtassa ezt a lekérdezést:
 

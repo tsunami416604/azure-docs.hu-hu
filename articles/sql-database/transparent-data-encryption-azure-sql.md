@@ -1,22 +1,23 @@
 ---
-title: 'Transzparens adattitkosítás a Azure SQL Database és az adattárházban '
+title: Transzparens adattitkosítás
 description: A SQL Database és az adattárház transzparens adattitkosításának áttekintése. A dokumentum a szolgáltatás által felügyelt transzparens adattitkosítást és Bring Your Own Keyt is magában foglaló előnyökkel és beállításokkal foglalkozik.
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
-ms.custom: ''
+titleSuffix: Azure SQL Database and SQL Data Warehouse
+ms.custom: seo-lt-2019
 ms.devlang: ''
 ms.topic: conceptual
 author: aliceku
 ms.author: aliceku
 ms.reviewer: vanto
 ms.date: 11/01/2019
-ms.openlocfilehash: ff712f956278a2a54584c0b0346f8f1147add189
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: b6af171eafbaf1f4d31bad649fcb0c69d8bdc24d
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73686791"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73821711"
 ---
 # <a name="transparent-data-encryption-for-sql-database-and-data-warehouse"></a>Transzparens adattitkosítás a SQL Database és az adattárházban
 
@@ -120,8 +121,8 @@ Kapcsolódjon az adatbázishoz egy olyan bejelentkezéssel, amely a Master adatb
 | Parancs | Leírás |
 | --- | --- |
 | [ALTER DATABASE (Azure SQL Database)](https://docs.microsoft.com/sql/t-sql/statements/alter-database-azure-sql-database) | A TITKOSÍTÁS be-és kikapcsolása titkosítja vagy visszafejti az adatbázist |
-| [sys. DM _database_encryption_keys](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-database-encryption-keys-transact-sql) |Az adatbázis és a hozzá tartozó adatbázis titkosítási kulcsainak titkosítási állapotával kapcsolatos információkat ad vissza. |
-| [sys. DM _pdw_nodes_database_encryption_keys](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-nodes-database-encryption-keys-transact-sql) |Az egyes adatraktár-csomópontok titkosítási állapotára és a hozzá tartozó adatbázis-titkosítási kulcsokra vonatkozó információkat adja vissza. |
+| [sys. dm_database_encryption_keys](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-database-encryption-keys-transact-sql) |Az adatbázis és a hozzá tartozó adatbázis titkosítási kulcsainak titkosítási állapotával kapcsolatos információkat ad vissza. |
+| [sys. dm_pdw_nodes_database_encryption_keys](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-nodes-database-encryption-keys-transact-sql) |Az egyes adatraktár-csomópontok titkosítási állapotára és a hozzá tartozó adatbázis-titkosítási kulcsokra vonatkozó információkat adja vissza. |
 |  | |
 
 A Transact-SQL használatával nem lehet átváltani az átlátszó adattitkosítási védőt Key Vault kulcsra. Használja a PowerShellt vagy a Azure Portal.

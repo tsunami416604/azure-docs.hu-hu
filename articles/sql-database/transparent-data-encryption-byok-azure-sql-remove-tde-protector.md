@@ -1,22 +1,22 @@
 ---
-title: PowerShell – TDE-védő eltávolítása – Azure SQL Database | Microsoft Docs
+title: TDE-védő eltávolítása – PowerShell
 description: 'Útmutató: a TDE-t használó, a saját kulcsú (BYOK) támogatással rendelkező, a TDE által feltört, potenciálisan sérült adatvédelmet segítő Azure SQL Database eszközre való reagálás.'
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
-ms.custom: ''
+ms.custom: seo-lt-2019
 ms.devlang: ''
 ms.topic: conceptual
 author: aliceku
 ms.author: aliceku
 ms.reviewer: vanto
 ms.date: 03/12/2019
-ms.openlocfilehash: dc117dd844a3a47cafa1b37170c95fe852bb82ef
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: df1bf5a53cd5c49465acbe363c71a4a316cd2cc9
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68566056"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73820792"
 ---
 # <a name="remove-a-transparent-data-encryption-tde-protector-using-powershell"></a>Transzparens adattitkosítás (TDE)-védő eltávolítása a PowerShell használatával
 
@@ -28,21 +28,21 @@ ms.locfileid: "68566056"
 
 - Azure-előfizetéssel kell rendelkeznie, és az előfizetés rendszergazdájának kell lennie
 - A Azure PowerShell telepítése és futtatása szükséges. 
-- Ez a útmutató azt feltételezi, hogy már használ egy kulcsot Azure Key Vault TDE-védőként egy Azure SQL Database vagy adattárházhoz. További információ: [TRANSZPARENS ADATTITKOSÍTÁS BYOK](transparent-data-encryption-byok-azure-sql.md) -támogatással.
+- Ez a útmutató azt feltételezi, hogy már használ egy kulcsot Azure Key Vault TDE-védőként egy Azure SQL Database vagy adattárházhoz. További információ: [TRANSZPARENS ADATTITKOSÍTÁS BYOK-támogatással](transparent-data-encryption-byok-azure-sql.md) .
 
 ## <a name="overview"></a>Áttekintés
 
 Ez az útmutató azt ismerteti, hogyan lehet reagálni egy potenciálisan sérült TDE-védőre egy olyan Azure SQL Database vagy adatraktár esetében, amely Azure Key Vault-Bring Your Own Key (BYOK) támogatásban lévő ügyfél által felügyelt kulcsokkal TDE használ. Ha többet szeretne megtudni a TDE BYOK-támogatásáról, tekintse meg az [Áttekintés oldalt](transparent-data-encryption-byok-azure-sql.md). 
 
-A következő eljárásokat csak szélsőséges esetekben vagy tesztelési környezetekben lehet elvégezni. Olvassa el figyelmesen az útmutató útmutatását, mivel a Azure Key Vault aktívan használt TDE-védelmi **adatainak**törlése adatvesztést okozhat. 
+A következő eljárásokat csak szélsőséges esetekben vagy tesztelési környezetekben lehet elvégezni. Olvassa el figyelmesen az útmutató útmutatását, mivel a Azure Key Vault aktívan használt TDE-védelmi **adatainak törlése adatvesztést**okozhat. 
 
 Ha egy kulcs gyanúja fennáll, hogy egy adott szolgáltatás vagy felhasználó jogosulatlanul hozzáfért a kulcshoz, akkor érdemes törölni a kulcsot.
 
-Ne feledje, hogy amint törli a TDE-védőt a Key Vaultban, a **rendszer letiltja a kiszolgáló alatt lévő titkosított adatbázisokhoz való kapcsolódást, és 24 órán belül**megszakítja az adatbázisokat. A feltört kulccsal titkosított régi biztonsági másolatok már nem érhetők el.
+Ne feledje, hogy amint törli a TDE-védőt a Key Vaultban, a **rendszer letiltja a kiszolgáló alatt lévő titkosított adatbázisokhoz való kapcsolódást, és 24 órán belül megszakítja az adatbázisokat**. A feltört kulccsal titkosított régi biztonsági másolatok már nem érhetők el.
 
-Az alábbi lépések azt ismertetik, hogyan ellenőrizheti a TDE Protector ujjlenyomatai megfelelnek egy adott adatbázis virtuális naplófájljai (VLF) által még használatban. Az adatbázis aktuális TDE-oltalmazójának ujjlenyomata, és az adatbázis-azonosító a következő futtatásával érhető el: Válassza a [database_id]       , [encryption_state], [encryptor_type],/*aszimmetrikus kulcs azt jelenti, hogy a AKV, a tanúsítvány a szolgáltatás által felügyelt kulcsok*/[encryptor_thumbprint] elemet jelenti a következő helyről: [sys]. [ dm_database_encryption_keys] 
+Az alábbi lépések azt ismertetik, hogyan ellenőrizheti a TDE Protector ujjlenyomatai megfelelnek egy adott adatbázis virtuális naplófájljai (VLF) által még használatban. Az adatbázis jelenlegi TDE-oltalmazójának ujjlenyomata, és az adatbázis-azonosító a következő futtatásával található: SELECT [database_id],       [encryption_state], [encryptor_type],/*aszimmetrikus kulcs: AKV, tanúsítvány: szolgáltatás által felügyelt kulcsok*/[ encryptor_thumbprint], a következő helyről: [sys]. [dm_database_encryption_keys] 
  
-A következő lekérdezés a VLFs és a titkosító megfelelő ujjlenyomatai megfelelnek adja vissza. Mindegyik különböző ujjlenyomat a Azure Key Vault (AKV) különböző kulcsaira utal: SELECT * FROM sys.dm_db_log_info (database_id) 
+A következő lekérdezés a VLFs és a titkosító megfelelő ujjlenyomatai megfelelnek adja vissza. A különböző ujjlenyomatok a Azure Key Vault (AKV) különböző kulcsaira utalnak: SELECT * FROM sys. dm_db_log_info (database_id) 
 
 A Get-AzureRmSqlServerKeyVaultKey PowerShell-parancs megadja a lekérdezésben használt TDE-védő ujjlenyomatát, így láthatja, hogy mely kulcsokat kell megőrizni, és mely kulcsokat kell törölni a AKV-ben. Csak az adatbázis által már nem használt kulcsokat lehet biztonságosan törölni Azure Key Vaultból.
 
@@ -92,7 +92,7 @@ Ez a útmutató az incidens válasza után a kívánt eredménytől függően k�
    -OutputFile <DesiredBackupFilePath>
    ```
  
-5. Törölje a feltört kulcsot Key Vault a Remove [-AzKeyVaultKey](/powershell/module/az.keyvault/remove-azkeyvaultkey) parancsmag használatával. 
+5. Törölje a feltört kulcsot Key Vault a [Remove-AzKeyVaultKey](/powershell/module/az.keyvault/remove-azkeyvaultkey) parancsmag használatával. 
 
    ```powershell
    Remove-AzKeyVaultKey `
@@ -117,5 +117,5 @@ Ez a útmutató az incidens válasza után a kívánt eredménytől függően k�
 
 ## <a name="next-steps"></a>További lépések
 
-- Megtudhatja, hogyan forgathatja el egy kiszolgáló TDE-védelmezőjét a biztonsági követelményeknek való megfelelés érdekében: [A transzparens adattitkosítás-védő elforgatása a PowerShell használatával](transparent-data-encryption-byok-azure-sql-key-rotation.md)
-- Ismerkedés a TDE Bring Your Own Key támogatásával: [A TDE bekapcsolása saját kulcs használatával Key Vault a PowerShell használatával](transparent-data-encryption-byok-azure-sql-configure.md)
+- Megtudhatja, hogyan forgathatja el egy kiszolgáló TDE-védelmezőjét a biztonsági követelmények teljesítése érdekében: [a transzparens adattitkosítás Protector elforgatása a PowerShell használatával](transparent-data-encryption-byok-azure-sql-key-rotation.md)
+- Ismerkedés a Bring Your Own Key támogatásával a TDE-hez: a [TDE bekapcsolása a saját kulcsával Key Vault a PowerShell használatával](transparent-data-encryption-byok-azure-sql-configure.md)

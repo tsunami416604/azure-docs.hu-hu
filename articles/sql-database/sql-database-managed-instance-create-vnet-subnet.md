@@ -1,5 +1,5 @@
 ---
-title: Virtuális hálózat létrehozása Azure SQL Database felügyelt példányhoz
+title: Virtuális hálózat létrehozása felügyelt példányhoz
 description: Ez a cikk azt ismerteti, hogyan hozhat létre olyan virtuális hálózatot, amelyen Azure SQL Database felügyelt példányt telepíthet.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, bonova, carlrab
 ms.date: 09/12/2019
-ms.openlocfilehash: ae18671000a2bfd3bedef7805ba5db964fe0cf95
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 9f115d51657993562642391a235de79420aa434a
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73688173"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73823377"
 ---
 # <a name="create-a-virtual-network-for-azure-sql-database-managed-instance"></a>Virtuális hálózat létrehozása Azure SQL Database felügyelt példányhoz
 

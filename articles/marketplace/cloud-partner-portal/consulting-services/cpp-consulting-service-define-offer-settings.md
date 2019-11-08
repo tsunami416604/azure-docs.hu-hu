@@ -4,15 +4,16 @@ description: Adja meg az ajánlat beállításait egy Azure-vagy Dynamics 365-ta
 services: Azure, Marketplace, Cloud Partner Portal,
 author: qianw211
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: pabutler
-ms.openlocfilehash: 8a89c1c548469b568a34521b240683af285c2342
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: e505f9aa1ec08708b85176d5b05fc5b40ceb295e
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73485186"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73818130"
 ---
 # <a name="offer-settings-tab"></a>Ajánlatbeállítási lap
 
@@ -23,7 +24,7 @@ Az **új ajánlat** képernyőn az első lépés az ajánlat identitásának lé
 
 ### <a name="offer-id"></a>Ajánlat azonosítója *
 
-Ez az azonosító egy egyedi név, amelyet akkor hozunk létre, amikor először küldi el az ajánlatot. Csak kisbetűkből álló alfanumerikus karaktereket, kötőjeleket vagy aláhúzásokat tartalmazhat. Az **ajánlat azonosítója** látható az URL-címben, és hatással van a keresőmotor eredményeire. Ilyen például a *yourcompanyname_exampleservice*.
+Ez az azonosító egy egyedi név, amelyet akkor hozunk létre, amikor először küldi el az ajánlatot. Csak kisbetűkből álló alfanumerikus karaktereket, kötőjeleket vagy aláhúzásokat tartalmazhat. Az **ajánlat azonosítója** látható az URL-címben, és hatással van a keresőmotor eredményeire. Példa *yourcompanyname_exampleservice*.
 
 Ahogy az a példában is látható, az **ajánlat azonosítóját** a rendszer hozzáfűzi a KIADÓi azonosítóhoz egy egyedi azonosító létrehozásához. Ez az egyedi azonosító olyan állandó hivatkozásként érhető el, amely a keresőmotoroknak van lefoglalva és indexelve.
 

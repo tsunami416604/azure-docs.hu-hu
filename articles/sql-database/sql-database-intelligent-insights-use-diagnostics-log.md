@@ -1,5 +1,5 @@
 ---
-title: Intelligent Insights teljesítmény diagnosztikai naplója – Azure SQL Database
+title: Intelligent Insights teljesítmény diagnosztikai naplója
 description: Intelligent Insights diagnosztikai naplót biztosít Azure SQL Database teljesítménnyel kapcsolatos problémákról
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 12/19/2018
-ms.openlocfilehash: 86381f5670f09b5e6a215793dc1ea4eab7ecbb8e
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 9ed2cc8bfb10d916218417a7dd27010638d2a927
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73689704"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73810289"
 ---
 # <a name="use-the-intelligent-insights-azure-sql-database-performance-diagnostics-log"></a>A Intelligent Insights Azure SQL Database teljesítmény-diagnosztikai naplójának használata
 
@@ -40,9 +40,9 @@ A napló fejléce gyakori, és a bejegyzés létrehozásakor megjelenő időbél
 
 A probléma azonosítása tulajdonság (issueId_d) lehetővé teszi a teljesítménnyel kapcsolatos problémák egyedi nyomon követését a megoldásig. Ugyanannak a hibának a naplózási jelentéskészítési állapotában több esemény rekord is ugyanazzal a probléma-AZONOSÍTÓval fog osztozni.
 
-A probléma-AZONOSÍTÓval együtt a diagnosztikai napló a diagnosztikai naplóban jelentett problémával kapcsolatos indítási (intervalStartTime_t) és befejezési (intervalEndTme_t) időbélyegzőket jelenti.
+A probléma-AZONOSÍTÓval együtt a diagnosztikai napló a diagnosztikai naplóban jelentett problémával kapcsolatos kezdeti (intervalStartTime_t) és befejezési (intervalEndTme_t) időbélyegzőket jelenti.
 
-A rugalmas készlet (elasticPoolName_s) tulajdonság azt jelzi, hogy melyik rugalmas készlethez tartozik az adatbázis, amelynek a problémája van. Ha az adatbázis nem része egy rugalmas készletnek, ennek a tulajdonságnak nincs értéke. Az adatbázis neve (databaseName_s) tulajdonsága azt az adatbázist adja meg, amelyben a rendszer hibát észlelt.
+A rugalmas készlet (elasticPoolName_s) tulajdonság azt jelzi, hogy melyik rugalmas készlethez tartozik az adatbázis, amelynek a problémája van. Ha az adatbázis nem része egy rugalmas készletnek, ennek a tulajdonságnak nincs értéke. Az adatbázis neve (databaseName_s) tulajdonsága azt az adatbázist adja meg, amelyben a rendszer problémát észlelt.
 
 ```json
 "intervalStartTime_t": "2017-9-25 11:00", // start of the issue reported time stamp
@@ -126,7 +126,7 @@ A DurationIncreaseSeconds tulajdonság másodpercek alatt biztosítja a mérték
 
 ## <a name="root-cause-analysis-and-improvement-recommendations"></a>Alapvető okok elemzése és tökéletesítésére vonatkozó javaslatok
 
-A Intelligent Insights teljesítmény naplójának utolsó része az azonosított teljesítmény-romlási probléma automatizált kiváltó okának elemzésére vonatkozik. Az információk az alapvető okok elemzése (rootCauseAnalysis_s) tulajdonságban az emberi-barát szóhasználatát jelennek meg. A fejlesztéssel kapcsolatos javaslatok a naplóban találhatók, ahol lehetséges.
+A Intelligent Insights teljesítmény naplójának utolsó része az azonosított teljesítmény-romlási probléma automatizált kiváltó okának elemzésére vonatkozik. Az információk az alapvető okok elemzése (rootCauseAnalysis_s) tulajdonságban az emberi barát szóhasználatát jelennek meg. A fejlesztéssel kapcsolatos javaslatok a naplóban találhatók, ahol lehetséges.
 
 ```json
 // example of reported root cause analysis of the detected performance issue, in a human-readable format

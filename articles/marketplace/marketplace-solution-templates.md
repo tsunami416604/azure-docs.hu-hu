@@ -5,17 +5,18 @@ services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
 author: ellacroi
 manager: nunoc
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 9/25/2019
 ms.author: ellacroi
-ms.openlocfilehash: 725be2ee239a879be8200d33acaf566b1d42d446
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: 934a5e050e190c9a1f90bb3a22c2d1323a3ccecf
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71300344"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73808287"
 ---
-# <a name="azure-applications-solution-template-offer-publishing-guide"></a>Azure-alkalmazások: Megoldási sablon ajánlatának közzétételi útmutatója
+# <a name="azure-applications-solution-template-offer-publishing-guide"></a>Azure-alkalmazások: megoldás-sablon ajánlat-közzétételi útmutató
 
 A megoldási sablonok az egyik fő módszer a megoldás közzétételére a piactéren. Az útmutató segítségével megismerheti az ajánlat követelményeit. 
 
@@ -31,9 +32,9 @@ Ezek a megoldási sablonok nem tranzakciós ajánlatok, de használhatók a fize
 |Számlázás és mérés    |  Az erőforrások az ügyfél Azure-előfizetésében lesznek kiépítve. Az utólagos elszámolású (ÁTTÉRÉSHEZ) virtuális gépeket a Microsofton keresztül, az ügyfél Azure-előfizetésével (ÁTTÉRÉSHEZ) számoljuk el.  <br/> Ha saját licencet (BYOL) használ, míg a Microsoft az ügyfél-előfizetésben felmerülő infrastrukturális költségeket számlázza, akkor a szoftver licencelési díját közvetlenül az ügyfélnek kell átirányítani.   |
 |Azure-kompatibilis virtuális merevlemez (VHD)  |   A virtuális gépeket Windows vagy Linux rendszerre kell építeni.  További információ [: Azure-kompatibilis virtuális merevlemez létrehozása](./cloud-partner-portal/virtual-machine/cpp-create-vhd.md). |
 | Ügyfél-használati jóváírás | Az Azure Marketplace-en közzétett összes megoldási sablonban engedélyezni kell az ügyfél-használati jóváírást. Az ügyfél-használati jóváírással és annak engedélyezésével kapcsolatos további információkért tekintse meg az [Azure-partneri ügyfél használati](./azure-partner-customer-usage-attribution.md)feltételét ismertető témakört.  |
-| Felügyelt lemezek használata | A [Managed Disks](https://docs.microsoft.com/azure/virtual-machines/windows/managed-disks-overview) az alapértelmezett beállítás a IaaS virtuális gépek megőrzött lemezei számára az Azure-ban. A megoldási sablonokban Managed Diskst kell használnia. <br> <br> 1. A megoldási sablonok frissítéséhez kövesse az Azure ARM-sablonok Managed Disks használatának [útmutatását](https://docs.microsoft.com/azure/virtual-machines/windows/using-managed-disks-template-deployments) és [mintáit](https://github.com/Azure/azure-quickstart-templates/blob/master/managed-disk-support-list.md) . <br> <br> 2. Az alábbi útmutatást követve importálja a Managed Disks mögöttes VHD-jét egy Storage-fiókba, hogy a virtuális merevlemezt rendszerképként tegye közzé a piactéren: <br> <ul> <li> [PowerShell](https://docs.microsoft.com/azure/virtual-machines/scripts/virtual-machines-windows-powershell-sample-copy-managed-disks-vhd?toc=%2fpowershell%2fmodule%2ftoc.json) </li> <li> [Parancssori felület](https://docs.microsoft.com/azure/virtual-machines/scripts/virtual-machines-linux-cli-sample-copy-managed-disks-vhd?toc=%2fcli%2fmodule%2ftoc.json) </li> </ul> |
+| Felügyelt lemezek használata | A [Managed Disks](https://docs.microsoft.com/azure/virtual-machines/windows/managed-disks-overview) az alapértelmezett beállítás a IaaS virtuális gépek megőrzött lemezei számára az Azure-ban. A megoldási sablonokban Managed Diskst kell használnia. <br> <br> 1. kövesse az Azure ARM-sablonok Managed Disks használatának [útmutatását](https://docs.microsoft.com/azure/virtual-machines/windows/using-managed-disks-template-deployments) és [mintáit](https://github.com/Azure/azure-quickstart-templates/blob/master/managed-disk-support-list.md) a megoldási sablonok frissítéséhez. <br> <br> 2. az alábbi útmutatást követve importálja a Managed Disks mögöttes VHD-jét egy Storage-fiókba, hogy a virtuális merevlemezt rendszerképként tegye közzé a piactéren: <br> <ul> <li> [PowerShell](https://docs.microsoft.com/azure/virtual-machines/scripts/virtual-machines-windows-powershell-sample-copy-managed-disks-vhd?toc=%2fpowershell%2fmodule%2ftoc.json) </li> <li> [Parancssori felület](https://docs.microsoft.com/azure/virtual-machines/scripts/virtual-machines-linux-cli-sample-copy-managed-disks-vhd?toc=%2fcli%2fmodule%2ftoc.json) </li> </ul> |
 
 ## <a name="next-steps"></a>További lépések
 Ha még nem tette meg, [regisztráljon](https://azuremarketplace.microsoft.com/sell) a piactéren.
 
-Ha regisztrálva van, és új ajánlatot hoz létre, vagy egy meglévőt használ, jelentkezzen be [](https://cloudpartner.azure.com) a Cloud Partner Portalba az ajánlat létrehozásához vagy befejezéséhez.
+Ha regisztrálva van, és új ajánlatot hoz létre, vagy egy meglévőt használ, jelentkezzen be a [Cloud Partner Portalba](https://cloudpartner.azure.com) az ajánlat létrehozásához vagy befejezéséhez.
