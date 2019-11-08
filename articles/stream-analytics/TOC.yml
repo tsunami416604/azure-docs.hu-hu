@@ -107,6 +107,8 @@
           href: sql-reference-data.md
         - name: Hitelesítés felügyelt identitással – Blobkimenet
           href: blob-output-managed-identity.md
+        - name: Hitelesítés felügyelt identitással – Power BI
+          href: powerbi-output-managed-identity.md
     - name: Megoldások kiépítése
       items:
         - name: Twitter-hangulatelemzés

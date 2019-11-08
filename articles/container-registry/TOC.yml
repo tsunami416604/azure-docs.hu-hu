@@ -39,7 +39,7 @@
           href: container-registry-tutorial-deploy-update.md
 - name: Alapelvek
   items:
-    - name: Tárolóregisztrációs adatbázis termékváltozatai
+    - name: Tárolóregisztrációs adatbázis termékváltozatai és korlátai
       href: container-registry-skus.md
     - name: 'Beállításjegyzékek, adattárak és rendszerképek'
       href: container-registry-concepts.md
@@ -75,8 +75,6 @@
               href: container-registry-retention-policy.md
             - name: Címkék és jegyzékfájlok automatikus végleges törlése (előzetes verzió)
               href: container-registry-auto-purge.md
-        - name: Klasszikus beállításjegyzék frissítése
-          href: container-registry-upgrade.md
         - name: ACR-webhookok használata
           href: container-registry-webhook.md
         - name: Helm-diagramtárak (előzetes verzió)

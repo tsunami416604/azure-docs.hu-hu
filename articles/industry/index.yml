@@ -1,0 +1,53 @@
+### YamlMime:Hub
+title: Industry for Azure-dokumentáció
+summary: Megtudhatja, hogyan készíthet Azure-alapú megoldásokat a gyakori ipari használati esetekhez.
+brand: azure
+metadata:
+  title: Industry for Azure-dokumentáció
+  description: Megtudhatja, hogyan készíthet Azure-alapú megoldásokat a gyakori ipari használati esetekhez.
+  ms.service: azure-industry
+  ms.topic: hub-page
+  ms.collection: collection
+  author: DCtheGeek
+  ms.author: dacoulte
+  ms.date: 11/04/2019
+  ms.openlocfilehash: 2777093db7486f17cf19b45db08bbd0168a4e2a8
+  ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+  ms.translationtype: HT
+  ms.contentlocale: hu-HU
+  ms.lasthandoff: 11/07/2019
+  ms.locfileid: "73797074"
+highlightedContent:
+  items:
+  - title: Azure FarmBeats
+    itemType: overview
+    url: ./agriculture/overview.md
+  - title: Közösségi fórum
+    itemType: concept
+    url: https://aka.ms/FarmBeatsMSDN
+  - title: UserVoice (visszajelzés)
+    itemType: get-started
+    url: https://aka.ms/FarmBeatsForum
+productDirectory:
+  title: Iparági megoldási területek
+  items:
+  - title: Azure FarmBeats
+    imageSrc: ../media/index/industry-agriculture-farmbeats.svg
+    summary: Gyorsan hoz létre digitális mezőgazdasági megoldásokat a felhőben.
+    url: ./agriculture/overview.md
+  - title: Pénzügyi szolgáltatások
+    imageSrc: ../media/index/industry-financial.png
+    summary: Megoldások és használati esetek a pénzügyi szolgáltatási ágazat számára.
+    url: /azure/industry-marketing/financial/
+  - title: Egészségi és élettudományi szolgáltatások
+    imageSrc: ../media/index/industry-health.png
+    summary: Megoldások és használati esetek az egészségi és élettudományi ágazat számára.
+    url: /azure/industry-marketing/health/
+  - title: Gyártás
+    imageSrc: ../media/index/industry-manufacturing.png
+    summary: Megoldások és használati esetek a gyártási ágazat számára.
+    url: /azure/industry-marketing/manufacturing/
+  - title: Kiskereskedelem
+    imageSrc: ../media/index/industry-retail.png
+    summary: Megoldások és használati esetek a kiskereskedelmi ágazat számára.
+    url: /azure/industry-marketing/retail/

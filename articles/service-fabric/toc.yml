@@ -487,6 +487,8 @@
                   href: service-fabric-application-secret-management-windows.md
                 - name: Titkosítási tanúsítvány beállítása és titkos kódok titkosítása Linuxon
                   href: service-fabric-application-secret-management-linux.md
+                - name: A titkos kulcsok biztonságos tárolása KeyVaultReference használatával (előzetes verzió)
+                  href: service-fabric-keyvault-references.md
             - name: Fordított proxy konfigurálása biztonságos kommunikációhoz
               href: service-fabric-reverseproxy-configure-secure-communication.md
             - name: Szolgáltatásindítási szkript futtatása helyi felhasználóként vagy rendszerfiókként

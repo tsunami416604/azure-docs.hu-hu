@@ -361,7 +361,7 @@
               href: /azure/connectors/connectors-create-api-sqlazure?toc=/azure/sql-database/toc.json
             - name: Spark-összekötő használata
               href: sql-database-spark-connector.md
-            - name: Indexelés az Azure Search szolgáltatással
+            - name: Indexelés az Azure Cognitive Searchcsel
               href: /azure/search/search-howto-connecting-azure-sql-database-to-azure-search-using-indexers?toc=/azure/sql-database/toc.json
             - name: Ideiglenes adatmegőrzési szabály konfigurálása
               href: sql-database-temporal-tables-retention-policy.md

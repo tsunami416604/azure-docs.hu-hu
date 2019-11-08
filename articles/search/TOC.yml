@@ -119,7 +119,7 @@
           href: search-security-trimming-for-azure-search.md
         - name: AAD-identitások szűrése
           href: search-security-trimming-for-azure-search-with-aad.md
-        - name: Titkosítási kulcsok kezelése (előnézet)
+        - name: Titkosítási kulcsok kezelése
           href: search-security-manage-encryption-keys.md
     - name: Fejlesztés
       items:
@@ -253,7 +253,7 @@
           href: cognitive-search-concept-troubleshooting.md
         - name: Dokumentációs hivatkozások
           href: cognitive-search-resources-documentation.md
-        - name: Tudástár (előzetes verzió)
+        - name: Tudástár
           items:
             - name: Létrehozás a REST és a Postman használatával
               href: knowledge-store-create-rest.md
@@ -277,7 +277,7 @@
           href: query-simple-syntax.md
         - name: Teljes Lucene lekérdezési szintaxis
           href: query-lucene-syntax.md
-        - name: moreLikeThis (előzetes verzió)
+        - name: moreLikeThis lekérdezési paraméter
           href: search-more-like-this.md
     - name: Szűrők alkalmazása
       items:
