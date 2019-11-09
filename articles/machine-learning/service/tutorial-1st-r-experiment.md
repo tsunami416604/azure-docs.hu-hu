@@ -10,12 +10,12 @@ ms.reviewer: sgilley
 author: revodavid
 ms.author: davidsmi
 ms.date: 11/04/2019
-ms.openlocfilehash: bcd1fff61e1612cc3361548527e5ed13affa3ba5
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: MT
+ms.openlocfilehash: 9073893ebfcfea1a7f4e2a00bf82babcb8841122
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73501371"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73838525"
 ---
 # <a name="tutorial-train-and-deploy-your-first-model-in-r-with-azure-machine-learning"></a>Oktatóanyag: az első modell betanítása és üzembe helyezése az R-ben Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -167,7 +167,7 @@ Ebben az oktatóanyagban egy logisztikai regressziós modellt kell kitölteni a 
 Egy `accidents.R` nevű betanítási szkriptet adott meg az oktatóanyagban található címtárban. Figyelje meg az Azure ML szolgáltatás betanításra való kihasználása érdekében az **oktatóanyagban** szereplő alábbi részleteket:
 
 * A betanítási szkript argumentuma `-d`, hogy megkeresse a betanítási adatkészletet tartalmazó könyvtárat. Amikor később definiálja és elküldi a feladatot, erre az argumentumra az adattárra mutat. Az Azure ML a betanítási feladatokhoz csatlakoztatja a tárolási mappát a távoli fürthöz.
-* A betanítási parancsfájl a végső pontosságot az Azure ML-ben lévő futtatási rekordhoz `log_metric_to_run()`használatával naplózza. Az Azure ML SDK számos naplózási API-készletet biztosít a különböző metrikák naplózásához a betanítási futtatások során. A rendszer rögzíti a metrikákat, és megőrzi a kísérlet futtatási rekordját. A metrikák ezután bármikor elérhetők, vagy megtekinthetők a [Azure Machine learning Studio](http://ml.azure.com)Futtatás részletei lapján. Tekintse meg a naplózási módszerek teljes készletére vonatkozó [referenciát](https://azure.github.io/azureml-sdk-for-r/reference/index.html#section-training-experimentation) `log_*()`.
+* A betanítási parancsfájl a végső pontosságot az Azure ML-ben lévő futtatási rekordhoz `log_metric_to_run()`használatával naplózza. Az Azure ML SDK számos naplózási API-készletet biztosít a különböző metrikák naplózásához a betanítási futtatások során. A rendszer rögzíti a metrikákat, és megőrzi a kísérlet futtatási rekordját. A metrikák ezután bármikor elérhetők, vagy megtekinthetők a [Azure Machine learning Studio](https://ml.azure.com)Futtatás részletei lapján. Tekintse meg a naplózási módszerek teljes készletére vonatkozó [referenciát](https://azure.github.io/azureml-sdk-for-r/reference/index.html#section-training-experimentation) `log_*()`.
 * A betanítási szkript egy **kimenet**nevű könyvtárba menti a modellt. A `./outputs` mappa speciális kezelést kap az Azure ML-vel. A betanítás során a rendszer a `./outputs`ba írt fájlokat automatikusan feltölti a futtatási rekordba az Azure ML-ben, és összetevőkként megőrzi őket. Ha a betanított modellt `./outputs`ra menti, akkor a Futtatás után is elérheti és lekérheti a modell fájlját, és már nem férhet hozzá a távoli képzési környezethez.
 
 ### <a name="create-an-estimator"></a>Becslő létrehozása

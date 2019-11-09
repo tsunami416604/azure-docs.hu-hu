@@ -1,6 +1,6 @@
 ---
 title: Regisztráljon a Video Indexerre, és töltse fel első videóját – Azure
-titlesuffix: Azure Media Services
+titleSuffix: Azure Media Services
 description: Ismerje meg, hogyan regisztrálhat és töltheti fel az első videóját a Video Indexer portállal.
 services: media-services
 author: Juliako
@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: tutorial
 ms.date: 10/10/2019
 ms.author: juliako
-ms.openlocfilehash: 9d89247740852b7bfc185fbcf864947efe30ef0f
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: 957acc25c3218069a20e90fe83e00e441b6303d6
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72372349"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73839561"
 ---
 # <a name="quickstart-how-to-sign-up-and-upload-your-first-video"></a>Gyors útmutató: regisztráció és az első videó feltöltése
 
@@ -43,11 +43,11 @@ A Video Indexerrel való fejlesztés megkezdéséhez nyissa meg a [Video Indexer
 
     Ha a Video Indexer befejezte az elemzést, kapni fog egy értesítést, benne a videóra mutató hivatkozással és a videóban talált tartalom rövid leírásával. Például: személyek, témák, OCR-ek.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Most már használhatja a [video Indexer](video-indexer-view-edit.md) webhelyet, vagy [video Indexer fejlesztői portálon](video-indexer-use-apis.md) megtekintheti a videó információit. 
 
-## <a name="see-also"></a>Lásd még:
+## <a name="see-also"></a>Lásd még
 
 [A Video Indexer áttekintése](video-indexer-overview.md)
 

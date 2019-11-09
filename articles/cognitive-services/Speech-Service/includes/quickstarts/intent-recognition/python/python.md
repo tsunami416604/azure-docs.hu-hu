@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 10/28/2019
 ms.author: erhopf
 zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: 8916cb0438f0005d3ff9f720cf1b5a5653eeac77
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 9a226c17dd72d0dcd6403277054cf264f0094e65
+ms.sourcegitcommit: 16c5374d7bcb086e417802b72d9383f8e65b24a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73504031"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73850382"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -44,7 +44,7 @@ Vegyünk fel egy olyan kódot, amely csontvázként működik a projekthez.
 Ez a minta a `SpeechConfig` objektumot a LUIS kulcs és a régió használatával hozza létre. Az elérhető módszerek teljes listáját lásd: [SpeechConfig osztály](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechconfig).
 
 > [!NOTE]
-> Fontos, hogy a LUIS Endpoint kulcsot használja, nem pedig az indító vagy a Authroing kulcsokat, mivel csak a végpont kulcsa érvényes a beszédfelismerési szándék felismerésére. A megfelelő kulcs beszerzésével kapcsolatos útmutatásért lásd: [Luis-alkalmazás létrehozása és végponti kulcs beszerzése](~/articles/cognitive-services/Speech-Service/quickstarts/create-luis.md) .
+> Fontos, hogy a LUIS Endpoint kulcsot használja, nem pedig a kezdő vagy a szerzői kulcsot, mert csak a végpont kulcsa érvényes a beszédfelismerési szándék felismerésére. A megfelelő kulcs beszerzésével kapcsolatos útmutatásért lásd: [Luis-alkalmazás létrehozása és végponti kulcs beszerzése](~/articles/cognitive-services/Speech-Service/quickstarts/create-luis.md) .
 
 [!code-python[](~/samples-cognitive-services-speech-sdk/quickstart/python/intent-recognition/quickstart.py?range=12)]
 

@@ -10,12 +10,12 @@ ms.author: tamram
 ms.reviewer: artek
 ms.custom: mvc
 ms.subservice: blobs
-ms.openlocfilehash: c010b1acbf1b8f0a05ffda05bddfd8a9145dee8d
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 6b0ac017704c599e96543ed36a13ff5d3ddef9fc
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/08/2019
-ms.locfileid: "73825424"
+ms.locfileid: "73838574"
 ---
 # <a name="tutorial-build-a-highly-available-application-with-blob-storage"></a>Oktatóanyag: kiválóan elérhető alkalmazás létrehozása blob Storage-val
 
@@ -58,7 +58,7 @@ Az oktatóanyag elvégzéséhez:
 
 ## <a name="sign-in-to-the-azure-portal"></a>Jelentkezzen be az Azure Portalra
 
-Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
+Bejelentkezés az [Azure Portalra](https://portal.azure.com/).
 
 ## <a name="create-a-storage-account"></a>Create a storage account
 
@@ -74,12 +74,12 @@ Kövesse az alábbi lépéseket egy írásvédett georedundáns tárfiók létre
    | Beállítás       | Ajánlott érték | Leírás |
    | ------------ | ------------------ | ------------------------------------------------- |
    | **Name (Név)** | mystorageaccount | A tárfiók egyedi neve |
-   | **Üzemi modell** | Resource Manager  | A Resource Manager a legújabb funkciókat kínálja.|
+   | **Üzemi modell** | Erőforrás-kezelő  | A Resource Manager a legújabb funkciókat kínálja.|
    | **Fióktípus** | StorageV2 | A fiókok típusaival kapcsolatos információkért lásd [a tárfiókok típusait](../common/storage-introduction.md#types-of-storage-accounts) |
    | **Teljesítmény** | Standard | A példaforgatókönyvhöz a standard teljesítmény elegendő. |
    | **Replikáció**| Írásvédett georedundáns tárolás (RA-GRS) | Ez szükséges a minta működéséhez. |
    |**Előfizetés** | az Ön előfizetése |Az előfizetései részleteivel kapcsolatban lásd az [előfizetéseket](https://account.azure.com/Subscriptions) ismertető cikket. |
-   |**ResourceGroup** | myResourceGroup |Az érvényes erőforráscsoport-nevekkel kapcsolatban lásd az [elnevezési szabályokat és korlátozásokat](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging) ismertető cikket. |
+   |**ResourceGroup** | myResourceGroup |Az érvényes erőforráscsoport-nevekkel kapcsolatban lásd az [elnevezési szabályokat és korlátozásokat](/azure/architecture/best-practices/resource-naming) ismertető cikket. |
    |**Hely** | USA keleti régiója | Válassza ki a helyet. |
 
 ![tárfiók létrehozása](media/storage-create-geo-redundant-storage/createragrsstracct.png)

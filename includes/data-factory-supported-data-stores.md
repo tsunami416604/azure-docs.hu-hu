@@ -4,42 +4,42 @@ ms.service: data-factory
 ms.topic: include
 ms.date: 11/19/2018
 ms.author: jingwang
-ms.openlocfilehash: 0c381cc6e2e2957c946207491c666667821184ad
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 3ead267ee11cba65e20f3df2fb76d9138a080bfb
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67179585"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73850374"
 ---
-| Category | Adattár | Forrásként támogatott | Fogadóként támogatott |
+| Kategória | Adattár | Forrásként támogatott | Fogadóként támogatott |
 |:--- |:--- |:--- |:--- |
 | **Azure** |[Azure Blob Storage](../articles/data-factory/v1/data-factory-azure-blob-connector.md) |✓ |✓ |
 | &nbsp; |[Azure Cosmos DB (SQL API)](../articles/data-factory/v1/data-factory-azure-documentdb-connector.md) |✓ |✓ |
 | &nbsp; |[1. generációs Azure Data Lake Storage](../articles/data-factory/v1/data-factory-azure-datalake-connector.md) |✓ |✓ |
 | &nbsp; |[Azure SQL Database](../articles/data-factory/v1/data-factory-azure-sql-connector.md) |✓ |✓ |
 | &nbsp; |[Azure SQL Data Warehouse](../articles/data-factory/v1/data-factory-azure-sql-data-warehouse-connector.md) |✓ |✓ |
-| &nbsp; |[Azure Search-index](../articles/data-factory/v1/data-factory-azure-search-connector.md) | |✓ |
+| &nbsp; |[Azure Cognitive Search index](../articles/data-factory/v1/data-factory-azure-search-connector.md) | |✓ |
 | &nbsp; |[Azure Table storage](../articles/data-factory/v1/data-factory-azure-table-connector.md) |✓ |✓ |
 | **Adatbázisok** |[Amazon Redshift](../articles/data-factory/v1/data-factory-amazon-redshift-connector.md) |✓ | |
-| &nbsp; |[DB2](../articles/data-factory/v1/data-factory-onprem-db2-connector.md)\* |✓ | |
-| &nbsp; |[MySQL](../articles/data-factory/v1/data-factory-onprem-mysql-connector.md)\* |✓ | |
-| &nbsp; |[Oracle](../articles/data-factory/v1/data-factory-onprem-oracle-connector.md)\* |✓ |✓ |
-| &nbsp; |[PostgreSQL](../articles/data-factory/v1/data-factory-onprem-postgresql-connector.md)\* |✓ | |
-| &nbsp; |[SAP Business Warehouse](../articles/data-factory/v1/data-factory-sap-business-warehouse-connector.md)\* |✓ | |
-| &nbsp; |[SAP HANA](../articles/data-factory/v1/data-factory-sap-hana-connector.md)\* |✓ | |
-| &nbsp; |[SQL Server](../articles/data-factory/v1/data-factory-sqlserver-connector.md)\* |✓ |✓ |
-| &nbsp; |[Sybase](../articles/data-factory/v1/data-factory-onprem-sybase-connector.md)\* |✓ | |
-| &nbsp; |[Teradata](../articles/data-factory/v1/data-factory-onprem-teradata-connector.md)\* |✓ | |
-| **NoSQL** |[Cassandra](../articles/data-factory/v1/data-factory-onprem-cassandra-connector.md)\* |✓ | |
-| &nbsp; |[MongoDB](../articles/data-factory/v1/data-factory-on-premises-mongodb-connector.md)\* |✓ | |
+| &nbsp; |[DB2](../articles/data-factory/v1/data-factory-onprem-db2-connector.md)* |✓ | |
+| &nbsp; |[MySQL](../articles/data-factory/v1/data-factory-onprem-mysql-connector.md)* |✓ | |
+| &nbsp; |[Oracle](../articles/data-factory/v1/data-factory-onprem-oracle-connector.md)* |✓ |✓ |
+| &nbsp; |[PostgreSQL](../articles/data-factory/v1/data-factory-onprem-postgresql-connector.md)* |✓ | |
+| &nbsp; |[SAP Business Warehouse](../articles/data-factory/v1/data-factory-sap-business-warehouse-connector.md)* |✓ | |
+| &nbsp; |[SAP HANA](../articles/data-factory/v1/data-factory-sap-hana-connector.md)* |✓ | |
+| &nbsp; |[SQL Server](../articles/data-factory/v1/data-factory-sqlserver-connector.md)* |✓ |✓ |
+| &nbsp; |[Sybase](../articles/data-factory/v1/data-factory-onprem-sybase-connector.md)* |✓ | |
+| &nbsp; |[Teradata](../articles/data-factory/v1/data-factory-onprem-teradata-connector.md)* |✓ | |
+| **NoSQL** |[Cassandra](../articles/data-factory/v1/data-factory-onprem-cassandra-connector.md)* |✓ | |
+| &nbsp; |[MongoDB](../articles/data-factory/v1/data-factory-on-premises-mongodb-connector.md)* |✓ | |
 | **Fájl** |[Amazon S3](../articles/data-factory/v1/data-factory-amazon-simple-storage-service-connector.md) |✓ | |
-| &nbsp; |[Fájlrendszer](../articles/data-factory/v1/data-factory-onprem-file-system-connector.md)\* |✓ |✓ |
+| &nbsp; |[Fájlrendszer](../articles/data-factory/v1/data-factory-onprem-file-system-connector.md)* |✓ |✓ |
 | &nbsp; |[FTP](../articles/data-factory/v1/data-factory-ftp-connector.md) |✓ | |
-| &nbsp; |[HDFS](../articles/data-factory/v1/data-factory-hdfs-connector.md)\* |✓ | |
+| &nbsp; |[HDFS](../articles/data-factory/v1/data-factory-hdfs-connector.md)* |✓ | |
 | &nbsp; |[SFTP](../articles/data-factory/v1/data-factory-sftp-connector.md) |✓ | |
 | **Egyéb** |[Általános HTTP](../articles/data-factory/v1/data-factory-http-connector.md) |✓ | |
 | &nbsp; |[Általános OData](../articles/data-factory/v1/data-factory-odata-connector.md) |✓ | |
-| &nbsp; |[Általános ODBC](../articles/data-factory/v1/data-factory-odbc-connector.md)\* |✓ | |
+| &nbsp; |[Általános ODBC](../articles/data-factory/v1/data-factory-odbc-connector.md)* |✓ | |
 | &nbsp; |[Salesforce](../articles/data-factory/v1/data-factory-salesforce-connector.md) |✓ | |
 | &nbsp; |[Webtábla (tábla HTML-ből)](../articles/data-factory/v1/data-factory-web-table-connector.md) |✓ | |
 

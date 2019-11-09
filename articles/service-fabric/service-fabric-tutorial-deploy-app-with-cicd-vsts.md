@@ -1,6 +1,6 @@
 ---
-title: A folyamatos integrációt és az Azure-folyamatok az Azure Service Fabric-alkalmazás üzembe helyezése |} A Microsoft Docs
-description: Ebben az oktatóanyagban megismerheti, hogyan állíthat be folyamatos integrációt és üzembe helyezése egy Service Fabric-alkalmazás Azure-folyamatok használatával.
+title: Service Fabric alkalmazás üzembe helyezése folyamatos integrációval és Azure-folyamatokkal az Azure-ban | Microsoft Docs
+description: Ebből az oktatóanyagból megtudhatja, hogyan állíthat be folyamatos integrációt és üzembe helyezést egy Service Fabric alkalmazáshoz az Azure-folyamatok használatával.
 services: service-fabric
 documentationcenter: .net
 author: athinanthny
@@ -15,16 +15,16 @@ ms.workload: NA
 ms.date: 07/22/2019
 ms.author: atsenthi
 ms.custom: mvc
-ms.openlocfilehash: 184c57c0d9160cedef4be417f16c52c8635a1eb4
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 13411e813e96a1548b912c024f75404dd856fee1
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68385293"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73838956"
 ---
-# <a name="tutorial-deploy-an-application-with-cicd-to-a-service-fabric-cluster"></a>Oktatóanyag: Alkalmazás üzembe helyezése CI/CD-vel Service Fabric-fürtön
+# <a name="tutorial-deploy-an-application-with-cicd-to-a-service-fabric-cluster"></a>Oktatóanyag: Alkalmazás üzembe helyezése Service Fabric-fürtön CI/CD használatával
 
-Ez az oktatóanyag része, amely egy sorozat negyedik, és bemutatja, hogyan állíthat be folyamatos integrációt és üzembe helyezés Azure folyamatok használatával az Azure Service Fabric-alkalmazáshoz.  Szükség van egy már meglévő Service Fabric-alkalmazásra, így példaként a [.NET alkalmazás létrehozása](service-fabric-tutorial-create-dotnet-app.md) szakaszban létrehozott alkalmazás szolgál.
+Ez az oktatóanyag egy sorozat negyedik része, amely leírja, hogyan állíthat be folyamatos integrációt és üzembe helyezést egy Azure Service Fabric-alkalmazáshoz az Azure-folyamatok használatával.  Szükség van egy már meglévő Service Fabric-alkalmazásra, így példaként a [.NET alkalmazás létrehozása](service-fabric-tutorial-create-dotnet-app.md) szakaszban létrehozott alkalmazás szolgál.
 
 A sorozat harmadik részében az alábbiakkal fog megismerkedni:
 
@@ -50,7 +50,7 @@ Az oktatóanyag elkezdése előtt:
 * [Telepítse a Visual Studio 2019](https://www.visualstudio.com/) alkalmazást, és telepítse az **Azure fejlesztési** és **ASP.net, valamint a webes fejlesztési** feladatokat.
 * [A Service Fabric SDK telepítése](service-fabric-get-started.md)
 * Hozzon létre egy Service Fabric-fürtöt az Azure-ban, például [ennek az útmutatónak a segítségével](service-fabric-tutorial-create-vnet-and-windows-cluster.md)
-* Hozzon létre egy [Azure DevOps-szervezetet](https://docs.microsoft.com/azure/devops/organizations/accounts/create-organization-msa-or-work-student). Ez lehetővé teszi, hogy az Azure DevOps-projekt létrehozása és használata az Azure-folyamatok.
+* Hozzon létre egy [Azure DevOps-szervezetet](https://docs.microsoft.com/azure/devops/organizations/accounts/create-organization-msa-or-work-student). Ez lehetővé teszi, hogy létrehoz egy projektet az Azure DevOps, és hogyan használhatja az Azure-folyamatokat.
 
 ## <a name="download-the-voting-sample-application"></a>A mintául szolgáló szavazóalkalmazás letöltése
 
@@ -62,7 +62,7 @@ git clone https://github.com/Azure-Samples/service-fabric-dotnet-quickstart
 
 ## <a name="prepare-a-publish-profile"></a>Közzétételi profil előkészítése
 
-Most, hogy [létrehozott egy alkalmazást](service-fabric-tutorial-create-dotnet-app.md) és [telepítette azt az Azure-ba](service-fabric-tutorial-deploy-app-to-party-cluster.md), minden készen áll a folyamatos integráció beállításához.  Először készítsen elő egy közzétételi profilt, az alkalmazásban való használatra Azure folyamatok lefutó üzembe helyezési folyamat.  A közzétételi profilt úgy kell konfigurálni, hogy a korábban már létrehozott fürtöt célozza.  Indítsa el a Visual Studiót, és nyisson meg egy már meglévő Service Fabric-alkalmazásprojektet.  A **Megoldáskezelőben** kattintson a jobb gombbal az alkalmazásra, majd válassza a **Publish...** (Közzététel) lehetőséget.
+Most, hogy [létrehozott egy alkalmazást](service-fabric-tutorial-create-dotnet-app.md) és [telepítette azt az Azure-ba](service-fabric-tutorial-deploy-app-to-party-cluster.md), minden készen áll a folyamatos integráció beállításához.  Először készítse elő a közzétételi profilt az alkalmazásban az Azure-folyamatokon belül végrehajtandó telepítési folyamat általi használatra.  A közzétételi profilt úgy kell konfigurálni, hogy a korábban már létrehozott fürtöt célozza.  Indítsa el a Visual Studiót, és nyisson meg egy már meglévő Service Fabric-alkalmazásprojektet.  A **Megoldáskezelőben** kattintson a jobb gombbal az alkalmazásra, majd válassza a **Publish...** (Közzététel) lehetőséget.
 
 Az alkalmazásprojektben válasszon ki egy célprofilt a folyamatos integráció munkafolyamata számára. Ilyen lehet például a Cloud.  Adja meg a fürt csatlakozási végpontját.  Jelölje be az **Upgrade the Application** (Alkalmazás frissítése) jelölőnégyzetet, hogy az alkalmazás az Azure DevOpsban levő összes üzemelő példány esetében frissüljön.  A **Save** (Mentés) hiperhivatkozásra kattintva mentse a beállításokat a közzétételi profilba, majd kattintson a **Cancel** (Mégse) gombra a párbeszédpanel bezárásához.
 
@@ -84,21 +84,21 @@ Ellenőrizze az e-mail-címet, és válassza ki a saját fiókját az **Azure De
 
 Az adattár közzétételével egy új projekt jön létre a fiókjában a helyi adattáréval azonos néven. Ha egy már meglévő projektben kíván adattárat létrehozni, az **Adattár** neve mellett kattintson az **Advanced** (Speciális) elemre, és válassza ki a projektet. A kód megtekintéséhez a weben válassza a **See it on the web** (Megtekintés a weben) lehetőséget.
 
-## <a name="configure-continuous-delivery-with-azure-pipelines"></a>Folyamatos teljesítés konfigurálása az Azure-folyamatok
+## <a name="configure-continuous-delivery-with-azure-pipelines"></a>Folyamatos teljesítés konfigurálása az Azure-folyamatokkal
 
 Az Azure-folyamatok felépítési folyamata egy olyan munkafolyamatot ír le, amely egymás után végrehajtott összeállítási lépésekből áll. Hozzon létre egy buildfolyamatot, amely létrehozza a Service Fabric-alkalmazáscsomagot és más összetevőket egy Service Fabric-fürtben való üzembe helyezéshez. További tudnivalók az [Azure Pipelines buildelési folyamatokról](https://www.visualstudio.com/docs/build/define/create). 
 
-Az Azure Pipelines kiadási folyamata olyan munkafolyamatot ír le, amely egy alkalmazáscsomagot telepít egy fürtre. Együttes használatuk esetén a buildfolyamat és a kiadási folyamat a teljes munkafolyamatot végrehajtja, a forrásfájloktól kezdve a fürtön futó alkalmazásig bezárólag. Tudjon meg többet [Azure folyamatok folyamatok felszabadítása](https://www.visualstudio.com/docs/release/author-release-definition/more-release-definition).
+Az Azure Pipelines kiadási folyamata olyan munkafolyamatot ír le, amely egy alkalmazáscsomagot telepít egy fürtre. Együttes használatuk esetén a buildfolyamat és a kiadási folyamat a teljes munkafolyamatot végrehajtja, a forrásfájloktól kezdve a fürtön futó alkalmazásig bezárólag. További információ az [Azure-folyamatok kiadási](https://www.visualstudio.com/docs/release/author-release-definition/more-release-definition)folyamatairól.
 
 ### <a name="create-a-build-pipeline"></a>Buildelési folyamat létrehozása
 
 Nyisson meg egy webböngészőt, és keresse meg az új projektet a következő helyen: [https://&lt;myaccount&gt;.visualstudio.com/Voting/Voting%20Team/_git/Voting](https://myaccount.visualstudio.com/Voting/Voting%20Team/_git/Voting).
 
-Válassza ki a **folyamatok** lapot, majd **buildek**, majd kattintson a **új adatcsatorna**.
+Válassza a **folyamatok** fület, majd a **buildek**, majd az **új folyamat**elemet.
 
 ![Új folyamat][new-pipeline]
 
-Válassza ki **Azure Git-Adattárakkal** forrásaként, **Voting** csapatprojekt, **Voting** adattárat, és **fő** manuális alapértelmezett ág és ütemezett buildek.  Ezután kattintson a **Continue** (Folytatás) gombra.
+A manuális és ütemezett buildek esetében válassza az **Azure Repos git** as Source, a **szavazó** csapat projekt, a **szavazási** adattár és a **fő** alapértelmezett ág lehetőséget.  Ezután kattintson a **Continue** (Folytatás) gombra.
 
 ![Tárház kiválasztása][select-repo]
 
@@ -106,19 +106,19 @@ A **Select a template** (Sablon kiválasztása) területen válassza az **Azure 
 
 ![Buildsablon kiválasztása][select-build-template]
 
-A **feladatok**, adja meg a "Hosted VS2017" a **ügynökkészlet**.
+A **feladatok**területen adja meg az "üzemeltetett VS2017" **ügynököt**.
 
 ![Feladatok kiválasztása][save-and-queue]
 
-A **Triggers** (Eseményindítók) lehetőségnél engedélyezze a folyamatos integrációt az **Enable continuous integration** (Folyamatos integráció engedélyezése) bejelölésével. Belül **szűrők ágban**, a **specifikáció ágban** alapértelmezés szerint a **fő**. Válassza ki a **Save and queue** (Mentés és üzenetsorba helyezés) elemet a build manuális elindításához.
+A **Triggers** (Eseményindítók) lehetőségnél engedélyezze a folyamatos integrációt az **Enable continuous integration** (Folyamatos integráció engedélyezése) bejelölésével. **Ág-szűrőkön**belül a **Branch specifikáció** alapértelmezett értéke a **Master**. Válassza ki a **Save and queue** (Mentés és üzenetsorba helyezés) elemet a build manuális elindításához.
 
 ![Eseményindítók kiválasztása][save-and-queue2]
 
-A buildek leküldés vagy bejelentkezés hatására is aktiválódnak. A build folyamatának ellenőrzéséhez váltson át a **Builds** (Buildek) lapra.  Miután meggyőződött arról, hogy a build végrehajtása sikeresen megtörtént, hozza létre a kiadási folyamatot, amely telepíti az alkalmazást egy fürtre.
+A buildek leküldés vagy bejelentkezés hatására is aktiválódnak. A létrehozási folyamat ellenőrzéséhez váltson a builds ( **buildek** ) lapra.  Miután meggyőződött arról, hogy a Build sikeresen lefut, adjon meg egy kiadási folyamatot, amely üzembe helyezi az alkalmazást egy fürtön.
 
 ### <a name="create-a-release-pipeline"></a>Kiadási folyamat létrehozása
 
-Válassza ki a **folyamatok** lapot, majd **kiadásokban**, majd **+ új adatcsatorna**.  A **Select a template** (Sablon kiválasztása) területen válassza ki az **Azure Service Fabric Deployment** (Üzembe helyezés az Azure Service Fabric használatával) sablont a listából, majd kattintson az **Apply** (Alkalmaz) gombra.
+Válassza a **folyamatok** fület, majd a **releases**, majd az **+ új folyamat**elemet.  A **Select a template** (Sablon kiválasztása) területen válassza ki az **Azure Service Fabric Deployment** (Üzembe helyezés az Azure Service Fabric használatával) sablont a listából, majd kattintson az **Apply** (Alkalmaz) gombra.
 
 ![Kiadási sablon kiválasztása][select-release-template]
 
@@ -144,7 +144,7 @@ Engedélyezze a folyamatos üzembe helyezés eseményindítóját, hogy a kiadá
 
 Válassza a **+ Release** -> **Create a Release** -> **Create** (+Kiadás > Kiadás létrehozása > Létrehozás) lehetőséget a kiadás manuális létrehozásához. A kiadási folyamatot a **Releases** (Kiadások) lapon követheti nyomon.
 
-Győződjön meg arról, hogy az üzembe helyezés sikeres volt, és ellenőrizze, hogy az alkalmazás megfelelően fut-e a fürtön.  Nyisson meg egy webböngészőt, majd navigáljon a következő helyre: [http://mysftestcluster.southcentralus.cloudapp.azure.com:19080/Explorer/](http://mysftestcluster.southcentralus.cloudapp.azure.com:19080/Explorer/).  Vegye figyelembe, hogy a példában szereplő alkalmazásverzió száma „1.0.0.20170616.3”.
+Győződjön meg arról, hogy az üzembe helyezés sikeres volt, és ellenőrizze, hogy az alkalmazás megfelelően fut-e a fürtön.  Nyisson meg egy webböngészőt, és navigáljon `http://mysftestcluster.southcentralus.cloudapp.azure.com:19080/Explorer/`.  Vegye figyelembe, hogy a példában szereplő alkalmazásverzió száma „1.0.0.20170616.3”.
 
 ## <a name="commit-and-push-changes-trigger-a-release"></a>Módosítások véglegesítse és leküldése, kiadás indítása
 
@@ -156,15 +156,15 @@ A Team Explorer **Changes** (Módosítások) nézetében adjon meg egy üzenetet
 
 ![Az összes véglegesítése][changes]
 
-Válassza ki a közzé nem tett változások ikonját az állapotsávon (![Unpublished changes][unpublished-changes]) vagy a Sync (Szinkronizálás) nézetet a Team Explorerben. Válassza ki **leküldéses** Azure folyamatokban a kód frissítése.
+Válassza ki a közzé nem tett változások ikonját az állapotsávon (![Unpublished changes][unpublished-changes]) vagy a Sync (Szinkronizálás) nézetet a Team Explorerben. A kód Azure-folyamatokban való frissítéséhez válassza a **push (leküldés** ) lehetőséget.
 
 ![Módosítások leküldése][push]
 
-A módosítások leküldése az Azure-folyamatok automatikusan aktiválnak egy buildet.  Ha a buildfolyamat sikeresen befejeződött, a kiadás automatikusan létrejön, és elindítja a fürtön az alkalmazás frissítését.
+Az Azure-folyamatok módosításai automatikusan elindítanak egy buildet.  Ha a buildfolyamat sikeresen befejeződött, a kiadás automatikusan létrejön, és elindítja a fürtön az alkalmazás frissítését.
 
 A build folyamatának ellenőrzéséhez váltson át a Visual Studio **Team Explorer** területének **Builds** (Buildek) lapjára.  Miután meggyőződött arról, hogy a build végrehajtása sikeresen megtörtént, hozza létre a kiadási folyamatot, amely telepíti az alkalmazást egy fürtre.
 
-Győződjön meg arról, hogy az üzembe helyezés sikeres volt, és ellenőrizze, hogy az alkalmazás megfelelően fut-e a fürtön.  Nyisson meg egy webböngészőt, majd navigáljon a következő helyre: [http://mysftestcluster.southcentralus.cloudapp.azure.com:19080/Explorer/](http://mysftestcluster.southcentralus.cloudapp.azure.com:19080/Explorer/).  Vegye figyelembe, hogy a példában szereplő alkalmazásverzió száma „1.0.0.20170815.3”.
+Győződjön meg arról, hogy az üzembe helyezés sikeres volt, és ellenőrizze, hogy az alkalmazás megfelelően fut-e a fürtön.  Nyisson meg egy webböngészőt, és navigáljon `http://mysftestcluster.southcentralus.cloudapp.azure.com:19080/Explorer/`.  Vegye figyelembe, hogy a példában szereplő alkalmazásverzió száma „1.0.0.20170815.3”.
 
 ![Service Fabric Explorer][sfx1]
 

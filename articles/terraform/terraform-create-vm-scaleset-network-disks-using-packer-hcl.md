@@ -5,17 +5,17 @@ ms.service: terraform
 author: tomarchermsft
 ms.author: tarcher
 ms.topic: tutorial
-ms.date: 10/26/2019
-ms.openlocfilehash: ac89930d55901e20759dc582d9835e99d26aac7c
-ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
+ms.date: 11/07/2019
+ms.openlocfilehash: 080fda3077a10d0605f061aca5226783457348f9
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72969436"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73837540"
 ---
 # <a name="tutorial-create-azure-virtual-machine-scale-set-from-a-packer-custom-image-using-terraform"></a>Oktatóanyag: Azure virtuálisgép-méretezési csoport létrehozása egy csomagoló egyéni rendszerképből a Terraform használatával
 
-Ebben az oktatóanyagban a [Terraform](https://www.terraform.io/) használatával hoz létre és helyez üzembe a [Packer](https://www.packer.io/intro/index.html) által készített egyéni rendszerképpel létrehozott [Azure-beli virtuálisgép-méretezési csoportot](/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-overview) felügyelt lemezekkel a [HashiCorp Configuration Language](https://www.terraform.io/docs/configuration/syntax.html) (HCL) használatával.  
+Ebben az oktatóanyagban a [Terraform](https://www.terraform.io/) használatával hoz létre és helyez üzembe a [Packer](/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-overview) által készített egyéni rendszerképpel létrehozott [Azure-beli virtuálisgép-méretezési csoportot](https://www.packer.io/intro/index.html) felügyelt lemezekkel a [HashiCorp Configuration Language](https://www.terraform.io/docs/configuration/syntax.html) (HCL) használatával.  
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
@@ -452,7 +452,7 @@ terraform destroy
 
 Írja be a `yes` választ, amikor a rendszer az erőforrások törlésének megerősítését kéri. Az eltávolítási folyamat eltarthat pár percig.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"] 
-> [Terraform az Azure-ban](/azure/ansible/)
+> [További információ a Terraform Azure-beli használatáról](/azure/terraform)

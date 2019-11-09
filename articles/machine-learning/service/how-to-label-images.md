@@ -7,16 +7,16 @@ ms.author: laobri
 ms.service: machine-learning
 ms.topic: tutorial
 ms.date: 11/04/2019
-ms.openlocfilehash: af12361ed11d0a16e5a5d0cfe5989bb3918ce154
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 9cbebb905ba39dabaf905be2fa741702bd1a0088
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73586396"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73838941"
 ---
 # <a name="how-to-tag-images-in-a-labeling-project"></a>Képek címkézése egy címkézési projektben
 
-Miután a projekt rendszergazdája létrehozta a címkézési projektet a Azure Machine Learning Studióban, a címkézés eszköz használatával gyorsan előkészítheti a Machine learning-projekt adatait. 
+Miután a projekt rendszergazdája létrehozta a címkézési projektet a Azure Machine Learningban, a címkéző eszközzel gyorsan elő lehet készíteni egy gépi tanulási projekt adatait. 
 
 > [!div class="checklist"]
 > * A címkézési projektek elérése

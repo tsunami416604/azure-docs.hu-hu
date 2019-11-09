@@ -5,13 +5,13 @@ ms.service: terraform
 author: tomarchermsft
 ms.author: tarcher
 ms.topic: tutorial
-ms.date: 10/26/2019
-ms.openlocfilehash: 205cf7610bd9f86bf36fc738ced71fc8175ccdc9
-ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
+ms.date: 11/07/2019
+ms.openlocfilehash: e2b7d816a02eaf47ef50bfd2d814f7b26a813446
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72969462"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73838407"
 ---
 # <a name="tutorial-create-an-azure-virtual-machine-scale-set-using-terraform"></a>Oktatóanyag: Azure virtuálisgép-méretezési csoport létrehozása a Terraform használatával
 
@@ -96,7 +96,7 @@ A Azure Cloud Shellon hajtsa végre a következő lépéseket:
    }
    ```
 
-1. Mentse a fájlt ( **&lt;Ctrl > S**), és lépjen ki a szerkesztőből ( **&lt;Ctrl > Q**).
+1. Mentse a fájlt ( **&lt;ctrl > S**), és lépjen ki a szerkesztőből ( **&lt;CTRL > Q**).
 
 ## <a name="create-the-output-definitions-file"></a>A kimenetdefiníciós fájl létrehozása
 Ebben a szakaszban az üzembe helyezés utáni kimenetet leíró fájlt hozza létre.
@@ -118,7 +118,7 @@ A Azure Cloud Shellon hajtsa végre a következő lépéseket:
     }
    ```
 
-1. Mentse a fájlt ( **&lt;Ctrl > S**), és lépjen ki a szerkesztőből ( **&lt;Ctrl > Q**).
+1. Mentse a fájlt ( **&lt;ctrl > S**), és lépjen ki a szerkesztőből ( **&lt;CTRL > Q**).
 
 ## <a name="define-the-network-infrastructure-in-a-template"></a>A hálózati infrastruktúra meghatározása egy sablonban
 Ebben a szakaszban az alábbi hálózati infrastruktúrát hozza létre egy új Azure-erőforráscsoportban:
@@ -176,7 +176,7 @@ A Azure Cloud Shellon hajtsa végre a következő lépéseket:
    }
    ```
 
-1. Mentse a fájlt ( **&lt;Ctrl > S**), és lépjen ki a szerkesztőből ( **&lt;Ctrl > Q**).
+1. Mentse a fájlt ( **&lt;ctrl > S**), és lépjen ki a szerkesztőből ( **&lt;CTRL > Q**).
 
 ## <a name="provision-the-network-infrastructure"></a>Hálózati infrastruktúra kiépítése
 A konfigurációs fájlokat (. TF) létrehozó könyvtárból származó Azure Cloud Shell használatával hajtsa végre a következő lépéseket:
@@ -377,7 +377,7 @@ A Cloud Shellon hajtsa végre a következő lépéseket:
     }
     ```
 
-1. Mentse a fájlt ( **&lt;Ctrl > S**), és lépjen ki a szerkesztőből ( **&lt;Ctrl > Q**).
+1. Mentse a fájlt ( **&lt;ctrl > S**), és lépjen ki a szerkesztőből ( **&lt;CTRL > Q**).
 
 1. Hozzon létre egy Terraform-tervet a virtuálisgép-méretezési csoport üzembe helyezésének megjelenítéséhez. (Meg kell adnia egy tetszőleges jelszót, valamint az erőforrások helyét is.)
 
@@ -496,7 +496,7 @@ Az SSH- *Jumpbox* egyetlen kiszolgáló, amelyet a hálózaton lévő többi kis
    }
    ```
 
-1. Mentse a fájlt ( **&lt;Ctrl > S**), és lépjen ki a szerkesztőből ( **&lt;Ctrl > Q**).
+1. Mentse a fájlt ( **&lt;ctrl > S**), és lépjen ki a szerkesztőből ( **&lt;CTRL > Q**).
 
 1. Helyezze üzembe a jumpboxot.
 
@@ -521,7 +521,7 @@ terraform destroy
 
 Az eltávolítási folyamat több percig is eltarthat.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"] 
-> [Terraform az Azure-ban](/azure/ansible/)
+> [További információ a Terraform Azure-beli használatáról](/azure/terraform)

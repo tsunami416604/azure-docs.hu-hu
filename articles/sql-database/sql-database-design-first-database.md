@@ -9,12 +9,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: v-masebo
 ms.date: 07/29/2019
-ms.openlocfilehash: 97e603e6daa64bb70edefe06b52a7c45f90787f3
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: d3fecd54e36c8a3dd43c88f5aa4e4233057c3f91
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/08/2019
-ms.locfileid: "73818306"
+ms.locfileid: "73838592"
 ---
 # <a name="tutorial-design-a-relational-database-in-a-single-database-within-azure-sql-database-using-ssms"></a>Oktatóanyag: a SSMS-t használó, Azure SQL Databaseban található, egyetlen adatbázisban lévő viszonyítási adatbázis tervezése
 
@@ -44,7 +44,7 @@ Az oktatóanyag elvégzéséhez győződjön meg arról, hogy telepítette a kö
 
 ## <a name="sign-in-to-the-azure-portal"></a>Jelentkezzen be az Azure Portalra
 
-Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
+Bejelentkezés az [Azure Portalra](https://portal.azure.com/).
 
 ## <a name="create-a-blank-single-database"></a>Üres önálló adatbázis létrehozása
 
@@ -63,14 +63,14 @@ Az alábbi lépéseket követve hozzon létre egy üres önálló adatbázist.
     | ------------ | ------------------ | ------------------------------------------------- |
     | **Adatbázis neve** | *yourDatabase* | Az érvényes adatbázis-nevekkel kapcsolatban lásd: [adatbázis-azonosítók](/sql/relational-databases/databases/database-identifiers). |
     | **Előfizetés** | *yourSubscription*  | Az előfizetései részleteivel kapcsolatban lásd az [előfizetéseket](https://account.windowsazure.com/Subscriptions) ismertető cikket. |
-    | **Erőforráscsoport** | *yourResourceGroup* | Az érvényes erőforráscsoport-nevekkel kapcsolatban lásd az [elnevezési szabályokat és korlátozásokat](/azure/architecture/best-practices/naming-conventions) ismertető cikket. |
+    | **Erőforráscsoport** | *yourResourceGroup* | Az érvényes erőforráscsoport-nevekkel kapcsolatban lásd az [elnevezési szabályokat és korlátozásokat](/azure/architecture/best-practices/resource-naming) ismertető cikket. |
     | **Forrás kiválasztása** | Üres adatbázis | Meghatározza, hogy egy üres adatbázist kell létrehozni. |
 
 4. Kattintson a **kiszolgáló** elemre egy meglévő adatbázis-kiszolgáló használatához, vagy hozzon létre és konfiguráljon egy új adatbázis-kiszolgálót. Válasszon ki egy meglévő kiszolgálót, vagy kattintson az **új kiszolgáló létrehozása** lehetőségre, és töltse ki az **új kiszolgáló** űrlapot a következő információkkal:
 
     | Beállítás       | Ajánlott érték | Leírás |
     | ------------ | ------------------ | ------------------------------------------------- |
-    | **Kiszolgálónév** | Bármely globálisan egyedi név | Az érvényes kiszolgálónevekkel kapcsolatban lásd az [elnevezési szabályokat és korlátozásokat](/azure/architecture/best-practices/naming-conventions) ismertető cikket. |
+    | **Kiszolgálónév** | Bármely globálisan egyedi név | Az érvényes kiszolgálónevekkel kapcsolatban lásd az [elnevezési szabályokat és korlátozásokat](/azure/architecture/best-practices/resource-naming) ismertető cikket. |
     | **Kiszolgálói rendszergazdai bejelentkezés** | Bármely érvényes név | Az érvényes bejelentkezési nevekért lásd: [adatbázis-azonosítók](/sql/relational-databases/databases/database-identifiers). |
     | **Jelszó** | Bármely érvényes jelszó | A jelszónak legalább nyolc karakterből kell állnia, és tartalmaznia kell karaktereket a következő kategóriák közül legalább háromból: nagybetűs karakterek, kisbetűk, számok és nem alfanumerikus karakterek. |
     | **Hely** | Bármely érvényes hely | A régiókkal kapcsolatos információkért lásd [az Azure régióit](https://azure.microsoft.com/regions/) ismertető cikket. |

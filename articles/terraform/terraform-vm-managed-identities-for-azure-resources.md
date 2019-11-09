@@ -5,13 +5,13 @@ ms.service: terraform
 author: tomarchermsft
 ms.author: tarcher
 ms.topic: tutorial
-ms.date: 10/26/2019
-ms.openlocfilehash: e00b674df35516da559339af8028c1ca1845b0db
-ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
+ms.date: 11/07/2019
+ms.openlocfilehash: 233012d6caf1280914a6d2439ae856d69570fff7
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72969790"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73838046"
 ---
 # <a name="tutorial-create-a-linux-vm-with-a-managed-identity-from-the-azure-marketplace-image-using-terraform"></a>Oktatóanyag: linuxos virtuális gép létrehozása felügyelt identitással az Azure Marketplace-rendszerképből a Terraform használatával
 
@@ -96,7 +96,7 @@ Miután létrehozta a virtuális gépet, hajtsa végre a következő lépéseket
 
     További információ a távoli állapotadatok kezeléséről: [Terraform távoli állapot](https://www.terraform.io/docs/state/remote.html). A tárterület-hozzáférési kulcs ebben a fájlban van kitéve. Zárja ki a Terraform konfigurációs fájljainak a verziókövetésba való véglegesítése előtt.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"] 
-> [Terraform az Azure-ban](/azure/ansible/)
+> [További információ a Terraform Azure-beli használatáról](/azure/terraform)

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/15/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 4f49220da5d996615c9f8ef7cad2b6c6793866b7
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: b4e479405a9606a8353785828d0c9c94ef8c32ed
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73466278"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73850372"
 ---
 ### <a name="regions"></a>Mely régiók érhetők el?
 
@@ -50,3 +50,8 @@ További tájékoztatás a [díjszabási lapon](https://aka.ms/BastionHostPricin
 ### <a name="session"></a>Miért kapok "a munkamenet lejárt" hibaüzenetet, mielőtt megkezdődik a megerősített munkamenet?
 
 A munkamenetet csak a Azure Portal kezdeményezheti. Jelentkezzen be a Azure Portalba, és kezdje újra a munkamenetet. Ha közvetlenül egy másik böngésző-munkamenetből vagy-lapról nyitja meg az URL-címet, a rendszer ezt a hibát várta. Segít biztosítani, hogy a munkamenet biztonságosabb legyen, és hogy a munkamenet csak a Azure Portalon keresztül legyen elérhető.
+
+### <a name="keyboard"></a>Milyen billentyűzetkiosztások támogatottak a megerősített távoli munkamenet során?
+
+Az Azure Bastion jelenleg a virtuális gépen belüli en-us-QWERTY billentyűzet-elrendezést támogatja.  A billentyűzet egyéb területi beállításainak támogatása folyamatban van.
+

@@ -5,13 +5,13 @@ ms.service: terraform
 author: tomarchermsft
 ms.author: tarcher
 ms.topic: tutorial
-ms.date: 10/26/2019
-ms.openlocfilehash: b815776b8ff6dddf74c8aaa31a489b56751c0c73
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.date: 11/07/2019
+ms.openlocfilehash: 1bfeef729bdb3f07fe2cc64cee4fd4f27c49ef67
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73162334"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73833608"
 ---
 # <a name="tutorial-create-a-kubernetes-cluster-with-azure-kubernetes-service-using-terraform"></a>Oktatóanyag: Kubernetes-fürt létrehozása az Azure Kubernetes szolgáltatással az Terraform használatával
 
@@ -30,7 +30,7 @@ Ebből az oktatóanyagból megtudhatja, hogyan hajthatja végre a következő fe
 
 - **A Terraform konfigurálása**: Kövesse a [Terraform telepítését és az Azure-hozzáférés konfigurálását ismertető cikkben](/azure/virtual-machines/linux/terraform-install-configure) található utasításokat
 
-- **Azure-beli szolgáltatásnév**: Kövesse az [Azure-beli szolgáltatásnév létrehozása az Azure CLI-vel](/cli/azure/create-an-azure-service-principal-azure-cli?view=azure-cli-latest) című cikk **a szolgáltatásnév létrehozását** ismertető szakaszában foglaltakat. Jegyezze fel az appId, a displayName, a password és a tenant értékét.
+- **Azure-beli szolgáltatásnév**: Kövesse az **Azure-beli szolgáltatásnév létrehozása az Azure CLI-vel** című cikk [a szolgáltatásnév létrehozását](/cli/azure/create-an-azure-service-principal-azure-cli?view=azure-cli-latest) ismertető szakaszában foglaltakat. Jegyezze fel az appId, a displayName, a password és a tenant értékét.
 
 ## <a name="create-the-directory-structure"></a>A könyvtárstruktúra létrehozása
 
@@ -82,7 +82,7 @@ Hozza létre az Azure-szolgáltatót deklaráló Terraform konfigurációs fájl
     }
     ```
 
-1. Mentse a fájlt ( **&lt;Ctrl > S**), és lépjen ki a szerkesztőből ( **&lt;Ctrl > Q**).
+1. Mentse a fájlt ( **&lt;ctrl > S**), és lépjen ki a szerkesztőből ( **&lt;CTRL > Q**).
 
 ## <a name="define-a-kubernetes-cluster"></a>Kubernetes-fürt meghatározása
 
@@ -171,9 +171,9 @@ Hozza létre a Kubernetes-fürt erőforrásait deklaráló Terraform konfigurác
 
     A `linux_profile` rekord lehetővé teszi, hogy konfigurálja azokat a beállításokat, amelyek engedélyezik az SSH-val való bejelentkezést a munkavégző csomópontokra.
 
-    Az AKS-sel csak a munkavégző csomópontokért kell fizetnie. A `agent_pool_profile` rekord a munkavégző csomópontok adatait konfigurálja. A `agent_pool_profile record` tartalmazza a létrehozandó munkavégző csomópontok számát és a feldolgozó csomópontok típusát. Ha a későbbiekben a fürt vertikális felskálázását vagy leskálázását szeretné végezni, módosítsa a `count` értéket ebben a rekordban.
+    Az AKS-sel csak a munkavégző csomópontokért kell fizetnie. A `agent_pool_profile` rekord a munkavégző csomópontok adatait konfigurálja. A `agent_pool_profile record` tartalmazza a létrehozandó munkavégző csomópontok számát és a feldolgozó csomópontok típusát. Ha a későbbiekben a fürt vertikális felskálázását vagy leskálázását szeretné végezni, módosítsa a rekord `count` értékét.
 
-1. Mentse a fájlt ( **&lt;Ctrl > S**), és lépjen ki a szerkesztőből ( **&lt;Ctrl > Q**).
+1. Mentse a fájlt ( **&lt;ctrl > S**), és lépjen ki a szerkesztőből ( **&lt;CTRL > Q**).
 
 ## <a name="declare-the-variables"></a>Változók deklarálása
 
@@ -228,7 +228,7 @@ Hozza létre a Kubernetes-fürt erőforrásait deklaráló Terraform konfigurác
    }
     ```
 
-1. Mentse a fájlt ( **&lt;Ctrl > S**), és lépjen ki a szerkesztőből ( **&lt;Ctrl > Q**).
+1. Mentse a fájlt ( **&lt;ctrl > S**), és lépjen ki a szerkesztőből ( **&lt;CTRL > Q**).
 
 ## <a name="create-a-terraform-output-file"></a>Terraform kimeneti fájl létrehozása
 
@@ -272,7 +272,7 @@ A [Terraform-kimenetek](https://www.terraform.io/docs/configuration/outputs.html
     }
     ```
 
-1. Mentse a fájlt ( **&lt;Ctrl > S**), és lépjen ki a szerkesztőből ( **&lt;Ctrl > Q**).
+1. Mentse a fájlt ( **&lt;ctrl > S**), és lépjen ki a szerkesztőből ( **&lt;CTRL > Q**).
 
 ## <a name="set-up-azure-storage-to-store-terraform-state"></a>Az Azure Storage beállítása Terraform-állapot tárolásához
 
@@ -395,7 +395,7 @@ A Kubernetes-eszközök használhatók az újonnan létrehozott fürt tesztelés
 
 Az AKS-fürt létrejöttekor a monitorozás is engedélyezve lett, hogy rögzítse a fürtcsomópontok és a podok állapotmetrikáit. Ezek az állapotmetrikák elérhetők az Azure Portalon. A tároló állapotának figyelésével kapcsolatos további információkért lásd: az [Azure Kubernetes szolgáltatás állapotának figyelése](/azure/azure-monitor/insights/container-insights-overview).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"] 
-> [Terraform az Azure-ban](/azure/ansible/)
+> [További információ a Terraform Azure-beli használatáról](/azure/terraform)

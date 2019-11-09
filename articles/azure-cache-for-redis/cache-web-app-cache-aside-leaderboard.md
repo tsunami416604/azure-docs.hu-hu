@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 03/30/2018
 ms.author: yegu
-ms.openlocfilehash: 8ca24e8556ee53e9d12eaea8fd9eddb07ebed490
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 3260bbbd858fecc8cc305a9fcab0b551fdf182dc
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/08/2019
-ms.locfileid: "73826394"
+ms.locfileid: "73834109"
 ---
 # <a name="tutorial-create-a-cache-aside-leaderboard-on-aspnet"></a>Oktatóanyag: Gyorsítótár-feltöltési ranglista létrehozása az ASP.NET-en
 
@@ -671,7 +671,7 @@ Ebben a szakaszban egy új SQL Azure-adatbázist fog üzembe helyezni az Azure-b
 
    | Beállítás       | Ajánlott érték | Leírás |
    | ------------ | ------------------ | ------------------------------------------------- |
-   | **Kiszolgálónév** | Bármely globálisan egyedi név | Az érvényes kiszolgálónevekkel kapcsolatban lásd az [elnevezési szabályokat és korlátozásokat](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging) ismertető cikket. |
+   | **Kiszolgálónév** | Bármely globálisan egyedi név | Az érvényes kiszolgálónevekkel kapcsolatban lásd az [elnevezési szabályokat és korlátozásokat](/azure/architecture/best-practices/resource-naming) ismertető cikket. |
    | **Kiszolgálói rendszergazdai bejelentkezés** | Bármely érvényes név | Az érvényes bejelentkezési nevekkel kapcsolatban lásd az [adatbázis-azonosítókat](https://docs.microsoft.com/sql/relational-databases/databases/database-identifiers) ismertető cikket. |
    | **Jelszó** | Bármely érvényes jelszó | A jelszónak legalább 8 karakter hosszúságúnak kell lennie, és tartalmaznia kell karaktereket a következő kategóriák közül legalább háromból: nagybetűs karakterek, kisbetűs karakterek, számjegyek és nem alfanumerikus karakterek. |
    | **Hely** | *USA keleti régiója* | Válassza ki ugyanazt a régiót, amelyben a gyorsítótárat és az App Service-t létrehozta. |

@@ -7,21 +7,21 @@ ms.service: application-gateway
 ms.topic: tutorial
 ms.date: 07/26/2019
 ms.author: victorh
-ms.openlocfilehash: 73a313a6244971b65ba89fb7b676610d88acabfa
-ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.openlocfilehash: 3b6818d68b62b574e49817b574450625c231506c
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68498455"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73833575"
 ---
-# <a name="tutorial-create-and-configure-an-application-gateway-to-host-multiple-web-sites-using-the-azure-portal"></a>Oktatóanyag: Hozzon létre és konfiguráljon egy Application Gatewayt több webhelynek a Azure Portal használatával történő üzemeltetéséhez
+# <a name="tutorial-create-and-configure-an-application-gateway-to-host-multiple-web-sites-using-the-azure-portal"></a>Oktatóanyag: Application Gateway létrehozása és konfigurálása több webhelynek a Azure Portal használatával történő üzemeltetéséhez
 
 Az Azure Portal használatával [több webhely üzemeltetését konfigurálhatja](multiple-site-overview.md) az [Application Gateway](overview.md)létrehozásakor. Ebben az oktatóanyagban a háttérbeli címkészlet a virtuális gépek használatával van meghatározva. Ezután az Ön tulajdonában lévő tartományok alapján konfigurálhat figyelőket és szabályokat a webes forgalom a készletekben lévő megfelelő kiszolgálókra irányításához. Ez az oktatóanyag feltételezi, hogy Ön több tartománnyal rendelkezik. Példaként a *www.contoso.com* és a *www.fabrikam.com* tartományt használja.
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
-> * Application Gateway létrehozása
+> * Alkalmazásátjáró létrehozása
 > * Virtuális gépek létrehozása háttérbeli kiszolgálókhoz
 > * Háttér-készletek létrehozása a háttér-kiszolgálókkal
 > * Háttérbeli figyelők létrehozása
@@ -36,7 +36,7 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 Jelentkezzen be az Azure Portalra a [https://portal.azure.com](https://portal.azure.com) webhelyen
 
-## <a name="create-an-application-gateway"></a>Application Gateway létrehozása
+## <a name="create-an-application-gateway"></a>Alkalmazásátjáró létrehozása
 
 1. Válassza az **erőforrás létrehozása** elemet a Azure Portal bal oldali menüjében. Megjelenik az **új** ablak.
 
@@ -46,28 +46,28 @@ Jelentkezzen be az Azure Portalra a [https://portal.azure.com](https://portal.az
 
 1. Az **alapok** lapon adja meg a következő Application Gateway-beállításokhoz tartozó értékeket:
 
-   - **Erőforráscsoport**: Válassza ki az erőforráscsoport **myResourceGroupAG** . Ha nem létezik, válassza az **új létrehozása** elemet a létrehozásához.
-   - **Application Gateway neve**: Adja meg a *myAppGateway* nevet az Application Gateway neveként.
+   - **Erőforráscsoport**: válassza ki az erőforráscsoport **myResourceGroupAG** . Ha nem létezik, válassza az **új létrehozása** elemet a létrehozásához.
+   - **Application Gateway neve**: írja be a *myAppGateway* nevet az Application Gateway neveként.
 
-     ![Új Application Gateway létrehozása: Alapvető beállítások](./media/application-gateway-create-gateway-portal/application-gateway-create-basics.png)
+     ![Új Application Gateway létrehozása: alapismeretek](./media/application-gateway-create-gateway-portal/application-gateway-create-basics.png)
 
 2.  Ahhoz, hogy az Azure kommunikáljon a létrehozott erőforrások között, szüksége van egy virtuális hálózatra. Hozzon létre egy új virtuális hálózatot, vagy használjon egy meglévőt. Ebben a példában egy új virtuális hálózatot fog létrehozni az Application Gateway létrehozásakor. Application Gateway példányok külön alhálózatokban jönnek létre. Ebben a példában két alhálózatot hoz létre: egyet az Application Gateway számára, és egy másikat a háttér-kiszolgálók számára.
 
     A **virtuális hálózat konfigurálása**területen válassza az **új létrehozása** lehetőséget az új virtuális hálózat létrehozásához. A megnyíló **virtuális hálózat létrehozása** ablakban adja meg a következő értékeket a virtuális hálózat és két alhálózat létrehozásához:
 
-    - **Név**: Adja meg a virtuális hálózat nevének *myVNet* .
+    - **Név**: írja be a *myVNet* nevet a virtuális hálózat nevéhez.
 
-    - **Alhálózat neve** (Application Gateway alhálózat): Az  alhálózatok rácsa az *alapértelmezett*nevű alhálózatot jeleníti meg. Módosítsa az alhálózat nevét a *myAGSubnet*értékre.<br>Az Application Gateway-alhálózat csak Application Gateway átjárókat tartalmazhat. Más erőforrások nem engedélyezettek.
+    - **Alhálózat neve** (Application Gateway alhálózat): az **alhálózatok** rácsa egy *alapértelmezett*nevű alhálózatot fog megjeleníteni. Módosítsa az alhálózat nevét a *myAGSubnet*értékre.<br>Az Application Gateway-alhálózat csak Application Gateway átjárókat tartalmazhat. Más erőforrások nem engedélyezettek.
 
-    - **Alhálózat neve** (háttér-kiszolgáló alhálózata): Az alhálózatok rácsának  második sorában írja be a *MyBackendSubnet* **nevet az alhálózat neve** oszlopba.
+    - **Alhálózat neve** (háttérbeli kiszolgáló alhálózata): az **alhálózatok** rácsának második sorában adja meg az *myBackendSubnet* értéket az **alhálózat neve** oszlopban.
 
-    - **Címtartomány** (háttér-kiszolgáló alhálózata): Az alhálózatok rácsának  második sorában adjon meg egy címtartományt, amely nem fedi át a *myAGSubnet*címtartományt. Ha például a *myAGSubnet* 10.0.0.0/24, a *10.0.1.0/24* értéket adja meg a *myBackendSubnet*-tartományhoz.
+    - **Címtartomány** (háttér-kiszolgáló alhálózata): az **alhálózatok** rácsának második sorában olyan címtartományt adjon meg, amely nem fedi át a *myAGSubnet*címtartomány-tartományát. Ha például a *myAGSubnet* 10.0.0.0/24, a *10.0.1.0/24* értéket adja meg a *myBackendSubnet*-tartományhoz.
 
     A **virtuális hálózat létrehozása** ablak bezárásához és a virtuális hálózat beállításainak mentéséhez kattintson **az OK gombra** .
 
      ![Új Application Gateway létrehozása: virtuális hálózat](./media/application-gateway-create-gateway-portal/application-gateway-create-vnet.png)
     
-3. Az **alapvető** beállítások lapon fogadja el a többi beállítás alapértelmezett értékeit, majd válassza **a Next (tovább) gombot: Frontendek**.
+3. Az **alapvető** beállítások lapon fogadja el az alapértelmezett értékeket a többi beállításnál, majd válassza a **Next (tovább): frontends**elemet.
 
 ### <a name="frontends-tab"></a>Frontendek lap
 
@@ -79,7 +79,7 @@ Jelentkezzen be az Azure Portalra a [https://portal.azure.com](https://portal.az
 
      ![Új Application Gateway létrehozása: frontendek](./media/application-gateway-create-gateway-portal/application-gateway-create-frontends.png)
 
-3. Válassza **a Next (tovább) lehetőséget: Háttérrendszer**.
+3. Válassza a Next (tovább) lehetőséget **: háttérrendszer**.
 
 ### <a name="backends-tab"></a>Háttérrendszer lap
 
@@ -89,15 +89,15 @@ A háttér-készlet arra szolgál, hogy a kérelmeket a kérést kiszolgáló h�
 
 2. A megnyíló **háttérbeli készlet hozzáadása** ablakban adja meg a következő értékeket egy üres háttérbeli készlet létrehozásához:
 
-    - **Név**: Adja meg a *contosoPool* nevét a háttérbeli készlet neveként.
-    - **Háttérbeli készlet hozzáadása célok nélkül**: Válassza az **Igen** lehetőséget, ha célokat nem tartalmazó háttér-készletet szeretne létrehozni. Az Application Gateway létrehozása után hozzá kell adni a háttérbeli célokat.
+    - **Név**: adja meg a *contosoPool* nevét a háttér-készlet neveként.
+    - **Háttérbeli készlet hozzáadása célok nélkül**: válassza az **Igen** lehetőséget, ha célokat nem tartalmazó háttér-készletet szeretne létrehozni. Az Application Gateway létrehozása után hozzá kell adni a háttérbeli célokat.
 
-3. A háttérbeli **készlet hozzáadása** ablakban válassza a **Hozzáadás** elemet a háttérbeli készlet konfigurációjának mentéséhez, és térjen  vissza a háttérrendszer lapra.
+3. A háttérbeli **készlet hozzáadása** ablakban válassza a **Hozzáadás** elemet a háttérbeli készlet konfigurációjának mentéséhez, és térjen vissza a **háttérrendszer** lapra.
 4. Most adjon hozzá egy *fabrikamPool*nevű másik háttér-készletet.
 
      ![Új Application Gateway létrehozása: háttérrendszer](./media/create-multiple-sites-portal/backend-pools.png)
 
-4. A backends (háttérrendszer) **lapon válassza a Next (tovább) gombot:  Konfiguráció**.
+4. A **háttérrendszer** lapon válassza a **Tovább: konfigurálás**lehetőséget.
 
 ### <a name="configuration-tab"></a>Konfiguráció lap
 
@@ -109,11 +109,11 @@ A **konfiguráció** lapon összekapcsolja az útválasztási szabály használa
 
 3. Egy útválasztási szabályhoz egy figyelő szükséges. Az **útválasztási szabály hozzáadása** ablak **figyelő** lapján adja meg az alábbi értékeket a figyelőhöz:
 
-    - **Figyelő neve**: Adja meg a *contosoListener* a figyelő neveként.
-    - Előtéri **IP-cím**: Válassza a **nyilvános** lehetőséget a előtérhez létrehozott nyilvános IP-cím kiválasztásához.
+    - **Figyelő neve**: írja be a *contosoListener* nevet a figyelőnek.
+    - Előtér **-IP**: válassza a **nyilvános** lehetőséget, hogy kiválassza a előtérhez létrehozott nyilvános IP-címet.
 
    A **További beállítások**területen:
-   - **Figyelő típusa**: Több hely
+   - **Figyelő típusa**: több hely
    - **Állomásnév**: **www.contoso.com**
 
    Fogadja el az alapértelmezett értékeket a **figyelő** lapon a többi beállításnál, majd válassza a **háttérbeli célok** fület a többi útválasztási szabály konfigurálásához.
@@ -122,14 +122,14 @@ A **konfiguráció** lapon összekapcsolja az útválasztási szabály használa
 
 4. A **háttérbeli célok** lapon válassza a **ContosoPool** lehetőséget a **háttérbeli célként**.
 
-5. A **http**-beállításnál válassza az **új létrehozása** lehetőséget egy új http-beállítás létrehozásához. A HTTP-beállítás határozza meg az útválasztási szabály viselkedését. A megnyíló **http-beállítás hozzáadása** ablakban írja be a *ContosoHTTPSetting* nevet a **http-beállítás neveként**. Fogadja el az alapértelmezett értékeket a további beállításokhoz a **http-beállítás hozzáadása** ablakban, majd válassza a **Hozzáadás** lehetőséget az **útválasztási szabály hozzáadása** ablakhoz való visszatéréshez. 
+5. A **http-beállításnál**válassza az **új létrehozása** lehetőséget egy új http-beállítás létrehozásához. A HTTP-beállítás határozza meg az útválasztási szabály viselkedését. A megnyíló **http-beállítás hozzáadása** ablakban írja be a *ContosoHTTPSetting* nevet a **http-beállítás neveként**. Fogadja el az alapértelmezett értékeket a további beállításokhoz a **http-beállítás hozzáadása** ablakban, majd válassza a **Hozzáadás** lehetőséget az **útválasztási szabály hozzáadása** ablakhoz való visszatéréshez. 
 
 6. Az útválasztási szabály **hozzáadása** ablakban válassza a **Hozzáadás** lehetőséget az útválasztási szabály mentéséhez és a **konfiguráció** laphoz való visszatéréshez.
 7. Válassza a **szabály hozzáadása** lehetőséget, és adjon hozzá egy hasonló szabályt, figyelőt, háttér-célt és http-beállítást a fabrikam számára.
 
      ![Új Application Gateway létrehozása: útválasztási szabály](./media/create-multiple-sites-portal/fabrikamRule.png)
 
-7. Válassza **a Next (tovább) lehetőséget: Címkék** , majd **tovább: Felülvizsgálat + létrehozás**.
+7. Válassza a **Next (tovább** ) gombot, majd a **következőt: felülvizsgálat + létrehozás**.
 
 ### <a name="review--create-tab"></a>Felülvizsgálat + Létrehozás lap
 
@@ -153,14 +153,14 @@ A háttérbeli célok hozzáadásához a következőket kell tennie:
 2. Válassza a **számítás** lehetőséget, majd válassza a **Windows Server 2016 Datacenter** elemet a **népszerű** listában. Megjelenik a **virtuális gép létrehozása** lap.<br>Application Gateway átirányíthatja a forgalmat a háttér-készletben használt bármilyen típusú virtuális gépre. Ebben a példában egy Windows Server 2016 Datacenter rendszert használ.
 3. Adja meg ezeket az értékeket az **alapok** lapon a következő virtuálisgép-beállításokhoz:
 
-    - **Erőforráscsoport**: Válassza az erőforráscsoport neve **myResourceGroupAG** lehetőséget.
-    - **Virtuális gép neve**: Adja meg a *contosoVM* nevet a virtuális gép nevéhez.
-    - **Felhasználónév**: Adja  meg az azureuser nevet a rendszergazda felhasználónevénél.
-    - **Jelszó**: Adja meg a *Azure123456!* a rendszergazdai jelszóhoz.
-4. Fogadja el a többi alapértelmezett értéket, **majd válassza a Next (tovább) gombot: Lemezek**.  
-5. Fogadja el a **lemezek** lap alapértelmezett értékeit **, majd kattintson a Next (tovább) gombra: Hálózatkezelés**.
-6. A **hálózatkezelés** lapon ellenőrizze, hogy a **virtuális hálózat** **myVNet** van-e kiválasztva, és az **alhálózat** **myBackendSubnet**értékre van-e állítva. Fogadja el a többi alapértelmezett értéket, **majd válassza a Next (tovább) gombot: Felügyelet**.<br>A Application Gateway képes kommunikálni a virtuális hálózaton kívüli példányokkal, de gondoskodnia kell az IP-kapcsolatról.
-7. A **felügyelet** lapon állítsa be a rendszerindítási **diagnosztika** beállítást **off**értékre. Fogadja el a többi alapértelmezett értéket, majd válassza a **felülvizsgálat + létrehozás**lehetőséget.
+    - **Erőforráscsoport**: válassza ki a **myResourceGroupAG** az erőforráscsoport neveként.
+    - **Virtuális gép neve**: írja be a *contosoVM* nevet a virtuális gép nevéhez.
+    - **Felhasználónév**: írja be az *azureuser* nevet a rendszergazda felhasználónevének.
+    - **Password (jelszó**): adja meg a *Azure123456!* a rendszergazdai jelszóhoz.
+4. Fogadja el a többi alapértelmezett értéket, majd válassza a **Next: Disks**elemet.  
+5. Fogadja el a **lemezek** lap alapértelmezett értékeit, majd kattintson a **Tovább gombra: hálózatkezelés**elemre.
+6. A **hálózatkezelés** lapon ellenőrizze, hogy a **virtuális hálózat** **myVNet** van-e kiválasztva, és az **alhálózat** **myBackendSubnet**értékre van-e állítva. Fogadja el a többi alapértelmezett értéket, majd válassza a **Tovább: kezelés**lehetőséget.<br>A Application Gateway képes kommunikálni a virtuális hálózaton kívüli példányokkal, de gondoskodnia kell az IP-kapcsolatról.
+7. A **felügyelet** lapon állítsa be a **rendszerindítási diagnosztika** beállítást **off**értékre. Fogadja el a többi alapértelmezett értéket, majd válassza a **felülvizsgálat + létrehozás**lehetőséget.
 8. A **felülvizsgálat + létrehozás** lapon tekintse át a beállításokat, javítsa ki az érvényesítési hibákat, majd válassza a **Létrehozás**lehetőséget.
 9. A folytatás előtt várja meg, amíg a virtuális gép létrehozása befejeződik.
 
@@ -219,7 +219,7 @@ Miután az Application Gateway nyilvános IP-címmel lett létrehozva, lekérhet
 
 ## <a name="test-the-application-gateway"></a>Az alkalmazásátjáró tesztelése
 
-1. Adja meg a tartománya nevét a böngésző címsorában. Például: http://www.contoso.com.
+1. Adja meg a tartománya nevét a böngésző címsorában. Például: `http://www.contoso.com`.
 
     ![Contoso webhely tesztelése az alkalmazásátjáróban](./media/create-multiple-sites-portal/application-gateway-iistest.png)
 

@@ -7,18 +7,18 @@ ms.author: laobri
 ms.service: machine-learning
 ms.topic: tutorial
 ms.date: 11/04/2019
-ms.openlocfilehash: 76f995901814c90ff9fd78585c98d56b3478e8b4
-ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
+ms.openlocfilehash: ca3486610d6cf71ba315e407b58a2a2551ad6ee1
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73612772"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73837479"
 ---
 # <a name="get-labels-for-data"></a>Az Adatfeliratok beolvasása
 
 A nagyméretű adatmennyiségek címkézése gyakran fejfájást eredményezett a gépi tanulási projektekben. A Computer látási összetevővel (például képbesorolással vagy objektum-észleléssel) rendelkező projektek esetében általában több ezer rendszerkép és a hozzá tartozó címkék szükségesek. 
  
-A Azure Machine Learning Studio központi helyet biztosít a címkézési projektek létrehozásához, kezeléséhez és figyeléséhez. A projektek címkézése segít az adatok, címkék és csoporttagok koordinálásában, így hatékonyabban kezelheti a címkézési feladatokat. A jelenleg támogatott feladatok a képbesorolás, a többcímkés vagy a többosztályos, valamint a kötött mezőkkel rendelkező objektumok azonosítása.
+Azure Machine Learning központi helyet biztosít a címkézési projektek létrehozásához, kezeléséhez és figyeléséhez. A projektek címkézése segít az adatok, címkék és csoporttagok koordinálásában, így hatékonyabban kezelheti a címkézési feladatokat. A jelenleg támogatott feladatok a képbesorolás, a többcímkés vagy a többosztályos, valamint a kötött mezőkkel rendelkező objektumok azonosítása.
 
 Az Azure nyomon követi az előrehaladást, és fenntartja a hiányos címkéző feladatok várólistáját. A címkéző nincs szükségük Azure-fiókra a részvételhez. Miután hitelesítette a Microsoft-fiókját (MSA) vagy a [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-whatis), a lehető legtöbb címkét megteheti az idő beállításával. A címkék a billentyűparancsokkal rendelhetők hozzá és módosíthatók. 
 
@@ -43,7 +43,7 @@ Ebből a cikkből megtudhatja, hogyan végezheti el a következőket:
 
 ## <a name="create-a-labeling-project"></a>Címkézési projekt létrehozása
 
-A címkézési projektek [Azure Machine learning studióból](https://ml.azure.com/)felügyelhetők. A **címkézési projektek** oldalon kezelheti a projektjeit, csapatait és személyeit. Egy projekthez hozzá van rendelve egy vagy több csapat, és egy csapathoz egy vagy több személy van rendelve. 
+A címkézési projektek [Azure Machine Learningból](https://ml.azure.com/)vannak felügyelve. A **címkézési projektek** oldalon kezelheti a projektjeit, csapatait és személyeit. Egy projekthez hozzá van rendelve egy vagy több csapat, és egy csapathoz egy vagy több személy van rendelve. 
 
 Ha az adatai már az Azure Blob Storage-ban vannak tárolva, a címkézési projekt létrehozása előtt elérhetővé kell tenni őket adattárként. További információ: [adattár létrehozása és regisztrálása](https://docs.microsoft.com/azure/machine-learning/service/how-to-access-data#create-and-register-datastores). 
 
@@ -149,7 +149,7 @@ Az adatokat közvetlenül a **Project Details (projekt részletei** ) oldaláró
 
 A Machine learning-kísérletezéshez bármikor exportálhatja a feliratot. A képfeliratokat [kókusz formátumban](http://cocodataset.org/#format-data) vagy Azure ml-adatkészletként lehet exportálni. Az **Exportálás** gombra a címkézési projekt **Project Details (projekt részletei** ) lapján található.
 
-A kókusz-fájl az Azure ML-munkaterület alapértelmezett blob-tárolójában jön létre az **exportálási és a kókuszos**mappában. Az exportált Azure ML-adatkészletet a Studióban található **adatkészletek** szakaszban érheti el. Az adatkészlet részletei lap a Pythonból származó feliratok eléréséhez is tartalmaz mintakód-kódot.
+A kókusz-fájl az Azure ML-munkaterület alapértelmezett blob-tárolójában jön létre az **exportálási és a kókuszos**mappában. Az exportált Azure ML-adatkészletet a Azure Machine Learning **adatkészletek** szakaszában érheti el. Az adatkészlet részletei lap a Pythonból származó feliratok eléréséhez is tartalmaz mintakód-kódot.
 
 ![Exportált adatkészlet](media/how-to-create-labeling-projects/exported-dataset.png)
 

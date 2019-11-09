@@ -6,12 +6,12 @@ author: tomarchermsft
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 10/26/2019
-ms.openlocfilehash: 7adf3afe993a01357abcae846f19f602a49862bc
-ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
+ms.openlocfilehash: 7fee1518c36407f4e6607cc9204f9615b024f56f
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72969473"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73837726"
 ---
 # <a name="tutorial-create-an-azure-vm-cluster-with-terraform-and-hcl"></a>Oktatóanyag: Azure-beli virtuálisgép-fürt létrehozása a Terraform és a HCL-val
 
@@ -61,7 +61,7 @@ Ebben a szakaszban egy Azure-szolgáltatásnevet hozunk létre, valamint két Te
 
 6. Hozzon létre egy új fájlt a Terraform-változók értékeinek tárolására. Gyakran előfordul, hogy a `terraform.tfvars` Terraform nevet adja a Terraform, mivel a automatikusan betölt minden `terraform.tfvars` nevű fájlt (vagy `*.auto.tfvars`), ha az aktuális könyvtárban van. 
 
-7. Másolja az alábbi kódot a változók fájljába. Ne felejtse lecserélni a helyőrzőket az alábbiak szerint: A `subscription_id` helyett használja az Azure-előfizetés az `az account set` parancs futtatásakor megadott azonosítóját. A `tenant_id` helyett használja az `az ad sp create-for-rbac` által visszaadott `tenant` értéket. A `client_id` helyett használja az `az ad sp create-for-rbac` által visszaadott `appId` értéket. A `client_secret` helyett használja az `az ad sp create-for-rbac` által visszaadott `password` értéket.
+7. Másolja az alábbi kódot a változók fájljába. Ne felejtse lecserélni a helyőrzőket az alábbiak szerint: A `subscription_id` helyett használja az Azure-előfizetés az `az account set` parancs futtatásakor megadott azonosítóját. A `tenant_id` helyett használja az `tenant` által visszaadott `az ad sp create-for-rbac` értéket. A `client_id` helyett használja az `appId` által visszaadott `az ad sp create-for-rbac` értéket. A `client_secret` helyett használja az `password` által visszaadott `az ad sp create-for-rbac` értéket.
 
    ```hcl
    subscription_id = "<azure-subscription-id>"
@@ -291,7 +291,7 @@ Ha egy korábban mentett végrehajtási tervet szeretne alkalmazni, futtassa a k
 
 ![Terraform végrehajtási terv alkalmazása](media/terraform-create-vm-cluster-with-infrastructure/terraform-apply.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"] 
 > [Azure virtuálisgép-méretezési csoport létrehozása a Terraform használatával](terraform-create-vm-scaleset-network-disks-hcl.md)
