@@ -1,6 +1,6 @@
 ---
 title: 'Példa: Videók feltöltése és indexelése a Video Indexerrel'
-titlesuffix: Azure Media Services
+titleSuffix: Azure Media Services
 description: Ez a témakör bemutatja, hogyan használhat API-kat a videók feltöltésére és indexelésére a Video Indexerrel.
 services: media-services
 author: Juliako
@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 09/10/2019
 ms.author: juliako
-ms.openlocfilehash: d6338f3840b6f8afe21f8115304ba00bba90c6ea
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: 255c98965026266348a66bb98a1741eaf04a1d38
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72372376"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73839145"
 ---
 # <a name="upload-and-index-your-videos"></a>Videók feltöltése és indexelése  
 
@@ -65,7 +65,7 @@ Egy URL-cím, amely az ügyfél (POST-kérelem használatával) értesítésére
         |---|---|
         |id|A videó azonosítója|
         |state|A videó állapota|  
-    - Például: https: \//test. com/Notifyme? projektnév = MyProject & id = 1234abcd & State = Processed
+    - Például: https:\//test.com/notifyme?projectName=MyProject&id=1234abcd&state=Processed
 - A videóban azonosított személy:
   - Tulajdonságok
     
@@ -76,7 +76,7 @@ Egy URL-cím, amely az ügyfél (POST-kérelem használatával) értesítésére
       |knownPersonId|Az arc-modellen belül egyedi személy azonosítója|
       |personName|A személy neve|
         
-    - Például: https: \//test. com/Notifyme? projektnév = MyProject & id = 1234abcd & faceid = 12 & knownPersonId = CCA84350-89B7-4262-861C-3CAC796542A5 & personName = Inigo_Montoya 
+    - Például: https:\//test.com/notifyme?projectName=MyProject&id=1234abcd&faceid=12&knownPersonId=CCA84350-89B7-4262-861C-3CAC796542A5&personName=Inigo_Montoya 
 
 #### <a name="notes"></a>Megjegyzések
 
@@ -290,6 +290,6 @@ A Feltöltés művelet által visszaadott lehetséges állapotkódok az alábbi 
 |400|VIDEO_ALREADY_IN_PROGRESS|Ugyanannak a videónak a feldolgozása már folyamatban van az adott fiókban.|
 |400|VIDEO_ALREADY_FAILED|Ugyanannak a videónak a feldolgozása már meghiúsult az adott fiókban 2 órán belül. Az API-ügyfeleknek legalább 2 órát várniuk kell a videó ismételt feltöltése előtt.|
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [Az API által létrehozott Azure Video Indexer-kimenet vizsgálata](video-indexer-output-json-v2.md)

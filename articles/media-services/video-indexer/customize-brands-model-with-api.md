@@ -1,7 +1,7 @@
 ---
-title: Azure Video Indexer segítségével márkái modell testreszabása
-titlesuffix: Azure Media Services
-description: Ez a cikk bemutatja, hogyan lehet Azure Video Indexer segítségével márkái modelljét testreszabhatja.
+title: Az Azure Video Indexer használata a Brands modell testreszabásához
+titleSuffix: Azure Media Services
+description: Ez a cikk bemutatja, hogyan szabhatja testre a Brands modellt az Azure Video Indexer használatával.
 services: media-services
 author: anikaz
 manager: johndeu
@@ -10,24 +10,24 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 05/15/2019
 ms.author: anzaman
-ms.openlocfilehash: 8d0806bc0262cd45a49e4f97ea629683ac239aa8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4289c592644d7570ff0dd9ce6aed0cd77f51f25e
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65799642"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73838337"
 ---
-# <a name="customize-a-brands-model-with-the-video-indexer-api"></a>A Video Indexer API márkái modell testreszabása
+# <a name="customize-a-brands-model-with-the-video-indexer-api"></a>Brands-modell testreszabása a Video Indexer API-val
 
-A video Indexer márka észlelését a beszéd- és vizuális szöveges indexelést és a video- és audiotartalmak újraindexelés során támogatja. A márka duplikálásészlelési szolgáltatását a termékek, szolgáltatások, hírforrásaiból azonosítja, és a vállalatok a Bing márkái adatbázis által javasolt. Például ha egy videó vagy hang tartalom említett, a Microsoft vagy egy videóban visual szöveg megjelenik, Video Indexer észleli ezt, a tartalom egy adott márkához. Márka egyéni modell lehetővé teszi, hogy bizonyos márkái kizárása és márkákat, amelyeket a modell, amely nem feltétlenül Bing márkái adatbázis részét kell tartalmaznia.
+A Video Indexer támogatja a beszédfelismerés és a vizualizáció szövegének felderítését a videó-és hangtartalom indexelése és újraindexelése során. A márka észlelési funkciója a Bing márkák adatbázisa által javasolt termékek, szolgáltatások és vállalatok megemlítését azonosítja. Ha például a Microsoft a videóban vagy a hangtartalomban szerepel, vagy ha a videó vizualizációs szövegben jelenik meg, akkor Video Indexer a tartalmat a tartalomban márkaként észleli. Az egyéni márkák modell lehetővé teszi, hogy kizárjon bizonyos márkákat a rendszerből, és olyan márkákat tartalmazzon, amelyek nem feltétlenül a Bing márkák adatbázisában találhatók.
 
-Részletes ismertetőt talál [áttekintése](customize-brands-model-overview.md).
+Részletes áttekintést az [Áttekintés](customize-brands-model-overview.md)című témakörben talál.
 
-A Video Indexer API-k segítségével létrehozását, használatát és egyéni márkái modellek észlelhető a videó szerkesztése ebben a témakörben leírtak szerint. Használhatja a Video Indexer webhelyen leírtak szerint [testreszabása márkái modell a Video Indexer webhelyen](customize-brands-model-with-api.md).
+A jelen témakörben leírtak szerint a Video Indexer API-k használatával hozhat létre, használhat és szerkeszthet egyéni márkákat tartalmazó modelleket a videóban. A Video Indexer webhelyét a [Brands Model testreszabása a video Indexer webhelyről](customize-brands-model-with-api.md)című témakörben leírtak szerint is használhatja.
 
-## <a name="create-a-brand"></a>Hozzon létre egy adott Márkához
+## <a name="create-a-brand"></a>Márka létrehozása
 
-Ez létrehoz egy új egyéni márka, és hozzáadja azt a megadott fiók egyéni márkái modelljére.
+Ez létrehoz egy új egyéni márkát, és hozzáadja azt a megadott fiók egyéni márkák modelljéhez.
 
 ### <a name="request-url"></a>Kérés URL-címe
 
@@ -35,19 +35,19 @@ Ez létrehoz egy új egyéni márka, és hozzáadja azt a megadott fiók egyéni
 https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Brands?accessToken={accessToken}
 ```
 
-[Tekintse meg a szükséges paramétereket, és a Video Indexer fejlesztői portál használatával kipróbálásához](https://api-portal.videoindexer.ai/docs/services/operations/operations/Create-Brand).
+[Tekintse meg a szükséges paramétereket, és tesztelje a video Indexer fejlesztői portálon](https://api-portal.videoindexer.ai/docs/services/operations/operations/Create-Brand).
 
-### <a name="request-parameters"></a>A kérés paraméterei
+### <a name="request-parameters"></a>Kérelmek paramétereinek megadása
 
-|**Name (Név)**|**Típus**|**Kötelező**|**Leírás**|
+|**Name (Név)**|**Típus**|**Szükséges**|**Leírás**|
 |---|---|---|---|
-|location|string|Igen|Az Azure-régió, amelyhez a hívást kell átirányítani. További információkért lásd: [Azure-régiók és a Video Indexer](regions.md).|
-|accountId|string|Igen|A fiók globálisan egyedi azonosító|
-|accessToken|string|Igen|Hozzáférési jogkivonat (hatókör kell [fiók hozzáférési jogkivonatának](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)) hitelesíti a rendszer a hívást. Hozzáférési jogkivonatok 1 órán belül lejár.|
+|location|sztring|Igen|Az az Azure-régió, amelybe a hívást át kell irányítani. További információ: [Azure-régiók és video Indexer](regions.md).|
+|accountId|sztring|Igen|A fiók globálisan egyedi azonosítója|
+|accessToken|sztring|Igen|Hozzáférési jogkivonat (a hatókör- [fiók hozzáférési jogkivonatának](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)kell lennie) a híváshoz való hitelesítéshez. A hozzáférési tokenek 1 órán belül lejárnak.|
 
 ### <a name="request-body"></a>A kérés törzse
 
-Mellett ezeket a paramétereket meg kell adni a kérelem törzsében JSON-objektum, amely információt nyújt a formátuma a következő példa a következő új márka.
+Ezen paraméterek mellett meg kell adnia egy kérelem törzse JSON-objektumot is, amely az alábbi példa formátumát követve információt nyújt az új márkáról.
 
 ```json
 {
@@ -59,15 +59,15 @@ Mellett ezeket a paramétereket meg kell adni a kérelem törzsében JSON-objekt
 }
 ```
 
-Beállítás **engedélyezve** igaz helyezi a márka, a *Belefoglalás* lista a Video Indexer észleléséhez. Beállítás **engedélyezve** false értékre a márka helyezi a *kizárása* listájában, így a Video Indexer nem észleli.
+Ha a True (igaz) értékre **van** állítva, a rendszer az *include (Belefoglalás* ) listában a video Indexer az észleléshez. Ha a beállítás **engedélyezve van** , a False (hamis) értékre állítja a márka értékét a *kizárási* listán, így video Indexer nem fogja felderíteni.
 
-A **referenceUrl** érték lehet egy a Wikipédia-oldalának hivatkozása, például a márka referencia webhelyeket.
+A **referenceUrl** értéke a márka bármely olyan hivatkozási webhelye lehet, mint például a wikipedia oldalára mutató hivatkozás.
 
-A **címkék** értéke a márka címkék listája. Ez megjelenik-e a márka *kategória* mezőt a Video Indexer webhelyen. Például a márka "Azure" címkével ellátott is, vagy "Felhő" kategóriába.
+A **címkék** érték a márka címkéit sorolja fel. Ez a Video Indexer webhely márka *Kategória* mezőjében jelenik meg. Például az "Azure" márka címkézhető vagy kategorizálható "Cloud"-ként.
 
 ### <a name="response"></a>Válasz
 
-A válasz a márka, amely az újonnan létrehozott az alábbi példa formátuma a következő információkat biztosít.
+A válasz információt nyújt az imént létrehozott márkáról az alábbi példa formátuma alapján.
 
 ```json
 {
@@ -87,9 +87,9 @@ A válasz a márka, amely az újonnan létrehozott az alábbi példa formátuma 
 }
 ```
 
-## <a name="delete-a-brand"></a>Egy adott Márkához törlése
+## <a name="delete-a-brand"></a>Márka törlése
 
-Egy adott márkához eltávolítja a megadott fiók egyéni márkái modellből. A fiók szerepel a **accountId** paraméter. Miután sikeresen nevű, a márka már nem található a *Belefoglalás* vagy *kizárása* védjegyzéssel listák.
+Eltávolít egy márkát az egyéni márkák modelljéből a megadott fiókhoz. A fiók a **accountId** paraméterben van megadva. A sikeres hívás után a márka már nem *szerepel a* Brands *(márkák)* listában.
 
 ### <a name="request-url"></a>Kérés URL-címe
 
@@ -97,28 +97,28 @@ Egy adott márkához eltávolítja a megadott fiók egyéni márkái modellből.
 https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Brands/{id}?accessToken={accessToken}
 ```
 
-[Tekintse meg a szükséges paramétereket, és a Video Indexer fejlesztői portál használatával kipróbálásához](https://api-portal.videoindexer.ai/docs/services/operations/operations/Delete-Brand?).
+[Tekintse meg a szükséges paramétereket, és tesztelje a video Indexer fejlesztői portálon](https://api-portal.videoindexer.ai/docs/services/operations/operations/Delete-Brand?).
 
-### <a name="request-parameters"></a>A kérés paraméterei
+### <a name="request-parameters"></a>Kérelmek paramétereinek megadása
 
-|**Name (Név)**|**Típus**|**Kötelező**|**Leírás**|
+|**Name (Név)**|**Típus**|**Szükséges**|**Leírás**|
 |---|---|---|---|
-|location|string|Igen|Az Azure-régió, amelyhez a hívást kell átirányítani. További információkért lásd: [Azure-régiók és a Video Indexer](regions.md).|
-|accountId|string|Igen|A fiók globálisan egyedi azonosító|
-|id|egész szám|Igen|A márkaazonosító (jönnek létre, ha a márka lett létrehozva)|
-|accessToken|string|Igen|Hozzáférési jogkivonat (hatókör kell [fiók hozzáférési jogkivonatának](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)) hitelesíti a rendszer a hívást. Hozzáférési jogkivonatok 1 órán belül lejár.|
+|location|sztring|Igen|Az az Azure-régió, amelybe a hívást át kell irányítani. További információ: [Azure-régiók és video Indexer](regions.md).|
+|accountId|sztring|Igen|A fiók globálisan egyedi azonosítója|
+|id|egész szám|Igen|A márka azonosítója (amelyet a rendszer a márka létrehozásakor generált)|
+|accessToken|sztring|Igen|Hozzáférési jogkivonat (a hatókör- [fiók hozzáférési jogkivonatának](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)kell lennie) a híváshoz való hitelesítéshez. A hozzáférési tokenek 1 órán belül lejárnak.|
 
 ### <a name="request-body"></a>A kérés törzse
 
-További az e híváshoz szükséges a kérelem törzsében.
+Ehhez a híváshoz nem szükséges további kérelem törzse.
 
 ### <a name="response"></a>Válasz
 
-Nincs visszaadott tartalom van, amikor a márka törlése sikerült.
+A márka törlését követően a rendszer nem adott vissza tartalmat.
 
-## <a name="get-a-specific-brand"></a>Egy adott márkájú beolvasása
+## <a name="get-a-specific-brand"></a>Adott márka beszerzése
 
-Ez lehetővé teszi, keresse meg az egyéni márkái modell a megadott fiók használatával a márkaazonosító fórummárka részleteit.
+Így a márka azonosítójának használatával megkeresheti az egyéni márkák modellben lévő márka részleteit a megadott fiókhoz.
 
 ### <a name="request-url"></a>Kérés URL-címe
 
@@ -126,24 +126,24 @@ Ez lehetővé teszi, keresse meg az egyéni márkái modell a megadott fiók has
 https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Brands?accessToken={accessToken}
 ```
 
-[Tekintse meg a szükséges paramétereket, és a Video Indexer fejlesztői portál használatával kipróbálásához](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Brand?).
+[Tekintse meg a szükséges paramétereket, és tesztelje a video Indexer fejlesztői portálon](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Brand?).
 
-### <a name="request-parameters"></a>A kérés paraméterei
+### <a name="request-parameters"></a>Kérelmek paramétereinek megadása
 
-|**Name (Név)**|**Típus**|**Kötelező**|**Leírás**|
+|**Name (Név)**|**Típus**|**Szükséges**|**Leírás**|
 |---|---|---|---|
-|location|string|Igen|Az Azure-régió, amelyhez a hívást kell átirányítani. További információkért lásd: [Azure-régiók és a Video Indexer](regions.md).|
-|accountId|string|Igen|A fiók globálisan egyedi azonosító|
-|id|egész szám|Igen|A Márkaazonosító (jönnek létre, ha a márka lett létrehozva)|
-|accessToken|string|Igen|Hozzáférési jogkivonat (hatókör kell [fiók hozzáférési jogkivonatának](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)) hitelesíti a rendszer a hívást. Hozzáférési jogkivonatok 1 órán belül lejár.|
+|location|sztring|Igen|Az az Azure-régió, amelybe a hívást át kell irányítani. További információ: [Azure-régiók és video Indexer](regions.md).|
+|accountId|sztring|Igen|A fiók globálisan egyedi azonosítója|
+|id|egész szám|Igen|A márka azonosítója (amelyet a rendszer a márka létrehozásakor generált)|
+|accessToken|sztring|Igen|Hozzáférési jogkivonat (a hatókör- [fiók hozzáférési jogkivonatának](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)kell lennie) a híváshoz való hitelesítéshez. A hozzáférési tokenek 1 órán belül lejárnak.|
 
 ### <a name="request-body"></a>A kérés törzse
 
-További az e híváshoz szükséges a kérelem törzsében.
+Ehhez a híváshoz nem szükséges további kérelem törzse.
 
 ### <a name="response"></a>Válasz
 
-A válasz a márka (használatával Márkaazonosító) keres tájékoztatást nyújt az alábbi példa formátuma a következő.
+A válasz az alábbi példa formátumát követve információt nyújt a keresett márkáról (a márka AZONOSÍTÓjának használatával).
 
 ```json
 {
@@ -164,11 +164,11 @@ A válasz a márka (használatával Márkaazonosító) keres tájékoztatást ny
 ```
 
 > [!NOTE]
-> **engedélyezve** beállítása **igaz** jelzi, hogy a márka szerepel a *Belefoglalás* lista a Video Indexer észleléséhez és **engedélyezve** folyamatban van a False (hamis), amely jelzi a márka szerepel a *kizárása* listájában, így a Video Indexer nem észleli.
+> Ha az értéke **true (igaz** ) értékre van állítva, az azt jelenti, hogy a márka szerepel a *befoglalási* listán a video Indexer észleléséhez, és a hamis értékre való **engedélyezése** azt jelzi, hogy a márka szerepel a *kizárási* listán, így video Indexer nem fogja felderíteni.
 
-## <a name="update-a-specific-brand"></a>Egy adott márkájú frissítése
+## <a name="update-a-specific-brand"></a>Adott márka frissítése
 
-Ez lehetővé teszi, keresse meg a megadott fiók azonosítójával a márka egyéni márkái modellben egy adott márkához részletei
+Így a márka AZONOSÍTÓjának használatával megkeresheti az egyéni márkák modellben lévő márka részleteit a megadott fiókhoz.
 
 ### <a name="request-url"></a>Kérés URL-címe
 
@@ -176,20 +176,20 @@ Ez lehetővé teszi, keresse meg a megadott fiók azonosítójával a márka egy
 https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Brands/{id}?accessToken={accessToken}
 ```
 
-[Tekintse meg a szükséges paramétereket, és a Video Indexer fejlesztői portál használatával kipróbálásához](https://api-portal.videoindexer.ai/docs/services/operations/operations/Update-Brand?).
+[Tekintse meg a szükséges paramétereket, és tesztelje a video Indexer fejlesztői portálon](https://api-portal.videoindexer.ai/docs/services/operations/operations/Update-Brand?).
 
-### <a name="request-parameters"></a>A kérés paraméterei
+### <a name="request-parameters"></a>Kérelmek paramétereinek megadása
 
-|**Name (Név)**|**Típus**|**Kötelező**|**Leírás**|
+|**Name (Név)**|**Típus**|**Szükséges**|**Leírás**|
 |---|---|---|---|
-|location|string|Igen|Az Azure-régió, amelyhez a hívást kell átirányítani. További információkért lásd: [Azure-régiók és a Video Indexer](regions.md).|
-|accountId|string|Igen|A fiók globálisan egyedi azonosító|
-|id|egész szám|Igen|A Márkaazonosító (jönnek létre, ha a márka lett létrehozva)|
-|accessToken|string|Igen|Hozzáférési jogkivonat (hatókör kell [fiók hozzáférési jogkivonatának](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)) hitelesíti a rendszer a hívást. Hozzáférési jogkivonatok 1 órán belül lejár.|
+|location|sztring|Igen|Az az Azure-régió, amelybe a hívást át kell irányítani. További információ: [Azure-régiók és video Indexer](regions.md).|
+|accountId|sztring|Igen|A fiók globálisan egyedi azonosítója|
+|id|egész szám|Igen|A márka azonosítója (amelyet a rendszer a márka létrehozásakor generált)|
+|accessToken|sztring|Igen|Hozzáférési jogkivonat (a hatókör- [fiók hozzáférési jogkivonatának](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)kell lennie) a híváshoz való hitelesítéshez. A hozzáférési tokenek 1 órán belül lejárnak.|
 
 ### <a name="request-body"></a>A kérés törzse
 
-Ezeket a paramétereket, valamint meg kell adnia a kérelem törzsében JSON-objektum által biztosított frissített adatokat a márka, amely az alábbi példa formátuma a következő frissíteni szeretné a.
+Ezen paraméterek mellett meg kell adnia egy kérelem törzse JSON-objektumot, amely naprakész információkat biztosít a frissíteni kívánt márkáról az alábbi példa formátuma alapján.
 
 ```json
 {
@@ -205,11 +205,11 @@ Ezeket a paramétereket, valamint meg kell adnia a kérelem törzsében JSON-obj
 ```
 
 > [!NOTE]
-> Ebben a példában a márka, a kérés törzsében példa a létrehozott a **hozzon létre egy adott Márkához** szakasz frissítése folyamatban van itt egy új címkét, és új leírása. A **engedélyezve** értéke is megváltozott hamis értékre helyezni, a *kizárása* listája.
+> Ebben a példában a márka **létrehozása** szakasz példa kérés törzsében létrehozott márka új címkével és új leírással frissül. Az **engedélyezett** érték hamisra módosult, hogy a *kizárási* listára kerüljön.
 
 ### <a name="response"></a>Válasz
 
-A válasz a márka, az alábbi példa formátuma a következő frissített a frissített információkat biztosít.
+A válasz az alábbi példa formátumát követve frissített információt nyújt a frissített adatokról.
 
 ```json
 {
@@ -229,9 +229,9 @@ A válasz a márka, az alábbi példa formátuma a következő frissített a fri
 }
 ```
 
-## <a name="get-all-of-the-brands"></a>Mindezt a márka
+## <a name="get-all-of-the-brands"></a>Az összes márka beszerzése
 
-Ez ad vissza, a márka mindegyikét az egyéni márkái modell, függetlenül attól, hogy a márka szinkronban kell lennie a megadott fiók a *Belefoglalás* vagy *kizárása* márkájú-listában.
+Ez visszaadja az egyéni márkák modellben lévő összes márkát a megadott fiókhoz, függetlenül attól, hogy a márka a *befoglalási* vagy *kizárási* márkák listájában szerepel-e.
 
 ### <a name="request-url"></a>Kérés URL-címe
 
@@ -239,23 +239,23 @@ Ez ad vissza, a márka mindegyikét az egyéni márkái modell, függetlenül at
 https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Brands?accessToken={accessToken}
 ```
 
-[Tekintse meg a szükséges paramétereket, és a Video Indexer fejlesztői portál használatával kipróbálásához](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Brands?).
+[Tekintse meg a szükséges paramétereket, és tesztelje a video Indexer fejlesztői portálon](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Brands?).
 
-### <a name="request-parameters"></a>A kérés paraméterei
+### <a name="request-parameters"></a>Kérelmek paramétereinek megadása
 
-|**Name (Név)**|**Típus**|**Kötelező**|**Leírás**|
+|**Name (Név)**|**Típus**|**Szükséges**|**Leírás**|
 |---|---|---|---|
-|location|string|Igen|Az Azure-régió, amelyhez a hívást kell átirányítani. További információkért lásd: [Azure-régiók és a Video Indexer](regions.md).|
-|accountId|string|Igen|A fiók globálisan egyedi azonosító|
-|accessToken|string|Igen|Hozzáférési jogkivonat (hatókör kell [fiók hozzáférési jogkivonatának](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)) hitelesíti a rendszer a hívást. Hozzáférési jogkivonatok 1 órán belül lejár.|
+|location|sztring|Igen|Az az Azure-régió, amelybe a hívást át kell irányítani. További információ: [Azure-régiók és video Indexer](regions.md).|
+|accountId|sztring|Igen|A fiók globálisan egyedi azonosítója|
+|accessToken|sztring|Igen|Hozzáférési jogkivonat (a hatókör- [fiók hozzáférési jogkivonatának](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)kell lennie) a híváshoz való hitelesítéshez. A hozzáférési tokenek 1 órán belül lejárnak.|
 
 ### <a name="request-body"></a>A kérés törzse
 
-További az e híváshoz szükséges a kérelem törzsében.
+Ehhez a híváshoz nem szükséges további kérelem törzse.
 
 ### <a name="response"></a>Válasz
 
-A válasz a márka, a fiókban lévő összes és azok adatai az alábbi példa formátuma a következő mindegyike listáját tartalmazza.
+A válasz tartalmazza a fiókban lévő összes márka listáját, és az alábbi példa formátumát követve mindegyik részletet.
 
 ```json
 [
@@ -287,11 +287,11 @@ A válasz a márka, a fiókban lévő összes és azok adatai az alábbi példa 
 ```
 
 > [!NOTE]
-> A márka nevű *példa* szerepel a *Belefoglalás* a Video Indexer észleléséhez és a márka nevű lista *példa2* szerepel a *kizárása* listája , így a Video Indexer nem észleli.
+> A *példaként* megadott márka a *befoglalások* listájában szerepel a video Indexer észleléséhez, és a *pelda2* nevű márka a *kizárási* listán szerepel, így video Indexer nem fogja felderíteni.
 
-## <a name="get-brands-model-settings"></a>Márkái modell beállításainak lekérése
+## <a name="get-brands-model-settings"></a>A Brands modell beállításainak beolvasása
 
-Ez a megadott fiókot a márka modelljének beállításait adja vissza. A modellbeállítások a márka jelölik, a Bing márkái adatbázisból észlelés engedélyezve van-e. A Bing márkái nincs engedélyezve, ha a Video Indexer csak észleli márka egyéni márkái modellből a megadott fiók.
+Ez a beállítás a márkák modell beállításait adja vissza a megadott fiókban. A márkák modell beállításai azt jelzik, hogy engedélyezve van-e a Bing Brands adatbázisának észlelése. Ha a Bing-márkák nincsenek engedélyezve, a Video Indexer csak a megadott fiók egyéni márkák modelljéből származó márkákat fogja felderíteni.
 
 ### <a name="request-url"></a>Kérés URL-címe
 
@@ -299,23 +299,23 @@ Ez a megadott fiókot a márka modelljének beállításait adja vissza. A model
 https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Brands?accessToken={accessToken}
 ```
 
-[Tekintse meg a szükséges paramétereket, és a Video Indexer fejlesztői portál használatával kipróbálásához](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Brands).
+[Tekintse meg a szükséges paramétereket, és tesztelje a video Indexer fejlesztői portálon](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Brands).
 
-### <a name="request-parameters"></a>A kérés paraméterei
+### <a name="request-parameters"></a>Kérelmek paramétereinek megadása
 
-|**Name (Név)**|**Típus**|**Kötelező**|**Leírás**|
+|**Name (Név)**|**Típus**|**Szükséges**|**Leírás**|
 |---|---|---|---|
-|location|string|Igen|Az Azure-régió, amelyhez a hívást kell átirányítani. További információkért lásd: [Azure-régiók és a Video Indexer](regions.md).|
-|accountId|string|Igen|A fiók globálisan egyedi azonosító|
-|accessToken|string|Igen|Hozzáférési jogkivonat (hatókör kell [fiók hozzáférési jogkivonatának](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)) hitelesíti a rendszer a hívást. Hozzáférési jogkivonatok 1 órán belül lejár.|
+|location|sztring|Igen|Az az Azure-régió, amelybe a hívást át kell irányítani. További információ: [Azure-régiók és video Indexer](regions.md).|
+|accountId|sztring|Igen|A fiók globálisan egyedi azonosítója|
+|accessToken|sztring|Igen|Hozzáférési jogkivonat (a hatókör- [fiók hozzáférési jogkivonatának](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)kell lennie) a híváshoz való hitelesítéshez. A hozzáférési tokenek 1 órán belül lejárnak.|
 
 ### <a name="request-body"></a>A kérés törzse
 
-További az e híváshoz szükséges a kérelem törzsében.
+Ehhez a híváshoz nem szükséges további kérelem törzse.
 
 ### <a name="response"></a>Válasz
 
-A válaszból kiderül, hogy a Bing márkái engedélyezve lettek-e az alábbi példa formátuma a következő.
+A válasz azt jelzi, hogy a Bing márkák engedélyezve vannak-e az alábbi példa formátuma szerint.
 
 ```json
 {
@@ -325,30 +325,30 @@ A válaszból kiderül, hogy a Bing márkái engedélyezve lettek-e az alábbi p
 ```
 
 > [!NOTE]
-> **useBuiltIn** alatt állítsa true jelöli, hogy a Bing márkái engedélyezve vannak. Ha *useBuiltin* van false (hamis), a Bing márkái le vannak tiltva. A **állapot** értéket figyelmen kívül hagyható, már elavult.
+> a **useBuiltIn** értéke TRUE (igaz) értékre van állítva, hogy a Bing-márkák engedélyezve vannak. Ha a *useBuiltin* hamis, a Bing-márkák le vannak tiltva. Az **állapot** értéke figyelmen kívül hagyható, mert elavult.
 
-## <a name="update-brands-model-settings"></a>Márkái modell beállításainak frissítése
+## <a name="update-brands-model-settings"></a>A Brands modell beállításainak frissítése
 
-Ez frissíti a megadott fiók márkái modell beállításait. A modellbeállítások a márka jelölik, a Bing márkái adatbázisból észlelés engedélyezve van-e. A Bing márkái nincs engedélyezve, ha a Video Indexer csak észleli márka egyéni márkái modellből a megadott fiók.
+Ezzel frissíti a márkák modell beállításait a megadott fiókban. A márkák modell beállításai azt jelzik, hogy engedélyezve van-e a Bing Brands adatbázisának észlelése. Ha a Bing-márkák nincsenek engedélyezve, a Video Indexer csak a megadott fiók egyéni márkák modelljéből származó márkákat fogja felderíteni.
 
 ### <a name="request-url"></a>Kérelem URL-címe:
 ```
 https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/BrandsModelSettings?accessToken={accessToken}
 ```
 
-[Tekintse meg a szükséges paramétereket, és a Video Indexer fejlesztői portál használatával kipróbálásához](https://api-portal.videoindexer.ai/docs/services/operations/operations/Update-Brands-Model-Settings?).
+[Tekintse meg a szükséges paramétereket, és tesztelje a video Indexer fejlesztői portálon](https://api-portal.videoindexer.ai/docs/services/operations/operations/Update-Brands-Model-Settings?).
 
-### <a name="request-parameters"></a>A kérés paraméterei
+### <a name="request-parameters"></a>Kérelmek paramétereinek megadása
 
-|**Name (Név)**|**Típus**|**Kötelező**|**Leírás**|
+|**Name (Név)**|**Típus**|**Szükséges**|**Leírás**|
 |---|---|---|---|
-|location|string|Igen|Az Azure-régió, amelyhez a hívást kell átirányítani. További információkért lásd: [Azure-régiók és a Video Indexer](regions.md).|
-|accountId|string|Igen|A fiók globálisan egyedi azonosító|
-|accessToken|string|Igen|Hozzáférési jogkivonat (hatókör kell [fiók hozzáférési jogkivonatának](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)) hitelesíti a rendszer a hívást. Hozzáférési jogkivonatok 1 órán belül lejár.|
+|location|sztring|Igen|Az az Azure-régió, amelybe a hívást át kell irányítani. További információ: [Azure-régiók és video Indexer](regions.md).|
+|accountId|sztring|Igen|A fiók globálisan egyedi azonosítója|
+|accessToken|sztring|Igen|Hozzáférési jogkivonat (a hatókör- [fiók hozzáférési jogkivonatának](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)kell lennie) a híváshoz való hitelesítéshez. A hozzáférési tokenek 1 órán belül lejárnak.|
 
 ### <a name="request-body"></a>A kérés törzse
 
-Mellett ezeket a paramétereket meg kell adni a kérelem törzsében JSON-objektum, amely információt nyújt a formátuma a következő példa a következő új márka.
+Ezen paraméterek mellett meg kell adnia egy kérelem törzse JSON-objektumot is, amely az alábbi példa formátumát követve információt nyújt az új márkáról.
 
 ```json
 {
@@ -357,12 +357,12 @@ Mellett ezeket a paramétereket meg kell adni a kérelem törzsében JSON-objekt
 ```
 
 > [!NOTE]
-> **useBuiltIn** alatt állítsa true jelöli, hogy a Bing márkái engedélyezve vannak. Ha *useBuiltin* van false (hamis), a Bing márkái le vannak tiltva.
+> a **useBuiltIn** értéke TRUE (igaz) értékre van állítva, hogy a Bing-márkák engedélyezve vannak. Ha a *useBuiltin* hamis, a Bing-márkák le vannak tiltva.
 
 ### <a name="response"></a>Válasz
 
-Nincs visszaadott tartalom van, amikor a márka modell beállítás frissítése sikerült.
+A Brands modell beállításának frissítése nem történt meg a visszaadott tartalomban.
 
 ## <a name="next-steps"></a>További lépések
 
-[Webhely segítségével márkái modell testreszabása](customize-brands-model-with-website.md)
+[A Brands modell testreszabása webhely használatával](customize-brands-model-with-website.md)

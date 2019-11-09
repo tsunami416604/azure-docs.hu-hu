@@ -1,7 +1,7 @@
 ---
 title: Migrálás v3-Translator Text API
 titleSuffix: Azure Cognitive Services
-description: Megtudhatja, hogyan telepíthet át a v2-ről a Translator Text APIre.
+description: Ez a cikk azokat a lépéseket ismerteti, amelyek segítséget nyújtanak a v2-ről az Azure Cognitive Services Translator Text API-ra való Migrálás során.
 services: cognitive-services
 author: swmachan
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 02/01/2019
 ms.author: swmachan
-ms.openlocfilehash: 9ce9dc330ec1b0c32ce045437fadb5d8c191529e
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: eb43d549d3e0cd449c865d533fc8701c4c3912fd
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68595245"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73837312"
 ---
 # <a name="translator-text-api-v2-to-v3-migration"></a>Translator Text API v2 – v3 Migrálás
 
@@ -61,7 +61,7 @@ A v2 és v3 metódusok következő listája a v2-vel kapott funkciókat biztosí
 
 A Microsoft Translator Text Translation v2 XML formátumban fogadta el és adta vissza az értékeket. A v3-as verzióban az API használatával küldött és fogadott összes adatfájl JSON formátumban van. Az XML-fájl már nem fogadható el, vagy nem ad vissza a v3-as verzióban.
 
-Ez a módosítás a v2 Text Translation API-hoz írt alkalmazások számos aspektusát érinti. Példa: A languages API nyelvi adatokat ad vissza a szöveg fordításához, az íráshoz és a két szótári módszerhez. Egy hívásban az összes metódushoz kérheti az összes nyelvi információt, vagy egyenként is megkérheti őket.
+Ez a módosítás a v2 Text Translation API-hoz írt alkalmazások számos aspektusát érinti. Példa: a languages API a szöveg fordítását, az írást és a két szótár módszereit adja vissza. Egy hívásban az összes metódushoz kérheti az összes nyelvi információt, vagy egyenként is megkérheti őket.
 
 A languages metódus nem igényel hitelesítést; a következő hivatkozásra kattintva megtekintheti az összes nyelvi információt a (z) v3 verziójában a JSON-ban:
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/16/2018
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 12976e2b2dd37b640efe1823fc8d2ca7048ebcdb
-ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
+ms.openlocfilehash: 005e93837d1d420526f6fb33e79d25a94da6fab7
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73097366"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73838529"
 ---
 # <a name="troubleshoot-azure-files-problems-in-linux"></a>A Linux Azure Files problémáinak elhárítása
 
@@ -60,7 +60,7 @@ A probléma megoldásához használja a [hibaelhárítási eszközt a Azure File
 
 Biztonsági okokból az Azure-fájlmegosztásokhoz való kapcsolódás le van tiltva, ha a kommunikációs csatorna nincsen titkosítva, vagy ha a csatlakozási kísérlet nem ugyanabból az adatközpontból történik, ahol az Azure-fájlmegosztások találhatók. Az ugyanazon adatközponton belüli titkosítatlan kapcsolatokat akkor is blokkolhatja a rendszer, ha a tárfiókban engedélyezve van a [Biztonságos átvitelre van szükség](https://docs.microsoft.com/azure/storage/common/storage-require-secure-transfer) beállítás. Csak akkor biztosítható titkosított kommunikációs csatorna, ha a felhasználó ügyfél operációs rendszere támogatja az SMB-titkosítást.
 
-További információ: [Azure-fájlmegosztás Linux és a cifs-utils csomag használatával történő csatlakoztatásának előfeltételei](https://docs.microsoft.com/azure/storage/files/storage-how-to-use-files-linux#prerequisites-for-mounting-an-azure-file-share-with-linux-and-the-cifs-utils-package). 
+További információ: [Azure-fájlmegosztás Linux és a cifs-utils csomag használatával történő csatlakoztatásának előfeltételei](storage-how-to-use-files-linux.md#prerequisites). 
 
 ### <a name="solution-for-cause-1"></a>Megoldás az 1. ok esetén
 
@@ -111,7 +111,7 @@ Egy fájlmegosztás, könyvtár vagy fájl megnyitott leíróinak bezárásához
     - Nyílt forráskódú, külső gyártótól származó eszközök, például:
         - [GNU Parallel](https://www.gnu.org/software/parallel/).
         - [Fpart](https://github.com/martymac/fpart) – fájlokat rendez, és partícióba csomagolja őket.
-        - [Fpsync](https://github.com/martymac/fpart/blob/master/tools/fpsync) – a Fpart és a másolási eszköz használatával több példányt is elindíthat, hogy áttelepítse a src_dir-ről a dst_url-re.
+        - [Fpsync](https://github.com/martymac/fpart/blob/master/tools/fpsync) – a Fpart és a másolási eszköz használatával több példányt is áttelepíthet az adatok src_dirról dst_urlba.
         - [Több](https://github.com/pkolano/mutil) szálat összefűzött CP-és md5sum GNU-coreutils alapján.
 - Ha előre állítja be a fájl méretét, ahelyett, hogy minden írási kiterjesztést ír, a segít a másolási sebesség javításában olyan helyzetekben, ahol ismert a fájl mérete. Ha az írások kiterjesztését el kell kerülni, megadhatja a célfájl méretét `truncate - size <size><file>` paranccsal. Ezt követően a `dd if=<source> of=<target> bs=1M conv=notrunc`parancs a forrásfájl méretének ismételt frissítése nélkül másolja a forrásfájlt. Megadhatja például a célfájl méretét a másolni kívánt összes fájlhoz (tegyük fel, hogy a megosztás a/mnt/Share alatt van csatlakoztatva):
     - `$ for i in `` find * -type f``; do truncate --size ``stat -c%s $i`` /mnt/share/$i; done`
@@ -289,6 +289,6 @@ Azonban előfordulhat, hogy ezen módosítások még nem mindegyike lett portolv
 
 Ha nem tud frissíteni a legújabb kernelverziókra, áthidaló megoldásként létrehozhat egy fájlt az Azure-fájlmegosztásban, amelybe legfeljebb 30 másodpercenként ír. Ennek mindenképpen írási műveletnek kell lennie, például a fájl létrehozási vagy módosítási dátumának átírásának. Ellenkező esetben gyorsítótárazott eredményeket kaphat, így előfordulhat, hogy a művelet nem vált ki újracsatlakozást.
 
-## <a name="need-help-contact-support"></a>Segítség Vegye fel a kapcsolatot az ügyfélszolgálattal.
+## <a name="need-help-contact-support"></a>Segítségre van szüksége? Vegye fel a kapcsolatot az ügyfélszolgálattal.
 
 Ha továbbra is segítségre van szüksége, [forduljon az ügyfélszolgálathoz](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) , és kérje meg a probléma gyors megoldását.

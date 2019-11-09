@@ -11,12 +11,12 @@ ms.date: 07/17/2019
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 5ae6844cf11ffa095f56c429e17b9c39ad0c76aa
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 5272d9aa77f78d0cef316f9f227f9e269ab7e186
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/08/2019
-ms.locfileid: "73822918"
+ms.locfileid: "73839900"
 ---
 # <a name="tutorial-load-data-to-azure-sql-data-warehouse"></a>Oktatóanyag: Adatok betöltése az Azure SQL Data Warehouse-ba
 
@@ -35,13 +35,13 @@ Ez az oktatóanyag a PolyBase segítségével tölti be a WideWorldImportersDW a
 
 Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
 
-## <a name="before-you-begin"></a>Előkészületek
+## <a name="before-you-begin"></a>Előzetes teendők
 
 Az oktatóanyag megkezdése előtt töltse le és telepítse az [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) (SSMS) legújabb verzióját.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Jelentkezzen be az Azure Portalra
 
-Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
+Bejelentkezés az [Azure Portalra](https://portal.azure.com/).
 
 ## <a name="create-a-blank-sql-data-warehouse"></a>Üres SQL Data Warehouse létrehozása
 
@@ -61,7 +61,7 @@ Az alábbi lépéseket követve hozzon létre egy üres SQL Data Warehouse.
    | ------- | --------------- | ----------- | 
    | **Adatbázis neve** | SampleDW | Az érvényes adatbázisnevekkel kapcsolatban lásd az [adatbázis-azonosítókat](/sql/relational-databases/databases/database-identifiers) ismertető cikket. | 
    | **Előfizetés** | Az Ön előfizetése  | Az előfizetései részleteivel kapcsolatban lásd az [előfizetéseket](https://account.windowsazure.com/Subscriptions) ismertető cikket. |
-   | **Erőforráscsoport** | SampleRG | Az érvényes erőforráscsoport-nevekkel kapcsolatban lásd az [elnevezési szabályokat és korlátozásokat](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging) ismertető cikket. |
+   | **Erőforráscsoport** | SampleRG | Az érvényes erőforráscsoport-nevekkel kapcsolatban lásd az [elnevezési szabályokat és korlátozásokat](/azure/architecture/best-practices/resource-naming) ismertető cikket. |
    | **Forrás kiválasztása** | Üres adatbázis | Megköveteli egy üres adatbázis létrehozását. Megjegyzés: Az adattárház az adatbázisok egy típusa.|
 
     ![adattárház létrehozása](media/load-data-wideworldimportersdw/create-data-warehouse.png)
@@ -70,7 +70,7 @@ Az alábbi lépéseket követve hozzon létre egy üres SQL Data Warehouse.
 
     | Beállítás | Ajánlott érték | Leírás | 
     | ------- | --------------- | ----------- |
-    | **Kiszolgálónév** | Bármely globálisan egyedi név | Az érvényes kiszolgálónevekkel kapcsolatban lásd az [elnevezési szabályokat és korlátozásokat](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging) ismertető cikket. | 
+    | **Kiszolgálónév** | Bármely globálisan egyedi név | Az érvényes kiszolgálónevekkel kapcsolatban lásd az [elnevezési szabályokat és korlátozásokat](/azure/architecture/best-practices/resource-naming) ismertető cikket. | 
     | **Kiszolgálói rendszergazdai bejelentkezés** | Bármely érvényes név | Az érvényes bejelentkezési nevekkel kapcsolatban lásd az [adatbázis-azonosítókat](https://docs.microsoft.com/sql/relational-databases/databases/database-identifiers) ismertető cikket.|
     | **Jelszó** | Bármely érvényes jelszó | A jelszónak legalább nyolc karakter hosszúságúnak kell lennie, és tartalmaznia kell karaktereket a következő kategóriák közül legalább háromból: nagybetűs karakterek, kisbetűs karakterek, számjegyek és nem alfanumerikus karakterek. |
     | **Hely** | Bármely érvényes hely | A régiókkal kapcsolatos információkért lásd [az Azure régióit](https://azure.microsoft.com/regions/) ismertető cikket. |
@@ -133,7 +133,7 @@ Mostantól csatlakozhat az SQL-kiszolgálóhoz és annak adattárházaihoz errő
 
 Kérje le az SQL-kiszolgáló teljes kiszolgálónevét az Azure Portalon. Később ezt a teljes nevet fogja majd használni a kiszolgálóhoz való kapcsolódás során.
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
+1. Bejelentkezés az [Azure Portalra](https://portal.azure.com/).
 2. Válassza az **SQL-adatbázisok** elemet a bal oldali menüben, majd kattintson az új adatbázisra az **SQL-adatbázisok** oldalon. 
 3. Az Azure Portalon az adatbázishoz tartozó lap **Alapvető erőforrások** ablaktábláján keresse meg, majd másolja ki a **Kiszolgáló nevét**. Ebben a példában a teljes név a következő: mynewserver-20171113.database.windows.net. 
 
@@ -151,7 +151,7 @@ Ebben a részben az [SQL Server Management Studio](/sql/ssms/download-sql-server
     | ------------ | --------------- | ----------- | 
     | Kiszolgáló típusa | Adatbázismotor | Kötelezően megadandó érték |
     | Kiszolgálónév | A teljes kiszolgálónév | A **sample-svr.database.windows.net** például egy teljes kiszolgálónév. |
-    | Authentication | SQL Server-hitelesítés | Ebben az oktatóanyagban az SQL-hitelesítésen kívül más hitelesítéstípus nincs konfigurálva. |
+    | Hitelesítés | SQL Server-hitelesítés | Ebben az oktatóanyagban az SQL-hitelesítésen kívül más hitelesítéstípus nincs konfigurálva. |
     | Bejelentkezés | A kiszolgálói rendszergazdai fiók | Ez az a fiók, amely a kiszolgáló létrehozásakor lett megadva. |
     | Jelszó | A kiszolgálói rendszergazdai fiók jelszava | Ez az a jelszó, amely a kiszolgáló létrehozásakor lett megadva. |
 

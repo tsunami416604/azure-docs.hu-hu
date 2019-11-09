@@ -1,6 +1,6 @@
 ---
 title: Modell előkészítése üzembe helyezéshez
-titleSuffix: ML Studio (classic) Azure
+titleSuffix: ML Studio (classic) - Azure
 description: Hogyan készítse elő a betanított modellt webszolgáltatásként való üzembe helyezésre, ha átalakítja a Machine Learning Studio (klasszikus) betanítási kísérletet egy prediktív kísérletbe.
 services: machine-learning
 ms.service: machine-learning
@@ -9,12 +9,12 @@ ms.topic: conceptual
 author: xiaoharper
 ms.author: amlstudiodocs
 ms.date: 03/28/2017
-ms.openlocfilehash: e24393783dac0f918009f3138f31bdda98bbd22e
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 4b07150ac9f35085763786c505d3d746428a542b
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73684859"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73839673"
 ---
 # <a name="how-to-prepare-your-model-for-deployment-in-azure-machine-learning-studio-classic"></a>Modell előkészítése a Azure Machine Learning Studio (klasszikus) üzembe helyezéséhez
 

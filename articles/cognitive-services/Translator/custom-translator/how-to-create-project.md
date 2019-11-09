@@ -1,7 +1,7 @@
 ---
-title: Projekt létrehozása -Egyéni a fordítót
+title: Projekt létrehozása – egyéni fordító
 titleSuffix: Azure Cognitive Services
-description: Hogyan lehet projektet létrehozni az egyéni fordítóban?
+description: Ez a cikk bemutatja, hogyan hozhat létre és kezelhet egy projektet az Azure Cognitive Services Custom Translator szolgáltatásban.
 author: swmachan
 manager: nitinme
 ms.service: cognitive-services
@@ -9,12 +9,12 @@ ms.subservice: translator-text
 ms.date: 02/21/2019
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: a62cc6133fe01bf7478166c526e32b3215ceebf1
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 5b3a6f2e903d8178554b7a076ae1277633569353
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68595752"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73836568"
 ---
 # <a name="create-a-project"></a>Projekt létrehozása
 
@@ -30,17 +30,17 @@ A projekt létrehozása az első lépés a modell felépítése felé.
 
 2.  Adja meg a következő adatokat a projekthez a párbeszédpanelen:
 
-    a.  Projekt neve (kötelező): Adjon egy egyedi, értelmes nevet a projektnek. A címben nem szükséges megemlíteni a nyelveket.
+    a.  Projekt neve (kötelező): adjon egy egyedi, értelmes nevet a projektnek. A címben nem szükséges megemlíteni a nyelveket.
 
-    b.  Leírás: A projekt rövid összefoglalása. Ez a leírás nem befolyásolja az egyéni fordító vagy az eredményül kapott egyénirendszer viselkedését, de segíthet a különböző projektek közötti különbségtételben.
+    b.  Leírás: rövid összefoglalás a projektről. Ez a leírás nem befolyásolja az egyéni fordító vagy az eredményül kapott egyénirendszer viselkedését, de segíthet a különböző projektek közötti különbségtételben.
 
-    c.  Nyelvi pár (kötelező): Válassza ki azt a nyelvet, amelynek a és a rendszerből való fordítását végzi.
+    c.  Nyelvi pár (kötelező): válassza ki azt a nyelvet, amelynek a és a rendszerből való fordítását végzi.
 
-    d.  Kategória (kötelező): Válassza ki a projektnek leginkább megfelelő kategóriát. A kategória a lefordítani kívánt dokumentumok terminológiáját és stílusát írja le.
+    d.  Kategória (kötelező): válassza ki a projektnek leginkább megfelelő kategóriát. A kategória a lefordítani kívánt dokumentumok terminológiáját és stílusát írja le.
 
-    e.  Kategória leírása: Ennek a mezőnek a segítségével jobban leírhatja az adott mezőt vagy iparágat, amelyben dolgozik. Ha például a kategóriája gyógyszert tartalmaz, hozzáadhat egy adott dokumentumot, például egy operációt vagy egy gyermekgyógyászati feladathoz. A leírás nem befolyásolja az egyéni fordító vagy az Ön által létrehozott egyéni rendszerek viselkedését.
+    e.  Kategória leírása: ebben a mezőben jobban leírhatja, hogy az adott mező vagy iparág hogyan működik. Ha például a kategóriája gyógyszert tartalmaz, hozzáadhat egy adott dokumentumot, például egy operációt vagy egy gyermekgyógyászati feladathoz. A leírás nem befolyásolja az egyéni fordító vagy az Ön által létrehozott egyéni rendszerek viselkedését.
 
-    f.  Projekt címkéje: A [projekt felirata](workspace-and-project.md#project-labels) megkülönbözteti a projekteket ugyanazzal a nyelvi párral és kategóriával. Ajánlott eljárásként *csak* akkor használjon címkét, ha több projektet szeretne felépíteni ugyanahhoz a nyelvi párra és kategóriára, és egy másik Kategóriakód használatával szeretné elérni ezeket a projekteket. Ne használja ezt a mezőt, ha csak egy kategóriához hoz létre rendszereket. Nem szükséges a projekt címkéje, és nem lehet különbséget tenni a nyelvi párok között. Ugyanazt a címkét több projekt esetében is használhatja.
+    f.  Projekt felirata: a [projekt felirata](workspace-and-project.md#project-labels) megkülönbözteti a projekteket ugyanazzal a nyelvi párral és kategóriával. Ajánlott eljárásként *csak* akkor használjon címkét, ha több projektet szeretne felépíteni ugyanahhoz a nyelvi párra és kategóriára, és egy másik Kategóriakód használatával szeretné elérni ezeket a projekteket. Ne használja ezt a mezőt, ha csak egy kategóriához hoz létre rendszereket. Nem szükséges a projekt címkéje, és nem lehet különbséget tenni a nyelvi párok között. Ugyanazt a címkét több projekt esetében is használhatja.
 
     ![Projekt létrehozása párbeszédpanel](media/how-to/how-to-create-project-dialog.png)
 
@@ -52,13 +52,13 @@ Az egyéni fordító kezdőlapja a munkaterület első 10 projektjét jeleníti 
 
 A projekt kiválasztása után a következő jelenik meg a projekt oldalon:
 
-- CategoryID A Kategóriakód létrehozása a munkaterület azonosítója, a projekt címkéjének és a kategória kódjának összefűzésével történik. A Kategóriakód és a Text Translator API használatával egyéni fordításokat kaphat.
+- Kategóriakód: A Kategóriakód létrehozása a munkaterület azonosítója, a projekt címkéjének és a kategória kódjának összefűzésével történik. A Kategóriakód és a Text Translator API használatával egyéni fordításokat kaphat.
 
-- Betanítás gomb: Ezzel a gombbal elindítható egy [modell képzése](how-to-train-model.md).
+- Betanítás gomb: ezzel a gombbal elindítható egy [modell képzése](how-to-train-model.md).
 
-- Dokumentumok hozzáadása gomb: Ezzel a gombbal [dokumentumokat tölthet fel](how-to-upload-document.md).
+- Dokumentumok hozzáadása gomb: ezzel a gombbal [tölthet fel dokumentumokat](how-to-upload-document.md).
 
-- Dokumentumok szűrése gomb: Ezzel a gombbal szűrheti és keresheti meg az adott dokumentum (oka) t.
+- Dokumentumok szűrése gomb: ezzel a gombbal szűrheti és keresheti meg az adott dokumentum (oka) t.
 
     ![Projekt részleteinek megtekintése](media/how-to/how-to-view-project.png)
 

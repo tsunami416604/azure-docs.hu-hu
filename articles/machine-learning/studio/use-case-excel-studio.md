@@ -1,6 +1,6 @@
 ---
 title: Elemzések áttelepítése Excelből
-titleSuffix: ML Studio (classic) Azure
+titleSuffix: ML Studio (classic) - Azure
 description: Lineáris regressziós modellek összehasonlítása Excelben és Azure Machine Learning Studio (klasszikus)
 services: machine-learning
 ms.service: machine-learning
@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/20/2017
-ms.openlocfilehash: 58ced0e08dc4cbc38f7fe41d01232bc158680dd0
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 5f4169753e653a1c6c82c997d37769d8548e76ff
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73693435"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73839440"
 ---
 # <a name="migrate-analytics-from-excel-to-azure-machine-learning-studio-classic"></a>Elemzések migrálása az Excelből a Azure Machine Learning Studioba (klasszikus)
 
@@ -54,8 +54,8 @@ Eleinte az Excel-modell egyértelműen felülmúlta a Studio (klasszikus) modell
 |  | Excel | Studio (klasszikus) |
 | --- |:---:|:---:|
 | Teljesítmény | | |
-| <ul style="list-style-type: none;"><li>Kiigazított R négyzet</li></ul> |0,96 |N/A |
-| <ul style="list-style-type: none;"><li>Együttható <br />Meghatározása</li></ul> |N/A |0,78<br />(kis pontosság) |
+| <ul style="list-style-type: none;"><li>Kiigazított R négyzet</li></ul> |0,96 |– |
+| <ul style="list-style-type: none;"><li>Együttható <br />Meghatározása</li></ul> |– |0,78<br />(kis pontosság) |
 | Abszolút átlagos hiba |9\.5 m USD |19.4 m USD |
 | Átlagos abszolút hiba (%) |6,03% |12,2% |
 
@@ -73,13 +73,13 @@ A javaslatok alkalmazása során ugyanezt az alapteljesítményt valósították
 | --- |:---:|:---:|:---:|
 | Címkézett érték |Tényleges adatok (numerikus) |azonos |azonos |
 | Learner |Excel – > adatelemzés – > regresszió |Lineáris regresszió. |Lineáris regresszió |
-| Tanulói beállítások |N/A |Alapértelmezett |szokásos legkisebb négyzetek<br />L2 = 0,005 |
+| Tanulói beállítások |– |Alapértelmezett |szokásos legkisebb négyzetek<br />L2 = 0,005 |
 | Adathalmaz |26 sor, 3 funkció, 1 címke. Az összes numerikus érték. |azonos |azonos |
 | Felosztás: betanítás |Az első 18 sorban betanított Excel az utolsó 8 sorban tesztelt. |azonos |azonos |
 | Felosztás: teszt |Az utolsó 8 sorra alkalmazott Excel regressziós képlet |azonos |azonos |
 | **Teljesítmény** | | | |
-| Kiigazított R négyzet |0,96 |N/A | |
-| Meghatározási együttható |N/A |0,78 |0,952049 |
+| Kiigazított R négyzet |0,96 |– | |
+| Meghatározási együttható |– |0,78 |0,952049 |
 | Abszolút átlagos hiba |9\.5 m USD |19.4 m USD |9\.5 m USD |
 | Átlagos abszolút hiba (%) |<span style="background-color: 00FF00;">6,03%</span> |12,2% |<span style="background-color: 00FF00;">6,03%</span> |
 
@@ -129,7 +129,7 @@ Azt is javasoljuk, hogy a [szűrésen alapuló funkció kiválasztásával][filt
 
 A Studio klasszikus verziójáról az Excel programba való átadásának lehetősége jelentős mértékben növelheti az eredményeket egy széles körű üzleti felhasználói közönség számára. 
 
-## <a name="resources"></a>Erőforrások
+## <a name="resources"></a>Segédanyagok és eszközök
 Íme néhány forrás, amely segít a regresszióval való együttműködésben: 
 
 * Regresszió az Excelben. Ha még soha nem próbálta meg a regressziót az Excelben, az oktatóanyag megkönnyíti a következőket: [https://www.excel-easy.com/examples/regression.html](https://www.excel-easy.com/examples/regression.html)

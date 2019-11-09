@@ -1,25 +1,25 @@
 ---
 title: Az Azure Blob Storage csatlakoztatása fájlrendszerként Linux rendszeren | Microsoft Docs
 description: Azure Blob Storage-tároló csatlakoztatása a Linux-alapú BIZTOSÍTÉKokkal
-author: normesta
+author: rishabpoh
 ms.service: storage
 ms.topic: conceptual
 ms.date: 2/1/2019
-ms.author: normesta
+ms.author: ripohane
 ms.reviewer: dineshm
-ms.openlocfilehash: 88002999baacf38b4afd40b574686457c48546e4
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 35a4313d10231aec74685069a67d803ea32e68b1
+ms.sourcegitcommit: 16c5374d7bcb086e417802b72d9383f8e65b24a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68845024"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73847546"
 ---
 # <a name="how-to-mount-blob-storage-as-a-file-system-with-blobfuse"></a>BLOB Storage csatlakoztatása fájlrendszerként a blobfuse-mel
 
 ## <a name="overview"></a>Áttekintés
 A [Blobfuse](https://github.com/Azure/azure-storage-fuse) egy virtuális fájlrendszer-illesztőprogram az Azure Blob Storage szolgáltatáshoz. A Blobfuse lehetővé teszi a meglévő blokk blob-adatai elérését a Storage-fiókban a Linux fájlrendszer használatával. A Blobfuse a virtuális könyvtár sémáját a Forward-Slash "/" karakterrel használja határolójelként.  
 
-Ebből az útmutatóból megtudhatja, hogyan használhatja a blobfuse, és hogyan csatlakoztathat blob Storage-tárolót Linux rendszeren, és hogyan férhet hozzá az adatbázisokhoz. Ha többet szeretne megtudni a blobfuse, olvassa el a részleteket a [blobfuse](https://github.com/Azure/azure-storage-fuse)-tárházban.
+Ebből az útmutatóból megtudhatja, hogyan használhatja a blobfuse, és hogyan csatlakoztathat blob Storage-tárolót Linux rendszeren, és hogyan férhet hozzá az adatbázisokhoz. Ha többet szeretne megtudni a blobfuse, olvassa el a részleteket a [blobfuse-tárházban](https://github.com/Azure/azure-storage-fuse).
 
 > [!WARNING]
 > A Blobfuse nem garantálja a 100%-os POSIX-megfelelőséget, mivel egyszerűen a kérelmeket a [blob REST API](https://docs.microsoft.com/rest/api/storageservices/blob-service-rest-api)-khoz fordítja. Például az átnevezési műveletek a POSIX-ben atomiak, de nem a blobfuse.
@@ -27,7 +27,7 @@ Ebből az útmutatóból megtudhatja, hogyan használhatja a blobfuse, és hogya
 > 
 
 ## <a name="install-blobfuse-on-linux"></a>A blobfuse telepítése Linux rendszeren
-A Blobfuse bináris fájljai a [Linux](https://docs.microsoft.com/windows-server/administration/Linux-Package-Repository-for-Microsoft-Software) for Ubuntu és a RHEL disztribúciók Microsoft-szoftverek tárházában érhetők el. A blobfuse az adott disztribúcióra való telepítéséhez konfigurálja az egyik tárházat a listából. A forráskód bináris fájljait az [Azure Storage telepítési lépéseit](https://github.com/Azure/azure-storage-fuse/wiki/1.-Installation#option-2---build-from-source) követve is létrehozhatja, ha nincs elérhető bináris fájl a terjesztéshez.
+A Blobfuse bináris fájljai a Linux for Ubuntu és a RHEL disztribúciók [Microsoft-szoftverek tárházában](https://docs.microsoft.com/windows-server/administration/Linux-Package-Repository-for-Microsoft-Software) érhetők el. A blobfuse az adott disztribúcióra való telepítéséhez konfigurálja az egyik tárházat a listából. A forráskód bináris fájljait az [Azure Storage telepítési lépéseit](https://github.com/Azure/azure-storage-fuse/wiki/1.-Installation#option-2---build-from-source) követve is létrehozhatja, ha nincs elérhető bináris fájl a terjesztéshez.
 
 A Blobfuse támogatja az Ubuntu 14,04, 16,04 és 18,04 rendszereken való telepítést. Futtassa ezt a parancsot, és győződjön meg arról, hogy telepítve van-e a telepített verziók egyike:
 ```
@@ -35,14 +35,14 @@ lsb_release -a
 ```
 
 ### <a name="configure-the-microsoft-package-repository"></a>A Microsoft Package adattár konfigurálása
-A [Linux-csomagok tárházának](https://docs.microsoft.com/windows-server/administration/Linux-Package-Repository-for-Microsoft-Software)konfigurálása a Microsoft-termékekhez.
+A [Linux-csomagok tárházának konfigurálása a Microsoft-termékekhez](https://docs.microsoft.com/windows-server/administration/Linux-Package-Repository-for-Microsoft-Software).
 
 Példa egy vállalati Linux 6 disztribúcióra:
 ```bash
 sudo rpm -Uvh https://packages.microsoft.com/config/rhel/6/packages-microsoft-prod.rpm
 ```
 
-Hasonlóképpen módosítsa az URL-címet `.../rhel/7/...` úgy, hogy az a nagyvállalati Linux 7 disztribúcióra mutasson.
+Hasonlóképpen módosítsa úgy a `.../rhel/7/...` URL-címét, hogy az a nagyvállalati Linux 7 disztribúcióra mutasson.
 
 Egy másik példa Ubuntu 14,04-disztribúcióra:
 ```bash
@@ -51,7 +51,7 @@ sudo dpkg -i packages-microsoft-prod.deb
 sudo apt-get update
 ```
 
-Hasonlóképpen módosítsa az URL-címet `.../ubuntu/16.04/...` a `.../ubuntu/18.04/...` vagy a értékre egy másik Ubuntu-verzióra való hivatkozáshoz.
+Hasonlóképpen módosítsa az URL-címet `.../ubuntu/16.04/...` vagy `.../ubuntu/18.04/...` egy másik Ubuntu-verzióra való hivatkozáshoz.
 
 ### <a name="install-blobfuse"></a>A blobfuse telepítése
 
@@ -111,7 +111,7 @@ chmod 600 fuse_connection.cfg
 ```
 
 > [!NOTE]
-> Ha a Windowson létrehozta a konfigurációs fájlt, futtassa a parancsot `dos2unix` a fájl megtisztításához és a UNIX formátumba való átalakításához. 
+> Ha a Windowson létrehozta a konfigurációs fájlt, akkor `dos2unix` futtatásával fertőtlenítse és alakítsa át a fájlt UNIX formátumra. 
 >
 
 ### <a name="create-an-empty-directory-for-mounting"></a>Üres könyvtár létrehozása a csatlakoztatáshoz
@@ -122,16 +122,16 @@ mkdir ~/mycontainer
 ## <a name="mount"></a>Csatlakoztatás
 
 > [!NOTE]
-> A csatlakoztatási lehetőségek teljes listáját [a blobfuse](https://github.com/Azure/azure-storage-fuse#mount-options)-tárházban találja.  
+> A csatlakoztatási lehetőségek teljes listáját [a blobfuse-tárházban](https://github.com/Azure/azure-storage-fuse#mount-options)találja.  
 > 
 
-A blobfuse csatlakoztatásához futtassa a következő parancsot a felhasználóval. Ez a parancs a "/Path/to/fuse_connection.cfg" helyen megadott tárolót csatlakoztatja a (z) "/mycontainer" helyre.
+A blobfuse csatlakoztatásához futtassa a következő parancsot a felhasználóval. Ez a parancs a "/Path/to/fuse_connection. cfg" helyen megadott tárolót csatlakoztatja a (z) "/mycontainer" helyre.
 
 ```bash
 sudo blobfuse ~/mycontainer --tmp-path=/mnt/resource/blobfusetmp  --config-file=/path/to/fuse_connection.cfg -o attr_timeout=240 -o entry_timeout=240 -o negative_timeout=120
 ```
 
-Most már hozzáférhet a blokk blobokhoz a normál fájlrendszerű API-kon keresztül. Az a felhasználó, aki csatlakoztatja a könyvtárat, alapértelmezés szerint az egyetlen olyan személy, aki hozzáférést biztosít a hozzáféréshez. Ha engedélyezni szeretné az összes felhasználó hozzáférését, a kapcsolón ```-o allow_other```keresztül is csatlakoztathatja. 
+Most már hozzáférhet a blokk blobokhoz a normál fájlrendszerű API-kon keresztül. Az a felhasználó, aki csatlakoztatja a könyvtárat, alapértelmezés szerint az egyetlen olyan személy, aki hozzáférést biztosít a hozzáféréshez. Az összes felhasználóhoz való hozzáférés engedélyezéséhez az ```-o allow_other```lehetőséggel csatlakozhat. 
 
 ```bash
 cd ~/mycontainer

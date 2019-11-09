@@ -13,14 +13,14 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 04/30/2019
+ms.date: 11/07/2019
 ms.author: sedusch
-ms.openlocfilehash: 569ac844a971970c22f5cc0a511545020fe802c5
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: d08f17bd22188f3d969261d8626d47a9e0faf08e
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72791688"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73839614"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms-on-suse-linux-enterprise-server-for-sap-applications"></a>Magas rendelkezésre állás az Azure-beli virtuális gépeken futó SAP NetWeaver számára SUSE Linux Enterprise Server SAP-alkalmazásokhoz
 
@@ -84,7 +84,7 @@ A magas rendelkezésre állás eléréséhez az SAP NetWeaver használatához NF
 
 ![SAP NetWeaver – magas rendelkezésre állás – áttekintés](./media/high-availability-guide-suse/ha-suse.png)
 
-Az NFS-kiszolgáló, az SAP NetWeaver ASCS, az SAP NetWeaver SCS, az SAP NetWeaver ERS és a SAP HANA adatbázis virtuális gazdagépeket és virtuális IP-címeket használ. Az Azure-ban a virtuális IP-címek használatához terheléselosztó szükséges. Az alábbi lista az (A) SCS és az ERS Load Balancer konfigurációját mutatja be.
+Az NFS-kiszolgáló, az SAP NetWeaver ASCS, az SAP NetWeaver SCS, az SAP NetWeaver ERS és a SAP HANA adatbázis virtuális gazdagépeket és virtuális IP-címeket használ. Az Azure-ban a virtuális IP-címek használatához terheléselosztó szükséges. A [standard Load Balancer](https://docs.microsoft.com/azure/load-balancer/quickstart-load-balancer-standard-public-portal)használatát javasoljuk. Az alábbi lista az (A) SCS és az ERS Load Balancer konfigurációját mutatja be.
 
 > [!IMPORTANT]
 > Az SAP ASCS/ERS multi-SID fürtszolgáltatása az Azure-beli virtuális gépeken található vendég operációs rendszerként a SUSE Linux rendszerben **nem támogatott**. A többszörös SID-fürtszolgáltatás több SAP ASCS/ERS példány telepítését ismerteti különböző SID-kiszolgálókkal egy pacemaker-fürtben
@@ -97,15 +97,16 @@ Az NFS-kiszolgáló, az SAP NetWeaver ASCS, az SAP NetWeaver SCS, az SAP NetWeav
   * Az (A) SCS/ERS-fürt részét képező összes virtuális gép elsődleges hálózati adapteréhez csatlakozik
 * Mintavételi port
   * 620-es port<strong>&lt;nr&gt;</strong>
-* Terhelés 
-* kiegyensúlyozási szabályok
-  * 32<strong>&lt;nr&gt;</strong> TCP
-  * 36<strong>&lt;nr&gt;</strong> TCP
-  * 39<strong>&lt;nr&gt;</strong> TCP
-  * 81<strong>&lt;nr&gt;</strong> TCP
-  * 5<strong>&lt;nr&gt;</strong>13 TCP
-  * 5<strong>&lt;nr&gt;</strong>14 TCP
-  * 5<strong>&lt;nr&gt;</strong>16 TCP
+* Terheléselosztási szabályok
+  * Ha standard Load Balancer használ, válassza a **hektár portok** elemet.
+  * Ha alapszintű Load Balancer használ, hozzon létre terheléselosztási szabályokat a következő portokhoz
+    * 32<strong>&lt;nr&gt;</strong> TCP
+    * 36<strong>&lt;nr&gt;</strong> TCP
+    * 39<strong>&lt;nr&gt;</strong> TCP
+    * 81<strong>&lt;nr&gt;</strong> TCP
+    * 5<strong>&lt;nr&gt;</strong>13 TCP
+    * 5<strong>&lt;nr&gt;</strong>14 TCP
+    * 5<strong>&lt;nr&gt;</strong>16 TCP
 
 ### <a name="ers"></a>ERS
 
@@ -116,11 +117,13 @@ Az NFS-kiszolgáló, az SAP NetWeaver ASCS, az SAP NetWeaver SCS, az SAP NetWeav
 * Mintavételi port
   * 621-es port<strong>&lt;nr&gt;</strong>
 * Terheléselosztási szabályok
-  * 32<strong>&lt;nr&gt;</strong> TCP
-  * 33<strong>&lt;nr&gt;</strong> TCP
-  * 5<strong>&lt;nr&gt;</strong>13 TCP
-  * 5<strong>&lt;nr&gt;</strong>14 TCP
-  * 5<strong>&lt;nr&gt;</strong>16 TCP
+  * Ha standard Load Balancer használ, válassza a **hektár portok** elemet.
+  * Ha alapszintű Load Balancer használ, hozzon létre terheléselosztási szabályokat a következő portokhoz
+    * 32<strong>&lt;nr&gt;</strong> TCP
+    * 33<strong>&lt;nr&gt;</strong> TCP
+    * 5<strong>&lt;nr&gt;</strong>13 TCP
+    * 5<strong>&lt;nr&gt;</strong>14 TCP
+    * 5<strong>&lt;nr&gt;</strong>16 TCP
 
 ## <a name="setting-up-a-highly-available-nfs-server"></a>Egy magasan elérhető NFS-kiszolgáló beállítása
 
@@ -176,7 +179,44 @@ Először létre kell hoznia a virtuális gépeket ehhez az NFS-fürthöz. Ezt k
    Válassza ki a korábban létrehozott rendelkezésre állási készletet  
 1. Adjon hozzá legalább egy adatlemezt mindkét virtuális géphez  
    Az adatlemezek a/usr/SAP/`<SAPSID`> könyvtárához használatosak.
-1. Load Balancer létrehozása (belső)  
+1. Load Balancer létrehozása (belső, standard):  
+   1. Az előtérbeli IP-címek létrehozása
+      1. A ASCS IP-10.0.0.7
+         1. Nyissa meg a terheléselosztó-t, válassza a előtéri IP-készlet lehetőséget, majd kattintson a Hozzáadás gombra.
+         1. Adja meg az új előtér-IP-készlet nevét (például **NW1-ASCs-frontend**)
+         1. Állítsa a hozzárendelést statikus értékre, és adja meg az IP-címet (például **10.0.0.7**).
+         1. Kattintson az OK gombra
+      1. A ASCS IP-10.0.0.8
+         * A fenti lépések megismétlésével hozzon létre egy IP-címet az ERS számára (például **10.0.0.8** és **NW1-AERS-backend**)
+   1. A háttér-készletek létrehozása
+      1. Háttérbeli készlet létrehozása a ASCS
+         1. Nyissa meg a Load balancert, válassza a háttérbeli készletek elemet, majd kattintson a Hozzáadás gombra.
+         1. Adja meg az új háttérbeli készlet nevét (például **NW1-ASCs-backend**)
+         1. Kattintson a virtuális gép hozzáadása elemre.
+         1. Virtuális gép kiválasztása
+         1. Válassza ki az (A) SCS-fürthöz tartozó virtuális gépeket és azok IP-címeit.
+         1. Kattintson az Add (Hozzáadás) parancsra
+      1. Háttérbeli készlet létrehozása a ASCS-ESEK számára
+         * A fenti lépések megismétlésével hozzon létre egy háttér-készletet az ERS számára (például **NW1-AERS-backend**)
+   1. Az állapot-mintavételek létrehozása
+      1. A ASCS 620**00** portja
+         1. Nyissa meg a terheléselosztó-t, válassza az állapot-tesztek elemet, majd kattintson a Hozzáadás gombra.
+         1. Adja meg az új állapot-mintavétel nevét (például **NW1-ASCs-HP**)
+         1. Válassza a TCP protokollt, a 620**00**portot, az 5. időközt és a nem megfelelő állapotú küszöbértéket 2
+         1. Kattintson az OK gombra
+      1. Port 621**02** ASCS-esekhöz
+         * A fenti lépések megismétlésével hozzon létre egy állapot-mintavételt az ERS számára (például 621**02** és **NW1-AERS-HP**)
+   1. Terheléselosztási szabályok
+      1. Terheléselosztási szabályok ASCS
+         1. Nyissa meg a Load balancert, válassza a terheléselosztási szabályok elemet, majd kattintson a Hozzáadás gombra.
+         1. Adja meg az új Load Balancer-szabály nevét (például **NW1-LB-ASCs**)
+         1. Válassza ki a korábban létrehozott előtérbeli IP-címet, háttér-készletet és állapot-mintavételt (például **NW1-ASCs-frontend**, **NW1-ASCs-backend** és **NW1-ASCs-HP**)
+         1. **Ha portok** kiválasztása
+         1. Üresjárati időkorlát 30 percre növelve
+         1. **Ügyeljen arra, hogy a lebegő IP-címet engedélyezze**
+         1. Kattintson az OK gombra
+         * A fenti lépések megismétlésével hozzon létre terheléselosztási szabályokat az ERS számára (például **NW1-LB-ERS**)
+1. Ha a forgatókönyvben alapszintű terheléselosztó (belső) szükséges, kövesse az alábbi lépéseket:  
    1. Az előtérbeli IP-címek létrehozása
       1. A ASCS IP-10.0.0.7
          1. Nyissa meg a terheléselosztó-t, válassza a előtéri IP-készlet lehetőséget, majd kattintson a Hozzáadás gombra.
@@ -217,8 +257,11 @@ Először létre kell hoznia a virtuális gépeket ehhez az NFS-fürthöz. Ezt k
       1. További portok a ASCS-ESEK számára
          * Ismételje meg a fenti lépéseket a 33**02**, 5**02**13, 5**02**14, 5**02**16 és TCP ASCS-eseknél.
 
+> [!Note]
+> Ha a nyilvános IP-címek nélküli virtuális gépek a belső (nincs nyilvános IP-cím) standard Azure Load Balancer háttér-készletbe kerülnek, nem lesz kimenő internetkapcsolat, kivéve, ha további konfigurálást végeznek a nyilvános végpontok útválasztásának engedélyezéséhez. A kimenő kapcsolatok elérésével kapcsolatos részletekért lásd: [nyilvános végpontú kapcsolat Virtual Machines az Azure standard Load Balancer használata az SAP magas rendelkezésre állási helyzetekben](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-standard-load-balancer-outbound-connections).  
+
 > [!IMPORTANT]
-> Ne engedélyezze a TCP-időbélyegeket a Azure Load Balancer mögött elhelyezett Azure-beli virtuális gépeken. A TCP-időbélyegek engedélyezése az állapot-mintavételek meghibásodását eredményezi. Állítsa a **net. IPv4. TCP** paramétert **0-ra**_timestamps. Részletekért lásd: [Load Balancer Health](https://docs.microsoft.com/azure/load-balancer/load-balancer-custom-probe-overview)-tesztek.
+> Ne engedélyezze a TCP-időbélyegeket a Azure Load Balancer mögött elhelyezett Azure-beli virtuális gépeken. A TCP-időbélyegek engedélyezése az állapot-mintavételek meghibásodását eredményezi. Állítsa a **net. IPv4. tcp_timestamps** paramétert **0-ra**. Részletekért lásd: [Load Balancer Health](https://docs.microsoft.com/azure/load-balancer/load-balancer-custom-probe-overview)-tesztek.
 
 ### <a name="create-pacemaker-cluster"></a>Pacemaker-fürt létrehozása
 
@@ -236,7 +279,7 @@ A következő elemek a **[a]** előtaggal vannak ellátva, amelyek az összes cs
    > [!NOTE]
    > A fürtcsomópontok állomásneve ne használjon kötőjeleket. Ellenkező esetben a fürt nem fog működni. Ez egy ismert korlátozás, és a SUSE a javításon dolgozik. A javítás az SAP-SUSE-Cloud-Connector csomag javításának részeként jelenik meg.
 
-   Győződjön meg arról, hogy az SAP SUSE-fürt összekötő új verzióját telepítette. A régit sap_suse_cluster_connector hívták, az újat pedig **SAP-SUSE-cluster-Connector**néven.
+   Győződjön meg arról, hogy az SAP SUSE-fürt összekötő új verzióját telepítette. A régit hívták sap_suse_cluster_connector és az újat **SAP-SUSE-cluster-Connector**néven nevezzük.
 
    ```
    sudo zypper info sap-suse-cluster-connector
@@ -268,7 +311,7 @@ A következő elemek a **[a]** előtaggal vannak ellátva, amelyek az összes cs
    <pre><code>&lt;parameter name="IS_ERS" unique="0" required="0"&gt;
    </code></pre>
 
-   Ha a GREP-parancs nem találja a IS_ERS paramétert, telepítenie kell a [SUSE letöltési oldalán](https://download.suse.com/patch/finder/#bu=suse&familyId=&productId=&dateRange=&startDate=&endDate=&priority=&architecture=&keywords=resource-agents) található javítást.
+   Ha a GREP parancs nem találja a IS_ERS paramétert, telepítenie kell a [SUSE letöltési oldalán](https://download.suse.com/patch/finder/#bu=suse&familyId=&productId=&dateRange=&startDate=&endDate=&priority=&architecture=&keywords=resource-agents) található javítást.
 
    <pre><code># example for patch for SLES 12 SP1
    sudo zypper in -t patch SUSE-SLE-HA-12-SP1-2017-885=1
@@ -405,7 +448,7 @@ A következő elemek a **[a]** előtaggal vannak ellátva, amelyek az összes cs
 
    Telepítse az SAP NetWeaver ASCS root-ként az első csomóponton egy olyan virtuális állomásnév használatával, amely a ASCS terheléselosztó-felületi konfigurációjának IP-címét képezi le, például <b>NW1-ASCS</b>, <b>10.0.0.7</b> és a mintavételhez használt példány számát. a terheléselosztó, például <b>00</b>.
 
-   A sapinst paraméter SAPINST_REMOTE_ACCESS_USER lehetővé teszi, hogy a nem root felhasználó csatlakozhasson a sapinst.
+   A sapinst paraméterrel SAPINST_REMOTE_ACCESS_USER engedélyezheti, hogy a nem root felhasználó csatlakozhasson a sapinst.
 
    <pre><code>sudo &lt;swpm&gt;/sapinst SAPINST_REMOTE_ACCESS_USER=<b>sapadmin</b>
    </code></pre>
@@ -464,7 +507,7 @@ A következő elemek a **[a]** előtaggal vannak ellátva, amelyek az összes cs
 
    Telepítse az SAP NetWeaver-ket root-ként a második csomóponton egy olyan virtuális állomásnév használatával, amely a hálózati terheléselosztási felület konfigurációjának IP-címét képezi le az ERS számára, például <b>NW1-AERS</b>, <b>10.0.0.8</b> és a mintavételhez használt példány számát. a terheléselosztó, például: <b>02</b>.
 
-   A sapinst paraméter SAPINST_REMOTE_ACCESS_USER lehetővé teszi, hogy a nem root felhasználó csatlakozhasson a sapinst.
+   A sapinst paraméterrel SAPINST_REMOTE_ACCESS_USER engedélyezheti, hogy a nem root felhasználó csatlakozhasson a sapinst.
 
    <pre><code>sudo &lt;swpm&gt;/sapinst SAPINST_REMOTE_ACCESS_USER=<b>sapadmin</b>
    </code></pre>
@@ -719,7 +762,7 @@ Ebben a példában az SAP NetWeaver SAP HANAra van telepítve. A telepítéshez 
 
    Telepítse az SAP NetWeaver Database-példányt root-ként egy olyan virtuális állomásnév használatával, amely az adatbázishoz tartozó terheléselosztó előtér-konfigurációjának IP-címére van leképezve, például <b>NW1-db</b> és <b>10.0.0.13</b>.
 
-   A sapinst paraméter SAPINST_REMOTE_ACCESS_USER lehetővé teszi, hogy a nem root felhasználó csatlakozhasson a sapinst.
+   A sapinst paraméterrel SAPINST_REMOTE_ACCESS_USER engedélyezheti, hogy a nem root felhasználó csatlakozhasson a sapinst.
 
    <pre><code>sudo &lt;swpm&gt;/sapinst SAPINST_REMOTE_ACCESS_USER=<b>sapadmin</b>
    </code></pre>
@@ -736,7 +779,7 @@ Az SAP-alkalmazáskiszolgáló telepítéséhez kövesse az alábbi lépéseket.
 
    Telepítsen egy elsődleges vagy további SAP NetWeaver Application Servert.
 
-   A sapinst paraméter SAPINST_REMOTE_ACCESS_USER lehetővé teszi, hogy a nem root felhasználó csatlakozhasson a sapinst.
+   A sapinst paraméterrel SAPINST_REMOTE_ACCESS_USER engedélyezheti, hogy a nem root felhasználó csatlakozhasson a sapinst.
 
    <pre><code>sudo &lt;swpm&gt;/sapinst SAPINST_REMOTE_ACCESS_USER=<b>sapadmin</b>
    </code></pre>
@@ -1200,7 +1243,7 @@ A következő tesztek a tesztelési esetek egy példányát jelentik a SUSE ajá
         rsc_sap_NW1_ERS02  (ocf::heartbeat:SAPInstance):   Started nw1-cl-0
    </code></pre>
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Azure Virtual Machines az SAP tervezéséhez és megvalósításához][planning-guide]
 * [Azure Virtual Machines üzembe helyezés az SAP-ban][deployment-guide]

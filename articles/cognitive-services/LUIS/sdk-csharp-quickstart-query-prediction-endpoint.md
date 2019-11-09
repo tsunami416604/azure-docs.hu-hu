@@ -10,12 +10,12 @@ ms.subservice: language-understanding
 ms.topic: quickstart
 ms.date: 09/27/2019
 ms.author: diberry
-ms.openlocfilehash: d7cf46add464a089f15a5bd15a20cea7d17eed37
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: bd1fefa828aca71e3faa27f75a8c67a2f1539d52
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73488688"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73837083"
 ---
 # <a name="quickstart-query-v2-prediction-endpoint-with-c-net-sdk"></a>Rövid útmutató: Query v2 előrejelzési C# végpont a .net SDK-val
 
@@ -77,7 +77,7 @@ using Microsoft.Azure.CognitiveServices.Language.LUIS.Runtime.Models;
 
 ## <a name="create-a-new-method-for-the-prediction"></a>Új módszer létrehozása az előrejelzéshez
 
-Hozzon létre egy új metódust, `GetPrediction`, hogy elküldje a lekérdezést a lekérdezés előrejelzési végpontjának. A metódus létrehozza és konfigurálja az összes szükséges objektumot, majd visszaküld egy `Task`t a [`LuisResult`](https://docs.microsoft.com/en-us/python/api/azure-cognitiveservices-language-luis/azure.cognitiveservices.language.luis.runtime.models.luisresult?view=azure-python) előrejelzés eredményeivel. 
+Hozzon létre egy új metódust, `GetPrediction`, hogy elküldje a lekérdezést a lekérdezés előrejelzési végpontjának. A metódus létrehozza és konfigurálja az összes szükséges objektumot, majd visszaküld egy `Task`t a [`LuisResult`](/python/api/azure-cognitiveservices-language-luis/azure.cognitiveservices.language.luis.runtime.models.luisresult) előrejelzés eredményeivel. 
 
 ```csharp
 static async  Task<LuisResult> GetPrediction() {

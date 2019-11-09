@@ -9,12 +9,12 @@ ms.reviewer: klam, LADocs
 ms.suite: integration
 ms.topic: reference
 ms.date: 06/19/2019
-ms.openlocfilehash: a6789f409e26d1310d9e583ac2934e0bae462b21
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: 7b4267f672ab5ad902c0f96dd7ba7e377316e4f5
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72799430"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73839783"
 ---
 # <a name="schema-reference-guide-for-trigger-and-action-types-in-azure-logic-apps"></a>A séma-referenciák útmutatója az triggerekhez és a műveletek típusaihoz Azure Logic Apps
 
@@ -50,23 +50,23 @@ Az eseményindítók ezekkel a legfelső szintű elemekkel rendelkeznek, bár eg
 
 *Szükséges*
 
-| Value (Díj) | Type (Típus) | Leírás | 
+| Value (Díj) | Típus | Leírás | 
 |-------|------|-------------| 
-| <*trigger-név* > | Sztring | Az trigger neve | 
-| <*trigger típusú* > | Sztring | Az trigger típusa (például "http" vagy "ApiConnection") | 
-| <*trigger – bemenetek* > | JSON-objektum | Az trigger viselkedését meghatározó bemenetek | 
-| <*időegység* > | Sztring | Az az időegység, amely leírja, hogy az eseményindító milyen gyakran következik be: "Second", "minute", "Hour", "Day", "Week", "Month" | 
-| <*szám-idő egység* > | Egész szám | Egy érték, amely azt határozza meg, hogy az eseményindító milyen gyakran indul el a gyakoriság alapján, amely a megvárni kívánt időegységek száma <p>Itt láthatók a minimális és a maximális intervallumok: <p>-Hónap: 1-16 hónap </br>-Nap: 1-500 nap </br>-Óra: 1 – 12000 óra </br>Perc: 1 – 72000 perc </br>-Másodperc: 1 – 9999999 másodperc<p>Ha például az intervallum 6, és a gyakoriság értéke "Month", az ismétlődés 6 havonta történik. | 
+| <*trigger-név*> | Sztring | Az trigger neve | 
+| <*trigger típusú*> | Sztring | Az trigger típusa (például "http" vagy "ApiConnection") | 
+| <*trigger – bemenetek*> | JSON-objektum | Az trigger viselkedését meghatározó bemenetek | 
+| <*időegység*> | Sztring | Az az időegység, amely leírja, hogy az eseményindító milyen gyakran következik be: "Second", "minute", "Hour", "Day", "Week", "Month" | 
+| <*szám-idő egység*> | Egész szám | Egy érték, amely azt határozza meg, hogy az eseményindító milyen gyakran indul el a gyakoriság alapján, amely a megvárni kívánt időegységek száma <p>Itt láthatók a minimális és a maximális intervallumok: <p>-Hónap: 1-16 hónap </br>-Nap: 1-500 nap </br>-Óra: 1 – 12000 óra </br>Perc: 1 – 72000 perc </br>-Másodperc: 1 – 9999999 másodperc<p>Ha például az intervallum 6, és a gyakoriság értéke "Month", az ismétlődés 6 havonta történik. | 
 |||| 
 
 *Választható*
 
-| Value (Díj) | Type (Típus) | Leírás | 
+| Value (Díj) | Típus | Leírás | 
 |-------|------|-------------| 
-| <*Array-feltételekkel* > | Tömb | Olyan tömb, amely egy vagy több olyan [feltételt](#trigger-conditions) tartalmaz, amely meghatározza, hogy futtatni kell-e a munkafolyamatot. Csak eseményindítók számára érhető el. | 
-| <*Runtime-config-options* > | JSON-objektum | @No__t_0 tulajdonságainak beállításával módosíthatja az aktiválási futtatókörnyezet viselkedését. További információ: [futásidejű konfigurációs beállítások](#runtime-config-options). | 
-| <*splitOn-expression* > | Sztring | Egy tömböt visszaadó eseményindítók esetében megadhat egy olyan kifejezést, amely a tömb elemeit több munkafolyamat-példányba [feldarabolja vagy lebontja ](#split-on-debatch) feldolgozásra. | 
-| <*művelet – lehetőség* > | Sztring | A `operationOptions` tulajdonság beállításával módosíthatja az alapértelmezett viselkedést. További információ: [üzemeltetési beállítások](#operation-options). | 
+| <*Array-feltételekkel*> | Tömb | Olyan tömb, amely egy vagy több olyan [feltételt](#trigger-conditions) tartalmaz, amely meghatározza, hogy futtatni kell-e a munkafolyamatot. Csak eseményindítók számára érhető el. | 
+| <*Runtime-config-options*> | JSON-objektum | `runtimeConfiguration` tulajdonságainak beállításával módosíthatja az aktiválási futtatókörnyezet viselkedését. További információ: [futásidejű konfigurációs beállítások](#runtime-config-options). | 
+| <*splitOn-expression*> | Sztring | Egy tömböt visszaadó eseményindítók esetében megadhat egy olyan kifejezést, amely a tömb elemeit több munkafolyamat-példányba [feldarabolja vagy lebontja ](#split-on-debatch) feldolgozásra. | 
+| <*művelet – lehetőség*> | Sztring | A `operationOptions` tulajdonság beállításával módosíthatja az alapértelmezett viselkedést. További információ: [üzemeltetési beállítások](#operation-options). | 
 |||| 
 
 ## <a name="trigger-types-list"></a>Trigger típusok listája
@@ -130,31 +130,31 @@ Ez az aktiválás a [Microsoft által felügyelt API-](../connectors/apis-list.m
 
 *Szükséges*
 
-| Value (Díj) | Type (Típus) | Leírás | 
+| Value (Díj) | Típus | Leírás | 
 |-------|------|-------------| 
 | <*APIConnection_trigger_name*> | Sztring | Az trigger neve | 
-| < a*kapcsolatok neve* > | Sztring | A munkafolyamat által használt felügyelt API-hoz való kapcsolódás neve | 
-| <*metódus típusa* > | Sztring | A felügyelt API-val való kommunikáció HTTP-metódusa: "GET", "PUT", "POST", "PATCH", "DELETE" | 
-| <*API-művelet* > | Sztring | A meghívni kívánt API-művelet | 
-| <*időegység* > | Sztring | Az az időegység, amely leírja, hogy az eseményindító milyen gyakran következik be: "Second", "minute", "Hour", "Day", "Week", "Month" | 
-| <*szám-idő egység* > | Egész szám | Egy érték, amely azt határozza meg, hogy az eseményindító milyen gyakran indul el a gyakoriság alapján, amely a megvárni kívánt időegységek száma <p>Itt láthatók a minimális és a maximális intervallumok: <p>-Hónap: 1-16 hónap </br>-Nap: 1-500 nap </br>-Óra: 1 – 12000 óra </br>Perc: 1 – 72000 perc </br>-Másodperc: 1 – 9999999 másodperc<p>Ha például az intervallum 6, és a gyakoriság értéke "Month", az ismétlődés 6 havonta történik. | 
+| <a *kapcsolatok neve*> | Sztring | A munkafolyamat által használt felügyelt API-hoz való kapcsolódás neve | 
+| <*metódus típusa*> | Sztring | A felügyelt API-val való kommunikáció HTTP-metódusa: "GET", "PUT", "POST", "PATCH", "DELETE" | 
+| <*API-művelet*> | Sztring | A meghívni kívánt API-művelet | 
+| <*időegység*> | Sztring | Az az időegység, amely leírja, hogy az eseményindító milyen gyakran következik be: "Second", "minute", "Hour", "Day", "Week", "Month" | 
+| <*szám-idő egység*> | Egész szám | Egy érték, amely azt határozza meg, hogy az eseményindító milyen gyakran indul el a gyakoriság alapján, amely a megvárni kívánt időegységek száma <p>Itt láthatók a minimális és a maximális intervallumok: <p>-Hónap: 1-16 hónap </br>-Nap: 1-500 nap </br>-Óra: 1 – 12000 óra </br>Perc: 1 – 72000 perc </br>-Másodperc: 1 – 9999999 másodperc<p>Ha például az intervallum 6, és a gyakoriság értéke "Month", az ismétlődés 6 havonta történik. | 
 |||| 
 
 *Választható*
 
-| Value (Díj) | Type (Típus) | Leírás | 
+| Value (Díj) | Típus | Leírás | 
 |-------|------|-------------| 
-| <*újrapróbálkozási viselkedés* > | JSON-objektum | Testreszabja az újrapróbálkozási viselkedést olyan időszakos hibák esetén, amelyeknél a 408, a 429 és a 5XX állapotkód, valamint a kapcsolódási kivételek. További információt az [újrapróbálkozási szabályzatok](../logic-apps/logic-apps-exception-handling.md#retry-policies)című témakörben talál. | 
-| <*lekérdezés – paraméterek* > | JSON-objektum | Az API-hívással felvenni kívánt lekérdezési paraméterek. Például a `"queries": { "api-version": "2018-01-01" }` objektum hozzáadja a `?api-version=2018-01-01` a híváshoz. | 
-| <*Max-run* > | Egész szám | Alapértelmezés szerint a munkafolyamat-példányok egy időben futnak, vagy párhuzamosan az [alapértelmezett korláttal](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits). Ha módosítani szeretné ezt a korlátot úgy, hogy új <*count*> értéket állít be, tekintse meg az [trigger egyidejűségének módosítása](#change-trigger-concurrency)című témakört. | 
-| <*Max-Run-üzenetsor* > | Egész szám | Ha a munkafolyamat már futtatja a példányok maximális számát, amelyet a `runtimeConfiguration.concurrency.runs` tulajdonság alapján módosíthat, a rendszer az új futtatásokat az [alapértelmezett korlátba](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)helyezi át ebbe a várólistába. Az alapértelmezett korlát módosításához tekintse meg a [várakozó futtatások korlátjának módosítása](#change-waiting-runs)című témakört. | 
-| <*splitOn-expression* > | Sztring | A tömböket visszaadó eseményindítók esetében ez a kifejezés arra a tömbre hivatkozik, amelyet az egyes tömbökhöz tartozó munkafolyamat-példányok létrehozásához és futtatásához kell használni, nem pedig "for each" ciklust. <p>Ez a kifejezés például a tömbben az trigger törzsének tartalmában visszaadott egy elemre vonatkozik: `@triggerbody()?['value']` |
-| <*művelet – lehetőség* > | Sztring | A `operationOptions` tulajdonság beállításával módosíthatja az alapértelmezett viselkedést. További információ: [üzemeltetési beállítások](#operation-options). |
+| <*újrapróbálkozási viselkedés*> | JSON-objektum | Testreszabja az újrapróbálkozási viselkedést olyan időszakos hibák esetén, amelyeknél a 408, a 429 és a 5XX állapotkód, valamint a kapcsolódási kivételek. További információt az [újrapróbálkozási szabályzatok](../logic-apps/logic-apps-exception-handling.md#retry-policies)című témakörben talál. | 
+| <*lekérdezés – paraméterek*> | JSON-objektum | Az API-hívással felvenni kívánt lekérdezési paraméterek. Például a `"queries": { "api-version": "2018-01-01" }` objektum hozzáadja a `?api-version=2018-01-01` a híváshoz. | 
+| <*Max-run*> | Egész szám | Alapértelmezés szerint a munkafolyamat-példányok egy időben futnak, vagy párhuzamosan az [alapértelmezett korláttal](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits). Ha módosítani szeretné ezt a korlátot úgy, hogy új <*count*> értéket állít be, tekintse meg az [trigger egyidejűségének módosítása](#change-trigger-concurrency)című témakört. | 
+| <*Max-Run-üzenetsor*> | Egész szám | Ha a munkafolyamat már futtatja a példányok maximális számát, amelyet a `runtimeConfiguration.concurrency.runs` tulajdonság alapján módosíthat, a rendszer az új futtatásokat az [alapértelmezett korlátba](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)helyezi át ebbe a várólistába. Az alapértelmezett korlát módosításához tekintse meg a [várakozó futtatások korlátjának módosítása](#change-waiting-runs)című témakört. | 
+| <*splitOn-expression*> | Sztring | A tömböket visszaadó eseményindítók esetében ez a kifejezés arra a tömbre hivatkozik, amelyet az egyes tömbökhöz tartozó munkafolyamat-példányok létrehozásához és futtatásához kell használni, nem pedig "for each" ciklust. <p>Ez a kifejezés például a tömbben az trigger törzsének tartalmában visszaadott egy elemre vonatkozik: `@triggerbody()?['value']` |
+| <*művelet – lehetőség*> | Sztring | A `operationOptions` tulajdonság beállításával módosíthatja az alapértelmezett viselkedést. További információ: [üzemeltetési beállítások](#operation-options). |
 ||||
 
 *Kimenetek*
  
-| Elem | Type (Típus) | Leírás |
+| Elem | Típus | Leírás |
 |---------|------|-------------|
 | fejlécek | JSON-objektum | A válaszból származó fejlécek |
 | törzse | JSON-objektum | A válasz törzse |
@@ -224,22 +224,22 @@ Ez az trigger egy [Microsoft által felügyelt API-](../connectors/apis-list.md)
 
 *Szükséges*
 
-| Value (Díj) | Type (Típus) | Leírás | 
+| Value (Díj) | Típus | Leírás | 
 |-------|------|-------------| 
-| < a*kapcsolatok neve* > | Sztring | A munkafolyamat által használt felügyelt API-hoz való kapcsolódás neve | 
-| <*törzs – tartalom* > | JSON-objektum | Bármely, a felügyelt API-nak adattartalomként küldendő üzenet | 
+| <a *kapcsolatok neve*> | Sztring | A munkafolyamat által használt felügyelt API-hoz való kapcsolódás neve | 
+| <*törzs – tartalom*> | JSON-objektum | Bármely, a felügyelt API-nak adattartalomként küldendő üzenet | 
 |||| 
 
 *Választható*
 
-| Value (Díj) | Type (Típus) | Leírás | 
+| Value (Díj) | Típus | Leírás | 
 |-------|------|-------------| 
-| <*újrapróbálkozási viselkedés* > | JSON-objektum | Testreszabja az újrapróbálkozási viselkedést olyan időszakos hibák esetén, amelyeknél a 408, a 429 és a 5XX állapotkód, valamint a kapcsolódási kivételek. További információt az [újrapróbálkozási szabályzatok](../logic-apps/logic-apps-exception-handling.md#retry-policies)című témakörben talál. | 
-| <*lekérdezés – paraméterek* > | JSON-objektum | Az API-hívással belefoglalható lekérdezési paraméterek <p>Például a `"queries": { "api-version": "2018-01-01" }` objektum hozzáadja a `?api-version=2018-01-01` a híváshoz. | 
-| <*Max-run* > | Egész szám | Alapértelmezés szerint a munkafolyamat-példányok egy időben futnak, vagy párhuzamosan az [alapértelmezett korláttal](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits). Ha módosítani szeretné ezt a korlátot úgy, hogy új <*count*> értéket állít be, tekintse meg az [trigger egyidejűségének módosítása](#change-trigger-concurrency)című témakört. | 
-| <*Max-Run-üzenetsor* > | Egész szám | Ha a munkafolyamat már futtatja a példányok maximális számát, amelyet a `runtimeConfiguration.concurrency.runs` tulajdonság alapján módosíthat, a rendszer az új futtatásokat az [alapértelmezett korlátba](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)helyezi át ebbe a várólistába. Az alapértelmezett korlát módosításához tekintse meg a [várakozó futtatások korlátjának módosítása](#change-waiting-runs)című témakört. | 
-| <*splitOn-expression* > | Sztring | A tömböket visszaadó eseményindítók esetében ez a kifejezés arra a tömbre hivatkozik, amelyet az egyes tömbökhöz tartozó munkafolyamat-példányok létrehozásához és futtatásához kell használni, nem pedig "for each" ciklust. <p>Ez a kifejezés például a tömbben az trigger törzsének tartalmában visszaadott egy elemre vonatkozik: `@triggerbody()?['value']` |
-| <*művelet – lehetőség* > | Sztring | A `operationOptions` tulajdonság beállításával módosíthatja az alapértelmezett viselkedést. További információ: [üzemeltetési beállítások](#operation-options). | 
+| <*újrapróbálkozási viselkedés*> | JSON-objektum | Testreszabja az újrapróbálkozási viselkedést olyan időszakos hibák esetén, amelyeknél a 408, a 429 és a 5XX állapotkód, valamint a kapcsolódási kivételek. További információt az [újrapróbálkozási szabályzatok](../logic-apps/logic-apps-exception-handling.md#retry-policies)című témakörben talál. | 
+| <*lekérdezés – paraméterek*> | JSON-objektum | Az API-hívással belefoglalható lekérdezési paraméterek <p>Például a `"queries": { "api-version": "2018-01-01" }` objektum hozzáadja a `?api-version=2018-01-01` a híváshoz. | 
+| <*Max-run*> | Egész szám | Alapértelmezés szerint a munkafolyamat-példányok egy időben futnak, vagy párhuzamosan az [alapértelmezett korláttal](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits). Ha módosítani szeretné ezt a korlátot úgy, hogy új <*count*> értéket állít be, tekintse meg az [trigger egyidejűségének módosítása](#change-trigger-concurrency)című témakört. | 
+| <*Max-Run-üzenetsor*> | Egész szám | Ha a munkafolyamat már futtatja a példányok maximális számát, amelyet a `runtimeConfiguration.concurrency.runs` tulajdonság alapján módosíthat, a rendszer az új futtatásokat az [alapértelmezett korlátba](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)helyezi át ebbe a várólistába. Az alapértelmezett korlát módosításához tekintse meg a [várakozó futtatások korlátjának módosítása](#change-waiting-runs)című témakört. | 
+| <*splitOn-expression*> | Sztring | A tömböket visszaadó eseményindítók esetében ez a kifejezés arra a tömbre hivatkozik, amelyet az egyes tömbökhöz tartozó munkafolyamat-példányok létrehozásához és futtatásához kell használni, nem pedig "for each" ciklust. <p>Ez a kifejezés például a tömbben az trigger törzsének tartalmában visszaadott egy elemre vonatkozik: `@triggerbody()?['value']` |
+| <*művelet – lehetőség*> | Sztring | A `operationOptions` tulajdonság beállításával módosíthatja az alapértelmezett viselkedést. További információ: [üzemeltetési beállítások](#operation-options). | 
 |||| 
 
 *Példa*
@@ -305,31 +305,31 @@ Ez az eseményindító kérelmet küld a megadott HTTP-vagy HTTPS-végpontnak a 
 
 *Szükséges*
 
-| Tulajdonság | Value (Díj) | Type (Típus) | Leírás |
+| Tulajdonság | Value (Díj) | Típus | Leírás |
 |----------|-------|------|-------------|
-| `method` | <*metódus típusa* > | Sztring | A kimenő kérelem küldéséhez használt módszer: "GET", "PUT", "POST", "PATCH" vagy "DELETE" |
-| `uri` | <*http-vagy-https-Endpoint-URL-cím* > | Sztring | A HTTP-vagy HTTPS-végpont URL-címe, ahová el szeretné küldeni a kimenő kérést. Maximális sztring mérete: 2 KB <p>Egy Azure-szolgáltatás vagy-erőforrás esetében ez az URI-szintaxis magában foglalja az erőforrás-azonosítót és az elérni kívánt erőforrás elérési útját. |
-| `frequency` | <*időegység* > | Sztring | Az az időegység, amely leírja, hogy az eseményindító milyen gyakran következik be: "Second", "minute", "Hour", "Day", "Week", "Month" |
-| `interval` | <*szám-idő egység* > | Egész szám | Egy érték, amely azt határozza meg, hogy az eseményindító milyen gyakran indul el a gyakoriság alapján, amely a megvárni kívánt időegységek száma <p>Itt láthatók a minimális és a maximális intervallumok: <p>-Hónap: 1-16 hónap </br>-Nap: 1-500 nap </br>-Óra: 1 – 12000 óra </br>Perc: 1 – 72000 perc </br>-Másodperc: 1 – 9999999 másodperc<p>Ha például az intervallum 6, és a gyakoriság értéke "Month", az ismétlődés 6 havonta történik. |
+| `method` | <*metódus típusa*> | Sztring | A kimenő kérelem küldéséhez használt módszer: "GET", "PUT", "POST", "PATCH" vagy "DELETE" |
+| `uri` | <*http-vagy-https-Endpoint-URL-cím*> | Sztring | A HTTP-vagy HTTPS-végpont URL-címe, ahová el szeretné küldeni a kimenő kérést. Maximális sztring mérete: 2 KB <p>Egy Azure-szolgáltatás vagy-erőforrás esetében ez az URI-szintaxis magában foglalja az erőforrás-azonosítót és az elérni kívánt erőforrás elérési útját. |
+| `frequency` | <*időegység*> | Sztring | Az az időegység, amely leírja, hogy az eseményindító milyen gyakran következik be: "Second", "minute", "Hour", "Day", "Week", "Month" |
+| `interval` | <*szám-idő egység*> | Egész szám | Egy érték, amely azt határozza meg, hogy az eseményindító milyen gyakran indul el a gyakoriság alapján, amely a megvárni kívánt időegységek száma <p>Itt láthatók a minimális és a maximális intervallumok: <p>-Hónap: 1-16 hónap </br>-Nap: 1-500 nap </br>-Óra: 1 – 12000 óra </br>Perc: 1 – 72000 perc </br>-Másodperc: 1 – 9999999 másodperc<p>Ha például az intervallum 6, és a gyakoriság értéke "Month", az ismétlődés 6 havonta történik. |
 |||||
 
 *Választható*
 
-| Tulajdonság | Value (Díj) | Type (Típus) | Leírás |
+| Tulajdonság | Value (Díj) | Típus | Leírás |
 |----------|-------|------|-------------|
-| `headers` | <*fejléc – tartalom* > | JSON-objektum | A kéréssel felvenni kívánt fejlécek <p>Például a nyelv és a típus megadásához: <p>`"headers": { "Accept-Language": "en-us", "Content-Type": "application/json" }` |
-| `queries` | <*lekérdezés – paraméterek* > | JSON-objektum | A kérelemben használni kívánt lekérdezési paraméterek <p>Például a `"queries": { "api-version": "2018-01-01" }` objektum hozzáadja `?api-version=2018-01-01` a kérelemhez. |
-| `body` | <*törzs – tartalom* > | JSON-objektum | A kéréssel adattartalomként küldendő üzenet tartalma |
+| `headers` | <*fejléc – tartalom*> | JSON-objektum | A kéréssel felvenni kívánt fejlécek <p>Például a nyelv és a típus megadásához: <p>`"headers": { "Accept-Language": "en-us", "Content-Type": "application/json" }` |
+| `queries` | <*lekérdezés – paraméterek*> | JSON-objektum | A kérelemben használni kívánt lekérdezési paraméterek <p>Például a `"queries": { "api-version": "2018-01-01" }` objektum hozzáadja `?api-version=2018-01-01` a kérelemhez. |
+| `body` | <*törzs – tartalom*> | JSON-objektum | A kéréssel adattartalomként küldendő üzenet tartalma |
 | `authentication` | <*hitelesítési-Type-and-Property-values*> | JSON-objektum | Az a hitelesítési modell, amelyet a kérelem a kimenő kérelmek hitelesítéséhez használ. További információ: [hitelesítés hozzáadása kimenő hívásokhoz](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound). A feladatütemezőn kívül a `authority` tulajdonság is támogatott. Ha nincs megadva, az alapértelmezett érték `https://management.azure.com/`, de más értéket is használhat. |
-| `retryPolicy` > `type` | <*újrapróbálkozási viselkedés* > | JSON-objektum | Testreszabja az újrapróbálkozási viselkedést olyan időszakos hibák esetén, amelyeknél a 408, a 429 és a 5XX állapotkód, valamint a kapcsolódási kivételek. További információt az [újrapróbálkozási szabályzatok](../logic-apps/logic-apps-exception-handling.md#retry-policies)című témakörben talál. |
-| `runs` | <*Max-run* > | Egész szám | Alapértelmezés szerint a munkafolyamat-példányok egy időben futnak, vagy párhuzamosan az [alapértelmezett korláttal](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits). Ha módosítani szeretné ezt a korlátot úgy, hogy új <*count*> értéket állít be, tekintse meg az [trigger egyidejűségének módosítása](#change-trigger-concurrency)című témakört. |
-| `maximumWaitingRuns` | <*Max-Run-üzenetsor* > | Egész szám | Ha a munkafolyamat már futtatja a példányok maximális számát, amelyet a `runtimeConfiguration.concurrency.runs` tulajdonság alapján módosíthat, a rendszer az új futtatásokat az [alapértelmezett korlátba](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)helyezi át ebbe a várólistába. Az alapértelmezett korlát módosításához tekintse meg a [várakozó futtatások korlátjának módosítása](#change-waiting-runs)című témakört. |
-| `operationOptions` | <*művelet – lehetőség* > | Sztring | A `operationOptions` tulajdonság beállításával módosíthatja az alapértelmezett viselkedést. További információ: [üzemeltetési beállítások](#operation-options). |
+| `retryPolicy` > `type` | <*újrapróbálkozási viselkedés*> | JSON-objektum | Testreszabja az újrapróbálkozási viselkedést olyan időszakos hibák esetén, amelyeknél a 408, a 429 és a 5XX állapotkód, valamint a kapcsolódási kivételek. További információt az [újrapróbálkozási szabályzatok](../logic-apps/logic-apps-exception-handling.md#retry-policies)című témakörben talál. |
+| `runs` | <*Max-run*> | Egész szám | Alapértelmezés szerint a munkafolyamat-példányok egy időben futnak, vagy párhuzamosan az [alapértelmezett korláttal](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits). Ha módosítani szeretné ezt a korlátot úgy, hogy új <*count*> értéket állít be, tekintse meg az [trigger egyidejűségének módosítása](#change-trigger-concurrency)című témakört. |
+| `maximumWaitingRuns` | <*Max-Run-üzenetsor*> | Egész szám | Ha a munkafolyamat már futtatja a példányok maximális számát, amelyet a `runtimeConfiguration.concurrency.runs` tulajdonság alapján módosíthat, a rendszer az új futtatásokat az [alapértelmezett korlátba](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)helyezi át ebbe a várólistába. Az alapértelmezett korlát módosításához tekintse meg a [várakozó futtatások korlátjának módosítása](#change-waiting-runs)című témakört. |
+| `operationOptions` | <*művelet – lehetőség*> | Sztring | A `operationOptions` tulajdonság beállításával módosíthatja az alapértelmezett viselkedést. További információ: [üzemeltetési beállítások](#operation-options). |
 |||||
 
 *Kimenetek*
 
-| Elem | Type (Típus) | Leírás |
+| Elem | Típus | Leírás |
 |---------|------|-------------| 
 | fejlécek | JSON-objektum | A válaszból származó fejlécek | 
 | törzse | JSON-objektum | A válasz törzse | 
@@ -340,7 +340,7 @@ Ez az eseményindító kérelmet küld a megadott HTTP-vagy HTTPS-végpontnak a 
 
 Ahhoz, hogy megfelelően működjön a logikai alkalmazással, a végpontnak meg kell felelnie egy adott trigger-mintának vagy szerződésnek, és ismernie kell a következő tulajdonságokat:  
   
-| Válasz | Szükséges | Leírás | 
+| Válasz | Kötelező | Leírás | 
 |----------|----------|-------------| 
 | Állapotkód | Igen | A "200 OK" állapotkód elindítja a futtatást. Minden más állapotkód nem indít el futtatást. | 
 | Újrapróbálkozás a fejléc után | Nem | Azon másodpercek száma, ameddig a logikai alkalmazás újra le nem kérdezi a végpontot | 
@@ -402,29 +402,29 @@ Egyes értékek, például a <*módszer típusú*> elérhetők mind a `"subscrib
 
 *Szükséges*
 
-| Value (Díj) | Type (Típus) | Leírás | 
+| Value (Díj) | Típus | Leírás | 
 |-------|------|-------------| 
-| <*metódus típusa* > | Sztring | Az előfizetési kérelemhez használt HTTP-metódus: "GET", "PUT", "POST", "PATCH" vagy "DELETE" | 
-| <*végpont – előfizetés – URL-cím* > | Sztring | Az előfizetési kérést küldő végpont URL-címe | 
+| <*metódus típusa*> | Sztring | Az előfizetési kérelemhez használt HTTP-metódus: "GET", "PUT", "POST", "PATCH" vagy "DELETE" | 
+| <*végpont – előfizetés – URL-cím*> | Sztring | Az előfizetési kérést küldő végpont URL-címe | 
 |||| 
 
 *Választható*
 
-| Value (Díj) | Type (Típus) | Leírás | 
+| Value (Díj) | Típus | Leírás | 
 |-------|------|-------------| 
-| <*metódus típusa* > | Sztring | A törlési kérelemhez használt HTTP-metódus: "GET", "PUT", "POST", "PATCH" vagy "DELETE" | 
-| <*végpont – leiratkozás – URL-cím* > | Sztring | Az a végpont URL-címe, ahová el kell küldeni a lemondási kérelmet | 
-| <*törzs – tartalom* > | Sztring | Az előfizetéshez vagy a lemondási kérelemhez küldendő üzenet tartalma | 
+| <*metódus típusa*> | Sztring | A törlési kérelemhez használt HTTP-metódus: "GET", "PUT", "POST", "PATCH" vagy "DELETE" | 
+| <*végpont – leiratkozás – URL-cím*> | Sztring | Az a végpont URL-címe, ahová el kell küldeni a lemondási kérelmet | 
+| <*törzs – tartalom*> | Sztring | Az előfizetéshez vagy a lemondási kérelemhez küldendő üzenet tartalma | 
 | <*hitelesítési típus*> | JSON-objektum | Az a hitelesítési modell, amelyet a kérelem a kimenő kérelmek hitelesítéséhez használ. További információ: [hitelesítés hozzáadása kimenő hívásokhoz](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound). |
-| <*újrapróbálkozási viselkedés* > | JSON-objektum | Testreszabja az újrapróbálkozási viselkedést olyan időszakos hibák esetén, amelyeknél a 408, a 429 és a 5XX állapotkód, valamint a kapcsolódási kivételek. További információt az [újrapróbálkozási szabályzatok](../logic-apps/logic-apps-exception-handling.md#retry-policies)című témakörben talál. | 
-| <*Max-run* > | Egész szám | Alapértelmezés szerint a munkafolyamat-példányok mindegyike egy időben fut, vagy párhuzamosan az [alapértelmezett korláttal](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits). Ha módosítani szeretné ezt a korlátot úgy, hogy új <*count*> értéket állít be, tekintse meg az [trigger egyidejűségének módosítása](#change-trigger-concurrency)című témakört. | 
-| <*Max-Run-üzenetsor* > | Egész szám | Ha a munkafolyamat már futtatja a példányok maximális számát, amelyet a `runtimeConfiguration.concurrency.runs` tulajdonság alapján módosíthat, a rendszer az új futtatásokat az [alapértelmezett korlátba](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)helyezi át ebbe a várólistába. Az alapértelmezett korlát módosításához tekintse meg a [várakozó futtatások korlátjának módosítása](#change-waiting-runs)című témakört. | 
-| <*művelet – lehetőség* > | Sztring | A `operationOptions` tulajdonság beállításával módosíthatja az alapértelmezett viselkedést. További információ: [üzemeltetési beállítások](#operation-options). | 
+| <*újrapróbálkozási viselkedés*> | JSON-objektum | Testreszabja az újrapróbálkozási viselkedést olyan időszakos hibák esetén, amelyeknél a 408, a 429 és a 5XX állapotkód, valamint a kapcsolódási kivételek. További információt az [újrapróbálkozási szabályzatok](../logic-apps/logic-apps-exception-handling.md#retry-policies)című témakörben talál. | 
+| <*Max-run*> | Egész szám | Alapértelmezés szerint a munkafolyamat-példányok mindegyike egy időben fut, vagy párhuzamosan az [alapértelmezett korláttal](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits). Ha módosítani szeretné ezt a korlátot úgy, hogy új <*count*> értéket állít be, tekintse meg az [trigger egyidejűségének módosítása](#change-trigger-concurrency)című témakört. | 
+| <*Max-Run-üzenetsor*> | Egész szám | Ha a munkafolyamat már futtatja a példányok maximális számát, amelyet a `runtimeConfiguration.concurrency.runs` tulajdonság alapján módosíthat, a rendszer az új futtatásokat az [alapértelmezett korlátba](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)helyezi át ebbe a várólistába. Az alapértelmezett korlát módosításához tekintse meg a [várakozó futtatások korlátjának módosítása](#change-waiting-runs)című témakört. | 
+| <*művelet – lehetőség*> | Sztring | A `operationOptions` tulajdonság beállításával módosíthatja az alapértelmezett viselkedést. További információ: [üzemeltetési beállítások](#operation-options). | 
 |||| 
 
 *Kimenetek* 
 
-| Elem | Type (Típus) | Leírás |
+| Elem | Típus | Leírás |
 |---------|------|-------------| 
 | fejlécek | JSON-objektum | A válaszból származó fejlécek | 
 | törzse | JSON-objektum | A válasz törzse | 
@@ -496,24 +496,24 @@ Ez az eseményindító a megadott ismétlődési ütemterv alapján fut, és egy
 
 *Szükséges*
 
-| Value (Díj) | Type (Típus) | Leírás | 
+| Value (Díj) | Típus | Leírás | 
 |-------|------|-------------| 
-| <*időegység* > | Sztring | Az az időegység, amely leírja, hogy az eseményindító milyen gyakran következik be: "Second", "minute", "Hour", "Day", "Week", "Month" | 
-| <*szám-idő egység* > | Egész szám | Egy érték, amely azt határozza meg, hogy az eseményindító milyen gyakran indul el a gyakoriság alapján, amely a megvárni kívánt időegységek száma <p>Itt láthatók a minimális és a maximális intervallumok: <p>-Hónap: 1-16 hónap </br>-Nap: 1-500 nap </br>-Óra: 1 – 12000 óra </br>Perc: 1 – 72000 perc </br>-Másodperc: 1 – 9999999 másodperc<p>Ha például az intervallum 6, és a gyakoriság értéke "Month", az ismétlődés 6 havonta történik. | 
+| <*időegység*> | Sztring | Az az időegység, amely leírja, hogy az eseményindító milyen gyakran következik be: "Second", "minute", "Hour", "Day", "Week", "Month" | 
+| <*szám-idő egység*> | Egész szám | Egy érték, amely azt határozza meg, hogy az eseményindító milyen gyakran indul el a gyakoriság alapján, amely a megvárni kívánt időegységek száma <p>Itt láthatók a minimális és a maximális intervallumok: <p>-Hónap: 1-16 hónap </br>-Nap: 1-500 nap </br>-Óra: 1 – 12000 óra </br>Perc: 1 – 72000 perc </br>-Másodperc: 1 – 9999999 másodperc<p>Ha például az intervallum 6, és a gyakoriság értéke "Month", az ismétlődés 6 havonta történik. | 
 |||| 
 
 *Választható*
 
-| Value (Díj) | Type (Típus) | Leírás | 
+| Value (Díj) | Típus | Leírás | 
 |-------|------|-------------| 
-| <*kezdő dátum-idő formátuma-éééé-hh-NNTóó: PP: mm* > | Sztring | A kezdő dátum és idő ebben a formátumban: <p>ÉÉÉÉ-hh-NNTóó: PP: mm, ha időzónát ad meg <p>– vagy – <p>ÉÉÉÉ-hh-NNTóó: PP: ssZ, ha nem ad meg időzónát <p>Így például, ha a szeptember 18., 2017 at 2:00 PM-t szeretné használni, adja meg a "2017-09-18T14:00:00" parancsot, és adja meg az időzónát, például "csendes-óceáni téli idő", vagy adja meg a "2017-09-18T14:00:00Z" időzóna nélküli beállítását. <p>**Megjegyzés:** Ez a kezdési időpont legfeljebb 49 évvel későbbi, és az [ISO 8601 dátum-idő specifikációt](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) kell követnie [UTC dátum és idő formátumban](https://en.wikipedia.org/wiki/Coordinated_Universal_Time), de [UTC-eltolás](https://en.wikipedia.org/wiki/UTC_offset)nélkül. Ha nem ad meg időzónát, fel kell vennie a "Z" betűt a végén szóköz nélkül. Ez a "Z" a megfelelő [tengeri időpontra](https://en.wikipedia.org/wiki/Nautical_time)hivatkozik. <p>Az egyszerű ütemtervek esetében a kezdési időpont az első előfordulás, míg a komplex ütemtervek esetében az trigger nem a kezdési időpontnál hamarabb következik be. A kezdő dátummal és időpontokkal kapcsolatos további információkért lásd: a [rendszeresen futó feladatok létrehozása és rendszeres futtatása](../connectors/connectors-native-recurrence.md). | 
-| <*időzóna* > | Sztring | Csak akkor érvényes, ha megad egy kezdési időpontot, mert ez az trigger nem fogad el [UTC-eltolást](https://en.wikipedia.org/wiki/UTC_offset). Itt adhatja meg az alkalmazni kívánt időzónát. | 
-| <*egy vagy több órás jelölést* > | Egész vagy egész tömb | Ha a "Day" vagy a "Week" értéket adja meg a `frequency`hoz, megadhat egy vagy több egész számot 0 és 23 között, vesszővel elválasztva, valamint a nap azon óráját, amikor futtatni kívánja a munkafolyamatot. <p>Ha például a "10", a "12" és a "14" lehetőséget választja, akkor az óra jelzése 10 ÓRAKOR, 12 ÓRAKOR és 2 óráig is megadható. | 
-| <*egy vagy több perces jelölést* > | Egész vagy egész tömb | Ha a "Day" vagy a "Week" értéket adja meg a `frequency`hoz, megadhat egy vagy több egész számot 0 és 59 között, vesszővel elválasztva, az óra percében, amikor futtatni szeretné a munkafolyamatot. <p>Megadhatja például a "30" percet a perces jelölésként, és az előző példában a nap órájában a következőt kapja: 10:30, 12:30 PM és 2:30 PM. | 
+| <*kezdő dátum-idő formátuma-éééé-hh-NNTóó: PP: mm*> | Sztring | A kezdő dátum és idő ebben a formátumban: <p>ÉÉÉÉ-hh-NNTóó: PP: mm, ha időzónát ad meg <p>– vagy – <p>ÉÉÉÉ-hh-NNTóó: PP: ssZ, ha nem ad meg időzónát <p>Így például, ha a szeptember 18., 2017 at 2:00 PM-t szeretné használni, adja meg a "2017-09-18T14:00:00" parancsot, és adja meg az időzónát, például "csendes-óceáni téli idő", vagy adja meg a "2017-09-18T14:00:00Z" időzóna nélküli beállítását. <p>**Megjegyzés:** Ez a kezdési időpont legfeljebb 49 évvel későbbi, és az [ISO 8601 dátum-idő specifikációt](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) kell követnie [UTC dátum és idő formátumban](https://en.wikipedia.org/wiki/Coordinated_Universal_Time), de [UTC-eltolás](https://en.wikipedia.org/wiki/UTC_offset)nélkül. Ha nem ad meg időzónát, fel kell vennie a "Z" betűt a végén szóköz nélkül. Ez a "Z" a megfelelő [tengeri időpontra](https://en.wikipedia.org/wiki/Nautical_time)hivatkozik. <p>Az egyszerű ütemtervek esetében a kezdési időpont az első előfordulás, míg a komplex ütemtervek esetében az trigger nem a kezdési időpontnál hamarabb következik be. A kezdő dátummal és időpontokkal kapcsolatos további információkért lásd: a [rendszeresen futó feladatok létrehozása és rendszeres futtatása](../connectors/connectors-native-recurrence.md). | 
+| <*időzóna*> | Sztring | Csak akkor érvényes, ha megad egy kezdési időpontot, mert ez az trigger nem fogad el [UTC-eltolást](https://en.wikipedia.org/wiki/UTC_offset). Itt adhatja meg az alkalmazni kívánt időzónát. | 
+| <*egy vagy több órás jelölést*> | Egész vagy egész tömb | Ha a "Day" vagy a "Week" értéket adja meg a `frequency`hoz, megadhat egy vagy több egész számot 0 és 23 között, vesszővel elválasztva, valamint a nap azon óráját, amikor futtatni kívánja a munkafolyamatot. <p>Ha például a "10", a "12" és a "14" lehetőséget választja, akkor az óra jelzése 10 ÓRAKOR, 12 ÓRAKOR és 2 óráig is megadható. | 
+| <*egy vagy több perces jelölést*> | Egész vagy egész tömb | Ha a "Day" vagy a "Week" értéket adja meg a `frequency`hoz, megadhat egy vagy több egész számot 0 és 59 között, vesszővel elválasztva, az óra percében, amikor futtatni szeretné a munkafolyamatot. <p>Megadhatja például a "30" percet a perces jelölésként, és az előző példában a nap órájában a következőt kapja: 10:30, 12:30 PM és 2:30 PM. | 
 | weekDays | Karakterlánc-vagy karakterlánc-tömb | Ha a "Week" kifejezést adja meg `frequency`hoz, megadhat egy vagy több napot, vesszővel elválasztva, ha a következő munkafolyamatot szeretné futtatni: "hétfő", "kedd", "szerda", "csütörtök", "péntek", "szombat" és "vasárnap" | 
-| <*Max-run* > | Egész szám | Alapértelmezés szerint a munkafolyamat-példányok mindegyike egy időben fut, vagy párhuzamosan az [alapértelmezett korláttal](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits). Ha módosítani szeretné ezt a korlátot úgy, hogy új <*count*> értéket állít be, tekintse meg az [trigger egyidejűségének módosítása](#change-trigger-concurrency)című témakört. | 
-| <*Max-Run-üzenetsor* > | Egész szám | Ha a munkafolyamat már futtatja a példányok maximális számát, amelyet a `runtimeConfiguration.concurrency.runs` tulajdonság alapján módosíthat, a rendszer az új futtatásokat az [alapértelmezett korlátba](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)helyezi át ebbe a várólistába. Az alapértelmezett korlát módosításához tekintse meg a [várakozó futtatások korlátjának módosítása](#change-waiting-runs)című témakört. | 
-| <*művelet – lehetőség* > | Sztring | A `operationOptions` tulajdonság beállításával módosíthatja az alapértelmezett viselkedést. További információ: [üzemeltetési beállítások](#operation-options). | 
+| <*Max-run*> | Egész szám | Alapértelmezés szerint a munkafolyamat-példányok mindegyike egy időben fut, vagy párhuzamosan az [alapértelmezett korláttal](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits). Ha módosítani szeretné ezt a korlátot úgy, hogy új <*count*> értéket állít be, tekintse meg az [trigger egyidejűségének módosítása](#change-trigger-concurrency)című témakört. | 
+| <*Max-Run-üzenetsor*> | Egész szám | Ha a munkafolyamat már futtatja a példányok maximális számát, amelyet a `runtimeConfiguration.concurrency.runs` tulajdonság alapján módosíthat, a rendszer az új futtatásokat az [alapértelmezett korlátba](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)helyezi át ebbe a várólistába. Az alapértelmezett korlát módosításához tekintse meg a [várakozó futtatások korlátjának módosítása](#change-waiting-runs)című témakört. | 
+| <*művelet – lehetőség*> | Sztring | A `operationOptions` tulajdonság beállításával módosíthatja az alapértelmezett viselkedést. További információ: [üzemeltetési beállítások](#operation-options). | 
 |||| 
 
 *1. példa*
@@ -605,22 +605,22 @@ Az trigger meghívásához a `listCallbackUrl` API-t kell használnia, amelyet a
 
 *Szükséges*
 
-| Value (Díj) | Type (Típus) | Leírás | 
+| Value (Díj) | Típus | Leírás | 
 |-------|------|-------------| 
-| <*tulajdonság neve* > | Sztring | A JSON-sémában található egyik tulajdonság neve, amely leírja a hasznos adatokat | 
-| <*tulajdonság típusa* > | Sztring | A tulajdonság típusa | 
+| <*tulajdonság neve*> | Sztring | A JSON-sémában található egyik tulajdonság neve, amely leírja a hasznos adatokat | 
+| <*tulajdonság típusa*> | Sztring | A tulajdonság típusa | 
 |||| 
 
 *Választható*
 
-| Value (Díj) | Type (Típus) | Leírás | 
+| Value (Díj) | Típus | Leírás | 
 |-------|------|-------------| 
-| <*metódus típusa* > | Sztring | A bejövő kérelmek által a logikai alkalmazás meghívásához használt metódusnak a "GET", a "PUT", a "POST", a "javítás", a "DELETE" utasítással kell rendelkeznie. |
-| <*relatív elérési út – elfogadva – paraméter* > | Sztring | Annak a paraméternek a relatív elérési útja, amelyet a végpont URL-címe el tud fogadni | 
-| <*kötelező – tulajdonságok* > | Tömb | Egy vagy több olyan tulajdonság, amely értékeket igényel | 
-| <*Max-run* > | Egész szám | Alapértelmezés szerint a munkafolyamat-példányok mindegyike egy időben fut, vagy párhuzamosan az [alapértelmezett korláttal](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits). Ha módosítani szeretné ezt a korlátot úgy, hogy új <*count*> értéket állít be, tekintse meg az [trigger egyidejűségének módosítása](#change-trigger-concurrency)című témakört. | 
-| <*Max-Run-üzenetsor* > | Egész szám | Ha a munkafolyamat már futtatja a példányok maximális számát, amelyet a `runtimeConfiguration.concurrency.runs` tulajdonság alapján módosíthat, a rendszer az új futtatásokat az [alapértelmezett korlátba](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)helyezi át ebbe a várólistába. Az alapértelmezett korlát módosításához tekintse meg a [várakozó futtatások korlátjának módosítása](#change-waiting-runs)című témakört. | 
-| <*művelet – lehetőség* > | Sztring | A `operationOptions` tulajdonság beállításával módosíthatja az alapértelmezett viselkedést. További információ: [üzemeltetési beállítások](#operation-options). | 
+| <*metódus típusa*> | Sztring | A bejövő kérelmek által a logikai alkalmazás meghívásához használt metódusnak a "GET", a "PUT", a "POST", a "javítás", a "DELETE" utasítással kell rendelkeznie. |
+| <*relatív elérési út – elfogadva – paraméter*> | Sztring | Annak a paraméternek a relatív elérési útja, amelyet a végpont URL-címe el tud fogadni | 
+| <*kötelező – tulajdonságok*> | Tömb | Egy vagy több olyan tulajdonság, amely értékeket igényel | 
+| <*Max-run*> | Egész szám | Alapértelmezés szerint a munkafolyamat-példányok mindegyike egy időben fut, vagy párhuzamosan az [alapértelmezett korláttal](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits). Ha módosítani szeretné ezt a korlátot úgy, hogy új <*count*> értéket állít be, tekintse meg az [trigger egyidejűségének módosítása](#change-trigger-concurrency)című témakört. | 
+| <*Max-Run-üzenetsor*> | Egész szám | Ha a munkafolyamat már futtatja a példányok maximális számát, amelyet a `runtimeConfiguration.concurrency.runs` tulajdonság alapján módosíthat, a rendszer az új futtatásokat az [alapértelmezett korlátba](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)helyezi át ebbe a várólistába. Az alapértelmezett korlát módosításához tekintse meg a [várakozó futtatások korlátjának módosítása](#change-waiting-runs)című témakört. | 
+| <*művelet – lehetőség*> | Sztring | A `operationOptions` tulajdonság beállításával módosíthatja az alapértelmezett viselkedést. További információ: [üzemeltetési beállítások](#operation-options). | 
 |||| 
 
 *Példa*
@@ -690,7 +690,9 @@ A **SplitOn** által egyetlen logikai alkalmazás futtatásával feldolgozható 
 
 > [!NOTE]
 > A **SplitOn** nem használható szinkron válasz mintával. Minden **SplitOn** -t használó munkafolyamat aszinkron módon fut, és azonnal küld egy `202 ACCEPTED` választ.
-
+>
+> Ha az trigger-Egyidejűség engedélyezve van, az [SplitOn korlátja](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits) jelentősen csökken. Ha az elemek száma meghaladja ezt a korlátot, a SplitOn képesség le van tiltva.
+ 
 Ha az trigger hencegő fájlja olyan adattartalmat ír le, amely tömb, a rendszer automatikusan hozzáadja a **SplitOn** tulajdonságot az triggerhez. Ellenkező esetben adja hozzá ezt a tulajdonságot a kiválasztani kívánt tömböt tartalmazó válasz adattartalomhoz. 
 
 *Példa*
@@ -778,22 +780,22 @@ A műveletek ezekkel a magas szintű elemekkel rendelkeznek, bár egyesek nem k�
 
 *Szükséges*
 
-| Value (Díj) | Type (Típus) | Leírás | 
+| Value (Díj) | Típus | Leírás | 
 |-------|------|-------------|
-| <*művelet – név* > | Sztring | A művelet neve | 
-| <*művelet típusa* > | Sztring | A művelet típusa, például "http" vagy "ApiConnection"| 
-| <*input-name* > | Sztring | A művelet viselkedését definiáló bemenet neve | 
-| <*bemeneti érték* > | Különböző | A bemeneti érték, amely lehet karakterlánc, egész szám, JSON-objektum stb. | 
-| <*előző-trigger-vagy-Action-status* > | JSON-objektum | Azon trigger vagy művelet neve és eredményül kapott állapota, amelynek az aktuális művelet futtatása előtt azonnal futnia kell | 
+| <*művelet – név*> | Sztring | A művelet neve | 
+| <*művelet típusa*> | Sztring | A művelet típusa, például "http" vagy "ApiConnection"| 
+| <*input-name*> | Sztring | A művelet viselkedését definiáló bemenet neve | 
+| <*bemeneti érték*> | Különböző | A bemeneti érték, amely lehet karakterlánc, egész szám, JSON-objektum stb. | 
+| <*előző-trigger-vagy-Action-status*> | JSON-objektum | Azon trigger vagy művelet neve és eredményül kapott állapota, amelynek az aktuális művelet futtatása előtt azonnal futnia kell | 
 |||| 
 
 *Választható*
 
-| Value (Díj) | Type (Típus) | Leírás | 
+| Value (Díj) | Típus | Leírás | 
 |-------|------|-------------|
-| <*újrapróbálkozási viselkedés* > | JSON-objektum | Testreszabja az újrapróbálkozási viselkedést olyan időszakos hibák esetén, amelyeknél a 408, a 429 és a 5XX állapotkód, valamint a kapcsolódási kivételek. További információt az újrapróbálkozási szabályzatok című témakörben talál. | 
-| <*Runtime-config-options* > | JSON-objektum | Egyes műveletek esetében a művelet futtatásának időpontját a `runtimeConfiguration` tulajdonságainak beállításával módosíthatja. További információ: [futásidejű konfigurációs beállítások](#runtime-config-options). | 
-| <*művelet – lehetőség* > | Sztring | Egyes műveletek esetében a `operationOptions` tulajdonság beállításával módosíthatja az alapértelmezett viselkedést. További információ: [üzemeltetési beállítások](#operation-options). | 
+| <*újrapróbálkozási viselkedés*> | JSON-objektum | Testreszabja az újrapróbálkozási viselkedést olyan időszakos hibák esetén, amelyeknél a 408, a 429 és a 5XX állapotkód, valamint a kapcsolódási kivételek. További információt az újrapróbálkozási szabályzatok című témakörben talál. | 
+| <*Runtime-config-options*> | JSON-objektum | Egyes műveletek esetében a művelet futtatásának időpontját a `runtimeConfiguration` tulajdonságainak beállításával módosíthatja. További információ: [futásidejű konfigurációs beállítások](#runtime-config-options). | 
+| <*művelet – lehetőség*> | Sztring | Egyes műveletek esetében a `operationOptions` tulajdonság beállításával módosíthatja az alapértelmezett viselkedést. További információ: [üzemeltetési beállítások](#operation-options). | 
 |||| 
 
 ## <a name="action-types-list"></a>Tevékenységtípusok listája
@@ -814,7 +816,7 @@ A műveletek ezekkel a magas szintű elemekkel rendelkeznek, bár egyesek nem k�
 
   * Egy másik logikai alkalmazás munkafolyamatának hívására szolgáló [**munkafolyamat**](#workflow-action)
 
-* [Felügyelt API-műveleti típusok](#managed-api-actions) , például [**ApiConnection**](#apiconnection-action) és [**ApiConnectionWebHook**](#apiconnectionwebhook-action) , amelyek a Microsoft által felügyelt különböző összekötőket és API-kat hívhatják, például: Azure Service Bus, Office 365 Outlook, Power bi, Azure Blob Storage, OneDrive, GitHub és egyebek
+* [Felügyelt API-műveleti típusok](#managed-api-actions) , például [**ApiConnection**](#apiconnection-action) és [**ApiConnectionWebHook**](#apiconnectionwebhook-action) , amelyek a Microsoft által felügyelt különböző összekötőket és API-kat hívhatják, például: Azure Service Bus, Office 365 Outlook, Power bi, Azure Blob Storage, OneDrive, GitHub és sok más
 
 * A [munkafolyamatok műveleti típusai](#control-workflow-actions) , például az [**IF**](#if-action), a [**foreach**](#foreach-action), a [**switch**](#switch-action), a [**scope**](#scope-action)és a [**ig**](#until-action), amelyek más műveleteket tartalmaznak, és segítenek a munkafolyamat-végrehajtás rendszerezésében
 
@@ -894,22 +896,22 @@ Ez a művelet HTTP-kérést küld egy [Microsoft által felügyelt API-](../conn
 
 *Szükséges*
 
-| Value (Díj) | Type (Típus) | Leírás | 
+| Value (Díj) | Típus | Leírás | 
 |-------|------|-------------| 
-| <*művelet – név* > | Sztring | Az összekötő által megadott művelet neve | 
-| <*API-név* > | Sztring | A kapcsolatban használt Microsoft által felügyelt API neve | 
-| <*metódus típusa* > | Sztring | Az API meghívásának HTTP-metódusa: "GET", "PUT", "POST", "PATCH" vagy "DELETE" | 
-| <*API-művelet* > | Sztring | A meghívni kívánt API-művelet | 
+| <*művelet – név*> | Sztring | Az összekötő által megadott művelet neve | 
+| <*API-név*> | Sztring | A kapcsolatban használt Microsoft által felügyelt API neve | 
+| <*metódus típusa*> | Sztring | Az API meghívásának HTTP-metódusa: "GET", "PUT", "POST", "PATCH" vagy "DELETE" | 
+| <*API-művelet*> | Sztring | A meghívni kívánt API-művelet | 
 |||| 
 
 *Választható*
 
-| Value (Díj) | Type (Típus) | Leírás | 
+| Value (Díj) | Típus | Leírás | 
 |-------|------|-------------| 
-| <*egyéb művelet-specifikus-input-properties* > | JSON-objektum | Az adott műveletre vonatkozó egyéb beviteli tulajdonságok | 
-| <*újrapróbálkozási viselkedés* > | JSON-objektum | Testreszabja az újrapróbálkozási viselkedést olyan időszakos hibák esetén, amelyeknél a 408, a 429 és a 5XX állapotkód, valamint a kapcsolódási kivételek. További információt az [újrapróbálkozási szabályzatok](../logic-apps/logic-apps-exception-handling.md#retry-policies)című témakörben talál. | 
-| <*lekérdezés – paraméterek* > | JSON-objektum | Az API-hívással felvenni kívánt lekérdezési paraméterek. <p>Például a `"queries": { "api-version": "2018-01-01" }` objektum hozzáadja a `?api-version=2018-01-01` a híváshoz. | 
-| <*egyéb művelet-specifikus-tulajdonságok* > | JSON-objektum | Az adott műveletre vonatkozó egyéb tulajdonságok | 
+| <*egyéb művelet-specifikus-input-properties*> | JSON-objektum | Az adott műveletre vonatkozó egyéb beviteli tulajdonságok | 
+| <*újrapróbálkozási viselkedés*> | JSON-objektum | Testreszabja az újrapróbálkozási viselkedést olyan időszakos hibák esetén, amelyeknél a 408, a 429 és a 5XX állapotkód, valamint a kapcsolódási kivételek. További információt az [újrapróbálkozási szabályzatok](../logic-apps/logic-apps-exception-handling.md#retry-policies)című témakörben talál. | 
+| <*lekérdezés – paraméterek*> | JSON-objektum | Az API-hívással felvenni kívánt lekérdezési paraméterek. <p>Például a `"queries": { "api-version": "2018-01-01" }` objektum hozzáadja a `?api-version=2018-01-01` a híváshoz. | 
+| <*egyéb művelet-specifikus-tulajdonságok*> | JSON-objektum | Az adott műveletre vonatkozó egyéb tulajdonságok | 
 |||| 
 
 *Példa*
@@ -974,25 +976,25 @@ Egyes értékek, például a <*módszer típusú*> elérhetők mind a `"subscrib
 
 *Szükséges*
 
-| Value (Díj) | Type (Típus) | Leírás | 
+| Value (Díj) | Típus | Leírás | 
 |-------|------|-------------| 
-| <*művelet – név* > | Sztring | Az összekötő által megadott művelet neve | 
-| <*metódus típusa* > | Sztring | A végpontról való feliratkozáshoz vagy leiratkozáshoz használandó HTTP-módszer: "GET", "PUT", "POST", "PATCH" vagy "DELETE" | 
-| <*API – előfizetés – URL-cím* > | Sztring | Az API-ra való feliratkozáshoz használandó URI | 
+| <*művelet – név*> | Sztring | Az összekötő által megadott művelet neve | 
+| <*metódus típusa*> | Sztring | A végpontról való feliratkozáshoz vagy leiratkozáshoz használandó HTTP-módszer: "GET", "PUT", "POST", "PATCH" vagy "DELETE" | 
+| <*API – előfizetés – URL-cím*> | Sztring | Az API-ra való feliratkozáshoz használandó URI | 
 |||| 
 
 *Választható*
 
-| Value (Díj) | Type (Típus) | Leírás | 
+| Value (Díj) | Típus | Leírás | 
 |-------|------|-------------| 
-| <*API – leiratkozás – URL-cím* > | Sztring | Az API-ból való leiratkozáshoz használandó URI | 
-| <*fejléc – tartalom* > | JSON-objektum | A kérelemben küldendő fejlécek <p>Például a nyelv és a típus megadásához a kérelemben: <p>`"headers": { "Accept-Language": "en-us", "Content-Type": "application/json" }` |
-| <*törzs – tartalom* > | JSON-objektum | A kérelemben küldendő üzenet tartalma | 
+| <*API – leiratkozás – URL-cím*> | Sztring | Az API-ból való leiratkozáshoz használandó URI | 
+| <*fejléc – tartalom*> | JSON-objektum | A kérelemben küldendő fejlécek <p>Például a nyelv és a típus megadásához a kérelemben: <p>`"headers": { "Accept-Language": "en-us", "Content-Type": "application/json" }` |
+| <*törzs – tartalom*> | JSON-objektum | A kérelemben küldendő üzenet tartalma | 
 | <*hitelesítési típus*> | JSON-objektum | Az a hitelesítési modell, amelyet a kérelem a kimenő kérelmek hitelesítéséhez használ. További információ: [hitelesítés hozzáadása kimenő hívásokhoz](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound). |
-| <*újrapróbálkozási viselkedés* > | JSON-objektum | Testreszabja az újrapróbálkozási viselkedést olyan időszakos hibák esetén, amelyeknél a 408, a 429 és a 5XX állapotkód, valamint a kapcsolódási kivételek. További információt az [újrapróbálkozási szabályzatok](../logic-apps/logic-apps-exception-handling.md#retry-policies)című témakörben talál. | 
-| <*lekérdezés – paraméterek* > | JSON-objektum | Az API-hívással belefoglalható lekérdezési paraméterek <p>Például a `"queries": { "api-version": "2018-01-01" }` objektum hozzáadja a `?api-version=2018-01-01` a híváshoz. | 
-| <*egyéb művelet-specifikus-input-properties* > | JSON-objektum | Az adott műveletre vonatkozó egyéb beviteli tulajdonságok | 
-| <*egyéb művelet-specifikus-tulajdonságok* > | JSON-objektum | Az adott műveletre vonatkozó egyéb tulajdonságok | 
+| <*újrapróbálkozási viselkedés*> | JSON-objektum | Testreszabja az újrapróbálkozási viselkedést olyan időszakos hibák esetén, amelyeknél a 408, a 429 és a 5XX állapotkód, valamint a kapcsolódási kivételek. További információt az [újrapróbálkozási szabályzatok](../logic-apps/logic-apps-exception-handling.md#retry-policies)című témakörben talál. | 
+| <*lekérdezés – paraméterek*> | JSON-objektum | Az API-hívással belefoglalható lekérdezési paraméterek <p>Például a `"queries": { "api-version": "2018-01-01" }` objektum hozzáadja a `?api-version=2018-01-01` a híváshoz. | 
+| <*egyéb művelet-specifikus-input-properties*> | JSON-objektum | Az adott műveletre vonatkozó egyéb beviteli tulajdonságok | 
+| <*egyéb művelet-specifikus-tulajdonságok*> | JSON-objektum | Az adott műveletre vonatkozó egyéb tulajdonságok | 
 |||| 
 
 A **ApiConnectionWebhook** műveletekre vonatkozó korlátokat ugyanúgy is megadhatja, mint a [http aszinkron korlátokat](#asynchronous-limits).
@@ -1014,15 +1016,15 @@ Ezután a művelet kimenetét más műveletekben is használhatja.
 
 *Szükséges* 
 
-| Value (Díj) | Type (Típus) | Leírás | 
+| Value (Díj) | Típus | Leírás | 
 |-------|------|-------------| 
-| <*bemenetek és összeállítások* > | Bármelyik | Egyetlen kimenet létrehozására szolgáló bemenetek | 
+| <*bemenetek és összeállítások*> | Bármelyik | Egyetlen kimenet létrehozására szolgáló bemenetek | 
 |||| 
 
 *1. példa*
 
 <!-- markdownlint-disable MD038 -->
-Ez a műveleti definíció egy záró szóközzel és a `1234` értékkel egyesíti `abcdefg `.
+Ez a műveleti definíció egy záró szóközzel és a `1234`értékkel egyesíti `abcdefg `.
 <!-- markdownlint-enable MD038 -->
 
 ```json
@@ -1075,9 +1077,9 @@ Ez a művelet egy JavaScript-kódrészletet futtat, és visszaadja az eredménye
 
 *Szükséges*
 
-| Value (Díj) | Type (Típus) | Leírás |
+| Value (Díj) | Típus | Leírás |
 |-------|------|-------------|
-| <*JavaScript –* kódrészlet > | Változó | A futtatni kívánt JavaScript-kód. A kódokra vonatkozó követelmények és további információk: kódrészletek [hozzáadása és futtatása beágyazott kóddal](../logic-apps/logic-apps-add-run-inline-code.md). <p>A `code` attribútumban a kódrészlet az írásvédett `workflowContext` objektumot bemenetként használhatja. Ez az objektum olyan altulajdonságokkal rendelkezik, amelyek lehetővé tennék a kód elérését a munkafolyamatban lévő trigger és előző műveletek eredményeihez. További információ a `workflowContext` objektumról: az [trigger és a művelet eredményei a kódban](../logic-apps/logic-apps-add-run-inline-code.md#workflowcontext). |
+| <*JavaScript –* kódrészlet> | Változó | A futtatni kívánt JavaScript-kód. A kódokra vonatkozó követelmények és további információk: kódrészletek [hozzáadása és futtatása beágyazott kóddal](../logic-apps/logic-apps-add-run-inline-code.md). <p>A `code` attribútumban a kódrészlet az írásvédett `workflowContext` objektumot bemenetként használhatja. Ez az objektum olyan altulajdonságokkal rendelkezik, amelyek lehetővé tennék a kód elérését a munkafolyamatban lévő trigger és előző műveletek eredményeihez. További információ a `workflowContext` objektumról: az [trigger és a művelet eredményei a kódban](../logic-apps/logic-apps-add-run-inline-code.md#workflowcontext). |
 ||||
 
 *Bizonyos esetekben szükséges*
@@ -1086,14 +1088,14 @@ A `explicitDependencies` attribútum azt adja meg, hogy explicit módon kívánj
 
 A `includeTrigger` attribútum esetében megadhatja `true` vagy `false` értékeket.
 
-| Value (Díj) | Type (Típus) | Leírás |
+| Value (Díj) | Típus | Leírás |
 |-------|------|-------------|
-| *előző műveletek* < > | karakterlánc-tömb | Egy tömb a megadott műveleti nevekkel. Használja a munkafolyamat-definícióban megjelenő műveletek neveit, ahol a műveleti nevek aláhúzást (_) használnak, nem szóközöket (""). |
+| *előző műveletek* <> | karakterlánc-tömb | Egy tömb a megadott műveleti nevekkel. Használja a munkafolyamat-definícióban megjelenő műveletek neveit, ahol a műveleti nevek aláhúzást (_) használnak, nem szóközöket (""). |
 ||||
 
 *1. példa*
 
-Ez a művelet olyan kódot futtat, amely megkapja a logikai alkalmazás nevét, és a "Hello World from \<logic-app-Name >" szöveget adja vissza eredményként. Ebben a példában a kód a munkafolyamat nevére hivatkozik úgy, hogy a csak olvasható `workflowContext` objektumon keresztül fér hozzá a `workflowContext.workflow.name` tulajdonsághoz. További információ a `workflowContext` objektum használatáról: az [trigger és a művelet eredményeinek a kódban](../logic-apps/logic-apps-add-run-inline-code.md#workflowcontext)való használata.
+Ez a művelet olyan kódot futtat, amely beolvassa a logikai alkalmazás nevét, és eredményként visszaadja a "Hello World from \<Logic-app-Name >" szöveget. Ebben a példában a kód a munkafolyamat nevére hivatkozik úgy, hogy a csak olvasható `workflowContext` objektumon keresztül fér hozzá a `workflowContext.workflow.name` tulajdonsághoz. További információ a `workflowContext` objektum használatáról: az [trigger és a művelet eredményeinek a kódban](../logic-apps/logic-apps-add-run-inline-code.md#workflowcontext)való használata.
 
 ```json
 "Execute_JavaScript_Code": {
@@ -1109,7 +1111,7 @@ Ez a művelet olyan kódot futtat, amely megkapja a logikai alkalmazás nevét, 
 
 Ez a művelet kódot futtat egy logikai alkalmazásban, amely elindítja, amikor új e-mail érkezik egy Office 365 Outlook-fiókba. A logikai alkalmazás egy küldési jóváhagyási e-mail-műveletet is használ, amely a kapott e-mailben továbbítja a tartalmat a jóváhagyásra vonatkozó kéréssel együtt.
 
-A kód kibontja az e-mail-címeket az trigger `Body` tulajdonságában, és visszaadja a címeket a jóváhagyási művelet `SelectedOption` tulajdonságának értékével együtt. A művelet explicit módon magában foglalja a jóváhagyás küldése e-mailben műveletet a `explicitDependencies`  >  `actions` attribútumtól való függőségként.
+A kód kibontja az e-mail-címeket az trigger `Body` tulajdonságában, és visszaadja a címeket a jóváhagyási művelet `SelectedOption` tulajdonságának értékével együtt. A művelet explicit módon magában foglalja a jóváhagyás küldése e-mailben műveletet a `explicitDependencies` > `actions` attribútumtól való függőségként.
 
 ```json
 "Execute_JavaScript_Code": {
@@ -1152,21 +1154,21 @@ Ez a művelet egy korábban létrehozott [Azure-függvényt](../azure-functions/
 
 *Szükséges*
 
-| Value (Díj) | Type (Típus) | Leírás | 
+| Value (Díj) | Típus | Leírás | 
 |-------|------|-------------|  
-| <*Azure-Function-ID* > | Sztring | A hívni kívánt Azure-függvény erőforrás-azonosítója. Itt látható az érték formátuma:<p>"/Subscriptions/<*Azure-előfizetés-azonosító*>/ResourceGroups/<*Azure-resource-group*>/Providers/Microsoft.Web/Sites/<*Azure-function-app-Name*>/functions/<*Azure-Function-Name*> " | 
-| <*metódus típusa* > | Sztring | A függvény hívásához használandó HTTP-metódus: "GET", "PUT", "POST", "PATCH" vagy "DELETE" <p>Ha nincs megadva, az alapértelmezett érték a "POST" metódus. | 
+| <*Azure-Function-ID*> | Sztring | A hívni kívánt Azure-függvény erőforrás-azonosítója. Itt látható az érték formátuma:<p>"/Subscriptions/<*Azure-előfizetés-azonosító*>/ResourceGroups/<*Azure-resource-group*>/Providers/Microsoft.Web/Sites/<*Azure-function-app-Name*>/functions/<*Azure-Function-Name*>" | 
+| <*metódus típusa*> | Sztring | A függvény hívásához használandó HTTP-metódus: "GET", "PUT", "POST", "PATCH" vagy "DELETE" <p>Ha nincs megadva, az alapértelmezett érték a "POST" metódus. | 
 ||||
 
 *Választható*
 
-| Value (Díj) | Type (Típus) | Leírás | 
+| Value (Díj) | Típus | Leírás | 
 |-------|------|-------------|  
-| <*fejléc – tartalom* > | JSON-objektum | A hívással küldendő fejlécek <p>Például a nyelv és a típus megadásához a kérelemben: <p>`"headers": { "Accept-Language": "en-us", "Content-Type": "application/json" }` |
-| <*törzs – tartalom* > | JSON-objektum | A kérelemben küldendő üzenet tartalma | 
-| <*lekérdezés – paraméterek* > | JSON-objektum | Az API-hívással belefoglalható lekérdezési paraméterek <p>Például a `"queries": { "api-version": "2018-01-01" }` objektum hozzáadja a `?api-version=2018-01-01` a híváshoz. | 
-| <*egyéb művelet-specifikus-input-properties* > | JSON-objektum | Az adott műveletre vonatkozó egyéb beviteli tulajdonságok | 
-| <*egyéb művelet-specifikus-tulajdonságok* > | JSON-objektum | Az adott műveletre vonatkozó egyéb tulajdonságok | 
+| <*fejléc – tartalom*> | JSON-objektum | A hívással küldendő fejlécek <p>Például a nyelv és a típus megadásához a kérelemben: <p>`"headers": { "Accept-Language": "en-us", "Content-Type": "application/json" }` |
+| <*törzs – tartalom*> | JSON-objektum | A kérelemben küldendő üzenet tartalma | 
+| <*lekérdezés – paraméterek*> | JSON-objektum | Az API-hívással belefoglalható lekérdezési paraméterek <p>Például a `"queries": { "api-version": "2018-01-01" }` objektum hozzáadja a `?api-version=2018-01-01` a híváshoz. | 
+| <*egyéb művelet-specifikus-input-properties*> | JSON-objektum | Az adott műveletre vonatkozó egyéb beviteli tulajdonságok | 
+| <*egyéb művelet-specifikus-tulajdonságok*> | JSON-objektum | Az adott műveletre vonatkozó egyéb tulajdonságok | 
 ||||
 
 A logikai alkalmazás mentésekor a Logic Apps motor hajtja végre ezeket az ellenőrzéseket a hivatkozott függvényen:
@@ -1230,23 +1232,23 @@ Ez a művelet egy kérelmet küld a megadott HTTP-vagy HTTPS-végpontnak, és el
 
 *Szükséges*
 
-| Tulajdonság | Value (Díj) | Type (Típus) | Leírás |
+| Tulajdonság | Value (Díj) | Típus | Leírás |
 |----------|-------|------|-------------|
-| `method` | <*metódus típusa* > | Sztring | A kimenő kérelem küldéséhez használt módszer: "GET", "PUT", "POST", "PATCH" vagy "DELETE" |
-| `uri` | <*http-vagy-https-Endpoint-URL-cím* > | Sztring | A HTTP-vagy HTTPS-végpont URL-címe, ahová el szeretné küldeni a kimenő kérést. Maximális sztring mérete: 2 KB <p>Egy Azure-szolgáltatás vagy-erőforrás esetében ez az URI-szintaxis magában foglalja az erőforrás-azonosítót és az elérni kívánt erőforrás elérési útját. |
+| `method` | <*metódus típusa*> | Sztring | A kimenő kérelem küldéséhez használt módszer: "GET", "PUT", "POST", "PATCH" vagy "DELETE" |
+| `uri` | <*http-vagy-https-Endpoint-URL-cím*> | Sztring | A HTTP-vagy HTTPS-végpont URL-címe, ahová el szeretné küldeni a kimenő kérést. Maximális sztring mérete: 2 KB <p>Egy Azure-szolgáltatás vagy-erőforrás esetében ez az URI-szintaxis magában foglalja az erőforrás-azonosítót és az elérni kívánt erőforrás elérési útját. |
 |||||
 
 *Választható*
 
-| Tulajdonság | Value (Díj) | Type (Típus) | Leírás |
+| Tulajdonság | Value (Díj) | Típus | Leírás |
 |----------|-------|------|-------------|
-| `headers` | <*fejléc – tartalom* > | JSON-objektum | A kéréssel felvenni kívánt fejlécek <p>Például a nyelv és a típus megadásához: <p>`"headers": { "Accept-Language": "en-us", "Content-Type": "application/json" }` |
-| `queries` | <*lekérdezés – paraméterek* > | JSON-objektum | A kérelemben használni kívánt lekérdezési paraméterek <p>Például a `"queries": { "api-version": "2018-01-01" }` objektum hozzáadja a `?api-version=2018-01-01` a híváshoz. |
-| `body` | <*törzs – tartalom* > | JSON-objektum | A kéréssel adattartalomként küldendő üzenet tartalma |
+| `headers` | <*fejléc – tartalom*> | JSON-objektum | A kéréssel felvenni kívánt fejlécek <p>Például a nyelv és a típus megadásához: <p>`"headers": { "Accept-Language": "en-us", "Content-Type": "application/json" }` |
+| `queries` | <*lekérdezés – paraméterek*> | JSON-objektum | A kérelemben használni kívánt lekérdezési paraméterek <p>Például a `"queries": { "api-version": "2018-01-01" }` objektum hozzáadja a `?api-version=2018-01-01` a híváshoz. |
+| `body` | <*törzs – tartalom*> | JSON-objektum | A kéréssel adattartalomként küldendő üzenet tartalma |
 | `authentication` | <*hitelesítési-Type-and-Property-values*> | JSON-objektum | Az a hitelesítési modell, amelyet a kérelem a kimenő kérelmek hitelesítéséhez használ. További információ: [hitelesítés hozzáadása kimenő hívásokhoz](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound). A feladatütemezőn kívül a `authority` tulajdonság is támogatott. Ha nincs megadva, az alapértelmezett érték `https://management.azure.com/`, de más értéket is használhat. |
-| `retryPolicy` > `type` | <*újrapróbálkozási viselkedés* > | JSON-objektum | Testreszabja az újrapróbálkozási viselkedést olyan időszakos hibák esetén, amelyeknél a 408, a 429 és a 5XX állapotkód, valamint a kapcsolódási kivételek. További információt az [újrapróbálkozási szabályzatok](../logic-apps/logic-apps-exception-handling.md#retry-policies)című témakörben talál. |
-| <*egyéb művelet-specifikus-input-properties* > | <*input-property*> | JSON-objektum | Az adott műveletre vonatkozó egyéb beviteli tulajdonságok |
-| <*egyéb művelet-specifikus-tulajdonságok* > | <*tulajdonság – érték*> | JSON-objektum | Az adott műveletre vonatkozó egyéb tulajdonságok |
+| `retryPolicy` > `type` | <*újrapróbálkozási viselkedés*> | JSON-objektum | Testreszabja az újrapróbálkozási viselkedést olyan időszakos hibák esetén, amelyeknél a 408, a 429 és a 5XX állapotkód, valamint a kapcsolódási kivételek. További információt az [újrapróbálkozási szabályzatok](../logic-apps/logic-apps-exception-handling.md#retry-policies)című témakörben talál. |
+| <*egyéb művelet-specifikus-input-properties*> | <*input-property*> | JSON-objektum | Az adott műveletre vonatkozó egyéb beviteli tulajdonságok |
+| <*egyéb művelet-specifikus-tulajdonságok*> | <*tulajdonság – érték*> | JSON-objektum | Az adott műveletre vonatkozó egyéb tulajdonságok |
 |||||
 
 *Példa*
@@ -1282,10 +1284,10 @@ Ez a művelet létrehoz egy karakterláncot egy tömb összes eleméről, és el
 
 *Szükséges*
 
-| Value (Díj) | Type (Típus) | Leírás | 
+| Value (Díj) | Típus | Leírás | 
 |-------|------|-------------| 
-| <*array* > | Tömb | A forrás elemeket biztosító tömb vagy kifejezés. Ha megad egy kifejezést, a kifejezést idézőjelek közé kell foglalni. | 
-| < elválasztó > | Egyetlen karakterből álló karakterlánc | A karakterláncban szereplő egyes elemeket elválasztó karakter | 
+| <*array*> | Tömb | A forrás elemeket biztosító tömb vagy kifejezés. Ha megad egy kifejezést, a kifejezést idézőjelek közé kell foglalni. | 
+| < elválasztó> | Egyetlen karakterből álló karakterlánc | A karakterláncban szereplő egyes elemeket elválasztó karakter | 
 |||| 
 
 *Példa*
@@ -1326,17 +1328,17 @@ Ez a művelet felhasználóbarát mezőket vagy *jogkivonatokat* hoz létre a JS
 
 *Szükséges*
 
-| Value (Díj) | Type (Típus) | Leírás | 
+| Value (Díj) | Típus | Leírás | 
 |-------|------|-------------| 
-| *JSON-forrás* < > | JSON-objektum | Az elemezni kívánt JSON-tartalom | 
-| <*JSON-schema* > | JSON-objektum | Az alapul szolgáló JSON-tartalmat leíró JSON-séma, amelyet a művelet a forrás JSON-tartalom elemzéséhez használ. <p>**Tipp**: Logic apps Designerben megadhatja a sémát, vagy megadhat egy minta adattartalmat, hogy a művelet előállíthatja a sémát. | 
+| *JSON-forrás* <> | JSON-objektum | Az elemezni kívánt JSON-tartalom | 
+| <*JSON-schema*> | JSON-objektum | Az alapul szolgáló JSON-tartalmat leíró JSON-séma, amelyet a művelet a forrás JSON-tartalom elemzéséhez használ. <p>**Tipp**: Logic apps Designerben megadhatja a sémát, vagy megadhat egy minta adattartalmat, hogy a művelet előállíthatja a sémát. | 
 |||| 
 
 *Példa*
 
 Ez a műveleti definíció létrehozza ezeket a jogkivonatokat, amelyeket használhat a munkafolyamatban, de csak olyan műveletekben, amelyek a **JSON** elemzése műveletet követően futnak: 
 
-`FirstName`, `LastName` és `Email`
+`FirstName`, `LastName`és `Email`
 
 ```json
 "Parse_JSON": {
@@ -1428,10 +1430,10 @@ Ez a művelet egy tömböt hoz létre egy másik tömb elemeiből egy megadott f
 
 *Szükséges*
 
-| Value (Díj) | Type (Típus) | Leírás | 
+| Value (Díj) | Típus | Leírás | 
 |-------|------|-------------| 
-| <*array* > | Tömb | A forrás elemeket biztosító tömb vagy kifejezés. Ha megad egy kifejezést, a kifejezést idézőjelek közé kell foglalni. |
-| <*feltétel vagy szűrő* > | Sztring | A forrás tömbben lévő elemek szűréséhez használt feltétel <p>**Megjegyzés**: Ha egyik érték sem felel meg a feltételnek, akkor a művelet egy üres tömböt hoz létre. |
+| <*array*> | Tömb | A forrás elemeket biztosító tömb vagy kifejezés. Ha megad egy kifejezést, a kifejezést idézőjelek közé kell foglalni. |
+| <*feltétel vagy szűrő*> | Sztring | A forrás tömbben lévő elemek szűréséhez használt feltétel <p>**Megjegyzés**: Ha egyik érték sem felel meg a feltételnek, akkor a művelet egy üres tömböt hoz létre. |
 |||| 
 
 *Példa*
@@ -1469,17 +1471,17 @@ Ez a művelet létrehozza a HTTP-kérelemre adott válasz adattartalmát.
 
 *Szükséges*
 
-| Value (Díj) | Type (Típus) | Leírás | 
+| Value (Díj) | Típus | Leírás | 
 |-------|------|-------------| 
-| <*Válasz-állapot-kód* > | Egész szám | A bejövő kérelembe küldendő HTTP-állapotkód. Az alapértelmezett kód "200 OK", de a kód bármely érvényes állapotkód lehet, amely 2xx, 4xx vagy 5xx, de nem a 3XXX szint or-vel kezdődik. | 
+| <*Válasz-állapot-kód*> | Egész szám | A bejövő kérelembe küldendő HTTP-állapotkód. Az alapértelmezett kód "200 OK", de a kód bármely érvényes állapotkód lehet, amely 2xx, 4xx vagy 5xx, de nem a 3XXX szint or-vel kezdődik. | 
 |||| 
 
 *Választható*
 
-| Value (Díj) | Type (Típus) | Leírás | 
+| Value (Díj) | Típus | Leírás | 
 |-------|------|-------------| 
-| <*Válasz-fejlécek* > | JSON-objektum | Egy vagy több, a válaszban szerepeltetni kívánt fejléc | 
-| <*Válasz – törzs* > | Különböző | A válasz törzse, amely lehet karakterlánc, JSON-objektum vagy akár bináris tartalom egy korábbi műveletből | 
+| <*Válasz-fejlécek*> | JSON-objektum | Egy vagy több, a válaszban szerepeltetni kívánt fejléc | 
+| <*Válasz – törzs*> | Különböző | A válasz törzse, amely lehet karakterlánc, JSON-objektum vagy akár bináris tartalom egy korábbi műveletből | 
 |||| 
 
 *Példa*
@@ -1544,11 +1546,11 @@ Ez a művelet JSON-objektumokból álló tömböt hoz létre egy másik tömb el
 
 *Szükséges* 
 
-| Value (Díj) | Type (Típus) | Leírás | 
+| Value (Díj) | Típus | Leírás | 
 |-------|------|-------------| 
-| <*array* > | Tömb | A forrás elemeket biztosító tömb vagy kifejezés. Győződjön meg arról, hogy idézőjelek közé kell foglalnia egy kifejezést. <p>**Megjegyzés**: Ha a forrás tömb üres, a művelet egy üres tömböt hoz létre. | 
-| <*kulcs neve* > | Sztring | Az <*kifejezés* eredménye alapján hozzárendelt tulajdonság neve > <p>Ha új tulajdonságot szeretne hozzáadni a kimeneti tömb összes objektumához, adjon meg egy <*kulcsnév*> a tulajdonsághoz, valamint egy <*kifejezést*> a tulajdonság értékeként. <p>Ha el szeretne távolítani egy tulajdonságot a tömbben lévő összes objektumból, hagyja ki az adott tulajdonsághoz tartozó <*Key-name*>. | 
-| <*kifejezés* > | Sztring | Az a kifejezés, amely átalakítja az elemeket a forrás tömbben, és hozzárendeli az eredményt <*Key-name* > | 
+| <*array*> | Tömb | A forrás elemeket biztosító tömb vagy kifejezés. Győződjön meg arról, hogy idézőjelek közé kell foglalnia egy kifejezést. <p>**Megjegyzés**: Ha a forrás tömb üres, a művelet egy üres tömböt hoz létre. | 
+| <*kulcs neve*> | Sztring | Az <*kifejezés* eredménye alapján hozzárendelt tulajdonság neve> <p>Ha új tulajdonságot szeretne hozzáadni a kimeneti tömb összes objektumához, adjon meg egy <*kulcsnév*> a tulajdonsághoz, valamint egy <*kifejezést*> a tulajdonság értékeként. <p>Ha el szeretne távolítani egy tulajdonságot a tömbben lévő összes objektumból, hagyja ki az adott tulajdonsághoz tartozó <*Key-name*>. | 
+| <*kifejezés*> | Sztring | Az a kifejezés, amely átalakítja az elemeket a forrás tömbben, és hozzárendeli az eredményt <*Key-name*> | 
 |||| 
 
 A **Select** művelet kimenetként létrehoz egy tömböt, ezért a kimenetet használni kívánó műveletnek el kell fogadnia egy tömböt, vagy konvertálnia kell a tömböt arra a típusra, amelyet a fogyasztó művelet elfogad. Ha például a kimeneti tömböt karakterlánccá szeretné alakítani, átadhatja ezt a tömböt az **összeállítás** műveletnek, majd hivatkozhat a kimenetre a más műveletekben szereplő **összeállítási** műveletből.
@@ -1615,7 +1617,7 @@ Ezután használhatja az **összeállítási** művelet kimenetét más művelet
 
 ### <a name="table-action"></a>Tábla művelete
 
-Ez a művelet létrehoz egy CSV-vagy HTML-táblázatot egy tömbből. A JSON-objektumokkal rendelkező tömbök esetében ez a művelet automatikusan létrehozza az oszlopok fejléceit az objektumok tulajdonságlapján. Más adattípusú tömbök esetében meg kell adnia az oszlopfejléceket és az értékeket. Ez a tömb például tartalmazza a "ID" és a "terméknév" tulajdonságot, amelyet ez a művelet használhat az oszlopfejlécek neveként:
+Ez a művelet létrehoz egy CSV-vagy HTML-táblázatot egy tömbből. A JSON-objektumokkal rendelkező tömbök esetében ez a művelet automatikusan létrehozza az oszlopok fejléceit az objektumok tulajdonságlapján. Más adattípusú tömbök esetében meg kell adnia az oszlopfejléceket és az értékeket. Ez a tömb például tartalmazza a "ID" és a "Product_Name" tulajdonságokat, amelyeket ez a művelet használhat az oszlopfejlécek neveként:
 
 `[ {"ID": 0, "Product_Name": "Apples"}, {"ID": 1, "Product_Name": "Oranges"} ]` 
 
@@ -1642,20 +1644,20 @@ Ez a művelet létrehoz egy CSV-vagy HTML-táblázatot egy tömbből. A JSON-obj
 
 *Szükséges* 
 
-| Value (Díj) | Type (Típus) | Leírás | 
+| Value (Díj) | Típus | Leírás | 
 |-------|------|-------------| 
 | \<CSV *vagy* html >| Sztring | A létrehozni kívánt tábla formátuma | 
-| <*array* > | Tömb | A táblához tartozó forrásadatokat biztosító tömb vagy kifejezés <p>**Megjegyzés**: Ha a forrás tömb üres, a művelet egy üres táblát hoz létre. | 
+| <*array*> | Tömb | A táblához tartozó forrásadatokat biztosító tömb vagy kifejezés <p>**Megjegyzés**: Ha a forrás tömb üres, a művelet egy üres táblát hoz létre. | 
 |||| 
 
 *Választható*
 
 Az oszlopfejlécek és az értékek megadásához vagy testreszabásához használja a `columns` tömböt. Ha `header-value` pároknak ugyanaz a fejléc neve, azok értékei ugyanabban az oszlopban jelennek meg a fejléc neve alatt. Ellenkező esetben az egyes egyedi fejlécek egyedi oszlopot határoznak meg.
 
-| Value (Díj) | Type (Típus) | Leírás | 
+| Value (Díj) | Típus | Leírás | 
 |-------|------|-------------| 
-| <*oszlop neve* > | Sztring | Egy oszlop fejlécének neve | 
-| <*Column-value* > | Bármelyik | Az oszlopban szereplő érték | 
+| <*oszlop neve*> | Sztring | Egy oszlop fejlécének neve | 
+| <*Column-value*> | Bármelyik | Az oszlopban szereplő érték | 
 |||| 
 
 *1. példa*
@@ -1702,11 +1704,11 @@ Ez a műveleti definíció egy HTML-táblázatot hoz létre a "myItemArray" vál
 
 Itt látható a művelet által létrehozott HTML-táblázat: 
 
-<table><thead><tr><th>ID (Azonosító)</th><th>Terméknév</th></tr></thead><tbody><tr><td>0</td><td>Almák</td></tr><tr><td>1</td><td>Narancsok</td></tr></tbody></table>
+<table><thead><tr><th>ID (Azonosító)</th><th>Product_Name</th></tr></thead><tbody><tr><td>0</td><td>Almák</td></tr><tr><td>1</td><td>Narancsok</td></tr></tbody></table>
 
 *3. példa*
 
-Ez a műveleti definíció egy HTML-táblázatot hoz létre a "myItemArray" változóból. Ez a példa azonban felülbírálja az alapértelmezett oszlopfejlécek nevét a "Stock_ID" és a "Description" kifejezéssel, és hozzáadja a "Organic" szót a "Description" (Leírás) oszlopban szereplő értékekhez.
+Ez a műveleti definíció egy HTML-táblázatot hoz létre a "myItemArray" változóból. Ez a példa azonban felülbírálja az alapértelmezett oszlopfejlécek nevét a "Stock_ID" és a "Description" értékkel, és hozzáadja a "Organic" szót a "Description" (Leírás) oszlop értékeihez.
 
 ```json
 "Create_HTML_table": {
@@ -1755,7 +1757,7 @@ Ez a művelet leállítja a munkafolyamat-példány futtatását, megszakítja a
 
 *Szükséges*
 
-| Value (Díj) | Type (Típus) | Leírás | 
+| Value (Díj) | Típus | Leírás | 
 |-------|------|-------------| 
 | <*status*> | Sztring | A futtatáshoz visszatérési állapot: "sikertelen", "megszakított" vagy "sikeres" |
 |||| 
@@ -1764,10 +1766,10 @@ Ez a művelet leállítja a munkafolyamat-példány futtatását, megszakítja a
 
 A "runStatus" objektum tulajdonságai csak akkor érvényesek, ha a "runStatus" tulajdonság "sikertelen" állapotra van állítva.
 
-| Value (Díj) | Type (Típus) | Leírás | 
+| Value (Díj) | Típus | Leírás | 
 |-------|------|-------------| 
-| <*hiba-kód-vagy-név* > | Sztring | A hiba kódja vagy neve |
-| <*hibaüzenet – üzenet* > | Sztring | A hibát leíró üzenet vagy szöveg, valamint az alkalmazás felhasználója által elvégezhető műveletek | 
+| <*hiba-kód-vagy-név*> | Sztring | A hiba kódja vagy neve |
+| <*hibaüzenet – üzenet*> | Sztring | A hibát leíró üzenet vagy szöveg, valamint az alkalmazás felhasználója által elvégezhető műveletek | 
 |||| 
 
 *Példa*
@@ -1825,11 +1827,11 @@ Ez a művelet szünetelteti a munkafolyamat-végrehajtást a megadott intervallu
 
 *Szükséges*
 
-| Value (Díj) | Type (Típus) | Leírás | 
+| Value (Díj) | Típus | Leírás | 
 |-------|------|-------------| 
-| <*egységek száma* > | Egész szám | A **késleltetési** művelethez a várakozási egységek száma | 
-| <*intervallum* > | Sztring | A **késleltetési** művelethez a várakozási időköz: "Second", "minute", "Hour", "Day", "Week", "Month" | 
-| <*dátum-idő bélyegző* > | Sztring | A végrehajtás folytatásához szükséges dátum és idő **a művelethez** . Az értéknek az [UTC dátum és idő formátumát](https://en.wikipedia.org/wiki/Coordinated_Universal_Time)kell használnia. | 
+| <*egységek száma*> | Egész szám | A **késleltetési** művelethez a várakozási egységek száma | 
+| <*intervallum*> | Sztring | A **késleltetési** művelethez a várakozási időköz: "Second", "minute", "Hour", "Day", "Week", "Month" | 
+| <*dátum-idő bélyegző*> | Sztring | A végrehajtás folytatásához szükséges dátum és idő **a művelethez** . Az értéknek az [UTC dátum és idő formátumát](https://en.wikipedia.org/wiki/Coordinated_Universal_Time)kell használnia. | 
 |||| 
 
 *1. példa*
@@ -1898,21 +1900,21 @@ A Logic Apps motor ellenőrzi a hívni kívánt trigger elérését, ezért győ
 
 *Szükséges*
 
-| Value (Díj) | Type (Típus) | Leírás | 
+| Value (Díj) | Típus | Leírás | 
 |-------|------|-------------| 
-| <*beágyazott-Logic-app-name* > | Sztring | A hívni kívánt logikai alkalmazás neve | 
-| <*trigger-név* > | Sztring | A meghívni kívánt beágyazott logikai alkalmazásban lévő trigger neve | 
-| <*Azure-előfizetés-azonosító* > | Sztring | A beágyazott logikai alkalmazás Azure-előfizetési azonosítója |
-| <*Azure-Resource-group*> | Sztring | Az Azure-erőforráscsoport neve a beágyazott logikai alkalmazáshoz |
-| <*beágyazott-Logic-app-name* > | Sztring | A hívni kívánt logikai alkalmazás neve |
+| <*beágyazott-Logic-app-name*> | Sztring | A hívni kívánt logikai alkalmazás neve | 
+| <*trigger-név*> | Sztring | A meghívni kívánt beágyazott logikai alkalmazásban lévő trigger neve | 
+| <*Azure-előfizetés-azonosító*> | Sztring | A beágyazott logikai alkalmazás Azure-előfizetési azonosítója |
+| <*Azure-Erőforrás-csoport*> | Sztring | Az Azure-erőforráscsoport neve a beágyazott logikai alkalmazáshoz |
+| <*beágyazott-Logic-app-name*> | Sztring | A hívni kívánt logikai alkalmazás neve |
 ||||
 
 *Választható*
 
-| Value (Díj) | Type (Típus) | Leírás | 
+| Value (Díj) | Típus | Leírás | 
 |-------|------|-------------|  
-| <*fejléc – tartalom* > | JSON-objektum | A hívással küldendő fejlécek | 
-| <*törzs – tartalom* > | JSON-objektum | A hívással küldendő üzenet tartalma | 
+| <*fejléc – tartalom*> | JSON-objektum | A hívással küldendő fejlécek | 
+| <*törzs – tartalom*> | JSON-objektum | A hívással küldendő üzenet tartalma | 
 ||||
 
 *Kimenetek*
@@ -1975,19 +1977,19 @@ Ez a Looping művelet egy tömbön keresztül ismétli meg a műveleteket, és m
 
 *Szükséges* 
 
-| Value (Díj) | Type (Típus) | Leírás | 
+| Value (Díj) | Típus | Leírás | 
 |-------|------|-------------| 
-| <*művelet – 1... n* > | Sztring | Az egyes tömb elemein futó műveletek nevei | 
-| <*Action-definition-1... n* > | JSON-objektum | A-t futtató műveletek definíciói | 
-| <*a-each-expression* > | Sztring | A megadott tömb minden elemére hivatkozó kifejezés | 
+| <*művelet – 1... n*> | Sztring | Az egyes tömb elemein futó műveletek nevei | 
+| <*Action-definition-1... n*> | JSON-objektum | A-t futtató műveletek definíciói | 
+| <*a-each-expression*> | Sztring | A megadott tömb minden elemére hivatkozó kifejezés | 
 |||| 
 
 *Választható*
 
-| Value (Díj) | Type (Típus) | Leírás | 
+| Value (Díj) | Típus | Leírás | 
 |-------|------|-------------| 
-| <*száma* > | Egész szám | Alapértelmezés szerint az "minden" hurok-iteráció egy időben fut, vagy párhuzamosan az [alapértelmezett korláttal](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits). Ha módosítani szeretné ezt a korlátot úgy, hogy új <*count*> értéket állít be, tekintse meg a ["minden" hurok egyidejűségének módosítása](#change-for-each-concurrency)című témakört. | 
-| <*művelet – lehetőség* > | Sztring | Ha egymás után párhuzamosan szeretné futtatni az "összes" ciklust, állítsa be <*művelet – lehetőség*> `Sequential` vagy <*darabszámot*> `1`re, de nem mindkettőre. További információ: ["az egyes ciklusok egymás utáni futtatása](#sequential-for-each)". | 
+| <*száma*> | Egész szám | Alapértelmezés szerint az "minden" hurok-iteráció egy időben fut, vagy párhuzamosan az [alapértelmezett korláttal](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits). Ha módosítani szeretné ezt a korlátot úgy, hogy új <*count*> értéket állít be, tekintse meg a ["minden" hurok egyidejűségének módosítása](#change-for-each-concurrency)című témakört. | 
+| <*művelet – lehetőség*> | Sztring | Ha egymás után párhuzamosan szeretné futtatni az "összes" ciklust, állítsa be <*művelet – lehetőség*> `Sequential` vagy <*darabszámot*> `1`re, de nem mindkettőre. További információ: ["az egyes ciklusok egymás utáni futtatása](#sequential-for-each)". | 
 |||| 
 
 *Példa*
@@ -2048,12 +2050,12 @@ Ez a művelet, amely *feltételes utasítás*, kiértékel egy kifejezést, amel
 }
 ```
 
-| Value (Díj) | Type (Típus) | Leírás | 
+| Value (Díj) | Típus | Leírás | 
 |-------|------|-------------| 
-| <*feltétel* > | JSON-objektum | A feltétel, amely lehet egy kifejezés, hogy kiértékelje | 
-| <*művelet – 1* > | JSON-objektum | A <*feltételnél*futtatandó művelet > igaz értékre való kiértékelése | 
-| <*művelet – definíció* > | JSON-objektum | A művelet definíciója | 
-| <*művelet – 2* > | JSON-objektum | A <*feltételnél*futtatandó művelet, > hamis értéket ad vissza | 
+| <*feltétel*> | JSON-objektum | A feltétel, amely lehet egy kifejezés, hogy kiértékelje | 
+| <*művelet – 1*> | JSON-objektum | A <*feltételnél*futtatandó művelet > igaz értékre való kiértékelése | 
+| <*művelet – definíció*> | JSON-objektum | A művelet definíciója | 
+| <*művelet – 2*> | JSON-objektum | A <*feltételnél*futtatandó művelet, > hamis értéket ad vissza | 
 |||| 
 
 A `actions` vagy `else` objektumok műveletei a következő állapotokat kapják meg:
@@ -2106,10 +2108,10 @@ Ez az állapot azt adja meg, hogy ha az egész szám változó értéke nullán�
   
 | JSON | Eredmény | 
 |------|--------| 
-| "kifejezés": "@parameters (" <*hasSpecialAction*> ")" | Csak logikai kifejezések esetén a feltétel minden olyan értékre érvényes, amely az igaz értéket adja vissza. <p>Ha más típusú logikai értéket szeretne átalakítani, használja a következő függvényeket: `empty()` vagy `equals()`. | 
-| "Expression": "@greater (műveletek (" <*művelet*> "). output. Value, parameters (" <*küszöbérték*> "))" | Az összehasonlító függvények esetében a művelet csak akkor fut le, ha <*művelet*kimenete > nagyobb, mint a <*küszöbérték*> érték. | 
-| "Expression": "@or (nagyobb (művelet (" <*művelet*> "). output. Value, parameters (" <*küszöbérték*> ")), kevesebb (művelet (" <*azonos művelet*> "). output. Value, 100)" | A Logic functions és a beágyazott logikai kifejezések létrehozásakor a művelet akkor fut le, ha <*művelet*kimenete > nagyobb, mint a <*küszöbérték*> értéke vagy a 100. | 
-| "Expression": "@equals (hossz (művelet (" <*művelet*> "). outputs. errors), 0))" | A Array függvények segítségével ellenőrizheti, hogy a tömb tartalmaz-e elemeket. A művelet akkor fut le, amikor a `errors` tömb üres. | 
+| "kifejezés": "@parameters(" <*hasSpecialAction*> ")" | Csak logikai kifejezések esetén a feltétel minden olyan értékre érvényes, amely az igaz értéket adja vissza. <p>Ha más típusú logikai értéket szeretne átalakítani, használja a következő függvényeket: `empty()` vagy `equals()`. | 
+| "Expression": "@greater(műveletek (" <*művelet*> "). output. Value, parameters (" <*küszöbérték*> "))" | Az összehasonlító függvények esetében a művelet csak akkor fut le, ha <*művelet*kimenete > nagyobb, mint a <*küszöbérték*> érték. | 
+| "Expression": "@or(nagyobb (művelet (" <*művelet*> "). output. Value, parameters (" <*küszöbérték*> ")), kevesebb (művelet (" <*azonos művelet*> "). output. Value, 100)" | A Logic functions és a beágyazott logikai kifejezések létrehozásakor a művelet akkor fut le, ha <*művelet*kimenete > nagyobb, mint a <*küszöbérték*> értéke vagy a 100. | 
+| "Expression": "@equals(hossz (művelet (" <*művelet*> "). outputs. errors), 0))" | A Array függvények segítségével ellenőrizheti, hogy a tömb tartalmaz-e elemeket. A művelet akkor fut le, amikor a `errors` tömb üres. | 
 ||| 
 
 <a name="scope-action"></a>
@@ -2138,10 +2140,10 @@ Ez a művelet logikailag csoportosítja a műveleteket *hatókörökre*, amelyek
 
 *Szükséges*
 
-| Value (Díj) | Type (Típus) | Leírás | 
+| Value (Díj) | Típus | Leírás | 
 |-------|------|-------------|  
-| <*belső művelet – 1... n* > | JSON-objektum | Egy vagy több olyan művelet, amely a hatókörön belül fut |
-| <*művelet – bemenetek* > | JSON-objektum | Az egyes műveletek bemenetei |
+| <*belső művelet – 1... n*> | JSON-objektum | Egy vagy több olyan művelet, amely a hatókörön belül fut |
+| <*művelet – bemenetek*> | JSON-objektum | Az egyes műveletek bemenetei |
 |||| 
 
 <a name="switch-action"></a>
@@ -2179,20 +2181,20 @@ Ez a művelet, más néven *switch-utasítás*, más műveleteket is szervez az 
 
 *Szükséges*
 
-| Value (Díj) | Type (Típus) | Leírás | 
+| Value (Díj) | Típus | Leírás | 
 |-------|------|-------------| 
-| <*Expression-Object-vagy-token* > | Változó | A kiértékelni kívánt kifejezés, JSON-objektum vagy jogkivonat | 
-| <*művelet – név* > | Sztring | Az egyező esethez futtatandó művelet neve | 
-| <*művelet – definíció* > | JSON-objektum | A megfelelő esethez futtatandó művelet definíciója | 
-| <*egyező érték* > | Változó | A kiértékelt eredménnyel összehasonlítandó érték | 
+| <*Expression-Object-vagy-token*> | Változó | A kiértékelni kívánt kifejezés, JSON-objektum vagy jogkivonat | 
+| <*művelet – név*> | Sztring | Az egyező esethez futtatandó művelet neve | 
+| <*művelet – definíció*> | JSON-objektum | A megfelelő esethez futtatandó művelet definíciója | 
+| <*egyező érték*> | Változó | A kiértékelt eredménnyel összehasonlítandó érték | 
 |||| 
 
 *Választható*
 
-| Value (Díj) | Type (Típus) | Leírás | 
+| Value (Díj) | Típus | Leírás | 
 |-------|------|-------------| 
-| <*alapértelmezett – a művelet neve* > | Sztring | A futtatandó alapértelmezett művelet neve, ha nem létezik egyező eset | 
-| <*alapértelmezett – Action-definition* > | JSON-objektum | Annak a műveletnek a definíciója, amely akkor fut, ha nem létezik egyező eset | 
+| <*alapértelmezett – a művelet neve*> | Sztring | A futtatandó alapértelmezett művelet neve, ha nem létezik egyező eset | 
+| <*alapértelmezett – Action-definition*> | JSON-objektum | Annak a műveletnek a definíciója, amely akkor fut, ha nem létezik egyező eset | 
 |||| 
 
 *Példa*
@@ -2305,14 +2307,14 @@ Ez a hurok-művelet olyan műveleteket tartalmaz, amelyek addig futnak, amíg a 
 }
 ```
 
-| Value (Díj) | Type (Típus) | Leírás | 
+| Value (Díj) | Típus | Leírás | 
 |-------|------|-------------| 
-| <*művelet – név* > | Sztring | A hurokon belül futtatni kívánt művelet neve | 
-| <*művelet típusa* > | Sztring | A futtatni kívánt Művelettípus | 
-| <*művelet – bemenetek* > | Különböző | A futtatandó művelet bemenetei | 
-| <*feltétel* > | Sztring | Annak a feltételnek vagy kifejezésnek a kiértékelése, amelyet a hurok befejezésének befejezése után kell kiértékelni | 
-| <*hurok száma* > | Egész szám | A művelet által futtatható legtöbb hurok maximális száma. Az alapértelmezett `count` érték 60. | 
-| <*hurok – időtúllépés* > | Sztring | A hurok futtatásának leghosszabb időtartamára vonatkozó korlát. Az alapértelmezett `timeout` érték `PT1H`, amely a szükséges [ISO 8601-formátum](https://en.wikipedia.org/wiki/ISO_8601). |
+| <*művelet – név*> | Sztring | A hurokon belül futtatni kívánt művelet neve | 
+| <*művelet típusa*> | Sztring | A futtatni kívánt Művelettípus | 
+| <*művelet – bemenetek*> | Különböző | A futtatandó művelet bemenetei | 
+| <*feltétel*> | Sztring | Annak a feltételnek vagy kifejezésnek a kiértékelése, amelyet a hurok befejezésének befejezése után kell kiértékelni | 
+| <*hurok száma*> | Egész szám | A művelet által futtatható legtöbb hurok maximális száma. Az alapértelmezett `count` érték 60. | 
+| <*hurok – időtúllépés*> | Sztring | A hurok futtatásának leghosszabb időtartamára vonatkozó korlát. Az alapértelmezett `timeout` érték `PT1H`, amely a szükséges [ISO 8601-formátum](https://en.wikipedia.org/wiki/ISO_8601). |
 |||| 
 
 *Példa*
@@ -2384,14 +2386,14 @@ Az eseményindítók és műveletek esetében a `limit.timeout` tulajdonság hoz
 
 Az eseményindítók és műveletek alapértelmezett futásidejű viselkedését az eseményindító vagy művelet definíciójában található `runtimeConfiguration` tulajdonságokkal módosíthatja.
 
-| Tulajdonság | Type (Típus) | Leírás | Trigger vagy művelet | 
+| Tulajdonság | Típus | Leírás | Trigger vagy művelet | 
 |----------|------|-------------|-------------------| 
-| `runtimeConfiguration.concurrency.runs` | Egész szám | Módosítsa az egy időben vagy párhuzamosan futtatható munkafolyamat-példányok számának [*alapértelmezett korlátját*](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits) . Ez az érték segít korlátozni a háttérrendszer által fogadott kérelmek számát. <p>Ha úgy állítja be a `runs` tulajdonságot, hogy `1` ugyanúgy működjön, mint a `operationOptions` tulajdonság `SingleInstance` értékre állítása. Beállíthatja az egyik tulajdonságot, de mindkettőt nem. <p>Az alapértelmezett korlát módosításához lásd: [trigger egyidejűségének módosítása](#change-trigger-concurrency) vagy [példányok elindítása szekvenciálisan](#sequential-trigger). | Minden eseményindító | 
+| `runtimeConfiguration.concurrency.runs` | Egész szám | Módosítsa az egy időben vagy párhuzamosan futtatható munkafolyamat-példányok számának [*alapértelmezett korlátját*](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits) . Ez az érték segít korlátozni a háttérrendszer által fogadott kérelmek számát. <p>Ha úgy állítja be a `runs` tulajdonságot, hogy `1` ugyanúgy működjön, mint a `operationOptions` tulajdonság `SingleInstance`értékre állítása. Beállíthatja az egyik tulajdonságot, de mindkettőt nem. <p>Az alapértelmezett korlát módosításához lásd: [trigger egyidejűségének módosítása](#change-trigger-concurrency) vagy [példányok elindítása szekvenciálisan](#sequential-trigger). | Minden eseményindító | 
 | `runtimeConfiguration.concurrency.maximumWaitingRuns` | Egész szám | Módosítsa az [*alapértelmezett korlátot*](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits) azon munkafolyamat-példányok számánál, amelyek a futtatásra várnak, ha a munkafolyamat már futtatja az egyidejű példányok maximális számát. Módosíthatja a egyidejűségi korlátot a `concurrency.runs` tulajdonságban. <p>Az alapértelmezett korlát módosításához tekintse meg a [várakozó futtatások korlátjának módosítása](#change-waiting-runs)című témakört. | Minden eseményindító | 
-| `runtimeConfiguration.concurrency.repetitions` | Egész szám | Módosítsa a "for each" ciklusok [*alapértelmezett korlátját*](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits) , amely egy időben vagy párhuzamosan futtatható. <p>Ha úgy állítja be a `repetitions` tulajdonságot, hogy `1` ugyanúgy működjön, mint a `operationOptions` tulajdonság `SingleInstance` értékre állítása. Beállíthatja az egyik tulajdonságot, de mindkettőt nem. <p>Az alapértelmezett korlát módosításához tekintse meg az egyes "egyidejűségek és futtatások" [módosítását](#change-for-each-concurrency) egymás [utáni ciklusokban](#sequential-for-each). | Művelet <p>[Foreach](#foreach-action) | 
+| `runtimeConfiguration.concurrency.repetitions` | Egész szám | Módosítsa a "for each" ciklusok [*alapértelmezett korlátját*](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits) , amely egy időben vagy párhuzamosan futtatható. <p>Ha úgy állítja be a `repetitions` tulajdonságot, hogy `1` ugyanúgy működjön, mint a `operationOptions` tulajdonság `SingleInstance`értékre állítása. Beállíthatja az egyik tulajdonságot, de mindkettőt nem. <p>Az alapértelmezett korlát módosításához tekintse meg az egyes "egyidejűségek és futtatások" [módosítását](#change-for-each-concurrency) egymás [utáni ciklusokban](#sequential-for-each). | Művelet <p>[Foreach](#foreach-action) | 
 | `runtimeConfiguration.paginationPolicy.minimumItemCount` | Egész szám | A (z) és a (z) rendszerű tördelést támogató műveletek esetében ez az érték határozza meg a beolvasandó eredmények *minimális* számát. <p>A tördelés bekapcsolásához tekintse meg a [tömeges adatok, elemek vagy eredmények beolvasása a tördelés használatával című cikket](../logic-apps/logic-apps-exceed-default-page-size-with-pagination.md) . | Művelet: változó |
 | `runtimeConfiguration.secureData.properties` | Tömb | Számos eseményindító és művelet esetén ezek a beállítások elrejtik a logikai alkalmazás futtatási előzményeinek bemeneteit, kimeneteit vagy mindkettőt. <p>Az adatok védelméről lásd: [bemenetek és kimenetek elrejtése a futtatási előzményekből](../logic-apps/logic-apps-securing-a-logic-app.md#secure-data-code-view). | A legtöbb eseményindító és művelet |
-| `runtimeConfiguration.staticResult` | JSON-objektum | A és a [statikus eredményhalmaz](../logic-apps/test-logic-apps-mock-data-static-results.md) beállítását támogató műveletek esetében a `staticResult` objektum a következő attribútumokkal rendelkezik: <p>-  `name`, amely az aktuális művelet statikus eredményének definíciójának nevére hivatkozik, amely a logikai alkalmazás munkafolyamatának `definition` attribútumában megjelenő `staticResults` attribútumon belül jelenik meg. További információ: [statikus eredmények – séma-hivatkozás a munkafolyamat-definíciós nyelvhez](../logic-apps/logic-apps-workflow-definition-language.md#static-results). <p> -  `staticResultOptions`, amely megadja, hogy a statikus eredmények `Enabled` vagy sem az aktuális művelethez. <p>A statikus eredmények bekapcsolásához lásd: [Logic Apps-alkalmazások tesztelése statikus eredmények beállításával](../logic-apps/test-logic-apps-mock-data-static-results.md) | Művelet: változó |
+| `runtimeConfiguration.staticResult` | JSON-objektum | A és a [statikus eredményhalmaz](../logic-apps/test-logic-apps-mock-data-static-results.md) beállítását támogató műveletek esetében a `staticResult` objektum a következő attribútumokkal rendelkezik: <p>- `name`, amely az aktuális művelet statikus eredményének definíciójának nevére hivatkozik, amely a logikai alkalmazás munkafolyamatának `definition` attribútumában megjelenő `staticResults` attribútumon belül jelenik meg. További információ: [statikus eredmények – séma-hivatkozás a munkafolyamat-definíciós nyelvhez](../logic-apps/logic-apps-workflow-definition-language.md#static-results). <p> - `staticResultOptions`, amely megadja, hogy a statikus eredmények `Enabled` vagy sem az aktuális művelethez. <p>A statikus eredmények bekapcsolásához lásd: [Logic Apps-alkalmazások tesztelése statikus eredmények beállításával](../logic-apps/test-logic-apps-mock-data-static-results.md) | Művelet: változó |
 ||||| 
 
 <a name="operation-options"></a>
@@ -2400,12 +2402,12 @@ Az eseményindítók és műveletek alapértelmezett futásidejű viselkedését
 
 Az eseményindítók és műveletek alapértelmezett viselkedését az eseményindító vagy művelet definíciójában lévő `operationOptions` tulajdonsággal módosíthatja.
 
-| Művelet beállítása | Type (Típus) | Leírás | Trigger vagy művelet | 
+| Művelet beállítása | Típus | Leírás | Trigger vagy művelet | 
 |------------------|------|-------------|-------------------| 
 | `DisableAsyncPattern` | Sztring | Aszinkron módon futtassa a HTTP-alapú műveleteket szinkronban. <p><p>A beállítás megadásához tekintse meg a [Műveletek szinkron módon történő futtatását](#asynchronous-patterns)ismertető témakört. | Műveletek <p>[ApiConnection](#apiconnection-action), <br>[Http](#http-action), <br>[Válasz](#response-action) | 
 | `OptimizedForHighThroughput` | Sztring | Módosítsa a műveletek végrehajtásának [alapértelmezett korlátját](../logic-apps/logic-apps-limits-and-config.md#throughput-limits) 5 percenként a [maximális korlátra](../logic-apps/logic-apps-limits-and-config.md#throughput-limits). <p><p>A beállítás megadásához lásd: [Futtatás nagy teljesítményű módban](#run-high-throughput-mode). | Minden művelet | 
-| `Sequential` | Sztring | A "minden" hurok-iterációhoz egyenként futtassa a parancsot egyszerre, nem pedig párhuzamosan. <p>Ez a beállítás ugyanúgy működik, mint a `1` `runtimeConfiguration.concurrency.repetitions` tulajdonságának beállítása. Beállíthatja az egyik tulajdonságot, de mindkettőt nem. <p><p>A beállítás megadásához tekintse meg egymás [után a "minden" ciklus futtatását](#sequential-for-each).| Művelet <p>[Foreach](#foreach-action) | 
-| `SingleInstance` | Sztring | Minden egyes logikai alkalmazás-példány esetében futtassa az triggert, majd várjon, amíg a korábban aktív Futtatás befejeződik, mielőtt aktiválja a következő Logic app-példányt. <p><p>Ez a beállítás ugyanúgy működik, mint a `1` `runtimeConfiguration.concurrency.runs` tulajdonságának beállítása. Beállíthatja az egyik tulajdonságot, de mindkettőt nem. <p>A beállítás megadásához tekintse meg a [példányok egymás utáni elindítását](#sequential-trigger)ismertető témakört. | Minden eseményindító | 
+| `Sequential` | Sztring | A "minden" hurok-iterációhoz egyenként futtassa a parancsot egyszerre, nem pedig párhuzamosan. <p>Ez a beállítás ugyanúgy működik, mint a `1``runtimeConfiguration.concurrency.repetitions` tulajdonságának beállítása. Beállíthatja az egyik tulajdonságot, de mindkettőt nem. <p><p>A beállítás megadásához tekintse meg egymás [után a "minden" ciklus futtatását](#sequential-for-each).| Művelet <p>[Foreach](#foreach-action) | 
+| `SingleInstance` | Sztring | Minden egyes logikai alkalmazás-példány esetében futtassa az triggert, majd várjon, amíg a korábban aktív Futtatás befejeződik, mielőtt aktiválja a következő Logic app-példányt. <p><p>Ez a beállítás ugyanúgy működik, mint a `1``runtimeConfiguration.concurrency.runs` tulajdonságának beállítása. Beállíthatja az egyik tulajdonságot, de mindkettőt nem. <p>A beállítás megadásához tekintse meg a [példányok egymás utáni elindítását](#sequential-trigger)ismertető témakört. | Minden eseményindító | 
 ||||
 
 <a name="change-trigger-concurrency"></a>
@@ -2414,7 +2416,9 @@ Az eseményindítók és műveletek alapértelmezett viselkedését az eseményi
 
 Alapértelmezés szerint a Logic app-példányok egy időben futnak (egyidejűleg vagy párhuzamosan) az [alapértelmezett korlátig](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits). Így minden eseményindító-példány az előző munkafolyamat-példány futása előtt következik be. Ez a korlát segíti a háttérrendszer által fogadott kérelmek számának szabályozását. 
 
-Az alapértelmezett korlát módosításához használhatja a kód nézet szerkesztőjét vagy a Logic Apps tervezőt, mert a tervezőn keresztüli egyidejűségi beállítás módosításakor a rendszer hozzáadja vagy frissíti a `runtimeConfiguration.concurrency.runs` tulajdonságot az alapul szolgáló trigger definíciójában, és fordítva. Ez a tulajdonság határozza meg a párhuzamosan futtatható munkafolyamat-példányok maximális számát. Az alábbi szempontokat érdemes figyelembe venni a Egyidejűség vezérlőelem használatakor:
+Az alapértelmezett korlát módosításához használhatja a kód nézet szerkesztőjét vagy a Logic Apps tervezőt, mert a tervezőn keresztüli egyidejűségi beállítás módosításakor a rendszer hozzáadja vagy frissíti a `runtimeConfiguration.concurrency.runs` tulajdonságot az alapul szolgáló trigger definíciójában, és fordítva. Ez a tulajdonság határozza meg a párhuzamosan futtatható munkafolyamat-példányok maximális számát. Íme néhány megfontolandó szempont, ha engedélyezni szeretné a Egyidejűség-vezérlést:
+
+* Ha a Egyidejűség engedélyezve van, a [SplitOn korlátja](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits) signficantly csökken a [tömbben](#split-on-debatch). Ha az elemek száma meghaladja ezt a korlátot, a SplitOn képesség le van tiltva.
 
 * Míg a Egyidejűség engedélyezve van, egy hosszú ideig futó logikai alkalmazás-példány új logikai alkalmazás-példányokat eredményezhet a várakozási állapot megadásához. Ez az állapot megakadályozza, hogy Azure Logic Apps új példányokat hozzon létre, és akkor is megtörténjen, ha az egyidejű futtatások száma kevesebb, mint az egyidejű futtatások megadott maximális száma.
 
@@ -2519,7 +2523,7 @@ Alapértelmezés szerint a Logic app-munkafolyamatok példányai egyszerre, egyi
 
 A megvárható futtatások száma egy [alapértelmezett korláttal](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)is rendelkezik, amelyet megadhat. Azonban miután a logikai alkalmazás elérte a várakozási korlátot, a Logic Apps motor már nem fogad új futtatásokat. A kérelem-és webhook-eseményindítók 429 hibát adnak vissza, és az ismétlődő eseményindítók elkezdik kihagyni a lekérdezési kísérleteket.
 
-A várakozási futások alapértelmezett korlátjának módosításához az alapul szolgáló trigger definíciójában adja hozzá a `runtimeConfiguration.concurency.maximumWaitingRuns` tulajdonságot `0` és `100` közötti értékkel. 
+A várakozási futások alapértelmezett korlátjának módosításához az alapul szolgáló trigger definíciójában adja hozzá a `runtimeConfiguration.concurency.maximumWaitingRuns` tulajdonságot `0` és `100`közötti értékkel. 
 
 ```json
 "<trigger-name>": {
@@ -2587,7 +2591,7 @@ Az trigger definíciójában állítsa be a tulajdonságok egyikét, de ne mindk
 
 2. A **Egyidejűség vezérlőelem**alatt állítsa be **a** **korlátot** be értékre. 
 
-3. Húzza a **párhuzamossági fok** csúszkát a `1` számra. 
+3. Húzza a **párhuzamossági fok** csúszkát a `1`számra. 
 
 <a name="sequential-for-each"></a>
 
@@ -2638,7 +2642,7 @@ A művelet definíciójában állítsa be a tulajdonságok egyikét, de ne mindk
 
 2. A **Egyidejűség vezérlőelem**alatt állítsa be **a** **Egyidejűség-vezérlést** be értékre. 
 
-3. Húzza a **párhuzamossági fok** csúszkát a `1` számra. 
+3. Húzza a **párhuzamossági fok** csúszkát a `1`számra. 
 
 <a name="asynchronous-patterns"></a>
 
@@ -2681,6 +2685,6 @@ Egyetlen logikai alkalmazás definíciójában az 5 percenként végrehajtandó 
 
 A HTTP-és HTTPS-végpontok különböző típusú hitelesítést támogatnak. A kimenő hívások vagy a végpontok elérésére irányuló kérések elvégzéséhez használt trigger vagy művelet alapján különböző hitelesítési típusok közül választhat. További információ: [hitelesítés hozzáadása kimenő hívásokhoz](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * További információ a [munkafolyamat-definíciós nyelvről](../logic-apps/logic-apps-workflow-definition-language.md)

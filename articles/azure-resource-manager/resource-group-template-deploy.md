@@ -6,12 +6,12 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 08/21/2019
 ms.author: tomfitz
-ms.openlocfilehash: 88aabb676d3a15dd2efff3acd751818301519ae1
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.openlocfilehash: 0634b069c79495ad6de536b27ebd9981eeb36128
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71972708"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73837099"
 ---
 # <a name="deploy-resources-with-resource-manager-templates-and-azure-powershell"></a>Erőforrások üzembe helyezése Resource Manager-sablonokkal és az Azure PowerShell-lel
 
@@ -33,9 +33,11 @@ Az **előfizetéshez**való üzembe helyezéshez használja a [New-AzDeployment]
 New-AzDeployment -Location <location> -TemplateFile <path-to-template>
 ```
 
-Jelenleg a felügyeleti csoport központi telepítései csak a REST APIon keresztül támogatottak. Lásd: [erőforrások üzembe helyezése Resource Manager-sablonokkal és Resource Manager-Rest APIokkal](resource-group-template-deploy-rest.md).
+Az előfizetési szintű központi telepítésekkel kapcsolatos további információkért lásd: [erőforráscsoportok és erőforrások létrehozása az előfizetési szinten](deploy-to-subscription.md).
 
-A cikkben szereplő példák az erőforráscsoportok központi telepítését használják. Az előfizetések telepítésével kapcsolatos további információkért lásd: [erőforráscsoportok és erőforrások létrehozása az előfizetési szinten](deploy-to-subscription.md).
+Jelenleg a felügyeleti csoport központi telepítései csak a REST APIon keresztül támogatottak. További információ a felügyeleti csoport szintű központi telepítésekről: [erőforrások létrehozása a felügyeleti csoport szintjén](deploy-to-management-group.md).
+
+A cikkben szereplő példák az erőforráscsoportok központi telepítését használják.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -76,13 +78,13 @@ New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName `
   -TemplateUri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json
 ```
 
-Az előző példa egy nyilvánosan elérhető URI-t igényel a sablonhoz, amely a legtöbb forgatókönyv esetében működik, mert a sablon nem tartalmazhat bizalmas adatokat. Ha bizalmas adatokat (például rendszergazdai jelszót) kell megadnia, adja át ezt az értéket biztonságos paraméterként. Ha azonban nem szeretné, hogy a sablon nyilvánosan elérhető legyen, akkor azt egy privát tárolóban tárolhatja. A közös hozzáférésű aláírási (SAS-) tokent igénylő sablonok telepítésével kapcsolatos információkért lásd: [privát sablon telepítése sas-tokenrel](resource-manager-powershell-sas-token.md). Az oktatóanyag megismeréséhez tekintse meg a [Tutorial: Azure Key Vault integrálása a Resource Managerben Template deployment @ no__t-0.
+Az előző példa egy nyilvánosan elérhető URI-t igényel a sablonhoz, amely a legtöbb forgatókönyv esetében működik, mert a sablon nem tartalmazhat bizalmas adatokat. Ha bizalmas adatokat (például rendszergazdai jelszót) kell megadnia, adja át ezt az értéket biztonságos paraméterként. Ha azonban nem szeretné, hogy a sablon nyilvánosan elérhető legyen, akkor azt egy privát tárolóban tárolhatja. A közös hozzáférésű aláírási (SAS-) tokent igénylő sablonok telepítésével kapcsolatos információkért lásd: [privát sablon telepítése sas-tokenrel](resource-manager-powershell-sas-token.md). Az oktatóanyag lépéseinek megismeréséhez tekintse meg [az oktatóanyag: Azure Key Vault integrálása a Resource Manager template deploymentban](./resource-manager-tutorial-use-key-vault.md)című témakört.
 
 ## <a name="deploy-from-azure-cloud-shell"></a>Üzembe helyezés az Azure Cloud shellből
 
 A [Azure Cloud Shell](https://shell.azure.com) a sablon üzembe helyezéséhez használható. Külső sablon üzembe helyezéséhez adja meg a sablon URI-JÁT. Helyi sablon üzembe helyezéséhez először be kell töltenie a sablont a Cloud Shell Storage-fiókjába. Fájlok a rendszerhéjba való feltöltéséhez válassza a **fájlok feltöltése/letöltése** menü ikont a rendszerhéj ablakában.
 
-A Cloud Shell megnyitásához keresse meg a [https://shell.azure.com](https://shell.azure.com)elemet, vagy válassza a **TRY-IT** elemet a következő kód szakaszban:
+A Cloud Shell megnyitásához keresse meg a [https://shell.azure.com](https://shell.azure.com), vagy válassza a **TRY-IT** elemet a következő kód szakaszban:
 
 ```azurepowershell-interactive
 $resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
