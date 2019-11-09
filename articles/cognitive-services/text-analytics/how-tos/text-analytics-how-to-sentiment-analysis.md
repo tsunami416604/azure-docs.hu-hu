@@ -1,7 +1,7 @@
 ---
-title: Érzelmek elemzése az Azure Text Analytics REST API használatával Cognitive Services
+title: Text Analytics REST APIekkel kapcsolatos érzelmek elemzése
 titleSuffix: Azure Cognitive Services
-description: Ismerje meg, hogyan derítheti fel a véleményét a Text Analytics REST API használatával.
+description: Ez a cikk bemutatja, hogyan derítheti fel a szövegbeli érzelmeket az Azure Cognitive Services Text Analytics REST API használatával.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: sample
 ms.date: 09/23/2019
 ms.author: aahi
-ms.openlocfilehash: d246b14a5bd6e60a7b6facae73c68d7449e2e097
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: a930a22472dd4329c555539704747af9a2359c33
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73494442"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73837168"
 ---
 # <a name="example-detect-sentiment-with-text-analytics"></a>Példa: érzelmek észlelése Text Analytics
 
@@ -276,7 +276,7 @@ Ebben a cikkben az Text Analytics az Azure Cognitive Services-ban való használ
 + A POST kérelem egy `/sentiment`-végpontra vonatkozik, amely egy személyre szabott [hozzáférési kulcsot és egy](../../cognitive-services-apis-create-account.md#get-the-keys-for-your-resource) , az előfizetéséhez érvényes végpontot használ.
 + A válasz kimenete, amely az egyes dokumentumok AZONOSÍTÓinak hangulati pontszámát tartalmazza, továbbítható bármely olyan alkalmazásnak, amely elfogadja a JSON-t. Az alkalmazások közé tartoznak például az Excel és a Power BI, hogy csak néhányat említsünk.
 
-## <a name="see-also"></a>Lásd még
+## <a name="see-also"></a>Lásd még:
 
  [Text Analytics áttekintése –](../overview.md) [Gyakori kérdések (GYIK)](../text-analytics-resource-faq.md)</br>
  [Text Analytics termékoldala](//go.microsoft.com/fwlink/?LinkID=759712)

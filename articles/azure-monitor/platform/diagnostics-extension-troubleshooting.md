@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: rboucher
 ms.author: robb
 ms.date: 05/08/2019
-ms.openlocfilehash: 24a2b8a3c190ed440684ea3aa0ab35ebbf93fca0
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 0a6322edccc2047ffd9d67e4e3ed113e668898da
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73161974"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73834697"
 ---
 # <a name="azure-diagnostics-troubleshooting"></a>Hibaelhárítás Azure Diagnostics
 Ez a cikk a Azure Diagnostics használatára vonatkozó hibaelhárítási információkat ismerteti. További információ az Azure Diagnostics szolgáltatásról: [Azure Diagnostics Overview (áttekintés](diagnostics-extension-overview.md)).
@@ -22,7 +22,7 @@ Ez a cikk a Azure Diagnostics használatára vonatkozó hibaelhárítási inform
 
 **Diagnosztikai beépülő modul (DiagnosticsPlugin. exe)** : a figyelési ügynök élettartamának konfigurálása, elindítása és kezelése. Ez az indító által indított fő folyamat.
 
-**Figyelő ügynök (MonAgent \*. exe folyamatok)** : figyeli, gyűjti és továbbítja a diagnosztikai adatokat.  
+**Figyelő ügynök (MonAgent\*. exe folyamatok)** : figyeli, gyűjti és továbbítja a diagnosztikai adatokat.  
 
 ## <a name="logartifact-paths"></a>Log/lelet elérési útjai
 A következő néhány fontos napló és összetevő elérési útja. Ezt az információt a dokumentum többi részén tekintjük át.
@@ -31,33 +31,33 @@ A következő néhány fontos napló és összetevő elérési útja. Ezt az inf
 | Összetevő | Útvonal |
 | --- | --- |
 | **Azure Diagnostics konfigurációs fájl** | %SystemDrive%\Packages\Plugins\Microsoft.Azure.Diagnostics.PaaSDiagnostics\<verziója > \Config.txt |
-| **Naplófájlok** | C:\Logs\Plugins\Microsoft.Azure.Diagnostics.PaaSDiagnostics \<version > \ |
-| **Diagnosztikai célú helyi tároló** | C:\Resources\Directory \<CloudServiceDeploymentID >. \<RoleName >. DiagnosticStore\WAD0107\Tables |
-| **Figyelési ügynök konfigurációs fájlja** | C:\Resources\Directory \<CloudServiceDeploymentID >. \<RoleName >. DiagnosticStore\WAD0107\Configuration\MaConfig.xml |
+| **Naplófájlok** | C:\Logs\Plugins\Microsoft.Azure.Diagnostics.PaaSDiagnostics\<verziója > \ |
+| **Diagnosztikai célú helyi tároló** | C:\Resources\Directory\<CloudServiceDeploymentID >.\<RoleName >. DiagnosticStore\WAD0107\Tables |
+| **Figyelési ügynök konfigurációs fájlja** | C:\Resources\Directory\<CloudServiceDeploymentID >.\<RoleName >. DiagnosticStore\WAD0107\Configuration\MaConfig.xml |
 | **Azure Diagnostics kiterjesztési csomag** | %SystemDrive%\Packages\Plugins\Microsoft.Azure.Diagnostics.PaaSDiagnostics\<verziója > |
 | **A log Collection segédprogram elérési útja** | %SystemDrive%\Packages\GuestAgent\ |
 | **MonAgentHost naplófájl** | C:\Resources\Directory\<CloudServiceDeploymentID >.\<RoleName >. DiagnosticStore\WAD0107\Configuration\MonAgentHost. < seq_num >. log |
 
-### <a name="virtual-machines"></a>Virtual machines (Virtuális gépek)
+### <a name="virtual-machines"></a>Virtuális gépek
 | Összetevő | Útvonal |
 | --- | --- |
-| **Azure Diagnostics konfigurációs fájl** | C:\Packages\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics \<version > \RuntimeSettings |
-| **Naplófájlok** | C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics \<DiagnosticsVersion > \ |
-| **Diagnosztikai célú helyi tároló** | C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics \<DiagnosticsVersion > \WAD0107\Tables |
-| **Figyelési ügynök konfigurációs fájlja** | C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics \<DiagnosticsVersion > \WAD0107\Configuration\MaConfig.xml |
-| **Állapot fájl** | C:\Packages\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics \<version > \Status |
-| **Azure Diagnostics kiterjesztési csomag** | C:\Packages\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics \<DiagnosticsVersion >|
+| **Azure Diagnostics konfigurációs fájl** | C:\Packages\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<verziója > \RuntimeSettings |
+| **Naplófájlok** | C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<DiagnosticsVersion > \ |
+| **Diagnosztikai célú helyi tároló** | C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<DiagnosticsVersion > \WAD0107\Tables |
+| **Figyelési ügynök konfigurációs fájlja** | C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<DiagnosticsVersion > \WAD0107\Configuration\MaConfig.xml |
+| **Állapot fájl** | C:\Packages\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<verziója > \Status |
+| **Azure Diagnostics kiterjesztési csomag** | C:\Packages\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<DiagnosticsVersion >|
 | **A log Collection segédprogram elérési útja** | C:\WindowsAzure\Logs\WaAppAgent.log |
 | **MonAgentHost naplófájl** | C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<DiagnosticsVersion > \WAD0107\Configuration\MonAgentHost. < seq_num >. log |
 
 ## <a name="metric-data-doesnt-appear-in-the-azure-portal"></a>A metrikus adatok nem jelennek meg a Azure Portal
-A Azure Diagnostics a Azure Portal megjeleníthető metrikai adatokat biztosít. Ha problémába ütközik a portálon található adatokkal kapcsolatban, tekintse meg a WADMetrics \* táblázatot a Azure Diagnostics Storage-fiókban, és ellenőrizze, hogy vannak-e a megfelelő metrikai rekordok.
+A Azure Diagnostics a Azure Portal megjeleníthető metrikai adatokat biztosít. Ha problémába ütközik a portálon található adatokkal kapcsolatban, tekintse meg a WADMetrics\* táblázatot a Azure Diagnostics Storage-fiókban, és ellenőrizze, hogy vannak-e a megfelelő metrikai rekordok.
 
 Itt a tábla **PartitionKey** az erőforrás-azonosító, a virtuális gép vagy a virtuálisgép-méretezési csoport. A **RowKey** a metrika neve (más néven a teljesítményszámláló neve).
 
-Ha az erőforrás-azonosító helytelen, ellenőrizze, hogy a **diagnosztikai** **konfiguráció**  > **metrikák**  > **ResourceId** -e, hogy az erőforrás-azonosító helyesen van-e beállítva.
+Ha az erőforrás-azonosító helytelen, ellenőrizze, hogy a **diagnosztikai** **konfiguráció** > **metrikák** > **ResourceId** -e, hogy az erőforrás-azonosító helyesen van-e beállítva.
 
-Ha nincs adat az adott metrika esetében, ellenőrizze, hogy a **diagnosztikai konfiguráció**  > **PerformanceCounter** -e, hogy a metrika (teljesítményszámláló) szerepel-e a metrikában. Alapértelmezés szerint a következő számlálókat engedélyezjük:
+Ha nincs adat az adott metrika esetében, ellenőrizze, hogy a **diagnosztikai konfiguráció** > **PerformanceCounter** -e, hogy a metrika (teljesítményszámláló) szerepel-e a metrikában. Alapértelmezés szerint a következő számlálókat engedélyezjük:
 - \Processor(_Total)\% Processor Time
 - \Memory\Available Bytes
 - \ ASP.NET alkalmazások (__összesen__) \ kérelmek/másodperc
@@ -83,7 +83,7 @@ Ha a konfiguráció helyesen van beállítva, de továbbra sem látja a metrikai
 ## <a name="azure-diagnostics-is-not-starting"></a>Azure Diagnostics nem indul el
 Arról, hogy miért nem sikerült elindítani a Azure Diagnosticst, tekintse meg a **DiagnosticsPluginLauncher. log** és a **DiagnosticsPlugin. log** fájlt a korábban megadott naplófájlok helyén.
 
-Ha ezek a naplók `Monitoring Agent not reporting success after launch` jeleznek, az azt jelenti, hogy hiba történt a MonAgentHost. exe elindítása közben. Tekintse meg az előző szakaszban `MonAgentHost log file` számára jelzett helyen található naplókat.
+Ha ezek a naplók `Monitoring Agent not reporting success after launch`jeleznek, az azt jelenti, hogy hiba történt a MonAgentHost. exe elindítása közben. Tekintse meg az előző szakaszban `MonAgentHost log file` számára jelzett helyen található naplókat.
 
 A naplófájlok utolsó sora tartalmazza a kilépési kódot.  
 
@@ -126,7 +126,7 @@ A diagnosztikai konfiguráció egy adott típusú adat gyűjtésére vonatkozó 
 - **Nyomkövetési naplók**: távoli hozzáférés a virtuális géphez, és adjon hozzá egy TextWriterTraceListener az alkalmazás konfigurációs fájljához.  Lásd: https://msdn.microsoft.com/library/sk36c28t.aspx a szöveges figyelő beállításához.  Győződjön meg arról, hogy a `<trace>` elem `<trace autoflush="true">`.<br />
 Ha nem látja a létrehozott nyomkövetési naplókat, további információ: hiányzó nyomkövetési naplók.
 
-- **ETW-nyomkövetés**: távoli hozzáférés a virtuális géphez és a perfview eszköz telepítése.  A Perfview eszköz-ben futtassa a **fájl**  > **felhasználói parancsot**  > **figyeljen a etwprovder1**  > **etwprovider2**, és így tovább. A **Listen** parancs megkülönbözteti a kis-és nagybetűket, és a ETW-szolgáltatók vesszővel tagolt listája nem tartalmazhat szóközöket. Ha a parancs futtatása sikertelen, a Perfview eszköz eszköz jobb alsó sarkában található **log (napló** ) gombra kattintva megtekintheti, hogy milyen kísérlet történt a futtatására és az eredményre.  Ha a bevitel helyes, egy új ablak jelenik meg. Néhány másodpercen belül megkezdheti a ETW nyomkövetését.
+- **ETW-nyomkövetés**: távoli hozzáférés a virtuális géphez és a perfview eszköz telepítése.  A Perfview eszköz-ben futtassa a **fájl** > **felhasználói parancsot** > **figyeljen a etwprovder1** > **etwprovider2**, és így tovább. A **Listen** parancs megkülönbözteti a kis-és nagybetűket, és a ETW-szolgáltatók vesszővel tagolt listája nem tartalmazhat szóközöket. Ha a parancs futtatása sikertelen, a Perfview eszköz eszköz jobb alsó sarkában található **log (napló** ) gombra kattintva megtekintheti, hogy milyen kísérlet történt a futtatására és az eredményre.  Ha a bevitel helyes, egy új ablak jelenik meg. Néhány másodpercen belül megkezdheti a ETW nyomkövetését.
 
 - **Eseménynaplók**: távoli hozzáférés a virtuális géphez. Nyissa meg `Event Viewer`, majd ellenőrizze, hogy az események léteznek-e.
 
@@ -213,10 +213,10 @@ Ez a kód négy táblát hoz létre:
 | Provider = "Prov1" &lt;DefaultEvents/&gt; |WADDefault + MD5 ("Prov1") |
 | Provider = "prov2" &lt;DefaultEvents eventDestination = "dest2"/&gt; |WADdest2 |
 
-## <a name="references"></a>Tudástár
+## <a name="references"></a>Referencia
 
 ### <a name="how-to-check-diagnostics-extension-configuration"></a>A diagnosztikai bővítmény konfigurációjának megkeresése
-A bővítmény konfigurálásának legegyszerűbb módja, ha a [Azure erőforrás-kezelő](http://resources.azure.com), majd a Azure Diagnostics bővítményt (IaaSDiagnostics/PaaDiagnostics) futtató virtuális gépre vagy Felhőbeli szolgáltatásra lép.
+A bővítmény konfigurálásának legegyszerűbb módja, ha a [Azure erőforrás-kezelő](https://resources.azure.com), majd a Azure Diagnostics bővítményt (IaaSDiagnostics/PaaDiagnostics) futtató virtuális gépre vagy Felhőbeli szolgáltatásra lép.
 
 Azt is megteheti, hogy a Távoli asztalt a gépre helyezi, és megtekinti a log-összetevők elérési útja szakaszban leírt Azure Diagnostics konfigurációs fájlt.
 
@@ -260,7 +260,7 @@ A figyelési ügynök a naplókat és összetevőket `.tsf` fájlként gyűjti. 
 Egy `<relevantLogFile>.csv` nevű új fájl ugyanabban az elérési úton jön létre, mint a megfelelő `.tsf` fájl.
 
 >[!NOTE]
-> Ezt a segédprogramot csak a Main. TSF fájl (például PerformanceCountersTable. TSF) esetében kell futtatnia. A rendszer automatikusan feldolgozza a csatolt fájlokat (például PerformanceCountersTables_\*\*001. TSF, PerformanceCountersTables_\*\*002. TSF stb.).
+> Ezt a segédprogramot csak a Main. TSF fájl (például PerformanceCountersTable. TSF) esetében kell futtatnia. A rendszer automatikusan feldolgozza a kapcsolódó fájlokat (például PerformanceCountersTables_\*\*001. TSF, PerformanceCountersTables_\*\*002. TSF stb.).
 
 ### <a name="more-about-missing-trace-logs"></a>További információ a hiányzó nyomkövetési naplókról
 
@@ -295,7 +295,7 @@ System.IO.FileLoadException: Could not load file or assembly 'System.Threading.T
 
 A virtuális gépeken a portál felülete alapértelmezés szerint bizonyos teljesítményszámlálókat jelenít meg. Ha nem látja a teljesítményszámlálókat, és biztos lehet benne, hogy az adat létrejött, mert elérhető a tárolóban, ellenőrizze a következőket:
 
-- Azt határozza meg, hogy a tárolóban lévő összes számláló neve angol nyelven van-e. Ha a számlálók nevei nem angol nyelvűek, a portál metrikai diagramja nem tudja felismerni. Megoldás **: módosítsa**a gép nyelvét angolra a rendszerfiókok számára. Ehhez válassza a **vezérlőpult**  > **régió**  > **felügyeleti**  > **másolási beállítások**lehetőséget. Ezután törölje az **üdvözlőképernyő és a rendszerfiókok** kijelölését, hogy a rendszer ne alkalmazza az egyéni nyelvet a rendszerfiókra.
+- Azt határozza meg, hogy a tárolóban lévő összes számláló neve angol nyelven van-e. Ha a számlálók nevei nem angol nyelvűek, a portál metrikai diagramja nem tudja felismerni. Megoldás **: módosítsa**a gép nyelvét angolra a rendszerfiókok számára. Ehhez válassza a **vezérlőpult** > **régió** > **felügyeleti** > **másolási beállítások**lehetőséget. Ezután törölje az **üdvözlőképernyő és a rendszerfiókok** kijelölését, hogy a rendszer ne alkalmazza az egyéni nyelvet a rendszerfiókra.
 
 - Ha helyettesítő karaktereket (\*) használ a teljesítményszámlálók neveiben, a portál nem fogja tudni összekapcsolni a konfigurált és az összegyűjtött számlálót, amikor a teljesítményszámlálók az Azure Storage-tárolóba kerülnek. Megoldás **: Győződjön**meg arról, hogy használhat helyettesítő karaktereket, és a portál kibontása a (\*), a teljesítményszámlálók átirányítása a ["Azure monitor"](diagnostics-extension-schema.md#diagnostics-extension-111)fogadóba.
 

@@ -1,7 +1,7 @@
 ---
-title: A Video Indexer – Azure személy modell testreszabása
-titlesuffix: Azure Media Services
-description: Ez a cikk áttekintést nyújt a mi egy személy modell a Video Indexer, és hogyan szabható testre.
+title: Személy modell testreszabása Video Indexerban – Azure
+titleSuffix: Azure Media Services
+description: Ez a cikk áttekintést nyújt arról, hogy mi a Video Indexer személy modellje, és hogyan szabható testre.
 services: media-services
 author: anikaz
 manager: johndeu
@@ -10,24 +10,24 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 05/15/2019
 ms.author: anzaman
-ms.openlocfilehash: c74b913fc3ac35039d914fc97c9c438d2e4a3069
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3fabba98cb137975da749411ca9accb5a951742d
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65799431"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73838298"
 ---
-# <a name="customize-a-person-model-in-video-indexer"></a>A Video Indexer személy modell testreszabása
+# <a name="customize-a-person-model-in-video-indexer"></a>Személy modell testreszabása Video Indexerban
 
-Video Indexer – hírességek felismerése a videók támogatja. A hírességek felismerése funkció körülbelül 1 millió arcok IMDB Wikipedia és felső LinkedIn véleményvezérek például gyakran lekérdezett adatforrás alapján ismerteti. Továbbra is észlelt, amely nem ismeri fel a Video Indexer, de van hátra névtelen. Ügyfelek egyéni személy modelleket, és engedélyezze a Video Indexer alapértelmezés szerint nem felismerhető arcok felismerésére. Ügyfelek által egy személy neve párosítást képfájlok, a személy face személy modellek hozhat létre.  
+Video Indexer támogatja a híresség-felismerést a videókban. A híresség-felismerési funkció a gyakran igényelt adatforrások (például a IMDB, a wikipedia és a legnépszerűbb LinkedIn-befolyásoló) alapján körülbelül 1 000 000 arcot ölel fel. A Video Indexer által fel nem ismert arcok továbbra is észlelhetők, de nem lesznek megnevezve. Az ügyfelek egyéni modelleket építhetnek ki, és lehetővé teszik, hogy a Video Indexer olyan arcokat ismerjen fel, amelyeket nem ismer fel alapértelmezés szerint. Az ügyfelek létrehozhatják ezeket a modelleket úgy, hogy a személy nevét a személy arcához tartozó képfájlokkal párosítják.  
 
-Ha a fiók caters a különböző használati esetek, élvezheti képes arra, hogy fiókonként több személy modelleket hozhat létre. Például ha a tartalom-fiókjában található hivatott különböző csatornákon rendezni, érdemes egy külön személy modellt használ az egyes csatornák létrehozására. 
+Ha a fiókja különböző használati esetekre is vonatkozik, akkor használhatja a több személyből származó modellek fiókkal történő létrehozását. Ha például a fiókjában lévő tartalom különböző csatornákra van rendezve, érdemes lehet külön személy modellt létrehozni minden csatornához. 
 
 > [!NOTE]
-> Minden egyes személy modell legfeljebb 1 millió embert támogatja, és mindegyik fiók legfeljebb 50 személy modellek. 
+> Minden egyes személy legfeljebb 1 000 000 személyt támogat, és minden fióknak 50-os maximális modellje van. 
 
-Modell létrehozása után használhatja azáltal, hogy egy adott személy modell feltöltése/indexelő vagy videó újraindexelés modell Azonosítóját. Videó egy új arc képzésekről, frissíti az adott egyéni modell, amelyhez a videó társítva lett. 
+A modell létrehozása után használhatja azt egy adott személy modell AZONOSÍTÓjának megadásával, amikor feltölti/indexeli vagy újraindexeli a videót. Új arc betanítása egy videóra, frissíti azt a konkrét egyéni modellt, amelyhez a videó társítva lett. 
 
-Ha nem kell a több személy modellt támogató, nem rendel egy személy Modellazonosító a videó feltöltése/indexelő vagy újraindexelés. A Video Indexer ebben az esetben a fiókot fogja használni az alapértelmezett személy modellt. 
+Ha nincs szüksége a több személyre vonatkozó modell támogatására, ne rendeljen hozzá egy személy modell-azonosítót a videóhoz feltöltés/indexelés vagy újraindexelés során. Ebben az esetben a Video Indexer az alapértelmezett person modellt fogja használni a fiókjában. 
 
-Használhatja a Video Indexer webhely, amely az észlelt a videó szerkesztése és kezelése a fiók több egyéni személy modell leírtak szerint a [webhely használó személy modell testreszabása](customize-person-model-with-website.md) témakör. Is használhatja az API-t, a leírtak szerint [API-kat használó személy modell testreszabása](customize-person-model-with-api.md).
+A Video Indexer webhelyről szerkesztheti a videóban észlelt arcokat, és több egyéni személy modelljét is kezelheti a fiókjában, a [személy modell testreszabása webhely használatával](customize-person-model-with-website.md) című témakörben leírtak szerint. Használhatja az API-t is a következő témakörben ismertetett módon: [személyre szabott modell testreszabása API](customize-person-model-with-api.md)-k használatával.

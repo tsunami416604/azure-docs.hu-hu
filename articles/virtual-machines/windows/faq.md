@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 05/08/2019
 ms.author: cynthn
-ms.openlocfilehash: 068ae6fd581a55892c115f3a7e38d10304f057d8
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: 95b7644ab8e0254a53eb4a0872a5af98a0894aec
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72170207"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73839241"
 ---
 # <a name="frequently-asked-question-about-windows-virtual-machines"></a>Gyakori kérdések a Windows Virtual Machines
 Ez a cikk az Azure-ban a Resource Manager-alapú üzemi modellel létrehozott Windows rendszerű virtuális gépekkel kapcsolatos gyakori kérdéseket tárgyalja. A jelen témakör Linux-verziójával kapcsolatban lásd: [Linux Virtual Machines kapcsolatos gyakori kérdések](../linux/faq.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
@@ -75,10 +75,10 @@ Igen. Linux rendszerű virtuális gép gyors létrehozásához a kipróbálásho
 Igen, ez már lehetséges. Először le kell állítani a virtuális gépet. Ezután hozzáadhat vagy eltávolíthat egy hálózati adaptert (kivéve, ha ez a virtuális gép utolsó hálózati adaptere). 
 
 ## <a name="are-there-any-computer-name-requirements"></a>Van-e számítógépnév-követelmény?
-Igen. A számítógép neve legfeljebb 15 karakter hosszú lehet. Az erőforrások elnevezésével kapcsolatos további információkért lásd: [elnevezési konvenciók szabályai és korlátozásai](/azure/cloud-adoption-framework/ready/considerations/naming-and-tagging#sample-naming-convention) .
+Igen. A számítógép neve legfeljebb 15 karakter hosszú lehet. Az erőforrások elnevezésével kapcsolatos további információkért lásd: [elnevezési konvenciók szabályai és korlátozásai](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging#sample-naming-convention) .
 
 ## <a name="are-there-any-resource-group-name-requirements"></a>Vannak az erőforráscsoport-nevekre vonatkozó követelmények?
-Igen. Az erőforráscsoport neve legfeljebb 90 karakter hosszú lehet. Az erőforráscsoportok további információit az [elnevezési konvenciók szabályai és korlátozásai](/azure/cloud-adoption-framework/ready/considerations/naming-and-tagging#resource-naming) című témakörben talál.
+Igen. Az erőforráscsoport neve legfeljebb 90 karakter hosszú lehet. Az erőforráscsoportok további információit az [elnevezési konvenciók szabályai és korlátozásai](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging#resource-naming) című témakörben talál.
 
 ## <a name="what-are-the-username-requirements-when-creating-a-vm"></a>Milyen felhasználónévre vonatkozó követelmények vonatkoznak a virtuális gépek létrehozásakor?
 
@@ -108,7 +108,7 @@ Az Ön által használt eszköztől függően eltérő jelszó-hosszúsági köv
 * Alsó karakter
 * Felső karaktereket tartalmaz
 * Számjegyet tartalmaz
-* Speciális karakter (regex egyezés [\W_])
+* Speciális karakter (regex egyezés [\ W_])
 
 A következő jelszavak nem engedélyezettek:
 

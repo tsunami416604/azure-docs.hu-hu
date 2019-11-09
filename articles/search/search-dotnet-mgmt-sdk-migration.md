@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: b81060bc3d8409a9ccb74ba85c85e6f779650ffd
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: b18e9688141ee64eb7dfcb82ce58db198e324b5b
+ms.sourcegitcommit: 16c5374d7bcb086e417802b72d9383f8e65b24a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72792420"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73847539"
 ---
 # <a name="upgrading-versions-of-the-azure-search-net-management-sdk"></a>A Azure Search .NET Management SDK verzióinak frissítése
 
@@ -46,7 +46,5 @@ Ha a létrehozás sikertelen, annak oka az lehet, hogy néhány SDK-felületet i
 
 A felépítési hibák kijavítása után módosíthatja az alkalmazást, és igény szerint kihasználhatja az új funkciókat. Az SDK új funkciói részletesen ismertetik a [2. verzió újdonságait](#WhatsNew).
 
-## <a name="conclusion"></a>Összegzés
-Üdvözöljük az SDK-val kapcsolatos visszajelzéseit. Ha problémákba ütközik, kérjen segítséget a [Azure Search MSDN-fórumon](https://social.msdn.microsoft.com/Forums/azure/home?forum=azuresearch). Ha hibát talál, a probléma az [Azure .net SDK GitHub-tárházában](https://github.com/Azure/azure-sdk-for-net/issues)is megadható. Ügyeljen arra, hogy a probléma címét "[Azure Search]" előtaggal adja meg.
-
-Köszönjük Azure Search használatát!
+## <a name="next-steps"></a>További lépések
+Üdvözöljük az SDK-val kapcsolatos visszajelzéseit. Ha problémákba ütközik, tegye fel a kérdéseit [stack Overflowba](https://stackoverflow.com/questions/tagged/azure-cognitive-search?tab=Newest). Ha hibát talál, a probléma az [Azure .net SDK GitHub-tárházában](https://github.com/Azure/azure-sdk-for-net/issues)is megadható. Ügyeljen arra, hogy a "[Search]" címkével címkézze fel a probléma címét.

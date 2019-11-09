@@ -1,7 +1,7 @@
 ---
 title: Első lépések – Translator Text API
 titleSuffix: Azure Cognitive Services
-description: Megtudhatja, hogyan regisztrálhat a Translator Text API és a egy előfizetési kulcsot.
+description: Ebből a cikkből megtudhatja, hogyan regisztrálhat az Azure Cognitive Services Translator Text API, és hogyan szerezhet be előfizetési kulcsot.
 services: cognitive-services
 author: swmachan
 manager: nitinme
@@ -11,46 +11,46 @@ ms.topic: conceptual
 ms.date: 06/04/2019
 ms.author: swmachan
 ms.custom: seodec18
-ms.openlocfilehash: e51e6875681618b5f558d5c52ed5a2b14095b079
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: cfae5318213e8af164c8d0cc9ed378705a5644b0
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67434966"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73835692"
 ---
-# <a name="how-to-sign-up-for-the-translator-text-api"></a>Hogyan regisztrálhat a Translator Text API
+# <a name="how-to-sign-up-for-the-translator-text-api"></a>Regisztráció a Translator Text APIra
 
 ## <a name="sign-in-to-the-azure-portal"></a>Jelentkezzen be az Azure Portalra
 
 - Még nincs fiókja? A költségvonzat nélküli kísérletezéshez létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/).
 - Van már fiókja? [bejelentkezés](https://ms.portal.azure.com/)
 
-## <a name="create-a-subscription-to-the-translator-text-api"></a>A Translator Text API-előfizetés létrehozása
+## <a name="create-a-subscription-to-the-translator-text-api"></a>Előfizetés létrehozása a Translator Text API
 
-Miután bejelentkezik a portálra, a Translator Text API-előfizetés módon hozhat létre:
+Miután bejelentkezett a portálra, létrehozhat egy előfizetést a Translator Text API a következőképpen:
 
 1. Válassza a **+ Erőforrás létrehozása** lehetőséget.
-1. Az a **keresés a piactéren** írja be a keresőmezőbe **Szövegfordító** , majd az eredmények közül.
-1. Válassza ki **létrehozás** az előfizetés részletei.
-1. Az a **tarifacsomag** listájához, válassza ki a tarifacsomagot, amely leginkább megfelel az igényeinek.
-    1. Minden előfizetési csomaghoz tartozik egy ingyenes szintet. Az ingyenes csomag ugyanazokat a szolgáltatásokat és funkciókat, mint a fizetős csomagok rendelkezik, és nem jár le.
-    1. A fiók csak egy ingyenes előfizetéssel rendelkezhet.
-1. Válassza ki **létrehozás** az előfizetés létrehozásának befejezéséhez.
+1. A **Keresés a piactéren** mezőbe írja be **Translator Text** , majd válassza ki az eredmények közül.
+1. Válassza a **Létrehozás** lehetőséget az előfizetés részleteinek megadásához.
+1. A **díjszabási** csomag listából válassza ki az igényeinek leginkább megfelelő árképzési szintet.
+    1. Az egyes előfizetések ingyenes szintűek. Az ingyenes csomag ugyanazokkal a szolgáltatásokkal és funkciókkal rendelkezik, mint a fizetős csomagok, és nem jár le.
+    1. A fiókjához csak egy ingyenes előfizetés tartozhat.
+1. Válassza a **Létrehozás** lehetőséget az előfizetés létrehozásának befejezéséhez.
 
 ## <a name="authentication-key"></a>Hitelesítési kulcs
 
-Feliratkozás a Translator Text, kap egy személyre szabott hozzáférési kulcs egyedi az előfizetéshez. Ez a kulcs szükséges az egyes a Translator Text API-hívások.
+Translator Textra való regisztrációkor egy személyre szabott hozzáférési kulcsot kap, amely egyedi az előfizetésében. Ezt a kulcsot kötelező megadni a Translator Text API minden egyes hívásakor.
 
-1. A hitelesítési kulcs lekéréséhez válassza a megfelelő előfizetést.
-1. Válassza ki **kulcsok** a a **erőforrás-kezelés** szakaszában az előfizetés adatait.
-1. Másolja az előfizetéshez tartozó szereplő kulcsok egyikét.
+1. Kérje le a hitelesítési kulcsot úgy, hogy először kiválasztja a megfelelő előfizetést.
+1. Az előfizetés részleteinek **Erőforrás-kezelés** szakaszában válassza a **kulcsok** lehetőséget.
+1. Másolja a felsorolt kulcsok valamelyikét az előfizetéséhez.
 
-## <a name="learn-test-and-get-support"></a>Ismerje meg, tesztelése és támogatás kérése
+## <a name="learn-test-and-get-support"></a>Tanulás, tesztelés és támogatás kérése
 
-- [Hitelesítésikód-példák a Githubon](https://github.com/MicrosoftTranslator)
-- [A Microsoft Translator támogatási fórum](https://www.aka.ms/TranslatorForum)
+- [Példák a GitHubra](https://github.com/MicrosoftTranslator)
+- [Microsoft Translator támogatási fórum](https://www.aka.ms/TranslatorForum)
 
-A Microsoft Translator általában lehetővé teszi az első néhány kérelmek előtt ellenőrizte, hogy az előfizetés fiók állapota. Ha az első néhány Microsoft Translator API-kérések majd a hívás nem sikerült, hibaüzenet jelzi a problémát. Kérjük jelentkezzen ki az API-válasz, így láthatja, hogy az oka.
+A Microsoft Translator általában lehetővé teszi az első néhány kérelem továbbítását, mielőtt ellenőrizte az előfizetési fiók állapotát. Ha az első néhány Microsoft Translator API-kérelem sikeres, akkor a hívások sikertelenek lesznek, a hiba válasza a problémát jelzi. Jelentkezzen be az API-válaszba, hogy láthassa az okát.
 
 ## <a name="pricing-options"></a>Árképzési lehetőségek
 
@@ -58,9 +58,9 @@ A Microsoft Translator általában lehetővé teszi az első néhány kérelmek 
 
 ## <a name="customization"></a>Testreszabás
 
-Egyéni Translator segítségével testre szabhatja a fordítások, és hozzon létre egy saját terminológia és stílus, kezdve az általános Microsoft Translator Neurális gépi fordítási rendszerekhez hangolva fordítási rendszerét. [További információ](customization.md)
+Az egyéni fordító segítségével testre szabhatja a fordításokat, és létrehozhatja a saját terminológiája és stílusa alapján létrehozott fordítási rendszert, amely az általános Microsoft Translator neurális gépi fordítási rendszerekből indul. [További információ](customization.md)
 
 ## <a name="additional-resources"></a>További források
 
-- [Ismerkedés az Azure-ral (3 perces videó)](https://azure.microsoft.com/get-started/?b=16.24)
-- [Hogyan kell fizetnem a számla alapján](https://azure.microsoft.com/pricing/invoicing/)
+- [Ismerkedés az Azure-ban (3 perces videó)](https://azure.microsoft.com/get-started/?b=16.24)
+- [Fizetés számlával](https://azure.microsoft.com/pricing/invoicing/)

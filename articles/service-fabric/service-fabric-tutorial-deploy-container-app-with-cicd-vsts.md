@@ -15,14 +15,14 @@ ms.workload: NA
 ms.date: 08/29/2018
 ms.author: atsenthi
 ms.custom: mvc
-ms.openlocfilehash: b686ceace3679d1541e8f1a74bca7e99b81ba932
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: a2dc6aeb7dc2a62c543a58c322c23c9661c6940a
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68598889"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73832740"
 ---
-# <a name="tutorial-deploy-a-container-application-with-cicd-to-a-service-fabric-cluster"></a>Oktatóanyag: Container-alkalmazás üzembe helyezése CI/CD-vel Service Fabric-fürtön
+# <a name="tutorial-deploy-a-container-application-with-cicd-to-a-service-fabric-cluster"></a>Oktatóanyag: Tárolóalkalmazás üzembe helyezése Service Fabric-fürtön CI/CD használatával
 
 Ez az oktatóanyag egy sorozat második része, amely leírja, hogyan állíthat be folyamatos integrációt és üzembe helyezést egy Azure Service Fabric Container alkalmazáshoz a Visual Studio és az Azure DevOps használatával.  Szükség van egy már meglévő Service Fabric-alkalmazásra, így példaként a [Windows-tárolóban lévő .NET-alkalmazás telepítése Azure Service Fabricre](service-fabric-host-app-in-a-container.md) című szakaszban létrehozott alkalmazás szolgál.
 
@@ -65,15 +65,15 @@ Ellenőrizze az e-maileket, és válassza ki a szervezetét a **fiók** legörd�
 
 Az adattár közzétételével egy új csoportprojekt jön létre a fiókjában a helyi adattáréval azonos néven. Ha egy már meglévő csapatprojektben kíván adattárat létrehozni, az **Adattár** neve mellett kattintson az **Advanced** (Speciális) elemre, és válassza ki a csoportprojektet. A kód megtekintéséhez a weben válassza a **See it on the web** (Megtekintés a weben) lehetőséget.
 
-## <a name="configure-continuous-delivery-with-azure-pipelines"></a>Folyamatos teljesítés konfigurálása az Azure-folyamatok
+## <a name="configure-continuous-delivery-with-azure-pipelines"></a>Folyamatos teljesítés konfigurálása az Azure-folyamatokkal
 
-Az Azure DevOps-Build definíciója egy olyan munkafolyamatot ír le, amely egymás után végrehajtott összeállítási lépésekből áll. Hozzon létre egy builddefiníciót, amely létrehozza a Service Fabric-alkalmazáscsomagot és más összetevőket egy Service Fabric-fürtben való üzembe helyezéshez. További információ az Azure DevOps [Build](https://www.visualstudio.com/docs/build/define/create)-definíciókkal kapcsolatban. 
+Az Azure DevOps-Build definíciója egy olyan munkafolyamatot ír le, amely egymás után végrehajtott összeállítási lépésekből áll. Hozzon létre egy builddefiníciót, amely létrehozza a Service Fabric-alkalmazáscsomagot és más összetevőket egy Service Fabric-fürtben való üzembe helyezéshez. További információ az Azure DevOps [Build-definíciókkal](https://www.visualstudio.com/docs/build/define/create)kapcsolatban. 
 
 Az Azure DevOps kiadási definíciója olyan munkafolyamatot ír le, amely egy alkalmazáscsomag központi telepítését végzi a fürtön. Együttes használatuk esetén a builddefiníció és a kiadási definíció a teljes munkafolyamatot végrehajtja, a forrásfájloktól kezdve a fürtön futó alkalmazásig bezárólag. További információ az Azure DevOps [kiadási definíciókkal](https://www.visualstudio.com/docs/release/author-release-definition/more-release-definition)kapcsolatban.
 
 ### <a name="create-a-build-definition"></a>Builddefiníció létrehozása
 
-Nyissa meg az új csapat projektjét, https://dev.azure.com és navigáljon a webböngészőben, és válassza ki a szervezetét, majd az új projektet. 
+Nyissa meg az új Team-projektet úgy, hogy megnyit egy webböngészőben a https://dev.azure.com, majd kiválasztja a szervezetét, majd az új projektet. 
 
 Válassza a **folyamatok** lehetőséget a bal oldali panelen, majd kattintson az **új folyamat**elemre.
 
@@ -110,7 +110,7 @@ A build manuális elindításához a **Save build pipeline and queue dialog** (A
 
 ![Eseményindítók kiválasztása][save-and-queue]
 
-A buildek leküldés vagy bejelentkezés hatására is aktiválódnak. A build folyamatának ellenőrzéséhez váltson át a **Builds** (Buildek) lapra.  Miután meggyőződött arról, hogy a build végrehajtása sikeresen megtörtént, hozza létre a kiadási definíciót, amely telepíti az alkalmazást egy fürtre.
+A buildek leküldés vagy bejelentkezés hatására is aktiválódnak. A létrehozási folyamat ellenőrzéséhez váltson a builds ( **buildek** ) lapra.  Miután meggyőződött arról, hogy a Build sikeresen lefut, adjon meg egy kiadási definíciót, amely üzembe helyezi az alkalmazást egy fürtön.
 
 ### <a name="create-a-release-definition"></a>Kiadási definíció létrehozása
 
@@ -147,7 +147,7 @@ Engedélyezze a folyamatos üzembe helyezés eseményindítóját, hogy a kiadá
 
 Válassza a **+ Release** -> **Create a Release** -> **Create** (+Kiadás > Kiadás létrehozása > Létrehozás) lehetőséget a kiadás manuális létrehozásához. A kiadási folyamatot a **Releases** (Kiadások) lapon követheti nyomon.
 
-Győződjön meg arról, hogy az üzembe helyezés sikeres volt, és ellenőrizze, hogy az alkalmazás megfelelően fut-e a fürtön.  Nyisson meg egy webböngészőt, majd navigáljon a következő helyre: [http://mysftestcluster.southcentralus.cloudapp.azure.com:19080/Explorer/](http://mysftestcluster.southcentralus.cloudapp.azure.com:19080/Explorer/).  Vegye figyelembe, hogy a példában szereplő alkalmazásverzió száma „1.0.0.20170616.3”.
+Győződjön meg arról, hogy az üzembe helyezés sikeres volt, és ellenőrizze, hogy az alkalmazás megfelelően fut-e a fürtön.  Nyisson meg egy webböngészőt, és navigáljon `http://mysftestcluster.southcentralus.cloudapp.azure.com:19080/Explorer/`.  Vegye figyelembe, hogy a példában szereplő alkalmazásverzió száma „1.0.0.20170616.3”.
 
 ## <a name="commit-and-push-changes-trigger-a-release"></a>Módosítások véglegesítse és leküldése, kiadás indítása
 
@@ -167,7 +167,7 @@ Az Azure DevOps szolgáltatásba leküldött módosítások automatikusan aktiv�
 
 A build folyamatának ellenőrzéséhez váltson át a Visual Studio **Team Explorer** területének **Builds** (Buildek) lapjára.  Miután meggyőződött arról, hogy a build végrehajtása sikeresen megtörtént, hozza létre a kiadási definíciót, amely telepíti az alkalmazást egy fürtre.
 
-Győződjön meg arról, hogy az üzembe helyezés sikeres volt, és ellenőrizze, hogy az alkalmazás megfelelően fut-e a fürtön.  Nyisson meg egy webböngészőt, majd navigáljon a következő helyre: [http://mysftestcluster.southcentralus.cloudapp.azure.com:19080/Explorer/](http://mysftestcluster.southcentralus.cloudapp.azure.com:19080/Explorer/).  Vegye figyelembe, hogy a példában szereplő alkalmazásverzió száma „1.0.0.20170815.3”.
+Győződjön meg arról, hogy az üzembe helyezés sikeres volt, és ellenőrizze, hogy az alkalmazás megfelelően fut-e a fürtön.  Nyisson meg egy webböngészőt, és navigáljon `http://mysftestcluster.southcentralus.cloudapp.azure.com:19080/Explorer/`.  Vegye figyelembe, hogy a példában szereplő alkalmazásverzió száma „1.0.0.20170815.3”.
 
 ![Service Fabric Explorer][sfx1]
 

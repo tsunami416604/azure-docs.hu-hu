@@ -13,12 +13,12 @@ ms.devlang: na
 ms.date: 06/12/2019
 ms.topic: quickstart
 ms.author: jgao
-ms.openlocfilehash: 4bdf482357789b71b2f87bb74afd76d9ebc7f7d1
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 299e1f3bc5915d547c4b463e770427d480836179
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73476812"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73834293"
 ---
 # <a name="quickstart-create-and-deploy-azure-resource-manager-templates-by-using-the-azure-portal"></a>Rövid útmutató: Azure Resource Manager-sablon létrehozása és üzembe helyezése az Azure Portalon
 
@@ -46,10 +46,10 @@ Számos tapasztalt sablon-fejlesztő ezt a módszert használja a sablonok létr
     ![Azure Storage-fiók létrehozása](./media/resource-manager-quickstart-create-templates-use-the-portal/azure-resource-manager-template-tutorial-create-storage-account-portal.png)
 1. Adja meg a következő információkat:
 
-    |Name (Név)|Érték|
+    |Név|Érték|
     |----|----|
     |**Erőforráscsoport**|Válassza az **új létrehozása**lehetőséget, és adjon meg egy tetszőleges erőforráscsoport-nevet. A képernyőképen az erőforráscsoport neve *mystorage1016rg*. Az erőforráscsoport az Azure-erőforrások tárolója. Az erőforráscsoport megkönnyíti az Azure-erőforrások kezelését. |
-    |**Name (Név)**|Adjon egyedi nevet a Storage-fióknak. A Storage-fiók nevének egyedinek kell lennie az összes Azure-ban, és csak kisbetűket és számokat tartalmaz. A névnek 3 – 24 karakter hosszúnak kell lennie. Ha hibaüzenet jelenik meg, amely szerint a "mystorage1016" nevű Storage-fiók neve már használatban van ", próbálja meg használni **a&lt;nevét > storage&lt;a mai dátumot a MMDD >** , például **johndolestorage1016**. További információ: [elnevezési szabályok és korlátozások](/azure/cloud-adoption-framework/ready/considerations/naming-and-tagging#resource-naming).|
+    |**Name (Név)**|Adjon egyedi nevet a Storage-fióknak. A Storage-fiók nevének egyedinek kell lennie az összes Azure-ban, és csak kisbetűket és számokat tartalmaz. A névnek 3 – 24 karakter hosszúnak kell lennie. Ha hibaüzenet jelenik meg, amely szerint a "mystorage1016" nevű Storage-fiók neve már használatban van ", próbálja meg használni **a&lt;nevét > storage&lt;a mai dátumot a MMDD >** , például **johndolestorage1016**. További információ: [elnevezési szabályok és korlátozások](/azure/architecture/best-practices/resource-naming).|
 
     A többi tulajdonság esetén használhatja az alapértelmezett értékeket.
 
@@ -160,11 +160,11 @@ Az Azure megköveteli, hogy minden Azure-szolgáltatás egyedi névvel rendelkez
 8. Kattintson a **Mentés** gombra.
 9. Írja be a következő értékeket:
 
-    |Name (Név)|Érték|
+    |Név|Érték|
     |----|----|
     |**Erőforráscsoport**|Válassza ki az utolsó szakaszban létrehozott erőforráscsoport-nevet. |
     |**Hely**|Válassza ki a Storage-fiók helyét. Például az **USA középső**régiója. |
-    |**Fiók típusa**|Adja meg a rövid útmutató **Standard_LRS** . |
+    |**Fiók típusa**|Adja meg **Standard_LRS** ehhez a rövid útmutatóhoz. |
     |**Típusú**|Adja meg a rövid útmutató **StorageV2** . |
     |**Hozzáférési szintek**|Adja meg a **gyors** üzembe helyezési útmutatót. |
     |**Https-forgalom engedélyezve**| Ennél a rövid útmutatónál válassza a **true** (igaz) értéket. |

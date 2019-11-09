@@ -1,17 +1,17 @@
 ---
 title: Azure Resource Manager sablonok Azure Cosmos DB Cassandra API
 description: Azure Cosmos DB-Cassandra API létrehozásához és konfigurálásához használjon Azure Resource Manager sablonokat.
-author: markjbrown
+author: TheovanKraay
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 08/05/2019
-ms.author: mjbrown
-ms.openlocfilehash: f36b167b6ddacadb8c5aef8a4609be13834bf174
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.date: 11/07/2019
+ms.author: thvankra
+ms.openlocfilehash: d71847da4b395be230bce5773a5ba7a472a412f4
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73606780"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73832690"
 ---
 # <a name="manage-azure-cosmos-db-cassandra-api-resources-using-azure-resource-manager-templates"></a>Azure Cosmos DB Cassandra API erőforrások kezelése Azure Resource Manager sablonok használatával
 
@@ -22,11 +22,12 @@ Ez a cikk bemutatja, hogyan hajthat végre különböző műveleteket a Azure Co
 Azure Cosmos DB erőforrások létrehozása Azure Resource Manager sablon használatával. Ez a sablon egy Azure Cosmos-fiókot hoz létre a Cassandra APIhoz két olyan táblázattal, amelyek 400 RU/s átviteli sebességet osztanak meg a szóköz szintjén. Másolja a sablont és az üzembe helyezést az alább látható módon, vagy látogasson el az [Azure Gyorsindítás galériába](https://azure.microsoft.com/resources/templates/101-cosmosdb-cassandra/) , és telepítse a Azure Portal. Le is töltheti a sablont a helyi számítógépre, vagy létrehozhat egy új sablont, és megadhatja a helyi elérési utat a `--template-file` paraméterrel.
 
 > [!NOTE]
-> A fiók nevének kisbetűnek kell lennie, és < 31 karakterből kell állnia.
+> A fiók nevének kisbetű és < 44 karakter közöttinek kell lennie.
+> Az RU/s frissítéséhez küldje el újra a sablont a frissített átviteli tulajdonság-értékekkel.
 
 [!code-json[create-cosmos-Cassandra](~/quickstart-templates/101-cosmosdb-cassandra/azuredeploy.json)]
 
-## <a name="deploy-with-azure-cli"></a>Üzembe helyezés az Azure CLI-n keresztül
+## <a name="deploy-with-azure-cli"></a>Üzembe helyezés az Azure parancssori felületén keresztül
 
 A Resource Manager-sablon Azure CLI használatával történő üzembe helyezéséhez **másolja** a szkriptet, és válassza a **kipróbálás** lehetőséget az Azure Cloud Shell megnyitásához. A szkript beillesztéséhez kattintson a jobb gombbal a rendszerhéjra, majd válassza a **Beillesztés**parancsot:
 
@@ -52,48 +53,6 @@ az cosmosdb show --resource-group $resourceGroupName --name accountName --output
 
 Az `az cosmosdb show` parancs az újonnan létrehozott Azure Cosmos-fiókot jeleníti meg az üzembe helyezés után. Ha úgy dönt, hogy az Azure CLI helyileg telepített verzióját használja a Cloudshellben használata helyett, tekintse meg az [Azure parancssori felület (CLI)](/cli/azure/) című cikkét.
 
-## Az átviteli sebesség (RU/mp) frissítése egy alapterületen<a id="keyspace-ru-update"></a>
-
-A következő sablon frissíti a szóköz átviteli sebességét. Másolja a sablont és az üzembe helyezést az alább látható módon, vagy látogasson el az [Azure Gyorsindítás galériába](https://azure.microsoft.com/resources/templates/101-cosmosdb-cassandra-keyspace-ru-update/) , és telepítse a Azure Portal. Le is töltheti a sablont a helyi számítógépre, vagy létrehozhat egy új sablont, és megadhatja a helyi elérési utat a `--template-file` paraméterrel.
-
-[!code-json[cosmosdb-cassandra-keyspace-ru-update](~/quickstart-templates/101-cosmosdb-cassandra-keyspace-ru-update/azuredeploy.json)]
-
-### <a name="deploy-keyspace-template-via-azure-cli"></a>Webtárhely-sablon üzembe helyezése az Azure CLI-n keresztül
-
-A Resource Manager-sablon Azure CLI használatával történő üzembe helyezéséhez válassza a **kipróbálás** lehetőséget az Azure Cloud Shell megnyitásához. A szkript beillesztéséhez kattintson a jobb gombbal a rendszerhéjra, majd válassza a **Beillesztés**parancsot:
-
-```azurecli-interactive
-read -p 'Enter the Resource Group name: ' resourceGroupName
-read -p 'Enter the account name: ' accountName
-read -p 'Enter the keyspace name: ' keyspaceName
-read -p 'Enter the new throughput: ' throughput
-
-az group deployment create --resource-group $resourceGroupName \
-   --template-uri https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/101-cosmosdb-cassandra-keyspace-ru-update/azuredeploy.json \
-   --parameters accountName=$accountName keyspaceName=$keyspaceName throughput=$throughput
-```
-
-## Az átviteli sebesség (RU/s) frissítése egy táblán<a id="table-ru-update"></a>
-
-A következő sablon frissíti a tábla átviteli sebességét. Másolja a sablont és az üzembe helyezést az alább látható módon, vagy látogasson el az [Azure Gyorsindítás galériába](https://azure.microsoft.com/resources/templates/101-cosmosdb-cassandra-table-ru-update/) , és telepítse a Azure Portal. Le is töltheti a sablont a helyi számítógépre, vagy létrehozhat egy új sablont, és megadhatja a helyi elérési utat a `--template-file` paraméterrel.
-
-[!code-json[cosmosdb-cassandra-table-ru-update](~/quickstart-templates/101-cosmosdb-cassandra-table-ru-update/azuredeploy.json)]
-
-### <a name="deploy-table-template-via-azure-cli"></a>Táblázat sablonjának üzembe helyezése az Azure CLI-n keresztül
-
-A Resource Manager-sablon Azure CLI használatával történő üzembe helyezéséhez válassza a **kipróbálás** lehetőséget az Azure Cloud Shell megnyitásához. A szkript beillesztéséhez kattintson a jobb gombbal a rendszerhéjra, majd válassza a **Beillesztés**parancsot:
-
-```azurecli-interactive
-read -p 'Enter the Resource Group name: ' resourceGroupName
-read -p 'Enter the account name: ' accountName
-read -p 'Enter the keyspace name: ' keyspaceName
-read -p 'Enter the table name: ' tableName
-read -p 'Enter the new throughput: ' throughput
-
-az group deployment create --resource-group $resourceGroupName \
-   --template-uri https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/101-cosmosdb-cassandra-table-ru-update/azuredeploy.json \
-   --parameters accountName=$accountName keyspaceName=$keyspaceName tableName=$tableName throughput=$throughput
-```
 
 ## <a name="next-steps"></a>További lépések
 

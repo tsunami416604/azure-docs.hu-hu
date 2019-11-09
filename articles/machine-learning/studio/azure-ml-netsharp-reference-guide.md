@@ -1,6 +1,6 @@
 ---
 title: 'NET # egyéni neurális hálózatok'
-titleSuffix: ML Studio (classic) Azure
+titleSuffix: ML Studio (classic) - Azure
 description: 'A net # neurális hálózatok specifikációs nyelvének szintaxisi útmutatója. Ismerje meg, hogyan hozhat létre egyéni neurális hálózati modelleket Azure Machine Learning Studio (klasszikus).'
 services: machine-learning
 ms.service: machine-learning
@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/01/2018
-ms.openlocfilehash: 0c413bbc3c3b0bd4b1a6e6d6ff40dc1061bbc834
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 7cef92964a4b62c9ed15ddd19778494d6c3be98a
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73684833"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73839740"
 ---
 # <a name="guide-to-net-neural-network-specification-language-for-azure-machine-learning-studio-classic"></a>Útmutató a net # neurális hálózat specifikációjának nyelvéhez Azure Machine Learning Studio (klasszikus)
 
@@ -24,7 +24,7 @@ A net # a Microsoft által fejlesztett nyelv, amely összetett neurális hálóz
 A következő kontextusokban használhat háló # architektúra-specifikációt:
 
 + Minden neurális hálózati modul Microsoft Azure Machine Learning Studio (klasszikus): [többosztályos neurális hálózat](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/multiclass-neural-network), [kétosztályos neurális hálózat](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/two-class-neural-network)és [neurális hálózat regressziója](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/neural-network-regression)
-+ Neurális hálózati függvények a Microsoft ML Serverban: [NeuralNet](https://docs.microsoft.com/machine-learning-server/r-reference/microsoftml/neuralnet) és [rxNeuralNet](https://docs.microsoft.com/machine-learning-server/r-reference/microsoftml/rxneuralnet)az R nyelvhez és [rx_neural_network](https://docs.microsoft.com/machine-learning-server/python-reference/microsoftml/rx-neural-network) for Python.
++ Neurális hálózati függvények a Microsoft ML Serverban: [NeuralNet](https://docs.microsoft.com/machine-learning-server/r-reference/microsoftml/neuralnet) és [rxNeuralNet](https://docs.microsoft.com/machine-learning-server/r-reference/microsoftml/rxneuralnet)az R nyelvhez, valamint [rx_neural_network](https://docs.microsoft.com/machine-learning-server/python-reference/microsoftml/rx-neural-network) a Pythonhoz.
 
 
 Ez a cikk az egyéni neurális hálózatok NET # használatával történő fejlesztéséhez szükséges alapvető fogalmakat és szintaxist ismerteti.
@@ -89,17 +89,17 @@ Az alábbi utasítás például egy állandó `x`t határoz meg:
 
 `Const X = 28;`
 
-Ha egyszerre két vagy több állandót szeretne meghatározni, az azonosító nevét és az értékeket kapcsos zárójelek közé kell tenni, és pontosvesszővel kell elválasztani őket. Például:
+Ha egyszerre két vagy több állandót szeretne meghatározni, az azonosító nevét és az értékeket kapcsos zárójelek közé kell tenni, és pontosvesszővel kell elválasztani őket. Példa:
 
 `Const { X = 28; Y = 4; }`
 
-Az egyes hozzárendelési kifejezések jobb oldalán egész szám, valós szám, logikai érték (igaz vagy hamis) vagy matematikai kifejezés lehet. Például:
+Az egyes hozzárendelési kifejezések jobb oldalán egész szám, valós szám, logikai érték (igaz vagy hamis) vagy matematikai kifejezés lehet. Példa:
 
 `Const { X = 17 * 2; Y = true; }`
 
 ## <a name="layer-declaration"></a>Réteg deklarációja
 
-A réteg deklarációjának megadása kötelező. Meghatározza a réteg méretét és forrását, beleértve annak kapcsolati kötegeit és attribútumait. A deklaráció utasítás a réteg (bemeneti, rejtett vagy kimeneti) nevével kezdődik, amelyet a réteg méretei (pozitív egész számok egy rekordja) követnek. Például:
+A réteg deklarációjának megadása kötelező. Meghatározza a réteg méretét és forrását, beleértve annak kapcsolati kötegeit és attribútumait. A deklaráció utasítás a réteg (bemeneti, rejtett vagy kimeneti) nevével kezdődik, amelyet a réteg méretei (pozitív egész számok egy rekordja) követnek. Példa:
 
 ```Net#
 input Data auto;

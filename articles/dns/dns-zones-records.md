@@ -15,12 +15,12 @@ ms.custom: H1Hack27Feb2017
 ms.workload: infrastructure-services
 ms.date: 12/18/2017
 ms.author: victorh
-ms.openlocfilehash: ccc418cd3af14c0468ab8d669ad2e2e11a0b6d57
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.openlocfilehash: fdf9b60e38ad37334fe6183bb1a9c60cce9f85e1
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70772257"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73832041"
 ---
 # <a name="overview-of-dns-zones-and-records"></a>DNS-zónák és-rekordok áttekintése
 
@@ -30,7 +30,7 @@ Ez az oldal ismerteti a tartományok, a DNS-zónák és a DNS-rekordok és-rekor
 
 A tartománynévrendszer tartományok hierarchiájából áll. A hierarchia első eleme a „gyökértartomány”, amelynek neve egyszerűen „ **.** ”.  Ez alatt találhatók a legfelső szintű tartományok, mint a „com”, a „net”, az „org”, az „uk” vagy a „jp”.  Ezek alatt találhatók a másodlagos szintű tartományok, mint az „org.uk” vagy a „co.jp”. A DNS-hierarchia tartományait globálisan osztják el, és a DNS-névkiszolgálók világszerte futnak.
 
-A tartománynév-regisztráló egy olyan szervezet, amely lehetővé teszi egy tartománynév (például "contoso.com") megvásárlását.  A tartománynév megvásárlásával jogosult a név alatti DNS-hierarchia szabályozására, például lehetővé teszi, hogy a www.contoso.com nevet a vállalati webhelyre irányítsa. A regisztrátor a saját nevében üzemeltetheti a tartományt, vagy alternatív névkiszolgálók megadását is lehetővé teszi.
+A tartománynév-regisztráló egy olyan szervezet, amely lehetővé teszi egy tartománynév (például `contoso.com`) megvásárlását.  A tartománynév megvásárlásával jogosult a név alatti DNS-hierarchia szabályozására, például lehetővé teszi, hogy a nevét `www.contoso.com` a vállalati webhelyre irányítsa. A regisztrátor a saját nevében üzemeltetheti a tartományt, vagy alternatív névkiszolgálók megadását is lehetővé teszi.
 
 A Azure DNS globálisan elosztott, magas rendelkezésre állású névkiszolgáló-infrastruktúrát biztosít, amely a tartomány üzemeltetésére használható. A tartományok Azure DNS-ban való üzemeltetésével a DNS-rekordokat a többi Azure-szolgáltatáshoz hasonló hitelesítő adatokkal, API-kkal, eszközökkel, számlázással és támogatással kezelheti.
 
@@ -40,7 +40,7 @@ A Azure DNS jelenleg nem támogatja a tartománynevek megvásárlását. Ha tart
 
 [!INCLUDE [dns-create-zone-about](../../includes/dns-create-zone-about-include.md)]
 
-## <a name="dns-records"></a>DNS records
+## <a name="dns-records"></a>DNS-rekordok
 
 [!INCLUDE [dns-about-records-include](../../includes/dns-about-records-include.md)]
 
@@ -54,35 +54,35 @@ A Azure DNSban az élettartam meg van adva a rekordhalmazhoz, nem minden rekord 
 
 Az Azure DNS [helyettesítő rekordok](https://en.wikipedia.org/wiki/Wildcard_DNS_record) használatát is támogatja. A helyettesítő rekordok a megfelelő névvel rendelkező lekérdezésekre válaszként lesznek visszaadva (kivéve, ha a nem helyettesítő rekordhalmaz nem tartalmaz szorosabb egyezést). A Azure DNS az NS és a SOA kivételével az összes bejegyzéstípushoz támogatja a helyettesítő rekordhalmazokat.
 
-Helyettesítő bejegyzéstípus létrehozásához használja a (\*z) "" rekordazonosító-nevet. Azt is megteheti, hogy a bal szélső\*címkével "" nevű nevet is használhat, például: "\*. foo".
+Helyettesítő bejegyzéstípus létrehozásához használja a "\*" rekordazonosító-nevet. Azt is megteheti, hogy egy "\*" nevű nevet használ a bal szélső címkével, például: "\*. foo".
 
 ### <a name="caa-records"></a>CAA-rekordok
 
 A CAA-rekordok lehetővé teszik, hogy a tartományi tulajdonosok megadják, hogy mely hitelesítésszolgáltatók (CA-k) jogosultak tanúsítványok kiadására a tartományuk számára. Ez lehetővé teszi, hogy a hitelesítésszolgáltatók bizonyos körülmények között elkerüljék a helytelenül kibocsátott tanúsítványokat. A CAA-rekordok három tulajdonsággal rendelkeznek:
-* **Jelzők**: Ez egy 0 és 255 közötti egész szám, amely az [RFC](https://tools.ietf.org/html/rfc6844#section-3) -ben speciális jelentéssel bíró kritikus jelző jelölésére szolgál.
+* **Jelzők**: 0 és 255 közötti egész szám, amely az [RFC](https://tools.ietf.org/html/rfc6844#section-3) -ben speciális jelentéssel bíró kritikus jelző jelölésére szolgál
 * **Címke**: egy ASCII-karakterlánc, amely a következők egyike lehet:
     * **probléma**: akkor használja ezt a lehetőséget, ha meg szeretné adni a tanúsítványokat kiállító hitelesítésszolgáltatókat (az összes típust).
     * **issuewild**: akkor használja ezt a lehetőséget, ha meg szeretné adni a tanúsítványokat kiállító hitelesítésszolgáltatót (csak helyettesítő tanúsítványok)
     * **iodef**: adjon meg egy e-mail-címet vagy állomásnevet, amely számára a hitelesítésszolgáltatók értesítéseket kaphatnak a jogosulatlan tanúsítványokkal kapcsolatos kérelmekről
 * **Value (érték**): a kijelölt címke értéke
 
-### <a name="cname-records"></a>CNAME records
+### <a name="cname-records"></a>CNAME rekordok
 
 CNAME-rekordhalmazok nem létezhetnek egyidejűleg más, velük egyező nevű rekordhalmazokkal. Nem hozhat létre például egy "www" relatív névvel rendelkező CNAME-rekordot, valamint egy olyan rekordot, amelynek relatív neve "www".
 
-Mivel a zóna csúcsa (név =\@"") mindig tartalmazza a zóna létrehozásakor létrehozott NS és SOA rekordhalmazokat, nem hozhat létre CNAME-rekordot a zóna csúcsán.
+Mivel a zóna csúcsa (név = "\@") mindig tartalmazza a zóna létrehozásakor létrehozott NS és SOA rekordhalmazokat, nem hozhat létre CNAME-rekordot a zóna csúcsán.
 
 Ezek a korlátozások a DNS-szabványokból erednek, és nem korlátozzák Azure DNS.
 
 ### <a name="ns-records"></a>NS-rekordok
 
-A zóna csúcsán (név: "\@") lévő NS-rekordhalmaz automatikusan létrejön minden DNS-zónával, és automatikusan törlődik a zóna törlésekor (nem lehet külön törölni).
+A zóna csúcsán beállított NS-rekord (név: "\@") automatikusan létrejön minden DNS-zónával, és automatikusan törlődik a zóna törlésekor (nem lehet külön törölni).
 
 Ez a rekordtípus a zónához rendelt Azure DNS névkiszolgálók nevét tartalmazza. Ehhez az NS-rekordhoz további névkiszolgálók hozzáadásával több DNS-szolgáltatóval rendelkező közös üzemeltetésű tartományokat is támogathat. Módosíthatja a rekord ÉLETTARTAMát és metaadatait is. Az előre megadott Azure DNS névkiszolgálók azonban nem távolíthatók el és nem módosíthatók. 
 
 Ez csak a zóna csúcsán beállított NS-rekordra vonatkozik. A zónában lévő egyéb NS-rekordhalmazok (a gyermekobjektumok delegálásához) a korlátozás nélkül hozhatók létre, módosíthatók és törölhetők.
 
-### <a name="soa-records"></a>SOA records
+### <a name="soa-records"></a>SOA-rekordok
 
 A rendszer automatikusan létrehoz egy SOA-rekordhalmazt minden zóna csúcsán (név = "\@"), és automatikusan törlődik a zóna törlésekor.  A SOA-rekordok nem hozhatók létre és nem törölhetők külön.
 
@@ -98,12 +98,12 @@ A SOA rekordban lévő zóna sorozatszáma nem frissül automatikusan, ha a zón
 
 Az [SRV-rekordokat](https://en.wikipedia.org/wiki/SRV_record) a különböző szolgáltatások használják a kiszolgálók helyeinek megadására. SRV-rekord megadásakor a Azure DNSban:
 
-* A *szolgáltatást* és a *protokollt* a rekordtípus nevének részeként kell megadni, az aláhúzások előtaggal.  Például: '\_SIP.\_ tcp.name '.  A zóna csúcsán lévő rekord esetében nem kell megadnia a (z\@) "" nevet a rekord nevében, egyszerűen használja a szolgáltatást és a protokollt\_, például\_ "SIP". TCP ".
+* A *szolgáltatást* és a *protokollt* a rekordtípus nevének részeként kell megadni, az aláhúzások előtaggal.  Például: "\_SIP.\_tcp.name '.  A zóna csúcsán lévő rekord esetében nem kell megadnia a "\@" nevet a rekord nevében, egyszerűen használja a szolgáltatást és a protokollt, például: "\_SIP.\_TCP).
 * A *prioritás*, a *súlyozás*, a *port*és a *cél* paraméterként van megadva a rekordban lévő rekordok mindegyikében.
 
 ### <a name="txt-records"></a>TXT-rekordok
 
-TXT records are used to map domain names to arbitrary text strings. Ezeket több alkalmazásban használják, különösen az e-mail-konfigurációval, például a [küldő házirend-keretrendszerével (SPF)](https://en.wikipedia.org/wiki/Sender_Policy_Framework) és a [DomainKeys azonosított levelekkel (DKIM)](https://en.wikipedia.org/wiki/DomainKeys_Identified_Mail).
+A TXT-rekordok a tartománynevek tetszőleges szöveges karakterlánccá való leképezésére szolgálnak. Ezeket több alkalmazásban használják, különösen az e-mail-konfigurációval, például a [küldő házirend-keretrendszerével (SPF)](https://en.wikipedia.org/wiki/Sender_Policy_Framework) és a [DomainKeys azonosított levelekkel (DKIM)](https://en.wikipedia.org/wiki/DomainKeys_Identified_Mail).
 
 A DNS-szabványok lehetővé teszik, hogy egyetlen TXT-rekord több karakterláncot tartalmazzon, amelyek mindegyike legfeljebb 254 karakter hosszú lehet. Ha több karakterláncot használ, azokat az ügyfelek összefűzik, és egyetlen sztringként kezelik őket.
 
@@ -113,7 +113,7 @@ A DNS-rekordok több karakterlánca nem tévesztendő össze a TXT-rekordhalmazb
 
 ## <a name="tags-and-metadata"></a>Címkék és metaadatok
 
-### <a name="tags"></a>Tags
+### <a name="tags"></a>Címkék
 
 A címkék a név-érték párok listája, amelyeket a Azure Resource Manager használ az erőforrások címkézéséhez.  A Azure Resource Manager címkéket használ az Azure-számla szűrt nézeteinek engedélyezéséhez, és lehetővé teszi, hogy beállítson egy olyan szabályzatot, amelynél szükség van a címkékre. A címkékkel kapcsolatos további információért tekintse meg [Az Azure-erőforrások rendszerezése címkék használatával](../azure-resource-manager/resource-group-using-tags.md) című cikket.
 
@@ -135,13 +135,13 @@ A Azure DNS REST API szintjén a Etagek HTTP-fejlécek használatával vannak me
 
 | Fejléc | Viselkedés |
 | --- | --- |
-| Nincsenek |Mindig sikeres (nincs ETAG-ellenőrzés) |
+| Nincs |Mindig sikeres (nincs ETAG-ellenőrzés) |
 | If-Match \<ETAG > |A PUT csak akkor sikeres, ha az erőforrás létezik, és a ETAG megfelel |
 | If-Match * |A PUT csak akkor sikeres, ha az erőforrás létezik |
 | If-None-Match * |A csak akkor sikeres, ha az erőforrás nem létezik |
 
 
-## <a name="limits"></a>Korlátok
+## <a name="limits"></a>Korlátozások
 
 Azure DNS használatakor a következő alapértelmezett korlátok érvényesek:
 

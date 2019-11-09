@@ -12,12 +12,12 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 11/25/2014
 ms.author: gwallace
-ms.openlocfilehash: 2bb721002ad072bb850869ed52b9738380ff9e6e
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: 168ec65cfd0ff4e87c33324daa353b554111c8aa
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69636135"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73838558"
 ---
 # <a name="how-to-make-a-phone-call-using-twilio-in-a-java-application-on-azure"></a>Telefonhívás kezdeményezése a Twilio használatával az Azure-beli Java-alkalmazásokban
 Az alábbi példa bemutatja, hogyan használható a Twilio az Azure-ban üzemeltetett weblapokról. Az eredményül kapott alkalmazás felszólítja a felhasználót a telefonhívások értékeire, ahogy az alábbi képernyőképen is látható.
@@ -26,14 +26,14 @@ Az alábbi példa bemutatja, hogyan használható a Twilio az Azure-ban üzemelt
 
 A jelen témakörben található kód használatához a következőket kell tennie:
 
-1. Twilio-fiók és hitelesítési jogkivonat beszerzése. A Twilio megkezdéséhez értékelje a díjszabást a következő címen: [https://www.twilio.com/pricing][twilio_pricing]. Itt regisztrálhat [https://www.twilio.com/try-twilio][try_twilio]. További információ a Twilio által biztosított API-ról: [https://www.twilio.com/api][twilio_api].
-2. Szerezze be a Twilio JAR-t. A [https://github.com/twilio/twilio-java][twilio_java_github]-ben letöltheti a GitHub-forrásokat, és létrehozhat saját jar-t, vagy letöltheti az előre elkészített jar-t (függőségekkel vagy anélkül).
+1. Twilio-fiók és hitelesítési jogkivonat beszerzése. A Twilio megkezdéséhez értékelje a díjszabást [https://www.twilio.com/pricing][twilio_pricing]. [https://www.twilio.com/try-twilio][try_twilio]címen regisztrálhat. További információ a Twilio által biztosított API-ról: [https://www.twilio.com/api][twilio_api].
+2. Szerezze be a Twilio JAR-t. A [https://github.com/twilio/twilio-java][twilio_java_github]letöltheti a GitHub-forrásokat, és LÉTREHOZHAT saját jar-t, vagy letöltheti az előre elkészített jar-t (függőségekkel vagy anélkül).
    A témakörben található kód az előre elkészített TwilioJava-3.3.8-with-függőségei JAR használatával lett írva.
 3. Adja hozzá a JAR-t a Java Build elérési útjához.
 4. Ha az Eclipse-t használja a Java-alkalmazás létrehozásához, a Twilio JAR-t az alkalmazás telepítési fájljában (WAR) is használja az Eclipse üzembe helyezési szolgáltatásával. Ha nem használja az Eclipse-et a Java-alkalmazás létrehozásához, győződjön meg arról, hogy a Twilio JAR a Java-alkalmazással megegyező Azure-szerepkörbe tartozik, és az alkalmazás osztályának elérési útjába kerül.
 5. Győződjön meg arról, hogy a hitesítésszolgáltatói-tároló tartalmazza a Equifax Secure Certificate Authority (MD5) ujjlenyomattal rendelkező tanúsítványát, a következőt: CB: 9D: C0:13:24:8A: 82:9B: B2:17:1E: D1:1B: EC: D4 (a sorozatszám 35: DE: F4: CF és az SHA1 ujjlenyomat a D2:32 3:14:23:21:74: E4:0D: 7F: 9D: 62:13:97:86:63:3A. Ez a hitelesítésszolgáltató (CA) tanúsítványa a [https://api.twilio.com][twilio_api_service] szolgáltatáshoz, amelyet a rendszer Twilio API-k használatakor hív meg. További információ a HITELESÍTÉSSZOLGÁLTATÓI tanúsítvány JDK CAcert-tárolójához való hozzáadásáról: [tanúsítvány hozzáadása a Java hitelesítésszolgáltatói tanúsítványtárolóhoz][add_ca_cert].
 
-Emellett a ["Helló világ!" alkalmazás alkalmazásnak a Azure Toolkit for Eclipse használatával][azure_java_eclipse_hello_world]történő létrehozásával, illetve a Java-alkalmazások Azure-ban való üzemeltetésével kapcsolatos egyéb módszerekkel való ismerete kifejezetten ajánlott.
+Emellett a ["Helló világ!" alkalmazás alkalmazásnak a Azure Toolkit for Eclipse használatával történő létrehozásával][azure_java_eclipse_hello_world], illetve a Java-alkalmazások Azure-ban való üzemeltetésével kapcsolatos egyéb módszerekkel való ismerete kifejezetten ajánlott.
 
 ## <a name="create-a-web-form-for-making-a-call"></a>Webes űrlap létrehozása hívás kezdeményezéséhez
 A következő kód bemutatja, hogyan hozhat létre webes űrlapot a felhasználói adathívások lekéréséhez. Ebben a példában egy új, **TwilioCloud**nevű dinamikus webes projekt lett létrehozva, és a **callform. jsp** egy JSP-fájlként lett hozzáadva.
@@ -171,20 +171,20 @@ Az alkalmazás futtatásának magas szintű lépései a következők: ezeknek a 
 2. Módosítsa a **Startup. cmd** fájlt a TWILIOCLOUD-háború kicsomagolásához.
 3. Fordítsa le az alkalmazást a Compute Emulator.
 4. Indítsa el a telepítést a Compute Emulator.
-5. Nyisson meg egy böngészőt, `http://localhost:8080/TwilioCloud/callform.jsp`és futtassa a parancsot.
+5. Nyisson meg egy böngészőt, és futtassa a `http://localhost:8080/TwilioCloud/callform.jsp`.
 6. Adja meg az értékeket az űrlapon, kattintson a **Hívás kezdeményezése**elemre, majd tekintse meg az eredményeket az MakeCall. jsp fájlon.
 
-Ha készen áll az Azure-ba való üzembe helyezésre, fordítsa újra a felhőbe történő üzembe helyezést, telepítse az Azure-ba, és futtassa a http://*your_hosted_name*. cloudapp.net/TwilioCloud/callform.jsp parancsot a böngészőben (adja meg a *your_hosted_name*értékét).
+Ha készen áll az Azure-ba való üzembe helyezésre, fordítsa újra a felhőbe történő üzembe helyezést, telepítse az Azure-ba, és futtassa a http://*your_hosted_name*. cloudapp.net/TwilioCloud/callform.jsp parancsot a böngészőben ( *your_hosted_name*).
 
 ## <a name="next-steps"></a>További lépések
 Ez a kód olyan alapszintű funkciókat mutat be, amelyek az Azure-ban Java Twilio-t használnak. Mielőtt éles környezetben üzembe helyezi az Azure-t, érdemes lehet további hibakezelés vagy más funkciókat hozzáadnia. Példa:
 
 * Webes űrlap helyett az Azure Storage-Blobok vagy a SQL Database használatával tárolhatók a telefonszámok és a hívás szövege. További információ az Azure Storage-Blobok javában való használatáról: [a blob Storage szolgáltatás használata Java-ból][howto_blob_storage_java]. 
-* A **RoleEnvironment. getConfigurationSettings** használatával lekérheti a Twilio-fiók azonosítóját és a hitelesítési tokent a központi telepítés konfigurációs beállításaiból, nem pedig a MakeCall. jsp értékek rögzített kódolása helyett. További információ a **RoleEnvironment** osztályról: [Az Azure Service runtime library használata a JSP-ben][azure_runtime_jsp] és az Azure Service Runtime [http://dl.windowsazure.com/javadoc][azure_javadoc]csomag dokumentációja.
-* A MakeCall. jsp kód egy Twilio által megadott URL-címet [https://twimlets.com/message][twimlet_message_url]rendel hozzá az **URL-** változóhoz. Ez az URL-cím egy Twilio Markup Language (TwiML) választ tartalmaz, amely tájékoztatja a Twilio a hívás folytatásáról. Például a visszaadott TwiML tartalmazhatnak egy olyan **&lt;&gt;** beszédet, amely a hívás címzettjének küldött szöveget eredményezi. A Twilio által biztosított URL-cím használata helyett saját szolgáltatást építhet ki a Twilio kérelmére való reagáláshoz. További információkért lásd: a [Twilio használata a hang-és SMS-képességekhez a javában][howto_twilio_voice_sms_java]. További információ a TwiML-ról: [https://www.twilio.com/docs/api/twiml][twiml], és további információ a **&lt; Say&gt;** and other Twilio műveletekről:. [https://www.twilio.com/docs/api/twiml/say][twilio_say]
+* A **RoleEnvironment. getConfigurationSettings** használatával lekérheti a Twilio-fiók azonosítóját és a hitelesítési tokent a központi telepítés konfigurációs beállításaiból, nem pedig a MakeCall. jsp értékek rögzített kódolása helyett. További információ a **RoleEnvironment** osztályról: [Az Azure Service runtime library használata a JSP-ben][azure_runtime_jsp].
+* A MakeCall. jsp kód egy Twilio által megadott URL-címet rendel hozzá az **URL-** változóhoz, [https://twimlets.com/message][twimlet_message_url]. Ez az URL-cím egy Twilio Markup Language (TwiML) választ tartalmaz, amely tájékoztatja a Twilio a hívás folytatásáról. Például a visszaadott TwiML tartalmazhatnak **&lt;&gt;** olyan műveletet, amely a hívás címzettjének küldött szöveget eredményez. A Twilio által biztosított URL-cím használata helyett saját szolgáltatást építhet ki a Twilio kérelmére való reagáláshoz. További információkért lásd: a [Twilio használata a hang-és SMS-képességekhez a javában][howto_twilio_voice_sms_java]. A TwiML-ről további információt talál a [https://www.twilio.com/docs/api/twiml][twiml]címen, és további információt találhat a **&lt;ról,&gt;** és más Twilio műveletekről a [https://www.twilio.com/docs/api/twiml/say][twilio_say].
 * Olvassa el a Twilio biztonsági irányelveit a következő címen: [https://www.twilio.com/docs/security][twilio_docs_security].
 
-További információ a Twilio-ről: [https://www.twilio.com/docs][twilio_docs].
+További információ a Twilio: [https://www.twilio.com/docs][twilio_docs].
 
 ## <a name="see-also"></a>Lásd még:
 * [A Twilio használata a hang-és SMS-funkciókhoz Java-ban][howto_twilio_voice_sms_java]
@@ -204,7 +204,6 @@ További információ a Twilio-ről: [https://www.twilio.com/docs][twilio_docs].
 [howto_blob_storage_java]: https://www.windowsazure.com/develop/java/how-to-guides/blob-storage/
 [howto_sql_azure_java]: https://msdn.microsoft.com/library/windowsazure/hh749029.aspx
 [azure_runtime_jsp]: https://msdn.microsoft.com/library/windowsazure/hh690948.aspx
-[azure_javadoc]: http://dl.windowsazure.com/javadoc
 [twilio_docs_security]: https://www.twilio.com/docs/security
 [twilio_docs]: https://www.twilio.com/docs
 [twilio_say]: https://www.twilio.com/docs/api/twiml/say

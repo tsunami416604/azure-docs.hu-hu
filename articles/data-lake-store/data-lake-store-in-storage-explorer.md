@@ -1,37 +1,30 @@
 ---
-title: Az Azure Data Lake Storage Gen1-erőforrásait kezelheti az Azure Storage Explorerrel
-description: Ismerje meg, hogyan eléréséhez és kezeléséhez az Azure Data Lake Storage Gen1 adatokat és erőforrásokat az Azure Storage Explorerben
-Keywords: Azure Data Lake Store, Azure Storage Explorer
-services: Data Lake Store
-documentationcenter: ''
+title: Data Lake Storage Gen1 erőforrások kezelése – Azure Storage Explorer
+description: Ismerje meg, hogyan érheti el és kezelheti Azure Data Lake Storage Gen1 adatait és erőforrásait Azure Storage Explorer
 author: jejiang
-manager: DJ
-editor: Jenny Jiang
-ms.assetid: ''
 ms.service: data-lake-store
-ms.custom: Azure Data Lake Store
-ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/05/2018
 ms.author: jejiang
-ms.openlocfilehash: 18ef1f182611a9c8fbf24cd08026633f5449bbe9
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: a5117f72f933e1e48dc471a75624a8d3921f55af
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60613620"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73832267"
 ---
-# <a name="manage-azure-data-lake-storage-gen1-resources-by-using-storage-explorer"></a>Az Azure Data Lake Storage Gen1-erőforrások kezelése a Storage Explorer használatával
+# <a name="manage-azure-data-lake-storage-gen1-resources-by-using-storage-explorer"></a>Azure Data Lake Storage Gen1 erőforrások kezelése Storage Explorer használatával
 
-[Az Azure Data Lake Storage Gen1](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-overview) szolgáltatás nagy mennyiségű strukturálatlan adat, például szövegek vagy bináris adatok tárolására használható. HTTP-n vagy HTTPS-en keresztül bárhonnan hozzáférhet az adataihoz. Data Lake Storage Gen1 az Azure Storage Explorerben lehetővé teszi, hogy a Data Lake Storage Gen1 adatokat és erőforrásokat, mint a blobok és üzenetsorok más Azure-entitásokkal együtt elérését és kezelését. Mostantól ugyanazon eszközzel, egy helyen kezelheti a különböző Azure-entitásokat.
+[Azure Data Lake Storage Gen1](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-overview) a nagy mennyiségű strukturálatlan adat, például szöveg vagy bináris adat tárolására szolgáló szolgáltatás. HTTP-n vagy HTTPS-en keresztül bárhonnan hozzáférhet az adataihoz. A Azure Storage Explorer Data Lake Storage Gen1 lehetővé teszi a Data Lake Storage Gen1-és egyéb Azure-entitások, például a blobok és a várólisták elérését és kezelését. Mostantól ugyanazon eszközzel, egy helyen kezelheti a különböző Azure-entitásokat.
 
-Egy másik előnye, hogy, nincs szükség előfizetési engedélyre a Data Lake Storage Gen1 adatok kezelésére. A Storage Explorerben a Data Lake Storage Gen1 elérési útját is csatlakoztatható a **helyi és csatolt** csomóponthoz, valaki ezt engedélyezi.
+A másik előnye, hogy nem kell előfizetési engedéllyel rendelkeznie Data Lake Storage Gen1-adatkezeléshez. Storage Explorer a **helyi és a csatolt** csomóponthoz is csatlakoztathatja a Data Lake Storage Gen1 elérési utat, ha valaki megadja az engedélyt.
 
 ## <a name="prerequisites"></a>Előfeltételek
+
 A cikkben leírt lépések elvégzéséhez a következő előfeltételekre lesz szüksége:
 
-*   Azure-előfizetés. Lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial).
-*   Egy Data Lake Storage Gen1 fiók. Létrehozásával kapcsolatos utasításokért lásd: [Ismerkedés az Azure Data Lake Storage Gen1](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-get-started-portal).
+* Azure-előfizetés. Lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial).
+* Egy Data Lake Storage Gen1-fiók. A létrehozásával kapcsolatos útmutatásért tekintse meg a [Azure Data Lake Storage Gen1 első lépései](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-get-started-portal)című témakört.
 
 ## <a name="install-storage-explorer"></a>A Storage Explorer telepítése
 
@@ -40,18 +33,18 @@ Az Azure Storage Explorer legújabb összetevői a [termék weblapjáról](https
 ## <a name="connect-to-an-azure-subscription"></a>Csatlakozás Azure-előfizetéshez
 
 1. A Storage Explorerben kattintson a bal oldali beépülő modul ikonra.
-       
+
    ![Beépülő modul ikonja](./media/data-lake-store-in-storage-explorer/plug-in-icon.png)
- 
-2. Válassza az **Azure-fiók hozzáadása** elemet, majd kattintson a **Bejelentkezés** gombra.
+
+1. Válassza az **Azure-fiók hozzáadása** elemet, majd kattintson a **Bejelentkezés** gombra.
 
    ![„Csatlakozás az Azure Storage-hoz” párbeszédpanel](./media/data-lake-store-in-storage-explorer/connect-to-azure-subscription.png)
 
-2. A **Bejelentkezés a fiókba** párbeszédpanelen adja meg Azure-beli hitelesítő adatait.
+1. A **Bejelentkezés a fiókba** párbeszédpanelen adja meg Azure-beli hitelesítő adatait.
 
     ![Azure-bejelentkezés párbeszédpanele](./media/data-lake-store-in-storage-explorer/sign-in.png)
 
-3. Válassza ki az előfizetést a listából, majd kattintson az **Alkalmaz** gombra.
+1. Válassza ki az előfizetést a listából, majd kattintson az **Alkalmaz** gombra.
 
     ![Előfizetési információ és „Alkalmaz” gomb](./media/data-lake-store-in-storage-explorer/apply-subscription.png)
 
@@ -59,10 +52,12 @@ Az Azure Storage Explorer legújabb összetevői a [termék weblapjáról](https
 
     ![Fióklista](./media/data-lake-store-in-storage-explorer/account-list.png)
 
-Data Lake Storage Gen1 sikeresen csatlakozott az Azure-előfizetéshez.
+Sikeresen csatlakoztatta Data Lake Storage Gen1 az Azure-előfizetéséhez.
 
-## <a name="connect-to-data-lake-storage-gen1"></a>Csatlakozhat a Data Lake Storage Gen1
-Az előfizetésében nem szereplő erőforrásokhoz is hozzáférhet, ha valaki megadja az erőforrások URI-ját. Majd csatlakozhat Data Lake Storage Gen1 bejelentkezés után az URI használatával.
+## <a name="connect-to-data-lake-storage-gen1"></a>Kapcsolódás Data Lake Storage Gen1hoz
+
+Az előfizetésében nem szereplő erőforrásokhoz is hozzáférhet, ha valaki megadja az erőforrások URI-ját. Ezután a bejelentkezés után az URI használatával kapcsolódhat Data Lake Storage Gen1hoz.
+
 1. Nyissa meg a Storage Explorert.
 2. A bal oldali panelen bontsa ki a **Helyi és csatolt** elemet.
 3. Kattintson a jobb gombbal a **Data Lake Store** elemre, és válassza a **Csatlakozás a Data Lake Store-hoz** lehetőséget.
@@ -73,48 +68,51 @@ Az előfizetésében nem szereplő erőforrásokhoz is hozzáférhet, ha valaki 
 
       ![„Csatlakozás a Data Lake Store-hoz” párbeszédpanel, az URI beírására szolgáló szövegmezővel](./media/data-lake-store-in-storage-explorer/storageexplorer-adls-uri-attach-dialog.png)
 
-      ![Data Lake Storage Gen1 eredménye](./media/data-lake-store-in-storage-explorer/storageexplorer-adls-attach-finish.png)
+      ![Data Lake Storage Gen1hoz való csatlakozás eredménye](./media/data-lake-store-in-storage-explorer/storageexplorer-adls-attach-finish.png)
 
-## <a name="view-a-data-lake-storage-gen1-accounts-contents"></a>A Data Lake Storage Gen1 fiók tartalmának megtekintése
-A Data Lake Storage Gen1-fiókok erőforrásai között mappák és fájlok.
+## <a name="view-a-data-lake-storage-gen1-accounts-contents"></a>Data Lake Storage Gen1 fiók tartalmának megtekintése
 
-A következő lépések bemutatják, hogyan tekinthető tartalma a Storage Explorerben a Data Lake Storage Gen1 fiók:
+Egy Data Lake Storage Gen1 fiók erőforrásai tartalmazzák A mappákat és a fájlokat.
+
+A következő lépések bemutatják, hogyan tekintheti meg Data Lake Storage Gen1 fiók tartalmát a Storage Exploreron belül:
 
 1. Nyissa meg a Storage Explorert.
-2. A bal oldali ablaktáblán bontsa ki az előfizetést, amely tartalmazza a Data Lake Storage Gen1 fiókot, hogy meg szeretné jeleníteni.
+2. A bal oldali ablaktáblán bontsa ki azt az előfizetést, amely a megtekinteni kívánt Data Lake Storage Gen1 fiókot tartalmazza.
 3. Bontsa ki a **Data Lake Store** elemet.
-4. Kattintson a jobb gombbal a Data Lake Storage Gen1-fiók csomópontjára, megtekintheti, és válassza ki a kívánt **nyílt**. Vagy kattintson duplán a Data Lake Storage Gen1 fiókra a megnyitásához. 
-   
-   A fő panel megjeleníti a Data Lake Storage Gen1-fiók tartalmát.
+4. Kattintson a jobb gombbal a megtekinteni kívánt Data Lake Storage Gen1 fiók csomópontra, majd válassza a **Megnyitás**lehetőséget. A megnyitásához kattintson duplán a Data Lake Storage Gen1 fiókra.
 
-   ![Fő panel a mappák listájával](./media/data-lake-store-in-storage-explorer/storageexplorer-adls-toolbar-mainpane.png) 
+   A fő ablaktábla megjeleníti a Data Lake Storage Gen1 fiók tartalmát.
 
-## <a name="manage-resources-in-data-lake-storage-gen1"></a>A Data Lake Storage Gen1-erőforrások kezelése
+   ![Fő panel a mappák listájával](./media/data-lake-store-in-storage-explorer/storageexplorer-adls-toolbar-mainpane.png)
 
-Data Lake Storage Gen1 erőforrások is kezelhetők a következő műveletekkel:
-*   Data Lake Storage Gen1 erőforrások tallózása, több Data Lake Storage Gen1 fiókban.  
-*   Kapcsolati karakterlánc használatával csatlakozhat, és közvetlenül kezelheti a Data Lake Storage Gen1. 
-*   Tekintse meg a Data Lake Storage Gen1 erőforrásokat alatt az ACL-lel a mások által megosztott **helyi és csatolt**.
-*   CRUD-műveletek végrehajtása fájlokon vagy mappákon: rekurzív mappák és több kijelölt fájl támogatása. 
-*   Mappák húzása és hozzáadása a legutóbbi helyek gyors eléréséhez. Ez a művelet ugyanúgy működik, mint az asztali gépek fájlkezelőjében. 
-*   Másolja ki és a egy Data Lake Storage Gen1 hivatkozás megnyitása egyetlen kattintással a Storage Explorerben. 
-*   A tevékenységnapló megjelenítése a jobb alsó panelen a tevékenységek állapotának megtekintéséhez.
-*   Mappastatisztikák és fájltulajdonságok megjelenítése.
+## <a name="manage-resources-in-data-lake-storage-gen1"></a>Erőforrások kezelése a Data Lake Storage Gen1ban
+
+A következő műveletek végrehajtásával kezelheti Data Lake Storage Gen1 erőforrásait:
+
+* Több Data Lake Storage Gen1 fiók között böngészhet Data Lake Storage Gen1 erőforrásokon.  
+* Kapcsolati karakterlánc használata a Data Lake Storage Gen1 közvetlen csatlakoztatásához és kezeléséhez.
+* A mások által a **helyi és csatolt ACL-** en keresztül megosztott erőforrások megtekintése Data Lake Storage Gen1.
+* CRUD-műveletek végrehajtása fájlokon vagy mappákon: rekurzív mappák és több kijelölt fájl támogatása.
+* Mappák húzása és hozzáadása a legutóbbi helyek gyors eléréséhez. Ez a művelet ugyanúgy működik, mint az asztali gépek fájlkezelőjében.
+* Egy kattintással másolja és nyisson meg egy Data Lake Storage Gen1 hiperhivatkozást Storage Explorer.
+* A tevékenységnapló megjelenítése a jobb alsó panelen a tevékenységek állapotának megtekintéséhez.
+* Mappastatisztikák és fájltulajdonságok megjelenítése.
 
 ## <a name="manage-resources-in-azure-storage-explorer"></a>Erőforrások kezelése az Azure Storage Explorerben
-Miután létrehozott egy Data Lake Storage Gen1 fiókot, akkor a következőket teheti:
+
+Data Lake Storage Gen1 fiók létrehozása után a következőket teheti:
 
 * Feltölthet mappákat és fájlokat, valamint letölthet és megnyithat erőforrásokat a helyi számítógépen.
 * Elemeket rögzíthet a **gyorselérési eszköztáron**, új mappát hozhat létre, kimásolhatja az URL-címet, vagy kijelölhet mindent.
 * Másolhat és beilleszthet, átnevezhet, törölhet, mappastatisztikákat tekinthet meg és frissíthet.
 
-A következő cikkek bemutatják, hogyan kezelheti az erőforrásokat egy Data Lake Storage Gen1 fiókot. Kövesse a végrehajtani kívánt művelet lépéseit.
+A következő elemek bemutatják, hogyan kezelheti az erőforrásokat egy Data Lake Storage Gen1-fiókon belül. Kövesse a végrehajtani kívánt művelet lépéseit.
 
 ### <a name="upload-files"></a>Fájlok feltöltése
 
 1. A fő ablaktábla eszköztárán válassza a **Feltöltés**, majd a legördülő menüből a **Fájlok feltöltése** lehetőséget.
 
-   ![„Fájlok feltöltése” menüelem](./media/data-lake-store-in-storage-explorer/storageexplorer-adls-upload-files-menu.png) 
+   ![„Fájlok feltöltése” menüelem](./media/data-lake-store-in-storage-explorer/storageexplorer-adls-upload-files-menu.png)
 
 2. A **Feltölteni kívánt fájlok kiválasztása** párbeszédpanelen válassza ki a feltölteni kívánt fájlokat.
 
@@ -126,19 +124,19 @@ A következő cikkek bemutatják, hogyan kezelheti az erőforrásokat egy Data L
 
 1. A fő ablaktábla eszköztárán válassza a **Feltöltés**, majd a legördülő menüből a **Mappák feltöltése** lehetőséget.
 
-   ![„Mappa feltöltése” menüelem](./media/data-lake-store-in-storage-explorer/storageexplorer-adls-upload-folder-menu.png) 
-     
+   ![„Mappa feltöltése” menüelem](./media/data-lake-store-in-storage-explorer/storageexplorer-adls-upload-folder-menu.png)
+
 2. A **Feltölteni kívánt mappa kiválasztása** párbeszédpanelen válassza ki a feltölteni kívánt mappát. Kattintson a **Mappa kiválasztása** lehetőségre.
 
-   ![Mappafeltöltés párbeszédpanele](./media/data-lake-store-in-storage-explorer/storageexplorer-adls-upload-folder-dialog.png)      
+   ![Mappafeltöltés párbeszédpanele](./media/data-lake-store-in-storage-explorer/storageexplorer-adls-upload-folder-dialog.png)
 
    Megkezdődik a feltöltés.
 
-   ![Feltöltés folyamatban párbeszédpanel](./media/data-lake-store-in-storage-explorer/storageexplorer-adls-upload-folder-drag.png) 
+   ![Feltöltés folyamatban párbeszédpanel](./media/data-lake-store-in-storage-explorer/storageexplorer-adls-upload-folder-drag.png)
 
 > [!NOTE]
-> A feltöltés elindításához közvetlenül át is húzhatja a mappákat és fájlokat a helyi számítógépen. 
-       
+> A feltöltés elindításához közvetlenül át is húzhatja a mappákat és fájlokat a helyi számítógépen.
+
 ### <a name="download-folders-or-files-to-your-local-computer"></a>Mappák vagy fájlok letöltése a helyi számítógépre
 
 1. Válassza ki a letölteni kívánt mappákat vagy fájlokat.
@@ -153,20 +151,20 @@ A következő cikkek bemutatják, hogyan kezelheti az erőforrásokat egy Data L
 
 A rendszer letölti a fájlt, majd megnyitja a fájltípushoz társított alkalmazással. Vagy megnyílik a fájl a fő panelen.
 
-![Megnyitott fájl](./media/data-lake-store-in-storage-explorer/storageexplorer-adls-open.png) 
+![Megnyitott fájl](./media/data-lake-store-in-storage-explorer/storageexplorer-adls-open.png)
 
 ### <a name="copy-folders-or-files-to-the-clipboard"></a>Mappák és fájlok másolása a vágólapra
 
 1. Válassza ki a másolni kívánt mappákat vagy fájlokat.
 2. A fő ablaktábla eszköztárán válassza a **Másolás** lehetőséget. Vagy kattintson a jobb gombbal a kijelölt mappákra vagy fájlokra, és a helyi menüben kattintson a **Másolás** elemre.
-3. A bal oldali panelen keresse meg a Data Lake Storage Gen1 egy másik fiókot, és kattintson duplán a fő ablaktáblán való megtekintéshez.
+3. A bal oldali ablaktáblán tallózzon egy másik Data Lake Storage Gen1-fiókra, majd kattintson rá duplán a fő ablaktáblán való megjelenítéshez.
 4. A fő panel eszköztárán válassza a **Beillesztés** lehetőséget egy másolat létrehozásához. Vagy kattintson a cél helyi menüjének **Beillesztés** elemére.
 
 ![Mappa másolására szolgáló kiválasztások](./media/data-lake-store-in-storage-explorer/storageexplorer-adls-copy-paste.png)
 
 > [!NOTE]
-> A tárolási típusok közötti másolási és beillesztési művelet nem támogatott. Data Lake Storage Gen1 mappák és fájlok másolása, és illessze be őket egy másik Data Lake Storage Gen1 fiókot. De *nem* Data Lake Storage Gen1 mappák és fájlok másolása, majd illessze be őket az Azure Blob storage- vagy fordítva.
-> 
+> A tárolási típusok közötti másolási és beillesztési művelet nem támogatott. Másolhatja Data Lake Storage Gen1 mappákat vagy fájlokat, és beillesztheti őket egy másik Data Lake Storage Gen1-fiókba. De *nem* másolhat Data Lake Storage Gen1 mappákat vagy fájlokat, és beillesztheti őket az Azure Blob Storage-ba vagy fordítva.
+>
 > A másolási és beillesztési művelet során letölti a mappákat vagy fájlokat a helyi számítógépre, majd feltölti őket a célhelyre. Az eszköz *nem* a háttérben hajtja végre a műveletet. A nagyméretű fájlok másolása és beillesztése lassú folyamat. A nagy teljesítményű fájlmásolási és -áthelyezési funkció optimalizálása folyamatban van.
 
 ### <a name="delete-folders-or-files"></a>Mappák vagy fájlok törlése
@@ -189,14 +187,15 @@ A rendszer letölti a fájlt, majd megnyitja a fájltípushoz társított alkalm
 Miután rögzített egy mappát a **gyorselérési** csomóponton, könnyen hozzáférhet az erőforrásokhoz.
 
 ### <a name="use-deep-links"></a>Mélyhivatkozások használata
+
 Az URL-címeket egyszerűen beírhatja a Fájlkezelő vagy a böngésző címsorába. Ezután automatikusan elindul a Storage Explorer.exe, és megjeleníti az URL-cím helyét.
 
 ![Mélyhivatkozás a Fájlkezelőben](./media/data-lake-store-in-storage-explorer/storageexplorer-adls-deep-link.png)
 
-
 ## <a name="next-steps"></a>További lépések
+
 * A [Storage Explorer legújabb kibocsátási megjegyzéseinek és videóinak megtekintése](https://www.storageexplorer.com).
 * Megismerheti, hogyan [kezelhető az Azure Cosmos DB az Azure Storage Explorerben](https://docs.microsoft.com/azure/cosmos-db/storage-explorer).
 * [A Storage Explorer használatának első lépései](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer).
-* [Ismerkedés az Azure Data Lake Storage Gen1](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-overview).
+* [A Azure Data Lake Storage Gen1 első lépései](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-overview).
 * Tekintse meg ezt a [YouTube-videót az Azure Cosmos DB az Azure Storage Explorerben történő használatáról](https://www.youtube.com/watch?v=iNIbg1DLgWo&feature=youtu.be).

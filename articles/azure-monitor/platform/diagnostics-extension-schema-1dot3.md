@@ -7,12 +7,12 @@ ms.topic: reference
 author: rboucher
 ms.author: robb
 ms.date: 09/20/2018
-ms.openlocfilehash: 1d378571a02f30c223338eef5c7d142ed02ff4c8
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 3d79fe6a415b7d1f862797bf41caed89bfe50a41
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72555553"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73834742"
 ---
 # <a name="azure-diagnostics-13-and-later-configuration-schema"></a>Azure Diagnostics 1,3-es és újabb konfigurációs séma
 > [!NOTE]
@@ -21,7 +21,7 @@ ms.locfileid: "72555553"
 > - Virtual Machine Scale Sets
 > - Service Fabric
 > - Cloud Services
-> - Hálózati biztonsági csoportok
+> - Network Security Groups (Hálózati biztonsági csoportok)
 >
 > Ez a lap csak akkor fontos, ha az egyik szolgáltatást használja.
 
@@ -411,7 +411,7 @@ Az 1,3-es verzióban lett hozzáadva.
 A diagnosztikai konfigurációs fájl legfelső szintű eleme.  
 
 **Attribútum** xmlns – a diagnosztika konfigurációs FÁJLjának XML-névtere a következő:  
-http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration  
+`http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration`
 
 
 |Gyermek elemek|Leírás|  
@@ -441,7 +441,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 ## <a name="diagnosticmonitorconfiguration-element"></a>DiagnosticMonitorConfiguration elem
  *Tree: root-DiagnosticsConfiguration-PublicConfig-WadCFG-DiagnosticMonitorConfiguration*
 
- Szükséges
+ Kötelező
 
 |Attribútumok|Leírás|  
 |----------------|-----------------|  
@@ -560,7 +560,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
  Lehetővé teszi a gyors lekérdezésekhez optimalizált teljesítményszámláló-tábla létrehozását. A **PerformanceCounters** elemben definiált minden teljesítményszámláló a teljesítményszámláló táblán kívül a metrikák táblázatban található.  
 
- A **resourceId** attribútum megadása kötelező.  Annak a virtuális gépnek vagy virtuálisgép-méretezési csoportnak az erőforrás-azonosítója, amelyre a Azure Diagnostics telepíti. Szerezze be a **resourceID** a [Azure Portal](https://portal.azure.com). Válassza a **tallózás**  -> **erőforráscsoportok**  ->  **< név \>** lehetőséget. Kattintson a **Tulajdonságok** csempére, és másolja az értéket az **azonosító** mezőből.  
+ A **resourceId** attribútum megadása kötelező.  Annak a virtuális gépnek vagy virtuálisgép-méretezési csoportnak az erőforrás-azonosítója, amelyre a Azure Diagnostics telepíti. Szerezze be a **resourceID** a [Azure Portal](https://portal.azure.com). Válassza a **tallózás** -> **erőforráscsoportok** ->  **< név\>** lehetőséget. Kattintson a **Tulajdonságok** csempére, és másolja az értéket az **azonosító** mezőből.  
 
 |Gyermek elemek|Leírás|  
 |--------------------|-----------------|  
@@ -606,7 +606,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
  Meghatározza az alapszintű Azure-naplók pufferének konfigurációját.  
 
-|Attribútum|Type (Típus)|Leírás|  
+|Attribútum|Típus|Leírás|  
 |---------------|----------|-----------------|  
 |**bufferQuotaInMB**|**unsignedInt**|Választható. Meghatározza a fájlrendszer tárterületének maximális számát, amely elérhető a megadott adatmennyiség esetében.<br /><br /> Az alapértelmezett érték a 0.|  
 |**scheduledTransferLogLevelFilter**|**karakterlánc**|Választható. Megadja az átvitt naplóbejegyzések minimális súlyossági szintjét. Az alapértelmezett érték nincs **definiálva**, amely az összes naplót átviszi. A többi lehetséges érték (a legkevesebb információhoz képest) **részletes**, **információ**, **Figyelmeztetés**, **hiba**és **kritikus**.|  
@@ -638,11 +638,11 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
  Azokat a helyszíneket határozza meg, amelyekben diagnosztikai adatként küldenek. Például a Application Insights szolgáltatás.  
 
-|Attribútum|Type (Típus)|Leírás|  
+|Attribútum|Típus|Leírás|  
 |---------------|----------|-----------------|  
 |**név**|sztring|A sinkname azonosító sztring.|  
 
-|Elem|Type (Típus)|Leírás|  
+|Elem|Típus|Leírás|  
 |-------------|----------|-----------------|  
 |**Application Insights**|sztring|Csak akkor használható, ha az adatokat Application Insightsba küldi. Egy aktív Application Insights fiók kialakítási kulcsát tartalmazza, amelyhez hozzáféréssel rendelkezik.|  
 |**Csatornák**|sztring|Egy minden további szűréshez, amelyet a stream|  
@@ -654,7 +654,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
  Meghatározza a fogadón keresztül áthaladó naplózási adatstreamek szűrőit.  
 
-|Elem|Type (Típus)|Leírás|  
+|Elem|Típus|Leírás|  
 |-------------|----------|-----------------|  
 |**Csatorna**|sztring|Ezen a lapon a Leírás máshol található.|  
 
@@ -665,7 +665,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
  Azokat a helyszíneket határozza meg, amelyekben diagnosztikai adatként küldenek. Például a Application Insights szolgáltatás.  
 
-|Attribútumok|Type (Típus)|Leírás|  
+|Attribútumok|Típus|Leírás|  
 |----------------|----------|-----------------|  
 |**Naplózási szint**|**karakterlánc**|Megadja az átvitt naplóbejegyzések minimális súlyossági szintjét. Az alapértelmezett érték nincs **definiálva**, amely az összes naplót átviszi. A többi lehetséges érték (a legkevesebb információhoz képest) **részletes**, **információ**, **Figyelmeztetés**, **hiba**és **kritikus**.|  
 |**név**|**karakterlánc**|A csatorna egyedi neve, amelyre hivatkozni kell|  
@@ -676,7 +676,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
  Az 1,3-es verzióban lett hozzáadva.  
 
- Választható  
+ Optional  
 
  A Storage-fiók személyes adatait (név, kulcs és végpont) tárolja. Ezeket az adatokat a rendszer elküldi a virtuális géphez, de nem kérhető le belőle.  
 

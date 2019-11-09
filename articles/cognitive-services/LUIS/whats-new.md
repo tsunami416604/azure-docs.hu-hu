@@ -9,14 +9,14 @@ services: cognitive-services
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 11/04/2019
+ms.date: 11/07/2019
 ms.author: diberry
-ms.openlocfilehash: 0788df1c05d70c01d4de7f7a6ba62a476252f75a
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 2e32d0f4906dea69d6eab27faca4a2e41106ed73
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73498925"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73836841"
 ---
 # <a name="whats-new-in-language-understanding"></a>A Language Understanding újdonságai
 
@@ -31,11 +31,13 @@ Ismerje meg a szolgáltatás újdonságait. Ezek közé tartoznak a kibocsátás
     * Alkalmazások importálása és exportálása a. lu ([LUDown](https://github.com/microsoft/botbuilder-tools/tree/master/packages/Ludown)) formátummal. Ez kikövezi a hatékony CI/CD-folyamat módját. 
 * Nyelvi bővítés
     * Az [arab és a hindi](luis-language-support.md) nyilvános előzetes verzióban érhető el.
-* Előépítő modellek
+* Előre összeállított modellek
     * Az előre [elkészített tartományok](luis-reference-prebuilt-domains.md) már általánosan elérhetők (GA)
     * Japán előre [elkészített entitások](luis-reference-prebuilt-entities.md#japanese-entity-support) – az Age, a Currency, a number, a százalék nem támogatott a v3-as verzióban.
     * Olasz előre [összeépített entitások](luis-reference-prebuilt-entities.md#italian-entity-support) – kor, pénznem, dimenzió, szám, a százalékos felbontás változása: v2.
-* Fokozza a felhasználói élményt a [preview.Luis.ai-portálon](https://preview.luis.ai) – az összetett modellek létrehozásának és hibakeresésének lehetővé tételéhez szükséges, kitatarozt címkézési élmény.
+* Fokozza a felhasználói élményt a [preview.Luis.ai-portálon](https://preview.luis.ai) – az összetett modellek létrehozásának és hibakeresésének lehetővé tételéhez szükséges, kitatarozt címkézési élmény. Próbálja ki a betekintő portál oktatóanyagokat:
+    * [Csak szándékok](tutorial-intents-only.md)
+    * [Felismert gépi megtanult entitás](tutorial-machine-learned-entity.md) 
 * Előzetes nyelvi ismeretek – a [kifinomult nyelvi modellek fejlesztése](luis-concept-entity-types.md) kevesebb erőfeszítéssel. 
 * A gépi tanulási funkciók definiálása a modell szintjén, valamint a modellek más modellként való használatának engedélyezése, például az entitások használata a szándékok és más entitások számára.
 * Új, kibővített [korlátok](luis-boundaries.md) – nagyobb maximális érték a kifejezések és az összes kifejezés, valamint az új modell funkció korlátai

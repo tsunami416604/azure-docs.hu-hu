@@ -1,7 +1,7 @@
 ---
-title: Videók – Video Indexer belül pontos időpontok keresése
-titlesuffix: Azure Media Services
-description: Ez a témakör bemutatja, hogyan belül a Video Indexer használatával kíván videókat pontos időpontok keresése.
+title: Pontos pillanatok a videókon belül – Video Indexer
+titleSuffix: Azure Media Services
+description: Ez a témakör bemutatja, hogyan találhatja meg a videókon belüli pontos pillanatokat Video Indexer használatával.
 services: media-services
 author: Juliako
 manager: femila
@@ -10,50 +10,50 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 05/15/2019
 ms.author: juliako
-ms.openlocfilehash: 93376059dac2a8336e581269d8289d893779b291
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8ebf7606d1a0932cc2254e14a40a2fff550fd35f
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65799095"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73833796"
 ---
 # <a name="find-exact-moments-within-videos"></a>Pontos időpontok keresése videókban
 
-Ez a témakör bemutatja, hogy a keresési lehetőségeket, amelyek lehetővé teszik, hogy a videókban pontos időpontok keresése.
+Ebből a témakörből megtudhatja, hogy milyen keresési lehetőségekkel lehet pontos pillanatokat találni a videókon belül.
 
 1. Nyissa meg a [Video Indexer](https://www.videoindexer.ai/) webhelyét, és jelentkezzen be.
-2. Keressen rá a fiókban lévő összes videó között.
+2. Keresés a fiókban található összes videó között.
 
-    A következő példában azt kommunikálhatnak biztonságával kapcsolatban, és amely Satya jelenik meg, az összes videó keresése
+    Az alábbi példában megkeresjük az összes olyan videót, amely a biztonsággal kapcsolatos, és amelyekben a kijelzés jelenik meg,
 
     ![Keresés](./media/video-indexer-search/video-indexer-search01.png)
-3. A videó összefoglaló elemzések keresése.
+3. Keresse meg a videó összegzett elemzéseit.
 
-    Majd videón belüli kattintva kereshet **lejátszása** videó. Ezt követően is végezhető keresés a videó kiválasztásával a **keresési** fülre. 
+    A videóban a **Lejátszás** gombra kattintva kereshet a videón belül. Ezután kereshet a videóban a **Keresés** lapon. 
 
-    A következő példában azt keresse meg a "biztonságos" a kijelölt videó belül.
+    A következő példában a "biztonság" kifejezésre keresünk a kiválasztott videóban.
 
     ![Keresés](./media/video-indexer-search/video-indexer-search02.png)
 
-    Kattint az eredmények közül, ha a Windows Media player méretezhetőséget kínál, hogy a videóban. A player/elemzések megtekintése és a szinkronizálás érheti el az alkalmazásban. További információkért lásd: [az alkalmazásba való beágyazása a Video Indexer widgetek](video-indexer-embed-widgets.md). 
-4. Keresés a videó részletes áttekintését.
+    Ha az egyik találatra kattint, a lejátszó erre a pillanatra viszi a videót. Az alkalmazásban elérheti a lejátszó/betekintő nézetet és a szinkronizálást. További információ: [video Indexer widgetek beágyazása az alkalmazásba](video-indexer-embed-widgets.md). 
+4. Keresse meg a videó részletes részletezését.
     
-    Ha szeretne létrehozni a saját klip alapján a videónak arra, hogy megtalálta, nyomja le az **szerkesztése** gombra. Ezen a lapon látható, az elemzések és videó szűrőként. További információkért lásd: [megtekintése és szerkesztése a Videóindexelő-elemzések](video-indexer-view-edit.md). 
+    Ha saját klipet szeretne létrehozni a talált videó alapján, kattintson a **Szerkesztés** gombra. Ezen az oldalon megtekintheti a videókat és a hozzájuk tartozó bepillantást. További információ: [video Indexer-információk megtekintése és szerkesztése](video-indexer-view-edit.md). 
 
-    Csak az iránt, és a kiszolgálóoldali elemzések segítségével meg szeretné tekinteni a részek szűrése sorok jeleníti meg a videót is végezhető keresés. Ha befejezte, megtekintheti a klip, és nyomja meg **közzététel** a katalógusban megjelenő új klip létrehozása.
+    A videóban kereshet úgy, hogy csak azokat a sorokat jelenítse meg, amelyek érdeklik, és az oldalsó bepillantást használva szűrheti a megtekinteni kívánt részeket. Ha elkészült, megtekintheti a klipet, és a **Közzététel** gombra kattintva létrehozhatja a gyűjteményben megjelenő új klipet.
     
-    A következő példában azt keres a "vegyes valóságot" szöveg. Azt is alkalmazza a rendszer további szűrőket, az alábbi képernyőn látható módon.
+    A következő példában a "vegyes valóság" szövegre kerestünk rá. További szűrőket is alkalmazunk, ahogy az alábbi képernyőn is látható.
     
     ![Keresés](./media/video-indexer-search/video-indexer-search03.png)
 
 ## <a name="next-steps"></a>További lépések 
 
-Miután megtalálta a videót, amelyben dolgozni szeretne, továbbra is a videó feldolgozása ezek témakörökben ismertetett módon: 
+Miután megtalálta a használni kívánt videót, folytathatja a videó feldolgozását a következő témakörökben leírtak szerint: 
 
-- [A videók részletes elemzések használata](use-editor-create-project.md)
+- [A videók mélyreható bepillantást készíthet](use-editor-create-project.md)
 - [Tartalomfeldolgozás a Video Indexer REST API-val](video-indexer-use-apis.md)
 - [Vizuális widgetek beágyazása egy saját alkalmazásba](video-indexer-embed-widgets.md)
 
-## <a name="see-also"></a>Lásd még
+## <a name="see-also"></a>Lásd még:
 
 [A Video Indexer áttekintése](video-indexer-overview.md)

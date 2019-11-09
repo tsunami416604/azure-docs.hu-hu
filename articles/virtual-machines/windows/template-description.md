@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 01/03/2019
 ms.author: cynthn
-ms.openlocfilehash: afbf77014ece981568d4123db7820a2fa0a8f60d
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: e1b513344b6ea16c25d829939e64cd5ca1063c87
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73749114"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73838891"
 ---
 # <a name="virtual-machines-in-an-azure-resource-manager-template"></a>Azure Resource Manager sablonban található virtuális gépek
 
@@ -282,7 +282,7 @@ A tulajdonság beállításához a hálózati adapternek léteznie kell. Ezért 
 A virtuális gépek erőforrásának definiálásakor több profil elemet is használ a rendszer. Néhány szükséges, néhányat pedig nem kötelező megadni. Például a hardwareProfile, a osProfile, a storageProfile és a networkProfile elem megadása kötelező, de a diagnosticsProfile megadása nem kötelező. Ezek a profilok olyan beállításokat határoznak meg, mint például:
    
 - [méret](sizes.md)
-- [név](/azure/architecture/best-practices/naming-conventions) és hitelesítő adatok
+- [név](/azure/architecture/best-practices/resource-naming) és hitelesítő adatok
 - lemez-és [operációsrendszer-beállítások](cli-ps-findimage.md)
 - [hálózati adapter](../../virtual-network/virtual-network-deploy-multinic-classic-ps.md) 
 - rendszerindítási diagnosztika
@@ -360,7 +360,7 @@ Ha a virtuális gépet felügyelt lemezképből szeretné létrehozni, módosít
 
 ### <a name="attach-data-disks"></a>Adatlemezek csatolása
 
-Szükség esetén adatlemezeket is hozzáadhat a virtuális gépekhez. A [lemezek száma](sizes.md) a használt operációsrendszer-lemez méretétől függ. Ha a virtuális gépek mérete Standard_DS1_v2 van beállítva, akkor a hozzájuk tartozó adatlemezek maximális száma kettő. A példában egy felügyelt adatlemez kerül be az egyes virtuális gépekbe:
+Szükség esetén adatlemezeket is hozzáadhat a virtuális gépekhez. A [lemezek száma](sizes.md) a használt operációsrendszer-lemez méretétől függ. Ha a virtuális gépek mérete Standard_DS1_v2 értékre van állítva, akkor a hozzájuk tartozó adatlemezek maximális száma kettő. A példában egy felügyelt adatlemez kerül be az egyes virtuális gépekbe:
 
 ```
 "dataDisks": [

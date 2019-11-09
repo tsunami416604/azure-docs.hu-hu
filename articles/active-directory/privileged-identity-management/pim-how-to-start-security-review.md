@@ -1,10 +1,10 @@
 ---
-title: Azure AD-szerepkörök hozzáférési felülvizsgálatának létrehozása a PIM-Azure Active Directoryban | Microsoft Docs
+title: Azure AD-szerepkörök hozzáférési felülvizsgálatának létrehozása a PIM-ben – Azure AD | Microsoft Docs
 description: Ismerje meg, hogyan hozhatja létre az Azure AD-szerepkörök hozzáférési felülvizsgálatát Azure AD Privileged Identity Management (PIM) alkalmazásban.
 services: active-directory
 documentationcenter: ''
 author: curtand
-manager: mtillman
+manager: daveba
 editor: ''
 ms.service: active-directory
 ms.topic: conceptual
@@ -14,16 +14,16 @@ ms.date: 10/22/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 72d9f0c7df12bd6746cd5cf0336e7bd58b6cc88d
-ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
+ms.openlocfilehash: 2f7e9ef503a9a3469ecbc835be8d9229fbd0167f
+ms.sourcegitcommit: 16c5374d7bcb086e417802b72d9383f8e65b24a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72809035"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73847113"
 ---
 # <a name="create-an-access-review-of-azure-ad-roles-in-privileged-identity-management"></a>Azure AD-szerepkörök hozzáférési felülvizsgálatának létrehozása Privileged Identity Management
 
-A rendszerjogosultságú Azure Active Directory (Azure AD) szerepkörökhöz való hozzáférésre vonatkozó követelmények idővel változhatnak. Az elavult szerepkör-hozzárendelésekhez kapcsolódó kockázatok csökkentése érdekében rendszeresen tekintse át a hozzáférést. Azure AD Privileged Identity Management (PIM) használatával hozzáférési felülvizsgálatokat hozhat létre az emelt szintű Azure AD-szerepkörökhöz. Az ismétlődő hozzáférési felülvizsgálatokat is konfigurálhatja, amelyek automatikusan megtörténnek.
+Az elavult szerepkör-hozzárendelésekhez kapcsolódó kockázatok csökkentése érdekében rendszeresen tekintse át a hozzáférést. Azure AD Privileged Identity Management (PIM) használatával hozzáférési felülvizsgálatokat hozhat létre az emelt szintű Azure AD-szerepkörökhöz. Az ismétlődő hozzáférési felülvizsgálatokat is konfigurálhatja, amelyek automatikusan megtörténnek.
 
 Ez a cikk azt ismerteti, hogyan hozhat létre egy vagy több hozzáférési felülvizsgálatot az emelt szintű Azure AD-szerepkörökhöz.
 
@@ -65,7 +65,7 @@ A hozzáférési felülvizsgálatok sorozatának kezeléséhez navigáljon a hoz
 
 A **befejezési beállításokban megadott beállítások**alapján az automatikus alkalmazás a felülvizsgálat befejezési dátuma vagy a felülvizsgálat manuális leállítása után lesz végrehajtva. A felülvizsgálat állapota a **befejezéstől** kezdve a közbenső állapotok, például az **alkalmazás** és végül az állapot **alkalmazásával változik.** A megtagadott felhasználókat, ha vannak ilyenek, néhány percen belül el kell távolítani a szerepkörökből.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Azure AD-szerepkörök hozzáférésének áttekintése](pim-how-to-perform-security-review.md)
 - [Azure AD-szerepkörök hozzáférési felülvizsgálatának befejezése](pim-how-to-complete-review.md)

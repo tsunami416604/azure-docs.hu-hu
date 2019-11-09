@@ -1,7 +1,7 @@
 ---
-title: A Video Indexer API használatával egy személy modellje – Azure
-titlesuffix: Azure Media Services
-description: Ez a cikk bemutatja, hogyan szabhatja testre a Video Indexer API személy modell.
+title: Személy modell testreszabása az Video Indexer API használatával – Azure
+titleSuffix: Azure Media Services
+description: Ez a cikk bemutatja, hogyan szabhatja testre a személy modelljét a Video Indexer API-val.
 services: media-services
 author: anikaz
 manager: johndeu
@@ -10,65 +10,65 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 05/15/2019
 ms.author: anzaman
-ms.openlocfilehash: 6c4980536eddd0226fac422ae17ddb717e34630d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 44f97e3d9af9daac8d62ae42be76bd73dedbd453
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65799472"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73838269"
 ---
-# <a name="customize-a-person-model-with-the-video-indexer-api"></a>A Video Indexer API személy modell testreszabása
+# <a name="customize-a-person-model-with-the-video-indexer-api"></a>Személy modell testreszabása a Video Indexer API-val
 
-A video Indexer videótartalmak támogatja az arcfelismerés és hírességek felismerése. A hírességek felismerése funkció körülbelül 1 millió arcok IMDB Wikipedia és felső LinkedIn véleményvezérek például gyakran lekérdezett adatforrás alapján ismerteti. Észlelt, amely nem ismeri fel a híresség-felismerés szolgáltatás; azonban van hátra névtelen. Miután, videó feltöltése a Video Indexer, és vissza eredményt, lépjen vissza, és nevezze el az arcok, amely nem ismerhetők fel. Miután Ön címke egy ARC nevére, a fiókhoz tartozó személy modell hozzáadja az arcfelismerés és nevét. Video Indexer majd fogja felismerni a face a jövőbeli videók és a múltbeli videókat.
+A Video Indexer támogatja az arcfelismerés és a Celebrity-felismerés használatát a videók tartalmához. A híresség-felismerési funkció a gyakran igényelt adatforrások (például a IMDB, a wikipedia és a legnépszerűbb LinkedIn-befolyásoló) alapján körülbelül 1 000 000 arcot ölel fel. A híresség-felismerési funkció által nem felismerhető arcok észlelhetők; azonban nem lesznek megnevezve. Miután feltöltötte a videót Video Indexer és visszakeresi az eredményeket, visszatérhet, és elnevezheti azokat az arcokat, amelyeket nem ismertek fel. Miután felcímkéz egy nevet a névvel, az arc és a név bekerül a fiókja személy modelljébe. Ezt követően a Video Indexer felismeri ezt az arcot a későbbi videókban és a korábbi videókban is.
 
-A Video Indexer API segítségével, amely az észlelt a videó szerkesztése ebben a témakörben leírtak szerint. Használhatja a Video Indexer webhelyen leírtak szerint [testreszabása személy modell a Video Indexer webhelyen](customize-person-model-with-api.md).
+A jelen témakörben ismertetett módon szerkesztheti a videóban észlelt arcokat a Video Indexer API használatával. A Video Indexer webhelyét a [személy modell testreszabása a video Indexer webhelyről](customize-person-model-with-api.md)című témakörben leírtak szerint is használhatja.
 
-## <a name="managing-multiple-person-models"></a>Több személy modellek kezelése 
+## <a name="managing-multiple-person-models"></a>Több személyből származó modellek kezelése 
 
-A video Indexer-fiókonként több személy modell támogatja. Ez a funkció jelenleg csak a Video Indexer API-kat.
+A Video Indexer fiókkal több person modellt is támogat. Ez a funkció jelenleg csak a Video Indexer API-kon keresztül érhető el.
 
-Ha a fiók caters a különböző használati esetek, érdemes fiókonként több személy modellek létrehozásának eljárásait. Például ha a tartalom kapcsolatos például sportesemények, majd létrehozhat egy külön személy modellt használ az egyes porthoz (labdarúgó Kosárlabda, foci, stb.). 
+Ha a fiókja más használati esetekre is kiterjed, érdemes lehet több személyből származó modellt létrehozni. Ha például a tartalma a sporthoz kapcsolódik, létrehozhat egy külön személy modellt minden sportághoz (labdarúgás, kosárlabda, futball stb.). 
 
-Modell létrehozása után használhatja azáltal, hogy egy adott személy modell feltöltése/indexelő vagy videó újraindexelés modell Azonosítóját. Képzési videók esetében egy új arc frissíti az adott egyéni modell, amelyhez a videó társítva lett.
+A modell létrehozása után használhatja azt egy adott személy modell AZONOSÍTÓjának megadásával, amikor feltölti/indexeli vagy újraindexeli a videót. A videó új arca betanítása frissíti azt a konkrét egyéni modellt, amelyhez a videó társítva lett.
 
-Minden fiók esetében az 50 személy modellek. Ha nem kell a több személy modellt támogató, nem rendel egy személy Modellazonosító a videó feltöltése/indexelő vagy újraindexelés. A Video Indexer ebben az esetben az alapértelmezett egyéni személy modellt használ a fiókjában.
+Minden fiókhoz legfeljebb 50 személy-modell tartozik. Ha nincs szüksége a több személyre vonatkozó modell támogatására, ne rendeljen hozzá egy személy modell-azonosítót a videóhoz feltöltés/indexelés vagy újraindexelés során. Ebben az esetben a Video Indexer az alapértelmezett egyéni személy modellt használja a fiókjában.
 
-## <a name="create-a-new-person-model"></a>Hozzon létre egy új személynek modell
+## <a name="create-a-new-person-model"></a>Új személy modell létrehozása
 
-Hozzon létre új személy modell található a megadott fiók. 
+Hozzon létre egy új személy modellt a megadott fiókban. 
 
 ### <a name="request-url"></a>Kérés URL-címe
 
-Ez a POST-kérelmet.
+Ez egy POST-kérelem.
 
 ```
 https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/PersonModels?name={name}&accessToken={accessToken}
 ```
 
-Az alábbi, a kérelmet a Curl.
+Alább látható a kérelem a Curlban.
 
 ```curl
 curl -v -X POST "https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/PersonModels?name={name}&accessToken={accessToken}"
 ```
 
-[Tekintse meg a szükséges paramétereket, és a Video Indexer fejlesztői portál használatával kipróbálásához](https://api-portal.videoindexer.ai/docs/services/operations/operations/Create-Person-Model?).
+[Tekintse meg a szükséges paramétereket, és tesztelje a video Indexer fejlesztői portálon](https://api-portal.videoindexer.ai/docs/services/operations/operations/Create-Person-Model?).
 
-### <a name="request-parameters"></a>A kérés paraméterei 
+### <a name="request-parameters"></a>Kérelmek paramétereinek megadása 
 
-|**Name (Név)**|**Típus**|**Kötelező**|**Leírás**|
+|**Name (Név)**|**Típus**|**Szükséges**|**Leírás**|
 |---|---|---|---|
-|location|string|Igen|Az Azure-régió, amelyhez a hívást kell átirányítani. További információkért lásd: [Azure-régiók és a Video Indexer](regions.md).|
-|accountId|string|Igen|A fiók globálisan egyedi azonosító|
-|name|string|Igen|A személy modell neve|
-|accessToken|string|Igen|Hozzáférési jogkivonat (hatókör kell [fiók hozzáférési jogkivonatának](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)) hitelesíti a rendszer a hívást. Hozzáférési jogkivonatok 1 órán belül lejár.|
+|location|sztring|Igen|Az az Azure-régió, amelybe a hívást át kell irányítani. További információ: [Azure-régiók és video Indexer](regions.md).|
+|accountId|sztring|Igen|A fiók globálisan egyedi azonosítója|
+|név|sztring|Igen|A személy modelljének neve|
+|accessToken|sztring|Igen|Hozzáférési jogkivonat (a hatókör- [fiók hozzáférési jogkivonatának](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)kell lennie) a híváshoz való hitelesítéshez. A hozzáférési tokenek 1 órán belül lejárnak.|
 
 ### <a name="request-body"></a>A kérés törzse
 
-További az e híváshoz szükséges a kérelem törzsében.
+Ehhez a híváshoz nem szükséges további kérelem törzse.
 
 ### <a name="response"></a>Válasz
 
-A válasz biztosít a nevét és a létrehozott modell azonosítója a személy modellezheti, amikor az imént létrehozott formátuma az alábbi példát követve.
+A válasz megadja az imént létrehozott személy modell nevét és a generált modell AZONOSÍTÓját, amelyet az alábbi példa formátuma követ.
 
 ```json
 {
@@ -77,13 +77,13 @@ A válasz biztosít a nevét és a létrehozott modell azonosítója a személy 
 }
 ```
 
-Kell majd használnia a **azonosító** értékét a **personModelId** paraméter amikor [egy videó feltöltése az indexbe](https://api-portal.videoindexer.ai/docs/services/operations/operations/Upload-video?) vagy [videó újraindexelés](https://api-portal.videoindexer.ai/docs/services/operations/operations/Re-index-video?).
+Ezután használja a **personModelId** paraméter **azonosító** értékét, amikor [feltölt egy videót egy videó indexeléséhez](https://api-portal.videoindexer.ai/docs/services/operations/operations/Upload-video?) vagy [újraindexeléséhez](https://api-portal.videoindexer.ai/docs/services/operations/operations/Re-index-video?).
 
-## <a name="delete-a-person-model"></a>Egy személy modell törlése
+## <a name="delete-a-person-model"></a>Személy modell törlése
 
-Egy egyéni személy modell törlése a megadott fiók. 
+Egyéni személy modell törlése a megadott fiókból. 
 
-Miután a személy modell törlése sikeresen megtörtént, a törölt modellt használó aktuális videók indexe változatlan marad mindaddig, amíg Ön újraindexelése őket. Követően újraindexelés, az arcok a törölt modellben is nevű rendszer nem ismeri fel a Video Indexer által indexelt adott modellel; jelenlegi videók a azonban ezeket arcok fog továbbra is észlelhető. A jelenlegi videók, a törölt modellel indexelt most fogja használni a fiók alapértelmezett személy modell. Ha a törölt modell arcokat is neve a fiók alapértelmezett modellben, ezeket az arcok továbbra ismeri fel a videókban.
+Miután sikeresen törölte a személy modelljét, a törölt modellt használó aktuális videók indexe változatlan marad, amíg újra nem indexeli őket. Az újraindexelés során a törölt modellben megnevezett arcok nem lesznek felismerhetők a modell használatával indexelt aktuális videók Video Indexer. ezeket az arcokat azonban továbbra is észleli a rendszer. A törölt modell használatával indexelt aktuális videók mostantól a fiók alapértelmezett személyének modelljét fogják használni. Ha a törölt modellből származó arcok a fiók alapértelmezett modelljében is megtalálhatók, akkor a rendszer továbbra is felismeri ezeket az arcokat a videókban.
 
 ### <a name="request-url"></a>Kérés URL-címe
 
@@ -91,65 +91,65 @@ Miután a személy modell törlése sikeresen megtörtént, a törölt modellt h
 https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/PersonModels/{id}?accessToken={accessToken}
 ```
 
-Az alábbi, a kérelmet a Curl.
+Alább látható a kérelem a Curlban.
 ```curl
 curl -v -X DELETE "https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/PersonModels/{id}?accessToken={accessToken}"
 ```
 
-[Tekintse meg a szükséges paramétereket, és a Video Indexer fejlesztői portál használatával kipróbálásához](https://api-portal.videoindexer.ai/docs/services/operations/operations/Delete-Person-Model?).
+[Tekintse meg a szükséges paramétereket, és tesztelje a video Indexer fejlesztői portálon](https://api-portal.videoindexer.ai/docs/services/operations/operations/Delete-Person-Model?).
 
-### <a name="request-parameters"></a>A kérés paraméterei
+### <a name="request-parameters"></a>Kérelmek paramétereinek megadása
 
-|**Name (Név)**|**Típus**|**Kötelező**|**Leírás**|
+|**Name (Név)**|**Típus**|**Szükséges**|**Leírás**|
 |---|---|---|---|
-|location|string|Igen|Az Azure-régió, amelyhez a hívást kell átirányítani. További információkért lásd: [Azure-régiók és a Video Indexer](regions.md).|
-|accountId|string|Igen|A fiók globálisan egyedi azonosító|
-|id|string|Igen|A személy modellazonosító (jönnek létre, ha a személy modell jön létre)|
-|accessToken|string|Igen|Hozzáférési jogkivonat (hatókör kell [fiók hozzáférési jogkivonatának](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)) hitelesíti a rendszer a hívást. Hozzáférési jogkivonatok 1 órán belül lejár.|
+|location|sztring|Igen|Az az Azure-régió, amelybe a hívást át kell irányítani. További információ: [Azure-régiók és video Indexer](regions.md).|
+|accountId|sztring|Igen|A fiók globálisan egyedi azonosítója|
+|id|sztring|Igen|A személy modell azonosítója (a személy modelljének létrehozásakor generált)|
+|accessToken|sztring|Igen|Hozzáférési jogkivonat (a hatókör- [fiók hozzáférési jogkivonatának](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)kell lennie) a híváshoz való hitelesítéshez. A hozzáférési tokenek 1 órán belül lejárnak.|
 
 ### <a name="request-body"></a>A kérés törzse
 
-További az e híváshoz szükséges a kérelem törzsében.
+Ehhez a híváshoz nem szükséges további kérelem törzse.
 
 ### <a name="response"></a>Válasz
 
-Nincs visszaadott tartalom van, amikor a személy modell törlése sikerült.
+A személy modelljének törlése után nincs visszaadott tartalom.
 
-## <a name="get-all-person-models"></a>Minden személy modell beolvasása
+## <a name="get-all-person-models"></a>Összes modell lekérése
 
-Minden személy modell lépjen be a megadott fiók. 
+A megadott fiókban található összes modell beolvasása. 
 
-### <a name="request-call"></a>Kérelem hívás
+### <a name="request-call"></a>Kérelem hívása
 
-Ez az egy GET kéréssel.
+Ez egy GET-kérelem.
 
 ```
 https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/PersonModels?accessToken={accessToken}
 ```
 
-Az alábbi, a kérelmet a Curl.
+Alább látható a kérelem a Curlban.
 
 ```curl
 curl -v -X GET "https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/PersonModels?accessToken={accessToken}"
 ```
 
-[Tekintse meg a szükséges paramétereket, és a Video Indexer fejlesztői portál használatával kipróbálásához](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Person-Models?).
+[Tekintse meg a szükséges paramétereket, és tesztelje a video Indexer fejlesztői portálon](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Person-Models?).
 
-### <a name="request-parameters"></a>A kérés paraméterei
+### <a name="request-parameters"></a>Kérelmek paramétereinek megadása
 
-|**Name (Név)**|**Típus**|**Kötelező**|**Leírás**|
+|**Name (Név)**|**Típus**|**Szükséges**|**Leírás**|
 |---|---|---|---|
-|location|string|Igen|Az Azure-régió, amelyhez a hívást kell átirányítani. További információkért lásd: [Azure-régiók és a Video Indexer](regions.md).|
-|accountId|string|Igen|A fiók globálisan egyedi azonosító|
-|accessToken|string|Igen|Hozzáférési jogkivonat (hatókör kell [fiók hozzáférési jogkivonatának](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)) hitelesíti a rendszer a hívást. Hozzáférési jogkivonatok 1 órán belül lejár.|
+|location|sztring|Igen|Az az Azure-régió, amelybe a hívást át kell irányítani. További információ: [Azure-régiók és video Indexer](regions.md).|
+|accountId|sztring|Igen|A fiók globálisan egyedi azonosítója|
+|accessToken|sztring|Igen|Hozzáférési jogkivonat (a hatókör- [fiók hozzáférési jogkivonatának](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)kell lennie) a híváshoz való hitelesítéshez. A hozzáférési tokenek 1 órán belül lejárnak.|
 
 ### <a name="request-body"></a>A kérés törzse
 
-További az e híváshoz szükséges a kérelem törzsében.
+Ehhez a híváshoz nem szükséges további kérelem törzse.
 
 ### <a name="response"></a>Válasz
 
-A válasz az összes, a személy modellek a fiókjában (beleértve az alapértelmezett személy modellt a megadott fiók), és az egyes nevek és azonosítók formátuma az alábbi példát követve listáját tartalmazza.
+A válasz felsorolja a fiókban lévő összes személy modelljét (beleértve a megadott fiókban található alapértelmezett személy modellt is) és az alábbi példa formátumát követő neveket és azonosítókat.
 
 ```json
 [
@@ -164,53 +164,53 @@ A válasz az összes, a személy modellek a fiókjában (beleértve az alapérte
 ]
 ```
 
-Kiválaszthatja, hogy melyik modellben használandó videó használatával a **azonosító** a személy modell értékét a **personModelId** paraméter amikor [egy videó feltöltése az indexbe](https://api-portal.videoindexer.ai/docs/services/operations/operations/Upload-video?) vagy [videó újraindexelés](https://api-portal.videoindexer.ai/docs/services/operations/operations/Re-index-video?).
+Kiválaszthatja, hogy melyik modellt szeretné használni a videóhoz a **personModelId** paraméterhez tartozó person modell **azonosító** értékének használatával, amikor [feltölt egy videót egy videó indexeléséhez](https://api-portal.videoindexer.ai/docs/services/operations/operations/Upload-video?) vagy [újraindexeléséhez](https://api-portal.videoindexer.ai/docs/services/operations/operations/Re-index-video?).
 
-## <a name="update-a-face"></a>A face frissítése
+## <a name="update-a-face"></a>Arc frissítése
 
-Ez a parancs lehetővé teszi, hogy frissítse a egy oldallal a videó a nevével, a videó azonosítója és, a face ID használatával. Ezután frissíti a személy modell, amely a videó feltöltése/indexelő vagy újraindexelés társítva. Ha nincs személy modell hozzá volt rendelve, a fiók alapértelmezett személy modell frissíti. 
+Ez a parancs lehetővé teszi a videóban lévő arc frissítését a videó és az arc AZONOSÍTÓját használó névvel. Ezután frissíti azt a személy-modellt, amelyet a videó a feltöltéshez, indexeléshez vagy újraindexeléshez társított. Ha nincs személy modell rendelve, akkor a fiók alapértelmezett személy modelljét frissíti. 
 
-Ez történik, ha észleli a található egyéb aktuális megosztó személy ugyanannak a modellnek ugyanazon face előfordulását. Felismerés, a többi aktuális videóit a face érvénybe lépéséhez, mivel ez egy batch-folyamat hosszabb időt is igénybe vehet.
+Ha ez bekövetkezik, a rendszer felismeri, hogy ugyanaz az arc fordul elő a többi aktuális videóban, amelyek ugyanazt a személyt használják. A többi aktuális videóban lévő arc felismerése hosszabb időt is igénybe vehet, mivel ez egy batch-folyamat.
 
-Frissítheti a egy oldallal, amely a Video Indexer a hírességek, más néven ismeri fel. Az új nevet, amelyet átadhat elsőbbséget élveznek a beépített hírességek felismerése.
+Frissíthet egy olyan arcot, amely új néven hírességként Video Indexer ismert. Az Ön által megadott új név elsőbbséget élvez a beépített híresség felismerésével szemben.
 
-### <a name="request-call"></a>Kérelem hívás
+### <a name="request-call"></a>Kérelem hívása
 
-Ez a POST-kérelmet.
+Ez egy POST-kérelem.
 
 ```
 https://api.videoindexer.ai/{location}/Accounts/{accountId}/Videos/{videoId}/Index/Faces/{faceId}?accessToken={accessToken}&newName={newName}
 ```
 
-Az alábbi, a kérelmet a Curl.
+Alább látható a kérelem a Curlban.
 
 ```curl
 curl -v -X PUT "https://api.videoindexer.ai/{location}/Accounts/{accountId}/Videos/{videoId}/Index/Faces/{faceId}?accessToken={accessToken}&newName={newName}"
 ```
 
-[Tekintse meg a szükséges paramétereket, és a Video Indexer fejlesztői portál használatával kipróbálásához](https://api-portal.videoindexer.ai/docs/services/operations/operations/Update-Video-Face?).
+[Tekintse meg a szükséges paramétereket, és tesztelje a video Indexer fejlesztői portálon](https://api-portal.videoindexer.ai/docs/services/operations/operations/Update-Video-Face?).
 
-### <a name="request-parameters"></a>A kérés paraméterei
+### <a name="request-parameters"></a>Kérelmek paramétereinek megadása
 
-|**Name (Név)**|**Típus**|**Kötelező**|**Leírás**|
+|**Name (Név)**|**Típus**|**Szükséges**|**Leírás**|
 |---|---|---|---|
-|location|string|Igen|Az Azure-régió, amelyhez a hívást kell átirányítani. További információkért lásd: [Azure-régiók és a Video Indexer](regions.md).|
-|accountId|string|Igen|A fiók globálisan egyedi azonosító|
-|videoId|string|Igen|A frissíteni kívánt arc jelenik meg a videó azonosítója. Ez jön létre, amikor a videó feltöltése és indexelve.|
-|faceId|egész szám|Igen|A face frissített azonosítója. A faceId kérhet le a videók indexe|
-|accessToken|string|Igen|Hozzáférési jogkivonat (hatókör kell [fiók hozzáférési jogkivonatának](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)) hitelesíti a rendszer a hívást. Hozzáférési jogkivonatok 1 órán belül lejár.|
-|name|string|Igen|Új nevet a face való frissítéséhez.|
+|location|sztring|Igen|Az az Azure-régió, amelybe a hívást át kell irányítani. További információ: [Azure-régiók és video Indexer](regions.md).|
+|accountId|sztring|Igen|A fiók globálisan egyedi azonosítója|
+|videoId|sztring|Igen|Azon videó azonosítója, amelyben a frissíteni kívánt arc megjelenik. Ez akkor jön létre, amikor feltöltik és indexelik a videót.|
+|faceId|egész szám|Igen|A frissítendő arc azonosítója. A faceId a videó indexből kérheti le|
+|accessToken|sztring|Igen|Hozzáférési jogkivonat (a hatókör- [fiók hozzáférési jogkivonatának](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)kell lennie) a híváshoz való hitelesítéshez. A hozzáférési tokenek 1 órán belül lejárnak.|
+|név|sztring|Igen|Új név, amely frissíti az arcot a következővel:.|
 
-Egyedinek kell lennie személy modellek esetén, ha engedélyezi a két különböző arc ugyanazt az embert a modell azonos **neve** paraméter értéke, Video Indexer megtekinti az arcok, ugyanazt az embert, és össze legyen vonva őket, ha Ön a videó újraindexelése. 
+A nevek egyediek a személyek modelljei számára, így ha két különböző arcot ad ugyanazon a **néven** a paraméter értékeként, video Indexer megtekinti az arcokat ugyanazzal a személlyel, és a videó újraindexelése után átszervezi őket. 
 
 ### <a name="request-body"></a>A kérés törzse
 
-További az e híváshoz szükséges a kérelem törzsében.
+Ehhez a híváshoz nem szükséges további kérelem törzse.
 
 ### <a name="response"></a>Válasz
 
-Nincs visszaadott tartalom van, amikor a face frissítése sikeresen megtörtént.
+A rendszer nem adott vissza tartalmat, ha az arc frissítése sikeresen megtörtént.
 
 ## <a name="next-steps"></a>További lépések
 
-[A Video Indexer webhelyen személy modell testreszabása](customize-person-model-with-website.md)
+[Személy modell testreszabása a Video Indexer webhely használatával](customize-person-model-with-website.md)

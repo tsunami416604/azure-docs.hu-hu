@@ -1,7 +1,7 @@
 ---
 title: A Text Analytics API újdonságai
-titlesuffix: Text Analytics - Azure Cognitive Services
-description: További információk a Text Analytics szolgáltatással kapcsolatos új fejleményekről
+titleSuffix: Text Analytics - Azure Cognitive Services
+description: Ez a cikk az Azure Cognitive Services Text Analytics új kiadásairól és funkcióiról nyújt információkat.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: aahi
-ms.openlocfilehash: 44ef6fb118be4d1110a693faded6c57bc8b4e2fd
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 7e4eb8f7f9077ce04ee8138580a836637b89cf8c
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73499957"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73835601"
 ---
 # <a name="whats-new-in-the-text-analytics-api"></a>A Text Analytics API újdonságai.
 
@@ -44,12 +44,12 @@ A Hangulatelemzés következő verziója már elérhető a nyilvános előzetes 
 * Automatikus címkézés a különböző érzelemekhez a szövegben.
 * A dokumentumok és a mondatok szintjének elemzése és kimenete. 
 
-Támogatja az angol (`en`), a japán (`ja`), a kínai egyszerűsített (`zh-Hans`), a kínai hagyományos (`zh-Hant`), a francia (`fr`), az olasz (`it`), a spanyol (`es`), a holland (`nl`), a portugál (`pt`) és a német (`de`), és a következő régiókban érhető el: `Australia East`, `Central Canada`, `Central US`, `East Asia`, `East US`, `East US 2`, `North Europe`, `Southeast Asia`, `South Central US`, `UK South`, `West Europe`és `West US 2`.
+Támogatja az angol (`en`), a japán (`ja`), egyszerűsített kínai (`zh-Hans`), hagyományos kínai (`zh-Hant`), francia (`fr`), olasz (`it`), spanyol (`es`), holland (`nl`), Portugál (`pt`) és német (`de`), és a következő régiókban érhető el: `Australia East`, `Central Canada`, `Central US`, `East Asia`, `East US`, `East US 2`, `North Europe`, `Southeast Asia`, `South Central US`, `UK South`, `West Europe`és `West US 2`.
 
 > [!div class="nextstepaction"]
 > [További információ a Hangulatelemzés v3-ról](how-tos/text-analytics-how-to-sentiment-analysis.md#sentiment-analysis-v3-public-preview)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Mi a Text Analytics API?](overview.md)  
 * [Példa felhasználói forgatókönyvekre](text-analytics-user-scenarios.md)

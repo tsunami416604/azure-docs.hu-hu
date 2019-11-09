@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 0ff9e055ecc0c4f58e4b3df0494debbe3f4cd8a4
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: 6fc70b55b3e672ecc67eb1145bb751de33d998a1
+ms.sourcegitcommit: 16c5374d7bcb086e417802b72d9383f8e65b24a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73797854"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73847431"
 ---
 # <a name="ingest-historical-telemetry-data"></a>Korábbi telemetria-adatfeldolgozás
 
@@ -59,8 +59,6 @@ Ezek létrehozásához kövesse az alábbi lépéseket:
 
 7. Kövesse a képernyőn megjelenő utasításokat az eljárás befejezéséhez.
 
-    Ha nem fér hozzá a FarmBeats vagy az Azure-előfizetéséhez, forduljon a FarmBeats-rendszergazdához.
-
 ## <a name="create-devicesensor-metadata"></a>Eszköz/érzékelő metaadatainak létrehozása
 
  Most, hogy rendelkezik a szükséges hitelesítő adatokkal, megadhatja az eszközt és az érzékelőket a metaadatok létrehozásával a FarmBeats API-k használatával.
@@ -95,7 +93,7 @@ Ezek létrehozásához kövesse az alábbi lépéseket:
 |       Típus (analóg, digitális)          |      az érzékelő típusa, hogy az analóg vagy a digitális       |
 |          Gyártó            |       az érzékelő gyártója     |
 |     ProductCode| Termékkód vagy modell neve/száma. Például RS-CO2-N01. |
-|       SensorMeasures > neve       | Az érzékelő mértékének neve. Csak kisbetűk támogatottak. A különböző mélységekben mért mértéknél határozza meg a mélységet. Például: soil_moisture_15cm. Ennek a névnek konzisztensnek kell lennie a telemetria-adattal  |
+|       SensorMeasures > neve       | Az érzékelő mértékének neve. Csak kisbetűk támogatottak. A különböző mélységekben mért mértéknél határozza meg a mélységet. Például soil_moisture_15cm. Ennek a névnek konzisztensnek kell lennie a telemetria-adattal  |
 |          sensorMeasures > adattípus       |Az telemetria adattípusa. Jelenleg dupla támogatott|
 |    SensorMeasures > típusa    |Az érzékelő telemetria-adattípusának mértékegysége A rendszer által definiált típusok a következők: AmbientTemperature, CO2, mélység, ElectricalConductivity, LeafWetness, Length, LiquidLevel, nitrát, O2, PH, foszfát, PointInTime, kálium, nyomás, RainGauge, RelativeHumidity, sótartalom, SoilMoisture, SoilTemperature, SolarRadiation, State, TimeDuration, UVRadiation, UVIndex, Volume, WindDirection, WindRun, szélsebesség, párolgás, PAR. További részletekért lásd a/ExtendedType API-t.|
 |        SensorMeasures > egység              | Az érzékelő telemetria-adategysége. A következő rendszer által meghatározott egységek: nincs egység, Celsius, Fahrenheit, Kelvin, Rankine, Pascal, Mercury, PSI, milliméter, centiméter, Meter, hüvelyk, láb, Mile, km, MilesPerHour, MilesPerSecond, KMPerHour, KMPerSecond, MetersPerHour, MetersPerSecond, Degree, WattsPerSquareMeter, KiloWattsPerSquareMeter, MilliWattsPerSquareCentiMeter, MilliJoulesPerSquareCentiMeter, VolumetricWaterContent, százalék, PartsPerMillion, MicroMol, MicroMolesPerLiter, SiemensPerSquareMeterPerMole, MilliSiemensPerCentiMeter, Centibar, DeciSiemensPerMeter, KiloPascal, VolumetricIonContent, liter, MilliLiter, másodperc, UnixTimestamp, MicroMolPerMeterSquaredPerSecond, InchesPerHour továbbiak hozzáadásához tekintse meg a/ ExtendedType API.|

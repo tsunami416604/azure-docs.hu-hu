@@ -10,12 +10,12 @@ ms.reviewer: divswa, klam, LADocs
 ms.topic: article
 ms.date: 06/18/2019
 tags: connectors
-ms.openlocfilehash: a48ba0d2d691314a1ca7c91ac7ae27b62fbb379b
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: f52fc91d218e1a5448f6e6e7465f6416a04fd67d
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/08/2019
-ms.locfileid: "73825243"
+ms.locfileid: "73837137"
 ---
 # <a name="monitor-create-and-manage-sftp-files-by-using-ssh-and-azure-logic-apps"></a>SFTP-fájlok figyelése, létrehozása és kezelése SSH és Azure Logic Apps használatával
 
@@ -31,7 +31,7 @@ Az SFTP-kiszolgálón lévő eseményeket figyelő eseményindítókat használh
 
 Az SFTP-SSH-összekötő és az SFTP-összekötő közötti különbségekért tekintse át a témakör későbbi, az [SFTP-SSH és az SFTP összehasonlítása](#comparison) című szakaszát.
 
-## <a name="limits"></a>Korlátok
+## <a name="limits"></a>Korlátozások
 
 * Az SFTP-SSH-műveletek alapértelmezés szerint *1 GB vagy kisebb* fájlok olvasását vagy írását írják elő, de egyszerre csak *15 MB* -onként. A 15 MB-nál nagyobb fájlok kezeléséhez az SFTP-SSH műveletek támogatják az [üzenetek darabolását](../logic-apps/logic-apps-handle-large-messages.md), kivéve a fájl másolása műveletet, amely csak 15 MB-os fájlt képes kezelni. A **fájl tartalmának beolvasása** művelet implicit módon használja az üzenetek darabolását.
 
@@ -49,7 +49,9 @@ Az SFTP-SSH-összekötő és az SFTP-összekötő közötti különbségekért t
 
 * A a [SSH.net könyvtárat](https://github.com/sshnet/SSH.NET)használja, amely a .NET-et támogató nyílt forráskódú Secure Shell-(SSH-) kódtár.
 
-* Az SFTP-SSH-műveletek alapértelmezés szerint *1 GB vagy kisebb* fájlok olvasását vagy írását írják elő, de egyszerre csak *15 MB* -onként. A 15 MB-nál nagyobb fájlok kezeléséhez az SFTP-SSH műveletek az [üzenetek darabolását](../logic-apps/logic-apps-handle-large-messages.md)is használhatják. Nagyméretű fájlok feltöltéséhez olvasási és írási engedélyre is szüksége van. A fájl másolása művelet azonban csak 15 MB-nyi fájlt támogat, mivel ez a művelet nem támogatja az üzenetek darabolását. SFTP – az SSH-eseményindítók nem támogatják a darabolást.
+* Az SFTP-SSH-műveletek alapértelmezés szerint *1 GB vagy kisebb* fájlok olvasását vagy írását írják elő, de egyszerre csak *15 MB* -onként.
+
+  A 15 MB-nál nagyobb fájlok kezeléséhez az SFTP-SSH műveletek az [üzenetek darabolását](../logic-apps/logic-apps-handle-large-messages.md)is használhatják. A fájl másolása művelet azonban csak 15 MB-nyi fájlt támogat, mivel ez a művelet nem támogatja az üzenetek darabolását. SFTP – az SSH-eseményindítók nem támogatják a darabolást. Nagyméretű fájlok feltöltéséhez olvasási és írási engedéllyel kell rendelkeznie a gyökérmappa számára az SFTP-kiszolgálón.
 
 * Megadja a **mappa létrehozása** műveletet, amely létrehoz egy MAPPÁT az SFTP-kiszolgálón megadott elérési úton.
 
@@ -61,7 +63,7 @@ Az SFTP-SSH-összekötő és az SFTP-összekötő közötti különbségekért t
 
 * Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, [regisztráljon egy ingyenes Azure-fiókra](https://azure.microsoft.com/free/).
 
-* Az SFTP-kiszolgáló címe és a fiók hitelesítő adatai, amelyek lehetővé teszik a logikai alkalmazás számára az SFTP-fiók elérését. Emellett hozzá kell férnie egy SSH titkos kulcshoz és az SSH titkos kulcs jelszavához. Ha nagyméretű fájlokat tölt fel, az írási és olvasási engedélyekre is szükség van.
+* Az SFTP-kiszolgáló címe és a fiók hitelesítő adatai, amelyek lehetővé teszik a logikai alkalmazás számára az SFTP-fiók elérését. Emellett hozzá kell férnie egy SSH titkos kulcshoz és az SSH titkos kulcs jelszavához. Ha nagyméretű fájlokat tölt fel, a daraboláshoz olvasási és írási engedéllyel kell rendelkeznie az SFTP-kiszolgálón lévő gyökérkönyvtárhoz. Ellenkező esetben "401 jogosulatlan" hibaüzenetet kap.
 
   > [!IMPORTANT]
   >
@@ -108,7 +110,7 @@ Ha a titkos kulcs Putty formátumú, amely a. PPK (Putty titkos kulcs) fájlnév
 
    `puttygen <path-to-private-key-file-in-PuTTY-format> -O private-openssh -o <path-to-private-key-file-in-OpenSSH-format>`
 
-   Például:
+   Példa:
 
    `puttygen /tmp/sftp/my-private-key-putty.ppk -O private-openssh -o /tmp/sftp/my-private-key-openssh.pem`
 

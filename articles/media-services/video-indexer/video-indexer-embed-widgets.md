@@ -1,6 +1,6 @@
 ---
 title: Video Indexer widgetek beágyazása az alkalmazásokba
-titlesuffix: Azure Media Services
+titleSuffix: Azure Media Services
 description: Megtudhatja, hogyan ágyazhat be Video Indexer widgeteket az alkalmazásba.
 services: media-services
 author: Juliako
@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 07/29/2019
 ms.author: juliako
-ms.openlocfilehash: 74518fb891c5ecb25e818b9642d31e3daaf828de
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 99d6647ab5e7fa8f35cef883dd00ae9fea866370
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73162608"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73839121"
 ---
 # <a name="embed-video-indexer-widgets-in-your-applications"></a>Video Indexer widgetek beágyazása az alkalmazásokba
 
@@ -186,7 +186,7 @@ Ha nem a Azure Media Playert használja, akkor manuálisan kell módosítania a 
         </video>    
 
 2. Ágyazza be a Kognitív elemzési vezérlőt.
-3. Implementálja a lejátszóval való kommunikációt az „üzenet” eseményre való figyeléssel. Példa:
+3. Implementálja a lejátszóval való kommunikációt az „üzenet” eseményre való figyeléssel. Például:
 
         <script>
     
@@ -247,13 +247,13 @@ Fontos tudni, hogy ez a beállítás csak olyan esetekben releváns, ha azt szer
 
 A Video Indexer-lejátszó beágyazásakor megadhatja a lejátszó méretét az iframe méretének meghatározásával.
 
-Példa:
+Például:
 
 `<iframe width="640" height="360" src="https://www.videoindexer.ai/embed/player/<accountId>/<videoId>/" frameborder="0" allowfullscreen />`
 
 Alapértelmezés szerint a Video Indexer-lejátszó automatikusan létrehozta a videó átiratán alapuló, automatikusan létrehozott feliratozást. A videóból kinyert átirat a videó feltöltésekor kiválasztott forrás nyelvét jelöli.
 
-Ha más nyelvű beágyazást szeretne használni, `&captions=< Language | "all" | "false" >` adhat hozzá a beágyazási lejátszó URL-címéhez. Ha a feliratokat az összes elérhető nyelv feliratában szeretné használni, használja a `all` értéket. Ha azt szeretné, hogy a feliratok alapértelmezés szerint megjelenjenek, `&showCaptions=true` adhat át.
+Ha más nyelvű beágyazást szeretne használni, `&captions=< Language | "all" | "false" >` adhat hozzá a beágyazási lejátszó URL-címéhez. Ha a feliratokat az összes elérhető nyelv feliratában szeretné használni, használja a `all`értéket. Ha azt szeretné, hogy a feliratok alapértelmezés szerint megjelenjenek, `&showCaptions=true`adhat át.
 
 A beágyazási URL-cím ezután a következőképpen fog kinézni: 
 
@@ -264,7 +264,7 @@ Ha le szeretné tiltani a feliratokat, `false`ként átadhatja a `captions` para
 #### <a name="autoplay"></a>Robotpilota
 Alapértelmezés szerint a lejátszó elkezdi lejátszani a videót. úgy is dönthet, hogy nem továbbítja `&autoplay=false`t az előző beágyazási URL-címre.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Video Indexer információk megtekintésével és szerkesztésével kapcsolatos információkért lásd: [video Indexer-információk megtekintése és szerkesztése](video-indexer-view-edit.md).
 

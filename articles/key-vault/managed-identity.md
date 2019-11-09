@@ -9,12 +9,12 @@ ms.service: key-vault
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 6c7a9fdb5ed60023a82984fd5be5b424c634e679
-ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
+ms.openlocfilehash: 75317f73ad724b4ce8ad7a894890b2269bd8c5d0
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71720251"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73837499"
 ---
 # <a name="provide-key-vault-authentication-with-a-managed-identity"></a>Felügyelt identitással rendelkező Key Vault hitelesítés megadása
 
@@ -34,7 +34,7 @@ Az útmutató végrehajtásához a következő erőforrásokkal kell rendelkezni
    - [Key Vault létrehozása Azure PowerShell](quick-create-powershell.md)
    - [Hozzon létre egy Key vaultot a Azure Portal](quick-create-portal.md).
 - Meglévő App Service alkalmazás, amelyhez kulcstartó-hozzáférést kíván biztosítani. A [app Service dokumentáció](../app-service/overview.md)lépéseinek követésével gyorsan létrehozhat egyet.
-- [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) vagy [Azure PowerShell](/powershell/azure/overview). Azt is megteheti, hogy a [Azure Portal](http://portal.azure.com)is használja.
+- [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) vagy [Azure PowerShell](/powershell/azure/overview). Azt is megteheti, hogy a [Azure Portal](https://portal.azure.com)is használja.
 
 
 ## <a name="adding-a-system-assigned-identity"></a>Rendszerhez rendelt identitás hozzáadása 
@@ -49,7 +49,7 @@ Ha felügyelt identitást szeretne beállítani a portálon, először hozzon l�
 
 1. Válassza a **felügyelt identitás**elemet. 
 
-1. A **rendszerhez rendelt** lapon váltson az **állapot** bekapcsolva értékre. Kattintson a **Save** (Mentés) gombra. 
+1. A **rendszerhez rendelt** lapon váltson az **állapot** bekapcsolva **értékre**. Kattintson a **Save** (Mentés) gombra. 
 
     ![](./media/managed-identity-system-assigned.png)
 
@@ -76,7 +76,7 @@ az webapp identity assign --name myApp --resource-group myResourceGroup
 az functionapp identity assign --name myApp --resource-group myResourceGroup
 ```
 
-Jegyezze fel a `PrincipalId`-t, amelyre a következő szakaszban lesz szükség.
+Jegyezze fel a `PrincipalId`, amelyre szükség lesz a következő szakaszban.
 
 ```json
 {
@@ -111,7 +111,7 @@ az keyvault set-policy --name myKeyVault --object-id <PrincipalId> --secret-perm
 
 ## <a name="next-steps"></a>További lépések
 
-- @no__t – 0Azure Key Vault biztonság: Identitás-és hozzáférés-kezelés @ no__t-0
+- [Azure Key Vault biztonság: identitás-és hozzáférés-kezelés](overview-security.md#identity-and-access-management)
 - [Hozzáférés-vezérlési házirenddel Key Vault hitelesítés megadása](key-vault-group-permissions-for-apps.md)
 - [A kulcsok, titkos kódok és tanúsítványok ismertetése](about-keys-secrets-and-certificates.md)
 - [A kulcstartó védelme](key-vault-secure-your-key-vault.md).

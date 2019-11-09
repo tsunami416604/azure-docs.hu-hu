@@ -1,6 +1,6 @@
 ---
 title: A Studio (klasszikus) munkaterületének üzembe helyezése Azure Resource Manager
-titleSuffix: ML Studio (classic) Azure
+titleSuffix: ML Studio (classic) - Azure
 description: Azure Machine Learning Studio (klasszikus) munkaterületének üzembe helyezése Azure Resource Manager sablon használatával
 services: machine-learning
 ms.service: machine-learning
@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 02/05/2018
-ms.openlocfilehash: d4679eb056aaad1c404d0e0f8b7723d7c57ef1d4
-ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
+ms.openlocfilehash: 5ca45d772e3804dce4e27e5a6d4388acca4d1486
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73621696"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73837694"
 ---
 # <a name="deploy-azure-machine-learning-studio-classic-workspace-using-azure-resource-manager"></a>Azure Machine Learning Studio (klasszikus) munkaterület üzembe helyezése Azure Resource Manager használatával
 

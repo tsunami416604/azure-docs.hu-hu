@@ -1,6 +1,6 @@
 ---
 title: A mintaadatkészletek használata
-titleSuffix: ML Studio (classic) Azure
+titleSuffix: ML Studio (classic) - Azure
 description: A Machine Learning Studio (klasszikus) részét képező minta modellekben használt adatkészletek leírása. Ezeket a minta adatkészleteket használhatja a kísérletekhez.
 services: machine-learning
 ms.service: machine-learning
@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 01/19/2018
-ms.openlocfilehash: f22d27f7900ce9dda3a8e65451acb9b743a25811
-ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
+ms.openlocfilehash: 84ac2b43c9ec2e46bcd2967cf411f1bb1f60f42a
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73618908"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73839412"
 ---
 # <a name="use-the-sample-datasets-in-azure-machine-learning-studio-classic"></a>A minta adatkészletek használata Azure Machine Learning Studio (klasszikus)
 [top]: #machine-learning-sample-datasets
@@ -127,14 +127,14 @@ Az adatkészlet további információkat tartalmaz az X-ray rendszerképek gyan�
 <tr>
   <td>Megosztott CRM szolgáltatóváltást-Címkék</td>
   <td>
-A KDD Cup 2009 ügyfélkapcsolati előrejelzési Challenge (<a href="http://www.sigkdd.org/site/2009/files/orange_small_train_appetency.labels">orange_small_train_appetency. labels</a>) címkéi.
+A KDD Cup 2009 ügyfélkapcsolat-előrejelzési kihívás (<a href="http://www.sigkdd.org/site/2009/files/orange_small_train_appetency.labels">orange_small_train_appetency. labels</a>) címkéi.
   </td>
 </tr>
 
 <tr>
   <td>Megosztott CRM-adatforgalom-Címkék</td>
   <td>
-A KDD Cup 2009 ügyfélkapcsolati előrejelzési Challenge (<a href="http://www.sigkdd.org/site/2009/files/orange_small_train_churn.labels">orange_small_train_churn. labels</a>) címkéi.
+A KDD Cup 2009 ügyfélkapcsolat-előrejelzési kihívás (<a href="http://www.sigkdd.org/site/2009/files/orange_small_train_churn.labels">orange_small_train_churn. labels</a>) címkéi.
   </td>
 </tr>
 
@@ -150,7 +150,7 @@ Az adatkészlet 50 000 ügyfelet tartalmaz a francia távközlési cég Orange-t
 <tr>
   <td>Megosztott CRM-Címkék</td>
   <td>
-A KDD Cup 2009 ügyfélkapcsolati előrejelzési Challenge (<a href="http://www.sigkdd.org/site/2009/files/orange_large_train_upselling.labels">orange_large_train_upselling. labels</a>) címkéi.
+A KDD Cup 2009 ügyfélkapcsolat-előrejelzési kihívás (<a href="http://www.sigkdd.org/site/2009/files/orange_large_train_upselling.labels">orange_large_train_upselling. labels</a>) címkéi.
   </td>
 </tr>
 
@@ -397,7 +397,7 @@ Témakör-hozzárendelések a hírekhez a RCV1-v2 Reuters Hírek adatkészletéb
 <tr>
   <td><a href="https://azuremlsampleexperiments.blob.core.windows.net/datasets/student_performance.txt">student_performance. txt</a></td>
   <td>
-Ezek az adatok a KDD Cup 2010 Student Performance kiértékelési Challenge (<a href="https://www.kdd.org/kdd-cup/view/kdd-cup-2010-student-performance-evaluation">Student Performance értékelés</a>) alapján származnak. A felhasznált adathalmaz a Algebra_2008_2009 betanítási készlete (stamper, J., Niculescu-Mizil, A., Ritter, S., Gordon, G.J., & Koedinger, Kelemen (2010). Algebra I 2008-2009. A KDD Cup 2010 oktatási adatbányászati kihívása. Keresse meg a <a href="https://pslcdatashop.web.cmu.edu/KDDCup/downloads.jsp">downloads. jsp</a>fájlon.
+Ezek az adatok a KDD Cup 2010 Student Performance kiértékelési Challenge (<a href="https://www.kdd.org/kdd-cup/view/kdd-cup-2010-student-performance-evaluation">Student Performance értékelés</a>) alapján származnak. A felhasznált adathalmaz a Algebra_2008_2009 betanítási készlet (stamper, J., Niculescu-Mizil, A., Ritter, S., Gordon, G.J., & Koedinger, ka (2010). Algebra I 2008-2009. A KDD Cup 2010 oktatási adatbányászati kihívása. Keresse meg a <a href="https://pslcdatashop.web.cmu.edu/KDDCup/downloads.jsp">downloads. jsp</a>fájlon.
 <p></p>
 Az adatkészlet letöltése és tárolása az Azure Blob Storage-ban (<a href="https://azuremlsampleexperiments.blob.core.windows.net/datasets/student_performance.txt">student_performance. txt</a>) történik, és a tanulói oktató rendszerből származó naplófájlokat tartalmaz. A megadott funkciók közé tartozik a probléma azonosítója és a rövid leírása, a tanuló azonosítója, az időbélyeg, valamint a tanulók által a probléma megoldásához a megfelelő módon történt kísérlet. Az eredeti adatkészlet 8.9 millió rekorddal rendelkezik; ezt az adatkészletet leállították az első 100 000 sorra. Az adatkészlet 23 tabulátorral tagolt oszlopa különböző típusú: numerikus, kategorikus és timestamp.
   </td>

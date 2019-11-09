@@ -1,7 +1,7 @@
 ---
 title: Szövegelemzési API hívása
 titleSuffix: Azure Cognitive Services
-description: Megtudhatja, hogyan hívhatja meg a Text Analytics REST API.
+description: Ez a cikk azt ismerteti, hogyan hívható meg az Azure Cognitive Services Text Analytics REST API és a Poster.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,23 +10,23 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 07/30/2019
 ms.author: aahi
-ms.openlocfilehash: 14d3864f654dac42566441b3729de0cf88482295
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 5697ae4c8864e0b9c4cbfc9e1e1048e1c3d60f77
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68697867"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73837215"
 ---
 # <a name="how-to-call-the-text-analytics-rest-api"></a>A Text Analytics meghívása REST API
 
 A **text Analytics API** hívások http post/Get hívásokat végeznek, amelyek bármilyen nyelven megadhatók. Ebben a cikkben a REST és a [Poster](https://chrome.google.com/webstore/detail/postman/fhbjgbiflinjbdggehcddcbncdddomop) használatával mutatjuk be a főbb fogalmakat.
 
-Minden kérelemnek tartalmaznia kell a hozzáférési kulcsot és egy HTTP-végpontot. A végpont meghatározza a regisztráció során kiválasztott régiót, a szolgáltatás URL-címét és a kérelemben használt erőforrást: `sentiment` `languages`, `keyphrases`,, és `entities`. 
+Minden kérelemnek tartalmaznia kell a hozzáférési kulcsot és egy HTTP-végpontot. A végpont meghatározza a regisztráció során kiválasztott régiót, a szolgáltatás URL-címét és a kérelemben használt erőforrást: `sentiment`, `keyphrases`, `languages`és `entities`. 
 
 Ne felejtse el, hogy Text Analytics állapot nélküli, ezért nincsenek felügyelhető adategységek. A rendszer feltölti és elemzi a szöveget, és azonnal visszaadja az eredményeket a hívó alkalmazásnak.
 
 > [!Tip]
-> Ha szeretné megtekinteni, hogyan működik az API, POST kéréseket küldhet a beépített **API**-tesztelési konzolról, amely bármely [API-doc-lapon](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c6)elérhető. Nincs beállítva beállítás, és az egyetlen követelmény, hogy a kérelembe beillesszen egy hozzáférési kulcsot és a JSON-dokumentumokat. 
+> Ha szeretné megtekinteni, hogyan működik az API, POST kéréseket küldhet a beépített **API-tesztelési konzolról**, amely bármely [API-doc-lapon](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c6)elérhető. Nincs beállítva beállítás, és az egyetlen követelmény, hogy a kérelembe beillesszen egy hozzáférési kulcsot és a JSON-dokumentumokat. 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -44,7 +44,7 @@ Jelenleg minden Text Analytics művelethez ugyanazokat a dokumentumokat lehet el
 |---------|--------------|-----------|-------|
 |`id` |Az adattípus karakterlánc, de a gyakorlatban a dokumentumok azonosítói általában egész számnak számítanak. | Kötelező | A rendszer az Ön által megadott azonosítókat használja a kimenet felépítéséhez. A kérelemben szereplő minden egyes AZONOSÍTÓhoz a nyelvi kódok, a legfontosabb kifejezések és a hangulati pontszámok jönnek létre.|
 |`text` | Strukturálatlan nyers szöveg, legfeljebb 5 120 karakter hosszú lehet. | Kötelező | A nyelvfelismerés a szöveg bármilyen nyelven kifejezhető. Az érzelmek elemzéséhez, a fő kifejezés kinyeréséhez és az entitás azonosításához a szövegnek [támogatott nyelven](../text-analytics-supported-languages.md)kell lennie. |
-|`language` | 2 karakteres [ISO 639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) -kód [támogatott nyelvhez](../text-analytics-supported-languages.md) | Változó | Az érzelmek elemzéséhez, a kulcsfontosságú kifejezés kinyeréséhez és az entitások összekapcsolásához szükséges. a nyelvfelismerés nem kötelező. Nincs hiba, ha kizárják, de az elemzés a nélkül meggyengül. A nyelvi kódnak meg kell egyeznie `text` az Ön által megadott értékkel. |
+|`language` | 2 karakteres [ISO 639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) -kód [támogatott nyelvhez](../text-analytics-supported-languages.md) | Változó | Az érzelmek elemzéséhez, a kulcsfontosságú kifejezés kinyeréséhez és az entitások összekapcsolásához szükséges. a nyelvfelismerés nem kötelező. Nincs hiba, ha kizárják, de az elemzés a nélkül meggyengül. A nyelvi kódnak meg kell felelnie az Ön által megadott `text`nak. |
 
 A korlátokkal kapcsolatos további információkért tekintse meg a [text Analytics áttekintés > az adatkorlátok](../overview.md#data-limits)című témakört. 
 
@@ -67,7 +67,7 @@ A szolgáltatás legfeljebb 1 MB méretű kérést fogad el. Ha a Poster-t (vagy
 
 2. A három kérelem fejlécének beállítása:
 
-   + `Ocp-Apim-Subscription-Key`: az Azure Portaltól kapott hozzáférési kulcs.
+   + `Ocp-Apim-Subscription-Key`: a Azure Portaltól kapott hozzáférési kulcs.
    + `Content-Type`: alkalmazás/JSON.
    + `Accept`: alkalmazás/JSON.
 
@@ -87,11 +87,11 @@ A szolgáltatás legfeljebb 1 MB méretű kérést fogad el. Ha a Poster-t (vagy
   + [Entitások felismerése](text-analytics-how-to-entity-linking.md)  
 
 
-6. A kérelem elküldéséhez kattintson a **Küldés** gombra. Az áttekinthető kérelmek számával kapcsolatos információkért tekintse meg az adatkorlátozások szakaszt az Áttekintés lapon. [](../overview.md#data-limits)
+6. A kérelem elküldéséhez kattintson a **Küldés** gombra. Az áttekinthető kérelmek számával kapcsolatos információkért tekintse meg az [adatkorlátozások](../overview.md#data-limits) szakaszt az Áttekintés lapon.
 
    A Poster esetében a válasz a következő ablakban, egyetlen JSON-dokumentumként jelenik meg, a kérelemben megadott összes dokumentum-AZONOSÍTÓhoz tartozó elemmel.
 
-## <a name="see-also"></a>Lásd még 
+## <a name="see-also"></a>Lásd még: 
 
  [A Text Analytics áttekintése](../overview.md)  
  [Gyakori kérdések (GYIK)](../text-analytics-resource-faq.md)

@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 11/23/2016
-ms.openlocfilehash: 1e02e227180bb0082dd87ab8f5d2fe64e19b60f2
-ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
+ms.openlocfilehash: 550ac9ff3b425e682fdda16501613aa41a80d765
+ms.sourcegitcommit: 16c5374d7bcb086e417802b72d9383f8e65b24a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72677811"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73847251"
 ---
 # <a name="filtering-and-preprocessing-telemetry-in-the-application-insights-sdk"></a>Telemetria szűrése és előfeldolgozása az Application Insights SDK-ban
 
@@ -25,15 +25,15 @@ A Application Insights SDK beépülő moduljait úgy is megírhatja és konfigur
 
 Előkészületek:
 
-* Telepítse a megfelelő SDK-t az alkalmazáshoz: [ASP.net](asp-net.md), [ASP.net Core](asp-net-core.md), [nem http/Worker for .net/.net Core](worker-service.md)vagy [Java](../../azure-monitor/app/java-get-started.md).
+* Telepítse a megfelelő SDK-t az alkalmazáshoz: [ASP.net](asp-net.md), [ASP.net Core](asp-net-core.md), [nem http/Worker for .net/.net Core](worker-service.md), [Java](../../azure-monitor/app/java-get-started.md) vagy [JavaScript](javascript.md)
 
 <a name="filtering"></a>
 
-## <a name="filtering-itelemetryprocessor"></a>Szűrés: ITelemetryProcessor
+## <a name="filtering"></a>Szűrés
 
 Ezzel a technikával közvetlenül szabályozhatja, hogy mit tartalmaz a telemetria stream, vagy ki van zárva. A szűréssel elvégezheti a telemetria-elemek küldését Application Insightsba. Ezt használhatja mintavételezéssel vagy külön is.
 
-A telemetria szűréséhez telemetria-processzort kell írnia, és regisztrálnia kell a `TelemetryConfiguration` értékkel. Az összes telemetria áthalad a processzoron, és eldöntheti, hogy eldobja-e a streamből, vagy megadja a lánc következő processzorának. Ebbe beletartozik a standard modulok telemetria, például a HTTP-kérelem gyűjtője és a függőségi gyűjtő, valamint a nyomon követett telemetria. Kiszűrheti például a robotoktól érkező kéréseket vagy a sikeres függőségi hívásokat telemetria is.
+A telemetria szűréséhez telemetria-processzort kell írnia, és regisztrálnia kell a `TelemetryConfiguration`. Az összes telemetria áthalad a processzoron, és eldöntheti, hogy eldobja-e a streamből, vagy megadja a lánc következő processzorának. Ebbe beletartozik a standard modulok telemetria, például a HTTP-kérelem gyűjtője és a függőségi gyűjtő, valamint a nyomon követett telemetria. Kiszűrheti például a robotoktól érkező kéréseket vagy a sikeres függőségi hívásokat telemetria is.
 
 > [!WARNING]
 > Az SDK-ból a processzorokkal küldött telemetria szűrésével eldöntheti a portálon megjelenő statisztikákat, és megnehezíti a kapcsolódó elemek követését.
@@ -44,7 +44,7 @@ A telemetria szűréséhez telemetria-processzort kell írnia, és regisztrálni
 
 ### <a name="create-a-telemetry-processor-c"></a>Telemetria processzor létrehozása (C#)
 
-1. Szűrő létrehozásához implementálja `ITelemetryProcessor` értéket.
+1. Szűrő létrehozásához implementálja `ITelemetryProcessor`.
 
     Figyelje meg, hogy a telemetria processzorok létrehozzák a feldolgozási láncot. Telemetria-processzor létrehozásakor a láncban a következő processzorra mutató hivatkozást kap. Ha egy telemetria adatpontot továbbítanak a folyamat metódusának, az a munkája után meghívja (vagy nem hívja meg) a lánc következő telemetria-processzorát.
 
@@ -100,7 +100,7 @@ Karakterlánc-értékeket adhat át a. config fájlból úgy, hogy nyilvános ne
 > Ügyeljen arra, hogy a. config fájlban lévő típus neve és a hozzá tartozó tulajdonságok nevei megfeleljenek a kódban szereplő osztálynak és tulajdonságoknak. Ha a. config fájl nem létező típusra vagy tulajdonságra hivatkozik, előfordulhat, hogy az SDK beavatkozás nélkül nem tud telemetria küldeni.
 >
 
-Azt is megteheti **,** hogy a szűrőt a kódban inicializálja. Egy megfelelő inicializálási osztályban – például AppStart `Global.asax.cs` – a processzor beillesztése a láncba:
+Azt is megteheti **,** hogy a szűrőt a kódban inicializálja. Megfelelő inicializálási osztályban – például a `Global.asax.cs` AppStart – a processzor beillesztése a láncba:
 
 ```csharp
 var builder = TelemetryConfiguration.Active.DefaultTelemetrySink.TelemetryProcessorChainBuilder;
@@ -117,9 +117,9 @@ Az ezen pont után létrehozott TelemetryClients a processzorokat fogja használ
 **ASP.NET Core/Worker Service-alkalmazások**
 
 > [!NOTE]
-> A processzor `ApplicationInsights.config` vagy `TelemetryConfiguration.Active` használatával való hozzáadása nem érvényes ASP.NET Core alkalmazásokhoz, vagy ha a Microsoft. ApplicationInsights. WorkerService SDK-t használja.
+> `ApplicationInsights.config` vagy `TelemetryConfiguration.Active` használatával nem használható processzor hozzáadása ASP.NET Core alkalmazásokhoz, vagy ha a Microsoft. ApplicationInsights. WorkerService SDK-t használja.
 
-Az [ASP.net Core](asp-net-core.md#adding-telemetry-processors) vagy [WorkerService](worker-service.md#adding-telemetry-processors)használatával írt alkalmazások esetében az új `TelemetryProcessor` a `AddApplicationInsightsTelemetryProcessor` kiterjesztési módszer használatával történik `IServiceCollection` esetében, az alábbi ábrán látható módon. Ezt a metódust a `Startup.cs` osztály `ConfigureServices` metódusa hívja meg.
+Az [ASP.net Core](asp-net-core.md#adding-telemetry-processors) vagy [WorkerService](worker-service.md#adding-telemetry-processors)használatával írt alkalmazások esetében az új `TelemetryProcessor` hozzáadását a `AddApplicationInsightsTelemetryProcessor` bővítmény `IServiceCollection`használatával végezheti el az alább látható módon. Ezt a metódust a `Startup.cs` osztály `ConfigureServices` metódusa hívja meg.
 
 ```csharp
     public void ConfigureServices(IServiceCollection services)
@@ -198,7 +198,30 @@ public void Process(ITelemetry item)
 
 <a name="add-properties"></a>
 
-## <a name="add-properties-itelemetryinitializer"></a>Tulajdonságok hozzáadása: ITelemetryInitializer
+### <a name="javascript-web-applications"></a>JavaScript-alapú webalkalmazások
+
+**Szűrés a ITelemetryInitializer használatával**
+
+1. Hozzon létre egy telemetria inicializáló visszahívási függvényt. A visszahívási függvény `ITelemetryItem` paraméterként veszi igénybe a feldolgozás alatt álló eseményt. A visszahívási `false` visszaküldése a telemetria elem kiszűréséhez.  
+
+   ```JS
+   var filteringFunction = (envelope) => {
+     if (envelope.data.someField === 'tobefilteredout') {
+        return false;
+     }
+  
+     return true;
+   };
+   ```
+
+2. Adja hozzá a telemetria inicializáló visszahívását:
+
+   ```JS
+   appInsights.addTelemetryInitializer(filteringFunction);
+   ```
+
+## <a name="addmodify-properties-itelemetryinitializer"></a>Tulajdonságok hozzáadása/módosítása: ITelemetryInitializer
+
 
 A telemetria inicializálók használatával gazdagíthatja a telemetria, és/vagy felülbírálhatja a szabványos telemetria-modulok által beállított telemetria-tulajdonságokat.
 
@@ -276,9 +299,9 @@ protected void Application_Start()
 **ASP.NET Core/munkavégző szolgáltatás alkalmazásai: az inicializálás betöltése**
 
 > [!NOTE]
-> Az inicializálás `ApplicationInsights.config` használatával vagy `TelemetryConfiguration.Active` használatával való hozzáadása nem érvényes ASP.NET Core alkalmazásokhoz, vagy ha a Microsoft. ApplicationInsights. WorkerService SDK-t használja.
+> Az inicializálás `ApplicationInsights.config` vagy `TelemetryConfiguration.Active` használatával történő hozzáadása nem érvényes ASP.NET Core alkalmazásokhoz, vagy ha a Microsoft. ApplicationInsights. WorkerService SDK-t használja.
 
-Az [ASP.net Core](asp-net-core.md#adding-telemetryinitializers) vagy [WorkerService](worker-service.md#adding-telemetryinitializers)használatával írt alkalmazások esetén a rendszer hozzáad egy új `TelemetryInitializer`-et a függőségi injektálási tárolóhoz, az alább látható módon. Ez `Startup.ConfigureServices` metódusban történik.
+Az [ASP.net Core](asp-net-core.md#adding-telemetryinitializers) vagy [WorkerService](worker-service.md#adding-telemetryinitializers)használatával írt alkalmazások esetén új `TelemetryInitializer` hozzáadása a függőségi injektálási tárolóhoz való hozzáadásával történik, az alábbi ábrán látható módon. Ez `Startup.ConfigureServices` metódusban történik.
 
 ```csharp
  using Microsoft.ApplicationInsights.Extensibility;

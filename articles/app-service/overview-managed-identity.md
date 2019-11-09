@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 10/30/2019
 ms.author: mahender
 ms.reviewer: yevbronsh
-ms.openlocfilehash: a5176f74964e0809cea39aa160943cc6f3451237
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: a2f6d7f881e404e9e4dbdb8087cabf25f67d561b
+ms.sourcegitcommit: 16c5374d7bcb086e417802b72d9383f8e65b24a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73176523"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73847319"
 ---
 # <a name="how-to-use-managed-identities-for-app-service-and-azure-functions"></a>Felügyelt identitások használata App Service és Azure Functions
 
@@ -41,7 +41,7 @@ Ha felügyelt identitást szeretne beállítani a portálon, először hozzon l�
 
 2. Ha Function alkalmazást használ, navigáljon a **platform szolgáltatásaihoz**. Más típusú alkalmazások esetén görgessen le a **Beállítások** csoportba a bal oldali navigációs sávon.
 
-3. Válassza a **felügyelt identitás**elemet.
+3. Válassza az **identitás**lehetőséget.
 
 4. A **rendszerhez rendelt** lapon váltson az **állapot** bekapcsolva **értékre**. Kattintson a **Save** (Mentés) gombra.
 
@@ -168,11 +168,11 @@ Először létre kell hoznia egy felhasználó által hozzárendelt identitás-e
 
 3. Ha Function alkalmazást használ, navigáljon a **platform szolgáltatásaihoz**. Más típusú alkalmazások esetén görgessen le a **Beállítások** csoportba a bal oldali navigációs sávon.
 
-4. Válassza a **felügyelt identitás**elemet.
+4. Válassza az **identitás**lehetőséget.
 
 5. A **felhasználó által hozzárendelt** lapon kattintson a **Hozzáadás**gombra.
 
-6. Keresse meg a korábban létrehozott identitást, és válassza ki. Kattintson a **Hozzáadás** parancsra.
+6. Keresse meg a korábban létrehozott identitást, és válassza ki. Kattintson az **Add** (Hozzáadás) parancsra.
 
     ![Felügyelt identitás a App Serviceban](media/app-service-managed-service-identity/msi-blade-user.png)
 
@@ -193,7 +193,7 @@ Az `Microsoft.Web/sites` típusú erőforrások identitással hozhatók létre, 
 > [!NOTE] 
 > Egy alkalmazáshoz a rendszerhez hozzárendelt és felhasználó által hozzárendelt identitások is tartozhatnak egyszerre. Ebben az esetben a `type` tulajdonság `SystemAssigned,UserAssigned`
 
-A felhasználó által hozzárendelt típus hozzáadása és az Azure megjelölése az alkalmazás identitásának létrehozásához és kezeléséhez.
+A felhasználó által hozzárendelt típus hozzáadásával az Azure az alkalmazáshoz megadott felhasználó által hozzárendelt identitás használatára utasítja.
 
 Egy webalkalmazás például a következőhöz hasonló lehet:
 ```json
@@ -258,7 +258,7 @@ A **MSI_ENDPOINT** egy helyi URL-cím, amelyből az alkalmazás jogkivonatokat i
 
 > |Paraméter neve|A|Leírás|
 > |-----|-----|-----|
-> |Erőforrás|Lekérdezés|Annak az erőforrásnak az HRE erőforrás-URI azonosítója, amelynek a jogkivonatát meg kell szerezni. Ez lehet az egyik olyan [Azure-szolgáltatás, amely támogatja az Azure ad-hitelesítést](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication) vagy bármilyen más erőforrás-URI-t.|
+> |erőforrás|Lekérdezés|Annak az erőforrásnak az HRE erőforrás-URI azonosítója, amelynek a jogkivonatát meg kell szerezni. Ez lehet az egyik olyan [Azure-szolgáltatás, amely támogatja az Azure ad-hitelesítést](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication) vagy bármilyen más erőforrás-URI-t.|
 > |API-Version|Lekérdezés|A használni kívánt jogkivonat-API verziója. a "2017-09-01" jelenleg az egyetlen támogatott verzió.|
 > |titkos kód|Fejléc|A MSI_SECRET környezeti változó értéke. Ez a fejléc a kiszolgálóoldali kérelmek hamisításának (SSRF) elleni támadásának enyhítésére szolgál.|
 > |ClientID|Lekérdezés|(Nem kötelező, kivéve, ha felhasználó által hozzárendelt) A használni kívánt felhasználó által hozzárendelt identitás azonosítója. Ha nincs megadva, a rendszer hozzárendelt identitást használja.|
@@ -272,7 +272,7 @@ A sikeres 200 OK válasz egy JSON-törzset tartalmaz, amely a következő tulajd
 > |-------------|----------|
 > |access_token|A kért hozzáférési jogkivonat. A hívó webszolgáltatás ezt a tokent használhatja a fogadó webszolgáltatáshoz való hitelesítéshez.|
 > |expires_on|A hozzáférési jogkivonat lejáratának időpontja. A dátum az 1970-01-01T0:0: 0Z UTC számú másodperc, a lejárati időpontig. Ez az érték a gyorsítótárazott tokenek élettartamának meghatározására szolgál.|
-> |Erőforrás|A fogadó webszolgáltatás alkalmazás-azonosító URI-ja.|
+> |erőforrás|A fogadó webszolgáltatás alkalmazás-azonosító URI-ja.|
 > |token_type|Megadja a jogkivonat típusának értékét. Az Azure AD által támogatott egyetlen típus a tulajdonos. A tulajdonosi jogkivonatokkal kapcsolatos további információkért tekintse meg [a OAuth 2,0 engedélyezési keretrendszert: tulajdonosi jogkivonat használata (RFC 6750)](https://www.rfc-editor.org/rfc/rfc6750.txt).|
 
 Ez a válasz megegyezik a [HRE szolgáltatás-szolgáltatás hozzáférési jogkivonat-kérelemre adott válaszával](../active-directory/develop/v1-oauth2-client-creds-grant-flow.md#service-to-service-access-token-response).
@@ -429,9 +429,9 @@ A rendszer által hozzárendelt identitást eltávolíthatja a szolgáltatás a 
 A rendszer által hozzárendelt identitások eltávolítása a HRE-ből is törölve lesz. A rendszer által hozzárendelt identitások is automatikusan törlődnek a HRE-ből az alkalmazás-erőforrás törlésekor.
 
 > [!NOTE]
-> Létezik egy olyan Alkalmazásbeállítás is, amely beállítható, WEBSITE_DISABLE_MSI, amely egyszerűen letiltja a helyi jogkivonat-szolgáltatást. Azonban elhagyja az identitást, és az eszközök továbbra is a felügyelt identitást "be" vagy "engedélyezve" állapotba helyezik. Ennek eredményeképpen a beállítás használata nem ajánlott.
+> Van olyan Alkalmazásbeállítás is, amely beállítható, WEBSITE_DISABLE_MSI, amely egyszerűen letiltja a helyi jogkivonat-szolgáltatást. Azonban elhagyja az identitást, és az eszközök továbbra is a felügyelt identitást "be" vagy "engedélyezve" állapotba helyezik. Ennek eredményeképpen a beállítás használata nem ajánlott.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Biztonságos hozzáférés SQL Database felügyelt identitás használatával](app-service-web-tutorial-connect-msi.md)

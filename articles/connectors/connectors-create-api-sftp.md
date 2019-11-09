@@ -1,6 +1,6 @@
 ---
-title: Csatlakozhat SFTP-fiókjához – Azure Logic Apps
-description: Automatizálhatja a feladatokat és folyamatokat, amelyek figyelése, létrehozása, kezelése, küldése és fogadása fájlok SFTP-kiszolgálóra, ssh-n keresztül az Azure Logic Apps használatával
+title: Kapcsolódás SFTP-fiókhoz – Azure Logic Apps
+description: Automatizálhatja az SFTP-kiszolgálókhoz tartozó fájlok figyelését, létrehozását, kezelését, küldését és fogadását az SSH használatával Azure Logic Apps
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
@@ -8,115 +8,118 @@ author: ecfan
 ms.author: estfan
 ms.reviewer: divswa, klam, LADocs
 ms.topic: article
-ms.date: 06/18/2019
+ms.date: 11/01/2019
 tags: connectors
-ms.openlocfilehash: 5b80339e90947b7cc45b1edb5df00652a13291ac
-ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
+ms.openlocfilehash: 20702f5bc0dfc513d1fba84b69595dec885613ac
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67293478"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73837105"
 ---
-# <a name="monitor-create-and-manage-sftp-files-by-using-azure-logic-apps"></a>Figyelése, létrehozása és kezelése az SFTP-fájlok Azure Logic Apps használatával
+# <a name="monitor-create-and-manage-sftp-files-by-using-azure-logic-apps"></a>SFTP-fájlok figyelése, létrehozása és kezelése Azure Logic Apps használatával
 
-Automatizálhatja a feladatokat, amelyek figyelése, létrehozása, küldése és fájlok fogad a egy [biztonságos fájl Transfer Protocol (SFTP)](https://www.ssh.com/ssh/sftp/) kiszolgálóhoz, létrehozhat és integrációs munkafolyamatok automatizálása az Azure Logic Apps és az SFTP-összekötő használatával. Az SFTP egy hálózati protokoll, amely hozzá a fájlhoz, a fájlátvitel és a fájlkiszolgáló felügyelete bármelyik megbízható adatfolyam keresztül. Az alábbiakban néhány példa automatizálható feladatokra:
+> [!IMPORTANT]
+> Használja az [SFTP-SSH összekötőt](../connectors/connectors-sftp-ssh.md) , mivel az SFTP-összekötő elavult. A Logic app Designerben már nem választhat SFTP eseményindítókat és műveleteket.
 
-* Ez a figyelő fájlok hozzáadásakor vagy módosítani.
-* Beolvasása, létrehozása, másolja, frissítse a listát, és törölje a fájlokat.
-* Fájl tartalom és metaadatok beolvasása.
-* Mappák archívumok kibontása.
+A [biztonságos File Transfer Protocol (SFTP)](https://www.ssh.com/ssh/sftp/) kiszolgálón található fájlok figyelésére, létrehozására, küldésére és fogadására szolgáló feladatok automatizálásához Azure Logic apps és az SFTP-összekötő használatával hozhat létre és automatizálhat integrációs munkafolyamatokat. Az SFTP olyan hálózati protokoll, amely fájlhozzáférést, fájlátvitelt és fájlfelügyeletet biztosít valamilyen megbízható adatstreamen keresztül. Íme néhány példa a feladatok automatizálására:
 
-Eseményindítókat, amelyek az SFTP-kiszolgálón lévő események figyelésére és egyéb műveletek számára elérhetővé tenni a kimeneti is használhatja. Műveleteket, amelyeket az SFTP-kiszolgáló a különböző feladatok elvégzésére is használhatja. Egyéb műveletek a logikai alkalmazás kimenetét a SFTP-műveletek használata is rendelkezhet. Például ha rendszeresen kérnek le fájlok az SFTP-kiszolgálóról, elküldheti e-mailes riasztásokhoz ezeket a fájlokat és a tartalom az Office 365 Outlook-összekötőt vagy Outlook.com-összekötő használatával. Ha most ismerkedik a logic apps, tekintse át [Mi az Azure Logic Apps?](../logic-apps/logic-apps-overview.md)
+* A fájlok hozzáadásának vagy módosításának figyelése.
+* Fájlok lekérése, létrehozása, másolása, frissítése, listázása és törlése.
+* Fájl tartalmának és metaadatainak beolvasása.
+* Archívumok kinyerése mappákba.
 
-## <a name="limits"></a>Limits
+Az SFTP-kiszolgálón lévő eseményeket figyelő eseményindítókat használhat, és a kimenetet más műveletek számára is elérhetővé teheti. Az SFTP-kiszolgálón különféle feladatokat végző műveleteket is használhat. A logikai alkalmazásban más műveletek is használhatók az SFTP-műveletek kimenetének használatával. Ha például az SFTP-kiszolgálóról rendszeresen lekéri a fájlokat, e-mail-riasztásokat küldhet a fájlokról és azok tartalmáról az Office 365 Outlook Connector vagy a Outlook.com Connector használatával. Ha most ismerkedik a Logic apps szolgáltatással, tekintse át [a mi az Azure Logic apps?](../logic-apps/logic-apps-overview.md)
 
-Az SFTP-összekötővel kezeli, csak olyan fájlok, amelyek *50 MB vagy kisebb* és nem támogatja a [üzenet darabolás](../logic-apps/logic-apps-handle-large-messages.md). Nagyobb méretű fájlokhoz használja a [SFTP-SSH-összekötő](../connectors/connectors-sftp-ssh.md). Az SFTP-összekötő és az SFTP-SSH-összekötő közötti különbségeket, tekintse át a [hasonlítsa össze az SFTP-SSH és az SFTP](../connectors/connectors-sftp-ssh.md#comparison) az SFTP-SSH cikkben.
+## <a name="limits"></a>Korlátozások
+
+Az SFTP-összekötő csak a *50 MB vagy annál kisebb* fájlokat kezeli, és nem támogatja az [üzenetek darabolását](../logic-apps/logic-apps-handle-large-messages.md). Nagyobb fájlok esetén használja az [SFTP-SSH összekötőt](../connectors/connectors-sftp-ssh.md). Az SFTP-összekötő és az SFTP-SSH összekötő közötti különbségekért tekintse át a következőt: az SFTP-SSH és az [SFTP összehasonlítása](../connectors/connectors-sftp-ssh.md#comparison) az SFTP-SSH-cikkben.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, [regisztráljon egy ingyenes Azure-fiókra](https://azure.microsoft.com/free/).
 
-* Az SFTP címet és a fiók hitelesítő adatait, lehetővé teszik a logikai alkalmazás az SFTP-fiók eléréséhez. Használatához a [Secure Shell (SSH)](https://www.ssh.com/ssh/protocol/) protokoll is hozzáférhetnek a titkos SSH-kulcs és titkos SSH kulcs jelszavát.
+* Az SFTP-kiszolgáló címe és a fiók hitelesítő adatai, amelyek lehetővé teszik a logikai alkalmazás számára az SFTP-fiók elérését. A [Secure Shell (SSH)](https://www.ssh.com/ssh/protocol/) protokoll használatához hozzá kell férnie egy SSH titkos kulcshoz és a titkos SSH-kulcs jelszavához is.
 
   > [!NOTE]
   >
-  > Az SFTP-összekötővel e privát-formátumot támogatja: OpenSSH ssh.com és a putty-kapcsolaton keresztül
+  > Az SFTP-összekötő a következő titkos kulcsok formátumait támogatja: OpenSSH, ssh.com és Putty
   >
-  > Miután hozzáadta az SFTP eseményindítót vagy műveletet hoz létre a logikai alkalmazás, amikor szüksége az SFTP-kiszolgáló kapcsolati adatainak megadása. 
-  > Ha a titkos SSH-kulcsot használ, győződjön meg arról, hogy ***másolási*** a kulcs az SSH megszerezné a titkos kulcsot, és ***illessze be*** a kulcs a kapcsolat részletek ***manuálisan nem adja meg vagy módosítsa a kulcsot***, így előfordulhat, hogy a kapcsolat sikertelen lesz. 
-  > További információkért lásd az ebben a cikkben a későbbi lépésekben.
+  > A logikai alkalmazás létrehozása után az SFTP-trigger vagy a kívánt művelet hozzáadása után meg kell adnia az SFTP-kiszolgáló kapcsolódási adatait. 
+  > Ha SSH titkos kulcsot használ, győződjön meg arról, hogy a kulcsot a titkos SSH-kulcs fájljából ***másolja*** , majd ***illessze*** be az adott kulcsot a kapcsolat részleteibe, ***ne adja meg manuálisan a kulcsot, vagy szerkessze a kulcsot***, ami miatt a kapcsolat sikertelen lehet. 
+  > További információkért tekintse meg a cikk későbbi lépéseit.
 
-* Alapvető ismeretek szerezhetők [logikai alkalmazások létrehozása](../logic-apps/quickstart-create-first-logic-app-workflow.md)
+* Alapvető ismeretek a [logikai alkalmazások létrehozásáról](../logic-apps/quickstart-create-first-logic-app-workflow.md)
 
-* A logikai alkalmazás, ahol szeretné elérni az SFTP-fiókjához. Szeretne kezdeni egy SFTP-triggert [hozzon létre egy üres logikai alkalmazás](../logic-apps/quickstart-create-first-logic-app-workflow.md). SFTP-művelet használatához indítsa el a logikai alkalmazás egy másik eseményindítóval, például a **ismétlődési** eseményindító.
+* Az a logikai alkalmazás, ahová el szeretné érni az SFTP-fiókját. Ha egy SFTP-triggert szeretne kezdeni, [hozzon létre egy üres logikai alkalmazást](../logic-apps/quickstart-create-first-logic-app-workflow.md). Ha SFTP-műveletet szeretne használni, indítsa el a logikai alkalmazást egy másik eseményindítóval, például az **ismétlődési** eseményindítóval.
 
-## <a name="how-sftp-triggers-work"></a>Hogyan SFTP elindítja a munka
+## <a name="how-sftp-triggers-work"></a>Az SFTP-eseményindítók működése
 
-SFTP-eseményindítók munka az SFTP-fájlrendszer lekérdezésével, és keres olyan fájlt, amely a legutóbbi lekérdezés óta módosult. Egyes eszközök segítségével történő küldés időbélyegzője legyen megőrzése, ha módosítja a fájlokat. Ezekben az esetekben kell letiltani ezt a funkciót, így az eseményindító is dolgozhat. Az alábbiakban néhány gyakori beállítások:
+Az SFTP-eseményindítók az SFTP fájlrendszer lekérdezésével és a legutóbbi lekérdezés óta módosított fájlok keresésével működnek. Egyes eszközök lehetővé teszik, hogy a fájlok változásakor őrizze meg az időbélyeget. Ezekben az esetekben le kell tiltania ezt a funkciót, így az trigger működhet. Íme néhány gyakori beállítás:
 
-| Az SFTP-ügyfél | Műveletek |
+| SFTP-ügyfél | Műveletek |
 |-------------|--------|
-| Winscp | Lépjen a **beállítások** > **beállítások** > **Transfer** > **szerkesztése**  >  **Időbélyeg megőrzése** > **letiltása** |
-| FileZilla | Lépjen a **Transfer** > **időbélyegeket átvitt fájlok megőrzéséhez** > **letiltása** |
+| WinSCP | Lépjen a **beállítások** > **beállítások** > **átvitel** > **Szerkesztés** > **megőrzése időbélyeg** > **Letiltás** |
+| Filezillát | Ugrás az **átvitel** > **az átvitt fájlok időbélyegének megőrzése** > **Letiltás** |
 |||
 
-Ha az eseményindító egy új fájlt talál, a trigger ellenőrzi, hogy az új fájl teljes és részlegesen írásos. Például egy fájl előfordulhat módosítások folyamatban, amikor a trigger ellenőriz a fájlkiszolgálón. Részlegesen írásos fájl visszaadó elkerüléséhez az eseményindító feljegyzi az időbélyeg, amely rendelkezik a legutóbbi módosítások, de nem ad vissza a fájlt közvetlenül a fájl. A trigger a fájl adja vissza, csak akkor, ha a kiszolgáló ismét lekérdezés. Egyes esetekben ez a viselkedés, amely legfeljebb kétszer az eseményindító a lekérdezési időköz késleltetés okozhatja.
+Ha egy trigger új fájlt talál, az trigger ellenőrzi, hogy az új fájl elkészült-e, és nem részlegesen van-e írva. Előfordulhat például, hogy egy fájl változása folyamatban van, amikor az trigger ellenőrzi a fájlkiszolgálón. Egy részlegesen megírt fájl visszaadásának elkerüléséhez az trigger megállapítja a legutóbbi módosításokat tartalmazó fájl időbélyegét, de nem adja vissza azonnal a fájlt. Az trigger csak akkor adja vissza a fájlt, ha újra kérdezi le a kiszolgálót. Előfordulhat, hogy ez a viselkedés egy késleltetést okoz, amely akár kétszer is meghaladhatja az aktiválás lekérdezési időközét.
 
-## <a name="connect-to-sftp"></a>Csatlakozhat SFTP
+## <a name="connect-to-sftp"></a>Kapcsolódás az SFTP-hez
 
 [!INCLUDE [Create connection general intro](../../includes/connectors-create-connection-general-intro.md)]
 
-1. Jelentkezzen be a [az Azure portal](https://portal.azure.com), és nyissa meg a logikai alkalmazás a Logikaialkalmazás-Tervező, ha nem, nyissa meg a már.
+1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com), és nyissa meg a logikai alkalmazást a Logic app Designerben, ha már nincs megnyitva.
 
-1. Üres logic Apps a keresőmezőbe írja be szűrőként "sftp". Eseményindítók listája alatt válassza ki a kívánt az eseményindító.
+1. Üres logikai alkalmazások esetén a keresőmezőbe írja be a "SFTP" kifejezést a szűrő mezőbe. Válassza ki a kívánt eseményindítót az eseményindítók listából.
 
    – vagy –
 
-   Meglévő logic Apps alkalmazások, az utolsó lépés, adjon hozzá egy műveletet, amelyre a válasszon **új lépés**. A Keresés mezőbe írja be szűrőként "sftp". Műveletek listája alatt válassza ki a kívánt művelet.
+   Meglévő Logic apps esetén az utolsó lépésben, amelyhez műveletet szeretne hozzáadni, válassza az **új lépés**lehetőséget. A keresőmezőbe írja be az "SFTP" kifejezést a szűrőként. A műveletek listában válassza ki a kívánt műveletet.
 
-   Lépések közötti művelet hozzáadása, helyezze az egérmutatót a nyíl lépések között. Válassza a plusz jelre ( **+** ), amely akkor jelenik meg, és válassza ki **művelet hozzáadása**.
+   A lépések közötti művelet hozzáadásához vigye a mutatót a lépések közötti nyíl fölé. Válassza ki a megjelenő pluszjelet ( **+** ), majd válassza a **művelet hozzáadása**lehetőséget.
 
-1. Adja meg a szükséges adatokat a kapcsolatot.
+1. Adja meg a kapcsolathoz szükséges adatokat.
 
    > [!IMPORTANT]
    >
-   > Amikor beírja a titkos SSH-kulcs a a **titkos SSH-kulcs** tulajdonságot használja, kövesse az alábbi kiegészítő lépéseket, és segít abban, hogy a teljes és megfelelő érték a tulajdonság adja meg. 
-   > Érvénytelen a kulcs hatására a kapcsolat sikertelen lesz.
+   > Ha megadja az SSH titkos kulcsát az **SSH titkos kulcs** tulajdonságában, kövesse ezeket a további lépéseket, amelyekkel biztosíthatja, hogy a tulajdonság teljes és megfelelő értékét adja meg. 
+   > Érvénytelen kulcs miatt a kapcsolódás sikertelen lesz.
 
-   Bár használhatja bármilyen szövegszerkesztővel, az alábbiakban minta lépések azt mutatják be, hogyan kell megfelelően másolja és illessze be a kulcsot a Notepad.exe használatával például.
+   Habár használhat bármely szövegszerkesztőt, itt láthatók azok a lépések, amelyek bemutatják, hogyan lehet helyesen másolni és beilleszteni a kulcsot a Notepad. exe használatával példaként.
 
-   1. Egy szövegszerkesztőben nyissa meg az SSH megszerezné a titkos kulcsot. Ezeket a lépéseket a Jegyzettömb használja példaként.
+   1. Nyissa meg az SSH titkos kulcs fájlját egy szövegszerkesztőben. Ezek a lépések példaként használják a jegyzettömböt.
 
-   1. A Jegyzettömbben a **szerkesztése** menüjében válassza **válassza ki az összes**.
+   1. A Jegyzettömb **Szerkesztés** menüjében válassza az **összes kijelölése**lehetőséget.
 
-   1. Válassza ki **szerkesztése** > **másolási**.
+   1. Válassza a **szerkesztés** > **Másolás**elemet.
 
-   1. Az SFTP-eseményindító vagy hozzáadott művelet, illessze be a *teljes* kulcs másolt a **titkos SSH-kulcs** tulajdonság, amely támogatja a több sort. ***Győződjön meg arról, hogy illessze be*** a kulcsot. ***Manuálisan nem adja meg vagy módosítsa a kulcsot***.
+   1. Az SFTP-triggerben vagy a hozzáadott műveletben illessze be az **SSH titkos kulcs** tulajdonságba másolt *teljes* kulcsot, amely több sort is támogat. ***Ügyeljen rá, hogy illessze be*** a kulcsot. ***Ne adja meg manuálisan a kulcsot, vagy szerkessze***azt.
 
-1. Ha befejezte a kapcsolati adatok megadása, válassza a **létrehozás**.
+1. Ha végzett a kapcsolat részleteinek megadásával, válassza a **Létrehozás**lehetőséget.
 
-1. Adja meg a szükséges adatokat a kijelölt eseményindítót vagy műveletet, és továbbra is használhatja a logic app-munkafolyamatot.
+1. Adja meg a kiválasztott trigger vagy művelet szükséges adatait, és folytassa a logikai alkalmazás munkafolyamatának összeállítását.
 
 ## <a name="examples"></a>Példák
 
 <a name="file-add-modified"></a>
 
-### <a name="sftp-trigger-when-a-file-is-added-or-modified"></a>Az SFTP-eseményindító: Amikor felvesznek vagy módosítanak egy fájlt
+### <a name="sftp-trigger-when-a-file-is-added-or-modified"></a>SFTP-trigger: fájl hozzáadásakor vagy módosításakor
 
-Ez az eseményindító indul el a logikai alkalmazás munkafolyamata egy fájl hozzáadásakor vagy módosítja a SFTP-kiszolgálóra. Ha például egy feltételt, amely ellenőrzi a fájl tartalmát, és a tartalmat, hogy a tartalom megfelel-e a megadott feltétel alapján is hozzáadhat. Ezután hozzáadhat egy műveletet, amely a fájl tartalmának beolvasása, és ezt a tartalmat egy mappába az SFTP-kiszolgáló használatával.
+Ez az aktiválás egy logikai alkalmazás munkafolyamatát indítja el, amikor egy fájlt hozzáadnak vagy módosítanak egy SFTP-kiszolgálón. Hozzáadhat például egy olyan feltételt, amely ellenőrzi a fájl tartalmát, és beolvassa a tartalmat attól függően, hogy a tartalom megfelel-e a megadott feltételnek. Ezután hozzáadhat egy műveletet, amely beolvassa a fájl tartalmát, és az SFTP-kiszolgáló egy mappájába helyezi a tartalmat.
 
-**Példa vállalati**: Ez az eseményindító használatával figyelheti az SFTP-mappába, új fájlok, amelyek a vevői rendelések jelölésére. Ezután használhatja az SFTP-művelet például **fájl tartalmának beolvasása** úgy, hogy a rendelés tartalmának beolvasása a további feldolgozás céljából, és a egy rendelési adatbázisba sorrendben tárolja.
+**Vállalati példa**: ezt az triggert használhatja az ügyfél-megrendeléseket képviselő új fájlok SFTP-mappájának figyelésére. Ezután használhat egy SFTP-műveletet, például a **fájlok beolvasása** lehetőséget, így a sorrend tartalmát megtekintve további feldolgozást hajthat végre, és a rendelést egy Orders adatbázisban tárolhatja.
 
 <a name="get-content"></a>
 
-### <a name="sftp-action-get-content"></a>SFTP-művelet: Tartalom lekérése
+### <a name="sftp-action-get-content"></a>SFTP-művelet: tartalom lekérése
 
-Ez a művelet a tartalom olvas be egy fájl az SFTP-kiszolgálóra. Így például az előző példában és a egy feltételt, amely a fájl tartalmának meg kell felelnie az eseményindító is hozzáadhat. Ha a feltétel teljesül, a műveletet, amely lekérdezi a tartalmat futtathatja.
+Ez a művelet lekérdezi a tartalmat egy SFTP-kiszolgálón lévő fájlból. Így például felveheti az triggert az előző példából, és egy olyan feltételt, amelynek meg kell felelnie a fájl tartalmának. Ha a feltétel igaz, akkor a tartalmat lekérdező művelet futtatható.
 
 ## <a name="connector-reference"></a>Összekötő-referencia
 
-További technikai részletek korlátok, eseményindítók és műveletek, amely ismerteti az összekötő OpenAPI által (korábbi nevén Swagger) leírását, tekintse át az összekötő [referencialapja](/connectors/sftpconnector/).
+Az eseményindítókkal, műveletekkel és korlátokkal kapcsolatos technikai részletekért lásd az összekötő OpenAPI (korábban: hencegés) leírását, tekintse át az összekötő [hivatkozási oldalát](/connectors/sftpconnector/).
 
 ## <a name="next-steps"></a>További lépések
 
-* További információk egyéb [Logic Apps-összekötők](../connectors/apis-list.md)
+* További Logic Apps- [Összekötők](../connectors/apis-list.md) megismerése

@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 09/27/2019
 ms.author: normesta
 ms.reviewer: dineshm
-ms.openlocfilehash: 76648428e6adcaed579b0e4f1896fdf83e11a8b6
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 8ce949ac997ba7ee38cb057752d89f4b4d22388f
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71348860"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73838709"
 ---
 # <a name="move-an-azure-storage-account-to-another-region"></a>Azure Storage-fiók áthelyezése másik régióba
 
@@ -51,11 +51,11 @@ Ez a sablon a Storage-fiókot leíró beállításokat tartalmaz.
 
 Sablon exportálása Azure Portal használatával:
 
-1. Jelentkezzen be az [Azure Portalra](http://portal.azure.com).
+1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
 
 2. Válassza a **minden erőforrás** lehetőséget, majd válassza ki a Storage-fiókját.
 
-3. Válassza > **Beállítások** > **Exportálás sablon**lehetőséget.
+3. Válassza a > **beállítások** > **sablon exportálása**lehetőséget.
 
 4. Válassza a **Letöltés** lehetőséget a **sablon exportálása** panelen.
 
@@ -115,7 +115,7 @@ A sablon üzembe helyezése Azure Portal használatával:
 
 6. Válassza a **fájl betöltése**lehetőséget, majd kövesse az utasításokat az utolsó szakaszban letöltött **template. JSON** fájl betöltéséhez.
 
-7. A **template. JSON** fájlban nevezze el a cél Storage-fiókot a Storage-fiók nevének alapértelmezett értékének megadásával. Ez a példa a Storage-fiók nevének alapértelmezett értékét állítja be `mytargetaccount` értékre.
+7. A **template. JSON** fájlban nevezze el a cél Storage-fiókot a Storage-fiók nevének alapértelmezett értékének megadásával. Ez a példa a Storage-fiók nevének alapértelmezett értékét állítja be `mytargetaccount`.
     
     ```json
     "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
@@ -137,13 +137,13 @@ A sablon üzembe helyezése Azure Portal használatával:
          "location": "centralus"
          }]          
     ```
-    A régióbeli hely kódjának beszerzéséhez tekintse meg az [Azure-helyeket](https://azure.microsoft.com/global-infrastructure/locations/).  A régió kódja a régió neve szóközök nélkül, **Közép-USA** = **CentralUS**.
+    A régióbeli hely kódjának beszerzéséhez tekintse meg az [Azure-helyeket](https://azure.microsoft.com/global-infrastructure/locations/).  A régió kódja a régió neve szóközök nélkül, az **USA középső** = **CentralUS**.
 
 # <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
 A sablon üzembe helyezése a PowerShell használatával:
 
-1. A **template. JSON** fájlban nevezze el a cél Storage-fiókot a Storage-fiók nevének alapértelmezett értékének megadásával. Ez a példa a Storage-fiók nevének alapértelmezett értékét állítja be `mytargetaccount` értékre.
+1. A **template. JSON** fájlban nevezze el a cél Storage-fiókot a Storage-fiók nevének alapértelmezett értékének megadásával. Ez a példa a Storage-fiók nevének alapértelmezett értékét állítja be `mytargetaccount`.
     
     ```json
     "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
@@ -156,7 +156,7 @@ A sablon üzembe helyezése a PowerShell használatával:
     },
     ``` 
 
-2. Szerkessze a **Location (hely** ) tulajdonságot a **template. JSON** fájlban a célként megadott régióban. Ez a példa a célként megadott régiót `eastus` értékre állítja be.
+2. Szerkessze a **Location (hely** ) tulajdonságot a **template. JSON** fájlban a célként megadott régióban. Ez a példa a célként megadott régiót állítja be `eastus`.
 
     ```json
     "resources": [{
@@ -186,11 +186,11 @@ A sablon üzembe helyezésével hozzon létre egy új Storage-fiókot a célkén
 
 2. Adja meg vagy válassza ki a tulajdonságértékek értékét:
 
-- **Előfizetés**: Válasszon ki egy Azure-előfizetést.
+- **Előfizetés**: válasszon ki egy Azure-előfizetést.
 
-- **Erőforráscsoport**: Válassza az **új létrehozása** elemet, és adja meg az erőforráscsoport nevét.
+- **Erőforráscsoport**: Válassza az **Új létrehozása** lehetőséget, majd adjon nevet az erőforráscsoportnak.
 
-- **Hely**: Válasszon egy Azure-beli helyet.
+- **Hely**: válasszon ki egy Azure-helyet.
 
 3. Jelölje **be az Elfogadom a fenti feltételeket és kikötéseket** jelölőnégyzetet, majd kattintson a **Vásárlás kiválasztása** gombra.
 
@@ -219,7 +219,7 @@ Néhány funkció nem exportál sablonba, ezért hozzá kell adnia őket az új 
 
 A következő táblázat felsorolja ezeket a funkciókat, valamint útmutatást nyújt azok hozzáadásához az új Storage-fiókhoz.
 
-| Funkció    | Útmutatás    |
+| Szolgáltatás    | Útmutatás    |
 |--------|-----------|
 | **Életciklus-kezelési szabályzatok** | [Azure Blob Storage-életciklus felügyelete](../blobs/storage-lifecycle-management-concepts.md) |
 | **Statikus webhelyek** | [Statikus webhely üzemeltetése az Azure Storage-ban](../blobs/storage-blob-static-website-how-to.md) |
@@ -234,19 +234,19 @@ A következő táblázat felsorolja ezeket a funkciókat, valamint útmutatást 
 
 Az alábbi módokon helyezheti át az adatait.
 
-:heavy_check_mark: **Azure Storage Explorer**
+: heavy_check_mark: **Azure Storage Explorer**
 
   Könnyen használható, és kisebb adatkészletekhez is alkalmas. Másolja a tárolókat és a fájlmegosztást, majd illessze be őket a célként megadott fiókba.
 
   Lásd: [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/);
 
-:heavy_check_mark: **AzCopy**
+: heavy_check_mark: **AzCopy**
 
   Ez az előnyben részesített megközelítés. Teljesítményre optimalizált.  Az egyik módszer, hogy gyorsabb, az Adatmásolás közvetlenül a Storage-kiszolgálók között történik, így a AzCopy nem használja a számítógép hálózati sávszélességét. Használjon AzCopy a parancssorban vagy egy egyéni parancsfájl részeként.
 
   Lásd: Ismerkedés [a AzCopy](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
 
-:heavy_check_mark: **Azure Data Factory** 
+: heavy_check_mark: **Azure Data Factory** 
 
   Ezt az eszközt csak akkor használja, ha olyan funkciókra van szüksége, amelyek nem támogatottak a AzCopy jelenlegi kiadásában. Például a AzCopy jelenlegi kiadásában a Blobok nem másolhatók olyan fiókok között, amelyek hierarchikus névtérrel rendelkeznek. Emellett a AzCopy nem őrzi meg a fájlok hozzáférés-vezérlési listáját vagy a fájl időbélyegét (például: létrehozás és módosítás időbélyegek). 
 

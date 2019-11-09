@@ -1,6 +1,6 @@
 ---
 title: Események küldése és fogadása a .NET Core használatával – Azure Event Hubs | Microsoft Docs
-description: Ez a cikk a forgatókönyv létrehozásához, amely elküldi az eseményeket az Azure Event Hubsba a .NET Core-alkalmazást.
+description: Ez a cikk bemutatja, hogyan hozhat létre olyan .NET Core-alkalmazást, amely eseményeket küld az Azure Event Hubsnak.
 services: event-hubs
 documentationcenter: na
 author: ShubhaVijayasarathy
@@ -15,12 +15,12 @@ ms.workload: na
 ms.custom: seodec18
 ms.date: 04/15/2019
 ms.author: shvija
-ms.openlocfilehash: 736612398861cc7a168fd24e83bc28e3815a8a28
-ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
+ms.openlocfilehash: 1d3f6357faa8626d48e2aac0efe86e22222c9ba6
+ms.sourcegitcommit: 16c5374d7bcb086e417802b72d9383f8e65b24a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68742155"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73846666"
 ---
 # <a name="send-events-to-or-receive-events-from-azure-event-hubs-using-net-core"></a>Események küldése vagy fogadása Azure-Event Hubs a .NET Core használatával
 Az Event Hubs szolgáltatás a csatlakoztatott eszközökről és alkalmazásokból származó nagy mennyiségű eseményadatot dolgoz fel (telemetria). Miután összegyűjtötte az adatokat az Event Hubsban, az adatok egy tárolási fürt használatával tárolhatja, vagy átalakíthatja egy valós idejű elemzési szolgáltató segítségével. Ez az átfogó eseménygyűjtési és -feldolgozási képesség kulcsfontosságú alkotóeleme a modern alkalmazásarchitektúráknak, beleértve az eszközök internetes hálózatát (IoT). Az Event Hubs részletes áttekintéséért lásd az [Event Hubs áttekintését](event-hubs-about.md) és az [Event Hubs-szolgáltatásokat](event-hubs-features.md) ismertető cikket.
@@ -34,7 +34,7 @@ Ebből az oktatóanyagból megtudhatja, hogyan hozhat C# létre .net Core-alkalm
 
 - [Microsoft Visual Studio 2019](https://www.visualstudio.com).
 - [.NET Core Visual Studio 2015- vagy 2017-eszközök](https://www.microsoft.com/net/core). 
-- **Hozzon létre egy Event Hubs névteret és egy Event hubot**. Első lépésként az [Azure Portalon](https://portal.azure.com) hozzon létre egy Event Hubs típusú névteret, és szerezze be az alkalmazása és az eseményközpont közötti kommunikációhoz szükséges felügyeleti hitelesítő adatokat. A névtér és eseményközpont létrehozásához hajtsa végre az eljárást a [Ez a cikk](event-hubs-create.md). Ezután szerezze be az **Event hub-névtér kapcsolati karakterláncát** a cikk utasításait követve: A [kapcsolatok karakterláncának](event-hubs-get-connection-string.md#get-connection-string-from-the-portal)beolvasása. Az oktatóanyag későbbi részében használja a kapcsolati karakterláncot.
+- **Hozzon létre egy Event Hubs névteret és egy Event hubot**. Első lépésként az [Azure Portalon](https://portal.azure.com) hozzon létre egy Event Hubs típusú névteret, és szerezze be az alkalmazása és az eseményközpont közötti kommunikációhoz szükséges felügyeleti hitelesítő adatokat. A névtér és az Event hub létrehozásához kövesse az [ebben a cikkben](event-hubs-create.md)ismertetett eljárást. Ezután szerezze be a **kapcsolati karakterláncot az Event hub-névtérhez** a következő cikk utasításait követve: [kapcsolati karakterlánc beolvasása](event-hubs-get-connection-string.md#get-connection-string-from-the-portal). Az oktatóanyag későbbi részében a kapcsolatok karakterláncát kell használnia.
 
 ## <a name="send-events"></a>Események küldése 
 Ebből a szakaszból megtudhatja, hogyan hozhat létre olyan .NET Core Console-alkalmazást, amely eseményeket küld az Event hub-nak. 
@@ -47,7 +47,7 @@ Indítsa el a Visual Studiót. Kattintson a **File** (Fájl) menüben a **New** 
 
 ### <a name="add-the-event-hubs-nuget-package"></a>Az Event Hubs NuGet-csomag hozzáadása
 
-Adja hozzá a [ `Microsoft.Azure.EventHubs` ](https://www.nuget.org/packages/Microsoft.Azure.EventHubs/) .NET Core library NuGet-csomagot a projekthez az alábbi lépéseket: 
+Adja hozzá a [`Microsoft.Azure.EventHubs`](https://www.nuget.org/packages/Microsoft.Azure.EventHubs/) .net Core Library NuGet-csomagot a projekthez a következő lépések végrehajtásával: 
 
 1. Kattintson a jobb gombbal az újonnan létrehozott projektre, és válassza a **Manage Nuget Packages** (NuGet-csomagok kezelése) lehetőséget.
 2. Kattintson a **Tallózás** fülre, keressen rá a „Microsoft.Azure.EventHubs” kifejezésre, majd válassza ki a **Microsoft.Azure.EventHubs** csomagot. Kattintson a **Telepítés** gombra a telepítés befejezéséhez, majd zárja be a párbeszédpanelt.

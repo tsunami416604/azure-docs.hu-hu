@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d6f0d732917a6587307e6d60581e0189687cc7e9
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: dd50ca8b81b933a61a67ac36db6a656791a8121f
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73164769"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73832856"
 ---
 # <a name="sign-in-to-windows-virtual-machine-in-azure-using-azure-active-directory-authentication-preview"></a>Bejelentkezés az Azure-beli Windows rendszerű virtuális gépre Azure Active Directory hitelesítéssel (előzetes verzió)
 
@@ -33,7 +33,7 @@ Az Azure AD-hitelesítés használatának számos előnye van az Azure-beli Wind
 - A továbbiakban nem kell helyi rendszergazdai fiókokat kezelnie.
 - Az Azure RBAC lehetővé teszi a megfelelő hozzáférés megadását a virtuális gépek igény szerinti eléréséhez, és ha már nincs rá szükség, távolítsa el azt.
 - A virtuális géphez való hozzáférés engedélyezése előtt az Azure AD feltételes hozzáférése további követelményeket is kikényszerítheti, például: 
-   - Többtényezős hitelesítés
+   - Multi-Factor Authentication
    - Bejelentkezési kockázat
 - Automatizálhatja és méretezheti az Azure AD Joint az Azure-alapú Windows virtuális gépekhez.
 
@@ -166,7 +166,7 @@ Néhány pillanat elteltével a rendszerbiztonsági tag a kiválasztott hatókö
 
 ### <a name="using-the-azure-cloud-shell-experience"></a>A Azure Cloud Shell felület használata
 
-Az alábbi példa az [az role hozzárendelés Create](https://docs.microsoft.com/cli/azure/role/assignment#az-role-assignment-create) paranccsal rendeli hozzá a virtuális gép rendszergazdai bejelentkezési szerepkörét a virtuális géphez az aktuális Azure-felhasználóhoz. Az aktív Azure-fiókjának felhasználónevét az az [Account show](https://docs.microsoft.com/cli/azure/account#az-account-show)paranccsal szerezheti be, a hatókör pedig az előző lépésben létrehozott virtuális gépre az [az VM show](https://docs.microsoft.com/cli/azure/vm#az-vm-show)paranccsal. A hatókör egy erőforráscsoport vagy előfizetés szintjén is hozzárendelhető, és a normál RBAC öröklési engedélyek is érvényesek. További információ: [szerepköralapú hozzáférés-vezérlés](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview#access-control).
+Az alábbi példa az [az role hozzárendelés Create](https://docs.microsoft.com/cli/azure/role/assignment#az-role-assignment-create) paranccsal rendeli hozzá a virtuális gép rendszergazdai bejelentkezési szerepkörét a virtuális géphez az aktuális Azure-felhasználóhoz. Az aktív Azure-fiókjának felhasználónevét az az [Account show](https://docs.microsoft.com/cli/azure/account#az-account-show)paranccsal szerezheti be, a hatókör pedig az előző lépésben létrehozott virtuális gépre az [az VM show](https://docs.microsoft.com/cli/azure/vm#az-vm-show)paranccsal. A hatókör egy erőforráscsoport vagy előfizetés szintjén is hozzárendelhető, és a normál RBAC öröklési engedélyek is érvényesek. További információ: [szerepköralapú hozzáférés-vezérlés](../../virtual-machines/linux/login-using-aad.md).
 
 ```AzureCLI
 username=$(az account show --query user.name --output tsv)
@@ -217,30 +217,30 @@ A AADLoginForWindows-bővítményt sikeresen kell telepíteni ahhoz, hogy a virt
    C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.ActiveDirectory.AADLoginForWindows\0.3.1.0. 
 
    > [!NOTE]
-   > Ha a bővítmény a kezdeti hiba után újraindul, a rendszer a telepítési hibát tartalmazó naplót CommandExecution_YYYYMMDDHHMMSSSSS. log néven menti. 
+   > Ha a bővítmény a kezdeti hiba után újraindul, a rendszer a központi telepítési hibát tartalmazó naplót CommandExecution_YYYYMMDDHHMMSSSSS. log néven menti. 
 
 1. Nyisson meg egy parancssort a virtuális gépen, és ellenőrizze ezeket a lekérdezéseket az Azure-gazdagépen futó Instance Metadata Service (IMDS) végponton:
 
    | Futtatandó parancs | Várt kimenet |
    | --- | --- |
-   | Curl-H metaadatok: true "http://169.254.169.254/metadata/instance?api-version=2017-08-01 " | Az Azure-beli virtuális géppel kapcsolatos adatok javítása |
-   | Curl-H metaadatok: true "http://169.254.169.254/metadata/identity/info?api-version=2018-02-01 " | Az Azure-előfizetéshez társított érvényes bérlői azonosító |
-   | Curl-H metaadatok: true "http://169.254.169.254/metadata/identity/oauth2/token?resource=urn:ms-drs:enterpriseregistration.windows.net&api-version=2018-02-01 " | A virtuális géphez hozzárendelt felügyelt identitás Azure Active Directory által kiállított érvényes hozzáférési jogkivonat |
+   | Curl-H metaadatok: true "http://169.254.169.254/metadata/instance?api-version=2017-08-01" | Az Azure-beli virtuális géppel kapcsolatos adatok javítása |
+   | Curl-H metaadatok: true "http://169.254.169.254/metadata/identity/info?api-version=2018-02-01" | Az Azure-előfizetéshez társított érvényes bérlői azonosító |
+   | Curl-H metaadatok: true "http://169.254.169.254/metadata/identity/oauth2/token?resource=urn:ms-drs:enterpriseregistration.windows.net&api-version=2018-02-01" | A virtuális géphez hozzárendelt felügyelt identitás Azure Active Directory által kiállított érvényes hozzáférési jogkivonat |
 
    > [!NOTE]
    > A hozzáférési jogkivonat dekódolható egy olyan eszköz használatával, mint a [http://calebb.net/](http://calebb.net/). Ellenőrizze, hogy a hozzáférési jogkivonat "AppID" egyezik-e a virtuális géphez hozzárendelt felügyelt identitással.
 
 1. Győződjön meg arról, hogy a szükséges végpontok elérhetők a virtuális gépről a parancssor használatával:
    
-   - Curl https://login.microsoftonline.com/ -D –
-   - Curl https://login.microsoftonline.com/`<TenantID>` /-D –
+   - Curl https://login.microsoftonline.com/-D –
+   - Curl https://login.microsoftonline.com/`<TenantID>`/-D –
 
    > [!NOTE]
    > Cserélje le a `<TenantID>`t az Azure-előfizetéshez társított Azure AD-bérlői AZONOSÍTÓra.
 
-   - Curl https://enterpriseregistration.windows.net/ -D-
-   - Curl https://device.login.microsoftonline.com/ -D-
-   - Curl https://pas.windows.net/ -D-
+   - Curl https://enterpriseregistration.windows.net/-D-
+   - Curl https://device.login.microsoftonline.com/-D-
+   - Curl https://pas.windows.net/-D-
 
 1. Az eszköz állapotát `dsregcmd /status`futtatásával lehet megtekinteni. A cél az eszköz állapota `AzureAdJoined : YES`megjelenítéséhez.
 
@@ -251,7 +251,7 @@ Ha a AADLoginForWindows bővítmény bizonyos hibakód esetén meghiúsul, a kö
 
 #### <a name="issue-1-aadloginforwindows-extension-fails-to-install-with-terminal-error-code-1007-and-exit-code--2145648574"></a>1\. probléma: a AADLoginForWindows bővítmény nem telepíthető a következő terminál-hibakódtal: "1007", kilépési kód:-2145648574.
 
-Ez a kilépési kód lefordítható a DSREG_E_MSI_TENANTID_UNAVAILABLE, mert a bővítmény nem tudja lekérdezni az Azure AD-bérlő adatait.
+Ez a kilépési kód DSREG_E_MSI_TENANTID_UNAVAILABLE, mert a bővítmény nem tudja lekérdezni az Azure AD-bérlő adatait.
 
 1. Ellenőrizze, hogy az Azure-beli virtuális gép lekérheti-e a TenantID a Instance Metadata Service.
 
@@ -263,19 +263,19 @@ Ez a kilépési kód lefordítható a DSREG_E_MSI_TENANTID_UNAVAILABLE, mert a b
 
 #### <a name="issue-2-aadloginforwindows-extension-fails-to-install-with-exit-code--2145648607"></a>2\. probléma: a AADLoginForWindows bővítmény nem telepíthető a következő kilépési kóddal:-2145648607
 
-Ez a kilépési kód a DSREG_AUTOJOIN_DISC_FAILED fordítja, mert a bővítmény nem tudja elérni a https://enterpriseregistration.windows.net végpontot.
+Ez a kilépési kód lefordítja a DSREG_AUTOJOIN_DISC_FAILED, mert a bővítmény nem tudja elérni a https://enterpriseregistration.windows.net végpontot.
 
 1. Ellenőrizze, hogy a szükséges végpontok elérhetők-e a virtuális gépről a parancssor használatával:
 
-   - Curl https://login.microsoftonline.com/ -D –
-   - Curl https://login.microsoftonline.com/`<TenantID>` /-D –
+   - Curl https://login.microsoftonline.com/-D –
+   - Curl https://login.microsoftonline.com/`<TenantID>`/-D –
    
    > [!NOTE]
    > Cserélje le a `<TenantID>`t az Azure-előfizetéshez társított Azure AD-bérlői AZONOSÍTÓra. Ha meg kell találnia a bérlő AZONOSÍTÓját, a fiók neve fölé helyezheti a címtár/bérlő AZONOSÍTÓját, vagy kiválaszthatja Azure Active Directory > Tulajdonságok > Directory-azonosító a Azure Portalban.
 
-   - Curl https://enterpriseregistration.windows.net/ -D-
-   - Curl https://device.login.microsoftonline.com/ -D-
-   - Curl https://pas.windows.net/ -D-
+   - Curl https://enterpriseregistration.windows.net/-D-
+   - Curl https://device.login.microsoftonline.com/-D-
+   - Curl https://pas.windows.net/-D-
 
 1. Ha a parancsok bármelyike meghiúsul "a gazdagép `<URL>`feloldása" művelettel, próbálja meg futtatni ezt a parancsot a virtuális gép által használt DNS-kiszolgáló meghatározásához.
    
@@ -312,7 +312,7 @@ Ha a következő hibaüzenet jelenik meg, amikor távoli asztali kapcsolattal ke
 
 ![A fiókja úgy van konfigurálva, hogy megakadályozza az eszköz használatát.](./media/howto-vm-sign-in-azure-ad-windows/rbac-role-not-assigned.png)
 
-Ellenőrizze, hogy konfigurálta-e a virtuális gép rendszergazdai felhasználónevét vagy a virtuális gép felhasználói bejelentkezési szerepkörét biztosító [RBAC házirendeket](https://docs.microsoft.com/azure/virtual-machines/linux/login-using-aad#configure-rbac-policy-for-the-virtual-machine) a virtuális géphez:
+Ellenőrizze, hogy konfigurálta-e a virtuális gép rendszergazdai felhasználónevét vagy a virtuális gép felhasználói bejelentkezési szerepkörét biztosító [RBAC házirendeket](../../virtual-machines/linux/login-using-aad.md) a virtuális géphez:
  
 #### <a name="unauthorized-client"></a>Jogosulatlan ügyfél
 
@@ -343,5 +343,5 @@ Ha olyan feltételes hozzáférési szabályzatot állított be, amelyhez MFA sz
 
 Ossza meg visszajelzését erről az előzetes verziójú szolgáltatásról, vagy jelentse a problémát az [Azure ad visszajelzési fórumának](https://feedback.azure.com/forums/169401-azure-active-directory?category_id=166032)használatával.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 További információ a Azure Active Directoryről: [Mi az Azure Active Directory](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis)

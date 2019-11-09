@@ -1,6 +1,6 @@
 ---
 title: Webszolgáltatások kezelése API Management használatával
-titleSuffix: ML Studio (classic) Azure
+titleSuffix: ML Studio (classic) - Azure
 description: Egy útmutató, amely bemutatja, hogyan kezelhetők a AzureML webszolgáltatások a API Management használatával. A REST API-végpontok kezelése a felhasználói hozzáférés, a használat szabályozásának és az irányítópultok figyelésének definiálásával.
 services: machine-learning
 ms.service: machine-learning
@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 11/03/2017
-ms.openlocfilehash: 227a7205788194cc507dcd9dab7e5cad57abc7f9
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 084f3a1ecc7e44dc404d63a75b4561f8d5cb57cb
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73671578"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73839814"
 ---
 # <a name="manage-azure-machine-learning-studio-classic-web-services-using-api-management"></a>Azure Machine Learning Studio (klasszikus) webszolgáltatások kezelése API Management használatával
 ## <a name="overview"></a>Áttekintés
@@ -29,13 +29,13 @@ Az útmutató elvégzéséhez a következőkre lesz szüksége:
 
 * Egy Azure-fiók.
 * Egy AzureML-fiók.
-* Egy webszolgáltatásként üzembe helyezett AzureML-kísérlet munkaterülete, szolgáltatása és api_key. A AzureML-kísérletek létrehozásával kapcsolatos részletekért tekintse meg a [Studio](create-experiment.md)rövid útmutatóját. A studiók (klasszikus) webszolgáltatásként történő üzembe helyezésével kapcsolatos információkért tekintse meg a [Studio üzembe helyezési útmutatója](deploy-a-machine-learning-web-service.md) című témakört, amely azt ismerteti, hogyan lehet webszolgáltatásként üzembe helyezni egy AzureML-kísérletet. Másik lehetőségként az "A" függelék utasításokat tartalmaz egy egyszerű AzureML-kísérlet létrehozásához és teszteléséhez, és webszolgáltatásként való üzembe helyezéséhez.
+* Webszolgáltatásként üzembe helyezett AzureML-kísérlet munkaterülete, szolgáltatása és api_key. A AzureML-kísérletek létrehozásával kapcsolatos részletekért tekintse meg a [Studio](create-experiment.md)rövid útmutatóját. A studiók (klasszikus) webszolgáltatásként történő üzembe helyezésével kapcsolatos információkért tekintse meg a [Studio üzembe helyezési útmutatója](deploy-a-machine-learning-web-service.md) című témakört, amely azt ismerteti, hogyan lehet webszolgáltatásként üzembe helyezni egy AzureML-kísérletet. Másik lehetőségként az "A" függelék utasításokat tartalmaz egy egyszerű AzureML-kísérlet létrehozásához és teszteléséhez, és webszolgáltatásként való üzembe helyezéséhez.
 
 ## <a name="create-an-api-management-instance"></a>API Management-példány létrehozása
 
 A Azure Machine Learning webszolgáltatását API Management példánnyal kezelheti.
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
+1. Bejelentkezés az [Azure Portalra](https://portal.azure.com).
 2. Válassza a **+ Erőforrás létrehozása** lehetőséget.
 3. A keresőmezőbe írja be az "API Management" kifejezést, majd válassza az "API Management" erőforrást.
 4. Kattintson a **Létrehozás** elemre.
@@ -166,7 +166,7 @@ A művelet meghívása után a fejlesztői portál megjeleníti a **kért URL-c�
 
 ## <a name="appendix-a---creating-and-testing-a-simple-azureml-web-service"></a>A függelék – egyszerű AzureML webszolgáltatás létrehozása és tesztelése
 ### <a name="creating-the-experiment"></a>A kísérlet létrehozása
-Az alábbiakban egy egyszerű AzureML-kísérlet létrehozásának és webszolgáltatásként történő üzembe helyezésének lépései láthatók. A webszolgáltatás a tetszőleges szövegű oszlopot adja meg, és az egész számként megjelenített szolgáltatások készletét adja vissza. Például:
+Az alábbiakban egy egyszerű AzureML-kísérlet létrehozásának és webszolgáltatásként történő üzembe helyezésének lépései láthatók. A webszolgáltatás a tetszőleges szövegű oszlopot adja meg, és az egész számként megjelenített szolgáltatások készletét adja vissza. Példa:
 
 | Szöveg | Kivonatos szöveg |
 | --- | --- |
@@ -216,11 +216,11 @@ A kísérlet közzétételéhez kattintson az **Igen** gombra.
 ### <a name="test-the-web-service"></a>Webszolgáltatás tesztelése
 Egy AzureML webszolgáltatás RSS (kérés/válasz szolgáltatás) és BES (batch-végrehajtási szolgáltatás) végpontokból áll. Az RSS szinkron végrehajtásra szolgál. A BES aszinkron feladatok végrehajtásához használható. Ha a webszolgáltatást az alábbi példa Python-forrással szeretné tesztelni, előfordulhat, hogy le kell töltenie és telepítenie kell a Pythonhoz készült Azure SDK-t (lásd: a [Python telepítése](/azure/python/python-sdk-azure-install)).
 
-Emellett szüksége lesz az alábbi mintakód **munkaterületére**, **szolgáltatására**és **api_key** is. A munkaterületet és a szolgáltatást úgy keresheti meg, hogy a kísérletet a webszolgáltatás irányítópultján a **kérelem/válasz** vagy a **kötegelt végrehajtás** lehetőségre kattint.
+Szüksége lesz az alábbi mintakód **munkaterületére**, **szolgáltatására**és **api_keyére** is. A munkaterületet és a szolgáltatást úgy keresheti meg, hogy a kísérletet a webszolgáltatás irányítópultján a **kérelem/válasz** vagy a **kötegelt végrehajtás** lehetőségre kattint.
 
 ![Keresés-munkaterület-és-szolgáltatás](./media/manage-web-service-endpoints-using-api-management/find-workspace-and-service.png)
 
-A **api_key** megkereséséhez kattintson a kísérletre a webszolgáltatás irányítópultján.
+A **api_key** a webszolgáltatás irányítópultján a kísérletre kattintva érheti el.
 
 ![Keresés-API-kulcs](./media/manage-web-service-endpoints-using-api-management/find-api-key.png)
 
@@ -241,7 +241,7 @@ Látni fog valami hasonlót
 ##### <a name="sample-code"></a>Mintakód
 Az ERŐFORRÁSREKORDOK tesztelésének egy másik módja az ügyfél kódja. Ha a **kérelem/válasz** elemre kattint az irányítópulton, és az aljára görget, megjelenik a Python C#és az R mintakód. Megtekintheti az ERŐFORRÁSREKORDOK szintaxisát is, beleértve a kérelem URI-JÁT, fejléceit és törzsét.
 
-Ez az útmutató egy működő Python-példát mutat be. A kísérlet **munkaterületével**, **szolgáltatásával**és **api_key** kell módosítania.
+Ez az útmutató egy működő Python-példát mutat be. Módosítania kell a kísérlet **munkaterületével**, **szolgáltatásával**és **api_keyával** .
 
     import urllib2
     import json
@@ -273,7 +273,7 @@ Ez az útmutató egy működő Python-példát mutat be. A kísérlet **munkater
 #### <a name="test-bes-endpoint"></a>BES-végpont tesztelése
 Kattintson a **Batch-végrehajtás** elemre az irányítópulton, és görgessen a lap aljára. Megjelenik a, a Python és C#az R mintakód. Emellett a BES-kérelmek szintaxisát is megtekintheti a feladatok elküldéséhez, a feladatok elindításához, a feladatok állapotának vagy eredményének lekéréséhez, valamint a feladatok törléséhez.
 
-Ez az útmutató egy működő Python-példát mutat be. A kísérlet **munkaterületével**, **szolgáltatásával**és **api_key** kell módosítania. Emellett módosítania kell a Storage- **fiók nevét**, a **Storage-fiók kulcsát**és a **Storage-tároló nevét**. Végül a **bemeneti fájl** helyét és a **kimeneti fájl**helyét is módosítania kell.
+Ez az útmutató egy működő Python-példát mutat be. A kísérlet **munkaterületével**, **szolgáltatásával**és **api_keyával** kell módosítania. Emellett módosítania kell a Storage- **fiók nevét**, a **Storage-fiók kulcsát**és a **Storage-tároló nevét**. Végül a **bemeneti fájl** helyét és a **kimeneti fájl**helyét is módosítania kell.
 
     import urllib2
     import json

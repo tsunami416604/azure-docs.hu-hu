@@ -8,12 +8,12 @@ author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.date: 04/30/2019
-ms.openlocfilehash: 5ababe9eb1f680378e882970df2d0b008287a7c4
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: 6aa721ee6cf6680518a28d050c22d8649f0f531f
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72241717"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73833172"
 ---
 # <a name="quickstart-deploy-the-ansible-solution-template-for-azure-to-centos"></a>Gyors útmutató: az Azure Ansible-megoldási sablonjának üzembe helyezése a CentOS-ben
 
@@ -39,8 +39,8 @@ Az Azure Ansible-megoldási sablonja úgy lett kialakítva, hogy egy Ansible-pé
 
 1. A **Ansible létrehozása** lapon több lap jelenik meg. Az **alapvető beállítások** lapon adja meg a szükséges adatokat:
 
-   - **Név** – adja meg a Ansible-példány nevét. Bemutató célból a `ansiblehost` nevet használja a rendszer.
-   - **Felhasználónév:** -adja meg azt a felhasználónevet, amelynek hozzáférése lesz a Ansible-példányhoz. Bemutató célból a `ansibleuser` nevet használja a rendszer.
+   - **Név** – adja meg a Ansible-példány nevét. Bemutató célokra a `ansiblehost` nevet használjuk.
+   - **Felhasználónév:** -adja meg azt a felhasználónevet, amelynek hozzáférése lesz a Ansible-példányhoz. Bemutató célokra a `ansibleuser` nevet használjuk.
    - **Hitelesítés típusa:** válassza a **jelszó** vagy az **SSH nyilvános kulcs**lehetőséget. Bemutató céljára az **SSH nyilvános kulcs** van kiválasztva.
    - **Jelszó és jelszó** **megerősítése** – ha a **Hitelesítés típusa**beállításnál a **jelszó** lehetőséget választja, adja meg a jelszót ezekhez az értékekhez.
    - **Nyilvános SSH-kulcs** – ha a **hitelesítéshez**a **nyilvános SSH-kulcs** lehetőséget választja, adja meg az RSA nyilvános kulcsát az egysoros formátumban – kezdve a következővel: `ssh-rsa`.
@@ -58,9 +58,9 @@ Az Azure Ansible-megoldási sablonja úgy lett kialakítva, hogy egy Ansible-pé
    - Virtuálisgép- **lemez típusa** – válassza az **SSD** (prémium SSD-meghajtó) vagy a **HDD** (merevlemez-meghajtó) lehetőséget. Bemutató céljára az **SSD** a teljesítménybeli előnyökre van kiválasztva. Az ilyen típusú lemezes tárolással kapcsolatos további információkért tekintse meg a következő cikkeket:
        - [Virtuális gépekhez való nagy teljesítményű Premium Storage és felügyelt lemezek](/azure/virtual-machines/windows/premium-storage)
        - [standard SSD Managed Disks Azure-beli virtuális gépek számítási feladataihoz](/azure/virtual-machines/windows/disks-standard-ssd)
-   - **Nyilvános IP-cím** – ezt a beállítást akkor válassza, ha a virtuális gépen kívülről szeretne kommunikálni a virtuális géppel. Az alapértelmezett érték egy új nyilvános IP-cím, amelynek neve `ansible-pip`. Másik IP-cím megadásához válassza a nyílra az adott IP-cím attribútumait, például a nevét, az SKU-t és a hozzárendelést. 
-   - **Tartománynév felirata** – adja meg a virtuális gép nyilvános tartománynevét. A névnek egyedinek kell lennie, és meg kell felelnie a névadási követelményeknek. A virtuális gép nevének megadásával kapcsolatos további információkért lásd: az [Azure-erőforrások elnevezési konvenciói](/azure/architecture/best-practices/naming-conventions).
-   - **Ansible verziója** – a legújabb verzió telepítéséhez adjon meg egy verziószámot vagy `latest` értéket. Az elérhető verziókról további információt a **Ansible verziója** melletti információ ikonra kattintva talál.
+   - **Nyilvános IP-cím** – ezt a beállítást akkor válassza, ha a virtuális gépen kívülről szeretne kommunikálni a virtuális géppel. Az alapértelmezett érték egy új nyilvános IP-cím, amelynek a neve `ansible-pip`. Másik IP-cím megadásához válassza a nyílra az adott IP-cím attribútumait, például a nevét, az SKU-t és a hozzárendelést. 
+   - **Tartománynév felirata** – adja meg a virtuális gép nyilvános tartománynevét. A névnek egyedinek kell lennie, és meg kell felelnie a névadási követelményeknek. A virtuális gép nevének megadásával kapcsolatos további információkért lásd: az [Azure-erőforrások elnevezési konvenciói](/azure/architecture/best-practices/resource-naming).
+   - **Ansible verziója** – megadhatja a verziószámot vagy a `latest` értéket a legújabb verzió telepítéséhez. Az elérhető verziókról további információt a **Ansible verziója** melletti információ ikonra kattintva talál.
 
      ![Azure Portal lapon a további beállítások Ansible](./media/ansible-quick-deploy-solution-template/portal-ansible-setup-tab-2.png)
 
@@ -86,7 +86,7 @@ Az Azure Ansible-megoldási sablonja úgy lett kialakítva, hogy egy Ansible-pé
 
 1. Az erőforráscsoport lapon szerezze be a Ansible-gazdagép IP-címét, és jelentkezzen be az Azure-erőforrások kezeléséhez a Ansible használatával.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"] 
 > [Gyors útmutató: linuxos virtuális gép konfigurálása az Azure-ban az Ansible használatával](/azure/virtual-machines/linux/ansible-create-vm)

@@ -1,7 +1,7 @@
 ---
-title: Nem támogatott nyelvet központi telepítések – egyéni fordító
+title: Nem támogatott nyelvi telepítések – egyéni fordító
 titleSuffix: Azure Cognitive Services
-description: Nem támogatott nyelvet párok egyéni a fordítót a telepítésének módjáról.
+description: Ez a cikk bemutatja, hogyan helyezhet üzembe nem támogatott nyelvi párokat az Azure Cognitive Services Custom Translator szolgáltatásban.
 services: cognitive-services
 author: swmachan
 manager: nitinme
@@ -10,51 +10,51 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 04/24/2019
 ms.author: swmachan
-ms.openlocfilehash: 284a7e98c088edb73a2c770a4c14bb0a479a6621
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 3c5c74fc853b5a2425a58e1704aad43350cba212
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67436066"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73837449"
 ---
 # <a name="unsupported-language-deployments"></a>Nem támogatott nyelvű környezetek
 
 <!--Custom Translator provides the highest-quality translations possible using the latest techniques in neural machine learning. While Microsoft intends to make neural training available in all languages, there are some limitations that prevent us from being able to offer neural machine translation in all language pairs.-->  
 
-A Microsoft Translator Hub kivezetésre, a Microsoft undeploying a hubon keresztül a jelenleg telepített összes modellt fog lehet. A legtöbb felhasználó rendelkezik a modellek üzembe helyezve az agyban, amelynek nyelvi párokat az egyéni a fordítót nem támogatottak.  Szükségünk ebben a helyzetben felhasználók számára, hogy nem fordíthatók le mindkét irányba tartalmaihoz.
+A Microsoft Translator hub közelgő kivezetésével a Microsoft a központon keresztül jelenleg üzembe helyezett összes modellt törli. Számos olyan modell van telepítve a központban, amelynek nyelvi párjai nem támogatottak az egyéni fordítóban.  Ebben a helyzetben nem szeretnénk, hogy a felhasználók ne legyenek felhasználva a tartalmuk fordítására.
 
-Most már van egy folyamat, amely lehetővé teszi, hogy a nem támogatott az egyéni a fordítót a modellek üzembe helyezése.  Ez a folyamat lehetővé teszi, hogy a legújabb V3 API-val tartalmak lefordítása.  Ezek a modellek üzemeltetett úgy dönt, hogy megszüntetheti őket, illetve a nyelvi pár egyéni a fordítót az elérhetővé válik.  Ez a cikk ismerteti a folyamatot nem támogatott nyelvet párokat a modellek üzembe helyezése.
+Most már van egy olyan folyamat, amely lehetővé teszi a nem támogatott modellek üzembe helyezését az egyéni fordítón keresztül.  Ez a folyamat lehetővé teszi, hogy a legújabb V3 API-val továbbra is lefordítsa a tartalmakat.  Ezeket a modelleket a rendszer addig üzemelteti, amíg meg nem adja az üzembe helyezést, vagy a nyelvi pár elérhetővé válik az egyéni fordítóban.  Ez a cikk a modellek nem támogatott nyelvi párokkal való üzembe helyezésének folyamatát ismerteti.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ahhoz, hogy a modellek jelöltek a központi telepítés rendszer a következő feltételeknek kell megfelelniük:
-* A projektet, amely tartalmazza a modellt kell át lettek telepítve a központi menü az egyéni Translator az áttelepítési eszköz használata.  A folyamat a áttelepítése projektek és munkaterületek található [Itt](how-to-migrate.md).
-* A modell az üzembe helyezett állapotban kell lennie, ha az áttelepítés történik.  
-* A modell nyelvi a két egyéni a fordítót a nem támogatott nyelvet párjának kell lennie.  Nyelvi párok, amelyben, vagy az angol nyelv támogatott, de maga a pár nem tartalmazza a angol nyelven, nem támogatott nyelvet központi telepítések a deduplikációra.  Például egy Eseményközpont modell egy francia, német nyelvű pár nem támogatott nyelvet pár még akkor is, azonban francia angol és német vannak az angol nyelvű támogatott nyelvi párjának tekinthető.
+Ahhoz, hogy a modellek központi telepítésre legyenek kijelöltek, a következő feltételeknek kell megfelelniük:
+* A modellt tartalmazó projektet át kell telepíteni a központból az egyéni Fordítóba az áttelepítési eszköz használatával.  A projektek és munkaterületek áttelepítésének folyamata [itt](how-to-migrate.md)található.
+* A modellnek központilag telepített állapotban kell lennie, amikor az áttelepítés történik.  
+* A modell nyelvi párja nem támogatott nyelvi pár kell, hogy legyen az egyéni fordítóban.  Nyelvi párok, amelyekben a nyelv az angoltól vagy az angoltól támogatott, de a pár nem tartalmazza az angol nyelvet, a nem támogatott nyelvi telepítésekre jelöltek.  Egy francia – német nyelvű pár hub-modell például nem támogatott nyelvi pár, bár francia – angol, angol és német nyelven is támogatott nyelvi pár.
 
-## <a name="process"></a>Process
-A központi menü, amely alkalmas jelöltek az üzembe helyezési modellek áttelepítette, ha megtalálja a a **beállítások** a munkaterülethez, majd legörget az oldal, ahol láthatja az utolsó oldalán egy **nem támogatott Translator Hub Betanítások** szakaszban.  Ez a szakasz csak akkor jelenik meg, ha rendelkezik, amely megfelel a fenti előfeltételeknek projektek.
+## <a name="process"></a>Folyamat
+Miután áttelepítette a modelleket az üzembe helyezésre jelölt központból, megkeresheti őket a munkaterület **Beállítások** lapján, és görgetheti az oldal végére, ahol megjelenik a nem **támogatott Translator hub tréningek** szakasz.  Ez a szakasz csak akkor jelenik meg, ha olyan projektekkel rendelkezik, amelyek megfelelnek a fent említett előfeltételeknek.
 
-![A Hub áttelepítése](media/unsupported-language-deployments/unsupported-translator-hub-trainings.jpg)
+![Áttelepítés az elosztóról](media/unsupported-language-deployments/unsupported-translator-hub-trainings.jpg)
 
-Belül a **nem támogatott a fordító Hub Betanítások** kiválasztása lapon a **nem kért betanítások** lap tartalmaz, amelyek jogosultak az üzembe helyezési modellek.  Válassza ki a modellek üzembe helyezése és a egy kérelmet küldeni szeretné.   A április 30 telepítési határidő előtt annyi modellek üzembe helyezéshez igény szerint is választhat.
+A nem **támogatott Translator hub tréningek** kiválasztási lapján a nem **kérelmezett képzések** lap az üzembe helyezésre jogosult modelleket tartalmazza.  Válassza ki a telepíteni kívánt modelleket, és küldje el a kérést.   A 30. áprilisi üzembe helyezési határidő előtt annyi modellt választhat, amennyit csak szeretne üzembe helyezéshez.
  
-![A Hub áttelepítése](media/unsupported-language-deployments/unsupported-translator-hub-trainings-list.jpg)
+![Áttelepítés az elosztóról](media/unsupported-language-deployments/unsupported-translator-hub-trainings-list.jpg)
 
-Elküldve, ha a modell már nem elérhető a **nem kért betanítások** lapra, és ehelyett jelennek meg a **betanítások kért** fülre.  A kért betanítások bármikor tekintheti meg.
+Az elküldés után a modell többé nem lesz elérhető a nem **kérelmezett képzések** lapon, és ehelyett a **kért képzések** lapon fog megjelenni.  A kért képzések bármikor megtekinthetők.
 
-![A Hub áttelepítése](media/unsupported-language-deployments/request-unsupported-trainings.jpg) 
+![Áttelepítés az elosztóról](media/unsupported-language-deployments/request-unsupported-trainings.jpg) 
 
 ## <a name="whats-next"></a>A következő lépések
 
-A modellek üzembe helyezéshez kiválasztott lesznek mentve, miután a Hub le van szerelve, és minden modell nem telepített.  Nem támogatott modellek üzembe helyezéséhez kéréseket küldhetnek a május 24-ig rendelkezik.  Ezen modellek június 15 ekkor azok lesz elérhető a Translator V3 API-n keresztül helyezzük üzembe.  Emellett akkor lesz elérhető a V2 API-n keresztül. július 1-ig.  
+A központi telepítéshez kiválasztott modelleket a rendszer a központ leszerelése és az összes modell üzembe helyezése után menti.  A nem támogatott modellek üzembe helyezésére vonatkozó kérések elküldésére május 24-én van lehetőség.  Ezeket a modelleket június 15-én fogjuk üzembe helyezni, ekkor a Translator V3 API-n keresztül lesznek elérhetők.  Ezen kívül a v2 API-n keresztül lesznek elérhetők az 1. július 1-jéig.  
 
-Fontos dátumokat a Hub ellenőrzés kivonásával kapcsolatban további információért [Itt](https://www.microsoft.com/translator/business/hub/).
-Miután az üzembe helyezett, normál szolgáltatási díjakat számolunk fel.  Lásd: [díjszabás](https://azure.microsoft.com/pricing/details/cognitive-services/translator-text-api/) részleteiről.  
+További információ a központ elavulása a fontos dátumokról [itt](https://www.microsoft.com/translator/business/hub/)található.
+Az üzembe helyezést követően a szokásos üzemeltetési díjak érvényesek.  A részletekért tekintse meg a [díjszabást](https://azure.microsoft.com/pricing/details/cognitive-services/translator-text-api/) .  
 
-Szabványos, egyéni a fordítót modelleket eltérően Hub modellek csak lesz elérhető régióban, így többrégiós szolgáltatási díjakat számolunk fel nem.  Miután üzembe helyezte lesz a Hub modell az áttelepített egyéni a fordítót projekten keresztül bármikor visszavonhatja annak üzembe helyezését.
+A standard egyéni fordítói modellektől eltérően a hub-modellek csak egyetlen régióban lesznek elérhetők, így a többrégiós üzemeltetési díjak nem lesznek érvényesek.  A üzembe helyezést követően bármikor megkezdheti a hub-modell üzembe helyezését az áttelepített egyéni Translator projekten keresztül.
 
 ## <a name="next-steps"></a>További lépések
 
-- [A modell betanítását](how-to-train-model.md).
-- Az üzembe helyezett egyéni fordítási modellben keresztül használatának megkezdéséhez [Microsoft Translator Text API v3-as](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate?tabs=curl).
+- [Modell betanítása](how-to-train-model.md).
+- Az üzembe helyezett egyéni fordítási modell használatának megkezdése a [Microsoft Translator Text API v3](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate?tabs=curl)segítségével.

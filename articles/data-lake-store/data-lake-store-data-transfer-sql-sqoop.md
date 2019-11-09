@@ -1,5 +1,5 @@
 ---
-title: Adatmásolás a Azure Data Lake Storage Gen1 és az Azure SQL Database között a Sqoop használatával | Microsoft Docs
+title: Adatmásolás Data Lake Storage Gen1 és az Azure SQL-Sqoop között | Microsoft Docs
 description: Az Sqoop használata Azure SQL Database és Azure Data Lake Storage Gen1 közötti adatmásoláshoz
 services: data-lake-store
 author: twooley
@@ -7,12 +7,12 @@ ms.service: data-lake-store
 ms.topic: conceptual
 ms.date: 07/30/2019
 ms.author: twooley
-ms.openlocfilehash: 22789deca0934a9d4e88d587cd24aacacc9b12c6
-ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
+ms.openlocfilehash: cf3893706afcb4c4cc5b90dd3d2431ecedc71d0a
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68620005"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73839060"
 ---
 # <a name="copy-data-between-data-lake-storage-gen1-and-azure-sql-database-using-sqoop"></a>Adatmásolás Data Lake Storage Gen1 és Azure SQL Database között az Sqoop használatával
 
@@ -69,7 +69,7 @@ Mielőtt elkezdené, a következőkkel kell rendelkeznie:
 
 ## <a name="use-sqoop-from-an-hdinsight-cluster-with-access-to-data-lake-storage-gen1"></a>Sqoop használata egy HDInsight-fürtről Data Lake Storage Gen1hoz való hozzáféréssel
 
-An méretű HDInsight fürt már rendelkezik elérhető Sqoop-csomagokkal. Ha úgy konfigurálta a HDInsight-fürtöt, hogy a Data Lake Storage Gen1 további tárterületként használja, akkor a Sqoop (konfiguráció módosítása nélkül) a kapcsolati adatbázis, például a Azure SQL Database és egy Data Lake Storage Gen1 fiók közötti importáláshoz/exportáláshoz használhatja. .
+An méretű HDInsight fürt már rendelkezik elérhető Sqoop-csomagokkal. Ha úgy konfigurálta a HDInsight-fürtöt, hogy a Data Lake Storage Gen1 további tárterületként használja, akkor a Sqoop (konfiguráció módosítása nélkül) a kapcsolati adatbázis, például a Azure SQL Database és egy Data Lake Storage Gen1 fiók közötti importáláshoz/exportáláshoz használhatja.
 
 1. Ebben a cikkben feltételezzük, hogy létrehozott egy Linux-fürtöt, hogy az SSH használatával csatlakozzon a fürthöz. Lásd: [Kapcsolódás Linux-alapú HDInsight-fürthöz](../hdinsight/hdinsight-hadoop-linux-use-ssh-unix.md).
 
@@ -81,7 +81,7 @@ An méretű HDInsight fürt már rendelkezik elérhető Sqoop-csomagokkal. Ha ú
 
 ### <a name="import-data-from-azure-sql-database-into-data-lake-storage-gen1"></a>Adatok importálása Azure SQL Databaseból a Data Lake Storage Gen1ba
 
-1. Navigáljon ahhoz a könyvtárhoz, ahol elérhetők a Sqoop-csomagok. Ez a hely `/usr/hdp/<version>/sqoop/bin`általában a következő:.
+1. Navigáljon ahhoz a könyvtárhoz, ahol elérhetők a Sqoop-csomagok. Ez a hely általában `/usr/hdp/<version>/sqoop/bin`.
 
 1. Importálja a **tábla1** adatait a Data Lake Storage Gen1-fiókba. Használja a következő szintaxist:
 
@@ -93,7 +93,7 @@ An méretű HDInsight fürt már rendelkezik elérhető Sqoop-csomagokkal. Ha ú
 
        sqoop-import --connect "jdbc:sqlserver://mysqoopserver.database.windows.net:1433;username=twooley@mysqoopserver;password=<password>;database=mysqoopdatabase" --table Table1 --target-dir adl://myadlsg1store.azuredatalakestore.net/Sqoop/SqoopImportTable1
 
-1. Győződjön meg arról, hogy az adatátvitelt a Data Lake Storage Gen1 fiókba. Futtassa a következő parancsot:
+1. Győződjön meg arról, hogy az adatátvitelt a Data Lake Storage Gen1 fiókba. Futtassa az alábbi parancsot:
 
        hdfs dfs -ls adl://hdiadlsg1store.azuredatalakestore.net/Sqoop/SqoopImportTable1/
 

@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 10/21/2019
 ms.custom: seodec18
-ms.openlocfilehash: 97265a83a73d45f45a4bd1183df61521f4ca29bf
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: e660db5db3d1afc14a3c895e6786d1b6a8b82c13
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72989689"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73832424"
 ---
 # <a name="data-querying"></a>Adatok lekérdezése
 
@@ -39,9 +39,9 @@ A következő alapvető API-k támogatottak.
 
 A következő környezeti API-k érhetők el:
 
-* A [környezeti API beolvasása](https://docs.microsoft.com/rest/api/time-series-insights/preview-env#get-environments-api): azon környezetek listáját adja vissza, amelyekhez a hívó jogosult az elérésére.
-* [Környezet rendelkezésre állási API-k beolvasása](https://docs.microsoft.com/rest/api/time-series-insights/preview-env#get-environment-availability-api): az esemény időbélyegének `$ts` az események számának eloszlását adja vissza. Ez az API segít meghatározni, hogy vannak-e események az időbélyegen az események számának visszaadásával, ha vannak ilyenek.
-* [Event Schema API beolvasása](https://docs.microsoft.com/rest/api/time-series-insights/preview-env#get-event-schema-api): egy adott keresési span esemény-séma metaadatainak beolvasása. Ez az API segít beolvasni a sémában elérhető összes metaadatot és tulajdonságot a megadott keresési tartományhoz.
+* A [környezeti API beolvasása](/rest/api/time-series-insights/management/environments/get): azon környezetek listáját adja vissza, amelyekhez a hívó jogosult az elérésére.
+* [Környezet rendelkezésre állási API-k beolvasása](/rest/api/time-series-insights/dataaccess(preview)/query/getavailability): az esemény időbélyegének `$ts`az események számának eloszlását adja vissza. Ez az API segít meghatározni, hogy vannak-e események az időbélyegen az események számának visszaadásával, ha vannak ilyenek.
+* [Event Schema API beolvasása](/rest/api/time-series-insights/dataaccess(preview)/query/geteventschema): egy adott keresési span esemény-séma metaadatainak beolvasása. Ez az API segít beolvasni a sémában elérhető összes metaadatot és tulajdonságot a megadott keresési tartományhoz.
 
 ## <a name="time-series-model-query-tsm-q-apis"></a>Time Series Model – Query (TSM-Q) API-k
 
@@ -58,20 +58,20 @@ A következő idősorozat-modell-lekérdezési API-k érhetők el. Ezen API-k t�
 
 A következő Time Series lekérdezési API-k érhetők el. Ezek az API-k a Time Series Insights összes támogatott többrétegű tárolóján elérhetők. A lekérdezés URL-paramétereinek használatával megadható, hogy a lekérdezés milyen [típusú tárolási típust](https://docs.microsoft.com/rest/api/time-series-insights/dataaccess(preview)/query/execute#uri-parameters) hajtson végre:
 
-* [Események beolvasása API](https://docs.microsoft.com/rest/api/time-series-insights/preview-query#get-events-api): lehetővé teszi Time Series Insights adatok lekérdezését és lekérését az eseményekről, amikor azokat Time Series Insights a forrás-szolgáltatótól rögzítik. Ez az API lehetővé teszi a nyers események lekérését egy adott idősorozat-azonosító és keresési tartomány számára. Ez az API támogatja a tördelést a kiválasztott bemenet teljes adatkészletének lekéréséhez. 
+* [Események beolvasása API](/rest/api/time-series-insights/dataaccess(preview)/query/execute#getevents): lehetővé teszi Time Series Insights adatok lekérdezését és lekérését az eseményekről, amikor azokat Time Series Insights a forrás-szolgáltatótól rögzítik. Ez az API lehetővé teszi a nyers események lekérését egy adott idősorozat-azonosító és keresési tartomány számára. Ez az API támogatja a tördelést a kiválasztott bemenet teljes adatkészletének lekéréséhez. 
 
-* [Series API beolvasása](https://docs.microsoft.com/rest/api/time-series-insights/preview-query#get-series-api): lehetővé teszi Time Series Insights adatok lekérdezését és lekérését a rögzített eseményekről a huzalon rögzített adatok használatával. A visszaadott értékek a modellben definiált változókon alapulnak, vagy beágyazottként vannak megadva. Ez az API támogatja a tördelést a kiválasztott bemenet teljes adatkészletének lekéréséhez. Ez az API segít a számított tulajdonságok vagy oszlopok definiálásában.
+* [Series API beolvasása](/rest/api/time-series-insights/dataaccess(preview)/query/execute#getseries): lehetővé teszi Time Series Insights adatok lekérdezését és lekérését a rögzített eseményekről a huzalon rögzített adatok használatával. A visszaadott értékek a modellben definiált változókon alapulnak, vagy beágyazottként vannak megadva. Ez az API támogatja a tördelést a kiválasztott bemenet teljes adatkészletének lekéréséhez. Ez az API segít a számított tulajdonságok vagy oszlopok definiálásában.
 
     >[!NOTE]
     > Az összesítési záradékot a rendszer figyelmen kívül hagyja, még akkor is, ha az egy modellben van megadva, vagy ha beágyazott.
 
   A Get Series API az egyes változók idősorozatának értékét adja vissza az egyes intervallumokhoz. Az idősorozat-érték olyan formátum, amelyet Time Series Insights a kimenet JSON-hoz a lekérdezésből. A visszaadott értékek az idősorozat-azonosító és a megadott változók halmazán alapulnak.
 
-* [Összesítő sorozat API](https://docs.microsoft.com/rest/api/time-series-insights/preview-query#aggregate-series-api): lehetővé teszi Time Series Insights adatok lekérdezését és lekérését a rögzített eseményekről mintavételezéssel és a rögzített adatok összesítésével. Ez az API a [folytatási jogkivonatok](https://docs.microsoft.com/rest/api/time-series-insights/dataaccess(preview)/query/execute#queryresultpage)használatával támogatja a folyamatos végrehajtást.
+* [Összesítő sorozat API](/rest/api/time-series-insights/dataaccess(preview)/query/execute#aggregatevariable): lehetővé teszi Time Series Insights adatok lekérdezését és lekérését a rögzített eseményekről mintavételezéssel és a rögzített adatok összesítésével. Ez az API a [folytatási jogkivonatok](https://docs.microsoft.com/rest/api/time-series-insights/dataaccess(preview)/query/execute#queryresultpage)használatával támogatja a folyamatos végrehajtást.
 
   Az összesítő sorozat API az egyes változók idősorozatának értékét adja vissza az egyes intervallumokhoz. Az értékek az idősorozat-azonosító és a megadott változók halmazán alapulnak. Az összesítő sorozat API az idősorozat-modellben tárolt változók használatával csökkenti az adatmennyiséget, vagy beágyazott vagy összegzett adatokat tartalmaz.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - További információ a [tárolásról és a bejövő](./time-series-insights-update-storage-ingress.md) forgalomról Azure Time Series Insights előzetes verzióban.
 - Olvassa el a Time Series Insights előzetes verziójának [adatmodellezési](./time-series-insights-update-tsm.md) cikkét.

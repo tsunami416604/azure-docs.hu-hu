@@ -1,31 +1,31 @@
 ---
-title: Az Azure Application Gateway több hely üzemeltetése
-description: Ez az oldal áttekintést az Azure Application Gateway többhelyes támogatásáról.
+title: Több webhely üzemeltetése az Azure Application Gateway
+description: Ez az oldal áttekintést nyújt az Azure Application Gateway többhelyes támogatásáról.
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.date: 1/16/2019
 ms.author: amsriva
 ms.topic: conceptual
-ms.openlocfilehash: d01ff17966d2e6b9aeaaf3c1f69817dbc84c3a6f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f2e50217b361b62a468e872fe489381911de9c2c
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "57792633"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73835352"
 ---
 # <a name="application-gateway-multiple-site-hosting"></a>Application Gateway – több hely üzemeltetése
 
-A többhelyes üzemeltetéssel egynél több webalkalmazást konfigurálhat ugyanazon az alkalmazásátjáró-példányon. Ezzel a funkcióval hatékonyabb topológiát az üzemelő példányok beállításához ad hozzá egy application gateway akár 100 webhelyet. Mindegyik webhelyet a saját háttérkészletéhez lehet irányítani. Az alábbi példában az alkalmazásátjáró a contoso.com és a fabrikam.com webhelyet szolgálja ki a ContosoServerPool és a FabrikamServerPool nevű háttér-kiszolgálókészlettel.
+A többhelyes üzemeltetéssel egynél több webalkalmazást konfigurálhat ugyanazon az alkalmazásátjáró-példányon. Ez a funkció lehetővé teszi, hogy hatékonyabb topológiát konfiguráljon az üzemelő példányokhoz, ha akár 100 webhelyet ad hozzá egy Application gatewayhez. Mindegyik webhelyet a saját háttérkészletéhez lehet irányítani. Az alábbi példában az alkalmazásátjáró a contoso.com és a fabrikam.com webhelyet szolgálja ki a ContosoServerPool és a FabrikamServerPool nevű háttér-kiszolgálókészlettel.
 
 ![imageURLroute](./media/application-gateway-multi-site-overview/multisite.png)
 
 > [!IMPORTANT]
 > A szabályok abban a sorrendben vannak feldolgozva, amelyben a portálon szerepelnek. Alapszintű figyelő konfigurálása előtt határozottan ajánlott többhelyes figyelőket konfigurálni.  Ez biztosítja, hogy a forgalom a megfelelő háttérbe legyen irányítva. Ha előbb egy alapszintű figyelő szerepel a listában, és az megfelel egy bejövő kérésnek, a figyelő feldolgozza azt.
 
-A http://contoso.com iránti kérelmek a ContosoServerPoolba, míg a http://fabrikam.com felé irányuló kérelmek a FabrikamServerPoolba vannak továbbítva.
+A `http://contoso.com` iránti kérelmek a ContosoServerPoolba, míg a `http://fabrikam.com` felé irányuló kérelmek a FabrikamServerPoolba vannak továbbítva.
 
-Hasonlóképpen, ugyanazon szülőtartomány két altartományát ugyanazon alkalmazásátjáró-telepítésről lehet üzemeltetni. Az altartományok használatának példái között lehet az egyetlen Application Gateway-telepítésen üzemeltetett http://blog.contoso.com és http://app.contoso.com.
+Hasonlóképpen, ugyanazon szülőtartomány két altartományát ugyanazon alkalmazásátjáró-telepítésről lehet üzemeltetni. Az altartományok használatának példái között lehet az egyetlen Application Gateway-telepítésen üzemeltetett `http://blog.contoso.com` és `http://app.contoso.com`.
 
 ## <a name="host-headers-and-server-name-indication-sni"></a>Állomásfejléc és kiszolgálónév jelzése (SNI)
 

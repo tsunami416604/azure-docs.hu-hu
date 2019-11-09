@@ -1,6 +1,6 @@
 ---
 title: 'Példa: Kickstart-kísérletek'
-titleSuffix: ML Studio (classic) Azure
+titleSuffix: ML Studio (classic) - Azure
 description: Megtudhatja, hogyan használhatók például a Machine learning-kísérletek új kísérletek létrehozására Azure AI Gallery és Azure Machine Learning Studio (klasszikus) használatával.
 services: machine-learning
 ms.service: machine-learning
@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18, previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 01/05/2018
-ms.openlocfilehash: fa23612070a5b0c1a33c2effb9cd9e533ca5eada
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 6b9f9e3cfc198610cf1f5f76b267ea52c551716a
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73670646"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73838645"
 ---
 # <a name="create-azure-machine-learning-studio-classic-experiments-from-working-examples-in-azure-ai-gallery"></a>Hozzon létre Azure Machine Learning Studio (klasszikus) kísérleteket a munkaAzure AI Galleryban működő példákból
 

@@ -1,73 +1,73 @@
 ---
-title: Üzembe helyezése Azure tűzfal-sablon használatával
-description: Üzembe helyezése Azure tűzfal-sablon használatával
+title: Azure Firewall üzembe helyezése sablon használatával
+description: Azure Firewall üzembe helyezése sablon használatával
 services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: article
 ms.date: 7/9/2018
 ms.author: victorh
-ms.openlocfilehash: b39174152e427e408e7dfbbc353baf5f96ec7c01
-ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
+ms.openlocfilehash: c0a6cda54a58e3cc03ba31e221fb57fc725dd779
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67657092"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73839389"
 ---
-# <a name="deploy-azure-firewall-using-a-template"></a>Üzembe helyezése Azure tűzfal-sablon használatával
+# <a name="deploy-azure-firewall-using-a-template"></a>Azure Firewall üzembe helyezése sablon használatával
 
-A [létrehozása AzureFirewall védőfal telepítő sablon](https://github.com/Azure/azure-quickstart-templates/tree/master/101-azurefirewall-with-zones-sandbox) a tesztelési hálózati környezet hoz létre tűzfalat. A hálózat egy virtuális hálózat (VNet) három alhálózattal rendelkezik: *AzureFirewallSubnet*, *ServersSubnet*, és *JumpboxSubnet*. A *ServersSubnet* és *JumpboxSubnet* minden egyes alhálózatnak rendelkeznie egy egyetlen, két mag a Windows Server virtuális gépet.
+A [AzureFirewall létrehozása – a homokozó telepítési sablon](https://github.com/Azure/azure-quickstart-templates/tree/master/101-azurefirewall-with-zones-sandbox) egy teszt hálózati környezetet hoz létre tűzfallal. A hálózat egy virtuális hálózattal (VNet) rendelkezik, amely három alhálózattal rendelkezik: *AzureFirewallSubnet*, *ServersSubnet*és *JumpboxSubnet*. A *ServersSubnet* és a *JumpboxSubnet* alhálózatnak egyetlen, kétmagos Windows Server rendszerű virtuális géppel kell rendelkeznie.
 
-A tűzfal van a *AzureFirewallSubnet* alhálózathoz, és rendelkezik az alkalmazás-szabálygyűjtemény egy szabályt, amely lehetővé teszi a hozzáférést a *www.microsoft.com*.
+A tűzfal a *AzureFirewallSubnet* alhálózatban található, és egy olyan szabály-gyűjteményt tartalmaz, amely lehetővé teszi a `www.microsoft.com`elérését.
 
-Egy felhasználó által megadott útvonalat mutat érkező hálózati forgalmat a *ServersSubnet* alhálózat a tűzfalon, ahol a tűzfalszabályok vannak alkalmazva.
+A felhasználó által megadott útvonal hálózati forgalmat végez a *ServersSubnet* alhálózatról a tűzfalon keresztül, ahol a tűzfalszabályok érvényesek.
 
-Az Azure-tűzfallal kapcsolatos további információkért lásd: [központi telepítése és konfigurálása az Azure portal segítségével Azure tűzfal](tutorial-firewall-deploy-portal.md).
+További információ a Azure Firewallről: [Azure Firewall központi telepítése és konfigurálása a Azure Portal használatával](tutorial-firewall-deploy-portal.md).
 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="use-the-template-to-deploy-azure-firewall"></a>A sablon segítségével üzembe helyezése az Azure-tűzfal
+## <a name="use-the-template-to-deploy-azure-firewall"></a>Azure Firewall üzembe helyezése sablon használatával
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
-**Telepítése és üzembe helyezése az Azure-tűzfal a sablon használatával:**
+**Azure Firewall telepítése és telepítése a sablon használatával:**
 
-1. A sablon eléréséhez [ https://github.com/Azure/azure-quickstart-templates/tree/master/101-azurefirewall-with-zones-sandbox ](https://github.com/Azure/azure-quickstart-templates/tree/master/101-azurefirewall-with-zones-sandbox).
+1. A sablon elérése a következő helyen: [https://github.com/Azure/azure-quickstart-templates/tree/master/101-azurefirewall-with-zones-sandbox](https://github.com/Azure/azure-quickstart-templates/tree/master/101-azurefirewall-with-zones-sandbox).
    
-1. Olvassa el a bevezető, és ha készen áll a központi telepítése, válassza ki **üzembe helyezés az Azure**.
+1. Olvassa el a bevezetést, és ha készen áll a telepítésre, válassza a **telepítés az Azure**-ba lehetőséget.
    
-1. Ha szükséges, jelentkezzen be az Azure Portalon. 
+1. Ha szükséges, jelentkezzen be a Azure Portalba. 
 
-1. A portálon a a **hozzon létre egy tesztkörnyezet beállítása AzureFirewall** lapon adja meg a következő értékeket:
+1. A portálon, a **AzureFirewall-példány létrehozása** lapon írja be vagy válassza ki a következő értékeket:
    
-   - **Erőforráscsoport**: Válassza ki **új létrehozása**, írja be az erőforráscsoport nevét, és válassza ki **OK**. 
-   - **Virtuális hálózat neve**: Adja meg az új virtuális hálózat nevét. 
-   - **Rendszergazdai felhasználónév**: Írjon be egy rendszergazdai felhasználói fiókhoz tartozó felhasználónév.
-   - **Rendszergazdai jelszó**: Írjon be egy rendszergazdai jelszót. 
+   - **Erőforráscsoport**: válassza az **új létrehozása**elemet, írja be az erőforráscsoport nevét, majd kattintson **az OK gombra**. 
+   - **Virtual Network neve**: írja be az új VNet nevét. 
+   - Rendszergazdai **Felhasználónév**: adjon meg egy felhasználónevet a rendszergazda felhasználói fiókhoz.
+   - Rendszergazdai **jelszó**: adjon meg egy rendszergazdai jelszót. 
    
-1. Olvassa el a feltételeket és kikötéseket, és válassza ki **elfogadom a feltételeket és a fenti feltételeket**.
+1. Olvassa el a használati feltételeket, majd válassza az Elfogadom **a fenti feltételeket és**kikötéseket lehetőséget.
    
 1. Válassza a **Beszerzés** lehetőséget.
    
-   Az erőforrások létrehozása néhány percet vesz igénybe. 
+   Az erőforrások létrehozása több percet is igénybe vehet. 
    
-1. Fedezze fel az erőforrásokat, a tűzfal-ekkel hozta létre. 
+1. Ismerkedjen meg a tűzfallal létrehozott erőforrásokkal. 
 
-A JSON-szintaxist és a egy sablonban tűzfalak tulajdonságaival kapcsolatos tudnivalókért lásd: [Microsoft.Network/azureFirewalls](/azure/templates/microsoft.network/azurefirewalls).
+A sablonban található tűzfal JSON-szintaxisáról és tulajdonságairól a [Microsoft. Network/azureFirewalls](/azure/templates/microsoft.network/azurefirewalls)című témakörben olvashat bővebben.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha már nincs szüksége rájuk, eltávolíthatja az erőforráscsoportot, a tűzfal és az összes kapcsolódó erőforrást futtatásával a [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) PowerShell-parancsot. Eltávolítható egy nevű erőforráscsoport *MyResourceGroup*futtassa: 
+Ha már nincs szüksége rájuk, eltávolíthatja az erőforráscsoportot, a tűzfalat és az összes kapcsolódó erőforrást a [Remove-AzResourceGroup PowerShell-](/powershell/module/az.resources/remove-azresourcegroup) parancs futtatásával. A *MyResourceGroup*nevű erőforráscsoport eltávolításához futtassa a következőt: 
 
 ```azurepowershell-interactive
 Remove-AzResourceGroup -Name MyResourceGroup
 ```
-Ne távolítsa el az erőforráscsoportot és a tűzfal, ha azt tervezi, hogy a tűzfal oktatóanyag figyelési folytassa. 
+Ne távolítsa el az erőforráscsoportot és a tűzfalat, ha azt tervezi, hogy folytatja a tűzfal-figyelési oktatóanyagot. 
 
 ## <a name="next-steps"></a>További lépések
 
-Ezután az Azure tűzfalnaplók figyelheti:
+Ezután nyomon követheti a Azure Firewall naplókat:
 
 > [!div class="nextstepaction"]
-> [Oktatóanyag: A figyelő Azure tűzfal-naplókon](./tutorial-diagnostics.md)
+> [Oktatóanyag: Az Azure Firewall naplóinak monitorozása](./tutorial-diagnostics.md)

@@ -16,12 +16,12 @@ ms.date: 10/26/2019
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9107471448a58dc7866fb2cd6052abf168437d2b
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: e76e5c5d2cfcfd983f2b5cdc279f0c13fa6706e4
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73174180"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73832711"
 ---
 # <a name="govern-access-for-external-users-in-azure-ad-entitlement-management"></a>A külső felhasználók hozzáférésének szabályozása az Azure AD-jogosultságok kezelésében
 
@@ -97,7 +97,7 @@ Annak biztosítása érdekében, hogy a szervezeten kívüli személyek hozzáf�
 
 ### <a name="review-your-sharepoint-online-external-sharing-settings"></a>A SharePoint Online külső megosztási beállításainak áttekintése
 
-- Ha a külső felhasználók hozzáférési csomagjaiban szeretné felvenni a SharePoint Online-webhelyeket, győződjön meg arról, hogy a szervezeti szintű külső megosztási beállítás **mindenki** számára be van állítva (a felhasználóknak nincs szükségük a bejelentkezésre) vagy **az új és a meglévő vendégekre** (a vendégeknek be kell jelentkezniük vagy adja meg az ellenőrző kódot). További információ: [külső megosztás be-és kikapcsolása](https://docs.microsoft.com/sharepoint/turn-external-sharing-on-or-off#change-the-organization-level-external-sharing-setting).
+- Ha a külső felhasználók hozzáférési csomagjaiban SharePoint Online-webhelyeket kíván felvenni, győződjön meg arról, hogy a szervezeti szintű külső megosztási beállítás **mindenki** számára van beállítva (a felhasználóknak nincs szükségük bejelentkezésre), vagy **új és meglévő vendégeknek** (a vendégeknek be kell jelentkezniük, vagy meg kell adniuk egy ellenőrző kódot). További információ: [külső megosztás be-és kikapcsolása](https://docs.microsoft.com/sharepoint/turn-external-sharing-on-or-off#change-the-organization-level-external-sharing-setting).
 
 - Ha korlátozni szeretné a jogosultsági felügyeleten kívüli külső megosztást, megadhatja a külső megosztási beállítást a **meglévő vendégek**számára. Ezt követően csak a jogosultságok kezelésével meghívott új felhasználók férhetnek hozzá ezekhez a webhelyekhez. További információ: [külső megosztás be-és kikapcsolása](https://docs.microsoft.com/sharepoint/turn-external-sharing-on-or-off#change-the-organization-level-external-sharing-setting).
 
@@ -113,7 +113,7 @@ Annak biztosítása érdekében, hogy a szervezeten kívüli személyek hozzáf�
 
 ### <a name="review-your-teams-sharing-settings"></a>A csapatok megosztási beállításainak áttekintése
 
-- Ha a külső felhasználók hozzáférési csomagjaiban csapatokat kíván felvenni, győződjön **meg** arról, hogy a vendég hozzáférés engedélyezése a **Microsoft Teams** szolgáltatásban beállítás engedélyezve értékre van állítva. További információ: [a vendég hozzáférésének konfigurálása a Microsoft Teams felügyeleti központban](https://docs.microsoft.com/microsoftteams/set-up-guests#configure-guest-access-in-the-microsoft-teams-admin-center).
+- Ha a külső felhasználók hozzáférési csomagjaiban csapatokat kíván felvenni, győződjön **meg** arról, hogy a vendég hozzáférés engedélyezése a **Microsoft Teams** szolgáltatásban beállítás engedélyezve értékre van állítva. További információ: [a vendég hozzáférésének konfigurálása a Microsoft Teams felügyeleti központban](/microsoftteams/set-up-guests#configure-guest-access-in-the-teams-admin-center).
 
 ## <a name="manage-the-lifecycle-of-external-users"></a>A külső felhasználók életciklusának kezelése
 
@@ -145,7 +145,7 @@ Kiválaszthatja, hogy mi történjen, ha egy külső felhasználó, aki egy, a h
 
 1. Kattintson a **Save** (Mentés) gombra.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Csatlakoztatott szervezet hozzáadása](entitlement-management-organization.md)
 - [A címtárban nem szereplő felhasználók számára](entitlement-management-access-package-request-policy.md#for-users-not-in-your-directory)

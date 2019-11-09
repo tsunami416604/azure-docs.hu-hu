@@ -7,12 +7,12 @@ ms.service: firewall
 ms.date: 08/29/2019
 ms.author: victorh
 ms.topic: article
-ms.openlocfilehash: 94db17405457be91795d1588bee68a0deea68246
-ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
+ms.openlocfilehash: e97783d1a32916cad151f1d0858a8190d0005fd0
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70114811"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73831969"
 ---
 # <a name="deploy-and-configure-azure-firewall-using-azure-cli"></a>Azure Firewall üzembe helyezése és konfigurálása az Azure CLI-vel
 
@@ -20,7 +20,7 @@ A kimenő hálózati hozzáférés ellenőrzése az általános hálózati bizto
 
 Az Azure-alhálózatok kimenő hálózati hozzáférése többek között az Azure Firewall használatával vezérelhető. Az Azure Firewall segítségével a következőket konfigurálhatja:
 
-* Alkalmazásszabályokat, amelyek egy alhálózatról elérhető teljes tartományneveket (FQDN) határoznak meg. A teljes tartománynév [tartalmazhat SQL](sql-fqdn-filtering.md)-példányokat is.
+* Alkalmazásszabályokat, amelyek egy alhálózatról elérhető teljes tartományneveket (FQDN) határoznak meg. A teljes tartománynév [tartalmazhat SQL-példányokat](sql-fqdn-filtering.md)is.
 * Hálózatszabályokat, amelyek forráscímet, protokollt, valamint célportot és célcímet határoznak meg.
 
 A hálózati forgalmat a konfigurált tűzfalszabályok irányítják, ha alapértelmezett alhálózati átjáróként irányítja a tűzfalhoz a forgalmat.
@@ -51,7 +51,7 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-### <a name="azure-cli"></a>Azure CLI
+### <a name="azure-cli"></a>Azure parancssori felület (CLI)
 
 Ha a parancssori felület helyi telepítését és használatát választja, futtassa az Azure CLI 2.0.4 vagy újabb verzióját. A verzió megkereséséhez futtassa az **az--Version**parancsot. További információ a telepítéséről és frissítéséről: az [Azure CLI telepítése]( /cli/azure/install-azure-cli).
 
@@ -284,7 +284,7 @@ Most tesztelje a tűzfalat, és ellenőrizze, hogy az a várt módon működik-e
    Invoke-WebRequest -Uri https://www.microsoft.com
    ```
 
-   A www.google.com kérelmeknek sikeresnek kell lenniük, és a www.microsoft.com kérelmeknek sikertelennek kell lenniük. Ez azt mutatja, hogy a tűzfalszabályok a várt módon működnek.
+   A `www.google.com` kérelmeknek sikereseknek kell lenniük, és a `www.microsoft.com` kérelmek sikertelenek lesznek. Ez azt mutatja, hogy a tűzfalszabályok a várt módon működnek.
 
 Most ellenőrizte, hogy a tűzfalszabályok működnek-e:
 
@@ -302,4 +302,4 @@ az group delete \
 
 ## <a name="next-steps"></a>További lépések
 
-* [Oktatóanyag: Azure Firewall naplók figyelése](./tutorial-diagnostics.md)
+* [Oktatóanyag: Az Azure Firewall naplóinak monitorozása](./tutorial-diagnostics.md)

@@ -1,6 +1,6 @@
 ---
 title: Vizsgálja meg a v2 API által létrehozott Azure Media Services Video Indexer kimenetet
-titlesuffix: Azure Media Services
+titleSuffix: Azure Media Services
 description: Ez a témakör a v2 API által létrehozott Video Indexer kimenetét vizsgálja.
 services: media-services
 author: Juliako
@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 10/11/2019
 ms.author: juliako
-ms.openlocfilehash: 20a973e5386cd9cad7d090236f021ced9a64cafc
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 0a42c2dce3976a1bf83c85644f56f4c1d8abc9c8
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72300928"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73839540"
 ---
 # <a name="examine-the-video-indexer-output-produced-by-api"></a>Vizsgálja meg az API által létrehozott Video Indexer kimenetet
 
@@ -23,7 +23,7 @@ Ha meghívja a **videó beolvasása** API-t, és a válasz állapota ok, akkor r
 
 A videó összesített elemzéseit a [video Indexer](https://www.videoindexer.ai/) webhelyén található videó **Lejátszás** gombjára kattintva is megtekintheti. További információ: [video-információk megtekintése és szerkesztése](video-indexer-view-edit.md).
 
-![Elemzés](./media/video-indexer-output-json/video-indexer-summarized-insights.png)
+![Insights](./media/video-indexer-output-json/video-indexer-summarized-insights.png)
 
 Ez a cikk a **video index API lekérése** által VISSZAadott JSON-tartalmat vizsgálja meg. 
 
@@ -48,7 +48,7 @@ Ez a cikk a **video index API lekérése** által VISSZAadott JSON-tartalmat viz
 |isBase|Azt jelzi, hogy a lista egy alapszintű lista (videó) vagy más videókból (származtatott) készült lejátszási lista.|
 |durationInSeconds|A lejátszási lista teljes időtartama.|
 |summarizedInsights|Egy [summarizedInsights](#summarizedinsights)tartalmaz.
-|Videók|A lista összeállítására szolgáló [videók](#videos) listája.<br/>Ha ez a lista más videók (származtatott) időtartományait tartalmazza, az ebben a listában szereplő videók csak a befoglalt időtartományokból származó adatokkal fognak szerepelni.|
+|videók|A lista összeállítására szolgáló [videók](#videos) listája.<br/>Ha ez a lista más videók (származtatott) időtartományait tartalmazza, az ebben a listában szereplő videók csak a befoglalt időtartományokból származó adatokkal fognak szerepelni.|
 
 ```json
 {
@@ -78,7 +78,7 @@ Ez a szakasz az információk összegzését jeleníti meg.
 |név|A videó neve. Például Azure Monitor.|
 |id|A videó azonosítója. Például: 63c6d532ff.|
 |privacyMode|A részletezés az alábbi módok egyikével rendelkezhet: **Private**, **Public**. **Nyilvános** – a videó a fiókjában mindenki számára látható, és a videóra mutató hivatkozást is tartalmaz. **Magánjellegű** – a videó mindenki számára látható a fiókjában.|
-|Időtartama|Egy időtartamot tartalmaz, amely leírja a betekintési időt. Az időtartam másodpercben.|
+|időtartama|Egy időtartamot tartalmaz, amely leírja a betekintési időt. Az időtartam másodpercben.|
 |thumbnailVideoId|Annak a videónak az azonosítója, amelyből a miniatűr készült.
 |thumbnailId|A videó miniatűr-azonosítója A tényleges miniatűr beszerzéséhez hívja meg a [Get-miniatűrt](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Video-Thumbnail) , és adja át a thumbnailVideoId és a thumbnailId.|
 |arcok|Nulla vagy több arcot is tartalmazhat. Részletesebb információ: [Faces (arcok](#faces)).|
@@ -91,7 +91,7 @@ Ez a szakasz az információk összegzését jeleníti meg.
 |érzelmeket| Nulla vagy több érzelem is szerepelhet. Részletesebb információ: [érzelmek](#emotions).|
 |témakörök|Nulla vagy több témakört is tartalmazhat. A [témakörök](#topics) dimenzió.|
 
-## <a name="videos"></a>Videók
+## <a name="videos"></a>videók
 
 |Név|Leírás|
 |---|---|
@@ -106,7 +106,7 @@ Ez a szakasz az információk összegzését jeleníti meg.
 |Alkalmazásazonosítójának|A videó külső URL-címe (ha a felhasználó adja meg).|
 |metaadatok|A videó külső metaadatai (ha a felhasználó adja meg).|
 |isAdult|Azt jelzi, hogy a videó manuálisan lett-e áttekintve és azonosítva felnőtt videóként.|
-|Betekintést|Az adatfelismerési objektum. [További információ: az](#insights)információk.|
+|betekintést|Az adatfelismerési objektum. [További információ: az](#insights)információk.|
 |thumbnailId|A videó miniatűr-azonosítója A tényleges miniatűr hívás Get [-thumbnail](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Video-Thumbnail) és a videó azonosítójának és thumbnailId átadása.|
 |publishedUrl|A videó továbbítására szolgáló URL-cím.|
 |publishedUrlProxy|Egy URL-cím, amely továbbítja a videót (Apple-eszközök esetén).|
@@ -143,7 +143,7 @@ Ez a szakasz az információk összegzését jeleníti meg.
     }],
 }
 ```
-### <a name="insights"></a>Betekintést
+### <a name="insights"></a>betekintést
 
 Az elemzések dimenziók (például átiratok, arcok, márkák stb.) összessége, ahol minden egyes dimenzió az egyedi elemek (például face1, face2, face3) listája, és minden elem saját metaadatokat tartalmaz, valamint a példányok listáját (amelyek időtartományai a következők: további választható metaadatok).
 
@@ -156,7 +156,7 @@ Az arcok rendelkezhetnek AZONOSÍTÓval, névvel, miniatűrvel, egyéb metaadato
 |átirat|Az [átirat](#transcript) dimenzió.|
 |OCR|Az [OCR](#ocr) -dimenzió.|
 |Kulcsszavak|A [kulcsszavak](#keywords) dimenzió.|
-|Blokkok|Egy vagy több [blokkot](#blocks) is tartalmazhat|
+|blokkok|Egy vagy több [blokkot](#blocks) is tartalmazhat|
 |arcok|Az [arcok](#faces) dimenzió.|
 |Címkék|A [címkék](#labels) dimenzió.|
 |lövések|A [felvételek](#shots) dimenzió.|
@@ -189,7 +189,7 @@ Példa:
 }
 ```
 
-#### <a name="blocks"></a>Blokkok
+#### <a name="blocks"></a>blokkok
 
 Attribútum | Leírás
 ---|---
@@ -243,7 +243,7 @@ Példa:
 |megbízhatósági|Az elismerés megbízhatósága.|
 |language|Az OCR nyelve.|
 |példányok|Azon időtartományok listája, amelyekben ez az OCR megjelent (ugyanaz az OCR többször is megjelenhet).|
-|Magasság|Az OCR-négyszög magassága|
+|magasság|Az OCR-négyszög magassága|
 |Top|A legfelső szintű hely a px-ban|
 |bal| A bal oldali hely a px-ban|
 |Szélessége|Az OCR-négyszög szélessége|
@@ -310,7 +310,7 @@ Példa:
 |leírás|A híresség leírása. |
 |thumbnailId|Az adott arc miniatűrje.|
 |knownPersonId|Ha ismert személy, a belső azonosítója.|
-|ReferenceId|Ha ez egy Bing-híresség, a Bing-azonosítója.|
+|referenceId|Ha ez egy Bing-híresség, a Bing-azonosítója.|
 |referenceType|Jelenleg csak a Bing.|
 |Cím|Ha ez egy híresség, a címe (például "a Microsoft VEZÉRIGAZGATÓJA").|
 |imageUrl|Ha ez egy híresség, a képe URL-címe.|
@@ -493,10 +493,10 @@ Az üzleti és a termék márkanevei a szöveg átiratának és/vagy a videó OC
 |---|---|
 |id|A márka azonosítója.|
 |név|A márkák neve.|
-|ReferenceId | A márka wikipedia URL-címének utótagja Például a "Target_Corporation" a [https://en.wikipedia.org/wiki/Target_Corporation](https://en.wikipedia.org/wiki/Target_Corporation)utótagja.
+|referenceId | A márka wikipedia URL-címének utótagja Például a "Target_Corporation" a [https://en.wikipedia.org/wiki/Target_Corporation](https://en.wikipedia.org/wiki/Target_Corporation)utótagja.
 |referenceUrl | A márka wikipedia URL-címe, ha van ilyen. Például: [https://en.wikipedia.org/wiki/Target_Corporation](https://en.wikipedia.org/wiki/Target_Corporation).
 |leírás|A márkák leírása.|
-|tags|A márkához társított előre definiált címkék listája.|
+|címkét|A márkához társított előre definiált címkék listája.|
 |megbízhatósági|A Video Indexer Brand detektor (0-1) megbízhatósági értéke.|
 |példányok|A márka időtartományának listája. Minden példány rendelkezik egy brandType, amely azt jelzi, hogy ez a márka szerepel-e az átiratban vagy az OCR-ben.|
 
@@ -556,7 +556,7 @@ Az üzleti és a termék márkanevei a szöveg átiratának és/vagy a videó OC
 |SpeakerLongestMonolog|A beszélő leghosszabb monologot. Ha a beszélő a monologot belül csendben van, a rendszer belefoglalja. A rendszer eltávolítja a monologot elején és végén található csendet.| 
 |SpeakerTalkToListenRatio|A számítás a beszélő monologot töltött idő (a között a csend nélkül) alapján történik, a videó teljes időpontjára bontva. Az idő a harmadik tizedes pontra van kerekítve.|
 
-#### <a name="a-idaudioeffectsaudioeffects"></a>@no__t – 0audioEffects
+#### <a name="a-idaudioeffectsaudioeffects"></a><a id="audioEffects"/>audioEffects
 
 |Név|Leírás|
 |---|---|
@@ -766,7 +766,7 @@ Video Indexer a fő témaköröket a átiratokból származtatja. Ha lehetséges
 |---|---|
 |id|A témakör azonosítója.|
 |név|A témakör neve, például: "gyógyszeripar".|
-|ReferenceId|A témakörök hierarchiáját tükröző zsemlemorzsa. Például: "Health and jólét/orvostudomány és egészségügy/gyógyszeripar".|
+|referenceId|A témakörök hierarchiáját tükröző zsemlemorzsa. Például: "Health and jólét/orvostudomány és egészségügy/gyógyszeripar".|
 |megbízhatósági|A megbízhatósági pontszám a tartományban [0, 1]. A magasabb szintű bizalom.|
 |language|A témakörben használt nyelv.|
 |iptcName|Az IPTC adathordozó-kód neve, ha észlelve van.|
@@ -803,7 +803,7 @@ Video Indexer a fő témaköröket a átiratokból származtatja. Ha lehetséges
 . . .
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [Video Indexer fejlesztői portál](https://api-portal.videoindexer.ai)
 

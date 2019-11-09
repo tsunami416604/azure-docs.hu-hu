@@ -1,5 +1,5 @@
 ---
-title: 'Oktatóanyag: Az SAP Cloud platform Identity Authentication konfigurálása az automatikus felhasználó-kiépítés Azure Active Directorysal | Microsoft Docs'
+title: 'Oktatóanyag: az SAP Cloud platform Identity Authentication konfigurálása automatikus felhasználó-kiépítés Azure Active Directorysal | Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhatja a Azure Active Directoryt a felhasználói fiókok automatikus kiépítéséhez és üzembe helyezéséhez az SAP Cloud platform Identity Authentication szolgáltatásban.
 services: active-directory
 documentationcenter: ''
@@ -15,21 +15,21 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/19/2019
 ms.author: Zhchia
-ms.openlocfilehash: f570cb6f945f403e77a36374cc9f82edb7b640c9
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: 266e68b2378db7148649fd4067f1da6172932367
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71174811"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73833839"
 ---
-# <a name="tutorial-configure-sap-cloud-platform-identity-authentication-for-automatic-user-provisioning"></a>Oktatóanyag: Az SAP Cloud platform Identity Authentication konfigurálása automatikus felhasználó-kiépítés esetén
+# <a name="tutorial-configure-sap-cloud-platform-identity-authentication-for-automatic-user-provisioning"></a>Oktatóanyag: az SAP Cloud platform Identity Authentication konfigurálása automatikus felhasználó-kiépítés esetén
 
-Ennek az oktatóanyagnak a célja, hogy bemutassa az SAP Cloud platform Identity Authentication és Azure Active Directory (Azure AD) által elvégzendő lépéseket az Azure AD konfigurálásához a felhasználók és/vagy csoportok automatikus kiépítéséhez és kiépítéséhez az SAP Cloud szolgáltatásban Platform identitásának hitelesítése.
+Ennek az oktatóanyagnak a célja, hogy bemutassa az SAP Cloud platform Identity Authentication szolgáltatásban végrehajtandó lépéseket, valamint Azure Active Directory (Azure AD) az Azure AD konfigurálásához, hogy automatikusan kiépítse és kiépítse a felhasználókat és/vagy csoportokat az SAP Cloud platform Identity Authentication hitelesítéshez.
 
 > [!NOTE]
 > Ez az oktatóanyag az Azure AD-beli felhasználói kiépítési szolgáltatásra épülő összekötőt ismerteti. A szolgáltatás működésének, működésének és gyakori kérdéseinek részletes ismertetését lásd: a felhasználók üzembe helyezésének [automatizálása és az SaaS-alkalmazások kiépítése Azure Active Directory használatával](../manage-apps/user-provisioning.md).
 >
-> Ez az összekötő jelenleg nyilvános előzetes verzióban érhető el. Az előzetes verziójú funkciók általános Microsoft Azure használati feltételeivel kapcsolatos további információkért tekintse meg a Microsoft Azure-előnézetek [kiegészítő használati](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)feltételeit.
+> Ez az összekötő jelenleg nyilvános előzetes verzióban érhető el. Az előzetes verziójú funkciók általános Microsoft Azure használati feltételeivel kapcsolatos további információkért tekintse meg a [Microsoft Azure-előnézetek kiegészítő használati feltételeit](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -41,7 +41,7 @@ Az oktatóanyagban ismertetett forgatókönyv feltételezi, hogy már rendelkezi
 
 ## <a name="assigning-users-to-sap-cloud-platform-identity-authentication"></a>Felhasználók kiosztása az SAP Cloud platform identitás-hitelesítéséhez
 
-Azure Active Directory a hozzárendelések nevű koncepció használatával határozza meg, hogy mely felhasználók kapnak hozzáférést a kiválasztott alkalmazásokhoz. Az automatikus felhasználó-kiépítés kontextusában csak az Azure AD-alkalmazáshoz hozzárendelt felhasználók és/vagy csoportok lesznek szinkronizálva.
+Azure Active Directory a *hozzárendelések* nevű koncepció használatával határozza meg, hogy mely felhasználók kapnak hozzáférést a kiválasztott alkalmazásokhoz. Az automatikus felhasználó-kiépítés kontextusában csak az Azure AD-alkalmazáshoz hozzárendelt felhasználók és/vagy csoportok lesznek szinkronizálva.
 
 A felhasználók automatikus üzembe helyezésének konfigurálása és engedélyezése előtt el kell döntenie, hogy az Azure AD mely felhasználói és/vagy csoportjai férhetnek hozzá az SAP Cloud platform identitás-hitelesítéséhez. Miután eldöntötte, ezeket a felhasználókat és/vagy csoportokat hozzárendelheti az SAP Cloud platform Identity Authentication szolgáltatáshoz az alábbi utasításokat követve:
 * [Felhasználó vagy csoport társítása vállalati alkalmazáshoz](../manage-apps/assign-user-or-group-access-portal.md)
@@ -76,11 +76,11 @@ Az SAP Cloud platform Identity Authentication konfigurálása előtt az Azure AD
 
 1. A **[Azure Portal](https://portal.azure.com)** a bal oldali navigációs panelen válassza a **Azure Active Directory**lehetőséget.
 
-    ![Az Azure Active Directory gomb](common/select-azuread.png)
+    ![A Azure Active Directory gomb](common/select-azuread.png)
 
 2. Lépjen a **vállalati alkalmazások**elemre, majd válassza a **minden alkalmazás**lehetőséget.
 
-    ![A vállalati alkalmazások panelen](common/enterprise-applications.png)
+    ![A vállalati alkalmazások panel](common/enterprise-applications.png)
 
 3. Új alkalmazás hozzáadásához kattintson a panel tetején található **új alkalmazás** gombra.
 
@@ -99,7 +99,7 @@ Ez a szakasz végigvezeti az Azure AD-létesítési szolgáltatás konfigurálá
 
 ### <a name="to-configure-automatic-user-provisioning-for-sap-cloud-platform-identity-authentication-in-azure-ad"></a>Az Azure AD-beli SAP Cloud platform Identity Authentication automatikus felhasználó-kiépítés beállítása:
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com). Válassza a **vállalati alkalmazások**lehetőséget, majd válassza **a minden alkalmazás**lehetőséget.
+1. Bejelentkezés az [Azure Portalra](https://portal.azure.com). Válassza a **vállalati alkalmazások**lehetőséget, majd válassza **a minden alkalmazás**lehetőséget.
 
     ![Vállalati alkalmazások panel](common/enterprise-applications.png)
 
@@ -107,7 +107,7 @@ Ez a szakasz végigvezeti az Azure AD-létesítési szolgáltatás konfigurálá
 
     ![Az SAP Cloud platform Identity Authentication hivatkozás az alkalmazások listájában](common/all-applications.png)
 
-3. Válassza ki a kiépítés lapot.
+3. Válassza ki a **kiépítés** lapot.
 
     ![Kiépítés lap](common/provisioning.png)
 
@@ -115,13 +115,13 @@ Ez a szakasz végigvezeti az Azure AD-létesítési szolgáltatás konfigurálá
 
     ![Kiépítés lap](common/provisioning-automatic.png)
 
-5. A **rendszergazdai hitelesítő adatok** szakaszban `https://<tenantID>.accounts.ondemand.com/service/scim ` adja meg a **bérlői URL-címet**. Adja meg a korábban a **rendszergazdai felhasználónévben** és a **rendszergazdai jelszóban** lekért **felhasználói azonosító** és **jelszó** értékét. Kattintson a **kapcsolat tesztelése** elemre annak biztosításához, hogy az Azure ad csatlakozni tudjanak az SAP Cloud platform Identity Authentication szolgáltatáshoz. Ha a kapcsolat meghiúsul, győződjön meg arról, hogy az SAP Cloud platform identitás-hitelesítési fiókja rendszergazdai jogosultságokkal rendelkezik, és próbálkozzon újra.
+5. A **rendszergazdai hitelesítő adatok** szakaszban adja meg a `https://<tenantID>.accounts.ondemand.com/service/scim ` a **bérlői URL-címben**. Adja meg a korábban a **rendszergazdai felhasználónévben** és a **rendszergazdai jelszóban** lekért **felhasználói azonosító** és **jelszó** értékét. Kattintson a **kapcsolat tesztelése** elemre annak biztosításához, hogy az Azure ad csatlakozni tudjanak az SAP Cloud platform Identity Authentication szolgáltatáshoz. Ha a kapcsolat meghiúsul, győződjön meg arról, hogy az SAP Cloud platform identitás-hitelesítési fiókja rendszergazdai jogosultságokkal rendelkezik, és próbálkozzon újra.
 
     ![Bérlői URL + token](media/sap-cloud-platform-identity-authentication-provisioning-tutorial/testconnection.png)
 
 6. Az **értesítési e-mail** mezőben adja meg egy olyan személy vagy csoport e-mail-címét, akinek meg kell kapnia a kiépítési hibákra vonatkozó értesítéseket, és jelölje be a jelölőnégyzetet – **e-mail-értesítés küldése hiba**esetén.
 
-    ![Értesítő e-mail](common/provisioning-notification-email.png)
+    ![Értesítő E-mail](common/provisioning-notification-email.png)
 
 7. Kattintson a **Save** (Mentés) gombra.
 
@@ -147,9 +147,13 @@ Ez a szakasz végigvezeti az Azure AD-létesítési szolgáltatás konfigurálá
 
     ![Kiépítési konfiguráció mentése](common/provisioning-configuration-save.png)
 
-Ez a művelet elindítja a **Beállítások** szakasz hatókörében meghatározott összes felhasználó és/vagy csoport kezdeti szinkronizálását. A kezdeti szinkronizálás hosszabb időt vesz igénybe, mint a későbbi szinkronizálások, amelyek körülbelül 40 percenként történnek, amíg az Azure AD kiépítési szolgáltatás fut. A **szinkronizálás részletei** szakasz segítségével figyelheti a folyamat előrehaladását, és követheti a kiépítési tevékenységre mutató hivatkozásokat, amelyek az Azure ad-kiépítési szolgáltatás által végrehajtott összes műveletet ismertetik az SAP Cloud platform Identity Authentication használatával.
+Ez a művelet elindítja a **Beállítások** szakasz **hatókörében** meghatározott összes felhasználó és/vagy csoport kezdeti szinkronizálását. A kezdeti szinkronizálás hosszabb időt vesz igénybe, mint a későbbi szinkronizálások, amelyek körülbelül 40 percenként történnek, amíg az Azure AD kiépítési szolgáltatás fut. A **szinkronizálás részletei** szakasz segítségével figyelheti a folyamat előrehaladását, és követheti a kiépítési tevékenységre mutató hivatkozásokat, amelyek az Azure ad-kiépítési szolgáltatás által végrehajtott összes műveletet ismertetik az SAP Cloud platform Identity Authentication használatával.
 
-Az Azure AD létesítési naplók olvasása további információkért lásd: [-jelentések automatikus felhasználói fiók kiépítése](../manage-apps/check-status-user-account-provisioning.md).
+Az Azure AD-kiépítési naplók beolvasásával kapcsolatos további információkért lásd: [jelentéskészítés az automatikus felhasználói fiókok üzembe](../manage-apps/check-status-user-account-provisioning.md)helyezéséhez.
+
+## <a name="connector-limitations"></a>Összekötő korlátozásai
+
+* Az SAP Cloud platform Identity Authentication SCIM-végpontjának bizonyos attribútumokra van szüksége, amelyeknek adott formátumúnak kell lenniük. Ezekről az attribútumokról és az adott formátumról [itt](https://help.sap.com/viewer/6d6d63354d1242d185ab4830fc04feb1/Cloud/en-US/b10fc6a9a37c488a82ce7489b1fab64c.html#)talál további információt.
 
 ## <a name="additional-resources"></a>További források
 

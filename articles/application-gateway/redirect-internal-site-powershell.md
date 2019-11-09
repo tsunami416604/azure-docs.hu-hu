@@ -12,22 +12,22 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 7/13/2018
 ms.author: victorh
-ms.openlocfilehash: 266569494c58ac75371c1a891e9cbffb4c351056
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: c917ab08d9640599c31d2ebf911e1554cf90425d
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70232120"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73835385"
 ---
 # <a name="create-an-application-gateway-with-internal-redirection-using-azure-powershell"></a>Belső átirányítással rendelkező Application Gateway létrehozása Azure PowerShell használatával
 
-Az Azure PowerShell használatával konfigurálhatja a [webes forgalom](multiple-site-overview.md) átirányítását az [Application Gateway](overview.md)létrehozásakor. Ebben az oktatóanyagban egy háttér-készletet határoz meg egy virtuálisgép-méretezési csoport használatával. Ezután a figyelőket és szabályokat a saját tartományán alapulva konfigurálhatja, hogy a webes forgalom a megfelelő készlethez jusson. Ez az oktatóanyag feltételezi, hogy több tartománya van, és példákat használ a *www.contoso.com* és a *www\.contoso.org*.
+Az Azure PowerShell használatával konfigurálhatja a [webes forgalom átirányítását](multiple-site-overview.md) az [Application Gateway](overview.md)létrehozásakor. Ebben az oktatóanyagban egy háttér-készletet határoz meg egy virtuálisgép-méretezési csoport használatával. Ezután a figyelőket és szabályokat a saját tartományán alapulva konfigurálhatja, hogy a webes forgalom a megfelelő készlethez jusson. Ez az oktatóanyag feltételezi, hogy több tartománya van, és példákat használ a *www.contoso.com* és a *www\.contoso.org*.
 
 Ebben a cikkben az alábbiakkal ismerkedhet meg:
 
 > [!div class="checklist"]
 > * A hálózat beállítása
-> * Application Gateway létrehozása
+> * Alkalmazásátjáró létrehozása
 > * Figyelők és átirányítási szabály hozzáadása
 > * Virtuálisgép-méretezési csoport létrehozása a háttér-készlettel
 > * CNAME rekord létrehozása a tartományban
@@ -72,7 +72,7 @@ $pip = New-AzPublicIpAddress `
   -AllocationMethod Dynamic
 ```
 
-## <a name="create-an-application-gateway"></a>Application Gateway létrehozása
+## <a name="create-an-application-gateway"></a>Alkalmazásátjáró létrehozása
 
 ### <a name="create-the-ip-configurations-and-frontend-port"></a>Az IP-konfigurációk és az előtérbeli port létrehozása
 
@@ -226,7 +226,7 @@ Set-AzApplicationGateway -ApplicationGateway $appgw
 
 ## <a name="create-a-virtual-machine-scale-set"></a>Virtuálisgép-méretezési csoport létrehozása
 
-Ebben a példában egy virtuálisgép-méretezési csoport jön létre, amely támogatja a létrehozott háttér-készletet. A létrehozott méretezési csoport neve *myvmss* , és két virtuálisgép-példányt tartalmaz, amelyeken az IIS-t telepíti. Az IP-beállítások konfigurálásakor hozzárendel egy méretezési csoportot a háttérkészlethez.
+Ebben a példában egy virtuálisgép-méretezési csoport jön létre, amely támogatja a létrehozott háttér-készletet. A létrehozott méretezési csoport neve *myvmss* , és két virtuálisgép-példányt tartalmaz, amelyeken az IIS-t telepíti. Az IP-beállítások konfigurálásakor hozzárendeli a méretezési csoportot a háttérkészlethez.
 
 ```azurepowershell-interactive
 $vnet = Get-AzVirtualNetwork `
@@ -296,11 +296,11 @@ Get-AzPublicIPAddress -ResourceGroupName myResourceGroupAG -Name myAGPublicIPAdd
 
 ## <a name="test-the-application-gateway"></a>Az alkalmazásátjáró tesztelése
 
-Adja meg a tartománya nevét a böngésző címsorában. Például:, [http://www.contoso.com](http://www.contoso.com).
+Adja meg a tartománya nevét a böngésző címsorában. Például:, [https://www.contoso.com](https://www.contoso.com).
 
 ![Contoso webhely tesztelése az alkalmazásátjáróban](./media/redirect-internal-site-powershell/application-gateway-iistest.png)
 
-Módosítsa a címeket a másik tartományra, például http://www.contoso.org láthatja, hogy a forgalom át lett irányítva a figyelőhöz a www.contoso.com.
+Módosítsa a címeket a másik tartományra, például https://www.contoso.orgra, és látnia kell, hogy a forgalom átirányítva lett a figyelőnek `www.contoso.com`re.
 
 ## <a name="next-steps"></a>További lépések
 
@@ -308,7 +308,7 @@ Ebben a cikkben megtanulta, hogyan végezheti el a következőket:
 
 > [!div class="checklist"]
 > * A hálózat beállítása
-> * Application Gateway létrehozása
+> * Alkalmazásátjáró létrehozása
 > * Figyelők és átirányítási szabály hozzáadása
 > * Virtuálisgép-méretezési csoport létrehozása a háttér-készletekkel
 > * CNAME rekord létrehozása a tartományban

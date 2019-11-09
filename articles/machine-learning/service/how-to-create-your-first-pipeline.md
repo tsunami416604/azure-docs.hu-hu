@@ -11,12 +11,12 @@ ms.author: sanpil
 author: sanpil
 ms.date: 08/09/2019
 ms.custom: seodec18
-ms.openlocfilehash: 3dc439c352bb3e6e56fae4b83d783da94720bfe1
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 4af18eaa0dc5622dcc52603e6fb4e569f505feeb
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/08/2019
-ms.locfileid: "73818401"
+ms.locfileid: "73838111"
 ---
 # <a name="create-and-run-machine-learning-pipelines-with-azure-machine-learning-sdk"></a>Gépi tanulási folyamatokat hozhat létre és futtathat Azure Machine Learning SDK-val
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -411,14 +411,14 @@ response = requests.post(published_pipeline1.endpoint,
 ### <a name="view-results-of-a-published-pipeline"></a>Közzétett folyamat eredményeinek megtekintése
 
 Tekintse meg az összes közzétett folyamat listáját és a futtatásuk részleteit:
-1. Jelentkezzen be [Azure Machine learning studióba](https://ml.azure.com).
+1. Jelentkezzen be [Azure Machine Learningba](https://ml.azure.com).
 
 1. [Megtekintheti a munkaterületet](how-to-manage-workspace.md#view) a folyamatok listájának megkereséséhez.
  a Machine learning-folyamatok ![listája](./media/how-to-create-your-first-pipeline/list_of_pipelines.png)
  
 1. Válasszon ki egy adott folyamatot a Futtatás eredményeinek megtekintéséhez.
 
-Ezek az eredmények a munkaterületen is elérhetők a következőben: [Azure Machine Learning Studio]] (https://ml.azure.com).
+Ezek az eredmények a munkaterületen, [Azure Machine learning](https://ml.azure.com)is elérhetők.
 
 ### <a name="disable-a-published-pipeline"></a>Közzétett folyamat letiltása
 

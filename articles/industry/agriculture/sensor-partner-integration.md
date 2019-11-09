@@ -5,21 +5,22 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: e7de815b7254fb071b3094f9ae636b712b38684b
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: 7a85ed93d9ee01255d809cce84ebe24e6c3f71d1
+ms.sourcegitcommit: 16c5374d7bcb086e417802b72d9383f8e65b24a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73797685"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73847397"
 ---
 # <a name="sensor-partner-integration"></a>Sensor partner-integráció
-Ez a cikk az Azure FarmBeats **Translator** összetevővel kapcsolatos információkat tartalmaz.
+
+Ez a cikk az érzékelő partner-integrációt lehetővé tevő Azure FarmBeats **Translator** összetevővel kapcsolatos információkat tartalmaz.
 
 Ennek az összetevőnek a használatával a partnerek olyan érzékelők fejlesztéséhez, amelyek integrálva vannak az FarmBeats, az API kihasználásával, valamint az ügyfél-eszköz adatai és a telemetria az FarmBeats-adatközpontba való küldésével. Az adatvizualizáció a FarmBeats-gyorsító használatával történik. Az adatok az adatfúzióhoz, valamint a gépi nyelvi/mesterséges intelligencia modellek létrehozásához is használhatók.
 
 ## <a name="link-farmbeats-account"></a>FarmBeats-fiók csatolása
 
-Miután az ügyfelek megvásárolták és telepítették az eszközöket/érzékelőket, hozzáférhetnek az eszközre és a telemetria az eszközökhöz tartozó SaaS-portálon (szoftver szolgáltatásként). Az eszközökhöz tartozó partnereknek lehetővé kell tenniük az ügyfelek számára, hogy az Azure-beli FarmBeats-példánnyal összekapcsolják a fiókját. A következő hitelesítő adatok szükségesek az ügyfél/SI kitöltéséhez:
+Miután az ügyfelek megvásárolták és telepítették az eszközöket/érzékelőket, hozzáférhetnek az eszközre és a telemetria az eszközökhöz tartozó SaaS-portálon (szoftver szolgáltatásként). Az eszközökhöz tartozó partnereknek lehetővé kell tenniük az ügyfelek számára, hogy az Azure-beli FarmBeats-példánnyal összekapcsolják a fiókját. A következő hitelesítő adatok szükségesek az ügyfél/rendszerintegrátor kitöltéséhez:
 
    - Megjelenítendő név (egy opcionális mező a felhasználó számára az integrációhoz tartozó név definiálásához)
    - API-végpont
@@ -41,14 +42,11 @@ Az ügyfeleknek lehetősége van egy meglévő FarmBeats-integráció leválaszt
 
 ## <a name="edit-farmbeats-integration"></a>FarmBeats-integráció szerkesztése
 
-Az ügyfél szerkesztheti a FarmBeats-integrációt. A Szerkesztés elsődleges forgatókönyve az, amikor az ügyfél titka vagy a kapcsolódási sztring lejárat miatt módosul, ebben az esetben az ügyfél csak a következő mezőket tudja szerkeszteni.
+Az ügyfél szerkesztheti a FarmBeats integrációs beállításait, ha az ügyfél titka vagy a kapcsolatok karakterlánca megváltozik. Ebben az esetben az ügyfél csak a következő mezőket tudja szerkeszteni:
 
    - Megjelenítendő név (ha van ilyen)
    - Az ügyfél titka (a "2x8 * * * * * * * * * * * * *" formátumban vagy a Megjelenítés/elrejtés funkció nem tiszta szöveg helyett) jelenik meg.
    - Kapcsolati karakterlánc (a "2x8 * * * * * * * * * * * * * *"
-
-   > [!NOTE]
-   > A szerkesztés nem szakítja meg a metaadat-objektumok létrehozását.
 
 ## <a name="view-last-telemetry-sent"></a>Legutóbbi telemetria-Elküldések megtekintése
 
@@ -172,7 +170,7 @@ ParentDeviceId | Azon szülő eszköz azonosítója, amelyhez az eszköz csatlak
   Típus (analóg, digitális)  |Analóg vagy digitális érzékelőről van szó|
   gyártó  | gyártó neve |
   ProductCode  | Termékkód vagy modell neve/száma. Például RS-CO2-N01  |
-  SensorMeasures > neve  | Az érzékelő mértékének neve. Csak kisbetűk támogatottak. A különböző mélységekben mért mértéknél határozza meg a mélységet. Például soil_moisture_15cm ennek a névnek konzisztensnek kell lennie a telemetria-adattal. |
+  SensorMeasures > neve  | Az érzékelő mértékének neve. Csak kisbetűk támogatottak. A különböző mélységekben mért mértéknél határozza meg a mélységet. Például soil_moisture_15cm a névnek konzisztensnek kell lennie a telemetria-adattal. |
   sensorMeasures > adattípus  | Az telemetria adattípusa. Jelenleg dupla támogatott  |
   SensorMeasures > típusa  | Az érzékelő telemetria-adattípusának mértékegysége A rendszer által definiált típusok a következők: AmbientTemperature, CO2, mélység, ElectricalConductivity, LeafWetness, Length, LiquidLevel, nitrát, O2, PH, foszfát, PointInTime, kálium, nyomás, RainGauge, RelativeHumidity, sótartalom, SoilMoisture, SoilTemperature, SolarRadiation, State, TimeDuration, UVRadiation, UVIndex, Volume, WindDirection, WindRun, szélsebesség, párolgás, PAR. További részletekért lásd a/ExtendedType API-t
   SensorMeasures > egység | Az érzékelő telemetria-adategysége. A következő rendszer által meghatározott egységek: nincs egység, Celsius, Fahrenheit, Kelvin, Rankine, Pascal, Mercury, PSI, milliméter, centiméter, Meter, hüvelyk, láb, Mile, km, MilesPerHour, MilesPerSecond, KMPerHour, KMPerSecond, MetersPerHour, MetersPerSecond, Degree, WattsPerSquareMeter, KiloWattsPerSquareMeter, MilliWattsPerSquareCentiMeter, MilliJoulesPerSquareCentiMeter, VolumetricWaterContent, százalék, PartsPerMillion, MicroMol, MicroMolesPerLiter, SiemensPerSquareMeterPerMole, MilliSiemensPerCentiMeter, Centibar, DeciSiemensPerMeter, KiloPascal, VolumetricIonContent, liter, MilliLiter, másodperc, UnixTimestamp, MicroMolPerMeterSquaredPerSecond, InchesPerHour továbbiak hozzáadásához tekintse meg a/ ExtendedType API
@@ -192,7 +190,7 @@ ParentDeviceId | Azon szülő eszköz azonosítója, amelyhez az eszköz csatlak
   leírás  | Adjon meg egy értelmes Leírást
   properties  | További tulajdonságok a gyártótól
 
- Az egyes objektumokra és azok tulajdonságaira vonatkozó információkért lásd: [hencegés](httpa://aka.ms/FarmBeatsDatahubSwagger).
+ Az egyes objektumokra és azok tulajdonságaira vonatkozó információkért lásd: [hencegés](https://aka.ms/FarmBeatsDatahubSwagger).
 
  > [!NOTE]
  > Az API-k egyedi azonosítókat adnak vissza minden létrehozott példányhoz. Ezt az azonosítót a fordítónak meg kell őriznie az eszközkezelés és a metaadatok szinkronizálása érdekében.

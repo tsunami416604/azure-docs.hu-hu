@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: vinynigam
 ms.author: vinigam
 ms.date: 10/12/2018
-ms.openlocfilehash: b451597d2d91117e11b1becd8b4ab96f981dade8
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: ce0b917f34cab31227e721e119c72cd5d1f99bff
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72931322"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73832001"
 ---
 # <a name="network-performance-monitor-solution-faq"></a>Network Performance Monitor megoldás – gyakori kérdések
 
@@ -48,7 +48,7 @@ Az ExpressRoute-figyelési funkció esetében az Azure-csomópontokat csak közv
 ### <a name="which-protocol-among-tcp-and-icmp-should-be-chosen-for-monitoring"></a>Melyik protokollt kell választani a TCP és az ICMP között a figyeléshez?
 Ha Windows Server-alapú csomópontokkal figyeli a hálózatot, javasoljuk, hogy a TCP protokollt használja figyelési protokollként, mivel ez nagyobb pontosságot biztosít. 
 
-Az ICMP használata a Windows rendszerű asztali számítógépekhez és az ügyfél operációs rendszer alapú csomópontjaihoz ajánlott. Ez a platform lehetővé teszi, hogy a TCP-does ' NT nyers szoftvercsatornán lehessen elküldeni, amelyet a NPM a hálózati topológia felderítésére használ.
+Az ICMP használata a Windows rendszerű asztali számítógépekhez és az ügyfél operációs rendszer alapú csomópontjaihoz ajánlott. Ez a platform nem teszi lehetővé, hogy a TCP-adat a nyers szoftvercsatornán legyen elküldve, amelyet a NPM a hálózati topológia felderítésére használ.
 
 Az egyes protokollok relatív előnyeiről [itt](../../azure-monitor/insights/network-performance-monitor-performance-monitor.md#choose-the-protocol)talál további információt.
 
@@ -69,7 +69,7 @@ Minden figyelni kívánt alhálózathoz legalább egy ügynököt kell használn
 ### <a name="what-is-the-maximum-number-of-agents-i-can-use-or-i-see-error--youve-reached-your-configuration-limit"></a>Legfeljebb hány ügynököt használhatok, vagy hibaüzenetet látok. elérte a konfigurációs korlátot?
 A NPM az IP-címek számát 5000 IP-címekre korlátozza munkaterületen. Ha egy csomópont IPv4-és IPv6-címeket is tartalmaz, akkor ez a csomópont 2 IP-címének számít. Ezért a 5000 IP-cím korlátja határozza meg az ügynökök számának felső határát. A NPM > csomópontok lapján törölheti az inaktív ügynököket, > a konfigurálást. A NPM az összes olyan IP-cím előzményeit is fenntartja, amely az ügynököt futtató virtuális géphez lett társítva, és mindegyik külön IP-címmel van elfoglalva, amely a felső határ 5000 IP-címeihez járul hozzá. A munkaterülethez tartozó IP-címek felszabadításához használhatja a csomópontok lapot a nem használt IP-címek törléséhez.
 
-## <a name="monitoring"></a>Monitoring
+## <a name="monitoring"></a>Figyelés
 
 ### <a name="how-are-loss-and-latency-calculated"></a>A veszteségek és a késések kiszámítása
 A forrásoldali ügynökök TCP SYN-kérelmeket küldenek (ha a TCP protokoll figyelésre van kiválasztva) vagy ICMP ECHO-kéréseket (ha az ICMP protokoll figyelésre van kiválasztva) a cél IP-címhez rendszeres időközönként, így biztosítva a forrás-cél IP-cím közötti összes elérési utat. a kombinációt a rendszer fedezi. Az egyes elérési utak elvesztésének és késésének kiszámításához a fogadott csomagok százalékos arányát és az oda-és bejárási időt kell mérni. Ezeket az adatokat a lekérdezési időköz és az összes elérési út alapján összesíti a rendszer az adott lekérdezési időközhöz tartozó IP-kombinációhoz tartozó veszteségek és késések összesített értékeinek beszerzéséhez.
@@ -98,6 +98,42 @@ A NPM egy valószínűségi mechanizmust használ a meghibásodási valószínű
 ### <a name="how-can-i-create-alerts-in-npm"></a>Hogyan hozhatok létre riasztásokat a NPM-ben?
 Részletes útmutatásért tekintse meg [a riasztások című szakaszt a dokumentációban](https://docs.microsoft.com/azure/log-analytics/log-analytics-network-performance-monitor#alerts) .
 
+### <a name="what-are-the-default-log-analytics-queries-for-alerts"></a>A riasztások alapértelmezett Log Analytics lekérdezései
+Teljesítményfigyelő lekérdezése
+
+    NetworkMonitoring 
+     | where (SubType == "SubNetwork" or SubType == "NetworkPath") 
+     | where (LossHealthState == "Unhealthy" or LatencyHealthState == "Unhealthy") and RuleName == "<<your rule name>>"
+    
+Szolgáltatás-kapcsolódási figyelő lekérdezése
+
+    NetworkMonitoring                 
+     | where (SubType == "EndpointHealth" or SubType == "EndpointPath")
+     | where (LossHealthState == "Unhealthy" or LatencyHealthState == "Unhealthy" or ServiceResponseHealthState == "Unhealthy" or LatencyHealthState == "Unhealthy") and TestName == "<<your test name>>"
+    
+ExpressRoute-figyelő lekérdezések: áramkörök lekérdezése
+
+    NetworkMonitoring
+    | where (SubType == "ERCircuitTotalUtilization") and (UtilizationHealthState == "Unhealthy") and CircuitResourceId == "<<your circuit resource ID>>"
+
+Magánhálózati társviszony-létesítés
+
+    NetworkMonitoring 
+     | where (SubType == "ExpressRoutePeering" or SubType == "ERVNetConnectionUtilization" or SubType == "ExpressRoutePath")   
+    | where (LossHealthState == "Unhealthy" or LatencyHealthState == "Unhealthy" or UtilizationHealthState == "Unhealthy") and CircuitName == "<<your circuit name>>" and VirtualNetwork == "<<vnet name>>"
+
+Microsoft társviszony-létesítés
+
+    NetworkMonitoring 
+     | where (SubType == "ExpressRoutePeering" or SubType == "ERMSPeeringUtilization" or SubType == "ExpressRoutePath")
+    | where (LossHealthState == "Unhealthy" or LatencyHealthState == "Unhealthy" or UtilizationHealthState == "Unhealthy") and CircuitName == ""<<your circuit name>>" and PeeringType == "MicrosoftPeering"
+
+Gyakori lekérdezés   
+
+    NetworkMonitoring
+    | where (SubType == "ExpressRoutePeering" or SubType == "ERVNetConnectionUtilization" or SubType == "ERMSPeeringUtilization" or SubType == "ExpressRoutePath")
+    | where (LossHealthState == "Unhealthy" or LatencyHealthState == "Unhealthy" or UtilizationHealthState == "Unhealthy") 
+
 ### <a name="can-npm-monitor-routers-and-servers-as-individual-devices"></a>Az útválasztók és a kiszolgálók önálló eszközökként is NPM?
 A NPM csak az alapul szolgáló hálózati ugrások (kapcsolók, útválasztók, kiszolgálók stb.) IP-címét és állomásnevét azonosítja a forrás és a cél IP-címei között. Emellett meghatározza az azonosított ugrások közötti késést is. Nem figyeli külön a mögöttes ugrásokat.
 
@@ -110,17 +146,23 @@ A sávszélesség-használat a bejövő és a kimenő sávszélesség teljes sz�
 ### <a name="can-we-get-incoming-and-outgoing-bandwidth-information-for-the-expressroute"></a>Lekérhetjük a bejövő és kimenő sávszélességre vonatkozó információkat a ExpressRoute?
 Az elsődleges és a másodlagos sávszélesség bejövő és kimenő értékeit is rögzítheti.
 
-A társítási szintű információkhoz használja az alábbi lekérdezést a naplóbeli keresésben
+MS-társi szintű információk esetében használja az alábbi lekérdezést a naplóbeli keresésben
 
     NetworkMonitoring 
-    | where SubType == "ExpressRoutePeeringUtilization"
-    | project CircuitName,PeeringName,PrimaryBytesInPerSecond,PrimaryBytesOutPerSecond,SecondaryBytesInPerSecond,SecondaryBytesOutPerSecond
+     | where SubType == "ERMSPeeringUtilization"
+     | project  CircuitName,PeeringName,PrimaryBytesInPerSecond,PrimaryBytesOutPerSecond,SecondaryBytesInPerSecond,SecondaryBytesOutPerSecond
+    
+A privát peering szintű információkhoz használja az alábbi lekérdezést a naplóbeli keresésben
+
+    NetworkMonitoring 
+     | where SubType == "ERVNetConnectionUtilization"
+     | project  CircuitName,PeeringName,PrimaryBytesInPerSecond,PrimaryBytesOutPerSecond,SecondaryBytesInPerSecond,SecondaryBytesOutPerSecond
   
-Az áramköri szintű információkhoz használja az alábbi lekérdezést 
+Az áramköri szintű információk esetében használja az alábbi lekérdezést a naplóbeli keresésben
 
     NetworkMonitoring 
-    | where SubType == "ExpressRouteCircuitUtilization"
-    | project CircuitName,PrimaryBytesInPerSecond, PrimaryBytesOutPerSecond,SecondaryBytesInPerSecond,SecondaryBytesOutPerSecond
+        | where SubType == "ERCircuitTotalUtilization"
+        | project CircuitName, PrimaryBytesInPerSecond, PrimaryBytesOutPerSecond,SecondaryBytesInPerSecond,SecondaryBytesOutPerSecond
 
 ### <a name="which-regions-are-supported-for-npms-performance-monitor"></a>Mely régiók támogatottak a NPM teljesítményének monitorozásához?
 A NPM a világ bármely részén lévő hálózatok közötti kapcsolat figyelésére a [támogatott régiók](../../azure-monitor/insights/network-performance-monitor.md#supported-regions) egyikében üzemeltetett munkaterületről
@@ -139,11 +181,11 @@ A NPM a traceroute módosított verzióját használja a forrás ügynök és a 
 Előfordulhat, hogy egy ugrás az alábbi forgatókönyvek közül egy vagy több esetében nem válaszol a traceroute-re:
 
 * Az útválasztók úgy lettek konfigurálva, hogy ne tárják fel identitásukat.
-* A hálózati eszközök nem engedélyezik a ICMP_TTL_EXCEEDED forgalmat.
+* A hálózati eszközök nem engedélyezik ICMP_TTL_EXCEEDED forgalmat.
 * A tűzfal blokkolja a ICMP_TTL_EXCEEDED választ a hálózati eszközről.
 
-### <a name="i-get-alerts-for-unhealthy-tests-but-i-do-not-see-the-high-values-in-npms-loss-and-latency-graph-how-do-i-check-what-is-unhealthy-"></a>Riasztásokat kapok a nem kifogástalan állapotú tesztekhez, de nem látok magas értékeket a NPM elvesztése és késési gráfjában. Hogyan a nem megfelelő állapotú elemek ellenőrzését?
-A NPM riasztást vált ki, ha a forrás és a cél között a végpontok közötti késés a küszöb bármely elérési útra kiterjed. Egyes hálózatok több elérési úttal rendelkeznek, amelyek ugyanahhoz a forráshoz és célhoz kapcsolódnak. A NPM egy riasztást vált ki, a sérült elérési út nem megfelelő. A gráfokban látható veszteség és késés az összes útvonal átlagos értéke, ezért előfordulhat, hogy nem jeleníti meg egyetlen útvonal pontos értékét. Annak megismeréséhez, hogy a küszöbérték hogyan lett megszegve, keresse meg a riasztás "altípus" oszlopát. Ha a problémát egy elérési út okozta, az altípus értéke NetworkPath lesz (a Teljesítményfigyelő tesztek esetében), a EndpointPath (a Service connectivity monitor tesztek esetében) és a ExpressRoutePath (ExpressRotue-figyelő tesztek esetében). 
+### <a name="i-get-alerts-for-unhealthy-tests-but-i-do-not-see-the-high-values-in-npms-loss-and-latency-graph-how-do-i-check-what-is-unhealthy"></a>Riasztásokat kapok a nem kifogástalan állapotú tesztekhez, de nem látok magas értékeket a NPM elvesztése és késési gráfjában. Hogyan a nem megfelelő állapotú elemek ellenőrzését?
+A NPM riasztást küld, ha a forrás és a cél között a végpontok közötti késés a közöttük lévő bármely útvonal küszöbértékét keresztezi. Egyes hálózatok több elérési úttal rendelkeznek, amelyek ugyanahhoz a forráshoz és célhoz kapcsolódnak. A NPM egy riasztást vált ki, a sérült elérési út nem megfelelő. A gráfokban látható veszteség és késés az összes útvonal átlagos értéke, ezért előfordulhat, hogy nem jeleníti meg egyetlen útvonal pontos értékét. Annak megismeréséhez, hogy a küszöbérték hogyan lett megszegve, keresse meg a riasztás "altípus" oszlopát. Ha a problémát egy elérési út okozta, az altípus értéke NetworkPath lesz (a Teljesítményfigyelő tesztek esetében), a EndpointPath (a Service connectivity monitor tesztek esetében) és a ExpressRoutePath (ExpressRotue-figyelő tesztek esetében). 
 
 A keresendő lekérdezési útvonal sérült:
 
@@ -228,6 +270,6 @@ A figyeléshez használt csomópontok állapotát a következő nézetből tekin
 ### <a name="can-npm-report-latency-numbers-in-microseconds"></a>NPM a jelentés késési számait a másodpercenként?
 A NPM felkerekíti a késési számokat a felhasználói felületen és ezredmásodpercben. Ugyanazokat az adatokat a rendszer magasabb részletességgel tárolja (esetenként akár négy tizedesjegy is).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - További információ a Network Performance Monitorről az [Azure-beli Network Performance monitor megoldásra](../../azure-monitor/insights/network-performance-monitor.md)való hivatkozással.

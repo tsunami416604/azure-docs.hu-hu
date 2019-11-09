@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/19/2017
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 00130114b793b5f4d4459eee3404fc4adaf6a8b4
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 28a280ea7c3bf9ef84a1fff05da5090ed526fb12
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68699413"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73837463"
 ---
 # <a name="develop-for-azure-files-with-java"></a>Fejlesztés az Azure Files Javával
 [!INCLUDE [storage-selector-file-include](../../../includes/storage-selector-file-include.md)]
@@ -31,7 +31,7 @@ Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre olyan alkalmazások
 > Mivel Azure Files az SMB protokollon keresztül érhető el, az Azure-fájlmegosztás szabványos Java I/O-osztályok használatával való elérésére szolgáló alkalmazások írhatók. Ez a cikk leírja, hogyan írhatók az Azure Storage Java SDK-t használó alkalmazások, amelyek a [Azure Files REST API](https://docs.microsoft.com/rest/api/storageservices/file-service-rest-api) használatával kommunikálnak a Azure Filesekkel.
 
 ## <a name="create-a-java-application"></a>Java-alkalmazás létrehozása
-A minták létrehozásához szüksége lesz a Java Development Kit (JDK) és a Javához készült [Azure Storage SDK](https://github.com/Azure/azure-storage-java)-ra. Létre kell hoznia egy Azure Storage-fiókot is.
+A minták létrehozásához szüksége lesz a Java Development Kit (JDK) és a [Javához készült Azure Storage SDK](https://github.com/Azure/azure-storage-java)-ra. Létre kell hoznia egy Azure Storage-fiókot is.
 
 ## <a name="set-up-your-application-to-use-azure-files"></a>Az alkalmazás beállítása Azure Files használatára
 Az Azure Storage API-k használatához adja hozzá a következő utasítást a Java-fájl elejéhez, ahová a Storage szolgáltatást szeretné elérni.
@@ -54,7 +54,7 @@ public static final String storageConnectionString =
 ```
 
 > [!NOTE]
-> Cserélje le a your_storage_account_name és a your_storage_account_key értéket a Storage-fiókjához tartozó tényleges értékekre.
+> Cserélje le a your_storage_account_name és a your_storage_account_keyt a Storage-fiók tényleges értékeire.
 > 
 > 
 
@@ -224,10 +224,10 @@ if ( file.deleteIfExists() ) {
 ## <a name="next-steps"></a>További lépések
 Ha többet szeretne megtudni az Azure Storage API-król, kövesse az alábbi hivatkozásokat.
 
-* [Azure Java](/java/azure)-fejlesztőknek/)
+* [Azure Java-fejlesztőknek](/java/azure)/)
 * [Javához készült Azure Storage SDK](https://github.com/azure/azure-storage-java)
 * [Androidhoz készült Azure Storage SDK](https://github.com/azure/azure-storage-android)
-* [Azure Storage ügyféloldali SDK-referencia](http://dl.windowsazure.com/storage/javadoc/)
+* [Azure Storage ügyféloldali SDK-referencia](https://javadoc.io/doc/com.microsoft.azure/azure-core/0.8.0/index.html)
 * [Az Azure Storage-szolgáltatások REST API-ja](https://msdn.microsoft.com/library/azure/dd179355.aspx)
 * [Az Azure Storage csapat blogja](https://blogs.msdn.com/b/windowsazurestorage/)
 * [Adatátvitel az AzCopy parancssori segédprogrammal](../common/storage-use-azcopy.md)

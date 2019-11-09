@@ -5,13 +5,13 @@ ms.service: terraform
 author: tomarchermsft
 ms.author: tarcher
 ms.topic: tutorial
-ms.date: 10/26/2019
-ms.openlocfilehash: f024fd7886ec6f192c440cca6951e3aeb66ad22d
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.date: 11/07/2019
+ms.openlocfilehash: cb85897e0a7d281eca4ad3f42e8ef28c9e3fdb7b
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73177806"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73833544"
 ---
 # <a name="tutorial-store-terraform-state-in-azure-storage"></a>Oktatóanyag: Terraform-állapot tárolása az Azure Storage-ban
 
@@ -122,7 +122,7 @@ Az Azure-Blobokban tárolt adatforgalom titkosítva marad. Ha szükséges, a Ter
 
 Az Azure Storage titkosításával kapcsolatos további információkért lásd: [Azure-Storage Service encryption a REST-adatokhoz](../storage/common/storage-service-encryption.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"] 
-> [Terraform az Azure-ban](/azure/ansible/)
+> [További információ a Terraform Azure-beli használatáról](/azure/terraform)

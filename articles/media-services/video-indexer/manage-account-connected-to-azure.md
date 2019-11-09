@@ -1,7 +1,7 @@
 ---
-title: A Video Indexer-fiók kezelése
-titlesuffix: Azure Media Services
-description: Ez a cikk bemutatja, hogyan kezelheti a Video Indexer-fiókot az Azure-hoz csatlakoztatva.
+title: Video Indexer fiók kezelése
+titleSuffix: Azure Media Services
+description: Ez a cikk bemutatja, hogyan kezelhetők az Azure-hoz csatlakoztatott Video Indexer-fiókok.
 services: media-services
 author: Juliako
 manager: femila
@@ -10,72 +10,72 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 05/15/2019
 ms.author: juliako
-ms.openlocfilehash: 37aef7c0ae06aefc69b8a72a80c8ade3951e8b0d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a8221cdcf7afe82ee969f645d7f459c69519711d
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65799513"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73838986"
 ---
-# <a name="manage-a-video-indexer-account-connected-to-azure"></a>A Video Indexer-fiókot az Azure-hoz csatlakoztatott kezelése
+# <a name="manage-a-video-indexer-account-connected-to-azure"></a>Az Azure-hoz csatlakoztatott Video Indexer-fiók kezelése
 
-Ez a cikk bemutatja, hogyan kezelheti az Azure-előfizetéséhez kapcsolódó Video Indexer-fiókot és az Azure Media Services-fiók.
+Ez a cikk bemutatja, hogyan kezelheti az Azure-előfizetéshez és egy Azure Media Services-fiókhoz kapcsolódó Video Indexer fiókot.
 
 > [!NOTE]
-> Ebben a témakörben tárgyalt konfigurációs beállításainak fiókot ehhez a Video Indexer fiók tulajdonosa van.
+> A jelen témakörben ismertetett fiók-konfigurációs módosítások elvégzéséhez Video Indexer fiók tulajdonosának kell lennie.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Csatlakozás a Video Indexer-fiókot az Azure-bA leírtak szerint [kapcsolódik az Azure](connect-to-azure.md). 
+Csatlakoztassa Video Indexer-fiókját az Azure-hoz az [Azure-hoz csatlakoztatva](connect-to-azure.md). 
 
-Ügyeljen arra, hogy hajtsa végre a [Előfeltételek](connect-to-azure.md#prerequisites) , és tekintse át [szempontok](connect-to-azure.md#considerations) című cikkben.
+Ügyeljen arra, hogy kövesse az [Előfeltételek](connect-to-azure.md#prerequisites) és a felülvizsgálati [szempontokat](connect-to-azure.md#considerations) a cikkben.
 
-## <a name="examine-account-settings"></a>Vizsgálja meg a Fiókbeállítások
+## <a name="examine-account-settings"></a>Fiókbeállítások vizsgálata
 
-Ez a szakasz megvizsgálja a Video Indexer-fiókot beállításait.
+Ez a szakasz a Video Indexer fiókjának beállításait vizsgálja.
 
 Beállítások megtekintése:
 
-1. Kattintson a jobb felső sarokban lévő felhasználói ikonra, és válassza ki **beállítások**.
+1. Kattintson a jobb felső sarokban található felhasználó ikonra, és válassza a **Beállítások**lehetőséget.
 
     ![Beállítások](./media/manage-account-connected-to-azure/select-settings.png)
 
-2. Az a **beállítások** lapon válassza ki a **fiók** fülre.
+2. A **Beállítások** lapon válassza a **fiók** fület.
 
-Ha a videók Indexer-fiókot az Azure-hoz csatlakozik, akkor tekintse meg a következőket:
+Ha a video Indexer-fiókja csatlakozik az Azure-hoz, a következő jelenik meg:
 
-* Az alapul szolgáló Azure Media Services-fiók neve.
-* Az indexelési feladatok futtatása, és aszinkron száma.
-* Száma és típusa lefoglalt szolgáltatás számára fenntartott egységeket.
+* Az alapul szolgáló Azure Media Services fiók neve.
+* A-t futtató és várólistára helyezett indexelési feladatok száma.
+* A lefoglalt fenntartott egységek száma és típusa.
 
-Ha a fiók néhány van szüksége, látni fogja kapcsolódó hibák és figyelmeztetések a fiók konfigurálásával kapcsolatban a a **beállítások** lapot. Az üzeneteket az Azure Portalon pontos helyeket, ahol módosításokat szeretne hivatkozásokat tartalmaznak. További információkért lásd: a [hibák és figyelmeztetések](#errors-and-warnings) a következő szakasz.
+Ha a fióknak valamilyen módosításra van szüksége, a **Beállítások** lapon láthatja a fiók konfigurációjának megfelelő hibákat és figyelmeztetéseket. Az üzenetek a Azure Portal pontos helyeire mutató hivatkozásokat tartalmaznak, amelyekben módosítani kell a módosításokat. További információ: a következő, [hibákkal és figyelmeztetésekkel](#errors-and-warnings) foglalkozó szakasz.
 
-## <a name="auto-scale-reserved-units"></a>Automatikus skálázás szolgáltatás számára fenntartott egységek
+## <a name="auto-scale-reserved-units"></a>Fenntartott egységek automatikus méretezése
 
-A **beállítások** lap lehetővé teszi, hogy állítsa be az automatikus skálázás, a Media szolgáltatás számára fenntartott egységek (RU). Ha a beállítás **a**, lefoglalni a fenntartott egységek maximális száma, és győződjön meg, hogy a Video Indexer leállítása/elindítja RUs automatikusan. Ezzel a beállítással üresjárati idő plusz költséget takaríthat meg nem kell fizetnie, de még nem vár az indexelési feladatokat, ha túl magas az indexelési terhelés hosszú ideig végrehajtásához.
+A **Beállítások** lapon állíthatja be a Media szolgáltatás számára fenntartott egységek (ru) automatikus skálázását. Ha a lehetőség **be van kapcsolva**, lefoglalhatja az RUS maximális számát, és biztos lehet benne, hogy a video Indexer automatikusan leállítja/elindítja az RUS-t. Ha ezt a lehetőséget választja, nem számítunk fel extra összeget a tétlen időpontig, de nem kell megvárniuk, hogy az indexelési feladatok hosszú ideig befejeződjön, amikor az indexelési terhelés magas.
 
-Automatikus skálázás nem méretezhető alább 1 RU vagy meghaladja az alapértelmezett a Media Services-fiók. Annak érdekében, hogy a korlát növelését, hozzon létre egy szolgáltatási kérelmet. Kvóták és korlátozások és a egy támogatási jegyet kapcsolatos információkért lásd: [kvóták és korlátozások](../../media-services/previous/media-services-quotas-and-limitations.md).
+Az automatikus méretezés nem méretezhető a Media Services fiók alapértelmezett korlátjának 1 RU vagy újabb verziójában. A korlát növeléséhez hozzon létre egy szolgáltatási kérelmet. A kvótákkal és korlátozásokkal, valamint a támogatási jegyek megnyitásával kapcsolatos információkért lásd: [kvóták és korlátozások](../../media-services/previous/media-services-quotas-and-limitations.md).
 
 ![Regisztráció](./media/manage-account-connected-to-azure/autoscale-reserved-units.png)
 
 ## <a name="errors-and-warnings"></a>Hibák és figyelmeztetések
 
-Ha a fiók néhány van szüksége, lát kapcsolódó hibák és figyelmeztetések a fiók konfigurálásával kapcsolatban a a **beállítások** lap. Az üzeneteket az Azure Portalon pontos helyeket, ahol módosításokat szeretne hivatkozásokat tartalmaznak. Ez a szakasz további tájékoztatást nyújt a hibaüzenetek és figyelmeztető üzenetek.
+Ha a fióknak valamilyen módosításra van szüksége, a **Beállítások** lapon megtekintheti a fiók konfigurációjának megfelelő hibákat és figyelmeztetéseket. Az üzenetek a Azure Portal pontos helyeire mutató hivatkozásokat tartalmaznak, amelyekben módosítani kell a módosításokat. Ez a szakasz további részleteket tartalmaz a hibákkal és a figyelmeztető üzenetekkel kapcsolatban.
 
 * Event Grid
 
-    Az Azure portal használatával EventGrid erőforrás-szolgáltatót regisztrálnia kell. Az a [az Azure portal](https://portal.azure.com/), lépjen a **előfizetések** > [. előfizetés] > **ResourceProviders** > **Microsoft.EventGrid**. Ha nem található a **regisztrált** állapotban van, kattintson a **regisztrálása**. Néhány perc alatt regisztrálni vesz igénybe. 
+    Regisztrálnia kell a EventGrid erőforrás-szolgáltatót a Azure Portal használatával. A [Azure Portal](https://portal.azure.com/)lépjen az **előfizetések** > [előfizetés] > **ResourceProviders** > **Microsoft. EventGrid**. Ha nem **regisztrált** állapotban van, kattintson a **regisztráció**elemre. A regisztráció néhány percet vesz igénybe. 
 
-* Streamvégpont
+* Folyamatos átviteli végpont
 
-    Ellenőrizze, hogy az alapul szolgáló Media Services-fiók rendelkezik az alapértelmezett **folyamatos átviteli végponton** egy elindított állapotú. Ellenkező esetben nem lesz nézhet videókat a Media Services-fiók vagy a Video Indexer található.
+    Győződjön meg arról, hogy az alapul szolgáló Media Services fiók rendelkezik az alapértelmezett **folyamatos átviteli végponttal** egy elindított állapotban. Ellenkező esetben nem fog tudni videókat megtekinteni ebből a Media Services-fiókból vagy Video Indexerból.
 
 * Media szolgáltatás számára fenntartott egységek 
 
-    A Media szolgáltatás számára fenntartott egységek érdekében, hogy az index videókat a Media szolgáltatás erőforráson kell lefoglalni. Az optimális indexelési teljesítmény érdekében javasoljuk, hogy legalább 10 S3 fenntartott egységek lefoglalása. Díjszabási információkért tekintse meg a gyakori kérdésekkel foglalkozó szakaszban, a [Media Services-díjszabás](https://azure.microsoft.com/pricing/details/media-services/) lapot.   
+    A videók indexeléséhez le kell foglalni a Media szolgáltatás számára fenntartott egységeket a Media Service-erőforráshoz. Az optimális indexelési teljesítmény érdekében javasoljuk, hogy legalább 10 S3 fenntartott egységet foglaljon le. A díjszabással kapcsolatos információkért tekintse meg a [Media Services díjszabási](https://azure.microsoft.com/pricing/details/media-services/) oldalának gyakori kérdések című szakaszát.   
 
 ## <a name="next-steps"></a>További lépések
 
-Programozott módon kezelheti a próbaverziós fiókjához és/vagy a Video Indexer-fiókokkal, amelyek köti össze az Azure-ban utasításait követve: [Az API-kkal](video-indexer-use-apis.md).
+Programozott módon használhatja a próbaverziós fiókját és/vagy az Azure-hoz kapcsolódó Video Indexer-fiókokat a következő témakörben található utasítások végrehajtásával: API-k [használata](video-indexer-use-apis.md).
 
-Az azonos Azure AD-felhasználót az Azure-ba való kapcsolódáskor használt kell használnia.
+Ugyanazt az Azure AD-felhasználót kell használnia, amelyet az Azure-hoz való csatlakozáskor használt.

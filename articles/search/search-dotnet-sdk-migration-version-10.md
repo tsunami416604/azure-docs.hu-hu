@@ -1,7 +1,7 @@
 ---
-title: Frissítés a Azure Search .NET SDK 10-es verziójára
+title: Frissítés az Azure Cognitive Search .NET SDK 10-es verziójára
 titleSuffix: Azure Cognitive Search
-description: Telepítse át a kódot a Azure Search .NET SDK 10-es verziójára a régebbi verzióról. Ismerje meg, hogy mi az új, és milyen kód módosítása szükséges.
+description: Telepítse át a kódot az Azure Cognitive Search .NET SDK 10-es verziójára a régebbi verzióról. Ismerje meg, hogy mi az új, és milyen kód módosítása szükséges.
 manager: nitinme
 author: arv100kri
 ms.author: arjagann
@@ -9,30 +9,30 @@ ms.service: cognitive-search
 ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 4a8550a7f9c6a684a172da6f384039c6050797f6
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: ad912eb0b26354d40a654a1c8782dfcb960235e5
+ms.sourcegitcommit: 16c5374d7bcb086e417802b72d9383f8e65b24a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72793040"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73847526"
 ---
-# <a name="upgrade-to-azure-search-net-sdk-version-10"></a>Frissítés a Azure Search .NET SDK 10-es verziójára
+# <a name="upgrade-to-azure-cognitive-search-net-sdk-version-10"></a>Frissítés az Azure Cognitive Search .NET SDK 10-es verziójára
 
 Ha a [Azure Search .net SDK](https://aka.ms/search-sdk)9,0-es vagy régebbi verzióját használja, ez a cikk segítséget nyújt az alkalmazás a 10-es verzió használatára való frissítéséhez.
 
-Az SDK-val kapcsolatos általános áttekintést a példákat lásd: [Azure Search használata .NET-alkalmazásokból](search-howto-dotnet-sdk.md).
+Azure Search a 10-es verzióban az Azure Cognitive Search lett átnevezve, de a névterek és a csomagok nevei változatlanok. Az SDK korábbi verziói (9,0-es és korábbi verziók) továbbra is a korábbi nevet használják. További információ az SDK használatáról, beleértve a példákat: az [Azure Cognitive Search használata .NET-alkalmazásokból](search-howto-dotnet-sdk.md).
 
 A 10-es verzió számos funkciót és hibajavítást tartalmaz, és a REST API `2019-05-06`verziójának legújabb kiadásával azonos működési szintre helyezi. Olyan esetekben, amikor a változás megszakítja a meglévő kódot, végigvezeti a [probléma megoldásához szükséges lépéseken](#UpgradeSteps).
 
 > [!NOTE]
 > Ha a 8,0-es vagy régebbi verziót használja, először frissítsen a 9-es verzióra, majd frissítsen a 10-es verzióra. Útmutatásért lásd: [a Azure Search .net SDK 9-es verziójára való frissítés](search-dotnet-sdk-migration-version-9.md) .
 >
-> Az Azure Search Service-példány számos REST API verziót támogat, beleértve a legújabbat is. Továbbra is használhatja a verziót, ha már nem a legújabb, de javasoljuk, hogy a legújabb verzió használatára telepítse át a kódot. A REST API használatakor az API-verziót minden kérelemben meg kell adnia az API-Version paraméter használatával. A .NET SDK használatakor a használt SDK verziója meghatározza a REST API megfelelő verzióját. Ha régebbi SDK-t használ, továbbra is futtathatja ezt a kódot, még akkor sem, ha a szolgáltatás frissítve van egy újabb API-verzió támogatására.
+> A keresési szolgáltatás példánya számos REST API verziót támogat, beleértve a legújabbat is. Továbbra is használhatja a verziót, ha már nem a legújabb, de javasoljuk, hogy a legújabb verzió használatára telepítse át a kódot. A REST API használatakor az API-verziót minden kérelemben meg kell adnia az API-Version paraméter használatával. A .NET SDK használatakor a használt SDK verziója meghatározza a REST API megfelelő verzióját. Ha régebbi SDK-t használ, továbbra is futtathatja ezt a kódot, még akkor sem, ha a szolgáltatás frissítve van egy újabb API-verzió támogatására.
 
 <a name="WhatsNew"></a>
 
 ## <a name="whats-new-in-version-10"></a>A 10-es verzió újdonságai
-A Azure Search .NET SDK 10-es verziója a Azure Search REST API (`2019-05-06`) legújabb általánosan elérhető verzióját célozza meg a következő frissítésekkel:
+Az Azure Cognitive Search .NET SDK 10-es verziója a REST API (`2019-05-06`) legújabb általánosan elérhető verzióját célozza meg a következő frissítésekkel:
 
 * Két új szaktudás bevezetése – a [feltételes szaktudás](cognitive-search-skill-conditional.md) és a [szöveg fordítási](cognitive-search-skill-text-translation.md)képességei.
 * A rendszer átalakította a [formálói képességek](cognitive-search-skill-shaper.md) bemeneteit, hogy az összevont környezetek összevonását is elférjen. További információt ebben a példában a [JSON-definícióban](https://docs.microsoft.com/azure/search/cognitive-search-skill-shaper#scenario-3-input-consolidation-from-nested-contexts)talál.
@@ -62,7 +62,7 @@ A Azure Search .NET SDK 10-es verziója a Azure Search REST API (`2019-05-06`) l
 Több, a 10-es verzióban felmerülő változás miatt a kód módosítására is szükség lehet az alkalmazás újraépítése mellett.
 
 > [!NOTE]
-> Az alábbi módosítások listája nem teljes. Bizonyos változások valószínűleg nem eredményeznek fordítási hibákat, de technikailag megszakadnak, mivel a bináris kompatibilitást a Azure Search .NET SDK-szerelvények korábbi verzióitól függő szerelvényekkel bontják le. Az ebben a kategóriában található jelentős változások a javaslatok mellett is szerepelnek. A bináris kompatibilitási problémák elkerülése érdekében hozza létre újra az alkalmazást a 10-es verzióra való frissítéskor.
+> Az alábbi módosítások listája nem teljes. Bizonyos változások valószínűleg nem eredményeznek fordítási hibákat, de technikailag megszakadnak, mivel a bináris kompatibilitást az Azure Cognitive Search .NET SDK-szerelvények korábbi verzióitól függő szerelvényekkel bontják le. Az ebben a kategóriában található jelentős változások a javaslatok mellett is szerepelnek. A bináris kompatibilitási problémák elkerülése érdekében hozza létre újra az alkalmazást a 10-es verzióra való frissítéskor.
 
 ### <a name="custom-web-api-skill-definition"></a>Egyéni webes API-szaktudás definíciója
 
@@ -154,7 +154,7 @@ Ha úgy dönt, hogy egyéni névvel azonosítja a szaktudást, akkor először f
 > [!NOTE]
 > Elkezdjük felstrukturálni a hibákat és a figyelmeztetéseket, hogy a lehető legpontosabban szerepeljenek ezek a hasznos információk. Dolgozunk annak biztosításán, hogy az összes hiba és figyelmeztetés ezen adatok jelennek meg, de a folyamat folyamatban van, és ezek a további részletek nem mindig lesznek feltöltve.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - A Shapeer-képesség változásai a legnagyobb hatással lehetnek az új vagy meglévő kódokra. A következő lépésként mindenképpen tekintse át ezt a példát a bemeneti struktúra: [formáló ÜGYESSÉGI JSON-definíció példájának](cognitive-search-skill-shaper.md) szemléltetése.
 - Ugorjon végig a [mesterséges intelligenciával foglalkozó áttekintésben](cognitive-search-concept-intro.md).

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: quickstart
 ms.date: 10/12/2019
 ms.author: b-juche
-ms.openlocfilehash: d3035572e629bc11207cc473b51e3edb4f6a5a13
-ms.sourcegitcommit: bd4198a3f2a028f0ce0a63e5f479242f6a98cc04
+ms.openlocfilehash: 7ecc76a8b1f57d4e397746c28dc4cd56b90c3599
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2019
-ms.locfileid: "72302834"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73834718"
 ---
 # <a name="quickstart-set-up-azure-netapp-files-and-create-an-nfs-volume"></a>Gyors útmutató: Azure NetApp Files beállítása és NFS-kötet létrehozása 
 
@@ -34,7 +34,7 @@ Ebben a rövid útmutatóban a következő elemeket fogja beállítani:
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
-## <a name="before-you-begin"></a>Előzetes teendők 
+## <a name="before-you-begin"></a>Előkészületek 
 
 > [!IMPORTANT] 
 > Hozzáférést kell biztosítania a Azure NetApp Files szolgáltatáshoz.  Ha hozzáférést szeretne kérni a szolgáltatáshoz, tekintse meg a [Azure NetApp Files várólista-beküldési lapot](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR8cq17Xv9yVBtRCSlcD_gdVUNUpUWEpLNERIM1NOVzA5MzczQ0dQR1ZTSS4u).  A folytatás előtt meg kell várnia a hivatalos visszaigazoló e-mailt a Azure NetApp Files csapattól. 
@@ -49,7 +49,7 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 > A regisztrációs folyamat hosszabb időt is igénybe vehet.
 >
 
-# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
+# <a name="portaltabazure-portal"></a>[Portál](#tab/azure-portal)
 
 A portál használatával történő regisztráció lépéseihez nyisson meg egy Cloud Shell-munkamenetet a fent jelzett módon, és kövesse az alábbi Azure CLI-lépéseket:
 
@@ -77,7 +77,7 @@ Ennek a cikknek a használatához a Azure PowerShell modul az a Version 2.6.0 va
 
 ## <a name="create-a-netapp-account"></a>NetApp-fiók létrehozása
 
-# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
+# <a name="portaltabazure-portal"></a>[Portál](#tab/azure-portal)
 
 1. A Azure Portal keresési mezőjébe írja be a **Azure NetApp Files** , majd a megjelenő listából válassza a **Azure NetApp Files** lehetőséget.
 
@@ -111,7 +111,7 @@ Ennek a cikknek a használatához a Azure PowerShell modul az a Version 2.6.0 va
 
     > [!NOTE]
     > A támogatott régiók listájának megtekintéséhez tekintse meg a [régiók számára elérhető termékeket](https://azure.microsoft.com/en-us/global-infrastructure/services/?products=netapp&regions=all) .
-    > A parancssori eszközök által támogatott régió nevének beszerzéséhez használja a következőt: `Get-AzLocation | select Location`
+    > A parancssori eszközök által támogatott régió nevének beszerzéséhez használja a `Get-AzLocation | select Location`
     >
 
 1. Hozzon létre egy új erőforráscsoportot a [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) parancs használatával:
@@ -138,7 +138,7 @@ Ennek a cikknek a használatához a Azure PowerShell modul az a Version 2.6.0 va
 
     > [!NOTE]
     > A támogatott régiók listájának megtekintéséhez tekintse meg a [régiók számára elérhető termékeket](https://azure.microsoft.com/en-us/global-infrastructure/services/?products=netapp&regions=all) .
-    > A parancssori eszközök által támogatott régió nevének beszerzéséhez használja a következőt: `az account list-locations -query "[].{Region:name}" --out table`
+    > A parancssori eszközök által támogatott régió nevének beszerzéséhez használja a `az account list-locations -query "[].{Region:name}" --out table`
     >
 
 2. Hozzon létre egy új erőforráscsoportot az az [Group Create](/cli/azure/group#az-group-create) paranccsal:
@@ -161,7 +161,7 @@ Ennek a cikknek a használatához a Azure PowerShell modul az a Version 2.6.0 va
 
 ## <a name="set-up-a-capacity-pool"></a>Kapacitáskészlet beállítása
 
-# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
+# <a name="portaltabazure-portal"></a>[Portál](#tab/azure-portal)
 
 1. A Azure NetApp Files-kezelés panelen válassza ki a NetApp-fiókját (**myaccount1**).
 
@@ -224,7 +224,7 @@ Ennek a cikknek a használatához a Azure PowerShell modul az a Version 2.6.0 va
 
 ## <a name="create-nfs-volume-for-azure-netapp-files"></a>NFS-kötet létrehozása a Azure NetApp Fileshoz
 
-# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
+# <a name="portaltabazure-portal"></a>[Portál](#tab/azure-portal)
 
 1. A NetApp-fiók Azure NetApp Files felügyelet paneljén kattintson a **kötetek**elemre.
 
@@ -258,7 +258,7 @@ Ennek a cikknek a használatához a Azure PowerShell modul az a Version 2.6.0 va
       Lásd az NFS-verziók [szempontjait](azure-netapp-files-create-volumes.md#considerations) és [ajánlott eljárásait](azure-netapp-files-create-volumes.md#best-practice) . 
       
 > [!IMPORTANT] 
-> A NFSv 4.1 szolgáltatáshoz való hozzáféréshez az engedélyezés szükséges.  Az engedélyezési kérelem elküldéséhez küldje el a kérelmet <anffeedback@microsoft.com> értékre. 
+> A NFSv 4.1 szolgáltatáshoz való hozzáféréshez az engedélyezés szükséges.  Az engedélyezési kérelem elküldéséhez küldje el a <anffeedback@microsoft.com>. 
 
   ![Az NFS protokoll megadása a gyors üzembe helyezéshez](../media/azure-netapp-files/azure-netapp-files-quickstart-protocol-nfs.png)
 
@@ -346,7 +346,7 @@ Ennek a cikknek a használatához a Azure PowerShell modul az a Version 2.6.0 va
     VNET_ID=$(az network vnet show --resource-group $RESOURCE_GROUP --name $VNET_NAME --query "id" -o tsv)
     SUBNET_ID=$(az network vnet subnet show --resource-group $RESOURCE_GROUP --vnet-name $VNET_NAME --name $SUBNET_NAME --query "id" -o tsv)
     VOLUME_SIZE_GiB=100 # 100 GiB
-    UNIQUE_FILE_PATH="myfilepath2" # Please note that creation token needs to be unique within all ANF Accounts
+    UNIQUE_FILE_PATH="myfilepath2" # Please note that creation token needs to be unique within subscription and region
 
     az netappfiles volume create \
         --resource-group $RESOURCE_GROUP \
@@ -358,7 +358,7 @@ Ennek a cikknek a használatához a Azure PowerShell modul az a Version 2.6.0 va
         --vnet $VNET_ID \
         --subnet $SUBNET_ID \
         --usage-threshold $VOLUME_SIZE_GiB \
-        --creation-token $UNIQUE_FILE_PATH \
+        --file-path $UNIQUE_FILE_PATH \
         --protocol-types "NFSv3"
     ```
 
@@ -366,7 +366,7 @@ Ennek a cikknek a használatához a Azure PowerShell modul az a Version 2.6.0 va
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
+# <a name="portaltabazure-portal"></a>[Portál](#tab/azure-portal)
 
 Ha elkészült, és ha szeretné, törölheti az erőforráscsoportot. Egy erőforráscsoport törlésének művelete visszafordíthatatlan.  
 
@@ -418,7 +418,7 @@ Ha elkészült, és ha szeretné, törölheti az erőforráscsoportot. Egy erőf
     ```
 ---
 
-## <a name="next-steps"></a>Következő lépések  
+## <a name="next-steps"></a>További lépések  
 
 > [!div class="nextstepaction"]
 > [Kötetek kezelése Azure NetApp Files használatával](azure-netapp-files-manage-volumes.md)  

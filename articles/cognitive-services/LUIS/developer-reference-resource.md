@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 10/16/2019
+ms.date: 11/08/2019
 ms.author: diberry
-ms.openlocfilehash: b2b32d6ccca69f330cfe15faa1446aa91fdb687a
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: d59646a87727409d759cc1903046fb3cdeade2e0
+ms.sourcegitcommit: 16c5374d7bcb086e417802b72d9383f8e65b24a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73465732"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73847378"
 ---
 # <a name="developer-resources-for-language-understanding"></a>Language Understanding fejlesztői erőforrásai
 
@@ -41,12 +41,14 @@ További információ a [v3 előrejelzési végpontról](luis-migration-api-v3.m
 
 A szerzői és előrejelzési végpont API-jai a REST API-kon keresztül érhetők el:
 
-* [Útmutató](https://go.microsoft.com/fwlink/?linkid=2092087) a szerzői műveletekhez
-* Az előrejelzési futtatókörnyezet [dokumentációja](https://go.microsoft.com/fwlink/?linkid=2092356)
+|Típus|Verzió|
+|--|--|
+|Tartalomkészítés|[V2](https://go.microsoft.com/fwlink/?linkid=2092087)<br>[előzetes verzió – v3](https://westeurope.dev.cognitive.microsoft.com/docs/services/luis-programmatic-apis-v3-0-preview)|
+|Jóslás|[V2](https://go.microsoft.com/fwlink/?linkid=2092356)<br>[V3](https://westcentralus.dev.cognitive.microsoft.com/docs/services/luis-endpoint-api-v3-0/)|
 
 ### <a name="language-based-sdks"></a>Language-alapú SDK-k
 
-|Nyelv |Segédanyagok|Csomag|Minták|Gyorsútmutatók|
+|Nyelv |Segédanyagok|Csomag|Példák|Gyors útmutatók|
 |--|--|--|--|--|
 |C#|[Tartalomkészítés](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.luis.authoring?view=azure-dotnet)</br>[Előrejelzés](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.luis.runtime?view=azure-dotnet)|[NuGet készítése](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.LUIS.Authoring/)<br>[NuGet előrejelzése](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.LUIS.Runtime/)|[.Net SDK-minták](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/LUIS)|[Alkalmazás létrehozása és kezelése](sdk-csharp-quickstart-authoring-app.md)<br>[Lekérdezés-előrejelzési végpont](sdk-csharp-quickstart-query-prediction-endpoint.md)|
 |Indítás|[Szerzői műveletek és előrejelzések](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.0/luis)|[SDK](https://github.com/Azure/azure-sdk-for-go/tree/master/services/cognitiveservices/v2.0/luis)|[Tartalomkészítés](https://github.com/Azure-Samples/cognitive-services-language-understanding/tree/master/documentation-samples/quickstarts/change-model/go)<br>[Előrejelzés](https://github.com/Azure-Samples/cognitive-services-language-understanding/tree/master/documentation-samples/quickstarts/analyze-text/go)|[Szerzői műveletek a REST használatával](luis-get-started-go-add-utterance.md)<br>[Előrejelzés REST használatával](luis-get-started-go-get-intent.md)|

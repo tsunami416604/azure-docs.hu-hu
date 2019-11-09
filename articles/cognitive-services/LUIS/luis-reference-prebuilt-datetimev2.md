@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 10/14/2019
 ms.author: diberry
-ms.openlocfilehash: 4c16953d3c708516edbe0b3c13b091dc3181b187
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 75d1f2b6facd438e329555d8595fe159565dbb74
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73465060"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73837367"
 ---
 # <a name="datetimev2-prebuilt-entity-for-a-luis-app"></a>DatetimeV2 előre összeépített entitása egy LUIS-alkalmazáshoz
 
@@ -119,7 +119,7 @@ A következő kifejezés és a részleges JSON-válasza alább látható.
 |type|**String** – a datetimeV2 egyik [altípusa](#subtypes-of-datetimev2)
 |startIndex|**int** – az entitás megkezdésének teljes alapjául szolgáló index.|
 |endIndex|**int** – az az index, amelyben az entitás véget ér.|
-|Felbontás|Olyan `values` tömböt tartalmaz, amely egy, kettő vagy négy [feloldási értékkel](#values-of-resolution)rendelkezik.|
+|felbontás|Olyan `values` tömböt tartalmaz, amely egy, kettő vagy négy [feloldási értékkel](#values-of-resolution)rendelkezik.|
 |végén|Egy időpont vagy dátumtartomány záró értéke a `value`formátummal megegyező formátumban. Csak akkor használatos, ha `type` `daterange`, `timerange`vagy `datetimerange`|
 
 * * * 
@@ -147,7 +147,7 @@ A `values` tömb minden eleme a következő mezőkkel rendelkezhet:
 |--|--|
 |Timex|az idő, a dátum vagy a dátumtartomány TIMEX formátumban kifejezve, amely az [ISO 8601 szabványt](https://en.wikipedia.org/wiki/ISO_8601) követi, valamint a jegyzet TIMEX3 attribútumait a TimeML nyelv használatával. Ez a jegyzet a [TIMEX irányelvek](http://www.timeml.org/tempeval2/tempeval2-trial/guidelines/timex3guidelines-072009.pdf)alapján van leírva.|
 |type|Az altípus, amely a következő elemek egyike lehet: `datetime`, `date`, `time`, `daterange`, `timerange`, `datetimerange`, `duration`, `set`.|
-|érték|**Választható.** Egy datetime objektum a következő formátumban: ÉÉÉÉ: PP: dd (Date), óó: PP: mm (Time) éééé: PP: nn óó: PP: mm (datetime). Ha `type` `duration`, az érték a másodpercek száma (időtartam) <br/> Csak akkor használatos, ha `type` `datetime` vagy `date`, `time`vagy időtartam.|
+|érték|**Választható.** Egy datetime objektum a következő formátumban: éééé-hh-dd (Date), óó: PP: mm (Time) éééé-hh-nn óó: PP: mm (datetime). Ha `type` `duration`, az érték a másodpercek száma (időtartam) <br/> Csak akkor használatos, ha `type` `datetime` vagy `date`, `time`vagy időtartam.|
 
 ## <a name="valid-date-values"></a>Érvényes dátumérték
 

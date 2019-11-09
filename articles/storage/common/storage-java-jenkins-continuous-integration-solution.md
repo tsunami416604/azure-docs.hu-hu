@@ -9,12 +9,12 @@ ms.service: storage
 custom: jenkins
 ms.date: 08/13/2019
 ms.subservice: common
-ms.openlocfilehash: dc62696700a5c34c28f5f8c4f347dbb4c5183cab
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 72756bd3eb12ca80f419a0d53db76e6637d884fc
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68986532"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73839133"
 ---
 # <a name="using-azure-storage-with-a-jenkins-continuous-integration-solution"></a>Az Azure Storage használata Jenkins folyamatos integrációs megoldással
 
@@ -40,15 +40,15 @@ A Blob service használatának előnyei az agilis fejlesztői Build-összetevők
   
     Ha jelenleg nem rendelkezik Jenkins CI-megoldással, a következő módszer használatával futtathat egy Jenkins CI-megoldást:
   
-  1. Egy Java-kompatibilis gépen töltse le a Jenkins. War- <https://jenkins-ci.org>t.
+  1. Egy Java-kompatibilis gépen töltse le a Jenkins. War-t a <https://jenkins-ci.org>ról.
   2. A Jenkins. War nevű mappában megnyitott parancssorban futtassa a következőt:
      
       `java -jar jenkins.war`
 
-  3. A böngészőben `http://localhost:8080/` nyissa meg a Jenkins-irányítópultot, amelyet az Azure Storage beépülő modul telepítéséhez és konfigurálásához fog használni.
+  3. A böngészőben nyissa meg `http://localhost:8080/` a Jenkins-irányítópult megnyitásához, amelyet az Azure Storage beépülő modul telepítéséhez és konfigurálásához fog használni.
      
       Habár egy tipikus Jenkins CI-megoldás úgy lesz beállítva, hogy szolgáltatásként fusson, a Jenkins-háború parancssorban való futtatása elegendő lesz ehhez az oktatóanyaghoz.
-* Egy Azure-fiók. Regisztrálhat egy Azure-fiókot a következő címen: <https://www.azure.com>.
+* Egy Azure-fiók. <https://www.azure.com>címen regisztrálhat egy Azure-fiókot.
 * Egy Azure-tárfiók. Ha még nem rendelkezik Storage-fiókkal, létrehozhat egyet a [Storage-fiók létrehozása](../common/storage-quickstart-create-account.md)című témakör lépéseit követve.
 * A Jenkins CI-megoldás ismerete ajánlott, de nem kötelező, mivel az alábbi tartalom egy alapszintű példát mutat be a Blob service a Jenkins CI-Build összetevőinek tárházként való használatakor szükséges lépések megjelenítéséhez.
 
@@ -59,7 +59,7 @@ Ahhoz, hogy a Blob service a Jenkins használatával használhassa, telepítenie
 1. A Jenkins irányítópultján válassza a **Jenkins kezelése**lehetőséget.
 2. A **Jenkins kezelése** lapon válassza a **kezelés beépülő**modult.
 3. Válassza az **Available** (Elérhető) lapot.
-4. Az összetevő -feltöltők szakaszban keresse meg **Microsoft Azure Storage beépülő modult**.
+4. Az összetevő- **feltöltők** szakaszban keresse meg **Microsoft Azure Storage beépülő modult**.
 5. Válassza a **telepítés újraindítás nélkül** vagy **a letöltés lehetőséget, és telepítse újra a telepítést**.
 6. A Jenkins újraindítása.
 
@@ -69,7 +69,7 @@ Ahhoz, hogy a Blob service a Jenkins használatával használhassa, telepítenie
 3. A **Microsoft Azure Storage fiók konfigurációja** szakaszban:
    1. Adja meg a Storage-fiók nevét, amelyet a [Azure Portal](https://portal.azure.com)szerezhet be.
    2. Adja meg a Storage-fiók kulcsát, amely a [Azure Portal](https://portal.azure.com)is beszerezhető.
-   3. Ha a globális Azure-felhőt használja, használja az alapértelmezett értéket a **blob Service-végpont URL-címéhez** . Ha más Azure-felhőt használ, használja a Azure Portalban megadott végpontot a [](https://portal.azure.com) Storage-fiókjához. 
+   3. Ha a globális Azure-felhőt használja, használja az alapértelmezett értéket a **blob Service-végpont URL-címéhez** . Ha más Azure-felhőt használ, használja a [Azure Portalban](https://portal.azure.com) megadott végpontot a Storage-fiókjához. 
    4. A Storage-fiók érvényesítéséhez válassza a **tárolási hitelesítő adatok ellenőrzése** lehetőséget. 
    5. Választható Ha további, a Jenkins CI számára elérhetővé tenni kívánt Storage-fiókkal rendelkezik, válassza a **további Storage-fiókok hozzáadása**lehetőséget.
    6. A beállítások mentéséhez kattintson a **Mentés** gombra.
@@ -79,7 +79,7 @@ Ahhoz, hogy a Blob service a Jenkins használatával használhassa, telepítenie
 
 1. A Jenkins irányítópultján válassza az **új elem elemet**.
 2. Nevezze el a feladatot **MyJob**, válassza **a szabad stílusú szoftveres projekt létrehozása**lehetőséget, majd kattintson **az OK gombra**.
-3. A feladatütemezés összeállítás szakaszában válassza a **létrehozási lépés hozzáadása** elemet, és válassza a **Windows batch-parancs végrehajtása parancsot**.
+3. **A feladatütemezés összeállítás szakaszában válassza** a **létrehozási lépés hozzáadása** elemet, és válassza a **Windows batch-parancs végrehajtása parancsot**.
 4. A **parancsban**használja a következő parancsokat:
 
     ```   
@@ -92,33 +92,33 @@ Ahhoz, hogy a Blob service a Jenkins használatával használhassa, telepítenie
 
 5. A feladatok konfigurációjának **létrehozás utáni műveletek** szakaszában válassza a **Hozzáadás utáni művelet hozzáadása** lehetőséget, és válassza az összetevők **feltöltése az Azure Blob Storage**-ba lehetőséget.
 6. A **Storage-fiók neve**mezőben válassza ki a használni kívánt Storage-fiókot.
-7. A **tároló neve**mezőben adja meg a tároló nevét. (A tároló akkor jön létre, ha még nem létezik a Build-összetevők feltöltésekor.) Használhat környezeti változókat, így ebben a példában a tároló `${JOB_NAME}` neveként adja meg a nevet.
+7. A **tároló neve**mezőben adja meg a tároló nevét. (A tároló akkor jön létre, ha még nem létezik a Build-összetevők feltöltésekor.) Használhat környezeti változókat, így ebben a példában a tároló neveként adja meg a `${JOB_NAME}`.
    
     **Tipp**
    
-    A **parancs** alatt, ahol a **Windows batch** futtatása parancshoz megadott egy parancsfájlt, a Jenkins által felismert környezeti változókra mutató hivatkozás. Válassza ki a hivatkozást a környezeti változók nevének és leírásának megismeréséhez. A speciális karaktereket (például a **BUILD_URL** környezeti változót) tartalmazó környezeti változók nem engedélyezettek tároló neveként vagy közös virtuális elérési úton.
-8. Ehhez a példához válassza az **új tároló nyilvánosvé tétele** alapértelmezésben lehetőséget. (Ha privát tárolót szeretne használni, létre kell hoznia egy közös hozzáférési aláírást a hozzáférés engedélyezéséhez, amely meghaladja a jelen cikk hatókörét. A közös hozzáférési aláírásokról a [közös hozzáférési aláírások (SAS) használatával](storage-sas-overview.md)tájékozódhat.)
+    A **parancs** alatt, ahol a **Windows batch futtatása parancshoz** megadott egy parancsfájlt, a Jenkins által felismert környezeti változókra mutató hivatkozás. Válassza ki a hivatkozást a környezeti változók nevének és leírásának megismeréséhez. A speciális karaktereket (például a **BUILD_URL** környezeti változót) tartalmazó környezeti változók nem engedélyezettek tároló neveként vagy közös virtuális elérési úton.
+8. Ehhez a példához válassza az **új tároló nyilvánosvé tétele alapértelmezésben** lehetőséget. (Ha privát tárolót szeretne használni, létre kell hoznia egy közös hozzáférési aláírást a hozzáférés engedélyezéséhez, amely meghaladja a jelen cikk hatókörét. A közös hozzáférési aláírásokról a [közös hozzáférési aláírások (SAS) használatával](storage-sas-overview.md)tájékozódhat.)
 9. Választható Ha azt szeretné, hogy a tárolót az összetevők feltöltése előtt törölje, válassza a **tisztítás** a tárolóban lehetőséget, ha azt szeretné, hogy a tároló tartalma ne legyen feltöltve (ne jelölje be a jelölőnégyzetet, ha nem szeretné törölni a tároló tartalmát).
-10. A **feltölteni kívánt**összetevők listájához írja be `text/*.txt`a következőt:.
+10. A **feltölteni kívánt összetevők listájához**írja be a következőt: `text/*.txt`.
 11. A **feltöltött összetevők közös virtuális elérési útját**a jelen oktatóanyag esetében írja be `${BUILD\_ID}/${BUILD\_NUMBER}`.
 12. A beállítások mentéséhez kattintson a **Mentés** gombra.
 13. A Jenkins irányítópultján válassza a **Létrehozás most** lehetőséget a **MyJob**futtatásához. Ellenőrizze a konzol kimenetét az állapothoz. Az Azure Storage-hoz tartozó állapotüzenetek a konzol kimenetében jelennek meg, amikor a Build utáni művelet elindítja a Build-összetevők feltöltését.
 14. A feladatok sikeres befejezését követően a nyilvános blob megnyitásával ellenőrizheti a Build-összetevőket.
-    1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
+    1. Bejelentkezés az [Azure Portalra](https://portal.azure.com).
     2. Válassza a **Storage** lehetőséget.
     3. Válassza ki a Jenkins-hez használt Storage-fiók nevét.
-    4. Válasszaa tárolók lehetőséget.
+    4. Válassza a **tárolók**lehetőséget.
     5. Válassza ki a **myjob**nevű tárolót, amely a Jenkins-feladatok létrehozásakor hozzárendelt feladatnév kisbetűs verziója. A tárolók neve és a blob neve kisbetűs (és kis-és nagybetűket megkülönböztető) az Azure Storage-ban. A **myjob**nevű tároló Blobok listáján belül a **Hello. txt** és a **Date. txt fájlt**kell látnia. Másolja az egyik elem URL-címét, és nyissa meg a böngészőben. Ekkor megjelenik a Build-összetevőként feltöltött szövegfájl.
 
-Feladatokból csak egy, az Azure Blob Storage-ba feltöltés utáni művelet hozható létre. Az összetevők Azure Blob Storage-ba való feltöltésének egyetlen utólagos felépítési művelete különböző fájlokat (beleértve a helyettesítő karaktereket) és a fájlok elérési útját is megadhatja egy pontosvesszővel elválasztó karakterrel **feltöltött** összetevők listáján belül. Ha például a Jenkins-Build JAR-fájlokat és TXT-fájlokat hoz létre a munkaterület **Build** mappájában, és az Azure Blob Storage-ba szeretne feltölteni, akkor a következő értéket használja a **feltöltendő** összetevők listájához: `build/\*.jar;build/\*.txt`. A dupla kettőspontos szintaxist is használhatja a blob nevében használandó elérési út megadásához. Ha például azt szeretné, hogy az adattégelyek a blob elérési útjában **bináris** fájlok használatával legyenek feltöltve, és a txt-fájlok a blob elérési útjában található megjegyzésekkel töltődnek fel, a következő értéket kell használni `build/\*.jar::binaries;build/\*.txt::notices`a feltöltendő összetevők **listájához** :.
+Feladatokból csak egy, az Azure Blob Storage-ba feltöltés utáni művelet hozható létre. Az összetevők Azure Blob Storage-ba való feltöltésének egyetlen utólagos felépítési művelete különböző fájlokat (beleértve a helyettesítő karaktereket) és a fájlok elérési útját is megadhatja egy pontosvesszővel elválasztó karakterrel **feltöltött összetevők listáján** belül. Ha például a Jenkins-Build JAR-fájlokat és TXT-fájlokat hoz létre a munkaterület **Build** mappájában, és az Azure Blob Storage-ba szeretne feltölteni, akkor a következő értéket használja a **feltöltendő összetevők listájához** : `build/\*.jar;build/\*.txt`. A dupla kettőspontos szintaxist is használhatja a blob nevében használandó elérési út megadásához. Ha például azt szeretné, hogy az adattégelyek a blob elérési útjában található **bináris** fájlok használatával legyenek feltöltve, és a txt-fájlok a blob elérési útjában található **megjegyzésekkel** töltődnek fel, akkor a következő értéket kell megkapnia a **feltöltendő összetevők listájához** : `build/\*.jar::binaries;build/\*.txt::notices`.
 
 ## <a name="how-to-create-a-build-step-that-downloads-from-azure-blob-storage"></a>Az Azure Blob Storage-ból letöltött Build lépés létrehozása
 A következő lépések bemutatják, hogyan állíthat be egy Build lépést az elemek Azure Blob Storage-ból való letöltéséhez, ami akkor hasznos, ha elemeket kíván felvenni a buildbe. Ennek a mintának a használatára példa az olyan tégelyek, amelyeket érdemes lehet megőrizni az Azure Blob Storage-ban.
 
-1. A feladatütemezés összeállítás szakaszában válassza a **létrehozási lépés hozzáadása** elemet, és válassza a **Letöltés az Azure Blob Storage-ból**lehetőséget.
+1. **A feladatütemezés összeállítás szakaszában válassza** a **létrehozási lépés hozzáadása** elemet, és válassza a **Letöltés az Azure Blob Storage-ból**lehetőséget.
 2. A **Storage-fiók neve**mezőben válassza ki a használni kívánt Storage-fiókot.
 3. A **tároló neve**mezőben adja meg annak a tárolónak a nevét, amely a letölteni kívánt blobokat tartalmazni kívánja. Környezeti változókat is használhat.
-4. A **blob neve**mezőben adja meg a blob nevét. Környezeti változókat is használhat. Azt is megteheti, hogy egy csillagot is használhat helyettesítő karakterként, miután megadta a blob nevének kezdeti betűjelét (ke) t. A **Project\\** * például minden olyan blobot megad, amelynek a neve a **projekttel**kezdődik.
+4. A **blob neve**mezőben adja meg a blob nevét. Környezeti változókat is használhat. Azt is megteheti, hogy egy csillagot is használhat helyettesítő karakterként, miután megadta a blob nevének kezdeti betűjelét (ke) t. A **project\\** * például minden olyan blobot megad, amelynek a neve a **projekttel**kezdődik.
 5. Választható A **letöltési útvonal**mezőben határozza meg a Jenkins-gép azon elérési útját, amelyen le szeretné tölteni a fájlokat az Azure Blob Storage-ból. A környezeti változók is használhatók. (Ha nem ad meg értéket a **letöltési útvonalhoz**, a rendszer letölti az Azure Blob Storage-ból származó fájlokat a feladatok munkaterületére.)
 
 Ha további elemeket szeretne letölteni az Azure Blob Storage-ból, további létrehozási lépéseket is létrehozhat.
@@ -128,16 +128,16 @@ A Build futtatása után megtekintheti a létrehozási előzmények konzoljának
 ## <a name="components-used-by-the-blob-service"></a>Az Blob service által használt összetevők
 Ez a szakasz áttekintést nyújt a Blob service összetevőkről.
 
-* **Storage-fiók**: Az Azure Storage-hoz való összes hozzáférés egy Storage-fiókon keresztül történik. A Storage-fiók a névtér legmagasabb szintje a Blobok eléréséhez. Egy fiók korlátlan számú tárolót tartalmazhat, feltéve, hogy a teljes méret 100 TB.
-* **Tároló**: A tároló Blobok egy csoportját biztosítja. Az összes blobnak tárolóban kell lennie. Egy fiók korlátlan számú tárolót tartalmazhat. Egy tároló korlátlan számú blob tárolására használható.
-* **Blob**: Bármilyen típusú és méretű fájl. Az Azure Storage-ban két típusú blob tárolható: a blokk-és a Blobok. A legtöbb fájl blokkolja a blobokat. Egy blokkos blob mérete legfeljebb 200 GB lehet. Ez az oktatóanyag blokk-blobokat használ. Az oldal Blobok, egy másik blob típusa akár 1 TB méretű is lehet, és hatékonyabb, ha a fájlban lévő bájtok tartományait gyakran módosítják. A Blobokkal kapcsolatos további információkért lásd: [a Blobok, a blobok és](https://msdn.microsoft.com/library/azure/ee691964.aspx)a Blobok hozzáfűzésének ismertetése.
-* **URL-formátum**: A Blobok a következő URL-formátummal érhetők el:
+* **Storage-fiók**: Minden Azure Storage-hozzáférés tárfiókon keresztül valósítható meg. A Storage-fiók a névtér legmagasabb szintje a Blobok eléréséhez. Egy fiók korlátlan számú tárolót tartalmazhat, feltéve, hogy a teljes méret 100 TB.
+* **Tároló**: a tároló Blobok egy csoportját biztosítja. Az összes blobnak tárolóban kell lennie. Egy fiók korlátlan számú tárolót tartalmazhat. Egy tároló korlátlan számú blob tárolására használható.
+* **Blob**: bármilyen típusú és méretű fájl. Az Azure Storage-ban két típusú blob tárolható: a blokk-és a Blobok. A legtöbb fájl blokkolja a blobokat. Egy blokkos blob mérete legfeljebb 200 GB lehet. Ez az oktatóanyag blokk-blobokat használ. Az oldal Blobok, egy másik blob típusa akár 1 TB méretű is lehet, és hatékonyabb, ha a fájlban lévő bájtok tartományait gyakran módosítják. A Blobokkal kapcsolatos további információkért lásd: [a Blobok, a blobok és a Blobok hozzáfűzésének ismertetése](https://msdn.microsoft.com/library/azure/ee691964.aspx).
+* **URL-formátum**: a Blobok a következő URL-formátummal érhetők el:
   
     `http://storageaccount.blob.core.windows.net/container_name/blob_name`
   
     (A fenti formátum a globális Azure-felhőre vonatkozik. Ha más Azure-felhőt használ, az URL-végpont meghatározásához használja a [Azure Portal](https://portal.azure.com) belüli végpontot.)
   
-    A fenti `storageaccount` formátumban a Storage- `container_name` fiók nevét jelöli, a pedig a tároló nevét, valamint `blob_name` a blob nevét jelöli. A tároló neve alatt több elérési út is lehet, a továbbítási perjelekkel **/** elválasztva. Az oktatóanyaghoz használt példa **MyJob**volt, és a (z) **{Build\_ID}/$ {Build\_Number}** lett használva a közös virtuális elérési úthoz, ami a blob URL-címét a következő formában adja meg:
+    A fenti formátumban `storageaccount` a Storage-fiók nevét jelöli, `container_name` a tároló nevét, a `blob_name` pedig a blob nevét jelöli. A tároló neve alatt több elérési úttal is rendelkezhet, amelyeket egy perjel, **/** választ el egymástól. Az oktatóanyaghoz használt példa **MyJob**volt, és a közös virtuális elérési úthoz **$ {Build\_ID}/$ {Build\_Number}** lett használva, így a blob a következő űrlap URL-címét használja:
   
     `http://example.blob.core.windows.net/myjob/2014-04-14_23-57-00/1/hello.txt`
 
@@ -148,7 +148,7 @@ Ha a Jenkins beépülő modulok használata során bármilyen hibát tapasztal, 
 ## <a name="next-steps"></a>További lépések
 * [A Jenkins megfelel](https://wiki.jenkins-ci.org/display/JENKINS/Meet+Jenkins)
 * [Javához készült Azure Storage SDK](https://github.com/azure/azure-storage-java)
-* [Azure Storage ügyféloldali SDK-referencia](http://dl.windowsazure.com/storage/javadoc/)
+* [Azure Storage ügyféloldali SDK-referencia](https://javadoc.io/doc/com.microsoft.azure/azure-core/0.8.0/index.html)
 * [Az Azure Storage-szolgáltatások REST API-ja](https://msdn.microsoft.com/library/azure/dd179355.aspx)
 * [Az Azure Storage csapat blogja](https://blogs.msdn.com/b/windowsazurestorage/)
 

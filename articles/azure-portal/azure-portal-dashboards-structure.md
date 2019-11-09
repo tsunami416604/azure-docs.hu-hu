@@ -13,12 +13,12 @@ ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 09/01/2017
 ms.author: kfollis
-ms.openlocfilehash: dccf1550052910269efe156b999882234669d7dc
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 5933521993b598ae3758df6e2e7dbf61bf424779
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/08/2019
-ms.locfileid: "73815710"
+ms.locfileid: "73832799"
 ---
 # <a name="the-structure-of-azure-dashboards"></a>Az Azure-irányítópultok szerkezete
 Ez a dokumentum egy Azure-irányítópult szerkezetét mutatja be példaként a következő irányítópult használatával:
@@ -295,7 +295,7 @@ Nézzük meg a JSON megfelelő részeit.  A legfelső szintű tulajdonságok, az
 
 ### <a name="the-id-property"></a>Az id tulajdonság
 
-Az Azure-erőforrás azonosítója az Azure- [erőforrások elnevezési konvenciói alapján](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging). Amikor a portál létrehoz egy irányítópultot, általában egy GUID formátumú azonosítót választ, de a programozott módon történő létrehozáskor bármilyen érvényes nevet használhat. 
+Az Azure-erőforrás azonosítója az Azure- [erőforrások elnevezési konvenciói alapján](/azure/architecture/best-practices/resource-naming). Amikor a portál létrehoz egy irányítópultot, általában egy GUID formátumú azonosítót választ, de a programozott módon történő létrehozáskor bármilyen érvényes nevet használhat. 
 
 ### <a name="the-name-property"></a>A Name tulajdonság
 A név az erőforrás-azonosító azon szegmense, amely nem tartalmazza az előfizetést, az erőforrás típusát vagy az erőforráscsoport adatait. Lényegében az erőforrás-azonosító utolsó szegmense.

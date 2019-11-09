@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 10/09/2019
 ms.author: angle
-ms.openlocfilehash: d3b3f90be7dda28db9a27aa96282acee61e6c8fc
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 7dffa3d9f6e96adc6146a1059e7360c77926ece3
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73507340"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73837378"
 ---
 # <a name="disclosure-design-guidelines"></a>Közzétételi tervre vonatkozó irányelvek
 Ismerje meg, hogyan hozhat létre és tarthat fenn megbízhatóságot az ügyfelekkel a hangélmény szintetikus természetének átláthatósága érdekében.
@@ -76,7 +76,7 @@ A következő ábra segítségével meghatározhatja, hogy a szintetikus hangél
 
 ## <a name="reference-docs"></a>Segédanyagok
 
-* [Átlátszósági Megjegyzés](https://aka.ms/neural-tts-transparency-note)
+* [A hangalapú tehetségek közzététele](https://aka.ms/disclosure-voice-talent)
 * [Útmutató a szintetikus hangtechnológia felelős üzembe helyezéséhez](concepts-guidelines-responsible-deployment-synthetic.md)
 * [A kapuzás áttekintése](concepts-gating-overview.md)
 

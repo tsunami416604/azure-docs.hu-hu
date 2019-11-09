@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 07/19/2019
 ms.author: absha
-ms.openlocfilehash: 4b233117bc0f967368aeac7baec8c4875aa16826
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.openlocfilehash: ef2bbf8804e96a3e25f053d189c6d85bfa845b0b
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70051420"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73833177"
 ---
 # <a name="troubleshoot-app-service-issues-in-application-gateway"></a>A Application Gateway App Service problémáinak elhárítása
 
@@ -39,16 +39,16 @@ Emellett, ha az Application Gateway mögötti app Servicest használ, az Applica
 
 ## <a name="sample-configuration"></a>Minta konfigurációja
 
-- HTTP-figyelő: Alapszintű vagy többhelyes
+- HTTP-figyelő: alapszintű vagy többhelyes
 - Háttérbeli címkészlet: App Service
-- HTTP-beállítások: **Állomásnév kiválasztása a háttérbeli címről** engedélyezve
-- Mintavételi **Állomásnév kiválasztása a http-beállítások** engedélyezve
+- HTTP-beállítások: **válassza az állomásnév lehetőséget a háttér címe** beállításnál
+- Mintavétel: **válassza az állomásnév lehetőséget a http-beállítások** engedélyezve
 
 ## <a name="cause"></a>Ok
 
 App Service egy több-bérlős szolgáltatás, ezért a kérelemben szereplő állomásfejléc használatával irányítja át a kérést a megfelelő végpontra. App Services, *. azurewebsites.net (Say, contoso.azurewebsites.net) alapértelmezett tartományneve eltér az Application Gateway tartománynevétől (azaz contoso.com). 
 
-Az ügyfél eredeti kérelme az Application Gateway tartományneve, a contoso.com pedig az állomásnév. Úgy kell konfigurálnia az Application Gateway-t, hogy módosítsa az eredeti kérelemben szereplő állomásnevet az App Service állomásneve, amikor a kérést az App Service háttér felé irányítja. Az Application Gateway HTTP-beállítási konfigurációjában használja a kapcsoló-kiválasztó gazdagépet a **háttérbeli címről** . Használja a Switch **pick hostname elemet a háttérbeli http-beállítások közül** az állapot mintavételi konfigurációjában.
+Az ügyfél eredeti kérelme az Application Gateway tartományneve, a contoso.com pedig az állomásnév. Úgy kell konfigurálnia az Application Gateway-t, hogy módosítsa az eredeti kérelemben szereplő állomásnevet az App Service állomásneve, amikor a kérést az App Service háttér felé irányítja. Az Application Gateway HTTP-beállítási konfigurációjában használja a kapcsoló- **kiválasztó gazdagépet a háttérbeli címről** . Használja a Switch **pick hostname elemet a háttérbeli http-beállítások közül** az állapot mintavételi konfigurációjában.
 
 
 
@@ -76,14 +76,14 @@ Set-Cookie: ARRAffinity=b5b1b14066f35b3e4533a1974cacfbbd969bf1960b6518aa2c2e2619
 
 X-Powered-By: ASP.NET
 ```
-Az előző példában figyelje meg, hogy a válasz fejlécének 301-as állapotkód van az átirányításhoz. A Location fejléc az App Service állomásneve helyett az eredeti állomásnév www.contoso.com.
+Az előző példában figyelje meg, hogy a válasz fejlécének 301-as állapotkód van az átirányításhoz. A Location fejlécben az App Service állomásneve az eredeti állomásnév helyett `www.contoso.com`.
 
-## <a name="solution-rewrite-the-location-header"></a>Megoldás A Location fejléc újraírása
+## <a name="solution-rewrite-the-location-header"></a>Megoldás: a hely fejlécének újraírása
 
-A Location (hely) fejlécben állítsa be az állomásnév nevét az Application Gateway tartománynevére. Ehhez hozzon létre egy Újraírási [szabályt](https://docs.microsoft.com/azure/application-gateway/rewrite-http-headers) egy feltétellel, amely kiértékeli, hogy a válaszban található azurewebsites.net tartalmaz-e. Emellett olyan műveletet is végre kell hajtania, amely újraírja a Location fejlécet, hogy az Application Gateway állomásneve legyen. További információ: a [Location fejléc](https://docs.microsoft.com/azure/application-gateway/rewrite-http-headers#modify-a-redirection-url)újraírásának útmutatója.
+A Location (hely) fejlécben állítsa be az állomásnév nevét az Application Gateway tartománynevére. Ehhez hozzon létre egy [Újraírási szabályt](https://docs.microsoft.com/azure/application-gateway/rewrite-http-headers) egy feltétellel, amely kiértékeli, hogy a válaszban található azurewebsites.net tartalmaz-e. Emellett olyan műveletet is végre kell hajtania, amely újraírja a Location fejlécet, hogy az Application Gateway állomásneve legyen. További információ: a [Location fejléc újraírásának](https://docs.microsoft.com/azure/application-gateway/rewrite-http-headers#modify-a-redirection-url)útmutatója.
 
 > [!NOTE]
-> A HTTP-fejléc újraírásának támogatása csak Application Gateway [Standard_v2 és WAF_V2 SKU-](https://docs.microsoft.com/azure/application-gateway/application-gateway-autoscaling-zone-redundant) ban érhető el. Ha v1 SKU-t használ, javasoljuk, hogy [telepítse a v1-ről v2-re](https://docs.microsoft.com/azure/application-gateway/migrate-v1-v2). A v2 SKU-hoz elérhető újraírást és egyéb [speciális képességeket](https://docs.microsoft.com/azure/application-gateway/application-gateway-autoscaling-zone-redundant#feature-comparison-between-v1-sku-and-v2-sku) kívánja használni.
+> A HTTP-fejléc újraírásának támogatása csak a Application Gateway [Standard_v2 és WAF_V2 SKU](https://docs.microsoft.com/azure/application-gateway/application-gateway-autoscaling-zone-redundant) esetében érhető el. Ha v1 SKU-t használ, javasoljuk, hogy [telepítse a v1-ről v2-re](https://docs.microsoft.com/azure/application-gateway/migrate-v1-v2). A v2 SKU-hoz elérhető újraírást és egyéb [speciális képességeket](https://docs.microsoft.com/azure/application-gateway/application-gateway-autoscaling-zone-redundant#feature-comparison-between-v1-sku-and-v2-sku) kívánja használni.
 
 ## <a name="alternate-solution-use-a-custom-domain-name"></a>Alternatív megoldás: Egyéni tartománynév használata
 
@@ -97,9 +97,9 @@ Egy egyéni tartománynak kell lennie, és a következő eljárást kell követn
 
     ![App Service – egyéni tartomány listája](./media/troubleshoot-app-service-redirection-app-service-url/appservice-2.png)
 
-- Az App Service készen áll a www.contoso.com állomásnév elfogadására. Módosítsa a DNS-beli CNAME-bejegyzést úgy, hogy az az Application Gateway teljes tartománynevére mutasson, például appgw.eastus.cloudapp.azure.com.
+- Az App Service készen áll az állomásnév elfogadására `www.contoso.com`. Módosítsa a DNS-beli CNAME-bejegyzést úgy, hogy az az Application Gateway FQDN-re mutasson, például `appgw.eastus.cloudapp.azure.com`.
 
-- DNS-lekérdezés esetén győződjön meg arról, hogy a tartomány www.contoso.com az Application Gateway FQDN-re oldódik fel.
+- DNS-lekérdezés esetén győződjön meg arról, hogy a tartomány `www.contoso.com` az Application Gateway teljes tartománynevére van feloldva.
 
 - Az egyéni mintavétel beállításával letilthatja a **pick hostname elemet a háttérbeli http-beállítások közül**. A Azure Portal törölje a jelölést a mintavételi beállítások között. A PowerShellben ne használja a **-PickHostNameFromBackendHttpSettings** kapcsolót a **set-AzApplicationGatewayProbeConfig** parancsban. A mintavétel állomásnév mezőjében adja meg az App Service teljes tartománynevét (example.azurewebsites.net). Az Application Gateway által küldött mintavételi kérelmek ezt a teljes tartománynevet a gazdagép fejlécében hajtják végre.
 
@@ -110,7 +110,7 @@ Egy egyéni tartománynak kell lennie, és a következő eljárást kell követn
 
 - Rendelje vissza az egyéni mintavételt a háttérbeli HTTP-beállításokhoz, és ellenőrizze, hogy a háttér állapota Kifogástalan-e.
 
-- Az Application Gatewaynek ekkor továbbítania kell ugyanazt az állomásnevet, a www.contoso.com-t az App Service-be. Az átirányítás ugyanazon az állomásnéven történik. Olvassa el a következő példában szereplő kérelem és válasz fejléceket.
+- Az Application Gatewaynek ekkor továbbítania kell ugyanazt az állomásnevet, `www.contoso.com`az App Service-be. Az átirányítás ugyanazon az állomásnéven történik. Olvassa el a következő példában szereplő kérelem és válasz fejléceket.
 
 Az előző lépések végrehajtásához a PowerShell használatával egy meglévő beállításhoz használja az alábbi minta PowerShell-parancsfájlt. Figyelje meg, hogy nem használtuk a **-PickHostname** kapcsolókat a mintavétel és a http-beállítások konfigurációjában.
 

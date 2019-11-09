@@ -1,10 +1,10 @@
 ---
-title: Azure AD-szerepkörök hozzáférésének áttekintése a PIM-Azure Active Directoryban | Microsoft Docs
-description: Ismerje meg, hogyan tekintheti át az Azure AD-szerepkörök hozzáférését Azure AD Privileged Identity Management (PIM) alkalmazásban.
+title: Azure AD-szerepkörök hozzáférésének áttekintése a PIM-ben – Azure AD | Microsoft Docs
+description: Megtudhatja, hogyan tekintheti át Azure Active Directory szerepkörök hozzáférését Azure AD Privileged Identity Management (PIM) szolgáltatásban.
 services: active-directory
 documentationcenter: ''
 author: curtand
-manager: mtillman
+manager: daveba
 editor: ''
 ms.service: active-directory
 ms.topic: conceptual
@@ -14,12 +14,12 @@ ms.date: 10/22/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c8b9f16d6c7f738e64f154506228c832e31e0f5b
-ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
+ms.openlocfilehash: 76eccb5d62b68865b7a117312be62753f203e2cb
+ms.sourcegitcommit: 16c5374d7bcb086e417802b72d9383f8e65b24a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72809050"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73847090"
 ---
 # <a name="review-access-to-azure-ad-roles-in-privileged-identity-management"></a>Tekintse át az Azure AD-szerepkörökhöz való hozzáférést Privileged Identity Management
 
@@ -50,6 +50,6 @@ Az alábbi lépéseket követve megkeresheti és elvégezheti a hozzáférési f
 5. Az **Azure ad-szerepkörök áttekintése** panel bezárásához.
 
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [A saját Azure-erőforrásszerepkörök hozzáférési felülvizsgálatának végrehajtása a PIM szolgáltatásban](pim-resource-roles-perform-access-review.md)

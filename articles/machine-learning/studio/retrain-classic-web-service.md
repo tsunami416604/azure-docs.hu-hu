@@ -1,6 +1,6 @@
 ---
 title: Klasszikus webszolgáltatás újratanítása
-titleSuffix: ML Studio (classic) Azure
+titleSuffix: ML Studio (classic) - Azure
 description: Megtudhatja, hogyan lehet áttanítani a modelleket, és hogyan frissíthet egy klasszikus webszolgáltatást, hogy az újonnan betanított modellt használja Azure Machine Learning Studio (klasszikus).
 services: machine-learning
 ms.service: machine-learning
@@ -10,12 +10,12 @@ author: peterclu
 ms.author: amlstudiodocs
 ms.custom: seodec18, previous-ms.author=yahajiza, previous-author=YasinMSFT
 ms.date: 02/14/2019
-ms.openlocfilehash: 17d15de3df73592c3ce410535235559c8c6fb584
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: eac7674ae4a88621a803c70bd55a88e65b2cb7e9
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73670521"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73838688"
 ---
 # <a name="retrain-and-deploy-a-classic-studio-classic-web-service"></a>Klasszikus Studio-webszolgáltatás újratanítása és üzembe helyezése
 
@@ -131,7 +131,7 @@ A hívás *apiKey* és *endpointUrl* a végpont-irányítópultból szerezhető 
 
 Az *erőforrásokban* lévő *Name* paraméter értékének meg kell egyeznie a prediktív kísérletben a mentett betanított modell erőforrásának nevével. Az erőforrás nevének lekérése:
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
+1. Bejelentkezés az [Azure Portalra](https://portal.azure.com).
 1. A bal oldali menüben kattintson a **Machine learning**elemre.
 1. A név területen kattintson a munkaterületre, majd a **webszolgáltatások**elemre.
 1. A név területen kattintson a **népszámlálási modell [prediktív exp.]** elemre.

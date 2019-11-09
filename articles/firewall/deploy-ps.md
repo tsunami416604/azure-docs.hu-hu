@@ -7,12 +7,12 @@ ms.service: firewall
 ms.date: 4/10/2019
 ms.author: victorh
 ms.topic: conceptual
-ms.openlocfilehash: 494beb6ba2bf8a9409962b4418089cdad0e182e1
-ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
+ms.openlocfilehash: 7f48012ca1f97c2e28380d95da37863c4bc17f63
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70114785"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73831842"
 ---
 # <a name="deploy-and-configure-azure-firewall-using-azure-powershell"></a>Azure Firewall üzembe helyezése és konfigurálása Azure PowerShell használatával
 
@@ -241,7 +241,7 @@ Most tesztelje a tűzfalat, és ellenőrizze, hogy az a várt módon működik-e
    Invoke-WebRequest -Uri https://www.microsoft.com
    ```
 
-   A www.google.com kérelmeknek sikeresnek kell lenniük, és a www.microsoft.com kérelmeknek sikertelennek kell lenniük. Ez azt mutatja, hogy a tűzfalszabályok a várt módon működnek.
+   A `www.google.com` kérelmeknek sikereseknek kell lenniük, és a `www.microsoft.com` kérelmek sikertelenek lesznek. Ez azt mutatja, hogy a tűzfalszabályok a várt módon működnek.
 
 Most ellenőrizte, hogy a tűzfalszabályok működnek-e:
 
@@ -258,4 +258,4 @@ Remove-AzResourceGroup -Name Test-FW-RG
 
 ## <a name="next-steps"></a>További lépések
 
-* [Oktatóanyag: Azure Firewall naplók figyelése](./tutorial-diagnostics.md)
+* [Oktatóanyag: Az Azure Firewall naplóinak monitorozása](./tutorial-diagnostics.md)

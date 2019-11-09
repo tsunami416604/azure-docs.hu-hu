@@ -1,6 +1,6 @@
 ---
-title: Azure Service Bus témakör-előfizetés létrehozása és a szabály az Azure Resource Manager-sablonnal |} A Microsoft Docs
-description: A témakör, előfizetés és Azure Resource Manager-sablon használatával szabály egy Service Bus-névtér létrehozása
+title: Azure Service Bus témakör-előfizetés és-szabály létrehozása Azure Resource Manager sablon használatával | Microsoft Docs
+description: Service Bus névtér létrehozása témakörrel, előfizetéssel és szabállyal Azure Resource Manager sablon használatával
 services: service-bus-messaging
 documentationcenter: .net
 author: spelluru
@@ -14,44 +14,44 @@ ms.tgt_pltfrm: dotnet
 ms.workload: na
 ms.date: 01/23/2019
 ms.author: spelluru
-ms.openlocfilehash: 8be34a85cb1a1863ee8a78c7b97af66627612fea
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 6631528c9d1f2dfc6dcd3e9d6da81115a9ece637
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67444745"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73832080"
 ---
-# <a name="create-a-service-bus-namespace-with-topic-subscription-and-rule-using-an-azure-resource-manager-template"></a>Service Bus-névtér létrehozása a témakör, előfizetés és a szabály egy Azure Resource Manager-sablon használatával
+# <a name="create-a-service-bus-namespace-with-topic-subscription-and-rule-using-an-azure-resource-manager-template"></a>Service Bus névtér létrehozása témakörrel, előfizetéssel és szabállyal Azure Resource Manager sablon használatával
 
-Ez a cikk bemutatja, hogyan használható az Azure Resource Manager-sablon, amely egy Service Bus-névteret hoz létre egy témakört, előfizetéssel és szabállyal (szűrő). A cikk azt ismerteti, hogyan adja meg, hogy mely erőforrások vannak telepítve, és hogyan adhat meg a paramétereket, amelyek a megadott az üzembe helyezés végrehajtása esetén. Ezt a sablont saját üzembe helyezési műveleteihez is használhatja, vagy akár igényeinek megfelelően testre is szabhatja
+Ez a cikk bemutatja, hogyan használható egy olyan Azure Resource Manager-sablon, amely egy Service Bus névteret hoz létre témakörrel, előfizetéssel és szabállyal (szűrővel). A cikk azt ismerteti, hogyan határozható meg, hogy mely erőforrások legyenek telepítve, és Hogyan határozható meg a központi telepítés végrehajtásakor megadott paraméterek. Ezt a sablont saját üzembe helyezési műveleteihez is használhatja, vagy akár igényeinek megfelelően testre is szabhatja
 
-Sablonok létrehozásával kapcsolatos további információkért lásd: [Azure Resource Manager-sablonok készítése][Authoring Azure Resource Manager templates].
+További információ a sablonok létrehozásáról: [Azure Resource Manager-sablonok][Authoring Azure Resource Manager templates]készítése.
 
-Azure-erőforrások elnevezési konvenciói eljárások és minták kapcsolatos további információkért lásd: [ajánlott az Azure-erőforrások elnevezési konvenciói][Recommended naming conventions for Azure resources].
+További információ az Azure-erőforrások elnevezési konvenciókkal kapcsolatos gyakorlatról és mintákról: [Az Azure-erőforrások ajánlott elnevezési konvenciói][Recommended naming conventions for Azure resources].
 
-A teljes sablont, tekintse meg a [témakör, előfizetés és a szabály a Service Bus-névtér][Service Bus namespace with topic, subscription, and rule] sablont.
+A teljes sablonhoz tekintse meg a következő témakört: [Service Bus névtér témakörrel, előfizetéssel és szabály][Service Bus namespace with topic, subscription, and rule] sablonnal.
 
 > [!NOTE]
-> Az alábbi Azure Resource Manager-sablonok letöltése és központi telepítési érhetők el.
+> A következő Azure Resource Manager sablonok tölthetők le és üzemelő példányban.
 > 
-> * [Service Bus-névtér létrehozása az üzenetsor és engedélyezési szabály](service-bus-resource-manager-namespace-auth-rule.md)
-> * [Service Bus-névtér létrehozása az üzenetsorhoz](service-bus-resource-manager-namespace-queue.md)
-> * [Service Bus-névtér létrehozása](service-bus-resource-manager-namespace.md)
-> * [Service Bus-névtér létrehozása témakörrel és előfizetéssel](service-bus-resource-manager-namespace-topic.md)
+> * [Service Bus névtér létrehozása a várólista-és engedélyezési szabállyal](service-bus-resource-manager-namespace-auth-rule.md)
+> * [Service Bus névtér létrehozása a várólistával](service-bus-resource-manager-namespace-queue.md)
+> * [Service Bus névtér létrehozása](service-bus-resource-manager-namespace.md)
+> * [Service Bus névtér létrehozása témakörrel és előfizetéssel](service-bus-resource-manager-namespace-topic.md)
 > 
-> A legújabb sablonokat keressen, látogasson el a [Azure gyorsindítási sablonok][Azure Quickstart Templates] katalógusban, és keresse meg a Service Bus.
+> A legújabb sablonok kereséséhez látogasson el az [Azure Gyorsindítás sablonok][Azure Quickstart Templates] galériába, és keressen rá Service Bus.
 > 
 > 
 
-## <a name="what-do-you-deploy"></a>Milyen tegye üzembe helyezni?
+## <a name="what-do-you-deploy"></a>Mit telepít?
 
-A sablon üzembe helyezése egy Service Bus-névtér témakörrel, előfizetéssel és szabály (szűrő).
+Ezzel a sablonnal Service Bus névteret helyezhet üzembe a témakör, az előfizetés és a szabály (Filter) alapján.
 
-[Service Bus-üzenettémák és előfizetések](service-bus-queues-topics-subscriptions.md#topics-and-subscriptions) egy-a-többhöz típusú kommunikációt biztosítanak az egy *közzétételi/előfizetési* mintát. Elosztott alkalmazások összetevői nem kommunikálnak közvetlenül egymással, témakörök és előfizetések használata esetén inkább keresztül váltanak üzeneteket témakör, amely közvetítőként működik. Egy témakör-előfizetés hasonlít egy virtuális üzenetsorra, amely megkapja a témakörbe küldött üzenetek másolatát. Egy szűrő, az előfizetés lehetővé teszi, hogy adja meg, mely egy témakörbe küldött üzenetek jelenjenek meg egy adott témakör-előfizetésben.
+[Service Bus témakörök és előfizetések](service-bus-queues-topics-subscriptions.md#topics-and-subscriptions) egy-a-többhöz típusú kommunikációt biztosítanak egy *közzétételi/* előfizetési minta formájában. Témakörök és előfizetések használata esetén az elosztott alkalmazások összetevői nem kommunikálnak közvetlenül egymással, hanem olyan témakörön keresztül cserélnek üzeneteket, amely közvetítőként működik. A témakörre való előfizetés egy olyan virtuális várólistára hasonlít, amely a témakörbe küldött üzenetek másolatait fogadja. Az előfizetés szűrője lehetővé teszi annak megadását, hogy a témakörbe küldött üzenetek egy adott témakör-előfizetésen belül jelenjenek meg.
 
-## <a name="what-are-rules-filters"></a>Mik azok a szabályok (szűrőkkel)?
+## <a name="what-are-rules-filters"></a>Mik a szabályok (szűrők)?
 
-Sok esetben üzeneteket, amelyek meghatározott jellemzőkkel rendelkeznek, különböző módon kell feldolgozni. Ahhoz, hogy az egyéni feldolgozási, konfigurálhatja az előfizetések található üzeneteket, amelyek az adott tulajdonságokkal rendelkezik, és hajtsa végre a módosításokat, azokat a tulajdonságokat. Service Bus-előfizetések a témakörbe küldött összes üzenet látható, bár csak másolhatja azokat az üzeneteket egy részét az virtuális előfizetés üzenetsorába. Előfizetés-szűrők használatával történik. Szabályok (szűrőkkel) kapcsolatos további információkért lásd: [szabályok és műveletek](service-bus-queues-topics-subscriptions.md#rules-and-actions).
+Számos esetben a konkrét tulajdonságokkal rendelkező üzeneteket különböző módokon kell feldolgozni. Az egyéni feldolgozás engedélyezéséhez az előfizetések konfigurálásával megkeresheti az adott tulajdonságokkal rendelkező üzeneteket, majd módosíthatja ezeket a tulajdonságokat. Habár Service Bus előfizetések a témakörbe küldött összes üzenetet láthatják, az üzenetek egy részhalmazát csak a virtuális előfizetési várólistára másolhatja. Az előfizetés-szűrők használatával valósítható meg. További információ a szabályokról (szűrők): [szabályok és műveletek](service-bus-queues-topics-subscriptions.md#rules-and-actions).
 
 Az automatikus üzembe helyezéshez kattintson az alábbi gombra:
 
@@ -59,12 +59,12 @@ Az automatikus üzembe helyezéshez kattintson az alábbi gombra:
 
 ## <a name="parameters"></a>Paraméterek
 
-Az Azure Resource Manager adja meg a sablon üzembe helyezésekor kívánt értékeket a paraméterek meghatározása. A sablonban található egy `Parameters` nevű rész, amely magába foglalja az összes paraméterértéket. Adjon meg ezeket az értékeket, amelyek paramétert, a projekt telepítésekor vagy telepíti, akkor a környezet alapján. Ne adjon meg olyan paramétereket olyan értékhez, amelyek nem változnak. A sablonban minden egyes paraméterérték az üzembe helyezendő erőforrások megadásához lesz felhasználva.
+A Azure Resource Manager segítségével adja meg a sablon telepítésekor megadni kívánt értékek paramétereit. A sablonban található egy `Parameters` nevű rész, amely magába foglalja az összes paraméterértéket. Definiáljon egy paramétert azokhoz az értékekhez, amelyek a telepített projekttől függően változnak, vagy azon környezet alapján, amelyre telepíteni kívánja. Ne adjon meg olyan paramétereket olyan értékhez, amelyek nem változnak. A sablonban minden egyes paraméterérték az üzembe helyezendő erőforrások megadásához lesz felhasználva.
 
-A sablon meghatározza a következő:
+A sablon a következő paramétereket definiálja:
 
 ### <a name="servicebusnamespacename"></a>serviceBusNamespaceName
-A Service Bus-névtér létrehozása neve.
+A létrehozandó Service Bus névtér neve.
 
 ```json
 "serviceBusNamespaceName": {
@@ -73,7 +73,7 @@ A Service Bus-névtér létrehozása neve.
 ```
 
 ### <a name="servicebustopicname"></a>serviceBusTopicName
-A Service Bus-névtérben létrehozott üzenettéma nevére.
+A Service Bus névtérben létrehozott témakör neve.
 
 ```json
 "serviceBusTopicName": {
@@ -82,7 +82,7 @@ A Service Bus-névtérben létrehozott üzenettéma nevére.
 ```
 
 ### <a name="servicebussubscriptionname"></a>serviceBusSubscriptionName
-Az előfizetés létrehozása a Service Bus-névtér neve.
+A Service Bus névtérben létrehozott előfizetés neve.
 
 ```json
 "serviceBusSubscriptionName": {
@@ -90,7 +90,7 @@ Az előfizetés létrehozása a Service Bus-névtér neve.
 }
 ```
 ### <a name="servicebusrulename"></a>serviceBusRuleName
-A Service Bus-névtér létrehozása az rule(filter) neve.
+A Service Bus névtérben létrehozott szabály (szűrő) neve.
 
 ```json
    "serviceBusRuleName": {
@@ -98,7 +98,7 @@ A Service Bus-névtér létrehozása az rule(filter) neve.
   }
 ```
 ### <a name="servicebusapiversion"></a>serviceBusApiVersion
-A Service Bus API verzióját a sablont.
+A sablon Service Bus API-verziója.
 
 ```json
 "serviceBusApiVersion": { 
@@ -109,7 +109,7 @@ A Service Bus API verzióját a sablont.
        }
 ```
 ## <a name="resources-to-deploy"></a>Üzembe helyezendő erőforrások
-Létrehoz egy standard szintű Service Bus-névtér típusú **üzenetkezelés**, témakörrel és előfizetéssel és szabályokat.
+Létrehoz egy **üzenetküldés**típusú standard Service Bus névteret, amely témakört és előfizetést és szabályokat tartalmaz.
 
 ```json
  "resources": [{
@@ -161,7 +161,7 @@ Létrehoz egy standard szintű Service Bus-névtér típusú **üzenetkezelés**
     }]
 ```
 
-JSON-szintaxist és a Tulajdonságok [névterek](/azure/templates/microsoft.servicebus/namespaces), [témakörök](/azure/templates/microsoft.servicebus/namespaces/topics), [előfizetések](/azure/templates/microsoft.servicebus/namespaces/topics/subscriptions), és [szabályok](/azure/templates/microsoft.servicebus/namespaces/topics/subscriptions/rules).
+A JSON szintaxisa és tulajdonságai esetében lásd: [névterek](/azure/templates/microsoft.servicebus/namespaces), [témakörök](/azure/templates/microsoft.servicebus/namespaces/topics), [előfizetések](/azure/templates/microsoft.servicebus/namespaces/topics/subscriptions)és [szabályok](/azure/templates/microsoft.servicebus/namespaces/topics/subscriptions/rules).
 
 ## <a name="commands-to-run-deployment"></a>Az üzembe helyezést futtató parancsok
 [!INCLUDE [app-service-deploy-commands](../../includes/app-service-deploy-commands.md)]
@@ -171,7 +171,7 @@ JSON-szintaxist és a Tulajdonságok [névterek](/azure/templates/microsoft.serv
 New-AzureResourceGroupDeployment -Name \<deployment-name\> -ResourceGroupName \<resource-group-name\> -TemplateUri <https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/201-servicebus-create-topic-subscription-rule/azuredeploy.json>
 ```
 
-## <a name="azure-cli"></a>Azure CLI
+## <a name="azure-cli"></a>Azure parancssori felület (CLI)
 ```azurecli
 azure config mode arm
 
@@ -179,20 +179,20 @@ azure group deployment create \<my-resource-group\> \<my-deployment-name\> --tem
 ```
 
 ## <a name="next-steps"></a>További lépések
-A következő témakör bemutatja, hogyan hozhat létre egy előfizetés-szűrő: [Service Bus-névtér létrehozása a témakör, előfizetés és a szabály egy Azure Resource Manager-sablon használatával](service-bus-resource-manager-namespace-topic-with-rule.md)
+Tekintse meg az alábbi témakört, amely bemutatja, hogyan hozhat létre előfizetési szűrőt: [Service Bus névtér létrehozása témakörrel, előfizetéssel és szabállyal Azure Resource Manager sablon használatával](service-bus-resource-manager-namespace-topic-with-rule.md)
 
-Megtudhatja, hogyan kezelhetők ezek a cikkek alapján:
+Ismerje meg, hogyan kezelheti ezeket az erőforrásokat a következő cikkek megtekintésével:
 
-* [Az Azure Service Bus kezelése](service-bus-management-libraries.md)
+* [Azure Service Bus kezelése](service-bus-management-libraries.md)
 * [A Service Bus kezelése a PowerShell használatával](service-bus-manage-with-ps.md)
-* [A Service Bus-erőforrások kezelése a Service Bus Explorerrel](https://github.com/paolosalvatori/ServiceBusExplorer/releases)
+* [Service Bus erőforrások kezelése a Service Bus Explorerrel](https://github.com/paolosalvatori/ServiceBusExplorer/releases)
 
 [Authoring Azure Resource Manager templates]: ../azure-resource-manager/resource-group-authoring-templates.md
 [Azure Quickstart Templates]: https://azure.microsoft.com/documentation/templates/?term=service+bus
 [Learn more about Service Bus topics and subscriptions]: service-bus-queues-topics-subscriptions.md
 [Using Azure PowerShell with Azure Resource Manager]: ../azure-resource-manager/powershell-azure-resource-manager.md
 [Using the Azure CLI for Mac, Linux, and Windows with Azure Resource Management]: ../azure-resource-manager/xplat-cli-azure-resource-manager.md
-[Recommended naming conventions for Azure resources]: ../guidance/guidance-naming-conventions.md
+[Recommended naming conventions for Azure resources]: /azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging
 [Service Bus namespace with topic, subscription, and rule]: https://github.com/Azure/azure-quickstart-templates/blob/master/201-servicebus-create-topic-subscription-rule/
 [Service Bus queues, topics, and subscriptions]: service-bus-queues-topics-subscriptions.md
 

@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 07/23/2019
 ms.author: victorh
-ms.openlocfilehash: 9966164ec1b6a37538a24d2ef8cb80007e6f6d29
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
-ms.translationtype: HT
+ms.openlocfilehash: 84a46e66bb6c36950a84fbeb2dacc3a8d6bcc241
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68698233"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73833373"
 ---
 # <a name="generate-an-azure-application-gateway-self-signed-certificate-with-a-custom-root-ca"></a>Azure Application Gateway önaláírt tanúsítvány létrehozása egyéni legfelső szintű HITELESÍTÉSSZOLGÁLTATÓval
 
@@ -23,7 +23,7 @@ A Application Gateway alapértelmezés szerint megbízhatónak minősíti a webh
 > [!NOTE]
 > Az önaláírt tanúsítványok alapértelmezés szerint nem megbízhatók, és nehéz lehet fenntartani őket. Emellett elavult kivonatoló és titkosító csomagokat is használhatnak, amelyek esetleg nem erősek. A biztonság érdekében érdemes megvásárolnia egy jól ismert hitelesítésszolgáltató által aláírt tanúsítványt.
 
-Ez a cikk azt ismerteti, hogyan lehet:
+Ebből a cikkből megtudhatja, hogyan végezheti el a következőket:
 
 - Saját egyéni hitelesítésszolgáltató létrehozása
 - Egyéni HITELESÍTÉSSZOLGÁLTATÓ által aláírt önaláírt tanúsítvány létrehozása
@@ -40,7 +40,7 @@ Ez a cikk azt ismerteti, hogyan lehet:
 
 - **Egy Application Gateway v2 SKU**
    
-  Ha nem rendelkezik meglévő Application gatewayvel, tekintse [meg a gyors útmutató: Közvetlen webes forgalom az Azure Application Gateway-Azure Portal](quick-create-portal.md).
+  Ha nem rendelkezik meglévő Application Gateway szolgáltatással, tekintse meg a következőt [: gyors webes forgalom az Azure Application Gateway-Azure Portal](quick-create-portal.md)használatával.
 
 ## <a name="create-a-root-ca-certificate"></a>Legfelső szintű HITELESÍTÉSSZOLGÁLTATÓI tanúsítvány létrehozása
 
@@ -87,7 +87,7 @@ Használja a következő parancsot a kiszolgálói tanúsítvány kulcsának lé
 A CSR egy nyilvános kulcs, amelyet a rendszer a tanúsítvány igénylése során kap a HITELESÍTÉSSZOLGÁLTATÓ számára. A HITELESÍTÉSSZOLGÁLTATÓ kibocsátja a tanúsítványt az adott kérelemhez.
 
 > [!NOTE]
-> A kiszolgálói tanúsítványhoz tartozó CN (köznapi név) nem lehet azonos a kiállító tartományával. Ebben az esetben például a kiállító www.contoso.com a CN, a kiszolgálói tanúsítvány CN pedig www.fabrikam.com
+> A kiszolgálói tanúsítványhoz tartozó CN (köznapi név) nem lehet azonos a kiállító tartományával. Például ebben az esetben a kiállítóhoz tartozó CN `www.contoso.com`, a kiszolgálói tanúsítvány CN pedig `www.fabrikam.com`.
 
 
 1. A CSR létrehozásához használja a következő parancsot:
@@ -96,9 +96,9 @@ A CSR egy nyilvános kulcs, amelyet a rendszer a tanúsítvány igénylése sor�
    openssl req -new -sha256 -key fabrikam.key -out fabrikam.csr
    ```
 
-1. Ha a rendszer kéri, írja be a legfelső szintű kulcshoz tartozó jelszót és az egyéni HITELESÍTÉSSZOLGÁLTATÓ szervezeti adatait: Ország, állam, org, OU és a teljes tartománynév. Ez a webhely tartománya, és a kiállítótól eltérőnek kell lennie.
+1. Ha a rendszer kéri, írja be a legfelső szintű kulcs jelszavát, valamint az egyéni HITELESÍTÉSSZOLGÁLTATÓ szervezeti adatait: ország, állam, szervezet, szervezeti egység, valamint a teljes tartománynév. Ez a webhely tartománya, és a kiállítótól eltérőnek kell lennie.
 
-   ![Kiszolgálói tanúsítvány](media/self-signed-certificates/server-cert.png)
+   ![Kiszolgálótanúsítvány](media/self-signed-certificates/server-cert.png)
 
 ### <a name="generate-the-certificate-with-the-csr-and-the-key-and-sign-it-with-the-cas-root-key"></a>A tanúsítvány előállítása a CSR-sel és a kulccsal, és aláírás a HITELESÍTÉSSZOLGÁLTATÓ legfelső szintű kulcsával
 
@@ -130,7 +130,7 @@ A webkiszolgálón konfigurálja az SSL-t a fabrikam. CRT és fabrikam. Key fáj
 
 ### <a name="iis"></a>IIS
 
-A tanúsítvány importálásával és kiszolgálói tanúsítványként való feltöltésével kapcsolatos útmutatásért lásd [: How to: Importált tanúsítványok telepítése egy webkiszolgálón a Windows Server 2003](https://support.microsoft.com/help/816794/how-to-install-imported-certificates-on-a-web-server-in-windows-server)-ben.
+A tanúsítvány importálásával és kiszolgálói tanúsítványként való feltöltésével kapcsolatos útmutatásért lásd [: útmutató: importált tanúsítványok telepítése egy webkiszolgálón a Windows server 2003-ben](https://support.microsoft.com/help/816794/how-to-install-imported-certificates-on-a-web-server-in-windows-server).
 
 Az SSL-kötési utasításokért lásd: az [SSL beállítása az IIS 7 rendszeren](https://docs.microsoft.com/iis/manage/configuring-security/how-to-set-up-ssl-on-iis#create-an-ssl-binding-1).
 
@@ -150,7 +150,7 @@ Az alábbi konfiguráció egy [virtuális gép](https://cwiki.apache.org/conflue
 
 ### <a name="nginx"></a>NGINX
 
-A következő konfiguráció egy példa a [NGINX-kiszolgáló blokkolására](http://nginx.org/docs/http/configuring_https_servers.html) az SSL-konfigurációval:
+A következő konfiguráció egy példa a [NGINX-kiszolgáló blokkolására](https://nginx.org/docs/http/configuring_https_servers.html) az SSL-konfigurációval:
 
 ![NGINX SSL-lel](media/self-signed-certificates/nginx-ssl.png)
 

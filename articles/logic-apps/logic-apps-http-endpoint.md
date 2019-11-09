@@ -9,12 +9,12 @@ ms.author: klam
 ms.reviewer: klam, jehollan, LADocs
 ms.topic: article
 ms.date: 11/04/2019
-ms.openlocfilehash: 41173e088b000530030b24400640f8003f330db6
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 27a3bf036cce27a5f215068ff71928cb7e181452
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73581112"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73833916"
 ---
 # <a name="call-trigger-or-nest-logic-apps-by-using-http-endpoints-in-azure-logic-apps"></a>Logikai alkalmazások hívása, elindítása vagy beágyazása HTTP-végpontok használatával Azure Logic Apps
 
@@ -39,11 +39,11 @@ Ha most ismerkedik a Logic apps szolgáltatással, tekintse meg a [Mi az a Azure
 
 ## <a name="create-a-callable-endpoint"></a>Hívható végpont létrehozása
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com). Hozzon létre és nyisson meg egy üres logikai alkalmazást a Logic app Designerben.
+1. Bejelentkezés az [Azure Portalra](https://portal.azure.com). Hozzon létre és nyisson meg egy üres logikai alkalmazást a Logic app Designerben.
 
    Ez a példa a kérelem triggert használja, de bármilyen olyan triggert használhat, amely képes fogadni a bejövő HTTP-kérelmeket. Ezek az eseményindítók mindegyike azonos elveket alkalmaz. További információ a kérések triggeréről: [fogadás és válaszadás a bejövő HTTPS-hívásokra Azure Logic Apps használatával](../connectors/connectors-native-reqres.md).
 
-1. A keresőmezőbe válassza a **beépített**lehetőséget. A keresőmezőbe írja be a `request` értéket a szűrőként. Az eseményindítók listából válassza ki, **hogy mikor érkezik HTTP-kérelem**.
+1. A keresőmezőbe válassza a **beépített**lehetőséget. A keresőmezőbe írja be a `request` szűrőt. Az eseményindítók listából válassza ki, **hogy mikor érkezik HTTP-kérelem**.
 
    ![A kérelem triggerének megkeresése és kiválasztása](./media/logic-apps-http-endpoint/find-and-select-request-trigger.png)
 
@@ -143,7 +143,7 @@ Alapértelmezés szerint a kérelem triggere HTTP POST-kérelmet vár. Azonban e
 
 ## <a name="accept-parameters-in-endpoint-url"></a>Paraméterek elfogadása a végpont URL-címében
 
-Ha azt szeretné, hogy a végpont URL-címe fogadja a paramétereket, adja meg a relatív elérési utat az triggerben. Explicit módon [be kell állítania a](#set-method) HTTP-kérelem várható metódusát is.
+Ha azt szeretné, hogy a végpont URL-címe fogadja a paramétereket, adja meg a relatív elérési utat az triggerben. Emellett explicit módon [meg kell adnia a](#set-method) HTTP-kérelem várható metódusát is.
 
 1. A kérelem triggerben nyissa meg az **új paraméter hozzáadása** listát, és válassza a **relatív elérési út**lehetőséget, amely hozzáadja ezt a tulajdonságot az triggerhez.
 
@@ -178,7 +178,7 @@ Ha azt szeretné, hogy a végpont URL-címe fogadja a paramétereket, adja meg a
     A HTTP-végpont URL-címe mostantól tartalmazza a relatív elérési utat, például:
 
     ```http
-    https://prod-25.westus.logic.azure.com/workflows/{logic-app-resource-ID}/triggers/manual/paths/invoke/address/postalCode?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig={shared-access-signature}
+    https://prod-25.westus.logic.azure.com/workflows/{logic-app-resource-ID}/triggers/manual/paths/invoke/address/{postalCode}?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig={shared-access-signature}
     ```
 
 1. A HTTP-végpont teszteléséhez másolja és illessze be a frissített URL-címet egy másik böngészőablakba, de cserélje le a `{postalCode}`t a `123456`ra, majd nyomja le az ENTER billentyűt.
@@ -231,7 +231,7 @@ A munkafolyamatokat a logikai alkalmazásban úgy ágyazhatja be, hogy más, a k
 
 1. A lépés alatt, ahol másik logikai alkalmazást szeretne meghívni, válassza az **új lépés** > **művelet hozzáadása**lehetőséget.
 
-1. A **válasszon műveletet**területen válassza a **beépített**lehetőséget. A keresőmezőbe írja be a `logic apps` értéket a szűrőként. A műveletek listából válassza ki **a Logic apps munkafolyamatot**.
+1. A **válasszon műveletet**területen válassza a **beépített**lehetőséget. A keresőmezőbe írja be a `logic apps` szűrőt. A műveletek listából válassza ki **a Logic apps munkafolyamatot**.
 
    ![Logikai alkalmazás beágyazása az aktuális logikai alkalmazásba](./media/logic-apps-http-endpoint/choose-logic-apps-workflow.png)
 

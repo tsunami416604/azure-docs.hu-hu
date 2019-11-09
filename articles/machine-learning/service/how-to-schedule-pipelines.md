@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: conceptual
 ms.author: laobri
 author: lobrien
-ms.date: 10/15/2019
-ms.openlocfilehash: 31c3cd944651b9ba4ca4fcaa275e5b0ccedd947c
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.date: 11/06/2019
+ms.openlocfilehash: ded95800c482d43fcaf27993869f1e71eee68f47
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72559436"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73831827"
 ---
 # <a name="schedule-machine-learning-pipelines-with-azure-machine-learning-sdk-for-python"></a>Gépi tanulási folyamatok ütemezhetnek a Pythonhoz készült Azure Machine Learning SDK-val
 
@@ -54,7 +54,7 @@ pipeline_id = "aaaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee"
 
 ## <a name="create-a-schedule"></a>Ütemterv létrehozása
 
-Egy folyamat ismétlődő futtatásához létre kell hoznia egy ütemtervet. A `Schedule` egy folyamatot, egy kísérletet és egy triggert társít. Az trigger lehet egy `ScheduleRecurrence`, amely leírja a futtatások közötti várakozást, vagy egy adattár elérési útját, amely megadja a módosításokat bemutató könyvtárat. Mindkét esetben szüksége lesz a folyamat azonosítójára és annak a kísérletnek a nevére, amelyben létre kívánja hozni az ütemtervet.
+Egy folyamat ismétlődő futtatásához létre kell hoznia egy ütemtervet. A `Schedule` egy folyamatot, egy kísérletet és egy triggert társít. Az trigger lehet egy`ScheduleRecurrence`, amely leírja a futtatások közötti várakozást, vagy egy adattár elérési útját, amely megadja a módosításokat bemutató könyvtárat. Mindkét esetben szüksége lesz a folyamat azonosítójára és annak a kísérletnek a nevére, amelyben létre kívánja hozni az ütemtervet.
 
 ### <a name="create-a-time-based-schedule"></a>Időalapú ütemterv létrehozása
 
@@ -75,7 +75,7 @@ recurring_schedule = Schedule.create(ws, name="MyRecurringSchedule",
 
 A fájlok változásai által aktivált folyamatok hatékonyabbak lehetnek, mint az időalapú ütemtervek. Előfordulhat például, hogy egy fájl módosításakor vagy egy új fájl egy adatkönyvtárhoz való hozzáadásakor szeretne elvégezni egy előfeldolgozási lépést. Az adattáron belüli adattárolók és az adattárban lévő módosítások változásai figyelhetők. Ha egy adott könyvtárat figyel, akkor a könyvtár alkönyvtárain belüli módosítások _nem_ indítják el a futtatást.
 
-Fájl – reaktív `Schedule` létrehozásához a `datastore` paramétert kell megadnia az [Schedule. Create paranccsal.](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.schedule.schedule?view=azure-ml-py#create-workspace--name--pipeline-id--experiment-name--recurrence-none--description-none--pipeline-parameters-none--wait-for-provisioning-false--wait-timeout-3600--datastore-none--polling-interval-5--data-path-parameter-name-none--continue-on-step-failure-none--path-on-datastore-none---workflow-provider-none---service-endpoint-none-) Egy mappa figyeléséhez állítsa be a `path_on_datastore` argumentumot.
+Fájl – reaktív `Schedule`létrehozásához a `datastore` paramétert kell megadnia az [Schedule. Create paranccsal.](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.schedule.schedule?view=azure-ml-py#create-workspace--name--pipeline-id--experiment-name--recurrence-none--description-none--pipeline-parameters-none--wait-for-provisioning-false--wait-timeout-3600--datastore-none--polling-interval-5--data-path-parameter-name-none--continue-on-step-failure-none--path-on-datastore-none---workflow-provider-none---service-endpoint-none-) Egy mappa figyeléséhez állítsa be a `path_on_datastore` argumentumot.
 
 A `polling_interval` argumentummal percek alatt megadhatja, hogy az adattár milyen gyakorisággal legyen bejelölve a változásokhoz.
 
@@ -94,9 +94,9 @@ A korábban tárgyalt argumentumokon kívül a `status` argumentumot is beállí
 
 ## <a name="view-your-scheduled-pipelines"></a>Az ütemezett folyamatok megtekintése
 
-A böngészőben navigáljon a Machine Learning szolgáltatás munkaterületére. A navigációs panel **eszközök** területén válassza a **folyamatok**elemet. Ez a hivatkozás a munkaterületen közzétett folyamatok listáját tartalmazza.
+A böngészőben nyissa meg a Azure Machine Learning. A navigációs panel **végpontok** szakaszában válassza a **folyamat végpontjai**lehetőséget. Ekkor megjelenik a munkaterületen közzétett folyamatok listája.
 
-![Munkaterület folyamatok lapja](media/how-to-schedule-a-pipeline/pipelines-list.png)
+![PÉNZMOSÁS-folyamatok lapja](media/how-to-schedule-pipelines/scheduled-pipelines.png)
 
 Ezen a lapon megtekintheti a munkaterület összes folyamatával kapcsolatos összegző információkat: nevek, leírások, állapot stb. Részletezés a folyamatra kattintva. Az eredményül kapott oldalon további részleteket talál a folyamatról, és az egyes futtatásokat is lerészletezheti.
 
@@ -130,7 +130,7 @@ stop_by_schedule(ws, schedule_id)
 
 Ha ezután újra futtatja `Schedule.list(ws)`, akkor egy üres listát kell kapnia.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a cikkben a Pythonhoz készült Azure Machine Learning SDK-val két különböző módon ütemezhet egy folyamatot. Az egyik ütemezett ismétlődés az eltelt idő alapján. A másik ütemterv akkor fut, ha egy fájlt módosítanak egy adott `Datastore` vagy a tároló egyik könyvtárán belül. Látta, hogyan használhatja a portált a folyamat és az egyes futtatások vizsgálatára. Végezetül megtanulta, hogyan tilthatja le az ütemtervet, hogy a folyamat lefusson.
 

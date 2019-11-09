@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 05/08/2019
 ms.author: cynthn
-ms.openlocfilehash: 0648b9b321aabc7c9e56997c320a63386542498c
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: e7c577e28b30e68020532049affba59f355341cf
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70083376"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73838511"
 ---
 # <a name="frequently-asked-question-about-linux-virtual-machines"></a>Gyakori kérdések a Linux Virtual Machines
 Ez a cikk az Azure-ban a Resource Manager-alapú üzemi modellel létrehozott Linux rendszerű virtuális gépekkel kapcsolatos gyakori kérdéseket tárgyalja. A témakör Windows-verziójával kapcsolatos [Gyakori kérdések a Windows Virtual Machines](../windows/faq.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
@@ -30,7 +30,7 @@ Minden előfizető kiszolgálószoftvereket futtathat az Azure-beli virtuális g
 ## <a name="how-much-storage-can-i-use-with-a-virtual-machine"></a>Mennyi tárhelyet használhatok egy virtuális gép esetén?
 Az egyes adatlemezek akár 32 767 GiB-t is használhatnak. A használható adatlemezek száma a virtuális gép méretétől függ. Részletek: [Virtuális gépek méretei](sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
-Az Azure-Managed Disks az Azure Virtual Machines által az adattároláshoz használt ajánlott lemezes tárolási ajánlatok. Egy-egy virtuális géppel több felügyelt lemez is használható. Managed Disks kétféle tartós tárolási lehetőséget kínál: Prémium és standard Managed Disks. A díjszabással kapcsolatos információkért tekintse meg a [Managed Disks díjszabását](https://azure.microsoft.com/pricing/details/managed-disks).
+Az Azure-Managed Disks az Azure Virtual Machines által az adattároláshoz használt ajánlott lemezes tárolási ajánlatok. Egy-egy virtuális géppel több felügyelt lemez is használható. A Managed Disks kétféle tartós tárolási lehetőséget kínál: Premium és Standard szintű Managed Disks. A díjszabással kapcsolatos információkért tekintse meg a [Managed Disks díjszabását](https://azure.microsoft.com/pricing/details/managed-disks).
 
 Az Azure Storage-fiókok az operációs rendszer lemezét és az adatlemezeket is megadhatják. Minden lemez egy lapblobként tárolt .vhd-fájl. A díjszabás részleteiért lásd [a Storage szolgáltatás díjszabását](https://azure.microsoft.com/pricing/details/storage/).
 
@@ -43,7 +43,7 @@ Ha problémákat tapasztal, tekintse meg a [Secure Shell-(SSH-) kapcsolatokkal k
 Ne használja az ideiglenes lemezt (/dev/sdb1) az adattároláshoz. Csak átmeneti tárolás esetén érhető el. A nem helyreállítható adatvesztés kockázatát kockáztatja.
 
 ## <a name="can-i-copy-or-clone-an-existing-azure-vm"></a>Másolhatok vagy klónozott egy meglévő Azure-beli virtuális gépet?
-Igen. Útmutatásért lásd: [Linux rendszerű virtuális gép másolatának létrehozása a Resource Manager-](copy-vm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)alapú üzemi modellben.
+Igen. Útmutatásért lásd: [Linux rendszerű virtuális gép másolatának létrehozása a Resource Manager-alapú üzemi modellben](copy-vm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
 ## <a name="why-am-i-not-seeing-canada-central-and-canada-east-regions-through-azure-resource-manager"></a>Miért nem látom a közép-és Kelet-Kanada régióját a Azure Resource Manageron keresztül?
 A közép-és Kelet-Kanada két új régióját nem regisztrálja automatikusan a rendszer a meglévő Azure-előfizetések virtuális géphez való létrehozásához. Ez a regisztráció automatikusan történik, ha egy virtuális gépet a Azure Portal a Azure Resource Manager használatával bármely más régióba telepítenek. A virtuális gép bármely más Azure-régióba való üzembe helyezését követően az új régióknak elérhetőnek kell lenniük a további virtuális gépek számára.
@@ -52,10 +52,10 @@ A közép-és Kelet-Kanada két új régióját nem regisztrálja automatikusan 
 Igen, ez már lehetséges. Először le kell állítani a virtuális gépet. Ezután hozzáadhat vagy eltávolíthat egy hálózati adaptert (kivéve, ha ez a virtuális gép utolsó hálózati adaptere). 
 
 ## <a name="are-there-any-computer-name-requirements"></a>Van-e számítógépnév-követelmény?
-Igen. A számítógép neve legfeljebb 64 karakter hosszú lehet. Az erőforrások elnevezésével kapcsolatos további információkért lásd: [elnevezési konvenciók szabályai és korlátozásai](/azure/architecture/best-practices/naming-conventions) .
+Igen. A számítógép neve legfeljebb 64 karakter hosszú lehet. Az erőforrások elnevezésével kapcsolatos további információkért lásd: [elnevezési konvenciók szabályai és korlátozásai](/azure/architecture/best-practices/resource-naming) .
 
 ## <a name="are-there-any-resource-group-name-requirements"></a>Vannak az erőforráscsoport-nevekre vonatkozó követelmények?
-Igen. Az erőforráscsoport neve legfeljebb 90 karakter hosszú lehet. Az erőforráscsoportok további információit az [elnevezési konvenciók szabályai és korlátozásai](/azure/architecture/best-practices/naming-conventions) című témakörben talál.
+Igen. Az erőforráscsoport neve legfeljebb 90 karakter hosszú lehet. Az erőforráscsoportok további információit az [elnevezési konvenciók szabályai és korlátozásai](/azure/architecture/best-practices/resource-naming) című témakörben talál.
 
 ## <a name="what-are-the-username-requirements-when-creating-a-vm"></a>Milyen felhasználónévre vonatkozó követelmények vonatkoznak a virtuális gépek létrehozásakor?
 
@@ -88,7 +88,7 @@ A jelszónak a következő 4 összetettségi követelménynek is meg kell feleln
 * Alsó karakter
 * Felső karaktereket tartalmaz
 * Számjegyet tartalmaz
-* Speciális karakter (regex egyezés [\W_])
+* Speciális karakter (regex egyezés [\ W_])
 
 A következő jelszavak nem engedélyezettek:
 

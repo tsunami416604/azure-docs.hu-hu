@@ -1,26 +1,26 @@
 ---
 title: Automatikusan skálázó és zónaredundáns Application Gateway v2
-description: Ez a cikk bemutatja az Azure Application Standard_v2 és a WAF_v2 SKU-t, amely magában foglalja az automatikus skálázást és a zóna-redundáns funkciókat.
+description: Ez a cikk bemutatja az Azure Application Standard_v2 és WAF_v2 SKU-t, amely magában foglalja az automatikus skálázást és a zóna-redundáns funkciókat.
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 10/09/2019
+ms.date: 11/09/2019
 ms.author: victorh
-ms.openlocfilehash: 3b552d37ce176e76bc0a4230a24a910543e5ea0d
-ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
+ms.openlocfilehash: 8f3a732d5d6128ff38f81f715113e87710b11c47
+ms.sourcegitcommit: 16c5374d7bcb086e417802b72d9383f8e65b24a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72965117"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73847261"
 ---
 # <a name="autoscaling-and-zone-redundant-application-gateway-v2"></a>Automatikusan skálázó és zónaredundáns Application Gateway v2 
 
-A Application Gateway és a webalkalmazási tűzfal (WAF) a Standard_v2 és a WAF_v2 SKU alatt is elérhető. A v2 SKU teljesítmény-fejlesztéseket biztosít, és támogatja a kritikus fontosságú új funkciókat, például az automatikus skálázást, a zónák redundanciát és a statikus VIP-címek támogatását. A standard és a WAF SKU meglévő szolgáltatásai továbbra is támogatottak lesznek az új v2 SKU-ban, és néhány kivétel szerepel az [összehasonlítás](#differences-with-v1-sku) szakaszban.
+A Application Gateway és a webalkalmazási tűzfal (WAF) Standard_v2 és WAF_v2 SKU alatt is elérhető. A v2 SKU teljesítmény-fejlesztéseket biztosít, és támogatja a kritikus fontosságú új funkciókat, például az automatikus skálázást, a zónák redundanciát és a statikus VIP-címek támogatását. A standard és a WAF SKU meglévő szolgáltatásai továbbra is támogatottak lesznek az új v2 SKU-ban, és néhány kivétel szerepel az [összehasonlítás](#differences-with-v1-sku) szakaszban.
 
 Az új v2 SKU a következő fejlesztéseket tartalmazza:
 
-- Automatikus **skálázás**: az automatikus skálázási SKU-ban lévő Application Gateway-vagy WAF-telepítések a forgalmi terhelési minták módosítása alapján vertikális fel-vagy leskálázást is igénybe vehetnek. Az automatikus skálázással elkerülhető, hogy már a kiépítés során meg kelljen határozni az üzemelő példány méretét vagy a példányszámot. Ez az SKU valódi rugalmasságot biztosít. A Standard_v2 és a WAF_v2 SKU-ban a Application Gateway a rögzített kapacitásban (automatikus skálázás letiltva) és az automatikus skálázást engedélyező módban is működhet. A rögzített kapacitás mód olyan helyzetekben hasznos, amelyek konzisztens és kiszámítható számítási feladatokkal rendelkeznek. Az automatikus skálázási mód hasznos olyan alkalmazásokban, amelyek az alkalmazás forgalmában tapasztalnak eltérést.
+- Automatikus **skálázás**: az automatikus skálázási SKU-ban lévő Application Gateway-vagy WAF-telepítések a forgalmi terhelési minták módosítása alapján vertikális fel-vagy leskálázást is igénybe vehetnek. Az automatikus skálázással elkerülhető, hogy már a kiépítés során meg kelljen határozni az üzemelő példány méretét vagy a példányszámot. Ez az SKU valódi rugalmasságot biztosít. A Standard_v2 és WAF_v2 SKU-ban a Application Gateway a rögzített kapacitásban (automatikus skálázás letiltva) és az automatikus skálázást engedélyező módban is működhet. A rögzített kapacitás mód olyan helyzetekben hasznos, amelyek konzisztens és kiszámítható számítási feladatokkal rendelkeznek. Az automatikus skálázási mód hasznos olyan alkalmazásokban, amelyek az alkalmazás forgalmában tapasztalnak eltérést.
 - **Zóna redundancia**: egy Application Gateway vagy WAF üzemelő példány több Availability Zonesra is terjedhet, így nem kell külön Application Gateway példányt kiépíteni az egyes zónákban Traffic Manager. Kiválaszthat egyetlen zónát vagy több olyan zónát, ahol Application Gateway példányok vannak telepítve, ami rugalmasabb lehet a zóna meghibásodása miatt. Az alkalmazások háttér-készlete hasonló módon terjeszthető a rendelkezésre állási zónák között.
 
   A zóna redundancia csak akkor érhető el, ha az Azure-zónák elérhetők. Más régiókban a többi funkció is támogatott. További információ: [Mi a Availability Zones az Azure-ban?](../availability-zones/az-overview.md#services-support-by-region)
@@ -35,21 +35,21 @@ Az új v2 SKU a következő fejlesztéseket tartalmazza:
 
 ## <a name="supported-regions"></a>Támogatott régiók
 
-A Standard_v2 és a WAF_v2 SKU a következő régiókban érhető el: az USA északi középső régiója, az USA déli középső régiója, az USA nyugati régiója, az USA nyugati régiója, az USA keleti régiója, USA 2. keleti régiója, USA középső régiója, Észak-Európa, Nyugat-Európa, Délkelet-Ázsia, Közép-Németország, Kelet-Ausztrália Egyesült Királyság nyugati régiója , Délkelet-Ausztrália, Dél-Brazília, Közép-Kanada, Kelet-Kanada, Kelet-Ázsia, Korea középső régiója, Dél-Korea, Dél-India, Egyesült Királyság déli régiója, Közép-India, Nyugat-India, Dél-India.
+A Standard_v2 és WAF_v2 SKU a következő régiókban érhető el: az USA északi középső régiója, az USA déli középső régiója, az USA nyugati régiója, USA 2. nyugati régiója, USA 2. keleti régiója, USA középső régiója, Észak-Európa, Nyugat-Európa, Délkelet-Ázsia, Közép-Németország, Egyesült Királyság nyugati régiója, Kelet Kelet-Ausztrália-Japán , Délkelet-Ausztrália, Dél-Brazília, Közép-Kanada, Kelet-Kanada, Kelet-Ázsia, Korea középső régiója, Dél-Korea, Dél-India, Egyesült Királyság déli régiója, Közép-India, Nyugat-India, Dél-India.
 
 ## <a name="pricing"></a>Díjszabás
 
 A v2 SKU-val a díjszabási modellt a használat vezérli, és a rendszer már nem csatolja a példányszámot vagy a méretet. A v2 SKU díjszabása két összetevőből áll:
 
-- **Rögzített ár** – ez egy Standard_v2-vagy WAF_v2-átjáró kiépítésének óránkénti (vagy részleges órás) díja. Vegye figyelembe, hogy a 0 további minimális példány továbbra is biztosítja a szolgáltatás magas rendelkezésre állását, amely mindig rögzített díjszabással van ellátva.
+- **Rögzített ár** – ez egy Standard_v2 vagy WAF_v2 átjáró kiépítésének óránkénti (vagy részleges órányi) díja. Vegye figyelembe, hogy a 0 további minimális példány továbbra is biztosítja a szolgáltatás magas rendelkezésre állását, amely mindig rögzített díjszabással van ellátva.
 - **Kapacitási egység díja** – ez egy fogyasztási alapú költség, amelyet a rögzített költség mellett számítunk fel. A kapacitásegység díjait is óránkénti vagy részben óránkénti egységekben mérjük. A kapacitásegységek három összetevőből állnak: a számítási egység, az állandó kapcsolatok és az átviteli sebesség. A számítási egység a felhasznált processzorkapacitás mértékegysége. A számítási egységet befolyásoló tényezők a TLS-kapcsolatok/mp, az URL-Újraírási számítások és a WAF-szabályok feldolgozása. Az állandó kapcsolat az Application Gateway számára a megadott számlázási időszakban létesített TCP-kapcsolatok mértéke. Az átviteli sebesség egy adott számlázási időszakban a rendszer által feldolgozott átlagos megabit/mp.  A számlázás a fenntartott példányok számának megfelelő kapacitás egység szintjén történik.
 
 Minden kapacitási egység legfeljebb a következőkből áll: 1 számítási egység, vagy 2500 állandó kapcsolat vagy 2,22 – Mbps átviteli sebesség.
 
 Számítási egységre vonatkozó útmutató:
 
-- **Standard_v2** – minden számítási egység képes körülbelül 50 kapcsolatot másodpercenként az RSA 2048-bites Key TLS-tanúsítvánnyal.
-- **WAF_v2** – az egyes számítási egységek körülbelül 10 egyidejű kérést támogatnak másodpercenként 70-30%-os adatforgalomhoz, 70%-os kérelmeknél kevesebb, mint 2 KB-os Get/post és annál nagyobb marad. A WAF teljesítményét jelenleg nem érinti a válasz mérete.
+- **Standard_v2** – minden számítási egység képes körülbelül 50 kapcsolat másodpercenként az RSA 2048-bites Key TLS-tanúsítvánnyal.
+- **WAF_v2** – az egyes számítási egységek körülbelül 10 egyidejű kérést támogatnak másodpercenként a 70-30%-os adatforgalomhoz, 70%-nál kevesebb kérés/post, és annál nagyobb marad. A WAF teljesítményét jelenleg nem érinti a válasz mérete.
 
 > [!NOTE]
 > Az egyes példányok jelenleg körülbelül 10 kapacitást képesek támogatni.
@@ -77,7 +77,7 @@ Teljes ár = $148,8 + $297,6 = $446,4
 
 **2. példa**
 
-Egy hónapra kiépített Application Gateway standard_v2, 0 minimális példánnyal, és ez idő alatt 25 új SSL-kapcsolatot kap/s, átlagosan 8,88 – Mbps adatátvitel. Ha a kapcsolatok rövid életűek, az ár a következő:
+Egy Application Gateway standard_v2 egy hónapig van kiépítve, minimális példányszámban, és ez idő alatt 25 új SSL-kapcsolatot kap, átlagosan 8,88 MB/s adatátviteli sebesség. Ha a kapcsolatok rövid életűek, az ár a következő:
 
 Rögzített ár = 744 (óra) * $0,20 = $148,8
 
@@ -85,7 +85,7 @@ Kapacitási egység ára = 744 (óra) * Max (25/50 számítási egység kapcsola
 
 Teljes ár = $148.8 + 23.81 = $172,61
 
-Amint látható, csak 4 kapacitású egységért kell fizetnie, a teljes példány esetében nem. 
+Amint láthatja, a rendszer csak négy kapacitású egységért számláz, nem pedig a teljes példányért. 
 
 > [!NOTE]
 > A Max függvény a legnagyobb értéket adja vissza egy értékben.
@@ -93,7 +93,7 @@ Amint látható, csak 4 kapacitású egységért kell fizetnie, a teljes példá
 
 **3. példa**
 
-Egy hónapra kiépített Application Gateway standard_v2 legalább 5 példánysal. Feltételezve, hogy a forgalom és a kapcsolatok nincsenek rövid életűek, az ár a következő:
+Egy Application Gateway standard_v2 egy hónapig van kiépítve, amely legalább öt példányból áll. Feltételezve, hogy a forgalom és a kapcsolatok nincsenek rövid életűek, az ár a következő:
 
 Rögzített ár = 744 (óra) * $0,20 = $148,8
 
@@ -101,11 +101,11 @@ Kapacitási egység ára = 744 (óra) * Max (0/50 számítási egység a kapcsol
 
 Teljes ár = $148.80 + 297.60 = $446,4
 
-Ebben az esetben az 5 példány teljes összegét számítjuk fel, még akkor is, ha nincs forgalom.
+Ebben az esetben az öt példány teljes összegét számítjuk fel, még akkor is, ha nincs forgalom.
 
 **4. példa**
 
-Egy Application Gateway standard_v2 egy hónapig van kiépítve, legalább 5 példánnyal, de ezúttal átlagosan 125 Mbps adatátviteli sebesség és 25 SSL-kapcsolat másodpercenként. Feltételezve, hogy a forgalom és a kapcsolatok nincsenek rövid életűek, az ár a következő:
+Egy Application Gateway standard_v2 egy hónapig van kiépítve, amely legalább öt példányból áll, de ezúttal átlagosan 125 MB/s adatátviteli sebesség és 25 SSL-kapcsolat másodpercenként. Feltételezve, hogy a forgalom és a kapcsolatok nincsenek rövid életűek, az ár a következő:
 
 Rögzített ár = 744 (óra) * $0,20 = $148,8
 
@@ -113,11 +113,11 @@ Kapacitási egység ára = 744 (óra) * Max (25/50 számítási egység kapcsola
 
 Teljes ár = $148.80 + 339.26 = $488,06
 
-Ebben az esetben a teljes 5 példányra, valamint 7 kapacitású egységre (amely egy példány 7/10) számítunk fel díjat.  
+Ebben az esetben a teljes öt példányra, valamint hét kapacitási egységre (amely egy példány 7/10) számítunk fel díjat.  
 
 **5. példa**
 
-Egy adott hónapban egy Application Gateway WAF_v2 van kiépítve. Ebben az időszakban 25 új SSL-kapcsolat/másodperc, átlagosan 8,88 MB/s adatátviteli sebesség és a 80-es kérelem másodpercenkénti száma jelenik meg. Ha a kapcsolatok rövid életűek, és az alkalmazás számítási egységének kiszámítása a számítási egységenként 10 RPS-t támogat, a díj a következő lesz:
+Egy hónapra kiépített Application Gateway WAF_v2. Ebben az időszakban 25 új SSL-kapcsolat/másodperc, átlagosan 8,88 MB/s adatátviteli sebesség és a 80-es kérelem másodpercenkénti száma jelenik meg. Ha a kapcsolatok rövid életűek, és az alkalmazás számítási egységének kiszámítása a számítási egységenként 10 RPS-t támogat, a díj a következő lesz:
 
 Rögzített ár = 744 (óra) * $0,36 = $267,84
 
@@ -132,7 +132,7 @@ Teljes ár = $267,84 + $85,71 = $353,55
 
 A Application Gateway és a WAF két módban is konfigurálható:
 
-- Automatikus **skálázás** – ha engedélyezve van az automatikus skálázás, a Application Gateway és a WAF v2 SKU-ra vertikális fel-és leskálázás az alkalmazás-forgalmi követelmények alapján. Ez a mód jobb rugalmasságot biztosít az alkalmazás számára, és nem kell kitalálnia az Application Gateway-méretet vagy a példányszámot. Ez a mód lehetővé teszi a költségmegtakarítást úgy, hogy a várt maximális forgalmi terheléshez nem szükséges, hogy az átjáró kiosztott kapacitással fusson. Meg kell adnia a példányok minimális és opcionális maximális példányszámát. A minimális kapacitás biztosítja, hogy a Application Gateway és a WAF v2 ne érje el a megadott minimális példányszámot, még a forgalom hiányában is. Minden példány 10 további fenntartott kapacitási egységnek számít. 0 nem fenntartott kapacitást jelez, és tisztán automatikus méretezést jelent a természetben. Vegye figyelembe, hogy a 0 további minimális példány továbbra is biztosítja a szolgáltatás magas rendelkezésre állását, amely mindig rögzített díjszabással van ellátva. Megadhatja a példányok maximális számát is, ami garantálja, hogy a Application Gateway a megadott számú példányon túl nem méretezhető. Az átjáró által kiszolgált forgalom mennyiségét továbbra is számlázjuk. A példányok száma 0 és 125 között lehet. A példányok maximális számának alapértelmezett értéke 20, ha nincs megadva.
+- Automatikus **skálázás** – ha engedélyezve van az automatikus skálázás, a Application Gateway és a WAF v2 SKU-ra vertikális fel-és leskálázás az alkalmazás-forgalmi követelmények alapján. Ez a mód jobb rugalmasságot biztosít az alkalmazás számára, és nem kell kitalálnia az Application Gateway-méretet vagy a példányszámot. Ez a mód lehetővé teszi a költségmegtakarítást úgy, hogy a várt maximális forgalmi terheléshez nem szükséges, hogy az átjáró kiosztott kapacitással fusson. Meg kell adnia a példányok minimális és opcionális maximális példányszámát. A minimális kapacitás biztosítja, hogy a Application Gateway és a WAF v2 ne érje el a megadott minimális példányszámot, még a forgalom hiányában is. Minden példány 10 további fenntartott kapacitási egységnek számít. A nulla nem jelent fenntartott kapacitást, és kizárólag az automatikus skálázást jelenti. Felhívjuk a figyelmét arra, hogy a további minimális példányok használata továbbra is biztosítja a szolgáltatás magas rendelkezésre állását, amely mindig rögzített áron érhető el. Megadhatja a példányok maximális számát is, ami garantálja, hogy a Application Gateway a megadott számú példányon túl nem méretezhető. Az átjáró által kiszolgált forgalom mennyiségét továbbra is számlázjuk. A példányok száma 0 és 125 között lehet. A példányok maximális számának alapértelmezett értéke 20, ha nincs megadva.
 - **Manuális** – választhatja azt a manuális módot is, amelyben az átjáró nem rendelkezik Automatikus méretezéssel. Ebben a módban, ha több forgalom van, mint amit a Application Gateway-vagy WAF tud kezelni, a forgalom elvesztését eredményezheti. A manuális mód megadása esetén kötelező megadni a példányszámot. A példányok száma 1 és 125 példány között lehet.
 
 ## <a name="feature-comparison-between-v1-sku-and-v2-sku"></a>Szolgáltatások összehasonlítása v1 SKU és v2 SKU között
@@ -151,6 +151,7 @@ A következő táblázat összehasonlítja az egyes SKU-kal elérhető szolgált
 | Több hely üzemeltetése                             | &#x2713; | &#x2713; |
 | Forgalom átirányítása                               | &#x2713; | &#x2713; |
 | Webalkalmazási tűzfal (WAF)                    | &#x2713; | &#x2713; |
+| WAF egyéni szabályok                                  |          | &#x2713; |
 | Secure Sockets Layer- (SSL-) lezárás            | &#x2713; | &#x2713; |
 | Végpontok közötti SSL-titkosítás                         | &#x2713; | &#x2713; |
 | Munkamenet-affinitás                                  | &#x2713; | &#x2713; |
@@ -167,9 +168,9 @@ A következő táblázat összehasonlítja az egyes SKU-kal elérhető szolgált
 |Különbség|Részletek|
 |--|--|
 |Hitelesítési tanúsítvány|Nem támogatott.<br>További információ: [a végpontok közötti SSL áttekintése Application Gateway használatával](ssl-overview.md#end-to-end-ssl-with-the-v2-sku).|
-|Standard_v2 és standard Application Gatewayek keverése ugyanazon az alhálózaton|Nem támogatott|
+|Standard_v2 és standard Application Gateway összekeverése ugyanazon az alhálózaton|Nem támogatott|
 |Felhasználó által megadott útvonal (UDR) Application Gateway alhálózaton|Nem támogatott|
-|NSG a bejövő porttartomány| -65200 – 65535 a Standard_v2 SKU-hoz<br>-65503 – 65534 a standard SKU-hoz.<br>További információt a [Gyakori kérdések](application-gateway-faq.md#are-network-security-groups-supported-on-the-application-gateway-subnet)című témakörben talál.|
+|NSG a bejövő porttartomány| -65200 – 65535 Standard_v2 SKU-hoz<br>-65503 – 65534 a standard SKU-hoz.<br>További információt a [Gyakori kérdések](application-gateway-faq.md#are-network-security-groups-supported-on-the-application-gateway-subnet)című témakörben talál.|
 |Teljesítménynaplók az Azure diagnosticsban|Nem támogatott.<br>Az Azure-metrikákat kell használni.|
 |Számlázás|Számlázás ütemezve, hogy 2019. július 1-jén induljon el.|
 |FIPS mód|Ezek jelenleg nem támogatottak.|
@@ -181,7 +182,7 @@ A következő táblázat összehasonlítja az egyes SKU-kal elérhető szolgált
 
 Azure PowerShell parancsfájl a PowerShell-galériában érhető el, hogy segítséget nyújtson a v1 Application Gateway/WAF a v2 automatikus skálázási SKU-ba való átálláshoz. Ez a szkript segítséget nyújt a konfigurációnak a v1-átjáróról történő másolásához. A forgalom áttelepítése továbbra is az Ön felelőssége. További információ: [Azure Application Gateway migrálása v1-ről v2-re](migrate-v1-v2.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Gyors útmutató: webes forgalom közvetlen továbbítása az Azure Application Gateway-Azure Portal](quick-create-portal.md)
 - [Hozzon létre egy automatikus skálázást, a Zone redundáns Application Gateway-t egy fenntartott virtuális IP-címmel a Azure PowerShell használatával](tutorial-autoscale-ps.md)

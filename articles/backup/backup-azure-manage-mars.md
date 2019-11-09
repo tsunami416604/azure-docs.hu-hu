@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 10/07/2019
 ms.author: dacurwin
-ms.openlocfilehash: 68c991396c92e6f288d1cc17d6b7dcf1ec79343f
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 88a914a2a4d3d62918b01674d6d21f2f011e2c2e
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73165484"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73834304"
 ---
 # <a name="manage-microsoft-azure-recovery-services-agent-backups-by-using-the-azure-backup-service"></a>Microsoft Azure Recovery Services ügynök biztonsági másolatainak kezelése a Azure Backup szolgáltatás használatával
 
@@ -181,7 +181,7 @@ A fájlok és mappák biztonsági mentése kétféleképpen állítható le:
 
     ![Állítsa le az ütemezett biztonsági mentést.](./media/backup-azure-delete-vault/stop-schedule-backup.png)
 4. A rendszer felszólítja, hogy adjon meg egy biztonsági PIN-kódot (személyes azonosító számot), amelyet manuálisan kell előkészítenie. Ehhez először jelentkezzen be a Azure Portalba.
-5. Lépjen a **Recovery Services** tároló  > **Beállítások**  > **Tulajdonságok menüpontra**.
+5. Lépjen a **Recovery Services** tároló > **Beállítások** > **Tulajdonságok menüpontra**.
 6. A **biztonsági PIN-kód**területen válassza a **készítés**elemet. Másolja ezt a PIN-kódot. A PIN-kód csak öt percig érvényes.
 7. A felügyeleti konzolon illessze be a PIN-kódot, majd kattintson **az OK gombra**.
 
@@ -206,7 +206,7 @@ Ha leállította a védelmet, miközben megtartja az adatvédelmet, és úgy dö
 1. A **megőrzési szabály kiválasztása**területen adja meg a megőrzési időtartamot, majd kattintson a **tovább**gombra.
 1. Végül a **megfelelőség** képernyőn tekintse át a szabályzat részleteit, és kattintson a **Befejezés**gombra.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - A támogatott forgatókönyvekkel és korlátozásokkal kapcsolatos információkért tekintse meg a [Mars támogatási mátrixát](https://docs.microsoft.com/azure/backup/backup-support-matrix-mars-agent).
-- További információ az [ad hoc biztonsági mentési szabályzatok megőrzési viselkedéséről](https://docs.microsoft.com/azure/backup/backup-configure-vault#ad-hoc-backup-policy-retention-behavior.md).
+- További információ az [ad hoc biztonsági mentési szabályzatok megőrzési viselkedéséről](backup-configure-vault.md#ad-hoc-backup-policy-retention-behavior).

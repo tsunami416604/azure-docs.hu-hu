@@ -1,7 +1,7 @@
 ---
 title: Translator Text API észlelési módszer
 titleSuffix: Azure Cognitive Services
-description: Használja a Translator Text API észlelési módszert.
+description: Azonosítsa egy szöveg nyelvét az Azure Cognitive Services Translator Text API észlelési metódussal.
 services: cognitive-services
 author: swmachan
 manager: nitinme
@@ -10,26 +10,26 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 02/01/2019
 ms.author: swmachan
-ms.openlocfilehash: ba73b75e30639dd3f5cf5523124c926ea3442fa1
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 370f3b14c12fc05f181d6497b7069bbf1cf3c9cc
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68932025"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73837298"
 ---
-# <a name="translator-text-api-30-detect"></a>Translator Text API 3.0: Detect
+# <a name="translator-text-api-30-detect"></a>Translator Text API 3,0: észlelés
 
 Egy szöveg nyelvét azonosítja.
 
 ## <a name="request-url"></a>Kérés URL-címe
 
-`POST` Kérelem küldése a következőnek:
+`POST` kérelem küldése a következőnek:
 
 ```HTTP
 https://api.cognitive.microsofttranslator.com/detect?api-version=3.0
 ```
 
-## <a name="request-parameters"></a>A kérés paraméterei
+## <a name="request-parameters"></a>Kérelmek paramétereinek megadása
 
 A lekérdezési karakterláncon átadott kérési paraméterek a következők:
 
@@ -37,8 +37,8 @@ A lekérdezési karakterláncon átadott kérési paraméterek a következők:
   <th width="20%">Lekérdezési paraméter</th>
   <th>Leírás</th>
   <tr>
-    <td>api-version</td>
-    <td>*Kötelező paraméter*.<br/>Az ügyfél által kért API-verzió. Az értéknek `3.0`a számnak kell lennie.</td>
+    <td>API-Version</td>
+    <td>*Kötelező paraméter*.<br/>Az ügyfél által kért API-verzió. Az értéknek `3.0`nak kell lennie.</td>
   </tr>
 </table> 
 
@@ -53,21 +53,21 @@ A kérelem fejlécei a következők:
   </tr>
   <tr>
     <td>Content-Type</td>
-    <td>*Kötelező kérelem fejléce*<br/>Megadja az adattartalom tartalomtípusát. A lehetséges értékek a `application/json`következők:.</td>
+    <td>*Kötelező kérelem fejléce*<br/>Megadja az adattartalom tartalomtípusát. A lehetséges értékek a következők: `application/json`.</td>
   </tr>
   <tr>
     <td>Content-Length</td>
     <td>*Kötelező kérelem fejléce*<br/>A kérelem törzsének hossza</td>
   </tr>
   <tr>
-    <td>X-ClientTraceId</td>
-    <td>*Választható*.<br/>Ügyfél által generált GUID a kérelem egyedi azonosításához. Vegye figyelembe, hogy kihagyhatja ezt a fejlécet, ha a lekérdezési karakterláncban szerepel a nyomkövetési `ClientTraceId`azonosító a nevű lekérdezési paraméter használatával.</td>
+    <td>X – ClientTraceId</td>
+    <td>*Választható*.<br/>Ügyfél által generált GUID a kérelem egyedi azonosításához. Vegye figyelembe, hogy kihagyhatja ezt a fejlécet, ha a lekérdezési karakterláncban szerepel a nyomkövetési azonosító egy `ClientTraceId`nevű lekérdezési paraméter használatával.</td>
   </tr>
 </table> 
 
 ## <a name="request-body"></a>A kérés törzse
 
-A kérelem törzse egy JSON-tömb. Minden tömb elem egy nevű `Text`JSON-objektum. A `Text` nyelvfelismerés a tulajdonság értékére lesz alkalmazva. A mintául szolgáló kérelem törzse így néz ki:
+A kérelem törzse egy JSON-tömb. Minden tömb elem egy `Text`nevű karakterlánc-tulajdonságú JSON-objektum. A nyelvfelismerés a `Text` tulajdonság értékére lesz alkalmazva. A mintául szolgáló kérelem törzse így néz ki:
 
 ```json
 [
@@ -85,15 +85,15 @@ A következő korlátozások érvényesek:
 
 A sikeres válasz egy JSON-tömb, amely egyetlen eredménnyel rendelkezik a bemeneti tömb minden karakterláncához. Az eredmény objektum a következő tulajdonságokat tartalmazza:
 
-  * `language`: Az észlelt nyelv kódja.
+  * `language`: az észlelt nyelv kódja.
 
-  * `score`: Egy lebegőpontos érték, amely az eredmény megbízhatóságát jelzi. A pontszám nulla és egy, az alacsony pontszám pedig alacsony megbízhatóságot jelez.
+  * `score`: egy lebegőpontos érték, amely az eredmény megbízhatóságát jelzi. A pontszám nulla és egy, az alacsony pontszám pedig alacsony megbízhatóságot jelez.
 
-  * `isTranslationSupported`: Logikai érték, amely akkor igaz, ha az észlelt nyelv a szöveges fordításhoz támogatott nyelvek egyike.
+  * `isTranslationSupported`: egy logikai érték, amely akkor igaz, ha az észlelt nyelv a szöveges fordításhoz támogatott nyelvek egyike.
 
-  * `isTransliterationSupported`: Egy logikai érték, amely akkor igaz, ha az észlelt nyelv az a nyelvek egyike, amelyet az írásban támogatnak.
+  * `isTransliterationSupported`: egy logikai érték, amely akkor igaz, ha az észlelt nyelv az a nyelv, amely az írásos nyelvek egyike.
   
-  * `alternatives`: Más lehetséges nyelvek tömbje. A tömb minden eleme egy másik objektum, amely ugyanazokat a tulajdonságokat tartalmazza: `language` `isTranslationSupported` , `score`és `isTransliterationSupported`.
+  * `alternatives`: más lehetséges nyelvek tömbje. A tömb minden eleme egy másik objektum, amely ugyanazokat a tulajdonságokat tartalmazza: `language`, `score`, `isTranslationSupported` és `isTransliterationSupported`.
 
 Példa JSON-válaszra:
 
@@ -122,13 +122,13 @@ Példa JSON-válaszra:
 ]
 ```
 
-## <a name="response-headers"></a>Válaszfejlécek
+## <a name="response-headers"></a>Válasz fejlécei
 
 <table width="100%">
   <th width="20%">Fejlécek</th>
   <th>Leírás</th>
   <tr>
-    <td>X-RequestId</td>
+    <td>X – kérelemazonosító</td>
     <td>A szolgáltatás által a kérelem azonosítására generált érték. Hibaelhárítási célokra szolgál.</td>
   </tr>
 </table> 
@@ -142,7 +142,7 @@ A kérelem által visszaadott lehetséges HTTP-állapotkódok a következők:
   <th>Leírás</th>
   <tr>
     <td>200</td>
-    <td>Sikeres művelet.</td>
+    <td>Siker.</td>
   </tr>
   <tr>
     <td>400</td>
@@ -150,11 +150,11 @@ A kérelem által visszaadott lehetséges HTTP-állapotkódok a következők:
   </tr>
   <tr>
     <td>401</td>
-    <td>Nem sikerült hitelesíteni a kérelmet. Győződjön meg arról, hogy a hitelesítő adatok meg vannak adva és érvényesek.</td>
+    <td>A kérést nem lehetett hitelesíteni. Győződjön meg arról, hogy a hitelesítő adatok meg vannak adva és érvényesek.</td>
   </tr>
   <tr>
     <td>403</td>
-    <td>A kérelem nem engedélyezett. Olvassa el a részletek hibaüzenetét. Ez gyakran azt jelzi, hogy a próbaverziós előfizetéssel biztosított összes ingyenes fordítás fel lett használva.</td>
+    <td>A kérés nincs engedélyezve. Olvassa el a részletek hibaüzenetét. Ez gyakran azt jelzi, hogy a próbaverziós előfizetéssel biztosított összes ingyenes fordítás fel lett használva.</td>
   </tr>
   <tr>
     <td>429</td>
@@ -162,11 +162,11 @@ A kérelem által visszaadott lehetséges HTTP-állapotkódok a következők:
   </tr>
   <tr>
     <td>500</td>
-    <td>Váratlan hiba történt. Ha a hiba továbbra is fennáll, jelentse a következőt: a hiba dátuma és időpontja, a kérelem azonosítója `X-RequestId`a válasz fejlécből és az ügyfél `X-ClientTraceId`azonosítója a kérelem fejlécében.</td>
+    <td>Váratlan hiba történt. Ha a hiba továbbra is fennáll, jelentse a következőt: a hiba dátuma és időpontja, a kérelem azonosítója a válasz fejlécének `X-RequestId`, valamint az ügyfél-azonosító a kérelem fejlécében `X-ClientTraceId`.</td>
   </tr>
   <tr>
     <td>503</td>
-    <td>A kiszolgáló átmenetileg nem érhető el. Próbálja megismételni a kérelmet. Ha a hiba továbbra is fennáll, jelentse a következőt: a hiba dátuma és időpontja, a kérelem azonosítója `X-RequestId`a válasz fejlécből és az ügyfél `X-ClientTraceId`azonosítója a kérelem fejlécében.</td>
+    <td>A kiszolgáló átmenetileg nem érhető el. Próbálja megismételni a kérelmet. Ha a hiba továbbra is fennáll, jelentse a következőt: a hiba dátuma és időpontja, a kérelem azonosítója a válasz fejlécének `X-RequestId`, valamint az ügyfél-azonosító a kérelem fejlécében `X-ClientTraceId`.</td>
   </tr>
 </table> 
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/24/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: e1f7aeb5615c1a22c1970f118c24c996ac936870
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 3c70d2086fc5866b07c31966343397f8ccc809be
+ms.sourcegitcommit: 16c5374d7bcb086e417802b72d9383f8e65b24a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/08/2019
-ms.locfileid: "73826825"
+ms.locfileid: "73846733"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>Az Azure File Sync üzembe helyezésének megtervezése
 A Azure File Sync segítségével központilag kezelheti a szervezete fájlmegosztást Azure Filesban, miközben megőrizheti a helyszíni fájlkiszolgáló rugalmasságát, teljesítményét és kompatibilitását. Az Azure File Sync a Windows Servert az Azure-fájlmegosztás gyors gyorsítótárává alakítja át. A Windows Serveren elérhető bármely protokoll használatával helyileg férhet hozzá az adataihoz, beleértve az SMB-t, az NFS-t és a FTPS is. Tetszőleges számú gyorsítótárral rendelkezhet a világ minden tájáról.
@@ -122,7 +122,7 @@ Az eredmények CSV-ben való megjelenítéséhez:
 
 ### <a name="file-system-features"></a>Fájlrendszer-funkciók
 
-| Szolgáltatás | Támogatási állapot | Megjegyzések |
+| Funkció | Támogatási állapot | Megjegyzések |
 |---------|----------------|-------|
 | Hozzáférés-vezérlési listák (ACL-ek) | Teljes mértékben támogatott | A Windows ACL-eket a Azure File Sync megőrzi, és a Windows Server a kiszolgálói végpontokon kényszeríti ki. A Windows ACL-ek (még) a Azure Files által támogatottak, ha a fájlok közvetlenül a felhőben érhetők el. |
 | Rögzített hivatkozások | Kimarad | |
@@ -169,7 +169,7 @@ Vegye figyelembe, hogy a mennyiségi megtakarítás csak a kiszolgálón érvén
 > Az deduplikálás és a felhőalapú rétegek jelenleg nem támogatottak ugyanazon a köteten a 2019-as kiszolgálón, mert egy jövőbeli frissítésben kijavított hiba történik.
 
 **Windows Server 2012 R2**  
-A Azure file Sync nem támogatja az deduplikálás és a felhőalapú rétegek használatát ugyanazon a köteten. Ha egy köteten engedélyezve van az deduplikálás, a Felhőbeli rétegek letiltását le kell tiltani. 
+A Azure file Sync nem támogatja az deduplikálás és a felhőalapú rétegek használatát ugyanarra a kötetre a Windows Server 2012 R2 rendszeren. Ha egy köteten engedélyezve van az deduplikálás, a Felhőbeli rétegek letiltását le kell tiltani. 
 
 **Megjegyzések**
 - Ha a Azure file Sync ügynök telepítése előtt telepíti az deduplikálás szolgáltatást, a rendszer újraindítást igényel az deduplikálás és a felhőalapú rétegek egyazon köteten történő támogatásához.
@@ -272,7 +272,7 @@ Azure File Sync csak a következő régiókban érhető el:
 | USA déli középső régiója | Texas |
 | Dél-India | Csennai |
 | Délkelet-Ázsia | Szingapúr |
-| Az Egyesült Királyság déli régiója | London |
+| Egyesült Királyság déli régiója | London |
 | Az Egyesült Királyság nyugati régiója | Cardiff |
 | USA-beli államigazgatás – Arizona | Arizona |
 | USA-beli államigazgatás – Texas | Texas |
@@ -282,7 +282,7 @@ Azure File Sync csak a következő régiókban érhető el:
 | Nyugat-Európa | Hollandia |
 | USA nyugati középső régiója | Wyoming |
 | USA nyugati régiója | Kalifornia |
-| USA nyugati régiója, 2. | Washington |
+| USA 2. nyugati régiója | Washington |
 
 A Azure File Sync csak olyan Azure-fájlmegosztás szinkronizálását támogatja, amely ugyanabban a régióban található, mint a Storage Sync szolgáltatás.
 
@@ -321,15 +321,15 @@ A földrajzi redundáns tárolás és a Azure File Sync közötti feladatátvét
 | USA déli középső régiója    | USA északi középső régiója   |
 | Dél-India         | Közép-India      |
 | Délkelet-Ázsia      | Kelet-Ázsia          |
-| Az Egyesült Királyság déli régiója            | Az Egyesült Királyság nyugati régiója            |
-| Az Egyesült Királyság nyugati régiója             | Az Egyesült Királyság déli régiója           |
+| Egyesült Királyság déli régiója            | Az Egyesült Királyság nyugati régiója            |
+| Az Egyesült Királyság nyugati régiója             | Egyesült Királyság déli régiója           |
 | USA-beli államigazgatás – Arizona      | USA-beli államigazgatás – Texas       |
 | US Gov Iowa         | USA-beli államigazgatás – Virginia    |
 | USA-beli államigazgatás – Virginia      | USA-beli államigazgatás – Texas       |
 | Nyugat-Európa         | Észak-Európa       |
-| USA nyugati középső régiója     | USA nyugati régiója, 2.          |
+| USA nyugati középső régiója     | USA 2. nyugati régiója          |
 | USA nyugati régiója             | USA keleti régiója            |
-| USA nyugati régiója, 2.           | USA nyugati középső régiója    |
+| USA 2. nyugati régiója           | USA nyugati középső régiója    |
 
 ## <a name="azure-file-sync-agent-update-policy"></a>Az Azure File Sync ügynökének frissítési szabályzata
 [!INCLUDE [storage-sync-files-agent-update-policy](../../../includes/storage-sync-files-agent-update-policy.md)]

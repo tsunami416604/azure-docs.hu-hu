@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 10/11/2019
 ms.author: benoah
-ms.openlocfilehash: fe8730b0d97ae3783282cdd401fd5889ed08ad9a
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: a529ac8b7ce16d3ee4463f1b4bc2e8007e5b79b5
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73507164"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73836765"
 ---
 # <a name="guidelines-for-responsible-deployment-of-synthetic-voice-technology"></a>Útmutató a szintetikus hangtechnológia felelős üzembe helyezéséhez
 Íme a Microsoft általános tervezési irányelvei a szintetikus hangtechnológia használatához. Ezek olyan tanulmányokban lettek kifejlesztve, amelyeket a Microsoft hangtehetségekkel, fogyasztókkal, valamint a beszédfelismerési rendellenességekkel foglalkozó személyekkel folytatott a szintetikus hang felelősségteljes fejlesztése érdekében.
@@ -39,7 +39,7 @@ A nem egyértelmű, tranzakciós forgatókönyvek (például a Call Support Cent
 A hangtehetségek, például a hangszínészek, a szintetikus hangok létrehozásához a következő iránymutatás vonatkozik.
 
 ### <a name="obtain-meaningful-consent-from-voice-talent"></a>Értelmes beleegyezett a hangtehetségből
-A hangtehetségek elvárják, hogy szabályozzák a hangbetűkészletét (hogyan és hol lesznek használatban), és hogy a használat során kompenzálva legyenek. A rendszertulajdonosoknak ezért explicit írásos engedélyt kell kapniuk a hangtehetségtől, és egyértelmű szerződéses specifikációkat kell használniuk a használati esetekről, a használat időtartamáról, a kárenyhítésről stb. Bizonyos hangtehetségek nem ismerik a technológia lehetséges kártékony felhasználását, és a rendszertulajdonosok által a technológia képességeivel kapcsolatos ismeretekkel kell rendelkezniük. A hangtehetségre és a belefoglalásra vonatkozó további információkért olvassa el az [átláthatósági megjegyzését](https://aka.ms/neural-tts-transparency-note).
+A hangtehetségek elvárják, hogy szabályozzák a hangbetűkészletét (hogyan és hol lesznek használatban), és hogy a használat során kompenzálva legyenek. A rendszertulajdonosoknak ezért explicit írásos engedélyt kell kapniuk a hangtehetségtől, és egyértelmű szerződéses specifikációkat kell használniuk a használati esetekről, a használat időtartamáról, a kárenyhítésről stb. Bizonyos hangtehetségek nem ismerik a technológia lehetséges kártékony felhasználását, és a rendszertulajdonosok által a technológia képességeivel kapcsolatos ismeretekkel kell rendelkezniük. A hangtehetségről és a belefoglalásról további információért olvassa el a hangvételi [feladatokkal kapcsolatos](https://aka.ms/disclosure-voice-talent)tudnivalókat.
 
 
 ## <a name="considerations-for-those-with-speech-disorders"></a>A beszédfelismerési rendellenességekkel kapcsolatos megfontolások
@@ -57,13 +57,13 @@ Azok a személyek, akik beszédi rendellenességeket kívánnak készíteni a sz
 
 ## <a name="reference-docs"></a>Segédanyagok
 
-* [Átlátszósági Megjegyzés](https://aka.ms/neural-tts-transparency-note)
+* [A hangalapú tehetségek közzététele](https://aka.ms/disclosure-voice-talent)
 * [A kapuzás áttekintése](concepts-gating-overview.md)
 * [A közzététel módja](concepts-disclosure-guidelines.md)
 * [Közzétételi tervezési minták](concepts-disclosure-patterns.md)
 
 ## <a name="next-steps"></a>További lépések
 
-* [Átlátszósági Megjegyzés](https://aka.ms/neural-tts-transparency-note)
+* [A hangalapú tehetségek közzététele](https://aka.ms/disclosure-voice-talent)
 * [A közzététel módja](concepts-disclosure-guidelines.md)
 * [Közzétételi tervezési minták](concepts-disclosure-patterns.md)

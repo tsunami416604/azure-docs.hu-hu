@@ -12,12 +12,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 8936bc21af951cbabb90188b6a31d610caf80395
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+ms.openlocfilehash: aaf59de2425e0725958847477f1043a5b7fac68a
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70241778"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73839350"
 ---
 # <a name="onboarding-and-installing"></a>Előkészítés és telepítés
 
@@ -51,7 +51,7 @@ A Microsoft biztonsági kód elemzésének megkezdéséhez szükséges előfelt�
 
 ## <a name="installing-the-microsoft-security-code-analysis-extension"></a>A Microsoft biztonsági kód elemzése bővítmény telepítése
 
-1. A bővítmény Azure DevOps-szervezettel való megosztása után nyissa meg az Azure DevOps-szervezet lapját. Ilyen oldal http://dev.azure.com/contoso például a következő URL-cím:.
+1. A bővítmény Azure DevOps-szervezettel való megosztása után nyissa meg az Azure DevOps-szervezet lapját. Egy ilyen oldal URL-címe `https://dev.azure.com/contoso`.
 1. Válassza a bevásárló táska ikont a neve melletti jobb felső sarokban, majd válassza a **Bővítmények kezelése**lehetőséget.
 1. Válassza ki a Microsoft biztonsági kód elemzése bővítményt, majd nyissa meg az Azure DevOps UI varázslót a telepítés megkezdéséhez.
 1. A legördülő listában válassza ki az Azure DevOps-szervezetet a bővítmény telepítéséhez.
@@ -67,9 +67,9 @@ A bővítmény telepítése után a biztonságos fejlesztési felépítési fela
 1. Az Azure DevOps-szervezetből nyissa meg a csapat projektjét.
 1. Válassza a **folyamatok** > **buildek**lehetőséget.
 1. Válassza ki azt a folyamatot, amelyben hozzá szeretné adni a bővítmény felépítési feladatait:
-   - Új folyamat: Válassza az **új** lehetőséget, majd az új folyamat létrehozásához kövesse a részletes lépéseket.
-   - Folyamat szerkesztése: Válasszon ki egy meglévő folyamatot, majd válassza a **Szerkesztés** lehetőséget a folyamat szerkesztésének megkezdéséhez.
-1. Válassza **+** ki, majd lépjen a **feladatok hozzáadása** ablaktáblára.
+   - Új folyamat: válassza az **új** lehetőséget, majd az új folyamat létrehozásához kövesse a részletes lépéseket.
+   - Folyamat szerkesztése: válasszon ki egy meglévő folyamatot, majd válassza a **Szerkesztés** lehetőséget a folyamat szerkesztésének megkezdéséhez.
+1. Válassza a **+** lehetőséget, és lépjen a **feladatok hozzáadása** ablaktáblára.
 1. A listából vagy a keresőmező használatával keresse meg a felvenni kívánt felépítési feladatot. Válassza a **Hozzáadás** lehetőséget.
 1. Határozza meg a feladathoz szükséges paramétereket.
 1. Új Build várólistára helyezése.

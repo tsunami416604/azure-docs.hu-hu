@@ -1,25 +1,25 @@
 ---
-title: Azure AD-szerepkörök biztonsági varázslójának Privileged Identity Management – Azure Active Directory | Microsoft Docs
+title: Azure AD-szerepkörök biztonsági varázsló a PIM-ben – Azure Active Directory | Microsoft Docs
 description: Ismerteti a biztonsági varázslót, amellyel az állandó rendszerjogosultságú Azure AD szerepkör-hozzárendeléseket átalakíthatja Azure AD Privileged Identity Management (PIM) használatára.
 services: active-directory
 documentationcenter: ''
 author: curtand
-manager: mtillman
+manager: daveba
 editor: ''
 ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
 ms.subservice: pim
-ms.date: 10/23/2019
+ms.date: 11/08/2019
 ms.author: curtand
 ms.custom: pim ; H1Hack27Feb2017
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c5d1c9905047cb4b234bf80ba82f2395f72f67f1
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 04bd0993873568ba7cce368ddd9277ed356b636c
+ms.sourcegitcommit: 16c5374d7bcb086e417802b72d9383f8e65b24a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72895217"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73847048"
 ---
 # <a name="azure-ad-roles-security-wizard-in-privileged-identity-management"></a>Azure AD-szerepkörök biztonsági varázslójának Privileged Identity Management
 
@@ -35,9 +35,9 @@ A varázsló második lépése lehetőséget biztosít a rendszergazda szerepkö
 > Fontos, hogy legalább egy globális rendszergazdával rendelkezzen, és egynél több kiemelt szerepkörű rendszergazda legyen egy szervezeti fiókkal (nem Microsoft-fiók). Ha csak egy kiemelt szerepkörű rendszergazda van, akkor a szervezet nem tudja kezelni Privileged Identity Management, ha a fiókot törölték.
 > Emellett a szerepkör-hozzárendelések állandók maradnak abban az esetben is, ha egy felhasználó Microsoft-fiók (vagyis egy olyan fiók, amelyet a Microsoft-szolgáltatásokhoz, például a Skype-hoz és a Outlook.com) való bejelentkezéshez használ. Ha azt tervezi, hogy az aktiváláshoz többtényezős hitelesítést igényel, a felhasználót a rendszer kizárja.
 
-## <a name="run-the-wizard"></a>Varázsló futtatása
+## <a name="run-the-wizard"></a>A varázsló futtatása
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
+1. Bejelentkezés az [Azure Portalra](https://portal.azure.com/).
 
 1. Nyissa meg **Azure ad Privileged Identity Management**.
 
@@ -67,7 +67,7 @@ A varázsló második lépése lehetőséget biztosít a rendszergazda szerepkö
 
 Ha más kiemelt jogosultsági szintű szerepkör-hozzárendeléseket is át kell alakítania a jogosultra, futtassa újra a varázslót. Ha a varázsló helyett a Privileged Identity Management felületet szeretné használni, tekintse meg [Az Azure ad-szerepkörök kiosztása a Privileged Identity Managementban](pim-how-to-add-role-to-user.md)című témakört.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Azure AD-szerepkörök kiosztása Privileged Identity Management](pim-how-to-add-role-to-user.md)
 - [Hozzáférés biztosítása más rendszergazdáknak a Privileged Identity Management kezeléséhez](pim-how-to-give-access-to-pim.md)

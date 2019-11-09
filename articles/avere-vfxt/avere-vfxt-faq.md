@@ -4,20 +4,20 @@ description: Gyakran ismételt kérdések az Azure-hoz készült avere vFXT
 author: ekpgh
 ms.service: avere-vfxt
 ms.topic: conceptual
-ms.date: 02/28/2019
+ms.date: 11/06/2019
 ms.author: rohogue
-ms.openlocfilehash: f42a9cf5aaa3256865bcf388aa5bd422664c73dd
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.openlocfilehash: 7839530463ea834ed5f8ae2ae06854985a77c673
+ms.sourcegitcommit: 16c5374d7bcb086e417802b72d9383f8e65b24a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72255405"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73847367"
 ---
 # <a name="avere-vfxt-for-azure-faq"></a>Gyakori kérdések az Azure-hoz készült Avere vFXT-ről
 
-Ez a cikk azokat a kérdéseket válaszolja meg, amelyek segítségével eldöntheti, hogy az Azure-hoz készült avere-vFXT az Ön igényeinek megfelelően. Alapszintű információt nyújt a avere vFXT, és bemutatja, hogyan működik együtt más Azure-összetevőkkel és a külső gyártók termékeivel. 
+Ez a cikk azokat a kérdéseket válaszolja meg, amelyek segítségével eldöntheti, hogy az Azure-hoz készült avere-vFXT az Ön igényeinek megfelelően. Alapszintű információt nyújt a avere vFXT, és bemutatja, hogyan működik együtt más Azure-összetevőkkel és a külső gyártók termékeivel.
 
-## <a name="general"></a>Általános 
+## <a name="general"></a>Általános kérdések
 
 ### <a name="what-is-avere-vfxt-for-azure"></a>Mi az Azure-hoz készült Avere vFXT?
 
@@ -67,7 +67,7 @@ Az Azure-hoz készült avere-vFXT minden régióban támogatott, kivéve a szuve
 
 ### <a name="how-do-i-get-help-with-avere-vfxt"></a>Hogyan segítséget kaphat a avere vFXT?
 
-A speciális támogatási csoport segítséget nyújt az Azure-hoz készült avere-vFXT. A támogatási jegy a Azure Portalból való megnyitásához kövesse a [segítség a rendszerhez](avere-vfxt-open-ticket.md#open-a-support-ticket-for-your-avere-vfxt) című témakör utasításait. 
+A speciális támogatási csoport segítséget nyújt az Azure-hoz készült avere-vFXT. A támogatási jegy a Azure Portalból való megnyitásához kövesse a [segítség a rendszerhez](avere-vfxt-open-ticket.md#open-a-support-ticket-for-your-avere-vfxt) című témakör utasításait.
 
 ### <a name="is-avere-vfxt-highly-available"></a>A avere vFXT nagyon elérhető?
 
@@ -75,7 +75,7 @@ Igen, a avere vFXT kizárólag HA megoldásként fut.
 
 ### <a name="does-avere-vfxt-for-azure-also-support-other-cloud-services"></a>Támogatja a avere vFXT for Azure más felhőalapú szolgáltatásokat is?
 
-Igen, az ügyfelek több felhőalapú szolgáltatót is használhatnak a avere vFXT-fürttel. Támogatja az AWS S3 standard gyűjtőket, a Google Cloud Services standard gyűjtőt és az Azure Blob-tárolókat. 
+Igen, az ügyfelek több felhőalapú szolgáltatót is használhatnak a avere vFXT-fürttel. Támogatja az AWS S3 standard gyűjtőket, a Google Cloud Services standard gyűjtőt és az Azure Blob-tárolókat.
 
 > [!NOTE] 
 > A avere vFXT az AWS-ben vagy a Google Cloud-ban, de nem az Azure-ban kell fizetni.
@@ -84,11 +84,11 @@ Igen, az ügyfelek több felhőalapú szolgáltatót is használhatnak a avere v
 
 ### <a name="can-you-describe-what-an-avere-vfxt-environment-looks-like"></a>Le tudja írni a avere vFXT-környezetét?
 
-A avere vFXT több Azure-beli virtuális gépekből álló fürtözött készülék. A Python-függvénytár kezeli a fürtök létrehozását, törlését és módosítását. Olvassa el a [Mi az az Azure avere vFXT?](avere-vfxt-overview.md) című témakört. 
+A avere vFXT több Azure-beli virtuális gépekből álló fürtözött készülék. A Python-függvénytár kezeli a fürtök létrehozását, törlését és módosítását. Olvassa el a [Mi az az Azure avere vFXT?](avere-vfxt-overview.md) című témakört.
 
 ### <a name="what-kind-of-azure-virtual-machines-does-avere-vfxt-run-on"></a>Milyen típusú Azure-beli virtuális gépeken fut a avere vFXT?  
 
-Az Azure-fürthöz tartozó avere-vFXT Microsoft Azure E32s_v3 virtuális gépeket használnak. 
+Az Azure-fürthöz tartozó avere-vFXT Microsoft Azure E32s_v3 virtuális gépeket használnak.
 
 <!-- ### Can I mix and match virtual machine types for my cluster?
 
@@ -134,7 +134,7 @@ Nem, a támogatott Python-szkriptet kell használnia a avere vFXT-fürt csomópo
 
 ### <a name="is-there-a-vm-version-of-the-software-i-can-run-in-my-own-local-environment"></a>Létezik a saját helyi környezetében futtatható szoftver "VM" verziója?
 
-Nem, a rendszer fürtözött készülékként van felkínálva, és meghatározott virtuálisgép-típusokra van tesztelve. Ez a korlátozás segít az ügyfeleknek elkerülni egy olyan rendszer létrehozását, amely nem támogatja a tipikus avere vFXT-munkafolyamatok nagy teljesítményű követelményeit. 
+Nem, a rendszer fürtözött készülékként van felkínálva, és meghatározott virtuálisgép-típusokra van tesztelve. Ez a korlátozás segít az ügyfeleknek elkerülni egy olyan rendszer létrehozását, amely nem támogatja a tipikus avere vFXT-munkafolyamatok nagy teljesítményű követelményeit.
 
 ## <a name="technical-disks"></a>Technikai: lemezek
 
@@ -168,8 +168,8 @@ Az adatlemezek a lemezek között vannak, de nincs titkosítva. Maguk a lemezek 
 
 Ha helyszíni tárolót használ a avere vFXT, akkor 1 GB/s vagy annál nagyobb hálózati kapcsolatban kell lennie. Ha kis mennyiségű adattal rendelkezik, és készen áll az adatok felhőbe másolására a feladatok futtatása előtt, előfordulhat, hogy a VPN-kapcsolat elég. 
 
-> [!TIP] 
-> Minél lassabb a hálózati kapcsolat, annál lassabbak lesznek a kezdeti hideg olvasások. A lassú olvasások a munkahelyi folyamat késését fokozzák. 
+> [!TIP]
+> Minél lassabb a hálózati kapcsolat, annál lassabbak lesznek a kezdeti hideg olvasások. A lassú olvasások a munkahelyi folyamat késését fokozzák.
 
 ### <a name="can-i-run-avere-vfxt-in-a-different-virtual-network-than-my-compute-cluster"></a>Futtathatom a avere-vFXT egy másik virtuális hálózaton, mint a számítási fürtem?
 
@@ -189,22 +189,22 @@ A avere vFXT-környezet olyan, mint bármely más Azure-beli virtuális gép, am
 
 ### <a name="what-are-the-bandwidth-requirements-for-avere-vfxt"></a>Milyen sávszélességre vonatkozó követelmények vonatkoznak a avere-vFXT?
 
-A teljes sávszélességre vonatkozó követelmény két tényezőtől függ: 
+A teljes sávszélességre vonatkozó követelmény két tényezőtől függ:
 
-* A forrástól kért adatok mennyisége 
+* A forrástól kért adatok mennyisége
 * Az ügyfélrendszer tűréshatára a kezdeti adatbetöltések késése esetén  
 
 A késésre érzékeny környezetek esetében az 1 GB/s-os minimális kapcsolati sebességű Fiber-megoldást kell használnia. A ExpressRoute használata, ha elérhető.  
 
 ### <a name="can-i-run-avere-vfxt-with-public-ip-addresses"></a>Futtathatok avere-vFXT nyilvános IP-címekkel?
 
-Nem, a avere vFXT az ajánlott eljárásokkal védett hálózati környezetben kell üzemeltetni.  
+Nem, a avere vFXT az ajánlott eljárásokkal védett hálózati környezetben kell üzemeltetni.
 
-### <a name="can-i-restrict-internet-access-from-my-clusters-virtual-network"></a>Korlátozható az Internet-hozzáférés a fürt virtuális hálózatáról? 
+### <a name="can-i-restrict-internet-access-from-my-clusters-virtual-network"></a>Korlátozható az Internet-hozzáférés a fürt virtuális hálózatáról?
 
-Általánosságban beállíthatja, hogy a vnet szükség szerint további biztonságot lehessen beállítani, de bizonyos korlátozások megakadályozhatják a fürt működését.
+Általánosságban megadhatja, hogy a virtuális hálózatra szükség szerint további biztonsági beállítások is érvényesek legyenek, néhány korlátozás azonban zavarhatja a fürt működését.
 
-Például a vnet érkező kimenő internet-hozzáférés korlátozása a fürthöz kapcsolódó problémákat okoz, kivéve, ha olyan szabályt is hozzáad, amely explicit módon engedélyezi a hozzáférést a AzureCloud. Ez a helyzet a [GitHub kiegészítő dokumentációjában](https://github.com/Azure/Avere/tree/master/src/vfxt/internet_access.md)olvasható.
+Például a virtuális hálózatról érkező kimenő internet-hozzáférés korlátozása problémát okoz a fürt számára, kivéve, ha olyan szabályt is hozzáad, amely explicit módon engedélyezi a hozzáférést a AzureCloud. Ez a helyzet a [GitHub kiegészítő dokumentációjában](https://github.com/Azure/Avere/tree/master/src/vfxt/internet_access.md)olvasható.
 
 A testreszabott biztonsággal kapcsolatos segítségért forduljon az ügyfélszolgálathoz a [Segítség kérése a rendszerhez](avere-vfxt-open-ticket.md#open-a-support-ticket-for-your-avere-vfxt)című témakörben leírtak szerint.
 
@@ -212,7 +212,7 @@ A testreszabott biztonsággal kapcsolatos segítségért forduljon az ügyfélsz
 
 ### <a name="how-many-core-filers-does-a-single-avere-vfxt-environment-support"></a>Hány alapvető Filer-t támogat egyetlen avere vFXT-környezet?
 
-A avere vFXT-fürtök legfeljebb 20 Magos Filer-t támogatnak. 
+A avere vFXT-fürtök legfeljebb 20 Magos Filer-t támogatnak.
 
 ### <a name="how-does-the-avere-vfxt-environment-store-data"></a>Hogyan tárolja a avere vFXT-környezet az adattárolást?
 
@@ -220,16 +220,16 @@ A avere vFXT nem tároló. Ez egy olyan gyorsítótár, amely több tárolási c
 
 ### <a name="which-core-filers-does-avere-vfxt-support"></a>Mely alapszintű Filer-avere támogatja a vFXT?
 
-Általános értelemben a avere vFXT for Azure a következő rendszereket támogatja alapszintű Filer-ként: 
+Általános értelemben a avere vFXT for Azure a következő rendszereket támogatja alapszintű Filer-ként:
 
 * Dell EMC Isilon (OneFS 7,1, 7,2, 8,0 és 8,1) 
-* NetApp-ONTAP (fürtözött mód 9,4, 9,3, 9,2, 9.1 P1, 8.0-8.3) és (7 mód 7. *, 8.0-8.3) 
+* NetApp-ONTAP (fürtözött mód 9,4, 9,3, 9,2, 9.1 P1, 8.0-8.3) és (7 mód 7. *, 8.0-8.3)
 
-  > [!NOTE] 
-  > A Azure NetApp Files jelenleg nem támogatott. 
+  > [!NOTE]
+  > A Azure NetApp Files jelenleg nem támogatott.
 
-* Azure Blob-tárolók (csak helyileg redundáns tárolás) 
-* AWS S3 gyűjtők 
+* Azure Blob-tárolók (csak helyileg redundáns tárolás)
+* AWS S3 gyűjtők
 * Google Cloud-gyűjtők
 
 ### <a name="why-doesnt-avere-vfxt-support-all-nfs-filers"></a>Miért nem támogatja a avere a vFXT az összes NFS-Filer-t?
@@ -254,11 +254,13 @@ A Storage-fióknak általános célú v2-(GPv2-) fióknak kell lennie, és csak 
 
 ### <a name="can-i-use-archive-blob-storage"></a>Használhatom az Archive blob Storage szolgáltatást?
 
-Nem. Az archiválási tárterületre vonatkozó szolgáltatói szerződés (SLA) nem kompatibilis a avere vFXT rendszer valós idejű címtár-és fájl-hozzáférési igényeivel. 
+Nem. Az archiválási tárterületre vonatkozó szolgáltatói szerződés (SLA) nem kompatibilis a avere vFXT rendszer valós idejű címtár-és fájl-hozzáférési igényeivel.
 
 ### <a name="can-i-use-cool-blob-storage"></a>Használhatom a Cool blob Storage szolgáltatást?
 
-Használhatja a ritka elérésű szintet, de vegye figyelembe, hogy a műveletek sebessége sokkal magasabb lesz. 
+A ritka elérésű rétegbeli blob Storage használata általában nem ajánlott az Azure Core Filer avere-vFXT. A lassú elérési szint alacsonyabb tárolási költségeket nyújt, de magasabb üzemeltetési költségeket is biztosít. (További részletekért lásd a [blob díjszabásának blokkolása](<https://azure.microsoft.com/pricing/details/storage/blobs/>) című témakört.) Ha az adatok elérése és módosítása vagy törlése gyakran megtörténik, vegye fontolóra a gyors használatot.
+
+A [hozzáférési szintek](https://docs.microsoft.com/azure/storage/blobs/storage-blob-storage-tiers#cool-access-tier) további információt biztosítanak arról, hogy mikor érdemes a ritka elérésű rétegbeli tárterületet vFXT Core filerként használni.
 
 ### <a name="how-do-i-encrypt-the-blob-container"></a>Hogyan titkosítani a BLOB-tárolót?
 
@@ -266,13 +268,13 @@ Az Azure-ban (előnyben részesített) vagy a avere vFXT Core Filer szinten is k
 
 ### <a name="can-i-use-my-own-encryption-key-for-a-blob-core-filer"></a>Használhatom a blob Core Filer saját titkosítási kulcsát?
 
-Alapértelmezés szerint az adattitkosítás a Microsoft által felügyelt kulcsokkal történik az Azure Blob-, tábla-és üzenetsor-tároláshoz, valamint Azure Files. A blob Storage és a Azure Files titkosításához használhatja a saját kulcsát. Ha úgy dönt, hogy avere vFXT-titkosítást használ, akkor a avere által generált kulcsot kell használnia, és helyileg kell tárolnia. 
+Alapértelmezés szerint az adattitkosítás a Microsoft által felügyelt kulcsokkal történik az Azure Blob-, tábla-és üzenetsor-tároláshoz, valamint Azure Files. A blob Storage és a Azure Files titkosításához használhatja a saját kulcsát. Ha úgy dönt, hogy avere vFXT-titkosítást használ, akkor a avere által generált kulcsot kell használnia, és helyileg kell tárolnia.
 
 ## <a name="purchasing"></a>Beszerzés
 
 ### <a name="how-do-i-get-avere-vfxt-for-azure-licensing"></a>Hogyan avere vFXT az Azure licenceléshez?
 
-Az Azure piactéren egyszerűen avere vFXT az Azure-licenchez. Regisztráljon egy Azure-fiókra, majd kövesse az [avere vFXT-fürt üzembe helyezése](avere-vfxt-deploy.md) a avere vFXT-fürt létrehozásához című témakör utasításait. 
+Az Azure piactéren egyszerűen avere vFXT az Azure-licenchez. Regisztráljon egy Azure-fiókra, majd kövesse az [avere vFXT-fürt üzembe helyezése](avere-vfxt-deploy.md) a avere vFXT-fürt létrehozásához című témakör utasításait.
 
 ### <a name="how-much-does-avere-vfxt-cost"></a>Mennyibe kerül a avere vFXT?
 
@@ -280,9 +282,9 @@ Az Azure-ban nincs további licencelési díj a avere vFXT-fürtök használatá
 
 ### <a name="can-avere-vfxt-vms-be-run-as-low-priority"></a>Avere vFXT virtuális gépek alacsony prioritással futnak?
 
-Nem, a avere vFXT-fürtök "always on" szolgáltatást igényelnek. A fürtök kikapcsolhatók, ha nem szükségesek. 
+Nem, a avere vFXT-fürtök "always on" szolgáltatást igényelnek. A fürtök kikapcsolhatók, ha nem szükségesek.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az Azure-hoz készült avere vFXT megismeréséhez olvassa el ezeket a cikkeket a saját rendszer megtervezéséhez és üzembe helyezéséhez:
 

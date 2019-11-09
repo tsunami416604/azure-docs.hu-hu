@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 07/19/2019
-ms.openlocfilehash: cd7b8c3de46cb88833f27cbebb7d07f944a711e4
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 335e3c3ddabbf5bc267458fc1c55fef0e551583e
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73580840"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73833785"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>A Azure Logic Apps korlátai és konfigurációs adatai
 
@@ -77,11 +77,11 @@ Egyetlen logikai alkalmazás futtatásának korlátai:
 
 | Name (Név) | Korlát | Megjegyzések |
 | ---- | ----- | ----- |
-| Egyidejűség kiváltása | * Korlátlan, ha a Egyidejűség vezérlő ki van kapcsolva <p><p>* 25 a Egyidejűség vezérlőelem bekapcsolásának alapértelmezett korlátja, amely a vezérlő bekapcsolását követően nem vonható vissza. Az alapértelmezett értéket 1 és 50 közötti értékre módosíthatja. | Ez a korlát a logikai alkalmazások azon példányainak a maximális számát ismerteti, amelyek egyszerre vagy párhuzamosan futtathatók. <p><p>Ha az alapértelmezett határértéket 1 és 50 közötti értékre szeretné módosítani, a következő témakörben talál további információt: [trigger egyidejűségi korlátjának módosítása](../logic-apps/logic-apps-workflow-actions-triggers.md#change-trigger-concurrency) vagy az [indító példányok egymás után](../logic-apps/logic-apps-workflow-actions-triggers.md#sequential-trigger). |
+| Egyidejűség kiváltása | * Korlátlan, ha a Egyidejűség vezérlő ki van kapcsolva <p><p>* 25 a Egyidejűség vezérlőelem bekapcsolásának alapértelmezett korlátja, amely a vezérlő bekapcsolását követően nem vonható vissza. Az alapértelmezett értéket 1 és 50 közötti értékre módosíthatja. | Ez a korlát a logikai alkalmazások azon példányainak a maximális számát ismerteti, amelyek egyszerre vagy párhuzamosan futtathatók. <p><p>**Megjegyzés**: Ha a Egyidejűség be van kapcsolva, a SplitOn korlátja a signficantly 100 elemre csökken [.](../logic-apps/logic-apps-workflow-actions-triggers.md#split-on-debatch) Ha az elemek száma meghaladja ezt a korlátot, a SplitOn képesség le van tiltva. <p><p>Ha az alapértelmezett határértéket 1 és 50 közötti értékre szeretné módosítani, a következő témakörben talál további információt: [trigger egyidejűségi korlátjának módosítása](../logic-apps/logic-apps-workflow-actions-triggers.md#change-trigger-concurrency) vagy az [indító példányok egymás után](../logic-apps/logic-apps-workflow-actions-triggers.md#sequential-trigger). |
 | Várakozó futtatások maximális száma | Ha a Egyidejűség-vezérlő be van kapcsolva, a várakozási idő minimális száma 10, az egyidejű futtatások száma (Egyidejűség). A maximális számot akár 100-ig is megváltoztathatja. | Ez a korlát a logikai alkalmazások azon példányainak a maximális számát írja le, amelyek csak akkor tudnak futni, ha a logikai alkalmazás már futtatja az egyidejű példányokat. <p><p>Az alapértelmezett korlát módosításához tekintse meg a [várakozó futtatások korlátjának módosítása](../logic-apps/logic-apps-workflow-actions-triggers.md#change-waiting-runs)című témakört. |
 | Foreach | 100 000 | Ez a korlát a "for each" ciklusban feldolgozható tömb elemeinek legnagyobb számát mutatja. <p><p>Nagyobb tömbök szűréséhez használhatja a [lekérdezési műveletet](../connectors/connectors-native-query.md). |
 | Foreach Egyidejűség | a 20 az alapértelmezett korlát, ha a Egyidejűség vezérlőelem ki van kapcsolva. Az alapértelmezett értéket 1 és 50 közötti értékre módosíthatja. | Ez a korlát a "minden" hurok-iteráció esetében a legmagasabb szám, amely egyszerre vagy párhuzamosan futtatható. <p><p>Ha az alapértelmezett határértéket 1 és 50 közötti értékre szeretné módosítani, az egyes " [egyidejűségek korlátait](../logic-apps/logic-apps-workflow-actions-triggers.md#change-for-each-concurrency) vagy [futtatását](../logic-apps/logic-apps-workflow-actions-triggers.md#sequential-for-each)" részben tekintse meg egymás után. |
-| SplitOn elemek | 100 000 | Egy tömböt visszaadó eseményindítók esetében megadhat egy olyan kifejezést, amely egy "SplitOn" tulajdonságot használ, amely a [Tömb elemeit több munkafolyamat-példányba bontja vagy bontotta](../logic-apps/logic-apps-workflow-actions-triggers.md#split-on-debatch) a feldolgozásra, nem pedig "foreach" ciklust használ. Ez a kifejezés az egyes tömbökhöz tartozó munkafolyamat-példányok létrehozásához és futtatásához használható tömböt hivatkozik. |
+| SplitOn elemek | * 100 000 trigger-párhuzamosság nélkül <p><p>* 100 trigger-párhuzamosságtal | Egy tömböt visszaadó eseményindítók esetében megadhat egy olyan kifejezést, amely egy "SplitOn" tulajdonságot használ, amely a [Tömb elemeit több munkafolyamat-példányba bontja vagy bontotta](../logic-apps/logic-apps-workflow-actions-triggers.md#split-on-debatch) a feldolgozásra, nem pedig "foreach" ciklust használ. Ez a kifejezés az egyes tömbökhöz tartozó munkafolyamat-példányok létrehozásához és futtatásához használható tömböt hivatkozik. <p><p>**Megjegyzés**: Ha a Egyidejűség be van kapcsolva, a SplitOn korlátja significanly csökken. Ha az elemek száma meghaladja ezt a korlátot, a SplitOn le van tiltva. |
 | Iterációig | 5000 | |
 ||||
 
@@ -131,7 +131,7 @@ Azure Logic Apps támogatja az írási műveleteket, beleértve a lapkákat és 
 
 Az alábbi korlátozások érvényesek egyetlen HTTP-kérelemre vagy szinkron összekötő hívására:
 
-#### <a name="timeout"></a>időtúllépés
+#### <a name="timeout"></a>Időtúllépés
 
 Egyes összekötők aszinkron hívásokat végeznek, vagy figyelik a webhook-kérelmeket, így a műveletek időtúllépése hosszabb lehet a határértéknél. További információkért tekintse meg az adott összekötő technikai részleteit, valamint a [munkafolyamat-eseményindítókat és műveleteket](../logic-apps/logic-apps-workflow-actions-triggers.md#http-action).
 
@@ -209,7 +209,7 @@ Az egyes integrációs fiókok szintjein található összetevők számának kor
 > [!NOTE]
 > Az ingyenes szintet csak feltáró forgatókönyvek esetében használja, éles környezetben nem. Ez a szint korlátozza az átviteli sebességet és a használatot, és nem rendelkezik szolgáltatói szerződéssel (SLA).
 
-| Összetevő | Ingyenes | Basic | Standard |
+| Összetevő | Ingyenes | Alapszintű | Standard |
 |----------|------|-------|----------|
 | EDI kereskedelmi szerződések | 10 | 1 | 1,000 |
 | EDI kereskedelmi partnerek | 25 | 2 | 1,000 |

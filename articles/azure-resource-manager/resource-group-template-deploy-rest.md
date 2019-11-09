@@ -6,12 +6,12 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 06/04/2019
 ms.author: tomfitz
-ms.openlocfilehash: 5b3170d640257774339697ee7915169c2f5e451f
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.openlocfilehash: 0472510801f5827327ac06a3927ca597b6caa612
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71973356"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73834358"
 ---
 # <a name="deploy-resources-with-resource-manager-templates-and-resource-manager-rest-api"></a>Erőforrások üzembe helyezése Resource Manager-sablonokkal és az Azure Manager REST API-val
 
@@ -35,13 +35,17 @@ Az **előfizetéshez**való üzembe helyezéshez használja a [központi telepí
 PUT https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.Resources/deployments/{deploymentName}?api-version=2019-05-01
 ```
 
+Az előfizetési szintű központi telepítésekkel kapcsolatos további információkért lásd: [erőforráscsoportok és erőforrások létrehozása az előfizetési szinten](deploy-to-subscription.md).
+
 Egy **felügyeleti csoportba**történő központi telepítéshez használja a [központi telepítések – létrehozás felügyeleti csoport hatókörét](/rest/api/resources/deployments/createorupdateatmanagementgroupscope). A kérelmet a következő címre küldi a rendszer:
 
 ```HTTP
 PUT https://management.azure.com/providers/Microsoft.Management/managementGroups/{groupId}/providers/Microsoft.Resources/deployments/{deploymentName}?api-version=2019-05-01
 ```
 
-A cikkben szereplő példák az erőforráscsoportok központi telepítését használják. Az előfizetések telepítésével kapcsolatos további információkért lásd: [erőforráscsoportok és erőforrások létrehozása az előfizetési szinten](deploy-to-subscription.md).
+További információ a felügyeleti csoport szintű központi telepítésekről: [erőforrások létrehozása a felügyeleti csoport szintjén](deploy-to-management-group.md).
+
+A cikkben szereplő példák az erőforráscsoportok központi telepítését használják.
 
 ## <a name="deploy-with-the-rest-api"></a>Üzembe helyezés a REST API
 

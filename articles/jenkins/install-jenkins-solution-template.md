@@ -8,12 +8,12 @@ manager: jeconnoc
 ms.author: tarcher
 ms.topic: quickstart
 ms.date: 6/7/2017
-ms.openlocfilehash: 6bc0d8a1e938f2b8a97cab486d4679bfc445f6fb
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 531199303f7b00083bcd7139ac00ac36bde5c583
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60642338"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73837519"
 ---
 # <a name="create-a-jenkins-server-on-an-azure-linux-vm-from-the-azure-portal"></a>Jenkins-kiszolgáló létrehozása Azure-beli linuxos virtuális gépen az Azure Portalról
 
@@ -33,7 +33,7 @@ A Jenkins támogat egy olyan modellt, amelyben a Jenkins-kiszolgáló egy vagy t
 
 ## <a name="connect-to-jenkins"></a>Kapcsolódás a Jenkinshez
 
-A webböngészőjében nyissa meg a virtuális gépet (például: http://jenkins2517454.eastus.cloudapp.azure.com/)). A Jenkins-konzol nem érhető el nem biztonságos HTTP-n keresztül. Az oldalon szereplő utasítások szerint, SSH-alagút használatával biztonságosan nyithatja meg a Jenkins-konzolt.
+Navigáljon a virtuális géphez (például `http://jenkins2517454.eastus.cloudapp.azure.com/`) a böngészőben. A Jenkins-konzol nem érhető el nem biztonságos HTTP-n keresztül. Az oldalon szereplő utasítások szerint, SSH-alagút használatával biztonságosan nyithatja meg a Jenkins-konzolt.
 
 ![Jenkins zárolásának feloldása](./media/install-jenkins-solution-template/jenkins-ssh-instructions.png)
 
@@ -71,7 +71,7 @@ A **Source Code Management** (Forráskódkezelés) lapon engedélyezze a **Git**
 
 ![A Git-tárház meghatározása](./media/install-jenkins-solution-template/jenkins-job-git-configuration.png) 
 
-A **Build** (Felépítés) lapon válassza az **Add build step** (Felépítési lépés hozzáadása), majd az **Invoke Gradle Script** (Gradle-szkript meghívása) lehetőséget. Válassza a **Use Gradle Wrapper** (Gradle-burkoló használata) lehetőséget, majd a **Wrapper location** (Burkoló helye) mezőbe írja be a `complete`, a **Tasks** (Feladatok) mezőbe pedig a `build` értéket.
+A **Build** (Felépítés) lapon válassza az **Add build step** (Felépítési lépés hozzáadása), majd az **Invoke Gradle Script** (Gradle-szkript meghívása) lehetőséget. Válassza a **Use Gradle Wrapper** (Gradle-burkoló használata) lehetőséget, majd a `complete`Wrapper location **(Burkoló helye) mezőbe írja be a**, a `build`Tasks **(Feladatok) mezőbe pedig a** értéket.
 
 ![Gradle-burkoló használata a létrehozáshoz](./media/install-jenkins-solution-template/jenkins-job-gradle-config.png) 
 

@@ -1,5 +1,5 @@
 ---
-title: Azure AD-szerepkörökre vonatkozó kérelmek jóváhagyása vagy elutasítása a PIM-Azure Active Directoryban | Microsoft Docs
+title: Azure AD-szerepkörökre vonatkozó kérelmek jóváhagyása vagy elutasítása a PIM-ben – Azure AD | Microsoft Docs
 description: Megtudhatja, hogyan hagyhatja jóvá vagy tilthatja le a Azure AD Privileged Identity Management (PIM) Azure AD-szerepköreire vonatkozó kérelmeket.
 services: active-directory
 documentationcenter: ''
@@ -12,16 +12,16 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: pim
-ms.date: 04/09/2019
+ms.date: 11/08/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3245f7343a48d3e54795c14dcb23b836c8d9d988
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 7f663f7daad19e77dcc1cc95a6a324e881d92b28
+ms.sourcegitcommit: 16c5374d7bcb086e417802b72d9383f8e65b24a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72756429"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73847131"
 ---
 # <a name="approve-or-deny-requests-for-azure-ad-roles-in-privileged-identity-management"></a>Azure AD-szerepkörökre vonatkozó kérelmek jóváhagyása vagy elutasítása Privileged Identity Management
 
@@ -33,7 +33,7 @@ Kövesse a cikkben ismertetett lépéseket az Azure AD-szerepkörökre vonatkoz�
 
 Meghatalmazott jóváhagyóként e-mail-értesítést fog kapni, ha egy Azure AD-szerepkörre vonatkozó kérelem jóváhagyása függőben van. Ezeket a függőben lévő kérelmeket Privileged Identity Management tekintheti meg.
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
+1. Bejelentkezés az [Azure Portalra](https://portal.azure.com/).
 
 1. Nyissa meg **Azure ad Privileged Identity Management**.
 
@@ -75,7 +75,7 @@ Meghatalmazott jóváhagyóként e-mail-értesítést fog kapni, ha egy Azure AD
 
     A rendszer a megtagadásával frissíti az állapotjelző szimbólumot.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [E-mail-értesítések Privileged Identity Management](pim-email-notifications.md)
 - [Azure-beli erőforrás-szerepkörökre vonatkozó kérelmek jóváhagyása vagy elutasítása Privileged Identity Management](pim-resource-roles-approval-workflow.md)

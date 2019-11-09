@@ -1,6 +1,6 @@
 ---
 title: Modell eredményeinek értelmezése
-titleSuffix: ML Studio (classic) Azure
+titleSuffix: ML Studio (classic) - Azure
 description: Válassza ki az algoritmushoz beállított optimális paramétert a pontszám-modell kimenetének használatával és megjelenítésével.
 services: machine-learning
 ms.service: machine-learning
@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 11/29/2017
-ms.openlocfilehash: cdeded35e1afb9313f2dd2c5842aef511ea0dd61
-ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
+ms.openlocfilehash: acac881a790644532121697e6b79e57a98b168fe
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73621671"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73839847"
 ---
 # <a name="interpret-model-results-in-azure-machine-learning-studio-classic"></a>A modell eredményeinek értelmezése Azure Machine Learning Studio (klasszikus)
 Ez a témakör bemutatja, hogyan jelenítheti meg és értelmezheti az előrejelzési eredményeket Azure Machine Learning Studio (klasszikus). Miután betanított egy modellt, és elvégezte az előrejelzések megtételét ("a modell értékelése"), meg kell ismernie és el kell értelmezni az előrejelzés eredményét.
@@ -26,7 +26,7 @@ A Azure Machine Learning Studio klasszikus verziójában négy fő gépi tanulá
 
 * Osztályozás
 * Fürtszolgáltatás
-* Regressziós
+* regressziós
 * Ajánló rendszerek
 
 Az ezen modellek alapján történő előrejelzéshez használt modulok a következők:
@@ -137,7 +137,7 @@ Miután közzétette és futtatta a webszolgáltatást, és megadta a bemeneti s
 
 10. ábra A többosztályos besorolás webszolgáltatás-eredménye
 
-## <a name="regression"></a>Regressziós
+## <a name="regression"></a>regressziós
 A regressziós problémák eltérnek a besorolási problémáktól. Besorolási probléma esetén olyan diszkrét osztályokat próbál meg megjósolni, mint például az, hogy az írisz virág melyik osztályhoz tartozik. De ahogy az alábbi példában is látható egy regressziós problémára, egy folytonos változót próbál meg előre jelezni, például egy autó árát.
 
 **Példa kísérletre**

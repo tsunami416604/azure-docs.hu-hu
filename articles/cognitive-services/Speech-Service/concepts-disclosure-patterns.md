@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 10/10/2019
 ms.author: angle
-ms.openlocfilehash: fde4a73dd4a95028f23563fb6a8ae36c0142fd39
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: dfa05ff114ea0976cb8d57f711eaacc016ea53cc
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73507318"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73836997"
 ---
 # <a name="disclosure-design-patterns"></a>Közzétételi tervezési minták
 Most, hogy&#39;meghatározta a szintetikus hangélmények megfelelő [szintű közzétételét](concepts-disclosure-guidelines.md#disclosure-assessment) ,&#39;jó időt biztosít a lehetséges tervezési minták megismerésére.
@@ -38,7 +38,7 @@ A következő diagram használatával közvetlenül a szintetikus hangra vonatko
 
 
 
-| Ha a szintetikus hang élménye... | Ajánlatok | Tervezési minták |
+| Ha a szintetikus hang élménye... | Javaslatok | Tervezési minták |
 | --- | --- | --- |
 | Magas szintű közzétételt igényel  | Legalább egy explicit mintázatot és implicit célzási lehetőséget kell használnia a felhasználóknak a társítások kiépítéséhez. |[Explicit közzététel](#explicit-disclosure)<br>[Implicit közzététel](#implicit-disclosure)  |
 | Kis nyilvánosságra hozatalt igényel | A közzététel minimális vagy szükségtelen lehet, de bizonyos implicit minták is hasznosak lehetnek. | [Képesség-közzététel](#capability-disclosure)<br>[Társalgási átláthatóság](#conversational-transparency)  |
@@ -61,7 +61,7 @@ A hangélmény megkezdése előtt vezesse be a digitális asszisztenst úgy, hog
 ![átlátható bevezetés az első futtatási élmény során](media/responsible-ai/disclosure-patterns/transparent-intro-first.png) <br>
 *A szintetikus hang egy új felhasználó bevezetését követően jelent meg.*
 
-Ajánlatok
+Javaslatok
 - Írja le, hogy a hang mesterséges (például &quot;digitális&quot;)
 - Írja le, hogy az ügynök mire képes
 - A hangvezéreltség&#39;explicit állapota
@@ -96,7 +96,7 @@ Akkor használja ezt a mintát, ha a felhasználó egy hanglejátszóval vagy in
 ![explicit szerzőt a hírek adathordozó-forgatókönyvében](media/responsible-ai/disclosure-patterns/explicit-byline.png) <br/>
 *Egy explicit szerző az a hely, ahol a hang származik.*
 
-Ajánlatok
+Javaslatok
 
 - Ajánlat belépési pontja további információ a szintetizált hangról
 
@@ -111,7 +111,7 @@ Olyan választási lehetőségeket kínál, amelyek a szintetikus hangélményre
 ![felhasználói beállítások](media/responsible-ai/disclosure-patterns/customization-user-control.png)<br/>
 *A felhasználói beállítások lehetővé teszik a felhasználók számára, hogy testre szabják és javítsák tapasztalataikat.*
 
-Ajánlatok
+Javaslatok
 
 - A hang testreszabásának engedélyezése a felhasználók számára (például a nyelv és a hang típusának kiválasztása)
 - Lehetővé teszi a felhasználóknak, hogy megtanítsák a rendszer számára az egyedi hangra (például hangkalibrációra, egyéni parancsokra) való reagálást.
@@ -124,7 +124,7 @@ A digitális asszisztensi&#39;hang testreszabásának módjai. Ha a hang egy hí
 ![hang testreszabása](media/responsible-ai/disclosure-patterns/customization-voice-type.png)<br/>
 *A hangok kiválasztásának lehetősége segít közvetíteni a mesterséges természetet.*
 
-Ajánlatok
+Javaslatok
 - Az egyes hangok hangjának előzetes megtekintésének engedélyezése a felhasználók számára
 - Minden hanghoz használjon valódi bevezetést
 - Ajánlat belépési pontjai a szintetizált hangokkal kapcsolatos további információkért
@@ -136,7 +136,7 @@ A COPPA-szabályozások betartása mellett a szülők számára is biztosíthatj
 szülők ![közzététele](media/responsible-ai/disclosure-patterns/parental-disclosure.png)<br/>
 *A szülők számára optimalizált transzparens bevezetéssel biztosítható, hogy egy felnőtt tisztában legyen a hang szintetikus természetével, mielőtt a gyermek kommunikál.*
 
-Ajánlatok
+Javaslatok
 
 - A szülők célközönsége elsődleges célközönségként a közzétételhez
 - Bátorítsa a szülőket, hogy tájékoztassák gyermekeiket
@@ -155,7 +155,7 @@ Ha a felhasználó további információt kér a szintetikus hangról, az elsőd
 ![a szintetikus hanggal kapcsolatos további információkat biztosít a felhasználóknak](media/responsible-ai/disclosure-patterns/learn-more.png)<br/>
 *További információt a külső hely súgójának webhelyén találhat.*
 
-Ajánlatok
+Javaslatok
 
 - Egyszerűsítse az összetett fogalmakat, és ne használja a Legalese és a műszaki szakzsargont
 - Ne temetni a tartalmat az adatvédelem és a használati feltételekkel kapcsolatos utasításokban
@@ -247,11 +247,11 @@ A közzétételi lehetőség használata a zökkenőmentes működés érdekébe
 
 ## <a name="reference-docs"></a>Segédanyagok
 
-* [Átlátszósági Megjegyzés](https://aka.ms/neural-tts-transparency-note)
+* [A hangalapú tehetségek közzététele](https://aka.ms/disclosure-voice-talent)
 * [Útmutató a szintetikus hangtechnológia felelős üzembe helyezéséhez](concepts-guidelines-responsible-deployment-synthetic.md)
 * [A kapuzás áttekintése](concepts-gating-overview.md)
 * [A közzététel módja](concepts-disclosure-guidelines.md)
 
 ## <a name="next-steps"></a>További lépések
 
-* [Átlátszósági Megjegyzés](https://aka.ms/neural-tts-transparency-note)
+* [A hangalapú tehetségek közzététele](https://aka.ms/disclosure-voice-talent)

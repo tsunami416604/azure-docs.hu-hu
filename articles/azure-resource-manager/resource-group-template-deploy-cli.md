@@ -6,12 +6,12 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 10/09/2019
 ms.author: tomfitz
-ms.openlocfilehash: c5a07d8b52e83215b2fdc220d76557ca45e1eae9
-ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
+ms.openlocfilehash: e2f1747b8ae98ce53ce570422044a2f172c1a526
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72286015"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73834479"
 ---
 # <a name="deploy-resources-with-resource-manager-templates-and-azure-cli"></a>Erőforrások üzembe helyezése Resource Manager-sablonokkal és az Azure parancssori felületével
 
@@ -37,9 +37,11 @@ Az **előfizetésre**való központi telepítéshez használja az [az Deployment
 az deployment create --location <location> --template-file <path-to-template>
 ```
 
-Jelenleg a felügyeleti csoport központi telepítései csak a REST APIon keresztül támogatottak. Lásd: [erőforrások üzembe helyezése Resource Manager-sablonokkal és Resource Manager-Rest APIokkal](resource-group-template-deploy-rest.md).
+Az előfizetési szintű központi telepítésekkel kapcsolatos további információkért lásd: [erőforráscsoportok és erőforrások létrehozása az előfizetési szinten](deploy-to-subscription.md).
 
-A cikkben szereplő példák az erőforráscsoportok központi telepítését használják. Az előfizetések telepítésével kapcsolatos további információkért lásd: [erőforráscsoportok és erőforrások létrehozása az előfizetési szinten](deploy-to-subscription.md).
+Jelenleg a felügyeleti csoport központi telepítései csak a REST APIon keresztül támogatottak. További információ a felügyeleti csoport szintű központi telepítésekről: [erőforrások létrehozása a felügyeleti csoport szintjén](deploy-to-management-group.md).
+
+A cikkben szereplő példák az erőforráscsoportok központi telepítését használják.
 
 ## <a name="deploy-local-template"></a>Helyi sablon üzembe helyezése
 
@@ -102,7 +104,7 @@ A paraméterek értékének átadásához használhat beágyazott paramétereket
 
 ### <a name="inline-parameters"></a>Beágyazott paraméterek
 
-A beágyazott paraméterek átadásához adja meg a következő értékeket: `parameters`. Ha például egy karakterláncot és tömböt szeretne átadni egy sablonnak egy bash-rendszerhéjra, használja a következőt:
+A beágyazott paraméterek átadásához adja meg `parameters`értékeit. Ha például egy karakterláncot és tömböt szeretne átadni egy sablonnak egy bash-rendszerhéjra, használja a következőt:
 
 ```azurecli
 az group deployment create \
@@ -139,7 +141,7 @@ Ahelyett, hogy a paramétereket a parancsfájlba beágyazott értékként adja �
 
 További információ a paraméter fájlról: [Resource Manager-paraméter fájljának létrehozása](resource-manager-parameter-files.md).
 
-Ha egy helyi paramétert szeretne átadni, a `@` paranccsal adjon meg egy Storage. Parameters. JSON nevű helyi fájlt.
+Helyi paraméterérték átadásához a `@` használatával adjon meg egy Storage. Parameters. JSON nevű helyi fájlt.
 
 ```azurecli-interactive
 az group deployment create \
@@ -151,7 +153,7 @@ az group deployment create \
 
 ## <a name="handle-extended-json-format"></a>Kiterjesztett JSON-formátum kezelése
 
-Többsoros karakterláncokkal vagy megjegyzésekkel rendelkező sablon üzembe helyezéséhez a `--handle-extended-json-format` kapcsolót kell használnia.  Példa:
+Többsoros karakterláncokkal vagy megjegyzésekkel rendelkező sablon üzembe helyezéséhez a `--handle-extended-json-format` kapcsolót kell használnia.  Például:
 
 ```json
 {
@@ -222,7 +224,7 @@ Ha a sablon szintaktikai hibát tartalmaz, a parancs egy hibaüzenetet ad vissza
 }
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Ha hibát tapasztal a sikeres üzembe helyezéshez, olvassa el a [hiba visszaállítása a sikeres központi telepítéshez](rollback-on-error.md)című témakört.
 - Ha meg szeretné adni, hogyan kezelje az erőforráscsoport meglévő erőforrásait, de a sablonban nincs definiálva, tekintse meg a [Azure Resource Manager üzembe helyezési módokat](deployment-modes.md).

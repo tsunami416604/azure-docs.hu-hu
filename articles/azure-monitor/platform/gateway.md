@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: MGoedtel
 ms.author: magoedte
 ms.date: 10/30/2019
-ms.openlocfilehash: 87e1995a84ae2b598b8097d4910914831a75a318
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 7574f5c17c1b4598336b8db3108946164dc203f2
+ms.sourcegitcommit: 16c5374d7bcb086e417802b72d9383f8e65b24a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73162018"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73847281"
 ---
 # <a name="connect-computers-without-internet-access-by-using-the-log-analytics-gateway-in-azure-monitor"></a>Internet-hozzáférés nélküli számítógépek összekötése a Log Analytics átjáró használatával Azure Monitor
 
@@ -26,7 +26,7 @@ A Log Analytics átjáró egy http-továbbítási proxy, amely támogatja a http
 
 A Log Analytics átjáró a következőket támogatja:
 
-* Jelentéskészítés akár ugyanahhoz a négy Log Analytics munkaterület-ügynökhöz, amelyek mögött Azure Automation hibrid Runbook-feldolgozókkal vannak konfigurálva.  
+* Az egyes ügynökökön konfigurált, és a Azure Automation hibrid Runbook-feldolgozókkal konfigurált Log Analytics munkaterületek jelentéskészítése.  
 * Windows rendszerű számítógépek, amelyeken a Microsoft monitoring Agent közvetlenül kapcsolódik egy Log Analytics munkaterülethez Azure Monitorban.
 * A Linux rendszerű számítógépek, amelyeken a Linux Log Analytics ügynöke közvetlenül kapcsolódik a Azure Monitor Log Analytics munkaterületéhez.  
 * System Center Operations Manager 2012 SP1 HASZNÁLNA 7, Operations Manager 2012 R2 és UR3, illetve Operations Manager 2016-ban vagy később, Log Analytics integrált felügyeleti csoporttal.  
@@ -335,7 +335,7 @@ A 3. lépésben szereplő hiba azt jelenti, hogy a modult nem importálták. A h
 | `Remove-OMSGatewayAllowedClientCertificate` |Tárgy (kötelező) |Eltávolítja az ügyféltanúsítvány tárgyát az engedélyezett listából. |`Remove-OMSGatewayAllowed` <br> `ClientCertificate` <br> `-Subject mycert` |  
 | `Get-OMSGatewayAllowedClientCertificate` | |A jelenleg engedélyezett ügyféltanúsítvány-alanyok beolvasása (csak a helyileg konfigurált engedélyezett alanyok, az engedélyezett témák nem tölthetők le automatikusan) |`Get-`<br>`OMSGatewayAllowed`<br>`ClientCertificate` |  
 
-## <a name="troubleshooting"></a>Hibakeresés
+## <a name="troubleshooting"></a>Hibaelhárítás
 
 Az átjáró által naplózott események gyűjtéséhez telepítenie kell a Log Analytics ügynököt.
 
@@ -381,6 +381,6 @@ Ha segítséget szeretne kérni, válassza a portál jobb felső sarkában láth
 
 ![Képernyőkép egy új támogatási kérelemről](./media/gateway/support.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [Adatforrások hozzáadásával](../../azure-monitor/platform/agent-data-sources.md) adatokat gyűjthet a csatlakoztatott forrásokból, és tárolhatja az adatokat a log Analytics munkaterületen.

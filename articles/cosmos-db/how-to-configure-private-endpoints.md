@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: thweiss
-ms.openlocfilehash: 34b54459629560ba80e6a38d10edbab32ea44778
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 3f987b9e05bcdcda9afe26a1eb1354e5e2450ac5
+ms.sourcegitcommit: 16c5374d7bcb086e417802b72d9383f8e65b24a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/08/2019
-ms.locfileid: "73820154"
+ms.locfileid: "73846542"
 ---
 # <a name="configure-azure-private-link-for-an-azure-cosmos-account-preview"></a>Azure Private-hivatkozás konfigurálása Azure Cosmos-fiókhoz (előzetes verzió)
 
@@ -33,19 +33,19 @@ A következő lépésekkel hozhat létre privát hivatkozást egy meglévő Azur
 
 1. A **privát végpont létrehozása (előzetes verzió) – alapok**, ablaktábla adja meg vagy válassza ki a következő adatokat:
 
-    | Beállítás | Érték |
+    | Beállítás | Value (Díj) |
     | ------- | ----- |
     | **Projekt részletei** | |
     | Előfizetés | Válassza ki előfizetését. |
     | Erőforráscsoport | Válasszon ki egy erőforráscsoportot.|
     | **Példány részletei** |  |
-    | Név | Adja meg a privát végpont nevét. Ha ezt a nevet hozza, hozzon létre egy egyedit. |
+    | Name (Név) | Adja meg a privát végpont nevét. Ha ezt a nevet hozza, hozzon létre egy egyedit. |
     |Régió| Válassza ki azt a régiót, ahová a privát hivatkozást telepíteni szeretné. A magánhálózati végpontot ugyanazon a helyen kell létrehozni, ahol a virtuális hálózat található.|
     |||
 1. Válassza a **Tovább: erőforrás**elemet.
 1. A **privát végpont létrehozása – erőforrás**területen adja meg vagy válassza ki az alábbi adatokat:
 
-    | Beállítás | Érték |
+    | Beállítás | Value (Díj) |
     | ------- | ----- |
     |Kapcsolati módszer  | Válassza a kapcsolódás egy Azure-erőforráshoz a címtárban lehetőséget. <br/><br/> Ezzel a beállítással kiválaszthatja az egyik erőforrást egy privát hivatkozás beállításához, vagy kapcsolódhat valaki másnak az erőforráshoz egy olyan erőforrás-AZONOSÍTÓval vagy aliassal, amelyet Önnel osztottak meg.|
     | Előfizetés| Válassza ki előfizetését. |
@@ -57,7 +57,7 @@ A következő lépésekkel hozhat létre privát hivatkozást egy meglévő Azur
 1. Válassza a **Tovább: konfigurálás**lehetőséget.
 1. A **privát végpont létrehozása (előzetes verzió) – konfiguráció**területen adja meg vagy válassza ki az alábbi adatokat:
 
-    | Beállítás | Érték |
+    | Beállítás | Value (Díj) |
     | ------- | ----- |
     |**Hálózat**| |
     | Virtuális hálózat| Válassza ki a virtuális hálózatot. |
@@ -86,7 +86,7 @@ Az alábbi táblázat a különböző Azure Cosmos-fiók API-típusai, a támoga
 
 ### <a name="fetch-the-private-ip-addresses"></a>A magánhálózati IP-címek beolvasása
 
-A magánhálózati végpont kiépítés után lekérdezheti az IP-címeket. A Azure Portal IP-címeinek megtekintése. Válassza az **összes erőforrás**lehetőséget, keresse meg a korábban létrehozott privát végpontot ebben az esetben: "dbPrivateEndpoint3", és válassza az Áttekintés lapot a DNS-beállítások és IP-címek megtekintéséhez.
+A magánhálózati végpont kiépítés után lekérdezheti az IP-címeket. Ha Azure Portal IP-címeit szeretné megtekinteni, válassza a **minden erőforrás**lehetőséget, keresse meg a korábban létrehozott privát végpontot ebben az esetben: "dbPrivateEndpoint3", és válassza az Áttekintés lapot a DNS-beállítások és IP-címek megtekintéséhez.
 
 ![Magánhálózati IP-címek a Azure Portalban](./media/how-to-configure-private-endpoints/private-ip-addresses-portal.png)
 
@@ -315,7 +315,7 @@ $deploymentOutput = New-AzResourceGroupDeployment -Name "PrivateCosmosDbEndpoint
 $deploymentOutput
 ```
 
-A PowerShell-parancsfájlban a "GroupId" változó csak egy értéket tartalmazhat, amely a fiók API-típusa. Az engedélyezett értékek: SQL, MongoDB, Cassandra, Gremlin és Table. Néhány Azure Cosmos-fióktípus több API-n keresztül érhető el. Például:
+A PowerShell-parancsfájlban a "GroupId" változó csak egy értéket tartalmazhat, amely a fiók API-típusa. Az engedélyezett értékek: SQL, MongoDB, Cassandra, Gremlin és Table. Néhány Azure Cosmos-fióktípus több API-n keresztül érhető el. Példa:
 
 * A Gremlin API-fiókok a Gremlin és az SQL API-fiókokból is elérhetők.
 * Table API fiók a tábla-és SQL API-fiókokból is elérhető.

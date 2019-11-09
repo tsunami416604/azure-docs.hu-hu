@@ -7,12 +7,12 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 10/31/2019
-ms.openlocfilehash: 293a90591a77825279c8ebbae64516b6126d8621
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: a7a9efbf6fd9c3dbe6b16d12a54f743d5b0820ba
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73588264"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73838214"
 ---
 # <a name="deploy-azure-data-explorer-into-your-virtual-network-preview"></a>Az Azure Adatkezelő üzembe helyezése a Virtual Network (előzetes verzió)
 
@@ -76,7 +76,7 @@ A [hálózati biztonsági csoportok (NSG)](/azure/virtual-network/security-overv
 | --- | --- | --- | --- |
 | Kezelés  |[ADX-felügyeleti címek](#azure-data-explorer-management-ip-addresses)/AzureDataExplorerManagement (ServiceTag) | ADX alhálózat: 443  | TCP  |
 | Állapotfigyelés  | [ADX állapot-figyelési címei](#health-monitoring-addresses)  | ADX alhálózat: 443  | TCP  |
-| Belső kommunikáció ADX  | ADX alhálózat: minden port  | ADX alhálózat: minden port  | Összes  |
+| Belső kommunikáció ADX  | ADX alhálózat: minden port  | ADX alhálózat: minden port  | Mind  |
 | Azure Load Balancer bejövő (állapotának) engedélyezése  | AzureLoadBalancer  | ADX alhálózat: 80443  | TCP  |
 
 #### <a name="outbound-nsg-configuration"></a>Kimenő NSG-konfiguráció
@@ -90,7 +90,7 @@ A [hálózati biztonsági csoportok (NSG)](/azure/virtual-network/security-overv
 | Azure Monitor konfiguráció letöltése  | ADX alhálózat  | [Azure monitor konfigurációs végpont címei](#azure-monitor-configuration-endpoint-addresses): 443 | TCP  |
 | Active Directory (ha van ilyen) | ADX alhálózat | AzureActiveDirectory: 443 | TCP |
 | Hitelesítésszolgáltató | ADX alhálózat | Internet: 80 | TCP |
-| Belső kommunikáció  | ADX alhálózat  | ADX alhálózat: minden port  | Összes  |
+| Belső kommunikáció  | ADX alhálózat  | ADX alhálózat: minden port  | Mind  |
 | `sql\_request` és `http\_request` beépülő modulok számára használt portok  | ADX alhálózat  | Internet: egyéni  | TCP  |
 
 ### <a name="relevant-ip-addresses"></a>Kapcsolódó IP-címek
@@ -220,30 +220,32 @@ A ExpressRoute használatával kapcsolódjon a helyszíni hálózathoz az Azure 
 
 Ha [Azure Firewall](/azure/firewall/overview) vagy bármely virtuális készülék használatával szeretné védeni a kimenő forgalmat a tartománynevek korlátozására, a tűzfalon engedélyezni kell a következő teljes tartományneveket (FQDN).
 
-* prod.warmpath.msftcloudes.com:443
-* production.diagnostics.monitoring.core.windows.net:443
-* graph.windows.net:443
-* *. update.microsoft.com:443
-* shavamanifestcdnprod1.azureedge.net:443
-* login.live.com:443
-* wdcp.microsoft.com:443
-* login.microsoftonline.com:443
-* azureprofilerfrontdoor.cloudapp.net:443
-* *. core.windows.net:443
-* *. servicebus.windows.net:443
-* shoebox2.metrics.nsatc.net:443
-* production.diagnostics.monitoring.core.windows.net:443
-* prod-dsts.dsts.core.windows.net:443
-* ocsp.msocsp.com:80
-* *. windowsupdate.com:80
-* ocsp.digicert.com:80
-* go.microsoft.com:80
-* dmd.metaservices.microsoft.com:80
-* www.msftconnecttest.com:80
-* crl.microsoft.com:80
-* www.microsoft.com:80
-* adl.windows.com:80
-* crl3.digicert.com:80
+```
+prod.warmpath.msftcloudes.com:443
+production.diagnostics.monitoring.core.windows.net:443
+graph.windows.net:443
+*.update.microsoft.com:443
+shavamanifestcdnprod1.azureedge.net:443
+login.live.com:443
+wdcp.microsoft.com:443
+login.microsoftonline.com:443
+azureprofilerfrontdoor.cloudapp.net:443
+*.core.windows.net:443
+*.servicebus.windows.net:443
+shoebox2.metrics.nsatc.net:443
+production.diagnostics.monitoring.core.windows.net:443
+prod-dsts.dsts.core.windows.net:443
+ocsp.msocsp.com:80
+*.windowsupdate.com:80
+ocsp.digicert.com:80
+go.microsoft.com:80
+dmd.metaservices.microsoft.com:80
+www.msftconnecttest.com:80
+crl.microsoft.com:80
+www.microsoft.com:80
+adl.windows.com:80
+crl3.digicert.com:80
+```
 
 Azt is meg kell határoznia, hogy az alhálózaton lévő [útválasztási táblázat](/azure/virtual-network/virtual-networks-udr-overview) a következő ugrási *internettel* rendelkező [felügyeleti címeket](#azure-data-explorer-management-ip-addresses) és [állapot-figyelési címeket](#health-monitoring-addresses) tartalmazza, hogy megakadályozza az aszimmetrikus útvonalakkal kapcsolatos problémákat.
 

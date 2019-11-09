@@ -5,16 +5,18 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 598248a0efb3322a9c22a5e38e4986f5ba5142ab
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: 19d709a2eb0af5bdb9d40a2bce96c5716ce3c6f6
+ms.sourcegitcommit: 16c5374d7bcb086e417802b72d9383f8e65b24a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73798452"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73847419"
 ---
 # <a name="get-drone-imagery-from-drone-partners"></a>Drone-képek beszerzése a drone-partnerektől
 
-Ez a cikk azt ismerteti, hogyan lehet a orthomosaic-adatokból bevezetni a drone-Rendszerképbeli partnereiből az Azure FarmBeats-adatközpontba. Jelenleg a következő képkeresési partnerek támogatottak:  
+Ez a cikk azt ismerteti, hogyan lehet a orthomosaic-adatokból bevezetni a drone-Rendszerképbeli partnereiből az Azure FarmBeats-adatközpontba. Az orthomosaic egy olyan légi illusztráció/kép, amely geometriailag korrigálva van és össze van fűzve a drone által gyűjtött adatokkal.
+
+Jelenleg a következő képkeresési partnerek támogatottak.
 
   ![A Project Farm veri](./media/get-drone-imagery-from-drone-partner/drone-partner-1.png)
 

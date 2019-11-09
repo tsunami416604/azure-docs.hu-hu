@@ -1,7 +1,7 @@
 ---
 title: 'Rövid útmutató: nyilvános standard Load Balancer létrehozása – Azure CLI'
 titlesuffix: Azure Load Balancer
-description: Ez a rövid útmutató ismerteti, hogyan hozható létre nyilvános Load Balancer az Azure CLI használatával
+description: Ez az útmutató bemutatja, hogyan hozható létre nyilvános terheléselosztót az Azure CLI használatával
 services: load-balancer
 documentationcenter: na
 author: asudbring
@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 01/25/2019
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: 8c4659fada420bc81c4633deb8bd241497a0263d
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: fb292e268df57dda8ed2db56a915270b7fe51bb2
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69509674"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73839837"
 ---
 # <a name="quickstart-create-a-standard-load-balancer-to-load-balance-vms-using-azure-cli"></a>Gyors útmutató: standard Load Balancer létrehozása a virtuális gépek terheléselosztásához az Azure CLI használatával
 
@@ -62,7 +62,7 @@ Ez a szakasz részletesen ismerteti a terheléselosztó következő összetevői
 
 ### <a name="create-the-load-balancer"></a>A terheléselosztó létrehozása
 
-Hozzon létre egy **myLoadBalancer** nevű nyilvános Azure Load Balancert az [az network lb create](https://docs.microsoft.com/cli/azure/network/lb?view=azure-cli-latest) paranccsal, amely tartalmaz egy **myFrontEnd** nevű előtérbeli készletet, és egy **myBackEndPool** háttérkészletet, amely az előző lépésben létrehozott **myPublicIP** nyilvános IP-címhez van társítva.
+Hozzon létre egy [myLoadBalancer](https://docs.microsoft.com/cli/azure/network/lb?view=azure-cli-latest) nevű nyilvános Azure Load Balancert az **az network lb create** paranccsal, amely tartalmaz egy **myFrontEnd** nevű előtérbeli készletet, és egy **myBackEndPool** háttérkészletet, amely az előző lépésben létrehozott **myPublicIP** nyilvános IP-címhez van társítva.
 
 ```azurecli-interactive
   az network lb create \
@@ -89,7 +89,7 @@ Az állapotfigyelő mintavételező az összes virtuálisgép-példányt ellenő
 
 ### <a name="create-the-load-balancer-rule"></a>A terheléselosztási szabály létrehozása
 
-A terheléselosztási szabályok meghatározzák az előtérbeli IP-konfigurációt a bejövő forgalomhoz, a háttérbeli IP-készletet a forgalom fogadásához, valamint a szükséges forrás- és célportot. Az [az network lb rule create](https://docs.microsoft.com/cli/azure/network/lb/rule?view=azure-cli-latest) paranccsal hozzon létre egy *myLoadBalancerRuleWeb* nevű terheléselosztási szabályt, amely felügyeli a *myFrontEnd* előtérkészlet 80-as portját, és terhelés szempontjából elosztott forgalmat továbbít a szintén a 80-as portot használó, *myBackEndPool* nevű háttércímkészlethez. 
+A terheléselosztási szabályok meghatározzák az előtérbeli IP-konfigurációt a bejövő forgalomhoz, a háttérbeli IP-készletet a forgalom fogadásához, valamint a szükséges forrás- és célportot. Az *az network lb rule create* paranccsal hozzon létre egy [myLoadBalancerRuleWeb](https://docs.microsoft.com/cli/azure/network/lb/rule?view=azure-cli-latest) nevű terheléselosztási szabályt, amely felügyeli a *myFrontEnd* előtérkészlet 80-as portját, és terhelés szempontjából elosztott forgalmat továbbít a szintén a 80-as portot használó, *myBackEndPool* nevű háttércímkészlethez. 
 
 ```azurecli-interactive
   az network lb rule create \
@@ -110,7 +110,7 @@ Mielőtt üzembe helyezné a virtuális gépeket, és tesztelné a terheléselos
 
 ### <a name="create-a-virtual-network"></a>Virtuális hálózat létrehozása
 
-Az [az network vnet create](https://docs.microsoft.com/cli/azure/network/vnet) paranccsal hozzon létre a *myResourceGroup* erőforráscsoportban egy *myVnet* nevű virtuális hálózatot egy *mySubnet* nevű alhálózattal.
+Az *az network vnet create* paranccsal hozzon létre a *myResourceGroup* erőforráscsoportban egy *myVnet* nevű virtuális hálózatot egy [mySubnet](https://docs.microsoft.com/cli/azure/network/vnet) nevű alhálózattal.
 
 ```azurecli-interactive
   az network vnet create \

@@ -6,16 +6,16 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 10/28/2019
+ms.date: 11/07/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 24efd9d67e5bcc083ce1a02dcf0850a39189afe8
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 2596091324acde5c4fdc3f7c467849f90266fec9
+ms.sourcegitcommit: 16c5374d7bcb086e417802b72d9383f8e65b24a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73173111"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73847230"
 ---
 # <a name="cloud-authentication-staged-rollout-public-preview"></a>Felhőalapú hitelesítés: szakaszos bevezetés (nyilvános előzetes verzió)
 
@@ -117,18 +117,18 @@ Engedélyezze a zökkenőmentes egyszeri bejelentkezést az AD-erdőkön a Power
 
 2. Navigáljon a (z)% ProgramFiles%\\Microsoft Azure Active Directory Connect mappába.
 
-3. Importálja a zökkenőmentes SSO PowerShell-modult a következő parancs használatával: `Import-Module .\\AzureADSSO.psd1`.
+3. Importálja a zökkenőmentes SSO PowerShell-modult a következő parancs használatával: `Import-Module .\AzureADSSO.psd1`.
 
 4. Futtassa a PowerShellt rendszergazdaként. A PowerShellben hívja meg a `New-AzureADSSOAuthenticationContext`. Ehhez a parancshoz meg kell adni egy párbeszédpanelt, amelyen megadhatja a bérlő globális rendszergazdai hitelesítő adatait.
 
-5. Hívja meg `Get-AzureADSSOStatus \| ConvertFrom-Json`. Ez a parancs az Active Directory-erdők listáját tartalmazza (tekintse meg a \"tartományok\" listáját), amelyen a funkció engedélyezve van. Alapértelmezés szerint a a bérlő szintjén hamis értékre van állítva.
+5. Hívja meg `Get-AzureADSSOStatus | ConvertFrom-Json`. Ez a parancs az Active Directory-erdők listáját tartalmazza (tekintse meg a \"tartományok\" listáját), amelyen a funkció engedélyezve van. Alapértelmezés szerint a a bérlő szintjén hamis értékre van állítva.
 
    > **Példa:** 
    > ![példa a Windows PowerShell kimenetére](./media/how-to-connect-staged-rollout/sr3.png)
 
-6. Hívja meg `\$creds = Get-Credential`. Ha a rendszer kéri, adja meg a kívánt Active Directory-erdő tartományi rendszergazdai hitelesítő adatait.
+6. Hívja meg `$creds = Get-Credential`. Ha a rendszer kéri, adja meg a kívánt Active Directory-erdő tartományi rendszergazdai hitelesítő adatait.
 
-7. Hívja meg `Enable-AzureADSSOForest -OnPremCredentials \$creds`. Ez a parancs létrehoz egy AZUREADSSOACC számítógépfiókot a helyszíni tartományvezérlőről ehhez az adott Active Directory erdőhöz, amely szükséges a zökkenőmentes egyszeri bejelentkezéshez.
+7. Hívja meg `Enable-AzureADSSOForest -OnPremCredentials $creds`. Ez a parancs létrehoz egy AZUREADSSOACC számítógépfiókot a helyszíni tartományvezérlőről ehhez az adott Active Directory erdőhöz, amely szükséges a zökkenőmentes egyszeri bejelentkezéshez.
 
 8. A zökkenőmentes egyszeri bejelentkezéshez az intranet zónában URL-címek szükségesek. Az URL-címek Csoportházirendek használatával történő üzembe helyezéséhez tekintse meg a [zökkenőmentes egyszeri bejelentkezési](how-to-connect-sso-quick-start.md#step-3-roll-out-the-feature) útmutatót.
 
@@ -240,7 +240,7 @@ Az alábbi lépésekkel követheti nyomon, hogy a felhasználói bejelentkezése
 
 -   **K: használhatom a PowerShellt a szakaszos bevezetéshez?**
 
--   Válasz: igen, keresse meg a dokumentációt, hogy a PowerShell használatával hajtsa végre a szakaszos bevezetést itt.
+-   Válasz: igen, keresse meg a dokumentációt, hogy a PowerShell használatával hajtsa végre a szakaszos bevezetést [itt](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview#staged_rollout).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 - [AzureAD 2,0 előzetes verzió](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview#staged_rollout )

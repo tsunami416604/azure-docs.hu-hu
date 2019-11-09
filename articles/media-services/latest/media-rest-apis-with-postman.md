@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/11/2019
+ms.date: 11/07/2019
 ms.author: juliako
-ms.openlocfilehash: c402381534087f1e8cdab711bd1b2a34c78417f4
-ms.sourcegitcommit: 9a4296c56beca63430fcc8f92e453b2ab068cc62
+ms.openlocfilehash: 7b4e2d14e8719808db138a4f2607b19cece401a6
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/20/2019
-ms.locfileid: "72675720"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73839586"
 ---
 # <a name="configure-postman-for-media-services-rest-api-calls"></a>Poster konfigurálása Media Services REST API hívásokhoz
 
@@ -92,13 +92,18 @@ Az AMS v3-erőforrások kezelésének megkezdése előtt be kell szereznie és b
 
     ![AAD-jogkivonat lekérése](./media/develop-with-postman/postman-get-aad-auth-token.png)
 
+## <a name="troubleshooting"></a>Hibaelhárítás 
+
+* Ha az alkalmazás a "HTTP 504: Gateway timeout" művelettel meghiúsul, győződjön meg arról, hogy a Location változó nincs explicit módon beállítva a Media Services fiók várt helyétől eltérő értékre. 
+* Ha "a fiók nem található" hibaüzenet jelenik meg, ellenőrizze, hogy a szövegtörzs JSON-üzenetében található Location tulajdonság arra a helyre van-e beállítva, amelyben a Media Services fiók található. 
+
 ## <a name="see-also"></a>Lásd még:
 
 - [Fájlok feltöltése egy Media Services fiókba – REST](upload-files-rest-how-to.md)
 - [Szűrők létrehozása Media Services-REST használatával](filters-dynamic-manifest-rest-howto.md)
 - [Azure Resource Manager-alapú REST API](https://github.com/Azure-Samples/media-services-v3-arm-templates)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Adatfolyam-fájlok a REST](stream-files-tutorial-with-rest.md)-tel.  
 - [Oktatóanyag: távoli fájl kódolása URL-cím alapján és stream a videó – REST](stream-files-tutorial-with-rest.md)

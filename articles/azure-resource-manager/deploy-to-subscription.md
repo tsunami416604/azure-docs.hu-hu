@@ -4,14 +4,14 @@ description: Leírja, hogyan lehet erőforráscsoportot létrehozni egy Azure Re
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 10/07/2019
+ms.date: 11/07/2019
 ms.author: tomfitz
-ms.openlocfilehash: d8b1be1d79ae0426d73c45408dd3c4f4f4660afb
-ms.sourcegitcommit: 6eecb9a71f8d69851bc962e2751971fccf29557f
+ms.openlocfilehash: 04a46700b68bcf498956f93c96ce2dccf1b555fe
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72532193"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73832719"
 ---
 # <a name="create-resource-groups-and-resources-at-the-subscription-level"></a>Erőforráscsoportok és erőforrások létrehozása az előfizetési szinten
 
@@ -23,7 +23,7 @@ A sablonok előfizetési szinten való üzembe helyezéséhez használja az Azur
 
 A következő erőforrástípusok az előfizetés szintjén helyezhetők üzembe:
 
-* [központi telepítések](/azure/templates/microsoft.resources/deployments) 
+* [központi telepítések](/azure/templates/microsoft.resources/deployments)
 * [peerAsns](/azure/templates/microsoft.peering/peerasns)
 * [policyAssignments](/azure/templates/microsoft.authorization/policyassignments)
 * [policyDefinitions](/azure/templates/microsoft.authorization/policydefinitions)
@@ -36,10 +36,16 @@ A következő erőforrástípusok az előfizetés szintjén helyezhetők üzembe
 
 Az előfizetési szintű központi telepítések sémája eltér az erőforráscsoport-telepítésekhez használt sémától.
 
-A séma esetében használja a következőt:
+Sablonok esetén használja a következőt:
 
 ```json
 https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json#
+```
+
+A paraméter fájljaihoz használja a következőt:
+
+```json
+https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentParameters.json#
 ```
 
 ## <a name="deployment-commands"></a>Üzembe helyezési parancsok
@@ -76,14 +82,14 @@ Az előfizetési szintű központi telepítések esetében meg kell adnia egy he
 
 Megadhatja a központi telepítés nevét, vagy használhatja az alapértelmezett központi telepítési nevet is. Az alapértelmezett név a sablonfájl neve. Egy **azuredeploy. JSON** nevű sablon üzembe helyezése például létrehoz egy alapértelmezett központi telepítési nevet a **azuredeploy**.
 
-Az egyes központi telepítési nevek esetében a hely nem módosítható. Nem hozhat létre központi telepítést egy helyen, ha már van ilyen nevű, de eltérő helyen üzemelő példány. Ha `InvalidDeploymentLocation` hibakódot kap, vagy más nevet vagy azonos helyet használ a korábbi üzembe helyezéshez a névben.
+Az egyes központi telepítési nevek esetében a hely nem módosítható. A központi telepítést nem lehet az egyik helyen létrehozni, ha egy másik helyen már van ilyen nevű üzemelő példány. Ha `InvalidDeploymentLocation`hibakódot kap, vagy más nevet vagy azonos helyet használ a korábbi üzembe helyezéshez a névben.
 
 ## <a name="use-template-functions"></a>A Template functions használata
 
 Az előfizetési szintű központi telepítések esetében néhány fontos szempontot figyelembe kell venni a sablon funkcióinak használatakor:
 
 * A [resourceGroup ()](resource-group-template-functions-resource.md#resourcegroup) függvény **nem** támogatott.
-* A [resourceId ()](resource-group-template-functions-resource.md#resourceid) függvény támogatott. Ezzel az eszközzel lekérheti az előfizetés szintjén üzemelő példányokon használt erőforrások erőforrás-AZONOSÍTÓját. Például egy házirend-definíció erőforrás-AZONOSÍTÓjának beolvasása a következővel: `resourceId('Microsoft.Authorization/roleDefinitions/', parameters('roleDefinition'))`
+* A [resourceId ()](resource-group-template-functions-resource.md#resourceid) függvény támogatott. Ezzel az eszközzel lekérheti az előfizetés szintjén üzemelő példányokon használt erőforrások erőforrás-AZONOSÍTÓját. Például szerezze be a házirend-definíció erőforrás-AZONOSÍTÓját `resourceId('Microsoft.Authorization/roleDefinitions/', parameters('roleDefinition'))`. Vagy használja a [subscriptionResourceId ()](resource-group-template-functions-resource.md#subscriptionresourceid) függvényt az előfizetési szint erőforrásaihoz tartozó erőforrás-azonosító lekéréséhez.
 * A [Reference ()](resource-group-template-functions-resource.md#reference) és a [List ()](resource-group-template-functions-resource.md#list) függvények támogatottak.
 
 ## <a name="create-resource-groups"></a>Erőforráscsoportok létrehozása
@@ -355,7 +361,7 @@ New-AzDeployment `
   -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/policydefineandassign.json
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * A szerepkörök hozzárendelésével kapcsolatos további tudnivalókért lásd: [Az Azure-erőforrásokhoz való hozzáférés kezelése RBAC és Azure Resource Manager sablonok használatával](../role-based-access-control/role-assignments-template.md).
 * A Azure Security Center munkaterület-beállításainak üzembe helyezésére példát a következő témakörben talál: [deployASCwithWorkspaceSettings. JSON](https://github.com/krnese/AzureDeploy/blob/master/ARM/deployments/deployASCwithWorkspaceSettings.json).

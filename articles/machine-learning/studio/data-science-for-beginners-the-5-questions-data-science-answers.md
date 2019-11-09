@@ -1,6 +1,6 @@
 ---
 title: Adatelemzés kezdőknek
-titleSuffix: ML Studio (classic) Azure
+titleSuffix: ML Studio (classic) - Azure
 description: Az adatelemzés kezdőknek 5 rövid videóban alapfogalmakat tanítunk, és az adatelemzés 5 kérdésével kezdődik. Azure Machine Learning.
 services: machine-learning
 ms.service: machine-learning
@@ -10,12 +10,12 @@ author: sdgilley
 ms.author: sgilley
 ms.custom: seodec18
 ms.date: 03/22/2019
-ms.openlocfilehash: b2a91f3df3bab6a2ba10090719d0e614b9d652a3
-ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
+ms.openlocfilehash: feb49b4e12bd304b49e0c50cd43ed0be52761532
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73621763"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73838771"
 ---
 # <a name="data-science-for-beginners-video-1-the-5-questions-data-science-answers"></a>Adatelemzés kezdőknek – 1. videó: 5 kérdés, amelyre az adatelemzés választ ad
 Gyors bevezetést nyerhet az adatelemzésből az adatelemzésből a *kezdők számára* öt rövid videóban egy legfontosabb adattudóstól. Ezek a videók alapszintű, de hasznosak, függetlenül attól, hogy az adatelemzést vagy az adatszakértőkkel való munkát érdekli.
@@ -66,7 +66,7 @@ Az algoritmusok ezt a családját kétosztályos besorolásnak nevezzük.
 
 Minden olyan kérdés esetében hasznos, amely csak két lehetséges választ tartalmaz.
 
-Például:
+Példa:
 
 * A gumiabroncs sikertelen lesz a következő 1 000 mérföldben: Igen vagy nem?
 * Mely több ügyfelet tartalmaz: egy $5 kupont vagy 25%-os kedvezményt?

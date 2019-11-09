@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 03/19/2019
-ms.openlocfilehash: c069b620e129177be5d374f5b23b5e54befd8ca2
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.date: 11/07/2019
+ms.openlocfilehash: e5abc9e75e11424b5d0dc4c260b412d0e414ad83
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71105430"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73837946"
 ---
 # <a name="manage-logs-for-an-hdinsight-cluster"></a>HDInsight-fürt naplóinak kezelése
 
@@ -23,17 +23,17 @@ A HDInsight-fürtök kezelése magában foglalja a fürt környezetének összes
 
 A HDInsight naplózásának jellemző lépései a következők:
 
-* 1\. lépés: Naplózási adatmegőrzési szabályzatok meghatározása
-* 2\. lépés: Fürtszolgáltatási verziók konfigurációs naplófájljainak kezelése
-* 3\. lépés: A fürt feladatok végrehajtási naplófájljainak kezelése
-* 4\. lépés: Előrejelzési kötetek tárolási méretei és költségei
-* 5\. lépés: A naplófájlok archiválási házirendjeinek és folyamatainak meghatározása
+* 1\. lépés: a naplózási adatmegőrzési szabályzatok meghatározása
+* 2\. lépés: a fürtszolgáltatás verzióinak kezelése – konfigurációs naplók
+* 3\. lépés: a fürt feladatok végrehajtási naplófájljainak kezelése
+* 4\. lépés: a naplózási kötetek tárolási méretének és költségeinek előrejelzése
+* 5\. lépés: a naplófájlok archiválási házirendjeinek és folyamatainak meghatározása
 
-## <a name="step-1-determine-log-retention-policies"></a>1\. lépés: Naplózási adatmegőrzési szabályzatok meghatározása
+## <a name="step-1-determine-log-retention-policies"></a>1\. lépés: a naplózási adatmegőrzési szabályzatok meghatározása
 
 A HDInsight-naplózási kezelési stratégia létrehozásának első lépése az üzleti forgatókönyvekkel és a feladatok végrehajtásával kapcsolatos előzmények tárolási követelményeivel kapcsolatos információk összegyűjtése.
 
-### <a name="cluster-details"></a>Fürt adatai
+### <a name="cluster-details"></a>Fürt részletei
 
 A következő fürt adatai hasznosak lehetnek az információk gyűjtéséhez a naplózási kezelési stratégiában. Gyűjtse össze ezeket az információkat az adott Azure-fiókban létrehozott összes HDInsight-fürtből.
 
@@ -45,8 +45,8 @@ A következő fürt adatai hasznosak lehetnek az információk gyűjtéséhez a 
 A legfelső szintű információk többségét a Azure Portal használatával érheti el.  Azt is megteheti, hogy az [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) -vel is beolvassa a HDInsight-fürt (ek) adatait:
 
 ```azurecli
-    az hdinsight list --resource-group <ResourceGroup>
-    az hdinsight show --resource-group <ResourceGroup> --name <ClusterName>
+az hdinsight list --resource-group <ResourceGroup>
+az hdinsight show --resource-group <ResourceGroup> --name <ClusterName>
 ```
 
 Ezeket az információkat a PowerShell használatával is megtekintheti.  További információ: az [Apache Hadoop-fürtök kezelése a HDInsight-ben a Azure PowerShell használatával](hdinsight-administer-use-powershell.md).
@@ -67,9 +67,9 @@ Fontos, hogy megismerje a HDInsight-fürt (ek) on futó számítási feladatok t
 
 * Gondolja át, hogyan gyűjthet naplókat a fürtből vagy több fürtből, és hogyan oszthatja azokat olyan célokra, mint a naplózás, a figyelés, a tervezés és a riasztás. Használhat egyéni megoldást is a naplófájlok rendszeres eléréséhez és letöltéséhez, valamint az irányítópultok megjelenítéséhez és elemzéséhez. További képességeket is hozzáadhat a riasztásokhoz a biztonság vagy a hibák észlelése céljából. Ezeket a segédprogramokat a PowerShell, a HDInsight SDK-k vagy a klasszikus Azure üzemi modellhez hozzáférő kód segítségével hozhatja létre.
 
-* Érdemes megfontolni, hogy a figyelési megoldás vagy szolgáltatás hasznos előnyt jelentene-e. A Microsoft System Center egy [HDInsight felügyeleti csomagot](https://www.microsoft.com/download/details.aspx?id=42521)biztosít. A naplók gyűjtésére és központosítására olyan külső gyártótól származó eszközöket is használhat, mint az Apache Chukwa és a ganglionok. Számos vállalat kínál szolgáltatásokat a Hadoop-alapú big data megoldások figyelésére, például: Középpont, CompuWare APM, Sematext SPM és Zettaset Orchestrator.
+* Érdemes megfontolni, hogy a figyelési megoldás vagy szolgáltatás hasznos előnyt jelentene-e. A Microsoft System Center egy [HDInsight felügyeleti csomagot](https://www.microsoft.com/download/details.aspx?id=42521)biztosít. A naplók gyűjtésére és központosítására olyan külső gyártótól származó eszközöket is használhat, mint az Apache Chukwa és a ganglionok. Számos vállalat kínál szolgáltatásokat a Hadoop-alapú big data megoldások figyelésére, például: középpont, CompuWare APM, Sematext SPM és Zettaset Orchestrator.
 
-## <a name="step-2-manage-cluster-service-versions-and-view-script-action-logs"></a>2\. lépés: A fürtszolgáltatási verziók kezelése és a parancsfájl-műveleti naplók megtekintése
+## <a name="step-2-manage-cluster-service-versions-and-view-script-action-logs"></a>2\. lépés: a fürtszolgáltatás verzióinak kezelése és a parancsfájl-műveleti naplók megtekintése
 
 Egy tipikus HDInsight-fürt számos szolgáltatást és nyílt forráskódú szoftvercsomagot használ (például Apache HBase, Apache Spark stb.). Bizonyos munkaterhelések, például a bioinformatika esetében előfordulhat, hogy a feladat-végrehajtási naplók mellett meg kell őriznie a szolgáltatás konfigurációs naplójának előzményeit is.
 
@@ -87,9 +87,9 @@ A Ambari felhasználói felületének használatával letöltheti a fürt egy ad
 
 ### <a name="view-the-script-action-logs"></a>A parancsfájl műveleti naplóinak megtekintése
 
-A HDInsight [parancsfájlokat](hdinsight-hadoop-customize-cluster-linux.md) futtatnak a fürtön, manuálisan, vagy ha meg van adva. A parancsfájl-műveletek segítségével például további szoftvereket telepíthet a fürtre, vagy megváltoztathatja a konfigurációs beállításokat az alapértelmezett értékek alapján. A parancsfájl-műveleti naplók betekintést nyújthatnak a fürt telepítése során felmerülő hibákba, valamint a konfigurációs beállítások olyan módosításaira is, amelyek befolyásolhatják a fürt teljesítményét és rendelkezésre állását.  Egy parancsfájl-művelet állapotának megtekintéséhez válassza a Ambari felhasználói felületén az **Ops** gombot, vagy az alapértelmezett Storage-fiókban nyissa meg az eseménynaplókat. A tárolási naplók a következő címen `/STORAGE_ACCOUNT_NAME/DEFAULT_CONTAINER_NAME/custom-scriptaction-logs/CLUSTER_NAME/DATE`érhetők el:.
+A HDInsight [parancsfájlokat](hdinsight-hadoop-customize-cluster-linux.md) futtatnak a fürtön, manuálisan, vagy ha meg van adva. A parancsfájl-műveletek segítségével például további szoftvereket telepíthet a fürtre, vagy megváltoztathatja a konfigurációs beállításokat az alapértelmezett értékek alapján. A parancsfájl-műveleti naplók betekintést nyújthatnak a fürt telepítése során felmerülő hibákba, valamint a konfigurációs beállítások olyan módosításaira is, amelyek befolyásolhatják a fürt teljesítményét és rendelkezésre állását.  Egy parancsfájl-művelet állapotának megtekintéséhez válassza a Ambari felhasználói felületén az **Ops** gombot, vagy az alapértelmezett Storage-fiókban nyissa meg az eseménynaplókat. A tárolási naplók a `/STORAGE_ACCOUNT_NAME/DEFAULT_CONTAINER_NAME/custom-scriptaction-logs/CLUSTER_NAME/DATE`címen érhetők el.
 
-## <a name="step-3-manage-the-cluster-job-execution-log-files"></a>3\. lépés: A fürt feladatok végrehajtási naplófájljainak kezelése
+## <a name="step-3-manage-the-cluster-job-execution-log-files"></a>3\. lépés: a fürt feladatok végrehajtási naplófájljainak kezelése
 
 A következő lépés a feladatok végrehajtási naplófájljainak áttekintése a különböző szolgáltatásokhoz.  A szolgáltatások lehetnek például az Apache HBase, a Apache Spark és sok más. A Hadoop-fürtök nagy mennyiségű részletes naplót készítenek, így a hasznos naplók (és amelyek nem) időigényesek lehetnek.  A naplófájlok kezeléséhez fontos a naplózási rendszer ismertetése.  A következő példa egy naplófájlt mutat be.
 
@@ -99,7 +99,7 @@ A következő lépés a feladatok végrehajtási naplófájljainak áttekintése
 
 A HDInsight a fürt fájlrendszerében és az Azure Storage-ban is tárolja a naplófájlokat. Megvizsgálhatja a fürt naplófájljait úgy, hogy megnyit egy [SSH](hdinsight-hadoop-linux-use-ssh-unix.md) -csatlakozást a fürthöz, és megkeresi a fájlrendszert, vagy a Hadoop fonal állapota portál használatával a távoli fő csomópont-kiszolgálón. Az Azure Storage-ban található naplófájlokat bármely olyan eszközzel megvizsgálhatja, amely hozzáférhet az Azure Storage-ból, és letöltheti azokat. Ilyenek például a [AzCopy](../storage/common/storage-use-azcopy.md), a [CloudXplorer](https://clumsyleaf.com/products/cloudxplorer)és a Visual Studio Server Explorer. A PowerShellt és az Azure Storage ügyféloldali kódtárait, illetve az Azure .NET SDK-kat is használhatja az Azure Blob Storage-ban tárolt adateléréshez.
 
-A Hadoop *a feladatok munkáját* a fürt különböző csomópontjain futtatja. A HDInsight megkezdheti a spekulációs feladatok kísérleteit, és leállíthatja a többi olyan feladatot, amely nem fejeződött be először. Ez jelentős tevékenységet generál, amely a vezérlőre, a stderr és a syslog-naplófájlokra van naplózva menet közben. Emellett egyszerre több feladat-kísérlet is fut, de a naplófájl csak lineárisan jeleníti meg az eredményeket.
+A Hadoop *a feladatok munkáját* a fürt különböző csomópontjain futtatja. A HDInsight megkezdheti a spekulációs feladatok kísérleteit, és leállíthatja az összes olyan feladatot, amely nem fejeződött be először. Ez jelentős tevékenységet generál, amely a vezérlőre, a stderr és a syslog-naplófájlokra van naplózva menet közben. Emellett egyszerre több feladat-kísérlet is fut, de a naplófájl csak lineárisan jeleníti meg az eredményeket.
 
 #### <a name="hdinsight-logs-written-to-azure-blob-storage"></a>Az Azure Blob Storage-ba írt HDInsight-naplók
 
@@ -109,32 +109,32 @@ A HDInsight által generált alapvető naplófájlok mellett a telepített szolg
 
 ### <a name="hdinsight-logs-generated-by-yarn"></a>A FONALak által generált HDInsight-naplók
 
-A fonal összesítései a feldolgozó csomóponton lévő összes tárolóban bejelentkeznek, és a naplókat munkavégző csomópontként egy összesített naplófájlként tárolja. Ezt a naplót az alkalmazás befejeződése után az alapértelmezett fájlrendszer tárolja. Az alkalmazás több száz vagy akár több ezer tárolót is használhat, de az egyetlen feldolgozó csomóponton futó összes tároló naplóit mindig egyetlen fájlba összesíti a rendszer. Az alkalmazás egy munkavégző csomóponton csak egy log-t használ. A naplózási összesítés alapértelmezés szerint engedélyezve van a 3,0-es és újabb verziójú HDInsight-fürtökön. Az összesített naplók a fürt alapértelmezett tárolójában találhatók.
+A fonal összesítései a feldolgozó csomóponton lévő összes tárolóban bejelentkeznek, és a naplókat munkavégző csomópontként egy összesített naplófájlként tárolja. Ezt a naplót az alkalmazás befejeződése után az alapértelmezett fájlrendszer tárolja. Az alkalmazás több száz vagy akár több ezer tárolót is használhat, de az egyetlen feldolgozó csomóponton futó összes tároló naplóit mindig egyetlen fájlba összesíti a rendszer. Az alkalmazás egy munkavégző csomóponton csak egy naplót használ. A naplózási összesítés alapértelmezés szerint engedélyezve van a 3,0-es és újabb verziójú HDInsight-fürtökön. Az összesített naplók a fürt alapértelmezett tárolójában találhatók.
 
 ```
-    /app-logs/<user>/logs/<applicationId>
+/app-logs/<user>/logs/<applicationId>
 ```
 
 Az összesített naplók nem olvashatók közvetlenül, mivel a tároló által indexelt TFile bináris formátumban vannak írva. A erőforráskezelő-naplók vagy a CLI-eszközök segítségével egyszerű szövegként tekintheti meg ezeket a naplókat alkalmazások vagy tárolók esetében.
 
 #### <a name="yarn-cli-tools"></a>FONAL CLI-eszközök
 
-A fonal CLI-eszközeinek használatához először az SSH használatával kell csatlakoznia a HDInsight-fürthöz. A parancsok `<applicationId>`futtatásakor `<containerId>`a `<user-who-started-the-application>`, `<worker-node-address>` , és adatokat kell megadni. A naplókat egyszerű szövegként tekintheti meg az alábbi parancsok egyikével:
+A fonal CLI-eszközeinek használatához először az SSH használatával kell csatlakoznia a HDInsight-fürthöz. `<applicationId>`, `<user-who-started-the-application>`, `<containerId>`és `<worker-node-address>` információ megadása a parancsok futtatásakor. A naplókat egyszerű szövegként tekintheti meg az alábbi parancsok egyikével:
 
 ```bash
-    yarn logs -applicationId <applicationId> -appOwner <user-who-started-the-application>
-    yarn logs -applicationId <applicationId> -appOwner <user-who-started-the-application> -containerId <containerId> -nodeAddress <worker-node-address>
+yarn logs -applicationId <applicationId> -appOwner <user-who-started-the-application>
+yarn logs -applicationId <applicationId> -appOwner <user-who-started-the-application> -containerId <containerId> -nodeAddress <worker-node-address>
 ```
 
 #### <a name="yarn-resourcemanager-ui"></a>FONAL erőforráskezelő felhasználói felülete
 
 A fonal erőforráskezelő felhasználói felülete a fürt fő csomópontján fut, és a Ambari webes felhasználói felületén keresztül érhető el. A következő lépések végrehajtásával tekintheti meg a FONALak naplóit:
 
-1. A böngészőben nyissa meg `https://CLUSTERNAME.azurehdinsight.net`a következőt:. Cserélje le a CLUSTERNAME-t a HDInsight-fürt nevére.
+1. Egy böngészőben nyissa meg a `https://CLUSTERNAME.azurehdinsight.net`. Cserélje le a CLUSTERNAME-t a HDInsight-fürt nevére.
 2. A bal oldali szolgáltatások listájából válassza a fonal lehetőséget.
 3. A rövid hivatkozások legördülő listából válassza ki az egyik fürtcsomópont-csomópontot, majd válassza a **erőforráskezelő-naplók**lehetőséget. Megjelenik a FONALak naplóira mutató hivatkozások listája.
 
-## <a name="step-4-forecast-log-volume-storage-sizes-and-costs"></a>4\. lépés: Előrejelzési kötetek tárolási méretei és költségei
+## <a name="step-4-forecast-log-volume-storage-sizes-and-costs"></a>4\. lépés: a naplózási kötetek tárolási méretének és költségeinek előrejelzése
 
 Az előző lépések elvégzése után meg kell ismernie a HDInsight-fürt (ek) által gyártott naplófájlok típusait és köteteit.
 
@@ -142,11 +142,11 @@ Ezt követően elemezze a naplófájlok adatmennyiségét a kulcstároló tárol
 
 Most már elegendő információval rendelkezik a naplók felügyeleti stratégiájának létrehozásához.  A számolótábla (vagy a választott eszköz) használatával előre jelezheti a naplózási méret növekedését és a log Storage Azure-szolgáltatás költségeit.  Tekintse meg a naplókat, amelyeket meg szeretne vizsgálni.  Most már megadhatja a naplófájlok jövőbeli költségét, miután meghatározta, hogy mely naplófájlokat lehet törölni (ha vannak ilyenek), és hogy mely naplókat kell megőrizni és archiválni a kevésbé költséges Azure Storage-ba.
 
-## <a name="step-5-determine-log-archive-policies-and-processes"></a>5\. lépés: A naplófájlok archiválási házirendjeinek és folyamatainak meghatározása
+## <a name="step-5-determine-log-archive-policies-and-processes"></a>5\. lépés: a naplófájlok archiválási házirendjeinek és folyamatainak meghatározása
 
 Miután meghatározta, hogy mely naplófájlok törölhetők, a naplózási paramétereket számos Hadoop-szolgáltatásban módosíthatja, hogy a naplófájlok automatikusan törlődjenek a megadott időszak után.
 
-Bizonyos naplófájlok esetében alacsonyabb árú naplófájl-archiválási módszert használhat. Azure Resource Manager tevékenységi naplók esetében ezt a megközelítést a Azure Portal használatával is megismerheti.  Állítsa be az ARM-naplók archiválását úgy, hogy kijelöli a HDInsight-példányhoz tartozó Azure Portalban a **műveletnapló**hivatkozást.  A tevékenység naplójának keresése lap tetején válassza az **Exportálás** menüpontot az **exportálási tevékenység naplója** panel megnyitásához.  Töltse ki az előfizetést, a régiót, a Storage-fiókba való exportálást, valamint azt, hogy hány napig tart a naplók megőrzése. Ugyanezen az ablaktáblán azt is jelezheti, hogy az egy Event hub-ba exportálható-e.
+Bizonyos naplófájlok esetében alacsonyabb árú naplófájl-archiválási módszert használhat. Azure Resource Manager tevékenységi naplók esetében ezt a megközelítést a Azure Portal használatával is megismerheti.  Állítsa be a Resource Manager-naplók archiválását úgy, hogy kiválasztja a HDInsight-példányhoz tartozó Azure Portalban található **műveletnapló** hivatkozást.  A tevékenység naplójának keresése lap tetején válassza az **Exportálás** menüpontot az **exportálási tevékenység naplója** panel megnyitásához.  Töltse ki az előfizetést, a régiót, a Storage-fiókba való exportálást, valamint azt, hogy hány napig tart a naplók megőrzése. Ugyanezen az ablaktáblán azt is jelezheti, hogy az egy Event hub-ba exportálható-e.
 
 ![Azure Portal exportálási tevékenység naplójának előzetes verziója](./media/hdinsight-log-management/hdi-export-log-files.png)
 
@@ -159,14 +159,14 @@ A .NET SDK for Hadoop használatával megvizsgálhatja az Azure Storage-hoz gene
 
 ### <a name="control-the-size-and-number-of-backup-indexes-for-old-log-files"></a>A régi naplófájlok biztonsági mentési indexek méretének és számának szabályozása
 
-A megőrzött naplófájlok méretének és számának szabályozásához állítsa be a következő tulajdonságokat `RollingFileAppender`:
+A megőrzött naplófájlok méretének és számának szabályozásához állítsa be a `RollingFileAppender`következő tulajdonságait:
 
-* `maxFileSize`annak a fájlnak a kritikus mérete, amely felett a fájl hengerelt. Az alapértelmezett érték 10 MB.
-* `maxBackupIndex`a létrehozandó biztonságimásolat-fájlok számát adja meg, alapértelmezés szerint 1.
+* `maxFileSize` a fájl kritikus mérete, amely felett a fájl hengerelt. Az alapértelmezett érték 10 MB.
+* `maxBackupIndex` a létrehozandó biztonságimásolat-fájlok számát adja meg, alapértelmezés szerint 1.
 
 ### <a name="other-log-management-techniques"></a>Egyéb naplózási kezelési technikák
 
-A szabad lemezterület elkerülése érdekében egyes operációs rendszer-eszközök, például a [logrotate](https://linux.die.net/man/8/logrotate) használatával kezelhetik a naplófájlok kezelését. Beállíthatja `logrotate` , hogy naponta fusson, tömörítse a naplófájlokat, és távolítsa el a régieket. A módszer a követelményektől függ, például attól, hogy mennyi ideig tart a naplófájlok megőrzése a helyi csomópontokon.  
+A szabad lemezterület elkerülése érdekében egyes operációs rendszer-eszközök, például a [logrotate](https://linux.die.net/man/8/logrotate) használatával kezelhetik a naplófájlok kezelését. Beállíthatja, hogy a `logrotate` naponta fusson, és tömörítse a naplófájlokat, és távolítsa el a régieket. A módszer a követelményektől függ, például attól, hogy mennyi ideig tart a naplófájlok megőrzése a helyi csomópontokon.  
 
 Azt is megtekintheti, hogy a HIBAKERESÉSi naplózás engedélyezve van-e egy vagy több szolgáltatáshoz, ami jelentősen növeli a kimeneti napló méretét.  
 

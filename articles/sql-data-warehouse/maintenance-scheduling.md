@@ -7,35 +7,34 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: design
-ms.date: 07/16/2019
+ms.date: 11/07/2019
 ms.author: anvang
 ms.reviewer: jrasnick
-ms.openlocfilehash: 91b202f8a5df841fa3d6aa1f0903999b395f8137
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: e9d5a137247c072516c0b25d7f6147ef48fec248
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73686064"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73839792"
 ---
 # <a name="use-maintenance-schedules-to-manage-service-updates-and-maintenance"></a>Karbantartási ütemtervek használata a szolgáltatások frissítéseinek és karbantartásának kezeléséhez
 
-A karbantartási ütemtervek mostantól minden Azure SQL Data Warehouse régióban elérhetők. A karbantartási ütemezési funkció a Service Health tervezett karbantartási értesítéseket, Resource Health ellenőrző figyelőt és a Azure SQL Data Warehouse karbantartási ütemezési szolgáltatást integrálja.
+A karbantartási ütemezési funkció a Service Health tervezett karbantartási értesítéseket, Resource Health ellenőrző figyelőt és a Azure SQL Data Warehouse karbantartási ütemezési szolgáltatást integrálja.
 
-A karbantartási ütemezés használatával kiválaszthatja az időablakot, amikor az új funkciók, frissítések és javítások fogadására alkalmas. Egy hét napos időszakon belül kiválaszthatja az elsődleges és a másodlagos karbantartási időszakot. Ennek a funkciónak a használatához külön napi tartományokban kell megadnia egy elsődleges és egy másodlagos ablakot.
+A karbantartási ütemezés használatával válassza ki az időablakot, amikor az új funkciók, frissítések és javítások fogadására alkalmas. Egy hét napos időszakon belül ki kell választania egy elsődleges és egy másodlagos karbantartási időszakot, minden egyes ablaknak külön napi tartományon belül kell lennie.
 
-Megadhatja például, hogy a 22:00-es és a Sunday 01:00-es elsődleges ablak is beütemezzen, majd egy másodlagos 19:00 ablakot is ütemezzen a 22:00-re. Ha SQL Data Warehouse nem tudja végrehajtani a karbantartást az elsődleges karbantartási időszak alatt, akkor a másodlagos karbantartási időszak alatt újra próbálkozik a karbantartással. A szolgáltatás karbantartása az elsődleges és a másodlagos Windows rendszerben is előfordulhat. Az összes karbantartási művelet gyors befejezésének biztosítása érdekében a DW400 (c) és az alacsonyabb adattárház-rétegek a karbantartási időszakon kívül is elvégezhetik a karbantartást.
+Megadhatja például, hogy a 22:00-es és a Sunday 01:00-es elsődleges ablak is beütemezzen, majd egy másodlagos 19:00 ablakot is ütemezzen a 22:00-re. Ha SQL Data Warehouse nem tudja végrehajtani a karbantartást az elsődleges karbantartási időszak alatt, akkor a másodlagos karbantartási időszak alatt újra próbálkozik a karbantartással. A szolgáltatás karbantartása esetenként az elsődleges és a másodlagos Windows rendszerben is előfordulhat. Az összes karbantartási művelet gyors befejezésének biztosítása érdekében a DW400c és az alacsonyabb adattárház-rétegek a kijelölt karbantartási időszakon kívül is elvégezhetik a karbantartást.
 
 Az újonnan létrehozott Azure SQL Data Warehouse példányok egy rendszer által meghatározott karbantartási ütemtervtel lesznek alkalmazva az üzembe helyezés során. Az ütemtervet az üzembe helyezés befejeződése után is szerkesztheti.
 
-Minden karbantartási időszak három és nyolc óra között lehet. A karbantartás az ablakon belül bármikor megtörténhet. A karbantartás megkezdésekor a rendszer minden aktív munkamenetet megszakít, és a nem véglegesített tranzakciókat visszaállítja. A kapcsolatnak több rövid veszteséget kell várnia, mivel a szolgáltatás új kódot telepít az adattárházba. Az adatraktár-karbantartás befejeződése után azonnal értesítést kap.
+Bár a karbantartási időszak három és nyolc óra között lehet, ez nem jelenti azt, hogy az adattárház az időtartam alatt offline állapotba kerül. A karbantartás az adott 5 -6 időszakon belül bármikor elvégezhető, és az adott időszakban egy leválasztást kell várnia, mivel a szolgáltatás új kódot helyez üzembe az adattárházban. A DW400c és az alacsonyabb szint esetében a karbantartási időszak során több rövid veszteség is tapasztalható a kapcsolódáskor. A karbantartás megkezdésekor az összes aktív munkamenet meg lesz szakítva, a nem véglegesített tranzakciók pedig vissza lesznek állítva. A példányok leállásának minimalizálásához győződjön meg arról, hogy az adattárház nem rendelkezik hosszan futó tranzakciókkal a választott karbantartási időszak előtt.
 
- Minden karbantartási műveletnek az ütemezett karbantartási időszakokon belül kell futnia. A megadott karbantartási időszakokon kívül nem fog karbantartás zajlani előzetes értesítés nélkül. Ha az adattárház egy ütemezett karbantartás során szünetel, a rendszer a folytatási művelet során frissíti. 
+Minden karbantartási műveletnek a megadott karbantartási időszakon belül kell lennie, kivéve, ha szükség van az időérzékeny frissítés üzembe helyezésére. Ha az adattárház egy ütemezett karbantartás során szünetel, a rendszer a folytatási művelet során frissíti. Az adatraktár-karbantartás befejeződése után azonnal értesítést kap.
 
 ## <a name="alerts-and-monitoring"></a>Riasztások és figyelés
 
-Service Health értesítésekkel való integráció és a Resource Health-ellenőrzési figyelő lehetővé teszi, hogy az ügyfelek tájékoztassanak a közelgő karbantartási tevékenységekről. Az új automatizálás kihasználja Azure Monitor. Eldöntheti, hogyan szeretné értesíteni a közelgő karbantartási eseményekről. Emellett kiválaszthatja, hogy mely automatizált folyamatok segítenek az állásidő kezelésében és a működési hatás minimalizálásában.
-
-A 24 órás előzetes értesítés megelőzi a DWC400c és az alacsonyabb rétegekhez nem tartozó karbantartási eseményeket. A példányok leállásának minimalizálásához győződjön meg arról, hogy az adattárház nem rendelkezik hosszan futó tranzakciókkal a választott karbantartási időszak előtt.
+Service Health értesítésekkel való integráció és a Resource Health-ellenőrzési figyelő lehetővé teszi, hogy az ügyfelek tájékoztassanak a közelgő karbantartási tevékenységekről. Ez az automatizálás kihasználja Azure Monitor. Eldöntheti, hogyan szeretné értesíteni a közelgő karbantartási eseményekről. Emellett kiválaszthatja, hogy mely automatizált folyamatok segítenek az állásidő kezelésében és a működési hatás minimalizálásában.
+A 24 órás előzetes értesítés megelőzi a DWC400c és az alacsonyabb rétegekhez nem tartozó karbantartási eseményeket.
 
 > [!NOTE]
 > Abban az esetben, ha egy kritikus idejű frissítést kell telepíteni, a speciális értesítési idők jelentősen csökkenthetők.
@@ -56,7 +55,7 @@ Alapértelmezés szerint minden újonnan létrehozott Azure SQL Data Warehouse-p
 
 Az adattárház karbantartási ütemezésének megtekintéséhez hajtsa végre az alábbi lépéseket:
 
-1.  Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
+1.  Bejelentkezés az [Azure Portalra](https://portal.azure.com/).
 2.  Válassza ki a megtekinteni kívánt adatraktárat. 
 3.  A kiválasztott adattárház megnyílik az Áttekintés panelen. Az adatraktárra alkalmazott karbantartási ütemterv a **karbantartási ütemterv**alatt jelenik meg.
 
@@ -72,7 +71,7 @@ A karbantartási ütemtervet bármikor frissítheti vagy módosíthatja. Ha a ki
 Az elsődleges és a másodlagos Windowsnak külön napi tartományokkal kell rendelkeznie. Ilyen például a kedd – csütörtök elsődleges ablak és a szombat – vasárnap egy másodlagos ablak.
 
 Az adattárház karbantartási ütemtervének módosításához hajtsa végre a következő lépéseket:
-1.  Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
+1.  Bejelentkezés az [Azure Portalra](https://portal.azure.com/).
 2.  Válassza ki a frissíteni kívánt adatraktárat. Megnyílik az oldal az Áttekintés panelen. 
 3.  Nyissa meg a karbantartási ütemterv beállításainak lapját. Ehhez válassza a **karbantartási ütemterv (előzetes verzió) összefoglalás** hivatkozást az Áttekintés panelen. Vagy válassza a **karbantartási ütemterv** lehetőséget a bal oldali erőforrás menüjében.  
 

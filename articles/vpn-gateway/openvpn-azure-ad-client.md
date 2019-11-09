@@ -1,22 +1,26 @@
 ---
-title: 'VPN-ügyfél konfigurálása a P2S VPN-kapcsolatokhoz: Azure AD-hitelesítés | Microsoft Docs'
+title: 'VPN-ügyfél konfigurálása az OpenVPN protokoll P2S kapcsolataihoz: Azure AD-hitelesítés | Microsoft Docs'
 description: A P2S VPN használatával kapcsolódhat a VNet az Azure AD-hitelesítés használatával
 services: vpn-gateway
-author: cherylmc
+author: anzaman
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 10/08/2019
-ms.author: cherylmc
-ms.openlocfilehash: 704dcd6335766a6058de4e520b8dcbca0d304c9d
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.date: 11/07/2019
+ms.author: alzam
+ms.openlocfilehash: da863144da5ec4361673c913392495d3d622f5a9
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73721467"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73837970"
 ---
-# <a name="configure-a-vpn-client-for-p2s-vpn-connections-azure-ad-authentication-preview"></a>VPN-ügyfél konfigurálása a P2S VPN-kapcsolatokhoz: Azure AD-hitelesítés (előzetes verzió)
+# <a name="configure-a-vpn-client-for-p2s-openvpn-protocol-connections-azure-ad-authentication-preview"></a>VPN-ügyfél konfigurálása a P2S OpenVPN protokoll kapcsolataihoz: Azure AD-hitelesítés (előzetes verzió)
 
 Ebből a cikkből megtudhatja, hogyan konfigurálhat VPN-ügyfelet egy virtuális hálózathoz pont – hely VPN és Azure Active Directory hitelesítés használatával való csatlakozáshoz. Az Azure AD-vel való kapcsolat és hitelesítés előtt először konfigurálnia kell az Azure AD-bérlőt. További információ: [Azure ad-bérlő konfigurálása](openvpn-azure-ad-tenant.md).
+
+> [!NOTE]
+> Az Azure AD-hitelesítés csak az OpenVPN® protokoll-kapcsolatok esetén támogatott.
+>
 
 ## <a name="profile"></a>Ügyféloldali profilok használata
 

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 10/09/2019
 ms.author: shlo
-ms.openlocfilehash: c0a097c17a24c68f7ebe4ec06a01b9ab7d9943b0
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 73e6e4e69a245485ca473f048bbeafef21dbbf37
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73507142"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73836791"
 ---
 # <a name="custom-neural-voice-gating-overview"></a>Egyéni neurális hangalapú kapuzás – áttekintés
 
@@ -28,7 +28,7 @@ A Microsoft a felelős AI megtervezése iránti elkötelezettségének részeké
 ### <a name="guidance-for-deploying-custom-neural-voice"></a>Útmutatás az egyéni neurális hang üzembe helyezéséhez
 
 - A [felelősségteljes üzembe helyezésre vonatkozó irányelvek](concepts-guidelines-responsible-deployment-synthetic.md): a kutatáson alapuló legfontosabb javaslatok
-- A [neurális szöveg-beszéd átlátszósági megjegyzése](https://aka.ms/neural-tts-transparency-note): mire van szükség a technológiáról a felelősségteljes használat érdekében?
+- A [Hangtehetségek nyilvánosságra hozatala](https://aka.ms/disclosure-voice-talent): mit kell tudnia, és tájékoztatnia kell a hangfelvételről a technológiáról a felelősségteljes használat érdekében
 - [Közzétételi terv](concepts-disclosure-guidelines.md): Hogyan tervezhet tapasztalatokat, hogy a felhasználók tisztában legyenek a szintetikus hang használatakor és a szolgáltatás megbízhatóságában
 
 ### <a name="why-custom-neural-voice-is-a-gated-technology"></a>Miért van az egyéni neurális hang egy levezérelt technológia
@@ -41,11 +41,11 @@ Az egyéni neurális hangokhoz való hozzáféréshez először ki kell tölteni
 
 Az egyéni neurális hangszolgáltatáshoz való hozzáférésre a Microsoft saját belátása szerint a jogosultsági feltételek, a folyamat és a rendelkezésre állás alapján korlátozott számú ügyfél támogatására jogosult
 
-Az alkalmazási folyamat részeként el kell végeznie a hangtehetségek explicit írásos engedélyének beszerzését a hangbetűkészlet létrehozása előtt, amely magában foglalja a [NEURÁLIS TTS átlátszósági megjegyzésének](https://aka.ms/neural-tts-transparency-note)megosztását. Azt is el kell fogadnia, hogy a hangbetűkészlet telepítésekor a megvalósítás a szolgáltatás [szintetikus jellegét](concepts-disclosure-guidelines.md) a felhasználók számára is kiadja, a Microsoft szintetikus beszédfelismerési szolgáltatásának feltételeit a szolgáltatási feltételekben, és támogatja a visszajelzési csatornát. Ez lehetővé teszi, hogy a szolgáltatás felhasználói jelentsenek a problémákat, és megosszanak adatokat a Microsofttal. A használati feltételekről [itt](https://aka.ms/neural-tts-transparency-note)olvashat bővebben.
+Az alkalmazási folyamat részeként el kell végeznie, hogy a hangtehetségek létrehozásának megkezdése előtt explicit írásos engedélyt kapjon a hangfelvételhez, ami magában foglalja a [hangfelvételek közzétételének](https://aka.ms/disclosure-voice-talent)megosztását is. Azt is el kell fogadnia, hogy a hangbetűkészlet telepítésekor a megvalósítás a szolgáltatás [szintetikus jellegét](concepts-disclosure-guidelines.md) a felhasználók számára is kiadja, a Microsoft szintetikus beszédfelismerési szolgáltatásának feltételeit a szolgáltatási feltételekben, és támogatja a visszajelzési csatornát. Ez lehetővé teszi, hogy a szolgáltatás felhasználói jelentsenek a problémákat, és megosszanak adatokat a Microsofttal. A használati feltételekről [itt](https://aka.ms/custom-neural-code-of-conduct)olvashat bővebben.
 
 ## <a name="reference-docs"></a>Segédanyagok
 
-* [Átlátszósági Megjegyzés](https://aka.ms/neural-tts-transparency-note)
+* [A hangalapú tehetségek közzététele](https://aka.ms/disclosure-voice-talent)
 * [Útmutató a szintetikus hangtechnológia felelős üzembe helyezéséhez](concepts-guidelines-responsible-deployment-synthetic.md)
 * [A közzététel módja](concepts-disclosure-guidelines.md)
 

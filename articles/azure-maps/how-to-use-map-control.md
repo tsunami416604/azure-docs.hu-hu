@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: c764460fb65287dab0031b27291d2f332cec3b3d
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: ceb3b7315439aced7f781e8de5e62b49fd83818c
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72756549"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73833814"
 ---
 # <a name="use-the-azure-maps-map-control"></a>A Azure Maps Térkép vezérlőelem használata
 
@@ -174,7 +174,7 @@ A weblapokon a térképkezelés ügyféloldali JavaScript-kódtár segítségév
 
 8. Nyissa meg a fájlt a böngészőben, és tekintse meg a megjelenített térképet. A következő kódhoz hasonlóan kell kinéznie:
 
-    <iframe height="700" style="width: 100%;" scrolling="no" title="A Térkép vezérlőelem használata" src="//codepen.io/azuremaps/embed/yZpEYL/?height=557&theme-id=0&default-tab=html,result" frameborder="no" allowtransparency="true" allowfullscreen="true">Tekintse meg a tollat <a href='https://codepen.io/azuremaps/pen/yZpEYL/'>a Térkép vezérlőelem használata</a> Azure Maps (<a href='https://codepen.io/azuremaps'> @azuremaps</a>) használatával a <a href='https://codepen.io'>CodePen</a>.
+    <iframe height="700" style="width: 100%;" scrolling="no" title="A Térkép vezérlőelem használata" src="//codepen.io/azuremaps/embed/yZpEYL/?height=557&theme-id=0&default-tab=html,result" frameborder="no" allowtransparency="true" allowfullscreen="true">Tekintse meg a tollat <a href='https://codepen.io/azuremaps/pen/yZpEYL/'>a Térkép vezérlőelem használata</a> Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) használatával a <a href='https://codepen.io'>CodePen</a>.
     </iframe>
 
 ## <a name="localizing-the-map"></a>A Térkép honosítása
@@ -183,7 +183,7 @@ Azure Maps két különböző módszert biztosít a Térkép nyelvének és regi
 
 ```javascript
 atlas.setLanguage('fr-FR');
-atlas.setView('auto');
+atlas.setView('Auto');
 ```
 
 A második lehetőség az, hogy ezeket az információkat a térképi beállításokba adja át a Térkép betöltése során, például:
@@ -191,7 +191,7 @@ A második lehetőség az, hogy ezeket az információkat a térképi beállít�
 ```javascript
 map = new atlas.Map('myMap', {
     language: 'fr-FR',
-    view: 'auto',
+    view: 'Auto',
 
     authOptions: {
         authType: 'aad',
@@ -211,7 +211,7 @@ Itt látható egy példa arra, hogy a "fr-FR", a regionális nézet pedig az "Au
 
 A támogatott nyelvek és regionális nézetek teljes listáját [itt](supported-languages.md)dokumentáljuk.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ismerje meg, hogyan hozhat létre és kezelhet egy térképet:
 

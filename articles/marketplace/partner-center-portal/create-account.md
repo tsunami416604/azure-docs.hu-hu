@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: guide
 ms.date: 09/26/2019
-ms.openlocfilehash: 072fafac7294757afb26511af569ea75ace0d20a
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: df857fb938ade329a971578ac206f16f1357d7e5
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/08/2019
-ms.locfileid: "73811937"
+ms.locfileid: "73838754"
 ---
 # <a name="create-a-commercial-marketplace-account-in-partner-center"></a>Kereskedelmi piactér-fiók létrehozása a partner Centerben
 
@@ -22,7 +22,7 @@ Az ajánlatok [Azure Marketplace](https://azuremarketplace.microsoft.com/) -en v
 >[!IMPORTANT]
 >Ha van olyan fiókja a [Cloud Partner Portal (CPP)](https://cloudpartner.azure.com) , amelyet a partner központba helyeztek át, nem kell új fiókot létrehoznia. További információkért lásd: [a CPP-ről áthelyezett közzétevők](#publishers-moving-from-cpp) .
 
-## <a name="before-you-begin"></a>Előkészületek
+## <a name="before-you-begin"></a>Előzetes teendők
 
 Ha fiókot szeretne létrehozni a partner Centerben, ellenőrizze, hogy rendelkezik-e az alábbiakkal:
 
@@ -137,7 +137,7 @@ A bejelentkezés után a következő lépésekkel állíthatja be a fiók beáll
 
 1. A partner Centerben válassza a **beállítások** > **fejlesztői beállítások** > **programok** > az **első lépések**lehetőséget, és adja meg a munkahelyi e-mail címét.
 2. Fejezze be a részleteket a közzétevő profilja oldalon.
-3. Olvassa el a [Microsoft Marketplace kiadói szerződés](http://go.microsoft.com/fwlink/?LinkID=699560)használati feltételeit, majd válassza az **elfogadás és folytatás** lehetőséget a regisztráció befejezéséhez.
+3. Olvassa el a [Microsoft Marketplace kiadói szerződés](https://go.microsoft.com/fwlink/?LinkID=699560)használati feltételeit, majd válassza az **elfogadás és folytatás** lehetőséget a regisztráció befejezéséhez.
 
     >[!Important]
     >*A feltételek elfogadásához engedélyezni kell a vállalat nevében való részvételt.*

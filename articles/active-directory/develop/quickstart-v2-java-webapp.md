@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 10/09/2019
 ms.author: sagonzal
 ms.custom: aaddev, scenarios:getting-started, languages:Java
-ms.openlocfilehash: 0046443bef0e71215157dfe89aaae45b2a91c330
-ms.sourcegitcommit: fa5ce8924930f56bcac17f6c2a359c1a5b9660c9
+ms.openlocfilehash: 93ae820f8c98b749ef8f71b17bf3d540d7886ed6
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73200276"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73832131"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-a-java-web-app"></a>Gyors útmutató: bejelentkezés felvétele a Microsofttal egy Java-webalkalmazásba
 
@@ -42,22 +42,22 @@ A minta futtatásához a következőkre lesz szüksége:
 > [!div renderon="docs"]
 > ## <a name="register-and-download-your-quickstart-app"></a>A rövid útmutató mintaalkalmazásának regisztrálása és letöltése
 > A gyors üzembe helyezési alkalmazás elindításához két lehetőség közül választhat: Express (1. lehetőség) vagy manuális (2. lehetőség)
-> 
+>
 > ### <a name="option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample"></a>1\. lehetőség: Az alkalmazás regisztrálása és automatikus konfigurálása, majd a kódminta letöltése
-> 
+>
 > 1. Nyissa meg a [Azure Portal-Alkalmazásregisztrációk](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredApps).
 > 1. Adja meg az alkalmazás nevét, majd kattintson a **Regisztráció** elemre.
 > 1. Az új alkalmazás letöltéséhez és automatikus konfigurálásához kövesse az utasításokat.
-> 
+>
 > ### <a name="option-2-register-and-manually-configure-your-application-and-code-sample"></a>2\. lehetőség: Az alkalmazás és a kódminta regisztrálása és kézi konfigurálása
-> 
+>
 > #### <a name="step-1-register-your-application"></a>1\. lépés: Alkalmazás regisztrálása
-> 
+>
 > Az alkalmazás regisztrálásához és a megoldáshoz az alkalmazás regisztrációs adatainak manuális hozzáadásához kövesse az alábbi lépéseket:
-> 
+>
 > 1. Jelentkezzen be egy munkahelyi vagy iskolai fiókkal vagy a személyes Microsoft-fiókjával az [Azure Portalra](https://portal.azure.com).
 > 1. Ha a fiókja több bérlőhöz is biztosít hozzáférést, válassza ki a fiókot az oldal jobb felső sarkában, és állítsa a portálmunkamenetét a kívánt Azure AD-bérlőre.
-> 
+>
 > 1. Navigáljon a Microsoft Identity platform for Developers [Alkalmazásregisztrációk](/azure/active-directory/develop/) oldalára.
 > 1. Válassza az **új regisztráció**lehetőséget.
 > 1. Amikor megjelenik az **Alkalmazás regisztrálása** lap, adja meg az alkalmazás regisztrációs adatait:
@@ -66,10 +66,9 @@ A minta futtatásához a következőkre lesz szüksége:
 > 1. Az **Áttekintés** oldalon keresse meg az alkalmazás **(ügyfél) azonosítóját** és a **könyvtár (bérlő) azonosító** értékeit. Másolja ezeket az értékeket később.
 > 1. Válassza ki a **hitelesítést** a menüben, majd adja hozzá a következő adatokat:
 >    - Az **átirányítási URI**-k területen adja hozzá a `http://localhost:8080/msal4jsamples/secure/aad` és `http://localhost:8080/msal4jsamples/graph/me`.
->    - A **Speciális beállítások**területen adja hozzá `https://localhost:8080/msal4jsample/sign-out` a **KIJELENTKEZÉSI URL-címhez**.
 >    - Kattintson a **Mentés** gombra.
 > 1. Válassza ki a **tanúsítványokat & a titkokat** a menüben, majd az **ügyfél titkai** szakaszban kattintson az **új ügyfél titka**lehetőségre:
-> 
+>
 >    - Írja be a kulcs leírását (például az alkalmazás titkos kulcsaként).
 >    - Válassza ki a kulcs időtartamát **1 év**múlva.
 >    - A kulcs értéke a **Hozzáadás**gombra kattintva fog megjelenni.
@@ -77,9 +76,9 @@ A minta futtatásához a következőkre lesz szüksége:
 >
 > [!div class="sxs-lookup" renderon="portal"]
 > #### <a name="step-1-configure-your-application-in-the-azure-portal"></a>1\. lépés: az alkalmazás konfigurálása a Azure Portalban
-> 
+>
 > Ahhoz, hogy a rövid útmutatóhoz tartozó mintakód működjön, a következőket kell tennie:
-> 
+>
 > 1. Adja hozzá a válasz URL-címeket `http://localhost:8080/msal4jsamples/secure/aad` és `http://localhost:8080/msal4jsamples/graph/me`ként.
 > 1. Hozzon létre egy ügyfél titkot.
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
@@ -97,7 +96,7 @@ A minta futtatásához a következőkre lesz szüksége:
  1. Bontsa ki a zip-fájlt egy helyi mappába.
  1. Ha integrált fejlesztési környezetet használ, nyissa meg a mintát a kedvenc IDE (opcionális).
 
- 1. Nyissa meg az Application. properties fájlt, amely a src/Main/Resources/mappában található, és cserélje le az *HRE. clientId*, *HRE. Authority* és *HRE. secretKey* mezők értékét az alkalmazás- **azonosító**megfelelő értékeivel. A **bérlő azonosítója** és az **ügyfél titkos kulcsa** a következő:
+ 1. Nyissa meg az Application. properties fájlt, amely a src/Main/Resources/mappában található, és cserélje le a *HRE. clientId*, *HRE. Authority* és *HRE. secretKey* mezők értékét az alkalmazás- **azonosító**, a **bérlői azonosító** és az **ügyfél titkos kulcsának** megfelelő értékekre az alábbiak szerint:
 
     ```file
     aad.clientId=Enter_the_Application_Id_here
@@ -108,7 +107,7 @@ A minta futtatásához a következőkre lesz szüksége:
     ```
 
 > [!div renderon="docs"]
-> Helyszín:
+> Az elemek magyarázata:
 >
 > - `Enter_the_Application_Id_here` – ez a regisztrált alkalmazás alkalmazásazonosítója.
 > - `Enter_the_Client_Secret_Here` – a **tanúsítványok & Secrets** szolgáltatásban a regisztrált alkalmazáshoz létrehozott **titkos ügyfél** .
@@ -145,12 +144,12 @@ Vegyen fel MSAL4J az alkalmazásba a Maven vagy a Gradle használatával a függ
 <dependency>
     <groupId>com.microsoft.azure</groupId>
     <artifactId>msal4j</artifactId>
-    <version>0.6.0-preview</version>
+    <version>1.0.0</version>
 </dependency>
 ```
 
 ```$xslt
-compile group: 'com.microsoft.azure', name: 'msal4j', version: '0.6.0-preview'
+compile group: 'com.microsoft.azure', name: 'msal4j', version: '1.0.0'
 ```
 
 ### <a name="msal-initialization"></a>Az MSAL inicializálása
@@ -161,7 +160,7 @@ Adjon hozzá egy hivatkozást a MSAL4J, ehhez adja hozzá a következő kódot a
 import com.microsoft.aad.msal4j.*;
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ az engedélyekről és a beleegyezik:
 

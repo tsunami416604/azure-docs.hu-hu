@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/22/2019
-ms.openlocfilehash: 81d82ce79130513a2827090a98bfef192c9d7829
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: d1b53267daa2d47baf9976727bbaf3fa56172432
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73795736"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73832099"
 ---
 # <a name="overview-of-insights-in-azure-monitor"></a>Az információk áttekintése Azure Monitor
 Az egyes alkalmazásokhoz és szolgáltatásokhoz testreszabott figyelési funkciókkal szolgálnak. A [Azure monitor adatplatformban](../platform/data-platform.md) tárolják az adatokat, és más Azure monitor funkciókat is kihasználhatnak az elemzéshez és a riasztásokhoz, azonban további adatokat gyűjthetnek, és egyedi felhasználói élményt biztosíthatnak a Azure Portal. A Azure Portal Azure Monitor menüjének bepillantást **nyerhet a bepillantást az** adatokból.
@@ -47,8 +47,8 @@ Lásd: [Mi az Azure monitor for VMS?](vminsights-overview.md)
 
 ![Azure Monitor virtuális gépekhez](media/insights-overview/vm-insights.png)
 
-## <a name="azure-monitor-for-network-preview"></a>Hálózati Azure Monitor (előzetes verzió)
-A hálózat Azure Monitor a hálózati erőforrások állapotának és metrikáinak átfogó áttekintését nyújtja. A speciális keresési funkció segítségével azonosíthatja az erőforrás-függőségeket, és engedélyezheti az olyan forgatókönyveket, mint például a webhelyet üzemeltető erőforrás azonosítása, egyszerűen csak a webhely nevét keresi.
+## <a name="azure-monitor-for-networks-preview"></a>Azure Monitor hálózatok számára (előzetes verzió)
+A [hálózatok Azure monitor](network-insights-overview.md) a hálózati erőforrások állapotának és metrikáinak átfogó áttekintését nyújtja. A speciális keresési funkció segítségével azonosíthatja az erőforrás-függőségeket, és engedélyezheti az olyan forgatókönyveket, mint például a webhelyet üzemeltető erőforrás azonosítása, egyszerűen csak a webhely nevét keresi.
 
 ![Azure Monitor hálózatok számára](media/insights-overview/network-insights.png)
 

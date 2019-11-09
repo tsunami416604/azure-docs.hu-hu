@@ -1,7 +1,7 @@
 ---
 title: Gyakori kérdések – egyéni fordító
 titleSuffix: Azure Cognitive Services
-description: Választ ad az egyéni fordítóval kapcsolatos gyakori kérdésekre.
+description: Ez a cikk az Azure Cognitive Services egyéni fordítóval kapcsolatos gyakori kérdésekre adott válaszokat tartalmazza.
 author: swmachan
 manager: nitinme
 ms.service: cognitive-services
@@ -9,12 +9,12 @@ ms.subservice: translator-text
 ms.date: 02/21/2019
 ms.author: swmachan
 ms.topic: reference
-ms.openlocfilehash: 3dacfc0d8371ad9e8fa66d8bb1c5fafa59271ce0
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 97d399f4a8ec704fd90eb6c49f0835be7e9e4537
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72388170"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73836599"
 ---
 # <a name="custom-translator-frequently-asked-questions"></a>Egyéni Translator – gyakori kérdések
 
@@ -45,9 +45,9 @@ A központilag telepített rendszerek a Kategóriakód megadásával érhetők e
 
 ## <a name="how-do-i-skip-alignment-and-sentence-breaking-if-my-data-is-already-sentence-aligned"></a>Hogyan kihagyhatja az igazítást és a mondatot, ha az adataim már a mondattal összhangban vannak?
 
-Az egyéni fordító kihagyja a mondatok igazítását és a mondatot a TMX-fájlokra és a `.align` kiterjesztésű szövegfájlokra. a `.align` fájlok lehetővé teszi a felhasználók számára, hogy kihagyják az egyéni fordító mondatának feltörési és igazítási folyamatát, és nincs szükség további feldolgozásra. Javasoljuk, hogy csak a tökéletesen igazított fájlokhoz használjon `.align` kiterjesztést.
+Az egyéni fordító kihagyja a mondatok igazítását és a mondatok kitörését a TMX-fájlokhoz és a `.align` kiterjesztésű szövegfájlokhoz. `.align` fájlok lehetővé teszi a felhasználók számára, hogy kihagyják az egyéni fordító mondatának feltörési és igazítási folyamatát, és nem igényelnek további feldolgozást. Javasoljuk, hogy csak a tökéletesen igazított fájlokhoz használjon `.align` bővítményt.
 
-Ha a kinyert mondatok száma nem egyezik meg a két azonos alapnévvel rendelkező fájllal, az egyéni fordító továbbra is az `.align` fájlokra vonatkozó mondat-igazítást fogja futtatni.
+Ha a kinyert mondatok száma nem egyezik meg az azonos alapnévvel rendelkező két fájllal, az egyéni fordító továbbra is a mondat-igazítást fogja futtatni `.align` fájlokon.
 
 ## <a name="i-tried-uploading-my-tmx-but-it-says-document-processing-failed"></a>Megpróbáltam feltölteni a TMX, de azt mondja, hogy a "dokumentum feldolgozása sikertelen".
 

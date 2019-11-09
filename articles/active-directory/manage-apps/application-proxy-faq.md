@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 10/03/2019
 ms.author: mimart
 ms.reviewer: japere
-ms.openlocfilehash: 9743f25d89bed4e54b3deed815d1cf29030caff6
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.openlocfilehash: 612b6caf47ec4764aa2bbef162592100198ed0c4
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71955470"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73832216"
 ---
 # <a name="active-directory-azure-ad-application-proxy-frequently-asked-questions"></a>Active Directory-(Azure AD-) alkalmazásproxy – gyakori kérdések
 
@@ -66,7 +66,7 @@ Nincs ok a következőre:. Minden globális rendszergazda vagy alkalmazás-rends
 A Teljesítményfigyelő-számlálók a-összekötővel együtt települnek. Megtekintheti őket:  
 
 1. Kattintson a **Start**gombra, írja be a "Perfmon" kifejezést, majd nyomja le az ENTER billentyűt.
-2. Válassza ki a **Teljesítményfigyelőt** , és kattintson a zöld **+** ikonra.
+2. Válassza a **Teljesítményfigyelő** lehetőséget, majd kattintson a zöld **+** ikonra.
 3. Adja hozzá a figyelni kívánt **Microsoft HRE** -alkalmazásproxy összekötő számlálóit.
 
 ### <a name="does-the-azure-ad-application-proxy-connector-have-to-be-on-the-same-subnet-as-the-resource"></a>Az Azure AD Application Proxy-összekötőnek ugyanazon az alhálózaton kell lennie, mint az erőforrásnak?
@@ -95,7 +95,7 @@ A PrincipalsAllowedToDelegateToAccount metódus akkor használatos, ha az össze
 Ha az összekötő-kiszolgálók és a webalkalmazás-szolgáltatásfiók ugyanabban a tartományban található, Active Directory felhasználókkal és számítógépekkel konfigurálja a delegálási beállításokat az egyes összekötők számítógépein, lehetővé téve számukra a cél SPN-re való delegálást.
 
 Ha az összekötő-kiszolgálók és a webalkalmazás-szolgáltatás fiókja különböző tartományokban található, akkor az erőforrás-alapú delegálás használatos. A delegálási engedélyek a cél webkiszolgálón és a webalkalmazás-szolgáltatási fiókon vannak konfigurálva. Ez a korlátozott delegálási módszer viszonylag új. A metódust a Windows Server 2012-ben vezették be, amely támogatja a tartományok közötti delegálást azáltal, hogy az erőforrás (webszolgáltatás) tulajdonosa szabályozhatja, hogy mely számítógép-és szolgáltatásfiókok tudják delegálni. Ehhez a konfigurációhoz nincs szükség felhasználói felületre, ezért a PowerShellt kell használnia.
-További információkért tekintse meg a [Kerberos által korlátozott delegálás az Application proxyval](http://aka.ms/kcdpaper)című tanulmányt.
+További információkért tekintse meg a [Kerberos által korlátozott delegálás az Application proxyval](https://aka.ms/kcdpaper)című tanulmányt.
 
 ## <a name="pass-through-authentication"></a>Átmenő hitelesítés
 
@@ -145,7 +145,7 @@ Nem. Az Azure AD Application Proxy úgy lett kialakítva, hogy az Azure AD-vel m
 
 ### <a name="does-websocket-support-work-for-applications-other-than-qliksense"></a>A WebSocket-támogatás a QlikSense-től eltérő alkalmazásokhoz is működik?
 
-A WebSocket protokoll támogatása jelenleg még nyilvános előzetes verzióban érhető el, és előfordulhat, hogy más alkalmazásokhoz nem működik. Néhány ügyfél vegyes sikerrel járt a WebSocket protokoll használatával más alkalmazásokkal. Ha teszteli az ilyen forgatókönyveket, szeretnénk hallani az eredményeket. Kérjük, küldje el nekünk visszajelzését aadapfeedback@microsoft.com címen.
+A WebSocket protokoll támogatása jelenleg még nyilvános előzetes verzióban érhető el, és előfordulhat, hogy más alkalmazásokhoz nem működik. Néhány ügyfél vegyes sikerrel járt a WebSocket protokoll használatával más alkalmazásokkal. Ha teszteli az ilyen forgatókönyveket, szeretnénk hallani az eredményeket. Kérjük, küldje el visszajelzését aadapfeedback@microsoft.comcímen.
 
 ## <a name="link-translation"></a>Fordítás csatolása
 

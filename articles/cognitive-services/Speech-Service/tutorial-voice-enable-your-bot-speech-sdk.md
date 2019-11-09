@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: dcohen
-ms.openlocfilehash: 839bb24996ab782a386d7d28bcc1c06c686e6cd5
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: c95bc7b58f3883fee54aaa8095cb187eaefdb3e0
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73578041"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73836965"
 ---
 # <a name="tutorial-voice-enable-your-bot-using-the-speech-sdk"></a>Oktatóanyag: hang – a robot engedélyezése a Speech SDK használatával
 
@@ -93,7 +93,7 @@ Most, hogy már van egy erőforráscsoport az **USA nyugati** régiójában, a k
 
 A beszédfelismerési erőforrások létrehozásához kövesse az alábbi utasításokat:
 
-1. Válassza az **erőforrás létrehozása** lehetőséget a bal oldali navigációs sávon.
+1. Lépjen a [Azure Portal](https://portal.azure.com) , és válassza az **erőforrás létrehozása** lehetőséget a bal oldali navigációs sávon.
 2. A keresősáv mezőbe írja be a **Speech**kifejezést.
 3. Válassza a **beszéd**lehetőséget, majd kattintson a **Létrehozás**gombra.
 4. A rendszer a következő információk megadását kéri:
@@ -115,7 +115,7 @@ Ezen a ponton győződjön meg arról, hogy az erőforráscsoport (**SpeechEchoB
 
 A következő lépés egy App Service terv létrehozása. Az App Service-csomagok határozzák meg a futtatni kívánt webalkalmazások számítási erőforrásait.
 
-1. Válassza az **erőforrás létrehozása** lehetőséget a bal oldali navigációs sávon.
+1. Lépjen a [Azure Portal](https://portal.azure.com) , és válassza az **erőforrás létrehozása** lehetőséget a bal oldali navigációs sávon.
 2. A keresősáv mezőbe írja be **app Service tervet**. Ezután keresse meg és válassza ki a **app Service megtervezése** kártyát a keresési eredmények közül.
 3. Kattintson a **Létrehozás** elemre.
 4. A rendszer a következő információk megadását kéri:
@@ -124,7 +124,7 @@ A következő lépés egy App Service terv létrehozása. Az App Service-csomago
    * Adjon **nevet**az erőforrásnak. Javasoljuk, hogy **SpeechEchoBotTutorial-AppServicePlan**
    * **Operációs rendszer**esetén válassza a **Windows**lehetőséget.
    * A régió területen válassza az **USA nyugati** **régiója**lehetőséget.
-   * Az **árképzési szint**esetében ellenőrizze, hogy a **standard S1** van-e kiválasztva. Ennek az alapértelmezett értéknek kell lennie.
+   * Az **árképzési szint**esetében ellenőrizze, hogy a **standard S1** van-e kiválasztva. Ennek az alapértelmezett értéknek kell lennie. Ha nem, ügyeljen arra, hogy az operációs rendszert a fent ismertetett módon állítsa be a **Windows** **rendszerre** .
 5. Kattintson **a felülvizsgálat és létrehozás**gombra. Ekkor meg kell jelennie egy olyan szalagcímnek, amely beolvasta az **érvényesítést**.
 6. Kattintson a **Létrehozás** elemre. Az erőforráscsoport létrehozása eltarthat néhány percig.
 
@@ -140,9 +140,9 @@ Ezen a ponton győződjön meg arról, hogy az erőforráscsoport (**SpeechEchoB
 Most, hogy létrehozott néhány erőforrást, hozzon létre egy robotot. Kezdjük az ECHO bot-mintával, amelynek a neve azt jelenti, hogy a válaszként beírt szöveget is megismétli. Ne aggódjon, a mintakód készen áll arra, hogy módosítás nélkül használhassa. Úgy van konfigurálva, hogy működjön együtt a közvetlen vonalas hangcsatornával, amelyet a robot Azure-ba való üzembe helyezése után fogunk csatlakozni.
 
 > [!NOTE]
-> Az alábbi utasítások, valamint az ECHO robottal kapcsolatos további információk a [minta readme on githubon](https://github.com/microsoft/BotBuilder-Samples/blob/master/experimental/directline-speech/csharp_dotnetcore/02.echo-bot/README.md)érhetők el.
+> Az alábbi utasítások, valamint az ECHO robottal kapcsolatos további információk a [minta readme on githubon](https://github.com/microsoft/BotBuilder-Samples/blob/master/samples/csharp_dotnetcore/02.echo-bot/README.md)érhetők el.
 
-### <a name="download-and-run-the-sample"></a>A minta letöltése és futtatása
+### <a name="run-the-bot-sample-on-your-machine"></a>A robot minta futtatása a gépen
 
 1. A minták tárházának klónozása:
 
@@ -151,17 +151,17 @@ Most, hogy létrehozott néhány erőforrást, hozzon létre egy robotot. Kezdj�
    ```
 
 2. Indítsa el a Visual studiót.
-3. Az eszköztáron válassza a **fájl** > **Megnyitás** > **projekt/megoldás**lehetőséget, majd nyissa meg a közvetlen parancssori csatornához való használatra konfigurált echo robot projektfájlt:
+3. Az eszköztáron válassza a **fájl** > **Megnyitás** > **projekt/megoldás**lehetőséget, majd nyissa meg az ECHO robot Project megoldást:
 
    ```
-   experimental\directline-speech\csharp_dotnetcore\02.echo-bot\EchoBot.csproj
+   samples\csharp_dotnetcore\02.echo-bot\EchoBot.sln
    ```
 
-4. A projekt betöltését követően kattintson a `F5` gombra a projekt futtatásához.
+4. A projekt betöltését követően a projekt létrehozásához és futtatásához nyomja le az `F5` gombot.
 
-### <a name="test-with-the-bot-framework-emulator"></a>Tesztelés a bot Framework emulátorral
+### <a name="test-the-bot-sample-with-the-bot-framework-emulator"></a>Tesztelje a bot-mintát a bot Framework emulátorával
 
-A [bot Framework Emulator](https://github.com/microsoft/botframework-emulator) egy asztali alkalmazás, amely lehetővé teszi a robot-fejlesztők számára, hogy helyileg vagy távolról, egy alagúton keresztül tesztelje és hibakeresést végezzenek a robotok számára. Kövesse az alábbi lépéseket a robot-keretrendszer emulátorának használatához az ECHO-robot teszteléséhez.
+A [bot Framework Emulator](https://github.com/microsoft/botframework-emulator) egy asztali alkalmazás, amely lehetővé teszi a robot-fejlesztők számára, hogy helyileg vagy távolról, egy alagúton keresztül tesztelje és hibakeresést végezzenek a robotok számára. Az emulátor a beírt szöveget a bemenetként (nem pedig hangként) támogatja. A robot a szöveggel fog reagálni. Kövesse az alábbi lépéseket a bot Framework Emulator használatával a helyileg futtatott echo-robot teszteléséhez, szöveges bevitelsel és szöveges kimenettel. A robot Azure üzembe helyezése után a rendszer hangbemenettel és hangkimenettel teszteli.
 
 1. A [bot Framework Emulator](https://github.com/Microsoft/BotFramework-Emulator/releases/latest) 4.3.0 vagy újabb verziójának telepítése
 2. Indítsa el a robot Framework emulátort, és nyissa meg a robotját:
@@ -171,8 +171,8 @@ A [bot Framework Emulator](https://github.com/microsoft/botframework-emulator) e
    ```
    http://localhost:3978/api/messages
    ```
-
-4. A felhasználói felület használatával kommunikálhat a robottal gépelt szöveggel. Erősítse meg, hogy kap egy választ.
+   kattintson a "kapcsolat" gombra.
+4. A robotnak azonnal el kell köszönteni a "Hello and Welcome!" kifejezéssel. Üzenetet. Írjon be bármilyen szöveges üzenetet, és erősítse meg, hogy választ kap a robottól.
 
 ## <a name="deploy-your-bot-to-an-azure-app-service"></a>A robot üzembe helyezése egy Azure App Service
 
@@ -184,7 +184,7 @@ A következő lépés az ECHO-robot üzembe helyezése az Azure-ban. A robot üz
 1. A Visual studióból nyissa meg a Direct line Speech Channel használatára konfigurált echo-robotot:
 
    ```
-   experimental\directline-speech\csharp_dotnetcore\02.echo-bot\EchoBot.csproj
+   samples\csharp_dotnetcore\02.echo-bot\EchoBot.sln
    ```
 
 1. A **megoldáskezelő**kattintson a jobb gombbal a **EchoBot** -megoldásra, és válassza a **Közzététel...** lehetőséget.
@@ -218,7 +218,7 @@ A következő lépés az ECHO-robot üzembe helyezése az Azure-ban. A robot üz
 Egy kis méretű konfigurációs módosítást kell végeznie, hogy a robot a webes szoftvercsatornák használatával kommunikáljon a közvetlen vonalas beszéd csatornával. A websocketek engedélyezéséhez kövesse az alábbi lépéseket:
 
 1. Navigáljon a [Azure Portal](https://portal.azure.com), és keresse meg a app Service. Az erőforrásnak a **EchoBot20190805125647** (egyedi alkalmazásnév) hasonló névvel kell rendelkeznie.
-2. A bal oldali navigációs sávon válassza a **Beállítások**, majd a **konfiguráció**elemet.
+2. A bal oldali navigációs menüben kattintson a **Beállítások**elemre, majd a **konfiguráció**elemre.
 3. Válassza az **általános beállítások** lapot.
 4. Keresse meg a **webes szoftvercsatornák** váltógomb helyét, és állítsa **be a következőre:.**
 5. Kattintson a **Save** (Mentés) gombra.
@@ -267,7 +267,8 @@ Itt az ideje, hogy regisztrálja a robotot a közvetlen vonalas beszéd csatorn�
 1. A bal oldali navigációs sávon válassza a **csatornák**lehetőséget.
    * Keresse meg a **további csatornákat**, keresse meg, majd kattintson a **közvetlen vonalas beszéd**elemre.
    * Tekintse át a **közvetlen sortörés beállítása**című oldalon található szöveget, majd bontsa ki a "kognitív szolgáltatás fiókja" feliratú legördülő menüt.
-   * Válassza ki a korábban létrehozott Speech-erőforrást (pl. **SpeechEchoBotTutorial-Speech**) a menüből, hogy a robotot a Speech előfizetési kulcshoz rendelje.
+   * Válassza ki a korábban létrehozott Speech-erőforrást (pl. **SpeechEchoBotTutorial-Speech**) a menüből, hogy a robotot a beszédfelismerési előfizetési kulcshoz rendelje.
+   * Kattintson a **Save** (Mentés) gombra.
 
 1. A bal oldali navigációs sávon kattintson a **Beállítások**elemre.
    * Jelölje be a **streaming Endpoint engedélyezése**feliratú jelölőnégyzetet. Erre azért van szükség, hogy egy olyan kommunikációs protokollt engedélyezzen, amely a robot és a közvetlen vonalas beszédfelismerési csatorna közötti webes szoftvercsatornára épül.
@@ -296,8 +297,7 @@ Ha hibaüzenetet kap a fő alkalmazás ablakában, a következő táblázat seg�
 
 | Hiba | Mi a teendő? |
 |-------|----------------------|
-|Alkalmazáshiba (a részletek a naplóban találhatók): Microsoft. CognitiveServices. Speech. csharp: az érték nem lehet null. Paraméter neve: speechConfig | Ez egy ügyfélalkalmazás-hiba. Győződjön meg arról, hogy a fő alkalmazási ablakban nem üres a *bot Secret* értéke (lásd: [a robot regisztrálása közvetlen vonalas hangcsatornával](#register-the-direct-line-speech-channel)) |
-|AuthenticationFailure hiba: a WebSocket frissítése hitelesítési hiba miatt meghiúsult (401). A megfelelő előfizetési kulcs (vagy engedélyezési jogkivonat) és a régió nevének keresése| Az alkalmazás beállítások lapján ellenőrizze, hogy helyesen adta-e meg a beszédfelismerési előfizetési kulcsot és annak régióját.<br>Ellenőrizze, hogy helyesen adta-e meg a robot titkát. |
+|AuthenticationFailure hiba: a WebSocket frissítése hitelesítési hiba miatt meghiúsult (401). A megfelelő előfizetési kulcs (vagy engedélyezési jogkivonat) és a régió nevének keresése| Az alkalmazás beállítások lapján ellenőrizze, hogy helyesen adta-e meg a beszédfelismerési előfizetési kulcsot és annak régióját.<br>Győződjön meg arról, hogy helyesen adta meg a beszédfelismerési kulcsot és a kulcsfontosságú régiót. |
 |Hiba ConnectionFailure: a távoli gazdagép lezárta a kapcsolatokat. Hibakód: 1011. Hiba részletei: az üzenet elküldése előtt nem sikerült csatlakozni a robothoz | Győződjön meg arról, hogy [bejelölte az "adatfolyam-végpont engedélyezése"](#register-the-direct-line-speech-channel) és/vagy a [ **webes szoftvercsatornák** ](#enable-web-sockets) bekapcsolva beállítást.<br>Győződjön meg arról, hogy a Azure App Service fut. Ha igen, próbálja meg újraindítani a App Service.|
 |Hiba ConnectionFailure: a távoli gazdagép lezárta a kapcsolatokat. Hibakód: 1011. Hiba részletei: a válasz állapotkód nem a sikerre utal: 500 (InternalServerError)| A robot a kimeneti tevékenység [beszéd mezőjében](https://github.com/microsoft/botframework-sdk/blob/master/specs/botframework-activity/botframework-activity.md#speak) egy neurális hangot adott meg, de az előfizetési kulcshoz társított Azure-régió nem támogatja a neurális hangokat. Lásd: [standard és neurális hangok](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#standard-and-neural-voices).|
 |Hiba ConnectionFailure: a távoli gazdagép lezárta a kapcsolatokat. Hibakód: 1000. Hiba részletei: túllépte a webes szoftvercsatorna kapcsolatának üresjárati időtartamát (> 300000 MS)| Ez egy várt hiba, ha a csatornához való csatlakozás öt percnél hosszabb ideig nyitott és inaktív. |
@@ -348,7 +348,7 @@ Ha többet szeretne megtudni a JSON-kimenetben visszaadott információkról, te
 ### <a name="view-client-source-code-for-calls-to-the-speech-sdk"></a>Az ügyfél forráskódjának megtekintése a Speech SDK-hívásokhoz
 
 A közvetlen vonalas beszéd ügyfélprogram a [Microsoft. CognitiveServices. Speech](https://www.nuget.org/packages/Microsoft.CognitiveServices.Speech/)NuGet-csomagot használja, amely a Speech SDK-t tartalmazza. A mintakód áttekintésének megkezdéséhez érdemes a InitSpeechConnector () metódust a (z) [`DLSpeechClient\MainWindow.xaml.cs`](https://github.com/Azure-Samples/Cognitive-Services-Direct-Line-Speech-Client/blob/master/DLSpeechClient/MainWindow.xaml.cs)fájlban, amely a következő két Speech SDK-objektumot hozza létre:
-- [`DialogServiceConfig`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.dialog.dialogserviceconfig) – konfigurációs beállítások (beszéd előfizetési kulcs, fő régió, bot Secret)
+- [`DialogServiceConfig`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.dialog.dialogserviceconfig) – konfigurációs beállítások (például beszéd előfizetési kulcs, fő régió)
 - [`DialogServiceConnector`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.dialog.dialogserviceconnector.-ctor) – a Channel-kapcsolatok és az ügyfél-előfizetési események kezelése a felismert beszéd-és bot-válaszok kezeléséhez.
 
 ## <a name="add-custom-keyword-activation"></a>Egyéni kulcsszó aktiválásának hozzáadása
@@ -367,7 +367,7 @@ Kövesse az alábbi lépéseket egy kulcsszó-modell létrehozásához, konfigur
 3. A közvetlen vonalas beszédfelismerési ügyfélben keresse meg a **Beállítások** menüt (a jobb felső sarokban található fogaskerék ikont keresse meg). Keresse meg a **modell fájljának elérési útját** , és adja meg a `kws.table` fájl teljes elérési útját a 2. lépésben.
 4. Győződjön meg arról, hogy az engedélyezve feliratú jelölőnégyzet be **van**jelölve. Ez az üzenet jelenik meg a jelölőnégyzet mellett: "a következő kapcsolódáskor a kulcsszót fogja figyelni". Ha nem megfelelő fájlt vagy érvénytelen elérési utat adott meg, hibaüzenet jelenik meg.
 5. Adja meg a Speech **előfizetés kulcsát**, az **előfizetési kulcs régióját**, majd kattintson az **OK** gombra a **Beállítások** menü bezárásához.
-6. Válasszon egy **robot-titkot**, majd kattintson az **újrakapcsolás**gombra. A következő üzenetnek kell megjelennie: "New beszélgetés kezdődött – típus, nyomja meg a mikrofon gombot, vagy mondja el a kulcsszót". Az alkalmazás mostantól folyamatosan figyel.
+6. Kattintson az **újrakapcsolás**gombra. A következő üzenetnek kell megjelennie: "New beszélgetés kezdődött – típus, nyomja meg a mikrofon gombot, vagy mondja el a kulcsszót". Az alkalmazás mostantól folyamatosan figyel.
 7. Beszéljen minden olyan kifejezésről, amely a kulcsszóval kezdődik. Például: " **{a kulcsszó}** , mi az idő?". A kulcsszó kimondása után nem kell szüneteltetni a szüneteltetést. Ha elkészült, két dolog történik:
    * Megtekintheti a küllőt
    * Röviddel azután, hogy meghallja a robot válaszát
@@ -378,7 +378,7 @@ Kövesse az alábbi lépéseket egy kulcsszó-modell létrehozásához, konfigur
 
 ### <a name="view-the-source-code-that-enables-keyword"></a>A kulcsszót engedélyező forráskód megtekintése
 
-A közvetlen vonalas ügyfél forráskódjában tekintse meg ezeket a fájlokat a kulcsszavak észlelésének engedélyezéséhez használt kód áttekintéséhez:
+Tekintse meg ezeket a fájlokat a közvetlen vonalas beszédfelismerési ügyfél forráskódjában a kulcsszavak észlelésének engedélyezéséhez használt kód áttekintéséhez:
 
 1. [`DLSpeechClient\Models.cs`](https://github.com/Azure-Samples/Cognitive-Services-Direct-Line-Speech-Client/blob/master/DLSpeechClient/Models.cs) tartalmaz egy hívást a Speech SDK- [`KeywordRecognitionModel.fromFile()`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/keywordrecognitionmodel?view=azure-node-latest#fromfile-string-), amely a modell egy helyi fájlból való létrehozásához használatos.
 1. [`DLSpeechClient\MainWindow.xaml.cs`](https://github.com/Azure-Samples/Cognitive-Services-Direct-Line-Speech-Client/blob/master/DLSpeechClient/MainWindow.xaml.cs) tartalmazza a Speech SDK-módszer [`DialogServiceConnector.StartKeywordRecognitionAsync()`ának ](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.dialog.dialogserviceconnector.startkeywordrecognitionasync)hívását, amely aktiválja a kulcsszó folyamatos észlelését.
@@ -389,7 +389,7 @@ Az Ön által létrehozott robot az angol nyelven fogja figyelni és válaszolni
 
 ### <a name="change-the-language"></a>A nyelv módosítása
 
-1. Kezdjük a `\experimental\directline-speech\csharp_dotnetcore\02.echo-bot\Bots\echo-bot.cs`megnyitásával.
+1. Kezdjük a `samples\csharp_dotnetcore\02.echo-bot\echo-bot.cs`megnyitásával.
 2. Ezután keresse meg a SSML. Könnyen megtalálhatja a címkét, mivel `<speak></speak>` címkékkel van elfoglalva.
 3. A SSML karakterláncban keresse meg a `<voice name>` címkét, cserélje le a `<voice name='de-DE-Stefan-Apollo'>`re, és mentse. Ez a formázott karakterlánc azt mutatja be, hogy a szöveg – beszéd szolgáltatás egy szintetizált beszéd választ ad vissza a hang`de-DE-Stefan-Apollo`használatával, amely a német nyelvre van optimalizálva.
 
@@ -429,4 +429,4 @@ Ha nem folytatja a jelen oktatóanyagban üzembe helyezett echo-bot használatá
   * [Speech Services](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/)
 * Saját hang-kompatibilis bot kiépítése és üzembe helyezése:
   * Hozzon létre egy [robot-keretrendszer robotot](https://dev.botframework.com/). Regisztrálja a [Direct line Speech Channel](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech?view=azure-bot-service-4.0) használatával, és [szabja testre a robotját](https://docs.microsoft.com/azure/bot-service/directline-speech-bot?view=azure-bot-service-4.0)
-  * Ismerkedjen meg a meglévő [bot-Framework megoldásokkal](https://github.com/microsoft/botframework-solutions): hozzon létre egy [Egyéni hangsegédet](https://docs.microsoft.com/azure/cognitive-services/speech-service/voice-assistants) , és [hang – engedélyezze](https://github.com/microsoft/botframework-solutions/blob/master/docs/howto/assistant/csharp/speechenablement.md)
+  * Ismerkedjen meg a meglévő [bot-Framework megoldásokkal](https://microsoft.github.io/botframework-solutions/index): létrehozhat egy [virtuális asszisztenst](https://microsoft.github.io/botframework-solutions/overview/virtual-assistant-solution/) , és [kiterjesztheti a közvetlen vonalas beszédre](https://microsoft.github.io/botframework-solutions/clients-and-channels/tutorials/enable-speech/1-intro/)
