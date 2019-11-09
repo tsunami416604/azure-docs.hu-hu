@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 6cdebb8f6abea2b50dd8aad58ccc9fb5e680cba9
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: 635431fb87e5f164f92ab4b7a1027ee96e9d801a
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73798478"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73891004"
 ---
 # <a name="generate-maps"></a>Leképezések előállítása
 
@@ -170,7 +170,7 @@ A talaj nedvességtartalma az a víz, amelyet a rendszer a talaj részecskék k�
 A talaj nedvességtartalmának létrehozása előtt győződjön meg arról, hogy a következők hő:
 
 - Legalább három nedvesség-érzékelőt kell üzembe helyezni. A Microsoft azt javasolja, hogy ne hozzon létre egy talajvédelmi nedvesség-leképezést az érzékelők üzembe helyezése és a farmhoz társítása előtt.  
-- Legalább egy Cloud Free Sentinel-színtérnek elérhetőnek kell lennie az elmúlt 120 napban, azon a napon, ameddig a talaj nedvességtartalmának leképezését kérték.
+- A talaj nedvességtartalmának hő a Sentinel Path lefedettsége, a Cloud Cover és a Cloud Shadow is befolyásolja. Legalább egy Cloud Free Sentinel-színtérnek elérhetőnek kell lennie az elmúlt 120 napban, azon a napon, ameddig a talaj nedvességtartalmának leképezését kérték.
 - A farmon üzembe helyezett érzékelők legalább felének online állapotban kell lennie, és adatfolyamot kell biztosítania az adatközpontnak.
 - A hő az azonos szolgáltatótól származó Sensor-mértékek használatával kell létrehozni.
 
@@ -220,6 +220,6 @@ Ehhez a következő lépések szükségesek:
 4. Válassza a tábla fejlécek melletti **Rendezés** ikont a farm, a dátum, a létrehozás, a feladat azonosítója és a feladattípus alapján történő rendezéshez.
 5. Görgesse végig az elérhető térképek listáját az oldal végén található navigációs gombok használatával.
 6. Válassza ki a megtekinteni kívánt térképet. Megjelenik egy előugró ablak, amely a kiválasztott Térkép előnézetét jeleníti meg.
-7. Válassza a **Letöltés** legördülő menüt a letöltési formátum kiválasztásához, és a Térkép letöltését és a számítógép helyi mappájába való tárolását.
+7. Válassza a **Letöltés** legördülő menüt, hogy kiválassza a letöltési formátumot, és a Térkép le legyen töltve, és a megadott mappában legyen tárolva.
 
     ![A Project Farm veri](./media/get-sensor-data-from-sensor-partner/download-soil-moisture-map-1.png)

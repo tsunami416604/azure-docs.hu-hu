@@ -8,12 +8,12 @@ ms.custom: seodec18
 ms.author: memildin
 author: memildin
 manager: rkarlin
-ms.openlocfilehash: dca653bfaf625ff31e4dd7f43752219b312779d1
-ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
+ms.openlocfilehash: 57303c41d90f6205c284c7de67bb8643aa3cd368
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72286761"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73888063"
 ---
 # <a name="advanced-threat-protection-for-azure-cosmos-db"></a>Komplex veszélyforrások elleni védelem Azure Cosmos DB
 
@@ -32,7 +32,7 @@ A biztonsági riasztások teljes körű vizsgálatához javasolt a [diagnosztika
 
 ### <a name="set-up-atp-using-the-portal"></a>ATP beállítása a portál használatával
 
-1. Indítsa el a Azure Portalt a következő helyen: [https://portal.azure.com](https://portal.azure.com/).
+1. Indítsa el a Azure Portalt a [https://portal.azure.com](https://portal.azure.com/).
 
 2. A Azure Cosmos DB fiók **Beállítások** menüjében válassza a **fokozott biztonság**lehetőséget.
 
@@ -61,7 +61,7 @@ Használja a következő PowerShell-parancsmagokat:
 ### <a name="using-azure-resource-manager-templates"></a>Azure Resource Manager-sablonok használata
 
 Azure Resource Manager-sablonnal beállíthatja, hogy a rendszer engedélyezve legyen a komplex veszélyforrások elleni védelem Cosmos DB.
-További információ: CosmosDB- [fiók létrehozása komplex veszélyforrások elleni védelemmel](https://azure.microsoft.com/en-us/resources/templates/201-cosmosdb-advanced-threat-protection-create-account/).
+További információ: CosmosDB- [fiók létrehozása komplex veszélyforrások elleni védelemmel](https://azure.microsoft.com/resources/templates/201-cosmosdb-advanced-threat-protection-create-account/).
 
 ### <a name="using-azure-policy"></a>Azure Policy használata
 
@@ -99,7 +99,7 @@ A rendszer a riasztás részleteivel és a javasolt műveletekkel kapcsolatos e-
 
  A Azure Cosmos DB-fiókok figyelése során generált riasztások listájának megtekintéséhez tekintse meg a Security Center dokumentációjának [Cosmos db riasztások](../security-center/security-center-alerts-data-services.md#cosmos-db) című szakaszát.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * További információ a [diagnosztikai naplózásról Azure Cosmos db](https://docs.microsoft.com/azure/cosmos-db/logging#turn-on-logging-in-the-azure-portal)
 * További információ a [Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-intro)

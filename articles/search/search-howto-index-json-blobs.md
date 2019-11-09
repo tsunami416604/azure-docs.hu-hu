@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: f8ddec95b92121c8dad4a39cf0c7b3f1798ec8ad
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 81e652b90831af0e1e20e716842b4e79f5606d05
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72789501"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73889870"
 ---
 # <a name="how-to-index-json-blobs-using-a-blob-indexer-in-azure-cognitive-search"></a>JSON-Blobok indexelése blob indexelő használatával az Azure-ban Cognitive Search
 
@@ -65,17 +65,11 @@ A keresési szolgáltatás áttekintés lapján [elindíthatja a varázslót](se
 
    ![BLOB-adatforrás definíciója](media/search-howto-index-json/import-wizard-json-data-source.png)
 
-### <a name="4---skip-the-add-cognitive-search-page-in-the-wizard"></a>4 – a varázsló "kognitív keresés hozzáadása" lapjának kihagyása
+### <a name="4---skip-the-enrich-content-page-in-the-wizard"></a>4 – a "tartalom gazdagítása" lap kihagyása a varázslóban
 
-A kognitív képességek hozzáadásához nem szükséges a JSON-dokumentumok importálása. Ha nem rendelkezik konkrét [mesterséges intelligencia-bővítéssel](cognitive-search-concept-intro.md) az indexelési folyamathoz, hagyja ki ezt a lépést.
+A kognitív képességek (vagy a dúsítás) hozzáadása nem szükséges importálási követelmény. Ha nem rendelkezik konkrét [mesterséges intelligencia-bővítéssel](cognitive-search-concept-intro.md) az indexelési folyamathoz, hagyja ki ezt a lépést.
 
-A lépés kihagyásához először ugorjon a következő lapra.
-
-   ![A következő oldal gomb a kognitív kereséshez](media/search-get-started-portal/next-button-add-cog-search.png)
-
-Ebből az oldalból kihagyhatja az index testreszabását.
-
-   ![A kognitív képességek lépés kihagyása](media/search-get-started-portal/skip-cog-skill-step.png)
+A lépés kihagyásához kattintson a lap alján található kék gombra a "Next" és a "Skip" (kihagyás) elemre.
 
 ### <a name="5---set-index-attributes"></a>5 – index attribútumainak beállítása
 
@@ -124,7 +118,7 @@ A műveletek sorrendje megköveteli, hogy az objektumokat ebben a sorrendben hoz
 
 Az Azure Blob Storage-ban található JSON-Blobok jellemzően egyetlen JSON-dokumentum vagy egy JSON "tömb". Az Azure Cognitive Searchban található blob indexelő képes elemezni az építkezést, attól függően, hogy miként állítja be a **parsingMode** paramétert a kérelemre.
 
-| JSON-dokumentum | parsingMode | Leírás | Elérhetőség |
+| JSON-dokumentum | parsingMode | Leírás | Rendelkezésre állás |
 |--------------|-------------|--------------|--------------|
 | Egy blob | `json` | A JSON-blobokat egyetlen darab szövegként elemzi. Minden JSON-blob egyetlen Azure Cognitive Search-dokumentum lesz. | Általánosan elérhető a [Rest](https://docs.microsoft.com/rest/api/searchservice/indexer-operations) API-ban és a [.net](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexer) SDK-ban is. |
 | Több blobon | `jsonArray` | Egy JSON-tömböt elemez a blobban, ahol a tömb minden eleme külön Azure Cognitive Search dokumentum lesz.  | Általánosan elérhető a [Rest](https://docs.microsoft.com/rest/api/searchservice/indexer-operations) API-ban és a [.net](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexer) SDK-ban is. |
@@ -296,7 +290,7 @@ A JSON-Blobok több űrlapot is tartalmazhatnak. A JSON-indexelő **parsingMode*
 
 A dokumentumok egyetlen elemként is megtekinthetők a keresési eredményekben. Ha azt szeretné, hogy a tömb minden eleme egy független elemként jelenjen meg a keresési eredmények között, akkor szükség szerint használja a `jsonArray` vagy a `jsonLines` lehetőséget.
 
-Az indexelő definíciójában igény szerint [mező-hozzárendeléseket](search-indexer-field-mappings.md) is használhat, hogy kiválassza a forrás JSON-dokumentumának a cél keresési indexének feltöltéséhez használt tulajdonságokat. @No__t_0 elemzési mód esetén, ha a tömb alacsonyabb szintű tulajdonságként létezik, beállíthat egy dokumentum gyökerét, amely azt jelzi, hogy a tömb hová kerül a blobon belül.
+Az indexelő definíciójában igény szerint [mező-hozzárendeléseket](search-indexer-field-mappings.md) is használhat, hogy kiválassza a forrás JSON-dokumentumának a cél keresési indexének feltöltéséhez használt tulajdonságokat. `jsonArray` elemzési mód esetén, ha a tömb alacsonyabb szintű tulajdonságként létezik, beállíthat egy dokumentum gyökerét, amely azt jelzi, hogy a tömb hová kerül a blobon belül.
 
 > [!IMPORTANT]
 > `json`, `jsonArray` vagy `jsonLines` elemzési mód használatakor az Azure Cognitive Search feltételezi, hogy az adatforrás összes blobja JSON-t tartalmaz. Ha a JSON-és a nem JSON-Blobok kombinációját is támogatnia kell ugyanabban az adatforrásban, tudassa velünk a [UserVoice webhelyen](https://feedback.azure.com/forums/263029-azure-search).
@@ -411,7 +405,7 @@ Tekintse át a példában szereplő JSON-dokumentumot:
         }
     }
 
-Tegyük fel, hogy a keresési index a következő mezőkkel rendelkezik: `Edm.String` típusú, `Edm.DateTimeOffset` típusú `date` és `tags` típusú `Collection(Edm.String)` `text`. Figyelje meg a "datePublished" közötti eltérést az index forrás-és `date` mezőjében. A JSON a kívánt alakzattá való leképezéséhez használja a következő mező-hozzárendeléseket:
+Tegyük fel, hogy a keresési index a következő mezőkkel rendelkezik: `Edm.String`típusú, `Edm.DateTimeOffset`típusú `date` és `tags` típusú `Collection(Edm.String)``text`. Figyelje meg a "datePublished" közötti eltérést az index forrás-és `date` mezőjében. A JSON a kívánt alakzattá való leképezéséhez használja a következő mező-hozzárendeléseket:
 
     "fieldMappings" : [
         { "sourceFieldName" : "/article/text", "targetFieldName" : "text" },

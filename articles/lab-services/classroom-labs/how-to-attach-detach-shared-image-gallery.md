@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/05/2019
 ms.author: spelluru
-ms.openlocfilehash: f3006dd3f474dea1add1621f35f902422e244ce1
-ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
+ms.openlocfilehash: 4f3f435110f0cba5ea2370f2900d4e7031904067
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71161543"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73890330"
 ---
 # <a name="attach-or-detach-a-shared-image-gallery-in-azure-lab-services"></a>Megosztott képgyűjtemény csatolása vagy leválasztása Azure Lab Services
 A tanárok/laborok rendszergazdái egy sablon virtuálisgép-rendszerképét menthetik az Azure [megosztott rendszerkép](../../virtual-machines/windows/shared-image-galleries.md) -katalógusában, amelyet mások is felhasználhatnak. Első lépésként a tesztkörnyezet rendszergazdája csatol egy meglévő megosztott képtárat a labor-fiókhoz. Miután csatolta a megosztott képtárat, a labor fiókban létrehozott laborok menthetik a lemezképeket a megosztott képkatalógusba. Más oktatók is kiválaszthatják ezt a rendszerképet a megosztott képkatalógusból, hogy sablont hozzanak létre az osztályaik számára. 
@@ -26,7 +26,7 @@ A tanárok/laborok rendszergazdái egy sablon virtuálisgép-rendszerképét men
 Ebből a cikkből megtudhatja, hogyan csatolhat vagy leválaszthatja a megosztott képgyűjteményt egy labor-fiókhoz. 
 
 > [!NOTE]
-> Ha egy képet megosztott képkatalógusba ment, Azure Lab Services replikálja a mentett rendszerképet más, azonos [földrajzi](https://azure.microsoft.com/global-infrastructure/geographies/)régiókban elérhető régiókba. Gondoskodik arról, hogy a rendszerkép elérhető legyen a más régiókban, ugyanabban a földrajzi régióban létrehozott laborokhoz. Ha a képeket egy megosztott képkatalógusba menti, további költségekkel jár, ami magában foglalja az összes replikált rendszerkép díját. Ez a díj eltér a Azure Lab Services használati díjaktól. A megosztott képkatalógus díjszabásával kapcsolatos további információkért lásd: [megosztott képgyűjtemény – számlázás]( https://docs.microsoft.com/en-us/azure/virtual-machines/windows/shared-image-galleries#billing).
+> Ha egy képet megosztott képkatalógusba ment, Azure Lab Services replikálja a mentett rendszerképet más, azonos [földrajzi](https://azure.microsoft.com/global-infrastructure/geographies/)régiókban elérhető régiókba. Gondoskodik arról, hogy a rendszerkép elérhető legyen a más régiókban, ugyanabban a földrajzi régióban létrehozott laborokhoz. Ha a képeket egy megosztott képkatalógusba menti, további költségekkel jár, ami magában foglalja az összes replikált rendszerkép díját. Ez a díj eltér a Azure Lab Services használati díjaktól. A megosztott képkatalógus díjszabásával kapcsolatos további információkért lásd: [megosztott képgyűjtemény – számlázás]( https://docs.microsoft.com/azure/virtual-machines/windows/shared-image-galleries#billing).
 
 
 ## <a name="configure-at-the-time-of-lab-account-creation"></a>Konfigurálás a labor-fiók létrehozásakor
@@ -42,8 +42,8 @@ A labor-fiók létrehozása után a következő feladatokat végezheti el:
 - Megosztott képgyűjtemény leválasztása a labor-fiókból
 
 ## <a name="create-and-attach-a-shared-image-gallery"></a>Megosztott Képtár létrehozása és csatolása
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-2. Válassza a **minden szolgáltatás** lehetőséget a bal oldali menüben. Válassza a **labor Services** elemet a **DEVOPS** szakaszban. Ha a Star (`*`) lehetőséget választja a **labor Services**mellett, a rendszer hozzáadja a bal oldali menü **Kedvencek** szakaszához. A következő időponttól kezdve válassza a **Lab szolgáltatások** lehetőséget a **Kedvencek**alatt.
+1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
+2. Válassza a **minden szolgáltatás** lehetőséget a bal oldali menüben. Válassza a **labor Services** elemet a **DEVOPS** szakaszban. Ha a **Lab szolgáltatások**mellett a csillag (`*`) lehetőséget választja, a rendszer hozzáadja a bal oldali menü **Kedvencek** szakaszához. A következő időponttól kezdve válassza a **Lab szolgáltatások** lehetőséget a **Kedvencek**alatt.
 
     ![Minden szolgáltatás – > labor Services](../media/tutorial-setup-lab-account/select-lab-accounts-service.png)
 3. Válassza ki a labor-fiókját, és tekintse meg a **labor-fiók** lapot. 
@@ -82,7 +82,7 @@ A következő eljárás azt mutatja be, hogyan csatolhat egy meglévő megosztot
     A csatolt megosztott képtárban lévő összes rendszerkép alapértelmezés szerint engedélyezve van. A kijelölt lemezképek engedélyezéséhez vagy letiltásához jelölje ki őket a listában, és a **kijelölt lemezképek engedélyezése** vagy a **kijelölt képek letiltása** gomb használatával. 
 
 ## <a name="detach-a-shared-image-gallery"></a>Megosztott Képtár leválasztása
-Csak egy megosztott képtárat lehet csatlakoztatni egy laborhoz. Ha egy másik megosztott képtárat szeretne csatolni, válassza le az aktuálisat, mielőtt csatolja az újat. Ha egy megosztott képtárat szeretne leválasztani a laborból, válassza a leválasztás lehetőséget az eszköztáron, és erősítse meg a leválasztási műveletet. 
+Csak egy megosztott képtárat lehet csatlakoztatni egy laborhoz. Ha egy másik megosztott képtárat szeretne csatolni, válassza le az aktuálisat, mielőtt csatolja az újat. Ha egy megosztott képtárat szeretne leválasztani a laborból, válassza a **Leválasztás** lehetőséget az eszköztáron, és erősítse meg a leválasztási műveletet. 
 
 ![A megosztott képgyűjtemény leválasztása a labor-fiókból](../media/how-to-use-shared-image-gallery/detach.png)
 

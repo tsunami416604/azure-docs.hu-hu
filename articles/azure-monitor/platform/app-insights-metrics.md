@@ -8,12 +8,12 @@ ms.topic: reference
 ms.date: 07/03/2019
 ms.author: vitalyg
 ms.subservice: application-insights
-ms.openlocfilehash: 903fd2309949036b62fb4975596fb645c021d06d
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: 847c56faae61483813286c46190764327e287783
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69535030"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73887257"
 ---
 # <a name="application-insights-log-based-metrics"></a>Application Insights log-alapú metrikák
 
@@ -22,7 +22,7 @@ Application Insights log-alapú metrikák segítségével elemezheti a figyelt a
 * A jelenet mögötti [log-alapú mérőszámok](../../azure-monitor/app/pre-aggregated-metrics-log-metrics.md#log-based-metrics) le vannak fordítva a tárolt események [Kusto-lekérdezéseinek](https://docs.microsoft.com/azure/kusto/query/) .
 * A [standard mérőszámok](../../azure-monitor/app/pre-aggregated-metrics-log-metrics.md#pre-aggregated-metrics) előre összesített idősorozatként vannak tárolva.
 
-Mivel a *standard mérőszámok* előzetes összesítése a gyűjtemény során történik, jobb teljesítményt biztosítanak a lekérdezés időpontjában. Ez jobb választást tesz lehetővé az irányítópultok és a valós idejű riasztások számára. A *log-alapú mérőszámok* több dimenzióval rendelkeznek, így az adatelemzés és az alkalmi diagnosztika kiváló lehetőséget biztosít számukra. A [névtér](metrics-getting-started.md#create-your-first-metric-chart) -választóval válthat a log-alapú és a standard mérőszámok között a [metrikák Explorerben](metrics-getting-started.md).
+Mivel a *standard mérőszámok* előzetes összesítése a gyűjtemény során történik, jobb teljesítményt biztosítanak a lekérdezés időpontjában. Ez jobb választást tesz lehetővé az irányítópultok és a valós idejű riasztások számára. A *log-alapú mérőszámok* több dimenzióval rendelkeznek, így az adatelemzés és az alkalmi diagnosztika kiváló lehetőséget biztosít számukra. A [névtér-választóval](metrics-getting-started.md#create-your-first-metric-chart) válthat a log-alapú és a standard mérőszámok között a [metrikák Explorerben](metrics-getting-started.md).
 
 ## <a name="interpret-and-use-queries-from-this-article"></a>A cikkben szereplő lekérdezések értelmezése és használata
 
@@ -32,7 +32,7 @@ Ha ugyanazt a metrikát ábrázolja a [metrikák Explorerben](metrics-getting-st
 
 - A kiválasztott **időtartomány** egy további, *ahol timestamp...* záradékban van lefordítva, hogy csak a kijelölt időtartományból válassza ki az eseményeket. Például egy diagram, amely a legutóbbi 24 óra adattárat mutatja, a lekérdezés tartalmazza a *(z) | where időbélyeg > ago (24 óra)* .
 
-- A kiválasztott **időrészletesség** a végső összegzésbe kerül *... raktárhely (időbélyeg, [Time Grain]) záradék alapján* .
+- A kiválasztott **időrészletesség** a végső *összegzésbe kerül... raktárhely (időbélyeg, [Time Grain]) záradék alapján* .
 
 - A kiválasztott **szűrési** méretek további *Where* záradékokra vannak lefordítva.
 
@@ -50,7 +50,7 @@ A *rendelkezésre állási* metrika a webteszt futtatásának azon hányadát mu
 
 |Mértékegység|Támogatott összesítések|Támogatott méretek|
 |---|---|---|---|---|---|
-|Százalék|Average|Futtatási hely, teszt neve|
+|Százalék|Átlag|Futtatási hely, teszt neve|
 
 ```Kusto
 availabilityResults 
@@ -60,11 +60,11 @@ availabilityResults
 
 ### <a name="availability-test-duration-availabilityresultsduration"></a>Rendelkezésre állási teszt időtartama (availabilityResults/időtartam)
 
-A *rendelkezésre állási teszt időtartamának* mérőszáma azt mutatja, hogy mennyi idő telt el a webes teszt futtatásához. A többlépéses [webes tesztek](../../azure-monitor/app/availability-multistep.md)esetében a metrika az összes lépés végrehajtásának teljes idejét mutatja.
+A *rendelkezésre állási teszt időtartamának* mérőszáma azt mutatja, hogy mennyi idő telt el a webes teszt futtatásához. A [többlépéses webes tesztek](../../azure-monitor/app/availability-multistep.md)esetében a metrika az összes lépés végrehajtásának teljes idejét mutatja.
 
 |Mértékegység|Támogatott összesítések|Támogatott méretek|
 |---|---|---|---|---|---|
-|Ezredmásodperc|Átlag, min, Max|Futtatás helye, teszt neve, teszt eredménye
+|Ezredmásodpercben|Átlag, min, Max|Futtatás helye, teszt neve, teszt eredménye
 
 ```Kusto
 availabilityResults
@@ -80,7 +80,7 @@ A *rendelkezésre állási tesztek* mérőszáma Azure monitor által futtatott 
 
 |Mértékegység|Támogatott összesítések|Támogatott méretek|
 |---|---|---|---|---|---|
-|Count|Count|Futtatás helye, teszt neve, teszt eredménye|
+|Darabszám|Darabszám|Futtatás helye, teszt neve, teszt eredménye|
 
 ```Kusto
 availabilityResults
@@ -99,7 +99,7 @@ A böngésző metrikáit a Application Insights JavaScript SDK gyűjti a valós 
 
 |Mértékegység|Támogatott összesítések|Előre összevont méretek|
 |---|---|---|
-|Ezredmásodperc|Átlag, min, Max|Nincsenek|
+|Ezredmásodpercben|Átlag, min, Max|None|
 
 ```Kusto
 browserTimings
@@ -115,7 +115,7 @@ browserTimings
 
 |Mértékegység|Támogatott összesítések|Előre összevont méretek|
 |---|---|---|
-|Ezredmásodperc|Átlag, min, Max|Nincsenek|
+|Ezredmásodpercben|Átlag, min, Max|None|
 
 ```Kusto
 browserTimings
@@ -131,7 +131,7 @@ browserTimings
 
 |Mértékegység|Támogatott összesítések|Előre összevont méretek|
 |---|---|---|
-|Ezredmásodperc|Átlag, min, Max|Nincsenek|
+|Ezredmásodpercben|Átlag, min, Max|None|
 
 ```Kusto
 browserTimings
@@ -147,7 +147,7 @@ browserTimings
 
 |Mértékegység|Támogatott összesítések|Előre összevont méretek|
 |---|---|---|
-|Ezredmásodperc|Átlag, min, Max|Nincsenek|
+|Ezredmásodpercben|Átlag, min, Max|None|
 
 ```Kusto
 browserTimings
@@ -163,7 +163,7 @@ browserTimings
 
 |Mértékegység|Támogatott összesítések|Előre összevont méretek|
 |---|---|---|
-|Ezredmásodperc|Átlag, min, Max|Nincsenek|
+|Ezredmásodpercben|Átlag, min, Max|None|
 
 ```Kusto
 browserTimings
@@ -185,7 +185,7 @@ Ez a metrika a böngészőben futó alkalmazás kódjából kiváltott kivétele
 
 |Mértékegység|Támogatott összesítések|Előre összevont méretek|Megjegyzések|
 |---|---|---|---|
-|Count|Count|Nincsenek|A log-alapú verzió a **Sum** összesítést használja.|
+|Darabszám|Darabszám|None|A log-alapú verzió a **Sum** összesítést használja.|
 
 ```Kusto
 exceptions
@@ -200,7 +200,7 @@ A sikertelen függőségi hívások száma.
 
 |Mértékegység|Támogatott összesítések|Előre összevont méretek|Megjegyzések|
 |---|---|---|---|
-|Count|Count|Nincsenek|A log-alapú verzió a **Sum** összesítést használja.|
+|Darabszám|Darabszám|None|A log-alapú verzió a **Sum** összesítést használja.|
 
 ```Kusto
 dependencies
@@ -215,7 +215,7 @@ Minden alkalommal, amikor kivételt naplóz Application Insights, az SDK [trackE
 
 |Mértékegység|Támogatott összesítések|Előre összevont méretek|Megjegyzések|
 |---|---|---|---|
-|Count|Count|Felhőbeli szerepkör neve, felhőalapú szerepkör-példány, eszköz típusa|A log-alapú verzió a **Sum** összesítést használja.|
+|Darabszám|Darabszám|Felhőbeli szerepkör neve, felhőalapú szerepkör-példány, eszköz típusa|A log-alapú verzió a **Sum** összesítést használja.|
 
 ```Kusto
 exceptions
@@ -225,11 +225,11 @@ exceptions
 
 ### <a name="failed-requests-requestsfailed"></a>Sikertelen kérelmek (kérelmek/sikertelen)
 
-A sikertelenként megjelölt, nyomon követett kiszolgálói kérelmek száma. Alapértelmezés szerint a Application Insights SDK automatikusan megjelöl minden olyan kiszolgálói kérelmet, amely sikertelen kérelemként HTTP-5xx vagy 4xx adott vissza. Ezt a logikát testreszabhatja úgy , hogy módosítja a kérelem telemetria-eleme sikerességi tulajdonságát egy [Egyéni telemetria](../../azure-monitor/app/api-filtering-sampling.md#add-properties-itelemetryinitializer)-inicializálásban.
+A *sikertelenként*megjelölt, nyomon követett kiszolgálói kérelmek száma. Alapértelmezés szerint a Application Insights SDK automatikusan megjelöl minden olyan kiszolgálói kérelmet, amely sikertelen kérelemként HTTP-5xx vagy 4xx adott vissza. Ezt a logikát testreszabhatja úgy, hogy módosítja a kérelem telemetria-eleme *sikerességi* tulajdonságát egy [Egyéni telemetria-inicializálásban](../../azure-monitor/app/api-filtering-sampling.md#addmodify-properties-itelemetryinitializer).
 
 |Mértékegység|Támogatott összesítések|Előre összevont méretek|Megjegyzések|
 |---|---|---|---|
-|Count|Count|Felhőbeli szerepkör-példány, Felhőbeli szerepkör neve, valós vagy szintetikus forgalom, kérelmek teljesítménye, válasz kódja|A log-alapú verzió a **Sum** összesítést használja.|
+|Darabszám|Darabszám|Felhőbeli szerepkör-példány, Felhőbeli szerepkör neve, valós vagy szintetikus forgalom, kérelmek teljesítménye, válasz kódja|A log-alapú verzió a **Sum** összesítést használja.|
 
 ```Kusto
 requests
@@ -244,7 +244,7 @@ Ez a metrika a kiszolgálói kivételek számát jeleníti meg.
 
 |Mértékegység|Támogatott összesítések|Előre összevont méretek|Megjegyzések|
 |---|---|---|---|
-|Count|Count|Felhőbeli szerepkör neve, felhőalapú szerepkör-példány|A log-alapú verzió a **Sum** összesítést használja.|
+|Darabszám|Darabszám|Felhőbeli szerepkör neve, felhőalapú szerepkör-példány|A log-alapú verzió a **Sum** összesítést használja.|
 
 ```Kusto
 exceptions
@@ -255,7 +255,7 @@ exceptions
 
 ## <a name="performance-counters"></a>Teljesítményszámlálók
 
-A **teljesítményszámlálók** kategóriájában lévő metrikák használatával érheti el [Application Insights által gyűjtött](../../azure-monitor/app/performance-counters.md)rendszerteljesítményi számlálókat.
+A **teljesítményszámlálók** kategóriájában lévő metrikák használatával érheti el [Application Insights által gyűjtött rendszerteljesítményi számlálókat](../../azure-monitor/app/performance-counters.md).
 
 ### <a name="available-memory-performancecountersavailablememory"></a>Rendelkezésre álló memória (performanceCounters/availableMemory)
 
@@ -313,7 +313,7 @@ A metrika azt mutatja, hogy a teljes processzor-kapacitás mekkora hányadát ha
 
 |Mértékegység|Támogatott összesítések|Támogatott méretek|
 |---|---|---|
-|Százalék|Átlag, min, Max|Felhőalapú szerepkörpéldány
+|Százalék|Átlag, min, Max|Felhőalapú szerepkör-példány
 
 ```Kusto
 performanceCounters
@@ -327,7 +327,7 @@ performanceCounters
 
 |Mértékegység|Támogatott összesítések|Támogatott méretek|
 |---|---|---|
-|Bájt/s|Átlag, min, Max|Felhőalapú szerepkörpéldány
+|Bájt/másodperc|Átlag, min, Max|Felhőalapú szerepkör-példány
 
 ```Kusto
 performanceCounters
@@ -343,7 +343,7 @@ Azon nem megosztott memória mennyisége, amelyet a figyelt folyamat az adatforr
 
 |Mértékegység|Támogatott összesítések|Támogatott méretek|
 |---|---|---|
-|Bájt|Átlag, min, Max|Felhőalapú szerepkörpéldány
+|Bájt|Átlag, min, Max|Felhőalapú szerepkör-példány
 
 ```Kusto
 performanceCounters
@@ -359,7 +359,7 @@ CPU-felhasználás a figyelt kiszolgálói példányon futó *összes* folyamat 
 
 |Mértékegység|Támogatott összesítések|Támogatott méretek|
 |---|---|---|
-|Százalék|Átlag, min, Max|Felhőalapú szerepkörpéldány
+|Százalék|Átlag, min, Max|Felhőalapú szerepkör-példány
 
 >[!NOTE]
 > A processzoridő-metrika nem érhető el az Azure App Servicesban üzemeltetett alkalmazásokhoz. A [folyamat CPU](#process-cpu-performancecountersprocesscpupercentage) -metrikájának használatával követheti a app Servicesban üzemeltetett webalkalmazások CPU-kihasználtságát.

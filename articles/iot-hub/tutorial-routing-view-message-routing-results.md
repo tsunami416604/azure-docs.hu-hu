@@ -1,6 +1,6 @@
 ---
 title: Azure-IoT Hub üzenet-útválasztási eredmények (.NET) megtekintése | Microsoft Docs
-description: Az Azure IoT Hub üzenetek útválasztási eredményeinek megtekintése
+description: Miután beállította az összes erőforrást az oktatóanyag 1. részével, adja hozzá az üzeneteket a Azure Stream Analyticshoz, és tekintse meg az eredményeket a PowerBI.
 author: robinsh
 manager: philmea
 ms.service: iot-hub
@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 03/25/2018
 ms.author: robinsh
 ms.custom: mvc
-ms.openlocfilehash: 6d40f7d81faa77a48a32aadefdf44ed89e184efb
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: bfee4e64070e5f37eaa3d63280409f00c0ed8672
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72900782"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73890394"
 ---
 # <a name="tutorial-part-2---view-the-routed-messages"></a>Oktatóanyag: 2. rész – az átirányított üzenetek megtekintése
 
@@ -26,7 +26,7 @@ ms.locfileid: "72900782"
 
 Ezek az üzenetek útválasztásának szabályai; Ezek az oktatóanyag 1. részében lettek beállítva, és ebben a második részben jelennek meg.
 
-|Value (Díj) |Eredmény|
+|Érték |Eredmény|
 |------|------|
 |level="storage" |Írás az Azure Storage-ba.|
 |level="critical" |Írás a Service Bus-üzenetsorba. Egy logikai alkalmazás lekéri az üzenetet a sorból, és az Office 365 használatával e-mailben küldi el az üzenetet.|
@@ -186,7 +186,7 @@ Az oktatóanyag 1. részében beállíthatja, hogy egy eszköz IoT-eszköz haszn
 
 Ez az alkalmazás üzeneteket küld a különböző üzenet-útválasztási módszerekhez. Van egy olyan mappa is a letöltésben, amely tartalmazza a teljes Azure Resource Manager sablont és a paramétereket tartalmazó fájlt, valamint az Azure CLI-t és a PowerShell-parancsfájlokat.
 
-Ha nem tölti le a fájlokat az adattárból az oktatóanyag 1. részében, folytassa a [IoT-eszköz szimulációjának](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip)letöltésével. A hivatkozás kiválasztásával letölt egy tárházat több alkalmazással; a keresett megoldás: IOT-hub/oktatóanyagok/Routing/IoT_SimulatedDevice. SLN. 
+Ha nem tölti le a fájlokat az adattárból az oktatóanyag 1. részében, folytassa a [IoT-eszköz szimulációjának](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip)letöltésével. A hivatkozás kiválasztásával letölt egy tárházat több alkalmazással; a keresett megoldás a következő: IOT-hub/oktatóanyagok/Routing/IoT_SimulatedDevice. SLN. 
 
 Kattintson duplán a megoldás fájlra (IoT_SimulatedDevice. SLN) a kód megnyitásához a Visual Studióban, majd nyissa meg a Program.cs. Az `{your hub name}` értéket cserélje le az IoT Hub gazdagépnevére. Az IoT Hub gazdagépnevének formátuma: **{iot-hub-name}.azure-devices.net**. Ebben az oktatóanyagban a központ gazdagépneve: **ContosoTestHub.azure-devices.net**. Ezután a `{your device key}` értéket cserélje le az eszközkulcsra, amelyet korábban, a szimulált eszköz beállítása során mentett. 
 
@@ -298,7 +298,7 @@ Remove-AzResourceGroup -Name $resourceGroup
 
 Előfordulhat, hogy törölni szeretné a Beérkezett üzenetek mappában lévő azon e-mailek mennyiségét is, amelyek a logikai alkalmazáson keresztül jöttek létre, miközben az eszköz fut.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a kétrészes oktatóanyagban megtanulta, hogyan lehet az üzenet-útválasztás használatával átirányítani IoT Hub üzeneteket a különböző célhelyekre az alábbi feladatok végrehajtásával.  
 

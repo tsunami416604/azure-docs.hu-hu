@@ -8,12 +8,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 09/11/2019
 ms.author: saudas
-ms.openlocfilehash: 77655f08350419f0d102c9927b3e09b87edba341
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 16a1f3b8f9ef036bcdc9af122243d313186f99f1
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72592871"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73885339"
 ---
 # <a name="preview---use-managed-identities-in-azure-kubernetes-service"></a>Előzetes verzió – felügyelt identitások használata az Azure Kubernetes szolgáltatásban
 
@@ -34,7 +34,7 @@ Ebben az előzetes verzióban még egy egyszerű szolgáltatásnév szükséges.
 > - [AK-támogatási szabályzatok](support-policies.md)
 > - [Azure-támogatás – gyakori kérdések](faq.md)
 
-## <a name="before-you-begin"></a>Előzetes teendők
+## <a name="before-you-begin"></a>Előkészületek
 
 A következő erőforrásokat kell telepítenie:
 
@@ -55,13 +55,13 @@ az extension list
 az feature register --name MSIPreview --namespace Microsoft.ContainerService
 ```
 
-Több percet is igénybe vehet, amíg az állapot **regisztrálva**jelenik meg. A regisztrációs állapotot az az [Feature List](https://docs.microsoft.com/en-us/cli/azure/feature?view=azure-cli-latest#az-feature-list) parancs használatával tekintheti meg:
+Több percet is igénybe vehet, amíg az állapot **regisztrálva**jelenik meg. A regisztrációs állapotot az az [Feature List](https://docs.microsoft.com/cli/azure/feature?view=azure-cli-latest#az-feature-list) parancs használatával tekintheti meg:
 
 ```azurecli-interactive
 az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/MSIPreview')].{Name:name,State:properties.state}"
 ```
 
-Ha az állapot regisztrálva értékre van állítva, frissítse a `Microsoft.ContainerService` erőforrás-szolgáltató regisztrációját az az [Provider Register](https://docs.microsoft.com/en-us/cli/azure/provider?view=azure-cli-latest#az-provider-register) paranccsal:
+Ha az állapot regisztrálva értékre van állítva, frissítse a `Microsoft.ContainerService` erőforrás-szolgáltató regisztrációját az az [Provider Register](https://docs.microsoft.com/cli/azure/provider?view=azure-cli-latest#az-provider-register) paranccsal:
 
 ```azurecli-interactive
 az provider register --namespace Microsoft.ContainerService

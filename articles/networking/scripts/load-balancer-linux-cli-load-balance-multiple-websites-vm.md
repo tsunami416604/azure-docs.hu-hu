@@ -1,30 +1,27 @@
 ---
-title: Azure CLI-Példaszkript – több webhely terheléselosztását az Azure CLI-vel |} A Microsoft Docs
-description: Azure CLI-Példaszkript – több webhely terheléselosztását ugyanahhoz a virtuális géphez
+title: Azure CLI parancsfájl-minta – több webhely terheléselosztása az Azure CLI-vel | Microsoft Docs
+description: Azure CLI parancsfájl-minta – több webhely terheléselosztása ugyanarra a virtuális gépre
 services: load-balancer
 documentationcenter: load-balancer
-author: KumudD
-manager: timlt
-editor: tysonn
-tags: ''
-ms.assetid: ''
+author: asudbring
+manager: KumudD
 ms.service: load-balancer
 ms.devlang: azurecli
 ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 07/07/2017
-ms.author: kumud
-ms.openlocfilehash: e3dc9476d188382db31b03b37b2a23affc61aed3
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: allensu
+ms.openlocfilehash: 568934d6b5ecc2fbb3b6fc6588ecfd48c8306490
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60564884"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73889458"
 ---
-# <a name="load-balance-multiple-websites"></a>Több webhely terheléselosztását kezelheti
+# <a name="load-balance-multiple-websites"></a>Több webhely terheléselosztása
 
-Ez a példaszkript létrehoz egy virtuális hálózatot két virtuális gépekkel (VM), amely egy rendelkezésre állási csoport tagja. A terheléselosztó két különböző IP-cím forgalmát irányítja a két virtuális gépre. A szkript futtatása után telepíthet a webkiszolgáló szoftvert a virtuális gépekre, és több webhelyet is üzemeltethet, mindegyiket a saját IP-címével.
+Ez a szkript létrehoz egy virtuális hálózatot két virtuális géppel (VM), amely egy rendelkezésre állási csoport tagjai. A terheléselosztó két különböző IP-cím forgalmát irányítja a két virtuális gépre. A szkript futtatása után telepíthet a webkiszolgáló szoftvert a virtuális gépekre, és több webhelyet is üzemeltethet, mindegyiket a saját IP-címével.
 
 [!INCLUDE [sample-cli-install](../../../includes/sample-cli-install.md)]
 

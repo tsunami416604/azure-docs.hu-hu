@@ -1,6 +1,6 @@
 ---
-title: Konfigurálhatja az eszközöket a távoli figyelési megoldás oktatóanyag – Azure |} A Microsoft Docs
-description: Ez az oktatóanyag bemutatja, hogyan konfigurálhatja az eszközöket a távoli figyelési megoldásgyorsító csatlakozik.
+title: Eszközök konfigurálása a távoli figyelési megoldásban – Azure | Microsoft Docs
+description: Ez az oktatóanyag bemutatja, hogyan konfigurálhatja a távoli figyelési megoldáshoz csatlakoztatott eszközöket.
 author: dominicbetts
 manager: timlt
 ms.author: dobett
@@ -9,18 +9,18 @@ services: iot-accelerators
 ms.date: 03/08/2019
 ms.topic: tutorial
 ms.custom: mvc
-ms.openlocfilehash: d23b7c8fa10127094fec67535333ae169f0f38f0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: e4236952bd41c4955e337813ff6d706263b8ef47
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61453095"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73890907"
 ---
-# <a name="tutorial-configure-devices-connected-to-your-monitoring-solution"></a>Oktatóanyag: A figyelési megoldáshoz csatlakoztatott eszközök konfigurálása
+# <a name="tutorial-configure-devices-connected-to-your-monitoring-solution"></a>Oktatóanyag: a figyelési megoldáshoz csatlakoztatott eszközök konfigurálása
 
-Ebben az oktatóanyagban a távoli monitorozási megoldásgyorsítóval konfigurálhatja és kezelheti a csatlakoztatott IoT-eszközöket. A megoldásgyorsító hozzáad egy új eszközt, és konfigurálja az eszközt.
+Ebben az oktatóanyagban a távoli monitorozási megoldásgyorsítóval konfigurálhatja és kezelheti a csatlakoztatott IoT-eszközöket. Vegyen fel egy új eszközt a megoldás-gyorsító eszközbe, és konfigurálja az eszközt.
 
-A Contoso új gépet rendelt, amellyel az egyik létesítményét szeretné bővíteni. Amíg az új gép kézbesítésére vár, Ön lefuttat egy szimulációt a megoldás működésének tesztelése érdekében. A szimuláció futtatja, hozzáadhat új eszköz szimulált motor a távoli figyelési megoldásgyorsító és tesztelje, hogy ezt a szimulált eszközt megfelelően válaszol-konfiguráció frissítéseit. Bár ebben az oktatóanyagban a szimulált eszközök, eszköz fejlesztő megvalósítható közvetlen metódusok a [valós eszköz csatlakozik a távoli figyelési megoldásgyorsító](iot-accelerators-connecting-devices.md).
+A Contoso új gépet rendelt, amellyel az egyik létesítményét szeretné bővíteni. Amíg az új gép kézbesítésére vár, Ön lefuttat egy szimulációt a megoldás működésének tesztelése érdekében. A szimuláció futtatásához vegyen fel egy új szimulált motort a távoli figyelési megoldás-gyorsító eszközbe, és ellenőrizze, hogy a szimulált eszköz helyesen válaszol-e a konfigurációs frissítésekre. Habár ez az oktatóanyag szimulált eszközöket használ, az eszközök fejlesztői a [távoli figyelési megoldáshoz csatlakoztatott valódi eszközön](iot-accelerators-connecting-devices.md)is alkalmazhatnak közvetlen metódusokat.
 
 Az oktatóanyag során az alábbi lépéseket fogja végrehajtani:
 
@@ -36,7 +36,7 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 ## <a name="add-a-simulated-device"></a>Szimulált eszköz hozzáadása
 
-Keresse meg a **Device Explorer** lapon a megoldásban, majd kattintson **+ új eszköz**:
+Navigáljon a megoldás **Device Explorer** lapjára, majd kattintson az **+ új eszköz**elemre:
 
 [![Szimulált eszköz üzembe helyezése](./media/iot-accelerators-remote-monitoring-manage/devicesprovision-inline.png)](./media/iot-accelerators-remote-monitoring-manage/devicesprovision-expanded.png#lightbox)
 
@@ -46,7 +46,7 @@ Az **új eszköz** paneljén válassza a **Simulated** (Szimulált) lehetősége
 
 ## <a name="test-the-simulated-device"></a>A szimulált eszköz tesztelése
 
-A szimulált motor teszteléséhez eszköz által küldött telemetriai és a jelentéskészítési tulajdonságok értékei, válassza ki a listából az eszközök a a **Device Explorer** lapot. A motor valós idejű információi a **Device Details** (Eszköz részletei) panelen jelennek meg:
+Ha tesztelni szeretné, hogy a szimulált motor eszköz telemetria és jelentéskészítési tulajdonságokat küldjön, válassza ki azt az eszközök listájában a **Device Explorer** oldalon. A motor valós idejű információi a **Device Details** (Eszköz részletei) panelen jelennek meg:
 
 [![Az új szimulált motoreszköz megtekintése](./media/iot-accelerators-remote-monitoring-manage/devicesviewnew-inline.png)](./media/iot-accelerators-remote-monitoring-manage/devicesviewnew-expanded.png#lightbox)
 
@@ -60,7 +60,7 @@ A részletes diagnosztikai adatok megtekintéséhez görgessen lefelé a **Devic
 
 ## <a name="reconfigure-a-device"></a>Eszköz újrakonfigurálása
 
-Tesztelje, hogy a motor konfigurációs tulajdonságaiban módosíthatja, válassza azt az eszközlistában lévő a **Device Explorer** lapot. Kattintson a **feladatok**, és válassza a **tulajdonságok**. A feladatok paneljén a kiválasztott eszköz frissíthető tulajdonságértékei láthatók:
+Annak ellenőrzéséhez, hogy frissíthető-e a motor konfigurációs tulajdonságai, válassza ki azt az eszközök listájában a **Device Explorer** oldalon. Ezután kattintson a **feladatok**elemre, majd válassza a **Tulajdonságok**lehetőséget. A feladatok paneljén a kiválasztott eszköz frissíthető tulajdonságértékei láthatók:
 
 [![Eszköz újrakonfigurálása](./media/iot-accelerators-remote-monitoring-manage/devicesreconfigure-inline.png)](./media/iot-accelerators-remote-monitoring-manage/devicesreconfigure-expanded.png#lightbox)
 
@@ -83,7 +83,7 @@ Operátorként az eszközök rendszerezésének és kezelésének megkönnyíté
 * A Smart Vehicle csapat a tehergépkocsikat és a prototípusokat felügyeli.
 * A Smart Building csapat a hűtőeszközökért, a liftekért és a motorokért felelős.
 
-Megjeleníti az összes eszközt, navigáljon a **Device Explorer** lapon, és válassza ki a **minden eszköz** szűrő:
+Az összes eszköz megjelenítéséhez navigáljon a **Device Explorer** lapra, és válassza a **minden eszköz** szűrőt:
 
 [![Minden eszköz megjelenítése](./media/iot-accelerators-remote-monitoring-manage/devicesalldevices-inline.png)](./media/iot-accelerators-remote-monitoring-manage/devicesalldevices-expanded.png#lightbox)
 
@@ -103,7 +103,7 @@ A **Jobs** (Feladatok) panelen válassza a **Tag** (Címke) lehetőséget, a fel
 
 ### <a name="create-filters"></a>Szűrők létrehozása
 
-A címkeértékek alapján létrehozhatja a szűrőket. Az a **Device Explorer** kattintson **eszközcsoportok kezelése**:
+A címkeértékek alapján létrehozhatja a szűrőket. A **Device Explorer** lapon kattintson az **erőforráscsoportok kezelése**lehetőségre:
 
 [![Eszközcsoportok kezelése](./media/iot-accelerators-remote-monitoring-manage/devicesmanagefilters-inline.png)](./media/iot-accelerators-remote-monitoring-manage/devicesmanagefilters-expanded.png#lightbox)
 

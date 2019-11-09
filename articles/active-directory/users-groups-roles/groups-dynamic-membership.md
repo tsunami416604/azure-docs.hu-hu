@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4a8823a9b354ca4ae9ecab0eeac265b486116bec
-ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
+ms.openlocfilehash: 050bc3cf6b81b9467d9947a4f611477e2fcbcd9a
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72808967"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73885865"
 ---
 # <a name="dynamic-membership-rules-for-groups-in-azure-active-directory"></a>A Azure Active Directory csoportok dinamikus tagsági szabályai
 
@@ -54,7 +54,7 @@ További részletes útmutatásért lásd: [dinamikus csoport frissítése](grou
 
 ### <a name="rule-syntax-for-a-single-expression"></a>Egyetlen kifejezés szabályának szintaxisa
 
-Egyetlen kifejezés a tagsági szabály legegyszerűbb formája, és csak a fent említett három részből áll. Egyetlen kifejezéssel rendelkező szabály a következőhöz hasonlóan néz ki: `Property Operator Value`, ahol a tulajdonság szintaxisa a Object. Property neve.
+Egyetlen kifejezés a tagsági szabály legegyszerűbb formája, és csak a fent említett három részből áll. Az egyetlen kifejezéssel rendelkező szabály a következőhöz hasonlóan néz ki: `Property Operator Value`, ahol a tulajdonság szintaxisa a Object. Property neve.
 
 A következő példa egy megfelelően felépített tagsági szabályt mutat be egyetlen kifejezéssel:
 
@@ -70,7 +70,7 @@ Olyan tagsági szabály, amely automatikusan feltölt egy csoportot a felhaszná
 
 - Tulajdonság
 - Művelet
-- Value (Díj)
+- Érték
 
 Egy kifejezésen belüli részek sorrendje fontos a szintaktikai hibák elkerülése érdekében.
 
@@ -88,7 +88,7 @@ A következő felhasználói tulajdonságokat használhatja egyetlen kifejezés 
 
 | Tulajdonságok | Megengedett értékek | Használat |
 | --- | --- | --- |
-| AccountEnabled |Igaz hamis |User. accountEnabled – EQ True |
+| accountEnabled |Igaz hamis |User. accountEnabled – EQ True |
 | dirSyncEnabled |Igaz hamis |User. dirSyncEnabled – EQ True |
 
 ### <a name="properties-of-type-string"></a>Karakterlánc típusú tulajdonságok
@@ -96,15 +96,15 @@ A következő felhasználói tulajdonságokat használhatja egyetlen kifejezés 
 | Tulajdonságok | Megengedett értékek | Használat |
 | --- | --- | --- |
 | city |Bármilyen sztring vagy *Null* érték |(User. City-EQ "value") |
-| Ország |Bármilyen sztring vagy *Null* érték |(User. Country-EQ "value") |
-| CompanyName | Bármilyen sztring vagy *Null* érték | (User. cégnév – EQ "érték") |
-| Részleg |Bármilyen sztring vagy *Null* érték |(User. Department-EQ "value") |
-| DisplayName |Bármely karakterlánc-érték |(User. displayName-EQ "value") |
+| ország |Bármilyen sztring vagy *Null* érték |(User. Country-EQ "value") |
+| companyName | Bármilyen sztring vagy *Null* érték | (User. cégnév – EQ "érték") |
+| részleg |Bármilyen sztring vagy *Null* érték |(User. Department-EQ "value") |
+| displayName |Bármely karakterlánc-érték |(User. displayName-EQ "value") |
 | Alkalmazottkód |Bármely karakterlánc-érték |(User. Alkalmazottkód-EQ "value")<br>(User. Alkalmazottkód-ne *Null*) |
 | Érték facsimiletelephonenumber |Bármilyen sztring vagy *Null* érték |(User. érték facsimiletelephonenumber-EQ "value") |
-| GivenName |Bármilyen sztring vagy *Null* érték |(User. givenName-EQ "value") |
+| givenName |Bármilyen sztring vagy *Null* érték |(User. givenName-EQ "value") |
 | Beosztás |Bármilyen sztring vagy *Null* érték |(User. beosztás-EQ "value") |
-| Levelezési |Bármely karakterlánc-érték vagy *Null* (a felhasználó SMTP-címe) |(User. mail-EQ "érték") |
+| levelezési |Bármely karakterlánc-érték vagy *Null* (a felhasználó SMTP-címe) |(User. mail-EQ "érték") |
 | mailNickName |Bármely karakterlánc-érték (a felhasználó levelezési aliasa) |(User. mailNickName-EQ "value") |
 | mobileszköz |Bármilyen sztring vagy *Null* érték |(User. Mobile-EQ "value") |
 | objectId |A felhasználói objektum GUID azonosítója |(User. objectId-EQ "11111111-1111-1111-1111-111111111111") |
@@ -116,8 +116,8 @@ A következő felhasználói tulajdonságokat használhatja egyetlen kifejezés 
 | sipProxyAddress |Bármilyen sztring vagy *Null* érték |(User. sipProxyAddress-EQ "value") |
 | state |Bármilyen sztring vagy *Null* érték |(User. State-EQ "value") |
 | streetAddress |Bármilyen sztring vagy *Null* érték |(User. streetAddress-EQ "value") |
-| Vezetéknév |Bármilyen sztring vagy *Null* érték |(User. vezetéknév – EQ "érték") |
-| TelephoneNumber |Bármilyen sztring vagy *Null* érték |(User. telephoneNumber-EQ "value") |
+| vezetéknév |Bármilyen sztring vagy *Null* érték |(User. vezetéknév – EQ "érték") |
+| telephoneNumber |Bármilyen sztring vagy *Null* érték |(User. telephoneNumber-EQ "value") |
 | usageLocation |Kétbetűs országkód |(User. usageLocation – EQ "US") |
 | userPrincipalName |Bármely karakterlánc-érték |(User. userPrincipalName-EQ "alias@domain") |
 | userType |tag vendég *Null* |(User. userType-EQ "tag") |
@@ -126,8 +126,8 @@ A következő felhasználói tulajdonságokat használhatja egyetlen kifejezés 
 
 | Tulajdonságok | Megengedett értékek | Használat |
 | --- | --- | --- |
-| otherMails |Bármely karakterlánc-érték |(User. otherMails – a "alias@domain" értéket tartalmazza) |
-| proxyAddresses |SMTP: alias@domain SMTP: alias@domain |(User. proxyAddresses – az "SMTP: alias@domain" értéket tartalmazza) |
+| otherMails |Bármely karakterlánc-érték |(User. otherMails – a következőt tartalmazza: "alias@domain") |
+| proxyAddresses |SMTP: alias@domain SMTP: alias@domain |(User. proxyAddresses – az "SMTP: alias@domain" kifejezést tartalmazza) |
 
 Az eszköz szabályaihoz használt tulajdonságokért lásd: [eszközök szabályai](#rules-for-devices).
 
@@ -357,7 +357,10 @@ Az egyéni tulajdonságnév megtalálhatók a címtárban úgy, hogy a Graph Exp
 
 ## <a name="rules-for-devices"></a>Eszközök szabályai
 
-Létrehozhat egy olyan szabályt is, amely kijelöli a csoport tagjainak eszköz-objektumait. A felhasználók és az eszközök nem rendelkezhetnek csoport tagjaiként. A **organizationalUnit** attribútum már nem jelenik meg, és nem használható. Ezt a karakterláncot az Intune meghatározott esetekben állítja be, de az Azure AD nem ismeri fel, így az attribútum alapján egyetlen eszköz sincs hozzá a csoportokhoz.
+Létrehozhat egy olyan szabályt is, amely kijelöli a csoport tagjainak eszköz-objektumait. A felhasználók és az eszközök nem rendelkezhetnek csoport tagjaiként. 
+
+> [!NOTE]
+> A **organizationalUnit** attribútum már nem jelenik meg, és nem használható. Ezt a karakterláncot az Intune meghatározott esetekben állítja be, de az Azure AD nem ismeri fel, így az attribútum alapján egyetlen eszköz sincs hozzá a csoportokhoz.
 
 > [!NOTE]
 > a systemlabels egy írásvédett attribútum, amely nem állítható be az Intune-nal.
@@ -368,8 +371,8 @@ A következő eszköz-attribútumok használhatók.
 
  Eszköz attribútuma  | Értékek | Példa
  ----- | ----- | ----------------
- AccountEnabled | Igaz hamis | (Device. accountEnabled-EQ true)
- DisplayName | Bármely karakterlánc-érték |(Device. displayName-EQ "Rob iPhone")
+ accountEnabled | Igaz hamis | (Device. accountEnabled-EQ true)
+ displayName | Bármely karakterlánc-érték |(Device. displayName-EQ "Rob iPhone")
  deviceOSType | Bármely karakterlánc-érték | (Device. deviceOSType-EQ "iPad") – vagy (Device. deviceOSType-EQ "iPhone")<br>(Device. deviceOSType – a "AndroidEnterprise" kifejezést tartalmazza)<br>(Device. deviceOSType-EQ "AndroidForWork")
  deviceOSVersion | Bármely karakterlánc-érték | (Device. deviceOSVersion-EQ "9,1")
  deviceCategory | egy érvényes eszköznév neve | (Device. deviceCategory-EQ "BYOD")
@@ -379,16 +382,15 @@ A következő eszköz-attribútumok használhatók.
  enrollmentProfileName | Apple Device beléptetési profil, eszközök beléptetése – vállalati eszközök azonosítói (Android – kioszk) vagy Windows Autopilot-profil neve | (Device. enrollmentProfileName-EQ "DEP iPhones")
  isRooted | Igaz hamis | (Device. isRooted-EQ true)
  managementType | MDM (mobileszközök esetében)<br>SZÁMÍTÓGÉP (az Intune PC Agent által felügyelt számítógépek esetén) | (Device. managementType-EQ "MDM")
- organizationalUnit | egy érvényes helyszíni szervezeti egység (OU) | (Device. organizationalUnit – a "laptop" kifejezést tartalmazza)
  deviceId | érvényes Azure AD-eszköz azonosítója | (Device. deviceId-EQ "d4fe7726-5966-431c-b3b8-cddc8fdb717d")
- objectId | érvényes Azure AD-objektumazonosító |  (Device. objectId-EQ 76ad43c9-32c5-45E8-A272-7b58b58f596d ")
+ objectId | érvényes Azure AD-objektumazonosító |  (Device. objectId-EQ "76ad43c9-32c5-45E8-A272-7b58b58f596d")
  devicePhysicalIds | az Autopilot által használt bármely karakterláncérték, például az összes Autopilot-eszköz, a Rendeléskód vagy a PurchaseOrderID  | (Device. devicePhysicalIDs – any _ – tartalmazza a következőt: "[ZTDId]") (Device. devicePhysicalIds – any _-EQ "[Rendeléskód]: 179887111881") (Device. devicePhysicalIds-any _-EQ "[PurchaseOrderId]: 76222342342")
  systemLabels | minden olyan karakterlánc, amely megfelel az Intune Device tulajdonságának a modern munkahelyi eszközök címkézéséhez | (Device. systemLabels – a "M365Managed" kifejezést tartalmazza)
 
 > [!Note]  
 > Ahhoz, hogy a deviceOwnership dinamikus csoportokat hozzon létre az eszközökhöz, a "vállalat" értékkel egyenlő értéket kell megadnia. Az Intune-ban az eszköz tulajdonjoga a céges helyet képviseli. További részletekért tekintse meg a [OwnerTypes](https://docs.microsoft.com/intune/reports-ref-devices#ownertypes) . 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ezek a cikkek további információkat nyújtanak Azure Active Directory csoportjairól.
 

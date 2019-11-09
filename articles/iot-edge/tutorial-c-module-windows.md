@@ -9,12 +9,12 @@ ms.date: 05/28/2019
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: fdd1aeea20160bb1a9f91de934bd9268a179648a
-ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
+ms.openlocfilehash: c098b67ab2782fa3cf29b5b19aa198f899ba69c0
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72529228"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73890618"
 ---
 # <a name="tutorial-develop-a-c-iot-edge-module-for-windows-devices"></a>Oktatóanyag: C IoT Edge modul fejlesztése Windows-eszközökhöz
 
@@ -38,7 +38,7 @@ Ez az oktatóanyag bemutatja, hogyan fejleszthet a **C** modult a **Visual Studi
 
 A következő táblázat segítségével megismerheti a C modulok Windows-eszközökre való fejlesztésének és üzembe helyezésének lehetőségeit: 
 
-| C# | Visual Studio-kód | Visual Studio 2017/2019 | 
+| C# | Visual Studio Code | Visual Studio 2017/2019 | 
 | -- | ------------------ | ------------------ |
 | **Windows AMD64** |  | ![C modulok fejlesztése a WinAMD64 a Visual Studióban](./media/tutorial-c-module/green-check.png) |
 
@@ -84,11 +84,11 @@ Létrehozhat egy C-megoldást, amelyet a saját kódjával testreszabhat.
 
 4. A IoT Edge alkalmazás és modul ablakban konfigurálja a projektet a következő értékekkel: 
 
-   | Mező | Value (Díj) |
+   | Mező | Érték |
    | ----- | ----- |
    | Sablon kiválasztása | Válassza a **C modul**lehetőséget. | 
    | Modul projekt neve | A modulnak adja a **CModule** nevet. | 
-   | Docker-rendszerkép tárháza | Egy rendszerképadattár a tárolóregisztrációs adatbázis nevét és a tárolórendszerkép nevét tartalmazza. A tároló képe előre fel van töltve a modul projekt neve értékből. Cserélje le a **localhost:5000** értéket az Azure-beli tárolóregisztrációs adatbázis bejelentkezési kiszolgálójának értékére. A bejelentkezési kiszolgálót a tárolóregisztrációs adatbázis Áttekintés lapján kérheti le az Azure Portalon. <br><br> Az utolsó rendszerkép-tárház a következőhöz hasonló: \<registry Name \>. azurecr.io/cmodule. |
+   | Docker-rendszerkép tárháza | Egy rendszerképadattár a tárolóregisztrációs adatbázis nevét és a tárolórendszerkép nevét tartalmazza. A tároló képe előre fel van töltve a modul projekt neve értékből. Cserélje le a **localhost:5000** értéket az Azure-beli tárolóregisztrációs adatbázis bejelentkezési kiszolgálójának értékére. A bejelentkezési kiszolgálót a tárolóregisztrációs adatbázis Áttekintés lapján kérheti le az Azure Portalon. <br><br> Az utolsó rendszerkép-tárház úgy néz ki, mint \<beállításjegyzék neve\>. azurecr.io/cmodule. |
 
    ![A projekt konfigurálása a céleszköz, a modul típusa és a tároló-beállításjegyzék számára](./media/tutorial-c-module-windows/add-application-and-module.png)
 
@@ -134,11 +134,11 @@ Az alapértelmezett modul kódja üzeneteket fogad egy bemeneti várólistán, �
       )
       ```
 
-   3. Adja hozzá a **my_parson** a CMakeLists. txt fájl **target_link_libraries** szakaszában található könyvtárak listájához.
+   3. Adja hozzá `my_parson` a könyvtárak listájához a CMakeLists. txt fájl **target_link_libraries** szakaszában.
 
    4. Mentse a **CMakeLists.txt** fájlt.
 
-   5. Nyissa meg a **CModule**  > **Main. c**. A belefoglalási utasítások listájának alján vegyen fel egy újat, hogy a JSON-támogatáshoz `parson.h` is tartalmazzon:
+   5. Nyissa meg a **CModule** > **Main. c**. A belefoglalási utasítások listájának alján vegyen fel egy újat, hogy a JSON-támogatáshoz `parson.h` is tartalmazzon:
 
       ```c
       #include "parson.h"
@@ -174,6 +174,14 @@ Az alapértelmezett modul kódja üzeneteket fogad egy bemeneti várólistán, �
 4. Keresse meg a `InputQueue1Callback` függvényt, és cserélje le a teljes függvényt a következő kódra. Ez a függvény valósítja meg a tényleges üzenetszűrőt. Üzenet érkezésekor ellenőrzi, hogy a jelentett hőmérséklet meghaladja-e a küszöbértéket. Ha igen, akkor a kimeneti várólistán keresztül továbbítja az üzenetet. Ha nem, akkor figyelmen kívül hagyja az üzenetet. 
 
     ```c
+    static unsigned char *bytearray_to_str(const unsigned char *buffer, size_t len)
+    {
+        unsigned char *ret = (unsigned char *)malloc(len + 1);
+        memcpy(ret, buffer, len);
+        ret[len] = '\0';
+        return ret;
+    }
+
     static IOTHUBMESSAGE_DISPOSITION_RESULT InputQueue1Callback(IOTHUB_MESSAGE_HANDLE message, void* userContextCallback)
     {
         IOTHUBMESSAGE_DISPOSITION_RESULT result;
@@ -183,7 +191,10 @@ Az alapértelmezett modul kódja üzeneteket fogad egy bemeneti várólistán, �
         unsigned const char* messageBody;
         size_t contentSize;
 
-        if (IoTHubMessage_GetByteArray(message, &messageBody, &contentSize) != IOTHUB_MESSAGE_OK)
+        if (IoTHubMessage_GetByteArray(message, &messageBody, &contentSize) == IOTHUB_MESSAGE_OK)
+        {
+            messageBody = bytearray_to_str(messageBody, contentSize);
+        } else
         {
             messageBody = "<null>";
         }
@@ -309,13 +320,13 @@ Az előző szakaszban létrehozott egy IoT Edge megoldást, és hozzáadta a kó
    docker login -u <ACR username> -p <ACR password> <ACR login server>
    ```
 
-   A `--password-stdin` használatát ajánló biztonsági figyelmeztetés jelenhet meg. Habár az ajánlott eljárás az éles környezetekben javasolt, az oktatóanyag hatókörén kívül esik. További információkért lásd a [Docker bejelentkezési](https://docs.docker.com/engine/reference/commandline/login/#provide-a-password-using-stdin) referenciáját.
+   A `--password-stdin`használatának javasolt biztonsági figyelmeztetés jelenhet meg. Habár az ajánlott eljárás az éles környezetekben javasolt, az oktatóanyag hatókörén kívül esik. További információkért lásd a [Docker bejelentkezési](https://docs.docker.com/engine/reference/commandline/login/#provide-a-password-using-stdin) referenciáját.
 
 2. A Visual Studio Solution Explorerben kattintson a jobb gombbal a létrehozni kívánt projekt nevére. Az alapértelmezett név a **AzureIotEdgeApp1** , és a Windows-modul létrehozása óta a bővítménynek **Windows. Amd64**-nek kell lennie. 
 
 3. Válassza ki **az IoT Edge-modulok kiépítése és leküldése**lehetőséget. 
 
-   A build és a push parancs három műveletet indít el. Először létrehoz egy új mappát a **konfigurációban** , amely tartalmazza a teljes telepítési jegyzékfájlt, kiépítve a központi telepítési sablonban található információkat, és egyéb megoldásokat is tartalmaz. Másodszor, `docker build` futtatásával hozza létre a tároló rendszerképét a célként megadott architektúra megfelelő Docker alapján. Ezután a `docker push` futtatásával leküldi a rendszerkép-tárházat a tároló-beállításjegyzékbe. 
+   A build és a push parancs három műveletet indít el. Először létrehoz egy új mappát a **konfigurációban** , amely tartalmazza a teljes telepítési jegyzékfájlt, kiépítve a központi telepítési sablonban található információkat, és egyéb megoldásokat is tartalmaz. Másodszor, `docker build` fut a tároló rendszerképének létrehozásához a cél architektúrájának megfelelő Docker alapján. Ezután a `docker push` futtatja a rendszerkép-tárházat a tároló-beállításjegyzékbe. 
 
 ## <a name="deploy-modules-to-device"></a>Modulok üzembe helyezése az eszközön
 
@@ -370,12 +381,12 @@ Ellenkező esetben törölheti a cikkben használt helyi konfigurációkat és a
 
 [!INCLUDE [iot-edge-clean-up-cloud-resources](../../includes/iot-edge-clean-up-cloud-resources.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban IoT Edge-modult hozott létre olyan kóddal, amely szűri az IoT Edge-eszköz által létrehozott nyers adatokat. Ha készen áll a saját modulok létrehozására, többet is megtudhat a [saját IoT Edge moduljainak fejlesztéséről](module-development.md) , illetve a [Visual Studióval történő modulok fejlesztéséről](how-to-visual-studio-develop-module.md). Folytassa a következő oktatóanyagokkal, amelyből megtudhatja, hogyan hozhatja Azure IoT Edge az Azure Cloud Services üzembe helyezését az adathordozón lévő adatfeldolgozás és-elemzés során.
 
 > [!div class="nextstepaction"]
 > [Functions](tutorial-deploy-function.md)
-> [stream Analytics](tutorial-deploy-stream-analytics.md)
-> [Machine learning](tutorial-deploy-machine-learning.md)
+> [Stream Analytics](tutorial-deploy-stream-analytics.md)
+> [Machine Learning](tutorial-deploy-machine-learning.md)
 > [Custom Vision Service](tutorial-deploy-custom-vision.md)

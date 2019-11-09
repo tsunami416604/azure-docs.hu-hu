@@ -12,15 +12,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 07/15/2019
+ms.date: 11/08/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a77c0e38db06698e714c3d0c3df0d9a5f028787b
-ms.sourcegitcommit: 6eecb9a71f8d69851bc962e2751971fccf29557f
+ms.openlocfilehash: 097429e9c761d447a7164c813a6c84d3f07f0ab6
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "71672951"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73891421"
 ---
 # <a name="sap-workloads-on-azure-planning-and-deployment-checklist"></a>SAP-munkaterhelések az Azure-ban: tervezési és üzembe helyezési ellenőrzőlista
 
@@ -128,7 +128,7 @@ Javasoljuk, hogy a kísérleti üzembe helyezés során egy teljes HADR-megoldá
             - Oracle Linux 7,5. Ha a RHCKL kernelt használja, a Release 3.10.0-862.13.1. el7 szükséges. Ha az Oracle UEK-kernelt használja, az 5. kiadás szükséges.
         - Tesztelje és értékelje ki a hálózati késést az SAP alkalmazási rétegbeli virtuális gépek és az adatbázis-kezelő virtuális gépek között az SAP-támogatási megjegyzések [#500235](https://launchpad.support.sap.com/#/notes/500235) és [#1100926](https://launchpad.support.sap.com/#/notes/1100926/E)alapján. Értékelje ki az eredményeket a hálózati késéssel kapcsolatos útmutatóban az [SAP-támogatási megjegyzés #1100926](https://launchpad.support.sap.com/#/notes/1100926/E). A hálózati késésnek közepes vagy jó tartományban kell lennie. A kivételek a virtuális gépek és a HANA nagyméretű példányok közötti forgalomra vonatkoznak, a [jelen cikkben](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-network-architecture#networking-architecture-for-hana-large-instance)leírtak szerint.
         - Győződjön meg arról, hogy a ILB központi telepítései a közvetlen kiszolgáló visszaadását használják. Ez a beállítás csökkenti a késést, ha az Azure ILB az adatbázis-kezelő réteg magas rendelkezésre állású konfigurációi esetében használják.
-        - Ha a Linux vendég operációs rendszerekkel együtt használja a Azure Load Balancert, ellenőrizze, hogy a **net. IPv4. TCP _timestamps** a Linux hálózati paraméter értéke **0**. Ez az ajánlás ütközik az [SAP megjegyzés #2382421](https://launchpad.support.sap.com/#/notes/2382421)régebbi verzióiban található javaslatokkal. Az SAP-Megjegyzés frissítve lett azzal az állapottal, hogy ez a paraméter **0** értékűre van állítva az Azure Load balancerrel való együttműködéshez.
+        - Ha Azure Load Balancer a Linux vendég operációs rendszerekkel együtt használja, ellenőrizze, hogy a **net. IPv4. Tcp_timestamps** Linux hálózati paraméter értéke **0**. Ez az ajánlás ütközik az [SAP megjegyzés #2382421](https://launchpad.support.sap.com/#/notes/2382421)régebbi verzióiban található javaslatokkal. Az SAP-Megjegyzés frissítve lett azzal az állapottal, hogy ez a paraméter **0** értékűre van állítva az Azure Load balancerrel való együttműködéshez.
         - Érdemes lehet az [Azure Proximity-elhelyezési csoportokat](https://docs.microsoft.com/azure/virtual-machines/linux/co-location) használni az optimális hálózati késés érdekében. További információ: [Azure Proximity-elhelyezési csoportok optimális hálózati késéshez SAP-alkalmazásokkal](sap-proximity-placement-scenarios.md).
    4. Magas rendelkezésre állású és vész-helyreállítási üzemelő példányok.
         - Ha egy adott Azure rendelkezésre állási zóna meghatározása nélkül helyezi üzembe az SAP-alkalmazás rétegét, győződjön meg arról, hogy minden olyan virtuális gép, amely az SAP-párbeszédpanelek példányait vagy az egyetlen SAP-rendszer összes közbenső példányát futtatja egy [rendelkezésre állási csoportba](https://docs.microsoft.com/azure/virtual-machines/windows/manage-availability)
@@ -143,7 +143,7 @@ Javasoljuk, hogy a kísérleti üzembe helyezés során egy teljes HADR-megoldá
         - Ha el szeretné kerülni az Azure-ban üzembe helyezett, helyszíni SAP GUI-felületek és SAP-alkalmazások rétegei közötti GUI-időtúllépést, akkor győződjön meg arról, hogy ezek a paraméterek be vannak-e állítva az alapértelmezett. PFL vagy a példány profiljában:
             - rdisp/keepalive_timeout = 3600
             - rdisp/életben tartás = 20
-        - Az SAP-sorba helyezni folyamat és az SAP-munkafolyamatok közötti létesített kapcsolatok megzavarásának megelőzése érdekében a **enque/encni/set_so_keepalive** paramétert **true**értékre kell állítani. Lásd még: [SAP-megjegyzés #2743751](https://launchpad.support.sap.com/#/notes/2743751).  
+        - Az SAP-sorba helyezni folyamat és az SAP-munkafolyamatok közötti létesített kapcsolatok megzavarásának megelőzése érdekében a **enque/encni/set_so_keepalive** paramétert **igaz**értékre kell állítani. Lásd még: [SAP-megjegyzés #2743751](https://launchpad.support.sap.com/#/notes/2743751).  
         - Ha Windows feladatátvevő fürtöt használ, győződjön meg arról, hogy a nem válaszoló csomópontokra való reagálás időpontja helyesen van beállítva az Azure-hoz. A [feladatátvételi fürt hálózati küszöbértékeit](https://techcommunity.microsoft.com/t5/Failover-Clustering/Tuning-Failover-Cluster-Network-Thresholds/ba-p/371834) felsoroló cikk felsorolja a paramétereket és azt, hogy azok hogyan befolyásolják a feladatátvételi érzékenységet. Ha feltételezi, hogy a fürtcsomópontok ugyanabban az alhálózatban vannak, akkor módosítania kell a következő paramétereket:
             - SameSubNetDelay = 2000
             - SameSubNetThreshold = 15
@@ -160,7 +160,7 @@ Javasoljuk, hogy a kísérleti üzembe helyezés során egy teljes HADR-megoldá
    1.  Ellenőrizze, hogy a [hálózati biztonsági csoport és az ASC](https://docs.microsoft.com/azure/virtual-network/security-overview) -szabályok a várt módon működnek-e, és védi a védett erőforrásokat.
    1.  Győződjön meg arról, hogy az összes titkosítani kívánt erőforrás titkosítva van. Megadhatja és implementálhatja a tanúsítványok biztonsági mentésére, tárolására és elérésére szolgáló folyamatokat, és visszaállíthatja a titkosított entitásokat.
    1.  Az operációsrendszer-lemezek [Azure Disk Encryption](https://docs.microsoft.com/azure/security/azure-security-disk-encryption-faq) használata, ha lehetséges, az operációs rendszer által támogatott nézetből.
-   1.  Ügyeljen arra, hogy ne használjon túl sok titkosítási réteget. Bizonyos esetekben érdemes Azure Disk Encryption együtt használni az adatbázis-kezelői transzparens adattitkosítás metódusok egyikével.
+   1.  Ügyeljen arra, hogy ne használjon túl sok titkosítási réteget. Bizonyos esetekben érdemes Azure Disk Encryption együtt használni az adatbázis-kezelői transzparens adattitkosítás módszerek egyikével, hogy az ugyanazon a kiszolgálón lévő különböző lemezeket vagy összetevőket védjék.  Az SAP adatbázis-kezelő kiszolgálókon például a Azure Disk Encryption (ADE) engedélyezhető az operációs rendszer rendszerindító lemezén (ha az operációs rendszer támogatja az ADE-t), és azokat az adatlemezeket, amelyeket az adatbázis-kezelői adatmegőrzési fájlok nem használnak.  Erre példa az az ADE használata az adatbázis-kezelő TDE titkosítási kulcsait tároló lemezen.
 1. Teljesítmény tesztelése. Az SAP-ben SAP-nyomkövetés és-mérések alapján végezze el az alábbi összehasonlításokat:
    - Ha szükséges, hasonlítsa össze az első 10 online jelentést a jelenlegi megvalósításával.
    - Ha alkalmazható, hasonlítsa össze az első 10 batch-feladatot a jelenlegi implementációval.
@@ -276,7 +276,7 @@ Ez a fázis a rendszer figyelésére, üzemeltetésére és felügyeletére szol
 3. Optimalizálja a rendszerek leállításának időpontját.  
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Tekintse meg a következő cikkeket:
 
 - [Azure Virtual Machines az SAP NetWeaver tervezése és megvalósítása](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/planning-guide)

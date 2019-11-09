@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 10/16/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: bbfab41c3324bc16874463d2fc0201f99ee9284b
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: a56abbcb72afc1f45683259d3bd3bf13309cda07
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72516984"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73886067"
 ---
 # <a name="back-up-your-app-in-azure"></a>Adatok biztonsági mentése az Azure-ban
 A [Azure app Service](overview.md) biztonsági mentési és visszaállítási funkciója lehetővé teszi, hogy egyszerűen hozza létre az alkalmazások biztonsági másolatait manuálisan vagy ütemezés szerint. Beállíthatja, hogy a biztonsági másolatok határozatlan ideig maradjanak. Az alkalmazást visszaállíthatja egy korábbi állapot pillanatképére a meglévő alkalmazás felülírásával vagy egy másik alkalmazásra való visszaállítással.
@@ -39,7 +39,7 @@ A biztonsági mentési funkció a következő adatbázis-megoldásokat támogatj
 - [SQL Database](https://azure.microsoft.com/services/sql-database/)
 - [Azure Database for MySQL](https://azure.microsoft.com/services/mysql)
 - [Azure Database for PostgreSQL](https://azure.microsoft.com/services/postgresql)
-- [beépített mySQL](https://azure.microsoft.com/en-us/blog/mysql-in-app-preview-app-service/)
+- [beépített mySQL](https://azure.microsoft.com/blog/mysql-in-app-preview-app-service/)
  
 
 > [!NOTE]
@@ -68,7 +68,7 @@ A biztonsági mentési funkció a következő adatbázis-megoldásokat támogatj
     > [!NOTE]
     > Ha a következő üzenet jelenik meg, kattintson rá a App Service terv frissítéséhez, mielőtt folytatná a biztonsági mentéseket.
     > További információ: alkalmazás vertikális [Felskálázása az Azure-ban](manage-scale-up.md).
-    > ![Choose Storage-fiók ](./media/manage-backup/upgrade-plan.png)
+    > ![válassza a Storage-fiók lehetőséget](./media/manage-backup/upgrade-plan.png)
     > 
     > 
 
@@ -156,7 +156,7 @@ A biztonsági mentések ugyanúgy működnek, mint a szokásos módon, [manuáli
 <a name="aboutbackups"></a>
 
 ## <a name="how-backups-are-stored"></a>A biztonsági másolatok tárolása
-Miután elvégezte az alkalmazás egy vagy több biztonsági mentését, a biztonsági másolatok a Storage-fiók **tárolók** lapján és az alkalmazásban láthatók. A Storage-fiókban minden biztonsági másolat egy `.zip`-fájlból áll, amely tartalmazza a biztonsági mentési és a `.xml` fájlt, amely tartalmazza a `.zip` fájl egy jegyzékfájlját. Ezeket a fájlokat kibonthatja és böngészheti, ha a biztonsági mentéseket nem az alkalmazás-visszaállítás tényleges végrehajtása nélkül szeretné elérni.
+Miután elvégezte az alkalmazás egy vagy több biztonsági mentését, a biztonsági másolatok a Storage-fiók **tárolók** lapján és az alkalmazásban láthatók. A Storage-fiókban minden biztonsági másolat egy`.zip`-fájlból áll, amely tartalmazza a biztonsági mentési és a `.xml` fájlt, amely tartalmazza a `.zip` fájl egy jegyzékfájlját. Ezeket a fájlokat kibonthatja és böngészheti, ha a biztonsági mentéseket nem az alkalmazás-visszaállítás tényleges végrehajtása nélkül szeretné elérni.
 
 Az alkalmazás adatbázisának biztonsági másolatát a. zip fájl gyökerében tárolja a rendszer. SQL Database esetén ez egy BACPAC-fájl (fájlkiterjesztés nélkül), és importálható. Ha a BACPAC-exportálás alapján szeretne SQL-adatbázist létrehozni, tekintse meg a [BACPAC-fájl importálása új felhasználói adatbázis létrehozásához](https://technet.microsoft.com/library/hh710052.aspx)című témakört.
 

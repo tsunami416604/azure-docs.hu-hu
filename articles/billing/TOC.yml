@@ -5,8 +5,6 @@
   items:
     - name: A számla értelmezése
       href: billing-understand-your-bill.md
-    - name: A nagyvállalati szerződéses számla értelmezése
-      href: billing-understand-your-bill-ea.md
     - name: A számla értelmezése – Microsoft-ügyfélszerződések
       href: billing-mca-understand-your-bill.md
     - name: A számla értelmezése – Microsoft Partnerszerződések
@@ -159,6 +157,8 @@
       items:
         - name: Első lépések a nagyvállalati szerződéses Azure Portalon
           href: billing-ea-portal-get-started.md
+        - name: A nagyvállalati szerződéses számla értelmezése
+          href: billing-understand-your-bill-ea.md
         - name: Nagyvállalati szerződéses szerepkörök az Azure-ban
           href: billing-understand-ea-roles.md
         - name: A nagyvállalati szerződéses Azure Portal adminisztrációja

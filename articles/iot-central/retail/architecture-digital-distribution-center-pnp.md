@@ -7,12 +7,12 @@ ms.service: iot-central
 ms.subservice: iot-central-retail
 ms.topic: overview
 ms.date: 10/20/2019
-ms.openlocfilehash: 2ab79cccaafeb1b48100285a5fd495340b545278
-ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
+ms.openlocfilehash: 478ebde1de5624796ebf1dde5cf89f4e1f9d9104
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73615341"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73890739"
 ---
 # <a name="architecture-of-iot-central-digital-distribution-center-application-template"></a>A IoT Central Digital Distribution Center alkalmazás-sablon architektúrája
 
@@ -48,4 +48,4 @@ A IoT Central platform a folyamatos adatexportálás (CDE) és az API-k révén 
 ## <a name="next-steps"></a>További lépések
 * Útmutató a [digitális terjesztési központ sablonjának](./tutorial-iot-central-digital-distribution-center-pnp.md) üzembe helyezéséhez
 * További információ a [IoT Central kiskereskedelmi sablonokról](./overview-iot-central-retail-pnp.md)
-* További információ a IoT Centralról [IoT Central áttekintés](../core/overview-iot-central-pnp.md)
+* További információ a IoT Centralról [IoT Central áttekintés](../preview/overview-iot-central.md)

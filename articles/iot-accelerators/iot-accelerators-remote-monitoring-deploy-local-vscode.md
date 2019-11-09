@@ -1,6 +1,6 @@
 ---
-title: A távoli figyelési megoldás üzembe helyileg (Visual Studio Code) – Azure |} A Microsoft Docs
-description: Ez az útmutató bemutatja, hogyan lehet a távoli figyelési megoldásgyorsító üzembe helyezése a helyi gépen a Visual Studio Code teszteléshez és fejlesztéshez.
+title: Távoli figyelési megoldás üzembe helyezése helyileg – Visual Studio Code – Azure | Microsoft Docs
+description: Ez a útmutató bemutatja, hogyan helyezheti üzembe a távoli figyelési megoldás gyorsítása a helyi gépen a Visual Studio Code használatával a teszteléshez és fejlesztéshez.
 author: avneet723
 manager: hegate
 ms.author: avneets
@@ -8,99 +8,99 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 01/17/2019
 ms.topic: conceptual
-ms.openlocfilehash: ed3301eb0e723e05e2a642ffea2f1609032553b4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8f1d20e9a6a78d99a23fe4b98aeb4f3eb8359da7
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66730173"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73890961"
 ---
-# <a name="deploy-the-remote-monitoring-solution-accelerator-locally---visual-studio-code"></a>A távoli figyelési megoldásgyorsító helyileg – Visual Studio Code telepítése
+# <a name="deploy-the-remote-monitoring-solution-accelerator-locally---visual-studio-code"></a>A távoli figyelési megoldás-gyorsító helyi telepítése – Visual Studio Code
 
 [!INCLUDE [iot-accelerators-selector-local](../../includes/iot-accelerators-selector-local.md)]
 
-Ez a cikk bemutatja, hogyan való teszteléshez és fejlesztéshez a helyi gépre a távoli figyelési megoldásgyorsító üzembe helyezése. Megismerheti, hogyan futtathatja a mikroszolgáltatás-alapú Visual Studio Code-ban. Egy helyi mikroszolgáltatások üzembe helyezés az alábbi cloud-szolgáltatásokat használja: IoT Hub, Cosmos DB, Azure Streaming Analytics, and Azure Time Series Insights.
+Ebből a cikkből megtudhatja, hogyan helyezheti üzembe a távoli figyelési megoldás Gyorssegédjét a helyi gépre tesztelés és fejlesztés céljából. Megtudhatja, hogyan futtathatja a szolgáltatásait a Visual Studio Code-ban. A helyi fürtszolgáltatások üzembe helyezése a következő felhőalapú szolgáltatásokat használja: IoT Hub, Cosmos DB, Azure streaming Analytics és Azure Time Series Insights.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az Azure-szolgáltatások használják a távoli figyelési megoldásgyorsító üzembe helyezéséhez aktív Azure-előfizetés szükséges.
+A távoli figyelési megoldás által használt Azure-szolgáltatások üzembe helyezéséhez aktív Azure-előfizetésre van szükség.
 
 Ha nincs fiókja, néhány perc alatt létrehozhat egy ingyenes próbafiókot. További információkért lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial/).
 
 ### <a name="machine-setup"></a>Gép beállítása
 
-A helyi telepítés befejezéséhez, szüksége van a helyi fejlesztői gépen telepítve van a következő eszközöket:
+A helyi telepítés befejezéséhez a következő eszközökre van szükség a helyi fejlesztési gépen:
 
 * [Git](https://git-scm.com/)
 * [.NET Core](https://dotnet.microsoft.com/download)
 * [Docker](https://www.docker.com)
 * [Nginx](https://nginx.org/en/download.html)
 * [Visual Studio Code](https://code.visualstudio.com/)
-* [A VS Code C# bővítmény](https://code.visualstudio.com/docs/languages/csharp)
-* [NODE.js v8](https://nodejs.org/) – Ez a szoftver előfeltétele a számítógépek parancssori felület, amely a parancsfájlok használata Azure-erőforrások létrehozásához. Ne használja a Node.js v10
+* [VS Code C# bővítmény](https://code.visualstudio.com/docs/languages/csharp)
+* [Node. js V8](https://nodejs.org/) – ez a szoftver előfeltétele annak a PC CLI-nek, amelyet a parancsfájlok az Azure-erőforrások létrehozásához használnak. Ne használja a Node. js v10-et
 
 > [!NOTE]
-> A Visual Studio Code Windows, Mac és Ubuntu érhető el.
+> A Visual Studio Code Windows, Mac és Ubuntu rendszerekhez érhető el.
 
 [!INCLUDE [iot-accelerators-local-setup](../../includes/iot-accelerators-local-setup.md)]
 
-## <a name="run-the-microservices"></a>A mikroszolgáltatások futtatása
+## <a name="run-the-microservices"></a>A szervizcsomagok futtatása
 
-Ebben a szakaszban a távoli figyelési mikroszolgáltatások fogja futtatni. A webes felhasználói felület futtatása natív módon az Eszközszimuláció service a Docker és a mikroszolgáltatás-alapú Visual Studio Code-ban.
+Ebben a szakaszban a távoli monitorozási szolgáltatásait futtatja. A webes KEZELŐFELÜLETet natív módon futtatja, az eszköz szimulációs szolgáltatása a Docker-ben és a Visual Studio Code-ban.
 
 ### <a name="build-the-code"></a>A kód létrehozása
 
-Azure-iot-pcs-remote-monitoring-dotnet\services a parancssorban keresse meg, és futtassa az alábbi parancsokat a kód felépítéséhez.
+A Azure-IOT-PCs-Remote-Monitoring-dotnet\services navigáljon a parancssorban, és futtassa a következő parancsokat a kód felépítéséhez.
 
 ```cmd
 dotnet restore
 dotnet build -c Release
 ```
 
-### <a name="deploy-all-other-microservices-on-local-machine"></a>A helyi számítógépen az összes többi mikroszolgáltatások üzembe helyezéséhez
+### <a name="deploy-all-other-microservices-on-local-machine"></a>Az összes többi webszolgáltatás üzembe helyezése a helyi gépen
 
-A következő lépések bemutatják, hogyan futtathatja a távoli figyelési mikroszolgáltatás-alapú Visual Studio Code-ban:
+A következő lépések bemutatják, hogyan futtathatja a távoli monitorozási szolgáltatásait a Visual Studio Code-ban:
 
 1. Indítsa el a Visual Studio Code-ot.
-1. A VS Code-ban nyissa meg a **azure-iot-pcs-remote-monitoring-dotnet** mappát.
-1. Hozzon létre egy új nevű **.vscode** a a **azure-iot-pcs-remote-monitoring-dotnet** mappát.
-1. Másolja a fájlokat **launch.json** és **tasks.json** services\scripts\local\launch\idesettings\vscode, az a **.vscode** imént létrehozott mappára.
-1. Nyissa meg a **hibakeresési panel** a VS Code, és futtassa a **összes futtatása mikroszolgáltatások** konfigurációja. Ez a konfiguráció fut, az eszköz szimulálása mikroszolgáltatások Docker, és az egyéb mikroszolgáltatások fut, a hibakereső.
+1. A VS Code-ban nyissa meg az **Azure-IOT-PC-Remote-Monitoring-DotNet** mappát.
+1. Hozzon létre egy **. vscode** nevű új mappát az **Azure-IOT-PC-Remote-Monitoring-DotNet** mappában.
+1. Másolja a Files **Launch. JSON** és **Tasks. JSON** fájlt a services\scripts\local\launch\idesettings\vscode-ből az imént létrehozott **. vscode** mappába.
+1. Nyissa meg a **hibakeresési panelt** a vs Code-ban, és futtassa az **összes szolgáltatás futtatása** konfigurációt. Ez a konfiguráció futtatja az eszköz szimulációs szolgáltatását a Docker-ben, és futtatja a hibakeresőben lévő többi szolgáltatást.
 
-Futó kimenete **összes futtatása microsoervices** a Debug-konzolon a következőhöz hasonló:
+A hibakeresési konzolon futó **összes Microsoervices futtatásának** kimenete a következőhöz hasonlóan néz ki:
 
-[![Deploy-Local-Microservices](./media/deploy-locally-vscode/auth-debug-results-inline.png)](./media/deploy-locally-vscode/auth-debug-results-expanded.png#lightbox)
+[![üzembe helyezés – helyi szolgáltatások](./media/deploy-locally-vscode/auth-debug-results-inline.png)](./media/deploy-locally-vscode/auth-debug-results-expanded.png#lightbox)
 
 ### <a name="run-the-web-ui"></a>A webes felhasználói felület futtatása
 
-Ebben a lépésben indítsa el a webes felhasználói felületen. Navigáljon a **azure-iot-pcs-remote-monitoring-dotnet\webui** a helyi mappájába másolja, és futtassa a következő parancsokat:
+Ebben a lépésben elindítja a webes felhasználói felületet. A helyi másolatban navigáljon a **Azure-IOT-PCs-Remote-Monitoring-dotnet\webui** mappához, és futtassa a következő parancsokat:
 
 ```cmd
 npm install
 npm start
 ```
 
-A kezdő befejeződése után a böngésző megjeleníti-e az oldal **http:\//localhost:3000 / irányítópult**. Ezen az oldalon a hibák várhatóan. Hibák nélkül az alkalmazás megtekintéséhez hajtsa végre a következő lépéssel.
+A kezdés befejezésekor a böngésző megjeleníti a **http:\//localhost: 3000/Dashboard**lapot. A rendszer a lapon szereplő hibákat várta. Ha hiba nélkül szeretné megtekinteni az alkalmazást, hajtsa végre a következő lépést.
 
-### <a name="configure-and-run-nginx"></a>Konfigurálása és futtatása az nginx-et
+### <a name="configure-and-run-nginx"></a>Az NGINX konfigurálása és futtatása
 
-Állítsa be a fordított proxykiszolgáló mutató hivatkozást a webalkalmazás és a helyi gépen futó mikroszolgáltatásokat:
+Hozzon létre egy fordított proxykiszolgálót a helyi gépen futó webalkalmazás és-szolgáltatások összekapcsolásához:
 
-* Másolás a **nginx.conf** fájlt a **webui\scripts\localhost** mappát a **nginx\conf** telepítési könyvtár.
-* Futtatás **nginx**.
+* Másolja az **Nginx. conf** fájlt a **webui\scripts\localhost** mappából a **nginx\conf** telepítési könyvtárába.
+* Az **Nginx**futtatása.
 
-További információ a futó **nginx**, lásd: [nginx-et a Windows](https://nginx.org/en/docs/windows.html).
+További információ az **Nginx**futtatásáról: [Nginx for Windows](https://nginx.org/en/docs/windows.html).
 
-### <a name="connect-to-the-dashboard"></a>Csatlakozás az irányítópulton
+### <a name="connect-to-the-dashboard"></a>Kapcsolódás az irányítópulthoz
 
-A távoli figyelési megoldás irányítópultján eléréséhez lépjen a http:\//localhost:9000 a böngészőben.
+A távoli figyelési megoldás irányítópultjának eléréséhez nyissa meg a következőt: http:\//localhost: 9000 a böngészőben.
 
 ## <a name="clean-up"></a>A fölöslegessé vált elemek eltávolítása
 
-Kerülje a szükségtelen költségek, a tesztelés befejezése után távolítsa el a cloud services az Azure-előfizetésből. Távolítsa el a szolgáltatásokat, lépjen a [az Azure portal](https://ms.portal.azure.com) és törölje az erőforrást, amely a **start.cmd** létrehozott parancsfájlt.
+A szükségtelen díjak elkerüléséhez, ha befejezte a tesztelést, távolítsa el a Cloud Servicest az Azure-előfizetésből. A szolgáltatások eltávolításához navigáljon a [Azure Portal](https://ms.portal.azure.com) , és törölje a **Start. cmd** parancsfájl által létrehozott erőforráscsoportot.
 
-A távoli figyelési jön létre, amikor a forráskódját a Githubról klónozott tárház helyi példányának is törölheti.
+Törölheti a távoli figyelési tárház helyi példányát is, amikor a forráskódot a GitHubról klónozotta.
 
 ## <a name="next-steps"></a>További lépések
 
-Most, hogy a távoli figyelési megoldás üzembe helyezte, a következő lépés, hogy [Fedezze fel a megoldás irányítópultján képességeit](quickstart-remote-monitoring-deploy.md).
+Most, hogy üzembe helyezte a távoli figyelési megoldást, a következő lépés a [megoldás irányítópultjának képességeinek megismerése](quickstart-remote-monitoring-deploy.md).

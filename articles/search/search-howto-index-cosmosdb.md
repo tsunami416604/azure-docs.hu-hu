@@ -9,83 +9,80 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: f0224905f8d3872aca9055a77c8182cb2cac67cb
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 0657d3d5aec414b867e85b627fcf77174c8ce789
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72793812"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73889896"
 ---
 # <a name="how-to-index-cosmos-db-data-using-an-indexer-in-azure-cognitive-search"></a>Cosmos DB adatai indexelése az Azure-ban indexelő használatával Cognitive Search 
 
-> [!Note]
-> A MongoDB API támogatása előzetes verzióban érhető el, és nem éles használatra készült. A [REST API 2019-05-06-es verziójának előzetes verziója](search-api-preview.md) biztosítja ezt a funkciót. Jelenleg nem érhető el portál vagy .NET SDK-támogatás.
->
+> [!IMPORTANT] 
 > Az SQL API általánosan elérhető.
+> A MongoDB API, a Gremlin API és a Cassandra API támogatás jelenleg nyilvános előzetes verzióban érhető el. Az előzetes verziójú funkciók szolgáltatói szerződés nélkül érhetők el, és éles számítási feladatokhoz nem ajánlott. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Az előzetes verzióhoz való hozzáférést az [űrlap](https://aka.ms/azure-cognitive-search/indexer-preview)kitöltésével kérheti le. A [REST API 2019-05-06-es verziójának előzetes verziója](search-api-preview.md) előzetes funkciókat biztosít. Jelenleg korlátozott a portál támogatása, és nincs .NET SDK-támogatás.
 
 Ez a cikk bemutatja, hogyan konfigurálhat egy Azure Cosmos db [Indexelő](search-indexer-overview.md) a tartalom kinyeréséhez és az Azure-Cognitive Search kereshetővé tételéhez. Ez a munkafolyamat létrehoz egy Azure Cognitive Search indexet, és betölti azt a Azure Cosmos DBból kinyert meglévő szöveggel. 
 
 Mivel a terminológia zavaró lehet, érdemes megjegyezni, hogy [Azure Cosmos db indexelés](https://docs.microsoft.com/azure/cosmos-db/index-overview) és az [Azure Cognitive Search indexelés](search-what-is-an-index.md) különböző műveletek, amelyek egyediek az egyes szolgáltatásokhoz. Az Azure Cognitive Search indexelésének megkezdése előtt a Azure Cosmos DB-adatbázisnak már léteznie kell, és tartalmaznia kell az adatait.
 
-A Cosmos-tartalmak indexeléséhez használhatja a [portált](#cosmos-indexer-portal), a REST API-kat vagy a .net SDK-t is. Az Azure Cognitive Search Cosmos DB indexelő képes a következő protokollokon keresztül elért [Azure Cosmos-elemek](https://docs.microsoft.com/azure/cosmos-db/databases-containers-items#azure-cosmos-items) feltérképezésére:
+Az Azure Cognitive Search Cosmos DB indexelő képes a különböző protokollokon keresztül elért [Azure Cosmos db elemek](https://docs.microsoft.com/azure/cosmos-db/databases-containers-items#azure-cosmos-items) bejárására.
 
-* [SQL API](https://docs.microsoft.com/azure/cosmos-db/sql-api-query-reference) 
-* [MongoDB API (előzetes verzió)](https://docs.microsoft.com/azure/cosmos-db/mongodb-introduction)
++ A általánosan elérhető [SQL API](https://docs.microsoft.com/azure/cosmos-db/sql-api-query-reference)-k esetében használhatja a [portált](#cosmos-indexer-portal), a [REST API](https://docs.microsoft.com/rest/api/searchservice/indexer-operations)vagy a [.net SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexer?view=azure-dotnet)-t.
+
++ A [MongoDB API (előzetes verzió)](https://docs.microsoft.com/azure/cosmos-db/mongodb-introduction) és a [Gremlin API (előzetes verzió)](https://docs.microsoft.com/azure/cosmos-db/graph-introduction)esetében használhatja a [portált](#cosmos-indexer-portal) vagy a [REST API 2019-05-06-es verzióját](search-api-preview.md) a [create indexelő (REST)](https://docs.microsoft.com/rest/api/searchservice/create-indexer) hívásával az indexelő létrehozásához.
+
++ A [Cassandra API (előzetes verzió)](https://docs.microsoft.com/azure/cosmos-db/cassandra-introduction)esetében csak az [REST API 2019-05-06-es verziót](search-api-preview.md) használhatja a [create indexelő (REST)](https://docs.microsoft.com/rest/api/searchservice/create-indexer) híváshoz.
+
 
 > [!Note]
-> A felhasználó hangja meglévő elemeket tartalmaz a további API-támogatáshoz. Szavazzon az Azure Cognitive Search: [Table API](https://feedback.azure.com/forums/263029-azure-search/suggestions/32759746-azure-search-should-be-able-to-index-cosmos-db-tab), [Graph API](https://feedback.azure.com/forums/263029-azure-search/suggestions/13285011-add-graph-databases-to-your-data-sources-eg-neo4), [Apache Cassandra API](https://feedback.azure.com/forums/263029-azure-search/suggestions/32857525-indexer-crawler-for-apache-cassandra-api-in-azu)által támogatott Cosmos API-kra.
+> Ha azt szeretné, hogy az Azure Cognitive Search támogatott legyen, szavazzon a [Table API](https://feedback.azure.com/forums/263029-azure-search/suggestions/32759746-azure-search-should-be-able-to-index-cosmos-db-tab) felhasználói hangján.
 >
 
 <a name="cosmos-indexer-portal"></a>
 
 ## <a name="use-the-portal"></a>A portál használata
 
-Az Azure Cosmos-elemek indexelésének legegyszerűbb módja a [Azure Portal](https://portal.azure.com/)varázsló használata. Mintavételezési adatok és metaadatok beolvasása a tárolóban az [**adatok importálása**](search-import-data-portal.md) varázsló az Azure Cognitive Search létrehozhat egy alapértelmezett indexet, leképezheti a forrás mezőket a célként megadott index mezőire, és betöltheti az indexet egyetlen művelettel. A forrásadatok méretétől és összetettségének függvényében percek alatt működőképes teljes szöveges keresési indexszel rendelkezhet.
+> [!Note]
+> A portál jelenleg támogatja az SQL API-t és a MongoDB API-t (előzetes verzió).
+
+Azure Cosmos DB elemek indexelésének legegyszerűbb módja a [Azure Portal](https://portal.azure.com/)varázsló használata. Mintavételezési adatok és metaadatok beolvasása a tárolóban az [**adatok importálása**](search-import-data-portal.md) varázsló az Azure Cognitive Search létrehozhat egy alapértelmezett indexet, leképezheti a forrás mezőket a célként megadott index mezőire, és betöltheti az indexet egyetlen művelettel. A forrásadatok méretétől és összetettségének függvényében percek alatt működőképes teljes szöveges keresési indexszel rendelkezhet.
 
 Azt javasoljuk, hogy ugyanazt az Azure-előfizetést használja az Azure Cognitive Search és Azure Cosmos DB esetében is, lehetőleg ugyanabban a régióban.
 
 ### <a name="1---prepare-source-data"></a>1 – forrásadatok előkészítése
 
-Rendelkeznie kell egy Cosmos-fiókkal, egy Azure Cosmos-adatbázissal, amely az SQL API vagy a MongoDB API-ra van leképezve, valamint egy JSON-dokumentum tárolója. 
+Rendelkeznie kell egy Cosmos DB fiókkal, egy Azure Cosmos DB-adatbázissal, amely az SQL API-ra, a MongoDB API-ra (előzetes verzió) vagy a Gremlin API-ra (előzetes verzió) és az adatbázis tartalmára van leképezve.
 
 Győződjön meg arról, hogy a Cosmos DB adatbázisa tartalmaz adatait. Az [adatok importálása varázsló](search-import-data-portal.md) beolvassa a metaadatokat, és elvégzi az adatok mintavételezését az index sémájának következtetéséhez, de az adatokat a Cosmos DBból is betölti. Ha az adatok hiányoznak, a varázsló ezzel a hibával leáll: "hiba történt az index sémájának észlelése az adatforrásból: nem sikerült létrehozni a prototípus-indexet, mert a (z)" emptycollection "adatforrás nem adott vissza értéket".
 
 ### <a name="2---start-import-data-wizard"></a>2 – az adatimportálás megkezdése varázsló
 
-A [varázsló elindításához](search-import-data-portal.md) az Azure Cognitive Search szolgáltatás lapján, vagy az **Azure Cognitive Search hozzáadása** lehetőségre kattintva a Storage-fiók bal oldali navigációs paneljének **Beállítások** részében kattinthat.
+A [varázsló elindításához](search-import-data-portal.md) a parancssáv az Azure Cognitive Search szolgáltatás lapján, vagy ha Cosmos db SQL API-hoz csatlakozik, kattintson az **Azure-Cognitive Search hozzáadása** lehetőségre az Cosmos db-fiók bal oldali **Beállítások** szakaszában. navigációs ablaktábla
 
    ![Adatimportálási parancs a portálon](./media/search-import-data-portal/import-data-cmd2.png "Az adatimportálás varázsló elindítása")
 
 ### <a name="3---set-the-data-source"></a>3 – az adatforrás beállítása
 
-> [!NOTE] 
-> A **MongoDB** -adatforrások jelenleg nem hozhatók létre és nem szerkeszthetők Azure Portal vagy a .net SDK használatával. A portálon **azonban nyomon** követheti a MongoDB indexek végrehajtási előzményeit.
-
 **Az adatforrás lapon a** forrásnak **Cosmos DBnak**kell lennie, a következő jellemzőkkel:
 
 + A **név** az adatforrás-objektum neve. A létrehozás után kiválaszthatja más számítási feladatokhoz is.
 
-+ **Cosmos db fióknak** a Cosmos db elsődleges vagy másodlagos, `AccountEndpoint` és `AccountKey` értékűnek kell lennie. A fiók meghatározza, hogy az adatgyűjtés SQL API-ként vagy Mongo DB API-ként történik-e
++ **Cosmos db fióknak** a Cosmos db elsődleges vagy másodlagos, `AccountEndpoint` és `AccountKey`értékűnek kell lennie. A MongoDB-gyűjtemények esetében adja hozzá a **ApiKind = MongoDB** a kapcsolódási karakterlánc végéhez, és válassza el a pontosvesszővel elválasztva a kapcsolódási karakterláncot. A Gremlin API és a Cassandra API esetében használja a [REST API](#cosmosdb-indexer-rest)utasításait.
 
 + Az **adatbázis** egy meglévő adatbázis a fiókból. 
 
 + A **gyűjtemény** a dokumentumok tárolója. A dokumentumoknak léteznie kell ahhoz, hogy az importálás sikeres legyen. 
 
-+ A **lekérdezés** üres is lehet, ha az összes dokumentumot szeretné használni, ellenkező esetben olyan lekérdezést is beírhat, amely kiválasztja a dokumentum részhalmazát. 
++ A **lekérdezés** üres is lehet, ha az összes dokumentumot szeretné használni, ellenkező esetben olyan lekérdezést is beírhat, amely kiválasztja a dokumentum részhalmazát. A **lekérdezés** csak az SQL API-hoz érhető el.
 
    ![Cosmos DB adatforrás-definíció](media/search-howto-index-cosmosdb/cosmosdb-datasource.png "Cosmos DB adatforrás-definíció")
 
-### <a name="4---skip-the-add-cognitive-search-page-in-the-wizard"></a>4 – a varázsló "kognitív keresés hozzáadása" lapjának kihagyása
+### <a name="4---skip-the-enrich-content-page-in-the-wizard"></a>4 – a "tartalom gazdagítása" lap kihagyása a varázslóban
 
-A kognitív képességek hozzáadása nem szükséges a dokumentumok importálásához. Ha nem rendelkezik konkrét [mesterséges intelligencia-bővítéssel](cognitive-search-concept-intro.md) az indexelési folyamathoz, hagyja ki ezt a lépést.
+A kognitív képességek (vagy a dúsítás) hozzáadása nem szükséges importálási követelmény. Ha nem rendelkezik konkrét [mesterséges intelligencia-bővítéssel](cognitive-search-concept-intro.md) az indexelési folyamathoz, hagyja ki ezt a lépést.
 
-A lépés kihagyásához először ugorjon a következő lapra.
-
-   ![Következő lap gomb a szaktudás hozzáadásához](media/search-get-started-portal/next-button-add-cog-search.png)
-
-Ebből az oldalból kihagyhatja az index testreszabását.
-
-   ![A kognitív képességek lépés kihagyása](media/search-get-started-portal/skip-cog-skill-step.png)
+A lépés kihagyásához kattintson a lap alján található kék gombra a "Next" és a "Skip" (kihagyás) elemre.
 
 ### <a name="5---set-index-attributes"></a>5 – index attribútumainak beállítása
 
@@ -120,11 +117,12 @@ Az indexelés befejezésekor a [Search Explorer](search-explorer.md) használat�
 
 ## <a name="use-rest-apis"></a>REST API-k használata
 
-A REST API használatával indexelheti Azure Cosmos db az összes indexelő munkafolyamatot követő háromrészes munkafolyamatot az Azure Cognitive Searchban: hozzon létre egy adatforrást, hozzon létre egy indexet, hozzon létre egy indexelő. A Cosmos-tárolóból kinyert adatok akkor következnek be, amikor elküldi az index-létrehozási kérelmet. A kérés befejezését követően lekérdezhető index jelenik meg. 
+A REST API használatával indexelheti Azure Cosmos db az összes indexelő munkafolyamatot követő háromrészes munkafolyamatot az Azure Cognitive Searchban: hozzon létre egy adatforrást, hozzon létre egy indexet, hozzon létre egy indexelő. A Cosmos DB adatokból való kivonása akkor történik meg, amikor elküldi a Create Indexer-kérést. A kérés befejezését követően lekérdezhető index jelenik meg. 
 
-Ha kiértékeli a MongoDB, az adatforrás létrehozásához a REST `api-version=2019-05-06-Preview` kell használnia.
+> [!NOTE]
+> Cosmos DB Gremlin API-ból vagy Cosmos DB-Cassandra APIból származó adatok indexeléséhez először az [űrlap](https://aka.ms/azure-cognitive-search/indexer-preview)kitöltésével kell hozzáférést kérnie a kezdeményezett előnézetekhez. A kérelem feldolgozása után az adatforrások létrehozásához a [REST API 2019-05-06-es verziójának előzetes verzióját](search-api-preview.md) kell használnia.
 
-A Cosmos DB-fiókban megadhatja, hogy a gyűjtemény automatikusan indexelje-e az összes dokumentumot. Alapértelmezés szerint az összes dokumentum automatikusan indexelve van, de ki is kapcsolhatja az automatikus indexelést. Ha az indexelés ki van kapcsolva, a dokumentumok csak az önhivatkozások vagy a dokumentumok AZONOSÍTÓjának használatával érhetők el. Az Azure Cognitive Search megköveteli Cosmos DB Automatikus indexelés bekapcsolását az Azure Cognitive Search által indexelt gyűjteményben. 
+A cikk korábbi részeiben már említettük, hogy [Azure Cosmos db indexelés](https://docs.microsoft.com/azure/cosmos-db/index-overview) és az [Azure Cognitive Search indexelési](search-what-is-an-index.md) indexelés különböző művelet. Cosmos DB indexeléshez alapértelmezés szerint a rendszer az összes dokumentumot automatikusan indexeli, kivéve a Cassandra API. Ha kikapcsolja az automatikus indexelést, a dokumentumok csak a saját vagy a dokumentumok AZONOSÍTÓjának használatával érhetők el. Az Azure Cognitive Search indexeléséhez Cosmos DB automatikus indexelést kell bekapcsolni az Azure Cognitive Search által indexelt gyűjteményben. Amikor regisztrál a Cosmos DB Cassandra API indexelő előzetes verziójára, útmutatást kap a Cosmos DB indexelés beállításával kapcsolatban.
 
 > [!WARNING]
 > Azure Cosmos DB a DocumentDB következő generációja. Az **2017-11-11** -es API-verzióval korábban a `documentdb` szintaxist használhatja. Ez azt jelentette, hogy az adatforrás típusát `cosmosdb` vagy `documentdb`ként is megadhatja. Az API **2019-05-06** -es verziójától kezdve az Azure Cognitive Search API-k és a portál csak a jelen cikkben leírtaknak megfelelően támogatja a `cosmosdb` szintaxist. Ez azt jelenti, hogy az adatforrás típusának `cosmosdb` kell lennie, ha egy Cosmos DB-végponthoz szeretne csatlakozni.
@@ -175,9 +173,9 @@ A kérelem törzse tartalmazza az adatforrás definícióját, amelynek tartalma
 | Mező   | Leírás |
 |---------|-------------|
 | **név** | Kötelező. Válasszon egy tetszőleges nevet az adatforrás-objektum megjelenítéséhez. |
-|**type**| Kötelező. @No__t_0nak kell lennie. |
-|**hitelesítő adatok** | Kötelező. Cosmos DB-kapcsolatok karakterláncának kell lennie.<br/>SQL-gyűjtemények esetén a következő formátumú kapcsolatok karakterláncai: `AccountEndpoint=<Cosmos DB endpoint url>;AccountKey=<Cosmos DB auth key>;Database=<Cosmos DB database id>`<br/>A MongoDB-gyűjtemények esetében adja hozzá a **ApiKind = MongoDB** karakterláncot a kapcsolódási sztringhez:<br/>`AccountEndpoint=<Cosmos DB endpoint url>;AccountKey=<Cosmos DB auth key>;Database=<Cosmos DB database id>;ApiKind=MongoDb`<br/>Kerülje a portok számát a végpont URL-címében. Ha a portszámot is tartalmazza, az Azure Cognitive Search nem tudja indexelni a Azure Cosmos DB-adatbázist.|
-| **tároló** | A következő elemeket tartalmazza: <br/>**név**: kötelező. Az indexelni kívánt adatbázis-gyűjtemény AZONOSÍTÓjának meghatározása.<br/>**lekérdezés**: nem kötelező. Megadhat egy lekérdezést, amely egy tetszőleges JSON-dokumentumot lelapul egy olyan egyszerű sémába, amelyet az Azure Cognitive Search tud indexelni.<br/>A MongoDB-gyűjtemények esetében a lekérdezések nem támogatottak. |
+|**type**| Kötelező. `cosmosdb`nak kell lennie. |
+|**hitelesítő adatok** | Kötelező. Cosmos DB-kapcsolatok karakterláncának kell lennie.<br/>SQL-gyűjtemények esetén a következő formátumú kapcsolatok karakterláncai: `AccountEndpoint=<Cosmos DB endpoint url>;AccountKey=<Cosmos DB auth key>;Database=<Cosmos DB database id>`<br/><br/>A MongoDB-gyűjtemények esetében adja hozzá a **ApiKind = MongoDB** karakterláncot a kapcsolódási sztringhez:<br/>`AccountEndpoint=<Cosmos DB endpoint url>;AccountKey=<Cosmos DB auth key>;Database=<Cosmos DB database id>;ApiKind=MongoDb`<br/><br/>A Gremlin gráfok és a Cassandra-táblázatok esetében regisztráljon a [GateD indexelő előzetes](https://aka.ms/azure-cognitive-search/indexer-preview) verziójára, és kérjen hozzáférést az előzetes verzióhoz, és tájékozódjon a hitelesítő adatok formázásáról.<br/><br/>Kerülje a portok számát a végpont URL-címében. Ha a portszámot is tartalmazza, az Azure Cognitive Search nem tudja indexelni a Azure Cosmos DB-adatbázist.|
+| **tároló** | A következő elemeket tartalmazza: <br/>**név**: kötelező. Az indexelni kívánt adatbázis-gyűjtemény AZONOSÍTÓjának meghatározása.<br/>**lekérdezés**: nem kötelező. Megadhat egy lekérdezést, amely egy tetszőleges JSON-dokumentumot lelapul egy olyan egyszerű sémába, amelyet az Azure Cognitive Search tud indexelni.<br/>A MongoDB API, a Gremlin API és a Cassandra API esetében a lekérdezések nem támogatottak. |
 | **dataChangeDetectionPolicy** | Ajánlott. Lásd: [módosított dokumentumok indexelése](#DataChangeDetectionPolicy) szakasz.|
 |**dataDeletionDetectionPolicy** | Választható. Lásd: [törölt dokumentumok indexelése](#DataDeletionDetectionPolicy) szakasz.|
 
@@ -185,7 +183,7 @@ A kérelem törzse tartalmazza az adatforrás definícióját, amelynek tartalma
 Megadhat egy SQL-lekérdezést a beágyazott tulajdonságok vagy tömbök, a Project JSON-tulajdonságok és az indexelni kívánt adatszűréshez. 
 
 > [!WARNING]
-> Az egyéni lekérdezések nem támogatottak a **MongoDB** -gyűjtemények esetében: `container.query` paramétert NULL értékűre vagy elhagyott értékre kell beállítani. Ha egyéni lekérdezést kell használnia, kérjük, tudassa velünk a [felhasználói hangon](https://feedback.azure.com/forums/263029-azure-search).
+> Az egyéni lekérdezések nem támogatottak a **MONGODB API**, a **Gremlin api**és a **Cassandra API**esetében: a `container.query` paramétert NULL értékűre vagy kihagyás értékre kell állítani. Ha egyéni lekérdezést kell használnia, kérjük, tudassa velünk a [felhasználói hangon](https://feedback.azure.com/forums/263029-azure-search).
 
 Példa dokumentumra:
 
@@ -246,7 +244,7 @@ Ha még nem rendelkezik ilyennel, [hozzon létre egy cél Azure Cognitive Search
 Győződjön meg arról, hogy a célként megadott index sémája kompatibilis a forrás JSON-dokumentumok sémájával vagy az egyéni lekérdezési leképezés kimenetével.
 
 > [!NOTE]
-> Particionált gyűjtemények esetén az alapértelmezett dokumentum kulcsa Azure Cosmos DB `_rid` tulajdonsága, amelyet az Azure Cognitive Search automatikusan átnevez `rid`, mert a mezőnevek nem kezdődhetnek undescore karakterrel. Emellett Azure Cosmos DB `_rid` az értékek olyan karaktereket tartalmaznak, amelyek érvénytelenek az Azure Cognitive Search kulcsaiban. Emiatt a `_rid` értékek Base64 kódolású.
+> Particionált gyűjtemények esetén az alapértelmezett dokumentum kulcsa Azure Cosmos DB `_rid` tulajdonsága, amelyet az Azure Cognitive Search automatikusan átnevez `rid`, mert a mezőnevek nem kezdődhetnek aláhúzás karakterrel. Emellett Azure Cosmos DB `_rid` az értékek olyan karaktereket tartalmaznak, amelyek érvénytelenek az Azure Cognitive Search kulcsaiban. Emiatt a `_rid` értékek Base64 kódolású.
 > 
 > A MongoDB-gyűjtemények esetében az Azure Cognitive Search automatikusan átnevezi a `_id` tulajdonságot `doc_id`re.  
 
@@ -257,10 +255,10 @@ Győződjön meg arról, hogy a célként megadott index sémája kompatibilis a
 | Egész számokhoz hasonló számok |EDM. Int32, EDM. Int64, EDM. String |
 | A lebegő pontokhoz hasonló számok |EDM. Double, EDM. String |
 | Sztring |Edm.String |
-| Egyszerű típusok tömbje, például ["a", "b", "c"] |Collection(Edm.String) |
+| Egyszerű típusok tömbje, például ["a", "b", "c"] |Gyűjtemény (Edm.String) |
 | A dátumokhoz hasonló karakterláncok |EDM. DateTimeOffset, EDM. String |
 | GeoJSON objektumok, például {"type": "pont", "koordináták": [Long, Lat]} |Edm.GeographyPoint |
-| Egyéb JSON-objektumok |– |
+| Egyéb JSON-objektumok |N/A |
 
 ### <a name="4---configure-and-run-the-indexer"></a>4 – az indexelő konfigurálása és futtatása
 

@@ -1,6 +1,6 @@
 ---
 title: A Windows-ügynök ellenőrzési eredményeinek ismertetése az Azure Update Management
-description: Ismerje meg, az Update Management ügynökkel kapcsolatos problémák elhárítása.
+description: Ismerje meg, hogyan lehet elhárítani a Update Management ügynökkel kapcsolatos problémákat.
 services: automation
 author: bobbytreed
 ms.author: robreed
@@ -9,27 +9,27 @@ ms.topic: conceptual
 ms.service: automation
 ms.subservice: update-management
 manager: carmonm
-ms.openlocfilehash: 956e31c157c667acd2f830702467249d869648cb
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: d3099498c3abea428e04d94ca0fcd553e6a0fec6
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69971274"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73886404"
 ---
 # <a name="understand-the-windows-agent-check-results-in-update-management"></a>A Windows-ügynök ellenőrzési eredményeinek ismertetése Update Management
 
-Előfordulhat, hogy a gép számos okból nem **áll készen** a Update Management. Az Update Management ellenőrizheti az határozza meg a hibát kiváltó problémát hibrid feldolgozó ügynök állapotát. Ez a cikk azt ismerteti, hogyan futtathatja az Azure-gépekhez tartozó hibakeresőt a Azure Portal és a nem Azure-beli gépekről az [Offline forgatókönyvben](#troubleshoot-offline).
+Előfordulhat, hogy a gép számos okból nem **áll készen** a Update Management. A Update Management a hibrid feldolgozó ügynökök állapotát a probléma okának megállapításához tekintheti meg. Ez a cikk azt ismerteti, hogyan futtathatja az Azure-gépekhez tartozó hibakeresőt a Azure Portal és a nem Azure-beli gépekről az [Offline forgatókönyvben](#troubleshoot-offline).
 
 A következő lista az alábbi három felkészültségi állapotot tartalmazza:
 
 * **Készen áll** a frissítési ügynök üzembe helyezésére, és legalább 1 órával ezelőtt volt látható.
-* Leválasztva – a frissítési ügynök üzembe helyezése megtörtént, és a rendszer a legutóbbi 1 órával ezelőtt volt látható.
+* **Leválasztva** – a frissítési ügynök üzembe helyezése megtörtént, és a rendszer a legutóbbi 1 órával ezelőtt volt látható.
 * **Nincs konfigurálva** – a frissítési ügynök nem található, vagy nem fejeződött be.
 
 > [!NOTE]
 > A Azure Portal és a gép aktuális állapota között enyhe késés fordulhat elő.
 
-## <a name="start-the-troubleshooter"></a>Indítsa el a hibaelhárító
+## <a name="start-the-troubleshooter"></a>A hibakereső elindítása
 
 Az Azure-gépek esetében a portál **frissítési ügynök készültsége** oszlopának **hibakeresés** hivatkozására kattintva elindítja az **ügynök frissítése** lapot. A nem Azure-beli gépek esetében a hivatkozás a jelen cikkre mutat. A nem Azure-beli gépek hibáinak megoldásához tekintse meg az [Offline utasításokat](#troubleshoot-offline) .
 
@@ -46,7 +46,7 @@ Az eredmények a lapon jelennek meg, amikor készen állnak. Az ellenőrzések s
 
 ![Frissítési ügynök ellenőrzésének hibáinak megoldása](../media/update-agent-issues/update-agent-checks.png)
 
-## <a name="prerequisite-checks"></a>Előfeltétel-ellenőrzések
+## <a name="prerequisite-checks"></a>Előfeltételek ellenőrzése
 
 ### <a name="operating-system"></a>Operációs rendszer
 
@@ -69,25 +69,25 @@ A WMF-ellenőrzés ellenőrzi, hogy a rendszer rendelkezik-e a Windows Managemen
 
 Ez az érték határozza meg, hogy a TLS 1,2-et használja-e a kommunikáció titkosításához. A platform már nem támogatja a TLS 1,0-et. Javasoljuk, hogy az ügyfelek a TLS 1,2-et használják a Update Management való kommunikációhoz.
 
-## <a name="connectivity-checks"></a>Kapcsolat ellenőrzése
+## <a name="connectivity-checks"></a>Kapcsolatok ellenőrzése
 
 ### <a name="registration-endpoint"></a>Regisztrációs végpont
 
 Ez az érték határozza meg, hogy az ügynök megfelelően tud-e kommunikálni az ügynök szolgáltatással.
 
-Proxy és tűzfal-konfiguráció lehetővé teszi a hibrid Runbook-feldolgozó ügynök a regisztrációs végponttal való kommunikációhoz. A megnyitni kívánt címek és portok listáját lásd: [a hibrid feldolgozók hálózati tervezése](../automation-hybrid-runbook-worker.md#network-planning).
+A proxy és a tűzfal konfigurációjának lehetővé kell tennie, hogy a hibrid Runbook Worker ügynök kommunikáljon a regisztrációs végponttal. A megnyitni kívánt címek és portok listáját lásd: [a hibrid feldolgozók hálózati tervezése](../automation-hybrid-runbook-worker.md#network-planning).
 
-### <a name="operations-endpoint"></a>Műveletek végpont
+### <a name="operations-endpoint"></a>Műveleti végpont
 
 Ez az érték határozza meg, hogy az ügynök megfelelően tud-e kommunikálni a feladatütemezés adatszolgáltatásával.
 
-Proxy és a tűzfal beállításait a hibrid Runbook-feldolgozó ügynök kommunikáljon a feladat modul Data Service lehetővé teszi. A megnyitni kívánt címek és portok listáját lásd: [a hibrid feldolgozók hálózati tervezése](../automation-hybrid-runbook-worker.md#network-planning).
+A proxy és a tűzfal konfigurációjának lehetővé kell tennie, hogy a hibrid Runbook-feldolgozó ügynök kommunikáljon a feladatütemezés adatszolgáltatásával. A megnyitni kívánt címek és portok listáját lásd: [a hibrid feldolgozók hálózati tervezése](../automation-hybrid-runbook-worker.md#network-planning).
 
 ## <a name="vm-service-health-checks"></a>Virtuálisgép-szolgáltatás állapotának ellenőrzése
 
 ### <a name="monitoring-agent-service-status"></a>Figyelési ügynök szolgáltatásának állapota
 
-Ez az ellenőrzés határozza `HealthService`meg, hogy a Microsoft monitoring Agent fut-e a gépen.
+Ez az ellenőrzés meghatározza, hogy a számítógépen fut-e a `HealthService`, a Microsoft monitoring Agent.
 
 Ha többet szeretne megtudni a szolgáltatás hibaelhárításáról, tekintse meg [a Microsoft monitoring Agent nem fut](hybrid-runbook-worker.md#mma-not-running).
 
@@ -95,7 +95,7 @@ A Microsoft monitoring Agent újratelepítéséhez tekintse meg [a Microsoft mon
 
 ### <a name="monitoring-agent-service-events"></a>Figyelési ügynök szolgáltatási eseményei
 
-Ez az érték határozza meg `4502` , hogy minden esemény megjelenik-e az Azure Operations Manager a gépen az elmúlt 24 órában.
+Ez az érték határozza meg, hogy minden `4502` esemény megjelenik-e az Azure Operations Manager a gépen az elmúlt 24 órában.
 
 Az eseménnyel kapcsolatos további tudnivalókért tekintse meg az esemény [hibaelhárítási útmutatóját](hybrid-runbook-worker.md#event-4502) .
 
@@ -107,7 +107,7 @@ A kriptográfiai mappa hozzáférés-ellenőrzését határozza meg, hogy a hely
 
 ## <a name="troubleshoot-offline"></a>Offline hibák
 
-A hibakeresést a hibrid Runbook-feldolgozón offline módon, a parancsfájl helyi futtatásával használhatja. A szkriptet, a hibakeresést és a [WindowsUpdateAgentRegistration](https://www.powershellgallery.com/packages/Troubleshoot-WindowsUpdateAgentRegistration)a PowerShell-galériaban érheti el. A parancsfájl futtatásához a WMF 4,0 vagy újabb rendszernek kell futnia. A PowerShell legújabb verziójának letöltéséhez lásd: a [PowerShell különböző verzióinak telepítése](https://docs.microsoft.com/en-us/powershell/scripting/install/installing-powershell).
+A hibakeresést a hibrid Runbook-feldolgozón offline módon, a parancsfájl helyi futtatásával használhatja. A szkriptet, a [hibakeresést](https://www.powershellgallery.com/packages/Troubleshoot-WindowsUpdateAgentRegistration)és a WindowsUpdateAgentRegistration a PowerShell-galériaban érheti el. A parancsfájl futtatásához a WMF 4,0 vagy újabb rendszernek kell futnia. A PowerShell legújabb verziójának letöltéséhez lásd: a [PowerShell különböző verzióinak telepítése](https://docs.microsoft.com/powershell/scripting/install/installing-powershell).
 
 A szkript kimenete a következő példához hasonlóan néz ki:
 
@@ -205,5 +205,5 @@ CheckResultMessageArguments : {}
 
 ## <a name="next-steps"></a>További lépések
 
-A hibrid Runbook-feldolgozókkal kapcsolatos további problémák elhárításához lásd: [hibrid Runbook](hybrid-runbook-worker.md)-feldolgozók hibaelhárítása.
+A hibrid Runbook-feldolgozókkal kapcsolatos további problémák elhárításához lásd: [hibrid Runbook-feldolgozók hibaelhárítása](hybrid-runbook-worker.md).
 

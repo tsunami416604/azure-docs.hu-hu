@@ -8,38 +8,40 @@ manager: timlt
 editor: spelluru
 ms.service: service-bus-messaging
 ms.topic: overview
-ms.date: 09/22/2018
+ms.date: 11/04/2019
 ms.custom: mvc
 ms.author: aschhab
-ms.openlocfilehash: 0f3995e8904396dbb0bcbeeea1f993913d68587e
-ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.openlocfilehash: e2460ab760811a3db39058eac74d519ca09046c6
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "70013124"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73889816"
 ---
 # <a name="what-is-azure-service-bus"></a>Mi az Azure Service Bus?
 
-A Microsoft Azure Service Bus egy teljes körűen [](https://azure.com/integration) felügyelt Enterprise Integration Message Broker. A Service Bust leggyakrabban az alkalmazások és szolgáltatások egymástól való elkülönítésére használják, továbbá az aszinkron adat- és állapotátvitel biztonságos platformjaként is alkalmazható. Az adatok különböző alkalmazások és szolgáltatások közötti átvitele az *üzenetek* segítségével történik. Egy üzenet bináris formátumú, amely JSON-, XML-vagy csak szövegeket tartalmazhat. 
+A Microsoft Azure Service Bus egy teljes mértékben felügyelt vállalati integrációs üzenetközvetítő. Service Bus elválaszthatja az alkalmazásokat és a szolgáltatásokat. A Service Bus megbízható és biztonságos platformot biztosít az aszinkron adatok és az állapotok átviteléhez.
+
+Az adatok különböző alkalmazások és szolgáltatások közötti átvitele az *üzenetek* segítségével történik. Egy üzenet bináris formátumú, és tartalmazhat JSON, XML vagy csak szöveget. További információ: [Integration Services](https://azure.com/integration).
 
 Néhány gyakori üzenetküldési forgatókönyv:
 
-* Üzenetküldés: üzleti adatok átvitele, például értékesítési és vásárlási megrendelés, naplók vagy leltármozgások.
-* Alkalmazások szétválasztása: alkalmazások és szolgáltatások méretezésének és megbízhatóságának növelése (az ügyfélnek és a szolgáltatásnak nem kell egyidejűleg online lennie).
-* Témakörök és előfizetések: 1:*n* kapcsolatok lehetővé tétele a közzétevők és előfizetők között.
-* Üzenet-munkamenetek: üzenetrendezést vagy üzenetek halasztását igénylő munkafolyamatok kivitelezése.
+* *Üzenetkezelés*. Üzleti adatok (például értékesítési vagy beszerzési rendelések, naplók vagy leltározási mozgások) továbbítása.
+* *Alkalmazások*leválasztása. Az alkalmazások és szolgáltatások megbízhatóságának és méretezhetőségének javítása. Az ügyfélnek és a szolgáltatásnak nem kell egyszerre online állapotban lennie.
+* *Témakörök és előfizetések*. 1:*n* kapcsolatok engedélyezése a kiadók és az előfizetők között.
+* *Üzenet-munkamenetek*. Olyan munkafolyamatok implementálása, amelyekhez üzenet-rendezés vagy üzenetek halasztása szükséges.
 
 ## <a name="namespaces"></a>Névterek
 
-A névtér egy hatókörkezelési tároló az üzenetkezelés összes összetevője számára. Egyetlen névtér több üzenetsort és témakört tartalmazhat, és a névterek gyakran alkalmazástárolókként is szolgálnak.
+A névtér az összes üzenetküldési összetevő tárolója. Több várólista és témakör is lehet egyetlen névtérben, és a névterek gyakran alkalmazás-tárolóként szolgálnak.
 
-## <a name="queues"></a>Várólisták
+## <a name="queues"></a>Üzenetsorok
 
-Az üzenetek az *üzenetsorokba* érkeznek be, és onnan küldi ki őket a rendszer. Az üzenetsorok segítségével addig tárolhatja az üzeneteket, amíg a fogadó alkalmazás elérhetővé nem válik a fogadásra és feldolgozásra.
+Az üzenetek az *üzenetsorokba* érkeznek be, és onnan küldi ki őket a rendszer. A várólisták üzeneteket tárolnak, amíg a fogadó alkalmazás elérhetővé válik a fogadáshoz és a feldolgozáshoz.
 
 ![Várólista](./media/service-bus-messaging-overview/about-service-bus-queue.png)
 
-A várólistákban lévő üzenetek megrendelése és időbélyege az érkezéskor. Az üzenet elfogadása után azt a rendszer egy redundáns tárolóban helyezi biztonságba. Az üzenetek lekéréses módban lesznek kézbesítve, amely kérésre kézbesíti az üzeneteket.
+A várólistákban lévő üzenetek megrendelése és időbélyege az érkezéskor. Az üzenet elfogadása után azt a rendszer egy redundáns tárolóban helyezi biztonságba. Az üzenetek *lekéréses* módban lesznek kézbesítve, csak az üzenetek kézbesítését kérik.
 
 ## <a name="topics"></a>Témakörök
 
@@ -47,61 +49,62 @@ Az üzenetek küldéséhez és fogadásához *témaköröket* is használhat. Am
 
 ![Témakör](./media/service-bus-messaging-overview/about-service-bus-topic.png)
 
-A témaköröknek több független előfizetése is lehet. Egy adott témakör előfizetője az adott témakörben küldött összes üzenetről kaphat másolatot. Az előfizetések tartós használatra készült névvel ellátott entitások, amelyek adott esetben lejárhatnak vagy automatikusan törlődhetnek.
+A témaköröknek több független előfizetése is lehet. Egy adott témakör előfizetője az adott témakörben küldött összes üzenetről kaphat másolatot. Az előfizetések névvel ellátott entitások. Az előfizetések továbbra is megmaradnak, de lejárnak vagy az autodeletenek is
 
-Bizonyos esetekben nem célszerű az, ha az egyes előfizetések az adott témakörben beérkező összes üzenetet megkapják. Ilyen esetben [szabályokat és a szűrőket](topic-filters.md) használhat arra, hogy választható [műveleteket](topic-filters.md#actions) kiváltó feltételeket határozzon meg, szűrjön bizonyos üzenetekre, valamint beállítsa és módosítsa az üzenetek tulajdonságait.
+Előfordulhat, hogy nem szeretné, hogy az egyes előfizetések megkapják a témakörbe küldött összes üzenetet. Ha igen, a *szabályok* és *szűrők* segítségével meghatározhatja a választható *műveleteket*kiváltó feltételeket. A megadott üzeneteket szűrheti, és beállíthatja vagy módosíthatja az üzenet tulajdonságait. További információ: a [szűrők és a műveletek](topic-filters.md)témakör.
 
 ## <a name="advanced-features"></a>Speciális funkciók
 
-A Service Bus olyan speciális funkciókkal is rendelkezik, amelyek segítségével jóval összetettebb üzenetküldési problémákat is megoldhat. A következő szakaszok ezeket a funkciókat ismertetik:
+A Service Bus olyan speciális funkciókat tartalmaz, amelyek lehetővé teszik összetettebb üzenetkezelési problémák megoldását. A következő szakaszok ismertetik ezeket a funkciókat.
 
-### <a name="message-sessions"></a>Csevegések
+### <a name="message-sessions"></a>Üzenet-munkamenetek
 
-Az érkezési sorrend alapján (FIFO) törtnő feldolgozás garantálásához a Service Busban munkameneteket használhat. Az [üzenet-munkamenetek](message-sessions.md) lehetővé teszik a nem kötött kapcsolódó üzenetsorozatok együttes és rendezett kezelését. 
+Ha Service Bus-ben szeretne létrehozni egy beérkező, első kimenő (FIFO) garanciát, használja a munkameneteket. Az üzenet-munkamenetek lehetővé teszik a kapcsolódó üzenetek nem kötött sorrendjének együttes és rendezett kezelését. További információ [: Message Sessions: First in, First out (FIFO)](message-sessions.md).
 
-### <a name="auto-forwarding"></a>Automatikus továbbítás
+### <a name="autoforwarding"></a>Továbbítás
 
-Az [automatikus-továbbítás](service-bus-auto-forwarding.md) funkció lehetővé teszi önnek egy üzenetsor vagy előfizetés hozzákapcsolását egy szintén ugyanazon névtér részét képező másik üzenetsorhoz vagy témakörhöz. Ha az automatikus-továbbítás engedélyezve van, a Service Bus automatikusan törli azon üzeneteket, amelyek az első üzenetsorba vagy előfizetésbe (forrás) kerülnek, és áthelyezi őket a második üzenetsorba vagy témakörbe (cél).
+Az öntovábbító szolgáltatás egy várólistát vagy előfizetést láncok egy másik várólistára vagy témakörbe. Ugyanannak a névtérnek kell lenniük. Az automatikus továbbítással a Service Bus automatikusan eltávolítja az üzeneteket egy várólistából vagy előfizetésből, és egy másik várólistába vagy témakörbe helyezi őket. További információ: [Service Bus entitások Kiláncolása az autoforwarding szolgáltatással](service-bus-auto-forwarding.md).
 
-### <a name="dead-lettering"></a>Kézbesíthetetlen levelek
+### <a name="dead-letter-queue"></a>Kézbesítetlen levelek várólistája
 
-A Service Bus támogatja a [kézbesíthetetlen levelek várólistáját](service-bus-dead-letter-queues.md) (DLQ), hogy az egyetlen fogadóhoz sem továbbított vagy feldolgozhatatlan üzenetek tárolása is meg legyen oldva. Ezután eltávolíthatja az üzeneteket a kézbesíthetetlen levelek várólistájáról, és megvizsgálhatja azokat.
+Service Bus támogatja a kézbesítetlen levelek várólistáját (DLQ). A DLQ olyan üzeneteket tart, amelyek nem továbbíthatók egyetlen fogadónak sem. A nem feldolgozható üzeneteket tárolja. Service Bus lehetővé teszi az üzenetek eltávolítását a DLQ, és megvizsgálhatja azokat. További információ: [Service Bus kézbesítetlen levelek várólistáinak áttekintése](service-bus-dead-letter-queues.md).
 
 ### <a name="scheduled-delivery"></a>Ütemezett kézbesítés
 
-Az üzeneteket [késleltetett feldolgozásra](message-sequencing.md#scheduled-messages) is beadhatja az üzenetsorba vagy témakörbe például azért, hogy egy ütemezett feladattal az üzenetek elérhetővé váljanak egy másik rendszer általi feldolgozásra egy bizonyos időpontban.
+Üzeneteket küldhet egy várólistába vagy témakörbe késleltetett feldolgozás céljából. Ütemezheti, hogy a feladatok egy adott időpontban egy rendszer általi feldolgozásra legyenek elérhetők. További információ: [ütemezett üzenetek](message-sequencing.md#scheduled-messages).
 
 ### <a name="message-deferral"></a>Üzenetek halasztása
 
-Amikor egy üzenetsor vagy előfizetés ügyfele olyan üzenetet kap, amelyet hajlandó feldolgozni, azonban a feldolgozás az aktuális alkalmazáson belüli különleges körülményekből adódóan nem lehetséges, az entitásnak lehetősége van az [üzenet lekérésének késleltetésére](message-deferral.md). Az üzenet az üzenetsorban vagy előfizetésben marad, de a rendszer félreteszi azt.
+Egy üzenetsor vagy előfizetési ügyfél egy későbbi időpontra elhalaszthatja egy üzenet lekérését. Ezt a késleltetést az alkalmazás különleges körülményei okozhatják. Az üzenet a várólistán vagy az előfizetésen marad, de a készlet el van különítve. További információ: [üzenet halasztása](message-deferral.md).
 
 ### <a name="batching"></a>Kötegelés
 
-Az [ügyféloldali kötegelés](service-bus-performance-improvements.md#client-side-batching) lehetővé teszi egy üzenetsor vagy témakör ügyfél számára egy üzenet elküldésének adott ideig történő késleltetését. Ha az ügyfél további üzeneteket küld ezen időszakon belül, a rendszer egyetlen kötegben továbbítja ezen üzeneteket. 
+Az ügyféloldali kötegek lehetővé teszik, hogy egy üzenetsor vagy egy témakör-ügyfél bizonyos ideig késleltetse az üzenetek küldését. Ha az ügyfél további üzeneteket küld ezen időszakon belül, a rendszer egyetlen kötegben továbbítja ezen üzeneteket. További információ: [ügyféloldali kötegelt feldolgozás](service-bus-performance-improvements.md#client-side-batching).
 
 ### <a name="transactions"></a>Tranzakciók
 
-Egy [tranzakció](service-bus-transactions.md) két vagy több műveletet kapcsol össze egyetlen végrehajtási hatókörbe. A Service Bus támogatja az egyetlen üzenetküldő entitásra (üzenetsor, témakör, előfizetés) irányuló csoportosítási műveleteket egy tranzakció hatáskörén belül.
+Egy tranzakció két vagy több műveletet egyesít egy *végrehajtási hatókörbe*. Service Bus támogatja az egyetlen üzenetküldési entitások csoportosítási műveleteit egyetlen tranzakció hatókörén belül. Az üzenet entitás lehet üzenetsor, témakör vagy előfizetés. További információkért lásd: [Service Bus tranzakciók feldolgozásának áttekintése](service-bus-transactions.md).
 
 ### <a name="filtering-and-actions"></a>Szűrés és műveletek
 
-Az előfizetők meghatározhatják, hogy mely üzeneteket szeretnék megkapni egy témakörön belül. Ezen üzenetek egy vagy több [névvel ellátott előfizetési szabály](topic-filters.md) formájában adhatók meg. Az előfizetés megfelelő szabályfeltételenként létrehoz egy üzenetmásolatot, amelyek azután megfelelő szabályonként más és más jelöléssel láthatók el.
+Az előfizetők meghatározhatják, hogy mely üzeneteket szeretnék megkapni egy témakörön belül. Ezek az üzenetek egy vagy több elnevezett előfizetési szabály formájában vannak megadva. Az előfizetés minden egyező szabály feltételéhez létrehoz egy másolatot az üzenetről, amely az egyes megfeleltetési szabályokhoz különbözőképpen is elvégezhető. További információ: a [szűrők és a műveletek](topic-filters.md)témakör.
 
-### <a name="auto-delete-on-idle"></a>Automatikus törlés tétlenség esetén
+### <a name="autodelete-on-idle"></a>Az autodelete inaktív állapotban
 
-Az [Automatikus törlés tétlenség esetén](/dotnet/api/microsoft.servicebus.messaging.queuedescription.autodeleteonidle) lehetővé teszi, hogy meghatározzon egy tétlenségi időtartamot, amelyet követően az üzenetsor automatikus törlődik. A minimális érték 5 perc.
+Az automatikus törlés üresjáratban beállítással megadhatja azt az üresjárati időközt, amely után a rendszer automatikusan törli a várólistát. A minimális érték 5 perc. További tudnivalókért tekintse meg a [QueueDescription. AutoDeleteOnIdle tulajdonságot](/dotnet/api/microsoft.servicebus.messaging.queuedescription.autodeleteonidle).
 
 ### <a name="duplicate-detection"></a>Duplikálás észlelése
 
-Ha olyan hiba fordul elő, amely miatt az ügyfél kétségbe vonja a küldési művelet eredményét, a [duplikált elemek észlelése](duplicate-detection.md) az ilyen helyzetek miatt nem teszi lehetővé, hogy a küldő újra elküldje ugyanazt az üzenetet, és a várólista vagy a témakör duplikált másolatok.
+Egy hiba miatt előfordulhat, hogy az ügyfél kétségbe vonja a küldési művelet eredményét. A duplikált észlelés lehetővé teszi, hogy a küldő ugyanazzal az üzenettel küldje újra. Egy másik lehetőség, hogy a várólista vagy a témakör elvesse az ismétlődő másolatokat. További információ: [duplikált észlelés](duplicate-detection.md).
 
-### <a name="sas-rbac-and-managed-identities-for-azure-resources"></a>SAS, RBAC és az Azure-erőforrások felügyelt identitásai
+### <a name="security-protocols"></a>Biztonsági protokollok
+<a name="sas-rbac-and-managed-identities-for-azure-resources"></a>
 
 A Service Bus támogatja az olyan biztonsági protokollokat, mint a [közös hozzáférésű jogosultságkód](service-bus-sas.md) (SAS), a [szerepköralapú hozzáférés-vezérlés](authenticate-application.md) (RBAC) és az [Azure-erőforrások felügyelt identitásai](service-bus-managed-service-identity.md).
 
 ### <a name="geo-disaster-recovery"></a>Geo-vészhelyreállítás
 
-Az Azure-régiók vagy adatközpontok leállása esetében a [Geo-vészhelyreállítás](service-bus-geo-dr.md) lehetővé teszi az adatfeldolgozási művelet folytatását egy másik régióban vagy adatközpontban.
+Ha az Azure-régiók vagy-adatközpontok leállást tapasztalnak, a Geo-vész-helyreállítás lehetővé teszi az adatfeldolgozást, hogy egy másik régióban vagy adatközpontban folytassa További információ: [Azure Service Bus földrajzi katasztrófa utáni helyreállítás](service-bus-geo-dr.md).
 
 ### <a name="security"></a>Biztonság
 
@@ -109,24 +112,24 @@ A Service Bus támogatja a szabványos [AMQP 1.0](service-bus-amqp-overview.md) 
 
 ## <a name="client-libraries"></a>Ügyfélkódtárak
 
-A Service Bus támogatja a [.NET](https://github.com/Azure/azure-service-bus-dotnet/tree/master), [Java](https://github.com/Azure/azure-service-bus-java/tree/master) és [JMS](https://github.com/Azure/azure-service-bus/tree/master/samples/Java/qpid-jms-client) ügyfélkódtárakat.
+A Service Bus támogatja a [.net](https://github.com/Azure/azure-service-bus-dotnet/tree/master), a [Java](https://github.com/Azure/azure-service-bus-java/tree/master)és a [JMS](https://github.com/Azure/azure-service-bus/tree/master/samples/Java/qpid-jms-client)-hez készült ügyféloldali kódtárakat.
 
 ## <a name="integration"></a>Integráció
 
 A Service Bus teljes mértékben integrálható a következő Azure-szolgáltatásokkal:
 
-- [Event Grid](https://azure.microsoft.com/services/event-grid/) 
-- [Logic Apps](https://azure.microsoft.com/services/logic-apps/) 
-- [Functions](https://azure.microsoft.com/services/functions/) 
-- [Dynamics 365](https://dynamics.microsoft.com)
-- [Stream Analytics](https://azure.microsoft.com/services/stream-analytics/)
- 
+* [Event Grid](https://azure.microsoft.com/services/event-grid/)
+* [Logic Apps](https://azure.microsoft.com/services/logic-apps/)
+* [Azure Functions](https://azure.microsoft.com/services/functions/)
+* [Dynamics 365](https://dynamics.microsoft.com)
+* [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/)
+
 ## <a name="next-steps"></a>További lépések
 
 A Service Bus-üzenetküldéssel való megismerkedéshez tekintse meg a következő cikkeket:
 
-* [Azure üzenetküldő szolgáltatásainak összehasonlítása](../event-grid/compare-messaging-services.md?toc=%2fazure%2fservice-bus-messaging%2ftoc.json&bc=%2fazure%2fservice-bus-messaging%2fbreadcrumb%2ftoc.json)
-* További tudnivalók az Azure Service Bus [Standard és Prémium](https://azure.microsoft.com/pricing/details/service-bus/) szintjeiről és azok díjszabásáról
-* [Az Azure Service Bus Prémium szintű csomag teljesítménye és késése](https://techcommunity.microsoft.com/t5/Service-Bus-blog/Premium-Messaging-How-fast-is-it/ba-p/370722)
-* Próbálja ki a [.NET-hez](service-bus-dotnet-get-started-with-queues.md), [Javához](service-bus-java-how-to-use-queues.md) vagy [JMS-hez](service-bus-java-how-to-use-jms-api-amqp.md) készült gyors útmutatókat
-* [Service Bus erőforrások kezelése a Service Bus Explorerrel](https://github.com/paolosalvatori/ServiceBusExplorer/releases)
+* Az Azure Messaging Services összehasonlításához tekintse meg [a szolgáltatások összehasonlítása](../event-grid/compare-messaging-services.md?toc=%2fazure%2fservice-bus-messaging%2ftoc.json&bc=%2fazure%2fservice-bus-messaging%2fbreadcrumb%2ftoc.json)című témakört.
+* Próbálja ki a [.net](service-bus-dotnet-get-started-with-queues.md), a [Java](service-bus-java-how-to-use-queues.md)vagy a [JMS](service-bus-java-how-to-use-jms-api-amqp.md)rövid útmutatóit.
+* Service Bus-erőforrások kezeléséhez lásd: [Service Bus Explorer](https://github.com/paolosalvatori/ServiceBusExplorer/releases).
+* Ha többet szeretne megtudni a standard és a prémium szintekről és azok díjszabásáról, tekintse meg a [Service Bus díjszabását](https://azure.microsoft.com/pricing/details/service-bus/).
+* A prémium szint teljesítményével és késésével kapcsolatos információkért lásd: [prémium szintű üzenetkezelés](https://techcommunity.microsoft.com/t5/Service-Bus-blog/Premium-Messaging-How-fast-is-it/ba-p/370722).

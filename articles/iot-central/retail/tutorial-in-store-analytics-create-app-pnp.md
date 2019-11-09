@@ -11,12 +11,12 @@ ms.custom:
 ms.author: timlt
 author: timlt
 ms.date: 10/03/2019
-ms.openlocfilehash: a662201823808c9e2e34e9210096cb081e1b9430
-ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
+ms.openlocfilehash: b0d2617983a7ee1702e8871a2c6bfc5f0511656f
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73615316"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73890680"
 ---
 # <a name="tutorial-create-an-in-store-analytics-application-in-azure-iot-central"></a>Oktatóanyag: áruházbeli elemzési alkalmazás létrehozása az Azure-ban IoT Central
 
@@ -75,7 +75,7 @@ Az előzetes verziójú funkciókat használó új, áruházbeli elemzési pénz
 
 1. Ha Azure-előfizetéssel rendelkezik, adja meg a *címtárat, az Azure-előfizetést és a régiót*. Ha nem rendelkezik előfizetéssel, engedélyezheti a **7 napos ingyenes próbaidőszakot** , és elvégezheti a szükséges kapcsolattartási adatokat.  
 
-    A könyvtárakkal és előfizetésekkel kapcsolatban további információért lásd az [alkalmazás létrehozását bemutató rövid útmutatót](../core/quick-deploy-iot-central-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json).
+    A könyvtárakkal és előfizetésekkel kapcsolatban további információért lásd az [alkalmazás létrehozását bemutató rövid útmutatót](../preview/quick-deploy-iot-central.md).
 
 1. Kattintson a **Létrehozás** gombra.
 
@@ -160,7 +160,7 @@ Másodszor, a felhő tulajdonságainak hozzáadásával testre szabhatja az eszk
 
 Harmadszor, egyéni nézetek létrehozásával testreszabhatja az eszközök sablonjait. A nézetek lehetővé teszik, hogy az operátorok vizuálisan jelenítsék meg az eszközök telemetria és metaadatait, például az eszközök mérőszámait és állapotát.
 
-Itt az első két módszer használatával testreszabhatja a RuuviTag-érzékelőkhöz tartozó eszköz sablonját. Az érzékelők nézeteinek létrehozásával kapcsolatos információkért tekintse meg a [szimulált eszköz hozzáadása a IoT Central alkalmazáshoz](../core/quick-create-pnp-device-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json) című rövid útmutatót.
+Itt az első két módszer használatával testreszabhatja a RuuviTag-érzékelőkhöz tartozó eszköz sablonját. Az érzékelők nézeteinek létrehozásával kapcsolatos információkért tekintse meg a [szimulált eszköz hozzáadása a IoT Central alkalmazáshoz](../preview/quick-create-pnp-device.md) című rövid útmutatót.
 
 A RuuviTag-eszköz beépített felületének testreszabása:
 
@@ -227,8 +227,8 @@ Ebben az oktatóanyagban a következő valós és szimulált eszközöket haszn�
 
 A Real Rigado Gateway és a RuuviTag érzékelők összekapcsolásához hajtsa végre a következő két cikk lépéseit. Ha elkészült, térjen vissza ehhez az oktatóanyaghoz. Mivel ebben az oktatóanyagban már létrehozott sablonokat, a következő irányokba nem kell újból létrehoznia őket.
 
-- A Rigado-átjárók összekapcsolásával kapcsolatban lásd: [Rigado Cascade 500 összekötése az Azure IoT Central-alkalmazással](../core/howto-connect-rigado-cascade-500-pnp.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json).
-- A RuuviTag-érzékelők összekapcsolásával kapcsolatban lásd: [RuuviTag-érzékelő összekötése az Azure IoT Central-alkalmazással](../core/howto-connect-ruuvi-pnp.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json). Ezeket az utasításokat két szimulált érzékelő létrehozásához is használhatja, ha szükséges.
+- A Rigado-átjárók összekapcsolásával kapcsolatban lásd: [Rigado Cascade 500 összekötése az Azure IoT Central-alkalmazással](../preview/howto-connect-rigado-cascade-500.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json).
+- A RuuviTag-érzékelők összekapcsolásával kapcsolatban lásd: [RuuviTag-érzékelő összekötése az Azure IoT Central-alkalmazással](../preview/howto-connect-ruuvi.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json). Ezeket az utasításokat két szimulált érzékelő létrehozásához is használhatja, ha szükséges.
 
 ## <a name="add-rules-and-actions"></a>Szabályok és műveletek hozzáadása
 Az Azure IoT Central-alkalmazásban a feltételek figyelésére szolgáló érzékelők használatának részeként szabályokat hozhat létre, amelyekkel bizonyos feltételek teljesülése esetén futtathat műveleteket. Egy szabály társítva van egy eszköz sablonhoz és egy vagy több eszközhöz, és olyan feltételeket tartalmaz, amelyeknek az eszköz telemetria vagy eseményei alapján kell teljesülniük. Egy szabályhoz egy vagy több társított művelet is tartozik. A műveletek tartalmazhatják e-mail-értesítések küldését vagy egy webhook-művelet aktiválását, amely adatokat küld más szolgáltatásoknak. Az **in-store Analytics-Checkout** alkalmazás sablonja tartalmaz néhány előre meghatározott szabályt az alkalmazásban lévő eszközökhöz.

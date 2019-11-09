@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/14/2019
 ms.author: mialdrid
 ms.custom: seodec18
-ms.openlocfilehash: 8860a297332a3572890ceb4c843040f530b8a897
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: f12f92294a9c30ddedea3c433ff65de4a635fd4d
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72935519"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73889653"
 ---
 # <a name="expressroute-virtual-network-gateway-and-fastpath"></a>ExpressRoute virtuális hálózati átjáró és FastPath
 Az Azure-beli virtuális hálózat és a helyszíni hálózat ExpressRoute-on keresztüli összekapcsolásához először létre kell hoznia egy virtuális hálózati átjárót. A virtuális hálózati átjáró két célt szolgál: az Exchange IP-útvonalakat a hálózatok között, és átirányítja a hálózati forgalmat. Ez a cikk az átjárók típusát, az átjáró-SKU-ket és az SKU becsült teljesítményét ismerteti. Ez a cikk a ExpressRoute [FastPath](#fastpath)is ismerteti, amely lehetővé teszi a helyszíni hálózatról érkező hálózati forgalmat a teljesítmény javítása érdekében a virtuális hálózati átjáró megkerülése érdekében.
@@ -85,7 +85,7 @@ A FastPath az összes ExpressRoute-áramkörön elérhető. Továbbra is szüks�
 A FastPath nem támogatja a következő funkciókat:
 * UDR az átjáró alhálózatán: Ha UDR alkalmaz a virtuális hálózat átjáró-alhálózatára, a helyszíni hálózatról érkező hálózati forgalmat a rendszer továbbra is elküldi a virtuális hálózati átjárónak.
 * VNet-társítás: Ha más virtuális hálózatokkal is rendelkezik, amelyekkel a rendszer csatlakoztatja a helyi hálózatról a másik virtuális hálózatra irányuló hálózati forgalmat (azaz az úgynevezett "küllős" virtuális hálózatok), a rendszer továbbra is a virtuális hálózatra küldi a ExpressRoute. átjáró. A megkerülő megoldás az összes virtuális hálózat közvetlen összekapcsolása a ExpressRoute-áramkörrel.
-* Alapszintű Load Balancer: Ha alapszintű belső terheléselosztó üzembe helyezését végzi a virtuális hálózatban, vagy a virtuális hálózatban üzembe helyezett Azure Pásti szolgáltatás alapszintű belső terheléselosztó, a helyszíni hálózatról a hálózati forgalom a (z) rendszerben üzemeltetett virtuális IP-címekre A rendszer az alapszintű Load balancert a virtuális hálózati átjárónak küldi el. A megoldás az alapszintű Load Balancer [standard Load balancerre](https://docs.microsoft.com/en-us/azure/load-balancer/load-balancer-overview)való frissítése.
+* Alapszintű Load Balancer: Ha alapszintű belső terheléselosztó üzembe helyezését végzi a virtuális hálózatban, vagy a virtuális hálózatban üzembe helyezett Azure Pásti szolgáltatás alapszintű belső terheléselosztó, a helyszíni hálózatról a hálózati forgalom a (z) rendszerben üzemeltetett virtuális IP-címekre A rendszer az alapszintű Load balancert a virtuális hálózati átjárónak küldi el. A megoldás az alapszintű Load Balancer [standard Load balancerre](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview)való frissítése.
 * Privát hivatkozás: Ha a virtuális hálózatban lévő [privát végponthoz](../private-link/private-link-overview.md) csatlakozik a helyszíni hálózatról, a kapcsolat a virtuális hálózati átjárón keresztül fog haladni.
  
 ## <a name="resources"></a>REST API-k és PowerShell-parancsmagok
@@ -96,7 +96,7 @@ A REST API-k és a virtuális hálózati átjárók konfigurációinak PowerShel
 | [PowerShell](https://docs.microsoft.com/powershell/module/servicemanagement/azure/?view=azuresmps-4.0.0#azure) |[PowerShell](https://docs.microsoft.com/powershell/module/az.network#networking) |
 | [REST API](https://msdn.microsoft.com/library/jj154113.aspx) |[REST API](https://msdn.microsoft.com/library/mt163859.aspx) |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 A rendelkezésre álló [ExpressRoute](expressroute-introduction.md) kapcsolatos további információkért tekintse meg a további tudnivalókat ismertető cikket.
 
 A ExpressRoute-átjárók létrehozásával kapcsolatos további információkért tekintse meg [a virtuális hálózati átjáró létrehozása a ExpressRoute](expressroute-howto-add-gateway-resource-manager.md) című témakört.

@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 08/07/2019
 ms.author: helohr
-ms.openlocfilehash: cf4274931d83b51afb4a8ada7d1c9040ccce3c14
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 7003e5b8574d2caa05bfe66e500b93db0c1cdcfa
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73606836"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73891644"
 ---
 # <a name="fslogix-profile-containers-and-azure-files"></a>FSLogix-profiltárolók és Azure Files
 
@@ -78,7 +78,7 @@ A beszerzés óta a Microsoft megkezdte a meglévő felhasználói profil-megold
 
 ## <a name="azure-files-integration-with-azure-active-directory-domain-service"></a>Azure Files integráció Azure Active Directory tartományi szolgáltatással
 
-A FSLogix-profil tárolóinak teljesítménye és funkciói kihasználják a felhő előnyeit. 2019. augusztus 7-én Microsoft Azure fájlok Azure Files hitelesítés általános elérhetőségét jelentették be [Azure Active Directory tartományi szolgáltatással (AD DS)](https://docs.microsoft.com/en-us/azure/storage/files/storage-files-active-directory-overview). A költségek és az adminisztrációs terhelések kezelésével az Azure AD DS-hitelesítéssel Azure Files a Windows virtuális asztali szolgáltatás felhasználói profiljainak prémium szintű megoldása.
+A FSLogix-profil tárolóinak teljesítménye és funkciói kihasználják a felhő előnyeit. 2019. augusztus 7-én Microsoft Azure fájlok Azure Files hitelesítés általános elérhetőségét jelentették be [Azure Active Directory tartományi szolgáltatással (AD DS)](https://docs.microsoft.com/azure/storage/files/storage-files-active-directory-overview). A költségek és az adminisztrációs terhelések kezelésével az Azure AD DS-hitelesítéssel Azure Files a Windows virtuális asztali szolgáltatás felhasználói profiljainak prémium szintű megoldása.
 
 ## <a name="best-practices-for-windows-virtual-desktop"></a>Ajánlott eljárások a Windows rendszerű virtuális asztali gépekhez
 

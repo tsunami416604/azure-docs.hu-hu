@@ -1,6 +1,6 @@
 ---
 title: Az Azure IoT Hub üzenet-útválasztásának konfigurálása az Azure CLI használatával | Microsoft Docs
-description: Az Azure IoT Hub üzenet-útválasztásának konfigurálása az Azure CLI használatával
+description: Az Azure IoT Hub üzenet-útválasztásának konfigurálása az Azure CLI használatával. Az üzenet tulajdonságaitól függően egy Storage-fiókra vagy egy Service Bus-várólistára kell irányítani.
 author: robinsh
 manager: philmea
 ms.service: iot-hub
@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: robinsh
 ms.custom: mvc
-ms.openlocfilehash: 1748ec5ada9488487cd29ffb563226749b29f9f4
-ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
+ms.openlocfilehash: 844ed44a588bfd789e7e2dcf2b9fecda3d51329b
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72808840"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73890384"
 ---
 # <a name="tutorial-use-the-azure-cli-to-configure-iot-hub-message-routing"></a>Oktatóanyag: az Azure CLI használata IoT Hub üzenet-útválasztás konfigurálásához
 
@@ -26,7 +26,7 @@ ms.locfileid: "72808840"
 
 Az oktatóanyag második részében le kell töltenie és futtatnia kell egy Visual Studio-alkalmazást, amely üzeneteket küld a IoT Hub. A letöltésben egy olyan mappa található, amely tartalmazza a Azure Resource Manager sablont és a paramétereket tartalmazó fájlt, valamint az Azure CLI-és PowerShell-parancsfájlokat.
 
-Ha szeretné megtekinteni a kész parancsfájlt, töltse le az [Azure IoT C# -mintákat](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip). Bontsa ki a Master. zip fájlt. Az Azure CLI-szkript a/iot-hub/Tutorials/Routing/SimulatedDevice/resources/-ben a **iothub_routing_cli. azcli**.
+Ha szeretné megtekinteni a kész parancsfájlt, töltse le az [Azure IoT C# -mintákat](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip). Bontsa ki a Master. zip fájlt. Az Azure CLI-szkript a/iot-hub/Tutorials/Routing/SimulatedDevice/resources/-ben **iothub_routing_cli. azcli**.
 
 ## <a name="use-the-azure-cli-to-create-your-resources"></a>Erőforrások létrehozása az Azure CLI használatával
 
@@ -300,7 +300,7 @@ az iot hub route create --name $routeName \
 
 [!INCLUDE [iot-hub-include-view-routing-in-portal](../../includes/iot-hub-include-view-routing-in-portal.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Most, hogy beállította az erőforrásokat, és konfigurálta az üzenet útvonalait, folytassa a következő oktatóanyaggal, amelyből megtudhatja, hogyan küldhet üzeneteket az IoT hubhoz, és hogyan irányíthatja őket át a különböző célhelyekre. 
 

@@ -9,12 +9,12 @@ ms.custom: mvc
 ms.service: iot-pnp
 services: iot-pnp
 manager: philmea
-ms.openlocfilehash: 0d132a46db39308911f472941c02f8bb04a44e0d
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: 22b2cb8caa815b2ce8343a060a5f12133b763b83
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72988792"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73890346"
 ---
 # <a name="glossary-of-terms-for-iot-plug-and-play-preview"></a>A IoT használati feltételeinek szószedete Plug and Play előzetes verzió
 
@@ -28,7 +28,7 @@ Az [Azure Certified for IoT portál](https://aka.ms/ACFI) webhelyét a következ
 - [Eszköz-képesség modellek](#device-capability-model)keresése.
 - Tegye közzé az eszköz képességeinek modelljét a [nyilvános modell adattárában](#public-model-repository).
 
-## <a name="azure-cli"></a>Azure parancssori felület (CLI)
+## <a name="azure-cli"></a>Azure CLI
 
 Az Azure CLI egy platformfüggetlen, parancssori eszköz az Azure-erőforrások kezeléséhez. Az Azure CLI-hez készült Azure IoT-bővítmény parancssori eszköz a [IoT Plug and Play-eszközökhöz](#iot-plug-and-play-device)való interakcióhoz és teszteléshez. A bővítmény a következőre használható:
 
@@ -117,7 +117,7 @@ Az [eszközök fejlesztői](#device-developer) a [digitális kettős definíció
 
 ## <a name="device-provisioning-service"></a>Eszköz kiépítési szolgáltatása
 
-Az [Azure IoT Central](#azure-iot-central) az eszköz kiépítési szolgáltatásával kezeli az összes eszköz regisztrációját és kapcsolódását. További információ: [Device connectivity in Azure IoT Central](../iot-central/core/overview-iot-central-get-connected-pnp.md). A Device kiépítési szolgáltatással felügyelheti az eszközök regisztrációját és a IoT Hub-alapú IoT-megoldáshoz való kapcsolódást is. További információ: [eszközök kiépítés az Azure IoT hub Device Provisioning Service](../iot-dps/about-iot-dps.md).
+Az [Azure IoT Central](#azure-iot-central) az eszköz kiépítési szolgáltatásával kezeli az összes eszköz regisztrációját és kapcsolódását. További információ: [Device connectivity in Azure IoT Central](../iot-central/preview/overview-iot-central-get-connected.md). A Device kiépítési szolgáltatással felügyelheti az eszközök regisztrációját és a IoT Hub-alapú IoT-megoldáshoz való kapcsolódást is. További információ: [eszközök kiépítés az Azure IoT hub Device Provisioning Service](../iot-dps/about-iot-dps.md).
 
 ## <a name="device-registration"></a>Eszközregisztráció
 

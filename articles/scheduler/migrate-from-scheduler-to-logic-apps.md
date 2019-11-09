@@ -9,12 +9,12 @@ ms.author: deli
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 09/23/2019
-ms.openlocfilehash: 73aa641fc4bb01ef3d06820ecd18b61197ab81e7
-ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
+ms.openlocfilehash: 3d748e1625f27be27b7f403fbab3e213b16c4dd6
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71695499"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73890182"
 ---
 # <a name="migrate-azure-scheduler-jobs-to-azure-logic-apps"></a>Azure Scheduler-feladatok migrálása a Azure Logic Appsba
 
@@ -31,7 +31,7 @@ Ez a cikk bemutatja, hogyan ütemezhet egyszeri és ismétlődő feladatokat úg
 
 * Az időzónákat támogató és a nyári időszámításhoz (DST) automatikusan beállított ütemtervek beállítása.
 
-További információ: [Mi a Azure Logic apps?](../logic-apps/logic-apps-overview.md) vagy próbálja meg létrehozni az első logikai alkalmazást ebben a rövid útmutatóban: [Hozza létre az első logikai alkalmazását](../logic-apps/quickstart-create-first-logic-app-workflow.md).
+További információ: [Mi a Azure Logic apps?](../logic-apps/logic-apps-overview.md) vagy próbálja meg létrehozni az első logikai alkalmazást ebben a rövid útmutatóban: [hozza létre az első logikai alkalmazását](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -49,15 +49,15 @@ Egyetlen logikai alkalmazás létrehozásával több egyszeri feladatot is futta
 
 1. A [Azure Portal](https://portal.azure.com)hozzon létre egy üres logikai alkalmazást a Logic app Designerben. 
 
-   Az alapszintű lépések végrehajtásához kövesse az alábbi [lépéseket: Hozza létre az első logikai](../logic-apps/quickstart-create-first-logic-app-workflow.md)alkalmazását.
+   Az alapszintű lépések végrehajtásához kövesse a gyors üzembe helyezési útmutatót [: az első logikai alkalmazás létrehozása](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
-1. A keresőmezőbe írja be a "http-kérelem" kifejezést a szűrőként. Az eseményindítók listából válassza ki a következő eseményindítót: **HTTP-kérés fogadásakor** 
+1. A keresőmezőbe írja be a "http-kérelem" kifejezést a szűrőként. Az eseményindítók listából válassza ki ezt az eseményindítót: **http-kérés fogadásakor** 
 
    !["Kérelem" trigger hozzáadása](./media/migrate-from-scheduler-to-logic-apps/request-trigger.png)
 
 1. A kérelem-trigger esetében megadhat egy JSON-sémát is, amely segít a Logic app designernek megérteni a bejövő kérés bemeneteit, és egyszerűbbé teszi a kimenetek kijelölését a munkafolyamat későbbi részében.
 
-   Séma megadásához írja be a sémát a **kérelem törzse JSON** -sémája mezőbe, például: 
+   Séma megadásához írja be a sémát a **kérelem törzse JSON-sémája** mezőbe, például: 
 
    ![Kérelem sémája](./media/migrate-from-scheduler-to-logic-apps/request-schema.png)
 
@@ -71,7 +71,7 @@ Egyetlen logikai alkalmazás létrehozásával több egyszeri feladatot is futta
 
 1. A trigger alatt válassza a **következő lépés**lehetőséget. 
 
-1. A keresőmezőbe írja be a "delay to ig" kifejezést a szűrőként. A műveletek listában válassza ki ezt a műveletet: **Késleltetési idő**
+1. A keresőmezőbe írja be a "delay to ig" kifejezést a szűrőként. A műveletek listában válassza a következő műveletet: **késleltetés, amíg**
 
    Ez a művelet a logikai alkalmazás munkafolyamatát szünetelteti a megadott dátumig és időpontig.
 
@@ -106,9 +106,9 @@ Egyszeri feladatok manuális futtatásához vagy elindításához küldje el a l
 
 Ha például a Poster alkalmazást használja, létrehozhat egy POST-kérést a mintához hasonló beállításokkal, majd a kérelem elvégzéséhez válassza a **Küldés** lehetőséget.
 
-| Kérelem metódusa | URL | Body | Fejlécek |
+| Kérelem metódusa | URL-cím | Törzs | Fejlécek |
 |----------------|-----|------|---------|
-| **POST** | <*végpont – URL*> | **nyers** <p>**JSON(application/json)** <p>A **RAW** mezőben adja meg a kérelemben elküldeni kívánt adattartalmat. <p>**Megjegyzés**: Ez a beállítás automatikusan beállítja a **fejlécek** értékeit. | **Kulcs**: Content-Type <br>**Érték**: alkalmazás/JSON |
+| **POST** | <*végpont URL-címe*> | **nyers** <p>**JSON (alkalmazás/JSON)** <p>A **RAW** mezőben adja meg a kérelemben elküldeni kívánt adattartalmat. <p>**Megjegyzés**: Ez a beállítás automatikusan konfigurálja a **fejlécek** értékeit. | **Kulcs**: Content-Type <br>**Érték**: alkalmazás/JSON |
 |||||
 
 ![Kérelem küldése a logikai alkalmazás manuális elindításához](./media/migrate-from-scheduler-to-logic-apps/postman-send-post-request.png)
@@ -119,7 +119,7 @@ A hívás elküldése után a logikai alkalmazás válasza megjelenik a **törzs
 
 > [!IMPORTANT]
 >
-> Ha később szeretné megszakítani a feladatot, válassza a **fejlécek** lapot. Keresse meg és másolja az **x-MS-workflow-Run-ID** fejléc értékét a válaszban. 
+> Ha később szeretné megszakítani a feladatot, válassza a **fejlécek** fület. Keresse meg és másolja az **x-MS-workflow-Run-ID** fejléc értékét a válaszban. 
 >
 > ![Válasz](./media/migrate-from-scheduler-to-logic-apps/postman-response.png)
 
@@ -131,9 +131,9 @@ Logic Apps minden egyszeri feladatot egyetlen logikai alkalmazás futtatási pé
 
 1. A [Azure Portal](https://portal.azure.com)hozzon létre egy üres logikai alkalmazást a Logic app Designerben. 
 
-   Az alapszintű lépések végrehajtásához kövesse az alábbi [lépéseket: Hozza létre az első logikai](../logic-apps/quickstart-create-first-logic-app-workflow.md)alkalmazását.
+   Az alapszintű lépések végrehajtásához kövesse a gyors üzembe helyezési útmutatót [: az első logikai alkalmazás létrehozása](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
-1. A keresőmezőbe írja be a "Ismétlődés" kifejezést a szűrőként. Az eseményindítók listából válassza ki a következő eseményindítót: **Ismétlődés** 
+1. A keresőmezőbe írja be a "Ismétlődés" kifejezést a szűrőként. Az eseményindítók listából válassza ki ezt az eseményindítót: **Ismétlődés** 
 
    !["Ismétlődés" eseményindító hozzáadása](./media/migrate-from-scheduler-to-logic-apps/recurrence-trigger.png)
 
@@ -159,13 +159,13 @@ Az alábbi módokon testreszabhatja a feladatait.
 
 ### <a name="retry-policy"></a>Újrapróbálkozási szabályzat
 
-Annak szabályozásához, hogy egy művelet megpróbáljon újrafutni a logikai alkalmazásban az időszakos hibák bekövetkezésekor, beállíthatja az újrapróbálkozási [szabályzatot](../logic-apps/logic-apps-exception-handling.md#retry-policies) minden egyes művelet beállításaiban, például:
+Annak szabályozásához, hogy egy művelet megpróbáljon újrafutni a logikai alkalmazásban az időszakos hibák bekövetkezésekor, beállíthatja az [újrapróbálkozási szabályzatot](../logic-apps/logic-apps-exception-handling.md#retry-policies) minden egyes művelet beállításaiban, például:
 
 1. Nyissa meg a művelet ellipsziseit ( **..** .), és válassza a **Beállítások**lehetőséget.
 
    ![Művelet beállításainak megnyitása](./media/migrate-from-scheduler-to-logic-apps/action-settings.png)
 
-1. Válassza ki a kívánt újrapróbálkozási szabályzatot. Az egyes szabályzatokról további információt az újrapróbálkozási [szabályzatok](../logic-apps/logic-apps-exception-handling.md#retry-policies)című témakörben talál.
+1. Válassza ki a kívánt újrapróbálkozási szabályzatot. Az egyes szabályzatokról további információt az [újrapróbálkozási szabályzatok](../logic-apps/logic-apps-exception-handling.md#retry-policies)című témakörben talál.
 
    ![Újrapróbálkozási házirend kiválasztása](./media/migrate-from-scheduler-to-logic-apps/retry-policy.png)
 
@@ -185,7 +185,7 @@ Ha az Azure Schedulerben nem sikerül futtatni az alapértelmezett műveletet, f
 
    ![Futtatás konfigurálása a következő után](./media/migrate-from-scheduler-to-logic-apps/configure-run-after.png)
 
-1. Törölje a **sikeres** tulajdonság mezőjét. Válassza ki a következő tulajdonságokat: **nem sikerült**, ki **van hagyva**, és túllépte az időkorlátot
+1. Törölje a **sikeres** tulajdonság mezőjét. Válassza ki a következő tulajdonságokat: **nem sikerült**, ki **van hagyva**, és **túllépte az időkorlátot**
 
    ![A "Futtatás utáni" tulajdonságok beállítása](./media/migrate-from-scheduler-to-logic-apps/select-run-after-properties.png)
 
@@ -198,19 +198,19 @@ További információ a kivételek kezeléséről: [hibák és kivételek kezel�
 <a name="retire-date"></a>
 
 **K**: Mikor kell kivonulni az Azure Scheduler? <br>
-**A**: Az Azure Scheduler 2019. december 31-ig teljes kivonásra van ütemezve. A dátum és a részletes ütemterv elvégzéséhez szükséges lépésekért lásd: [a Scheduler nyugdíjazási dátumának meghosszabbítása 2019. december 31-ig](https://azure.microsoft.com/en-us/updates/extending-retirement-date-of-scheduler/). Általános frissítések: [Azure Updates-Scheduler](https://azure.microsoft.com/updates/?product=scheduler).
+**A**: az Azure Scheduler a 2019. december 31-én teljes kivonásra van ütemezve. A dátum és a részletes ütemterv elvégzéséhez szükséges lépésekért lásd: [a Scheduler nyugdíjazási dátumának meghosszabbítása 2019. december 31-ig](https://azure.microsoft.com/updates/extending-retirement-date-of-scheduler/). Általános frissítések: [Azure Updates-Scheduler](https://azure.microsoft.com/updates/?product=scheduler).
 
-**K**: Mi történik a feladat-gyűjtemények és-feladatok után a szolgáltatás újragumiabroncsai után? <br>
-**A**: Az összes ütemező feladat-gyűjtemény és-feladat leáll, és törlődik a rendszerből.
+**K**: mi történik a feladat-gyűjtemények és-feladatok után a szolgáltatás újragumiabroncsai után? <br>
+Válasz **: a**Feladatütemező és a feladatok összes futtatása leáll, és törlődik a rendszerből.
 
-**K**: Szükség van-e biztonsági mentésre vagy egyéb feladatok elvégzésére, mielőtt áttelepíti a Feladatütemező feladatait a Logic Apps? <br>
-**A**: Ajánlott eljárásként mindig készítse elő a munkáját. Győződjön meg arról, hogy a létrehozott logikai alkalmazások a várt módon futnak a Scheduler-feladatok törlése vagy letiltása előtt. 
+**K**: a Feladatütemező feladatainak Logic Appsre való áttelepítése előtt készítsen biztonsági mentést, vagy hajtson végre más feladatokat? <br>
+**A**: ajánlott eljárásként mindig biztonsági másolatot készíteni a munkáról. Győződjön meg arról, hogy a létrehozott logikai alkalmazások a várt módon futnak a Scheduler-feladatok törlése vagy letiltása előtt. 
 
-**K**: Van olyan eszköz, amely segíthet a feladatok áttelepíthetők a feladatütemezőből a Logic Appsba? <br>
-**A**: Az egyes ütemező feladatok egyediek, így nem létezik egy egyméretű eszköz. Igény szerint azonban [szerkesztheti ezt a parancsfájlt, hogy áttelepítse az Azure Scheduler-feladatokat Azure Logic Appsba](https://github.com/Azure/logicapps/tree/master/scripts/scheduler-migration).
+**K**: van olyan eszköz, amely segít áttelepíteni a feladatokat a feladatütemezőből a Logic Appsba? <br>
+**A**: minden egyes ütemező feladata egyedi, így nem létezik egyetlen méretre kiterjedő eszköz. Igény szerint azonban [szerkesztheti ezt a parancsfájlt, hogy áttelepítse az Azure Scheduler-feladatokat Azure Logic Appsba](https://github.com/Azure/logicapps/tree/master/scripts/scheduler-migration).
 
 **K**: Hol kaphatok támogatást a Scheduler-feladatok áttelepítéséhez? <br>
-**A**: Íme néhány lehetőség a támogatás beszerzésére: 
+**A**: Íme néhány lehetőség a támogatás megszerzésére: 
 
 **Azure Portal**
 
@@ -220,11 +220,11 @@ Ha az Azure-előfizetése fizetős támogatási csomaggal rendelkezik, technikai
 
 1. A **támogatás** menüben válassza az **új támogatási kérelem**lehetőséget. Adja meg a kérelmére vonatkozó információkat:
 
-   | Tulajdonság | Value |
+   | Tulajdonság | Érték |
    |---------|-------|
    | **Probléma típusa** | **Technikai** |
-   | **Előfizetés** | <*your-Azure-subscription*> |
-   | **Szolgáltatás** | A **figyelés &** felügyelet területen válasszaaz ütemező lehetőséget. Ha nem találja a **Feladatütemezőt**, először válassza **a minden szolgáltatás** lehetőséget. |
+   | **Előfizetés** | <*Az Azure-előfizetések*> |
+   | **Szolgáltatás** | A **figyelés &** felügyelet területen válassza az **ütemező**lehetőséget. Ha nem találja a **Feladatütemezőt**, először válassza **a minden szolgáltatás** lehetőséget. |
    ||| 
 
 1. Válassza ki a kívánt támogatási lehetőséget. Ha fizetős támogatási csomaggal rendelkezik, válassza a **tovább**lehetőséget.
@@ -237,4 +237,4 @@ Ha az Azure-előfizetése fizetős támogatási csomaggal rendelkezik, technikai
 ## <a name="next-steps"></a>További lépések
 
 * [Rendszeresen futó feladatok és munkafolyamatok létrehozása Azure Logic Apps](../connectors/connectors-native-recurrence.md)
-* [Oktatóanyag: A forgalom ellenőrzését egy ütemezett logikai alkalmazással](../logic-apps/tutorial-build-schedule-recurring-logic-app-workflow.md)
+* [Oktatóanyag: a forgalom ellenőrzését egy ütemezett logikai alkalmazással](../logic-apps/tutorial-build-schedule-recurring-logic-app-workflow.md)

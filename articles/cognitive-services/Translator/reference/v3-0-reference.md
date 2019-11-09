@@ -1,7 +1,7 @@
 ---
 title: Translator Text API V 3.0 – dokumentáció
 titleSuffix: Azure Cognitive Services
-description: A Translator Text API V 3.0 dokumentációja.
+description: A Translator Text API V 3.0 dokumentációja. A Translator Text API 3. verziója modern JSON-alapú webes API-t biztosít.
 services: cognitive-services
 author: swmachan
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 03/29/2018
 ms.author: swmachan
-ms.openlocfilehash: a441ca83230a1c715aadda79683964aaab6d6213
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.openlocfilehash: c07673e7b170170de4723a1232d2e7281feaaf99
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72252970"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73888081"
 ---
 # <a name="translator-text-api-v30"></a>Translator Text API v 3.0
 
@@ -44,11 +44,11 @@ Ha szeretné kényszeríteni a kérést, hogy az adott Azure földrajza kezelhet
 |Leírás|Az Azure földrajza|Alap URL-cím|
 |:--|:--|:--|
 |Azure|Globális (nem regionális)|   api.cognitive.microsofttranslator.com|
-|Azure|Amerikai Egyesült Államok|   api-nam.cognitive.microsofttranslator.com|
+|Azure|Egyesült Államok|   api-nam.cognitive.microsofttranslator.com|
 |Azure|Európa|  api-eur.cognitive.microsofttranslator.com|
-|Azure|Ázsia és a csendes-óceáni térség|    api-apc.cognitive.microsofttranslator.com|
+|Azure|Ázsia és a Csendes-óceáni térség|    api-apc.cognitive.microsofttranslator.com|
 
-## <a name="authentication"></a>Hitelesítés
+## <a name="authentication"></a>Authentication
 
 Fizessen elő Translator Text API vagy [Cognitive Services több szolgáltatásra](https://azure.microsoft.com/pricing/details/cognitive-services/) az Azure-ban Cognitive Services, és használja az előfizetési kulcsot (amely a Azure Portalban érhető el) a hitelesítéshez. 
 
@@ -98,16 +98,16 @@ Több szolgáltatásból álló titkos kulcs használata esetén két hitelesít
 
 A Multi-Service Text API-előfizetéshez régió szükséges. A kiválasztott régió az egyetlen olyan régió, amelyet a többszolgáltatásos előfizetési kulcs használatakor használhat a szöveges fordításhoz, és a Azure Portalon keresztül a többszolgáltatásos előfizetésre való feliratkozáskor választott régiónak kell lennie.
 
-Az elérhető régiók a következők: `australiaeast`, `brazilsouth`, `canadacentral`, `centralindia`, `centralus`, `centraluseuap`, `eastasia`, `eastus`, `eastus2`, `francecentral`, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0, @no__ t-21 és 2.
+Az elérhető régiók a következők: `australiaeast`, `brazilsouth`, `canadacentral`, `centralindia`, `centralus`, `centraluseuap`, `eastasia`, `eastus`, `eastus2`, `francecentral`, `japaneast`, `japanwest`, `koreacentral`, `northcentralus`, `northeurope`, `southcentralus`, `southeastasia`, `uksouth`, `westcentralus`, `westeurope`, `westus`, `westus2`és `southafricanorth`.
 
-Ha a lekérdezési karakterláncban a `Subscription-Key` paraméterrel adja meg a titkos kulcsot, akkor a (z) `Subscription-Region` lekérdezési paraméterrel rendelkező régiót kell megadnia.
+Ha a lekérdezési sztringben megadja a titkos kulcsot a `Subscription-Key`paraméterrel, akkor meg kell adnia a régiót a lekérdezési paraméterrel `Subscription-Region`.
 
 Ha tulajdonosi jogkivonatot használ, be kell szereznie a tokent a régió végpontján: `https://<your-region>.api.cognitive.microsoft.com/sts/v1.0/issueToken`.
 
 
 ## <a name="errors"></a>Hibák
 
-A standard hibaérték egy `error` nevű JSON-objektum. Az érték egy JSON-objektum is, amely tulajdonságokkal rendelkezik:
+A standard hibaérték egy `error`nevű, név/érték párokkal rendelkező JSON-objektum. Az érték egy JSON-objektum is, amely tulajdonságokkal rendelkezik:
 
   * `code`: kiszolgáló által definiált hibakód.
   * `message`: egy karakterlánc, amely a hiba ember által olvasható ábrázolását adja meg.
@@ -163,5 +163,5 @@ A hibakód egy 6 számjegyből álló szám, amely a 3 számjegyből álló HTTP
 | 415000| A Content-Type fejléc hiányzik vagy érvénytelen.|
 | 429000, 429001, 429002| A kiszolgáló elutasította a kérelmet, mert az ügyfél túllépte a kérelmek korlátait.|
 | 500000| Váratlan hiba történt. Ha a hiba továbbra is fennáll, jelentse a hibát dátum/idő szerint, a válasz fejléce X-kérelemazonosító, valamint az ügyfél-azonosítót az X-ClientTraceId kérelem fejlécében.|
-| 503000| A szolgáltatás átmenetileg nem érhető el. Próbálja újból. Ha a hiba továbbra is fennáll, jelentse a hibát dátum/idő szerint, a válasz fejléce X-kérelemazonosító, valamint az ügyfél-azonosítót az X-ClientTraceId kérelem fejlécében.|
+| 503000| A szolgáltatás átmenetileg nem érhető el. Próbálkozzon újra. Ha a hiba továbbra is fennáll, jelentse a hibát dátum/idő szerint, a válasz fejléce X-kérelemazonosító, valamint az ügyfél-azonosítót az X-ClientTraceId kérelem fejlécében.|
 

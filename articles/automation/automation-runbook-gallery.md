@@ -9,12 +9,12 @@ ms.author: robreed
 ms.date: 03/20/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 5daa1cf04e04507174fa480c785bd15b656541a1
-ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
+ms.openlocfilehash: d1ef652747dccdcb0e04ac8032dd47e2ebaa6bf2
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69019106"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73886895"
 ---
 # <a name="runbook-and-module-galleries-for-azure-automation"></a>Runbook és modul-galériák Azure Automation
 
@@ -35,7 +35,7 @@ A Azure Portal használatával csak közvetlenül a PowerShell-galéria importá
 
 1. Az Azure Portalon nyissa meg az Automation-fiókját.
 2. A **folyamat automatizálása**területen kattintson a **runbookok-gyűjtemény** elemre.
-3. Forrás **kiválasztása: PowerShell-galéria**.
+3. **Forrás kiválasztása: PowerShell-Galéria**.
 4. Keresse meg a kívánt katalógus-elemet, és válassza ki azt a részletek megtekintéséhez. A bal oldalon további keresési paramétereket adhat meg a közzétevőhöz és a típushoz.
 
    ![Tallózás a katalógusban](media/automation-runbook-gallery/browse-gallery.png)
@@ -69,8 +69,8 @@ A PowerShell-modulok olyan parancsmagokat tartalmaznak, amelyeket használhat a 
 
 4. A **Tallózás** a katalógusban lapon a következő mezőkben kereshet:
 
-   * Modulnév
-   * Tags
+   * Modul neve
+   * Címkék
    * Szerző
    * Parancsmag/DSC-erőforrás neve
 
@@ -113,4 +113,4 @@ Az alábbi lista néhány olyan runbookok tartalmaz, amely a gyakori forgatókö
 
 * A runbookok megkezdéséhez lásd: [Runbook kezelése a Azure Automationban](manage-runbooks.md)
 * A PowerShell és a PowerShell-munkafolyamatok közötti különbségek megismeréséhez a runbookok használatával lásd: a [PowerShell-munkafolyamat megismerése](automation-powershell-workflow.md)
-* A PowerShell-lel kapcsolatos további információkért, beleértve a nyelvi referenciákat és a tanulási modulokat, tekintse át a [PowerShell-dokumentumokat](https://docs.microsoft.com/en-us/powershell/scripting/overview).
+* A PowerShell-lel kapcsolatos további információkért, beleértve a nyelvi referenciákat és a tanulási modulokat, tekintse át a [PowerShell-dokumentumokat](https://docs.microsoft.com/powershell/scripting/overview).

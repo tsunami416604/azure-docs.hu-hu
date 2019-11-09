@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 5/03/2019
 ms.author: terrylan
-ms.openlocfilehash: e2e829fba9846c2429e362903f5ce49b9344e1bd
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.openlocfilehash: 0bf9b4d3aa1926343ad25000a05762a31d49617d
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2019
-ms.locfileid: "71672625"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73889857"
 ---
 # <a name="azure-security-best-practices-and-patterns"></a>Az Azure Security ajánlott biztonsági eljárásai és mintái
 
@@ -28,7 +28,7 @@ Az alábbi cikkek a felhőalapú megoldások Azure használatával történő te
 
 Az ajánlott eljárások az informatikai szakemberek számára készült erőforrások. Ilyenek lehetnek a biztonságos Azure-megoldások készítésére és üzembe helyezésére szolgáló tervezők, építészek, fejlesztők és tesztelők.
 
-* [Az Azure-beli határokkal kapcsolatos ajánlott biztonsági eljárások](https://docs.microsoft.com/en-us/azure/security/fundamentals/network-best-practices#adopt-a-zero-trust-approach)
+* [Az Azure-beli határokkal kapcsolatos ajánlott biztonsági eljárások](/azure/security/fundamentals/network-best-practices#adopt-a-zero-trust-approach)
 * [Ajánlott biztonsági eljárások az Azure Database-ben](database-best-practices.md)
 * [Az Azure-Adatbiztonság és-titkosítás ajánlott eljárásai](data-encryption-best-practices.md)
 * [Az Azure Identity Management és a hozzáférés-vezérlés biztonsága – ajánlott eljárások](identity-management-best-practices.md)

@@ -1,5 +1,5 @@
 ---
-title: Eszköz észlelésére a távoli figyelési megoldás-oktatóanyag – Azure |} A Microsoft Docs
+title: Eszközkel kapcsolatos problémák észlelése a távoli figyelési megoldással – Azure | Microsoft Docs
 description: Ez az oktatóprogram bemutatja, hogyan használja a szabályokat és műveleteket a küszöbérték-alapú eszközhibák azonosítására a távoli monitorozási megoldásban.
 author: dominicbetts
 manager: timlt
@@ -9,14 +9,14 @@ services: iot-accelerators
 ms.date: 11/08/2018
 ms.topic: tutorial
 ms.custom: mvc
-ms.openlocfilehash: 91ee5087e5f41cda3648c2ecadcfcf16fd32a249
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 676f1133a516174478a456a97bc467e7770fe6e7
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61448322"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73888876"
 ---
-# <a name="tutorial-detect-issues-with-devices-connected-to-your-monitoring-solution"></a>Oktatóanyag: A figyelési megoldáshoz csatlakoztatott eszközökre és a hibák észlelése
+# <a name="tutorial-detect-issues-with-devices-connected-to-your-monitoring-solution"></a>Oktatóanyag: A monitorozási megoldáshoz csatlakoztatott eszközök problémáinak észlelése
 
 Ebben az oktatóanyagban a távoli monitorozási megoldásgyorsító konfigurálásával fogja észlelni a csatlakoztatott IoT-eszközökkel kapcsolatos problémákat. Az eszközhibák észleléséhez adjon hozzá olyan szabályokat, amelyek riasztásokat jelenítenek meg a megoldás irányítópultján.
 
@@ -57,9 +57,9 @@ Kattintson az **Új szabály** elemre egy olyan szabály létrehozásához, amel
 | Leírás      | A nyomás a hűtőben túllépte a 150 PSI-t |
 | Eszközcsoport     | **Hűtők** eszközcsoport             |
 | Számítás      | Azonnali                               |
-| 1. feltétel mezője| pressure                              |
-| 1. feltétel operátora | Nagyobb, mint                      |
-| 1. feltétel értéke    | 150                               |
+| 1\. feltétel mezője| pressure                              |
+| 1\. feltétel operátora | Nagyobb, mint                      |
+| 1\. feltétel értéke    | 150                               |
 | Súlyossági szint  | Figyelmeztetés                               |
 
 [![Figyelmeztetési szabály létrehozása](./media/iot-accelerators-remote-monitoring-automate/rulesactionsnewrule_v2-inline.png)](./media/iot-accelerators-remote-monitoring-automate/rulesactionsnewrule_v2-expanded.png#lightbox)
@@ -81,9 +81,9 @@ Kattintson az **Új szabály** elemre egy olyan többfeltételes szabály létre
 | Eszközcsoport     | **Hűtők** eszközcsoport             |
 | Számítás      | Átlag                               |
 | Időtartam      | 5                                     |
-| 1. feltétel mezője| páratartalom                              |
-| 1. feltétel operátora | Nagyobb, mint                      |
-| 1. feltétel értéke    | 80                                |
+| 1\. feltétel mezője| páratartalom                              |
+| 1\. feltétel operátora | Nagyobb, mint                      |
+| 1\. feltétel értéke    | 80                                |
 | Súlyossági szint  | Kritikus                              |
 
 [![Többfeltételes szabály létrehozásának első része](./media/iot-accelerators-remote-monitoring-automate/rulesactionsnewrule_mult_v2-inline.png)](./media/iot-accelerators-remote-monitoring-automate/rulesactionsnewrule_mult_v2-expanded.png#lightbox)
@@ -92,9 +92,9 @@ A második feltétel hozzáadásához kattintson a „+ feltétel hozzáadása�
 
 | Beállítás          | Érték                                 |
 | ---------------- | ------------------------------------- |
-| 2. feltétel mezője| hőmérséklet                           |
-| 2. feltétel operátora | Nagyobb, mint                      |
-| 2. feltétel értéke    | 75                                |
+| 2\. feltétel mezője| hőmérséklet                           |
+| 2\. feltétel operátora | Nagyobb, mint                      |
+| 2\. feltétel értéke    | 75                                |
 
 [![Többfeltételes szabály létrehozásának második része](./media/iot-accelerators-remote-monitoring-automate/rulesactionsnewrule_mult_cond2_v2-inline.png)](./media/iot-accelerators-remote-monitoring-automate/rulesactionsnewrule_mult_cond2_v2-expanded.png#lightbox)
 

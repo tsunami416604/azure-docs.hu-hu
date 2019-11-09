@@ -14,12 +14,12 @@ ms.workload: infrastructure-services
 ms.date: 05/23/2019
 ms.author: rogirdh
 ms.custom: seodec18
-ms.openlocfilehash: 4480819a08ef9a7a4ad7257f75a94c5d10a3d312
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: 23e638b1d678e6ecf19c23220828185eb0e25a00
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70858574"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73891455"
 ---
 # <a name="oracle-vm-images-and-their-deployment-on-microsoft-azure"></a>Oracle VM-rendszerképek és azok üzembe helyezése Microsoft Azure
 
@@ -79,7 +79,7 @@ Ezek a képességek azért lehetségesek, mert a Azure NetApp Files a NetApp® O
 
 ## <a name="licensing-oracle-database--software-on-azure"></a>Licencelés Oracle Database & szoftver az Azure-ban
 Microsoft Azure a Oracle Database futtatására szolgáló, jóváhagyott felhőalapú környezet. Az Oracle Core Factor tábla nem alkalmazható, ha Oracle-adatbázisokat engedélyez a felhőben. Ehelyett ha olyan virtuális gépeket használ, amelyeken engedélyezve van a Hyper-Threading technológia a nagyvállalati kiadású adatbázisokhoz, a két vCPU egy Oracle Processor-licenccel egyenértékűnek számít, ha engedélyezve van a feleznie (a szabályzat dokumentuma szerint). [Itt](http://www.oracle.com/us/corporate/pricing/cloud-licensing-070579.pdf)megtalálja a szabályzat részleteit.
-Az Oracle-adatbázisok általában nagyobb memóriát és IO-t igényelnek. Emiatt a memória- [optimalizált virtuális gépek](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/sizes-memory) ajánlottak ezekhez a számítási feladatokhoz. A számítási feladatok további optimalizálása érdekében [korlátozott alapszintű vCPU](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/constrained-vcpu) ajánlott olyan Oracle db munkaterhelések esetén, amelyek nagy memóriát, tárterületet és I/O-sávszélességet igényelnek, de nem magas alapszám.
+Az Oracle-adatbázisok általában nagyobb memóriát és IO-t igényelnek. Emiatt a memória- [optimalizált virtuális gépek](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-memory) ajánlottak ezekhez a számítási feladatokhoz. A számítási feladatok további optimalizálása érdekében [korlátozott alapszintű vCPU](https://docs.microsoft.com/azure/virtual-machines/linux/constrained-vcpu) ajánlott olyan Oracle db munkaterhelések esetén, amelyek nagy memóriát, tárterületet és I/O-sávszélességet igényelnek, de nem magas alapszám.
 
 Az Oracle-szoftverek és-munkaterhelések helyi rendszerről Microsoft Azureba történő áttelepítésekor az Oracle a licencek mobilitását az Azure-beli [Oracle – gyakori kérdések](https://www.oracle.com/cloud/technologies/oracle-azure-faq.html) című szakaszban leírtak szerint
 
@@ -90,7 +90,7 @@ Az Oracle RAC úgy lett kialakítva, hogy csökkentse az egyetlen csomópont meg
 ## <a name="high-availability-and-disaster-recovery-considerations"></a>Magas rendelkezésre állás és vész-helyreállítási megfontolások
 Ha Oracle-adatbázisokat használ az Azure-ban, az állásidő elkerülése érdekében a magas rendelkezésre állású és vész-helyreállítási megoldás végrehajtásáért felelős. 
 
-A magas rendelkezésre állás és a vész-helyreállítás a Oracle Database Enterprise Edition számára (az Oracle RAC-ra való támaszkodás nélkül) az Azure-ban az [Adatvédelem, az aktív adatvédelem](https://www.oracle.com/database/technologies/high-availability/dataguard.html)vagy az [Oracle-GoldenGate](https://www.oracle.com/technetwork/middleware/goldengate)használatával érhető el, két adatbázissal két külön virtuális gépen gépek. Mindkét virtuális gépnek ugyanabban a [virtuális hálózatban](https://azure.microsoft.com/documentation/services/virtual-network/) kell lennie annak biztosításához, hogy a privát állandó IP-címen keresztül hozzáférhessenek egymáshoz.  Javasoljuk továbbá, hogy a virtuális gépeket ugyanazon rendelkezésre állási csoportba helyezze, hogy az Azure külön tartalék tartományba és frissítési tartományba helyezze őket. Ha szeretné, hogy a Geo-redundancia legyen, állítsa be a két adatbázist két különböző régió között, és kapcsolódjon a két példányhoz egy VPN Gateway.
+A Oracle Database Enterprise Edition magas rendelkezésre állása és vész-helyreállítása (az Oracle RAC-ra való támaszkodás nélkül) az Azure-ban az [Adatvédelem, az aktív adatvédelem](https://www.oracle.com/database/technologies/high-availability/dataguard.html)vagy az [Oracle-GoldenGate](https://www.oracle.com/technetwork/middleware/goldengate)használatával érhető el, két külön virtuális gépen két adatbázissal. Mindkét virtuális gépnek ugyanabban a [virtuális hálózatban](https://azure.microsoft.com/documentation/services/virtual-network/) kell lennie annak biztosításához, hogy a privát állandó IP-címen keresztül hozzáférhessenek egymáshoz.  Javasoljuk továbbá, hogy a virtuális gépeket ugyanazon rendelkezésre állási csoportba helyezze, hogy az Azure külön tartalék tartományba és frissítési tartományba helyezze őket. Ha szeretné, hogy a Geo-redundancia legyen, állítsa be a két adatbázist két különböző régió között, és kapcsolódjon a két példányhoz egy VPN Gateway.
 
 Az Azure-beli [Oracle-adatvédelmet](configure-oracle-dataguard.md) bemutató oktatóanyag végigvezeti az Azure-beli alapszintű telepítési eljáráson.  
 
@@ -102,7 +102,7 @@ Az Azure-ban létrehozott HA-és DR-megoldás mellett egy biztonsági mentési s
 
 
 ## <a name="support-for-jd-edwards"></a>A JD Edwards támogatása
-Az Oracle támogatási megjegyzése szerint a 2178595,1-as [doc-azonosító](https://support.oracle.com/epmos/faces/DocumentDisplay?_afrLoop=573435677515785&id=2178595.1&_afrWindowMode=0&_adf.ctrl-state=o852dw7d_4), a JD Edwards EnterpriseOne 9,2-es és újabb verziói **minden olyan nyilvános Felhőbeli ajánlat** esetében támogatottak, amely megfelel az adott `Minimum Technical Requirements` (MTR) szolgáltatásnak.  Olyan egyéni rendszerképeket kell létrehoznia, amelyek megfelelnek az operációs rendszer és a szoftver alkalmazás kompatibilitásának MTR-specifikációinak. 
+Az Oracle támogatási megjegyzése szerint a 2178595,1-as [doc-azonosító](https://support.oracle.com/epmos/faces/DocumentDisplay?_afrLoop=573435677515785&id=2178595.1&_afrWindowMode=0&_adf.ctrl-state=o852dw7d_4), a JD Edwards EnterpriseOne 9,2-es és újabb verziói támogatottak **minden olyan nyilvános felhőben** , amely megfelel az adott `Minimum Technical Requirements` (MTR).  Olyan egyéni rendszerképeket kell létrehoznia, amelyek megfelelnek az operációs rendszer és a szoftver alkalmazás kompatibilitásának MTR-specifikációinak. 
 
 
 ## <a name="oracle-weblogic-server-virtual-machine-images"></a>Oracle WebLogic Server virtuálisgép-lemezképek
@@ -126,7 +126,7 @@ Az Oracle támogatási megjegyzése szerint a 2178595,1-as [doc-azonosító](htt
     -Dweblogic.rjvm.enableprotocolswitch=true
     ```
 
-A kapcsolódó információkról a TUDÁSBÁZISCIKK **860340,1** -es <https://support.oracle.com>cikkében olvashat.
+Kapcsolódó információk: **860340,1** -es Tudásbázis-cikk, <https://support.oracle.com>.
 
 * **Dinamikus fürtözési és terheléselosztási korlátozások.** Tegyük fel, hogy dinamikus fürtöt szeretne használni a WebLogic-kiszolgálón, és az Azure-ban egyetlen, nyilvános terheléselosztási végponton keresztül teszi közzé. Ezt akkor teheti meg, ha rögzített portszámot használ az egyes felügyelt kiszolgálókon (a tartományhoz nem dinamikusan van rendelve), és nem indít el több felügyelt kiszolgálót, mint a rendszergazda által nyomon követett gépek. A virtuális gépen nincs több felügyelt kiszolgáló. Ha a konfigurációban több WebLogic-kiszolgáló indul el, mint a virtuális gépek (azaz ha több WebLogic-kiszolgálópéldány ugyanazt a virtuális gépet használja), akkor a WebLogic-kiszolgálók több példánya nem lehetséges. kötés egy adott portszámhoz. Az adott virtuális gépen lévő többi nem sikerül.
 

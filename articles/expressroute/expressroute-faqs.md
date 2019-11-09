@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.date: 10/28/2019
 ms.author: jaredro
 ms.custom: seodec18
-ms.openlocfilehash: 4dd4831d6437b7026459dc358455335dd0fa221b
-ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
+ms.openlocfilehash: f27a6df86ebbe2b07b73016f304ac364e88664bb
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73063098"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73891038"
 ---
-# <a name="expressroute-faq"></a>ExpressRoute – gyakori kérdések
+# <a name="expressroute-faq"></a>ExpressRoute – Gyakori kérdések
 
-## <a name="what-is-expressroute"></a>Mi az ExpressRoute?
+## <a name="what-is-expressroute"></a>Mi az az ExpressRoute?
 
 A ExpressRoute egy Azure-szolgáltatás, amely lehetővé teszi, hogy a Microsoft-adatközpontok és a helyszíni vagy egy közös elhelyezési létesítményben lévő infrastruktúra között hozzon létre privát kapcsolatokat. A ExpressRoute-kapcsolatok nem a nyilvános interneten haladnak át, és nagyobb biztonságot, megbízhatóságot és sebességet biztosítanak, mint a szokásos kapcsolatok az interneten.
 
@@ -69,10 +69,10 @@ A ExpressRoute [három útválasztási tartományt](expressroute-circuit-peering
 * [Windows rendszerű virtuális asztal](https://azure.microsoft.com/services/virtual-desktop/)
 * [Azure DevOps](https://blogs.msdn.microsoft.com/devops/2018/10/23/expressroute-for-azure-devops/) (Azure globális szolgáltatások közössége)
 * Az Azure-szolgáltatások többsége támogatott. Ellenőrizze, hogy van-e közvetlenül a támogatás ellenőrzéséhez használni kívánt szolgáltatás.<br><br>**A következő szolgáltatások nem támogatottak**:
-    * CDN
+    * Tartalomkézbesítési hálózat (CDN)
     * Azure Front Door
     * Multi-Factor Authentication kiszolgáló (örökölt)
-    * Forgalomkezelő
+    * Traffic Manager
 
 ### <a name="public-peering"></a>Nyilvános társviszony-létesítés
 
@@ -83,10 +83,10 @@ A ExpressRoute [három útválasztási tartományt](expressroute-circuit-peering
 * Power BI
 * Az Azure-szolgáltatások többsége támogatott. Ellenőrizze, hogy van-e közvetlenül a támogatás ellenőrzéséhez használni kívánt szolgáltatás.<br><br>
   **A következő szolgáltatások nem támogatottak**:
-    * CDN
+    * Tartalomkézbesítési hálózat (CDN)
     * Azure Front Door
     * Multi-Factor Authentication kiszolgáló (örökölt)
-    * Forgalomkezelő
+    * Traffic Manager
 
 ### <a name="why-i-see-advertised-public-prefixes-status-as-validation-needed-while-configuring-microsoft-peering"></a>Miért látom a "meghirdetett nyilvános előtagok" állapotát "érvényesítés szükséges" állapotra a Microsoft-társak konfigurálása során?
 
@@ -101,7 +101,7 @@ Ha az "érvényesítés szükséges" üzenet jelenik meg, Gyűjtse össze azokat
 A Dynamics 365-és Common Data Service-(CDS-) környezetek az Azure-ban futnak, ezért az ügyfelek az Azure-erőforrások mögöttes ExpressRoute-támogatás előnyeit élvezik. Ha az útválasztó szűrője tartalmazza azokat az Azure-régiókat, amelyeken a Dynamics 365/CDS-környezetek futnak, csatlakozhat a szolgáltatási végpontokhoz.
 
 > [!NOTE]
-> A Dynamics 365-hez az Azure ExpressRoute-kapcsolaton keresztül **nem** szükséges a [ExpressRoute Premium](https://docs.microsoft.com/en-us/azure/expressroute/expressroute-faqs#expressroute-premium) használata.
+> A Dynamics 365-hez az Azure ExpressRoute-kapcsolaton keresztül **nem** szükséges a [ExpressRoute Premium](https://docs.microsoft.com/azure/expressroute/expressroute-faqs#expressroute-premium) használata.
 
 ## <a name="data-and-connections"></a>Az adatkezelés és a kapcsolatok
 

@@ -1,28 +1,24 @@
 ---
 title: Eszközállapot szinkronizálása az Azure IoT Hub szolgáltatásból | Microsoft Docs
-description: Ikereszközök használata állapotok szinkronizálásához az eszközei és saját IoT-központja között
+description: Megtudhatja, hogyan konfigurálhatja az eszközöket a felhőből, és hogyan fogadhatja el az eszköz állapotát és megfelelőségi adatait az eszközökről.
 services: iot-hub
-documentationcenter: ''
 author: wesmc7777
-manager: philmea
 ms.author: wesmc
 ms.service: iot-hub
 ms.devlang: dotnet
 ms.topic: tutorial
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 06/21/2019
 ms.custom: mvc
-ms.openlocfilehash: 4ad3013f6914abbf4c75676e7423848dff9d5e9a
-ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
+ms.openlocfilehash: 647182389ec0ad4cb2b80a0676812961cb9be770
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/22/2019
-ms.locfileid: "67330362"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73890432"
 ---
 <!-- **TODO** Update publish config with repo paths before publishing! -->
 
-# <a name="tutorial-configure-your-devices-from-a-back-end-service"></a>Oktatóanyag: Az eszközök egy háttér-szolgáltatás konfigurálásához
+# <a name="tutorial-configure-your-devices-from-a-back-end-service"></a>Oktatóanyag: Eszközök konfigurálása háttérszolgáltatásból
 
 Az eszközökről érkező telemetriai adatok fogadása mellett háttérszolgáltatásból végrehajtott eszközkonfigurációra is szükség lehet. A kívánt konfiguráció eszközökre történő elküldését követően hasznos, ha az állapotra és a megfelelőségi frissítésekre vonatkozó visszajelzést kap az érintett eszközöktől. Előfordulhat például, hogy működési hőmérsékletre vonatkozó céltartományt szeretne beállítani egy eszközhöz, vagy össze szeretné gyűjteni az eszközök belső vezérlőprogramjainak verzióadatait.
 
@@ -43,7 +39,7 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A rövid útmutatóban futtatott két mintaalkalmazás a Node.js használatával készült. Node.js v10.x.x, vagy később a fejlesztői gépén van szüksége.
+A rövid útmutatóban futtatott két mintaalkalmazás a Node.js használatával készült. A fejlesztői gépen a Node. js v10. x. x vagy újabb verziója szükséges.
 
 A Node.js-t a [nodejs.org](https://nodejs.org) oldalról töltheti le többféle platformra.
 
@@ -59,7 +55,7 @@ Töltse le a Node.js-mintaprojektet a https://github.com/Azure-Samples/azure-iot
 
 Az oktatóanyag teljesítéséhez az Azure-előfizetésnek rendelkeznie kell egy olyan IoT-központtal, amelyhez tartoznia kell egy, az eszköz identitásjegyzékéhez hozzáadott eszköznek. Az eszköz identitásjegyzékében található bejegyzés teszi lehetővé az oktatóanyagban futtatott szimulált eszköz csatlakozását a központhoz.
 
-Ha még nem rendelkezik egy IoT hubot az előfizetésében beállítása, beállíthat is egyet a következő CLI-példaszkript az. Ez a szkript a **tutorial-iot-hub** nevet használja az IoT-központhoz, de futtatáskor a nevet le kell cserélni az Ön által megadott egyedi névre. A szkript az erőforráscsoportot és a központot az **USA középső régiójában** hozza létre, de ez módosítható egy Önhöz közelebb eső régióra. A szkript lekéri az IoT Hub szolgáltatás kapcsolati sztringjét, amellyel a mintául szolgáló háttérrendszerben csatlakozhat az IoT-központhoz:
+Ha még nem rendelkezik az előfizetésben beállított IoT hub-vel, akkor a következő CLI-szkripttel állíthat be egyet. Ez a szkript a **tutorial-iot-hub** nevet használja az IoT-központhoz, de futtatáskor a nevet le kell cserélni az Ön által megadott egyedi névre. A szkript az erőforráscsoportot és a központot az **USA középső régiójában** hozza létre, de ez módosítható egy Önhöz közelebb eső régióra. A szkript lekéri az IoT Hub szolgáltatás kapcsolati sztringjét, amellyel a mintául szolgáló háttérrendszerben csatlakozhat az IoT-központhoz:
 
 ```azurecli-interactive
 hubname=tutorial-iot-hub
@@ -240,7 +236,7 @@ A következő képernyőkép bemutatja a szimulált eszközalkalmazás kimeneté
 
 ![Szimulált eszköz](./media/tutorial-device-twins/SimulatedDevice2.png)
 
-Az alábbi képernyőképen a háttér-alkalmazásból kimenetét mutatja be, és kiemeli a hogyan kap, és feldolgozza a jelentett tulajdonság frissítése az eszközről:
+Az alábbi képernyőfelvételen a háttérbeli alkalmazás kimenete látható, és kiemeli, hogyan fogadja és dolgozza fel egy jelentett tulajdonság frissítését egy eszközről:
 
 ![Háttéralkalmazás](./media/tutorial-device-twins/BackEnd2.png)
 

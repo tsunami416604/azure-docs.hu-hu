@@ -1,6 +1,6 @@
 ---
-title: A szimulált eszköz viselkedésének a távoli figyelési megoldás – Azure |} A Microsoft Docs
-description: Ez a cikk ismerteti a távoli figyelési megoldásban a szimulált eszköz viselkedésének megadása a JavaScript használatával.
+title: Szimulált eszköz távoli figyelési megoldásban – Azure | Microsoft Docs
+description: Ez a cikk azt ismerteti, hogyan használható a JavaScript a szimulált eszközök viselkedésének megadására a távoli figyelési megoldásban.
 author: dominicbetts
 manager: timlt
 ms.author: dobett
@@ -8,38 +8,38 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 01/29/2018
 ms.topic: conceptual
-ms.openlocfilehash: 04d2ad2f0e86ee977600af86a2ffd1e9d7680375
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c39ca0a018bd22844cf7e5350e6d3586319aac16
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65823420"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73890849"
 ---
-# <a name="implement-the-device-model-behavior"></a>Az eszközmodell viselkedésének megvalósítása
+# <a name="implement-the-device-model-behavior"></a>Az eszköz modellje működésének megvalósítása
 
-A cikk [az eszközmodell sémájának megismerése](iot-accelerators-remote-monitoring-device-schema.md) , amely meghatározza egy szimulált eszköz modellje sémáját. A cikkben kétféle típusú JavaScript-fájlt, amely egy szimulált eszköz viselkedésének megvalósítása lehet hivatkozni:
+A cikk az [eszköz modell sémáját](iot-accelerators-remote-monitoring-device-schema.md) ismerteti, amely a szimulált eszköz modelljét definiáló sémát írja le. Ez a cikk két, a szimulált eszköz viselkedését megvalósító JavaScript-fájltípust említett:
 
-- **Állapot** JavaScript-fájlok, amelyek a belső állapotot, az eszköz frissítéséhez rögzített időközönként futnak.
-- **Módszer** JavaScript-fájlok, amelyek futtatását, amikor a megoldás meghív egy metódust az eszközön.
+- **Állapot** Az eszköz belső állapotának frissítéséhez rögzített időközönként futtatott JavaScript-fájlok.
+- **Metódus** JavaScript-fájlok, amelyek akkor futnak, amikor a megoldás meghívja a metódust az eszközön.
 
 > [!NOTE]
-> Modell eszközműködés csak az eszköz szimulálása szolgáltatásban üzemeltetett szimulált eszközök vonatkoznak. Ha szeretne létrehozni egy igazi eszközön, tekintse meg [az eszköz csatlakoztatása a távoli figyelési megoldásgyorsító](iot-accelerators-connecting-devices.md).
+> Az eszköz modellje csak az eszköz szimulációs szolgáltatásában üzemeltetett szimulált eszközökön használható. Ha valódi eszközt szeretne létrehozni, tekintse meg [az eszköz csatlakoztatása a távoli figyelési megoldáshoz gyorssegédet](iot-accelerators-connecting-devices.md).
 
 Ebben a cikkben az alábbiakkal ismerkedhet meg:
 
 >[!div class="checklist"]
-> * Szimulált eszköz állapota
-> * Szimulált eszköz reakciója egy metódust hívhat meg, a távoli figyelési megoldás meghatározása
-> * A parancsfájlok hibakeresése
+> * Szimulált eszköz állapotának szabályozása
+> * Annak meghatározása, hogy egy szimulált eszköz hogyan válaszol a távoli figyelési megoldástól kapott metódusokra
+> * Parancsfájlok hibakeresése
 
-## <a name="state-behavior"></a>Állapot viselkedés
+## <a name="state-behavior"></a>Állapot viselkedése
 
-A [szimuláció](../../articles/iot-accelerators/iot-accelerators-remote-monitoring-device-schema.md#simulation) szakaszában az eszközmodell sémájának meghatározása egy szimulált eszközt a belső állapot:
+Az eszköz modell sémájának [szimulációs](../../articles/iot-accelerators/iot-accelerators-remote-monitoring-device-schema.md#simulation) szakasza egy szimulált eszköz belső állapotát határozza meg:
 
-- `InitialState` az eszköz állapota objektum összes tulajdonsága esetén a kezdeti értékeket határozza meg.
-- `Script` azonosítja, hogy az állapot frissítéséhez ütemezés szerint futtatott JavaScript-fájlt.
+- `InitialState` meghatározza az eszköz állapot objektum összes tulajdonságának kezdeti értékeit.
+- `Script` azonosít egy olyan JavaScript-fájlt, amely ütemezett időközönként fut az eszköz állapotának frissítéséhez.
 
-Az alábbi példa bemutatja egy szimulált hűtő eszköz az eszköz állapota objektum definíciója:
+Az alábbi példa egy szimulált hűtő eszköz eszköz állapot objektumának definícióját mutatja be:
 
 ```json
 "Simulation": {
@@ -61,9 +61,9 @@ Az alábbi példa bemutatja egy szimulált hűtő eszköz az eszköz állapota o
 }
 ```
 
-A szimulált eszközt, az állapota a `InitialState` szakaszban, a szimuláció szolgáltatás által a memóriában tárolja. Az állapotinformációkat átadott bemenetként a `main` meghatározott függvény **hűtő-01-state.js**. Ebben a példában a szimuláció szolgáltatás fut a **hűtő-01-state.js** öt másodpercenként fájlt. A parancsfájl módosításával a szimulált eszköz állapotáról.
+A szimulált eszköz állapotát a `InitialState` szakaszban meghatározottak szerint a szimulációs szolgáltatás a memóriába rendezi. Az állapotadatokat a **Chiller-01-State. js**fájlban definiált `main` függvénynek adja át bemenetként. Ebben a példában a szimulációs szolgáltatás öt másodpercenként futtatja a **Chiller-01-State. js** fájlt. A parancsfájl módosíthatja a szimulált eszköz állapotát.
 
-A következő példa a röviden ismerteti a tipikus `main` függvény:
+Az alábbi ábrán egy tipikus `main` függvény körvonala látható:
 
 ```javascript
 function main(context, previousState, previousProperties) {
@@ -78,13 +78,13 @@ function main(context, previousState, previousProperties) {
 
 A `context` paraméter a következő tulajdonságokkal rendelkezik:
 
-- `currentTime` egy karakterlánc formátumú `yyyy-MM-dd'T'HH:mm:sszzz`
-- `deviceId`, például `Simulated.Chiller.123`
-- `deviceModel`, például `Chiller`
+- `currentTime` formátumú karakterlánc formátumban `yyyy-MM-dd'T'HH:mm:sszzz`
+- `deviceId`például `Simulated.Chiller.123`
+- `deviceModel`például `Chiller`
 
-A `state` paraméter tartalmazza az eszköz állapotát, az eszköz szimulálása szolgáltatás által vezetett. Ez az érték a `state` előző hívás által visszaadott objektum `main`.
+A `state` paraméter a Device szimulációs szolgáltatás által karbantartott eszköz állapotát tartalmazza. Ez az érték az előző hívás által visszaadott `state` objektum `main`.
 
-Az alábbi példa bemutatja egy tipikus megvalósításában a `main` metódust a szimuláció szolgáltatás által kezelt eszköz állapota:
+Az alábbi példa a `main` metódus tipikus implementációját mutatja be a szimulációs szolgáltatás által kezelt eszköz állapotának kezeléséhez:
 
 ```javascript
 // Default state
@@ -118,7 +118,7 @@ function main(context, previousState, previousProperties) {
 }
 ```
 
-A következő példa bemutatja a `main` metódus szimulálhat telemetriaértékeket idővel változhatnak:
+Az alábbi példa azt szemlélteti, hogy a `main` metódus hogyan szimulálhatja a telemetria értékeket, amelyek az idő múlásával változnak:
 
 ```javascript
 /**
@@ -156,13 +156,13 @@ function main(context, previousState, previousProperties) {
 }
 ```
 
-Megtekintheti, hogy a teljes [hűtő-01-state.js](https://github.com/Azure/device-simulation-dotnet/blob/master/Services/data/devicemodels/scripts/chiller-01-state.js) a Githubon.
+A GitHubon megtekintheti a teljes [Chiller-01-State. js fájlt](https://github.com/Azure/device-simulation-dotnet/blob/master/Services/data/devicemodels/scripts/chiller-01-state.js) .
 
-## <a name="method-behavior"></a>Módszer viselkedés
+## <a name="method-behavior"></a>Metódus viselkedése
 
-A [CloudToDeviceMethods](../../articles/iot-accelerators/iot-accelerators-remote-monitoring-device-schema.md#cloudtodevicemethods) az eszközmodell sémájának szakasza határozza meg a szimulált eszköz válaszol módszereket.
+Az [CloudToDeviceMethods](../../articles/iot-accelerators/iot-accelerators-remote-monitoring-device-schema.md#cloudtodevicemethods) szakasza határozza meg a szimulált eszköz által válaszoló metódusokat.
 
-Az alábbi példa egy szimulált hűtő eszköz által támogatott módszerek listáját jeleníti meg:
+A következő példa egy szimulált hűtő eszköz által támogatott metódusok listáját mutatja be:
 
 ```json
 "CloudToDeviceMethods": {
@@ -185,11 +185,11 @@ Az alábbi példa egy szimulált hűtő eszköz által támogatott módszerek li
 }
 ```
 
-Minden egyes módszernek egy kapcsolódó JavaScript-fájlt, amely megvalósítja a metódus viselkedését.
+Minden metódushoz tartozik egy társított JavaScript-fájl, amely megvalósítja a metódus viselkedését.
 
-A szimulált eszközt, az állapota a `InitialState` szakasz a séma van a memóriában tárolja a szimuláció szolgáltatás. Az állapotinformációkat átadott bemenetként a `main` függvény definiálva a a JavaScript-fájlt, ha a metódus lehívásra kerül. A parancsfájl módosításával a szimulált eszköz állapotáról.
+A szimulált eszköz állapotát a séma `InitialState` szakasza határozza meg, a szimulációs szolgáltatás a memóriában tartja. Az állapotadatok bevitele a JavaScript-fájlban definiált `main` függvénybe bemenetként történik a metódus hívásakor. A parancsfájl módosíthatja a szimulált eszköz állapotát.
 
-A következő példa a röviden ismerteti a tipikus `main` függvény:
+Az alábbi ábrán egy tipikus `main` függvény körvonala látható:
 
 ```javascript
 function main(context, previousState, previousProperties) {
@@ -199,21 +199,21 @@ function main(context, previousState, previousProperties) {
 
 A `context` paraméter a következő tulajdonságokkal rendelkezik:
 
-- `currentTime` egy karakterlánc formátumú `yyyy-MM-dd'T'HH:mm:sszzz`
-- `deviceId`, például `Simulated.Chiller.123`
-- `deviceModel`, például `Chiller`
+- `currentTime` formátumú karakterlánc formátumban `yyyy-MM-dd'T'HH:mm:sszzz`
+- `deviceId`például `Simulated.Chiller.123`
+- `deviceModel`például `Chiller`
 
-A `state` paraméter tartalmazza az eszköz állapotát, az eszköz szimulálása szolgáltatás által vezetett.
+A `state` paraméter a Device szimulációs szolgáltatás által karbantartott eszköz állapotát tartalmazza.
 
-A `properties` paraméter az eszközt az IoT Hub ikereszköz jelentett tulajdonságokként írt tulajdonságait tartalmazza.
+A `properties` paraméter tartalmazza a jelentett tulajdonságokként írt eszköz tulajdonságait a IoT Hub Device Twin.
 
-Nincsenek a metódus viselkedésének megvalósítása érdekében használható három globális függvények:
+A metódus működésének megvalósításához három globális funkció használható:
 
-- `updateState` a szimuláció szolgáltatás által tárolt állapotban frissíteni.
-- `updateProperty` egyetlen eszköztulajdonságon frissíteni.
-- `sleep` a végrehajtás egy hosszan futó feladatot szimulálásához szüneteltetéséhez.
+- `updateState` a szimulációs szolgáltatás által őrzött állapot frissítésére.
+- `updateProperty` egyetlen eszköz tulajdonságának frissítéséhez.
+- `sleep` a végrehajtás szüneteltetésére egy hosszan futó feladat szimulálása érdekében.
 
-Az alábbi példa rövidített verzióját mutatja a **IncreasePressure-method.js** a szimulált hűtő eszköz által használt parancsfájl:
+Az alábbi példa a szimulált Chiller-eszközök által használt **IncreasePressure-Method. js** parancsfájl rövidített verzióját mutatja be:
 
 ```javascript
 function main(context, previousState, previousProperties) {
@@ -250,25 +250,25 @@ function main(context, previousState, previousProperties) {
 
 ## <a name="debugging-script-files"></a>Parancsfájlok hibakeresése
 
-Nem alkalmas csatoljon egy hibakeresőt a Javascript állapotot és metódus parancsfájlok futtatása az eszköz szimulálása szolgáltatás által használt értelmezője számára készült. Azonban információkat is bejelentkezhetnek a napló. A beépített `log()` funkció lehetővé teszi, nyomon követése és hibakeresése a függvény végrehajtási adatok mentéséhez.
+Az eszköz szimulációs szolgáltatása által használt JavaScript-tolmácshoz nem lehet hibakeresőt csatolni az állapot és a metódus parancsfájljainak futtatásához. A szolgáltatás naplójában azonban adatokat is naplózhat. A beépített `log()` funkció lehetővé teszi az adatok mentését a függvények nyomon követéséhez és hibakereséséhez.
 
-Ha nem sikerül a értelmezője számára készült, szintaktikai hiba van, és írja a `Jint.Runtime.JavaScriptException` a szolgáltatás bejelentkezési bejegyzést.
+Ha szintaktikai hiba történt, a értelmező hibát jelez, és `Jint.Runtime.JavaScriptException` bejegyzést ír a szolgáltatás naplójába.
 
-A [helyben fut a szolgáltatás](https://github.com/Azure/device-simulation-dotnet#running-the-service-locally-eg-for-development-tasks) a Githubon a cikk bemutatja, hogyan helyileg történő futtatása az eszköz szimulálása szolgáltatás. A szolgáltatás helyben fut megkönnyíti a szimulált eszközök hibakeresése a felhőbe való központi telepítésük előtt.
+A [szolgáltatás helyi futtatása](https://github.com/Azure/device-simulation-dotnet#running-the-service-locally-eg-for-development-tasks) a githubon című cikk bemutatja, hogyan futtathatja helyileg az eszköz-szimulációs szolgáltatást. A szolgáltatás helyi futtatása megkönnyíti a szimulált eszközök hibakeresését a felhőbe való üzembe helyezés előtt.
 
 ## <a name="next-steps"></a>További lépések
 
-Ez a cikk ismerteti a saját egyéni szimulált eszközmodell viselkedésének definiálása. Ez a cikk bemutatta, hogyan való:
+Ez a cikk azt ismerteti, hogyan határozható meg a saját egyéni szimulált eszköz modellje. Ez a cikk a következőket mutatja be:
 
 <!-- Repeat task list from intro -->
 >[!div class="checklist"]
-> * Szimulált eszköz állapota
-> * Szimulált eszköz reakciója egy metódust hívhat meg, a távoli figyelési megoldás meghatározása
-> * A parancsfájlok hibakeresése
+> * Szimulált eszköz állapotának szabályozása
+> * Annak meghatározása, hogy egy szimulált eszköz hogyan válaszol a távoli figyelési megoldástól kapott metódusokra
+> * Parancsfájlok hibakeresése
 
-Most, hogy megismerte a szimulált eszköz viselkedésének megadása, a javasolt következő lépésre megtudhatja, hogyan [egy szimulált eszköz létrehozása](iot-accelerators-remote-monitoring-create-simulated-device.md).
+Most, hogy megismerte, hogyan határozhatja meg egy szimulált eszköz viselkedését, a javasolt következő lépés a [szimulált eszköz létrehozásának](iot-accelerators-remote-monitoring-create-simulated-device.md)megismerése.
 
-A távoli figyelési megoldás fejlesztői ismertetését lásd:
+A távoli figyelési megoldással kapcsolatos további információkért lásd:
 
 * [Fejlesztői referencia-útmutató](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Developer-Reference-Guide)
 * [Fejlesztői hibaelhárítási útmutató](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Developer-Troubleshooting-Guide)

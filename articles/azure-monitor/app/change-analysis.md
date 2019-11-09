@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: cawams
 ms.author: cawa
 ms.date: 05/07/2019
-ms.openlocfilehash: dc572d29b4e6d95525959becad0ed8069735e33c
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: ed297a1005f67a14db1da15aba2c47c98e83df9c
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73605991"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73884987"
 ---
 # <a name="use-application-change-analysis-preview-in-azure-monitor"></a>Alkalmazás-módosítási elemzés (előzetes verzió) használata Azure Monitor
 
@@ -31,11 +31,15 @@ A következő ábra a változások elemzésének architektúráját szemlélteti
 
 ![Architektúra-diagram, amely bemutatja, hogyan módosulnak az elemzések, és hogyan biztosítható az ügyféleszközök számára](./media/change-analysis/overview.png)
 
-A változások elemzése a App Service webalkalmazásban a **problémák diagnosztizálásához és megoldásához** is integrálva van. A módosítás észlelésének engedélyezéséhez és a webalkalmazás változásainak megtekintéséhez tekintse meg a cikk későbbi, a *Web Apps funkciójának változási elemzését* ismertető szakaszát.
+A Change Analysis jelenleg a App Service webalkalmazásban található **problémák diagnosztizálásához és megoldásához** , valamint Azure Portal önálló paneljéhez van integrálva.
+Tekintse meg a *változások megtekintése az Azure-ban az összes erőforrásról* című szakaszt a Change Analysis panel eléréséhez és a *Web Apps funkciójának változási elemzéséhez* a jelen cikk későbbi, webalkalmazás-portálon való használatához.
 
-### <a name="azure-resource-manager-deployment-changes"></a>Azure Resource Manager telepítési változások
+### <a name="azure-resource-manager-tracked-properties-changes"></a>A nyomon követett tulajdonságok változásai Azure Resource Manager
 
-Az [Azure Resource Graph](https://docs.microsoft.com/azure/governance/resource-graph/overview)használatával a Change Analysis egy korábbi rekordot biztosít arról, hogy az alkalmazás által üzemeltetett Azure-erőforrások mennyi idő alatt változtak. A Change Analysis képes azonosítani például az IP-konfigurációs szabályok, a felügyelt identitások és az SSL-beállítások változásait. Tehát ha egy címkét egy webalkalmazáshoz ad hozzá, az elemzés változása a változást tükrözi. Ez az információ mindaddig elérhető, amíg a `Microsoft.ChangeAnalysis` erőforrás-szolgáltató engedélyezve van az Azure-előfizetésben.
+Az [Azure Resource Graph](https://docs.microsoft.com/azure/governance/resource-graph/overview)használatával a Change Analysis egy korábbi rekordot biztosít arról, hogy az alkalmazás által üzemeltetett Azure-erőforrások mennyi idő alatt változtak. A nyomon követett beállítások, például a felügyelt identitások, a platform operációsrendszer-frissítése és az állomásnevek is észlelhetők.
+
+### <a name="azure-resource-manager-proxied-setting-changes"></a>Azure Resource Manager proxyn végzett beállítások változásai
+A beállítások, például az IP-konfigurációs szabály, az SSL-beállítások és a bővítmény-verziók még nem érhetők el az ARG-ben, ezért az elemzési lekérdezések módosítása és a módosítások biztonságos kiszámításával további részleteket tudhat meg az alkalmazásban megváltoztatott adatokról. Ezek az információk még nem érhetők el az Azure Resource Graph-ban, de hamarosan elérhetők lesznek.
 
 ### <a name="changes-in-web-app-deployment-and-configuration-in-guest-changes"></a>A webalkalmazások telepítésének és konfigurációjának változásai (a vendég módosításaiban)
 
@@ -50,6 +54,10 @@ Jelenleg a következő függőségek támogatottak:
 - Web Apps
 - Azure Storage
 - Azure SQL
+
+### <a name="enablement"></a>Engedélyezése
+A (z) "Microsoft. ChangeAnalysis" erőforrás-szolgáltatót regisztrálni kell egy előfizetésben a Azure Resource Manager követett tulajdonságok és a proxyn lévő beállítások módosítására vonatkozó adatváltozások számára. Amikor beírja a webalkalmazást a problémák diagnosztizálásához és megoldásához, vagy a Change Analysis önálló panelt, ez az erőforrás-szolgáltató automatikusan regisztrálva lesz. Az előfizetéshez nem tartozik teljesítmény és Cost implementáció.
+A webalkalmazások vendégen belüli változásaihoz külön engedélyezés szükséges a programkódok webalkalmazásban való vizsgálatához. További részletekért tekintse meg *a változás elemzésének engedélyezése a problémák diagnosztizálása és megoldása eszközben* című szakaszát.
 
 ## <a name="viewing-changes-for-all-resources-in-azure"></a>Az Azure összes erőforrásának változásainak megtekintése
 Azure Monitor az elemzések és az alkalmazás-függőségek erőforrásaival végzett módosítások megtekintéséhez különálló panel áll rendelkezésre a Change Analysis szolgáltatáshoz.
@@ -70,7 +78,7 @@ A jelenleg támogatott erőforrások a következők:
 - Azure hálózati erőforrások
 - Webalkalmazás és a vendégen belüli fájlok követése és környezeti változók változásai
 
-Ha bármilyen visszajelzést szeretne küldeni, használja a (visszajelzés küldése) gombot a panelen vagy az e-mail-changeanalysisteam@microsoft.com. 
+Ha bármilyen visszajelzést szeretne küldeni, használja a (visszajelzés küldése) gombot a panelen vagy az e-mail-changeanalysisteam@microsoft.com.
 
 ![Képernyőkép – visszajelzés gomb a Change Analysis panelen](./media/change-analysis/change-analysis-feedback.png)
 
@@ -94,12 +102,12 @@ Azure Monitor a Change Analysis az önkiszolgáló **diagnosztizálása és a pr
 
    ![Képernyőkép az "alkalmazás-összeomlások" lehetőségeiről](./media/change-analysis/enable-changeanalysis.png)
 
-1. Kapcsolja be az **elemzést** , és válassza a **Mentés**lehetőséget.
+1. Kapcsolja be az **elemzést** , és válassza a **Mentés**lehetőséget. Az eszköz az összes webalkalmazást megjeleníti App Services csomag alatt. A csomag szintje kapcsoló használatával bekapcsolhatja a tervben szereplő összes webalkalmazáshoz tartozó változások elemzését.
 
     ![Képernyőfelvétel: a Change Analysis felhasználói felületének engedélyezése](./media/change-analysis/change-analysis-on.png)
 
 
-1. A Change Analysis szolgáltatás eléréséhez válassza a **problémák diagnosztizálása és megoldása** > a **rendelkezésre állás és a teljesítmény** > az **alkalmazás összeomlik**lehetőséget. Ekkor megjelenik egy gráf, amely összegzi a változások típusát az idő múlásával együtt a változások részleteivel együtt:
+1. A Change Analysis szolgáltatás eléréséhez válassza a **problémák diagnosztizálása és megoldása** > a **rendelkezésre állás és a teljesítmény** > az **alkalmazás összeomlik**lehetőséget. Ekkor megjelenik egy gráf, amely összefoglalja a változások típusát a változások részleteivel együtt. Alapértelmezés szerint az elmúlt 24 órában történt változások segítenek az azonnali problémák megoldásában.
 
      ![Képernyőkép a Change diff nézetről](./media/change-analysis/change-view.png)
 

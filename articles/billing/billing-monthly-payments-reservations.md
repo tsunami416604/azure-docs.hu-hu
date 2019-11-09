@@ -6,14 +6,14 @@ author: bandersmsft
 manager: yashar
 ms.service: billing
 ms.topic: conceptual
-ms.date: 09/04/2019
+ms.date: 11/01/2019
 ms.author: banders
-ms.openlocfilehash: d211334ad2aa760cd63b98c6827fb2512811a1d3
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: b1cc034b4d397f170b57e873cb9a5d74c91f83f4
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70806947"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73746464"
 ---
 # <a name="purchase-reservations-with-monthly-payments"></a>Foglalások vásárlása havi kifizetésekkel
 
@@ -24,6 +24,7 @@ A havonta fizetendő összeg a helyi pénznem aktuális hónapban érvényes át
 A havi kifizetések az alábbiak esetében érhetőek el:
 
 - Virtual machines (Virtuális gépek)
+- Azure Storage
 - SQL Database
 - SQL Data Warehouse
 - Cosmos DB
@@ -60,20 +61,6 @@ Ha egy havi kifizetéses foglalást cserél le, akkor az új vásárlás teljes 
 Ha egy havi kifizetéses foglalást mond le, a Microsoft jogosult lemondási díjat alkalmazni a lemondott jövőbeli kifizetésekért, amelyekért kötelezettséget vállalt. A fennmaradó kifizetések, amelyekért kötelezettséget vállalt, le lesznek vonva az 50 000 USD értékű visszatérítési korlátból.
 
 A cserével és a visszatérítéssel kapcsolatos további információkért lásd: [Az Azure Reservations önkiszolgáló csere- és visszatérítési szolgáltatásai](billing-azure-reservations-self-service-exchange-and-refund.md).
-
-## <a name="faq"></a>GYIK
-
-K. Van lehetőség az Azure-ban a foglalások részleges előre fizetésére?<br>
-A. Nem. Mivel az előre fizetett és a havi kifizetéses foglalások költségei megegyeznek, a Microsoft nem támogatja a részleges előre fizetést.
-
-K. Elérhető a havi fizetés a Microsoft felhőszolgáltatói (CSP-) programja esetében?<br>
-A. Igen, a partnerek jelenleg az Azure Portalon vásárolhatnak foglalásokat CSP-ügyfeleik számára. Havi számlázású foglalások vásárlására nincs lehetőség a Partnerközpontban.
-
-K. Egyesült államokbeli Azure Government-ügyfélként van lehetőségem a foglalásvásárlások havi kifizetésére?<br>
-A. Jelenleg nincs.
-
-K. Támogatási jegy létrehozása helyett mikor tudok cserét vagy visszatérítést önállóan végrehajtani az Azure Portalon?<br>
-A. Jelenleg nincs. A havi kifizetéses foglalások cserére és visszatérítésre vonatkozó kéréseit az Azure ügyfélszolgálata kezeli.
 
 ## <a name="next-steps"></a>További lépések
 

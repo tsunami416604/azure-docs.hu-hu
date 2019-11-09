@@ -1,7 +1,7 @@
 ---
 title: Karakterek száma – Translator Text API
 titleSuffix: Azure Cognitive Services
-description: A Translator Text API karakterek megszámlálása.
+description: Ez a cikk azt ismerteti, hogy az Azure Cognitive Services Translator Text API hogyan számítja ki a karaktereket, hogy megtudja, hogyan tölti be a tartalmat.
 services: cognitive-services
 author: swmachan
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 06/04/2019
 ms.author: swmachan
-ms.openlocfilehash: e3a16d9272e75f9a94f5381c1681c036d177e0f6
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: cb70b8624ac0d909511032622948f14f8764b153
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68595989"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73888163"
 ---
 # <a name="how-the-translator-text-api-counts-characters"></a>A Translator Text API karakterek megszámlálása
 
@@ -24,16 +24,16 @@ A Translator Text API a bemeneti szöveg minden Unicode-kódját karakterként s
 Az alábbiak száma:
 
 * A kérelem törzsében a Translator Text APInek átadott szöveg
-   * `Text`Fordítási, Átbetűzés és szótári keresési módszerek használatakor
-   * `Text`és `Translation` a szótár példái alapján
-* Összes jelölés: HTML, XML-címkék stb. a kérelem törzsének Text (szöveg) mezőjében. A kérelem létrehozásához használt JSON-jelölés (például "text:") nem számít.
+   * `Text` a fordítási, Átbetűzés és szótári keresési módszerek használatakor
+   * `Text` és `Translation` a szótári példák módszerének használatakor
+* Az összes Markup: HTML, XML-címke stb. a kérelem törzsének Text mezőjén belül. A kérelem létrehozásához használt JSON-jelölés (például "text:") nem számít.
 * Egyéni levél
-* Absztrakt
+* központozási
 * A szóköz, a Tab, a Markup és bármilyen típusú szóköz karakter
 * Minden Unicode-ban definiált kód pont
 * Ismétlődő fordítás, még akkor is, ha korábban már lefordította ugyanazt a szöveget
 
-A ideograms (például kínai és Japán kanji) alapuló szkriptek esetében a Translator Text API továbbra is megszámolja az Unicode-kódok számát, a ideogram egy karaktert. Kivétel: Az Unicode-alapú pótlások két karakterből állhatnak.
+A ideograms (például kínai és Japán kanji) alapuló szkriptek esetében a Translator Text API továbbra is megszámolja az Unicode-kódok számát, a ideogram egy karaktert. Kivétel: az Unicode-helyettesítő karakterek két karakternek számítanak.
 
 A kérések száma, a szavak, a bájtok vagy a mondatok nem relevánsak a karakterek számában.
 

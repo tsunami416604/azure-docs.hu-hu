@@ -8,12 +8,12 @@ author: NumberByColors
 ms.author: daviste
 ms.date: 01/03/2019
 ms.reviewer: abgreg;mbullwin
-ms.openlocfilehash: cf639be5db90e3632b8931564ac397c42e1d8403
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: b105e8ba79e99be02420ca1821f6a080b0862d6f
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72899362"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73887411"
 ---
 # <a name="send-user-context-ids-to-enable-usage-experiences-in-azure-application-insights"></a>Felhasználói környezeti azonosítók küldése a használati élmények engedélyezéséhez az Azure-ban Application Insights
 
@@ -48,7 +48,7 @@ Ha az azonosító a felhasználóval kapcsolatos személyazonosításra alkalmas
 
 ## <a name="aspnet-apps-setting-the-user-context-in-an-itelemetryinitializer"></a>ASP.NET alkalmazások: a felhasználói környezet beállítása egy ITelemetryInitializer
 
-Hozzon létre egy telemetria inicializáló a részletek [itt](https://docs.microsoft.com/azure/application-insights/app-insights-api-filtering-sampling#add-properties-itelemetryinitializer)leírtak szerint. Adja át a munkamenet-azonosítót a kérelem telemetria, és állítsa be a Context.User.Id és a Context.Session.Id.
+Hozzon létre egy telemetria inicializáló a részletek [itt](https://docs.microsoft.com/azure/application-insights/app-insights-api-filtering-sampling#addmodify-properties-itelemetryinitializer)leírtak szerint. Adja át a munkamenet-azonosítót a kérelem telemetria, és állítsa be a Context.User.Id és a Context.Session.Id.
 
 Ez a példa a felhasználói azonosítót egy olyan azonosítóra állítja be, amely a munkamenet után lejár. Ha lehetséges, használjon olyan felhasználói azonosítót, amely a munkamenetek között megmarad.
 
@@ -128,7 +128,7 @@ namespace MvcWebRole.Telemetry
 }
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - A használati tapasztalatok engedélyezéséhez kezdjen el [Egyéni eseményeket](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#trackevent) vagy [oldalletöltések](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#page-views)küldését.
 - Ha már elküldte az egyéni eseményeket vagy a lapok nézeteit, tekintse meg a használati eszközöket, amelyekkel megismerheti, hogy a felhasználók miként használják a szolgáltatást.

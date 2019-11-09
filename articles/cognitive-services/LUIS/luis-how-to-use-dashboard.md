@@ -1,7 +1,7 @@
 ---
 title: Irányítópult – Language Understanding – LUIS
 titleSuffix: Azure Cognitive Services
-description: Javítsa ki a leképezéseket az elemzési irányítópulttal, amely egy vizualizációs jelentéskészítő eszköz.
+description: Javítsa ki a leképezéseket és az entitásokat a betanított alkalmazás irányítópultján. Az irányítópult az alkalmazás általános információit jeleníti meg, és kiemeli azokat a leképezéseket, amelyeket rögzíteni kell.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 05/22/2019
+ms.date: 11/08/2019
 ms.author: diberry
-ms.openlocfilehash: 22e187bba3782e485685354c203a6273d5bcc618
-ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
+ms.openlocfilehash: d9ae126753f55349f9bf3eefd20bc4d222866af1
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70735054"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73888203"
 ---
 # <a name="how-to-use-the-dashboard-to-improve-your-app"></a>Az alkalmazás fejlesztése az irányítópult használatával
 
@@ -100,7 +100,7 @@ Ne vegyen fel hosszúságú kimondott szöveg a none (nincs) szándékba, hacsak
 
 > [!Tip]
 > Használja az oldal harmadik szakaszát a **hosszúságú kimondott szöveg (Number)** beállítással, amely egy gyors vizuális útmutató, amelynek **hosszúságú kimondott szöveg** több hosszúságú kimondott szöveg van szükség.  
-    ![Használja az "hosszúságú kimondott szöveg (szám)" lehetőséget az adategyensúlyhiány megkereséséhez.](./media/luis-how-to-use-dashboard/predictions-per-intent-number-of-utterances.png)
+    ![használja a "hosszúságú kimondott szöveg (szám)" értéket az adategyensúlyhiány megkereséséhez.](./media/luis-how-to-use-dashboard/predictions-per-intent-number-of-utterances.png)
 
 ### <a name="review-incorrect-predictions"></a>Helytelen előrejelzések áttekintése
 

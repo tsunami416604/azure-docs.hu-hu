@@ -6,12 +6,12 @@ ms.service: azure-resource-manager
 ms.topic: overview
 ms.date: 08/29/2019
 ms.author: tomfitz
-ms.openlocfilehash: f8ec833a469e3c3a9b4c88343a48e109fc5c9728
-ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
+ms.openlocfilehash: 525271fdc94e0fd1b2cafe4a5a222ce9100156ef
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71338208"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73888473"
 ---
 # <a name="azure-resource-manager-overview"></a>Az Azure Resource Manager áttekintése
 
@@ -57,13 +57,13 @@ A Resource Managerrel a következőket teheti:
 
 * A szervezet számlázásának tisztázásához tekintse meg az azonos címkével rendelkező erőforrások egy csoportjának költségeit.
 
-## <a name="understand-scope"></a>A hatókör megismerése
+## <a name="understand-scope"></a>A hatókör bemutatása
 
 Az Azure a hatókör négy szintjét biztosítja: [felügyeleti csoportok](../governance/management-groups/overview.md), előfizetések, [erőforráscsoportok](#resource-groups)és erőforrások. Az alábbi ábra ezekre a rétegekre mutat egy példát.
 
-![Scope](./media/resource-group-overview/scope-levels.png)
+![Hatókör](./media/resource-group-overview/scope-levels.png)
 
-Felügyeleti beállításokat a hatókörszintek bármelyikéhez megadhat. A kiválasztott szint határozza meg, milyen széles körben lesz alkalmazva a beállítás. Az alacsonyabb szintek öröklik a magasabb szintek beállításait. Ha például alkalmaz egy szabályzatot az [](../governance/policy/overview.md) előfizetésre, a rendszer az előfizetésben lévő összes erőforráscsoport és erőforrás esetében alkalmazza a szabályzatot. Ha az erőforráscsoport házirendjét alkalmazza, a házirend az erőforráscsoportot és annak összes erőforrását alkalmazza. Egy másik erőforráscsoport azonban nem rendelkezik ezzel a szabályzat-hozzárendeléssel.
+Felügyeleti beállításokat a hatókörszintek bármelyikéhez megadhat. A kiválasztott szint határozza meg, milyen széles körben lesz alkalmazva a beállítás. Az alacsonyabb szintek öröklik a magasabb szintek beállításait. Ha például alkalmaz egy [szabályzatot](../governance/policy/overview.md) az előfizetésre, a rendszer az előfizetésben lévő összes erőforráscsoport és erőforrás esetében alkalmazza a szabályzatot. Ha az erőforráscsoport házirendjét alkalmazza, a házirend az erőforráscsoportot és annak összes erőforrását alkalmazza. Egy másik erőforráscsoport azonban nem rendelkezik ezzel a szabályzat-hozzárendeléssel.
 
 A sablonokat felügyeleti csoportokra, előfizetésekre vagy erőforráscsoportokre is telepítheti.
 
@@ -87,7 +87,7 @@ Néhány fontos tényezőt érdemes figyelembe venni az erőforráscsoport megha
 
 Egy erőforráscsoport létrehozásakor meg kell adnia az erőforráscsoport helyét. Most felmerülhet Önben a kérdés, hogy „Miért van szüksége egy erőforráscsoportnak helyre? Ha pedig az erőforrások rendelkezhetnek az erőforrástól eltérő hellyel, akkor miért számít egyáltalán az erőforráscsoport helye?” Az erőforráscsoport erőforrásokra vonatkozó metaadatokat tárol. Amikor megad egy helyet az erőforráscsoporthoz, meg kell adnia, hogy hol tárolja a metaadatokat. Megfelelőségi okokból szükség lehet arra, hogy az adatokat egy adott régióban tárolja.
 
-Ha az erőforráscsoport régiója átmenetileg nem érhető el, az erőforráscsoport erőforrásai nem frissíthetők, mert a metaadatok nem érhetők el. A más régiókban lévő erőforrások továbbra is a várt módon fognak működni, de nem frissítheti őket. A megbízható alkalmazások létrehozásával kapcsolatos további információkért lásd: [megbízható Azure-alkalmazások tervezése](/azure/architecture/reliability/).
+Ha az erőforráscsoport régiója átmenetileg nem érhető el, az erőforráscsoport erőforrásai nem frissíthetők, mert a metaadatok nem érhetők el. A más régiókban lévő erőforrások továbbra is a várt módon fognak működni, de nem frissítheti őket. A megbízható alkalmazások létrehozásával kapcsolatos további információkért lásd: [megbízható Azure-alkalmazások tervezése](/azure/architecture/checklist/resiliency-per-service).
 
 ## <a name="resiliency-of-azure-resource-manager"></a>Azure Resource Manager rugalmassága
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 06/04/2019
 ms.author: rogirdh
-ms.openlocfilehash: d8fed68d9b830df359f8129d55f1b9911f69e8f1
-ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
+ms.openlocfilehash: 71caa6730e3a00f3aa80329d6b87d2531fdd8049
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/08/2019
-ms.locfileid: "70802257"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73891468"
 ---
 # <a name="overview-of-oracle-applications-and-solutions-on-azure"></a>Az Azure-beli Oracle-alkalmazások és-megoldások áttekintése
 
@@ -54,9 +54,9 @@ Vállalati alkalmazások futtatása az Azure-ban támogatott Oracle operációs 
 
 ## <a name="backup-oracle-workloads"></a>Oracle számítási feladatok biztonsági mentése
 
-* Oracle-alapú virtuális gépek biztonsági mentése [Azure Backup](https://docs.microsoft.com/en-us/azure/backup/backup-overview) használatával
+* Oracle-alapú virtuális gépek biztonsági mentése [Azure Backup](https://docs.microsoft.com/azure/backup/backup-overview) használatával
 
-* Készítsen biztonsági másolatot a Oracle Database Oracle Oláh Anna, és opcionálisan az [Azure Blob Fuse](https://docs.microsoft.com/en-us/azure/storage/blobs/storage-how-to-mount-container-linux) használatával csatlakoztathat egy nagyvállalati szintű [Azure Blob Storage-fiókot](https://docs.microsoft.com/en-us/azure/storage/common/storage-redundancy) , és a Oláh Anna biztonsági másolatait is megírhatja a rugalmasság érdekében.
+* Készítsen biztonsági másolatot a Oracle Database Oracle Oláh Anna, és opcionálisan az [Azure Blob Fuse](https://docs.microsoft.com/azure/storage/blobs/storage-how-to-mount-container-linux) használatával csatlakoztathat egy nagyvállalati szintű [Azure Blob Storage-fiókot](https://docs.microsoft.com/azure/storage/common/storage-redundancy) , és a Oláh Anna biztonsági másolatait is megírhatja a rugalmasság érdekében.
 
 ## <a name="integration-of-azure-with-oci-preview"></a>Az Azure integrálása a OCI (előzetes verzió)
 
@@ -82,7 +82,7 @@ Az Azure-ban olyan egyéni alkalmazásokat is üzembe helyezhet, amelyek a OCI �
 Az Azure-ban futó Oracle-alkalmazásokkal együtt Oracle Database Cloud Services (autonóm adatbázis, RAC, Exadata, DBaaS, Single node) használható. További információ a [OCI adatbázis-beállításairól](https://docs.cloud.oracle.com/iaas/Content/Database/Concepts/databaseoverview.htm). 
  
 
-## <a name="licensing"></a>Licencelés
+## <a name="licensing"></a>Licencek
 
 Az Oracle-alkalmazások Azure-beli üzembe helyezése a "saját licenc használata" modellen alapul. Feltételezi, hogy Ön megfelelő licenccel rendelkezik az Oracle-szoftverek használatához, valamint arról, hogy az Oracle-vel meglévő támogatási szerződése van érvényben. Az Oracle garantálta a helyszíni Azure-ba történő licenc-mobilitást. Tekintse meg az Oracle-Azure [GYIK](https://www.oracle.com/cloud/technologies/oracle-azure-faq.html)-et.
 

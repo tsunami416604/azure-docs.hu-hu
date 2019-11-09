@@ -7,13 +7,13 @@ manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 09/17/2019
-ms.openlocfilehash: 6c61bc6075b3f0713dd790f1b3aa1a47af9d8e6c
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.date: 11/07/2019
+ms.openlocfilehash: 723fe14db9089e1127f39eae3ed7b10bbddf70bf
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71950019"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73889713"
 ---
 # <a name="device-connectivity-and-telemetry-ingress"></a>Eszközkapcsolatok és bemenő telemetriaadatok
 
@@ -39,7 +39,7 @@ A következő részekben megtudhatja, hogyan kérheti le a IoT Hub eszköz kapcs
 
 [!INCLUDE [Digital Twins Management API](../../includes/digital-twins-management-api.md)]
 
-Az eszköz API-ját egy `includes=ConnectionString` paraméterrel megadhatja az IoT Hub eszköz kapcsolódási karakterláncának beolvasásához. Az eszköz GUID azonosítóját vagy a hardver AZONOSÍTÓját szűrheti az adott eszköz kereséséhez.
+A IoT Hub eszköz kapcsolódási karakterláncának beszerzéséhez vegyen fel egy GET hívást az eszköz API-val egy `includes=ConnectionString` paraméterrel. Az eszköz GUID azonosítóját vagy a hardver AZONOSÍTÓját szűrheti az adott eszköz kereséséhez.
 
 ```plaintext
 YOUR_MANAGEMENT_API_URL/devices/YOUR_DEVICE_GUID?includes=ConnectionString
@@ -65,11 +65,11 @@ Testre szabhatja az eszköz üzenetének formátumát és a hasznos adatokat, ho
 
 ### <a name="telemetry-properties"></a>Telemetria tulajdonságai
 
- Az **üzenetek** hasznos adatai akár 256 KB-os méretig is lehetnek tetszőleges adattartalom. A [`Message.Properties`](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.message.properties?view=azure-dotnet) típusú tulajdonságok esetében néhány követelménynek kell szerepelnie. A táblázat a rendszer által támogatott kötelező és választható tulajdonságokat jeleníti meg.
+ Az **üzenetek** hasznos adatai akár 256 KB-os méretig is lehetnek tetszőleges adattartalom. A [`Message.Properties`](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.message.properties?view=azure-dotnet) típus tulajdonságainál néhány követelménynek kell szerepelnie. A táblázat a rendszer által támogatott kötelező és választható tulajdonságokat jeleníti meg.
 
-| Tulajdonság neve | Value | Szükséges | Leírás |
+| Tulajdonság neve | Érték | Kötelező | Leírás |
 |---|---|---|---|
-| **DigitalTwins-Telemetry** | 1.0 | Igen | Egy állandó érték, amely az üzenetet azonosítja a rendszernek. |
+| **DigitalTwins – telemetria** | 1.0 | Igen | Egy állandó érték, amely az üzenetet azonosítja a rendszernek. |
 | **DigitalTwins-SensorHardwareId** | `string(72)` | Igen | Az **üzenetet**küldő érzékelő egyedi azonosítója. Ennek az értéknek meg kell egyeznie egy objektum **HardwareId** tulajdonságával, hogy a rendszer feldolgozza azt. Például: `00FF0643BE88-CO2`. |
 | **CreationTimeUtc** | `string` | Nem | [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) formázott dátum sztring, amely azonosítja a hasznos adatok mintavételi idejét. Például: `2018-09-20T07:35:00.8587882-07:00`. |
 | **CorrelationId** | `string` | Nem | Egy UUID, amely a rendszer eseményeinek nyomon követésére szolgál. Például: `cec16751-ab27-405d-8fe6-c68e1412ce1f`.

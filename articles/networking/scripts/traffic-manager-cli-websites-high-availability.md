@@ -1,30 +1,27 @@
 ---
-title: Az Azure CLI-Példaszkript – forgalom irányítása az alkalmazások magas rendelkezésre állású |} A Microsoft Docs
-description: Az Azure CLI-Példaszkript – forgalom irányítása az alkalmazások magas rendelkezésre állás
+title: Azure CLI-parancsfájl – példa – az alkalmazások magas rendelkezésre állásának irányítására szolgáló forgalom irányítása | Microsoft Docs
+description: Azure CLI-parancsfájl – példa – az alkalmazások magas rendelkezésre állásának irányítására szolgáló forgalom
 services: traffic-manager
 documentationcenter: traffic-manager
-author: KumudD
-manager: timlt
-editor: tysonn
-tags: azure-infrastructure
-ms.assetid: ''
+author: asudbring
+manager: KumudD
 ms.service: traffic-manager
 ms.devlang: azurecli
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: traffic-manager
 ms.date: 06/26/2018
-ms.author: kumud
-ms.openlocfilehash: 3922eb76fa0954b9c02cc86f98acb142cc1d1fee
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: allensu
+ms.openlocfilehash: fdd54039cd3e039439c70e02b962e56d72efa715
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60565309"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73890263"
 ---
-# <a name="route-traffic-for-high-availability-of-applications"></a>Forgalom irányítása az alkalmazások magas rendelkezésre állás
+# <a name="route-traffic-for-high-availability-of-applications"></a>Forgalom irányítása az alkalmazások magas rendelkezésre állása érdekében
 
-Ez a szkript létrehoz egy erőforráscsoportot, két app service-csomagot, két webalkalmazást, egy traffic manager-profilt és két traffic manager-végpontot. A TRAFFIC Manager irányítja a forgalmat az alkalmazás egy adott régióban, az elsődleges régióban, és a másodlagos régióba, amikor az alkalmazás az elsődleges régióban nem érhető el. Előtt hajtsa végre a parancsprogramot, módosítania kell a MyWebApp, MyWebAppL1 és MyWebAppL2 értékek egyedi értékeket az Azure-ban. A szkript futtatása után az alkalmazás az elsődleges régióban, az az URL-cím mywebapp.trafficmanager.net érheti el.
+Ez a szkript létrehoz egy erőforráscsoportot, két app Service-csomagot, két webalkalmazást, egy Traffic Manager-profilt és két Traffic Manager-végpontot. Traffic Manager a forgalmat az egyik régióban az elsődleges régióként, a másodlagos régióba irányítja, ha az elsődleges régióban lévő alkalmazás nem érhető el. A szkript végrehajtása előtt módosítania kell a MyWebApp, a MyWebAppL1 és a MyWebAppL2 értékeket az Azure-ban lévő egyedi értékekre. A szkript futtatása után az elsődleges régióban elérheti az alkalmazást az URL-mywebapp.trafficmanager.net.
 
 [!INCLUDE [sample-cli-install](../../../includes/sample-cli-install.md)]
 
@@ -37,7 +34,7 @@ Ez a szkript létrehoz egy erőforráscsoportot, két app service-csomagot, két
 
 ## <a name="clean-up-deployment"></a>Az üzemelő példány eltávolítása 
 
-A példaszkript futtatása után az alábbi parancs segítségével törölheti az erőforráscsoportot, App Service-alkalmazást, és az összes kapcsolódó erőforrás.
+A parancsfájl-minta futtatása után az alábbi paranccsal eltávolítható az erőforráscsoport, App Service az alkalmazás és az összes kapcsolódó erőforrás.
 
 ```azurecli
 az group delete --name myResourceGroup1 --yes
@@ -51,13 +48,13 @@ A szkript a következő parancsokat használja egy erőforráscsoport, egy webal
 | Parancs | Megjegyzések |
 |---|---|
 | [az group create](https://docs.microsoft.com/cli/azure/group) | Létrehoz egy erőforráscsoportot, amely az összes erőforrást tárolja. |
-| [az appservice plan create](https://docs.microsoft.com/cli/azure/appservice/plan) | Létrehoz egy App Service-csomagot. Ez olyan, mint az Azure-alapú webes alkalmazás kiszolgálófarmot. |
-| [az webapp create](https://docs.microsoft.com/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) | Létrehoz egy Azure-webalkalmazást az App Service-csomag belül. |
-| [az network traffic-manager-profil létrehozása](https://docs.microsoft.com/cli/azure/network/traffic-manager/profile) | Létrehoz egy Azure Traffic Manager-profilt. |
-| [az network traffic-manager-végpont létrehozása](https://docs.microsoft.com/cli/azure/network/traffic-manager/endpoint) | Hozzáad egy végpontot egy Azure Traffic Manager-profilhoz. |
+| [az appservice plan create](https://docs.microsoft.com/cli/azure/appservice/plan) | Létrehoz egy App Service-csomagot. Ez olyan, mint egy kiszolgálófarm az Azure-webalkalmazáshoz. |
+| [az webapp create](https://docs.microsoft.com/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) | Létrehoz egy Azure-webalkalmazást a App Service tervben. |
+| [az Network Traffic-Manager Profile Create](https://docs.microsoft.com/cli/azure/network/traffic-manager/profile) | Létrehoz egy Azure Traffic Manager-profilt. |
+| [az Network Traffic-Manager Endpoint Create](https://docs.microsoft.com/cli/azure/network/traffic-manager/endpoint) | Hozzáad egy végpontot egy Azure Traffic Manager-profilhoz. |
 
 ## <a name="next-steps"></a>További lépések
 
 Az Azure CLI-vel kapcsolatos további információért lásd az [Azure CLI dokumentációját](https://docs.microsoft.com/cli/azure).
 
-További App Service CLI-példaszkripteket megtalálható a [dokumentáció az Azure-hálózatot](../cli-samples.md).
+További App Service CLI-szkriptek az [Azure hálózati dokumentációjában](../cli-samples.md)találhatók.

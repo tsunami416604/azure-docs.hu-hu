@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 10/12/2018
 ms.author: robinsh
-ms.openlocfilehash: 11e2a02277a47e070f91e8f057f0d8493235c5ce
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: 183b85ad8a61c76942981ebb764512b8a090b0a8
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72821353"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73890449"
 ---
 # <a name="communicate-with-your-iot-hub-using-the-mqtt-protocol"></a>Kommunikáció az IoT hub használatával a MQTT protokollal
 
@@ -132,7 +132,7 @@ A tárház tartalma:
 
 • DeviceTwinMQTTWin32: olyan kódot tartalmaz, amely lekérdezi és Előfizeti a Windows rendszerű számítógépeken lévő Azure IoT hub eszközön található eszközök kettős eseményeit.
 
-• PnPMQTTWin32: olyan kódot tartalmaz, amely egy telemetria-üzenetet küld a IoT beépülő & modulnak, amely a Windows rendszerű gépeken létrehozott és futtatott Azure-beli IoT-eszközökön is megtekinthető. További információ a IoT Plug & [játékról](https://docs.microsoft.com/en-us/azure/iot-pnp/overview-iot-plug-and-play)
+• PnPMQTTWin32: olyan kódot tartalmaz, amely egy telemetria-üzenetet küld a IoT beépülő & modulnak, amely a Windows rendszerű gépeken létrehozott és futtatott Azure-beli IoT-eszközökön is megtekinthető. További információ a IoT Plug & [játékról](https://docs.microsoft.com/azure/iot-pnp/overview-iot-plug-and-play)
 
 **Linux esetén:**
 
@@ -142,7 +142,7 @@ A tárház tartalma:
 
 **Mosquito_pub esetén:**
 
-• Ez a mappa két mintát tartalmaz, amelyeket a Mosquitto.org által biztosított mosquitto_pub segédprogram eszközzel használ.
+• Ez a mappa két mintát tartalmaz, amelyeket a Mosquitto.org által biztosított mosquitto_pub Utility eszközzel használ.
 
 Mosquitto_sendmessage: egyszerű szöveges üzenet küldése egy eszközként működő Azure IoT hub-nak.
 
@@ -181,7 +181,7 @@ pip install paho-mqtt
 
 Ezután implementálja az ügyfelet egy Python-parancsfájlban. Cserélje le a helyőrzőket a következőképpen:
 
-* `<local path to digicert.cer>` egy helyi fájl elérési útja, amely a DigiCert Baltimore főtanúsítványát tartalmazza. Ezt a fájlt úgy is létrehozhatja, hogy átmásolja a tanúsítvány információit a C Azure IoT SDK [-ban.](https://github.com/Azure/azure-iot-sdk-c/blob/master/certs/certs.c) adja meg a sorokat `-----BEGIN CERTIFICATE-----` és `-----END CERTIFICATE-----`, távolítsa el az `"` jeleket az egyes sorok elején és végén, és távolítsa el a `\r\n` karaktereket az e végén. nagyon egyenes.
+* `<local path to digicert.cer>` egy helyi fájl elérési útja, amely a DigiCert Baltimore főtanúsítványát tartalmazza. Ezt a fájlt úgy is létrehozhatja, hogy átmásolja a tanúsítvány adatait a (z) C Azure IoT SDK [-ban.](https://github.com/Azure/azure-iot-sdk-c/blob/master/certs/certs.c) a sorok közé tartozik a `-----BEGIN CERTIFICATE-----` és a `-----END CERTIFICATE-----`, az összes sor elején és végén távolítsa el a `"` jeleket, és távolítsa el a `\r\n` karaktereket minden sor végén.
 
 * `<device id from device registry>` az IoT hub-hoz hozzáadott eszköz azonosítója.
 
@@ -256,7 +256,7 @@ client.connect(iot_hub_name+".azure-devices.net", port=8883)
 
 ## <a name="sending-device-to-cloud-messages"></a>Eszközről a felhőbe irányuló üzenetek küldése
 
-A sikeres kapcsolódást követően az eszközök `devices/{device_id}/messages/events/` vagy `devices/{device_id}/messages/events/{property_bag}` használatával küldhetnek üzeneteket IoT Hub a **témakör neveként**. A `{property_bag}` elem lehetővé teszi, hogy az eszköz további tulajdonságokkal rendelkező üzeneteket küldjön URL-kódolású formátumban. Példa:
+A sikeres kapcsolódást követően az eszközök `devices/{device_id}/messages/events/` vagy `devices/{device_id}/messages/events/{property_bag}` használatával küldhetnek üzeneteket IoT Hub a **témakör neveként**. A `{property_bag}` elem lehetővé teszi, hogy az eszköz további tulajdonságokkal rendelkező üzeneteket küldjön URL-kódolású formátumban. Például:
 
 ```text
 RFC 2396-encoded(<PropertyName1>)=RFC 2396-encoded(<PropertyValue1>)&RFC 2396-encoded(<PropertyName2>)=RFC 2396-encoded(<PropertyValue2>)…
@@ -287,7 +287,7 @@ Ha egy eszköz egy, a **QoS 2-es**verzióra való előfizetést tartalmaz, a IoT
 
 ## <a name="retrieving-a-device-twins-properties"></a>Az eszközök Twin tulajdonságainak beolvasása
 
-Először egy eszköz előfizet a `$iothub/twin/res/#`ra, hogy megkapja a művelet válaszait. Ezt követően üres üzenetet küld a `$iothub/twin/GET/?$rid={request id}` témakörnek, amely a **kérelem azonosítójának**feltöltésére szolgál. A szolgáltatás ezután elküld egy válaszüzenetet, amely tartalmazza az eszköz Twin-adatokat a (z) `$iothub/twin/res/{status}/?$rid={request id}` témakörben, a kérelem **azonosítójának** használatával.
+Először egy eszköz előfizet a `$iothub/twin/res/#`ra, hogy megkapja a művelet válaszait. Ezt követően üres üzenetet küld a `$iothub/twin/GET/?$rid={request id}`témakörnek, amely a **kérelem azonosítójának**feltöltésére szolgál. A szolgáltatás ezután elküld egy válaszüzenetet, amely tartalmazza az eszköz Twin-adatokat a (z) `$iothub/twin/res/{status}/?$rid={request id}`témakörben, a kérelem **azonosítójának** használatával.
 
 A kérelem azonosítója lehet bármely érvényes érték az üzenet tulajdonságának értékeként, a [IoT hub üzenetkezelési fejlesztői útmutatója](iot-hub-devguide-messaging.md)szerint, az állapot pedig egész számként lesz érvényesítve.
 
@@ -309,7 +309,7 @@ A válasz törzse a Twin eszköz tulajdonságok szakaszát tartalmazza, ahogy az
 
 A lehetséges állapotkódok a következők:
 
-|Állapot | Leírás |
+|status | Leírás |
 | ----- | ----------- |
 | 204 | Sikeres (a rendszer nem ad vissza tartalmat) |
 | 429 | Túl sok kérés (szabályozott) a [IoT hub szabályozása](iot-hub-devguide-quotas-throttling.md) szerint |
@@ -329,7 +329,7 @@ A következő szakasz azt ismerteti, hogyan frissíti az eszköz a jelentett tul
 
 3. A szolgáltatás ezután egy válaszüzenetet küld, amely tartalmazza a jelentett tulajdonságok gyűjtemény új ETag értékét a következő témakörben: `$iothub/twin/res/{status}/?$rid={request id}`. Ez a válaszüzenet ugyanazt a **kérés-azonosítót** használja, mint a kérelem.
 
-A kérelem üzenet törzse tartalmaz egy JSON-dokumentumot, amely a jelentett tulajdonságok új értékeit tartalmazza. A JSON-dokumentum minden tagja frissíti vagy hozzáadja a megfelelő tagot az eszköz Twin dokumentumához. Egy `null`re beállított tag törli a tagot a tartalmazó objektumból. Példa:
+A kérelem üzenet törzse tartalmaz egy JSON-dokumentumot, amely a jelentett tulajdonságok új értékeit tartalmazza. A JSON-dokumentum minden tagja frissíti vagy hozzáadja a megfelelő tagot az eszköz Twin dokumentumához. Egy `null`re beállított tag törli a tagot a tartalmazó objektumból. Például:
 
 ```json
 {
@@ -340,7 +340,7 @@ A kérelem üzenet törzse tartalmaz egy JSON-dokumentumot, amely a jelentett tu
 
 A lehetséges állapotkódok a következők:
 
-|Állapot | Leírás |
+|status | Leírás |
 | ----- | ----------- |
 | 200 | Sikeres |
 | 400 | Hibás kérelem. Helytelen formátumú JSON |
@@ -361,13 +361,13 @@ client.publish("$iothub/twin/PATCH/properties/reported/?$rid=" +
                rid, twin_reported_property_patch, qos=0)
 ```
 
-A két jelentett tulajdonság frissítési műveletének sikeressége után a IoT Hub közzétételére szolgáló üzenet a következő témakörrel fog rendelkezni: `$iothub/twin/res/204/?$rid=1&$version=6`, ahol a `204` a sikert jelző állapotkód, `$rid=1` az eszköz által megadott kérelem-AZONOSÍTÓnak felel meg a kód és a `$version` a frissítés után az eszközök ikrek által jelentett tulajdonságok szakaszának felel meg.
+A két jelentett tulajdonság a fenti frissítési művelet sikeressége után a IoT Hub közzétételére vonatkozó üzenet a következő témakörben fog megjelenni: `$iothub/twin/res/204/?$rid=1&$version=6`, ahol a `204` a sikert jelző állapotkód, `$rid=1` az eszköz által a kódban megadott kérelem-AZONOSÍTÓnak felel meg, és `$version` a frissítés után a jelentett tulajdonságok szakaszának verziószámára vonatkozik.
 
 További információ: [Device ikrek fejlesztői útmutatója](iot-hub-devguide-device-twins.md).
 
 ## <a name="receiving-desired-properties-update-notifications"></a>A kívánt tulajdonságok frissítési értesítéseinek fogadása
 
-Ha egy eszköz csatlakoztatva van, IoT Hub értesítést küld a témakör `$iothub/twin/PATCH/properties/desired/?$version={new version}`, amely tartalmazza a megoldás hátterében végrehajtott frissítés tartalmát. Példa:
+Ha egy eszköz csatlakoztatva van, IoT Hub értesítést küld a témakör `$iothub/twin/PATCH/properties/desired/?$version={new version}`, amely tartalmazza a megoldás hátterében végrehajtott frissítés tartalmát. Például:
 
 ```json
 {
@@ -388,7 +388,7 @@ További információ: [Device ikrek fejlesztői útmutatója](iot-hub-devguide-
 
 Első lépésként az eszköznek `$iothub/methods/POST/#`ra kell előfizetnie. IoT Hub metódus-kérelmeket küld a témakörnek `$iothub/methods/POST/{method name}/?$rid={request id}`, amely érvényes JSON-vagy üres törzstel rendelkezik.
 
-A válaszadáshoz az eszköz egy érvényes JSON-vagy üres törzsű üzenetet küld a `$iothub/methods/res/{status}/?$rid={request id}` témakörnek. Ebben az üzenetben a **kérelem azonosítójának** egyeznie kell a kérelem üzenetében szereplővel, és az **állapotnak** egész számnak kell lennie.
+A válaszadáshoz az eszköz egy érvényes JSON-vagy üres törzsű üzenetet küld a `$iothub/methods/res/{status}/?$rid={request id}`témakörnek. Ebben az üzenetben a **kérelem azonosítójának** egyeznie kell a kérelem üzenetében szereplővel, és az **állapotnak** egész számnak kell lennie.
 
 További információ: a [közvetlen módszer fejlesztői útmutatója](iot-hub-devguide-direct-methods.md).
 
@@ -396,7 +396,7 @@ További információ: a [közvetlen módszer fejlesztői útmutatója](iot-hub-
 
 Végső megfontolásként, ha testre kell szabnia a MQTT protokoll viselkedését a felhős oldalon, tekintse át az [Azure IoT Protocol Gatewayt](iot-hub-protocol-gateway.md). Ez a szoftver lehetővé teszi egy olyan nagy teljesítményű egyéni protokoll-átjáró üzembe helyezését, amely közvetlenül a IoT Hub. Az Azure IoT Protocol Gateway lehetővé teszi, hogy testreszabja az eszköz protokollját, hogy az rozsdaövezetek rehabilitálása MQTT-telepítések vagy más egyéni protokollok is megfeleljenek. Ez a megközelítés azonban megköveteli, hogy egy egyéni protokoll-átjárót futtasson és működtessen.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ha többet szeretne megtudni az MQTT protokollról, tekintse meg a [MQTT dokumentációját](https://mqtt.org/documentation).
 

@@ -11,12 +11,12 @@ author: jpe316
 ms.reviewer: larryfr
 ms.date: 09/13/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: df2f22f91cbed17035485d25369965d3284dbaf7
-ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
+ms.openlocfilehash: 0d478b56d7be4ae0c7f2403f9960e5eed59e2b4d
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73622389"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73888647"
 ---
 # <a name="deploy-models-with-azure-machine-learning"></a>Modellek üzembe helyezése Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -88,7 +88,7 @@ Az ebben a szakaszban szereplő kódrészletek bemutatják, hogyan regisztrálha
     print(model.name, model.id, model.version, sep='\t')
     ```
 
-    A `model_path` paraméter a modell Felhőbeli helyét jelöli. Ebben a példában egyetlen fájl elérési útját használjuk. Ha több fájlt szeretne felvenni a modell-regisztrációba, állítsa `model_path` a fájlokat tartalmazó mappa elérési útjára. További információt a [Run. register_model](https://review.docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py&branch=master#register-model-model-name--model-path-none--tags-none--properties-none--model-framework-none--model-framework-version-none--description-none--datasets-none----kwargs-) dokumentációjában talál.
+    A `model_path` paraméter a modell Felhőbeli helyét jelöli. Ebben a példában egyetlen fájl elérési útját használjuk. Ha több fájlt szeretne felvenni a modell-regisztrációba, állítsa `model_path` a fájlokat tartalmazó mappa elérési útjára. További információ: [Run. register_model](https://review.docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py&branch=master#register-model-model-name--model-path-none--tags-none--properties-none--model-framework-none--model-framework-version-none--description-none--datasets-none----kwargs-) dokumentáció.
 
   + Modell regisztrálása egy `azureml.train.automl.run.AutoMLRun` objektumból:
 
@@ -101,7 +101,7 @@ Az ebben a szakaszban szereplő kódrészletek bemutatják, hogyan regisztrálha
 
     Ebben a példában a `metric` és `iteration` paraméterek nincsenek megadva, ezért a rendszer a legjobb elsődleges metrikával rendelkező iterációt regisztrálja. A rendszer a futtatásból visszaadott `model_id` értéket használja a modell neve helyett.
 
-    További információt a [AutoMLRun. register_model](https://review.docs.microsoft.com/python/api/azureml-train-automl/azureml.train.automl.run.automlrun?view=azure-ml-py&branch=master#register-model-description-none--tags-none--iteration-none--metric-none-) dokumentációjában talál.
+    További információ: [AutoMLRun. register_model](https://review.docs.microsoft.com/python/api/azureml-train-automl/azureml.train.automl.run.automlrun?view=azure-ml-py&branch=master#register-model-description-none--tags-none--iteration-none--metric-none-) dokumentáció.
 
 + **A parancssori felület használata**
 
@@ -204,9 +204,9 @@ A következő két módon kereshet modelleket a nevezési parancsfájlban:
 
 ##### <a name="azureml_model_dir"></a>AZUREML_MODEL_DIR
 
-A AZUREML_MODEL_DIR egy, a szolgáltatás telepítése során létrehozott környezeti változó. Ezt a környezeti változót használhatja a telepített modell (ek) helyének megkereséséhez.
+AZUREML_MODEL_DIR a szolgáltatás telepítése során létrehozott környezeti változó. Ezt a környezeti változót használhatja a telepített modell (ek) helyének megkereséséhez.
 
-A következő táblázat a AZUREML_MODEL_DIR értékét írja le az üzembe helyezett modellek számától függően:
+A következő táblázat a telepített modellek számától függően AZUREML_MODEL_DIR értékét ismerteti:
 
 | Környezet | Környezeti változó értéke |
 | ----- | ----- |
@@ -228,7 +228,7 @@ model_path = os.path.join(os.getenv('AZUREML_MODEL_DIR'), 'sklearn_model/1/sklea
 
 ##### <a name="get_model_path"></a>get_model_path
 
-Modell regisztrálása esetén meg kell adnia a modellnek a beállításjegyzékben való kezeléséhez használt modell nevét. Ezt a nevet használja a [Model. Get _model_path ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#get-model-path-model-name--version-none---workspace-none-) metódussal, hogy lekérje a modell fájljának vagy fájljainak elérési útját a helyi fájlrendszerben. Ha egy mappát vagy fájl-gyűjteményt regisztrál, az API a fájlokat tartalmazó könyvtár elérési útját adja vissza.
+Modell regisztrálása esetén meg kell adnia a modellnek a beállításjegyzékben való kezeléséhez használt modell nevét. Ezt a nevet használja a [Model. get_model_path ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#get-model-path-model-name--version-none---workspace-none-) metódussal, hogy lekérje a modell fájljának vagy fájljainak elérési útját a helyi fájlrendszerben. Ha egy mappát vagy fájl-gyűjteményt regisztrál, az API a fájlokat tartalmazó könyvtár elérési útját adja vissza.
 
 Modell regisztrálása esetén a nevet adja meg. A név a modell elhelyezésének helyét adja meg helyileg vagy a szolgáltatás telepítése során.
 
@@ -627,7 +627,7 @@ Ha engedélyezte a kulcs hitelesítését a szolgáltatáshoz, meg kell adnia eg
 Ha engedélyezte a jogkivonat-hitelesítést a szolgáltatáshoz, meg kell adnia egy Azure Machine Learning JWT tokent tulajdonosi jogkivonatként a kérelem fejlécében.
 
 > [!TIP]
-> A séma JSON-dokumentum a szolgáltatás telepítése után kérhető le. Használja az [swagger_uri tulajdonságot](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.local.localwebservice?view=azure-ml-py#swagger-uri) az üzembe helyezett webszolgáltatásból (például `service.swagger_uri`) a helyi webszolgáltatás hencegő fájljához tartozó URI beszerzéséhez.
+> A séma JSON-dokumentum a szolgáltatás telepítése után kérhető le. Használja a központilag telepített webszolgáltatás [swagger_uri tulajdonságát](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.local.localwebservice?view=azure-ml-py#swagger-uri) (például `service.swagger_uri`) a helyi webszolgáltatás hencegő fájljához tartozó URI beszerzéséhez.
 
 ### <a name="request-response-consumption"></a>Kérelem – válasz felhasználás
 
@@ -661,7 +661,7 @@ További információ: [ügyfélalkalmazások létrehozása webszolgáltatások 
 
 ### <a name="web-service-schema-openapi-specification"></a>Webszolgáltatás sémája (OpenAPI-specifikáció)
 
-Ha a központi telepítéshez automatikus séma-létrehozást használt, a [swagger_uri tulajdonság](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.local.localwebservice?view=azure-ml-py#swagger-uri)használatával lekérheti a szolgáltatás OpenAPI-specifikációjának a címeit. (Például `print(service.swagger_uri)`.) Használja a GET kérelmet, vagy nyissa meg az URI-t egy böngészőben a specifikáció lekéréséhez.
+Ha a központi telepítéshez automatikus sémát használ, a [swagger_uri tulajdonság](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.local.localwebservice?view=azure-ml-py#swagger-uri)használatával lekérheti a szolgáltatás OpenAPI-specifikációjának a címeit. (Például `print(service.swagger_uri)`.) Használja a GET kérelmet, vagy nyissa meg az URI-t egy böngészőben a specifikáció lekéréséhez.
 
 A következő JSON-dokumentum egy példa egy központi telepítéshez létrehozott sémára (OpenAPI-specifikáció):
 
@@ -858,6 +858,78 @@ CLI
 az ml model download --model-id mymodel:1 --target-dir model_folder
 ```
 
+## <a name="preview-no-code-model-deployment"></a>Előnézet Nem kód modell telepítése
+
+A nem kód modellek üzembe helyezése jelenleg előzetes verzióban érhető el, és a következő Machine learning-keretrendszereket támogatja:
+
+### <a name="tensorflow-savedmodel-format"></a>Tensorflow SavedModel formátuma
+
+```python
+from azureml.core import Model
+
+model = Model.register(workspace=ws,
+                       model_name='flowers',                        # Name of the registered model in your workspace.
+                       model_path='./flowers_model',                # Local Tensorflow SavedModel folder to upload and register as a model.
+                       model_framework=Model.Framework.TENSORFLOW,  # Framework used to create the model.
+                       model_framework_version='1.14.0',            # Version of Tensorflow used to create the model.
+                       description='Flowers model')
+
+service_name = 'tensorflow-flower-service'
+service = Model.deploy(ws, service_name, [model])
+```
+
+### <a name="onnx-models"></a>ONNX-modellek
+
+A ONNX-modell regisztrálása és üzembe helyezése bármely ONNX-következtetési gráf esetében támogatott. Az előfeldolgozási és a utófeldolgozás lépések jelenleg nem támogatottak.
+
+Íme egy példa arra, hogyan regisztrálhatók és telepíthetők egy MNIST ONNX-modell:
+
+```python
+from azureml.core import Model
+
+model = Model.register(workspace=ws,
+                       model_name='mnist-sample',                  # Name of the registered model in your workspace.
+                       model_path='mnist-model.onnx',              # Local ONNX model to upload and register as a model.
+                       model_framework=Model.Framework.ONNX ,      # Framework used to create the model.
+                       model_framework_version='1.3',              # Version of ONNX used to create the model.
+                       description='Onnx MNIST model')
+
+service_name = 'onnx-mnist-service'
+service = Model.deploy(ws, service_name, [model])
+```
+
+### <a name="scikit-learn-models"></a>Scikit – modellek megismerése
+
+Az összes beépített scikit-típushoz nem támogatott a programkód-modell üzembe helyezése.
+
+Íme egy példa arra, hogyan regisztrálhat és helyezhet üzembe egy sklearn-modellt további kód nélkül:
+
+```python
+from azureml.core import Model
+from azureml.core.resource_configuration import ResourceConfiguration
+
+model = Model.register(workspace=ws,
+                       model_name='my-sklearn-model',                # Name of the registered model in your workspace.
+                       model_path='./sklearn_regression_model.pkl',  # Local file to upload and register as a model.
+                       model_framework=Model.Framework.SCIKITLEARN,  # Framework used to create the model.
+                       model_framework_version='0.19.1',             # Version of scikit-learn used to create the model.
+                       resource_configuration=ResourceConfiguration(cpu=1, memory_in_gb=0.5),
+                       description='Ridge regression model to predict diabetes progression.',
+                       tags={'area': 'diabetes', 'type': 'regression'})
+                       
+service_name = 'my-sklearn-service'
+service = Model.deploy(ws, service_name, [model])
+```
+
+Megjegyzés: ezek a függőségek az előre elkészített sklearn következtetési tárolóban szerepelnek:
+
+```yaml
+    - azureml-defaults
+    - inference-schema[numpy-support]
+    - scikit-learn
+    - numpy
+```
+
 ## <a name="package-models"></a>Csomagok modelljei
 
 Bizonyos esetekben előfordulhat, hogy létre kell hoznia egy Docker-rendszerképet a modell üzembe helyezése nélkül (Ha például telepíteni szeretné a [Azure app Service](how-to-deploy-app-service.md)). Vagy előfordulhat, hogy le szeretné tölteni a rendszerképet, és egy helyi Docker-telepítésre kell futtatnia. Előfordulhat, hogy még le szeretné tölteni a rendszerkép létrehozásához használt fájlokat, megvizsgálhatja őket, módosíthatja azokat, és manuálisan is felépítheti a rendszerképet.
@@ -997,78 +1069,6 @@ Központilag telepített webszolgáltatás törléséhez használja a `service.d
 A regisztrált modellek törléséhez használja a `model.delete()`.
 
 További információ: a [webszolgáltatások dokumentációja. Delete ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py#delete--) és [Model. Delete ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#delete--).
-
-## <a name="preview-no-code-model-deployment"></a>Előnézet Nem kód modell telepítése
-
-A nem kód modellek üzembe helyezése jelenleg előzetes verzióban érhető el, és a következő Machine learning-keretrendszereket támogatja:
-
-### <a name="tensorflow-savedmodel-format"></a>Tensorflow SavedModel formátuma
-
-```python
-from azureml.core import Model
-
-model = Model.register(workspace=ws,
-                       model_name='flowers',                        # Name of the registered model in your workspace.
-                       model_path='./flowers_model',                # Local Tensorflow SavedModel folder to upload and register as a model.
-                       model_framework=Model.Framework.TENSORFLOW,  # Framework used to create the model.
-                       model_framework_version='1.14.0',            # Version of Tensorflow used to create the model.
-                       description='Flowers model')
-
-service_name = 'tensorflow-flower-service'
-service = Model.deploy(ws, service_name, [model])
-```
-
-### <a name="onnx-models"></a>ONNX-modellek
-
-A ONNX-modell regisztrálása és üzembe helyezése bármely ONNX-következtetési gráf esetében támogatott. Az előfeldolgozási és a utófeldolgozás lépések jelenleg nem támogatottak.
-
-Íme egy példa arra, hogyan regisztrálhatók és telepíthetők egy MNIST ONNX-modell:
-
-```python
-from azureml.core import Model
-
-model = Model.register(workspace=ws,
-                       model_name='mnist-sample',                  # Name of the registered model in your workspace.
-                       model_path='mnist-model.onnx',              # Local ONNX model to upload and register as a model.
-                       model_framework=Model.Framework.ONNX ,      # Framework used to create the model.
-                       model_framework_version='1.3',              # Version of ONNX used to create the model.
-                       description='Onnx MNIST model')
-
-service_name = 'onnx-mnist-service'
-service = Model.deploy(ws, service_name, [model])
-```
-
-### <a name="scikit-learn-models"></a>Scikit – modellek megismerése
-
-Az összes beépített scikit-típushoz nem támogatott a programkód-modell üzembe helyezése.
-
-Íme egy példa arra, hogyan regisztrálhat és helyezhet üzembe egy sklearn-modellt további kód nélkül:
-
-```python
-from azureml.core import Model
-from azureml.core.resource_configuration import ResourceConfiguration
-
-model = Model.register(workspace=ws,
-                       model_name='my-sklearn-model',                # Name of the registered model in your workspace.
-                       model_path='./sklearn_regression_model.pkl',  # Local file to upload and register as a model.
-                       model_framework=Model.Framework.SCIKITLEARN,  # Framework used to create the model.
-                       model_framework_version='0.19.1',             # Version of scikit-learn used to create the model.
-                       resource_configuration=ResourceConfiguration(cpu=1, memory_in_gb=0.5),
-                       description='Ridge regression model to predict diabetes progression.',
-                       tags={'area': 'diabetes', 'type': 'regression'})
-                       
-service_name = 'my-sklearn-service'
-service = Model.deploy(ws, service_name, [model])
-```
-
-Megjegyzés: ezek a függőségek az előre elkészített sklearn következtetési tárolóban szerepelnek:
-
-```yaml
-    - azureml-defaults
-    - inference-schema[numpy-support]
-    - scikit-learn
-    - numpy
-```
 
 ## <a name="next-steps"></a>További lépések
 

@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 11/04/2019
-ms.openlocfilehash: 366986f989fdd8d76b1707451c2a7cca2aa554cf
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: ee4e9bd5487382ebb6f57996aac5d3de1ff6162a
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73719979"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73889983"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-the-azure-portal"></a>Gyors útmutató: Azure Cognitive Search index létrehozása a Azure Portal
 > [!div class="op_single_selector"]
@@ -68,9 +68,7 @@ Ebben az oktatóanyagban egy beépített minta-adathalmazt használunk, amely az
 
 3. Folytassa a következő oldallal.
 
-   ![A következő oldal gomb a kognitív kereséshez](media/search-get-started-portal/next-button-add-cog-search.png)
-
-### <a name="step-2---skip-cognitive-skills"></a>2\. lépés – a kognitív képességek kihagyása
+### <a name="step-2---skip-the-enrich-content-page"></a>2\. lépés – a "tartalom gazdagítása" oldal kihagyása
 
 A varázsló támogatja egy AI-bővítési [folyamat](cognitive-search-concept-intro.md) létrehozását a Cognitive Services AI-algoritmusok indexelésbe való integrálásához. 
 
@@ -104,7 +102,6 @@ Alapértelmezés szerint a varázsló átvizsgálja a adatforrást egyedi azonos
 
 2. Folytassa a következő oldallal.
 
-   ![Következő oldal létrehozása indexelő](media/search-get-started-portal/next-button-create-indexer.png)
 
 ### <a name="step-4---configure-indexer"></a>4\. lépés – indexelő konfigurálása
 
@@ -127,6 +124,8 @@ Több percet is igénybe vehet, amíg a portál frissíti az oldalt, de az újon
 ## <a name="view-the-index"></a>Az index megtekintése
 
 A szolgáltatás fő lapja az Azure Cognitive Search szolgáltatásban létrehozott erőforrásokra mutató hivatkozásokat tartalmaz.  Az imént létrehozott index megtekintéséhez kattintson az **indexek** elemre a hivatkozások listájában. 
+
+Várjon, amíg frissül a portál oldala. Néhány perc elteltével az indexnek a dokumentumok száma és a tárterület mérete alapján kell megjelennie.
 
    ![Indexek listája a szolgáltatás irányítópultján](media/search-get-started-portal/indexes-list.png)
 
@@ -154,7 +153,7 @@ A **Search Explorer** csak [REST API kérelmek](https://docs.microsoft.com/rest/
 
    ![Keresési ablak parancs](media/search-get-started-portal/search-explorer-cmd.png)
 
-2. Az **index** legördülő menüből válassza a *Hotels-Sample*elemet. Kattintson az **API-verzió** legördülő menüre, és ellenőrizze, hogy mely REST API-k érhetők el. Az alábbi lekérdezésekhez használja az általánosan elérhető verziót (2019-05-06).
+2. Az **index** legördülő menüben válassza a *Hotels-Sample-index*lehetőséget. Kattintson az **API-verzió** legördülő menüre, és ellenőrizze, hogy mely REST API-k érhetők el. Az alábbi lekérdezésekhez használja az általánosan elérhető verziót (2019-05-06).
 
    ![Index és API-parancsok](media/search-get-started-portal/search-explorer-changeindex.png)
 

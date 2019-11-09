@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 08/30/2019
-ms.openlocfilehash: 2edc644f003af2b33054a5cbdbaee81c9baa38cd
-ms.sourcegitcommit: 16c5374d7bcb086e417802b72d9383f8e65b24a7
+ms.openlocfilehash: 60837171e3f59312895a76f68c660228697529ad
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73847454"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73891089"
 ---
 # <a name="how-to-manage-your-commercial-marketplace-account-in-partner-center"></a>A kereskedelmi piactér-fiók kezelése a partner Centerben 
 
@@ -145,11 +145,11 @@ A jelentéskészítést a partner értéke (Microsoft partner azonosítója) és
 További információ: az Azure- [ügyfelek használatának nyomon követése a GUID-ban – gyakori kérdések](https://docs.microsoft.com/azure/marketplace/azure-partner-customer-usage-attribution#faq).
 
 
-## <a name="establish-a-billing-profile"></a>Számlázási profil létrehozása
+## <a name="create-a-billing-profile"></a>Számlázási profil létrehozása
 
 Ha a & Power apps vagy a [dynamics 365 for Operations](./create-new-operations-offer.md) ajánlatra [vonatkozó Dynamics 365](./create-new-customer-engagement-offer.md) -et tesz közzé, akkor el kell végeznie a **Számlázási profilt**.
 
-A számlázási cím előre ki van töltve az MPN-AZONOSÍTÓból, és később is frissíthető. Az ÁFA és az ÁFA-azonosító mezők megadása nem kötelező.  Az ország neve és a vállalat neve nem szerkeszthető.
+A számlázási cím előre ki van töltve a jogi személyből, és később is frissíthető. Az ÁFA és az ÁFA-azonosító mezők megadása nem kötelező.  Az ország neve és a vállalat neve nem szerkeszthető.
 
 ## <a name="multi-user-account-management"></a>Többfelhasználós fiókok felügyelete
 

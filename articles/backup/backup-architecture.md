@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 02/19/2019
 ms.author: dacurwin
-ms.openlocfilehash: 24e90ebd2994c5fffc1252167c06783421f2ac33
-ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
+ms.openlocfilehash: e072923c2c8b1d8e5bb281a5bcff992b25289b4d
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72035244"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73888492"
 ---
 # <a name="azure-backup-architecture-and-components"></a>Architektúra és összetevők Azure Backup
 
@@ -48,8 +48,8 @@ Recovery Services-tárolók a következő funkciókkal rendelkeznek:
 - Megfigyelheti a tárolóban lévő biztonsági másolati elemeket, beleértve az Azure-beli virtuális gépeket és a helyszíni gépeket is.
 - A tár hozzáférését az Azure [szerepköralapú hozzáférés-vezérléssel (RBAC)](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)kezelheti.
 - Megadhatja, hogyan replikálja a rendszer a tárolóban lévő adattárakat:
-  - **Helyileg redundáns tárolás (LRS)** : Az adatközpontok meghibásodása elleni védelemhez használhatja a LRS. A LRS replikálja az adatmennyiséget egy tárolási méretezési egységbe. [További információk](https://docs.microsoft.com/azure/storage/common/storage-redundancy-lrs).
-  - **Geo-redundáns tárolás (GRS)** : Az egész régióra kiterjedő kimaradások elleni védelemhez használhatja a GRS. A GRS egy másodlagos régióba replikálja az adatait. [További információk](https://docs.microsoft.com/azure/storage/common/storage-redundancy-grs).
+  - **Helyileg redundáns tárolás (LRS)** : az adatközpontok meghibásodása elleni védelem érdekében a LRS-t használhatja. A LRS replikálja az adatmennyiséget egy tárolási méretezési egységbe. [Részletek](https://docs.microsoft.com/azure/storage/common/storage-redundancy-lrs).
+  - **Geo-redundáns tárolás (GRS)** : az egész régióra kiterjedő kimaradások elleni védelemhez használhatja a GRS. A GRS egy másodlagos régióba replikálja az adatait. [Részletek](https://docs.microsoft.com/azure/storage/common/storage-redundancy-grs).
   - Recovery Services tárolók alapértelmezés szerint a GRS használják.
 
 ## <a name="backup-agents"></a>Biztonsági mentési ügynökök
@@ -106,7 +106,7 @@ Deduplikált lemezek biztonsági mentése | | | ![Részlegesen][yellow]<br/><br/
 
 ![Tábla kulcsa](./media/backup-architecture/table-key.png)
 
-## <a name="architecture-direct-backup-of-azure-vms"></a>Architektúra Azure-beli virtuális gépek közvetlen biztonsági mentése
+## <a name="architecture-direct-backup-of-azure-vms"></a>Architektúra: Azure-beli virtuális gépek közvetlen biztonsági mentése
 
 1. Ha engedélyezi egy Azure-beli virtuális gép biztonsági mentését, a biztonsági mentés a megadott ütemterv szerint fut.
 1. Az első biztonsági mentés során a rendszer egy biztonsági mentési bővítményt telepít a virtuális gépre, ha a virtuális gép fut.
@@ -120,13 +120,13 @@ Deduplikált lemezek biztonsági mentése | | | ![Részlegesen][yellow]<br/><br/
     - Csak a legutóbbi biztonsági mentés óta megváltoztatott adatblokkok másolása történik meg.
     - Az adatforgalom nincs titkosítva. Azure Backup a Azure Disk Encryption használatával titkosított Azure-beli virtuális gépek biztonsági mentését végezheti el.
     - Előfordulhat, hogy a pillanatkép-adatok nem másolódnak azonnal a tárba. A biztonsági mentés csúcsidőben több órát is igénybe vehet. A napi biztonsági mentési szabályzatok esetében a virtuális gép teljes biztonsági mentési ideje kevesebb, mint 24 óra lesz.
-1. Az adattárolóba való elküldése után létrejön egy helyreállítási pont. Alapértelmezés szerint a pillanatképek megőrzése két nappal a Törlésük előtt történik. Ez a funkció lehetővé teszi a visszaállítási műveletet ezekből a pillanatképekről, így lecsökkentve a visszaállítási időpontokat. Ez csökkenti az adatoknak a tárból való visszaalakításához és másolásához szükséges időt. Lásd: [Azure Backup azonnali visszaállítási képesség](https://docs.microsoft.com/en-us/azure/backup/backup-instant-restore-capability).
+1. Az adattárolóba való elküldése után létrejön egy helyreállítási pont. Alapértelmezés szerint a pillanatképek megőrzése két nappal a Törlésük előtt történik. Ez a funkció lehetővé teszi a visszaállítási műveletet ezekből a pillanatképekről, így lecsökkentve a visszaállítási időpontokat. Ez csökkenti az adatoknak a tárból való visszaalakításához és másolásához szükséges időt. Lásd: [Azure Backup azonnali visszaállítási képesség](https://docs.microsoft.com/azure/backup/backup-instant-restore-capability).
 
 Az Azure-beli virtuális gépeknek internet-hozzáféréssel kell rendelkezniük a vezérlési parancsokhoz Ha biztonsági mentést készít a munkaterhelésekről a virtuális gépen (például SQL Server adatbázis-biztonsági mentések), a háttérbeli adatokhoz internet-hozzáférésre is szükség van.
 
 ![Azure-beli virtuális gépek biztonsági mentése](./media/backup-architecture/architecture-azure-vm.png)
 
-## <a name="architecture-direct-backup-of-on-premises-windows-server-machines-or-azure-vm-files-or-folders"></a>Architektúra Helyszíni Windows Server-gépek vagy Azure-beli virtuálisgép-fájlok vagy-mappák közvetlen biztonsági mentése
+## <a name="architecture-direct-backup-of-on-premises-windows-server-machines-or-azure-vm-files-or-folders"></a>Architektúra: helyszíni Windows Server-gépek vagy Azure-beli virtuálisgép-fájlok vagy-mappák közvetlen biztonsági mentése
 
 1. A forgatókönyv beállításához le kell töltenie és telepítenie kell a MARS-ügynököt a gépre. Ezután kiválaszthatja a biztonsági mentést, a biztonsági mentések futtatásának idejét, valamint azt, hogy mennyi ideig tart az Azure-ban.
 1. A kezdeti biztonsági mentés a biztonsági mentési beállításoknak megfelelően fut.
@@ -140,7 +140,7 @@ Az Azure-beli virtuális gépeknek internet-hozzáféréssel kell rendelkezniük
 
 ![Helyszíni Windows Server-gépek biztonsági mentése a MARS-ügynökkel](./media/backup-architecture/architecture-on-premises-mars.png)
 
-## <a name="architecture-back-up-to-dpmmabs"></a>Architektúra Biztonsági mentés a DPM/MABS
+## <a name="architecture-back-up-to-dpmmabs"></a>Architektúra: biztonsági mentés a DPM/MABS
 
 1. Telepítenie kell a DPM vagy a MABS védelmi ügynököt a védelemmel ellátni kívánt gépekre. Ezután hozzáadja a gépeket egy DPM védelmi csoporthoz.
     - A helyszíni gépek elleni védelem érdekében a DPM vagy a MABS-kiszolgálónak a helyszínen kell elhelyezkednie.
@@ -164,7 +164,7 @@ Az Azure-beli virtuális gépek lemezek használatával tárolják az operáció
   - **Standard SSD lemez:** A prémium szintű SSD-lemezek és a standard HDD-lemezek elemeit ötvözi. Konzisztens teljesítményt és megbízhatóságot biztosít, mint a HDD, de költséghatékony.
   - **Prémium SSD lemez:** Az SSD-k által támogatott, nagy teljesítményt és kis késleltetést biztosít az I/O-igényes számítási feladatokat futtató virtuális gépek számára.
 - A lemezek felügyelhetők vagy nem kezelhetők:
-  - **Nem felügyelt lemezek:** Virtuális gépek által használt hagyományos típusú lemezek. Ezekhez a lemezekhez létre kell hoznia egy saját Storage-fiókot, és meg kell adnia a lemez létrehozásakor. Ezután meg kell állapítania, hogyan maximalizálhatja a virtuális gépek tárolási erőforrásait.
+  - Nem **felügyelt lemezek:** Virtuális gépek által használt hagyományos típusú lemezek. Ezekhez a lemezekhez létre kell hoznia egy saját Storage-fiókot, és meg kell adnia a lemez létrehozásakor. Ezután meg kell állapítania, hogyan maximalizálhatja a virtuális gépek tárolási erőforrásait.
   - **Felügyelt lemezek:** Az Azure létrehozza és kezeli a Storage-fiókokat. Megadhatja a lemez méretét és a teljesítmény szintjét, és az Azure felügyelt lemezeket hoz létre Önnek. A lemezek hozzáadása és a virtuális gépek méretezése során az Azure kezeli a Storage-fiókokat.
 
 A lemezes tárolással és a virtuális gépek rendelkezésre álló típusaival kapcsolatos további információkért tekintse meg a következő cikkeket:
@@ -178,7 +178,7 @@ A lemezes tárolással és a virtuális gépek rendelkezésre álló típusaival
 Az Azure-beli virtuális gépek biztonsági mentését a Premium Storage és a Azure Backup használatával végezheti el:
 
 - A Premium Storage *-alapú*virtuális gépek biztonsági mentésének folyamata során a Backup szolgáltatás ideiglenes átmeneti helyet hoz létre a AzureBackup néven, a Storage-fiókban. Az előkészítési hely mérete megegyezik a helyreállítási pont pillanatképének méretével.
-- Győződjön meg arról, hogy a Premium Storage-fiók elegendő szabad hellyel rendelkezik az ideiglenes előkészítési hely számára. [További információk](../storage/common/storage-scalability-targets.md#premium-performance-storage-account-scale-limits). Ne módosítsa az átmeneti helyet.
+- Győződjön meg arról, hogy a Premium Storage-fiók elegendő szabad hellyel rendelkezik az ideiglenes előkészítési hely számára. [Részletek](../storage/common/storage-scalability-targets.md#premium-performance-storage-account-scale-limits). Ne módosítsa az átmeneti helyet.
 - A biztonsági mentési feladatok befejezése után a rendszer törli az előkészítési helyet.
 - Az előkészítési helyhez használt tárolási díj konzisztens a [Premium Storage díjszabásával](../virtual-machines/windows/disks-types.md#billing).
 

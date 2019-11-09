@@ -1,5 +1,5 @@
 ---
-title: Egy Azure-megoldás – oktatóanyag – Azure IoT-eszköz figyelése |} A Microsoft Docs
+title: Eszközök figyelése a távoli figyelési megoldásban – Azure | Microsoft Docs
 description: Ebből az oktatóanyagból megtudhatja, hogyan monitorozhatja IoT-eszközeit a távoli monitorozási megoldásgyorsítóval.
 author: dominicbetts
 manager: timlt
@@ -9,14 +9,14 @@ services: iot-accelerators
 ms.date: 03/08/2019
 ms.topic: tutorial
 ms.custom: mvc
-ms.openlocfilehash: d6d850fa8f896809318be77529e10abddaf6ea9a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 400a71b11fde210b889d938041e88c5ebe73c1dc
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61452433"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73890868"
 ---
-# <a name="tutorial-monitor-your-iot-devices"></a>Oktatóanyag: Az IoT-eszközök figyelése
+# <a name="tutorial-monitor-your-iot-devices"></a>Oktatóanyag: IoT-eszközök monitorozása
 
 Ebben az oktatóanyagban a távoli monitorozási megoldásgyorsítóval monitorozhatja a csatlakoztatott IoT-eszközöket. A megoldás irányítópultján megtekintheti a telemetriai adatokat, az eszközadatokat, a riasztásokat és a fő teljesítménymutatókat.
 

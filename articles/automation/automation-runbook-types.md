@@ -9,30 +9,30 @@ ms.author: robreed
 ms.date: 03/05/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: e655e286c3aebe28bcb09c8723516c2ff52ad20e
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 6c29015e2fd327d74183d5fbbd6214152507e517
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68850360"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73886784"
 ---
 # <a name="azure-automation-runbook-types"></a>Azure Automation runbook-típusok
 
 A Azure Automation számos runbookok támogat, amelyek rövid leírása a következő táblázatban található.  Az alábbi szakaszokban további információkat talál az egyes típusokról, beleértve az egyes típusok használatának szempontjait is.
 
-| Type | Leírás |
+| Típus | Leírás |
 |:--- |:--- |
 | [Grafikus](#graphical-runbooks)|A Windows PowerShell alapján, és a Azure Portal grafikus szerkesztőjében teljesen elkészült és szerkesztve. |
 | [Grafikus PowerShell-munkafolyamat](#graphical-runbooks)|A Windows PowerShell-munkafolyamaton alapuló, és a Azure Portal grafikus szerkesztőjében teljesen elkészült és szerkesztve. |
-| [PowerShell](#powershell-runbooks) |Szöveges forgatókönyv Windows PowerShell-szkript alapján. |
-| [PowerShell-munkafolyamat](#powershell-workflow-runbooks)|Windows PowerShell-munkafolyamaton alapuló szöveges forgatókönyv. |
+| [PowerShell](#powershell-runbooks) |Szöveges runbook Windows PowerShell-parancsfájl alapján. |
+| [PowerShell-munkafolyamat](#powershell-workflow-runbooks)|A szöveges runbook a Windows PowerShell-munkafolyamaton alapulnak. |
 | [Python](#python-runbooks) |Szöveg runbook Python alapján. |
 
 ## <a name="graphical-runbooks"></a>Grafikus runbookok
 
 A [grafikus](automation-runbook-types.md#graphical-runbooks) és a grafikus PowerShell-munkafolyamat runbookok a Azure Portal grafikus szerkesztőjével hozhatók létre és szerkeszthetők.  Exportálhatja őket egy fájlba, majd importálhatja őket egy másik Automation-fiókba. Azonban nem hozhat létre vagy szerkeszthet egy másik eszközzel. A grafikus runbookok PowerShell-kódot hoz, de nem tudja közvetlenül megtekinteni vagy módosítani a kódot. A grafikus runbookok nem alakíthatók át az egyik [szöveges formátumba](automation-runbook-types.md), és a szöveg runbook nem alakítható át grafikus formátumra. A grafikus runbookok az importálás során grafikus PowerShell-munkafolyamat-runbookok alakíthatók át, a másik pedig fordítva.
 
-### <a name="advantages"></a>Előnyök
+### <a name="advantages"></a>Előnyei
 
 * Vizuális Beszúrás – hivatkozás – szerzői modell konfigurálása
 * Koncentráljon arra, hogy az adatáramlás hogyan halad át a folyamaton
@@ -47,14 +47,14 @@ A [grafikus](automation-runbook-types.md#graphical-runbooks) és a grafikus Powe
 * Nem lehet megtekinteni vagy közvetlenül szerkeszteni a grafikus munkafolyamat által létrehozott PowerShell-kódot. Megtekintheti a létrehozott kódot bármely kód tevékenységben.
 * Nem futtatható linuxos hibrid Runbook-feldolgozón
 
-## <a name="powershell-runbooks"></a>PowerShell-forgatókönyvek
+## <a name="powershell-runbooks"></a>PowerShell-runbookok
 
-PowerShell-forgatókönyvek Windows Powershellen alapulnak.  Közvetlenül szerkesztheti a runbook kódját a Azure Portal szövegszerkesztő használatával.  Használhatja az offline szövegszerkesztőt is, és [importálhatja a runbook](manage-runbooks.md) Azure Automationba.
+A PowerShell-runbookok a Windows PowerShellen alapulnak.  Közvetlenül szerkesztheti a runbook kódját a Azure Portal szövegszerkesztő használatával.  Használhatja az offline szövegszerkesztőt is, és [importálhatja a runbook](manage-runbooks.md) Azure Automationba.
 
-### <a name="advantages"></a>Előnyök
+### <a name="advantages"></a>Előnyei
 
-* PowerShell-kóddal további vesződni PowerShell-munkafolyamat minden összetett logikát alkalmazzák.
-* Runbook, mint a PowerShell-munkafolyamati runbookok gyorsabban indul, mivel nincs szüksége futtatása előtt kell összeállítani.
+* Az összes összetett logikát PowerShell-kóddal implementálhatja a PowerShell-munkafolyamat további bonyolultsága nélkül.
+* A Runbook gyorsabban indul el, mint a PowerShell-munkafolyamat runbookok, mert a futtatása előtt nem kell lefordítani.
 * Az Azure-ban vagy Linux-és Windows Hybrid Runbook-feldolgozón is futtatható
 
 ### <a name="limitations"></a>Korlátozások
@@ -69,26 +69,26 @@ PowerShell-forgatókönyvek Windows Powershellen alapulnak.  Közvetlenül szerk
 A következő ismert problémák a PowerShell-runbookok.
 
 * A PowerShell-runbookok nem tud beolvasni egy titkosítatlan [változó](automation-variables.md) objektumot NULL értékkel.
-* A PowerShell *~* -runbookok nem tud beolvasni egy [változót](automation-variables.md) a névben.
+* A PowerShell-runbookok nem tud beolvasni *~* nevű [változót](automation-variables.md) a névben.
 * A folyamat lekérése egy PowerShell-runbook egy hurokban az 80-es iteráció után összeomlhat.
-* Előfordulhat, hogy egy PowerShell-runbook meghiúsul, ha nagy mennyiségű adatokat próbál meg a kimeneti adatfolyamba írni egyszerre.   Ezt a problémát általában úgy is megkerülheti, ha a nagyméretű objektumok használatakor csak a szükséges információkat helyezi üzembe.  Például ahelyett, hogy a lekéréses folyamathoz hasonló *műveletet*kellene végrehajtania, csak a szükséges mezőket kell kiadnia a *Get-Process szolgáltatással | Válassza a ProcessName, majd a CPU elemet*.
+* Előfordulhat, hogy egy PowerShell-runbook meghiúsul, ha nagy mennyiségű adatokat próbál meg a kimeneti adatfolyamba írni egyszerre.   Ezt a problémát általában úgy is megkerülheti, ha a nagyméretű objektumok használatakor csak a szükséges információkat helyezi üzembe.  Például ahelyett, hogy a *lekéréses folyamathoz hasonló műveletet*kellene végrehajtania, csak a szükséges mezőket kell kiadnia a *Get-Process szolgáltatással | Válassza a ProcessName, majd a CPU elemet*.
 
 ## <a name="powershell-workflow-runbooks"></a>PowerShell-munkafolyamat runbookok
 
-A PowerShell-munkafolyamat runbookok a [Windows PowerShell](automation-powershell-workflow.md)-munkafolyamaton alapuló szöveges runbookok.  Közvetlenül szerkesztheti a runbook kódját a Azure Portal szövegszerkesztő használatával.  Használhatja az offline szövegszerkesztőt is, és [importálhatja a runbook](manage-runbooks.md) Azure Automationba.
+A PowerShell-munkafolyamat runbookok a [Windows PowerShell-munkafolyamaton](automation-powershell-workflow.md)alapuló szöveges runbookok.  Közvetlenül szerkesztheti a runbook kódját a Azure Portal szövegszerkesztő használatával.  Használhatja az offline szövegszerkesztőt is, és [importálhatja a runbook](manage-runbooks.md) Azure Automationba.
 
-### <a name="advantages"></a>Előnyök
+### <a name="advantages"></a>Előnyei
 
-* A PowerShell-munkafolyamati kód minden összetett logikát alkalmazzák.
+* Az összes összetett logika implementálása a PowerShell-munkafolyamat kódjával.
 * Az [ellenőrzőpontok](automation-powershell-workflow.md#checkpoints) használatával folytathatja a runbook, ha hiba történt.
-* Használat [párhuzamos feldolgozási](automation-powershell-workflow.md#parallel-processing) párhuzamosan több művelet végrehajtásához.
+* Párhuzamos [feldolgozással](automation-powershell-workflow.md#parallel-processing) párhuzamosan hajthat végre több műveletet.
 * Más grafikus runbookok és PowerShell-munkafolyamatok runbookok is tartalmazhat, mint a magas szintű munkafolyamatok létrehozására szolgáló runbookok.
 
 ### <a name="limitations"></a>Korlátozások
 
 * A szerzőnek ismernie kell a PowerShell-munkafolyamatot.
-* A Runbook-nek a PowerShell-munkafolyamatok további összetettségét kell megfelelnie, például deszerializált [objektumokat](automation-powershell-workflow.md#code-changes).
-* A Runbook elindításához, mint a PowerShell-forgatókönyvek, mivel fordítható futtatása előtt kell hosszabb időt vesz igénybe.
+* A Runbook-nek a PowerShell-munkafolyamatok további összetettségét kell megfelelnie, például [deszerializált objektumokat](automation-powershell-workflow.md#code-changes).
+* A Runbook hosszabb időt vesz igénybe, mint a PowerShell-runbookok, mivel a futtatása előtt le kell fordítani.
 * A PowerShell-runbookok csak alárendelt runbookok szerepelhetnek a Start-AzureAutomationRunbook parancsmag használatával, amely létrehoz egy új feladatot.
 * Nem futtatható linuxos hibrid Runbook-feldolgozón
 
@@ -96,7 +96,7 @@ A PowerShell-munkafolyamat runbookok a [Windows PowerShell](automation-powershel
 
 Python-runbookok fordítása a Python 2 alatt.  Közvetlenül szerkesztheti a runbook kódját a Azure Portal szövegszerkesztővel, vagy egy offline szövegszerkesztővel, és [importálhatja a runbook a](manage-runbooks.md) Azure Automationba.
 
-### <a name="advantages"></a>Előnyök
+### <a name="advantages"></a>Előnyei
 
 * Használja a robusztus Python-kódtárakat.
 * Az Azure-ban vagy a Linux hibrid Runbook-feldolgozókon is futtatható. A Windows Hybrid Runbook-feldolgozók a [Python 2.7](https://www.python.org/downloads/release/latest/python2) -es verzióval támogatottak.
@@ -105,7 +105,7 @@ Python-runbookok fordítása a Python 2 alatt.  Közvetlenül szerkesztheti a ru
 
 * Ismernie kell a Python-parancsfájlokat.
 * Jelenleg csak a Python 2 támogatott, ami azt jelenti, hogy a Python 3 bizonyos funkciói sikertelenek lesznek.
-* A külső gyártótól származó kódtárak használatához importálnia kell [a csomagot](python-packages.md) az Automation-fiókba ahhoz, hogy használni lehessen.
+* A külső gyártótól származó kódtárak használatához [importálnia kell a csomagot](python-packages.md) az Automation-fiókba ahhoz, hogy használni lehessen.
 
 ## <a name="considerations"></a>Megfontolandó szempontok
 
@@ -117,6 +117,6 @@ Vegye figyelembe a következő további szempontokat, amikor meghatározza, hogy
 ## <a name="next-steps"></a>További lépések
 
 * További információ a grafikus runbook létrehozásáról: [grafikus szerzői műveletek Azure Automation](automation-graphical-authoring-intro.md)
-* A runbookok PowerShell-és PowerShell-munkafolyamatai közötti különbségek megismeréséhez tekintse meg a [Windows PowerShell](automation-powershell-workflow.md) -munkafolyamatok megismerése című témakört.
+* A runbookok PowerShell-és PowerShell-munkafolyamatai közötti különbségek megismeréséhez tekintse meg a [Windows PowerShell-munkafolyamatok megismerése](automation-powershell-workflow.md) című témakört.
 * A Runbook létrehozásával és importálásával kapcsolatos további információkért lásd: [Runbook létrehozása vagy importálása](manage-runbooks.md)
-* A PowerShell-lel kapcsolatos további információkért, beleértve a nyelvi referenciákat és a tanulási modulokat, tekintse át a [PowerShell-dokumentumokat](https://docs.microsoft.com/en-us/powershell/scripting/overview).
+* A PowerShell-lel kapcsolatos további információkért, beleértve a nyelvi referenciákat és a tanulási modulokat, tekintse át a [PowerShell-dokumentumokat](https://docs.microsoft.com/powershell/scripting/overview).

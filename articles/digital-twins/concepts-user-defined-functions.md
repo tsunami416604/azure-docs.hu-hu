@@ -7,13 +7,13 @@ manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 09/17/2019
-ms.openlocfilehash: b8ea5c54afd4b1e2c212422417688e528367d44f
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.date: 11/07/2019
+ms.openlocfilehash: 0708b1dd2d272757949d014d768c1da649b50146
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71949971"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73889677"
 ---
 # <a name="data-processing-and-user-defined-functions"></a>Adatfeldolgozás és felhasználó által definiált függvények
 
@@ -23,7 +23,7 @@ Az Azure Digital Twins speciális számítási funkciókat kínál. A fejlesztő
 
 Miután az eszközök telemetria-adatok küldését az Azure digitális Twinsba, a fejlesztők négy fázisban dolgozhatnak fel adatokkal: *Érvényesítés*, *egyezés*, *számítás*és *Küldés*.
 
-[@no__t – 1Azure digitális Twins adatfeldolgozási folyamat](media/concepts/digital-twins-data-processing-flow.png)](media/concepts/digital-twins-data-processing-flow.png#lightbox)
+[Azure digitális Twins-adatfeldolgozási folyamat ![](media/concepts/digital-twins-data-processing-flow.png)](media/concepts/digital-twins-data-processing-flow.png#lightbox)
 
 1. Az érvényesítési fázis átalakítja a bejövő telemetria üzenetet egy gyakran értelmezhető [adatátviteli objektum](https://docs.microsoft.com/aspnet/web-api/overview/data/using-web-api-with-entity-framework/part-5) formátumára. Ez a fázis az eszköz-és érzékelő érvényesítését is végrehajtja.
 1. Az egyeztetési fázis megkeresi a megfelelő, felhasználó által definiált függvényeket a futtatáshoz. Az előre definiált egyeztetések a felhasználó által definiált függvényeket a bejövő telemetria üzenetből származó eszköz, az érzékelő és a lemezterület adatai alapján megtalálják.
@@ -34,43 +34,48 @@ Miután az eszközök telemetria-adatok küldését az Azure digitális Twinsba,
 
 Az Azure Digital Twins adatfeldolgozása három objektumot határoz meg: a *megfeleltetéseket*, a *felhasználó által definiált függvényeket*és a *szerepkör-hozzárendeléseket*.
 
-[@no__t – 1Azure digitális Twins adatfeldolgozási objektumok](media/concepts/digital-twins-user-defined-functions.png)](media/concepts/digital-twins-user-defined-functions.png#lightbox)
+[Azure digitális Twins-adatfeldolgozási objektumok ![](media/concepts/digital-twins-user-defined-functions.png)](media/concepts/digital-twins-user-defined-functions.png#lightbox)
 
 ### <a name="matchers"></a>Egyezők
 
 Az egyeztetések olyan feltételeket határoznak meg, amelyek kiértékelik, hogy milyen műveleteket kell végrehajtani a bejövő érzékelők telemetria alapján. A egyezés meghatározására szolgáló feltételek tartalmazhatják az érzékelő, az érzékelő szülő eszköze és az érzékelő fölérendelt területének tulajdonságait is. A feltételek a [JSON-útvonal](https://jsonpath.com/) összehasonlításával vannak megadva, az alábbi példában látható módon:
 
-- Az összes olyan adattípusi **hőmérsékletet** , amelyet az Escape-sztring `\"Temperature\"` érték képvisel.
-- @No__t – 0 a portján
-- A kibővített tulajdonsághoz tartozó @no__t **gyártóhoz** tartozó eszközökhöz tartozó
-- Az Escape-sztring által megadott típusú szóközökhöz tartozó `\"Venue\"`
+- Az összes adattípusi **hőmérsékletnek** az Escape-string érték által jelzett érzékelők `\"Temperature\"`
+- `01` a portján
+- A kibővített tulajdonsághoz tartozó **gyártóhoz** tartozó eszközökhöz tartozik, amelyek az Escape-string értékre vannak állítva `\"Contoso\"`
+- Az Escape-karakterláncban megadott típusú szóközökhöz tartozik `\"Venue\"`
 - A szülő **SpaceId** leszármazottai `DE8F06CA-1138-4AD7-89F4-F782CC6F69FD`
 
 ```JSON
 {
-  "SpaceId": "DE8F06CA-1138-4AD7-89F4-F782CC6F69FD",
-  "Name": "My custom matcher",
-  "Description": "All sensors of datatype Temperature with 01 in their port that belong to devices with the extended property key Manufacturer set to the value GoodCorp and that belong to spaces of type Venue that are somewhere below space Id DE8F06CA-1138-4AD7-89F4-F782CC6F69FD",
-  "Conditions": [
+  "id": "23535afafd-f39b-46c0-9b0c-0dd3892a1c30",
+  "name": "My custom matcher",
+  "spaceId": "DE8F06CA-1138-4AD7-89F4-F782CC6F69FD",
+  "description": "All sensors of datatype Temperature with 01 in their port that belong to devices with the extended property key Manufacturer set to the value Contoso and that belong to spaces of type Venue that are somewhere below space Id DE8F06CA-1138-4AD7-89F4-F782CC6F69FD",
+  "conditions": [
     {
+      "id": "43898sg43-e15a-4e9c-abb8-2gw464364",
       "target": "Sensor",
       "path": "$.dataType",
       "value": "\"Temperature\"",
       "comparison": "Equals"
     },
     {
+      "id": "wt3th44-e15a-35sg-seg3-235wf3ga463",
       "target": "Sensor",
       "path": "$.port",
       "value": "01",
       "comparison": "Contains"
     },
     {
+      "id": "735hs33-e15a-37jj-23532-db901d550af5",
       "target": "SensorDevice",
       "path": "$.properties[?(@.name == 'Manufacturer')].value",
-      "value": "\"GoodCorp\"",
+      "value": "\"Contoso\"",
       "comparison": "Equals"
     },
     {
+      "id": "222325-e15a-49fg-5744-463643644",
       "target": "SensorSpace",
       "path": "$.type",
       "value": "\"Venue\"",
@@ -83,9 +88,9 @@ Az egyeztetések olyan feltételeket határoznak meg, amelyek kiértékelik, hog
 > [!IMPORTANT]
 > - A JSON-elérési utak kis-és nagybetűk.
 > - A JSON-adattartalom megegyezik a által visszaadott adattartalommal:
->   - @no__t – 0 az érzékelőhöz.
->   - @no__t – 0 az érzékelő szülő eszközéhez.
->   - @no__t – 0 az érzékelő szülő területéhez.
+>   - `/sensors/{id}?includes=properties,types` az érzékelőhöz.
+>   - `/devices/{id}?includes=properties,types,sensors,sensorsproperties,sensorstypes` az érzékelő fölérendelt eszközéhez.
+>   - `/spaces/{id}?includes=properties,types,location,timezone` az érzékelő szülő területéhez.
 > - Az összehasonlítás a kis-és nagybetűk megkülönböztetése.
 
 ### <a name="user-defined-functions"></a>Felhasználó által meghatározott függvények
@@ -107,7 +112,7 @@ A [digitális Twins C# minta GitHub](https://github.com/Azure-Samples/digital-tw
 - [Ez a függvény](https://github.com/Azure-Samples/digital-twins-samples-csharp/blob/master/occupancy-quickstart/src/actions/userDefinedFunctions/availabilityForTutorial.js) a szén-dioxid, a mozgás és a hőmérséklet értékeit keresi annak megállapítására, hogy a helyiség elérhető-e a tartományon belül ezekkel az értékekkel. A [digitális ikrek számára készült oktatóanyagok](tutorial-facilities-udf.md) részletesebben ismertetik ezt a funkciót. 
 - [Ez a függvény](https://github.com/Azure-Samples/digital-twins-samples-csharp/blob/master/occupancy-quickstart/src/actions/userDefinedFunctions/multiplemotionsensors.js) több mozgásérzékelőből származó adatra keres, és meghatározza, hogy a szabad terület elérhető-e, ha egyik sem észleli a mozgást. Egyszerűen lecserélheti a gyors útmutatóban [vagy az](quickstart-view-occupancy-dotnet.md) [oktatóanyagokban](tutorial-facilities-setup.md)használt felhasználó által definiált függvényt, ha a fájl megjegyzések szakaszában megemlített módosításokat végez. 
 
-### <a name="role-assignment"></a>Szerepkör-hozzárendelés
+### <a name="role-assignment"></a>Szerepkör-kijelölés
 
 A felhasználó által definiált függvény műveletei az Azure Digital Twins [szerepköralapú hozzáférés-vezérlése](./security-role-based-access-control.md) alá esnek, hogy a szolgáltatáson belül is biztonságossá tegye az adataikat. A szerepkör-hozzárendelések meghatározzák, hogy mely felhasználó által definiált függvények rendelkeznek a megfelelő engedélyekkel a térbeli gráf és az entitások használatához. Előfordulhat például, hogy egy felhasználó által definiált függvénynek lehetősége van arra, hogy egy adott lemezterület alapján *hozzon létre*, *Olvasson*, *frissítsen*vagy *töröljön* egy gráf-adattípust. A felhasználó által definiált függvény hozzáférési szintje akkor van bejelölve, ha a felhasználó által definiált függvény megkéri a diagramot az adatra, vagy megkísérli a műveletet. További információ: [szerepköralapú hozzáférés-vezérlés](./security-create-manage-role-assignments.md).
 

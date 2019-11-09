@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 6fc70b55b3e672ecc67eb1145bb751de33d998a1
-ms.sourcegitcommit: 16c5374d7bcb086e417802b72d9383f8e65b24a7
+ms.openlocfilehash: e6bd9b5c09e1af5ec587e1f0e52ab25d21d2293b
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73847431"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73889613"
 ---
 # <a name="ingest-historical-telemetry-data"></a>Korábbi telemetria-adatfeldolgozás
 
@@ -50,11 +50,14 @@ Ezek létrehozásához kövesse az alábbi lépéseket:
 
     ![A Project Farm veri](./media/for-tutorials/power-shell-two-1.png)
 
-5. Nyissa meg azt a könyvtárat, ahová a fájlok fel lettek töltve (alapértelmezés szerint feltöltve lesz a kezdőkönyvtár/Home/username/.
+5. Nyissa meg azt a könyvtárat, ahová a fájlokat feltöltötte
+
+   >[!NOTE]
+   > Alapértelmezés szerint a rendszer feltölti a fájlt a kezdőkönyvtár/Home/username/.
 6. Futtassa a szkriptet a parancs használatával:  
 
     ```azurepowershell-interactive
-    PS> ./generateCredentials.ps1
+    ./generateCredentials.ps1
     ```
 
 7. Kövesse a képernyőn megjelenő utasításokat az eljárás befejezéséhez.
@@ -127,7 +130,9 @@ A FarmBeats adatközpont tulajdonosi hitelesítést használ, amelyhez a követk
 
 A fenti hitelesítő adatok használatával a hívó kérhet egy hozzáférési jogkivonatot, amelyet a következő API-kérelmekben kell elküldeni a fejléc szakaszban a következő módon:
 
-Headers = *{"Authorization": "tulajdonos" + access_token,...}*
+```
+headers = *{"Authorization": "Bearer " + access_token, …}*
+```
 
 **Http-kérelem fejlécei**:
 
@@ -161,8 +166,10 @@ Itt láthatók a leggyakoribb kérelmek fejlécei, amelyeket meg kell adni az AP
     "additionalProp3": {}
   }
 }
+```
 
-Device
+Eszköz
+
 ```json
 {
   "deviceModelId": "string",
@@ -242,7 +249,7 @@ SensorModel
 ```
 Az alábbi példa egy eszköz létrehozását mutatja be (ez egy bemeneti JSON-t tartalmaz adattartalomként a kérés törzsével).  
 
-```
+```azurepowershell-interactive
 curl -X POST "https://<datahub>.azurewebsites.net/Device" -H  
 "accept: application/json" -H  "Content-Type: application/json" -H
 "Authorization: Bearer <Access-Token>" -d "
@@ -266,6 +273,7 @@ A telemetria az Azure Event hub-nak kell elküldeni feldolgozásra. Az Azure Eve
 
 Ha már létrejött egy EventHub-ügyfél, akkor JSON-ként küldhet üzeneteket a EventHub.  
 Alakítsa át a korábbi érzékelő adatformátumát olyan kanonikus formátumra, amelyet az Azure FarmBeats értelmez. A kanonikus üzenet formátuma a következő:  
+
 
 
  ```

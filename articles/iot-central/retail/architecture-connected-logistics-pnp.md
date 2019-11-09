@@ -7,12 +7,12 @@ ms.service: iot-central
 ms.subservice: iot-central-retail
 ms.topic: overview
 ms.date: 10/20/2019
-ms.openlocfilehash: 1940f02fdf9badcf99ef85a2ab02ac9099cc1775
-ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
+ms.openlocfilehash: 797488632f04af9a170f05590154e50310570b28
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73615382"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73890723"
 ---
 # <a name="architecture-of-iot-central-connected-logistics-application-template"></a>IoT Central csatlakoztatott logisztikai alkalmazásspecifikus sablon architektúrája
 
@@ -47,4 +47,4 @@ A IoT Central platform a folyamatos adatexportálás (CDE) és az API-k révén 
 ## <a name="next-steps"></a>További lépések
 * Ismerje meg, hogyan telepítheti a [csatlakoztatott logisztikai megoldás sablonját](./tutorial-iot-central-connected-logistics-pnp.md)
 * További információ a [IoT Central kiskereskedelmi sablonokról](./overview-iot-central-retail-pnp.md)
-* További információ a IoT Centralról [IoT Central áttekintés](../core/overview-iot-central-pnp.md)
+* További információ a IoT Centralról [IoT Central áttekintés](../preview/overview-iot-central.md)

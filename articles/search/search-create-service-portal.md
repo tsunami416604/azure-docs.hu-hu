@@ -8,20 +8,20 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 11/04/2019
-ms.openlocfilehash: 21f55805e0486d987922a1aa160f2938f3a50155
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 5acfb60395f39d17e640e389ae2a28e220ccfae6
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72792440"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73884352"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-service-in-the-portal"></a>Rövid útmutató: Azure Cognitive Search szolgáltatás létrehozása a portálon
 
 Az Azure Cognitive Search egy önálló erőforrás, amely az egyéni alkalmazások keresési funkcióinak csatlakoztatására szolgál. Habár az Azure Cognitive Search egyszerűen integrálható más Azure-szolgáltatásokkal, önálló összetevőként is használható, vagy a hálózati kiszolgálókon lévő alkalmazásokkal vagy más felhőalapú platformokon futó szoftverekkel integrálható.
 
-Ebből a cikkből megtudhatja, hogyan hozhat létre Azure Cognitive Search-erőforrást a [Azure Portalban](https://portal.azure.com/).
+Ebből a cikkből megtudhatja, hogyan hozhat létre erőforrásokat a [Azure Portalban](https://portal.azure.com/).
 
-[Animált GIF![](./media/search-create-service-portal/AnimatedGif-AzureSearch-small.gif)](./media/search-create-service-portal/AnimatedGif-AzureSearch.gif#lightbox)
+[Animált GIF ![](./media/search-create-service-portal/AnimatedGif-AzureSearch-small.gif)](./media/search-create-service-portal/AnimatedGif-AzureSearch.gif#lightbox)
 
 Szívesebben használja a PowerShellt? Használja az Azure Resource Manager [szolgáltatássablonját](https://azure.microsoft.com/resources/templates/101-azure-search-create/). Az első lépésekkel kapcsolatos segítségért lásd: az [Azure Cognitive Search kezelése a PowerShell](search-manage-powershell.md)-lel.
 
@@ -37,24 +37,26 @@ Választhatja az [MSDN-előfizetői értékelemek aktiválását](https://azure.
 2. Kattintson a plusz jelre ("+ Create Resource") a bal felső sarokban.
 3. A keresősáv segítségével keresse meg az "Azure Cognitive Search", vagy navigáljon az erőforráshoz a **Web** > **Azure Cognitive Search**használatával.
 
-![Navigáljon egy Azure Cognitive Search-erőforráshoz](./media/search-create-service-portal/find-search3.png "Az Azure Cognitive Search navigációs útja")
+![Erőforrás létrehozása a portálon](./media/search-create-service-portal/find-search3.png "Erőforrás létrehozása a portálon")
 
-## <a name="select-a-subscription"></a>Előfizetés kiválasztása
+## <a name="choose-a-subscription"></a>Előfizetés kiválasztása
 
-Ha egynél több előfizetéssel rendelkezik, akkor olyat válasszon, amelyhez adat- vagy fájltárolási szolgáltatások is tartoznak. Az Azure Cognitive Search képes automatikusan felderíteni az Azure Table és a blob Storage, a SQL Database és az Azure Cosmos DB indexelést [*az indexelő használatával,* ](search-indexer-overview.md)de csak az azonos előfizetésben lévő szolgáltatásokhoz.
+Az előfizetés-azonosító és az erőforráscsoport beállítása az első lépés. Ha egynél több előfizetéssel rendelkezik, akkor olyat válasszon, amelyhez adat- vagy fájltárolási szolgáltatások is tartoznak. Az Azure Cognitive Search képes automatikusan felderíteni az Azure Table és a blob Storage, a SQL Database és az Azure Cosmos DB indexelést [*az indexelő használatával,* ](search-indexer-overview.md)de csak az azonos előfizetésben lévő szolgáltatásokhoz.
 
 ## <a name="set-a-resource-group"></a>Erőforráscsoport beállítása
 
-Egy erőforráscsoport szükséges, amely az erőforrások teljes körű felügyeletéhez használható, beleértve a költséghatékonyságot is. Egy erőforráscsoport állhat egy szolgáltatásból vagy több, együtt használt szolgáltatásból is. Ha például Azure Cognitive Searcht használ egy Azure Cosmos DB-adatbázis indexeléséhez, akkor az adott erőforráscsoport mindkét szolgáltatását felügyeleti célokra is elvégezheti. 
+Egy erőforráscsoport szükséges, amely az erőforrások teljes körű felügyeletéhez használható, beleértve a költségeket is. Egy erőforráscsoport állhat egy szolgáltatásból vagy több, együtt használt szolgáltatásból is. Ha például Azure Cognitive Searcht használ egy Azure Cosmos DB-adatbázis indexeléséhez, akkor az adott erőforráscsoport mindkét szolgáltatását felügyeleti célokra is elvégezheti. 
 
 Ha egyetlen csoporthoz sem egyesít erőforrásokat, vagy ha a meglévő erőforráscsoportok a nem kapcsolódó megoldásokban használt erőforrásokkal vannak kitöltve, hozzon létre egy új erőforráscsoportot az Azure Cognitive Search-erőforráshoz. 
 
-A szolgáltatás használata során nyomon követheti az aktuális és a tervezett költségeket (a képernyőképen látható módon), vagy görgessen le az egyes erőforrások díjainak megtekintéséhez.
+![Új erőforráscsoport létrehozása](./media/search-create-service-portal/new-resource-group.png "Új erőforráscsoport létrehozása")
+
+Az idő múlásával nyomon követheti az aktuális és a tervezett költségeket (a képernyőképen látható módon), vagy görgessen le az egyes erőforrások díjainak megtekintéséhez. A következő képernyőfelvételen látható, hogy milyen költségadatok várhatóak, amikor több erőforrást egyesít egy csoportba.
 
 ![Költségek kezelése az erőforráscsoport szintjén](./media/search-create-service-portal/resource-group-cost-management.png "Költségek kezelése az erőforráscsoport szintjén")
 
 > [!TIP]
-> Egy erőforráscsoport törlésekor a benne lévő szolgáltatások is törölve lesznek. Több szolgáltatást igénybe vevő prototípus-projektek végén könnyebb mindent törölni, ha az összeset egy erőforráscsoportban helyezi el.
+> Az erőforráscsoportok leegyszerűsítik a tisztítást, mert egy csoport törlése szintén törli a benne lévő szolgáltatásokat. Több szolgáltatást igénybe vevő prototípus-projektek végén könnyebb mindent törölni, ha az összeset egy erőforráscsoportban helyezi el.
 
 ## <a name="name-the-service"></a>A szolgáltatás neve
 
@@ -77,7 +79,7 @@ Azure-szolgáltatásként az Azure Cognitive Search világszerte elérhető adat
 
 A sávszélességgel kapcsolatos díjak minimalizálásához vagy elkerüléséhez válassza ki ugyanazt a helyet több szolgáltatás számára. Ha például egy másik Azure-szolgáltatás (Azure Storage, Azure Cosmos DB, Azure SQL Database) által biztosított adatok indexelését végzi, az Azure Cognitive Search szolgáltatás ugyanabban a régióban való létrehozása elkerüli a sávszélességi díjakat (a kimenő adatokért nem számítunk fel díjat, ha a szolgáltatások ugyanabban a régióban találhatók).
 
-Emellett, ha kognitív keresési AI-bővítést használ, a szolgáltatást a Cognitive Services erőforrással megegyező régióban hozza létre. *Az Azure Cognitive Search és az ugyanazon régióban lévő Cognitive Services együttes elhelyezése az AI-bővítés követelménye*.
+Emellett, ha AI-bővítést használ, a szolgáltatást ugyanabban a régióban hozza létre, mint Cognitive Services. *Az Azure Cognitive Search és az ugyanazon régióban lévő Cognitive Services együttes elhelyezése az AI-bővítés követelménye*.
 
 > [!Note]
 > Közép-India jelenleg nem érhető el az új szolgáltatásokhoz. Az India középső régiójában már meglévő szolgáltatások esetében korlátozás nélkül is méretezhető, és a szolgáltatás teljes mértékben támogatott az adott régióban. A régió korlátozásai ideiglenesek, és csak az új szolgáltatásokra korlátozódnak. Ezt a megjegyzést akkor távolítjuk el, ha a korlátozás már nem érvényes.
@@ -104,9 +106,9 @@ A szolgáltatás percek alatt üzembe helyezhető, amelyet az Azure-értesítés
 
 Ha nem használja a portált, az új szolgáltatáshoz való programozott hozzáféréshez az URL-végpontot és egy hitelesítési API-kulcsot kell megadnia.
 
-1. A szolgáltatás áttekintése lapon keresse meg és másolja ki az URL-végpontot az oldal jobb oldalán.
+1. Az **Áttekintés** oldalon keresse meg és másolja ki az URL-végpontot az oldal jobb oldalán.
 
-2. A bal oldali navigációs panelen válassza a **kulcsok** lehetőséget, majd másolja az egyik rendszergazdai kulcsot (ezek egyenértékűek). Felügyeleti API-kulcsok szükségesek a szolgáltatásban található objektumok létrehozásához, frissítéséhez és törléséhez.
+2. A **kulcsok** lapon másolja át a rendszergazdai kulcsok egyikét (ezek egyenértékűek). Felügyeleti API-kulcsok szükségesek a szolgáltatásban található objektumok létrehozásához, frissítéséhez és törléséhez. Ezzel szemben a lekérdezési kulcsok olvasási hozzáférést biztosítanak a tartalom indexeléséhez.
 
    ![A szolgáltatás áttekintő lapja URL-végponttal](./media/search-create-service-portal/get-url-key.png "URL-végpont és egyéb szolgáltatás részletei")
 
@@ -149,9 +151,9 @@ Bár az ügyfelek többsége csak egy szolgáltatást használ, szükség lehet 
 
 A magas rendelkezésre álláshoz nincs szükség második szolgáltatásra. A lekérdezések magas rendelkezésre állása úgy érhető el, hogy egyazon szolgáltatáson belül 2 vagy több replikát használ. A replika frissítései szekvenciálisak, ami azt jelenti, hogy legalább egy működőképes a szolgáltatás frissítésekor. További információ az üzemidőről: [szolgáltatói szerződések](https://azure.microsoft.com/support/legal/sla/search/v1_0/).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Miután kiépített egy Azure Cognitive Search szolgáltatást, folytathatja az első index létrehozását a portálon.
+A szolgáltatás kiépítés után folytathatja a portálon az első index létrehozását.
 
 > [!div class="nextstepaction"]
 > [Rövid útmutató: Azure Cognitive Search index létrehozása a portálon](search-get-started-portal.md)

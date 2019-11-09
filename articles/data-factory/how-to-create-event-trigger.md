@@ -11,12 +11,12 @@ manager: jroth
 ms.reviewer: maghan
 ms.topic: conceptual
 ms.date: 10/18/2018
-ms.openlocfilehash: 7581831e846e6de835c261d3430a88f1dcee9eb4
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 0b1d9fad2992397a3a6768d0f5e7ff26a400a2b3
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73673693"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73889328"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-in-response-to-an-event"></a>Olyan eseményindító létrehozása, amely egy adott eseményre válaszul futtat egy folyamatot
 
@@ -38,35 +38,37 @@ Ebből a szakaszból megtudhatja, hogyan hozhat létre egy eseményvezérelt ese
 
 1. Ugrás a **szerzői vászonra**
 
-2. A bal alsó sarokban kattintson az **Eseményindítók** gombra.
+1. A bal alsó sarokban kattintson az **Eseményindítók** gombra.
 
-3. Kattintson az **+ új** elemre, amely megnyitja a trigger oldal létrehozása NAV-t
+1. Kattintson az **+ új** elemre, amely megnyitja a trigger oldal létrehozása NAV-t
 
-4. Eseményindító típusú **esemény** kiválasztása
+1. Eseményindító típusú **esemény** kiválasztása
 
-![Új eseményindító létrehozása](media/how-to-create-event-trigger/event-based-trigger-image1.png)
+    ![Új eseményindító létrehozása](media/how-to-create-event-trigger/event-based-trigger-image1.png)
 
-5. Válassza ki a Storage-fiókját az Azure-előfizetés legördülő menüből, vagy manuálisan használja a Storage-fiókja erőforrás-AZONOSÍTÓját. Válassza ki, hogy melyik tárolón történjen az események betöltése. A tároló kiválasztása nem kötelező, de ne felhagyható, hogy az összes tároló kijelölése nagy számú eseményt eredményezhet.
+1. Válassza ki a Storage-fiókját az Azure-előfizetés legördülő menüből, vagy manuálisan használja a Storage-fiókja erőforrás-AZONOSÍTÓját. Válassza ki, hogy melyik tárolón történjen az események betöltése. A tároló kiválasztása nem kötelező, de ne felhagyható, hogy az összes tároló kijelölése nagy számú eseményt eredményezhet.
 
    > [!NOTE]
    > Az Event trigger jelenleg csak a Azure Data Lake Storage Gen2 és az általános célú 2-es verziójú Storage-fiókokat támogatja. Egy Azure Event Grid korlátozás miatt Azure Data Factory csak a legfeljebb 500 eseményindítót támogatja.
 
-6. A **blob** elérési útja és a **blob elérési** útja a tulajdonságok segítségével megadhatja azokat a tárolókat, mappákat és blob-neveket, amelyekhez eseményeket szeretne kapni. Az esemény-eseményindítónak legalább egy ilyen tulajdonságot meg kell határoznia. Különböző mintákat használhat a **blob elérési útjához** , a **blob elérési útja** pedig tulajdonságok használatával végződik, ahogy az ebben a cikkben szereplő példákban is látható.
+1. A **blob** elérési útja és a **blob elérési** útja a tulajdonságok segítségével megadhatja azokat a tárolókat, mappákat és blob-neveket, amelyekhez eseményeket szeretne kapni. Az esemény-eseményindítónak legalább egy ilyen tulajdonságot meg kell határoznia. Különböző mintákat használhat a **blob elérési útjához** , a **blob elérési útja** pedig tulajdonságok használatával végződik, ahogy az ebben a cikkben szereplő példákban is látható.
 
     * **A blob elérési útja a következőket veszi kezdettel:** A blob elérési útnak a mappa elérési útjával kell kezdődnie. Az érvényes értékek a következők: `2018/` és `2018/april/shoes.csv`. Ez a mező nem választható ki, ha nincs kiválasztva tároló.
     * **A blob elérési útja az alábbiakkal végződik:** A blob elérési útjának fájlnevet vagy kiterjesztést kell végződnie. Az érvényes értékek a következők: `shoes.csv` és `.csv`. A tároló és a mappa neve nem kötelező, de ha meg van adva, egy `/blobs/` szegmensnek kell elválasztani őket. Például egy "Orders" nevű tároló értéke `/orders/blobs/2018/april/shoes.csv`lehet. Ha bármilyen tárolóban szeretne megadni egy mappát, hagyja ki a kezdő "/" karaktert. Például a `april/shoes.csv` minden tárolóban elindít egy eseményt az "áprilisi" nevű mappában található bármely `shoes.csv` nevű fájlon. 
 
-7. Válassza ki, hogy az eseményindító válaszol-e a **blob által létrehozott** eseményre, a **blob törölt** eseményére vagy mindkettőre. A megadott tárolási helyen minden esemény elindítja az eseményindítóhoz társított Data Factory folyamatokat.
+1. Válassza ki, hogy az eseményindító válaszol-e a **blob által létrehozott** eseményre, a **blob törölt** eseményére vagy mindkettőre. A megadott tárolási helyen minden esemény elindítja az eseményindítóhoz társított Data Factory folyamatokat.
 
     ![Az eseményindító konfigurálása](media/how-to-create-event-trigger/event-based-trigger-image2.png)
 
-8. Miután konfigurálta az aktiválást, kattintson a **Next (tovább) gombra: az adatelőnézet**. Ezen a képernyőn láthatók azok a meglévő Blobok, amelyek megfelelnek az esemény-eseményindító konfigurációjának. Győződjön meg arról, hogy adott szűrőket adott meg. A túl széles szűrők konfigurálása nagy számú, létrehozott/törölt fájlhoz is tartozhat, és jelentősen befolyásolhatja a költségeket. A szűrési feltételek ellenőrzése után kattintson a **Befejezés**gombra.
+1. Válassza ki, hogy az trigger kihagyja-e a blobokat nulla bájttal.
+
+1. Miután konfigurálta az aktiválást, kattintson a **Next (tovább) gombra: az adatelőnézet**. Ezen a képernyőn láthatók azok a meglévő Blobok, amelyek megfelelnek az esemény-eseményindító konfigurációjának. Győződjön meg arról, hogy adott szűrőket adott meg. A túl széles szűrők konfigurálása nagy számú, létrehozott/törölt fájlhoz is tartozhat, és jelentősen befolyásolhatja a költségeket. A szűrési feltételek ellenőrzése után kattintson a **Befejezés**gombra.
 
     ![Esemény-eseményindító adatelőnézete](media/how-to-create-event-trigger/event-based-trigger-image3.png)
 
-9. Ha csatlakoztatni szeretne egy folyamatot ehhez az triggerhez, lépjen a folyamat vászonra, és kattintson az **trigger hozzáadása** lehetőségre, és válassza az **új/szerkesztés**lehetőséget. Amikor megjelenik az oldalsó NAV, kattintson az **trigger kiválasztása...** legördülő listára, és válassza ki a létrehozott triggert. Kattintson a **Tovább gombra: az adatok előnézete** a konfiguráció megerősítéséhez, majd az adatelőnézet érvényesítése elem **melletti** helyes értékre.
+1. Ha csatlakoztatni szeretne egy folyamatot ehhez az triggerhez, lépjen a folyamat vászonra, és kattintson az **trigger hozzáadása** lehetőségre, és válassza az **új/szerkesztés**lehetőséget. Amikor megjelenik az oldalsó NAV, kattintson az **trigger kiválasztása...** legördülő listára, és válassza ki a létrehozott triggert. Kattintson a **Tovább gombra: az adatok előnézete** a konfiguráció megerősítéséhez, majd az adatelőnézet érvényesítése elem **melletti** helyes értékre.
 
-10. Ha a folyamat paraméterekkel rendelkezik, akkor megadhatja őket az trigger futtatási paraméterének navigációs oldalán. Az eseményindító rögzíti a blob mappájának elérési útját és fájlnevét a tulajdonságok `@triggerBody().folderPath` és `@triggerBody().fileName`. Ezen tulajdonságok értékének egy folyamaton való használatához a tulajdonságokat a folyamat paramétereinek kell képeznie. A tulajdonságok paraméterekhez való leképezése után a folyamat során a `@pipeline().parameters.parameterName` kifejezésen keresztül érheti el az trigger által rögzített értékeket. Ha elkészült, kattintson a **Befejezés** gombra.
+1. Ha a folyamat paraméterekkel rendelkezik, akkor megadhatja őket az trigger futtatási paraméterének navigációs oldalán. Az eseményindító rögzíti a blob mappájának elérési útját és fájlnevét a tulajdonságok `@triggerBody().folderPath` és `@triggerBody().fileName`. Ezen tulajdonságok értékének egy folyamaton való használatához a tulajdonságokat a folyamat paramétereinek kell képeznie. A tulajdonságok paraméterekhez való leképezése után a folyamat során a `@pipeline().parameters.parameterName` kifejezésen keresztül érheti el az trigger által rögzített értékeket. Ha elkészült, kattintson a **Befejezés** gombra.
 
     ![Tulajdonságok megfeleltetése a folyamat paramétereinek](media/how-to-create-event-trigger/event-based-trigger-image4.png)
 
@@ -82,6 +84,7 @@ Az alábbi táblázat áttekintést nyújt az eseményvezérelt eseményindító
 | **események** | A triggert tüzet kiváltó események típusa. | Tömb    | Microsoft. Storage. BlobCreated, Microsoft. Storage. BlobDeleted | Igen, az értékek bármely kombinációja. |
 | **blobPathBeginsWith** | A blob elérési útjának a triggerhez megadott mintázattal kell kezdődnie. `/records/blobs/december/` például csak a Blobok eseményindítóját a `records` tároló alatti `december` mappában. | Sztring   | | Legalább egy értéket meg kell adnia a következő tulajdonságok közül: `blobPathBeginsWith` vagy `blobPathEndsWith`. |
 | **blobPathEndsWith** | A blob elérési útjának a triggerhez megadott mintázattal kell végződnie. `december/boxes.csv` például csak a `boxes` nevű Blobok eseményindítóját indítja el egy `december` mappában. | Sztring   | | Legalább egy értéket meg kell adnia a következő tulajdonságok közül: `blobPathBeginsWith` vagy `blobPathEndsWith`. |
+| **ignoreEmptyBlobs** | Azt határozza meg, hogy a nulla bájtos Blobok elindítanak-e egy folyamat futtatását. Alapértelmezés szerint ez igaz értékre van állítva. | Logikai | true vagy false | Nem |
 
 ## <a name="examples-of-event-based-triggers"></a>Példák eseményvezérelt eseményindítóra
 

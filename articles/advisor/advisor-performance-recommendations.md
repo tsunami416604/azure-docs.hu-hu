@@ -8,12 +8,12 @@ ms.service: advisor
 ms.topic: article
 ms.date: 01/29/2019
 ms.author: kasparks
-ms.openlocfilehash: c8647e316cc77e7e1eed5108fafccd6d70d181cf
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: 1fec8a10a6699dc1360494cc7ac66e13f5d37ff0
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70898190"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73885737"
 ---
 # <a name="improve-performance-of-azure-applications-with-azure-advisor"></a>Az Azure-alkalmazások teljesítményének javítása Azure Advisor
 
@@ -23,7 +23,7 @@ Azure Advisor teljesítményre vonatkozó javaslatok segítenek az üzleti szemp
 
 Az Traffic Manager profil élettartama [(TTL) beállításai](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-performance-considerations) lehetővé teszik annak megadását, hogy a végpontok milyen gyorsan legyenek átváltva, ha egy adott végpont nem válaszol a lekérdezésekre. A TTL-értékek csökkentése azt jelenti, hogy az ügyfelek gyorsabban lesznek átirányítva a működő végpontok működéséhez.
 
-Azure Advisor azonosítja a hosszabb ÉLETTARTAMú Traffic Manager profilokat, és azt javasolja, hogy az ÉLETTARTAMot 20 másodpercre vagy 60 másodpercre konfigurálja, attól függően, [](https://azure.microsoft.com/roadmap/fast-failover-and-tcp-probing-in-azure-traffic-manager/)hogy a profil konfigurálva van-e Fast Failoverhoz.
+Azure Advisor azonosítja a hosszabb ÉLETTARTAMú Traffic Manager profilokat, és azt javasolja, hogy az ÉLETTARTAMot 20 másodpercre vagy 60 másodpercre konfigurálja, attól függően, hogy a profil konfigurálva van-e [Fast Failoverhoz](https://azure.microsoft.com/roadmap/fast-failover-and-tcp-probing-in-azure-traffic-manager/).
 
 ## <a name="improve-database-performance-with-sql-db-advisor"></a>Az adatbázis teljesítményének növelése az SQL DB Advisorral
 
@@ -73,7 +73,7 @@ Az Advisor azokat a táblákat azonosítja, amelyek nem replikált táblák, de 
 Telepítse át a Storage-fiók telepítési modelljét Azure Resource Managerra (Resource Manager), hogy kihasználhassa a sablonok központi telepítését, a további biztonsági beállításokat, valamint az Azure Storage legújabb funkcióinak kihasználásához szükséges GPv2-fiókra való frissítést. Az Advisor azonosítja a klasszikus üzemi modellt használó önálló tárolási fiókokat, és javasolja a Resource Manager-alapú üzemi modellbe való áttelepítést.
 
 > [!NOTE]
-> A Azure Monitor klasszikus riasztásai a 2019 augusztusában lettek kivonva. Javasoljuk, hogy frissítse a klasszikus Storage-fiókját a Resource Manager használatára, hogy megőrizze a riasztási funkciókat az új platformmal. További információ: [klasszikus riasztások nyugdíjazása](https://docs.microsoft.com/en-us/azure/azure-monitor/platform/monitoring-classic-retirement#retirement-of-classic-monitoring-and-alerting-platform).
+> A Azure Monitor klasszikus riasztásai a 2019 augusztusában lettek kivonva. Javasoljuk, hogy frissítse a klasszikus Storage-fiókját a Resource Manager használatára, hogy megőrizze a riasztási funkciókat az új platformmal. További információ: [klasszikus riasztások nyugdíjazása](https://docs.microsoft.com/azure/azure-monitor/platform/monitoring-classic-retirement#retirement-of-classic-monitoring-and-alerting-platform).
 
 ## <a name="design-your-storage-accounts-to-prevent-hitting-the-maximum-subscription-limit"></a>Tervezze meg a Storage-fiókokat, hogy megakadályozza a maximális előfizetési korlátot
 
@@ -88,7 +88,7 @@ A CPU nagy kihasználtsága hosszabb időn keresztül lassú lekérdezési telje
 Az alacsony gyorsítótár-találatok aránya lassabb lekérdezési teljesítményt és nagyobb IOPS eredményezhet. Ennek oka lehet egy hibás lekérdezési csomag vagy a memória-igényes munkaterhelés futtatása. A lekérdezési terv vagy az Azure Database for PostgreSQL adatbázis-kiszolgáló, az Azure MySQL adatbázis-kiszolgáló vagy az Azure MariaDB-kiszolgáló [memóriájának](https://docs.microsoft.com/azure/postgresql/concepts-pricing-tiers) javítása segít optimalizálni az adatbázis-számítási feladatok végrehajtását. Azure Advisor azonosítja a nagy pufferméret miatt érintett kiszolgálókat, és a lekérdezési terv kijavítását, a több memóriával rendelkező magasabb SKU-ra való áttérést, vagy a tárterület méretének növelését javasolja, hogy további IOPS legyenek.
 
 ### <a name="use-a-azure-mysql-or-azure-postgresql-read-replica-to-scale-out-reads-for-read-intensive-workloads"></a>Az Azure MySQL vagy az Azure PostgreSQL olvasási replikájának használata az olvasási igényű számítási feladatokhoz
-Azure Advisor kihasználja a munkaterhelés-alapú heurisztikus műveleteket, például az olvasások arányát a kiszolgálón az elmúlt hét napban, az olvasási igényű számítási feladatok azonosítása érdekében. Az Azure Database for PostgreSQL-erőforrás vagy az Azure Database for MySQL-erőforrás nagyon magas olvasási/írási aránnyal eredményezheti a CPU-és/vagy memória-tartalmakat, ami lelassítja a lekérdezési teljesítményt. A [replika](https://docs.microsoft.com/azure/postgresql/howto-read-replicas-portal) hozzáadásával a rendszer kibővíti az olvasási adatokat a replika-kiszolgálóra, megakadályozva a processzor és/vagy a memória korlátozásait az elsődleges kiszolgálón. Az Advisor a nagy olvasási igényű számítási feladatokkal rendelkező kiszolgálókat azonosítja, és egy [olvasási replika](https://docs.microsoft.com/azure/postgresql/concepts-read-replicas) hozzáadását javasolja a beolvasott számítási feladatok kiszervezéséhez.
+Azure Advisor kihasználja a munkaterhelés-alapú heurisztikus műveleteket, például az olvasások arányát a kiszolgálón az elmúlt hét napban, az olvasási igényű számítási feladatok azonosítása érdekében. Az Azure Database for PostgreSQL-erőforrás vagy az Azure Database for MySQL-erőforrás nagyon magas olvasási/írási aránnyal eredményezheti a CPU-és/vagy memória-tartalmakat, ami lelassítja a lekérdezési teljesítményt. A [replika](https://docs.microsoft.com/azure/postgresql/howto-read-replicas-portal) hozzáadásával a rendszer kibővíti az olvasási adatokat a replika-kiszolgálóra, megakadályozva a processzor és/vagy a memória korlátozásait az elsődleges kiszolgálón. Az Advisor olyan kiszolgálókat azonosít, amelyek ilyen nagy olvasási igényű számítási feladatokkal rendelkeznek, és javasolt egy [olvasási replika](https://docs.microsoft.com/azure/postgresql/concepts-read-replicas) hozzáadását a beolvasott számítási feladatok kiszervezéséhez.
 
 
 ### <a name="scale-your-azure-mysql-azure-postgresql-or-azure-mariadb-server-to-a-higher-sku-to-prevent-connection-constraints"></a>Az Azure MySQL, az Azure PostgreSQL vagy az Azure MariaDB-kiszolgáló méretezése magasabb SKU-ra a kapcsolatok megkötésének megakadályozása érdekében

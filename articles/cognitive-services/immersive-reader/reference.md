@@ -10,18 +10,18 @@ ms.subservice: immersive-reader
 ms.topic: reference
 ms.date: 06/20/2019
 ms.author: metan
-ms.openlocfilehash: 1908ed916d61c7a65b1f0061c0fe8d8a08b5e41c
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: ed9bd6f5932fdcb2d9124a000115a6f68cf21613
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72388093"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73889312"
 ---
 # <a name="immersive-reader-sdk-reference-guide"></a>A részletes olvasó SDK útmutatója
 
 A lebilincselő olvasó SDK egy JavaScript-kódtár, amely lehetővé teszi a magával ragadó olvasó integrálását a webalkalmazásba.
 
-# <a name="functions"></a>Functions
+## <a name="functions"></a>Functions
 
 Az SDK a függvényeket teszi elérhetővé:
 
@@ -33,7 +33,7 @@ Az SDK a függvényeket teszi elérhetővé:
 
 ## <a name="launchasync"></a>launchAsync
 
-A webalkalmazásban a `iframe` értéken belül elindítja a lebilincselő olvasót.
+Elindítja az olvasót a webalkalmazás egy `iframe`ján belül.
 
 ```typescript
 launchAsync(token: string, subdomain: string, content: Content, options?: Options): Promise<HTMLDivElement>;
@@ -41,7 +41,7 @@ launchAsync(token: string, subdomain: string, content: Content, options?: Option
 
 ### <a name="parameters"></a>Paraméterek
 
-| Név | Type (Típus) | Leírás |
+| Név | Típus | Leírás |
 | ---- | ---- |------------ |
 | `token` | sztring | Az Azure AD hitelesítési jogkivonata. Lásd: [Azure ad-hitelesítés – útmutató](./azure-active-directory-authentication.md). |
 | `subdomain` | sztring | Az Azure-beli magától elolvasó erőforrás egyedi altartománya. Lásd: [Azure ad-hitelesítés – útmutató](./azure-active-directory-authentication.md). |
@@ -50,17 +50,17 @@ launchAsync(token: string, subdomain: string, content: Content, options?: Option
 
 ### <a name="returns"></a>Adja vissza
 
-Egy `Promise<HTMLDivElement>` értéket ad vissza, amely feloldja a magával ragadó olvasó betöltését. A `Promise` olyan `div` elemre oldódik fel, amelynek csak a gyermeke egy `iframe` elem, amely tartalmazza az olvasói oldalt.
+Egy `Promise<HTMLDivElement>`ad vissza, amely feloldja a magával ragadó olvasó betöltését. A `Promise` egy olyan `div` elemre oldódik fel, amelynek csak a gyermeke egy `iframe` elem, amely tartalmazza az olvasói oldalt.
 
 ### <a name="exceptions"></a>Kivételek
 
-A visszaadott `Promise` egy [`Error`](#error) objektummal lesz elutasítva, ha a magával ragadó olvasó nem töltődik be. További információ: [hibakódok](#error-codes).
+A visszaadott `Promise` elutasítása egy [`Error`](#error) objektummal történik, ha a magával ragadó olvasó nem töltődik be. További információ: [hibakódok](#error-codes).
 
 ## <a name="close"></a>bezárás
 
 A magával ragadó olvasó bezárása.
 
-Példa erre a függvényre, ha a kilépési gomb el van rejtve ```hideExitButton: true``` beállításával a [Beállítások](#options)között. Ezután egy másik gomb (például egy mobil fejléc vissza nyíl) hívhatja ezt a ```close``` függvényt, amikor rákattint.
+Példa erre a függvényre, ha a kilépési gomb el van rejtve a [beállítások](#options)```hideExitButton: true``` beállításával. Ezután egy másik gomb (például egy mobil fejléc vissza nyíl) hívhatja ezt a ```close``` függvényt, amikor rákattint.
 
 ```typescript
 close(): void;
@@ -68,7 +68,7 @@ close(): void;
 
 ## <a name="renderbuttons"></a>renderButtons
 
-Ez a függvény stílusokat és frissítéseket frissít a dokumentum az olvasó gombjának elemeivel. Ha ```options.elements``` van megadva, akkor ez a függvény a ```options.elements``` értéken belül jeleníti meg a gombokat. Ellenkező esetben a gombok a dokumentum azon elemein belül jelennek meg, amelyeknek ```immersive-reader-button``` osztálya van.
+Ez a függvény stílusokat és frissítéseket frissít a dokumentum az olvasó gombjának elemeivel. Ha ```options.elements``` van megadva, akkor a függvény a ```options.elements```on belüli gombokat jeleníti meg. Ellenkező esetben a gombok a dokumentum azon elemein belül jelennek meg, amelyeknek a ```immersive-reader-button```osztálya van.
 
 Az SDK automatikusan ezt a függvényt hívja meg, amikor az ablak betöltődik.
 
@@ -80,7 +80,7 @@ renderButtons(options?: RenderButtonsOptions): void;
 
 ### <a name="parameters"></a>Paraméterek
 
-| Név | Type (Típus) | Leírás |
+| Név | Típus | Leírás |
 | ---- | ---- |------------ |
 | `options` | [RenderButtonsOptions](#renderbuttonsoptions) | A renderButtons függvény bizonyos viselkedésének konfigurálására szolgáló beállítások. Választható. |
 
@@ -115,7 +115,7 @@ Egyetlen adathalmaz, amely a magára az olvasóba kerül át a tartalomba.
 | --------- | ----------- |
 | szöveg/egyszerű | Egyszerű szöveg. |
 | szöveg/html | HTML-tartalom. [További információ](#html-support)|
-| Application/MathML + XML | Matematikai Markup Language (MathML). [További információk](https://developer.mozilla.org/en-US/docs/Web/MathML).
+| Application/MathML + XML | Matematikai Markup Language (MathML). [Részletek](https://developer.mozilla.org/en-US/docs/Web/MathML).
 | Application/vnd. openxmlformats-officedocument. WordprocessingML. Document | Microsoft Word. docx formátumú dokumentum.
 
 ### <a name="html-support"></a>HTML-támogatás
@@ -170,14 +170,14 @@ A hibával kapcsolatos információkat tartalmaz.
 
 | Kód | Leírás |
 | ---- | ----------- |
-| BadArgument | A megadott argumentum érvénytelen. a részletekért tekintse meg a `message` értéket. |
-| időtúllépés | Nem sikerült betölteni a magával ragadó olvasót a megadott időkorláton belül. |
+| BadArgument | A megadott argumentum érvénytelen. további részletekért tekintse meg a `message`. |
+| Időtúllépés | Nem sikerült betölteni a magával ragadó olvasót a megadott időkorláton belül. |
 | TokenExpired | A megadott jogkivonat lejárt. |
 | Szabályozott | Túllépte a hívási sebesség korlátját. |
 
 ## <a name="launching-the-immersive-reader"></a>A lebilincselő olvasó elindítása
 
-Az SDK alapértelmezett stílust biztosít a magával ragadó olvasó indítására szolgáló gombhoz. Ezt a stílust a `immersive-reader-button` Class attribútum használatával engedélyezheti.
+Az SDK alapértelmezett stílust biztosít a magával ragadó olvasó indítására szolgáló gombhoz. A stílus engedélyezéséhez használja a `immersive-reader-button` class attribútumot.
 
 ```html
 <div class='immersive-reader-button'></div>
@@ -189,7 +189,7 @@ A gomb megjelenésének és működésének konfigurálásához használja a kö
 
 | Attribútum | Leírás |
 | --------- | ----------- |
-| `data-button-style` | Beállítja a gomb stílusát. @No__t-0, `text` vagy `iconAndText` lehet. Az alapértelmezett érték a `icon`. |
+| `data-button-style` | Beállítja a gomb stílusát. `icon`, `text`vagy `iconAndText`lehet. Az alapértelmezett érték a `icon`. |
 | `data-locale` | Beállítja a területi beállítást. Például `en-US` vagy `fr-FR`. Az alapértelmezett érték az angol `en`. |
 | `data-icon-px-size` | Beállítja az ikon méretét képpontban megadva. Az alapértelmezett érték a 20px. |
 
@@ -203,7 +203,7 @@ Használja az alábbi böngészők legújabb verzióit a legjobb élmény érdek
 * Mozilla Firefox
 * Apple Safari
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Ismerje [meg az olvasót a githubon](https://github.com/microsoft/immersive-reader-sdk)
 * [Gyors útmutató: hozzon létre egy webalkalmazást, amely elindítjaC#az olvasót ()](./quickstart.md)
