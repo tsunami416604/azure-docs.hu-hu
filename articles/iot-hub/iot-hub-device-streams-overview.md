@@ -1,18 +1,18 @@
 ---
-title: Azure IoT Hub-eszközök streamek (előzetes verzió) | Microsoft Docs
-description: A IoT Hub-eszközök adatfolyamának áttekintése
+title: Azure IoT Hub eszköz streamek | Microsoft Docs
+description: Az Azure IoT Hub-eszközök streamek áttekintése, amelyek a biztonságos kétirányú TCP-alagutakat a különböző felhőből eszközre irányuló kommunikációs forgatókönyvek esetében teszik lehetővé.
 author: robinsh
 services: iot-hub
 ms.service: iot-hub
 ms.topic: conceptual
 ms.date: 01/15/2019
 ms.author: robinsh
-ms.openlocfilehash: c71ca96ee657cd4d4d0d57e05dc31c03112dc848
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: ff738e56226f7cbb720a754573a9d8607e0e3247
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72900726"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73890460"
 ---
 # <a name="iot-hub-device-streams-preview"></a>IoT Hub eszköz streamek (előzetes verzió)
 
@@ -208,7 +208,7 @@ Az alábbi hivatkozásokra kattintva megtudhatja, hogyan futtathatja a helyi pro
 
 * [C eszköz program](quickstart-device-streams-proxy-c.md)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az alábbi hivatkozásokat követve további információkat tudhat meg az eszközök streamekről.
 

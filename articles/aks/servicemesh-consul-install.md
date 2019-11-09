@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 10/09/2019
 ms.author: dastrebe
 zone_pivot_groups: client-operating-system
-ms.openlocfilehash: 1c48e758e9ee69085034f714652632151912f8d4
-ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
+ms.openlocfilehash: d5d0a575c3fb662df034b66a48135ac33393f95c
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72530627"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73885409"
 ---
 # <a name="install-and-use-consul-in-azure-kubernetes-service-aks"></a>A konzul telepítése és használata az Azure Kubernetes szolgáltatásban (ak)
 
@@ -23,7 +23,7 @@ Ez a cikk bemutatja, hogyan telepítheti a konzult. A konzuli összetevők egy K
 > [!NOTE]
 > Ezek az utasítások a konzuli verzió `1.6.0`, és legalább a Helm-verzió `2.14.2`t használják.
 >
-> A konzuli `1.6.x` kiadásait `1.13+` Kubernetes-verziókon lehet futtatni. További konzuli verziók a [GitHub-konzuli][consul-github-releases] kiadásokban és az egyes kiadásokra vonatkozó információk a [Consul-kibocsátási megjegyzésekben][consul-release-notes]című témakörben találhatók.
+> A konzuli `1.6.x` kiadásait `1.13+`Kubernetes-verziókon lehet futtatni. További konzuli verziók a [GitHub-konzuli][consul-github-releases] kiadásokban és az egyes kiadásokra vonatkozó információk a [Consul-kibocsátási megjegyzésekben][consul-release-notes]című témakörben találhatók.
 
 Ebben a cikkben az alábbiakkal ismerkedhet meg:
 
@@ -32,7 +32,7 @@ Ebben a cikkben az alábbiakkal ismerkedhet meg:
 > * A konzul telepítésének ellenőrzése
 > * Konzul eltávolítása az AK-ból
 
-## <a name="before-you-begin"></a>Előzetes teendők
+## <a name="before-you-begin"></a>Előkészületek
 
 A cikkben részletesen ismertetett lépések azt feltételezik, hogy létrehozott egy AK-fürtöt (Kubernetes `1.13` és újabb rendszerű, RBAC engedélyezve), és létrehozta a fürttel létesített `kubectl`-kapcsolatokat. Ha segítségre van szüksége ezen elemek bármelyikével kapcsolatban, tekintse meg az [AK][aks-quickstart]gyors üzembe helyezését ismertető cikket. Győződjön meg arról, hogy a fürt legalább 3 csomóponttal rendelkezik a Linux-csomópontok készletében.
 
@@ -129,7 +129,7 @@ consul-consul-sync-catalog-d846b79c-8ssr8                         1/1     Runnin
 consul-consul-tz2t5                                               1/1     Running   0          3m9s   10.240.0.12   aks-linux-92468653-vmss000000   <none>           <none>
 ```
 
-Az összes hüvelynek `Running` állapotot kell mutatnia. Ha a hüvelye nem rendelkezik ezekkel az állapotokkal, várjon egy percet vagy kettőt, amíg meg nem történik. Ha bármelyik hüvely hibát jelez, használja a [kubectl leírását a pod][kubectl-describe] paranccsal a kimenet és az állapot áttekintéséhez.
+Az összes hüvelynek `Running`állapotot kell mutatnia. Ha a hüvelye nem rendelkezik ezekkel az állapotokkal, várjon egy percet vagy kettőt, amíg meg nem történik. Ha bármelyik hüvely hibát jelez, használja a [kubectl leírását a pod][kubectl-describe] paranccsal a kimenet és az állapot áttekintéséhez.
 
 ## <a name="accessing-the-consul-ui"></a>A konzul felhasználói felületének elérése
 
@@ -157,7 +157,7 @@ helm delete --purge consul
 kubectl delete namespace consul
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A konzul további telepítési és konfigurációs lehetőségeinek megismeréséhez tekintse meg a következő hivatalos konzuli cikkeket:
 
@@ -186,7 +186,7 @@ A következő esetekben is elvégezheti a további forgatókönyvek használatá
 [kubectl-get]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get
 [kubectl-describe]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#describe
 [kubectl-port-forward]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#port-forward
-[kubernetes-node-selectors]: https://docs.microsoft.com/en-us/azure/aks/concepts-clusters-workloads#node-selectors
+[kubernetes-node-selectors]: https://docs.microsoft.com/azure/aks/concepts-clusters-workloads#node-selectors
 
 <!-- LINKS - internal -->
 [aks-quickstart]: ./kubernetes-walkthrough.md

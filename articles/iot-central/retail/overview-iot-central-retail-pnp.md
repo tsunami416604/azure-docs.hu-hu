@@ -8,12 +8,12 @@ ms.topic: overview
 ms.service: iot-central
 ms.subservice: iot-central-retail
 services: iot-central
-ms.openlocfilehash: 7da5d7b80dfd07b742af5ff6225f26207747e58c
-ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
+ms.openlocfilehash: 7f82e2a539c968d0dde44cbc2ed411710054c290
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73615326"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73890707"
 ---
 # <a name="building-retail-solutions-with-azure-iot-central"></a>Kiskereskedelmi megoldások létrehozása az Azure IoT Centrallal
 
@@ -150,4 +150,4 @@ A kereskedelmi megoldások létrehozásának megkezdéséhez:
 * Ismerje meg, hogyan telepítheti a [csatlakoztatott logisztikai megoldás sablonját](./tutorial-iot-central-connected-logistics-pnp.md)
 * Útmutató a [digitális terjesztési központ sablonjának](./tutorial-iot-central-digital-distribution-center-pnp.md) üzembe helyezéséhez
 * Ismerje meg, hogyan telepítheti az [intelligens leltár felügyeleti sablonját](./tutorial-iot-central-smart-inventory-management-pnp.md)
-* További információ a IoT Centralról [IoT Central áttekintés](../core/overview-iot-central-pnp.md)
+* További információ a IoT Centralról [IoT Central áttekintés](../preview/overview-iot-central.md)

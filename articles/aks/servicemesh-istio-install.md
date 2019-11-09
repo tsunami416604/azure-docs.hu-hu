@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 10/09/2019
 ms.author: pabouwer
 zone_pivot_groups: client-operating-system
-ms.openlocfilehash: 9c9dcd567b8632626bf4b1f0bf2ef6b5e69b8a9d
-ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
+ms.openlocfilehash: 245ac3b1fd88b8d2430e9ddefef3562efd16e6d1
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72530445"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73885381"
 ---
 # <a name="install-and-use-istio-in-azure-kubernetes-service-aks"></a>A Istio telepítése és használata az Azure Kubernetes szolgáltatásban (ak)
 
@@ -21,9 +21,9 @@ A [Istio][istio-github] egy nyílt forráskódú szolgáltatás rácsvonala, ame
 Ez a cikk bemutatja, hogyan telepítheti a Istio. A Istio `istioctl` ügyfél bináris fájlja telepítve van az ügyfélszámítógépre, és a Istio-összetevők Kubernetes-fürtbe vannak telepítve az AK-ban.
 
 > [!NOTE]
-> Ezek az utasítások a Istio verzióját `1.3.2`, és legalább a Helm-verziót `2.14.2` használják.
+> Ezek az utasítások a Istio verzióját `1.3.2`, és legalább a Helm-verziót `2.14.2`használják.
 >
-> A Istio `1.3.x` kiadásait a Istio csapat tesztelte a Kubernetes-verziók `1.13`, `1.14` `1.15`. További Istio-verziók a [GitHub-Istio kiadásokban][istio-github-releases], valamint a [Istio-Hírek][istio-release-notes] és a támogatott Kubernetes-verziók információi a [Istio általános gyakori kérdések][istio-faq]című témakörben találhatók.
+> A Istio `1.3.x` kiadásait a Istio csapat tesztelte a Kubernetes-verziók `1.13`, `1.14``1.15`. További Istio-verziók a [GitHub-Istio kiadásokban][istio-github-releases], valamint a [Istio-Hírek][istio-release-notes] és a támogatott Kubernetes-verziók információi a [Istio általános gyakori kérdések][istio-faq]című témakörben találhatók.
 
 Ebben a cikkben az alábbiakkal ismerkedhet meg:
 
@@ -34,7 +34,7 @@ Ebben a cikkben az alábbiakkal ismerkedhet meg:
 > * A bővítmények elérése
 > * Istio eltávolítása az AK-ból
 
-## <a name="before-you-begin"></a>Előzetes teendők
+## <a name="before-you-begin"></a>Előkészületek
 
 A cikkben részletesen ismertetett lépések azt feltételezik, hogy létrehozott egy AK-fürtöt (Kubernetes `1.13` és újabb rendszerű, RBAC engedélyezve), és létrehozta a fürttel létesített `kubectl`-kapcsolatokat. Ha segítségre van szüksége ezen elemek bármelyikével kapcsolatban, tekintse meg az [AK][aks-quickstart]gyors üzembe helyezését ismertető cikket.
 
@@ -94,7 +94,7 @@ istio-init-crd-11-1.3.2   1/1           12s        14s
 istio-init-crd-12-1.3.2   1/1           14s        14s
 ```
 
-Most, hogy megerősítettük a feladatok sikeres befejezését, ellenőrizze, hogy megfelelő számú Istio-CRDs van-e telepítve. A következő parancs futtatásával ellenőrizheti, hogy az összes 23 Istio-CRDs telepítve van-e. A parancsnak a `23` számot kell visszaadnia.
+Most, hogy megerősítettük a feladatok sikeres befejezését, ellenőrizze, hogy megfelelő számú Istio-CRDs van-e telepítve. A következő parancs futtatásával ellenőrizheti, hogy az összes 23 Istio-CRDs telepítve van-e. A parancsnak a `23`számot kell visszaadnia.
 
 ::: zone pivot="client-operating-system-linux"
 
@@ -195,12 +195,12 @@ kubectl get svc --namespace istio-system --output wide
 Az alábbi példában szereplő kimenet a következő szolgáltatásokat mutatja be:
 
 - `istio-*` szolgáltatások
-- `jaeger-*`, `tracing` és `zipkin` kiegészítő nyomkövetési szolgáltatások
+- `jaeger-*`, `tracing`és `zipkin` kiegészítő nyomkövetési szolgáltatások
 - `prometheus` kiegészítő metrikák szolgáltatás
 - `grafana` kiegészítő elemzési és monitorozási irányítópult szolgáltatás
 - `kiali` kiegészítő szolgáltatás rácsvonal-irányítópult szolgáltatása
 
-Ha a `istio-ingressgateway` `<pending>` külső IP-címét jeleníti meg, várjon néhány percet, amíg az Azure-hálózat nem rendel hozzá IP-címet.
+Ha a `istio-ingressgateway` `<pending>`külső IP-címét jeleníti meg, várjon néhány percet, amíg az Azure-hálózat nem rendel hozzá IP-címet.
 
 ```console
 NAME                     TYPE           CLUSTER-IP     EXTERNAL-IP      PORT(S)                                                                                                                                      AGE   SELECTOR
@@ -252,7 +252,7 @@ kiali-65d55bcfb8-tqrfk                   1/1     Running     0          88s
 prometheus-846f9849bd-br8kp              1/1     Running     0          87s
 ```
 
-Három `istio-init-crd-*` hüvelynek kell lennie `Completed` állapottal. Ezek a hüvelyek felelősek voltak azon feladatok futtatásához, amelyek egy korábbi lépésben hoztak létre a CRDs. Az összes többi hüvelynek `Running` állapotot kell mutatnia. Ha a hüvelye nem rendelkezik ezekkel az állapotokkal, várjon egy percet vagy kettőt, amíg meg nem történik. Ha bármelyik hüvely hibát jelez, használja a [kubectl leírását a pod][kubectl-describe] paranccsal a kimenet és az állapot áttekintéséhez.
+Három `istio-init-crd-*` hüvelynek kell lennie `Completed` állapottal. Ezek a hüvelyek felelősek voltak azon feladatok futtatásához, amelyek egy korábbi lépésben hoztak létre a CRDs. Az összes többi hüvelynek `Running`állapotot kell mutatnia. Ha a hüvelye nem rendelkezik ezekkel az állapotokkal, várjon egy percet vagy kettőt, amíg meg nem történik. Ha bármelyik hüvely hibát jelez, használja a [kubectl leírását a pod][kubectl-describe] paranccsal a kimenet és az állapot áttekintéséhez.
 
 ## <a name="accessing-the-add-ons"></a>A bővítmények elérése
 
@@ -339,7 +339,7 @@ A fenti parancsok törlik a Istio összes összetevőjét és névterét, de tov
 
 ::: zone-end
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az alábbi dokumentáció azt ismerteti, hogyan használható a Istio a Kanári-kiadások kivezetéséhez szükséges intelligens útválasztás biztosításához:
 
@@ -383,7 +383,7 @@ A következő Azure Monitor dokumentációból megtudhatja, hogyan figyelheti az
 [kubernetes-crd]: https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/#customresourcedefinitions
 [kubernetes-jobs]: https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/
 [kubernetes-secrets]: https://kubernetes.io/docs/concepts/configuration/secret/
-[kubernetes-node-selectors]: https://docs.microsoft.com/en-us/azure/aks/concepts-clusters-workloads#node-selectors
+[kubernetes-node-selectors]: https://docs.microsoft.com/azure/aks/concepts-clusters-workloads#node-selectors
 [kubectl-get]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get
 [kubectl-describe]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#describe
 [kubectl-port-forward]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#port-forward

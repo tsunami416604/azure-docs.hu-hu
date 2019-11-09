@@ -1,5 +1,5 @@
 ---
-title: 'Oktatóanyag: Riasztások használata és eszközökkel kapcsolatos problémák megoldása a távoli monitorozási megoldásban – Azure | Microsoft Docs'
+title: Riasztások használata a távoli figyelési megoldásban – Azure | Microsoft Docs
 description: Ez az oktatóanyag azt mutatja be, hogyan használhatja a riasztásokat a távoli monitorozási megoldásgyorsítóhoz csatlakoztatott eszközökkel kapcsolatos problémák azonosítására és megoldására.
 author: dominicbetts
 manager: timlt
@@ -9,12 +9,12 @@ services: iot-accelerators
 ms.date: 11/08/2018
 ms.topic: tutorial
 ms.custom: mvc
-ms.openlocfilehash: 1cd1eb9a0bd4b8457ea82303a747acb2553ab707
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 853fa2b80e04dd8d9225d023db8030fed044ed7f
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61452673"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73890924"
 ---
 # <a name="tutorial-troubleshoot-and-fix-device-issues"></a>Oktatóanyag: Eszközökkel kapcsolatos problémák észlelése és megoldása
 
@@ -84,6 +84,6 @@ Az eszköz hőmérsékletének csökkenését a telemetria megtekintésével ell
 
 ## <a name="next-steps"></a>További lépések
 
-Ez az oktatóanyag bemutatta, hogyan azonosíthatja az eszközökkel kapcsolatos problémákat a riasztások alapján, és hogyan hajthat végre műveleteket ezeken az eszközökön a probléma megoldása érdekében. Megtudhatja, hogyan csatlakozhat a megoldásgyorsító egy igazi eszközön, továbbra is az útmutató cikkekre.
+Ez az oktatóanyag bemutatta, hogyan azonosíthatja az eszközökkel kapcsolatos problémákat a riasztások alapján, és hogyan hajthat végre műveleteket ezeken az eszközökön a probléma megoldása érdekében. Ha szeretné megtudni, hogyan csatlakoztatható valódi eszköz a megoldás-gyorssegédhez, folytassa az útmutató cikkeivel.
 
 Most, hogy már tisztában van vele, hogyan kezelheti az eszközökkel kapcsolatos problémákat, a javasolt következő lépés annak megismerése, hogyan [csatlakoztatható az eszköz a távoli monitorozási megoldásgyorsítóhoz](iot-accelerators-connecting-devices.md).

@@ -8,12 +8,12 @@ ms.author: vikurpad
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 8a783581394de05fff9f0060e124e8dc59c96b60
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 8fa20608f09b4e3006dad685d2fc52bcc9207b5a
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72790176"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73890164"
 ---
 # <a name="working-with-skillsets-in-azure-cognitive-search"></a>A szakértelmével használata az Azure Cognitive Searchban
 
@@ -32,7 +32,7 @@ A készségkészlet három tulajdonsága van:
 
 
 
-A szakértelmével JSON-ban vannak létrehozva. A [kifejezés nyelve](https://docs.microsoft.com/azure/search/cognitive-search-skill-conditional)segítségével összetett szakértelmével hozhat létre a hurok és az [elágazás](https://docs.microsoft.com/en-us/azure/search/cognitive-search-skill-conditional) használatával. A kifejezés nyelve a [JSON-mutató](https://tools.ietf.org/html/rfc6901) elérési útjának jelölését használja, és néhány módosítással azonosítja a csomópontokat a dúsítási fában. A ```"/"``` a fában alacsonyabb szintre halad, és a ```"*"``` a környezet minden operátora számára működik. Ezeket a fogalmakat a legjobban egy példával ismertetjük. Az egyes fogalmak és képességek szemléltetésére a [Hotel Reviews minta](knowledge-store-connect-powerbi.md) készségkészlet mutatunk. Ha a készségkészlet az Adatimportálási munkafolyamat követése után szeretné megtekinteni, REST API-ügyfelet kell használnia [a készségkészlet lekéréséhez](https://docs.microsoft.com/en-us/rest/api/searchservice/get-skillset).
+A szakértelmével JSON-ban vannak létrehozva. A [kifejezés nyelve](https://docs.microsoft.com/azure/search/cognitive-search-skill-conditional)segítségével összetett szakértelmével hozhat létre a hurok és az [elágazás](https://docs.microsoft.com/azure/search/cognitive-search-skill-conditional) használatával. A kifejezés nyelve a [JSON-mutató](https://tools.ietf.org/html/rfc6901) elérési útjának jelölését használja, és néhány módosítással azonosítja a csomópontokat a dúsítási fában. A ```"/"``` a fában alacsonyabb szintre halad, és a ```"*"``` a környezet minden operátora számára működik. Ezeket a fogalmakat a legjobban egy példával ismertetjük. Az egyes fogalmak és képességek szemléltetésére a [Hotel Reviews minta](knowledge-store-connect-powerbi.md) készségkészlet mutatunk. Ha a készségkészlet az Adatimportálási munkafolyamat követése után szeretné megtekinteni, REST API-ügyfelet kell használnia [a készségkészlet lekéréséhez](https://docs.microsoft.com/rest/api/searchservice/get-skillset).
 
 ### <a name="enrichment-tree"></a>Dúsítási fa
 
@@ -43,14 +43,14 @@ Ha egy dokumentum a dúsítási folyamatban van, akkor a rendszer a tartalom és
 
 |AdatSource\Parsing mód|Alapértelmezett|JSON, JSON-sorok & CSV|
 |---|---|---|
-|Blob Storage|/document/content<br>/document/normalized_images/*<br>...|/document/{key1}<br>/document/{key2}<br>...|
-|SQL|/document/{column1}<br>/document/{column2}<br>...|– |
-|Cosmos DB|/document/{key1}<br>/document/{key2}<br>...|–|
+|Blob Storage|/document/content<br>/Document/normalized_images/*<br>...|/document/{key1}<br>/document/{key2}<br>...|
+|SQL|/document/{column1}<br>/document/{column2}<br>...|N/A |
+|Cosmos DB|/document/{key1}<br>/document/{key2}<br>...|N/A|
 
  A képességek végrehajtásával új csomópontokat vesznek fel a dúsítási fában. Ezek az új csomópontok ezután az alárendelt képességekhez bemenetként, a Knowledge Store-ban való kivetítéssel, vagy az index mezőihez való leképezéssel használhatók. A dúsítások nem változtathatók meg, a csomópontok nem szerkeszthetők. Mivel a szakértelmével összetettebbek, így a dúsítási fában marad, de a dúsítási fában nem minden csomópontnak kell azt az indexbe vagy a tudásbázisba tenni. A dúsítások csak egy részhalmazát különítheti el az indexbe vagy a Knowledge Store-ba.
 
 A dúsítások csak egy részhalmazát különítheti el az indexbe vagy a Knowledge Store-ba.
-A dokumentum további részében feltételezzük, hogy a [Hotel Reviews példával](https://docs.microsoft.com/en-us/azure/search/knowledge-store-connect-powerbi)dolgozunk, de ugyanezek a fogalmak a dokumentumok más adatforrásokból való bővítésére is érvényesek.
+A dokumentum további részében feltételezzük, hogy a [Hotel Reviews példával](https://docs.microsoft.com/azure/search/knowledge-store-connect-powerbi)dolgozunk, de ugyanezek a fogalmak a dokumentumok más adatforrásokból való bővítésére is érvényesek.
 
 ### <a name="context"></a>Környezet
 Minden egyes szaktudáshoz környezet szükséges. A környezet meghatározza A következőket:
@@ -297,7 +297,7 @@ A beágyazott alakítási megközelítés nem igényel formálói képességet, 
   
 A módszerek közül az egyik megfigyelés, hogy az `"Keyphrases"` értékeit hogyan tervezték a `"sourceContext"`. A karakterláncok gyűjteményét tartalmazó `"Keyphrases"` csomópont maga az oldal szövegének gyermeke. Mivel azonban a vetítésekhez JSON-objektumra van szükség, és az oldal egy primitív (string), a `"sourceContext"` a kulcs kifejezésének egy nevesített tulajdonsággal rendelkező objektumba való becsomagolására szolgál. Ez a módszer lehetővé teszi, hogy a primitívek egymástól függetlenül legyenek kitervezve.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A következő lépésként hozza létre az első készségkészlet kognitív ismeretekkel.
 

@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 09/23/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 540dbc3605cfddc9b8d83eceeae8407848f1a91e
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 66d8e13a4e042146ef2b99728e41e14f1dcb3435
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73175998"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73885361"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-g-suite"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a G Suite-nal
 
@@ -196,9 +196,9 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
 1. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
 1. A **felhasználó** tulajdonságaiban hajtsa végre az alábbi lépéseket:
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
-   1. A **Felhasználónév** mezőbe írja be a username@companydomain.extension értéket. Például: `B.Simon@contoso.com`.
+   1. A **Felhasználónév** mezőbe írja be a username@companydomain.extension. Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a  **Create** (Létrehozás) gombra.
+   1. Kattintson a **Létrehozás** elemre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -252,7 +252,7 @@ Ebben a szakaszban a B. Simon számára engedélyezi az Azure egyszeri bejelentk
 
 Ennek a szakasznak a célja, hogy a "B. Simon" nevű [felhasználót hozzon létre a G Suite-ben](https://support.google.com/a/answer/33310?hl=en) . Miután a felhasználó manuálisan létrejött a G Suite-ban, a felhasználó már bejelentkezhet az Office 365 bejelentkezési hitelesítő adataival.
 
-A G Suite támogatja az automatikus felhasználó-kiépítés használatát is. Az automatikus felhasználó-kiépítés konfigurálásához először [a G Suite-t kell konfigurálnia a felhasználók automatikus kiépítési felállításához](https://docs.microsoft.com/en-us/azure/active-directory/saas-apps/google-apps-provisioning-tutorial).
+A G Suite támogatja az automatikus felhasználó-kiépítés használatát is. Az automatikus felhasználó-kiépítés konfigurálásához először [a G Suite-t kell konfigurálnia a felhasználók automatikus kiépítési felállításához](https://docs.microsoft.com/azure/active-directory/saas-apps/google-apps-provisioning-tutorial).
 
 > [!NOTE]
 > Győződjön meg arról, hogy a felhasználó már létezik a G Suite-ban, ha az Azure AD-ben való kiépítés nincs bekapcsolva az egyszeri bejelentkezés tesztelése előtt.

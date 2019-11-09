@@ -8,12 +8,12 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: overview
 ms.date: 09/24/2018
-ms.openlocfilehash: 12df79696033e69abbf48f053c1a594be9409cda
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: c0a47e922ae8cdca3c70cb53f9fa2f7dafe191c6
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73721110"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73889225"
 ---
 # <a name="apache-cassandra-features-supported-by-azure-cosmos-db-cassandra-api"></a>Az Azure Cosmos DB Cassandra API-ja által támogatott Apache Cassandra-funkciók 
 
@@ -110,7 +110,7 @@ A CQLSH parancssori segédprogram az Apache Cassandra 3.1.1-es verzióval rendel
 
 **Windows:**
 
-Ha Windows rendszert használ, javasoljuk, hogy engedélyezze a [Linux rendszerhez készült Windows-fájlrendszert](https://docs.microsoft.com/en-us/windows/wsl/install-win10#install-the-windows-subsystem-for-linux). Ezután követheti az alábbi Linux-parancsokat.
+Ha Windows rendszert használ, javasoljuk, hogy engedélyezze a [Linux rendszerhez készült Windows-fájlrendszert](https://docs.microsoft.com/windows/wsl/install-win10#install-the-windows-subsystem-for-linux). Ezután követheti az alábbi Linux-parancsokat.
 
 **Unix/Linux/Mac:**
 
@@ -179,10 +179,10 @@ A Azure Cosmos DB támogatja a szerepköralapú hozzáférés-vezérlést (RBAC)
 
 ## <a name="keyspace-and-table-options"></a>A térköz és a tábla beállításai
 
-Jelenleg a rendszer figyelmen kívül hagyja a régió neve, osztály, replication_factor és Datacenter beállításait a "Create Space" parancsban. A rendszer az alapul szolgáló Azure Cosmos DB [globális terjesztési](global-dist-under-the-hood.md) replikációs módszerét használja a régiók hozzáadásához. Ha szüksége van a régiók közötti adatmennyiségre, a PowerShell, a CLI vagy a portál használatával engedélyezheti a fiók szintjén a további tudnivalókat lásd: [régiók hozzáadása](how-to-manage-database-account.md#addremove-regions-from-your-database-account) cikk. A Durable_writes nem tiltható le, mert Azure Cosmos DB biztosítja, hogy minden írás tartós legyen. Azure Cosmos DB minden régióban replikálja az adathalmazt, amely négy replikából áll, és ez a replikakészlet- [konfiguráció](global-dist-under-the-hood.md) nem módosítható.
+Jelenleg a rendszer figyelmen kívül hagyja a régió neve, osztály, replication_factor és Datacenter beállításait a "Create Space" parancsban. A rendszer az alapul szolgáló Azure Cosmos DB [globális terjesztési](global-dist-under-the-hood.md) replikációs módszerét használja a régiók hozzáadásához. Ha szüksége van a régiók közötti adatmennyiségre, a PowerShell, a CLI vagy a portál használatával engedélyezheti a fiók szintjén a további tudnivalókat lásd: [régiók hozzáadása](how-to-manage-database-account.md#addremove-regions-from-your-database-account) cikk. Durable_writes nem lehet letiltani, mert Azure Cosmos DB gondoskodik az összes írás tartós állapotáról. Azure Cosmos DB minden régióban replikálja az adathalmazt, amely négy replikából áll, és ez a replikakészlet- [konfiguráció](global-dist-under-the-hood.md) nem módosítható.
  
-Az összes beállítás figyelmen kívül lesz hagyva a tábla létrehozásakor, kivéve a gc_grace_seconds, amelyet nullára kell beállítani.
-A térköznek és a táblának a "cosmosdb_provisioned_throughput" nevű extra opcióval kell rendelkeznie, amelynek minimális értéke 400 RU/s. A térköz átviteli sebessége lehetővé teszi a több tábla közötti adatforgalom megosztását, és olyan helyzetekben hasznos, amikor az összes tábla nem használja a kiépített átviteli sebességet. Az ALTER TABLE parancs lehetővé teszi a kiépített átviteli sebesség módosítását a régiók között. 
+A rendszer a tábla létrehozásakor figyelmen kívül hagyja az összes beállítást, kivéve a gc_grace_secondst, amelyet nullára kell beállítani.
+A szóköz és a tábla "cosmosdb_provisioned_throughput" nevű extra lehetőséggel rendelkezik, amelynek minimális értéke 400 RU/s. A térköz átviteli sebessége lehetővé teszi a több tábla közötti adatforgalom megosztását, és olyan helyzetekben hasznos, amikor az összes tábla nem használja a kiépített átviteli sebességet. Az ALTER TABLE parancs lehetővé teszi a kiépített átviteli sebesség módosítását a régiók között. 
 
 ```
 CREATE  KEYSPACE  sampleks WITH REPLICATION = {  'class' : 'SimpleStrategy'}   AND cosmosdb_provisioned_throughput=2000;  

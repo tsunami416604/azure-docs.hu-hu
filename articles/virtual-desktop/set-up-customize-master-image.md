@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 10/14/2019
 ms.author: helohr
-ms.openlocfilehash: 622b4e53be68025ad9553ce604041d14885bb2b2
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 7a0cce6b72240b95943fbece08cfbf61eaee3524
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72330834"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73891707"
 ---
 # <a name="prepare-and-customize-a-master-vhd-image"></a>Fő VHD-rendszerkép létrehozása és testreszabása
 
@@ -70,7 +70,7 @@ Ha a felhasználóknak hozzá kell férniük bizonyos LOB-alkalmazásokhoz, java
 
 ### <a name="set-up-user-profile-container-fslogix"></a>Felhasználói profil tárolójának (FSLogix) beállítása
 
-Ha a FSLogix-tárolót a rendszerkép részeként szeretné felvenni, kövesse a következő témakör utasításait: [create a profile Container for an Host Pool with a file share (fájlmegosztás használatával](create-host-pools-user-profile.md#configure-the-fslogix-profile-container)). [Ezzel](https://docs.microsoft.com/en-us/fslogix/configure-cloud-cache-tutorial)a rövid útmutatóval ellenőrizheti a FSLogix tároló funkcióit.
+Ha a FSLogix-tárolót a rendszerkép részeként szeretné felvenni, kövesse a következő témakör utasításait: [create a profile Container for an Host Pool with a file share (fájlmegosztás használatával](create-host-pools-user-profile.md#configure-the-fslogix-profile-container)). [Ezzel](https://docs.microsoft.com/fslogix/configure-cloud-cache-tutorial)a rövid útmutatóval ellenőrizheti a FSLogix tároló funkcióit.
 
 ### <a name="configure-windows-defender"></a>A Windows Defender konfigurálása
 
@@ -86,7 +86,7 @@ Ha többet szeretne megtudni arról, hogyan konfigurálhatja a Windows Defendert
 
 Az automatikus frissítések letiltása helyi Csoportházirend használatával:
 
-1. Nyissa meg **Helyicsoportházirend-szerkesztő @ no__t-1Administrative sablonok @ no__t-2Windows Components @ no__t-3Windows Update elemet**.
+1. Nyissa meg **Helyicsoportházirend-szerkesztő\\Felügyeleti sablonok\\Windows-összetevőket\\Windows Update**.
 2. Kattintson a jobb gombbal az **automatikus frissítés konfigurálása** elemre, és állítsa **le a Letiltva**értékre.
 
 A parancssorban a következő parancsot is futtathatja az automatikus frissítések letiltásához.
@@ -109,7 +109,7 @@ A távoli munkamenet-házirendek kikényszeríthető Csoportházirend szinten, m
 
 Távoli munkamenet-házirendek konfigurálása:
 
-1. Navigáljon a **Felügyeleti sablonok** > **Windows-összetevők** > **Távoli asztali szolgáltatások** > **Távoli asztal munkamenet-gazdagép** > **munkameneti időkorlát**.
+1. Navigáljon a **Felügyeleti sablonok** > **Windows-összetevők** > **Távoli asztali szolgáltatások** > **Távoli asztal munkamenet-állomás** > munkamenet- **időkorlát**.
 2. A jobb oldali panelen válassza az **aktív, de tétlen távoli asztali szolgáltatások munkamenetek házirend beállítása időkorlátot** .
 3. A modális ablak megjelenése után módosítsa a házirend beállítást úgy, hogy az **ne** legyen **engedélyezve** a házirend aktiválásához.
 4. A házirend-beállítás alatti legördülő menüben állítsa be az időtartamot **3 órára**.
@@ -134,7 +134,7 @@ Időzónák átirányítása:
 1. A Active Directory-kiszolgálón nyissa meg a **csoportházirend-kezelő konzol**.
 2. Bontsa ki a tartományt és Csoportházirend objektumokat.
 3. Kattintson a jobb gombbal a csoportházirend-beállításokhoz létrehozott **csoportházirend objektumra** , és válassza a **Szerkesztés**lehetőséget.
-4. A **csoportházirend-felügyeleti szerkesztő**navigáljon a **Számítógép konfigurációja** > **házirendek** > **Felügyeleti sablonok** > **Windows-összetevők** > **Távoli asztali szolgáltatások**@no__ t-10**Távoli asztal munkamenet-gazdagép**2**eszköz és erőforrás-átirányítás**.
+4. A **csoportházirend-felügyeleti szerkesztő**navigáljon a **Számítógép konfigurációja** > **házirendek** > **Felügyeleti sablonok** > **Windows-összetevők** > **Távoli asztali szolgáltatások** > **Távoli asztal munkamenet-gazdagép** > **eszköz-és erőforrás-átirányítás**.
 5. Engedélyezze az **időzóna-átirányítás engedélyezése** beállítást.
 
 Ezt a parancsot a fő lemezképen is futtathatja az időzónák átirányításához:
@@ -220,7 +220,7 @@ Az alábbi útmutatást követve megtudhatja, hogyan töltheti fel a fő lemezk�
 
     ![A "rendszerkép létrehozása sikeres" értesítés képernyőképe.](media/1f41b7192824a2950718a2b7bb9e9d69.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Most, hogy már rendelkezik rendszerképtel, létrehozhat vagy frissíthet gazdagép-készleteket. A gazdagép-készletek létrehozásával és frissítésével kapcsolatos további tudnivalókért tekintse meg a következő cikkeket:
 

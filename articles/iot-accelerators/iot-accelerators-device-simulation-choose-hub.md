@@ -1,6 +1,6 @@
 ---
-title: Egy meglévő IoT hub használata a Eszközszimuláció megoldással – Azure |} A Microsoft Docs
-description: Ez a cikk ismerteti, hogyan konfigurálhatja az Eszközszimuláció megoldásgyorsító használandó egy meglévő IoT hubbal.
+title: Meglévő IoT hub használata az eszköz-szimulációs megoldással – Azure | Microsoft Docs
+description: Ez a cikk azt ismerteti, hogyan konfigurálható az eszköz-szimulációs megoldás gyorsítása meglévő IoT Hub használatára.
 author: dominicbetts
 manager: timlt
 ms.author: dobett
@@ -8,35 +8,35 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 10/25/2018
 ms.topic: conceptual
-ms.openlocfilehash: 38cde750ce07741a433baa1b8607a584f94ad9b1
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: 1f89e23d7bb279e7cce5c104060cc7898517f8b7
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67203956"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73889182"
 ---
-# <a name="use-an-existing-iot-hub-with-the-device-simulation-solution-accelerator"></a>Egy meglévő IoT hub használata a Eszközszimuláció megoldásgyorsító
+# <a name="use-an-existing-iot-hub-with-the-device-simulation-solution-accelerator"></a>Meglévő IoT hub használata az eszköz-szimulációs megoldás-gyorsító használatával
 
-Eszközszimuláció üzembe helyezése, amikor is beállíthatja az IoT hub használata a szimuláció üzembe helyezéséhez. Ez a beállítás telepíti egy [S2 szint az IoT hub és a egy egyetlen skálázási egység](../iot-hub/iot-hub-scaling.md). Ha ez nem kötelező az IoT hub telepít, továbbra is választhat, amelyekre egy másik IoT hubot, a szimuláció futtatása.
+Az eszköz szimulációjának telepítésekor dönthet úgy is, hogy üzembe helyez egy IoT hub-t a szimulációban való használathoz. Ez a beállítás egy [S2 szintű IoT hubot telepít egyetlen méretezési egységgel](../iot-hub/iot-hub-scaling.md). Ha ezt a választható IoT hubot telepíti, továbbra is megcélozhat egy másik IoT Hub a szimuláció futtatásához.
 
-Ha nem kíván telepíteni a választható IoT Hub, a saját hub bármely szimulációkhoz futtatása kell használnia.
+Ha úgy dönt, hogy nem helyezi üzembe a választható IoT Hub, a futtatott szimulációk saját hubot kell használniuk.
 
-Ha nem rendelkezik egy IoT hubot, bármikor létrehozhat egy újat a [az Azure portal](https://portal.azure.com).
+Ha nem rendelkezik IoT-hubhoz, mindig létrehozhat egy újat a [Azure Portalból](https://portal.azure.com).
 
-A kapcsolati karakterláncát kell egy már meglévő IoT hubot használni, a **iothubowner** megosztott hozzáférési szabályzat. Megtekintheti a kapcsolati karakterláncot, a [az Azure portal](https://portal.azure.com):
+Egy már meglévő IoT hub használatához szüksége lesz a **iothubowner** megosztott hozzáférési házirendjének kapcsolati karakterláncára. Ezt a [Azure Portal](https://portal.azure.com)-karakterláncot a következővel érheti el:
 
-1. A portálon a hub konfigurációs lapon kattintson **megosztott elérési házirendek**.
+1. A portál konfiguráció lapján kattintson a **megosztott elérési házirendek**elemre.
 
-1. Kattintson a **iothubowner**.
+1. Kattintson a **iothubowner**elemre.
 
-1. Vagy az elsődleges vagy másodlagos kapcsolati karakterlánc másolása.
+1. Másolja az elsődleges vagy a másodlagos kapcsolatok sztringjét.
 
-[![Kapcsolati sztring lekérése](./media/iot-accelerators-device-simulation-choose-hub/connectionstring-inline.png)](./media/iot-accelerators-device-simulation-choose-hub/connectionstring-expanded.png#lightbox)
+[![a kapcsolatok karakterláncának beolvasása](./media/iot-accelerators-device-simulation-choose-hub/connectionstring-inline.png)](./media/iot-accelerators-device-simulation-choose-hub/connectionstring-expanded.png#lightbox)
 
-A szimuláció konfigurálásakor kimásolt kapcsolati karakterláncot használja:
+Használja a szimuláció konfigurálásakor másolt kapcsolódási karakterláncot:
 
 ![Szimuláció konfigurálása](./media/iot-accelerators-device-simulation-choose-hub/configuresimulation.png)
 
 ### <a name="next-steps"></a>További lépések
 
-Ez az útmutató hogyan használható egy meglévő IoT hubbal egy bemutattuk. Következő lépésként érdemes lehet további hogyan [hozzon létre egy speciális eszközmodell](iot-accelerators-device-simulation-advanced-device.md) a szimuláció.
+Ebben a útmutatóban megtanulta, hogyan használhat egy meglévő IoT hubot egy szimulációban. Ezt követően érdemes megismerni, hogyan [hozhat létre egy speciális eszköz-modellt](iot-accelerators-device-simulation-advanced-device.md) a szimulációhoz.

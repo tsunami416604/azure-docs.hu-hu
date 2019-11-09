@@ -9,14 +9,14 @@ ms.author: robreed
 ms.date: 04/26/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 52fcd0d928ecbce5c617ff6a27175fccb8fd96f6
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 44ab9688471a87e6db3712cc61b8abb194d54ac3
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68990242"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73886533"
 ---
-# <a name="source-control-integration-in-azure-automation"></a>Verziókövetés integrálása az Azure Automationben
+# <a name="source-control-integration-in-azure-automation"></a>Verziókövetés integrálása az Azure Automation szolgáltatásban
 
 A verziókövetés lehetővé teszi, hogy a runbookok az Automation-fiókban naprakész legyen a GitHub vagy az Azure Repos forrás-ellenőrzési tárházában lévő parancsfájlok használatával. A verziókövetés segítségével könnyedén együttműködhet a csapatával, követheti a változásokat, és visszatérhet a runbookok korábbi verzióihoz. A verziókövetés lehetővé teszi például, hogy a verziókövetés különböző ágait szinkronizálja fejlesztési, tesztelési vagy üzemi automatizálási fiókjaiba. Így egyszerűen előléptetheti a fejlesztési környezetben tesztelt kódokat az éles Automation-fiókjába. A verziókövetés és az Automation integrációja támogatja a forrás-ellenőrzési adattárból való egyirányú szinkronizálást.
 
@@ -30,7 +30,7 @@ A Azure Automation háromféle verziókövetés használatát támogatja:
 
 * Egy forrásoldali vezérlő adattár (GitHub vagy Azure Repos)
 * [Futtató fiók](manage-runas-account.md)
-* Ellenőrizze, hogy rendelkezik-e a [legújabb Azure](automation-update-azure-modules.md) -modulokkal az Automation-fiókban
+* Ellenőrizze, hogy rendelkezik-e a [legújabb Azure-modulokkal](automation-update-azure-modules.md) az Automation-fiókban
 
 > [!NOTE]
 > A verziókövetés szinkronizálási feladatai a felhasználók Automation-fiók alatt futnak, és a többi Automation-feladattal megegyező sebességgel lesznek számlázva.
@@ -52,7 +52,7 @@ A **verziókövetés összegzése** lapon adja meg az adatokat, és kattintson a
 |Tárház     | A tárház vagy a projekt neve. A rendszer az első 200 adattárat adja vissza. Egy adattár kereséséhez írja be a nevet a mezőbe, majd kattintson a **Keresés a githubon**lehetőségre.|
 |Ág     | A forrásfájlok lekérésére szolgáló ág. A TFVC nem érhető el a fiókra vonatkozó célzás.          |
 |Mappa elérési útja     | A szinkronizálni kívánt runbookok tartalmazó mappa. Példa:/Runbooks </br>*A rendszer csak a megadott mappában lévő runbookok szinkronizálja. A rekurzió nem támogatott.*        |
-|Auto Sync<sup>1</sup>     | Be-és kikapcsolja az automatikus szinkronizálást, ha véglegesítenek a verziókövetés adattárában         |
+|<sup>1</sup> . automatikus szinkronizálás     | Be-és kikapcsolja az automatikus szinkronizálást, ha véglegesítenek a verziókövetés adattárában         |
 |Runbook közzététele     | Ha **a**be értékre van állítva, a runbookok szinkronizálása után a rendszer automatikusan közzéteszi azokat.         |
 |Leírás     | Egy szöveges mező, amely további részleteket biztosít        |
 
@@ -93,21 +93,21 @@ A verziókövetés bizonyos minimális engedélyeket igényel a személyes hozz�
 
 A személyes hozzáférési tokenek GitHubon való létrehozásával kapcsolatos további információkért látogasson el [egy személyes hozzáférési jogkivonat létrehozásához a parancssorban](https://help.github.com/articles/creating-a-personal-access-token-for-the-command-line/).
 
-|Scope  |Leírás  |
+|Hatókör  |Leírás  |
 |---------|---------|
 |**adattár**     |         |
 |repó: állapot     | Hozzáférési véglegesítés állapota         |
 |repo_deployment      | Hozzáférés központi telepítési állapota         |
 |public_repo     | Nyilvános adattárak elérése         |
-|**admin:repo_hook**     |         |
-|write:repo_hook     | Adattár-hookok írása         |
-|read:repo_hook|Adattár-hookok olvasása|
+|**rendszergazda: repo_hook**     |         |
+|írás: repo_hook     | Adattár-hookok írása         |
+|olvasás: repo_hook|Adattár-hookok olvasása|
 
-#### <a name="azure-repos"></a>Azure-beli adattárak
+#### <a name="azure-repos"></a>Azure Repos
 
-Ha további információt szeretne arról, hogyan hozhat létre személyes hozzáférési tokent az Azure Reposban, látogasson el a [személyes](/azure/devops/organizations/accounts/use-personal-access-tokens-to-authenticate)hozzáférési jogkivonatokkal történő hitelesítésre.
+Ha további információt szeretne arról, hogyan hozhat létre személyes hozzáférési tokent az Azure Reposban, látogasson el a [személyes hozzáférési jogkivonatokkal történő hitelesítésre](/azure/devops/organizations/accounts/use-personal-access-tokens-to-authenticate).
 
-|Scope  |
+|Hatókör  |
 |---------|
 |Kód (olvasás)     |
 |Projekt és csapat (olvasás)|
@@ -118,7 +118,7 @@ Ha további információt szeretne arról, hogyan hozhat létre személyes hozz�
 
 <sup>1</sup> a szolgáltatási kapcsolatok engedély csak akkor szükséges, ha engedélyezve van az AutoSync.
 
-## <a name="syncing"></a>Szinkronizálás…
+## <a name="syncing"></a>Szinkronizál
 
 Válassza ki a forrást a **forrás vezérlőelem** oldalon található táblázatból. A szinkronizálási folyamat elindításához kattintson a **szinkronizálás indítása** elemre.
 
@@ -165,7 +165,7 @@ A további naplózást a **verziókövetés szinkronizálása feladatok összegz
 
 ## <a name="disconnecting-source-control"></a>Verziókövetés leválasztása
 
-A forrás-felügyeleti adattárból való leválasztáshoz nyissa meg a verziókövetés elemet az Automation-fiók Fiókbeállítások területén.
+A forrás-felügyeleti adattárból való leválasztáshoz **nyissa meg a verziókövetés elemet** az **Automation-fiók Fiókbeállítások területén** .
 
 Válassza ki az eltávolítani kívánt forrás vezérlőelemet. A **verziókövetés összegzése** lapon kattintson a **Törlés**elemre.
 
@@ -177,7 +177,7 @@ Ha több ember szerkeszti a runbookok a különböző szerkesztőkkel, akkor leh
 
 Jelenleg a portálon nem lehet frissíteni a hozzáférési tokent a forrás vezérlőelemben. Ha a személyes hozzáférési token lejárt vagy visszavont, a verziókövetés a következő módokon frissíthető egy új hozzáférési jogkivonattal:
 
-* A [REST API](https://docs.microsoft.com/en-us/rest/api/automation/sourcecontrol/update)-n keresztül.
+* A [REST API](https://docs.microsoft.com/rest/api/automation/sourcecontrol/update)-n keresztül.
 * Az [Update-AzAutomationSourceControl](/powershell/module/az.automation/update-azautomationsourcecontrol) parancsmag használatával.
 
 ## <a name="next-steps"></a>További lépések

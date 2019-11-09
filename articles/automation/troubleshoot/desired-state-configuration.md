@@ -9,12 +9,12 @@ ms.author: robreed
 ms.date: 04/16/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: b9d2dda589cc59be24b73ce16dcdcbbe79b31aef
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 7be5e814d8092b523fa69fdd84f0e1476736fda2
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71259174"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73887721"
 ---
 # <a name="troubleshoot-desired-state-configuration-dsc"></a>A kívánt állapot konfigurációjának (DSC) hibáinak megoldása
 
@@ -24,7 +24,7 @@ Ez a cikk a kívánt állapot-konfigurációval (DSC) kapcsolatos hibák elhár�
 
 Ha a konfigurációk az Azure állapot-konfigurációban való fordításával vagy üzembe helyezésével kapcsolatos hibákkal rendelkezik, néhány lépés a probléma diagnosztizálásához.
 
-1. **Győződjön meg arról, hogy a konfiguráció sikeresen lefordításra került a helyi gépen:**  Az Azure állapot-konfiguráció a PowerShell DSC-re épül. A DSC nyelvét és szintaxisát a [POWERSHELL DSC docs](https://docs.microsoft.com/en-us/powershell/scripting/overview)dokumentációjában találja.
+1. **Győződjön meg arról, hogy a konfiguráció sikeresen lefordításra került a helyi gépen:**  Az Azure állapot-konfiguráció a PowerShell DSC-re épül. A DSC nyelvét és szintaxisát a [POWERSHELL DSC docs](https://docs.microsoft.com/powershell/scripting/overview)dokumentációjában találja.
 
    A DSC-konfiguráció helyi gépen való fordításával felderítheti és elháríthatja a gyakori hibákat, például a következőket:
 
@@ -45,7 +45,7 @@ Ha a konfigurációk az Azure állapot-konfigurációban való fordításával v
 
 ## <a name="common-errors-when-working-with-desired-state-configuration-dsc"></a>A kívánt állapot konfigurációjának (DSC) használatakor előforduló gyakori hibák
 
-### <a name="unsupported-characters"></a>Forgatókönyv Speciális karaktereket tartalmazó konfiguráció nem törölhető a portálról
+### <a name="unsupported-characters"></a>Forgatókönyv: speciális karaktereket tartalmazó konfiguráció nem törölhető a portálról
 
 #### <a name="issue"></a>Probléma
 
@@ -65,11 +65,11 @@ Ez a hiba egy ideiglenes probléma, amelynek megoldódik a megoldása.
 * A parancsmag dokumentációja még nem frissült.  Addig is tekintse meg a AzureRM modul dokumentációját.
   * [Remove-AzureRmAutomationDSCConfiguration](/powershell/module/azurerm.automation/Remove-AzureRmAutomationDscConfiguration)
 
-### <a name="failed-to-register-agent"></a>Forgatókönyv Nem sikerült regisztrálni a DSC-ügynököt
+### <a name="failed-to-register-agent"></a>Forgatókönyv: nem sikerült regisztrálni a DSC-ügynököt
 
 #### <a name="issue"></a>Probléma
 
-A futtatási `Set-DscLocalConfigurationManager` kísérlet során vagy egy másik DSC-parancsmag esetén a következő hibaüzenetet kapja:
+`Set-DscLocalConfigurationManager` vagy egy másik DSC-parancsmag futtatására tett kísérlet során a következő hibaüzenetet kapja:
 
 ```error
 Registration of the Dsc Agent with the server
@@ -90,7 +90,7 @@ Ezt a hibát általában egy tűzfal okozza, a gép a proxykiszolgáló mögött
 
 Ellenőrizze, hogy a számítógép rendelkezik-e hozzáféréssel a Azure Automation DSC megfelelő végpontokhoz, és próbálkozzon újra. A szükséges portok és címek listáját itt tekintheti meg: [Network Planning](../automation-dsc-overview.md#network-planning)
 
-### <a name="failed-not-found"></a>Forgatókönyv A csomópont "nem található" hiba miatt sikertelen állapotú.
+### <a name="failed-not-found"></a>Forgatókönyv: a csomópont "nem található" hiba miatt sikertelen állapotú.
 
 #### <a name="issue"></a>Probléma
 
@@ -112,7 +112,7 @@ Ez a hiba általában akkor fordul elő, ha a csomópontot egy konfiguráció ne
   * Ha Azure Portal használatával szeretne csomópont-konfigurációt hozzárendelni egy csomóponthoz, nyissa meg a **DSC-csomópontok** lapot, majd válasszon ki egy csomópontot, és kattintson a **csomópont-konfiguráció kiosztása** gombra.
   * Csomópont-konfiguráció PowerShell-parancsmaggal való hozzárendeléséhez használja a **set-AzureRmAutomationDscNode** parancsmagot.
 
-### <a name="no-mof-files"></a>Forgatókönyv Egy konfiguráció lefordításakor a rendszer nem állított fel csomópont-konfigurációkat (MOF-fájlokat)
+### <a name="no-mof-files"></a>Forgatókönyv: a konfiguráció lefordításakor a rendszer nem állított be csomópont-konfigurációkat (MOF-fájlokat)
 
 #### <a name="issue"></a>Probléma
 
@@ -124,7 +124,7 @@ Compilation completed successfully, but no node configuration.mofs were generate
 
 #### <a name="cause"></a>Ok
 
-Ha a DSC-konfigurációban `$null`a **Node** kulcsszót követő kifejezés a értékre, akkor a rendszer nem állít elő csomópont-konfigurációt.
+Ha a DSC-konfigurációban a **Node** kulcsszót követő kifejezés kiértékeli a `$null`, akkor a rendszer nem állít elő csomópont-konfigurációt.
 
 #### <a name="resolution"></a>Megoldás:
 
@@ -133,7 +133,7 @@ A következő megoldások bármelyike elháríthatja a problémát:
 * Győződjön meg arról, hogy a konfigurációs definícióban a **csomópont** kulcsszava melletti kifejezés nem $nullra van kiértékelve.
 * Ha átadja a ConfigurationData a konfiguráció fordításakor, győződjön meg arról, hogy átadja a konfiguráció által igényelt várt értékeket a [ConfigurationData](../automation-dsc-compile.md).
 
-### <a name="dsc-in-progress"></a>Forgatókönyv A DSC-csomópont jelentés beragad "folyamatban" állapotba
+### <a name="dsc-in-progress"></a>Forgatókönyv: a DSC-csomópont jelentés beragad "folyamatban" állapotba
 
 #### <a name="issue"></a>Probléma
 
@@ -151,7 +151,7 @@ Frissítette a WMF-verziót, és sérült a WMI.
 
 A probléma megoldásához kövesse a [DSC ismert problémák és korlátozások](https://docs.microsoft.com/powershell/scripting/wmf/known-issues/known-issues-dsc) című cikk utasításait.
 
-### <a name="issue-using-credential"></a>Forgatókönyv Nem lehet hitelesítő adatot használni a DSC-konfigurációban
+### <a name="issue-using-credential"></a>Forgatókönyv: a hitelesítő adatok nem használhatók DSC-konfigurációban
 
 #### <a name="issue"></a>Probléma
 
@@ -169,7 +169,7 @@ Egy konfigurációban használta a hitelesítő adatokat, de nem adott meg megfe
 
 * Győződjön meg arról, hogy a megfelelő **ConfigurationData** adja meg, hogy a konfigurációban említett minden egyes csomópont-konfiguráció esetében a **PSDscAllowPlainTextPassword** értéke igaz legyen. További információ: [eszközök Azure Automation DSC-ben](../automation-dsc-compile.md#working-with-assets-in-azure-automation-during-compilation).
 
-### <a name="failure-processing-extension"></a>Forgatókönyv Bevezetés a DSC-bővítményből: "hiba a bővítmény feldolgozásakor" hiba
+### <a name="failure-processing-extension"></a>Forgatókönyv: a DSC-bővítmény előkészítése, "hiba a bővítmény feldolgozásakor" hiba
 
 #### <a name="issue"></a>Probléma
 
@@ -188,7 +188,7 @@ Ez a hiba általában akkor fordul elő, ha a csomóponthoz olyan csomópont-kon
 * Győződjön meg arról, hogy a csomópontot olyan csomópont-konfiguráció nevével rendeli hozzá, amely pontosan megegyezik a szolgáltatásban szereplő névvel.
 * Dönthet úgy is, hogy nem tartalmazza a csomópont-konfiguráció nevét, amely a csomópont bevezetését eredményezi, de nem rendel hozzá csomópont-konfigurációt.
 
-### <a name="failure-linux-temp-noexec"></a>Forgatókönyv Konfiguráció alkalmazása Linuxon, hiba történt általános hiba esetén
+### <a name="failure-linux-temp-noexec"></a>Forgatókönyv: konfiguráció alkalmazása Linuxon, hiba történt általános hiba esetén
 
 #### <a name="issue"></a>Probléma
 
@@ -200,13 +200,13 @@ This event indicates that failure happens when LCM is processing the configurati
 
 #### <a name="cause"></a>Ok
 
-Az ügyfelek azonosítottak `noexec`, hogy `/tmp` ha a hely be van állítva, a DSC jelenlegi verziója nem fogja tudni alkalmazni a konfigurációkat.
+Az ügyfelek azonosítottak, hogy ha a `/tmp` helye `noexec`ra van állítva, a DSC jelenlegi verziója nem fogja tudni alkalmazni a konfigurációkat.
 
 #### <a name="resolution"></a>Megoldás:
 
-* Távolítsa `noexec` el a beállítást `/tmp` a helyről.
+* Távolítsa el a `noexec` lehetőséget a `/tmp` helyről.
 
-### <a name="compilation-node-name-overlap"></a>Forgatókönyv Az átfedésben lévő csomópont-konfigurációs nevek hibás kiadást eredményezhetnek
+### <a name="compilation-node-name-overlap"></a>Forgatókönyv: az átfedésben lévő csomópont-konfigurációs nevek helytelen kiadást eredményezhetnek
 
 #### <a name="issue"></a>Probléma
 

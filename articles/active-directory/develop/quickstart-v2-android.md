@@ -16,12 +16,12 @@ ms.date: 10/15/2019
 ms.author: twhitney
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:Android
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7a1a86965eb6a50fa87c63f5713f21d6a467dedb
-ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
+ms.openlocfilehash: 7c5d3941cec7554152090c68bc1dc95f29ca9f17
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73242241"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73882867"
 ---
 # <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-android-app"></a>Rövid útmutató: Felhasználók bejelentkeztetése és a Microsoft Graph API meghívása Android-alkalmazásokból
 
@@ -49,11 +49,11 @@ Az alkalmazásokat a Azure Active Directory alkalmazásnak kell képviselnie, ho
 > > ![Már konfigurált](media/quickstart-v2-android/green-check.png) Az alkalmazás már konfigurálva van ezekkel az attribútumokkal
 >
 > ### <a name="step-2-download-the-project"></a>2\. lépés: A projekt letöltése 
-> * [A mintakód letöltése](https://github.com/Azure-Samples/ms-identity-android-java)
+> * [A mintakód letöltése](https://github.com/Azure-Samples/ms-identity-android-java/archive/master.zip)
 >
 > ### <a name="step-3-configure-your-project"></a>3\. lépés: A projekt konfigurálása
 > 1. Csomagolja ki és nyissa meg a projektet az Android Studióban.
-> 2. Az App > src > Main > res > RAW, nyissa meg a auth_config_multiple_account. JSON fájlt, és cserélje le a következő kódra:
+> 2. Az **app** > **src** > a **Main** > **res** > **RAW**, nyissa meg **auth_config_multiple_account. JSON** fájlt, és cserélje le a következő kódra:
 > ```javascript 
 > {
 >   "client_id" : "Enter_the_Application_Id_Here",
@@ -74,7 +74,7 @@ Az alkalmazásokat a Azure Active Directory alkalmazásnak kell képviselnie, ho
 > ```
 
 > [!div class="sxs-lookup" renderon="portal"]
-> 3. Az App > src > Main > res > RAW, nyissa meg a auth_config_single_account. JSON fájlt, és cserélje le a következő kódra:
+> 3. Az **app** > **src** > a **Main** > **res** > **RAW**, nyissa meg **auth_config_single_account. JSON** fájlt, és cserélje le a következő kódra:
 > ```javascript 
 > {
 >   "client_id" : "Enter_the_Application_Id_Here",
@@ -98,22 +98,22 @@ Az alkalmazásokat a Azure Active Directory alkalmazásnak kell képviselnie, ho
 > 4. Az **app** > **src** > **Main**oldalon nyissa meg a **AndroidManifest. xml fájlt**.
 > 5. A **manifest\application** csomópontban cserélje le a **<activity android:name="com.microsoft.identity.client.BrowserTabActivity">** csomópontot a következőre:  
 > ```xml
-> <!--Intent filter to catch Microsoft's callback after Sign In-->
-> <activity android:name="com.microsoft.identity.client.BrowserTabActivity">
->     <intent-filter>
->     <action android:name="android.intent.action.VIEW" />
->     <category android:name="android.intent.category.DEFAULT" />
->     <category android:name="android.intent.category.BROWSABLE" />
->         <!--
+> &lt;!--Intent filter to catch Microsoft's callback after Sign In--&gt;
+> &lt;activity android:name=&quot;com.microsoft.identity.client.BrowserTabActivity&quot;&gt;
+>     &lt;intent-filter&gt;
+>     &lt;action android:name=&quot;android.intent.action.VIEW&quot; /&gt;
+>     &lt;category android:name=&quot;android.intent.category.DEFAULT&quot; /&gt;
+>     &lt;category android:name=&quot;android.intent.category.BROWSABLE&quot; /&gt;
+>         &lt;!--
 >             Add in your scheme/host from registered redirect URI 
->             note that the leading "/" is required for android:path
->         -->
->         <data android:scheme="msauth"
->             android:host="Enter_the_Package_Name_here"
->             android:path="Enter_the_Signature_Hash_here"
->             android:scheme = "msauth" />
->     </intent-filter>
-> </activity>
+>             note that the leading &quot;/&quot; is required for android:path
+>         --&gt;
+>         &lt;data android:scheme=&quot;msauth&quot;
+>             android:host=&quot;Enter_the_Package_Name_Here&quot;
+>             android:path=&quot;Enter_the_Signature_Hash_Here&quot;
+>             android:scheme = &quot;msauth&quot; /&gt;
+>     &lt;/intent-filter&gt;
+> &lt;/activity&gt;
 > ```
 > 6. Futtassa az alkalmazást!
 > A minta alkalmazás az **Egyfiókos mód** képernyőn indul el. Alapértelmezés szerint az alapértelmezett hatókör, a **User. Read**, amelyet a rendszer akkor használ, amikor a Microsoft Graph API-hívás során beolvassa a saját profil adatait. Alapértelmezés szerint a Microsoft Graph API-hívás URL-címe van megadva. Ha szeretné, mindkettőt módosíthatja.
@@ -136,7 +136,7 @@ Az alkalmazásokat a Azure Active Directory alkalmazásnak kell képviselnie, ho
 > [!div renderon="docs"]
 > ## <a name="step-1-get-the-sample-app"></a>1\. lépés: a minta alkalmazás beszerzése
 >
-> [A kód klónozása](https://github.com/Azure-Samples/ms-identity-android-java.git).
+> [Töltse le a kódot](https://github.com/Azure-Samples/ms-identity-android-java/archive/master.zip).
 >
 > ## <a name="step-2-run-the-sample-app"></a>2\. lépés: a minta alkalmazás futtatása
 >
@@ -159,7 +159,7 @@ Az alkalmazásokat a Azure Active Directory alkalmazásnak kell képviselnie, ho
 
 A kód töredékekre van rendezve, amelyek bemutatják, hogyan írhat egyetlen és több fiókot MSAL-alkalmazásba. A kód fájljai a következőképpen vannak rendszerezve:
 
-| File  | Bemutatja  |
+| Fájl  | Bemutatja  |
 |---------|---------|
 | MainActivity | A felhasználói felület kezelése |
 | MSGraphRequestWrapper  | A Microsoft Graph API meghívása a MSAL által biztosított jogkivonat használatával |
@@ -515,7 +515,7 @@ Ez egy olyan MSAL-alkalmazás konfigurációs fájlja, amely több fiókot haszn
 
 Az [androidos MSAL konfigurációs fájljának megismeréséhez](msal-configuration.md) tekintse meg a különböző mezők magyarázatát.
 
-A [auth_config_single_account. JSON](#auth_config_single_accountjson) konfigurációs fájllal ellentétben ez a konfigurációs fájl `"account_mode" : "MULTIPLE"` helyett `"account_mode" : "SINGLE"`, mert ez egy több fiókból álló alkalmazás.
+A [auth_config_single_account. JSON](#auth_config_single_accountjson) konfigurációs fájllal ellentétben ez a konfigurációs fájl `"account_mode" : "MULTIPLE"` helyett a `"account_mode" : "SINGLE"`, mert ez egy több fiókból álló alkalmazás.
 
 `"client_id"` előre konfigurálva van egy, a Microsoft által fenntartott alkalmazás-objektum regisztrációjának használatára.
 `"redirect_uri"`előre konfigurálva van, hogy a kód mintájában megadott aláíró kulcsot használja.
@@ -539,7 +539,7 @@ A [auth_config_single_account. JSON](#auth_config_single_accountjson) konfigurá
 }
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 ### <a name="learn-the-steps-to-create-the-application-used-in-this-quickstart"></a>A jelen rövid útmutatóban használt alkalmazás létrehozási lépéseinek ismertetése
 

@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 380c67e5aeaba9be60e016f173e4da127e4e5f14
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: 424df8ac7145129dd70a9a5791648730189b528b
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73798179"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73889656"
 ---
 # <a name="get-sensor-data-from-sensor-partners"></a>Érzékelők adatainak beolvasása az érzékelő partnereitől
 
@@ -60,7 +60,7 @@ A hitelesítő adatokat úgy is létrehozhatja, hogy a parancsfájlt a Azure Clo
 
     ```azurepowershell-interactive 
 
-    PS> ./generateCredentials.ps1   
+    ./generateCredentials.ps1   
 
     ```
 7. A képernyőn megjelenő utasításokat követve rögzítheti az értékeket. (API-végpont, bérlő azonosítója, ügyfél-azonosító, ügyfél titka és EventHub-kapcsolatok karakterlánca).

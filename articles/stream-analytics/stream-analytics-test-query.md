@@ -9,16 +9,16 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 08/23/2019
 ms.custom: seodec18
-ms.openlocfilehash: 9c67d511f6c94c8b9af034835e149875304e2235
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: d68c1ee084efc146d69d8404aadb8acbb4cc33d1
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70918965"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73891755"
 ---
 # <a name="test-an-azure-stream-analytics-job-with-sample-data"></a>Azure Stream Analytics-feladatok tesztelése mintaadatok
 
-A Azure Stream Analytics a feladatok elindítása vagy leállítása nélkül is tesztelheti a lekérdezést. A bejövő adatok lekérdezéseit tesztelheti a bemeneti fogadóból, vagy feltöltötte a mintaadatok egy helyi fájlból az Azure Portalon. A lekérdezéseket helyileg is tesztelheti a helyi mintaadatok vagy élő adatok alapján a [Visual Studióban](https://docs.microsoft.com/en-us/azure/stream-analytics/stream-analytics-live-data-local-testing) és a [Visual Studio Code](https://docs.microsoft.com/en-us/azure/stream-analytics/vscode-local-run)-ban. 
+A Azure Stream Analytics a feladatok elindítása vagy leállítása nélkül is tesztelheti a lekérdezést. A bejövő adatok lekérdezéseit tesztelheti a bemeneti fogadóból, vagy feltöltötte a mintaadatok egy helyi fájlból az Azure Portalon. A lekérdezéseket helyileg is tesztelheti a helyi mintaadatok vagy élő adatok alapján a [Visual Studióban](stream-analytics-live-data-local-testing.md) és a [Visual Studio Code](vscode-local-run.md)-ban. 
 
 ## <a name="sample-incoming-data-from-input"></a>Bejövő adatok mintája bemenetből
 
@@ -74,7 +74,7 @@ Az élő adatok helyett helyi fájlokból származó mintaadatok használatával
 
 1. Jelentkezzen be az Azure portálra.
    
-2. Keresse meg a meglévő Stream Analytics-feladatot, és válassza ki azt.
+2. Keresse meg a meglévő Stream Analytics feladatot, és válassza ki.
 
 3. A Stream Analytics-feladatok lap **feladatok topológiájának** fejlécében válassza a **lekérdezés** lehetőséget a lekérdezés-szerkesztő ablak megnyitásához.
 
@@ -106,4 +106,4 @@ Az élő adatok helyett helyi fájlokból származó mintaadatok használatával
 
 * [Azure Stream Analytics-bemenetek ismertetése](stream-analytics-add-inputs.md)
 
-* [Kimenő adatait az Azure Stream Analytics ismertetése](stream-analytics-define-outputs.md)
+* [A Azure Stream Analytics kimenetének megismerése](stream-analytics-define-outputs.md)

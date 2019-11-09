@@ -13,12 +13,12 @@ ms.date: 10/25/2019
 ms.author: cephalin
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: 12b8d6dff571c074d1f1422f75e33a8b12761bd9
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 4f0c8078a502d0332b02d95c0c46d9dbcc53a884
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73572153"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73886864"
 ---
 # <a name="add-an-ssl-certificate-in-azure-app-service"></a>SSL-tanúsítvány hozzáadása Azure App Service
 
@@ -325,7 +325,7 @@ Miután befejeződött a megújítási művelet, kattintson a **szinkronizálás
 
 ### <a name="export-certificate"></a>Tanúsítvány exportálása
 
-Mivel App Service tanúsítványok [Key Vault titkos kulcs](../key-vault/about-keys-secrets-and-certificates.md#key-vault-secrets), exportálhatja BELŐLE a pfx-példányt, és használhatja azt más Azure-szolgáltatásokhoz vagy az Azure-on kívül is.
+Mivel az App Service-tanúsítvány [Key Vault titkos kulcs](../key-vault/about-keys-secrets-and-certificates.md#key-vault-secrets), exportálhatja azt, és más Azure-szolgáltatásokhoz vagy az Azure-on kívül is használhatja.
 
 Ha a App Service-tanúsítvány PFX-fájlként szeretné exportálni, futtassa az alábbi parancsokat a [Cloud Shell](https://shell.azure.com). Ha az [Azure CLI-t telepítette](https://docs.microsoft.com/cli/azure/install-azure-cli), helyileg is futtathatja. Cserélje le a helyőrzőket az [app Service-tanúsítvány létrehozásakor](#start-certificate-order)használt nevekre.
 
@@ -344,7 +344,7 @@ az keyvault secret download \
     --encoding base64
 ```
 
-A letöltött *appservicecertificate. pfx* fájl egy nyers PKCS12/pfx-profil-fájl, amely a nyilvános és a privát tanúsítványokat is tartalmazza. Amikor a rendszer kéri, az importálási jelszó és a PEM-pass kifejezés is az üres sztring.
+A letöltött *appservicecertificate. pfx* fájl egy nyers PKCS12/pfx-profil-fájl, amely a nyilvános és a privát tanúsítványokat is tartalmazza. Minden egyes promptnál használjon üres karakterláncot az importálási jelszó és a PEM-pass kifejezéshez.
 
 ### <a name="delete-certificate"></a>Tanúsítvány törlése 
 

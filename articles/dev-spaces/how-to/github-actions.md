@@ -10,12 +10,12 @@ ms.topic: conceptual
 description: A GitHub-műveletek és az Azure dev Spaces használatával közvetlenül az Azure Kubernetes szolgáltatásban tekintheti át és tesztelheti a lekéréses kérelmek módosításait.
 keywords: Docker, Kubernetes, Azure, AK, Azure Kubernetes szolgáltatás, tárolók, GitHub-műveletek, Helm, Service Mesh, szolgáltatás háló útválasztás, kubectl, k8s
 manager: gwallace
-ms.openlocfilehash: 590d49f4c189ff48f20369d18b17e0f6e4a46fa2
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 09dc9440628ac5d808f90d086bd88e4f90765c28
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73571591"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73889734"
 ---
 # <a name="github-actions--azure-kubernetes-service-preview"></a>GitHub-műveletek & Azure Kubernetes Service (előzetes verzió)
 
@@ -100,8 +100,8 @@ Navigáljon az elágazó tárházhoz, és kattintson a *Beállítások*elemre. K
 1. *HOST_SUFFIX*: a fejlesztői terület állomásneve, amely ebben a példában a *fedcab0987.EUs.azds.IO*.
 1. *IMAGE_PULL_SECRET*: a használni kívánt titok neve, például *demo-Secret*.
 1. *MASTER_SPACE*: a szülő fejlesztői terület neve, amely ebben a példában a *dev*.
-1. *REGISTRY_USERNAME*: az egyszerű szolgáltatás létrehozásakor a JSON-kimenetből származó *clientId* .
-1. *REGISTRY_PASSWORD*: az egyszerű szolgáltatás létrehozásakor a JSON-kimenetből származó *clientSecret* .
+1. *REGISTRY_USERNAME*: az egyszerű *clientId* származó JSON-kimenetből származó adatok.
+1. *REGISTRY_PASSWORD*: az egyszerű *clientSecret* származó JSON-kimenetből származó adatok.
 
 > [!NOTE]
 > Az összes ilyen titkot a GitHub-művelet használja, és a [. GitHub/munkafolyamatok/Bikes. YML][github-action-yaml]-ben vannak konfigurálva.
@@ -145,7 +145,7 @@ A `git push` segítségével küldje le az új ágat az elágazó adattárba:
 git push origin bike-images
 ```
 
-A leküldéses folyamat befejezése után navigáljon a GitHubon található elágazó adattárhoz, és hozzon létre egy pull-kérést az elágazó tárházban lévő *dev* -ben, a *Bike-images* ág összehasonlításával.
+A leküldéses folyamat befejezése után navigáljon a GitHubon található elágazó adattárhoz, és hozzon létre egy pull-kérést az elágazó tárházban található *Master* ág alapján, a *Bike-images* ág összehasonlításával.
 
 A lekéréses kérelem megnyitása után navigáljon a *műveletek* lapra. Ellenőrizze, hogy az új művelet elindult-e, és hogy a *Bikes* szolgáltatást épít-e ki.
 
@@ -158,7 +158,7 @@ A művelet befejezését követően egy megjegyzés jelenik meg az új gyermekob
 
 Nyissa meg a *bikesharingweb* szolgáltatást, és nyissa meg az URL-címet a megjegyzésből. Válassza az *Aurelia Briggs (ügyfél)* lehetőséget felhasználóként, majd válassza ki a bérelni kívánt kerékpárt. Győződjön meg arról, hogy már nem jelenik meg a bike helyőrző képe.
 
-Ha egyesíti a módosításokat a *fejlesztői* ágra, egy másik művelet fog futni, és futtatja a teljes alkalmazást a szülő fejlesztői térben. Ebben a példában a szülő terület a *dev*. Ez a művelet a [. GitHub/workflows/bikesharing. YML][github-action-bikesharing-yaml]-ben van konfigurálva.
+Ha egyesíti a módosításokat az elágazásban található *Master* ágban, egy másik művelet fog futni, és a teljes alkalmazást futtatja a szülő fejlesztői térben. Ebben a példában a szülő terület a *dev*. Ez a művelet a [. GitHub/workflows/bikesharing. YML][github-action-bikesharing-yaml]-ben van konfigurálva.
 
 ## <a name="clean-up-your-azure-resources"></a>Azure-erőforrások karbantartása
 

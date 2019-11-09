@@ -8,14 +8,14 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 9206bf07a36cc5724b173790eb94037cb86add9c
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 25b0ec1b86a59b944cdb895bd536da32a1f8595b
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72952081"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73884484"
 ---
-# <a name="azure-iot-central-architecture"></a>Azure IoT Central-architektúra
+# <a name="azure-iot-central-architecture"></a>Az Azure IoT Central architektúrája
 
 [!INCLUDE [iot-central-original-pnp](../../../includes/iot-central-original-pnp-note.md)]
 
@@ -83,7 +83,7 @@ Egy alkalmazáshoz egy vagy több szimulált és valós eszköz tartozhat az egy
 
 ## <a name="data-export"></a>Adatexportálás
 
-Egy Azure IoT Central alkalmazásban [folyamatosan exportálhatja az adatait](howto-export-data-event-hubs-service-bus.md) a saját azure-Event Hubsba, és Azure Service Bus példányokat is. Az Azure Blob Storage-fiókjába rendszeres időközönként is exportálhatja adatait. IoT Central exportálhat méréseket, eszközöket és az eszközök sablonjait.
+Egy Azure IoT Central alkalmazásban [folyamatosan exportálhatja adatait](howto-export-data-event-hubs-service-bus.md) a saját azure-Event Hubsba, Azure Service Busba és Azure Blob Storage példányaiba. IoT Central exportálhat méréseket, eszközöket és az eszközök sablonjait.
 
 ## <a name="batch-device-updates"></a>Batch-eszközök frissítései
 
@@ -109,6 +109,6 @@ A rendszergazdák egyéni témák alkalmazásával szabhatják testre az alkalma
 
 Az operátorok személyre szabott alkalmazás-irányítópultokat hozhatnak létre. Több irányítópultot is beállíthat, amelyek különböző adathalmazokat jelenítenek meg, és válthatnak egymás között.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Most, hogy megismerte az Azure-IoT Central architektúráját, a javasolt következő lépés az [eszköz kapcsolatának](concepts-connectivity.md) megismerése az Azure IoT Centralban.

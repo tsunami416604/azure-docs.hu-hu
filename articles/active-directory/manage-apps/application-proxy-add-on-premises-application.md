@@ -12,12 +12,12 @@ ms.date: 10/24/2019
 ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a8d6297a32cd0f85cf354a93bfdac72cbad9603d
-ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
+ms.openlocfilehash: 72678a67b1bc9845eae2bca658f35a05c9bcf659
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73062834"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73883972"
 ---
 # <a name="tutorial-add-an-on-premises-application-for-remote-access-through-application-proxy-in-azure-active-directory"></a>Oktatóanyag: helyi alkalmazás hozzáadása a távoli eléréshez az alkalmazásproxy használatával Azure Active Directory
 
@@ -32,7 +32,7 @@ Ez az oktatóanyag:
 > * Helyszíni alkalmazás hozzáadását az Azure AD-bérlőhöz
 > * Ellenőrzi, hogy egy felhasználó Azure AD-fiókkal tud-e bejelentkezni az alkalmazásba
 
-## <a name="before-you-begin"></a>Előzetes teendők
+## <a name="before-you-begin"></a>Előkészületek
 
 Helyszíni alkalmazás Azure AD-hez való hozzáadásához a következők szükségesek:
 
@@ -45,6 +45,12 @@ Helyszíni alkalmazás Azure AD-hez való hozzáadásához a következők szüks
 Az alkalmazásproxy használatához Windows Server 2012 R2 vagy újabb rendszert futtató Windows Serverre van szükség. Telepítse az alkalmazásproxy-összekötőt a kiszolgálóra. Az összekötő-kiszolgálónak csatlakoznia kell az Azure-beli alkalmazásproxy-szolgáltatásokhoz és a közzétenni kívánt helyszíni alkalmazásokhoz.
 
 Az éles környezetben való magas rendelkezésre állás érdekében javasoljuk, hogy egynél több Windows Servert válasszon. Ebben az oktatóanyagban az egyik Windows-kiszolgáló elegendő.
+
+> [!IMPORTANT]
+> Ha az összekötőt a Windows Server 2019 rendszerre telepíti, a HTTP2 korlátozás van érvényben. Ahhoz, hogy sikeresen használhassa az összekötőt ezen a verzión, adja hozzá a következő beállításkulcsot, és indítsa újra a kiszolgálót:
+    ```
+    HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Internet Settings\WinHttp\EnableDefaultHttp2 (DWORD) Value: 0 
+    ```
 
 #### <a name="recommendations-for-the-connector-server"></a>Az összekötő-kiszolgáló javaslatai
 
@@ -216,7 +222,7 @@ Az alkalmazásba való bejelentkezés tesztelése:
 
 Hibaelhárítás: az [alkalmazásproxy problémáinak elhárítása és a hibaüzenetek](application-proxy-troubleshoot.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban előkészítette a helyszíni környezetet, hogy működjön az Application proxyval, majd telepítse és regisztrálja az alkalmazásproxy-összekötőt. Ezután hozzáadott egy alkalmazást az Azure AD-bérlőhöz. Ellenőrizte, hogy egy felhasználó Azure AD-fiókkal tud-e bejelentkezni az alkalmazásba.
 

@@ -1,5 +1,5 @@
 ---
-title: IoT-fejlesztői készlet összekötése a távoli figyelési megoldás-gyorsító használatával – Azure | Microsoft Docs
+title: IoT-fejlesztői készlet összekötése távoli figyelési megoldással – Azure | Microsoft Docs
 description: Ebben a útmutatóban megtudhatja, hogyan küldhet telemetria a IoT fejlesztői készlet AZ3166 eszközről a távoli figyelési megoldáshoz a figyeléshez és a vizualizációhoz.
 author: isabelcabezasm
 manager: ''
@@ -9,12 +9,12 @@ ms.devlang: c
 ms.topic: conceptual
 ms.date: 11/29/2018
 ms.author: isacabe
-ms.openlocfilehash: 542a0780c0525ee7ceddfd36c3a4f7c348d0574f
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 6e9f9c89cf2e5e40d37a1532e688490aae294181
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72930880"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73888867"
 ---
 # <a name="connect-an-iot-devkit-device-to-the-remote-monitoring-solution-accelerator"></a>IoT fejlesztői készlet-eszköz csatlakoztatása a távoli figyelési megoldáshoz
 
@@ -24,7 +24,7 @@ Ez a útmutató bemutatja, hogyan futtathat egy minta alkalmazást a IoT fejlesz
 
 A [MXChip IoT fejlesztői készlet](https://aka.ms/iot-devkit) egy all-in-One Arduino-kompatibilis tábla, amely gazdag perifériákkal és érzékelőkkel rendelkezik. A Visual Studio Code-ban az [Azure IoT Device Workbench](https://aka.ms/iot-workbench) vagy az [Azure IoT Tools](https://aka.ms/azure-iot-tools) Extension Pack használatával fejlesztheti azt. A [projects Catalog](https://microsoft.github.io/azure-iot-developer-kit/docs/projects/) a IoT-megoldások prototípusát segítő példákat tartalmaz.
 
-## <a name="before-you-begin"></a>Előzetes teendők
+## <a name="before-you-begin"></a>Előkészületek
 
 Az oktatóanyag lépéseinek elvégzéséhez először hajtsa végre a következő feladatokat:
 
@@ -124,7 +124,7 @@ Ha bármilyen probléma merül fel, tekintse meg [a IoT fejlesztői készlet gya
 * [Gitter.im](https://gitter.im/Microsoft/azure-iot-developer-kit)
 * [Stack Overflow](https://stackoverflow.com/questions/tagged/iot-devkit)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Most, hogy megismerte, hogyan csatlakoztatható egy fejlesztői készlet-eszköz a távoli figyelési megoldás-gyorsító szolgáltatáshoz, néhány javasolt lépés:
 

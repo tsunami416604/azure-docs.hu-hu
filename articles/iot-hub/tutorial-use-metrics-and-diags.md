@@ -1,22 +1,21 @@
 ---
 title: Metrikák és diagnosztikai naplók beállítása és használata az Azure IoT hub használatával | Microsoft Docs
-description: Metrikák és diagnosztikai naplók beállítása és használata Azure IoT hub használatával
+description: Ismerje meg, hogyan állíthat be és használhat mérőszámokat és diagnosztikai naplókat egy Azure IoT hub használatával. Ez biztosítja az elemzéshez szükséges, a hub által esetlegesen felmerülő problémák diagnosztizálását.
 author: robinsh
-manager: philmea
 ms.service: iot-hub
 services: iot-hub
 ms.topic: tutorial
 ms.date: 3/13/2019
 ms.author: robinsh
 ms.custom: mvc
-ms.openlocfilehash: 7349287945a56bb7674e364f515d0b763015ed59
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 3bda78a54b0914465a50d664ab0323444203a387
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71262320"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73890362"
 ---
-# <a name="tutorial-set-up-and-use-metrics-and-diagnostic-logs-with-an-iot-hub"></a>Oktatóanyag: Metrikák és diagnosztikai naplók beállítása és használata IoT hub használatával
+# <a name="tutorial-set-up-and-use-metrics-and-diagnostic-logs-with-an-iot-hub"></a>Oktatóanyag: mérőszámok és diagnosztikai naplók beállítása és használata IoT hub használatával
 
 Ha éles környezetben futó IoT Hub-megoldással rendelkezik, állítson be néhány mérőszámot, és engedélyezze a diagnosztikai naplókat. Ha probléma merül fel, a megjelenő információkkal megtekintheti, hogy a probléma diagnosztizálása és gyorsabb javítása érdekében. Ebből a cikkből megtudhatja, hogyan engedélyezheti a diagnosztikai naplókat, és hogyan végezheti el a hibák ellenőrzését. Emellett néhány mérőszámot is beállíthat a figyeléshez, és riasztást küld, ha a mérőszámok egy bizonyos határt érintenek. Előfordulhat például, hogy egy e-mailt küld Önnek, ha az elküldött telemetria-üzenetek száma meghaladja az adott határt, vagy ha a felhasznált üzenetek száma a IoT Hub naponta engedélyezett üzenetek kvótája mellett van. 
 
@@ -116,7 +115,7 @@ az iot hub device-identity show --device-id $iotDeviceName \
 ```
 
 >[!NOTE]
->Az eszköz identitásának létrehozásakor a következő hibaüzenetet kaphatja: *Nem található kulcs a IoT hub ContosoTestHub házirend iothubowner*. A hiba elhárításához frissítse az Azure CLI IoT bővítményét, majd futtassa újra a parancsfájl utolsó két parancsát. 
+>Az eszköz identitásának létrehozásakor a következő hibaüzenet jelenhet meg: *IoT hub ContosoTestHub házirend Iothubowner nem találhatók kulcsok*. A hiba elhárításához frissítse az Azure CLI IoT bővítményét, majd futtassa újra a parancsfájl utolsó két parancsát. 
 >
 >Itt látható a bővítmény frissítésére szolgáló parancs. Futtassa ezt a Cloud Shell-példányban.
 >
@@ -163,7 +162,7 @@ Most állítson be néhány mérőszámot, amelyből megnézheti, hogy mikor kü
 
 1. Az IoT hub Beállítások paneljén kattintson a **figyelés** szakaszban található **mérőszámok** lehetőségre.
 
-2. A képernyő felső részén kattintson az **elmúlt 24 óra (automatikus)** elemre. A megjelenő legördülő menüben válassza az **utolsó 4 óra** az időtartományra lehetőséget, és állítsa be az **időbeli részletességet** **1 percre**, helyi időre. A beállítások mentéséhez kattintson az **alkalmaz** gombra. 
+2. A képernyő felső részén kattintson az **elmúlt 24 óra (automatikus)** elemre. A megjelenő legördülő menüben válassza az **utolsó 4 óra** az **időtartományra**lehetőséget, és állítsa be az **időbeli részletességet** **1 percre**, helyi időre. A beállítások mentéséhez kattintson az **alkalmaz** gombra. 
 
    ![A metrikák időbeállítását bemutató képernyőkép.](./media/tutorial-use-metrics-and-diags/06-metrics-set-time-range.png)
 
@@ -186,7 +185,7 @@ Nyissa meg a hubot a portálon. Kattintson az **erőforráscsoportok**elemre, v�
 
 A IoT Hub még nem lett áttelepítve a [metrikák Azure monitorra](/azure/azure-monitor/platform/data-collection#metrics) ; [klasszikus riasztásokat](/azure/azure-monitor/platform/alerts-classic.overview)kell használnia.
 
-1. A **figyelés**területen kattintson a riasztások elemre, amely a fő riasztási képernyőt jeleníti meg. 
+1. A **figyelés**területen kattintson a **riasztások** elemre, amely a fő riasztási képernyőt jeleníti meg. 
 
    ![A klasszikus riasztások keresését bemutató képernyőkép.](./media/tutorial-use-metrics-and-diags/08-find-classic-alerts.png)
 
@@ -196,27 +195,27 @@ A IoT Hub még nem lett áttelepítve a [metrikák Azure monitorra](/azure/azure
 
     Töltse ki a mezőket: 
 
-    **Előfizetés**: Hagyja meg ezt a mezőt a jelenlegi előfizetésében.
+    **Előfizetés**: hagyja meg ezt a mezőt a jelenlegi előfizetésében.
 
-    **Forrás**: A mező értékekéntadja meg a metrikákat.
+    **Forrás**: állítsa ezt a mezőt *metrikára*.
 
-    **Erőforráscsoport**: Állítsa be ezt a mezőt az aktuális erőforráscsoporthoz, a *ContosoResources*. 
+    **Erőforráscsoport**: állítsa ezt a mezőt az aktuális erőforráscsoporthoz, a *ContosoResources*. 
 
-    **Erőforrás típusa**: A mező értéke legyen IoT Hub. 
+    **Erőforrás típusa**: ezt a mezőt IoT hub értékre kell állítani. 
 
-    **Erőforrás**: Válassza ki az IoT hubot, a *ContosoTestHub*-t.
+    **Erőforrás**: válassza ki az IoT hub *ContosoTestHub*.
 
 3. Új riasztás beállításához kattintson a **metrikus riasztás hozzáadása (klasszikus)** lehetőségre.
 
     Töltse ki a mezőket:
 
-    **Név**: Adja meg a riasztási szabály nevét (például *telemetria-üzenetek*).
+    **Név**: adja meg a riasztási szabály nevét (például *telemetria-üzenetek*).
 
-    **Leírás**: Adja meg a riasztás leírását, például a *riasztást, ha 1000 telemetria üzenet van elküldve*. 
+    **Leírás**: adja meg a riasztás leírását, például a *riasztást, ha 1000 telemetria üzenet van elküldve*. 
 
-    **Forrás**: Adja meg ezta metrikákat.
+    **Forrás**: állítsa ezt a *mérőszámokra*.
 
-    Az előfizetést, az **erőforráscsoportot**és az **erőforrást** a **klasszikus riasztások megjelenítése** képernyőn kiválasztott értékekre kell beállítani. 
+    Az **előfizetést**, az **erőforráscsoportot**és az **erőforrást** a **klasszikus riasztások megjelenítése** képernyőn kiválasztott értékekre kell beállítani. 
 
     **Metrika** beállítása a *telemetria küldött üzenetekhez*.
 
@@ -224,13 +223,13 @@ A IoT Hub még nem lett áttelepítve a [metrikák Azure monitorra](/azure/azure
 
 4. A diagram után állítsa be a következő mezőket:
 
-   **Feltétel**: Értéke *nagyobb, mint*.
+   **Feltétel**: értéke *nagyobb, mint*.
 
-   **Küszöbérték**: 1000 értékre van állítva.
+   **Küszöbérték**: a 1000 értékre van állítva.
 
-   **Időszak**: Állítsa az *utolsó 5 percre*.
+   **Időtartam**: *az utolsó 5 percre*van beállítva.
 
-   **Értesítő e-mailek címzettjei**: Itt helyezheti el az e-mail címét. 
+   **Értesítő e-mail címzettjei**: Itt adhatja meg az e-mail-címét. 
 
    ![Képernyőfelvétel a riasztások alsó felének megjelenítéséről](./media/tutorial-use-metrics-and-diags/11-alerts-add-rule-bottom.png)
 
@@ -240,25 +239,25 @@ A IoT Hub még nem lett áttelepítve a [metrikák Azure monitorra](/azure/azure
 
    A **klasszikus riasztások megtekintése** képernyőn kattintson a **metrikus riasztás hozzáadása (klasszikus)** elemre, majd töltse ki ezeket a mezőket a **szabály hozzáadása** panelen.
 
-   **Név**: Adja meg a riasztási szabály nevét, például az *üzenetek számát*.
+   **Név**: adja meg a riasztási szabály nevét, például az *üzenetek számát*.
 
-   **Leírás**: Adja meg a riasztás leírását, például a *riasztást a kvóta lezárásakor*.
+   **Leírás**: adja meg a riasztás leírását, például a *riasztást a kvóta lezárásakor*.
 
-   **Forrás**: A mező értékekéntadja meg a metrikákat.
+   **Forrás**: állítsa ezt a mezőt *metrikára*.
 
-    Az előfizetést, az **erőforráscsoportot**és az **erőforrást** a **klasszikus riasztások megjelenítése** képernyőn kiválasztott értékekre kell beállítani. 
+    Az **előfizetést**, az **erőforráscsoportot**és az **erőforrást** a **klasszikus riasztások megjelenítése** képernyőn kiválasztott értékekre kell beállítani. 
 
     A **metrika** beállítása a *felhasznált üzenetek teljes számára*.
 
 6. A diagram alatt adja meg a következő mezőket:
 
-   **Feltétel**: Értéke *nagyobb, mint*.
+   **Feltétel**: értéke *nagyobb, mint*.
 
-   **Küszöbérték**: 1000 értékre van állítva.
+   **Küszöbérték**: a 1000 értékre van állítva.
 
-   **Időszak**: Adja meg a mezőt *az elmúlt 5 percben*. 
+   **Időtartam**: állítsa ezt a mezőt *az utolsó 5 percre*. 
 
-   **Értesítő e-mailek címzettjei**: Itt helyezheti el az e-mail címét. 
+   **Értesítő e-mail címzettjei**: Itt adhatja meg az e-mail-címét. 
 
    A szabály mentéséhez kattintson **az OK** gombra. 
 
@@ -288,7 +287,7 @@ Kattintson duplán a megoldásfájlra (SimulatedDevice.sln), a kód megnyitásá
 
 ## <a name="run-and-test"></a>Futtatás és tesztelés 
 
-A program.cs-ben módosítsa `Task.Delay` a 1000 – 10 értéket, amely csökkenti az üzenetek 1 másodpercről. 01 másodpercre való küldésének időtartamát. A késleltetés lerövidítése növeli az elküldött üzenetek számát.
+A Program.cs-ben módosítsa a `Task.Delay` 1000-ről 10-re, ami csökkenti az üzenetek 1 másodpercről. 01 másodpercre való küldésének időtartamát. A késleltetés lerövidítése növeli az elküldött üzenetek számát.
 
 ```csharp
 await Task.Delay(10);

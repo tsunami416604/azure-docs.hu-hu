@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 10/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 75f0669a474c24647e71eae8b5e0e0830b7c0bef
-ms.sourcegitcommit: 6eecb9a71f8d69851bc962e2751971fccf29557f
+ms.openlocfilehash: b46ac34db21576c7e2de2271a468e3e782ff6aa9
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72533090"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73885352"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-check-point-cloudguard-dome9-arc"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a CloudGuard Dome9 Arcmal
 
@@ -87,7 +87,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
     a. Az **azonosító** szövegmezőbe írja be a következő URL-címet: `https://secure.dome9.com/`
 
-    b. A **Válasz URL-címe** szövegmezőbe írja be a következő mintát használó URL-címet: `https://secure.dome9.com/sso/saml/<yourcompanyname>`
+    b. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://secure.dome9.com/sso/saml/<yourcompanyname>`
 
 1. Kattintson a **további URL-címek beállítása** elemre, és hajtsa végre a következő lépést, ha az alkalmazást **SP** -ben kezdeményezett módban szeretné konfigurálni:
 
@@ -107,7 +107,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
     | memberOf | User. assignedroles |
 
     >[!NOTE]
-    >Ide [kattintva](https://docs.microsoft.com/en-us/azure/active-directory/saas-apps/apptio-tutorial) megtudhatja, hogyan hozhat létre szerepköröket az Azure ad-ben.
+    >Ide [kattintva](https://docs.microsoft.com/azure/active-directory/saas-apps/apptio-tutorial) megtudhatja, hogyan hozhat létre szerepköröket az Azure ad-ben.
 
 1. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban keresse meg a **tanúsítvány (Base64)** elemet, majd a **Letöltés** gombra kattintva töltse le a tanúsítványt, és mentse a számítógépre.
 
@@ -125,9 +125,9 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
 1. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
 1. A **felhasználó** tulajdonságaiban hajtsa végre az alábbi lépéseket:
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
-   1. A **Felhasználónév** mezőbe írja be a username@companydomain.extension értéket. Például: `B.Simon@contoso.com`.
+   1. A **Felhasználónév** mezőbe írja be a username@companydomain.extension. Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a  **Create** (Létrehozás) gombra.
+   1. Kattintson a **Létrehozás** elemre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -204,7 +204,7 @@ Annak engedélyezéséhez, hogy az Azure AD-felhasználók bejelentkezzenek a Cl
 
     ![Alkalmazott hozzáadása](./media/dome9arc-tutorial/user3.png)
 
-    a. Az **e-mail** szövegmezőbe írja be a következőhöz hasonló felhasználó e-mail címét: B.Simon@contoso.com.
+    a. Az **e-mail** szövegmezőbe írja be a (z) B.Simon@contoso.comfelhasználó e-mail-címét.
 
     b. Az **Utónév** szövegmezőbe írja be a (z) "B" nevű felhasználó utónevét.
 

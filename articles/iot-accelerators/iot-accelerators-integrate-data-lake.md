@@ -1,6 +1,6 @@
 ---
-title: A távoli figyelési megoldás integrálása a Data Lake Store – Azure |} A Microsoft Docs
-description: Ismerje meg, hogyan integrálható a távoli figyelési megoldás az Azure Data Lake Store használatával az Azure Stream Analytics-feladat.
+title: Stream-adatok távoli figyelésből Data Lake Storeba – Azure | Microsoft Docs
+description: Megtudhatja, hogyan integrálhatja a távoli figyelési megoldást Azure Data Lake Store használatával egy Azure Stream Analytics feladatokkal.
 author: philmea
 manager: timlt
 ms.author: philmea
@@ -8,127 +8,127 @@ ms.date: 04/29/2018
 ms.topic: conceptual
 ms.service: iot-accelerators
 services: iot-accelerators
-ms.openlocfilehash: 021f18f588613817110539d408f9260fb9247895
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0a684151e01b298c60ff17ef1470e0648a425850
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61449342"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73889238"
 ---
-# <a name="integrate-the-remote-monitoring-solution-with-azure-data-lake-store"></a>A távoli figyelési megoldás integrálása az Azure Data Lake Store
+# <a name="integrate-the-remote-monitoring-solution-with-azure-data-lake-store"></a>A távoli figyelési megoldás integrálása a Azure Data Lake Store
 
-Előfordulhat, hogy a fejlett analitikai követelmények meghaladják a távoli figyelési megoldás érhető el. Az Azure Data Lake Store ideális ehhez az alkalmazáshoz, mert azt is nagy és számos különböző adatkészletekből származó adatok tárolása, valamint integrálása az Azure Data Lake Analytics igény szerinti elemzést biztosít.
+A távoli figyelési megoldásban elérhető speciális elemzési követelmények is megjelenhetnek. A Azure Data Lake Store ideális ehhez az alkalmazáshoz, mert a nagy és változatos adatkészletekből származó adatok tárolására, valamint az igény szerinti elemzések biztosításához Azure Data Lake Analytics integrálására is alkalmas.
 
-Ebben az útmutatóban használhatjuk a Azure Stream Analytics-feladat adatok streamelése az IoT hubról a távoli figyelési megoldás, az Azure Data Lake Store.
+Ebben az útmutatóban egy Azure Stream Analytics feladatot fog használni a távoli figyelési megoldás IoT hub adatainak egy Azure Data Lake Storeba való továbbításához.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ez az útmutató végrehajtásához a következőkre lesz szüksége:
+Az útmutató elvégzéséhez a következőkre lesz szüksége:
 
-* [A távoli figyelési megoldásgyorsító üzembe helyezése](quickstart-remote-monitoring-deploy.md).
-  * A távoli figyelési megoldás telepíti az IoT hub és az Azure Stream Analytics-feladat az Azure-előfizetésben helyezi a cikk ezt használja.
-* [Az Azure Data Lake Store üzembe helyezése](../data-lake-store/data-lake-store-get-started-portal.md)
-  * A Data Lake Store és a távoli figyelési megoldás ugyanabban a régióban kell telepíteni.
-  * [Hozzon létre egy mappát](../data-lake-store/data-lake-store-get-started-portal.md#createfolder) nevű, "Stream" fiókjában található.
+* [Telepítse a távoli figyelési megoldás gyorsító](quickstart-remote-monitoring-deploy.md).
+  * A távoli figyelési megoldás üzembe helyezi az IoT hub-t és a cikkben használt Azure Stream Analytics feladatot az Azure-előfizetésében.
+* [Azure Data Lake Store üzembe helyezése](../data-lake-store/data-lake-store-get-started-portal.md)
+  * A Data Lake Store a távoli figyelési megoldással megegyező régióba kell telepíteni.
+  * [Hozzon létre egy](../data-lake-store/data-lake-store-get-started-portal.md#createfolder) "streaming" nevű mappát a fiókjában.
 
-## <a name="create-a-consumer-group"></a>Hozzon létre egy fogyasztói csoportot
+## <a name="create-a-consumer-group"></a>Fogyasztói csoport létrehozása
 
-Hozzon létre egy dedikált fogyasztói csoportot, hogy a távoli figyelési megoldás az IoT hubban. Ez lesz használható a Stream Analytics-feladat által a Data Lake Store streamelési adatok.
+Hozzon létre egy dedikált fogyasztói csoportot a távoli figyelési megoldás IoT hub-ban. Ezt a Stream Analytics feladata fogja használni az adatoknak a Data Lake Storeba való továbbításához.
 
 > [!NOTE]
-> Adatok lekérése az Azure IoT Hub fogyasztói csoportok alkalmazások használják. Minden öt kimeneti fogyasztók hozzunk létre egy új felhasználói csoportot. Legfeljebb 32 fogyasztói csoportot is létrehozhat.
+> A fogyasztói csoportokat az alkalmazások használják az Azure-IoT Hub adatainak lekérésére. Minden öt kimeneti felhasználóhoz létre kell hoznia egy új fogyasztói csoportot. Akár 32 fogyasztói csoportot is létrehozhat.
 
 1. Jelentkezzen be az Azure portálra.
 
-1. Az Azure Portalon kattintson a **Cloud Shell** gombra.
+1. A Azure Portal kattintson a **Cloud Shell** gombra.
 
-    ![Portál indítása ikon](./media/iot-accelerators-integrate-data-lake/portal-launch-icon.png)
+    ![Portál indítási ikonja](./media/iot-accelerators-integrate-data-lake/portal-launch-icon.png)
 
-1. Hajtsa végre ezt a parancsot egy új felhasználói csoport létrehozása:
+1. Futtassa ezt a parancsot egy új fogyasztói csoport létrehozásához:
 
 ```azurecli-interactive
 az iot hub consumer-group create --hub-name contoso-rm30263 --name streamanalyticsjob --resource-group contoso-rm
 ```
 
 > [!NOTE]
-> Az erőforráscsoportot és az IoT hub nevét a távoli figyelési megoldást használja.
+> Használja az erőforráscsoportot és a IoT hub-neveket a távoli figyelési megoldásból.
 
-## <a name="create-stream-analytics-job"></a>Stream Analytics-feladat létrehozása
+## <a name="create-stream-analytics-job"></a>Stream Analytics-feladatok létrehozása
 
-Az IoT hub az adatokat az Azure Data Lake store-adatfolyam egy Azure Stream Analytics-feladat létrehozása.
+Hozzon létre egy Azure Stream Analytics feladatot az IoT hub adatainak a Azure Data Lake áruházba való továbbításához.
 
-1. Kattintson a **erőforrás létrehozása**, válassza ki az eszközök internetes hálózatát a piactérről, és kattintson **Stream Analytics-feladat**.
+1. Kattintson az **erőforrás létrehozása**elemre, válassza ki eszközök internetes hálózata a piactéren, és kattintson **stream Analytics feladatokra**.
 
-    ![Új Stream Analytics-feladat](./media/iot-accelerators-integrate-data-lake/new-stream-analytics-job.png)
+    ![Új Stream Analytics-feladatok](./media/iot-accelerators-integrate-data-lake/new-stream-analytics-job.png)
 
-1. Adja meg a feladat nevét, és válassza ki a megfelelő előfizetést és erőforráscsoportot.
+1. Adja meg a feladatnév nevét, és válassza ki a megfelelő előfizetést és erőforráscsoportot.
 
-1. Válasszon helyet a near vagy a Data Lake Store ugyanabban a régióban. Itt használjuk USA keleti RÉGIÓJA.
+1. Válasszon egy helyet a közeli vagy a régióban, ahol a Data Lake Store található. Itt az USA keleti régióját használjuk.
 
-1. Győződjön meg arról, hogy az üzemeltetési környezet alapértelmezett **felhőalapú**.
+1. Győződjön meg arról, hogy az üzemeltetési környezetet az alapértelmezett **felhőként**hagyja.
 
-1. Kattintson a **Create** (Létrehozás) gombra.
+1. Kattintson a **Létrehozás** elemre.
 
-    ![Stream Analytics-feladat létrehozása](./media/iot-accelerators-integrate-data-lake/create-stream-analytics-job.png)
+    ![Stream Analytics-feladatok létrehozása](./media/iot-accelerators-integrate-data-lake/create-stream-analytics-job.png)
 
-## <a name="configure-the-stream-analytics-job"></a>A Stream Analytics-feladat konfigurálása
+## <a name="configure-the-stream-analytics-job"></a>A Stream Analytics-feladatok konfigurálása
 
-1. Nyissa meg a **Stream Analytics-feladat** a távoli figyelési megoldás erőforráscsoportban.
+1. Nyissa meg a **stream Analytics feladatot** a távoli figyelési megoldás erőforráscsoporthoz.
 
-1. Az Áttekintés oldalon kattintson a **bemenetek**.
+1. Az Áttekintés lapon kattintson a **bemenetek**elemre.
 
-    ![– Áttekintés oldalra](./media/iot-accelerators-integrate-data-lake/stream-analytics-overview.png)
+    ![Áttekintő lap](./media/iot-accelerators-integrate-data-lake/stream-analytics-overview.png)
 
-1. Kattintson a **streambemenet hozzáadása** válassza **az IoT Hub** a legördülő listából.
+1. Kattintson a **stream-bemenet hozzáadása** elemre, és válassza a **IoT hub** elemet a legördülő menüből.
 
     ![Bemenet hozzáadása](./media/iot-accelerators-integrate-data-lake/stream-analytics-add-input.png)
 
-1. A bemeneti új lapon adja meg a bemeneti alias **IoTHub**.
+1. Az új bemenet lapon adja meg a **IoTHub**bemeneti aliasát.
 
-1. A fogyasztói csoport legördülő listában jelölje ki a korábban létrehozott fogyasztói csoportot. Itt **streamanalyticsjob**.
+1. A fogyasztói csoport legördülő menüben válassza ki a korábban létrehozott fogyasztói csoportot. Itt használjuk a **streamanalyticsjob**-t.
 
-    ![Válassza ki a bemenet](./media/iot-accelerators-integrate-data-lake/stream-analytics-new-input.png)
+    ![Bemenet kiválasztása](./media/iot-accelerators-integrate-data-lake/stream-analytics-new-input.png)
 
 1. Kattintson a **Save** (Mentés) gombra.
 
-1. Az Áttekintés oldalon kattintson a **kimenetek**.
+1. Az Áttekintés lapon kattintson a **kimenetek**elemre.
 
-    ![Add Data Lake Store](./media/iot-accelerators-integrate-data-lake/stream-analytics-overview-2.png)
+    ![Data Lake Store hozzáadása](./media/iot-accelerators-integrate-data-lake/stream-analytics-overview-2.png)
 
-1. Kattintson a **Hozzáadás** válassza **Data Lake Store** a legördülő listából.
+1. Kattintson a **Hozzáadás** gombra, és válassza ki a **Data Lake Store** elemet a legördülő menüből.
 
     ![Kimenet hozzáadása](./media/iot-accelerators-integrate-data-lake/stream-analytics-output.png)
 
-1. Az új kimeneti lapon adja meg a kimeneti alias **Data Lake store**.
+1. Az új kimenet lapon adja meg a **Data Lake Store**kimeneti aliasát.
 
-1. Válassza ki a Data Lake Store-fiókot az előző lépésekben létrehozott, és adja meg a mappastruktúra az áruház adatok.
+1. Válassza ki az előző lépésekben létrehozott Data Lake Store fiókot, és adjon meg egy mappastruktúrát az adattárolóba való továbbításhoz.
 
-1. Adja meg a dátum formátuma mezőben **/streaming/ {date} / {idő}** . Hagyja az alapértelmezett dátum formátuma éééé/hh/nn- és időformátum ÓÓ.
+1. A Dátumformátum mezőben adja meg a **/Streaming/{DATE}/{Time}** . Hagyja meg az alapértelmezett dátumformátum (éééé/hh/nn) és a HH időformátumát.
 
-    ![Adja meg a mappastruktúra](./media/iot-accelerators-integrate-data-lake/stream-analytics-new-output.png)
+    ![Mappa szerkezetének megadása](./media/iot-accelerators-integrate-data-lake/stream-analytics-new-output.png)
 
-1. Kattintson a **engedélyezése**.
+1. Kattintson az **Engedélyezés**gombra.
 
-    A Stream analytics-feladat írási hozzáférést biztosíthat a fájlrendszer, a Data Lake Store engedélyezésére kell.
+    Engedélyeznie kell a Data Lake Store, hogy a stream Analytics-feladat írási hozzáférést nyújtson a fájlrendszerhez.
 
-    ![Stream Analytics a Data Lake Store engedélyezése](./media/iot-accelerators-integrate-data-lake/stream-analytics-out-authorize.png)
+    ![Data Lake Store Stream Analytics engedélyezése](./media/iot-accelerators-integrate-data-lake/stream-analytics-out-authorize.png)
 
-    Megjelenik egy előugró ablak, és a helyi menü bezárása után engedélyezés gomb szürkén jelennek meg engedélyezés befejezését követően.
+    Ekkor megjelenik egy előugró ablak, és ha az előugró ablak bezárása engedélyezés gomb szürkén jelenik meg az engedélyezés befejeződése után.
 
     > [!NOTE]
-    > Ha az előugró ablakban hibaüzenet jelenik meg, nyisson meg egy új böngészőablakot, Inkognitó módban, és próbálkozzon újra.
+    > Ha hibaüzenet jelenik meg az előugró ablakban, nyisson meg egy új böngészőablakot az inkognitóban módban, és próbálkozzon újra.
 
 1. Kattintson a **Save** (Mentés) gombra.
 
-## <a name="edit-the-stream-analytics-query"></a>A Stream Analytics-lekérdezés szerkesztése
+## <a name="edit-the-stream-analytics-query"></a>A Stream Analytics lekérdezés szerkesztése
 
-Az Azure Stream Analytics egy SQL-szerű lekérdezési nyelvet adja meg az adatokat streamelő bemeneti forrást, módosíthatja az adatokat a kívánt, és a kimeneti számos különböző tárolási és feldolgozási célhelyek, használ.
+A Azure Stream Analytics egy SQL-szerű lekérdezési nyelvet használ egy olyan bemeneti forrás megadására, amely adatokat küld, átalakítja a kívánt adatokat, és a kimenetet számos különböző tárolási vagy feldolgozási célhelyre.
 
-1. Kattintson az Áttekintés lapon **lekérdezés szerkesztése**.
+1. Az Áttekintés lapon kattintson a **lekérdezés szerkesztése**elemre.
 
     ![Lekérdezés szerkesztése](./media/iot-accelerators-integrate-data-lake/stream-analytics-edit-query.png)
 
-1. A lekérdezés-szerkesztőben cserélje le a [YourOutputAlias] és [YourInputAlias] helyőrzőt a korábban megadott értékeket.
+1. A lekérdezés-szerkesztőben cserélje le a [YourOutputAlias] és a [YourInputAlias] helyőrzőket a korábban definiált értékekre.
 
     ```sql
     SELECT
@@ -139,45 +139,45 @@ Az Azure Stream Analytics egy SQL-szerű lekérdezési nyelvet adja meg az adato
         IoTHub
     ```
 
-    ![Stream Analytics-lekérdezés](./media/iot-accelerators-integrate-data-lake/stream-analytics-query.png)
+    ![Stream Analytics lekérdezés](./media/iot-accelerators-integrate-data-lake/stream-analytics-query.png)
 
 1. Kattintson a **Save** (Mentés) gombra.
-1. Kattintson a **Igen** a módosítások elfogadásához.
+1. A módosítások elfogadásához kattintson az **Igen** gombra.
 
-## <a name="start-the-stream-analytics-job"></a>A Stream Analytics-feladat indítása
+## <a name="start-the-stream-analytics-job"></a>A Stream Analytics-feladatok elindítása
 
-1. Kattintson az Áttekintés lapon **Start**.
+1. Az Áttekintés lapon kattintson a **Start**gombra.
 
-    ![Stream Analytics-feladat indítása](./media/iot-accelerators-integrate-data-lake/stream-analytics-start.png)
+    ![Stream Analytics feladatok indítása](./media/iot-accelerators-integrate-data-lake/stream-analytics-start.png)
 
-1. Kattintson a Start feladat lap **egyéni**.
+1. A kezdési feladatok lapon kattintson az **Egyéni**elemre.
 
-1. Térjen vissza néhány óra folytattuk a munkát, ha az eszköz megkezdődött streamelési adatok az egyéni idő beállítása.
+1. Állítsa be az egyéni időpontot, hogy néhány óra elteltével felvegye az adatait, amikor az eszköz elindította az adatfolyamot.
 
-1. Kattintson az **Indítás**gombra.
+1. Kattintson a **Start**gombra.
 
     ![Egyéni dátum kiválasztása](./media/iot-accelerators-integrate-data-lake/stream-analytics-start-custom.png)
 
-    Várjon, amíg a feladat hiányzóra futó állapotban, ha hibába ütközik, előfordulhat, hogy a lekérdezés, ügyeljen arra, hogy ellenőrizze, hogy a szintaxis helyes-e.
+    Várjon, amíg a feladatok futása befejeződik, ha olyan hibákat lát, amelyek a lekérdezésből származnak, ellenőrizze, hogy helyes-e a szintaxis.
 
-    ![Feladat futtatása](./media/iot-accelerators-integrate-data-lake/stream-analytics-running.png)
+    ![Futó művelet](./media/iot-accelerators-integrate-data-lake/stream-analytics-running.png)
 
-    A folyamatos átviteli feladat adatokat olvasni az IoT Hub és az adatok tárolása a Data Lake Store megkezdődik. Eltarthat néhány percig, az adatok első lépéseként a Data Lake Store jelennek meg.
+    A folyamatos átviteli feladatok megkezdik az adatok beolvasását a IoT Hubból, és az adatok tárolása a Data Lake Store. Eltarthat néhány percig, amíg az adatai megjelennek a Data Lake Store.
 
-## <a name="explore-the-streaming-data"></a>A streamelési adatok megismerése
+## <a name="explore-the-streaming-data"></a>Ismerkedés a folyamatos átvitelsel
 
-1. Nyissa meg a Data Lake Store.
+1. Lépjen a Data Lake Store.
 
-1. Kattintson az Áttekintés lapon **adatkezelő**.
+1. Az Áttekintés lapon kattintson az **adatkezelő**elemre.
 
-1. Az adatkezelőben lefúrással megjelenítheti a **/ streamelési** mappát. ÉÉÉÉ/HH/NN/HH formátum használatával létrehozott mappa megjelenik.
+1. Az adatkezelőben bontsa ki a **/streaming** mappát. Ekkor az ÉÉÉÉ/HH/NN/HH formátumban létrehozott mappák láthatók.
 
-    ![Ismerje meg a Streamelési adatok](./media/iot-accelerators-integrate-data-lake/data-lake-store-data-explorer.png)
+    ![Az adatfolyamok megismerése](./media/iot-accelerators-integrate-data-lake/data-lake-store-data-explorer.png)
 
-    Látni fogja a json-fájlok óránként egy fájllal.
+    A JSON-fájlok óránként egy fájllal lesznek láthatók.
 
-    ![Ismerje meg a Streamelési adatok](./media/iot-accelerators-integrate-data-lake/data-lake-store-file-preview.png)
+    ![Az adatfolyamok megismerése](./media/iot-accelerators-integrate-data-lake/data-lake-store-file-preview.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Az Azure Data Lake Analytics használható a Data Lake Store-adatkészleteken alapuló big Data típusú adatok elemzését. További információ a a [Data Lake Analytics-dokumentáció](https://docs.microsoft.com/azure/data-lake-analytics).
+A Azure Data Lake Analytics big data elemzések elvégzésére használható a Data Lake Store adatkészletekben. További információt a [Data Lake Analytics dokumentációjában talál](https://docs.microsoft.com/azure/data-lake-analytics).

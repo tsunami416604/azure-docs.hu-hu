@@ -1,79 +1,78 @@
 ---
-title: A koncepció-az-birtokában x.509-es Hitelesítésszolgáltatói tanúsítványok az Azure IoT Hub Device Provisioning Service módjáról |} A Microsoft Docs
-description: A Device Provisioning Service szolgáltatással x.509-es Hitelesítésszolgáltatói tanúsítványok ellenőrzése
+title: Az X. 509 HITELESÍTÉSSZOLGÁLTATÓI tanúsítványok bizonyítása az Azure IoT Hub Device Provisioning Service
+description: Az X. 509 HITELESÍTÉSSZOLGÁLTATÓI tanúsítványok bizonyítása az Azure IoT Hub Device Provisioning Service
 author: wesmc7777
 ms.author: wesmc
 ms.date: 02/26/2018
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-manager: timlt
-ms.openlocfilehash: afa4b3861e9fb7f91fd9f5d540353c5fad23efe0
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: e762a1ab307bdc5ca9369c3f2e424cf6fd35f163
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "54913614"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73890631"
 ---
-# <a name="how-to-do-proof-of-possession-for-x509-ca-certificates-with-your-device-provisioning-service"></a>Hogyan teheti a koncepció-az-birtokában x.509-es Hitelesítésszolgáltatói tanúsítványok a Device Provisioning Service szolgáltatással
+# <a name="how-to-do-proof-of-possession-for-x509-ca-certificates-with-your-device-provisioning-service"></a>Az X. 509 HITELESÍTÉSSZOLGÁLTATÓI tanúsítványok bizonyítása az eszköz kiépítési szolgáltatásával
 
-Egy ellenőrzött X.509 hitelesítésszolgáltató (CA) tanúsítvány egy Hitelesítésszolgáltatói tanúsítvány feltöltve és regisztrálva a kiépítési szolgáltatást, és a koncepció-az-birtokában a szolgáltatással keresztülment. 
+Az ellenőrzött X. 509 hitelesítésszolgáltató (CA) tanúsítvány egy HITELESÍTÉSSZOLGÁLTATÓI tanúsítvány, amely fel lett töltve és regisztrálva lett a kiépítési szolgáltatásban, és a szolgáltatással való megfelelőség igazolásával járt. 
 
-A koncepció-az-birtokában az alábbi lépésekből áll:
-1. Az x.509-es Hitelesítésszolgáltatói tanúsítvány az eszközkiépítési szolgáltatás által létrehozott egyedi ellenőrző kód kérése. Ez az Azure Portalon teheti meg.
-2. Hozzon létre egy X.509-hitelesítési tanúsítvány az Ellenőrzőkód, mint a tulajdonos, és aláírja a tanúsítványt az x.509-es Hitelesítésszolgáltatói tanúsítványhoz tartozó titkos kulccsal.
-3. Töltse fel az aláírt ellenőrző tanúsítvány a szolgáltatást. A szolgáltatás ellenőrzi az ellenőrző tanúsítványt a CA-tanúsítvány nyilvános részét segítségével ellenőrizhető, így igazolja, hogy a Hitelesítésszolgáltatói tanúsítvány titkos kulcs birtokában van.
+A birtokukban lévő igazolás a következő lépéseket foglalja magában:
+1. Az X. 509 HITELESÍTÉSSZOLGÁLTATÓI tanúsítványhoz tartozó kiépítési szolgáltatás által generált egyedi ellenőrző kód beszerzése. Ezt a Azure Portal teheti meg.
+2. Hozzon létre egy X. 509 ellenőrző tanúsítványt az ellenőrző kóddal a tulajdonosként, és írja alá a tanúsítványt az X. 509 HITELESÍTÉSSZOLGÁLTATÓI tanúsítványhoz tartozó titkos kulccsal.
+3. Töltse fel az aláírt ellenőrző tanúsítványt a szolgáltatásba. A szolgáltatás érvényesíti az ellenőrző tanúsítványt a HITELESÍTÉSSZOLGÁLTATÓI tanúsítvány nyilvános részével, amely igazolja, hogy Ön rendelkezik a HITELESÍTÉSSZOLGÁLTATÓI tanúsítvány titkos kulcsával.
 
-Ellenőrzött tanúsítványok fontos szerepet játszik a regisztrációs csoportok használata esetén. Egy további biztonsági réteg biztosításával, hogy a tanúsítvány titkos kulcs birtokában van a tanúsítvány a feltöltő ellenőrzése a tanúsítvány tulajdonosa biztosítja. Ellenőrzési megakadályozza, hogy egy rosszindulatú aktor elemző kibontása egy közbenső tanúsítvány és a egy regisztrációs csoportot hozhat létre saját kiépítési szolgáltatás az adott tanúsítvány használatával a forgalom hatékony térít az eszközök. Által tulajdonjogát a legfelső szintű vagy egy tanúsítványlánc egy közbenső tanúsítvány igazolja, akkor még igazolására, hogy az eszközök, amelyeket a regisztrációs csoport részeként lesz kell regisztrálni a levél tanúsítványainak létrehozásához szükséges engedéllyel. Ebből az okból, a legfelső szintű vagy köztes tanúsítványt egy regisztrációs csoportnak konfigurálva kell lennie, ellenőrzött tanúsítványt, vagy kell egy ellenőrzött tanúsítványt a tanúsítványlánc a eszközt összesítésben mutatja be, amikor a szolgáltatást. Regisztrációs csoportok kapcsolatos további információkért lásd: [X.509 tanúsítványok](concepts-security.md#x509-certificates) és [szabályozása X.509-tanúsítványokat az eszközkiépítési szolgáltatás elérése](concepts-security.md#controlling-device-access-to-the-provisioning-service-with-x509-certificates).
+A hitelesített tanúsítványok fontos szerepet játszanak a beléptetési csoportok használatakor. A tanúsítvány tulajdonjogának ellenőrzése további biztonsági réteget biztosít annak biztosításához, hogy a tanúsítvány feltöltője a tanúsítvány titkos kulcsának birtokában legyen. Az ellenőrzés megakadályozza, hogy egy rosszindulatú szereplő megszippantsa a forgalmat egy köztes tanúsítvány kinyerésével, és ezzel a tanúsítvánnyal hozzon létre egy regisztrációs csoportot a saját kiépítési szolgáltatásában, és hatékonyan eltérítse az eszközöket. Ha egy tanúsítványlánc tulajdonosát vagy köztes tanúsítványát igazolja, a rendszer igazolja, hogy rendelkezik a regisztrációs csoport részeként regisztrálni kívánt eszközökhöz tartozó levél-tanúsítványok létrehozásához szükséges engedéllyel. Emiatt a beléptetési csoportban konfigurált legfelső szintű vagy köztes tanúsítványnak hitelesített tanúsítványnak kell lennie, vagy az eszköz által a szolgáltatással végzett hitelesítés során megjelenő ellenőrzött tanúsítványnak kell lennie. A regisztrációs csoportokkal kapcsolatos további információkért lásd: [x. 509 tanúsítványok](concepts-security.md#x509-certificates) és [az eszközök hozzáférésének szabályozása a kiépítési szolgáltatáshoz x. 509 tanúsítvánnyal](concepts-security.md#controlling-device-access-to-the-provisioning-service-with-x509-certificates).
 
-## <a name="register-the-public-part-of-an-x509-certificate-and-get-a-verification-code"></a>Egy X.509 tanúsítvány nyilvános részét regisztrálása és az ellenőrző kód kérése
+## <a name="register-the-public-part-of-an-x509-certificate-and-get-a-verification-code"></a>Egy X. 509 tanúsítvány nyilvános részének regisztrálása és egy ellenőrző kód beszerzése
 
-Hitelesítésszolgáltatói tanúsítvány regisztrálása a kiépítési szolgáltatáshoz, és egy ellenőrző kódot, amely során a koncepció-az-birtokában beolvasása, kövesse az alábbi lépéseket. 
+Ha HITELESÍTÉSSZOLGÁLTATÓI tanúsítványt szeretne regisztrálni a kiépítési szolgáltatással, és beolvas egy ellenőrző kódot, amelyet a rendszer a birtokában használhat, kövesse az alábbi lépéseket. 
 
-1. Az Azure Portalon lépjen a kiépítési szolgáltatáshoz, és nyissa meg **tanúsítványok** elemet a bal oldali menüben. 
-2. Kattintson a **Hozzáadás** egy új tanúsítványt.
-3. Adja meg a tanúsítvány rövid megjelenített neve. Keresse meg a .cer vagy .pem fájlt, amely az X.509-tanúsítvány nyilvános részét jelöli. Kattintson a **Feltöltés** gombra.
-4. Miután a tanúsítvány feltöltése sikerült értesítést kap, kattintson a **mentése**.
+1. A Azure Portal navigáljon a kiépítési szolgáltatáshoz, és nyissa meg a **tanúsítványok** párbeszédpanelt a bal oldali menüben. 
+2. Új tanúsítvány hozzáadásához kattintson a **Hozzáadás** gombra.
+3. Adja meg a tanúsítvány felhasználóbarát megjelenítendő nevét. Tallózással keresse meg az X. 509 tanúsítvány nyilvános részét jelképező. cer vagy. PEM fájlt. Kattintson a **Feltöltés** gombra.
+4. Ha értesítést kap arról, hogy a tanúsítvány feltöltése sikeresen megtörtént, kattintson a **Save (Mentés**) gombra.
 
     ![Tanúsítvány feltöltése](./media/how-to-verify-certificates/add-new-cert.png)  
 
-   A tanúsítvány fogja megjeleníteni a **Tanúsítványkezelő** listája. Vegye figyelembe, hogy a **állapot** , de ez a tanúsítvány *ellenőrzött*.
+   A tanúsítvány a **Certificate Explorer** listájában fog megjelenni. Vegye figyelembe, hogy a tanúsítvány **állapota** nem *ellenőrzött*.
 
-5. Kattintson az előző lépésben hozzáadott a tanúsítványt.
+5. Kattintson az előző lépésben hozzáadott tanúsítványra.
 
-6. A **Tanúsítványadatok**, kattintson a **ellenőrző kód előállítása**.
+6. A **tanúsítvány részletei**területen kattintson az **ellenőrző kód előállítása**elemre.
 
-7. A kiépítési szolgáltatás létrehoz egy **ellenőrzőkódot** használható ellenőrzése a tanúsítvány tulajdonosa. Másolja a vágólapra a kódot. 
+7. A kiépítési szolgáltatás létrehoz egy **ellenőrző kódot** , amelyet a tanúsítvány tulajdonjogának ellenőrzésére használhat. Másolja a kódot a vágólapra. 
 
    ![Tanúsítvány ellenőrzése](./media/how-to-verify-certificates/verify-cert.png)  
 
-## <a name="digitally-sign-the-verification-code-to-create-a-verification-certificate"></a>Ellenőrző kód létrehozása egy ellenőrző tanúsítvány digitális aláírása
+## <a name="digitally-sign-the-verification-code-to-create-a-verification-certificate"></a>Az ellenőrző kód digitális aláírása ellenőrző tanúsítvány létrehozásához
 
-Most meg kell bejelentkeznie a *ellenőrzőkódot* az x.509-es Hitelesítésszolgáltatói tanúsítványhoz tartozó titkos kulccsal, amely létrehoz egy aláírás. Ez az úgynevezett [birtokában megvalósíthatósági](https://tools.ietf.org/html/rfc5280#section-3.1) és a egy aláírt ellenőrző tanúsítvány eredményez.
+Most alá kell írnia az *ellenőrző kódot* az X. 509 hitelesítésszolgáltatói tanúsítványhoz társított titkos kulccsal, amely aláírást generál. Ez a [birtoklás igazolása](https://tools.ietf.org/html/rfc5280#section-3.1) , és az eredmény egy aláírt ellenőrző tanúsítvány.
 
-Microsoft eszközöket biztosít, és a mintákat, amelyek segítségével hozzon létre egy aláírt ellenőrző tanúsítvány: 
+A Microsoft olyan eszközöket és mintákat biztosít, amelyek segítségével aláírt ellenőrző tanúsítványt hozhat létre: 
 
-- A **Azure IoT Hub C SDK** PowerShell (Windows) és (Linux) Bash-szkriptek segítségével hozhat létre a hitelesítésszolgáltató és a levél tanúsítványok fejlesztési és végrehajtásához igazolás-az-birtokában használatával egy ellenőrző kódot. Letöltheti a [fájlok](https://github.com/Azure/azure-iot-sdk-c/tree/master/tools/CACertificates) a rendszerben mappába működő, és kövesse a a [kezelése Hitelesítésszolgáltatói tanúsítványok információs](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md) végrehajtásához igazolás a birtokában, Hitelesítésszolgáltatói tanúsítvány. 
-- A **Azure IoT Hub C# SDK** tartalmazza a [minta](https://github.com/Azure-Samples/azure-iot-samples-csharp/tree/master/provisioning/Samples/service/GroupCertificateVerificationSample), amelyet ehhez a koncepció-az-birtokában használhat.
+- Az **Azure IoT hub C SDK** PowerShell-(Windows-) és bash-(Linux-) szkripteket biztosít, amelyek segítségével hitelesítésszolgáltatói és levél-tanúsítványokat hozhat létre a fejlesztéshez, valamint igazolhatja a birtokukban lévő ellenőrző kódot. A rendszerhez tartozó [fájlokat](https://github.com/Azure/azure-iot-sdk-c/tree/master/tools/CACertificates) letöltheti egy munkamappába, és a [hitelesítésszolgáltató tanúsítványait kezelő információ kezelése](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md) című témakör útmutatását követve elvégezheti a hitelesítésszolgáltatói tanúsítványon való megfelelőség igazolását. 
+- Az **Azure IoT hub C# SDK** tartalmazza a [csoport tanúsítvány-ellenőrzési mintáját](https://github.com/Azure-Samples/azure-iot-samples-csharp/tree/master/provisioning/Samples/service/GroupCertificateVerificationSample), amelynek használatával bizonyítást végezhet.
  
 > [!IMPORTANT]
-> A koncepció-az-birtokában mellett, a PowerShell és a Bash parancsfájlok csatornamegerősítése korábban is lehetővé teszik eszközök kiépítése és hitelesítéséhez használható tanúsítványok levél, legfelső szintű tanúsítványok és köztes tanúsítványok létrehozásához. Ezeket a tanúsítványokat csak fejlesztési használandó. Azok soha nem használható éles környezetben. 
+> A korábban hivatkozott PowerShell-és bash-parancsfájlok Emellett lehetővé teszik a tanúsítványok hitelesítésére és az eszközök kiosztására szolgáló főtanúsítványok, köztes tanúsítványok és levél-tanúsítványok létrehozására is. Ezeket a tanúsítványokat csak fejlesztési célokra lehet használni. Nem használhatók éles környezetben. 
 
-A PowerShell és a Bash parancsfájlok, dokumentáció és SDK-k a megadott támaszkodjon [OpenSSL](https://www.openssl.org/). OpenSSL vagy más külső eszközök használatával is segítséget nyújthat a koncepció-az-birtokában. Az SDK-k a megadott eszközök kapcsolatos további információkért lásd: [az SDK-k a megadott eszközei használatával miként](how-to-use-sdk-tools.md). 
+A dokumentációban és az SDK-ban megadott PowerShell-és bash-parancsfájlok [OpenSSL](https://www.openssl.org/)-t használnak. Az OpenSSL vagy más, harmadik féltől származó eszközöket is használhat, hogy segítséget nyújtson a birtokukban tartásához. Az SDK-k használatával kapcsolatos további információkért lásd: [az SDK-k által biztosított eszközök használata](how-to-use-sdk-tools.md). 
 
 
-## <a name="upload-the-signed-verification-certificate"></a>Töltse fel az aláírt ellenőrző tanúsítvány
+## <a name="upload-the-signed-verification-certificate"></a>Az aláírt ellenőrző tanúsítvány feltöltése
 
-1. Töltse fel az eredményül kapott aláírást a portálon az eszközkiépítési szolgáltatás hitelesítési tanúsítványként. A **Tanúsítványadatok** az Azure Portal használata az _fájlkezelő_ melletti ikon a **ellenőrző tanúsítvány .pem or .cer fájlja** mezőt, töltse fel az aláírt ellenőrző tanúsítvány a rendszerről.
+1. Töltse fel az eredményül kapott aláírást ellenőrző tanúsítványként a kiépítési szolgáltatásba a portálon. A **tanúsítvány részletei** a Azure Portalban az **ellenőrző tanúsítvány. PEM vagy. cer fájl** mező melletti _fájlkezelő_ ikon használatával töltse fel az aláírt ellenőrző tanúsítványt a rendszerből.
 
-2. Miután sikeresen feltöltötte a tanúsítványt, kattintson a **ellenőrizze**. A **állapot** a tanúsítvány módosításainak **_ellenőrzött_** a a **Tanúsítványkezelő** listája. Kattintson a **frissítése** Ha nem frissíti automatikusan.
+2. Miután a tanúsítvány feltöltése sikeresen megtörtént, kattintson az **ellenőrzés**gombra. A tanúsítvány állapota a **tanúsítvány-kezelő** listájában **_ellenőrzött_** **állapotra** változik. Kattintson a **frissítés** gombra, ha az nem frissül automatikusan.
 
-   ![Töltse fel a tanúsítvány-ellenőrzés](./media/how-to-verify-certificates/upload-cert-verification.png)  
+   ![Tanúsítvány-ellenőrzés feltöltése](./media/how-to-verify-certificates/upload-cert-verification.png)  
 
 ## <a name="next-steps"></a>További lépések
 
-- Egy regisztrációs csoport létrehozása a portál használatával kapcsolatos tudnivalókért lásd: [az Azure portal-eszközök beléptetésének kezelése](how-to-manage-enrollments.md).
-- Hozzon létre egy regisztrációs csoport a szolgáltatási SDK-k használatával kapcsolatos további információkért lásd: [szolgáltatási SDK-k eszközök beléptetésének kezelése](how-to-manage-enrollments-sdks.md).
+- Ha szeretne többet megtudni arról, hogyan használható a portál egy regisztrációs csoport létrehozásához, tekintse meg [az eszközök regisztrálásának kezelése a Azure Portal](how-to-manage-enrollments.md)használatával című témakört.
+- Ha szeretné megtudni, hogyan használhatja a szolgáltatás SDK-kat egy regisztrációs csoport létrehozásához, tekintse meg az [eszközök regisztrálásának kezelése a Service SDK-val](how-to-manage-enrollments-sdks.md)című témakört.
 
 
 

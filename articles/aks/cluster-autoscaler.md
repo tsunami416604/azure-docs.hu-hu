@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 07/18/2019
 ms.author: mlearned
-ms.openlocfilehash: f27b910910ca21aa36582506e6c7b2d1d39da88a
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 8ce5d2965d0127eec01620c702d7d83bd0b39416
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73472867"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73885794"
 ---
 # <a name="automatically-scale-a-cluster-to-meet-application-demands-on-azure-kubernetes-service-aks"></a>Fürt automatikus méretezése az alkalmazások igényeinek kielégítéséhez az Azure Kubernetes szolgáltatásban (ak)
 
@@ -20,7 +20,7 @@ Az alkalmazások az Azure Kubernetes szolgáltatásban (ak) való megtartásáho
 
 Ez a cikk bemutatja, hogyan engedélyezheti és kezelheti a fürt automéretezőjét egy AK-fürtben. 
 
-## <a name="before-you-begin"></a>Előzetes teendők
+## <a name="before-you-begin"></a>Előkészületek
 
 Ehhez a cikkhez az Azure CLI 2.0.76 vagy újabb verzióját kell futtatnia. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése][azure-cli-install].
 
@@ -122,6 +122,35 @@ A fürt automéretezőjét az az [AK Scale][az-aks-scale] paranccsal manuálisan
 ## <a name="re-enable-a-disabled-cluster-autoscaler"></a>Letiltott fürt autoskálázásának újbóli engedélyezése
 
 Ha újra engedélyezni szeretné a fürt automéretezőjét egy meglévő fürtön, újra engedélyezheti azt az az [AK Update][az-aks-update] paranccsal, amely megadja az *--enable-cluster-automéretező*, *--min-Count*és *--Max-Count* paramétereket.
+
+## <a name="retrieve-cluster-autoscaler-logs-and-status"></a>Fürthöz tartozó autoskálázási naplók és állapot beolvasása
+
+Az autoskálázási események diagnosztizálásához és hibakereséséhez a naplók és az állapot lekérhető az automatikusan méretezhető bővítményből.
+
+Az AK kezeli a fürt automéretezőjét az Ön nevében, és futtatja a felügyelt vezérlési síkon. A főcsomópont-naplókat úgy kell konfigurálni, hogy ennek eredményeként legyenek megtekintve.
+
+Ha úgy konfigurálja a naplókat, hogy a fürt automatikusan méretezhető legyen, Log Analytics kövesse az alábbi lépéseket.
+
+1. Szabály beállítása diagnosztikai naplókhoz a fürt leküldéséhez – az autoskálázási naplók Log Analytics. [Itt részletes útmutatást](https://docs.microsoft.com/azure/aks/view-master-logs#enable-diagnostics-logs)talál, ha a "naplók" lehetőség kiválasztásakor bejelöli a `cluster-autoscaler` jelölőnégyzetét.
+1. Kattintson a "naplók" szakaszra a fürtön a Azure Portalon keresztül.
+1. Adja meg a következő példában szereplő lekérdezést Log Analyticsba:
+
+```
+AzureDiagnostics
+| where Category == "cluster-autoscaler"
+```
+
+A következőhöz hasonló naplóknak kell megjelennie, ha naplók olvashatók be.
+
+![Naplók Log Analytics](media/autoscaler/autoscaler-logs.png)
+
+A fürt autoskálázása egy `cluster-autoscaler-status`nevű configmap is kiírja az állapotot. A naplók beolvasásához hajtsa végre a következő `kubectl` parancsot. A rendszer minden, a fürt autoskálázásával konfigurált csomópont-készletre vonatkozó állapotot fog jelenteni.
+
+```
+kubectl get configmap -n kube-system cluster-autoscaler-status -o yaml
+```
+
+Ha többet szeretne megtudni arról, hogy mi történik az autoskálázással, olvassa el a gyakori kérdések a [Kubernetes/autoscaleer GitHub-projektben](https://github.com/kubernetes/autoscaler/blob/master/cluster-autoscaler/FAQ.md#ca-doesnt-work-but-it-used-to-work-yesterday-why)című témakört.
 
 ## <a name="use-the-cluster-autoscaler-with-multiple-node-pools-enabled"></a>A fürt autoskálázásának használata több Node-készlettel engedélyezve
 

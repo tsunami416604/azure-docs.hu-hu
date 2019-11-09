@@ -9,12 +9,12 @@ ms.date: 11/04/2019
 ms.topic: conceptual
 description: Ismerje meg, hogyan csatlakoztatható a fejlesztői gép egy AK-fürthöz az Azure dev Spaces használatával
 keywords: Azure dev Spaces, dev Spaces, Docker, Kubernetes, Azure, AK, Azure Kubernetes szolgáltatás, tárolók
-ms.openlocfilehash: 0adaa4266978cf9c9ef42359c0cf4f81c5c5f056
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 15e46fba19d92e08a9c87a63f6f01ec6b0836910
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73571718"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73888908"
 ---
 # <a name="connect-your-development-machine-to-an-aks-cluster-preview"></a>A fejlesztői gép összekötése egy AK-fürttel (előzetes verzió)
 
@@ -31,7 +31,7 @@ Ebből az útmutatóból a következőket tudhatja meg:
 > [!IMPORTANT]
 > Ez a szolgáltatás jelenleg előzetes kiadásban elérhető. Az előzetes verziók azzal a feltétellel érhetők el, hogy Ön beleegyezik a [kiegészítő használati feltételekbe](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). A szolgáltatás néhány eleme megváltozhat a nyilvános rendelkezésre állás előtt.
 
-## <a name="before-you-begin"></a>Előzetes teendők
+## <a name="before-you-begin"></a>Előkészületek
 
 Ez az útmutató az [Azure dev Spaces Bike Sharing Sample Application](https://github.com/Azure/dev-spaces/tree/master/samples/BikeSharingApp) használatával mutatja be, hogyan csatlakoztathatja a fejlesztői GÉPET egy AK-fürthöz. A minta alkalmazás futtatásához kövesse az [Azure dev Spaces Bike Sharing minta alkalmazáshoz tartozó tudnivalókat](https://github.com/Azure/dev-spaces/blob/master/samples/BikeSharingApp/README.md) ismertető témakör utasításait. Ha egy AK-fürtön saját alkalmazása van, akkor továbbra is követheti az alábbi lépéseket, és használhatja a saját szolgáltatásainak és hüvelyének nevét.
 
@@ -96,7 +96,7 @@ A kapcsolódási mód kiválasztása után a rendszer felszólítja, hogy adja m
 Az alkalmazás TCP-portjának kiválasztása után az Azure dev Spaces létrehoz egy kapcsolatot az AK-fürthöz. Az Azure dev Spaces egy ügynököt fecskendez be az AK-fürtbe az AK-fürt és a fejlesztői gép közötti forgalom átirányításához. A kapcsolatok létrehozása eltarthat néhány percig. Az Azure dev Spaces emellett rendszergazdai hozzáférést is kér, hogy módosítsa a *gazdagépek* fájlját a fejlesztői gépen.
 
 > [!IMPORTANT]
-> Ha az Azure dev-helyek kapcsolatot létesít az AK-fürttel, előfordulhat, hogy az AK-fürt többi szolgáltatása nem működik megfelelően, amíg el nem indítja a szolgáltatást a fejlesztői gépen. Továbbá, ha a szolgáltatás olyan függőséggel rendelkezik, amely nem érhető el a fejlesztői gépen, előfordulhat, hogy módosítania kell az alkalmazást, vagy [további konfigurációt](#additional-configuration) kell megadnia.
+> Ha az Azure dev-helyek kapcsolatot létesít az AK-fürttel, előfordulhat, hogy az AK-fürt többi szolgáltatása nem működik megfelelően, amíg el nem indítja a szolgáltatást a fejlesztői gépen, ha a kapcsolat *cseréje* módot választja. Kiválaszthatja a *klónozott* kapcsolódási módot ahelyett, hogy az átirányításhoz hozzon létre egy gyermek fejlesztési helyet, és elkerülje a szülő terület megszakadását. Továbbá, ha a szolgáltatás olyan függőséggel rendelkezik, amely nem érhető el a fejlesztői gépen, előfordulhat, hogy módosítania kell az alkalmazást, vagy [további konfigurációt](#additional-configuration) kell megadnia.
 
 Az Azure dev Spaces megnyit egy, a *AZDS csatlakoztatása-Bikes* nevű terminál ablakot, miután kapcsolatot LÉTESÍT az AK-fürttel. Ez a terminálablak az AK-fürtből konfigurált összes környezeti változót és DNS-bejegyzést tartalmazza. Az ebben a terminál ablakban vagy a Visual Studio Code Debugger használatával futtatott kód az AK-fürthöz csatlakozik.
 
@@ -108,7 +108,7 @@ Emellett az Azure dev Spaces egy, a *dev Spaces* -hez csatlakozó ablakot hoz l�
 
 Az Azure dev Spaces egy állapotsor-elemmel is rendelkezik, amely a kapcsolatok állapotát mutatja.
 
-![Állapot](../media/how-to-connect/connect-status.png)
+![status](../media/how-to-connect/connect-status.png)
 
 Győződjön meg arról, hogy az állapotsoron a *dev Spaces: Connected to dev/Bikes on local port 3000*.
 

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/01/2019
 ms.author: dobett
 ms.custom: include file
-ms.openlocfilehash: c386343ff8f5608931aca4a6f46ae09a92082a35
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 8ab49b27d383cd50463d08a8fa2081234a97108f
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72929571"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73889015"
 ---
 > [!NOTE]
-> Jelenleg a IoT Central előzetes verziójának *funkciói* dokumentációját tekinti át. Az eredeti dokumentáció megtekintéséhez keresse fel az [Azure IoT Central?](../articles/iot-central/core/overview-iot-central.md)című dokumentumot.
+> Jelenleg tekinti meg az [előzetes verziójú funkciókat használó alkalmazás-sablonok](../articles/iot-central/core/concepts-app-templates.md#preview-templates)IoT Central dokumentációját. Az [általánosan elérhető szolgáltatásokat használó alkalmazás-sablonok](../articles/iot-central/core/concepts-app-templates.md#preview-templates) dokumentációjának megtekintéséhez nyissa meg az [Azure IoT Central (előzetes verziójú szolgáltatások)](../articles/iot-central/preview/overview-iot-central.md)című dokumentumot.

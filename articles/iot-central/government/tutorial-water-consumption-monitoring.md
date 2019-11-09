@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: abjork
-ms.openlocfilehash: 59dae65d32f1b816e59ee883cb4529c6f1fd212c
-ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
+ms.openlocfilehash: d79c4585d9764e2cc5cebd679372a97946479396
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73026566"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73889155"
 ---
 # <a name="tutorial-create-a-water-consumption-monitoring-application-in-iot-central"></a>Oktatóanyag: vízfelhasználást figyelő alkalmazás létrehozása IoT Central
 
@@ -60,7 +60,7 @@ Ebben a szakaszban az Azure IoT Central Water-használat **figyelési sablonját
     * **URL**: a IoT Central automatikusan létrehoz egy URL-címet az alkalmazás neve alapján. Megadhatja, hogy az URL-címet saját ízlése szerint frissítse. Az URL-címet később is megváltoztathatja. 
     * Ha Azure-előfizetéssel rendelkezik, adja meg a *címtárat, az Azure-előfizetést és a régiót*. Ha nem rendelkezik előfizetéssel, engedélyezheti a **7 napos ingyenes próbaidőszakot** , és elvégezheti a szükséges kapcsolattartási adatokat.  
 
-    A könyvtárakkal és előfizetésekkel kapcsolatban további információért lásd az [alkalmazás létrehozását bemutató rövid útmutatót](../core/quick-deploy-iot-central-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json).
+    A könyvtárakkal és előfizetésekkel kapcsolatban további információért lásd az [alkalmazás létrehozását bemutató rövid útmutatót](../preview/quick-deploy-iot-central.md).
 
 5. Kattintson a lap alján található **Létrehozás** gombra. 
 
@@ -247,6 +247,6 @@ Ha nem folytatja az alkalmazás használatát, törölje az alkalmazást az alá
 2. Válassza az Alkalmazásbeállítások lehetőséget, majd kattintson a lap alján található Törlés gombra. 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * További információ a [vízfelhasználás figyelésével kapcsolatos fogalmakról](./concepts-waterconsumptionmonitoring-architecture.md)

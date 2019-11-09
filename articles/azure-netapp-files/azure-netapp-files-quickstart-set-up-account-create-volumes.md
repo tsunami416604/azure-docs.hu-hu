@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: quickstart
 ms.date: 10/12/2019
 ms.author: b-juche
-ms.openlocfilehash: 7ecc76a8b1f57d4e397746c28dc4cd56b90c3599
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 06ebe8ed22453289fa02c238d9b2e6ef13191f2a
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73834718"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73888554"
 ---
 # <a name="quickstart-set-up-azure-netapp-files-and-create-an-nfs-volume"></a>Gyors útmutató: Azure NetApp Files beállítása és NFS-kötet létrehozása 
 
@@ -110,7 +110,7 @@ Ennek a cikknek a használatához a Azure PowerShell modul az a Version 2.6.0 va
     ``` 
 
     > [!NOTE]
-    > A támogatott régiók listájának megtekintéséhez tekintse meg a [régiók számára elérhető termékeket](https://azure.microsoft.com/en-us/global-infrastructure/services/?products=netapp&regions=all) .
+    > A támogatott régiók listájának megtekintéséhez tekintse meg a [régiók számára elérhető termékeket](https://azure.microsoft.com/global-infrastructure/services/?products=netapp&regions=all) .
     > A parancssori eszközök által támogatott régió nevének beszerzéséhez használja a `Get-AzLocation | select Location`
     >
 
@@ -137,7 +137,7 @@ Ennek a cikknek a használatához a Azure PowerShell modul az a Version 2.6.0 va
     ``` 
 
     > [!NOTE]
-    > A támogatott régiók listájának megtekintéséhez tekintse meg a [régiók számára elérhető termékeket](https://azure.microsoft.com/en-us/global-infrastructure/services/?products=netapp&regions=all) .
+    > A támogatott régiók listájának megtekintéséhez tekintse meg a [régiók számára elérhető termékeket](https://azure.microsoft.com/global-infrastructure/services/?products=netapp&regions=all) .
     > A parancssori eszközök által támogatott régió nevének beszerzéséhez használja a `az account list-locations -query "[].{Region:name}" --out table`
     >
 

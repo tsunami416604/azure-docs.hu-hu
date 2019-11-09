@@ -1,13 +1,10 @@
 ---
-title: Az Azure CLI-Példaszkript – társviszony létesítése két virtuális hálózat |} A Microsoft Docs
-description: Az Azure CLI-Példaszkript – társviszony létesítése két virtuális hálózat
+title: Azure CLI parancsfájl minta – társ-két virtuális hálózat | Microsoft Docs
+description: Azure CLI parancsfájl minta – társ két virtuális hálózat
 services: virtual-network
 documentationcenter: virtual-network
 author: KumudD
-manager: timlt
-editor: tysonn
-tags: ''
-ms.assetid: ''
+manager: mtillman
 ms.service: virtual-network
 ms.devlang: azurecli
 ms.topic: article
@@ -15,16 +12,16 @@ ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 07/07/2017
 ms.author: kumud
-ms.openlocfilehash: 072d62f925d4f4024aa17d648a56dc6f37de00f1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0e5aaf07b49546aca9f44dcb9a43a79127c82341
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60848435"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73890240"
 ---
-# <a name="peer-two-virtual-networks"></a>Társviszony létesítése két virtuális hálózat
+# <a name="peer-two-virtual-networks"></a>Társ két virtuális hálózat
 
-Ez a szkript hoz létre, és két virtuális hálózat ugyanabban a régióban az Azure hálózatán keresztül csatlakozik. A szkript futtatása után társviszonyt fog létesíteni a két virtuális hálózat között.
+Ez a szkript két virtuális hálózatot hoz létre és csatlakoztat ugyanabban a régióban az Azure-hálózaton keresztül. A szkript futtatása után társviszonyt fog létesíteni a két virtuális hálózat között.
 
 [!INCLUDE [sample-cli-install](../../../includes/sample-cli-install.md)]
 

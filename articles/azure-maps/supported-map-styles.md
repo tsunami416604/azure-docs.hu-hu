@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 457154a797a4b6d9853b1effe0d8121053653a99
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: cd16ee87b213c2bfa4c541c4d3c453a4499855d0
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72174771"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73887734"
 ---
 # <a name="azure-maps-supported-map-styles"></a>Azure Maps támogatott Térkép stílusa
 A Azure Maps az alább leírtak szerint számos különböző beépített térképi stílust támogat.
@@ -31,10 +31,10 @@ A **közúti** Térkép egy szabványos Térkép, amely az utakat, természetes 
 
 ## <a name="blank-and-blank_accessible"></a>üres és blank_accessible
 
-Az **üres** és a **blank_accessible** Térkép stílusa üres vásznon jeleníti meg az adatmegjelenítést. A **blank_accessible** stílusa továbbra is biztosítja a képernyőolvasó frissítéseinek helyét, ahol a Térkép helye található, annak ellenére, hogy az alap térkép nem jelenik meg.
+Az **üres** és a **blank_accessible** Térkép stílusa üres vásznat biztosít az adatmegjelenítéshez. A **blank_accessible** stílusa továbbra is biztosítja a képernyőolvasó frissítéseinek helyét, ahol a Térkép helye található, még akkor is, ha az alap térkép nem jelenik meg.
 
 > [!Note]
-> A web SDK-ban megváltoztathatja a Térkép háttérszínét úgy, hogy beállítja a Térkép DIV-elemének CSS `background-color` stílusát.
+> A web SDK-ban megváltoztathatja a Térkép háttérszínét úgy, hogy beállítja a Térkép DIV elemének CSS-`background-color` stílusát.
 
 **Alkalmazható API-k:**
 * Web SDK Térkép vezérlőelem
@@ -98,9 +98,9 @@ a **közúti árnyékolt Relief** egy Azure Maps fő stílus, amelyet a föld k�
 * Android Térkép vezérlőelem
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ismerje meg, hogyan állíthat be leképezési stílust a Azure Mapsban:
 
 > [!div class="nextstepaction"]
-> [Válasszon egy leképezési stílust](https://docs.microsoft.com/en-us/azure/azure-maps/choose-map-style)
+> [Válasszon egy leképezési stílust](https://docs.microsoft.com/azure/azure-maps/choose-map-style)

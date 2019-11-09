@@ -1,6 +1,6 @@
 ---
 title: Üzenetek küldése egy MQTT-kiszolgálónak az Azure MQTT ügyféloldali kódtár használatával | Microsoft Docs
-description: Az fejlesztői készlet használata ügyfélként üzenetek küldésére egy MQTT-kiszolgálóra
+description: Ismerje meg, hogyan küldhet üzeneteket egy MQTT-közvetítőnek a MQTT ügyféloldali kódtár használatával. Azt is megtudhatja, hogyan konfigurálhatja a mXChip IoT-fejlesztői készlet MQTT-ügyfélként.
 author: liydu
 manager: jeffya
 ms.service: iot-hub
@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 04/02/2018
 ms.author: liydu
-ms.openlocfilehash: 6afe0a2fe366b83af45682245776c803c99483d3
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 4de8b0910a2be48cc626775c5c9bc873c6e780dc
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73484032"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73889550"
 ---
 # <a name="send-messages-to-an-mqtt-server"></a>Üzenetek küldése egy MQTT-kiszolgálónak
 
@@ -80,7 +80,7 @@ Ha problémákba ütközik, tekintse meg a [IoT fejlesztői készlet kapcsolatos
 * [Gitter.im](https://gitter.im/Microsoft/azure-iot-developer-kit)
 * [Stack Overflow](https://stackoverflow.com/questions/tagged/iot-devkit)
 
-## <a name="see-also"></a>Lásd még
+## <a name="see-also"></a>Lásd még:
 
 * [A IoT fejlesztői készlet AZ3166 összekötése az Azure IoT Hub a felhőben](iot-hub-arduino-iot-devkit-az3166-get-started.md)
 * [Shake, Shake for a tweet](iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message.md)

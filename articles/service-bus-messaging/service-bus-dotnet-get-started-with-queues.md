@@ -12,29 +12,30 @@ ms.devlang: tbd
 ms.topic: conceptual
 ms.tgt_pltfrm: dotnet
 ms.workload: na
-ms.date: 04/10/2019
+ms.date: 11/04/2019
 ms.author: aschhab
-ms.openlocfilehash: abef7815effcf420c8a0065ed46ce3c16c19ebe0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: cecd37c16d34c0cd6cf7a4d98732762d16073864
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65991756"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73884108"
 ---
 # <a name="get-started-with-service-bus-queues"></a>Bevezetés a Service Bus által kezelt üzenetsorok használatába
 [!INCLUDE [service-bus-selector-queues](../../includes/service-bus-selector-queues.md)]
-Ebben az oktatóanyagban üzeneteket küldeni, illetve üzeneteket fogadhat a Service Bus-üzenetsorba, .NET Core-konzolalkalmazást hoz létre. 
+Ebben az oktatóanyagban .NET Core Console-alkalmazásokat hoz létre, amelyek üzeneteket küldenek és fogadnak egy Service Bus üzenetsor üzeneteit.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-1. [Visual Studio 2017 3-as frissítés (verziószám: 15.3, 26730.01)](https://www.visualstudio.com/vs) vagy újabb.
-2. [NET Core SDK](https://www.microsoft.com/net/download/windows), 2.0-s vagy újabb verzió.
-2. Azure-előfizetés. Az oktatóanyag elvégzéséhez egy Azure-fiókra lesz szüksége. Aktiválhatja a [MSDN-előfizetői előnyeit](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/?WT.mc_id=A85619ABF) vagy regisztrálhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF).
-3. Ha nem rendelkezik egy üzenetsorba való együttműködéshez, kövesse lépéseket a [egy Service Bus-üzenetsor létrehozása az Azure portal](service-bus-quickstart-portal.md) várólista létrehozásához a cikkben.
-    1. Olvassa el a gyors **áttekintése** Service Bus **üzenetsorok**. 
-    2. Hozzon létre egy Service Bus **névtér**. 
-    3. Első a **kapcsolati karakterlánc**. 
-    4. Hozzon létre egy Service Bus **várólista**. 
+- [Visual Studio 2019](https://www.visualstudio.com/vs).
+- [NET Core SDK](https://www.microsoft.com/net/download/windows), 2.0-s vagy újabb verzió.
+- Azure-előfizetés. Az oktatóanyag elvégzéséhez egy Azure-fiókra lesz szüksége. Aktiválhatja MSDN- [előfizetői előnyeit](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/?WT.mc_id=A85619ABF) , vagy regisztrálhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF).
+- Ha nem rendelkezik várólistával, hogy működjön a szolgáltatással, a várólista létrehozásához kövesse az [Azure Portal használata Service Bus üzenetsor létrehozásához](service-bus-quickstart-portal.md) című cikket.
+
+  - Olvassa el Service Bus várólisták gyors áttekintését.
+  - Hozzon létre egy Service Bus névteret.
+  - A kapcsolatok karakterláncának beolvasása.
+  - Hozzon létre egy Service Bus üzenetsor.
 
 ## <a name="send-messages-to-the-queue"></a>Üzenetek küldése az üzenetsorba
 
@@ -42,19 +43,20 @@ A Visual Studio használatával írjon C# konzolalkalmazást az üzenetek üzene
 
 ### <a name="create-a-console-application"></a>Konzolalkalmazás létrehozása
 
-Indítsa el a Visual Studiót, majd hozzon létre egy új **Konzolalkalmazás (.NET Core)** projektet.
+Indítsa el a Visual studiót, és hozzon létre egy új **Console app (.net Core)** projektet a következőhöz: C#. Ez a példa az alkalmazás *CoreSenderApp*nevet.
 
 ### <a name="add-the-service-bus-nuget-package"></a>A Service Bus NuGet-csomag hozzáadása
 
 1. Kattintson a jobb gombbal az újonnan létrehozott projektre, és válassza a **Manage Nuget Packages** (NuGet-csomagok kezelése) lehetőséget.
-2. Kattintson a **Browse** (Tallózás) fülre, keressen rá a **[Microsoft.Azure.ServiceBus](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus/)** kifejezésre, majd válassza ki a **Microsoft.Azure.ServiceBus** elemet. Kattintson a **Telepítés** gombra a telepítés befejezéséhez, majd zárja be a párbeszédpanelt.
-   
+1. Válassza a **Tallózás** lehetőséget. Keresse meg és válassza ki a **[Microsoft. Azure. ServiceBus](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus/)** elemet.
+1. A telepítés befejezéséhez válassza a **telepítés** lehetőséget, majd a NuGet csomagkezelő elemet.
+
     ![NuGet-csomag kiválasztása][nuget-pkg]
 
 ### <a name="write-code-to-send-messages-to-the-queue"></a>Kód írása az üzenetek üzenetsorba való küldéséhez
 
-1. A Program.cs fájlban adja hozzá a következő `using` utasításokat a névtér-definíció elejéhez, az osztálydeklaráció elé:
-   
+1. A *program.cs*-ben adja hozzá a következő `using` utasításokat a névtér definíciójának tetején, az osztály deklarációja előtt:
+
     ```csharp
     using System.Text;
     using System.Threading;
@@ -62,21 +64,23 @@ Indítsa el a Visual Studiót, majd hozzon létre egy új **Konzolalkalmazás (.
     using Microsoft.Azure.ServiceBus;
     ```
 
-2. A `Program` osztályban deklarálja az alábbi változókat. A `ServiceBusConnectionString` változó értékének állítsa be a névtér létrehozásakor kapott kapcsolati sztringet, a `QueueName` értékének pedig az üzenetsor létrehozásakor használt nevet:
-   
+1. A `Program` osztályban deklarálja a következő változókat:
+
     ```csharp
     const string ServiceBusConnectionString = "<your_connection_string>";
     const string QueueName = "<your_queue_name>";
     static IQueueClient queueClient;
-    ``` 
+    ```
 
-3. Cserélje le a `Main()` tartalmát a következő kódsorral:
+    `ServiceBusConnectionString` változóként adja meg a névtérhez tartozó kapcsolatok karakterláncát. Adja meg a várólista nevét.
+
+1. Cserélje le a `Main()` tartalmát a következő kódsorral:
 
     ```csharp
     MainAsync().GetAwaiter().GetResult();
     ```
 
-4. Közvetlenül a `Main()` után adja hozzá a következő aszinkron `MainAsync()` metódust az üzenetküldési metódus meghívásához:
+1. Közvetlenül a `Main()` után adja hozzá a következő aszinkron `MainAsync()` metódust az üzenetküldési metódus meghívásához:
 
     ```csharp
     static async Task MainAsync()
@@ -97,7 +101,7 @@ Indítsa el a Visual Studiót, majd hozzon létre egy új **Konzolalkalmazás (.
     }
     ```
 
-5. Közvetlenül a `MainAsync()` metódus után adja hozzá a következő `SendMessagesAsync()` metódust a `numberOfMessagesToSend` által megadott számú (aktuális értéke: 10) üzenet elküldéséhez:
+1. Közvetlenül a `MainAsync()` módszer után adja hozzá a következő `SendMessagesAsync()` metódust, amely a `numberOfMessagesToSend` által megadott számú üzenet küldését végzi (jelenleg 10 értékre van állítva):
 
     ```csharp
     static async Task SendMessagesAsync(int numberOfMessagesToSend)
@@ -123,86 +127,94 @@ Indítsa el a Visual Studiót, majd hozzon létre egy új **Konzolalkalmazás (.
         }
     }
     ```
-   
-6. A Program.cs fájlnak így kell kinéznie.
-   
-    ```csharp
-    namespace CoreSenderApp
+
+A *program.cs* -fájlnak így kell kinéznie.
+
+```csharp
+namespace CoreSenderApp
+{
+    using System;
+    using System.Text;
+    using System.Threading;
+    using System.Threading.Tasks;
+    using Microsoft.Azure.ServiceBus;
+
+    class Program
     {
-        using System;
-        using System.Text;
-        using System.Threading;
-        using System.Threading.Tasks;
-        using Microsoft.Azure.ServiceBus;
+        // Connection String for the namespace can be obtained from the Azure portal under the 
+        // 'Shared Access policies' section.
+        const string ServiceBusConnectionString = "<your_connection_string>";
+        const string QueueName = "<your_queue_name>";
+        static IQueueClient queueClient;
 
-        class Program
+        static void Main(string[] args)
         {
-            // Connection String for the namespace can be obtained from the Azure portal under the 
-            // 'Shared Access policies' section.
-            const string ServiceBusConnectionString = "<your_connection_string>";
-            const string QueueName = "<your_queue_name>";
-            static IQueueClient queueClient;
+            MainAsync().GetAwaiter().GetResult();
+        }
 
-            static void Main(string[] args)
+        static async Task MainAsync()
+        {
+            const int numberOfMessages = 10;
+            queueClient = new QueueClient(ServiceBusConnectionString, QueueName);
+
+            Console.WriteLine("======================================================");
+            Console.WriteLine("Press ENTER key to exit after sending all the messages.");
+            Console.WriteLine("======================================================");
+
+            // Send Messages
+            await SendMessagesAsync(numberOfMessages);
+
+            Console.ReadKey();
+
+            await queueClient.CloseAsync();
+        }
+
+        static async Task SendMessagesAsync(int numberOfMessagesToSend)
+        {
+            try
             {
-                MainAsync().GetAwaiter().GetResult();
-            }
-
-            static async Task MainAsync()
-            {
-                const int numberOfMessages = 10;
-                queueClient = new QueueClient(ServiceBusConnectionString, QueueName);
-
-                Console.WriteLine("======================================================");
-                Console.WriteLine("Press ENTER key to exit after sending all the messages.");
-                Console.WriteLine("======================================================");
-
-                // Send Messages
-                await SendMessagesAsync(numberOfMessages);
-                        
-                Console.ReadKey();
-
-                await queueClient.CloseAsync();
-            }
-
-            static async Task SendMessagesAsync(int numberOfMessagesToSend)
-            {
-                try
+                for (var i = 0; i < numberOfMessagesToSend; i++)
                 {
-                    for (var i = 0; i < numberOfMessagesToSend; i++)
-                    {
-                        // Create a new message to send to the queue
-                        string messageBody = $"Message {i}";
-                        var message = new Message(Encoding.UTF8.GetBytes(messageBody));
+                    // Create a new message to send to the queue
+                    string messageBody = $"Message {i}";
+                    var message = new Message(Encoding.UTF8.GetBytes(messageBody));
 
-                        // Write the body of the message to the console
-                        Console.WriteLine($"Sending message: {messageBody}");
+                    // Write the body of the message to the console
+                    Console.WriteLine($"Sending message: {messageBody}");
 
-                        // Send the message to the queue
-                        await queueClient.SendAsync(message);
-                    }
+                    // Send the message to the queue
+                    await queueClient.SendAsync(message);
                 }
-                catch (Exception exception)
-                {
-                    Console.WriteLine($"{DateTime.Now} :: Exception: {exception.Message}");
-                }
+            }
+            catch (Exception exception)
+            {
+                Console.WriteLine($"{DateTime.Now} :: Exception: {exception.Message}");
             }
         }
     }
-    ```
+}
+```
 
-7. Futtassa a programot, és ellenőrizze az Azure Portalon: kattintson az üzenetsor nevére a névtér **Áttekintés** ablakában. Megjelenik az üzenetsor **Alapok** képernyője. Vegye figyelembe, hogy az üzenetsor **Aktív üzenetek száma** értéke ekkor **10**. Valahányszor a küldő alkalmazást az üzenetek (a következő szakaszban leírt módon történő) fogadása nélkül futtatja, ez az érték 10-zel növekszik. Azt is vegye figyelembe, hogy az üzenetsor aktuális mérete minden alkalommal megnöveli az **Alapok** ablak **Jelenlegi** értékét, amikor az alkalmazás üzeneteket ad hozzá az üzenetsorhoz.
-   
-      ![Üzenet mérete][queue-message]
+Futtassa a programot, és keresse meg a Azure Portal.
+
+A várólista- **alapok**megjelenítéséhez válassza ki a várólista nevét a névtér **áttekintési** ablakában.
+
+![Fogadott üzenetek száma és mérete][queue-message]
+
+A várólista **aktív üzenetek száma** értékének értéke most **10**. Minden alkalommal, amikor a küldő alkalmazást az üzenetek lekérése nélkül futtatja, ez az érték 10-re nő.
+
+A várólista jelenlegi mérete minden alkalommal megnöveli az **alapok** **aktuális** értékét, amikor az alkalmazás üzeneteket hoz létre a várólistába.
+
+A következő szakasz az üzenetek lekérésének módját ismerteti.
 
 ## <a name="receive-messages-from-the-queue"></a>Üzenet fogadása az üzenetsorból
 
-Az elküldött üzenetek fogadásához hozzon létre egy másik .NET Core-konzolalkalmazást, és telepítse a **Microsoft.Azure.ServiceBus** NuGet-csomagjára, hasonlóan az előző küldő alkalmazáshoz.
+Az elküldött üzenetek fogadásához hozzon létre egy másik **Console app (.net Core)** alkalmazást. Telepítse a **Microsoft. Azure. ServiceBus** NuGet csomagot, ahogy azt a küldő alkalmazás esetében tette.
 
 ### <a name="write-code-to-receive-messages-from-the-queue"></a>Kód írása az üzenetek üzenetsorból történő fogadásához
 
-1. A Program.cs fájlban adja hozzá a következő `using` utasításokat a névtér-definíció elejéhez, az osztálydeklaráció elé:
-   
+1. A *program.cs*-ben adja hozzá a következő `using` utasításokat a névtér definíciójának tetején, az osztály deklarációja előtt:
+
     ```csharp
     using System.Text;
     using System.Threading;
@@ -210,21 +222,23 @@ Az elküldött üzenetek fogadásához hozzon létre egy másik .NET Core-konzol
     using Microsoft.Azure.ServiceBus;
     ```
 
-2. A `Program` osztályban deklarálja az alábbi változókat. A `ServiceBusConnectionString` változó értékének állítsa be a névtér létrehozásakor kapott kapcsolati sztringet, a `QueueName` értékének pedig az üzenetsor létrehozásakor használt nevet:
-   
+1. A `Program` osztályban deklarálja a következő változókat:
+
     ```csharp
     const string ServiceBusConnectionString = "<your_connection_string>";
     const string QueueName = "<your_queue_name>";
     static IQueueClient queueClient;
     ```
 
-3. Cserélje le a `Main()` tartalmát a következő kódsorral:
+    `ServiceBusConnectionString` változóként adja meg a névtérhez tartozó kapcsolatok karakterláncát. Adja meg a várólista nevét.
+
+1. Cserélje le a `Main()` tartalmát a következő kódsorral:
 
     ```csharp
     MainAsync().GetAwaiter().GetResult();
     ```
 
-4. Közvetlenül a `Main()` után adja hozzá a következő aszinkron `MainAsync()` metódust a `RegisterOnMessageHandlerAndReceiveMessages()` metódus meghívásához:
+1. Közvetlenül a `Main()` után adja hozzá a következő aszinkron `MainAsync()` metódust a `RegisterOnMessageHandlerAndReceiveMessages()` metódus meghívásához:
 
     ```csharp
     static async Task MainAsync()
@@ -244,7 +258,7 @@ Az elküldött üzenetek fogadásához hozzon létre egy másik .NET Core-konzol
     }
     ```
 
-5. Közvetlenül a `MainAsync()` metódus után adja hozzá a következő metódust az üzenetkezelő regisztrálásához és a küldő alkalmazás által elküldött üzenetek fogadásához:
+1. Közvetlenül a `MainAsync()` metódus után adja hozzá a következő metódust, amely regisztrálja az üzenetkezelőt, és fogadja a küldő alkalmazás által küldött üzeneteket:
 
     ```csharp
     static void RegisterOnMessageHandlerAndReceiveMessages()
@@ -266,8 +280,8 @@ Az elküldött üzenetek fogadásához hozzon létre egy másik .NET Core-konzol
     }
     ```
 
-6. Közvetlenül az előző metódus után adja hozzá a következő `ProcessMessagesAsync()` metódust a fogadott üzenetek feldolgozásához:
- 
+1. Közvetlenül az előző metódus után adja hozzá a következő `ProcessMessagesAsync()` metódust a fogadott üzenetek feldolgozásához:
+
     ```csharp
     static async Task ProcessMessagesAsync(Message message, CancellationToken token)
     {
@@ -284,8 +298,8 @@ Az elküldött üzenetek fogadásához hozzon létre egy másik .NET Core-konzol
     }
     ```
 
-7. Végül adja hozzá a következő metódust az esetlegesen előforduló kivételek kezeléséhez:
- 
+1. Végül adja hozzá a következő metódust az esetlegesen előforduló kivételek kezeléséhez:
+
     ```csharp
     // Use this handler to examine the exceptions received on the message pump.
     static Task ExceptionReceivedHandler(ExceptionReceivedEventArgs exceptionReceivedEventArgs)
@@ -297,102 +311,103 @@ Az elküldött üzenetek fogadásához hozzon létre egy másik .NET Core-konzol
         Console.WriteLine($"- Entity Path: {context.EntityPath}");
         Console.WriteLine($"- Executing Action: {context.Action}");
         return Task.CompletedTask;
-    }    
-    ```    
-   
-8. A Program.cs fájlnak így kell kinéznie:
-   
-    ```csharp
-    namespace CoreReceiverApp
-    {
-        using System;
-        using System.Text;
-        using System.Threading;
-        using System.Threading.Tasks;
-        using Microsoft.Azure.ServiceBus;
-
-        class Program
-        {
-            // Connection String for the namespace can be obtained from the Azure portal under the 
-            // 'Shared Access policies' section.
-            const string ServiceBusConnectionString = "<your_connection_string>";
-            const string QueueName = "<your_queue_name>";
-            static IQueueClient queueClient;
-
-            static void Main(string[] args)
-            {
-                MainAsync().GetAwaiter().GetResult();
-            }
-
-            static async Task MainAsync()
-            {
-                queueClient = new QueueClient(ServiceBusConnectionString, QueueName);
-
-                Console.WriteLine("======================================================");
-                Console.WriteLine("Press ENTER key to exit after receiving all the messages.");
-                Console.WriteLine("======================================================");
-
-                // Register QueueClient's MessageHandler and receive messages in a loop
-                RegisterOnMessageHandlerAndReceiveMessages();
-                    
-                Console.ReadKey();
-
-                await queueClient.CloseAsync();
-            }
-
-            static void RegisterOnMessageHandlerAndReceiveMessages()
-            {
-                // Configure the MessageHandler Options in terms of exception handling, number of concurrent messages to deliver etc.
-                var messageHandlerOptions = new MessageHandlerOptions(ExceptionReceivedHandler)
-                {
-                    // Maximum number of Concurrent calls to the callback `ProcessMessagesAsync`, set to 1 for simplicity.
-                    // Set it according to how many messages the application wants to process in parallel.
-                    MaxConcurrentCalls = 1,
-
-                    // Indicates whether MessagePump should automatically complete the messages after returning from User Callback.
-                    // False below indicates the Complete will be handled by the User Callback as in `ProcessMessagesAsync` below.
-                    AutoComplete = false
-                };
-
-                // Register the function that will process messages
-                queueClient.RegisterMessageHandler(ProcessMessagesAsync, messageHandlerOptions);
-            }
-
-            static async Task ProcessMessagesAsync(Message message, CancellationToken token)
-            {
-                // Process the message
-                Console.WriteLine($"Received message: SequenceNumber:{message.SystemProperties.SequenceNumber} Body:{Encoding.UTF8.GetString(message.Body)}");
-
-                // Complete the message so that it is not received again.
-                // This can be done only if the queueClient is created in ReceiveMode.PeekLock mode (which is default).
-                await queueClient.CompleteAsync(message.SystemProperties.LockToken);
-
-                // Note: Use the cancellationToken passed as necessary to determine if the queueClient has already been closed.
-                // If queueClient has already been Closed, you may chose to not call CompleteAsync() or AbandonAsync() etc. calls 
-               // to avoid unnecessary exceptions.
-            }
-
-            static Task ExceptionReceivedHandler(ExceptionReceivedEventArgs exceptionReceivedEventArgs)
-            {
-                Console.WriteLine($"Message handler encountered an exception {exceptionReceivedEventArgs.Exception}.");
-                var context = exceptionReceivedEventArgs.ExceptionReceivedContext;
-                Console.WriteLine("Exception context for troubleshooting:");
-                Console.WriteLine($"- Endpoint: {context.Endpoint}");
-                Console.WriteLine($"- Entity Path: {context.EntityPath}");
-                Console.WriteLine($"- Executing Action: {context.Action}");
-                return Task.CompletedTask;
-            }
-        }
     }
     ```
-4. Futtassa a programot, majd ellenőrizze ismét a portálon. Figyelje meg, hogy az **Aktív üzenetek száma** és a **Jelenlegi** értéke most **0**.
-   
-    ![Várólista hossza][queue-message-receive]
 
-Gratulálunk! Ezzel létrehozott egy üzenetsort, elküldött egy üzenetkészletet az üzenetsornak, és fogadta is tőle az üzeneteket.
+A *program.cs* -fájlnak így kell kinéznie:
+
+```csharp
+namespace CoreReceiverApp
+{
+    using System;
+    using System.Text;
+    using System.Threading;
+    using System.Threading.Tasks;
+    using Microsoft.Azure.ServiceBus;
+
+    class Program
+    {
+        // Connection String for the namespace can be obtained from the Azure portal under the 
+        // 'Shared Access policies' section.
+        const string ServiceBusConnectionString = "<your_connection_string>";
+        const string QueueName = "<your_queue_name>";
+        static IQueueClient queueClient;
+
+        static void Main(string[] args)
+        {
+            MainAsync().GetAwaiter().GetResult();
+        }
+
+        static async Task MainAsync()
+        {
+            queueClient = new QueueClient(ServiceBusConnectionString, QueueName);
+
+            Console.WriteLine("======================================================");
+            Console.WriteLine("Press ENTER key to exit after receiving all the messages.");
+            Console.WriteLine("======================================================");
+
+            // Register QueueClient's MessageHandler and receive messages in a loop
+            RegisterOnMessageHandlerAndReceiveMessages();
+ 
+            Console.ReadKey();
+
+            await queueClient.CloseAsync();
+        }
+
+        static void RegisterOnMessageHandlerAndReceiveMessages()
+        {
+            // Configure the MessageHandler Options in terms of exception handling, number of concurrent messages to deliver etc.
+            var messageHandlerOptions = new MessageHandlerOptions(ExceptionReceivedHandler)
+            {
+                // Maximum number of Concurrent calls to the callback `ProcessMessagesAsync`, set to 1 for simplicity.
+                // Set it according to how many messages the application wants to process in parallel.
+                MaxConcurrentCalls = 1,
+
+                // Indicates whether MessagePump should automatically complete the messages after returning from User Callback.
+                // False below indicates the Complete will be handled by the User Callback as in `ProcessMessagesAsync` below.
+                AutoComplete = false
+            };
+
+            // Register the function that will process messages
+            queueClient.RegisterMessageHandler(ProcessMessagesAsync, messageHandlerOptions);
+        }
+
+        static async Task ProcessMessagesAsync(Message message, CancellationToken token)
+        {
+            // Process the message
+            Console.WriteLine($"Received message: SequenceNumber:{message.SystemProperties.SequenceNumber} Body:{Encoding.UTF8.GetString(message.Body)}");
+
+            // Complete the message so that it is not received again.
+            // This can be done only if the queueClient is created in ReceiveMode.PeekLock mode (which is default).
+            await queueClient.CompleteAsync(message.SystemProperties.LockToken);
+
+            // Note: Use the cancellationToken passed as necessary to determine if the queueClient has already been closed.
+            // If queueClient has already been Closed, you may chose to not call CompleteAsync() or AbandonAsync() etc. calls 
+            // to avoid unnecessary exceptions.
+        }
+
+        static Task ExceptionReceivedHandler(ExceptionReceivedEventArgs exceptionReceivedEventArgs)
+        {
+            Console.WriteLine($"Message handler encountered an exception {exceptionReceivedEventArgs.Exception}.");
+            var context = exceptionReceivedEventArgs.ExceptionReceivedContext;
+            Console.WriteLine("Exception context for troubleshooting:");
+            Console.WriteLine($"- Endpoint: {context.Endpoint}");
+            Console.WriteLine($"- Entity Path: {context.EntityPath}");
+            Console.WriteLine($"- Executing Action: {context.Action}");
+            return Task.CompletedTask;
+        }
+    }
+}
+```
+
+Futtassa a programot, majd ellenőrizze ismét a portálon. Az **aktív üzenetek száma** és a **jelenlegi** értékek mostantól **0**.
+
+![Üzenetsor üzenetek fogadása után][queue-message-receive]
+
+Gratulálunk! Létrehozta a várólistát, elküldött egy üzenetet a várólistára, és megkapta az üzeneteket ugyanabból a várólistából.
 
 > [!NOTE]
-> A Service Bus-erőforrások is kezelhetők [Service Bus Explorerrel](https://github.com/paolosalvatori/ServiceBusExplorer/). A Service Bus Explorer lehetővé teszi, hogy a felhasználók csatlakozni a Service Bus-névtér és üzenetküldési entitások felügyelete egyszerű módon. Az eszköz például importálás/exportálás funkció vagy tesztelhetik, témakör, üzenetsorok, előfizetések, relay-szolgáltatások, a notification hubs és események hubok speciális szolgáltatásokat biztosítja. 
+> [Service Bus Explorerrel](https://github.com/paolosalvatori/ServiceBusExplorer/)kezelheti Service Bus erőforrásait. A Service Bus Explorer lehetővé teszi, hogy a felhasználók könnyedén kapcsolódjanak egy Service Bus névtérhez, és felügyelje az üzenetkezelési entitásokat. Az eszköz olyan speciális funkciókat biztosít, mint az importálási/exportálási funkció, illetve a témakörök, várólisták, előfizetések, továbbító szolgáltatások, értesítési központok és Event hubok tesztelésének lehetősége.
 
 ## <a name="next-steps"></a>További lépések
 
@@ -401,6 +416,6 @@ Tekintse meg a [GitHub-tárunkat, ahol további példákat talál](https://githu
 <!--Image references-->
 
 [nuget-pkg]: ./media/service-bus-dotnet-get-started-with-queues/nuget-package.png
-[queue-message]: ./media/service-bus-dotnet-get-started-with-queues/queue-message.png
-[queue-message-receive]: ./media/service-bus-dotnet-get-started-with-queues/queue-message-receive.png
+[queue-message]: ./media/service-bus-dotnet-get-started-with-queues/messages-sent-to-essentials.png
+[queue-message-receive]: ./media/service-bus-dotnet-get-started-with-queues/queue-message-receive-in-essentials.png
 

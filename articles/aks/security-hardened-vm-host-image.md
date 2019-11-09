@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 09/11/2019
 ms.author: saudas
 ms.custom: mvc
-ms.openlocfilehash: 5c2ecd5a53bb77193469ba1135c46d9b5fa65b2c
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 8b7e50fdc02ab47c50cecb95073f1b51393db898
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71202971"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73885633"
 ---
 # <a name="security-hardening-in-aks-virtual-machine-hosts"></a>Biztonság megerősítése az AK-beli virtuális gépek gazdagépei számára 
 
@@ -30,7 +30,7 @@ A biztonsági megerősített gazda operációs rendszer célja, hogy csökkentse
 
 * Az KABAi szolgáltatás alapértelmezés szerint a biztonsággal optimalizált gazdagép operációs rendszerét biztosítja. Nincs aktuális lehetőség a másodlagos operációs rendszer kiválasztására. 
 
-* Az Azure napi javításokat alkalmaz (beleértve a biztonsági javításokat is) az AK-beli virtuális gépek gazdagépei számára. Ezen javítások némelyike újraindítást igényel, míg mások nem. Az AK-beli VM-állomások újraindítását szükség szerint ütemezi. Az AK-javítások automatizálásával kapcsolatos útmutatásért lásd: [AK-csomópontok javítása](https://docs.microsoft.com/en-us/azure/aks/node-updates-kured).
+* Az Azure napi javításokat alkalmaz (beleértve a biztonsági javításokat is) az AK-beli virtuális gépek gazdagépei számára. Ezen javítások némelyike újraindítást igényel, míg mások nem. Az AK-beli VM-állomások újraindítását szükség szerint ütemezi. Az AK-javítások automatizálásával kapcsolatos útmutatásért lásd: [AK-csomópontok javítása](https://docs.microsoft.com/azure/aks/node-updates-kured).
 
 Az alábbi lista összefoglalja az AK-motorban implementált képerősítő munkát, amely a biztonsággal optimalizált gazdagép operációs rendszerét eredményezi. A munka a [GitHub-projektben](https://github.com/Azure/aks-engine/projects/7)lett implementálva.  
 
@@ -75,7 +75,7 @@ Az AK-motor jelenleg nem támogatja vagy nem tartja be a konkrét biztonsági sz
 |5.4.1.1 |Győződjön meg arról, hogy a jelszó lejárati ideje 90 nap vagy kevesebb |
 |5.4.1.4 |Inaktív jelszó zárolásának biztosítása 30 nap vagy kevesebb |
 |5.4.4 |Győződjön meg arról, hogy az alapértelmezett felhasználói umask 027 vagy szigorúbb |
-|5.6 |Győződjön meg arról, hogy a su parancshoz való hozzáférés korlátozott|
+|5,6 |Győződjön meg arról, hogy a su parancshoz való hozzáférés korlátozott|
 
 ## <a name="additional-notes"></a>További megjegyzések
  
@@ -87,7 +87,7 @@ Az AK-motor jelenleg nem támogatja vagy nem tartja be a konkrét biztonsági sz
 
 Az AK biztonságával kapcsolatos további információkért tekintse meg a következő cikkeket: 
 
-[Az Azure Kubernetes Service (AKS)](https://docs.microsoft.com/azure/aks/intro-kubernetes)
+[Azure Kubernetes Service (AKS)](https://docs.microsoft.com/azure/aks/intro-kubernetes)
 
 [AK biztonsági megfontolások](https://docs.microsoft.com/azure/aks/concepts-security)
 

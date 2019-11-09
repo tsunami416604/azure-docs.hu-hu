@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 880b31702cf1c0a92ab7ee536cd88e8e6957f6f8
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: 3414cc54e5023bdeebb2d5536c1408f981e68f19
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72430848"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73891401"
 ---
 # <a name="back-up-workload-vms-on-cloudsimple-private-cloud-using-veeam-br"></a>Munkaterhelési virtuális gépek biztonsági mentése a CloudSimple privát felhőben a Veeam B & R használatával
 
@@ -54,7 +54,7 @@ A 30 TB-nál kevesebb környezet esetén a CloudSimple a következő konfigurác
 
 * A Veeam a biztonsági mentési kiszolgáló és a proxykiszolgáló ugyanarra a virtuális gépre van telepítve a privát felhőben.
 * Egy Linux-alapú elsődleges biztonsági mentési tárház az Azure-ban, amely a biztonsági mentési feladatok céljaként van konfigurálva.
-* @no__t – 0 az adatok elsődleges biztonsági mentési tárházból egy másik régióba replikált Azure Blob-tárolóba történő másolására szolgál.
+* `azcopy` az elsődleges biztonsági mentési tárházból egy másik régióba replikált Azure Blob-tárolóba másolt adatok másolására szolgál.
 
 ![Alapszintű üzembe helyezési forgatókönyvek](media/veeam-basicdeployment.png)
 
@@ -65,7 +65,7 @@ A 30 TB-nál több biztonsági mentést végző környezetek esetén a CloudSimp
 * Egy proxykiszolgáló a vSAN-fürtben, a Veeam által javasolt módon.
 * A Windows-alapú elsődleges biztonsági mentési tárház a privát felhőben a gyors visszaállítások öt napjainak gyorsítótárazásához.
 * Linux Backup-tárház az Azure-ban, mint a hosszabb időtartamú adatmegőrzési feladatok biztonsági másolatának célhelye. Ezt a tárházat kibővíthető biztonsági mentési tárházként kell konfigurálni.
-* @no__t – 0 az adatok elsődleges biztonsági mentési tárházból egy másik régióba replikált Azure Blob-tárolóba történő másolására szolgál.
+* `azcopy` az elsődleges biztonsági mentési tárházból egy másik régióba replikált Azure Blob-tárolóba másolt adatok másolására szolgál.
 
 ![Alapszintű üzembe helyezési forgatókönyvek](media/veeam-advanceddeployment.png)
 
@@ -98,7 +98,7 @@ Az üzembe helyezési folyamat a következő lépésekből áll:
 8. [Veeam-konzol: Veeam biztonsági mentési & helyreállítási szoftver konfigurálása](#veeam-console-install-veeam-backup-and-recovery-software)
 9. [CloudSimple-portál: az Veeam-hozzáférés beállítása és a deeszkalációs jogosultságok](#cloudsimple-portal-set-up-veeam-access-and-de-escalate-privileges)
 
-### <a name="before-you-begin"></a>Előzetes teendők
+### <a name="before-you-begin"></a>Előkészületek
 
 A Veeam üzembe helyezésének megkezdése előtt a következők szükségesek:
 
@@ -136,7 +136,7 @@ Hozzon létre tűzfalszabályok között a felügyeleti alhálózat és a tartal
 
 A következő táblázat a portok listáját tartalmazza.
 
-| Ikon | Leírás | Ikon | Leírás |
+| ikon | Leírás | ikon | Leírás |
 | ------------ | ------------- | ------------ | ------------- |
 | Backup Server  | vCenter  | HTTPS/TCP  | 443 |
 | Backup Server <br> *A Veeam biztonsági mentési & replikációs összetevőinek telepítéséhez szükséges* | Biztonsági mentési proxy  | TCP/UDP  | 135, 137 – 139 és 445 |
@@ -194,7 +194,7 @@ Csatlakoztathatja a virtuális hálózatot a privát felhőhöz az [Azure Virtua
 
 ### <a name="configure-azure-blob-storage-for-long-term-data-retention"></a>Az Azure Blob Storage konfigurálása hosszú távú adatmegőrzéshez
 
-1. Hozzon létre egy általános célú Storage-fiókot (GPv2) a standard típusú és egy blob-tárolóhoz a Microsoft video [első lépések Azure Storage](https://azure.microsoft.com/en-gb/resources/videos/get-started-with-azure-storage)-ban leírtak szerint.
+1. Hozzon létre egy általános célú Storage-fiókot (GPv2) a standard típusú és egy blob-tárolóhoz a Microsoft video [első lépések Azure Storage](https://azure.microsoft.com/resources/videos/get-started-with-azure-storage)-ban leírtak szerint.
 2. Hozzon létre egy Azure Storage-tárolót a [tároló létrehozása](https://docs.microsoft.com/rest/api/storageservices/create-container) hivatkozásban leírtak szerint.
 2. Töltse le a Linux rendszerhez készült `azcopy` parancssori segédprogramot a Microsofttól. A következő parancsokat használhatja a bash-rendszerhéjban a CentOS 7,5-ben.
 
@@ -206,7 +206,7 @@ Csatlakoztathatja a virtuális hálózatot a privát felhőhöz az [Azure Virtua
     sudo yum -y install icu
     ```
 
-3. A `azcopy` paranccsal másolja a biztonságimásolat-fájlokat a blob-tárolóba.  A részletes parancsokért lásd: [adatok átvitele a AzCopy Linuxon](../storage/common/storage-use-azcopy-linux.md) .
+3. A `azcopy` parancs használatával másolja a biztonságimásolat-fájlokat a blob-tárolóba.  A részletes parancsokért lásd: [adatok átvitele a AzCopy Linuxon](../storage/common/storage-use-azcopy-linux.md) .
 
 ### <a name="vcenter-console-of-private-cloud-install-veeam-br"></a>vCenter-konzol: install Veeam B & R
 
@@ -260,7 +260,7 @@ Hozzon létre egy tűzfalszabály használatával, amely lehetővé teszi, hogy 
 
 A jogosultságok megszüntetéséhez tekintse meg a [jogosultságok dekiterjesztését](escalate-private-cloud-privileges.md#de-escalate-privileges)ismertető témakört.
 
-## <a name="references"></a>Tudástár
+## <a name="references"></a>Referencia
 
 ### <a name="cloudsimple-references"></a>CloudSimple-referenciák
 
@@ -290,7 +290,7 @@ A jogosultságok megszüntetéséhez tekintse meg a [jogosultságok dekiterjeszt
 * [VNet összekapcsolása áramkörhöz – eltérő előfizetés](../expressroute/expressroute-howto-linkvnet-portal-resource-manager.md#connect-a-vnet-to-a-circuit---different-subscription)
 * [Linuxos virtuális gép létrehozása a Azure Portalban](../virtual-machines/linux/quick-create-portal.md)
 * [Felügyelt adatlemez csatolása Windows rendszerű virtuális géphez a Azure Portal](../virtual-machines/windows/attach-managed-disk-portal.md)
-* [Első lépések az Azure Storage-ban – videó](https://azure.microsoft.com/en-gb/resources/videos/get-started-with-azure-storage)
+* [Első lépések az Azure Storage-ban – videó](https://azure.microsoft.com/resources/videos/get-started-with-azure-storage)
 * [Tároló létrehozása](https://docs.microsoft.com/rest/api/storageservices/create-container)
 * [Adatok áthelyezése az AzCopyval Linux rendszeren](../storage/common/storage-use-azcopy-linux.md)
 

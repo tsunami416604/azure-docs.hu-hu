@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 07/23/2018
-ms.openlocfilehash: 0bb32486ea3fcfd37337b18b02f4f432effa8f75
-ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
+ms.openlocfilehash: 857188ebb5ddc3c24f6a225819c47fc1643417e6
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72678328"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73887520"
 ---
 # <a name="troubleshooting-no-data---application-insights-for-net"></a>Adathiány hibaelhárítása – Application Insights .NET-hez
 ## <a name="some-of-my-telemetry-is-missing"></a>Néhány telemetria hiányzik
@@ -113,7 +113,7 @@ A ApplicationInsights. config fájlban található kialakítási kulcs vezérli,
 
 Javítsa ki
 
-* A Megoldáskezelő kattintson a jobb gombbal a projektre, és válassza a Application Insights lehetőséget, majd konfigurálja a Application Insights. A párbeszédpanelen dönthet úgy, hogy telemetria küld egy meglévő erőforrásnak, vagy újat hoz létre. vagy
+* A Megoldáskezelő kattintson a jobb gombbal a projektre, és válassza a Application Insights lehetőséget, majd konfigurálja a Application Insights. A párbeszédpanelen dönthet úgy, hogy telemetria küld egy meglévő erőforrásnak, vagy újat hoz létre. Vagy
 * Nyissa meg közvetlenül az erőforrást. Jelentkezzen be [a Azure Portalba](https://portal.azure.com), kattintson a bal oldali navigációs sávon a Application Insights elemre, majd válassza ki az alkalmazást.
 
 ## <a name="where-do-i-find-my-telemetry"></a>Hol találom meg a telemetria?
@@ -174,7 +174,7 @@ A szolgáltatás letiltható, de ez nem ajánlott. A mintavétel úgy lett kiala
 Február 5 2018-án bejelentettük, hogy az ügyfél IP-címének naplózása el lett távolítva. Ez nem befolyásolja a földrajzi helyet.
 
 > [!NOTE]
-> Ha az IP-cím első 3 oktettje szükséges, a [telemetria inicializáló](https://docs.microsoft.com/azure/application-insights/app-insights-api-filtering-sampling#add-properties-itelemetryinitializer) használatával egyéni attribútumokat adhat hozzá.
+> Ha az IP-cím első 3 oktettje szükséges, a [telemetria inicializáló](https://docs.microsoft.com/azure/application-insights/app-insights-api-filtering-sampling#addmodify-properties-itelemetryinitializer) használatával egyéni attribútumokat adhat hozzá.
 > Ez nincs hatással a 2018. február 5. előtt összegyűjtött adatokra.
 
 ## <a name="wrong-geographical-data-in-user-telemetry"></a>Helytelen földrajzi érték a felhasználói telemetria

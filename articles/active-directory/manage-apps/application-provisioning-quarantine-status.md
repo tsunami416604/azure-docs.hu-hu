@@ -16,12 +16,12 @@ ms.date: 10/03/2019
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 704e217cd7ddea988b6a9812627aba8c8468fb73
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.openlocfilehash: e3ad689fb57c51d0deb698a723b93e6175bdbb5c
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71955496"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73882882"
 ---
 # <a name="application-provisioning-in-quarantine-status"></a>Alkalmazás üzembe helyezése a karantén állapotában
 
@@ -33,7 +33,7 @@ A karanténba helyezve a növekményes ciklusok gyakorisága naponta egyszer cs�
 
 Három módon ellenőrizhető, hogy egy alkalmazás karanténba helyezve van-e:
   
-- A Azure Portal navigáljon a **Azure Active Directory** > **vállalati alkalmazások** >  @ no__t-4*alkalmazás neve*&gt; @ no__t-7**kiépítés** elemre, és görgessen az alján látható folyamatjelző sávra.  
+- A Azure Portal navigáljon **Azure Active Directory** > **vállalati alkalmazások** > &lt;*alkalmazás neve*&gt; > **kiépítés** elemre, és görgessen a folyamatjelző sáv aljára.  
 
   ![Üzembe helyezési állapotsor, amely a karantén állapotát mutatja](media/application-provisioning-quarantine-status/progress-bar-quarantined.png)
 
@@ -51,11 +51,11 @@ Három módon ellenőrizhető, hogy egy alkalmazás karanténba helyezve van-e:
 
 A kiépítési feladatok állapotának beolvasására Microsoft Graph kérelem a karanténba helyezés következő okát mutatja be:
 
-- a `EncounteredQuarantineException` érték azt jelzi, hogy érvénytelen hitelesítő adatok lettek megadva. A kiépítési szolgáltatás nem tud kapcsolatot létesíteni a forrásrendszer és a célként megadott rendszer között.
+- `EncounteredQuarantineException` jelzi, hogy érvénytelen hitelesítő adatok lettek megadva. A kiépítési szolgáltatás nem tud kapcsolatot létesíteni a forrásrendszer és a célként megadott rendszer között.
 
-- a `EncounteredEscrowProportionThreshold` érték azt jelzi, hogy a kiépítés túllépte a letéti küszöbértéket. Ez az állapot akkor fordul elő, ha a kiépítési események több mint 60%-a nem sikerült.
+- `EncounteredEscrowProportionThreshold` azt jelzi, hogy a kiépítés túllépte a letéti küszöbértéket. Ez az állapot akkor fordul elő, ha a kiépítési események több mint 60%-a nem sikerült.
 
-- `QuarantineOnDemand` azt jelenti, hogy az alkalmazással kapcsolatos problémát észlelt, és manuálisan be kell állítania a karanténba helyezését.
+- `QuarantineOnDemand` azt jelenti, hogy az alkalmazással kapcsolatos problémát észlelt, és manuálisan beállította a karanténba helyezését.
 
 ## <a name="how-do-i-get-my-application-out-of-quarantine"></a>Hogyan az alkalmazás karanténba helyezését?
 
@@ -69,6 +69,6 @@ A probléma megoldása után indítsa újra a kiépítési feladatot. Az alkalma
 
 - A kiépítési feladatok újraindításához használja a Azure Portal. Az alkalmazás **kiépítési** lapján a **Beállítások**területen válassza az **állapot törlése és a szinkronizálás újraindítása** és a **kiépítési állapot** beállítása **a**következőre lehetőséget. Ez a művelet teljesen újraindítja a kiépítési szolgáltatást, amely hosszabb időt is igénybe vehet. A teljes kezdeti ciklus újra futni fog, ami törli a letéteket, eltávolítja az alkalmazást a karanténból, és törli az összes vízjelet.
 
-- [A kiépítési feladatok újraindításához használja a](https://docs.microsoft.com/en-us/graph/api/synchronization-synchronizationjob-restart?view=graph-rest-beta&tabs=http)Microsoft Graph. Az újraindítást teljes mértékben szabályozhatja. Dönthet úgy, hogy törli a letéteket (a karantén állapotának újraindításához), a karantén törlését (az alkalmazás karanténból való eltávolítását) vagy a vízjelek törlését. Használja a következő kérelmet:
+- [A kiépítési feladatok újraindításához használja a](https://docs.microsoft.com/graph/api/synchronization-synchronizationjob-restart?view=graph-rest-beta&tabs=http)Microsoft Graph. Az újraindítást teljes mértékben szabályozhatja. Dönthet úgy, hogy törli a letéteket (a karantén állapotának újraindításához), a karantén törlését (az alkalmazás karanténból való eltávolítását) vagy a vízjelek törlését. Használja a következő kérelmet:
  
        `POST /servicePrincipals/{id}/synchronization/jobs/{jobId}/restart`

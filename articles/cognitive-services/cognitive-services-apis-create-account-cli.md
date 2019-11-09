@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 10/04/2019
 ms.author: aahi
-ms.openlocfilehash: 8ca994b0b4abb27eef284eedf5a76571fe19699d
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: d715252f16a34f2261c108ebd3ff5d1f6f3424d8
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72595324"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73887919"
 ---
 # <a name="create-a-cognitive-services-resource-using-the-azure-command-line-interfacecli"></a>Cognitive Services-erőforrás létrehozása az Azure parancssori felületének (CLI) használatával
 
@@ -84,26 +84,26 @@ az group create \
 > [!NOTE]
 > Az alábbi Cognitive Services számos olyan ingyenes szintet használhat, amellyel kipróbálhatja a szolgáltatást. Az ingyenes szintet az erőforráshoz tartozó SKU használatával `F0` használhatja.
 
-### <a name="vision"></a>Látás
+### <a name="vision"></a>Vizuális elemek
 
 | Szolgáltatás                    | típusú                      |
 |----------------------------|---------------------------|
-| Computer Vision            | `ComputerVision`          |
+| Számítógépes látástechnológia            | `ComputerVision`          |
 | Custom Vision – előrejelzés | `CustomVision.Prediction` |
 | Custom Vision – képzés   | `CustomVision.Training`   |
 | Face API                   | `Face`                    |
 | Form Recognizer            | `FormRecognizer`          |
 | Ink Recognizer             | `InkRecognizer`           |
 
-### <a name="search"></a>Search
+### <a name="search"></a>Keresés
 
 | Szolgáltatás            | típusú                  |
 |--------------------|-----------------------|
-| Bing Autosuggest   | `Bing.Autosuggest.v7` |
-| Bing Custom Search | `Bing.CustomSearch`   |
-| Bing Entity Search | `Bing.EntitySearch`   |
-| Bing Search        | `Bing.Search.v7`      |
-| Bing Spell Check   | `Bing.SpellCheck.v7`  |
+| Bing – Automatikus kiegészítés   | `Bing.Autosuggest.v7` |
+| Bing – Egyéni keresés | `Bing.CustomSearch`   |
+| Bing – Entitáskeresés | `Bing.EntitySearch`   |
+| Bing kereső        | `Bing.Search.v7`      |
+| Bing – Helyesírás-ellenőrzés   | `Bing.SpellCheck.v7`  |
 
 ### <a name="speech"></a>Beszéd
 
@@ -119,15 +119,15 @@ az group create \
 | Űrlap megértése | `FormUnderstanding` |
 | LUIS               | `LUIS`              |
 | QnA Maker          | `QnAMaker`          |
-| Text Analytics     | `TextAnalytics`     |
+| Szövegelemzés     | `TextAnalytics`     |
 | Szövegfordítás   | `TextTranslation`   |
 
 ### <a name="decision"></a>Döntés
 
 | Szolgáltatás           | típusú               |
 |-------------------|--------------------|
-| Anomáliadetektor  | `AnomalyDetector`  |
-| Content Moderator | `ContentModerator` |
+| Anomaly Detector  | `AnomalyDetector`  |
+| Tartalommoderátor | `ContentModerator` |
 | Personalizer      | `Personalizer`     |
 
 Az elérhető kognitív szolgáltatás "típusai" listáját az az [cognitiveservices Account List-kinds](https://docs.microsoft.com/cli/azure/cognitiveservices/account?view=azure-cli-latest#az-cognitiveservices-account-list-kinds) paranccsal találja:
@@ -179,7 +179,7 @@ A díjszabási szintek (és a felszámított összeg) a hitelesítési adatok ha
 
 ## <a name="get-current-quota-usage-for-your-resource"></a>Az erőforrás aktuális kvótájának beolvasása
 
-Használja az az [cognitiveservices Account List-](https://docs.microsoft.com/en-us/cli/azure/cognitiveservices/account?view=azure-cli-latest#az-cognitiveservices-account-list-usage) use parancsot a kognitív szolgáltatás erőforrásai használatának megszerzéséhez.
+Használja az az [cognitiveservices Account List-](https://docs.microsoft.com/cli/azure/cognitiveservices/account?view=azure-cli-latest#az-cognitiveservices-account-list-usage) use parancsot a kognitív szolgáltatás erőforrásai használatának megszerzéséhez.
 
 ```azurecli-interactive
 az cognitiveservices account list-usage \

@@ -1,5 +1,5 @@
 ---
-title: A távoli figyelési megoldás üzembe helyezése helyileg (IntelliJ IDE-n keresztül) – Azure | Microsoft Docs
+title: Távoli figyelési megoldás üzembe helyezése helyileg – IntelliJ IDE – Azure | Microsoft Docs
 description: Ez a útmutató bemutatja, hogyan helyezheti üzembe a távoli figyelési megoldás gyorsítása a helyi gépen a IntelliJ használatával tesztelés és fejlesztés céljából.
 author: v-krghan
 manager: dominicbetts
@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 01/24/2019
 ms.topic: conceptual
-ms.openlocfilehash: 2f3c11763bb2f406caf9d33275fc29b0d140da9a
-ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
+ms.openlocfilehash: 779ee1e057d74b11c5e0ba58dc2fd32b803f1e0e
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "70743323"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73888813"
 ---
 # <a name="deploy-the-remote-monitoring-solution-accelerator-locally---intellij"></a>A távoli figyelési megoldás helyi telepítése – IntelliJ
 
@@ -98,18 +98,18 @@ Ha még nem hozta létre a szükséges Azure-erőforrásokat, kövesse az alább
    A parancsfájl környezeti változókat is hozzáad a helyi géphez. Mindegyik változó neve a **számítógépek**előtagját adja meg. Ezek a környezeti változók olyan részleteket biztosítanak, amelyek lehetővé teszik a távoli megfigyelés számára, hogy beolvassák a konfigurációs értékeket egy Azure Key Vault erőforrásból.
 
    > [!TIP]
-   > A parancsfájl befejeződése után a környezeti változókat egy saját kezdőmappa nevű  **\<\>\>\\fájlba menti. a\\számítógépek\<megoldás neve. env**. Használhatja őket a jövőbeli megoldás-gyorsító üzembe helyezésekhez. Vegye figyelembe, hogy a helyi gépen beállított környezeti változók a **Docker-összeállítás**futtatásakor felülbírálják a **Services\\-\\parancsfájlok helyi\\. env** fájljának értékeit.
+   > A parancsfájl befejeződése után a környezeti változókat egy **\<saját mappájába menti\>\\. pcs\\\<-megoldás neve\>. env**. Használhatja őket a jövőbeli megoldás-gyorsító üzembe helyezésekhez. Vegye figyelembe, hogy a helyi gépen beállított környezeti változók felülbírálják a **szolgáltatások\\parancsfájlok\\helyi\\. env** fájljában lévő értékeket a **Docker-összeállítás**futtatásakor.
 
 1. A parancssori környezet lezárása.
 
 ### <a name="use-existing-azure-resources"></a>Meglévő Azure-erőforrások használata
 
 Ha már létrehozta a szükséges Azure-erőforrásokat, állítsa be a megfelelő környezeti változókat a helyi gépen:
-* **PCS_KEYVAULT_NAME**: Az Key Vault erőforrás neve.
-* **PCS_AAD_APPID**: A Azure Active Directory-(Azure AD-) alkalmazás azonosítója.
-* **PCS_AAD_APPSECRET**: Az Azure AD-alkalmazás titka.
+* **PCS_KEYVAULT_NAME**: a Key Vault erőforrás neve.
+* **PCS_AAD_APPID**: a Azure Active Directory (Azure ad) alkalmazás azonosítója.
+* **PCS_AAD_APPSECRET**: az Azure ad-alkalmazás titka.
 
-A konfigurációs értékek beolvasása ebből a Key Vault erőforrásból történik. Ezek a környezeti változók menthetők a  **\<\>\\saját kezdőmappa. számítógép\\\<-megoldás\>neve. env** fájlból a telepítésből. Vegye figyelembe, hogy a helyi gépen beállított környezeti változók a **Docker-összeállítás**futtatásakor felülbírálják a **szolgáltatások\\\\\\helyi. env** fájljának értékeit.
+A konfigurációs értékek beolvasása ebből a Key Vault erőforrásból történik. Ezek a környezeti változók menthetők a **\<saját kezdőmappa\>\\. pcs\\\<megoldás neve\>. env** fájl a telepítésből. Vegye figyelembe, hogy a helyi gépen beállított környezeti változók felülbírálják a **szolgáltatások\\parancsfájlok\\helyi\\. env** fájlt a **Docker-összeállítás**futtatásakor.
 
 A webszolgáltatás által igényelt néhány konfiguráció a kezdeti telepítéskor létrehozott Key Vault egy példányában van tárolva. A Key Vault megfelelő változóit szükség szerint módosítani kell.
 
@@ -159,11 +159,11 @@ A következő lépések bemutatják, hogyan futtathatja a távoli monitorozási 
 
 #### <a name="create-run-configurations"></a>Futtatási konfigurációk létrehozása
 
-1. Válassza a**szerkesztési konfigurációk** **futtatása** > lehetőséget.
-1. Válassza az **új konfigurációs** > **SBT feladat**hozzáadása lehetőséget.
+1. Válassza a **futtatás** > a **konfigurációk szerkesztése**lehetőséget.
+1. Válassza az **Új konfiguráció hozzáadása** > **SBT feladat**lehetőséget.
 1. Adja meg a **nevet**, majd adja meg a **feladatokat** **futtatásként**.
 1. Válassza ki a **munkakönyvtárat** a futtatni kívánt szolgáltatás alapján.
-1. Válassza az**OK** **alkalmazása** > lehetőséget a beállítások mentéséhez.
+1. Válassza az **alkalmaz** > **az OK gombra** a beállítások mentéséhez.
 1. Hozzon létre futtatási konfigurációkat a következő webszolgáltatásokhoz:
     * Webszolgáltatás (services\config)
     * Webszolgáltatás (services\device-telemetry)
@@ -172,17 +172,17 @@ A következő lépések bemutatják, hogyan futtathatja a távoli monitorozási 
 
 Az alábbi képen például egy szolgáltatás konfigurációjának hozzáadása látható:
 
-[![Képernyőkép a IntelliJ IDE Run/debug konfigurációk ablakáról, amely a bal oldali ablaktábla SBT feladatok listájában, a jobb oldali ablaktáblában pedig a név, a feladatok, a munkakönyvtár és a virtuálisgép-paraméterek bejegyzéseiben Kiemelt storageAdapter lehetőséget jeleníti meg.](./media/deploy-locally-intellij/run-configurations.png)](./media/deploy-locally-intellij/run-configurations.png#lightbox)
+[![képernyőkép a IntelliJ IDE Run/debug konfigurációk ablakáról, amely a bal oldali ablaktábla SBT feladatok listájában, a jobb oldali ablaktáblában pedig a név, a feladatok, a munkakönyvtár és a virtuális gép paraméterek bejegyzései között látható.](./media/deploy-locally-intellij/run-configurations.png)](./media/deploy-locally-intellij/run-configurations.png#lightbox)
 
 #### <a name="create-a-compound-configuration"></a>Összetett konfiguráció létrehozása
 
-1. Az összes szolgáltatás együttes futtatásához válassza az **új konfigurációs** > **összetett**hozzáadása elemet.
+1. Az összes szolgáltatás együttes futtatásához válassza az **Új konfiguráció hozzáadása** > **összetett**elemet.
 1. Adja meg a **nevet**, majd kattintson a **SBT-feladatok hozzáadása**lehetőségre.
-1. Válassza az**OK** **alkalmazása** > lehetőséget a beállítások mentéséhez.
+1. Válassza az **alkalmaz** > **az OK gombra** a beállítások mentéséhez.
 
 Az alábbi képen látható, hogyan adhat hozzá az összes SBT-feladatot egyetlen konfigurációhoz:
 
-[![Képernyőkép a IntelliJ IDE Run/debug konfigurációk ablakáról, amely a bal oldali ablaktábla összetett listájában, a jobb oldali ablaktáblán pedig a "deviceTelemetry" SBT-feladat kiemelésével jelölt AllServices beállítást mutatja.](./media/deploy-locally-intellij/all-services.png)](./media/deploy-locally-intellij/all-services.png#lightbox)
+[![képernyőkép a IntelliJ IDE Run/debug konfigurációk ablakáról, amely a bal oldali ablaktábla összetett listájában, a jobb oldali ablaktáblán pedig a "deviceTelemetry" SBT feladat kiemelését mutatja.](./media/deploy-locally-intellij/all-services.png)](./media/deploy-locally-intellij/all-services.png#lightbox)
 
 Válassza a **Futtatás** lehetőséget a webszolgáltatások helyi számítógépen való létrehozásához és futtatásához.
 
@@ -190,10 +190,10 @@ Minden webszolgáltatás megnyílik egy parancssori ablak és egy webböngésző
 
 A szolgáltatások állapotának eléréséhez nyissa meg a következő URL-címeket:
 
-* IoT-hub kezelője:[http://localhost:9002/v1/status](http://localhost:9002/v1/status)
-* Eszköz telemetria:[http://localhost:9004/v1/status](http://localhost:9004/v1/status)
-* config[http://localhost:9005/v1/status](http://localhost:9005/v1/status)
-* Storage-adapter:[http://localhost:9022/v1/status](http://localhost:9022/v1/status)
+* IoT-hub Manager: [http://localhost:9002/v1/status](http://localhost:9002/v1/status)
+* Eszköz telemetria: [http://localhost:9004/v1/status](http://localhost:9004/v1/status)
+* konfiguráció: [http://localhost:9005/v1/status](http://localhost:9005/v1/status)
+* Storage-adapter: [http://localhost:9022/v1/status](http://localhost:9022/v1/status)
 
 ### <a name="start-the-stream-analytics-job"></a>A Stream Analytics-feladatok elindítása
 
@@ -213,7 +213,7 @@ npm install
 npm start
 ```
 
-A **Start** parancs befejezése után a böngésző megjeleníti a lapot a címen [http://localhost:3000/dashboard](http://localhost:3000/dashboard). A rendszer a lapon szereplő hibákat várta. Ha hiba nélkül szeretné megtekinteni az alkalmazást, hajtsa végre az alábbi lépéseket.
+A **Start** parancs befejezése után a böngésző megjeleníti az oldalt [http://localhost:3000/dashboard](http://localhost:3000/dashboard)címen. A rendszer a lapon szereplő hibákat várta. Ha hiba nélkül szeretné megtekinteni az alkalmazást, hajtsa végre az alábbi lépéseket.
 
 ### <a name="configure-and-run-nginx"></a>Az Nginx konfigurálása és futtatása
 
@@ -226,7 +226,7 @@ További információ az Nginx futtatásáról: [Nginx for Windows](https://ngin
 
 ### <a name="connect-to-the-dashboard"></a>Kapcsolódás az irányítópulthoz
 
-A távoli figyelési megoldás irányítópultjának eléréséhez nyissa meg a t http://localhost:9000 a böngészőben.
+A távoli figyelési megoldás irányítópultjának eléréséhez nyissa meg a http://localhost:9000t a böngészőben.
 
 ## <a name="clean-up"></a>A fölöslegessé vált elemek eltávolítása
 

@@ -11,14 +11,14 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c739e827589a9fd6adeb10255f869acef29a4f16
-ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
+ms.openlocfilehash: 9c8219dd9ec971303fb62cf828da91ee877f4ca9
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69562205"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73882922"
 ---
-# <a name="how-to-plan-your-azure-ad-join-implementation"></a>Útmutató: Az Azure AD-csatlakozás implementálásának megtervezése
+# <a name="how-to-plan-your-azure-ad-join-implementation"></a>Útmutató: az Azure AD JOIN megvalósításának megtervezése
 
 Az Azure AD JOIN lehetővé teszi, hogy közvetlenül az Azure AD-hez csatlakozzon, anélkül, hogy a helyszíni Active Directoryhoz kellene csatlakoznia, miközben a felhasználók produktív és biztonságos módon tartanak. Az Azure AD JOIN a nagyvállalati szintű és a hatókörön belüli üzemelő példányok esetében is készen áll.   
 
@@ -26,7 +26,7 @@ Ez a cikk az Azure AD JOIN megvalósításának megtervezéséhez szükséges in
  
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ez a cikk azt feltételezi, hogy ismeri a [Azure Active Directory eszköz-felügyeletének](../device-management-introduction.md)bevezetését.
+Ez a cikk azt feltételezi, hogy ismeri a [Azure Active Directory eszköz-felügyeletének bevezetését](../device-management-introduction.md).
 
 ## <a name="plan-your-implementation"></a>A megvalósítás tervezése
 
@@ -34,13 +34,13 @@ Az Azure AD JOIN megvalósításának megtervezéséhez Ismerkedjen meg a követ
 
 |   |   |
 |---|---|
-|![Ellenőrzés][1]|Forgatókönyvek áttekintése|
-|![Ellenőrzés][1]|Az identitás-infrastruktúra áttekintése|
-|![Ellenőrzés][1]|Az eszközök kezelésének felmérése|
-|![Ellenőrzés][1]|Az alkalmazásokkal és erőforrásokkal kapcsolatos megfontolások ismertetése|
-|![Ellenőrzés][1]|A kiépítési lehetőségek megismerése|
-|![Ellenőrzés][1]|Vállalati állapot barangolásának konfigurálása|
-|![Ellenőrzés][1]|Feltételes hozzáférés konfigurálása|
+|![Jelölőnégyzet][1]|Forgatókönyvek áttekintése|
+|![Jelölőnégyzet][1]|Az identitás-infrastruktúra áttekintése|
+|![Jelölőnégyzet][1]|Az eszközök kezelésének felmérése|
+|![Jelölőnégyzet][1]|Az alkalmazásokkal és erőforrásokkal kapcsolatos megfontolások ismertetése|
+|![Jelölőnégyzet][1]|A kiépítési lehetőségek megismerése|
+|![Jelölőnégyzet][1]|Vállalati állapot barangolásának konfigurálása|
+|![Jelölőnégyzet][1]|Feltételes hozzáférés konfigurálása|
 
 ## <a name="review-your-scenarios"></a>Forgatókönyvek áttekintése 
 
@@ -59,7 +59,7 @@ Az Azure AD JOIN mindkét, felügyelt és összevont környezettel működik.
 
 ### <a name="managed-environment"></a>Felügyelt környezet
 
-A felügyelt környezetek jelszó-kivonatos [szinkronizálással](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-password-hash-synchronization) vagy a zökkenőmentes egyszeri bejelentkezéses [hitelesítéssel](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-pta-quick-start) is üzembe helyezhetők.
+A felügyelt környezetek [jelszó-kivonatos szinkronizálással](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-password-hash-synchronization) vagy a zökkenőmentes egyszeri bejelentkezéses [hitelesítéssel](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-pta-quick-start) is üzembe helyezhetők.
 
 Ezekhez a forgatókönyvekhez nem szükséges összevonási kiszolgálót konfigurálni a hitelesítéshez.
 
@@ -67,10 +67,10 @@ Ezekhez a forgatókönyvekhez nem szükséges összevonási kiszolgálót konfig
 
 Egy összevont környezetnek rendelkeznie kell egy olyan identitás-szolgáltatóval, amely támogatja a WS-Trust és a WS-fed protokollokat:
 
-- **WS-Fed:** Ez a protokoll az eszköz Azure AD-hez való csatlakoztatásához szükséges.
-- **WS-Trust:** Ez a protokoll egy Azure AD-hez csatlakoztatott eszközre való bejelentkezéshez szükséges.
+- **Ws-Fed:** Ez a protokoll az eszköz Azure AD-hez való csatlakoztatásához szükséges.
+- **Ws-Trust:** Ez a protokoll egy Azure AD-hez csatlakoztatott eszközre való bejelentkezéshez szükséges.
 
-AD FS használatakor engedélyeznie kell a következő WS-Trust végpontokat:`/adfs/services/trust/2005/usernamemixed`
+AD FS használatakor engedélyeznie kell a következő WS-Trust végpontokat: `/adfs/services/trust/2005/usernamemixed`
  `/adfs/services/trust/13/usernamemixed`
  `/adfs/services/trust/2005/certificatemixed`
  `/adfs/services/trust/13/certificatemixed`
@@ -78,14 +78,14 @@ AD FS használatakor engedélyeznie kell a következő WS-Trust végpontokat:`/a
 Ha az identitás-szolgáltató nem támogatja ezeket a protokollokat, az Azure AD JOIN nem működik natív módon. A Windows 10 1809-től kezdve a felhasználók az SAML-alapú identitás-szolgáltatóval bejelentkezhetnek egy Azure AD-hez csatlakoztatott eszközre a [Windows 10-es webes bejelentkezés](https://docs.microsoft.com/windows/whats-new/whats-new-windows-10-version-1809#web-sign-in-to-windows-10)használatával. Jelenleg a webes bejelentkezés előzetes verziójú funkció, ezért nem ajánlott éles környezetekben üzemelő példányokhoz.
 
 >[!NOTE]
-> Az Azure AD JOIN jelenleg nem működik, [mert a külső hitelesítő szolgáltatókkal konfigurált AD FS 2019 elsődleges hitelesítési módszer](https://docs.microsoft.com/en-us/windows-server/identity/ad-fs/operations/additional-authentication-methods-ad-fs#enable-external-authentication-methods-as-primary). Az Azure AD-hez való csatlakozás alapértelmezett értéke a jelszó-hitelesítés elsődleges módszerként, amely hitelesítési hibákat eredményez ebben a forgatókönyvben
+> Az Azure AD JOIN jelenleg nem működik, [mert a külső hitelesítő szolgáltatókkal konfigurált AD FS 2019 elsődleges hitelesítési módszer](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/additional-authentication-methods-ad-fs#enable-external-authentication-methods-as-primary). Az Azure AD-hez való csatlakozás alapértelmezett értéke a jelszó-hitelesítés elsődleges módszerként, amely hitelesítési hibákat eredményez ebben a forgatókönyvben
 
 
 ### <a name="smartcards-and-certificate-based-authentication"></a>Intelligens kártyák és tanúsítványalapú hitelesítés
 
 Az eszközök Azure AD-hez való csatlakoztatásához nem használhat intelligens kártyát vagy tanúsítványalapú hitelesítést. Ha azonban AD FS van konfigurálva, az intelligens kártyák használatával bejelentkezhet az Azure AD-hez csatlakoztatott eszközökre.
 
-**Ajánlás** A Windows Hello for Business implementálása erős, jelszó nélküli hitelesítésre Windows 10-es eszközökre.
+**Javaslat:** A Windows Hello for Business implementálása erős, jelszó nélküli hitelesítésre Windows 10-es eszközökre.
 
 ### <a name="user-configuration"></a>Felhasználói konfiguráció
 
@@ -106,7 +106,7 @@ Azure AD-csatlakozás:
 - Nem alkalmazható a Windows korábbi verzióira vagy más operációs rendszerekre. Windows 7/8.1 rendszerű eszközök esetén az Azure AD JOIN üzembe helyezéséhez frissítenie kell a Windows 10-es verzióra.
 - Nem támogatott a TPM-sel rendelkező eszközökön FIPS módban.
  
-**Ajánlás** A frissített funkciók kihasználásához mindig a legújabb Windows 10-es verziót használja.
+**Javaslat:** A frissített funkciók kihasználásához mindig a legújabb Windows 10-es verziót használja.
 
 ### <a name="management-platform"></a>Felügyeleti platform
 
@@ -127,15 +127,15 @@ A támogatott és nem támogatott házirendek áttekintésével állapítsa meg,
 - Az Azure AD-hez csatlakoztatott eszközökhöz vagy felhasználókhoz nem támogatott házirendek szükségesek?
 - A felhőalapú üzemelő példányokban nem támogatott szabályzatok alkalmazhatók?
 
-Ha a MDM-megoldás nem érhető el az Azure AD-alkalmazás-katalóguson keresztül, akkor a MDM-integrációs szolgáltatásban ismertetett eljárást követve adhatja hozzá a következőhöz: [Azure Active Directory](https://docs.microsoft.com/windows/client-management/mdm/azure-active-directory-integration-with-mdm). 
+Ha a MDM-megoldás nem érhető el az Azure AD-alkalmazás-katalóguson keresztül, akkor a [Mdm-integrációs szolgáltatásban](https://docs.microsoft.com/windows/client-management/mdm/azure-active-directory-integration-with-mdm)ismertetett eljárást követve adhatja hozzá a következőhöz: Azure Active Directory. 
 
 A közös felügyelet révén a SCCM segítségével kezelheti az eszközök bizonyos aspektusait, miközben a szabályzatokat a MDM platformon keresztül továbbítjuk. A Microsoft Intune lehetővé teszi a SCCM való közös felügyeletet. További információ: [a Windows 10-es eszközök közös felügyelete](https://docs.microsoft.com/sccm/core/clients/manage/co-management-overview). Ha az Intune-tól eltérő MDM-terméket használ, kérjük, tekintse meg a MDM-szolgáltatót a megfelelő közös felügyeleti forgatókönyvekben.
 
-**Ajánlás** A MDM csak az Azure AD-hez csatlakoztatott eszközök felügyeletét érdemes figyelembe venni.
+**Javaslat:** A MDM csak az Azure AD-hez csatlakoztatott eszközök felügyeletét érdemes figyelembe venni.
 
 ## <a name="understand-considerations-for-applications-and-resources"></a>Az alkalmazásokkal és erőforrásokkal kapcsolatos megfontolások ismertetése
 
-Javasoljuk, hogy jobb felhasználói élményt és hozzáférés-vezérlést biztosítson a helyszíni és a Felhőbeli alkalmazások áttelepítéséhez. Az Azure AD-hez csatlakoztatott eszközök azonban zökkenőmentesen biztosíthatnak hozzáférést mind a helyszíni, mind a felhőalapú alkalmazásokhoz. További információ: Hogyan működik az SSO a helyszíni erőforrásokkal az [Azure ad-hez csatlakoztatott eszközökön](azuread-join-sso.md).
+Javasoljuk, hogy jobb felhasználói élményt és hozzáférés-vezérlést biztosítson a helyszíni és a Felhőbeli alkalmazások áttelepítéséhez. Az Azure AD-hez csatlakoztatott eszközök azonban zökkenőmentesen biztosíthatnak hozzáférést mind a helyszíni, mind a felhőalapú alkalmazásokhoz. További információ: [Hogyan működik az SSO a helyszíni erőforrásokkal az Azure ad-hez csatlakoztatott eszközökön](azuread-join-sso.md).
 
 Az alábbi részekben a különböző típusú alkalmazásokra és erőforrásokra vonatkozó szempontok szerepelnek.
 
@@ -157,13 +157,13 @@ Ha az alkalmazásai egyéni és/vagy helyszíni környezetben találhatók, akko
 
 Ha AD FS használ, tekintse [meg az egyszeri bejelentkezés ellenőrzése és kezelése a AD FS](https://docs.microsoft.com/previous-versions/azure/azure-services/jj151809(v%3dazure.100))használatával című témakört. 
 
-**Ajánlás** Vegye fontolóra a felhőben való üzemeltetést (például az Azure-t) és az Azure AD-val való integrációt a jobb felhasználói élmény érdekében.
+**Javaslat:** Vegye fontolóra a felhőben való üzemeltetést (például az Azure-t) és az Azure AD-val való integrációt a jobb felhasználói élmény érdekében.
 
 ### <a name="on-premises-applications-relying-on-legacy-protocols"></a>Örökölt protokollokra támaszkodó helyszíni alkalmazások
 
 A felhasználók egyszeri bejelentkezést kapnak az Azure AD-hez csatlakoztatott eszközökről, ha az eszköz hozzáfér egy tartományvezérlőhöz. 
 
-**Ajánlás** [Azure ad alkalmazás proxy](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy) üzembe helyezésével engedélyezheti ezeknek az alkalmazásoknak a biztonságos elérését.
+**Javaslat:** [Azure ad alkalmazás proxy](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy) üzembe helyezésével engedélyezheti ezeknek az alkalmazásoknak a biztonságos elérését.
 
 ### <a name="on-premises-network-shares"></a>Helyszíni hálózati megosztások
 
@@ -179,7 +179,7 @@ Habár a nyomtatók nem észlelhetők automatikusan csak Felhőbeli környezetbe
 
 Az Azure AD-hez csatlakoztatott eszközök nem támogatják a számítógép-hitelesítésre támaszkodó helyszíni alkalmazásokat. 
 
-**Ajánlás** Vegye fontolóra az alkalmazások kivonását és a modern alternatívákra való áttérést.
+**Javaslat:** Vegye fontolóra az alkalmazások kivonását és a modern alternatívákra való áttérést.
 
 ### <a name="remote-desktop-services"></a>Távoli asztali szolgáltatások
 
@@ -191,18 +191,18 @@ Az Azure AD JOIN a következő módszerekkel építhető ki:
 
 - Önkiszolgáló **az Oobe/Settings** -ben – önkiszolgáló módban a felhasználók az Azure ad JOIN folyamaton keresztül érhetik el a Windows beépített felhasználói élmény (OOBE) vagy a Windows beállításai között. További információ: [a munkahelyi eszköz csatlakoztatása a szervezet hálózatához](https://docs.microsoft.com/azure/active-directory/user-help/user-help-join-device-on-network). 
 - **Windows Autopilot** – a Windows Autopilot lehetővé teszi az eszközök előzetes konfigurálását az Oobe zökkenőmentesebb működéséhez az Azure ad-csatlakozás végrehajtásához. További információ: a [Windows Autopilot áttekintése](https://docs.microsoft.com/windows/deployment/windows-autopilot/windows-10-autopilot). 
-- **Tömeges beléptetés** – a tömeges regisztráció lehetővé teszi, hogy a rendszergazda egy tömeges kiépítési eszközzel konfigurálja az eszközöket az Azure ad-hez. További információ: [csoportos regisztráció a Windows](https://docs.microsoft.com/intune/windows-bulk-enroll)-eszközökhöz.
+- **Tömeges beléptetés** – a tömeges regisztráció lehetővé teszi, hogy a rendszergazda egy tömeges kiépítési eszközzel konfigurálja az eszközöket az Azure ad-hez. További információ: [csoportos regisztráció a Windows-eszközökhöz](https://docs.microsoft.com/intune/windows-bulk-enroll).
  
 A következő három megközelítés összehasonlítása 
  
-|   | Önkiszolgáló telepítés | Windows Autopilot | Tömeges regisztrálás |
+|   | Önkiszolgáló telepítés | Windows Autopilot | Tömeges beléptetés |
 | --- | --- | --- | --- |
 | Felhasználói beavatkozás szükséges a beállításhoz | Igen | Igen | Nem |
 | INFORMATIKAI erőfeszítés megkövetelése | Nem | Igen | Igen |
 | Alkalmazható folyamatok | OOBE & beállításai | Csak OOBE | Csak OOBE |
 | Helyi rendszergazdai jogosultságok az elsődleges felhasználóhoz | Igen, alapértelmezés szerint | Konfigurálható | Nem |
 | Eszköz OEM-támogatásának megkövetelése | Nem | Igen | Nem |
-| Támogatott verziók | 1511+ | 1709 + | 1703 + |
+| Támogatott verziók | 1511 + | 1709 + | 1703 + |
  
 Válassza ki az üzembe helyezési módszert vagy megközelítéseket a fenti táblázat áttekintésével, és tekintse át a következő szempontokat az egyik megközelítés elfogadásához:  
 
@@ -217,19 +217,19 @@ Válassza ki az üzembe helyezési módszert vagy megközelítéseket a fenti t�
 
 ## <a name="configure-your-device-settings"></a>Az eszközbeállítások konfigurálása
 
-A Azure Portal segítségével szabályozható az Azure AD-hez csatlakoztatott eszközök üzembe helyezése a szervezetben. A kapcsolódó beállítások konfigurálásához a **Azure Active Directory lapon**válassza a elemet `Devices > Device settings`.
+A Azure Portal segítségével szabályozható az Azure AD-hez csatlakoztatott eszközök üzembe helyezése a szervezetben. A kapcsolódó beállítások konfigurálásához a **Azure Active Directory lapon**válassza a `Devices > Device settings`lehetőséget.
 
-### <a name="users-may-join-devices-to-azure-ad"></a>A felhasználók eszközöket csatlakoztathatnak az Azure AD-hez
+### <a name="users-may-join-devices-to-azure-ad"></a>A felhasználók csatlakozhatnak az eszközökhöz az Azure AD-ben
 
-Ezt a beállítást állítsa be a telepítés hatóköre alapján, és **válassza** ki az Azure ad-hez csatlakoztatott eszköz beállítását. 
+Ezt a beállítást állítsa be a telepítés hatóköre alapján, és **válassza** ki az Azure **ad-hez** csatlakoztatott eszköz beállítását. 
 
-![A felhasználók eszközöket csatlakoztathatnak az Azure AD-hez](./media/azureadjoin-plan/01.png)
+![A felhasználók csatlakozhatnak az eszközökhöz az Azure AD-ben](./media/azureadjoin-plan/01.png)
 
-### <a name="additional-local-administrators-on-azure-ad-joined-devices"></a>További helyi rendszergazdák az Azure AD-tartományhoz csatlakozott eszközökön
+### <a name="additional-local-administrators-on-azure-ad-joined-devices"></a>További helyi rendszergazdák az Azure AD-hez csatlakoztatott eszközökön
 
 Válassza a **kijelölés** lehetőséget, és jelölje ki azokat a felhasználókat, akiket hozzá szeretne adni a helyi rendszergazdák csoportjához az összes Azure ad-hez csatlakoztatott eszközön. 
 
-![További helyi rendszergazdák az Azure AD-tartományhoz csatlakozott eszközökön](./media/azureadjoin-plan/02.png)
+![További helyi rendszergazdák az Azure AD-hez csatlakoztatott eszközökön](./media/azureadjoin-plan/02.png)
 
 ### <a name="require-multi-factor-auth-to-join-devices"></a>Multi-Factor Auth megkövetelése eszközök csatlakoztatásához
 
@@ -243,11 +243,11 @@ A mobilitási beállítások konfigurálása előtt előfordulhat, hogy előbb h
 
 **Mdm-szolgáltató hozzáadása**:
 
-1. A **Azure Active Directory lap** **kezelés** szakaszában kattintson a elemre `Mobility (MDM and MAM)`. 
+1. A **Azure Active Directory oldalon**, a **kezelés** szakaszban kattintson az `Mobility (MDM and MAM)`elemre. 
 1. Kattintson az **alkalmazás hozzáadása**lehetőségre.
 1. Válassza ki a MDM-szolgáltatót a listából.
 
-   ![Alkalmazás felvétele](./media/azureadjoin-plan/04.png)
+   ![Alkalmazás hozzáadása](./media/azureadjoin-plan/04.png)
 
 Válassza ki a MDM szolgáltatóját a kapcsolódó beállítások konfigurálásához. 
 
@@ -259,18 +259,18 @@ A telepítés hatóköre alapján válasszon ki **egy** vagy **mindet** .
 
 A hatókör alapján a következők egyike történik: 
 
-- **A felhasználó Mdm hatókörben van**: Ha prémium szintű Azure AD-előfizetéssel rendelkezik, a MDM-regisztráció az Azure AD JOIN szolgáltatással együtt automatizálható. Az összes hatókörrel rendelkező felhasználónak rendelkeznie kell egy megfelelő licenccel a MDM. Ha ebben a forgatókönyvben a MDM-regisztráció meghiúsul, az Azure AD JOIN is vissza lesz állítva.
-- **A felhasználó nincs Mdm hatókörben**: Ha a felhasználók nincsenek a MDM-hatókörben, az Azure AD JOIN MDM-regisztráció nélkül fejeződik be. Ez egy nem felügyelt eszköz eredményét eredményezi.
+- **A felhasználó Mdm hatókörben**van: Ha prémium szintű Azure ad-előfizetéssel rendelkezik, a Mdm-regisztráció az Azure ad JOIN szolgáltatással együtt automatizálható. Az összes hatókörrel rendelkező felhasználónak rendelkeznie kell egy megfelelő licenccel a MDM. Ha ebben a forgatókönyvben a MDM-regisztráció meghiúsul, az Azure AD JOIN is vissza lesz állítva.
+- **A felhasználó nincs Mdm hatókörben**: Ha a felhasználók nincsenek a Mdm hatókörében, az Azure ad JOIN Mdm-regisztráció nélkül fejeződik be. Ez egy nem felügyelt eszköz eredményét eredményezi.
 
 ### <a name="mdm-urls"></a>MDM URL-címek
 
 A MDM-konfigurációhoz három URL-cím kapcsolódik:
 
 - MDM használati feltételeinek URL-címe
-- MDM-felderítési URL-cím 
+- MDM felderítési URL-címe 
 - MDM megfelelőségi URL-címe
 
-![Alkalmazás felvétele](./media/azureadjoin-plan/06.png)
+![Alkalmazás hozzáadása](./media/azureadjoin-plan/06.png)
 
 Minden URL-cím előre definiált alapértelmezett értékkel rendelkezik. Ha ezek a mezők üresek, további információért forduljon a MDM-szolgáltatóhoz.
 
@@ -282,21 +282,21 @@ A MAM nem vonatkozik az Azure AD JOIN szolgáltatásra.
 
 Ha engedélyezni szeretné az állapot-barangolást az Azure AD-ben, hogy a felhasználók szinkronizálják a beállításait az eszközök között, tekintse [meg a Enterprise State roaming engedélyezése a Azure Active Directoryban](enterprise-state-roaming-enable.md)című témakört. 
 
-**Javaslat**: Engedélyezze ezt a beállítást még a hibrid Azure AD-hez csatlakoztatott eszközök esetében is.
+**Javaslat**: engedélyezze ezt a beállítást még a hibrid Azure ad-hez csatlakoztatott eszközök esetében is.
 
 ## <a name="configure-conditional-access"></a>Feltételes hozzáférés konfigurálása
 
 Ha rendelkezik egy, az Azure AD-hez csatlakoztatott eszközökhöz konfigurált MDM-szolgáltatóval, a szolgáltató az eszközt megfelelőként megjelöli, amint az eszköz felügyelete alatt áll. 
 
-![Szabályzatnak megfelelő eszköz](./media/azureadjoin-plan/46.png)
+![Megfelelő eszköz](./media/azureadjoin-plan/46.png)
 
 Ezzel a megvalósítással [feltételes hozzáféréssel rendelkező felügyelt eszközöket igényelhet a Cloud app Access számára](../conditional-access/require-managed-devices.md).
 
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Egy új Windows 10-es eszköz csatlakoztatása az Azure ad-vel az első futtatáskor](azuread-joined-devices-frx.md)
-> a[munkahelyi eszköz csatlakoztatása a szervezet hálózatához](https://docs.microsoft.com/azure/active-directory/user-help/user-help-join-device-on-network)
+> [Új Windows 10-es eszköz csatlakoztatása az Azure ad-vel az első futtatás](azuread-joined-devices-frx.md)
+> a [munkahelyi eszköz csatlakoztatása a szervezet hálózatához](https://docs.microsoft.com/azure/active-directory/user-help/user-help-join-device-on-network)
 
 <!--Image references-->
 [1]: ./media/azureadjoin-plan/12.png

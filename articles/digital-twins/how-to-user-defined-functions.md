@@ -7,14 +7,14 @@ manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 10/02/2019
+ms.date: 11/07/2019
 ms.custom: seodec18
-ms.openlocfilehash: 24b7f05bc59f3eb951897f5e36030b531d8f3aa9
-ms.sourcegitcommit: 7868d1c40f6feb1abcafbffcddca952438a3472d
+ms.openlocfilehash: 5271b14ec008579d18a152a229b9768339927bb7
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71959096"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73888845"
 ---
 # <a name="how-to-create-user-defined-functions-in-azure-digital-twins"></a>Felhasználó által definiált függvények létrehozása az Azure Digital Twinsban
 
@@ -44,7 +44,7 @@ Az egyeztetések olyan Graph-objektumok, amelyek meghatározzák, hogy a felhasz
   - `SensorDevice`
   - `SensorSpace`
 
-A következő példa a Matcher értékét igaz értékre értékeli a `"Temperature"` adattípusú telemetria eseménynél. A felhasználó által definiált függvényekhez több egyezőt is létrehozhat, ha egy hitelesített HTTP POST-kérelmet küld a következőnek:
+A következő példa a Matcher igaz értékre értékeli a `"Temperature"` adattípusának értékeként az összes érzékelő telemetria eseménynél. A felhasználó által definiált függvényekhez több egyezőt is létrehozhat, ha egy hitelesített HTTP POST-kérelmet küld a következőnek:
 
 ```plaintext
 YOUR_MANAGEMENT_API_URL/matchers
@@ -54,22 +54,24 @@ JSON-törzstel:
 
 ```JSON
 {
-  "Name": "Temperature Matcher",
-  "Conditions": [
+  "id": "3626464-f39b-46c0-d9b0c-436aysj55",
+  "name": "Temperature Matcher",
+  "spaceId": "YOUR_SPACE_IDENTIFIER",
+  "conditions": [
     {
+      "id": "ag7gq35cfu3-e15a-4e9c-6437-sj6w68sy44s",
       "target": "Sensor",
       "path": "$.dataType",
       "value": "\"Temperature\"",
       "comparison": "Equals"
     }
-  ],
-  "SpaceId": "YOUR_SPACE_IDENTIFIER"
+  ]
 }
 ```
 
-| Value | Csere erre |
+| Érték | Csere erre |
 | --- | --- |
-| YOUR_SPACE_IDENTIFIER | Melyik kiszolgáló régióban lévő üzemeltetett a példány |
+| YOUR_SPACE_IDENTIFIER | A példány által üzemeltetett kiszolgálói régió |
 
 ## <a name="create-a-user-defined-function"></a>Felhasználó által meghatározott függvény létrehozása
 
@@ -107,7 +109,7 @@ function process(telemetry, executionContext) {
 --USER_DEFINED_BOUNDARY--
 ```
 
-| Value | Csere erre |
+| Érték | Csere erre |
 | --- | --- |
 | USER_DEFINED_BOUNDARY | Egy többrészes tartalom határának neve |
 | YOUR_SPACE_IDENTIFIER | A szóköz azonosítója  |
@@ -120,11 +122,11 @@ function process(telemetry, executionContext) {
    - A második rész tartalmazza a JavaScript számítási logikát.
 
 1. A **USER_DEFINED_BOUNDARY** szakaszban cserélje le a **spaceId** (`YOUR_SPACE_IDENTIFIER`) és a **matchers** (`YOUR_MATCHER_IDENTIFIER`) értékeket.
-1. Ellenőrizze, hogy a JavaScript felhasználó által definiált függvény a `Content-Type: text/javascript` értékkel van-e megadva.
+1. Győződjön meg arról, hogy a JavaScript felhasználó által definiált függvény `Content-Type: text/javascript`ként van megadva.
 
 ### <a name="example-functions"></a>Függvények – példa
 
-Állítsa be az érzékelő telemetria közvetlenül az érzékelőre az adattípusok **hőmérséklete**`sensor.DataType` értékre:
+Állítsa be az érzékelő telemetria közvetlenül az érzékelőre az adattípusok **hőmérsékletének**`sensor.DataType`:
 
 ```JavaScript
 function process(telemetry, executionContext) {
@@ -202,21 +204,21 @@ Hozzon létre egy szerepkör-hozzárendelést a felhasználó által definiált 
     ```plaintext
     YOUR_MANAGEMENT_API_URL/system/roles
     ```
-   Tartsa meg a kívánt szerepkör-azonosítót. Az alábbi JSON-törzs **szerepkörazonosítónak** (`YOUR_DESIRED_ROLE_IDENTIFIER`) lesz átadva.
+   Tartsa meg a kívánt szerepkör-azonosítót. A rendszer az alábbi JSON- **szerepkörazonosítónak** (`YOUR_DESIRED_ROLE_IDENTIFIER`) adja át.
 
 1. a **objectId** (`YOUR_USER_DEFINED_FUNCTION_ID`) a felhasználó által definiált függvény azonosítója lesz, amely korábban lett létrehozva.
-1. Az **elérési út** (`YOUR_ACCESS_CONTROL_PATH`) értékének megkeresése a szóközök lekérdezésével a `fullpath` használatával.
+1. Keresse meg az **elérési út** (`YOUR_ACCESS_CONTROL_PATH`) értékét úgy, hogy lekérdezi a szóközt a `fullpath`.
 1. Másolja a visszaadott `spacePaths` értéket. Ezt a következőt fogja használni. Hitelesített HTTP GET-kérés küldése a következőnek:
 
     ```plaintext
     YOUR_MANAGEMENT_API_URL/spaces?name=YOUR_SPACE_NAME&includes=fullpath
     ```
 
-    | Value | Csere erre |
+    | Érték | Csere erre |
     | --- | --- |
     | YOUR_SPACE_NAME | A használni kívánt hely neve |
 
-1. Illessze be a visszaadott `spacePaths` **értéket a felhasználó** által definiált függvény szerepkör-hozzárendelés létrehozásához egy hitelesített HTTP POST-kéréssel:
+1. Illessze be a visszaadott `spacePaths` értéket az **elérési útra** a felhasználó által definiált függvény szerepkör-hozzárendelés létrehozásához egy hitelesített http post-kérelem használatával:
 
     ```plaintext
     YOUR_MANAGEMENT_API_URL/roleassignments
@@ -232,7 +234,7 @@ Hozzon létre egy szerepkör-hozzárendelést a felhasználó által definiált 
     }
     ```
 
-    | Value | Csere erre |
+    | Érték | Csere erre |
     | --- | --- |
     | YOUR_DESIRED_ROLE_IDENTIFIER | A kívánt szerepkör azonosítója |
     | YOUR_USER_DEFINED_FUNCTION_ID | A használni kívánt felhasználó által definiált függvény azonosítója |

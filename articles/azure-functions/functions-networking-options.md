@@ -7,12 +7,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 4/11/2019
 ms.author: alkarche
-ms.openlocfilehash: 34759077bd7223d17fea70d32bda63fd1b2595eb
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 4e55932d47389e09b135d571d0e000b9795e6edc
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73668126"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73884964"
 ---
 # <a name="azure-functions-networking-options"></a>Azure Functions hálózati beállítások
 
@@ -86,7 +86,7 @@ A használt verziótól függetlenül a Virtual Network Integration lehetővé t
 A Virtual Network integrációs funkciója:
 
 * Standard, prémium vagy PremiumV2 App Service csomagra van szükség
-* a TCP és az UDP támogatása
+* A TCP és az UDP támogatása
 * Együttműködik App Service alkalmazásokkal és a Function-alkalmazásokkal
 
 Néhány dolog, amit a virtuális hálózat integrációja nem támogat, beleértve a következőket:
@@ -116,6 +116,12 @@ A magasabb szintű biztonság érdekében a szolgáltatás-végpontok segítség
 Egy Function-alkalmazás létrehozásakor létre kell hoznia egy általános célú Azure Storage-fiókot, amely támogatja a blobot, a várólistát és a Table Storage-t. Jelenleg nem használhat virtuális hálózati korlátozásokat ezen a fiókon. Ha egy virtuális hálózati szolgáltatás végpontját konfigurálja a Function alkalmazáshoz használt Storage-fiókon, akkor az alkalmazás megszakítja az alkalmazást.
 
 [További információ a Storage-fiókra vonatkozó követelményekről.](./functions-create-function-app-portal.md#storage-account-requirements)
+
+### <a name="using-key-vault-references"></a>Key Vault hivatkozások használata 
+
+A Key Vault referenciák lehetővé teszik, hogy programkód módosítása nélkül használja a Azure Functions alkalmazásban található Azure Key Vault titkokat. A Azure Key Vault egy olyan szolgáltatás, amely központosított titkok felügyeletét teszi lehetővé a hozzáférési házirendek és a naplózási előzmények teljes körű szabályozásával.
+
+A [Key Vault-hivatkozások](../app-service/app-service-key-vault-references.md) jelenleg nem működnek, ha a Key Vault a szolgáltatási végpontok biztosítják. Ha virtuális hálózati integráció használatával szeretne csatlakozni egy Key Vaulthoz, a Key vaultot meg kell hívnia az alkalmazás kódjában.
 
 ## <a name="virtual-network-triggers-non-http"></a>Virtuális hálózati eseményindítók (nem HTTP)
 

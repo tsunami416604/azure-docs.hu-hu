@@ -1,6 +1,6 @@
 ---
 title: 'Oktatóanyag: Azure Cosmos DB által működtetett Node. js-alkalmazások üzembe helyezése Azure DevOps Projects'
-description: Az Azure DevOps Projects megkönnyíti az Azure használatának első lépéseit. A DevOps Projects segítségével néhány gyors lépéssel telepítheti a Node. js-alkalmazást, amelyet Azure Cosmos DB a Windows Web App-hoz.
+description: Azure DevOps Projects megkönnyíti az Azure megkezdését. A DevOps Projects segítségével néhány gyors lépéssel telepítheti a Node. js-alkalmazást, amelyet Azure Cosmos DB a Windows Web App-hoz.
 ms.author: mlearned
 ms.manager: gwallace
 ms.prod: devops
@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 07/11/2019
 author: mlearned
 monikerRange: vsts
-ms.openlocfilehash: 1c16368990148406fbacdde2981c10fab0b2d405
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.openlocfilehash: 229b4b9f53ea3866dce1169645f6d6da20827271
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71969662"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73888906"
 ---
 # <a name="deploy-nodejs-apps-powered-by-azure-cosmos-db-with-devops-projects"></a>Azure Cosmos DB által működtetett Node. js-alkalmazások üzembe helyezése DevOps Projects
 
@@ -30,7 +30,7 @@ Az oktatóanyag során az alábbi lépéseket fogja végrehajtani:
 
 > [!div class="checklist"]
 > * A DevOps Projects használatával üzembe helyezhet egy Node. js-alkalmazást Azure Cosmos DB
-> * Az Azure DevOps és az Azure-előfizetés konfigurálása
+> * Azure-DevOps és Azure-előfizetés konfigurálása
 > * Azure Cosmos DB vizsgálata
 > * A CI-folyamat vizsgálata
 > * A CD-folyamat vizsgálata
@@ -45,7 +45,7 @@ Szüksége van egy Azure-előfizetésre, amelyet ingyenesen kaphat a [Visual Stu
 
 A DevOps Projects egy CI/CD-folyamatot hoz létre az Azure-folyamatokban. Létrehozhat egy új Azure DevOps-szervezetet, vagy használhat egy meglévő céget is. A DevOps Projects Azure-erőforrásokat is létrehoz, például Azure Cosmos DB, Application Insights, App Service és App Service terveket az Ön által választott Azure-előfizetésben.
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
+1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
 
 1. A bal oldali panelen válassza az **erőforrás létrehozása**lehetőséget.
 
@@ -103,13 +103,13 @@ DevOps Projects automatikusan konfigurálja a CI/CD-folyamatot az Azure DevOps-s
 
     ![Létrehozás ablaktábla](_img/azure-devops-project-cosmos-db/build.png)
 
-1. Válassza a **Szerkesztés** elemet. Ezen az ablaktáblán keresse meg a különböző feladatok a a buildelési folyamat. A build különböző feladatokat hajt végre, mint például a forráskód beolvasása a git-tárházból, az alkalmazás létrehozása, az egységhez tartozó tesztek futtatása, valamint az üzembe helyezéshez használt kimenetek közzététele.
+1. Válassza a **Szerkesztés** elemet. Ezen az ablaktáblán ellenőrizheti a felépítési folyamat különféle feladatait. A build különböző feladatokat hajt végre, mint például a forráskód beolvasása a git-tárházból, az alkalmazás létrehozása, az egységhez tartozó tesztek futtatása, valamint az üzembe helyezéshez használt kimenetek közzététele.
 
 1. Válassza az **Eseményindítókat**. A DevOps Projects automatikusan létrehoz egy CI-triggert, és a tárházba való minden egyes véglegesít egy új buildet indít el. Dönthet úgy is, hogy a CI-folyamatból kijelöli vagy kizárja az ágakat.
 
-1. Válassza a **Megtartást**. A forgatókönyvtől függően a szabályzatokat, hogy megtartja vagy eltávolítja a buildek bizonyos számú is megadhat.
+1. Válassza a **Megtartást**. A forgatókönyvtől függően megadhat olyan házirendeket, amelyek bizonyos számú buildet megtartanak vagy eltávolítanak.
 
-1. A létrehozási folyamat elején jelölje ki a buildelési folyamat neve.
+1. A build folyamat tetején válassza a folyamat létrehozása nevet.
 
 1. Módosítsa a felépítési folyamat nevét egy ennél több leíró értékre, **majd válassza a mentés lehetőséget** a **Mentés & üzenetsor** legördülő menüből.
 
@@ -154,7 +154,7 @@ Most már készen áll az alkalmazásban lévő csapattal való együttműködé
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Törölje a létrehozott kapcsolódó erőforrásokat, ha már nincs rá szüksége. Használja a **törlése** funkciókat a DevOps Projects-irányítópulton.
+Törölje a létrehozott kapcsolódó erőforrásokat, ha már nincs rá szüksége. Használja a **delete** funkciót a DevOps projects irányítópulton.
 
 ## <a name="next-steps"></a>További lépések
 
@@ -162,13 +162,13 @@ A csapat igényeihez igazodva módosíthatja ezt a buildet és a kiadási folyam
 
 > [!div class="checklist"]
 > * A DevOps Projects használatával üzembe helyezhet egy Node. js-alkalmazást Azure Cosmos DB
-> * Az Azure DevOps és az Azure-előfizetés konfigurálása 
+> * Azure-DevOps és Azure-előfizetés konfigurálása 
 > * Azure Cosmos DB vizsgálata
 > * A CI-folyamat vizsgálata
 > * A CD-folyamat vizsgálata
 > * Módosítások végrehajtása a git-ben és automatikus üzembe helyezése az Azure-ban
 > * Az erőforrások eltávolítása
 
-További információkat és további lépéseket a [többfázisú folyamatos üzembe helyezés (CD) folyamatának meghatározása](https://docs.microsoft.com/en-us/azure/devops/pipelines/release/define-multistage-release-process?view=azure-devops&viewFallbackFrom=vsts) című témakörben talál.
+További információkat és további lépéseket a [többfázisú folyamatos üzembe helyezés (CD) folyamatának meghatározása](https://docs.microsoft.com/azure/devops/pipelines/release/define-multistage-release-process?view=azure-devops&viewFallbackFrom=vsts) című témakörben talál.
 
 

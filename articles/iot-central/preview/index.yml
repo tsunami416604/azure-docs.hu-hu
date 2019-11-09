@@ -10,12 +10,12 @@ metadata:
   author: philmea
   ms.author: philmea
   ms.date: 10/25/2019
-  ms.openlocfilehash: ff8f5772880f047bbe0b0d798c944b38da486468
+  ms.openlocfilehash: d769b906324c1022baffff198fea6e4e44821757
   ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
   ms.translationtype: HT
   ms.contentlocale: hu-HU
   ms.lasthandoff: 11/09/2019
-  ms.locfileid: "73888798"
+  ms.locfileid: "73891805"
 landingContent:
 - title: Tudnivalók az Azure IoT Centralról
   linkLists:
@@ -42,35 +42,37 @@ landingContent:
     - text: Eszközsablon beállítása
       url: howto-set-up-template.md
     - text: IoT Plug and Play-eszköz csatlakoztatása
-      url: tutorial-add-device.md
+      url: tutorial-connect-pnp-device.md
   - linkListType: how-to-guide
     links:
     - text: MX Chip IoT DevKit előkészítése és csatlakoztatása
       url: howto-connect-devkit.md
     - text: Más IoT-felhők csatlakoztatása
-      url: howto-build-iotc-device-bridge.md
+      url: ../core/howto-build-iotc-device-bridge.md?toc=/azure/iot-central/preview/toc.json&bc=/azure/iot-central/preview/breadcrumb/toc.json
 - title: A kapcsolat fenntartása
   linkLists:
   - linkListType: tutorial
     links:
-    - text: Használatos eszközök készletei
-      url: howto-use-device-sets.md
+    - text: Eszközcsoportok használata
+      url: tutorial-use-device-groups.md
   - linkListType: how-to-guide
     links:
     - text: Eszközök kezelése
       url: howto-manage-devices.md
     - text: Feladat futtatása
-      url: howto-run-a-job.md
+      url: ../core/howto-run-a-job.md?toc=/azure/iot-central/preview/toc.json&bc=/azure/iot-central/preview/breadcrumb/toc.json
     - text: Eszközadatok elemzése
       url: howto-create-analytics.md
 - title: Átalakítás
   linkLists:
   - linkListType: tutorial
     links:
+    - text: Szabály létrehozása
+      url: quick-configure-rules.md
     - text: Telemetriaszabályok létrehozása
-      url: howto-create-telemetry-rules.md
+      url: tutorial-create-telemetry-rules.md
     - text: Exportálás a Blob Storage-ba
-      url: howto-export-data-blob-storage.md
+      url: howto-export-data.md
   - linkListType: how-to-guide
     links:
     - text: Egyéni szabályok létrehozása
@@ -90,8 +92,8 @@ landingContent:
     - text: Az alkalmazás felhasználói felületének testreszabása
       url: howto-customize-ui.md
     - text: Személyes irányítópultok konfigurálása
-      url: howto-create-personal-dashboards.md
+      url: ../core/howto-create-personal-dashboards.md?toc=/azure/iot-central/preview/toc.json&bc=/azure/iot-central/preview/breadcrumb/toc.json
     - text: Irányítópult-csempék használata
-      url: howto-add-tiles-to-your-dashboard.md
+      url: ../core/howto-add-tiles-to-your-dashboard.md?toc=/azure/iot-central/preview/toc.json&bc=/azure/iot-central/preview/breadcrumb/toc.json
     - text: Alkalmazássablonok használata
       url: howto-use-app-templates.md

@@ -8,28 +8,28 @@ ms.topic: include
 ms.date: 02/08/2018
 ms.author: kumud
 ms.custom: include file
-ms.openlocfilehash: 1d3ce900f7354b31e999c12b8e1eb0e23d391fcb
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 8b08e0ced0c7094890a80c37452c7f1b001fe511
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67179540"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73888697"
 ---
 | | Standard termékváltozat | Alapszintű termékváltozat |
 | --- | --- | --- |
-| Háttérkiszolgáló-készlet mérete | Akár 1000 példányt támogat. | Akár 100 példányt támogat. |
-| Háttérbeli címkészlet végpontok | bármelyik virtuális gépet, egyetlen virtuális hálózattal, programhoz való Blend alkalmazást a virtuális gépek rendelkezésre állási csoportok, köztük a virtuálisgép-méretezési csoport állítja be. | Állítsa be egy egyetlen rendelkezésre állási csoport vagy a virtuális gép méretezési csoportban lévő virtuális gépek. |
+| Háttérbeli készlet mérete | Legfeljebb 1000 példányt támogat. | Legfeljebb 100 példányt támogat. |
+| Háttérbeli készlet végpontok | Egyetlen virtuális hálózat bármely virtuális gépe, beleértve a virtuális gépeket, a rendelkezésre állási csoportokat és a virtuálisgép-méretezési csoportokat. | Egyetlen rendelkezésre állási csoport vagy virtuálisgép-méretezési csoport virtuális gépei. |
 | [Állapotminták](../articles/load-balancer/load-balancer-custom-probe-overview.md#types) | TCP, HTTP, HTTPS | TCP, HTTP |
-| [Az állapotfigyelő mintavételező le viselkedés](../articles/load-balancer/load-balancer-custom-probe-overview.md#probedown) | TCP-kapcsolatok a példány mintavételi le életben maradjon __és__ az összes mintavételek le. | A példány mintavételi le életben maradjon, TCP-kapcsolatokat. Összes TCP-kapcsolatok leállítja az összes mintavételek működnek. |
-| Rendelkezésre állási zónák | A Standard Termékváltozat, a bejövő és kimenő, és a zónaszintű és zónaredundáns az előtérrendszerek a kimenő forgalom leképezések stabilitást biztosít az zóna hiba, a zónák közötti terheléselosztást. | Nem érhető el. |
-| Diagnosztika | Az Azure Monitor bájt és csomag számlálókat, egészségügyi többdimenziós metrikák mintavételi állapota, (TCP SZIN) kapcsolódási kísérletek, kimenő kapcsolat állapota (SNAT sikeres és sikertelen folyamatok), aktív adatsík mérések | Az Azure Log Analytics nyilvános Load Balancer csak, SNAT Erőforrásfogyás riasztást, háttérbeli címkészlet állapotfigyelő száma. |
-| Magas rendelkezésre ÁLLÁS portok | Belső terheléselosztó | Nem érhető el. |
-| Alapértelmezés szerint biztonságossá tétele | Nyilvános IP-cím, nyilvános Load Balancer végpontok, a belső Load Balancer végpontok zárva a bejövő forgalom, kivéve, ha egy hálózati biztonsági csoport is szerepel az engedélyezési listán. | Nyissa meg alapértelmezettként, a hálózati biztonsági csoport nem kötelező. |
-| [Kimenő kapcsolatok](../articles/load-balancer/load-balancer-outbound-connections.md) | Explicit módon meghatározhatja a kimenő NAT-készlet alapú [kimenő szabályok](../articles/load-balancer/load-balancer-outbound-rules-overview.md). A betöltés terheléselosztási szabályt az elutasítás kiszolgálónként több előtérrendszer is használhatja. Egy kimenő forgatókönyv _kell_ explicit módon hozhatók létre a virtuális gép, rendelkezésre állási csoport, virtuálisgép-méretezési kimenő kapcsolat használatára.  Virtuális hálózati Szolgáltatásvégpontok kimenő kapcsolat definiálása nélkül érhető el, és nem számítanak bele a feldolgozott adatok felé.  Bármely nyilvános IP-címeket, beleértve a nem érhető el, mint a virtuális hálózati Szolgáltatásvégpontokkal az Azure PaaS-szolgáltatások keresztül kimenő kapcsolat és a feldolgozott adatok felé számát el kell érni. Ha csak egy belső terheléselosztó szolgálja ki a virtuális gépek, a rendelkezésre állási csoportot, vagy a virtuálisgép-méretezési csoportot, kimenő kapcsolatok alapértelmezett SNAT használatával nem érhetők el; használjon [kimenő szabályok](../articles/load-balancer/load-balancer-outbound-rules-overview.md) helyette. Kimenő SNAT programozás az átviteli protokoll adott protokoll, a bejövő terheléselosztási szabály alapján. | Egyetlen előtér véletlenszerűen kiválasztott, amikor több előtérrendszer jelen.  Belső Load Balancer szolgálja ki egy virtuális gépet, ha rendelkezésre állási csoportban, vagy virtuális gép méretezési, SNAT használt alapértelmezett. |
-| [Kimenő szabályok](../articles/load-balancer/load-balancer-outbound-rules-overview.md) | Deklaratív kimenő NAT-konfigurációt található, nyilvános IP-címeket vagy nyilvános IP-előtagjai vagy mindkettő használatával konfigurálható kimenő üresjárat időkorlátja (4 – 120 perc), egyéni SNAT portkiosztással | Nem érhető el. |
-|  [Az üresjárati TCP-visszaállítás](../articles/load-balancer/load-balancer-tcp-reset.md) | Engedélyezze a TCP üresjárati időtúllépés miatt (TCP ÜZE) alaphelyzetbe állítása a szabályok | Nem érhető el |
-| [Több előtérrendszer](../articles/load-balancer/load-balancer-multivip-overview.md) | Bejövő és [kimenő](../articles/load-balancer/load-balancer-outbound-connections.md) | Csak bejövő |
-| Kezelési műveletek | A legtöbb műveletek < 30 másodperc | 60 – 90 másodperc jellemző. |
-| SLA | 99,99 %-a két kifogástalan állapotú virtuális gépek elérési útjához. | Nem alkalmazható. | 
-| Díjszabás | Bejövő szabályok száma alapján a feldolgozott adatok, a kimenő társított erőforrás.  | Díjmentes. |
+| [Állapot-mintavételi leállási viselkedés](../articles/load-balancer/load-balancer-custom-probe-overview.md#probedown) | A TCP-kapcsolatok egy példányon maradnak életben __, és__ az összes mintavétel le van kapcsolva. | A TCP-kapcsolatok egy példányon maradnak életben. Minden TCP-kapcsolat leáll, ha az összes mintavétel le van állítva. |
+| Rendelkezésre állási zónák | A bejövő és a kimenő forgalom számára a zóna-redundáns és a zónákhoz tartozó előtér-végpontok. A kimenő folyamatok nem képesek túlélni a zónát. Több zónás terheléselosztás. | Nem érhető el |
+| Diagnosztika | Azure Monitor. Többdimenziós mérőszámok, beleértve a bájtok és a csomagok számlálóit. Állapot mintavételi állapota Csatlakozási kísérletek (TCP SYN). Kimenő kapcsolatok állapota (SNAT sikeres és sikertelen folyamatok). Az aktív adatsíkok mérései | Csak nyilvános Load Balancer Azure-Log Analytics. SNAT-kimerültség riasztása. A háttérbeli készlet állapotának száma. |
+| HA portok | Belső terheléselosztó | Nem érhető el |
+| Alapértelmezés szerint biztonságos | A nyilvános IP-címek, a nyilvános Load Balancer-végpontok és a belső Load Balancer végpontok a bejövő forgalomba vannak zárva, kivéve, ha a hálózati biztonsági csoport engedélyezi őket. | Alapértelmezés szerint megnyílik. A hálózati biztonsági csoport nem kötelező. |
+| [Kimenő kapcsolatok](../articles/load-balancer/load-balancer-outbound-connections.md) | A készlet-alapú kimenő NAT explicit módon megadható [kimenő szabályokkal](../articles/load-balancer/load-balancer-outbound-rules-overview.md). Több előtért is használhat terheléses terheléselosztási szabályokkal. A kimenő kapcsolat használatához explicit módon létre _kell_ hozni egy kimenő forgatókönyvet a virtuális gép, a rendelkezésre állási csoport vagy a virtuálisgép-méretezési csoport számára. A virtuális hálózati szolgáltatás végpontjai a kimenő kapcsolat meghatározása nélkül érhetők el, és nem számítanak bele a feldolgozott adatforgalomba. A virtuális hálózati szolgáltatási végpontként nem elérhető nyilvános IP-címeket, például az Azure Pásti-szolgáltatásokat, a kimenő kapcsolat használatával kell elérni, és meg kell számolni a feldolgozott adatforgalom irányába. Ha csak egy belső Load Balancer szolgál a virtuális gép, a rendelkezésre állási csoport vagy a virtuálisgép-méretezési csoport számára, a kimenő kapcsolatok az alapértelmezett SNAT nem érhetők el. Használja helyette a [kimenő szabályokat](../articles/load-balancer/load-balancer-outbound-rules-overview.md) . A kimenő SNAT programozása a bejövő terheléselosztási szabály átviteli protokolljának függvénye. | Egy előtér, amely véletlenszerűen van kiválasztva, ha több előtér van jelen. Ha csak a belső Load Balancer szolgálja ki a virtuális gépet, a rendelkezésre állási készletet vagy a virtuálisgép-méretezési készletet, a rendszer az alapértelmezett SNAT használja. |
+| [Kimenő szabályok](../articles/load-balancer/load-balancer-outbound-rules-overview.md) | Deklaratív kimenő NAT-konfiguráció, nyilvános IP-címek vagy nyilvános IP-előtag vagy mindkettő használatával. Konfigurálható kimenő Üresjárati időkorlát (4-120 perc). Egyéni SNAT-portok kiosztása | Nem érhető el |
+| [TCP alaphelyzetbe állítása üresjáratban](../articles/load-balancer/load-balancer-tcp-reset.md) | A TCP alaphelyzetbe állításának engedélyezése (az első TCP) az üresjárati időkorláton bármely szabálynál | Nem érhető el |
+| [Több előtér](../articles/load-balancer/load-balancer-multivip-overview.md) | Bejövő és [kimenő](../articles/load-balancer/load-balancer-outbound-connections.md) | Csak bejövő |
+| Felügyeleti műveletek | A legtöbb művelet < 30 másodperc | 60 – 90 + másodperc átlagos |
+| SLA | 99,99% adatelérési úthoz két kifogástalan virtuális géppel. | Nem alkalmazható | 
+| Díjszabás | Felszámítva a szabályok száma, az erőforráshoz társított bejövő és kimenő adatmennyiség alapján. | Díjmentes |
 |  |  |  |

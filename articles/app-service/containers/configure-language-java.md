@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 06/26/2019
 ms.author: brendm
 ms.custom: seodec18
-ms.openlocfilehash: fa3cd84978119a5858e63712b4d22c2ea89ea528
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 8f6fb9737d3d8dad93a95f31d566f7cc4706ded3
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73470899"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73886052"
 ---
 # <a name="configure-a-linux-java-app-for-azure-app-service"></a>Linuxos Java-alkalmazás konfigurálása Azure App Servicehoz
 
@@ -86,7 +86,7 @@ A 30 másodperces intervallumban ellenőrizheti, hogy a rögzítés a `jcmd 116 
 
 #### <a name="continuous-recording"></a>Folyamatos rögzítés
 
-A Zulu Flight Recorder segítségével folyamatosan, a Java-alkalmazásait a futtatási teljesítményre ([forrás](https://assets.azul.com/files/Zulu-Mission-Control-data-sheet-31-Mar-19.pdf)) gyakorolt minimális hatású profilt használhatja. Ehhez futtassa az alábbi Azure CLI-parancsot egy JAVA_OPTS nevű alkalmazás-beállítás létrehozásához a szükséges konfigurációval. Az alkalmazás indításakor a rendszer átadja a JAVA_OPTS-alkalmazás beállításának tartalmát a `java` parancsnak.
+A Zulu Flight Recorder segítségével folyamatosan, a Java-alkalmazásait a futtatási teljesítményre ([forrás](https://assets.azul.com/files/Zulu-Mission-Control-data-sheet-31-Mar-19.pdf)) gyakorolt minimális hatású profilt használhatja. Ehhez futtassa az alábbi Azure CLI-parancsot egy JAVA_OPTS nevű alkalmazás-beállítás létrehozásához a szükséges konfigurációval. Az alkalmazás elindításakor a rendszer átadja a JAVA_OPTS Alkalmazásbeállítások tartalmát az `java` parancsnak.
 
 ```azurecli
 az webapp config appsettings set -g <your_resource_group> -n <your_app_name> --settings JAVA_OPTS=-XX:StartFlightRecording=disk=true,name=continuous_recording,dumponexit=true,maxsize=1024m,maxage=1d
@@ -238,6 +238,24 @@ Az [Azure](../../key-vault/key-vault-overview.md) kulcstartó központosított t
 Először is kövesse az alkalmazáshoz [való hozzáférés megadására](../app-service-key-vault-references.md#granting-your-app-access-to-key-vault) vonatkozó utasításokat, és a [titkos kulcshoz tartozó kulcstároló-hivatkozást egy Alkalmazásbeállítások alapján](../app-service-key-vault-references.md#reference-syntax)végezze el a Key Vault. Ellenőrizheti, hogy a hivatkozás feloldja-e a titkos kulcsot a környezeti változó kinyomtatásával, miközben távolról fér hozzá a App Service terminálhoz.
 
 Ha ezeket a titkokat be szeretné szúrni a Spring vagy a Tomcat konfigurációs fájljába, használja a környezeti változók injekciós szintaxisát (`${MY_ENV_VAR}`). A Spring konfigurációs fájlok esetében tekintse meg ezt a dokumentációt a [külső konfigurációkról](https://docs.spring.io/spring-boot/docs/current/reference/html/boot-features-external-config.html).
+
+## <a name="using-the-java-key-store"></a>A Java Key Store használata
+
+Alapértelmezés szerint a rendszer a [app Service Linuxra feltöltött](../configure-ssl-certificate.md) nyilvános vagy privát tanúsítványokat a tároló indításakor betölti a Java Key Store-ba. Ez azt jelenti, hogy a feltöltött tanúsítványok a kapcsolati környezetben lesznek elérhetők a kimenő TLS-kapcsolatok létrehozásakor.
+
+A Java-kulcs eszköz interakcióját vagy hibakeresését úgy teheti meg, hogy [megnyit egy SSH-kapcsolatot](app-service-linux-ssh-support.md) a app Service és futtatja a parancsot `keytool`. A parancsok listáját a [legfontosabb eszköz dokumentációjában](https://docs.oracle.com/javase/8/docs/technotes/tools/unix/keytool.html) találja. A tanúsítványokat a Java alapértelmezett tároló-fájljának helye tárolja, `$JAVA_HOME/jre/lib/security/cacerts`.
+
+A JDBC-kapcsolatok titkosításához további konfigurálásra lehet szükség. Tekintse meg a kiválasztott JDBC-illesztőprogram dokumentációját.
+
+- [PostgreSQL](https://jdbc.postgresql.org/documentation/head/ssl-client.html)
+- [SQL Server](https://docs.microsoft.com/sql/connect/jdbc/connecting-with-ssl-encryption?view=sql-server-ver15)
+- [MySQL](https://dev.mysql.com/doc/connector-j/5.1/en/connector-j-reference-using-ssl.html)
+
+### <a name="manually-initialize-and-load-the-key-store"></a>A Key Store manuális inicializálása és betöltése
+
+A kulcstárolót inicializálhatja, és manuálisan is hozzáadhat tanúsítványokat. Hozzon létre egy alkalmazás-beállítást, `SKIP_JAVA_KEYSTORE_LOAD`a `1` értékkel, hogy letiltsa App Service a tanúsítványok automatikus betöltését a Key Store-ba. Az Azure Portalon App Service feltöltött nyilvános tanúsítványokat a rendszer a `/var/ssl/certs/`alatt tárolja. A privát tanúsítványokat a `/var/ssl/private/`alatt tárolja.
+
+A Webáruház API-val kapcsolatos további információkért tekintse meg [a hivatalos dokumentációt](https://docs.oracle.com/javase/8/docs/api/java/security/KeyStore.html).
 
 ## <a name="configure-apm-platforms"></a>APM-platformok konfigurálása
 
@@ -595,7 +613,7 @@ A következő lépések ismertetik a meglévő App Service és adatbázis össze
             DATABASE_CONNECTION_URL=jdbc:sqlserver://<database server name>:1433;database=<database name>;user=<admin name>;password=<admin password>;encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.database.windows.net;loginTimeout=30;
     ```
 
-    A DATABASE_CONNECTION_URL értékei eltérnek az egyes adatbázis-kiszolgálóknál, és eltérnek a Azure Portal lévő értékektől. Az itt látható URL-formátumok (és a fenti kódrészletek) esetében a WildFly használatához a következők szükségesek:
+    Az DATABASE_CONNECTION_URL értékek különbözőek az egyes adatbázis-kiszolgálók esetében, és eltérnek a Azure Portal értékeitől. Az itt látható URL-formátumok (és a fenti kódrészletek) esetében a WildFly használatához a következők szükségesek:
 
     * **PostgreSQL:** `jdbc:postgresql://<database server name>:5432/<database name>?ssl=true`
     * **MySQL:** `jdbc:mysql://<database server name>:3306/<database name>?ssl=true\&useLegacyDatetimeCode=false\&serverTimezone=GMT`

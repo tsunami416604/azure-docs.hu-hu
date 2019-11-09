@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 8e8e4524034f0a296045691309b065f8547bdaa0
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: 057037807a75e50eb2305bfab19d1fcff7fe77ce
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73797698"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73889593"
 ---
 # <a name="references"></a>Referencia
 
@@ -85,7 +85,7 @@ Az API-szolgáltatás URL-címe az adatközpont URL-címe https://\<yourdatahub-
 
 Az alábbi példa az eszközök listájának beszerzésére szolgál:
 
-```
+```azurepowershell-interactive
 curl -X GET "https://microsoft-farmbeats.azurewebsites.net/Device" -H "Content-Type: application/json" -H "Authorization: Bearer <Access-Token>”
 ```
 
@@ -108,7 +108,6 @@ Például az eszközök listájának lekérdezésekor (hívás a/Device) a köve
 
 Az Azure FarmBeats adatközponti API-k a szabványos HTTP-hibákat adják vissza. A leggyakoribb hibakódok a következők:
 
-
  |Hibakód             | Leírás |
  |---                    | --- |
  |200                    | Sikeres |
@@ -121,29 +120,29 @@ Az Azure FarmBeats adatközponti API-k a szabványos HTTP-hibákat adják vissza
 
 A szabványos HTTP-hibák mellett az Azure FarmBeats adatközpont API-jai a belső hibákat is visszaküldik az alábbi formátumban:
 
-```
-{
-  "message": "<More information on the error>",
-  "status": "<error code>”,
-  "code": "<InternalErrorCode>",
-  "moreInfo": "<Details of the error>"
-}
-```
+    ```
+    {
+      "message": "<More information on the error>",
+      "status": "<error code>”,
+      "code": "<InternalErrorCode>",
+      "moreInfo": "<Details of the error>"
+    }
+    ```
 
 Példa: Farm létrehozásakor a "Name" kötelező mezőt nem adták meg a bemeneti adattartalomban. Az eredményül kapott hibaüzenet a következő:
 
-```
-{
-  "message": "Model validation failed",
-  "status": 400,
-  "code": "ModelValidationFailed",
-  "moreInfo": "[\"The Name field is required.\"]"
-}
-```
+    ```json
+    {
+      "message": "Model validation failed",
+      "status": 400,
+      "code": "ModelValidationFailed",
+      "moreInfo": "[\"The Name field is required.\"]"
+    }
+    ```
 
 ## <a name="adding-users-or-app-registrations-to-azure-active-directory"></a>Felhasználók vagy alkalmazások regisztrációjának hozzáadása a Azure Active Directoryhoz
 
- Az Azure FarmBeats API-kat egy felhasználó vagy egy alkalmazás-regisztráció is elérheti a Azure Active Directoryban. Az alábbi lépések végrehajtásával hozhat létre egy alkalmazást a Azure Active Directoryon:  
+Az Azure FarmBeats API-kat egy felhasználó vagy egy alkalmazás-regisztráció is elérheti a Azure Active Directoryban. Az alábbi lépések végrehajtásával hozhat létre egy alkalmazást a Azure Active Directoryon:  
 
 1. Lépjen a [Azure Portal](https://portal.azure.com) **Azure Active Directory, Alkalmazásregisztrációk**> **új regisztráció**elemre. Másik lehetőségként használhat egy meglévő fiókot is.
 2. Új fiók esetén a következőket kell elvégeznie:
