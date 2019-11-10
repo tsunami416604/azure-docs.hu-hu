@@ -4,18 +4,18 @@ ms.author: erhopf
 ms.service: cognitive-services
 ms.topic: include
 ms.date: 07/23/2019
-ms.openlocfilehash: b9f84385e49fcf5f101b7ce642b0a82e3a4b9388
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: fb3795ff807a87e9bac4d95400f5e446c68d1e4d
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73799908"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73897506"
 ---
 ## <a name="authenticate-with-azure-active-directory"></a>Hitelesítés az Azure Active Directoryval
 
 > [!IMPORTANT]
 > 1. Jelenleg **csak** a Computer Vision API, a Face API, a Text Analytics API, a teljes olvasó, az űrlap-felismerő, a anomália-detektor és az összes Bing-szolgáltatás Bing Custom Search támogatja a hitelesítést a Azure Active Directory (HRE) használatával.
-> 2. Az HRE-hitelesítést mindig az Azure-erőforrás egyéni altartománynevével együtt kell használni. A [regionális végpontok](https://docs.microsoft.com/en-us/azure/cognitive-services/cognitive-services-custom-subdomains#is-there-a-list-of-regional-endpoints) nem TÁMOGATJÁK a HRE-hitelesítést.
+> 2. Az HRE-hitelesítést mindig az Azure-erőforrás egyéni altartománynevével együtt kell használni. A [regionális végpontok](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-custom-subdomains#is-there-a-list-of-regional-endpoints) nem TÁMOGATJÁK a HRE-hitelesítést.
 
 Az előző szakaszokban bemutatjuk, hogyan végezheti el a hitelesítést az Azure Cognitive Services az egy vagy több szolgáltatást használó előfizetési kulccsal. Habár ezek a kulcsok gyors és egyszerű elérési utat biztosítanak a fejlesztés megkezdéséhez, azok a bonyolultabb forgatókönyvek, amelyek szerepköralapú hozzáférés-vezérlést igényelnek. Nézzük meg, mi szükséges a hitelesítéshez Azure Active Directory (HRE) használatával.
 
@@ -69,7 +69,7 @@ Most, hogy rendelkezik az erőforráshoz tartozó egyéni altartománnyal, hozz�
 3. Az utolsó lépés a ["Cognitive Services user" szerepkör társítása](https://docs.microsoft.com/powershell/module/az.Resources/New-azRoleAssignment?view=azps-1.8.0) az egyszerű szolgáltatáshoz (hatóköre az erőforrás). Szerepkör hozzárendelésével a szolgáltatás egyszerű hozzáférést biztosít ehhez az erőforráshoz. Az előfizetés több erőforrásához is biztosíthatja ugyanazt a szolgáltatást.
    >[!NOTE]
    > Az egyszerű szolgáltatásnév ObjectId van használatban, nem az alkalmazás ObjectId.
-   > A ACCOUNT_ID lesz a létrehozott Cognitive Services fiók Azure-erőforrás-azonosítója. Az Azure Resource id-t a Azure Portal erőforrás "tulajdonságok" területén találja.
+   > A ACCOUNT_ID a létrehozott Cognitive Services fiók Azure-erőforrás-azonosítója lesz. Az Azure Resource id-t a Azure Portal erőforrás "tulajdonságok" területén találja.
 
    ```azurecli-interactive
    New-AzRoleAssignment -ObjectId <SERVICE_PRINCIPAL_OBJECTID> -Scope <ACCOUNT_ID> -RoleDefinitionName "Cognitive Services User"

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/23/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 72e94b864b15d5c4872ebf6ba9f0d1a00a0e92b0
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: f9b9773e595d1ff00d92bd757c4b85eb6c219b26
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72924852"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73897510"
 ---
 # <a name="creating-an-incremental-snapshot-preview-for-managed-disks"></a>Növekményes pillanatkép (előzetes verzió) létrehozása a felügyelt lemezekhez
 
@@ -45,7 +45,7 @@ Install-Module -Name Az -AllowClobber -Scope CurrentUser
 
 A telepítését követően jelentkezzen be a PowerShell-munkamenetbe `az login`használatával.
 
-Ha Azure PowerShell használatával szeretne növekményes pillanatképet létrehozni, állítsa a konfigurációt a [New-AzSnapShotConfig](https://docs.microsoft.com/en-us/powershell/module/az.compute/new-azsnapshotconfig?view=azps-2.7.0) értékre a `-Incremental` paraméterrel, majd adja át ezt változóként a [New-AzSnapshot](https://docs.microsoft.com/en-us/powershell/module/az.compute/new-azsnapshot?view=azps-2.7.0) a `-Snapshot` paraméterrel.
+Ha Azure PowerShell használatával szeretne növekményes pillanatképet létrehozni, állítsa a konfigurációt a [New-AzSnapShotConfig](https://docs.microsoft.com/powershell/module/az.compute/new-azsnapshotconfig?view=azps-2.7.0) értékre a `-Incremental` paraméterrel, majd adja át ezt változóként a [New-AzSnapshot](https://docs.microsoft.com/powershell/module/az.compute/new-azsnapshot?view=azps-2.7.0) a `-Snapshot` paraméterrel.
 
 Cserélje le a `<yourDiskNameHere>`, `<yourResourceGroupNameHere>`és `<yourDesiredSnapShotNameHere>` értékeket az értékekkel, majd a következő parancsfájllal hozzon létre növekményes pillanatképet:
 
@@ -78,7 +78,7 @@ foreach ($snapshot in $snapshots)
 $incrementalSnapshots
 ```
 
-## <a name="cli"></a>CLI
+## <a name="cli"></a>parancssori felület
 
 Növekményes pillanatképet is létrehozhat az Azure CLI-vel, az Azure CLI legújabb verziójára lesz szüksége. A következő parancs telepíti vagy frissíti a meglévő telepítését a legújabb verzióra:
 
