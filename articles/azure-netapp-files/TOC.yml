@@ -45,10 +45,12 @@
       href: azure-netapp-files-set-up-capacity-pool.md
     - name: Alhálózat delegálása az Azure NetApp Fileshoz
       href: azure-netapp-files-delegate-subnet.md
-    - name: NFS-kötet létrehozása az Azure NetApp Files számára
-      href: azure-netapp-files-create-volumes.md
     - name: SMB-kötet létrehozása az Azure NetApp Files számára
       href: azure-netapp-files-create-volumes-smb.md
+    - name: NFS-kötet létrehozása az Azure NetApp Files számára
+      href: azure-netapp-files-create-volumes.md
+    - name: A NFSv 4.1 alapértelmezett tartományának konfigurálása a Azure NetApp Fileshoz
+      href: azure-netapp-files-configure-nfsv41-domain.md
     - name: Exportálási szabályzat konfigurálása NFS-kötethez
       href: azure-netapp-files-configure-export-policy.md
     - name: Kötetek kezelése
