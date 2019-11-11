@@ -1,53 +1,18 @@
 - name: Az alapok dokumentációja
   href: index.yml
-- name: Architektúra és kialakítás
-  href: overview.md
+- name: Áttekintés
   items:
+    - name: Bevezetés az Azure biztonsági megoldásaiba
+      href: overview.md
     - name: Megosztott feladatkörök a felhőben
       href: shared-responsibility.md
-    - name: Fejlett fenyegetésészlelés
-      displayName: 'vulnerability, virus, IDs, incident'
-      href: threat-detection.md
-    - name: Azure-naplózás
-      displayName: incident
-      href: log-audit.md
-    - name: Azure hálózati biztonság
-      displayName: 'firewall, ssl, vpn, IDs, gateway, https, application gateway, azure application gateway, ips, waf'
-      href: 'https://azure.microsoft.com/resources/azure-network-security/'
-    - name: Elkülönítés az Azure-felhőben
-      displayName: trust boundary
-      href: isolation-choices.md
-    - name: Biztonságos hibrid hálózati architektúra
-      displayName: trust boundary
-      href: 'https://docs.microsoft.com/azure/architecture/reference-architectures/dmz/secure-vnet-hybrid?toc=/azure/security/toc.json&bc=/azure/security/breadcrumb/toc.json'
+- name: Számítási feladatok biztonságossá tétele az Azure Portalon
+  items:
     - name: Biztonságtechnikai képességek
       href: technical-capabilities.md
-  expanded: false
-- name: Adatbiztonság és titkosítás
-  href: encryption-overview.md
-  items:
-    - name: Adatbázis-biztonság
-      href: database-security-overview.md
-      items:
-        - name: Ajánlott eljárások
-          href: database-best-practices.md
-        - name: Biztonsági ellenőrzőlista
-          href: database-security-checklist.md
-    - name: Disk encryption (Lemeztitkosítás)
-      items:
-        - name: Ajánlott eljárások
-          displayName: transit
-          href: data-encryption-best-practices.md
-        - name: Inaktív adatok titkosítása
-          href: encryption-atrest.md
-        - name: Azure Disk Encryption virtuális gépekhez
-          displayName: virtual machines and virtual machine scale sets
-          href: azure-disk-encryption-vms-vmss.md
-    - name: Biztonsági útmutató a tároláshoz
-      href: 'https://docs.microsoft.com/azure/storage/common/storage-security-guide?toc=/azure/security/toc.json&bc=/azure/security/breadcrumb/toc.json'
-    - name: Ügyfélszéf
-      href: customer-lockbox-overview.md
-- name: Platform és infrastruktúra
+    - name: Beépített biztonsági vezérlők
+      href: security-controls.md
+- name: Azure-platform és -infrastruktúra
   items:
     - name: Infrastruktúra biztonsága
       href: infrastructure.md
@@ -73,40 +38,64 @@
           href: infrastructure-integrity.md
         - name: Adatvédelem
           href: protection-customer-data.md
-    - name: Microsoft Antimalware
-      displayName: virus
-      href: antimalware.md
-    - name: IaaS-biztonság
-      href: virtual-machines-overview.md
-      items:
-        - name: Ajánlott eljárások IaaS-beli számítási feladatokhoz
-          displayName: patch
-          href: iaas.md
-        - name: Azure Marketplace-rendszerképek
-          href: azure-marketplace-images.md
-    - name: Identitáskezelés
+    - name: Elkülönítés az Azure-felhőben
+      href: isolation-choices.md
+- name: Identitáskezelés
+  items:
+    - name: Biztonsági áttekintés
       href: identity-management-overview.md
-      items:
-        - name: Azure AD-hitelesítés kiválasztása
-          displayName: 'identity, active directory, seamless sso'
-          href: choose-ad-authn.md
-        - name: Biztonsági ellenőrzőlista
-          displayName: 'identity, active directory, password'
-          href: steps-secure-identity.md
-        - name: Jelszó nélküli hitelesítés kiválasztása
-          displayName: 'identity, active directory, passwordless'
-          href: ad-passwordless.md
-        - name: Ajánlott eljárások
-          displayName: 'password, identity, active directory'
-          href: identity-management-best-practices.md
-    - name: Hálózati biztonság
-      displayName: 'firewall, ssl, vpn, IDs, gateway, https, azure application gateway, application gateway, ips, waf'
+    - name: Ajánlott eljárások
+      href: identity-management-best-practices.md
+    - name: Biztonsági ellenőrzőlista
+      href: steps-secure-identity.md
+    - name: Jelszó nélküli hitelesítés kiválasztása
+      href: ad-passwordless.md
+    - name: Azure AD-hitelesítés kiválasztása
+      href: choose-ad-authn.md
+- name: Hálózati biztonság
+  items:
+    - name: Biztonsági áttekintés
       href: network-overview.md
+    - name: Ajánlott eljárások
+      href: network-best-practices.md
+    - name: DDoS Protection
+      href: ddos-best-practices.md
+    - name: Biztonságos hibrid hálózati architektúra
+      href: 'https://docs.microsoft.com/azure/architecture/reference-architectures/dmz/secure-vnet-hybrid?toc=/azure/security/toc.json&bc=/azure/security/breadcrumb/toc.json'
+- name: IaaS-biztonság
+  items:
+    - name: Microsoft Antimalware
+      href: antimalware.md
+    - name: Virtuális gépek biztonságának áttekintése
+      href: virtual-machines-overview.md
+    - name: Ajánlott eljárások IaaS-beli számítási feladatokhoz
+      href: iaas.md
+    - name: Azure Marketplace-rendszerképek
+      href: azure-marketplace-images.md
+- name: 'Adatbiztonság, -titkosítás és -tárolás'
+  items:
+    - name: Adatbiztonság és titkosítás
+      href: encryption-overview.md
+    - name: Disk encryption (Lemeztitkosítás)
       items:
         - name: Ajánlott eljárások
-          href: network-best-practices.md
-        - name: DDoS Protection
-          href: ddos-best-practices.md
+          href: data-encryption-best-practices.md
+        - name: Inaktív adatok titkosítása
+          href: encryption-atrest.md
+        - name: Azure Disk Encryption virtuális gépekhez
+          href: azure-disk-encryption-vms-vmss.md
+    - name: Adatbázis-biztonság
+      items:
+        - name: Áttekintés
+          href: database-security-overview.md
+        - name: Ajánlott eljárások
+          href: database-best-practices.md
+        - name: Biztonsági ellenőrzőlista
+          href: database-security-checklist.md
+    - name: Biztonsági útmutató a tároláshoz
+      href: 'https://docs.microsoft.com/azure/storage/common/storage-security-guide?toc=/azure/security/toc.json&bc=/azure/security/breadcrumb/toc.json'
+    - name: Ügyfélszéf
+      href: customer-lockbox-overview.md
 - name: Alkalmazás
   items:
     - name: PaaS
@@ -121,53 +110,32 @@
     - name: Az Azure Service Fabric biztonsága
       href: service-fabric-best-practices.md
 - name: 'Monitorozás, naplózás és műveletek'
-  href: management-monitoring-overview.md
   items:
-    - name: Naplózás
-      items:
-        - name: Távfelügyeleti biztonság
-          href: management.md
-        - name: Azure-naplók integrációja
+    - name: Speciális fenyegetésvédelem
+      href: threat-detection.md
+    - name: Azure-naplózás
+      href: log-audit.md
+    - name: Biztonságkezelés és megfigyelés
+      href: management-monitoring-overview.md
     - name: Működési biztonság
-      href: operational-overview.md
       items:
+        - name: Áttekintés
+          href: operational-overview.md
         - name: Ajánlott eljárások
           href: operational-best-practices.md
         - name: Biztonsági ellenőrzőlista
           href: operational-checklist.md
-- name: Cégirányítás és megfelelőség
-  displayName: 'blueprint, privacy, certifications'
-  items:
-    - name: AU ÁLTAL VÉDETT
-      displayName: 'blueprint, privacy, certifications'
-    - name: FedRAMP
-      displayName: 'blueprint, privacy, certifications'
-    - name: FFIEC
-      displayName: 'blueprint, privacy, certifications'
-    - name: HIPAA/HITRUST
-      displayName: 'blueprint, privacy, certifications'
-    - name: NIST SP 800-171
-      displayName: 'blueprint, privacy, certifications'
-    - name: PCI DSS
-      displayName: 'blueprint, privacy, certifications'
-    - name: Az Egyesült Királyság Nemzeti Egészségügyi Szolgálata
-      displayName: 'blueprint, privacy, certifications'
-    - name: UK OFFICIAL
-      displayName: 'blueprint, privacy, certifications'
-- name: Biztonsági tanulmányok
-  href: 'https://azure.microsoft.com/resources/whitepapers/search/?term=security&type=WhitePaperResource'
-- name: Azure biztonsági szolgáltatások
-  href: services-technologies.md
-- name: Ajánlott eljárások
-  href: best-practices-and-patterns.md
 - name: További források
   items:
-    - name: Beépített biztonsági vezérlők
-      href: security-controls.md
+    - name: Azure biztonsági szolgáltatások
+      href: services-technologies.md
+    - name: Biztonsági tanulmányok
+      href: 'https://azure.microsoft.com/resources/whitepapers/search/?term=security&type=WhitePaperResource'
+    - name: Ajánlott eljárások
+      href: best-practices-and-patterns.md
     - name: Kiberbiztonsági tanácsadás
       href: cyber-services.md
     - name: Biztonsági eseményekről szóló támogatási jegyek rögzítése
       href: event-support-ticket.md
     - name: Toll tesztelése
-      displayName: penetration
       href: pen-testing.md
