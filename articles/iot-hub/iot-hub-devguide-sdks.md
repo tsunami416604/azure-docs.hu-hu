@@ -8,12 +8,12 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 09/14/2018
-ms.openlocfilehash: 7113914fe8681ca099fc0f3fc1e4a7d064c19480
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 22734d29973f0d7102307aa9038b6ebe7cc2521b
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71000248"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73903310"
 ---
 # <a name="understand-and-use-azure-iot-hub-sdks"></a>Az Azure IoT Hub SDK-k megismerése és használata
 
@@ -160,11 +160,11 @@ Azure-beli kiépítési eszköz és szolgáltatás SDK-k a Pythonhoz:
 * [Forráskód](https://github.com/Azure/azure-iot-device)
 * Az [eszköz SDK](https://pypi.org/project/azure-iot-device/) és a [Service SDK](https://pypi.org/project/azure-iothub-provisioningserviceclient/) letöltése a pip-ből
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az Azure IoT SDK-k olyan eszközöket is biztosítanak, amelyek segítik a fejlesztést:
 * [iothub-Diagnostics](https://github.com/Azure/iothub-diagnostics): többplatformos parancssori eszköz a IoT Hubsal való kapcsolattal kapcsolatos problémák diagnosztizálásához.
-* [Device-Explorer](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/tools/DeviceExplorer): Windows asztali alkalmazás a IoT hubhoz való kapcsolódáshoz.
+* [Azure-IOT-Explorer](https://github.com/Azure/azure-iot-explorer): többplatformos asztali alkalmazás a IoT hubhoz való kapcsolódáshoz, valamint az IOT-eszközökkel való hozzáadáshoz/felügyelethez/kommunikációhoz.
 
 Az Azure IoT SDK-k használatával történő fejlesztéshez kapcsolódó releváns docs:
 * Ismerje meg [, hogyan kezelheti a kapcsolatot és a megbízható üzenetkezelést](iot-hub-reliability-features-in-sdks.md) az IoT hub SDK-k használatával.

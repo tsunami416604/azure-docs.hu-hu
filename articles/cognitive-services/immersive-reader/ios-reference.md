@@ -1,7 +1,7 @@
 ---
 title: Az olvasói iOS SDK-referenciája
 titleSuffix: Azure Cognitive Services
-description: Útmutató a beolvasó iOS SDK-hoz
+description: A lebilincselő olvasó iOS SDK egy gyors CocoaPod, amely lehetővé teszi, hogy az iOS-alkalmazásba integrálja a magával ragadó olvasót.
 services: cognitive-services
 author: metanMSFT
 ms.service: cognitive-services
@@ -9,12 +9,12 @@ ms.subservice: immersive-reader
 ms.topic: reference
 ms.date: 08/01/2019
 ms.author: metan
-ms.openlocfilehash: 1f85740c358bd0949fed9c954537f0926538995d
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 67d6b8c22c5635bd789078a7f91b02f8b07e5e70
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72388119"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73903127"
 ---
 # <a name="immersive-reader-sdk-reference-for-ios"></a>A részletes olvasó SDK-referenciája iOS rendszerhez
 
@@ -34,7 +34,7 @@ public func launchImmersiveReader(navController: UINavigationController, token: 
 
 #### <a name="parameters"></a>Paraméterek
 
-| Név | Type (Típus) | Leírás |
+| Name (Név) | Típus | Leírás |
 | ---- | ---- |------------ |
 | `navController` | UINavigationController | Az iOS-alkalmazás navigációs vezérlője, amelyet a függvény hívása folyamatban van. |
 | `token` | Sztring | Az Azure AD hitelesítési jogkivonata. Lásd: [Azure ad-hitelesítés – útmutató](./azure-active-directory-authentication.md). |
@@ -44,7 +44,7 @@ public func launchImmersiveReader(navController: UINavigationController, token: 
 | `onSuccess` | () – > Void | A magával ragadó olvasó sikeres elindítása után meghívott Bezárás. |
 | `onFailure` | (_ hiba: [hiba](#error)) – > Void | Egy olyan Bezárás, amely akkor lép fel, amikor az olvasó nem töltődik be. Ez a Bezárás egy [`Error`](#error) objektumot ad vissza, amely a hibához tartozó hibakódot és hibaüzenetet jelöli. További információ: [hibakódok](#error-codes). |
 
-## <a name="types"></a>Típusú
+## <a name="types"></a>Típusok
 
 ### <a name="content"></a>Tartalom
 
@@ -62,7 +62,7 @@ struct Content: Encodable {
 | MIME-típus | Leírás |
 | --------- | ----------- |
 | szöveg/egyszerű | Egyszerű szöveg. |
-| Application/MathML + XML | Matematikai Markup Language (MathML). [További információk](https://developer.mozilla.org/en-US/docs/Web/MathML).
+| Application/MathML + XML | Matematikai Markup Language (MathML). [További információ](https://developer.mozilla.org/en-US/docs/Web/MathML).
 
 ### <a name="options"></a>Beállítások
 
@@ -90,11 +90,11 @@ struct Error {
 
 | Kód | Leírás |
 | ---- | ----------- |
-| BadArgument | A megadott argumentum érvénytelen. a részletekért tekintse meg a `message` értéket. |
-| időtúllépés | Nem sikerült betölteni a magával ragadó olvasót a megadott időkorláton belül. |
+| BadArgument | A megadott argumentum érvénytelen. további részletekért tekintse meg a `message`. |
+| Időtúllépés | Nem sikerült betölteni a magával ragadó olvasót a megadott időkorláton belül. |
 | TokenExpired | A megadott jogkivonat lejárt. |
 | Szabályozott | Túllépte a hívási sebesség korlátját. |
-| InternalError | Belső hiba történt a megtekintő olvasó nézet vezérlőn belül. További részletek: `message`.|
+| InternalError | Belső hiba történt a megtekintő olvasó nézet vezérlőn belül. Részletekért tekintse meg `message`.|
 
 ## <a name="os-version-support"></a>Operációs rendszer verziójának támogatása
 

@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 10/16/2019
+ms.date: 11/08/2019
 ms.author: diberry
-ms.openlocfilehash: 383cade6e8bb5f66aa240564912056ec345a1ee6
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 83fd06078500be7b5bd58e9ea92d957f9d77f892
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73500190"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73904211"
 ---
 # <a name="language-and-region-support-for-luis"></a>A LUIS nyelv és régió támogatása
 
@@ -206,4 +206,4 @@ Tokenizer JSON for version 1.0.1. Notice the property value for  `tokenizerVersi
 
 A jogkivonatok létrehozása az alkalmazás szintjén történik. A verzió szintű jogkivonatok létrehozása nem támogatott. 
 
-[Importálja a fájlt új alkalmazásként](luis-how-to-start-new-app.md#import-an-app-from-file)a verzió helyett. Ez a művelet azt jelenti, hogy az új alkalmazáshoz egy másik alkalmazás-azonosító tartozik, de a fájlban megadott tokenizer-verziót használja. 
+[Importálja a fájlt új alkalmazásként](luis-how-to-start-new-app.md)a verzió helyett. Ez a művelet azt jelenti, hogy az új alkalmazáshoz egy másik alkalmazás-azonosító tartozik, de a fájlban megadott tokenizer-verziót használja. 

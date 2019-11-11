@@ -1,24 +1,23 @@
 ---
-title: X.509-eszközök regisztrációja az Azure Device Provisioning Service-be a Node.js használatával | Microsoft Docs
+title: 'Gyors útmutató: X. 509 eszközök regisztrálása az Azure Device kiépítési szolgáltatásba Node. js használatával'
 description: Ez a rövid útmutató csoportos regisztrációkat használ. Ebben a rövid útmutatóban X.509-eszközöket fog regisztrálni az Azure IoT Hub Device Provisioning Service-be a Node.js szolgáltatásoldali SDK-val
 author: wesmc7777
-ms.author: v-yiso
-origin.date: 04/10/2019
-ms.date: 05/06/2019
+ms.author: wesmc
+ms.date: 11/08/2019
 ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
 manager: philmea
 ms.devlang: nodejs
 ms.custom: mvc
-ms.openlocfilehash: a861bc52734f5b2bc6e455965428328cd1415b76
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 3b2c27b8fc595dae39ed7374ec3647e6b4ba6f23
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60736106"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73903417"
 ---
-# <a name="quickstart-enroll-x509-devices-to-the-device-provisioning-service-using-nodejs"></a>Gyors útmutató: A Device Provisioning Service segítségével Node.js X.509-eszközök regisztrálása
+# <a name="quickstart-enroll-x509-devices-to-the-device-provisioning-service-using-nodejs"></a>Rövid útmutató: X.509-eszközök regisztrációja a Device Provisioning Service-be a Node.js használatával
 
 [!INCLUDE [iot-dps-selector-quick-enroll-device-x509](../../includes/iot-dps-selector-quick-enroll-device-x509.md)]
 
@@ -141,10 +140,10 @@ A teszteszköz segítségével a következő lépésekkel állíthat elő tanús
 Ha azt tervezi, hogy részletesebben is áttekinti a Node.js-szolgáltatásmintákat, akkor ne törölje az ebben a rövid útmutatóban létrehozott erőforrásokat. Ha nem folytatja a munkát, akkor a következő lépésekkel törölheti a rövid útmutatóhoz létrehozott összes Azure-erőforrást.
  
 1. Zárja be a Node.js-minta kimeneti ablakát a gépen.
-2. Lépjen az eszközkiépítési szolgáltatásra az Azure Portalon, kattintson a **Regisztrációk kezelése** elemre, majd válassza a **Regisztrációs csoportok** lapot. Válassza ki a rövid útmutató segítségével létrehozott regisztrációs bejegyzés *Regisztrációs azonosítóját*, majd kattintson a panel tetején lévő **Törlés** gombra.  
+2. Navigáljon a Azure Portal eszköz kiépítési szolgáltatásához, kattintson a regisztrációk **kezelése**lehetőségre, majd válassza a **beléptetési csoportok** fület. Válassza ki a rövid útmutató segítségével létrehozott beléptetési bejegyzés *regisztrációs azonosítóját* , majd kattintson a panel tetején található **Törlés** gombra.  
 3. Az Azure Portalon az eszközkiépítési szolgáltatásban kattintson a **Tanúsítványok** lehetőségre, majd a rövid útmutató céljaira feltöltött tanúsítványra, és végül a **Törlés** gombra a **Tanúsítvány részletei** ablak tetején.  
  
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ebben a rövid útmutatóban egy csoportos regisztrációt hozott létre egy köztes vagy fő hitelesítésszolgáltatói X.509-tanúsítvány számára az Azure IoT Hub Device Provisioning Service használatával. Ha mélyebben szeretné megismerni az eszközkiépítést, folytassa az Azure Portalon az eszközkiépítési szolgáltatás beállításának oktatóanyagával. 
  
 > [!div class="nextstepaction"]

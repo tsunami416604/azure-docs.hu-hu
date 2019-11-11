@@ -1,22 +1,22 @@
 ---
-title: A Device Provisioning Service üzembe helyezése Azure Resource Manager-sablonnal | Microsoft Docs
+title: 'Gyors útmutató: eszköz kiépítés beállítása Azure Resource Manager sablonnal'
 description: Azure rövid útmutató – Az Azure IoT Hub Device Provisioning Service üzembe helyezése
 author: wesmc7777
 ms.author: wesmc
-ms.date: 06/18/2018
+ms.date: 11/08/2019
 ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 3360bfa7eed15f72fb78f698e837d887e9c8aa85
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: fdc75424c5c99e80c13ac086229da93411e3ce83
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62126477"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73903364"
 ---
-# <a name="set-up-the-iot-hub-device-provisioning-service-with-an-azure-resource-manager-template"></a>Az IoT Hub Device Provisioning Service üzembe helyezése Azure Resource Manager-sablonnal
+# <a name="quickstart-set-up-the-iot-hub-device-provisioning-service-with-an-azure-resource-manager-template"></a>Rövid útmutató: a IoT Hub Device Provisioning Service beállítása Azure Resource Manager sablonnal
 
 Az [Azure Resource Managerrel](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) programozott módon üzembe helyezheti az eszközök regisztrációjához szükséges Azure felhőbeli erőforrásokat. Az alábbi lépések IoT Hub és új IoT Hub Device Provisioning Service létrehozását, valamint a két szolgáltatás Azure Resource Manager-sablonnal végzett összekapcsolását ismertetik. Ez a rövid útmutató az [Azure CLI-t](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy-cli) használja az erőforráscsoport létrehozásához és a sablon üzembe helyezéséhez szükséges programozási lépések elvégzéséhez, de használhatja helyette az [Azure Portalt](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy-portal), a [PowerShellt](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy), illetve a .NET-et, a Rubyt vagy más programozási nyelveket is. 
 
@@ -39,7 +39,7 @@ Jelentkezzen be Azure-fiókjába, és válassza ki előfizetését.
 
     Kövesse az utasításokat a kóddal történő hitelesítéshez, és jelentkezzen be az Azure-fiókjába webböngészőből.
 
-2. Ha több Azure-előfizetéssel rendelkezik, az Azure-ba történő bejelentkezéssel hozzáfér a hitelesítő adatokhoz tartozó összes Azure-fiókhoz. Az alábbi [paranccsal jelenítheti meg az elérhető Azure-fiókokat][lnk-az-account-command]:
+2. Ha több Azure-előfizetéssel rendelkezik, az Azure-ba történő bejelentkezéssel hozzáfér a hitelesítő adatokhoz tartozó összes Azure-fiókhoz. Használja az alábbi parancsot a használni kívánt [Azure-fiókok listázásához][lnk-az-account-command] :
     
     ```azurecli
     az account list 
@@ -51,7 +51,7 @@ Jelentkezzen be Azure-fiókjába, és válassza ki előfizetését.
     az account set --subscription {your subscription name or id}
     ```
 
-3. Amikor Azure felhőbeli erőforrásokat, például IoT Hubokat és regisztrációs szolgáltatásokat hoz létre, azokat egy erőforráscsoportban kell létrehozni. Használhat meglévő erőforráscsoportot, vagy futtathatja a következő [parancsot erőforráscsoport létrehozásához][lnk-az-resource-command]:
+3. Amikor Azure felhőbeli erőforrásokat, például IoT Hubokat és regisztrációs szolgáltatásokat hoz létre, azokat egy erőforráscsoportban kell létrehozni. Használjon egy meglévő erőforráscsoportot, vagy futtassa a következő [parancsot egy erőforráscsoport létrehozásához][lnk-az-resource-command]:
     
     ```azurecli
      az group create --name {your resource group name} --location westus
@@ -321,7 +321,7 @@ A következő Azure CLI-parancsokkal helyezheti üzembe a sablonokat és ellenő
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Az ebben a gyűjteményben lévő többi rövid útmutató erre a rövid útmutatóra épül. Ha azt tervezi, hogy az ezt követő rövid útmutatókkal vagy az oktatóanyagokkal dolgozik tovább, akkor ne törölje az ebben a rövid útmutatóban létrehozott erőforrásokat. Ha nem folytatja a munkát, az Azure CLI használatával [törölhet egyedi erőforrásokat][lnk-az-resource-command] (például egy IoT Hubot vagy regisztrációs szolgáltatást), vagy törölhet egy erőforráscsoportot és az ahhoz tartozó összes erőforrást.
+Az ebben a gyűjteményben lévő többi rövid útmutató erre a rövid útmutatóra épül. Ha azt tervezi, hogy az ezt követő rövid útmutatókkal vagy az oktatóanyagokkal dolgozik tovább, akkor ne törölje az ebben a rövid útmutatóban létrehozott erőforrásokat. Ha nem folytatja a folytatást, az Azure CLI-vel [törölhet egy adott erőforrást][lnk-az-resource-command], például egy IoT hubot vagy egy kiépítési szolgáltatást, vagy törölhet egy erőforráscsoportot és annak összes erőforrását.
 
 A regisztrációs szolgáltatás törléséhez futtassa a következő parancsot:
 
@@ -342,7 +342,7 @@ az group delete --name {your resource group name}
 
 Erőforráscsoportokat és egyedi erőforrásokat az Azure Portal, a PowerShell, a REST API-k, illetve az Azure Resource Managerhez vagy az IoT Hub Device Provisioning Service-hez közzétett támogatott platform SDK-k használatával is törölhet.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban IoT Hubot és eszközkiépítési szolgáltatás példányt helyezett üzembe, és csatolta a két erőforrást. Ha szimulált eszköz kiépítéséhez szeretné használni ezt a beállítást, folytassa a szimulált eszköz létrehozásának rövid útmutatójával.
 

@@ -13,17 +13,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/05/2019
+ms.date: 10/31/2019
 ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e12badd84bd929bdeb7b60ad6e99d6b3169e5022
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: e9045fd6c1f5dcc4587b6ff85d567584f02421ba
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73150442"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73902906"
 ---
 # <a name="logging-in-msal-applications"></a>MSAL-alkalmazások naplózása
 
@@ -88,7 +88,7 @@ Jelentkezzen be az alkalmazás létrehozásakor egy naplózási visszahívás l�
 - `tag` a könyvtár által a visszahívás számára átadott karakterlánc. A naplóbejegyzés társítva van, és a naplózási üzenetek rendezésére használható.
 - `logLevel` lehetővé teszi a kívánt naplózási szint eldöntését. A támogatott naplózási szintek a következők: `Error`, `Warning`, `Info`és `Verbose`.
 - `message` a naplóbejegyzés tartalma.
-- `containsPII` megadja, hogy a rendszer naplózza-e a személyes vagy szervezeti adatelemeket tartalmazó üzeneteket. Alapértelmezés szerint ez hamis értékre van állítva, így az alkalmazás nem naplózza a személyes adatait. Ha `containsPII` `true`, ez a metódus kétszer kapja meg az üzeneteket: egyszer a `containsPII` paraméterrel `false`, a `message` pedig személyes adatként nem, és egy második alkalommal, amikor a `containsPii` paraméter értéke `true`, és az üzenet tartalmazhat személyes adatként. Bizonyos esetekben (ha az üzenet nem tartalmaz személyes adatfájlokat), az üzenet ugyanaz lesz.
+- `containsPII` megadja, hogy a rendszer naplózza-e a személyes vagy szervezeti adatelemeket tartalmazó üzeneteket. Alapértelmezés szerint ez hamis értékre van állítva, így az alkalmazás nem naplózza a személyes adatait. Ha `containsPII` `true`, akkor ez a módszer kétszer fog megjelenni az üzenetekben: egyszer a `containsPII` paraméter értéke `false` és a `message` személyes érték nélkül, és egy második alkalommal, amikor a `containsPii` paraméter `true` értékre van állítva, és az üzenet tartalmazhat személyes adattípust. Bizonyos esetekben (ha az üzenet nem tartalmaz személyes adatfájlokat), az üzenet ugyanaz lesz.
 
 ```java
 private StringBuilder mLogs;
@@ -117,14 +117,15 @@ Személyes és szervezeti adataik naplózásának letiltása:
 Logger.getInstance().setEnablePII(false);
 ```
 
-Alapértelmezés szerint a logcat naplózása le van tiltva. Engedélyezés: 
+Alapértelmezés szerint a logcat naplózása le van tiltva. Engedélyezés:
+
 ```java
 Logger.getInstance().setEnableLogcatLog(true);
 ```
 
 ## <a name="logging-in-msaljs"></a>Naplózás a MSAL. js fájlban
 
- Engedélyezze a naplózást a MSAL. js-ben egy `UserAgentApplication` példány létrehozásakor a konfiguráció során egy naplózó objektum átadásával. Ez a naplózó objektum a következő tulajdonságokkal rendelkezik:
+ Engedélyezze a naplózást a MSAL. js (JavaScript) alkalmazásban egy `UserAgentApplication`-példány létrehozásakor a konfiguráció során egy naplózó objektum átadásával. Ez a naplózó objektum a következő tulajdonságokkal rendelkezik:
 
 - `localCallback`: egy visszahívási példány, amelyet a fejlesztő biztosíthat a naplók egyéni módon történő felhasználásához és közzétételéhez. A localCallback metódus implementálása attól függően, hogy hogyan szeretné átirányítani a naplókat.
 - `level` (nem kötelező): a konfigurálható naplózási szint. A támogatott naplózási szintek a következők: `Error`, `Warning`, `Info`és `Verbose`. A mező alapértelmezett értéke: `Info`.
@@ -173,7 +174,7 @@ var UserAgentApplication = new Msal.UserAgentApplication(msalConfig);
 typedef void (^MSALLogCallback)(MSALLogLevel level, NSString *message, BOOL containsPII);
 ```
 
-Példa:
+Például:
 
 Objective-C
 ```objc
@@ -202,9 +203,9 @@ MSALGlobalConfig.loggerConfig.setLogCallback { (level, message, containsPII) in
 }
 ```
 
-### <a name="personal-identifiable-information-pii"></a>Személyes azonosításra alkalmas adatok
+### <a name="personal-data"></a>Személyes adattárolás
 
-Alapértelmezés szerint a MSAL nem rögzíti vagy nem naplózza az összes személyes adatfelvételt. A könyvtár lehetővé teszi, hogy az alkalmazások fejlesztői ezt a MSALLogger osztály egyik tulajdonságán keresztül kapcsolják be. A személyes adatok bekapcsolásával az alkalmazás felelősséget vállal a szigorúan bizalmas adatok biztonságos kezeléséhez és a szabályozási követelmények követéséhez.
+A MSAL alapértelmezés szerint nem rögzíti vagy nem naplózza a személyes adatokkal kapcsolatos adatgyűjtést. A könyvtár lehetővé teszi, hogy az alkalmazások fejlesztői ezt a MSALLogger osztály egyik tulajdonságán keresztül kapcsolják be. A `pii.Enabled`bekapcsolásával az alkalmazás felelősséget vállal a szigorúan bizalmas adatok biztonságos kezeléséhez és a szabályozási követelmények követéséhez.
 
 Objective-C
 ```objc
@@ -238,9 +239,9 @@ Ha az iOS-es és macOS-es MSAL használatával jelentkezik be, a naplózási szi
 | `MSALLogLevelError` | Alapértelmezett szint, csak akkor jeleníti meg az adatokat, ha hibák történnek |
 | `MSALLogLevelWarning` | Figyelmeztetések |
 | `MSALLogLevelInfo` |  A könyvtár belépési pontjai, paraméterekkel és különböző kulcstartó műveletekkel |
-|`MSALLogLevelVerbose`     |  API-nyomkövetés       |
+|`MSALLogLevelVerbose`     |  API-nyomkövetés |
 
-Példa:
+Például:
 
 Objective-C
 ```objc
@@ -256,8 +257,56 @@ MSALGlobalConfig.loggerConfig.logLevel = .verbose
 
 A MSAL üzenetek részének formátuma `TID = <thread_id> MSAL <sdk_ver> <OS> <OS_ver> [timestamp - correlation_id] message`
 
-Példa:
+Például:
 
 `TID = 551563 MSAL 0.2.0 iOS Sim 12.0 [2018-09-24 00:36:38 - 36764181-EF53-4E4E-B3E5-16FE362CFC44] acquireToken returning with error: (MSALErrorDomain, -42400) User cancelled the authorization session.`
 
 A korrelációs azonosítók és időbélyegek megadása a problémák nyomon követéséhez hasznos. Az időbélyeg és a korrelációs azonosító információi elérhetők a napló üzenetében. Az egyetlen megbízható hely a MSAL naplózási üzeneteiből.
+
+## <a name="logging-in-msal-for-java"></a>Bejelentkezés a Java MSAL
+
+A MSAL for Java (MSAL4J) lehetővé teszi az alkalmazással már használt naplózási függvénytár használatát, feltéve, hogy az kompatibilis a SLF4J-mel. A MSAL4j a Java (SLF4J) [egyszerű naplózási homlokzatát](http://www.slf4j.org/) használja egyszerű homlokzatként vagy absztrakcióként a különböző naplózási keretrendszerek, például [a Java. util. Logging](https://docs.oracle.com/javase/7/docs/api/java/util/logging/package-summary.html), a [Logback](http://logback.qos.ch/) és a [Log4j](https://logging.apache.org/log4j/2.x/). A SLF4J lehetővé teszi, hogy a végfelhasználó a központi telepítési időszakban csatlakoztassa a kívánt naplózási keretrendszert.
+
+Ha például a Logback-t az alkalmazás naplózási keretrendszereként szeretné használni, adja hozzá a Logback függőséget az alkalmazás Maven Pom-fájljához:
+
+```xml
+<dependency>
+    <groupId>ch.qos.logback</groupId>
+    <artifactId>logback-classic</artifactId>
+    <version>1.2.3</version>
+</dependency>
+```
+
+Ezután adja hozzá a Logback konfigurációs fájlt:
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration debug="true">
+
+</configuration>
+```
+
+A SLF4J a telepítéskor automatikusan kötést hoz létre a Logback. A rendszer a MSAL-naplókat a konzolra írja.
+
+A más naplózási keretrendszerek kötésével kapcsolatos utasításokért tekintse meg a [SLF4J kézikönyvét](http://www.slf4j.org/manual.html).
+
+### <a name="personal-and-organization-information"></a>Személyes és szervezeti adatok
+
+Alapértelmezés szerint a MSAL naplózása nem rögzíti vagy nem naplózza személyes vagy szervezeti adataikat. A következő példában a személyes vagy szervezeti adatai naplózása alapértelmezés szerint ki van kapcsolva:
+
+```java
+    PublicClientApplication app2 = PublicClientApplication.builder(PUBLIC_CLIENT_ID)
+            .authority(AUTHORITY)
+            .build();
+```
+
+A személyes és szervezeti adatnaplózás bekapcsolásához állítsa be `logPii()` az ügyfélalkalmazás-szerkesztőben. Ha bekapcsolja a személyes vagy szervezeti adatnaplózást, az alkalmazásnak felelősséget kell vállalnia a fokozottan bizalmas adatok biztonságos kezeléséhez és a szabályozási követelmények teljesítéséhez.
+
+A következő példában a személyes vagy szervezeti adatai naplózása engedélyezve van:
+
+```java
+PublicClientApplication app2 = PublicClientApplication.builder(PUBLIC_CLIENT_ID)
+        .authority(AUTHORITY)
+        .logPii(true)
+        .build();
+```

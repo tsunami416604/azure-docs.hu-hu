@@ -7,20 +7,19 @@ author: cynthn
 manager: gwallace
 editor: tysonn
 tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 06/27/2019
+ms.date: 11/06/2019
 ms.author: cynthn
 ms.custom: ''
-ms.openlocfilehash: 8be4890f01ae2c0d893bb7c45f29c6f8178844f9
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: a56b34318725667a9eef143bbf2be90f411b74a1
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70082115"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73904968"
 ---
 # <a name="create-a-shared-image-gallery-using-the-azure-portal"></a>Megosztott rendszerkép létrehozása a Azure Portal használatával
 
@@ -32,41 +31,45 @@ A katalógus egy legfelső szintű erőforrás, amely teljes körű szerepköral
 
 A megosztott képkatalógus funkció több erőforrástípust is tartalmaz. Ebben a cikkben a következő lépéseket fogjuk használni vagy felépíteni:
 
-| Resource | Leírás|
+| Erőforrás | Leírás|
 |----------|------------|
-| **Felügyelt rendszerkép** | Ez egy alapszintű rendszerkép, amely önmagában vagy rendszerkép- **verzió** létrehozásához használható egy képgyűjteményben. A felügyelt lemezképek általánosított virtuális gépekről jönnek létre. A felügyelt rendszerkép olyan speciális VHD-típus, amellyel több virtuális gép hozható létre, és most már használható a megosztott rendszerkép-verziók létrehozásához is. |
-| **Képtár** | Az Azure Marketplace-hez hasonlóan a képkatalógus is a lemezképek kezeléséhez és megosztásához használható tárház, de Ön szabályozhatja, hogy ki férhet hozzá. |
-| **Rendszerkép definíciója** | A lemezképek a katalógusban vannak definiálva, és a rendszerképekkel és a belső használattal kapcsolatos követelményekkel rendelkeznek. Ez magában foglalja azt is, hogy a rendszerkép Windows vagy Linux, kibocsátási megjegyzések, valamint minimális és maximális memória-követelmény. Ez egy adott típusú rendszerkép definíciója. |
+| **Felügyelt rendszerkép** | Olyan alapszintű rendszerkép, amely önmagában vagy rendszerkép- **verzió** létrehozásához használható képgyűjteményben. A felügyelt lemezképek [általánosított](shared-image-galleries.md#generalized-and-specialized-images) virtuális gépekről jönnek létre. A felügyelt rendszerkép olyan speciális VHD-típus, amellyel több virtuális gép hozható létre, és most már használható a megosztott rendszerkép-verziók létrehozásához is. |
+| **Pillanatkép** | Egy virtuális merevlemez másolata, amely alkalmas a **rendszerkép verziójának**elkészítésére. A pillanatképek olyan [speciális](shared-image-galleries.md#generalized-and-specialized-images) virtuális gépekből is készíthetők (amelyek nem lettek általánosítva), majd önállóan vagy adatlemez-pillanatképekkel is használhatók a speciális rendszerkép-verziók létrehozásához.
+| **Képtár** | Az Azure Marketplace-hez hasonlóan a képkatalógus **is a lemezképek** kezeléséhez és megosztásához használható tárház, de Ön szabályozhatja, hogy ki férhet hozzá. |
+| **Rendszerkép definíciója** | A lemezképek a katalógusban vannak definiálva, és a rendszerképekkel és a szervezeten belüli használattal kapcsolatos követelményekkel kapcsolatos információkat hordoznak. Olyan információkat is tartalmazhat, mint például a rendszerkép általánosított vagy specializált, az operációs rendszer, a minimális és a maximális memória követelményei, valamint a kibocsátási megjegyzések. Ez egy adott típusú rendszerkép definíciója. |
 | **Rendszerkép verziója** | A **rendszerkép verziója** az, amit a virtuális gép létrehozásához használ gyűjtemény létrehozásakor. A környezethez szükség lehet a rendszerkép több verziójára. A felügyelt rendszerképekhez hasonlóan, amikor **rendszerkép-verziót** használ egy virtuális gép létrehozásához, a rendszerkép verziója a virtuális gép új lemezének létrehozására szolgál. A rendszerkép verziója többször is használható. |
+
+<br>
+
+> [!IMPORTANT]
+> A speciális lemezképek jelenleg nyilvános előzetes verzióban érhetők el.
+> Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+>
+> **Ismert előzetes verzió korlátai** A virtuális gépeket csak speciális rendszerképekből lehet létrehozni a portál vagy az API használatával. A nem támogatja a CLI-t vagy a PowerShellt az előzetes verzióhoz.
 
 
 ## <a name="before-you-begin"></a>Előkészületek
 
-A cikkben szereplő példa végrehajtásához rendelkeznie kell egy meglévő felügyelt képpel. A következő [oktatóanyagot végezheti el: Hozzon létre egy egyéni rendszerképet egy Azure-](tutorial-custom-images.md) beli virtuális gépről, és hozzon létre egy Azure PowerShell, ha szükséges. Ha a felügyelt lemezkép adatlemezt tartalmaz, az adatlemez mérete nem haladhatja meg az 1 TB-ot.
+A cikkben szereplő példa végrehajtásához rendelkeznie kell egy általánosított virtuális gép vagy egy speciális virtuális gép pillanatképét tartalmazó meglévő felügyelt képpel. Követheti az [oktatóanyagot: hozzon létre egy Azure-beli virtuális gép egyéni rendszerképét Azure PowerShell](tutorial-custom-images.md) használatával felügyelt rendszerkép létrehozásához, vagy [hozzon létre egy pillanatképet](../windows/snapshot-copy-managed-disk.md) egy speciális virtuális géphez. A felügyelt lemezképek és Pillanatképek esetében az adatlemez mérete nem haladhatja meg az 1 TB-ot.
 
 A cikkben végzett munka során szükség esetén cserélje le az erőforráscsoportot és a virtuális gépek nevét.
 
  
 [!INCLUDE [virtual-machines-common-shared-images-portal](../../../includes/virtual-machines-common-shared-images-portal.md)]
 
-## <a name="create-vms-from-an-image"></a>Virtuális gépek létrehozása rendszerképből
+## <a name="create-vms"></a>Virtuális gépek létrehozása 
 
-Miután a rendszerkép verziója elkészült, létrehozhat egy vagy több új virtuális gépet. 
+Most már létrehozhat egy vagy több új virtuális gépet. Ez a példa egy *myVMfromImage*nevű virtuális gépet hoz létre az *USA keleti* adatközpontjának *myResourceGroup* .
 
-> [!IMPORTANT]
-> A portálon nem lehet virtuális gépet üzembe helyezni egy másik Azure-bérlő lemezképéről. Ha a bérlők között megosztott rendszerképből szeretne virtuális gépet létrehozni, az [Azure CLI](shared-images.md#create-a-vm) -t vagy [](../windows/shared-images.md#create-vms-from-an-image)a PowerShellt kell használnia.
-
-
-Ez a példa egy *myVMfromImage*nevű virtuális gépet hoz létre az *USA keleti* adatközpontjának *myResourceGroup* .
-
-1. A rendszerkép verziójának lapján válassza a **virtuális gép létrehozása** elemet az oldal tetején található menüből.
+1. Nyissa meg a rendszerkép definícióját. Az erőforrás-szűrőt használhatja az összes elérhető képdefiníció megjelenítéséhez.
+1. A rendszerkép definíciójának lapján válassza a **virtuális gép létrehozása** elemet az oldal tetején található menüből.
 1. Az **erőforráscsoport**területen válassza az **új létrehozása** lehetőséget, és írja be a *myResourceGroup* nevet.
 1. A **virtuális gép neve**mezőbe írja be a következőt: *myVM*.
-1. A **régió**területen válassza az *USA keleti*régiója lehetőséget.
-1. A **rendelkezésre állási beállítások beállításnál**hagyja meg az alapértelmezett *infrastruktúra*-redundancia hiányát.
-1. A **rendszerkép** értékét automatikusan ki kell tölteni, ha a képverzió oldaláról indult el.
-1. A **méret**beállításnál válassza ki a virtuális gép méretét az elérhető méretek listájából, majd kattintson a "kiválasztás" gombra.
-1. A **rendszergazdai fiók**területen válassza a **jelszó** vagy az **SSH nyilvános kulcs**lehetőséget, majd adja meg az adatait.
+1. A régió területen válassza az *USA keleti* **régiója**lehetőséget.
+1. A **rendelkezésre állási beállítások beállításnál**hagyja meg az alapértelmezett *infrastruktúra-redundancia*hiányát.
+1. A **rendszerkép értékét** a rendszer automatikusan kitölti a `latest` rendszerkép verziójával, ha a rendszerkép-definíció oldaláról indult el.
+1. A **méret**beállításnál válassza ki a virtuális gép méretét az elérhető méretek listájából, majd válassza a **kiválasztás**lehetőséget.
+1. A **rendszergazdai fiók**területen, ha a forrás virtuális gép általánosítva lett, adja meg **felhasználónevét** és **nyilvános SSH-kulcsát**. Ha a forrás virtuális gép specializált, ezek a beállítások szürkén jelennek meg, mert a forrás virtuális gépről származó adatokat használják.
 1. Ha engedélyezni szeretné a virtuális gép távoli elérését, a **nyilvános bejövő portok**területen válassza a **kiválasztott portok engedélyezése** lehetőséget, majd válassza az **SSH (22)** lehetőséget a legördülő menüből. Ha nem szeretné engedélyezni a virtuális gép távoli elérését, hagyja a **nincs** kiválasztva lehetőséget a **nyilvános bejövő portokhoz**.
 1. Ha elkészült, kattintson a lap alján található **felülvizsgálat + létrehozás** gombra.
 1. Miután a virtuális gép áthaladt az ellenőrzésen, válassza a **Létrehozás** lehetőséget a lap alján a telepítés elindításához.
@@ -78,7 +81,7 @@ Ha már nincs rájuk szükség, törölheti az erőforráscsoportot, a virtuáli
 
 Ha törölni szeretné az egyes erőforrásokat, akkor azokat fordított sorrendben kell törölnie. A rendszerkép definíciójának törléséhez például törölnie kell az adott rendszerképből létrehozott összes rendszerkép-verziót.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Sablonok használatával is létrehozhat megosztott képgyűjteményi erőforrásokat. Több Azure Gyorsindítás-sablon is elérhető: 
 
@@ -87,5 +90,5 @@ Sablonok használatával is létrehozhat megosztott képgyűjteményi erőforrá
 - [Rendszerkép-verzió létrehozása megosztott rendszerkép-gyűjteményben](https://azure.microsoft.com/resources/templates/101-sig-image-version-create/)
 - [Virtuális gép létrehozása rendszerkép-verzióból](https://azure.microsoft.com/resources/templates/101-vm-from-sig/)
 
-A megosztott képtárakkal kapcsolatos további információkért tekintse [](shared-image-galleries.md)meg az áttekintést. Ha problémákba ütközik, tekintse meg a [megosztott képtárak hibaelhárítása](troubleshooting-shared-images.md)című témakört.
+A megosztott képtárakkal kapcsolatos további információkért tekintse meg az [áttekintést](shared-image-galleries.md). Ha problémákba ütközik, tekintse meg a [megosztott képtárak hibaelhárítása](troubleshooting-shared-images.md)című témakört.
 

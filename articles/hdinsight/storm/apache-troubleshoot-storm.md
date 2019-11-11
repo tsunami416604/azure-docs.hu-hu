@@ -2,19 +2,19 @@
 title: Storm-hibák az Azure HDInsight használatával
 description: Választ kaphat a Apache Storm Azure HDInsight való használatával kapcsolatos gyakori kérdésekre.
 keywords: Azure HDInsight, Storm, GYIK, hibaelhárítási útmutató, gyakori problémák
-ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
+ms.service: hdinsight
 ms.topic: troubleshooting
-ms.date: 08/15/2019
+ms.date: 11/08/2019
 ms.custom: seodec18
-ms.openlocfilehash: f307d6245b107fdbd3c6d6baafa5a162988235da
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: e2cc9dd81a0bbefa5cf37facb6067bda07117eaf
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72800009"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73903722"
 ---
 # <a name="troubleshoot-apache-storm-by-using-azure-hdinsight"></a>Apache Storm az Azure HDInsight használatával – problémamegoldás
 
@@ -168,12 +168,22 @@ A Worker Log4J konfigurációs fájljának olvasása `/usr/hdp/\<HDP version>/st
 Példák: `/usr/hdp/2.6.0.2-76/storm/log4j2/cluster.xml`
 `/usr/hdp/2.6.0.2-76/storm/log4j2/worker.xml`
 
+---
+
+## <a name="not-a-leader-exception"></a>Nem vezető kivétel
+
+A topológia elküldésekor a felhasználó a következőhöz hasonló hibaüzenetet kaphat: `Topology submission exception, cause not a leader, the current leader is NimbusInfo`.
+
+A megoldáshoz előfordulhat, hogy a felhasználónak be kell állítania egy jegyet, hogy a csomópontok újraindulnak vagy újraindulnak. Tovább információ: [https://community.hortonworks.com/content/supportkb/150287/error-ignoring-exception-while-trying-to-get-leade.html](https://community.hortonworks.com/content/supportkb/150287/error-ignoring-exception-while-trying-to-get-leade.html).
+
+---
+
 ## <a name="next-steps"></a>Következő lépések
 
 Ha nem látja a problémát, vagy nem tudja megoldani a problémát, további támogatásért látogasson el az alábbi csatornák egyikére:
 
 - Azure-szakértőktől kaphat válaszokat az [Azure közösségi támogatásával](https://azure.microsoft.com/support/community/).
 
-- Kapcsolódjon [@AzureSupport](https://twitter.com/azuresupport) – a hivatalos Microsoft Azure fiók a felhasználói élmény javításához. Az Azure-Közösség összekapcsolása a megfelelő erőforrásokkal: válaszok, támogatás és szakértők.
+- Kapcsolódjon a [@AzureSupporthoz](https://twitter.com/azuresupport) – a hivatalos Microsoft Azure fiókot a felhasználói élmény javításához. Az Azure-Közösség összekapcsolása a megfelelő erőforrásokkal: válaszok, támogatás és szakértők.
 
-- Ha további segítségre van szüksége, támogatási kérést küldhet a [Azure Portaltól](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Válassza a menüsor **támogatás** elemét, vagy nyissa meg a **Súgó + támogatás** hubot. Részletesebb információkért tekintse át az [Azure-támogatási kérelem létrehozását](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)ismertető témakört. Az előfizetés-kezeléshez és a számlázási támogatáshoz való hozzáférés a Microsoft Azure-előfizetés része, és a technikai támogatás az egyik [Azure-támogatási csomagon](https://azure.microsoft.com/support/plans/)keresztül érhető el.
+- Ha további segítségre van szüksége, támogatási kérést küldhet a [Azure Portaltól](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Válassza a menüsor **támogatás** elemét, vagy nyissa meg a **Súgó + támogatás** hubot. Részletesebb információkért tekintse át az [Azure-támogatási kérelem létrehozását](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)ismertető témakört. Az előfizetés-kezeléssel és számlázással kapcsolatos támogatás a Microsoft Azure-előfizetés részét képezi, míg a technikai támogatást [Azure-támogatási csomagjainkkal](https://azure.microsoft.com/support/plans/) biztosítjuk.

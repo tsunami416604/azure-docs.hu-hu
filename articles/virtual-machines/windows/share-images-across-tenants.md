@@ -10,14 +10,16 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 07/15/2019
 ms.author: cynthn
-ms.openlocfilehash: b921aabd8d71654d089c5f16aba27c286a1e91ec
-ms.sourcegitcommit: 770b060438122f090ab90d81e3ff2f023455213b
+ms.openlocfilehash: 6bf627b5456cbd878580d7b346536c98a513ca6a
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68305042"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73903698"
 ---
 # <a name="share-gallery-vm-images-across-azure-tenants"></a>Katalógusbeli virtuálisgép-rendszerképek megosztása Azure-bérlők között
+
+A megosztott képtárak lehetővé teszik a képek megosztását a RBAC használatával. A RBAC segítségével megoszthatja a bérlőn belüli képeket, és akár a bérlőn kívüli személyeket is. További információ erről az egyszerű megosztási lehetőségről: a [gyűjtemény megosztása](/azure/virtual-machines/windows/shared-images-portal#share-the-gallery).
 
 [!INCLUDE [virtual-machines-share-images-across-tenants](../../../includes/virtual-machines-share-images-across-tenants.md)]
 
@@ -26,7 +28,6 @@ ms.locfileid: "68305042"
 > A portálon nem lehet virtuális gépet üzembe helyezni egy másik Azure-bérlő lemezképéről. Ha a bérlők között megosztott rendszerképből szeretne virtuális gépet létrehozni, az [Azure CLI](../linux/share-images-across-tenants.md) -t vagy a PowerShellt kell használnia.
 
 ## <a name="create-a-vm-using-powershell"></a>Virtuális gép létrehozása a PowerShell használatával
-
 
 Jelentkezzen be mindkét bérlőbe az alkalmazás-azonosító, a titkos kulcs és a bérlő azonosítója használatával. 
 
@@ -83,6 +84,6 @@ Add-AzVMNetworkInterface -Id $nic.Id
 New-AzVM -ResourceGroupName $resourceGroup -Location $location -VM $vmConfig
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A [Azure Portal](shared-images-portal.md)használatával közös rendszerkép-katalógusbeli erőforrásokat is létrehozhat.

@@ -9,12 +9,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: overview
 ms.date: 06/12/2019
 ms.author: hrasheed
-ms.openlocfilehash: 71ccdb7ac6666cde1841599cdaf95b67bc54e6a5
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: 73a3359955bf50929f083d542e6a0583b356a280
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72800032"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73903748"
 ---
 # <a name="what-is-apache-storm-on-azure-hdinsight"></a>Mi az Azure HDInsight alatt futó Apache Storm?
 
@@ -70,7 +70,7 @@ Az alapértelmezett konfiguráció szerint az Apache Storm-fürtök csak egyetle
 
 Az új Storm-fürtök percek alatt létrehozhatók a HDInsightban. A Storm-fürtök létrehozásával kapcsolatos további információkért lásd: [Apache Hadoop fürtök létrehozása a Azure Portal használatával](../hdinsight-hadoop-create-linux-clusters-portal.md).
 
-## <a name="ease-of-use"></a>Egyszerű használat
+## <a name="ease-of-use"></a>Könnyű használat
 
 * __Secure Shell- (SSH-) kapcsolatok__: A Storm-fürt átjárócsomópontjai az interneten keresztül az SSH használatával érhetők el. Az SSH használatával közvetlenül futtathat parancsokat a fürtön.
 
@@ -113,10 +113,10 @@ Az alábbiakban néhány gyakori forgatókönyvet ismertetünk, amelyek esetén 
 * Közösségi hálók adatainak elemzése
 * Kinyerés, átalakítás és betöltés (ETL)
 * Hálózatfigyelés
-* Search
+* Keresés
 * Mobilmarketing
 
-A valós forgatókönyvekkel kapcsolatos információkért tekintse meg a [vállalatok hogyan használják Apache Storm](https://storm.apache.org/documentation/Powered-By.html) dokumentumot.
+A valós forgatókönyvekkel kapcsolatos információkért tekintse meg a [vállalatok hogyan használják Apache Storm](https://storm.apache.org/Powered-By.html) dokumentumot.
 
 ## <a name="development"></a>Fejlesztés
 

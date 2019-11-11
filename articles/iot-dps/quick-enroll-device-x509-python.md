@@ -1,24 +1,23 @@
 ---
-title: X.509-eszközök regisztrációja az Azure Device Provisioning Service-be a Python használatával | Microsoft Docs
+title: 'Gyors útmutató: X. 509 eszközök regisztrálása az Azure Device kiépítési szolgáltatásba a Python használatával'
 description: Ez a rövid útmutató csoportos regisztrációkat használ. Ebben a rövid útmutatóban X.509-eszközöket fog regisztrálni az Azure IoT Hub Device Provisioning Service-be a Python használatával
 author: wesmc7777
-ms.author: v-yiso
-origin.date: 04/10/2019
-ms.date: 05/06/2019
+ms.author: wesmc
+ms.date: 11/08/2019
 ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
-manager: timlt
+manager: philmea
 ms.devlang: python
 ms.custom: mvc
-ms.openlocfilehash: d9ed0cb82f8ad1c19f95299b3dd651fc099368b8
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: 23ae0bd9e66cbb592db0ec9adea5e4332a9aa19b
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62126494"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73904721"
 ---
-# <a name="quickstart-enroll-x509-devices-to-the-device-provisioning-service-using-python"></a>Gyors útmutató: A Device Provisioning Service-be a Python X.509-eszközök regisztrálása
+# <a name="quickstart-enroll-x509-devices-to-the-device-provisioning-service-using-python"></a>Rövid útmutató: X.509-eszközök regisztrációja a Device Provisioning Service-be a Python használatával
 
 [!INCLUDE [iot-dps-selector-quick-enroll-device-x509](../../includes/iot-dps-selector-quick-enroll-device-x509.md)]
 
@@ -142,10 +141,10 @@ Ha azt tervezi, hogy részletesebben is áttekinti a Java-szolgáltatásmintát,
 
 1. Zárja be a Java-minta kimeneti ablakát a gépen.
 1. Zárja be az _X509-tanúsítványkészítő_ ablakát a gépen.
-1. Lépjen az eszközkiépítési szolgáltatásra az Azure Portalon, kattintson a **Regisztrációk kezelése** elemre, majd válassza a **Regisztrációs csoportok** lapot. Válassza ki a rövid útmutató segítségével beléptetett X.509-eszközök *CSOPORTNEVÉT*, és kattintson a panel tetején lévő **Törlés** gombra.  
+1. Navigáljon a Azure Portal eszköz kiépítési szolgáltatásához, kattintson a **regisztrációk kezelése**lehetőségre, majd válassza a **beléptetési csoportok** fület. Válassza ki a rövid útmutató segítségével beléptetett X. 509 eszközök *csoportjának nevét* , majd kattintson a panel tetején található **Törlés** gombra.  
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ebben a rövid útmutatóban X.509-eszközök egy szimulált csoportját regisztrálta az eszközkiépítési szolgáltatásba. Ha mélyebben szeretné megismerni az eszközkiépítést, folytassa az Azure Portalon az eszközkiépítési szolgáltatás beállításának oktatóanyagával. 
 
 > [!div class="nextstepaction"]

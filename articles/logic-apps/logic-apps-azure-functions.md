@@ -9,12 +9,12 @@ ms.author: estfan
 ms.topic: article
 ms.date: 10/01/2019
 ms.reviewer: klam, LADocs
-ms.openlocfilehash: 275d02219087d07a058f486c263d1886839dd4cf
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: 5b946e36c5da9f122adce1f8e3b99523a789a66f
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72799772"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73901046"
 ---
 # <a name="call-azure-functions-from-azure-logic-apps"></a>Azure functions hívása Azure Logic Apps
 
@@ -114,7 +114,7 @@ Ahhoz, hogy létre lehessen hozni egy Azure-függvényt, amely a logikai alkalma
 
    * A logikai alkalmazás munkafolyamatának meglévő lépései között vigye az egérmutatót a nyílra, válassza ki a plusz (+) jelet, majd válassza a **művelet hozzáadása**lehetőséget.
 
-1. A keresőmezőbe írja be szűrőként az "Azure functions" kifejezést. A műveletek listából válassza ki ezt a műveletet: **válasszon ki egy Azure-függvényt** .
+1. A keresőmezőbe írja be szűrőként az "Azure functions" kifejezést. A műveletek listából válassza az Azure- **függvény kiválasztása** műveletet, például:
 
    !["Azure functions" keresése](./media/logic-apps-azure-functions/find-azure-functions-action.png)
 
@@ -126,24 +126,24 @@ Ahhoz, hogy létre lehessen hozni egy Azure-függvényt, amely a logikai alkalma
 
    1. A **függvény neve** mezőben adja meg a függvény nevét.
 
-   1. A **Code (kód** ) mezőben adja hozzá a kódot a függvény sablonhoz, beleértve a logikai alkalmazásnak a működés befejezése után visszaadott válaszokat és hasznos adatokat.
+   1. A **Code (kód** ) mezőben adja hozzá a kódot a függvény sablonhoz, beleértve a logikai alkalmazásnak a működés befejezése után visszaadott válaszokat és hasznos adatokat. Amikor elkészült, válassza a **Létrehozás** lehetőséget.
 
-      ![A függvény megadása](./media/logic-apps-azure-functions/function-definition.png)
+   Például:
 
-      A sablon kódjában a *`context` objektum* arra az üzenetre hivatkozik, amelyet a logikai alkalmazás a **kérés törzse** mezőben küld el egy későbbi lépésben. A `context` objektum tulajdonságainak a függvényen belüli eléréséhez használja a következő szintaxist:
+   ![A függvény megadása](./media/logic-apps-azure-functions/add-code-function-definition.png)
 
-      `context.body.<property-name>`
+   A sablon kódjában a *`context` objektum* arra az üzenetre hivatkozik, amelyet a logikai alkalmazás a **kérés törzse** mezőben küld el egy későbbi lépésben. A `context` objektum tulajdonságainak a függvényen belüli eléréséhez használja a következő szintaxist:
 
-      Ha például a `context` objektumon belüli `content` tulajdonságra szeretne hivatkozni, használja a következő szintaxist:
+   `context.body.<property-name>`
 
-      `context.body.content`
+   Ha például a `context` objektumon belüli `content` tulajdonságra szeretne hivatkozni, használja a következő szintaxist:
 
-      A sablon kódja egy `input` változót is tartalmaz, amely a `data` paraméter értékét tárolja, így a függvény végrehajthat műveleteket ezen az értéken. JavaScript-függvényeken belül a `data` változó a `context.body`parancsikonja is.
+   `context.body.content`
 
-      > [!NOTE]
-      > A `body` tulajdonság a `context` objektumra vonatkozik, és nem ugyanaz, mint a művelet kimenetében lévő **törzs** token, amelyet a függvénynek is át lehet adni.
+   A sablon kódja egy `input` változót is tartalmaz, amely a `data` paraméter értékét tárolja, így a függvény végrehajthat műveleteket ezen az értéken. JavaScript-függvényeken belül a `data` változó a `context.body`parancsikonja is.
 
-   1. Amikor elkészült, válassza a **Létrehozás** lehetőséget.
+   > [!NOTE]
+   > A `body` tulajdonság a `context` objektumra vonatkozik, és nem ugyanaz, mint a művelet kimenetében lévő **törzs** token, amelyet a függvénynek is át lehet adni.
 
 1. A **kérelem törzse** mezőben adja meg a függvény bemenetét, amelyet JavaScript Object Notation (JSON) objektumként kell formázni.
 
@@ -167,7 +167,7 @@ A logikai alkalmazásokból származó meglévő Azure-függvények meghívásá
 
 1. A függvény hozzáadásának lépéséhez válassza az **új lépés**lehetőséget.
 
-1. A **válasszon műveletet**területen a keresőmezőbe írja be szűrőként az "Azure functions" kifejezést. A műveletek listából válassza ki ezt a műveletet: **válasszon ki egy Azure-függvényt** .
+1. A **válasszon műveletet**területen a keresőmezőbe írja be szűrőként az "Azure functions" kifejezést. A műveletek listából válassza az Azure- **függvény kiválasztása** műveletet.
 
    !["Azure functions" keresése](./media/logic-apps-azure-functions/find-azure-functions-action.png)
 

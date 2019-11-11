@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 11/08/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 74c95ed62bcfec8792aaa465d27f539c02188713
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: d092dcf6fa9942f7b3283d1d77157b1f291a5062
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73891436"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73905048"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>Az Azure használata az SAP munkaterhelés-forgatókönyvek üzemeltetéséhez és futtatásához
 
@@ -120,6 +120,7 @@ Az Azure-szolgáltatások SAP-összetevőkbe való integrálásával kapcsolatos
 
 
 ## <a name="change-log"></a>Módosítási napló
+- 11/08/2019: a [SAP HANA magas rendelkezésre állásának](sap-hana-high-availability.md)változása az Azure-beli [virtuális gépeken SUSE Linux Enterprise Servereken, SAP HANA rendszerreplikáció beállítása az Azure Virtual Machines szolgáltatásban (VM)](sap-hana-high-availability-rhel.md), az [Azure Virtual Machines magas rendelkezésre állású SAP NetWeaver SUSE Linux Enterprise Server SAP-alkalmazásokhoz](high-availability-guide-suse.md), [Azure Virtual Machines magas rendelkezésre állás az SAP netweaver](high-availability-guide-suse-netapp-files.md)on SUSE Linux Enterprise Server, Azure NETAPP Files, [Azure Virtual Machines magas rendelkezésre állás az SAP NetWeaver on Red Hat Enterprise Linux ](high-availability-guide-rhel.md), Az [Azure Virtual Machines magas rendelkezésre állást biztosít az SAP netweaver számára Red Hat Enterprise Linux a Azure NetApp Fileson](high-availability-guide-rhel-netapp-files.md), a [magas rendelkezésre állást biztosítva az NFS](high-availability-guide-suse-nfs.md)-hez az Azure-beli virtuális gépeken, SUSE Linux Enterprise Server GlusterFS az Azure-beli [virtuális gépeken az SAP NetWeaver Red Hat Enterprise Linux](high-availability-guide-rhel-glusterfs.md) az Azure standard  
 - 11/08/2019: az [SAP munkaterhelés tervezési és üzembe helyezési ellenőrzőlistájának](sap-deployment-checklist.md) változásai a titkosítási javaslatok tisztázásához  
 - 11/04/2019: változások az [Azure-beli SUSE Linux Enterprise Server pacemaker beállításakor](high-availability-guide-suse-pacemaker.md) a fürt közvetlen, egyedi küldési konfigurációval való létrehozásához  
 - 10/29/2019: a [Virtual Machines nyilvános végponti kapcsolatának kiadása az Azure standard Load Balancer az SAP magas rendelkezésre állási forgatókönyvekben való használatával](high-availability-guide-standard-load-balancer-outbound-connections.md)

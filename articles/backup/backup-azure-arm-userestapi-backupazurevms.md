@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/03/2018
 ms.author: dacurwin
 ms.assetid: b80b3a41-87bf-49ca-8ef2-68e43c04c1a3
-ms.openlocfilehash: 901ae66281e1d68474304a4f5456a0163fcb6f2a
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 39ab0caa31f79aca41f2c40a3220412e0683ee22
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73747611"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73903162"
 ---
 # <a name="back-up-an-azure-vm-using-azure-backup-via-rest-api"></a>Azure-beli virtuális gép biztonsági mentése Azure Backup használatával REST API
 
@@ -47,7 +47,7 @@ A "refresh" művelet egy [aszinkron művelet](https://docs.microsoft.com/azure/a
 
 Két választ ad vissza: 202 (elfogadva), ha egy másik művelet jön létre, majd 200 (OK), amikor a művelet befejeződik.
 
-|Név  |Típus  |Leírás  |
+|Name (Név)  |Típus  |Leírás  |
 |---------|---------|---------|
 |204 nincs tartalom     |         |  Nem visszaadott tartalommal rendelkező OK      |
 |202 elfogadva     |         |     Elfogadott    |
@@ -110,7 +110,7 @@ A *Get* URI az összes szükséges paraméterrel rendelkezik. Nincs szükség to
 
 #### <a name="responses-1"></a>Válaszok
 
-|Név  |Típus  |Leírás  |
+|Name (Név)  |Típus  |Leírás  |
 |---------|---------|---------|
 |200 OK     | [WorkloadProtectableItemResourceList](https://docs.microsoft.com/rest/api/backup/backupprotectableitems/list#workloadprotectableitemresourcelist)        |       OK |
 
@@ -168,7 +168,7 @@ A példában a fenti értékek a következőkre fordíthatók le:
 
 ### <a name="enabling-protection-for-the-azure-vm"></a>Az Azure-beli virtuális gép védelmének engedélyezése
 
-Ha az érintett virtuális gép "gyorsítótárazva" és "azonosítva", válassza ki a védelemmel ellátni kívánt szabályzatot. A meglévő szabályzatok a tárolóban való megismeréséhez tekintse meg a [házirend-API listázása](https://docs.microsoft.com/rest/api/backup/backuppolicies/list)című témakört. Ezután válassza ki a [megfelelő szabályzatot](https://docs.microsoft.com/rest/api/backup/protectionpolicies/get) a szabályzat nevére hivatkozva. A szabályzatok létrehozásával kapcsolatban tekintse meg a [házirend létrehozása oktatóanyagot](backup-azure-arm-userestapi-createorupdatepolicy.md). Az alábbi példában a "DefaultPolicy" lehetőség van kiválasztva.
+Ha az érintett virtuális gép "gyorsítótárazva" és "azonosítva", válassza ki a védelemmel ellátni kívánt szabályzatot. A meglévő szabályzatok a tárolóban való megismeréséhez tekintse meg a [házirend-API listázása](https://docs.microsoft.com/rest/api/backup/backuppolicies/list)című témakört. Ezután válassza ki a [megfelelő szabályzatot](https://docs.microsoft.com/rest/api/backup/protectionpolicies(2019-05-13)/get) a szabályzat nevére hivatkozva. A szabályzatok létrehozásával kapcsolatban tekintse meg a [házirend létrehozása oktatóanyagot](backup-azure-arm-userestapi-createorupdatepolicy.md). Az alábbi példában a "DefaultPolicy" lehetőség van kiválasztva.
 
 A védelem engedélyezése egy aszinkron *put* művelet, amely létrehoz egy "védett elemeket".
 
@@ -186,7 +186,7 @@ PUT https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000
 
 Védett elem létrehozásához kövesse a kérelem törzsének összetevőit.
 
-|Név  |Típus  |Leírás  |
+|Name (Név)  |Típus  |Leírás  |
 |---------|---------|---------|
 |properties     | AzureIaaSVMProtectedItem        |ProtectedItem erőforrás tulajdonságai         |
 
@@ -214,7 +214,7 @@ A védett elemek létrehozása egy [aszinkron művelet](https://docs.microsoft.c
 
 Két választ ad vissza: 202 (elfogadva), ha egy másik művelet jön létre, majd 200 (OK), amikor a művelet befejeződik.
 
-|Név  |Típus  |Leírás  |
+|Name (Név)  |Típus  |Leírás  |
 |---------|---------|---------|
 |200 OK     |    [ProtectedItemResource](https://docs.microsoft.com/rest/api/backup/protecteditemoperationresults/get#protecteditemresource)     |  OK       |
 |202 elfogadva     |         |     Elfogadott    |
@@ -300,7 +300,7 @@ POST https://management.azure.com/Subscriptions/00000000-0000-0000-0000-00000000
 
 Az igény szerinti biztonsági mentés elindításához kövesse a kérelem törzsének összetevőit.
 
-|Név  |Típus  |Leírás  |
+|Name (Név)  |Típus  |Leírás  |
 |---------|---------|---------|
 |properties     | [IaaSVMBackupRequest](https://docs.microsoft.com/rest/api/backup/backups/trigger#iaasvmbackuprequest)        |BackupRequestResource tulajdonságai         |
 
@@ -325,7 +325,7 @@ Az igény szerinti biztonsági mentés indítása [aszinkron művelet](https://d
 
 Két választ ad vissza: 202 (elfogadva), ha egy másik művelet jön létre, majd 200 (OK), amikor a művelet befejeződik.
 
-|Név  |Típus  |Leírás  |
+|Name (Név)  |Típus  |Leírás  |
 |---------|---------|---------|
 |202 elfogadva     |         |     Elfogadott    |
 
@@ -445,12 +445,12 @@ A védelem *törlése* [aszinkron művelet](https://docs.microsoft.com/azure/azu
 
 Két választ ad vissza: 202 (elfogadva), ha egy másik művelet jön létre, majd 204 (nincs tartalom), amikor a művelet befejeződik.
 
-|Név  |Típus  |Leírás  |
+|Name (Név)  |Típus  |Leírás  |
 |---------|---------|---------|
 |204 tartalom     |         |  Nincs tartalom       |
 |202 elfogadva     |         |     Elfogadott    |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Adatok visszaállítása egy Azure-beli virtuális gép biztonsági másolatából](backup-azure-arm-userestapi-restoreazurevms.md).
 

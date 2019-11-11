@@ -5,25 +5,25 @@ author: jan-eng
 ms.author: janeng
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 07/31/2019
-ms.openlocfilehash: f53f260ebe80ce2e3d6d6349e3fa892fa3c021a3
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.date: 11/08/2019
+ms.openlocfilehash: 62c5c338f9783c65a3907a706618f653eea5cd0d
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71972827"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73904390"
 ---
 # <a name="azure-database-for-mysql-pricing-tiers"></a>Árképzési szintek Azure Database for MySQL
 
-Egy Azure Database for MySQL-kiszolgálót a három különböző díjszabási csomag egyikében hozhat létre: Alapszintű, általános célú és memória optimalizálva. Az árképzési csomagokat a virtuális mag olyan számítási mennyisége különbözteti meg, amely kiépíthető, memóriát virtuális mag, valamint az adatok tárolására szolgáló tárolási technológiát. Minden erőforrást a MySQL-kiszolgáló szintjén kell kiépíteni. A kiszolgálók egy vagy több adatbázissal rendelkezhetnek.
+A Azure Database for MySQL-kiszolgálót a három különböző díjszabási szint egyikében hozhatja létre: alapszintű, általános célú és memória optimalizálva. Az árképzési csomagokat a virtuális mag olyan számítási mennyisége különbözteti meg, amely kiépíthető, memóriát virtuális mag, valamint az adatok tárolására szolgáló tárolási technológiát. Minden erőforrást a MySQL-kiszolgáló szintjén kell kiépíteni. A kiszolgálók egy vagy több adatbázissal rendelkezhetnek.
 
 |    | **Basic** | **általános célú** | **Memória optimalizálva** |
 |:---|:----------|:--------------------|:---------------------|
 | Számítási generáció | Gen 4, Gen 5 | Gen 4, Gen 5 | Gen 5 |
-| Virtuális magok | 1, 2 | 2, 4, 8, 16, 32, 64 |2, 4, 8, 16, 32 |
+| Virtuális mag | 1, 2 | 2, 4, 8, 16, 32, 64 |2, 4, 8, 16, 32 |
 | Memória/virtuális mag | 2 GB | 5 GB | 10 GB |
-| Tárterület mérete | 5 GB – 1 TB | 5 GB – 4 TB | 5 GB – 4 TB |
-| Tárolótípus | Azure standard Storage | Azure Premium Storage | Azure Premium Storage |
+| Tárterület mérete | 5 GB – 1 TB | 5 GB – 16 TB | 5 GB – 16 TB |
+| Tárolási típus | Azure standard Storage | Azure Premium Storage | Azure Premium Storage |
 | Adatbázis biztonsági másolatának megőrzési időtartama | 7 – 35 nap | 7 – 35 nap | 7 – 35 nap |
 
 Árképzési szintek kiválasztásához használja a következő táblázatot kiindulási pontként.
@@ -31,7 +31,7 @@ Egy Azure Database for MySQL-kiszolgálót a három különböző díjszabási c
 | Tarifacsomag | Kívánt teljesítményprofilok |
 |:-------------|:-----------------|
 | Alapszintű | Könnyű számítási és I/O-teljesítményt igénylő munkaterhelések. Ilyenek például a fejlesztéshez és teszteléshez használt kiszolgálók, vagy a kisméretű, ritkán használt alkalmazások. |
-| Általános rendeltetés | A legtöbb üzleti számítási feladat, amely kiegyensúlyozott számítást és memóriát igényel a méretezhető I/O-átviteli sebességgel. Ilyenek például a web-és mobil alkalmazások és más vállalati alkalmazások üzemeltetésére szolgáló kiszolgálók.|
+| Általános célú | A legtöbb üzleti számítási feladat, amely kiegyensúlyozott számítást és memóriát igényel a méretezhető I/O-átviteli sebességgel. Ilyenek például a web-és mobil alkalmazások és más vállalati alkalmazások üzemeltetésére szolgáló kiszolgálók.|
 | Memóriára optimalizált | Nagy teljesítményű adatbázis-munkaterhelések, amelyek memóriabeli teljesítményt igényelnek a gyorsabb tranzakció-feldolgozáshoz és a nagyobb egyidejűséghez. Ilyenek például a valós idejű és a nagy teljesítményű tranzakciós vagy analitikai alkalmazások feldolgozására szolgáló kiszolgálók.|
 
 A kiszolgáló létrehozása után a virtuális mag, a hardver-létrehozási és az árképzési szint (kivéve az alapszintű és az alapszintű) számát másodpercek alatt módosíthatja. A tárolási mennyiség és a biztonsági mentés megőrzési időszaka egymástól függetlenül is beállítható az alkalmazás leállása nélkül. A biztonsági mentési tár típusa nem módosítható a kiszolgáló létrehozása után. További információ: [Scale Resources (erőforrások méretezése](#scale-resources) ) szakasz.
@@ -40,16 +40,22 @@ A kiszolgáló létrehozása után a virtuális mag, a hardver-létrehozási és
 
 A számítási erőforrások virtuális mag-ként vannak megadva, amely az alapul szolgáló hardver logikai PROCESSZORát jelöli. Kelet-Kína 1, Észak-Kína 1, US DoD – középső régió és US DoD – keleti régió az Intel E5-2673 v3 (Haswell) 2,4 GHz-es processzorokon alapuló Gen 4 logikai processzorokat használ. Minden más régió az Intel E5-2673 v4 (Broadwell) 2,3 GHz-es processzorokon alapuló Gen 5 logikai CPU-ket használ.
 
-## <a name="storage"></a>Storage
+## <a name="storage"></a>Tárolás
 
 Az Ön által kiépített tárterület a Azure Database for MySQL-kiszolgáló számára elérhető tárolási kapacitás mennyisége. A tárterületet az adatbázisfájlok, az ideiglenes fájlok, a tranzakciónaplók és a MySQL-kiszolgáló naplófájljai használják. A kiépített tárterület teljes mennyisége határozza meg a kiszolgáló számára elérhető I/O-kapacitást is.
 
 |    | **Basic** | **általános célú** | **Memória optimalizálva** |
 |:---|:----------|:--------------------|:---------------------|
-| Tárolótípus | Azure standard Storage | Azure Premium Storage | Azure Premium Storage |
-| Tárterület mérete | 5 GB – 1 TB | 5 GB – 4 TB | 5 GB – 4 TB |
-| Tárolási növekmény mérete | 1 GB | 1 GB | 1 GB |
-| IOPS | Változó |3 IOPS/GB<br/>Minimális 100 IOPS<br/>Max. 6000 IOPS | 3 IOPS/GB<br/>Minimális 100 IOPS<br/>Max. 6000 IOPS |
+| Tárolási típus | Azure standard Storage | Azure Premium Storage | Azure Premium Storage |
+| Tárterület mérete | 5 GB – 1 TB | 5 GB – 16 TB | 5 GB – 16 TB |
+| Tárolási növekmény mérete | 1 GB | 1 GB | 1 GB |
+| IOPS | Változó |3 IOPS/GB<br/>Minimális 100 IOPS<br/>Max. 20 000 IOPS | 3 IOPS/GB<br/>Minimális 100 IOPS<br/>Max. 20 000 IOPS |
+
+> [!NOTE]
+> A 16TB és a 20 000 IOPS a következő régiókban támogatott: USA keleti régiója, USA 2. keleti régiója, USA középső régiója, USA nyugati régiója, Észak-Európa, Nyugat-Európa, Egyesült Királyság déli régiója, Egyesült Királyság nyugati régiója, Délkelet-Ázsia, Kelet-Ázsia, Kelet-Japán, Nyugat-Japán, Korea középső régiója, Dél-Korea, Kelet-Ausztrália, Ausztrália Dél-Kelet.
+>
+> Minden más régió akár 4TB, akár 6000 IOPS is támogat.
+>
 
 A kiszolgáló létrehozásakor és után további tárolókapacitást is hozzáadhat, és lehetővé teheti, hogy a rendszer automatikusan növelje a tárterületet a számítási feladatok tárolási feladatainak megfelelően. 
 
@@ -59,25 +65,6 @@ A kiszolgáló létrehozásakor és után további tárolókapacitást is hozzá
 Az alapszintű csomag nem biztosít IOPS garanciát. A általános célú és a memória optimalizált díjszabási szintjein a IOPS a kiépített tároló méretével, 3:1 arányban méretezhető.
 
 Az I/O-használatot a Azure Portal vagy az Azure CLI-parancsok használatával figyelheti. A figyelni kívánt mérőszámok a [tárolási korlát, a tárolási százalék, a felhasznált tárterület és az IO százalék](concepts-monitoring.md).
-
-### <a name="large-storage-preview"></a>Nagyméretű tároló (előzetes verzió)
-
-A tárolási korlátokat a általános célú és a memória optimalizált szintjein növeljük. Az előzetes verzióra engedélyező újonnan létrehozott kiszolgálók legfeljebb 16 TB tárhellyel rendelkezhetnek. A IOPS-skála 3:1-ig terjedő arányban 20 000 IOPS. A jelenlegi általánosan elérhető tárolóhoz hasonlóan további tárolókapacitást is hozzáadhat a kiszolgáló létrehozása után, és lehetővé teszi, hogy a rendszer automatikusan növelje a tárterületet a számítási feladatok tárolási feladatainak megfelelően.
-
-|              | **általános célú** | **Memória optimalizálva** |
-|:-------------|:--------------------|:---------------------|
-| Tárolótípus | Azure Premium Storage | Azure Premium Storage |
-| Tárterület mérete | 32 GB – 16 TB| 32 GB – 16 TB |
-| Tárolási növekmény mérete | 1 GB | 1 GB |
-| IOPS | 3 IOPS/GB<br/>Minimális 100 IOPS<br/>Max. 20 000 IOPS| 3 IOPS/GB<br/>Minimális 100 IOPS<br/>Max. 20 000 IOPS |
-
-> [!IMPORTANT]
-> A nagyméretű tárterület jelenleg nyilvános előzetes verzióban érhető el a következő régiókban: USA keleti régiója, USA 2. keleti régiója, USA középső régiója, USA nyugati régiója, Észak-Európa, Nyugat-Európa, Egyesült Királyság déli régiója, Egyesült Királyság nyugati régiója, Délkelet-Ázsia, Kelet-Ázsia, Kelet-Japán, Nyugat-Japán, Korea középső régiója, Dél-Korea, Kelet-Ausztrália, Ausztrália déli
->
-> A nagyméretű tárolási előnézet jelenleg nem támogatja a következőket:
->
-> * Földrajzilag redundáns biztonsági másolatok
-> * Régiók közötti replikáció
 
 ### <a name="reaching-the-storage-limit"></a>A tárolási korlát elérése
 
@@ -97,7 +84,7 @@ Ha például 1000 GB tárhelyet használ, és a tényleges kihasználtság megha
 
 Ne feledje, hogy a tárterület csak akkor méretezhető, ha nem.
 
-## <a name="backup"></a>Biztonsági másolat
+## <a name="backup"></a>Backup
 
 A szolgáltatás automatikusan biztonsági másolatot készít a kiszolgálóról. A biztonsági mentések minimális megőrzési ideje hét nap. 35 napos megőrzési időtartamot is beállíthat. A megőrzés a kiszolgáló élettartama alatt bármikor módosítható. A helyileg redundáns és a Geo-redundáns biztonsági mentések közül választhat. A Geo-redundáns biztonsági mentéseket a kiszolgáló által létrehozott régió [földrajzi összepárosítású régiójában](https://docs.microsoft.com/azure/best-practices-availability-paired-regions) is tárolja a rendszer. Ez a redundancia katasztrófa esetén nyújt védelmet. Lehetősége van arra is, hogy a kiszolgálót bármely olyan Azure-régióba visszaállítsa, amelyben a szolgáltatás a Geo-redundáns biztonsági mentésekkel elérhető. A kiszolgáló létrehozása után a két biztonsági mentési tárolási lehetőség között nem lehet módosítani.
 
@@ -113,7 +100,7 @@ A tárterület skálázása és a biztonsági mentés megőrzési időtartamána
 
 A legfrissebb díjszabási információkért tekintse meg a szolgáltatás [díjszabását ismertető oldalt](https://azure.microsoft.com/pricing/details/mysql/). A kívánt konfiguráció költségének megtekintéséhez a [Azure Portal](https://portal.azure.com/#create/Microsoft.MySQLServer) a kiválasztott beállítások alapján megjeleníti a havi költséget a **díjszabási szintek** lapon. Ha még nem rendelkezik Azure-előfizetéssel, az Azure díjszabási kalkulátor használatával megbecsülheti a becsült árat. Az [Azure díjszabási kalkulátor](https://azure.microsoft.com/pricing/calculator/) webhelyén válassza az **elemek hozzáadása**, majd az **adatbázisok** kategóriát, és **Azure Database for MySQL** a beállítások testreszabásához.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Megtudhatja, hogyan [hozhat létre MySQL-kiszolgálót a portálon](howto-create-manage-server-portal.md).
 - A [szolgáltatás korlátainak](concepts-limits.md)megismerése.

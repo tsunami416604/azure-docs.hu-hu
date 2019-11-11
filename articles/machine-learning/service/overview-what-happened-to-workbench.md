@@ -11,12 +11,12 @@ author: j-martens
 ms.author: jmartens
 ms.date: 11/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: 835024f7c8d77d67a2f6321df658c2f5c2007e62
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: 1ff70a8a794cbc4c201512a0cf578eb0a890a5e4
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73647104"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73904422"
 ---
 # <a name="what-happened-to-azure-machine-learning-workbench"></a>Mi történt az Azure Machine Learning Workbench alkalmazással?
 
@@ -92,15 +92,15 @@ További információt a következő cikkekben talál:
 + [A modellek üzembe helyezésének helye és módja](how-to-deploy-and-where.md)
 + [Oktatóanyag: modellek üzembe helyezése Azure Machine Learning](tutorial-deploy-models-with-aml.md)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ismerkedjen meg a [Azure Machine learning legújabb architektúrával](concept-azure-machine-learning-architecture.md).
 
 A szolgáltatás áttekintéséhez olvassa el a [Mi az Azure Machine learning?](overview-what-is-azure-ml.md)című témakört.
 
 Hozza létre első kísérletét a kívánt módszerrel:
-  + [Python-jegyzetfüzetek használata & ML-modellek üzembe helyezéséhez](tutorial-1st-experiment-sdk-setup.md)
-  + [Az R Markdown használata & ML-modellek üzembe helyezéséhez]( tutorial-1st-r-experiment.md) 
-  + [Az automatizált gépi tanulás használata & ML-modellek üzembe helyezéséhez](ui-tutorial-automobile-price-train-score.md) 
-  + [A tervező drag & drop funkciói a & üzembe helyezéséhez](tutorial-first-experiment-automated-ml.md) 
-  + [Modellek betanítása és üzembe helyezése a Machine learning parancssori felület használatával](tutorial-train-deploy-model-cli.md)
+  + [Python-jegyzetfüzetek használata](tutorial-1st-experiment-sdk-setup.md)
+  + [R-Markdown használata]( tutorial-1st-r-experiment.md) 
+  + [Automatikus gépi tanulás használata](ui-tutorial-automobile-price-train-score.md) 
+  + [A tervező drag & drop képességeinek használata](tutorial-first-experiment-automated-ml.md) 
+  + [A ML-bővítmény használata a parancssori felülethez](tutorial-train-deploy-model-cli.md)

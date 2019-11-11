@@ -1,17 +1,17 @@
 ---
 title: Azure Cosmos DB Azure Resource Manager sablonjai
 description: Azure Cosmos DB létrehozásához és konfigurálásához használjon Azure Resource Manager sablonokat.
-author: markjbrown
+author: TheovanKraay
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 10/31/2019
-ms.author: mjbrown
-ms.openlocfilehash: ecdfe89e899e0d416784ae32a0d66b335c09e2b6
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.date: 11/07/2019
+ms.author: thvankra
+ms.openlocfilehash: 7c508d736c7c04cc6df2b42e0a90a2906052adbc
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73582807"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73835519"
 ---
 # <a name="azure-resource-manager-templates-for-azure-cosmos-db"></a>Azure Cosmos DB Azure Resource Manager sablonjai
 
@@ -37,8 +37,6 @@ Az alábbi táblázatok a Azure Cosmos DB Azure Resource Manager sablonjaira mut
 |**Sablon**|**Leírás**|
 |---| ---|
 |[Azure Cosmos-fiók, szóköz, tábla létrehozása](manage-cassandra-with-resource-manager.md#create-resource) | Ez a sablon létrehoz egy Cassandra API fiókot két régióban, ahol a több főkiszolgálós engedélyezve van. Az Azure Cosmos-fiók két olyan táblát fog tartalmazni, amelyek a tárterület-szintű átviteli sebességet használják. |
-|[Az átviteli sebesség (RU/s) frissítése egy szóközre](manage-cassandra-with-resource-manager.md#keyspace-ru-update) | Ez a sablon frissíti a Cassandra API-fiókban található lemezterület átviteli sebességét. |
-|[Egy tábla frissítési teljesítményének (RU/s) frissítése](manage-cassandra-with-resource-manager.md#table-ru-update) | Ez a sablon egy Cassandra API-fiókban lévő tábla átviteli sebességét frissíti. |
 
 ## <a name="gremlin-api"></a>Gremlin API
 

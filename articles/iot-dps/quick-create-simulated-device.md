@@ -1,22 +1,22 @@
 ---
-title: Szimulált TPM-eszköz kiépítése Azure IoT Hubra C használatával | Microsoft Docs
+title: 'Gyors útmutató: szimulált TPM-eszköz kiépítése az Azure-IoT Hub C használatával'
 description: Ez a rövid útmutató egyéni regisztrációkat használ. Ebben a rövid útmutatóban egy szimulált TPM-eszközt hoz létre és épít ki az Azure IoT Hub Device Provisioning Service-hez készült C eszközoldali SDK-val.
 author: wesmc7777
 ms.author: wesmc
-ms.date: 04/10/2019
+ms.date: 11/08/2019
 ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: ca6914967d855123c70bf746a9d68d2e045e76d9
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: 3df1bd879c10411800596ce7157be4554fcffaf6
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65908671"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73903497"
 ---
-# <a name="quickstart-provision-a-simulated-tpm-device-using-the-azure-iot-c-sdk"></a>Gyors útmutató: Az Azure IoT C SDK használatával szimulált TPM-eszköz kiépítése
+# <a name="quickstart-provision-a-simulated-tpm-device-using-the-azure-iot-c-sdk"></a>Rövid útmutató: Szimulált TPM-eszköz kiépítése az Azure IoT C SDK-val
 
 [!INCLUDE [iot-dps-selector-quick-create-simulated-device-tpm](../../includes/iot-dps-selector-quick-create-simulated-device-tpm.md)]
 
@@ -25,8 +25,8 @@ Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre és futtathat p
 Amennyiben nem ismeri az automatikus kiépítés folyamatát, olvassa el [az automatikus kiépítés alapfogalmait](concepts-auto-provisioning.md) ismertető cikket. A rövid útmutató folytatása előtt mindenképpen végezze el az [IoT Hub eszközkiépítési szolgáltatás beállítása az Azure Portallal](./quick-setup-auto-provision.md) szakasz lépéseit. 
 
 Az Azure IoT Device Provisioning Service kétféle típusú regisztrációt támogat:
-- [Regisztrációs csoportok](concepts-service.md#enrollment-group): Segítségével több kapcsolódó eszközöket regisztrálni.
-- [Egyéni regisztrációk](concepts-service.md#individual-enrollment): Egy adott eszköz regisztrálásához használja.
+- [Regisztrációs csoportok](concepts-service.md#enrollment-group): Több kapcsolódó eszköz regisztrálásához.
+- [Egyéni regisztrációk](concepts-service.md#individual-enrollment): Egyetlen eszköz regisztrálásához.
 
 Ez a cikk az egyéni regisztrációkat ismerteti.
 
@@ -34,7 +34,7 @@ Ez a cikk az egyéni regisztrációkat ismerteti.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* [A Visual Studio](https://visualstudio.microsoft.com/vs/) 2015 vagy újabb verzió a ["asztali fejlesztés C++"](https://www.visualstudio.com/vs/support/selecting-workloads-visual-studio-2017/) számítási feladat engedélyezve van.
+* A [Visual Studio](https://visualstudio.microsoft.com/vs/) 2015-as vagy újabb verziójának használata az ["asztali fejlesztés C++](https://www.visualstudio.com/vs/support/selecting-workloads-visual-studio-2017/) a munkaterheléssel" beállítással.
 * A [Git](https://git-scm.com/download/) legújabb verziójának telepített példánya.
 
 
@@ -44,7 +44,7 @@ Ez a cikk az egyéni regisztrációkat ismerteti.
 
 Ebben a szakaszban egy fejlesztői környezetet készítünk elő az [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) és a [TPM](https://docs.microsoft.com/windows/device-security/tpm/trusted-platform-module-overview) eszközszimulátor mintájának létrehozásához.
 
-1. Töltse le a [CMake buildelési rendszert](https://cmake.org/download/).
+1. Töltse le a [Csatlakozáskezelő felügyeleti csomag Build-szolgáltatását](https://cmake.org/download/).
 
     Fontos, hogy a Visual Studio előfeltételei (Visual Studio és az „Asztali fejlesztés C++ használatával” számítási feladat) telepítve legyenek a gépen, **mielőtt** megkezdené a `CMake` telepítését. Ha az előfeltételek telepítve vannak, és ellenőrizte a letöltött fájlt, telepítse a CMake buildelési rendszert.
 
@@ -129,10 +129,10 @@ Ebben a szakaszban olyan mintát hoz létre és futtat, amely beolvassa a futó 
 3. A **Regisztráció hozzáadása** lapon adja meg az alábbi adatokat, majd kattintson a **Mentés** gombra.
 
     - **Mechanizmus:** Válassza a **TPM** elemet az identitás igazolási *Mechanizmusaként*.
-    - **Ellenőrzőkulcs:** Adja meg a *ellenőrzőkulcsot* futtassa a TPM-eszköz számára létrehozott a *tpm_device_provision* projekt.
-    - **Regisztrációs azonosító:** Adja meg a *regisztrációs azonosító* futtassa a TPM-eszköz számára létrehozott a *tpm_device_provision* projekt.
-    - **IoT Edge-eszköz:** Válassza ki **letiltása**.
-    - **IoT Hub-Eszközazonosító:** Adja meg **test-docs-eszköz** biztosíthat az eszköz azonosítója.
+    - **Ellenőrzőkulcs:** Adja meg a TPM-eszközhöz létrehozott *Ellenőrzőkulcsot* a *tpm_device_provision* projekt futtatásával.
+    - **Regisztráció azonosítója:** Írja be a TPM-eszközhöz létrehozott *Regisztrációs azonosítót* a *tpm_device_provision* projekt futtatásával.
+    - **IoT Edge-eszköz:** Válassza a **Letiltás** lehetőséget.
+    - **IoT Hub-eszközazonosító:** A **test-docs-device** megadásával adjon azonosítót az eszköznek.
 
       ![Írja be az eszköz beléptetési információit a portálon](./media/quick-create-simulated-device/enter-device-enrollment.png)  
 
@@ -211,13 +211,12 @@ Ha azt tervezi, hogy folytatja az eszközügyfél minta használatát és megism
 
 1. Zárja be az eszközügyfél minta kimeneti ablakát a gépen.
 2. Zárja be a TPM szimulátor ablakát a gépen.
-3. Az Azure Portal bal oldali menüjében kattintson az **Összes erőforrás** lehetőségre, majd válassza ki az eszközkiépítési szolgáltatást. Nyissa meg a szolgáltatás **Regisztrációk kezelése** lapját, majd kattintson az **Egyéni regisztrációk** lapra. Válassza ki a rövid útmutatóban regisztrált eszköz *REGISZTRÁCIÓS AZONOSÍTÓJÁT*, majd kattintson a felül található **Törlés** gombra. 
+3. Az Azure Portal bal oldali menüjében kattintson az **Összes erőforrás** lehetőségre, majd válassza ki az eszközkiépítési szolgáltatást. Nyissa meg a szolgáltatás **regisztrációinak kezelése** elemet, majd kattintson az **Egyéni regisztrációk** fülre. Válassza ki az ebben a rövid útmutatóban regisztrált eszköz *regisztrációs azonosítóját* , majd kattintson a felül található **Törlés** gombra. 
 4. Az Azure Portal bal oldali menüjében kattintson az **Összes erőforrás** lehetőségre, majd válassza ki az IoT Hubot. Nyissa meg a hub **IoT-eszközök** lapját, válassza ki a rövid útmutatóban regisztrált eszköz *ESZKÖZAZONOSÍTÓJÁT*, majd kattintson a felül található **Törlés** gombra.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban egy szimulált TPM-eszközt hozott létre a gépen, majd kiépítette azt az IoT Hubon az IoT Hub Device Provisioning Service használatával. Ha szeretné megismerni a TPM-eszköz programozott regisztrációjának folyamatát, lépjen tovább a TPM-eszközök programozott regisztrációjának rövid útmutatójára. 
 
 > [!div class="nextstepaction"]
 > [Azure rövid útmutató – TPM-eszköz regisztrációja az Azure IoT Hub Device Provisioning Service-be](quick-enroll-device-tpm-java.md)
-

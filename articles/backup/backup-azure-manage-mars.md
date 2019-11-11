@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 10/07/2019
 ms.author: dacurwin
-ms.openlocfilehash: 88a914a2a4d3d62918b01674d6d21f2f011e2c2e
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 049b09f7927da2cc841130a0adeaa90768037db8
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73834304"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73903216"
 ---
 # <a name="manage-microsoft-azure-recovery-services-agent-backups-by-using-the-azure-backup-service"></a>Microsoft Azure Recovery Services ügynök biztonsági másolatainak kezelése a Azure Backup szolgáltatás használatával
 
@@ -62,7 +62,7 @@ Hozzon létre egy szabályzatot az alábbiak szerint:
             – A hónap utolsó hetében szombaton, éjfélkor és 6:00 ÓRAKOR készített biztonsági másolatok 12 hónapig tartanak.
             – A március utolsó hetében szombaton készített biztonsági másolatok 10 évig tartanak.
 
-           ![Retention example](./media/backup-configure-vault/retention-example.png)
+    ![Adatmegőrzési példa](./media/backup-configure-vault/retention-example.png)
 
 11. A **kezdeti biztonsági mentés típusának kiválasztása beállításnál** döntse el, hogy szeretné-e a kezdeti biztonsági mentést a hálózaton keresztül vagy offline biztonsági mentést használni (az offline biztonsági mentésről további információt ebben a [cikkben](backup-azure-backup-import-export.md)talál). Ha a kezdeti biztonsági mentést a hálózaton keresztül szeretné végrehajtani, válassza az **automatikusan a hálózaton keresztül** lehetőséget, és kattintson a **tovább**gombra.
 
@@ -165,7 +165,7 @@ A fájlok és mappák biztonsági mentése kétféleképpen állítható le:
     ![az ütemezett biztonsági mentést.](./media/backup-azure-manage-mars/mars-actions.png)
 1. A **házirend elemének kiválasztása** lapon válassza **a fájlok és mappák biztonsági mentési ütemtervének módosítása** lehetőséget, majd kattintson a **tovább**gombra.
     ![az ütemezett biztonsági mentést.](./media/backup-azure-manage-mars/select-policy-item-retain-data.png)
-1. Az **ütemezett biztonsági mentés módosítása vagy leállítása** lapon válassza a **Leállítás ezzel a biztonsági mentési ütemezéssel lehetőséget, de tartsa meg a tárolt biztonsági mentéseket, amíg az ütemezés újra be nem aktiválódik**. Ezután válassza a **Tovább** lehetőséget.  
+1. Az **ütemezett biztonsági mentés módosítása vagy leállítása** lapon válassza a **Leállítás ezzel a biztonsági mentési ütemezéssel lehetőséget, de a tárolt biztonsági mentéseket tartsa meg, amíg újra nem aktiválja az ütemezést**. Ezután válassza a **Tovább** lehetőséget.  
     ![az ütemezett biztonsági mentést.](./media/backup-azure-manage-mars/stop-schedule-backup.png)
 1. Az **ütemezett biztonsági mentés szüneteltetése** lapon tekintse át az adatokat, majd kattintson a **Befejezés** gombra ![az ütemezett biztonsági mentés módosítása vagy leállítása.](./media/backup-azure-manage-mars/pause-schedule-backup.png)
 1. a **biztonsági mentési folyamat módosítása** alatt jelölje be az ütemezett biztonsági mentés szüneteltetésének sikerességét, és kattintson a **Bezárás** gombra a befejezéshez.
@@ -206,7 +206,7 @@ Ha leállította a védelmet, miközben megtartja az adatvédelmet, és úgy dö
 1. A **megőrzési szabály kiválasztása**területen adja meg a megőrzési időtartamot, majd kattintson a **tovább**gombra.
 1. Végül a **megfelelőség** képernyőn tekintse át a szabályzat részleteit, és kattintson a **Befejezés**gombra.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A támogatott forgatókönyvekkel és korlátozásokkal kapcsolatos információkért tekintse meg a [Mars támogatási mátrixát](https://docs.microsoft.com/azure/backup/backup-support-matrix-mars-agent).
 - További információ az [ad hoc biztonsági mentési szabályzatok megőrzési viselkedéséről](backup-configure-vault.md#ad-hoc-backup-policy-retention-behavior).

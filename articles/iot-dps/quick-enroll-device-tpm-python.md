@@ -1,23 +1,23 @@
 ---
-title: TPM-eszköz regisztrálása az Azure Device Provisioning Service-be a Python használatával | Microsoft Docs
+title: 'Gyors útmutató: TPM-eszköz regisztrálása az Azure Device kiépítési szolgáltatásba a Python használatával'
 description: Azure rövid útmutató – TPM-eszköz regisztrálása az Azure IoT Hub Device Provisioning Service-be a Python regisztrációs szolgáltatási SDK-val. Ez a rövid útmutató egyéni regisztrációkat használ.
 author: wesmc7777
 ms.author: wesmc
-ms.date: 01/26/2018
+ms.date: 11/08/2019
 ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
 manager: timlt
 ms.devlang: python
 ms.custom: mvc
-ms.openlocfilehash: 6e38d5f3a959d363347c8b266b7bbaf165f34937
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 49e7961200a2ab523997350fffa6606d65f60c8c
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60517179"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73903396"
 ---
-# <a name="enroll-tpm-device-to-iot-hub-device-provisioning-service-using-python-provisioning-service-sdk"></a>TPM-eszköz regisztrálása az IoT Hub Device Provisioning Service-be a Python regisztrációs szolgáltatási SDK-val
+# <a name="quickstart-enroll-tpm-device-to-iot-hub-device-provisioning-service-using-python-provisioning-service-sdk"></a>Gyors útmutató: TPM-eszköz regisztrálása IoT Hub Device Provisioning Service a Python kiépítési szolgáltatási SDK-val
 [!INCLUDE [iot-dps-selector-quick-enroll-device-tpm](../../includes/iot-dps-selector-quick-enroll-device-tpm.md)]
 
 Ezek a lépések bemutatják, hogyan hozhat létre egyéni regisztrációt TPM-eszközhöz programozott módon az Azure IoT Hub Device Provisioning Service-ben a [Python regisztrációs szolgáltatási SDK](https://github.com/Azure/azure-iot-sdk-python/tree/master/provisioning_service_client), valamint egy Python-mintaalkalmazás használatával. Bár a Python szolgáltatásoldali SDK Windows és Linux rendszerű gépeken is működik, ez a cikk egy Windows rendszerű fejlesztési számítógépet használ a regisztrációs folyamat bemutatására.
@@ -109,10 +109,10 @@ Ha azt tervezi, hogy részletesebben is áttekinti a Java-szolgáltatásmintát,
 
 1. Zárja be a Python-minta kimeneti ablakát a gépen.
 1. Ha létrehozott egy szimulált TPM-eszközt, zárja be a TPM-szimulátor ablakát.
-1. Lépjen a Device Provisioning Service-re az Azure Portalon, kattintson a **Regisztrációk kezelése** lehetőségre, majd válassza az **Egyéni regisztrációk** lapot. Válassza ki a rövid útmutató segítségével létrehozott regisztrációs bejegyzés *Regisztrációs azonosítóját*, majd kattintson a panel tetején lévő **Törlés** gombra.  
+1. Navigáljon a Azure Portal eszköz kiépítési szolgáltatásához, kattintson a **regisztrációk kezelése**lehetőségre, majd válassza az **Egyéni regisztrációk** fület. Válassza ki a rövid útmutató segítségével létrehozott beléptetési bejegyzés *regisztrációs azonosítóját* , majd kattintson a panel tetején található **Törlés** gombra.  
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ebben a rövid útmutatóban egyéni regisztrációs bejegyzést hozott létre programozott módon egy TPM-eszközhöz, és igény szerint létrehozott egy szimulált TPM-eszközt a gépén, majd kiépítette azt az IoT Hubon az Azure IoT Hub Device Provisioning Service-szel. Ha mélyebben szeretné megismerni az eszközkiépítést, folytassa az Azure Portalon az eszközkiépítési szolgáltatás beállításának oktatóanyagával.
 
 > [!div class="nextstepaction"]

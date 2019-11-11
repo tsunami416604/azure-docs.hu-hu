@@ -1,6 +1,6 @@
 ---
 title: Tartós entitások – Azure Functions
-description: Ismerje meg, mi a tartós entitások és hogyan használhatók a Azure Functions Durable Functions-bővítményében.
+description: Megtudhatja, milyen tartós entitásokat használ, és hogyan használhatja őket a Azure Functions Durable Functions-bővítményében.
 services: functions
 author: cgillum
 manager: jeconnoc
@@ -9,58 +9,58 @@ ms.service: azure-functions
 ms.topic: overview
 ms.date: 11/02/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 62ca71e1b42e000f7528a2963793f9bf40663bf3
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: d62281b4ccb522b3a784428bcf0284730f120628
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73818503"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73904025"
 ---
 # <a name="entity-functions"></a>Entitás-függvények
 
-Az Entity functions olyan műveleteket határoz meg, amelyek olyan kis méretű állapotok olvasására és frissítésére szolgálnak, amelyek *tartós entitások*. A Orchestrator függvényekhez hasonlóan az Entity functions is egy speciális trigger típussal, az *entitások triggerével*működik. Az Orchestrator függvényektől eltérően az Entity functions az entitások állapotát explicit módon kezeli, ahelyett, hogy az állapotot a vezérlési folyamaton keresztül implicit módon jelképezi.
-Az entitások lehetővé teszik az alkalmazások horizontális felskálázását azáltal, hogy számos entitáson keresztül terjesztik a munkát, és ezek mindegyike szerény méretű állapottal rendelkezik.
+Az Entity functions olyan műveleteket határoz meg, amelyek olyan kis méretű állapotok olvasására és frissítésére szolgálnak, amelyek *tartós entitások*. A Orchestrator függvényekhez hasonlóan az Entity functions is egy speciális trigger típussal, az *entitás-triggerrel*működik. Az Orchestrator függvényektől eltérően az Entity functions az entitások állapotát explicit módon kezeli, ahelyett, hogy az állapotot a vezérlési folyamaton keresztül implicit módon jelképezi.
+Az entitások lehetővé teszik az alkalmazások méretezését azáltal, hogy számos entitáson keresztül terjesztik a munkát, amelyek mindegyike szerény méretű állapotú.
 
 > [!NOTE]
 > Az Entity functions és a kapcsolódó funkciók csak Durable Functions 2,0-es és újabb verziókban érhetők el.
 
 ## <a name="general-concepts"></a>Általános fogalmak
 
-Az entitások olyan kis-és nagyvállalati szolgáltatásokat is tanúsítanak, amelyek üzenetek használatával kommunikálnak. Minden entitás egyedi identitással és belső állapottal rendelkezik (ha létezik). A szolgáltatásokhoz vagy objektumokhoz hasonlóan az entitások is végrehajtják a műveleteket, amikor a rendszer erre kéri. A végrehajtásakor a művelet az entitás belső állapotát is frissítheti. Külső szolgáltatásokat is meghívhat, és megvárhatja a választ. Az entitások a megbízható várólistákon keresztül implicit módon elküldött üzenetek használatával kommunikálnak más entitásokkal, összeszerelésekkel és ügyfelekkel. 
+Az entitások olyan kis-és nagyvállalati szolgáltatásokat is tanúsítanak, amelyek üzenetek használatával kommunikálnak. Minden entitás egyedi identitással és belső állapottal rendelkezik (ha létezik). A szolgáltatásokhoz vagy objektumokhoz hasonlóan az entitások is végrehajtják a műveleteket, amikor a rendszer erre kéri. Egy művelet végrehajtásakor előfordulhat, hogy az entitás belső állapotát frissíti. Külső szolgáltatásokat is meghívhat, és megvárhatja a választ. Az entitások a megbízható várólistákon keresztül implicit módon elküldött üzenetek használatával kommunikálnak más entitásokkal, összeszerelésekkel és ügyfelekkel. 
 
 Az ütközések elkerülése érdekében az egyetlen entitáson végrehajtott összes művelet végrehajtása a szerializált, azaz a másik után történik. 
 
 ### <a name="entity-id"></a>Entitás azonosítója
 Az entitások egyedi azonosítóval, az *entitás azonosítójának*használatával érhetők el. Az entitás-AZONOSÍTÓk egyszerűen olyan karakterláncok, amelyek egyedileg azonosítanak egy entitás-példányt. A következőkből áll:
 
-* Az **entitás neve**: az entitás típusát azonosító név (például "számláló"). A névnek meg kell egyeznie az entitást megvalósító entitás-függvény nevével. Nem érzékeny az esetre.
-* **Entitás kulcsa**: olyan karakterlánc, amely egyedileg azonosítja az entitást az azonos nevű entitások között (például egy GUID azonosító).
+* Az **entitás neve**, amely az entitás típusát azonosító név. Ilyen például a "Counter". A névnek meg kell egyeznie az entitást megvalósító entitás-függvény nevével. Nem érzékeny az esetre.
+* Az **entitás kulcsa**, amely egy olyan karakterlánc, amely egyedileg azonosítja az entitást az azonos nevű entitások között. Ilyen például egy GUID.
 
-Előfordulhat például, hogy egy *számláló* entitás függvényt egy online játékban kell tartani. A játék minden példánya egyedi AZONOSÍTÓval fog rendelkezni, például `@Counter@Game1`, `@Counter@Game2`és így tovább. Egy adott entitást megcélzó összes művelethez meg kell adni egy entitás AZONOSÍTÓját paraméterként.
+Előfordulhat például, hogy egy `Counter` Entity függvényt használ a pontszámok online játékokban való megőrzésére. A játék minden példánya egyedi AZONOSÍTÓval rendelkezik, például `@Counter@Game1` és `@Counter@Game2`. Egy adott entitást megcélzó összes művelethez meg kell adni egy entitás AZONOSÍTÓját paraméterként.
 
 ### <a name="entity-operations"></a>Entitások műveletei ###
 
-Egy művelet egy entitáson való meghívásához az egyik a következőt adja meg
+Egy művelet egy entitáson való meghívásához a következőt kell megadnia:
 
-* A célként megadott entitás *entitásának azonosítója*
-* A *művelet neve*, egy karakterlánc, amely meghatározza a végrehajtandó műveletet. A számláló entitás például támogathatja a "Hozzáadás", a "lekérés" vagy az "alaphelyzetbe állítás" műveletet.
-* A *művelet bemenete*, amely egy opcionális bemeneti paraméter a művelethez. Az "add" művelet például egy egész számot vehet igénybe bemenetként.
+* A célként megadott entitás **azonosítója** .
+* A **művelet neve**, amely egy karakterlánc, amely meghatározza a végrehajtandó műveletet. Az `Counter` entitás például támogathatja `add`, `get`vagy `reset` műveleteit.
+* A **művelet bemenete**, amely egy opcionális bemeneti paraméter a művelethez. A hozzáadási művelet például egész számot vehet igénybe bemenetként.
 
-A műveletek visszaadhatják az eredmény értékét vagy a hiba eredményét (például JavaScript-hibát vagy .NET-kivételt). Ezt az eredményt vagy hibát megfigyelheti a műveletet meghívó Összehangolók.
+A műveletek visszaadhatják az eredmény értékét vagy a hiba eredményét, például JavaScript-hibát vagy .NET-kivételt. Ezt az eredményt vagy hibát megfigyelheti a műveletet meghívó Összehangolók.
 
 Az entitások művelete az entitás állapotának létrehozását, olvasását, frissítését és törlését is elvégezheti. Az entitás állapota mindig tartósan marad a tárolóban.
 
-## <a name="defining-entities"></a>Entitások definiálása
+## <a name="define-entities"></a>Entitások definiálása
 
-Jelenleg két különböző API-t kínálunk az entitások definiálásához.
+Jelenleg a két különböző API-k definiálják az entitásokat:
 
-**Függvény-alapú szintaxis** , amelyben az entitások függvényekként jelennek meg, és az alkalmazás kifejezetten elküldi a műveleteket. Ez a szintaxis jól működik az egyszerű állapottal rendelkező entitások, néhány művelet vagy egy dinamikus műveleti csoport (például az alkalmazási keretrendszerek) esetében. Azonban ez unalmas lehet a karbantartáshoz, mivel a fordítási idő során nem vesz fel gépelési hibát.
+**Function-alapú szintaxis**, amelyben az entitások függvényekként és műveletként vannak ábrázolva, az alkalmazás explicit módon elküldi őket. Ez a szintaxis jól működik az egyszerű állapottal rendelkező entitások, néhány művelet vagy az alkalmazás-keretrendszerek, például az alkalmazások dinamikus készlete esetében. Ez a szintaxis unalmas lehet a karbantartáshoz, mert a fordítási idő során nem kerül be a gépelési hibák.
 
-**Osztály-alapú szintaxis** , amelyben az entitásokat és a műveleteket osztályok és metódusok jelölik. Ez a szintaxis könnyebben olvasható kódot hoz létre, és lehetővé teszi a műveletek típusos biztonságos módon történő meghívását. Az osztály-alapú szintaxis csak egy vékony réteg a függvény-alapú szintaxison felül, így mindkét változat felhasználható ugyanabban az alkalmazásban is.
+**Osztály-alapú szintaxis**, amelyben az entitásokat és a műveleteket osztályok és metódusok jelölik. Ez a szintaxis könnyebben olvasható kódot hoz létre, és lehetővé teszi a műveletek típusos biztonságos módon történő meghívását. Az osztály-alapú szintaxis egy vékony réteg a függvény-alapú szintaxisban, így mindkét változat felhasználható ugyanabban az alkalmazásban.
 
 ### <a name="example-function-based-syntax---c"></a>Példa: függvény-alapú szintaxis-C#
 
-A következő kód egy egyszerű, tartós funkcióként megvalósított *számlálós* entitásra mutat példát. Ez a függvény három műveletet határoz meg, `add`, `reset`és `get`, amelyek mindegyike egész számban működik.
+A következő kód egy egyszerű `Counter`-entitás, amely tartós függvényként lett megvalósítva. Ez a függvény három műveletet határoz meg, `add`, `reset`és `get`, amelyek mindegyike egész számú állapotban működik.
 
 ```csharp
 [FunctionName("Counter")]
@@ -112,7 +112,7 @@ Az osztály-alapú szintaxissal és annak használatával kapcsolatos további i
 
 ### <a name="example-javascript-entity"></a>Példa: JavaScript-entitás
 
-A tartós entitások a `durable-functions` NPM csomag **1.3.0** kezdődően érhetők el a JavaScriptben. A következő kód a *számláló* entitás, amely a JavaScriptben írt tartós függvényként van megvalósítva.
+A tartós entitások a `durable-functions` NPM csomag **1.3.0** kezdődően érhetők el a JavaScriptben. A következő kód a JavaScriptben írt tartós függvényként megvalósított `Counter` entitás.
 
 **function. JSON**
 ```json
@@ -149,27 +149,27 @@ module.exports = df.entity(function(context) {
 });
 ```
 
-## <a name="accessing-entities"></a>Entitások elérése
+## <a name="access-entities"></a>Hozzáférési entitások
 
-Az entitások egyirányú vagy kétirányú kommunikációval érhetők el. A következő terminológiát használjuk a megkülönböztetéshez: 
+Az entitások egyirányú vagy kétirányú kommunikációval érhetők el. A következő terminológia megkülönbözteti a kommunikáció két formáját: 
 
-* Az entitások **meghívása** azt jelenti, hogy kétirányú (egyirányú) kommunikációt használunk: a művelet üzenetet küld az entitásnak, majd a folytatás előtt várja meg a válaszüzenetet. A válaszüzenet eredményét vagy a hiba eredményét (például JavaScript-hiba vagy .NET-kivétel) is megadhatja. Ezt az eredményt vagy hibát a hívó észleli.
-* Az entitások **jelzése** azt jelenti, hogy egyirányú (tűz-és felejtsds) kommunikációt használunk: egy műveleti üzenetet küldünk, de nem várja meg a választ. Amíg az üzenet garantáltan kézbesíthető, a küldő nem tudja, hogy mikor, és nem figyelheti meg az eredmény értékét vagy hibáit.
+* Az entitások **hívása** kétirányú (egyirányú) kommunikációt használ. A művelet üzenetet küld az entitásnak, majd a folytatás előtt várja meg a válaszüzenetet. A válaszüzenet egy eredmény értékét vagy egy hiba eredményét, például JavaScript-hibát vagy .NET-kivételt is biztosíthat. Ezt az eredményt vagy hibát a hívó észleli.
+* Egy entitás **jelzése** egyirányú (tűz-és elfelejti) kommunikációt használ. Elküld egy műveleti üzenetet, de nem vár a válaszra. Amíg az üzenet garantáltan kézbesíthető, a küldő nem tudja, hogy mikor és nem észleli az eredményeket és a hibákat.
 
 Az entitások a Orchestrator függvényeken belül vagy az Entity functions szolgáltatásból érhetők el az ügyfél-függvényekből. Az összes kontextus nem támogatja a kommunikáció összes formáját:
 
-* Az ügyfeleken belül megadhatja az entitásokat, és *elolvashatja* *az entitás állapotát* .
-* A folyamatokon belül megadhatja *az entitásokat* , és *meghívhatja* az entitásokat.
-* Az *entitásokon belül megadhatja* az entitásokat.
+* Az ügyfeleken belül megadhatja az entitásokat, és elolvashatja az entitás állapotát.
+* A folyamatokon belül megadhatja az entitásokat, és meghívhatja az entitásokat.
+* Az entitásokon belül megadhatja az entitásokat.
 
-Alább néhány példát mutatunk be, amelyek illusztrálják az entitások elérésének különféle módjait.
+Az alábbi példák az entitások elérésének különféle módjait szemléltetik.
 
 > [!NOTE]
-> Az egyszerűség kedvéért az alábbi példák a lazán beírt szintaxist mutatják be az entitásokhoz való hozzáféréshez. Általánosságban azt javasoljuk, hogy a [felületeken keresztül hozzáférjenek az entitásokhoz](durable-functions-dotnet-entities.md#accessing-entities-through-interfaces) , mivel több típusú ellenőrzést is biztosít.
+> Az egyszerűség kedvéért az alábbi példák a lazán beírt szintaxist mutatják be az entitásokhoz való hozzáféréshez. Általánosságban azt javasoljuk, hogy az [entitásokat a felületeken keresztül érheti](durable-functions-dotnet-entities.md#accessing-entities-through-interfaces) el, mivel több típusú ellenőrzést is biztosít.
 
 ### <a name="example-client-signals-an-entity"></a>Példa: az ügyfél jelzi az entitást
 
-Az entitások egyszerű Azure-függvényből való eléréséhez – más néven *ügyfél-függvény* – használja az [entitás ügyfél-kimeneti kötését](durable-functions-bindings.md#entity-client). Az alábbi példa egy üzenetsor által aktivált függvényt mutat be, amely a kötést használó entitást *jelez* .
+Ha az entitásokat egy általános Azure-függvényből szeretné elérni, amely más néven ügyfél-függvény, használja az [entitás ügyfél-kimeneti kötését](durable-functions-bindings.md#entity-client). Az alábbi példa egy üzenetsor által aktivált függvényt mutat be, amely a kötést használó entitást jelez.
 
 ```csharp
 [FunctionName("AddFromQueue")]
@@ -194,7 +194,7 @@ module.exports = async function (context) {
 };
 ```
 
-A *jel* kifejezés azt jelenti, hogy az entitás API-hívása egyirányú és aszinkron. Az *ügyfél* nem tudja tudni, hogy mikor dolgozza fel a műveletet az entitás. Emellett az ügyfél függvény nem tudja megfigyelni az eredmények értékét vagy kivételeit. 
+A *jel* kifejezés azt jelenti, hogy az entitás API-hívása egyirányú és aszinkron. Az ügyfél nem tudja tudni, hogy mikor dolgozza fel a műveletet az entitás. Emellett az ügyfél függvény nem tudja megfigyelni az eredmények értékét vagy kivételeit. 
 
 ### <a name="example-client-reads-an-entity-state"></a>Példa: az ügyfél beolvas egy entitás állapotát
 
@@ -222,11 +222,11 @@ module.exports = async function (context) {
 };
 ```
 
-Az entitások állapotának lekérdezéseit a rendszer a tartós nyomkövetési tárolóba küldi, és az entitás legutóbb megőrzött *állapotát adja* vissza. Ez az állapot mindig "véglegesítve" állapotú, azaz soha nem egy művelet végrehajtásának közepén feltételezhető ideiglenes közbenső állapot. Azonban lehetséges, hogy ez az állapot elavult az entitás memóriában lévő állapotához képest. A következő szakaszban leírtak szerint csak a bevezetések tudják olvasni az entitás memóriában lévő állapotát.
+Az entitások állapotának lekérdezéseit a rendszer a tartós nyomkövetési tárolóba küldi, és az entitás legutóbb megőrzött állapotát adja vissza. Ez az állapot mindig "véglegesített" állapot, azaz soha nem ideiglenes közbenső állapot, amelyet a művelet végrehajtásának közepén feltételeznek. Azonban lehetséges, hogy ez az állapot elavult az entitás memórián belüli állapotához képest. A következő szakaszban leírtak szerint csak a bevezetések tudják olvasni az entitás memóriában lévő állapotát.
 
 ### <a name="example-orchestration-signals-and-calls-an-entity"></a>Példa: előkészítési jelek és entitások meghívása
 
-A Orchestrator függvények API-k használatával férhetnek hozzá az entitásokhoz a előkészítési [trigger kötésében](durable-functions-bindings.md#orchestration-trigger). A következő példa egy Orchestrator-függvényt mutat be, amely egy *számláló* entitást *hív* meg és *jelez* .
+A Orchestrator függvények API-k használatával férhetnek hozzá az entitásokhoz a előkészítési [trigger kötésében](durable-functions-bindings.md#orchestration-trigger). A következő példa egy Orchestrator-függvényt mutat be, amely egy `Counter` entitást hív meg és jelez.
 
 ```csharp
 [FunctionName("CounterOrchestration")]
@@ -260,15 +260,15 @@ module.exports = df.orchestrator(function*(context){
 });
 ```
 
-Csak a bevezetések képesek az entitások meghívására és a válasz lekérésére, ami lehet visszatérési érték vagy kivétel. Az [ügyfél-kötést](durable-functions-bindings.md#entity-client) használó ügyfél-függvények csak az entitásokat *jelezhetik* .
+Csak a bevezetések képesek az entitások meghívására és a válasz lekérésére, ami lehet visszatérési érték vagy kivétel. Az [ügyfél-kötést](durable-functions-bindings.md#entity-client) használó ügyfél-függvények csak az entitásokat jelezhetik.
 
 > [!NOTE]
-> Egy entitás Orchestrator-függvényből való meghívása hasonló a Orchestrator függvény egy [tevékenységi függvényének](durable-functions-types-features-overview.md#activity-functions) meghívásához. A fő különbség az, hogy az Entity functions olyan tartós objektumok, amelyeknek van egy címe (az *entitás azonosítója*), és támogatják a művelet nevének megadását. A Activity functions azonban állapot nélküli, és nem rendelkezik a műveletek fogalmával.
+> Egy entitás Orchestrator-függvényből való meghívása hasonló a Orchestrator függvény egy [tevékenységi függvényének](durable-functions-types-features-overview.md#activity-functions) meghívásához. A fő különbség az, hogy az Entity functions olyan tartós objektumok, amelyeknek van egy címe, amely az entitás azonosítója. Az Entity functions támogatja a művelet nevének megadását. A Activity functions azonban állapot nélküli, és nem rendelkezik a műveletek fogalmával.
 
 ### <a name="example-entity-signals-an-entity"></a>Példa: az entitás egy entitást jelzi
 
-Az Entity függvény a jeleket más entitásoknak (vagy akár saját maga!) is elküldheti a művelet végrehajtása közben.
-Például módosíthatjuk a fenti számláló entitást, így egy "mérföldkő által elért" jelet küld egy figyelő entitásnak, amikor a számláló eléri a 100 értéket:
+Az Entity függvény jeleket küldhet más entitásoknak, vagy akár saját maga is, miközben végrehajt egy műveletet.
+Például módosíthatjuk az előző `Counter` Entity példát úgy, hogy egy "mérföldkőnek számított" jelet küldjön egy figyelő entitásnak, amikor a számláló eléri a 100 értéket.
 
 ```csharp
    case "add":
@@ -296,14 +296,14 @@ Például módosíthatjuk a fenti számláló entitást, így egy "mérföldkő 
 
 ## <a name="entity-coordination"></a>Entitások koordinálása
 
-Előfordulhatnak olyan időpontok, amikor több entitáson belül kell összehangolni a műveleteket. Előfordulhat például, hogy egy banki alkalmazásban az egyes bankszámlákat képviselő entitások vannak. Ha az egyik fiókból a másikba helyezi át a forrásokat, gondoskodnia kell arról, hogy a _forrásoldali_ fióknak elegendő pénze legyen, és hogy a _forrás_ -és a _Célhelyek_ frissítései tranzakciós szempontból konzisztens módon történjenek.
+Előfordulhatnak olyan időpontok, amikor több entitáson keresztül kell összehangolni a műveleteket. Egy banki alkalmazásban például lehetnek olyan entitások, amelyek egyéni bankszámlákat jelképeznek. Ha az egyik fiókból a másikba helyezi át a forrásokat, gondoskodnia kell arról, hogy a forrásoldali fiók elegendő összegű legyen. Emellett biztosítania kell, hogy a forrás-és a célhelyek frissítései tranzakciós szempontból konzisztens módon történjenek.
 
 ### <a name="example-transfer-funds-c"></a>Példa: átutalási alapokC#()
 
-A következő példában a kód egy Orchestrator függvény használatával átviszi az alapokat a két _fiók_ entitások között. Az entitások frissítéseinek koordinálásához a `LockAsync` metódust kell használnia a _kritikus szakasz_ létrehozásához a koordinációban:
+A következő példában a kód egy Orchestrator függvény használatával továbbítja az alapokat a két fiók entitásai között. Az entitások frissítéseinek koordinálásához a `LockAsync` metódus használatával kell létrehozni egy _kritikus szakaszt_ a koordinációban.
 
 > [!NOTE]
-> Az egyszerűség kedvéért ez a példa a korábban definiált `Counter` entitást használja. Egy valós alkalmazásban azonban érdemes inkább részletesebb `BankAccount` entitást meghatározni.
+> Az egyszerűség kedvéért ez a példa a korábban definiált `Counter` entitást használja. Egy valós alkalmazásban jobb lenne egy részletesebb `BankAccount` entitás meghatározása.
 
 ```csharp
 // This is a method called by an orchestrator function
@@ -345,58 +345,58 @@ public static async Task<bool> TransferFundsAsync(
 }
 ```
 
-A .NET-ben a `LockAsync` olyan `IDisposable` ad vissza, amely a kritikus szakaszt a kivezetés során véget ér. Ez a `IDisposable` eredmény `using` blokkmal együtt használható a kritikus szakasz szintaktikai ábrázolásának beolvasásához.
+A .NET-ben a `LockAsync` `IDisposable`t ad vissza, amely az Elvetés során a kritikus szakaszt ér véget. Ez a `IDisposable` eredmény `using` blokkmal együtt használható a kritikus szakasz szintaktikai ábrázolásának beolvasásához.
 
-Az előző példában egy Orchestrator-függvény a _forrás_ entitásból egy _célként megadott_ entitásba ruházta át a forrásokat. A `LockAsync` metódus a _forrás_ és a _cél_ fiók entitásait is zárolta. Ez a zárolás biztosítja, hogy egyetlen másik ügyfél sem tudja lekérdezni vagy módosítani a fiók állapotát, amíg a (z) `using` utasítás végén a _kritikus szakaszt_ kilépett. Ez a viselkedés megakadályozza a _forrás_ fiókból való túllépés lehetőségét.
+Az előző példában egy Orchestrator-függvény a forrás entitásból egy célként megadott entitásba ruházta át a forrásokat. A `LockAsync` metódus a forrás és a cél fiók entitásait is zárolta. Ez a zárolás biztosítja, hogy egyetlen másik ügyfél sem tudja lekérdezni vagy módosítani a fiók állapotát, amíg a (z) `using` utasítás végén a kritikus szakaszt kilépett. Ez a viselkedés megakadályozza a forrás fiókból való túllépés lehetőségét.
 
 > [!NOTE] 
-> Ha egy összehangolás leáll (normál esetben vagy hibával), a folyamatban lévő kritikus lépések implicit módon véget ér, és minden zárolás megjelent.
+> Ha egy összehangolás általában vagy hibával leáll, a folyamatban lévő kritikus fejezetek implicit módon véget ér, és minden zárolás megjelent.
 
 ### <a name="critical-section-behavior"></a>Kritikus szakasz viselkedése
 
-A `LockAsync` metódus _kritikus szakaszt_ hoz létre egy előkészítési folyamatban. Ezekkel a _kritikus részekkel_ megakadályozható, hogy más összehangolt módosításokat hozzon létre egy adott entitáson. Belsőleg a `LockAsync` API "zárolási" műveleteket küld az entitásoknak, és visszatér, ha "zárolási beszerzett" válaszüzenetet kap ezekről az entitásokról. A *zárolás* és a *feloldás* is az összes entitás által támogatott beépített művelet.
+A `LockAsync` metódus kritikus szakaszt hoz létre egy előkészítési folyamatban. Ezekkel a kritikus részekkel megakadályozható, hogy más összehangolt módosításokat hozzon létre egy adott entitáson. Belsőleg a `LockAsync` API "zárolási" műveleteket küld az entitásoknak, és visszatér, ha "zárolási beszerzett" válaszüzenetet kap ezekről az entitásokról. A zárolás és a feloldás is az összes entitás által támogatott beépített művelet.
 
-A más ügyfelektől érkező műveletek nem engedélyezettek egy entitáson, amíg zárolt állapotban van. Ez a viselkedés garantálja, hogy egyszerre csak egy összehangoló példány tud zárolni egy entitást. Ha egy hívó olyan műveletet próbál megszólítani egy entitáson, amely egy eljárással zárolva van, akkor a művelet egy *függőben lévő műveleti várólistába*kerül. A függőben lévő műveletek addig nem lesznek feldolgozva, amíg a Holding-előkészítés fel nem oldja a zárolást.
+A más ügyfelektől érkező műveletek nem engedélyezettek egy entitáson, amíg a zárolt állapotban van. Ez a viselkedés garantálja, hogy egyszerre csak egy összehangoló példány tud zárolni egy entitást. Ha a hívó egy művelettel próbál meg meghívást alkalmazni egy entitáson, miközben azt egy előkészítés zárolta, a művelet egy függőben lévő műveleti várólistába kerül. A függőben lévő műveletek addig nem lesznek feldolgozva, amíg a Holding-előkészítés fel nem oldja a zárolást.
 
 > [!NOTE] 
-> Ez némileg eltér a legtöbb programozási nyelvben használt szinkronizálási primitívekkel, például a `lock` utasításával C#. Például a-ben C#a `lock` utasítást minden szálnak használnia kell, hogy biztosítsa a megfelelő synchonization több szál között. Az entitásoknak azonban nincs szükségük arra, hogy minden hívó explicit módon _zárolja_ az entitásokat. Ha bármelyik hívó zárol egy entitást, az adott entitáson végzett összes más művelet le lesz tiltva, és a zárolás mögött is sor kerül.
+> Ez a viselkedés némileg eltér a legtöbb programozási nyelvben használt szinkronizálási primitívekkel, például a `lock` utasításával C#. Például a-ben C#a `lock` utasítást minden szálnak használnia kell, hogy biztosítsa a megfelelő szinkronizálást több szálon. Az entitásoknak azonban nincs szükségük arra, hogy az entitások explicit módon zárolják az összes hívót. Ha bármelyik hívó zárol egy entitást, az adott entitáson végzett összes egyéb művelet blokkolva lesz, és a zárolás mögött van.
 
-Az entitásokra vonatkozó zárolások tartósak, így azok akkor is megmaradnak, ha a végrehajtó folyamat újra van hajtva. A zárolások belsőleg megmaradnak az entitás tartós állapotának részeként.
+Az entitásokra vonatkozó zárolások tartósak, így azok még akkor is megmaradnak, ha a végrehajtó folyamat újra lett hasznosítva. A zárolások belsőleg megmaradnak az entitás tartós állapotának részeként.
 
-A tranzakcióktól eltérően a kritikus részekben nem történik meg automatikusan a változások visszaállítása a hibák esetén. Ehelyett a hibakezelés (visszaállítás, újrapróbálkozás vagy egyéb) explicit módon kell kódolva lennie. például hibák vagy kivételek elfogásával. Ez a tervezési lehetőség szándékos. Az előkészítési folyamat összes hatásának automatikus visszagörgetése általában nehéz vagy lehetetlen, mivel a rendszer tevékenységeket futtathat, és hívásokat végezhet olyan külső szolgáltatásokra, amelyek nem állíthatók vissza. Emellett előfordulhat, hogy a visszaállítási kísérletek sikertelenek lehetnek, és további hibakezelés szükségesek.
+A tranzakcióktól eltérően a kritikus részekben nem történik meg automatikusan a változások visszaállítása a hibák esetén. Ehelyett a hibákat, például a visszaállítást vagy az újrapróbálkozást explicit módon kell kódolni, például hibák vagy kivételek kifogásával. Ez a tervezési lehetőség szándékos. Az előkészítési folyamat összes hatásának automatikus visszaállítása általában nehéz vagy lehetetlen, mivel a munkafolyamatok tevékenységeket futtathatnak, és hívásokat végezhetnek olyan külső szolgáltatásokra, amelyek nem állíthatók vissza. A visszaállítási kísérletek is sikertelenek lehetnek, és további hibakezelés szükségesek.
 
 ### <a name="critical-section-rules"></a>Kritikus szakasz szabályai
 
-Az alacsony szintű zárolási primitívek a legtöbb programozási nyelven eltérően a kritikus fontosságú szakaszt **nem a holtpontra kell biztosítani**. A holtpontok megelőzése érdekében a következő korlátozásokat kell kikényszeríteni: 
+Az alacsony szintű zárolási primitívek a legtöbb programozási nyelven eltérően a kritikus fontosságú szakaszt *nem a holtpontra kell biztosítani*. A holtpontok megelőzése érdekében a következő korlátozásokat kell kikényszeríteni: 
 
 * A kritikus szakaszt nem lehet beágyazni.
 * A kritikus szakaszban nem hozhatók létre alfolyamatok.
 * A kritikus szakaszt csak a zárolt entitások hívhatják meg.
 * A kritikus szakaszban nem hívható meg ugyanaz az entitás több párhuzamos hívás használatával.
-* A kritikus szakaszt csak azok az entitások jelezhetik, amelyek nincsenek zárolva.
+* A kritikus szakaszban csak azok az entitások jelezhetnek, amelyek nincsenek zárolva.
 
-A szabályok megsértése futásidejű hibát okoz (például a .NET-`LockingRulesViolationException`), amely egy üzenetet tartalmaz, amely ismerteti, hogy a szabály milyen módon lett megszakítva.
+A szabályok megszegése futásidejű hibát okoz, például `LockingRulesViolationException` a .NET-ben, amely tartalmaz egy üzenetet, amely elmagyarázza, hogy milyen szabály lett megszakítva.
 
 ## <a name="comparison-with-virtual-actors"></a>Összehasonlítás virtuális szereplőkkel
 
-A tartós entitások számos funkcióját a [színészi modell](https://en.wikipedia.org/wiki/Actor_model)ihlette. Ha már ismeri a szereplőkkel való részvételt, akkor a jelen cikkben ismertetett fogalmak közül sokat is felismer. A tartós entitások különösen hasonlók a [virtuális szereplőkkel](https://research.microsoft.com/projects/orleans/)vagy a *gabonához*, ahogyan az [Orleans-projekt](http://dotnet.github.io/orleans/)népszerűsítette. Például:
+A tartós entitások számos funkcióját a [színészi modell](https://en.wikipedia.org/wiki/Actor_model)ihlette. Ha már ismeri a szereplőket, felismerheti a cikkben ismertetett fogalmakat. A tartós entitások különösen hasonlók a [virtuális szereplőkkel](https://research.microsoft.com/projects/orleans/)vagy a gabonához, ahogyan az [Orleans-projekt](http://dotnet.github.io/orleans/)népszerűsítette. Például:
 
-* A tartós entitások az *entitás azonosítóján*keresztül címezhető.
+* A tartós entitások az entitás AZONOSÍTÓján keresztül címezhető.
 * A tartós entitások műveletei a verseny feltételeinek megelőzése érdekében egyszerre hajtanak végre sorosan.
-* A tartós entitások implicit módon jönnek létre, amikor meghívja őket vagy jelezték.
+* A tartós entitások implicit módon jönnek létre, amikor a rendszer meghívja vagy jelzi őket.
 * Ha nem hajtja végre a műveleteket, a tartós entitások csendesen törlődnek a memóriából.
 
-Van azonban néhány fontos különbség, amelyeket érdemes megjegyezni:
+Fontos különbségek vannak, amelyeket érdemes megjegyezni:
 
-* A tartós entitások a késleltetést rangsorolják a *késéshez* *képest,* ezért nem feltétlenül alkalmazhatók szigorú késési követelményekkel rendelkező alkalmazások esetében.
-* A tartós entitások nem rendelkeznek beépített időtúllépéssel az üzenetekhez. Orleans-ban minden üzenet időtúllépést eredményezett a konfigurálható idő után (alapértelmezés szerint 30 másodperc).
-* Az entitások között küldött üzenetek megbízhatóan és sorrendben lesznek kézbesítve. Orleans-ban a megbízható vagy rendezett kézbesítés támogatott a streameken keresztül küldött tartalmak esetében, de a gabonák közötti összes üzenet esetében nem garantált.
-* Az entitásokban a kérelmek és válaszok mintája csak az előkészítésre korlátozódik. Az entitásokon belül csak egyirányú üzenetküldés (más néven "jelzés") engedélyezett, ahogy az eredeti modellben is, és ellentétben a magokkal a Orleansban. 
-* A tartós entitások nem holtpontos. Orleans-ban holtpontok léphetnek fel (és nem oldhatók fel az üzenetek időkorlátja).
-* A tartós entitások tartós felépítéssel együtt használhatók, és támogatják az elosztott zárolási mechanizmusokat is. 
+* A tartós entitások a késleltetést rangsorolják, ezért előfordulhat, hogy a szigorú késési követelményekkel rendelkező alkalmazások esetében nem megfelelő.
+* A tartós entitások nem rendelkeznek beépített időtúllépéssel az üzenetekhez. Orleans-ban minden üzenet időtúllépést eredményezett a konfigurálható idő után. Az alapértelmezett érték 30 másodperc.
+* Az entitások között küldött üzenetek megbízhatóan és sorrendben lesznek kézbesítve. Orleans-ban megbízható vagy rendezett kézbesítés támogatott a streameken keresztül küldött tartalmak esetében, de a gabonák közötti összes üzenet esetében nem garantált.
+* Az entitásokban a kérelem-válasz mintázatok csak a bevezetésekre korlátozódnak. Az entitásokon belül csak egyirányú üzenetküldés (más néven jelzés) engedélyezett, ahogy az eredeti modellben is, és ellentétben a magokkal a Orleansban. 
+* Tartós entitások nem holtpontos. Orleans-ban holtpontok léphetnek fel, és nem oldhatók fel az üzenetek időtúllépése.
+* A tartós entitások tartós felépítéssel és az elosztott zárolási mechanizmusok támogatásával használhatók. 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Olvassa el a fejlesztői útmutató a tartós entitásokhoz a .NET-ben](durable-functions-dotnet-entities.md)

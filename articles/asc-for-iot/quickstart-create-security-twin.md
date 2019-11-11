@@ -1,6 +1,6 @@
 ---
-title: Biztonsági modul létrehozása a Azure Security Center for IoT | Microsoft Docs
-description: Megtudhatja, hogyan hozhat létre Azure Security Center a IoT-modulhoz a Twin-hez a IoT-hez használható Azure Security Center használatával.
+title: 'Gyors útmutató: biztonsági modul létrehozása Azure Security Center IoT'
+description: Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre Azure Security Center a IoT-modulhoz, amely a Azure Security Center for IoT használható.
 services: asc-for-iot
 ms.service: asc-for-iot
 documentationcenter: na
@@ -13,16 +13,16 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/26/2019
+ms.date: 11/08/2019
 ms.author: mlottner
-ms.openlocfilehash: 92bf79aa5ae55bad16d68a26dc13d292285a4d46
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: b362130c2b717f813a6332f81a3c8179bea4166a
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68597080"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73904168"
 ---
-# <a name="quickstart-create-an-azureiotsecurity-module-twin"></a>Gyors útmutató: Twin azureiotsecurity-modul létrehozása
+# <a name="quickstart-create-an-azureiotsecurity-module-twin"></a>Gyors útmutató: azureiotsecurity-modul létrehozása – Twin
 
 Ez a rövid útmutató azt ismerteti, hogyan hozhat létre egyedi _azureiotsecurity_ -modult az új eszközökhöz, vagy létrehozhat egy batch-modult az összes eszközhöz egy IoT hub.  
 
@@ -66,15 +66,15 @@ Annak ellenőrzése, hogy van-e különálló biztonsági modul egy adott eszkö
 
 1. Az Azure-IoT Hub válassza a **IoT eszközök** lehetőséget a **felfedezők** menüből.    
 1. Adja meg az eszköz AZONOSÍTÓját, vagy válasszon ki egy beállítást a **lekérdezési eszköz mezőben** , majd kattintson az **eszközök lekérdezése**elemre. 
-    ![Eszközök lekérdezése](./media/quickstart/verify-security-module-twin.png)
+    ![lekérdezési eszközök](./media/quickstart/verify-security-module-twin.png)
 1. Válassza ki az eszközt, vagy kattintson rá duplán az eszköz részletei lap megnyitásához. 
 1. Válassza a **modul identitások** menüt, és erősítse meg a **azureiotsecurity** modul létezését az eszközhöz társított modul-identitások listájában. 
-    ![Eszközhöz társított modulok](./media/quickstart/verify-security-module-twin-3.png)
+    eszközhöz társított ![-modulok](./media/quickstart/verify-security-module-twin-3.png)
 
 
 Ha többet szeretne megtudni az IoT-modulok Azure Security Center tulajdonságainak testreszabásáról, tekintse meg az [ügynök konfigurálása](how-to-agent-configuration.md)című témakört.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A következő cikkből megtudhatja, hogyan konfigurálhat egyéni riasztásokat...
 

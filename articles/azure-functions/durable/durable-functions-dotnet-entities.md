@@ -9,12 +9,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 10/06/2019
 ms.author: azfuncdf
-ms.openlocfilehash: a59e5443c80c9372f646edfdae2261157a41acc9
-ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
+ms.openlocfilehash: d854f41ffc883b40f9159a7dacdde0fb3bb7240f
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73614892"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73904065"
 ---
 # <a name="developers-guide-to-durable-entities-in-net"></a>Fejlesztői útmutató a tartós entitásokhoz a .NET-ben
 
@@ -117,7 +117,7 @@ Például módosíthatjuk a számláló entitást, hogy elindítson egy előkés
 
 ## <a name="accessing-entities-directly"></a>Entitások közvetlen elérése
 
-Az osztály-alapú entitások közvetlenül, az entitáshoz és annak műveleteihez explicit karakterlánc-nevek használatával érhetők el. Alább néhány példát láthatunk. az alapul szolgáló fogalmak (például a jelek és hívások) mélyebb magyarázatát lásd: az [entitások elérésének](durable-functions-entities.md#accessing-entities)vitafóruma. 
+Az osztály-alapú entitások közvetlenül, az entitáshoz és annak műveleteihez explicit karakterlánc-nevek használatával érhetők el. Alább néhány példát láthatunk. az alapul szolgáló fogalmak (például a jelek és hívások) mélyebb magyarázatát lásd: az [Access-entitások](durable-functions-entities.md#access-entities)vitafóruma. 
 
 > [!NOTE]
 > Ha lehetséges, az [entitások felületeken keresztüli elérését](#accessing-entities-through-interfaces)javasoljuk, mert több típusú ellenőrzést is biztosít.
@@ -511,7 +511,7 @@ Végezetül a következő tagok más entitások jelzésére vagy új összehango
 * `SignalEntity(EntityId, operation, input)`: egyirányú üzenet küldése egy entitásnak.
 * `CreateNewOrchestration(orchestratorFunctionName, input)`: új előkészítést indít el.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Tudnivalók az entitásokkal kapcsolatos fogalmakról](durable-functions-entities.md)

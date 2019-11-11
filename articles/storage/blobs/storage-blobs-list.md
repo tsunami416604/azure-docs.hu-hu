@@ -1,23 +1,25 @@
 ---
 title: Blobok listázása a .NET-Azure Storage használatával
-description: Megtudhatja, hogyan listázhat blobokat egy tárolóban az Azure Storage-fiókban a .NET ügyféloldali kódtár használatával.
+description: Megtudhatja, hogyan listázhat blobokat egy tárolóban az Azure Storage-fiókban a .NET ügyféloldali kódtár használatával. A példák a Blobok listázására, illetve a Blobok hierarchikus listázására szolgálnak, mintha könyvtárakba vagy mappákba vannak rendezve.
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 09/04/2019
+ms.date: 11/08/2019
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: bf9d2d59e993de3807a10a6c39f88b2063024bfc
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 4b6dc9d80cfe96e501e575d265b9fa383b1c4d2c
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72599928"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73902007"
 ---
 # <a name="list-blobs-with-net"></a>Blobok listázása .NET-tel
 
-Ha a kódból listázza a blobokat, megadhatja az eredmények Azure Storage-ból való visszaadásának módját. Ez a cikk bemutatja, hogyan listázhat blobokat az [Azure Storage .net-hez készült ügyféloldali kódtára](/dotnet/api/overview/azure/storage/client)használatával.  
+Ha a kódból listázza a blobokat, megadhatja az eredmények Azure Storage-ból való visszaadásának módját. Megadhatja az egyes eredményekben visszaadott eredmények számát, majd beolvashatja a következő készleteket. Megadhat egy előtagot olyan Blobok visszaadásához, amelyek neve megegyezik a karakterrel vagy karakterlánccal. Emellett a blobokat egy egyszerű felsorolási struktúrában vagy hierarchikusan is listázhatja. A hierarchikus lista a blobokat úgy adja vissza, mintha mappákba vannak rendezve. 
+
+Ez a cikk bemutatja, hogyan listázhat blobokat az [Azure Storage .net-hez készült ügyféloldali kódtára](/dotnet/api/overview/azure/storage/client)használatával.  
 
 ## <a name="understand-blob-listing-options"></a>A Blobok listázási beállításainak ismertetése
 
@@ -53,7 +55,7 @@ Ha a blob-metaadatokat az eredményekkel szeretné visszaadni, akkor a [BlobList
 
 ### <a name="flat-listing-versus-hierarchical-listing"></a>A lapos Listázás és a hierarchikus Listázás
 
-A blobokat az Azure Storage-ban egy egyszerű paradigma, nem pedig hierarchikus paradigma (például klasszikus fájlrendszer) szerint rendezi a rendszer. A blobokat azonban a *virtuális könyvtárakba* rendezheti, hogy egy hierarchikus paradigmát lehessen utánozni. A virtuális könyvtár része annak a blobnak a neve, amelyet a határoló karakter választ ki.
+A blobokat az Azure Storage-ban egy egyszerű paradigma, nem pedig hierarchikus paradigma (például klasszikus fájlrendszer) szerint rendezi a rendszer. A blobokat azonban a *virtuális könyvtárakba* rendezheti a mappák struktúrájának kiépítéséhez. A virtuális könyvtár a blob nevének részét képezi, amelyet a határoló karakter jelez.
 
 Ha a blobokat virtuális könyvtárakba szeretné szervezni, használjon egy elválasztó karaktert a blob nevében. Az alapértelmezett elválasztó karakter egy perjel (/), de bármilyen karaktert megadhat elválasztóként.
 

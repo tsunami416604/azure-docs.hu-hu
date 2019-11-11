@@ -6,15 +6,15 @@ author: dlepow
 manager: gwallace
 ms.service: container-instances
 ms.topic: article
-ms.date: 03/20/2019
+ms.date: 11/01/2019
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: cc9b11ba5fe0cd015d0879f28b9e85fb46b11955
-ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
+ms.openlocfilehash: a785ecbfa09c54d3affa97c220d4808f9fe8d90b
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2019
-ms.locfileid: "71178572"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73904455"
 ---
 # <a name="container-groups-in-azure-container-instances"></a>Tároló-csoportok a Azure Container Instances
 
@@ -51,15 +51,17 @@ A tároló csoport konfigurációjának megőrzése érdekében exportálhatja a
 
 A Azure Container Instances erőforrásokat, például CPU-t, memóriát és opcionálisan [GPU][gpus] -t (előzetes verzió) foglal le egy tároló-csoportba a csoportban lévő példányok [erőforrás-kérelmeinek][resource-requests] hozzáadásával. Ha például két példánnyal rendelkező tároló csoportot hoz létre a CPU-erőforrások számára, a tároló csoport 2 CPU-t foglal le.
 
-A tárolók csoportjai számára elérhető maximális erőforrások az üzembe helyezéshez használt [Azure-régiótól][region-availability] függenek.
+### <a name="resource-usage-by-instances"></a>Erőforrás-használat példányok szerint
 
-### <a name="container-resource-requests-and-limits"></a>Tároló-erőforrásokra vonatkozó kérelmek és korlátozások
+Minden egyes Container-példányhoz az erőforrás-kérelemben megadott erőforrások vannak lefoglalva. Egy csoportban lévő tároló-példány erőforrás-használata azonban attól függ, hogyan konfigurálja a választható [erőforrás-korlát][resource-limits] tulajdonságát.
 
-* Alapértelmezés szerint a csoport tároló példányai megosztják a csoport kért erőforrásait. Az 1 CPU-t kérő két példánnyal rendelkező csoportban a csoport teljes hozzáféréssel rendelkezik 2 processzorhoz. Az egyes példányok akár a 2 processzort is használhatják, a példányok pedig a CPU-erőforrással versenyeznek.
+* Ha nem ad meg erőforrás-korlátot, a példány maximális Erőforrás-kihasználtsága megegyezik az erőforrás-kérelemmel.
 
-* Egy csoportban lévő példány erőforrás-felhasználásának korlátozásához opcionálisan beállíthat egy [erőforrás-korlátot][resource-limits] a példányhoz. Az 1 CPU-t kérő két példánnyal rendelkező csoportban az egyik tárolónak több processzort kell futtatnia, mint a másik.
+* Ha erőforrás-korlátot ad meg egy példányhoz, a számítási feladathoz módosíthatja a példány erőforrás-felhasználását, vagy csökkentheti vagy növelheti a használatot az erőforrás-kérelemhez képest. A maximálisan beállítható erőforrás-korlát a csoport számára lefoglalt összes erőforrás.
+    
+    Ha például egy olyan csoportban, amelyben két példány 1 PROCESSZORt igényel, akkor az egyik tároló olyan munkaterhelést futtathat, amely több processzor futtatását igényli a többinél.
 
-  Ebben a forgatókönyvben egy 0,5 CPU-korlátot állíthat be egy példányhoz, és legfeljebb 2 processzort használhat a másodikhoz. Ez a konfiguráció az első tároló erőforrás-felhasználását az 0,5 CPU-ra korlátozza, így a második tároló a teljes 2 CPU-t használhatja, ha van ilyen.
+    Ebben a forgatókönyvben egy 0,5 CPU-korlátot állíthat be egy példányhoz, és legfeljebb 2 processzort használhat a másodikhoz. Ez a konfiguráció az első tároló erőforrás-felhasználását az 0,5 CPU-ra korlátozza, így a második tároló a teljes 2 CPU-t használhatja, ha van ilyen.
 
 További információ: [ResourceRequirements][resource-requirements] tulajdonság a Container groups REST API.
 
@@ -75,11 +77,11 @@ A Container groups egy IP-címet és egy port névteret oszt meg az adott IP-cí
 
 A tároló-csoportok üzembe helyezése egy Azure-beli [virtuális hálózatban][virtual-network] (előzetes verzió), amely lehetővé teszi, hogy a tárolók biztonságosan kommunikáljanak a virtuális hálózat más erőforrásaival.
 
-## <a name="storage"></a>Storage
+## <a name="storage"></a>Tárolás
 
 Külső köteteket is megadhat a tároló csoportba való csatlakoztatáshoz. Ezeket a köteteket meghatározott elérési utakra is leképezheti egy csoport egyes tárolói között.
 
-## <a name="common-scenarios"></a>Gyakori forgatókönyvek
+## <a name="common-scenarios"></a>Gyakori alkalmazási helyzetek
 
 A többtárolós csoportok olyan esetekben hasznosak, amikor egyetlen funkcionális feladatot szeretne megosztani kis számú tároló-lemezképbe. Ezeket a lemezképeket ezután különböző csapatok továbbítják, és külön erőforrás-követelményekkel rendelkezhetnek.
 
@@ -90,7 +92,7 @@ A használati példa a következőket tartalmazhatja:
 * Egy alkalmazás-tároló és egy figyelési tároló. A megfigyelési tároló rendszeres időközönként egy kérést küld az alkalmazásnak, hogy ellenőrizze, hogy fut-e, és hogy megfelelően válaszol-e, és riasztást küld, ha nem.
 * Egy előtér-tároló és egy háttér-tároló. Az előtér egy webalkalmazást is kiszolgálhat, és a szolgáltatás futtatásával lekérheti az adatgyűjtést. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Megtudhatja, hogyan helyezhet üzembe egy több tárolóból álló tároló csoportot Azure Resource Manager sablonnal:
 

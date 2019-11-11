@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 11/04/2019
+ms.date: 11/08/2019
 ms.author: dapine
-ms.openlocfilehash: 98f5c672e9da50f294df6da7d5abcb23b10fc1ba
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: a47e363e2b51b271c8103ac426362a61fc332601
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73487010"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73901910"
 ---
 # <a name="install-and-run-luis-docker-containers"></a>LUIS Docker-tárolók telepítése és futtatása
  
@@ -36,7 +36,7 @@ A LUIS-tároló futtatásához vegye figyelembe a következő előfeltételeket:
 |--|--|
 |Docker-motor| A Docker-motornak telepítve kell lennie a [gazdagépen](#the-host-computer). A Docker csomagokat biztosít a Docker-környezet konfigurálásához [MacOS](https://docs.docker.com/docker-for-mac/), Windows és [Linux](https://docs.docker.com/engine/installation/#supported-platforms) [rendszereken](https://docs.docker.com/docker-for-windows/). A Docker és a Container alapjairól a [Docker áttekintésében](https://docs.docker.com/engine/docker-overview/)talál további információt.<br><br> A Docker-t úgy kell konfigurálni, hogy lehetővé tegye a tárolók számára az Azure-ba való kapcsolódást és a számlázási információk küldését. <br><br> **Windows rendszeren a**Docker-t is konfigurálni kell a Linux-tárolók támogatásához.<br><br>|
 |A Docker ismerete | Alapvető ismeretekkel kell rendelkeznie a Docker-fogalmakról, például a kibocsátásiegység-forgalmi jegyzékekről, a adattárakról, a tárolók és a tárolók rendszerképeiről, valamint az alapszintű `docker` parancsok megismeréséről.| 
-|Azure `Cognitive Services` Resource és LUIS [csomagolt alkalmazás](luis-how-to-start-new-app.md#export-app-for-containers) fájlja |A tároló használatához a következőket kell tennie:<br><br>* Egy _Cognitive Services_ Azure-erőforrás és a kapcsolódó számlázási kulcs a számlázási végpont URI-ja. Mindkét érték elérhető az erőforrás áttekintés és kulcsok oldalain, és a tároló indításához szükséges. <br>* Egy betanított vagy közzétett alkalmazás, amely csatlakoztatott bemenetként van csomagolva a tárolóhoz a hozzá tartozó alkalmazás-AZONOSÍTÓval. A csomagolt fájlt a LUIS portálról vagy a szerzői API-k használatával szerezheti be. Ha a [szerzői API](#authoring-apis-for-package-file)-kkal becsomagolta a Luis csomagolási alkalmazást, a _szerzői kulcsra_is szüksége lesz.<br><br>Ezek a követelmények a parancssori argumentumok átadására szolgálnak a következő változókra:<br><br>**{AUTHORING_KEY}** : Ez a kulcs a becsomagolt alkalmazásnak a felhőben lévő Luis szolgáltatásból való beszerzésére szolgál, és a lekérdezési naplókat a felhőbe tölti fel. A formátum `xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx`.<br><br>**{APP_ID}** : ez az azonosító az alkalmazás kiválasztására szolgál. A formátum `xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx`.<br><br>**{API_KEY}** : Ez a kulcs a tároló elindítására szolgál. A végpont kulcsa két helyen található. Az első az _Cognitive Services_ erőforrás kulcsai listán szereplő Azure Portal. A végpont kulcsa a LUIS portálon is elérhető a kulcsok és a végpont beállításai lapon. Ne használja az alapszintű kulcsot.<br><br>**{ENDPOINT_URI}** : az Áttekintés lapon megadott végpont.<br><br>A [szerzői kulcs és a végpont kulcsa](luis-boundaries.md#key-limits) eltérő célokat szolgál. Ne használja szinonimaként. |
+|Azure `Cognitive Services` Resource és LUIS [csomagolt alkalmazás](luis-how-to-start-new-app.md) fájlja |A tároló használatához a következőket kell tennie:<br><br>* Egy _Cognitive Services_ Azure-erőforrás és a kapcsolódó számlázási kulcs a számlázási végpont URI-ja. Mindkét érték elérhető az erőforrás áttekintés és kulcsok oldalain, és a tároló indításához szükséges. <br>* Egy betanított vagy közzétett alkalmazás, amely csatlakoztatott bemenetként van csomagolva a tárolóhoz a hozzá tartozó alkalmazás-AZONOSÍTÓval. A csomagolt fájlt a LUIS portálról vagy a szerzői API-k használatával szerezheti be. Ha a [szerzői API](#authoring-apis-for-package-file)-kkal becsomagolta a Luis csomagolási alkalmazást, a _szerzői kulcsra_is szüksége lesz.<br><br>Ezek a követelmények a parancssori argumentumok átadására szolgálnak a következő változókra:<br><br>**{AUTHORING_KEY}** : ezzel a kulccsal lekérheti a csomagolt alkalmazást a felhőben található Luis szolgáltatásból, és feltöltheti a lekérdezési naplókat a felhőbe. A formátum `xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx`.<br><br>**{APP_ID}** : ez az azonosító az alkalmazás kiválasztására szolgál. A formátum `xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx`.<br><br>**{API_KEY}** : Ez a kulcs a tároló elindítására szolgál. A végpont kulcsa két helyen található. Az első az _Cognitive Services_ erőforrás kulcsai listán szereplő Azure Portal. A végpont kulcsa a LUIS portálon is elérhető a kulcsok és a végpont beállításai lapon. Ne használja az alapszintű kulcsot.<br><br>**{ENDPOINT_URI}** : az Áttekintés lapon megadott végpont.<br><br>A [szerzői kulcs és a végpont kulcsa](luis-boundaries.md#key-limits) eltérő célokat szolgál. Ne használja szinonimaként. |
 
 [!INCLUDE [Gathering required container parameters](../containers/includes/container-gathering-required-parameters.md)]
 
@@ -80,7 +80,7 @@ Az elérhető címkék teljes leírását, például az előző parancsban haszn
 
 ## <a name="how-to-use-the-container"></a>A tároló használata
 
-Miután a tároló a [gazdagépen](#the-host-computer)található, a következő eljárással dolgozhat a tárolóval.
+Miután a tároló a [gazdagépen](#the-host-computer) található, a következő eljárással dolgozhat a tárolóval.
 
 ![Language Understanding (LUIS) tároló használatának folyamata](./media/luis-container-how-to/luis-flow-with-containers-diagram.jpg)
 
@@ -200,7 +200,7 @@ A verzióval ellátott csomag letöltéséhez tekintse meg az [API dokumentáci�
 
 A tároló futtatásához használja a [Docker Run](https://docs.docker.com/engine/reference/commandline/run/) parancsot. A `{ENDPOINT_URI}` és `{API_KEY}` értékek beszerzésével kapcsolatos részletekért tekintse meg a [szükséges paraméterek összegyűjtését](#gathering-required-parameters) ismertető témakört.
 
-A `docker run` parancs [példái](luis-container-configuration.md#example-docker-run-commands) elérhetők.
+A[ parancs ](luis-container-configuration.md#example-docker-run-commands)például`docker run` elérhető.
 
 ```console
 docker run --rm -it -p 5000:5000 ^
@@ -387,7 +387,7 @@ Ebben a cikkben megtanulta a Language Understanding (LUIS) tárolók letöltés�
 > [!IMPORTANT]
 > Cognitive Services tárolók nem futtathatók az Azure-hoz való csatlakozás nélkül. Az ügyfeleknek engedélyeznie kell, hogy a tárolók a számlázási adatokat mindig a mérési szolgáltatással kommunikáljanak. Cognitive Services tárolók nem küldenek ügyféladatokat (például az elemzett képet vagy szöveget) a Microsoftnak.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Tekintse át a [tárolók konfigurálása](luis-container-configuration.md) konfigurációs beállításokat.
 * Tekintse meg a [Luis Container korlátozásait](luis-container-limitations.md) az ismert képességekre vonatkozó korlátozásokról.

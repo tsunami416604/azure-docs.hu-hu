@@ -8,13 +8,13 @@ author: ecfan
 ms.author: estfan
 ms.reviewer: jehollan, klam, LADocs
 ms.topic: article
-ms.date: 06/04/2019
-ms.openlocfilehash: 2ab6ace7c30c3dd385928b6b0ae8000485d5f495
-ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
+ms.date: 11/08/2019
+ms.openlocfilehash: c65a0464bbad6dbaca51dbc5bbc0d84adbd605d7
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72680142"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73904662"
 ---
 # <a name="call-or-trigger-logic-apps-by-using-azure-functions-and-azure-service-bus"></a>Logikai alkalmazások meghívása vagy elindítása Azure Functions és Azure Service Bus használatával
 
@@ -32,13 +32,13 @@ A [Azure functions](../azure-functions/functions-overview.md) használatával ak
 
 ## <a name="create-logic-app"></a>Logikai alkalmazás létrehozása
 
-Ebben a forgatókönyvben egy olyan függvény fut, amely minden olyan logikai alkalmazást futtat, amelyet el szeretne indítani. Először hozzon létre egy logikai alkalmazást, amely egy HTTP-kérelem triggerével kezdődik. A függvény meghívja ezt a végpontot, amikor üzenetsor-üzenetet fogad.  
+Ebben a forgatókönyvben egy olyan függvény fut, amely minden olyan logikai alkalmazást futtat, amelyet el szeretne indítani. Először hozzon létre egy logikai alkalmazást, amely egy HTTP-kérelem triggerével kezdődik. A függvény meghívja ezt a végpontot, amikor üzenetsor-üzenetet fogad.
 
 1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com), és hozzon létre üres logikai alkalmazást.
 
    Ha most ismerkedik a Logic apps szolgáltatással, tekintse át a gyors útmutató [: az első logikai alkalmazás létrehozása](../logic-apps/quickstart-create-first-logic-app-workflow.md)című útmutatót.
 
-1. A keresőmezőbe írja be a "http-kérelem" kifejezést. Az eseményindítók listából válassza ki ezt az eseményindítót: **http-kérés fogadásakor**
+1. A keresőmezőbe írja be a `http request` kifejezést. Az eseményindítók listából válassza ki a **http-kérelem fogadásának időpontját** .
 
    ![Trigger kiválasztása](./media/logic-apps-scenario-function-sb-trigger/when-http-request-received-trigger.png)
 
@@ -52,7 +52,7 @@ Ebben a forgatókönyvben egy olyan függvény fut, amely minden olyan logikai a
 
    1. A kérelem triggerben válassza a **minta hasznos adatok használata a séma létrehozásához**lehetőséget.
 
-   1. Az **írja be vagy illessze be a minta JSON-adattartalmat**területen adja meg a minta hasznos adatait, majd válassza a **kész**lehetőséget.
+   1. Az **írja be vagy illessze be a minta JSON-adattartalmat**területen adja meg a minta hasznos adatait, majd kattintson a **kész**gombra.
 
       ![Adja meg a minta hasznos adatait](./media/logic-apps-scenario-function-sb-trigger/enter-sample-payload.png)
 
@@ -104,7 +104,7 @@ Ezután hozza létre az triggerként viselkedő függvényt, és figyelje a vár
 
 1. A Function alkalmazás neve alatt bontsa ki a **függvények**elemet. A **függvények** ablaktáblán válassza az **új függvény**lehetőséget.
 
-   ![Bontsa ki a "függvények" elemet, és válassza az "új függvény" lehetőséget.](./media/logic-apps-scenario-function-sb-trigger/create-new-function.png)
+   ![Bontsa ki a "függvények" elemet, és válassza az "új függvény" lehetőséget.](./media/logic-apps-scenario-function-sb-trigger/add-new-function-to-function-app.png)
 
 1. Válassza ki ezt a sablont attól függően, hogy létrehozott-e egy új Function alkalmazást, ahol a .NET-et futtatókörnyezeti veremként választotta, vagy egy meglévő Function alkalmazást használ.
 
@@ -118,7 +118,15 @@ Ezután hozza létre az triggerként viselkedő függvényt, és figyelje a vár
 
 1. Az **Azure Service Bus várólista-trigger** ablaktáblán adja meg az trigger nevét, majd állítsa be a **Service Bus-kapcsolatokat** a várólista számára, amely az Azure Service Bus SDK `OnMessageReceive()`-figyelőt használja, majd válassza a **Létrehozás**lehetőséget.
 
-1. Írjon egy alapszintű függvényt a korábban létrehozott Logic app-végpont meghívásához az üzenetsor-üzenet triggerként való használatával. Ez a példa a `application/json` üzenet tartalmának típusát használja, de szükség szerint módosíthatja ezt a típust. Ha lehetséges, használja újra a HTTP-ügyfelek példányát. További információ: [kapcsolatok kezelése Azure Functionsban](../azure-functions/manage-connections.md).
+1. Írjon egy alapszintű függvényt a korábban létrehozott Logic app-végpont meghívásához az üzenetsor-üzenet triggerként való használatával. A függvény írása előtt tekintse át a következő szempontokat:
+
+   * Ez a példa a `application/json` üzenet tartalmának típusát használja, de szükség szerint módosíthatja ezt a típust.
+   
+   * A lehetséges párhuzamosan futó függvények, nagy kötetek vagy nagy terhelések miatt ne hozza létre a [HTTPClient osztályt](https://docs.microsoft.com/dotnet/api/system.net.http.httpclient) a `using` utasítással, és hozzon létre egy kérést közvetlenül a HTTPClient-példányok létrehozásával. További információ: [rugalmas HTTP-kérések implementálása a HttpClientFactory használatával](https://docs.microsoft.com/dotnet/architecture/microservices/implement-resilient-applications/use-httpclientfactory-to-implement-resilient-http-requests#issues-with-the-original-httpclient-class-available-in-net-core).
+   
+   * Ha lehetséges, használja újra a HTTP-ügyfelek példányát. További információ: [kapcsolatok kezelése Azure Functionsban](../azure-functions/manage-connections.md).
+
+   Ez a példa a [`Task.Run` metódust](https://docs.microsoft.com/dotnet/api/system.threading.tasks.task.run) használja [aszinkron](https://docs.microsoft.com/dotnet/csharp/language-reference/keywords/async) módban. További információ: [aszinkron programozás aszinkron módon és várakozás](https://docs.microsoft.com/dotnet/csharp/programming-guide/concepts/async/).
 
    ```CSharp
    using System;
@@ -126,17 +134,16 @@ Ezután hozza létre az triggerként viselkedő függvényt, és figyelje a vár
    using System.Net.Http;
    using System.Text;
 
-   // Callback URL for previously created Request trigger
+   // Can also fetch from App Settings or environment variable
    private static string logicAppUri = @"https://prod-05.westus.logic.azure.com:443/workflows/<remaining-callback-URL>";
 
-   // Reuse the instance of HTTP clients if possible
+   // Reuse the instance of HTTP clients if possible: https://docs.microsoft.com/azure/azure-functions/manage-connections
    private static HttpClient httpClient = new HttpClient();
 
-   public static void Run(string myQueueItem, ILogger log)
+   public static async Task Run(string myQueueItem, TraceWriter log) 
    {
-       log.LogInformation($"C# ServiceBus queue trigger function processed message: {myQueueItem}");
-
-       var response = httpClient.PostAsync(logicAppUri, new StringContent(myQueueItem, Encoding.UTF8, "application/json")).Result;
+      log.Info($"C# ServiceBus queue trigger function processed message: {myQueueItem}");
+      var response = await httpClient.PostAsync(logicAppUri, new StringContent(myQueueItem, Encoding.UTF8, "application/json")); 
    }
    ```
 
@@ -146,4 +153,4 @@ Ezután hozza létre az triggerként viselkedő függvényt, és figyelje a vár
 
 ## <a name="next-steps"></a>Következő lépések
 
-[Munkafolyamatok hívása, elindítása vagy beágyazása HTTP-végpontok használatával](../logic-apps/logic-apps-http-endpoint.md)
+* [Munkafolyamatok hívása, elindítása vagy beágyazása HTTP-végpontok használatával](../logic-apps/logic-apps-http-endpoint.md)

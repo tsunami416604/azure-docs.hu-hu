@@ -1,7 +1,7 @@
 ---
 title: Mi a magával ragadó olvasó API?
 titleSuffix: Azure Cognitive Services
-description: Ismerkedjen meg a magával ejtő olvasó API-val.
+description: A lebilincselő olvasó API egy olyan eszköz, amellyel a tanulási különbségekkel rendelkező személyeket, illetve az új olvasókat és nyelvi tanulókat is felhasználhatják.
 services: cognitive-services
 author: metanMSFT
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: immersive-reader
 ms.topic: overview
 ms.date: 06/20/2019
 ms.author: metan
-ms.openlocfilehash: f84804fbad07357706e786fc449fce9e42a5ec4a
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: 3e6889cd5d26b88cedd6b110510cb89777252f54
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68688335"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73904368"
 ---
 # <a name="what-is-immersive-reader"></a>Mi az a Modern olvasó?
 
@@ -53,12 +53,12 @@ A magával ragadó olvasó úgy lett kialakítva, hogy mindenki számára elérh
 
 ## <a name="how-does-immersive-reader-work"></a>Hogyan működik a alámerülés olvasó?
 
-A részletes olvasó egy önálló webalkalmazás, amely a saját webalkalmazásának a használatával történő meghívásakor jelenik meg a meglévő webalkalmazáson keresztül `iframe`. Amikor meghívja az API-t, hogy elindítsa a lebilincselő olvasót, megadhatja, hogy milyen tartalmat szeretne megjeleníteni a lebilincselő olvasóban. Az SDK kezeli a `iframe` és a kommunikáció létrehozását és stílusát az olvasói háttérrendszer-szolgáltatással, amely a beszéd részeire, szövegről beszédre, fordításra és egyebekre dolgozza fel a tartalmat.
+A lebilincselő olvasó egy önálló webalkalmazás, amely a saját webalkalmazások egy `iframe`használatával történő meghívásakor jelenik meg. Amikor meghívja az API-t, hogy elindítsa a lebilincselő olvasót, megadhatja, hogy milyen tartalmat szeretne megjeleníteni a lebilincselő olvasóban. Az SDK kezeli a `iframe` létrehozását és stílusát, valamint a kommunikációt a magával ragadó olvasói háttér-szolgáltatással, amely a beszéd részeire, szövegről beszédre, fordításra és egyebekre dolgozza fel a tartalmat.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A Modern olvasó használatának első lépései:
 
 * Ugrás [a gyors](./quickstart.md) üzembe helyezésre
-* Ismerje [meg](https://github.com/microsoft/immersive-reader-sdk) az olvasót a githubon
-* Olvassa el a [magára olvasó SDK](./reference.md) -referenciát
+* Ismerje [meg az olvasót a githubon](https://github.com/microsoft/immersive-reader-sdk)
+* Olvassa el a [magára olvasó SDK-referenciát](./reference.md)

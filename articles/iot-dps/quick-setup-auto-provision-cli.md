@@ -1,22 +1,22 @@
 ---
-title: A Device Provisioning Service beállítása az Azure CLI használatával | Microsoft Docs
+title: 'Gyors útmutató: eszköz kiépítési szolgáltatásának beállítása az Azure CLI használatával'
 description: Azure rövid útmutató – Az Azure IoT Hub Device Provisioning Service üzembe helyezése az Azure CLI használatával
 author: wesmc7777
 ms.author: wesmc
-ms.date: 02/26/2018
+ms.date: 11/08/2019
 ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 3062fb640985498ba35e23f6310828a2bd59bfed
-ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.openlocfilehash: ef40d0df630fc369705a1365aa8d95317aa54cb3
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "60363716"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73904700"
 ---
-# <a name="set-up-the-iot-hub-device-provisioning-service-with-azure-cli"></a>Az IoT Hub Device Provisioning szolgáltatás beállítása az Azure CLI használatával
+# <a name="quickstart-set-up-the-iot-hub-device-provisioning-service-with-azure-cli"></a>Rövid útmutató: a IoT Hub Device Provisioning Service beállítása az Azure CLI-vel
 
 Az Azure CLI az Azure-erőforrások parancssorból vagy szkriptekkel történő létrehozására és kezelésére használható. Ez a rövid útmutató egy IoT Hub és egy IoT Hub Device Provisioning-szolgáltatás Azure CLI használatával végzett létrehozását, valamint a két szolgáltatás csatolását ismerteti. 
 
@@ -66,7 +66,7 @@ az iot dps create --name my-sample-dps --resource-group my-sample-resource-group
 ```
 
 > [!TIP]
-> Ebben a példában az eszközkiépítési szolgáltatás az USA nyugati régiójában jön létre. Az elérhető helyek listáját az `az provider show --namespace Microsoft.Devices --query "resourceTypes[?resourceType=='ProvisioningServices'].locations | [0]" --out table` parancs futtatásával vagy az [Azure állapotlapjának](https://azure.microsoft.com/status/) megnyitásával, majd a „Device Provisioning Service” kifejezésre való kereséssel tekintheti meg. A parancsokban egyszavas vagy többszavas formátumban adhatók meg a helyek, például: westus, USA nyugati régiója, USA NYUGATI RÉGIÓJA stb. Az érték nem különbözteti meg a kis- és nagybetűket. Ha többszavas formátumot használ a hely megadásához, tegye idézőjelek közé az értéket, például: `-- location "West US"`.
+> Ebben a példában az eszközkiépítési szolgáltatás az USA nyugati régiójában jön létre. Az elérhető helyek listáját az `az provider show --namespace Microsoft.Devices --query "resourceTypes[?resourceType=='ProvisioningServices'].locations | [0]" --out table` parancs futtatásával vagy az [Azure állapotlapjának](https://azure.microsoft.com/status/) megnyitásával, majd a „Device Provisioning Service” kifejezésre való kereséssel tekintheti meg. A parancsokban a hely megadható egy vagy több szóból álló formátumban is. például: westus, USA nyugati régiója, USA nyugati régiója stb. Az érték nem megkülönbözteti a kis-és nagybetűket. Ha többszavas formátumot használ a hely megadásához, tegye idézőjelek közé az értéket, például: `-- location "West US"`.
 >
 
 
@@ -131,10 +131,9 @@ Erőforráscsoport és az ahhoz tartozó összes erőforrás törléséhez futta
 az group delete --name my-sample-resource-group
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban IoT Hubot és eszközkiépítési szolgáltatás példányt helyezett üzembe, és csatolta a két erőforrást. Ha szimulált eszköz kiépítéséhez szeretné használni ezt a beállítást, folytassa a szimulált eszköz létrehozásának rövid útmutatójával.
 
 > [!div class="nextstepaction"]
 > [Szimulált eszköz létrehozásának rövid útmutatója](./quick-create-simulated-device.md)
-

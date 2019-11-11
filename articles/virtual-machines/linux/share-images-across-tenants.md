@@ -1,6 +1,6 @@
 ---
-title: Image z galerie megosztása a bérlők számára az Azure-ban |} A Microsoft Docs
-description: Ismerje meg, hogyan oszthat meg Virtuálisgép-rendszerképek használatával megosztott kép katalógusok Azure bérlők között.
+title: Katalógusbeli rendszerképek megosztása az Azure-beli bérlők között | Microsoft Docs
+description: Megtudhatja, hogyan oszthat meg virtuálisgép-lemezképeket az Azure-bérlők között megosztott képtárakkal.
 services: virtual-machines-linux
 author: cynthn
 manager: gwallace
@@ -10,23 +10,25 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 04/05/2019
 ms.author: cynthn
-ms.openlocfilehash: cbf42de406ecb0caed67b77743f376284ab64608
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: b63bc1089b113edaac637df0a7e55c39f3a11f1a
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67706556"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73904976"
 ---
-# <a name="share-gallery-vm-images-across-azure-tenants"></a>Az Azure-bérlőre kiterjedő katalógus Virtuálisgép-rendszerképek megosztása
+# <a name="share-gallery-vm-images-across-azure-tenants"></a>Katalógusbeli virtuálisgép-rendszerképek megosztása Azure-bérlők között
+
+A megosztott képtárak lehetővé teszik a képek megosztását a RBAC használatával. A RBAC segítségével megoszthatja a bérlőn belüli képeket, és akár a bérlőn kívüli személyeket is. További információ erről az egyszerű megosztási lehetőségről: a [gyűjtemény megosztása](/azure/virtual-machines/linux/shared-images-portal#share-the-gallery).
 
 [!INCLUDE [virtual-machines-share-images-across-tenants](../../../includes/virtual-machines-share-images-across-tenants.md)]
 
 > [!IMPORTANT]
-> A portál nem használhat egy másik azure-bérlőhöz egy rendszerképből egy virtuális gép üzembe helyezéséhez. Virtuális gép létrehozása a bérlők között megosztott egy rendszerképből, az Azure CLI-vel kell használnia, vagy [Powershell](../windows/share-images-across-tenants.md).
+> A portálon nem lehet virtuális gépet üzembe helyezni egy másik Azure-bérlő lemezképéről. Ha a bérlők között megosztott rendszerképből szeretne virtuális gépet létrehozni, az Azure CLI-t vagy a [PowerShellt](../windows/share-images-across-tenants.md)kell használnia.
 
-## <a name="create-a-vm-using-azure-cli"></a>Hozzon létre egy virtuális Gépet az Azure CLI használatával
+## <a name="create-a-vm-using-azure-cli"></a>Virtuális gép létrehozása az Azure CLI-vel
 
-Jelentkezzen be az egyszerű szolgáltatás bérlő 1 az appID, az Alkalmazáskulcs és az 1. bérlő azonosítója. Használhat `az account show --query "tenantId"` a bérlő beszerzése azonosítók szükség esetén.
+Jelentkezzen be az 1. bérlői szolgáltatásnév appID, az alkalmazás kulcsával és az 1. Bérlő AZONOSÍTÓjának használatával. Ha szükséges, a `az account show --query "tenantId"` segítségével kérheti le a bérlői azonosítókat.
 
 ```azurecli-interactive
 az account clear
@@ -34,14 +36,14 @@ az login --service-principal -u '<app ID>' -p '<Secret>' --tenant '<tenant 1 ID>
 az account get-access-token 
 ```
  
-Jelentkezzen be az egyszerű szolgáltatás bérlő 2 használata az appID, az Alkalmazáskulcs és a 2. bérlő azonosítója:
+Jelentkezzen be a 2. bérlői szolgáltatásnév appID, az alkalmazás kulcsával és a 2. Bérlő AZONOSÍTÓjának használatával:
 
 ```azurecli-interactive
 az login --service-principal -u '<app ID>' -p '<Secret>' --tenant '<tenant 2 ID>'
 az account get-access-token
 ```
 
-A virtuális gép létrehozásához. Cserélje le a példában az adatokat a saját.
+Hozza létre a virtuális gépet. Cserélje le a példában szereplő információkat a saját adataira.
 
 ```azurecli-interactive
 az vm create \
@@ -52,6 +54,6 @@ az vm create \
   --generate-ssh-keys
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Ha problémákat tapasztal, [hibáinak elhárítása a közös kép katalógusok](troubleshooting-shared-images.md).
+Ha bármilyen problémába ütközik, a [megosztott képtárakat is elháríthatja](troubleshooting-shared-images.md).

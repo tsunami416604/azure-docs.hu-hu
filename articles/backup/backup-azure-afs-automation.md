@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 08/20/2019
 ms.author: dacurwin
 ms.reviewer: pullabhk
-ms.openlocfilehash: 491e27f85d00ce512995a63e43b9e248798e5d0f
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 4642549dcdd455c97ea3e8fd8a8b5440779b923c
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73747630"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73903612"
 ---
 # <a name="back-up-and-restore-azure-files-with-powershell"></a>Azure Files biztonsági mentése és visszaállítása a PowerShell-lel
 
@@ -276,7 +276,7 @@ A biztonsági mentések során az Azure-fájlmegosztás pillanatképeit használ
 
 ### <a name="using-on-demand-backups-to-extend-retention"></a>Igény szerinti biztonsági másolatok használata a megőrzés kiterjesztéséhez
 
-Az igény szerinti biztonsági mentések segítségével 10 évig megőrizheti a pillanatképeket. A ütemező használatával igény szerinti PowerShell-szkripteket futtathat a választott megőrzéssel, és így minden héten, hónapban vagy évben rendszeres időközönként pillanatfelvételeket készíthet. A rendszeres pillanatképek készítése során az Azure Backup használatával megtekintheti az [igény szerinti biztonsági mentések korlátozásait](https://docs.microsoft.com/azure/backup/backup-azure-files-faq#how-many-on-demand-backups-can-i-take-per-file-share-) .
+Az igény szerinti biztonsági mentések segítségével 10 évig megőrizheti a pillanatképeket. A ütemező használatával igény szerinti PowerShell-szkripteket futtathat a választott megőrzéssel, és így minden héten, hónapban vagy évben rendszeres időközönként pillanatfelvételeket készíthet. Rendszeres Pillanatképek készítésekor tekintse át az Azure Backup használatával [igény szerinti biztonsági mentések korlátozásait](https://docs.microsoft.com/azure/backup/backup-azure-files-faq#how-many-on-demand-backups-can-i-take-per-file-share) .
 
 Ha minta parancsfájlokat keres, tekintse meg a GitHubon található minta parancsfájlt (<https://github.com/Azure-Samples/Use-PowerShell-for-long-term-retention-of-Azure-Files-Backup)> Azure Automation runbook használatával, amely lehetővé teszi a biztonsági másolatok rendszeres ütemezését, és akár 10 évig is megőrizheti azokat.
 
@@ -422,6 +422,6 @@ $job.ErrorDetails
 1073871825 Microsoft Azure Backup encountered an internal error. Wait for a few minutes and then try the operation again. If the issue persists, please contact Microsoft support.
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Tudnivalók](backup-azure-files.md) a Azure Portal Azure Files biztonsági mentéséről.

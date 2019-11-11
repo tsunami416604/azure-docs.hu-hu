@@ -9,12 +9,12 @@ ms.custom:
 ms.author: timlt
 author: timlt
 ms.date: 11/06/2019
-ms.openlocfilehash: d926f1c286c4288784d429f13b22436d7c8ae7e5
-ms.sourcegitcommit: 16c5374d7bcb086e417802b72d9383f8e65b24a7
+ms.openlocfilehash: 8ebcc863c1812081e6198ff9c684934642e1dc41
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73849275"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73904558"
 ---
 # <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-and-monitor-it-with-the-azure-cli"></a>Gyors útmutató: telemetria küldése egy eszközről egy IoT-hubhoz, és az Azure CLI-vel való figyelése
 
@@ -74,7 +74,7 @@ Ebben a szakaszban az Azure CLI használatával hozzon létre egy erőforráscso
     az group create --name MyResourceGroup --location eastus
     ```
 
-1. Futtassa az az [IOT hub Create](https://docs.microsoft.com/cli/azure/iot/hub?view=azure-cli-latest#az-iot-hub-create) parancsot egy IOT hub létrehozásához.
+1. Futtassa az az [IOT hub Create](https://docs.microsoft.com/cli/azure/iot/hub?view=azure-cli-latest#az-iot-hub-create) parancsot egy IOT hub létrehozásához. Az IoT hub létrehozása eltarthat néhány percig. 
 
     *YourIotHubName*. Az alábbi helyőrzőt cserélje le az IoT hub számára kiválasztott névre. Az IoT hub nevének globálisan egyedinek kell lennie az Azure-ban. Ezt a helyőrzőt használjuk a rövid útmutató további részében, hogy az IoT hub nevét képviseljék.
 
@@ -141,15 +141,15 @@ Ebben a szakaszban a második CLI-munkamenet használatával küld üzenetet a s
 
     ![Cloud Shell a felhőből az eszközre üzenet](media/quickstart-send-telemetry-cli/cloud-shell-receive-message.png)
 
-1. Miután megtekintette az üzenetet, zárjuk be mindkét CLI-munkamenetet. 
+1. Miután megtekintette az üzenetet, zárjuk be a második CLI-munkamenetet. Tartsa meg az első CLI-munkamenetet. Ezzel egy későbbi lépésben törli az erőforrásokat.
 
 ## <a name="view-messaging-metrics-in-the-portal"></a>Üzenetkezelési mérőszámok megtekintése a portálon
 A Azure Portal lehetővé teszi a IoT Hub és az eszközök összes aspektusának kezelését. Egy tipikus IoT Hub alkalmazásban, amely az eszközökről végez telemetria, érdemes figyelni az eszközöket, vagy megtekinteni a mérőszámokat az eszköz telemetria. 
 
 Üzenetküldési metrikák megjelenítése a Azure Portalban:
-1. A portál **kezdőlapján** válassza a **minden erőforrás**elemet. 
+1. A portál bal oldali navigációs menüjében válassza a **minden erőforrás**elemet. Ez felsorolja az előfizetésben található összes erőforrást, beleértve a létrehozott IoT hubot is. 
 
-1. Az erőforráscsoportok listájában válassza ki a létrehozott IoT hubot. 
+1. Kattintson a létrehozott IoT hub hivatkozására. A portál megjeleníti a központ áttekintés lapját.
 
 1. A IoT Hub bal oldali paneljén válassza a **metrikák** lehetőséget. 
 
@@ -187,7 +187,7 @@ Erőforráscsoport törlése név alapján:
     az group list
     ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ebben a rövid útmutatóban az Azure CLI-t használta egy IoT hub létrehozásához, egy szimulált eszköz létrehozásához, a telemetria elküldéséhez, a telemetria figyeléséhez, a felhőből az eszközre irányuló üzenetek küldéséhez és az erőforrások törléséhez. Az eszközön az üzenetküldési metrikák megjelenítéséhez a Azure Portal használta.
 
 Ha Ön egy eszköz fejlesztője, a javasolt következő lépés a telemetria rövid útmutatója, amely az Azure IoT Device SDK-t használja a C-hez. opcionálisan tekintse meg az egyik elérhető Azure IoT Hub telemetria gyors üzembe helyezési cikkét az Ön által választott nyelven vagy SDK-ban.

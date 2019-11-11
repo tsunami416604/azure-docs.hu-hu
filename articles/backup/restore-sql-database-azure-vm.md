@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 05/22/2019
 ms.author: dacurwin
-ms.openlocfilehash: 648c5ca1eb1cb1c0f1832654fc66d436b9318af3
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 878658135bdb8844c5c86bc207db580ccd7ff63f
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73161898"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73903600"
 ---
 # <a name="restore-sql-server-databases-on-azure-vms"></a>SQL Server-adatbázisok visszaállítása Azure-beli virtuális gépeken
 
@@ -76,9 +76,9 @@ Visszaállítás a következőképpen:
    - **Másik hely**: állítsa vissza az adatbázist egy másik helyre, és tartsa meg az eredeti forrás-adatbázist.
    - **Adatbázis felülírása**: állítsa vissza az adatforrást ugyanarra a SQL Server példányra, mint az eredeti forrást. Ez a beállítás felülírja az eredeti adatbázist.
 
-           > [!IMPORTANT]
-           > If the selected database belongs to an Always On availability group, SQL Server doesn't allow the database to be overwritten. Only **Alternate Location** is available.
-           >
+    > [!IMPORTANT]
+    > Ha a kiválasztott adatbázis egy always on rendelkezésre állási csoporthoz tartozik, SQL Server nem teszi lehetővé az adatbázis felülírását. Csak a **másik hely** érhető el.
+    >
    - **Visszaállítás fájlként**: adatbázisként való visszaállítás helyett állítsa vissza azokat a biztonsági másolati fájlokat, amelyeket később adatbázisként helyreállíthat bármely olyan gépen, ahol a fájlok SQL Server Management Studio használatával jelennek meg.
      ![visszaállítási konfigurációs menü](./media/backup-azure-sql-database/restore-configuration.png)
 

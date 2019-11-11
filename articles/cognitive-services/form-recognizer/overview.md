@@ -1,7 +1,7 @@
 ---
 title: Mi a Form Recognizer?
 titleSuffix: Azure Cognitive Services
-description: Ismerje meg, hogy az űrlap-felismerő használatával hogyan elemezheti az űrlap-és a tábla-információkat.
+description: Az Azure Cognitive Services űrlap-felismerő lehetővé teszi a kulcs/érték párok és a táblák adatainak azonosítását és kinyerését az űrlap dokumentumaiból.
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: overview
 ms.date: 07/25/2019
 ms.author: pafarley
-ms.openlocfilehash: b07201556f08bde4ef8c7a7904c6619a126d7765
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 86e0494ded84e9711b2283ae5fad77ff626cf792
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68594537"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73904483"
 ---
 # <a name="what-is-form-recognizer"></a>Mi a Form Recognizer?
 
@@ -58,10 +58,10 @@ Az űrlap-felismerő korlátozott hozzáférésű előzetes verzióban érhető 
 **1. lépés:** Hozzon létre egy űrlap-felismerő erőforrást a Azure Portal.
 
 **2. lépés:** A REST API használatának lépései:
-* [Rövid útmutató: Űrlap-felismerő modell betanítása és űrlap-adatok kinyerése az REST API és a cURL használatával](quickstarts/curl-train-extract.md)
-* [Rövid útmutató: Űrlap-felismerő modell betanítása és űrlapadatok kinyerése a REST API és a Python használatával](quickstarts/python-train-extract.md)
-* [Rövid útmutató: Bevételezési adatok kinyerése a cURL használatával](quickstarts/curl-receipts.md)
-* [Rövid útmutató: Bevételezési adatok kinyerése a Python használatával](quickstarts/python-receipts.md)
+* [Gyors útmutató: űrlap-felismerő modell betanítása és űrlap-adatok kinyerése a REST API és a cURL használatával](quickstarts/curl-train-extract.md)
+* [Gyors útmutató: űrlap-felismerő modell betanítása és adatok kinyerése a REST API és a Python használatával](quickstarts/python-train-extract.md)
+* [Gyors útmutató: bevételezési adatok kinyerése a cURL használatával](quickstarts/curl-receipts.md)
+* [Gyors útmutató: bevételezési adatok kinyerése a Python használatával](quickstarts/python-receipts.md)
 
 Javasoljuk, hogy az ingyenes szolgáltatást használja a technológia megismerése során. Ne feledje, hogy a szabad lapok száma legfeljebb 500 havonta.
 
@@ -81,6 +81,6 @@ További információért olvassa el a [REST API dokumentációját](https://aka
 
 Ezt a szolgáltatást az [online szolgáltatási feltételekben](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31)elérhető Azure-szolgáltatás [előzetes](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) verziója kínálja. Akárcsak az összes kognitív szolgáltatás esetében, az űrlap-felismerő szolgáltatást használó fejlesztőknek ismerniük kell a Microsoft-szabályzatokat az ügyféladatok alapján. További információért tekintse meg a Microsoft adatvédelmi központjának [Cognitive Services lapját](https://www.microsoft.com/trustcenter/cloudservices/cognitiveservices) .
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Fejezze be [](quickstarts/curl-train-extract.md) a gyors üzembe helyezési útmutatót az [űrlap-felismerő API](https://aka.ms/form-recognizer/api)-k használatának megkezdéséhez.
+Fejezze be [a gyors](quickstarts/curl-train-extract.md) üzembe helyezési útmutatót az [űrlap-felismerő API](https://aka.ms/form-recognizer/api)-k használatának megkezdéséhez.

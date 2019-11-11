@@ -1,5 +1,5 @@
 ---
-title: Szerzői és futtatókörnyezeti kulcsok – LUIS
+title: Szerzői és futásidejű kulcsok használata a LUIS használatával
 titleSuffix: Azure Cognitive Services
 description: A LUIS két kulcsot használ, a szerzői kulcs segítségével létrehozza a modellt és a futásidejű kulcsot az előrejelzési végpont felhasználói hosszúságú kimondott szöveg való lekérdezéséhez.
 services: cognitive-services
@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 10/25/2019
 ms.author: diberry
-ms.openlocfilehash: 973a8dd56437506d907159f212164ff147ba975c
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: b58aa97dbb97bade87a38456c58df8f93a29946f
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73487491"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73901702"
 ---
 # <a name="authoring-and-runtime-keys"></a>Tartalomkészítési és futtatókörnyezeti kulcsok
 
@@ -44,7 +44,7 @@ A LUIS használatának első megkezdése után létrejön egy **kezdő kulcs** .
 
 A LUIS három típusú Azure-erőforrást tesz lehetővé: 
  
-|Jelmagyarázat|Cél|Kognitív szolgáltatás `kind`|Kognitív szolgáltatás `type`|
+|Paraméter|Cél|Kognitív szolgáltatás `kind`|Kognitív szolgáltatás `type`|
 |--|--|--|--|
 |[Szerzői kulcs](#programmatic-key)|A szerzői műveletek, a képzés, a közzététel és a tesztelés segítségével hozzáférhetnek az alkalmazáshoz, és kezelhetik azokat. Hozzon létre egy LUIS authoring-kulcsot, ha a LUIS-alkalmazásokat programozott módon szeretné létrehozni.<br><br>A `LUIS.Authoring` kulcs célja, hogy lehetővé tegye a következőket:<br>* programozott módon felügyelheti Language Understanding alkalmazásokat és modelleket, beleértve a képzést és a közzétételt<br> * a szerzői erőforrásra vonatkozó engedélyek vezérlése [a közreműködő szerepkörhöz](#contributions-from-other-authors)rendelt személyek hozzárendelésével.|`LUIS.Authoring`|`Cognitive Services`|
 |[Előrejelzési kulcs](#prediction-endpoint-runtime-key)| Lekérdezés-előrejelzési végponti kérelmek. Hozzon létre egy LUIS-előrejelzési kulcsot, mielőtt az ügyfélalkalmazás a kezdő erőforrás által biztosított 1 000-kérelmeknél újabb előrejelzéseket kér. |`LUIS`|`Cognitive Services`|
@@ -165,7 +165,7 @@ LUIS nem rendelkezik az erőforrások tulajdonjogának átadására szolgáló k
 
 Megadhatja, hogy ki láthatja a LUIS előrejelzési futtatókörnyezet végpontjának kulcsát úgy, hogy a kiszolgálót kiszolgáló-kiszolgáló környezetben hívja meg. Ha a LUIS-t egy robotból használja, a robot és a LUIS közötti kapcsolat már biztonságos. Ha közvetlenül hívja meg a LUIS-végpontot, hozzon létre egy kiszolgálóoldali API-t (például egy Azure- [függvényt](https://azure.microsoft.com/services/functions/)) vezérelt hozzáféréssel (például [HRE](https://azure.microsoft.com/services/active-directory/)). A kiszolgálóoldali API meghívásakor, valamint a hitelesítés és az engedélyezés ellenőrzése után adja át a hívást a LUIS-nek. Habár ez a stratégia nem gátolja meg az emberen belüli támadásokat, az eltorzítja a végpontot a felhasználóktól, lehetővé teszi a hozzáférés nyomon követését, és lehetővé teszi a végponti válaszok naplózásának (például [Application Insights](https://azure.microsoft.com/services/application-insights/)) hozzáadását.  
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A [verziószámozási](luis-concept-version.md) fogalmak ismertetése. 
 * Útmutató [a kulcsok létrehozásához](luis-how-to-azure-subscription.md).

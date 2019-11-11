@@ -1,18 +1,18 @@
 ---
 title: Hitelesítési problémák az Azure HDInsight
 description: Hitelesítési problémák az Azure HDInsight
-ms.service: hdinsight
-ms.topic: troubleshooting
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
-ms.date: 08/09/2019
-ms.openlocfilehash: 3d2ba5965fef19a36faa8b9bbef235fd4117c20f
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.service: hdinsight
+ms.topic: troubleshooting
+ms.date: 11/08/2019
+ms.openlocfilehash: 17bc9f1ea93b0afa4f53443a53d294acb9e94b2e
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71071941"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73901407"
 ---
 # <a name="authentication-issues-in-azure-hdinsight"></a>Hitelesítési problémák az Azure HDInsight
 
@@ -34,11 +34,11 @@ Reason: Bad Request, Detailed Response: {"error":"invalid_grant","error_descript
 
 ### <a name="cause"></a>Ok
 
-Azure ad-hibakód: 50126 azt `AllowCloudPasswordValidation` jelenti, hogy a házirendet a bérlő nem állította be.
+Az Azure AD 50126-es hibakód azt jelenti, hogy a bérlő nem állította be a `AllowCloudPasswordValidation` szabályzatot.
 
 ### <a name="resolution"></a>Megoldás:
 
-Az Azure ad-bérlő vállalati rendszergazdája engedélyezheti az Azure AD számára a jelszó-kivonatok használatát az ADFS-t használó felhasználók számára.  Alkalmazza a `AllowCloudPasswordValidationPolicy` cikkben látható módon a [Enterprise Security Package használatát a HDInsight-ben](../domain-joined/apache-domain-joined-architecture.md).
+Az Azure ad-bérlő vállalati rendszergazdája engedélyezheti az Azure AD számára a jelszó-kivonatok használatát az ADFS-t használó felhasználók számára.  Alkalmazza a `AllowCloudPasswordValidationPolicy` az [Enterprise Security Package használata a HDInsight-ben](../domain-joined/apache-domain-joined-architecture.md)című cikkben látható módon.
 
 ---
 
@@ -106,11 +106,11 @@ Módosítsa a jelszót a Azure Portalban (a helyszíni rendszeren), majd várjon
 
 ### <a name="issue"></a>Probléma
 
-Hibaüzenet fogadása `interaction_required`.
+A rendszer hibaüzenetet kap `interaction_required`.
 
 ### <a name="cause"></a>Ok
 
-A rendszer alkalmazza a feltételes hozzáférési szabályzatot vagy az MFA-t a felhasználóra. Mivel az interaktív hitelesítés még nem támogatott, a felhasználót vagy a fürtöt ki kell zárni az MFA/feltételes hozzáférés alól. Ha a fürt kivételét választja (IP-cím alapú kivételi szabályzat), akkor győződjön meg arról, hogy `ServiceEndpoints` az ad engedélyezve van az adott vnet.
+A rendszer szerint feltételes hozzáférési szabályzat vagy MFA vonatkozik a felhasználóra. Mivel az interaktív hitelesítés még nem támogatott, a felhasználót vagy a fürtöt ki kell venni az MFA/feltételes hozzáférés hatálya alól. Ha a fürt kivételét választja (IP-cím alapú kivételi szabályzat), akkor győződjön meg arról, hogy az AD `ServiceEndpoints` engedélyezve vannak az adott vnet.
 
 ### <a name="resolution"></a>Megoldás:
 
@@ -148,9 +148,9 @@ Változik.
 
 ### <a name="resolution"></a>Megoldás:
 
-Ahhoz, hogy a kinit parancsot sikeres legyen, tudnia `sAMAccountName` kell, hogy (ez a fiók neve a tartomány nélkül). `sAMAccountName`általában a fiók előtagja (például a Bob `bob@contoso.com`a-ben). Egyes felhasználók esetében eltérő lehet. A címtár megismeréséhez `sAMAccountName`tallózással vagy kereséssel kell rendelkeznie.
+Ahhoz, hogy a kinit parancsot sikeres legyen, ismernie kell a `sAMAccountName` (ez a fiók neve a tartomány nélkül). `sAMAccountName` általában a fiók előtagja (például a `bob@contoso.com`). Egyes felhasználók esetében eltérő lehet. A `sAMAccountName`megismeréséhez szükség van a címtár tallózására és keresésére.
 
-A keresés `sAMAccountName`módjai:
+`sAMAccountName`megkeresésének módjai:
 
 * Ha a helyi Ambari-rendszergazda használatával tud bejelentkezni a Ambari-be, tekintse meg a felhasználók listáját.
 
@@ -158,7 +158,7 @@ A keresés `sAMAccountName`módjai:
 
 * A fő csomóponton a SAMBA-parancsokat használhatja a kereséshez. Ehhez érvényes Kerberos-munkamenetre (sikeres kinit parancsot) van szükség. NET ADS-keresés (userPrincipalName = Bob *)
 
-    A keresés/Tallózás eredményeinek meg kell mutatniuk az `sAMAccountName` attribútumot. Emellett megtekintheti a többi attribútumot `pwdLastSet`, például `badPasswordTime` `userPrincipalName` , stb., és megtekintheti, hogy ezek a tulajdonságok megfelelnek-e a vártnak.
+    A keresés/Tallózás eredménynek meg kell jelennie a `sAMAccountName` attribútumnak. Emellett megtekintheti a többi olyan attribútumot is, mint például a `pwdLastSet`, `badPasswordTime`, `userPrincipalName` stb.).
 
 ---
 
@@ -166,7 +166,7 @@ A keresés `sAMAccountName`módjai:
 
 ### <a name="issue"></a>Probléma
 
-A `Preauthentication` kinit parancsot sikertelen.
+A kinit parancsot `Preauthentication` hibával meghiúsul.
 
 ### <a name="cause"></a>Ok
 
@@ -174,7 +174,7 @@ Helytelen Felhasználónév vagy jelszó.
 
 ### <a name="resolution"></a>Megoldás:
 
-Keresse meg a felhasználónevet és a jelszót. Tekintse meg a fent ismertetett egyéb tulajdonságokat is. A részletes hibakeresés engedélyezéséhez futtassa `export KRB5_TRACE=/tmp/krb.log` a parancsot a munkamenetből a kinit parancsot kipróbálása előtt.
+Keresse meg a felhasználónevet és a jelszót. Tekintse meg a fent ismertetett egyéb tulajdonságokat is. A részletes hibakeresés engedélyezéséhez futtassa `export KRB5_TRACE=/tmp/krb.log` a munkamenetből a kinit parancsot kipróbálása előtt.
 
 ---
 
@@ -182,7 +182,7 @@ Keresse meg a felhasználónevet és a jelszót. Tekintse meg a fent ismertetett
 
 ### <a name="issue"></a>Probléma
 
-A Job/HDFS parancs végrehajtása a `TokenNotFoundException`következő okból meghiúsult:.
+A feladatok/HDFS parancs `TokenNotFoundException`miatt meghiúsul.
 
 ### <a name="cause"></a>Ok
 
@@ -194,12 +194,30 @@ Győződjön meg arról, hogy sikeresen bejelentkezett a Ambari-portálra azon a
 
 ---
 
-## <a name="next-steps"></a>További lépések
+## <a name="error-fetching-access-token"></a>Hiba a hozzáférési jogkivonat beolvasásakor
+
+### <a name="issue"></a>Probléma
+
+A felhasználó hibaüzenetet kap `Error fetching access token`.
+
+### <a name="cause"></a>Ok
+
+Ez a hiba időnként fordul elő, amikor a felhasználók ACL-ek használatával próbálnak hozzáférni a ADLS Gen2hoz, és a Kerberos-jogkivonat lejárt.
+
+### <a name="resolution"></a>Megoldás:
+
+* Azure Data Lake Storage Gen1 a böngésző gyorsítótárát, és jelentkezzen be újra a Ambari.
+
+* Azure Data Lake Storage Gen2 esetén futtassa a `/usr/lib/hdinsight-common/scripts/RegisterKerbWithOauth.sh <upn>`t azon felhasználó számára, akit a felhasználó a következőként próbál bejelentkezni:
+
+---
+
+## <a name="next-steps"></a>Következő lépések
 
 Ha nem látja a problémát, vagy nem tudja megoldani a problémát, további támogatásért látogasson el az alábbi csatornák egyikére:
 
 * Azure-szakértőktől kaphat válaszokat az [Azure közösségi támogatásával](https://azure.microsoft.com/support/community/).
 
-* Kapcsolódjon [@AzureSupport](https://twitter.com/azuresupport) a-a hivatalos Microsoft Azure fiókhoz a felhasználói élmény javítása érdekében. Az Azure-Közösség összekapcsolása a megfelelő erőforrásokkal: válaszok, támogatás és szakértők.
+* Kapcsolódjon a [@AzureSupporthoz](https://twitter.com/azuresupport) – a hivatalos Microsoft Azure fiókot a felhasználói élmény javításához. Az Azure-Közösség összekapcsolása a megfelelő erőforrásokkal: válaszok, támogatás és szakértők.
 
-* Ha további segítségre van szüksége, támogatási kérést küldhet a [Azure Portaltól](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Válassza a menüsor **támogatás** elemét, vagy nyissa meg a **Súgó + támogatás** hubot. Részletesebb információkért tekintse át az [Azure-támogatási kérelem létrehozását](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)ismertető témakört. Az előfizetés-kezeléshez és a számlázási támogatáshoz való hozzáférés a Microsoft Azure-előfizetés része, és a technikai támogatás az egyik [Azure-támogatási csomagon](https://azure.microsoft.com/support/plans/)keresztül érhető el.
+* Ha további segítségre van szüksége, támogatási kérést küldhet a [Azure Portaltól](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Válassza a menüsor **támogatás** elemét, vagy nyissa meg a **Súgó + támogatás** hubot. Részletesebb információkért tekintse át az [Azure-támogatási kérelem létrehozását](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)ismertető témakört. Az előfizetés-kezeléssel és számlázással kapcsolatos támogatás a Microsoft Azure-előfizetés részét képezi, míg a technikai támogatást [Azure-támogatási csomagjainkkal](https://azure.microsoft.com/support/plans/) biztosítjuk.

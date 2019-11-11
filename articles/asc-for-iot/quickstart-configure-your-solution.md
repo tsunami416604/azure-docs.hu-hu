@@ -1,6 +1,6 @@
 ---
-title: A Azure Security Center konfigurálása a IoT-megoldáshoz | Microsoft Docs
-description: Megtudhatja, hogyan konfigurálhatja a teljes körű IoT-megoldást a IoT Azure Security Center használatával.
+title: 'Gyors útmutató: a Azure Security Center konfigurálása a IoT-megoldáshoz'
+description: Ebből a rövid útmutatóból megtudhatja, hogyan konfigurálhatja a teljes körű IoT-megoldást a IoT Azure Security Center használatával.
 services: asc-for-iot
 ms.service: asc-for-iot
 documentationcenter: na
@@ -13,16 +13,16 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/25/2019
+ms.date: 11/08/2019
 ms.author: mlottner
-ms.openlocfilehash: a546d153c6fe4f14ccc8c21308bd4a33385870c3
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: e670df359cc33c9eaca089d0ed8f9614ef8c0468
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71299692"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73904155"
 ---
-# <a name="quickstart-configure-your-iot-solution"></a>Gyors útmutató: A IoT-megoldás konfigurálása
+# <a name="quickstart-configure-your-iot-solution"></a>Rövid útmutató: a IoT-megoldás konfigurálása
 
 Ez a cikk azt ismerteti, hogyan hajthatja végre a IoT biztonsági megoldás kezdeti konfigurációját a IoT Azure Security Center használatával. 
 
@@ -47,13 +47,13 @@ Ha új erőforrást szeretne hozzáadni a IoT-megoldáshoz, tegye a következők
 1. Nyissa meg a **IoT Hubt** Azure Portal. 
 1. Válassza ki és nyissa meg az **erőforrások** elemet a bal oldali menüben a **Biztonság** területen. 
 1. Válassza a **Szerkesztés** lehetőséget, és válassza ki a IoT-megoldáshoz tartozó erőforrásokat.
-1. Kattintson a **Hozzáadás**lehetőségre. 
+1. Kattintson az **Hozzáadás** parancsra. 
 
 Gratulálunk! Új erőforráscsoportot adott hozzá a IoT-megoldáshoz.
 
 A IoT-hez készült Azure Security Center mostantól figyeli az újonnan hozzáadott erőforráscsoportokat, és a IoT-megoldás részeként felfedi a megfelelő biztonsági javaslatokat és riasztásokat.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A következő cikkből megtudhatja, hogyan hozhat létre biztonsági modulokat...
 

@@ -1,7 +1,7 @@
 ---
 title: A részletes olvasó SDK-referenciája
 titleSuffix: Azure Cognitive Services
-description: A alámerülés olvasó SDK-ra vonatkozó referenciák
+description: A lebilincselő olvasó SDK egy JavaScript-kódtár, amely lehetővé teszi a magával ragadó olvasó integrálását a webalkalmazásba.
 services: cognitive-services
 author: metanMSFT
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: immersive-reader
 ms.topic: reference
 ms.date: 06/20/2019
 ms.author: metan
-ms.openlocfilehash: ed9bd6f5932fdcb2d9124a000115a6f68cf21613
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 09244b634fa2603a7dc92af3c78d171f8d6bd9df
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73889312"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73903112"
 ---
 # <a name="immersive-reader-sdk-reference-guide"></a>A részletes olvasó SDK útmutatója
 
@@ -41,7 +41,7 @@ launchAsync(token: string, subdomain: string, content: Content, options?: Option
 
 ### <a name="parameters"></a>Paraméterek
 
-| Név | Típus | Leírás |
+| Name (Név) | Típus | Leírás |
 | ---- | ---- |------------ |
 | `token` | sztring | Az Azure AD hitelesítési jogkivonata. Lásd: [Azure ad-hitelesítés – útmutató](./azure-active-directory-authentication.md). |
 | `subdomain` | sztring | Az Azure-beli magától elolvasó erőforrás egyedi altartománya. Lásd: [Azure ad-hitelesítés – útmutató](./azure-active-directory-authentication.md). |
@@ -80,11 +80,11 @@ renderButtons(options?: RenderButtonsOptions): void;
 
 ### <a name="parameters"></a>Paraméterek
 
-| Név | Típus | Leírás |
+| Name (Név) | Típus | Leírás |
 | ---- | ---- |------------ |
 | `options` | [RenderButtonsOptions](#renderbuttonsoptions) | A renderButtons függvény bizonyos viselkedésének konfigurálására szolgáló beállítások. Választható. |
 
-## <a name="types"></a>Típusú
+## <a name="types"></a>Típusok
 
 ### <a name="content"></a>Tartalom
 
@@ -114,8 +114,8 @@ Egyetlen adathalmaz, amely a magára az olvasóba kerül át a tartalomba.
 | MIME-típus | Leírás |
 | --------- | ----------- |
 | szöveg/egyszerű | Egyszerű szöveg. |
-| szöveg/html | HTML-tartalom. [További információ](#html-support)|
-| Application/MathML + XML | Matematikai Markup Language (MathML). [Részletek](https://developer.mozilla.org/en-US/docs/Web/MathML).
+| szöveg/html | HTML-tartalom. [Részletek](#html-support)|
+| Application/MathML + XML | Matematikai Markup Language (MathML). [További információ](https://developer.mozilla.org/en-US/docs/Web/MathML).
 | Application/vnd. openxmlformats-officedocument. WordprocessingML. Document | Microsoft Word. docx formátumú dokumentum.
 
 ### <a name="html-support"></a>HTML-támogatás
@@ -203,7 +203,7 @@ Használja az alábbi böngészők legújabb verzióit a legjobb élmény érdek
 * Mozilla Firefox
 * Apple Safari
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Ismerje [meg az olvasót a githubon](https://github.com/microsoft/immersive-reader-sdk)
 * [Gyors útmutató: hozzon létre egy webalkalmazást, amely elindítjaC#az olvasót ()](./quickstart.md)

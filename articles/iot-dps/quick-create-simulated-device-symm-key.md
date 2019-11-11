@@ -1,22 +1,22 @@
 ---
-title: Útmutató egy szimulált eszköz szimmetrikus kulcs használatával történő kiépítéséhez az Azure IoT Hubra C nyelv használatával | Microsoft Docs
+title: 'Gyors útmutató: egy szimulált eszköz az Azure-ba való kiépítésére szolgáló szimmetrikus kulcs használata a C használatával IoT Hub'
 description: Ebben az útmutatóban a C eszköz SDK-t fogjuk használni olyan szimulált eszköz létrehozásához, amely szimmetrikus kulcsot használ az Azure IoT Hub Device Provisioning szolgáltatáshoz
 author: wesmc7777
 ms.author: wesmc
-ms.date: 04/10/2019
+ms.date: 11/08/2019
 ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 31e71e942d7bd3f7a9739eeb83bd3ed250bb2c61
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: 8a5016587240dfcc0813b7f1e23cd574e82bb935
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65909023"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73904864"
 ---
-# <a name="quickstart-provision-a-simulated-device-with-symmetric-keys"></a>Gyors útmutató: Szimulált eszköz kiépítése a szimmetrikus kulcsok
+# <a name="quickstart-provision-a-simulated-device-with-symmetric-keys"></a>Rövid útmutató: Szimmetrikus kulcs kiosztása szimulált eszköz számára
 
 Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre és futtathat eszközszimulátort a Windows rendszerű fejlesztői gépeken. A szimulált eszközt arra konfiguráljuk, hogy egy szimmetrikus kulcs használatával hitelesítse magát egy Device Provisioning Service-példánynál és hozzárendelésre kerüljön egy IoT-központhoz. Az [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) mintakódját használva fogjuk szimulálni az eszközindítási szekvenciát, amely a kiosztás folyamatát fogja elindítani. A rendszer az eszközt a regisztrációs szolgáltatáspéldányban való egyéni regisztrációja alapján ismeri fel, és ez alapján társítja egy IoT-központhoz.
 
@@ -34,7 +34,7 @@ A cikk során egy Windows-alapú munkaállomást fogunk használni. Azonban az e
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* [A Visual Studio](https://visualstudio.microsoft.com/vs/) 2015 vagy újabb verzió a ["asztali fejlesztés C++"](https://www.visualstudio.com/vs/support/selecting-workloads-visual-studio-2017/) számítási feladat engedélyezve van.
+* A [Visual Studio](https://visualstudio.microsoft.com/vs/) 2015-as vagy újabb verziójának használata az ["asztali fejlesztés C++](https://www.visualstudio.com/vs/support/selecting-workloads-visual-studio-2017/) a munkaterheléssel" beállítással.
 * A [Git](https://git-scm.com/download/) legújabb verziójának telepített példánya.
 
 
@@ -46,7 +46,7 @@ Ebben a szakaszban előkészítjük az [Azure IoT C SDK](https://github.com/Azur
 
 Az SDK tartalmaz szimulált eszközök esetében használható mintakódokat is. A szimulált eszköz a beléptetést az rendszerindítási során fogja megkísérelni.
 
-1. Töltse le a [CMake buildelési rendszert](https://cmake.org/download/).
+1. Töltse le a [Csatlakozáskezelő felügyeleti csomag Build-szolgáltatását](https://cmake.org/download/).
 
     Fontos, hogy a Visual Studio előfeltételei (Visual Studio és az „Asztali fejlesztés C++ használatával” számítási feladat) telepítve legyenek a gépen, **mielőtt** megkezdené a `CMake` telepítését. Ha az előfeltételek telepítve vannak, és ellenőrizte a letöltött fájlt, telepítse a CMake buildelési rendszert.
 
@@ -100,13 +100,13 @@ Az SDK tartalmaz szimulált eszközök esetében használható mintakódokat is.
 
 3. A **Regisztráció hozzáadása** lapon adja meg az alábbi adatokat, majd kattintson a **Mentés** gombra.
 
-   - **Mechanizmus**: Válassza ki **szimmetrikus kulcs** elemet az identitás igazolási *mechanizmus*.
+   - **Eljárás**: Identitásazonosító **eljárásnak** válassza a *Szimmetrikus kulcs* lehetőséget.
 
-   - **Kulcsok automatikus létrehozása**: Ezt a jelölőnégyzetet.
+   - **Kulcsok automatikus létrehozása**: Jelölje be ezt a jelölőnégyzetet.
 
-   - **Regisztrációs azonosító**: Adja meg a regisztrációs Azonosítót a regisztráció azonosításához. Csak a kisbetűs alfanumerikus karaktereket és a kötőjel karaktert használhatja. Például: `symm-key-device-007`.
+   - **Regisztrációs azonosító**: Adja meg a regisztráció azonosításra szolgáló Regisztrációs azonosítót. Csak a kisbetűs alfanumerikus karaktereket és a kötőjel karaktert használhatja. Például: `symm-key-device-007`.
 
-   - **IoT Hub-Eszközazonosító:** Adjon meg egy eszközazonosítót. Például: **device-007**
+   - **IoT Hub-eszközazonosító**: Adjon meg egy eszközazonosítót. Például: **device-007**
 
      ![Egyéni regisztráció hozzáadása szimmetrikus kulcsú igazoláshoz a Portalon](./media/quick-create-simulated-device-symm-key/create-individual-enrollment.png)
 
@@ -151,14 +151,14 @@ Ebben a szakaszban frissítjük a mintakódot, hogy leküldje az eszköz rendsze
     hsm_type = SECURE_DEVICE_TYPE_SYMMETRIC_KEY;
     ```
 
-6. Keresse meg a hívást `prov_dev_set_symmetric_key_info()` a **prov\_fejlesztési\_ügyfél\_sample.c** amely megjegyzésként szerepel.
+6. Keresse meg azt a hívást, amelyet a **prov\_dev\_ügyfél\_sample. c** `prov_dev_set_symmetric_key_info()` a megjegyzésben talál.
 
     ```c
     // Set the symmetric key if using they auth type
     //prov_dev_set_symmetric_key_info("<symm_registration_id>", "<symmetric_Key>");
     ```
 
-    Állítsa vissza a függvény hívásához szükséges, és cserélje le a helyőrző értékeket (beleértve a csúcsos zárójeleket) a regisztrációs Azonosítót és elsődleges kulcs értékeit.
+    Adja meg a függvény hívását, és cserélje le a helyőrző értékeket (beleértve a szögletes zárójeleket is) a regisztrációs AZONOSÍTÓval és az elsődleges kulcs értékével.
 
     ```c
     // Set the symmetric key if using they auth type
@@ -187,7 +187,7 @@ Ebben a szakaszban frissítjük a mintakódot, hogy leküldje az eszköz rendsze
     Press enter key to exit:
     ```
 
-9. A Portalon lépjen ahhoz az IoT-központhoz, amelyhez a szimulált eszköz rendelve lett, és kattintson az **IoT-eszközök** fülre. Ha sikeresen kiépült a szimulált eszköz, annak eszközazonosítója megjelenik az **IoT-eszközök** panelen, a hozzá tartozó *ÁLLAPOT* pedig **Engedélyezve** értéket mutat. Lehet, hogy rá kell kattintania fent a **Frissítés** gombra. 
+9. A portálon navigáljon a szimulált eszközhöz rendelt IoT hubhoz, és kattintson a IoT- **eszközök** fülre. Ha sikeresen kiépíti a szimulált eszközt a központba, az eszköz azonosítója megjelenik az **IoT-eszközök** panelen, amely **engedélyezve** *állapotú* . Lehet, hogy rá kell kattintania fent a **Frissítés** gombra. 
 
     ![Az eszköz regisztrálva van az IoT Hubbal](./media/quick-create-simulated-device/hub-registration.png) 
 
@@ -197,10 +197,10 @@ Ebben a szakaszban frissítjük a mintakódot, hogy leküldje az eszköz rendsze
 Ha azt tervezi, hogy folytatja az eszközügyfél minta használatát és megismerését, akkor ne törölje a rövid útmutatóban létrehozott erőforrásokat. Ha nem folytatja a munkát, akkor a következő lépésekkel törölheti a rövid útmutatóhoz létrehozott összes erőforrást.
 
 1. Zárja be az eszközügyfél minta kimeneti ablakát a gépen.
-1. Az Azure Portal bal oldali menüjében kattintson az **Összes erőforrás** lehetőségre, majd válassza ki az eszközkiépítési szolgáltatást. Nyissa meg a szolgáltatás **Regisztrációk kezelése** lapját, majd kattintson az **Egyéni regisztrációk** lapra. Válassza ki a rövid útmutatóban regisztrált eszköz *REGISZTRÁCIÓS AZONOSÍTÓJÁT*, majd kattintson a felül található **Törlés** gombra. 
+1. Az Azure Portal bal oldali menüjében kattintson az **Összes erőforrás** lehetőségre, majd válassza ki az eszközkiépítési szolgáltatást. Nyissa meg a szolgáltatás **regisztrációinak kezelése** elemet, majd kattintson az **Egyéni regisztrációk** fülre. Válassza ki az ebben a rövid útmutatóban regisztrált eszköz *regisztrációs azonosítóját* , majd kattintson a felül található **Törlés** gombra. 
 1. Az Azure Portal bal oldali menüjében kattintson az **Összes erőforrás** lehetőségre, majd válassza ki az IoT Hubot. Nyissa meg a hub **IoT-eszközök** lapját, válassza ki a rövid útmutatóban regisztrált eszköz *ESZKÖZAZONOSÍTÓJÁT*, majd kattintson a felül található **Törlés** gombra.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban egy szimulált eszközt hozott létre a Windows rendszerű gépén, amelyet aztán kiépített IoT-központjához a portál Azure IoT Hub Device Provisioning Service szolgáltatásának szimmetrikus kulccsal történő használatával. Ha szeretné megismerni az eszközök programozott regisztrációjának folyamatát, lépjen tovább az X.509-eszközök programozott regisztrációjának rövid útmutatójára. 
 

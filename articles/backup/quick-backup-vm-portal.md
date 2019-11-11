@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 07/17/2018
 ms.author: dacurwin
 ms.custom: mvc
-ms.openlocfilehash: 09154c68ab5cb0c3db3cd3325a4bf37fa33c1144
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: fb6a1022308ee26aa8a4f2ac39c58fce26243419
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73747066"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73903594"
 ---
 # <a name="back-up-a-virtual-machine-in-azure"></a>Virtuális gép biztonsági mentése az Azure-ban
 
@@ -26,7 +26,7 @@ Ez a rövid útmutató a meglévő Azure-beli virtuális gépek biztonsági ment
 
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 
-Jelentkezzen be a Azure Portalba <https://portal.azure.com.>
+Jelentkezzen be a Azure Portalba <https://portal.azure.com>
 
 ## <a name="select-a-vm-to-back-up"></a>A virtuális gép kiválasztása a biztonsági mentéshez
 
@@ -91,7 +91,7 @@ Ha egy Biztonsági mentéssel foglalkozó oktatóanyaggal folytatja, amely a vir
 
     ![Az erőforráscsoport törlése az Azure Portal használatával](./media/quick-backup-vm-portal/delete-resource-group.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A rövid útmutató során létrehozott egy Recovery Services-tárolót, engedélyezte a védelmet a virtuális gépen, valamint létrehozta a kezdeti helyreállítási pontot. Ha bővebb információra van szüksége az Azure Backup és a Recovery Services szolgáltatásokkal kapcsolatban, lépjen tovább a következő oktatóanyagokra.
 

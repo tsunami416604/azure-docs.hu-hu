@@ -1,23 +1,23 @@
 ---
-title: X.509-eszközök regisztrációja az Azure Device Provisioning Service-be a C# használatával | Microsoft Docs
+title: 'Gyors útmutató: X. 509 eszköz regisztrálása az Azure Device kiépítési szolgáltatásba a használatávalC#'
 description: Ez a rövid útmutató csoportos regisztrációkat használ. Ebben a rövid útmutatóban az X. 509 eszközöket regisztrálja az Azure C#IoT hub Device Provisioning Service a használatával.
 author: wesmc7777
 ms.author: wesmc
-ms.date: 04/10/2019
+ms.date: 11/08/2019
 ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
 manager: philmea
 ms.devlang: csharp
 ms.custom: mvc
-ms.openlocfilehash: 15bce340b257b5c221192a6ace5c5f0eac30f85a
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: e43448337f787115c479f2f53ca57b7a20120108
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71036002"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73903441"
 ---
-# <a name="quickstart-enroll-x509-devices-to-the-device-provisioning-service-using-c"></a>Gyors útmutató: X. 509 eszközök regisztrálása az eszköz kiépítési szolgáltatásához a használatávalC#
+# <a name="quickstart-enroll-x509-devices-to-the-device-provisioning-service-using-c"></a>Rövid útmutató: X.509-eszközök regisztrációja a Device Provisioning Service-be a C# használatával
 
 [!INCLUDE [iot-dps-selector-quick-enroll-device-x509](../../includes/iot-dps-selector-quick-enroll-device-x509.md)]
 
@@ -92,7 +92,7 @@ Ez a szakasz bemutatja, hogyan hozhat létre egy olyan .NET Core Console-alkalma
 
    Ez a lépés letölti, telepíti és hozzáadja az [Azure IoT kiépítési szolgáltatás ÜGYFÉLOLDALI SDK](https://www.nuget.org/packages/Microsoft.Azure.Devices.Provisioning.Service/) -NuGet csomagjának és függőségeinek hivatkozását.
 
-1. Adja hozzá a `using` következő utasításokat a többi `using` `Program.cs`utasítás után:
+1. Adja hozzá a következő `using` utasításokat a `Program.cs`tetején található többi `using` utasítás után:
 
    ```csharp
    using System.Security.Cryptography.X509Certificates;
@@ -108,11 +108,11 @@ Ez a szakasz bemutatja, hogyan hozhat létre egy olyan .NET Core Console-alkalma
    private static string X509RootCertPath = @"{Path to a .cer or .pem file for a verified root CA or intermediate CA X.509 certificate}";
    ```
 
-   * `ProvisioningConnectionString` A helyőrző értékét cserélje le annak a létesítési szolgáltatásnak a kapcsolódási karakterláncára, amelyhez a beléptetést létre szeretné hozni.
+   * Cserélje le a `ProvisioningConnectionString` helyőrző értékét azon kiépítési szolgáltatáshoz tartozó kapcsolódási karakterláncra, amelyhez a regisztrációt létre szeretné hozni.
 
-   * Cserélje le `X509RootCertPath` a helyőrző értékét egy. PEM vagy. cer fájl elérési útjára. Ez a fájl egy olyan közbenső vagy legfelső szintű HITELESÍTÉSSZOLGÁLTATÓI X. 509 tanúsítvány nyilvános részét képezi, amelyet előzőleg töltöttek fel és ellenőriztek a kiépítési szolgáltatással.
+   * Cserélje le a `X509RootCertPath` helyőrző értékét egy. PEM vagy. cer fájl elérési útjára. Ez a fájl egy olyan közbenső vagy legfelső szintű HITELESÍTÉSSZOLGÁLTATÓI X. 509 tanúsítvány nyilvános részét képezi, amelyet előzőleg töltöttek fel és ellenőriztek a kiépítési szolgáltatással.
 
-   * Szükség esetén módosíthatja az `EnrollmentGroupId` értéket. A sztring csak kisbetűs karaktereket és kötőjelet tartalmazhat.
+   * Szükség esetén módosíthatja a `EnrollmentGroupId` értéket. A sztring csak kisbetűs karaktereket és kötőjelet tartalmazhat.
 
    > [!IMPORTANT]
    > Az éles kódban vegye figyelembe a következő biztonsági szempontokat:
@@ -120,7 +120,7 @@ Ez a szakasz bemutatja, hogyan hozhat létre egy olyan .NET Core Console-alkalma
    > * A kapcsolati sztring fix kódolása a kiépítési szolgáltatás rendszergazdája esetében nem felel meg az ajánlott biztonsági eljárásoknak. Ehelyett biztonságosan kell tárolni a sztringet, például egy biztonságos konfigurációs fájlban vagy a beállításjegyzékben.
    > * Ügyeljen arra, hogy az aláíró tanúsítványnak csak a nyilvános részét töltse fel. Soha ne töltse fel a kiépítési szolgáltatás titkos kulcsait tartalmazó .pfx (PKCS12) vagy .pem fájlt.
 
-1. Adja hozzá a következő metódust `Program` a osztályhoz. Ez a kód egy beléptetési csoport bejegyzést hoz létre `CreateOrUpdateEnrollmentGroupAsync` , majd `ProvisioningServiceClient` meghívja a metódust, hogy hozzáadja a beléptetési csoportot a kiépítési szolgáltatáshoz.
+1. Adja hozzá a következő metódust a `Program` osztályhoz. Ez a kód egy regisztrációs csoport bejegyzést hoz létre, majd meghívja a `CreateOrUpdateEnrollmentGroupAsync` metódust `ProvisioningServiceClient` a regisztrációs csoport hozzáadásához a kiépítési szolgáltatáshoz.
 
    ```csharp
    public static async Task RunSample()
@@ -186,7 +186,7 @@ Ha azt tervezi, hogy vizsgálja C# meg a szolgáltatási mintát, ne törölje a
 
 1. A Azure Portal eszköz kiépítési szolgáltatásában válassza a **tanúsítványok**lehetőséget, válassza ki a rövid útmutatóhoz feltöltött tanúsítványt, és válassza a **Törlés** lehetőséget a **tanúsítvány részleteinek**tetején.  
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban létrehozta az X. 509 közbenső vagy legfelső szintű HITELESÍTÉSSZOLGÁLTATÓI tanúsítvány beléptetési csoportját az Azure IoT Hub Device Provisioning Service használatával. Ha mélyebben szeretné megismerni az eszközkiépítést, folytassa az Azure Portalon az eszközkiépítési szolgáltatás beállításának oktatóanyagával.
 

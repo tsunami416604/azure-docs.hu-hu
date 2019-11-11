@@ -1,146 +1,141 @@
 ---
-title: Az Azure Data Lake Storage Gen1 teljesítmény-finomhangolási útmutató |} A Microsoft Docs
-description: Az Azure Data Lake Storage Gen1 teljesítmény-finomhangolási útmutató
-services: data-lake-store
-documentationcenter: ''
+title: Azure Data Lake Storage Gen1 – teljesítmény finombeállítása
+description: Útmutató a Azure Data Lake Storage Gen1 teljesítményének finomhangolásához.
 author: stewu
-manager: amitkul
-editor: cgronlun
-ms.assetid: ebde7b9f-2e51-4d43-b7ab-566417221335
 ms.service: data-lake-store
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 06/30/2017
 ms.author: stewu
-ms.openlocfilehash: a8a50db5ece242bc00a28e66e21c863388950d6f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2521700e0f07691541ee6cbbf085a8be72f08129
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61437600"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73904623"
 ---
-# <a name="tuning-azure-data-lake-storage-gen1-for-performance"></a>Az Azure Data Lake Storage Gen1 teljesítmény hangolása
+# <a name="tune-azure-data-lake-storage-gen1-for-performance"></a>Azure Data Lake Storage Gen1 teljesítményének hangolása
 
-Az Azure Data Lake Storage Gen1 támogatja a nagy átviteli sebességű i/o nagy számításigényű analytics és az adatok áthelyezését.  A Data Lake Storage Gen1 használatával az összes elérhető átviteli sebesség – olvassa el, vagy másodpercenként írt adatok mennyisége – fontos, hogy a legjobb teljesítményt.  Ez tetszőleges számú olvasási elvégzésével érhető el, és írja a lehető párhuzamosan.
+A Data Lake Storage Gen1 nagy átviteli sebességet biztosít az I/O-intenzív elemzésekhez és az adatáthelyezéshez. Data Lake Storage Gen1 az összes rendelkezésre álló átviteli sebesség – a másodpercenként olvasható vagy írható adatok mennyisége – fontos a legjobb teljesítmény érdekében. Ez úgy érhető el, hogy a lehető legtöbb olvasási és írási műveletet végrehajtja.
 
 ![Data Lake Storage Gen1 teljesítmény](./media/data-lake-store-performance-tuning-guidance/throughput.png)
 
-Data Lake Storage Gen1 adja meg a szükséges átviteli összes analytics-forgatókönyv méretezheti. Alapértelmezés szerint egy Data Lake Storage Gen1 fiókot automatikusan elegendő átviteli sebességet biztosít, ha alkalmazási helyzetek széles körét. Olyan esetekben, ahol tapasztalja a vevők az alapértelmezett korlát a Data Lake Storage Gen1 fiók konfigurálható további átviteli sebességet biztosít a Microsoft támogatási szolgálatával.
+A Data Lake Storage Gen1 méretezheti, hogy az összes elemzési forgatókönyv esetében elérhető legyen a szükséges átviteli sebesség. Alapértelmezés szerint egy Data Lake Storage Gen1 fiók automatikusan elegendő átviteli sebességet biztosít, hogy megfeleljen a használati esetek széles kategóriájának. Azokban az esetekben, amikor az ügyfelek az alapértelmezett korláton futnak, a Data Lake Storage Gen1 fiók úgy konfigurálható, hogy a Microsoft támogatási szolgálatával további átviteli sebességet biztosítson.
 
 ## <a name="data-ingestion"></a>Adatfeldolgozás
 
-Ha a Data Lake Storage Gen1 a forrásrendszerben érkező adatok feldolgozása, fontos vegye figyelembe, hogy a forrás hardver, a forrás hálózati hardverek, valamint a hálózati kapcsolat a Data Lake Storage Gen1 lehet a szűk keresztmetszetet.  
+Amikor adatfeldolgozást végez egy forrásoldali rendszerből Data Lake Storage Gen1ba, fontos figyelembe venni, hogy a forrás hardver, a forrás hálózati hardver és a Data Lake Storage Gen1 hálózati kapcsolata a szűk keresztmetszet.
 
 ![Data Lake Storage Gen1 teljesítmény](./media/data-lake-store-performance-tuning-guidance/bottleneck.png)
 
-Fontos győződjön meg arról, hogy az adatok áthelyezése nincs hatással a tényezők.
+Fontos, hogy az adatok áthelyezését ne befolyásolja ezek a tényezők.
 
 ### <a name="source-hardware"></a>Forrás hardver
 
-Akár a helyszíni gépek és virtuális gépek az Azure-ban az, körültekintően jelölje ki a megfelelő hardvert. A forrás lemez hardverekhez SSD-k inkább HDD-k, és válassza ki a gyorsabb forgórészek lemez hardver. Forrás hálózati hardverek használja a leggyorsabb hálózati adapterek lehetséges.  Az Azure-ban javasoljuk, hogy Azure D14 virtuális gépek, amelyek megfelelő teljesítményű lemez és hálózatkezelési hardverek.
+Függetlenül attól, hogy helyszíni gépeket vagy virtuális gépeket használ az Azure-ban, gondosan válassza ki a megfelelő hardvert. A forrásoldali lemezes hardverek esetében inkább az SSD-ket használja a HDD-k számára, és gyorsabb orsókkal válassza a lemez hardverét. A forrásoldali hálózati hardverek esetében a lehető leggyorsabb hálózati adaptereket használhatja. Az Azure-ban olyan Azure D14 virtuális gépeket ajánlunk, amelyek megfelelő teljesítményű lemezzel és hálózati hardverrel rendelkeznek.
 
-### <a name="network-connectivity-to-data-lake-storage-gen1"></a>Hálózati kapcsolat és a Data Lake Storage Gen1
+### <a name="network-connectivity-to-data-lake-storage-gen1"></a>Data Lake Storage Gen1 hálózati kapcsolat
 
-A hálózati kapcsolat a forrásadatok és a Data Lake Storage Gen1 néha lehet a szűk keresztmetszetet. Ha a forrásadatokat a helyszínen, fontolja meg dedikált hivatkozást [Azure ExpressRoute](https://azure.microsoft.com/services/expressroute/) . Ha a forrásadatok az Azure-ban, a teljesítmény lesz ajánlott ugyanabban a régióban az Azure Data Lake Storage Gen1 fiókként az adatok esetén.
+A forrásadatok és a Data Lake Storage Gen1 közötti hálózati kapcsolat esetenként szűk keresztmetszetet jelenthet. Ha a forrásadatok helyszíniek, érdemes lehet dedikált hivatkozást használni az [Azure ExpressRoute](https://azure.microsoft.com/services/expressroute/) . Ha a forrásadatok az Azure-ban találhatók, akkor a teljesítmény akkor a legjobb, ha az adat ugyanabban az Azure-régióban található, mint a Data Lake Storage Gen1 fiók.
 
-### <a name="configure-data-ingestion-tools-for-maximum-parallelization"></a>Maximális párhuzamos feldolgozás adatbetöltés eszközök konfigurálása
+### <a name="configure-data-ingestion-tools-for-maximum-parallelization"></a>Adatfeldolgozási eszközök konfigurálása a maximális párhuzamos
 
-A forrás hardver foglalkoztak, és a hálózati kapcsolat szűk fenti, készen áll az adatfeldolgozási eszközök konfigurálásához. Az alábbi táblázat foglalja össze a legfontosabb számos népszerű adatfeldolgozási eszközök beállításainak és biztosít részletes teljesítmény-finomhangolási a cikkek a számukra.  Melyik eszközt használja a forgatókönyvben kapcsolatos további tudnivalókért keresse fel a [cikk](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-data-scenarios).
+Miután megoldotta a forrás hardver és a hálózati kapcsolat szűk keresztmetszeteit, készen áll a betöltési eszközök konfigurálására. A következő táblázat összefoglalja a számos népszerű betöltési eszköz főbb beállításait, és részletes teljesítmény-finomhangolási cikkeket biztosít számukra. Ha többet szeretne megtudni a forgatókönyvhöz használt eszközről, tekintse meg ezt a [cikket](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-data-scenarios).
 
-| Eszköz               | Beállítások     | További részletek                                                                 |
+| Eszköz          | Beállítások | További részletek                                                                 |
 |--------------------|------------------------------------------------------|------------------------------|
-| PowerShell       | PerFileThreadCount, ConcurrentFileCount |  [Hivatkozás](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-get-started-powershell) |
-| Az AdlCopy    | Az Azure Data Lake Analytics-egységek  |   [Hivatkozás](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-copy-data-azure-storage-blob#performance-considerations-for-using-adlcopy)         |
-| DistCp            | -m (mapper)   | [Hivatkozás](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-copy-data-wasb-distcp#performance-considerations-while-using-distcp)                             |
-| Azure Data Factory| parallelCopies    | [Hivatkozás](../data-factory/copy-activity-performance.md)                          |
-| Sqoop           | fs.azure.block.size, -m (mapper)    |   [Hivatkozás](https://blogs.msdn.microsoft.com/bigdatasupport/2015/02/17/sqoop-job-performance-tuning-in-hdinsight-hadoop/)        |
+| PowerShell       | PerFileThreadCount, ConcurrentFileCount | [Hivatkozás](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-get-started-powershell) |
+| AdlCopy    | Azure Data Lake Analytics egységek | [Hivatkozás](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-copy-data-azure-storage-blob#performance-considerations-for-using-adlcopy)         |
+| DistCp            | -m (Mapper) | [Hivatkozás](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-copy-data-wasb-distcp#performance-considerations-while-using-distcp)                             |
+| Azure Data Factory| parallelCopies | [Hivatkozás](../data-factory/copy-activity-performance.md)                          |
+| Sqoop           | FS. Azure. Block. size,-m (Mapper) | [Hivatkozás](https://blogs.msdn.microsoft.com/bigdatasupport/2015/02/17/sqoop-job-performance-tuning-in-hdinsight-hadoop/)        |
 
-## <a name="structure-your-data-set"></a>Az adatkészlet struktúra
+## <a name="structure-your-data-set"></a>Az adathalmaz szerkezete
 
-Data Lake Storage Gen1, a fájl mérete a tárolt adatok a fájlok és a gyökérmappa-szerkezetében hatással vannak a teljesítményre.  Az alábbi szakasz ismerteti az ajánlott eljárások a következő területeken.  
+Ha az adat tárolása Data Lake Storage Gen1 történik, a fájl mérete, a fájlok száma és a mappa szerkezete befolyásolja a teljesítményt. A következő szakasz az ezekben a területeken ajánlott eljárásokat ismerteti.
 
 ### <a name="file-size"></a>Fájlméret
 
-Például a HDInsight és az Azure Data Lake Analytics elemzési motor rendszerint egy fájl terhelést kell.  Ha az adatokat tetszőleges számú kis fájlokat tárolja, ez azonban negatív hatással a teljesítményre.  
+Az elemzési motorok (például a HDInsight és a Azure Data Lake Analytics) általában Egyfájlos terheléssel rendelkeznek. Ha az adatait sok kis fájlként tárolja, ez negatívan befolyásolhatja a teljesítményt.
 
-Az adatok általában szervezheti nagyobb méretű fájlok, a jobb teljesítmény érdekében.  Célravezető, mint 256 MB-os vagy nagyobb méretű fájlok adatkészletek rendszerezheti. Bizonyos esetekben, például képeket vagy bináris adatot nincs lehetőség azok párhuzamos feldolgozásához.  Ezekben az esetekben ajánlott, hogy az egyes fájlok a 2GB.
+Általánosságban megszervezheti az adatait nagyobb méretű fájlokba a jobb teljesítmény érdekében. Az adatkészletek az 256 MB vagy nagyobb méretű fájlokba rendezhetők. Bizonyos esetekben, például képekben és bináris adatszolgáltatásokban nem lehet őket párhuzamosan feldolgozni. Ezekben az esetekben javasoljuk, hogy az egyes fájlokat 2 GB alá tartsa.
 
-Egyes esetekben adatfolyamatok korlátozott a nyers adatokat, amelyek vonása a sok kis méretű fájl felett.  Azt javasoljuk, hogy egy "hogy" folyamatot, amely létrehozza az alárendelt alkalmazások használandó nagyobb fájlok.
+Időnként az adatfolyamatok korlátozott mértékben szabályozzák a sok kis fájlból álló nyers adatmennyiséget. Azt javasoljuk, hogy egy "főzési" folyamattal rendelkezzen, amely nagyobb fájlokat generál az alárendelt alkalmazásokhoz.
 
-### <a name="organizing-time-series-data-in-folders"></a>Idősorozat-adatok mappákba rendezése
+### <a name="organize-time-series-data-in-folders"></a>Idősorozat-adattárolás mappákban történő rendszerezése
 
-A Hive és a ADLA számítási feladatokhoz partíció törlési idősorozat-adatok segítségével néhány lekérdezést, olvassa el az adatokat, ami javítja a teljesítményt, csak egy részét.    
+A kaptár-és ADLA számítási feladataihoz az idősoros adatok partícióinak metszése segíthet néhány lekérdezésnek az adatok egy részhalmazát olvasni, ami javítja a teljesítményt.
 
-Idősorozat-adatokat, ezen folyamatok gyakran helyezze el a fájlok és mappák nagyon strukturált elnevezési fájljaikat. Alább egy nagyon gyakori példa látható adatok esetén, amelyek dátum szerint van strukturálva a következő:
+Azok a folyamatok, amelyek idősoros adatot töltenek be, gyakran a fájlok és mappák strukturált elnevezésével helyezik el a fájljaikat. A következő gyakori példa a dátum szerint strukturált adatokra mutat:
 
     \DataSet\YYYY\MM\DD\datafile_YYYY_MM_DD.tsv
 
-Figyelje meg, hogy a DateTime típusú adatokat egyaránt mappákat, és a fájlnév jelenik-e.
+Figyelje meg, hogy a DateTime információ a mappák és a fájlnév között is megjelenik.
 
-Dátum és idő, a következő egy gyakori minta
+A dátum és idő esetében az alábbi gyakori minta
 
     \DataSet\YYYY\MM\DD\HH\mm\datafile_YYYY_MM_DD_HH_mm.tsv
 
-Újra az Ön által meghozott döntés mappában, és a nagyobb méretűek, és minden egyes mappában lévő fájlok észszerű mennyiségű optimalizálja a szervezet fájlt.
+A mappa és a fájl szervezetének megválasztásakor a nagyobb fájlméretet és az egyes mappákban lévő fájlok ésszerű számú fájljának optimalizálását is érdemes megtenni.
 
-## <a name="optimizing-io-intensive-jobs-on-hadoop-and-spark-workloads-on-hdinsight"></a>A HDInsight Hadoop és Spark számítási feladatok nagy számításigényű feladatok i/o optimalizálása
+## <a name="optimize-io-intensive-jobs-on-hadoop-and-spark-workloads-on-hdinsight"></a>Nagy I/O-igényű feladatok optimalizálása a Hadoop-és Spark-munkaterheléseken a HDInsight
 
-Feladatok a következő három kategóriába sorolhatók:
+A feladatok a következő három kategóriába sorolhatók:
 
-* **CPU-igényes.**  Ezek a feladatok hosszú kiszámításához szükséges idő minimális i/o-rövidebb rendelkezik.  Ilyenek például a machine learning és természetes nyelvi feldolgozási feladatokat.  
-* **Memóriaigényes.**  Ezek a feladatok nagy mennyiségű memóriát használja.  Ilyenek például PageRank és valós idejű elemzési feladatokat.  
-* **I/o-igényes.**  Ezeket a feladatokat legtöbb idejüket i/o ezt töltenek.  Ilyenek például a csak olvasási és írási műveletek egy másolási feladat.  További példák lehetnek, olvassa el a nagy mennyiségű adatot, hajt végre bizonyos adatátalakítás és majd visszaírja az adatokat a tároló adatelőkészítési feladatok.  
+* **CPU-igényes.** Ezeknek a feladatoknak hosszú számítási ideje van a minimális I/O-időpontokban. Ilyenek például a gépi tanulás és a természetes nyelvi feldolgozási feladatok.
+* **Memória-igényes.** Ezek a feladatok sok memóriát használnak. Ilyenek például a PageRank és a valós idejű elemzési feladatok.
+* **Nagy I/O-igényű.** Ezek a feladatok a legtöbb időt töltik az I/O-műveletek során. Gyakori példa egy olyan másolási művelet, amely csak olvasási és írási műveleteket végez. A többi példa olyan adat-előkészítési feladatokat is tartalmaz, amelyek számos adatot olvasnak, elvégez némi adatátalakítást, majd visszaírja az adatot a tárolóba.
 
-Az alábbi útmutatót csak akkor érvényes, az i/o-igényes feladatok.
+Az alábbi útmutatás csak az I/O-igényes feladatokra vonatkozik.
 
-### <a name="general-considerations-for-an-hdinsight-cluster"></a>Egy HDInsight-fürtön az vonatkozó általános szempontok
+### <a name="general-considerations-for-an-hdinsight-cluster"></a>HDInsight-fürt általános szempontjai
 
-* **HDInsight-verziók.** A legjobb teljesítmény érdekében a HDInsight legújabb kiadását használja.
-* **Régiók.** Helyezze el a Data Lake Storage Gen1 fiók ugyanabban a régióban, mint a HDInsight-fürtöt.  
+* **HDInsight-verziók.** A legjobb teljesítmény érdekében használja a HDInsight legújabb kiadását.
+* **Régiók.** Helyezze a Data Lake Storage Gen1 fiókot a HDInsight-fürttel megegyező régióban.
 
-Egy HDInsight-fürt két fő csomópont és az egyes munkavégző csomópontokhoz tevődik össze. Egyes feldolgozó csomópontok biztosít bizonyos számú maggal és a memória, amely a virtuális gép típusa határozza meg.  Feladat futtatása YARN esetén a resource negotiator, foglalja le a rendelkezésre álló memória és magok tárolók létrehozásához.  A tárolók futtatja a feladatokat, a feladat végrehajtásához szükséges.  Tárolók gyors feldolgozására feladatok párhuzamosan futtathatók. Ezért a teljesítmény növelése a lehető tetszőleges számú párhuzamos tárolók futtatásával.
+An méretű HDInsight-fürt két fő csomópontból és néhány feldolgozói csomópontból áll. Minden munkavégző csomópont adott számú magot és memóriát biztosít, amelyet a virtuális gép típusa határoz meg. A feladatok futtatásakor a fonal a tárolók létrehozásához rendelkezésre álló memória és magok kiosztására szolgáló erőforrás-tárgyaló. Minden tároló futtatja a feladat végrehajtásához szükséges feladatokat. A tárolók párhuzamosan futnak a feladatok gyors feldolgozásához. Ezért a teljesítmény javítása a lehető legtöbb párhuzamos tároló futtatásával történik.
 
-Az alábbi három réteg egy HDInsight-fürtön, amelyek megfelelő hangolásával növeli a tárolók számát, és az összes elérhető átviteli sebesség belül.  
+Egy HDInsight-fürtben három réteg található, amelyek úgy állíthatók be, hogy növeljük a tárolók számát és az összes elérhető átviteli sebességet.
 
 * **Fizikai réteg**
-* **YARN-réteg**
-* **Munkaterhelés-réteg**
+* **FONAL réteg**
+* **Munkaterhelés réteg**
 
 ### <a name="physical-layer"></a>Fizikai réteg
 
-**Futtassa a fürt további csomópontokat és/vagy nagyobb méretű virtuális gépeket.**  Nagyobb fürt lehetővé teszi az alábbi képen látható módon további YARN-tárolók futtatásához.
+**Futtasson több csomóponttal és/vagy nagyobb méretű virtuális géppel rendelkező fürtöt.** Egy nagyobb fürt lehetővé teszi, hogy több FONALas tárolót futtasson az alábbi képen látható módon.
 
 ![Data Lake Storage Gen1 teljesítmény](./media/data-lake-store-performance-tuning-guidance/VM.png)
 
-**Virtuális gépek nagyobb hálózati sávszélességet használhat.**  Hálózati sávszélesség szűk keresztmetszetté lehet, ha a kevesebb, mint a Data Lake Storage Gen1 átviteli sebesség a sávszélesség.  Különböző virtuális gépek lesz a hálózati sávszélesség mérete változó.  Válasszon egy Virtuálisgép-típust, amely rendelkezik a legnagyobb lehetséges hálózati sávszélesség.
+**Használjon nagyobb hálózati sávszélességű virtuális gépeket.** A hálózati sávszélesség mennyisége szűk keresztmetszetet jelenthet, ha a Data Lake Storage Gen1 átviteli sebességnél kevesebb hálózati sávszélesség van. A különböző virtuális gépek eltérő hálózati sávszélességet fognak tartalmazni. Válasszon olyan virtuálisgép-típust, amely a legnagyobb lehetséges hálózati sávszélességgel rendelkezik.
 
-### <a name="yarn-layer"></a>YARN-réteg
+### <a name="yarn-layer"></a>FONAL réteg
 
-**Kisebb a YARN-tárolók használata.**  Az egyes YARN-tárolók további tárolók létrehozásához az erőforrások ugyanannyi méretének csökkentésére.
+**Használjon kisebb FONALas tárolókat.** Csökkentse az egyes FONALak tárolóinak méretét, hogy több tárolót hozzon létre azonos mennyiségű erőforrással.
 
 ![Data Lake Storage Gen1 teljesítmény](./media/data-lake-store-performance-tuning-guidance/small-containers.png)
 
-Attól függően, a számítási feladatok mindig lesz egy minimális YARN tárolóméret szükséges. Ha túl kicsi tároló kiválasztása, a feladatok memóriahiány problémákat fog futni. YARN-tárolók általában nem a 1GB-nál kisebbnek kell lennie. Szokás 3 GB-os YARN-tárolók megtekintéséhez. Bizonyos munkaterhelések esetén szükség lehet a nagyobb YARN-tárolók.  
+A számítási feladattól függően mindig szükség van egy minimálisan szükséges szál-tároló méretre. Ha túl kis tárolót választ, a feladatok memórián kívüli problémákba fognak futni. Általában a FONALas tárolók nem lehetnek 1 GB-nál kisebbek. Ez általában a 3 GB-os FONALas tárolók esetében látható. Bizonyos munkaterhelések esetén nagyobb méretű FONALas tárolók szükségesek.
 
-**Növelje a magok száma a YARN-tároló.**  Az egyes tárolókban futó párhuzamos feladatok számának növelése érdekében egyes tárolók számára lefoglalt magok számának növelése.  Ez a módszer az alkalmazások, mint a Spark, tárolónként több feladatok futtatásához, amelyek.  Az alkalmazásokra, például a Hive egyetlen szálon futó minden egyes tárolóban célszerűbb tárolónként több maggal helyett több tároló van.
+**Növelje a magok számát a szálak tárolóján.** Növelje az egyes tárolók számára lefoglalt magok számát, hogy növelje az egyes tárolókban futó párhuzamos feladatok számát. Ez olyan alkalmazások esetében működik, mint a Spark, amelyek tárolón több feladatot futtatnak. Az olyan alkalmazások esetében, mint például a kaptár, amely minden tárolóban egyetlen szálat futtat, jobb, ha több tárolót szeretne, és nem több magot.
 
-### <a name="workload-layer"></a>Munkaterhelés-réteg
+### <a name="workload-layer"></a>Munkaterhelés réteg
 
-**Az összes elérhető tárolót használja.**  Egyenlő vagy nagyobb, mint a rendelkezésre álló tárolók száma is, hogy az összes erőforrás felhasználtuk feladatok számának megadása.
+**Az összes rendelkezésre álló tároló használata.** Állítsa be, hogy a tevékenységek száma egyenlő vagy nagyobb legyen, mint a rendelkezésre álló tárolók száma, hogy az összes erőforrás használatban legyen.
 
 ![Data Lake Storage Gen1 teljesítmény](./media/data-lake-store-performance-tuning-guidance/use-containers.png)
 
-**A sikertelen feladatok olyan költséges.** Ha egyes feladatok nagy mennyiségű adat feldolgozása, feladat sikertelenségét az olyan költséges újrapróbálkozási eredményez.  Ezért érdemes további tevékenységeket, amelyek mindegyike egy kisebb mennyiségű adatot folyamatok létrehozásához.
+**A sikertelen feladatok költségesek.** Ha az egyes feladatok nagy mennyiségű adattal dolgoznak fel, akkor a feladat meghibásodása költséges újrapróbálkozást eredményez. Ezért érdemes több feladatot létrehozni, amelyek mindegyike kis mennyiségű adat feldolgozását dolgozza fel.
 
-Minden alkalmazás a fenti általános irányelveket, most finomhangolása az adott alkalmazás számára elérhető különböző paramétereket. Az alábbi táblázat felsorolja az egyes paraméterek és teljesítmény-finomhangolási az egyes alkalmazások – első lépések mutató hivatkozásokat.
+A fenti általános irányelvek mellett minden alkalmazás különböző paraméterekkel rendelkezik az adott alkalmazás finomhangolásához. Az alábbi táblázat néhány paramétert és hivatkozást tartalmaz, amelyekkel megkezdheti az egyes alkalmazások teljesítményének finomhangolását.
 
-| Számítási feladat               | Paraméter segítségével állítsa be a feladatok                                                         |
+| Számítási feladat               | A feladatok beállítására szolgáló paraméter                                                         |
 |--------------------|-------------------------------------------------------------------------------------|
-| [A Spark on HDInsight](data-lake-store-performance-tuning-spark.md)       | <ul><li>Num-executors</li><li>Végrehajtó – memória</li><li>Végrehajtó virtuális mag</li></ul> |
-| [A HDInsight Hive](data-lake-store-performance-tuning-hive.md)    | <ul><li>hive.tez.container.size</li></ul>         |
-| [MapReduce on HDInsight](data-lake-store-performance-tuning-mapreduce.md)            | <ul><li>Mapreduce.map.memory</li><li>Mapreduce.job.Maps</li><li>Mapreduce.reduce.Memory</li><li>Mapreduce.job.reduces</li></ul> |
-| [HDInsight alatt futó stormmal](data-lake-store-performance-tuning-storm.md)| <ul><li>Munkavégző folyamatok száma</li><li>Spout végrehajtó példányok száma</li><li>Bolt végrehajtó példányok száma </li><li>Spout feladatok száma</li><li>Bolt feladatok száma</li></ul>|
+| [Spark on HDInsight](data-lake-store-performance-tuning-spark.md)  | <ul><li>NUM-végrehajtók</li><li>Végrehajtó – memória</li><li>Végrehajtó – magok</li></ul> |
+| [Struktúra a HDInsight](data-lake-store-performance-tuning-hive.md)    | <ul><li>kaptár. TEZ. Container. size</li></ul>         |
+| [MapReduce a HDInsight](data-lake-store-performance-tuning-mapreduce.md)            | <ul><li>MapReduce. map. Memory</li><li>MapReduce. job. Maps</li><li>MapReduce. csökkentse a memóriát</li><li>MapReduce. job. csökkenti</li></ul> |
+| [Storm on HDInsight](data-lake-store-performance-tuning-storm.md)| <ul><li>Munkavégző folyamatok száma</li><li>Kiöntő végrehajtó példányainak száma</li><li>A bolt végrehajtó példányainak száma </li><li>Kiöntő feladatok száma</li><li>Bolti feladatok száma</li></ul>|
 
 ## <a name="see-also"></a>Lásd még
-* [Az Azure Data Lake Storage Gen1 áttekintése](data-lake-store-overview.md)
+
+* [A Azure Data Lake Storage Gen1 áttekintése](data-lake-store-overview.md)
 * [Ismerkedés az Azure Data Lake Analytics szolgáltatással](../data-lake-analytics/data-lake-analytics-get-started-portal.md)

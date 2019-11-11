@@ -9,33 +9,33 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 10/25/2019
+ms.date: 11/08/2019
 ms.author: diberry
-ms.openlocfilehash: 227efcdbcb7d8e776dd77b38c5d1dedd54d71b6b
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: d3f8696388a33a8ea112aae438c6bbe9af520c61
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73500315"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73904271"
 ---
 # <a name="create-a-new-luis-app-in-the-luis-portal"></a>Új LUIS-alkalmazás létrehozása a LUIS portálon
-A LUIS-alkalmazások többféleképpen is létrehozhatók. Luis-alkalmazást a [Luis](https://www.luis.ai) -portálon vagy a Luis authoring [API](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c2f)-kon keresztül hozhat létre.
+A LUIS-alkalmazások többféleképpen is létrehozhatók. Luis-alkalmazást a LUIS-portálon vagy a LUIS authoring [API](developer-reference-resource.md)-kon keresztül hozhat létre.
 
-[!INCLUDE [Waiting for LUIS portal refresh](./includes/wait-v3-upgrade.md)]
+[!INCLUDE [Uses preview portal](includes/uses-portal-preview.md)]
 
 ## <a name="using-the-luis-portal"></a>A LUIS-portál használata
 
-A LUIS-portálon többféleképpen is létrehozhat egy új alkalmazást:
+A betekintő portálon többféleképpen is létrehozhat egy új alkalmazást:
 
 * Kezdjen egy üres alkalmazással, és hozzon létre leképezéseket, hosszúságú kimondott szöveg és entitásokat.
 * Kezdjen egy üres alkalmazással, és adjon hozzá egy [előre elkészített tartományt](luis-how-to-use-prebuilt-domains.md).
-* Importáljon egy LUIS-alkalmazást egy olyan JSON-fájlból, amely már tartalmaz szándékokat, hosszúságú kimondott szöveg és entitásokat.
+* Egy LUIS-alkalmazás importálása `.lu` vagy `.json` fájlból, amely már tartalmaz szándékokat, hosszúságú kimondott szöveg és entitásokat.
 
 ## <a name="using-the-authoring-apis"></a>A szerzői API-k használata
 Több módon is létrehozhat egy új alkalmazást a szerzői API-kkal:
 
-* [Kezdjen](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c2f) egy üres alkalmazással, és hozzon létre leképezéseket, hosszúságú kimondott szöveg és entitásokat.
-* [Kezdje](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/59104e515aca2f0b48c76be5) egy előre elkészített tartománnyal.  
+* [Alkalmazás hozzáadása](https://westeurope.dev.cognitive.microsoft.com/docs/services/luis-programmatic-apis-v3-0-preview/operations/5890b47c39e2bb052c5b9c2f) – kezdje üres alkalmazással, és hozzon létre leképezéseket, hosszúságú kimondott szöveg és entitásokat.
+* Előre elkészített [alkalmazás hozzáadása](https://westeurope.dev.cognitive.microsoft.com/docs/services/luis-programmatic-apis-v3-0-preview/operations/59104e515aca2f0b48c76be5) – kezdés egy előre elkészített tartománnyal, beleértve a szándékokat, a hosszúságú kimondott szöveg és az entitásokat.  
 
 
 <a name="export-app"></a>
@@ -47,51 +47,36 @@ Több módon is létrehozhat egy új alkalmazást a szerzői API-kkal:
 
 ## <a name="create-new-app-in-luis"></a>Új alkalmazás létrehozása a LUIS-ban
 
-1. A **saját alkalmazások** oldalon válassza a **+ Létrehozás**elemet.
+1. A **saját alkalmazások** oldalon válassza ki az előfizetését, és **hozzon létre**egy erőforrást, majd a + létrehozás elemet. Ha ingyenes próbaverziós kulcsot használ, Ismerje meg, hogyan [hozhat létre authoring-erőforrásokat](luis-how-to-azure-subscription.md#create-resources-in-the-azure-portal).
 
-    ![LUIS-alkalmazások listája](./media/luis-create-new-app/apps-list.png)
+    ![LUIS-alkalmazások listája](./media/create-app-in-portal.png)
 
 
-2. A párbeszédpanelen nevezze el az alkalmazást "TravelAgent" néven.
+1. A párbeszédpanelen adja meg az alkalmazás nevét, például `Pizza Tutorial`.
 
-    ![Új alkalmazás létrehozása párbeszédpanel](./media/luis-create-new-app/create-app.png)
+    ![Új alkalmazás létrehozása párbeszédpanel](./media/create-pizza-tutorial-app-in-portal.png)
 
-3. Válassza ki az alkalmazás kulturális környezetét (a TravelAgent alkalmazáshoz válassza az angol nyelvet), majd kattintson a **kész**gombra. 
+1. Válassza ki az alkalmazás kulturális környezetét, majd válassza a **kész**lehetőséget. A leírás és az előrejelzési erőforrás ezen a ponton nem kötelező. Ezt követően bármikor megadhatja a portál **kezelés** szakaszában.
 
     > [!NOTE]
     > A kulturális környezet az alkalmazás létrehozása után nem módosítható. 
 
-## <a name="import-an-app-from-file"></a>Alkalmazás importálása fájlból
+    Az alkalmazás létrehozása után a LUIS-portál megjeleníti a **leképezések** listáját a már létrehozott `None` szándékkal. Most már van egy üres alkalmazás. 
+    
+    > [!div class="mx-imgBorder"]
+    > ![leképezések listája, amely nem hoz létre példa nélküli hosszúságú kimondott szöveg.](media/pizza-tutorial-new-app-empty-intent-list.png)
 
-1. **Az alkalmazások** lapon válassza az **új alkalmazás importálása**lehetőséget.
-1. Az előugró párbeszédpanelen válasszon ki egy érvényes JSON-fájlt, majd válassza a **kész**lehetőséget.
+## <a name="other-actions-available"></a>Egyéb elérhető műveletek
 
-### <a name="import-errors"></a>Importálási hibák
+A környezeti eszköztár más műveleteket is tartalmaz:
 
-Lehetséges hibák: 
+* Alkalmazás átnevezése
+* Importálás fájlból `.lu` vagy `.json` használatával
+* Alkalmazás exportálása `.lu`ként ( [LUDown](https://github.com/microsoft/botbuilder-tools/tree/master/packages/Ludown)), `.json`vagy `.zip` ( [Luis-tároló](luis-container-howto.md)esetén)
+* Tároló-végponti naplók importálása az Endpoint hosszúságú kimondott szöveg áttekintéséhez
+* Végponti naplók exportálása `.csv`kapcsolat nélküli elemzéshez
+* Alkalmazás törlése
 
-* Már létezik ilyen nevű alkalmazás. A probléma megoldásához importálja újra az alkalmazást, és adja meg a **választható nevet** egy új névre. 
+## <a name="next-steps"></a>Következő lépések
 
-## <a name="export-app-for-backup"></a>Alkalmazás exportálása biztonsági mentésre
-
-1. **Az alkalmazások** lapon válassza az **Exportálás**lehetőséget.
-1. Válassza **az EXPORTÁLÁS JSON-ként**lehetőséget. A böngésző letölti az alkalmazás aktív verzióját.
-1. Adja hozzá ezt a fájlt a biztonsági mentési rendszeren a modell archiválásához.
-
-## <a name="export-app-for-containers"></a>Alkalmazás exportálása tárolók számára
-
-1. **Az alkalmazások** lapon válassza az **Exportálás**lehetőséget.
-1. Válassza az **Exportálás tárolóként** lehetőséget, majd válassza ki, hogy melyik közzétett tárolóhelyet (éles vagy fázis) szeretné exportálni.
-1. Ezt a fájlt a [Luis-tárolóval](luis-container-howto.md)használhatja. 
-
-    Ha olyan betanított, de még nem közzétett modellt szeretne exportálni a LUIS-tárolóval való használatra, nyissa meg a **verziók** lapot, és onnan exportálja. 
-
-## <a name="delete-app"></a>Alkalmazás törlése
-
-1. A **saját alkalmazások** oldalon válassza az alkalmazás sor végén található három pontot (...).
-1. A menüből válassza a **Törlés** lehetőséget.
-1. A megerősítő ablakban kattintson az **OK gombra** .
-
-## <a name="next-steps"></a>További lépések
-
-Az alkalmazás első feladata a [leképezések hozzáadása](luis-how-to-add-intents.md).
+Ha az alkalmazás kialakítása magában foglalja a szándék észlelését, [hozzon létre új leképezéseket](luis-how-to-add-intents.md), és adja hozzá például a hosszúságú kimondott szöveg. Ha az alkalmazás kialakítása csak az kibontást tartalmazza, adjon hozzá például hosszúságú kimondott szöveg a none szándékhoz, majd [hozzon létre entitásokat](luis-how-to-add-example-utterances.md), és címkézze fel a példát a hosszúságú kimondott szöveg. 

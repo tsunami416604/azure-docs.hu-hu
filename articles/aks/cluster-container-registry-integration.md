@@ -8,12 +8,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 09/17/2018
 ms.author: mlearned
-ms.openlocfilehash: bbd08e49256886a1df334cbf36e6e468bb8f3895
-ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
+ms.openlocfilehash: ba52cac4ebe923b7217550ed90948d908d8daf7f
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72286781"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73900669"
 ---
 # <a name="authenticate-with-azure-container-registry-from-azure-kubernetes-service"></a>Hitelesítés Azure Container Registry az Azure Kubernetes szolgáltatással
 
@@ -21,7 +21,7 @@ Ha Azure Container Registryt (ACR) használ az Azure Kubernetes szolgáltatássa
 
 Beállíthatja az AK-t az ACR-integrációra néhány egyszerű parancsban az Azure CLI-vel.
 
-## <a name="before-you-begin"></a>Előzetes teendők
+## <a name="before-you-begin"></a>Előkészületek
 
 A példákhoz a következők szükségesek:
 
@@ -30,7 +30,7 @@ A példákhoz a következők szükségesek:
 
 ## <a name="create-a-new-aks-cluster-with-acr-integration"></a>Új AK-fürt létrehozása ACR-integrációval
 
-Itt állíthatja be az AK-t és az ACR-integrációt az AK-fürt kezdeti létrehozása során.  Annak engedélyezéséhez, hogy egy AK-fürt együttműködjön az ACR-szel, egy Azure Active Directory **egyszerű szolgáltatásnevet** használ. A következő CLI-parancs lehetővé teszi egy meglévő ACR engedélyezését az előfizetésében, és konfigurálja az egyszerű szolgáltatásnév megfelelő **ACRPull** -szerepkörét. Adja meg az alábbi paraméterek érvényes értékeit.  A szögletes zárójelek paraméterei nem kötelezőek.
+Itt állíthatja be az AK-t és az ACR-integrációt az AK-fürt kezdeti létrehozása során.  Annak engedélyezéséhez, hogy egy AK-fürt együttműködjön az ACR-szel, egy Azure Active Directory **egyszerű szolgáltatásnevet** használ. A következő CLI-parancs lehetővé teszi egy meglévő ACR engedélyezését az előfizetésében, és konfigurálja az egyszerű szolgáltatásnév megfelelő **ACRPull** -szerepkörét. Adja meg az alábbi paraméterek érvényes értékeit. 
 ```azurecli
 # set this to the name of your Azure Container Registry.  It must be globally unique
 MYACR=myContainerRegistry
@@ -39,15 +39,15 @@ MYACR=myContainerRegistry
 az acr create -n $MYACR -g myContainerRegistryResourceGroup --sku basic
 
 # Create an AKS cluster with ACR integration
-az aks create -n myAKSCluster -g myResourceGroup --attach-acr $MYACR
+az aks create -n myAKSCluster -g myResourceGroup --generate-ssh-keys --attach-acr $MYACR
 
 ```
 Alternatív megoldásként megadhatja az ACR nevét egy ACR erőforrás-AZONOSÍTÓval, amelynek formátuma a következő:
 
-/Subscriptions/\<subscription-ID @ no__t-1/resourceGroups/\<resource-Group-Name @ no__t-3/Providers/Microsoft. ContainerRegistry/nyilvántartós/\<name @ no__t-5 
+/Subscriptions/\<előfizetés-azonosító\>/resourceGroups/\<erőforrás-csoport neve\>/providers/Microsoft.ContainerRegistry/registries/\<neve\> 
  
 ```azurecli
-az aks create -n myAKSCluster -g myResourceGroup --attach-acr /subscriptions/<subscription-id>/resourceGroups/myContainerRegistryResourceGroup/providers/Microsoft.ContainerRegistry/registries/myContainerRegistry
+az aks create -n myAKSCluster -g myResourceGroup --generate-ssh-keys --attach-acr /subscriptions/<subscription-id>/resourceGroups/myContainerRegistryResourceGroup/providers/Microsoft.ContainerRegistry/registries/myContainerRegistry
 ```
 
 Ez a lépés több percet is igénybe vehet.

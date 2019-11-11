@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 11/07/2019
 ms.author: sedusch
-ms.openlocfilehash: 13f751b472b3443ba50be5d54ab08e015d1a8f5a
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: a618a2cb976c90174125e54af645123c6b0a9dcd
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73824890"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73905036"
 ---
 # <a name="azure-virtual-machines-high-availability-for-sap-netweaver-on-red-hat-enterprise-linux"></a>Az Azure Virtual Machines magas rendelkezésre állása az SAP NetWeaver-on Red Hat Enterprise Linux
 
@@ -117,7 +117,7 @@ Az SAP NetWeaver ASCS, az SAP NetWeaver SCS, az SAP NetWeaver ERS és a SAP HANA
 * Mintavételi port
   * 621-es port<strong>&lt;nr&gt;</strong>
 * Terheléselosztási szabályok
-  * Standard Load Balancer használata esetén válassza a * * HA portok * * elemet
+  * Ha standard Load Balancer használ, válassza a **hektár portok** elemet.
   * Ha alapszintű Load Balancer használ, hozzon létre terheléselosztási szabályokat a következő portokhoz
     * 32<strong>&lt;nr&gt;</strong> TCP
     * 33<strong>&lt;nr&gt;</strong> TCP
@@ -250,9 +250,8 @@ Először létre kell hoznia a fürthöz tartozó virtuális gépeket. Ezt köve
       1. További portok a ASCS-ESEK számára
          * Ismételje meg a fenti lépéseket a 33**02**, 5**02**13, 5**02**14, 5**02**16 és TCP ASCS-eseknél.
 
-> [!TIP]
-> Ha a nyilvános IP-címek nélküli virtuális gépek a belső standard Load Balancer háttér-készletében vannak elhelyezve, a virtuális gépek nem rendelkeznek kimenő internetkapcsolattal, hacsak nem végeznek további konfigurálást.  
-> Ha a forgatókönyvben a nyilvános végpontok felé irányuló kimenő kapcsolatok szükségesek, tekintse meg a [nyilvános végponti kapcsolat Virtual Machines az Azure standard Load Balancer az SAP magas rendelkezésre állású forgatókönyvekben](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-standard-load-balancer-outbound-connections)című témakört, amely tippeket és szempontokat biztosít a kimenő forgalom elérés nyilvános végpontokhoz való kapcsolódás.
+> [!Note]
+> Ha a nyilvános IP-címek nélküli virtuális gépek a belső (nincs nyilvános IP-cím) standard Azure Load Balancer háttér-készletbe kerülnek, nem lesz kimenő internetkapcsolat, kivéve, ha további konfigurálást végeznek a nyilvános végpontok útválasztásának engedélyezéséhez. A kimenő kapcsolatok elérésével kapcsolatos részletekért lásd: [nyilvános végpontú kapcsolat Virtual Machines az Azure standard Load Balancer használata az SAP magas rendelkezésre állási helyzetekben](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-standard-load-balancer-outbound-connections).  
 
 > [!IMPORTANT]
 > Ne engedélyezze a TCP-időbélyegeket a Azure Load Balancer mögött elhelyezett Azure-beli virtuális gépeken. A TCP-időbélyegek engedélyezése az állapot-mintavételek meghibásodását eredményezi. Állítsa a **net. IPv4. tcp_timestamps** paramétert **0-ra**. Részletekért lásd: [Load Balancer Health](https://docs.microsoft.com/azure/load-balancer/load-balancer-custom-probe-overview)-tesztek.
@@ -1042,7 +1041,7 @@ Az SAP-alkalmazáskiszolgáló telepítéséhez kövesse az alábbi lépéseket.
         rsc_sap_NW1_ERS02  (ocf::heartbeat:SAPInstance):   Started nw1-cl-1
    </code></pre>
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Azure Virtual Machines az SAP tervezéséhez és megvalósításához][planning-guide]
 * [Azure Virtual Machines üzembe helyezés az SAP-ban][deployment-guide]

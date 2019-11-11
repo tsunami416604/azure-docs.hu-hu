@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/10/2019
-ms.openlocfilehash: a1c3bec4b32a9d3450e307f42958bb19263c3d7a
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: ddd631b809d4a0635107069f48281db4c0a2e7e0
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73717157"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73837559"
 ---
 # <a name="permutation-feature-importance"></a>A permutáció funkció fontossága
 
@@ -24,7 +24,7 @@ Ebben a modulban a szolgáltatások értékeit véletlenszerűen rendezi a rends
 
 A modul által visszaadott pontszám a betanított modell teljesítményének *változását* szemlélteti a permutáció után. A fontos funkciók általában érzékenyebbek a csoszogó folyamatra, így magasabb jelentőségű pontszámokat eredményeznek. 
 
-Ez a cikk áttekintést nyújt a permutációs szolgáltatásról, annak elméleti alapjairól és alkalmazásairól a Machine learningben: [permutáció funkció fontossága](http://blogs.technet.com/b/machinelearning/archive/2015/04/14/permutation-feature-importance.aspx).  
+Ez a cikk áttekintést nyújt a permutációs szolgáltatásról, annak elméleti alapjairól és alkalmazásairól a Machine learningben: [permutáció funkció fontossága](https://blogs.technet.com/b/machinelearning/archive/2015/04/14/permutation-feature-importance.aspx).  
 
 ## <a name="how-to-use-permutation-feature-importance"></a>A permutáció szolgáltatás fontosságának használata
 

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2d80ac949dea3c9d6c3d28d2a343c4ed7bad8983
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 22e3131a204589a506b2d5f1e2508c37ad3b4100
+ms.sourcegitcommit: 16c5374d7bcb086e417802b72d9383f8e65b24a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73474324"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73847210"
 ---
 # <a name="planning-a-cloud-based-azure-multi-factor-authentication-deployment"></a>Felhőalapú Azure-beli Multi-Factor Authentication üzembe helyezés tervezése
 
@@ -209,6 +209,9 @@ function Set-MfaState {
 Get-MsolUser -All | Set-MfaState -State Disabled
 ```
 
+> [!NOTE]
+> Nemrég módosítottuk a viselkedést és a PowerShell-szkriptet a fentieknek megfelelően. Korábban a parancsfájl mentve az MFA-metódusokból, letiltotta az MFA-t, és visszaállította a metódusokat. Ez már nem szükséges ahhoz, hogy a Letiltás alapértelmezett viselkedése ne törölje a metódusokat.
+
 ## <a name="plan-conditional-access-policies"></a>Feltételes hozzáférési szabályzatok tervezése
 
 A feltételes hozzáférési házirend stratégiájának megtervezéséhez, amely meghatározza, hogy mikor szükséges az MFA és más vezérlők használata, tekintse meg a [Mi a feltételes hozzáférés a Azure Active Directory?](../conditional-access/overview.md)című témakört.
@@ -274,7 +277,7 @@ Ha a hálózati házirend-kiszolgáló példánya már telepítve van, és már 
 
 Válassza ki, hogy mi történjen, ha az MFA-ban nem regisztrált felhasználók hitelesítése történik meg. A szolgáltatás működésének vezérléséhez használja a beállításjegyzékbeli elérési út `HKLM\Software\Microsoft\AzureMFA` beállításjegyzék-beállítás `REQUIRE_USER_MATCH`. Ez a beállítás egyetlen konfigurációs lehetőséggel rendelkezik.
 
-| Jelmagyarázat | Érték | Alapértelmezett |
+| Jelmagyarázat | Value (Díj) | Alapértelmezett |
 | --- | --- | --- |
 | `REQUIRE_USER_MATCH` | IGAZ/HAMIS | Nincs beállítva (megegyezik az igaz értékkel) |
 

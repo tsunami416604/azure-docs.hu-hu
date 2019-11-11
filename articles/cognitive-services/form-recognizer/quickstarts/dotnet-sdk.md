@@ -1,6 +1,6 @@
 ---
 title: 'Gyors útmutató: űrlap-felismerő ügyféloldali kódtára a .NET-hez | Microsoft Docs'
-description: Ismerkedés a .NET-hez készült űrlap-felismerő ügyféloldali kódtáraval.
+description: Ismerkedjen meg a .NET-hez készült űrlap-felismerő ügyféloldali kódtáraval a strukturált adatkimenet betanításához, kinyeréséhez, elemzéséhez és lekéréséhez.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: quickstart
 ms.date: 07/12/2019
 ms.author: pafarley
-ms.openlocfilehash: e4e65f38f71b458c34a6747c434ebcd1d8a1b350
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 6d360939a0196d7e5dc651ecf9a01ef5cbd2f689
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72931574"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73904601"
 ---
 # <a name="quickstart-form-recognizer-client-library-for-net"></a>Gyors útmutató: űrlap-felismerő ügyféloldali kódtára a .NET-hez
 
@@ -47,7 +47,7 @@ A próbaverziós előfizetésből vagy erőforrásból származó kulcs lekéré
 
 ### <a name="create-a-new-c-application"></a>Új C# alkalmazás létrehozása
 
-A konzol ablakban (például cmd, PowerShell vagy bash) a `dotnet new` paranccsal hozzon létre egy új, `formrecognizer-quickstart` nevű Console-alkalmazást. Ez a parancs egy egyszerű ""Helló világ!"alkalmazás" C# projektet hoz létre egyetlen forrásfájlban: _program.cs_. 
+Egy konzolablak (például cmd, PowerShell vagy bash) használatával hozzon létre egy új, `formrecognizer-quickstart`nevű Console-alkalmazást a `dotnet new` paranccsal. Ez a parancs egy egyszerű ""Helló világ!"alkalmazás" C# projektet hoz létre egyetlen forrásfájlban: _program.cs_. 
 
 ```console
 dotnet new console -n formrecognizer-quickstart
@@ -91,7 +91,7 @@ Ha a Visual Studio IDE-t használja, az ügyféloldali kódtár letölthető NuG
 
 A következő osztályok az űrlap-felismerő SDK fő funkcióit kezelik.
 
-|Név|Leírás|
+|Name (Név)|Leírás|
 |---|---|
 |[FormRecognizerClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.formrecognizer.formrecognizerclient?view=azure-dotnet-preview)|Ez az osztály minden űrlap-felismerő funkció esetében szükséges. Ezt az előfizetési adatok alapján hozza létre, és más osztályok példányainak előállítására használja.|
 |[TrainRequest](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.formrecognizer.models.trainrequest?view=azure-dotnet-preview)| Ezt az osztályt használja az egyéni űrlap-felismerő modell betanítására saját betanítási adatok használatával. |
@@ -127,7 +127,7 @@ A módszerek meghatározása előtt adja hozzá a következő változó definíc
 
 ## <a name="authenticate-the-client"></a>Az ügyfél hitelesítése
 
-A `Main` metódus alatt adja meg a `Main`-ben hivatkozott feladatot. Itt a fentiekben megadott előfizetési változók használatával hitelesítheti az ügyféloldali objektumot. A többi módszert később is megadhatja.
+A `Main` metódus alatt adja meg a `Main`hivatkozott feladatot. Itt a fentiekben megadott előfizetési változók használatával hitelesítheti az ügyféloldali objektumot. A többi módszert később is megadhatja.
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/Program.cs?name=snippet_maintask)]
 
@@ -184,7 +184,7 @@ dotnet run
 
 Ha Cognitive Services-előfizetést szeretne törölni, törölheti az erőforrást vagy az erőforráscsoportot. Az erőforráscsoport törlésével a hozzá társított egyéb erőforrások is törlődnek.
 
-* [Portal](../../cognitive-services-apis-create-account.md#clean-up-resources)
+* [Portál](../../cognitive-services-apis-create-account.md#clean-up-resources)
 * [Azure CLI](../../cognitive-services-apis-create-account-cli.md#clean-up-resources)
 
 Ha a fiókból törölni kívánt egyéni modellt is betanított, futtassa a metódust az [Egyéni modell törlése](#delete-a-custom-model)lehetőséggel.

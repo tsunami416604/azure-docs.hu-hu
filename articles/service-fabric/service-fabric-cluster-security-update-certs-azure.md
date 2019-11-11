@@ -14,17 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/13/2018
 ms.author: atsenthi
-ms.openlocfilehash: 9c14afb22d95493deaf3552cb8c7392c3fc5a679
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: a993c71e362a61b6861e001dfb5d6eca24873293
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72934018"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73903274"
 ---
 # <a name="add-or-remove-certificates-for-a-service-fabric-cluster-in-azure"></a>Service Fabric-fürthöz tartozó tanúsítványok hozzáadása vagy eltávolítása az Azure-ban
 Javasoljuk, hogy ismerkedjen meg a Service Fabric X. 509 tanúsítványokkal, és Ismerje meg a [fürt biztonsági forgatókönyveit](service-fabric-cluster-security.md). A folytatás előtt meg kell ismernie, hogy mi a fürt tanúsítványa, és mire használható.
 
-Az Azure Service Fabric SDK alapértelmezett tanúsítvány-betöltési viselkedése egy meghatározott tanúsítvány üzembe helyezése és használata a jövőben lejáró lejárati dátummal; az elsődleges vagy másodlagos konfigurációs definíciótól függetlenül. A klasszikus működésre való visszatérés nem ajánlott speciális művelet, és a "UseSecondaryIfNewer" paraméter értékét a Hálón belüli hamis értékre kell állítani.
+Az Azure Service Fabric SDK alapértelmezett tanúsítvány-betöltési viselkedése a következő lejárati dátummal rendelkező meghatározott tanúsítvány üzembe helyezése és használata. az elsődleges vagy másodlagos konfigurációs definíciótól függetlenül. A klasszikus viselkedésre való visszatérés egy nem ajánlott speciális művelet, és a "UseSecondaryIfNewer" paraméter értékét false értékre kell állítani a `Fabric.Code` konfigurációjában.
 
 A Service Fabric lehetővé teszi két fürtcsomópont, egy elsődleges és egy másodlagos beállítás megadását, ha a fürt létrehozása során konfigurálja a tanúsítvány biztonságát, az Ügyféltanúsítványok mellett. Tekintse át az [Azure-fürtök portálon keresztüli létrehozását](service-fabric-cluster-creation-via-portal.md) , vagy hozzon létre [egy Azure-fürtöt Azure Resource Manager segítségével](service-fabric-cluster-creation-via-arm.md) a létrehozási idő beállításával kapcsolatos részletekért. Ha csak egy fürtöt ad meg a létrehozás ideje alatt, akkor az elsődleges tanúsítványként lesz használva. A fürt létrehozása után hozzáadhat egy új tanúsítványt másodlagosként.
 
@@ -178,7 +178,7 @@ Az egyszerűség kedvéért a következő minta 5-VM-1-NodeTypes-Secure_Step2. J
 > 
 
 ### <a name="edit-your-template-file-to-reflect-the-new-parameters-you-added-above"></a>Szerkessze a sablon fájlját, hogy tükrözze a fent hozzáadott új paramétereket
-Ha a [git-](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/Cert-Rollover-Sample) tárházban található mintát használja a követéshez, megkezdheti a változtatásokat a 5., VM-1-NodeTypes-Secure. PARAMETERS_STEP2. JSON fájlban. 
+Ha a [git-](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/Cert-Rollover-Sample) tárházban található mintát használja a követéshez, megkezdheti a változtatásokat a 5. NodeTypes-Secure. PARAMETERS_STEP2. JSON fájlban. 
 
 Szerkessze a Resource Manager-sablon paraméterét tartalmazó fájlt, adja hozzá a két új paramétert a secCertificateThumbprint és a secCertificateUrlValue. 
 
@@ -287,6 +287,10 @@ tetszőleges számú ügyféltanúsítványt is megadhat. Minden hozzáadás/tö
 ### <a name="deletion-of-client-certificates---admin-or-read-only-using-the-portal"></a>Ügyféltanúsítványok törlése – rendszergazda vagy csak olvasható a portál használatával
 
 Ha el szeretne távolítani egy másodlagos tanúsítványt a fürt biztonságához, navigáljon a biztonság szakaszhoz, és válassza a Törlés lehetőséget az adott tanúsítvány helyi menüjében.
+
+## <a name="adding-application-certificates-to-a-virtual-machine-scale-set"></a>Alkalmazás-tanúsítványok hozzáadása virtuálisgép-méretezési csoportokhoz
+
+Az alkalmazásokhoz a fürthöz használt tanúsítvány üzembe helyezéséhez tekintse meg [ezt a PowerShell-parancsfájlt](scripts/service-fabric-powershell-add-application-certificate.md).
 
 ## <a name="next-steps"></a>Következő lépések
 A fürtözéssel kapcsolatos további információkért olvassa el a következő cikkeket:

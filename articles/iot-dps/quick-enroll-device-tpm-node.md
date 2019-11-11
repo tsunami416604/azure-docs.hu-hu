@@ -1,23 +1,23 @@
 ---
-title: TPM-eszköz regisztrációja az Azure Device Provisioning Service-be a Node.js használatával | Microsoft Docs
+title: 'Gyors útmutató: TPM-eszköz regisztrálása az Azure Device kiépítési szolgáltatásba Node. js használatával'
 description: Azure rövid útmutató – TPM-eszköz regisztrációja az Azure IoT Hub Device Provisioning Service-be a Node.js szolgáltatásoldali SDK-val. Ez a rövid útmutató egyéni regisztrációkat használ.
 author: wesmc7777
 ms.author: wesmc
-ms.date: 12/21/2017
+ms.date: 11/08/2019
 ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
 manager: timlt
 ms.devlang: nodejs
 ms.custom: mvc
-ms.openlocfilehash: 202b308c3add7facdbb28dc634f70e5090dd2a9c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 02d5ec3b7ddd960e15b75fd3aa6691a187b5911a
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61330158"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73903487"
 ---
-# <a name="enroll-tpm-device-to-iot-hub-device-provisioning-service-using-nodejs-service-sdk"></a>TPM-eszköz regisztrációja az IoT Hub Device Provisioning Service-be a Node.js szolgáltatásoldali SDK-val
+# <a name="quickstart-enroll-tpm-device-to-iot-hub-device-provisioning-service-using-nodejs-service-sdk"></a>Gyors útmutató: TPM-eszköz regisztrálása IoT Hub Device Provisioning Service a Node. js szolgáltatás SDK-val
 
 [!INCLUDE [iot-dps-selector-quick-enroll-device-tpm](../../includes/iot-dps-selector-quick-enroll-device-tpm.md)]
 
@@ -104,9 +104,9 @@ Ha azt tervezi, hogy részletesebben is áttekinti a Node.js-szolgáltatásmint�
 
 1. Zárja be a Node.js-minta kimeneti ablakát a gépen.
 1. Ha létrehozott egy szimulált TPM-eszközt, zárja be a TPM-szimulátor ablakát.
-2. Lépjen a Device Provisioning Service-re az Azure Portalon, kattintson a **Regisztrációk kezelése** lehetőségre, majd válassza az **Egyéni regisztrációk** lapot. Válassza ki a rövid útmutató segítségével létrehozott regisztrációs bejegyzés *Regisztrációs azonosítóját*, majd kattintson a panel tetején lévő **Törlés** gombra. 
+2. Navigáljon a Azure Portal eszköz kiépítési szolgáltatásához, kattintson a **regisztrációk kezelése**lehetőségre, majd válassza az **Egyéni regisztrációk** fület. Válassza ki a rövid útmutató segítségével létrehozott beléptetési bejegyzés *regisztrációs azonosítóját* , majd kattintson a panel tetején található **Törlés** gombra. 
  
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ebben a rövid útmutatóban egyéni regisztrációs bejegyzést hozott létre programozott módon egy TPM-eszközhöz, és igény szerint létrehozott egy szimulált TPM-eszközt a gépén, majd kiépítette azt az IoT Hubon az Azure IoT Hub Device Provisioning Service-szel. Ha mélyebben szeretné megismerni az eszközkiépítést, folytassa az Azure Portalon az eszközkiépítési szolgáltatás beállításának oktatóanyagával. 
  
 > [!div class="nextstepaction"]

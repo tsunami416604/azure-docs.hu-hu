@@ -5,89 +5,108 @@ services: virtual-machines
 author: cynthn
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 06/27/2019
+ms.date: 11/06/2019
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: cae108a1d4226e8c0fe39f9cd1cedc1e6a024ffc
-ms.sourcegitcommit: c63e5031aed4992d5adf45639addcef07c166224
+ms.openlocfilehash: 729e757c69887bbdce324e2d8383c970995dc94a
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67465456"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73903673"
 ---
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba 
 
 Jelentkezzen be az Azure Portalra a https://portal.azure.com webhelyen.
 
 > [!NOTE]
-> Ha megosztott kép katalógusok használata az előzetes verzióban regisztrált, akkor előfordulhat, hogy, újra kell regisztrálnia az `Microsoft.Compute` szolgáltató. Nyissa meg [Cloud Shell](https://shell.azure.com/bash) , és írja be: `az provider register -n Microsoft.Compute`
+> Ha az előzetes verzióban regisztrált a megosztott képtárak használatára, lehet, hogy újra regisztrálnia kell a `Microsoft.Compute` szolgáltatót. Nyissa meg [Cloud Shell](https://shell.azure.com/bash) és írja be a következőt: `az provider register -n Microsoft.Compute`
 
-## <a name="create-an-image-gallery"></a>Lemezkép-katalógus létrehozása
+## <a name="create-an-image-gallery"></a>Rendszerkép-gyűjtemény létrehozása
 
-Lemezkép-katalógus, hogy az elsődleges erőforrás használt lemezkép megosztása. Katalógus neveként engedélyezett karakterek:, kis-és nagybetűket, számokat, pontokat és időszakok. A katalógus neve nem tartalmazhat kötőjeleket.  Katalógus egyedieknek kell lenniük az előfizetésben. 
+A képgyűjtemény a képmegosztás engedélyezéséhez használt elsődleges erőforrás. A katalógus nevének megengedett karaktere nagybetűs vagy kisbetűk, számjegyek, pontok és időszakok. A gyűjtemény neve nem tartalmazhat kötőjeleket.  A katalógus nevének egyedinek kell lennie az előfizetésen belül. 
 
-A következő példában létrehozunk egy katalógusban nevű *myGallery* a a *myGalleryRG* erőforráscsoportot.
+A következő példában létrehozunk egy *MyGallery* nevű katalógust a *myGalleryRG* -erőforráscsoporthoz.
 
 1. Kattintson az Azure Portal bal felső sarkában található **Erőforrás létrehozása** gombra.
-1. Használja a típusának **megosztott lemezkép-katalógusában** a keresési mezőbe, majd válassza ki a **megosztott lemezkép-katalógusában** az eredmények között.
-1. Az a **megosztott lemezkép-katalógusában** kattintson **létrehozás**.
-1. Válassza ki a megfelelő előfizetés.
-1. A **erőforráscsoport**válassza **új létrehozása** , és írja be *myGalleryRG* neve.
-1. A **neve**, típus *myGallery* a gyűjtemény neve.
-1. Hagyja bejelölve az alapértelmezett **régió**.
-1. Beírhatja például a katalógusban, rövid leírását *tesztelési saját rendszerkép-katalógusában.* majd **felülvizsgálat + létrehozása**.
-1. Ellenőrzés elvégzése után válassza **létrehozás**.
-1. Ha a telepítés befejeződött, válassza ki a **erőforrás megnyitása**.
+1. A keresőmezőbe írja be a **megosztott képtárat** , majd a találatok között válassza a **megosztott képtára** lehetőséget.
+1. A **megosztott rendszerkép** -katalógus lapon kattintson a **Létrehozás**gombra.
+1. Válassza ki a megfelelő előfizetést.
+1. Az **erőforráscsoport**területen válassza az **új létrehozása** lehetőséget, és írja be a *myGalleryRG* nevet.
+1. A **név**mezőbe írja be a *MyGallery* nevet a gyűjtemény neveként.
+1. Hagyja meg az alapértelmezett **régiót**.
+1. Beírhatja a katalógus rövid leírását, például a *saját képtárat a teszteléshez.* majd kattintson a **felülvizsgálat + létrehozás**gombra.
+1. Az érvényesítési fázisok után válassza a **Létrehozás**lehetőséget.
+1. Ha a telepítés befejeződött, válassza az **Ugrás az erőforráshoz**lehetőséget.
    
-## <a name="create-an-image-definition"></a>Kép definíció létrehozása 
+## <a name="create-an-image-definition"></a>Rendszerkép-definíció létrehozása 
 
-Lemezkép-definíciók létrehozása lemezképek logikai jellegű csoportosítását. A lemezkép-verziók azokon belül létrehozott adatainak kezeléséhez használhatók. Definíció rendszerképnevek a kis-és nagybetűket, számokat, pontokat, kötőjeleket és időszakok lehet tenni. Az értékeket is megadhat egy rendszerkép definíciójában kapcsolatos további információkért lásd: [definíciók kép](https://docs.microsoft.com/azure/virtual-machines/windows/shared-image-galleries#image-definitions).
+A rendszerkép-definíciók logikai csoportosítást hoznak létre a képekhez. Ezek az adatok a bennük létrehozott rendszerkép-verziókra vonatkozó információk kezelésére szolgálnak. A képdefiníciók nevei nagybetűket, kisbetűket, számokat, pontokat, kötőjeleket és pontokat tartalmazhatnak. További információ a képdefiníciók által megadható értékekről: [képdefiníciók](https://docs.microsoft.com/azure/virtual-machines/windows/shared-image-galleries#image-definitions).
 
-A katalógus rendszerkép definíciójában alapjait az a gyűjtemény létrehozásához. Ebben a példában a katalógus-lemezkép neve *myImageDefinition*.
+Hozza létre a katalógus képének definícióját a katalógusban. Ebben a példában a katalógus rendszerképének neve *myImageDefinition*.
 
-1. Az új lemezkép-katalógusában lapon válassza ki a **adjon hozzá egy új rendszerkép definíciójában** az oldal tetején. 
-1. A **definíció lemezképnév**, típus *myImageDefinition*.
-1. A **operációs rendszer**, válassza ki a megfelelő beállítás a forrás lemezkép alapján.
-1. A **közzétevő**, típus *myPublisher*. 
-1. A **ajánlat**, típus *myOffer*.
-1. A **Termékváltozat**, típus *mySKU*.
-1. Amikor végzett, válassza ki a **felülvizsgálat + létrehozása**.
-1. Miután a rendszerkép definíciójában ellenőrzése sikeres, válassza ki **létrehozás**.
-1. Ha a telepítés befejeződött, válassza ki a **erőforrás megnyitása**.
+1. Az új rendszerkép-katalógus lapján válassza az **új rendszerkép-definíció hozzáadása** lehetőséget az oldal tetején. 
+1. A **rendszerkép-definíció neve**mezőbe írja be a következőt: *myImageDefinition*.
+1. **Operációs rendszer**esetén válassza ki a megfelelő beállítást a forrás virtuális gép alapján.
+1. Virtuálisgép- **generáció**esetén válassza a forrás virtuális gép alapján lehetőséget. A legtöbb esetben ez az 1. *Gen*lesz. További információ: 2. [generációs virtuális gépek támogatása](https://docs.microsoft.com/azure/virtual-machines/windows/generation-2).
+1. Az **operációs rendszer állapota**területen válassza a forrás virtuális gép alapján lehetőséget. További információ: [általánosított és specializált](../articles/virtual-machines/linux/shared-image-galleries.md#generalized-and-specialized-images).
+1. A **Publisherben**írja be a következőt: *myPublisher*. 
+1. Az **ajánlat**mezőbe írja be a következőt: *myOffer*.
+1. Az **SKU**mezőbe írja be a következőt: *mySKU*.
+1. Ha elkészült, válassza a **felülvizsgálat + létrehozás**elemet.
+1. Miután a rendszerkép definíciója áthaladt az ellenőrzésen, válassza a **Létrehozás**lehetőséget.
+1. Ha a telepítés befejeződött, válassza az **Ugrás az erőforráshoz**lehetőséget.
 
 
-## <a name="create-an-image-version"></a>Hozzon létre egy lemezkép verziója
+## <a name="create-an-image-version"></a>Rendszerkép-verzió létrehozása
 
-Egy lemezkép-verzió létrehozása felügyelt rendszerképből. Ebben a példában a rendszerkép verziószáma *1.0.0-s* , és mindkét replikálás *USA nyugati középső Régiója* és *USA déli középső Régiójában* adatközpontokban. Replikáció célrégiók kiválasztásakor ne feledje, hogy is kell tartalmaznia a *forrás* régió a replikációs cél.
+Rendszerkép-verzió létrehozása felügyelt rendszerképből. Ebben a példában a rendszerkép verziója a *1.0.0* , és a rendszer replikálja az *USA nyugati középső* régiójában és az *USA déli középső* régiójában. A célcsoportok replikáláshoz való kiválasztásakor ne feledje, hogy a *forrás* régiót is meg kell adnia a replikálás céljának.
 
-Lemezkép-verzió engedélyezett karakterek:, számokat és pontokat. Számok belül a 32 bites egész számnak kell lennie. Formátum: *Főverzió*. *MinorVersion*. *Javítás*.
+A képverzió megengedett karaktereinek száma számok és időszakok. A számoknak egy 32 bites egész számon belüli tartományba kell esniük. Formátum: *MajorVersion*. *MinorVersion*. *Javítás*.
 
-1. Válassza ki a lapon a rendszerkép definíciójában **Hozzáadás verzió** az oldal tetején.
-1. A **régió**, válassza ki a régiót, ahol a felügyelt rendszerkép található. Lemezkép verziója kell hozhatók létre ugyanabban a régióban a felügyelt rendszerkép alapján hoztak létre.
-1. A **neve**, típus *1.0.0-s*. A lemezkép-verzió neve kell követniük *fő*. *kisebb*. *javítás* formázza az egész számok használata. 
-1. A **forráslemezkép**, válassza ki a felügyelt forráslemezkép a legördülő listából.
-1. A **kizárása a legújabb**, hagyja bejelölve az alapértelmezett érték *nem*.
-1. A **életre dátum végén**, jelölje ki a dátumát a naptárból, amely néhány hónappal később.
-1. A **replikációs**, hagyja a **alapértelmezett replika száma** legyen 1. Replikálja a forrásrégióban. ezért ne alapértelmezés szerint az első replika, majd válasszon egy második replika régiót kell *USA keleti Régiójában*.
-1. Amikor elkészült, válassza ki a **felülvizsgálat + létrehozása**. Az Azure ellenőrzi a konfigurációt.
-1. Amikor a lemezkép-verzió ellenőrzése sikeres, válassza ki a **létrehozás**.
-1. Ha a telepítés befejeződött, válassza ki a **erőforrás megnyitása**.
+A rendszerkép-verziók létrehozásának lépései némileg eltérőek, attól függően, hogy a forrás általánosított rendszerkép-e, vagy egy speciális virtuális gép pillanatképe. 
 
-A kép replikálása a célrégiók mindegyikét egy ideig is eltarthat.
+### <a name="option-generalized"></a>Lehetőség: általánosított
+
+1. A rendszerkép definíciójának lapján válassza a **verzió hozzáadása** lehetőséget az oldal tetején.
+1. A **régió**területen válassza ki azt a régiót, ahol a felügyelt képet tárolja. A képverziókat ugyanabban a régióban kell létrehozni, mint a létrehozott felügyelt rendszerképből.
+1. A **név**mezőbe írja be a *1.0.0*nevet. A rendszerkép verziószámának a következőnek kell lennie: *Major*. *kisebb*. a *javítási* formátum egész számok használatával. 
+1. A **forrás rendszerképben**válassza ki a forrásként kezelt rendszerképet a legördülő menüből.
+1. A **legutóbbi kizárásnál**hagyja *meg az alapértelmezett értéket.*
+1. Az **élettartam végén**válasszon ki egy dátumot a naptárból, amely a jövőben néhány hónap.
+1. A **replikáció**területen hagyja meg az **alapértelmezett replika 1 értéket** . Replikálni kell a forrás régióba, ezért hagyja meg az első replikát alapértelmezettként, majd válasszon egy második replikát az *USA keleti*régiójában.
+1. Ha elkészült, válassza a **felülvizsgálat + létrehozás**elemet. Az Azure ellenőrzi a konfigurációt.
+1. Ha a rendszerkép verziója megfelel az ellenőrzésnek, válassza a **Létrehozás**lehetőséget.
+1. Ha a telepítés befejeződött, válassza az **Ugrás az erőforráshoz**lehetőséget.
+
+Eltarthat egy ideig, amíg a rendszer replikálja a rendszerképet az összes megcélzott régióba.
+
+### <a name="option-specialized"></a>Beállítás: speciális
+
+1. A rendszerkép definíciójának lapján válassza a **verzió hozzáadása** lehetőséget az oldal tetején.
+1. A **régió**területen válassza ki azt a régiót, ahol a pillanatképet tárolja. A képverziókat ugyanabban a régióban kell létrehozni, mint a-ból létrehozott forrást.
+1. A **név**mezőbe írja be a *1.0.0*nevet. A rendszerkép verziószámának a következőnek kell lennie: *Major*. *kisebb*. a *javítási* formátum egész számok használatával. 
+1. Az **operációsrendszer-lemez pillanatképe**lapon válassza ki a pillanatképet a forrás virtuális gépről a legördülő menüből. Ha a forrás virtuális gépe tartalmaz egy adatlemezt, amelyet szeretne felvenni, válassza ki a megfelelő **LUN** -számot a legördülő listából, majd válassza ki az adatlemez **pillanatképének**pillanatképét. 
+1. A **legutóbbi kizárásnál**hagyja *meg az alapértelmezett értéket.*
+1. Az **élettartam végén**válasszon ki egy dátumot a naptárból, amely a jövőben néhány hónap.
+1. A **replikáció**területen hagyja meg az **alapértelmezett replika 1 értéket** . Replikálni kell a forrás régióba, ezért hagyja meg az első replikát alapértelmezettként, majd válasszon egy második replikát az *USA keleti*régiójában.
+1. Ha elkészült, válassza a **felülvizsgálat + létrehozás**elemet. Az Azure ellenőrzi a konfigurációt.
+1. Ha a rendszerkép verziója megfelel az ellenőrzésnek, válassza a **Létrehozás**lehetőséget.
+1. Ha a telepítés befejeződött, válassza az **Ugrás az erőforráshoz**lehetőséget.
 
 ## <a name="share-the-gallery"></a>A katalógus megosztása
 
-Azt javasoljuk, hogy megosztott hozzáférés a lemezkép katalógus szintjén. A következő lépésről az imént létrehozott gyűjtemény megosztása.
+Javasoljuk, hogy a Képtár szintjén ossza meg a hozzáférést. A következő végigvezeti az imént létrehozott katalógus megosztásán.
 
-1. Nyissa meg az [Azure Portalt](https://portal.azure.com).
-1. A bal oldali menüben válassza **erőforráscsoportok**. 
-1. Az erőforráscsoportok listájából válassza ki **myGalleryRG**. Ekkor megnyílik a panel az erőforráscsoport.
-1. A, a bal oldali menüben a **myGalleryRG** lapon jelölje be **hozzáférés-vezérlés (IAM)** . 
-1. A **egy szerepkör-hozzárendelés hozzáadása**válassza **Hozzáadás**. A **egy szerepkör-hozzárendelés hozzáadása** panel nyílik meg. 
-1. A **szerepkör**válassza **olvasó**.
-1. A **rendelhet hozzáféréseket**, hagyja bejelölve az alapértelmezett **az Azure AD-felhasználó, csoport vagy szolgáltatásnév**.
-1. A **kiválasztása**, írja be azt, amelyet szeretne meghívni, aki az e-mail-cím.
-1. Ha a felhasználó a szervezeten kívül, üzenet jelenik-e **a felhasználó kapni fog egy e-mailt, amely lehetővé teszi, hogy együttműködjön a Microsofttal.** Válassza ki az e-mail-címmel rendelkező felhasználót, és kattintson a **mentése**.
+1. Nyissa meg az [Azure portált](https://portal.azure.com).
+1. A bal oldali menüben válassza az **erőforráscsoportok**lehetőséget. 
+1. Az erőforráscsoportok listájában válassza a **myGalleryRG**lehetőséget. Ekkor megnyílik az erőforráscsoport panelje.
+1. A **myGalleryRG** lap bal oldalán található menüben válassza a **hozzáférés-vezérlés (iam)** lehetőséget. 
+1. **A szerepkör-hozzárendelés hozzáadása**területen válassza a **Hozzáadás**lehetőséget. Ekkor megnyílik a **szerepkör-hozzárendelés hozzáadása** ablaktábla. 
+1. A **szerepkör**területen válassza az **olvasó**lehetőséget.
+1. A **hozzáférés társítása**alatt hagyja meg az alapértelmezett **Azure ad-felhasználó,-csoport vagy egyszerű szolgáltatásnév**beállítást.
+1. A **Select (kijelölés**) területen írja be a meghívni kívánt személy e-mail-címét.
+1. Ha a felhasználó a szervezeten kívül esik, megjelenik az üzenet, **amely lehetővé teszi, hogy a felhasználó a Microsofttal való együttműködéshez küldjön egy e-mailt.** Válassza ki az e-mail-címmel rendelkező felhasználót, majd kattintson a **Mentés**gombra.
 
-Ha a felhasználó a szervezeten kívül, kap egy e-mailes meghívót a szervezethez való csatlakozásról. A felhasználónak a meghívás elfogadásához, majd a gyűjtemény és az összes lemezképet meghatározásai és verziók az erőforrások listájában látni fogják.
+Ha a felhasználó a szervezeten kívül esik, e-mailben meghívót kap a szervezethez való csatlakozáshoz. A felhasználónak el kell fogadnia a meghívást, és látni fogja a katalógust és az összes rendszerkép-definíciót és verziót az erőforrások listájában.
 
