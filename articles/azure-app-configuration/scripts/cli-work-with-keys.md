@@ -1,29 +1,29 @@
 ---
-title: Az Azure CLI-Példaszkript – együttműködnek a kulcs-értékeket egy Azure-alkalmazás konfigurációja Store az |} A Microsoft Docs
-description: Arról nyújt tájékoztatást, kulcs-értékeket egy Azure App a konfigurációs adattárolónál a használata
+title: Azure CLI parancsfájl-minta – a Key-Values használata egy Azure-alkalmazás konfigurációs tárolójában | Microsoft Docs
+description: Információt nyújt a kulcs-értékeknek az Azure app Configuration Store-ban való használatáról
 services: azure-app-configuration
 documentationcenter: ''
-author: yegu-ms
-manager: balans
+author: lisaguthrie
+manager: maiye
 editor: ''
 ms.service: azure-app-configuration
 ms.devlang: azurecli
 ms.topic: sample
 ms.tgt_pltfrm: na
 ms.workload: azure-app-configuration
-ms.date: 02/24/2019
-ms.author: yegu
+ms.date: 11/08/2019
+ms.author: lcozzens
 ms.custom: mvc
-ms.openlocfilehash: 9288ea08da6335dd29e7a15a9bc871b76c1ce7e9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: d89fa4c067e511e6210e8c1473bf1856297fc1de
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60235159"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73904079"
 ---
-# <a name="work-with-key-values-in-an-azure-app-configuration-store"></a>Együttműködve a kulcs-értékeket egy alkalmazások konfigurálása az Azure áruházban
+# <a name="work-with-key-values-in-an-azure-app-configuration-store"></a>A Key-Values használata egy Azure-alkalmazás konfigurációs tárolójában
 
-Ez a példaszkript létrehoz egy új kulcs-érték-alkalmazások konfigurálása az Azure áruházban, minden meglévő kulcs értékeit sorolja fel, frissíti az újonnan létrehozott kulcs értékét és végül törli őket.
+Ez a példa egy új kulcsot hoz létre egy Azure-alkalmazás konfigurációs tárolójában, felsorolja az összes létező kulcs-értéket, frissíti az újonnan létrehozott kulcs értékét, és végül törli azt.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -31,7 +31,7 @@ Ez a példaszkript létrehoz egy új kulcs-érték-alkalmazások konfigurálása
 
 Ha a parancssori felület helyi telepítése és használata mellett dönt, a témakörben leírt lépésekhez az Azure CLI 2.0-s vagy újabb verzióját kell futtatnia. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne, olvassa el [az Azure CLI telepítését](/cli/azure/install-azure-cli) ismertető cikket.
 
-Az Azure App konfigurációs CLI-bővítmény a következő parancs végrehajtásával először telepítenie kell:
+Először telepítenie kell az Azure app Configuration CLI bővítményt a következő parancs végrehajtásával:
 
         az extension add -n appconfig
 
@@ -42,6 +42,9 @@ Az Azure App konfigurációs CLI-bővítmény a következő parancs végrehajtá
 
 appConfigName=myTestAppConfigStore
 newKey="TestKey"
+refKey="KeyVaultReferenceTestKey"
+uri="[URL to value stored in Key Vault]"
+uri2="[URL to another value stored in Key Vault]"
 
 # Create a new key-value 
 az appconfig kv set --name $appConfigName --key $newKey --value "Value 1"
@@ -50,13 +53,28 @@ az appconfig kv set --name $appConfigName --key $newKey --value "Value 1"
 az appconfig kv list --name $appConfigName
 
 # Update new key's value
-az appconfig kv set --name $appConfigName --value "Value 2"
+az appconfig kv set --name $appConfigName --key $newKey --value "Value 2"
+
+# List current key-values
+az appconfig kv list --name $appConfigName
+
+# Create a new key-value referencing a value stored in Azure Key Vault
+az appconfig kv set --name $appConfigName --key $refKey --content-type "application/vnd.microsoft.appconfig.keyvaultref+json;charset=utf-8" --value "{\"uri\":\"$uri\"}"
+
+# List current key-values
+az appconfig kv list --name $appConfigName
+
+# Update Key Vault reference
+az appconfig kv set --name $appConfigName --key $refKey --value "{\"uri\":\"$uri2\"}"
 
 # List current key-values
 az appconfig kv list --name $appConfigName
 
 # Delete new key
 az appconfig kv delete  --name $appConfigName --key $newKey
+
+# Delete Key Vault reference
+az appconfig kv delete --name $appConfigName --key $refKey
 
 # List current key-values
 az appconfig kv list --name $appConfigName
@@ -66,16 +84,16 @@ az appconfig kv list --name $appConfigName
 
 ## <a name="script-explanation"></a>Szkript ismertetése
 
-Ez a szkript a következő parancsokat használja egy alkalmazás a konfigurációs adattárolónál a kulcs-értékeket a művelethez használandó. A táblázatban lévő összes parancs a hozzá tartozó dokumentációra hivatkozik.
+Ez a szkript a következő parancsokat használja az alkalmazás konfigurációs tárolójában lévő kulcs-értékekhez való működéshez. A táblázatban lévő összes parancs a hozzá tartozó dokumentációra hivatkozik.
 
 | Parancs | Megjegyzések |
 |---|---|
-| [az appconfig-kv beállítása](/cli/azure/ext/appconfig/appconfig) | Létrehozza vagy frissíti a kulcs-érték. |
-| [az appconfig kv listája](/cli/azure/ext/appconfig/appconfig) | Egy alkalmazás a konfigurációs adattárolónál a kulcs-értékeit sorolja fel. |
-| [az appconfig kv delete](/cli/azure/ext/appconfig/appconfig) | Töröl egy kulcs-érték. |
+| [az appconfig kV set](/cli/azure/ext/appconfig/appconfig) | Létrehoz vagy frissít egy kulcs-értéket. |
+| [az appconfig kV List](/cli/azure/ext/appconfig/appconfig) | Az alkalmazás-konfigurációs tárolóban található kulcsok értékeit sorolja fel. |
+| [az appconfig kV delete](/cli/azure/ext/appconfig/appconfig) | Egy kulcs-érték törlése. |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az Azure CLI-vel kapcsolatos további információért lásd az [Azure CLI dokumentációját](/cli/azure).
 
-További App konfigurációs CLI-példaszkripteket megtalálható a [alkalmazások konfigurálása az Azure dokumentációs](../cli-samples.md).
+Az alkalmazások konfigurációjának további parancssori felületi mintái az [Azure-alkalmazás konfigurációs dokumentációjában](../cli-samples.md)találhatók.

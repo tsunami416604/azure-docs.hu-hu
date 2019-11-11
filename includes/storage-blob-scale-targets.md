@@ -2,16 +2,16 @@
 author: tamram
 ms.service: storage
 ms.topic: include
-ms.date: 4/20/2019
+ms.date: 11/08/2019
 ms.author: tamram
-ms.openlocfilehash: aab17966862c57a52f252b3c4e9b757673078b0a
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: 0fda881b805eb3a967cf3b05f6c6df8c65d20730
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "67179331"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73905784"
 ---
-| Resource | Target        |
+| Erőforrás | Cél        |
 |----------|---------------|
 | Egy blob-tároló maximális mérete | Ugyanaz, mint a Storage-fiókok maximális kapacitása |
 | Blokkok maximális száma egy blokk blobban vagy a blob hozzáfűzése | 50 000 blokk |
@@ -21,6 +21,8 @@ ms.locfileid: "67179331"
 | Hozzáfűző blob maximális mérete | 50 000 x 4 MiB (körülbelül 195 GiB) |
 | Oldal blobjának maximális mérete | 8 TiB |
 | Tárolt hozzáférési szabályzatok maximális száma blob-tárolón | 5 |
-|Cél átviteli sebesség egyetlen blobhoz |Legfeljebb Storage-fiók bejövő/kimenő korlátja<sup>1</sup> |
+|Egy blobhoz tartozó célalkalmazás-kérelmek sebessége | Legfeljebb 500 kérelem másodpercenként |
+|Cél átviteli sebesség egy egyoldalas blobhoz | Akár 60 MiB másodpercenként |
+|Cél átviteli sebesség egyetlen blokk blobhoz |Legfeljebb Storage-fiók bejövő/kimenő korlátja<sup>1</sup> |
 
 <sup>1</sup> az egyetlen objektum átviteli sebessége több tényezőtől függ, többek között a következőktől: Egyidejűség, kérelmek mérete, teljesítményszint, a feltöltések forrása, valamint a letöltések célja. A [nagy átviteli sebességű blokk Blobok](https://azure.microsoft.com/blog/high-throughput-with-azure-blob-storage/) teljesítményének kihasználásához használjon egy Put blobot, vagy > 4 MIB-t (> 256 KiB a prémium szintű teljesítményű blob Storage-hoz vagy a Data Lake Storage Gen2-hoz).

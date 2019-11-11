@@ -15,25 +15,25 @@ ms.workload: service-fabric
 ms.date: 11/29/2018
 ms.author: atsenthi
 ms.custom: mvc
-ms.openlocfilehash: 73e88e692b68d73c90176a6f5b8fce06bdf8b8c7
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: cae88e142c3bca15e837db7f084eef68434a78ca
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69035794"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73903271"
 ---
 # <a name="azure-powershell-samples"></a>Azure PowerShell-minták
 
 A következő táblázat a Service Fabric-fürtöket, -alkalmazásokat és -szolgáltatásokat létrehozó és kezelő PowerShell-mintaszkriptekre mutató hivatkozásokat tartalmaz.
 
-[!INCLUDE [links to azure cli and service fabric cli](../../includes/service-fabric-powershell.md)]
+[!INCLUDE [links to azure CLI and service fabric CLI](../../includes/service-fabric-powershell.md)]
 
 | | |
 |-|-|
 | **Fürt létrehozása** ||
 | [Fürt létrehozása (Azure)](./scripts/service-fabric-powershell-create-secure-cluster-cert.md)| Létrehoz egy Azure Service Fabric-fürtöt. |
 | **A fürt, a csomópontok és az infrastruktúra kezelése** ||
-| [Alkalmazástanúsítvány hozzáadása](./scripts/service-fabric-powershell-add-application-certificate.md)| Egy X.509-alkalmazástanúsítványt rendel a fürt összes csomópontjához. |
+| [Alkalmazástanúsítvány hozzáadása](./scripts/service-fabric-powershell-add-application-certificate.md)| Létrehoz egy X509-tanúsítványt Key Vault és üzembe helyezi egy virtuálisgép-méretezési csoportba a fürtben. |
 | [Az RPD-porttartomány frissítése a fürt virtuális gépein](./scripts/service-fabric-powershell-change-rdp-port-range.md)|Módosítja az RPD-porttartományt egy üzembe helyezett fürt csomópontbeli virtuális gépein.|
 | [A fürtcsomóponti virtuális gépek rendszergazdai felhasználójának és jelszavának frissítése](./scripts/service-fabric-powershell-change-rdp-user-and-pw.md) | Frissíti a fürtcsomóponti virtuális gépek rendszergazdai felhasználónevét és jelszavát. |
 | [Port megnyitása a terheléselosztóban](./scripts/service-fabric-powershell-open-port-in-load-balancer.md) | Megnyit egy alkalmazásportot az Azure Load Balancerben, hogy egy adott porton engedélyezze a bejövő forgalmat. |

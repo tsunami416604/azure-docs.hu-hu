@@ -14,12 +14,12 @@ ms.author: jmprieur
 ms.reviewer: oldalton
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2474f86c0f293b98ab7bc9faec8ff8519a25e96b
-ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
+ms.openlocfilehash: 8cfb61f417597abe52910b012ce3fb79ba48ce97
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71309377"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73902839"
 ---
 # <a name="sign-in-users-and-call-the-microsoft-graph-from-an-ios-or-macos-app"></a>Bejelentkezés a felhasználókba és a Microsoft Graph meghívása iOS-vagy macOS-alkalmazásból
 
@@ -57,8 +57,8 @@ Ez az oktatóanyag egy új projektet fog létrehozni. Ha ehelyett a kész oktat�
 ## <a name="create-a-new-project"></a>Új projekt létrehozása
 
 1. Nyissa meg a Xcode, és válassza **az új Xcode-projekt létrehozása**lehetőséget.
-2. IOS-alkalmazások esetén válassza az **iOS** > **Egynézetű alkalmazás** lehetőséget, és kattintson a **Tovább gombra**.
-3. MacOS-alkalmazások esetén válassza a **MacOS** > **kakaó-alkalmazás** lehetőséget, majd kattintson a **Tovább gombra**.
+2. IOS-alkalmazások esetén válassza az **ios** > **Egynézetes alkalmazás** lehetőséget, majd kattintson a **Tovább gombra**.
+3. MacOS-alkalmazások esetén válassza a **macos** > **kakaó-alkalmazás** lehetőséget, majd kattintson a **Tovább gombra**.
 4. Adja meg a terméknév nevét.
 5. Állítsa a **nyelvet** a **Swift** értékre, és válassza a **tovább**lehetőséget.
 6. Válasszon egy mappát az alkalmazás létrehozásához, majd kattintson a **Létrehozás**gombra.
@@ -70,10 +70,10 @@ Ez az oktatóanyag egy új projektet fog létrehozni. Ha ehelyett a kész oktat�
 3. Adja meg az alkalmazás **nevét** , majd az átirányítási URI beállítása nélkül kattintson a **regisztráció**elemre.
 4. A megjelenő panel **kezelés** szakaszában válassza a **hitelesítés**lehetőséget.
 
-5. Kattintson a képernyő felső részén található **új felület** lehetőségre az új alkalmazás regisztrációs felületének megnyitásához, majd kattintson az **+ új regisztráció** >  **+ platform** > hozzáadása**iOS**elemre.
-    - Adja meg a projekt köteg-AZONOSÍTÓját. Ha letöltötte a kódot, akkor ez `com.microsoft.identitysample.MSALiOS`a következő:. Ha saját projektet hoz létre, válassza ki a projektet a Xcode-ben, és nyissa meg az **általános** lapot. A köteg azonosítója az Identity ( **identitás** ) szakaszban jelenik meg.
+5. Kattintson a képernyő felső részén található **új felület** lehetőségre, hogy megnyissa az új alkalmazás regisztrációs élményét, majd kattintson az **+ új regisztráció** >  **+ platform hozzáadása** > **iOS**elemre.
+    - Adja meg a projekt köteg-AZONOSÍTÓját. Ha letöltötte a kódot, `com.microsoft.identitysample.MSALiOS`. Ha saját projektet hoz létre, válassza ki a projektet a Xcode-ben, és nyissa meg az **általános** lapot. A köteg azonosítója az Identity ( **identitás** ) szakaszban jelenik meg.
     - Vegye figyelembe, hogy macOS esetén iOS-élményt is kell használnia. 
-6. Kattintson `Configure` és mentse az **iOS-konfigurációs** lapon megjelenő **MSAL** -konfigurációt, így megadhatja, amikor később konfigurálja az alkalmazást.  Kattintson a **Done** (Kész) gombra.
+6. Kattintson a `Configure` elemre, és mentse az iOS- **konfigurációs** lapon megjelenő **MSAL-konfigurációt** , hogy később is megadhatja azt az alkalmazás konfigurálásakor.  Kattintson a **Done** (Kész) gombra.
 
 ## <a name="add-msal"></a>MSAL hozzáadása
 
@@ -81,7 +81,7 @@ Válassza ki az alábbi módszerek egyikét a MSAL-könyvtár telepítéséhez a
 
 ### <a name="cocoapods"></a>CocoaPods
 
-1. Ha `MSAL` `podfile` [a CocoaPods](https://cocoapods.org/)-t használja, először hozzon létre egy üres fájlt, amely ugyanabban a mappában található, mint a projekt fájlja.`.xcodeproj` Adja hozzá a következőket `podfile`a következőhöz:
+1. Ha a [CocoaPods](https://cocoapods.org/)`MSAL`-t használja, akkor először a `podfile` nevű üres fájlt hozzon létre a projekt `.xcodeproj` fájllal megegyező mappában. Adja hozzá a következőt a `podfile`hoz:
 
    ```
    use_frameworks!
@@ -91,27 +91,27 @@ Válassza ki az alábbi módszerek egyikét a MSAL-könyvtár telepítéséhez a
    end
    ```
 
-2. Cserélje `<your-target-here>` le a helyére a projekt nevét.
-3. Egy terminál ablakban navigáljon a létrehozott és futtatott `podfile` `pod install` mappához a MSAL-könyvtár telepítéséhez.
-4. A Xcode bezárásához `<your project name>.xcworkspace` és megnyitásához nyissa meg újra a projektet a Xcode-ben.
+2. Cserélje le a `<your-target-here>`t a projekt nevére.
+3. Egy terminál ablakban navigáljon ahhoz a mappához, amely a létrehozott `podfile` tartalmazza, és futtassa `pod install` a MSAL-könyvtár telepítéséhez.
+4. A Xcode bezárásához és a `<your project name>.xcworkspace` megnyitásához nyissa meg újra a projektet a Xcode-ben.
 
 ### <a name="carthage"></a>Carthage
 
-Ha a [Carthage](https://github.com/Carthage/Carthage)-t használja, `MSAL` a telepítéshez `Cartfile`adja hozzá a következőt:
+Ha a [Carthage](https://github.com/Carthage/Carthage)-t használja, telepítse a `MSAL`t úgy, hogy hozzáadja a `Cartfile`hoz:
 
 ```
 github "AzureAD/microsoft-authentication-library-for-objc" "master"
 ```
 
-Futtassa a következő parancsot egy terminál-ablakból ugyanabban a címtárban, amely a frissített `Cartfile`, majd futtassa az alábbi parancsot, hogy a Carthage frissítse a projekt függőségeit.
+Futtassa a következő parancsot egy olyan terminál-ablakból, amely a frissített `Cartfile`könyvtárban található, hogy a Carthage frissítse a projekt függőségeit.
 
-iOS:
+iOS
 
 ```bash
 carthage update --platform iOS
 ```
 
-macOS:
+MacOS
 
 ```bash
 carthage update --platform macOS
@@ -125,33 +125,33 @@ A git almodult is használhatja, vagy megtekintheti a legújabb kiadást, amelye
 
 Ezután hozzáadjuk az alkalmazás regisztrációját a kódhoz. 
 
-Először adja hozzá a következő importálási utasítást a `ViewController.swift` és `AppDelegate.swift` a fájlok elejéhez:
+Először adja hozzá a következő importálási utasítást a `ViewController.swift` és `AppDelegate.swift` fájlok elejéhez:
 
 ```swift
 import MSAL
 ```
 
-Ezután adja hozzá a következő kódot `ViewController.swift` a `viewDidLoad()`előtt:
+Ezután adja hozzá a következő kódot a `ViewController.swift`ához `viewDidLoad()`előtt:
 
 ```swift
 let kClientID = "Your_Application_Id_Here"
 
 // Additional variables for Auth and Graph API
-let kGraphURI = "https://graph.microsoft.com/v1.0/me/"
-let kScopes: [String] = ["https://graph.microsoft.com/user.read"]
-let kAuthority = "https://login.microsoftonline.com/common"
+let kGraphURI = "https://graph.microsoft.com/v1.0/me/" // the Microsoft Graph endpoint
+let kScopes: [String] = ["https://graph.microsoft.com/user.read"] // request permission to read the profile of the signed-in user
+let kAuthority = "https://login.microsoftonline.com/common" // this authority allows a personal Microsoft account and a work or school account in any organization’s Azure AD tenant to sign in
 var accessToken = String()
 var applicationContext : MSALPublicClientApplication?
 var webViewParamaters : MSALWebviewParameters?
 ```
 
-Módosítsa az alkalmazás `kClientID`-azonosítóhoz rendelt értéket. Ez az érték azon MSAL-konfigurációs adatmennyiség részét képezi, amelyet az oktatóanyag elején a lépés során mentett, hogy regisztrálja az alkalmazást a Azure Portalban.
+A fenti módosításhoz csak az [alkalmazás-azonosítóhoz](https://docs.microsoft.com/azure/active-directory/develop/developer-glossary#application-id-client-id)`kClientID`hozzárendelt értéket kell megadni. Ez az érték azon MSAL-konfigurációs adatmennyiség részét képezi, amelyet az oktatóanyag elején a lépés során mentett, hogy regisztrálja az alkalmazást a Azure Portalban.
 
 ## <a name="for-ios-only-configure-url-schemes"></a>Csak iOS esetén konfigurálja az URL-sémákat
 
-Ebben a lépésben regisztrálni `CFBundleURLSchemes` fogja, hogy a felhasználó átirányítható legyen az alkalmazásba a bejelentkezés után. A módon lehetővé teszi `LSApplicationQueriesSchemes` , hogy az alkalmazás használja a Microsoft Authenticator.
+Ebben a lépésben regisztrálni fogja `CFBundleURLSchemes`, hogy a felhasználó a bejelentkezés után visszairányítható legyen az alkalmazásba. A `LSApplicationQueriesSchemes` azt is lehetővé teszi, hogy az alkalmazás használja a Microsoft Authenticator.
 
-A Xcode nyissa `Info.plist` meg a forrásként `<dict>` szolgáló fájlt, és adja hozzá a következőt a szakaszhoz. Cserélje `[BUNDLE_ID]` le a értéket a Azure Portal használt értékre, amely (ha letöltötte a kódot `com.microsoft.identitysample.MSALiOS`) a. Ha saját projektet hoz létre, válassza ki a projektet a Xcode-ben, és nyissa meg az **általános** lapot. A köteg azonosítója az Identity ( **identitás** ) szakaszban jelenik meg.
+A Xcode-ben nyissa meg `Info.plist` forráskód-fájlként, és adja hozzá a következőt a `<dict>` szakaszhoz. Cserélje le a `[BUNDLE_ID]` értéket a Azure Portalben használt értékre, amely a kód letöltésekor `com.microsoft.identitysample.MSALiOS`. Ha saját projektet hoz létre, válassza ki a projektet a Xcode-ben, és nyissa meg az **általános** lapot. A köteg azonosítója az Identity ( **identitás** ) szakaszban jelenik meg.
 
 ```xml
 <key>CFBundleURLTypes</key>
@@ -172,12 +172,12 @@ A Xcode nyissa `Info.plist` meg a forrásként `<dict>` szolgáló fájlt, és a
 
 ## <a name="for-macos-only-configure-app-sandbox"></a>Csak macOS esetén konfigurálja az alkalmazási homokozót
 
-1. Nyissa meg a Xcode-projekt beállításai > **képességek lap** > **alkalmazásának homokozóját**
+1. Nyissa meg a Xcode-projekt beállításai > **képességek fület** > **alkalmazás-homokozó**
 2. Válassza a **Kimenő kapcsolatok (ügyfél)** jelölőnégyzetet. 
 
 ## <a name="create-your-apps-ui"></a>Az alkalmazás felhasználói felületének létrehozása
 
-Most hozzon létre egy felhasználói felületet, amely tartalmaz egy gombot a Microsoft Graph API meghívásához, egy másikat a kijelentkezéshez, valamint egy szöveges nézetet, hogy a `ViewController`következő kódot adja hozzá a osztályhoz:
+Most hozzon létre egy felhasználói felületet, amely tartalmaz egy gombot a Microsoft Graph API meghívásához, egy másikat a kijelentkezéshez, és egy szöveges nézetet, hogy a következő kódot adja hozzá a `ViewController`osztályhoz:
 
 ### <a name="ios-ui"></a>iOS felhasználói felület
 
@@ -280,7 +280,7 @@ func initUI() {
     }
 ```
 
-Ezután az `ViewController` osztályban belül is cserélje le a `viewDidLoad()` metódust a következőre:
+Ezután a `ViewController` osztályon belül is cserélje le a `viewDidLoad()` metódust a következőre:
 
 ```swift
     override func viewDidLoad() {
@@ -296,9 +296,9 @@ Ezután az `ViewController` osztályban belül is cserélje le a `viewDidLoad()`
 
 ## <a name="use-msal"></a>MSAL használata
 
-### <a name="initialize-msal"></a>Initialize MSAL
+### <a name="initialize-msal"></a>MSAL inicializálása
 
-Adja hozzá a `initMSAL` következő metódust `ViewController` a osztályhoz:
+Adja hozzá a következő `initMSAL` metódust a `ViewController` osztályhoz:
 
 ```swift
     func initMSAL() throws {
@@ -316,7 +316,7 @@ Adja hozzá a `initMSAL` következő metódust `ViewController` a osztályhoz:
     }
 ```
 
-Adja hozzá a következő `initMSAL` metódust `ViewController` a osztályhoz.
+Adja hozzá a következőt, miután `initMSAL` metódust a `ViewController` osztályhoz.
 
 ### <a name="ios-code"></a>iOS-kód:
 
@@ -337,7 +337,7 @@ func initWebViewParams() {
 
 ### <a name="for-ios-only-handle-the-sign-in-callback"></a>Csak iOS esetén kezelje a bejelentkezési visszahívást
 
-Nyissa meg az `AppDelegate.swift` fájlt. Ha a bejelentkezés után szeretné kezelni a visszahívást `MSALPublicClientApplication.handleMSALResponse` , vegye `appDelegate` fel a következőhöz hasonló osztályba:
+Nyissa meg az `AppDelegate.swift` fájlt. Ha a bejelentkezés után szeretné kezelni a visszahívást, adja hozzá `MSALPublicClientApplication.handleMSALResponse` a `appDelegate` osztályhoz, a következőhöz hasonló módon:
 
 ```swift
 // Inside AppDelegate...
@@ -348,7 +348,7 @@ func application(_ app: UIApplication, open url: URL, options: [UIApplication.Op
 
 ```
 
-**Ha a Xcode 11**-et használja, helyette a `SceneDelegate.swift` MSAL-visszahívást kell elhelyeznie.
+**Ha a Xcode 11**-et használja, helyette a MSAL visszahívást kell helyeznie a `SceneDelegate.swift`ba.
 Ha mind a UISceneDelegate, mind a UIApplicationDelegate támogatja a régebbi iOS-kompatibilitást, akkor a MSAL visszahívást mindkét fájlba be kell helyezni.
 
 ```swift
@@ -369,11 +369,11 @@ func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>)
 
 Most megvalósíthatja az alkalmazás felhasználói felületének feldolgozási logikáját, és interaktív módon lekérheti a jogkivonatokat a MSAL használatával.
 
-A MSAL két elsődleges módszert tesz elérhetővé a tokenek `acquireTokenSilently()` beszerzéséhez: és `acquireTokenInteractively()`: 
+A MSAL két elsődleges módszert tesz elérhetővé a tokenek beszerzéséhez: `acquireTokenSilently()` és `acquireTokenInteractively()`: 
 
-- `acquireTokenSilently()`megpróbál bejelentkezni egy felhasználóba, és felhasználói beavatkozás nélkül kap jogkivonatokat, amennyiben van ilyen fiók.
+- `acquireTokenSilently()` megpróbál bejelentkezni egy felhasználóba, és felhasználói beavatkozás nélkül kap jogkivonatokat, amíg van egy fiók.
 
-- `acquireTokenInteractively()`mindig a felhasználói FELÜLETET jeleníti meg, amikor megpróbál bejelentkezni a felhasználóba. A böngészőben vagy a Microsoft hitelesítő egyik fiókjában munkamenet-cookie-kat is használhat interaktív egyszeri bejelentkezéses felhasználói élmény biztosításához.
+- `acquireTokenInteractively()` mindig megjeleníti a felhasználói FELÜLETET, amikor megpróbál bejelentkezni a felhasználóba. A böngészőben vagy a Microsoft hitelesítő egyik fiókjában munkamenet-cookie-kat is használhat interaktív egyszeri bejelentkezéses felhasználói élmény biztosításához.
 
 Adja hozzá a következő kódot a `ViewController` osztályhoz:
 
@@ -412,10 +412,10 @@ Adja hozzá a következő kódot a `ViewController` osztályhoz:
 
 #### <a name="get-a-token-interactively"></a>Token interaktív beszerzése
 
-Az alábbi kód első alkalommal beolvas egy jogkivonatot egy `MSALInteractiveTokenParameters` objektum létrehozásával és meghívásával. `acquireToken` Ezután a következő kódot fogja hozzáadni:
+Az alábbi kód első alkalommal beolvas egy jogkivonatot egy `MSALInteractiveTokenParameters` objektum létrehozásával és `acquireToken`meghívásával. Ezután a következő kódot fogja hozzáadni:
 
-1. Hatókörökkel jön létre `MSALInteractiveTokenParameters` .
-2. Meghívja `acquireToken()` a létrehozott paramétereket.
+1. Hatókörökkel rendelkező `MSALInteractiveTokenParameters` hoz létre.
+2. Meghívja az `acquireToken()` a létrehozott paraméterekkel.
 3. Kezeli a hibákat. További részletekért tekintse meg a [MSAL for iOS és a MacOS hibakezelés útmutatóját](msal-handling-exceptions.md).
 4. Kezeli a sikeres esetet.
 
@@ -458,7 +458,7 @@ func acquireTokenInteractively() {
 
 #### <a name="get-a-token-silently"></a>Token lekérése csendesen
 
-A frissített jogkivonat csendes beszerzéséhez adja hozzá a következő kódot a `ViewController` osztályhoz. Létrehoz egy `MSALSilentTokenParameters` objektumot és hívásokat `acquireTokenSilent()`:
+A frissített jogkivonat csendes beszerzéséhez adja hozzá a következő kódot a `ViewController` osztályhoz. Létrehoz egy `MSALSilentTokenParameters` objektumot, és meghívja a `acquireTokenSilent()`:
 
 ```swift
     
@@ -498,9 +498,9 @@ A frissített jogkivonat csendes beszerzéséhez adja hozzá a következő kódo
 
 Ha rendelkezik jogkivonattal, az alkalmazás a HTTP-fejlécben felhasználhatja, hogy jogosult kérést készítsen a Microsoft Graph:
 
-| fejléc kulcsa    | value                 |
+| fejléc kulcsa    | érték                 |
 | ------------- | --------------------- |
-| Authorization | Tulajdonosi \<hozzáférés – token > |
+| Engedélyezés | Tulajdonos \<hozzáférés-token > |
 
 Adja hozzá a következő kódot a `ViewController` osztályhoz:
 
@@ -541,7 +541,7 @@ Ezután vegyen fel támogatást a kijelentkezéshez.
 > [!Important]
 > A MSAL-ből való kijelentkezés eltávolítja az alkalmazással kapcsolatos összes ismert információt, de a felhasználó továbbra is aktív munkamenettel fog rendelkezni az eszközön. Ha a felhasználó ismét megkísérli a bejelentkezést, láthatják a bejelentkezési felhasználói felületet, de előfordulhat, hogy nem kell újra megadniuk a hitelesítő adataikat, mert az eszköz munkamenete még aktív.
 
-A kijelentkezési képesség hozzáadásához adja hozzá a következő kódot az `ViewController` osztályban belül. Ez a módszer az összes fiókra váltást hajt végre, és eltávolítja azokat:
+A kijelentkezési képesség hozzáadásához adja hozzá a következő kódot a `ViewController` osztályon belül. Ez a módszer az összes fiókra váltást hajt végre, és eltávolítja azokat:
 
 ```swift 
 @objc func signOut(_ sender: AnyObject) {
@@ -576,11 +576,11 @@ Alapértelmezés szerint a MSAL az iOS-vagy macOS-kulcstartóban gyorsítótára
 
 A jogkivonat-gyorsítótárazás engedélyezése:
 1. Győződjön meg arról, hogy az alkalmazás megfelelően van aláírva
-2. Lépjen a Xcode-projekt beállításai > **képességek lapon** > a**kulcstartó megosztásának engedélyezése** lehetőségre.
-3. Kattintson **+** az elemre, és adja meg a következő **kulcstartó-csoportok** bejegyzést: 3. a for iOS esetében írja `com.microsoft.adalcache` be a 3. b értéket MacOS-re`com.microsoft.identity.universalstorage`
+2. Nyissa meg a Xcode-projekt beállításai > **képességek lapon** > a **kulcstartó megosztásának engedélyezése** lehetőséget.
+3. Kattintson a **+** elemre, és adja meg a következő **kulcstartó-csoportok** bejegyzést: 3. a for iOS, írja be a `com.microsoft.adalcache` 3. b MacOS-be `com.microsoft.identity.universalstorage`
 
 ### <a name="add-helper-methods"></a>Segítő metódusok hozzáadása
-A minta végrehajtásához adja hozzá a `ViewController` következő segítő metódusokat a osztályhoz.
+A minta végrehajtásához adja hozzá a következő segítő metódusokat a `ViewController` osztályhoz.
 
 ### <a name="ios-ui"></a>iOS felhasználói felület:
 
@@ -637,7 +637,7 @@ func updateSignOutButton(enabled : Bool) {
 
 ### <a name="multi-account-applications"></a>Több fiókból álló alkalmazások
 
-Ez az alkalmazás egyetlen fiókra épül. A MSAL támogatja a többfiókos forgatókönyveket is, de az alkalmazások további munkája szükséges. Létre kell hoznia egy felhasználói felületet, amely segítségével a felhasználók kiválaszthatják, hogy melyik fiókot szeretnék használni a tokeneket igénylő műveletekhez. Azt is megteheti, hogy az alkalmazás egy heurisztikus módszert alkalmaz, amellyel kiválaszthatja, hogy melyik fiókot szeretné használni a `getAccounts()` metódus segítségével.
+Ez az alkalmazás egyetlen fiókra épül. A MSAL támogatja a többfiókos forgatókönyveket is, de az alkalmazások további munkája szükséges. Létre kell hoznia egy felhasználói felületet, amely segítségével a felhasználók kiválaszthatják, hogy melyik fiókot szeretnék használni a tokeneket igénylő műveletekhez. Azt is megteheti, hogy az alkalmazás egy heurisztikus eszközt is megvalósíthat, hogy kiválassza, melyik fiókot szeretné használni a `getAccounts()` metódus segítségével.
 
 ## <a name="test-your-app"></a>Az alkalmazás tesztelése
 
@@ -647,7 +647,7 @@ Az alkalmazás létrehozása és üzembe helyezése tesztelési eszközön vagy 
 
 Amikor a felhasználó először jelentkezik be az alkalmazásba, a Microsoft Identity a kért engedélyekkel való beleegyező jogosultságot kér.  Míg a legtöbb felhasználó képes hozzájárulni, néhány Azure AD-bérlő letiltotta a felhasználói beleegyezését, amely megköveteli, hogy a rendszergazdák az összes felhasználó nevében hozzájárulásukat adjanak. A forgatókönyv támogatásához regisztrálja az alkalmazás hatóköreit a Azure Portalban.
 
-A bejelentkezést követően az alkalmazás megjeleníti az Microsoft Graph `/me` végpont által visszaadott adatok megjelenítését.
+A bejelentkezést követően az alkalmazás megjeleníti a Microsoft Graph `/me` végpont által visszaadott adatok megjelenítését.
 
 ## <a name="get-help"></a>Segítségkérés
 

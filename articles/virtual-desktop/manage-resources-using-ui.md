@@ -5,14 +5,14 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: tutorial
-ms.date: 06/04/2019
+ms.date: 11/09/2019
 ms.author: helohr
-ms.openlocfilehash: 175c5173091bee85a5c9fc4a50e9df5d3f73da13
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: c7ef648dd2610c337bc9146e7a52c04d91907c8e
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72300913"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73904912"
 ---
 # <a name="tutorial-deploy-a-management-tool"></a>Oktatóanyag: felügyeleti eszköz üzembe helyezése
 
@@ -56,15 +56,15 @@ Az Azure Resource Management-sablon üzembe helyezéséhez kövesse az alábbi u
     - Ha felhőalapú megoldás-szolgáltatói előfizetést használ, kövesse az alábbi utasításokat az Azure-ba történő üzembe helyezéshez:
         1. Görgessen le, és kattintson **a jobb gombbal az Azure**-ba, majd válassza a **hivatkozás helyének másolása**lehetőséget.
         2. Nyisson meg egy szövegszerkesztőt, például a jegyzettömböt, és illessze be a hivatkozást.
-        3. Közvetlenül a <https://portal.azure.com/> után és a hashtag (#) előtt adja meg a (z) (@) jelet a bérlői tartománynév után. Íme egy példa a következő formátumra: <https://portal.azure.com/@Contoso.onmicrosoft.com#create/>.
+        3. Közvetlenül a <https://portal.azure.com/> után és a hashtag (#) előtt adjon meg egy kukac (@) jelet, majd a bérlői tartománynevet. Íme egy példa a következő formátumra: <https://portal.azure.com/@Contoso.onmicrosoft.com#create/>.
         4. Jelentkezzen be a Azure Portal felhasználóként rendszergazdai/közreműködői engedélyekkel a felhőalapú megoldás-szolgáltató előfizetéséhez.
         5. Illessze be a szövegszerkesztőbe másolt hivatkozást a címsorba.
 
 ### <a name="guidance-for-template-parameters"></a>Útmutató a sablon paramétereinek megadásához
 A következő módon adhatja meg az eszköz konfigurálásához szükséges paramétereket:
 
-- Ez a távoli asztali közvetítő URL-címe: https: \//rdbroker. WVD. microsoft. com/
-- Ez az erőforrás URL-címe: https: \//Mrs-prod. ame. GBL/Mrs-RDInfra-Prod
+- Ez a távoli asztali közvetítő URL-címe: https:\//rdbroker.wvd.microsoft.com/
+- Ez az erőforrás URL-címe: https:\//mrs-prod.ame.gbl/mrs-RDInfra-prod
 - A HRE hitelesítő adataival tiltsa le az MFA-t az Azure-ba való bejelentkezéshez. Nézze [meg, mi szükséges a Azure Resource Manager sablon futtatásához](#what-you-need-to-run-the-azure-resource-manager-template).
 - Használjon egyedi nevet az alkalmazás számára, amely regisztrálva lesz a Azure Active Directory a felügyeleti eszközhöz; például: Apr3UX.
 
@@ -103,9 +103,14 @@ Az eszköz elindításához kövesse az alábbi utasításokat:
 1. Válassza ki az Azure App Services erőforrást a sablonban megadott névvel (például Apr3UX), és navigáljon a hozzá társított URL-címhez. például <https://rdmimgmtweb-210520190304.azurewebsites.net>.
 2. Jelentkezzen be a Windows rendszerű virtuális asztali hitelesítő adataival.
 3. Amikor a rendszer kéri, hogy válasszon ki egy bérlői csoportot, válassza ki az **alapértelmezett bérlői csoportot** a legördülő listából.
+4. Amikor kiválasztja az alapértelmezett bérlői csoportot, az ablak jobb oldalán megjelenik egy menü. Ezen a menüben keresse meg a bérlői csoport nevét, és jelölje ki.
 
 > [!NOTE]
 > Ha egyéni bérlői csoporttal rendelkezik, a legördülő listából válassza a nevet manuálisan.
+
+## <a name="report-issues"></a>Problémák jelentése
+
+Ha problémák merülnek fel a felügyeleti eszközzel vagy más Windowsos virtuális asztali eszközökkel kapcsolatban, kövesse az [ARM-sablonok](https://github.com/Azure/RDS-Templates/blob/master/README.md) című témakör utasításait a githubon való jelentéséhez távoli asztali szolgáltatások.
 
 ## <a name="next-steps"></a>Következő lépések
 

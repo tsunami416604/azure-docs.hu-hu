@@ -14,34 +14,70 @@ ms.topic: sample
 ms.date: 01/18/2018
 ms.author: atsenthi
 ms.custom: mvc
-ms.openlocfilehash: 89094dc959f3a258370afc3cfb720aa3b101d1b7
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: 04cd13efd198f0a4875c0ede525d10cf45220989
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69036132"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73901502"
 ---
 # <a name="add-an-application-certificate-to-a-service-fabric-cluster"></a>Alkalmazástanúsítvány hozzáadása egy Service Fabric-fürthöz
 
-Ez a példaszkript létrehoz egy önaláírt tanúsítványt a megadott Azure Key Vaultban, és telepíti a Service Fabric-fürt minden csomópontján. A tanúsítvány emellett egy helyi mappába is letöltődik. A letöltött tanúsítvány neve megegyezik a kulcstartóban található tanúsítvány nevével. Szabja testre a paramétereket szükség szerint.
+Ez a példa bemutatja, hogyan hozhat létre tanúsítványt Key Vaultban, majd hogyan telepítheti azt egy virtuálisgép-méretezési csoportba, amelyet a fürt futtat. Ez a forgatókönyv nem használja Service Fabric közvetlenül, hanem a Key Vault és a virtuálisgép-méretezési csoportoktól függ.
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 Szükség esetén telepítse az Azure PowerShellt az [Azure PowerShell útmutatójának](/powershell/azure/overview) utasításait követve, majd a `Connect-AzAccount` futtatásával hozza létre a kapcsolatot az Azure-ral. 
 
-## <a name="sample-script"></a>Példaszkript
+## <a name="create-a-certificate-in-key-vault"></a>Tanúsítvány létrehozása Key Vaultban
 
-[!code-powershell[main](../../../powershell_scripts/service-fabric/add-application-certificate/add-new-application-certificate.ps1 "Add an application certificate to a cluster")]
+```powershell
+$VaultName = ""
+$CertName = ""
+$SubjectName = "CN="
+
+$policy = New-AzKeyVaultCertificatePolicy -SubjectName $SubjectName -IssuerName Self -ValidityInMonths 12
+Add-AzKeyVaultCertificate -VaultName $VaultName -Name $CertName -CertificatePolicy $policy
+```
+
+## <a name="update-virtual-machine-scale-sets-profile-with-certificate"></a>Virtuálisgép-méretezési csoport profiljának frissítése tanúsítvánnyal
+
+```powershell
+$ResourceGroupName = ""
+$VMSSName = ""
+$CertStore = "My" # Update this with the store you want your certificate placed in, this is LocalMachine\My
+
+$CertConfig = New-AzVmssVaultCertificateConfig -CertificateUrl (Get-AzKeyVaultCertificate -VaultName $VaultName -Name $CertName).SecretId -CertificateStore $CertStore
+$VMSS = Get-AzVmss -ResourceGroupName $ResourceGroupName -VMScaleSetName $VMSSName
+
+# If this KeyVault is already known by the virtual machine scale set, for example if the cluster certificate is deployed from this keyvault, use
+$VMSS.virtualmachineprofile.osProfile.secrets[0].vaultCertificates.Add($certConfig)
+
+# Otherwise use
+$VMSS = Add-AzVmssSecret -VirtualMachineScaleSet $VMSS -SourceVaultId (Get-AzKeyVault -VaultName $VaultName).ResourceId  -VaultCertificate $CertConfig
+```
+
+## <a name="update-the-virtual-machine-scale-set"></a>A virtuálisgép-méretezési csoport frissítése
+```powershell
+Update-AzVmss -ResourceGroupName $ResourceGroupName -VirtualMachineScaleSet $VMSS -VMScaleSetName $VMSSName
+```
+
+> Ha azt szeretné, hogy a tanúsítvány a fürt több csomópontos típusára legyen helyezve, a parancsfájl második és harmadik részét meg kell ismételni minden olyan csomópont-típusnál, amelynél a tanúsítványnak szerepelnie kell.
 
 ## <a name="script-explanation"></a>Szkript ismertetése
 
-Ez a szkript a következő parancsokat használja: A táblázatban lévő összes parancs a hozzá tartozó dokumentációra hivatkozik.
+A szkript a következő parancsokat használja: A táblázatban lévő összes parancs a hozzá tartozó dokumentációra hivatkozik.
 
 | Parancs | Megjegyzések |
 |---|---|
-| [Add-AzServiceFabricApplicationCertificate](/powershell/module/az.servicefabric/Add-azServiceFabricApplicationCertificate) | Adjon hozzá új alkalmazástanúsítványt a fürtöt alkotó virtuálisgép-méretezési csoporthoz.  |
+| [Új – AzKeyVaultCertificatePolicy](/powershell/module/az.keyvault/New-AzKeyVaultCertificatePolicy) | Létrehoz egy memóriabeli szabályzatot, amely a tanúsítványt jelképezi |
+| [Add-AzKeyVaultCertificate](/powershell/module/az.keyvault/Add-AzKeyVaultCertificate)| Központilag telepíti a szabályzatot Key Vault |
+| [Új – AzVmssVaultCertificateConfig](/powershell/module/az.compute/New-AzVmssVaultCertificateConfig) | Egy virtuális gépen található tanúsítványt jelképező memóriabeli konfiguráció létrehozása |
+| [Get-AzVmss](/powershell/module/az.compute/Get-AzVmss) |  |
+| [Add-AzVmssSecret](/powershell/module/az.compute/Add-AzVmssSecret) | Hozzáadja a tanúsítványt a virtuálisgép-méretezési csoport memóriában lévő definíciójában. |
+| [Frissítés – AzVmss](/powershell/module/az.compute/Update-AzVmss) | Üzembe helyezi a virtuálisgép-méretezési csoport új definícióját. |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az Azure PowerShell modullal kapcsolatos további információért lásd az [Azure PowerShell dokumentációját](/powershell/azure/overview).
 
