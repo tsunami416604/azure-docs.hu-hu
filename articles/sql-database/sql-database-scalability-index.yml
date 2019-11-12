@@ -1,9 +1,9 @@
 ### YamlMime:YamlDocument
 documentType: LandingData
-title: Az Azure SQL Database - méretezhetőség
+title: Méretezhetőség
 metadata:
   document_id: 36d89c48-3646-380e-34a0-ae3ac62e2641
-  title: Az Azure SQL Database - méretezhetőség
+  title: Azure SQL Database – Méretezhetőség
   meta.description: Learn how to scale your Azure SQL Database.
   services: sql-database
   ms.subservice: scale-out
@@ -19,7 +19,7 @@ metadata:
 sections:
   - items:
       - type: paragraph
-        text: 'Az Azure SQL Database lehetővé teszi, hogy könnyedén méretezheti, adatbázis hozzáadásával a nagyobb számítási teljesítmény (növelheti), vagy további adatbázisegység (horizontális felskálázás) hozzáadása.'
+        text: Az Azure SQL Database lehetővé teszi az adatbázis egyszerű méretezését több számítási erőforrás hozzáadásával (vertikális felskálázás) vagy több adatbázisegység hozzáadásával (horizontális felskálázás).
       - type: list
         style: cards
         className: cardsM
@@ -27,28 +27,28 @@ sections:
         items:
           - title: Vertikális felskálázás
             href: /azure/sql-database/sql-database-scale-resources
-            html: '<p>Könnyedén erőforrásainak hozzáadása vagy eltávolítása az SQL-adatbázisban található, a legjobb ár-teljesítmény arányt, vagy kezelheti teljesítményével kapcsolatos problémákat.</p>'
-          - title: Felskálázás olvasása
+            html: '<p>Egyszerűen hozzáadhat vagy eltávolíthat erőforrásokat a SQL Database-ben azzal a céllal, hogy megtalálja a legjobb ár-teljesítmény arányt, vagy enyhítse a teljesítménnyel kapcsolatos problémákat.</p>'
+          - title: Olvasási felskálázás
             href: /azure/sql-database/sql-database-read-scale-out
-            html: '<p>Kritikus fontosságú üzleti szint egy ingyenes, – ingyenes replika adatbázis, ahol futtathatja jelentéseket, elemzéseket és más csak olvasási lekérdezések adatokat biztosít.</p>'
+            html: '<p>Az üzletileg kritikus csomag ingyenesen biztosítja az adatbázis replikáját, ahol jelentések, elemzések és egyéb, csak olvasási lekérdezések futtathatók az adatok másolatán.</p>'
           - title: Adatbázis horizontális skálázása
             href: /azure/sql-database/sql-database-elastic-scale-introduction
-            html: <p>Horizontális felskálázás az adatbázis maximális számítási és tárolási korlátok az önálló adatbázisok számára túl több adatbázisok szegmens segítségével.</p>
+            html: '<p>Több adatbázisból álló szegmenseket is használhat ahhoz, hogy az adatbázist horizontálisan felskálázza az önálló adatbázisok maximális számítási és tárolási korlátain túlmenően.</p>'
           - title: Rugalmas lekérdezések
             href: /azure/sql-database/sql-database-elastic-query-overview
-            html: <p>Rugalmas lekérdezések futtatása standard Transact-SQL lekérdezések egy globálisan elosztott adatbázis-szilánkból csoportján engedélyezze.</p>
+            html: <p>A rugalmas lekérdezések lehetővé teszik szabványos Transact-SQL-lekérdezések futtatását globálisan elosztott adatbázis-szegmensek egy készletén.</p>
           - title: Rugalmas tranzakciók
             href: /azure/sql-database/sql-database-elastic-transactions-overview
-            html: <p>Használja a globálisan elosztott tranzakciók tranzakciós szempontból konzisztens az elosztott adatok elérhetőségét.</p>
+            html: <p>A globálisan elosztott tranzakciók használatával biztosítható a tranzakciós szempontból konzisztens hozzáférés az elosztott adatokhoz.</p>
           - title: Adatbázisközi feladatok
             href: /azure/sql-database/elastic-jobs-overview
-            html: <p>Adatbázisközi rugalmas feladatok használatával adatbázisok karbantartása.</p>
-  - title: További források
+            html: <p>Fenntarthat egy adatbáziskészletet adatbázisokon átívelő rugalmas feladatok használatával.</p>
+  - title: További erőforrások
     items:
       - type: paragraph
-        text: 'Ismerje meg a további funkciók, amelyek segítségével az adatok méretezését.'
+        text: 'Megismerheti azokat a további funkciókat, amelyek segítenek az adatok méretezésében.'
       - type: list
         style: ordered
         items:
-          - html: '<a href="https://docs.microsoft.com/sql/relational-databases/linked-servers/linked-servers-database-engine">A csatolt kiszolgáló</a> core SQL Server adatbázismotor-szolgáltatás, amely lehetővé teszi, hogy hajtsa végre az elosztott lekérdezések Transact-SQL-kódot egy másik adatbázismotorokat is.'
-          - html: <a href="sql-database-geo-replication-overview.md">Georeplikáció</a> lehetővé teszi tetszőleges számú olvasható replikát helyezni különböző régiókban.
+          - html: 'A <a href="https://docs.microsoft.com/sql/relational-databases/linked-servers/linked-servers-database-engine">csatolt kiszolgáló</a> az SQL Server Database motorjának egyik alapvető funkciója, amely lehetővé teszi elosztott lekérdezések végrehajtását Transact-SQL-kódból más adatbázismotorok felé.'
+          - html: A <a href="sql-database-geo-replication-overview.md">georeplikáció</a> segítségével bármennyi olvasható replika elhelyezhető különböző régiókban.

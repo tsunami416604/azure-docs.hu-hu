@@ -175,12 +175,93 @@
               href: app/ilogger.md
             - name: Java
               items:
-                - name: Naplóalapú és előre összesített metrikák
-                  href: app/pre-aggregated-metrics-log-metrics.md
-                - name: Naplóalapú metrikák definíciói
-                  href: platform/app-insights-metrics.md
-                - name: Klasszikus Metrikaböngésző
-                  href: app/metrics-explorer.md
+                - name: Webalkalmazások
+                  displayname: java
+                  href: app/java-get-started.md
+                - name: Docker-alkalmazások
+                  href: app/docker.md
+                - name: Nyomkövetési naplók
+                  href: app/java-trace-logs.md
+                - name: Unix-metrikák
+                  href: app/java-collectd.md
+                - name: Függőségek
+                  href: app/java-agent.md
+                - name: Szűrőtelemetria
+                  href: app/java-filter-telemetry.md
+                - name: Mikrométeres metrikák
+                  displayname: java
+                  href: app/micrometer-java.md
+                - name: Spring Boot-alkalmazás
+                  displayname: java
+                  href: /java/azure/spring-framework/configure-spring-boot-java-applicationinsights
+                - name: Hibaelhárítás
+                  href: app/java-troubleshoot.md
+            - name: Node.js
+              href: app/nodejs.md
+            - name: Python
+              items:
+                - name: Áttekintés
+                  displayname: 'python, Python, OpenCenus, OpenTelemetry, py'
+                  href: app/opencensus-python.md
+                - name: Függőségek
+                  href: app/opencensus-python-dependency.md
+                - name: Kérelmek
+                  href: app/opencensus-python-request.md
+            - name: Weblapok
+              items:
+                - name: Ügyféloldali JavaScript
+                  href: app/javascript.md
+            - name: Application Insights API összefoglalója
+              displayname: 'SDK, API, custom events, custom metrics, trackevent,trackmetric, getmetric, trackrequest, trackexception, tracktrace, trackdependency'
+              href: app/api-custom-events-metrics.md
+            - name: Az ASP.NET hibaelhárítása
+              href: app/asp-net-troubleshoot-no-data.md
+        - name: Kód nélküli monitorozás
+          items:
+            - name: És Azure-beli virtuális gép és méretezési csoport
+              href: app/azure-vm-vmss-apps.md
+            - name: Azure App Service
+              displayname: 'App Service, web app, PaaS, Azure web app'
+              href: app/azure-web-apps.md
+            - name: Azure Cloud Services
+              displayname: 'cloud, cloud services, PaaS'
+              href: app/cloudservices.md
+            - name: Azure Functions
+              displayname: 'functions, monitor functions, automation'
+              href: ../azure-functions/functions-monitoring.md
+            - name: Kubernetes-alkalmazások
+              displayname: 'aks, microservice, istio, service mesh, application monitoring, monitor kubernetes, monitor aks'
+              href: app/kubernetes.md
+            - name: Állapotmonitor (örökölt)
+              displayname: 'IIS monitoring, on premises monitoring, on prem,'
+              href: app/monitor-performance-live-website-now.md
+            - name: Helyszíni kiszolgálók
+              items:
+                - name: Áttekintés
+                  displayname: 'IIS monitoring, on premises monitoring, on prem,'
+                  href: app/status-monitor-v2-overview.md
+                - name: Első lépések
+                  href: app/status-monitor-v2-get-started.md
+                - name: Részletes utasítások
+                  href: app/status-monitor-v2-detailed-instructions.md
+                - name: Hibaelhárítás és ismert problémák
+                  href: app/status-monitor-v2-troubleshoot.md
+                - name: API Disable-InstrumentationEngine
+                  href: app/status-monitor-v2-api-disable-instrumentation-engine.md
+                - name: API Disable-ApplicationInsightsMonitoring
+                  href: app/status-monitor-v2-api-disable-monitoring.md
+                - name: API Enable-InstrumentationEngine
+                  href: app/status-monitor-v2-api-enable-instrumentation-engine.md
+                - name: API Enable-ApplicationInsightsMonitoring
+                  href: app/status-monitor-v2-api-enable-monitoring.md
+                - name: API Get-ApplicationInsightsMonitoringConfig
+                  href: app/status-monitor-v2-api-get-config.md
+                - name: API Get-ApplicationInsightsMonitoringStatus
+                  href: app/status-monitor-v2-api-get-status.md
+                - name: API Set-ApplicationInsightsMonitoringConfig
+                  href: app/status-monitor-v2-api-set-config.md
+                - name: API Start-ApplicationInsightsMonitoringTrace
+                  href: app/status-monitor-v2-api-start-trace.md
             - name: Keresés
               href: app/diagnostic-search.md
             - name: Profilkészítő
@@ -297,84 +378,6 @@
                 - name: Nyomkövetési naplók
                   href: app/asp-net-trace-logs.md
                 - name: Unix-metrikák
-                  href: app/java-collectd.md
-                - name: Függőségek
-                  href: app/java-agent.md
-                - name: Szűrőtelemetria
-                  href: app/java-filter-telemetry.md
-                - name: Mikrométeres metrikák
-                  displayname: java
-                  href: app/micrometer-java.md
-                - name: Spring Boot-alkalmazás
-                  displayname: java
-                  href: /java/azure/spring-framework/configure-spring-boot-java-applicationinsights
-                - name: Hibaelhárítás
-                  href: app/java-troubleshoot.md
-            - name: Node.js
-              href: app/nodejs.md
-            - name: Python
-              items:
-                - name: Áttekintés
-                  href: app/opencensus-python.md
-                - name: Függőségek
-                  href: app/opencensus-python-dependency.md
-                - name: Kérelmek
-                  href: app/opencensus-python-request.md
-            - name: Weblapok
-              items:
-                - name: Ügyféloldali JavaScript
-                  href: app/javascript.md
-            - name: Application Insights API összefoglalója
-              displayname: 'SDK, API, custom events, custom metrics, trackevent,trackmetric, getmetric, trackrequest, trackexception, tracktrace, trackdependency'
-              href: app/api-custom-events-metrics.md
-            - name: Az ASP.NET hibaelhárítása
-              href: app/asp-net-troubleshoot-no-data.md
-        - name: Kód nélküli monitorozás
-          items:
-            - name: És Azure-beli virtuális gép és méretezési csoport
-              href: app/azure-vm-vmss-apps.md
-            - name: Azure App Service
-              displayname: 'App Service, web app, PaaS, Azure web app'
-              href: app/azure-web-apps.md
-            - name: Azure Cloud Services
-              displayname: 'cloud, cloud services, PaaS'
-              href: app/cloudservices.md
-            - name: Azure Functions
-              displayname: 'functions, monitor functions, automation'
-              href: ../azure-functions/functions-monitoring.md
-            - name: Kubernetes-alkalmazások
-              displayname: 'aks, microservice, istio, service mesh, application monitoring, monitor kubernetes, monitor aks'
-              href: app/kubernetes.md
-            - name: Állapotmonitor (örökölt)
-              displayname: 'IIS monitoring, on premises monitoring, on prem,'
-              href: app/monitor-performance-live-website-now.md
-            - name: Helyszíni kiszolgálók
-              items:
-                - name: Áttekintés
-                  displayname: 'IIS monitoring, on premises monitoring, on prem,'
-                  href: app/status-monitor-v2-overview.md
-                - name: Első lépések
-                  href: app/status-monitor-v2-get-started.md
-                - name: Részletes utasítások
-                  href: app/status-monitor-v2-detailed-instructions.md
-                - name: Hibaelhárítás és ismert problémák
-                  href: app/status-monitor-v2-troubleshoot.md
-                - name: API Disable-InstrumentationEngine
-                  href: app/status-monitor-v2-api-disable-instrumentation-engine.md
-                - name: API Disable-ApplicationInsightsMonitoring
-                  href: app/status-monitor-v2-api-disable-monitoring.md
-                - name: API Enable-InstrumentationEngine
-                  href: app/status-monitor-v2-api-enable-instrumentation-engine.md
-                - name: API Enable-ApplicationInsightsMonitoring
-                  href: app/status-monitor-v2-api-enable-monitoring.md
-                - name: API Get-ApplicationInsightsMonitoringConfig
-                  href: app/status-monitor-v2-api-get-config.md
-                - name: API Get-ApplicationInsightsMonitoringStatus
-                  href: app/status-monitor-v2-api-get-status.md
-                - name: API Set-ApplicationInsightsMonitoringConfig
-                  href: app/status-monitor-v2-api-set-config.md
-                - name: API Start-ApplicationInsightsMonitoringTrace
-                  href: app/status-monitor-v2-api-start-trace.md
         - name: Erőforrás létrehozása
           href: app/create-new-resource.md
         - name: Alkalmazás irányítópultja
@@ -848,6 +851,8 @@
               href: insights/cosmosdb-insights-overview.md
         - name: Hálózatok
           items:
+            - name: Azure Monitor hálózatokhoz
+              href: insights/network-insights-overview.md
             - name: Hálózatelemzés
               href: insights/azure-networking-analytics.md
             - name: DNS

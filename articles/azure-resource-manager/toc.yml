@@ -138,6 +138,8 @@
           href: resource-group-create-multiple.md
         - name: Előfizetés-szintű erőforrások
           href: deploy-to-subscription.md
+        - name: Felügyeleticsoport-szintű erőforrások
+          href: deploy-to-management-group.md
     - name: Sablonok üzembe helyezése
       items:
         - name: Üzembe helyezés – portál

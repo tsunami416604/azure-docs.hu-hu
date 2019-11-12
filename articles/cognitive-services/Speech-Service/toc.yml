@@ -39,6 +39,10 @@
           href: how-to-automatic-language-detection.md
         - name: Tömörített hangbemeneti formátumok használata
           href: how-to-use-codec-compressed-audio-input-streams.md
+        - name: Tömörített hangbemeneti formátumok használata (iOS)
+          href: how-to-use-codec-compressed-audio-input-streams-ios.md
+        - name: Tömörített hangbemeneti formátumok használata (Android)
+          href: how-to-use-codec-compressed-audio-input-streams-android.md
         - name: Beszédfelismerés használata Docker-tárolókkal
           href: speech-container-howto.md?tabs=stt
     - name: Referencia
@@ -200,11 +204,11 @@
     - name: Áttekintés
       items:
         - name: Mi az a beszédátírás?
-          href: conversation-transcription-service.md
+          href: conversation-transcription.md
     - name: Útmutatók
       items:
         - name: Valós idejű beszédátírás
-          href: how-to-use-conversation-transcription-service.md
+          href: how-to-use-conversation-transcription.md
         - name: Aszinkron beszédátírás
           href: how-to-async-conversation-transcription.md
     - name: Referencia
@@ -330,6 +334,11 @@
 - name: Beszédszolgáltatás
   expanded: false
   items:
+    - name: Forgatókönyvek
+      items:
+        - name: Ügyfélszolgálatok
+          href: get-started.md
+          displayName: 'IVRs, IVR, Telephony Data, Transcription for Telephony Data, Real-time Transcription for Call Centers'
     - name: Útmutatók
       items:
         - name: A Speech Service ingyenes kipróbálása

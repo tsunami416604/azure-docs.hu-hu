@@ -39,12 +39,15 @@
           href: get-started-get-model-rest-apis.md
 - name: Oktatóanyagok
   items:
+    - name: Felbontható alkalmazás létrehozása
+      items:
+        - name: 1. Felhasználói szándékok meghatározása
+          href: tutorial-intents-only.md
+        - name: 2. Felhasználói adatok kinyerése
+          href: tutorial-machine-learned-entity.md
+          displayName: 'n-depth, constraint, descriptor, phrase list, entity'
     - name: Alkalmazás létrehozása
       items:
-        - name: Felhasználói szándékok meghatározása
-          href: tutorial-intents-only.md
-        - name: A gyakori felhasználói adatok azonosítása előre összeállított modellekkel
-          href: luis-tutorial-prebuilt-intents-entities.md
         - name: Hangulat lekérése a felhasználó által kimondott szövegekből
           href: luis-quickstart-intent-and-sentiment-analysis.md
         - name: Helyesen formázott adatok lekérése reguláris kifejezésekkel

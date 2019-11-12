@@ -150,6 +150,8 @@
               href: check-cluster-health.md
         - name: Adatbázis
           items:
+            - name: Követő adatbázisok
+              href: follower.md
             - name: Adatbázis-engedélyek kezelése
               href: manage-database-permissions.md
             - name: Házirendek

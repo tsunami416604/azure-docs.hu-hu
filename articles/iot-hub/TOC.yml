@@ -91,6 +91,8 @@
       href: iot-hub-scaling.md
     - name: Magas rendelkezésre állás és vészhelyreállítás
       href: iot-hub-ha-dr.md
+    - name: IoT Hub klónozása egy másik régióba
+      href: iot-hub-how-to-clone.md
     - name: Az IoT Hub IP-címének ismertetése
       href: iot-hub-understand-ip-address.md
     - name: További protokollok támogatása

@@ -876,6 +876,8 @@
       href: service-fabric-common-questions.md
     - name: MSDN fórum
       href: 'https://social.msdn.microsoft.com/Forums/home?forum=AzureServiceFabric'
+    - name: Az Azure Resource Manager üzembehelyezési védőkorlátai
+      href: service-fabric-azure-resource-manager-guardrails.md
     - name: Díjszabás
       href: 'https://azure.microsoft.com/pricing/details/service-fabric/'
     - name: Díjkalkulátor

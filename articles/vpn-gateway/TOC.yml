@@ -134,18 +134,18 @@
               href: point-to-site-vpn-client-configuration-radius.md
             - name: P2S VPN RADIUS-hitelesítés integrálása az NPS-kiszolgálóval
               href: vpn-gateway-radiuis-mfa-nsp.md
+        - name: Azure AD-hitelesítés
+          items:
+            - name: Bérlő konfigurálása
+              href: openvpn-azure-ad-tenant.md
+            - name: VPN-ügyfél konfigurálása
+              href: openvpn-azure-ad-client.md
         - name: OpenVPN
           items:
             - name: Az OpenVPN konfigurálása pont–hely kapcsolatokhoz
               href: vpn-gateway-howto-openvpn.md
             - name: Az OpenVPN-ügyfelek konfigurálása
               href: vpn-gateway-howto-openvpn-clients.md
-            - name: Open VPN – Azure Active Directory-hitelesítés
-              items:
-                - name: Azure AD-bérlő konfigurálása
-                  href: openvpn-azure-ad-tenant.md
-                - name: VPN-ügyfél konfigurálása – Azure AD
-                  href: openvpn-azure-ad-client.md
         - name: Váltás nyilvános hitelesítésszolgáltatói átjárótanúsítványra a P2S-kapcsolatok esetében
           href: vpn-gateway-point-to-site-gateway-public-ca.md
         - name: AlwaysOn VPN-eszközalagút konfigurálása
