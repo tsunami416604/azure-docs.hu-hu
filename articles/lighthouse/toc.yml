@@ -13,10 +13,10 @@
 - name: Alapelvek
   items:
     - name: Az Azure által delegált erőforrás-kezelés
-      displayName: delegation
+      displayName: 'delegation, projection'
       href: ./concepts/azure-delegated-resource-management.md
     - name: Bérlők közötti felügyeleti megoldások
-      displayName: scenarios
+      displayName: 'scenarios, supported, enhanced, services, limitations, current'
       href: ./concepts/cross-tenant-management-experience.md
     - name: 'Bérlők, szerepkörök és felhasználók'
       displayName: 'Azure AD, Azure Active Directory'
@@ -39,16 +39,22 @@
       displayName: resource management
       href: ./how-to/onboard-customer.md
     - name: Felügyelt szolgáltatási ajánlatok közzététele az Azure Marketplace-en
-      displayName: 'managed services offer, azure marketplace, publish'
+      displayName: 'managed services offer, azure marketplace, publish, marketplace'
       href: ./how-to/publish-managed-services-offers.md
     - name: Ügyfelek megtekintése és kezelése
-      displayName: 'managed services offer, azure marketplace, publish'
+      displayName: my customers
       href: ./how-to/view-manage-customers.md
     - name: Szolgáltatók megtekintése és kezelése
-      displayName: 'managed services offer, azure marketplace, publish'
+      displayName: 'customer, update'
       href: ./how-to/view-manage-service-providers.md
-    - name: Javítható szabályzat telepítése
-      href: ./how-to/deploy-policy-remediation.md
+    - name: Azure Policy-integráció
+      items:
+        - name: Szabályzat nagy léptékű üzembe helyezése
+          displayName: storage
+          href: ./how-to/policy-at-scale.md
+        - name: Javítható szabályzat telepítése
+          displayName: 'deployIfNotExists, modify, managed identities, managed identity'
+          href: ./how-to/deploy-policy-remediation.md
 - name: Referencia
   items:
     - name: Azure CLI

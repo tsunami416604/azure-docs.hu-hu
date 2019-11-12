@@ -1,6 +1,6 @@
 ### YamlMime:Landing
 title: Az Azure Database for PostgreSQL dokumentációja
-summary: 'A PostgreSQL-hez készült Azure Database egy relációsadatbázis-szolgáltatás, amely a nyílt forráskódú Postgres adatbázismotoron alapszik. A teljes körűen felügyelt adatbázis-szolgáltatás kiszámítható teljesítménnyel, biztonságosan, magas rendelkezésre állással és dinamikus skálázhatósággal kezeli az üzletmenet szempontjából kritikus fontosságú számítási feladatokat. Két üzembehelyezési lehetőség érhető el: egykiszolgálós és rugalmas skálázási (Citus) fürt (előzetes verzió). A Hyperscale (Citus) beállítás horizontálisan skálázza a lekérdezéseket több gépen egy horizontális skálázási módszer (sharding) segítségével, és nagyobb méretet és teljesítményt igénylő alkalmazásokat szolgál ki. Gyors útmutatóink, oktatóanyagaink és példáink segítségével megismerheti a PostgreSQL-hez készült Azure Database használatát.'
+summary: 'A PostgreSQL-hez készült Azure Database egy relációsadatbázis-szolgáltatás, amely a nyílt forráskódú Postgres adatbázismotoron alapszik. A teljes körűen felügyelt adatbázis-szolgáltatás kiszámítható teljesítménnyel, biztonságosan, magas rendelkezésre állással és dinamikus skálázhatósággal kezeli az üzletmenet szempontjából kritikus fontosságú számítási feladatokat. Két üzembehelyezési lehetőség érhető el: egykiszolgálós és rugalmas skálázási (Citus) fürt. A Hyperscale (Citus) beállítás horizontálisan skálázza a lekérdezéseket több gépen egy horizontális skálázási módszer (sharding) segítségével, és nagyobb méretet és teljesítményt igénylő alkalmazásokat szolgál ki. Gyors útmutatóink, oktatóanyagaink és példáink segítségével megismerheti a PostgreSQL-hez készült Azure Database használatát.'
 metadata:
   description: Az Azure Database for PostgreSQL egy fejlesztőknek készült relációsadatbázis-szolgáltatás a Microsoft-felhőben, amely a nyílt forráskódú PostgreSQL adatbázismotoron alapul.
   author: rachel-msft
@@ -8,12 +8,12 @@ metadata:
   ms.date: 08/30/2019
   ms.service: postgresql
   ms.topic: landing-page
-  ms.openlocfilehash: 70888f27f346c930d37652a3ddd02a0c4d5f65c1
-  ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+  ms.openlocfilehash: 4deeec3686d2e3b0a150b74a222f7f1eab0a93fd
+  ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
   ms.translationtype: HT
   ms.contentlocale: hu-HU
-  ms.lasthandoff: 11/04/2019
-  ms.locfileid: "73499898"
+  ms.lasthandoff: 11/12/2019
+  ms.locfileid: "73932230"
 landingContent:
 - title: Az Azure Database for PostgreSQL bemutatása
   linkLists:
@@ -57,11 +57,11 @@ landingContent:
       url: /azure/app-service/containers/tutorial-python-postgresql-app?toc=%2fazure%2fpostgresql%2ftoc.json
     - text: A szolgáltatás monitorozása és hangolása
       url: tutorial-monitor-and-tune.md
-- title: Rugalmas skálázási (Citus) fürt létrehozása (előzetes verzió)
+- title: Rugalmas skálázási (Citus) fürt létrehozása
   linkLists:
   - linkListType: quickstart
     links:
-    - text: Rugalmas skálázási (Citus) fürt létrehozása (előzetes verzió) az Azure Portalon
+    - text: Rugalmas skálázási (Citus) fürt létrehozása az Azure Portalon
       url: quickstart-create-hyperscale-portal.md
   - linkListType: tutorial
     links:

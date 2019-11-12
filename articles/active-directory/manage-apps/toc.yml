@@ -353,6 +353,10 @@
               href: application-sign-in-problem-on-premises-application-proxy.md
             - name: CORS-problémák az alkalmazásproxyban
               href: application-proxy-understand-cors-issues.md
+    - name: Biztonságos hibrid hozzáférés (a felhőben és a helyszínen)
+      items:
+        - name: Örökölt alkalmazások védelme alkalmazásszolgáltatási vezérlők vagy hálózatok segítségével
+          href: secure-hybrid-access.md
 - name: Referencia
   items:
     - name: Alkalmazások üzembe helyezése (SCIM)

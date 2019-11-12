@@ -91,6 +91,8 @@
       items:
         - name: Üzemelési tesztek konfigurálása
           href: container-instances-liveness-probe.md
+        - name: Készültségi tesztek konfigurálása
+          href: container-instances-readiness-probe.md
         - name: Tárolók leállítása és indítása
           href: container-instances-stop-start.md
         - name: Futó tárolók frissítése

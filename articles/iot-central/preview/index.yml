@@ -1,5 +1,5 @@
 ### YamlMime:Landing
-title: Az Azure IoT Central dokumentációja
+title: Az Azure IoT Central dokumentációja (előzetes verziójú funkciók)
 summary: Az Azure IoT Central egy teljes körűen felügyelt SaaS- (szolgáltatott szoftver-) megoldás, amely megkönnyíti az IoT-eszközök méretezhető csatlakoztatását, monitorozását és felügyeletét. Az Azure IoT Central leegyszerűsíti IoT-megoldásának kezdeti beállítását, és csökkenti a felügyeleti terheket, az üzemeltetési költségeket és a tipikus IoT-projektek többletterhelését. Rövid útmutatóink és oktatóanyagaink segítségével megtudhatja, hogyan hozhat létre, szabhat testre, kezelhet és használhat Azure IoT Central alkalmazásokat.
 metadata:
   title: Az Azure IoT Central dokumentációja
@@ -10,14 +10,14 @@ metadata:
   author: philmea
   ms.author: philmea
   ms.date: 10/25/2019
-  ms.openlocfilehash: d769b906324c1022baffff198fea6e4e44821757
-  ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+  ms.openlocfilehash: 90faa0b7422814011096a10164a6f2bdfceba4d5
+  ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
   ms.translationtype: HT
   ms.contentlocale: hu-HU
-  ms.lasthandoff: 11/09/2019
-  ms.locfileid: "73891805"
+  ms.lasthandoff: 11/12/2019
+  ms.locfileid: "73929841"
 landingContent:
-- title: Tudnivalók az Azure IoT Centralról
+- title: Tudnivalók az Azure IoT Centralról (előzetes verziójú funkciók)
   linkLists:
   - linkListType: overview
     links:

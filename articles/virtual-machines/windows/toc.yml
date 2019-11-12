@@ -407,8 +407,8 @@
             - name: Portál
               href: shared-images-portal.md
             - name: parancssori felület
-              href: ../linux/shared-images.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
-            - name: Rendszerképek megosztása több bérlőn
+              href: ../linux/shared-images.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+            - name: Alkalmazásregisztráció megosztás céljából
               href: share-images-across-tenants.md
             - name: Megosztott rendszerképek hibaelhárítása
               href: troubleshooting-shared-images.md

@@ -134,6 +134,8 @@
               href: azure-expressroute-connection.md
             - name: DNS-névfeloldás konfigurálása
               href: on-premises-dns-setup.md
+            - name: 'Magas rendelkezésre állású, helyek közötti VPN-kapcsolatok konfigurálása'
+              href: high-availability-vpn-connection.md
         - name: VMware-platform
           items:
             - name: A magánfelhő engedélymodelljének megismerése

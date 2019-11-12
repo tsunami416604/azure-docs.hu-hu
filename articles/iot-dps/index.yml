@@ -3,9 +3,8 @@ documentType: LandingData
 title: Az Azure IoT Hub eszközkiépítési szolgáltatás dokumentációja
 metadata:
   title: 'Az Azure IoT Hub eszközkiépítési szolgáltatás dokumentációja – Oktatóanyagok, API-referencia'
-  description: Az Azure IoT Hub Device Provisioning Service áttekintése.
+  description: 'Azure IoT Hub eszközkiépítési szolgáltatás – Oktatóanyagok, gyorsútmutatók, egyéb útmutatók és API-referencia'
   author: nberdy
-  manager: briz
   ms.service: iot-dps
   services: iot-dps
   ms.topic: landing-page
