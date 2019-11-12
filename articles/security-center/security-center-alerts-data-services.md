@@ -1,6 +1,6 @@
 ---
 title: Veszélyforrások észlelése a Azure Security Center adatszolgáltatásaiban | Microsoft Docs
-description: Ez a témakör a Azure Security Centerban elérhető adatszolgáltatási riasztásokat mutatja be.
+description: Ez a cikk a Azure Security Centerban elérhető adatszolgáltatási riasztásokat ismerteti.
 services: security-center
 documentationcenter: na
 author: memildin
@@ -10,16 +10,16 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 07/24/2019
 ms.author: memildin
-ms.openlocfilehash: c69352b8ff11edfce8bd800a0d3aad4584557572
-ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
+ms.openlocfilehash: d23d9d2712923f37b3ab9da5ae5369342cd82f5d
+ms.sourcegitcommit: 6dec090a6820fb68ac7648cf5fa4a70f45f87e1a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73621346"
+ms.lasthandoff: 11/11/2019
+ms.locfileid: "73906994"
 ---
 # <a name="threat-detection-for-data-services-in-azure-security-center"></a>Veszélyforrások észlelése a Azure Security Center adatszolgáltatásaiban
 
- Azure Security Center elemzi az adattárolási szolgáltatások naplóit, és riasztásokat küld, amikor fenyegetést észlel az adaterőforrásaihoz. Ez a témakör felsorolja azokat a riasztásokat, amelyeket Security Center a következő szolgáltatásokhoz generál:
+ Azure Security Center elemzi az adattárolási szolgáltatások naplóit, és riasztásokat küld, amikor fenyegetést észlel az adaterőforrásaihoz. Ez a cikk felsorolja azokat a riasztásokat, amelyeket Security Center a következő szolgáltatásokhoz generál:
 
 * [Azure SQL Database és Azure SQL Data Warehouse](#data-sql)
 * [Azure Storage](#azure-storage)
@@ -53,7 +53,7 @@ Security Center elemzi az olvasási, írási és törlési kérelmeket a blob St
 
 |Riasztás|Leírás|
 |---|---|
-|**Szokatlan hely elérési rendellenessége**|A mintavételes hálózati forgalom elemzése rendellenes kimenő RDP protokoll (RDP) kommunikációt észlelt a telepítésben lévő erőforrásból. Ez a tevékenység rendellenesnek minősül ebben a környezetben. Azt jelezheti, hogy az erőforrást feltörték, és már használatban van egy külső RDP-végpont támadásával. Ez a típusú tevékenység azt okozhatja, hogy az IP-címe rosszindulatúként van megjelölve külső entitások számára.|
+|**Hozzáférés szokatlan helyről**|Azt jelzi, hogy a hozzáférési minta egy Azure Storage-fiókra módosult. Valaki hozzáfért a fiókhoz egy, a legutóbbi tevékenységhez képest ismeretlen IP-címről. Vagy egy támadó hozzáfért a fiókhoz, vagy egy megbízható felhasználó új vagy szokatlan földrajzi helyről kapcsolódott. Az utóbbi egy példa egy új alkalmazásból vagy fejlesztőből származó távoli karbantartásra.|
 |**Alkalmazás-hozzáférési rendellenesség**|Azt jelzi, hogy egy szokatlan alkalmazás hozzáfért ehhez a Storage-fiókhoz. A lehetséges ok az, hogy egy támadó új alkalmazás használatával fér hozzá a Storage-fiókhoz.|
 |**Névtelen hozzáférési rendellenesség**|Azt jelzi, hogy a hozzáférési minta módosult egy Storage-fiókban. A fiókhoz például névtelenül (hitelesítés nélkül) férhet hozzá, ami nem várt, mint a fiók legutóbbi hozzáférési mintája. Ennek lehetséges oka, hogy egy támadó nyilvános olvasási hozzáférést kapott a blob Storage-t tároló tárolóhoz.|
 |**Tor-anomália**|Azt jelzi, hogy ez a fiók sikeresen elérhető egy olyan IP-címről, amely a Tor aktív kilépési csomópontjának (anonimizálásával-proxy) ismert. Ennek a riasztásnak a súlyossága figyelembe veszi a használt hitelesítési típust (ha van ilyen), és hogy ez az ilyen hozzáférés első esete-e. Lehetséges okok lehetnek olyan támadók, akik a Tor használatával hozzáfértek a Storage-fiókjához, vagy egy olyan legitim felhasználó, aki a Tor használatával fér hozzá a Storage-fiókhoz.|

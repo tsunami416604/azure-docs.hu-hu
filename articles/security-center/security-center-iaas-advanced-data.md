@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/04/2019
+ms.date: 11/11/2019
 ms.author: memildin
-ms.openlocfilehash: 93e52b393db288f5b19afde4a31e08d0bb91b471
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 068fb9f61b7dcb3948e4f03c284ddfa680522c85
+ms.sourcegitcommit: 6dec090a6820fb68ac7648cf5fa4a70f45f87e1a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73571563"
+ms.lasthandoff: 11/11/2019
+ms.locfileid: "73907046"
 ---
 # <a name="advanced-data-security-for-sql-servers-on-azure-virtual-machines-preview"></a>Speciális adatbiztonság az Azure-beli SQL-kiszolgálókon Virtual Machines (előzetes verzió)
 Az Azure Virtual Machines-beli SQL serverek speciális adatbiztonsága egy egységes csomag a fejlett SQL-alapú biztonsági funkciókhoz. Ez az előzetes verziójú funkció a lehetséges adatbázis-sebezhetőségek azonosítására és enyhítésére, valamint a rendellenes tevékenységek észlelésére, amelyek az adatbázis fenyegetéseit jelezhetik. 
@@ -54,7 +54,7 @@ A speciális adatbiztonság engedélyezése az SQL-kiszolgálókon Virtual Machi
     Az SQL-kiszolgálók speciális adatbiztonsága engedélyezve lesz a kijelölt munkaterülethez csatlakoztatott összes SQL-kiszolgálón vagy a kijelölt előfizetés alapértelmezett munkaterületén.
 
     >[!NOTE]
-    > A megoldás a SQL Server első újraindítása után lesz aktív. 
+    > A megoldás teljes mértékben aktív lesz a SQL Server első újraindítása után. 
 
 Új munkaterület létrehozásához kövesse az [log Analytics-munkaterület létrehozása](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace)című témakör utasításait.
 
@@ -72,7 +72,7 @@ Megadhatja a címzettek listáját, amely e-mailben értesítést kap a Security
 1. A beállítások menüben kattintson az **e-mail-értesítések**lehetőségre. 
 1. Az **e-mail cím** szövegmezőbe írja be az e-mail-címeket az értesítések fogadásához. Több e-mail-címet is megadhat az e-mail-címek vesszővel (,) való elválasztásával.  Például admin1@mycompany.com,admin2@mycompany.com,admin3@mycompany.com
 
-      ![E-mail-beállítások](./media/security-center-advanced-iaas-data/email-settings.png)
+    ![E-mail-beállítások](./media/security-center-advanced-iaas-data/email-settings.png)
 
 1. Az **e-mail értesítések** beállításainál adja meg a következő beállításokat:
   
@@ -88,29 +88,27 @@ Megadhatja a címzettek listáját, amely e-mailben értesítést kap a Security
 
 A sebezhetőségi felmérés irányítópultja áttekintést nyújt az összes adatbázisa értékelésének eredményeiről. Az adatbázisok eloszlását a SQL Server verziója alapján tekintheti meg, valamint összefoglalhatja a sikertelen és az átadott adatbázisok összefoglalását, valamint az ellenőrzések sikertelen végrehajtásának általános összegzését a kockázati eloszlás alapján.
 
-A sebezhetőségi felmérés eredményeit és jelentéseit közvetlenül a Log Analytics tekintheti meg.
+A sebezhetőségi felmérés eredményei közvetlenül a Security Center tekinthetők meg.
 
-1. Navigáljon a Log Analytics munkaterületére a speciális adatbiztonsági megoldással.
-1. Navigáljon a **megoldásokhoz** , és válassza ki az **SQL sebezhetőség-felmérési** megoldást.
-1. Az **Összefoglalás** ablaktáblán kattintson az **Összefoglalás megtekintése** elemre, és válassza ki az **SQL sebezhetőség-értékelő jelentést**.
+1. Az Security Center oldalsávján az erőforrás-biztonsági higiénia területen válassza az **adatok & Storage**lehetőséget.
 
-    ![SQL Assessment jelentés](./media/security-center-advanced-iaas-data/ads-sql-server-1.png)
+1. Válassza ki a **virtuális gépeken található SQL-adatbázisokra vonatkozó ajánlási biztonsági réseket (előzetes verzió)** . További információ: [Security Center javaslatok](security-center-recommendations.md). 
 
-    A jelentés irányítópultja betöltődik. Győződjön meg arról, hogy az időablak legalább az **elmúlt 7 napban** van beállítva, mivel a sebezhetőségi felmérések vizsgálatait a rendszer hetente egyszer, rögzített időkereten belül futtatja az adatbázisban.
+    [![* * a virtuális gépeken található SQL-adatbázisokra vonatkozó biztonsági réseket szervizelni kell (előzetes verzió) * * javaslat](media/security-center-advanced-iaas-data/data-and-storage-sqldb-vulns-on-vm.png)](media/security-center-advanced-iaas-data/data-and-storage-sqldb-vulns-on-vm.png#lightbox)
 
-    ![Az elmúlt 7 nap beállítása](./media/security-center-advanced-iaas-data/ads-sql-server-2.png)
+    Megjelenik a javaslat részletes nézete.
 
-1. További részletekért kattintson az irányítópult egyik elemére. Például:
+    [a * * biztonsági rések a virtuális gépeken található SQL-adatbázisokban történő részletes megtekintését (előzetes verzió) * * javaslat ![](media/security-center-advanced-iaas-data/all-servers-view.png)](media/security-center-advanced-iaas-data/all-servers-view.png#lightbox)
 
-   1. A **sikertelen ellenőrzések összegzése** szakaszban a sebezhetőségi ellenőrzés lehetőségre kattintva megtekintheti az összes adatbázisra vonatkozóan az ellenőrzés eredményét log Analytics táblázatot. Az eredményekkel rendelkezők elsőként vannak felsorolva.
+1. További részletek a részletezéshez:
 
-   1. Ezután kattintson az átmenő elemre az egyes biztonsági rések részleteinek megtekintéséhez, beleértve a sebezhetőség leírását, a hatás, az állapot, a kapcsolódó kockázat és a tényleges eredmények megjelenítését ezen az adatbázison. Az ellenőrzés elvégzéséhez futtatott tényleges lekérdezést, valamint a biztonsági rés megoldásához szükséges szervizelési információkat is megtekintheti.
+    * A beolvasott erőforrások (adatbázisok) és a tesztelt biztonsági ellenőrzések listájának áttekintéséhez kattintson az Önt érdeklő kiszolgálóra.
+    [![biztonsági rések SQL Server szerint csoportosítva](media/security-center-advanced-iaas-data/single-server-view.png)](media/security-center-advanced-iaas-data/single-server-view.png#lightbox)
 
-    ![Munkaterület kiválasztása](./media/security-center-advanced-iaas-data/ads-sql-server-3.png)
+    * Az adott SQL-adatbázis által csoportosított biztonsági rések áttekintéséhez kattintson az érdekes adatbázisra.
+    [![biztonsági rések SQL Server szerint csoportosítva](media/security-center-advanced-iaas-data/single-database-view.png)](media/security-center-advanced-iaas-data/single-database-view.png#lightbox)
 
-    ![Munkaterület kiválasztása](./media/security-center-advanced-iaas-data/ads-sql-server-4.png)
-
-1. A sebezhetőségi felmérés eredményeire vonatkozó összes Log Analytics lekérdezést futtathatja, hogy az igényeinek megfelelően feldarabolja és felszámítsa az adatkockát.
+    Az egyes nézetekben a biztonsági ellenőrzések **Súlyosság**szerint rendezve jelennek meg. Egy adott biztonsági vizsgálatra kattintva megtekintheti a részleteket tartalmazó ablaktáblát **, amely** **leírja, hogyan**javíthatja, és egyéb kapcsolódó információkat, például a **hatást** vagy a **teljesítménytesztet**.
 
 ## <a name="advanced-threat-protection-for-sql-servers-on-azure-vms-alerts"></a>Komplex veszélyforrások elleni védelem az Azure-beli virtuális gépeken futó SQL Server-riasztásokhoz
 A riasztásokat szokatlan és potenciálisan ártalmas kísérletek generálják az SQL Server-kiszolgálók eléréséhez vagy kiaknázásához. Ezek az események a következő riasztásokat indíthatják el:
@@ -160,7 +158,7 @@ Az adatbiztonsági riasztások a Security Center riasztások lapján, az erőfor
     * A biztonsági helyzet javításához használja Security Center javaslatait az egyes riasztásokban jelzett gazdagéphez. Ez csökkenti a jövőbeli támadások kockázatát. 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Kapcsolódó anyagok esetében tekintse meg a következő cikket:
 

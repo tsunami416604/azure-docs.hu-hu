@@ -17,12 +17,12 @@ ms.date: 07/17/2019
 ms.author: chadam
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b2b30b6463ed3d58ec1565f3c49f98388ad09ed4
-ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+ms.openlocfilehash: a43c5849dcd037915a46de182064b3e630a663ec
+ms.sourcegitcommit: 6dec090a6820fb68ac7648cf5fa4a70f45f87e1a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70186288"
+ms.lasthandoff: 11/11/2019
+ms.locfileid: "73907186"
 ---
 # <a name="audit-activity-reports-in-the-azure-active-directory-portal"></a>Naplózott tevékenységekre vonatkozó jelentések az Azure Active Directory portálon 
 
@@ -35,14 +35,14 @@ A jelentéskészítési architektúra a következő összetevőkből áll:
     - **Auditnaplók** – az Azure AD-n belül különböző szolgáltatások által végrehajtott összes módosításra vonatkozó nyomkövetési naplókat biztosít. A naplók például a felhasználók, alkalmazások, csoportok, szerepkörök és házirendek hozzáadásával vagy eltávolításával kapcsolatos, az Azure AD-ban található összes erőforráson végrehajtott módosítások.
 - **Biztonság** 
     - **Kockázatos bejelentkezések** – a [kockázatos bejelentkezés](concept-risky-sign-ins.md) egy olyan bejelentkezési kísérletre utal, amelyet a felhasználói fiók jogos tulajdonosaként elvégeztek. 
-    - Kockázatnak kitett **felhasználók** – a [kockázatos felhasználók](concept-user-at-risk.md) egy olyan felhasználói fiókra vonatkozó jelző, amely esetleg sérült.
+    - **Kockázatnak** kitett felhasználók – a [kockázatos felhasználók](concept-user-at-risk.md) egy olyan felhasználói fiókra vonatkozó jelző, amely esetleg sérült.
 
 Ez a cikk áttekintést nyújt a naplózási jelentésről.
  
 ## <a name="who-can-access-the-data"></a>Ki férhet hozzá az adatokhoz?
 
 * A **biztonsági rendszergazda**, a **biztonsági olvasó**, a **jelentéskészítő** vagy a **globális rendszergazdai** szerepkör felhasználói
-* Emellett az összes felhasználó (nem rendszergazdák) láthatják a saját naplózási tevékenységeit
+* Emellett az összes felhasználó (nem rendszergazdák) láthatják a saját bejelentkezési tevékenységeit
 
 ## <a name="audit-logs"></a>Naplók
 
@@ -57,7 +57,7 @@ Az auditnapló alapértelmezett listanézete az alábbi adatokat jeleníti meg:
 - a tevékenység kategóriája és neve (*mit*) 
 - a tevékenység állapota (sikeres vagy sikertelen)
 - a célt
-- egy tevékenység kezdeményezője/szereplője
+- Egy tevékenység kezdeményezője/szereplője
 
 ![Naplók](./media/concept-audit-logs/listview.png "Naplók")
 
@@ -79,10 +79,10 @@ Részletesebb információkhoz jelöljön ki egy elemet a listanézet nézetben.
 A naplózási adat a következő mezőkön szűrhető:
 
 - Szolgáltatás
-- Category
+- Kategória
 - Tevékenység
-- State
-- Target
+- status
+- Cél
 - Kezdeményező (Szereplő)
 - Dátumtartomány
 
@@ -99,12 +99,12 @@ A **szolgáltatás** szűrője lehetővé teszi, hogy a következő szolgáltat�
 - Feltételes hozzáférés
 - Alapvető könyvtár
 - Jogosultságkezelés
-- Identitásvédelem
+- Identity Protection
 - Meghívott felhasználók
 - PIM
 - Önkiszolgáló csoportkezelés
 - Önkiszolgáló jelszókezelés
-- használati feltételeit
+- Használati feltételek
 
 A **Kategória** szűrővel a következő szűrők közül választhat:
 
@@ -112,7 +112,7 @@ A **Kategória** szűrővel a következő szűrők közül választhat:
 - AdministrativeUnit
 - ApplicationManagement
 - Authentication
-- Authorization
+- Engedélyezés
 - Kapcsolattartó
 - Eszköz
 - DeviceConfiguration
@@ -127,7 +127,7 @@ A **Kategória** szűrővel a következő szűrők közül választhat:
 
 A **tevékenység** szűrője az Ön által megadott kategória és tevékenység erőforrástípus alapján van kiválasztva. Választhat egy adott tevékenységet, amelyet meg szeretne tekinteni, vagy kiválaszthatja az összeset. 
 
-Az összes naplózási tevékenység listáját a Graph API használatával szerezheti be:`https://graph.windows.net/<tenantdomain>/activities/auditActivityTypesV2?api-version=beta`
+Az összes naplózási tevékenység listáját a Graph API használatával érheti el: `https://graph.windows.net/<tenantdomain>/activities/auditActivityTypesV2?api-version=beta`
 
 Az **állapot** szűrő lehetővé teszi a szűrést egy naplózási művelet állapota alapján. Az állapot a következők egyike lehet:
 
@@ -140,7 +140,7 @@ A **célként** megadott szűrő lehetővé teszi egy adott cél keresését né
 A **kezdeményező** szűrő lehetővé teszi egy szereplő nevének vagy egy univerzális egyszerű név (UPN) megadását. A név és az UPN megkülönbözteti a kis-és nagybetűket.
 
 A **dátumtartomány** -szűrő lehetővé teszi, hogy meghatározza a visszaadott adatok időkeretét.  
-Lehetséges értékek a következők:
+Lehetséges értékek:
 
 - 1 hónap
 - 7 nap
@@ -149,7 +149,7 @@ Lehetséges értékek a következők:
 
 Egyéni időkeret kiválasztásakor beállíthatja a kezdő és a záró időpontot.
 
-Azt is megteheti, hogy letölti a szűrt adatokat, legfeljebb 250 000 rekordot a **Letöltés** gombra kattintva. A naplókat CSV-vagy JSON-formátumban is letöltheti. A letöltendő rekordok számát a [Azure Active Directory jelentés](reference-reports-data-retention.md)adatmegőrzési szabályzata korlátozza.
+Azt is megteheti, hogy letölti a szűrt adatokat, legfeljebb 250 000 rekordot a **Letöltés** gombra kattintva. A naplókat CSV-vagy JSON-formátumban is letöltheti. A letöltendő rekordok számát a [Azure Active Directory jelentés adatmegőrzési szabályzata](reference-reports-data-retention.md)korlátozza.
 
 ![Naplók](./media/concept-audit-logs/download.png "Naplók")
 
@@ -204,11 +204,11 @@ Ha szeretné áttekinteni az alkalmazásokkal kapcsolatos naplózási adatait, a
 
 ## <a name="office-365-activity-logs"></a>Office 365-tevékenységek naplói
 
-Az Office 365-tevékenységek naplóit a [Microsoft 365 felügyeleti](https://docs.microsoft.com/office365/admin/admin-overview/about-the-admin-center)központból tekintheti meg. Annak ellenére, hogy az Office 365-tevékenység és az Azure AD-tevékenység naplói nagy mennyiségű címtár-erőforrást osztanak meg, csak a Microsoft 365 felügyeleti központ teljes képet nyújt az Office 365-tevékenységek naplóiról. 
+Az Office 365-tevékenységek naplóit a [Microsoft 365 felügyeleti központból](https://docs.microsoft.com/office365/admin/admin-overview/about-the-admin-center)tekintheti meg. Annak ellenére, hogy az Office 365-tevékenység és az Azure AD-tevékenység naplói nagy mennyiségű címtár-erőforrást osztanak meg, csak a Microsoft 365 felügyeleti központ teljes képet nyújt az Office 365-tevékenységek naplóiról. 
 
 Az Office 365-tevékenység naplóit programozott módon is elérheti az [office 365 felügyeleti API](https://docs.microsoft.com/office/office-365-management-api/office-365-management-apis-overview)-k használatával.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Az Azure AD naplózási tevékenységeinek referenciája](reference-audit-activities.md)
 - [Azure AD-jelentések adatmegőrzési referenciája](reference-reports-data-retention.md)

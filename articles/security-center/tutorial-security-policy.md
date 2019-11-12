@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: 4ac6ac52d6d950d814a37e94ea2801c2ba8e4170
-ms.sourcegitcommit: 3f8017692169bd75483eefa96c225d45cd497f06
+ms.openlocfilehash: 45a27be400753b56c42310a340334feba8a420c5
+ms.sourcegitcommit: 6dec090a6820fb68ac7648cf5fa4a70f45f87e1a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73521218"
+ms.lasthandoff: 11/11/2019
+ms.locfileid: "73906857"
 ---
 # <a name="working-with-security-policies"></a>Biztonsági szabályzatok használata
 
@@ -105,6 +105,10 @@ A javaslatokkal kapcsolatos további információkért lásd: [biztonsági javas
    > [!NOTE]
    > Ne feledje, hogy egy felügyeleti csoport alkalmazza a szabályzatokat az előfizetésekre. Ezért ha letilt egy előfizetési szabályzatot, és az előfizetés egy olyan felügyeleti csoporthoz tartozik, amely továbbra is ugyanazt a házirendet használja, akkor továbbra is megkapja a házirendre vonatkozó javaslatokat. A szabályzat továbbra is a felügyeleti szintjéről lesz alkalmazva, és a javaslatok továbbra is létrejönnek.
 
+1. Kattintson a **hatályos szabályzat megtekintése**elemre.
+
+   ![házirend letiltása](./media/tutorial-security-policy/view-effective-policy.png)
+
 1. Kattintson a hozzárendelt házirendre.
 
    ![házirend letiltása](./media/tutorial-security-policy/security-policy.png)
@@ -120,7 +124,7 @@ A javaslatokkal kapcsolatos további információkért lásd: [biztonsági javas
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ebben a cikkben megtanulta a biztonsági szabályzatokat. A kapcsolódó információk a következő cikkekben találhatók:
 
 * A házirendek PowerShell használatával történő beállításával kapcsolatos útmutatásért lásd [: rövid útmutató: szabályzat-hozzárendelés létrehozása a nem megfelelő erőforrások azonosításához a Azure PowerShell modul használatával](../governance/policy/assign-policy-powershell.md)

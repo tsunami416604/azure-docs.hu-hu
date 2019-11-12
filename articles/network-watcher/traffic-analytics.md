@@ -14,12 +14,12 @@ ms.workload: infrastructure-services
 ms.date: 06/15/2018
 ms.author: kumud
 ms.reviewer: vinigam
-ms.openlocfilehash: 831e75ba2d3f6af62496d437da3d1413dc612594
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 91fb4551f4651f44a1f7358951c5d4cc0ff70644
+ms.sourcegitcommit: 6dec090a6820fb68ac7648cf5fa4a70f45f87e1a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73686558"
+ms.lasthandoff: 11/11/2019
+ms.locfileid: "73907154"
 ---
 # <a name="traffic-analytics"></a>Forgalmi elemzések
 
@@ -69,13 +69,13 @@ A NSG Traffic Analytics a következő támogatott régiókban használható:
 * USA déli középső régiója
 * USA középső régiója
 * USA nyugati régiója
-* USA 2. nyugati régiója
+* USA nyugati régiója, 2.
 * Közép-Franciaország
 * Nyugat-Európa
 * Észak-Európa
 * Dél-Brazília
 * Az Egyesült Királyság nyugati régiója
-* Egyesült Királyság déli régiója
+* Az Egyesült Királyság déli régiója
 * Kelet-Ausztrália
 * Délkelet-Ausztrália
 * Kelet-Ázsia
@@ -95,14 +95,18 @@ A Log Analytics munkaterület a következő régiókban kell, hogy legyen:
 * USA nyugati középső régiója
 * USA keleti régiója
 * USA 2. keleti régiója
+* USA északi középső régiója
 * USA déli középső régiója
+* USA középső régiója
 * USA nyugati régiója
-* USA 2. nyugati régiója
+* USA nyugati régiója, 2.
 * USA középső régiója
 * Közép-Franciaország
-* Észak-Európa
 * Nyugat-Európa
-* Egyesült Királyság déli régiója
+* Észak-Európa
+* Dél-Brazília
+* Az Egyesült Királyság nyugati régiója
+* Az Egyesült Királyság déli régiója
 * Kelet-Ausztrália
 * Délkelet-Ausztrália
 * Kelet-Ázsia
@@ -121,7 +125,7 @@ A fiókjának a következő Azure [beépített szerepkörök](../role-based-acce
 
 |Üzemi modell   | Szerepkör                   |
 |---------          |---------               |
-|Erőforrás-kezelő   | Tulajdonos                  |
+|Resource Manager   | Tulajdonos                  |
 |                   | Közreműködő            |
 |                   | Olvasó                 |
 |                   | Hálózati közreműködő    |
@@ -382,7 +386,7 @@ Rosszindulatú forgalmat észlelt a környezetében? Honnan származnak? Hol van
 
 Ha választ szeretne kapni a gyakori kérdésekre, tekintse meg a [Traffic Analytics – gyakori](traffic-analytics-faq.md)kérdések című témakört.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A flow-naplók engedélyezésével kapcsolatos további információkért lásd: a [NSG folyamat naplózásának engedélyezése](network-watcher-nsg-flow-logging-portal.md).
 - A Traffic Analytics sémájának és feldolgozási adatainak megismeréséhez tekintse meg a [Traffic Analytics-séma](traffic-analytics-schema.md)című témakört.

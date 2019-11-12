@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 10/22/2019
 ms.author: sutalasi
-ms.openlocfilehash: fc97f9d78e84882675c3dd011a64e1e50c4cc907
-ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
+ms.openlocfilehash: 5c2cd96ccfa3a26a9009188ad424eefaaeb7ce48
+ms.sourcegitcommit: 6dec090a6820fb68ac7648cf5fa4a70f45f87e1a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72968331"
+ms.lasthandoff: 11/11/2019
+ms.locfileid: "73906839"
 ---
 # <a name="about-networking-in-azure-to-azure-replication"></a>Tudnivalók az Azure-beli hálózatkezelésről az Azure-ba – replikálás
 
@@ -62,7 +62,7 @@ Ha IP-alapú tűzfal-proxyt használ, vagy a kimenő kapcsolat vezérléséhez N
     - Engedélyezze ezeket a címeket úgy, hogy az adatok a virtuális gépről a gyorsítótárbeli Storage-fiókba legyenek írva.
 - Hozzon létre egy [Azure Active Directory (HRE) Service tag](../virtual-network/security-overview.md#service-tags) -alapú NSG-szabályt, amely lehetővé teszi a HRE-hoz tartozó összes IP-cím elérését
     - Ha a jövőben új címeket adnak hozzá a Azure Active Directoryhoz (HRE), új NSG-szabályokat kell létrehoznia.
-- Site Recovery szolgáltatási végpont IP-címei – egy [XML-fájlban](https://aka.ms/site-recovery-public-ips) érhetők el, és a célhelytől függenek. Javasoljuk, hogy engedélyezze a hozzáférést a **"AzureSiteRecovery"** címkéhez site Recovery szolgáltatás eléréséhez.
+- Site Recovery szolgáltatási végpont IP-címei – egy [XML-fájlban](https://aka.ms/site-recovery-public-ips) érhetők el, és a célhelytől függenek. 
 - Javasoljuk, hogy hozza létre a szükséges NSG-szabályokat egy teszt NSG, és ellenőrizze, hogy nincsenek-e problémák a szabályok éles NSG való létrehozása előtt.
 
 
@@ -85,30 +85,30 @@ Site Recovery IP-címtartományok a következők:
    Kelet-Japán | 52.185.150.140 | 138.91.1.105
    Nyugat-Japán | 52.175.146.69 | 138.91.17.38
    Dél-Brazília | 191.234.185.172 | 23.97.97.36
-   Ausztrália keleti régiója | 104.210.113.114 | 191.239.64.144
+   Kelet-Ausztrália | 104.210.113.114 | 191.239.64.144
    Délkelet-Ausztrália | 13.70.159.158 | 191.239.160.45
    Közép-Kanada | 52.228.36.192 | 40.85.226.62
    Kelet-Kanada | 52.229.125.98 | 40.86.225.142
    USA nyugati középső régiója | 52.161.20.168 | 13.78.149.209
-   USA 2. nyugati régiója | 52.183.45.166 | 13.66.228.204
-   Egyesült Királyság nyugati régiója | 51.141.3.203 | 51.141.14.113
-   Egyesült Királyság déli régiója | 51.140.43.158 | 51.140.189.52
-   Egyesült Királyság 2. déli régiója | 13.87.37.4| 13.87.34.139
-   Egyesült Királyság északi régiója | 51.142.209.167 | 13.87.102.68
+   USA nyugati régiója, 2. | 52.183.45.166 | 13.66.228.204
+   Az Egyesült Királyság nyugati régiója | 51.141.3.203 | 51.141.14.113
+   Az Egyesült Királyság déli régiója | 51.140.43.158 | 51.140.189.52
+   Az Egyesült Királyság 2. déli régiója | 13.87.37.4| 13.87.34.139
+   Az Egyesült Királyság északi régiója | 51.142.209.167 | 13.87.102.68
    Korea középső régiója | 52.231.28.253 | 52.231.32.85
-   Dél-Korea | 52.231.198.185 | 52.231.200.144
+   Korea déli régiója | 52.231.198.185 | 52.231.200.144
    Közép-Franciaország | 52.143.138.106 | 52.143.136.55
    Dél-Franciaország | 52.136.139.227 |52.136.136.62
    Közép-Ausztrália| 20.36.34.70 | 20.36.46.142
    Ausztrália 2. középső régiója| 20.36.69.62 | 20.36.74.130
    Dél-Afrika nyugati régiója | 102.133.72.51 | 102.133.26.128
    Dél-Afrika északi régiója | 102.133.160.44 | 102.133.154.128
-   US Gov Virginia | 52.227.178.114 | 23.97.0.197
+   USA-beli államigazgatás – Virginia | 52.227.178.114 | 23.97.0.197
    US Gov Iowa | 13.72.184.23 | 23.97.16.186
-   US Gov Arizona | 52.244.205.45 | 52.244.48.85
-   US Gov Texas | 52.238.119.218 | 52.238.116.60
-   US DoD – keleti régió | 52.181.164.103 | 52.181.162.129
-   US DoD – középső régió | 52.182.95.237 | 52.182.90.133
+   USA-beli államigazgatás – Arizona | 52.244.205.45 | 52.244.48.85
+   USA-beli államigazgatás – Texas | 52.238.119.218 | 52.238.116.60
+   US DoD – Kelet | 52.181.164.103 | 52.181.162.129
+   US DoD – Középső régió | 52.182.95.237 | 52.182.90.133
    Észak-Kína | 40.125.202.254 | 42.159.4.151
    Kína 2. északi régiója | 40.73.35.193 | 40.73.33.230
    Kelet-Kína | 42.159.205.45 | 42.159.132.40
@@ -126,9 +126,6 @@ Ez a példa bemutatja, hogyan konfigurálhatja a virtuális gépek NSG-szabálya
 
 - Ha NSG szabályokat használ a kimenő kapcsolatok vezérlésére, használja a "HTTPS kimenő" szabályokat a 443-as portra a szükséges IP-címtartományok esetében.
 - A példa azt feltételezi, hogy a virtuális gép forrása "az USA keleti régiója", a célhely pedig az "USA középső régiója".
-
-> [!NOTE]
-> Azt javasoljuk, hogy az IP-címek helyett használjon **AzureSiteRecovery-címkét** **site Recovery szolgáltatás**elérésének engedélyezéséhez.
 
 ### <a name="nsg-rules---east-us"></a>NSG-szabályok – USA keleti régiója
 
@@ -178,7 +175,7 @@ Létrehozhat egy hálózati szolgáltatási végpontot a virtuális hálózatban
 >[!NOTE]
 >Ne korlátozza a virtuális hálózati hozzáférést az ASR szolgáltatáshoz használt Storage-fiókokhoz. Engedélyeznie kell a hozzáférést az összes hálózatról
 
-### <a name="forced-tunneling"></a>Kényszerített bújtatás
+### <a name="forced-tunneling"></a>Alagúthasználat kényszerítése
 
 Az Azure alapértelmezett rendszerútvonalát felülbírálhatja a 0.0.0.0/0 címek előtagja számára egy [Egyéni útvonallal](../virtual-network/virtual-networks-udr-overview.md#custom-routes) , és átirányíthatja a virtuális gépek forgalmát egy helyszíni hálózati virtuális készülékre (NVA), de ez a konfiguráció nem ajánlott site Recovery replikáláshoz. Ha egyéni útvonalakat használ, [hozzon létre egy virtuális hálózati szolgáltatási végpontot](azure-to-azure-about-networking.md#create-network-service-endpoint-for-storage) a "Storage" virtuális hálózatában, hogy a replikálási forgalom ne hagyja el az Azure-határt.
 

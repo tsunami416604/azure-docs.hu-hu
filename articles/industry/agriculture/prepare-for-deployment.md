@@ -5,14 +5,14 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 10ff3cc940ac3d11154f1dec6c06ff3681328d38
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 55b59802116eb10d2e7eeb3b13ecb3da2d475c6d
+ms.sourcegitcommit: 6dec090a6820fb68ac7648cf5fa4a70f45f87e1a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73890942"
+ms.lasthandoff: 11/11/2019
+ms.locfileid: "73906976"
 ---
-# <a name="deploy-farmbeats"></a>FarmBeats üzembe helyezése
+# <a name="deploy-farmbeats"></a>A FarmBeats üzembe helyezése
 
 Ez a cikk az Azure-FarmBeats beállítását ismerteti.
 
@@ -60,7 +60,7 @@ A következő lépésekkel hozhat létre Azure FarmBeats-ajánlatot a piactéren
 1. Jelentkezzen be a Azure Portalba, és válassza ki a fiókját a jobb felső sarokban, és váltson arra az Azure AD-bérlőre, ahol a Microsoft Azure FarmBeats telepíteni kívánja.
 2. Az Azure FarmBeats az Azure piactéren érhető el. A piactér lapon válassza a "Letöltés most" lehetőséget.
 3. Válassza a létrehozás lehetőséget, és adja meg a következő adatokat:
-  - Előfizetés neve.
+  - előfizetés neve.
   - egy meglévő erőforráscsoport-név (csak üres erőforráscsoport), vagy hozzon létre egy új erőforráscsoportot az Azure FarmBeats telepítéséhez. Jegyezze fel ezt az erőforráscsoportot a következő részekben.
 4. Az a régió, amelyre telepíteni szeretné az Azure FarmBeats-t. Jelenleg a következő régiókban FarmBeats: USA középső régiója, Nyugat-Európa, USA 2. keleti régiója, Észak-Európa, USA nyugati régiója, Délkelet-Ázsia, USA keleti régiója, Kelet-Ausztrália, USA nyugati régiója 2
 5. Kattintson az **OK** gombra.
@@ -82,14 +82,13 @@ Az Azure FarmBeats telepítéséhez a következő engedélyek szükségesek:
 Az üzembe helyezés megkezdése előtt győződjön meg arról, hogy a következőkkel rendelkezik:
 
 - Sentinel-fiók
-- Azure Active Directory (alkalmazás-regisztráció)
-- Azure-FarmBeats
+- Azure Active Directory (AD) alkalmazás regisztrálása
 
 ## <a name="create-a-sentinel-account"></a>Sentinel-fiók létrehozása    
 
 A Sentinel-fiókkal rendelkező fiókok segítségével letöltheti a Sentinel műholdképeket a hivatalos webhelyről az eszközre. Az alábbi lépéseket követve hozzon létre egy ingyenes fiókot:
 
-1. Nyissa meg a következőt: https://scihub.copernicus.eu/dhus/#/self-registration. A regisztráció lapon adja meg az utónév, a vezetéknév, a Felhasználónév, a jelszó és a levelezés nevet.
+Nyissa meg a következőt: https://scihub.copernicus.eu/dhus/#/self-registration. A regisztráció lapon adja meg az utónév, a vezetéknév, a Felhasználónév, a jelszó és a levelezés nevet.
 A rendszer visszaigazoló e-mailt küld a regisztrált e-mail-címre. Válassza ki a hivatkozást, és erősítse meg. A regisztrációs folyamat befejeződött.
 
 ## <a name="create-azure-ad-app-registration"></a>Azure AD-alkalmazás regisztrációjának létrehozása
@@ -103,7 +102,7 @@ Az Azure FarmBeats való hitelesítéshez és engedélyezéshez rendelkeznie kel
 
 Ha már rendelkezik előfizetéssel, közvetlenül a következő eljárással lehet áthelyezni.
 
-**2. eset**: Ez a módszer az előnyben részesített lépés, ha nem rendelkezik elegendő jogosultsággal az Azure ad-alkalmazás regisztrációjának létrehozásához és konfigurálásához az előfizetésen belül. Kérje meg a rendszergazdát, hogy használja az [Egyéni szkriptet](https://aka.ms/FarmBeatsMarketplace), amely segítséget nyújt a rendszergazdának az Azure ad-alkalmazás regisztrálásának automatikus létrehozásában és konfigurálásában a Azure Portal. Ha ezt az egyéni szkriptet PowerShell-környezet használatával szeretné futtatni, a rendszergazdának meg kell osztania egy Azure Active Directory alkalmazás ügyfél-AZONOSÍTÓját és jelszavát. Jegyezze fel ezeket az értékeket.
+**2. eset**: Ez a módszer az előnyben részesített lépés, ha nem rendelkezik elegendő jogosultsággal az Azure ad-alkalmazás regisztrációjának létrehozásához és konfigurálásához az előfizetésen belül. Kérje meg a rendszergazdát, hogy használja az [Egyéni szkriptet](https://aka.ms/FarmBeatsAADScript), amely segítséget nyújt a rendszergazdának az Azure ad-alkalmazás regisztrálásának automatikus létrehozásában és konfigurálásában a Azure Portal. Ha ezt az egyéni szkriptet PowerShell-környezet használatával szeretné futtatni, a rendszergazdának meg kell osztania egy Azure Active Directory alkalmazás ügyfél-AZONOSÍTÓját és jelszavát. Jegyezze fel ezeket az értékeket.
 
 Az Azure AD-alkalmazás regisztrációs parancsfájljának futtatásához kövesse az alábbi lépéseket:
 
@@ -132,7 +131,7 @@ Az Azure AD-alkalmazás regisztrációs parancsfájljának futtatásához köves
 
 A telepítés részeként hozzon létre egy input. JSON fájlt a következőképpen:
 
-    ```json
+    ```
     {  
        "sku":"both",
        "subscriptionId":"da9xxxec-dxxf-4xxc-xxx21-xxx3ee7xxxxx",
@@ -150,24 +149,22 @@ A telepítés részeként hozzon létre egy input. JSON fájlt a következőkép
 Ez a fájl a bemeneti fájlja Azure Cloud Shell és azokat a paramétereket, amelyek értékeit a rendszer a telepítés során használja. A JSON-ban lévő összes paramétert megfelelő értékekkel kell helyettesíteni, vagy el kell távolítani azokat. Ha eltávolítja, a telepítő a telepítés során kérni fogja
 
 
-> [!NOTE]
-> Ez a fájl a Azure Cloud Shell.  Ha időt szeretne megtakarítani az üzembe helyezés során, a rendszer nem kéri a fájlhoz hozzáadott paraméterek megadását. A rendszer kérni fogja a kihagyott paraméterek megadását.
-
 A fájl előkészítése előtt tekintse át a paramétereket.
 
 |Parancs | Leírás|
 |--- | ---|
 |SKU  | A lehetőséget nyújt az Azure-FarmBeats-összetevők vagy azok mindkét összetevőjének letöltésére. Meghatározza a letölteni kívánt összetevőket. Csak az adatközpont telepítéséhez használja a "onlydatabhub" kifejezést. Az adatközpont és a gyorsító telepítéséhez használja a "mindkettő" lehetőséget.|
-|SubscriptionId  | A FarmBeats telepítésére vonatkozó előfizetést adja meg|
-|"datahubResourceGroup"  | Az adatközpont erőforrásainak erőforráscsoport-neve|
-|"acceleratorWebsiteName"  |Egyedi URL-előtag az adatközpont nevének meghívásához|
-|"acceleratorResourceGroup"  | Egyedi URL-előtag a Gyorssegéd-webhely elnevezéséhez.|
-|"datahubWebsiteName"  | UUnique URL-előtag az adatközpont webhelyének elnevezéséhez. |
-|''sentinelUsername'' | a bejelentkezéshez használandó Felhasználónév: https://scihub.copernicus.eu/dhus/#/self-registration.|
-|"notificationEmailAddress"  | E-mail-cím, amely az adatközponton belül konfigurált riasztások értesítéseit fogadja.|
-|"updateIfExists" "  |Választható A input. JSON fájlban szerepeltetni kívánt paraméter csak akkor lehetséges, ha egy meglévő FarmBeats-példányt szeretne frissíteni. A frissítéshez további részleteket például a következő címen talál:. Az erőforráscsoportok neveinek, helyeinek stb. azonosnak kell lenniük.|
-|"aadAppClientId"  | [Nem**kötelező**] A input. JSON fájlban szerepeltetni kívánt paraméter csak akkor, ha az Azure AD-alkalmazás már létezik.  |
-|"aadAppClientSecret"   | [Nem**kötelező**] A input. JSON fájlban szerepeltetni kívánt paraméter csak akkor, ha az Azure AD-alkalmazás már létezik.|
+|subscriptionId | A FarmBeats telepítésére vonatkozó előfizetést adja meg|
+|datahubResourceGroup| Az adatközpont erőforrásainak erőforráscsoport-neve|
+|location |A hely, ahol létre szeretné hozni az erőforrásokat|
+|acceleratorWebsiteName |Egyedi URL-előtag az adatközpont nevének meghívásához|
+|acceleratorResourceGroup  | Egyedi URL-előtag a Gyorssegéd-webhely elnevezéséhez.|
+|datahubWebsiteName  | UUnique URL-előtag az adatközpont webhelyének elnevezéséhez. |
+|sentinelUsername | a bejelentkezéshez használandó Felhasználónév: https://scihub.copernicus.eu/dhus/#/self-registration.|
+|notificationEmailAddress  | E-mail-cím, amely az adatközponton belül konfigurált riasztások értesítéseit fogadja.|
+|updateIfExists|Választható A input. JSON fájlban szerepeltetni kívánt paraméter csak akkor lehetséges, ha egy meglévő FarmBeats-példányt szeretne frissíteni. A frissítéshez további részleteket például a következő címen talál:. Az erőforráscsoportok neveinek, helyeinek stb. azonosnak kell lenniük.|
+|aadAppClientId | [Nem**kötelező**] A input. JSON fájlban szerepeltetni kívánt paraméter csak akkor, ha az Azure AD-alkalmazás már létezik.  |
+|aadAppClientSecret  | [Nem**kötelező**] A input. JSON fájlban szerepeltetni kívánt paraméter csak akkor, ha az Azure AD-alkalmazás már létezik.|
 
 ## <a name="deploy-within-cloud-shell-browser-based-command-line"></a>Üzembe helyezés Cloud Shell böngészőalapú parancssoron belül
 
@@ -193,17 +190,15 @@ Példa JSON-bemenetre:
     ```json
     {  
        "sku":"both", 
-       "subscriptionId": "da9xxxec-dxxf-4xxc-xxx21-xxx3ee7xxxxx", 
-       "datahubResourceGroup": "dummy-test-dh1", 
-       "datahubLocation": "westus2", 
-       "datahubWebsiteName": "dummy-test-dh1", 
-       "acceleratorResourceGroup": "dummy-test-acc1", 
-       "acceleratorLocation": "westus2", 
-       "acceleratorWebsiteName": "dummy-test-acc1", 
-       "sentinelUsername": "dummy-dev", 
-       "farmbeatsAppId": "c3cb3xxx-27xx-4xxb-8xx6-3xxx2xxdxxx5c", 
-       "notificationEmailAddress": "dummy@microsoft.com", 
-       "updateIfExists": true
+       "subscriptionId":"da9xxxec-dxxf-4xxc-xxx21-xxx3ee7xxxxx", 
+       "datahubResourceGroup":"dummy-test-dh1", 
+       "location":"eastus2", 
+       "datahubWebsiteName":"dummy-test-dh1", 
+       "acceleratorResourceGroup":" dummy-test-acc1",   
+       "acceleratorWebsiteName":" dummy-test-acc1", 
+       "sentinelUsername":"dummy-dev", 
+       "notificationEmailAddress":" dummy@microsoft.com", 
+       "updateIfExists":true 
     }
     ```
 
@@ -213,10 +208,10 @@ Példa JSON-bemenetre:
     ![A Project Farm veri](./media/prepare-for-deployment/bash-2-1.png)
 
 4. Nyissa meg a saját könyvtárat a Cloud shellben. Alapértelmezés szerint ez a/Home/<username>
-5. Írja be vagy illessze be az alábbi két parancsot a Cloud Shellba. Ügyeljen rá, hogy módosítsa a bemenet elérési útját. JSON-fájl, majd nyomja le az ENTER billentyűt.
+5. Írja be vagy illessze be a következő parancsot a Cloud Shellba. Ügyeljen rá, hogy módosítsa a bemenet elérési útját. JSON-fájl, majd nyomja le az ENTER billentyűt.
 
       ```azurepowershell-interactive
-      wget -O farmbeats-installer.sh https://aka.ms/AzureFarmbeatsInstallerScriptbash farmbeats-installer.sh /home/<username>/input.json
+      wget -O farmbeats-installer.sh https://aka.ms/AzureFarmbeatsInstallerScript && bash farmbeats-installer.sh /home/<username>/input.json
      ```
      A telepítő automatikusan letölti az összes függőséget, és létrehozza az üzembe helyezést. A rendszer kérni fogja, hogy fogadja el az Azure FarmBeats végfelhasználói licencszerződését (EULA).
 
@@ -269,10 +264,10 @@ Kövesse a lépések további lépéseit:
     ![A Project Farm veri](./media/prepare-for-deployment/bash-2-1.png)
 
 4. Nyissa meg a saját könyvtárat a Cloud shellben. Alapértelmezés szerint ez a/Home/<username>
-5. Írja be vagy illessze be az alábbi két parancsot a Cloud Shellba. Ügyeljen rá, hogy módosítsa a bemenet elérési útját. JSON-fájl, majd nyomja le az ENTER billentyűt.
+5. Írja be vagy illessze be a következő parancsot a Cloud Shellba. Ügyeljen rá, hogy módosítsa a bemenet elérési útját. JSON-fájl, majd nyomja le az ENTER billentyűt.
 
     ```azurepowershell-interactive
-    wget -O farmbeats-installer.sh https://aka.ms/AzureFarmbeatsInstallerScriptbash farmbeats-installer.sh /home/<username>/input.json
+    wget -O farmbeats-installer.sh https://aka.ms/AzureFarmbeatsInstallerScript && bash farmbeats-installer.sh /home/<username>/input.json
     ```
 
 Kövesse a képernyőn megjelenő utasításokat.
@@ -314,11 +309,6 @@ Miután befejeződött a Gyorssegéd telepítése, megkapja az URL-címet, hogy 
 
 1. A Gyorssegédből való bejelentkezéshez másolja ki és illessze be az URL-címet a böngészőben.
 2. Jelentkezzen be Azure Portal hitelesítő adataival.
-3. Futtasson egy nem kötelező épelméjű tesztet.
-
-    - Ellenőrizze, hogy tud-e sikeresen bejelentkezni a Gyorssegéd-portálra olyan gyorssegéd-hivatkozás használatával, amelyet kimenetként kapott a sikeres telepítéshez.
-    - Válassza a **farm létrehozása**lehetőséget.
-    - A "?" ikon alatt nyissa meg a FarmBeats útmutatókat az **első lépések** gomb használatával.
 
 ## <a name="upgrade"></a>Frissítés
 
@@ -335,7 +325,7 @@ A verziófrissítés lépései hasonlóak az első telepítéshez. Kövesse az a
 6. Írja be vagy illessze be az alábbi két parancsot a Cloud Shellba. Ügyeljen arra, hogy módosítsa a bemeneti. JSON-fájl elérési útját, majd nyomja le az ENTER billentyűt.
 
     ```azurepowershell-interactive
-    wget -O farmbeats-installer.sh https://aka.ms/AzureFarmbeatsInstallerScriptbash farmbeats-installer.sh /home/<username>/input.json
+    wget -O farmbeats-installer.sh https://aka.ms/AzureFarmbeatsInstallerScript && bash farmbeats-installer.sh /home/<username>/input.json
     ```
 Kövesse a képernyőn megjelenő utasításokat:
 
@@ -369,6 +359,6 @@ Ha például két különböző erőforráscsoport esetében telepítette az ada
 5. Azt is megteheti, hogy manuálisan törli az egyes erőforrásokat, ami nem ajánlott.
 7. Az adatközpont törléséhez/eltávolításához lépjen az Azure-ba közvetlenül az Azure-on, és onnan törölje az erőforráscsoportot.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Telepítette az Azure FarmBeats-t. Most Ismerkedjen meg a [farmok létrehozásával](manage-farms.md#create-farms).
