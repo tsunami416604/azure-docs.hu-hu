@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 55b59802116eb10d2e7eeb3b13ecb3da2d475c6d
-ms.sourcegitcommit: 6dec090a6820fb68ac7648cf5fa4a70f45f87e1a
+ms.openlocfilehash: acc64486ac8bd15a9abab1f2010ea56b752a1e86
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/11/2019
-ms.locfileid: "73906976"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73927672"
 ---
 # <a name="deploy-farmbeats"></a>A FarmBeats üzembe helyezése
 
@@ -60,8 +60,8 @@ A következő lépésekkel hozhat létre Azure FarmBeats-ajánlatot a piactéren
 1. Jelentkezzen be a Azure Portalba, és válassza ki a fiókját a jobb felső sarokban, és váltson arra az Azure AD-bérlőre, ahol a Microsoft Azure FarmBeats telepíteni kívánja.
 2. Az Azure FarmBeats az Azure piactéren érhető el. A piactér lapon válassza a "Letöltés most" lehetőséget.
 3. Válassza a létrehozás lehetőséget, és adja meg a következő adatokat:
-  - előfizetés neve.
-  - egy meglévő erőforráscsoport-név (csak üres erőforráscsoport), vagy hozzon létre egy új erőforráscsoportot az Azure FarmBeats telepítéséhez. Jegyezze fel ezt az erőforráscsoportot a következő részekben.
+    - előfizetés neve.
+    - egy meglévő erőforráscsoport-név (csak üres erőforráscsoport), vagy hozzon létre egy új erőforráscsoportot az Azure FarmBeats telepítéséhez. Jegyezze fel ezt az erőforráscsoportot a következő részekben.
 4. Az a régió, amelyre telepíteni szeretné az Azure FarmBeats-t. Jelenleg a következő régiókban FarmBeats: USA középső régiója, Nyugat-Európa, USA 2. keleti régiója, Észak-Európa, USA nyugati régiója, Délkelet-Ázsia, USA keleti régiója, Kelet-Ausztrália, USA nyugati régiója 2
 5. Kattintson az **OK** gombra.
 Megjelenik a Használati feltételek lap. Tekintse át a standard piactér használati feltételeit, vagy válassza ki a hivatkozást a használati feltételek áttekintéséhez.
@@ -131,7 +131,7 @@ Az Azure AD-alkalmazás regisztrációs parancsfájljának futtatásához köves
 
 A telepítés részeként hozzon létre egy input. JSON fájlt a következőképpen:
 
-    ```
+```json
     {  
        "sku":"both",
        "subscriptionId":"da9xxxec-dxxf-4xxc-xxx21-xxx3ee7xxxxx",
@@ -144,7 +144,7 @@ A telepítés részeként hozzon létre egy input. JSON fájlt a következőkép
        "notificationEmailAddress":"dummy@yourorg.com",
        "updateIfExists":true
     }
-    ```
+```
 
 Ez a fájl a bemeneti fájlja Azure Cloud Shell és azokat a paramétereket, amelyek értékeit a rendszer a telepítés során használja. A JSON-ban lévő összes paramétert megfelelő értékekkel kell helyettesíteni, vagy el kell távolítani azokat. Ha eltávolítja, a telepítő a telepítés során kérni fogja
 
@@ -210,9 +210,9 @@ Példa JSON-bemenetre:
 4. Nyissa meg a saját könyvtárat a Cloud shellben. Alapértelmezés szerint ez a/Home/<username>
 5. Írja be vagy illessze be a következő parancsot a Cloud Shellba. Ügyeljen rá, hogy módosítsa a bemenet elérési útját. JSON-fájl, majd nyomja le az ENTER billentyűt.
 
-      ```azurepowershell-interactive
+   ```bash
       wget -O farmbeats-installer.sh https://aka.ms/AzureFarmbeatsInstallerScript && bash farmbeats-installer.sh /home/<username>/input.json
-     ```
+    ```
      A telepítő automatikusan letölti az összes függőséget, és létrehozza az üzembe helyezést. A rendszer kérni fogja, hogy fogadja el az Azure FarmBeats végfelhasználói licencszerződését (EULA).
 
      - Ha elfogadja, adja meg az "Y" értéket, és folytassa a következő lépéssel.
@@ -266,7 +266,7 @@ Kövesse a lépések további lépéseit:
 4. Nyissa meg a saját könyvtárat a Cloud shellben. Alapértelmezés szerint ez a/Home/<username>
 5. Írja be vagy illessze be a következő parancsot a Cloud Shellba. Ügyeljen rá, hogy módosítsa a bemenet elérési útját. JSON-fájl, majd nyomja le az ENTER billentyűt.
 
-    ```azurepowershell-interactive
+    ```bash
     wget -O farmbeats-installer.sh https://aka.ms/AzureFarmbeatsInstallerScript && bash farmbeats-installer.sh /home/<username>/input.json
     ```
 
@@ -324,7 +324,7 @@ A verziófrissítés lépései hasonlóak az első telepítéshez. Kövesse az a
 5. Töltse fel az input. JSON fájlt Azure Cloud Shellba.
 6. Írja be vagy illessze be az alábbi két parancsot a Cloud Shellba. Ügyeljen arra, hogy módosítsa a bemeneti. JSON-fájl elérési útját, majd nyomja le az ENTER billentyűt.
 
-    ```azurepowershell-interactive
+    ```bash
     wget -O farmbeats-installer.sh https://aka.ms/AzureFarmbeatsInstallerScript && bash farmbeats-installer.sh /home/<username>/input.json
     ```
 Kövesse a képernyőn megjelenő utasításokat:

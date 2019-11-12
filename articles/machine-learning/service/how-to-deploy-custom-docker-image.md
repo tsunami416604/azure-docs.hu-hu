@@ -1,5 +1,5 @@
 ---
-title: Modellek üzembe helyezése egyéni Docker-alapú rendszerképpel
+title: Modellek üzembe helyezése egyéni Docker-lemezképpel
 titleSuffix: Azure Machine Learning
 description: Megtudhatja, hogyan használhatja az egyéni Docker-rendszerképet a Azure Machine Learning-modellek üzembe helyezése során. Míg Azure Machine Learning alapértelmezett alapképet biztosít Önnek, a saját alaprendszerképét is használhatja.
 services: machine-learning
@@ -10,12 +10,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 08/22/2019
-ms.openlocfilehash: 3f822e0089772f06245d80c1323cf1f5dfe10361
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: b34ef305a6f1cf41c7b7bdcf415e1a91653ad878
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73496938"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73932100"
 ---
 # <a name="deploy-a-model-using-a-custom-docker-base-image"></a>Modell üzembe helyezése egyéni Docker-alapú rendszerkép használatával
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -96,7 +96,7 @@ Ha már betanított vagy telepített modelleket Azure Machine Learning használa
 
     Az előfizetések hitelesítéséhez kövesse az utasításokat.
 
-2. Használja a következő parancsot a munkaterület tároló-beállításjegyzékének listázásához. Cserélje le a `<myworkspace>`t a Azure Machine Learning-munkaterület nevére. Cserélje le a `<resourcegroup>` értéket a munkaterületet tartalmazó Azure-erőforráscsoport helyére:
+2. Használja a következő parancsot a munkaterület tároló-beállításjegyzékének listázásához. Cserélje le a `<myworkspace>`t a Azure Machine Learning-munkaterület nevére. Cserélje le a `<resourcegroup>`t a munkaterületet tartalmazó Azure-erőforráscsoporthoz:
 
     ```azurecli-interactive
     az ml workspace show -w <myworkspace> -g <resourcegroup> --query containerRegistry
@@ -280,7 +280,7 @@ az ml model deploy -n myservice -m mymodel:1 --ic inferenceconfig.json --dc depl
 
 A modellek ML parancssori felülettel történő üzembe helyezésével kapcsolatos további információkért tekintse meg [Azure Machine learning cikk CLI-bővítményének](reference-azure-machine-learning-cli.md#model-registration-profiling-deployment) "modell regisztrálása, profilkészítés és központi telepítése" szakaszát.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * További információ a [telepítéséről és a módjáról](how-to-deploy-and-where.md).
 * Ismerje meg, hogyan lehet [gépi tanulási modelleket betanítani és üzembe helyezni az Azure-folyamatok használatával](/azure/devops/pipelines/targets/azure-machine-learning?view=azure-devops).

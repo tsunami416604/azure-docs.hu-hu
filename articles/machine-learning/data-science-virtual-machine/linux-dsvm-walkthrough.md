@@ -9,12 +9,12 @@ author: vijetajo
 ms.author: vijetaj
 ms.topic: conceptual
 ms.date: 07/16/2018
-ms.openlocfilehash: 59f2db8ec4dd8affe1c87ca2bb85a7ff7b8a4d7c
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: b073c4244d2a7abc7c2c066c3fad036f0caa5faa
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73485389"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73929544"
 ---
 # <a name="data-science-with-a-linux-data-science-virtual-machine-in-azure"></a>Adatelemzés Linux-Data Science Virtual Machine az Azure-ban
 
@@ -58,8 +58,8 @@ Ezután fűzze össze a két fájlt:
 
 Az adatkészlet többféle statisztikai adattípussal rendelkezik az egyes e-mailekhez:
 
-* Az olyan oszlopok, mint például a **word\_a freq\_* Word*** az e-mailben szereplő szavak százalékos arányát *jelzi.* Ha például a **word\_freq\_make** értéke **1**, akkor az e-mailben szereplő összes szó 1%- *a.*
-* Oszlopok, például **char\_freq\_* char*** az e-mailben szereplő összes karakter százalékos arányát *jelzi.*
+* Az olyan oszlopok, mint például a **word\_freq\_**  a Word az e-mailben *szereplő szavak százalékos*arányát jelzi. Ha például a **word\_freq\_make** értéke **1**, akkor az e-mailben szereplő összes szó 1%- *a.*
+* Oszlopok, például a **char\_freq\__char_**  az e-mailben szereplő összes karakter százalékos arányát *jelzi.*
 * a nagybetűs **\_futtatási\_hossza\_leghosszabb** a nagybetűk sorozatának leghosszabb hosszúsága.
 * a **capital\_futtatási\_hossza\_átlag** a nagybetűk összes sorozatának átlagos hossza.
 * **\_futtatási\_hossza\_összesen** érték a nagybetűk összes sorozatának teljes hosszát adja meg.
@@ -381,7 +381,7 @@ Az adatelemzés:
 A **Tallózás** lapon éleslátó ábrákat is létrehozhat. Az adathisztogram ábrázolása:
 
 1. Válassza a **disztribúciók**lehetőséget.
-1. A **word_freq_remove** és a **word_freq_you**beállításnál válassza a **hisztogram**lehetőséget.
+1. **Word_freq_remove** és **word_freq_you**esetében válassza a **hisztogram**lehetőséget.
 1. Válassza a **Végrehajtás** lehetőséget. Mindkét sűrűséget egyetlen Graph-ablakban kell látnia, ahol egyértelmű, hogy _a szó sokkal gyakrabban jelenik meg az_ e-mailekben, mint az _Eltávolítás_.
 
 A **korrelációs** mintaterületek is érdekesek. Egy mintaterület létrehozásához:
@@ -546,7 +546,7 @@ Ezt követően a lekérdezés a Sqlcmd használatával:
 
 A mókus SQL használatával is lekérdezheti. Kövesse a PostgreSQL-hez hasonló lépéseket a SQL Server JDBC-illesztő használatával. A JDBC-illesztő a/usr/share/Java/jdbcdrivers/sqljdbc42.jar mappában található.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az Azure adatelemzési folyamatát alkotó feladatokkal kapcsolatos cikkek áttekintését itt találja: [csoportos adatelemzési folyamat](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/overview).
 

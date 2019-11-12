@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 76ab6a229de14af1e3808326c62a7bdbbd188e81
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 87dbd7ab4d75150d09a8c26db50ce2e3b1a085db
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72951366"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73930237"
 ---
 # <a name="connect-a-generic-client-application-to-your-azure-iot-central-application-nodejs"></a>Általános ügyfélalkalmazás összekötése az Azure IoT Central-alkalmazással (node. js)
 
@@ -21,7 +21,7 @@ ms.locfileid: "72951366"
 
 Ez a cikk azt ismerteti, hogyan lehet egy eszköz fejlesztőként csatlakozni egy általános Node. js-alkalmazáshoz, amely egy valós eszközt jelképez a Microsoft Azure IoT Central alkalmazáshoz.
 
-## <a name="before-you-begin"></a>Előzetes teendők
+## <a name="before-you-begin"></a>Előkészületek
 
 A cikkben leírt lépések elvégzéséhez a következőkre lesz szüksége:
 
@@ -36,7 +36,7 @@ Az Azure IoT Central alkalmazásban szüksége lesz egy eszköz sablonra a köve
 
 Adja hozzá a következő telemetria a **mértékegységek** lapon:
 
-| Megjelenítendő név | Mezőnév  | egység | Min | Maximum | Tizedesjegyek |
+| Megjelenítendő név | Mezőnév  | Egység | Min | Max | Tizedesjegyek |
 | ------------ | ----------- | ----- | --- | --- | -------------- |
 | Hőmérséklet  | hőmérséklet | F     | 60  | 110 | 0              |
 | Páratartalom     | páratartalom    | %     | 0   | 100 | 0              |
@@ -64,7 +64,7 @@ Adja meg a mezők nevét pontosan úgy, ahogy az a táblázatban látható az es
 
 Adja hozzá a következő eseményt a **mérések** lapon:
 
-| Megjelenítendő név | Mezőnév  | Súlyosság |
+| Megjelenítendő név | Mezőnév  | Severity |
 | ------------ | ----------- | -------- |
 | Megelőzhető túlmelegedése  | Túlfűteni    | Hiba    |
 
@@ -77,7 +77,7 @@ Adja hozzá a következő hely mértékét a **mérések** lapon:
 
 | Megjelenítendő név | Mezőnév  |
 | ------------ | ----------- |
-| Földrajzi egység     | location    |
+| Hely     | location    |
 
 A hely mérési adattípusa két lebegőpontos számból áll a hosszúság és a szélesség számára, és egy opcionális lebegőpontos számot a magassághoz.
 
@@ -98,7 +98,7 @@ Pontosan úgy adja meg a mezőneveket, ahogy az a táblázatban látható az esz
 
 Adja hozzá a következő **számú** beállítást a **Beállítások** lapon:
 
-| Megjelenítendő név    | Mezőnév     | egység | tizedesek | Min | Maximum  | Kezdeti |
+| Megjelenítendő név    | Mezőnév     | Egység | tizedesek | Min | Max  | Kezdeti |
 | --------------- | -------------- | ----- | -------- | --- | ---- | ------- |
 | Ventilátor sebessége       | fanSpeed       | rpm   | 0        | 0   | 3000 | 0       |
 | Megadott hőmérséklet | setTemperature | F     | 0        | 20  | 200  | 80      |
@@ -111,11 +111,11 @@ Adja hozzá a következő parancsot a **parancsok** lapon:
 
 | Megjelenítendő név    | Mezőnév     | Alapértelmezett időtúllépés | Adattípus |
 | --------------- | -------------- | --------------- | --------- |
-| Visszaszámlálás       | visszaszámlálás      | 30              | szám    |
+| Visszaszámlálás       | Visszaszámlálás      | 30              | szám    |
 
 Adja hozzá a következő beviteli mezőt a visszaszámlálási parancshoz:
 
-| Megjelenítendő név    | Mezőnév     | Adattípus | Value (Díj) |
+| Megjelenítendő név    | Mezőnév     | Adattípus | Érték |
 | --------------- | -------------- | --------- | ----- |
 | Darabszám      | countFrom      | szám    | 10    |
 

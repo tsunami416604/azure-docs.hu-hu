@@ -1,18 +1,18 @@
 ---
-title: Sensor partner-integráció
+title: Érzékelői partner integrációja
 description: Az érzékelő partner-integráció ismertetése
 author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: e90284ce2f8ea37eb9249822e38cef04e1356f59
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 1e819c94732e1cbc2de39e6400f8305b7df5aca1
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73889582"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73927656"
 ---
-# <a name="sensor-partner-integration"></a>Sensor partner-integráció
+# <a name="sensor-partner-integration"></a>Érzékelői partner integrációja
 
 Ez a cikk az érzékelő partner-integrációt lehetővé tevő Azure FarmBeats **Translator** összetevővel kapcsolatos információkat tartalmaz.
 
@@ -79,7 +79,7 @@ A FarmBeats adatközpont tulajdonosi hitelesítést használ, amelynek a követk
 
 A fenti hitelesítő adatok használatával a hívó kérhet egy hozzáférési jogkivonatot, amelyet a következő API-kérelmekben kell elküldeni a fejléc szakaszban a következő módon:
 
-```json
+```
 headers = {"Authorization": "Bearer " + access_token, …} 
 ```
 
@@ -124,14 +124,14 @@ Igény szerint a lekérdezési paramétereket is megadhatja a szűréshez, korl�
 
 Az alábbi példa az eszközök listájának beszerzésére szolgál:
 
-```azurepowershell-interactive
-curl -X GET "https://microsoft-farmbeats.azurewebsites.net/Device" -H "Content-Type: application/json" -H "Authorization: Bearer <Access-Token>”
+```bash
+curl -X GET "https://microsoft-farmbeats.azurewebsites.net/Device" -H "Content-Type: application/json" -H "Authorization: Bearer <Access-Token>"
 ```
 A legtöbb GET, POST és PUT híváshoz JSON-kérést tartalmazó törzs szükséges.
 
 Az alábbi példa egy eszköz létrehozására szolgál (ez a minta egy bemeneti JSON-t tartalmaz a kérelem törzsével).
 
-```azurepowershell-interactive
+```bash
 curl -X POST "https://microsoft-farmbeats.azurewebsites.net/Device" -H  "accept: application/json" -H  "Content-Type: application/json" -H "Authorization: Bearer <Access-Token>" -d "{  \"deviceModelId\": \"ID123\",  \"hardwareId\": \"MHDN123\",  \"reportingInterval\": 900,  \"name\": \"Device123\",  \"description\": \"Test Device 123\",}"
 ```
 
@@ -154,7 +154,7 @@ A FarmBeats adatközpontja a következő API-kkal rendelkezik, amelyek lehetőv�
   Gyártó  | 2 csillag |
   ProductCode  | Eszköz Termékkód vagy modell neve/száma. Például: EnviroMonitor # 6800 |
   Portok  | Port neve és típusa (digitális/analóg)  |
-  Név  | Az erőforrást azonosító név. Például: modell neve/terméknév |
+  Name (Név)  | Az erőforrást azonosító név. Például: modell neve/terméknév |
   Leírás  | Adjon meg egy értelmes leírást a modellről |
   Tulajdonságok  | További tulajdonságok a gyártótól |
   **Eszköz** | **Az eszköz megfelel a farmban lévő fizikai eszköznek. Minden eszköz egyedi eszköz-AZONOSÍTÓval rendelkezik** |
@@ -163,7 +163,7 @@ HardwareId   |Az eszköz egyedi azonosítója, például MAC-címe stb.  |
 ReportingInterval |Jelentéskészítési időköz (másodperc) |
 Hely    |Eszköz szélesség (-90 – + 90)/Longitude (-180 – 180)/Elevation (méter) |
 ParentDeviceId | Azon szülő eszköz azonosítója, amelyhez az eszköz csatlakozik. Például:. Átjáróhoz csatlakozó csomópont; a csomópont parentDeviceID lesz az átjáróként |
-  Név  | Az erőforrást azonosító név.  Az eszköz partnereinek olyan nevet kell küldeniük, amely konzisztens az eszköz nevével az eszköz partner oldalán. Ha az eszköz neve felhasználó által definiálva van az eszköz partnere oldalon, a felhasználó által definiált nevet is propagálni kell a FarmBeats  |
+  Name (Név)  | Az erőforrást azonosító név.  Az eszköz partnereinek olyan nevet kell küldeniük, amely konzisztens az eszköz nevével az eszköz partner oldalán. Ha az eszköz neve felhasználó által definiálva van az eszköz partnere oldalon, a felhasználó által definiált nevet is propagálni kell a FarmBeats  |
   Leírás  | Adjon meg egy értelmes Leírást  |
   Tulajdonságok  |További tulajdonságok a gyártótól  |
   **Érzékelő modell** | A SensorModel az érzékelő metaadatait, például a gyártót, az érzékelő típusát vagy analóg vagy digitális, az érzékelő mértékét, például a környezeti hőmérsékletet, a nyomást stb. |
@@ -243,27 +243,26 @@ A kanonikus üzenet formátuma a következő:
 
 ```json
 {
-“deviceid”: “<id of the Device created>”,
- "timestamp": "<timestamp in ISO 8601 format>",
+"deviceid": "<id of the Device created>",
+"timestamp": "<timestamp in ISO 8601 format>",
 "version" : "1",
 "sensors": [
     {
-      "id": "<id of the sensor created>”
+      "id": "<id of the sensor created>",
       "sensordata": [
         {
           "timestamp": "< timestamp in ISO 8601 format >",
-          "<sensor measure name (as defined in the Sensor Model)>": value
+          "<sensor measure name (as defined in the Sensor Model)>": "<value>"
         },
         {
           "timestamp": "<timestamp in ISO 8601 format>",
-          "<sensor measure name (as defined in the Sensor Model)>": value
+          "<sensor measure name (as defined in the Sensor Model)>": "<value>"
         }
       ]
     }
+ ]
 }
-
 ```
-
 A telemetria JSON-ban az összes kulcsnévnek kisebbnek kell lennie, például: DeviceID, sensordata stb.
 
 Például telemetria-üzenet:
@@ -328,6 +327,6 @@ Az eszközök gyártói/partnerei rendelkezhetnek a következő épelméjű tesz
    - Ellenőrizze, hogy az API-hívás sikeres-e a kapott hozzáférési jogkivonattal
    - Ellenőrizze, hogy létrejött-e az EventHub-Ügyfélkapcsolat
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a REST APIről: [REST API](references-for-farmbeats.md#rest-api).

@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 05/15/2017
-ms.openlocfilehash: bcf741e82e247a5b79a478ef1015a70cccb4d274
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: c4d029de782ae408b83c265322a865db7b166c1e
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72899909"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73928306"
 ---
 # <a name="separating-telemetry-from-development-test-and-production"></a>Telemetria elválasztása fejlesztési, tesztelési és éles környezetből
 
@@ -27,7 +27,7 @@ A webalkalmazás Application Insights figyelésének beállításakor egy Applic
 Általában külön erőforrásokat vagy egyetlen megosztott erőforrást használ különböző helyzetekben:
 
 * Különböző független alkalmazások – minden alkalmazáshoz használjon külön erőforrás-és rendszerállapotkulcsot.
-* Egy üzleti alkalmazás több összetevője vagy szerepköre – [egyetlen megosztott erőforrást](../../azure-monitor/app/app-map.md) használhat az összes összetevő-alkalmazáshoz. A telemetria a cloud_RoleName tulajdonság szerint szűrhető vagy szegmentálható.
+* Egy üzleti alkalmazás több összetevője vagy szerepköre – [egyetlen megosztott erőforrást](../../azure-monitor/app/app-map.md) használhat az összes összetevő-alkalmazáshoz. A telemetria szűrhetők vagy szegmentálható a cloud_RoleName tulajdonsággal.
 * Fejlesztés, tesztelés és kiadás – használjon külön erőforrás-és rendszerállapotkulcsot a rendszer "Stamp" vagy "éles" fázisában lévő verzióihoz.
 * A | B tesztelés – egyetlen erőforrás használata. Hozzon létre egy TelemetryInitializer, és adjon hozzá egy tulajdonságot a telemetria, amely azonosítja a változókat.
 
@@ -51,7 +51,7 @@ Annak érdekében, hogy könnyebb legyen módosítani a rendszerállapotkulcsot,
 Ebben a példában a különböző erőforrások erőforráskulcsot a webes konfigurációs fájl különböző verzióiba helyezi. A webes konfigurációs fájl cseréje – a kiadási parancsfájl részeként is elvégezhető – a cél erőforrást fogja cserélni.
 
 ### <a name="web-pages"></a>Weblapok
-A Rendszerállapotkulcsot az alkalmazás weblapjain is használják, a [gyors üzembe helyezés panelen kapott szkriptben](../../azure-monitor/app/javascript.md). Ahelyett, hogy a parancsfájlba kellene írnia, azt a kiszolgáló állapotától kell meghoznia. Például egy ASP.NET-alkalmazásban:
+A Rendszerállapotkulcsot az alkalmazás weblapjain is használják, a gyors üzembe helyezési panelen [kapott parancsfájlban](../../azure-monitor/app/javascript.md). Ahelyett, hogy a parancsfájlba kellene írnia, azt a kiszolgáló állapotától kell meghoznia. Például egy ASP.NET-alkalmazásban:
 
 *JavaScript a Borotvában*
 
@@ -81,7 +81,7 @@ A [Portal.Azure.com](https://portal.azure.com)adjon hozzá egy Application Insig
 
 Az erőforrás létrehozása eltarthat néhány másodpercig. Ha elkészült, megjelenik egy riasztás.
 
-(Létrehozhat egy PowerShell- [szkriptet](../../azure-monitor/app/powershell-script-create-resource.md) , amely automatikusan létrehoz egy erőforrást.)
+(Létrehozhat egy PowerShell- [szkriptet](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource#creating-a-resource-automatically) , amely automatikusan létrehoz egy erőforrást.)
 
 ### <a name="getting-the-instrumentation-key"></a>A kialakítási kulcs beolvasása
 A kialakítási kulcs azonosítja a létrehozott erőforrást. 
@@ -134,7 +134,7 @@ Az alkalmazás verzió tulajdonságának beállítása több különböző móds
     Ha engedélyezni szeretné, hogy az MSBuild verziószámokat hozzon létre, állítsa be a (z) `1.0.*` verziót a AssemblyReference.cs-ben
 
 ## <a name="version-and-release-tracking"></a>Verzió- és kiadáskövetés
-Az alkalmazásverzió nyomon követéséhez győződjön meg arról, hogy a Microsoft Build Engine folyamat létrehozza a `buildinfo.config` fájlt. A .csproj fájlban adja hozzá a következőt:  
+Az alkalmazásverzió nyomon követéséhez győződjön meg arról, hogy a Microsoft Build Engine folyamat létrehozza a `buildinfo.config` fájlt. A `.csproj` fájlban adja hozzá a következőket:  
 
 ```XML
 
@@ -145,7 +145,7 @@ Az alkalmazásverzió nyomon követéséhez győződjön meg arról, hogy a Micr
 
 Ha megkapja a verzióinformációkat, az Application Insights webmodul automatikusan hozzáadja az **Alkalmazás verzióját** tulajdonságként a telemetria minden eleméhez. Ez lehetővé teszi a verziók szerinti szűrést, amikor [diagnosztikai kereséseket](../../azure-monitor/app/diagnostic-search.md) végez, illetve [metrikákat vizsgál](../../azure-monitor/app/metrics-explorer.md).
 
-Ne feledje azonban, hogy a buildverzió számát csak a Microsoft Build Engine hozza létre, a Visual Studio fejlesztői buildje nem.
+Figyelje meg azonban, hogy a build verziószámát csak a Microsoft Build motorja hozza létre, nem pedig a Visual studióból származó fejlesztői Build.
 
 ### <a name="release-annotations"></a>Kiadási jegyzetek
 Ha az Azure DevOps-t használja, [beolvashatja](../../azure-monitor/app/annotations.md) a diagramokhoz hozzáadott jegyzet jelölőket, amikor új verziót ad ki. Az alábbi képen látható, hogy jelenik meg a jelölő.

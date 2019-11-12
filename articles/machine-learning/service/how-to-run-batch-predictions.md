@@ -6,17 +6,17 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
-ms.reviewer: trbye, jmartens, larryfr
-ms.author: tracych
-author: tracych
+ms.reviewer: trbye, jmartens, larryfr, vaidyas
+ms.author: vaidyas
+author: vaidya-s
 ms.date: 11/04/2019
 ms.custom: Ignite2019
-ms.openlocfilehash: 615536fbba38279a23516352c69461c19f9972ed
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: 4e7ddf7fc7b18d57b8251d4fb8293ed2f6e83d17
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73796714"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73929556"
 ---
 # <a name="run-batch-inference-on-large-amounts-of-data-by-using-azure-machine-learning"></a>Batch-következtetés futtatása nagy mennyiségű adattal a Azure Machine Learning használatával
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -189,13 +189,13 @@ model = Model.register(model_path="models/",
 A parancsfájlnak két függvényt *kell tartalmaznia* :
 - `init()`: használja ezt a funkciót bármilyen költséges vagy közös felkészüléshez a későbbi következtetésekhez. Használhatja például a modell betöltését egy globális objektumba.
 -  `run(mini_batch)`: a függvény minden egyes `mini_batch` példánynál futni fog.
-    -  `mini_batch`: a Batch-következtetés meghívja a Run metódust, és egy listát vagy pandák DataFrame ad át a metódus argumentumaként. A min_batch minden bejegyzése-egy filepath, ha a bemenet egy FileDataset, egy Panda DataFrame, ha a bemenet egy TabularDataset.
-    -  `response`: a Run () metódusnak egy Panda DataFrame vagy egy tömböt kell visszaadnia. A append_row output_action a visszaadott elemeket a rendszer a közös kimeneti fájlba fűzi. A summary_only esetében a rendszer figyelmen kívül hagyja az elemek tartalmát. Az összes kimeneti művelet esetében minden visszaadott kimeneti elem a bemeneti mini-batch bemeneti elemének egy sikeres következtetését jelzi. A felhasználónak meg kell győződnie arról, hogy elegendő adat szerepel a következtetési eredményben, hogy leképezje a bemenetet. A következtetés kimenete kimeneti fájlban lesz megírva, és nem garantált, hogy sorrendben legyenek, a felhasználónak a kimenetben lévő egyes kulcsokat kell használnia a bemenethez való leképezéshez.
+    -  `mini_batch`: a Batch-következtetés meghívja a Run metódust, és egy listát vagy pandák DataFrame ad át a metódus argumentumaként. Min_batch minden bejegyzése lesz-egy filepath, ha a bemenet egy FileDataset, egy Panda DataFrame, ha a bemenet egy TabularDataset.
+    -  `response`: a Run () metódusnak egy Panda DataFrame vagy egy tömböt kell visszaadnia. Append_row output_action esetében ezek a visszaadott elemek a közös kimeneti fájlba vannak hozzáfűzve. Summary_only esetén a rendszer figyelmen kívül hagyja az elemek tartalmát. Az összes kimeneti művelet esetében minden visszaadott kimeneti elem a bemeneti mini-batch bemeneti elemének egy sikeres következtetését jelzi. A felhasználónak meg kell győződnie arról, hogy elegendő adat szerepel a következtetési eredményben, hogy leképezje a bemenetet. A következtetés kimenete kimeneti fájlban lesz megírva, és nem garantált, hogy sorrendben legyenek, a felhasználónak a kimenetben lévő egyes kulcsokat kell használnia a bemenethez való leképezéshez.
 
 ```python
 # Snippets from a sample script.
 # Refer to the accompanying digit_identification.py
-# (https://github.com/Azure/MachineLearningNotebooks/blob/master/pipeline/digit_identification.py)
+# (https://aka.ms/batch-inference-notebooks)
 # for the implementation script.
 
 import os
@@ -345,7 +345,7 @@ RunDetails(pipeline_run).show()
 pipeline_run.wait_for_completion(show_output=True)
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha szeretné látni, hogy ez a folyamat teljes körűen működjön, próbálja ki a [Batch következtetéseit tartalmazó jegyzetfüzetet](https://aka.ms/batch-inference-notebooks). 
 

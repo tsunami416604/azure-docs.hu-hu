@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
-ms.openlocfilehash: 203725ba109922a8704c0e31a6e61dc6eadf6bd9
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 087f1d76aaab4b05425262e0c1fb87b168c99b95
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73586634"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73931224"
 ---
 # <a name="quickstart-use-a-device-capability-model-to-create-an-iot-plug-and-play-preview-device-linux"></a>Gyors útmutató: eszköz-képesség modell használata IoT Plug and Play Preview-eszköz (Linux) létrehozásához
 
@@ -57,11 +57,11 @@ A _vállalati modell adattárának kapcsolati karakterláncát_ az [Azure Certif
 
 ## <a name="prepare-an-iot-hub"></a>IoT hub előkészítése
 
-A rövid útmutató elvégzéséhez szüksége lesz egy Azure IoT hub-ra az Azure-előfizetésében. Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
+A rövid útmutató elvégzéséhez szüksége lesz egy Azure IoT hub-ra is az Azure-előfizetésében. Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt. Ha nem rendelkezik IoT hub-fiókkal, akkor a következő lépésekkel hozhat létre egyet.
 
 Ha helyileg használja az Azure CLI-t, a `az` verziójának **2.0.75** vagy újabbnak kell lennie, a Azure Cloud Shell a legújabb verziót használja. A `az --version` parancs használatával keresse meg a számítógépen telepített verziót.
 
-Adja hozzá a Microsoft Azure IoT bővítményt az Azure CLI-hez:
+A következő parancs futtatásával adja hozzá az Azure CLI-hez készült Microsoft Azure IoT-bővítményt a Cloud Shell-példányhoz:
 
 ```azurecli-interactive
 az extension add --name azure-cli-iot-ext
@@ -69,11 +69,11 @@ az extension add --name azure-cli-iot-ext
 
 Az ebben a rövid útmutatóban szereplő lépések a bővítmény **0.8.5** vagy újabb verzióját igénylik. A `az extension list` parancs használatával ellenőrizze a telepített verziót, és szükség esetén frissítse a `az extension update` parancsot.
 
-Ha nem rendelkezik IoT-hubhoz, hozzon létre egyet az alábbi parancsokkal, és cserélje le a `{YourIoTHubName}`t a választott egyedi névre. Ha helyileg futtatja ezeket a parancsokat, először jelentkezzen be az Azure-előfizetésbe `az login`használatával. Ha ezeket a parancsokat az Azure Cloud shellben futtatja, a rendszer automatikusan bejelentkezett:
+Ha nem rendelkezik IoT-hubhoz, hozzon létre egyet az alábbi parancsokkal, és cserélje le a `<YourIoTHubName>`t a választott egyedi névre. Ha helyileg futtatja ezeket a parancsokat, először jelentkezzen be az Azure-előfizetésbe `az login`használatával. Ha ezeket a parancsokat az Azure Cloud shellben futtatja, a rendszer automatikusan bejelentkezett:
 
   ```azurecli-interactive
   az group create --name pnpquickstarts_rg --location centralus
-  az iot hub create --name {YourIoTHubName} \
+  az iot hub create --name <YourIoTHubName> \
     --resource-group pnpquickstarts_rg --sku S1
   ```
 
@@ -82,23 +82,23 @@ Az előző parancsok létrehoznak egy `pnpquickstarts_rg` nevű erőforráscsopo
 > [!IMPORTANT]
 > A nyilvános előzetes verzióban a IoT Plug and Play funkciói csak az **USA középső**régiójában, Észak- **Európában**és Kelet- **japán** régióban létrehozott IoT-hubokon érhetők el.
 
-A következő parancs futtatásával hozzon létre egy `mypnpdevice` nevű eszköz identitását az IoT hub-ban. Cserélje le az `{YourIoTHubName}` helyőrzőt az IoT hub nevére:
+Futtassa a következő parancsot egy eszköz identitásának létrehozásához az IoT hub-ban. Cserélje le a **YourIoTHubName** és a **YourDevice** helyőrzőket a tényleges nevekre.
 
 ```azurecli-interactive
-az iot hub device-identity create --hub-name {YourIoTHubName} --device-id mypnpdevice
+az iot hub device-identity create --hub-name <YourIoTHubName> --device-id <YourDevice>
 ```
 
-Futtassa az alábbi parancsokat az imént regisztrált eszközhöz tartozó _eszköz-kapcsolódási karakterlánc_ beszerzéséhez. Ehhez a rövid útmutatóhoz később szüksége lesz erre a csatlakoztatási karakterláncra:
+Futtassa az alábbi parancsokat az imént regisztrált eszközhöz tartozó _eszköz-kapcsolódási karakterlánc_ beszerzéséhez.
 
 ```azurecli-interactive
-az iot hub device-identity show-connection-string --hub-name {YourIoTHubName} --device-id mypnpdevice --output table
+az iot hub device-identity show-connection-string --hub-name <YourIoTHubName> --device-id <YourDevice> --output table
 ```
 
 ## <a name="author-your-model"></a>A modell szerzője
 
 Ebben a rövid útmutatóban egy meglévő minta-eszköz képesség modellt és társított csatolókat használ.
 
-1. Hozzon létre egy `pnp_app` könyvtárat a saját könyvtárában. Ezt a mappát kell használnia az eszköz modell fájljaihoz és az eszköz kódjához.
+1. Hozzon létre egy `pnp_app` könyvtárat a helyi meghajtón. Ezt a mappát kell használnia az eszköz modell fájljaihoz és az eszköz kódjához.
 
     ```bash
     cd ~
@@ -121,16 +121,16 @@ Ebben a rövid útmutatóban egy meglévő minta-eszköz képesség modellt és 
 
 ## <a name="generate-the-c-code-stub"></a>A C kód kiváltása
 
-Most már rendelkezik egy DCM-rel és a hozzá tartozó csatolókkal, létrehozhatja a modellt megvalósító eszköz kódját. A C-kód a (z) VS Code-ban való létrehozásához:
+Most, hogy már rendelkezik DCM-rel és a hozzá tartozó csatolókkal, létrehozhatja a modellt megvalósító eszköz kódját. A C-kód a (z) VS Code-ban való létrehozásához:
 
 1. A VS Code-ban megnyitott `pnp_app` mappában a **CTRL + SHIFT + P** billentyűkombinációval nyissa meg a parancssort, írja be a **IoT Plug and Play**, majd válassza az **eszköz kódjának előállítása**lehetőséget.
 
     > [!NOTE]
-    > Amikor első alkalommal használja a IoT Plug and Play Code Generator segédprogramot, a letöltés eltarthat néhány másodpercig.
+    > Amikor első alkalommal használja a IoT Plug and Play Code Generator segédprogramot, az automatikusan letölti és telepíti a szolgáltatást.
 
-1. Válassza ki az **SampleDevice. capabilitymodel. JSON** fájlt, amelyet az eszköz kódjának létrehozásához kíván használni.
+1. Válassza ki az **SampleDevice. capabilitymodel. JSON** fájlt, amelyet az eszköz kódjának generálásához kíván használni.
 
-1. Adja meg a projekt nevét **sample_device**, és ez lesz az eszköz alkalmazásának neve.
+1. Adja meg a projekt nevét **sample_device**. Ez lesz az eszköz-alkalmazás neve.
 
 1. Válassza az **ANSI C** nyelvet.
 
@@ -138,9 +138,9 @@ Most már rendelkezik egy DCM-rel és a hozzá tartozó csatolókkal, létrehozh
 
 1. A Project-sablon **alapján válassza a Linux** rendszerhez készült CMAK-projekt lehetőséget.
 
-1. Az SDK-t a **forráskódon keresztül** választhatja ki.
+1. Válassza a **forráskódon keresztül** lehetőséget az eszköz SDK befoglalásához.
 
-1. A VS Code egy új ablakot nyit meg a generált kódlap-fájlokkal.
+1. A rendszer egy **sample_device** nevű új mappát hoz létre a DCM-fájllal megegyező helyen, és ez a generált kódlap-fájlok. A VS Code egy új ablakot nyit meg, amely megjeleníti ezeket.
     ![eszköz kódja](media/quickstart-create-pnp-device-linux/device-code.png)
 
 ## <a name="build-and-run-the-code"></a>A kód létrehozása és futtatása
@@ -173,7 +173,7 @@ Az eszköz SDK forráskódját a generált eszköz kódjának összeállításá
 
     ```sh
     cd ~/pnp_app/sample_device/cmake
-    ./sample_device "{IoT Hub device connection string}"
+    ./sample_device "<device connection string>"
     ```
 
 1. Az eszköz megkezdi az adatok küldését a IoT Hubba.
@@ -202,25 +202,25 @@ Az eszköz kódjának az **az parancssori** felülettel való ellenőrzéséhez 
 
 ### <a name="use-the-azure-iot-cli-to-validate-the-code"></a>A kód érvényesítése az Azure IoT CLI használatával
 
-Az ügyfél mintájának elindítása után megtekintheti, hogy működik-e az Azure CLI-vel.
+Az eszköz-ügyfél mintájának elindítása után megtekintheti, hogy az Azure CLI-vel dolgozik-e.
 
 A következő parancs használatával megtekintheti a telemetria küldő eszközét. Előfordulhat, hogy várnia kell egy percet vagy kettőt, mielőtt bármilyen telemetria lát a kimenetben:
 
 ```azurecli-interactive
-az iot dt monitor-events --hub-name {your IoT hub} --device-id mypnpdevice
+az iot dt monitor-events --hub-name <YourIoTHubNme> --device-id <YourDevice>
 ```
 
 A következő parancs használatával tekintheti meg az eszköz által eljuttatott összes tulajdonságot:
 
 ```azurecli-interactive
-az iot dt list-properties --device-id mypnpdevice --hub-name {Your IoT hub name} --source private --repo-login "{Your company model repository connection string}"
+az iot dt list-properties --device-id <YourDevice> --hub-name <YourIoTHubNme> --source private --repo-login "<Your company model repository connection string>"
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebből a rövid útmutatóból megtudhatta, hogyan hozhat létre IoT Plug and Play-eszközt DCM használatával.
 
 Ha többet szeretne megtudni a DCMs és a saját modelljeinek létrehozásáról, folytassa a következő oktatóanyaggal:
 
 > [!div class="nextstepaction"]
-> [Oktatóanyag: eszköz-képesség modell létrehozása a Visual Studio Code használatával](tutorial-pnp-visual-studio-code.md)
+> [Oktatóanyag: eszköz-képesség modell létrehozása és tesztelése a Visual Studio Code használatával](tutorial-pnp-visual-studio-code.md)

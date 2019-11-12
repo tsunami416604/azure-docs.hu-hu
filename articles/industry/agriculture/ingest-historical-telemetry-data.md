@@ -5,14 +5,14 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: e6bd9b5c09e1af5ec587e1f0e52ab25d21d2293b
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: e721a7818c5f2fcea23263b296912edf164036b2
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73889613"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73927802"
 ---
-# <a name="ingest-historical-telemetry-data"></a>Korábbi telemetria-adatfeldolgozás
+# <a name="ingest-historical-telemetry-data"></a>Korábbi telemetriaadatok feldolgozása
 
 Ez a cikk azt ismerteti, hogyan lehet bevezetni a korábbi érzékelőkre vonatkozó információkat az Azure FarmBeats.
 
@@ -80,7 +80,7 @@ Ezek létrehozásához kövesse az alábbi lépéseket:
 |          Gyártó            |         2 csillag     |
 |  ProductCode                    |  Eszköz Termékkód vagy modell neve/száma. Például: EnviroMonitor # 6800.  |
 |            Portok          |     Port neve és típusa (digitális/analóg)
-|     Név                 |  Az erőforrást azonosító név. Például: modell neve/terméknév.
+|     Name (Név)                 |  Az erőforrást azonosító név. Például: modell neve/terméknév.
       Leírás     | Adjon meg egy értelmes leírást a modellről
 |    Tulajdonságok          |    További tulajdonságok a gyártótól   |
 |    **Eszköz**             |                      |
@@ -89,7 +89,7 @@ Ezek létrehozásához kövesse az alábbi lépéseket:
 |  ReportingInterval        |   Jelentéskészítési időköz (másodperc)
 |  Hely            |  Eszköz szélesség (-90 – + 90)/Longitude (-180 – 180)/Elevation (méter)   
 |ParentDeviceId       |    Annak a fölérendelt eszköznek az azonosítója, amelyhez az eszköz csatlakoztatva van. Például egy átjáróhoz csatlakozó csomópont. A csomópontok átjáróként lesznek parentDeviceId.  |
-|    Név            | Az erőforrás azonosítására szolgáló név. Az eszköz partnereinek olyan nevet kell küldeniük, amely konzisztens a partner oldalán található eszköznév nevével. Ha a partner eszköz neve felhasználó által definiált, akkor a felhasználó által definiált nevet is propagálni kell a FarmBeats.|
+|    Name (Név)            | Az erőforrás azonosítására szolgáló név. Az eszköz partnereinek olyan nevet kell küldeniük, amely konzisztens a partner oldalán található eszköznév nevével. Ha a partner eszköz neve felhasználó által definiált, akkor a felhasználó által definiált nevet is propagálni kell a FarmBeats.|
 |     Leírás       |      Adjon meg egy értelmes Leírást  |
 |     Tulajdonságok    |  További tulajdonságok a gyártótól
 |     **Érzékelő modell**        |          |
@@ -101,7 +101,7 @@ Ezek létrehozásához kövesse az alábbi lépéseket:
 |    SensorMeasures > típusa    |Az érzékelő telemetria-adattípusának mértékegysége A rendszer által definiált típusok a következők: AmbientTemperature, CO2, mélység, ElectricalConductivity, LeafWetness, Length, LiquidLevel, nitrát, O2, PH, foszfát, PointInTime, kálium, nyomás, RainGauge, RelativeHumidity, sótartalom, SoilMoisture, SoilTemperature, SolarRadiation, State, TimeDuration, UVRadiation, UVIndex, Volume, WindDirection, WindRun, szélsebesség, párolgás, PAR. További részletekért lásd a/ExtendedType API-t.|
 |        SensorMeasures > egység              | Az érzékelő telemetria-adategysége. A következő rendszer által meghatározott egységek: nincs egység, Celsius, Fahrenheit, Kelvin, Rankine, Pascal, Mercury, PSI, milliméter, centiméter, Meter, hüvelyk, láb, Mile, km, MilesPerHour, MilesPerSecond, KMPerHour, KMPerSecond, MetersPerHour, MetersPerSecond, Degree, WattsPerSquareMeter, KiloWattsPerSquareMeter, MilliWattsPerSquareCentiMeter, MilliJoulesPerSquareCentiMeter, VolumetricWaterContent, százalék, PartsPerMillion, MicroMol, MicroMolesPerLiter, SiemensPerSquareMeterPerMole, MilliSiemensPerCentiMeter, Centibar, DeciSiemensPerMeter, KiloPascal, VolumetricIonContent, liter, MilliLiter, másodperc, UnixTimestamp, MicroMolPerMeterSquaredPerSecond, InchesPerHour továbbiak hozzáadásához tekintse meg a/ ExtendedType API.|
 |    SensorMeasures > aggregationType    |  Az értékek lehetnek nem, átlag, maximum, minimum vagy StandardDeviation.  |
-|          Név            | Az erőforrást azonosító név. Például: modell neve/terméknév.  |
+|          Name (Név)            | Az erőforrást azonosító név. Például: modell neve/terméknév.  |
 |    Leírás        | Adjon meg egy értelmes leírást a modellről  |
 |   Tulajdonságok       |  További tulajdonságok a gyártótól  |
 |    **Érzékelő**      |          |
@@ -110,7 +110,7 @@ Ezek létrehozásához kövesse az alábbi lépéseket:
 | location          |  Érzékelő szélesség (-90 – + 90)/Longitude (-180 – 180)/Elevation (méter)|
 |   port > neve        |  Annak a portnak a neve és típusa, amelyhez az érzékelő csatlakozik az eszközhöz. Ennek az eszköz modelljében definiált névnek kell lennie. |
 |    DeviceID  |    Annak az eszköznek az azonosítója, amelyhez az érzékelő csatlakozik     |
-| Név            |   Az erőforrást azonosító név. Például: érzékelő neve/terméknév és modell száma/Termékkód.|
+| Name (Név)            |   Az erőforrást azonosító név. Például: érzékelő neve/terméknév és modell száma/Termékkód.|
 |    Leírás      | Adjon meg egy értelmes Leírást |
 |    Tulajdonságok        |További tulajdonságok a gyártótól |
 
@@ -245,17 +245,15 @@ SensorModel
     "additionalProp3": {}
   }
 }
-
 ```
 Az alábbi példa egy eszköz létrehozását mutatja be (ez egy bemeneti JSON-t tartalmaz adattartalomként a kérés törzsével).  
 
-```azurepowershell-interactive
+```bash
 curl -X POST "https://<datahub>.azurewebsites.net/Device" -H  
 "accept: application/json" -H  "Content-Type: application/json" -H
-"Authorization: Bearer <Access-Token>" -d "
-{  \"deviceModelId\": \"ID123\",  \"hardwareId\": \"MHDN123\",  
+"Authorization: Bearer <Access-Token>" -d "{  \"deviceModelId\": \"ID123\",  \"hardwareId\": \"MHDN123\",  
 \"reportingInterval\": 900,  \"name\": \"Device123\",  
-\"description\": \"Test Device 123\",}"*
+\"description\": \"Test Device 123\"}" *
 ```
 
 > [!NOTE]
@@ -274,31 +272,28 @@ A telemetria az Azure Event hub-nak kell elküldeni feldolgozásra. Az Azure Eve
 Ha már létrejött egy EventHub-ügyfél, akkor JSON-ként küldhet üzeneteket a EventHub.  
 Alakítsa át a korábbi érzékelő adatformátumát olyan kanonikus formátumra, amelyet az Azure FarmBeats értelmez. A kanonikus üzenet formátuma a következő:  
 
-
-
- ```
-  {   
-      “deviceid”: “<id of the Device created>”,   
-      "timestamp": "<timestamp in ISO 8601 format>",     
-      "version" : "1",   
-      "sensors":
-      [     
-      {        
-          "id": "<id of the sensor created>”       
-          "sensordata": [         
-          {            
-              "timestamp": "< timestamp in ISO 8601 format >",           
-              "<sensor measure name (as defined in the Sensor Model)>": value          
-    },          
-    {            
-    "timestamp": "<timestamp in ISO 8601 format>",           
-     "<sensor measure name (as defined in the Sensor Model)>": value          
-    }        
-    ]      
-    }  
+```json
+{
+"deviceid": "<id of the Device created>",
+"timestamp": "<timestamp in ISO 8601 format>",
+"version" : "1",
+"sensors": [
+    {
+      "id": "<id of the sensor created>",
+      "sensordata": [
+        {
+          "timestamp": "< timestamp in ISO 8601 format >",
+          "<sensor measure name (as defined in the Sensor Model)>": "<value>"
+        },
+        {
+          "timestamp": "<timestamp in ISO 8601 format>",
+          "<sensor measure name (as defined in the Sensor Model)>": "<value>"
+        }
+      ]
     }
+ ]
+}
 ```
-
 
 A megfelelő eszközök és érzékelők hozzáadása után szerezze be a DeviceID és a sensorid a telemetria üzenetben az előző szakaszban leírtak szerint.
 
@@ -342,6 +337,6 @@ Példa telemetria-üzenetre:
 ```
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a REST API-alapú integráció részleteiről: [REST API](references-for-farmbeats.md#rest-api).

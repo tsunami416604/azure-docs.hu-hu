@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.reviewer: saeeda, jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e07136eed9c14eb4b6eda49ef635171aaf543445
-ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
+ms.openlocfilehash: 21f1da8738946078cb625c76e11ce1bfd62d97ac
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72809267"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73927162"
 ---
 # <a name="application-types-for-microsoft-identity-platform"></a>A Microsoft Identity platform alkalmazás-típusai
 
@@ -76,7 +76,7 @@ eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6ImtyaU1QZG1Cd...
 }
 ```
 
-A Microsoft Identity platform végpontjában használt különböző típusú tokenek további részletei a [hozzáférési jogkivonat](access-tokens.md) referenciájában és a [id_token-hivatkozásban](id-tokens.md) találhatók.
+A Microsoft Identity platform végpontjában használt különböző típusú jogkivonatok további részletei a [hozzáférési jogkivonat](access-tokens.md) referenciájában és [id_token dokumentációjában](id-tokens.md) olvashatók.
 
 A webkiszolgáló alkalmazásokban a bejelentkezési hitelesítési folyamat a következő magas szintű lépéseket hajtja végre:
 
@@ -90,7 +90,7 @@ Az egyszerű bejelentkezés mellett előfordulhat, hogy egy webkiszolgáló alka
 
 ## <a name="web-apis"></a>Webes API-k
 
-A Microsoft Identity platform végpontján keresztül biztonságossá teheti a webszolgáltatásokat, például az alkalmazás REST-alapú webes API-ját. Az azonosító tokenek és a munkamenet-cookie-k helyett a webes API egy OAuth 2,0 hozzáférési tokent használ az adatai védelméhez és a bejövő kérések hitelesítéséhez. A webes API hívója hozzáfűz egy hozzáférési jogkivonatot egy HTTP-kérelem engedélyezési fejlécében, például a következőhöz:
+A Microsoft Identity platform végpontján keresztül biztonságossá teheti a webszolgáltatásokat, például az alkalmazás REST-alapú webes API-ját. A webes API-kat számos platformon és nyelven lehet megvalósítani. A Azure Functions HTTP-eseményindítók használatával is megvalósítható. Az azonosító tokenek és a munkamenet-cookie-k helyett a webes API egy OAuth 2,0 hozzáférési tokent használ az adatai védelméhez és a bejövő kérések hitelesítéséhez. A webes API hívója hozzáfűz egy hozzáférési jogkivonatot egy HTTP-kérelem engedélyezési fejlécében, például a következőhöz:
 
 ```
 GET /api/items HTTP/1.1
@@ -100,7 +100,7 @@ Accept: application/json
 ...
 ```
 
-A webes API a hozzáférési jogkivonattal ellenőrzi az API-hívó identitását, és Kinyeri a hívó információit a hozzáférési jogkivonatban kódolt jogcímekről. A Microsoft Identity platform végpontjában használt különböző típusú tokenek további részletei a [hozzáférési jogkivonat](access-tokens.md) referenciájában és a [id_token-hivatkozásban](id-tokens.md) találhatók.
+A webes API a hozzáférési jogkivonattal ellenőrzi az API-hívó identitását, és Kinyeri a hívó információit a hozzáférési jogkivonatban kódolt jogcímekről. A Microsoft Identity platform végpontjában használt különböző típusú jogkivonatok további részletei a [hozzáférési jogkivonat](access-tokens.md) referenciájában és [id_token dokumentációjában](id-tokens.md) olvashatók.
 
 A webes API-k lehetővé teszik a felhasználók számára, hogy a jogosultságok, más néven [hatókörök](v2-permissions-and-consent.md)megadásával vagy letiltásával eldönthetik, hogy bizonyos funkciókat vagy adatokból választhatnak. Ahhoz, hogy egy hívó alkalmazás egy hatókörhöz engedélyt szerezzen, a felhasználónak a folyamat során hozzá kell járulnia a hatókörhöz. A Microsoft Identity platform végpontja kéri a felhasználótól az engedélyt, majd rögzíti az engedélyeket a webes API által fogadott összes hozzáférési jogkivonatban. A webes API ellenőrzi az egyes hívásokhoz kapott hozzáférési jogkivonatokat, és végrehajtja az engedélyezési ellenőrzéseket.
 

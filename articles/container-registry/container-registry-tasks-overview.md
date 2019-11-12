@@ -1,5 +1,5 @@
 ---
-title: A tárolók rendszerképeinek kiépítése és javítása Azure Container Registry feladatokkal (ACR-feladatok)
+title: Azure Container Registry feladatok – áttekintés
 description: Az ACR-feladatok, a Azure Container Registry szolgáltatásainak egyik csomagja, amely biztonságos, automatizált tároló-rendszerképek készítését, kezelését és javítását teszi lehetővé a felhőben.
 services: container-registry
 author: dlepow
@@ -8,12 +8,12 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 09/05/2019
 ms.author: danlep
-ms.openlocfilehash: e2686dcd5615c42abf78cbf4575bab6008024718
-ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
+ms.openlocfilehash: 45fdd68273ed2cd5cfccf37765935ce9f7bfdc13
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/07/2019
-ms.locfileid: "72001398"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73931478"
 ---
 # <a name="automate-container-image-builds-and-maintenance-with-acr-tasks"></a>A tárolók rendszerképének fejlesztése és karbantartása ACR-feladatokkal
 
@@ -27,7 +27,7 @@ Az **ACR-feladatok** a Azure Container Registryon belüli szolgáltatások egyik
 
 Az ACR-feladatok több forgatókönyvet is támogatnak a tároló-lemezképek és egyéb összetevők kiépítéséhez és karbantartásához. A részletekért tekintse meg a cikk következő részeit.
 
-* **[Gyors feladat](#quick-task)** – egyetlen tároló-rendszerkép létrehozása és leküldése igény szerint egy tároló-beállításjegyzékbe az Azure-ban anélkül, hogy helyi Docker-motort kellene telepítenie. Szerintem `docker build`, `docker push` a felhőben.
+* **[Gyors feladat](#quick-task)** – egyetlen tároló-rendszerkép létrehozása és leküldése igény szerint egy tároló-beállításjegyzékbe az Azure-ban anélkül, hogy helyi Docker-motort kellene telepítenie. Gondolja át, `docker build`, `docker push` a felhőben.
 * **Automatikusan aktivált feladatok** – egy vagy több *eseményindító* létrehozása rendszerkép létrehozásához:
   * **[A forráskód frissítésének indítása](#trigger-task-on-source-code-update)** 
   * **[Aktiválás az alapszintű rendszerkép frissítése során](#automate-os-and-framework-patching)** 
@@ -44,7 +44,7 @@ A belső hurok fejlesztési ciklusa, az alkalmazás kódjának írásához, kié
 
 Mielőtt elvégezte a kód első sorát, az ACR-feladatok [gyors feladatával](container-registry-tutorial-quick-task.md) integrált fejlesztési élmény biztosítható a tároló rendszerképének az Azure-ba való kiszervezésével. A gyors feladatokkal ellenőrizheti az automatizált Build-definíciókat, és elvégezheti a lehetséges problémákat a kód véglegesítése előtt.
 
-Az ismerős `docker build` formátum használatakor az az [ACR Build][az-acr-build] parancs az Azure CLI-ben igénybe veszi a [környezetet](#context-locations) (a felépített fájlok készletét), ELküldi az ACR-feladatokat, és alapértelmezés szerint leküldi a létrehozott rendszerképet a beállításjegyzékbe a befejezés után.
+Az ismerős `docker build` formátum használatakor az az [ACR Build][az-acr-build] parancs az Azure CLI-ben igénybe veszi a [környezetet](#context-locations) (a felépített fájlok készletét), ELküldi az ACR-feladatokat, és alapértelmezés szerint elküldi a létrehozott rendszerképet a beállításjegyzékbe a befejezés után.
 
 Bevezetésért tekintse meg a Azure Container Registryban található [tároló rendszerképének elkészítéséhez és futtatásához](container-registry-quickstart-task-cli.md) szükséges rövid útmutatót.  
 
@@ -74,7 +74,7 @@ Ismerje meg, hogyan indíthat triggert forráskód-végrehajtásra a második AC
 
 Az ACR-feladatok hatékonyságának növelése a tároló-Build munkafolyamattal való hatékony feladatokból származik, és képes az alaprendszerkép frissítésének észlelésére. Ha a frissített alaplemezképet leküldi a beállításjegyzékbe, vagy egy alaprendszerkép frissül egy nyilvános tárházban (például a Docker hub-ban), az ACR-feladatok automatikusan létrehoznak egy alkalmazás-lemezképet az alapján.
 
-A tárolók képei széles körben kategorizálva *lehetnek az* alapképekbe és az *alkalmazás* -lemezképbe. Az alaplemezképek jellemzően tartalmazzák az operációs rendszer és az alkalmazás által felépített keretrendszereket, valamint más testreszabásokat is. Ezek az alaplemezképek jellemzően nyilvános upstream lemezképeken alapulnak, például: [Alpine Linux][base-alpine], [Windows][base-windows], [.net][base-dotnet]vagy [Node. js][base-node]. Az alkalmazási lemezképek közül több is megoszthat egy közös alapképet.
+A tárolók képei széles körben kategorizálva *lehetnek az* alapképekbe és az *alkalmazás* -lemezképbe. Az alaplemezképek jellemzően tartalmazzák az operációs rendszer és az alkalmazás által felépített keretrendszereket, valamint más testreszabásokat is. Ezek az alaplemezképek általában nyilvános upstream lemezképeken alapulnak, például: [Alpine Linux][base-alpine], [Windows][base-windows], [.net][base-dotnet]vagy [Node. js][base-node]. Az alkalmazási lemezképek közül több is megoszthat egy közös alapképet.
 
 Ha a felsőbb rétegbeli karbantartó az operációs rendszer vagy az alkalmazás-keretrendszer lemezképét frissíti, például kritikus operációsrendszer-biztonsági javítással, akkor az alaplemezképeket is frissítenie kell, hogy tartalmazza a kritikus javítást. Ezután az egyes alkalmazás-rendszerképeket is újra kell építeni, hogy az tartalmazza az alaprendszerkép részét képező felsőbb rétegbeli javításokat.
 
@@ -108,7 +108,7 @@ Létrehozhat például egy több lépésből álló feladatot, amely automatizá
 1. Webalkalmazás-tesztelési rendszerkép összeállítása
 1. Futtassa a webalkalmazás-teszt tárolót, amely teszteket hajt végre a futó alkalmazás tárolóján.
 1. Ha a tesztek sikeresek, hozzon létre egy Helm diagram archiválási csomagot
-1. @No__t-0 végrehajtása az új Helm chart Archive csomag használatával
+1. `helm upgrade` végrehajtása az új Helm chart Archive csomag használatával
 
 A többlépéses feladatok lehetővé teszik a rendszerképek kiépítése, futtatása és tesztelése több megkomponálható lépésre, a lépésenkénti függőségek támogatásával. Az ACR-feladatok több lépésből álló feladatai esetében részletesebben szabályozható a rendszerképek kiépítése, tesztelése, valamint az operációs rendszer és a keretrendszer javítási folyamatai.
 
@@ -129,9 +129,9 @@ Az alábbi táblázat néhány példát mutat be az ACR-feladatok támogatott k�
 
 ## <a name="image-platforms"></a>Képplatformok
 
-Alapértelmezés szerint az ACR-feladatok lemezképeket készítenek a Linux operációs rendszerhez és az AMD64 architektúrához. A `--platform` címkével megadásával Windows-lemezképeket vagy Linux-rendszerképeket hozhat létre más architektúrák számára. Itt adhatja meg az operációs rendszer és az architektúra (például `--platform Linux/arm`) által támogatott architektúrát. ARM-architektúrák esetén az operációs rendszer/architektúra/Variant formátumban is megadhat egy változatot (például `--platform Linux/arm64/v8`):
+Alapértelmezés szerint az ACR-feladatok lemezképeket készítenek a Linux operációs rendszerhez és az AMD64 architektúrához. A `--platform` címke megadásával Windows-lemezképeket vagy Linux-rendszerképeket hozhat létre más architektúrák számára. Megadhatja az operációs rendszer és a választható architektúrát az operációs rendszer/architektúra formátumában (például `--platform Linux/arm`). ARM-architektúrák esetén az operációs rendszer/architektúra/Variant formátumban is megadhat egy változatot (például `--platform Linux/arm64/v8`):
 
-| OS | Architektúra|
+| Operációs rendszer | Architektúra|
 | --- | ------- | 
 | Linux | amd64<br/>kar<br/>arm64<br/>386 |
 | Windows | amd64 |
@@ -146,7 +146,7 @@ Alapértelmezés szerint a rendszer a beállításjegyzékben futtatott feladato
 az acr task update-run --registry myregistry --run-id cf11 --no-archive false
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha készen áll a tárolók rendszerképének és a Felhőbeli karbantartásának automatizálására, tekintse meg az [ACR feladatok oktatóanyag-sorozatát](container-registry-tutorial-quick-task.md).
 

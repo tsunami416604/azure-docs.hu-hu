@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 05/28/2019
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 102f3e131b20534dc2f192b6485a3fdc95070315
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 801692c53ef268f15edc60d31743aefa6a247a78
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73470259"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73928508"
 ---
 # <a name="app-service-networking-features"></a>Hálózati szolgáltatások App Service
 
@@ -34,7 +34,7 @@ A Azure App Service egy elosztott rendszer. A bejövő HTTP/HTTPS-kérelmeket ke
 | Bejövő funkciók | Kimenő funkciók |
 |---------------------|-------------------|
 | Alkalmazáshoz rendelt címe | Hibrid kapcsolatok |
-| Hozzáférési korlátozások | átjáró szükséges VNet-integráció |
+| Hozzáférési korlátozások | Átjáró szükséges VNet-integráció |
 | Service Endpoints – szolgáltatásvégpont | VNet-integráció (előzetes verzió) |
 
 Ha másként nincs megadva, az összes funkció együtt használható. A különböző problémák megoldásához kombinálhatja a szolgáltatásokat.
@@ -43,7 +43,7 @@ Ha másként nincs megadva, az összes funkció együtt használható. A külön
 
 A probléma megoldásához bizonyos használati eseteket is használhat.  A megfelelő szolgáltatást esetenként a használati eseten kívüli okok miatt is érdemes használni. A következő bejövő használati esetek azt sugallják, hogyan használhatók a App Service hálózatkezelési funkciói az alkalmazásra irányuló forgalom szabályozásával kapcsolatos problémák megoldásához. 
  
-| Bejövő használati esetek | Szolgáltatás |
+| Bejövő használati esetek | Funkció |
 |---------------------|-------------------|
 | Az alkalmazás IP-alapú SSL-igényeinek támogatása | Alkalmazáshoz rendelt címe |
 | Nem megosztott, dedikált bejövő címe az alkalmazáshoz | Alkalmazáshoz rendelt címe |
@@ -57,10 +57,10 @@ A probléma megoldásához bizonyos használati eseteket is használhat.  A megf
 
 A következő kimenő használati esetek azt mutatják be, hogyan használhatók a App Service hálózatkezelési funkciói az alkalmazás kimenő hozzáférési igényeinek megoldásához. 
 
-| Kimenő használati esetek | Szolgáltatás |
+| Kimenő használati esetek | Funkció |
 |---------------------|-------------------|
 | Egy adott régióban található Azure-Virtual Network erőforrásainak elérése | VNet-integráció </br> ASE |
-| Erőforrásokhoz való hozzáférés egy másik régióban lévő Azure-Virtual Network | átjáró szükséges VNet-integráció </br> VNet-társítás |
+| Erőforrásokhoz való hozzáférés egy másik régióban lévő Azure-Virtual Network | Átjáró szükséges VNet-integráció </br> VNet-társítás |
 | A szolgáltatási végpontokkal védett erőforrások elérése | VNet-integráció </br> ASE |
 | Hozzáférés az Azure-hoz nem csatlakozó magánhálózat erőforrásaihoz | Hibrid kapcsolatok |
 | Erőforrások elérése ExpressRoute-áramkörök között | VNet-integráció (a jelenleg RFC 1918-címekre korlátozódik) </br> ASE | 
@@ -91,7 +91,7 @@ Megtudhatja, hogyan állíthat be egy címet az alkalmazásban az [IP-alapú SSL
 
 ### <a name="access-restrictions"></a>Hozzáférési korlátozások 
 
-A hozzáférési korlátozások funkció lehetővé teszi a **bejövő** kérések szűrését a forrás IP-címe alapján. A szűrési művelet azon előtér-szerepkörökön történik, amelyek az alkalmazások futtatásához használt munkavégző tekercsből származnak. Mivel az előtér-szerepkörök a feldolgozóktól származnak, a hozzáférési korlátozások funkció az alkalmazások hálózati szintű védelmének tekinthető. A funkció lehetővé teszi a prioritási sorrendben kiértékelt engedélyezési és megtagadási címek listájának összeállítását. Ehhez hasonló az Azure Networking hálózati biztonsági csoport (NSG) szolgáltatásához.  Ezt a funkciót a több-bérlős szolgáltatásban is használhatja. A ILB-beadási szolgáltatással való használat esetén korlátozhatja a hozzáférést a privát címekről.
+A hozzáférési korlátozások funkció lehetővé teszi a **bejövő** kérések szűrését a forrás IP-címe alapján. A szűrési művelet azon előtér-szerepkörökön történik, amelyek az alkalmazások futtatását végző feldolgozói szerepkörökből származnak. Mivel az előtér-szerepkörök a feldolgozóktól származnak, a hozzáférési korlátozások funkció az alkalmazások hálózati szintű védelmének tekinthető. A funkció lehetővé teszi a prioritási sorrendben kiértékelt engedélyezési és megtagadási címek listájának összeállítását. Ehhez hasonló az Azure Networking hálózati biztonsági csoport (NSG) szolgáltatásához.  Ezt a funkciót a több-bérlős szolgáltatásban is használhatja. A ILB-beadási szolgáltatással való használat esetén korlátozhatja a hozzáférést a privát címekről.
 
 ![Hozzáférési korlátozások](media/networking-features/access-restrictions.png)
 
@@ -108,7 +108,7 @@ Ha le szeretné zárni az alkalmazáshoz való hozzáférést úgy, hogy az csak
 
 A szolgáltatási végpontok lehetővé teszik az alkalmazáshoz való **bejövő** hozzáférés zárolását úgy, hogy a forrás címének a kiválasztott alhálózatokból kell származnia. Ez a funkció az IP-hozzáférési korlátozásokkal együtt működik. A szolgáltatási végpontok az IP-hozzáférési korlátozásokkal megegyező felhasználói élményben vannak beállítva. Létrehozhat olyan hozzáférési szabályok engedélyezési/megtagadási listáját, amelyek nyilvános címeket és alhálózatokat is tartalmaznak a virtuális hálózatok. Ez a funkció olyan forgatókönyveket támogat, mint például a következők:
 
-![Szolgáltatási végpontok](media/networking-features/service-endpoints.png)
+![szolgáltatási végpontok](media/networking-features/service-endpoints.png)
 
 * Application Gateway beállítása az alkalmazással a bejövő forgalom zárolására az alkalmazáshoz
 * Az alkalmazáshoz való hozzáférés korlátozása a VNet lévő erőforrásokra. Ebbe beletartozhatnak a virtuális gépek, ASE vagy más olyan alkalmazások is, amelyek VNet-integrációt használnak 
@@ -137,11 +137,11 @@ Mivel a funkció lehetővé teszi a helyszíni erőforrásokhoz való hozzáfér
 
 Habár a Hibrid kapcsolatok népszerű a fejlesztéshez, számos éles alkalmazásban is használható. Kiválóan alkalmas webszolgáltatások vagy adatbázisok elérésére, de a sok kapcsolat létrehozásával kapcsolatos helyzetekben nem megfelelő. 
 
-### <a name="gateway-required-vnet-integration"></a>átjáró szükséges VNet-integráció 
+### <a name="gateway-required-vnet-integration"></a>Átjáró szükséges VNet-integráció 
 
 Az átjáró szükséges App Service VNet integrációs funkciója lehetővé teszi, hogy az alkalmazás **kimenő** kéréseket hozzon egy Azure-Virtual Networkba. A szolgáltatás úgy működik, hogy csatlakoztatja a gazdagépet, amely egy pont – hely típusú VPN-kapcsolattal rendelkező VNet Virtual Network átjáróján fut. A szolgáltatás konfigurálásakor az alkalmazás megkapja az egyes példányokhoz rendelt pont – hely címek egyikét. Ez a funkció lehetővé teszi az erőforrások elérését bármely régióban a klasszikus vagy a Resource Manager-virtuális hálózatok. 
 
-![átjáró szükséges VNet-integráció](media/networking-features/gw-vnet-integration.png)
+![Átjáró szükséges VNet-integráció](media/networking-features/gw-vnet-integration.png)
 
 Ez a funkció megoldja a más virtuális hálózatok lévő erőforrások elérésének problémáját, és akár egy VNet keresztül csatlakozhat más virtuális hálózatok, vagy akár a helyszínen is. Nem működik a ExpressRoute csatlakoztatott virtuális hálózatok, hanem a helyek közötti VPN-kapcsolattal rendelkező hálózatokkal. Általában nem célszerű ezt a funkciót egy App Service Environment (betanító) alkalmazásból használni, mert a betanító már szerepel a VNet. A funkció által megoldott használati esetek a következők:
 

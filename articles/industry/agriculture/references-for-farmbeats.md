@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 057037807a75e50eb2305bfab19d1fcff7fe77ce
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: efd294910531509d736dbda274406bd7c801c124
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73889593"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73931203"
 ---
 # <a name="references"></a>Referencia
 
@@ -36,14 +36,14 @@ Ez a FarmBeats-adatközpontban lévő összes objektum/erőforrás összegzése:
 Farm | A farm a FarmBeats rendszeren belüli fizikai helynek felel meg. Minden Farm rendelkezik egy farm nevével és egy egyedi Farm-AZONOSÍTÓval.
 --- | ---|
 Eszköz  | Az eszköz megfelel a farmban lévő fizikai eszköznek. Minden eszköz egyedi AZONOSÍTÓval rendelkezik. Az eszköz általában Farm-AZONOSÍTÓval rendelkező farmhoz van kiépítve.
-deviceModel  | A DeviceModel megfelel az eszköz meta-adatának, például a gyártónak, az eszköz típusának vagy átjárónak vagy csomópontnak.
+DeviceModel  | A DeviceModel megfelel az eszköz meta-adatának, például a gyártónak, az eszköz típusának vagy átjárónak vagy csomópontnak.
 Érzékelő  | Az érzékelő olyan fizikai érzékelőnek felel meg, amely értékeket rögzít. Az érzékelő általában eszköz-AZONOSÍTÓval van csatlakoztatva egy eszközhöz.
 SensorModel  | A SensorModel megfelel az érzékelő meta-adattípusának, például a gyártónak, az érzékelő típusának az analóg vagy a digitális, az érzékelő mértékének (például a környezeti hőmérséklet, a nyomás stb.).
 Telemetria  | A telemetria lehetővé teszi egy adott érzékelő és időtartomány telemetria-üzeneteinek olvasását.
 Feladat  | A feladat megfelel a tevékenységek munkafolyamatainak, amelyeket a rendszer a FarmBeats rendszeren hajt végre a kívánt kimenet beszerzéséhez. Mindegyik feladattípus egy adott AZONOSÍTÓJÚ és feladattípushoz van társítva.
 JobType  | A JobType a rendszer által támogatott különböző feladatoknak felel meg. Ez magában foglalja a rendszer által definiált & felhasználó által definiált feladattípusokat.
 ExtendedType  | A ExtendedType megfelel a rendszer & felhasználó által definiált típusai listájának. Ezzel a beállítással új érzékelőt vagy jelenetet vagy Scenefile-típust hozhat a FarmBeats rendszerbe.
-Partner  | A partner megfelel a FarmBeats érzékelő-és képintegrációs partnerének
+Partnerek  | A partner megfelel a FarmBeats érzékelő-és képintegrációs partnerének
 Jelenet  | A jelenet a farm környezetében generált kimenetnek felel meg. Minden jelenet rendelkezik egy jelenet-AZONOSÍTÓval, egy jelenet forrásával, a jelenet típusával és a hozzá társított Farm-AZONOSÍTÓval. Minden egyes jelenet-AZONOSÍTÓhoz több jelenet is tartozhat.
 SceneFile |A SceneFile az összes fájlnak felel meg, amelyek egyetlen jelenethez jönnek létre. Egyetlen jelenet-AZONOSÍTÓhoz több SceneFile-azonosító is tartozhat.
 Szabály  |A szabály megfelel a farmhoz kapcsolódó, riasztást kiváltó adat feltételének. Mindegyik szabály a farm adattartalmának kontextusában fog megjelenni.
@@ -85,7 +85,7 @@ Az API-szolgáltatás URL-címe az adatközpont URL-címe https://\<yourdatahub-
 
 Az alábbi példa az eszközök listájának beszerzésére szolgál:
 
-```azurepowershell-interactive
+```bash
 curl -X GET "https://microsoft-farmbeats.azurewebsites.net/Device" -H "Content-Type: application/json" -H "Authorization: Bearer <Access-Token>”
 ```
 
@@ -93,7 +93,7 @@ A legtöbb GET, POST és PUT híváshoz JSON-kérést tartalmazó törzs szüks�
 
 Az alábbi példa egy eszköz létrehozását mutatja be (ez egy bemeneti JSON-t tartalmaz a kérés törzsével).
 
-```json
+```bash
 curl -X POST "https://microsoft-farmbeats.azurewebsites.net/Device" -H  "accept: application/json" -H  "Content-Type: application/json" -H "Authorization: Bearer <Access-Token>" -d "{  \"deviceModelId\": \"ID123\",  \"hardwareId\": \"MHDN123\",  \"reportingInterval\": 900,  \"name\": \"Device123\",  \"description\": \"Test Device 123\",}"
 ```
 
@@ -120,25 +120,25 @@ Az Azure FarmBeats adatközponti API-k a szabványos HTTP-hibákat adják vissza
 
 A szabványos HTTP-hibák mellett az Azure FarmBeats adatközpont API-jai a belső hibákat is visszaküldik az alábbi formátumban:
 
-    ```
+```json
     {
       "message": "<More information on the error>",
       "status": "<error code>”,
       "code": "<InternalErrorCode>",
       "moreInfo": "<Details of the error>"
     }
-    ```
+```
 
 Példa: Farm létrehozásakor a "Name" kötelező mezőt nem adták meg a bemeneti adattartalomban. Az eredményül kapott hibaüzenet a következő:
 
-    ```json
+ ```json    
     {
       "message": "Model validation failed",
       "status": 400,
       "code": "ModelValidationFailed",
       "moreInfo": "[\"The Name field is required.\"]"
     }
-    ```
+  ```
 
 ## <a name="adding-users-or-app-registrations-to-azure-active-directory"></a>Felhasználók vagy alkalmazások regisztrációjának hozzáadása a Azure Active Directoryhoz
 

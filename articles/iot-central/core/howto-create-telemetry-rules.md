@@ -1,5 +1,5 @@
 ---
-title: Telemetria-szabályok létrehozása és kezelése az Azure IoT Central alkalmazásban | Microsoft Docs
+title: Telemetria-szabályok használata az Azure IoT Central alkalmazásban | Microsoft Docs
 description: Az Azure IoT Central telemetria szabályai lehetővé teszik az eszközök közel valós idejű figyelését és a műveletek automatikus meghívását, például e-mailek küldését a szabály indításakor.
 author: ankitgupta
 ms.author: ankitgup
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: d586f899a46a1404af6e798eda4d783a5a7ead85
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 3b2fff84b70c5c5e37d14faa87143e5dacc82bce
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72953784"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73930182"
 ---
 # <a name="create-a-telemetry-rule-and-set-up-notifications-in-your-azure-iot-central-application"></a>Telemetria-szabály létrehozása és értesítések beállítása az Azure IoT Central alkalmazásban
 
@@ -25,7 +25,7 @@ Az Azure IoT Central használatával távolról is figyelheti a csatlakoztatott 
 
 Az eszközök a telemetria-mérés használatával numerikus adatok küldhetők az eszközről. A telemetria szabály akkor aktiválódik, ha a kiválasztott eszköz telemetria átlép egy megadott küszöbértéket.
 
-## <a name="create-a-telemetry-rule"></a>Telemetria-szabály létrehozása
+## <a name="create-a-telemetry-rule"></a>Telemetriaszabály létrehozása
 
 Telemetria szabály létrehozásához az eszköz sablonjának meg kell határoznia legalább egy telemetria-mérést. Ez a példa egy hűtött automatából működő eszközt használ, amely hőmérséklet-és páratartalom-telemetria küld. A szabály figyeli az eszköz által jelentett hőmérsékletet, és e-mailt küld, ha 80 fok fölé kerül.
 

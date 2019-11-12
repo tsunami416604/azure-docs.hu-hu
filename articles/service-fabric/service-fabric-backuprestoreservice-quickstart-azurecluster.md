@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 5/24/2019
 ms.author: hrushib
-ms.openlocfilehash: 9aeffa8b756340851ca4c82ebaed2453d4ac03bc
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: d5d87f153b5835d5d2b38f380e5c77c03a68e1b5
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73819524"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73928233"
 ---
 # <a name="periodic-backup-and-restore-in-azure-service-fabric"></a>Rendszeres biztonsági mentés és visszaállítás az Azure Service Fabric 
 > [!div class="op_single_selector"]
@@ -127,21 +127,6 @@ Először engedélyeznie kell a _biztonsági mentési és visszaállítási szol
 
 4. Miután frissítette a fürt sablonját az előző módosításokkal, alkalmazza őket, és hagyja, hogy a telepítés/frissítés befejeződjön. Ha elkészült, a _biztonsági mentési és visszaállítási szolgáltatás_ elindul a fürtben. A szolgáltatás URI-ja `fabric:/System/BackupRestoreService`, és a szolgáltatás a Service Fabric Explorerben a rendszerszolgáltatás szakaszban található. 
 
-### <a name="using-service-fabric-explorer"></a>Service Fabric Explorer használata
-
-1. Győződjön meg arról, hogy a speciális mód engedélyezve van.
-
-    ![Speciális mód engedélyezése][2]
-
-2. Válasszon ki egy alkalmazást, és lépjen a művelet elemre. Kattintson az alkalmazás biztonsági másolatának engedélyezése/frissítése elemre.
-
-    ![Alkalmazás biztonsági mentésének engedélyezése][3] 
-
-3. Végül válassza ki a kívánt szabályzatot, és kattintson a biztonsági mentés engedélyezése elemre.
-
-    ![Házirend kiválasztása][4]
-
-
 ## <a name="enabling-periodic-backup-for-reliable-stateful-service-and-reliable-actors"></a>Rendszeres biztonsági mentés engedélyezése megbízható állapot-nyilvántartó szolgáltatáshoz és Reliable Actors
 A megbízható állapot-nyilvántartó szolgáltatás és a Reliable Actors rendszeres biztonsági mentésének engedélyezéséhez hajtsa végre a lépéseket. Az alábbi lépések feltételezik
 - A fürt az X. 509 biztonsági _mentési és visszaállítási szolgáltatással_történő beállítás.
@@ -225,6 +210,17 @@ $url = "https://mysfcluster.southcentralus.cloudapp.azure.com:19080/Applications
 Invoke-WebRequest -Uri $url -Method Post -Body $body -ContentType 'application/json' -CertificateThumbprint '1b7ebe2174649c45474a4819dafae956712c31d3'
 ``` 
 
+#### <a name="using-service-fabric-explorer"></a>Service Fabric Explorer használata
+
+1. Válasszon ki egy alkalmazást, és lépjen a művelet elemre. Kattintson az alkalmazás biztonsági másolatának engedélyezése/frissítése elemre.
+
+    ![Alkalmazás biztonsági mentésének engedélyezése][3]
+
+2. Végül válassza ki a kívánt szabályzatot, és kattintson a biztonsági mentés engedélyezése elemre.
+
+    ![Házirend kiválasztása][4]
+
+
 ### <a name="verify-that-periodic-backups-are-working"></a>Az időszakos biztonsági másolatok működésének ellenőrzése
 
 Miután engedélyezte a biztonsági mentést az alkalmazás szintjén, a megbízható állapot-nyilvántartó szolgáltatásokhoz és az alkalmazáshoz Reliable Actors tartozó összes partíció rendszeresen elindul a biztonsági mentési szabályzatnak megfelelően. 
@@ -305,13 +301,12 @@ A Service Fabric Explorer biztonsági másolatainak megtekintéséhez navigáljo
 - Service Fabric PowerShell-parancsmagok előzetes verzió módban vannak.
 - A Linuxon Service Fabric-fürtök támogatása nem támogatott.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - [Az időszakos biztonsági mentési konfiguráció ismertetése](./service-fabric-backuprestoreservice-configure-periodic-backup.md)
 - [Biztonsági mentés visszaállítása REST API referenciája](https://docs.microsoft.com/rest/api/servicefabric/sfclient-index-backuprestore)
 
 [0]: ./media/service-fabric-backuprestoreservice/partition-backedup-health-event-azure.png
 [1]: ./media/service-fabric-backuprestoreservice/enable-backup-restore-service-with-portal.png
-[2]: ./media/service-fabric-backuprestoreservice/advanced-mode.png
 [3]: ./media/service-fabric-backuprestoreservice/enable-app-backup.png
 [4]: ./media/service-fabric-backuprestoreservice/enable-application-backup.png
 [5]: ./media/service-fabric-backuprestoreservice/backup-enumeration.png

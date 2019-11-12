@@ -1,5 +1,5 @@
 ---
-title: Rövid útmutató – tároló rendszerképének létrehozása és futtatása Azure Container Registry
+title: Rövid útmutató – & futtatási rendszerképének létrehozása a Azure Container Registry
 description: Gyorsan futtathat feladatokat a Azure Container Registry használatával, és igény szerint, a felhőben készíthet és futtathat egy tároló-rendszerképet.
 services: container-registry
 author: dlepow
@@ -9,14 +9,14 @@ ms.topic: quickstart
 ms.date: 04/02/2019
 ms.author: danlep
 ms.custom: ''
-ms.openlocfilehash: e5e02d8194f9164a03bb27d932df45d91486c518
-ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
+ms.openlocfilehash: b97249aa61916975fa641d4620179be33e1d5276
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68310635"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73931556"
 ---
-# <a name="quickstart-build-and-run-a-container-image-using-azure-container-registry-tasks"></a>Gyors útmutató: Tároló-rendszerkép létrehozása és futtatása Azure Container Registry feladatok használatával
+# <a name="quickstart-build-and-run-a-container-image-using-azure-container-registry-tasks"></a>Gyors útmutató: tároló-rendszerkép létrehozása és futtatása Azure Container Registry feladatokkal
 
 Ebben a rövid útmutatóban Azure Container Registry feladatok parancsokkal gyorsan hozhat létre, küldhet le és futtathat egy Docker-tároló rendszerképet az Azure-ban, amely bemutatja, hogyan teheti ki a "belső hurkos" fejlesztési ciklust a felhőbe. Az [ACR-feladatok][container-registry-tasks-overview] a Azure Container Registryon belüli szolgáltatások egyik csomagja, amely segít a tároló-rendszerképek felügyeletében és módosításához a tárolók életciklusa során. 
 
@@ -46,7 +46,7 @@ Hozzon létre egy tároló-beállításjegyzéket az az [ACR Create][az-acr-crea
 az acr create --resource-group myResourceGroup --name myContainerRegistry008 --sku Basic
 ```
 
-Ez a példa egy  alapszintű beállításjegyzéket hoz létre, amely egy költséghatékony megoldás a fejlesztők számára a Azure Container Registry megismeréséhez. A rendelkezésre álló szolgáltatási szintek részletes ismertetését lásd: [Container Registry SKU][container-registry-skus]-i.
+Ez a példa egy *alapszintű* beállításjegyzéket hoz létre, amely egy költséghatékony megoldás a fejlesztők számára a Azure Container Registry megismeréséhez. A rendelkezésre álló szolgáltatási szintek részletes ismertetését lásd: [Container Registry SKU][container-registry-skus]-i.
 
 ## <a name="build-an-image-from-a-dockerfile"></a>Rendszerkép létrehozása Docker
 
@@ -56,7 +56,7 @@ Hozzon létre egy rendszerképet a Azure Container Registry használatával. El�
 echo FROM hello-world > Dockerfile
 ```
 
-A rendszerkép létrehozásához futtassa az az [ACR Build][az-acr-build] parancsot. A létrehozást követően a rendszer leküldi a rendszerképet a beállításjegyzékbe. A következő példa leküldi `sample/hello-world:v1` a rendszerképet. `.` A parancs végén adja meg a Docker helyét, ebben az esetben az aktuális könyvtárat.
+A rendszerkép létrehozásához futtassa az az [ACR Build][az-acr-build] parancsot. A létrehozást követően a rendszer leküldi a rendszerképet a beállításjegyzékbe. A következő példa leküldi a `sample/hello-world:v1` rendszerképet. A parancs végén lévő `.` beállítja a Docker helyét, ebben az esetben az aktuális könyvtárat.
 
 ```azurecli-interactive
 az acr build --image sample/hello-world:v1 --registry myContainerRegistry008 --file Dockerfile . 
@@ -118,14 +118,14 @@ Run ID: ca8 was successful after 10s
 
 Most gyorsan futtathatja a létrehozott és a beállításjegyzékbe leküldett képet. A tároló-fejlesztési munkafolyamatban ez lehet egy érvényesítési lépés a lemezkép telepítése előtt.
 
-Hozzon létre egy *quickrun. YAML* fájlt egy helyi munkakönyvtárban az alábbi tartalommal egyetlen lépéshez. Helyettesítse be a  *\<acrLoginServer\>* beállításjegyzékének bejelentkezési kiszolgálójának nevét. A bejelentkezési kiszolgáló nevét a következő formátumban   *\<kell megadni: Registry-name\>. azurecr.IO* (mind kisbetűs), például mycontainerregistry008.azurecr.IO. Ez a példa feltételezi, hogy létrehozta és leküldte a `sample/hello-world:v1` rendszerképet az előző szakaszban:
+Hozzon létre egy *quickrun. YAML* fájlt egy helyi munkakönyvtárban az alábbi tartalommal egyetlen lépéshez. Helyettesítse be a beállításjegyzék bejelentkezési kiszolgálójának nevét *\<acrLoginServer\>* . A bejelentkezési kiszolgáló nevét a következő formátumban kell megadni: *\<Registry-name\>. azurecr.IO* (mind kisbetűs), például *mycontainerregistry008.azurecr.IO*. Ez a példa feltételezi, hogy az előző szakaszban létrehozta és leküldte a `sample/hello-world:v1` rendszerképet:
 
 ```yml
 steps:
   - cmd: <acrLoginServer>/sample/hello-world:v1
 ```
 
-A `cmd` példában szereplő lépés az alapértelmezett konfigurációban futtatja a tárolót, `cmd` de támogatja `docker run` a további paramétereket, `docker` vagy akár más parancsokat is.
+A példában szereplő `cmd` lépés az alapértelmezett konfigurációban futtatja a tárolót, de `cmd` támogatja a további `docker run` paramétereket, vagy akár más `docker` parancsokat is.
 
 Futtassa a tárolót a következő paranccsal:
 
@@ -186,7 +186,7 @@ Ha már nincs rá szükség, az az [Group delete][az-group-delete] paranccsal el
 az group delete --name myResourceGroup
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban az ACR-feladatok funkcióit használta a Docker-tárolók gyors létrehozására, leküldésére és futtatására az Azure-ban. Folytassa a Azure Container Registry oktatóanyagokkal, és ismerkedjen meg az ACR-feladatok a rendszerkép-buildek és-frissítések automatizálására való használatával.
 

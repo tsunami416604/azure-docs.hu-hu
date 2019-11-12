@@ -259,8 +259,6 @@
               href: howto-read-replicas-cli.md
     - name: Rugalmas skálázás (Citus)
       items:
-        - name: Felhasználók létrehozása
-          href: howto-hyperscale-create-users.md
         - name: Méretezés
           href: howto-hyperscale-scaling.md
         - name: Tűzfal kezelése

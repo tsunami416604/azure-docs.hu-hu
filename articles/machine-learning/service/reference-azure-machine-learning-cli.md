@@ -1,7 +1,7 @@
 ---
-title: Machine learning CLI-bővítmény
+title: CLI-bővítmény
 titleSuffix: Azure Machine Learning
-description: Ismerje meg az Azure CLI Azure Machine Learning CLI-bővítményét. Az Azure CLI egy platformfüggetlen parancssori segédprogram, amely lehetővé teszi, hogy az Azure-felhőben lévő erőforrásokkal működjön. A Machine Learning-bővítmény lehetővé teszi, hogy együttműködjön a Azure Machine Learningokkal.
+description: Ismerje meg az Azure CLI Azure Machine Learning CLI-bővítményét. Az Azure CLI egy platformfüggetlen parancssori segédprogram, amely lehetővé teszi, hogy az Azure-felhőben lévő erőforrásokkal működjön. A Machine Learning-bővítmény lehetővé teszi, hogy együttműködjön a Azure Machine Learningokkal. A ML CLI olyan erőforrásokat hoz létre és felügyel, mint például a munkaterület, az adattárolók, az adatkészletek, a folyamatok, a modellek és a központi telepítések.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,12 +11,12 @@ ms.author: jordane
 author: jpe316
 ms.date: 11/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: 20ff7d2cb6c185f574494871a986e1bce63536ba
-ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
+ms.openlocfilehash: e775689da93b5197d1c2f7d130466c2afc8391e4
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73619961"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73932073"
 ---
 # <a name="use-the-cli-extension-for-azure-machine-learning"></a>A CLI-bővítmény használata Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -104,7 +104,7 @@ A következő parancsok bemutatják, hogyan használható a CLI a Azure Machine 
     az ml folder attach -w myworkspace -g myresourcegroup
     ```
 
-    Ez a parancs egy `.azureml` alkönyvtárat hoz létre, amely tartalmazza például a runconfig és a Conda környezeti fájlokat. Emellett tartalmaz egy `config.json` fájlt is, amely a Azure Machine Learning munkaterülettel való kommunikációhoz használható.
+    Ez a parancs egy `.azureml` alkönyvtárat hoz létre, amely tartalmazza például a runconfig és a Conda környezeti fájlokat. Emellett `config.json` fájlt is tartalmaz, amely a Azure Machine Learning munkaterülettel való kommunikációhoz használható.
 
     További információ: [az ml mappa csatolása](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/folder?view=azure-cli-latest#ext-azure-cli-ml-az-ml-folder-attach).
 
@@ -287,7 +287,7 @@ A következő parancsok bemutatják, hogyan regisztrálhat egy betanított model
 
 [!INCLUDE [deploymentconfig](../../../includes/machine-learning-service-aks-deploy-config.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [A Machine learning CLI bővítményre vonatkozó parancssori útmutató](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml?view=azure-cli-latest).
 

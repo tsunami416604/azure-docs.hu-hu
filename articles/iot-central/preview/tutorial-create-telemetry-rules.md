@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: ddf5b81f7269b02ebdc6777fd1bee126157141ff
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: df6c4afc0da50c5b4b32923f24370b9c959b1af7
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73893430"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73929599"
 ---
 # <a name="tutorial-create-a-rule-and-set-up-notifications-in-your-azure-iot-central-application-preview-features"></a>Oktatóanyag: szabály létrehozása és értesítések beállítása az Azure IoT Central alkalmazásban (előzetes verziójú funkciók)
 
@@ -27,7 +27,7 @@ Az eszközök a telemetria használatával numerikus adatok küldését az eszk�
 
 Ebben az oktatóanyagban létrehoz egy szabályt, amely e-mailt küld, ha a környezeti érzékelő eszköz hőmérséklete meghaladja a 80&deg; F.
 
-Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]
 > * Szabály létrehozása
@@ -107,13 +107,13 @@ Válassza ki az engedélyezni vagy letiltani kívánt szabályt. A szabályban s
 
 Válassza ki az engedélyezni vagy letiltani kívánt szabályt. Vegyen fel egy szűrőt a **hatókörök** szakaszban egy adott eszköz belefoglalásához vagy kizárásához az eszköz sablonjában.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy megismerte, hogyan hozhat létre szabályokat az Azure IoT Central alkalmazásban, a javasolt következő lépés az [eszközök kezelésének](howto-manage-devices.md) megismerése
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
->>>>>>> fa07415cf19e8cdb02d570edb3785780bfa97a7c:articles/IOT-Central/Preview/tutorial-Create-telemetria-rules. MD ebben az oktatóanyagban megtanulta, hogyan végezheti el a következőket:
+Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 
 * Telemetria-alapú szabály létrehozása
 * Művelet hozzáadása
@@ -121,5 +121,4 @@ Most, hogy megismerte, hogyan hozhat létre szabályokat az Azure IoT Central al
 Most, hogy meghatározta a küszöbérték-alapú szabályt, a javasolt következő lépés az alábbiak megismerése:
 
 > [!div class="nextstepaction"]
-
 > [Folyamatos adatexportálás konfigurálása](./howto-export-data.md).

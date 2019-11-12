@@ -8,12 +8,12 @@ ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
 ms.date: 11/07/2019
-ms.openlocfilehash: 723fe14db9089e1127f39eae3ed7b10bbddf70bf
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 4e7a179980abb164754941f345d2ee9ae7f5c9de
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73889713"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73930391"
 ---
 # <a name="device-connectivity-and-telemetry-ingress"></a>Eszközkapcsolatok és bemenő telemetriaadatok
 
@@ -78,6 +78,6 @@ Testre szabhatja az eszköz üzenetének formátumát és a hasznos adatokat, ho
 
 A DeviceClient [SendEventAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.deviceclient.sendeventasync?view=azure-dotnet) vagy a [SendEventBatchAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.deviceclient.sendeventbatchasync?view=azure-dotnet) hívásával küldje el az üzenetet a digitális ikreknek.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Az Azure Digital Twins adatfeldolgozási és a felhasználó által definiált függvények funkcióinak megismeréséhez olvassa el az [Azure Digital Twins adatfeldolgozási és felhasználó által definiált függvények](concepts-user-defined-functions.md)című témakört.

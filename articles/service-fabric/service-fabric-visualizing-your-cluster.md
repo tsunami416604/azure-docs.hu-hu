@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/24/2019
 ms.author: mikhegn
-ms.openlocfilehash: 75568cf3c88c02968b3e3e95971f81cf1b9285d3
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 9b873b5a68979b8225c44c32e0b9494408e35ac1
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73496358"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73927182"
 ---
 # <a name="visualize-your-cluster-with-service-fabric-explorer"></a>A fürt megjelenítése a Service Fabric Explorerrel
 
@@ -129,7 +129,11 @@ A képtárak megjelenítője olyan natív lemezképtároló használata, amely l
 ![Service Fabric Explorer fürt térképe][sfx-imagestore]
 
 ## <a name="backup-and-restore"></a>Biztonsági mentés és visszaállítás
-A Service Fabric Explorer lehetővé teszi a kapcsolódást a [biztonsági mentéssel és visszaállítással](./service-fabric-reliable-services-backup-restore.md). A következő műveletek lehetségesek:
+A Service Fabric Explorer lehetővé teszi a kapcsolódást a [biztonsági mentéssel és visszaállítással](./service-fabric-reliable-services-backup-restore.md). Az SFX biztonsági mentési és visszaállítási funkcióinak megjelenítéséhez engedélyezni kell a speciális módot.
+
+![Speciális mód engedélyezése][0]
+ 
+A következő műveletek lehetségesek:
 
 * Biztonsági mentési szabályzat létrehozása, szerkesztése és törlése.
 * Egy alkalmazás, szolgáltatás vagy partíció biztonsági mentésének engedélyezése és letiltása.
@@ -138,7 +142,7 @@ A Service Fabric Explorer lehetővé teszi a kapcsolódást a [biztonsági ment�
 * Egy partíció aktiválását és nyomon követését.
 
 A biztonsági mentési és visszaállítási szolgáltatással kapcsolatos további információkért tekintse meg a [REST API referenciát](https://docs.microsoft.com/rest/api/servicefabric/sfclient-index-backuprestore).
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * [A Service Fabric-alkalmazások kezelése a Visual Studióban](service-fabric-manage-application-in-visual-studio.md)
 * [Service Fabric alkalmazás központi telepítése a PowerShell használatával](service-fabric-deploy-remove-applications.md)
 
@@ -151,3 +155,4 @@ A biztonsági mentési és visszaállítási szolgáltatással kapcsolatos tová
 [sfx-create-app-instance]: ./media/service-fabric-visualizing-your-cluster/sfx-create-app-instance.png
 [sfx-eventstore]: ./media/service-fabric-diagnostics-eventstore/eventstore.png
 [sfx-imagestore]: ./media/service-fabric-visualizing-your-cluster/sfx-image-store.png
+[0]: ./media/service-fabric-backuprestoreservice/advanced-mode.png

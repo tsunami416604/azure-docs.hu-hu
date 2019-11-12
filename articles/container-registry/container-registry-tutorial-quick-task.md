@@ -1,5 +1,5 @@
 ---
-title: Oktatóanyag – tároló lemezképek összeállítása a felhőben – Azure Container Registry feladatok
+title: Oktatóanyag – a gyors tároló rendszerképének összeállítása – Azure Container Registry feladatok
 description: Ebben az oktatóanyagban megtudhatja, hogyan állíthat össze Docker-tárolórendszerképet az Azure-ban az Azure Container Registry Tasks (ACR Tasks) használatával, majd hogyan helyezheti azokat üzembe az Azure Container Instances szolgáltatásban.
 services: container-registry
 author: dlepow
@@ -9,14 +9,14 @@ ms.topic: tutorial
 ms.date: 09/24/2018
 ms.author: danlep
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 091c1a4c9e6adae69ec1c8b3e507624b9f5e6a96
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: 0b62ef1fa05138b1d5c0a3aacb570f5d577176fe
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71057495"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73931400"
 ---
-# <a name="tutorial-build-and-deploy-container-images-in-the-cloud-with-azure-container-registry-tasks"></a>Oktatóanyag: Tároló lemezképek létrehozása és üzembe helyezése a felhőben Azure Container Registry feladatokkal
+# <a name="tutorial-build-and-deploy-container-images-in-the-cloud-with-azure-container-registry-tasks"></a>Oktatóanyag: tároló lemezképek létrehozása és üzembe helyezése a felhőben Azure Container Registry feladatokkal
 
 Az **ACR Tasks** az Azure Container Registry egy szolgáltatáscsomagja, amely lehetővé teszi a Docker-tárolórendszerképek zökkenőmentes és hatékony összeállítását az Azure-ban. Ebben a cikkben az ACR Tasks *gyors feladat* funkciójának használatával ismerkedhet meg.
 
@@ -207,7 +207,7 @@ az keyvault secret set \
                 --output tsv)
 ```
 
-Az `--role` előző parancsban szereplő argumentum konfigurálja az egyszerű szolgáltatást a *acrpull* szerepkörrel, amely csak lekéréses hozzáférést biztosít a beállításjegyzékhez. A leküldéses és lekéréses hozzáférés engedélyezéséhez módosítsa az `--role` argumentumot *acrpush*értékre.
+Az előző parancs `--role` argumentuma konfigurálja a szolgáltatásnevet a *acrpull* szerepkörrel, amely csak lekéréses hozzáférést biztosít a beállításjegyzékhez. A leküldéses és lekéréses hozzáférés engedélyezéséhez módosítsa a `--role` argumentumot *acrpush*értékre.
 
 Ezután tárolja el a szolgáltatásnév *appId* azonosítóját a tárolóban, amely az Azure Container Registry szolgáltatásban a hitelesítéskor megadandó **felhasználónév** lesz:
 
@@ -221,8 +221,8 @@ az keyvault secret set \
 
 Létrehozott egy Azure Key Vault-tárolót, és eltárolt benne két titkos kulcsot:
 
-* `$ACR_NAME-pull-usr`: Az egyszerű szolgáltatásnév azonosítója, amelyet tároló-beállításjegyzékbeli **felhasználónévként**kell használni.
-* `$ACR_NAME-pull-pwd`: A szolgáltatás egyszerű jelszava, a tároló-beállításjegyzék jelszavakéntvaló használathoz.
+* `$ACR_NAME-pull-usr`: A szolgáltatásnév azonosítója, amely a tárolóregisztrációs adatbázis **felhasználóneveként** szolgál.
+* `$ACR_NAME-pull-pwd`: A szolgáltatásnév jelszava, amely a tárolóregisztrációs adatbázis **jelszavaként** szolgál.
 
 Innentől ezekre a titkos kulcsokra név alapján hivatkozhat, amikor Ön vagy az alkalmazások és szolgáltatások rendszerképeket kérnek le a regisztrációs adatbázisból.
 
@@ -265,7 +265,7 @@ acr-tasks-myregistry.eastus.azurecontainer.io
 
 Jegyezze fel a tároló teljes tartománynevét, amelyet a következő szakaszban fog használni.
 
-### <a name="verify-the-deployment"></a>Az üzemelő példány ellenőrzése
+### <a name="verify-the-deployment"></a>A telepítés ellenőrzése
 
 A tároló indítási folyamatának megtekintéséhez használja az az [Container Attach][az-container-attach] parancsot:
 
@@ -308,7 +308,7 @@ az group delete --resource-group $RES_GROUP
 az ad sp delete --id http://$ACR_NAME-pull
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Miután egy gyors feladattal tesztelte a belső ciklust, konfiguráljon egy **összeállítási feladatot** a tárolórendszerképek összeállításának automatikus aktiválására, amikor forráskódot véglegesít egy Git-adattárban:
 

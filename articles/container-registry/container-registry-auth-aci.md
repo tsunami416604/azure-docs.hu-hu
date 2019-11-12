@@ -1,5 +1,5 @@
 ---
-title: Hitelesítés Azure Container Registry Azure Container Instances
+title: Hozzáférés Azure Container Registry a Container Instances
 description: Megtudhatja, hogyan biztosíthat hozzáférést a saját tároló-beállításjegyzékben található lemezképekhez Azure Container Instances egy Azure Active Directory egyszerű szolgáltatásnév használatával.
 services: container-registry
 author: dlepow
@@ -8,12 +8,12 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 04/23/2018
 ms.author: danlep
-ms.openlocfilehash: b11f88cbb29016032cbf536a2c970573eda82152
-ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
+ms.openlocfilehash: 53cdca72587dafd39abd3f13ad488dcb460bf622
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72262862"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73931669"
 ---
 # <a name="authenticate-with-azure-container-registry-from-azure-container-instances"></a>Hitelesítés Azure Container Registry Azure Container Instances
 
@@ -33,7 +33,7 @@ Az egyszerű szolgáltatásokat akkor is használni kell, ha a beállításjegyz
 
 ## <a name="authenticate-using-the-service-principal"></a>Hitelesítés az egyszerű szolgáltatásnév használatával
 
-Ha a tárolót Azure Container Instances egy egyszerű szolgáltatásnév használatával szeretné elindítani, akkor a `--registry-username` AZONOSÍTÓját, valamint a `--registry-password`-hez tartozó jelszót kell megadnia.
+Ha a tárolót Azure Container Instances egy egyszerű szolgáltatásnév használatával szeretné elindítani, a `--registry-username`hoz tartozó azonosítót és a hozzá tartozó jelszót kell megadnia `--registry-password`hoz.
 
 ```azurecli-interactive
 az container create \

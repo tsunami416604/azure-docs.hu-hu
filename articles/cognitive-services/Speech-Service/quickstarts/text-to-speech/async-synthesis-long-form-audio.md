@@ -10,16 +10,19 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: erhopf
-ms.openlocfilehash: 2c1e6ef84a472ccec5116b12e18ad80c92b68960
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: d308623a323fecd39efa90639da71fb981936fe5
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73681879"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73930579"
 ---
 # <a name="quickstart-asynchronous-synthesis-for-long-form-audio-in-python-preview"></a>Rövid útmutató: a hosszú formátumú hang aszinkron szintézise a Pythonban (előzetes verzió)
 
 Ebben a rövid útmutatóban a hosszú hangalapú API használatával aszinkron módon alakíthatja át a szövegeket beszédre, és lekérheti a hangkimenetet a szolgáltatás által megadott URI-ból. Ez a REST API ideális olyan tartalomszolgáltatók számára, amelyeknek a 10 000 vagy 50 bekezdésnél nagyobb szövegfájlokat kell konvertálnia a szintetizált beszédbe. További információ: [Long audio API](../../long-audio-api.md).
+
+> [!NOTE]
+> A hosszú formátumú hang aszinkron szintézise csak [Egyéni neurális hangokkal](../../how-to-custom-voice.md#custom-neural-voices)használható.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -271,7 +274,7 @@ delete successful
 
 A teljes `voice_synthesis_client.py` letölthető a [githubon](https://github.com/Azure-Samples/Cognitive-Speech-TTS/blob/master/CustomVoice-API-Samples/Python/voiceclient.py).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [További információ a hosszú hang API-ról](../../long-audio-api.md)

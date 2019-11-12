@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/26/2019
 ms.author: mlottner
-ms.openlocfilehash: b1a14cf4c8aec2f3dbfa7bc4fd0800d9fd1fb0aa
-ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.openlocfilehash: ca1d1a5761e62b2838a474dcb83f450987972998
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71327321"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73928956"
 ---
 # <a name="azure-security-center-for-iot-event-aggregation"></a>Azure Security Center a IoT esemény összesítéséhez
 
@@ -44,7 +44,7 @@ Az ügynök memória-lábnyomának csökkentése érdekében, ha az ügynök egy
 
 Az események csak akkor tekinthetők azonosnak, ha teljesülnek a következő feltételek: 
 
-* ProcessCreate-események – ha a **parancssori**, **végrehajtható**, * * Felhasználónév és **felhasználóazonosító** azonos
+* ProcessCreate-események – ha a **parancssor**, a **végrehajtható fájl**, a **Felhasználónév**és a **userid** megegyezik
 * ConnectionCreate események – ha a **commandLine**, a **userId**, az **Direction**, a **Local címet**, a **távoli címet**, a * * protokollt és a **célport** azonos
 * ProcessTerminate események – ha a **végrehajtható fájl** és a **kilépési állapot** megegyezik
 
@@ -66,11 +66,11 @@ Módosítsa Azure Security Center konfigurációját az IoT esemény összesít�
 
 | Konfiguráció neve | Lehetséges értékek | Részletek | Megjegyzések |
 |:-----------|:---------------|:--------|:--------|
-| aggregationEnabledProcessCreate | boolean | Események összesítésének engedélyezése/letiltása folyamat-létrehozási eseményekhez |
+| aggregationEnabledProcessCreate | logikai | Események összesítésének engedélyezése/letiltása folyamat-létrehozási eseményekhez |
 | aggregationIntervalProcessCreate | ISO8601 TimeSpan karakterlánca | A folyamat-létrehozási események összesítési időköze |
-| aggregationEnabledConnectionCreate | boolean| Esemény-összesítés engedélyezése/letiltása a kapcsolat létrehozási eseményeihez |
+| aggregationEnabledConnectionCreate | logikai| Esemény-összesítés engedélyezése/letiltása a kapcsolat létrehozási eseményeihez |
 | aggregationIntervalConnectionCreate | ISO8601 TimeSpan karakterlánca | Kapcsolódási időköz a kapcsolatok létrehozási eseményeihez |
-| aggregationEnabledProcessTerminate | boolean | Események összesítésének engedélyezése/letiltása a folyamatok megszakításához | Csak Windows|
+| aggregationEnabledProcessTerminate | logikai | Események összesítésének engedélyezése/letiltása a folyamatok megszakításához | Csak Windows|
 | aggregationIntervalProcessTerminate | ISO8601 TimeSpan karakterlánca | Az összesítési időköz a folyamat megszakításához | Csak Windows|
 |
 
@@ -86,7 +86,7 @@ Módosítsa Azure Security Center konfigurációját az IoT esemény összesít�
 | aggregationIntervalProcessTerminate | PT1H|
 |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebből a cikkből megtudhatta, hogyan Azure Security Center a IoT biztonsági ügynök összesítése és az elérhető esemény-konfigurációs beállítások.
 

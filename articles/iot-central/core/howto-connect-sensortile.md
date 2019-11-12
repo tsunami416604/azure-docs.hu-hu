@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: sandeep.pujar
-ms.openlocfilehash: 0969ee6dbc035ffa105dd54d34f3b4711d4915cf
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: e46d4f99075a0d3fa326c84e17792b8959e23517
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72951210"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73930225"
 ---
 # <a name="connect-sensortilebox-device-to-your-azure-iot-central-application"></a>A SensorTile. Box eszköz csatlakoztatása az Azure IoT Central-alkalmazáshoz
 
@@ -21,7 +21,7 @@ ms.locfileid: "72951210"
 
 Ez a cikk azt ismerteti, hogyan lehet egy SensorTile. Box eszközt a Microsoft Azure IoT Central alkalmazáshoz csatlakozni az eszköz fejlesztőinek.
 
-## <a name="before-you-begin"></a>Előzetes teendők
+## <a name="before-you-begin"></a>Előkészületek
 
 A cikkben szereplő lépések végrehajtásához a következő erőforrásokra van szükség:
 
@@ -86,7 +86,7 @@ A SensorTile. Box eszköz sablonjában létrehozott alkalmazás a következő je
 
 ### <a name="telemetry"></a>Telemetria
 
-| Mező neve     | egység  | Minimális | Maximum | Tizedeshelyek |
+| Mező neve     | Egység  | Minimális | Maximum | Tizedeshelyek |
 | -------------- | ------ | ------- | ------- | -------------- |
 | páratartalom       | %      | 30       | 90     | 1              |
 | ideiglenes           | °C     | 0     | 40     | 1              |

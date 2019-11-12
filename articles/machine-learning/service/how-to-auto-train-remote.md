@@ -11,12 +11,12 @@ ms.subservice: core
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 4276a713e62f96cc5340fc7be0e8391939d32342
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 5104e6e037341c41a032f80287c6d56d17361d4c
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73497320"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73932197"
 ---
 # <a name="train-models-with-automated-machine-learning-in-the-cloud"></a>Modellek betanítása automatizált gépi tanulással a felhőben
 
@@ -103,7 +103,7 @@ y = Dataset.Tabular.from_delimited_files(path=ds.path('digitsdata/y_train.csv'))
 
 ## <a name="create-run-configuration"></a>Futtatási konfiguráció létrehozása
 
-Ahhoz, hogy a függőségek elérhetők legyenek a get_data. a parancsfájlban, Definiáljon egy `RunConfiguration` objektumot a megadott `CondaDependencies`. Ezt az objektumot a `AutoMLConfig``run_configuration` paraméteréhez használhatja.
+Ahhoz, hogy a függőségek elérhetők legyenek a get_data. a parancsfájlhoz, Definiáljon egy `RunConfiguration` objektumot definiált `CondaDependencies`. Ezt az objektumot a `AutoMLConfig``run_configuration` paraméteréhez használhatja.
 
 ```python
 from azureml.core.runconfig import RunConfiguration
@@ -148,24 +148,6 @@ automl_config = AutoMLConfig(task='classification',
                              X = X,
                              y = y,
                              **automl_settings,
-                             )
-```
-
-### <a name="enable-model-explanations"></a>Modell magyarázatának engedélyezése
-
-Adja meg a választható `model_explainability` paramétert a `AutoMLConfig` konstruktorban. Emellett egy érvényesítési dataframe-objektumot is át kell adni paraméterként `X_valid` a modell magyarázati funkciójának használatához.
-
-```python
-automl_config = AutoMLConfig(task='classification',
-                             debug_log='automl_errors.log',
-                             path=project_folder,
-                             compute_target=compute_target,
-                             run_configuration=run_config,
-                             X = X,
-                             y = y,
-                             **automl_settings,
-                             model_explainability=True,
-                             X_valid=X_test
                              )
 ```
 
@@ -237,59 +219,13 @@ remote_run.get_portal_url()
 
 Ugyanezek az információk a munkaterületen is elérhetők.  Ha többet szeretne megtudni ezekről az eredményekről, olvassa el az [automatizált gépi tanulási eredmények megismerése](how-to-understand-automated-ml.md)című témakört.
 
-### <a name="view-logs"></a>Naplók megtekintése
-
-Keresse meg a DSVM a `/tmp/azureml_run/{iterationid}/azureml-logs`alatt található naplókat.
-
-## <a name="explain"></a>A legjobb modell magyarázata
-
-A modell magyarázati adatainak beolvasása lehetővé teszi a modellekkel kapcsolatos részletes információk megtekintését, amelyekkel növelheti az átláthatóságot a háttérbeli működésben. Ebben a példában a modell magyarázatait csak a legjobb illeszkedési modellhez futtatja. Ha a folyamat összes modelljét futtatja, a művelet jelentős futási időt eredményez. A modell magyarázatával kapcsolatos információk a következők:
-
-* shap_values: az formáló lib által generált magyarázati információ.
-* expected_values: az X_train-adathalmazra alkalmazott modell várt értéke.
-* overall_summary: a modell szintjének fontossági értékeit csökkenő sorrendben rendezi a szolgáltatás.
-* overall_imp: a szolgáltatások nevei ugyanabban a sorrendben vannak rendezve, mint a overall_summary.
-* per_class_summary: az osztály szintjének fontossági értékei csökkenő sorrendben rendezve jelennek meg. Csak a besorolási esethez érhető el.
-* per_class_imp: a szolgáltatások nevei ugyanabban a sorrendben vannak rendezve, mint a per_class_summary. Csak a besorolási esethez érhető el.
-
-A következő kód használatával kiválaszthatja az iterációk legjobb folyamatát. A `get_output` metódus a legjobb futtatást és a beillesztett modellt adja vissza az utolsó illeszkedési híváshoz.
-
-```python
-best_run, fitted_model = remote_run.get_output()
-```
-
-Importálja a `retrieve_model_explanation` függvényt, és futtassa a parancsot a legjobb modellen.
-
-```python
-from azureml.train.automl.automlexplainer import retrieve_model_explanation
-
-shap_values, expected_values, overall_summary, overall_imp, per_class_summary, per_class_imp = \
-    retrieve_model_explanation(best_run)
-```
-
-A megtekinteni kívánt `best_run` magyarázó változók eredményeinek nyomtatása.
-
-```python
-print(overall_summary)
-print(overall_imp)
-print(per_class_summary)
-print(per_class_imp)
-```
-
-A `best_run` magyarázat összefoglaló változóinak kinyomtatása a következő kimenetet eredményezi.
-
-![Modell-magyarázó konzol kimenete](./media/how-to-auto-train-remote/expl-print.png)
-
-A funkciók fontosságát a widget felhasználói felületén vagy a munkaterületen, [Azure Machine learning Studióban](https://ml.azure.com)is megjelenítheti. 
-
-![Modell-magyarázó KEZELŐFELÜLET](./media/how-to-auto-train-remote/model-exp.png)
-
 ## <a name="example"></a>Példa
 
-A [How-to-use-azureml/Automated-Machine-learning/Remote-amlcompute/Auto-ml-Remote-amlcompute. ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/remote-amlcompute/auto-ml-remote-amlcompute.ipynb) jegyzetfüzet bemutatja a cikkben szereplő fogalmakat.
+A következő [Jegyzetfüzet](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/regression/auto-ml-regression.ipynb) a cikkben szereplő fogalmakat mutatja be.
 
 [!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-for-examples.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Ismerje meg [, hogyan konfigurálhatja az automatikus betanítás beállításait](how-to-configure-auto-train.md).
+* Ismerje meg [, hogyan konfigurálhatja az automatikus betanítás beállításait](how-to-configure-auto-train.md).
+* Lásd: [útmutató](how-to-machine-learning-interpretability-automl.md) a modell-értelmező funkcióinak engedélyezéséhez az automatikus ml-kísérleteknél.

@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: helohr
-ms.openlocfilehash: cf344d6c551ecd3d301d79c29efe9e7adb7f8d83
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: dc93480807f34a79ee02f628f7b6f090c7efa428
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73646893"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73931707"
 ---
 # <a name="windows-virtual-desktop-partner-integrations"></a>Windows rendszerű virtuális asztali partner-integrációk
 
@@ -59,7 +59,7 @@ A ControlUp egy Windows rendszerű virtuális asztali értéknövelt szolgáltat
 
 Windows rendszerű virtuális asztallal való használat esetén a ControlUp további képességeket biztosít a Windows rendszerű virtuális asztali környezetek és a végfelhasználói élmény optimalizálása érdekében. A ControlUp-konzolról a végfelhasználói környezet láthatóvá válik a teljesítménnyel kapcsolatos problémák hatékony figyelése és hibaelhárítása érdekében. Az intuitív irányítópultok bepillantást és elemzéseket biztosítanak a virtuális asztali környezetekhez, valamint a közösségi referenciaértékekkel gazdagított automatizált jelentéskészítési lehetőségeket. A ControlUp több adatforrást és típust is kezelhet, amelyek nagy teljesítményű adatkészletekben vannak rendszerezve a számítási, tárolási és a Windows rendszerű virtuális asztali infrastruktúrában összesítve, így egyetlen üvegtábla részletes láthatóságát is lehetővé teszi.
 
-- [Tekintse meg a JOIN megoldás rövid leírását](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3PUit).
+- [Tekintse meg röviden a közös megoldást](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3PUit).
 - [Lépjen a partner webhelyére](https://www.controlup.com/solutions/ms_wvd/).
 
 ## <a name="devicetrust"></a>deviceTRUST
@@ -205,7 +205,7 @@ A Workspot kiterjeszti a Windows virtuális asztal értékét a Cloud Desktop-in
 - [Tekintse meg röviden a közös megoldást](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3oL8P).
 - [Lépjen a partner webhelyére](https://www.workspot.com/wvd).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [További információ a Windows rendszerű virtuális asztali környezetről](overview.md).
 - [Hozzon létre egy bérlőt a Windows rendszerű virtuális asztalon](tenant-setup-azure-active-directory.md).

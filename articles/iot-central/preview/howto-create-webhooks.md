@@ -8,14 +8,14 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: corywink
-ms.openlocfilehash: 85dbf773a27600fddf8fe7e5570ff332241f0ebc
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: d1f99be5f21cbf8f1dcfe4a32595a639d3760494
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73894954"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73929939"
 ---
-# <a name="create-webhook-actions-on-rules-in-azure-iot-central"></a>Webhook-műveletek létrehozása az Azure-beli szabályokon IoT Central
+# <a name="create-webhook-actions-on-rules-in-azure-iot-central-preview-features"></a>Webhook-műveletek létrehozása a szabályokhoz az Azure IoT Central (előzetes verziójú funkciók)
 
 *Ez a témakör az építők és a rendszergazdákra vonatkozik.*
 
@@ -84,6 +84,6 @@ Jelenleg nincs programozási mód a webhookok API-n keresztül történő előfi
 
 Ha ötletekkel szeretné javítani ezt a funkciót, küldje el javaslatait a [uservoice fórumra](https://feedback.azure.com/forums/911455-azure-iot-central).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy megismerte a webhookok beállítását és használatát, a javasolt következő lépés az [Azure monitor műveleti csoportok konfigurálásának](howto-use-action-groups.md)megismerése.

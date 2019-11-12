@@ -1,6 +1,6 @@
 ---
-title: Azure Portal alkalmazás-regisztrációk képzési útmutatója (örökölt) – Azure
-description: A Microsoft Identity platform új alkalmazás-regisztrációs felületének bemutatása.
+title: Betanítási útmutató a Alkalmazásregisztrációk (örökölt) rendszerről az új Alkalmazásregisztrációk-élményre való áttéréshez Azure Portal
+description: Bevezetés az új alkalmazás regisztrációs felületére a Azure Portal
 services: active-directory
 documentationcenter: ''
 author: archieag
@@ -12,92 +12,120 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/26/2019
+ms.date: 10/25/2019
 ms.author: aragra
 ms.reviewer: lenalepa, keyam
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bbdb6a2e17ab867b4938e94ae5a20a95cc352daa
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.openlocfilehash: 01d543262a9eb358643c0860b24ac4306d2c5edf
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2019
-ms.locfileid: "73905393"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73927094"
 ---
-# <a name="training-guide-app-registrations-in-the-azure-portal-legacy"></a>Tanítási útmutató: Alkalmazásregisztrációk a Azure Portal (örökölt)
+# <a name="transitioning-from-app-registrations-legacy-to-the-new-app-registrations-experience-in-the-azure-portal"></a>Áttérés Alkalmazásregisztrációk (örökölt) rendszerről az új Alkalmazásregisztrációk-élményre a Azure Portal
 
-Számos javítást talál a Azure Portal új [Alkalmazásregisztrációk](https://go.microsoft.com/fwlink/?linkid=2083908) felületén. Ha még jobban ismeri az örökölt élményt, használja ezt az oktatóanyagot az új felület használatának megkezdéséhez.
+Számos újdonságot talál a Azure Portal új [Alkalmazásregisztrációk](https://go.microsoft.com/fwlink/?linkid=2083908) felületén. Ha már ismeri a Azure Portal Alkalmazásregisztrációk (örökölt) felületét, az új felület használatának megkezdéséhez használja ezt a tanítási útmutatót.
 
 Azure Active Directory az itt ismertetett új alkalmazás-regisztrációs élmény általánosan elérhető (GA). Azure Active Directory B2C (Azure AD B2C) Ez a felhasználói élmény előzetes verzióban érhető el.
 
 ## <a name="key-changes"></a>Legfontosabb változások
 
-- Alkalmazásregisztrációk nem kizárólag **webalkalmazás/API** vagy **natív** alkalmazás lehet. Ugyanezeket az alkalmazásokat használhatja a megfelelő átirányítási URI-k regisztrálásával.
-- Az örökölt felhasználói élmény csak a szervezeti (Azure AD-) fiókokat bejelentkező, támogatott alkalmazásokat támogatja. Az alkalmazások egyszeri bérlőként lettek regisztrálva (csak a címtárban regisztrált szervezeti fiókok támogatása az alkalmazásban), és úgy módosíthatók, hogy több-bérlős (az összes szervezeti fiók támogatása). Az új felület lehetővé teszi olyan alkalmazások regisztrálását, amelyek támogatják mindkét lehetőséget, valamint egy harmadik lehetőséget: minden szervezeti fiókot és személyes Microsoft-fiókot is.
-- A régi felhasználói felület csak akkor érhető el, ha szervezeti fiókkal jelentkezett be a Azure Portalba. Az új felülettel olyan személyes Microsoft-fiókokat is használhat, amelyek nem címtárhoz vannak társítva.
+- Alkalmazásregisztrációk nem kizárólag *webalkalmazás/API* vagy *natív* alkalmazás lehet. A megfelelő átirányítási URI-k regisztrálásával ugyanazt az alkalmazás-regisztrációt használhatja az összes alkalmazáshoz.
+
+- Az örökölt támogatott alkalmazások csak szervezeti (Azure AD-) fiókok használatával jelentkeznek be. Az alkalmazások egybérlős fájlként lettek regisztrálva. Az alkalmazások csak az alkalmazás által a címtárban regisztrált szervezeti fiókokat támogatják. Az alkalmazások úgy módosíthatók, hogy több-bérlős és támogassa az összes szervezeti fiókot. Az új felület lehetővé teszi olyan alkalmazások regisztrálását, amelyek támogatják mindkét lehetőséget, valamint egy harmadik lehetőséget: minden szervezeti fiókot és személyes Microsoft-fiókot is.
+
+- A régi felhasználói felület csak akkor érhető el, ha szervezeti fiókkal jelentkezett be a Azure Portalba. Az új felülettel olyan személyes Microsoft-fiókokat is használhat, amelyek nem egy címtárhoz vannak társítva.
 
 ## <a name="list-of-applications"></a>Alkalmazások listája
 
-- Az új alkalmazások listája az Azure Portal (az Azure AD-fiókokat bejelentkező alkalmazások), valamint az [alkalmazás-regisztrációs portálon](https://apps.dev.microsoft.com/) (a bejelentkezéshez használt alkalmazások) az örökölt alkalmazás regisztrációján keresztül regisztrált alkalmazásokat jeleníti meg. Azure AD-és személyes Microsoft-fiókok).
-- Az új alkalmazások listájában nem szerepel az **alkalmazás típusa** oszlop (mivel egyetlen alkalmazás regisztrálása többféle típus lehet), és két további oszlop van: egy **létrehozott** oszlop és egy **tanúsítvány & titkok** oszlop, amely megjeleníti az állapotot (aktuális, az alkalmazásban regisztrált hitelesítő adatok hamarosan lejárnak vagy lejártnak minősülnek.
+Az új alkalmazás lista az Azure Portal korábbi alkalmazás-regisztrációi során regisztrált alkalmazásokat jeleníti meg. Ezek az alkalmazások az Azure AD-fiókok használatával jelentkeznek be. Az új alkalmazás listában az alkalmazás regisztrációs portálján regisztrált alkalmazások is megjelennek. Ezek az alkalmazások az Azure AD és a személyes Microsoft-fiókok használatával jelentkeznek be.
+
+>[!NOTE]
+>Az alkalmazás regisztrációs portálja elavult.
+
+Az új alkalmazás-lista nem tartalmaz **Application Type** oszlopot, mert egyetlen alkalmazás regisztrálása többféle típus lehet. A listán két további oszlop található: **a** (z) és a **tanúsítványok & Secrets**. A **& Secrets tanúsítványok** az alkalmazásban regisztrált hitelesítő adatok állapotát jelenítik meg. Az állapotok közé tartozik az **aktuális**, **hamarosan lejár**és **lejárt**.
 
 ## <a name="new-app-registration"></a>Új alkalmazás regisztrálása
 
-A régi felhasználói felületen a szükséges alkalmazások regisztrálásához a következőket kell megadnia: **név**, **alkalmazás típusa**, **bejelentkezési URL-cím/átirányítási URI**. A létrehozott alkalmazások az Azure AD csak egybérlős alkalmazások voltak, ami azt jelenti, hogy csak a címtárban regisztrált szervezeti fiókok támogatottak.
+A régi felhasználói felületen a szükséges alkalmazások regisztrálásához a következőket kell megadnia: **név**, **alkalmazás típusa**, **bejelentkezési URL-cím/átirányítási URI**. A létrehozott alkalmazások az Azure AD-ben csak egyetlen bérlős alkalmazások voltak. Csak a címtárban az alkalmazásban regisztrált szervezeti fiókok támogatottak.
 
-Az új felhasználói felületen meg kell adnia egy **nevet** az alkalmazásnak, és ki kell választania a **támogatott fióktípus**lehetőséget. Igény szerint **átirányítási URI**-t is megadhat. Ha átirányítási URI-t ad meg, meg kell adnia, hogy webes vagy nyilvános (mobil és asztali). Az alkalmazások új alkalmazás-regisztrációval való regisztrálásával kapcsolatos további információkért lásd: [alkalmazás regisztrálása a Microsoft Identity platformmal](quickstart-register-app.md). Azure AD B2C esetében lásd: [alkalmazás regisztrálása Azure Active Directory B2Cban](../../active-directory-b2c/tutorial-register-applications.md).
+Az új felhasználói felületen meg kell adnia egy **nevet** az alkalmazásnak, és ki kell választania a **támogatott fióktípus**lehetőséget. Igény szerint **átirányítási URI**-t is megadhat. Ha átirányítási URI-t ad meg, meg kell adnia, hogy webes vagy nyilvános (mobil és asztali). További információ: gyors útmutató [: alkalmazás regisztrálása a Microsoft Identity platformon](quickstart-register-app.md). Azure AD B2C esetében lásd: [alkalmazás regisztrálása Azure Active Directory B2Cban](../../active-directory-b2c/tutorial-register-applications.md).
 
-## <a name="the-legacy-properties-page"></a>Az örökölt tulajdonságok lap
+## <a name="differences-between-the-application-registration-portal-and-app-registrations-page"></a>Az alkalmazás regisztrációs portálja és a Alkalmazásregisztrációk lap közötti különbségek
 
-Az örökölt felület olyan **tulajdonságlapot** tartalmazott, amelyet az új felület nem tartalmaz. A **Properties (Tulajdonságok** ) panelen a következő mezők szerepelnek: **név**, **objektumazonosító**, **alkalmazás azonosítója**, alkalmazás- **azonosító URI**, **embléma**, **Kezdőlap URL**-címe, **kijelentkezési URL**-cím, **szolgáltatási feltételek URL-címe**, **adatvédelmi nyilatkozat URL-cím**, **alkalmazás típusa**és **több-bérlő.**
+### <a name="the-legacy-properties-page"></a>Az örökölt tulajdonságok lap
 
-Itt találja a megfelelő funkciókat az új felhasználói élményben:
+A régi felület **tulajdonságlapja** volt. A **Tulajdonságok** a következő mezőkkel rendelkeznek:
+
+- **Name (Név)**
+- **Objektumazonosító**
+- **Alkalmazás azonosítója**
+- **Alkalmazásazonosító URI**
+- **Embléma**
+- **Kezdőlap URL-címe**
+- **Kijelentkezési URL-cím**
+- **Szolgáltatási feltételek URL-címe**
+- **Adatvédelmi nyilatkozat URL-címe**
+- **Alkalmazás típusa**
+- **Több-bérlős**
+
+Az új felület nem rendelkezik ezzel az oldallal. Itt találja a megfelelő funkciót:
 
 - A **név**, az **embléma**, a **Kezdőlap URL**-címe, a **szolgáltatási feltételek URL**-címe és az **adatvédelmi nyilatkozat URL-címe** mostantól az alkalmazás **védjegyezési** oldalán található.
-- Az **objektum** -azonosító és az **alkalmazás (ügyfél) azonosítója** az **Áttekintés** oldalon található.
-- A **több-bérlős** váltás az örökölt felhasználói felület által vezérelt funkcióit a **hitelesítés** lapon **támogatott fióktípus** váltotta fel. Ha többet szeretne megtudni arról, hogy a több-bérlős rendszer hogyan térképezi fel a támogatott fióktípus beállításait, tekintse meg [ezt](quickstart-modify-supported-accounts.md)a rövid útmutatót.
+- Az **objektum-azonosító** és az **alkalmazás (ügyfél) azonosítója** az **Áttekintés** oldalon található.
+- A **több-bérlős** váltás az örökölt felhasználói felület által vezérelt funkcióit a **hitelesítés** lapon **támogatott fióktípus** váltotta fel. További információ: gyors útmutató [: alkalmazás által támogatott fiókok módosítása](quickstart-modify-supported-accounts.md).
 - A **kijelentkezési URL-cím** mostantól a **hitelesítés** oldalon található.
-- Az **alkalmazás típusa** már nem érvényes mező. Ehelyett átirányítási URI-k (amelyek a **hitelesítés** oldalon találhatók) határozzák meg, hogy mely típusú alkalmazások támogatottak.
-- Az alkalmazás- **azonosító URI** -ja már **Application ID URI** -ként van meghívva, amely az API-k **közzététele** panelen található. A régi felhasználói élményben ez a tulajdonság a következő formátumban lett automatikusan regisztrálva: `https://{tenantdomain}/{appID}` (például `https://microsoft.onmicrosoft.com/aeb4be67-a634-4f20-9a46-e0d4d4f1f96d`). Az új felhasználói élményben automatikusan létrejön `api://{appID}`ként, de explicit módon el kell menteni. Azure AD B2C bérlők esetében a `https://{tenantdomain}/{appID}` formátum továbbra is használatban van.
+- Az **alkalmazás típusa** már nem érvényes mező. Ehelyett átirányítási URI-k, amelyek a **hitelesítés** oldalon találhatók, meghatározhatja, hogy mely alkalmazások támogatottak.
+- Az alkalmazás- **azonosító URI** -ja már **Application ID URI** -ként van meghívva, és megtalálhatja az API-k **elérhetővé**tétele céljából. A régi élményben ez a tulajdonság a következő formátumban lett automatikus regisztrálva: `https://{tenantdomain}/{appID}`, például `https://microsoft.onmicrosoft.com/492439af-3282-44c3-b297-45463339544b`. Az új felhasználói élményben az automatikusan létrejön `api://{appID}`ként, de explicit módon menteni kell. Azure AD B2C bérlők esetében a `https://{tenantdomain}/{appID}` formátum továbbra is használatban van.
 
-## <a name="reply-urlsredirect-urls"></a>Válasz URL-címek/átirányítási URL-címek
+### <a name="reply-urlsredirect-urls"></a>Válasz URL-címek/átirányítási URL-címek
 
-A régi élményben az alkalmazásnak volt egy **Válasz URL-címe** . Az új felhasználói felületen a válasz URL-címei az alkalmazás **hitelesítési** szakaszán találhatók. Emellett **átirányítási URI**-ként is hivatkoznak rájuk. Emellett módosult az átirányítási URI-k formátuma is. Egy alkalmazás típusához (web vagy Public) kell társítani őket. Emellett biztonsági okokból a helyettesítő karakterek és a http://sémák nem támogatottak (http://localhost)kivételével.
+A régi élményben az alkalmazásnak volt egy **Válasz URL-címe** . Az új felhasználói felületen a válasz URL-címei az alkalmazás **hitelesítési** oldalán találhatók. Ezek az úgynevezett **átirányítási URI**-k.
 
-## <a name="keyscertificates--secrets"></a>Kulcsok/tanúsítványok & Secrets
+Az átirányítási URI-k formátuma megváltozott. Szükség van egy webes vagy nyilvános alkalmazás-típushoz való társításra. Biztonsági okokból a helyettesítő karakterek és a `http://` sémák nem támogatottak, a *http://localhost* kivételével.
 
-A régi verzióban az alkalmazás **kulcsok** lapja. Az új felhasználói élményben átnevezték a **tanúsítványokat & titkokat**. Emellett a **nyilvános kulcsokat** **tanúsítványoknak** és **jelszavaknak** nevezik, az **ügyfél titkos**kulcsaként.
+### <a name="keyscertificates--secrets"></a>Kulcsok/tanúsítványok & Secrets
 
-## <a name="required-permissionsapi-permissions"></a>Szükséges engedélyek/API-engedélyek
+A régi verzióban az alkalmazás **kulcsok** lapja. Az új felhasználói élményben átnevezték a **tanúsítványokat & titkokat**.
 
-- A régi felhasználói felületen az alkalmazásnak megfelelő **engedélyekkel kell** rendelkeznie. Az új felhasználói felületen átnevezték az **API-engedélyeket**.
-- Ha az API-t az örökölt felületen választjuk ki, a Microsoft API-k kisméretű listájából választhat, vagy megkeresheti a bérlőben található egyszerű szolgáltatásokat. Az új felhasználói élményben több lapból is választhat: a **Microsoft API**-k, **a szervezet által használt API**-k vagy **az API**-k. A szervezet által használt **API** -k keresési sávján a szolgáltatás a bérlőn keresztüli egyszerű keresést végez.
+A **nyilvános kulcsokat** már **tanúsítványoknak**nevezzük. A **jelszavakat** a rendszer az **ügyfél titkos**kulcsaként említi.
 
-   > [!NOTE]
-   > Ez a lap nem jelenik meg, ha az alkalmazás nincs bérlőhöz társítva. Ha további információt szeretne arról, hogyan kérhet engedélyeket az új felhasználói felülettel, tekintse meg [ezt](quickstart-configure-app-access-web-apis.md)a rövid útmutatót.
+### <a name="required-permissionsapi-permissions"></a>Szükséges engedélyek/API-engedélyek
 
-- A korábbi felhasználói élmény a **kért engedélyek** lap tetején található **engedélyezési engedélyek** gomb. Az új **felhasználói felületen az** alkalmazás **API-engedélyei** szakaszának engedélyekkel kapcsolatos **engedélyezési szakasza** szerepel. Emellett a gombok függvényének módjában is vannak különbségek:
-   - A régi felhasználói élményben a logika a bejelentkezett felhasználótól és a kért engedélytől függően változhat. A logikája:
-      - Ha csak a felhasználó beleegyezik, és a bejelentkezett felhasználó nem rendszergazda, a felhasználó engedélyt kapott a kért engedélyekhez.
-      - Ha legalább egy rendszergazdai jóváhagyást igénylő engedély kérése megtörtént, és a bejelentkezett felhasználó nem rendszergazda, a felhasználónak hiba történt a jóváhagyás megadására tett kísérlet során.
-      - Ha a bejelentkezett felhasználó rendszergazdai jogosultsággal rendelkezik, a rendszer rendszergazdai beleegyezett az összes kért engedélyhez.
-   - Az új felhasználói élményben csak a rendszergazda adhat meg jóváhagyást. Ha egy rendszergazda kiválasztja a **rendszergazdai jóváhagyás megadása** gombot, a rendszer rendszergazdai jóváhagyást kap az összes kért engedélyhez.
+A régi felhasználói felületen az alkalmazásnak megfelelő **engedélyekkel kell** rendelkeznie. Az új felhasználói felületen átnevezték az **API-engedélyeket**.
+
+Ha az örökölt felületen kiválasztott egy API-t, a Microsoft API-k kisméretű listájából választhat. A bérlőn keresztül is kereshet az egyszerű szolgáltatások között. Az új felhasználói élményben több lapból is választhat: a **Microsoft API**-k, **a szervezet által használt API**-k vagy **az API**-k. A szervezet által használt **API** -k keresési sávján a szolgáltatás a bérlőn keresztüli egyszerű keresést végez.
+
+> [!NOTE]
+> Ez a lap nem jelenik meg, ha az alkalmazás nincs bérlőhöz társítva. Az engedélyek igénylésével kapcsolatos további információkért lásd: rövid útmutató [: ügyfélalkalmazás konfigurálása a webes API-k eléréséhez](quickstart-configure-app-access-web-apis.md).
+
+A korábbi felhasználói élmény a **kért engedélyek** lap tetején található **engedélyezési engedélyek** gomb. Az új felhasználói felületen az engedély **jóváhagyása** lapon az alkalmazás **API-engedélyei** szakaszának engedély- **rendszergazdai jóváhagyása** gombja szerepel. Bizonyos különbségek vannak a gombok függvényének módjaival is.
+
+A régi felhasználói élményben a logika a bejelentkezett felhasználótól és a kért engedélytől függően változhat. A logikája:
+
+- Ha a felhasználó csak a felhasználói beleegyező jogosultságokat kéri, és a bejelentkezett felhasználó nem rendszergazda, a felhasználó a kért engedélyekhez felhasználói jóváhagyást biztosíthat.
+- Ha legalább egy rendszergazdai jóváhagyást igénylő engedély kérése megtörtént, és a bejelentkezett felhasználó nem rendszergazda, a felhasználó hibaüzenetet kapott a jóváhagyás megadására tett kísérlet során.
+- Ha a bejelentkezett felhasználó rendszergazdai jogosultsággal rendelkezik, a rendszer rendszergazdai beleegyezett az összes kért engedélyhez.
+
+Az új felhasználói élményben csak a rendszergazda adhat meg jóváhagyást. Ha egy rendszergazda kiválasztja a **rendszergazdai jóváhagyást**, a rendszergazda beleegyezik az összes kért engedélybe.
 
 ## <a name="deleting-an-app-registration"></a>Alkalmazás regisztrációjának törlése
 
-A régi élményben az alkalmazásnak egyetlen bérlőt kellett törölni. A törlés gomb a több-bérlős alkalmazások esetében le lett tiltva. Az új felhasználói élményben az alkalmazások bármely állapotban törölhetők, de meg kell erősítenie a műveletet. Az alkalmazások regisztrációjának törlésével kapcsolatos további információkért tekintse meg [ezt a](quickstart-remove-app.md)rövid útmutatót.
+A régi élményben csak egyetlen bérlős alkalmazást törölhet. A törlés gomb a több-bérlős alkalmazások esetében le lett tiltva. Az új szolgáltatásban bármilyen állapotban törölheti az alkalmazásokat, de meg kell erősítenie a műveletet. További információ: gyors útmutató [: a Microsoft Identity platformmal regisztrált alkalmazás eltávolítása](quickstart-remove-app.md).
 
 ## <a name="application-manifest"></a>Alkalmazásjegyzék
 
-Az örökölt és az új tapasztalatok a JSON formátumának különböző verzióit használják a jegyzékfájl-szerkesztőben. További információ: [Application manifest](reference-app-manifest.md).
+Az örökölt és az új tapasztalatok a JSON formátumának különböző verzióit használják a jegyzékfájl-szerkesztőben. További információ: [Azure Active Directory app manifest](reference-app-manifest.md).
 
 ## <a name="new-ui"></a>Új felhasználói felület
 
-A korábban csak a manifest Editor vagy az API használatával beállított tulajdonságok új felhasználói felülettel rendelkeznek, vagy nem létezett.
+Az új kezelőfelület felhasználói felületi vezérlőket biztosít a következő tulajdonságokhoz:
 
-- Az **implicit engedélyezési folyamat** (oauth2AllowImplicitFlow) a **hitelesítés** oldalon található. A régi élménytől eltérően engedélyezheti a **hozzáférési jogkivonatokat** vagy **azonosító jogkivonatokat**, vagy mindkettőt.
-- Az API (oauth2Permissions) és a **jóváhagyott ügyfélalkalmazások** (preAuthorizedApplications) **által definiált hatókörök** az API-k **közzététele** lapon konfigurálhatók. További információ az alkalmazások webes API-ként való konfigurálásáról és az engedélyek/hatókörök elérhetővé tétele: [ebben](quickstart-configure-app-expose-web-apis.md)a rövid útmutatóban.
-- A **kiadói tartomány** (amely megjelenik az [alkalmazás jóváhagyását kérő](application-consent-experience.md)felhasználók számára) a **branding (védjegyezés** ) lapon található. A közzétevő tartomány konfigurálásával kapcsolatos további információkért tekintse meg [ezt a útmutató](howto-configure-publisher-domain.md)című témakört.
+- A **hitelesítési** oldalon **implicit engedélyezési folyamat** (`oauth2AllowImplicitFlow`) szerepel. A régi élménytől eltérően engedélyezheti a **hozzáférési jogkivonatokat** vagy **azonosító jogkivonatokat**, vagy mindkettőt.
+- Az **API közzététele** oldalon az api (`oauth2Permissions`) és a **jóváhagyott ügyfélalkalmazások** (`preAuthorizedApplications`) **által definiált hatókörök** szerepelnek. Az alkalmazások webes API-hoz való konfigurálásával és az engedélyek/hatókörök beszerzésével kapcsolatos további információkért lásd [: gyors útmutató: alkalmazás konfigurálása webes API](quickstart-configure-app-expose-web-apis.md)-k megjelenítéséhez.
+- A **védjegyezési** oldal tartalmazza a **közzétevő tartományt**. A közzétevő tartomány megjelenik a felhasználók számára az [alkalmazás jóváhagyására vonatkozó kérésben](application-consent-experience.md). További információkért lásd [: útmutató: alkalmazás közzétevő tartományának konfigurálása](howto-configure-publisher-domain.md).
 
 ## <a name="limitations"></a>Korlátozások
 

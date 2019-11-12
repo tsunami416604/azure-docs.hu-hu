@@ -1,5 +1,5 @@
 ---
-title: Windows IoT Core-eszköz csatlakoztatása az Azure IoT Central-alkalmazáshoz | Microsoft Docs
+title: A Windows IoT Core összekötése az Azure IoT Central alkalmazással | Microsoft Docs
 description: A MXChip IoT fejlesztői készlet-eszközök Azure IoT Central-alkalmazáshoz való csatlakoztatását bemutató útmutató.
 author: miriambrus
 ms.author: miriamb
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: d880130e114b2bd3e4f978c2ae3fc7bacf0648c4
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 43e99c54249738436f24369ed3525e78ff971a12
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72953901"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73930204"
 ---
 # <a name="connect-a-windows-iot-core-device-to-your-azure-iot-central-application"></a>Windows IoT Core-eszköz csatlakoztatása az Azure IoT Central-alkalmazáshoz
 
@@ -21,7 +21,7 @@ ms.locfileid: "72953901"
 
 Ez a cikk azt ismerteti, hogyan lehet egy Windows IoT Core-eszközt a Microsoft Azure IoT Central alkalmazáshoz csatlakozni az eszköz fejlesztői számára.
 
-## <a name="before-you-begin"></a>Előzetes teendők
+## <a name="before-you-begin"></a>Előkészületek
 
 A cikkben leírt lépések elvégzéséhez a következőkre lesz szüksége:
 
@@ -90,7 +90,7 @@ Néhány perc elteltével megtekintheti a telemetria az eszközéről a IoT Cent
 A [Windows-eszközök portálon](https://docs.microsoft.com/windows/iot-core/manage-your-device/deviceportal) olyan eszközök találhatók, amelyek segítségével elháríthatja az eszközt:
 
 - Az **alkalmazások kezelője** lapon vezérelheti az eszközön futó alkalmazásokat.
-- Ha nem rendelkezik csatlakoztatott monitorral az eszközhöz, az **eszközbeállítások lapon rögzítheti az eszköz** képernyőképeit. Példa:
+- Ha nem rendelkezik csatlakoztatott monitorral az eszközhöz, az **eszközbeállítások lapon rögzítheti az eszköz** képernyőképeit. Például:
 
     ![Alkalmazás képernyőképe](media/howto-connect-windowsiotcore/iot-hub-foreground-client.png)
 
@@ -104,7 +104,7 @@ A **mintául szolgáló Devkits** létrehozott alkalmazások egy **Windows IoT C
 
 ### <a name="telemetry-measurements"></a>Telemetria mérések
 
-| Mező neve     | egység  | Minimális | Maximum | Tizedeshelyek |
+| Mező neve     | Egység  | Minimális | Maximum | Tizedeshelyek |
 | -------------- | ------ | ------- | ------- | -------------- |
 | páratartalom       | %      | 0       | 100     | 0              |
 | ideiglenes           | °C     | – 40     | 120     | 0              |
@@ -114,16 +114,16 @@ A **mintául szolgáló Devkits** létrehozott alkalmazások egy **Windows IoT C
 
 Numerikus beállítások
 
-| Megjelenített név | Mező neve | egység | Tizedeshelyek | Minimális | Maximum | Kezdeti |
+| Megjelenített név | Mező neve | Egység | Tizedeshelyek | Minimális | Maximum | Kezdeti |
 | ------------ | ---------- | ----- | -------------- | ------- | ------- | ------- |
 | Ventilátor sebessége    | fanSpeed   | RPM   | 0              | 0       | 1000    | 0       |
 
 ### <a name="properties"></a>Tulajdonságok
 
-| Type (Típus)            | Megjelenített név | Mező neve | Data type |
+| Típus            | Megjelenített név | Mező neve | Data type |
 | --------------- | ------------ | ---------- | --------- |
 | Eszköz tulajdonsága | Die száma   | dieNumber  | szám    |
-| Szöveg            | Földrajzi egység     | location   | –       |
+| Szöveg            | Hely     | location   | N/A       |
 
 ## <a name="next-steps"></a>Következő lépések
 

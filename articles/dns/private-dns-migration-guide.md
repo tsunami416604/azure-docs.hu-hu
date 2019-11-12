@@ -7,25 +7,31 @@ ms.service: dns
 ms.topic: tutorial
 ms.date: 06/18/2019
 ms.author: rohink
-ms.openlocfilehash: 870f8f43fb37f3f58fc19f2fd544e77b1a3a3967
-ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
+ms.openlocfilehash: 9f52a568d42fa23a40a396311955626a1fa0073b
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71960554"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73931256"
 ---
 # <a name="migrating-legacy-azure-dns-private-zones-to-new-resource-model"></a>Örökölt Azure DNS privát zónák áttelepítése új erőforrás-modellbe
 
-Az aktuális Azure DNS Private Zones kiadás új funkciókat biztosít, és eltávolítja a kezdeti nyilvános előzetes verzió számos korlátozását és korlátozását. Ezek az előnyök azonban nem érhetők el az előzetes verziójú API-val létrehozott privát DNS-zónákon. Az új kiadás előnyeinek beszerzéséhez át kell telepítenie az örökölt saját DNS-zónák erőforrásait az új erőforrás-modellbe. Az áttelepítési folyamat egyszerű, és egy PowerShell-szkripttel automatizáljuk ezt a folyamatot. Ez az útmutató lépésről lépésre bemutatja, hogyan telepítheti át a Azure DNS saját zónáit az új erőforrás-modellbe.
+A nyilvános előzetes verzióban a privát DNS-zónák "dnszones" erőforrással lettek létrehozva "zoneType" tulajdonsággal a "Private" értékre állítva. Az ilyen zónák 2019 december 31-ig nem támogatottak, és a GA Resource modelre kell migrálni, amely "privateDnsZones" típusú erőforrástípust használ a "dnszones" helyett. Az áttelepítési folyamat egyszerű, és egy PowerShell-szkripttel automatizáljuk ezt a folyamatot. Ez az útmutató lépésről lépésre bemutatja, hogyan telepítheti át a Azure DNS saját zónáit az új erőforrás-modellbe.
+
+Az áttelepítést igénylő dnszones-erőforrások megállapítása; hajtsa végre az alábbi parancsot az Azure CLI-ben.
+```azurecli
+az account set --subscription <SubscriptionId>
+az network dns zone list --query "[?zoneType=='Private']"
+```
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Győződjön meg arról, hogy telepítette a Azure PowerShell legújabb verzióját. További információ a Azure PowerShell (az) és a telepítésének módjáról https://docs.microsoft.com/powershell/azure/new-azureps-module-az
+Győződjön meg arról, hogy telepítette a Azure PowerShell legújabb verzióját. További információ a Azure PowerShell (az) és a telepítési látogatások telepítéséről https://docs.microsoft.com/powershell/azure/new-azureps-module-az
 
 Győződjön meg arról, hogy az az. PrivateDns modul van telepítve a Azure PowerShell. A modul telepítéséhez nyisson meg egy rendszergazda jogú PowerShell-ablakot (felügyeleti mód), és írja be a következő parancsot.
 
 ```powershell
-Install-Module -Name Az.PrivateDns -AllowPrerelease
+Install-Module -Name Az.PrivateDns
 ```
 
 >[!IMPORTANT]
@@ -43,7 +49,10 @@ Adja meg a "A" értéket, ha a rendszer kéri a parancsfájl telepítését
 
 ![A parancsfájl telepítése](./media/private-dns-migration-guide/install-migration-script.png)
 
-Manuálisan is beszerezheti a PowerShell-szkript legújabb verzióját https://www.powershellgallery.com/packages/PrivateDnsMigrationScript címen
+Manuálisan is beszerezheti a PowerShell-szkript legújabb verzióját a következő helyen: https://www.powershellgallery.com/packages/PrivateDnsMigrationScript
+
+>[!IMPORTANT]
+>Az áttelepítési parancsfájl nem futtatható az Azure Cloud shellben, és az internethez csatlakozó virtuális gépen vagy helyi számítógépen kell végrehajtani.
 
 ## <a name="running-the-script"></a>A parancsfájl futtatása
 
@@ -106,7 +115,7 @@ Ha automatizálást használ, beleértve a sablonokat, a PowerShell-parancsfájl
 
 Hozzon létre egy támogatási jegyet, ha további segítségre van szüksége az áttelepítési folyamathoz, vagy valamilyen okból kifolyólag a fenti felsorolt lépések nem működnek. Adja meg a PowerShell-parancsfájl által a támogatási jegyhez létrehozott átirat-fájlt.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Megtudhatja, hogyan hozhat létre saját zónát Azure DNS a [Azure PowerShell](./private-dns-getstarted-powershell.md) vagy az [Azure CLI](./private-dns-getstarted-cli.md)használatával.
 

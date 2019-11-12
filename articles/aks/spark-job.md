@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 10/18/2019
 ms.author: alehall
 ms.custom: mvc
-ms.openlocfilehash: c4fca9b8f4c8a01124074396985b1ec3f1c896c6
-ms.sourcegitcommit: 9a4296c56beca63430fcc8f92e453b2ab068cc62
+ms.openlocfilehash: 5ecfa1853479c1cdc705a1a465a1de6318917a72
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/20/2019
-ms.locfileid: "72675150"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73929001"
 ---
 # <a name="running-apache-spark-jobs-on-aks"></a>Apache Spark feladatok futtatása az AK-on
 
@@ -49,7 +49,7 @@ Hozzon létre egy egyszerű szolgáltatásnevet a fürthöz. A létrehozást kö
 az ad sp create-for-rbac --name SparkSP
 ```
 
-Hozza létre az AK-fürtöt `Standard_D3_v2` méretű csomópontokkal, valamint a appId és a jelszó értékeit a szolgáltatás-elsődleges és az ügyfél-titkos paraméterekként.
+Hozza létre az AK-fürtöt `Standard_D3_v2`méretű csomópontokkal, valamint a appId és a jelszó értékeit a szolgáltatás-elsődleges és az ügyfél-titkos paraméterekként.
 
 ```azurecli
 az aks create --resource-group mySparkCluster --name mySparkCluster --node-vm-size Standard_D3_v2 --generate-ssh-keys --service-principal <APPID> --client-secret <PASSWORD>
@@ -92,7 +92,7 @@ Futtassa a következő parancsot a Spark forráskódjának Kubernetes-támogatá
 ./build/mvn -Pkubernetes -DskipTests clean package
 ```
 
-A következő parancsok létrehozzák a Spark-tároló rendszerképét, és leküldik azt egy tároló-rendszerkép beállításjegyzékbe. Cserélje le a `registry.example.com` értéket a tároló-beállításjegyzék nevére, és `v1` értéket a használni kívánt címkével. Ha a Docker hub-t használja, ez az érték a beállításjegyzék neve. Azure Container Registry (ACR) használata esetén ez az érték az ACR bejelentkezési kiszolgáló neve.
+A következő parancsok létrehozzák a Spark-tároló rendszerképét, és leküldik azt egy tároló-rendszerkép beállításjegyzékbe. Cserélje le a `registry.example.com`t a tároló-beállításjegyzék nevére, és `v1` a használni kívánt címkével. Ha a Docker hub-t használja, ez az érték a beállításjegyzék neve. Azure Container Registry (ACR) használata esetén ez az érték az ACR bejelentkezési kiszolgáló neve.
 
 ```bash
 REGISTRY_NAME=registry.example.com
@@ -111,7 +111,7 @@ Küldje le a tároló rendszerképét a tároló rendszerképének beállításj
 
 ## <a name="prepare-a-spark-job"></a>Spark-feladatok előkészítése
 
-Következő lépésként készítse elő a Spark-feladatot. A Spark-feladatok tárolására szolgáló jar-fájl szükséges, és a `spark-submit` parancs futtatásakor van szükség. A jar nyilvános URL-címen vagy egy tároló-rendszerképben előre becsomagolva is elérhetővé tehető. Ebben a példában egy minta jar jön létre a PI érték kiszámításához. Ezt a jar-t ezután feltölti az Azure Storage-ba. Ha van egy meglévő jar, a helyettesítő
+Következő lépésként készítse elő a Spark-feladatot. A Spark-feladatok tárolásához jar-fájl szükséges, és a `spark-submit` parancs futtatásakor van szükség. A jar nyilvános URL-címen vagy egy tároló-rendszerképben előre becsomagolva is elérhetővé tehető. Ebben a példában egy minta jar jön létre a PI érték kiszámításához. Ezt a jar-t ezután feltölti az Azure Storage-ba. Ha van egy meglévő jar, a helyettesítő
 
 Hozzon létre egy könyvtárat, amelyben létre szeretné hozni a projektet egy Spark-feladatokhoz.
 
@@ -126,7 +126,7 @@ Hozzon létre egy új Scala-projektet egy sablonból.
 sbt new sbt/scala-seed.g8
 ```
 
-Ha a rendszer kéri, adja meg `SparkPi` értéket a projekt neveként.
+Ha a rendszer kéri, adja meg `SparkPi` a projekt nevét.
 
 ```bash
 name [Scala Seed Project]: SparkPi
@@ -227,7 +227,7 @@ kubectl create serviceaccount spark
 kubectl create clusterrolebinding spark-role --clusterrole=edit --serviceaccount=default:spark --namespace=default
 ```
 
-Küldje el a feladatot `spark-submit` használatával.
+Küldje el a feladatot `spark-submit`használatával.
 
 ```bash
 ./bin/spark-submit \
@@ -259,7 +259,7 @@ A feladatok futtatása közben a Spark felhasználói felületét is elérheti. 
 kubectl port-forward spark-pi-2232778d0f663768ab27edc35cb73040-driver 4040:4040
 ```
 
-A Spark felhasználói felületének eléréséhez nyissa meg a `127.0.0.1:4040` címeket egy böngészőben.
+A Spark felhasználói felületének eléréséhez nyissa meg a `127.0.0.1:4040` a böngészőben.
 
 ![Spark felhasználói felület](media/aks-spark-job/spark-ui.png)
 
@@ -278,7 +278,7 @@ NAME                                               READY     STATUS      RESTART
 spark-pi-2232778d0f663768ab27edc35cb73040-driver   0/1       Completed   0          1m
 ```
 
-A `kubectl logs` paranccsal lekérheti a naplókat a Spark Driver Pod-ból. Cserélje le a pod nevet az illesztőprogram-Pod nevére.
+A `kubectl logs` parancs használatával lekérheti a naplókat a Spark Driver Pod-ból. Cserélje le a pod nevet az illesztőprogram-Pod nevére.
 
 ```bash
 kubectl logs spark-pi-2232778d0f663768ab27edc35cb73040-driver
@@ -294,9 +294,9 @@ Pi is roughly 3.152155760778804
 
 A fenti példában a Spark jar-fájl fel lett töltve az Azure Storage-ba. Egy másik lehetőség, hogy a jar-fájlt egyéni kialakítású Docker-rendszerképekbe csomagolja.
 
-Ehhez keresse meg a `dockerfile` értéket a Spark-rendszerképhez, amely a `$sparkdir/resource-managers/kubernetes/docker/src/main/dockerfiles/spark/` könyvtárban található. Vegyen fel am `ADD` utasítást a Spark-feladatokhoz `jar` valahol `WORKDIR` és `ENTRYPOINT` deklaráció között.
+Ehhez keresse meg a `$sparkdir/resource-managers/kubernetes/docker/src/main/dockerfiles/spark/` könyvtárban található Spark-rendszerkép `dockerfile`. Adja hozzá a Spark-feladatokhoz `jar` `ADD` utasítást a `WORKDIR` és `ENTRYPOINT` deklarációk között.
 
-Frissítse a jar elérési utat a `SparkPi-assembly-0.1.0-SNAPSHOT.jar` fájl helyéhez a fejlesztői rendszeren. Használhatja a saját egyéni jar-fájlját is.
+Frissítse a jar elérési utat a `SparkPi-assembly-0.1.0-SNAPSHOT.jar` fájljának helyére a fejlesztői rendszeren. Használhatja a saját egyéni jar-fájlját is.
 
 ```bash
 WORKDIR /opt/spark/work-dir
@@ -322,6 +322,7 @@ A feladatok futtatásakor a távoli jar URL-cím helyett a `local://` séma hasz
     --name spark-pi \
     --class org.apache.spark.examples.SparkPi \
     --conf spark.executor.instances=3 \
+    --conf spark.kubernetes.authenticate.driver.serviceAccountName=spark \
     --conf spark.kubernetes.container.image=<spark-image> \
     local:///opt/spark/work-dir/<your-jar-name>.jar
 ```

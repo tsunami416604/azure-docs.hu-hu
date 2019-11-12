@@ -10,12 +10,12 @@ ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
 ms.date: 11/06/2019
-ms.openlocfilehash: 178c60d82c8337987e9858a409fcdef7063c9559
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 743007d3636516a39dd36caf3d44d3edb650c030
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73684909"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73929523"
 ---
 # <a name="azure-machine-learning-monitoring-data-reference"></a>Az Azure Machine learning monitorozási adatreferenciája
 
@@ -37,7 +37,7 @@ A következő táblázat a Azure Monitor-naplókba vagy az Azure Storage-ba gyű
 | experimentName | A kísérlet neve |
 | customerSubscriptionId | SubscriptionId, ahol a kísérlet és a feladatok elküldve |
 | workspaceName | A Machine learning-munkaterület neve |
-| clusterName | A fürt neve |
+| ClusterName | A fürt neve |
 | ProvisioningState | A feladatok beküldésének állapota |
 | ResourceGroupName | Az erőforráscsoport neve |
 | JobName | A feladattípus neve |
@@ -62,20 +62,20 @@ A következő táblázat a Azure Monitor-naplókba vagy az Azure Storage-ba gyű
 | OperationName | A naplózási eseményhez társított művelet neve |
 | Kategória | A naplózási esemény neve, AmlComputeClusterNodeEvent |
 | ProvisioningState | A fürt kiépítési állapota |
-| clusterName | A fürt neve |
-| clusterType | A fürt típusa |
+| ClusterName | A fürt neve |
+| ClusterType | A fürt típusa |
 | CreatedBy | A fürtöt létrehozó felhasználó |
 | CoreCount | A fürtben lévő magok száma |
-| vmSize | A fürt virtuálisgép-mérete |
+| VmSize | A fürt virtuálisgép-mérete |
 | VmPriority | A fürt dedikált/LowPriority létrehozott csomópontjainak prioritása |
 | ScalingType | A fürt méretezésének manuális/automatikus típusa |
 | InitialNodeCount | A fürt kezdeti csomópontjának száma |
 | MinimumNodeCount | A fürt minimális csomópontjainak száma |
 | MaximumNodeCount | A fürt maximális csomópontjainak száma |
 | NodeDeallocationOption | A csomópont kiosztásának módja |
-| Gyártó/kiadó | A fürt típusának közzétevője |
+| Közzétevő | A fürt típusának közzétevője |
 | Ajánlat | Az ajánlat, amellyel a fürt létrejött |
-| Termékváltozat | A fürtön belül létrehozott csomópont/virtuális gép SKU-a |
+| SKU | A fürtön belül létrehozott csomópont/virtuális gép SKU-a |
 | Verzió | A csomópont/virtuális gép létrehozásakor használt rendszerkép verziója |
 | A netI | A fürt kimutatása |
 | AllocationState | Fürt kiosztási állapota |
@@ -104,14 +104,14 @@ A következő táblázat a Azure Monitor-naplókba vagy az Azure Storage-ba gyű
 | TimeGenerated | A naplóbejegyzés létrehozásának ideje |
 | OperationName | A naplózási eseményhez társított művelet neve |
 | Kategória | A naplózási esemény neve, AmlComputeClusterNodeEvent |
-| clusterName | A fürt neve |
+| ClusterName | A fürt neve |
 | NodeId | A létrehozott fürtcsomópont azonosítója |
-| vmSize | A csomópont virtuális gép mérete |
+| VmSize | A csomópont virtuális gép mérete |
 | VmFamilyName | A virtuális gép családja, amelyhez a csomópont tartozik |
 | VmPriority | Dedikált/LowPriority létrehozott csomópont prioritása |
-| Gyártó/kiadó | A virtuálisgép-rendszerkép kiadója, például Microsoft-dsvm |
+| Közzétevő | A virtuálisgép-rendszerkép kiadója, például Microsoft-dsvm |
 | Ajánlat | A virtuális gép létrehozásával kapcsolatos ajánlat |
-| Termékváltozat | A létrehozott csomópont/virtuális gép SKU-jának száma |
+| SKU | A létrehozott csomópont/virtuális gép SKU-jának száma |
 | Verzió | A csomópont/virtuális gép létrehozásakor használt rendszerkép verziója |
 | ClusterCreationTime | A fürt létrehozásának ideje |
 | ResizeStartTime | A fürt vertikális fel-és leskálázásának ideje |
@@ -128,13 +128,13 @@ A következő táblázatok felsorolják a Azure Machine Learning összes metrik�
 
 **Modell**
 
-| Modell | Unit (Egység) | Leírás |
+| Metrika | Unit (Egység) | Leírás |
 | ----- | ----- | ----- |
-| A modell üzembe helyezése nem sikerült | Mennyiség | A sikertelen telepítési modellek száma. |
-| A modell üzembe helyezése elindult | Mennyiség | A modell központi telepítésének száma megkezdődött. |
-| A modell telepítése sikerült | Mennyiség | A sikeres modell-telepítések száma. |
-| A modell regisztrálása nem sikerült | Mennyiség | A sikertelen modell-regisztrációk száma. |
-| A modell regisztrálása sikerült | Mennyiség | A sikeres modell-regisztrációk száma. |
+| A modell üzembe helyezése nem sikerült | Darabszám | A sikertelen telepítési modellek száma. |
+| A modell üzembe helyezése elindult | Darabszám | A modell központi telepítésének száma megkezdődött. |
+| A modell telepítése sikerült | Darabszám | A sikeres modell-telepítések száma. |
+| A modell regisztrálása nem sikerült | Darabszám | A sikertelen modell-regisztrációk száma. |
+| A modell regisztrálása sikerült | Darabszám | A sikeres modell-regisztrációk száma. |
 
 **Kvóta**
 
@@ -142,19 +142,19 @@ A kvóta adatai csak Azure Machine Learning számítási feladatokhoz használha
 
 | Metrika | Unit (Egység) | Leírás |
 | ----- | ----- | ----- |
-| Aktív magok | Mennyiség | Az aktív számítási magok száma. |
-| Aktív csomópontok | Mennyiség | Az aktív csomópontok száma. |
-| Üresjárati magok | Mennyiség | Az üresjáratban lévő számítási magok száma. |
-| Tétlen csomópontok | Mennyiség | Az üresjáratban lévő számítási csomópontok száma. |
-| Magok kihagyása | Mennyiség | A magok elhagyásának száma. |
-| Csomópontok elhagyása | Mennyiség | A csomópontok elhagyásának száma. |
-| Előzik magok | Mennyiség | A előzik magok száma. |
-| Előzik-csomópontok | Mennyiség | A előzik-csomópontok száma. |
+| Aktív magok | Darabszám | Az aktív számítási magok száma. |
+| Aktív csomópontok | Darabszám | Az aktív csomópontok száma. |
+| Üresjárati magok | Darabszám | Az üresjáratban lévő számítási magok száma. |
+| Tétlen csomópontok | Darabszám | Az üresjáratban lévő számítási csomópontok száma. |
+| Magok kihagyása | Darabszám | A magok elhagyásának száma. |
+| Csomópontok elhagyása | Darabszám | A csomópontok elhagyásának száma. |
+| Előzik magok | Darabszám | A előzik magok száma. |
+| Előzik-csomópontok | Darabszám | A előzik-csomópontok száma. |
 | Kvóta kihasználtsága (%) | Százalék | A felhasznált kvóta százalékaránya. |
-| Összes mag | Mennyiség | A magok teljes száma. |
-| Csomópontok összesen | Mennyiség | Az összes csomópont. |
-| Használhatatlan magok | Mennyiség | A használhatatlan magok száma. |
-| Használhatatlan csomópontok | Mennyiség | A használhatatlan csomópontok száma. |
+| Összes mag | Darabszám | A magok teljes száma. |
+| Csomópontok összesen | Darabszám | Az összes csomópont. |
+| Használhatatlan magok | Darabszám | A használhatatlan magok száma. |
+| Használhatatlan csomópontok | Darabszám | A használhatatlan csomópontok száma. |
 
 A kvóta metrikáinak szűrésére a következő dimenziók használhatók:
 
@@ -170,9 +170,9 @@ A képzések futtatásával kapcsolatos információk.
 
 | Metrika | Unit (Egység) | Leírás |
 | ----- | ----- | ----- |
-| Befejezett futtatások | Mennyiség | A befejezett futtatások száma. |
-| Sikertelen futtatások | Mennyiség | A sikertelen futtatások száma. |
-| Elindított futtatások | Mennyiség | Az elindított futtatások száma. |
+| Befejezett futtatások | Darabszám | A befejezett futtatások száma. |
+| Sikertelen futtatások | Darabszám | A sikertelen futtatások száma. |
+| Elindított futtatások | Darabszám | Az elindított futtatások száma. |
 
 A következő méretek használhatók a futtatási metrikák szűréséhez:
 

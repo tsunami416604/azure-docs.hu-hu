@@ -1,18 +1,18 @@
 ---
-title: A képek partnerének integrációja
+title: Képalkotási partner integrációja
 description: A képekkel kapcsolatos partneri integráció ismertetése
 author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 2b15cc56cb4f804fac0b047819ccf166950e1cf3
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 232ade55350ad1ac85612cf8c69117c19cb20d0c
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73890973"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73927795"
 ---
-# <a name="imagery-partner-integration"></a>A képek partnerének integrációja
+# <a name="imagery-partner-integration"></a>Képalkotási partner integrációja
 
 Ez a cikk azt ismerteti, hogyan lehet az Azure FarmBeats Translator összetevő használatával képeket küldeni a FarmBeats. A mezőgazdaságban található képek különböző forrásokból származnak, többek között a többspektrumos fényképezőgépektől, a műholdaktól és a heréktől. A mezőgazdasági képképekkel rendelkező partnerek a FarmBeats integrálva biztosíthatják ügyfeleiknek a saját farmokhoz tartozó egyéni leképezéseket.
 
@@ -97,7 +97,7 @@ Igény szerint a lekérdezési paramétereket is megadhatja a szűréshez, korl�
 
 Az alábbi példa az eszközök listájának beszerzésére szolgál:
 
-```azurepowershell-interactive
+```bash
 curl -X GET "https://microsoft-farmbeats.azurewebsites.net/Device" -H
 "Content-Type: application/json" -H
 "Authorization: Bearer <Access-Token>”
@@ -108,7 +108,7 @@ A legtöbb GET, POST és PUT híváshoz JSON-kérést tartalmazó törzs szüks�
 Az alábbi példa egy eszköz létrehozását mutatja be (ez egy bemeneti JSON-t tartalmaz a kérés törzsével).
 
 
-```azurepowershell-interactive
+```bash
 curl -X POST "https://microsoft-farmbeats.azurewebsites.net/Device" -H  
 "accept: application/json" -H  
 "Content-Type: application/json" -H "Authorization: Bearer <Access-Token>" -d
@@ -326,6 +326,7 @@ A rendszer által definiált értékek a következők:
   ]
 }
 ```
+
 Ez egy egyszeri beállítás lesz, és az új scenetype hatóköre arra az előfizetésre korlátozódik, amelyben a FarmBeats-projekt telepítve van.
 
 Példa: a "SlantRange" SceneSource hozzáadásához tegye a/ExtendedType AZONOSÍTÓját a következő kulccsal: "SceneSource" bemeneti hasznos adat:
@@ -485,6 +486,6 @@ API-Válasz:
 A/SceneFile API-hoz intézett post hívása egy SAS-feltöltési URL-címet ad vissza, amellyel feltöltheti a CSV-vagy TIFF-fájlt az Azure Blob Storage ügyfél/könyvtár használatával.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a REST API-alapú integráció részleteiről: [REST API](references-for-farmbeats.md#rest-api).

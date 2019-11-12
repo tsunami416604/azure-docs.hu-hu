@@ -1,5 +1,5 @@
 ---
-title: Oktatóanyag – geo-replikált Docker-beállításjegyzék létrehozása az Azure-ban
+title: Oktatóanyag – földrajzilag replikált Azure Container Registry létrehozása
 description: Létrehozhat egy Azure Container Registryt, georeplikációt konfigurálhat, előkészíthet egy Docker-rendszerképet, és üzembe helyezheti azt a tárolójegyzékben. Ez egy háromrészes sorozat első része.
 services: container-registry
 author: dlepow
@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 04/30/2017
 ms.author: danlep
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 87746bd39e624699612bf5221258ad757cd462b3
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 5a2aedfe93aa27f839c416c27ac028db1e650295
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68309586"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73931357"
 ---
 # <a name="tutorial-prepare-a-geo-replicated-azure-container-registry"></a>Oktatóanyag: Georeplikált Azure Container Registry előkészítése
 
@@ -42,7 +42,7 @@ Az Azure Cloud Shell nem tartalmazza a jelen oktatóanyag lépéseinek elvégzé
 
 ## <a name="create-a-container-registry"></a>Tároló-beállításjegyzék létrehozása
 
-Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
+Bejelentkezés az [Azure Portalra](https://portal.azure.com).
 
 Válassza az **Erőforrás létrehozása** > **Tárolók** > **Azure Container Registry** elemet.
 
@@ -50,7 +50,7 @@ Válassza az **Erőforrás létrehozása** > **Tárolók** > **Azure Container R
 
 Konfigurálja az új tárolójegyzéket a következő beállításokkal:
 
-* **Beállításjegyzék neve**: Hozzon létre egy globálisan egyedi beállításjegyzék-nevet az Azure-on belül, és 5-50 alfanumerikus karaktereket tartalmaz
+* **Regisztrációs adatbázis neve**: Olyan nevet hozzon létre a tárolójegyzékhez, amely globálisan egyedi az Azure-ban, és 5–50 alfanumerikus karakterből áll.
 * **Erőforráscsoport**: **Új létrehozása** > `myResourceGroup`
 * **Hely**: `West US`
 * **Rendszergazdai felhasználó**: `Enable` (a Web App for Containershez szükséges, a rendszerképek lekéréséhez)
@@ -111,13 +111,13 @@ git clone https://github.com/Azure-Samples/acr-helloworld.git
 cd acr-helloworld
 ```
 
-Ha nincs `git` telepítve, a zip-archívumot közvetlenül a githubról [töltheti le][acr-helloworld-zip] .
+Ha nincs `git` telepítve, közvetlenül a GitHubról [töltheti le a zip-archívumot][acr-helloworld-zip] .
 
 ## <a name="update-dockerfile"></a>A Dockerfile frissítése
 
 A mintában szereplő Dockerfile bemutatja a tároló összeállításának menetét. Egy hivatalos [aspnetcore][dockerhub-aspnetcore]-rendszerképből indul ki, a tárolóba másolja az alkalmazásfájlokat, telepíti a függőségeket, összeállítja a hivatalos [aspnetcore-build][dockerhub-aspnetcore-build]-rendszerképet, és végül egy optimalizált aspnetcore-rendszerképet hoz létre.
 
-A [Docker][dockerfile] a klónozott forrásban található `./AcrHelloworld/Dockerfile` .
+A [Docker][dockerfile] a klónozott forrás `./AcrHelloworld/Dockerfile` található.
 
 ```Dockerfile
 FROM microsoft/aspnetcore:2.0 AS base
@@ -210,7 +210,7 @@ Ezután a `docker push` paranccsal küldje le az *acr-helloworld*-rendszerképet
 docker push <acrName>.azurecr.io/acr-helloworld:v1
 ```
 
-Mivel georeplikációhoz konfigurálta a tárolójegyzéket, a rendszerkép ezzel az egy `docker push` paranccsal automatikusan replikálva lesz az *USA nyugati régióján* és az *USA keleti régióján* is.
+Mivel georeplikációhoz konfigurálta a tárolójegyzéket, a rendszerkép ezzel az egy *paranccsal automatikusan replikálva lesz az*USA nyugati régióján*és az*USA keleti régióján`docker push` is.
 
 ```console
 $ docker push uniqueregistryname.azurecr.io/acr-helloworld:v1
@@ -225,7 +225,7 @@ a75caa09eb1f: Pushed
 v1: digest: sha256:0799014f91384bda5b87591170b1242bcd719f07a03d1f9a1ddbae72b3543970 size: 1792
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban létrehozott egy privát, georeplikált tárolójegyzéket, felépített egy tárolórendszerképet, majd ezt a rendszerképet leküldte a tárolójegyzékbe.
 

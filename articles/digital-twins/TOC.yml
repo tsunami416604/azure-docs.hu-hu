@@ -67,8 +67,6 @@
           href: how-to-navigate-apis.md
         - name: Gyakori lekérdezési minták
           href: how-to-query-common-apis.md
-    - name: Az alkalmazás regisztrálása a régi AAD-ben
-      href: how-to-use-legacy-aad.md
 - name: Referencia
   items:
     - name: Felhasználó által meghatározott függvények ügyfélkódtára

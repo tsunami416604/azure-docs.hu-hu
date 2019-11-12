@@ -9,12 +9,12 @@ manager: cgronlund
 ms.custom: include file
 ms.topic: include
 ms.date: 10/04/2019
-ms.openlocfilehash: c1f4b3d60c0b8af96d851ce54c2aac57c76335a7
-ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
+ms.openlocfilehash: b44d624db419919823ec85bcb599007fb75c92b9
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73633678"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73929628"
 ---
 1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com/) az Azure-előfizetéséhez tartozó hitelesítő adatok használatával. 
 
@@ -32,15 +32,15 @@ ms.locfileid: "73633678"
 
    Mező|Leírás 
    ---|---
-   Munkaterület neve |Adjon meg egy egyedi nevet, amely azonosítja a munkaterületet. Ebben a példában a **docs-ws-** t használjuk. A névnek egyedinek kell lennie az erőforráscsoport között. Használjon könnyen felhívható nevet, és a mások által létrehozott munkaterületek megkülönböztetését.  
-   Előfizetés |Válassza ki a használni kívánt Azure-előfizetést.
+   Munkaterület neve |Adjon meg egy egyedi nevet, amely azonosítja a munkaterületet. Ebben a példában a **docs-ws-** t használjuk. A névnek egyedinek kell lennie az erőforráscsoport között. Használjon könnyen felhívható nevet, és a mások által létrehozott munkaterületek megkülönböztetését. 
+   Előfizetést |Válassza ki a használni kívánt Azure-előfizetést.
    Erőforráscsoport | Használjon egy meglévő erőforráscsoportot az előfizetésben, vagy adjon meg egy nevet egy új erőforráscsoport létrehozásához. Egy erőforráscsoport kapcsolódó erőforrásokat tárol egy Azure-megoldáshoz. Ebben a példában a **docs-pénzmosást**használjuk. 
    Hely | Válassza ki a felhasználókhoz legközelebb eső helyet, valamint az adatforrásokat a munkaterület létrehozásához.
-   Munkaterület kiadása | Válassza a **vállalat**lehetőséget.  Ez az oktatóanyag az Enterprise Edition használatát igényli.  Az Enterprise Edition előzetes verzióban érhető el, és jelenleg nem vesz fel további költségeket.  
+   Munkaterület kiadása | Válassza a **vállalat**lehetőséget. Ez az oktatóanyag az Enterprise Edition használatát igényli. Az Enterprise Edition előzetes verzióban érhető el, és jelenleg nem vesz fel további költségeket. 
 
 1. Miután befejezte a munkaterület konfigurálását, válassza a **Létrehozás**lehetőséget. 
 
-   > [!Warning] 
+   > [!WARNING] 
    > Több percet is igénybe vehet, hogy a munkaterületet a felhőben hozza létre.
 
    Ha a folyamat elkészült, megjelenik egy központi telepítés sikerességét jelző üzenet. 

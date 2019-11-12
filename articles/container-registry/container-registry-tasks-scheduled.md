@@ -1,6 +1,6 @@
 ---
 title: Azure Container Registry feladatok ütemezett végrehajtása
-description: Időzítő beállítása egy Azure Container Registry feladat futtatásához meghatározott ütemterven.
+description: Megtudhatja, hogyan futtathat egy Azure Container Registry feladatot meghatározott ütemterven egy vagy több időzítő-eseményindító beállításával
 services: container-registry
 author: dlepow
 manager: gwallace
@@ -8,12 +8,12 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 06/27/2019
 ms.author: danlep
-ms.openlocfilehash: a4a1099d90b619be383d440067a692c51a2430ac
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: 6272b5467aff10171814152eb4188554a22c7a51
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69509073"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73931468"
 ---
 # <a name="run-an-acr-task-on-a-defined-schedule"></a>ACR-feladat futtatása meghatározott ütemterven
 
@@ -31,16 +31,16 @@ Az Azure CLI Azure Cloud Shell vagy helyi telepítését használhatja a cikkben
 
 * **Trigger a cron kifejezéssel** – a feladatok időzítő triggere cron- *kifejezést*használ. A kifejezés egy öt mezőt tartalmazó karakterlánc, amely a feladat elindításához a percet, az órát, a napot, a hónapot és a hét napját adja meg. A percenkénti gyakoriságok támogatottak.
 
-  A kifejezés `"0 12 * * Mon-Fri"` például elindít egy feladatot a nap minden napján, UTC órakor. A [részleteket](#cron-expressions) a cikk későbbi részében találja.
+  Az `"0 12 * * Mon-Fri"` kifejezés például az egyes munkanapokon a (z) (UTC) időpontban indítja el a feladatot. A [részleteket](#cron-expressions) a cikk későbbi részében találja.
 * **Több időzítő eseményindító** – több időzítő hozzáadása egy feladathoz, ha az ütemtervek eltérnek.
     * A feladat létrehozásakor több időzítő eseményindítót adjon meg, vagy később adja hozzá őket.
     * Szükség esetén megadhatja az eseményindítókat az egyszerűbb kezelés érdekében, vagy az ACR-feladatok alapértelmezett eseményindító-neveket biztosítanak.
     * Ha az időzítő ütemezése egyszerre van átfedésben, az ACR-feladatok minden időzítő esetében az ütemezett időpontban indítja el a feladatot.
-* **Egyéb feladat** -eseményindítók – egy időzítő által aktivált feladatban engedélyezheti az eseményindítókat a [forráskód](container-registry-tutorial-build-task.md) -véglegesítő vagy az alaprendszerkép [frissítései](container-registry-tutorial-base-image-update.md)alapján is. Más ACR-feladatokhoz hasonlóan [manuálisan][az-acr-task-run] is aktiválhat egy ütemezett feladatot.
+* **Egyéb feladat-eseményindítók** – egy időzítő által aktivált feladatban engedélyezheti az eseményindítókat a [forráskód-véglegesítő](container-registry-tutorial-build-task.md) vagy az [alaprendszerkép frissítései](container-registry-tutorial-base-image-update.md)alapján is. Más ACR-feladatokhoz hasonlóan [manuálisan is aktiválhat][az-acr-task-run] egy ütemezett feladatot.
 
 ## <a name="create-a-task-with-a-timer-trigger"></a>Feladat létrehozása időzítő-triggerrel
 
-Amikor az [az ACR Task Create][az-acr-task-create] paranccsal hoz létre egy feladatot, lehetősége van egy időzítő-trigger hozzáadására. Adja hozzá `--schedule` a paramétert, és adjon meg egy cron-kifejezést az időzítőhöz.
+Amikor az [az ACR Task Create][az-acr-task-create] paranccsal hoz létre egy feladatot, lehetősége van egy időzítő-trigger hozzáadására. Adja hozzá a `--schedule` paramétert, és adjon meg egy cron-kifejezést az időzítőhöz.
 
 Egyszerű példaként a következő parancs elindítja a `hello-world` rendszerképet a Docker hub-ból minden nap 21:00 UTC időpontban. A feladat forráskód-környezet nélkül fut.
 
@@ -170,17 +170,17 @@ Az ACR-feladatok a [NCronTab](https://github.com/atifaziz/NCrontab) könyvtár h
 A cron-kifejezésekkel használt időzóna egyezményes világidő (UTC) szerint van megadva. Az órák 24 órás formátumban jelennek meg.
 
 > [!NOTE]
-> Az ACR-feladatok nem támogatják `{second}` a `{year}` cron-kifejezésekben szereplő vagy a mezőt. Ha egy másik rendszeren használt cron-kifejezést másol, ne felejtse el eltávolítani ezeket a mezőket, ha azok használatban vannak.
+> Az ACR-feladatok nem támogatják a `{second}` vagy `{year}` mezőt a cron-kifejezésekben. Ha egy másik rendszeren használt cron-kifejezést másol, ne felejtse el eltávolítani ezeket a mezőket, ha azok használatban vannak.
 
 Minden mezőhöz a következő típusú értékek tartozhatnak:
 
-|Type  |Példa  |Aktiváláskor  |
+|Típus  |Példa  |Aktiváláskor  |
 |---------|---------|---------|
 |Egy adott érték |<nobr>`"5 * * * *"`</nobr>|minden órában, 5 perccel az óra múltán|
 |Minden érték (`*`)|<nobr>`"* 5 * * *"`</nobr>|az óra 5:00 UTC-től számított percenként (naponta 60 alkalommal)|
 |Tartomány (`-` operátor)|<nobr>`"0 1-3 * * *"`</nobr>|naponta 3 alkalommal, 1:00, 2:00 és 3:00 UTC|
 |Értékek halmaza (`,` operátor)|<nobr>`"20,30,40 * * * *"`</nobr>|óránként 3 alkalommal, 20 perc, 30 perc és 40 perccel elmúlt|
-|Intervallum értéke (`/` operátor)|<nobr>`"*/10 * * * *"`</nobr>|óránként 6 alkalommal, 10 perc, 20 perc és így tovább, az óra vége
+|Intervallum érték (`/` operátor)|<nobr>`"*/10 * * * *"`</nobr>|óránként 6 alkalommal, 10 perc, 20 perc és így tovább, az óra vége
 
 [!INCLUDE [functions-cron-expressions-months-days](../../includes/functions-cron-expressions-months-days.md)]
 
@@ -197,11 +197,11 @@ Minden mezőhöz a következő típusú értékek tartozhatnak:
 |`"30 9 * Jan Mon"`|Január 9:30-kor, minden hétfőn|
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Ha például egy ütemezett feladatot szeretne használni a beállításjegyzékben lévő adattárak törléséhez, olvassa el a lemezképek automatikus kitakarítása [Azure Container registryből](container-registry-auto-purge.md)című témakört.
+Ha például egy ütemezett feladatot szeretne használni a beállításjegyzékben lévő adattárak törléséhez, olvassa el a [lemezképek automatikus kitakarítása Azure Container registryből](container-registry-auto-purge.md)című témakört.
 
-A forráskód-végrehajtás vagy az alaprendszerkép frissítései által aktivált feladatok esetében tekintse meg az ACR- [feladatok oktatóanyag](container-registry-tutorial-quick-task.md)-sorozatát.
+A forráskód-végrehajtás vagy az alaprendszerkép frissítései által aktivált feladatok esetében tekintse meg az ACR- [feladatok oktatóanyag-sorozatát](container-registry-tutorial-quick-task.md).
 
 
 

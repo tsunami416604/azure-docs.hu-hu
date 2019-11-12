@@ -8,43 +8,18 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 0b40c15956dc03209dcab49641af66bc8ae24187
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: 6e3118814eacc6cc63b5db59bd7f1877c1d347dc
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70845322"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73927291"
 ---
 # <a name="configure-a-high-availability-connection-from-on-premises-to-cloudsimple-vpn-gateway"></a>Magas rendelkezésre állású kapcsolat konfigurálása a helyszínről a VPN Gateway CloudSimple
 
 A hálózati rendszergazdák magas rendelkezésre állású IPsec helyek közötti VPN-kapcsolatokat konfigurálhatják a helyszíni környezetből egy CloudSimple VPN-átjáróra.
 
-Ez az útmutató ismerteti a helyszíni tűzfal konfigurálásának lépéseit az IPsec-helyek közötti VPN magas rendelkezésre állási kapcsolatához. A részletes lépések a helyszíni tűzfal típusától függenek. Példaként ez az útmutató két típusú tűzfal lépéseit mutatja be: Cisco ASA-és Palo Alto-hálózatok.
-
-## <a name="default-configuration-for-cloudsimple-vpn-gateways"></a>CloudSimple VPN-átjárók alapértelmezett konfigurációja
-
-Alapértelmezés szerint a CloudSimple VPN-átjárók IKEv1 módban vannak konfigurálva, a következő 1. és 2. fázis attribútumokkal együtt. Ha más VPN-attribútumokat kíván használni, vagy a IKEV1 helyett a IKEv2-t használja, <a href="https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest" target="_blank">Nyisson meg egy támogatási kérést</a>.
-
-### <a name="phase-1"></a>1\. fázis
-
-| Paraméter | Value |
-|-----------|-------|
-| IKE verziószám | IKEv1 |
-| Encryption | AES 256 |
-| Kivonatoló algoritmus| SHA 256 |
-| Diffie Hellman-csoport (DH-csoport) | 1 |
-| Üzemidő | 86 400 másodperc |
-| Adatok mérete | 4 GB |
-
-### <a name="phase-2"></a>2\. fázis
-
-| Paraméter | Value |
-|-----------|-------|
-| Encryption | AES 256 |
-| Kivonatoló algoritmus| SHA 256 |
-| Tökéletes továbbítási titoktartási csoport (PFS-csoport) | Nincsenek |
-| Üzemidő | 28 800 másodperc |
-| Adatok mérete | 4 GB |
+Ez az útmutató ismerteti a helyszíni tűzfal konfigurálásának lépéseit az IPsec-helyek közötti VPN magas rendelkezésre állási kapcsolatához. A részletes lépések a helyszíni tűzfal típusától függenek. Példaként ez az útmutató a következő két típusú tűzfalat ismerteti: Cisco ASA és Palo Alto Networks.
 
 ## <a name="before-you-begin"></a>Előkészületek
 
@@ -53,13 +28,15 @@ A helyszíni tűzfal konfigurálása előtt végezze el a következő feladatoka
 1. Ellenőrizze, hogy a szervezet [kiosztotta-e a szükséges](create-nodes.md) csomópontokat, és létrehozott-e legalább egy CloudSimple privát felhőt.
 2. [Konfiguráljon egy helyek közötti VPN-átjárót](vpn-gateway.md#set-up-a-site-to-site-vpn-gateway) a helyszíni hálózat és a CloudSimple privát felhője között.
 
+Lásd: a [VPN-átjárók áttekintése](cloudsimple-vpn-gateways.md) az 1. és a 2. fázisra vonatkozó támogatottak.
+
 ## <a name="configure-on-premises-cisco-asa-firewall"></a>Helyszíni Cisco ASA-tűzfal konfigurálása
 
 Az ebben a szakaszban szereplő utasítások a Cisco ASA 8,4-es vagy újabb verziójára vonatkoznak. A konfigurációs példában a Cisco adaptív biztonsági berendezés szoftverének 9,10-es verziója IKEv1 módban van telepítve és konfigurálva.
 
 Ahhoz, hogy a helyek közötti VPN működjön, engedélyeznie kell az UDP 500/4500 és az ESP (IP protokoll 50) szolgáltatást a CloudSimple elsődleges és másodlagos nyilvános IP-címéről (társ IP) a helyszíni Cisco ASA VPN-átjáró külső felületén.
 
-### <a name="1-configure-phase-1-ikev1"></a>1. 1. fázis (IKEv1) konfigurálása
+### <a name="1-configure-phase-1-ikev1"></a>1. az 1. fázis konfigurálása (IKEv1)
 
 Ha engedélyezni szeretné az 1. fázist (IKEv1) a külső felületen, adja meg a következő CLI-parancsot a Cisco ASA-tűzfalon.
 
@@ -78,7 +55,7 @@ group 2
 lifetime 28800
 ```
 
-### <a name="3-create-a-tunnel-group"></a>3. Bújtatási csoport létrehozása
+### <a name="3-create-a-tunnel-group"></a>3. bújtatási csoport létrehozása
 
 Hozzon létre egy bújtatási csoportot az IPsec-attribútumok alatt. Konfigurálja a társ IP-címet és a bújtatás előtti előmegosztott kulcsot, amelyet [a helyek közötti VPN-átjáró konfigurálásakor](vpn-gateway.md#set-up-a-site-to-site-vpn-gateway)állított be.
 
@@ -92,7 +69,7 @@ tunnel-group <secondary peer ip> ipsec-attributes
 ikev1 pre-shared-key *****
 ```
 
-### <a name="4-configure-phase-2-ipsec"></a>4. 2. fázis (IPsec) konfigurálása
+### <a name="4-configure-phase-2-ipsec"></a>4. a 2. fázis (IPsec) konfigurálása
 
 A 2. fázis (IPsec) konfigurálásához hozzon létre egy hozzáférés-vezérlési listát (ACL), amely meghatározza a titkosítani kívánt forgalmat és a bújtatást. A következő példában az adatforgalom a helyszíni helyi alhálózatból (10.16.1.0/24) származó, a saját Felhőbeli távoli alhálózatra (192.168.0.0/24) forrású alagútból származik. Az ACL több bejegyzést is tartalmazhat, ha több alhálózat található a helyek között.
 
@@ -118,15 +95,15 @@ subnet 192.168.0.0 255.255.255.0
 access-list ipsec-acl extended permit ip object AZ_inside object CS_inside
 ```
 
-### <a name="5-configure-the-transform-set"></a>5. Az átalakítási készlet konfigurálása
+### <a name="5-configure-the-transform-set"></a>5. Állítsa be az átalakító készletet
 
-Konfigurálja az átalakítási készletet (TS), amelynek tartalmaznia kell ```ikev1```a kulcsszót. A TS-ben megadott titkosítási és kivonatoló attribútumoknak meg kell egyezniük a [CloudSimple VPN-átjárók alapértelmezett konfigurációjában](#default-configuration-for-cloudsimple-vpn-gateways)felsorolt paraméterekkel.
+Konfigurálja az átalakítási készletet (TS), amelynek tartalmaznia kell a kulcsszót ```ikev1```. A TS-ben megadott titkosítási és kivonatoló attribútumoknak meg kell egyezniük a [CloudSimple VPN-átjárók alapértelmezett konfigurációjában](cloudsimple-vpn-gateways.md)felsorolt paraméterekkel.
 
 ```
 crypto ipsec ikev1 transform-set devtest39 esp-aes-256 esp-sha-hmac 
 ```
 
-### <a name="6-configure-the-crypto-map"></a>6. A kriptográfiai Térkép konfigurálása
+### <a name="6-configure-the-crypto-map"></a>6. a kriptográfiai Térkép konfigurálása
 
 Konfigurálja a titkosítási térképet, amely a következő összetevőket tartalmazza:
 
@@ -140,13 +117,13 @@ crypto map mymap 1 match address ipsec-acl
 crypto map mymap 1 set ikev1 transform-set devtest39
 ```
 
-### <a name="7-apply-the-crypto-map"></a>7. A kriptográfiai Térkép alkalmazása
+### <a name="7-apply-the-crypto-map"></a>7. a titkosítási Térkép alkalmazása
 
 A kriptográfiai Térkép alkalmazása a külső felületen:
 
 ```crypto map mymap interface outside```
 
-### <a name="8-confirm-applicable-nat-rules"></a>8. A vonatkozó NAT-szabályok megerősítése
+### <a name="8-confirm-applicable-nat-rules"></a>8. a vonatkozó NAT-szabályok megerősítése
 
 Az alábbiakban a használt NAT-szabály szerepel. Győződjön meg arról, hogy a VPN-forgalom nem tartozik más NAT-szabályhoz.
 
@@ -168,27 +145,27 @@ Az ebben a szakaszban szereplő utasítások a Palo Alto Networks 7,1-es és új
 
 Ahhoz, hogy a helyek közötti VPN működjön, engedélyeznie kell az UDP 500/4500 és az ESP (IP protokoll 50) szolgáltatást a CloudSimple elsődleges és másodlagos nyilvános IP-címéről (társ IP) a helyszíni Palo Alto Networks Gateway külső felületén.
 
-### <a name="1-create-primary-and-secondary-tunnel-interfaces"></a>1. Elsődleges és másodlagos bújtatási felületek létrehozása
+### <a name="1-create-primary-and-secondary-tunnel-interfaces"></a>1. elsődleges és másodlagos bújtatási felületek létrehozása
 
-Jelentkezzen be a Palo Alto-tűzfalba, válassza a **hálózati** > **adapterek** > **alagút** > **hozzáadása**lehetőséget, konfigurálja a következő mezőket, majd kattintson **az OK**gombra.
+Jelentkezzen be a Palo Alto Firewall-be, válassza a **hálózati** > **felületek** > **Tunnel** > **Hozzáadás**lehetőséget, konfigurálja a következő mezőket, majd kattintson **az OK**gombra.
 
 * A csatoló neve. Az első mező automatikusan fel van töltve a "Tunnel" kulcsszóval. A szomszédos mezőbe írjon be egy 1 és 9999 közötti számot. Ez az interfész elsődleges bújtatási felületként használható a helyszíni adatközpont és a privát felhő közötti helyek közötti adatforgalom továbbítására.
 * Megjegyzés. Adja meg a megjegyzéseket az alagút céljának egyszerű azonosításához
 * Netflow-profil. Hagyja meg az alapértelmezett értéket.
-* Config. Kapcsolat társítása a következőhöz: Virtuális útválasztó: Válassza az **alapértelmezett**lehetőséget. 
-        Biztonsági zóna: Válassza ki a megbízható helyi hálózati forgalom zónáját. Ebben a példában a LAN-forgalomhoz tartozó zóna neve "Trust".
+* Config. Kapcsolat társítása a következőhöz: Virtual router: válassza az **alapértelmezett**lehetőséget. 
+        Biztonsági zóna: válassza ki a zónát a megbízható helyi hálózati forgalomhoz. Ebben a példában a LAN-forgalomhoz tartozó zóna neve "Trust".
 * IPv4. Kattintson a **Hozzáadás** gombra, és adja hozzá a nem egymást átfedő fel nem használt/32 IP-címet a környezetben, amely az elsődleges alagút felületéhez lesz rendelve, és a rendszer az alagutak figyelésére fogja használni (ezt később ismertetjük).
 
-Mivel ez a konfiguráció magas rendelkezésre állású VPN-hez készült, két bújtatási csatolóra van szükség: Egy elsődleges és egy másodlagos. A másodlagos alagút felületének létrehozásához ismételje meg az előző lépéseket. Válasszon másik bújtatási azonosítót és egy másik használaton kívüli/32 IP-címet.
+Mivel ez a konfiguráció magas rendelkezésre állású VPN-hez készült, két bújtatási csatolóra van szükség: egy elsődleges és egy másodlagos. A másodlagos alagút felületének létrehozásához ismételje meg az előző lépéseket. Válasszon másik bújtatási azonosítót és egy másik használaton kívüli/32 IP-címet.
 
-### <a name="2-set-up-static-routes-for-private-cloud-subnets-to-be-reached-over-the-site-to-site-vpn"></a>2. Statikus útvonalak beállítása a saját Felhőbeli alhálózatok számára a helyek közötti VPN eléréséhez
+### <a name="2-set-up-static-routes-for-private-cloud-subnets-to-be-reached-over-the-site-to-site-vpn"></a>2. statikus útvonalak beállítása a saját Felhőbeli alhálózatok számára a helyek közötti VPN eléréséhez
 
 Útvonalak szükségesek ahhoz, hogy a helyszíni alhálózatok CloudSimple a saját felhőalapú alhálózatok eléréséhez.
 
-Válassza a **hálózati** > **virtuális útválasztók** > *alapértelmezett* > **statikus útvonalak**hozzáadása lehetőséget, konfigurálja a következő mezőket, majd kattintson az > OK gombra.
+Válassza a **hálózati** > **virtuális útválasztók** > *alapértelmezett* > **statikus útvonalak** > **Hozzáadás**lehetőséget, konfigurálja a következő mezőket, majd kattintson **az OK**gombra.
 
 * név. Adja meg az útvonal céljának egyszerű azonosítására szolgáló nevet.
-* Cél. Adja meg az CloudSimple saját Felhőbeli alhálózatait, hogy elérhetők legyenek a helyszíni S2S-alagutakon.
+* Cél. Adja meg az CloudSimple saját Felhőbeli alhálózatait, hogy elérhetők legyenek a helyszíni S2S-alagutakon keresztül
 * Felület. Válassza ki az 1. lépésben (2. szakasz) a legördülő listából létrehozott elsődleges bújtatási felületet. Ebben a példában ez az alagút. 20.
 * Következő ugrás. Válassza a **nincs**lehetőséget.
 * Rendszergazdai távolság. Hagyja meg az alapértelmezett értéket.
@@ -199,11 +176,11 @@ Válassza a **hálózati** > **virtuális útválasztók** > *alapértelmezett* 
 
 Az előző lépések megismétlésével hozzon létre egy másik útvonalat a privát Felhőbeli alhálózatok számára másodlagos/biztonsági mentési útvonalként a másodlagos alagút felületén keresztül. Ezúttal válasszon másik bújtatási azonosítót és egy magasabb metrikát, mint az elsődleges útvonalhoz.
 
-### <a name="3-define-the-cryptographic-profile"></a>3. A titkosítási profil megadása
+### <a name="3-define-the-cryptographic-profile"></a>3. a titkosítási profil megadása
 
 Definiáljon egy titkosítási profilt, amely meghatározza a VPN-alagutak beállításához használt azonosítási, hitelesítési és titkosítási protokollokat és algoritmusokat az 1. IKEv1 fázisban.
 
-Válassza a **hálózat** > **kibontása hálózati profilok** > **IKE titkosítási** > **Hozzáadás**lehetőséget, konfigurálja a következő mezőket, majd kattintson **az OK**gombra.
+Válassza a **hálózati** > **bontsa ki a hálózati profilok** > **IKE-kriptográfia** > **Hozzáadás**lehetőséget, konfigurálja a következő mezőket, majd kattintson **az OK**gombra.
 
 * név. Adja meg az IKE titkosítási profil nevét.
 * DH-csoport. Kattintson a **Hozzáadás** gombra, és válassza ki a megfelelő DH-csoportot.
@@ -216,7 +193,7 @@ Válassza a **hálózat** > **kibontása hálózati profilok** > **IKE titkosít
 
 Adja meg az IKE-átjárókat a partnereknek a VPN-alagút egyes végpontján belüli kommunikációjának létrehozásához.
 
-Válassza a **hálózat** > **kibontása** > hálózatiprofilokIKE-átjárókHozzáadáslehetőséget,konfiguráljaakövetkezőmezőket,majdkattintsonazOK > gombra.
+Válassza **a hálózati** > **bontsa ki a hálózati profilok** > IKE- **átjárók** > **Hozzáadás**lehetőséget, konfigurálja a következő mezőket, majd kattintson **az OK**gombra.
 
 Általános lap:
 
@@ -247,7 +224,7 @@ Az előző lépések megismétlésével hozza létre a másodlagos IKE-átjáró
 
 ### <a name="5-define-ipsec-crypto-profiles"></a>5. IPSEC titkosítási profilok definiálása
 
-Válassza a **hálózat** > **kibontása hálózati profilok** > **IPSec-titkosítási** > **Hozzáadás**elemet, konfigurálja a következő mezőket, majd kattintson **az OK**gombra.
+Válassza a **hálózati** > a **hálózati profilok kibontása** > **IPSec-kriptográfia** > **Hozzáadás**lehetőséget, konfigurálja a következő mezőket, majd kattintson **az OK**gombra.
 
 * név. Adja meg az IPsec titkosítási profil nevét.
 * IPsec protokoll. Válassza az **ESP**lehetőséget.
@@ -259,24 +236,24 @@ Válassza a **hálózat** > **kibontása hálózati profilok** > **IPSec-titkos�
 
 Az előző lépések megismétlésével hozzon létre egy másik IPsec titkosítási profilt, amelyet a rendszer a másodlagos CloudSimple VPN-társként fog használni. Ugyanez az IPSEC-titkosítási profil is használható mind az elsődleges, mind a másodlagos IPsec-alagúthoz (lásd a következő eljárást).
 
-### <a name="6-define-monitor-profiles-for-tunnel-monitoring"></a>6. Figyelő profilok definiálása az alagút figyeléséhez
+### <a name="6-define-monitor-profiles-for-tunnel-monitoring"></a>6. a figyelési profilok definiálása az alagút figyeléséhez
 
-Válassza a **hálózat** > **kibontása hálózati profilok** > **figyelő** > **Hozzáadás**lehetőséget, konfigurálja a következő mezőket, majd kattintson **az OK**gombra.
+Válassza a **hálózati** > a **hálózati profilok kibontása** > **figyelő** > **Hozzáadás**lehetőséget, konfigurálja a következő mezőket, majd kattintson **az OK**gombra.
 
 * név. Adja meg annak a figyelő profilnak a nevét, amelyet a rendszer a hiba esetén a bújtatás figyeléséhez használ.
 * Művelet. Válassza a **feladatátvétel**lehetőséget.
 * Időköz. Adja meg a **3**értéket.
 * Küszöb. Adja meg a **7-es**értéket.
 
-### <a name="7-set-up-primary-and-secondary-ipsec-tunnels"></a>7. Elsődleges és másodlagos IPsec-alagutak beállítása.
+### <a name="7-set-up-primary-and-secondary-ipsec-tunnels"></a>7. Állítsa be az elsődleges és a másodlagos IPsec-alagutat.
 
-Válassza a **hálózati** > **IPSec-alagutak** > **Hozzáadás**lehetőséget, konfigurálja a következő mezőket, majd kattintson **az OK**gombra.
+Válassza a **hálózati** > **IPsec-alagutak** > **Hozzáadás**lehetőséget, konfigurálja a következő mezőket, majd kattintson **az OK**gombra.
 
 Általános lap:
 
 * név. Adja meg az elsődleges IPSEC-alagút nevét az elsődleges CloudSimple VPN-társsal való társításhoz.
 * Bújtatási interfész. Válassza ki az elsődleges bújtatási felületet.
-* Típusa. Hagyja meg az alapértelmezett értéket.
+* típusa. Hagyja meg az alapértelmezett értéket.
 * A címek típusa Válassza az **IPv4**elemet.
 * IKE-átjáró. Válassza ki az elsődleges IKE-átjárót.
 * IPsec titkosítási profil. Válassza ki az elsődleges IPsec-profilt. Válassza a **Speciális beállítások megjelenítése**lehetőséget.
@@ -286,7 +263,7 @@ Válassza a **hálózati** > **IPSec-alagutak** > **Hozzáadás**lehetőséget, 
 * Cél IP-címe. Adja meg a CloudSimple saját felhőalapú alhálózatához tartozó bármely IP-címet, amely a helyek közötti kapcsolaton keresztül engedélyezett. Győződjön meg arról, hogy az alagút interfészei (például a Tunnel. 20-10.64.5.2/32 és az Tunnel. 30-10.64.6.2/32) a Palo Alto-on keresztül elérhetők a CloudSimple privát felhő IP-címére a helyek közötti VPN-en keresztül. A proxy-azonosítókat a következő konfigurációban tekintheti meg.
 * Profil. Válassza ki a figyelő profilt.
 
-Proxy-azonosítók lap: Kattintson az **IPv4** > **Hozzáadás** lehetőségre, és konfigurálja a következőket:
+Proxy-azonosítók lap: kattintson az **IPv4** > a következők **hozzáadására** és konfigurálására:
 
 * Proxy azonosítója. Adja meg az érdekes forgalom nevét. Több proxy azonosító is szerepelhet egy IPsec-alagúton belül.
 * Helyi. Adja meg azokat a helyszíni helyi alhálózatokat, amelyek számára engedélyezett a magánhálózati Felhőbeli alhálózatokkal való kommunikáció a helyek közötti VPN-en keresztül.
@@ -311,7 +288,7 @@ Az IPsec helyek közötti VPN konfigurálása a Cisco ASA 8,4-es és újabb verz
 
 A Cisco adaptív biztonsági berendezés virtuális (ASAv) konfigurálása az Azure-on:
 
-<a href="https://www.cisco.com/c/en/us/td/docs/security/asa/asa96/asav/quick-start-book/asav-96-qsg/asav-azure.html" target="_blank">Cisco adaptív biztonsági virtuális berendezés (ASAv) Rövid útmutató</a>
+<a href="https://www.cisco.com/c/en/us/td/docs/security/asa/asa96/asav/quick-start-book/asav-96-qsg/asav-azure.html" target="_blank">A Cisco adaptív biztonsági virtuális berendezés (ASAv) rövid útmutatója</a>
 
 Helyek közötti VPN konfigurálása a Palo Alto proxy-azonosítókkal:
 

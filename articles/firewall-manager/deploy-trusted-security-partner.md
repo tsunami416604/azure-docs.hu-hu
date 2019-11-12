@@ -7,12 +7,12 @@ ms.service: firewall-manager
 ms.topic: conceptual
 ms.date: 10/25/2019
 ms.author: victorh
-ms.openlocfilehash: fe733b686f2b56beee26a6c33c4d6264d621e627
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: bcea9a8674e4b1979698b7d28eb4192172b0dc11
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73516343"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73931308"
 ---
 # <a name="deploy-a-trusted-security-partner-preview"></a>Megbízható biztonsági partner üzembe helyezése (előzetes verzió)
 
@@ -83,12 +83,11 @@ A virtuális központ VPN Gatewayhoz tartozó alagutak beállításához a harma
 
    > [!NOTE]
    > A részletesebb szabályozás érdekében korlátozhatja a hozzáférést csak az erőforráscsoporthoz.
-3. Kövesse az alábbi hivatkozás utasításait.
+3. Kövesse a [ZScaler: Microsoft Azure virtuális WAN-integrációs utasítások konfigurálása](https://help.zscaler.com/zia/configuring-microsoft-azure-virtual-wan-integration) a következőhöz:
 
-   - A partner portálra való bejelentkezéshez és a hitelesítő adatok hozzáadásához adja meg a megbízható partner hozzáférését a biztonságos hubhoz.
-   - Az Azure AD-hitelesítési hitelesítő adatok ellenőrzése után a következő útmutatást követve szinkronizálhatja a partner portálon található virtuális hubokat, és beállíthatja az alagutat a virtuális hubhoz.
-
-   [ZScaler: Microsoft Azure virtuális WAN-integráció konfigurálása](https://help.zscaler.com/zia/configuring-microsoft-azure-virtual-wan-integration)
+   - Jelentkezzen be a partner portálra, és adja meg a hitelesítő adatait, és adja meg a megbízható partner hozzáférését a biztonságos hubhoz.
+   - Szinkronizálja a virtuális hubokat a partner portálon, és állítsa be az alagutat a virtuális hubhoz. Ezt az Azure AD-hitelesítési hitelesítő adatok érvényesítése után teheti meg.
+   
 4. Az Azure-beli Azure Virtual WAN-portálon megtekintheti az alagút létrehozási állapotát. Miután az alagutak az Azure-ban és a partner portálon **is megjelennek, folytassa a következő** lépésekkel, hogy beállítsa az útvonalakat annak kiválasztásához, hogy mely ágakat és virtuális hálózatok kell elküldeni az internetes forgalomnak a partnernek.
 
 ## <a name="configure-route-settings"></a>Útvonal-beállítások konfigurálása
@@ -114,7 +113,7 @@ Ezt követően ellenőrizheti, hogy a VNet virtuális gépek vagy a fiókirodák
 
 Az útvonal-beállítás lépéseinek befejezése után a VNet virtuális gépek és a fiókirodák a 0/0-as vagy harmadik féltől származó szolgáltatási útvonalra kerülnek. Ezeket a virtuális gépeket nem lehet RDP-vagy SSH-kapcsolat. A bejelentkezéshez az [Azure Bastion](../bastion/bastion-overview.md) szolgáltatást egy társ VNet helyezheti üzembe.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Oktatóanyag: a felhőalapú hálózat védelme a Azure Firewall Manager előzetes verziójával a Azure Portal használatával](secure-cloud-network.md)
 

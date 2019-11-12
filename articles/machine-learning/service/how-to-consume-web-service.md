@@ -1,5 +1,5 @@
 ---
-title: Ügyfél létrehozása a telepített webszolgáltatás használatára
+title: Ügyfél létrehozása webszolgáltatásként üzembe helyezett modellhez
 titleSuffix: Azure Machine Learning
 description: Megtudhatja, hogyan használhat olyan webszolgáltatást, amely akkor jött létre, amikor egy modellt Azure Machine Learning modellel telepítettek. A webszolgáltatás REST API tesz elérhetővé. Hozzon létre ügyfeleket ehhez az API-hoz az Ön által választott programozási nyelv használatával.
 services: machine-learning
@@ -11,12 +11,12 @@ author: aashishb
 ms.reviewer: larryfr
 ms.date: 11/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: 387ba970aed68a5f4e682f932a362d3b04b35b8d
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 608f343166b528cacf3b1479d993466f6df7cb7e
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73671457"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73932164"
 ---
 # <a name="consume-an-azure-machine-learning-model-deployed-as-a-web-service"></a>Webszolgáltatásként üzembe helyezett Azure Machine Learning-modell felhasználása
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -79,7 +79,7 @@ A Azure Machine Learning két módszert biztosít a webszolgáltatásokhoz való
 
 |Hitelesítési módszer|ACI|AKS|
 |---|---|---|
-|Jelmagyarázat|Alapértelmezés szerint letiltva| Alapértelmezés szerint engedélyezve|
+|Paraméter|Alapértelmezés szerint letiltva| Alapértelmezés szerint engedélyezve|
 |Jogkivonat| Nincs| Alapértelmezés szerint letiltva |
 
 Egy kulccsal vagy jogkivonattal védett szolgáltatásnak küldött kérelem küldésekor az __engedélyezési__ fejléc használatával adja át a kulcsot vagy a jogkivonatot. A kulcsot vagy tokent `Bearer <key-or-token>`ként kell formázni, ahol a `<key-or-token>` a kulcs vagy a jogkivonat értéke.
@@ -499,6 +499,6 @@ Ha olyan webszolgáltatást szeretne előállítani, amelyet a Power BIban való
 
 A webszolgáltatás üzembe helyezése után Power BI adatfolyamok. [Megtudhatja, hogyan használhat Azure Machine learning webszolgáltatást Power BIból](https://docs.microsoft.com/power-bi/service-machine-learning-integration).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A Python és a Deep learning modellek valós idejű pontozására szolgáló hivatkozási architektúra megtekintéséhez nyissa meg az [Azure Architecture centert](/azure/architecture/reference-architectures/ai/realtime-scoring-python).

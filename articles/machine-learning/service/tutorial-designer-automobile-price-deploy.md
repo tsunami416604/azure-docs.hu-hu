@@ -1,7 +1,7 @@
 ---
 title: 'Oktatóanyag: gépi tanulási modell üzembe helyezése a tervezővel'
 titleSuffix: Azure Machine Learning
-description: Megtudhatja, hogyan hozhat létre prediktív elemzési megoldást Azure Machine Learning Designerben (előzetes verzió). Gépi tanulási modell betanítása, pontszáma és üzembe helyezése a drag and drop modulok használatával.
+description: Megtudhatja, hogyan hozhat létre prediktív elemzési megoldást Azure Machine Learning Designerben (előzetes verzió). A gépi tanulási modellek betanítása, pontszáma és üzembe helyezése drag-and-drop modulok használatával.
 author: peterclu
 ms.author: peterlu
 services: machine-learning
@@ -9,23 +9,23 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 11/04/2019
-ms.openlocfilehash: b5fa1557999ae851bccafbf8ee7c41f0b3614614
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 724a38cb516e5689f817e9ddeaa867b17274971b
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73715913"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73932042"
 ---
 # <a name="tutorial-deploy-a-machine-learning-model-with-the-designer-preview"></a>Oktatóanyag: gépi tanulási modell üzembe helyezése a Designerben (előzetes verzió)
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-enterprise-sku.md)]
 
-Az [oktatóanyag első részében](tutorial-designer-automobile-price-train-score.md) létrehozott prediktív modell üzembe helyezésével mások számára is lehetővé teheti a használatát. Az 1. részben betanítja a modellt. Most itt az ideje, hogy a felhasználói bevitel alapján új előrejelzéseket hozzon. Az oktatóanyag ezen részében a következőket fogja elsajátítani:
+Az [oktatóanyag első részében](tutorial-designer-automobile-price-train-score.md) létrehozott prediktív modell üzembe helyezésével mások számára is lehetővé teheti a használatát. Az első részben betanított egy modellt. Most itt az ideje, hogy a felhasználói bevitel alapján új előrejelzéseket hozzon. Az oktatóanyag ezen részében a következőket fogja elsajátítani:
 
 > [!div class="checklist"]
-> * Valós idejű következtetési folyamat létrehozása
-> * Következtetési fürt létrehozása
-> * Valós idejű végpont üzembe helyezése
-> * Valós idejű végpont tesztelése
+> * Valós idejű következtetési folyamat létrehozása.
+> * Hozzon létre egy következtetésben lévő fürtöt.
+> * A valós idejű végpont üzembe helyezése.
+> * Tesztelje a valós idejű végpontot.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -37,9 +37,9 @@ A folyamat üzembe helyezéséhez először át kell alakítania a betanítási 
 
 ### <a name="create-a-real-time-inference-pipeline"></a>Valós idejű következtetési folyamat létrehozása
 
-1. A folyamat fölötti vászonnál válassza a **következtetési folyamat létrehozása** > a **valós idejű következtetési folyamat** lehetőséget.
+1. A csővezeték fölött válassza a **következtetési folyamat létrehozása** > a **valós idejű következtetések folyamata**lehetőséget.
 
-    A folyamatnak most így kell kinéznie:  
+    A folyamatnak most így kell kinéznie: 
 
    ![Képernyőfelvétel a folyamat várható konfigurációjának megjelenítéséről az üzembe helyezés előkészítése után](./media/ui-tutorial-automobile-price-deploy/real-time-inference-pipeline.png)
 
@@ -48,13 +48,13 @@ A folyamat üzembe helyezéséhez először át kell alakítania a betanítási 
     * A betanított modellt a modul palettáján **adatkészlet** -modulként tárolja a rendszer. **Az adatkészletek**szakaszban találja.
     * A képzési modulok, például a **betanítási modell** és a **felosztott adategységek** törlődnek.
     * A rendszer visszaadja a mentett betanított modellt a folyamatba.
-    * A **webszolgáltatás bemeneti** és **webszolgáltatás-kimeneti** moduljai hozzáadódnak a szolgáltatáshoz. Ezek a modulok azt mutatják be, hogy a felhasználói adatai hol fognak belépni a modellbe, és hol lesznek visszaadva az adatai.
+    * A **webszolgáltatás bemeneti** és **webszolgáltatás-kimeneti** moduljai hozzáadódnak a szolgáltatáshoz. Ezek a modulok azt mutatják be, hogy a felhasználói adattípusok hol kerülnek be a modellbe, és hol adja vissza az
 
-    > [!Note]
-    > A **betanítási folyamat** a folyamat vászonjának tetején található új lapon lesz mentve. A tervezőben közzétett folyamatként is megtalálhatók.
+    > [!NOTE]
+    > A *betanítási folyamat* a folyamat vászonjának tetején található új lapon lesz mentve. A tervezőben közzétett folyamatként is megtalálhatók.
     >
 
-1. Válassza a **Futtatás** lehetőséget, és használja ugyanazt a számítási célt, és kísérletezzen, amelyet az 1. részben használt.
+1. Válassza a **Futtatás**lehetőséget, és használja ugyanazt a számítási célt és kísérletet, amelyet az első részben használt.
 
 1. Válassza ki a **pontszám modell** modult.
 
@@ -70,18 +70,18 @@ A megjelenő párbeszédpanelen bármelyik meglévő Azure Kubernetes Service-(a
 
 1. A navigációs menüszalagon válassza a **következtetési fürtök** >  **+ új**lehetőséget.
 
-    ![Az új következtetési fürt panel megnyitását bemutató képernyőkép](./media/ui-tutorial-automobile-price-deploy/new-inference-cluster.png)
+    ![Az új következtetési fürt ablaktábla beszerzését bemutató képernyőkép](./media/ui-tutorial-automobile-price-deploy/new-inference-cluster.png)
 
 1. A következtetési fürt ablaktáblán konfigurálja az új Kubernetes szolgáltatást.
 
-1. Adja meg a **számítási név**"AK-számítás" oszlopát.
+1. Írja be a következőt: *Kaba-számítás* a **számítási névhez**.
     
-1. Válasszon egy közeli elérhető **régiót**.
+1. Válasszon egy közeli régiót, amely elérhető a **régió**számára.
 
 1. Kattintson a **Létrehozás** gombra.
 
-    > [!Note]
-    > Egy új AK-szolgáltatás létrehozása körülbelül 15 percet vesz igénybe. A kiépítési állapotot a **következtetési fürtök** oldalon tekintheti meg
+    > [!NOTE]
+    > Egy új AK-szolgáltatás létrehozása körülbelül 15 percet vesz igénybe. A kiépítési állapotot megtekintheti a **következtetési fürtök** oldalon.
     >
 
 ## <a name="deploy-the-real-time-endpoint"></a>A valós idejű végpont üzembe helyezése
@@ -98,11 +98,11 @@ Miután az AK-szolgáltatás befejezte a kiépítést, térjen vissza a valós i
 
     ![Az új valós idejű végpont beállítását bemutató képernyőkép](./media/ui-tutorial-automobile-price-deploy/setup-endpoint.png)
 
-    Ha az üzembe helyezés befejeződik, a rendszer a vászon fölötti sikeres értesítést jeleníti meg, néhány percet is igénybe vehet.
+    Az üzembe helyezés befejeződése után a vászon fölötti sikeres értesítés jelenik meg. Néhány percet is igénybe vehet.
 
 ## <a name="test-the-real-time-endpoint"></a>A valós idejű végpont tesztelése
 
-Az üzembe helyezés befejezése után a valós idejű végpontot a **végpontok** lapra lépve ellenőrizheti.
+Az üzembe helyezés befejeződése után a **végpontok** lapon ellenőrizheti a valós idejű végpontot.
 
 1. A **végpontok** lapon válassza ki a telepített végpontot.
 
@@ -120,9 +120,9 @@ Az üzembe helyezés befejezése után a valós idejű végpontot a **végpontok
 
 [!INCLUDE [aml-ui-cleanup](../../../includes/aml-ui-cleanup.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Ebből az oktatóanyagból megtudhatta, hogyan hozhat létre, helyezhet üzembe és vehet fel gépi tanulási modellt a tervezőben. Ha többet szeretne megtudni arról, hogyan használhatja a tervezőt más típusú problémák megoldására, tekintse meg a többi minta folyamatát.
+Ebben az oktatóanyagban megtanulta, hogyan hozhat létre, helyezhet üzembe és használhat fel gépi tanulási modellt a tervezőben. Ha többet szeretne megtudni arról, hogyan használhatja a tervezőt más típusú problémák megoldására, tekintse meg a többi minta folyamatát.
 
 > [!div class="nextstepaction"]
 > [Hitelkockázat besorolási minta](how-to-designer-sample-classification-credit-risk-cost-sensitive.md)

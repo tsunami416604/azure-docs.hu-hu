@@ -16,16 +16,16 @@ ms.date: 10/24/2019
 ms.author: ajburnle
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b1c054bf354b5cdc5e0803ba6849af19fab40f3c
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 1fd72bba6e8c01644adebaa333c8fe588c35b8c7
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73174153"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73927322"
 ---
 # <a name="what-is-azure-ad-entitlement-management"></a>Mi az az Azure AD-jogosultságkezelés?
 
-A Azure Active Directory (Azure AD) jogosultságok kezelése egy olyan [identitás-irányítási](identity-governance-overview.md) szolgáltatás, amely lehetővé teszi a szervezetek számára, hogy a hozzáférési kérelmek munkafolyamatainak automatizálásával, a hozzáférési hozzárendelések, a felülvizsgálatok és a lejárati.
+A Azure Active Directory (Azure AD) jogosultságok kezelése egy olyan [identitás-irányítási](identity-governance-overview.md) szolgáltatás, amely lehetővé teszi a szervezetek számára, hogy a hozzáférési kérelmek munkafolyamatainak automatizálásával, a hozzáférési hozzárendelésekkel, a felülvizsgálatokkal és a lejárattal együtt kezeljék az identitásokat és a hozzáférés életciklusát
 
 A szervezet alkalmazottainak a feladatuk elvégzéséhez különböző csoportokhoz, alkalmazásokhoz és webhelyekhez kell hozzáférnie. A hozzáférés kezelése kihívást jelent, mivel a követelmények változnak – új alkalmazások hozzáadása vagy a felhasználóknak további hozzáférési jogosultságok szükségesek.  Ez a forgatókönyv bonyolultabb lehet a külső szervezetekkel való együttműködés során – előfordulhat, hogy nem tudja, hogy a másik szervezetnél kik is hozzáférjenek a szervezet erőforrásaihoz, és nem tudják, hogy a szervezet által használt alkalmazások, csoportok vagy webhelyek milyen alkalmazásokat használnak.
 
@@ -38,7 +38,7 @@ A nagyvállalati szervezetek gyakran szembesülnek kihívásokkal az alkalmazott
 - Előfordulhat, hogy a felhasználók nem tudják, hogy milyen hozzáférésre van szükségük, és még ha igen, nehéz lehet megtalálni a megfelelő személyeket a hozzáférésük jóváhagyására
 - Miután a felhasználók megkeresik és megkapják a hozzáférést egy erőforráshoz, előfordulhat, hogy a hozzáférésük hosszabb ideig tart, mint az üzleti célra szükséges
 
-Ezek a problémák olyan felhasználók számára készültek, akiknek más szervezettől, például az ellátási lánc szervezeteitől vagy más üzleti partnereinktől származó külső felhasználókhoz kell hozzáférni. Példa:
+Ezek a problémák olyan felhasználók számára készültek, akiknek más szervezettől, például az ellátási lánc szervezeteitől vagy más üzleti partnereinktől származó külső felhasználókhoz kell hozzáférni. Például:
 
 - Előfordulhat, hogy egyetlen személy sem tudja, hogy a többi szervezet könyvtáraiban lévő összes adott személy meghívja őket
 - Még ha ezek a felhasználók is meghívhatják ezeket a felhasználókat, a szervezetben senki sem emlékszik arra, hogy az összes felhasználó hozzáférését következetesen kezelje
@@ -71,7 +71,7 @@ A jogosultságok kezelése az Azure AD-be egy *hozzáférési csomag*fogalmát m
 - Hozzárendelés az Azure AD vállalati alkalmazásokhoz, beleértve az SaaS-alkalmazásokat, valamint az összevonás/egyszeri bejelentkezést és/vagy üzembe helyezést támogató egyéni integrált alkalmazásokat
 - SharePoint Online-webhelyek tagsága
 
-Az Azure AD biztonsági csoportjaira vagy az Office 365-csoportokra támaszkodó egyéb erőforrásokhoz való hozzáférést is szabályozhatja.  Példa:
+Az Azure AD biztonsági csoportjaira vagy az Office 365-csoportokra támaszkodó egyéb erőforrásokhoz való hozzáférést is szabályozhatja.  Például:
 
 - A Microsoft Office 365-es verzióra vonatkozó licenccel rendelkező felhasználók számára engedélyezheti az Azure AD biztonsági csoportját egy hozzáférési csomagban, és konfigurálhatja az adott csoportra vonatkozó [csoport alapú licencelést](../users-groups-roles/licensing-groups-assign.md) .
 - Hozzáférést biztosíthat a felhasználóknak az Azure-erőforrások kezeléséhez egy hozzáférési csomagban található Azure AD biztonsági csoport használatával és az adott csoport [Azure-beli szerepkör-hozzárendelésének](../../role-based-access-control/role-assignments-portal.md) létrehozásával
@@ -123,7 +123,7 @@ A jogosultságok kezelésének és dokumentációjának jobb megismeréséhez te
 | Katalógus létrehozója | Olyan felhasználók gyűjteménye, akik jogosultak új katalógusok létrehozására.  Ha egy olyan nem rendszergazda felhasználó, aki jogosult katalógus létrehozására, új katalógust hoz létre, automatikusan a katalógus tulajdonosa lesz. |
 | csatlakoztatott szervezet | Egy külső Azure AD-címtár vagy-tartomány, amelyhez kapcsolata van. Egy csatlakoztatott szervezet felhasználóit megadhatja egy szabályzatban, mivel a hozzáférés kérése engedélyezett. |
 | szabályzat | Olyan szabályok összessége, amelyek meghatározzák a hozzáférési életciklust, például azt, hogy a felhasználók hogyan férhetnek hozzá, ki hagyhatják jóvá, és hogy mennyi ideig férhetnek hozzá a felhasználók a hozzárendeléseken keresztül. Egy házirend egy hozzáférési csomaghoz van csatolva. Egy hozzáférési csomag például rendelkezhet két házirenddel – az egyik az alkalmazottak számára, hogy hozzáférést igényeljen, és egy másikat a külső felhasználók számára a hozzáférés kéréséhez. |
-| Erőforrás | Egy eszköz, például egy Office-csoport, egy biztonsági csoport, egy alkalmazás vagy egy SharePoint Online-webhely, egy olyan szerepkörrel, amellyel a felhasználók engedélyt kaphatnak. |
+| erőforrás | Egy eszköz, például egy Office-csoport, egy biztonsági csoport, egy alkalmazás vagy egy SharePoint Online-webhely, egy olyan szerepkörrel, amellyel a felhasználók engedélyt kaphatnak. |
 | erőforrás könyvtára | Egy vagy több megosztani kívánt erőforrással rendelkező könyvtár. |
 | erőforrás-szerepkör | Egy erőforrás által társított és meghatározott engedélyek gyűjteménye. Egy csoportnak két szerepköre van – a tag és a tulajdonos. A SharePoint-webhelyek általában 3 szerepkörrel rendelkeznek, de lehetnek további egyéni szerepkörök. Az alkalmazásokhoz egyéni szerepkörök tartozhatnak. |
 

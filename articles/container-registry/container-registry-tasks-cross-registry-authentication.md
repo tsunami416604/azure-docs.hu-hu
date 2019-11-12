@@ -1,22 +1,22 @@
 ---
-title: Több beállításjegyzékbeli hitelesítés egy Azure Container Registry feladatban
-description: Felügyelt identitás engedélyezése Azure Container Registry (ACR) feladatban az Azure-erőforrások számára, hogy a feladat hozzáférhessen egy másik privát tároló beállításjegyzékéhez.
+title: Több beállításjegyzékbeli hitelesítés Azure Container Registry feladatból
+description: Egy Azure Container Registry feladat (ACR-feladat) konfigurálása az Azure-erőforrások felügyelt identitásának használatával való hozzáféréshez egy másik privát Azure Container registryhez
 services: container-registry
 author: dlepow
 ms.service: container-registry
 ms.topic: article
 ms.date: 07/12/2019
 ms.author: danlep
-ms.openlocfilehash: 07fa7f3df5274ae88c93deac75093ead3f32f036
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: f2ffb42ce109f5e6f7186461f931b7f8da57ff32
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69509096"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73931522"
 ---
 # <a name="cross-registry-authentication-in-an-acr-task-using-an-azure-managed-identity"></a>Több beállításjegyzékbeli hitelesítés egy ACR-feladatban egy Azure által felügyelt identitás használatával 
 
-Egy [ACR](container-registry-tasks-overview.md)-feladatban engedélyezheti az [Azure-erőforrások felügyelt identitását](container-registry-tasks-authentication-managed-identity.md). A feladat használhatja az identitást más Azure-erőforrások elérésére, anélkül, hogy hitelesítő adatokat kellene megadnia vagy kezelnie. 
+Egy [ACR-feladatban](container-registry-tasks-overview.md) [engedélyezheti az Azure-erőforrások felügyelt identitását](container-registry-tasks-authentication-managed-identity.md). A feladat használhatja az identitást más Azure-erőforrások elérésére, anélkül, hogy hitelesítő adatokat kellene megadnia vagy kezelnie. 
 
 Ebből a cikkből megtudhatja, hogyan engedélyezheti a felügyelt identitásokat egy olyan feladatban, amely a feladat futtatásához használttól eltérő beállításjegyzékből kér le egy rendszerképet.
 
@@ -39,7 +39,7 @@ Ehhez a cikkhez két Azure Container-nyilvántartóra van szükség:
 
 Cserélje le a változót a saját beállításjegyzékbeli nevére a későbbi lépésekben.
 
-Ha még nem rendelkezik a szükséges Azure Container-nyilvántartásokkal, tekintse meg a gyors útmutató [: Hozzon létre egy privát tároló-beállításjegyzéket](container-registry-get-started-azure-cli.md)az Azure CLI használatával. A lemezképeket még nem kell leküldeni a beállításjegyzékbe.
+Ha még nem rendelkezik a szükséges Azure Container-nyilvántartásokkal, tekintse meg a következőt: rövid útmutató [: privát tároló-beállításjegyzék létrehozása az Azure CLI használatával](container-registry-get-started-azure-cli.md). A lemezképeket még nem kell leküldeni a beállításjegyzékbe.
 
 ## <a name="prepare-base-registry"></a>Alapszintű beállításjegyzék előkészítése
 
@@ -56,7 +56,7 @@ az acr build --image baseimages/node:9-alpine --registry mybaseregistry --file D
 
 ## <a name="define-task-steps-in-yaml-file"></a>Feladat lépéseinek meghatározása a YAML fájlban
 
-A példa többlépéses [](container-registry-tasks-multi-step.md) feladatának lépései egy [YAML-fájlban](container-registry-tasks-reference-yaml.md)vannak meghatározva. Hozzon létre egy `helloworldtask.yaml` nevű fájlt a helyi munkakönyvtárban, és illessze be a következő tartalmakat. Frissítse az értékét `REGISTRY_NAME` a Build lépésben az alapszintű beállításjegyzék kiszolgálójának nevével.
+A példa [többlépéses feladatának](container-registry-tasks-multi-step.md) lépései egy [YAML-fájlban](container-registry-tasks-reference-yaml.md)vannak meghatározva. Hozzon létre egy `helloworldtask.yaml` nevű fájlt a helyi munkakönyvtárban, és illessze be a következő tartalmakat. Frissítse `REGISTRY_NAME` értékét a Build lépésben az alapszintű beállításjegyzék kiszolgálójának nevével.
 
 ```yml
 version: v1.0.0
@@ -66,17 +66,17 @@ steps:
   - push: ["{{.Run.Registry}}/hello-world:{{.Run.ID}}"]
 ```
 
-A Build lépés az `Dockerfile-app` [Azure-Samples/ACR-Build-HelloWorld-Node](https://github.com/Azure-Samples/acr-build-helloworld-node.git) adattár fájlját használja egy rendszerkép létrehozásához. A `--build-arg` az alapszintű rendszerkép lekérésére hivatkozik az alapadatbázisra. A sikeres létrehozást követően a rendszer leküldi a rendszerképet a feladat futtatásához használt beállításjegyzékbe.
+A Build lépés az [Azure-Samples/ACR-Build-HelloWorld-Node](https://github.com/Azure-Samples/acr-build-helloworld-node.git) adattár `Dockerfile-app` fájlját használja egy rendszerkép létrehozásához. A `--build-arg` az alaprendszerkép lekérésére hivatkozik az alap beállításjegyzékre. A sikeres létrehozást követően a rendszer leküldi a rendszerképet a feladat futtatásához használt beállításjegyzékbe.
 
-## <a name="option-1-create-task-with-user-assigned-identity"></a>1\. lehetőség: Feladat létrehozása felhasználó által hozzárendelt identitással
+## <a name="option-1-create-task-with-user-assigned-identity"></a>1\. lehetőség: feladat létrehozása felhasználó által hozzárendelt identitással
 
-Az ebben a szakaszban szereplő lépések egy feladatot hoznak létre, és engedélyezik a felhasználó által hozzárendelt identitást. Ha inkább a rendszer által hozzárendelt identitást szeretné engedélyezni, tekintse [meg a 2. lehetőséget: Feladat létrehozása rendszer által hozzárendelt identitással](#option-2-create-task-with-system-assigned-identity). 
+Az ebben a szakaszban szereplő lépések egy feladatot hoznak létre, és engedélyezik a felhasználó által hozzárendelt identitást. Ha inkább a rendszer által hozzárendelt identitást szeretné engedélyezni, tekintse meg a [2. lehetőség: feladat létrehozása a rendszer által hozzárendelt identitással](#option-2-create-task-with-system-assigned-identity)című témakört. 
 
 [!INCLUDE [container-registry-tasks-user-assigned-id](../../includes/container-registry-tasks-user-assigned-id.md)]
 
 ### <a name="create-task"></a>Feladat létrehozása
 
-Hozza létre a feladat *helloworldtask* a következő az [ACR Task Create][az-acr-task-create] parancs végrehajtásával. A feladat forráskód-környezet nélkül fut, és a parancs a munkakönyvtárban `helloworldtask.yaml` található fájlra hivatkozik. A `--assign-identity` paraméter átadja a felhasználó által hozzárendelt identitás erőforrás-azonosítóját. 
+Hozza létre a feladat *helloworldtask* a következő az [ACR Task Create][az-acr-task-create] parancs végrehajtásával. A feladat forráskód-környezet nélkül fut, és a parancs a munkakönyvtár `helloworldtask.yaml` fájlra hivatkozik. A `--assign-identity` paraméter átadja a felhasználó által hozzárendelt identitás erőforrás-AZONOSÍTÓját. 
 
 ```azurecli
 az acr task create \
@@ -89,13 +89,13 @@ az acr task create \
 
 [!INCLUDE [container-registry-tasks-user-id-properties](../../includes/container-registry-tasks-user-id-properties.md)]
 
-## <a name="option-2-create-task-with-system-assigned-identity"></a>2\. lehetőség: Feladat létrehozása rendszer által hozzárendelt identitással
+## <a name="option-2-create-task-with-system-assigned-identity"></a>2\. lehetőség: feladat létrehozása rendszer által hozzárendelt identitással
 
-Az ebben a szakaszban szereplő lépések egy feladatot hoznak létre, és engedélyezik a rendszer által hozzárendelt identitást. Ha inkább egy felhasználó által hozzárendelt identitást szeretne engedélyezni, tekintse [meg az 1. lehetőséget: Feladat létrehozása felhasználó által hozzárendelt identitással](#option-1-create-task-with-user-assigned-identity). 
+Az ebben a szakaszban szereplő lépések egy feladatot hoznak létre, és engedélyezik a rendszer által hozzárendelt identitást. Ha inkább egy felhasználó által hozzárendelt identitást szeretne engedélyezni, tekintse meg az [1. lehetőség: feladat létrehozása felhasználó által hozzárendelt identitással](#option-1-create-task-with-user-assigned-identity)című témakört. 
 
 ### <a name="create-task"></a>Feladat létrehozása
 
-Hozza létre a feladat *helloworldtask* a következő az [ACR Task Create][az-acr-task-create] parancs végrehajtásával. A feladat forráskód-környezet nélkül fut, és a parancs a munkakönyvtárban `helloworldtask.yaml` található fájlra hivatkozik. Az `--assign-identity` érték nélküli paraméter lehetővé teszi a rendszer által hozzárendelt identitást a feladatban. 
+Hozza létre a feladat *helloworldtask* a következő az [ACR Task Create][az-acr-task-create] parancs végrehajtásával. A feladat forráskód-környezet nélkül fut, és a parancs a munkakönyvtár `helloworldtask.yaml` fájlra hivatkozik. Az érték nélküli `--assign-identity` paraméter lehetővé teszi a rendszer által hozzárendelt identitást a feladatban. 
 
 ```azurecli
 az acr task create \
@@ -117,7 +117,7 @@ Használja az az [ACR show][az-acr-show] parancsot az alapszintű beállításje
 baseregID=$(az acr show --name mybaseregistry --query id --output tsv)
 ```
 
-Az az [szerepkör-hozzárendelés létrehozási][az-role-assignment-create] parancs használatával rendelje hozzá `acrpull` a szerepkört az alap beállításjegyzékhez. Ez a szerepkör csak a lemezképek beállításjegyzékből való lekéréséhez rendelkezik jogosultságokkal.
+Az az [szerepkör-hozzárendelés létrehozási][az-role-assignment-create] parancs használatával rendelje hozzá a `acrpull` szerepkört az alap beállításjegyzékhez. Ez a szerepkör csak a lemezképek beállításjegyzékből való lekéréséhez rendelkezik jogosultságokkal.
 
 ```azurecli
 az role assignment create --assignee $principalID --scope $baseregID --role acrpull
@@ -125,7 +125,7 @@ az role assignment create --assignee $principalID --scope $baseregID --role acrp
 
 ## <a name="add-target-registry-credentials-to-task"></a>Cél beállításjegyzékbeli hitelesítő adatok hozzáadása a feladathoz
 
-Most használja az az [ACR Task hitelesítőadat Add][az-acr-task-credential-add] paranccsal, hogy hozzáadja az identitás hitelesítő adatait a feladathoz, hogy az képes legyen hitelesíteni az alap beállításjegyzékével. Futtassa a parancsot a feladatban engedélyezett felügyelt identitás típusának megfelelően. Ha engedélyezte a felhasználó által hozzárendelt identitást `--use-identity` , adja át az identitás ügyfél-azonosítóját. Ha engedélyezve van egy rendszerhez rendelt identitás, pass `--use-identity [system]`.
+Most használja az az [ACR Task hitelesítőadat Add][az-acr-task-credential-add] paranccsal, hogy hozzáadja az identitás hitelesítő adatait a feladathoz, hogy az képes legyen hitelesíteni az alap beállításjegyzékével. Futtassa a parancsot a feladatban engedélyezett felügyelt identitás típusának megfelelően. Ha engedélyezte a felhasználó által hozzárendelt identitást, adja át `--use-identity` az identitás ügyfél-azonosítójával. Ha engedélyezte a rendszer által hozzárendelt identitást, adja át `--use-identity [system]`.
 
 ```azurecli
 # Add credentials for user-assigned identity to the task
@@ -214,10 +214,10 @@ Példa a kimenetre:
 cf10
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * További információ a [felügyelt identitások ACR-feladatokban való engedélyezéséről](container-registry-tasks-authentication-managed-identity.md).
-* Lásd az [ACR-feladatok YAML](container-registry-tasks-reference-yaml.md) -referenciáját
+* Lásd az [ACR-feladatok YAML-referenciáját](container-registry-tasks-reference-yaml.md)
 
 <!-- LINKS - Internal -->
 [az-login]: /cli/azure/reference-index#az-login

@@ -9,12 +9,12 @@ ms.custom:
 ms.author: timlt
 author: timlt
 ms.date: 11/06/2019
-ms.openlocfilehash: 8ebcc863c1812081e6198ff9c684934642e1dc41
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.openlocfilehash: 948dfd25881a6a90dd441ad640091d88812cc298
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2019
-ms.locfileid: "73904558"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73931821"
 ---
 # <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-and-monitor-it-with-the-azure-cli"></a>Gyors útmutató: telemetria küldése egy eszközről egy IoT-hubhoz, és az Azure CLI-vel való figyelése
 
@@ -47,7 +47,7 @@ A Cloud Shell elindítása:
     ![CLI-környezet kiválasztása](media/quickstart-send-telemetry-cli/cloud-shell-environment.png)
 
 ## <a name="prepare-two-cli-sessions"></a>Két CLI-munkamenet előkészítése
-Ebben a szakaszban két Azure CLI-munkamenetet készít elő. A Cloud Shell a két munkamenetet külön böngésző lapokon fogja futtatni. Egy helyi CLI-ügyfélen két külön CLI-példányt fog futtatni. Az első munkamenetet szimulált eszközként fogja használni, és az üzenetek figyelésére és küldésére szolgáló második munkamenetet. Ha parancsot szeretne futtatni, válassza a **Másolás** elemet a rövid útmutatóban szereplő kódrészlet másolásához, illessze be a rendszerhéj-munkamenetbe, majd futtassa.
+Ebben a szakaszban két Azure CLI-munkamenetet készít elő. Ha a Cloud Shell használja, a két munkamenetet külön böngésző lapokon fogja futtatni. Ha helyi CLI-ügyfelet használ, két külön CLI-példányt fog futtatni. Az első munkamenetet szimulált eszközként fogja használni, és az üzenetek figyelésére és küldésére szolgáló második munkamenetet. Ha parancsot szeretne futtatni, válassza a **Másolás** elemet a rövid útmutatóban szereplő kódrészlet másolásához, illessze be a rendszerhéj-munkamenetbe, majd futtassa.
 
 Az Azure CLI használatához be kell jelentkeznie az Azure-fiókjába. Az Azure CLI rendszerhéj-munkamenet és az IoT hub közötti kommunikáció hitelesítése és titkosítása megtörtént. Ennek eredményeképpen ehhez a rövid útmutatóhoz nincs szükség olyan további hitelesítésre, amelyet valódi eszközzel használ, például egy kapcsolatok sztringjét.
 
@@ -149,7 +149,7 @@ A Azure Portal lehetővé teszi a IoT Hub és az eszközök összes aspektusána
 Üzenetküldési metrikák megjelenítése a Azure Portalban:
 1. A portál bal oldali navigációs menüjében válassza a **minden erőforrás**elemet. Ez felsorolja az előfizetésben található összes erőforrást, beleértve a létrehozott IoT hubot is. 
 
-1. Kattintson a létrehozott IoT hub hivatkozására. A portál megjeleníti a központ áttekintés lapját.
+1. Válassza ki a létrehozott IoT hub hivatkozását. A portál megjeleníti a központ áttekintés lapját.
 
 1. A IoT Hub bal oldali paneljén válassza a **metrikák** lehetőséget. 
 

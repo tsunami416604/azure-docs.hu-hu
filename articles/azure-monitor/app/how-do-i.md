@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 04/04/2017
-ms.openlocfilehash: 28881403e4938376cc1912227bdff51aa5f069cf
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: 61bd5898c494018a2bacbd894d4dc2aac97f53b4
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72817371"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73928419"
 ---
 # <a name="how-do-i--in-application-insights"></a>Hogyan tegyem... az Application Insights szolgáltatásban?
 ## <a name="get-an-email-when-"></a>E-mail küldése, ha...
@@ -39,7 +39,7 @@ A riasztások [Egyéni metrikák](../../azure-monitor/app/api-custom-events-metr
 
     telemetry.TrackMetric("Alarm", 10);
 
-vagy
+Vagy
 
     var measurements = new Dictionary<string,double>();
     measurements ["Alarm"] = 10;
@@ -72,12 +72,12 @@ Néhány megfontolandó szempont:
 [Új riasztások létrehozása a PowerShell használatával](../../azure-monitor/app/alerts.md#automation)
 
 ## <a name="use-powershell-to-manage-application-insights"></a>Application Insights kezelése a PowerShell használatával
-* [Új erőforrások létrehozása](../../azure-monitor/app/powershell-script-create-resource.md)
+* [Új erőforrások létrehozása](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource#creating-a-resource-automatically)
 * [Új riasztások létrehozása](../../azure-monitor/app/alerts.md#automation)
 
 ## <a name="separate-telemetry-from-different-versions"></a>Különálló telemetria különböző verziókból
 
-* Több szerepkör egy alkalmazásban: egyetlen Application Insights erőforrás használata, és szűrés a [cloud_Rolename](../../azure-monitor/app/app-map.md).
+* Több szerepkör egy alkalmazásban: használjon egyetlen Application Insights erőforrást, és szűrje a [cloud_Rolename](../../azure-monitor/app/app-map.md).
 * A fejlesztési, tesztelési és kiadási verziók elkülönítése: használjon különböző Application Insights erőforrásokat. Vegye fel a kialakítási kulcsokat a web. config fájlból. [További információ](../../azure-monitor/app/separate-resources.md)
 * Jelentéskészítési Build verziók: adjon hozzá egy tulajdonságot egy telemetria inicializáló használatával. [További információ](../../azure-monitor/app/separate-resources.md)
 
@@ -91,7 +91,7 @@ Néhány megfontolandó szempont:
 #### <a name="dashboard-with-data-from-other-sources-and-application-insights"></a>Irányítópult más forrásokból származó adatokkal és Application Insights
 * [Telemetria exportálása a Power BIba](../../azure-monitor/app/export-power-bi.md ).
 
-vagy
+Vagy
 
 * A SharePoint használata irányítópultként, a SharePoint-kijelzők adatait jeleníti meg. A [folyamatos exportálás és a stream Analytics használatával exportálhat SQL-](../../azure-monitor/app/code-sample-export-sql-stream-analytics.md)re.  A PowerView használatával vizsgálja meg az adatbázist, és hozzon létre egy SharePoint-kijelzőt a PowerView számára.
 

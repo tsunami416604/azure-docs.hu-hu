@@ -1,5 +1,5 @@
 ---
-title: Biztonságos kísérletek és következtetések egy virtuális hálózaton
+title: Biztonságos kísérletek és következtetések a virtuális hálózaton
 titleSuffix: Azure Machine Learning
 description: megtudhatja, hogyan védheti meg a kísérletezési/betanítási feladatokat, valamint az Azure-Virtual Network belüli Azure Machine Learning következtetési/pontozási feladatait.
 services: machine-learning
@@ -10,12 +10,12 @@ ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
 ms.date: 10/25/2019
-ms.openlocfilehash: e5dee838df2a60bf2038f2c7d2b1cc5958354d29
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: 5ac741579562b41678c4aeb59bb5ebb425d8405c
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73796770"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73932086"
 ---
 # <a name="secure-azure-ml-experimentation-and-inference-jobs-within-an-azure-virtual-network"></a>Egy Azure-Virtual Networkon belül biztonságossá teheti az Azure ML-kísérletezést és a feladatok következtetéseit
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -156,8 +156,8 @@ Ha nem szeretné az alapértelmezett kimenő szabályokat használni, és korlá
 - A kimenő internetkapcsolat megtagadása a NSG szabályok használatával.
 
 - A kimenő forgalom korlátozása a következőre:
-   - Azure Storage, a __Storage. Region_Name__ (például Storage. EastUS) __szolgáltatási címkéjével__
-   - Azure Container Registry a __AzureContainerRegistry. Region_Name__ __szolgáltatási címkéjének__ használatával (például AzureContainerRegistry. EastUS)
+   - Azure Storage a __Storage. Region_Name__ (például Storage. EastUS) __szolgáltatás címkéjével__
+   - Azure Container Registry a __AzureContainerRegistry. Region_Name__ __szolgáltatás címkéjével__ (például AzureContainerRegistry. EastUS)
    - Azure Machine Learning a __AzureMachineLearning__ __szolgáltatási címkéjének__ használatával
 
 A Azure Portal NSG-szabályának konfigurációja a következő képen látható:
@@ -364,7 +364,7 @@ A szabály hozzáadásakor állítsa a __protokollt__ bármelyik értékre, és 
 
 A hálózati szabályok konfigurálásával kapcsolatos további információkért lásd: [Azure Firewall telepítése és konfigurálása](/azure/firewall/tutorial-firewall-deploy-portal#configure-a-network-rule).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Képzési környezetek beállítása](how-to-set-up-training-targets.md)
 * [A modellek üzembe helyezésének helye](how-to-deploy-and-where.md)

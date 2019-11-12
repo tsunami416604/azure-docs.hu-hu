@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/23/2019
 ms.author: rkarlin
-ms.openlocfilehash: 5d4c549eaded78c69d3e7fa7173b5ad9b1d82f2f
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 9c4ba09c7e3eca4482ed56b0b337124aeec5b838
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72333142"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73928257"
 ---
 # <a name="tutorial-create-custom-analytic-rules-to-detect-suspicious-threats"></a>Oktatóanyag: egyéni analitikus szabályok létrehozása a gyanús fenyegetések észleléséhez
 
-Miután [csatlakoztatta az adatforrásokat](quickstart-onboard.md) To az Azure sentinelhez, létrehozhat olyan egyéni szabályokat, amelyek meghatározott feltételeket kereshetnek a környezetében, és incidenseket hozhatnak létre a feltételek teljesülése esetén, így kivizsgálhatja azokat. Ez az oktatóanyag segít egyéni szabályok létrehozásában az Azure Sentinel használatával észlelt fenyegetések észleléséhez.
+Miután az [adatforrásokat](quickstart-onboard.md) az Azure sentinelhez csatlakoztatta, létrehozhat olyan egyéni szabályokat, amelyek meghatározott feltételeket kereshetnek a környezetében, és incidenseket hozhatnak létre a feltételek teljesülése esetén, így kivizsgálhatja azokat. Ez az oktatóanyag segít egyéni szabályok létrehozásában az Azure Sentinel használatával észlelt fenyegetések észleléséhez.
 
 Ez az oktatóanyag segítséget nyújt az Azure Sentinel-fenyegetések észlelésében.
 > [!div class="checklist"]
@@ -56,7 +56,7 @@ Egyéni analitikai szabályokat hozhat létre, amelyek segítségével megkeresh
     \| make-series dcount(ResourceId)  default=0 on EventSubmissionTimestamp in range(ago(7d), now(), 1d) by Caller`
 
    > [!NOTE]
-   > A lekérdezés hosszának 1 és 1 000 karakter közöttinek kell lennie, és nem tartalmazhat "Search \*" vagy "Union \*" karaktert.
+   > A lekérdezés hosszának 1 és 10 000 karakter közöttinek kell lennie, és nem tartalmazhat "Search \*" vagy "Union \*" karaktert.
 
     1. A **lekérdezés ütemezése**területen állítsa be a következő paramétereket:
 

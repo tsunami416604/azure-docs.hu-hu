@@ -13,12 +13,12 @@ ms.date: 10/25/2019
 ms.author: cephalin
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: 4f0c8078a502d0332b02d95c0c46d9dbcc53a884
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 48c8390eff52466d11f781447c448d04ba567f31
+ms.sourcegitcommit: 6dec090a6820fb68ac7648cf5fa4a70f45f87e1a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73886864"
+ms.lasthandoff: 11/11/2019
+ms.locfileid: "73907140"
 ---
 # <a name="add-an-ssl-certificate-in-azure-app-service"></a>SSL-tanúsítvány hozzáadása Azure App Service
 
@@ -69,6 +69,10 @@ Az ingyenes App Service felügyelt tanúsítvány egy kulcsrakész megoldás az 
 - A nem támogatja a meztelen tartományokat.
 - Nem exportálható.
 
+> [!NOTE]
+> Az ingyenes tanúsítványt a DigiCert bocsátja ki. Egyes legfelső szintű tartományok esetében explicit módon engedélyeznie kell a DigiCert tanúsítvány-kiállítóként egy olyan [CAA-rekord](https://wikipedia.org/wiki/DNS_Certification_Authority_Authorization) létrehozásával, amelynek értéke: `0 issue digicert.com`.
+> 
+
 Ingyenes App Service felügyelt tanúsítvány létrehozása:
 
 A <a href="https://portal.azure.com" target="_blank">Azure Portal</a>bal oldali menüjében válassza a **app Services** >  **\<app-Name >** elemet.
@@ -114,9 +118,9 @@ A következő táblázat segítséget nyújt a tanúsítvány konfigurálásába
 
 | Beállítás | Leírás |
 |-|-|
-| Név | A App Service tanúsítvány rövid neve. |
+| Name (Név) | A App Service tanúsítvány rövid neve. |
 | Naked domain Host neve | Itt adhatja meg a legfelső szintű tartományt. A kiállított tanúsítvány a legfelső szintű tartományt és a `www` altartományt *is* védi. A kiállított tanúsítványban a köznapi név mező tartalmazza a gyökértartomány tartományát, a tulajdonos alternatív neve mező pedig a `www` tartományt tartalmazza. Csak az altartományok biztonságossá tételéhez adja meg az altartomány teljes tartománynevét (például `mysubdomain.contoso.com`).|
-| Előfizetés | Az adatközpont, ahol a webalkalmazást üzemeltetik. |
+| Előfizetést | Az adatközpont, ahol a webalkalmazást üzemeltetik. |
 | Erőforráscsoport | A tanúsítványt tartalmazó erőforráscsoport. Használhat új erőforráscsoportot, vagy kiválaszthatja ugyanazt az erőforráscsoportot, mint a App Service alkalmazás, például:. |
 | Tanúsítvány SKU | Meghatározza a létrehozandó tanúsítvány típusát, legyen az egy standard tanúsítvány vagy egy [helyettesítő tanúsítvány](https://wikipedia.org/wiki/Wildcard_certificate). |
 | Jogi feltételek | Ide kattintva erősítse meg, hogy elfogadja a jogi feltételeket. A tanúsítványok a GoDaddyből szerezhetők be. |
@@ -135,7 +139,7 @@ A **Key Vault állapota** lapon kattintson a Key Vault adattár elemre egy új t
 
 | Beállítás | Leírás |
 |-|-|
-| Név | Egy egyedi név, amely alfanumerikus karaktereket és kötőjeleket tartalmaz. |
+| Name (Név) | Egy egyedi név, amely alfanumerikus karaktereket és kötőjeleket tartalmaz. |
 | Erőforráscsoport | Javaslatként válassza ki ugyanazt az erőforráscsoportot, mint a App Service-tanúsítványt. |
 | Hely | Válassza ki ugyanazt a helyet, mint a App Service alkalmazás. |
 | Tarifacsomag | További információ: [Azure Key Vault díjszabása](https://azure.microsoft.com/pricing/details/key-vault/). |
@@ -192,7 +196,7 @@ A következő táblázat segítségével választhatja ki a tanúsítványt.
 
 | Beállítás | Leírás |
 |-|-|
-| Előfizetés | Az előfizetés, amelyhez a Key Vault tartozik. |
+| Előfizetést | Az előfizetés, amelyhez a Key Vault tartozik. |
 | Key Vault | Az importálni kívánt tanúsítvánnyal rendelkező tároló. |
 | Tanúsítvány | Válassza ki a PKCS12/pfx-profil-tanúsítványok listáját a tárolóban. A tár összes PKCS12/pfx-profil-tanúsítványa szerepel a ujjlenyomatai megfelelnek, de a App Serviceban nem támogatottak. |
 

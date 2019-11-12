@@ -1,5 +1,5 @@
 ---
-title: Diagnosztikai naplózás a Azure Cosmos DBban
+title: Diagnosztikai naplózás az Azure Cosmos DB-ben
 description: Ismerje meg a Azure Cosmos DB tárolt adatainak naplózásának és figyelésének különböző módjait.
 author: SnehaGunda
 ms.service: cosmos-db
@@ -7,14 +7,14 @@ ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: 1e9f852d01d60ead9979b6b1190e285b35d5c312
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: bdbc50983708327cf5d3857282c92fcab1c28b09
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72294040"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73930549"
 ---
-# <a name="diagnostic-logging-in-azure-cosmos-db"></a>Diagnosztikai naplózás a Azure Cosmos DBban 
+# <a name="diagnostic-logging-in-azure-cosmos-db"></a>Diagnosztikai naplózás az Azure Cosmos DB-ben 
 
 Miután elkezdte egy vagy több Azure Cosmos-adatbázis használatát, érdemes figyelnie, hogyan és mikor férhet hozzá az adatbázisaihoz. Ez a cikk áttekintést nyújt az Azure platformon elérhető naplókról. Megtudhatja, hogyan engedélyezheti a diagnosztikai naplózást figyelési célokra a naplók [Azure Storage](https://azure.microsoft.com/services/storage/)-ba való küldéséhez, a naplók továbbításához az [Azure-Event Hubs](https://azure.microsoft.com/services/event-hubs/), valamint a naplók [Azure monitor naplókba](https://azure.microsoft.com/services/log-analytics/)való exportálásának módját.
 
@@ -40,7 +40,7 @@ A tevékenység naplója a Azure Cosmos DB előfizetési szintjén rögzíti a m
 
 Ebben a cikkben az Azure-tevékenység naplóját, az Azure diagnosztikai naplóit és az Azure-metrikákat vesszük figyelembe. Mi a különbség a három napló között? 
 
-### <a name="azure-activity-log"></a>Azure-tevékenység naplója
+### <a name="azure-activity-log"></a>Azure-tevékenységnapló
 
 Az Azure-tevékenység naplója egy előfizetési napló, amely betekintést nyújt az Azure-ban bekövetkezett előfizetési szintű eseményekre. A műveletnapló a felügyeleti kategória alá tartozó előfizetések esetében szabályozza a vezérlési sík eseményeit. A tevékenység naplójának segítségével meghatározhatja a "mit, ki és mikor" kifejezést az előfizetésben lévő erőforrásokra vonatkozó írási műveletekhez (PUT, POST, DELETE). Emellett megismerheti a művelet állapotát és az egyéb kapcsolódó tulajdonságokat is. 
 
@@ -118,7 +118,7 @@ A következő lépésekkel engedélyezheti a diagnosztikai naplózást a Azure P
 
 3. Kattintson a **Mentés** gombra.
 
-    Ha olyan hibaüzenetet kap, amely szerint a "nem sikerült frissíteni a \<workspace > diagnosztikát. Az előfizetés \<subscription azonosítója > nincs regisztrálva a Microsoft. ininsights használatára, kövesse a következő témakört: a fiók regisztrálásához szükséges [Azure Diagnostics](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-storage) utasítások követése, majd próbálja megismételni a műveletet.
+    Ha olyan hibaüzenetet kap, amely szerint a "nem sikerült frissíteni a \<munkaterület neve > a diagnosztikát. Az előfizetés \<előfizetés-azonosító > nincs regisztrálva a Microsoft. bepillantások használatára, kövesse a következő témakört: a fiók regisztrálásához szükséges [Azure Diagnostics](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-storage) utasítások követése, majd próbálja megismételni a műveletet.
 
     Ha módosítani szeretné a diagnosztikai naplók mentésének módját a jövő bármely pontjára, térjen vissza erre a lapra, és módosítsa a fiókja diagnosztikai naplójának beállításait.
 
@@ -132,7 +132,7 @@ A metrikák és diagnosztikai naplózás Azure CLI használatával történő en
    az monitor diagnostic-settings create --name DiagStorage --resource <resourceId> --storage-account <storageAccountName> --logs '[{"category": "QueryRuntimeStatistics", "enabled": true, "retentionPolicy": {"enabled": true, "days": 0}}]'
    ```
 
-   A `resource` a Azure Cosmos DB fiók neve. Az erőforrás formátuma "/Subscriptions/`<subscriptionId>`/resourceGroups/`<resource_group_name>`/Providers/Microsoft. DocumentDB/databaseAccounts/< Azure_Cosmos_account_name >". a `storage-account` annak a Storage-fióknak a neve, amelyre el szeretné küldeni a naplókat. A többi naplót úgy is naplózhatja, hogy a "MongoRequests" vagy a "DataPlaneRequests" kategória-paraméter értékeit frissíti. 
+   A `resource` a Azure Cosmos DB fiók neve. Az erőforrás formátuma "/Subscriptions/`<subscriptionId>`/resourceGroups/`<resource_group_name>`/providers/Microsoft.DocumentDB/databaseAccounts/< Azure_Cosmos_account_name >". a `storage-account` annak a Storage-fióknak a neve, amelyhez el szeretné küldeni a naplókat. A többi naplót úgy is naplózhatja, hogy a "MongoRequests" vagy a "DataPlaneRequests" kategória-paraméter értékeit frissíti. 
 
 - A diagnosztikai naplók Event hub-ba való továbbításának engedélyezéséhez használja a következő parancsot:
 
@@ -156,7 +156,7 @@ Ha a PowerShell használatával szeretné bekapcsolni a diagnosztikai naplózás
 
 Az Azure PowerShell telepítésérről és az Azure-előfizetéssel való társításáról további információt [How to install and configure Azure PowerShell](/powershell/azure/overview) (Az Azure PowerShell telepítése és konfigurálása) című cikkben találhat.
 
-Ha már telepítette a Azure PowerShellt, és nem ismeri a verziót, a PowerShell-konzolon írja be a következőt: `(Get-Module azure -ListAvailable).Version`.  
+Ha már telepítette a Azure PowerShellt, és nem ismeri a verziót, a PowerShell-konzol típusa `(Get-Module azure -ListAvailable).Version`.  
 
 ### <a id="connect"></a>Csatlakozás az előfizetésekhez
 Indítson el egy Azure PowerShell-munkamenetet, és jelentkezzen be az Azure-fiókjába az alábbi paranccsal:  
@@ -210,7 +210,7 @@ $account = Get-AzResource -ResourceGroupName ContosoResourceGroup `
 ```
 
 ### <a id="enable"></a>Naplózás engedélyezése
-A Azure Cosmos DB naplózásának engedélyezéséhez használja a `Set-AzDiagnosticSetting` parancsmagot az új Storage-fiókhoz, Azure Cosmos DB a fiókhoz és a naplózás engedélyezéséhez. Futtassa a következő parancsot, és állítsa az **-enabled** jelzőt **$truere**:
+A Azure Cosmos DB naplózásának engedélyezéséhez használja a `Set-AzDiagnosticSetting` parancsmagot az új Storage-fiókhoz, a Azure Cosmos DB fiókhoz, valamint a naplózás engedélyezéséhez használt kategóriához. Futtassa a következő parancsot, és állítsa az **-enabled** jelzőt **$truere**:
 
 ```powershell
 Set-AzDiagnosticSetting  -ResourceId $account.ResourceId -StorageAccountId $sa.Id -Enabled $true -Categories DataPlaneRequests
@@ -287,13 +287,13 @@ Name              : resourceId=/SUBSCRIPTIONS/<subscription-ID>/RESOURCEGROUPS/C
 /MICROSOFT.DOCUMENTDB/DATABASEACCOUNTS/CONTOSOCOSMOSDB/y=2017/m=09/d=28/h=19/m=00/PT1H.json
 ```
 
-Ahogy az ebből a kimenetből látható, a Blobok a névadási konvenciót követik: `resourceId=/SUBSCRIPTIONS/<subscription-ID>/RESOURCEGROUPS/<resource group name>/PROVIDERS/MICROSOFT.DOCUMENTDB/DATABASEACCOUNTS/<Database Account Name>/y=<year>/m=<month>/d=<day of month>/h=<hour>/m=<minute>/filename.json`
+Ahogy az ebből a kimenetből látható, a Blobok a következő elnevezési konvenciókat követik: `resourceId=/SUBSCRIPTIONS/<subscription-ID>/RESOURCEGROUPS/<resource group name>/PROVIDERS/MICROSOFT.DOCUMENTDB/DATABASEACCOUNTS/<Database Account Name>/y=<year>/m=<month>/d=<day of month>/h=<hour>/m=<minute>/filename.json`
 
 A dátum- és időértékek az UTC hivatkozási időzónát használják.
 
 Mivel ugyanaz a Storage-fiók használható több erőforráshoz tartozó naplók összegyűjtésére, a blob nevében lévő teljes erőforrás-AZONOSÍTÓval elérheti és letöltheti a szükséges blobokat. Mielőtt ezt megtenné, bemutatjuk, hogyan töltheti le az összes blobot.
 
-Elsőként hozzon létre egy mappát, amelybe letölti a blobokat. Példa:
+Elsőként hozzon létre egy mappát, amelybe letölti a blobokat. Például:
 
 ```powershell
 New-Item -Path 'C:\Users\username\ContosoCosmosDBLogs'`
@@ -313,9 +313,9 @@ $blobs | Get-AzStorageBlobContent `
  -Destination 'C:\Users\username\ContosoCosmosDBLogs'
 ```
 
-A második parancs futtatásakor a blob-nevekben lévő **/ elválasztó** a célmappában teljes mappastruktúrát hoz létre. Ez a mappastruktúrát a Blobok fájlként való letöltésére és tárolására szolgál.
+A második parancs futtatásakor a blob nevek **/** elválasztója egy teljes mappastruktúrát hoz létre a célmappában. Ez a mappastruktúrát a Blobok fájlként való letöltésére és tárolására szolgál.
 
-A blobok egyenkénti letöltéséhez használjon helyettesítő elemeket. Példa:
+A blobok egyenkénti letöltéséhez használjon helyettesítő elemeket. Például:
 
 * Ha több adatbázisa van, és csak egy **CONTOSOCOSMOSDB3**nevű adatbázis naplóit szeretné letölteni, használja a parancsot:
 
@@ -324,13 +324,13 @@ A blobok egyenkénti letöltéséhez használjon helyettesítő elemeket. Példa
      -Context $sa.Context -Blob '*/DATABASEACCOUNTS/CONTOSOCOSMOSDB3
     ```
 
-* Ha több erőforráscsoport van, és csak egy erőforráscsoporthoz szeretné letölteni a naplókat, használja a `-Blob '*/RESOURCEGROUPS/<resource group name>/*'` parancsot:
+* Ha több erőforráscsoport van, és csak egy erőforráscsoporthoz szeretné letölteni a naplókat, használja a `-Blob '*/RESOURCEGROUPS/<resource group name>/*'`parancsot:
 
     ```powershell
     Get-AzStorageBlob -Container $container `
     -Context $sa.Context -Blob '*/RESOURCEGROUPS/CONTOSORESOURCEGROUP3/*'
     ```
-* Ha a 2017-es hónapra vonatkozó összes naplót szeretné letölteni, használja a `-Blob '*/year=2017/m=07/*'` parancsot:
+* Ha a 2017-es hónapra vonatkozó összes naplót szeretné letölteni, használja a `-Blob '*/year=2017/m=07/*'`parancsot:
 
     ```powershell
     Get-AzStorageBlob -Container $container `
@@ -339,8 +339,8 @@ A blobok egyenkénti letöltéséhez használjon helyettesítő elemeket. Példa
 
 A következő parancsokat is futtathatja:
 
-* Az adatbázis-erőforrás diagnosztikai beállításainak állapotának lekérdezéséhez használja a következő parancsot: `Get-AzDiagnosticSetting -ResourceId $account.ResourceId`.
-* Ha le szeretné tiltani az **DataPlaneRequests** -kategória naplózását az adatbázis-fiók erőforrásához, használja az `Set-AzDiagnosticSetting -ResourceId $account.ResourceId -StorageAccountId $sa.Id -Enabled $false -Categories DataPlaneRequests` parancsot.
+* Az adatbázis-erőforrás diagnosztikai beállításainak állapotának lekérdezéséhez használja a `Get-AzDiagnosticSetting -ResourceId $account.ResourceId`parancsot.
+* Ha le szeretné tiltani az **DataPlaneRequests** -kategória naplózását az adatbázis-fiók erőforrásához, használja a `Set-AzDiagnosticSetting -ResourceId $account.ResourceId -StorageAccountId $sa.Id -Enabled $false -Categories DataPlaneRequests`parancsot.
 
 
 Az egyes lekérdezésekben visszaadott Blobok szövegként vannak tárolva, és JSON-blobként vannak formázva, ahogy az a következő kódban látható:
@@ -396,66 +396,110 @@ Ha Azure Monitor naplókban szeretné megtekinteni a diagnosztikai adatait, nyis
 
 ![A Azure Portal keresési beállításainak naplózása](./media/logging/log-analytics-open-log-search.png)
 
-Most, hogy engedélyezte az adatgyűjtést, az új lekérdezési nyelv használatával futtassa a következő naplóbeli keresési példát, hogy megtekintse a 10 legutóbbi naplókat `AzureDiagnostics | take 10`.
+Most, hogy engedélyezte az adatgyűjtést, az új lekérdezési nyelv használatával futtassa a következő naplóbeli keresési példát, hogy megtekintse a 10 legújabb naplókat `AzureDiagnostics | take 10`.
 
 ![A 10 legutóbb használt napló mintájának keresése](./media/logging/log-analytics-query.png)
 
 <a id="#queries"></a>
-### <a name="queries"></a>Lekérdezések
+### <a name="cosmosdb-log-analytics-queries-in-azure-monitor"></a>CosmosDB Log Analytics lekérdezések Azure Monitor
 
-Az alábbiakban néhány további lekérdezést is megadhat, amelyek segítségével **figyelheti az Azure** Cosmos-tárolókat. Ezek a lekérdezések az [új nyelvvel](../log-analytics/log-analytics-log-search-upgrade.md)működnek. 
+Az alábbiakban néhány további lekérdezést is megadhat, amelyek segítségével **figyelheti az Azure** Cosmos-tárolókat. Ezek a lekérdezések az [új nyelvvel](../log-analytics/log-analytics-log-search-upgrade.md)működnek.  
 
 Az egyes naplók által visszaadott információk jelentésének megismeréséhez tekintse meg a [Azure Cosmos db naplók értelmezése](#interpret)című témakört.
 
 * Azure Cosmos DB összes diagnosztikai naplójának lekérdezése egy adott időszakban:
 
     ```
-    AzureDiagnostics | where ResourceProvider=="MICROSOFT.DOCUMENTDB" and Category=="DataPlaneRequests"
+    AzureDiagnostics 
+    | where ResourceProvider=="MICROSOFT.DOCUMENTDB" and Category=="DataPlaneRequests"
     ```
 
 * A 10 legutóbb naplózott esemény lekérdezése:
 
     ```
-    AzureDiagnostics | where ResourceProvider=="MICROSOFT.DOCUMENTDB" and Category=="DataPlaneRequests" | take 10
+    AzureDiagnostics 
+    | where ResourceProvider=="MICROSOFT.DOCUMENTDB" and Category=="DataPlaneRequests" 
+    | limit 10
     ```
 
 * Az összes művelet lekérdezése művelet típusa szerint csoportosítva:
 
     ```
-    AzureDiagnostics | where ResourceProvider=="MICROSOFT.DOCUMENTDB" and Category=="DataPlaneRequests" | summarize count() by OperationName
+    AzureDiagnostics 
+    | where ResourceProvider=="MICROSOFT.DOCUMENTDB" and Category=="DataPlaneRequests" 
+    | summarize count() by OperationName
     ```
 
 * Az összes művelet lekérdezése **erőforrás**szerint csoportosítva:
 
     ```
-    AzureActivity | where ResourceProvider=="MICROSOFT.DOCUMENTDB" and Category=="DataPlaneRequests" | summarize count() by Resource
+    AzureActivity 
+    | where ResourceProvider=="MICROSOFT.DOCUMENTDB" and Category=="DataPlaneRequests" 
+    | summarize count() by Resource
     ```
 
 * Az összes felhasználói tevékenység lekérdezése erőforrás szerint csoportosítva:
 
     ```
-    AzureActivity | where Caller == "test@company.com" and ResourceProvider=="MICROSOFT.DOCUMENTDB" and Category=="DataPlaneRequests" | summarize count() by Resource
+    AzureActivity 
+    | where Caller == "test@company.com" and ResourceProvider=="MICROSOFT.DOCUMENTDB" and Category=="DataPlaneRequests" 
+    | summarize count() by Resource
     ```
     > [!NOTE]
     > Ez a parancs egy tevékenység naplóra, nem pedig diagnosztikai naplóra szolgál.
 
+* A DataPlaneRequests és a QueryRunTimeStatistics adatokkal összekapcsolt, 100 RUs-nál nagyobb lekérdezések lekérése
+
+    ```
+    AzureDiagnostics
+    | where ResourceProvider=="MICROSOFT.DOCUMENTDB" and Category=="DataPlaneRequests" and todouble(requestCharge_s) > 100.0
+    | project activityId_g, requestCharge_s
+    | join kind= inner (
+           AzureDiagnostics
+           | where ResourceProvider =="MICROSOFT.DOCUMENTDB" and Category == "QueryRuntimeStatistics"
+           | project activityId_g, querytext_s
+    ) on $left.activityId_g == $right.activityId_g
+    | order by requestCharge_s desc
+    | limit 100
+    ```
+    
+      
+
 * A 3 ezredmásodpercnél hosszabb műveletek lekérdezése:
 
     ```
-    AzureDiagnostics | where toint(duration_s) > 3 and ResourceProvider=="MICROSOFT.DOCUMENTDB" and Category=="DataPlaneRequests" | summarize count() by clientIpAddress_s, TimeGenerated
+    AzureDiagnostics 
+    | where toint(duration_s) > 3 and ResourceProvider=="MICROSOFT.DOCUMENTDB" and Category=="DataPlaneRequests" 
+    | summarize count() by clientIpAddress_s, TimeGenerated
     ```
 
 * A műveletet futtató ügynök lekérdezése:
 
     ```
-    AzureDiagnostics | where ResourceProvider=="MICROSOFT.DOCUMENTDB" and Category=="DataPlaneRequests" | summarize count() by OperationName, userAgent_s
+    AzureDiagnostics 
+    | where ResourceProvider=="MICROSOFT.DOCUMENTDB" and Category=="DataPlaneRequests" 
+    | summarize count() by OperationName, userAgent_s
     ```
 
 * Lekérdezés a hosszú ideig futó műveletek végrehajtásakor:
 
     ```
-    AzureDiagnostics | where ResourceProvider=="MICROSOFT.DOCUMENTDB" and Category=="DataPlaneRequests" | project TimeGenerated , duration_s | render timechart
+    AzureDiagnostics 
+    | where ResourceProvider=="MICROSOFT.DOCUMENTDB" and Category=="DataPlaneRequests" 
+    | project TimeGenerated , duration_s 
+    | render timechart
     ```
+    
+* A partíciós kulcs statisztikáinak beszerzéséhez az adatbázis-fiók felső 3 partíciójának kiértékeléséhez:
+
+    ```
+    AzureDiagnostics 
+    | where ResourceProvider=="MICROSOFT.DOCUMENTDB" and Category=="PartitionKeyStatistics" 
+    | project SubscriptionId, regionName_s, databaseName_s, collectionname_s, partitionkey_s, sizeKb_s, ResourceId 
+    
+   
+    ```
+    
 
 További információ az új napló keresési nyelvének használatáról: a [naplók keresésének megismerése Azure monitor naplókban](../log-analytics/log-analytics-log-search-new.md). 
 
@@ -471,7 +515,7 @@ A következő táblázat ismerteti az egyes naplóbejegyzések tartalmát.
 | **resourceId** | **Erőforrás** | Az Azure Cosmos DB fiók, amely számára engedélyezve vannak a naplók.|
 | **Kategória** | **Kategória** | Azure Cosmos DB naplók esetében a **DataPlaneRequests** az egyetlen elérhető érték. |
 | **operationName** | **OperationName** | A művelet neve. Ez az érték a következő műveletek bármelyike lehet: létrehozás, frissítés, olvasás, ReadFeed, törlés, csere, végrehajtás, SqlQuery, lekérdezés, JSQuery, Head, HeadFeed vagy Upsert.   |
-| **Tulajdonságok** | – | A mező tartalmát az alábbi sorok írják le. |
+| **Tulajdonságok** | n/a | A mező tartalmát az alábbi sorok írják le. |
 | **Tevékenységazonosító** | **activityId_g** | A naplózott művelet egyedi GUID azonosítója. |
 | **userAgent** | **userAgent_s** | Egy karakterlánc, amely megadja a kérést végző ügyfél-felhasználói ügynököt. A formátum {User Agent Name}/{Version}.|
 | **requestResourceType** | **requestResourceType_s** | Az elérni kívánt erőforrás típusa. Az érték a következő erőforrástípusok bármelyike lehet: adatbázis, tároló, dokumentum, melléklet, felhasználó, engedély, StoredProcedure, trigger, UserDefinedFunction vagy ajánlat. |
