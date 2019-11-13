@@ -128,8 +128,6 @@
               href: virtual-nodes-cli.md
             - name: Az Azure Portal használata
               href: virtual-nodes-portal.md
-        - name: A Virtual Kubelet használata
-          href: virtual-kubelet.md
         - name: Automatikus fürtméretező használata
           href: cluster-autoscaler.md
         - name: Rendelkezésre állási zónák használata
