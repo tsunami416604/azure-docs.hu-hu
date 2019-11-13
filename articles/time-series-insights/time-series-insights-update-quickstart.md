@@ -1,6 +1,6 @@
 ---
-title: 'Rövid útmutató: a Azure Time Series Insights Preview bemutató környezetének megismerése | Microsoft Docs'
-description: Rövid útmutató a Azure Time Series Insights előzetes verziójának bemutató környezetének megismeréséhez.
+title: 'Gyors útmutató: az előzetes bemutató környezetének megismerése – Azure Time Series Insights | Microsoft Docs'
+description: Ismerkedjen meg Azure Time Series Insights előzetes bemutató környezettel egy minta rövid útmutató segítségével.
 ms.service: time-series-insights
 services: time-series-insights
 author: deepakpalled
@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.workload: big-data
 ms.custom: mvc seodec18
 ms.date: 10/24/2019
-ms.openlocfilehash: 25d6d1aa1cf7db0f448ec22ed7b5c84d840af3f5
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 61d13831ff0d8810cfdce35f86a0402cb1679ad1
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73579647"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74014760"
 ---
 # <a name="quickstart-explore-the-azure-time-series-insights-preview-demo-environment"></a>Rövid útmutató: Ismerkedés a Azure Time Series Insights előzetes verziójának bemutató környezetével
 
@@ -122,7 +122,7 @@ Most, hogy elvégezte a gyors üzembe helyezést, törölje a létrehozott erőf
 1. A [Azure Portal](https://portal.azure.com)bal oldali menüjében válassza a **minden erőforrás**lehetőséget, és keresse meg a Azure Time Series Insights erőforráscsoportot.
 1. Törölje a teljes erőforráscsoportot (és az abban található összes erőforrást) úgy, hogy kiválasztja az egyes erőforrások **törlését** vagy eltávolítását.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Készen áll saját Time Series Insights előnézeti környezet létrehozására. Kezdés:
 

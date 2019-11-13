@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
-ms.openlocfilehash: 62657134775d21ad6aabdf8f02a1e001de0a6094
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 55a9cbcfdb9766c6adc6d10f975fa4d074ec3aaf
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73176846"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74011666"
 ---
 # <a name="how-to-authorize-developer-accounts-by-using-azure-active-directory-b2c-in-azure-api-management"></a>Fejlesztői fiókok engedélyezése Azure Active Directory B2C használatával az Azure-ban API Management
 
@@ -77,7 +77,7 @@ A Azure Active Directory B2C egy felhőalapú identitáskezelési megoldás a fo
     
 12. Adja meg az Azure Active Directory B2C-bérlő tartománynevét a **bejelentkezési-bérlőben**.
 
-13. A **szolgáltató mezőben megadhatja a használni** kívánt Azure ad B2C bejelentkezési URL-címet. Állítsa be az értéket a következőre: **< your_b2c_tenant_name >. b2clogin. com**.
+13. A **szolgáltató mezőben megadhatja a használni** kívánt Azure ad B2C bejelentkezési URL-címet. Állítsa az értéket **< your_b2c_tenant_name >. b2clogin. com**értékre.
 
 14. Határozza meg a **regisztrációs házirendet** és a **bejelentkezési** szabályzatot a B2C-bérlői házirendekben. Megadhatja a **profil szerkesztési házirendjét** és a jelszó- **visszaállítási szabályzatot**is.
 
@@ -87,11 +87,11 @@ A Azure Active Directory B2C egy felhőalapú identitáskezelési megoldás a fo
 
 ## <a name="developer-portal---add-azure-ad-b2c-account-authentication"></a>Fejlesztői portál – Azure AD B2C fiók hitelesítésének hozzáadása
 
-Ha engedélyezni szeretné a bejelentkezést AAD B2C a fejlesztői portálon, hozzá kell adnia a **OAuth gombok** widgetet a bejelentkezési űrlaphoz.
+A fejlesztői portálon jelentkezzen be AAD B2C a **OAuth gombok** widgettel. A widget már szerepel a fejlesztői portál alapértelmezett tartalmának bejelentkezési oldalán.
 
 ![HRE gombok widget](./media/api-management-howto-aad/portal-oauth-widget.png)
 
-Bár a rendszer automatikusan létrehoz egy új fiókot, amikor egy új felhasználó bejelentkezik AAD B2Cba, érdemes lehet ugyanezt a widgetet hozzáadni a regisztrációs űrlaphoz.
+Bár a rendszer automatikusan létrehoz egy új fiókot, amikor egy új felhasználó bejelentkezik AAD B2Cba, érdemes lehet ugyanezt a widgetet hozzáadni a regisztrációs laphoz.
 
 ## <a name="legacy-developer-portal---how-to-sign-up-with-azure-ad-b2c"></a>Örökölt fejlesztői portál – regisztrálás a Azure AD B2C használatával
 

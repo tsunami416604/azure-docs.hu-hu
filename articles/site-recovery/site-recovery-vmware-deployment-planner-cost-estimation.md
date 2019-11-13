@@ -1,20 +1,20 @@
 ---
-title: Tekintse át a Azure Site Recovery Deployment Planner becsült költségbecslés jelentését | Microsoft Docs
-description: Ez a cikk azt ismerteti, hogyan tekintheti át a Azure Site Recovery Deployment Planner a VMware – Azure vész-helyreállítási szolgáltatáshoz tartozó költségbecslés jelentését.
+title: Költségbecslés áttekintése a Azure Site Recovery Deployment Plannerban
+description: Ez a cikk azt ismerteti, hogyan tekintheti át a Azure Site Recovery Deployment Planner a VMware vész-helyreállítási feladataival kapcsolatos költségeket.
 author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 7/29/2019
 ms.author: mayg
-ms.openlocfilehash: 1f825b67baf36c9a1a9187d555522f5a5955d1c7
-ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
+ms.openlocfilehash: 27678fff1c0322f9755e7726026c73934810d5d6
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68620074"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73953345"
 ---
-# <a name="review-the-cost-estimation-report-in-the-site-recovery-deployment-planner-for-vmware-disaster-recovery-to-azure"></a>Tekintse át a Site Recovery Deployment Planner az Azure-ba történő VMware vész-helyreállításra vonatkozó költségbecslés jelentését
+# <a name="review-cost-estimations-in-the-vmware-deployment-planner"></a>Becsült költségbecslés a VMware Deployment Planner 
 
 A Deployment Planner jelentése a [Javaslatok](site-recovery-vmware-deployment-planner-analyze-report.md#recommendations) táblázatokban költségbecslési összefoglalást, a Költségbecslés táblázatban pedig részletes költségelemzést biztosít. Részletes költségelemzést tartalmaz virtuális gépenként. 
 
@@ -31,13 +31,13 @@ Az összefoglalás segít megismerni a tárolás, számítás, hálózat és lic
  
 A költségeket havi vagy éves bontásban tekintheti meg. További információkat olvashat a [támogatott célrégiókról](./site-recovery-vmware-deployment-planner-cost-estimation.md#supported-target-regions) és a [támogatott pénznemekről](./site-recovery-vmware-deployment-planner-cost-estimation.md#supported-currencies).
 
-**Cost by Components** A DR teljes költsége négy összetevőre oszlik: Számítási, tárolási, hálózati és Azure Site Recovery licencek díja. A költségeket a használat alapján számoljuk ki, amely költségek a replikáció során és a számítás, tárterület (prémium és standard), a helyszíni hely és az Azure között konfigurált ExpressRoute/VPN, valamint az Azure Site Recovery licence DR működési ideje során lépnek fel.
+**Összetevők szerinti költségek**: A vészhelyreállítás teljes költsége négy összetevőből áll: Számítás, Tárterület, Hálózat és az Azure Site Recovery licencköltségei. A költségeket a használat alapján számoljuk ki, amely költségek a replikáció során és a számítás, tárterület (prémium és standard), a helyszíni hely és az Azure között konfigurált ExpressRoute/VPN, valamint az Azure Site Recovery licence DR működési ideje során lépnek fel.
 
 **Állapot szerinti költségek**: A vészhelyreállítás (DR) teljes költségeinek kategóriái két különböző állapoton alapulnak – Replikáció és DR működése. 
 
-**Replikálási díj**:  A replikáció során felmerülő költségek. Ez fedezi a tárolás, a hálózat és az Azure Site Recovery-licenc költségeit. 
+**Replikáció költségei**: A replikáció során felmerülő költségek. Ez fedezi a tárolás, a hálózat és az Azure Site Recovery-licenc költségeit. 
 
-**Dr**működésének díja: A feladatátvételi teszt során felmerülő költségek. Az Azure Site Recovery virtuális gépeket indít el a feladatátvételi tesztek során. A DR működési költségei a futó virtuális gépek számítási és tárolási költségeit fedezik. 
+**DR működés költségei**: A feladatátvételi tesztek során felmerülő költségek. Az Azure Site Recovery virtuális gépeket indít el a feladatátvételi tesztek során. A DR működési költségei a futó virtuális gépek számítási és tárolási költségeit fedezik. 
 
 **Az Azure Storage tárterület éves/havi költségei** A tárterület teljes költségeit mutatja, amelyek a replikációhoz és a DR működésekor használt prémium és standard tárterület esetén merülnek fel.
 
@@ -52,19 +52,19 @@ A jelentésben a szürkével jelölt cellák írásvédettek. A fehér színű c
 ### <a name="overall-dr-cost-by-components"></a>Teljes vészhelyreállítási költség összetevőnként
 Az első szakaszban a teljes vészhelyreállítási költség látható összetevőnként, valamint a vészhelyreállítási költség állapotonként. 
 
-**Számítás**: Az Azure-ban DR-re futó virtuális gépek IaaS díja. Az Azure Site Recovery által a DR működés (feladatátvételi tesztek) során létrehozott virtuális gépeket és az Azure-on futó virtuális gépeket tartalmazza (például SQL Server Always On rendelkezésre állási csoportokkal és tartományvezérlőkkel / tartományi névkiszolgálók).
+**Számítás**: A vészhelyreállítási igényekhez szükséges Azure-on futó IaaS típusú virtuális gépek költségei. Az Azure Site Recovery által a DR működés (feladatátvételi tesztek) során létrehozott virtuális gépeket és az Azure-on futó virtuális gépeket tartalmazza (például SQL Server Always On rendelkezésre állási csoportokkal és tartományvezérlőkkel / tartományi névkiszolgálók).
 
-**Tárterület**: A DR igényeinek megfelelő Azure Storage-felhasználás díja. A replikáció és a DR működés tárhelyhasználatát tartalmazza.
-Hálózati A ExpressRoute és a helyek közötti VPN-költségeket DR-igényeknek megfelelően. 
+**Tárolás**: A vészhelyreállítási igényekhez szükséges Azure-tárhelyhasználat költségei. A replikáció és a DR működés tárhelyhasználatát tartalmazza.
+Hálózat: A vészhelyreállítási igényekhez szükséges ExpressRoute- és helyek közötti VPN költségei. 
 
-**ASR-licenc**: Azure Site Recovery az összes kompatibilis virtuális gép licencének költségeit. Ha manuálisan adta meg a virtuális gépet a részletes költségelemzési táblában, a virtuális gép Azure Site Recovery-licencköltségeit is tartalmazza.
+**ASR-licenc**: Az Azure Site Recovery-licenc költségei minden kompatibilis virtuális géphez. Ha manuálisan adta meg a virtuális gépet a részletes költségelemzési táblában, a virtuális gép Azure Site Recovery-licencköltségeit is tartalmazza.
 
 ### <a name="overall-dr-cost-by-states"></a>Teljes vészhelyreállítási költség állapotonként
 A vészhelyreállítás (DR) teljes költségének kategóriái két különböző állapoton alapulnak – Replikáció és DR működése
 
-**Replikálási díj**: A költségek a replikálás időpontjában keletkeznek. Ez fedezi a tárolás, a hálózat és az Azure Site Recovery-licenc költségeit. 
+**Replikáció költségei**: A replikáció során felmerülő költségek. Ez fedezi a tárolás, a hálózat és az Azure Site Recovery-licenc költségeit. 
 
-**Dr**működésének díja: A DR működésének időpontjában megjelenő költségek. Az Azure Site Recovery virtuális gépeket indít el a DR működése során. A DR működési költségei a futó virtuális gépek számítási és tárolási költségeit fedezik.
+**DR működés költségei**: A DR működése során felmerülő költségek. Az Azure Site Recovery virtuális gépeket indít el a DR működése során. A DR működési költségei a futó virtuális gépek számítási és tárolási költségeit fedezik.
 A DR teljes működési időtartama egy évben = DR működéseinek száma x DR működéseinek időtartama (napokban) DR működésének átlagos költsége (havonta) = DR működésének teljes költsége / 12
 
 ### <a name="storage-cost-table"></a>A tárolási költség táblázata:
@@ -73,11 +73,11 @@ Ez a tábla a replikáció és a DR működése során használt prémium és st
 ### <a name="site-to-azure-network"></a>Hely–Azure hálózat
 Válassza ki az igényeinek megfelelő beállítást. 
 
-**ExpressRoute:** Alapértelmezés szerint az eszköz kiválasztja a legközelebbi ExpressRoute-csomagot, amely megfelel a különbözeti replikációhoz szükséges hálózati sávszélességnek. Igény szerint módosíthatja a tervet.
+**ExpressRoute**: Alapértelmezés szerint az eszköz kiválasztja a legközelebbi ExpressRoute-tervet, amely megfelel a változásreplikációhoz szükséges hálózati sávszélességnek. Igény szerint módosíthatja a tervet.
 
-**VPN Gateway**: Válassza ki a VPN Gateway, ha rendelkezik a környezetében. Alapértelmezés szerint NA értékű.
+**VPN Gateway**: Akkor válassza a VPN Gatewayt, ha rendelkezik ilyennel a környezetében. Alapértelmezés szerint NA értékű.
 
-**Cél régió**: A DR-hez megadott Azure-régió. A jelentésben a számításhoz, tároláshoz, hálózathoz és licenchez használt árak a régió Azure-díjszabásán alapulnak. 
+**Célrégió**: A vészhelyreállításhoz megadott Azure-régió. A jelentésben a számításhoz, tároláshoz, hálózathoz és licenchez használt árak a régió Azure-díjszabásán alapulnak. 
 
 ### <a name="vm-running-on-azure"></a>Az Azure-ban futó virtuális gép
 Ha az Azure-ban bármilyen tartományvezérlő, DNS virtuális gép vagy Always On rendelkezésre állási csoportokkal rendelkező, SQL Server rendszerű virtuális gép fut vészhelyreállítási céllal, megadhatja a virtuális gépek számát és méretét, hogy azok számítási költségei is figyelembe legyenek véve a vészhelyreállítás teljes költségében. 
@@ -90,7 +90,7 @@ Ez a tábla a Windows és nem Windows rendszerű virtuális gépek számát és 
 
 ### <a name="settings"></a>Beállítások 
 
-**Pénznem**: Az a pénznem, amelyben a jelentés létrejött. A Cost időtartama:  A havi vagy az egész évre vonatkozó összes költséget megtekintheti. 
+**Pénznem**: A pénznem, amelyben a jelentést létrehozták. Költség időtartama: Megtekintheti a hónapra vagy az egész évre vonatkozó összes költséget. 
 
 ## <a name="detailed-cost-analysis-table"></a>Részletes költségelemzési táblázat
 ![Részletes költségelemzés](media/site-recovery-hyper-v-deployment-planner-cost-estimation/detailed-cost-analysis-h2a.png): A táblában a kompatibilis virtuális gépek lebontott költségeinek listája látható. Ezt a táblát a profil nélküli virtuális gépek becsült Azure-beli vészhelyreállítási költségeinek megismeréséhez is használhatja a virtuális gépek manuális hozzáadásával. Ez olyan esetekben hasznos, amikor egy új vészhelyreállítás üzembe helyezésének Azure-költségeit kell megbecsülni részletes profilkészítés nélkül.
@@ -106,7 +106,7 @@ Virtuális gépek manuális hozzáadása:
 * Az egyes DR működések időtartama (nap) 
 * Operációs rendszer típusa
 * Adatredundancia 
-* Azure Hybrid Benefit értékelem
+* Azure Hybrid Benefit
 
 1. Alkalmazhatja ugyanazokat az értékeket minden virtuális gépre a táblázatban az „Alkalmazás az összesre” gombra kattintva a következőknél: DR működéseinek száma évente, Az egyes DR működések időtartama (nap), Adatredundancia, és az Azure Hybrid Use Benefit.
 
@@ -116,31 +116,31 @@ Virtuális gépek manuális hozzáadása:
 
 **Virtuális gépek száma**: A konfigurációnak megfelelő virtuális gépek száma. Frissítheti a meglévő virtuális gépek számát, ha a hasonló konfigurációjú virtuális gépekről nem készül profil, de védve lesznek.
 
-**IaaS-méret (javaslat)** : Ez az eszköz által javasolt kompatibilis virtuális gép virtuálisgép-szerepkörének mérete. 
+**IaaS-méret (javaslat)** : A kompatibilis virtuális gép az eszköz által javasolt virtuális gépi szerepkörének mérete. 
 
-**IaaS mérete (az Ön választása)** : Alapértelmezés szerint ez ugyanaz, mint az ajánlott virtuálisgép-szerepkör mérete. Igény szerint módosíthatja a szerepkört. A számítási költség a kiválasztott virtuális gépi szerepkör méretén alapul.
+**IaaS-méret (felhasználó választása)** : Alapértelmezés szerint ugyanaz, mint a javasolt virtuális gépi szerepkör mérete. Igény szerint módosíthatja a szerepkört. A számítási költség a kiválasztott virtuális gépi szerepkör méretén alapul.
 
-**Tárolási típus**: A virtuális gép által használt tároló típusa. Lehet standard vagy prémium szintű tároló.
+**Tárolás típusa**: A virtuális gép által használt tároló típusa. Lehet standard vagy prémium szintű tároló.
 
-**Virtuális gép tárterületének teljes mérete (GB)** : A forrásként szolgáló virtuális gép teljes tárterülete.
+**Virtuális gép tárterületének teljes mérete (GB)** : a forrásként szolgáló virtuális gép teljes tárterülete.
 
-**Dr-részletezések száma évente**: A DR-részletezések évente történő elvégzésének száma. Alapértelmezés szerint az értéke évente 4. Módosíthatja adott virtuális gépek időszakait, vagy alkalmazhatja az új értéket az összes virtuális gépre úgy, hogy a felső sorba beírja az új értéket és az „Alkalmazás az összesre” gombra kattint. A DR működéseinek száma évente és a DR egyes működéseinek időtartama alapján a rendszer kiszámítja a DR működésének teljes költségét.  
+**DR működéseinek száma évente**: A DR működéseinek száma egy évben. Alapértelmezés szerint az értéke évente 4. Módosíthatja adott virtuális gépek időszakait, vagy alkalmazhatja az új értéket az összes virtuális gépre úgy, hogy a felső sorba beírja az új értéket és az „Alkalmazás az összesre” gombra kattint. A DR működéseinek száma évente és a DR egyes működéseinek időtartama alapján a rendszer kiszámítja a DR működésének teljes költségét.  
 
-A DR működésének **időtartama (nap)** : Az egyes DR-részletezések időtartama. Alapértelmezés szerint ez 90 naponként 7 nap a [Vészhelyreállítási frissítési garanciának](https://azure.microsoft.com/pricing/details/site-recovery) megfelelően. Módosíthatja adott virtuális gépek időszakait, vagy alkalmazhatja az új értéket az összes virtuális gépre úgy, hogy a felső sorba beírja az új értéket és az „Alkalmazás az összesre” gombra kattint. A DR működésének teljes költsége kiszámítása a DR évi működéseinek számán és a DR egyes működéseinek időtartamán alapul.
+**DR egyes működéseinek időtartama (nap)** : A DR egyes működéseinek időtartama. Alapértelmezés szerint ez 90 naponként 7 nap a [Vészhelyreállítási frissítési garanciának](https://azure.microsoft.com/pricing/details/site-recovery) megfelelően. Módosíthatja adott virtuális gépek időszakait, vagy alkalmazhatja az új értéket az összes virtuális gépre úgy, hogy a felső sorba beírja az új értéket és az „Alkalmazás az összesre” gombra kattint. A DR működésének teljes költsége kiszámítása a DR évi működéseinek számán és a DR egyes működéseinek időtartamán alapul.
   
 **Operációs rendszer típusa**: A virtuális gép operációs rendszerének típusa. Lehet Windows vagy Linux. Ha az operációs rendszer típusa Windows, az Azure Hybrid Use Benefit alkalmazható a virtuális gépre. 
 
-Adatredundancia: A következők egyike lehet a következő – helyileg redundáns tárolás (LRS), a Geo-redundáns tárolás (GRS) vagy a Read-Access geo-redundáns tárolás (RA-GRS). Az alapértelmezett érték LRS. Módosíthatja a típust adott virtuális gépek tárfiókja alapján, vagy alkalmazhatja az új típust minden virtuális gépre úgy, hogy módosítja a felső sor típusát, és az „Alkalmazás az összesre” gombra kattint.  A replikáció tárolási költsége a kiválasztott adatredundancia árának alapján lesz kiszámítva. 
+**Adatredundancia**: A következők egyike lehet – Helyileg redundáns tárolás (LRS), Georedundáns tárolás (GRS) vagy Írásvédett georedundáns tárolás (RA-GRS). Az alapértelmezett érték LRS. Módosíthatja a típust adott virtuális gépek tárfiókja alapján, vagy alkalmazhatja az új típust minden virtuális gépre úgy, hogy módosítja a felső sor típusát, és az „Alkalmazás az összesre” gombra kattint.  A replikáció tárolási költsége a kiválasztott adatredundancia árának alapján lesz kiszámítva. 
 
-**Azure Hybrid Benefit**: Ha alkalmazható, a Windows rendszerű virtuális gépekre is alkalmazhat Azure Hybrid Benefit.  Az alapértelmezett érték az Igen. Módosíthatja adott virtuális gépek beállításait, vagy frissítheti az összes virtuális gépet az „Alkalmazás az összesre” gombra kattintva.
+**Azure Hybrid Benefit**: Az Azure Hybrid Benefit az arra jogosult Windows rendszerű virtuális gépekre alkalmazható.  Az alapértelmezett érték az Igen. Módosíthatja adott virtuális gépek beállításait, vagy frissítheti az összes virtuális gépet az „Alkalmazás az összesre” gombra kattintva.
 
-**Összes Azure-felhasználás**: Ez magában foglalja a DR. számítási, tárolási és Azure Site Recovery licencek költségeit. A választott beállítás alapján a költségeket havi vagy éves bontásban jeleníti meg.
+**Teljes Azure-használat**: A számítás, a tárolás és az Azure Site Recovery-licenc költségeit tartalmazza a vészhelyreállításhoz. A választott beállítás alapján a költségeket havi vagy éves bontásban jeleníti meg.
 
-**Állandó állapotú replikálási díj**: Magában foglalja a replikálás tárolási költségeit.
+**Stabil állapotú replikáció költsége**: A replikáció tárolási költségét tartalmazza.
 
-**Dr működésének teljes költsége (átlag)** : A DR-részletezés számítási és tárolási költségeit is tartalmazza.
+**DR működés teljes költsége (átlag)** : A DR működés számítási és tárolási költségét tartalmazza.
 
-**ASR-licenc díja**: Azure Site Recovery a licenc költségeit.
+**ASR-licencköltség**: Az Azure Site Recovery-licenc költsége.
 
 ## <a name="supported-target-regions"></a>Támogatott célrégiók
 Az Azure Site Recovery Deployment Planner a következő Azure-régiókhoz biztosít költségbecslést. Ha a régiója nem található meg a lenti listában, a következő régiók közül használhatja azt, amelynek díjszabása a legközelebb áll az Ön régiójához.
@@ -150,7 +150,7 @@ eastus, eastus2, westus, centralus, northcentralus, southcentralus, northeurope,
 ## <a name="supported-currencies"></a>Támogatott pénznemek
 Az Azure Site Recovery Deployment Planner az alábbi pénznemek bármelyikének használatával létre tudja hozni a költségjelentést.
 
-|Currency|Name (Név)||Currency|Name (Név)||Currency|Name (Név)|
+|Currency (Pénznem)|Name (Név)||Currency (Pénznem)|Name (Név)||Currency (Pénznem)|Name (Név)|
 |---|---|---|---|---|---|---|---|
 |ARS|Argentin peso ($)||AUD|Ausztrál dollár ($)||BRL|Brazil real (R$)|
 |CAD|Kanadai dollár ($)||CHF|Svájci frank (chf)||DKK|Dán korona (kr)|
@@ -161,5 +161,5 @@ Az Azure Site Recovery Deployment Planner az alábbi pénznemek bármelyikének 
 |SAR|Szaúdi riál (SR)||SEK|Svéd korona (kr)||TWD|Tajvani új dollár (NT$)|
 |TRY|Török líra (TL)||USD| Amerikai dollár ($)||ZAR|Dél-afrikai rand (R)|
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Többet tudhat meg az [Azure-ba migrált VMware virtuális gépek védelméről az Azure Site Recoveryvel](https://docs.microsoft.com/azure/site-recovery/tutorial-vmware-to-azure).

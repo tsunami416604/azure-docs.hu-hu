@@ -1,5 +1,5 @@
 ---
-title: Ismerkedés az Azure IoT Hub-modulidentitással és -modulikerrel (.NET) | Microsoft Docs
+title: Első lépések az Azure IoT Hub modul Identity & modul twin (.NET)
 description: Megtudhatja, hogyan hozhat létre modulidentitást és frissíthet modulikert a .NET-hez készült IoT SDK-k használatával.
 author: chrissie926
 ms.service: iot-hub
@@ -8,12 +8,12 @@ ms.devlang: csharp
 ms.topic: conceptual
 ms.date: 08/07/2019
 ms.author: menchi
-ms.openlocfilehash: abf8b18d13e2990f053dd4273645dd7b9a324c77
-ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
+ms.openlocfilehash: e728d0ef8f52927687d56bd1d4c64f03c53ef401
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70147747"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73947680"
 ---
 # <a name="get-started-with-iot-hub-module-identity-and-module-twin-net"></a>Ismerkedés a IoT Hub modul identitásával és moduljával (.NET)
 
@@ -53,11 +53,11 @@ Az oktatóanyag végén két .NET-konzolalkalmazással fog rendelkezni:
 
 Ebben a szakaszban egy .NET-konzolalkalmazást hoz létre a szimulált eszközön a moduliker jelentett tulajdonságainak frissítéséhez.
 
-Mielőtt elkezdené, szerezze be a modulhoz tartozó kapcsolási karakterláncot. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/). Navigáljon a hubhoz, és válassza a **IoT-eszközök**elemet. **MyFirstDevice**keresése. Válassza a **myFirstDevice** lehetőséget a megnyitásához, majd kattintson a **myFirstModule** elemre a megnyitásához. A **modul identitásának részleteiben**másolja a **kapcsolati karakterláncot (elsődleges kulcs)** , ha szükséges az alábbi eljárásban.
+Mielőtt elkezdené, szerezze be a modulhoz tartozó kapcsolási karakterláncot. Bejelentkezés az [Azure Portalra](https://portal.azure.com/). Navigáljon a hubhoz, és válassza a **IoT-eszközök**elemet. **MyFirstDevice**keresése. Válassza a **myFirstDevice** lehetőséget a megnyitásához, majd kattintson a **myFirstModule** elemre a megnyitásához. A **modul identitásának részleteiben**másolja a **kapcsolati karakterláncot (elsődleges kulcs)** , ha szükséges az alábbi eljárásban.
 
    ![Az Azure Portal moduladatai](./media/iot-hub-csharp-csharp-module-twin-getstarted/module-identity-detail.png)
 
-1. A Visual Studióban vegyen fel egy új projektet a megoldásba a **fájl** > **új** > **projekt**lehetőség kiválasztásával. Az új projekt létrehozása területen válassza a **konzol alkalmazás (.NET-keretrendszer)** lehetőséget, és kattintson a **Tovább gombra**.
+1. A Visual Studióban vegyen fel egy új projektet a megoldáshoz a **fájl** > **új** > **projekt**elem kiválasztásával. Az új projekt létrehozása területen válassza a **konzol alkalmazás (.NET-keretrendszer)** lehetőséget, és kattintson a **Tovább gombra**.
 
 1. Adja a projektnek az *UpdateModuleTwinReportedProperties* nevet. A **megoldás**mezőben válassza a **Hozzáadás a megoldáshoz**lehetőséget. A Microsoft .NET-keretrendszer 4.6.1-es vagy újabb verzióját használja.
 
@@ -65,7 +65,7 @@ Mielőtt elkezdené, szerezze be a modulhoz tartozó kapcsolási karakterláncot
 
 1. Válassza a **Létrehozás** lehetőséget a projekt létrehozásához.
 
-1. A Visual Studióban nyissa meg az **eszközök** > **NuGet csomagkezelő** > **NuGet-csomagok kezelése megoldást**. Válassza ki a **Browse** (Tallózás) lapot.
+1. A Visual Studióban nyissa meg az **eszközök** > **NuGet Package Manager** > **NuGet-csomagok kezelése megoldáshoz**című részt. Válassza ki a **Browse** (Tallózás) lapot.
 
 1. Keresse meg és válassza ki a **Microsoft. Azure. Devices. Client**elemet, majd válassza a **telepítés**lehetőséget.
 
@@ -151,7 +151,7 @@ Mielőtt elkezdené, szerezze be a modulhoz tartozó kapcsolási karakterláncot
 
     A kódminta segítségével megtudhatja, hogyan kérheti le a modulikret és frissítheti a jelentett tulajdonságokat az AMQP-protokollal. A nyilvános előzetes verzióban az AMQP csak a moduliker-műveletek esetében támogatott.
 
-1. Ha szeretné, ezeket az utasításokat a **Main** metódushoz is hozzáadhatja, ha egy eseményt szeretne elküldeni IoT hub a modulból. Helyezze el ezeket a sorokat `try catch` a blokk alá.
+1. Ha szeretné, ezeket az utasításokat a **Main** metódushoz is hozzáadhatja, ha egy eseményt szeretne elküldeni IoT hub a modulból. Helyezze ezeket a sorokat a `try catch` blokk alá.
 
     ```csharp
     Byte[] bytes = new Byte[2];
@@ -174,7 +174,7 @@ Most már futtathatja az alkalmazásokat.
 
 1. Az alkalmazások elindításához nyomja le az **F5** billentyűt.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További bevezetés az IoT Hub használatába, valamint egyéb IoT-forgatókönyvek megismerése:
 

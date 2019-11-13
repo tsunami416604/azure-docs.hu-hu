@@ -3,7 +3,7 @@ title: Az Azure Digital Twins előzetes verziójának dokumentációja
 summary: Útmutató az Azure Digital Twins használatához személyek, helyek és dolgok összekapcsolására és térbeli intelligenciával rendelkező IoT-megoldások létrehozására. A rövid útmutató és az oktatóanyagok során megismerkedhet egy képzeletbeli okosépület monitorozásának módjával és a kapcsolódó alapelvek részleteivel, és létrehozhat egy következő generációs, a fizikai környezetét modellező IoT-megoldást.
 metadata:
   title: Az Azure Digital Twins előzetes verziójának dokumentációja – oktatóanyagok és API-referencia | Microsoft Docs
-  description: Az Azure Digital Twins platform segítségével intelligens térinformatikai megoldásokat hozhat létre.
+  description: Útmutató az Azure Digital Twins használatához személyek, helyek és dolgok összekapcsolására és térbeli intelligenciával rendelkező IoT-megoldások létrehozására.
   services: digital-twins
   ms.service: digital-twins
   ms.subservice: digital-twins
@@ -12,12 +12,12 @@ metadata:
   author: KingdomOfEnds
   ms.author: v-adgera
   ms.date: 09/03/2019
-  ms.openlocfilehash: b5a449d09b1068dbf874828b9e65b1ac318b58fd
-  ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
+  ms.openlocfilehash: 3d55dcfc4b57d0179ca6e02bae50bf3d37dc70f3
+  ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
   ms.translationtype: HT
   ms.contentlocale: hu-HU
-  ms.lasthandoff: 09/24/2019
-  ms.locfileid: "71219730"
+  ms.lasthandoff: 11/13/2019
+  ms.locfileid: "74009299"
 landingContent:
 - title: Az Azure Digital Twins bemutatása
   linkLists:

@@ -1,18 +1,18 @@
 ---
-title: A VMM-felhőkben lévő helyszíni Hyper-V virtuális gépek vész-helyreállításának beállítása az Azure-ba Site Recovery
+title: A Hyper-V (VMM) szolgáltatás vész-helyreállításának beállítása Azure Site Recovery használatával
 description: Megtudhatja, hogyan állíthatja be a System Center VMM-felhőkben futó helyszíni Hyper-V virtuális gépek vész-helyreállítását az Azure-ba Site Recovery használatával.
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 09/09/2019
+ms.date: 11/12/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: f686a02e363025daa5d0c3b3d4e53e07da636544
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: fdf6d9674305ca13af51f3f7b97e0a40568738b6
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72933839"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73953973"
 ---
 # <a name="set-up-disaster-recovery-of-on-premises-hyper-v-vms-in-vmm-clouds-to-azure"></a>A VMM-felhőkben lévő helyszíni Hyper-V virtuális gépek vész-helyreállításának beállítása az Azure-ba
 
@@ -20,7 +20,7 @@ Ez a cikk azt ismerteti, hogyan engedélyezhető a System Center Virtual Machine
 
 Ez a harmadik oktatóanyag egy sorozatban, amely bemutatja, hogyan állíthatja be a vész-helyreállítást az Azure-ba helyszíni VMware virtuális gépekre. Az előző oktatóanyagban [elkészítettük a helyszíni Hyper-V környezetet](hyper-v-prepare-on-premises-tutorial.md) az Azure-ba való vész-helyreállításhoz.
 
-Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]
 > * Válassza ki a replikációs forrást és célt.
@@ -33,10 +33,10 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > Az oktatóanyagok a forgatókönyvek legegyszerűbb telepítési útvonalát mutatják be. Ahol lehet, az alapértelmezett beállításokat használják, és nem mutatják be az összes lehetséges beállítást és útvonalat. Részletes utasításokért tekintse át a [site Recovery dokumentációjának](https://docs.microsoft.com/azure/site-recovery) **útmutatók** szakaszának cikkeit.
 
 > [!WARNING]
-> Vegye figyelembe, hogy a SCVMM-konfiguráció fiókhoz való használatának ASR-támogatása hamarosan elavulttá válik, ezért javasoljuk, hogy a továbblépés előtt olvassa el az [elavult](scvmm-site-recovery-deprecation.md) adatokat.
+> A System Center VMM használatával a Hyper-V virtuális gépek vész-helyreállítási támogatása a közeljövőben elavulttá válik. A folytatás előtt ajánlott az [elavult](scvmm-site-recovery-deprecation.md) adatok olvasása.
 
 
-## <a name="before-you-begin"></a>Előzetes teendők
+## <a name="before-you-begin"></a>Előkészületek
 
 Ez az oktatóanyag egy sorozat harmadik része. Feltételezi, hogy már végrehajtotta a feladatokat az előző oktatóanyagokban:
 

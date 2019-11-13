@@ -7,17 +7,17 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 08/01/2019
+ms.date: 11/12/2019
 author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: 178628db11b95fbd345e94111ebf15809da3fc35
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 55abdab6a427547ee8bd498500deee94b8f67453
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73684297"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73954729"
 ---
 # <a name="configure-self-hosted-ir-as-a-proxy-for-azure-ssis-ir-in-adf"></a>Saját üzemeltetésű IR konfigurálása az ADF-Azure-SSIS IR proxyként
 Ez a cikk azt ismerteti, hogyan futtathatók a SQL Server Integration Services (SSIS) csomagok Azure-SSIS Integration Runtime (IR)-ben Azure Data Factory (ADF)-ben, a saját üzemeltetésű IR proxyként konfigurálva.  Ez a funkció lehetővé teszi a helyszíni adatelérést anélkül, hogy a [virtuális hálózathoz csatlakozna a Azure-SSIS IR](https://docs.microsoft.com/azure/data-factory/join-azure-ssis-integration-runtime-virtual-network).  Ez akkor hasznos, ha a vállalati hálózat túlságosan összetett konfigurációval/korlátozó házirenddel rendelkezik, amellyel befecskendezheti a Azure-SSIS IR.
@@ -87,10 +87,10 @@ A Azure-SSIS IR futó második előkészítési feladatok külön nem lesznek fe
 
 ## <a name="current-limitations"></a>Aktuális korlátozások
 
-- Jelenleg csak az OLEDB/Flat file-kapcsolatok kezelői és az OLEDB/Flat file-források támogatottak. 
+- Jelenleg csak az ODBC/OLEDB/Flat file kapcsolatkezelő és az ODBC/OLEDB/Flat file sources adatáramlási feladatai támogatottak. 
 - Jelenleg csak az Azure Blob Storage társított szolgáltatások vannak konfigurálva a **fiók kulcsa**/**sas URI**/**egyszerű szolgáltatásnév** -hitelesítés.
 - Csak a saját üzemeltetésű integrációs modul van kiépítve ugyanabban az ADF-ben, ahol a Azure-SSIS IR kiépítve jelenleg támogatott.
-- Az OLEDB/Flat file sources és a kapcsolatkezelő tulajdonságain belüli SSIS paraméterek/változók használata nem támogatott.
+- Az ODBC/OLEDB/Flat file sources és a kapcsolatkezelő tulajdonságain belüli SSIS paraméterek/változók használata jelenleg nem támogatott.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ha a saját üzemeltetésű integrációs modult proxyként konfigurálta a Azure-SSIS IR számára, a csomagokat üzembe helyezheti és futtathatja, hogy a helyszínen lévő adataihoz hozzáférjenek az ADF-folyamatok végrehajtási SSIS [ ](https://docs.microsoft.com/azure/data-factory/how-to-invoke-ssis-package-ssis-activity).

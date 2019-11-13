@@ -1,27 +1,26 @@
 ---
-title: Azure IaaS virtuális gépek áthelyezése Azure Government és a nyilvános régiók között a Azure Site Recovery szolgáltatással | Microsoft Docs
-description: Azure Site Recovery használatával áthelyezheti az Azure IaaS virtuális gépeket Azure Government & nyilvános régiók között.
-services: site-recovery
+title: Azure-beli virtuális gépek áthelyezése a kormányzati és a nyilvános régiók között Azure Site Recovery
+description: Azure Site Recovery használatával Azure-beli virtuális gépeket helyezhet át az Azure Government és a nyilvános régiók között.
 author: rajani-janaki-ram
 ms.service: site-recovery
 ms.topic: tutorial
 ms.date: 04/16/2019
 ms.author: rajanaki
 ms.custom: MVC
-ms.openlocfilehash: bff6268507c0d2ec0aa1eac0c7e2e9d2513ded58
-ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
+ms.openlocfilehash: 2a749e9345fec0e91751641cd15805d7f7d62d95
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70376124"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73961410"
 ---
 # <a name="move-azure-vms-between-azure-government-and-public-regions"></a>Azure-beli virtuális gépek áthelyezése Azure Government és a nyilvános régiók között 
 
 Előfordulhat, hogy át szeretné helyezni a IaaS virtuális gépeket a Azure Government és a nyilvános régiók között a meglévő virtuális gépek rendelkezésre állásának növelése, a kezelhetőség javítása vagy az irányítási okokból, az [itt](azure-to-azure-move-overview.md)részletezett módon.
 
-Amellett, hogy a [Azure site Recovery](site-recovery-overview.md) szolgáltatás használatával felügyelje és koordinálja a helyszíni gépek és az Azure-beli virtuális gépek vész-helyreállítását az üzletmenet folytonossága és a vész-helyreállítás (BCDR) érdekében, használhatja a site Recoveryt is az Azure áthelyezésének kezeléséhez Virtuális gépek egy másodlagos régióba.       
+Amellett, hogy a [Azure site Recovery](site-recovery-overview.md) szolgáltatás használatával felügyelje és koordinálja a helyszíni gépek és az Azure virtuális gépek vész-helyreállítását az üzletmenet folytonossága és a vész-helyreállítás (BCDR) érdekében, a site Recovery használatával is kezelheti az Azure-beli virtuális gépek másodlagos régióba való áthelyezését.       
 
-Ez az oktatóanyag bemutatja, hogyan helyezheti át az Azure-beli virtuális gépeket a Azure Government és a nyilvános régiók között Azure Site Recovery használatával. Ugyanezt kiterjesztheti olyan virtuális gépek áthelyezésére, amelyek nem ugyanazon a földrajzi fürtön belül vannak. Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Ez az oktatóanyag bemutatja, hogyan helyezheti át az Azure-beli virtuális gépeket a Azure Government és a nyilvános régiók között Azure Site Recovery használatával. Ugyanezt kiterjesztheti olyan virtuális gépek áthelyezésére, amelyek nem ugyanazon a földrajzi fürtön belül vannak. Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]
 > * Előfeltételek ellenőrzése
@@ -79,8 +78,8 @@ Hozzon létre egy [Azure Storage-fiókot](../storage/common/storage-quickstart-c
 A mobilitási szolgáltatást minden replikálni kívánt kiszolgálón telepíteni kell. A Site Recovery automatikusan telepíti ezt a szolgáltatást, amikor engedélyezi a replikációt a kiszolgálón. Az automatikus telepítéshez elő kell készítenie egy fiókot, amelyet Site Recovery fog használni a kiszolgálóhoz való hozzáféréshez.
 
 - Tartományi vagy helyi fiókot is használhat
-- Windows rendszerű virtuális gépek esetén, ha nem használ tartományi fiókot, tiltsa le a távoli felhasználói hozzáférés-vezérlést a helyi gépen. Ehhez a Register ( **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System**) területen adja hozzá a **LocalAccountTokenFilterPolicy**DWORD bejegyzést, amelynek értéke 1.
-- A beállítás parancssori felületről való letiltásához írja be a következőt a beállításjegyzékbe:``REG ADD HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System /v LocalAccountTokenFilterPolicy /t REG_DWORD /d 1.``
+- Windows rendszerű virtuális gépek esetén, ha nem használ tartományi fiókot, tiltsa le a távoli felhasználói hozzáférés-vezérlést a helyi gépen. Ehhez a regisztrálás **HKEY_LOCAL_MACHINE \software\microsoft\windows\currentversion\policies\system**területen adja hozzá a DWORD bejegyzés **LocalAccountTokenFilterPolicy**, amelynek értéke 1.
+- A beállítás parancssori felületről való letiltásához írja be a következőt a beállításjegyzékbe: ``REG ADD HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System /v LocalAccountTokenFilterPolicy /t REG_DWORD /d 1.``
 - Linux esetén a fióknak a forrás Linux-kiszolgáló gyökerének kell lennie.
 
 
@@ -111,23 +110,23 @@ Az alábbi lépések bemutatják, hogyan használhatja a Azure Site Recovery az 
 ### <a name="create-the-vault-in-any-region-except-the-source-region"></a>A forrásrégió kivételével bármelyik régióban létrehozhat tárolót.
 
 1. Jelentkezzen be az [Azure Portal](https://portal.azure.com) > **Recovery Services** szolgáltatásba.
-2. Kattintson **az erőforrás** > létrehozása**felügyeleti eszközök** > **biztonsági mentése és site Recovery**elemre.
+2. Kattintson **az erőforrás létrehozása** > **felügyeleti eszközök** > **biztonsági mentés és site Recovery**lehetőségre.
 3. A **Név** mezőben adja meg a **ContosoVMVault** rövid nevet. Ha több, mint egy. az előfizetés mezőben válassza ki a megfelelőt.
 4. Hozzon létre egy **ContosoRG** nevű erőforráscsoportot.
 5. Válassza ki a kívánt Azure-régiót. A támogatott régiók megtekintéséhez olvassa el az [Azure Site Recovery – Díjszabás](https://azure.microsoft.com/pricing/details/site-recovery/) című cikknek a földrajzi elérhetőséggel foglalkozó részét.
-6. Recovery Services-tárolóban kattintson az **Áttekintés** > **ConsotoVMVault** >  **+ replikálás** elemre.
-7. Válassza **Az Azure** > -ba**nem virtualizált/egyéb**lehetőséget.
+6. Recovery Services-tárolóban kattintson az **áttekintés** > **ConsotoVMVault** >  **+ replikálás** elemre.
+7. Válassza **Az Azure** > **nem virtualizált/egyéb**lehetőséget.
 
 ### <a name="set-up-the-configuration-server-to-discover-vms"></a>Állítsa be a konfigurációs kiszolgálót a virtuális gépek felderítésére.
 
 
 Állítsa be a konfigurációs kiszolgálót, regisztrálja a tárolóban, és fedezze fel a virtuális gépeket.
 
-1. Kattintson **site Recovery** > az**infrastruktúra** > előkészítése**forrás**lehetőségre.
+1. Kattintson a **Site Recovery** > az **infrastruktúra előkészítése** > a **forrás**lehetőségre.
 2. Ha nem rendelkezik konfigurációs kiszolgálóval, kattintson a **+ konfigurációs kiszolgáló**elemre.
 3. A **kiszolgáló hozzáadása**területen győződjön meg arról, hogy a **konfigurációs kiszolgáló** megjelenik a **kiszolgáló típusa mezőben**.
 4. Töltse le a Site Recovery egyesített telepítési telepítőfájlt.
-5. Töltse le a tárolóregisztrációs kulcsot. Ezt az egyesített telepítő futtatásakor kell megadnia. A kulcs a generálásától számított öt napig érvényes.
+5. Töltse le a tároló regisztrációs kulcsát. Ezt az egyesített telepítő futtatásakor kell megadnia. A kulcs a generálásától számított öt napig érvényes.
 
    ![A forrás beállítása](./media/physical-azure-disaster-recovery/source-environment.png)
 
@@ -154,7 +153,7 @@ Futtassa az egyesített telepítőt helyi rendszergazdaként a konfigurációs k
 
 [!INCLUDE [site-recovery-add-configuration-server](../../includes/site-recovery-add-configuration-server.md)]
 
-A regisztráció befejeződése után a konfigurációs kiszolgáló megjelenik a tároló **Beállítások** > **kiszolgálók** lapján.
+A regisztráció befejeződése után a konfigurációs kiszolgáló megjelenik a tároló **beállítások** > **kiszolgálók** lapján.
 
 ### <a name="configure-target-settings-for-replication"></a>A cél beállításainak konfigurálása a replikáláshoz
 
@@ -164,7 +163,7 @@ Válassza ki és ellenőrizze a célerőforrásokat.
 2. A cél telepítési modell meghatározása.
 3. A Site Recovery ellenőrzi, hogy rendelkezik-e legalább egy kompatibilis Azure-tárfiókkal és -hálózattal.
 
-   ![Target](./media/physical-azure-disaster-recovery/network-storage.png)
+   ![Cél](./media/physical-azure-disaster-recovery/network-storage.png)
 
 
 ### <a name="create-a-replication-policy"></a>Replikációs házirend létrehozása
@@ -175,12 +174,12 @@ Válassza ki és ellenőrizze a célerőforrásokat.
 4. A **Helyreállítási pont megőrzése** beállításnál azt adhatja meg, hogy milyen hosszú (hány órás) legyen az egyes helyreállítási pontok adatmegőrzési időtartama. A replikált virtuális gépek ezen az időtartamon belül bármikor helyreállíthatók. A rendszer a prémium tárolóra replikált gépek esetében 24 órás, a standard tárolóra replikált gépek esetében 72 órás megőrzést támogat.
 5. Az alkalmazás **-konzisztens Pillanatképek gyakorisága**mezőben adhatja meg, hogy az alkalmazás-konzisztens pillanatképeket tartalmazó helyreállítási pontok milyen gyakran jöjjenek létre. A szabályzat létrehozásához kattintson az **OK** gombra.
 
-    ![Replikációs házirend](./media/physical-azure-disaster-recovery/replication-policy.png)
+    ![Replikációs szabályzat](./media/physical-azure-disaster-recovery/replication-policy.png)
 
 
 A szabályzat automatikusan társítva lesz a konfigurációs kiszolgálóval. Alapértelmezés szerint a rendszer automatikusan létrehoz egy megfelelő szabályzatot a feladat-visszavételre is. Ha például a replikációs házirend a **rep-Policy** , akkor létrejön egy feladat-visszavételi szabályzat **rep-Policy-feladat-visszavétel** . Ezt a szabályzatot nem használja a rendszer, amíg nem indít el egy feladat-visszavételt az Azure-ból.
 
-### <a name="enable-replication"></a>Replikáció engedélyezése
+### <a name="enable-replication"></a>A replikáció engedélyezése
 
 - Site Recovery telepíti a mobilitási szolgáltatást, ha a replikáció engedélyezve van.
 - Ha engedélyezi a replikálást egy-kiszolgáló számára, a módosítások életbe léptetése 15 percet vagy hosszabb időt is igénybe vehet, és megjelenik a portálon.
@@ -198,22 +197,22 @@ A szabályzat automatikusan társítva lesz a konfigurációs kiszolgálóval. A
    > [!WARNING]
    > Meg kell adnia az áthelyezni kívánt Azure-beli virtuális gép IP-címét
 
-10. A **Tulajdonságok** > **konfigurálása tulajdonságok**területen válassza ki azt a fiókot, amelyet a Process-kiszolgáló a mobilitási szolgáltatás automatikus telepítéséhez fog használni a gépen.
+10. A **tulajdonságok** > **tulajdonságok konfigurálása**területen válassza ki azt a fiókot, amelyet a Process-kiszolgáló a mobilitási szolgáltatás automatikus telepítéséhez fog használni a gépen.
 11. A **Replikációs beállítások** > **Replikációs beállítások konfigurálása** területen ellenőrizze, hogy a megfelelő replikációs szabályzat van-e kiválasztva. 
 12. Kattintson a **Replikáció engedélyezése** elemre. A **Védelem engedélyezése** feladat előrehaladását a **Beállítások** > **Feladatok** > **Site Recovery-feladatok** menüpontban követheti nyomon. A **Védelem véglegesítése** feladat befejeződését követően a gép készen áll a feladatátvételre.
 
 
-A hozzáadott kiszolgálók figyeléséhez ellenőrizheti a **konfigurációs kiszolgálók** > utolsó felderített idejét a következő**helyen:** . Ha gépeket szeretne felvenni anélkül, hogy az ütemezett felderítési időt kellene várnia, jelölje ki a konfigurációs kiszolgálót (ne kattintson rá), majd kattintson a **frissítés**gombra.
+A hozzáadott kiszolgálók figyeléséhez ellenőrizheti a **konfigurációs kiszolgálók** utolsó felderített idejét > **utolsó kapcsolódáskor**. Ha gépeket szeretne felvenni anélkül, hogy az ütemezett felderítési időt kellene várnia, jelölje ki a konfigurációs kiszolgálót (ne kattintson rá), majd kattintson a **frissítés**gombra.
 
 ## <a name="test-the-configuration"></a>A konfiguráció tesztelése
 
 
-1. Navigáljon a tárolóhoz, a **Beállítások** > **replikált elemek**területen kattintson arra a virtuális gépre, amelyet át szeretne helyezni a célhelyre, kattintson a **+ feladatátvételi teszt** ikonra.
+1. Navigáljon a tárolóhoz, a **beállítások** > **replikált elemek**területen kattintson arra a virtuális gépre, amelyet át szeretne helyezni a célhelyre, kattintson a **+ feladatátvételi teszt** ikonra.
 2. A **Feladatátvételi teszt** területen válasszon ki egy helyreállítási pontot a feladatátvétel végrehajtásához:
 
-   - **Legutóbb feldolgozott**: A virtuális gép feladatátvétele a Site Recovery szolgáltatás által feldolgozott legutóbbi helyreállítási pontra meghiúsul. Megjelenik az időbélyeg. Ezzel a beállítással a rendszer nem tölt időt az adatok feldolgozásával, így a helyreállítási időre vonatkozó célkitűzés (RTO) alacsony.
-   - **Legújabb alkalmazás – konzisztens**: Ez a beállítás az összes virtuális gépet átadja a legújabb, alkalmazás-konzisztens helyreállítási pontra. Megjelenik az időbélyeg.
-   - **Egyéni**: Válassza ki a kívánt helyreállítási pontot.
+   - **Legutóbb feldolgozott**: A virtuális gép feladatait a Site Recovery szolgáltatás által feldolgozott legutóbbi helyreállítási pontnak adja át. Megjelenik az időbélyeg. Ezzel a beállítással a rendszer nem tölt időt az adatok feldolgozásával, így a helyreállítási időre vonatkozó célkitűzés (RTO) alacsony.
+   - **Legutóbbi alkalmazáskonzisztens**: Ez a beállítás az összes virtuális gép feladatait a legutóbbi alkalmazáskonzisztens helyreállítási pontnak adja át. Megjelenik az időbélyeg.
+   - **Egyéni**: Bármelyik helyreállítási pontot kiválaszthatja.
 
 3. Válassza ki azt a célként szolgáló Azure-beli virtuális hálózatot, amelyre át szeretné helyezni az Azure-beli virtuális gépeket a konfiguráció teszteléséhez. 
 
@@ -226,7 +225,7 @@ A hozzáadott kiszolgálók figyeléséhez ellenőrizheti a **konfigurációs ki
 
 ## <a name="perform-the-move-to-the-target-region-and-confirm"></a>Hajtsa végre az áthelyezést a célhelyre, és erősítse meg.
 
-1. Keresse meg a tárolót, a **Beállítások** > **replikált elemek**területen kattintson a virtuális gépre, majd a **feladatátvétel**elemre.
+1. Navigáljon a tárolóhoz, a **beállítások** > **replikált elemek**területen kattintson a virtuális gépre, majd a **feladatátvétel**elemre.
 2. A **Feladatátvétel** területen válassza a **Legújabb** elemet. 
 3. Válassza a **Gép leállítása a feladatátvétel megkezdése előtt** lehetőséget. A Site Recovery megkísérli leállítani a forrás virtuális gépeket a feladatátvétel indítása előtt. A feladatátvételi akkor is folytatódik, ha a leállítás meghiúsul. A feladatátvételi folyamatot a **Feladatok** lapon követheti nyomon. 
 4. A feladatok befejezése után győződjön meg arról, hogy a virtuális gép a várt módon jelenik meg a cél Azure-régióban.
@@ -246,7 +245,7 @@ Ha nem tervezi a forrás-erőforrások újrafelhasználását, folytassa a köve
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban egy Azure-beli virtuális gépet egy másik Azure-régióba helyezett át. Most már beállíthatja az áthelyezett virtuális gép vész-helyreállítását.
 

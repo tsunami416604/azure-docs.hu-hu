@@ -7,12 +7,12 @@ ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 10/17/2019
-ms.openlocfilehash: 4680804017a9b08248bb41ff999c6ba6371e99c8
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: aae502b350f2cf2e98849b2b6e25543516a0c547
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73675915"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73961839"
 ---
 # <a name="join-transformation-in-mapping-data-flow"></a>Az átalakítás összekapcsolása a leképezési adatfolyamban
 
@@ -36,7 +36,7 @@ A jobb oldali külső illesztés a jobb oldali adatfolyamból származó összes
 
 ### <a name="full-outer"></a>Teljes külső
 
-A teljes külső illesztés kimenete a két oldalról származó összes oszlopot és sort az oszlopok esetében NULL értékekkel nem egyezik.
+A teljes külső illesztés kimenete a két oldalról származó összes oszlopot és sort a nem egyező oszlopok esetében NULL értékekkel adja vissza.
 
 ### <a name="cross-join"></a>Keresztbe illesztés
 
@@ -122,6 +122,6 @@ TripData, TripFare
     )~> CartesianProduct
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az adategyesítést követően hozzon létre egy [származtatott oszlopot](data-flow-derived-column.md) [, és az](data-flow-sink.md) adatait egy célhely adattárba.

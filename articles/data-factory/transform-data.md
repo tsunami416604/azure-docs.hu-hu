@@ -11,15 +11,16 @@ ms.date: 07/31/2018
 author: nabhishek
 ms.author: abnarain
 manager: craigg
-ms.openlocfilehash: 97077b9f72de8792e6aba1d72ff34b9185b2d998
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 0b91d22454d6023094f269b184c845047092b4fb
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73683807"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73954272"
 ---
 # <a name="transform-data-in-azure-data-factory"></a>Az adatátalakítás Azure Data Factory
 > [!div class="op_single_selector"]
+> * [Adatfolyam hozzárendelése](data-flow-create.md)
 > * [Hive](transform-data-using-hadoop-hive.md)  
 > * [Pig](transform-data-using-hadoop-pig.md)  
 > * [MapReduce](transform-data-using-hadoop-map-reduce.md)  
@@ -34,7 +35,7 @@ ms.locfileid: "73683807"
 > * [.NET – egyéni](transform-data-using-dotnet-custom-activity.md)
 
 ## <a name="overview"></a>Áttekintés
-Ez a cikk a Azure Data Factory Adatátalakítási tevékenységeit ismerteti, amelyekkel a nyers adatait átalakíthatja és feldolgozhatja a jóslatok és az elemzések során. Az átalakítási tevékenységek olyan számítástechnikai környezetben hajthatók végre, mint például az Azure HDInsight-fürt vagy egy Azure Batch. Az egyes átalakítási tevékenységekre vonatkozó részletes információkat tartalmazó cikkekre mutató hivatkozásokat tartalmaz.
+Ez a cikk a Azure Data Factory Adatátalakítási tevékenységeit ismerteti, amelyekkel a nyers adatait átalakíthatja és feldolgozhatja az előrejelzések és az elemzések során. Az átalakítási tevékenységek egy számítástechnikai környezetben hajthatók végre, például Azure Databricks vagy Azure HDInsight. Az egyes átalakítási tevékenységekre vonatkozó részletes információkat tartalmazó cikkekre mutató hivatkozásokat tartalmaz.
 
 A Data Factory a következő Adatátalakítási tevékenységeket támogatja, amelyeket akár egyénileg, akár egy másik tevékenységgel összekapcsolva is hozzáadhat a [folyamatokhoz](concepts-pipelines-activities.md) .
 
@@ -49,6 +50,8 @@ Az adatfolyamatok leképezése vizuálisan tervezett adatátalakítások Azure D
 A Azure Data Factory huzavona adatforgalma lehetővé teszi a kód nélküli adatelőkészítést a felhőalapú méretezési iteratív. A huzavona-adatfolyamatok integrálva vannak a [Power Query online](https://docs.microsoft.com/power-query/) -nal, és a Spark-végrehajtással elérhetővé teszi Power Query M funkciókat az adatok huzavona a felhőben. További információ: huzavona- [adatfolyamok](wrangling-data-flow-overview.md).
 
 ## <a name="external-transformations"></a>Külső átalakítások
+
+Opcionálisan saját kezűleg is átalakíthatja az átalakításokat, és saját maga is kezelheti a külső számítási környezetet.
 
 ### <a name="hdinsight-hive-activity"></a>HDInsight-struktúra tevékenység
 A Data Factory folyamat HDInsight-struktúrájának tevékenysége a saját vagy igény szerinti Windows/Linux-alapú HDInsight-fürtön hajtja végre a kaptár-lekérdezéseket. A tevékenység részleteiért lásd a [kaptári tevékenységről](transform-data-using-hadoop-hive.md) szóló cikket. 
@@ -103,5 +106,5 @@ Hozzon létre egy társított szolgáltatást a számítási környezethez, majd
 
 A Data Factory által támogatott számítási szolgáltatások megismeréséhez tekintse meg a [számítási társított szolgáltatások](compute-linked-services.md) című cikket. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Tekintse át a következő oktatóanyagot, amely egy átalakítási tevékenység használatát szemlélteti: [oktatóanyag: az adatgyűjtés a Spark használatával](tutorial-transform-data-spark-powershell.md)

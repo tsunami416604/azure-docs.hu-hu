@@ -1,6 +1,6 @@
 ---
-title: Adatok lekérdezése Azure Time Series Insights GA-környezetből C# kód használatával | Microsoft Docs
-description: Ez a cikk azt ismerteti, hogyan lehet lekérdezni egy Azure Time Series Insights-környezet adatait egy C# (c-Sharp) .net nyelven írt egyéni alkalmazás kódolásával.
+title: Adatok lekérdezése egy GA-környezetből a Code-Azure Time Series Insights használatával C# | Microsoft Docs
+description: Megtudhatja, hogyan kérdezheti le az adatok egy Azure Time Series Insights-környezetből C#egy, a-ban írt egyéni alkalmazás használatával.
 ms.service: time-series-insights
 services: time-series-insights
 author: deepakpalled
@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 10/03/2019
 ms.custom: seodec18
-ms.openlocfilehash: 23e4ad5667019b5bc38f9ba11d14632d4d55d5b7
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: 5946a1484a62b041772f388b0629d131afe37b92
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72989979"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74012545"
 ---
 # <a name="query-data-from-the-azure-time-series-insights-ga-environment-using-c"></a>Adatok lekérdezése a Azure Time Series Insights GA-környezetből a következő használatával:C#
 

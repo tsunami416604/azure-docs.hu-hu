@@ -3,7 +3,7 @@ title: Hibakódok a Azure Active Directory portálon | Microsoft Docs
 description: Bejelentkezési tevékenységekre vonatkozó jelentések hibakódjainak referenciája.
 services: active-directory
 documentationcenter: ''
-author: cawrites
+author: MarkusVi
 manager: daveba
 editor: ''
 ms.assetid: 4b18127b-d1d0-4bdc-8f9c-6a4c991c5f75
@@ -14,15 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
 ms.date: 08/08/2019
-ms.author: chadam
+ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9bb7114611ce5c7eabb8124ad11db64d50e12946
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 84e9d484da1b59c456b30cf0b465ec6de5af77d1
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73809822"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74014301"
 ---
 # <a name="sign-in-activity-report-error-codes"></a>Bejelentkezési tevékenység jelentésének hibakódja 
 
@@ -191,7 +191,7 @@ A [jelentéskészítési API](concept-reporting-api.md)használatával programoz
 |7000218|A kérelem törzsének a következő paramétert kell tartalmaznia: "client_assertion" vagy "client_secret".|
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [A bejelentkezések jelentéseinek áttekintése](concept-sign-ins.md)
 * [Programozott hozzáférés az Azure AD-jelentésekhez](concept-reporting-api.md)

@@ -1,17 +1,14 @@
 ---
 title: Szerzői szabályzatok a tömb tulajdonságaihoz az erőforrásokon
 description: Megtudhatja, hogyan hozhat létre tömb-paramétereket, szabályokat hozhat létre a tömb nyelvi kifejezései számára, kiértékelheti a [*] aliast, valamint elemeket fűzhet egy meglévő tömbhöz Azure Policy definíciós szabályokkal.
-author: DCtheGeek
-ms.author: dacoulte
 ms.date: 03/06/2019
 ms.topic: conceptual
-ms.service: azure-policy
-ms.openlocfilehash: 33607d790f564075623d6f61d1b7b8b70a119f98
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.openlocfilehash: f28cffcf928f9c4da6b2dae2a0811200397c1f0d
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72255808"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73959715"
 ---
 # <a name="author-policies-for-array-properties-on-azure-resources"></a>Az Azure-erőforrások tömb tulajdonságainak szerzői szabályzatai
 
@@ -19,7 +16,7 @@ A Azure Resource Manager tulajdonságok általában karakterláncként és logik
 
 - Egy [definíciós paraméter](../concepts/definition-structure.md#parameters)típusa több beállítás megadásához
 - Egy házirend- [szabály](../concepts/definition-structure.md#policy-rule) része a vagy a **notIn** feltételek használatával
-- Egy olyan házirend-szabály része, amely kiértékeli a [\[ @ no__t-2 @ no__t-3 aliast](../concepts/definition-structure.md#understanding-the--alias) , hogy kiértékelje az egyes forgatókönyveket, például a **none**, **az any**vagy **az All** értéket.
+- Egy olyan házirend-szabály része, amely kiértékeli a [\[\*\] aliast](../concepts/definition-structure.md#understanding-the--alias) , hogy kiértékelje az egyes forgatókönyveket, például a **none**, **az any**vagy **az All** értéket
 - Meglévő tömb lecseréléséhez vagy hozzáadásához a [hozzáfűzési effektusban](../concepts/effects.md#append)
 
 Ez a cikk a Azure Policy egyes használatát ismerteti, és számos példát tartalmaz.
@@ -105,7 +102,7 @@ Ha ezt a sztringet az egyes SDK-kal szeretné használni, használja a következ
 ### <a name="array-conditions"></a>Tömb feltételei
 
 A házirend-szabály azon [feltételei](../concepts/definition-structure.md#conditions) , amelyekben a _tömb_
-**típusú** paraméter használható a `in` és a `notIn` értékre. Például a következő házirend-definíciót kell megtennie a `equals` feltétellel:
+a paraméter **típusa** használható, `in` és `notIn`ra korlátozódik. A következő házirend-definíciót a feltétel `equals` példaként vegye fel:
 
 ```json
 {
@@ -137,14 +134,14 @@ A házirend-definíciónak a Azure Portalon keresztüli létrehozására tett k�
 
 - "A (z) {GUID} szabályzatot érvényesítési hibák miatt nem lehetett paraméterbe állítani. Ellenőrizze, hogy a házirend-paraméterek megfelelően vannak-e megadva. A belső kivétel "a nyelv kifejezésének" [parameters (' allowedLocations ')] típusának "Array" típusúnak kell lennie, a várt típus a "string". "
 
-A várt **típusú** feltétel `equals` _karakterlánc_. Mivel a **allowedLocations** **típus** _tömbként_van definiálva, a házirend-végrehajtó kiértékeli a nyelvi kifejezést, és eldönti a hibát. A `in` és `notIn` feltétellel a irányelvmodul a Language kifejezésben a **típus** _tömböt_ várja. A hibaüzenet megoldásához módosítsa a `equals` értéket `in` vagy `notIn` értékre.
+A feltétel várt **típusa** `equals` _karakterlánc_. Mivel a **allowedLocations** **típus** _tömbként_van definiálva, a házirend-végrehajtó kiértékeli a nyelvi kifejezést, és eldönti a hibát. A `in` és `notIn` feltétellel a irányelvmodul a Language kifejezésben a **típus** _tömböt_ várja. A hibaüzenet megoldásához módosítsa `equals` `in` vagy `notIn`re.
 
 ### <a name="evaluating-the--alias"></a>[*] Alias kiértékelése
 
-A nevükhez csatolt **[\*]** aliasok azt jelzik, hogy a típus _tömb_. A teljes tömb értékének kiértékelése helyett a **[\*]** lehetővé teszi a tömb egyes elemeinek kiértékelését. Az egyes elemek kiértékelésének három forgatókönyve hasznos a következőkben: none, any és ALL.
+A nevükhöz csatolt **[\*]** aliasok azt jelzik, hogy a típus _tömb_. A teljes tömb értékének kiértékelése helyett a **[\*]** lehetővé teszi a tömb egyes elemeinek kiértékelését. Az egyes elemek kiértékelésének három forgatókönyve hasznos a következőkben: none, any és ALL.
 
 A **házirend-végrehajtó** elindítja a **hatást** , és csak akkor, ha az **IF** -szabály igaz értéket ad vissza.
-Ez a tény fontos, hogy tisztában legyen azzal, hogy **[\*]** hogyan értékeli ki a tömb egyes elemeit.
+Ezt a tényt fontos megérteni, hogy a **[\*]** hogyan értékeli ki a tömb egyes elemeit.
 
 Az alábbi forgatókönyv-táblázathoz tartozó példa házirend-szabály:
 
@@ -180,7 +177,7 @@ A **ipRules** tömb az alábbi forgatókönyv-táblázat esetében a következő
 ]
 ```
 
-Az alábbi példában szereplő összes feltételnél cserélje le a `<field>` értéket `"field": "Microsoft.Storage/storageAccounts/networkAcls.ipRules[*].value"` értékre.
+Az alábbi példában szereplő összes feltételnél cserélje le a `<field>`t a `"field": "Microsoft.Storage/storageAccounts/networkAcls.ipRules[*].value"`ra.
 
 A következő eredmények a feltétel és a példaként megadott házirend-szabály kombinációjának eredményei, valamint a fenti meglévő értékek tömbje:
 
@@ -197,10 +194,10 @@ A következő eredmények a feltétel és a példaként megadott házirend-szab�
 
 ## <a name="the-append-effect-and-arrays"></a>A hozzáfűzési effektus és tömbök
 
-A [hozzáfűzési effektus](../concepts/effects.md#append) eltérő lehet attól függően, hogy a **részletek. mező** a **[\*] alias-** e, vagy sem.
+A [hozzáfűzési effektus](../concepts/effects.md#append) eltérő lehet attól függően, hogy a **részletek. mező** egy **[\*]** alias-e, vagy sem.
 
-- Ha nem **[\*]** alias, a Hozzáfűzés a teljes tömböt a **Value** tulajdonsággal helyettesíti.
-- **[@No__t-1]** alias esetén a Hozzáfűzés hozzáadja az **Value** tulajdonságot a meglévő tömbhöz, vagy létrehoz egy új tömböt.
+- Ha nem a **[\*]** aliast, a Hozzáfűzés a teljes tömböt a **Value** tulajdonsággal helyettesíti.
+- **[\*]** alias esetén a Hozzáfűzés hozzáadja az **Value** tulajdonságot a meglévő tömbhöz, vagy létrehozza az új tömböt.
 
 További információ: [hozzáfűzési példák](../concepts/effects.md#append-examples).
 

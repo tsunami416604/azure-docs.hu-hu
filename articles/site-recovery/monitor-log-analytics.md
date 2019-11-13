@@ -1,18 +1,18 @@
 ---
-title: Azure Site Recovery figyelése Azure Monitor naplókkal (Log Analytics) | Microsoft Docs
+title: Azure Site Recovery figyelése Azure Monitor naplókkal
 description: Megtudhatja, hogyan figyelheti a Azure Site Recoveryt Azure Monitor-naplókkal (Log Analytics)
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 10/13/2019
+ms.date: 11/12/2019
 ms.author: raynew
-ms.openlocfilehash: 889fa3bee17aa3b0300431b058332c5ec10d9faf
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: b5bf568e03d4949b8798dd2e0f4c2d8cbcbbe0c7
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72331919"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73936094"
 ---
 # <a name="monitor-site-recovery-with-azure-monitor-logs"></a>A Site Recovery monitorozása az Azure Monitor naplóival
 
@@ -36,7 +36,7 @@ A következőkre lesz szüksége:
 
 - Legalább egy gép védve van egy Recovery Services-tárolóban.
 - Log Analytics munkaterület Site Recovery naplók tárolására. [További](../azure-monitor/learn/quick-create-workspace.md) információ a munkaterület beállításáról.
-- Alapvető ismeretek a naplók írásához, futtatásához és elemzéséhez Log Analyticsban. [További információk](../azure-monitor/log-query/get-started-portal.md).
+- Alapvető ismeretek a naplók írásához, futtatásához és elemzéséhez Log Analyticsban. [Részletek](../azure-monitor/log-query/get-started-portal.md).
 
 Javasoljuk, hogy a Kezdés előtt tekintse át az [általános monitorozási kérdéseket](monitoring-common-questions.md) .
 
@@ -61,7 +61,7 @@ A Site Recovery naplók megkezdik a hírcsatornát a kiválasztott munkaterület
 Az adatok naplókból való lekéréséhez a [Kusto lekérdezési nyelvvel](../azure-monitor/log-query/get-started-queries.md)írt napló lekérdezéseket kell használnia. Ez a szakasz néhány példát mutat be Site Recovery figyeléshez használható gyakori lekérdezésekre.
 
 > [!NOTE]
-> Néhány példa a **ReplicationProviderName_s** **A2A**használatára van beállítva. Ezzel lekéri az Azure-beli virtuális gépeket, amelyek egy másodlagos Azure-régióba replikálódnak Site Recovery használatával. Ezekben a példákban lecserélheti a **A2A** -t a **InMageAzureV2**-be, ha az Azure-ba replikált helyszíni VMWare virtuális gépeket vagy fizikai kiszolgálókat szeretné lekérni site Recovery használatával.
+> Néhány példa a **replicationProviderName_s** beállítása **A2A**értékre. Ezzel lekéri az Azure-beli virtuális gépeket, amelyek egy másodlagos Azure-régióba replikálódnak Site Recovery használatával. Ezekben a példákban lecserélheti a **A2A** -t a **InMageAzureV2**-be, ha az Azure-ba replikált helyszíni VMWare virtuális gépeket vagy fizikai kiszolgálókat szeretné lekérni site Recovery használatával.
 
 
 ### <a name="query-replication-health"></a>Replikáció állapotának lekérdezése
@@ -223,7 +223,7 @@ AzureDiagnostics 
 Site Recovery riasztásokat Azure Monitor-adatértékek alapján is beállíthat. [További](../azure-monitor/platform/alerts-log.md#managing-log-alerts-from-the-azure-portal) információ a naplózási riasztások beállításáról. 
 
 > [!NOTE]
-> Néhány példa a **ReplicationProviderName_s** **A2A**használatára van beállítva. Ez riasztásokat állít be a másodlagos Azure-régióba replikált Azure-beli virtuális gépekről. Ezekben a példákban lecserélheti a **A2A** -t a **InMageAzureV2** -be, ha riasztásokat szeretne beállítani a helyszíni VMWare virtuális gépekhez vagy az Azure-ba replikált fizikai kiszolgálókhoz.
+> Néhány példa a **replicationProviderName_s** beállítása **A2A**értékre. Ez riasztásokat állít be a másodlagos Azure-régióba replikált Azure-beli virtuális gépekről. Ezekben a példákban lecserélheti a **A2A** -t a **InMageAzureV2** -be, ha riasztásokat szeretne beállítani a helyszíni VMWare virtuális gépekhez vagy az Azure-ba replikált fizikai kiszolgálókhoz.
 
 ### <a name="multiple-machines-in-a-critical-state"></a>Több gép kritikus állapotban
 

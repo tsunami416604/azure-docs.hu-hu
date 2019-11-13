@@ -12,12 +12,12 @@ ms.date: 10/24/2019
 ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 72678a67b1bc9845eae2bca658f35a05c9bcf659
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: f0399f084e663ab891d59384af263a7faac2f42e
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73883972"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73943815"
 ---
 # <a name="tutorial-add-an-on-premises-application-for-remote-access-through-application-proxy-in-azure-active-directory"></a>Oktatóanyag: helyi alkalmazás hozzáadása a távoli eléréshez az alkalmazásproxy használatával Azure Active Directory
 
@@ -40,14 +40,14 @@ Helyszíni alkalmazás Azure AD-hez való hozzáadásához a következők szüks
 * Alkalmazás-rendszergazdai fiók
 * A felhasználói identitásokat a helyszíni címtárból kell szinkronizálni, vagy közvetlenül az Azure AD-bérlőn belül kell létrehozni. Identitásszinkronizálás lehetővé teszi az Azure AD számára, hogy előzetesen hitelesítse a felhasználókat, mielőtt hozzáférést adna nekik az App proxy közzétett alkalmazásaihoz, és hogy a szükséges felhasználói azonosító információkkal rendelkezzen az egyszeri bejelentkezés (SSO) végrehajtásához.
 
-### <a name="windows-server"></a>Windows Server
+### <a name="windows-server"></a>Windows server
 
 Az alkalmazásproxy használatához Windows Server 2012 R2 vagy újabb rendszert futtató Windows Serverre van szükség. Telepítse az alkalmazásproxy-összekötőt a kiszolgálóra. Az összekötő-kiszolgálónak csatlakoznia kell az Azure-beli alkalmazásproxy-szolgáltatásokhoz és a közzétenni kívánt helyszíni alkalmazásokhoz.
 
 Az éles környezetben való magas rendelkezésre állás érdekében javasoljuk, hogy egynél több Windows Servert válasszon. Ebben az oktatóanyagban az egyik Windows-kiszolgáló elegendő.
 
 > [!IMPORTANT]
-> Ha az összekötőt a Windows Server 2019 rendszerre telepíti, a HTTP2 korlátozás van érvényben. Ahhoz, hogy sikeresen használhassa az összekötőt ezen a verzión, adja hozzá a következő beállításkulcsot, és indítsa újra a kiszolgálót:
+> Ha az összekötőt a Windows Server 2019 rendszerre telepíti, a HTTP2 korlátozás van érvényben. Az összekötő ezen a verzión való használatának megkerülő megoldásként adja hozzá a következő beállításkulcsot, és indítsa újra a kiszolgálót. Vegye figyelembe, hogy ez egy, a gép beállításjegyzékének széles kulcsa. 
     ```
     HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Internet Settings\WinHttp\EnableDefaultHttp2 (DWORD) Value: 0 
     ```
@@ -64,7 +64,7 @@ Az éles környezetben való magas rendelkezésre állás érdekében javasoljuk
 
 Az alkalmazásproxy-összekötő telepítése előtt a Windows Connector-kiszolgálónak engedélyezve kell lennie a TLS 1,2-nek.
 
-A TLS 1,2 engedélyezése:
+A TLS 1.2 engedélyezése:
 
 1. Állítsa be a következő beállításkulcsokat:
     
@@ -101,7 +101,7 @@ A következő URL-címek elérésének engedélyezése:
 
 | URL-cím | Használatuk módja |
 | --- | --- |
-| \*. msappproxy.net<br>\*. servicebus.windows.net | Kommunikáció az összekötő és az alkalmazásproxy Cloud Service között |
+| \*.msappproxy.net<br>\*.servicebus.windows.net | Kommunikáció az összekötő és az alkalmazásproxy Cloud Service között |
 | mscrl.microsoft.com:80<br>crl.microsoft.com:80<br>ocsp.msocsp.com:80<br>www.microsoft.com:80 | Az Azure ezeket az URL-címeket használja a tanúsítványok ellenőrzéséhez. |
 | login.windows.net<br>secure.aadcdn.microsoftonline-p.com<br>\*.microsoftonline.com<br>\*. microsoftonline-p.com<br>\*. msauth.net<br>\*. msauthimages.net<br>\*. msecnd.net<br>\*. msftauth.net<br>\*. msftauthimages.net<br>\*. phonefactor.net<br>enterpriseregistration.windows.net<br>management.azure.com<br>policykeyservice.dc.ad.msft.net | Az összekötő ezeket az URL-címeket használja a regisztrációs folyamat során. |
 
@@ -222,7 +222,7 @@ Az alkalmazásba való bejelentkezés tesztelése:
 
 Hibaelhárítás: az [alkalmazásproxy problémáinak elhárítása és a hibaüzenetek](application-proxy-troubleshoot.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban előkészítette a helyszíni környezetet, hogy működjön az Application proxyval, majd telepítse és regisztrálja az alkalmazásproxy-összekötőt. Ezután hozzáadott egy alkalmazást az Azure AD-bérlőhöz. Ellenőrizte, hogy egy felhasználó Azure AD-fiókkal tud-e bejelentkezni az alkalmazásba.
 

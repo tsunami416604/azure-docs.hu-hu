@@ -1,5 +1,5 @@
 ---
-title: Tudnivalók az Azure-beli hálózatkezelésről az Azure vész-helyreállítási Azure Site Recovery használatával | Microsoft Docs
+title: Tudnivalók az Azure-beli virtuális gépekkel kapcsolatos vész-helyreállításról Azure Site Recovery
 description: Áttekintést nyújt az Azure-beli virtuális gépek Azure Site Recovery használatával történő replikálásához szükséges hálózatkezelésről.
 services: site-recovery
 author: sujayt
@@ -8,14 +8,14 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 10/22/2019
 ms.author: sutalasi
-ms.openlocfilehash: 5c2cd96ccfa3a26a9009188ad424eefaaeb7ce48
-ms.sourcegitcommit: 6dec090a6820fb68ac7648cf5fa4a70f45f87e1a
+ms.openlocfilehash: 09cd814ade25be438a17b83fb73e74b89c14e22f
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/11/2019
-ms.locfileid: "73906839"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73954212"
 ---
-# <a name="about-networking-in-azure-to-azure-replication"></a>Tudnivalók az Azure-beli hálózatkezelésről az Azure-ba – replikálás
+# <a name="about-networking-in-azure-vm-disaster-recovery"></a>Tudnivalók az Azure-beli virtuális gépek vész-helyreállításáról
 
 
 
@@ -60,8 +60,8 @@ Ha IP-alapú tűzfal-proxyt használ, vagy a kimenő kapcsolat vezérléséhez N
 - Minden olyan IP-címtartomány, amely a forrástartomány Storage-fiókjainak felel meg
     - Hozzon létre egy [tárolási szolgáltatás címkén](../virtual-network/security-overview.md#service-tags) ALAPULó NSG-szabályt a forrás régióhoz.
     - Engedélyezze ezeket a címeket úgy, hogy az adatok a virtuális gépről a gyorsítótárbeli Storage-fiókba legyenek írva.
-- Hozzon létre egy [Azure Active Directory (HRE) Service tag](../virtual-network/security-overview.md#service-tags) -alapú NSG-szabályt, amely lehetővé teszi a HRE-hoz tartozó összes IP-cím elérését
-    - Ha a jövőben új címeket adnak hozzá a Azure Active Directoryhoz (HRE), új NSG-szabályokat kell létrehoznia.
+- Hozzon létre egy [Azure Active Directory (AAD) szolgáltatáscímke](../virtual-network/security-overview.md#service-tags) alapú Hálózatibiztonságicsoport-szabály engedélyezi a hozzáférést az aad-hez tartozó összes IP-címek számára
+    - Hozzáadja az új címeket az Azure Active Directory (AAD) a jövőben, ha szeretne létrehozni új NSG-szabályokat.
 - Site Recovery szolgáltatási végpont IP-címei – egy [XML-fájlban](https://aka.ms/site-recovery-public-ips) érhetők el, és a célhelytől függenek. 
 - Javasoljuk, hogy hozza létre a szükséges NSG-szabályokat egy teszt NSG, és ellenőrizze, hogy nincsenek-e problémák a szabályok éles NSG való létrehozása előtt.
 

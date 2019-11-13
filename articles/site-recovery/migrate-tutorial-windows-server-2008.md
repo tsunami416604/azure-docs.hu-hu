@@ -1,36 +1,36 @@
 ---
-title: Helyszíni Windows Server 2008-kiszolgálók migrálása az Azure-ba az Azure Site Recoveryvel | Microsoft Docs
+title: Telepítse át a Windows Server 2008-kiszolgálókat az Azure-ba Azure Site Recovery
 description: Ez a cikk bemutatja, hogyan migrálhatók a helyszíni Windows Server 2008-gépek az Azure-ba az Azure Site Recovery használatával.
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 09/09/2019
+ms.date: 11/12/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: d0d5c482e2faf5e4a2c2918a64bd56e4aa814323
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: 20fe29a6588891c35520db01ac0403fb5b3a85d7
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70814498"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73936141"
 ---
 # <a name="migrate-servers-running-windows-server-2008-to-azure"></a>Windows Server 2008 rendszert futtató kiszolgálók migrálása az Azure-ba
 
-Ez az oktatóanyag bemutatja, hogyan migrálhatók a helyszíni, Windows Server 2008 vagy 2008 R2 rendszert futtató kiszolgálók az Azure-ba az Azure Site Recovery használatával. Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Ez az oktatóanyag bemutatja, hogyan migrálhatók a helyszíni, Windows Server 2008 vagy 2008 R2 rendszert futtató kiszolgálók az Azure-ba az Azure Site Recovery használatával. Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]
 > * A helyszíni környezet előkészítése a migráláshoz
 > * A célkörnyezet beállítása
 > * Replikációs szabályzat beállítása
-> * Replikáció engedélyezése
+> * A replikáció engedélyezése
 > * A várnak megfelelő működés ellenőrzése egy áttelepítési teszt futtatásával
 > * Feladatátvétel az Azure-ba és a migrálás befejezése
 
 A korlátozások és ismert problémák szakaszban néhány olyan korlátozás és ismert probléma áthidaló megoldásai szerepelnek, amely a Windows Server 2008-gépek az Azure-ba történő migrálása során jelentkezhet. 
 
 > [!NOTE]
-> Mostantól áttelepítheti a helyszínről az Azure-ba a Azure Migrate szolgáltatás használatával. [További információk](../migrate/migrate-services-overview.md).
+> Mostantól áttelepítheti a helyszínről az Azure-ba a Azure Migrate szolgáltatás használatával. [Részletek](../migrate/migrate-services-overview.md).
 
 
 ## <a name="supported-operating-systems-and-environments"></a>Támogatott operációs rendszerek és környezetek
@@ -93,7 +93,7 @@ Az Azure-előfizetés és a helyszíni VMware-/fizikai környezet előkészíté
 ## <a name="create-a-recovery-services-vault"></a>Recovery Services-tároló létrehozása
 
 1. Jelentkezzen be az [Azure Portal](https://portal.azure.com) > **Recovery Services** szolgáltatásba.
-2. Kattintson **az erőforrás** > létrehozása**felügyeleti eszközök** > **biztonsági mentése és site Recovery**elemre.
+2. Kattintson **az erőforrás létrehozása** > **felügyeleti eszközök** > **biztonsági mentés és site Recovery**lehetőségre.
 3. A **Név** mezőben adja meg a **W2K8-migration** rövid nevet. Ha egynél több előfizetéssel rendelkezik, válassza ki ezek közül a megfelelőt.
 4. Hozza létre a **w2k8migrate** erőforráscsoportot.
 5. Válassza ki a kívánt Azure-régiót. A támogatott régiók megtekintéséhez olvassa el az [Azure Site Recovery – Díjszabás](https://azure.microsoft.com/pricing/details/site-recovery/) című cikknek a földrajzi elérhetőséggel foglalkozó részét.
@@ -133,13 +133,13 @@ A szabályzat automatikusan társítva lesz a konfigurációs kiszolgálóval.
 
    ![Replikációs házirend létrehozása](media/migrate-tutorial-windows-server-2008/create-policy.png)
 
-## <a name="enable-replication"></a>Replikáció engedélyezése
+## <a name="enable-replication"></a>A replikáció engedélyezése
 
 [Engedélyezze a replikációt](physical-azure-disaster-recovery.md#enable-replication) a migrálásra váró Windows Server 2008 SP2-/Windows Server 2008 R2 SP1-kiszolgáló számára.
    
    ![Fizikai kiszolgáló hozzáadása](media/migrate-tutorial-windows-server-2008/Add-physical-server.png)
 
-   ![Replikáció engedélyezése](media/migrate-tutorial-windows-server-2008/Enable-replication.png)
+   ![A replikáció engedélyezése](media/migrate-tutorial-windows-server-2008/Enable-replication.png)
 
 ## <a name="run-a-test-migration"></a>Migrálási teszt futtatása
 
@@ -147,10 +147,10 @@ Ha a kezdeti replikálás befejeződött, és a kiszolgáló állapota **Védett
 
 A [rest failover](tutorial-dr-drill-azure.md) parancs Azure-ban történő futtatásával győződjön meg arról, hogy minden a vártnak megfelelően működik-e.
 
-   ![Feladatátvételi teszt](media/migrate-tutorial-windows-server-2008/testfailover.png)
+   ![Feladatátvétel tesztelése](media/migrate-tutorial-windows-server-2008/testfailover.png)
 
 
-## <a name="migrate-to-azure"></a>Migrálás az Azure-ba
+## <a name="migrate-to-azure"></a>Áttelepítés az Azure-ba
 
 Futtasson egy feladatátvételt a migrálni kívánt gépen.
 
@@ -163,8 +163,8 @@ Futtasson egy feladatátvételt a migrálni kívánt gépen.
     - Befejezi az áttelepítési folyamatot, leállítja a kiszolgáló replikálását, és leállítja a kiszolgálás Site Recovery számlázását.
     - Ezzel a lépéssel megtisztítja a replikációs adatvédelmet. Nem törli az áttelepített virtuális gépeket.
 
-   ![Migrálás befejezése](media/migrate-tutorial-windows-server-2008/complete-migration.png)
+   ![Az áttelepítés befejezése](media/migrate-tutorial-windows-server-2008/complete-migration.png)
 
 
 > [!WARNING]
-> **Ne szakítsa meg a folyamatban lévő feladatátvételt**: A feladatátvétel elindítása előtt leáll a kiszolgáló replikálása. Ha megszakít egy folyamatban lévő feladatátvételt, a feladatátvétel leáll, de a kiszolgáló nem fog tovább replikálni.
+> **Ne szakítsa meg a folyamatban lévő feladatátvételt**: a kiszolgáló replikációja leáll a feladatátvétel elindítása előtt. Ha megszakít egy folyamatban lévő feladatátvételt, a feladatátvétel leáll, de a kiszolgáló nem fog tovább replikálni.

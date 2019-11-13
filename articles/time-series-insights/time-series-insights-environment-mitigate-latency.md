@@ -1,6 +1,6 @@
 ---
-title: A szabályozás figyelése és csökkentése a Azure Time Series Insightsban | Microsoft Docs
-description: Ez a cikk bemutatja, hogyan figyelheti, diagnosztizálhatja és csökkentheti a késést és a szabályozást okozó teljesítménnyel kapcsolatos problémákat a Azure Time Series Insightsban.
+title: A szabályozás figyelése és csökkentése – Azure Time Series Insights | Microsoft Docs
+description: Megtudhatja, hogyan figyelheti, diagnosztizálhatja és csökkentheti a késést és a szabályozást okozó teljesítménnyel kapcsolatos problémákat Azure Time Series Insightsban.
 ms.service: time-series-insights
 services: time-series-insights
 author: deepakpalled
@@ -12,12 +12,12 @@ ms.workload: big-data
 ms.topic: troubleshooting
 ms.date: 10/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: 4e82cdf43f568b6415cb7cb00ce0244654559b7d
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: 7ea98baa9cb202e2584c18998c5ab96d1c1f9e5a
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72990149"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74012659"
 ---
 # <a name="monitor-and-mitigate-throttling-to-reduce-latency-in-azure-time-series-insights"></a>A Azure Time Series Insights késésének csökkentése a szabályozás monitorozásával és enyhítésével
 
@@ -44,7 +44,7 @@ A riasztások segíthetnek a környezete által okozott késési problémák dia
 
 1. A Azure Portal válassza a **riasztások**elemet.
 
-   [Riasztások![](media/environment-mitigate-latency/add-alerts.png)](media/environment-mitigate-latency/add-alerts.png#lightbox)
+   [Riasztások ![](media/environment-mitigate-latency/add-alerts.png)](media/environment-mitigate-latency/add-alerts.png#lightbox)
 
 1. Ekkor megjelenik a **szabály létrehozása** panel. Válassza a **Hozzáadás** lehetőséget a **feltétel**alatt.
 
@@ -63,18 +63,18 @@ A riasztások segíthetnek a környezete által okozott késési problémák dia
    |**Bejövő fogadott üzenetek**   | Az összes Event Hubs vagy IoT hub-eseményforrás által olvasott üzenetek száma.        |
    |**Bejövő forgalomban tárolt bájtok**     | A lekérdezéshez tárolt és elérhető események teljes mérete. A méret kiszámítása csak a tulajdonság értékén történik.        |
    |**Beáramló tárolt események**     |   A lekérdezéshez rendelkezésre álló és elérhető összeolvasztott események száma.      |
-   |**Bejövő fogadott üzenet Időeltolódása**    |  Az üzenet az várólistán lévő való beérkezése és a bejövő forgalomban történő feldolgozás időpontja közötti különbség másodpercben kifejezve.      |
+   |**Beérkező üzenetek Időeltolódása**    |  Az üzenet az várólistán lévő való beérkezése és a bejövő forgalomban történő feldolgozás időpontja közötti különbség másodpercben kifejezve.      |
    |**Bejövő fogadott üzenetek számának késése**    |  Az eseményforrás-partíció utolsó várólistán lévő-üzenetének sorszáma és a bejövő forgalomban feldolgozott üzenet sorszáma közötti különbség.      |
 
    Válassza a **Done** (Kész) lehetőséget.
 
 1. A kívánt jel logikájának konfigurálása után vizuálisan tekintse át a kiválasztott riasztási szabályt.
 
-   [Bejövő![](media/environment-mitigate-latency/ingress.png)](media/environment-mitigate-latency/ingress.png#lightbox)
+   [Bejövő ![](media/environment-mitigate-latency/ingress.png)](media/environment-mitigate-latency/ingress.png#lightbox)
 
 ## <a name="throttling-and-ingress-management"></a>Szabályozás és bejövő forgalom kezelése
 
-* Ha a szabályozása folyamatban van, megjelenik a *Bejövő üzenetek fogadásának időkorlátja*, amely arról tájékoztatja, hogy hány másodpercig tart az idősorozat-elemzési környezete, és az üzenet tényleges időpontja (az indexelési idő kizárása nélkül). Appx. 30-60 másodperc).  
+* Ha a szabályozása alatt áll, megjelenik a *Bejövő üzenetek fogadásának időkorlátja*, amely arról tájékoztatja, hogy hány másodpercig tart az idősorozat-elemzési környezete, és a tényleges idő, amikor az üzenet megkeresi az esemény forrását (kivéve a Appx indexelési idejét. 30-60 másodperc).  
 
   A *bejövő fogadott üzenetek számának késési* értékének is szerepelnie kell, ami lehetővé teszi, hogy megtudja, hány üzenet mögött van.  A legkönnyebben elsajátítható, hogy növelje a környezet kapacitását olyan méretre, amely lehetővé teszi a különbség leküzdését.  
 

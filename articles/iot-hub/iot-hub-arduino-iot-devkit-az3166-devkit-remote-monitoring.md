@@ -1,5 +1,5 @@
 ---
-title: IoT fejlesztői készlet a felhőbe – a IoT MXChip-fejlesztői készlet kapcsolódása az Azure IoT Hubhoz | Microsoft Docs
+title: A MXChip IoT fejlesztői készlet összekötése az Azure IoT Hub távoli monitorozásával
 description: Ebből az oktatóanyagból megtudhatja, hogyan küldheti el az érzékelők állapotát a IoT fejlesztői készlet AZ3166 az Azure IoT távoli figyelési megoldásának gyorsítása érdekében.
 author: liydu
 manager: jeffya
@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 02/02/2018
 ms.author: liydu
-ms.openlocfilehash: 24e31bfa916df969368dce736cf841ed4fdfe2c5
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 9eab035d494892671a2451866311ca06599ec030
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73484047"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73953725"
 ---
 # <a name="connect-mxchip-iot-devkit-to-azure-iot-remote-monitoring-solution-accelerator"></a>A MXChip IoT fejlesztői készlet és az Azure IoT távoli monitorozási megoldásának gyorsítása
 
@@ -54,7 +54,7 @@ Aktív Azure-előfizetés. Ha még nem rendelkezik ilyennel, a következő két 
 
    ![Irányítópult](media/iot-hub-arduino-iot-devkit-az3166-devkit-remote-monitoring/azure-iot-suite-new-solution-created.png)
   
-   ![Console](media/iot-hub-arduino-iot-devkit-az3166-devkit-remote-monitoring/azure-iot-suite-console.png)
+   ![Konzol](media/iot-hub-arduino-iot-devkit-az3166-devkit-remote-monitoring/azure-iot-suite-console.png)
 
 5. Kattintson **az eszköz hozzáadása**lehetőségre.
 
@@ -129,7 +129,7 @@ Ha problémákba ütközik, tekintse meg [a IoT Developer Kit GYIK](https://micr
 * [Gitter.im](https://gitter.im/Microsoft/azure-iot-developer-kit)
 * [Stack Overflow](https://stackoverflow.com/questions/tagged/iot-devkit)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy megtanulta, hogyan csatlakoztatható egy fejlesztői készlet-eszköz az Azure IoT távoli figyelési megoldás-gyorsító szolgáltatáshoz, és Hogyan jeleníthető meg az érzékelők adatai, az alábbiakban a javasolt következő lépések láthatók:
 

@@ -1,17 +1,14 @@
 ---
 title: Terv-definíciók importálása és exportálása a PowerShell-lel
 description: Megtudhatja, hogyan dolgozhat a terv-definíciók kóddal. Az exportálási és importálási parancsok használatával megoszthatja, vezérelheti és felügyelheti őket.
-author: DCtheGeek
-ms.author: dacoulte
 ms.date: 09/03/2019
 ms.topic: conceptual
-ms.service: blueprints
-ms.openlocfilehash: 30e734c99a87364acfba9a58d83fe9a377958607
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: ca756ed093d5d423f6f83e5ca3953a8ecfce7d5a
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71978438"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73960367"
 ---
 # <a name="import-and-export-blueprint-definitions-with-powershell"></a>Terv-definíciók importálása és exportálása a PowerShell-lel
 
@@ -41,9 +38,9 @@ Ha még nincs telepítve, kövesse az [az. Blueprint modul hozzáadása](./manag
 A tervrajzok exportálásának és importálásának megkezdése előtt nézzük meg, hogyan épülnek fel a terv definícióját alkotó fájlok. A terv definícióját a saját mappájába kell menteni.
 
 > [!IMPORTANT]
-> Ha nem ad át értéket a `Import-AzBlueprintWithArtifact` parancsmag **Name** paraméterének, a rendszer a terv definícióját tároló mappa nevét használja.
+> Ha nem ad át értéket az `Import-AzBlueprintWithArtifact`-parancsmag **Name** paraméterének, a rendszer a terv definícióját tároló mappa nevét használja.
 
-A terv definíciója mellett `blueprint.json` nevűnek kell lennie, a terv definícióját tartalmazó összetevők. Minden összetevőnek a `artifacts` nevű almappába kell esnie.
+A terv definíciója mellett, amelynek `blueprint.json`nak kell lennie, a terv definícióját alkotó összetevők. Minden összetevőnek a `artifacts`nevű almappába kell esnie.
 Együttesen a terv definíciójának struktúráját a mappákban található JSON-fájloknak a következőképpen kell kinéznie:
 
 ```text
@@ -65,14 +62,14 @@ A terv definíciójának exportálásának lépései egyszerűek. A terv definí
 
 - **Terv** [kötelező]
   - Meghatározza a terv definícióját
-  - A Reference objektum lekérése `Get-AzBlueprint` használatával
+  - A Reference objektum beolvasásához használja a `Get-AzBlueprint`
 - **OutputPath** [kötelező]
   - Megadja azt az elérési utat, amellyel a terv-definíció JSON-fájljait menteni kell
   - A kimeneti fájlok egy olyan almappában találhatók, amely a terv definíciójának nevét adja meg
 - **Verzió** (nem kötelező)
   - Megadja a kimeneti verziót, ha a **terv** hivatkozási objektuma több verzióra mutató hivatkozásokat tartalmaz.
 
-1. Tekintse át az előfizetésből az `{subId}` értékkel jelölt terv definícióját:
+1. Tekintse át az előfizetésnek a `{subId}`:
 
    ```azurepowershell-interactive
    # Login first with Connect-AzAccount if not using Cloud Shell
@@ -105,7 +102,7 @@ A beépített tervrajzok leírását a [Azure Blueprint GitHub](https://github.c
   - Az előfizetés-azonosító a terv definíciójának mentéséhez, ha nem az aktuális környezet alapértelmezett értéke
   - Meg kell adni a **ManagementGroupId** vagy a **SubscriptionId** értéket.
 
-1. A `Import-AzBlueprintWithArtifact` parancsmag használatával importálja a megadott terv definícióját:
+1. A megadott terv definíciójának importálásához használja az `Import-AzBlueprintWithArtifact` parancsmagot:
 
    ```azurepowershell-interactive
    # Login first with Connect-AzAccount if not using Cloud Shell
@@ -122,7 +119,7 @@ A speciális tervrajz-definíciók létrehozásával kapcsolatos információké
 - Az üzembe helyezések elleni védelem a [terv erőforrás-zárolásával](../concepts/resource-locking.md).
 - [A tervrajzokat kódként kezelheti](https://github.com/Azure/azure-blueprints/blob/master/README.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Tudnivalók a [tervek életciklusáról](../concepts/lifecycle.md).
 - A [statikus és dinamikus paraméterek](../concepts/parameters.md) használatának elsajátítása.

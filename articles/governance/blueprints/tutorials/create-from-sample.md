@@ -1,19 +1,16 @@
 ---
 title: Környezet létrehozása tervrajz mintából
 description: A tervrajz minta segítségével létrehozhat egy olyan tervrajz-definíciót, amely két erőforráscsoportot állít be, és minden egyes szerepkör-hozzárendelést konfigurál.
-author: DCtheGeek
-ms.author: dacoulte
 ms.date: 03/05/2019
 ms.topic: tutorial
-ms.service: blueprints
-ms.openlocfilehash: f3250052a7e26b5d8ef7cb1d411f9d9252089875
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: d23e9b7242c58e4da5fcfe5ef4d29d9f9df6f754
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71980721"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73960268"
 ---
-# <a name="tutorial-create-an-environment-from-a-blueprint-sample"></a>Oktatóanyag: Környezet létrehozása tervrajz mintából
+# <a name="tutorial-create-an-environment-from-a-blueprint-sample"></a>Oktatóanyag: környezet létrehozása tervrajz mintából
 
 A minta tervezetek példákat tartalmaznak arra, hogy mit lehet tenni az Azure-tervrajzokkal. Az egyes minták egy adott szándékkal vagy céllal vannak ellátva, de önmagukban nem hozhatnak létre teljes környezetet. A szolgáltatás kiindulópontként szolgál az Azure-tervezetek használatának megkezdéséhez, amely a tartalmazott összetevők, minták és paraméterek különféle kombinációit tartalmazza.
 
@@ -42,10 +39,10 @@ Először is implementálja a terv mintáját. Az importálás egy új tervet ho
 
 1. Adja meg a tervezet mintájának _alapjait_ :
 
-   - **Terv neve**: Adjon meg egy nevet a terv mintájának másolatához. Ebben az oktatóanyagban a _Two-RGS-to-role-hozzárendelések_nevet fogjuk használni.
-   - **Definíció helye**: Használja a három pontot, és válassza ki a felügyeleti csoportot vagy előfizetést, és mentse a minta másolatát a következőre:.
+   - **Terv neve**: adjon meg egy nevet a tervezet mintájának másolatához. Ebben az oktatóanyagban a _Two-RGS-to-role-hozzárendelések_nevet fogjuk használni.
+   - **Definíció helye**: használja a három pontot, és válassza ki azt a felügyeleti csoportot vagy előfizetést, amelybe menteni szeretné a minta másolatát.
 
-1. Válassza ki az oldal tetején található _összetevők lapot vagy a @no__t_ -1Next: A lap alján lévő @ no__t-0 összetevők.
+1. Válassza ki az oldal tetején található _összetevők fület_ , vagy a **következőt:** összetevők az oldal alján.
 
 1. Tekintse át a terv mintáját alkotó összetevők listáját. Ez a minta két erőforráscsoportot határoz meg, amelyek a _ProdRG_ és a _PreProdRG_megjelenítendő nevei. Az egyes erőforráscsoportok végső neve és helye a terv hozzárendelése során van beállítva. A _ProdRG_ erőforráscsoport hozzá van rendelve a _közreműködő_ szerepkörhöz, és a _PreProdRG_ erőforráscsoport hozzá van rendelve a _tulajdonosi_ és az _olvasói_ szerepkörökhöz. A definícióban hozzárendelt szerepkörök statikusak, de a szerepkörhöz hozzárendelt felhasználó, alkalmazás vagy csoport a terv hozzárendelése során be van állítva.
 
@@ -81,13 +78,13 @@ Miután a tervezet mintájának **közzététele**sikeresen megtörtént, hozzá
 
 1. Adja meg a tervrajz-hozzárendelés paramétereinek értékét:
 
-   - Alapadatok
+   - Alapvető beállítások
 
-     - **Előfizetések**: Válasszon ki egy vagy több olyan előfizetést, amely a felügyeleti csoportban található, a terv mintájának másolatát a következőre mentette:. Ha egynél több előfizetést választ ki, a rendszer minden megadott paraméterrel létrehoz egy hozzárendelést.
-     - **Hozzárendelés neve**: A név előre ki van töltve a terv definíciójának neve alapján.
-     - **Hely**: Válassza ki azt a régiót, amelyben létre kívánja hozni a felügyelt identitást. Az Azure Blueprint a hozzárendelt tervben lévő összes összetevő üzembe helyezéséhez ezt a felügyelt identitást használja. További tudnivalók: [Azure-erőforrások felügyelt identitásai](../../../active-directory/managed-identities-azure-resources/overview.md).
+     - **Előfizetések**: válasszon ki egy vagy több olyan előfizetést, amely a felügyeleti csoportban található, és a terv mintájának másolatát mentette. Ha egynél több előfizetést választ ki, a rendszer minden megadott paraméterrel létrehoz egy hozzárendelést.
+     - **Hozzárendelés neve**: a név előre ki van töltve a terv definíciójának neve alapján.
+     - **Hely**: válassza ki azt a régiót, amelyben létre kívánja hozni a felügyelt identitást. Az Azure Blueprint a hozzárendelt tervben lévő összes összetevő üzembe helyezéséhez ezt a felügyelt identitást használja. További tudnivalók: [Azure-erőforrások felügyelt identitásai](../../../active-directory/managed-identities-azure-resources/overview.md).
        Ebben az oktatóanyagban válassza az _USA 2. keleti_régióját.
-     - **Terv definíciójának verziója**: Válassza ki a közzétett _1,0_ -es verziót a minta-tervezet definíciójának másolatáról.
+     - **Tervezet definíciójának verziója**: válassza ki a **közzétett** _1,0_ -es verziót a minta-tervezet definíciójának másolatáról.
 
    - Hozzárendelés zárolása
 
@@ -97,19 +94,19 @@ Miután a tervezet mintájának **közzététele**sikeresen megtörtént, hozzá
 
      Hagyja meg az alapértelmezett _rendszer-hozzárendelési_ beállítást. További információ: [felügyelt identitások](../../../active-directory/managed-identities-azure-resources/overview.md).
 
-   - Összetevő paraméterei
+   - Összetevő paramétereinek
 
-     Az ebben a szakaszban meghatározott paraméterek a definiált összetevőre vonatkoznak. Ezek a paraméterek [dinamikus paraméterek](../concepts/parameters.md#dynamic-parameters) , mert a terv hozzárendelése során vannak meghatározva. Az egyes összetevőknél állítsa be a paraméter értékét az érték oszlopban definiált **értékre** . @No__t – 0 esetében válassza ki az Azure-beli felhasználói fiókját.
+     Az ebben a szakaszban meghatározott paraméterek a definiált összetevőre vonatkoznak. Ezek a paraméterek [dinamikus paraméterek](../concepts/parameters.md#dynamic-parameters) , mert a terv hozzárendelése során vannak meghatározva. Az egyes összetevőknél állítsa be a paraméter értékét az érték oszlopban definiált **értékre** . `{Your ID}`válassza ki az Azure-beli felhasználói fiókját.
 
-     |Elemnév|Összetevő típusa|Paraméternév|Value|Leírás|
+     |Összetevő neve|Összetevő típusa|Paraméter neve|Érték|Leírás|
      |-|-|-|-|-|
-     |ProdRG erőforráscsoport|Resource group|Name (Név)|ProductionRG|Meghatározza az első erőforráscsoport nevét.|
-     |ProdRG erőforráscsoport|Resource group|Location|USA nyugati régiója, 2.|Megadja az első erőforráscsoport helyét.|
-     |Közreműködő|Szerepkör-hozzárendelés|Felhasználó vagy csoport|{Az Ön azonosítója}|Meghatározza, hogy melyik felhasználó vagy csoport adja meg a _közreműködői_ szerepkör-hozzárendelést az első erőforráscsoporthoz.|
-     |PreProdRG erőforráscsoport|Resource group|Name (Név)|PreProductionRG|Meghatározza a második erőforráscsoport nevét.|
-     |PreProdRG erőforráscsoport|Resource group|Location|USA nyugati régiója|Beállítja a második erőforráscsoport helyét.|
-     |Tulajdonos|Szerepkör-hozzárendelés|Felhasználó vagy csoport|{Az Ön azonosítója}|Meghatározza, hogy melyik felhasználó vagy csoport adja meg a _tulajdonosi_ szerepkör-hozzárendelést a második erőforráscsoporthoz.|
-     |Olvasók|Szerepkör-hozzárendelés|Felhasználó vagy csoport|{Az Ön azonosítója}|Meghatározza, hogy melyik felhasználó vagy csoport adja meg az _olvasók_ szerepkör-hozzárendelést a második erőforráscsoporthoz.|
+     |ProdRG erőforráscsoport|Erőforráscsoport|Name (Név)|ProductionRG|Meghatározza az első erőforráscsoport nevét.|
+     |ProdRG erőforráscsoport|Erőforráscsoport|Hely|USA nyugati régiója, 2.|Megadja az első erőforráscsoport helyét.|
+     |Közreműködő|Szerepkör-kijelölés|Felhasználó vagy csoport|{Az Ön azonosítója}|Meghatározza, hogy melyik felhasználó vagy csoport adja meg a _közreműködői_ szerepkör-hozzárendelést az első erőforráscsoporthoz.|
+     |PreProdRG erőforráscsoport|Erőforráscsoport|Name (Név)|PreProductionRG|Meghatározza a második erőforráscsoport nevét.|
+     |PreProdRG erőforráscsoport|Erőforráscsoport|Hely|USA nyugati régiója|Beállítja a második erőforráscsoport helyét.|
+     |Tulajdonos|Szerepkör-kijelölés|Felhasználó vagy csoport|{Az Ön azonosítója}|Meghatározza, hogy melyik felhasználó vagy csoport adja meg a _tulajdonosi_ szerepkör-hozzárendelést a második erőforráscsoporthoz.|
+     |Olvasók|Szerepkör-kijelölés|Felhasználó vagy csoport|{Az Ön azonosítója}|Meghatározza, hogy melyik felhasználó vagy csoport adja meg az _olvasók_ szerepkör-hozzárendelést a második erőforráscsoporthoz.|
 
 1. Az összes paraméter megadása után válassza a lap alján található **hozzárendelés** elemet.
 
@@ -147,7 +144,7 @@ A terv-hozzárendelés létrehozza és nyomon követi a terv definíciójában m
 
 1. Jelölje ki a megtagadási hozzárendelést, majd a bal oldalon válassza a **megtagadott engedélyek** lapot.
 
-   A megtagadási hozzárendelés megakadályozza az összes műveletet a **\*** és a **művelet** konfigurációjában, de olvasási hozzáférést engedélyez a **\*/olvasás** kizárásával **.**
+   A megtagadási hozzárendelés megakadályozza az összes műveletet a **\*** és a **művelet** konfigurációjában, de az olvasási hozzáférés engedélyezése a **\*/Read** kizárásával **.**
 
 1. A Azure Portal navigációs listából válassza a **PreProductionRG-hozzáférés-vezérlés (iam)** lehetőséget. Ezután válassza ki az **Áttekintés** lapot a bal oldalon, majd az **erőforráscsoport törlése** gombot. Írja be a _PreProductionRG_ nevet a törlés megerősítéséhez, majd kattintson a **Törlés** gombra a panel alján.
 
@@ -184,7 +181,7 @@ Ha elkészült ezzel az Oktatóanyaggal, törölje a következő erőforrásokat
 - Erőforráscsoport _PreProductionRG_
 - Terv definíciója: _Two-RGS-a-role-hozzárendelései_
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A [terv életciklusának](../concepts/lifecycle.md) megismerése
 - A [statikus és dinamikus paraméterek](../concepts/parameters.md) használatának elsajátítása

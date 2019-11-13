@@ -9,12 +9,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/31/2019
 ms.author: dacurwin
-ms.openlocfilehash: bdcd7cbd24ca7023070585df46aa8cea7bdc70eb
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 7716fba7a16b393143ffb9c97e7203e15bc07d82
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73747287"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74012936"
 ---
 # <a name="install-azure-backup-server-on-azure-stack"></a>Azure Backup Server telepítése az Azure Stacken
 
@@ -124,7 +124,7 @@ A tárreplikációs beállítás szerkesztése:
 
 ## <a name="download-azure-backup-server-installer"></a>Azure Backup Server telepítőjének letöltése
 
-Az Azure Backup Server telepítőt kétféleképpen töltheti le. A Azure Backup Server-telepítőt a [Microsoft letöltőközpontból](https://www.microsoft.com/en-us/download/details.aspx?id=55269)töltheti le. Azure Backup Server telepítőt Recovery Services-tároló konfigurálásakor is letöltheti. A következő lépések végigvezetik a telepítő letöltésének lépésein a Azure Portal egy Recovery Services-tároló konfigurálása során.
+Az Azure Backup Server telepítőt kétféleképpen töltheti le. A Azure Backup Server-telepítőt a [Microsoft letöltőközpontból](https://www.microsoft.com/download/details.aspx?id=55269)töltheti le. Azure Backup Server telepítőt Recovery Services-tároló konfigurálásakor is letöltheti. A következő lépések végigvezetik a telepítő letöltésének lépésein a Azure Portal egy Recovery Services-tároló konfigurálása során.
 
 1. A Azure Stack virtuális gépről [Jelentkezzen be az Azure-előfizetésbe a Azure Portal](https://portal.azure.com/).
 2. A bal oldali menüben válassza a **minden szolgáltatás**lehetőséget.
@@ -147,7 +147,7 @@ Az Azure Backup Server telepítőt kétféleképpen töltheti le. A Azure Backup
 
     Megnyílik a biztonsági mentés menü.
 
-    ![Backup-goals-default-Opened](./media/backup-mabs-install-azure-stack/getting-started-menu.png)
+    ![Backup-goals-default-opened](./media/backup-mabs-install-azure-stack/getting-started-menu.png)
 
 6. A biztonsági mentés menüben, a **Hol van a** számítási feladat fut menüben válassza **a**helyszíni lehetőséget. A **Miről szeretne biztonsági másolatot készíteni?** legördülő menüből válassza ki a védelemmel ellátni kívánt munkaterheléseket Azure Backup Server használatával. Ha nem tudja biztosan, hogy melyik számítási feladatot szeretné kiválasztani, válassza a **Hyper-V Virtual Machines** , majd az **infrastruktúra előkészítése**lehetőséget.
 
@@ -363,7 +363,7 @@ Lehetséges, hogy az Azure-előfizetést *lejárt* vagy *kiépített* állapotr�
 Ha Microsoft Azure Backup kiszolgáló hibával leáll a telepítési fázisban (vagy biztonsági mentés vagy visszaállítás), tekintse meg a [hibakódok dokumentumát](https://support.microsoft.com/kb/3041338).
 [Azure Backup kapcsolódó gyakori kérdések](backup-azure-backup-faq.md) is megtekinthetők
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A [DPM környezetének előkészítésével](https://docs.microsoft.com/system-center/dpm/prepare-environment-for-dpm?view=sc-dpm-1801)kapcsolatos cikk a támogatott Azure Backup Server konfigurációkról tartalmaz információkat.
 

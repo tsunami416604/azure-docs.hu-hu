@@ -1,19 +1,18 @@
 ---
-title: Helyreállítási tervek használata a vész-helyreállításban Azure Site Recovery
+title: A Azure Site Recovery helyreállítási tervei
 description: Ismerje meg, hogyan használhatja a helyreállítási terveket a vész-helyreállításhoz a Azure Site Recovery szolgáltatással.
 author: rayne-wiselman
 manager: carmonm
-services: site-recovery
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 10/15/2019
+ms.date: 11/12/2019
 ms.author: raynew
-ms.openlocfilehash: 9e45787e7ae39b62605f5d8a54afd4ad95c9cca7
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 640f7258821718c5d406dd581d1f9c503e0d41c2
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72331912"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73953877"
 ---
 # <a name="about-recovery-plans"></a>A helyreállítási tervek ismertetése
 
@@ -63,11 +62,11 @@ Ennek a testreszabásnak a helyén a következő történik, ha feladatátvétel
 
 A nagyméretű alkalmazások helyreállítása összetett feladat lehet. A manuális lépések végrehajtásával a folyamat hibát észlelt, és előfordulhat, hogy a feladatátvételt futtató személy nem veszi figyelembe az alkalmazás összes bonyolult feltételét. A helyreállítási terv segítségével megadhatja a sorrendet, és automatizálhatja az egyes lépésekhez szükséges műveleteket, Azure Automation runbookok használatával végezheti el a feladatátvételt az Azure-ba vagy a parancsfájlokba. Olyan feladatokhoz, amelyek nem lehetnek automatizáltak, a manuális műveletekre vonatkozó szüneteltetéseket is beillesztheti helyreállítási tervbe. Több különböző típusú feladat is konfigurálható:
 
-* **Feladatok az Azure virtuális gépen feladatátvétel után**: Ha feladatátvételt végez az Azure-ba, általában műveleteket kell végrehajtania, hogy a feladatátvételt követően csatlakozni lehessen a virtuális géphez. Példa: 
+* **Feladatok az Azure virtuális gépen feladatátvétel után**: Ha feladatátvételt végez az Azure-ba, általában műveleteket kell végrehajtania, hogy a feladatátvételt követően csatlakozni lehessen a virtuális géphez. Például: 
     * Hozzon létre egy nyilvános IP-címet az Azure-beli virtuális gépen.
     * Rendeljen egy hálózati biztonsági csoportot az Azure-beli virtuális gép hálózati adapteréhez.
     * Terheléselosztó hozzáadása egy rendelkezésre állási készlethez.
-* **Feladatok a virtuális gépen a feladatátvételt követően**: ezek a feladatok általában újrakonfigurálja a gépen futó alkalmazást, hogy az továbbra is megfelelően működjön az új környezetben. Példa:
+* **Feladatok a virtuális gépen a feladatátvételt követően**: ezek a feladatok általában újrakonfigurálja a gépen futó alkalmazást, hogy az továbbra is megfelelően működjön az új környezetben. Például:
     * Módosítsa az adatbázis-kapcsolatok karakterláncát a gépen belül.
     * Módosítsa a webkiszolgáló konfigurációját vagy szabályait.
 
@@ -84,7 +83,7 @@ Helyreállítási terv használatával feladatátvételi tesztet indíthat. Hasz
 
     ![Képernyőkép egy példa tesztelési helyreállítási tervről Site Recovery](./media/recovery-plan-overview/rptest.png)
 
-## <a name="watch-the-video"></a>A videó megtekintése
+## <a name="watch-the-video"></a>Videó megtekintése
 
 Tekintse meg a kétrétegű WordPress-alkalmazásra vonatkozó on-Click feladatátvételt bemutató gyors példát tartalmazó videót.
     

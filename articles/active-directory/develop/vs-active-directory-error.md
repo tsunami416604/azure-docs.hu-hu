@@ -1,5 +1,5 @@
 ---
-title: Hibák diagnosztizálása a Azure Active Directory csatlakoztatott szolgáltatással
+title: Hibák diagnosztizálása Azure Active Directory csatlakoztatott szolgáltatással
 description: Az Active Directory csatlakoztatott szolgáltatás inkompatibilis hitelesítési típust észlelt
 author: ghogen
 manager: jillfra
@@ -12,12 +12,12 @@ ms.date: 03/12/2018
 ms.author: ghogen
 ms.custom: aaddev, vs-azure
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3e544942029532fdbe998c36917e688d70ce4ed5
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 26f25daa01288959c38520f9713d35eb975d2df2
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68851994"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73941386"
 ---
 # <a name="diagnosing-errors-with-the-azure-active-directory-connected-service"></a>Hibák diagnosztizálása a Azure Active Directory csatlakoztatott szolgáltatással
 
@@ -27,7 +27,7 @@ A projekt korábbi hitelesítési kódjának megfelelő észleléséhez a projek
 
 ## <a name="project-types"></a>Projektek típusai
 
-A csatlakoztatott szolgáltatás ellenőrzi, hogy milyen típusú projektet fejleszt, így a megfelelő hitelesítési logikát beillesztheti a projektbe. Ha van olyan vezérlő, amely a projektből `ApiController` származik, a projekt egy WebAPI projektnek tekintendő. Ha csak a projektből származtatott `MVC.Controller` vezérlők találhatók, akkor a projekt MVC-projektnek tekintendő. A csatlakoztatott szolgáltatás nem támogatja a más típusú projekteket.
+A csatlakoztatott szolgáltatás ellenőrzi, hogy milyen típusú projektet fejleszt, így a megfelelő hitelesítési logikát beillesztheti a projektbe. Ha van olyan vezérlő, amely a projektben `ApiController` származik, a projekt egy WebAPI-projektnek számít. Ha csak a projektben `MVC.Controller` származtató vezérlők szerepelnek, a projekt MVC-projektnek tekintendő. A csatlakoztatott szolgáltatás nem támogatja a más típusú projekteket.
 
 ## <a name="compatible-authentication-code"></a>Kompatibilis hitelesítési kód
 
@@ -54,7 +54,7 @@ Végül a csatlakoztatott szolgáltatás megpróbálja észlelni a Visual Studio
 * Egyéni felhasználói fiókok
 * Szervezeti fiókok
 
-Az MVC-projektekben a Windows-hitelesítés észleléséhez a csatlakoztatott `authentication` elem a `web.config` fájlban található elemet keresi.
+Az MVC-projektekben a Windows-hitelesítés észleléséhez a csatlakoztatott `web.config` fájl `authentication` elemét keresi.
 
 ```xml
 <configuration>
@@ -64,7 +64,7 @@ Az MVC-projektekben a Windows-hitelesítés észleléséhez a csatlakoztatott `a
 </configuration>
 ```
 
-A Windows-hitelesítés webes API-projektben való észleléséhez a csatlakoztatott szolgáltatás a `IISExpressWindowsAuthentication` `.csproj` projekt fájljában keresi az elemet:
+A Windows-hitelesítés webes API-projektben való észleléséhez a csatlakoztatott szolgáltatás a projekt `.csproj` fájljának `IISExpressWindowsAuthentication` elemét keresi:
 
 ```xml
 <Project>
@@ -74,7 +74,7 @@ A Windows-hitelesítés webes API-projektben való észleléséhez a csatlakozta
 </Project>
 ```
 
-Az egyes felhasználói fiókok hitelesítésének észleléséhez a csatlakoztatott szolgáltatás megkeresi a csomag elemét `packages.config` a fájlban.
+Az egyes felhasználói fiókok hitelesítésének észleléséhez a csatlakoztatott szolgáltatás megkeresi a csomag elemet a `packages.config` fájlban.
 
 ```xml
 <packages>
@@ -82,7 +82,7 @@ Az egyes felhasználói fiókok hitelesítésének észleléséhez a csatlakozta
 </packages>
 ```
 
-A szervezeti fiók hitelesítésének régi formáját a csatlakoztatott szolgáltatás a következő elemre`web.config`keresi:
+A szervezeti fiók hitelesítésének régi formáját a csatlakoztatott szolgáltatás a következő elemre keresi`web.config`ban:
 
 ```xml
 <configuration>

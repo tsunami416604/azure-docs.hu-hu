@@ -1,7 +1,7 @@
 ---
 title: 'Gyors útmutató C# : SDK-lekérdezések előrejelzési végpontja – Luis'
 titleSuffix: Azure Cognitive Services
-description: Az C# SDK használatával elküldheti a felhasználóknak a Luis-t, és előrejelzést kaphat.
+description: Ebből a cikkből megtudhatja, hogyan C# küldhet el egy felhasználót az Azure Cognitive Services Luis alkalmazásnak az SDK használatával, és hogyan kaphat előrejelzést.
 author: diberry
 manager: nitinme
 ms.service: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: language-understanding
 ms.topic: quickstart
 ms.date: 09/27/2019
 ms.author: diberry
-ms.openlocfilehash: bd1fefa828aca71e3faa27f75a8c67a2f1539d52
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: f4612f7b3f76cbbfc0deac98668770f92ff054bc
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73837083"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73953430"
 ---
 # <a name="quickstart-query-v2-prediction-endpoint-with-c-net-sdk"></a>Rövid útmutató: Query v2 előrejelzési C# végpont a .net SDK-val
 
@@ -179,7 +179,7 @@ Top intent is 'HomeAutomation.TurnOn' with score 0.809439957
 HomeAutomation.Room:'bedroom' begins at position 12 and ends at position 18
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a [.net SDK](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.LUIS.Runtime/) -ról és a [.net-dokumentációról](https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/languageunderstanding?view=azure-dotnet). 
 

@@ -1,17 +1,14 @@
 ---
 title: Új erőforrások megvédése tervrajzok zárolásával
 description: Ebből az oktatóanyagból megtudhatja, hogyan használhatja az Azure-tervrajzok erőforrás-zárolási beállításait csak olvasható módon, és ne törölje az újonnan telepített erőforrások elleni védelemhez.
-author: DCtheGeek
-ms.author: dacoulte
 ms.date: 03/28/2019
 ms.topic: tutorial
-ms.service: blueprints
-ms.openlocfilehash: 2f66677df7cd1c6fbde9c0467b4d7f2094509ee8
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: e2adbb1e47222055753d4b3690646daa83b32bf1
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72297012"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73960255"
 ---
 # <a name="tutorial-protect-new-resources-with-azure-blueprints-resource-locks"></a>Oktatóanyag: új erőforrások biztosítása az Azure BluePrints erőforrás-zárolásokkal
 
@@ -154,11 +151,11 @@ A terv definíciójának közzététele után hozzárendelheti azt egy előfizet
 
      Az ebben a szakaszban meghatározott paraméterek arra a tárgyra vonatkoznak, amelyben definiálva vannak. Ezek a paraméterek [dinamikus paraméterek](../concepts/parameters.md#dynamic-parameters) , mert a terv hozzárendelése során vannak meghatározva. Az egyes összetevőknél állítsa be a paraméter értékét az **érték** oszlopban látható értékre.
 
-     |Összetevő neve|Összetevő típusa|Paraméter neve|Value (Díj)|Leírás|
+     |Összetevő neve|Összetevő típusa|Paraméter neve|Érték|Leírás|
      |-|-|-|-|-|
-     |RGtoLock erőforráscsoport|Erőforráscsoport|Név|TestingBPLocks|Meghatározza az új erőforráscsoport nevét, amelyre a terv zárolásait alkalmazni kell.|
-     |RGtoLock erőforráscsoport|Erőforráscsoport|Földrajzi egység|USA 2. nyugati régiója|Meghatározza az új erőforráscsoport helyét, amelyre a terv zárolásait alkalmazni kívánja.|
-     |StorageAccount|Resource Manager-sablon|Tárfióktípus (StorageAccount)|Standard_GRS|A Storage SKU. Az alapértelmezett érték a _Standard_LRS_.|
+     |RGtoLock erőforráscsoport|Erőforráscsoport|Name (Név)|TestingBPLocks|Meghatározza az új erőforráscsoport nevét, amelyre a terv zárolásait alkalmazni kell.|
+     |RGtoLock erőforráscsoport|Erőforráscsoport|Hely|USA nyugati régiója, 2.|Meghatározza az új erőforráscsoport helyét, amelyre a terv zárolásait alkalmazni kívánja.|
+     |StorageAccount|Resource Manager-sablon|storageAccountType (StorageAccount)|Standard_GRS|A Storage SKU. Az alapértelmezett érték _Standard_LRS_.|
 
 1. Miután megadta az összes paramétert, válassza az oldal alján található **hozzárendelés** elemet.
 
@@ -190,7 +187,7 @@ A hozzárendelés létrehozza az erőforráscsoport _TestingBPLocks_ és a Resou
 
 1. Jelölje ki a megtagadási hozzárendelést, majd a bal oldalon válassza ki a **megtagadott engedélyek** lapot.
 
-   A megtagadási hozzárendelés megakadályozza az összes műveletet a **\*** és a **művelet** konfigurációjában, de olvasási hozzáférést engedélyez a **\*/olvasás** kizárásával **.**
+   A megtagadási hozzárendelés megakadályozza az összes műveletet a **\*** és a **művelet** konfigurációjában, de az olvasási hozzáférés engedélyezése a **\*/Read** kizárásával **.**
 
 1. A Azure Portal navigációs menüben válassza a **TestingBPLocks-hozzáférés-vezérlés (iam)** lehetőséget. Ezután válassza ki az **Áttekintés** lapot a bal oldalon, majd az **erőforráscsoport törlése** gombot. Írja be a **TestingBPLocks** nevet a törlés megerősítéséhez, majd kattintson a **Törlés** gombra a panel alján.
 

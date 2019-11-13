@@ -1,19 +1,18 @@
 ---
-title: Lemezek kizárása a replikációból, állítson be az Azure Site Recovery szolgáltatással vészhelyreállítás |} A Microsoft Docs
-description: Ismerteti, hogyan lehet Virtuálisgép-lemezek kizárása a replikációból a vészhelyreállítás során az Azure-bA.
+title: Lemezek kizárása a vész-helyreállítási replikációból Azure Site Recovery
+description: Ismerteti, hogyan lehet kizárni a virtuális gépeket a replikációból az Azure-ba való vész-helyreállítás során.
 author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
-services: site-recovery
 ms.topic: conceptual
-ms.date: 01/19/2019
+ms.date: 11/12/2019
 ms.author: mayg
-ms.openlocfilehash: f86ded99ef5280a4e6929c39a9fd323d1b61f6f0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 12304067e1a92559c2313fd7382f271249a8c784
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60773941"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73961443"
 ---
 # <a name="exclude-disks-from-replication"></a>Lemezek kizárása a replikációból
 Ez a cikk azt mutatja be, hogyan zárhatóak ki lemezek a replikációból. A kizárás segítségével optimalizálható a felhasznált replikációs sávszélesség, valamint optimalizálhatók a lemezek által felhasznált céloldali erőforrások.
@@ -60,7 +59,7 @@ Az alábbiakban két forgatókönyvet találhat a lemezek kizárása funkció me
 - SQL Server tempdb lemeze
 - Lapozófájl (pagefile.sys) lemeze
 
-## <a name="example-1-exclude-the-sql-server-tempdb-disk"></a>1\. példa: SQL Server tempdb-adatbázist tartalmazó lemezének kizárása
+## <a name="example-1-exclude-the-sql-server-tempdb-disk"></a>1\. példa: SQL Server tempdb adatbázist tartalmazó lemezének kizárása
 Vegyünk egy SQL Server virtuális gépet, amely tempdb-adatbázisa kizárható.
 
 A virtuális gép neve a SalesDB-ben.
@@ -73,7 +72,7 @@ A forrás virtuális gépen lévő lemezek a következők:
 DB-Disk0-OS | DISK0 | C:\ | Operációsrendszer-lemez
 DB-Disk1| Disk1 | D:\ | SQL-rendszeradatbázis és 1. felhasználói adatbázis
 DB-Disk2 (a lemez ki lett zárva a védelemből) | Disk2 | E:\ | Ideiglenes fájlok
-DB-Disk3 (a lemez ki lett zárva a védelemből) | Disk3 | F:\ | SQL tempdb-adatbázis (mappa elérési útja (F:\MSSQL\Data\) <br /> <br />Jegyezze fel a mappa elérési útját a feladatátvétel előtt.
+DB-Disk3 (a lemez ki lett zárva a védelemből) | Disk3 | F:\ | SQL tempdb-adatbázis (mappa elérési útja (F:\MSSQL\Data\) <br /> <br />A feladatátvétel előtt jegyezze fel a mappa elérési útját.
 DB-Disk4 | Disk4 |G:\ |2\. felhasználói adatbázis
 
 Mivel a virtuális gép két lemezén ideiglenes az adatváltozás, a SalesDB virtuális gép védelme során zárja ki a Disk2 és a Disk3 lemezt a replikációból. Az Azure Site Recovery nem replikálja ezeket a lemezeket. A feladatátvétel során ezek a lemezek nem lesznek jelen a feladatátvételi virtuális gépen az Azure-ban.
@@ -83,7 +82,7 @@ A feladatátvétel után az Azure virtuális gépen lévő lemezek a következő
 **Vendég operációsrendszer-lemez száma** | **Meghajtó betűjele** | **A lemez adattípusa**
 --- | --- | ---
 DISK0 | C:\ | Operációsrendszer-lemez
-Disk1 | E:\ | Ideiglenes tároló<br /> <br />Az Azure ad hozzá a lemezt, és az első elérhető betűjellel.
+Disk1 | E:\ | Ideiglenes tároló<br /> <br />Az Azure hozzáadja ezt a lemezt, és hozzárendeli az első elérhető meghajtóbetűjelet.
 Disk2 | D:\ | SQL-rendszeradatbázis és 1. felhasználói adatbázis
 Disk3 | G:\ | 2\. felhasználói adatbázis
 
@@ -147,7 +146,7 @@ Az előző példában az Azure virtuális gép lemezkonfigurációja a következ
 **Vendég operációsrendszer-lemez száma** | **Meghajtó betűjele** | **A lemez adattípusa**
 --- | --- | ---
 DISK0 | C:\ | Operációsrendszer-lemez
-Disk1 | E:\ | Ideiglenes tároló<br /> <br />Az Azure ad hozzá a lemezt, és az első elérhető betűjellel.
+Disk1 | E:\ | Ideiglenes tároló<br /> <br />Az Azure hozzáadja ezt a lemezt, és hozzárendeli az első elérhető meghajtóbetűjelet.
 Disk2 | D:\ | SQL-rendszeradatbázis és 1. felhasználói adatbázis
 Disk3 | G:\ | 2\. felhasználói adatbázis
 
@@ -163,12 +162,12 @@ DB-Disk2 (kizárt lemez) | Disk2 | E:\ | Ideiglenes fájlok
 DB-Disk3 (kizárt lemez) | Disk3 | F:\ | SQL tempdb-adatbázis (mappa elérési útja (F:\MSSQL\Data\)
 DB-Disk4 | Disk4 | G:\ | 2\. felhasználói adatbázis
 
-## <a name="example-2-exclude-the-paging-file-pagefilesys-disk"></a>2\. példa A lapozófájl (pagefile.sys) lemezének kizárása
+## <a name="example-2-exclude-the-paging-file-pagefilesys-disk"></a>2\. példa: A lapozófájl (pagefile.sys) lemezének kizárása
 
 Vegyünk egy virtuális gépet, amely lapozófájllemeze kizárható.
 Két eset létezik.
 
-### <a name="case-1-the-paging-file-is-configured-on-the-d-drive"></a>1\. eset: A lapozófájl a D: meghajtón van konfigurálva.
+### <a name="case-1-the-paging-file-is-configured-on-the-d-drive"></a>1\. eset: A lapozófájl a D: meghajtón van konfigurálva
 Itt láthatja a lemezkonfigurációt:
 
 **Lemez neve** | **Vendég operációsrendszer-lemez száma** | **Meghajtó betűjele** | **A lemez adattípusa**
@@ -197,7 +196,7 @@ Itt láthatja az Azure virtuális gép lapozófájl-beállításait:
 
 ![Lapozófájl-beállítások az Azure virtuális gépen](./media/hyper-v-exclude-disk/pagefile-on-Azure-vm-after-failover.png)
 
-### <a name="case-2-the-paging-file-is-configured-on-another-drive-other-than-d-drive"></a>2\. eset: A lapozófájl másik meghajtón (nem a D: meghajtón) van konfigurálva.
+### <a name="case-2-the-paging-file-is-configured-on-another-drive-other-than-d-drive"></a>2\. eset: A lapozófájl másik meghajtón van konfigurálva (nem a D: meghajtón)
 
 Itt láthatja a forrás virtuális gép lemezkonfigurációját:
 
@@ -227,5 +226,5 @@ Itt láthatja az Azure virtuális gép lapozófájl-beállításait:
 
 ![Lapozófájl-beállítások az Azure virtuális gépen](./media/hyper-v-exclude-disk/pagefile-on-Azure-vm-after-failover-2.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ha sikerült beállítania és elindítani az üzemelő példányt, [ismerkedjen meg részletesebben](site-recovery-failover.md) a feladatátvételi különféle típusaival.

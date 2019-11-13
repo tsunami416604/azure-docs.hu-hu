@@ -1,25 +1,25 @@
 ---
-title: Azure virtuális WAN virtuális központ útválasztási táblázatának létrehozása a NVA való irányításhoz | Microsoft Docs
+title: 'Virtuális WAN: virtuális központ útválasztási táblázatának létrehozása a NVA: Azure PowerShell'
 description: Virtuális WAN virtuális hub útválasztási táblázat a forgalom irányításához egy hálózati virtuális berendezésre.
 services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: conceptual
-ms.date: 01/09/2019
+ms.date: 11/12/2019
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to work with routing tables for NVA.
-ms.openlocfilehash: 18af56f6924484c6267871cf3fed34f80a8f12a4
-ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
+ms.openlocfilehash: 2d8922084dbe30c2dbe494028f2e5a1497fb3759
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70744696"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74014991"
 ---
 # <a name="create-a-virtual-hub-route-table-to-steer-traffic-to-a-network-virtual-appliance"></a>Virtuális központ útválasztási táblázatának létrehozása a forgalom irányításához egy hálózati virtuális berendezésre
 
 Ez a cikk bemutatja, hogyan irányíthatja át a forgalmat egy virtuális hubhoz egy hálózati virtuális berendezésre. 
 
-![A Virtual WAN ábrája](./media/virtual-wan-route-table/vwanroute.png)
+![Virtuális WAN ábrája](./media/virtual-wan-route-table/vwanroute.png)
 
 Ebben a cikkben az alábbiakkal fog megismerkedni:
 
@@ -43,7 +43,7 @@ Ellenőrizze, hogy teljesültek-e az alábbi feltételek:
 5. Ellenőrizze, hogy már létrehozott-e 2 virtuális hálózatok. Ezeket küllős virtuális hálózatok fogjuk használni. Ebben a cikkben a VNet küllős címtartomány a 10.0.2.0/24 és a 10.0.3.0/24. Ha a VNet létrehozásával kapcsolatos információkra van szüksége, tekintse meg [a virtuális hálózat létrehozása a PowerShell használatával](../virtual-network/quick-create-powershell.md)című témakört.
 6. Győződjön meg arról, hogy nincsenek virtuális hálózati átjárók egyetlen virtuális hálózatok sem.
 
-## <a name="signin"></a>1. Bejelentkezés
+## <a name="signin"></a>1. bejelentkezés
 
 Győződjön meg arról, hogy a Resource Manager PowerShell-parancsmagok legújabb verzióját telepíti. A PowerShell-parancsmagok telepítéséről további információt a [How to install and configure Azure PowerShell](/powershell/azure/install-az-ps) (Az Azure PowerShell telepítése és konfigurálása) című témakörben talál. Ez azért fontos, mert a parancsmagok korábbi verziói nem tartalmazzák a feladatok elvégzéséhez szükséges aktuális értékeket.
 
@@ -63,7 +63,7 @@ Győződjön meg arról, hogy a Resource Manager PowerShell-parancsmagok legúja
    Select-AzSubscription -SubscriptionName "Name of subscription"
    ```
 
-## <a name="rg"></a>2. Erőforrások létrehozása
+## <a name="rg"></a>2. erőforrások létrehozása
 
 1. Hozzon létre egy erőforráscsoportot.
 
@@ -81,7 +81,7 @@ Győződjön meg arról, hogy a Resource Manager PowerShell-parancsmagok legúja
    New-AzVirtualHub -VirtualWan $virtualWan -ResourceGroupName "testRG" -Name "westushub" -AddressPrefix "10.0.1.0/24" -Location "West US"
    ```
 
-## <a name="connections"></a>3. Kapcsolatok létrehozása
+## <a name="connections"></a>3. kapcsolatok létrehozása
 
 Hozzon létre hub virtuális hálózati kapcsolatokat a közvetett küllős VNet és a DMZ-VNet a virtuális hubhoz.
 
@@ -95,7 +95,7 @@ Hozzon létre hub virtuális hálózati kapcsolatokat a közvetett küllős VNet
   New-AzVirtualHubVnetConnection -ResourceGroupName "testRG" -VirtualHubName "westushub" -Name  "testvnetconnection3" -RemoteVirtualNetwork $remoteVirtualNetwork3
   ```
 
-## <a name="route"></a>4. Virtuális központ útvonalának létrehozása
+## <a name="route"></a>4. virtuális központ útvonalának létrehozása
 
 Ebben a cikkben a közvetlen küllős VNet 10.0.2.0/24 és 10.0.3.0/24, a DMZ NVA hálózati adapter magánhálózati IP-címe pedig 10.0.4.5.
 
@@ -103,7 +103,7 @@ Ebben a cikkben a közvetlen küllős VNet 10.0.2.0/24 és 10.0.3.0/24, a DMZ NV
 $route1 = New-AzVirtualHubRoute -AddressPrefix @("10.0.2.0/24", "10.0.3.0/24") -NextHopIpAddress "10.0.4.5"
 ```
 
-## <a name="applyroute"></a>5. Virtuális központ útválasztási táblázatának létrehozása
+## <a name="applyroute"></a>5. virtuális központ útválasztási táblázatának létrehozása
 
 Hozzon létre egy virtuális hub útválasztási táblázatot, majd alkalmazza a létrehozott útvonalat.
  
@@ -111,7 +111,7 @@ Hozzon létre egy virtuális hub útválasztási táblázatot, majd alkalmazza a
 $routeTable = New-AzVirtualHubRouteTable -Route @($route1)
 ```
 
-## <a name="commit"></a>6. A módosítások véglegesítve
+## <a name="commit"></a>6. véglegesítse a módosításokat
 
 Véglegesítse a módosításokat a virtuális központban.
 
@@ -119,6 +119,6 @@ Véglegesítse a módosításokat a virtuális központban.
 Update-AzVirtualHub -VirtualWanId $virtualWan.Id -ResourceGroupName "testRG" -Name "westushub" -RouteTable $routeTable
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A Virtual WAN-nal kapcsolatos további információkért lásd a [Virtual WAN áttekintő](virtual-wan-about.md) lapját.

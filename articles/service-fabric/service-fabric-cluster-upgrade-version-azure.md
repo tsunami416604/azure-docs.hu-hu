@@ -1,5 +1,5 @@
 ---
-title: Azure Service Fabric-fürt frissítése | Microsoft Docs
+title: Fürt Azure Service Fabric verziójának frissítése
 description: Frissítse a Service Fabric kódot és/vagy konfigurációt, amely egy Service Fabric fürtöt futtat, beleértve a fürt frissítési módjának beállítását, a tanúsítványok frissítését, az alkalmazások portjainak hozzáadását, az operációs rendszer javítását stb. Mire számíthat a frissítések végrehajtásakor?
 services: service-fabric
 documentationcenter: .net
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/12/2018
 ms.author: atsenthi
-ms.openlocfilehash: 03fd5f2950349f0dc76021d28845e383c0ba6a64
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 067bf654928240ffe9651d4acf1933a81e631146
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68599815"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74013346"
 ---
 # <a name="upgrade-the-service-fabric-version-of-a-cluster"></a>Fürt Service Fabric-verziójának frissítése
 
@@ -65,7 +65,7 @@ Ha a fürt állapot-házirendjei nem teljesülnek, a rendszer visszaállítja a 
 A visszaállítást eredményező hibák kijavítása után újra kell indítania a frissítést a korábban leírt lépések követésével.
 
 ## <a name="set-custom-health-polices-for-upgrades"></a>Egyéni állapot-házirendek beállítása a frissítésekhez
-Megadhat egyéni állapot-házirendeket a háló frissítéséhez. Ha úgy állította be a fürtöt, hogy az automatikus háló frissítése megtörténjen, akkor ezek a szabályzatok az [automatikus háló frissítéseinek 1](service-fabric-cluster-upgrade.md#fabric-upgrade-behavior-during-automatic-upgrades). fázisára vonatkoznak.
+Megadhat egyéni állapot-házirendeket a háló frissítéséhez. Ha úgy állította be a fürtöt, hogy az automatikus háló frissítése megtörténjen, akkor ezek a szabályzatok az [automatikus háló frissítéseinek 1. fázisára](service-fabric-cluster-upgrade.md#fabric-upgrade-behavior-during-automatic-upgrades)vonatkoznak.
 Ha a fürtöt manuális hálós frissítésre állította be, akkor a rendszer minden alkalommal alkalmazza ezeket a házirendeket, amikor kiválaszt egy új verziót, amely elindítja a rendszerindítást a fürtben. Ha nem bírálja felül a szabályzatokat, a rendszer az alapértelmezett értékeket használja.
 
 A speciális frissítési beállítások kiválasztásával megadhatja az egyéni állapotfigyelő házirendeket, vagy áttekintheti az aktuális beállításokat a "háló frissítése" panelen. Tekintse át a következő képet a című témakörben. 
@@ -119,8 +119,8 @@ Output:
                 }
 ```
 
-## <a name="next-steps"></a>További lépések
-* Megtudhatja, hogyan szabhatja testre a [Service Fabric-fürtök](service-fabric-cluster-fabric-settings.md) néhány beállítását
+## <a name="next-steps"></a>Következő lépések
+* Megtudhatja, hogyan szabhatja testre a [Service Fabric-fürtök néhány beállítását](service-fabric-cluster-fabric-settings.md)
 * Ismerje meg, hogyan [méretezheti a fürtöt és ki](service-fabric-cluster-scale-up-down.md)
 * Az [alkalmazások frissítéseinek](service-fabric-application-upgrade.md) megismerése
 

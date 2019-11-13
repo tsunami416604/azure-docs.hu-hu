@@ -1,17 +1,14 @@
 ---
 title: A környezet konfigurálása Blueprint Operatorhoz
 description: Ismerje meg, hogyan konfigurálhatja Azure-környezetét a Blueprint Operator beépített szerepköralapú hozzáférés-vezérlési (RBAC) szerepkörrel való használatra.
-author: DCtheGeek
-ms.author: dacoulte
 ms.date: 08/26/2019
 ms.topic: conceptual
-ms.service: blueprints
-ms.openlocfilehash: 8c6d3a4d30d8b0b5ec361584846f31a7714b43ec
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: f4b999354e31afed56a3a5f5a35a80887292e83f
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71978469"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73960386"
 ---
 # <a name="configure-your-environment-for-a-blueprint-operator"></a>A környezet konfigurálása Blueprint Operatorhoz
 
@@ -37,7 +34,7 @@ A tervrajzok definíciója rendszer által hozzárendelt vagy felhasználó ált
 
 1. A **terv operátorként** [rendeljen hozzá egy tervet](../create-blueprint-portal.md#assign-a-blueprint) , amely az új, felhasználó által hozzárendelt felügyelt identitást használja.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Tudnivalók a [tervek életciklusáról](../concepts/lifecycle.md).
 - A [statikus és dinamikus paraméterek](../concepts/parameters.md) használatának elsajátítása.

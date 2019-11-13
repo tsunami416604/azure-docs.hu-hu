@@ -1,6 +1,6 @@
 ---
-title: Idősorozat-modell a Azure Time Series Insights Preview-ban | Microsoft Docs
-description: Az Azure Time Series Insights Time Series-modell ismertetése.
+title: Idősorozat-modell – Azure Time Series Insights | Microsoft Docs
+description: Az idősorozat-modell megismerése Azure Time Series Insights előzetes verzióban.
 author: deepakpalled
 ms.author: dpalled
 manager: cshankar
@@ -10,14 +10,14 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 10/25/2019
 ms.custom: seodec18
-ms.openlocfilehash: 3c9bface359df020cea0bfff8f82e25e25efbc47
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: a550643640afeefeb4cf79e35265f13557b6ffb0
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73585250"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74014700"
 ---
-# <a name="time-series-model"></a>Time Series-modell
+# <a name="time-series-model-in-azure-time-series-insights-preview"></a>Idősorozat-modell Azure Time Series Insights előzetes verzióban
 
 Ez a cikk az idősorozat-modellt, a képességeket, valamint a saját modelljeinek a Azure Time Series Insights előnézeti környezetben való létrehozásának és frissítésének megkezdését ismerteti.
 
@@ -54,7 +54,7 @@ Az **idősorozat-modell kényelmes megoldást kínál** a kitalált példán bel
 * Az adatok továbbra is környezetfüggők, mert a Time Series-modellben megőrzött adatok megőrzik a Time Series lekérdezési számításait változókként, és ezeket a lekérdezési időpontokban használják.
 * Az idősorozat-modell rendszerezi és összesíti az adatokat a jobb vizualizációs és felügyeleti képességekhez.
 
-### <a name="key-capabilities"></a>Főbb képességek
+### <a name="key-capabilities"></a>Főbb funkciók
 
 Azzal a céllal, hogy egyszerű és könnyedebb legyen a Time Series contextualization kezelése, az idősorozat-modell a következő képességeket teszi lehetővé Time Series Insights előzetes verzióban. A következőkkel segíti Önt:
 
@@ -223,7 +223,7 @@ A többiek a nem *szülő példányok* alá vannak sorolva, mert nem felelnek me
 
 Az idősorozat *-modellek segítségével* változók vagy képletek definiálhatók a számítások végrehajtásához. A típusok egy adott Time Series Insights-példánnyal vannak társítva.
 
-Egy típus egy vagy több változóval is rendelkezhet. Egy idősorozat-modell példánya például lehet *hőmérséklet-érzékelő*, amely az *átlagos hőmérsékletet*, a *minimális hőmérsékletet*és a *maximális hőmérsékletet*tartalmazza.
+A típus lehet egy vagy több változót. Egy idősorozat-modell példánya például lehet *hőmérséklet-érzékelő*, amely az *átlagos hőmérsékletet*, a *minimális hőmérsékletet*és a *maximális hőmérsékletet*tartalmazza.
 
 A [contoso szélerőműpark bemutatója](https://insights.timeseries.azure.com/preview/samples) több idősorozat-modellt jelenít meg a saját példányaihoz társítva.
 
@@ -241,7 +241,7 @@ Az idősorozat-modell típusait **azonosító**, **név**, **Leírás**és **vá
 | id | A típus UUID azonosítója. |
 | név | A típus nevének megadására szolgáló sztring. |
 | leírás | A típushoz tartozó karakterlánc leírása. |
-| Változók | Adja meg a típushoz társított változókat. |
+| változók | Adja meg a típushoz társított változókat. |
 
 A típusok megfelelnek a következő JSON-példának:
 
@@ -386,7 +386,7 @@ A változók megfelelnek a következő JSON-példának:
 
 A változók egy idősorozat-modell definíciójában tárolódnak, és a [lekérdezési API](time-series-insights-update-tsq.md) -kon keresztül is elérhetők a tárolt definíció felülbírálásához.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Lásd: [Azure Time Series Insights előnézeti tároló és bejövő](./time-series-insights-update-storage-ingress.md)forgalom.
 - Ismerkedjen meg a gyakori idősorozat-modellezési műveletekkel [Azure Time Series Insights előzetes](./time-series-insights-update-how-to-tsm.md) verzióban

@@ -1,6 +1,6 @@
 ---
 title: Szerepkör-hozzárendelések létrehozása és kezelése – Azure digitális Twins | Microsoft Docs
-description: További információ a szerepkör-hozzárendelések létrehozásáról és kezeléséről az Azure digitális Twins szolgáltatásban.
+description: Ismerje meg, hogyan hozhat létre és kezelhet szerepkör-hozzárendeléseket az Azure digitális Twins-n belül.
 ms.author: alinast
 author: alinamstanciu
 manager: bertvanhoof
@@ -9,12 +9,12 @@ services: digital-twins
 ms.topic: conceptual
 ms.date: 10/02/2019
 ms.custom: seodec18
-ms.openlocfilehash: 68714a06f72a522df0245d9c044bb6ff6557d52f
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.openlocfilehash: 45ce22f208ee31b7202705eb4e42c38bedf09a8b
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71949829"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74013997"
 ---
 # <a name="create-and-manage-role-assignments-in-azure-digital-twins"></a>Szerepkör-hozzárendelések létrehozása és kezelése az Azure Digital Ikrekben
 
@@ -36,13 +36,13 @@ Minden szerepkör-hozzárendelés megfelel a következő definíciónak:
 
 Az alábbi táblázat az egyes attribútumokat ismerteti:
 
-| Attribútum | Name (Név) | Szükséges | Típus | Leírás |
+| Attribútum | Name (Név) | Kötelező | Típus | Leírás |
 | --- | --- | --- | --- | --- |
 | Szerepkörazonosítónak | Szerepkör-definíciós azonosító | Igen | Sztring | A kívánt szerepkör-hozzárendelés egyedi azonosítója. Keresse meg a szerepkör-definíciókat és azok azonosítóját a System API lekérdezésével vagy az alábbi táblázat áttekintésével. |
-| objectId | Objektumazonosító | Igen | Sztring | Azure Active Directory azonosító, egyszerű szolgáltatásnév vagy tartománynév. A szerepkör-hozzárendelés hozzárendelése a következőhöz:. A szerepkör-hozzárendelést a hozzá tartozó típusnak megfelelően kell formázni. A `DomainName` objectIdType esetében a objectId a `“@”` karakterrel kell kezdődnie. |
+| objectId | Objektumazonosító | Igen | Sztring | Azure Active Directory azonosító, egyszerű szolgáltatásnév vagy tartománynév. A szerepkör-hozzárendelés hozzárendelése a következőhöz:. A szerepkör-hozzárendelést a hozzá tartozó típusnak megfelelően kell formázni. A `DomainName` objectIdType a objectId a `“@”` karakterrel kell kezdődnie. |
 | objectIdType | Objektumazonosító típusa | Igen | Sztring | A használt objektumazonosító típusa. Lásd alább a **támogatott ObjectIdTypes** . |
-| path | Hely elérési útja | Igen | Sztring | A `Space` objektum teljes elérési útja. Például: `/{Guid}/{Guid}`. Ha egy azonosítónak a teljes gráfhoz tartozó szerepkör-hozzárendelésre van szüksége, akkor a `"/"` értéket kell megadnia. Ez a karakter kijelöli a gyökeret, de a használata nem ajánlott. Mindig kövesse a legalacsonyabb jogosultsági szint elvét. |
-| tenantId | Bérlő azonosítója | Változó | Sztring | A legtöbb esetben egy Azure Active Directory bérlő azonosítója. @No__t-0 és `TenantId` ObjectIdTypes esetében nem engedélyezett. @No__t-0 és `ServicePrincipalId` ObjectIdTypes szükséges. A tartománynév ObjectIdType nem kötelező megadni. |
+| path | Hely elérési útja | Igen | Sztring | A `Space` objektum teljes elérési útja. Például: `/{Guid}/{Guid}`. Ha egy azonosítónak a teljes gráfhoz tartozó szerepkör-hozzárendelésre van szüksége, akkor `"/"`t kell megadnia. Ez a karakter kijelöli a gyökeret, de a használata nem ajánlott. Mindig kövesse a legalacsonyabb jogosultsági szint elvét. |
+| tenantId | Bérlő azonosítója | Változó | Sztring | A legtöbb esetben egy Azure Active Directory bérlő azonosítója. `DeviceId` és `TenantId` ObjectIdTypes nem engedélyezett. `UserId` és `ServicePrincipalId` ObjectIdTypes szükséges. A tartománynév ObjectIdType nem kötelező megadni. |
 
 ### <a name="supported-role-definition-identifiers"></a>Támogatott szerepkör-definíciós azonosítók
 
@@ -60,7 +60,7 @@ Korábban a **objectIdType** attribútum lett bevezetve.
 
 Az Azure digitális Twins támogatja a szerepkör-hozzárendelések teljes *létrehozási*, *olvasási*és *törlési* műveleteit. A *frissítési* műveletek kezelése szerepkör-hozzárendelések hozzáadásával, szerepkör-hozzárendelések eltávolításával, illetve a szerepkör-hozzárendelések által elérhetővé tett [térbeli intelligencia Graph](./concepts-objectmodel-spatialgraph.md) -csomópontok módosításával történik.
 
-[@no__t – 1Role-hozzárendelési végpontok](media/security-roles/roleassignments.png)](media/security-roles/roleassignments.png#lightbox)
+[Szerepkör-hozzárendelési végpontok ![](media/security-roles/role-assignments.png)](media/security-roles/role-assignments.png#lightbox)
 
 A rendelkezésre álló hencegés dokumentációja további információkat tartalmaz az összes elérhető API-végpontról, a kérelmek műveleteiről és a definícióról.
 
@@ -112,7 +112,7 @@ A következő JSON-törzstel:
 
 ### <a name="retrieve-all-roles"></a>Összes szerepkör beolvasása
 
-[@no__t – 1System szerepkörök](media/security-roles/system.png)](media/security-roles/system.png#lightbox)
+[rendszerszerepkörök ![](media/security-roles/system-api.png)](media/security-roles/system-api.png#lightbox)
 
 Az összes elérhető szerepkör (szerepkör-definíció) listázásához hozzon végre egy hitelesített HTTP GET kérelmet a következőre:
 
@@ -163,12 +163,12 @@ YOUR_MANAGEMENT_API_URL/roleassignments/check?userId=YOUR_USER_ID&path=YOUR_PATH
 
 | **Paraméter értéke** | **Kötelező** |  **Típus** |  **Leírás** |
 | --- | --- | --- | --- |
-| YOUR_USER_ID |  True | Sztring |   A UserId-objectIdType objectId. |
-| YOUR_PATH | True | Sztring |   A kiválasztott elérési út a hozzáférés-ellenőrzési útvonalhoz. |
-| YOUR_ACCESS_TYPE |  True | Sztring |   *Olvasás*, *Létrehozás*, *frissítés*vagy *Törlés* |
-| YOUR_RESOURCE_TYPE | True | Sztring |  *Eszköz*, *DeviceBlobMetadata*, *DeviceExtendedProperty*, *ExtendedPropertyKey*, *ExtendedType*, *végpont*, *tároló*, *Matcher*, *ontológia*, *jelentés*,  *Definíciós*, *érzékelő*, *SensorExtendedProperty*, *szóköz*, *SpaceBlobMetadata*, *SpaceExtendedProperty*, *SpaceResource*, *SpaceRoleAssignment*, *System* , *UerDefinedFunction*, *felhasználó*, *UserBlobMetadata*vagy *UserExtendedProperty* |
+| YOUR_USER_ID |  True (Igaz) | Sztring |   A UserId-objectIdType objectId. |
+| YOUR_PATH | True (Igaz) | Sztring |   A kiválasztott elérési út a hozzáférés-ellenőrzési útvonalhoz. |
+| YOUR_ACCESS_TYPE |  True (Igaz) | Sztring |   *Olvasás*, *Létrehozás*, *frissítés*vagy *Törlés* |
+| YOUR_RESOURCE_TYPE | True (Igaz) | Sztring |  *Eszköz*, *DeviceBlobMetadata*, *DeviceExtendedProperty*, *ExtendedPropertyKey*, *ExtendedType*, *végpont*, *tároló*, *Matcher*, *ontológia*, *jelentés*, *definíciós*, *érzékelő*, *SensorExtendedProperty*, *szóköz*, *SpaceBlobMetadata*, *SpaceExtendedProperty*, *SpaceResource*, *SpaceRoleAssignment*, *rendszer*,  *UerDefinedFunction*, *felhasználó*, *UserBlobMetadata*vagy *UserExtendedProperty* |
 
-Egy sikeres kérelem egy Boolean `true` vagy `false` értéket ad vissza, amely azt jelzi, hogy a hozzáférési típus hozzá van-e rendelve a felhasználóhoz a megadott elérési úthoz és erőforráshoz.
+Egy sikeres kérelem logikai `true` vagy `false`t ad vissza, amely jelzi, hogy a hozzáférési típus hozzá van-e rendelve a felhasználóhoz a megadott elérési úthoz és erőforráshoz.
 
 ### <a name="get-role-assignments-by-path"></a>Szerepkör-hozzárendelések beolvasása elérési út alapján
 
@@ -178,7 +178,7 @@ Egy elérési útra vonatkozó összes szerepkör-hozzárendelés beszerzéséhe
 YOUR_MANAGEMENT_API_URL/roleassignments?path=YOUR_PATH
 ```
 
-| Value | Csere erre |
+| Érték | Csere erre |
 | --- | --- |
 | YOUR_PATH | A terület teljes elérési útja |
 
@@ -240,7 +240,7 @@ Egy sikeres kérelem a 201-es válasz állapotát és az újonnan létrehozott s
 
 Az alábbi példák bemutatják, hogyan konfigurálhatja a JSON-törzset számos gyakran észlelt szerepkör-hozzárendelési forgatókönyvben.
 
-* **Példa**: A felhasználónak rendszergazdai hozzáféréssel kell rendelkeznie a bérlői terület emeletéhez.
+* **Példa**: a felhasználónak rendszergazdai hozzáférésre van szüksége a bérlői terület emeletéhez.
 
    ```JSON
    {
@@ -252,7 +252,7 @@ Az alábbi példák bemutatják, hogyan konfigurálhatja a JSON-törzset számos
    }
    ```
 
-* **Példa**: Az alkalmazások tesztelési forgatókönyveket futtatnak az eszközök és érzékelők modellezéséhez.
+* **Példa**: az alkalmazások tesztelési forgatókönyveket futtatnak az eszközök és érzékelők kigúnyolása céljából.
 
    ```JSON
    {
@@ -264,7 +264,7 @@ Az alábbi példák bemutatják, hogyan konfigurálhatja a JSON-törzset számos
    }
     ```
 
-* **Példa**: A tartomány részét képező összes felhasználó olvasási hozzáférést kap a tárhelyek, érzékelők és felhasználók számára. Ez a hozzáférés magában foglalja a hozzá tartozó kapcsolódó objektumokat is.
+* **Példa**: a tartomány részét képező összes felhasználó olvasási hozzáférést kap a tárhelyek, érzékelők és felhasználók számára. Ez a hozzáférés magában foglalja a hozzá tartozó kapcsolódó objektumokat is.
 
    ```JSON
    {
@@ -275,7 +275,7 @@ Az alábbi példák bemutatják, hogyan konfigurálhatja a JSON-törzset számos
    }
    ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Az Azure digitális Twins szerepköralapú hozzáférés-vezérlésének áttekintéséhez olvassa el a [szerepköralapú hozzáférés-vezérlés](./security-authenticating-apis.md)című részt.
 

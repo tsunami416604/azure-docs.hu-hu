@@ -1,6 +1,6 @@
 ---
-title: UDF hibakeresése az Azure Digital Twinsban | Microsoft Docs
-description: Útmutató a UDF hibakereséséhez az Azure digitális Twins-ban.
+title: UDF hibakeresése – Azure digitális Twins | Microsoft Docs
+description: További információ a felhasználó által definiált függvények Azure digitális Ikrekben való hibakereséséhez ajánlott módszerekről.
 ms.author: alinast
 author: alinamstanciu
 manager: bertvanhoof
@@ -9,12 +9,12 @@ services: digital-twins
 ms.topic: conceptual
 ms.date: 10/01/2019
 ms.custom: seodec18
-ms.openlocfilehash: 7b122df279ecde8ed9ed49b5a89251073f3feda7
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.openlocfilehash: 130250156f0fae3e6c40742278479b5d4612657b
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71949885"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74005937"
 ---
 # <a name="how-to-debug-user-defined-functions-in-azure-digital-twins"></a>Felhasználó által definiált függvények hibakeresése az Azure Digital Ikrekben
 
@@ -35,7 +35,7 @@ Az Azure digitális Twins támogatja a robusztus naplózást, monitorozást és 
 
 * Az Azure Digital Twins-specifikus naplózási konfigurációhoz olvassa el a [figyelés és naplózás konfigurálását ismertető témakört](./how-to-configure-monitoring.md).
 * Tekintse át a [Azure monitor](../azure-monitor/overview.md) áttekintését, és ismerkedjen meg a Azure monitor használatával engedélyezett hatékony naplózási beállításokkal.
-* Tekintse át az Azure- [erőforrások naplózási adatainak gyűjtésére és felhasználására szolgáló adatokat](../azure-monitor/platform/resource-logs-overview.md) az Azure-beli digitális ikrek diagnosztikai napló beállításainak az Azure Portalon, az Azure CLI-n vagy a powershellen keresztül történő konfigurálásához.
+* Tekintse át az Azure- [erőforrások naplózási adatainak gyűjtésére és felhasználására szolgáló adatokat](../azure-monitor/platform/resource-logs-overview.md) az Azure Digital Twins diagnosztikai napló beállításainak konfigurálásához a Azure Portal, az Azure CLI vagy a PowerShell használatával.
 
 A konfigurálást követően kiválaszthatja az összes naplózási kategóriát, metrikákat, és hatékony Azure Monitor log Analytics-munkaterületeket használhat a hibakeresési erőfeszítések támogatásához.
 
@@ -43,7 +43,7 @@ A konfigurálást követően kiválaszthatja az összes naplózási kategóriát
 
 Az érzékelő telemetria nyomon követéséhez ellenőrizze, hogy a diagnosztikai beállítások engedélyezve vannak-e az Azure Digital Twins-példányhoz. Ezután győződjön meg arról, hogy az összes kívánt naplózási kategória ki van választva. Végül ellenőrizze, hogy a rendszer elküldje-e a kívánt naplókat Azure Monitor naplókba.
 
-Ahhoz, hogy az érzékelő telemetria az adott naplóba, megadhat egy korrelációs azonosítót az elküldött esemény adataihoz. Ehhez állítsa a `x-ms-client-request-id` tulajdonságot egy GUID-ra.
+Ahhoz, hogy az érzékelő telemetria az adott naplóba, megadhat egy korrelációs azonosítót az elküldött esemény adataihoz. Ehhez állítsa a `x-ms-client-request-id` tulajdonságot egy GUID azonosítóra.
 
 A telemetria elküldése után nyissa meg Azure Monitor log Analytics szolgáltatást a naplók lekérdezéséhez a korrelációs azonosító beállításával:
 
@@ -63,7 +63,7 @@ AzureDiagnostics
 | order by CorrelationId desc
 ```
 
-Ha engedélyezi a naplózást a felhasználó által definiált függvény számára, ezek a naplók a log Analytics-példányban jelennek meg a `UserDefinedFunction` kategóriával. A beolvasáshoz adja meg a következő lekérdezési feltételt a log Analyticsben:
+Ha engedélyezi a naplózást a felhasználó által definiált függvény számára, ezek a naplók a log Analytics-példányban jelennek meg a `UserDefinedFunction`kategóriával. A beolvasáshoz adja meg a következő lekérdezési feltételt a log Analyticsben:
 
 ```Kusto
 AzureDiagnostics
@@ -173,7 +173,7 @@ var customNotification = {
 sendNotification(telemetry.SensorId, "Space", JSON.stringify(customNotification));
 ```
 
-Ez a forgatókönyv azért fordul elő, mert a használt azonosító egy érzékelőre hivatkozik, amíg a megadott topológiai objektumtípus `Space`.
+Ez a forgatókönyv azért fordul elő, mert a használt azonosító egy érzékelőre hivatkozik, amikor a megadott topológiai objektumtípus `Space`.
 
 **Helyes** Például
 
@@ -185,7 +185,7 @@ var customNotification = {
 sendNotification(telemetry.SensorId, "Sensor", JSON.stringify(customNotification));
 ```
 
-A probléma legegyszerűbb módja a `Notify` metódus használata a metaadat-objektumon.
+A probléma legegyszerűbb módja, ha a metaadat-objektumon lévő `Notify` metódust használja.
 
 Példa:
 
@@ -212,7 +212,7 @@ Ha engedélyezi a diagnosztikai beállításokat, a következő gyakori kivétel
 
 1. **Nem engedélyezett**: Ha a felhasználó által definiált függvény nem rendelkezik szerepkör-hozzárendelési készlettel, vagy nem áll rendelkezésre elegendő engedélye bizonyos metaadatok elérésére a topológiából, a művelet meghiúsul.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Ismerje meg, hogyan engedélyezheti a [monitorozást és a naplókat](./how-to-configure-monitoring.md) az Azure digitális Twins szolgáltatásban.
 

@@ -2,26 +2,22 @@
 title: 'Azure AD Connect: verziók kiadásának előzményei | Microsoft Docs'
 description: Ez a cikk a Azure AD Connect és Azure AD-szinkronizáló összes kiadását felsorolja
 services: active-directory
-documentationcenter: ''
 author: billmath
 manager: daveba
-editor: ''
 ms.assetid: ef2797d7-d440-4a9a-a648-db32ad137494
 ms.service: active-directory
-ms.devlang: na
 ms.topic: reference
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 10/7/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 52e15aa62043ba394ae6e8cfe2cc7f27709c7d33
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: 893b617a965b0823b8d630e036d5d5f923647f8f
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/12/2019
-ms.locfileid: "73927459"
+ms.locfileid: "73944230"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect: verziók kiadási előzményei
 A Azure Active Directory (Azure AD) csapata rendszeresen frissíti Azure AD Connect új szolgáltatásokkal és funkciókkal. Nem minden kiegészítés alkalmazható minden célközönségre.
@@ -35,24 +31,23 @@ Témakör |  Részletek
 --------- | --------- |
 A Azure AD Connect frissítésének lépései | A [korábbi verzióról a legújabb](how-to-upgrade-previous-version.md) Azure ad Connect kiadásra való frissítés különböző módszerei.
 Szükséges engedélyek | A frissítések alkalmazásához szükséges engedélyekért lásd: [fiókok és engedélyek](reference-connect-accounts-permissions.md#upgrade).
-
-Letöltés | [Azure ad Connect letöltése](https://go.microsoft.com/fwlink/?LinkId=615771).
+Letöltés| [Azure ad Connect letöltése](https://go.microsoft.com/fwlink/?LinkId=615771).
 
 >[!NOTE]
 >A Azure AD Connect új verziójának kiadása egy olyan folyamat, amely több minőségellenőrzési lépést igényel a szolgáltatás működésének biztosításához, és a folyamat során az új kiadás verziószáma, valamint a kiadási állapot frissítése is megtörténik. a legutóbbi állapotnak megfelelően.
 Amíg ezt a folyamatot elvégezjük, a kiadás verziószáma "X"-ként jelenik meg a másodlagos kiadási szám pozíciójában, ahogy az "1.3. X. 0" értéknél – ez azt jelenti, hogy a jelen dokumentumban szereplő kibocsátási megjegyzések az "1,3." kezdetű összes verzióra érvényesek. Amint elvégezte a kiadási folyamat véglegesítését, a kiadás verziószámát a rendszer frissíti a legújabb verzióra, és a kiadási állapot frissülni fog a "kiadás a letöltéshez és az automatikus frissítéshez".
-Nem minden Azure AD Connect-kiadás lesz elérhető az automatikus frissítéshez. A kiadási állapot azt jelzi, hogy elérhető-e kiadás az automatikus frissítéshez vagy csak a letöltéshez. Ha az automatikus frissítés engedélyezve lett a Azure AD Connect-kiszolgálón, akkor a kiszolgáló automatikusan az automatikus frissítéshez kiadott Azure AD Connect legújabb verziójára fog frissülni. Vegye figyelembe, hogy nem minden Azure AD Connect konfiguráció jogosult az automatikus frissítésre. Az [automatikus frissítéssel](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-install-automatic-upgrade) kapcsolatos további információért kövesse ezt a hivatkozást
+Nem minden Azure AD Connect-kiadás lesz elérhető az automatikus frissítéshez. A kiadási állapot azt jelzi, hogy elérhető-e kiadás az automatikus frissítéshez vagy csak a letöltéshez. Ha az automatikus frissítés engedélyezve lett a Azure AD Connect-kiszolgálón, akkor a kiszolgáló automatikusan az automatikus frissítéshez kiadott Azure AD Connect legújabb verziójára fog frissülni. Vegye figyelembe, hogy nem minden Azure AD Connect konfiguráció jogosult az automatikus frissítésre. Az [automatikus frissítéssel](how-to-connect-install-automatic-upgrade.md) kapcsolatos további információért kövesse ezt a hivatkozást
 
 ## <a name="14320"></a>1.4.32.0
 ### <a name="release-status"></a>Kiadás állapota
-08/11/2019: kiadva a letöltéshez. Nem érhető el az automatikus frissítéshez
+11/08/2019: kiadva a letöltéshez. Nem érhető el az automatikus frissítéshez
 
 >[!IMPORTANT]
 >A Azure AD Connect ezen kiadásában a belső séma módosítása miatt, ha az ADFS megbízhatósági kapcsolatának konfigurációs beállításait a MSOnline PowerShell használatával kezeli, akkor frissítenie kell a MSOnline PowerShell-modult a 1.1.183.57 vagy újabb verzióra.
 ### <a name="fixed-issues"></a>Hibák kijavítva:
 
 Ez a verzió a meglévő hibrid Azure AD-hez csatlakoztatott eszközök problémáját javítja ki. Ez a kiadás egy új eszköz-szinkronizálási szabályt tartalmaz, amely kijavította ezt a problémát.
-Vegye figyelembe, hogy ez a szabály változása miatt törölheti az elavult eszközöket az Azure AD-ből. Ez nem okoz gondot, mivel az Azure AD nem használja fel ezeket az eszközöket a feltételes hozzáférés engedélyezésekor. Egyes ügyfelek esetében a szabály módosításával törölni kívánt eszközök száma túllépheti a törlési küszöbértéket. Ha úgy látja, hogy az Azure AD-ban az eszközök objektumainak törlése túllépi az Exportálás törlési küszöbértékét, azt javasoljuk, hogy engedélyezze a törlést. [A törlések folyamatának engedélyezése, ha túllépik a törlési küszöbértéket](https://docs.microsoft.com/en-us/azure/active-directory/hybrid/how-to-connect-sync-feature-prevent-accidental-deletes)
+Vegye figyelembe, hogy ez a szabály változása miatt törölheti az elavult eszközöket az Azure AD-ből. Ez nem okoz gondot, mivel az Azure AD nem használja fel ezeket az eszközöket a feltételes hozzáférés engedélyezésekor. Egyes ügyfelek esetében a szabály módosításával törölni kívánt eszközök száma túllépheti a törlési küszöbértéket. Ha úgy látja, hogy az Azure AD-ban az eszközök objektumainak törlése túllépi az Exportálás törlési küszöbértékét, azt javasoljuk, hogy engedélyezze a törlést. [A törlések folyamatának engedélyezése, ha túllépik a törlési küszöbértéket](how-to-connect-sync-feature-prevent-accidental-deletes.md)
 
 ## <a name="14250"></a>1.4.25.0
 
@@ -129,7 +124,7 @@ Bizonyos esetekben előfordulhat, hogy a 1.4.18.0 verzióra automatikusan friss�
 
 ### <a name="fixed-issues"></a>Hibák kijavítva: 
 
-- A Microsoft Azure Active Directory Connect build 1.3.20.0 található, a jogosultságok kiterjesztésével kapcsolatos sebezhetőség javítva.  Ez a biztonsági rés bizonyos körülmények között lehetővé teheti, hogy egy támadó egy kiemelt fiók környezetében két PowerShell-parancsmagot hajtson végre, és magas jogosultsági szintű műveleteket hajtson végre.  Ez a biztonsági frissítés a parancsmagok letiltásával oldja meg a problémát. További információ: [biztonsági frissítés](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2019-1000).
+- A Microsoft Azure Active Directory Connect build 1.3.20.0 található, a jogosultságok kiterjesztésével kapcsolatos sebezhetőség javítva.  Ez a biztonsági rés bizonyos körülmények között lehetővé teheti, hogy egy támadó egy kiemelt fiók környezetében két PowerShell-parancsmagot hajtson végre, és magas jogosultsági szintű műveleteket hajtson végre.  Ez a biztonsági frissítés a parancsmagok letiltásával oldja meg a problémát. További információ: [biztonsági frissítés](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2019-1000).
 
 ## <a name="13200"></a>1.3.20.0 
 
@@ -398,9 +393,9 @@ Probléma merült fel a konfiguráció újrapróbálkozási logikájában, ami e
 
 ### <a name="azure-ad-connect"></a>Azure AD Connect
 #### <a name="fixed-issues"></a>Hibák kijavítva:
-* A következő lapra váltáskor javítsa ki az időzítési időszakot a particionálási feladatok oldalának háttérben végzett feladatainál.
+* Javítsa ki a időzítési háttérfeladatok laphoz Partíciószűrés a következő lapra történő váltáskor.
 
-* Kijavítva egy olyan hibát, amely a configdb elemre egyéni művelet során hozzáférési szabálysértést okozott.
+* Kijavítva a hiba, amely engedély nélküli hozzáférési kísérlet során a configdb elemre egyéni művelet okozza.
 
 * Kijavított egy hibát az SQL-kapcsolat időtúllépése miatti helyreállításhoz.
 
@@ -420,7 +415,7 @@ Probléma merült fel a konfiguráció újrapróbálkozási logikájában, ami e
 * alkalmazás-telemetria – a rendszergazda a következő időpontban állíthatja be az adatosztályt:
 
 * Azure AD Health-adatkezelés – a rendszergazdának meg kell keresnie az állapotfigyelő portált az állapotadatok szabályozása érdekében.
-   A szolgáltatási házirend megváltozása után az ügynökök beolvassák és érvényesítik azt.
+   Után a szolgáltatás házirend módosítva lett, az ügynökök olvassa el, és azt kényszerítése.
 
 * Hozzáadott eszköz írási-visszaállítási konfigurációs műveletei és folyamatjelző sáv az oldal inicializálásához
 
@@ -439,13 +434,13 @@ A módosítások a következő lépéseket teszik:
 
 * Új segédprogram hozzáadva egy adott objektum szinkronizálási problémáinak elhárításához. A Azure AD Connect varázsló "objektum-szinkronizálásának hibakeresése" lehetőségével további feladatokat is elháríthat. A segédprogram jelenleg a következőket ellenőrzi:
 
-  * UserPrincipalName eltérés a szinkronizált felhasználói objektum és az Azure AD-bérlő felhasználói fiókja között.
-  * Ha a rendszer tartományi szűrés miatt szűri az objektumot a szinkronizálásból
-  * Ha a rendszer a szervezeti egység (OU) szűrése miatt szűri az objektumot a szinkronizálásból
+  * Szinkronizált felhasználói objektum és a felhasználói fiók az Azure AD-bérlő a UserPrincipalName nem egyezik.
+  * Ha az objektum ki lett szűrve a tartomány szűrés miatt
+  * Ha az objektum ki lett szűrve a szervezeti egység (OU) szűrés miatt
 
 * Egy új segédprogrammal szinkronizálhatja a helyszíni Active Directoryban tárolt aktuális jelszó-kivonatot egy adott felhasználói fiókhoz.
 
-A segédprogram nem igényli a jelszó módosítását. A (z) Azure AD Connect varázsló jelszó-kivonatolási szinkronizálásának hibakeresése lehetőség alatt a további feladattal kapcsolatos további feladatok című részében található.
+A segédprogram nem szükséges a jelszó módosítása. A (z) Azure AD Connect varázsló jelszó-kivonatolási szinkronizálásának hibakeresése lehetőség alatt a további feladattal kapcsolatos további feladatok című részében található.
 
 
 
@@ -825,17 +820,17 @@ CBool(
 
   * A következő attribútumok lettek hozzáadva az MV-sémához:
     * Csoport: AccountName
-    * Csoport: domainNetBios
+    * Group: domainNetBios
     * Csoport: domainFQDN
     * Személy: distinguishedName
 
   * A következő attribútumok lettek hozzáadva az Azure AD Connector sémához:
-    * Csoport: OnPremisesSamAccountName
+    * Group: OnPremisesSamAccountName
     * Csoport: NetBiosName
     * Csoport: DnsDomainName
     * Felhasználó: OnPremisesDistinguishedName
 
-* A ADSyncDomainJoinedComputerSync-parancsmag parancsfájlja mostantól egy új, AzureEnvironment nevű paramétert is tartalmaz. A paraméter segítségével meghatározható, hogy a megfelelő Azure Active Directory bérlő melyik régiót futtatja. Az érvényes értékek a következők:
+* A ADSyncDomainJoinedComputerSync-parancsmag parancsfájlja mostantól egy új, AzureEnvironment nevű paramétert is tartalmaz. A paraméter segítségével meghatározható, hogy a megfelelő Azure Active Directory bérlő melyik régiót futtatja. Érvényes értékek a következők:
   * AzureCloud (alapértelmezett)
   * AzureChinaCloud
   * AzureGermanyCloud
@@ -1052,7 +1047,7 @@ Kiadás dátuma: november 2016
 * Kijavított egy problémát, amelyben a csatlakozási szabályok nem lesznek újraértékelve, ha az összekötő terület egyik objektuma egy csatlakozási szabály hatókörén kívül esik, és egy másikra is érvényes lesz. Ez akkor fordulhat elő, ha két vagy több olyan csatlakozási szabálya van, amelynek csatlakozási feltételei kölcsönösen kizárják egymást.
 * A probléma kijavítva, amikor a bejövő szinkronizálási szabályok (az Azure AD-ből) nem tartalmaznak csatlakoztatási szabályokat, nem lesznek feldolgozva, ha alacsonyabb prioritási értékekkel rendelkeznek, mint az illesztési szabályok.
 
-**Fejlesztései**
+**Fejlesztések:**
 
 * A Azure AD Connect telepítésének támogatása a Windows Server 2016 standard vagy újabb verzióra.
 * A SQL Server 2016 távoli adatbázisként való használatának támogatása a Azure AD Connecthoz.
@@ -1071,7 +1066,7 @@ Kiadás dátuma: augusztus 2016
 * Azure AD Connect varázsló nem jeleníti meg a jelszó-szinkronizálás és a jelszó tényleges visszaírási konfigurációját, ha a kiszolgáló átmeneti módban van. Mindig letiltottként jeleníti meg őket.
 * A jelszó-szinkronizálás és a jelszó visszaírási konfigurációs módosításait Azure AD Connect varázsló nem őrzi meg, ha a kiszolgáló átmeneti módban van.
 
-**Fejlesztései**
+**Fejlesztések:**
 
 * Frissült a Start-ADSyncSyncCycle parancsmag, amely jelzi, hogy képes-e sikeresen elindítani egy új szinkronizálási ciklust.
 * A stop-ADSyncSyncCycle parancsmag hozzáadta a szinkronizálási ciklust és a műveletet, amely jelenleg folyamatban van.
@@ -1186,7 +1181,7 @@ Kiadás dátuma: november 2015
 
 **Új támogatott forgatókönyv:**
 
-* Több helyszíni Exchange-szervezetet is támogat. További információ: [hibrid központi telepítések több Active Directory erdővel](https://technet.microsoft.com/library/jj873754.aspx).
+* Több helyszíni Exchange-szervezetet is támogat. További információ: [hibrid központi telepítések több Active Directory erdővel](https://docs.microsoft.com/previous-versions/exchange-server/exchange-150/jj873754(v=exchg.150)).
 
 **Kijavított problémák:**
 
@@ -1201,7 +1196,7 @@ Kiadás dátuma: november 2015
 * Nem lehet hosszú egész értékeket használni a szinkronizálási szabályok hatókörében.
 * Ha nem érhető el tartományvezérlő, az "eszköz visszaírási" jelölőnégyzet le lesz tiltva.
 
-## <a name="1086670"></a>eszközök 1.0.8667.0
+## <a name="1086670"></a>1.0.8667.0
 Kiadás dátuma: augusztus 2015
 
 **Új funkciók:**
@@ -1279,7 +1274,7 @@ Kiadás dátuma: 2015 április
 ## <a name="104850222"></a>1.0.485.0222
 Kiadás dátuma: február 2015
 
-**Fejlesztései**
+**Fejlesztések:**
 
 * Továbbfejlesztett importálási teljesítmény.
 

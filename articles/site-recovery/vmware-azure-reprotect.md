@@ -1,5 +1,5 @@
 ---
-title: A VMware virtuális gépek és fizikai kiszolgálók vész-helyreállítása során az Azure-ból a helyszíni helyre irányuló virtuális gépek újravédése | Microsoft Docs
+title: VMware virtuális gépek/fizikai kiszolgálók újravédése egy helyszíni helyre Azure Site Recovery
 description: A VMware virtuális gépek és fizikai kiszolgálók vész-helyreállítását követően az Azure-ba történő feladatátvétel után megtudhatja, hogyan térhet vissza az Azure-ból a helyszíni helyre.
 author: mayurigupta13
 manager: rochakm
@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/22/2019
 ms.author: mayg
-ms.openlocfilehash: cf1ccdf953781ca9b9bd17152f2cf32677997d12
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: f3d5f38d940b99c6a74d784f174c91d4127353dc
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72791805"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73961345"
 ---
 # <a name="reprotect-and-fail-back-machines-to-an-on-premises-site-after-failover-to-azure"></a>Gépek ismételt védetté és visszavétele a helyszíni helyre az Azure-ba történő feladatátvétel után
 
@@ -22,7 +22,7 @@ A gyors áttekintésért tekintse meg az alábbi videót, amely bemutatja, hogya
 > [!VIDEO https://channel9.msdn.com/Series/Azure-Site-Recovery/VMware-to-Azure-with-ASR-Video5-Failback-from-Azure-to-On-premises/player]
 
 
-## <a name="before-you-begin"></a>Előzetes teendők
+## <a name="before-you-begin"></a>Előkészületek
 
 Ha sablont használt a virtuális gépek létrehozásához, győződjön meg arról, hogy minden virtuális gép saját UUID-t használ a lemezekhez. Ha a helyszíni virtuális gép UUID-je a fő célként megadott UUID-val ütközne, mert mindkettő ugyanabból a sablonból lett létrehozva, az ismételt védelem sikertelen lesz. Helyezzen üzembe egy másik fő célt, amely nem ugyanabból a sablonból lett létrehozva. Tekintse meg az alábbi információkat:
 - Ha egy másik vCenter kísérli meg a feladatátvételt, győződjön meg arról, hogy az új vCenter és a fő célkiszolgáló fel van derítve. A tipikus tünet az, hogy az adattárolók nem érhetők el, vagy nem láthatók az ismételt **védelem** párbeszédpanelen.
@@ -63,7 +63,7 @@ Folyamat-kiszolgáló üzembe helyezése az Azure-ban:
 A fő célkiszolgáló fogadja a feladat-visszavételi adatokat. Alapértelmezés szerint a fő célkiszolgáló a helyszíni konfigurációs kiszolgálón fut. A sikertelen forgalom mennyiségétől függően azonban előfordulhat, hogy a feladat-visszavételhez létre kell hoznia egy külön fő célkiszolgáló-kiszolgálót. A következőképpen hozhat létre egyet:
 
 * Linuxos [fő célkiszolgáló létrehozása](vmware-azure-install-linux-master-target.md) a Linux rendszerű virtuális gépek feladat-visszavételéhez. Erre szükség van. Vegye figyelembe, hogy az LVM fő célkiszolgáló nem támogatott.
-* Ha szeretné, hozzon létre egy különálló fő célkiszolgáló a Windows virtuális gép feladat-visszavételéhez. Ehhez futtassa újra az egyesített telepítőt, és válassza a fő célkiszolgáló létrehozásához. [További információk](site-recovery-plan-capacity-vmware.md#deploy-additional-master-target-servers). 
+* Ha szeretné, hozzon létre egy különálló fő célkiszolgáló a Windows virtuális gép feladat-visszavételéhez. Ehhez futtassa újra az egyesített telepítőt, és válassza a fő célkiszolgáló létrehozásához. [Részletek](site-recovery-plan-capacity-vmware.md#deploy-additional-master-target-servers). 
 
 A fő célkiszolgáló létrehozása után végezze el a következő feladatokat:
 
@@ -81,7 +81,7 @@ A fő célkiszolgáló létrehozása után végezze el a következő feladatokat
     - A Linux alapértelmezett megőrzési kötete a/mnt/Retention.
 - Új meghajtót kell hozzáadnia, ha meglévő Process Server-vagy konfigurációs kiszolgáló számítógépet vagy egy méretezési vagy feldolgozási kiszolgálót vagy egy fő célkiszolgáló számítógépét használja. Az új meghajtónak meg kell felelnie az előző követelményeknek. Ha az adatmegőrzési meghajtó nincs jelen, a portálon nem jelenik meg a kiválasztás legördülő listában. Miután hozzáadta a meghajtót a helyszíni fő célhoz, akár 15 percet is igénybe vehet, hogy a meghajtó megjelenjen a portálon a kijelölésben. A konfigurációs kiszolgálót akkor is frissítheti, ha a meghajtó 15 perc elteltével nem jelenik meg.
 - Telepítse a VMware-eszközöket, vagy nyissa meg a VM-Tools eszközt a fő célkiszolgálón. Az eszközök nélkül a fő cél ESXi-gazdagépén lévő adattárolók nem észlelhetők.
-- Állítsa be a `disk.EnableUUID=true` beállítást a fő célként megadott virtuális gép konfigurációs paraméterei között a VMware-ben. Ha ez a sor nem létezik, adja hozzá. Erre a beállításra akkor van szükség, ha konzisztens UUID-t biztosít a VMDK, hogy az megfelelően legyen csatolva.
+- Állítsa be a VMware-ben a fő cél virtuális gép konfigurációs paramétereinek `disk.EnableUUID=true` beállítását. Ha ez a sor nem létezik, adja hozzá. Erre a beállításra akkor van szükség, ha konzisztens UUID-t biztosít a VMDK, hogy az megfelelően legyen csatolva.
 - Az ESX-gazdagépen, amelyen a fő cél létrejön, rendelkeznie kell legalább egy, a hozzá csatolt virtuálisgép-fájlrendszer (VMFS) adattárral. Ha nincsenek csatolva VMFS adattárolók, **akkor az adattároló bemenete** az ismételt védelem lapon üres, és nem folytathatja a folytatást.
 - A fő célkiszolgáló nem rendelkezhet pillanatképekkel a lemezeken. Ha vannak Pillanatképek, az ismételt védelem és a feladat-visszavétel sikertelen.
 - A fő cél nem rendelkezhet Paravirtual SCSI-vezérlővel. A vezérlő csak LSI logikai vezérlő lehet. LSI logikai vezérlő nélkül az ismételt védelem sikertelen lesz.
@@ -93,7 +93,7 @@ A fő célkiszolgáló létrehozása után végezze el a következő feladatokat
 Miután egy virtuális gép elindul az Azure-ban, eltarthat egy ideig, amíg az ügynök vissza nem regisztrálja a konfigurációs kiszolgálót (akár 15 percet is igénybe vehet). Ebben az időszakban nem fogja tudni újból védelemmel ellátni, és hibaüzenet jelzi, hogy az ügynök nincs telepítve. Ha ez történik, várjon néhány percet, majd próbálkozzon újra az ismételt védelemsel:
 
 
-1. Válassza **a**tár  > **replikált elemek**lehetőséget. Kattintson a jobb gombbal a feladatátvétel alatt álló virtuális gépre, majd válassza az **ismételt védelem**lehetőséget. Vagy a parancsgombok közül válassza ki a gépet, majd válassza az **ismételt védelem**lehetőséget.
+1. Válassza **a** tár > **replikált elemek**lehetőséget. Kattintson a jobb gombbal a feladatátvétel alatt álló virtuális gépre, majd válassza az **ismételt védelem**lehetőséget. Vagy a parancsgombok közül válassza ki a gépet, majd válassza az **ismételt védelem**lehetőséget.
 2. Ellenőrizze, hogy be van-e jelölve az **Azure és a** helyszíni védelem iránya.
 3. A **fő célkiszolgáló** és a **folyamat-kiszolgáló**területen válassza ki a helyszíni fő célkiszolgáló és a Process Server kiszolgálót.  
 4. Az **adattár**mezőben válassza ki azt az adattárolót, amelyre a helyi lemezeket helyre kívánja állítani. Ez a beállítás akkor használható, ha a helyszíni virtuális gép törlődik, és új lemezeket kell létrehoznia. Ezt a beállítást a rendszer figyelmen kívül hagyja, ha a lemezek már léteznek. Továbbra is meg kell adnia egy értéket.
@@ -122,7 +122,7 @@ Tekintse meg az alábbi információkat:
 - Ha nem tudja elérni a konfigurációs kiszolgálót a folyamat-kiszolgálóról, a Telnet használatával ellenőrizze a 443-es porton futó konfigurációs kiszolgálóval létesített kapcsolatot. A konfigurációs kiszolgálót a Process Serverről is megpróbálhatja pingelni. A folyamat kiszolgálójának szívverése is lehet, ha a konfigurációs kiszolgálóhoz csatlakozik.
 - A fizikai helyszíni kiszolgálóként védett Windows Server 2008 R2 SP1-kiszolgálót nem lehet visszaadni az Azure-ból a helyszíni helyre.
 - A következő esetekben nem végezhető el a feladat-visszavétel:
-    - A gépeket áttelepítette az Azure-ba. [További információk](migrate-overview.md#what-do-we-mean-by-migration).
+    - A gépeket áttelepítette az Azure-ba. [Részletek](migrate-overview.md#what-do-we-mean-by-migration).
     - Áthelyezett egy virtuális gépet egy másik erőforráscsoporthoz.
     - Törölte az Azure-beli virtuális gépet.
     - Letiltotta a virtuális gép védelmét.

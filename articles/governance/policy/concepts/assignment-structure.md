@@ -1,17 +1,14 @@
 ---
 title: A szabályzat-hozzárendelési struktúra részletei
 description: Az Azure Policy által használt szabályzat-hozzárendelési definíciót ismerteti az erőforrásokhoz a kiértékeléshez.
-author: DCtheGeek
-ms.author: dacoulte
 ms.date: 09/23/2019
 ms.topic: conceptual
-ms.service: azure-policy
-ms.openlocfilehash: a75c64ebb6ba3eeffeccd98cf41365fe96218573
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.openlocfilehash: 500e40b8d3a5943c7f64f5b190223cb1dc7b4c92
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72255892"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73960039"
 ---
 # <a name="azure-policy-assignment-structure"></a>Azure Policy-hozzárendelés struktúrája
 
@@ -19,7 +16,7 @@ A Azure Policy a szabályzat-hozzárendelések segítségével határozzák meg,
 
 A JSON használatával szabályzat-hozzárendelést hozhat létre. A szabályzat-hozzárendelés a következő elemeket tartalmazza:
 
-- megjelenítendő név
+- Megjelenített név
 - leírás
 - metaadatok
 - kényszerítési mód
@@ -62,7 +59,7 @@ A **enforcementMode** tulajdonság lehetővé teszi a felhasználók számára, 
 
 Ennek a tulajdonságnak a következő értékei vannak:
 
-|Mód |JSON-érték |Type (Típus) |Szervizelés manuálisan |Tevékenység naplójának bejegyzése |Leírás |
+|Mód |JSON-érték |Típus |Szervizelés manuálisan |Tevékenység naplójának bejegyzése |Leírás |
 |-|-|-|-|-|-|
 |Engedélyezve |Alapértelmezett |sztring |Igen |Igen |A házirend hatása az erőforrás létrehozásakor vagy frissítésekor lép érvénybe. |
 |Letiltva |DoNotEnforce |sztring |Igen |Nem | A házirend-effektus nem kényszerített az erőforrás létrehozásakor vagy frissítésekor. |
@@ -72,7 +69,7 @@ Ha a **enforcementMode** nincs megadva házirend-vagy kezdeményezési definíci
 ## <a name="policy-definition-id"></a>Házirend-definíció azonosítója
 
 Ebben a mezőben egy házirend-definíció vagy egy kezdeményezési definíció teljes elérési útjának kell szerepelnie.
-@no__t – 0 karakterlánc, nem tömb. Javasoljuk, hogy ha több házirendet gyakran társítanak egymáshoz, inkább egy [kezdeményezést](./definition-structure.md#initiatives) használjon.
+`policyDefinitionId` karakterlánc, nem tömb. Javasoljuk, hogy ha több házirendet gyakran társítanak egymáshoz, inkább egy [kezdeményezést](./definition-structure.md#initiatives) használjon.
 
 ## <a name="parameters"></a>Paraméterek
 
@@ -90,7 +87,7 @@ Ez a kialakítás lehetővé teszi egy házirend vagy kezdeményezési definíci
 }
 ```
 
-Ebben a példában a házirend-definícióban korábban definiált paraméterek a következők: `prefix` és `suffix`. Ez az adott szabályzat-hozzárendelés @no__t – 0 – **depta** és `suffix` – **LC**. Ugyanez a házirend-definíció a különböző részlegekhez tartozó paraméterek eltérő készletével használható, így csökkentve a házirend-definíciók ismétlődését és összetettségét, miközben rugalmasságot biztosít.
+Ebben a példában a házirend-definícióban korábban definiált paraméterek `prefix` és `suffix`. Ez az adott házirend-hozzárendelési csoport a **depta** és a `suffix` – **LC**értékre `prefix`. Ugyanez a házirend-definíció a különböző részlegekhez tartozó paraméterek eltérő készletével használható, így csökkentve a házirend-definíciók ismétlődését és összetettségét, miközben rugalmasságot biztosít.
 
 ## <a name="next-steps"></a>Következő lépések
 

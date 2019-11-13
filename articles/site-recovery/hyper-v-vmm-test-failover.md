@@ -1,5 +1,5 @@
 ---
-title: A Hyper-V virtuális gépek vész-helyreállítási gyakorlatának futtatása másodlagos helyre a Azure Site Recovery használatával | Microsoft Docs
+title: NHyper-V vész-helyreállítási gyakorlat futtatása másodlagos helyre Azure Site Recovery
 description: Ismerje meg, hogyan futtathat VMM-felhőkben futó Hyper-V virtuális gépekre vonatkozó DR-részletezést egy másodlagos helyszíni adatközpontban Azure Site Recovery használatával.
 author: rajani-janaki-ram
 manager: rochakm
@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: rajanaki
-ms.openlocfilehash: ef8504f3f79d23fa0d59493c06cfbe133e1c4113
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 444868f1716ae55f1851e50c057b172f5e3eb3d1
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72933461"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73961400"
 ---
 # <a name="run-a-dr-drill-for-hyper-v-vms-to-a-secondary-site"></a>A Hyper-V virtuális gépekhez tartozó DR-részletezés futtatása másodlagos helyre
 
@@ -49,7 +49,7 @@ A feladatátvételi teszt futtatásakor a rendszer arra kéri, hogy válassza ki
 
 | **Beállítás** | **Részletek** | |
 | --- | --- | --- |
-| **NEz egy** | A teszt virtuális gép azon a gazdagépen jön létre, amelyen a replika virtuális gép található. Nincs hozzáadva a felhőhöz, és nincs csatlakoztatva egyetlen hálózathoz sem.<br/><br/> A gépet a létrehozása után a virtuálisgép-hálózathoz is összekapcsolhatjuk.| |
+| **Nincsenek** | A teszt virtuális gép azon a gazdagépen jön létre, amelyen a replika virtuális gép található. Nincs hozzáadva a felhőhöz, és nincs csatlakoztatva egyetlen hálózathoz sem.<br/><br/> A gépet a létrehozása után a virtuálisgép-hálózathoz is összekapcsolhatjuk.| |
 | **Meglévő használata** | A teszt virtuális gép azon a gazdagépen jön létre, amelyen a replika virtuális gép található. Nincs hozzáadva a felhőhöz.<br/><br/>Hozzon létre egy, az éles hálózattól elkülönített virtuálisgép-hálózatot.<br/><br/>Ha VLAN-alapú hálózatot használ, javasoljuk, hogy hozzon létre egy külön logikai hálózatot (éles környezetben nem használt) a VMM erre a célra. Ezzel a logikai hálózattal virtuálisgép-hálózatokat lehet létrehozni a feladatátvételi tesztekhez.<br/><br/>A logikai hálózatot társítani kell legalább egy, a virtuális gépeket üzemeltető Hyper-V-kiszolgáló hálózati adapteréhez.<br/><br/>A VLAN logikai hálózatok esetében a logikai hálózathoz hozzáadott hálózati helyeket el kell különíteni.<br/><br/>Ha Windowsos hálózati virtualizálási alapú logikai hálózatot használ, a Azure Site Recovery automatikusan elkülönített virtuálisgép-hálózatokat hoz létre. | |
 | **Hálózat létrehozása** | A rendszer automatikusan létrehoz egy ideiglenes tesztelési hálózatot a **logikai hálózatban** és a kapcsolódó hálózati telephelyeken megadott beállítás alapján.<br/><br/> A feladatátvétel ellenőrzi, hogy a virtuális gépek létrejöttek-e.<br/><br/> Akkor használja ezt a beállítást, ha a helyreállítási terv egynél több virtuálisgép-hálózatot használ.<br/><br/> Ha Windows-alapú hálózati virtualizálási hálózatokat használ, ez a beállítás automatikusan képes virtuális gépeket létrehozni ugyanazokkal a beállításokkal (alhálózatokkal és IP-címkészlet) a replika virtuális gép hálózatában. Ezek a virtuálisgép-hálózatok a feladatátvételi teszt befejeződése után automatikusan törlődnek.<br/><br/> A teszt virtuális gép azon a gazdagépen jön létre, amelyen a replika virtuális gép létezik. Nincs hozzáadva a felhőhöz.|
 
@@ -123,7 +123,7 @@ Készítse elő a DNS-kiszolgálót a feladatátvételi teszthez a következők�
 
 Ez az eljárás azt ismerteti, hogyan futtathat feladatátvételi tesztet helyreállítási tervhez. Azt is megteheti, hogy a feladatátvételt egyetlen virtuális géphez futtatja a **Virtual Machines** lapon.
 
-1. Válassza ki a **helyreállítási terveket** > *recoveryplan_name*. Kattintson a **feladatátvétel** > feladatátvételi **teszt**elemre.
+1. Válassza a **helyreállítási tervek** > *recoveryplan_name*lehetőséget. Kattintson a **feladatátvétel** > feladatátvételi **teszt**elemre.
 2. A **feladatátvételi teszt** panelen határozza meg, hogy a replika virtuális gépek hogyan kapcsolódjanak a hálózatokhoz a feladatátvételi teszt után.
 3. A **feladatok** lapon nyomon követheti a feladatátvétel folyamatát.
 4. A feladatátvétel befejeződése után ellenőrizze, hogy a virtuális gépek sikeresen elindulnak-e.

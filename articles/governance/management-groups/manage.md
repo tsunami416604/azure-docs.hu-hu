@@ -1,17 +1,14 @@
 ---
 title: A felügyeleti csoportok használata – Azure-szabályozás
 description: Útmutató a felügyeleti csoport hierarchiájának megtekintéséhez, karbantartásához, frissítéséhez és törléséhez.
-author: rthorn17
-ms.service: governance
 ms.date: 05/22/2019
-ms.author: rithorn
 ms.topic: conceptual
-ms.openlocfilehash: 57695157119b81580777c0581adccb267e7e9faa
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.openlocfilehash: 90f4bacf462ed5f2590f51d15b6b660057c51738
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72255932"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73960247"
 ---
 # <a name="manage-your-resources-with-management-groups"></a>Erőforrások kezelése felügyeleti csoportokkal
 
@@ -29,7 +26,7 @@ A felügyeleti csoport nevét a portál, a PowerShell vagy az Azure CLI használ
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
-1. Válassza **az összes szolgáltatás** > **felügyeleti csoportot**.
+1. Válassza **a minden szolgáltatás** > **felügyeleti csoportok**lehetőséget.
 
 1. Válassza ki az átnevezni kívánt felügyeleti csoportot.
 
@@ -77,7 +74,7 @@ Felügyeleti csoport törléséhez a következő követelményeknek kell teljes�
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
-1. Válassza **az összes szolgáltatás** > **felügyeleti csoportot**.
+1. Válassza **a minden szolgáltatás** > **felügyeleti csoportok**lehetőséget.
 
 1. Válassza ki a törölni kívánt felügyeleti csoportot.
 
@@ -94,7 +91,7 @@ Felügyeleti csoport törléséhez a következő követelményeknek kell teljes�
 
    ![Csoport jóváhagyási ablakának törlése](./media/delete_confirm.png)
 
-1. Válassza az **Igen**lehetőséget.
+1. Válassza az **Igen** lehetőséget.
 
 ### <a name="delete-in-powershell"></a>Törlés a PowerShellben
 
@@ -120,7 +117,7 @@ Bármely olyan felügyeleti csoportot megtekintheti, amelyhez közvetlen vagy ö
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
-1. Válassza **az összes szolgáltatás** > **felügyeleti csoportot**.
+1. Válassza **a minden szolgáltatás** > **felügyeleti csoportok**lehetőséget.
 
 1. A felügyeleti csoport hierarchia lapja betöltődik. Ezen a lapon megtekintheti az összes olyan felügyeleti csoportot és előfizetést, amelyhez hozzáfér. Ha kiválasztja a csoport nevét, a hierarchia egy szintjének kiválasztására kerül sor. A navigáció ugyanúgy működik, mint a fájlkezelő.
 
@@ -219,7 +216,7 @@ Ha szeretné megtekinteni, hogy milyen engedélyekkel rendelkezik a Azure Portal
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
-1. Válassza **az összes szolgáltatás** > **felügyeleti csoportot**.
+1. Válassza **a minden szolgáltatás** > **felügyeleti csoportok**lehetőséget.
 
 1. Válassza ki azt a felügyeleti csoportot, amelynek a szülőjét tervezi.
 
@@ -235,7 +232,7 @@ Ha szeretné megtekinteni, hogy milyen engedélyekkel rendelkezik a Azure Portal
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
-1. Válassza **az összes szolgáltatás** > **felügyeleti csoportot**.
+1. Válassza **a minden szolgáltatás** > **felügyeleti csoportok**lehetőséget.
 
 1. Válassza ki azt a felügyeleti csoportot, amelyet a jelenlegi szülőként szeretne megtervezni.  
 
@@ -287,7 +284,7 @@ Ha áthelyez egy fölérendelt felügyeleti csoportot, az adott csoportba tartoz
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
-1. Válassza **az összes szolgáltatás** > **felügyeleti csoportot**.
+1. Válassza **a minden szolgáltatás** > **felügyeleti csoportok**lehetőséget.
 
 1. Válassza ki azt a felügyeleti csoportot, amelynek a szülőjét tervezi.
 

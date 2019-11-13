@@ -154,6 +154,8 @@
         - name: Üzembe helyezés – REST API
           displayName: deployment
           href: resource-group-template-deploy-rest.md
+        - name: What-if típusú üzembe helyezés
+          href: template-deploy-what-if.md
         - name: Újratelepítés hiba esetén
           displayName: rollback
           href: rollback-on-error.md

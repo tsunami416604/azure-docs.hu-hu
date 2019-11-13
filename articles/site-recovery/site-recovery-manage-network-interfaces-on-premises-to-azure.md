@@ -1,71 +1,72 @@
 ---
-title: Az Azure Site Recovery a helyszíni vészhelyreállítás az Azure hálózati adapterek kezelése |} A Microsoft Docs
-description: Ismerteti, hogyan lehet az Azure-bA az Azure Site Recovery a helyszíni vész-helyreállítási hálózati adapterek kezelése
+title: Hálózati adapterek kezelése helyszíni vész-helyreállításhoz Azure Site Recovery
+description: Ismerteti, hogyan kezelheti a helyszíni vész-helyreállítási hálózati adaptereket az Azure-ba Azure Site Recovery
 author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 4/9/2019
 ms.author: mayg
-ms.openlocfilehash: 5d5dd7bc3f6b60c2f9d7c2179f2bd356ca101dc4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2a4752b501e40f9e8a4f3bc82cb2533c11f9e526
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61471774"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73954590"
 ---
-# <a name="manage-virtual-machine-network-interfaces-for-on-premises-disaster-recovery-to-azure"></a>Az Azure-bA a helyszíni vész-helyreállítási virtuális gép hálózati adapterek kezelése
-Az Azure-beli virtuális gép (VM) rendelkeznie kell legalább egy hálózati adapter csatlakozik. Hálózati adapter csatlakozik a virtuális gép mérete támogatja, mint rendelkezhet.
+# <a name="manage-vm-network-interfaces-for-on-premises-disaster-recovery-to-azure"></a>Virtuálisgép-hálózati adapterek kezelése helyszíni vész-helyreállításhoz az Azure-ba
 
-Alapértelmezés szerint az első hálózati adapter egy Azure virtuális géphez csatolt számít, ha az elsődleges hálózati adapter. A virtuális gép más hálózati adapterek másodlagos hálózati adapterek. Is alapértelmezés szerint minden kimenő forgalom a virtuális gép küldése az elsődleges hálózati adapter elsődleges IP-konfigurációhoz rendelt IP-címét.
+Az Azure-beli virtuális gépnek legalább egy hálózati adapterrel kell rendelkeznie. A virtuális gép mérete által támogatottnál több hálózati csatoló is csatlakoztatható.
 
-A helyszíni környezetben virtuális gépek vagy kiszolgálók rendelkezhet több hálózati adapterrel a környezeten belül más hálózatokhoz. A különböző hálózatok szolgálnak általában hajt végre bizonyos műveleteket, például frissítések, karbantartási és internet-hozzáféréssel. Amikor áttelepítése vagy feladatátvétele egy a helyszíni környezetből az Azure-ba, vegye figyelembe, hogy ugyanaz a virtuális gép hálózati adaptereinek összes kapcsolódnia kell az azonos virtuális hálózatban.
+Alapértelmezés szerint az Azure-beli virtuális géphez csatolt első hálózati adapter az elsődleges hálózati adapterként van meghatározva. A virtuális gép összes többi hálózati adaptere másodlagos hálózati adapter. Alapértelmezés szerint a virtuális gépről érkező összes kimenő forgalom az elsődleges hálózati adapter elsődleges IP-konfigurációjához hozzárendelt IP-címet is elküldi.
 
-Alapértelmezés szerint az Azure Site Recovery számos hálózati adapter egy Azure virtuális gépen, a helyszíni kiszolgálóhoz csatlakozik, ahogy hoz létre. Elkerülheti a redundáns hálózati adapterek létrehozása áttelepítés vagy a feladatátvétel során a hálózati adapter beállításai a replikált virtuális gép beállításaiban szerkesztésével.
+A helyszíni környezetben a virtuális gépek vagy kiszolgálók több hálózati adapterrel rendelkezhetnek a környezetben lévő különböző hálózatokhoz. A különböző hálózatokat jellemzően olyan konkrét műveletek végrehajtásához használják, mint a frissítések, a karbantartás és az Internet-hozzáférés. Ha helyszíni környezetből végez áttelepítést vagy feladatátvételt az Azure-ba, vegye figyelembe, hogy az azonos virtuális gépen lévő hálózati adaptereknek ugyanahhoz a virtuális hálózathoz kell csatlakozniuk.
 
-## <a name="select-the-target-network"></a>Válassza ki a cél hálózati
+Alapértelmezés szerint a Azure Site Recovery annyi hálózati adaptert hoz létre egy Azure-beli virtuális gépen, amely a helyszíni kiszolgálóhoz csatlakozik. A replikált virtuális gép beállításai alatt a hálózati adapter beállításainak szerkesztésével elkerülhető, hogy az áttelepítés vagy a feladatátvétel során ne hozzon létre redundáns hálózati adaptereket.
 
-VMware-alapú és fizikai gépek számára, és a Hyper-V (nem a System Center Virtual Machine Manager) virtuális gépek megadhatja a cél virtuális hálózattal, az egyes virtuális gépeket. A Virtual Machine Manager által felügyelt Hyper-V virtuális gépek használata [hálózatleképezés](site-recovery-network-mapping.md) képezze le a Virtual Machine Manager forráskiszolgálón Virtuálisgép-hálózatok és a cél Azure-hálózatok.
+## <a name="select-the-target-network"></a>Válassza ki a célként kijelölt hálózatot
 
-1. A **replikált elemek** a Recovery Services-tárolót, válassza ki a minden olyan replikált elem, hogy a replikált elem a beállítások eléréséhez.
+A VMware és a fizikai gépek esetében, valamint a Hyper-V (System Center Virtual Machine Manager nélküli) virtuális gépek esetében megadhatja a célként megadott virtuális hálózatot az egyes virtuális gépekhez. A Virtual Machine Manager által felügyelt Hyper-V virtuális gépek esetében a [hálózati leképezés](site-recovery-network-mapping.md) használatával képezhető le a virtuálisgép-hálózatok a forrás Virtual Machine Manager-kiszolgáló és a cél Azure-hálózatok számára.
 
-2. Válassza ki a **számítás és hálózat** lap eléréséhez a hálózati beállításokat a replikált elemhez.
+1. A Recovery Services-tárolóban lévő **replikált elemek** területen válassza ki az egyik replikált elemet az adott replikált elem beállításainak eléréséhez.
 
-3. A **hálózati tulajdonságok**, a rendelkezésre álló hálózati adapterek listájából válassza ki a virtuális hálózat.
+2. Válassza a **számítás és hálózat** fület a replikált elem hálózati beállításainak eléréséhez.
+
+3. A **hálózati tulajdonságok**területen válasszon ki egy virtuális hálózatot az elérhető hálózati adapterek listájából.
 
     ![Hálózati beállítások](./media/site-recovery-manage-network-interfaces-on-premises-to-azure/compute-and-network.png)
 
-A célhálózat módosítása hatással van, hogy adott virtuális gép hálózati adaptereken.
+A célként megadott hálózat módosítása hatással van az adott virtuális gép összes hálózati adapterére.
 
-A Virtual Machine Manager-felhőkben a hálózatleképezés módosítása hatással van az összes virtuális gép és a hálózati adapterek.
+Virtual Machine Manager felhők esetében a hálózati megfeleltetés módosítása hatással van az összes virtuális gépre és hálózati adapterére.
 
-## <a name="select-the-target-interface-type"></a>Válassza ki a cél typ rozhraní
+## <a name="select-the-target-interface-type"></a>Válassza ki a cél illesztőfelület típusát
 
-Alatt a **hálózati adapterek** szakaszában a **számítás és hálózat** panelen megtekintheti és szerkesztheti a hálózatiadapter-beállítások. Emellett megadhatja a céloldali hálózati adapter típusa.
+A **számítás és hálózat** ablaktábla **hálózati adapterek** szakaszában megtekintheti és szerkesztheti a hálózati adapter beállításait. Megadhatja a célként megadott hálózati adapter típusát is.
 
-- A **elsődleges** hálózati adapterre szükség a feladatátvételhez.
-- Az összes kiválasztott hálózati adapterek, ha bármelyik, **másodlagos** hálózati adapterek.
-- Válassza ki **ne használjon** kizárandó egy hálózati adapter létrehozása a feladatátvétel során.
+- A feladatátvételhez **elsődleges** hálózati adapter szükséges.
+- Az összes többi kiválasztott hálózati csatoló (ha vannak ilyenek) **másodlagos** hálózati adapterek.
+- A **nem használható** lehetőség kiválasztásával zárja ki a hálózati adaptert a létrehozásból a feladatátvétel során.
 
-Alapértelmezés szerint engedélyezi a replikációt, amikor a Site Recovery választja ki a helyszíni kiszolgálón észlelt hálózati adaptereken. Azt jelzi, hogy több mint **elsődleges** és minden más, **másodlagos**. Minden további kapcsolat hozzáadása a helyi kiszolgálón vannak megjelölve **ne használjon** alapértelmezés szerint. Ha több hálózati adapter hozzáadása esetén győződjön meg arról, hogy a megfelelő Azure virtuális gép cél mérete befogadásához az összes szükséges hálózati adapter van-e kiválasztva.
+Alapértelmezés szerint a replikálás engedélyezésekor Site Recovery kiválasztja az összes észlelt hálózati adaptert a helyszíni kiszolgálón. Az egyiket **elsődlegesként** , a másikat pedig **másodlagosként**jelöli meg. A helyszíni kiszolgálón hozzáadott további felületek alapértelmezés szerint **nem használhatók** . Ha további hálózati adaptereket ad hozzá, győződjön meg arról, hogy az Azure-beli virtuális gép megfelelő mérete van kiválasztva az összes szükséges hálózati adapter számára.
 
 ## <a name="modify-network-interface-settings"></a>Hálózati adapter beállításainak módosítása
 
-Az alhálózat és a egy replikált elem hálózati adapterek IP-címet módosíthatja. Ha IP-cím nincs megadva, a Site Recovery a következő elérhető IP-címe az alhálózatról feladatátvétel során a hálózati adapterhez hozzárendelni.
+A replikált elemek hálózati adapterei alhálózatának és IP-címének módosítására is lehetőség van. Ha nincs megadva IP-cím, Site Recovery a következő elérhető IP-címet fogja hozzárendelni az alhálózatból a feladatátvételi hálózati adapterhez.
 
-1. Válassza ki bármelyik elérhető hálózati adaptert a hálózati adapter beállításainak megnyitásához.
+1. Válassza ki az elérhető hálózati adaptereket a hálózati adapter beállításainak megnyitásához.
 
-2. Válassza ki a kívánt alhálózat elérhető alhálózatok listájában.
+2. Válassza ki a kívánt alhálózatot az elérhető alhálózatok listájából.
 
-3. Adja meg a kívánt IP-címre (kötelező).
+3. Adja meg a kívánt IP-címet (szükség szerint).
 
-    ![Hálózatiadapter-beállítások](./media/site-recovery-manage-network-interfaces-on-premises-to-azure/network-interface-settings.png)
+    ![Hálózati adapter beállításai](./media/site-recovery-manage-network-interfaces-on-premises-to-azure/network-interface-settings.png)
 
-4. Válassza ki **OK** alkalmazásfájl szerkesztésének befejezése, és térjen vissza a **számítás és hálózat** ablaktáblán.
+4. A Szerkesztés befejezéséhez kattintson **az OK** gombra, és térjen vissza a **számítás és a hálózat** panelre.
 
-5. Más hálózati adapterek ismételje meg az 1 – 4.
+5. Ismételje meg a 1-4. lépést az egyéb hálózati adapterek esetében.
 
-6. Válassza ki **mentése** összes módosítások mentéséhez.
+6. Válassza a **Mentés** lehetőséget az összes módosítás mentéséhez.
 
-## <a name="next-steps"></a>További lépések
-  [További](../virtual-network/virtual-network-network-interface-vm.md) kapcsolatos Azure-beli virtuális gépek hálózati adaptereket.
+## <a name="next-steps"></a>Következő lépések
+  [További](../virtual-network/virtual-network-network-interface-vm.md) információ az Azure Virtual Machines szolgáltatáshoz használható hálózati adapterekről.

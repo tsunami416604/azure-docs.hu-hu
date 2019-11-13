@@ -1,17 +1,14 @@
 ---
 title: Szabályzat létrehozása az erőforrások naplózásához az Azure CLI-vel
 description: Az Azure CLI használatával hozzon létre egy Azure Policy-hozzárendelést a nem megfelelő erőforrások azonosításához.
-author: DCtheGeek
-ms.author: dacoulte
 ms.date: 01/23/2019
 ms.topic: quickstart
-ms.service: azure-policy
-ms.openlocfilehash: a7e65e304039c266f92f8068b796323197058cc1
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.openlocfilehash: 589038bb2b5e96c252e19fc0552d4f9ac19dc83a
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72255943"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73960228"
 ---
 # <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources-with-azure-cli"></a>Gyors útmutató: szabályzat-hozzárendelés létrehozása a nem megfelelő erőforrások azonosításához az Azure CLI-vel
 
@@ -30,7 +27,7 @@ Ehhez a rövid útmutatóhoz az Azure CLI 2.0.4-es vagy újabb verziójára lesz
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Regisztrálja a Azure Policy bepillantást erőforrás-szolgáltatót az Azure CLI használatával. Az erőforrás-szolgáltató regisztrálásával biztosítja, hogy az előfizetése működni fog vele. Az erőforrás-szolgáltató regisztrálásához engedéllyel kell rendelkeznie az erőforrás-szolgáltató regisztrálása művelethez. Ezt a műveletet a Közreműködői és Tulajdonosi szerepkörök magukba foglalják. Az erőforrás-szolgáltató regisztrálásához futtassa az alábbi parancsot:
+Regisztrálja a Azure Policy bepillantást erőforrás-szolgáltatót az Azure CLI használatával. Az erőforrás-szolgáltató regisztrálásával biztosítja, hogy az előfizetése működni fog vele. Erőforrás-szolgáltató regisztrálásához rendelkeznie kell engedéllyel az erőforrás-szolgáltató regisztrálása művelet. Ezt a műveletet a Közreműködői és Tulajdonosi szerepkörök magukba foglalják. Az erőforrás-szolgáltató regisztrálásához futtassa az alábbi parancsot:
 
 ```azurecli-interactive
 az provider register --namespace 'Microsoft.PolicyInsights'
@@ -42,7 +39,7 @@ Ha még nem tette meg, telepítse az [ARMClient](https://github.com/projectkudu/
 
 ## <a name="create-a-policy-assignment"></a>Szabályzat-hozzárendelés létrehozása
 
-Ebben a rövid útmutatóban létre fog hozni egy szabályzat-hozzárendelést, és hozzá fogja rendeli a **Felügyelt lemezek nélküli virtuális gépek naplózása** definíciót. Ez a szabályzat-definíció olyan erőforrásokat azonosít, amelyek nem felelnek meg a szabályzat-definícióban meghatározott feltételeknek.
+Ebben a rövid útmutatóban létre fog hozni egy szabályzat-hozzárendelést, és hozzá fogja rendeli a **Felügyelt lemezek nélküli virtuális gépek naplózása** definíciót. Ez a szabályzat-definíció erőforrásokat azonosít, amelyek nem megfelelő a szabályzat-definícióban meghatározott feltételeknek.
 
 Futtassa a következő parancsot egy szabályzat-hozzárendelés létrehozásához:
 
@@ -53,8 +50,8 @@ az policy assignment create --name 'audit-vm-manageddisks' --display-name 'Audit
 Az előző parancs a következő információkat használja:
 
 - **Name** – A hozzárendelés tényleges neve. A fenti példában az *audit-vm-manageddisks* nevet használtuk.
-- **DisplayName** – A szabályzat-hozzárendelés megjelenített neve. Ebben az esetben a *virtuális gépek naplózása felügyelt lemezek hozzárendelése nélkül*történik.
-- **Szabályzat** – A szabályzatdefiníció azonosítója, amely alapján létre fogja hozni a hozzárendelést. Ebben az esetben ez a házirend-definíciós *virtuális gépek azonosítója, amelyek nem használnak felügyelt lemezeket*. A szabályzatdefiníció azonosítójának lekéréséhez futtassa ezt a parancsot: `az policy definition list --query "[?displayName=='Audit VMs that do not use managed disks']"`
+- **DisplayName** – A szabályzat-hozzárendelés megjelenített neve. Ebben az esetben használ *hozzárendelés felügyelt lemezek nélküli virtuális gépek naplózása*.
+- **Szabályzat** – A szabályzatdefiníció azonosítója, amely alapján létre fogja hozni a hozzárendelést. Ebben az esetben a szabályzatdefiníció azonosítója *felügyelt lemezeket nem használó virtuális gépek naplózása*. A szabályzatdefiníció azonosítójának lekéréséhez futtassa ezt a parancsot: `az policy definition list --query "[?displayName=='Audit VMs that do not use managed disks']"`
 - **Hatókör** – A hatókör határozza meg, hogy a szabályzat-hozzárendelés milyen erőforrások vagy erőforráscsoportok esetében lesz kényszerítve. Ez egyetlen előfizetéstől teljes erőforráscsoportokig terjedhet. Győződjön meg arról, hogy a &lt;scope&gt; helyett az erőforráscsoport neve szerepel.
 
 ## <a name="identify-non-compliant-resources"></a>Nem megfelelő erőforrások azonosítása
@@ -104,7 +101,7 @@ Az eredmények hasonlók ahhoz, amit általában az Azure Portal nézetében a *
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-A létrehozott hozzárendelés eltávolításához használja a következő parancsot:
+A létrehozott hozzárendelést eltávolításához használja a következő parancsot:
 
 ```azurecli-interactive
 az policy assignment delete --name 'audit-vm-manageddisks' --scope '/subscriptions/<subscriptionID>/<resourceGroupName>'
@@ -114,7 +111,7 @@ az policy assignment delete --name 'audit-vm-manageddisks' --scope '/subscriptio
 
 Ebben a rövid útmutatóban hozzárendelt egy szabályzatdefiníciót az Azure-környezetben megtalálható, nem megfelelő erőforrások azonosítása céljából.
 
-Ha többet szeretne megtudni a szabályzatok hozzárendeléséről az új erőforrások megfelelőségének ellenőrzéséhez, folytassa a következő oktatóanyaggal:
+További információ a szabályzatok ellenőrzése, hogy az új erőforrások megfelelnek hozzárendeléséről, folytassa a következő oktatóanyagban:
 
 > [!div class="nextstepaction"]
 > [Szabályzatok létrehozása és kezelése](./tutorials/create-and-manage.md)

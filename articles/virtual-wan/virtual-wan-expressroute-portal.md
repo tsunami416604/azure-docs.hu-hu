@@ -1,5 +1,5 @@
 ---
-title: Az Azure Virtual WAN használatával ExpressRoute-kapcsolatokat hozhat létre az Azure-hoz és a helyszíni környezetekhez | Microsoft Docs
+title: 'Azure virtuális WAN: ExpressRoute-kapcsolatok létrehozása'
 description: Ebből az oktatóanyagból megtudhatja, hogyan használhatja az Azure Virtual WAN-t az Azure-hoz és a helyszíni környezetekhez való ExpressRoute-kapcsolatok létrehozásához.
 services: virtual-wan
 author: cherylmc
@@ -8,18 +8,18 @@ ms.topic: tutorial
 ms.date: 10/24/2019
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to connect my corporate on-premises network(s) to my VNets using Virtual WAN and ExpressRoute.
-ms.openlocfilehash: 8ad86280eab3041667bf9d1713ae2b4bc82a4c9e
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 5a394f93c5cc606c26ffa1cc64bf1d61617b05b8
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73491547"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74014927"
 ---
 # <a name="tutorial-create-an-expressroute-association-using-azure-virtual-wan"></a>Oktatóanyag: ExpressRoute-társítás létrehozása az Azure Virtual WAN használatával
 
 Ebből az oktatóanyagból megtudhatja, hogyan használhatja a Virtual WAN-t az Azure-beli erőforrásokhoz való kapcsolódáshoz egy ExpressRoute áramkörben. A virtuális WAN-és virtuális WAN-erőforrásokkal kapcsolatos további információkért tekintse meg a [virtuális WAN áttekintése](virtual-wan-about.md)című témakört.
 
-Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]
 > * Virtuális WAN létrehozása
@@ -30,7 +30,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > * Átjáró méretének módosítása
 > * Alapértelmezett útvonal meghirdetése
 
-## <a name="before-you-begin"></a>Előzetes teendők
+## <a name="before-you-begin"></a>Előkészületek
 
 A konfigurálás megkezdése előtt győződjön meg a következő feltételek teljesüléséről:
 
@@ -151,6 +151,6 @@ Ha szeretné, hogy az Azure-beli virtuális központ meghirdesse az alapértelme
 
    ![Alapértelmezett útvonal propagálása](./media/virtual-wan-expressroute-portal/defaultroute2.png "Alapértelmezett útvonal propagálása")
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A Virtual WAN-nal kapcsolatos további információkért lásd a [Virtual WAN áttekintő](virtual-wan-about.md) lapját.

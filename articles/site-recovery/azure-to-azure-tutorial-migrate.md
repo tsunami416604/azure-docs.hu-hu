@@ -1,5 +1,5 @@
 ---
-title: Azure IaaS virtuális gépek áthelyezése másik Azure-régióba a Azure Site Recovery szolgáltatás használatával | Microsoft Docs
+title: Azure-beli virtuális gépek áthelyezése egy másik régióba Azure Site Recovery
 description: Az Azure IaaS virtuális gépek egyik Azure-régióból a másikba való áthelyezéséhez használja a Azure Site Recovery.
 services: site-recovery
 author: rajani-janaki-ram
@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 01/28/2019
 ms.author: rajanaki
 ms.custom: MVC
-ms.openlocfilehash: df64575039e08292da5aed5b611ac54d625634a6
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 00fc836f098f3c03afc9adebe2450f00750eb5ff
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72933881"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73954109"
 ---
 # <a name="move-azure-vms-to-another-region"></a>Azure-beli virtuális gépek áthelyezése egy másik régióba
 
@@ -77,7 +77,7 @@ Az oktatóanyag során az alábbi lépéseket fogja végrehajtani:
 
 
 
-## <a name="prepare"></a>Előkészületek
+## <a name="prepare"></a>Előkészítés
 A következő lépések bemutatják, hogyan készítheti elő a virtuális gépet a Azure Site Recovery megoldásként való áthelyezésre. 
 
 ### <a name="create-the-vault-in-any-region-except-the-source-region"></a>A tároló létrehozása bármely régióban, a forrásoldali régió kivételével
@@ -99,7 +99,7 @@ Site Recovery beolvassa az előfizetéshez és az erőforráscsoporthoz társít
 
 1. A következő lépésben válassza ki az áthelyezni kívánt virtuális gépet, majd kattintson az **OK gombra**.
 1. A **Beállítások**területen válassza a vész- **helyreállítás**lehetőséget.
-1. A vész-helyreállítási > - **célcsoport**konfigurálása területen válassza ki azt a régiót, amelyre a replikálást **végzi** .
+1. A **Vészhelyreállítás konfigurálása** > **Célrégió** részben válassza ki a célrégiót, amelybe a replikálást végezni kívánja.
 1. A jelen oktatóanyag esetében fogadja el a többi alapértelmezett értéket.
 1. Válassza a **Replikáció engedélyezése** elemet. Ezzel a lépéssel elindít egy feladatot a virtuális gép replikálásának engedélyezéséhez.
 

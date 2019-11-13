@@ -1,24 +1,21 @@
 ---
 title: Egyéni szabályzatdefiníció létrehozása
 description: Az egyéni üzleti szabályok betartatásához a Azure Policy egyéni szabályzat-definícióját kell megalkotni.
-author: DCtheGeek
-ms.author: dacoulte
 ms.date: 04/23/2019
 ms.topic: tutorial
-ms.service: azure-policy
-ms.openlocfilehash: 240d0fa388fbdfdd3d29d735aed708a096440740
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: 1a5be5a3e81dec6f4369e6b01dcda3d5de5f6dac
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71980352"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73959271"
 ---
-# <a name="tutorial-create-a-custom-policy-definition"></a>Oktatóanyag: Egyéni szabályzatdefiníció létrehozása
+# <a name="tutorial-create-a-custom-policy-definition"></a>Oktatóanyag: egyéni szabályzat-definíció létrehozása
 
 Az egyéni szabályzatok definíciója lehetővé teszi, hogy az ügyfelek definiálják saját szabályaikat az Azure használatához. Ezek a szabályok gyakran kényszerítik a következőket:
 
 - Biztonsági eljárások
-- Költségkezelés
+- Cost Management
 - Szervezetre vonatkozó szabályok (például elnevezés vagy hely)
 
 Függetlenül attól, hogy az üzleti illesztőprogram egyéni házirendet hoz létre, a lépések ugyanazok, mint az új egyéni házirend definiálásához.
@@ -165,7 +162,7 @@ Az Azure-erőforrások aliasait többféleképpen is meghatározhatja. Ebben az 
 
 ### <a name="azure-cli"></a>Azure CLI
 
-Az Azure CLI-ben a `az provider` parancs az erőforrás-aliasok keresésére szolgál. A **Microsoft. Storage** névterét a korábban az Azure-erőforrással kapcsolatban kapott részletek alapján szűrheti.
+Az Azure CLI-ben az `az provider`-parancs az erőforrás-aliasok keresésére szolgál. A **Microsoft. Storage** névterét a korábban az Azure-erőforrással kapcsolatban kapott részletek alapján szűrheti.
 
 ```azurecli-interactive
 # Login first with az login if not using Cloud Shell
@@ -443,7 +440,7 @@ A szabályzat mindhárom részének meghatározása után itt látható a befeje
 
 Az elkészült definíció használatával új szabályzat hozható létre. A portál és az egyes SDK-kat (Azure CLI, Azure PowerShell és REST API) különböző módokon fogadja el a definíciót, ezért tekintse át az egyes parancsokat a helyes használat ellenőrzéséhez. Ezután rendelje hozzá a paraméteres hatás használatával a megfelelő erőforrásokhoz a Storage-fiókok biztonságának kezeléséhez.
 
-## <a name="review"></a>Felülvizsgálat
+## <a name="review"></a>Áttekintés
 
 Ebben az oktatóanyagban sikeresen elvégezte a következőket:
 
@@ -454,7 +451,7 @@ Ebben az oktatóanyagban sikeresen elvégezte a következőket:
 > - A használandó effektus meghatározása
 > - A szabályzat definíciójának tagjai
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ezután az egyéni házirend-definíció használatával hozzon létre és rendeljen hozzá egy házirendet:
 

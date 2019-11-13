@@ -8,20 +8,18 @@ ms.topic: include
 ms.date: 06/05/2018
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: ca55d49721f9c22f35ba79e819efa354a660d92a
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 9332079cd77c4dcc972059071165ba0631135b5c
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72302316"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74012535"
 ---
-# <a name="backup-and-disaster-recovery-for-azure-iaas-disks"></a>Azure IaaS-lemezek biztonsági mentése és vész-helyreállítás
-
 Ez a cikk bemutatja, hogyan tervezheti meg a IaaS virtuális gépek és lemezek biztonsági mentését és a vész-helyreállítást (DR) az Azure-ban. Ez a dokumentum a felügyelt és a nem felügyelt lemezeket is tartalmazza.
 
 Első lépésként az Azure platform beépített hibatűrési képességei is bemutatják, amelyek segítenek a helyi hibák elleni védelemben. Ezután megbeszéljük azokat a katasztrófa-forgatókönyveket, amelyek nem teljes mértékben fedik a beépített funkciókat. Emellett több példát is mutatunk a munkaterhelés-forgatókönyvekre, amelyekben különböző biztonsági mentési és DR-megfontolások alkalmazhatók. Ezután áttekintjük a DR IaaS-lemezek lehetséges megoldásait.
 
-## <a name="introduction"></a>Introduction (Bevezetés)
+## <a name="introduction"></a>Bevezetés
 
 Az Azure platform különféle módszereket használ a redundancia és a hibatűrés érdekében, hogy segítsen az ügyfeleknek a honosított hardverhiba elleni védelemben. A helyi hibák olyan Azure Storage Server-géppel kapcsolatos problémákat okozhatnak, amelyek az adott kiszolgálón lévő virtuális lemez vagy az SSD-k vagy HDD-k hibáinak egy részét tárolják. Az ilyen elszigetelt hardver-összetevők meghibásodása a normál műveletek során fordulhat elő.
 
@@ -109,10 +107,10 @@ A nem felügyelt lemezek esetében használhatja a helyileg redundáns tárolás
 
  A következő táblázat a DR számára elérhető megoldások összegzését tartalmazza.
 
-| Alkalmazási helyzet | Automatikus replikáció | DR megoldás |
+| Forgatókönyv | Automatikus replikáció | DR megoldás |
 | --- | --- | --- |
 | prémium SSD lemezek | Helyi ([helyileg redundáns tárolás](../articles/storage/common/storage-redundancy-lrs.md)) | [Azure Backup](https://azure.microsoft.com/services/backup/) |
-| Managed Disks | Helyi ([helyileg redundáns tárolás](../articles/storage/common/storage-redundancy-lrs.md)) | [Azure Backup](https://azure.microsoft.com/services/backup/) |
+| Felügyelt lemezek | Helyi ([helyileg redundáns tárolás](../articles/storage/common/storage-redundancy-lrs.md)) | [Azure Backup](https://azure.microsoft.com/services/backup/) |
 | Nem felügyelt helyileg redundáns tároló lemezek | Helyi ([helyileg redundáns tárolás](../articles/storage/common/storage-redundancy-lrs.md)) | [Azure Backup](https://azure.microsoft.com/services/backup/) |
 | Nem felügyelt geo-redundáns tárolási lemezek | Régiók közötti ([geo-redundáns tárolás](../articles/storage/common/storage-redundancy-grs.md)) | [Azure Backup](https://azure.microsoft.com/services/backup/)<br/>[Konzisztens Pillanatképek](#alternative-solution-consistent-snapshots) |
 | Nem felügyelt olvasási hozzáférésű geo-redundáns Storage-lemezek | Régiók közötti[kapcsolat (olvasási hozzáférés geo-redundáns tárolás](../articles/storage/common/storage-redundancy-grs.md#read-access-geo-redundant-storage)) | [Azure Backup](https://azure.microsoft.com/services/backup/)<br/>[Konzisztens Pillanatképek](#alternative-solution-consistent-snapshots) |
@@ -123,7 +121,7 @@ Az alkalmazások és az infrastruktúra szintjén a magas rendelkezésre állás
 
 | Szint |   Magas rendelkezésre állás   | Biztonsági mentés vagy DR |
 | --- | --- | --- |
-| Jelentkezés | SQL Server AlwaysOn | Azure Backup |
+| Alkalmazás | SQL Server AlwaysOn | Azure Backup |
 | Infrastruktúra    | Rendelkezésre állási csoport  | Földrajzilag redundáns tárolás konzisztens pillanatképekkel |
 
 ### <a name="using-azure-backup"></a>Azure Backup használata 
@@ -148,7 +146,7 @@ A következő lépésekkel engedélyezheti a virtuális gépek biztonsági ment�
 
     b. A **Recovery Services** -tárolók menüben kattintson a **Hozzáadás** gombra, és kövesse a lépéseket egy új tároló létrehozásához ugyanabban a régióban, ahol a virtuális gép található. Ha például a virtuális gép az USA nyugati régiójában található, válassza az USA nyugati régióját a tárolóhoz.
 
-1.  Ellenőrizze az újonnan létrehozott tároló tárolási replikálását. Nyissa meg **Recovery Services** -tárolók területét, és lépjen a **Tulajdonságok**@no__t – 2**biztonsági mentési konfiguráció**@no__t – 4**frissítés**elemre. Győződjön meg arról, hogy a **geo-redundáns tárolás** beállítás alapértelmezés szerint ki van választva. Ezzel a beállítással biztosíthatja, hogy a tárolót automatikusan egy másodlagos adatközpontba replikálja a rendszer. Például az USA nyugati régiójában lévő tároló automatikusan replikálódik az USA keleti régiójában.
+1.  Ellenőrizze az újonnan létrehozott tároló tárolási replikálását. Nyissa meg **Recovery Services** -tárolók területét, és lépjen a **Tulajdonságok** > **biztonsági mentési konfiguráció** > **frissítés**elemre. Győződjön meg arról, hogy a **geo-redundáns tárolás** beállítás alapértelmezés szerint ki van választva. Ezzel a beállítással biztosíthatja, hogy a tárolót automatikusan egy másodlagos adatközpontba replikálja a rendszer. Például az USA nyugati régiójában lévő tároló automatikusan replikálódik az USA keleti régiójában.
 
 1.  Konfigurálja a biztonsági mentési szabályzatot, és válassza ki a virtuális gépet ugyanabból a felhasználói felületről.
 

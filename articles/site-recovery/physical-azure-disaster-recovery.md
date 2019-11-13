@@ -1,25 +1,24 @@
 ---
-title: Vészhelyzeti helyreállítás beállítása az Azure-ba fizikai helyszíni kiszolgálók esetében Azure Site Recovery
+title: Fizikai helyi kiszolgálók vész-helyreállításának beállítása Azure Site Recovery
 description: Ismerje meg, hogyan állíthatja be a vész-helyreállítást az Azure-ba helyszíni Windows-és Linux-kiszolgálókon a Azure Site Recovery szolgáltatással.
-services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 09/09/2019
+ms.date: 11/12/2019
 ms.author: raynew
-ms.openlocfilehash: 55b375c1e98518a6c3bc2926030cfe072963216c
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: a298505779def353834c294f7b5a406720fdd46c
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70814556"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73936168"
 ---
 # <a name="set-up-disaster-recovery-to-azure-for-on-premises-physical-servers"></a>Vész-helyreállítás beállítása az Azure-ba helyszíni fizikai kiszolgálók esetén
 
 Az [Azure Site Recovery](site-recovery-overview.md) szolgáltatás a helyszíni számítógépek és az Azure-beli virtuális gépek replikálásának, feladatátvételének és feladat-visszavételének kezelésével és irányításával járul hozzá a vészhelyreállítási stratégia megvalósításához.
 
-Ebből az oktatóanyagból megtudhatja, hogyan állíthatja be a helyszíni fizikai Windows-és Linux-kiszolgálók vész-helyreállítását az Azure-ba. Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Ebből az oktatóanyagból megtudhatja, hogyan állíthatja be a helyszíni fizikai Windows-és Linux-kiszolgálók vész-helyreállítását az Azure-ba. Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]
 > * Az Azure és a helyszíni előfeltételek beállítása
@@ -85,8 +84,8 @@ Hozzon létre egy [Azure Storage-fiókot](../storage/common/storage-quickstart-c
 A mobilitási szolgáltatást minden replikálni kívánt kiszolgálón telepíteni kell. A Site Recovery automatikusan telepíti ezt a szolgáltatást, amikor engedélyezi a replikációt a kiszolgálón. Az automatikus telepítéshez elő kell készítenie egy fiókot, amelyet Site Recovery fog használni a kiszolgálóhoz való hozzáféréshez.
 
 - Tartományi vagy helyi fiókot is használhat
-- Windows rendszerű virtuális gépek esetén, ha nem használ tartományi fiókot, tiltsa le a távoli felhasználói hozzáférés-vezérlést a helyi gépen. Ehhez a Register ( **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System**) területen adja hozzá a **LocalAccountTokenFilterPolicy**DWORD bejegyzést, amelynek értéke 1.
-- A beállítás parancssori felületről való letiltásához írja be a következőt a beállításjegyzékbe:``REG ADD HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System /v LocalAccountTokenFilterPolicy /t REG_DWORD /d 1.``
+- Windows rendszerű virtuális gépek esetén, ha nem használ tartományi fiókot, tiltsa le a távoli felhasználói hozzáférés-vezérlést a helyi gépen. Ehhez a regisztrálás **HKEY_LOCAL_MACHINE \software\microsoft\windows\currentversion\policies\system**területen adja hozzá a DWORD bejegyzés **LocalAccountTokenFilterPolicy**, amelynek értéke 1.
+- A beállítás parancssori felületről való letiltásához írja be a következőt a beállításjegyzékbe: ``REG ADD HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System /v LocalAccountTokenFilterPolicy /t REG_DWORD /d 1.``
 - Linux esetén a fióknak a forrás Linux-kiszolgáló gyökerének kell lennie.
 
 
@@ -100,17 +99,17 @@ Válassza ki, hogy mit szeretne replikálni, és replikálja a következőre:.
 
 1. Kattintson a **Helyreállítási tárak** > tár elemre.
 2. Az Erőforrás menüben kattintson a **Site Recovery** > **Az infrastruktúra előkészítése** > **Védelmi cél** lehetőségre.
-3. A **védelem célja**beállításnál válassza **Az Azure** > -ba**nem virtualizált/egyéb**lehetőséget.
+3. A **védelem célja**beállításnál válassza **Az Azure** > **nem virtualizált/egyéb**lehetőséget.
 
 ## <a name="set-up-the-source-environment"></a>A forráskörnyezet beállítása
 
 Állítsa be a konfigurációs kiszolgálót, regisztrálja a tárolóban, és fedezze fel a virtuális gépeket.
 
-1. Kattintson **site Recovery** > az**infrastruktúra** > előkészítése**forrás**lehetőségre.
+1. Kattintson a **Site Recovery** > az **infrastruktúra előkészítése** > a **forrás**lehetőségre.
 2. Ha nem rendelkezik konfigurációs kiszolgálóval, kattintson a **+ konfigurációs kiszolgáló**elemre.
 3. A **kiszolgáló hozzáadása**területen győződjön meg arról, hogy a **konfigurációs kiszolgáló** megjelenik a **kiszolgáló típusa mezőben**.
 4. Töltse le a Site Recovery egyesített telepítési telepítőfájlt.
-5. Töltse le a tárolóregisztrációs kulcsot. Ezt az egyesített telepítő futtatásakor kell megadnia. A kulcs a generálásától számított öt napig érvényes.
+5. Töltse le a tároló regisztrációs kulcsát. Ezt az egyesített telepítő futtatásakor kell megadnia. A kulcs a generálásától számított öt napig érvényes.
 
    ![A forrás beállítása](./media/physical-azure-disaster-recovery/source-environment.png)
 
@@ -137,7 +136,7 @@ Futtassa az egyesített telepítőt helyi rendszergazdaként a konfigurációs k
 
 [!INCLUDE [site-recovery-add-configuration-server](../../includes/site-recovery-add-configuration-server.md)]
 
-A regisztráció befejeződése után a konfigurációs kiszolgáló megjelenik a tároló **Beállítások** > **kiszolgálók** lapján.
+A regisztráció befejeződése után a konfigurációs kiszolgáló megjelenik a tároló **beállítások** > **kiszolgálók** lapján.
 
 ## <a name="set-up-the-target-environment"></a>A célkörnyezet beállítása
 
@@ -147,7 +146,7 @@ Válassza ki és ellenőrizze a célerőforrásokat.
 2. A cél telepítési modell meghatározása.
 3. A Site Recovery ellenőrzi, hogy rendelkezik-e legalább egy kompatibilis Azure-tárfiókkal és -hálózattal.
 
-   ![Target](./media/physical-azure-disaster-recovery/network-storage.png)
+   ![Cél](./media/physical-azure-disaster-recovery/network-storage.png)
 
 
 ## <a name="create-a-replication-policy"></a>Replikációs házirend létrehozása
@@ -158,12 +157,12 @@ Válassza ki és ellenőrizze a célerőforrásokat.
 4. A **Helyreállítási pont megőrzése** beállításnál azt adhatja meg, hogy milyen hosszú (hány órás) legyen az egyes helyreállítási pontok adatmegőrzési időtartama. A replikált virtuális gépek ezen az időtartamon belül bármikor helyreállíthatók. A rendszer a prémium tárolóra replikált gépek esetében 24 órás, a standard tárolóra replikált gépek esetében 72 órás megőrzést támogat.
 5. Az alkalmazás **-konzisztens Pillanatképek gyakorisága**mezőben adhatja meg, hogy az alkalmazás-konzisztens pillanatképeket tartalmazó helyreállítási pontok milyen gyakran jöjjenek létre. A szabályzat létrehozásához kattintson az **OK** gombra.
 
-    ![Replikációs házirend](./media/physical-azure-disaster-recovery/replication-policy.png)
+    ![Replikációs szabályzat](./media/physical-azure-disaster-recovery/replication-policy.png)
 
 
 A szabályzat automatikusan társítva lesz a konfigurációs kiszolgálóval. Alapértelmezés szerint a rendszer automatikusan létrehoz egy megfelelő szabályzatot a feladat-visszavételre is. Ha például a replikációs házirend a **rep-Policy** , akkor létrejön egy feladat-visszavételi szabályzat **rep-Policy-feladat-visszavétel** . Ezt a szabályzatot nem használja a rendszer, amíg nem indít el egy feladat-visszavételt az Azure-ból.
 
-## <a name="enable-replication"></a>Replikáció engedélyezése
+## <a name="enable-replication"></a>A replikáció engedélyezése
 
 Engedélyezze a replikációt az egyes kiszolgálókon.
 
@@ -179,13 +178,13 @@ Engedélyezze a replikációt az egyes kiszolgálókon.
 7. Válassza ki azt az Azure-hálózatot, valamint alhálózatot, amelyhez a feladatátvételt követően felálló Azure virtuális gépek csatlakozni fognak.
 8. Ha a megadott hálózati beállításokat az összes védelemre kijelölt gépre szeretné alkalmazni, válassza a **Beállítás most a kijelölt gépekhez** lehetőséget. Ha az egyes gépeknél külön-külön szeretné beállítani az Azure-hálózatot, kattintson a **Beállítás később** elemre. 
 9. A **fizikai gépek**területen kattintson a **+ fizikai gép**elemre. Adja meg a nevet és az IP-címet. Válassza ki a replikálni kívánt gép operációs rendszerét. A kiszolgálók felderítése és listázása néhány percet vesz igénybe. 
-10. A **Tulajdonságok** > **konfigurálása tulajdonságok**területen válassza ki azt a fiókot, amelyet a Process-kiszolgáló a mobilitási szolgáltatás automatikus telepítéséhez fog használni a gépen.
+10. A **tulajdonságok** > **tulajdonságok konfigurálása**területen válassza ki azt a fiókot, amelyet a Process-kiszolgáló a mobilitási szolgáltatás automatikus telepítéséhez fog használni a gépen.
 11. A **Replikációs beállítások** > **Replikációs beállítások konfigurálása** területen ellenőrizze, hogy a megfelelő replikációs szabályzat van-e kiválasztva. 
 12. Kattintson a **Replikáció engedélyezése** elemre. A **Védelem engedélyezése** feladat előrehaladását a **Beállítások** > **Feladatok** > **Site Recovery-feladatok** menüpontban követheti nyomon. A **Védelem véglegesítése** feladat befejeződését követően a gép készen áll a feladatátvételre.
 
 
-A hozzáadott kiszolgálók figyeléséhez ellenőrizheti a **konfigurációs kiszolgálók** > utolsó felderített idejét a következő**helyen:** . Ha gépeket szeretne felvenni anélkül, hogy az ütemezett felderítési időt kellene várnia, jelölje ki a konfigurációs kiszolgálót (ne kattintson rá), majd kattintson a **frissítés**gombra.
+A hozzáadott kiszolgálók figyeléséhez ellenőrizheti a **konfigurációs kiszolgálók** utolsó felderített idejét > **utolsó kapcsolódáskor**. Ha gépeket szeretne felvenni anélkül, hogy az ütemezett felderítési időt kellene várnia, jelölje ki a konfigurációs kiszolgálót (ne kattintson rá), majd kattintson a **frissítés**gombra.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Futtasson vész-helyreállítási részletezést](tutorial-dr-drill-azure.md).

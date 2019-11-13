@@ -1,18 +1,18 @@
 ---
-title: A Microsoft Azure Site Recovery-szolgáltató frissítésével kapcsolatos hibák elhárítása | Microsoft Docs
-description: Megismerés és
+title: A Microsoft Azure Site Recovery-szolgáltató frissítésének hibáinak megoldása
+description: A Microsoft Azure Site Recovery-szolgáltató frissítése során felmerülő gyakori problémák megoldása
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: troubleshooting
-ms.date: 02/05/2019
+ms.date: 11/10/2019
 ms.author: raynew
-ms.openlocfilehash: 6bb8263e7291506be6af7d5af7eda5786274d73c
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.openlocfilehash: 73309103d422391aae3d72e3b0267d5d5a85515a
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71972616"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73953766"
 ---
 # <a name="troubleshoot-microsoft-azure-site-recovery-provider-upgrade-failures"></a>A Microsoft Azure Site Recovery Provider frissítésével kapcsolatos hibák elhárítása
 
@@ -30,7 +30,7 @@ A frissítéshez kövesse az alábbi lépéseket:
    1. A Azure Site Recovery cikkben található [szolgáltatási frissítések](service-updates-how-to.md##links-to-currently-supported-update-rollups) jelenleg támogatott kumulatív frissítésekre vonatkozó szakaszában válassza ki azt a szolgáltatót, amelyre frissíteni kíván.
    2. Az Összesítés lapon keresse meg a **frissítési adatok** szakaszt, és töltse le a Microsoft Azure site Recovery egyesített telepítő kumulatív frissítését.
 
-2. Nyisson meg egy parancssort, és navigáljon ahhoz a mappához, amelyhez az egyesített telepítőfájlt letöltötte. Bontsa ki a telepítési fájlokat a letöltésből a következő paranccsal, MicrosoftAzureSiteRecoveryUnifiedSetup. exe/q/x: &lt;folder elérési út a kibontott fájlokhoz @ no__t-1.
+2. Nyisson meg egy parancssort, és navigáljon ahhoz a mappához, amelyhez az egyesített telepítőfájlt letöltötte. Bontsa ki a telepítő fájljait a letöltésből a következő paranccsal, MicrosoftAzureSiteRecoveryUnifiedSetup. exe/q/x:&lt;mappa elérési útja a kibontott fájlokhoz&gt;.
     
     A példában szereplő parancs:
 
@@ -48,12 +48,12 @@ Ahhoz, hogy a frissítés sikeres legyen, a harmadik féltől származó mappa n
 
 A probléma megoldásához.
 
-1. Indítsa el a Beállításszerkesztőt (Regedit. exe), és nyissa meg a HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\InMage Systems\Installed Products\10 ágat.
-1. Vizsgálja meg a `Build_Version` kulcs értékét. Ha a legújabb verzióra van beállítva, csökkentse a verziószámot. Ha például a legújabb verzió a 9,22. \* és a `Build_Version` kulcs értéke erre az értékre van állítva, akkor csökkentse a 9,21. \* értéket.
+1. Indítsa el a Beállításszerkesztőt (Regedit. exe), és nyissa meg a HKEY_LOCAL_MACHINE \SOFTWARE\WOW6432Node\InMage Systems\Installed Products\10 ágat.
+1. Ellenőrizze a `Build_Version` kulcs értékét. Ha a legújabb verzióra van beállítva, csökkentse a verziószámot. Ha például a legújabb verzió a 9,22.\* és az `Build_Version` kulcs értéke erre az értékre van állítva, majd csökkentse 9,21-ra.\*.
 1. Töltse le a legújabb Microsoft Azure Site Recovery egyesített telepítőt:
    1. A Azure Site Recovery cikkben található [szolgáltatási frissítések](service-updates-how-to.md##links-to-currently-supported-update-rollups) jelenleg támogatott kumulatív frissítésekre vonatkozó szakaszában válassza ki azt a szolgáltatót, amelyre frissíteni kíván.
    2. Az Összesítés lapon keresse meg a **frissítési adatok** szakaszt, és töltse le a Microsoft Azure site Recovery egyesített telepítő kumulatív frissítését.
-1. Nyisson meg egy parancssort, és navigáljon ahhoz a mappához, amelyhez az egyesített telepítőfájlt letöltötte, és a telepítési fájlok kibontása a letöltésből a következő paranccsal, MicrosoftAzureSiteRecoveryUnifiedSetup. exe/q/x: &lt;folder elérési út a kinyert fájlok @ no__t-1.
+1. Nyisson meg egy parancssort, és navigáljon ahhoz a mappához, amelyhez az egyesített telepítőfájlt letöltötte, és a telepítési fájlok kibontása a letöltésből a következő paranccsal, MicrosoftAzureSiteRecoveryUnifiedSetup. exe/q/x:&lt;mappa elérési útja a kibontott fájlokhoz&gt;.
 
     A példában szereplő parancs:
 

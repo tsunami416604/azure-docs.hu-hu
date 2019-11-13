@@ -8,18 +8,18 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: f9a3c4875f01c650485034fe46f53bb5aa1fd75b
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: cb7ebe5d9519f1a3967a29f4c883c420a892817f
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68722658"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73958004"
 ---
 # <a name="azure-maps-traffic-coverage"></a>Azure Maps forgalom lefedettsége
 
-A Azure Maps a **forgalom és az** incidensek formájában biztosít részletes forgalmiinformációkat. Ezek az adathalmazok megjeleníthetők a térképeken, vagy olyan intelligensebb útvonalak előállítására használhatók, amelyek valós vezetési körülmények között számítanak.
+A Azure Maps a forgalom és az **incidensek**formájában biztosít **részletes forgalmi információkat** . Ezek az adathalmazok megjeleníthetők a térképeken, vagy olyan intelligensebb útvonalak előállítására használhatók, amelyek valós vezetési körülmények között számítanak.
 
-A Maps azonban nem rendelkezik azonos szintű információval és pontossággal az összes régióban. Az alábbi táblázat az egyes régiókban kérhető forgalmi információkról nyújt információt: 
+A Maps azonban nem rendelkezik azonos szintű információval és pontossággal az összes országra vagy régióra vonatkozóan. Az alábbi táblázat az egyes országokból vagy régióktól kérhető forgalmi információkról nyújt információt: 
 
 ## <a name="americas"></a>Amerika
 
@@ -46,7 +46,7 @@ A Maps azonban nem rendelkezik azonos szintű információval és pontossággal 
 |Hongkong (KKT)     |✓         |✓         |
 |India   |✓         |✓         |
 |Indonézia     |✓         |✓         |
-|Makaó (KKT)     |✓         |✓         |
+|Makaó KKT     |✓         |✓         |
 |Malajzia     |✓         |✓         |
 |Új-Zéland     |✓         |✓         |
 |Fülöp-szigetek  |✓         |✓         |
@@ -67,7 +67,7 @@ A Maps azonban nem rendelkezik azonos szintű információval és pontossággal 
 |Bosznia-Hercegovina    |✓         |✓         |
 |Bulgária     |✓         |✓         |
 |Horvátország     |✓         |✓         |
-|Csehország     |✓         |✓         |
+|Cseh Köztársaság     |✓         |✓         |
 |Dánia     |✓         |✓         |
 |Észtország     |         | ✓        |
 |Finnország     |✓         |✓         |
@@ -111,7 +111,7 @@ A Maps azonban nem rendelkezik azonos szintű információval és pontossággal 
 |\+ Gibraltár     |✓         |✓         |
 |\+ Guernsey & Jersey     |✓         |✓         |
 |\+ Man-sziget     |✓         |✓         |
-|Vatikánváros   |✓         |✓         |
+|Vatikáni Városállam   |✓         |✓         |
 
 
 ## <a name="middle-east-and-africa"></a>Közel-Kelet és Afrika
@@ -132,6 +132,6 @@ A Maps azonban nem rendelkezik azonos szintű információval és pontossággal 
 |Dél-Afrika     |✓         |✓         |
 |Egyesült Arab Emírségek  |✓         |✓         |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Azure Maps forgalmi adatokkal kapcsolatos további információkért tekintse meg a [forgalmi](https://docs.microsoft.com/rest/api/maps/traffic) útmutató lapjait.

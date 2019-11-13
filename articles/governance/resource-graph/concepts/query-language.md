@@ -1,17 +1,14 @@
 ---
 title: A lekérdezés nyelvének megismerése
 description: Az Azure Resource Graph-ban használható Resource Graph-táblákat, valamint az elérhető Kusto adattípusokat, operátorokat és függvényeket ismerteti.
-author: DCtheGeek
-ms.author: dacoulte
 ms.date: 10/21/2019
 ms.topic: conceptual
-ms.service: resource-graph
-ms.openlocfilehash: d0ba3195aef246ff49042f61dcec0b4397b5dde6
-ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
+ms.openlocfilehash: baef46f4ba6f899c2c0a1392f87006223d75a4e1
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73622636"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73959055"
 ---
 # <a name="understanding-the-azure-resource-graph-query-language"></a>Az Azure Resource Graph lekérdezési nyelvének megismerése
 
@@ -73,17 +70,17 @@ Itt látható a KQL táblázatos operátorok listája, amelyeket az erőforrás-
 |[count](/azure/kusto/query/countoperator) |[Kulcstartók száma](../samples/starter.md#count-keyvaults) | |
 |[különböző](/azure/kusto/query/distinctoperator) |[Egy adott alias különböző értékeinek megjelenítése](../samples/starter.md#distinct-alias-values) | |
 |[kiterjesztése](/azure/kusto/query/extendoperator) |[A virtuális gépek száma az operációs rendszer típusa szerint](../samples/starter.md#count-os) | |
-|[csatlakozás](/azure/kusto/query/joinoperator) |[Key Vault előfizetés neve](../samples/advanced.md#join) |A JOIN Flavors támogatott: [innerunique](/azure/kusto/query/joinoperator#default-join-flavor), [Inner](/azure/kusto/query/joinoperator#inner-join), [leftouter](/azure/kusto/query/joinoperator#left-outer-join). Legfeljebb 3 `join` egyetlen lekérdezésben. Az egyéni csatlakoztatási stratégiák, például a szórásos csatlakozás, nem engedélyezettek. Egy táblán belül, illetve az _erőforrások_ és a _ResourceContainers_ táblák között is felhasználható. |
-|[korlátot](/azure/kusto/query/limitoperator) |[Az összes nyilvános IP-cím listázása](../samples/starter.md#list-publicip) |`take` szinonimája |
+|[join](/azure/kusto/query/joinoperator) |[Key Vault előfizetés neve](../samples/advanced.md#join) |A JOIN Flavors támogatott: [innerunique](/azure/kusto/query/joinoperator#default-join-flavor), [Inner](/azure/kusto/query/joinoperator#inner-join), [leftouter](/azure/kusto/query/joinoperator#left-outer-join). Legfeljebb 3 `join` egyetlen lekérdezésben. Az egyéni csatlakoztatási stratégiák, például a szórásos csatlakozás, nem engedélyezettek. Egy táblán belül, illetve az _erőforrások_ és a _ResourceContainers_ táblák között is felhasználható. |
+|[limit](/azure/kusto/query/limitoperator) |[Az összes nyilvános IP-cím listázása](../samples/starter.md#list-publicip) |`take` szinonimája |
 |[MV – Kibontás](/azure/kusto/query/mvexpandoperator) |[Adott írási hellyel rendelkező Cosmos DB listázása](../samples/advanced.md#mvexpand-cosmosdb) |_ROWLIMIT_ Max 400 |
 |[sorrendben](/azure/kusto/query/orderoperator) |[Az erőforrások listája név szerint rendezve](../samples/starter.md#list-resources) |`sort` szinonimája |
-|[projekt](/azure/kusto/query/projectoperator) |[Az erőforrások listája név szerint rendezve](../samples/starter.md#list-resources) | |
-|[projekt – vendég](/azure/kusto/query/projectawayoperator) |[Oszlopok eltávolítása az eredményekből](../samples/advanced.md#remove-column) | |
+|[project](/azure/kusto/query/projectoperator) |[Az erőforrások listája név szerint rendezve](../samples/starter.md#list-resources) | |
+|[project-away](/azure/kusto/query/projectawayoperator) |[Oszlopok eltávolítása az eredményekből](../samples/advanced.md#remove-column) | |
 |[Rendezés](/azure/kusto/query/sortoperator) |[Az erőforrások listája név szerint rendezve](../samples/starter.md#list-resources) |`order` szinonimája |
 |[Összegzés](/azure/kusto/query/summarizeoperator) |[Az Azure-erőforrások száma](../samples/starter.md#count-resources) |Csak egyszerűsített első oldal |
-|[eltarthat](/azure/kusto/query/takeoperator) |[Az összes nyilvános IP-cím listázása](../samples/starter.md#list-publicip) |`limit` szinonimája |
+|[take](/azure/kusto/query/takeoperator) |[Az összes nyilvános IP-cím listázása](../samples/starter.md#list-publicip) |`limit` szinonimája |
 |[Top](/azure/kusto/query/topoperator) |[Az első öt virtuális gép megjelenítése a nevük és az operációs rendszerük típusa szerint](../samples/starter.md#show-sorted) | |
-|[Union](/azure/kusto/query/unionoperator) |[Két lekérdezés eredményeinek egyetlen eredménybe való egyesítése](../samples/advanced.md#unionresults) |Önálló tábla engedélyezve: _T_ `| union` \[`kind=` `inner`\|`outer`\] \[`withsource=`_ColumnName_\] _tábla_. Legfeljebb 3 `union` lábát egyetlen lekérdezésben. `union` lábát tartalmazó táblák fuzzy feloldása nem engedélyezett. Egy táblán belül, illetve az _erőforrások_ és a _ResourceContainers_ táblák között is felhasználható. |
+|[union](/azure/kusto/query/unionoperator) |[Két lekérdezés eredményeinek egyetlen eredménybe való egyesítése](../samples/advanced.md#unionresults) |Önálló tábla engedélyezve: _T_ `| union` \[`kind=` `inner`\|`outer`\] \[`withsource=`_ColumnName_\] _tábla_. Legfeljebb 3 `union` lábát egyetlen lekérdezésben. `union` lábát tartalmazó táblák fuzzy feloldása nem engedélyezett. Egy táblán belül, illetve az _erőforrások_ és a _ResourceContainers_ táblák között is felhasználható. |
 |[ahol](/azure/kusto/query/whereoperator) |[A tárolót tartalmazó erőforrások megjelenítése](../samples/starter.md#show-storage) | |
 
 ## <a name="escape-characters"></a>Escape-karakterek
@@ -110,7 +107,7 @@ Egyes tulajdonságnév, például `.` vagy `$`belefoglalása szükséges, a lek�
 
   - **cmd** – ne elkerülje a `$` karaktert.
 
-  - **PowerShell** - - ``` ` ```
+  - **PowerShell** - ``` ` ```
 
     Példa olyan lekérdezésre, amely megmenekül a tulajdonság _\$típus_ a PowerShellben:
 
@@ -118,7 +115,7 @@ Egyes tulajdonságnév, például `.` vagy `$`belefoglalása szükséges, a lek�
     where type=~'Microsoft.Insights/alertRules' | project name, properties.condition.`$type
     ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Tekintse meg az [alapszintű lekérdezésekben](../samples/starter.md)használt nyelvet.
 - Lásd: speciális alkalmazások a [speciális lekérdezésekben](../samples/advanced.md).

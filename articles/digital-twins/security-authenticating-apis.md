@@ -1,5 +1,5 @@
 ---
-title: Az API-hitelesítés ismertetése az Azure Digital Twins használatával | Microsoft Docs
+title: Az API-hitelesítés ismertetése – Azure digitális Twins | Microsoft Docs
 description: Ismerje meg, hogyan csatlakozhat az API-khoz, és hogyan hitelesíthető az Azure Digital Twins szolgáltatással.
 ms.author: alinast
 author: alinamstanciu
@@ -8,12 +8,12 @@ ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
 ms.date: 09/30/2019
-ms.openlocfilehash: 53b53fa5185ade87dfdd21f0805641657d49d676
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: 6af6a4501ad58fc8e371b895da601d177d872f41
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72800211"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74013944"
 ---
 # <a name="connect-to-and-authenticate-with-apis"></a>Kapcsolódás és hitelesítés API-kkal
 

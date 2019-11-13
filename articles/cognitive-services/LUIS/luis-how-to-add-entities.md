@@ -1,7 +1,7 @@
 ---
 title: Entitások hozzáadása – LUIS
 titleSuffix: Azure Cognitive Services
-description: Entitásokat hozhat létre a Language Understanding (LUIS) alkalmazások felhasználói hosszúságú kimondott szöveg származó kulcsfontosságú adatok kinyeréséhez.
+description: Entitásokat hozhat létre a Language Understanding (LUIS) alkalmazások felhasználói hosszúságú kimondott szöveg származó kulcsfontosságú adatok kinyeréséhez. Az ügyfélalkalmazás a kinyert fullfil használja.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -9,191 +9,173 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 10/25/2019
+ms.date: 11/11/2019
 ms.author: diberry
-ms.openlocfilehash: 54c9d79c62052daeee76de5dffb1099dc7d75180
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: ed100c27d482065e244bb3dc2cca3b66dfc11986
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73467722"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74013469"
 ---
-# <a name="create-entities-without-utterances"></a>Entitások létrehozása hosszúságú kimondott szöveg nélkül
+# <a name="add-entities-to-extract-data"></a>Entitások hozzáadása az adatok kinyeréséhez 
 
-Az entitás egy szót vagy kifejezést jelöl a kinyerni kívánt szövegen belül. Az entitások osztályt jelölnek, beleértve a hasonló objektumok (helyek, dolgok, személyek, események vagy fogalmak) gyűjteményét. Az entitások a szándékkal kapcsolatos információkat írják le, és esetenként elengedhetetlenek, hogy az alkalmazás elvégezze a feladatát. Entitásokat akkor hozhat létre, ha egy teljes leképezést ad hozzá egy szándékhoz, vagy kívülről (előtte vagy után).
+Entitásokat hozhat létre a Language Understanding (LUIS) alkalmazások felhasználói hosszúságú kimondott szöveg származó kulcsfontosságú adatok kinyeréséhez. Az ügyfélalkalmazás a kinyert entitások adatait használja az fullfilához.
 
-A LUIS-alkalmazásban lévő entitásokat **az entitások lap** **entitások listájában** adhatja hozzá, szerkesztheti vagy törölheti. A LUIS két fő típusú entitást kínál: [előre összeépített entitásokat](luis-reference-prebuilt-entities.md)és saját [egyéni entitásokat](luis-concept-entity-types.md#types-of-entities).
+Az entitás egy szót vagy kifejezést az utterance (kifejezés), amelyeket szeretne kinyert belül jelöli. Entitások ismertetik a leképezés kapcsolódó információk, és néha nélkülözhetetlenek az alkalmazás a feladat végrehajtásához. Entitásokat akkor hozhat létre, ha egy példa szerinti kiválasztást ad hozzá egy szándékhoz, vagy kívülről (előtte vagy utána), ha egy Kimondás kiválasztását adja hozzá egy szándékhoz.
 
-Miután létrehozta a gép által megtanult entitást, meg kell jelölnie az entitást az összes, az általa megjelenő cél teljes tartalmában.
+[!INCLUDE [Uses preview portal](includes/uses-portal-preview.md)]
 
-[!INCLUDE [Waiting for LUIS portal refresh](./includes/wait-v3-upgrade.md)]
+## <a name="creating-an-entity-is-different-from-labeling-an-entity"></a>Az entitások létrehozása különbözik az entitások címkézésével
 
-<a name="add-prebuilt-entity"></a>
+Először létre kell hoznia egy entitást, mielőtt címkézi az entitást a példában szereplő kifejezéssel. 
 
-## <a name="add-a-prebuilt-entity-to-your-app"></a>Előre elkészített entitás hozzáadása az alkalmazáshoz
+Az alábbi táblázat segítségével megtudhatja, hogy mely entitások hozzanak létre vagy adjon hozzá minden entitást az alkalmazáshoz. 
 
-Az alkalmazásokhoz hozzáadott közös előre elkészített entitások *száma* -és *datetimeV2*. 
+|Entitás típusa|Hol hozható létre entitás a LUIS-portálon|
+|--|--|
+|Gépi megtanult entitás|Entitások vagy leképezés részletei|
+|Listaentitás|Entitások vagy leképezés részletei|
+|Reguláriskifejezés-entitás|Entitások|
+|Pattern.any entitás|Entitások|
+|Előre összeállított entitások|Entitások|
+|Előre elkészített tartományi entitás|Entitások|
 
-1. Az alkalmazásban a **Létrehozás** szakaszban válassza az **entitások** lehetőséget a bal oldali panelen.
- 
-1. Az **entitások** lapon válassza az **előre elkészített entitások hozzáadása**elemet.
+**Az entitások lapon** hozhatja létre az összes entitást, vagy létrehozhat néhány entitást az entitás címkévé való címkézésének részeként a **leképezés részletei** lapon. Csak egy entitást lehet _címkével ellátni_ a **leképezés részletei** lapról. 
 
-1. Az **előre felépített entitások hozzáadása** párbeszédpanelen válassza ki az előre elkészített entitások **számát** és **datetimeV2** . Ezután válassza a **Done** (Kész) elemet.
+## <a name="create-a-machine-learned-entity"></a>Gépi megtanult entitás létrehozása
 
-    ![Képernyőkép az előre elkészített entitás hozzáadása párbeszédpanelről](./media/add-entities/list-of-prebuilt-entities.png)
+[!INCLUDE [Create and label entities in machine-learned tutorial](includes/decomposable-tutorial-links.md)]
 
-<a name="add-simple-entities"></a>
+## <a name="create-a-text-matching-entity"></a>Szöveggel egyező entitás létrehozása
 
-## <a name="add-simple-entities-for-single-concepts"></a>Egyszerű entitások hozzáadása egyetlen fogalomhoz
+A Text-Matching entitások használata számos módszert kínál az adatok kinyerésére:
 
-Egy egyszerű entitás egyetlen koncepciót ismertet. A következő eljárással hozhat létre olyan entitást, amely Kinyeri a vállalati részlegek nevét, például az *emberi erőforrásokat* vagy a *műveleteket*.   
+|Szöveggel egyező entitások|Cél|
+|--|--|
+|[Entitás listázása](#add-list-entities-for-exact-matches)|kanonikus nevek listája a szinonimákkal együtt alternatív űrlapokként|
+|Reguláriskifejezés-entitás|szöveg egyeztetése reguláris kifejezéssel rendelkező entitás használatával|
+|[Előre elkészített entitás](tutorial-machine-learned-entity.md#add-prebuilt-number-to-app-to-help-extract-data)|közös adattípusok (például szám, e-mail, dátum) egyeztetése|
+|Előre elkészített tartományi entitás|egyezés a kijelölt tárgyi tartományok használatával|
+|[Pattern.any](#add-a-patternany-entity)| a környező szöveggel könnyen összetéveszthető entitások egyeztetése|  
 
-1. Az alkalmazásban válassza a létrehozás **szakaszt,** majd válassza az **entitások** lehetőséget a bal oldali panelen, majd válassza az **új entitás létrehozása**lehetőséget.
-
-1. Az előugró párbeszédpanelen írja be a `Location` értéket az **entitás neve** mezőbe, válassza az **egyszerű** lehetőséget az **entitás típusa** listából, majd válassza a **kész**lehetőséget.
-
-    Az entitás létrehozása után ugorjon az összes olyan leképezésre, amely az entitást tartalmazó hosszúságú kimondott szöveg tartalmaz. Jelölje ki a példában szereplő szöveget, és jelölje meg a szöveget entitásként. 
-
-    A [kifejezések listáját](luis-concept-feature.md) általában egy egyszerű entitás jelzésének növelésére használják.
-
-<a name="add-regular-expression-entities"></a>
-
-## <a name="add-regular-expression-entities-for-highly-structured-concepts"></a>Reguláris kifejezések entitások hozzáadása a jól strukturált fogalmakhoz
-
-A reguláris kifejezéssel rendelkező entitások az Ön által megadott reguláris kifejezésen alapuló adatok lekérésére szolgálnak. 
-
-1. Az alkalmazásban válassza az **entitások** lehetőséget a bal oldali navigációs sávon, majd válassza az **új entitás létrehozása**lehetőséget.
-
-1. Az előugró párbeszédpanelen írja be a `Human resources form name` értéket az **entitás neve** mezőbe, válassza ki a **reguláris kifejezés** lehetőséget az **entitás típusa** listából, adja meg a reguláris kifejezést, `hrf-[0-9]{6}`, majd kattintson a **kész**gombra. 
-
-    Ez a reguláris kifejezés megfelel a literális karaktereknek `hrf-`, majd 6 számjegyből áll, hogy egy emberi erőforrás űrlaphoz tartozó számot képviselje.
-
-<a name="add-composite-entities"></a>
-
-## <a name="add-composite-entities-to-group-into-a-parent-child-relationship"></a>Összetett entitások hozzáadása egy szülő-gyermek kapcsolathoz a csoportba
-
-Összetett entitás létrehozásával különböző típusú entitások közötti kapcsolatokat határozhat meg. A következő példában az entitás egy reguláris kifejezést és egy előre összeépített nevű entitást tartalmaz.  
-
-A teljes `Send hrf-123456 to John Smith`a szöveg `hrf-123456` egy emberi erőforrás [reguláris kifejezésnek](#add-regular-expression-entities) felel meg, és a `John Smith` az előre elkészített entitás personName van kibontva. Minden entitás egy nagyobb, szülő entitás részét képezi. 
-
-1. Az alkalmazásban válassza az **entitások** lehetőséget a **Build** szakasz bal oldali navigációs sávján, majd válassza az **előre felépített entitás hozzáadása**elemet.
-
-1. Adja hozzá az előre elkészített entitás **PersonName**. Útmutatásért lásd: [előre összeépített entitások hozzáadása](#add-prebuilt-entity). 
-
-1. Válassza az **entitások** lehetőséget a bal oldali navigációs sávon, majd válassza az **új entitás létrehozása**lehetőséget.
-
-1. Az előugró párbeszédpanelen írja be a `SendHrForm` értéket az **entitás neve** mezőbe, majd válassza az **összetett** lehetőséget az **entitás típusa** listából.
-
-1. Új gyermek hozzáadásához válassza a **gyermek hozzáadása** lehetőséget.
-
-1. A **gyermek #1**területen válassza ki az entitás **számát** a listából.
-
-1. A **gyermek #2**területen válassza ki az entitás **emberi erőforrások űrlapjának nevét** a listából. 
-
-1. Válassza a **Done** (Kész) lehetőséget.
-
-<a name="add-pattern-any-entities"></a>
-
-## <a name="add-patternany-entities-to-capture-free-form-entities"></a>Minta hozzáadása. bármely entitás a szabad formátumú entitások rögzítéséhez
-
-[Minta. az](luis-concept-entity-types.md) entitások csak [mintákban](luis-how-to-model-intent-pattern.md)érvényesek, nem szándékok. Ez a típusú entitás segítséget nyújt a LUIS számára, hogy megkeresse a különböző hosszúságú és a Word által választott entitások végét. Mivel ez az entitás egy mintában van használatban, LUIS tudja, hogy az entitás vége a teljes sablonban van-e.
-
-Ha egy alkalmazásnak `FindHumanResourcesForm` szándéka van, akkor a kinyert űrlap címe zavarhatja a szándék-előrejelzést. Annak tisztázásához, hogy mely szavak szerepelnek az űrlap címében, használjon mintát. a mintázaton belül. A LUIS-előrejelzés a teljes kifejezéssel kezdődik. Először is a rendszer ellenőrzi és egyezteti az entitásokat, amikor az entitások találhatók, majd a minta be van jelölve, és egyeztetve van. 
-
-A teljes `Where is Request relocation from employee new to the company on the server?`az űrlap címe trükkös, mert nem egyértelmű, hogy hol fejeződik be a cím, és hogy hol kezdődik a Kimondás. A címek tetszőleges szavakat tartalmazhatnak, többek között egyetlen szót, a központozás összetett kifejezéseit és a szavak értelmetlen rendezését. A minta lehetővé teszi, hogy olyan entitást hozzon létre, amelyben a teljes és a pontos entitás kinyerhető. A cím megtalálása után a rendszer a `FindHumanResourcesForm` szándékot jelzi, mert ez a minta szándéka.
-
-1. A **build (létrehozás** ) szakaszban válassza az **entitások** lehetőséget a bal oldali panelen, majd válassza az **új entitás létrehozása**lehetőséget.
-
-1. Az **entitás hozzáadása** párbeszédpanelen írja be a `HumanResourcesFormTitle` értéket az **entitás neve** mezőbe, és válassza a **minta. any** elemet az entitás **típusaként**.
-
-    A minta. bármely entitás használatához vegyen fel egy mintát a **minták** lapon az **alkalmazás javítása** szakaszban, a megfelelő kapcsos zárójel szintaxissal, például `Where is **{HumanResourcesFormTitle}** on the server?`.
-
-    Ha azt tapasztalja, hogy a Pattern.any entitást tartalmazó minta nem megfelelően vonja ki az entitásokat, egy [explicit lista](luis-concept-patterns.md#explicit-lists) megoldhatja a problémát. 
-
-<a name="add-a-role-to-pattern-based-entity"></a>
-
-## <a name="add-a-role-to-distinguish-different-contexts"></a>Szerepkör hozzáadása a különböző kontextusok megkülönböztetéséhez
-
-A szerepkörök névvel ellátott altípusok a kontextus alapján. Minden entitásban elérhető, beleértve az előre összeépített és a nem géppel megismert entitásokat is. 
-
-A szerepkör szintaxisa **`{Entityname:Rolename}`** , ahol az entitás nevét egy kettőspont, majd a szerepkör neve követi. Például: `Move {personName} from {Location:Origin} to {Location:Destination}`.
-
-1. A **build (létrehozás** ) szakaszban válassza az **entitások** lehetőséget a bal oldali panelen.
-
-1. Válassza a **Create new entity** (Új entitás létrehozása) lehetőséget. Adja meg `Location`nevét. Válassza ki az **egyszerű** típust, és válassza a **kész**lehetőséget. 
-
-1. Válassza ki az **entitások** lehetőséget a bal oldali panelen, majd válassza az előző lépésben létrehozott új entitás **helyet** .
-
-1. A **szerepkör neve** szövegmezőbe írja be `Origin` szerepkör nevét, és adja meg a nevet. Adja hozzá a `Destination`második szerepkörének nevét. 
-
-    ![Képernyőkép a forrásként szolgáló szerepkör hozzáadásáról a Location entitáshoz](./media/add-entities/roles-enter-role-name-text.png)
+Az előre elkészített entitások egyéni betanítási adatmennyiség nélkül működnek. A többi entitásnak szüksége van az ügyfél-betanítási adatok (például a lista entitás elemei) vagy egy kifejezés (például egy reguláris kifejezés vagy minta) megadására.
 
 <a name="add-list-entities"></a>
 
-## <a name="add-list-entities-for-exact-matches"></a>Lista entitások hozzáadása a pontos egyezésekhez
+### <a name="how-to-create-a-new-custom-entity"></a>Új egyéni entitás létrehozása
 
-A lista entitások rögzített, lezárt kapcsolódó szavakat jelölnek. 
+1. A LUIS-portálon válassza a **kezelés** szakaszt, majd az **entitások** lapot. 
+1. Válassza a **+ Létrehozás**lehetőséget, majd válassza ki az entitás típusát. 
+1. Folytassa az entitás konfigurálását, majd válassza a **Létrehozás** lehetőséget, ha elkészült. 
 
-Az emberi erőforrások alkalmazás esetében az összes részleg listáját, valamint a részlegek szinonimáit is használhatja. Az entitás létrehozásakor nem kell tudnia az összes értéket. A valós felhasználói hosszúságú kimondott szöveg szinonimákkal való áttekintése után további hozzáadást is hozzáadhat.
+### <a name="add-list-entities-for-exact-matches"></a>Lista entitások hozzáadása a pontos egyezésekhez
 
-1. A **build (létrehozás** ) szakaszban válassza az **entitások** lehetőséget a bal oldali panelen, majd válassza az **új entitás létrehozása**lehetőséget.
+Lista entitások kapcsolódó szavakat rögzített, lezárt csoportját képviselik. Amíg a szerző megváltoztathatja a listát, a LUIS nem fogja növelni vagy csökkenteni a listát. Egy meglévő List entitásba is importálhat egy [List Entity. JSON formátumú (hivatkozás-entitás-lista. MD # példa – JSON-to-import-into-List-Entity). 
 
-1. Az **entitás hozzáadása** párbeszédpanelen írja be a `Department` értéket az **entitás neve** mezőbe, és válassza a **lista** lehetőséget az **entitás típusaként**. Válassza a **Done** (Kész) lehetőséget.
-  
-1. Az entitások listázása lap lehetővé teszi a normalizált nevek hozzáadását. Az **értékek** szövegmezőbe írja be a lista részlegének nevét, például `HumanResources`, majd nyomja le az ENTER billentyűt a billentyűzeten. 
+A következő lista a kanonikus nevet és a szinonimákat mutatja be. 
 
-1. A normalizált értéktől jobbra adja meg a szinonimákat, majd minden elem után nyomja le az ENTER billentyűt a billentyűzeten.
+|Szín listaelem neve|Szín – szinonimák|
+|--|--|
+|Piros|Crimson, Blood, Apple, Fire-Engine|
+|Kék|égbolt, Azure, kobalt|
+|Zöld|Kelly, lime|
 
-1. Ha további normalizált elemeket szeretne használni a listához, válassza a **javasolt** lehetőséget a [szemantikai szótár](luis-glossary.md#semantic-dictionary)beállításainak megjelenítéséhez.
+A List entitás létrehozásához kövesse az eljárást. A lista entitás létrehozása után nem kell megadnia például a hosszúságú kimondott szöveg. A listaelemek és a szinonimák pontos szöveggel egyeznek meg. 
 
-    ![Képernyőkép az ajánlott funkció kiválasztásáról a lehetőségek megjelenítéséhez](./media/add-entities/hr-list-2.png)
+1. A **build (létrehozás** ) szakaszban válassza az **entitások** lehetőséget a bal oldali panelen, majd válassza a **+ Létrehozás**elemet.
 
+1. Az **entitás típusának létrehozása** párbeszédpanelen adja meg az entitás nevét, például `Colors`, majd a **lista**lehetőséget.
+1. Az **entitások listájának létrehozása** párbeszédpanel **új allista hozzáadása.** .. elemében adja meg a listaelem nevét, például `Green`, majd vegyen fel szinonimákat.
 
-1. Válasszon ki egy elemet az ajánlott listán, és adja hozzá normalizált értékként, vagy válassza az **összes hozzáadása** lehetőséget az összes elem hozzáadásához. 
-    Az értékeket a következő JSON formátum használatával importálhatja egy meglévő listára:
+    > [!div class="mx-imgBorder"]
+    > ![hozzon létre egy listát a színek listájaként az entitás részletei lapon.](media/how-to-add-entities/create-list-entity-of-colors.png) 
 
-    ```JSON
-    [
-        {
-            "canonicalForm": "Blue",
-            "list": [
-                "navy",
-                "royal",
-                "baby"
-            ]
-        },
-        {
-            "canonicalForm": "Green",
-            "list": [
-                "kelly",
-                "forest",
-                "avacado"
-            ]
-        }
-    ]  
-    ```
+1. Ha elkészült listaelemek és szinonimák hozzáadásával, válassza a **Létrehozás**elemet.
 
-<a name="change-entity-type"></a>
+    Ha végzett az alkalmazás változásainak egy csoportján, ne felejtse el **betanítani** az alkalmazást. Egyetlen módosítás után ne tanítsa az alkalmazást. 
+
+    > [!NOTE]
+    > Ez az eljárás azt mutatja be, hogyan hozhat létre és címkéz fel egy lista entitást egy példa nélküli kifejezésből a **leképezés részletei** lapon. Ugyanezt az entitást is létrehozhatja az **entitások** lapon.
+
+## <a name="add-a-role-for-an-entity"></a>Szerepkör hozzáadása egy entitáshoz
+
+A szerepkör egy entitás névvel ellátott altípusa, a kontextus alapján. 
+
+### <a name="add-a-role-to-distinguish-different-contexts"></a>Szerepkör hozzáadása a különböző kontextusok megkülönböztetéséhez
+
+A következő Kimondás során két helyen van, és mindegyiket szemantikailag, a körülötte található szavak határozzák meg, például `to` és `from`: 
+
+`Pick up the package from Seattle and deliver to New York City.`
+
+Ebben az eljárásban hozzáadhat `origin` és `destination` szerepköröket egy előre elkészített geographyV2-entitáshoz.
+
+1. Az a **összeállítása** szakaszban jelölje be **entitások** a bal oldali panelen.
+
+1. Válassza az **+ előre összeépített entitás hozzáadása**elemet. Válassza a **geographyV2** lehetőséget, majd válassza a **kész**lehetőséget. Ezzel egy előre elkészített entitást adhat hozzá az alkalmazáshoz.
+    
+    Ha azt tapasztalja, hogy a Pattern.any entitást tartalmazó minta nem megfelelően vonja ki az entitásokat, egy [explicit lista](reference-pattern-syntax.md#explicit-lists) megoldhatja a problémát. 
+
+1. Válassza ki az újonnan hozzáadott előre elkészített geographyV2 entitást **az entitások lap** entitások listájában. 
+1. Új szerepkör hozzáadásához válassza a **+** melletti **szerepkörök**hozzáadása lehetőséget.
+1. A **szerepkör..** . szövegmezőbe írja be a szerepkör nevét `Origin` majd írja be. Adja hozzá a második szerepkör nevét `Destination` majd írja be a nevet. 
+
+    > [!div class="mx-imgBorder"]
+    > ![a következő képernyőképet arról, hogyan adhat hozzá forrás szerepkört a Location entitáshoz](media/how-to-add-entities//add-role-to-prebuilt-geographyv2-entity.png)
+
+    A szerepkör hozzá lett adva az előre összeépített entitáshoz, de az adott entitást használó egyik hosszúságú kimondott szöveg sincs hozzájuk adva. 
+
+### <a name="label-text-with-a-role-in-an-example-utterance"></a>Egy példa Kimondás szerepkörrel rendelkező szöveg felirata
+
+1. Ugrás a szándék részletei lapra, amely a szerepkört használó hosszúságú kimondott szöveg tartalmaz. 
+1. Ha címkével szeretne felcímkézni a szerepkört, válassza ki az entitás címkéjét (szöveg alatti folytonos vonal), majd a legördülő listából válassza ki a **Megtekintés az entitások palettán** lehetőséget. 
+
+    > [!div class="mx-imgBorder"]
+    > ![képernyőkép a nézet kiválasztásáról az Entity paletta-ban](media/how-to-add-entities/select-text-label-with-entity-palette-for-role.png)   
+
+    Az entitás paletta a jobb oldalon jelenik meg. 
+
+1. Válassza ki az entitást, majd lépjen a paletta aljára, és válassza ki a szerepkört. 
+
+    > [!div class="mx-imgBorder"]
+    > ![képernyőkép a nézet kiválasztásáról az Entity paletta-ban](media/how-to-add-entities/select-role-from-entity-palette-entity-inspector.png)
+
+<a name="add-pattern-any-entities"></a>
+
+## <a name="add-a-patternany-entity"></a>Minta hozzáadása bármely entitáshoz
+
+[Minta. az](luis-concept-entity-types.md) entitások csak [mintákban](luis-how-to-model-intent-pattern.md)érvényesek, nem pedig a "példa hosszúságú kimondott szöveg". Az ilyen típusú entitás segít a LUIS-entitások különböző hossza és a word választott végén található. Ehhez az entitáshoz mintát használja, mert a LUIS tudja, ahol az entitás végén szerepel-e az utterance (kifejezés) sablont.
+
+### <a name="steps-to-create-a-patternany-entity"></a>A minta létrehozásának lépései. bármely entitás
+
+1. A **build (létrehozás** ) szakaszban válassza az **entitások** lehetőséget a bal oldali panelen, majd válassza a **+ Létrehozás**elemet.
+
+1. Az **entitás típusának kiválasztása** párbeszédpanelen adja meg az entitás nevét a **név** mezőben, majd válassza a minta lehetőséget **. bármely** **típusnál** válassza a **Létrehozás**lehetőséget.
+
+    Miután [létrehozta a mintázatot](luis-how-to-model-intent-pattern.md) az entitás használatával, az entitást egy kombinált géppel megismert és szöveggel egyező algoritmussal kell kibontani. 
+
+### <a name="create-a-pattern-template-utterance-to-use-patternany-entity"></a>Minta sablonhoz való Kimondás létrehozása mintaként. bármely entitás
+
+A pattern.any entitást használja, adjon hozzá egy minta a **minták** lap a **megnövelheti az alkalmazások teljesítményét** részben, a megfelelő kapcsos zárójel szintaxissal, mint például `Where is **{HumanResourcesFormTitle}** on the server?`.
+
+Ha azt tapasztalja, hogy a Pattern.any entitást tartalmazó minta nem megfelelően vonja ki az entitásokat, egy [explicit lista](reference-pattern-syntax.md#explicit-lists) megoldhatja a problémát. 
 
 ## <a name="do-not-change-entity-type"></a>Entitás típusának módosítása
 
-LUIS nem teszi lehetővé az entitás típusának módosítását, mert nem tudja, mit kell hozzáadni vagy eltávolítani az entitás létrehozásához. A típus módosításához jobb, ha a megfelelő típusú új entitást kis mértékben eltérő névvel hozza létre. Az entitás létrehozása után minden egyes Kimondás után távolítsa el a régi címkével ellátott entitás nevét, és adja hozzá az új entitás nevét. Ha az összes hosszúságú kimondott szöveg újracímkézték, törölje a régi entitást. 
+A LUIS nem engedi, hogy az entitás típusa módosítható, mert ez nem tudja, hogy melyik hozzáadása vagy eltávolítása, hogy az entitás létrehozásához. Annak érdekében, hogy módosítsa a típusát, célszerűbb a megfelelő típusú új entitás létrehozása egy kis mértékben eltérő nevű. Az entitás létrehozása után minden kimondásakor, távolítsa el a régi címkézett entitás nevét, és adja hozzá az új entitás nevét. Miután a kimondott szöveg rendelkezik lett relabeled, a régi entitás törlése. 
 
 <a name="create-a-pattern-from-an-utterance"></a>
 
-## <a name="create-a-pattern-from-an-example-utterance"></a>Minta létrehozása példa Kimondás alapján
+## <a name="next-steps"></a>Következő lépések
 
-Tekintse [meg a minta hozzáadása meglévő kifejezésből a szándék vagy az entitás oldalon](luis-how-to-model-intent-pattern.md#add-pattern-from-existing-utterance-on-intent-or-entity-page).
+További információ a mintákról:
 
-## <a name="train-your-app-after-changing-model-with-entities"></a>Az alkalmazás betanítása a modell entitásokkal való módosítása után
+* [Minták – fogalmak](luis-concept-patterns.md)
+* [Mintázatok szintaxisa](reference-pattern-syntax.md)
 
-Az entitások hozzáadása, szerkesztése vagy eltávolítása után az alkalmazás [betaníthatja](luis-how-to-train.md) és [közzéteheti](luis-how-to-publish-app.md) a módosításokat, hogy azok hatással legyenek a végponti lekérdezésekre. 
+Előre összeállított entitások kapcsolatos további információkért lásd: a [felismerő szöveges](https://github.com/Microsoft/Recognizers-Text) projekt. 
 
-## <a name="next-steps"></a>További lépések
+További információ az entitás hogyan jelenik meg a JSON-végpont lekérdezésekre adott válaszok: [Adatkinyerés](luis-concept-data-extraction.md)
 
-További információ az előre elkészített entitásokról: [felismerők – Text](https://github.com/Microsoft/Recognizers-Text) projekt. 
-
-További információ arról, hogy az entitás hogyan jelenik meg a JSON-végpont lekérdezési válaszában: [adatok kinyerése](luis-concept-data-extraction.md)
-
-Most, hogy hozzáadta a szándékokat, a hosszúságú kimondott szöveg és az entitásokat, rendelkezik egy alapszintű LUIS-alkalmazással. Ismerje meg, hogyan lehet [betanítani](luis-how-to-train.md)az alkalmazást, [tesztelni](luis-interactive-test.md)és [közzétenni](luis-how-to-publish-app.md) .
+Most, hogy hozzáadta a szándék fog vonatkozni, utterances és entitások, akkor alapszintű LUIS-alkalmazásokon. Ismerje meg, hogyan [betanításához](luis-how-to-train.md), [tesztelése](luis-interactive-test.md), és [közzététele](luis-how-to-publish-app.md) az alkalmazást.
  

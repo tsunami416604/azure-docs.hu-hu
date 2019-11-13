@@ -15,25 +15,20 @@ ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 247dee2cfbb00b185e941fde05c2198459a05e20
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 73dc95260e7beb306834d094957518f36106b0f4
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73815740"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73945748"
 ---
 # <a name="identify-and-resolve-license-assignment-problems-for-a-group-in-azure-active-directory"></a>Egy csoport licenc-hozzárendelési problémáinak azonosítása és megoldása Azure Active Directory
 
 A Azure Active Directory (Azure AD) csoport alapú licencelése a licencelési hiba állapotában lévő felhasználók fogalmát mutatja be. Ebből a cikkből megtudhatja, hogy a felhasználók milyen okokból kerülhetnek be ebben az állapotban.
 
-Ha a licenceket közvetlenül az egyes felhasználókhoz rendeli, a csoport alapú licencelés használata nélkül, a hozzárendelési művelet sikertelen lehet. Ha például a (z) `Set-MsolUserLicense` PowerShell-parancsmagot egy felhasználói rendszeren hajtja végre, a parancsmag számos, az üzleti logikával kapcsolatos okból sikertelen lehet. Előfordulhat például, hogy nem áll rendelkezésre elegendő számú licenc, vagy a két szolgáltatási csomag közötti ütközés, amely nem rendelhető hozzá egyszerre. A probléma azonnal vissza lesz jelentve.
+Ha a licenceket közvetlenül az egyes felhasználókhoz rendeli, a csoport alapú licencelés használata nélkül, a hozzárendelési művelet sikertelen lehet. Ha például a PowerShell-parancsmagot egy felhasználói rendszeren futtatja `Set-MsolUserLicense`, a parancsmag számos, az üzleti logikával kapcsolatos okból sikertelen lehet. Előfordulhat például, hogy nem áll rendelkezésre elegendő számú licenc, vagy a két szolgáltatási csomag közötti ütközés, amely nem rendelhető hozzá egyszerre. A probléma azonnal vissza lesz jelentve.
 
 Ha csoportos licencelést használ, ugyanazok a hibák fordulhatnak elő, de a háttérben történnek, miközben az Azure AD szolgáltatás licenceket rendel hozzá. Emiatt a hibákat nem lehet azonnal tájékoztatni. Ehelyett a rendszer rögzíti a felhasználói objektumot, majd a felügyeleti portálon keresztül jelentést készít. A felhasználó számára a licenc eredeti szándéka soha nem vész el, de a jövőbeli vizsgálat és megoldás érdekében hiba állapotban van rögzítve.
-
-## <a name="licenseassignmentattributeconcurrencyexception-in-audit-logs"></a>LicenseAssignmentAttributeConcurrencyException a naplókban
-
-**Probléma:** A felhasználó rendelkezik a LicenseAssignmentAttributeConcurrencyException a naplózási naplókban.
-Ha a csoportos licencelés megkísérli feldolgozni ugyanazon licenc egy felhasználóhoz való egyidejű licenc-hozzárendelését, a rendszer ezt a kivételt rögzíti a felhasználónál. Ez általában akkor fordul elő, ha egy felhasználó több, azonos hozzárendelt licenccel rendelkező csoport tagja. Az AZure AD megkísérli a felhasználói licenc feldolgozását, és elhárítja a problémát. A probléma megoldásához nem szükséges művelet az ügyféltől.
 
 ## <a name="find-license-assignment-errors"></a>Licenc-hozzárendelési hibák keresése
 
@@ -122,6 +117,11 @@ Miután feloldotta az érintett felhasználók proxy-címeivel kapcsolatos probl
 
 A licenc-hozzárendelés felhasználó általi frissítése a proxy-címek kiszámításának aktiválását eredményezi, ami módosíthatja a felhasználói attribútumokat. A változás pontos okának megismeréséhez és a probléma megoldásához tekintse meg ezt a cikket a [proxyAddresses attribútum az Azure ad-ben való feltöltésének módjáról](https://support.microsoft.com/help/3190357/how-the-proxyaddresses-attribute-is-populated-in-azure-ad).
 
+## <a name="licenseassignmentattributeconcurrencyexception-in-audit-logs"></a>LicenseAssignmentAttributeConcurrencyException a naplókban
+
+**Probléma:** A felhasználó rendelkezik a LicenseAssignmentAttributeConcurrencyException a naplózási naplókban.
+Ha a csoportos licencelés megkísérli feldolgozni ugyanazon licenc egy felhasználóhoz való egyidejű licenc-hozzárendelését, a rendszer ezt a kivételt rögzíti a felhasználónál. Ez általában akkor fordul elő, ha egy felhasználó több, azonos hozzárendelt licenccel rendelkező csoport tagja. Az AZure AD megkísérli a felhasználói licenc feldolgozását, és elhárítja a problémát. A probléma megoldásához nem szükséges művelet az ügyféltől.
+
 ## <a name="more-than-one-product-license-assigned-to-a-group"></a>Egynél több, csoporthoz rendelt licenc
 
 Egy csoporthoz több licencet is hozzárendelhet. Hozzárendelheti például az Office 365 Enterprise E3-t és Enterprise Mobility + Securityt egy csoporthoz, hogy egyszerűen engedélyezze az összes befoglalt szolgáltatást a felhasználók számára.
@@ -173,13 +173,13 @@ Attól függően, hogy milyen lépéseket hajtott végre a hibák elhárításá
 
 Ha például egy érintett felhasználó duplikált proxy-problémáját oldja fel, aktiválnia kell a felhasználó feldolgozását. Egy felhasználó újrafeldolgozásához lépjen a felhasználó ablaktáblára, nyissa meg a **licenceket**, majd kattintson az eszköztáron az **újrafeldolgozás** gombra.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha többet szeretne megtudni a licencek csoportokon keresztüli kezelésével kapcsolatos egyéb forgatókönyvekről, tekintse meg a következőket:
 
 * [Mi a Azure Active Directory csoportos licencelése?](../fundamentals/active-directory-licensing-whatis-azure-portal.md)
 * [Licencek hozzárendelése egy csoporthoz az Azure Active Directoryban](licensing-groups-assign.md)
 * [Egyéni, licenccel rendelkező felhasználók migrálása csoportalapú licencelésre az Azure Active Directoryban](licensing-groups-migrate-users.md)
-* [Felhasználók áttelepítése licencek között a csoport alapú licencelés használatával Azure Active Directory](licensing-groups-change-licenses.md)
+* [Felhasználók az Azure Active Directoryban Csoportalapú licencelést használ terméklicencek közötti migrálása](licensing-groups-change-licenses.md)
 * [Az Azure Active Directory csoportalapú licencelésének további forgatókönyvei](licensing-group-advanced.md)
-* [PowerShell-példák csoportházirend-alapú licenceléshez Azure Active Directory](licensing-ps-examples.md)
+* [PowerShell forgatókönyvek Csoportalapú licenceléshez az Azure Active Directoryban](licensing-ps-examples.md)

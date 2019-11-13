@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: conceptual
 author: maxluk
 ms.author: maxluk
-ms.date: 06/28/2019
-ms.openlocfilehash: 272dbbbc335574456feebfb85e4c5eafd544f8d6
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.date: 11/08/2019
+ms.openlocfilehash: fc8159b3deba373948f513cb11540695362ecaf1
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73574293"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73954562"
 ---
 # <a name="visualize-experiment-runs-and-metrics-with-tensorboard-and-azure-machine-learning"></a>A kísérlet futtatásának és metrikáinak megjelenítése TensorBoard és Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -41,16 +41,18 @@ A TensorBoard Azure Machine Learning kísérletekkel való elindításának mód
 
         * Fejezze be a következő [oktatóanyagot: telepítési környezet és munkaterület](tutorial-1st-experiment-sdk-setup.md) egy dedikált notebook-kiszolgáló létrehozásához az SDK-val és a minta adattárral.
 
-        * A notebook-kiszolgáló Samples (minták) mappájában keresse meg a következő két befejezett és kibontott jegyzetfüzetet: Navigálás ehhez a könyvtárhoz: **útmutató – használat-azureml > képzés – mélyreható tanulás**.
-        * Exportálás-előzmények és futtatási előzmények. ipynb
-        * tensorboard. ipynb
+        * A notebook-kiszolgáló Samples (minták) mappájában keresse meg a két befejezett és kibontott jegyzetfüzetet a következő könyvtárakra való navigálás során:
+            * **útmutató – azureml > képzés – mélyreható tanulás > export-Run-History-to-tensorboard > Exportálás-futtatási előzmények és tensorboard. ipynb**
+
+            * **útmutató – a azureml > nyomon követése és monitorozása – kísérletek > tensorboard. ipynb**
 
     * Saját Juptyer notebook-kiszolgáló
-          * [Telepítse a Azure Machine learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py) -t a `tensorboard` extra használatával
-          * [Hozzon létre egy Azure Machine learning munkaterületet](how-to-manage-workspace.md).  
-          * [Hozzon létre egy munkaterület-konfigurációs fájlt](how-to-configure-environment.md#workspace).
+       * [Telepítse a Azure Machine learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py) -t a `tensorboard` extra használatával
+        * [Hozzon létre egy Azure Machine learning munkaterületet](how-to-manage-workspace.md).  
+        * [Hozzon létre egy munkaterület-konfigurációs fájlt](how-to-configure-environment.md#workspace).
   
 <a name="direct"></a>
+
 ## <a name="option-1-directly-view-run-history-in-tensorboard"></a>1\. lehetőség: közvetlenül a futtatási előzmények megtekintése a TensorBoard-ben
 
 Ez a beállítás olyan kísérletekhez használható, amelyek natív módon kimeneti naplófájlokat TensorBoard, például PyTorch, láncolási és TensorFlow kísérletek. Ha ez nem igaz a kísérletre, használja helyette [a `export_to_tensorboard()` metódust](#export) .
@@ -85,7 +87,7 @@ tf_code = requests.get("https://raw.githubusercontent.com/tensorflow/tensorflow/
 with open(os.path.join(exp_dir, "mnist_with_summaries.py"), "w") as file:
     file.write(tf_code.text)
 ```
-A mnist_with_summaries. MNIST fájl teljes egészében figyelje meg, hogy vannak-e olyan sorok, amelyek meghívhatják `tf.summary.scalar()`, `tf.summary.histogram()`, `tf.summary.FileWriter()` stb. Ezek a metódusok a kísérletek csoport, napló és címke kulcs mérőszámait futtatják a futtatási előzményekben. A `tf.summary.FileWriter()` különösen fontos, mert a naplózott kísérletek mérőszámai alapján szerializálja az adatokat, ami lehetővé teszi a TensorBoard számára a vizualizációk létrehozását.
+A mnist_with_summaries. MNIST fájl teljes egészében megfigyelheti, hogy vannak-e olyan sorok, amelyek meghívhatják `tf.summary.scalar()`, `tf.summary.histogram()`, `tf.summary.FileWriter()` stb. Ezek a metódusok a kísérletek csoport, napló és címke kulcs mérőszámait futtatják a futtatási előzményekben. A `tf.summary.FileWriter()` különösen fontos, mert a naplózott kísérletek mérőszámai alapján szerializálja az adatokat, ami lehetővé teszi a TensorBoard számára a vizualizációk létrehozását.
 
  ### <a name="configure-experiment"></a>Kísérlet konfigurálása
 
@@ -287,7 +289,7 @@ Ha elkészült, győződjön meg arról, hogy a TensorBoard objektum [Leállít�
 tb.stop()
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az útmutatóban két kísérletet hozott létre, és megtanulta, hogyan indíthat el TensorBoard a futtatási előzményekkel a lehetséges hangolási és újraképzési területek azonosítása érdekében. 
 

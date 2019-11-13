@@ -1,17 +1,14 @@
 ---
 title: Az Azure-erőforrások áttekintése
 description: Ismerje meg, hogyan használhatja az erőforrás-diagram lekérdezési nyelvét, és hogyan derítheti fel, hogyan kapcsolódnak egymáshoz.
-author: DCtheGeek
-ms.author: dacoulte
 ms.date: 10/18/2019
 ms.topic: conceptual
-ms.service: resource-graph
-ms.openlocfilehash: 58eb5abc9a8857b81ada65c96eb7deaaa5cc5aeb
-ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
+ms.openlocfilehash: e489a4eafdbbd838c4850d67fcd8ec40f76f290c
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73622667"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73959237"
 ---
 # <a name="explore-your-azure-resources-with-resource-graph"></a>Az Azure-erőforrások felfedezése a Resource Graph használatával
 
@@ -150,7 +147,7 @@ Most láthatjuk, hogy hány virtuális gép van az egyes Azure-régiókban.
 
 ### <a name="virtual-machines-by-sku"></a>Virtuális gépek SKU szerint
 
-Lépjen vissza az eredeti virtuális gép tulajdonságaiba, és próbálja meg megkeresni az összes olyan virtuális gépet, amelynek a **STANDARD_B2S**SKU-mérete van. A visszaadott JSON-t láthatjuk, hogy az a **Properties. hardwareprofile. vmsize**fájlban van tárolva. A lekérdezés frissítésével megkeresheti az összes olyan virtuális gépet, amely megfelel az adott méretnek, és csak a virtuális gép és a régió nevét adja vissza.
+Lépjen vissza az eredeti virtuális gép tulajdonságaiba, és próbálja meg megkeresni az összes olyan virtuális gépet, amelynek az SKU mérete **Standard_B2s**. A visszaadott JSON-t láthatjuk, hogy az a **Properties. hardwareprofile. vmsize**fájlban van tárolva. A lekérdezés frissítésével megkeresheti az összes olyan virtuális gépet, amely megfelel az adott méretnek, és csak a virtuális gép és a régió nevét adja vissza.
 
 ```kusto
 Resources
@@ -168,7 +165,7 @@ Search-AzGraph -Query "Resources | where type =~ 'Microsoft.Compute/virtualMachi
 
 ### <a name="virtual-machines-connected-to-premium-managed-disks"></a>Prémium szintű felügyelt lemezekhez csatlakoztatott virtuális gépek
 
-Ha a **Standard_B2s** virtuális gépekhez csatolt prémium szintű felügyelt lemezek részleteit szeretnénk beszerezni, kiterjesztjük a lekérdezést, hogy megadja nekünk a felügyelt lemezek erőforrás-azonosítóját.
+Ha az ilyen **Standard_B2s** virtuális gépekhez csatolt prémium szintű felügyelt lemezek részleteit szeretnénk beszerezni, kiterjesztjük a lekérdezést, hogy megadja nekünk a felügyelt lemezek erőforrás-azonosítóját.
 
 ```kusto
 Resources
@@ -310,7 +307,7 @@ Search-AzGraph -Query "Resources | where type =~ 'Microsoft.Network/publicIPAddr
 
 Ha szeretné megtudni, hogyan hajthatja végre ezeket a lépéseket egyetlen lekérdezésben a `join` operátorral, tekintse meg a [virtuális gépek listázása hálózati interfésszel és nyilvános IP-](../samples/advanced.md#join-vmpip) címmel című mintát.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ a [lekérdezési nyelvről](query-language.md).
 - Tekintse meg az [alapszintű lekérdezésekben](../samples/starter.md)használt nyelvet.

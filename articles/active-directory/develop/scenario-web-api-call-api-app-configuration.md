@@ -15,12 +15,12 @@ ms.date: 07/16/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 529665a03d2203dcb501b59d7647f4390bdaeb78
-ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
+ms.openlocfilehash: 5bae9f565dd37fbd3bcae38833662e13e0b7ac6d
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71936746"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73960654"
 ---
 # <a name="web-api-that-calls-web-apis---code-configuration"></a>Webes API-kat meghívó webes API – kód konfigurálása
 
@@ -70,11 +70,11 @@ public static IServiceCollection AddProtectedApiCallsWebApis(this IServiceCollec
 A AddAccountToCacheFromJwt () metódusnak a következőket kell tennie:
 
 - MSAL-alapú bizalmas ügyfélalkalmazás létrehozása.
-- Hívja meg a `AcquireTokenOnBehalf` értéket, hogy az ügyfél által a webes API-hoz vásárolt tulajdonosi jogkivonatot az ugyanahhoz a felhasználóhoz tartozó tulajdonosi jogkivonattal, de az API-val hívjon fel egy alsóbb rétegbeli API-t.
+- Hívja meg `AcquireTokenOnBehalf` az ügyfél által a webes API-hoz beszerzett tulajdonosi jogkivonatot, az ugyanahhoz a felhasználóhoz tartozó tulajdonosi jogkivonattal, de az API-t egy alsóbb rétegbeli API meghívásához.
 
 ### <a name="instantiate-a-confidential-client-application"></a>Bizalmas ügyfélalkalmazás létrehozása
 
-Ez a folyamat csak a bizalmas ügyfél-adatfolyamban érhető el, így a védett webes API a `WithClientSecret` vagy a `WithCertificate` metódus használatával biztosítja az ügyfél hitelesítő adatait (az ügyfél titkos vagy a tanúsítványát) a [ConfidentialClientApplicationBuilder](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.confidentialclientapplicationbuilder) .
+Ez a folyamat csak a bizalmas ügyfél folyamatában érhető el, így a védett webes API-k az `WithClientSecret` vagy `WithCertificate` metódusokon keresztül biztosítják az ügyfél hitelesítő adatait (az ügyfél titkos vagy a tanúsítványát) a [ConfidentialClientApplicationBuilder](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.confidentialclientapplicationbuilder) .
 
 ![image](https://user-images.githubusercontent.com/13203188/55967244-3d8e1d00-5c7a-11e9-8285-a54b05597ec9.png)
 
@@ -99,9 +99,9 @@ Ez a speciális forgatókönyv részletesen szerepel az [ügyfél-kijelentésekb
 
 ### <a name="how-to-call-on-behalf-of"></a>A-ben történő hívás
 
-A rendszer a (z) (OBO) hívását a [AcquireTokenOnBehalf](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.acquiretokenonbehalfofparameterbuilder) metódus meghívásával végzi a `IConfidentialClientApplication` felületen.
+A beérkező (OBO) hívás a [AcquireTokenOnBehalf](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.acquiretokenonbehalfofparameterbuilder) metódus meghívásával történik a `IConfidentialClientApplication` felületen.
 
-A `UserAssertion` a webes API által a saját ügyfeleitől kapott tulajdonosi jogkivonatból épül fel. [Két konstruktor](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.clientcredential.-ctor?view=azure-dotnet)létezik, amelyek egy JWT tulajdonosi jogkivonatot vesznek igénybe, és a felhasználó bármilyen típusú felhasználói állítást (más típusú biztonsági jogkivonatot) használ, és ezt a típust egy `assertionType` nevű további paraméter határozza meg.
+A `UserAssertion` a webes API által a saját ügyfeleitől kapott tulajdonosi jogkivonatból épül fel. [Két konstruktor](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.clientcredential.-ctor?view=azure-dotnet)létezik, amelyek egy JWT tulajdonosi jogkivonatot vesznek igénybe, és a felhasználó bármilyen típusú felhasználói állítást (más típusú biztonsági jogkivonatot) használ, és ezt a típust egy `assertionType`nevű további paraméter határozza meg.
 
 ![image](https://user-images.githubusercontent.com/13203188/37082180-afc4b708-21e3-11e8-8af8-a6dcbd2dfba8.png)
 
@@ -141,11 +141,13 @@ private void AddAccountToCacheFromJwt(IEnumerable<string> scopes, JwtSecurityTok
 }
 ```
 
-## <a name="protocol"></a>Protocol
+Az [NodeJS-ben és a Azure Functionsban](https://github.com/Azure-Samples/ms-identity-nodejs-webapi-onbehalfof-azurefunctions/blob/master/MiddleTierAPI/MyHttpTrigger/index.js#L61)is láthat egy példát a flow megvalósításának nevében.
+
+## <a name="protocol"></a>Protokoll
 
 A (z) szolgáltatással kapcsolatos további információkért lásd [a Microsoft Identity platform és a OAuth 2,0-alapú folyamatát](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-on-behalf-of-flow).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Token beszerzése az alkalmazáshoz](scenario-web-api-call-api-acquire-token.md)

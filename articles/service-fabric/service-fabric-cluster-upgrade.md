@@ -1,5 +1,5 @@
 ---
-title: Azure Service Fabric-fürt frissítése | Microsoft Docs
+title: Azure Service Fabric-fürt frissítése
 description: Ismerje meg, hogyan frissítheti az Azure Service Fabric-fürtök verzióját vagy konfigurációját.  Ez a cikk a fürt frissítési módjának beállítását, a tanúsítványok frissítését, az alkalmazások portjainak hozzáadását, az operációsrendszer-javítások elvégzését, valamint a frissítések végrehajtásának várható időpontját ismerteti.
 services: service-fabric
 documentationcenter: .net
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/12/2018
 ms.author: atsenthi
-ms.openlocfilehash: 2c8465a3aba4a21efaa20a118807d739dd501b09
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 161c720fbcc9370aaf273b241e88a7184f47371b
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68599778"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74013320"
 ---
 # <a name="upgrading-and-updating-an-azure-service-fabric-cluster"></a>Azure Service Fabric-fürt frissítése és frissítése
 
@@ -36,7 +36,7 @@ Beállíthatja, hogy a fürt a Microsoft által kiadott automatikus háló-friss
 ## <a name="fabric-upgrade-behavior-during-automatic-upgrades"></a>A háló frissítési viselkedése az automatikus frissítések során
 A Microsoft karbantartja az Azure-fürtön futó háló kódját és konfigurációját. A szoftverhez szükség szerint automatikusan figyelt frissítéseket végzünk. Ezek a frissítések kód, konfiguráció vagy mindkettő lehet. Annak érdekében, hogy az alkalmazás a frissítések miatt ne érje el a negatív hatást vagy a minimális hatást, a következő fázisokban hajtjuk végre a frissítéseket:
 
-### <a name="phase-1-an-upgrade-is-performed-by-using-all-cluster-health-policies"></a>1\. fázis: A rendszer a fürt összes állapotfigyelő szabályzatának használatával hajtja végre a frissítést.
+### <a name="phase-1-an-upgrade-is-performed-by-using-all-cluster-health-policies"></a>1\. fázis: a frissítés a fürt összes állapotára vonatkozó szabályzatok használatával történik.
 Ebben a fázisban a frissítések egyszerre egy frissítési tartományt végeznek, a fürtön futó alkalmazások pedig leállás nélkül is futnak. A fürt állapot-házirendjei (a csomópont állapotának és a fürtben futó összes alkalmazás állapotának kombinációja) be vannak tartva a frissítés során.
 
 Ha a fürt állapot-házirendjei nem teljesülnek, a rendszer visszaállítja a frissítést. Ezt követően a rendszer elküld egy e-mailt az előfizetés tulajdonosának. Az e-mail a következő információkat tartalmazza:
@@ -49,7 +49,7 @@ Megpróbáljuk végrehajtani ugyanezt a frissítést néhány alkalommal, ha az 
 
 Ha a fürt állapot-házirendjei teljesülnek, a frissítés sikeresnek minősül, és készen van megjelölve. Ez a kezdeti frissítés során vagy az ebben a fázisban lévő frissítési ismétlések során fordulhat elő. A sikeres Futtatás e-mail-megerősítése nem történt meg. Ezzel elkerülhető, hogy túl sok e-mailt küldjön – az e-mailek fogadása kivételként normálisnak tekintendő. Az alkalmazás rendelkezésre állásának befolyásolása nélkül elvárjuk, hogy a fürt legtöbb frissítése sikeres legyen.
 
-### <a name="phase-2-an-upgrade-is-performed-by-using-default-health-policies-only"></a>2\. fázis: A frissítés csak az alapértelmezett állapotházirendek használatával hajtható végre.
+### <a name="phase-2-an-upgrade-is-performed-by-using-default-health-policies-only"></a>2\. fázis: a frissítés csak az alapértelmezett állapotházirendek használatával végezhető el.
 Az ebben a fázisban lévő állapotfigyelő házirendek úgy vannak beállítva, hogy a frissítés elején a kifogástalan állapotú alkalmazások száma változatlan maradjon a frissítési folyamat időtartamára. Ahogy az 1. fázisban, a 2. fázis frissíti egyszerre egy frissítési tartományt, a fürtön futó alkalmazások pedig leállás nélkül is futnak. A fürt állapot-házirendjei (a csomópont állapotának és a fürtben futó összes alkalmazás állapotának kombinációja) a frissítés időtartamára vannak betartva.
 
 Ha a fürt állapotára vonatkozó házirendek nem teljesülnek, a rendszer visszaállítja a frissítést. Ezt követően a rendszer elküld egy e-mailt az előfizetés tulajdonosának. Az e-mail a következő információkat tartalmazza:
@@ -62,7 +62,7 @@ Megpróbáljuk végrehajtani ugyanezt a frissítést néhány alkalommal, ha az 
 
 Ha a fürt állapot-házirendjei teljesülnek, a frissítés sikeresnek minősül, és készen van megjelölve. Ez a kezdeti frissítés során vagy az ebben a fázisban lévő frissítési ismétlések során fordulhat elő. A sikeres Futtatás e-mail-megerősítése nem történt meg.
 
-### <a name="phase-3-an-upgrade-is-performed-by-using-aggressive-health-policies"></a>3\. fázis: A frissítés agresszív állapotházirend használatával történik.
+### <a name="phase-3-an-upgrade-is-performed-by-using-aggressive-health-policies"></a>3\. fázis: a frissítés az agresszív állapotházirendek használatával történik.
 Az ebben a fázisban található állapot-szabályzatok az alkalmazások állapota helyett a frissítés befejezését célozzák. Ebben a fázisban a fürt néhány frissítése megszűnik. Ha a fürt erre a fázisba kerül, jó eséllyel lehet, hogy az alkalmazás nem megfelelő állapotba kerül, és/vagy elveszti a rendelkezésre állást.
 
 A másik két fázishoz hasonlóan a 3. fázis frissítése egyszerre csak egy frissítési tartományt hajt végre.
@@ -85,7 +85,7 @@ Előfordulhat, hogy bizonyos számítási feladatok csak bizonyos típusú csom�
 Az elhelyezési megkötések, a csomópont-tulajdonságok és a definiált beállítások használatával kapcsolatos részletekért olvassa el a [csomópont-tulajdonságok és az elhelyezési korlátozások](service-fabric-cluster-resource-manager-cluster-description.md#node-properties-and-placement-constraints)című témakört.
 
 ## <a name="add-capacity-metrics"></a>Kapacitási mérőszámok hozzáadása
-Az egyes csomópont-típusoknál hozzáadhat egyéni kapacitási mérőszámokat, amelyeket az alkalmazásokban használni szeretne a betöltés jelentéséhez. A kapacitási mérőszámok betöltésének jelentésével kapcsolatos részletekért tekintse meg a fürt és a metrikák, [valamint](service-fabric-cluster-resource-manager-metrics.md)a terhelések [leírását ismertető](service-fabric-cluster-resource-manager-cluster-description.md) Service Fabric fürterőforrás-kezelő dokumentumait.
+Az egyes csomópont-típusoknál hozzáadhat egyéni kapacitási mérőszámokat, amelyeket az alkalmazásokban használni szeretne a betöltés jelentéséhez. A kapacitási mérőszámok betöltésének jelentésével kapcsolatos részletekért tekintse meg a fürt és a [metrikák, valamint a terhelések](service-fabric-cluster-resource-manager-metrics.md) [leírását ismertető](service-fabric-cluster-resource-manager-cluster-description.md) Service Fabric fürterőforrás-kezelő dokumentumait.
 
 ## <a name="set-health-policies-for-automatic-upgrades"></a>Állapotházirendek beállítása az automatikus frissítésekhez
 Megadhat egyéni állapot-házirendeket a háló frissítéséhez. Ha úgy állította be a fürtöt, hogy az automatikus háló frissítése megtörténjen, akkor ezek a szabályzatok az automatikus háló frissítéseinek 1. fázisára vonatkoznak.
@@ -102,8 +102,8 @@ Számos különböző konfigurációs beállítás testreszabható a fürtön, p
 A javítási előkészítési alkalmazás (POA) egy Service Fabric alkalmazás, amely az operációs rendszer javítását automatizálja egy Service Fabric-fürtön állásidő nélkül. A [Windowshoz készült patch](service-fabric-patch-orchestration-application.md) -előkészítési alkalmazás üzembe helyezhető a fürtön úgy, hogy a javításokat koordinált módon telepítse, miközben a szolgáltatások rendelkezésre állását is megőrizheti.
 
 
-## <a name="next-steps"></a>További lépések
-* Megtudhatja, hogyan szabhatja testre a [Service Fabric-fürtök](service-fabric-cluster-fabric-settings.md) néhány beállítását
+## <a name="next-steps"></a>Következő lépések
+* Megtudhatja, hogyan szabhatja testre a [Service Fabric-fürtök néhány beállítását](service-fabric-cluster-fabric-settings.md)
 * Ismerje meg, hogyan [méretezheti a fürtöt és ki](service-fabric-cluster-scale-up-down.md)
 * Az [alkalmazások frissítéseinek](service-fabric-application-upgrade.md) megismerése
 

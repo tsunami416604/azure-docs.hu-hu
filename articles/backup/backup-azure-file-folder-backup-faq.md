@@ -7,18 +7,16 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 07/29/2019
 ms.author: dacurwin
-ms.openlocfilehash: c30b918be5e4185d6fb4fdd2fcfc47f8dd4d25ef
-ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
+ms.openlocfilehash: a77227aca70a48d625f9e20fff9c9fe7df87c000
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72969168"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74012143"
 ---
 # <a name="common-questions-about-backing-up-files-and-folders"></a>Fájlok és mappák biztonsági mentésével kapcsolatos gyakori kérdések
 
 Ez a cikk gyakori kérdésekre adott válaszokat tartalmaz a fájlok és mappák biztonsági mentésére a [Azure Backup](backup-overview.md) szolgáltatásban található Microsoft Azure Recovery Services-(MARS-) ügynökkel.
-
-## <a name="general"></a>Általános
 
 ## <a name="configure-backups"></a>Biztonsági mentések konfigurálása
 
@@ -72,7 +70,7 @@ Windows rendszerű gép átnevezése esetén az összes jelenleg konfigurált bi
 
 * Regisztrálnia kell az új gép nevét a Backup-tárolóban.
 * Amikor regisztrálja az új nevet a tárolóban, az első művelet egy *teljes* biztonsági mentés.
-* Ha a régi kiszolgálónévvel a tárolóba mentett adatokat kell helyreállítani, akkor a visszaállítás másik helyre lehetőségre kell kattintania az adatok helyreállítása varázslóban. [További információk](backup-azure-restore-windows-server.md#use-instant-restore-to-restore-data-to-an-alternate-machine).
+* Ha a régi kiszolgálónévvel a tárolóba mentett adatokat kell helyreállítani, akkor a visszaállítás másik helyre lehetőségre kell kattintania az adatok helyreállítása varázslóban. [Részletek](backup-azure-restore-windows-server.md#use-instant-restore-to-restore-data-to-an-alternate-machine).
 
 ### <a name="what-is-the-maximum-file-path-length-for-backup"></a>Mi a fájl elérési útjának maximális hossza a biztonsági mentéshez?
 
@@ -104,7 +102,7 @@ A gyorsítótármappa mérete határozza meg azt az adatmennyiséget, amelyről 
 1. Alapértelmezés szerint a Scratch mappa a következő helyen található: `\Program Files\Microsoft Azure Recovery Services Agent\Scratch`
 2. Győződjön meg arról, hogy a mappa helyének elérési útja megegyezik az alább látható beállításkulcs-bejegyzések értékeivel:
 
-  | Beállításjegyzékbeli elérési út | Beállításjegyzék kulcsa | Value (Díj) |
+  | Beállításjegyzékbeli elérési út | Beállításjegyzék kulcsa | Érték |
   | --- | --- | --- |
   | `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Config` |ScratchLocation |*Új gyorsítótár-mappa helye* |
   | `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Config\CloudBackupProvider` |ScratchLocation |*Új gyorsítótár-mappa helye* |
@@ -113,22 +111,24 @@ A gyorsítótármappa mérete határozza meg azt az adatmennyiséget, amelyről 
 
 1. Futtassa ezt a parancsot egy rendszergazda jogú parancssorban a biztonsági mentési motor leállításához:
 
-    ```PS C:\> Net stop obengine```
+    ```Net stop obengine```
 
 2. Ha beállította a rendszerállapot biztonsági mentését, nyissa meg a Lemezkezelés segédprogramot, és válassza le a (z) `"CBSSBVol_<ID>"`formátumú lemez (eke) t.
 3. Ne helyezze át a fájlokat. Ehelyett másolja a gyorsítótár-terület mappáját egy olyan meghajtóra, amely elegendő lemezterülettel rendelkezik.
-4. Frissítse a következő beállításjegyzékbeli bejegyzéseket az új gyorsítótár mappájának elérési útjával.<br/>
+4. Frissítse a következő beállításjegyzékbeli bejegyzéseket az új gyorsítótár mappájának elérési útjával.
 
-    | Beállításjegyzékbeli elérési út | Beállításjegyzék kulcsa | Value (Díj) |
+    | Beállításjegyzékbeli elérési út | Beállításjegyzék kulcsa | Érték |
     | --- | --- | --- |
     | `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Config` |ScratchLocation |*Új gyorsítótár-mappa helye* |
     | `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Config\CloudBackupProvider` |ScratchLocation |*Új gyorsítótár-mappa helye* |
 
 5. Indítsa újra a Backup motort egy rendszergazda jogú parancssorban:
 
-    ```PS C:\> Net stop obengine```
+  ```command
+  Net stop obengine
 
-    ```PS C:\> Net start obengine```
+  Net start obengine
+  ```
 
 6. Futtasson egy ad-hoc biztonsági mentést. Miután a biztonsági mentés sikeresen befejeződött az új hely használatával, eltávolíthatja az eredeti gyorsítótár mappáját.
 
@@ -153,7 +153,7 @@ Sem a gyorsítótármappa, sem a metaadatok virtuális merevlemez-meghajtója ne
 
 ### <a name="is-there-a-way-to-adjust-the-amount-of-bandwidth-used-for-backup"></a>Be lehet állítani a biztonsági mentéshez használt sávszélesség mennyiségét?
 
-Igen, a MARS-ügynök **Tulajdonságok módosítása** beállításával állíthatja be a sávszélességet és az időzítést. [További információk](backup-configure-vault.md#enable-network-throttling).
+Igen, a MARS-ügynök **Tulajdonságok módosítása** beállításával állíthatja be a sávszélességet és az időzítést. [Részletek](backup-configure-vault.md#enable-network-throttling).
 
 ## <a name="restore"></a>Visszaállítás
 

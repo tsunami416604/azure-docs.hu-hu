@@ -9,12 +9,12 @@ ms.custom: vs-azure
 ms.topic: conceptual
 ms.date: 08/07/2019
 ms.author: ghogen
-ms.openlocfilehash: 9331f13bd85d9df0d47f8fa9d0964974764691f7
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 4cbc4044b5d1270cecd1a271d2a1db02801650dd
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73815103"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74012774"
 ---
 # <a name="add-key-vault-to-your-web-application-by-using-visual-studio-connected-services"></a>Key Vault hozzáadása a webalkalmazáshoz a Visual Studio csatlakoztatott szolgáltatásainak használatával
 
@@ -135,6 +135,21 @@ Ha már nincs rá szükség, törölje az erőforráscsoportot. Ezzel törli a K
 2. Válassza az **Erőforráscsoport törlése** elemet.
 3. A **írja be az ERŐFORRÁSCSOPORT nevét:** mezőbe írja be az erőforráscsoport nevét, és válassza a **Törlés**lehetőséget.
 
+## <a name="troubleshooting"></a>Hibaelhárítás
+
+Ha a kulcstartó egy másik Microsoft-fiók fut, mint amely a Visual studióba van bejelentkezve (például a kulcstartó fut a munkahelyi fiókján, de a Visual Studio a saját fiókját használja) hibaüzenetet kap a Program.cs-fájlban , hogy a Visual Studio nem tud hozzáférni a kulcstartóhoz. A probléma megoldása:
+
+1. Lépjen a [Azure Portal](https://portal.azure.com) , és nyissa meg a Key Vault.
+
+1. Válassza a **hozzáférési szabályzatok**, majd a **hozzáférési házirend hozzáadása**lehetőséget, és válassza ki azt a fiókot, amelyet a rendszerbiztonsági tagként jelentkezett be.
+
+1. A Visual Studióban válassza a **fájl** > **Fiókbeállítások**lehetőséget.
+Válassza a **fiók hozzáadása** lehetőséget a **minden fiók** szakaszban. Jelentkezzen be azzal a fiókkal, amelyet a hozzáférési szabályzatának elsődlegesen választott.
+
+1. Válassza az **eszközök** > **lehetőségek lehetőséget**, és keresse meg az **Azure-szolgáltatás hitelesítése**elemet. Ezután válassza ki azt a fiókot, amelyet az imént hozzáadott a Visual studióhoz.
+
+Az alkalmazás hibakeresése után a Visual Studio csatlakozik ahhoz a fiókhoz, amelyen a Key Vault található.
+
 ## <a name="how-your-aspnet-core-project-is-modified"></a>A ASP.NET Core-projekt módosítása
 
 Ez a szakasz egy ASP.NET-projekt pontos módosításait mutatja be, amikor hozzáadja a Key Vault csatlakoztatott szolgáltatást a Visual Studióval.
@@ -145,7 +160,7 @@ A Project file .NET-referenciákat és a NuGet-csomagok hivatkozásait érinti.
 
 | Típus | Referencia |
 | --- | --- |
-| NuGet | Microsoft. AspNetCore. AzureKeyVault. HostingStartup |
+| NuGet | Microsoft.AspNetCore.AzureKeyVault.HostingStartup |
 
 ### <a name="added-files-for-aspnet-core"></a>Hozzáadott fájlok ASP.NET Core
 
@@ -181,8 +196,8 @@ A Project file .NET-referenciákat és `packages.config` (NuGet-hivatkozásokat)
 
 | Típus | Referencia |
 | --- | --- |
-| NET NuGet | Microsoft. Azure. kulcstartó |
-| NET NuGet | Microsoft. Azure. kulcstartó. WebKey |
+| NET NuGet | Microsoft.Azure.KeyVault |
+| NET NuGet | Microsoft.Azure.KeyVault.WebKey |
 | NET NuGet | Microsoft.Rest.ClientRuntime |
 | NET NuGet | Microsoft.Rest.ClientRuntime.Azure |
 
@@ -223,6 +238,6 @@ A Project file .NET-referenciákat és `packages.config` (NuGet-hivatkozásokat)
 - Létrehozott egy erőforráscsoportot (vagy használt egy meglévőt).
 - Létrehozott egy Key Vault a megadott erőforráscsoporthoz.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A Key Vault fejlesztésről a [Key Vault fejlesztői útmutatójában](key-vault-developers-guide.md)olvashat bővebben.

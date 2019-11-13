@@ -1,7 +1,7 @@
 ---
 title: Az offline kiértékelési módszer használata – személyre szabás
 titleSuffix: Azure Cognitive Services
-description: Hozzon létre visszajelzési C# hurkot ebben a rövid útmutatóban a személyre szabott szolgáltatással.
+description: Ez a cikk azt ismerteti, hogyan használható az offline értékelés az alkalmazás hatékonyságának méréséhez és a tanulási hurok elemzéséhez.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 05/07/2019
 ms.author: diberry
-ms.openlocfilehash: f382c07dea75cb534632061c986dd8044c4aafa9
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: 6b7414d67a5c5b068c675ef7b57391b8990a7a16
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72515584"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73953078"
 ---
 # <a name="offline-evaluation"></a>Offline értékelés
 
@@ -98,5 +98,5 @@ Javasoljuk, hogy tekintse meg a funkciók értékeléseit, és kérje a követke
 
 ## <a name="next-steps"></a>Következő lépések
 
-[Személyre szabás](how-to-settings.md) 
+[Személyre szabás](how-to-settings.md)
 [Offline értékelések futtatása](how-to-offline-evaluation.md) a [megszemélyesítő működésének](how-personalizer-works.md) megismerése

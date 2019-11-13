@@ -1,5 +1,5 @@
 ---
-title: Ismerkedés az Azure IoT Hub modul identitásával és moduljával (C) | Microsoft Docs
+title: Ismerkedjen meg az Azure IoT Hub modul Identity & modullal (C)
 description: Ismerje meg, hogyan hozhatja létre a modul-identitást és a modult a Twin IoT SDK-k használatával.
 author: chrissie926
 ms.service: iot-hub
@@ -8,12 +8,12 @@ ms.devlang: c
 ms.topic: conceptual
 ms.date: 06/25/2018
 ms.author: menchi
-ms.openlocfilehash: 9bc64a2eefbd268c5d7eae9b32a992ed29151f61
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: e33a7a1360a837df08725b2e592973b465dff38c
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70813839"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73954225"
 ---
 # <a name="get-started-with-iot-hub-module-identity-and-module-twin-c"></a>Első lépések IoT Hub modul identitása és modulja – twin (C)
 
@@ -177,7 +177,7 @@ int main(void)
 }
 ```
 
-Ez az alkalmazás létrehoz egy **MYFIRSTDEVICE** azonosítóval és egy **myFirstModule** azonosítójú modul-identitással az eszköz **myFirstDevice**alatt. (Ha ez a modulazonosító már létezik az identitásjegyzékben, a kód egyszerűen lekéri a meglévő modulinformációkat.) Az alkalmazás ezután megjeleníti az identitáshoz tartozó elsődleges kulcsot. Ezt a kulcsot a szimulált modulalkalmazásban használja az IoT Hubhoz való csatlakozáshoz.
+Ez az alkalmazás létrehoz egy **MYFIRSTDEVICE** azonosítóval és egy **myFirstModule** azonosítójú modul-identitással az eszköz **myFirstDevice**alatt. (Ha a modul azonosítója már létezik az Identity registryben, a kód egyszerűen lekéri a meglévő modul adatait.) Az alkalmazás ezután megjeleníti az adott identitás elsődleges kulcsát. Ezt a kulcsot a szimulált modulalkalmazásban használja az IoT Hubhoz való csatlakozáshoz.
 
 > [!NOTE]
 > Az IoT Hub-identitásjegyzék csak az IoT Hub biztonságos elérésének biztosításához tárolja az eszköz- és modulidentitásokat. Az identitásjegyzék tárolja az eszközazonosítókat és -kulcsot, és biztonsági hitelesítő adatokként használja őket. Az identitásjegyzék minden egyes eszközhöz tárol egy engedélyezve/letiltva jelzőt is, amellyel letilthatja az eszköz hozzáférését. Ha az alkalmazásnak más eszközspecifikus metaadatokat kell tárolnia, egy alkalmazásspecifikus tárolót kell használnia. A modulidentitások esetében nincs engedélyezési/letiltási jelző. További információ: [IoT hub fejlesztői útmutató](iot-hub-devguide-identity-registry.md).
@@ -190,7 +190,7 @@ Ebben a szakaszban egy C alkalmazást hoz létre a szimulált eszközön, amely 
 
     ![Az Azure Portal moduladatai](./media/iot-hub-c-c-module-twin-getstarted/module-detail.png)
 
-2. **UpdateModuleTwinReportedProperties-alkalmazás létrehozása** Adja hozzá a `using` következő utasításokat a **program.cs** fájl elejéhez:
+2. **UpdateModuleTwinReportedProperties-alkalmazás létrehozása** Adja hozzá a következő `using` utasításokat a **program.cs** fájl elejéhez:
 
     ```C
     #include <stdio.h>
@@ -381,7 +381,7 @@ int main(void)
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További bevezetés az IoT Hub használatába, valamint egyéb IoT-forgatókönyvek megismerése:
 

@@ -1,19 +1,19 @@
 ---
-title: Vészhelyzeti helyreállítás beállítása helyszíni Hyper-V virtuális gépekhez (VMM nélkül) az Azure-ba a Site Recovery használatával | Microsoft Docs
+title: A Hyper-V vész-helyreállítás beállítása Azure Site Recovery használatával
 description: Megtudhatja, hogyan állíthatja be a helyszíni Hyper-V virtuális gépek (VMM nélkül) az Azure-ba történő vész-helyreállítását Site Recovery használatával.
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 08/07/2019
+ms.date: 11/12/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 446c870ba60d7931fafb9f9b1c7e8fc017f60e4d
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 2270cd8ace347992f6a5a1166986b878404fc7fe
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72933869"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73954038"
 ---
 # <a name="set-up-disaster-recovery-of-on-premises-hyper-v-vms-to-azure"></a>Vészhelyreállítás beállítása a helyszíni Hyper-V virtuális gépekhez az Azure-ba
 
@@ -21,7 +21,7 @@ A [Azure site Recovery](site-recovery-overview.md) szolgáltatás a helyszíni g
 
 Ez az oktatóanyag egy sorozat harmadik része. Bemutatja, hogyan állíthatja be a helyszíni Hyper-V virtuális gépek vész-helyreállítását az Azure-ba. Ez az oktatóanyag olyan Hyper-V virtuális gépeket alkalmaz, amelyeket nem Microsoft System Center Virtual Machine Manager (VMM) felügyel.
 
-Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]
 > * Válassza ki a replikációs forrást és célt.
@@ -36,7 +36,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > Vegye figyelembe, hogy a SCVMM-konfiguráció fiókhoz való használatának ASR-támogatása hamarosan elavulttá válik, ezért javasoljuk, hogy a továbblépés előtt olvassa el az [elavult](scvmm-site-recovery-deprecation.md) adatokat.
 
 
-## <a name="before-you-begin"></a>Előzetes teendők
+## <a name="before-you-begin"></a>Előkészületek
 
 Ez az oktatóanyag egy sorozat harmadik része. Feltételezi, hogy már végrehajtotta a feladatokat az előző oktatóanyagokban:
 

@@ -1,6 +1,6 @@
 ---
-title: A helyi hálózati átjáró IP-címelőtagokat, és a VPN-átjáró IP-cím módosítása |} Azure |} PARANCSSORI FELÜLET |} A Microsoft Docs
-description: Ez a cikk végigvezeti az Azure CLI használatával helyi hálózati átjáró IP-címelőtagjainak módosítása.
+title: 'VPN Gateway: az átjáró IP-címének beállításainak módosítása: Azure CLI'
+description: Ez a cikk végigvezeti a helyi hálózati átjáró IP-címeinek előtagjainak az Azure CLI használatával történő módosításán.
 services: vpn-gateway
 documentationcenter: na
 author: cherylmc
@@ -15,16 +15,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/29/2017
 ms.author: cherylmc
-ms.openlocfilehash: 20e8269f0ee7463dcff9a5f66e46ebd81cb3df84
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 26462f73680d35371c6a03c3224742626e8f2090
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60652854"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74014965"
 ---
-# <a name="modify-local-network-gateway-settings-using-the-azure-cli"></a>Az Azure CLI használatával a helyi hálózati átjáró beállításainak módosítása
+# <a name="modify-local-network-gateway-settings-using-the-azure-cli"></a>Helyi hálózati átjáró beállításainak módosítása az Azure CLI használatával
 
-Egyes esetekben a helyi hálózati átjáró címelőtagja vagy az átjáró IP-cím beállításait módosíthatja. Ez a cikk bemutatja, hogyan lehet a helyi hálózati átjáró beállításainak módosítása. Ezeket a beállításokat egy másik lehetőség kiválasztásával az alábbi listából egy másik módszer a is módosíthatja:
+Előfordulhat, hogy a helyi hálózati átjáró címének előtagja vagy az átjáró IP-címének beállításai megváltoznak. Ez a cikk bemutatja, hogyan módosíthatja a helyi hálózati átjáró beállításait. Ezeket a beállításokat más módszer használatával is módosíthatja, ha a következő listából választ egy másik lehetőséget:
 
 > [!div class="op_single_selector"]
 > * [Azure Portal](vpn-gateway-modify-local-network-gateway-portal.md)
@@ -35,11 +35,11 @@ Egyes esetekben a helyi hálózati átjáró címelőtagja vagy az átjáró IP-
 
 ## <a name="before"></a>Előkészületek
 
-Telepítse a CLI-parancsok (2.0-s vagy újabb) legújabb verzióját. Információk a CLI-parancsok telepítéséről: [Az Azure CLI telepítése](https://docs.microsoft.com/cli/azure/install-azure-cli).
+Telepítse a CLI-parancsok legújabb verzióját (2,0 vagy újabb). Információk a CLI-parancsok telepítéséről: [Az Azure CLI telepítése](https://docs.microsoft.com/cli/azure/install-azure-cli).
 
 [!INCLUDE [CLI-login](../../includes/vpn-gateway-cli-login-include.md)]
 
-## <a name="ipaddprefix"></a>IP-címelőtagjainak módosítása
+## <a name="ipaddprefix"></a>IP-cím előtagjainak módosítása
 
 [!INCLUDE [modify-prefix](../../includes/vpn-gateway-modify-ip-prefix-cli-include.md)]
 
@@ -47,7 +47,7 @@ Telepítse a CLI-parancsok (2.0-s vagy újabb) legújabb verzióját. Informáci
 
 [!INCLUDE [modify-gateway-IP](../../includes/vpn-gateway-modify-lng-gateway-ip-cli-include.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Ellenőrizheti, hogy az átjárókapcsolat. Lásd: [átjárókapcsolat ellenőrzése](vpn-gateway-verify-connection-resource-manager.md).
+Ellenőrizheti az átjáró-kapcsolatokat. Lásd: [átjáró-kapcsolatok ellenőrzése](vpn-gateway-verify-connection-resource-manager.md).
 

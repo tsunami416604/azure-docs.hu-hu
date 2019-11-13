@@ -1,17 +1,14 @@
 ---
 title: Az erőforrás-zárolás megismerése
 description: Ismerje meg, hogy milyen zárolási lehetőségek védik az erőforrásokat a tervrajzok kiosztása során.
-author: DCtheGeek
-ms.author: dacoulte
 ms.date: 04/24/2019
 ms.topic: conceptual
-ms.service: blueprints
-ms.openlocfilehash: 5c62fdb698dddf293d339904fd0c854052d636eb
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: 754b9d7f73c6111abf7505e222a1ca5a8712ae45
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71981050"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73960478"
 ---
 # <a name="understand-resource-locking-in-azure-blueprints"></a>Az erőforrások zárolásának megismerése az Azure-tervekben
 
@@ -19,17 +16,17 @@ A konzisztens környezetek nagy méretekben történő létrehozása csak abban 
 
 ## <a name="locking-modes-and-states"></a>Zárolási módok és állapotok
 
-A zárolási mód a terv-hozzárendelésre vonatkozik, és három lehetőség közül választhat: **Ne zárja**be, **csak olvasás**vagy ne **törölje**. A zárolási módot a rendszer a terv hozzárendelése során konfigurálja az összetevő üzembe helyezése során. A terv hozzárendelésének frissítésével egy másik zárolási mód is beállítható.
+A zárolási mód a tervrajz-hozzárendelésre vonatkozik, és három lehetőség közül választhat: **ne zárolja**, **csak olvasható**vagy ne **törölje**. A zárolási módot a rendszer a terv hozzárendelése során konfigurálja az összetevő üzembe helyezése során. A terv hozzárendelésének frissítésével egy másik zárolási mód is beállítható.
 A zárolási módok azonban nem változtathatók meg a tervrajzokon kívül.
 
-A tervrajz-hozzárendelésekben az összetevők által létrehozott erőforrások négy állapottal rendelkeznek: **Nincs zárolva**, **csak olvasható**, **nem szerkeszthető/törölhető**, vagy **nem törölhető**. Az egyes összetevők típusa **nem zárolt** állapotban lehet. Az alábbi táblázat egy erőforrás állapotának meghatározására használható:
+A tervrajz-hozzárendelésekben az összetevők által létrehozott erőforrások négy állapottal rendelkeznek: **nincs zárolva**, **csak olvasható**, **nem szerkeszthető/** nem törölhető, vagy **nem törölhető**. Az egyes összetevők típusa **nem zárolt** állapotban lehet. Az alábbi táblázat egy erőforrás állapotának meghatározására használható:
 
-|Mód|Összetevő típusú erőforrástípus|State|Leírás|
+|Mód|Összetevő típusú erőforrástípus|Állapot|Leírás|
 |-|-|-|-|
 |Ne legyen zárolás|*|Nincs zárolva|Az erőforrásokat nem a tervrajzok védik. Ezt az állapotot az **írásvédett** erőforráshoz hozzáadott erőforrások, vagy az erőforráscsoport-összetevő **nem törölhető** a terv-hozzárendelésen kívül is használják.|
-|Csak olvasható|Resource group|Nem lehet szerkeszteni/törölni|Az erőforráscsoport írásvédett, és az erőforráscsoport címkéi nem módosíthatók. A **nem zárolt** erőforrások hozzáadhatók, áthelyezhetők, módosíthatók vagy törölhetők ebből az erőforráscsoporthoz.|
-|Csak olvasható|Nem erőforráscsoport|Csak olvasható|Az erőforrás semmilyen módon nem módosítható – nem módosítható, és nem törölhető.|
-|Nem törölhető|*|Nem lehet törölni|Az erőforrások módosíthatók, de nem törölhetők. A **nem zárolt** erőforrások hozzáadhatók, áthelyezhetők, módosíthatók vagy törölhetők ebből az erőforráscsoporthoz.|
+|Csak olvasási engedély|Erőforráscsoport|Nem lehet szerkeszteni/törölni|Az erőforráscsoport írásvédett, és az erőforráscsoport címkéi nem módosíthatók. A **nem zárolt** erőforrások hozzáadhatók, áthelyezhetők, módosíthatók vagy törölhetők ebből az erőforráscsoporthoz.|
+|Csak olvasási engedély|Nem erőforráscsoport|Csak olvasási engedély|Az erőforrás semmilyen módon nem módosítható – nem módosítható, és nem törölhető.|
+|Törlés mellőzése|*|Nem lehet törölni|Az erőforrások módosíthatók, de nem törölhetők. A **nem zárolt** erőforrások hozzáadhatók, áthelyezhetők, módosíthatók vagy törölhetők ebből az erőforráscsoporthoz.|
 
 ## <a name="overriding-locking-states"></a>Zárolási állapotok felülbírálása
 
@@ -56,8 +53,8 @@ Az egyes üzemmódok [megtagadási hozzárendeléseinek tulajdonságai](../../..
 
 |Mód |Engedélyek. műveletek |Engedélyek. Tapintatok |Principals[i].Type |ExcludePrincipals [i]. ID | DoNotApplyToChildScopes |
 |-|-|-|-|-|-|
-|Csak olvasható |**\*** |**@no__t – 1/olvasás** |SystemDefined (mindenki) |tervezet-hozzárendelés és felhasználó által definiált **excludedPrincipals** |Erőforráscsoport – _igaz_; Erőforrás – _hamis_ |
-|Nem törölhető |**@no__t – 1/delete** | |SystemDefined (mindenki) |tervezet-hozzárendelés és felhasználó által definiált **excludedPrincipals** |Erőforráscsoport – _igaz_; Erőforrás – _hamis_ |
+|Csak olvasási engedély |**\*** |**\*/READ** |SystemDefined (mindenki) |tervezet-hozzárendelés és felhasználó által definiált **excludedPrincipals** |Erőforráscsoport – _igaz_; Erőforrás – _hamis_ |
+|Törlés mellőzése |**\*/delete** | |SystemDefined (mindenki) |tervezet-hozzárendelés és felhasználó által definiált **excludedPrincipals** |Erőforráscsoport – _igaz_; Erőforrás – _hamis_ |
 
 > [!IMPORTANT]
 > A Azure Resource Manager legfeljebb 30 percig gyorsítótárazza a szerepkör-hozzárendelés részleteit. Ennek eredményeképpen a hozzárendelések megtagadására vonatkozó művelet megtagadása a terv erőforrásaiban nem lehet azonnal teljes mértékben érvényben. Ebben az időszakban lehetséges lehet egy olyan erőforrás törlése, amely a terv zárolásával védhető.
@@ -107,7 +104,7 @@ Ez egy példa egy kérelem törzsére, amely tartalmazza a **excludedPrincipals*
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Kövesse az [új erőforrások védelemmel](../tutorials/protect-new-resources.md) foglalkozó oktatóanyagot.
 - Tudnivalók a [tervek életciklusáról](lifecycle.md).

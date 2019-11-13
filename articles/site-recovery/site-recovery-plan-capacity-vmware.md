@@ -1,5 +1,5 @@
 ---
-title: A VMware vész-helyreállítási kapacitásának és méretezésének megtervezése az Azure-ba Azure Site Recovery használatával | Microsoft Docs
+title: Kapacitás megtervezése a VMware vész-helyreállításhoz Azure Site Recovery
 description: Ez a cikk segít megtervezni a kapacitást és a skálázást a VMware virtuális gépek Azure-ba való vész-helyreállításának Azure Site Recovery használatával történő beállításakor.
 author: nsoneji
 manager: garavd
@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.date: 4/9/2019
 ms.topic: conceptual
 ms.author: ramamill
-ms.openlocfilehash: 0bf1b34295d827124198206e743bc21d5f7eb904
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 467c70a722b8a243be6ac2826188a4ba3459aa06
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73747905"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73961358"
 ---
 # <a name="plan-capacity-and-scaling-for-vmware-disaster-recovery-to-azure"></a>Kapacitás megtervezése és méretezése a VMware vész-helyreállításhoz az Azure-ba
 
@@ -24,7 +24,7 @@ A Azure Site Recovery infrastrukturális követelmények megismeréséhez a [Azu
 
 A Site Recovery Deployment Planner egy olyan jelentést biztosít, amely teljes körű információkkal szolgál a kompatibilis és nem kompatibilis virtuális gépekről, a virtuális gépekről és a lemezeken tárolt adatokról. Az eszköz a hálózati sávszélességre vonatkozó követelményeket is összegzi, hogy megfeleljen a RPO és a sikeres replikáláshoz és feladatátvételi teszthez szükséges Azure-infrastruktúrának.
 
-## <a name="capacity-considerations"></a>Kapacitással kapcsolatos megfontolások
+## <a name="capacity-considerations"></a>A kapacitás szempontok
 
 Összetevő | Részletek
 --- | ---
@@ -42,7 +42,7 @@ CPU | Memory (Memória) | Gyorsítótárazott lemez mérete | Adatváltozási ar
 12 vCPU (2 szoftvercsatorna * 6 mag \@ 2,5 GHz) | 18 GB | 600 GB | 501 GB – 1 TB | 100 és 150 gép közötti replikálásra használható.
 16 vCPU (2 szoftvercsatorna * 8 mag \@ 2,5 GHz) | 32 GB | 1 TB | 1 TB > 2 TB | 151 és 200 gép közötti replikálásra használható.
 Helyezzen üzembe egy másik konfigurációs kiszolgálót egy [OVF-sablon](vmware-azure-deploy-configuration-server.md#deploy-a-configuration-server-through-an-ova-template)használatával. | | | | Ha több mint 200 gépet replikál, helyezzen üzembe egy új konfigurációs kiszolgálót.
-Helyezzen üzembe egy másik [Process Servert](vmware-azure-set-up-process-server-scale.md#download-installation-file). | | | 2 TB >| Ha a teljes napi adatváltozási arány meghaladja a 2 TB-ot, helyezzen üzembe egy új kibővíthető folyamat-kiszolgálót.
+Helyezzen üzembe egy másik [Process Servert](vmware-azure-set-up-process-server-scale.md#download-installation-file). | | | >2 TB| Ha a teljes napi adatváltozási arány meghaladja a 2 TB-ot, helyezzen üzembe egy új kibővíthető folyamat-kiszolgálót.
 
 Ezekben a konfigurációkban:
 
@@ -79,8 +79,8 @@ Miután a [Site Recovery Deployment Planner](site-recovery-deployment-planner.md
 
 * **Sávszélesség szabályozása**: az Azure-ba replikált VMware-forgalom egy adott folyamat-kiszolgálón halad át. A sávszélesség szabályozása a folyamat-kiszolgálóként futó gépeken végezhető el.
 * A **sávszélesség befolyásolása**: befolyásolhatja a replikációhoz használt sávszélességet néhány beállításkulcs használatával:
-  * A **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Replication\UploadThreadsPerVM** beállításazonosító meghatározza, hogy hány szálat kell használni a lemez adatátviteléhez (a kezdeti vagy a különbözeti replikációhoz). A magasabb érték növeli a replikáláshoz használt hálózati sávszélességet.
-  * A **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Replication\DownloadThreadsPerVM** beállításazonosító meghatározza, hogy hány szálat használ a rendszer az adatátvitelhez a feladat-visszavétel során.
+  * A **HKEY_LOCAL_MACHINE \SOFTWARE\Microsoft\Windows az Azure Backup\Replication\UploadThreadsPerVM** beállításazonosító megadja a lemez adatátviteli (kezdeti vagy különbözeti replikációja) által használt szálak számát. A magasabb érték növeli a replikáláshoz használt hálózati sávszélességet.
+  * A **HKEY_LOCAL_MACHINE \Software\microsoft\windows Azure Backup\Replication\DownloadThreadsPerVM** beállításazonosító meghatározza, hogy hány szálat használ a rendszer az adatátvitelhez a feladat-visszavétel során.
 
 ### <a name="throttle-bandwidth"></a>Sávszélesség szabályozása
 
@@ -102,7 +102,7 @@ A **Set-OBMachineSetting -NoThrottle** beállítás azt jelenti, hogy nincs szü
 
 ### <a name="alter-the-network-bandwidth-for-a-vm"></a>A virtuális gép hálózati sávszélességének módosítása
 
-1. A virtuális gép beállításjegyzékében lépjen a **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Replication**.
+1. A virtuális gép beállításjegyzékében lépjen a **HKEY_LOCAL_MACHINE \Software\microsoft\windows Azure Backup\Replication**.
    * A replikálási lemez sávszélesség-forgalmának megváltoztatásához módosítsa a **UploadThreadsPerVM**értékét. Ha nem létezik, hozza létre a kulcsot.
    * Ha módosítani szeretné az Azure-beli feladat-visszavételi forgalom sávszélességét, módosítsa a **DownloadThreadsPerVM**értékét.
 2. Az egyes kulcsok alapértelmezett értéke **4**. A szükségesnél több erőforrással ellátott hálózatban érdemes módosítani a beállításazonosítók alapértelmezett értékét. A maximálisan használható érték **32**. Az optimális érték kiválasztásához kövesse figyelemmel a forgalmat.
@@ -168,6 +168,6 @@ Ha a regisztráció sikeresen befejeződik, a kiszolgáló megjelenik a Azure Po
  > [!NOTE]
  > Töltse le a [Windows rendszerhez készült fő célkiszolgáló egyesített telepítési fájljának](https://aka.ms/latestmobsvc)legújabb verzióját.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Site Recovery Deployment Planner](https://aka.ms/asr-deployment-planner)letöltése és futtatása.

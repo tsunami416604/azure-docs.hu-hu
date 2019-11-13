@@ -4,14 +4,14 @@ description: Azure Cosmos DB létrehozásához és konfigurálásához használj
 author: TheovanKraay
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 11/07/2019
+ms.date: 11/08/2019
 ms.author: thvankra
-ms.openlocfilehash: 7c508d736c7c04cc6df2b42e0a90a2906052adbc
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 7b08ca98f25b079d831033b9393effd4ee4b65e3
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73835519"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73961853"
 ---
 # <a name="azure-resource-manager-templates-for-azure-cosmos-db"></a>Azure Cosmos DB Azure Resource Manager sablonjai
 
@@ -29,8 +29,6 @@ Az alábbi táblázatok a Azure Cosmos DB Azure Resource Manager sablonjaira mut
 |**Sablon**|**Leírás**|
 |---| ---|
 |[Azure Cosmos-fiók, adatbázis, gyűjtemény létrehozása](manage-mongodb-with-resource-manager.md#create-resource) | Ez a sablon létrehoz egy fiókot Azure Cosmos DB API-val a MongoDB két régióban, ahol engedélyezve van a több főkiszolgálós szolgáltatás. Az Azure Cosmos-fióknak két tárolója lesz, amelyek osztoznak az adatbázis-szintű átviteli sebességgel. |
-|[Adatbázis frissítési teljesítményének (RU/s) frissítése](manage-mongodb-with-resource-manager.md#database-ru-update) | Ez a sablon frissíti egy adatbázis átviteli sebességét egy MongoDB API-fiókban. |
-|[A gyűjteményhez tartozó frissítési teljesítmény (RU/s)](manage-mongodb-with-resource-manager.md#collection-ru-update) | Ez a sablon egy MongoDB API-fiókban lévő tároló átviteli sebességét frissíti. |
 
 ## <a name="cassandra-api"></a>Cassandra API
 
@@ -43,17 +41,14 @@ Az alábbi táblázatok a Azure Cosmos DB Azure Resource Manager sablonjaira mut
 |**Sablon**|**Leírás**|
 |---| ---|
 |[Azure Cosmos-fiók, adatbázis, gráf létrehozása](manage-gremlin-with-resource-manager.md#create-resource) | Ez a sablon létrehoz egy Gremlin API-fiókot két régióban, ahol a több főkiszolgálós engedélyezve van. Az Azure Cosmos-fióknak két gráfja lesz, amelyek osztoznak az adatbázis-szintű átviteli sebességgel. |
-|[Adatbázis frissítési teljesítményének (RU/s) frissítése](manage-gremlin-with-resource-manager.md#database-ru-update) | Ez a sablon frissíti egy adatbázis átviteli sebességét egy Gremlin API-fiókban. |
-|[Sebesség (RU/s) frissítése egy gráfhoz](manage-gremlin-with-resource-manager.md#graph-ru-update) | Ez a sablon frissíti egy gráf átviteli sebességét egy Gremlin API-fiókban. |
 
 ## <a name="table-api"></a>Tábla API
 
 |**Sablon**|**Leírás**|
 |---| ---|
 |[Azure Cosmos-fiók létrehozása, tábla](manage-table-with-resource-manager.md#create-resource) | Ez a sablon létrehoz egy Table API fiókot két régióban, ahol a több főkiszolgálós engedélyezve van. Az Azure Cosmos-fiók egyetlen táblával fog rendelkezni. |
-|[Egy tábla frissítési teljesítményének (RU/s) frissítése](manage-table-with-resource-manager.md#table-ru-update) | Ez a sablon egy Table API-fiókban lévő tábla átviteli sebességét frissíti. |
 
 > [!TIP]
 > Ha Table API használatával szeretné engedélyezni a megosztott átviteli sebességet, engedélyezze az Azure Portalon a fiókok szintjének átviteli sebességét.
 
-Tekintse meg a hivatkozási dokumentáció Azure Cosmos DB oldalának [ARM-referenciáját](/azure/templates/microsoft.documentdb/allversions) .
+Tekintse meg a dokumentációhoz [Azure Resource Manager referenciát Azure Cosmos db](/azure/templates/microsoft.documentdb/allversions) oldalon.

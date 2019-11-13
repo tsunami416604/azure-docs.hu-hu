@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 11/4/2019
 ms.author: caya
-ms.openlocfilehash: 2e91a888d0dc98a4f94b956e15336d75291f733e
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: 92e9747865f1a0910c8bae4001cc597ae9ea3da6
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73795921"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73957982"
 ---
 # <a name="use-certificates-with-letsencryptorg-on-application-gateway-for-aks-clusters"></a>LetsEncrypt.org-t használó tanúsítványok használata a Application Gateway AK-fürtökhöz
 
@@ -130,8 +130,12 @@ Az alábbi lépéseket követve telepítse a [tanúsítvány-kezelőt](https://d
     Néhány másodperc elteltével a Application Gateway HTTPS URL-címen keresztül férhet hozzá a `guestbook` szolgáltatáshoz az automatikusan kiadott **átmeneti** `Lets Encrypt` tanúsítvány használatával.
     Előfordulhat, hogy a böngésző egy érvénytelen hitelesítésszolgáltatótól figyelmeztet. Az átmeneti tanúsítványt a `CN=Fake LE Intermediate X1`állítja ki. Ez azt jelzi, hogy a rendszer a vártnak megfelelően működött, és készen áll az éles tanúsítványra.
 
-4. Éles tanúsítvány az előkészítési tanúsítvány sikeres beállítása után az éles környezetű ACME kiszolgálóra válthat:
+4. Éles tanúsítvány
+
+    Az előkészítési tanúsítvány sikeres beállítása után átválthat éles ACME-kiszolgálóra:
     1. Cserélje le az előkészítési jegyzetet a bejövő erőforrásra a következővel: `certmanager.k8s.io/cluster-issuer: letsencrypt-prod`
     1. Törölje az előző lépésben létrehozott meglévő előkészítési `ClusterIssuer`, és hozzon létre egy újat úgy, hogy lecseréli az ACME-kiszolgálót a fenti ClusterIssuer-YAML az `https://acme-v02.api.letsencrypt.org/directory`
 
-5. A tanúsítvány lejárata és megújítása az `Lets Encrypt`-tanúsítvány lejárta előtt `cert-manager` automatikusan frissíti a tanúsítványt a Kubernetes titkos tárolóban. Ezen a Application Gateway ponton a bejövő adatforgalom-vezérlő a Application Gateway konfigurálásához az általa használt bejövő erőforrások által hivatkozott frissített titkos kulcsot fogja alkalmazni.
+5. Tanúsítvány lejárata és megújítása
+
+    Az `Lets Encrypt`-tanúsítvány lejárata előtt `cert-manager` automatikusan frissíti a tanúsítványt a Kubernetes titkos tárolóban. Ezen a Application Gateway ponton a bejövő adatforgalom-vezérlő a Application Gateway konfigurálásához az általa használt bejövő erőforrások által hivatkozott frissített titkos kulcsot fogja alkalmazni.

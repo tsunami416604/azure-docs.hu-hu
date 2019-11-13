@@ -1,6 +1,6 @@
 ---
-title: Azure Time Series Insights előzetes verzió használati esetei | Microsoft Docs
-description: Ismerje meg Azure Time Series Insights előzetes verzió használati eseteit.
+title: Előzetes verziójú használati esetek – Azure Time Series Insights | Microsoft Docs
+description: További információ a Azure Time Series Insights előzetes verziójának használati eseteiről.
 author: deepakpalled
 ms.author: dpalled
 manager: cshankar
@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 09/24/2019
 ms.custom: seodec18
-ms.openlocfilehash: b2c1aec7f5b653824ab999da2706549e54d47e3a
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 175fbf598ae2224d1e1ee0e9c9a3f9ba446965c3
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73492064"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74014674"
 ---
 # <a name="azure-time-series-insights-preview-use-cases"></a>Azure Time Series Insights előzetes verzió használati esetei
 
@@ -66,7 +66,7 @@ A Time Series Insightsban tárolt adatkezelés három fő módja van:
 
 A Time Series Insights használatával figyelheti az állapotot, a használatot és a nagy méretű berendezések teljesítményét. Time Series Insights egyszerű módszert kínál a működési hatékonyság mérésére. A Time Series Insights használatával azonnali és rugalmas skálázhatósággal kezelheti a változatos és kiszámíthatatlan IoT-terheléseket a betöltések és a lekérdezések teljesítményének csökkenése nélkül.
 
-[![áttekintése](media/v2-update-use-cases/overview.png)](media/v2-update-use-cases/overview.png#lightbox)
+[![– Áttekintés](media/v2-update-use-cases/overview.png)](media/v2-update-use-cases/overview.png#lightbox)
 
 A működési folyamatokból érkező adatok folyamatos átvitele és folyamatos feldolgozása a megfelelő technológiával vagy megoldással együtt sikeresen átalakíthatja a vállalatokat. Ezek a megoldások gyakran több rendszer kombinációját jelentik. Lehetővé teszik az állandóan módosult, különösen az IoT-tartományon belüli adatelemzést és elemzést, és megosztanak egy közös mintát.
 
@@ -98,7 +98,7 @@ Time Series Insights áthidalja a IoT és a fejlett Analitika közötti szakadé
 
 - Másodszor, a gépi tanulási és előrejelzési modellek kimenete Time Series Insightsba is helyezhető az eredmények megjelenítéséhez és tárolásához. Ez az eljárás segít a szervezeteknek a modelljeik optimalizálásában és finomhangolásában. A Time Series Insights megkönnyíti a folyamatos átviteli telemetria-adatokat a betanított modell kimenetével megegyező síkban ábrázolni. Így segít az adatelemzési csapatoknak észrevenni a rendellenességeket és azonosítani a mintákat. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ a [Time Series Insights Preview Explorer böngészőről](./time-series-insights-update-explorer.md).
 - A környezet megtervezéséhez olvassa el [Time Series Insights előzetes verziójának tervezését](./time-series-insights-update-plan.md) .

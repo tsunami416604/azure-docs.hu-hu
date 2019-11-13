@@ -1,17 +1,14 @@
 ---
 title: Gyakori hibák elhárítása
 description: Megtudhatja, hogyan lehet elhárítani a tervrajzok létrehozásával, hozzárendelésével és eltávolításával kapcsolatos problémákat.
-author: DCtheGeek
-ms.author: dacoulte
 ms.date: 12/11/2018
 ms.topic: troubleshooting
-ms.service: blueprints
-ms.openlocfilehash: b99e94bfdcbf12e82a094f14995b6b93aa3354ed
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: b6f1d6c40f7268e90f09457e680a3ef33996c341
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71978228"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73960296"
 ---
 # <a name="troubleshoot-errors-using-azure-blueprints"></a>Az Azure-tervezetekkel kapcsolatos hibák elhárítása
 
@@ -33,7 +30,7 @@ Gyakori, hogy a hiba oka egy összetevő, nem pedig a terv egésze. Ha egy össz
 
 ## <a name="general-errors"></a>Általános hibák
 
-### <a name="policy-violation"></a>Forgatókönyv Szabályzat megsértése
+### <a name="policy-violation"></a>Forgatókönyv: szabályzat megsértése
 
 #### <a name="issue"></a>Probléma
 
@@ -50,7 +47,7 @@ Egy házirend több okból is ütközhet az üzembe helyezéssel:
 
 Módosítsa a tervet úgy, hogy az ne ütközzön a hiba részleteiben szereplő szabályzatokkal. Ha ez a változás nem lehetséges, egy másik lehetőség, hogy a házirend-hozzárendelés hatóköre megváltozott, így a terv már nem ütközik a szabályzattal.
 
-### <a name="escape-function-parameter"></a>Forgatókönyv A Blueprint paraméter egy függvény
+### <a name="escape-function-parameter"></a>Forgatókönyv: a Blueprint paraméter egy függvény
 
 #### <a name="issue"></a>Probléma
 
@@ -58,13 +55,13 @@ A függvények feldolgozására szolgáló tervrajzi paramétereket a rendszer a
 
 #### <a name="cause"></a>Ok
 
-Egy függvényt (például `[resourceGroup().tags.myTag]`) használó tervrajzi paraméter átadása egy összetevőnek, amely a dinamikus függvény helyett a tárgyon beállított függvény feldolgozott eredményét eredményezi.
+Egy függvényt (például `[resourceGroup().tags.myTag]`t) használó tervrajzi paraméter átadása egy összetevőnek, amely a dinamikus függvény helyett a tárgyon beállított függvény feldolgozott eredményét eredményezi.
 
 #### <a name="resolution"></a>Megoldás:
 
-Ha paraméterként át szeretne adni egy függvényt, a teljes karakterláncot a `[` értékkel kell elmenekülnie, hogy a terv paraméter a következőhöz hasonlóan néz ki: `[[resourceGroup().tags.myTag]`. Az escape-karakter olyan tervrajzokat okoz, amelyek az értéket karakterláncként kezelik a terv feldolgozásakor. A tervrajzok ezután elhelyezik a függvényt az adott összetevőn, ami lehetővé teszi, hogy a várt módon dinamikus legyen. További információ: [szintaxis és kifejezések Azure Resource Manager sablonokban](../../../azure-resource-manager/template-expressions.md).
+Ha paraméterként át szeretne adni egy függvényt, a teljes karakterláncot a `[` úgy kell elmenekülnie, hogy a terv paramétere `[[resourceGroup().tags.myTag]`. Az escape-karakter olyan tervrajzokat okoz, amelyek az értéket karakterláncként kezelik a terv feldolgozásakor. A tervrajzok ezután elhelyezik a függvényt az adott összetevőn, ami lehetővé teszi, hogy a várt módon dinamikus legyen. További információ: [szintaxis és kifejezések Azure Resource Manager sablonokban](../../../azure-resource-manager/template-expressions.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha nem látja a problémát, vagy nem tudja megoldani a problémát, további támogatásért látogasson el az alábbi csatornák egyikére:
 

@@ -1,32 +1,32 @@
 ---
-title: Állítsa be a VMware virtuális gépek vészhelyreállítása az Azure-bA az Azure Site Recovery PowerShell használatával |} A Microsoft Docs
-description: Ismerje meg, hogyan állítható be a replikáció és feladatátvétel az Azure PowerShell-lel az Azure Site Recovery VMware virtuális gépek vész-helyreállítási.
+title: VMware vész-helyreállítás beállítása a PowerShell-lel az Azure site Revoing szolgáltatásban
+description: Ismerje meg, hogyan állíthatja be a replikációt és a feladatátvételt az Azure-ba a VMware virtuális gépek vész-helyreállításához a Azure Site Recovery PowerShell használatával.
 author: sujayt
 manager: rochakm
 ms.service: site-recovery
 ms.date: 06/30/2019
 ms.topic: conceptual
 ms.author: sutalasi
-ms.openlocfilehash: 7c13bb8586995a82ee240df39a9c95a67743e2a8
-ms.sourcegitcommit: 837dfd2c84a810c75b009d5813ecb67237aaf6b8
+ms.openlocfilehash: 9546ae590918cdf6f3a6a95b9a68e9208054dcee
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67503345"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73953930"
 ---
-# <a name="set-up-disaster-recovery-of-vmware-vms-to-azure-with-powershell"></a>Állítsa be a VMware virtuális gépek vészhelyreállítása az Azure-ban a PowerShell-lel
+# <a name="set-up-disaster-recovery-of-vmware-vms-to-azure-with-powershell"></a>A VMware virtuális gépek vész-helyreállításának beállítása az Azure-ba a PowerShell használatával
 
-Ebben a cikkben láthatja a replikálás és feladatátvételi VMware virtuális gépeket az Azure PowerShell használatával.
+Ebből a cikkből megtudhatja, hogyan replikálhat és feladatátvételt hajthat végre a VMware virtuális gépeken az Azure-ban Azure PowerShell használatával.
 
 Az alábbiak végrehajtásának módját ismerheti meg:
 
 > [!div class="checklist"]
-> - Hozzon létre egy Recovery Services-tárolót, és állítsa be a tárolási környezet.
-> - Ellenőrizze a kiszolgáló regisztrálása a tárolóban.
-> - A replikáció, többek között a replikációs szabályzat beállítása. A vCenter-kiszolgáló hozzáadása, és a virtuális gépek felderítéséhez.
+> - Hozzon létre egy Recovery Services-tárolót, és állítsa be a tár környezetét.
+> - Érvényesítse a kiszolgáló regisztrációját a tárolóban.
+> - Replikáció beállítása, beleértve a replikációs házirendet. Adja hozzá a vCenter-kiszolgálót, és fedezze fel a virtuális gépeket.
 > - VCenter-kiszolgáló hozzáadása és felderítése
-> - Hozzon létre a tárfiókok replikációs naplók és adatok tárolására, és a virtuális gépek replikálása.
-> - Feladatátvétel végrehajtása. Feladatátvétel-beállítások konfigurálása, hajtsa végre a beállításokat a virtuális gépek replikálásához.
+> - Hozzon létre Storage-fiókokat a replikációs naplók vagy az adattároláshoz, és replikálja a virtuális gépeket.
+> - Feladatátvétel végrehajtása. A feladatátvételi beállítások konfigurálása, a virtuális gépek replikálására vonatkozó beállítások végrehajtása.
 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
@@ -37,23 +37,23 @@ Előkészületek:
 
 - Ismernie kell a [forgatókönyv-architektúrát és az összetevőket](vmware-azure-architecture.md).
 - Minden összetevőre vonatkozóan tekintse át a [támogatási követelményeket](site-recovery-support-matrix-to-azure.md).
-- Az Azure PowerShell rendelkezik `Az` modul. Ha telepíteni vagy frissíteni az Azure PowerShell-lel van szüksége, kövesse ezt [útmutató az Azure PowerShell telepítése és konfigurálása](/powershell/azure/install-az-ps).
+- A Azure PowerShell `Az` modullal rendelkezik. Ha Azure PowerShellt kell telepítenie vagy frissítenie, a [Azure PowerShell telepítéséhez és konfigurálásához](/powershell/azure/install-az-ps)kövesse az alábbi útmutatót.
 
 ## <a name="log-into-azure"></a>Jelentkezzen be az Azure-ba
 
-Jelentkezzen be az Azure-előfizetés a Connect-AzAccount parancsmaggal:
+Jelentkezzen be az Azure-előfizetésbe a AzAccount parancsmag használatával:
 
 ```azurepowershell
 Connect-AzAccount
 ```
-A VMware virtuális gépek replikálásához használni kívánt Azure-előfizetés kiválasztásához. A Get-AzSubscription parancsmaggal hozzáféréssel rendelkezik az Azure-előfizetések listájának beolvasása. Válassza ki a Select-AzSubscription parancsmag használata az Azure-előfizetést.
+Válassza ki azt az Azure-előfizetést, amelyre a VMware virtuális gépeket replikálni szeretné. A Get-AzSubscription parancsmag használatával lekérheti azon Azure-előfizetések listáját, amelyekhez hozzáfér. Válassza ki azt az Azure-előfizetést, amelyet a Select-AzSubscription parancsmaggal szeretne használni.
 
 ```azurepowershell
 Select-AzSubscription -SubscriptionName "ASR Test Subscription"
 ```
 ## <a name="set-up-a-recovery-services-vault"></a>Helyreállítási tár beállítása
 
-1. Hozzon létre egy erőforráscsoportot, amelyben létrehozza a Recovery Services-tároló. Az alábbi példában az erőforráscsoport VMwareDRtoAzurePS neve, és a kelet-ázsiai régióban jön létre.
+1. Hozzon létre egy erőforráscsoportot, amelyben létre kívánja hozni a Recovery Services-tárolót. Az alábbi példában az erőforráscsoport neve VMwareDRtoAzurePS, és a Kelet-Ázsia régióban jön létre.
 
    ```azurepowershell
    New-AzResourceGroup -Name "VMwareDRtoAzurePS" -Location "East Asia"
@@ -66,7 +66,7 @@ Select-AzSubscription -SubscriptionName "ASR Test Subscription"
    ResourceId        : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/VMwareDRtoAzurePS
    ```
 
-2. Hozzon létre egy Recovery services-tárolót. Az alábbi példában a Recovery services-tároló VMwareDRToAzurePs neve, és a Kelet-Ázsia régióban, és az előző lépésben létrehozott erőforráscsoportban jön létre.
+2. Hozzon létre egy Recovery Services-tárolót. Az alábbi példában a Recovery Services-tároló neve VMwareDRToAzurePs, és a Kelet-Ázsia régióban és az előző lépésben létrehozott erőforráscsoporthoz jön létre.
 
    ```azurepowershell
    New-AzRecoveryServicesVault -Name "VMwareDRToAzurePs" -Location "East Asia" -ResourceGroupName "VMwareDRToAzurePs"
@@ -81,7 +81,7 @@ Select-AzSubscription -SubscriptionName "ASR Test Subscription"
    Properties        : Microsoft.Azure.Commands.RecoveryServices.ARSVaultProperties
    ```
 
-3. Töltse le a tárregisztrációs kulcsot a tárolóhoz. Ebben a tárolóban, a helyszíni konfigurációs kiszolgálót regisztrálja a tárregisztrációs kulcsot szolgál. Regisztráció a konfigurációs kiszolgáló szoftvertelepítési folyamat részét képezi.
+3. Töltse le a tároló regisztrációs kulcsát. A tároló regisztrációs kulcsa a helyszíni konfigurációs kiszolgáló regisztrálása a tárolóban. A regisztráció a konfigurációs kiszolgáló szoftvertelepítési folyamatának részét képezi.
 
    ```azurepowershell
    #Get the vault object by name and resource group and save it to the $vault PowerShell variable 
@@ -96,18 +96,18 @@ Select-AzSubscription -SubscriptionName "ASR Test Subscription"
    C:\Work\VMwareDRToAzurePs_2017-11-23T19-52-34.VaultCredentials
    ```
 
-4. A letöltött regisztrációs kulcsot használja, és kövesse a telepítés befejezéséhez és a konfigurációs kiszolgáló regisztrálása az alábbiakban a cikkeket.
-   - [Védelmi célok megválasztása](vmware-azure-set-up-source.md#choose-your-protection-goals)
+4. Használja a letöltött tároló regisztrációs kulcsát, és kövesse az alábbi cikkekben ismertetett lépéseket a konfigurációs kiszolgáló telepítésének és regisztrációjának befejezéséhez.
+   - [Válassza ki a védelmi célokat](vmware-azure-set-up-source.md#choose-your-protection-goals)
    - [A forráskörnyezet beállítása](vmware-azure-set-up-source.md#set-up-the-configuration-server)
 
-### <a name="set-the-vault-context"></a>A tárolási környezet beállítása
+### <a name="set-the-vault-context"></a>A tár környezetének beállítása
 
-Állítsa be a tárolási környezet, a Set-ASRVaultContext parancsmag használatával. Beállítása után a PowerShell-munkamenetben későbbi Azure Site Recovery-műveletek a kiválasztott tár környezetében történik.
+Állítsa be a tár környezetét a set-ASRVaultContext parancsmag használatával. A beállítás után a rendszer a PowerShell-munkamenet következő Azure Site Recovery műveleteit a kijelölt tároló környezetében hajtja végre.
 
 > [!TIP]
-> A legtöbb parancsmag könnyen használható aliasok az Azure Site Recovery PowerShell modul (Az.RecoveryServices modul) tartalmaz. A modul parancsmagjai utat  *\<művelet >-**AzRecoveryServicesAsr**\<objektum >* és egyenértékű aliast is beállíthat, amely formájában  *\< A művelet >-**ASR**\<objektum >* . Lecserélheti a parancsmag aliasok a használat megkönnyítése érdekében.
+> A Azure Site Recovery PowerShell-modul (az. Recoveryservices szolgáltatónál modul) a legtöbb parancsmaghoz egyszerűen használható aliasokat tartalmaz. A modul parancsmagai az űrlapot *\<Operation >-**AzRecoveryServicesAsr**\<objektum >* , és egyenértékű aliasokkal rendelkeznek, amelyek az űrlapot *\<művelet >-**ASR**\<objektum >* . A egyszerű használat érdekében lecserélheti a parancsmagok aliasait.
 
-Az alábbi példában a tároló részleteit a $vault változójával adja meg a tárolási környezetet a PowerShell-munkamenetben.
+Az alábbi példában a $vault változóból származó tár adatait a rendszer a PowerShell-munkamenethez tartozó tár környezetének megadására használja.
 
    ```azurepowershell
    Set-ASRVaultContext -Vault $vault
@@ -118,23 +118,23 @@ Az alábbi példában a tároló részleteit a $vault változójával adja meg a
    VMwareDRToAzurePs VMwareDRToAzurePs Microsoft.RecoveryServices vaults
    ```
 
-As an alternative to the Set-ASRVaultContext cmdlet, one can also use the Import-AzRecoveryServicesAsrVaultSettingsFile cmdlet to set the vault context. Az elérési út, amikor a tároló regisztrációs kulcsfájl nem található, mint a Import-AzRecoveryServicesAsrVaultSettingsFile parancsmagot a - path paraméterrel adja meg. Példa:
+As an alternative to the Set-ASRVaultContext cmdlet, one can also use the Import-AzRecoveryServicesAsrVaultSettingsFile cmdlet to set the vault context. Itt adhatja meg azt az elérési utat, amelyen a tároló regisztrációs kulcsa a-Path paraméterként található az import-AzRecoveryServicesAsrVaultSettingsFile parancsmaghoz. Például:
 
    ```azurepowershell
    Get-AzRecoveryServicesVaultSettingsFile -SiteRecovery -Vault $Vault -Path "C:\Work\"
    Import-AzRecoveryServicesAsrVaultSettingsFile -Path "C:\Work\VMwareDRToAzurePs_2017-11-23T19-52-34.VaultCredentials"
    ```
-Ez a cikk későbbi részeiben azt feltételezik, hogy a tárolási környezetet az Azure Site Recovery-műveletek van beállítva.
+A cikk következő fejezetei azt feltételezik, hogy az Azure Site Recovery-műveletekhez tartozó tár környezete be lett állítva.
 
-## <a name="validate-vault-registration"></a>Tároló regisztráció érvényesítése
+## <a name="validate-vault-registration"></a>Tár regisztrációjának ellenőrzése
 
-Ebben a példában az alábbiakkal:
+Ebben a példában a következőkkel rendelkezünk:
 
-- Konfigurációs kiszolgáló (**ConfigurationServer**) ehhez a tárolóhoz van regisztrálva.
-- Egy további folyamatkiszolgáló (**horizontális Felskálázás-ProcessServer**) regisztrálva van *ConfigurationServer*
-- Fiókok (**vCenter_account**, **WindowsAccount**, **LinuxAccount**) be van állítva a konfigurációs kiszolgálón. Ezek a fiókok segítségével a virtuális gépek felderítése és a leküldéses telepítés a mobilitási szolgáltatása a Windows és Linux-kiszolgálókon, amelyek replikációja a vCenter-kiszolgáló hozzáadása.
+- Egy konfigurációs kiszolgáló (**ConfigurationServer**) regisztrálva van a tárolóban.
+- Egy további Process Server (**horizontális felskálázás-ProcessServer**) regisztrálva van a *ConfigurationServer*
+- A fiókokat (**vCenter_account**, **WindowsAccount**, **LinuxAccount**) beállították a konfigurációs kiszolgálón. Ezek a fiókok a vCenter-kiszolgáló hozzáadásához, a virtuális gépek felderítéséhez, illetve a replikálni kívánt Windows-és Linux-kiszolgálókon történő leküldéshez használhatók.
 
-1. A fabric objektum a Site Recoveryben regisztrált konfigurációs kiszolgálók jelöli. A tárolóban lévő objektumok fabric listájának beolvasása, és azonosítani a konfigurációs kiszolgálón.
+1. A regisztrált konfigurációs kiszolgálókat Site Recoveryban található Fabric-objektum képviseli. Szerezze be a háló objektumok listáját a tárolóban, és azonosítsa a konfigurációs kiszolgálót.
 
    ```azurepowershell
    # Verify that the Configuration server is successfully registered to the vault
@@ -159,7 +159,7 @@ Ebben a példában az alábbiakkal:
    FabricSpecificDetails : Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRVMWareSpecificDetails
    ```
 
-2. Azonosítsa a folyamatkiszolgálók a gépek replikálása használható.
+2. Azonosítsa a gépek replikálásához használható folyamat-kiszolgálókat.
 
    ```azurepowershell
    $ProcessServers = $ASRFabrics[0].FabricSpecificDetails.ProcessServers
@@ -172,9 +172,9 @@ Ebben a példában az alábbiakkal:
    1     ConfigurationServer
    ```
 
-   A fenti kimenetben ***$ProcessServers [0]*** felel meg *horizontális Felskálázás-ProcessServer* és ***$ProcessServers [1]*** felel meg a Folyamatkiszolgáló szerepkört *ConfigurationServer*
+   A fenti kimenetből ***$ProcessServers [0]*** a *horizontális felskálázás-ProcessServer* és a ***(z) [1] $ProcessServers*** megfelel a Process Server szerepkörnek a *ConfigurationServer*
 
-3. A konfigurációs kiszolgálón beállított fiók azonosításához.
+3. Azonosítsa a konfigurációs kiszolgálón beállított fiókokat.
 
    ```azurepowershell
    $AccountHandles = $ASRFabrics[0].FabricSpecificDetails.RunAsAccounts
@@ -189,16 +189,16 @@ Ebben a példában az alábbiakkal:
    3         LinuxAccount
    ```
 
-   A fenti kimenetben ***$AccountHandles [0]*** a fióknak megfelelő *vCenter_account*, ***$AccountHandles [1]*** fiókhoz *WindowsAccount*, és ***$AccountHandles: [2]*** fiókhoz *LinuxAccount*
+   A fenti kimenetből ***$AccountHandles [0]*** a fiókhoz *vCenter_account*, ***$AccountHandles [1]*** , a *WindowsAccount*és a ( ***$AccountHandles [2]*** ) a fiók *LinuxAccount* .
 
 ## <a name="create-a-replication-policy"></a>Replikációs házirend létrehozása
 
-Ebben a lépésben két replikációs házirendek jönnek létre. A VMware virtuális gépek replikálása az Azure, a másik pedig replikálni egy szabályzat átadta a feladatait az Azure-ban futó virtuális gépek biztonsági másolatot a helyszíni VMware-helyre.
+Ebben a lépésben két replikációs házirend jön létre. Egy házirend a VMware virtuális gépek Azure-ba történő replikálásához, a másikat pedig az Azure-ban futó virtuális gépek feladatátvételére a helyszíni VMware-helyre.
 
 > [!NOTE]
-> A legtöbb Azure Site Recovery-műveletek aszinkron végrehajtása. Egy művelet kezdeményezésekor az Azure Site Recovery-feladatok elküldésekor, és a egy feladat nyomon követése az objektumot ad vissza. A feladat nyomon követése az objektumot a művelet állapotának figyelésére használható.
+> A legtöbb Azure Site Recovery művelet aszinkron módon fut. Amikor műveletet kezdeményez, egy Azure Site Recovery feladatot küld, és a rendszer visszaadja a feladatok követésére szolgáló objektumot. Ez a feladatok követésére szolgáló objektum használható a művelet állapotának figyelésére.
 
-1. Hozzon létre egy replikációs házirendet nevű *ReplicationPolicy* a VMware virtuális gépek replikálása az Azure-bA a megadott tulajdonságokkal.
+1. Hozzon létre egy *ReplicationPolicy* nevű replikációs házirendet a VMWare virtuális gépek Azure-ba történő replikálásához a megadott tulajdonságokkal.
 
    ```azurepowershell
    $Job_PolicyCreate = New-AzRecoveryServicesAsrPolicy -VMwareToAzure -Name "ReplicationPolicy" -RecoveryPointRetentionInHours 24 -ApplicationConsistentSnapshotFrequencyInHours 4 -RPOWarningThresholdInMinutes 60
@@ -232,15 +232,15 @@ Ebben a lépésben két replikációs házirendek jönnek létre. A VMware virtu
    Errors           : {}
    ```
 
-2. A feladat-visszavétel az Azure-ból helyszíni VMware-hely használandó replikációs szabályzat létrehozásához.
+2. Hozzon létre egy replikációs házirendet, amelyet az Azure-ból a helyszíni VMware-helyre történő feladat-visszavételhez kíván használni.
 
    ```azurepowershell
    $Job_FailbackPolicyCreate = New-AzRecoveryServicesAsrPolicy -AzureToVMware -Name "ReplicationPolicy-Failback" -RecoveryPointRetentionInHours 24 -ApplicationConsistentSnapshotFrequencyInHours 4 -RPOWarningThresholdInMinutes 60
    ```
 
-   Használja a feladat részleteit a *$Job_FailbackPolicyCreate* nyomon követéséhez a művelet befejezését.
+   A művelet befejezésének nyomon követéséhez használja a *$Job _FailbackPolicyCreate* található feladatok részleteit.
 
-   * Hozzon létre egy replikációs házirendek a konfigurációs kiszolgálóval leképezésére védelmitároló-leképezés.
+   * Hozzon létre egy védelmi tároló hozzárendelést a replikációs házirendek a konfigurációs kiszolgálóval való leképezéséhez.
 
    ```azurepowershell
    #Get the protection container corresponding to the Configuration Server
@@ -277,9 +277,9 @@ Ebben a lépésben két replikációs házirendek jönnek létre. A VMware virtu
 
    ```
 
-## <a name="add-a-vcenter-server-and-discover-vms"></a>Adja hozzá a vCenter-kiszolgáló és a virtuális gépek felderítése
+## <a name="add-a-vcenter-server-and-discover-vms"></a>VCenter-kiszolgáló hozzáadása és virtuális gépek felderítése
 
-Adjon hozzá egy vCenter-kiszolgáló IP-cím vagy állomásnév alapján. A **-port** paraméter meghatározza azt a portot szeretne csatlakozni, a vCenter-kiszolgáló **-név** paraméter adja meg egy rövid nevet a vCenter-kiszolgáló és a **-fiók** a paraméter a fiók leíró használatával a vCenter-kiszolgáló által kezelt virtuális gépek felderítése a konfigurációs kiszolgálón.
+Adjon hozzá egy vCenter Server IP-cím vagy állomásnév alapján. A **-port** paraméter határozza meg, hogy a vCenter-kiszolgáló melyik porton csatlakozik a (z) **-Name** paraméterhez a vCenter-kiszolgálóhoz való csatlakozáshoz használt felhasználóbarát név, a **-Account** paraméter pedig a vCenter-kiszolgáló által kezelt virtuális gépek felderítéséhez használt fiók leíróját adja meg a konfigurációs kiszolgálón.
 
 ```azurepowershell
 # The $AccountHandles[0] variable holds details of vCenter_account
@@ -314,14 +314,14 @@ Tasks            : {Adding vCenter server}
 Errors           : {}
 ```
 
-## <a name="create-storage-accounts-for-replication"></a>Replikáció a storage-fiókok létrehozása
+## <a name="create-storage-accounts-for-replication"></a>Storage-fiókok létrehozása replikáláshoz
 
-**Felügyelt lemezre írni, használjon [Powershell Az.RecoveryServices modul 2.0.0-s](https://www.powershellgallery.com/packages/Az.RecoveryServices/2.0.0-preview) és újabb verziók esetében.** Log storage-fiók létrehozása csak szükséges. Javasoljuk, hogy egy standard szintű fiók típusa és az LRS redundancia használja, mivel csak ideiglenes naplók tárolására szolgál. Győződjön meg arról, hogy a tárfiók létrejött-e ugyanabban a régióban az Azure és a tárolónak.
+**A felügyelt lemezre való íráshoz használja a [PowerShellt az. recoveryservices szolgáltatónál modul 2.0.0](https://www.powershellgallery.com/packages/Az.RecoveryServices/2.0.0-preview) -től kezdődően.** Csak a log Storage-fiók létrehozását igényli. Ajánlott szabványos fióktípus és LRS redundancia használata, mivel csak ideiglenes naplók tárolására szolgál. Győződjön meg arról, hogy a Storage-fiók ugyanabban az Azure-régióban lett létrehozva, mint a tároló.
 
-Egy Az.RecoveryServices modul régebbi, mint 2.0.0-s verziójának használatakor a következő lépések segítségével storage-fiókok létrehozása. A storage-fiókok segítségével később virtuális gépek replikálása. Győződjön meg arról, hogy a tárfiókok ugyanabban a régióban az Azure és a tárolónak jönnek létre. Ezt a lépést kihagyhatja, ha azt tervezi, hogy egy meglévő tárfiókot replikáláshoz használni.
+Ha az az. Recoveryservices szolgáltatónál modul 2.0.0-nál régebbi verzióját használja, a következő lépésekkel hozhatja létre a Storage-fiókokat. Ezek a Storage-fiókok később a virtuális gépek replikálásához használatosak. Győződjön meg arról, hogy a Storage-fiókok ugyanabban az Azure-régióban jönnek létre, mint a tároló. Ezt a lépést kihagyhatja, ha egy meglévő Storage-fiókot kíván használni a replikáláshoz.
 
 > [!NOTE]
-> A helyszíni virtuális gépek premium storage-fiók replikálásakor kell egy további standard szintű storage-fiókot (naplótárolási fiók). A naplózási tárfiók a replikációs naplók egy köztes tárolóként tárolja, mindaddig, amíg a naplók a prémium szintű storage cél alkalmazhatók.
+> Ha a helyszíni virtuális gépeket prémium szintű Storage-fiókba replikálja, meg kell adnia egy további szabványos Storage-fiókot (log Storage-fiók). A log Storage-fiók közbenső tárolóként tárolja a replikálási naplókat, amíg a naplók nem alkalmazhatók a Premium Storage-célra.
 >
 
 ```azurepowershell
@@ -335,27 +335,27 @@ $ReplicationStdStorageAccount= New-AzStorageAccount -ResourceGroupName "VMwareDR
 
 ## <a name="replicate-vmware-vms"></a>VMware virtuális gépek replikálása
 
-A virtuális gépek számára, hogy a vCenter-kiszolgáló felderítése körülbelül 15 – 20 percet vesz igénybe. Miután felderített, egy védhető objektum az Azure Site Recoveryben jön létre minden felderített virtuális géphez. Ebben a lépésben a felderített virtuális gépek közül három replikálódnak az előző lépésben létrehozott Azure Storage-fiókokat.
+Körülbelül 15-20 percet vesz igénybe, hogy a rendszer felderítse a virtuális gépeket a vCenter-kiszolgálóról. A felderítést követően a rendszer létrehoz egy Protected Item objektumot az egyes felderített virtuális gépek Azure Site Recoveryban. Ebben a lépésben a felderített virtuális gépek közül három replikálódik az előző lépésben létrehozott Azure Storage-fiókokra.
 
-Szüksége lesz a felderített virtuális gépek védelme érdekében a következő adatokat:
+A felderített virtuális gépek elleni védelemhez a következő adatokra lesz szüksége:
 
-* Replikálandó védhető.
-* A tárfiókot, amelybe replikálhatók a virtuális gép (csak ha tárfiókba replikál). 
-* Premium storage-fiók vagy egy felügyelt lemezt a virtuális gépek védelme a naplók tárolásához szükséges.
-* A Folyamatkiszolgáló replikációs használatra. A folyamat rendelkezésre álló kiszolgálók listáját olvassa és menti a ***$ProcessServers [0]***  *(horizontális Felskálázás-ProcessServer)* és ***$ProcessServers [1]*** *(ConfigurationServer)* változókat.
-* A fiókot, amellyel a leküldéses telepítés a mobilitási szolgáltatás a gépek szoftvereket. A rendelkezésre álló fiókok listájának lekérése és tárolja a ***$AccountHandles*** változó.
-* A védelmitároló-leképezés használatos replikációt a replikációs házirend.
-* Az erőforráscsoport, amelyben a virtuális gépek feladatátvételi kell létrehozni.
-* Szükség esetén az Azure virtuális hálózat és alhálózat, amelyhez a feladatátviteli virtuális géphez kell csatlakoztatni.
+* A replikálható védett elemek.
+* A virtuális gép (csak a Storage-fiókba való replikálás esetén) replikálására szolgáló Storage-fiók. 
+* A virtuális gépek Premium Storage-fiókba vagy felügyelt lemezre való védeleméhez naplófájlra van szükség.
+* A replikáláshoz használandó folyamat-kiszolgáló. A folyamat rendelkezésre álló kiszolgálók listáját olvassa és menti a ***$ProcessServers [0]***  *(horizontális Felskálázás-ProcessServer)* és ***$ProcessServers [1]*** *(ConfigurationServer)* változókat.
+* Az a fiók, amellyel leküldheti a mobilitási szolgáltatás szoftverét a gépekre. Az elérhető fiókok listája a ***$AccountHandles*** változóban lett beolvasva és tárolva.
+* A replikáláshoz használni kívánt replikációs házirend védelmi tárolójának leképezése.
+* Az az erőforráscsoport, amelyben a virtuális gépeket létre kell hozni a feladatátvétel során.
+* Opcionálisan azt az Azure-beli virtuális hálózatot és alhálózatot, amelyhez a feladatátvételi virtuális gépet csatlakoztatni kell.
 
-Most már az ebben a táblázatban megadott beállításokat használja a következő virtuális gépek replikálása
+Most replikálja a következő virtuális gépeket az ebben a táblázatban megadott beállítások használatával.
 
 
-|Virtuális gép  |Folyamatkiszolgáló        |Tárfiók              |Log Storage-fiók  |Szabályzat           |A fiók a mobilitási szolgáltatás telepítése|Céloldali erőforráscsoport  | Cél virtuális hálózattal  |Cél alhálózat  |
+|Virtuális gép  |Kiszolgáló feldolgozása        |Tárfiók              |Log Storage-fiók  |Szabályzat           |Fiók a mobilitási szolgáltatás telepítéséhez|Cél erőforráscsoport  | Célként megadott virtuális hálózat  |Célként megadott alhálózat  |
 |-----------------|----------------------|-----------------------------|---------------------|-----------------|-----------------------------------------|-----------------------|-------------------------|---------------|
-|CentOSVM1       |ConfigurationServer   |–| logstorageaccount1                 |ReplicationPolicy|LinuxAccount                             |VMwareDRToAzurePs      |ASR-vnet                 |Subnet-1       |
-|Win2K12VM1       |ScaleOut-ProcessServer|premiumstorageaccount1       |logstorageaccount1   |ReplicationPolicy|WindowsAccount                           |VMwareDRToAzurePs      |ASR-vnet                 |Subnet-1       |   
-|CentOSVM2       |ConfigurationServer   |replicationstdstorageaccount1| –                 |ReplicationPolicy|LinuxAccount                             |VMwareDRToAzurePs      |ASR-vnet                 |Subnet-1       |   
+|CentOSVM1       |ConfigurationServer   |N/A| logstorageaccount1                 |ReplicationPolicy|LinuxAccount                             |VMwareDRToAzurePs      |ASR-vnet                 |Alhálózat – 1       |
+|Win2K12VM1       |ScaleOut-ProcessServer|premiumstorageaccount1       |logstorageaccount1   |ReplicationPolicy|WindowsAccount                           |VMwareDRToAzurePs      |ASR-vnet                 |Alhálózat – 1       |   
+|CentOSVM2       |ConfigurationServer   |replicationstdstorageaccount1| N/A                 |ReplicationPolicy|LinuxAccount                             |VMwareDRToAzurePs      |ASR-vnet                 |Alhálózat – 1       |   
 
 
 ```azurepowershell
@@ -390,9 +390,9 @@ $Job_EnableReplication3 = New-AzRecoveryServicesAsrReplicationProtectedItem -VMw
 
 ```
 
-A engedélyezése replikációs feladat sikeres befejeződése után a virtuális gépek kezdeti replikációs elindult. Kezdeti replikálás eltarthat egy ideig, attól függően, a replikálandó adatok mennyisége és a rendelkezésre álló sávszélesség replikálásra. Kezdeti replikálás befejezése után a virtuális gép áthelyezése egy védett állapotban. A virtuális gép egy feladatátvételi tesztet a virtuális gép eléri a védett állapotba hajthat végre, miután hozzáadása helyreállítási tervekhez stb.
+Miután a replikálás engedélyezése művelet sikeresen befejeződik, a rendszer elindítja a kezdeti replikálást a virtuális gépeken. A kezdeti replikálás a replikálható adatmennyiségtől és a replikáláshoz rendelkezésre álló sávszélességtől függően eltarthat egy ideig. A kezdeti replikálás befejeződése után a virtuális gép védett állapotba kerül. Miután a virtuális gép elérte a védett állapotot, elvégezheti a virtuális gép feladatátvételi tesztjét, hozzáadhatja azt helyreállítási tervekhez stb.
 
-A replikációs állapotot és a replikáció állapotát a virtuális gépet a Get-ASRReplicationProtectedItem parancsmaggal ellenőrizheti.
+A Get-ASRReplicationProtectedItem parancsmaggal megtekintheti a virtuális gép replikációs állapotát és a replikáció állapotát.
 
 ```azurepowershell
 Get-AzRecoveryServicesAsrReplicationProtectedItem -ProtectionContainer $ProtectionContainer | Select FriendlyName, ProtectionState, ReplicationHealth
@@ -405,17 +405,17 @@ CentOSVM2    InitialReplicationInProgress    Normal
 Win2K12VM1   Protected                       Normal
 ```
 
-## <a name="configure-failover-settings"></a>Feladatátvétel-beállítások konfigurálása
+## <a name="configure-failover-settings"></a>Feladatátvételi beállítások konfigurálása
 
-Védett gépek feladatátvételi beállításait a Set-ASRReplicationProtectedItem parancsmaggal lehet frissíteni. A beállításokat, amelyek ezzel a parancsmaggal lehet frissíteni a következők:
-* A feladatátvételkor létrehozandó a virtuális gép neve
-* A virtuális gép a feladatátvételkor létrehozandó Virtuálisgép-mérete
-* Az Azure virtuális hálózatot és alhálózatot, amelyet a hálózati adaptereket a virtuális gép feladatátvételi ekkor csatlakoznia kell
-* Felügyelt lemezekre történő feladatátvétel
-* A alkalmazni az Azure Hybrid Use Benefit juttatás
-* Statikus IP-cím hozzárendelését a cél virtuális hálózattal, hozzá kell rendelni a virtuális gép a feladatátvételt.
+A védett gépek feladatátvételi beállításai a set-ASRReplicationProtectedItem parancsmag használatával frissíthetők. A parancsmaggal frissíthető beállítások némelyike a következő lehet:
+* A feladatátvételkor létrehozandó virtuális gép neve
+* A feladatátvételkor létrehozandó virtuális gép VM-mérete
+* Azure-beli virtuális hálózat és alhálózat, amely a virtuális gép hálózati adaptereit csatlakoztatni kell a feladatátvételhez
+* Feladatátvétel felügyelt lemezekre
+* Azure Hybrid Use Benefit alkalmazása
+* Rendeljen hozzá egy statikus IP-címet a cél virtuális hálózatból, amelyet a virtuális géphez szeretne rendelni a feladatátvételkor.
 
-Ebben a példában a Virtuálisgép-méretet a virtuális gép hozható létre a virtuális gép feladatátvételi frissítjük *Win2K12VM1* , és adja meg, hogy a virtuális gép használata felügyelt lemezek a feladatátvételkor.
+Ebben a példában a virtuális gép *Win2K12VM1* a feladatátvételen létrehozandó virtuális gép virtuálisgép-méretét frissítjük, és azt, hogy a virtuális gép felügyelt lemezeket használjon a feladatátvétel során.
 
 ```azurepowershell
 $ReplicatedVM1 = Get-AzRecoveryServicesAsrReplicationProtectedItem -FriendlyName "Win2K12VM1" -ProtectionContainer $ProtectionContainer
@@ -444,7 +444,7 @@ Errors           : {}
 
 ## <a name="run-a-test-failover"></a>Feladatátvételi teszt futtatása
 
-1. Vészhelyreállítási próba (teszt feladatátvétel) futtassa az alábbiak szerint:
+1. Futtasson egy DR-részletezést (feladatátvételi tesztet) a következőképpen:
 
    ```azurepowershell
    #Test failover of Win2K12VM1 to the test virtual network "V2TestNetwork"
@@ -455,19 +455,19 @@ Errors           : {}
    #Start the test failover operation
    $TFOJob = Start-AzRecoveryServicesAsrTestFailoverJob -ReplicationProtectedItem $ReplicatedVM1 -AzureVMNetworkId $TestFailovervnet.Id -Direction PrimaryToRecovery
    ```
-2. A teszt feladatátvételi feladat sikeres befejeződése után láthatja majd, hogy a virtuális gépek utótaggal *"-tesztelése"* (Win2K12VM1-teszt ebben az esetben) az nevére jön létre az Azure-ban.
-3. Most már a teszt virtuális gép feladatátvétele csatlakozhat, és a teszt feladatátvétel érvényesítése.
-4. A Start-ASRTestFailoverCleanupJob parancsmaggal feladatátvételi teszt karbantartása. Ez a művelet törli a teszt feladatátvételi művelet részeként létrehozott virtuális gépbe.
+2. Miután a feladatátvételi teszt sikeresen befejeződik, megfigyelheti, hogy egy *"-test"* utótagú virtuális gép (ebben az esetben Win2K12VM1-test) a neve az Azure-ban jön létre.
+3. Most már csatlakozhat a teszthez a virtuális gépen, és ellenőrizheti a feladatátvételi tesztet.
+4. Törölje a feladatátvételi tesztet a Start-ASRTestFailoverCleanupJob parancsmag használatával. Ez a művelet törli a feladatátvételi teszt részeként létrehozott virtuális gépet.
 
    ```azurepowershell
    $Job_TFOCleanup = Start-AzRecoveryServicesAsrTestFailoverCleanupJob -ReplicationProtectedItem $ReplicatedVM1
    ```
 
-## <a name="fail-over-to-azure"></a>Feladatátvétel az Azure-bA
+## <a name="fail-over-to-azure"></a>Feladatátvétel az Azure-ba
 
-Ebben a lépésben azt átadja a feladatokat a virtuális gép Win2K12VM1 egy adott helyreállítási pontot.
+Ebben a lépésben a virtuális gép Win2K12VM1 egy adott helyreállítási pontra hajtjuk végre.
 
-1. A feladatátvétel végrehajtásához rendelkezésre álló helyreállítási pontok listájának lekérése:
+1. A feladatátvételhez használható elérhető helyreállítási pontok listájának beolvasása:
    ```azurepowershell
    # Get the list of available recovery points for Win2K12VM1
    $RecoveryPoints = Get-AzRecoveryServicesAsrRecoveryPoint -ReplicationProtectedItem $ReplicatedVM1
@@ -490,7 +490,7 @@ Ebben a lépésben azt átadja a feladatokat a virtuális gép Win2K12VM1 egy ad
    Succeeded
    ```
 
-2. Miután sikeresen megtörtént, akkor feladatátvétel érvényesítése a feladatátvételi művelet, és állítsa be a visszirányú replikálás az Azure-ból biztonsági a helyszíni VMware-hely.
+2. A feladatátvétel sikeres végrehajtása után véglegesítheti a feladatátvételi műveletet, és visszaállíthatja a visszirányú replikálást az Azure-ból a helyszíni VMware-helyre.
 
-## <a name="next-steps"></a>További lépések
-Ismerje meg, hogyan további feladatainak automatizálása a [Azure Site Recovery PowerShell-referencia](https://docs.microsoft.com/powershell/module/Az.RecoveryServices).
+## <a name="next-steps"></a>Következő lépések
+További feladatok automatizálása a [Azure site Recovery PowerShell-hivatkozás](https://docs.microsoft.com/powershell/module/Az.RecoveryServices)használatával.

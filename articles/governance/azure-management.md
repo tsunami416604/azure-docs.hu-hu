@@ -1,17 +1,14 @@
 ---
 title: Az Azure Management áttekintése – Azure-irányítás
 description: A felügyeleti területeket, az Azure-alkalmazások és erőforrások az Azure felügyeleti eszközökhöz a tartalmakra mutató hivatkozásokat áttekintése.
-author: DCtheGeek
-ms.service: governance
-ms.topic: article
 ms.date: 12/06/2018
-ms.author: dacoulte
-ms.openlocfilehash: 2535b64380f67da440698c7577840d5319e6ca4f
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.topic: article
+ms.openlocfilehash: e85d5162146fb716ed9f846dc5a828d83c669627
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71978549"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74013908"
 ---
 # <a name="overview-of-management-services-in-azure"></a>Az Azure-beli felügyeleti szolgáltatások áttekintése
 
@@ -27,7 +24,7 @@ Nincs olyan Azure-szolgáltatás teljesen beírja egy adott felügyeleti terüle
 
 A következő szakaszok röviden ismertetik az egyes felügyeleti területeket, és az ezek kezelésére hivatott Azure-szolgáltatások részletes ismertetésére mutató hivatkozásokat adnak meg.
 
-## <a name="monitor"></a>Figyelés
+## <a name="monitor"></a>Monitoring
 
 Figyelés gyűjtése és adatok naplózása, a teljesítményét, állapotát és az erőforrások rendelkezésre állásának elemzése. Egy hatékony monitorozási stratégia segít megérteni a összetevők, és növelni az üzemidőt értesítésekkel a műveletet. Olvasási figyelését, amely ismerteti a különböző szolgáltatások nagy mennyiségben használta [figyelése az Azure-alkalmazások és erőforrások](../monitoring/monitoring-overview.md).
 

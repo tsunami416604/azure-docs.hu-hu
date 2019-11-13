@@ -1,19 +1,19 @@
 ---
-title: Helyszíni VMware-kiszolgálók előkészítése VMware virtuális gépek az Azure-ba való vészhelyreállításához | Microsoft Docs
+title: Felkészülés a VMware virtuális gép vész-helyreállítására Azure Site Recovery
 description: Ismerje meg, hogyan készíthet elő VMware-kiszolgálókat az Azure-ba irányuló vészhelyreállításhoz az Azure Site Recovery szolgáltatással.
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 08/22/2019
+ms.date: 11/12/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 0f62ee1a79126f456b993c7caf2de3741637f710
-ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
+ms.openlocfilehash: c82f8130340dfc3848159a6f88db0a304a3ab149
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70147804"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73953749"
 ---
 # <a name="prepare-on-premises-vmware-servers-for-disaster-recovery-to-azure"></a>Helyszíni VMware-kiszolgálók előkészítése az Azure-ba irányuló vészhelyreállításához
 
@@ -68,8 +68,8 @@ Készítse elő a fiókot az alábbiak szerint:
 
 Készítsen elő egy tartományi vagy helyi fiókot, amely rendelkezik a virtuális gépre való telepítéshez szükséges engedélyekkel.
 
-- **Windows rendszerű virtuális gépek**: Ha Windows rendszerű virtuális gépekre kíván telepíteni, ha nem tartományi fiókot használ, tiltsa le a távoli felhasználói hozzáférés-vezérlést a helyi gépen. Ehhez adja hozzá a **LocalAccountTokenFilterPolicy** DWORD bejegyzést 1 értékkel a **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System** helyen található beállításjegyzékhez.
-- **Linux rendszerű virtuális gépek**: Ha Linux virtuális gépekre kíván telepíteni, készítsen elő egy rendszergazdai fiókot a Linux-forráskiszolgálón.
+- **Windows rendszerű virtuális gépek**: Ha Windows rendszerű virtuális gépekre kíván telepíteni, de nem használ tartományi fiókot, tiltsa le a távoli felhasználói hozzáférés-vezérlést a helyi számítógépen. Ehhez adja hozzá a **LocalAccountTokenFilterPolicy** DWORD bejegyzést 1 értékkel a **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System** helyen található beállításjegyzékhez.
+- **Linux rendszerű virtuális gépek**: Ha Linux rendszerű virtuális gépekre kíván telepíteni, készítsen elő egy rendszergazdai fiókot a Linux-forráskiszolgálón.
 
 
 ## <a name="check-vmware-requirements"></a>A VMware követelményeinek ellenőrzése
@@ -94,7 +94,7 @@ Ha a feladatátvételt követően RDP segítségével szeretne kapcsolódni a Wi
 - **Helyek közötti VPN-elérés**:
     - Feladatátvétel előtt engedélyezze az RDP-t a helyszíni gépen.
     - Engedélyezze az RDP-t a **Windows tűzfal** -> **Engedélyezett alkalmazások és szolgáltatások** területén a **Tartomány és Privát** hálózatok számára.
-    - Ellenőrizze, hogy az operációs rendszer tárolóhálózati szabályzata **OnlineAll** értékre van-e állítva. [További információk](https://support.microsoft.com/kb/3031135).
+    - Ellenőrizze, hogy az operációs rendszer tárolóhálózati szabályzata **OnlineAll** értékre van-e állítva. [Részletek](https://support.microsoft.com/kb/3031135).
 - A virtuális gépen nem lehetnek függőben lévő Windows-frissítések a feladatátvétel elindításakor. Ha vannak, akkor nem fog tudni bejelentkezni a virtuális gépre, amíg a frissítés be nem fejeződik.
 - A feladatátvételt követően ellenőrizze a **Rendszerindítási diagnosztika** részt a Windows Azure virtuális gépen a virtuális gép képernyőképének megtekintéséhez. Ha nem sikerül, ellenőrizze, hogy fut-e a virtuális gép, majd tekintse át a [hibaelhárítási tippeket](https://social.technet.microsoft.com/wiki/contents/articles/31666.troubleshooting-remote-desktop-connection-after-failover-using-asr.aspx).
 
@@ -108,13 +108,13 @@ Ha a feladatátvételt követően SSH segítségével szeretne kapcsolódni a Li
 
 
 ## <a name="failback-requirements"></a>Feladat-visszavételre vonatkozó követelmények
-Ha azt tervezi, hogy visszaadja a feladatokat a helyszíni helynek, a feladat-visszavételhez számos előfeltételt kell megadnia. [](vmware-azure-reprotect.md##before-you-begin) Ezeket most is előkészítheti, de nem szükséges. Az Azure-ba történő feladatátvétel után is előkészítheti a feladatokat.
+Ha azt tervezi, hogy visszaadja a feladatokat a helyszíni helynek, a feladat- [visszavételhez számos előfeltételt](vmware-azure-reprotect.md##before-you-begin)kell megadnia. Ezeket most is előkészítheti, de nem szükséges. Az Azure-ba történő feladatátvétel után is előkészítheti a feladatokat.
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Állítsa be a vész-helyreállítást. Több virtuális gép replikálásakor tervezze meg a kapacitást.
 > [!div class="nextstepaction"]
-> [Az Azure-ba irányuló vész-helyreállítás beállítása a VMWare virtuális gépek](vmware-azure-tutorial.md)
-> számára a[kapacitás](site-recovery-deployment-planner.md)megtervezése.
+> [Állítsa be a vész-helyreállítást az Azure-ba VMWare virtuális gépekhez
+> a](vmware-azure-tutorial.md) [kapacitás megtervezését](site-recovery-deployment-planner.md).

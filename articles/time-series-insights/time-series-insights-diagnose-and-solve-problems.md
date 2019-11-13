@@ -1,6 +1,6 @@
 ---
-title: Problémák diagnosztizálása, hibaelhárítása és megoldása a Azure Time Series Insightsban | Microsoft Docs
-description: Ez a cikk a Azure Time Series Insights-környezetben felmerülő gyakori problémák diagnosztizálását, hibaelhárítását és megoldását ismerteti.
+title: Problémák diagnosztizálása, hibaelhárítása és megoldása – Azure Time Series Insights | Microsoft Docs
+description: Ez a cikk a Azure Time Series Insights-környezetében előforduló gyakori problémák diagnosztizálását, hibaelhárítását és megoldását ismerteti.
 ms.service: time-series-insights
 services: time-series-insights
 author: deepakpalled
@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: troubleshooting
 ms.date: 10/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: 7c9dcdf43e819e20126f948fa08f4f8f476036ac
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: ca38ebb015552042591fb4cc6b7edfe99527e79f
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72991268"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74007053"
 ---
 # <a name="diagnose-and-solve-issues-in-your-time-series-insights-environment"></a>A Time Series Insights-környezet problémáinak diagnosztizálása és megoldása
 
@@ -34,7 +34,7 @@ A [Azure Time Series Insights Explorer](https://insights.timeseries.azure.com) s
 
 ### <a name="cause-a-event-source-data-isnt-in-json-format"></a>A ok: az eseményforrás-adatforrások nem JSON formátumúak
 
-A Azure Time Series Insights csak a JSON-adatkezelést támogatja. JSON-minták esetében lásd: [támogatott JSON-alakzatok](./how-to-shape-query-json.md).
+A Azure Time Series Insights csak a JSON-adatkezelést támogatja. JSON-minták, lásd: [támogatott JSON-alakzatok](./how-to-shape-query-json.md).
 
 ### <a name="cause-b-the-event-source-key-is-missing-a-required-permission"></a>B ok: az eseményforrás kulcsa hiányzik egy szükséges engedély
 
@@ -44,7 +44,7 @@ A Azure Time Series Insights csak a JSON-adatkezelést támogatja. JSON-minták 
 
 * Az Azure Event Hubsban található Event hub esetében meg kell adnia a **figyelési** engedélyekkel rendelkező kulcsot. Az **olvasási** vagy a **kezelési** szabályzatok egyike sem fog működni, mert mindkettő **figyelési** engedéllyel rendelkezik.
 
-   [az Event hub figyelési engedélyeinek![](media/diagnose-and-solve-problems/eventhub-listen-permissions.png)](media/diagnose-and-solve-problems/eventhub-listen-permissions.png#lightbox)
+   [az Event hub figyelési engedélyeinek ![](media/diagnose-and-solve-problems/eventhub-listen-permissions.png)](media/diagnose-and-solve-problems/eventhub-listen-permissions.png#lightbox)
 
 ### <a name="cause-c-the-consumer-group-provided-isnt-exclusive-to-time-series-insights"></a>C: a megadott fogyasztói csoport nem kizárólag Time Series Insights
 
@@ -111,7 +111,7 @@ A következő értékek nem láthatók:
 
 - *(ABC)* : azt jelzi, hogy Time Series Insights karakterláncként olvassa be az adatértékeket.
 - *Naptár ikonja*: azt jelzi, hogy Time Series Insights az adatértéket *datetime*típusúként olvassa.
-- *#* : azt jelzi, hogy a Time Series Insights egész számként olvassa be az adatértékeket.
+- *#* : azt jelzi, hogy a Time Series Insights egész számként olvassa az adatértékeket.
 
 ## <a name="next-steps"></a>Következő lépések
 

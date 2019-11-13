@@ -1,6 +1,6 @@
 ---
-title: Ismételt védelem sikertelen volt az Azure virtuális gépen az elsődleges Azure régióba az Azure Site Recoveryvel |} A Microsoft Docs
-description: Ismerteti, hogyan lehet ismételt védelme az Azure-beli virtuális gépek egy másodlagos régióban egy elsődleges régióban, az Azure Site Recovery a feladatátvétel után.
+title: Az Azure-beli virtuális gépek ismételt védetté Azure Site Recoveryával az elsődleges régióban | Microsoft Docs
+description: Ismerteti, hogyan lehet az Azure-beli virtuális gépeket a feladatátvétel után, a másodlagosról az elsődleges régióba Azure Site Recovery használatával újra védelemmel ellátni.
 services: site-recovery
 author: rajani-janaki-ram
 manager: gauravd
@@ -8,90 +8,90 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: rajanaki
-ms.openlocfilehash: eabb7d194a3ef65282befab1ae59e85ba56f2f5b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 955e1b84f897a5eb877033e0a58b8d661f143a14
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65472156"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73954191"
 ---
-# <a name="reprotect-failed-over-azure-vms-to-the-primary-region"></a>Ismételt védelem sikertelen volt az Azure virtuális gépen az elsődleges régióba
+# <a name="reprotect-failed-over-azure-vms-to-the-primary-region"></a>Az Azure-beli virtuális gépek ismételt védetté váltása az elsődleges régióba
 
 
-Ha Ön [átadja a feladatokat](site-recovery-failover.md) Azure virtuális gépek egyik régióból egy másik használatával [Azure Site Recovery](site-recovery-overview.md), a virtuális gépek rendszerindítási a másodlagos régióban, nem védett állapotban. Ha visszavétel a virtuális gépek az elsődleges régióra, tegye a következőt szeretné:
+Ha az Azure-beli virtuális gépeket az egyik régióból a másikba [Azure site Recovery](site-recovery-overview.md)használatával hajtja végre, a virtuális gépek [nem](site-recovery-failover.md) védett állapotban indulnak el a másodlagos régióban. Ha a virtuális gépeket az elsődleges régiónak adja vissza, a következőket kell tennie:
 
-- A másodlagos régió virtuális gépek ismételt védelme, hogy megkezdődhessen replikálni az elsődleges régióba.
-- Miután ismételt védelem befejezése és a virtuális gépeket replikál, akkor a feladatokat őket a másodlagos elsődleges régió felé.
+- Állítsa be újra a virtuális gépeket a másodlagos régióban, hogy azok az elsődleges régióba replikálódnak.
+- Miután az ismételt védelem befejeződik, és a virtuális gépek replikálódnak, a másodlagosról az elsődleges régióba végezheti a feladatátvételt.
 
 ## <a name="prerequisites"></a>Előfeltételek
-1. A virtuális gép feladatátvétel az elsődleges másodlagos régióba véglegesíteni kell lennie.
-2. A cél elsődleges helyének elérhetőnek kell lennie, és meg kell tudni eléréséhez, vagy hozzon létre erőforrásokat az adott régióban.
+1. A virtuális gép feladatátvételét az elsődlegesről a másodlagos régióba kell véglegesíteni.
+2. Az elsődleges célhelynek elérhetőnek kell lennie, és képesnek kell lennie az adott régióban lévő erőforrások elérésére vagy létrehozására.
 
-## <a name="reprotect-a-vm"></a>A virtuális gép ismételt védelme
+## <a name="reprotect-a-vm"></a>Virtuális gép újravédése
 
-1. A **tároló** > **replikált elemek**, kattintson a jobb gombbal a feladatátvételen átesett virtuális gép, és válassza ki **ismételt védelem**. Az ismételt védelem irányát az elsődleges, másodlagos kell megjelennie.
+1. A tárolóban > **replikált elemek**területen kattintson a jobb gombbal a feladatátvételen átadott virtuális gépre, majd **válassza az** **ismételt védelem**lehetőséget. Az ismételt védelem irányának másodlagosról elsődlegesre kell mutatnia.
 
-   ![Az ismételt védelem](./media/site-recovery-how-to-reprotect-azure-to-azure/reprotect.png)
+   ![Ismételt védelme](./media/site-recovery-how-to-reprotect-azure-to-azure/reprotect.png)
 
-2. Tekintse át az erőforrás csoport, hálózati, tárolási és rendelkezésre állási csoportokat. Ezután kattintson az **OK** gombra. Ha vannak megjelölve az új erőforrásokat, akkor jönnek létre az ismételt védelem folyamat részeként.
-3. Az ismételt védelem feladat feltölti a célhelyet, a legújabb adatokkal. Amely befejezését követően a változásreplikálás kerül sor. Ezt követően is átadja a feladatokat az elsődleges hely. Kiválaszthatja a tárfiók, vagy a hálózati során használni kívánt ismételt védelme, a Testreszabás beállítás használatával.
+2. Tekintse át az erőforráscsoportot, a hálózatot, a tárterületet és a rendelkezésre állási készleteket. Ezután kattintson az **OK** gombra. Ha van olyan erőforrás, amely újként van megjelölve, akkor az ismételt védelmi folyamat részeként jönnek létre.
+3. A védelmi feladatsor a legfrissebb adatokkal magot a célhelyre. A befejezést követően a különbözeti replikáció zajlik. Ezután visszatérhet az elsődleges helyre. Kiválaszthatja a Storage-fiókot vagy azt a hálózatot, amelyet az ismételt védelem során használni szeretne, a Testreszabás lehetőség használatával.
 
-   ![A beállítás testreszabása](./media/site-recovery-how-to-reprotect-azure-to-azure/customize.png)
+   ![Testreszabási lehetőség](./media/site-recovery-how-to-reprotect-azure-to-azure/customize.png)
 
 ### <a name="customize-reprotect-settings"></a>Az ismételt védelem beállításainak testreszabása
 
-Testre szabhatja a következő tulajdonságokat a cél VMe ismételt védelem során.
+Az ismételt védelem során a cél VMe következő tulajdonságait szabhatja testre.
 
 ![Testreszabás](./media/site-recovery-how-to-reprotect-azure-to-azure/customizeblade.png)
 
 |Tulajdonság |Megjegyzések  |
 |---------|---------|
-|Céloldali erőforráscsoport     | Módosítsa a céloldali erőforráscsoport, amelyben a virtuális gép létrejött. Ismételt védelem részeként a cél virtuális gép törlődik. Választhat egy új erőforráscsoportot, amelybe a feladatátvételt követően a virtuális gép létrehozásához.        |
-|Cél virtuális hálózattal     | A célhálózat nem módosítható a védelem-újrabeállítás során. Ha módosítani szeretné a hálózaton, ismételje meg a hálózatleképezést.         |
-|Cél tárterület (a másodlagos virtuális gép nem használ felügyelt lemezeket)     | A storage-fiók, amely a virtuális gép a feladatátvételt követően módosíthatja.         |
-|Replikált felügyelt lemezek (a másodlagos virtuális gép felügyelt lemezeket használ.)    | A Site Recovery replika felügyelt lemezeket az elsődleges régióból történő tükrözésének a másodlagos virtuális gép felügyelt lemezeket hoz létre.         |
-|Cache Storage     | Megadhatja a replikálás során használandó gyorsítótárfiókot. Alapértelmezés szerint egy új gyorsítótárfiók van hozhatók létre, ha még nem létezik.         |
-|Rendelkezésre állási csoport     |Ha a másodlagos régió virtuális gép egy rendelkezésre állási csoport része, választhat egy rendelkezésre állási csoportot a céloldali virtuális Gépet az elsődleges régióba. Alapértelmezés szerint a Site Recovery megpróbálja megkeresni a meglévő rendelkezésre állási az elsődleges régióban, és használja azt. Testreszabás megadhat egy új rendelkezésre állási csoportot.         |
+|Cél erőforráscsoport     | Módosítsa a célként megadott erőforráscsoportot, amelyben a virtuális gép létrejött. Az ismételt védelem részeként a cél virtuális gép törlődik. Kiválaszthat egy új erőforráscsoportot, amely alatt a virtuális gépet a feladatátvételt követően hozza létre.        |
+|Célként megadott virtuális hálózat     | A célként megadott hálózat nem módosítható az újravédelemi feladatokban. A hálózat módosításához ismételje meg a hálózati leképezést.         |
+|Cél tárterület (a másodlagos virtuális gép nem használ felügyelt lemezeket)     | Módosíthatja azt a Storage-fiókot, amelyet a virtuális gép a feladatátvételt követően használ.         |
+|Replika által felügyelt lemezek (a másodlagos virtuális gép felügyelt lemezeket használ)    | A Site Recovery replika felügyelt lemezeket hoz létre az elsődleges régióban, hogy tükrözze a másodlagos virtuális gép felügyelt lemezeit.         |
+|Cache Storage     | Megadhat egy gyorsítótárbeli Storage-fiókot, amelyet a replikáció során használni szeretne. Alapértelmezés szerint a rendszer új gyorsítótárbeli Storage-fiókot hoz létre, ha az nem létezik.         |
+|Rendelkezésre állási csoport     |Ha a másodlagos régióban található virtuális gép egy rendelkezésre állási csoport része, kiválaszthatja a célként megadott virtuális gép rendelkezésre állási csoportját az elsődleges régióban. Alapértelmezés szerint a Site Recovery megpróbálja megkeresni a meglévő rendelkezésre állási készletet az elsődleges régióban, és használja azt. A Testreszabás során megadhat egy új rendelkezésre állási készletet.         |
 
 
-### <a name="what-happens-during-reprotection"></a>Mi történik az ismételt védelem alatt?
+### <a name="what-happens-during-reprotection"></a>Mi történik az ismételt védelem során?
 
-Alapértelmezés szerint a következő történik:
+Alapértelmezés szerint a következők történnek:
 
-1. A gyorsítótárfiók jön létre a régióban, ahol a feladatátvételen átesett virtuális gép fut-e.
-2. Ha a célként megadott tárfiók (az eredeti storage-fiók az elsődleges régióba) nem létezik, a rendszer létrehoz egy új. A hozzárendelt tárfiók nevét az "asr" utótaggal másodlagos virtuális gép által használt tárfiók neve.
-3. Ha a virtuális gép felügyelt lemezeket használ, a replikált felügyelt lemez jön létre az elsődleges régióban, a másodlagos virtuális gép lemezeinek replikált adatok tárolásához.
-4. Ha a cél rendelkezésre állási csoport nem létezik, egy új az ismételt védelmi feladat részeként létrejön, ha szükséges. Ha az ismételt védelem beállításainak testre szabott, a kiválasztott készlet szolgál.
+1. A rendszer létrehoz egy gyorsítótárbeli Storage-fiókot abban a régióban, ahol a feladatátvételen átesett virtuális gép fut.
+2. Ha a célként megadott Storage-fiók (az elsődleges régióban található eredeti Storage-fiók) nem létezik, a rendszer létrehoz egy újat. A hozzárendelt Storage-fiók neve a másodlagos virtuális gép által használt Storage-fiók neve, az "ASR" utótaggal.
+3. Ha a virtuális gép felügyelt lemezeket használ, a replika felügyelt lemezeket az elsődleges régióban hozza létre a rendszer a másodlagos virtuális gép lemezéről replikált adatok tárolásához.
+4. Ha a cél rendelkezésre állási csoport nem létezik, akkor a rendszer egy újat hoz létre az újravédelemi feladatok részeként, ha szükséges. Ha testreszabta az ismételt védelmi beállításokat, a rendszer a kiválasztott készletet használja.
 
-Ha az ismételt védelmi feladat, és a cél virtuális gép létezik indít el, az alábbiak történnek:
+Ha aktivál egy ismételt védelmi feladatot, és a cél virtuális gép létezik, a következők történnek:
 
-1. A virtuális gép ki van kapcsolva, ha céloldalon fut.
-2. Ha a virtuális gép felügyelt lemezeket használ, egy másolatot az eredeti lemezek jönnek létre a "-ASRReplica" utótag. Az eredeti lemezek törlődnek. A "-ASRReplica" másolatok replikációhoz használják.
-3. Ha a virtuális gép nem felügyelt lemezeket használ, a céloldali virtuális gép adatlemezek vannak leválasztott és a replikáció. Az operációsrendszer-lemez egy példányát a létrehozása és csatlakoztatása a virtuális gépen. Az eredeti operációsrendszer-lemez leválasztása, és a replikációhoz használt.
-4. Csak a forrás és a cél lemezzel közötti változásokat szinkronizálja a rendszer. A különbözeti számított összehasonlításával mindkét a lemezeket, és továbbítja. Az alábbi becsült ideje ellenőrzés található.
-5. A szinkronizálás befejeződése után a változásreplikálás kezdődik, és létrehoz egy helyreállítási pontot a replikációs szabályzat megfelelően.
+1. A cél oldali virtuális gép ki van kapcsolva, ha fut.
+2. Ha a virtuális gép felügyelt lemezeket használ, az eredeti lemezek másolata "-ASRReplica" utótaggal jön létre. Az eredeti lemezek törlődnek. A rendszer a "-ASRReplica" másolatokat használja a replikáláshoz.
+3. Ha a virtuális gép nem felügyelt lemezeket használ, a célként megadott virtuális gép adatlemezei le vannak választva, és a replikációhoz használják azokat. A rendszer létrehozza és csatolja az operációsrendszer-lemez másolatát a virtuális gépen. Az eredeti operációsrendszer-lemez le van választva, és a replikációhoz használatos.
+4. A rendszer csak a forrásoldali lemez és a céllemez közötti változásokat szinkronizálja. A különbözeteket a lemezek összevetésével számítjuk ki, majd átvittük. Az alábbi becsült idő ellenőrzésének megkereséséhez.
+5. A szinkronizálás befejeződése után a különbözeti replikáció megkezdődik, és egy helyreállítási pontot hoz létre a replikációs házirenddel összhangban.
 
-Ha az ismételt védelmi feladat indít el, és a cél virtuális gép és a lemezek nem létezik, az alábbiak történnek:
-1. Ha a virtuális gép felügyelt lemezeket használ, replika lemez jön létre a "-ASRReplica" utótag. A "-ASRReplica" másolatok replikációhoz használják.
-2. Ha a virtuális gép nem felügyelt lemezeket használ, a célként megadott tárfiók a replika lemezek jönnek létre.
-3. A teljes lemezek másolja a sikertelen az új célrégió régió keresztül.
-4. A szinkronizálás befejeződése után a változásreplikálás kezdődik, és létrehoz egy helyreállítási pontot a replikációs szabályzat megfelelően.
+Ha aktivál egy ismételt védelmi feladatot, és a cél virtuális gép és a lemezek nem léteznek, a következők történnek:
+1. Ha a virtuális gép felügyelt lemezeket használ, a replika lemezek a "-ASRReplica" utótaggal jönnek létre. A rendszer a "-ASRReplica" másolatokat használja a replikáláshoz.
+2. Ha a virtuális gép nem felügyelt lemezeket használ, a replika lemezeket a cél Storage-fiókban hozza létre a rendszer.
+3. A teljes lemezeket a rendszer átmásolja a feladatátvételi régióból az új célként megadott régióba.
+4. A szinkronizálás befejeződése után a különbözeti replikáció megkezdődik, és egy helyreállítási pontot hoz létre a replikációs házirenddel összhangban.
 
-#### <a name="estimated-time--to-do-the-reprotection"></a>Becsült ideje a az ismételt védelem 
+#### <a name="estimated-time--to-do-the-reprotection"></a>Az ismételt védelem várható ideje 
 
-A legtöbb esetben az Azure Site Recovery nem replikálja a teljes adatokat a forrásrégióban. Az alábbiakban a feltételeket, amelyek azt határozza meg, mennyi adatot replikálni szeretné:
+A legtöbb esetben a Azure Site Recovery nem replikálja a teljes adatforrást a forrásoldali régióba. Az alábbi feltételek határozzák meg az adatreplikációk mennyiségét:
 
-1.  Ha a forrásoldali virtuális gép adatai törölve, sérült vagy nem érhető el, például erőforráscsoport valamilyen okból módosítása és törlése, majd az ismételt védelem befejezése integrációs modul során történik meg, nem szerepel megjeleníthető adat a forrásrégióban használatára a rendelkezésre álló.
-2.  Ha a forrás virtuális gép adatai érhető majd csak különbözeti összehasonlítja a két lemez számított és továbbítja. Ellenőrizze az alábbi táblázatban beolvasni a szükséges becsült idő 
+1.  Ha a forrásként szolgáló virtuális gép által tárolt összes fájl törölve lett, sérült vagy nem érhető el valamilyen ok miatt, például az erőforráscsoport módosítása/törlése után, akkor az ismételt védelem során a teljes integrációs modul nem érhető el.
+2.  Ha a forrásként szolgáló virtuális gép elérhetővé válik, akkor a rendszer csak a különbségeket számítja ki a lemezek és a továbbított adatok összehasonlításával. A becsült idő beszerzéséhez tekintse meg az alábbi táblázatot 
 
-|** Példa helyzet ** | ** Az ismételt védelem szükséges idő ** |
+|\* * Példa a helyzetre * * | \* * Az ismételt védelemhez szükséges idő * * |
 |--- | --- |
-|Forrásrégió 1 virtuális gép az 1 TB standard szintű lemezes rendelkezik<br/>– Csak 127 GB adatokat használ, és a lemez rest üres<br/>-60 MiB/S átviteli sebesség szabványosnak tekinthető lemez típusa<br/>– A feladatátvételt követően módosítása nincs adat| Becsült időt 45 perc – 1,5 óra<br/> – Ismételt védelem során a Site Recovery fel a ellenőrzőösszegei teljes adatokat, ami eltarthat 127 GB / 45 MB körülbelül 45 perc<br/>– Néhány általános időpontját kötelező megadni a Site Recovery automatikus méretezés, amely 20 – 30 perc<br/>– Nincs kimenő adatforgalmi díjak |
-|Forrásrégió 1 virtuális gép az 1 TB standard szintű lemezes rendelkezik<br/>– Csak 127 GB adatokat használ, és a lemez rest üres<br/>-60 MiB/S átviteli sebesség szabványosnak tekinthető lemez típusa<br/>-45 GB adatmódosítás a feladatátvétel után| Becsült időt 1 óra – 2 óra<br/>– Ismételt védelem során a Site Recovery fel a ellenőrzőösszegei teljes adatokat, ami eltarthat 127 GB / 45 MB körülbelül 45 perc<br/>-Átviteli idő érintő módosítások, amelyek 45 GB 45 GB / 45 MB/s ~ 17 perc<br/>– A kimenő forgalom költségeit csak 45 GB adat esetében az ellenőrzőösszeg nem lenne|
+|A forrástartomány 1 TB-os standard lemezzel rendelkezik<br/>– Csak 127 GB-nyi adat használatos, és a lemez többi része üres<br/>– A lemez típusa standard, 60 MiB/S átviteli sebességgel<br/>– A feladatátvételt követően nem módosult az adatváltozás| Hozzávetőleges idő 45 perc – 1,5 óra<br/> – Az ismételt védelem során Site Recovery feltölti a teljes adat ellenőrzőösszegét, amely 127 GB/45 MBs ~ 45 percet vesz igénybe<br/>– Az automatikus méretezés 20-30 percnél hosszabb időre van szükség a Site Recovery számára<br/>-Nincsenek kimenő költségek |
+|A forrástartomány 1 TB-os standard lemezzel rendelkezik<br/>– Csak 127 GB-nyi adat használatos, és a lemez többi része üres<br/>– A lemez típusa standard, 60 MiB/S átviteli sebességgel<br/>-45 GB adatváltozás a feladatátvétel után| Hozzávetőleges idő 1 óra – 2 óra<br/>– Az ismételt védelem során Site Recovery feltölti a teljes adat ellenőrzőösszegét, amely 127 GB/45 MBs ~ 45 percet vesz igénybe<br/>– Átviteli idő a 45 GB-os módosítások alkalmazásához, amely 45 GB/45 MBps ~ 17 perc<br/>-A kimenő forgalomra vonatkozó díjak csak az ellenőrzőösszeghez nem tartozó 45 GB-os adatokra vonatkoznak|
  
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Miután a virtuális gép védett, feladatátvevő is kezdeményezhető. A feladatátvétel leállítja a virtuális Gépet a másodlagos régióban és hoz létre, és az elsődleges régióban, néhány kisebb üzemkimaradás indul el a virtuális gép. Javasoljuk, hogy ennek megfelelően válassza ki egy időpontot, és a feladatátvételi teszt futtatása előtt az elsődleges hely teljes feladatátvételt kezdeményez. [További](site-recovery-failover.md) feladatátvételi kapcsolatban.
+A virtuális gép védelme után kezdeményezheti a feladatátvételt. A feladatátvétel leállítja a virtuális gépet a másodlagos régióban, és a virtuális gépet az elsődleges régióban hozza létre és indítja el, kis állásidővel. Javasoljuk, hogy adjon meg egy időpontot, és futtasson feladatátvételi tesztet, mielőtt teljes feladatátvételt kezdeményez az elsődleges helyre. [További](site-recovery-failover.md) információ a feladatátvételről.

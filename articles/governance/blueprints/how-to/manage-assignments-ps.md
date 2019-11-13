@@ -1,17 +1,14 @@
 ---
 title: Hozzárendelések kezelése a PowerShell-lel
 description: Megtudhatja, hogyan kezelheti a terv-hozzárendeléseket a hivatalos Azure-tervezetek PowerShell-modullal, az. Blueprint használatával.
-author: DCtheGeek
-ms.author: dacoulte
 ms.date: 09/30/2019
 ms.topic: conceptual
-ms.service: blueprints
-ms.openlocfilehash: ef9674165533ef3e4887bba68507344406ca128c
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 98c2173568f65d029b00ca6c8b25d2195094a5e3
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72755927"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73961624"
 ---
 # <a name="how-to-manage-assignments-with-powershell"></a>Hozzárendelések kezelése a PowerShell-lel
 
@@ -171,7 +168,7 @@ Ha a terv-hozzárendelés még nem létezik, akkor a `New-AzBlueprintAssignment`
 
 ### <a name="example-1-provide-parameters"></a>1\. példa: paraméterek megadása
 
-A következő példa új hozzárendelést hoz létre a (z) "My-Blueprint" tervezet definíciójának `Get-AzBlueprint`-es 1,1 verziójában, amely a felügyelt identitás és a hozzárendelési objektum helyét a "westus2" értékre állítja, zárolja az erőforrásokat a _AllResourcesReadOnly_, a és a **ResourceGroupParameter** **is beállítja** az adott előfizetéshez tartozó `{subId}`:
+Az alábbi példa új hozzárendelést hoz létre a (z) `Get-AzBlueprint`által beolvasott "My-Blueprint" terv definíciójának "1,1" verziójához, a felügyelt identitás és a hozzárendelési objektum helyét a "westus2" értékre állítja, zárolja az erőforrásokat a _AllResourcesReadOnly_, és beállítja a **paraméter** -és **ResourceGroupParameter** tartozó kivonatoló táblákat a `{subId}`ként megadott előfizetésben:
 
 ```azurepowershell-interactive
 # Login first with Connect-AzAccount if not using Cloud Shell

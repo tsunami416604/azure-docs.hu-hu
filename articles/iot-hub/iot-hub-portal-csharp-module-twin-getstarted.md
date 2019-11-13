@@ -1,5 +1,5 @@
 ---
-title: Ismerkedés az Azure IoT Hub-modulidentitással és -modulikerrel (portál és .NET) | Microsoft Docs
+title: Azure IoT Hub modul Identity & modul twin (portál és .NET)
 description: Megtudhatja, hogyan hozhat létre modulidentitást és frissíthet modulikreket a portál és a .NET használatával.
 author: robinsh
 manager: philmea
@@ -9,12 +9,12 @@ services: iot-hub
 ms.devlang: csharp
 ms.topic: conceptual
 ms.date: 08/20/2019
-ms.openlocfilehash: 395b1fd3301925db0607f775c6b7367979ba367b
-ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
+ms.openlocfilehash: 289c269100eb6ab672bb8d60562c1fa77d8d091a
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70147435"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73954619"
 ---
 # <a name="get-started-with-iot-hub-module-identity-and-module-twin-using-the-portal-and-net-device"></a>Ismerkedés az IoT Hub-modulidentitással és -modulikerrel a portál és a .NET eszköz használata mellett
 
@@ -56,7 +56,7 @@ Egy eszközidentitáson belül legfeljebb 20 modulidentitás hozható létre. Id
 
 1. Adja meg a *myFirstModule*nevet. Mentse a modul identitását.
 
-    ![Modulidentitás hozzáadása](./media/iot-hub-portal-csharp-module-twin-getstarted/add-module-identity.png)
+    ![Modul identitásának hozzáadása](./media/iot-hub-portal-csharp-module-twin-getstarted/add-module-identity.png)
 
     Az új modul identitása megjelenik a képernyő alján. Válassza ki a modul-identitás részleteinek megtekintéséhez.
 
@@ -82,9 +82,9 @@ Az alábbi lépéseket követve hozhat létre egy alkalmazást, amely frissíti 
 
 A modul identitása és a Twin modul nyilvános előzetes verzióban érhető el. Ez csak a IoT Hub előzetes kiadású SDK-k esetében érhető el. A telepítéséhez kövesse az alábbi lépéseket:
 
-1. A Visual Studióban nyissa meg az **eszközök** > **NuGet csomagkezelő** > **NuGet-csomagok kezelése megoldást**.
+1. A Visual Studióban nyissa meg az **eszközök** > **NuGet Package Manager** > **NuGet-csomagok kezelése megoldáshoz**című részt.
 
-1. Válassza a **Tallózás**lehetőséget, majd válassza az **előzetes verzió**belefoglalása lehetőséget. Keressen rá a *Microsoft. Azure. Devices. Client*kifejezésre. Válassza ki a legújabb verziót, és telepítse.
+1. Válassza a **Tallózás**lehetőséget, majd válassza az **előzetes verzió belefoglalása**lehetőséget. Keressen rá a *Microsoft. Azure. Devices. Client*kifejezésre. Válassza ki a legújabb verziót, és telepítse.
 
     ![Az Azure IoT Hub .NET Service SDK előzetes verziójának telepítése](./media/iot-hub-csharp-csharp-module-twin-getstarted/install-sdk.png)
 
@@ -94,11 +94,11 @@ A modul identitása és a Twin modul nyilvános előzetes verzióban érhető el
 
 Szüksége lesz a konzolos alkalmazáshoz tartozó modul-csatlakoztatási karakterláncra. Kövesse az alábbi lépéseket:
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
+1. Bejelentkezés az [Azure Portalra](https://portal.azure.com/).
 
 1. Navigáljon az IoT hubhoz, és válassza a **IoT-eszközök**elemet. Nyissa meg a **myFirstDevice** , és láthatja, hogy a **myFirstModule** létrehozása sikeresen megtörtént.
 
-1. Válassza ki a **myFirstModule** elemet a **modul**-identitások területen. A **modul identitásának részleteiben**másolja a **kapcsolati karakterláncot (elsődleges kulcs)** .
+1. Válassza ki a **myFirstModule** elemet a **modul-identitások**területen. A **modul identitásának részleteiben**másolja a **kapcsolati karakterláncot (elsődleges kulcs)** .
 
     ![Az Azure Portal moduladatai](./media/iot-hub-portal-csharp-module-twin-getstarted/module-identity-details.png)
 
@@ -183,7 +183,7 @@ Az alkalmazás létrehozásához kövesse az alábbi lépéseket:
 
 A kódminta segítségével megtudhatja, hogyan kérheti le a modulikret és frissítheti a jelentett tulajdonságokat az AMQP-protokollal. A nyilvános előzetes verzióban az AMQP csak a moduliker-műveletek esetében támogatott.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További bevezetés az IoT Hub használatába, valamint egyéb IoT-forgatókönyvek megismerése:
 

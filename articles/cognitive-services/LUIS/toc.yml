@@ -166,9 +166,7 @@
       items:
         - name: Szándék hozzáadása
           href: luis-how-to-add-intents.md
-        - name: Entitás hozzáadása kimondott szöveghez
-          href: luis-how-to-add-example-utterances.md
-        - name: Entitás hozzáadása kimondott szöveg nélkül
+        - name: Entitás hozzáadása az adatok kinyerésére
           href: luis-how-to-add-entities.md
           displayName: 'roles, import'
         - name: Előre összeállított modellek használata
@@ -306,6 +304,8 @@
       displayName: 'Calendar, Communication,Email,HomeAutomation,Note,Places, RestaurantReservation,ToDo,Utilities,Weather,Web'
     - name: Egyéni entitáshivatkozás
       items:
+        - name: Gépi tanulással létrejött entitás
+          href: reference-entity-machine-learned-entity.md
         - name: Összetett entitás
           href: reference-entity-composite.md
         - name: Listaentitás
@@ -316,6 +316,8 @@
           href: reference-entity-regular-expression.md
         - name: Egyszerű entitás
           href: reference-entity-simple.md
+    - name: Minta szintaxisa
+      href: reference-pattern-syntax.md
     - name: Hangulat
       href: luis-reference-prebuilt-sentiment.md
     - name: Fejlesztői forrásanyagok

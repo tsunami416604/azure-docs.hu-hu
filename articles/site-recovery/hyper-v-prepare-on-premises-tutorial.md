@@ -1,18 +1,18 @@
 ---
-title: Helyszíni Hyper-V-kiszolgálók előkészítése a Hyper-V virtuális gépek Azure-ba történő helyreállításához
-description: Ismerje meg, hogyan készítheti elő a helyszíni Hyper-V virtuális gépeket az Azure-ba való vész-helyreállításra az Azure Site Recovery szolgáltatással.
+title: Felkészülés a Hyper-V virtuális gépek vész-helyreállítására az Azure-ba Azure Site Recovery
+description: Megtudhatja, hogyan készítheti elő a helyszíni Hyper-V virtuális gépeket az Azure-ba való vész-helyreállításra Azure Site Recovery használatával.
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 09/09/2019
+ms.date: 11/12/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: b17e42378daf51543a2664315f2971d15c288611
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: b36e4688ebd6e929a56869a6bb191d98b2f1f432
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70813727"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73954007"
 ---
 # <a name="prepare-on-premises-hyper-v-servers-for-disaster-recovery-to-azure"></a>Helyszíni Hyper-V-kiszolgálók előkészítése az Azure-ba való vész-helyreállításhoz
 
@@ -21,7 +21,7 @@ Ez a cikk azt ismerteti, hogyan készítse elő a helyszíni Hyper-V-infrastrukt
 
 Ez egy sorozat második oktatóanyaga, amely bemutatja, hogyan állíthatja be a vész-helyreállítást az Azure-ba helyszíni Hyper-V virtuális gépekre. Az első oktatóanyagban [beállítjuk a](tutorial-prepare-azure.md) Hyper-V vész-helyreállításhoz szükséges Azure-összetevőket.
 
-Ezen oktatóanyag segítségével megtanulhatja a következőket:
+Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]
 > * Tekintse át a Hyper-V követelményeit és a VMM vonatkozó követelményeket, ha a Hyper-V-gazdagépeket a System Center VMM felügyeli.
@@ -86,13 +86,13 @@ Ha a feladatátvételt követően RDP használatával szeretne csatlakozni a Win
 
 1. Ha internetes hozzáférést kíván használni, engedélyezze az RDP-t a helyszíni virtuális gépen a feladatátvétel előtt. Ellenőrizze, hogy a **Nyilvános** résznél felvette-e a listára a TCP- és UDP-szabályokat, valamint hogy a **Windows tűzfal** > **Engedélyezett alkalmazások** területén az összes profil számára engedélyezve van-e az RDP.
 2. Ha helyek közötti VPN-kapcsolatot kíván használni, engedélyezze az RDP-t a helyszíni gépen. Engedélyezze az RDP-t a **Windows tűzfal** -> **Engedélyezett alkalmazások és szolgáltatások** területén a **Tartomány és Privát** hálózatok számára.
-   Ellenőrizze, hogy az operációs rendszer tárolóhálózati szabályzata **OnlineAll** értékre van-e állítva. [További információk](https://support.microsoft.com/kb/3031135). A virtuális gépen nem lehetnek függőben lévő Windows-frissítések a feladatátvétel elindításakor. Ha vannak, akkor nem fog tudni bejelentkezni a virtuális gépre, amíg a frissítés be nem fejeződik.
+   Ellenőrizze, hogy az operációs rendszer tárolóhálózati szabályzata **OnlineAll** értékre van-e állítva. [Részletek](https://support.microsoft.com/kb/3031135). A virtuális gépen nem lehetnek függőben lévő Windows-frissítések a feladatátvétel elindításakor. Ha vannak, akkor nem fog tudni bejelentkezni a virtuális gépre, amíg a frissítés be nem fejeződik.
 3. A feladatátvételt követően ellenőrizze a **Rendszerindítási diagnosztika** részt a Windows Azure virtuális gépen a virtuális gép képernyőképének megtekintéséhez. Ha nem sikerül, ellenőrizze, hogy fut-e a virtuális gép, majd tekintse át a [hibaelhárítási tippeket](https://social.technet.microsoft.com/wiki/contents/articles/31666.troubleshooting-remote-desktop-connection-after-failover-using-asr.aspx).
 
 A feladatátvételt követően az Azure-beli virtuális gépeket ugyanazzal az IP-címmel érheti el, mint a replikált helyszíni virtuális gépet, vagy egy másik IP-címet. [További](concepts-on-premises-to-azure-networking.md) információ az IP-címzés feladatátvételhez való beállításáról.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
-> [A vész-helyreállítás beállítása az Azure-ba Hyper-v virtuális gépek](tutorial-hyper-v-to-azure.md)
-> számára a[VMM-felhőkben futó Hyper-v virtuális gépekre vonatkozó vész-helyreállítás beállítása az Azure-](tutorial-hyper-v-vmm-to-azure.md) ba
+> Állítsa be a vész- [helyreállítást az Azure-ba Hyper-v virtuális gépekre](tutorial-hyper-v-to-azure.md)
+> [állítsa be a vész-helyreállítást az Azure-ba Hyper-v virtuális gépek VMM-felhőkben](tutorial-hyper-v-vmm-to-azure.md)

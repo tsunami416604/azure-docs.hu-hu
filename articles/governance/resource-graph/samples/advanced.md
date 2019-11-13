@@ -1,17 +1,14 @@
 ---
 title: Összetett lekérdezési példák
 description: Az Azure Resource Graph használatával speciális lekérdezéseket futtathat, beleértve a virtuálisgép-méretezési csoport kapacitását, az összes használt címke felsorolását, valamint a reguláris kifejezésekkel rendelkező virtuális gépeket.
-author: DCtheGeek
-ms.author: dacoulte
 ms.date: 10/21/2019
 ms.topic: quickstart
-ms.service: resource-graph
-ms.openlocfilehash: 6310e13508c1c789c410f1954a2ac0dbf480a2b8
-ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
+ms.openlocfilehash: e09db4630fd1ef8acc06538c7599feddbe991900
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73622518"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73958710"
 ---
 # <a name="advanced-resource-graph-queries"></a>Speciális Resource Graph-lekérdezések
 
@@ -439,7 +436,7 @@ Search-AzGraph -Query "limit 1" -Include DisplayNames
 > Ha a lekérdezés nem a **Project** használatával adja meg a visszaadott tulajdonságokat, a **hosszúnak** és a **tenantDisplayName** automatikusan belekerül az eredmények közé.
 > Ha a lekérdezés a **projectet**használja, a _DisplayName_ mezők mindegyikének explicit módon szerepelnie kell a **projektben** , vagy nem lesznek visszaadva az eredmények között még akkor sem, ha a **include** paramétert használja.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Tekintse meg az [alapszintű lekérdezések](starter.md)mintáit.
 - További információ a [lekérdezési nyelvről](../concepts/query-language.md).

@@ -1,17 +1,14 @@
 ---
 title: Az üzembe helyezési sorrend sorrendjének megismerése
 description: Ismerje meg a terv meghatározásának életciklusát, valamint az egyes szakaszok részleteit.
-author: DCtheGeek
-ms.author: dacoulte
 ms.date: 08/22/2019
 ms.topic: conceptual
-ms.service: blueprints
-ms.openlocfilehash: bda7a6caea931a993a6ddd6731688792bf0b3948
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: 87eff48f977f0308fea563090a44ff0b301909a9
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71981018"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73960440"
 ---
 # <a name="understand-the-deployment-sequence-in-azure-blueprints"></a>Az üzembe helyezési folyamat ismertetése az Azure-tervezetekben
 
@@ -47,7 +44,7 @@ Minden **erőforráscsoport** -összetevőn belül a következő sorrendet haszn
 
 Nagyméretű tervrajzok meghatározásakor szükség lehet arra, hogy az erőforrások egy adott sorrendben jöjjenek létre. Ennek a forgatókönyvnek a leggyakoribb felhasználási módja az, amikor a terv definíciója több Azure Resource Manager sablont tartalmaz. A tervrajzok úgy kezelik ezt a mintát, hogy lehetővé teszik az előkészítési sorrend meghatározását.
 
-A rendelés a JSON-ban található `dependsOn` tulajdonság definiálásával valósítható meg. A terv definíciója, az erőforráscsoportok és az összetevő-objektumok támogatják ezt a tulajdonságot. a `dependsOn` egy olyan karakterlánc-tömb, amelyben az adott összetevő létrehozása előtt létre kell hozni az adott összetevőt.
+A rendelés a JSON-ban egy `dependsOn` tulajdonság definiálásával valósítható meg. A terv definíciója, az erőforráscsoportok és az összetevő-objektumok támogatják ezt a tulajdonságot. `dependsOn` egy olyan karakterlánc-tömb, amelyben az adott összetevő létrehozása előtt létre kell hozni az adott összetevőt.
 
 > [!NOTE]
 > A tervrajzi objektumok létrehozásakor minden összetevő-erőforrás megkapja a nevét a fájlnévből, ha a [PowerShellt](/powershell/module/az.blueprint/new-azblueprintartifact)használja, vagy az URL-végpontot, ha [REST API](/rest/api/blueprints/artifacts/createorupdate)használ.
@@ -55,7 +52,7 @@ A rendelés a JSON-ban található `dependsOn` tulajdonság definiálásával va
 
 ### <a name="example---ordered-resource-group"></a>Példa szerint rendezett erőforráscsoport
 
-Ebben a példában a terv definíciója olyan erőforráscsoportot tartalmaz, amely egyéni sorrendi sorrendet definiált a `dependsOn` értéknek a szabványos erőforráscsoporthoz való deklarálása mellett. Ebben az esetben a **assignPolicyTags** nevű összetevő feldolgozása a **rendezett-RG** erőforráscsoport előtt történik.
+Ebben a példában a terv definíciója egy olyan erőforráscsoportot tartalmaz, amely egyéni sorrendi sorrendet határoz meg a `dependsOn`értékének, valamint egy szabványos erőforráscsoporthoz való deklarálása révén. Ebben az esetben a **assignPolicyTags** nevű összetevő feldolgozása a **rendezett-RG** erőforráscsoport előtt történik.
 a **standard-RG** az alapértelmezett sorrend szerint lesz feldolgozva.
 
 ```json
@@ -140,9 +137,9 @@ Az előfizetési szint sablonja a **WAIT-on-Me** erőforráscsoporthoz függően
 
 A létrehozási folyamat során a rendszer egy topológiai rendezést használ a tervrajzok függőségi gráfjának létrehozásához. Az ellenőrzés során az erőforráscsoportok és az összetevők közötti függőségek is támogatottak.
 
-Ha olyan összetevő-függőség van deklarálva, amely nem változtatja meg az alapértelmezett sorrendet, akkor nem történt módosítás. Ilyen például egy olyan erőforráscsoport, amely egy előfizetési szint házirendjétől függ. Egy másik példa egy "standard-RG" alárendelt házirend-hozzárendelés, amely az erőforráscsoport "standard-RG" alárendelt szerepkör-hozzárendeléstől függ. Mindkét esetben a `dependsOn` nem változtatta meg az alapértelmezett sorrendi sorrendet, és nem történt módosítás.
+Ha olyan összetevő-függőség van deklarálva, amely nem változtatja meg az alapértelmezett sorrendet, akkor nem történt módosítás. Ilyen például egy olyan erőforráscsoport, amely egy előfizetési szint házirendjétől függ. Egy másik példa egy "standard-RG" alárendelt házirend-hozzárendelés, amely az erőforráscsoport "standard-RG" alárendelt szerepkör-hozzárendeléstől függ. A `dependsOn` mindkét esetben nem változtatta meg az alapértelmezett sorrendi sorrendet, és nem történt módosítás.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Tudnivalók a [tervek életciklusáról](lifecycle.md).
 - A [statikus és dinamikus paraméterek](parameters.md) használatának elsajátítása.

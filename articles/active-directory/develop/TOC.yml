@@ -392,9 +392,9 @@
               href: active-directory-configurable-token-lifetimes.md
         - name: Alkalmazáskonfiguráció
           items:
-            - name: Alkalmazásregisztrációk az Azure Portalon – képzési útmutató (örökölt)
+            - name: Váltás az Appok regisztrálása felületről (régi) az új Alkalmazásregisztrációk felületre az Azure Portalon
               href: app-registrations-training-guide-for-app-registrations-legacy-users.md
-            - name: Alkalmazásregisztrációs portál – alkalmazásregisztrációs útmutató
+            - name: Váltás az alkalmazásregisztrációs portálról az új Alkalmazásregisztrációk felületre az Azure Portalon
               href: app-registration-portal-training-guide.md
             - name: Egybérlős alkalmazás átalakítása több-bérlőssé
               href: howto-convert-app-to-be-multi-tenant.md

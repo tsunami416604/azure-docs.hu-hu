@@ -1,17 +1,14 @@
 ---
 title: Terv üzembe helyezésének szakaszai
 description: Megtudhatja, hogyan haladnak végig a Azure Blueprint szolgáltatások a telepítés során.
-author: DCtheGeek
-ms.author: dacoulte
 ms.date: 03/14/2019
 ms.topic: conceptual
-ms.service: blueprints
-ms.openlocfilehash: 4645edde5163f1c8bca787416f5465e5a8f2d355
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: d0d97ed01c4ae2ef96da151e1ab4ddc13a4b1d3e
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71978525"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73960525"
 ---
 # <a name="stages-of-a-blueprint-deployment"></a>Terv üzembe helyezésének szakaszai
 
@@ -57,7 +54,7 @@ Az üzemelő példányok hozzáférési meghibásodása gyakran a felügyelt ide
 
 A központi telepítések befejezése után a tervrajzok visszavonják a **rendszer által hozzárendelt** felügyelt identitás jogosultságait az előfizetésből. Ezt követően a tervrajzok szolgáltatás visszavonja a jogosultságait az előfizetésből. A Rights eltávolítása megakadályozza, hogy a tervezetek állandó tulajdonosként legyenek előfizetésben.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A [statikus és dinamikus paraméterek](parameters.md) használatának elsajátítása.
 - A [tervekkel kapcsolatos műveleti sorrend](sequencing-order.md) testreszabásának elsajátítása.

@@ -1,6 +1,6 @@
 ---
-title: 'Gyors útmutató: Azure Time Series Insights Explorer | Microsoft Docs'
-description: Ebből a rövid útmutatóból megtudhatja, hogyan kezdheti meg a webböngészőben a Azure Time Series Insights Explorert, hogy nagy mennyiségű IoT-adatait jelenítse meg. A legfontosabb jellemzőkkel a bemutató környezetben ismerkedhet meg.
+title: 'Gyors útmutató: Azure Time Series Insights Explorer – Azure Time Series Insights | Microsoft Docs'
+description: Ismerje meg, hogyan kezdheti el a Azure Time Series Insights Explorert. A környezet nagy mennyiségű IoT-adatait és a bemutató főbb funkcióit jelenítheti meg.
 ms.service: time-series-insights
 services: time-series-insights
 author: deepakpalled
@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.workload: big-data
 ms.custom: mvc seodec18
 ms.date: 09/23/2019
-ms.openlocfilehash: 156e95c88bc3c66890ba9c8baf9b281330b60186
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: 0253a46cd73679c7c2f50a1e37d26d67578e342e
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72990909"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74006421"
 ---
 # <a name="quickstart-explore-azure-time-series-insights"></a>Rövid útmutató: Ismerkedés az Azure Time Series Insightsszal
 
@@ -58,7 +58,7 @@ Ez a Time Series Insights Explorer rövid útmutató az általánosan elérhető
 
 1. Új keresési kifejezés hozzáadásához a **feltételek panelen** válassza a **Hozzáadás** lehetőséget.
 
-   [elem hozzáadása![](media/quickstart/quickstart5.png)](media/quickstart/quickstart5.png#lightbox)
+   [elem hozzáadása ![](media/quickstart/quickstart5.png)](media/quickstart/quickstart5.png#lightbox)
 
 1. A diagramon válasszon ki egy régiót, kattintson rá a jobb gombbal, majd válassza az **Explore Events** (Események áttekintése) elemet.
 

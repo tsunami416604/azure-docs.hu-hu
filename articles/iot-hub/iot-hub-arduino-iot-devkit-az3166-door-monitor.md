@@ -1,22 +1,21 @@
 ---
-title: E-mailt kap, ha a SendGrid szolgáltatás és a Azure Functions használatával nyitja meg az ajtót | Microsoft Docs
+title: E-mail küldése, ha az ajtót a Azure Functions használatával nyitja meg
 description: Figyelje meg a mágneses érzékelőt annak észleléséhez, hogy mikor nyílik meg egy ajtó, és a Azure Functions használatával küldjön e-mail-értesítést.
 author: liydu
-manager: jeffya
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 03/19/2018
 ms.author: liydu
-ms.openlocfilehash: 6cbf3f906b511d9d76319f57f5508a2c584213cb
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 23607b52f866bb7b0be760e49be7d62d1732d43c
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73484061"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73954756"
 ---
-# <a name="door-monitor"></a>Ajtó figyelője          
+# <a name="door-monitor----using-azure-functions-and-sendgrid-send-email-when-a-door-is-opened"></a>Ajtó figyelője – a Azure Functions és a SendGrid használatával e-mail küldése az ajtó megnyitásakor           
 
 A MXChip IoT fejlesztői készlet beépített mágneses érzékelőt tartalmaz. Ebben a projektben egy közeli erős mágneses mező jelenlétét vagy hiányát fogja érzékelni – ebben az esetben egy kis, állandó mágnesből származik.
 
@@ -80,7 +79,7 @@ Jelölje be a **rögzítés az irányítópulton** lehetőséget, hogy az alkalm
 
 Miután az üzembe helyezés befejeződött, kattintson rá, majd kattintson a **kezelés** gombra. Megjelenik a SendGrid-fiók oldala, ahol ellenőriznie kell az e-mail-címét.
 
-![SendGrid kezelése](media/iot-hub-arduino-iot-devkit-az3166-door-monitor/sendgrid-manage.png)
+![SendGrid Manage](media/iot-hub-arduino-iot-devkit-az3166-door-monitor/sendgrid-manage.png)
 
 A SendGrid lapon kattintson a **beállítások** > **api-kulcsok** > **API-kulcs létrehozása**lehetőségre.
 
@@ -196,7 +195,7 @@ Ha problémákba ütközik, tekintse meg a [IoT fejlesztői készlet kapcsolatos
 * [Gitter.im](https://gitter.im/Microsoft/azure-iot-developer-kit)
 * [Stack Overflow](https://stackoverflow.com/questions/tagged/iot-devkit)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Megtanulta, hogyan csatlakoztatható egy fejlesztői készlet-eszköz az Azure IoT-alapú távoli monitorozási megoldáshoz, és a SendGrid szolgáltatás használatával küldjön e-mailt. Íme a javasolt következő lépések:
 

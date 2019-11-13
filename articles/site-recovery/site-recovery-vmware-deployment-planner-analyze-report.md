@@ -1,20 +1,20 @@
 ---
-title: A VMware-ből az Azure-ba irányuló vész-helyreállítási Azure Site Recovery Deployment Planner jelentés elemzése | Microsoft Docs
-description: Ez a cikk azt ismerteti, hogyan elemezhető a Azure Site Recovery Deployment Planner által létrehozott jelentés a VMware vész-helyreállításra az Azure-ba.
+title: A VMware vész-helyreállítási Deployment Planner jelentés elemzése Azure Site Recovery
+description: Ez a cikk azt ismerteti, hogyan elemezheti a helyreállítási Deployment Planner által generált jelentést az Azure-ba történő VMware vész-helyreállításhoz Azure Site Recovery használatával.
 author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 10/21/2019
+ms.date: 11/4/2019
 ms.author: mayg
-ms.openlocfilehash: 4240e17320cc62dc1a0e74db2f40a452a63f2982
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: b6ac10b47a8bbc987eb1e338991100ee17eacd61
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72690730"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73961381"
 ---
-# <a name="analyze-the-azure-site-recovery-deployment-planner-report-for-vmware-disaster-recovery-to-azure"></a>A VMware vész-helyreállítási Azure Site Recovery Deployment Planner jelentés elemzése az Azure-ba
+# <a name="analyze-the-deployment-planner-report-for-vmware-disaster-recovery-to-azure"></a>A VMware vész-helyreállítási Deployment Planner jelentés elemzése az Azure-ba
 
 Az elkészített Microsoft Excel-jelentés a következő táblázatokat tartalmazza:
 ## <a name="on-premises-summary"></a>Helyszíni összefoglalás
@@ -40,7 +40,7 @@ A Helyszíni összefoglalás munkalap áttekintést nyújt arról a VMware-körn
 
 **Observed typical data churn per day (GB)** (Megfigyelt átlagos napi adatváltozás (GB)): Az összes profilkészítési napon megfigyelt átlagos adatváltozás. Ez a szám az egyik olyan bemenet, amely alapján a rendszer meghatározza az üzemelő példányban használandó konfigurációs kiszolgálók és további folyamatkiszolgálók számát.
 
-## <a name="recommendations"></a>Ajánlatok
+## <a name="recommendations"></a>Javaslatok
 
 A VMware – Azure jelentés javaslati táblázatában a következő részletek találhatók (a kiválasztott RPO szerint):
 
@@ -178,7 +178,7 @@ A **Storage-fiók javasolt előtagja**: a javasolt három karakterből álló el
 
 **VM Name** (Virtuális gép neve): Jelentés létrehozásakor a VMListFile-ban használt virtuálisgépnév vagy IP-cím. Ez az oszlop a virtuális gépekhez csatolt lemezek (VMDK-k) listáját is megjeleníti. Az ismétlődő nevű vagy IP-című vCenter-beli virtuális gépek megkülönböztetésére a nevek tartalmazzák az ESXi-gazdagépnevet is. A feltüntetett ESXi-gazdagép az a számítógép, ahol a virtuális gép megtalálható volt, amikor az eszköz először felderítette azt a profilkészítés során.
 
-**VM Compatibility** (Virtuálisgép-kompatibilitás): Az érték **Yes** (Igen) és **Yes**\* (Igen) lehet. **Igen** \* azon példányok esetében, amelyekben a virtuális gép elfér a [prémium SSD](../virtual-machines/windows/disks-types.md)-k számára. Itt a profilkészítés során megállapított magas adatváltozású vagy IOPS-értékű lemez megfelel a P20-as vagy P30-as kategóriának, de a lemez mérete miatt a rendszer P10-es vagy P20-as kategóriába sorolja be. A tárfiók a lemez mérete alapján dönti el, hogy melyik prémium szintű lemeztípushoz rendelje hozzá a lemezt. Példa:
+**VM Compatibility** (Virtuálisgép-kompatibilitás): Az érték **Yes** (Igen) és **Yes**\* (Igen) lehet. **Igen**\* azon példányok esetében, amelyekben a virtuális gép elfér a [prémium SSD](../virtual-machines/windows/disks-types.md)-k számára. Itt a profilkészítés során megállapított magas adatváltozású vagy IOPS-értékű lemez megfelel a P20-as vagy P30-as kategóriának, de a lemez mérete miatt a rendszer P10-es vagy P20-as kategóriába sorolja be. A tárfiók a lemez mérete alapján dönti el, hogy melyik prémium szintű lemeztípushoz rendelje hozzá a lemezt. Például:
 * 128 GB alatt P10.
 * 128 GB és 256 GB között P15
 * 256 GB és 512 GB között P20.
@@ -232,8 +232,6 @@ Ha például a számítási feladatok jellemzői alapján egy lemez a P20-as vag
 * A forrás IOPS-érték meghaladja a tároló virtuális gépenkénti 80 000-es IOPS-korlátját.
 
 * Az átlagos adatváltozás meghaladja a támogatott Site Recovery adatváltozási korlátot 20 MB/s értékre a lemez átlagos I/O-méretéhez.
-
-* Az átlagos adatváltozás meghaladja a Site Recovery virtuális gépenkénti átlagos I/O-mérethez megadott 25 MB/s értékű adatváltozási korlátját (az összes lemez adatváltozása együtt).
 
 * Az összes virtuális gépre vonatkozó adatváltozás csúcsértéke meghaladja a Site Recovery virtuális gépenkénti 54 Mb/s-os támogatott adatváltozási csúcsérték korlátját.
 

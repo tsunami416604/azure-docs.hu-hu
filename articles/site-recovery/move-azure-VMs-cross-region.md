@@ -1,5 +1,5 @@
 ---
-title: Azure IaaS virtuális gépek áthelyezése másik Azure-régióba a Azure Site Recovery szolgáltatás használatával | Microsoft Docs
+title: Azure-beli virtuális gépek áthelyezése egy másik régióba Azure Site Recovery
 description: Az Azure IaaS virtuális gépek egyik Azure-régióból a másikba való áthelyezéséhez használja a Azure Site Recovery.
 services: site-recovery
 author: rajani-janaki-ram
@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 01/28/2019
 ms.author: rajanaki
 ms.custom: MVC
-ms.openlocfilehash: ec78e4c260c2ca5e0469f9373f60d8bca29ada7f
-ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
+ms.openlocfilehash: e0d55b3661e7dbff1519691bd396a30b8c527010
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70375719"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73936055"
 ---
 # <a name="move-azure-vms-to-another-region"></a>Azure-beli virtuális gépek áthelyezése egy másik régióba
 
@@ -80,11 +80,11 @@ Az alábbi lépések a Azure Site Recovery használatával másolják az adatfá
 ### <a name="create-the-vault-in-any-region-except-the-source"></a>A tároló létrehozása bármely régióban, a forrás kivételével
 
 1. Jelentkezzen be az [Azure Portal](https://portal.azure.com) > **Recovery Services** szolgáltatásba.
-2. Válassza **az erőforrás** > létrehozása**felügyeleti eszközök** > **biztonsági mentése és site Recovery**lehetőséget.
+2. Válassza **az erőforrás létrehozása** > **felügyeleti eszközök** > **biztonsági mentés és site Recovery**lehetőséget.
 3. A **név**mezőben adja meg a **ContosoVMVault**rövid nevét. Ha egynél több előfizetéssel rendelkezik, válassza ki ezek közül a megfelelőt.
 4. Hozzon létre egy **ContosoRG** nevű erőforráscsoportot.
 5. Válassza ki a kívánt Azure-régiót. A támogatott régiók megtekintéséhez tekintse meg a [Azure site Recovery díjszabását](https://azure.microsoft.com/pricing/details/site-recovery/).
-6. Recovery Services-tárolók esetében válassza az **Áttekintés** > **ConsotoVMVault** >  **+ replikálás**lehetőséget.
+6. Recovery Services-tárolók esetében válassza az **áttekintés** > **ConsotoVMVault** >  **+ replikálás**lehetőséget.
 7. A **forrás**mezőben válassza az **Azure**lehetőséget.
 8. A **forrás helye**mezőben válassza ki azt a forrás-Azure-régiót, ahol a virtuális gépek jelenleg futnak.
 9. Válassza ki a Azure Resource Manager telepítési modellt. Ezután válassza ki a **forrás-előfizetést** és a **forrás erőforráscsoportot**.
@@ -96,36 +96,36 @@ Site Recovery beolvassa az előfizetéshez és az erőforráscsoporthoz társít
 
 1. Válassza ki az áthelyezni kívánt virtuális gépet, majd kattintson **az OK gombra**.
 2. A **Beállítások**területen válassza a vész- **helyreállítás**lehetőséget.
-3. A vész- **helyreállítási** > **célcsoport**konfigurálásához válassza ki azt a célként megadott régiót, amelyre replikálni kíván.
+3. A vész-helyreállítási > **cél régiójának** **konfigurálásához** válassza ki azt a célcsoportot, amelyre replikálni kíván.
 4. Válassza az alapértelmezett cél-erőforrások vagy az előre létrehozott beállítások használatát.
 5. A feladatok elindításához válassza a **replikáció engedélyezése** lehetőséget.
 
-   ![Replikáció engedélyezése](media/tutorial-migrate-azure-to-azure/settings.png)
+   ![A replikáció engedélyezése](media/tutorial-migrate-azure-to-azure/settings.png)
 
  
 
 ## <a name="test-the-configuration"></a>A konfiguráció tesztelése
 
 
-1. Nyissa meg a tárolót. A **Beállítások** > **replikált elemek**területen válassza ki azt a virtuális gépet, amelyet át szeretne helyezni a célként megadott régióba. Ezután válassza a **feladatátvételi teszt**lehetőséget.
+1. Nyissa meg a tárolót. A **beállítások** > **replikált elemek**területen válassza ki azt a virtuális gépet, amelyet át szeretne helyezni a célként megadott régióba. Ezután válassza a **feladatátvételi teszt**lehetőséget.
 2. A feladatátvételi **teszt**területen válassza ki a feladatátvételhez használandó helyreállítási pontot:
 
-   - **Legutóbb feldolgozott**: A virtuális gép feladatátvétele a Site Recovery szolgáltatás által feldolgozott legutóbbi helyreállítási pontra meghiúsul. Megjelenik az időbélyeg. A rendszer nem töltött le időt az adatfeldolgozás során, ezért ez a beállítás alacsony helyreállítási időcélkitűzést (RTO) biztosít.
-   - **Legújabb alkalmazás – konzisztens**: Az összes virtuális gép feladatátvétele a legújabb, alkalmazás-konzisztens helyreállítási pontra. Megjelenik az időbélyeg.
-   - **Egyéni**: Válassza ki a kívánt helyreállítási pontot.
+   - **Legutóbb feldolgozott**: A virtuális gép feladatait a Site Recovery szolgáltatás által feldolgozott legutóbbi helyreállítási pontnak adja át. Megjelenik az időbélyeg. A rendszer nem töltött le időt az adatfeldolgozás során, ezért ez a beállítás alacsony helyreállítási időcélkitűzést (RTO) biztosít.
+   - Az **app-konzisztens legújabb**: az összes virtuális gép feladatátvétele a legújabb, alkalmazás-konzisztens helyreállítási ponttal történik. Megjelenik az időbélyeg.
+   - **Egyéni**: Bármelyik helyreállítási pontot kiválaszthatja.
 
 3. Válassza ki azt a célként szolgáló Azure-beli virtuális hálózatot, amelyre át szeretné helyezni az Azure-beli virtuális gépeket a konfiguráció teszteléséhez.
 
    > [!IMPORTANT]
    > Javasoljuk, hogy használjon külön Azure-beli virtuálisgép-hálózatot a feladatátvételi teszthez, nem pedig a célként megadott régió üzemi hálózatát.
 
-4. Az áthelyezés tesztelésének megkezdéséhez kattintson **az OK gombra**. A folyamat nyomon követéséhez válassza ki a virtuális gépet, és nyissa meg a **tulajdonságait.** Vagy válassza ki a **feladatátvételi teszt** feladatot a tárolóban. Ezután válassza a **Beállítások** > **feladatok** > **site Recovery feladatok**lehetőséget.
+4. Az áthelyezés tesztelésének megkezdéséhez kattintson **az OK gombra**. A folyamat nyomon követéséhez válassza ki a virtuális gépet, és nyissa meg a **tulajdonságait.** Vagy válassza ki a **feladatátvételi teszt** feladatot a tárolóban. Ezután válassza a **beállítások** > **feladatok** > **site Recovery feladatok**elemet.
 5. A feladatátvétel befejezését követően az Azure-beli virtuális gép replikája megjelenik az Azure Portal > **Virtuális gépek** területen. Győződjön meg arról, hogy a virtuális gép fut, megfelelő a méretezése és a megfelelő hálózathoz csatlakozik.
 6. A teszteléshez létrehozott virtuális gép törléséhez válassza a **feladatátvételi teszt** törlése elemet a replikált elemen. A **jegyzetekből**jegyezze fel és mentse a teszttel kapcsolatos észrevételeket.
 
 ## <a name="perform-the-move-and-confirm"></a>Az áthelyezés és a megerősítés végrehajtása
 
-1. Nyissa meg a tárolót a **Beállítások** > **replikált elemek**területen, válassza ki a virtuális gépet, majd válassza a **feladatátvétel**lehetőséget.
+1. Nyissa meg a tárolót a **beállítások** > **replikált elemek**területen, válassza ki a virtuális gépet, majd válassza a **feladatátvétel**lehetőséget.
 1. A **feladatátvételhez**válassza a **legutóbbi**lehetőséget. 
 2. Válassza a **Gép leállítása a feladatátvétel megkezdése előtt** lehetőséget. Site Recovery megkísérli leállítani a forrás virtuális gépet a feladatátvétel elindítása előtt. A feladatátvétel azonban akkor is folytatódik, ha a Leállítás sikertelen. A feladatátvételi folyamatot a **Feladatok** lapon követheti nyomon.
 3. Ha a művelet elkészült, győződjön meg arról, hogy a virtuális gép a várt módon jelenik meg a cél Azure-régióban.
@@ -143,7 +143,7 @@ Ha nem tervezi a forrás-erőforrások újrafelhasználását, kövesse az aláb
 1. Törölje a forrásként szolgáló [virtuális gépek előkészítésének](#prepare-the-source-vms)4. lépésében felsorolt összes releváns hálózati erőforrást.
 2. Törölje a megfelelő Storage-fiókot a forrás régióban.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban megtanulta, hogyan helyezhet át Azure-beli virtuális gépeket egy másik Azure-régióba. Most már konfigurálhatja a vész-helyreállítást ezekhez a virtuális gépekhez.
 

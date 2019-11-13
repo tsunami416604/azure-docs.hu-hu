@@ -1,6 +1,6 @@
 ---
-title: Adatmodellezés Azure Time Series Insights előzetes verzióban | Microsoft Docs
-description: Az adatmodellezés ismertetése Azure Time Series Insights előzetes verzióban.
+title: Adatmodellezés az előzetes verziójú környezetekben – Azure Time Series Insights | Microsoft Docs
+description: Tudnivalók az adatmodellezésről Azure Time Series Insights előzetes verzióban.
 author: deepakpalled
 ms.author: dpalled
 manager: cshankar
@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 10/29/2019
 ms.custom: seodec18
-ms.openlocfilehash: 81c2c2af78f5f066e1b27e14fa774df04d7c5868
-ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
+ms.openlocfilehash: fb1bfb30d531f8b93489c8fc1dfbc6b8172339a3
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73063986"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74006462"
 ---
 # <a name="data-modeling-in-azure-time-series-insights-preview"></a>Adatmodellezés Azure Time Series Insights előzetes verzióban
 
@@ -23,7 +23,7 @@ Ez a cikk bemutatja, hogyan dolgozhat az idősorozat-modellel Azure Time Series 
 
 További információ a frissítés használatáról: [Azure Time Series Insights Preview Explorer](./time-series-insights-update-explorer.md).
 
-## <a name="types"></a>Típusú
+## <a name="types"></a>Típusok
 
 ### <a name="create-a-single-type"></a>Egyetlen típus létrehozása
 
@@ -76,7 +76,7 @@ További információ a frissítés használatáról: [Azure Time Series Insight
 
 1. Adja meg a hierarchia részleteit, és válassza a **Létrehozás**lehetőséget.
 
-    [![Hieararchy részletei és "létrehozás" gomb](media/v2-update-how-to-tsm/portal-nine.png)](media/v2-update-how-to-tsm/portal-nine.png#lightbox)
+    [![hierarchia részletei és "létrehozás" gomb](media/v2-update-how-to-tsm/portal-nine.png)](media/v2-update-how-to-tsm/portal-nine.png#lightbox)
 
 ### <a name="bulk-upload-one-or-more-hierarchies"></a>Egy vagy több hierarchia tömeges feltöltése
 
@@ -100,7 +100,7 @@ További információ a frissítés használatáról: [Azure Time Series Insight
 
     [!["Törlés" gomb](media/v2-update-how-to-tsm/portal-twelve.png)](media/v2-update-how-to-tsm/portal-twelve.png#lightbox)
 
-## <a name="instances"></a>Példányok
+## <a name="instances"></a>példányok
 
 ### <a name="create-a-single-instance"></a>Egyetlen példány létrehozása
 

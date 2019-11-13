@@ -1,18 +1,14 @@
 ---
 title: Erőforrás-módosítások lekérése
 description: Megtudhatja, hogyan keresheti meg az erőforrást, és hogyan kérheti le a megváltoztatott tulajdonságok listáját.
-services: resource-graph
-author: DCtheGeek
-ms.author: dacoulte
 ms.date: 10/09/2019
 ms.topic: conceptual
-ms.service: resource-graph
-ms.openlocfilehash: 44e7bbde40dbd4b79a6ce3735ab5a1ac81421d3b
-ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
+ms.openlocfilehash: 25d900276518e51e80021d1fdb1ac80945eb2d5c
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73622563"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73958762"
 ---
 # <a name="get-resource-changes"></a>Erőforrás-módosítások lekérése
 
@@ -48,7 +44,7 @@ A **resourceChanges** végpont a következő paramétereket fogadja el a kérele
 - az **intervallum** \[szükséges\]: egy olyan tulajdonság, amely _kezdő_ és _befejező_ dátummal rendelkezik, hogy mikor érdemes megkeresni egy változási eseményt a **Zulu Time Zone (Z)** használatával.
 - **fetchPropertyChanges** (nem kötelező): logikai tulajdonság, amely meghatározza, hogy a válasz objektum tartalmazza-e a tulajdonságok változásait.
 
-Példa a kérelem törzsére:
+A példában a kérés törzse:
 
 ```json
 {
@@ -167,7 +163,7 @@ A **resourceChangeDetails** végpontjának két paramétert kell megadnia a kér
 - **resourceId**: az Azure-erőforrás, amellyel összehasonlíthatja a módosításokat.
 - **changeId**: a **resourceChanges**-ből összegyűjtött **resourceId** egyedi változási eseménye.
 
-Példa a kérelem törzsére:
+A példában a kérés törzse:
 
 ```json
 {
@@ -288,7 +284,7 @@ a **beforeSnapshot** és a **afterSnapshot** mindegyike megadja a pillanatkép k
 
 Az eredmények összehasonlításához használja a **resourceChanges** **Changes** tulajdonságát, vagy értékelje ki a **resourceChangeDetails** egyes Pillanatképek **tartalom** részét a különbség megállapításához. Ha összehasonlítja a pillanatképeket, az **időbélyegző** mindig különbséget mutat a vártnál.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Tekintse meg az [alapszintű lekérdezésekben](../samples/starter.md)használt nyelvet.
 - Lásd: speciális alkalmazások a [speciális lekérdezésekben](../samples/advanced.md).

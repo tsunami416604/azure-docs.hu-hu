@@ -1,5 +1,5 @@
 ---
-title: Linuxos fő célkiszolgáló telepítése feladat-visszavételhez helyszíni helyre | Microsoft Docs
+title: Fő célkiszolgáló telepítése a Linux rendszerű virtuális gép feladat-visszavételéhez Azure Site Recovery
 description: Megtudhatja, hogyan állíthat be egy linuxos fő célkiszolgáló számára a feladat-visszavételt egy helyszíni helyre, a VMware virtuális gépeknek az Azure-ba való vész-helyreállításával Azure Site Recovery használatával.
 author: mayurigupta13
 services: site-recovery
@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 03/06/2019
 ms.author: mayg
-ms.openlocfilehash: 5b4b3f5025edef242b87215665fd65f131157943
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.openlocfilehash: 5b4d625d28584bb601905e9439c112c845219e54
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69904400"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73954381"
 ---
 # <a name="install-a-linux-master-target-server-for-failback"></a>Linuxos fő célkiszolgáló telepítése feladat-visszavételhez
 A virtuális gépek Azure-ba történő feladatátvétele után a virtuális gépeket a helyszíni helyre is visszaállíthatja. A feladat-visszavétel érdekében újra kell telepítenie a virtuális gépet az Azure-ból a helyszíni helyre. Ehhez a folyamathoz egy helyszíni fő célkiszolgáló szükséges a forgalom fogadásához. 
@@ -42,7 +42,7 @@ A cikk végén vagy az [Azure Recovery Services fórumán](https://social.msdn.m
 
 Hozza létre a fő célt a következő méretezési irányelveknek megfelelően:
 - **RAM**: 6 GB vagy több
-- **Operációsrendszer-lemez mérete**: 100 GB vagy több (az operációs rendszer telepítéséhez)
+- **Operációsrendszer-lemez mérete**: 100 GB vagy több (operációs rendszer telepítéséhez)
 - **További lemez mérete az adatmegőrzési meghajtó számára**: 1 TB
 - **CPU-magok**: 4 mag vagy több
 
@@ -67,7 +67,7 @@ Tartsa meg az Ubuntu 16.04.2 minimális 64 bites ISO-t a DVD-meghajtón, és ind
 
 1.  Válassza az **angol** nyelvet előnyben részesített nyelvként, majd válassza az **ENTER billentyűt**.
     
-    ![Nyelv kiválasztása](./media/vmware-azure-install-linux-master-target/image1.png)
+    ![Válasszon nyelvet](./media/vmware-azure-install-linux-master-target/image1.png)
 1. Válassza az **Ubuntu Server telepítése**lehetőséget, majd válassza az **ENTER billentyűt**.
 
     ![Válassza az Ubuntu Server telepítése lehetőséget.](./media/vmware-azure-install-linux-master-target/image2.png)
@@ -107,7 +107,7 @@ Tartsa meg az Ubuntu 16.04.2 minimális 64 bites ISO-t a DVD-meghajtón, és ind
 
      ![Válassza ki a particionálási módszer beállítást.](./media/vmware-azure-install-linux-master-target/image14.png)
 
-1.  Válassza ki a megfelelő lemezt a **lemez kiválasztása** a particionáláshoz lehetőségre, majd válassza az **ENTER billentyűt**.
+1.  Válassza ki a megfelelő lemezt a **lemez kiválasztása a particionáláshoz** lehetőségre, majd válassza az **ENTER billentyűt**.
 
     ![Válassza ki a lemezt](./media/vmware-azure-install-linux-master-target/image15.png)
 
@@ -244,7 +244,7 @@ Adatmegőrzési lemez létrehozásához kövesse az alábbi lépéseket:
 
     ![Többutas azonosító](./media/vmware-azure-install-linux-master-target/image27.png)
 
-3. Formázza a meghajtót, majd hozzon létre egy fájlrendszert az új meghajtón: **mkfs. ext4\</dev/Mapper/adatmegőrzési lemez többutas azonosító >** .
+3. Formázza a meghajtót, majd hozzon létre egy fájlrendszert az új meghajtón: **mkfs. ext4/dev/mapper/\<adatmegőrzési lemez többutas azonosító >** .
     
     ![Fájlrendszer](./media/vmware-azure-install-linux-master-target/image23-centos.png)
 
@@ -353,7 +353,7 @@ Látni fogja, hogy a **Version (verzió** ) mező a fő cél verziószámát adj
     * ONBOOT = igen
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 A fő cél telepítésének és regisztrálásának befejeződése után a fő cél a **site Recovery infrastruktúra** **fő célhely** szakaszában jelenik meg, a konfigurációs kiszolgáló áttekintése alatt.
 
 Most már folytathatja az ismételt [védelmet](vmware-azure-reprotect.md), majd a feladat-visszavétel után is.

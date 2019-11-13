@@ -1,18 +1,18 @@
 ---
-title: A VMware virtuális gépeket és fizikai kiszolgálókat az Azure-ba való vész-helyreállításhoz használt folyamat-kiszolgáló kezelése Azure Site Recovery használatával | Microsoft Docs
-description: Ez a cikk a VMware-alapú virtuális gépek és fizikai kiszolgálók Azure-beli vész-helyreállítására beállított folyamat-kiszolgáló kezelését ismerteti Azure Site Recovery használatával.
+title: A VMware virtuális gépek/fizikai kiszolgáló vész-helyreállításának folyamat-kiszolgálójának kezelése Azure Site Recovery
+description: Ez a cikk azt ismerteti, hogyan kezelhetők a Process Server a VMware virtuális gépek/fizikai kiszolgálók vész-helyreállításához Azure Site Recovery használatával.
 author: Rajeswari-Mamilla
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 04/28/2019
 ms.author: ramamill
-ms.openlocfilehash: 509b9aed9f5daebb70a18336837da2152667a458
-ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
+ms.openlocfilehash: ef16e3b75ca8e051b1b7abb1a92843279884c697
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73242838"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73954336"
 ---
 # <a name="manage-process-servers"></a>Folyamatkiszolgálók kezelése
 

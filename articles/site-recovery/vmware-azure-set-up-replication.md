@@ -1,5 +1,5 @@
 ---
-title: Replikációs házirendek konfigurálása és kezelése az Azure-ba történő VMware vész-helyreállításhoz Azure Site Recovery használatával | Microsoft Docs
+title: Replikációs házirendek beállítása a VMware vész-helyreállításhoz Azure Site Recoverykal | Microsoft Docs
 description: Ismerteti, hogyan lehet konfigurálni a VMware vész-helyreállítás replikációs beállításait az Azure-ba Azure Site Recovery használatával.
 author: sujayt
 manager: rochakm
@@ -7,17 +7,18 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 04/08/2019
 ms.author: sutalasi
-ms.openlocfilehash: 019f9f2019619053f87a7923d656513a419d4675
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: 45921bdf802a649b7b802f44d2842a543e44f02b
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70231438"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73954326"
 ---
-# <a name="configure-and-manage-replication-policies-for-vmware-disaster-recovery-to-azure"></a>Replikációs házirendek konfigurálása és kezelése az Azure-ba történő VMware vész-helyreállításhoz
+# <a name="configure-and-manage-replication-policies-for-vmware-disaster-recovery"></a>A VMware vész-helyreállítási replikációs szabályzatok konfigurálása és kezelése
+
 Ez a cikk azt ismerteti, hogyan konfigurálhat egy replikációs házirendet, ha VMware virtuális gépeket replikál az Azure-ba a [Azure site Recovery](site-recovery-overview.md)használatával.
 
-## <a name="create-a-policy"></a>Házirend létrehozása
+## <a name="create-a-policy"></a>Szabályzat létrehozása
 
 1. Válassza a **Kezelés** > **Site Recovery-infrastruktúra** lehetőséget.
 2. A **VMware és a fizikai gépek esetében**válassza a **replikációs házirendek**lehetőséget.
@@ -48,7 +49,7 @@ A replikációs házirendet a létrehozása után módosíthatja.
 - Ha a replikált gépeket eltérő replikációs házirenddel szeretné hozzárendelni, le kell tiltania és újra engedélyeznie kell a megfelelő gépek védelmét.
 
 A szabályzatok a következőképpen szerkeszthetők:
-1. Válassza > a**site Recovery**infrastruktúra > -**replikációs házirendek**kezelése lehetőséget.
+1. Válassza a **kezelés** > **site Recovery infrastruktúra** > **replikációs házirendek**elemet.
 2. Válassza ki a módosítani kívánt replikációs házirendet.
 3. Kattintson a **beállítások szerkesztése**elemre, és frissítse a RPO küszöbértékét/a helyreállítási pont megőrzési idejét, illetve az alkalmazás-konzisztens Pillanatképek gyakorisága mezőket a szükséges módon.
 4. Ha ki szeretné kapcsolni az alkalmazás-konzisztencia-pontok előállítását, válassza ki a "ki" értéket a mező **alkalmazás-konzisztens pillanatkép gyakoriságának**legördülő menüjében.

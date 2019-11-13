@@ -1,26 +1,25 @@
 ---
-title: Azure-beli virtuális gépek másodlagos Azure-régióba történő vészhelyreállításának beállítása az Azure Site Recovery használatával
+title: Azure-beli virtuális gép vész-helyreállításának beállítása Azure Site Recovery
 description: Megismerheti, hogyan állíthatja be az Azure-beli virtuális gépek egy másik Azure-régióba történő vészhelyreállítását az Azure Site Recovery szolgáltatással.
-services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 08/05/2019
+ms.date: 11/12/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: e46bc9e4fbb2b573338b8be43c38e658ebde05a8
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 502f71365d78bd8fd949d17fe8907817394586b2
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73468025"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73961501"
 ---
 # <a name="set-up-disaster-recovery-for-azure-vms"></a>Vész-helyreállítás beállítása Azure-beli virtuális gépekhez
 
 A [Azure site Recovery](site-recovery-overview.md) szolgáltatás a helyi gépek és az Azure-beli virtuális gépek (VM-EK) replikációjának, feladatátvételének és feladat-visszavételének kezelésével és koordinálásával járul hozzá a vész-helyreállítási stratégiához.
 
-Ebből az oktatóanyagból megtudhatja, hogyan állíthatja be az Azure-beli virtuális gépek vész-helyreállítását azáltal, hogy egy Azure-régióból egy másikba replikálja őket. Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Ebből az oktatóanyagból megtudhatja, hogyan állíthatja be az Azure-beli virtuális gépek vész-helyreállítását azáltal, hogy egy Azure-régióból egy másikba replikálja őket. Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]
 > * Recovery Services-tároló létrehozása
@@ -191,7 +190,7 @@ Ha a forrásoldali virtuális gépnek engedélyezve van az Azure Disk Encryption
     - A **védelem engedélyezése** feladat előrehaladásának nyomon követése a **beállítások** > **feladatok** > **site Recovery feladatokban**.
     - A **Beállítások** > **Replikált elemek** pontban tekintheti meg a virtuális gépek és a kezdeti replikáció folyamatának állapotát. A beállítások részleteinek megjelenítéséhez kattintson az adott virtuális gépre.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban egy Azure-beli virtuális gép vészhelyreállítását konfigurálta. Most elindíthatja a vész-helyreállítási gyakorlatot annak ellenőrzéséhez, hogy a feladatátvétel a várt módon működik-e.
 

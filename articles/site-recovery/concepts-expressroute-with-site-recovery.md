@@ -1,5 +1,5 @@
 ---
-title: Tudnivalók az Azure ExpressRoute és a Azure Site Recovery használatáról a vész-helyreállítási és-áttelepítéshez | Microsoft Docs
+title: Tudnivalók a ExpressRoute és a Azure Site Recovery használatáról
 description: Ismerteti, hogyan használható az Azure ExpressRoute a Azure Site Recovery szolgáltatással a vész-helyreállítási és-áttelepítéshez.
 services: site-recovery
 author: mayurigupta13
@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/13/2019
 ms.author: mayg
-ms.openlocfilehash: 97aea824fac60f8bed71971a416f12e8df0e5e64
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: dcc5105fcf2ad7b6a9f0695b3086dc2956a76a50
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72333051"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73954072"
 ---
 # <a name="azure-expressroute-with-azure-site-recovery"></a>Azure-ExpressRoute Azure Site Recovery
 
@@ -23,7 +23,7 @@ Ez a cikk azt ismerteti, hogyan használható az Azure ExpressRoute a Azure Site
 
 ## <a name="expressroute-circuits"></a>ExpressRoute-áramkörök
 
-A ExpressRoute áramkör a helyszíni infrastruktúra és a Microsoft Cloud Services közötti logikai kapcsolatot jelenti a kapcsolat szolgáltatóján keresztül. Több ExpressRoute-áramkört is rendelhet. Minden áramkör lehet azonos vagy különböző régiókban, és a különböző kapcsolati szolgáltatókon keresztül csatlakozhat a telephelyéhez. További információ az ExpressRoute- [áramkörökről](../expressroute/expressroute-circuit-peerings.md).
+ExpressRoute-kapcsolatcsoport a helyszíni infrastruktúra és a egy kapcsolatszolgáltatón keresztül a Microsoft-felhőszolgáltatások közötti logikai kapcsolatot jelöli. Több ExpressRoute-Kapcsolatcsoportok rendezheti. Minden kapcsolatnak az azonos vagy eltérő régiókban is lehetnek, és a helyszíni eredetű különböző kapcsolatszolgáltatók keresztül lehet csatlakoztatni. További információ az ExpressRoute- [áramkörökről](../expressroute/expressroute-circuit-peerings.md).
 
 Egy ExpressRoute-áramkörhöz több útválasztási tartomány van társítva. További információ az ExpressRoute [útválasztási tartományokról](../expressroute/expressroute-circuit-peerings.md#peeringcompare)és azok összehasonlításáról.
 
@@ -46,7 +46,7 @@ Ez biztosítja, hogy csak a replikálási forgalom haladjon át a ExpressRoute, 
 
 Ha a virtuális gépek vagy a kiszolgálók feladatátvételét egy Azure-beli virtuális hálózatra hajtja végre, a [privát](../expressroute/expressroute-circuit-peerings.md#privatepeering)kapcsolaton keresztül érheti el azokat. 
 
-A kombinált forgatókönyv a következő ábrán látható: ![On-helyszíni-to-Azure a ExpressRoute @ no__t-1
+A kombinált forgatókönyv a következő ábrán látható: ![helyszíni – Azure ExpressRoute-](./media/concepts-expressroute-with-site-recovery/site-recovery-with-expressroute.png)
 
 ## <a name="azure-to-azure-replication-with-expressroute"></a>Azure-ról Azure-ba történő replikáció a ExpressRoute
 

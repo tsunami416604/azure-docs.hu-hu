@@ -1,6 +1,6 @@
 ---
-title: A Azure Time Series Insights-környezet kezelése Azure Resource Manager-sablonok használatával | Microsoft Docs
-description: Ez a cikk azt ismerteti, hogyan felügyelheti Azure Time Series Insights környezetét programozott módon Azure Resource Manager használatával.
+title: Környezet kezelése Azure Resource Manager sablonok használatával – Azure Time Series Insights | Microsoft Docs
+description: Megtudhatja, hogyan kezelheti Azure Time Series Insights környezetét programozott módon Azure Resource Manager használatával.
 ms.service: time-series-insights
 services: time-series-insights
 author: deepakpalled
@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 10/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: f7a88dafb9662e404cedf10334b22af149a3cd16
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: acafb9aab756507bb073b3e883ee190c72b4f9f8
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72991220"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74006771"
 ---
 # <a name="create-time-series-insights-resources-using-azure-resource-manager-templates"></a>Time Series Insights erőforrások létrehozása Azure Resource Manager sablonok használatával
 
@@ -77,7 +77,7 @@ Az alábbi eljárás azt ismerteti, hogyan használható a PowerShell egy olyan 
      | environmentDisplayName | A környezet neve helyett az eszközökön vagy a felhasználói felületeken megjelenítendő, nem kötelezően megadandó felhasználóbarát név. |
      | environmentSkuName | A termékváltozat neve. További információkért tekintse meg a [Time Series Insights díjszabását ismertető oldalt](https://azure.microsoft.com/pricing/details/time-series-insights/).  |
      | environmentSkuCapacity | Az SKU egységnyi kapacitása. További információkért tekintse meg a [Time Series Insights díjszabását ismertető oldalt](https://azure.microsoft.com/pricing/details/time-series-insights/).|
-     | environmentDataRetentionTime | A környezet eseményeinek minimális TimeSpan lesznek elérhetők a lekérdezéshez. Az értéket ISO 8601 formátumban kell megadni, például: `P30D` a 30 napos adatmegőrzési szabályhoz. |
+     | environmentDataRetentionTime | A környezet eseményeinek minimális TimeSpan lesznek elérhetők a lekérdezéshez. Az értéket ISO 8601 formátumban kell megadni, például `P30D` egy 30 napos adatmegőrzési házirendhez. |
      | eventSourceDisplayName | Az eseményforrás neve helyett az eszközön vagy a felhasználói felületeken megjelenítendő, nem kötelezően megadandó felhasználóbarát név. |
      | eventSourceTimestampPropertyName | Az eseményforrás időbélyegzőként használt esemény tulajdonsága. Ha nincs megadva érték a timestampPropertyName, vagy null vagy üres karakterlánc van megadva, akkor a rendszer az esemény létrehozásának idejét fogja használni. |
      | eventSourceKeyName | Annak a megosztott elérési kulcsnak a neve, amelyet a Time Series Insights szolgáltatás fog használni az Event hub-hoz való kapcsolódáshoz. |
@@ -140,7 +140,7 @@ Az alábbi eljárás azt ismerteti, hogyan használható a PowerShell egy olyan 
       Get-AzSubscription
       ```
 
-    * Ez a parancs az elérhető Azure-előfizetések listáját adja vissza. A következő parancs futtatásával válasszon egy előfizetést az aktuális munkamenethez. Cserélje le a `<YourSubscriptionId>` értéket a használni kívánt Azure-előfizetés GUID azonosítójával:
+    * Ez a parancs az elérhető Azure-előfizetések listáját adja vissza. A következő parancs futtatásával válasszon egy előfizetést az aktuális munkamenethez. Cserélje le a `<YourSubscriptionId>`t a használni kívánt Azure-előfizetéshez tartozó GUID azonosítóra:
 
       ```powershell
       Set-AzContext -SubscriptionID <YourSubscriptionId>
@@ -148,7 +148,7 @@ Az alábbi eljárás azt ismerteti, hogyan használható a PowerShell egy olyan 
 
 1. Hozzon létre egy új erőforráscsoportot, ha még nem létezik ilyen.
 
-   * Ha nem rendelkezik meglévő erőforráscsoporthoz, hozzon létre egy új erőforráscsoportot a **New-AzResourceGroup** paranccsal. Adja meg az erőforráscsoport nevét és a használni kívánt helyet. Példa:
+   * Ha nem rendelkezik meglévő erőforráscsoporthoz, hozzon létre egy új erőforráscsoportot a **New-AzResourceGroup** paranccsal. Adja meg az erőforráscsoport nevét és a használni kívánt helyet. Például:
 
      ```powershell
      New-AzResourceGroup -Name MyDemoRG -Location "West US"
@@ -174,7 +174,7 @@ Az alábbi eljárás azt ismerteti, hogyan használható a PowerShell egy olyan 
 
 1. A központi telepítés létrehozása
 
-    * Az új központi telepítés létrehozásához futtassa a `New-AzResourceGroupDeployment` parancsmagot, és ha a rendszer kéri, adja meg a szükséges paramétereket. A paraméterek közé tartozik az üzemelő példány neve, az erőforráscsoport neve, valamint a sablonfájl elérési útja vagy URL-címe. Ha a **Mode** paraméter nincs megadva, a **növekményes** érték alapértelmezett értékét használja a rendszer. További információ: [növekményes és teljes telepítések](../azure-resource-manager/deployment-modes.md).
+    * Az új központi telepítés létrehozásához futtassa a `New-AzResourceGroupDeployment` parancsmagot, és adja meg a szükséges paramétereket, ha a rendszer kéri. A paraméterek közé tartozik az üzemelő példány neve, az erőforráscsoport neve, valamint a sablonfájl elérési útja vagy URL-címe. Ha a **Mode** paraméter nincs megadva, a **növekményes** érték alapértelmezett értékét használja a rendszer. További információ: [növekményes és teljes telepítések](../azure-resource-manager/deployment-modes.md).
 
     * A következő parancs a PowerShell-ablak öt szükséges paraméterének megadását kéri:
 
@@ -200,7 +200,7 @@ Az alábbi eljárás azt ismerteti, hogyan használható a PowerShell egy olyan 
       New-AzResourceGroupDeployment -Name MyDemoDeployment -Mode Complete -ResourceGroupName MyDemoRG -TemplateFile <path to template file>\azuredeploy.json
       ```
 
-1. Az üzemelő példány ellenőrzése
+1. A telepítés ellenőrzése
 
     * Ha az erőforrások központi telepítése sikeresen megtörtént, a központi telepítés összegzése megjelenik a PowerShell-ablakban:
 

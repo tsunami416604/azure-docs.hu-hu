@@ -1,7 +1,7 @@
 ---
 title: Alkalmazásbeállítások – LUIS
 titleSuffix: Azure Cognitive Services
-description: Ismerje meg az alkalmazások beállításait a Language Understanding alkalmazásokhoz.
+description: Az Azure Cognitive Services Language Understanding-alkalmazások beállításai az alkalmazásban és a portálon vannak tárolva.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 07/16/2019
+ms.date: 11/12/2019
 ms.author: diberry
-ms.openlocfilehash: 6d516590b90efd937789fa0847b707d2521f6459
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: bae4f09b539e26ca8c0d4ce97999776dc0911601
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68932578"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73961792"
 ---
 # <a name="application-settings"></a>Alkalmazásbeállítások
 
@@ -24,12 +24,12 @@ Ezeket az Alkalmazásbeállítások az [exportált](https://westus.dev.cognitive
 
 |Beállítás|Alapértelmezett érték|Megjegyzések|
 |--|--|--|
-|NormalizePunctuation|True|Eltávolítja a központozást.|
-|NormalizeDiacritics|True|Eltávolítja a mellékjeleket.|
+|NormalizePunctuation|True (Igaz)|Eltávolítja a központozást.|
+|NormalizeDiacritics|True (Igaz)|Eltávolítja a mellékjeleket.|
 
 ## <a name="diacritics-normalization"></a>Mellékjelek normalizálása 
 
-A `settings` paraméterben kapcsolja be a mellékjeleket a Luis JSON-alkalmazás fájljába.
+A `settings` paraméterben kapcsolja be a mellékjeleket a LUIS JSON-alkalmazás fájljába.
 
 ```JSON
 "settings": [
@@ -142,7 +142,7 @@ Ide tartozik a spanyol és a kanadai mexikói is.
 
 ## <a name="punctuation-normalization"></a>Központozás normalizálása
 
-A `settings` (z) paraméterben bekapcsolhatja az írásjelek kikapcsolását a Luis JSON-alkalmazás fájljába.
+A `settings` paraméterben bekapcsolhatja az írásjelek kikapcsolásának normalizálása a LUIS JSON-alkalmazás fájljában.
 
 ```JSON
 "settings": [
@@ -150,16 +150,16 @@ A `settings` (z) paraméterben bekapcsolhatja az írásjelek kikapcsolását a L
 ] 
 ```
 
-Az alábbi hosszúságú kimondott szöveg bemutatják, hogyan befolyásolják a Mellékjelek a hosszúságú kimondott szöveg:
+A következő hosszúságú kimondott szöveg szemléltetik, hogy a központozás milyen hatással van a hosszúságú kimondott szöveg:
 
-|Ha a Mellékjelek hamis értékre vannak állítva|Ha a Mellékjelek értéke TRUE (igaz)|
+|Az írásjel hamis értékre van állítva|A központozás igaz értékre van állítva|
 |--|--|
 |`Hmm..... I will take the cappuccino`|`Hmm I will take the cappuccino`|
 |||
 
 ### <a name="punctuation-removed"></a>Írásjel eltávolítva
 
-A következő írásjelek törlődnek `NormalizePunctuation` a tulajdonság értéke TRUE (igaz).
+A következő írásjelek törlődnek a `NormalizePunctuation` értéke TRUE (igaz).
 
 |Absztrakt|
 |--|

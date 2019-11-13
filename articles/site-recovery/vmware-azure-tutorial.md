@@ -1,19 +1,19 @@
 ---
-title: Vészhelyzeti helyreállítás beállítása az Azure-ba helyszíni VMware virtuális gépekhez Azure Site Recovery
+title: VMware virtuális gép vész-helyreállításának beállítása az Azure-ba Azure Site Recovery
 description: Ismerje meg, hogyan állíthat be az Azure-ba irányuló vészhelyreállítást helyszíni VMware virtuális gépekhez az Azure Site Recoveryvel.
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 09/09/2019
+ms.date: 11/12/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: e07b1d7e01d743bb46c8d5a21664bf68184c97dd
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: cfdb39fd3585eeeb2afb27749b42b0eaed1dfc33
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73488463"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73953628"
 ---
 # <a name="set-up-disaster-recovery-to-azure-for-on-premises-vmware-vms"></a>Az Azure-ba irányuló vészhelyreállítás beállítása helyszíni VMware virtuális gépekhez
 
@@ -22,7 +22,7 @@ Ez a cikk azt ismerteti, hogyan engedélyezhető a helyszíni VMware virtuális 
 Ez a harmadik oktatóanyag egy sorozatban, amely bemutatja, hogyan állíthatja be a vész-helyreállítást az Azure-ba helyszíni VMware virtuális gépekre. Az előző oktatóanyagban [elkészítettük a helyszíni VMware-környezetet](vmware-azure-tutorial-prepare-on-premises.md) az Azure-ba való vész-helyreállításhoz.
 
 
-Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]
 > * Állítsa be a forrás-replikációs beállításokat és a helyszíni Site Recovery konfigurációs kiszolgálót.
@@ -191,7 +191,7 @@ Engedélyezze a virtuális gépek replikálását a következőképpen:
 1. 15 vagy több percet is igénybe vehet, hogy a módosítások életbe lépjenek és megjelenjenek a portálon.
 1. A hozzáadott virtuális gépek monitorozásához ellenőrizze a virtuális gépek legutolsó felderítésének időpontját a **Konfigurációs kiszolgálók** > **Legutóbbi kapcsolat** területen. Ha nem szeretné megvárni az ütemezett felderítést a virtuális gépek hozzáadásához, emelje ki a konfigurációs kiszolgálót (ne válassza ki), majd válassza a **Frissítés** elemet.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 A replikáció engedélyezése után futtasson egy részletezést, és győződjön meg róla, hogy minden a várt módon működik-e.
 > [!div class="nextstepaction"]
 > [Vészhelyreállítási próba végrehajtása](site-recovery-test-failover-to-azure.md)

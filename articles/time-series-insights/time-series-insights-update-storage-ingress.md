@@ -1,6 +1,6 @@
 ---
-title: Adattárolás és bejövő forgalom Azure Time Series Insights előzetes verzióban | Microsoft Docs
-description: Az adattárolás és a bejövő forgalom megismerése Azure Time Series Insights előzetes verzióban.
+title: Adattárolás és bejövő forgalom előzetes verzióban – Azure Time Series Insights | Microsoft Docs
+description: Tudnivalók az adattárolásról és a bejövő forgalomról Azure Time Series Insights előzetes verzióban.
 author: deepakpalled
 ms.author: dpalled
 manager: cshankar
@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.custom: seodec18
-ms.openlocfilehash: d0cdd78aaa2b58743e16a2e7cfe213a9daed85ff
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 62ee248c06d2b26b935f72b3bb73cf708f949c72
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73605886"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74014712"
 ---
 # <a name="data-storage-and-ingress-in-azure-time-series-insights-preview"></a>Adattárolás és bejövő forgalom Azure Time Series Insights előzetes verzióban
 
@@ -146,7 +146,7 @@ Time Series Insights előnézeti események a következő módon vannak leképez
 * A telemetria-adatként elküldett összes többi tulajdonságot a tulajdonság típusától függően `_string` (string), `_bool` (Boolean), `_datetime` (datetime) vagy `_double` (Double) végződésű oszlopokra kell leképezni.
 * Ez a leképezési séma a fájl formátumának első verziójára vonatkozik, amelyre a **V = 1**hivatkozik. A szolgáltatás fejlődése során előfordulhat, hogy a név növekszik.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Olvassa el [Azure Time Series Insights előnézeti tárolót és a bejövő](./time-series-insights-update-storage-ingress.md)forgalmat.
 

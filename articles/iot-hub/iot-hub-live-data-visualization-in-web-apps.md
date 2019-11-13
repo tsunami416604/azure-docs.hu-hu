@@ -1,6 +1,6 @@
 ---
-title: A webalkalmazás az Azure IoT hub érzékelői adatainak valós idejű vizualizációját |} A Microsoft Docs
-description: Egy webalkalmazás használatával jelenítheti meg, amely egy érzékelő összegyűjtött és az Iot hubnak küldött hőmérséklettel és páratartalommal kapcsolatos adatokat.
+title: A IoT hub-adatai valós idejű adatvizualizációja egy webalkalmazásban
+description: Egy webalkalmazás használatával megjelenítheti az érzékelőből összegyűjtött hőmérséklet-és páratartalom-adatokat, és elküldheti azokat az IOT hubhoz.
 author: robinsh
 ms.service: iot-hub
 services: iot-hub
@@ -8,14 +8,14 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 05/31/2019
 ms.author: robinsh
-ms.openlocfilehash: 22b15a95e529d4f09560e9b7e59d9f78f70651bc
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 073a766662b2ead4b816276fa7fda6dc5e6caca7
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66476003"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73954652"
 ---
-# <a name="visualize-real-time-sensor-data-from-your-azure-iot-hub-in-a-web-application"></a>Egy webalkalmazás az Azure IoT hub valós idejű érzékelői adatainak megjelenítése
+# <a name="visualize-real-time-sensor-data-from-your-azure-iot-hub-in-a-web-application"></a>Valós idejű érzékelők adatainak megjelenítése az Azure IoT hub-ban egy webalkalmazásban
 
 ![Végpontok közötti diagram](./media/iot-hub-live-data-visualization-in-web-apps/1_iot-hub-end-to-end-diagram.png)
 
@@ -23,101 +23,101 @@ ms.locfileid: "66476003"
 
 ## <a name="what-you-learn"></a>Ismertetett témák
 
-Ebben az oktatóanyagban elsajátíthatja, hogyan jelenítheti meg az IoT hub által fogadott a helyi számítógépen futó node.js-webalkalmazásokba az valós idejű érzékelői adatokat. Miután helyileg futtatja a web app, igény szerint lépésekkel Azure App Service-ben a webalkalmazás üzemeltetéséhez. Ha azt szeretné, próbálja meg az IoT hub az adatok megjelenítése Power BI használatával kapcsolatban lásd: [Power BI segítségével az Azure IoT Hub valós idejű érzékelői adatainak megjelenítése](iot-hub-live-data-visualization-in-power-bi.md).
+Ebből az oktatóanyagból megtudhatja, hogyan jelenítheti meg a valós idejű érzékelők adatait, amelyeket az IoT hub a helyi számítógépen futó Node. js-webalkalmazással kap. A webalkalmazás helyi futtatása után igény szerint követheti a webalkalmazás futtatásának lépéseit Azure App Serviceban. Ha Power BI használatával szeretné megjeleníteni az IoT hub adatait, tekintse meg a [Power bi használata a valós idejű érzékelők adatainak megjelenítéséhez az Azure IoT hub](iot-hub-live-data-visualization-in-power-bi.md).
 
-## <a name="what-you-do"></a>TEENDŐ
+## <a name="what-you-do"></a>Teendők
 
-* Egy fogyasztói csoportot adja hozzá az IoT hubhoz, amelynek használatával a webes alkalmazás érzékelőktől kapott adatok olvasása
-* Töltse le a webalkalmazás kódját a Githubról
-* Vizsgálja meg a webalkalmazás kódját
-* Az IoT Hub a webalkalmazás által igényelt összetevők tárolására környezeti változók konfigurálása
+* Vegyen fel egy fogyasztói csoportot az IoT hubhoz, amelyet a webalkalmazás az érzékelő adatai olvasásához használ
+* A webalkalmazás kódjának letöltése a GitHubról
+* A webalkalmazás kódjának vizsgálata
+* Környezeti változók konfigurálása a webalkalmazáshoz szükséges IoT Hub-összetevők tárolásához
 * A webalkalmazás futtatása a fejlesztői gépen
-* Nyisson meg egy weblapot, valós idejű hőmérséklettel és páratartalommal kapcsolatos adatokat az IoT hubról
-* (Nem kötelező) Azure CLI használatával az Azure App Service-ben a webalkalmazás üzemeltetéséhez
+* Nyisson meg egy weblapot az IoT hub valós idejű hőmérséklet-és páratartalom-adatainak megjelenítéséhez
+* Választható A webalkalmazás üzemeltetése az Azure CLI használatával Azure App Service
 
 ## <a name="what-you-need"></a>Mi szükséges
 
-* Végezze el a [Raspberry Pi online szimulátor](iot-hub-raspberry-pi-web-simulator-get-started.md) oktatóanyag vagy az eszköz oktatóanyagokban; például [Raspberry Pi és node.js](iot-hub-raspberry-pi-kit-node-get-started.md). Ez érvényes a következő követelményeknek:
+* Fejezze be a [málna PI online szimulátor](iot-hub-raspberry-pi-web-simulator-get-started.md) oktatóanyagát vagy az eszköz egyik oktatóanyagát; például: [málna PI és Node. js](iot-hub-raspberry-pi-kit-node-get-started.md). Ezek az alábbi követelményekre vonatkoznak:
 
-  * Aktív Azure-előfizetéssel
-  * Az Iot hub, az előfizetéséhez
-  * Egy ügyfélalkalmazás, amely üzeneteket küld az Iot hubhoz
+  * Aktív Azure-előfizetés
+  * Az előfizetés alá tartozó IOT hub
+  * Egy ügyfélalkalmazás, amely üzeneteket küld az IOT hubhoz
 
-* [A Git letöltése](https://www.git-scm.com/downloads)
+* [A git letöltése](https://www.git-scm.com/downloads)
 
-* Ez a cikk lépései azt feltételezik, egy Windows fejlesztési machine lehetőségekre kattintok. azonban egyszerűen végrehajthatja ezeket a lépéseket a Linux rendszeren az előnyben részesített felületen.
+* A cikkben ismertetett lépések feltételezik a Windows fejlesztői gépeket; ezeket a lépéseket azonban egyszerűen elvégezheti az előnyben részesített rendszerhéjban található Linux rendszeren is.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Futtassa a következő parancsot a Microsoft Azure IoT-bővítmény hozzáadása a Cloud Shell-példány Azure CLI-hez. Az IOT-bővítmény hozzáadása Azure CLI-vel az IoT Hub, IoT Edge és IoT Device Provisioning Service (DPS) parancsok.
+A következő parancs futtatásával adja hozzá az Azure CLI-hez készült Microsoft Azure IoT-bővítményt a Cloud Shell-példányhoz. Az IOT bővítmény a IoT Hub, IoT Edge és IoT Device kiépítési szolgáltatás (DPS) adott parancsait hozzáadja az Azure CLI-hez.
 
 ```azurecli-interactive
 az extension add --name azure-cli-iot-ext
 ```
 
-## <a name="add-a-consumer-group-to-your-iot-hub"></a>Az IoT hub fogyasztói csoport hozzáadása
+## <a name="add-a-consumer-group-to-your-iot-hub"></a>Fogyasztói csoport hozzáadása az IoT hub-hoz
 
-[Fogyasztói csoportok](https://docs.microsoft.com/azure/event-hubs/event-hubs-features#event-consumers) független nézeteit, az eseménystream, amelyek lehetővé teszik az alkalmazások és az Azure-szolgáltatások egymástól függetlenül a tárolt adatokat használják az azonos Eseményközpont-végpontra. Ebben a szakaszban hozzáadja az IoT hub beépített végpont, amely a web app használatával fogja olvasni az adatokat a fogyasztói csoportot.
+A [fogyasztói csoportok](https://docs.microsoft.com/azure/event-hubs/event-hubs-features#event-consumers) független nézeteket biztosítanak az esemény-adatfolyamhoz, amely lehetővé teszi, hogy az alkalmazások és az Azure-szolgáltatások egymástól függetlenül használják az adott Event hub-végpont adatait. Ebben a szakaszban egy fogyasztói csoportot ad hozzá az IoT hub beépített végpontához, amelyet a webalkalmazás az adatok olvasására fog használni.
 
-Futtassa a következő parancsot a beépített végponthoz az IoT hub fogyasztói csoport hozzáadása:
+A következő parancs futtatásával vegyen fel egy fogyasztói csoportot az IoT hub beépített végpontján:
 
 ```azurecli-interactive
 az iot hub consumer-group create --hub-name YourIoTHubName --name YourConsumerGroupName
 ```
 
-Megjegyzés: a választott név le, szüksége lesz rá az oktatóanyag későbbi részében.
+Jegyezze fel a kiválasztott nevet, majd az oktatóanyag későbbi részében szüksége lesz rá.
 
-## <a name="get-a-service-connection-string-for-your-iot-hub"></a>Az IoT hub szolgáltatás kapcsolati karakterlánc beszerzése
+## <a name="get-a-service-connection-string-for-your-iot-hub"></a>IoT hub szolgáltatáshoz tartozó szolgáltatási kapcsolatok karakterláncának beolvasása
 
-IoT-központok több alapértelmezett hozzáférési házirendekkel jönnek létre. Egy ilyen szabályzat a **szolgáltatás** szabályzatot, amely a megfelelő engedélyeket biztosít az írási és olvasási végpontokat az IoT hub szolgáltatás. A következő parancsot az IoT hubnak, amely elfogadja a szolgáltatás szabályzat egy kapcsolati sztring lekérése:
+A IoT hubok több alapértelmezett hozzáférési házirenddel jönnek létre. Az egyik ilyen szabályzat a **szolgáltatási** szabályzat, amely megfelelő engedélyeket biztosít a szolgáltatás számára az IoT hub végpontjának olvasásához és írásához. Futtassa a következő parancsot, hogy lekérje a IoT hub kapcsolódási karakterláncát, amely megfelel a szolgáltatási házirendnek:
 
 ```azurecli-interactive
 az iot hub show-connection-string --hub-name YourIotHub --policy-name service
 ```
 
-A kapcsolati karakterláncot a következőhöz hasonlóan kell kinéznie:
+A kapcsolódási karakterláncnak a következőhöz hasonlóan kell kinéznie:
 
 ```javascript
 "HostName={YourIotHubName}.azure-devices.net;SharedAccessKeyName=service;SharedAccessKey={YourSharedAccessKey}"
 ```
 
-Jegyezze fel a szolgáltatáskapcsolati karakterlánc, az oktatóanyag későbbi részében szüksége lesz rá.
+Jegyezze fel a szolgáltatási kapcsolatok karakterláncát, ezért az oktatóanyag későbbi részében szüksége lesz rá.
 
-## <a name="download-the-web-app-from-github"></a>Töltse le a webalkalmazást a Githubról
+## <a name="download-the-web-app-from-github"></a>A webalkalmazás letöltése a GitHubról
 
-Nyisson meg egy parancsablakot, és töltse le a mintát a Githubon, és váltson a minta a következő parancsokat:
+Nyisson meg egy parancssorablakot, és írja be a következő parancsokat a minta GitHubról való letöltéséhez és a minta könyvtárra való váltáshoz:
 
 ```cmd
 git clone https://github.com/Azure-Samples/web-apps-node-iot-hub-data-visualization.git
 cd web-apps-node-iot-hub-data-visualization
 ```
 
-## <a name="examine-the-web-app-code"></a>Vizsgálja meg a webalkalmazás kódját
+## <a name="examine-the-web-app-code"></a>A webalkalmazás kódjának vizsgálata
 
-A web-apps-node-iot-hub-data-visualization könyvtárból nyissa meg a webalkalmazás egy tetszőleges szerkesztőben. Az alábbiakban látható a fájlstruktúra a VS Code tekinthetők meg:
+A Web-Apps-Node-IOT-hub-adatvizualizáció könyvtárában nyissa meg a webalkalmazást a kedvenc szerkesztőjében. Az alábbi ábrán a VS Code-ban megtekintett fájl szerkezete látható:
 
-![Webes alkalmazás fájlstruktúra](./media/iot-hub-live-data-visualization-in-web-apps/web-app-files.png)
+![Webalkalmazás-fájl szerkezete](./media/iot-hub-live-data-visualization-in-web-apps/web-app-files.png)
 
-Szánjon egy kis időt a következő fájlokat vizsgálja meg:
+Szánjon egy kis időt a következő fájlok vizsgálatára:
 
-* **Server.js** Szolgáltatásoldali parancsfájl a inicializálja a web socket és az Event Hub-burkoló osztály. Egy visszahívás az Event Hubs burkoló osztály, amely az osztályt használja a web socket bejövő üzenetek szórási tartalmaz.
+* A **Server. js** egy olyan szolgáltatás-oldali parancsfájl, amely a webes szoftvercsatornát és az Event hub burkoló osztályát inicializálja. Visszahívást biztosít az Event hub burkoló osztályához, amelyet az osztály a bejövő üzenetek webes szoftvercsatornára való szórására használ.
 
-* **Esemény-hub-reader.js** egy Szolgáltatásoldali parancsfájl, amely csatlakozik az IoT hub használata a megadott kapcsolati karakterlánc és a fogyasztói csoport beépített végpont. Ez az eszköz azonosítójával és EnqueuedTimeUtc kigyűjti a metaadatokat a bejövő üzenetek, és ezután továbbítja az üzenet server.js által regisztrált visszahívási metódus használatával.
+* A **Event-hub-Reader. js** egy olyan szolgáltatás-oldali parancsfájl, amely az IoT hub beépített végpontját a megadott kapcsolati sztring és fogyasztói csoport használatával köti össze. Kibontja a DeviceId és a EnqueuedTimeUtc a beérkező üzenetek metaadataiból, majd továbbítja az üzenetet a Server. js által regisztrált visszahívási módszer használatával.
 
-* **Diagram-device-data.js** egy ügyféloldali parancsfájl, amely a web socket-as, nyomon követi az egyes az eszközazonosító és a legutóbbi 50 pontok a bejövő adatok minden egyes eszközhöz tárol. Majd ennek a kijelölt eszközadatokat nA Objekt grafu.
+* A **chart-Device-Data. js** egy ügyféloldali parancsfájl, amely figyeli a webes szoftvercsatornát, nyomon követi az egyes DeviceID-ket, és a bejövő adat utolsó 50 pontját tárolja minden eszközön. Ezután a kiválasztott eszközhöz tartozó adategységeket a diagram objektumhoz köti.
 
-* **Index.HTML** kezeli a felhasználói felület elrendezés a weblap és az ügyféloldali logikát a szükséges szkriptek hivatkozik.
+* Az **index. html** kezeli a weblap felhasználói felületének elrendezését, és az ügyféloldali logikához szükséges parancsfájlokra hivatkozik.
 
-## <a name="configure-environment-variables-for-the-web-app"></a>A webalkalmazáshoz tartozó környezeti változók konfigurálása
+## <a name="configure-environment-variables-for-the-web-app"></a>Környezeti változók konfigurálása a webalkalmazáshoz
 
-Adatokat olvasni az IoT hub, a web app az IoT hub kapcsolati karakterláncot, és a fogyasztói csoportot, amely keresztül olvassa el a neve van szüksége. Ezek a karakterláncok kap a folyamat környezetből a server.js a következő sorokat:
+Az IoT hub adatainak beolvasásához a webalkalmazásnak szüksége van az IoT hub kapcsolati karakterláncára és annak a fogyasztói csoportnak a nevére, amelyet át kell olvasnia. Ezeket a karakterláncokat a Server. js következő soraiban található folyamat-környezetből kapja meg:
 
 ```javascript
 const iotHubConnectionString = process.env.IotHubConnectionString;
 const eventHubConsumerGroup = process.env.EventHubConsumerGroup;
 ```
 
-A környezeti változók értékét az alábbi parancsokkal a parancsablakban. A helyőrző értékeket cserélje le a szolgáltatáskapcsolati karakterláncát az IoT hub és a korábban létrehozott fogyasztói csoport neve. A karakterláncok nem ajánlat.
+Állítsa be a környezeti változókat a parancsablakban a következő parancsokkal. Cserélje le a helyőrző értékeket az IoT hub szolgáltatási kapcsolatok karakterláncára, valamint a korábban létrehozott fogyasztói csoport nevére. Ne idézze a karakterláncokat.
 
 ```cmd
 set IotHubConnectionString=YourIoTHubConnectionString
@@ -126,91 +126,91 @@ set EventHubConsumerGroup=YourConsumerGroupName
 
 ## <a name="run-the-web-app"></a>A webalkalmazás futtatása
 
-1. Győződjön meg arról, hogy az eszköz fut, és az adatok küldésének.
+1. Győződjön meg arról, hogy az eszköz fut és adatokat küld.
 
-2. A parancssori ablakban futtassa a következő sorokat tölthet le és telepítse a hivatkozott csomagokat, és indítsa el a webhelyet:
+2. A parancssorablakban futtassa a következő sorokat a hivatkozott csomagok letöltéséhez és telepítéséhez, majd indítsa el a webhelyet:
 
    ```cmd
    npm install
    npm start
    ```
 
-3. A konzolon, amely jelzi, hogy a webalkalmazás sikeresen csatlakozott az IoT hubhoz, és figyel a következőn: port 3000 kimenetnek kell megjelennie:
+3. Meg kell jelennie a kimenetnek a konzolon, amely azt jelzi, hogy a webalkalmazás sikeresen csatlakozott az IoT hub-hoz, és a 3000-es porton figyeli a következőt:
 
-   ![Webalkalmazás-konzolon a következőn:](./media/iot-hub-live-data-visualization-in-web-apps/web-app-console-start.png)
+   ![A webalkalmazás elindult a konzolon](./media/iot-hub-live-data-visualization-in-web-apps/web-app-console-start.png)
 
-## <a name="open-a-web-page-to-see-data-from-your-iot-hub"></a>Nyisson meg egy weblapot, az IoT hub adatainak megtekintéséhez
+## <a name="open-a-web-page-to-see-data-from-your-iot-hub"></a>Nyisson meg egy weblapot az IoT hub adatainak megjelenítéséhez
 
-Nyisson meg egy böngészőt, és `http://localhost:3000`.
+Nyisson meg egy böngészőt `http://localhost:3000`.
 
-Az a **jelöljön ki egy eszközt** listában, válassza ki az eszközt, tekintse meg a legutóbbi 50 futó rajz az IoT hub által az eszközre elküldött adatpontok hőmérséklettel és páratartalommal kapcsolatos.
+Az eszköz **kiválasztása** listából válassza ki az eszközt, és tekintse meg az eszköz által az IoT hubhoz eljuttatott utolsó 50 hőmérséklet-és páratartalom-adatpontok egy futó ábráját.
 
-![Valós idejű hőmérséklettel és páratartalommal kapcsolatos megjelenítő alkalmazás weblap](./media/iot-hub-live-data-visualization-in-web-apps/web-page-output.png)
+![Webalkalmazás lap valós idejű hőmérsékletet és páratartalmat mutat](./media/iot-hub-live-data-visualization-in-web-apps/web-page-output.png)
 
-Akkor is kimenetnek kell megjelennie, amely a böngészőalapú ügyfél, a webalkalmazás sugárzó üzeneteket jeleníti meg a konzolon:  
+Azt is meg kell jelennie a konzolon, hogy a webalkalmazás által a böngésző ügyfelének küldött üzenetek megjelenjenek:  
 
-![Webalkalmazás szórási kimenetet a konzolon](./media/iot-hub-live-data-visualization-in-web-apps/web-app-console-broadcast.png)
+![A webalkalmazás szórási kimenete a konzolon](./media/iot-hub-live-data-visualization-in-web-apps/web-app-console-broadcast.png)
 
-## <a name="host-the-web-app-in-app-service"></a>Az App Service-ben a webalkalmazás üzemeltetéséhez
+## <a name="host-the-web-app-in-app-service"></a>A webalkalmazás üzemeltetése App Service
 
-A [Azure App Service Web Apps funkciójával](https://docs.microsoft.com/azure/app-service/overview) platformot nyújt, a platformszolgáltatás (PAAS) a webalkalmazás üzemeltetéséhez. Az Azure App Service-ben üzemeltetett webalkalmazások a további biztonsági, terheléselosztási, például nagy teljesítményű Azure-funkciók előnyeit, és méretezhetőséget kínál, csakúgy, mint az Azure és a fejlesztési és üzemeltetési partneri megoldások, mint a folyamatos üzembe helyezés, a felügyeleti csomagot, és így tovább. Az Azure App Service számos népszerű nyelveken fejlesztett és a Windows vagy Linux-alapú infrastruktúra üzembe helyezett webalkalmazások támogatja.
+A [Azure App Service Web Apps szolgáltatása](https://docs.microsoft.com/azure/app-service/overview) a webalkalmazások üzemeltetésére szolgáló platformként szolgál (a Pásti). A Azure App Serviceban üzemeltetett webalkalmazások kihasználhatják a hatékony Azure-funkciókat, például a további biztonságot, a terheléselosztást és a méretezhetőséget, valamint az Azure-és partneri DevOps-megoldásokat, például a folyamatos üzembe helyezést, a csomagok felügyeletét stb. Azure App Service támogatja a számos népszerű nyelven fejlesztett és Windows-vagy Linux-infrastruktúrán üzembe helyezett webalkalmazást.
 
-Ebben a szakaszban webalkalmazás üzembe helyezése az App Service-ben, és a kód telepítése az Azure CLI-parancsok használatával. Találhat további információkat a használt parancsok a [az webapp](https://docs.microsoft.com/cli/azure/webapp?view=azure-cli-latest) dokumentációját. Mielőtt elkezdené, győződjön meg arról, végrehajtotta a lépéseket [adjon hozzá egy erőforráscsoportot az IoT hubhoz](#add-a-consumer-group-to-your-iot-hub), [egy szolgáltatás kapcsolati karakterláncának lekérése az IoT hub](#get-a-service-connection-string-for-your-iot-hub), és [töltse le a webalkalmazást a Githubról](#download-the-web-app-from-github).
+Ebben a szakaszban egy webalkalmazást hoz létre a App Serviceban, és üzembe helyezi a kódját az Azure CLI-parancsok használatával. Az az [WebApp](https://docs.microsoft.com/cli/azure/webapp?view=azure-cli-latest) dokumentációjában használt parancsok részleteit megtekintheti. Mielőtt elkezdené, győződjön meg arról, hogy elvégezte az [erőforráscsoport hozzáadásának](#add-a-consumer-group-to-your-iot-hub)lépéseit az IoT hub-hoz, [szerezzen be egy szolgáltatás-kapcsolati karakterláncot az IoT hub számára](#get-a-service-connection-string-for-your-iot-hub), és [töltse le a webalkalmazást a githubról](#download-the-web-app-from-github).
 
-1. Egy [App Service-csomag](https://docs.microsoft.com/azure/app-service/overview-hosting-plans) határozza meg az alkalmazás futtatása az App Service-ben üzemeltetett számítási erőforrásokat. Ebben az oktatóanyagban a fejlesztői/ingyenes szint használjuk a webalkalmazás üzemeltetéséhez. Az ingyenes szinten a webalkalmazás megosztott Windows erőforrások más App Service-alkalmazások, beleértve a más ügyfelek alkalmazásokat futtat. Az Azure is App Service-csomagok üzembe helyezése a Linuxos web apps ajánlatok a számítási erőforrásokat. Ezt a lépést kihagyhatja, ha már van egy App Service-csomag, amelyet használni szeretne.
+1. Az [app Service-csomag](https://docs.microsoft.com/azure/app-service/overview-hosting-plans) számítási erőforrásokat határoz meg app Service által futtatott alkalmazáshoz. Ebben az oktatóanyagban a fejlesztő/ingyenes szintet használjuk a webalkalmazás üzemeltetéséhez. Az ingyenes szinten a webalkalmazás a megosztott Windows-erőforrásokon fut más App Service alkalmazásokkal, többek között más ügyfelek alkalmazásaival. Az Azure App Service terveket is kínál a webalkalmazások Linux számítási erőforrásokon való üzembe helyezéséhez. Ezt a lépést kihagyhatja, ha már rendelkezik a használni kívánt App Service-csomaggal.
 
-   A Windows ingyenes szint használata App Service-csomag létrehozásához futtassa az alábbi parancsot. Használja az IoT hub szerepel ugyanabban az erőforráscsoportban. A service-csomag neve a felső és kisbetűket, számokat és kötőjeleket tartalmazhat.
+   Ha App Service csomagot szeretne létrehozni a Windows ingyenes szintjével, futtassa a következő parancsot. Használja ugyanazt az erőforráscsoportot, amelyben az IoT hub található. A szolgáltatási csomag neve kis-és nagybetűket, számokat és kötőjeleket tartalmazhat.
 
    ```azurecli-interactive
    az appservice plan create --name <app service plan name> --resource-group <your resource group name> --sku FREE
    ```
 
-2. Most már webalkalmazás üzembe helyezése az App Service-csomagban. A `--deployment-local-git` paraméter lehetővé teszi, hogy a webalkalmazás kódját feltöltött és telepített egy Git-adattárból a helyi gépen. A webalkalmazás nevének globálisan egyedinek kell lennie, és a felső és kisbetűket, számokat és kötőjeleket tartalmazhat.
+2. Most hozzon létre egy webalkalmazást a App Service tervben. A `--deployment-local-git` paraméter lehetővé teszi a webalkalmazás kódjának feltöltését és telepítését a helyi gépen található git-tárházból. A webalkalmazás nevének globálisan egyedinek kell lennie, és kis-és nagybetűket, számokat és kötőjeleket tartalmazhat.
 
    ```azurecli-interactive
    az webapp create -n <your web app name> -g <your resource group name> -p <your app service plan name> --deployment-local-git
    ```
 
-3. Most adjon hozzá alkalmazásbeállításokat környezeti változók, amely az IoT hub kapcsolati karakterláncra és az eseményközpont fogyasztói csoportjának megadása. Egyéni beállítások szóközzel elválasztott a rendszer a `-settings` paraméter. A szolgáltatás kapcsolati karakterláncának használata az IoT hub és a fogyasztói csoportot, ebben az oktatóanyagban korábban létrehozott. Az értékek nem ajánlat.
+3. Most adja meg az IoT hub kapcsolati karakterláncot és az Event hub fogyasztói csoportot megadó környezeti változók alkalmazás-beállításait. Az egyes beállítások a `-settings` paraméterben vannak elválasztva. Használja a IoT hub szolgáltatási kapcsolatok karakterláncát és az oktatóanyagban korábban létrehozott fogyasztói csoportot. Ne idézze az értékeket.
 
    ```azurecli-interactive
    az webapp config appsettings set -n <your web app name> -g <your resource group name> --settings EventHubConsumerGroup=<your consumer group> IotHubConnectionString=<your IoT hub connection string>
    ```
 
-4. Engedélyezze a Websockets protokoll a web app for, és állítsa be a webalkalmazás fogadni a HTTPS-kérelmek csak (HTTP-kérelmeket a rendszer átirányítja HTTPS).
+4. Engedélyezze a web Sockets protokollt a webalkalmazáshoz, és állítsa be úgy a webalkalmazást, hogy csak HTTPS-kérelmeket fogadjon (a HTTP-kérelmeket a rendszer a HTTPS-re irányítja át)
 
    ```azurecli-interactive
    az webapp config set -n <your web app name> -g <your resource group name> --web-sockets-enabled true
    az webapp update -n <your web app name> -g <your resource group name> --https-only true
    ```
 
-5. A kód üzembe helyezése az App Service, hogy szeretné használni a [felhasználói szintű üzembe helyezési hitelesítő adatok](https://docs.microsoft.com/azure/app-service/deploy-configure-credentials). A felhasználói szintű üzembe helyezési hitelesítő adatok különböznek az Azure hitelesítő adatait, és használható a helyi Git és a egy webalkalmazás FTP-központitelepítése. Beállítása után még érvényes összes az Azure-fiókjában található összes előfizetés az App Service-alkalmazások. Ha korábban már beállította a felhasználói szintű üzembe helyezési hitelesítő adatok, használhatja őket.
+5. A kód App Serviceba való üzembe helyezéséhez [felhasználói szintű központi telepítési hitelesítő adatait](https://docs.microsoft.com/azure/app-service/deploy-configure-credentials)fogja használni. A felhasználói szintű központi telepítési hitelesítő adatai eltérnek az Azure-beli hitelesítő adataitól, és a git helyi és FTP-környezetekben való üzembe helyezéséhez használatosak a webalkalmazások számára. A beállítás után az Azure-fiók összes előfizetésében érvényesek lesznek az összes App Service alkalmazásban. Ha korábban beállította a felhasználói szintű központi telepítési hitelesítő adatokat, használhatja azokat.
 
-   Ha korábban nem állított be a felhasználói szintű üzembe helyezési hitelesítő adatok, vagy nem emlékszik a jelszavára, futtassa a következő parancsot. A központi telepítés felhasználói nevében Azure-on belül egyedinek kell lennie, és nem tartalmazhatja a "@" a helyi Git leküldések szimbólum. Amikor a rendszer kéri, adja meg, és erősítse meg az új jelszót. A jelszónak legalább nyolc karakter hosszú, a következő három elem közül kell lennie: betűk, számok és szimbólumok.
+   Ha korábban még nem állította be a felhasználói szintű központi telepítési hitelesítő adatokat, vagy nem emlékszik a jelszavára, futtassa a következő parancsot. Az üzembe helyezési felhasználónévnek egyedinek kell lennie az Azure-ban, és nem tartalmazhatja a "@" szimbólumot a helyi git leküldéséhez. Amikor a rendszer kéri, írja be és erősítse meg az új jelszót. A jelszónak legalább nyolc karakterből kell állnia, és a következő három elem közül kettőnek kell lennie: betűk, számok és szimbólumok.
 
    ```azurecli-interactive
    az webapp deployment user set --user-name <your deployment user name>
    ```
 
-6. Küldje be a kódot, akár az App Service használatával a Git URL-cím beolvasása.
+6. Kérje meg a git URL-címét, hogy a kódot a App Serviceba küldje el.
 
    ```azurecli-interactive
    az webapp deployment source config-local-git -n <your web app name> -g <your resource group name>
    ```
 
-7. Adja hozzá a Klónozás által hivatkozott App Service-ben a webalkalmazáshoz tartozó Git-tárház egy távoli. A \<Git clone URL-cím\>, használja az URL-címet adja vissza az előző lépésben. Futtassa a következő parancsot a parancssori ablakba.
+7. Adjon hozzá egy távolit a klónhoz, amely a App Service webalkalmazás git-tárházára hivatkozik. \<git-klón URL-címéhez\>használja az előző lépésben visszaadott URL-címet. Futtassa a következő parancsot a parancsablakban.
 
    ```cmd
    git remote add webapp <Git clone URL>
    ```
 
-8. A kód üzembe helyezése az App Service-ben, adja meg a következő parancsot a parancssori ablakba. Ha a hitelesítő adatokat kéri, adja meg a felhasználói szintű üzembe helyezési hitelesítő adatok, az 5. lépésben létrehozott. Ellenőrizze, hogy küldje le a főágba távoli App Service-ben.
+8. A kód App Serviceba való telepítéséhez írja be a következő parancsot a parancsablakban. Ha a rendszer hitelesítő adatokat kér, adja meg az 5. lépésben létrehozott felhasználói szintű központi telepítési hitelesítő adatokat. Győződjön meg arról, hogy leküldi a App Service távoli főágra.
 
     ```cmd
     git push webapp master:master
     ```
 
-9. Az üzembe helyezés folyamatát frissíteni fogja a parancssori ablakba. Üzembe helyezés sikerességét az alábbi kimenet hasonló sorokkal végződik:
+9. A központi telepítés előrehaladása a parancsablakban fog frissülni. A sikeres üzembe helyezés a következő kimenethez hasonló sorokkal végződik:
 
     ```cmd
     remote:
@@ -221,44 +221,44 @@ Ebben a szakaszban webalkalmazás üzembe helyezése az App Service-ben, és a k
     6b132dd..7cbc994  master -> master
     ```
 
-10. Futtassa a webalkalmazás állapotának lekérdezése, és ellenőrizze, hogy fut-e a következő parancsot:
+10. Futtassa a következő parancsot a webalkalmazás állapotának lekéréséhez, és győződjön meg arról, hogy az fut:
 
     ```azurecli-interactive
     az webapp show -n <your web app name> -g <your resource group name> --query state
     ```
 
-11. Egy böngészőben nyissa meg a `https://<your web app name>.azurewebsites.net` oldalt. A hasonló weblap látott futtatásakor a webalkalmazást helyileg jeleníti meg. Feltételezve, hogy az eszköz fut, és az adatok küldésének, megtekintheti az 50 legutóbbi hőmérséklettel és páratartalommal kapcsolatos olvasmányok az eszköz által küldött futó ábrázolása.
+11. Egy böngészőben nyissa meg a `https://<your web app name>.azurewebsites.net` oldalt. A webalkalmazás helyi futtatásakor megjelenő weboldalhoz hasonló weblap. Feltételezve, hogy az eszköz fut és adatokat küld, látnia kell az eszköz által küldött, a 50 legutóbbi hőmérséklet-és páratartalom-olvasások futó ábráját.
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
 
-Ha problémák ezt a mintát között, próbálja meg a következő szakaszok lépéseit. Ha a probléma továbbra is fennáll, küldjön visszajelzést a témakör alján.
+Ha bármilyen probléma merül fel ezzel a mintával, próbálkozzon az alábbi részekben ismertetett lépésekkel. Ha továbbra is problémákat tapasztal, küldjön visszajelzést a témakör alján.
 
-### <a name="client-issues"></a>Ügyfél-problémák
+### <a name="client-issues"></a>Ügyfelekkel kapcsolatos problémák
 
-* Ha egy eszköz nem jelenik meg a listában, vagy nincs a diagram megrajzolása folyamatban van, győződjön meg arról, az eszköz kódja fut az eszközön.
+* Ha egy eszköz nem jelenik meg a listában, vagy nem készül gráf, ellenőrizze, hogy az eszközön fut-e a kód.
 
-* A böngészőben nyissa meg a fejlesztői eszközök (számos böngészőben az F12 billentyű nyílik meg,), és keresse meg a konzolon. Keresse meg az összes figyelmeztetést és hibát van nyomtatva.
+* A böngészőben nyissa meg a fejlesztői eszközöket (számos böngészőben az F12 billentyű megnyithatja), és keresse meg a konzolt. Keresse meg az ott kinyomtatott figyelmeztetéseket és hibákat.
 
-* /Js/chat-device-data.js ügyféloldali parancsfájlok is hibakeresése.
+* Az ügyféloldali szkriptek hibakeresését a/JS/chat-Device-Data.js.-ben végezheti el
 
-### <a name="local-website-issues"></a>Helyi webhely kapcsolatos problémák
+### <a name="local-website-issues"></a>Helyi webhely problémái
 
-* Tekintse meg a kimeneti ablakban ahonnét elindította a konzol kimenete csomópont.
+* Tekintse meg az ablakban azt a kimenetet, amelyen a konzol kimenetéhez tartozó csomópontot indította.
 
-* A kiszolgálói kód, kifejezetten a server.js és /scripts/event-hub-reader.js hibakeresést.
+* A kiszolgáló kódjának, különösen a Server. js és a/scripts/Event-hub-Reader.js. hibakeresése
 
-### <a name="azure-app-service-issues"></a>Az Azure App Service-problémák
+### <a name="azure-app-service-issues"></a>Azure App Service problémák
 
-* Az Azure Portalon lépjen a webalkalmazáshoz. A **figyelés** a bal oldali panelen válassza ki a **App Service-naplók**. Kapcsolja be **Application Logging (fájlrendszer)** , beállításához **szint** hiba, és válassza ki a **mentése**. Nyissa meg **naplófolyam** (alatt **figyelés**).
+* A Azure Portalban nyissa meg a webalkalmazást. A bal oldali ablaktábla **figyelés** területén válassza a **app Service naplók**lehetőséget. Kapcsolja be az **alkalmazás naplózása (fájlrendszer)** beállítást be értékre, állítsa a hiba **szintet** , majd kattintson a **Mentés**gombra. Ezután nyissa meg a **naplózási adatfolyamot** (a **figyelés**alatt).
 
-* Az Azure Portalon a webalkalmazás alatt **Fejlesztőeszközök** válassza **konzol** , és ellenőrizze a csomópont és az npm verziók `node -v` és `npm -v`.
+* A Azure Portal webalkalmazásában a **fejlesztői eszközök** területen válassza a **konzol** lehetőséget, és ellenőrizze a csomópont-és NPM verzióit `node -v` és `npm -v`.
 
-* Ha nem találja a csomag kapcsolatos hibaüzenet jelenik meg, előfordulhat, hogy a lépések sorrendje futtatta. Ha a hely telepítve van (a `git push`) az app service fut `npm install`, mely alapján a csomópont aktuális verziója fut. azt konfigurálva van. Ha később konfigurációban, hogy megváltozik, szüksége összegnek nincs valós jelentése módosítsa annak a kódot, és küldje le újra.
+* Ha a csomag nem talál hibát, lehetséges, hogy a lépéseket a sorrend szerint futtatta. Ha a hely telepítve van (`git push`), az App Service `npm install`fut, amely az általa konfigurált csomópont aktuális verziója alapján fut. Ha később módosítja a konfigurációt, értelmetlen módosítást kell végeznie a kódban, és újra le kell küldenie.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-A webalkalmazás sikeresen felhasználta az IoT hub valós idejű érzékelői adatainak megjelenítése.
+Sikeresen használta a webalkalmazást az IoT hub valós idejű érzékelői adatainak megjelenítéséhez.
 
-A másik lehetőség az Azure IoT Hub adatainak megjelenítése, lásd: [Power BI segítségével az IoT hub valós idejű érzékelői adatainak megjelenítése](iot-hub-live-data-visualization-in-power-bi.md).
+Az Azure IoT Hubból származó adatok megjelenítésének másik módja: [a Power bi használata a valós idejű érzékelők adatainak megjelenítéséhez az IoT hub-ból](iot-hub-live-data-visualization-in-power-bi.md).
 
 [!INCLUDE [iot-hub-get-started-next-steps](../../includes/iot-hub-get-started-next-steps.md)]

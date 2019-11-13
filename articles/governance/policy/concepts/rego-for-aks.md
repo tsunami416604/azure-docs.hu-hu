@@ -1,17 +1,14 @@
 ---
 title: Az Azure Kubernetes Service Azure Policy megismerése
 description: Megtudhatja, hogyan kezeli a Azure Policy a Rego és a nyílt házirend-ügynököt a fürtök Azure Kubernetes szolgáltatásban való kezeléséhez.
-author: DCtheGeek
-ms.author: dacoulte
 ms.date: 11/04/2019
 ms.topic: conceptual
-ms.service: azure-policy
-ms.openlocfilehash: 248f96b4385e97605986b53bd94fd83236ec8f08
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: dbac1ee762066fb59cd57c04839666026a2bd89b
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73480894"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73959796"
 ---
 # <a name="understand-azure-policy-for-azure-kubernetes-service"></a>Az Azure Kubernetes Service Azure Policy megismerése
 
@@ -143,7 +140,7 @@ Az előfeltételek elvégzése után telepítse a Azure Policy-bővítményt a f
      > [!NOTE]
      > Ha a **bővítmény engedélyezése** gomb szürkén jelenik meg, az előfizetés még nem lett hozzáadva az előzetes verzióhoz. A szükséges lépések megtekintéséhez tekintse meg a következőt: [opt-in (előzetes](#opt-in-for-preview) verzió).
 
-- Azure parancssori felület (CLI)
+- Azure CLI
 
   ```azurecli-interactive
   # Log in first with az login if you're not using Cloud Shell
@@ -223,7 +220,7 @@ Ha el szeretné távolítani a Azure Policy-bővítményt az AK-fürtből, haszn
 
      ![Az AK-bővítmény Azure Policyának letiltása](../media/rego-for-aks/disable-policy-add-on.png)
 
-- Azure parancssori felület (CLI)
+- Azure CLI
 
   ```azurecli-interactive
   # Log in first with az login if you're not using Cloud Shell
@@ -254,7 +251,7 @@ A bővítmény által gyűjtött információk nem személyes adatok. A rendszer
 - Az ügynök telepítése során Azure Policy bővítmény által észlelt kivételek/hibák a szabályzat kiértékelése során
 - Azure Policy bővítmény által nem telepített forgalomirányító-házirendek száma
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Tekintse át a példákat [Azure Policy mintákon](../samples/index.md).
 - A [Szabályzatdefiníciók struktúrájának](definition-structure.md) áttekintése.

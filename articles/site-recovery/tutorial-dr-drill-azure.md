@@ -1,20 +1,19 @@
 ---
-title: Azure-ba irányuló vészhelyreállítási próba végrehajtása helyszíni gépeken az Azure Site Recoveryvel | Microsoft Docs
-description: Arra vonatkozó ismeretek, hogyan hajthat végre a helyszínről az Azure-ba irányuló vészhelyreállítási próbát az Azure Site Recoveryvel
+title: Vész-helyreállítási gyakorlat futtatása az Azure-ba Azure Site Recovery
+description: Megtudhatja, hogyan futtathat vész-helyreállítási gyakorlatot a helyszínen az Azure-ba, Azure Site Recovery segítségével.
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
-services: site-recovery
 ms.topic: tutorial
-ms.date: 09/09/2019
+ms.date: 11/12/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 14ef3bf8420acf03f5c8329c6c78834dbc16ae40
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: 5bd9f5316f8b8799633de8c0c84c61424c0e4f4a
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70814274"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73954420"
 ---
 # <a name="run-a-disaster-recovery-drill-to-azure"></a>Vészhelyreállítási próba végrehajtása az Azure-ba
 
@@ -81,13 +80,13 @@ A következőképpen futtassa a feladatátvételi tesztet:
 
 Egyes forgatókönyvekben a feladatátvételhez további feldolgozás szükséges, ami körülbelül nyolc-tíz percet vesz igénybe. Bizonyára észrevette, hogy hosszabb a feladatátvételi teszt ideje a VMware Linux gépeken, a nem DHCP-vel kiosztott IP-című VMware virtuális gépeken, valamint a következő rendszerindító illesztőprogramokkal nem rendelkező VMware virtuális gépeken: storvsc, vmbus, storflt, intelide, atapi.
 
-## <a name="connect-after-failover"></a>Csatlakozás a feladatátvétel után
+## <a name="connect-after-failover"></a>Kapcsolat feladatátvétel után
 
 Ha az Azure-beli virtuális gépeket a feladatátvételt követően RDP/SSH használatával szeretné összekapcsolni, [készüljön fel a csatlakozásra](site-recovery-test-failover-to-azure.md#prepare-to-connect-to-azure-vms-after-failover). Ha a feladatátvételt követően bármilyen csatlakozási probléma merül fel, kövesse a [hibaelhárítási](site-recovery-failover-to-azure-troubleshoot.md) útmutatót.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
-> [Feladatátvétel és feladat-visszavétel futtatása VMWare virtuális](vmware-azure-tutorial-failover-failback.md)
-> gépeken feladatátvétel és feladat-visszavétel futtatása a[Hyper-V virtuális](hyper-v-azure-failover-failback-tutorial.md)
-> gépek számára feladatátvétel és feladat-visszavétel futtatása[fizikai gépek](physical-to-azure-failover-failback.md) esetén
+> [Feladatátvétel és feladat-visszavétel futtatása a VMWare virtuális](vmware-azure-tutorial-failover-failback.md) gépeken
+> feladatátvétel és feladat [-visszavétel futtatása a Hyper-V virtuális gépek számára](hyper-v-azure-failover-failback-tutorial.md)
+> feladatátvétel és feladat-visszavétel futtatása [fizikai számítógépeken](physical-to-azure-failover-failback.md)

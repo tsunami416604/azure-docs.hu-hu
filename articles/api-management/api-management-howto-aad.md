@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
-ms.openlocfilehash: 1def431bd24019c5f7d15cf7ac0e7550b85d17c4
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 5d2b43599c1e1f95f505d7987675e5fd40810fa4
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73176727"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74012966"
 ---
 # <a name="authorize-developer-accounts-by-using-azure-active-directory-in-azure-api-management"></a>Fejlesztői fiókok engedélyezése az Azure-beli Azure Active Directory használatával API Management
 
@@ -32,7 +32,7 @@ Ez a cikk bemutatja, hogyan engedélyezheti a hozzáférést a fejlesztői port�
 
 ## <a name="authorize-developer-accounts-by-using-azure-ad"></a>Fejlesztői fiókok engedélyezése az Azure AD használatával
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com). 
+1. Bejelentkezés az [Azure Portalra](https://portal.azure.com). 
 2. Válassza ezt: ![nyíl](./media/api-management-howto-aad/arrow.png).
 3. Írja be az **API** kifejezést a keresőmezőbe.
 4. Válassza ki **API Management szolgáltatásokat**.
@@ -73,7 +73,7 @@ Ez a cikk bemutatja, hogyan engedélyezheti a hozzáférést a fejlesztői port�
 > [!NOTE]
 > Az **engedélyezett bérlők** szakaszban több tartományt is megadhat. Ahhoz, hogy egy felhasználó egy másik tartományból jelentkezzen be, mint az az eredeti tartomány, ahol az alkalmazás regisztrálva van, a különböző tartomány globális rendszergazdájának engedélyt kell adnia az alkalmazásnak a címtáradatok eléréséhez. Az engedély megadásához a globális rendszergazdának a következőnek kell lennie: a. Lépjen a `https://<URL of your developer portal>/aadadminconsent`ra (például https://contoso.portal.azure-api.net/aadadminconsent).
 > b. Írja be annak az Azure AD-bérlőnek a tartománynevét, amelyhez hozzáférést szeretne biztosítani.
-> c. Válassza a **Küldés**lehetőséget. 
+> c. Válassza ki **elküldése**. 
 
 20.  A kívánt konfiguráció megadása után válassza a **Hozzáadás**lehetőséget.
 
@@ -100,11 +100,11 @@ A konfigurált Azure AD-példány felhasználói már bejelentkezhetnek a fejles
 
 ## <a name="a-idlog_in_to_dev_portal-developer-portal---add-azure-ad-account-authentication"></a><a id="log_in_to_dev_portal"/> fejlesztői portál – Azure AD-fiók hitelesítésének hozzáadása
 
-Ha engedélyezni szeretné a bejelentkezést a HRE a fejlesztői portálon, hozzá kell adnia a **OAuth gombok** widgetet a bejelentkezési űrlaphoz.
+A fejlesztői portálon jelentkezzen be a HRE-be a **OAuth gombok** widgettel. A widget már szerepel a fejlesztői portál alapértelmezett tartalmának bejelentkezési oldalán.
 
 ![HRE gombok widget](./media/api-management-howto-aad/portal-oauth-widget.png)
 
-Bár a rendszer automatikusan létrehoz egy új fiókot, amikor egy új felhasználó bejelentkezik a HRE-be, érdemes lehet ugyanezt a widgetet hozzáadni a regisztrációs űrlaphoz.
+Bár a rendszer automatikusan létrehoz egy új fiókot, amikor egy új felhasználó bejelentkezik a HRE-be, érdemes lehet ugyanezt a widgetet hozzáadni a regisztrációs laphoz.
 
 ## <a name="legacy-developer-portal---how-to-sign-in-with-azure-ad"></a>Örökölt fejlesztői portál – bejelentkezés az Azure AD-vel
 

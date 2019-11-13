@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 02/28/2019
 ms.author: zarhoads
-ms.openlocfilehash: 1972a91e1ed8a39bcd467272108e0e772116344e
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 26cd2ffc12dfb93f07c2e1755a0dc41cc90da252
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73472875"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73961636"
 ---
 # <a name="scaling-options-for-applications-in-azure-kubernetes-service-aks"></a>Alkalmazások méretezési lehetőségei az Azure Kubernetes szolgáltatásban (ak)
 
@@ -81,13 +81,13 @@ Az AK-fürt gyors méretezéséhez integrálható a Azure Container Instances (A
 
 ![Kubernetes-méretezés az ACI-ig](media/concepts-scale/burst-scaling.png)
 
-Az ACI lehetővé teszi, hogy gyorsan üzembe helyezzen tároló-példányokat további infrastruktúra-terhelés nélkül. Ha AK-val kapcsolódik, az ACI biztonságos, logikai kiterjesztést biztosít az AK-fürt számára. A virtuális Kubelet összetevő az AK-fürtbe van telepítve, amely az ACI-t virtuális Kubernetes-csomópontként jeleníti meg. A Kubernetes ezután olyan hüvelyeket ütemezhetnek, amelyek a virtuális csomópontokon keresztül ACI-példányként futnak, nem pedig a virtuálisgép-csomópontokon közvetlenül az AK-fürtön lévő hüvelyek. A virtuális csomópontok jelenleg előzetes verzióban találhatók az AK-ban.
+Az ACI lehetővé teszi, hogy gyorsan üzembe helyezzen tároló-példányokat további infrastruktúra-terhelés nélkül. Ha AK-val kapcsolódik, az ACI biztonságos, logikai kiterjesztést biztosít az AK-fürt számára. A virtuális [csomópontok][virtual-nodes-cli] virtuális [Kubelet][virtual-kubelet]alapuló összetevője telepítve van az AK-fürtben, amely az ACI-t virtuális Kubernetes-csomópontként jeleníti meg. A Kubernetes ezután olyan hüvelyeket ütemezhetnek, amelyek a virtuális csomópontokon keresztül ACI-példányként futnak, nem pedig a virtuálisgép-csomópontokon közvetlenül az AK-fürtön lévő hüvelyek. A virtuális csomópontok jelenleg előzetes verzióban találhatók az AK-ban.
 
 Az alkalmazás nem igényel módosítást virtuális csomópontok használatához. Az üzembe helyezések az AK-ban és az ACI-ban is méretezhetők, és késedelem nélkül a fürt autoskálázása új csomópontokat helyez üzembe az AK-fürtben.
 
 A virtuális csomópontok egy további alhálózatra vannak telepítve, ugyanabban a virtuális hálózatban, mint az AK-fürt. Ez a virtuális hálózati konfiguráció lehetővé teszi az ACI és az AK közötti adatforgalom védelmét. Az AK-fürtökhöz hasonlóan az ACI-példányok egy biztonságos, logikai számítási erőforrás, amely más felhasználóktól el van különítve.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az alkalmazások méretezésének megkezdéséhez először kövesse a gyors üzembe helyezési lehetőséget, és [hozzon létre egy AK-fürtöt az Azure CLI][aks-quickstart]használatával. Ezután megkezdheti az alkalmazások manuális vagy automatikus méretezését az AK-fürtben:
 
@@ -104,6 +104,7 @@ Az alapvető Kubernetes és az AK-fogalmakkal kapcsolatos további információk
 - [Kubernetes/AK-tároló][aks-concepts-storage]
 
 <!-- LINKS - external -->
+[virtual-kubelet]: https://virtual-kubelet.io/
 
 <!-- LINKS - internal -->
 [aks-quickstart]: kubernetes-walkthrough.md
@@ -117,3 +118,4 @@ Az alapvető Kubernetes és az AK-fogalmakkal kapcsolatos további információk
 [aks-concepts-storage]: concepts-storage.md
 [aks-concepts-identity]: concepts-identity.md
 [aks-concepts-network]: concepts-network.md
+[virtual-nodes-cli]: virtual-nodes-cli.md

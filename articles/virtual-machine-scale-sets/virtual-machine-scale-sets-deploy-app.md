@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/29/2018
 ms.author: cynthn
-ms.openlocfilehash: 996006c60e754437f8f863c7e7a72c929ed77f2c
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: 0dc1c52e65090acd5f63d1b23d8da6f37e3cf567
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72166208"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73960730"
 ---
 # <a name="deploy-your-application-on-virtual-machine-scale-sets"></a>Alkalmazás üzembe helyezése virtuálisgép-méretezési csoportokon
 
@@ -37,7 +37,7 @@ A virtuális gép üzembe helyezéséhez és az idő csökkentéséhez létrehoz
 
 
 ## <a name="already-provisioned"></a>Alkalmazás telepítése az egyéni szkriptek bővítményével
-Az egyéni szkriptek bővítménye szkripteket tölt le és futtat az Azure-beli virtuális gépeken. A bővítmény az üzembe helyezést követő konfiguráció, szoftvertelepítés, illetve bármely konfigurációs/felügyeleti feladat végrehajtása során hasznos. A szkriptek az Azure Storage-ből vagy a GitHubról tölthetők le, illetve megadhatók az Azure Portalon a bővítmény futásidejében. A méretezési csoportokkal rendelkező egyéni virtuálisgép-rendszerképek létrehozásáról és használatáról további információt a következő oktatóanyagokban talál:
+Az egyéni szkriptek bővítménye szkripteket tölt le és futtat az Azure-beli virtuális gépeken. A bővítmény az üzembe helyezést követő konfiguráció, szoftvertelepítés, illetve bármely konfigurációs/felügyeleti feladat végrehajtása során hasznos. A szkriptek az Azure Storage-ből vagy a GitHubról tölthetők le, illetve megadhatók az Azure Portalon a bővítmény futásidejében. Az alkalmazások egyéni parancsfájl-Bővítménysel történő telepítésével kapcsolatos további információkért tekintse meg a következő oktatóanyagokat:
 
 - [Azure CLI](tutorial-install-apps-cli.md)
 - [Azure PowerShell](tutorial-install-apps-powershell.md)
@@ -45,7 +45,7 @@ Az egyéni szkriptek bővítménye szkripteket tölt le és futtat az Azure-beli
 
 
 ## <a name="install-an-app-to-a-windows-vm-with-powershell-dsc"></a>Alkalmazások telepítése Windows rendszerű virtuális gépre PowerShell DSC-vel
-A [PowerShell desired State Configuration (DSC)](/powershell/scripting/dsc/overview/overview) egy felügyeleti platform, amely meghatározza a célszámítógépek konfigurációját. A DSC-konfigurációk határozzák meg, hogy mit kell telepíteni a gépre, és hogyan kell konfigurálni a gazdagépet. A helyi Configuration Manager (LCD) motor minden olyan cél csomóponton fut, amely leküldéses konfigurációk alapján dolgozza fel a kért műveleteket.
+[PowerShell Desired State Configuration (DSC)](/powershell/scripting/dsc/overview/overview) egy felügyeleti platform cél gépek konfigurációjának meghatározása. DSC-konfigurációk határozza meg, mi a telepíti egy számítógépre, és a gazdagép konfigurálása. A helyi Configuration Manager (LCM) Konfigurálása motor dolgozza fel a kért műveletek leküldött beállításai minden célként megadott csomóponton fut.
 
 A PowerShell DSC bővítmény lehetővé teszi a virtuálisgép-példányok testreszabását a méretezési csoportokban a PowerShell használatával. A következő példa:
 

@@ -1,6 +1,6 @@
 ---
-title: Azure Time Series Insights előzetes verziójának diagnosztizálása és megoldása | Microsoft Docs
-description: Ismerje meg, hogyan diagnosztizálhatja és elháríthatja a Azure Time Series Insights előzetes verzióját.
+title: Az előzetes verziójú környezet diagnosztizálása és megoldása – Azure Time Series Insights | Microsoft Docs
+description: Ismerje meg, hogyan diagnosztizálhatja és elháríthatja a Azure Time Series Insights előzetes verziójának környezetét.
 author: deepakpalled
 ms.author: dpalled
 manager: cshankar
@@ -10,14 +10,14 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 10/22/2019
 ms.custom: seodec18
-ms.openlocfilehash: 6b65edbd808abd6ff660ef00a8a680b4d3f0846c
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: df8300e84309a874faa4b1c06891a4c5b549fce6
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72989887"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74014774"
 ---
-# <a name="diagnose-and-troubleshoot"></a>Diagnosztika és hibaelhárítás
+# <a name="diagnose-and-troubleshoot-a-preview-environment"></a>Előzetes verziójú környezet diagnosztizálása és megoldása
 
 Ez a cikk számos gyakori problémát foglal össze, amelyek a Azure Time Series Insights előnézeti környezettel való együttműködés során merülhetnek fel. A cikk az egyes problémák lehetséges okait és megoldásait is ismerteti.
 
@@ -39,7 +39,7 @@ Számos gyakori oka lehet annak, hogy miért nem látja az adatait a [Azure Time
 
 - Az eseményforrás-adatforrás nem JSON formátumú.
 
-    A Time Series Insights csak a JSON-fájlokat támogatja. JSON-minták esetében lásd: [támogatott JSON-alakzatok](./how-to-shape-query-json.md).
+    A Time Series Insights csak a JSON-fájlokat támogatja. JSON-minták, lásd: [támogatott JSON-alakzatok](./how-to-shape-query-json.md).
 
 - Az eseményforrás kulcsa hiányzik egy szükséges engedély.
 
@@ -50,7 +50,7 @@ Számos gyakori oka lehet annak, hogy miért nem látja az adatait a [Azure Time
   * Ahogy az előző ábrán is látható, a **iothubowner** és a **szolgáltatás** mindkét szabályzata működik, mert a **szolgáltatás csatlakozási** engedéllyel rendelkeznek.
   * Az Event hub esetében meg kell adnia a **figyelés** engedéllyel rendelkező kulcsot.
   
-    [Engedélyek![](media/v2-update-diagnose-and-troubleshoot/permissions.png)](media/v2-update-diagnose-and-troubleshoot/permissions.png#lightbox)
+    [Engedélyek ![](media/v2-update-diagnose-and-troubleshoot/permissions.png)](media/v2-update-diagnose-and-troubleshoot/permissions.png#lightbox)
 
   * Ahogy az előző ábrán is látható, mindkét **olvasási** és **kezelési** házirend működik, mert a **figyelés** engedéllyel rendelkezik.
 
@@ -74,10 +74,10 @@ Előfordulhat, hogy az idősorozat-azonosító nélkül küld adatokat.
 
 ## <a name="problem-my-event-sources-timestamp-property-name-doesnt-work"></a>Probléma: az esemény forrásának időbélyeg-tulajdonságának neve nem működik
 
-Győződjön meg arról, hogy a név és az érték megfelel a következő szabályoknak:
+Győződjön meg arról, hogy a nevét és értékét megfelelnek-e a következő szabályok:
 
 * Az időbélyeg-tulajdonság neve megkülönbözteti a kis-és nagybetűket.
-* Az eseményforrás által a JSON-karakterláncként kapott időbélyeg-tulajdonság értéke `yyyy-MM-ddTHH:mm:ss.FFFFFFFK`. Ilyen karakterlánc például `“2008-04-12T12:53Z”`.
+* Az eseményforrás által a JSON-karakterláncként kapott időbélyeg-tulajdonság értéke `yyyy-MM-ddTHH:mm:ss.FFFFFFFK`. Az ilyen típusú például `“2008-04-12T12:53Z”`.
 
 Az időbélyeg-tulajdonságnév rögzítésének és megfelelő működésének legegyszerűbb módja a Time Series Insights Preview Explorer használata. A Time Series Insights Preview Explorerben a diagramon kiválaszthat egy időszakot, miután megadták az időbélyeg-tulajdonság nevét. Kattintson a jobb gombbal a kijelölésre, és válassza az **események feltárása** lehetőséget. Az első oszlop fejléce az időbélyeg-tulajdonság neve. `($ts)` a Word `Timestamp`mellett kell lennie a következő helyett:
 
@@ -108,7 +108,7 @@ Ha az időbélyegző tulajdonság nincs explicit módon megadva, az esemény IoT
 
 Ez a probléma akkor fordulhat elő, ha a környezet nem rendelkezik meghatározott idősorozat-modell hierarchiával. További információ: [Time Series-modellek használata](./time-series-insights-update-how-to-tsm.md).
 
-  [idősorozat-modellek![](media/v2-update-diagnose-and-troubleshoot/tsm.png)](media/v2-update-diagnose-and-troubleshoot/tsm.png#lightbox)
+  [idősorozat-modellek ![](media/v2-update-diagnose-and-troubleshoot/tsm.png)](media/v2-update-diagnose-and-troubleshoot/tsm.png#lightbox)
 
 ## <a name="next-steps"></a>Következő lépések
 

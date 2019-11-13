@@ -1,17 +1,14 @@
 ---
 title: Az Azure Resource Graph áttekintése
 description: Ismerje meg, hogyan teszi lehetővé az Azure Resource Graph szolgáltatás az erőforrások összetett lekérdezését nagy léptékben.
-author: DCtheGeek
-ms.author: dacoulte
 ms.date: 10/21/2019
 ms.topic: overview
-ms.service: resource-graph
-ms.openlocfilehash: 41663ec04e194bcc4380f46f1e5cc5a6867e53fc
-ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
+ms.openlocfilehash: f75a2b65b59a9f0367a6c52c2a1cf058df5b59c3
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73622535"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73958732"
 ---
 # <a name="overview-of-the-azure-resource-graph-service"></a>Az Azure Resource Graph szolgáltatás áttekintése
 
@@ -68,7 +65,7 @@ A Resource Graph használatához megfelelő jogosultságokkal kell rendelkeznie 
 Az Azure CLI és Azure PowerShell olyan előfizetéseket használ, amelyekhez a felhasználónak hozzáférése van. REST API közvetlen használatakor az előfizetési listát a felhasználó kapja meg. Ha a felhasználó hozzáfér a listában szereplő egyik előfizetéshez, a rendszer visszaadja a lekérdezés eredményét azon előfizetések esetében, amelyekhez a felhasználónak hozzáférése van. Ez a viselkedés ugyanaz, mint az erőforráscsoportok meghívásakor [– lista](/rest/api/resources/resourcegroups/list) \- beolvassa azokat az erőforráscsoportok, amelyekhez hozzáférése van, anélkül, hogy az eredmény részleges lenne.
 Ha nincsenek olyan előfizetések az előfizetések listájában, amelyhez a felhasználó megfelelő jogosultsággal rendelkezik, a válasz _403_ (tiltott).
 
-## <a name="throttling"></a>Throttling
+## <a name="throttling"></a>Szabályozás
 
 Ingyenes szolgáltatásként az erőforrás-gráfra irányuló lekérdezések szabályozva vannak, így biztosítva a legjobb élményt és a válaszadási időt az összes ügyfél számára. Ha a szervezet a nagyméretű és gyakori lekérdezésekhez Graph API erőforrást szeretné használni, használja a "visszajelzés" lehetőséget az erőforrás- [gráf portál oldalon](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyMenuBlade/ResourceGraph).
 Adja meg az üzleti esetét, és válassza a "Microsoft e-mail küldése a visszajelzéshez" jelölőnégyzetet, hogy a csapat felvegye Önnel a kapcsolatot.
@@ -90,7 +87,7 @@ Az erőforrás-gráf támogatja az Azure CLI, a Azure PowerShell, a .NET-hez ké
 - [Azure CLI](first-query-azurecli.md#add-the-resource-graph-extension)
 - [Azure PowerShell](first-query-powershell.md#add-the-resource-graph-module)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Futtassa az első lekérdezést a [Azure Portal](first-query-portal.md)használatával.
 - Futtassa az első lekérdezést az [Azure CLI](first-query-azurecli.md)-vel.

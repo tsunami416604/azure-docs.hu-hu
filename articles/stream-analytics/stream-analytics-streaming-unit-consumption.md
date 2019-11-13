@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 10/28/2019
-ms.openlocfilehash: d9c4169176707f98181f2a479e470cf89ff2e04f
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: 25105847b7134b7119252a66ac7e8502771ce5db
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72988235"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73961281"
 ---
 # <a name="understand-and-adjust-streaming-units"></a>A folyamatos átviteli egységek ismertetése és módosítása
 
@@ -62,10 +62,10 @@ Vegye figyelembe, hogy az összetett lekérdezési logikával rendelkező felada
 
 A SU% kihasználtsága hirtelen eltérhet 0-ra egy rövid ideig, mielőtt visszatér a várt szintre. Ez átmeneti hibák vagy a rendszer által kezdeményezett frissítések miatt fordul elő. Előfordulhat, hogy a feladatokhoz tartozó folyamatos átviteli egységek száma nem csökkenti a SU% kihasználtságot, ha a lekérdezés nem [teljesen párhuzamos](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-parallelization).
 
-## <a name="stateful-query-logicin-temporal-elements"></a>Állapot-nyilvántartó lekérdezési logika az időbeli elemekben
-Azure Stream Analytics feladatok egyik egyedi funkciója az állapot-nyilvántartó feldolgozás végrehajtása, például ablakos összesítések, időbeli illesztések és időbeli analitikai függvények. Ezek az operátorok megőrzik az állapotadatok állapotát. A lekérdezési elemek maximális ablakméret hét nap. 
+## <a name="stateful-query-logicin-temporal-elements"></a>Állapot-nyilvántartó lekérdezés logikája historikus elemek
+Az Azure Stream Analytics-feladat az egyedi képességét egyik állapot-nyilvántartó feldolgozó, például az ablakos összesítéseket, az időalapú illesztéseket és a historikus elemzési funkciók végrehajtásához. Ezek az operátorok megőrzik az állapotadatok állapotát. A lekérdezési elemek maximális ablakméret hét nap. 
 
-Az időszakos ablak fogalma számos Stream Analytics lekérdezési elemben jelenik meg:
+A historikus időszak fogalma a több Stream Analytics lekérdezési elemeket jelenik meg:
 1. Ablakos összesítések: kivonási, átugró és csúszó ablakok CSOPORTOSÍTÁSa
 
 2. Időbeli illesztések: csatlakozás a DATEDIFF függvénnyel
@@ -86,7 +86,7 @@ Például a következő lekérdezésben a `clusterid`hoz társított szám a lek
    GROUP BY  clusterid, tumblingwindow (minutes, 5)
    ```
 
-Az előző lekérdezésben felmerülő problémák enyhítése érdekében az `clusterid`által particionált események az Event hub számára történő elküldésével **, valamint a** lekérdezés méretezésével csökkentheti a lekérdezést. az alábbi példában:
+Az előző lekérdezésben felmerülő problémák enyhítése érdekében az `clusterid`által particionált események az Event hub számára történő elküldésével, valamint a lekérdezés méretezésével csökkentheti a lekérdezést azáltal, hogy lehetővé teszi, hogy a rendszerek az egyes bemeneti partíciókat a **partíció alapján** külön dolgozzák fel, az alábbi példában látható módon:
 
    ```sql
    SELECT count(*) 
@@ -99,7 +99,7 @@ A rendszer több csoport között osztja el a lekérdezést a particionálása u
 Az Event hub-partíciókat a csoportosítási kulcsnak kell particionálnia, hogy elkerülje a csökkentési lépés szükségességét. További információ: [Event Hubs Overview (áttekintés](../event-hubs/event-hubs-what-is-event-hubs.md)). 
 
 ## <a name="temporal-joins"></a>Időbeli illesztések
-Az ideiglenes illesztések által felhasznált memória (az állapot mérete) arányos az illesztés időbeli kígyózik-helyiségében lévő események számával, amely az esemény bemeneti sebessége a csatorna mérete szerint szaporodik. Ez azt jelenti, hogy az összekapcsolások által felhasznált memória a DateDiff időtartományával arányos, és az események átlagos száma szorzata.
+Az ideiglenes illesztések által felhasznált memória (az állapot mérete) arányos az illesztés időbeli kígyózik-helyiségében lévő események számával, amely az esemény bemeneti sebessége, szorozva a csatorna méretével. Ez azt jelenti, hogy az összekapcsolások által felhasznált memória a DateDiff időtartományával arányos, és az események átlagos száma szorzata.
 
 Az illesztésben szereplő nem egyező események száma befolyásolja a lekérdezés memóriahasználat használatát. A következő lekérdezés a kattintásokat generáló oldalmegjelenéseket keresi:
 
@@ -139,7 +139,7 @@ Egy adott feladathoz tartozó összes bemeneti partíció pufferrel rendelkezik.
 
 6 folyamatos átviteli egységgel rendelkező feladatokhoz szükség lehet az Event hub 4 vagy 8 partícióra. Azonban Kerülje a túl sok felesleges partíciót, mivel ez túlzott erőforrás-használatot okoz. Például egy legalább 16 partíciót tartalmazó Event hub egy olyan Stream Analytics-feladatokban, amely 1 folyamatos átviteli egységgel rendelkezik. 
 
-## <a name="reference-data"></a>Hivatkozási érték 
+## <a name="reference-data"></a>Referenciaadat 
 A gyors keresés érdekében az ASA-ben lévő hivatkozási adatmennyiség betöltődik a memóriába. Az aktuális implementációban a hivatkozási adattal rendelkező összes csatlakoztatási művelet a memóriában tárolja a hivatkozási adatmennyiséget, még akkor is, ha ugyanazokat a hivatkozási adatmennyiségeket többször is csatlakoztatja. A-sel rendelkező lekérdezések esetében minden partíció rendelkezik a hivatkozási adatmásolattal **, így**a partíciók teljes mértékben le vannak választva. A szorzó hatására a memóriahasználat gyorsan elvégezhető, ha több partícióval többször is összekapcsolja a hivatkozási adatokat.  
 
 ### <a name="use-of-udf-functions"></a>UDF függvények használata

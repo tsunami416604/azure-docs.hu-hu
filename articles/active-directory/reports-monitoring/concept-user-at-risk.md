@@ -2,7 +2,7 @@
 title: Kockázatosként megjelölt felhasználókról szóló biztonsági jelentés az Azure Active Directory portálon | Microsoft Docs
 description: Ismerje meg az Azure Active Directory portál kockázatosként megjelölt felhasználókról szóló biztonsági jelentését
 services: active-directory
-author: cawrites
+author: MarkusVi
 manager: daveba
 ms.assetid: addd60fe-d5ac-4b8b-983c-0736c80ace02
 ms.service: active-directory
@@ -12,15 +12,15 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
 ms.date: 01/17/2019
-ms.author: chadam
+ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3e6b79c7d5c2ed9744dc00eb1588c35f8ea94a76
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: 894d8dfb7f870ec4a2a11f1d75ee0376b25d8c7f
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70127655"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74014449"
 ---
 # <a name="users-flagged-for-risk-report-in-the-azure-portal"></a>A Azure Portal kockázati jelentésére megjelölt felhasználók
 
@@ -43,7 +43,7 @@ A kockázatok észlelését kiváltó szabályzatok konfigurálásával kapcsola
 
 Az Azure Active Directory minden kiadása biztosítja a kockázatosként megjelölt felhasználók jelentéseit. A jelentések részletességi szintje azonban különbözik a kiadások között: 
 
-- A **ingyenes Azure Active Directory és**az alapszintű kiadásokban megjelenik a kockázatként megjelölt felhasználók listája. 
+- A **ingyenes Azure Active Directory és az alapszintű kiadásokban**megjelenik a kockázatként megjelölt felhasználók listája. 
 
 - Emellett a **prémium szintű Azure Active Directory 1** kiadás lehetővé teszi, hogy megvizsgáljon néhány, az egyes jelentésekhez észlelt mögöttes kockázati észlelést. 
 
@@ -87,7 +87,7 @@ Egy felhasználó kiválasztásakor megkapja a felhasználó részletes jelenté
 
 - A felhasználói jelszó alaphelyzetbe állítását
 
-- Összes esemény bezárása
+- Az összes esemény elvetését
 
 - A jelentett kockázati észlelések vizsgálata a felhasználó számára. 
 
@@ -98,7 +98,7 @@ A kockázatok észlelésének kivizsgálásához válasszon ki egyet a listábó
 ![Kockázatos bejelentkezések](./media/concept-user-at-risk/325.png)
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [A felhasználói kockázati házirend konfigurálása](../identity-protection/howto-user-risk-policy.md)
 - [A kockázatkezelési házirend konfigurálása](../identity-protection/howto-user-risk-policy.md)

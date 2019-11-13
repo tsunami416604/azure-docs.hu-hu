@@ -8,25 +8,25 @@ ms.topic: include
 ms.date: 09/12/2019
 ms.author: jonels
 ms.custom: include file
-ms.openlocfilehash: fadbcf04f1cd474cf2d23963e88016d240272263
-ms.sourcegitcommit: a6718e2b0251b50f1228b1e13a42bb65e7bf7ee2
+ms.openlocfilehash: c20159d0583e18d0f5e71152fdb600d03db43224
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71279887"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73994580"
 ---
 Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány perc alatt létrehozhat egy [ingyenes](https://azure.microsoft.com/free/) fiókot.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Jelentkezzen be az Azure Portalra
 
-Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
+Bejelentkezés az [Azure Portalra](https://portal.azure.com).
 
 ## <a name="create-an-azure-database-for-postgresql---hyperscale-citus"></a>Azure Database for PostgreSQL-nagy kapacitású létrehozása (Citus)
 
 Kövesse az alábbi lépéseket az Azure-adatbázis PostgreSQL-kiszolgálóhoz létrehozásához:
 1. Kattintson az Azure Portal bal felső sarkában található **Erőforrás létrehozása** gombra.
 2. Az **Új** panelen válassza az **Adatbázisok** lehetőséget, majd az **Adatbázisok** panelen válassza az **Azure-adatbázis PostgreSQL-kiszolgálóhoz** lehetőséget.
-3. A központi telepítés beállításnál kattintson a **Létrehozás** gombra a **nagy kapacitású (Citus) kiszolgálócsoport – előzetes** verzióban.
+3. A központi telepítés beállításnál kattintson a **Létrehozás** gombra a **nagy kapacitású (Citus) kiszolgáló csoportban.**
 4. Adja meg az alábbi adatokat az új kiszolgálóűrlapon:
    - Erőforráscsoport: kattintson az **új létrehozása** hivatkozásra a mező szövegmezője alatt. Adjon meg egy nevet, például **myresourcegroup**.
    - Kiszolgálócsoport neve: adjon meg egy egyedi nevet az új kiszolgálócsoport számára, amely egy kiszolgálói altartományhoz is használható.
@@ -38,12 +38,12 @@ Kövesse az alábbi lépéseket az Azure-adatbázis PostgreSQL-kiszolgálóhoz l
    > Az itt megadott kiszolgálói rendszergazdai jelszó szükséges a kiszolgálóra és az adatbázisaira való bejelentkezéshez. Jegyezze meg vagy jegyezze fel ezt az információt későbbi használatra.
 
 5. Kattintson a **kiszolgálócsoport konfigurálása**elemre. Hagyja változatlanul a szakasz beállításait, és kattintson a **Mentés**gombra.
-6. Kattintson a **Tovább: Hálózatkezelés >** a képernyő alján.
+6. Kattintson a **Tovább gombra: hálózatkezelés >** a képernyő alján.
 
 7. A **hálózatkezelés** lapon kattintson a **nyilvános végpont** választógombra.
-   ![Nyilvános végpont kiválasztva](./media/azure-postgresql-hyperscale-create-db/network-public-endpoint.png)
+   ![kiválasztott nyilvános végpont](./media/azure-postgresql-hyperscale-create-db/network-public-endpoint.png)
 8. Kattintson a hivatkozásra **+ az aktuális ügyfél IP-címének hozzáadása**elemre.
-   ![Ügyfél IP-címe hozzáadva](./media/azure-postgresql-hyperscale-create-db/network-add-client-ip.png)
+   ![hozzáadott ügyfél IP-](./media/azure-postgresql-hyperscale-create-db/network-add-client-ip.png)
 
    > [!NOTE]
    > Azure PostgreSQL-kiszolgáló az 5432-es porton keresztül kommunikál. Ha vállalati hálózaton belülről próbál csatlakozni, elképzelhető, hogy a hálózati tűzfal nem engedélyezi a kimenő forgalmat az 5432-es porton keresztül. Ebben az esetben nem tud csatlakozni az Azure SQL-adatbáziskiszolgálóhoz, ha az informatikai részleg nem nyitja meg az 5432-es portot.
@@ -63,7 +63,7 @@ A Azure Database for PostgreSQL-kiszolgáló létrehozásakor létrejön egy **c
    host=hostname.postgres.database.azure.com port=5432 dbname=citus user=citus password={your_password} sslmode=require
    ```
 
-   Másolja a karakterláncot. A korábban kiválasztott rendszergazdai jelszóval kell lecserélnie a (z) {Your\_Password} kifejezést. A rendszer nem tárolja az egyszerű szöveges jelszót, ezért nem jelenítheti meg a kapcsolatok karakterláncában.
+   Másolja a karakterláncot. A korábban kiválasztott rendszergazdai jelszóval le kell cserélnie a (z) {Your\_Password} kifejezést. A rendszer nem tárolja az egyszerű szöveges jelszót, ezért nem jelenítheti meg a kapcsolatok karakterláncában.
 
 2. Nyisson meg egy terminál-ablakot a helyi számítógépen.
 

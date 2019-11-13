@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: df6c4afc0da50c5b4b32923f24370b9c959b1af7
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: 6327ee8a1b0d52c933844670d9b8098c2c3c4f09
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/12/2019
-ms.locfileid: "73929599"
+ms.locfileid: "73958146"
 ---
 # <a name="tutorial-create-a-rule-and-set-up-notifications-in-your-azure-iot-central-application-preview-features"></a>Oktatóanyag: szabály létrehozása és értesítések beállítása az Azure IoT Central alkalmazásban (előzetes verziójú funkciók)
 
@@ -106,10 +106,6 @@ Válassza ki az engedélyezni vagy letiltani kívánt szabályt. A szabályban s
 ## <a name="enable-or-disable-a-rule-for-a-device"></a>Eszköz szabályának engedélyezése vagy letiltása
 
 Válassza ki az engedélyezni vagy letiltani kívánt szabályt. Vegyen fel egy szűrőt a **hatókörök** szakaszban egy adott eszköz belefoglalásához vagy kizárásához az eszköz sablonjában.
-
-## <a name="next-steps"></a>Következő lépések
-
-Most, hogy megismerte, hogyan hozhat létre szabályokat az Azure IoT Central alkalmazásban, a javasolt következő lépés az [eszközök kezelésének](howto-manage-devices.md) megismerése
 
 ## <a name="next-steps"></a>Következő lépések
 

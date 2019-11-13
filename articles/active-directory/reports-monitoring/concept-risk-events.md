@@ -3,7 +3,7 @@ title: Azure Active Directory kockázati észlelések | Microsoft Docs
 description: Ez a artice részletes áttekintést nyújt a kockázatok észleléséről.
 services: active-directory
 keywords: Azure Active Directory Identity Protection, biztonság, kockázat, kockázati szint, biztonsági rés, biztonsági házirend
-author: cawrites
+author: MarkusVi
 manager: daveba
 ms.assetid: fa2c8b51-d43d-4349-8308-97e87665400b
 ms.service: active-directory
@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.subservice: report-monitor
 ms.date: 11/13/2018
-ms.author: chadam
+ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 523ae8e1ba31a4fe2c9683007f717149dfdc3bc6
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: e1f3755d61b5fa082665cfdb9aa91d1e31e2d4e4
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70127325"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74014465"
 ---
 # <a name="azure-active-directory-risk-detections"></a>Azure Active Directory kockázati észlelések
 
@@ -29,7 +29,7 @@ A biztonsági rések túlnyomó többsége akkor kerül sor, amikor a támadók 
 
 A jelentett kockázati észleléseket két helyen tekintheti át:
 
- - Az **Azure ad** Reporting – a kockázati észlelések az Azure ad biztonsági jelentései részét képezik. További információkért tekintse meg a [veszélyeztetett felhasználók biztonsági jelentését](concept-user-at-risk.md) és a [kockázatos bejelentkezések biztonsági jelentését](concept-risky-sign-ins.md).
+ - Az **Azure ad Reporting** – a kockázati észlelések az Azure ad biztonsági jelentései részét képezik. További információkért tekintse meg a [veszélyeztetett felhasználók biztonsági jelentését](concept-user-at-risk.md) és a [kockázatos bejelentkezések biztonsági jelentését](concept-risky-sign-ins.md).
 
  - **Azure ad Identity Protection** – a kockázati észlelések a [Azure Active Directory Identity Protection](../active-directory-identityprotection.md)jelentéskészítési képességeinek is részét képezik.
 
@@ -74,7 +74,7 @@ Ha a kiberbűnözők veszélyezteti a legitim felhasználók érvényes jelszava
 - Biztonsági csapatok a Microsoftnál
 - Egyéb megbízható források 
 
-Ha a szolgáltatás a Felhasználónév/jelszó párokat szerzi be, a rendszer a HRE-felhasználók aktuális érvényes hitelesítő adataival ellenőrzi azokat. Ha egyezést talál, az azt jelenti, hogy a felhasználó jelszava sérült, és a rendszer kiszivárgott **hitelesítő adatokat** hoz létre.
+Ha a szolgáltatás a Felhasználónév/jelszó párokat szerzi be, a rendszer a HRE-felhasználók aktuális érvényes hitelesítő adataival ellenőrzi azokat. Ha egyezést talál, az azt jelenti, hogy a felhasználó jelszava sérült, és a rendszer **kiszivárgott hitelesítő adatokat** hoz létre.
 
 ### <a name="sign-ins-from-anonymous-ip-addresses"></a>Bejelentkezések névtelen IP-címről
 
@@ -101,7 +101,7 @@ Ez a kockázati észlelési típus azonosítja azokat az IP-címeket, amelyekrő
 
 ## <a name="detection-type"></a>Észlelés típusa
 
-Az észlelési típus tulajdonság a kockázatkezelés észlelési időpontjára mutató (**valós idejű** vagy **Offline**) jelzés. Jelenleg a kockázatok észlelése után a rendszer offline állapotba helyezi a legtöbb kockázati észlelést egy feldolgozás utáni művelet közben.
+Az észlelési típus tulajdonság a kockázatkezelés észlelési**időpontjára mutató (valós idejű** vagy **Offline**) jelzés. Jelenleg a kockázatok észlelése után a rendszer offline állapotba helyezi a legtöbb kockázati észlelést egy feldolgozás utáni művelet közben.
 
 A következő táblázat felsorolja, hogy mennyi ideig tart az észlelési típus egy kapcsolódó jelentésben való megjelenítéshez:
 
@@ -131,17 +131,17 @@ A kockázat észlelésének súlyossága a jel erősségét jelképezi a személ
 
 Például: 
 
-* **Magas**: Nagy megbízhatóság és magas súlyosságú kockázatkezelés. Ezek az események olyan erős mutatók, amelyekkel a felhasználó identitása sérült, és az érintett felhasználói fiókokat azonnal szervizelni kell.
+* **Magas**: magas megbízhatóság és magas súlyosságú kockázatkezelés. Ezek az események olyan erős mutatók, amelyekkel a felhasználó identitása sérült, és az érintett felhasználói fiókokat azonnal szervizelni kell.
 
-* **Közepes**: Magas súlyosság, de alacsonyabb megbízhatósági kockázat észlelése, vagy fordítva. Ezek az események valószínűleg kockázatos jellegűek, és az érintett felhasználói fiókokat is javítani kell.
+* **Közepes**: nagy súlyosságú, de alacsonyabb megbízhatósági kockázat észlelése, vagy fordítva. Ezek az események valószínűleg kockázatos jellegűek, és az érintett felhasználói fiókokat is javítani kell.
 
-* **Alacsony**: Alacsony megbízhatóság és alacsony súlyosságú kockázati észlelés. Előfordulhat, hogy ez az esemény nem igényel azonnali műveletet, de más kockázati észlelésekkel kombinálva erős jelzést ad arra, hogy az identitás biztonsága sérül.
+* **Alacsony**: alacsony megbízhatóság és alacsony súlyosságú kockázati észlelés. Előfordulhat, hogy ez az esemény nem igényel azonnali műveletet, de más kockázati észlelésekkel kombinálva erős jelzést ad arra, hogy az identitás biztonsága sérül.
 
 ![Kockázati szint](./media/concept-risk-events/01.png)
 
 ### <a name="leaked-credentials"></a>Kiszivárgott hitelesítő adatok
 
-A kiszivárgott hitelesítő adatok kockázati észlelése magasnakminősül, mivel egyértelmű jelzést adnak arról, hogy a Felhasználónév és a jelszó elérhető egy támadó számára.
+A kiszivárgott hitelesítő adatok kockázati észlelése **magasnak**minősül, mivel egyértelmű jelzést adnak arról, hogy a Felhasználónév és a jelszó elérhető egy támadó számára.
 
 ### <a name="sign-ins-from-anonymous-ip-addresses"></a>Bejelentkezések névtelen IP-címről
 
@@ -161,11 +161,11 @@ Az ismeretlen helyszínek erős jelzést adnak arról, hogy egy támadó ellopot
 
 ### <a name="sign-ins-from-infected-devices"></a>Bejelentkezések fertőzött eszközökről
 
-Ez a kockázati észlelés azonosítja az IP-címeket, nem pedig a felhasználói eszközöket. Ha több eszköz egyetlen IP-cím mögött van, és csak néhányat egy bot-hálózat vezérel, a más eszközökről indított bejelentkezések nem feltétlenül okozták ezt az eseményt, ezért a kockázat észlelése alacsonynakminősül.  
+Ez a kockázati észlelés azonosítja az IP-címeket, nem pedig a felhasználói eszközöket. Ha több eszköz egyetlen IP-cím mögött van, és csak néhányat egy bot-hálózat vezérel, a más eszközökről indított bejelentkezések nem feltétlenül okozták ezt az eseményt, ezért a kockázat észlelése **alacsonynak**minősül.  
 
 Javasoljuk, hogy vegye fel a kapcsolatot a felhasználóval, és vizsgálja meg az összes felhasználó eszközét. Az is lehetséges, hogy a felhasználó személyes eszköze fertőzött, vagy ha valaki más egy fertőzött eszközt használ a felhasználótól megegyező IP-címről. A fertőzött eszközöket gyakran olyan kártevők fertőzik meg, amelyeket a víruskereső szoftver még nem azonosított, és olyan rossz felhasználói szokásokat is jelezhet, amelyek okozták az eszköz vírusfertőzését.
 
-A kártevők elleni fertőzések kezelésével kapcsolatos további információkért tekintse meg a [kártevők elleni védelem](https://www.microsoft.com/en-us/security/portal/definitions/adl.aspx/)központját.
+A kártevők elleni fertőzések kezelésével kapcsolatos további információkért tekintse meg a [kártevők elleni védelem központját](https://www.microsoft.com/en-us/security/portal/definitions/adl.aspx/).
 
 ### <a name="sign-ins-from-ip-addresses-with-suspicious-activity"></a>Bejelentkezések gyanús tevékenységeket mutató IP-címekkel
 

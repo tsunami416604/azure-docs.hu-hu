@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: troubleshooting
 ms.date: 08/13/2018
 ms.author: saudas
-ms.openlocfilehash: 270dbb24d851645ff7a7f0bcf5f78bfb95bcd095
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 5ae97f18bb15b5ab2fe092a1e3b857ea3ef0aed0
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73604734"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74012973"
 ---
 # <a name="aks-troubleshooting"></a>AK-hibaelhárítás
 
@@ -30,7 +30,7 @@ A Microsoft Engineering által kiadott [hibaelhárítási útmutató](https://gi
 ## <a name="what-is-the-maximum-pods-per-node-setting-for-aks"></a>Mekkora a hüvelyek maximális száma az AK-ban?
 
 A hüvelyek maximális száma alapértelmezés szerint 30, ha AK-fürtöt helyez üzembe a Azure Portalban.
-Alapértelmezés szerint a hüvelyek maximális száma 110, ha az Azure CLI-ben helyez üzembe egy AK-fürtöt. (Ügyeljen arra, hogy az Azure CLI legújabb verzióját használja). Ez az alapértelmezett beállítás a `az aks create` parancs `–-max-pods` jelzője segítségével módosítható.
+Alapértelmezés szerint a hüvelyek maximális száma 110, ha az Azure CLI-ben helyez üzembe egy AK-fürtöt. (Ügyeljen arra, hogy az Azure CLI legújabb verzióját használja). Ezt az alapértelmezett beállítást a `az aks create` parancs `–-max-pods` jelzője segítségével módosíthatja.
 
 ## <a name="im-getting-an-insufficientsubnetsize-error-while-deploying-an-aks-cluster-with-advanced-networking-what-should-i-do"></a>InsufficientSubnetSize hibaüzenetet kapok egy AK-fürt speciális hálózatkezeléssel való üzembe helyezése során. Mit tegyek?
 
@@ -44,8 +44,8 @@ További információt [a fürt IP-címzésének megtervezése](configure-azure-
 
 Előfordulhat, hogy a pod nem ragadja meg ezt a módot. A következőket tekintheti meg:
 
-* Maga a pod `kubectl describe pod <pod-name>` használatával.
-* A naplók `kubectl log <pod-name>` használatával.
+* Maga a pod `kubectl describe pod <pod-name>`használatával.
+* A naplók `kubectl log <pod-name>`használatával.
 
 A pod-problémák hibaelhárításával kapcsolatos további információkért lásd: [alkalmazások hibakeresése](https://kubernetes.io/docs/tasks/debug-application-cluster/debug-application/#debugging-pods).
 
@@ -59,7 +59,7 @@ A figyelmeztetések az irányítópulton az oka, hogy a fürt most már engedél
 
 ## <a name="i-cant-connect-to-the-dashboard-what-should-i-do"></a>Nem tudok csatlakozni az irányítópulthoz. Mit tegyek?
 
-A szolgáltatás fürtön kívüli elérésének legegyszerűbb módja a `kubectl proxy` futtatása, amelyet a rendszer a localhost 8001-as portra küldött a Kubernetes API-kiszolgálónak. Innen az API-kiszolgáló proxyt tud a szolgáltatáshoz: `http://localhost:8001/api/v1/namespaces/kube-system/services/kubernetes-dashboard/proxy/#!/node?namespace=default`.
+A szolgáltatás fürtön kívüli elérésének legegyszerűbb módja a `kubectl proxy`futtatása, amely a 8001-es localhost-portra küldött kérelmeket a Kubernetes API-kiszolgálóra továbbítja. Az API-kiszolgáló innen proxyt tud a szolgáltatáshoz: `http://localhost:8001/api/v1/namespaces/kube-system/services/kubernetes-dashboard/proxy/#!/node?namespace=default`.
 
 Ha nem látja a Kubernetes irányítópultot, ellenőrizze, hogy fut-e a `kube-proxy` Pod a `kube-system` névtérben. Ha nem fut állapotban van, törölje a pod-t, majd indítsa újra.
 
@@ -77,7 +77,7 @@ Előfordulhat, hogy ez a hiba azért fordul elő, mert a címkéket az AK-fürt�
 
 Ez a hiba akkor fordul elő, ha a fürtök több okból is hibás állapotba kerülnek. Kövesse az alábbi lépéseket a fürt sikertelen állapotának feloldásához a korábban sikertelen művelet újbóli megkísérlése előtt:
 
-1. Amíg a fürt nem `failed` állapotú, `upgrade` és a `scale` művelet nem fog sikerülni. A leggyakoribb gyökérszintű problémák és megoldások a következők:
+1. Amíg a fürt nincs `failed` állapotban, `upgrade` és `scale` műveletek sikertelenek lesznek. A leggyakoribb gyökérszintű problémák és megoldások a következők:
     * A nem **megfelelő számítási (CRP-) kvóta**skálázása. A megoldáshoz először a kvótán belüli, stabil cél állapotba kell állítani a fürtöt. Ezután kövesse az alábbi [lépéseket a számítási kvóta növelésének](../azure-supportability/resource-manager-core-quotas-request.md) megkezdéséhez, mielőtt a kezdeti kvóta-korlátokon felül ismét fel kellene mérni.
     * Fürt méretezése speciális hálózatkezeléssel és nem **elegendő alhálózat (Hálózatkezelés) erőforrásokkal**. A megoldáshoz először a kvótán belüli, stabil cél állapotba kell állítani a fürtöt. Ezután kövesse az [alábbi lépéseket az erőforrás-kvóta növelésének](../azure-resource-manager/resource-manager-quota-errors.md#solution) megkezdéséhez, mielőtt a kezdeti kvóta-korlátokon felül ismét fel kellene mérni a skálázást.
 2. Miután megoldotta a frissítési hiba kiváltó okát, a fürtnek sikeres állapotban kell lennie. A sikeres állapot ellenőrzése után próbálja megismételni az eredeti műveletet.
@@ -88,7 +88,7 @@ Ez a hiba akkor fordul elő, ha a fürtök több okból is hibás állapotba ker
 
 Egyetlen csomóponttal rendelkező fürtön lévő műveletek frissítése és méretezése, illetve a [több csomóponttal](use-multiple-node-pools.md) rendelkező fürtök kölcsönösen kizárják egymást. Nem lehet egyszerre frissíteni és méretezni a fürt vagy a csomópont készletét. Ehelyett minden Művelettípus a következő, ugyanazon az erőforráson megjelenő kérelem előtt fejeződik be a cél erőforráson. Ennek eredményeképpen a műveletek korlátozottak, ha az aktív verziófrissítési vagy méretezési műveletek történnek, és a későbbiekben sikertelenek voltak. 
 
-A probléma diagnosztizálásához futtassa a `az aks show -g myResourceGroup -n myAKSCluster -o table` parancsot a fürt részletes állapotának lekéréséhez. Az eredmény alapján:
+A probléma megoldásához futtassa `az aks show -g myResourceGroup -n myAKSCluster -o table` a fürt részletes állapotának lekéréséhez. Az eredmény alapján:
 
 * Ha a fürt aktívan frissít, várjon, amíg a művelet leáll. Ha sikerült, próbálkozzon újra a korábban sikertelen művelettel.
 * Ha a fürt nem tudta frissíteni a frissítést, kövesse az előző szakaszban ismertetett lépéseket.
@@ -118,7 +118,8 @@ A megfelelő dokumentum lépéseinek *megkezdése előtt* kövesse az AK-fürt m
 
 Az elnevezési korlátozásokat az Azure platform és az AK is implementálja. Ha egy erőforrás neve vagy paramétere megszakítja az egyik ilyen korlátozást, a rendszer hibaüzenetet küld, amely megkéri, hogy adjon meg egy másik bemenetet. A következő közös elnevezési irányelvek érvényesek:
 
-* Az AK- *MC_* erőforráscsoport neve kombinálja az erőforráscsoport nevét és az erőforrás nevét. `MC_resourceGroupName_resourceName_AzureRegion` automatikusan generált szintaxisa nem lehet nagyobb, mint 80 karakter. Ha szükséges, csökkentse az erőforráscsoport-név vagy az AK-fürt nevének hosszát.
+* A fürt nevének 1-63 karakterből kell állnia. Az egyetlen megengedett karakter betű, szám, kötőjel és aláhúzás. Az első és az utolsó karakternek betűnek vagy számnak kell lennie.
+* Az AK *MC_* erőforráscsoport neve kombinálja az erőforráscsoport nevét és az erőforrás nevét. `MC_resourceGroupName_resourceName_AzureRegion` automatikusan generált szintaxisa nem lehet nagyobb, mint 80 karakter. Ha szükséges, csökkentse az erőforráscsoport-név vagy az AK-fürt nevének hosszát.
 * A *dnsPrefix* alfanumerikus értékekkel kell kezdődnie és végződnie. Az érvényes karakterek alfanumerikus értékeket és kötőjeleket (-) tartalmazhatnak. A *dnsPrefix* nem tartalmazhat speciális karaktereket, például pontot (.).
 
 ## <a name="im-receiving-errors-when-trying-to-create-update-scale-delete-or-upgrade-cluster-that-operation-is-not-allowed-as-another-operation-is-in-progress"></a>Hibák léptek fel a fürt létrehozása, frissítése, skálázása, törlése vagy frissítése során, ez a művelet nem engedélyezett, mert folyamatban van egy másik művelet.

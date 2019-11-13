@@ -1,19 +1,19 @@
 ---
-title: Helyszíni gépek migrálása az Azure-ba Azure Site Recovery
+title: Helyszíni gépek migrálása Azure Site Recovery
 description: Ez a cikk bemutatja, hogyan migrálhatók a helyszíni gépek az Azure-ba az Azure Site Recovery használatával.
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 10/29/2019
+ms.date: 11/12/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 5fa0f05f37164c24ba6441d0c4cb2abc59f331d7
-ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
+ms.openlocfilehash: 24015810a295ef88b7d3e63bfc464ddddef6b55f
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73053050"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73939621"
 ---
 # <a name="migrate-on-premises-machines-to-azure"></a>Helyszíni gépek áttelepítése az Azure-ba
 
@@ -97,7 +97,7 @@ Hyper-V | [A replikáció engedélyezése](hyper-v-azure-tutorial.md#enable-repl
 A [rest failover](tutorial-dr-drill-azure.md) parancs Azure-ban történő futtatásával győződjön meg arról, hogy minden a vártnak megfelelően működik-e.
 
 
-## <a name="migrate-to-azure"></a>Migrálás az Azure-ba
+## <a name="migrate-to-azure"></a>Áttelepítés az Azure-ba
 
 Futtasson egy feladatátvételt a migrálni kívánt gépen.
 
@@ -136,13 +136,13 @@ Egyes lépések automatikusan is végrehajthatók az áttelepítési folyamat r�
     - Hyper-V-alapú virtuális gépek Azure-ba való áttelepítése esetén az Azure virtuálisgép-ügynököt az áttelepítés után telepítse az Azure virtuális gépen.
 - Manuálisan távolítson el minden Site Recovery-szolgáltatót/ügynököt a virtuális gépről. Ha VMware virtuális gépeket vagy fizikai kiszolgálókat telepít át, távolítsa el a mobilitási szolgáltatást a virtuális gépről.
 - A nagyobb rugalmasság érdekében:
-    - Biztonságba helyezheti az adatokat, ha biztonsági másolatot készít az Azure virtuális gépekről az Azure Backup szolgáltatással. [További információk]( https://docs.microsoft.com/azure/backup/quick-backup-vm-portal).
-    - Biztosíthatja a számítási feladatok folyamatos futtatását és rendelkezésre állását, ha az Azure virtuális gépeket egy másodlagos régióba replikálja a Site Recovery használatával. [További információk](azure-to-azure-quickstart.md).
+    - Biztonságba helyezheti az adatokat, ha biztonsági másolatot készít az Azure virtuális gépekről az Azure Backup szolgáltatással. [Részletek]( https://docs.microsoft.com/azure/backup/quick-backup-vm-portal).
+    - Biztosíthatja a számítási feladatok folyamatos futtatását és rendelkezésre állását, ha az Azure virtuális gépeket egy másodlagos régióba replikálja a Site Recovery használatával. [Részletek](azure-to-azure-quickstart.md).
 - A biztonság fokozása érdekében:
     - Zárolja és korlátozza a beérkező forgalom hozzáférését az Azure Security Center [igény szerinti felügyelet]( https://docs.microsoft.com/azure/security-center/security-center-just-in-time) funkciójával
     - Korlátozza a forgalmat felügyeleti végpontokra [hálózati biztonsági csoportok](https://docs.microsoft.com/azure/virtual-network/security-overview) használatával.
     - Az [Azure Disk Encryption](https://docs.microsoft.com/azure/security/azure-security-disk-encryption-overview) üzembe helyezésével biztonságba helyezheti a lemezeket, és megóvhatja az adatokat a lopási kísérletektől és a jogosulatlan hozzáféréstől.
-    - Látogasson el a [az Azure Security Center](https://azure.microsoft.com/services/security-center/ ) webhelyére, és tudjon meg többet az [IaaS-erőforrások biztosításáról]( https://azure.microsoft.com/services/virtual-machines/secure-well-managed-iaas/ ).
+    - Látogasson el a [az Azure Security Center]( https://azure.microsoft.com/services/virtual-machines/secure-well-managed-iaas/ ) webhelyére, és tudjon meg többet az [IaaS-erőforrások biztosításáról](https://azure.microsoft.com/services/security-center/ ).
 - Figyelési és felügyeleti eszközök:
     - Fontolja meg az [Azure Cost Management](https://docs.microsoft.com/azure/cost-management/overview) üzembe helyezését az erőforrás-használat és a költségek figyeléséhez.
 
@@ -158,7 +158,7 @@ Egyes lépések automatikusan is végrehajthatók az áttelepítési folyamat r�
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ebben az oktatóanyagban helyszíni virtuális gépeket migrált Azure-beli virtuális gépekbe. most
+Ebben az oktatóanyagban helyszíni virtuális gépeket migrált Azure-beli virtuális gépekbe. Most
 
 > [!div class="nextstepaction"]
 > [Állítsa be](azure-to-azure-replicate-after-migration.md) a vész-helyreállítást egy másodlagos Azure-régióba az Azure-beli virtuális gépek számára.

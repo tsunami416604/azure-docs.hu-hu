@@ -1,6 +1,6 @@
 ---
-title: Adatok lekérdezése Azure Time Series Insights előnézeti környezetből kód használatával C# | Microsoft Docs
-description: Ez a cikk azt ismerteti, hogyan lehet lekérdezni egy Azure Time Series Insights-környezet adatait egy C# (c-Sharp) .net nyelven írt egyéni alkalmazás kódolásával.
+title: Adatok lekérdezése előnézeti környezetből a-Azure Time Series Insights használatával C# | Microsoft Docs
+description: Megtudhatja, hogyan kérdezheti le az adatok egy Azure Time Series Insights- C#környezetből egy írt alkalmazás használatával.
 ms.service: time-series-insights
 services: time-series-insights
 author: deepakpalled
@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 10/08/2019
 ms.custom: seodec18
-ms.openlocfilehash: 46ade3ed6e8712a074974c81e51b2dd6c834db26
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: 806460e5e4336624c6b0ead59dd5632e730c69e5
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72989663"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74014729"
 ---
 # <a name="query-data-from-the-azure-time-series-insights-preview-environment-using-c"></a>Adatok lekérdezése a Azure Time Series Insights előnézet környezetből a következő használatával:C#
 
@@ -30,7 +30,7 @@ A minta számos alapszintű példát is tartalmat a Query API használatára:
 1. A websocket-kérés példájaként a rendszer lekéri az érintett környezet összesített eseményadatait. Az adatokat a rendszer a teljes rendelkezésre állási időtartamra lekéri.
 
 > [!NOTE]
-> Ez a mintakód a következő címen is elérhető: [https://github.com/Azure-Samples/Azure-Time-Series-Insights](https://github.com/Azure-Samples/Azure-Time-Series-Insights/tree/master/csharp-tsi-preview-sample).
+> Ez a mintakód a [https://github.com/Azure-Samples/Azure-Time-Series-Insights](https://github.com/Azure-Samples/Azure-Time-Series-Insights/tree/master/csharp-tsi-preview-sample)címen is elérhető.
 
 ## <a name="c-example"></a>C#például
 

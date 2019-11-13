@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 10/14/2019
+ms.date: 11/11/2019
 ms.author: diberry
-ms.openlocfilehash: 9531e86e63fa8d944aa216fddd0c8215b73038a9
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: a8021885bf51ab6d44bc8576b9fdd69f1bdd270a
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73492703"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73953702"
 ---
 # <a name="tutorial-get-exact-text-matched-data-from-an-utterance"></a>Oktatóanyag: pontos szöveggel egyező adatok beolvasása a teljes használatból
 
@@ -49,7 +49,7 @@ A listaentitás megfelelő választás az ilyen típusú adatok esetén, amikor:
 
 * Az adatok értékei egy ismert készletbe tartoznak.
 * A készlet nem haladja meg a LUIS maximális [határait](luis-boundaries.md) ezen entitástípus esetében.
-* A kimondott szöveg egy része pontosan megegyezik egy szinonimával vagy a kanonikus névvel. LUIS nem használja a listát a pontos szöveges egyezéseken felül. A kivezetés, a többes szám és más változat nem oldható fel egyetlen listával rendelkező entitással. A változatok kezeléséhez érdemes [mintát](luis-concept-patterns.md#syntax-to-mark-optional-text-in-a-template-utterance) használni a választható szöveges szintaxissal. 
+* A kimondott szöveg egy része pontosan megegyezik egy szinonimával vagy a kanonikus névvel. LUIS nem használja a listát a pontos szöveges egyezéseken felül. A kivezetés, a többes szám és más változat nem oldható fel egyetlen listával rendelkező entitással. A változatok kezeléséhez érdemes [mintát](reference-pattern-syntax.md#syntax-to-mark-optional-text-in-a-template-utterance) használni a választható szöveges szintaxissal. 
 
 ## <a name="create-a-new-app"></a>Új alkalmazás létrehozása
 
@@ -94,7 +94,7 @@ Az egyes elemek elsődleges, _kanonikus_és neve a részleg neve. Az egyes kanon
 |--|--|
 |Könyvelés|Acct<br>Acct<br>3456|
 |Fejlesztési műveletek|Fejlesztés és üzemeltetés<br>4949|
-|Mérnöki tudományok|ENG<br>naplófeladat<br>4567|
+|Mérnöki tevékenységek|ENG<br>naplófeladat<br>4567|
 |Pénzügy|Pénzügy<br>2020|
 |Információs technológia|IT<br>2323|
 |Értékesítésen belül|isale<br>nem értékesíthető<br>1414|
@@ -177,7 +177,7 @@ Az egyes elemek elsődleges, _kanonikus_és neve a részleg neve. Az egyes kanon
 * [Tesztelés a LUIS portálon](luis-interactive-test.md)
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ez az oktatóanyag létrehozott egy új szándékot, kimondottszöveg-példákat adott hozzá, majd létrehozott egy listaentitást a pontos szövegegyezések kimondott szövegből történő kinyerése céljából. Az alkalmazás betanítása és közzététele után egy végpontlekérdezés azonosította a szándékot, és visszaadta a kinyert adatokat.
 
 Folytassa az alkalmazással, és [adjon hozzá egy összetett entitást](luis-tutorial-composite-entity.md).

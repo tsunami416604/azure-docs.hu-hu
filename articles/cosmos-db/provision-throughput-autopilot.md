@@ -6,12 +6,12 @@ ms.author: kirillg
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: e0c3c88119c3d064326442881854920b411f5ed4
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 0e9f909aba11d35307e02a98a41ffa04e36e4db2
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73748384"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73953133"
 ---
 # <a name="create-azure-cosmos-containers-and-databases-in-autopilot-mode-preview"></a>Azure Cosmos-tárolók és-adatbázisok létrehozása Autopilot módban (előzetes verzió)
 
@@ -24,7 +24,7 @@ Az átviteli sebesség manuális kiépítés mellett mostantól az Azure Cosmos-
 
 Többé nem kell manuálisan kezelnie a kiépített átviteli sebességet vagy a kezelői sebesség korlátozásával kapcsolatos problémákat. Az Autopilot módban konfigurált Azure Cosmos-tárolók azonnal méretezhetők a munkaterhelésre adott válasz nélkül, anélkül, hogy ez hatással lenne a munkaterhelés rendelkezésre állására, késésére, átviteli sebességére vagy teljesítményére. A magas kihasználtság alatt az Autopilot módban konfigurált Azure Cosmos-tárolók a folyamatban lévő műveletek befolyásolása nélkül méretezhetők vagy leállíthatók.
 
-A tárolók és adatbázisok robotpilóta-módban való konfigurálásakor meg kell adnia a maximális átviteli sebességet, `Tmax` nem lehet túllépni. A tárolók ezután azonnal méretezhetők a számítási feladatok igénye alapján a `0.1*Tmax < T < Tmax` tartományon belül. Más szóval a tárolók és az adatbázisok a munkaterhelési igényeknek megfelelően méretezhetők, a beállított maximális átviteli sebességtől 10%-kal, a beállított maximális átviteli sebességig. Az Autopilot-adatbázison vagy a tárolón bármikor módosíthatja a maximális átviteli sebesség (Tmax) beállítást.
+A tárolók és adatbázisok robotpilóta-módban való konfigurálásakor meg kell adnia a maximális átviteli sebességet, `Tmax` nem lehet túllépni. A tárolók ezután azonnal méretezhetők a számítási feladatok igénye alapján a `0.1*Tmax < T < Tmax` tartományon belül. Más szóval a tárolók és az adatbázisok a munkaterhelési igényeknek megfelelően méretezhetők, a beállított maximális átviteli sebességtől 10%-kal, a beállított maximális átviteli sebességig. Az Autopilot-adatbázison vagy a tárolón bármikor módosíthatja a maximális átviteli sebesség (Tmax) beállítást. Az Autopilot beállítás használata esetén az 400 RU/s minimális átviteli sebesség a tároló vagy az adatbázis esetében már nem alkalmazható.
 
 Az Autopilot előzetes verziójában a tárolón vagy az adatbázison megadott maximális átviteli sebességnél a rendszer a számított tárolási korláton belül lehetővé teszi a működést. Ha túllépi a tárolási korlátot, a maximális átviteli sebesség automatikusan magasabb értékre van igazítva. Ha az adatbázis-szint átviteli sebességét robotpilóta módban használja, az adatbázison belül engedélyezett tárolók száma a következő lesz: (0,001 * maximális átviteli sebesség). Ha például 20 000 Autopilot RU/s-t épít ki, akkor az adatbázis 20 tárolóval rendelkezhet.
 
@@ -94,7 +94,7 @@ Az Autopilot-t konfigurálhatja adatbázisok vagy tárolók létrehozásához. H
 
 A hasonló lépéseket követve létrehozhat egy, a kiépített átviteli sebességgel rendelkező adatbázist is az Autopilot módban.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * További információ a [logikai partíciókhoz](partition-data.md).
 * Útmutató az [átviteli sebesség Azure Cosmos-tárolón](how-to-provision-container-throughput.md)való kiépítéséhez.

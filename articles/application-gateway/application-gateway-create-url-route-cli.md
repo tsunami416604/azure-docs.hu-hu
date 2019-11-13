@@ -1,31 +1,28 @@
 ---
-title: Hozzon létre egy application gateway URL-cím-alapú útválasztási szabályok – Azure CLI-vel |} A Microsoft Docs
-description: Megtudhatja, hogyan URL-cím-alapú útválasztási szabályok létrehozása egy application gateway és a virtuális gép méretezési csoportot, az Azure CLI használatával.
+title: URL-elérésiút-alapú útválasztási szabályok parancssori felülettel – Azure Application Gateway
+description: Ismerje meg, hogyan hozhat létre URL-alapú útválasztási szabályokat az Application Gateway és a virtuálisgép-méretezési csoport számára az Azure CLI használatával.
 services: application-gateway
 author: vhorne
-manager: jpconnock
-editor: tysonn
 ms.service: application-gateway
 ms.topic: article
-ms.workload: infrastructure-services
-ms.date: 7/14/2018
+ms.date: 11/13/2019
 ms.author: victorh
-ms.openlocfilehash: 061156a455664a5a3f0b4c4497d24f4e8ff6eea7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7198e68530a51e6c2002b3beb08f14615a5c70fb
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66135653"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74012329"
 ---
-# <a name="create-an-application-gateway-with-url-path-based-routing-rules-using-the-azure-cli"></a>Hozzon létre egy application gateway URL-cím-alapú útválasztási szabályok az Azure CLI használatával
+# <a name="create-an-application-gateway-with-url-path-based-routing-rules-using-the-azure-cli"></a>URL-alapú útválasztási szabályokkal rendelkező Application Gateway létrehozása az Azure CLI használatával
 
-Az Azure CLI használatával [URL-alapú útválasztási szabályokat](application-gateway-url-route-overview.md) konfigurálhat [alkalmazásátjárók](application-gateway-introduction.md) létrehozásakor. Ebben az oktatóanyagban háttérkészletek használatával létrehozhat egy [virtuálisgép-méretezési csoport](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md). Ezután hozzon létre útválasztási szabályokat, hogy ellenőrizze, hogy a webes forgalom érkezik meg a megfelelő kiszolgálókat a készletekben.
+Az Azure CLI használatával [URL-alapú útválasztási szabályokat](application-gateway-url-route-overview.md) konfigurálhat [alkalmazásátjárók](application-gateway-introduction.md) létrehozásakor. Ebben az oktatóanyagban háttér-készleteket hoz létre egy [virtuálisgép-méretezési csoport](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md)használatával. Ezután olyan útválasztási szabályokat hozhat létre, amelyek gondoskodnak arról, hogy a webes forgalom a készletekben lévő megfelelő kiszolgálókon érkezzen.
 
 Ebben a cikkben az alábbiakkal ismerkedhet meg:
 
 > [!div class="checklist"]
 > * A hálózat beállítása
-> * Hozzon létre egy application gateway URL-cím térkép
+> * Application Gateway létrehozása URL-megfeleltetéssel
 > * Virtuálisgép-méretezési csoportok létrehozása a háttérkészletekkel
 
 ![URL-útválasztási példa](./media/application-gateway-create-url-route-cli/scenario.png)
@@ -70,7 +67,7 @@ az network public-ip create \
 
 ## <a name="create-the-application-gateway-with-url-map"></a>Az alkalmazásátjáró létrehozása URL-címleképezéssel
 
-Az [az network application-gateway create](/cli/azure/network/application-gateway) paranccsal létrehozhatja a *myAppGateway* nevű alkalmazásátjárót. Amikor létrehoz egy alkalmazásátjárót az Azure CLI használatával, olyan konfigurációs információkat kell megadnia, mint a kapacitás, a termékváltozat és a HTTP-beállítások. Az alkalmazásátjáró a korábban létrehozott *myAGSubnet* alhálózathoz és *myAGPublicIPAddress* IP-címhez lesz rendelve. 
+Az [az network application-gateway create](/cli/azure/network/application-gateway) paranccsal létrehozhatja a *myAppGateway* nevű alkalmazásátjárót. Amikor az Azure CLI-vel hoz létre egy Application Gatewayt, meg kell adnia bizonyos konfigurációs adatokat, például a kapacitást, az SKU-t, valamint a HTTP-beállításokat. Az alkalmazásátjáró a korábban létrehozott *myAGSubnet* alhálózathoz és *myAGPublicIPAddress* IP-címhez lesz rendelve. 
 
 ```azurecli-interactive
 az network application-gateway create \
@@ -90,16 +87,16 @@ az network application-gateway create \
 
  Az alkalmazásátjáró létrehozása néhány percig is eltarthat. Az alkalmazásátjáró létrehozása után a következő új funkcióit láthatja:
 
-- *appGatewayBackendPool* – Az alkalmazásátjáróknak rendelkezniük kell legalább egy háttércímkészlettel.
+- *appGatewayBackendPool* – Az Application Gatewayeknek legalább egy háttércímkészlettel kell rendelkezniük.
 - *appGatewayBackendHttpSettings* – Meghatározza, hogy a kommunikációhoz a rendszer a 80-as portot és egy HTTP-protokollt használ.
 - *appGatewayHttpListener* – Az *appGatewayBackendPool* készlethez társított alapértelmezett figyelő.
 - *appGatewayFrontendIP* – Hozzárendeli a *myAGPublicIPAddress* IP-címet az *appGatewayHttpListener* figyelőhöz.
-- *rule1* – Az *appGatewayHttpListener* figyelőhöz rendelt alapértelmezett útválasztási szabály.
+- *rule1* – Az *appGatewayHttpListener* elemmel társított alapértelmezett útválasztási szabály.
 
 
-### <a name="add-image-and-video-backend-pools-and-port"></a>Kép- és videó-háttérkészletek, illetve port hozzáadása
+### <a name="add-image-and-video-backend-pools-and-port"></a>Kép- és videó-háttérkészletek és port hozzáadása
 
-Hozzáadhat nevű háttérkészletek *imagesBackendPool* és *videoBackendPool* , az application gateway használatával [az network application-gateway-címkészlet létrehozása](/cli/azure/network/application-gateway/address-pool#az-network-application-gateway-address-pool-create). Az előtérbeli portot az [az network application-gateway frontend-port create](/cli/azure/network/application-gateway/frontend-port#az-network-application-gateway-frontend-port-create) paranccsal adhatja hozzá a készletekhez. 
+A *imagesBackendPool* és a *videoBackendPool* nevű backend-készleteket az [az Network Application-Gateway címkészlet Create](/cli/azure/network/application-gateway/address-pool#az-network-application-gateway-address-pool-create)paranccsal adhatja hozzá az Application gatewayhez. Az előtérbeli portot az [az network application-gateway frontend-port create](/cli/azure/network/application-gateway/frontend-port#az-network-application-gateway-frontend-port-create) paranccsal adhatja hozzá a készletekhez. 
 
 ```azurecli-interactive
 az network application-gateway address-pool create \
@@ -157,7 +154,7 @@ az network application-gateway url-path-map rule create \
 
 ### <a name="add-routing-rule"></a>Útválasztási szabály hozzáadása
 
-Az útválasztási szabály az URL-címtérképeket a létrehozott figyelőhöz társítja. A nevű szabályt is hozzáadhat *felhasználóval a rule2* használatával [az network application-gateway-szabály létrehozása](/cli/azure/network/application-gateway/rule#az-network-application-gateway-rule-create).
+Az útválasztási szabály az URL-címtérképeket a létrehozott figyelőhöz társítja. A *Rule2* nevű szabályt az [az Network Application-Gateway Rule Create](/cli/azure/network/application-gateway/rule#az-network-application-gateway-rule-create)paranccsal adhatja hozzá.
 
 ```azurecli-interactive
 az network application-gateway rule create \
@@ -218,9 +215,9 @@ for i in `seq 1 3`; do
 done
 ```
 
-## <a name="test-the-application-gateway"></a>Az alkalmazásátjáró tesztelése
+## <a name="test-the-application-gateway"></a>Az Application Gateway tesztelése
 
-Az alkalmazásátjáró nyilvános IP-címének lekéréséhez használhatja az [az network public-ip show](/cli/azure/network/public-ip) parancsot. Másolja a nyilvános IP-címet, majd illessze be a böngésző címsorába. Például `http://40.121.222.19`, `http://40.121.222.19:8080/images/test.htm`, vagy `http://40.121.222.19:8080/video/test.htm`.
+Az alkalmazásátjáró nyilvános IP-címének lekéréséhez használhatja az [az network public-ip show](/cli/azure/network/public-ip) parancsot. Másolja a nyilvános IP-címet, majd illessze be a böngésző címsorába. Például:, `http://40.121.222.19`, `http://40.121.222.19:8080/images/test.htm`vagy `http://40.121.222.19:8080/video/test.htm`.
 
 ```azurepowershell-interactive
 az network public-ip show \
@@ -232,21 +229,21 @@ az network public-ip show \
 
 ![Az alap URL-cím tesztelése az alkalmazásátjáróban](./media/application-gateway-create-url-route-cli/application-gateway-nginx.png)
 
-Módosítsa az URL-címet `http://<ip-address>:8080/video/test.html` végére az alap URL-címet, és alábbihoz az alábbi példához hasonlóan:
+Módosítsa az URL-címet `http://<ip-address>:8080/video/test.html`re az alap URL-cím végére, és az alábbi példához hasonlóan kell megjelennie:
 
-![Képek URL-címének tesztelése az alkalmazásátjáróban](./media/application-gateway-create-url-route-cli/application-gateway-nginx-images.png)
+![Tesztképek URL-címe az alkalmazásátjáróban](./media/application-gateway-create-url-route-cli/application-gateway-nginx-images.png)
 
-Módosítsa az URL-címet `http://<ip-address>:8080/video/test.html` és a egy, az alábbi példához hasonlóan kell megjelennie.
+Módosítsa `http://<ip-address>:8080/video/test.html` URL-címét, és az alábbi példához hasonlóan kell megjelennie.
 
-![Videók URL-címének tesztelése az alkalmazásátjáróban](./media/application-gateway-create-url-route-cli/application-gateway-nginx-video.png)
+![Tesztvideó URL-címe az alkalmazásátjáróban](./media/application-gateway-create-url-route-cli/application-gateway-nginx-video.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]
 > * A hálózat beállítása
-> * Hozzon létre egy application gateway URL-cím térkép
+> * Application Gateway létrehozása URL-megfeleltetéssel
 > * Virtuálisgép-méretezési csoportok létrehozása a háttérkészletekkel
 
-Az application Gateway átjárók és a kapcsolódó erőforrásokkal kapcsolatos további információkért folytassa az útmutató cikkekre.
+Ha többet szeretne megtudni az Application Gateway és a hozzájuk kapcsolódó erőforrásairól, folytassa az útmutató cikkeivel.
