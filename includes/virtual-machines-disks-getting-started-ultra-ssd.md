@@ -8,15 +8,13 @@ ms.topic: include
 ms.date: 11/04/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 838037804baad9105b4636934de957c2e5f3e810
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 3525edb2a73811254b2a4dce70ce3edb58988492
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73612079"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74012443"
 ---
-# <a name="using-azure-ultra-disks"></a>Az Azure Ultra Disks használata
-
 Az Azure Ultra Disks nagy teljesítményű, magas IOPS és konzisztens, alacsony késésű lemezes tárolást biztosít az Azure IaaS Virtual Machines (VM) szolgáltatásokhoz. Ez az új ajánlat a vonal teljesítményét a meglévő lemezekkel megegyező rendelkezésre állási szinten biztosítja. Az ultra Disks szolgáltatás egyik fő előnye, hogy dinamikusan megváltoztathatja az SSD teljesítményét a számítási feladatokkal együtt anélkül, hogy újra kellene indítania a virtuális gépeket. Az ultra-lemezek olyan adatigényes számítási feladatokhoz használhatók, mint a SAP HANA, a legfelső szintű adatbázisok és a tranzakció-nagy számítási feladatok.
 
 ## <a name="ga-scope-and-limitations"></a>A GA hatóköre és korlátai
@@ -27,7 +25,7 @@ Az Azure Ultra Disks nagy teljesítményű, magas IOPS és konzisztens, alacsony
 
 Az ultra-lemezek kihasználása érdekében meg kell határoznia, hogy melyik rendelkezésre állási zónát használja. Nem minden régió támogatja a virtuálisgép-méreteket az ultra Disks szolgáltatással. Annak megállapításához, hogy a régió, a zóna és a virtuális gép mérete támogatja-e az ultra-lemezeket, futtassa a következő parancsok egyikét, és először cserélje le a **régió**, a **vmSize**és az **előfizetés** értékét:
 
-CLI
+CLI:
 
 ```bash
 $subscription = "<yourSubID>"
@@ -66,7 +64,7 @@ Ha több Ultra lemezzel rendelkező virtuális gépet szeretne létrehozni, teki
 
 Ha saját sablont szeretne használni, győződjön meg róla, hogy a `Microsoft.Compute/virtualMachines` és `Microsoft.Compute/Disks` **apiVersion** beállítása `2018-06-01` (vagy újabb).
 
-Állítsa be a lemez SKU- **UltraSSD_LRS**, majd állítsa be a lemez kapacitása, a IOPS, a rendelkezésre állási zóna és az átviteli sebesség (MB/s) értéket egy ultra-lemez létrehozásához.
+Állítsa be a lemez SKU-jának **UltraSSD_LRS**, majd állítsa be a lemez kapacitása, a IOPS, a rendelkezésre állási zóna és az átviteli sebesség (MB/s) értéket egy ultra-lemez létrehozásához.
 
 A virtuális gép üzembe helyezése után particionálhatja és formázhatja az adatlemezeket, és konfigurálhatja azokat a számítási feladatokhoz.
 
@@ -197,6 +195,6 @@ $diskupdateconfig = New-AzDiskUpdateConfig -DiskMBpsReadWrite 2000
 Update-AzDisk -ResourceGroupName $resourceGroup -DiskName $diskName -DiskUpdate $diskupdateconfig
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha szeretné kipróbálni az új lemez típusának [elérésére vonatkozó kérést](https://aka.ms/UltraDiskSignup).

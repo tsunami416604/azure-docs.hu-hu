@@ -14,12 +14,12 @@ ms.date: 04/12/2019
 ms.author: jafreebe
 ms.reviewer: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 75632d4fcdbf27f70b1b84f08f7295212dbac6a8
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: ad9ee8a21390126f20da4037a438a2655b8b5d47
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73471095"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74012259"
 ---
 # <a name="configure-a-windows-java-app-for-azure-app-service"></a>Windows Java-alkalmazás konfigurálása Azure App Servicehoz
 
@@ -40,10 +40,6 @@ Ne telepítse a. War-t FTP használatával. Az FTP-eszköz indítási parancsfá
 ## <a name="logging-and-debugging-apps"></a>Alkalmazások naplózása és hibakeresése
 
 A teljesítménnyel kapcsolatos jelentések, a forgalmi vizualizációk és az állapot-kivizsgálások a Azure Portalon keresztül érhetők el az egyes alkalmazásokhoz. További információ: [Azure app Service diagnosztika áttekintése](overview-diagnostics.md).
-
-### <a name="ssh-console-access"></a>SSH-konzolhoz való hozzáférés
-
-[!INCLUDE [Open SSH session in browser](../../includes/app-service-web-ssh-connect-builtin-no-h.md)]
 
 ### <a name="stream-diagnostic-logs"></a>Diagnosztikai naplók streamelése
 
@@ -322,11 +318,11 @@ A fejlesztők letölthetik az Azul Zulu Enterprise JDK éles kiadását helyi fe
 
 Az Azure [által támogatott Azul ZULU JDK-](https://www.azul.com/downloads/azure-only/zulu/) vel kapcsolatos terméktámogatás a Microsofton keresztül érhető el az Azure-hoz való fejlesztéshez, illetve a [Azure stack](https://azure.microsoft.com/overview/azure-stack/) egy [minősített Azure-támogatási csomaggal](https://azure.microsoft.com/support/plans/).
 
-### <a name="runtime-support"></a>Futtatókörnyezet támogatása
+### <a name="runtime-support"></a>Podpora modulu Runtime
 
 A fejlesztők az Azure-támogatással [megnyithatják](/azure/azure-supportability/how-to-create-azure-support-request) az Azul Zulu JDK kapcsolatos problémákat, ha rendelkeznek [minősített támogatási csomaggal](https://azure.microsoft.com/support/plans/).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ez a témakör a Java Runtime Azure App Service Windows rendszeren történő támogatására vonatkozó utasításait ismerteti.
 

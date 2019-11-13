@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: conceptual
-ms.date: 04/11/2019
+ms.date: 11/12/2019
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 21117e551642571d5b974e66d0769ed9906b9d50
-ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
+ms.openlocfilehash: 85905e31b9375bac7f813782cbc224a6e770b7ce
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71018198"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74013126"
 ---
 # <a name="add-azure-active-directory-b2b-collaboration-users-in-the-azure-portal"></a>Azure Active Directory B2B Collaboration-felhasználók hozzáadása a Azure Portal
 
@@ -25,7 +25,7 @@ A korlátozott rendszergazdai címtárbeli szerepkörökhöz hozzárendelt felha
 Miután hozzáadta a vendég felhasználót a címtárhoz, elküldheti a vendég felhasználó közvetlen hivatkozását egy megosztott alkalmazásra, vagy a vendég felhasználó a meghívót tartalmazó e-mailben a beváltási URL-címre is kattinthat. További információ a beváltási folyamatról: [vállalatközi együttműködés meghívásának beváltása](redemption-experience.md).
 
 > [!IMPORTANT]
-> Kövesse az [útmutató lépéseit: A szervezete adatvédelmi nyilatkozatának URL-](https://aka.ms/adprivacystatement) címének hozzáadásához vegye fel a szervezete adatvédelmi adatait a Azure Active Directoryba. A meghívó első beváltási folyamatának részeként a meghívott felhasználónak el kell fogadnia az adatvédelmi feltételeit a folytatáshoz. 
+> A szervezete adatvédelmi nyilatkozatának URL-címének hozzáadásához kövesse a következő témakörben ismertetett lépéseket [: útmutató: a szervezet adatvédelmi adatainak hozzáadása a Azure Active Directory](https://aka.ms/adprivacystatement) . A meghívó első beváltási folyamatának részeként a meghívott felhasználónak el kell fogadnia az adatvédelmi feltételeit a folytatáshoz. 
 
 ## <a name="before-you-begin"></a>Előkészületek
 
@@ -45,14 +45,18 @@ Ha VÁLLALATKÖZI együttműködési felhasználókat szeretne hozzáadni a cím
    > [!NOTE]
    > Az **új vendég felhasználói** lehetőség a **szervezeti kapcsolatok** oldalon is elérhető. **Azure Active Directory**a **kezelés**területen válassza a **szervezeti kapcsolatok**elemet.
 
-5. A **Felhasználónév** alatt adja meg a külső felhasználó e-mail-címét. Ha szeretné, üdvözlő üzenetet is megadhat. Példa:
-
-   ![Azt mutatja, hogy az új vendég felhasználó hol van a felhasználói felületen](./media/add-users-administrator/InviteGuest.png) 
+5. Az **új felhasználó** lapon válassza a **felhasználó meghívása** lehetőséget, majd adja hozzá a vendég felhasználó adatait. 
 
     > [!NOTE]
     > A csoportos e-mail-címek nem támogatottak; adja meg az egyéni e-mail-címet. Emellett egyes e-mail-szolgáltatók lehetővé teszik a felhasználók számára egy pluszjel (+) és egy további szöveg hozzáadását az e-mail-címükhez, így például a beérkezett fájlok szűréséhez. Az Azure AD azonban jelenleg nem támogatja az e-mail-címeken a plusz szimbólumokat. A kézbesítési problémák elkerüléséhez hagyja ki a pluszjelet és az azt követő karaktereket a @ szimbólumra.
 
-6. Válassza ki **Meghívás** elemet az meghívó automatikus elküldéséhez a vendégfelhasználó számára. 
+   - **név.** A vendég felhasználó vezetékneve és vezetékneve.
+   - **E-mail-cím (kötelező)** . A vendég felhasználó e-mail-címe.
+   - **Személyes üzenet (nem kötelező)** Személyes üdvözlő üzenet felvétele a vendég felhasználóra.
+   - **Csoportok**: felveheti a vendég felhasználót egy vagy több meglévő csoportba, vagy később is megteheti.
+   - **Címtárbeli szerepkör**: Ha az Azure ad rendszergazdai engedélyekre van szüksége a felhasználó számára, hozzáadhat egy Azure ad-szerepkörhöz. 
+
+7. Válassza ki **Meghívás** elemet az meghívó automatikus elküldéséhez a vendégfelhasználó számára. 
  
 Miután elküldte a meghívót, a felhasználói fiók automatikusan hozzáadódik a címtárhoz vendégként.
 
@@ -119,7 +123,7 @@ Ha a vendég felhasználó még nem váltotta be a meghívót, akkor újra elkü
 > [!NOTE]
 > Ha olyan meghívót küld újra, amely eredetileg a felhasználót egy adott alkalmazáshoz irányította, akkor az új meghívóban található hivatkozás helyett a legfelső szintű hozzáférési panelre kerül.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Annak megismeréséhez, hogy a nem Azure AD-rendszergazdák hogyan vehetik fel a B2B vendég felhasználókat, tekintse meg az [információkkal dolgozó szakemberek a B2B Collaboration-felhasználókat?](add-users-information-worker.md)
 - A meghívó e-mail-címével kapcsolatos információkért tekintse meg a [B2B együttműködés meghívójának e-mail-címét](invitation-email-elements.md).

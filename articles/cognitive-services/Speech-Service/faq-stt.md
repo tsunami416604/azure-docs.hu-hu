@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 10/17/2019
 ms.author: panosper
-ms.openlocfilehash: 3b957181015cba06eb361272ca1004ba3e7a7008
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 2d0a05c763b21b0cf22a724f9a5faa9d70b5b557
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73579682"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74010647"
 ---
 # <a name="speech-to-text-frequently-asked-questions"></a>Beszéd szöveggel kapcsolatos gyakori kérdések
 
@@ -59,7 +59,7 @@ Válasz **: több**alapmodell közül választhat a Speech Service-ben. A társa
 
 A régi adatkészletet és az új adatkészletet egyetlen. zip fájlban (akusztikai adatokat) vagy egy. txt fájlban (nyelvi adatokat) kell egyesíteni. Az adaptáció befejezése után az új, frissített modellt újra kell telepíteni új végpont beszerzéséhez.
 
-**K: Ha az alapkonfiguráció új verziója érhető el, az üzembe helyezésem automatikusan frissül?**
+**K: ha elérhető egy alapkonfiguráció új verziója, az üzembe helyezésem automatikusan frissül?**
 
 **A: az üzemelő**példányok nem frissülnek automatikusan.
 
@@ -71,26 +71,31 @@ Ha kiigazította és telepítette az alapkonfiguráció 1.0-s verziójával rend
 
 Ha nagyobb méretűre van szüksége, forduljon a [beszédfelismerési támogatási szolgálathoz](mailto:speechsupport@microsoft.com?subject=Request%20for%20higher%20concurrency%20for%20Speech-to-text) .
 
-Az egyéni modell egyidejűségének növeléséhez a következő információkra van szükségünk:
+Az ***Egyéni modell***egyidejűségének növeléséhez a következő információkra van szükségünk:
 
-- Az a régió, ahol a modell telepítve van.
-- A központilag telepített modell végpont-azonosítója.
+- A modellt telepítő régió,
+- a központilag telepített modell végpont-azonosítója:
+  - A [Custom Speech portálra](https://aka.ms/customspeech)került,
+  - bejelentkezés (ha szükséges),
+  - Válassza ki a projektet és az üzembe helyezést,
+  - Válassza ki a végpontot, amelyre szüksége van a párhuzamosság növeléséhez,
+  - másolja a `Endpoint ID`.
 
-Az alapmodellek egyidejűségének növeléséhez a következő információkra van szükségünk:
+Az ***alapmodell***egyidejűségének növeléséhez a következő információkra van szükségünk:
 
 - A szolgáltatás régiója,
 
 és vagy
 
-- hozzáférési token az Ön subrscription (lásd [itt](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-speech-to-text#how-to-get-an-access-token)),
+- az előfizetéshez tartozó hozzáférési jogkivonat (lásd [itt](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-speech-to-text#how-to-get-an-access-token)),
 
 vagy
 
 - az előfizetéshez tartozó erőforrás-azonosító:
-  - Ugrás a https://portal.azure.comra
+  - Ugrás a [Azure Portalra](https://portal.azure.com)
   - a keresőmezőbe válassza a `Cognitive Services` lehetőséget,
   - a megjelenített szolgáltatások közül válassza ki azt a beszédfelismerési szolgáltatást, amelyhez a párhuzamosságot növelni szeretné,
-  - a szolgáltatás tulajdonságainak megjelenítése;
+  - a szolgáltatáshoz tartozó `Properties` megjelenítése;
   - másolja a teljes `Resource ID`.
 
 **K: le tudom tölteni a modellt, és helyileg futtatom?**
@@ -107,7 +112,7 @@ Válasz **: Ön**dönthet úgy, hogy a nyomkövetés kikapcsolásához létrehoz
 
 **K: Hogyan számítunk fel díjat a kettős csatornás hangért?**
 
-Válasz **: Ha**az egyes csatornákat külön küldi el (mindegyik csatornát a saját fájljában), az egyes fájlok időtartama alapján kell fizetnie. Ha egyetlen fájlt küld el minden egyes csatornával együtt, akkor az adott fájl időtartamára kell fizetnie.
+Válasz: Ha az egyes csatornákat külön küldi el (mindegyik csatornát a saját fájljában), **a rendszer a**fájl időtartamára számítja fel. Ha egyetlen fájlt küld el minden egyes csatornával együtt, akkor az adott fájl időtartamára kell fizetnie.
 
 > [!IMPORTANT]
 > Ha további adatvédelmi kérdései vannak, amelyek tiltják a Custom Speech Service használatát, lépjen kapcsolatba az egyik támogatási csatornával.
@@ -184,11 +189,11 @@ Válasz **: attól**függ, hogy az alkalmazásban használt szókincs és kifeje
  
 **K: milyen beszédfelismerési élményt fejlesztenek a bérlői modell?**
 
-**A:** Ha a bérlői modell engedélyezése, létrehozása és közzététele megtörténik, a rendszer a beszédfelismerési szolgáltatással létrehozott vállalati alkalmazások felismerését is javítja. Ez egy felhasználói HRE tokent is továbbít, amely a vállalatnak való tagságot jelzi. 
- 
+**A:** Ha a bérlői modell engedélyezése, létrehozása és közzététele megtörténik, a rendszer a beszédfelismerési szolgáltatás használatával létrehozott vállalati alkalmazások felismerését is javítja. Ez egy olyan felhasználói HRE-tokent is továbbít, amely a nagyvállalati tagságot jelzi.
+
 Az Office 365-ben beépített beszédfelismerési élmények, például a diktálás és a PowerPoint-feliratok, nem változnak, amikor létrehoz egy bérlői modellt a Speech Service-alkalmazásokhoz.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [hibaelhárítással](troubleshooting.md)
 * [Kibocsátási megjegyzések](releasenotes.md)

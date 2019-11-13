@@ -8,14 +8,14 @@ ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
 ms.date: 09/30/2019
-ms.openlocfilehash: ba10a6105972eddc8474841b234d2eeddc994f5d
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.openlocfilehash: 9f3f98863f9a7cd0e6328ddc75b1154ee933fe0b
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71948919"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74009250"
 ---
-# <a name="security-best-practices"></a>Ajánlott biztonsági eljárások
+# <a name="azure-digital-twins-security-best-practices"></a>Azure Digital Twins – ajánlott biztonsági eljárások
 
 Az Azure digitális Twins biztonsági szolgáltatásával pontos hozzáférést érhet el a IoT gráf egyes erőforrásaihoz és műveleteihez. Ezt a részletes szerepkör és a [szerepköralapú hozzáférés-vezérlés](./security-role-based-access-control.md)nevű engedélyek kezelése teszi lehetővé.
 
@@ -71,7 +71,7 @@ Az Azure Digital Twins Azure Active Directory használatával hitelesíti a felh
 
 [!INCLUDE [digital-twins-rbac-best-practices](../../includes/digital-twins-rbac-best-practices.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Ha többet szeretne megtudni az Azure IoT ajánlott eljárásairól, olvassa el a [IoT-biztonsággal kapcsolatos ajánlott eljárásokat](../iot-fundamentals/iot-security-best-practices.md).
 

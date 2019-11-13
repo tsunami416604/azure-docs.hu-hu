@@ -11,12 +11,12 @@ author: juliemsft
 ms.author: jrasnick
 ms.reviewer: carlrab
 ms.date: 01/25/2019
-ms.openlocfilehash: 6e42911d05f387ea47b56b913e9a1868100c1b3c
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 0dc3a121b30f33d533b1079d9c81501130487017
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73821358"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74009107"
 ---
 # <a name="manual-tune-query-performance-in-azure-sql-database"></a>A lekérdezés teljesítményének manuális finomhangolása Azure SQL Database
 
@@ -253,13 +253,13 @@ Ha kibővíthető architektúrát használ a Azure SQL Databaseban, érdemes leh
 
 Az olyan alkalmazások esetében, amelyek nagy mennyiségű, gyakori, ad hoc lekérdezéssel érik el az adatelérést, jelentős mennyiségű válaszidő kerül elköltésre az alkalmazási réteg és a Azure SQL Databasei réteg közötti hálózati kommunikáció során. Még ha az alkalmazás és a Azure SQL Database is ugyanabban az adatközpontban található, akkor a kettő közötti hálózati késést nagy számú adatelérési művelettel lehet kinagyítani. Ha csökkenteni szeretné az adatelérési műveletek hálózati menetét, érdemes lehet az ad hoc lekérdezéseket batch használatával vagy tárolt eljárásként lefordítani. Ha az ad hoc lekérdezéseket kötegbe helyezi, több lekérdezés is elküldhető egyetlen útvonalon a Azure SQL Databaseba. Ha egy tárolt eljárásban ad hoc lekérdezéseket fordít, akkor ugyanazt az eredményt érheti el, mint ha batch-t használ. A tárolt eljárások használatával a Azure SQL Database a lekérdezési csomagok gyorsítótárazásának esélyét is, így újra használhatja a tárolt eljárást.
 
-Egyes alkalmazások írási Igényűek. Előfordulhat, hogy az adatbázis teljes i/o-terhelését úgy csökkenti, hogy a Batch-írásokat együtt szeretné megfontolni. Ez gyakran olyan egyszerű, mint a Explicit tranzakciók használata a tárolt eljárásokban és ad hoc kötegekben lévő tranzakciók automatikus véglegesítés helyett. A különböző használható technikák kiértékelését lásd: az [Azure-beli SQL Database alkalmazások kötegelt feldolgozásának módszerei](https://msdn.microsoft.com/library/windowsazure/dn132615.aspx). Kísérletezzen a saját számítási feladataival, és keresse meg a megfelelő modellt a kötegelt feldolgozáshoz. Ügyeljen arra, hogy a modell némileg eltérő tranzakciós konzisztencia-garanciával rendelkezzen. Az erőforrás-használatot lecsökkentő megfelelő számítási feladatok megtalálásához a konzisztencia és a teljesítmény-kompromisszum megfelelő kombinációját kell megkeresni.
+Egyes alkalmazások írási Igényűek. Előfordulhat, hogy az adatbázis teljes i/o-terhelését úgy csökkenti, hogy a Batch-írásokat együtt szeretné megfontolni. Ez gyakran olyan egyszerű, mint a Explicit tranzakciók használata a tárolt eljárásokban és ad hoc kötegekben lévő tranzakciók automatikus véglegesítés helyett. A különböző használható technikák kiértékelését lásd: az [Azure-beli SQL Database alkalmazások kötegelt feldolgozásának módszerei](sql-database-use-batching-to-improve-performance.md). Kísérletezzen a saját számítási feladataival, és keresse meg a megfelelő modellt a kötegelt feldolgozáshoz. Ügyeljen arra, hogy a modell némileg eltérő tranzakciós konzisztencia-garanciával rendelkezzen. Az erőforrás-használatot lecsökkentő megfelelő számítási feladatok megtalálásához a konzisztencia és a teljesítmény-kompromisszum megfelelő kombinációját kell megkeresni.
 
 ### <a name="application-tier-caching"></a>Alkalmazás-réteg gyorsítótárazása
 
 Egyes adatbázis-alkalmazások olvasási és nagy terheléssel rendelkeznek. A gyorsítótárazási rétegek csökkenthetik az adatbázis terhelését, és esetleg csökkenthetik az adatbázisok támogatásához szükséges számítási méretet Azure SQL Database használatával. Ha a [Redis-hez Azure cache](https://azure.microsoft.com/services/cache/)-t használ, akkor az adatok beolvasása nagy terheléssel elvégezhető egyszer (vagy akár egyszer az alkalmazási rétegbeli gépen, attól függően, hogy hogyan van konfigurálva), majd az SQL-adatbázison kívül tárolja azokat. Ez az adatbázis terhelésének (CPU és olvasási IO) csökkentése, de hatással van a tranzakciós konzisztenciare, mert előfordulhat, hogy a gyorsítótárból beolvasott adatok nem szinkronizálhatók az adatbázisban lévő adatokkal. Bár számos alkalmazásban elfogadható bizonyos fokú inkonzisztencia, ez nem igaz az összes számítási feladathoz. Az alkalmazásokra vonatkozó követelmények teljes mértékben tisztában kell lennie az alkalmazási szintű gyorsítótárazási stratégia megvalósítása előtt.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A DTU-alapú szolgáltatási rétegekkel kapcsolatos további információkért lásd: [DTU-alapú vásárlási modell](sql-database-service-tiers-dtu.md).
 - A virtuális mag-alapú szolgáltatási rétegekkel kapcsolatos további információkért lásd: [virtuális mag-alapú vásárlási modell](sql-database-service-tiers-vcore.md).
