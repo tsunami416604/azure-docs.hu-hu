@@ -1,17 +1,14 @@
 ---
 title: Az Azure Blueprints áttekintése
 description: Ismerje meg, hogyan hozhat létre, határozhat meg és helyezhet üzembe összetevőket az Azure-környezetben az Azure BluePrints szolgáltatásban.
-author: DCtheGeek
-ms.author: dacoulte
 ms.date: 08/26/2019
 ms.topic: overview
-ms.service: blueprints
-ms.openlocfilehash: 86f58594ce1af91b19f70cbdb1114a90180e3b4f
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: 3005bf171c5297048978d090d0f253a8690242cd
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71981714"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73960320"
 ---
 # <a name="overview-of-the-azure-blueprints-service"></a>Az Azure BluePrints szolgáltatás áttekintése
 
@@ -51,9 +48,9 @@ A szabályzatok a tervrajzok definíciójában szereplő _számos összetevő_ e
 
 A tervek _tervelemekből_ állnak. A tervek jelenleg a következő erőforrások használatát támogatják tervelemekként:
 
-|Resource  | Hierarchialehetőségek| Leírás  |
+|Erőforrás  | Hierarchialehetőségek| Leírás  |
 |---------|---------|---------|
-|Erőforráscsoportok | Subscription | Hozzon létre egy új erőforráscsoportot, amelyet a tervben szereplő többi tervelem fog használni.  Ezekkel a helyőrző erőforráscsoportokkal az erőforrások a kívánt módon rendezhetők el, és kijelölhetők a tervbe foglalt szabályzat- és szerepkör-hozzárendelési tervelemek, valamint az Azure Resource Manager-sablonok hatókörkorlátai. |
+|Erőforráscsoportok | Előfizetést | Hozzon létre egy új erőforráscsoportot, amelyet a tervben szereplő többi tervelem fog használni.  Ezekkel a helyőrző erőforráscsoportokkal az erőforrások a kívánt módon rendezhetők el, és kijelölhetők a tervbe foglalt szabályzat- és szerepkör-hozzárendelési tervelemek, valamint az Azure Resource Manager-sablonok hatókörkorlátai. |
 |Azure Resource Manager-sablon | Előfizetés, erőforráscsoport | A sablonokkal összetett környezetek állíthatók össze. Ilyen környezetek lehetnek például a SharePoint-farmok, az Azure Automation-állapotkonfigurációk vagy a Log Analytics-munkaterületek. |
 |Szabályzat-hozzárendelés | Előfizetés, erőforráscsoport | Lehetővé teszi egy szabályzat vagy kezdeményezés hozzárendelését ahhoz az előfizetéshez, amelyhez a terv hozzá van rendelve. A szabályzatnak vagy kezdeményezésnek a terv meghatározási helyének hatókörén belül kell lennie. Ha a szabályzat vagy kezdeményezés paraméterekkel rendelkezik, ezeket a paramétereket a terv létrehozásakor vagy hozzárendelésekor lehet hozzárendelni. |
 |Szerepkör-hozzárendelés | Előfizetés, erőforráscsoport | Egy meglévő felhasználót vagy csoportot hozzáadhat egy beépített szerepkörhöz, és ezzel biztosíthatja, hogy a megfelelő személyek mindig a megfelelő hozzáféréssel rendelkezzenek az erőforrásokhoz. A szerepkör-hozzárendelések meghatározhatók az egész előfizetésre, vagy leszűkíthetők egy bizonyos erőforráscsoportra, amely a tervben található. |
@@ -62,7 +59,7 @@ A tervek _tervelemekből_ állnak. A tervek jelenleg a következő erőforrások
 
 Tervdefiníció létrehozásakor meg kell határozni a terv mentési helyét. A tervrajzok olyan [felügyeleti csoportba](../management-groups/overview.md) vagy előfizetésbe menthetők, amelyhez **közreműködői** hozzáféréssel rendelkezik. Ha a hely egy felügyeleti csoport, a terv a felügyeleti csoport bármely alárendelt előfizetéséhez rendelhető.
 
-### <a name="blueprint-parameters"></a>Terv paraméterei
+### <a name="blueprint-parameters"></a>Tervparaméterek
 
 A tervekkel paraméterek rendelhetők a szabályzatokhoz/kezdeményezésekhez, vagy az Azure Resource Manager-sablonokhoz.
 Amikor bármilyen _összetevőt_ ad hozzá a tervhez, a szerző eldönti, hogy mindegyik tervhozzárendeléshez megad egy meghatározott értéket, vagy hagyja, hogy az egyes tervhozzárendelések értéke hozzárendeléskor legyen megadva. Ez a fajta rugalmasság biztosítja azt a választási lehetőséget, hogy a terv minden felhasználásakor egy előre meghatározott értéket használunk-e, vagy hagyjuk, hogy az értékről a hozzárendeléskor lehessen dönteni.
@@ -76,7 +73,7 @@ További információkért tekintse meg a [tervparamétereket](./concepts/parame
 
 Amikor létrehozunk egy tervet, az **Vázlat** módban van. Ha a terv készen áll a hozzárendelésre, **közzé kell tenni**. A közzétételhez meg kell adni egy **verzió** sztringet (ez betűket, számokat és kötőjeleket tartalmazhat, és legfeljebb 20 karakter hosszú lehet), valamint **változási megjegyzések** is megadhatók, de ez nem kötelező. A **verzió** megkülönbözteti a tervet annak jövőbeli módosított változataitól, és lehetővé teszi az egyes verziók hozzárendelését. A verziókezelés azt is jelenti, hogy egy adott terv különböző **verziói** is hozzárendelhetők ugyanahhoz az előfizetéshez. Ha további módosításokat végez a terven, a **közzétett** **verzió** továbbra is létezni fog, ahogyan a **közzé nem tett módosítások** is. Miután elvégeztük a kívánt módosításokat, a frissített tervet **közzétesszük** egy új és egyedi **verzióval**, amely innentől kezdve szintén hozzárendelhető lesz.
 
-## <a name="blueprint-assignment"></a>Tervhozzárendelés
+## <a name="blueprint-assignment"></a>Tervek hozzárendelése
 
 A tervrajzok minden **közzétett** **verziója** hozzárendelhető (legfeljebb 90 karakter hosszú lehet) egy meglévő előfizetéshez. A portálon alapértelmezés szerint a terv legutóbb **közzétett** **verziója** érhető el. Ha a terv tartalmaz összetevő-paramétereket (vagy tervparamétereket), akkor ezeket a hozzárendelés során lehet meghatározni.
 
@@ -123,11 +120,11 @@ Ha ezek a beépített szerepkörök nem felelnek meg a biztonsági követelmény
 
 Bizonyos mezőkhöz a következő korlátozások vonatkoznak:
 
-|Object|Mező|Engedélyezett karakterek|Legfeljebb Hossz|
+|Objektum|Mező|Engedélyezett karakterek|Legfeljebb Hossz|
 |-|-|-|-|
 |Terv|Name (Név)|betűk, számok, kötőjelek és időszakok|48|
-|Terv|Version|betűk, számok, kötőjelek és időszakok|20|
-|Tervhozzárendelés|Name (Név)|betűk, számok, kötőjelek és időszakok|90|
+|Terv|Verzió|betűk, számok, kötőjelek és időszakok|20|
+|Tervek hozzárendelése|Name (Név)|betűk, számok, kötőjelek és időszakok|90|
 |Tervrajz-összetevő|Name (Név)|betűk, számok, kötőjelek és időszakok|48|
 
 ## <a name="video-overview"></a>Videó – áttekintés
@@ -136,7 +133,7 @@ Az Azure-tervezetek az alábbi áttekintést nyújtanak az Azure Fridays-ről. A
 
 > [!VIDEO https://www.youtube.com/embed/cQ9D-d6KkMY]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Terv létrehozása – Portál](create-blueprint-portal.md)
 - [Terv létrehozása – REST API](create-blueprint-rest-api.md)

@@ -1,5 +1,5 @@
 ---
-title: A kapcsolat és a megbízható üzenetkezelés kezelése az Azure IoT Hub Device SDK-k használatával
+title: IoT Hub kapcsolat kezelése & megbízható üzenetkezelési eszközök és SDK-k
 description: Ismerje meg, hogyan javíthatja az eszköz kapcsolatait és üzenetkezelését az Azure IoT Hub Device SDK-k használatakor
 services: iot-hub
 author: robinsh
@@ -7,12 +7,12 @@ ms.author: robinsh
 ms.date: 07/07/2018
 ms.topic: article
 ms.service: iot-hub
-ms.openlocfilehash: b5fe47bf066568960f9819a780a1281bedd1902b
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 8774129b3a1d3c9a1095e7a7c478dd94086b5867
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "70999998"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73954497"
 ---
 # <a name="manage-connectivity-and-reliable-messaging-by-using-azure-iot-hub-device-sdks"></a>A kapcsolat és a megbízható üzenetkezelés kezelése az Azure IoT Hub Device SDK-k használatával
 
@@ -34,7 +34,7 @@ A megvalósítás részletei a nyelvtől függően változhatnak. További infor
 
 * [Node SDK](https://github.com/Azure/azure-iot-sdk-node/wiki/Connectivity-and-Retries#types-of-errors-and-how-to-detect-them)
 
-* [PYTHON SDK](https://github.com/Azure/azure-iot-sdk-python) (A megbízhatóság még nincs implementálva)
+* [PYTHON SDK](https://github.com/Azure/azure-iot-sdk-python) (a megbízhatóság még nincs implementálva)
 
 ## <a name="designing-for-resiliency"></a>Rugalmasságot szem előtt tartó tervezés
 
@@ -77,20 +77,20 @@ A következő lépések leírják az újrapróbálkozási folyamatot a kapcsoló
 
 Az SDK-k három újrapróbálkozási szabályzatot biztosítanak:
 
-* **Exponenciális visszaállítás a vibrálás**után: Ez az alapértelmezett újrapróbálkozási szabályzat általában agresszív, és az idő múlásával lelassul, amíg el nem éri a maximális késleltetést. A terv a [Azure Architecture Center újrapróbálkozási útmutatásán](https://docs.microsoft.com/azure/architecture/best-practices/retry-service-specific)alapul. 
+* **Exponenciális visszakapcsolás a jitter**használatával: ez az alapértelmezett újrapróbálkozási szabályzat általában agresszív, és az idő múlásával lassabban, amíg el nem éri a maximális késleltetést. A terv a [Azure Architecture Center újrapróbálkozási útmutatásán](https://docs.microsoft.com/azure/architecture/best-practices/retry-service-specific)alapul. 
 
-* **Egyéni újrapróbálkozás**: Egyes SDK-nyelveken létrehozhat egy egyéni újrapróbálkozási szabályzatot, amely alkalmasabb a forgatókönyvhöz, majd beilleszti azt a RetryPolicy. Az egyéni újrapróbálkozás nem érhető el a C SDK-ban.
+* **Egyéni újrapróbálkozás**: egyes SDK-nyelvekhez megtervezheti az adott forgatókönyvhöz jobban illeszkedő egyéni újrapróbálkozási szabályzatot, majd beillesztheti azt a RetryPolicy. Az egyéni újrapróbálkozás nem érhető el a C SDK-ban.
 
-* **Nincs újrapróbálkozás**: Megadhatja az újrapróbálkozási szabályzatot "nincs újrapróbálkozás" értékre, ami letiltja az újrapróbálkozási logikát. Az SDK egyszer csatlakozni próbál, és egyszer üzenetet küld, feltéve, hogy a kapcsolat létrejött. Ezt a házirendet jellemzően a sávszélességgel vagy a költségeket érintő helyzetekben használják. Ha ezt a lehetőséget választja, a küldésre képtelen üzenetek elvesznek, és nem állíthatók helyre.
+* **Nincs újrapróbálkozás**: beállíthatja az újrapróbálkozási szabályzatot "nincs újrapróbálkozás" értékre, ami letiltja az újrapróbálkozási logikát. Az SDK egyszer csatlakozni próbál, és egyszer üzenetet küld, feltéve, hogy a kapcsolat létrejött. Ezt a házirendet jellemzően a sávszélességgel vagy a költségeket érintő helyzetekben használják. Ha ezt a lehetőséget választja, a küldésre képtelen üzenetek elvesznek, és nem állíthatók helyre.
 
 ### <a name="retry-policy-apis"></a>Újrapróbálkozási házirend API-k
 
    | SDK | SetRetryPolicy metódus | Szabályzatok implementálása | Implementálási segédlet |
    |-----|----------------------|--|--|
    |  C/iOS  | [IOTHUB_CLIENT_RESULT IoTHubClient_SetRetryPolicy](https://github.com/Azure/azure-iot-sdk-c/blob/2018-05-04/iothub_client/inc/iothub_client.h#L188)        | **Alapértelmezett**: [IOTHUB_CLIENT_RETRY_EXPONENTIAL_BACKOFF](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/connection_and_messaging_reliability.md#connection-retry-policies)<BR>**Egyéni:** elérhető [retryPolicy](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/connection_and_messaging_reliability.md#connection-retry-policies) használata<BR>**Nincs újrapróbálkozás:** [IOTHUB_CLIENT_RETRY_NONE](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/connection_and_messaging_reliability.md#connection-retry-policies)  | [C/iOS-implementáció](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/connection_and_messaging_reliability.md#)  |
-   | Java| [SetRetryPolicy](https://docs.microsoft.com/java/api/com.microsoft.azure.sdk.iot.device.deviceclientconfig.setretrypolicy?view=azure-java-stable)        | **Alapértelmezett**: [ExponentialBackoffWithJitter osztály](https://github.com/Azure/azure-iot-sdk-java/blob/master/device/iot-device-client/src/main/java/com/microsoft/azure/sdk/iot/device/transport/NoRetry.java)<BR>**Egyéni:** [RetryPolicy felület](https://github.com/Azure/azure-iot-sdk-java/blob/master/device/iot-device-client/src/main/java/com/microsoft/azure/sdk/iot/device/transport/RetryPolicy.java) implementálása<BR>**Nincs újrapróbálkozás:** [Nem újrapróbálkozási osztály](https://github.com/Azure/azure-iot-sdk-java/blob/master/device/iot-device-client/src/main/java/com/microsoft/azure/sdk/iot/device/transport/NoRetry.java)  | [Java-implementáció](https://github.com/Azure/azure-iot-sdk-java/blob/master/device/iot-device-client/devdoc/requirement_docs/com/microsoft/azure/iothub/retryPolicy.md) |
-   | .NET| [DeviceClient.SetRetryPolicy](/dotnet/api/microsoft.azure.devices.client.deviceclient.setretrypolicy?view=azure-dotnet) | **Alapértelmezett**: [ExponentialBackoff osztály](/dotnet/api/microsoft.azure.devices.client.exponentialbackoff?view=azure-dotnet)<BR>**Egyéni:** [IRetryPolicy felület](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.iretrypolicy?view=azure-dotnet) implementálása<BR>**Nincs újrapróbálkozás:** [Nem újrapróbálkozási osztály](/dotnet/api/microsoft.azure.devices.client.noretry?view=azure-dotnet) | [C#végrehajtása](https://github.com/Azure/azure-iot-sdk-csharp) | |
-   | Csomópont| [setRetryPolicy](/javascript/api/azure-iot-device/client?view=azure-iot-typescript-latest) | **Alapértelmezett**: [ExponentialBackoffWithJitter osztály](/javascript/api/azure-iot-common/exponentialbackoffwithjitter?view=azure-iot-typescript-latest)<BR>**Egyéni:** [RetryPolicy felület](/javascript/api/azure-iot-common/retrypolicy?view=azure-iot-typescript-latest) implementálása<BR>**Nincs újrapróbálkozás:** [Nem újrapróbálkozási osztály](/javascript/api/azure-iot-common/noretry?view=azure-iot-typescript-latest) | [Csomópont implementációja](https://github.com/Azure/azure-iot-sdk-node/wiki/Connectivity-and-Retries#types-of-errors-and-how-to-detect-them) |
+   | Java| [SetRetryPolicy](https://docs.microsoft.com/java/api/com.microsoft.azure.sdk.iot.device.deviceclientconfig.setretrypolicy?view=azure-java-stable)        | **Alapértelmezett**: [ExponentialBackoffWithJitter osztály](https://github.com/Azure/azure-iot-sdk-java/blob/master/device/iot-device-client/src/main/java/com/microsoft/azure/sdk/iot/device/transport/NoRetry.java)<BR>**Egyéni:** [RetryPolicy felület](https://github.com/Azure/azure-iot-sdk-java/blob/master/device/iot-device-client/src/main/java/com/microsoft/azure/sdk/iot/device/transport/RetryPolicy.java) implementálása<BR>**Nincs újrapróbálkozás: nem** [újrapróbálkozási osztály](https://github.com/Azure/azure-iot-sdk-java/blob/master/device/iot-device-client/src/main/java/com/microsoft/azure/sdk/iot/device/transport/NoRetry.java)  | [Java-implementáció](https://github.com/Azure/azure-iot-sdk-java/blob/master/device/iot-device-client/devdoc/requirement_docs/com/microsoft/azure/iothub/retryPolicy.md) |
+   | .NET| [DeviceClient.SetRetryPolicy](/dotnet/api/microsoft.azure.devices.client.deviceclient.setretrypolicy?view=azure-dotnet) | **Alapértelmezett**: [ExponentialBackoff osztály](/dotnet/api/microsoft.azure.devices.client.exponentialbackoff?view=azure-dotnet)<BR>**Egyéni:** [IRetryPolicy felület](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.iretrypolicy?view=azure-dotnet) implementálása<BR>**Nincs újrapróbálkozás: nem** [újrapróbálkozási osztály](/dotnet/api/microsoft.azure.devices.client.noretry?view=azure-dotnet) | [C#végrehajtása](https://github.com/Azure/azure-iot-sdk-csharp) | |
+   | Csomópont| [setRetryPolicy](/javascript/api/azure-iot-device/client?view=azure-iot-typescript-latest) | **Alapértelmezett**: [ExponentialBackoffWithJitter osztály](/javascript/api/azure-iot-common/exponentialbackoffwithjitter?view=azure-iot-typescript-latest)<BR>**Egyéni:** [RetryPolicy felület](/javascript/api/azure-iot-common/retrypolicy?view=azure-iot-typescript-latest) implementálása<BR>**Nincs újrapróbálkozás: nem** [újrapróbálkozási osztály](/javascript/api/azure-iot-common/noretry?view=azure-iot-typescript-latest) | [Csomópont implementációja](https://github.com/Azure/azure-iot-sdk-node/wiki/Connectivity-and-Retries#types-of-errors-and-how-to-detect-them) |
    | Python| Hamarosan | Hamarosan | Hamarosan
 
 A következő mintakód szemlélteti ezt a folyamatot:
@@ -115,7 +115,7 @@ Ha a szolgáltatás szabályozási hibával válaszol, az újrapróbálkozási s
      TimeSpan.FromSeconds(60), TimeSpan.FromSeconds(5)); SetRetryPolicy(retryPolicy);
    ```
 
-Az újrapróbálkozási mechanizmus `DefaultOperationTimeoutInMilliseconds`a következő után leáll, amely jelenleg 4 percre van beállítva.
+Az újrapróbálkozási mechanizmus `DefaultOperationTimeoutInMilliseconds`után leáll, ami jelenleg 4 percen belül megtörténik.
 
 #### <a name="other-languages-implementation-guidance"></a>Más nyelvek megvalósítási útmutatója
 
@@ -131,7 +131,7 @@ Más nyelveken használható kódok esetében tekintse át a következő impleme
 
 * [Python SDK](https://github.com/Azure/azure-iot-sdk-python)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Eszköz- és szolgáltatásoldali SDK-k használata](./iot-hub-devguide-sdks.md)
 

@@ -1,5 +1,5 @@
 ---
-title: Eszköz-csatlakoztatási események megrendelése az Azure IoT Hub a Azure Cosmos DB használatával | Microsoft Docs
+title: Az eszköz csatlakoztatási eseményeinek megrendelése az Azure IoT Hub w/Azure Cosmos DB
 description: Ez a cikk azt ismerteti, hogyan lehet az Azure-IoT Hub eszköz-kapcsolódási eseményeket megrendelni és rögzíteni Azure Cosmos DB használatával a legújabb kapcsolódási állapot fenntartása érdekében
 services: iot-hub
 ms.service: iot-hub
@@ -7,12 +7,12 @@ author: ash2017
 ms.topic: conceptual
 ms.date: 04/11/2019
 ms.author: asrastog
-ms.openlocfilehash: a020221d841682d1e18d2b728a732ec4dfc35ef3
-ms.sourcegitcommit: 6b41522dae07961f141b0a6a5d46fd1a0c43e6b2
+ms.openlocfilehash: 210c2e74305ba99b4ac3a12625d0b7f5fc47ba43
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67988287"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73954253"
 ---
 # <a name="order-device-connection-events-from-azure-iot-hub-using-azure-cosmos-db"></a>Eszköz-csatlakoztatási események megrendelése az Azure IoT Hub használatával Azure Cosmos DB
 
@@ -26,7 +26,7 @@ A sorozatszám egy hexadecimális szám karakterláncos ábrázolása. A nagyobb
 
 * Aktív Azure Cosmos DB SQL API-fiók. Ha még nem hozott létre egyet, tekintse meg az [adatbázis-fiók létrehozása](../cosmos-db/create-sql-api-java.md#create-a-database-account) bemutatóhoz című témakört.
 
-* Egy gyűjtemény az adatbázisban. Lásd: [gyűjtemény hozzáadása](../cosmos-db/create-sql-api-java.md#add-a-container) egy útmutatóhoz. A gyűjtemény létrehozásakor használja `/id` a () partíciót a partíciós kulcshoz.
+* Egy gyűjtemény az adatbázisban. Lásd: [gyűjtemény hozzáadása](../cosmos-db/create-sql-api-java.md#add-a-container) egy útmutatóhoz. A gyűjtemény létrehozásakor használja a `/id` a partíciós kulcshoz.
 
 * Egy IoT Hub az Azure-ban. Ha még nem hozott létre központot, [az IoT Hub első lépéseit](iot-hub-csharp-csharp-getstarted.md) ismertető cikkben talál útmutatást.
 
@@ -34,7 +34,7 @@ A sorozatszám egy hexadecimális szám karakterláncos ábrázolása. A nagyobb
 
 Először hozzon létre egy tárolt eljárást, és állítsa be úgy, hogy olyan logikát futtasson, amely összehasonlítja a bejövő események sorszámait, és rögzíti a legújabb eseményt egy eszközön az adatbázisban.
 
-1. A Cosmos db SQL API-ban válassza a **adatkezelő** > **elemek** > **új tárolt eljárás**elemet.
+1. A Cosmos DB SQL API-ban válassza a **Adatkezelő** > elemek > **új tárolt eljárás** **elemet** .
 
    ![Tárolt eljárás létrehozása](./media/iot-hub-how-to-order-connection-state-events/create-stored-procedure.png)
 
@@ -200,7 +200,7 @@ A trigger a logikai alkalmazást elindító konkrét esemény. Ebben az oktatóa
 
 A logikai alkalmazás munkafolyamatában a feltételek segítséget nyújtanak bizonyos műveletek futtatásához az adott feltétel átadása után. Ha a feltétel teljesült, meg lehet határozni a kívánt műveletet. Ebben az oktatóanyagban az a feltétel, hogy meggyőződjön arról, hogy az eszköz csatlakoztatva van-e a eventType vagy az eszköz le van-e választva. A művelet a tárolt eljárás végrehajtása lesz az adatbázisban.
 
-1. Válassza az **+ új lépés** , majd **a beépített**elemet, majd keresse meg és válassza ki a feltételt. Kattintson a **válasszon egy értéket** , és megjelenik egy mező, amely megjeleníti a dinamikus tartalmat – a kiválasztható mezőket. Töltse ki a mezőket az alább látható módon, hogy csak a csatlakoztatott eszköz és az eszköz leválasztott eseményeihez hajtsa végre ezt:
+1. Válassza az **+ új lépés** , majd **a beépített**elemet, majd keresse meg és válassza ki a **feltételt**. Kattintson a **válasszon egy értéket** , és megjelenik egy mező, amely megjeleníti a dinamikus tartalmat – a kiválasztható mezőket. Töltse ki a mezőket az alább látható módon, hogy csak a csatlakoztatott eszköz és az eszköz leválasztott eseményeihez hajtsa végre ezt:
 
    * Válasszon egy értéket: **EventType** – válassza ki ezt a dinamikus tartalom mezőiben, amelyek akkor jelennek meg, amikor erre a mezőre kattint.
    * A (z) "egyenlő" értékkel **végződik**.
@@ -218,11 +218,11 @@ A logikai alkalmazás munkafolyamatában a feltételek segítséget nyújtanak b
 
 4. Töltse ki a **cosmosdb-kapcsolatok** **nevet** , és válassza ki a bejegyzést a táblában, majd válassza a **Létrehozás**lehetőséget. Megjelenik a **tárolt eljárás végrehajtása** panel. Adja meg a mezők értékeit:
 
-   **Adatbázis-azonosító**: Teendők
+   **Adatbázis-azonosító**: ToDoList
 
-   **Gyűjtemény azonosítója**: Elemek
+   **Gyűjtemény azonosítója**: elemek
 
-   **SPROC azonosítója**: LatestDeviceConnectionState
+   **Sproc-azonosító**: LatestDeviceConnectionState
 
 5. Válassza az **új paraméter hozzáadása**lehetőséget. A megjelenő legördülő menüben jelölje be a **partíciós kulcs** és paraméterek melletti jelölőnégyzetet **a tárolt eljáráshoz**, majd kattintson a képernyő bárhol máshol elemére. hozzáadja a partíciós kulcs értékét és a tárolt eljárás paramétereinek mezőjét.
 
@@ -264,9 +264,9 @@ Ebben a szakaszban konfiguráljuk az IoT-központot, hogy közzétegye a beköve
 
    ![Új esemény-előfizetés létrehozása](./media/iot-hub-how-to-order-connection-state-events/event-subscription.png)
 
-4. Adja meg az **esemény-előfizetés részleteit**: Adjon meg egy leíró nevet, és válassza ki **Event Grid sémát**.
+4. Adja meg az **esemény-előfizetés részleteit**: adjon meg egy leíró nevet, és válassza ki **Event Grid sémát**.
 
-5. Adja meg az **események típusai** mezőket. A legördülő listában válassza a csak az **eszköz csatlakoztatva** és az **eszköz** leválasztva lehetőséget a menüből. A képernyő bezárásához és a kiválasztott elemek mentéséhez kattintson a képernyőn bárhová máshol.
+5. Adja meg az **események típusai** mezőket. A legördülő listában válassza a csak az **eszköz csatlakoztatva** és az **eszköz leválasztva** lehetőséget a menüből. A képernyő bezárásához és a kiválasztott elemek mentéséhez kattintson a képernyőn bárhová máshol.
 
    ![Keresse meg a keresett eseménytípus típusát](./media/iot-hub-how-to-order-connection-state-events/set-event-types.png)
 
@@ -322,7 +322,7 @@ A következő kimenethez hasonló érték jelenik meg, amely az érzékelő adat
 
    ![Az alkalmazás futtatása](./media/iot-hub-how-to-order-connection-state-events/raspmsg.png)
 
-   Kattintson a **Leállítás** gombra a szimulátor leállításához és az **eszköz** leválasztott eseményének elindításához.
+   Kattintson a **Leállítás** gombra a szimulátor leállításához és az **eszköz leválasztott** eseményének elindításához.
 
 Most futtatott egy minta alkalmazást az érzékelők adatainak összegyűjtéséhez és az IoT hub-ba való küldéséhez.
 
@@ -334,7 +334,7 @@ A végrehajtott tárolt eljárás eredményeit a Cosmos DB dokumentumban tekinth
 
 ## <a name="use-the-azure-cli"></a>Az Azure parancssori felületének használata
 
-A [Azure Portal](https://portal.azure.com)használata helyett a IoT hub lépéseket az Azure CLI használatával hajthatja végre. Részletekért lásd: Azure CLI-lapok az [esemény](https://docs.microsoft.com/cli/azure/eventgrid/event-subscription) -előfizetések létrehozásához és [egy IoT-eszköz létrehozásához](/cli/azure/ext/azure-cli-iot-ext/iot/hub/device-identity#ext-azure-cli-iot-ext-az-iot-hub-device-identity-create).
+A [Azure Portal](https://portal.azure.com)használata helyett a IoT hub lépéseket az Azure CLI használatával hajthatja végre. Részletekért lásd: Azure CLI-lapok az [esemény-előfizetések létrehozásához](https://docs.microsoft.com/cli/azure/eventgrid/event-subscription) és [egy IoT-eszköz létrehozásához](/cli/azure/ext/azure-cli-iot-ext/iot/hub/device-identity#ext-azure-cli-iot-ext-az-iot-hub-device-identity-create).
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
@@ -362,9 +362,9 @@ Ha nem szeretné elveszteni a logikai alkalmazásba fektetett munkáját, a tör
 
 Azure Cosmos DB fióknak a Azure Portalból való eltávolításához kattintson a jobb gombbal a fiók nevére, és kattintson a **fiók törlése**parancsra. [Azure Cosmos db fiók törlésének](https://docs.microsoft.com/azure/cosmos-db/manage-account)részletes utasításait itt tekintheti meg.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-* További információ [IoT hub eseményekre való reagálásról Event Grid használatával a műveletek](../iot-hub/iot-hub-event-grid.md) elindításához
+* További információ [IoT hub eseményekre való reagálásról Event Grid használatával a műveletek elindításához](../iot-hub/iot-hub-event-grid.md)
 
 * [Próbálja ki a IoT Hub Events oktatóanyagot](../event-grid/publish-iot-hub-events-to-logic-apps.md)
 

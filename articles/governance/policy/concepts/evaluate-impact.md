@@ -1,17 +1,14 @@
 ---
 title: Új Azure-házirend hatásának kiértékelése
 description: Ismerkedjen meg a követendő folyamattal, amikor új szabályzatot vezet be az Azure-környezetbe.
-author: DCtheGeek
-ms.author: dacoulte
 ms.date: 09/23/2019
 ms.topic: conceptual
-ms.service: azure-policy
-ms.openlocfilehash: 2aee31d3e874f709d5ec30ed4ddc0ba0445d4130
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: 6c1a3ea764aedec7de5eab1f564176eaafead70b
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71980765"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73959831"
 ---
 # <a name="evaluate-the-impact-of-a-new-azure-policy"></a>Új Azure-házirend hatásának kiértékelése
 
@@ -25,7 +22,7 @@ Az új házirend-definíció érvényesítéséhez ajánlott módszer a követke
 - Meglévő erőforrások naplózása
 - Új vagy frissített erőforrás-kérelmek naplózása
 - A szabályzat üzembe helyezése az erőforrásokon
-- Folyamatos felügyelet
+- Folyamatos monitorozás
 
 ## <a name="tightly-define-your-policy"></a>A szabályzat szigorú meghatározása
 
@@ -37,7 +34,7 @@ Emiatt a házirend-definícióknak szigorúan meghatározottnak kell lenniük, �
 ## <a name="audit-existing-resources"></a>Meglévő erőforrások naplózása
 
 Mielőtt új vagy frissített erőforrásokat szeretne felügyelni az új szabályzat-definícióval, érdemes megtekinteni, hogyan értékeli ki a meglévő erőforrások (például egy tesztelési erőforráscsoport) korlátozott részhalmazát. A szabályzat-hozzárendelésben a [kényszerítési mód](./assignment-structure.md#enforcement-mode)
-_Letiltva_ (DoNotEnforce) használatával megakadályozhatja [, hogy a rendszer](./effects.md) kiváltsa az aktiválási vagy a tevékenység-naplóbejegyzések létrehozását.
+_Letiltva_ (DoNotEnforce) használatával megakadályozhatja [, hogy a rendszer](./effects.md) kiváltsa az aktiválási vagy a tevékenységi naplóbejegyzések létrehozását.
 
 Ez a lépés lehetőséget ad arra, hogy kiértékelje a meglévő erőforrásokra vonatkozó új szabályzat megfelelőségi eredményeit anélkül, hogy ez hatással lenne a munkahelyi folyamatra. Győződjön meg arról, hogy a megfelelő erőforrások nem megfelelőként vannak megjelölve (_hamis pozitív_), és hogy az összes várhatóan meg nem felelő erőforrás helyesen van megjelölve.
 Miután az erőforrások kezdeti részhalmaza ellenőrzi a várt módon, lassan bontsa ki a kiértékelést az összes meglévő erőforrásra.
@@ -69,7 +66,7 @@ A hatókör (szint vagy kizárás) módosításait teljes mértékben ellenőriz
 
 A házirend-definíció megvalósítása és kiosztása nem az utolsó lépés. Folyamatosan figyelheti az erőforrások [megfelelőségi](../how-to/get-compliance-data.md) szintjét az új szabályzat-definícióba, és beállíthatja a megfelelő [Azure monitor riasztásokat és értesítéseket](../../../azure-monitor/platform/alerts-overview.md) a nem megfelelő eszközök azonosításához. Javasoljuk továbbá, hogy a házirend-definíciót és a kapcsolódó hozzárendeléseket ütemezett alapon értékelje ki, hogy ellenőrizze a házirend-definíciót az üzleti szabályzatok és a megfelelőségi igények kielégítése érdekében. Ha már nincs rá szükség, el kell távolítania a házirendeket. A szabályzatoknak időről időre frissíteniük kell a mögöttes Azure-erőforrások alakulását, és hozzá kell adni új tulajdonságokat és képességeket.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A szabályzat- [definíciós struktúra](./definition-structure.md)megismerése.
 - A szabályzat- [hozzárendelési struktúra](./assignment-structure.md)megismerése.

@@ -3,7 +3,7 @@ title: Oktatóanyag – stream-naplók az Azure Event hub-ba | Microsoft Docs
 description: Megtudhatja, hogyan állíthatja be a Azure Active Directory naplók beküldését az Event hubhoz Azure Diagnostics
 services: active-directory
 documentationcenter: ''
-author: cawrites
+author: MarkusVi
 manager: daveba
 editor: ''
 ms.assetid: 045f94b3-6f12-407a-8e9c-ed13ae7b43a3
@@ -14,15 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
 ms.date: 04/18/2019
-ms.author: chadam
+ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b5a790358b0b5c5f301cd53f0cd564a36f66049b
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: eba44252672248b983d7f6e0c843f638e5f73447
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72817501"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74007658"
 ---
 # <a name="tutorial-stream-azure-active-directory-logs-to-an-azure-event-hub"></a>Oktatóanyag: stream Azure Active Directory naplók az Azure Event hub-ba
 
@@ -39,7 +39,7 @@ A szolgáltatás használatához a következőkre lesz szüksége:
 
 ## <a name="stream-logs-to-an-event-hub"></a>Adatfolyam-naplók az Event hub-ba
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com). 
+1. Bejelentkezés az [Azure Portalra](https://portal.azure.com). 
 
 2. Válassza a **Azure Active Directory** > **figyelés** > **naplók**lehetőséget. 
 

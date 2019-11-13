@@ -1,19 +1,16 @@
 ---
 title: Terv létrehozása a portálon
 description: Az Azure tervrajzai használatával összetevőket hozhat létre, határozhat meg és helyezhet üzembe a Azure Portalon keresztül.
-author: DCtheGeek
-ms.author: dacoulte
 ms.date: 03/11/2019
 ms.topic: quickstart
-ms.service: blueprints
-ms.openlocfilehash: f4dc13717b65a53b90a68ac48a2281687c157edf
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: 1c2d619a0383cc9542bc6dc3a5f5822f0477237c
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71978560"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73960453"
 ---
-# <a name="quickstart-define-and-assign-a-blueprint-in-the-portal"></a>Gyors útmutató: Terv meghatározása és hozzárendelése a portálon
+# <a name="quickstart-define-and-assign-a-blueprint-in-the-portal"></a>Rövid útmutató: terv meghatározása és hozzárendelése a portálon
 
 Ha megtudhatja, hogyan hozhat létre és rendelhet hozzá tervrajzokat, meghatározhatja az újrafelhasználható és gyorsan telepíthető konfigurációk fejlesztését Azure Resource Manager sablonok, szabályzatok, biztonság és egyebek alapján. Ebből az oktatóanyagból megtudhatja, hogyan használhatja az Azure-tervezeteket a tervrajzok létrehozásához, közzétételéhez és a szervezeten belüli hozzárendeléséhez kapcsolódó gyakori feladatok elvégzéséhez. Ezek a feladatok a következők:
 
@@ -43,7 +40,7 @@ A megfelelőségi szabványminták definiálásának első lépése, hogy össze
 
 1. A **definíció helye** mezőben válassza ki a jobb oldali három pontot, válassza ki azt a [felügyeleti csoportot](../management-groups/overview.md) vagy előfizetést, ahol a tervet menteni szeretné, majd válassza a **kiválasztás**lehetőséget.
 
-1. Ellenőrizze, hogy helyesek-e az adatok. A **terv neve** és a **definíció helye** mezők később nem módosíthatók. Ezután válassza a **Next: Összetevők @ no__t-0 az oldal alján vagy a lap **tetején található összetevők lapon.**
+1. Ellenőrizze, hogy helyesek-e az adatok. A **terv neve** és a **definíció helye** mezők később nem módosíthatók. Ezután válassza a **Tovább:** összetevők elemet az oldal alján, vagy az **összetevők fület az oldal** tetején.
 
 1. Szerepkör-hozzárendelés hozzáadása az előfizetési szinten:
 
@@ -167,9 +164,9 @@ A [terv létrehozása](#create-a-blueprint)során nem adta meg a leírást, vagy
 
 1. A tervrajzok listájában kattintson a jobb gombbal a korábban létrehozott elemre, majd válassza a **terv szerkesztése**lehetőséget.
 
-1. A **terv leírása**területen adjon meg néhány információt a tervről és az azt alkotó összetevőkről. Ebben az esetben írjon be valami hasonlót: **Ez a terv beállítja a címkézési szabályzatot és a szerepkör-hozzárendelést az előfizetésben, létrehoz egy ResourceGroup, és üzembe helyezi az erőforrás-sablont és a szerepkör-hozzárendelést az adott ResourceGroup.**
+1. A **terv leírása**területen adjon meg néhány információt a tervről és az azt alkotó összetevőkről. Ebben az esetben írja be a következőt: **Ez a terv beállítja a címkézési szabályzatot és a szerepkör-hozzárendelést az előfizetésben, létrehoz egy ResourceGroup, és üzembe helyezi az erőforrás-sablont és a szerepkör-hozzárendelést az adott ResourceGroup.**
 
-1. @No__t kiválasztása – 0Next: Összetevők @ no__t-0 az oldal alján vagy a lap **tetején található összetevők lapon.**
+1. Válassza a **Next (tovább** ) lehetőséget: az oldal alján található összetevők lap vagy az oldal tetején található összetevők lapot.
 
 1. Vegyen fel egy szerepkör-hozzárendelést az erőforráscsoport alá:
 
@@ -246,7 +243,7 @@ A terv közzététele után hozzárendelhető egy előfizetéshez. Rendelje hozz
 
 1. A **felügyelt identitás**területen hagyja meg a **hozzárendelt rendszer**alapértelmezett beállítását.
 
-1. Az előfizetési szint szerepkör-hozzárendeléséhez ** [felhasználói csoport vagy alkalmazás neve]: Közreműködő @ no__t-0, keresés, majd válasszon ki egy felhasználót, alkalmazást vagy csoportot.
+1. A **[Felhasználó, csoport vagy alkalmazás neve] : Közreműködő** előfizetés-szintű szerepkör-hozzárendeléshez keressen meg vagy jelöljön ki egy felhasználót, alkalmazást vagy csoportot.
 
 1. Az előfizetési szint házirendjének hozzárendeléséhez állítsa a **címke nevét** a **CostCenter** értékre, a **címke értékét** pedig a következőre: **ContosoIT**.
 
@@ -256,7 +253,7 @@ A terv közzététele után hozzárendelhető egy előfizetéshez. Rendelje hozz
    > Minden olyan összetevő esetében, amelyet az erőforráscsoport alatt hozzáadott a terv meghatározása során, a rendszer behúzza az összetevőt úgy, hogy az a-vel üzembe helyezni kívánt erőforráscsoporthoz vagy objektumhoz legyen igazítva.
    > Azok az összetevők, amelyek nem rendelkeznek paraméterekkel, vagy nincsenek definiálva paraméterek a hozzárendeléshez, csak a környezetfüggő információkra vannak felsorolva.
 
-1. A Azure Resource Manager sablon **StorageAccount**válassza a **Standard_GRS** lehetőséget a **tárfióktípus** paraméterhez.
+1. A Azure Resource Manager sablon **StorageAccount**válassza a **Standard_GRS** lehetőséget a **tárfióktípus** paraméternél.
 
 1. Olvassa el az oldal alján található információs mezőt, majd válassza a **hozzárendelés**lehetőséget.
 
@@ -297,7 +294,7 @@ Ha már nincs szüksége terv-hozzárendelésre, távolítsa el az előfizetésb
 > A terv törlése ebben a metódusban a kiválasztott terv összes közzétett verzióját is törli.
 > Egyetlen verzió törléséhez nyissa meg a tervet, válassza a **közzétett verziók** lapot, válassza ki a törölni kívánt verziót, majd válassza a **verzió törlése**lehetőséget. Emellett nem törölheti a tervet, amíg a terv definíciójának összes hozzárendelését törölni nem.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Tudnivalók a [tervek életciklusáról](./concepts/lifecycle.md).
 - A [statikus és dinamikus paraméterek](./concepts/parameters.md) használatának elsajátítása.

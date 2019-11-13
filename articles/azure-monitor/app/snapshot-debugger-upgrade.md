@@ -4,52 +4,62 @@ description: Snapshot Debugger frissítése az Azure App Services legújabb verz
 ms.service: azure-monitor
 ms.subservice: application-insights
 ms.topic: conceptual
-author: MarioHewardt
-ms.author: marioh
+author: pharring
+ms.author: pharring
 ms.date: 03/28/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: e2b21b7cbb6b04da0c93e73c0cacb8a05c338bde
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 51642dde3de16f2bed3ca247e573237effb30917
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72899839"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73936027"
 ---
 # <a name="upgrading-the-snapshot-debugger"></a>A Snapshot Debugger frissítése
 
-Az adatok lehető legjobb biztonságának biztosítása érdekében a Microsoft elmozdul a TLS 1,0 és a TLS 1,1 rendszertől, amelyek kimutatták, hogy sebezhetőek voltak a meghatározott támadók számára. Ha a hely bővítmény egy régebbi verzióját használja, akkor a működés folytatásához frissítésre van szükség. Ez a dokumentum a Snapshot Debugger legújabb verzióra való frissítéséhez szükséges lépéseket ismerteti. Ha engedélyezte a Snapshot Debuggert a hely kiterjesztése alapján, vagy ha az alkalmazáshoz hozzáadott SDK/Nuget használta, két elsődleges frissítési útvonal van. A frissítési útvonalakat az alábbiakban tárgyaljuk. 
+Az adatok lehető legjobb biztonságának biztosítása érdekében a Microsoft elmozdul a TLS 1,0 és a TLS 1,1 rendszertől, amelyek kimutatták, hogy sebezhetőek voltak a meghatározott támadók számára. Ha a hely bővítményének egy régebbi verzióját használja, akkor a működés folytatásához frissítés szükséges. Ez a dokumentum a Snapshot Debugger legújabb verzióra való frissítéséhez szükséges lépéseket ismerteti. Ha engedélyezte a Snapshot Debuggert a hely kiterjesztése alapján, vagy ha az alkalmazáshoz hozzáadott SDK/Nuget használta, két elsődleges frissítési útvonal van. A frissítési útvonalakat az alábbiakban tárgyaljuk. 
 
 ## <a name="upgrading-the-site-extension"></a>A hely kiterjesztésének frissítése
 
-Ha engedélyezte a pillanatkép-hibakeresőt a hely bővítmény használatával, a következő eljárással könnyedén frissítheti:
+> [!IMPORTANT]
+> A Application Insights régebbi verziói a _Azure App Service Application Insights bővítményét_használták a Private site bővítménnyel. Az aktuális Application Insights-élmény engedélyezve van az Alkalmazásbeállítások megadásával egy előre telepített hely bővítményének megvilágításához.
+> Az ütközések elkerülése érdekében, ami miatt előfordulhat, hogy a hely működése leáll, fontos, hogy először törölje a Private site bővítményt. Lásd az alábbi 4. lépést.
+
+Ha engedélyezte a pillanatkép-hibakeresőt a hely bővítménnyel, a következő eljárással frissítheti az alkalmazást:
 
 1. Jelentkezzen be az Azure portálra.
 2. Navigáljon az erőforráshoz, amelyen engedélyezve van a Application Insights és a Snapshot Debugger. Egy webalkalmazás esetében például navigáljon a App Service erőforráshoz:
 
    ![Képernyőkép a DiagService01 nevű egyéni App Service erőforrásról](./media/snapshot-debugger-upgrade/app-service-resource.png)
 
-3. Miután megtörtént az erőforráshoz való navigálása, kattintson Application Insights az Áttekintés panelen:
+3. Miután megnyitotta az erőforrást, kattintson a bővítmények panelre, és várjon, amíg a bővítmények listája fel nem töltődik:
+
+   ![Képernyőkép App Service-bővítményekről, amelyek a Azure App Service telepített Application Insights bővítményét mutatják](./media/snapshot-debugger-upgrade/application-insights-site-extension-to-be-deleted.png)
+
+4. Ha a _Azure App Service Application Insights-bővítmény_ bármely verziója telepítve van, válassza ki, majd kattintson a Törlés gombra. Erősítse meg az **Igen** gombot a bővítmény törléséhez, és várjon, amíg a törlés befejeződik a következő lépésre való áttérés előtt.
+
+   ![Képernyőkép App Service-bővítményekről, amelyek a Azure App Service Application Insights bővítményét jelenítik meg a törlés gomb kiemelésével](./media/snapshot-debugger-upgrade/application-insights-site-extension-delete.png)
+
+5. Lépjen az erőforrás áttekintés paneljére, és kattintson a Application Insights:
 
    ![Képernyőfelvétel három gombról. Application Insights nevű középső gomb van kiválasztva](./media/snapshot-debugger-upgrade/application-insights-button.png)
 
-4. Ekkor megnyílik egy új panel a jelenlegi beállításokkal. Hacsak nem szeretné módosítani a beállításokat, meghagyhatja őket. A panel alján található **Apply (alkalmaz** ) gomb alapértelmezés szerint nincs engedélyezve, és a gomb aktiválásához be kell váltania az egyik beállítást. Nem kell módosítania az aktuális beállításokat, hanem módosíthatja a beállítást, majd azonnal visszaállíthatja azt. Javasoljuk, hogy állítsa be a Profiler-beállítást, majd válassza az **alkalmaz**lehetőséget.
+6. Ha első alkalommal tekinti meg a App Service Application Insights paneljét, a rendszer felszólítja, hogy kapcsolja be Application Insights. Jelölje be **a Application Insights bekapcsolása**elemet.
+ 
+   ![Képernyőfelvétel: a Application Insights panel első idejű élménye, a bekapcsolás Application Insights gomb kiemelve](./media/snapshot-debugger-upgrade/turn-on-application-insights.png)
+
+7. Megjelenik az aktuális Application Insights beállítások. Hacsak nem szeretné módosítani a beállításokat, meghagyhatja őket. A panel alján található **Apply (alkalmaz** ) gomb alapértelmezés szerint nincs engedélyezve, és az egyik beállítást be kell váltania a gomb aktiválásához. Nem kell módosítania az aktuális beállításokat, hanem módosíthatja a beállítást, majd azonnal visszaállíthatja azt. Javasoljuk, hogy állítsa be a Profiler-beállítást, majd válassza az **alkalmaz**lehetőséget.
 
    ![Képernyőkép a Application Insights App Service konfigurációs oldaláról a piros színnel jelölt Apply (alkalmaz) gombbal](./media/snapshot-debugger-upgrade/view-application-insights-data.png)
 
-5. Miután rákattintott az **alkalmaz**gombra, a rendszer megkéri, hogy erősítse meg a módosításokat.
+8. Miután rákattintott az **alkalmaz**gombra, a rendszer megkéri, hogy erősítse meg a módosításokat.
 
     > [!NOTE]
     > A rendszer a frissítési folyamat részeként újraindítja a helyet.
 
    ![Képernyőfelvétel: App Service alkalmazás-figyelési kérése. A szövegmező üzenet jelenik meg: "mostantól alkalmazjuk az Alkalmazásbeállítások módosításait, és a Application Insights erőforrás a webalkalmazáshoz való összekapcsolására szolgáló eszközöket telepítjük. Ekkor a rendszer újraindítja a helyet. Folytatja? "](./media/snapshot-debugger-upgrade/apply-monitoring-settings.png)
 
-6. A módosítások alkalmazásához kattintson az **Igen** gombra. A folyamat során egy értesítés jelenik meg, amely bemutatja, hogy a módosítások érvénybe lépnek:
-
-   ![Képernyőkép a módosítások alkalmazása – bővítmények frissítése üzenet, amely megjelenik a jobb felső sarokban](./media/snapshot-debugger-upgrade/updating-extensions.png)
-
-Ha elkészült, a rendszer a **"módosítások alkalmazása"** értesítést jeleníti meg.
-
-   ![A módosítások érvénybe lépését jelző üzenet képernyőképe](./media/snapshot-debugger-upgrade/changes-are-applied.png)
+9. A módosítások alkalmazásához kattintson az **Igen** gombra, és várjon, amíg a folyamat befejeződik.
 
 A hely már frissítve lett, és készen áll a használatra.
 

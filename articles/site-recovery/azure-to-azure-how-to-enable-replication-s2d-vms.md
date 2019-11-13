@@ -1,6 +1,6 @@
 ---
-title: A replikáció konfigurálása a közvetlen tárolóhelyek (S2d) virtuális gépek az Azure Site Recovery |} A Microsoft Docs
-description: Ez a cikk ismerteti a konfigurálása az S2D-t, hogy egy Azure-régióból a másikba a Site Recovery használatával a virtuális gépek replikációját.
+title: Közvetlen tárolóhelyek-t futtató Azure-beli virtuális gépek replikálása Azure Site Recovery használatával
+description: Ez a cikk azt ismerteti, hogyan replikálhat Közvetlen tárolóhelyek rendszert futtató Azure-beli virtuális gépeket Azure Site Recovery használatával.
 services: site-recovery
 author: asgang
 manager: rochakm
@@ -8,93 +8,93 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 01/29/2019
 ms.author: asgang
-ms.openlocfilehash: 6c639d4503b170660abed5767e3571c8a2bf24b9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 25ac7fa577aa33eda036c0f8544cc5ab03b12cd7
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60790300"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73954465"
 ---
-# <a name="replicate-azure-virtual-machines-using-storage-spaces-direct-to-another-azure-region"></a>Az Azure virtuális gépek replikálása egy másik Azure-régióba közvetlen tárolás használatával
+# <a name="replicate-azure-vms-running-storage-spaces-direct-to-another-region"></a>Közvetlen tárolóhelyek-t futtató Azure-beli virtuális gépek replikálása egy másik régióba
 
-Ez a cikk bemutatja, hogyan vészhelyreállítása az Azure virtuális gépeken futó közvetlen tárolóhelyek engedélyezése.
+Ez a cikk azt ismerteti, hogyan engedélyezhető a közvetlen tárolóhelyeket futtató Azure-beli virtuális gépek vész-helyreállítási folyamata.
 
 >[!NOTE]
->Csak összeomlás-konzisztens helyreállítási pontok storage spaces közvetlen fürtök esetében támogatottak.
+>A közvetlen tárolóhelyek fürtök esetében csak az összeomlás-konzisztens helyreállítási pontok támogatottak.
 >
 
 ## <a name="introduction"></a>Bevezetés 
-[A közvetlen tárolóhelyek (S2D)](https://docs.microsoft.com/windows-server/storage/storage-spaces/deploy-storage-spaces-direct) van egy szoftveresen definiált tárolást, amely lehetővé teszi a létrehozása [vendégfürtök](https://blogs.msdn.microsoft.com/clustering/2017/02/14/deploying-an-iaas-vm-guest-clusters-in-microsoft-azure) az Azure-ban.  Egy vendégfürt Microsoft Azure-ban egy feladatátvevő fürt IaaS virtuális gépek áll. Lehetővé teszi a üzemeltetett virtuális gépek számítási feladatait átadja a feladatokat jövedelmezőbb munkát tesznek lehetővé a magasabb rendelkezésre állási SLA alkalmazásokhoz, mint egy Azure virtuális Gépen is biztosít a vendégfürtök között. Ez hasznos forgatókönyvekben, ahol egy kritikus fontosságú alkalmazást üzemeltető VM, például az SQL vagy a méretezési csoport kibővíthető fájlkiszolgálók stb.
+A [közvetlen tárolóhelyek (S2D)](https://docs.microsoft.com/windows-server/storage/storage-spaces/deploy-storage-spaces-direct) egy szoftveresen definiált tároló, amely lehetővé teszi a [vendég fürtök](https://blogs.msdn.microsoft.com/clustering/2017/02/14/deploying-an-iaas-vm-guest-clusters-in-microsoft-azure) létrehozását az Azure-ban.  Microsoft Azure egy IaaS virtuális gépekből álló feladatátvevő fürt. Lehetővé teszi az üzemeltetett virtuális gépek számítási feladatait, hogy az Azure-beli virtuális gépek által biztosított alkalmazások számára magasabb rendelkezésre állási SLA-t adjanak át a fürtön. Olyan helyzetekben hasznos, amikor olyan virtuális gépet üzemeltet, amely egy kritikus alkalmazást (például SQL vagy kibővíthető fájlkiszolgáló stb.) futtat.
 
-## <a name="disaster-recovery-of-azure-virtual-machines-using-storage-spaces-direct"></a>Katasztrófa utáni helyreállítás az Azure Virtual Machines használatával a közvetlen tárolóhelyek
-Egy tipikus forgatókönyv szükség lehet a virtuális gépek vendégfürt az Azure-ban az alkalmazás, például a méretezési csoport a kibővíthető fájlkiszolgálók nagyobb rugalmasság. Ez az alkalmazás magasabb rendelkezésre állást biztosíthat, miközben, ezeket az alkalmazásokat bármelyik régióban szolgáltatói hiba a Site Recovery használatával védeni szeretné. A Site Recovery egy adott régióban található, egy másik Azure-régióba replikálja az adatokat, és a fürt egy feladatátvételi esemény a vészhelyreállítási régióban lévő kimenetei.
+## <a name="disaster-recovery-of-azure-virtual-machines-using-storage-spaces-direct"></a>Az Azure Virtual Machines vész-helyreállítási szolgáltatása a közvetlen tárolóhelyek használatával
+Tipikus esetben előfordulhat, hogy a Virtual Machines Guest cluster az Azure-ban nagyobb rugalmasságot biztosít az alkalmazáshoz, például a kibővíthető fájlkiszolgáló számára. Habár ez magasabb rendelkezésre állást biztosíthat az alkalmazás számára, a Site Recovery bármely régióval kapcsolatos meghibásodás esetén el szeretné látni ezeket az alkalmazásokat. Site Recovery replikálja az adott régió adatait egy másik Azure-régióba, és a feladatátvételi esemény során felveszi a fürtöt a vész-helyreállítási régióban.
 
-Alábbi diagram bemutatja a képi formában jeleníti meg két tároló használata Azure virtuális gépek feladatátvevő fürtre a közvetlen tárolóhelyek szolgáltatással.
+Az alábbi ábra a közvetlen tárolóhelyek szolgáltatással két Azure-beli virtuális gép feladatátvevő fürt képi ábrázolását mutatja be.
 
 ![storagespacesdirect](./media/azure-to-azure-how-to-enable-replication-s2d-vms/storagespacedirect.png)
 
  
-- Windows feladatátvevő fürt két Azure-beli virtuális gépek és virtuális gépenként van két vagy több adatlemezt.
-- S2D szinkronizálja az adatokat lemezen lévő adatokat, és megadja a szinkronizált tároló-tárolókészletként.
-- A tárolókészlet mutat be, mint a feladatátvevő fürt fürt megosztott kötete (CSV).
-- A feladatátvevő fürt az adatmeghajtók a CSV-t használja.
+- Két Azure-beli virtuális gép egy Windows feladatátvevő fürtben, és mindegyik virtuális gép két vagy több adatlemezzel rendelkezik.
+- A S2D szinkronizálja az adatokat az adatlemezen, és a szinkronizált tárolót tárolóként jeleníti meg.
+- A Storage-készlet fürt megosztott kötete (CSV) segítségével a feladatátvevő fürtben található.
+- A feladatátvevő fürt az adatmeghajtók CSV-fájlját használja.
 
-**Vészhelyreállítási szempontok**
+**Vész-helyreállítási megfontolások**
 
-1. Amikor állítja be az [felhőbeli tanúsító](https://docs.microsoft.com/windows-server/failover-clustering/deploy-cloud-witness#CloudWitnessSetUp) a fürt folyamatosan tanúsító vész-helyreállítási régióban.
-2. Ha a feladatátvételt a virtuális gépek a Vészhelyreállítási régióban, amely eltér a forrásrégióban lévő alhálózathoz fog majd IP-címet kell lehet módosítani a feladatátvételt követően.  IP-címét kell használnia az ASR a fürt módosítása [helyreállítási terv szkriptet.](https://docs.microsoft.com/azure/site-recovery/site-recovery-runbook-automation)</br>
-[Mintaparancsfájl](https://github.com/krnese/azure-quickstart-templates/blob/master/asr-automation-recovery/scripts/ASR-Wordpress-ChangeMysqlConfig.ps1) végrehajtja a parancsot használja az egyéni szkriptek futtatására szolgáló bővítmény virtuális gépen 
+1. Ha [Felhőbeli tanúsító](https://docs.microsoft.com/windows-server/failover-clustering/deploy-cloud-witness#CloudWitnessSetUp) állít be a fürthöz, tartsa meg a tanút a vész-helyreállítási régióban.
+2. Ha átadja a virtuális gépeket az alhálózatra a DR régióban, amely eltér a forrás régiójától, akkor a fürt IP-címét a feladatátvétel után módosítani kell.  A fürt IP-címének módosításához az ASR [helyreállítási terv parancsfájlját](https://docs.microsoft.com/azure/site-recovery/site-recovery-runbook-automation) kell használnia.</br>
+[Parancsfájl](https://github.com/krnese/azure-quickstart-templates/blob/master/asr-automation-recovery/scripts/ASR-Wordpress-ChangeMysqlConfig.ps1) a virtuális gépen belüli parancs végrehajtásához az egyéni szkriptek bővítményével 
 
-### <a name="enabling-site-recovery-for-s2d-cluster"></a>A Site Recovery engedélyezi az S2D-fürt:
+### <a name="enabling-site-recovery-for-s2d-cluster"></a>Site Recovery engedélyezése a S2D-fürthöz:
 
-1. Belül a recovery services-tároló, kattintson a "+ replikálása"
-1. Választhatja ki a fürt összes csomópontját, és azokat az része egy [több virtuális gépre kiterjedő konzisztencia csoport](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-common-questions#multi-vm-consistency)
-1. Válassza ki a replikációs házirend az alkalmazáskonzisztencia ki * (csak az összeomlási konzisztencia támogatás érhető el)
-1. A replikáció engedélyezése
+1. A Recovery Services-tárolón belül kattintson a "+ replikálás" elemre.
+1. Válassza ki a fürt összes csomópontját, és tegye őket egy [több virtuális gépre kiterjedő konzisztencia-csoportba](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-common-questions#multi-vm-consistency) .
+1. Válassza ki a replikációs házirendet az alkalmazás konzisztenciája lehetőséggel * (csak összeomlási konzisztencia-támogatás érhető el)
+1. Replikáció engedélyezése
 
-   ![storagespacesdirect védelme](./media/azure-to-azure-how-to-enable-replication-s2d-vms/multivmgroup.png)
+   ![storagespacesdirect-védelem](./media/azure-to-azure-how-to-enable-replication-s2d-vms/multivmgroup.png)
 
-2. Nyissa meg a replikált elemek, és láthatja, hogy a virtuális gép állapotát. 
-3. A virtuális gépek első védettek, és több virtuális gépre kiterjedő konzisztencia csoport részeként is látható.
+2. Nyissa meg a replikált elemeket, és láthatja a virtuális gép állapotát is. 
+3. A virtuális gépek védelme is megtörténik, és a több virtuális GÉPRE kiterjedő konzisztencia-csoport részeként is megjelenik.
 
-   ![storagespacesdirect védelme](./media/azure-to-azure-how-to-enable-replication-s2d-vms/storagespacesdirectgroup.PNG)
+   ![storagespacesdirect-védelem](./media/azure-to-azure-how-to-enable-replication-s2d-vms/storagespacesdirectgroup.PNG)
 
 ## <a name="creating-a-recovery-plan"></a>Helyreállítási terv létrehozása
-A helyreállítási terv támogatja az alkalmazás-előkészítés különböző rétegek egy többrétegű alkalmazást, a feladatátvétel alatt. Alkalmazás-előkészítés segít fenntartani a konzisztenciát alkalmazás. Amikor létrehoz egy helyreállítási terv többszintű webalkalmazások, teljes körű lépéseket ismertetett [helyreállítási terv létrehozása a Site Recovery használatával](site-recovery-create-recovery-plans.md).
+A helyreállítási terv a feladatátvétel során a többrétegű alkalmazások különböző szintjeinek sorrendjét támogatja. Az előkészítés segíti az alkalmazások konzisztenciájának fenntartását. Ha többrétegű webalkalmazáshoz hoz létre helyreállítási tervet, hajtsa végre a [helyreállítási terv létrehozása a site Recovery használatával](site-recovery-create-recovery-plans.md)című témakörben ismertetett lépéseket.
 
-### <a name="adding-virtual-machines-to-failover-groups"></a>Virtuális gépek feladatátvételi csoportok felvétele
+### <a name="adding-virtual-machines-to-failover-groups"></a>Virtuális gépek hozzáadása a feladatátvételi csoportokhoz
 
-1.  A helyreállítási terv létrehozásához adja meg a virtuális gépeket.
-2.  Kattintson a "Testreszabás" gombra a virtuális gépek csoportosítása. Alapértelmezés szerint minden virtuális gép a csoport "% 1" részét képezik.
+1.  Hozzon létre egy helyreállítási tervet a virtuális gépek hozzáadásával.
+2.  A virtuális gépek csoportosításához kattintson a "Testreszabás" elemre. Alapértelmezés szerint az összes virtuális gép az "1. csoport" részét képezi.
 
 
-### <a name="add-scripts-to-the-recovery-plan"></a>A helyreállítási tervbe szkriptek hozzáadása
-Az alkalmazások megfelelő működéséhez szükség lehet néhány művelet az Azure-beli virtuális gépeken ehhez a feladatátvétel után, vagy tesztcélú feladatátvétel alatt. Egyes feladatátvétel utáni műveletek automatizálható. Például Itt azt terheléselosztó csatolni, és módosítása a fürt IP-címe.
+### <a name="add-scripts-to-the-recovery-plan"></a>Parancsfájlok hozzáadása a helyreállítási tervhez
+Ahhoz, hogy alkalmazásai megfelelően működjenek, előfordulhat, hogy az Azure-beli virtuális gépeken műveleteket kell végrehajtania a feladatátvételt követően vagy feladatátvételi teszt során. Automatizálhat néhány feladatátvétel utáni műveletet. Például itt csatoljuk a terheléselosztó, és megváltoztatja a fürt IP-címét.
 
 
 ### <a name="failover-of-the-virtual-machines"></a>A virtuális gépek feladatátvétele 
-A használatával feladatátvételt kell mind a csomópontok a virtuális gépek a [ASR-helyreállítási terv](https://docs.microsoft.com/azure/site-recovery/site-recovery-create-recovery-plans) 
+A virtuális gépek csomópontjainak az [ASR helyreállítási terv](https://docs.microsoft.com/azure/site-recovery/site-recovery-create-recovery-plans) használatával kell átadniuk a feladatátvételt 
 
-![storagespacesdirect védelme](./media/azure-to-azure-how-to-enable-replication-s2d-vms/recoveryplan.PNG)
+![storagespacesdirect-védelem](./media/azure-to-azure-how-to-enable-replication-s2d-vms/recoveryplan.PNG)
 
 ## <a name="run-a-test-failover"></a>Feladatátvételi teszt futtatása
-1.  Az Azure Portalon válassza ki a helyreállítási tárban.
+1.  A Azure Portal válassza ki a Recovery Services-tárolót.
 2.  Válassza ki a létrehozott helyreállítási tervet.
 3.  Kattintson a **Feladatátvétel tesztelése** elemre.
-4.  A teszt feladatátvételi folyamat indításához válassza ki a helyreállítási pont és az Azure virtuális hálózat.
-5.  A másodlagos környezet esetén hajtsa végre az ellenőrzések.
-6.  Ha ellenőrzés befejeződött, tisztítsa meg a feladatátvételi környezet válassza **feladatátvételi teszt utáni karbantartás**.
+4.  A feladatátvételi teszt folyamatának elindításához válassza ki a helyreállítási pontot és az Azure-beli virtuális hálózatot.
+5.  Ha a másodlagos környezet működik, végezze el az érvényesítést.
+6.  Az érvényesítések befejezése után a feladatátvételi környezet tisztításához válassza a **feladatátvételi teszt**lehetőséget.
 
-További információkért lásd: [az Azure-bA a Site Recovery feladatátvételi teszt](site-recovery-test-failover-to-azure.md).
+További információ: a [feladatátvétel tesztelése az Azure-ban site Recovery](site-recovery-test-failover-to-azure.md).
 
 ## <a name="run-a-failover"></a>Feladatátvétel futtatása
 
-1.  Az Azure Portalon válassza ki a helyreállítási tárban.
-2.  Válassza ki a helyreállítási tervet, amelyet létrehozott SAP-alkalmazások.
+1.  A Azure Portal válassza ki a Recovery Services-tárolót.
+2.  Válassza ki az SAP-alkalmazásokhoz létrehozott helyreállítási tervet.
 3.  Válassza a **Feladatátvétel** lehetőséget.
-4.  A feladatátvételi folyamat indításához válassza ki a helyreállítási pontot.
+4.  A feladatátvételi folyamat elindításához válassza ki a helyreállítási pontot.
 
-További információkért lásd: [feladatátvétel a Site Recoveryben](site-recovery-failover.md).
-## <a name="next-steps"></a>További lépések
+További információ: [feladatátvétel site Recoveryban](site-recovery-failover.md).
+## <a name="next-steps"></a>Következő lépések
 
-[További](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-failover-failback) feladat-visszavétel futtatása.
+[További](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-failover-failback) információ a feladat-visszavétel futtatásáról.

@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: cherylmc
-ms.openlocfilehash: 4e3276e6cde254daf2299f33d8b5ed9f54985327
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 340ff6d9b112f4ff04950499b2708d8882fa6120
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73517656"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73960630"
 ---
 # <a name="about-p2s-vpn-client-profiles"></a>Tudnivalók a P2S VPN-ügyfél profiljairól
 
@@ -34,7 +34,7 @@ Csomagolja ki a tömörített fájlt. A fájl a következő mappákat tartalmazz
 
 * AzureVPN
 * Általános
-* OpenVPN
+* OpenVPN (ha engedélyezte az OpenVPN-és Azure AD-hitelesítési beállításokat az átjárón. Lásd: [bérlő létrehozása](openvpn-azure-ad-tenant.md).)
 
 ## <a name="3-retrieve-information"></a>3. adatok lekérése
 
@@ -66,6 +66,6 @@ Kapcsolat hozzáadásakor használja az előző lépésben összegyűjtött adat
 
 * Előfordulhat, hogy a letöltött zip-fájl **WindowsAmd64** és **WindowsX86** mappákat is tartalmaz. Ezek a mappák tartalmazzák az SSTP és a IKEv2 Windows-ügyfelekhez készült telepítőjét. A telepítéshez rendszergazdai jogosultságok szükségesek az ügyfélen.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a pont – hely kapcsolatról: [Tudnivalók a pont – hely](point-to-site-about.md)kapcsolatról.

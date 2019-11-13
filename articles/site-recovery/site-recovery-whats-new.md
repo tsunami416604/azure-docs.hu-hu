@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/31/2019
 ms.author: raynew
-ms.openlocfilehash: 54416faa9140cf6e7c7c471e4b4c62db5f6f079b
-ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
+ms.openlocfilehash: 19bf79cdb6bcdc0c20d47c698647383b758338db
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73242943"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73961321"
 ---
 # <a name="whats-new-in-site-recovery"></a>A Site Recovery újdonságai
 
@@ -20,19 +20,6 @@ A [Azure site Recovery](site-recovery-overview.md) szolgáltatás folyamatosan f
 
 Az [Azure](https://azure.microsoft.com/updates/?product=site-recovery) Updates csatornán követheti és előfizethet site Recovery frissítési értesítéseire.
 
-## <a name="update-to-servicing-stack-updatesha-2"></a>Frissítés a karbantartási verem frissítéséhez/SHA-2
-
-Ha az Azure-beli virtuális gépeket másodlagos régióba vagy helyszíni VMware virtuális gépekre vagy fizikai kiszolgálókra szeretné helyreállítani az Azure-ba, vegye figyelembe a következőket:
-
-- A mobilitási szolgáltatás bővítményének (Azure-beli virtuális gépek esetén) és a mobilitási szolgáltatás ügynökének (VMware/fizikai gépek esetén) a 9.30. x. x verziójáról (a várt kiadás november 2019.), egyes gépek operációs rendszereinek a karbantartási verem frissítését és az SHA-2-t kell futtatniuk. A részletek az alábbi táblázatban láthatók.
-- Telepítse a frissítést és az SHA-2-et a csatolt KB-nak megfelelően. Az SHA-1 nem támogatott szeptember 2019-tól, és ha az SHA-2 kód aláírása nincs engedélyezve, az ügynök bővítmény nem a várt módon fog települni/frissíteni.
-- További információ az [SHA-2 frissítésről és a követelményekről](https://aka.ms/SHA-2KB).
-
-**Operációs rendszer** | **Azure virtuális gép** | **VMware VM/fizikai gép**
---- | --- | ---
-**Windows 2008 R2 SP1** | [Karbantartási verem frissítése](https://support.microsoft.com/help/4490628)<br/> [SHA-2](https://support.microsoft.com/help/4474419)| [Karbantartási verem frissítése](https://support.microsoft.com/help/4490628)<br/> [SHA-2](https://support.microsoft.com/help/4474419)
-**Windows 2008 SP2** | [Karbantartási verem frissítése](https://support.microsoft.com/help/4493730)<br/> [SHA-2](https://support.microsoft.com/help/4474419)| [Karbantartási verem frissítése](https://support.microsoft.com/help/4493730)<br/> [SHA-2](https://support.microsoft.com/help/4474419)
-**Windows 7 SP1** | [Karbantartási verem frissítése](https://support.microsoft.com/help/4490628)<br/> [SHA-2](https://support.microsoft.com/help/4474419)| [Karbantartási verem frissítése](https://support.microsoft.com/help/4490628)<br/> [SHA-2](https://support.microsoft.com/help/4474419).
 
 
 ## <a name="supported-updates"></a>Támogatott frissítések
@@ -41,14 +28,61 @@ Site Recovery-összetevők esetében az N-4 verziót támogatjuk, ahol N a legú
 
 **Update** |  **Egyesített beállítás** | **Konfigurációs kiszolgáló petesejtjei** | **Mobilitási szolgáltatás ügynöke** | **Site Recovery szolgáltató** | **Recovery Services ügynök**
 --- | --- | --- | --- | --- | ---
-[41-es összesítés](https://support.microsoft.com/help/4528026/update-rollup-41-for-azure-site-recovery) | 9.29.5367.1 | 5.15000.0 | 9.29.5367.1 | 5.15000.0 | 2.0.9165.0
+[42-es összesítés](https://support.microsoft.com/help/4531426/) | 9.30.5407.1 | 5.1.5200.0 | 9.30.5407.1 | 5.1.5200.0 | 2.0.9165.0
+[41-es összesítés](https://support.microsoft.com/help/4528026/) | 9.29.5367.1 | 5.1.5000.0 | 9.29.5367.1 | 5.1.5000.0 | 2.0.9165.0
 [40-es összesítés](https://support.microsoft.com/help/4521530/) | 9.28.5345.1 | 5.1.4800.0 | 9.28.5345.1 | 5.1.4800.0 | 2.0.9165.0
 [39-es összesítés](https://support.microsoft.com/help/4517283/) | 9.27.5308.1 | 5.1.4600.0 | 9.27.5308.1 | 5.1.4600.0 | 2.0.9165.0
 [38-es összesítés](https://support.microsoft.com/help/4513507/) | 9.26.5269.1 | 5.1.4500.0 | 9.26.5269.1 | 5.1.4500.0 | 2.0.9165.0
-[37-es összesítés](https://support.microsoft.com/help/4508614/) | 9.25.5241.1 | 5.1.4300.0 | 9.25.5241.1 | 5.1.4300.0 | 2.0.9163.0
         
 
 [További](service-updates-how-to.md) információ a frissítések telepítéséről és támogatásáról.
+
+
+## <a name="updates-november-2019"></a>Frissítések (november 2019)
+
+### <a name="update-rollup-42"></a>42-es kumulatív frissítés
+
+A 42-es [kumulatív frissítés](https://support.microsoft.com/help/4531426/update-rollup-42-for-azure-site-recovery) a következő frissítéseket tartalmazza.
+
+**Update** | **Részletek**
+--- | ---
+**Szolgáltatók és ügynökök** | Site Recovery ügynökök és szolgáltatók frissítései (a kumulatív részletezéssel)
+**Hibajavítások/javítások** | Számos javítás és javítás (az összesítésben részletezett módon)
+
+
+## <a name="azure-vm-disaster-recovery"></a>Azure-beli virtuális gép vész-helyreállítási
+
+Az Azure-beli virtuális gép vész-helyreállításának új funkciói a táblázatban vannak összegezve.
+
+**Funkció** | **Részletek**
+--- | ---
+**UEFI** | A Site Recovery mostantól támogatja az UEFI-alapú rendszerindítási architektúrával rendelkező Azure-beli virtuális gépek vész-helyreállítását.
+**Linux** | A Site Recovery mostantól támogatja a Linux rendszerű Azure-beli virtuális gépeket Azure Disk Encryption (ADE).
+**2. generáció** | Az összes 2. generációs Azure-beli virtuális gép mostantól a vész-helyreállítást is támogatja.
+**Régiók** | Mostantól engedélyezheti az Azure-beli virtuális gépek vész-helyreállítását a norvégiai geo-ben.
+
+### <a name="vmware-to-azure-disaster-recovery"></a>Vészhelyreállítás VMware-ről Azure-ba
+
+A VMware – Azure vész-helyreállítás új funkciói a táblázatban vannak összegezve.
+
+**Funkció** | **Részletek**
+--- | ---
+**UEFI** | Site Recovery mostantól támogatja az UEFI-alapú rendszerindítási architektúrával rendelkező VMware virtuális gépek vész-helyreállítását.<br/><br/> A támogatott operációs rendszerek közé tartozik a Windows Server 2019, a Windows Server 2016, a Windows Server 2012 R2, a Windows Server 2012, a SLES 12 SP4, a RHEL 8.
+
+## <a name="update-to-servicing-stack-updatesha-2"></a>Frissítés a karbantartási verem frissítéséhez/SHA-2
+
+Ha az Azure-beli virtuális gépeket másodlagos régióba vagy helyszíni VMware virtuális gépekre vagy fizikai kiszolgálókra szeretné helyreállítani az Azure-ba, vegye figyelembe a következőket:
+
+- A mobilitási szolgáltatás bővítményének (Azure-beli virtuális gépek esetén) és a mobilitási szolgáltatás ügynökének (VMware/fizikai gépek esetén) a verziójának 9.30.5407.1 néhány gépi operációs rendszernek a karbantartási verem frissítését és az SHA-2-et kell futtatnia. A részletek az alábbi táblázatban láthatók.
+- Telepítse a frissítést és az SHA-2-et a csatolt KB-nak megfelelően. Az SHA-1 nem támogatott szeptember 2019-tól, és ha az SHA-2 kód aláírása nincs engedélyezve, az ügynök bővítmény nem a várt módon fog települni/frissíteni.
+- További információ az [SHA-2 frissítésével és követelményeivel](https://aka.ms/SHA-2KB) kapcsolatban.
+
+**Operációs rendszer** | **Azure virtuális gép** | **VMware VM/fizikai gép**
+--- | --- | ---
+**Windows 2008 R2 SP1** | [Karbantartási verem frissítése](https://support.microsoft.com/help/4490628)<br/> [SHA-2](https://support.microsoft.com/help/4474419)| [Karbantartási verem frissítése](https://support.microsoft.com/help/4490628)<br/> [SHA-2](https://support.microsoft.com/help/4474419)
+**Windows 2008 SP2** | [Karbantartási verem frissítése](https://support.microsoft.com/help/4493730)<br/> [SHA-2](https://support.microsoft.com/help/4474419)| [Karbantartási verem frissítése](https://support.microsoft.com/help/4493730)<br/> [SHA-2](https://support.microsoft.com/help/4474419)
+**Windows 7 SP1** | [Karbantartási verem frissítése](https://support.microsoft.com/help/4490628)<br/> [SHA-2](https://support.microsoft.com/help/4474419)| [Karbantartási verem frissítése](https://support.microsoft.com/help/4490628)<br/> [SHA-2](https://support.microsoft.com/help/4474419).
+
 
 
 ## <a name="updates-october-2019"></a>Frissítések (október 2019)
@@ -70,7 +104,7 @@ Az Azure-beli virtuális gép vész-helyreállításának új funkciói a tábl�
 
 **Funkció** | **Részletek**
 --- | ---
-**Feladatátvételi beállítások tesztelése** | A feladatátvételi teszt beállításakor mostantól konfigurálhatja a feladatátvételi teszt virtuális gépe és hálózata beállításait, beleértve az IP-címet, a NSG, a belső terheléselosztást, valamint az egyes gépek hálózati ADAPTERéhez tartozó nyilvános IP-címet is. Ezek a beállítások nem kötelezőek, és nem változtatják meg az aktuális viselkedést. Ha nem konfigurálja ezeket a beállításokat, kiválaszthat egy Azure-VNet a feladatátvételi teszt időpontjában. [További információk](https://azure.microsoft.com/blog/customize-networking-for-dr-drills-azure-site-recovery/).
+**Feladatátvételi beállítások tesztelése** | A feladatátvételi teszt beállításakor mostantól konfigurálhatja a feladatátvételi teszt virtuális gépe és hálózata beállításait, beleértve az IP-címet, a NSG, a belső terheléselosztást, valamint az egyes gépek hálózati ADAPTERéhez tartozó nyilvános IP-címet is. Ezek a beállítások nem kötelezőek, és nem változtatják meg az aktuális viselkedést. Ha nem konfigurálja ezeket a beállításokat, kiválaszthat egy Azure-VNet a feladatátvételi teszt időpontjában. [Részletek](https://azure.microsoft.com/blog/customize-networking-for-dr-drills-azure-site-recovery/).
 **Helyreállítási tervek** | A helyreállítási tervek mostantól 100 virtuális gépre korlátozódnak, így biztosítva a feladatátvétel megbízhatóságát.
 
 ### <a name="vmware-to-azure-disaster-recovery"></a>Vészhelyreállítás VMware-ről Azure-ba
@@ -111,7 +145,7 @@ Az ebben a hónapban hozzáadott funkciók összegzése a táblázatban láthat�
 
 **Funkció** | **Részletek**
 --- | ---
-Új Process Server-riasztások | Új Process Server-riasztások lettek hozzáadva. [További információk](vmware-physical-azure-monitor-process-server.md). 
+Új Process Server-riasztások | Új Process Server-riasztások lettek hozzáadva. [Részletek](vmware-physical-azure-monitor-process-server.md). 
 
 ### <a name="hyper-v-disaster-recovery"></a>Hyper-V vész-helyreállítás
 
@@ -155,7 +189,7 @@ A 38-es [kumulatív frissítés](https://support.microsoft.com/help/4513507/) a 
 **Hibajavítások/javítások** | Számos javítás és javítás (az összesítésben részletezett módon)
 
 
-### <a name="general"></a>Általános
+### <a name="general"></a>Általános kérdések
 
 A Site Recovery mostantól támogatja az általános célú v2 Storage-fiókok használatát a gyorsítótár-tároláshoz vagy a célhelyek tárolásához. Korábban csak a v1 támogatott.
 
@@ -203,8 +237,8 @@ Az ebben a hónapban hozzáadott funkciók összegzése a táblázatban láthat�
 
 **Funkció** | **Részletek**
 --- | ---
-**Hozzáadott lemezek replikálása** | A vész-helyreállításra már engedélyezett Azure-beli virtuális gépekhez hozzáadott adatlemezek replikálásának engedélyezése. [További információk](azure-to-azure-enable-replication-added-disk.md).
-**Automatikus frissítések** | Ha olyan Azure-beli virtuális gépeken futó mobilitási szolgáltatás bővítményének automatikus frissítését konfigurálja, amelyeken engedélyezve van a vész-helyreállítás, mostantól kiválaszthatja a használni kívánt Automation-fiókot a Site Recovery által létrehozott alapértelmezett fiók használata helyett. [További információk](azure-to-azure-autoupdate.md).
+**Hozzáadott lemezek replikálása** | A vész-helyreállításra már engedélyezett Azure-beli virtuális gépekhez hozzáadott adatlemezek replikálásának engedélyezése. [Részletek](azure-to-azure-enable-replication-added-disk.md).
+**Automatikus frissítések** | Ha olyan Azure-beli virtuális gépeken futó mobilitási szolgáltatás bővítményének automatikus frissítését konfigurálja, amelyeken engedélyezve van a vész-helyreállítás, mostantól kiválaszthatja a használni kívánt Automation-fiókot a Site Recovery által létrehozott alapértelmezett fiók használata helyett. [Részletek](azure-to-azure-autoupdate.md).
 
 
 ### <a name="vmwarephysical-server-disaster-recovery"></a>VMware/fizikai kiszolgáló – vész-helyreállítás
@@ -213,7 +247,7 @@ Az ebben a hónapban hozzáadott funkciók összegzése a táblázatban láthat�
 
 **Funkció** | **Részletek**
 --- | ---
-**A Process Server figyelése** | A helyszíni VMware virtuális gépek és fizikai kiszolgálók vész-helyreállításához, a kiszolgáló állapotának javításához és a riasztások kezeléséhez a folyamat-kiszolgálókkal kapcsolatos problémák figyelése és hibaelhárítása. [További információk](vmware-physical-azure-monitor-process-server.md). 
+**A Process Server figyelése** | A helyszíni VMware virtuális gépek és fizikai kiszolgálók vész-helyreállításához, a kiszolgáló állapotának javításához és a riasztások kezeléséhez a folyamat-kiszolgálókkal kapcsolatos problémák figyelése és hibaelhárítása. [Részletek](vmware-physical-azure-monitor-process-server.md). 
 
 
 
@@ -268,7 +302,7 @@ Az ebben a hónapban hozzáadott funkciók összegzése a táblázatban láthat�
 **Funkció** | **Részletek**
 --- | ---
 **Hálózati leképezés** | Az Azure-beli virtuális gépek vész-helyreállítási folyamata esetén a replikáció engedélyezésekor bármilyen elérhető célszámítógépet is használhat. 
-**standard SSD** | Most már beállíthatja az Azure-beli virtuális gépek vész-helyreállítását [standard SSD lemezek](https://docs.microsoft.com/azure/virtual-machines/windows/disks-standard-ssd)használatával.
+**Standard SSD** | Most már beállíthatja az Azure-beli virtuális gépek vész-helyreállítását [standard SSD lemezek](https://docs.microsoft.com/azure/virtual-machines/windows/disks-standard-ssd)használatával.
 **Közvetlen tárolóhelyek** | Az Azure VM-alkalmazásokon futó alkalmazások vész-helyreállítását a magas rendelkezésre állás érdekében [közvetlen tárolóhelyek](https://docs.microsoft.com/windows-server/storage/storage-spaces/storage-spaces-direct-overview) használatával állíthatja be.  A Közvetlen tárolóhelyek (S2D) és a Site Recovery együttes használata átfogó védelmet nyújt az Azure-beli virtuális gépek számítási feladataihoz. A S2D lehetővé teszi a vendég fürtök üzemeltetését az Azure-ban. Ez különösen akkor hasznos, ha egy virtuális gép kritikus alkalmazást (például SAP ASCS Layer, SQL Server vagy kibővített fájlkiszolgáló) üzemeltet.
 
 
@@ -288,7 +322,7 @@ Az ebben a hónapban hozzáadott funkciók összegzése a táblázatban láthat�
 
 A gyorsított hálózatkezelés lehetővé teszi az egyszintű I/O-virtualizálás (SR-IOV) használatát egy virtuális gépre, és javítja a hálózat teljesítményét. Ha engedélyezi egy Azure-beli virtuális gép replikálását, Site Recovery észleli, hogy engedélyezve van-e a gyorsított hálózat. Ha igen, a feladatátvételt követően Site Recovery automatikusan a gyorsított hálózatkezelést konfigurálja a célként megadott replika Azure virtuális gépen, [Windows](https://docs.microsoft.com/azure/virtual-network/create-vm-accelerated-networking-powershell#enable-accelerated-networking-on-existing-vms) és [Linux](https://docs.microsoft.com/azure/virtual-network/create-vm-accelerated-networking-cli#enable-accelerated-networking-on-existing-vms)rendszereken egyaránt.
 
-[További információk](azure-vm-disaster-recovery-with-accelerated-networking.md).
+[Részletek](azure-vm-disaster-recovery-with-accelerated-networking.md).
 
 ### <a name="update-rollup-32"></a>32-es kumulatív frissítés 
 
@@ -353,7 +387,7 @@ Az ebben a hónapban hozzáadott funkciók összegzése a táblázatban láthat�
 
 Site Recovery hozzáadott egy lehetőséget a mobilitási szolgáltatás bővítményének automatikus frissítéseihez. A mobilitási szolgáltatás bővítmény a Site Recovery által replikált összes Azure-beli virtuális gépre telepítve van. A replikáció engedélyezésekor kiválaszthatja, hogy engedélyezi-e Site Recovery számára a bővítmény frissítéseinek kezelését.
 
-A frissítések nem igénylik a virtuális gépek újraindítását, és nem érintik a replikálást. [További információk](azure-to-azure-autoupdate.md).
+A frissítések nem igénylik a virtuális gépek újraindítását, és nem érintik a replikálást. [Részletek](azure-to-azure-autoupdate.md).
 
 ### <a name="pricing-calculator-for-azure-vm-disaster-recovery"></a>Díjszabás az Azure-beli virtuális gép vész-helyreállításához
 
@@ -384,7 +418,7 @@ Az ebben a hónapban hozzáadott funkciók összegzése a táblázatban láthat�
 **Funkció** | **Részletek**
 --- | ---
 **Régió támogatása** | Site Recovery támogatás hozzáadva az Australia Central 1 és az Australia Central 2 rendszerhez.
-**A lemez titkosításának támogatása** | Az Azure AD-alkalmazással titkosított Azure-beli virtuális gépek vész-helyreállításának támogatása Azure Disk Encryption (ADE) titkosítással. [További információk](azure-to-azure-how-to-enable-replication-ade-vms.md).
+**A lemez titkosításának támogatása** | Az Azure AD-alkalmazással titkosított Azure-beli virtuális gépek vész-helyreállításának támogatása Azure Disk Encryption (ADE) titkosítással. [Részletek](azure-to-azure-how-to-enable-replication-ade-vms.md).
 **Lemez kizárása** | A nem inicializált lemezek mostantól automatikusan ki vannak zárva az Azure-beli virtuális gépek replikálásakor.
 **Tűzfallal kompatibilis tároló (PowerShell)** | Támogatott a [tűzfalat használó Storage-fiókok](https://docs.microsoft.com/azure/storage/common/storage-network-security)támogatása.<br/><br/> Az Azure-beli virtuális gépeket nem felügyelt lemezekkel replikálhatja a tűzfalat támogató Storage-fiókokba egy másik Azure-régióba a vész-helyreállítás érdekében.<br/><br/> A nem felügyelt lemezekhez a tűzfalat támogató Storage-fiókokat célként tároló fiókokként használhatja.<br/><br/> Csak a PowerShell használatával támogatott.
 
@@ -417,7 +451,7 @@ Az ebben a hónapban hozzáadott funkciók összegzése a táblázatban láthat�
 --- | ---
 **Linux-támogatás** | Támogatott a RedHat Enterprise Linux 6,10; CentOS 6,10.<br/><br/>
 **Felhő-támogatás** | Támogatott vész-helyreállítás az Azure-beli virtuális gépek számára a németországi felhőben.
-**Az előfizetések közötti vész-helyreállítás** | Az Azure-beli virtuális gépek egyik régióban való replikálásának támogatása egy másik előfizetésben, ugyanazon a Azure Active Directory bérlőn belül. [További információk](https://aka.ms/cross-sub-blog).
+**Az előfizetések közötti vész-helyreállítás** | Az Azure-beli virtuális gépek egyik régióban való replikálásának támogatása egy másik előfizetésben, ugyanazon a Azure Active Directory bérlőn belül. [Részletek](https://aka.ms/cross-sub-blog).
 
 ### <a name="vmware-vmphysical-server-disaster-recovery"></a>VMware virtuális gép/fizikai kiszolgáló vész-helyreállítás 
 Az ebben a hónapban hozzáadott funkciók összegzése a táblázatban látható.

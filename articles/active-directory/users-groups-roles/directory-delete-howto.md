@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: addimitu
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b7993810343f6bd925afd54cc38a8302420d6aec
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: 47a60ed44ddf057ef983f8f76f23fd784bc3efd5
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72439357"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73961816"
 ---
 # <a name="delete-a-directory-in-azure-active-directory"></a>Könyvtár törlése Azure Active Directory
 
@@ -67,7 +67,7 @@ Kiépítve (30 nappal a letiltottak után) | Az adattörlés (automatikusan tör
 
 A **kiépített** állapotba egy előfizetést a Microsoft 365 felügyeleti központot használva három napon belül törölhet.
 
-1. Jelentkezzen be a [Microsoft 365 felügyeleti központba](https://admin.microsoft.com) egy olyan fiókkal, amely a szervezet globális rendszergazdája. Ha törölni szeretné a "contoso" könyvtárat, amely a kezdeti alapértelmezett tartományi contoso.onmicrosoft.com rendelkezik, jelentkezzen be egy egyszerű felhasználónévvel, például admin@contoso.onmicrosoft.com.
+1. Jelentkezzen be a [Microsoft 365 felügyeleti központba](https://admin.microsoft.com) egy olyan fiókkal, amely a szervezet globális rendszergazdája. Ha törölni szeretné a "contoso" könyvtárat, amely a kezdeti alapértelmezett tartományi contoso.onmicrosoft.com rendelkezik, jelentkezzen be egy egyszerű felhasználónevet (például admin@contoso.onmicrosoft.com).
 
 2. Tekintse meg az új Microsoft 365 felügyeleti központ előzetes verzióját, és győződjön meg arról, hogy az **új felügyeleti központ** váltása engedélyezve van.
 
@@ -97,7 +97,7 @@ A **kiépített** állapotba egy előfizetést a Microsoft 365 felügyeleti köz
 
 ## <a name="i-have-a-trial-subscription-that-blocks-deletion"></a>Olyan próbaverziós előfizetésem van, amely blokkolja a törlést
 
-Az [önkiszolgáló regisztrációs termékek](https://docs.microsoft.com/office365/admin/misc/self-service-sign-up?view=o365-worldwide) , például a Microsoft Power BI, Rights Management szolgáltatások, a Microsoft Power apps vagy a Dynamics 365, az egyes felhasználók regisztrálhatnak az Office 365-on keresztül, amely egy vendég felhasználót is létrehoz az Azure ad-címtárban történő hitelesítéshez . Ezek az önkiszolgáló termékek az adatvesztés elkerülése érdekében letiltják a címtár törlését, amíg azok nem törlődnek teljesen a címtárból. Ezeket csak az Azure AD-rendszergazda törölheti, függetlenül attól, hogy a felhasználó regisztrálta-e a terméket.
+Az [önkiszolgáló regisztrációs termékek](https://docs.microsoft.com/office365/admin/misc/self-service-sign-up?view=o365-worldwide) , például a Microsoft Power bi, a Rights Management Services, a Microsoft Power apps vagy a Dynamics 365, az egyes felhasználók regisztrálhatnak az Office 365-on keresztül, amely az Azure ad-címtárban is létrehoz egy vendég felhasználót a hitelesítéshez. Ezek az önkiszolgáló termékek az adatvesztés elkerülése érdekében letiltják a címtár törlését, amíg azok nem törlődnek teljesen a címtárból. Ezeket csak az Azure AD-rendszergazda törölheti, függetlenül attól, hogy a felhasználó regisztrálta-e a terméket.
 
 Az önkiszolgáló regisztrációs termékek két típusa van a hozzárendelésük módjában: 
 
@@ -108,7 +108,7 @@ Az önkiszolgáló regisztrációs termék törlésének megkezdése után a mű
 
 A jelenleg elérhető önkiszolgáló regisztrációs termékekkel és szolgáltatásokkal kapcsolatos további információkért lásd a [rendelkezésre álló](https://docs.microsoft.com/office365/admin/misc/self-service-sign-up?view=o365-worldwide#available-self-service-programs)önkiszolgáló programok című témakört.
 
-A következő táblázat ismerteti, hogy mire számíthat, ha a próbaverziós Office 365-előfizetés lejár (nem tartalmazza a fizetős partner/CSP, Nagyvállalati Szerződés vagy mennyiségi licencelés). Az Office 365 adatmegőrzési és-előfizetési életciklusával kapcsolatos további információkért lásd: [Mi történik az adatok és a hozzáférés, amikor az office 365 for Business-előfizetés lejár?](https://docs.microsoft.com/office365/admin/subscriptions-and-billing/what-if-my-subscription-expires?view=o365-worldwide).
+A következő táblázat ismerteti, hogy mire számíthat, ha a próbaverziós Office 365-előfizetés lejár (nem tartalmazza a fizetős partner/CSP, Nagyvállalati Szerződés vagy mennyiségi licencelés). Az Office 365 adatmegőrzési és-előfizetési életciklusával kapcsolatos további információkért lásd: [Mi történik az adatok és a hozzáférés, amikor az office 365 for Business-előfizetés lejár?](https://docs.microsoft.com/office365/admin/subscriptions-and-billing/what-if-my-subscription-expires?view=o365-worldwide).
 
 Termék állapota | Adatok | Hozzáférés az adatkezeléshez
 ------------- | ---- | --------------
@@ -119,13 +119,13 @@ Törölve | Az adattörlés | A felhasználók nem férhetnek hozzá az önkiszo
 
 Az Azure AD-portálon azonnal törölheti az önkiszolgáló regisztrációs terméket, például a Microsoft Power BI vagy **az azure** Rights Management Services szolgáltatást.
 
-1. Jelentkezzen be az [Azure ad felügyeleti központba](https://aad.portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview) with egy olyan fiókot, amely a szervezet globális rendszergazdája. Ha törölni szeretné a "contoso" könyvtárat, amely a kezdeti alapértelmezett tartományi contoso.onmicrosoft.com rendelkezik, jelentkezzen be egy egyszerű felhasználónévvel, például admin@contoso.onmicrosoft.com.
+1. Jelentkezzen be az [Azure ad felügyeleti központba](https://aad.portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview) egy olyan fiókkal, amely a szervezet globális rendszergazdája. Ha törölni szeretné a "contoso" könyvtárat, amely a kezdeti alapértelmezett tartományi contoso.onmicrosoft.com rendelkezik, jelentkezzen be egy egyszerű felhasználónevet (például admin@contoso.onmicrosoft.com).
 
-2. Válassza a **licencek**lehetőséget, majd válassza az **önkiszolgáló regisztrációs termékek**lehetőséget. Az összes önkiszolgáló regisztrációs terméket külön tekintheti meg az ülésen alapuló előfizetések között. Válassza ki a véglegesen törölni kívánt terméket. Íme egy példa a Microsoft Power BIban:
+2. Válassza a **licencek**lehetőséget, majd válassza az **önkiszolgáló regisztrációs termékek**lehetőséget. Az összes önkiszolgáló regisztrációs terméket külön tekintheti meg az ülésen alapuló előfizetések között. Válassza ki a véglegesen törölni kívánt terméket. Íme egy példa a Microsoft Power BIban:
 
     ![a Felhasználónév típusa helytelen, vagy nem található](./media/directory-delete-howto/licenses-page.png)
 
-3. Válassza a **törlés**@no__t – 1to törölje a terméket, és fogadja el azokat a feltételeket, amelyeket a rendszer azonnal és visszavonhatatlanul töröl. Ez a törlési művelet törli az összes felhasználót, és eltávolítja a szervezet hozzáférését a termékhez. Az Igen gombra kattintva lépjen tovább a törlésre.  
+3. Válassza a **Törlés** lehetőséget a termék törléséhez, és fogadja el azokat a feltételeket, amelyek azonnal és visszavonhatatlanul törlődnek. Ez a törlési művelet törli az összes felhasználót, és eltávolítja a szervezet hozzáférését a termékhez. Az Igen gombra kattintva lépjen tovább a törlésre.  
 
     ![a Felhasználónév típusa helytelen, vagy nem található](./media/directory-delete-howto/delete-product.png)
 
