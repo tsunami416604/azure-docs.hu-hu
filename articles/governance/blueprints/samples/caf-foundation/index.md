@@ -1,18 +1,14 @@
 ---
 title: A felhőbevezetési keretrendszer alaprendszerének tervmintája – Áttekintés
 description: A felhőbevezetési keretrendszer alaprendszeréhez tartozó tervminta áttekintése és architektúrája.
-author: DCtheGeek
-ms.author: dacoulte
 ms.date: 08/20/2019
 ms.topic: sample
-ms.service: blueprints
-ms.custom: fasttrack-new
-ms.openlocfilehash: 03c01036648f7e625201676e062266abff8a787f
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: a353f92be995412702a93219c8fb1af967368beb
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73163785"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74038493"
 ---
 # <a name="overview-of-the-microsoft-cloud-adoption-framework-for-azure-foundation-blueprint-sample"></a>Az Azure-hoz készült Microsoft Cloud bevezetési keretrendszerhez tartozó tervminta áttekintése
 
