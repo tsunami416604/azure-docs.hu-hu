@@ -1183,19 +1183,17 @@
               href: platform/autoscale-webhook-email.md
         - name: PowerShell
           items:
-            - name: Azure PowerShell-minták
+            - name: Kezelés a Powershell-lel
               href: platform/powershell-quickstart-samples.md
-            - name: PowerShell-parancsmagok
+            - name: Riasztások létrehozása
+              href: app/powershell-alerts.md
+            - name: A Log Analytics kezelése
               href: platform/powershell-workspace-configuration.md
-            - name: Alkalmazások
+            - name: Application Insights
               items:
-                - name: Application Insights-erőforrások létrehozása
+                - name: Az Application Insights kezelése
                   href: app/powershell.md
-                - name: Erőforrások létrehozása
-                  href: app/powershell-script-create-resource.md
-                - name: Riasztások beállítása
-                  href: app/powershell-alerts.md
-                - name: Az Azure Diagnostics beszerzése
+                - name: Az Azure Cloud Services kezelése
                   href: app/powershell-azure-diagnostics.md
         - name: Azure CLI-minták
           href: platform/cli-samples.md

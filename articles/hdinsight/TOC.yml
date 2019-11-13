@@ -35,6 +35,8 @@
       items:
         - name: HDInsight-alapú Apache Hadoop-összetevők
           href: ./hdinsight-component-versioning.md
+        - name: Magas rendelkezésre állású összetevők
+          href: ./hdinsight-high-availability-components.md
         - name: Machine Learning a HDInsightban
           href: ./hdinsight-machine-learning-overview.md
         - name: Ipari léptékű streamelés a HDInsightban
